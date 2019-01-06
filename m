@@ -1,14 +1,15 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
+From: Ayaka <ayaka@soulik.info>
 Subject: Re: [PATCH 4/4] arm64: dts: rockchip: add video codec for rk3399
-Date: Sun, 06 Jan 2019 11:22:17 -0300
-Message-ID: <50db3bc3faea97182b7fe18b4d9677f7e1563eaa.camel@collabora.com>
+Date: Sun, 6 Jan 2019 23:05:38 +0800
+Message-ID: <CAC7DE03-A74C-4154-9443-BC91E6CED02E@soulik.info>
 References: <20190105183150.20266-1-ayaka@soulik.info>
  <20190105183150.20266-5-ayaka@soulik.info>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ <50db3bc3faea97182b7fe18b4d9677f7e1563eaa.camel@collabora.com>
+Mime-Version: 1.0 (1.0)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190105183150.20266-5-ayaka@soulik.info>
+In-Reply-To: <50db3bc3faea97182b7fe18b4d9677f7e1563eaa.camel@collabora.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -18,169 +19,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Randy Li <ayaka@soulik.info>, linux-rockchip@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>
-Cc: hverkuil@xs4all.nl, nicolas.dufresne@collabora.com, heiko@sntech.de, linux-kernel@vger.kernel.org, paul.kocialkowski@bootlin.com, myy@miouyouyou.fr, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: hverkuil@xs4all.nl, nicolas.dufresne@collabora.com, heiko@sntech.de, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, paul.kocialkowski@bootlin.com, linux-rockchip@lists.infradead.org, myy@miouyouyou.fr, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Randy,
-
-Thanks a lot for this patches. They are really useful
-to provide more insight into the VPU hardware.
-
-This change will make the vpu encoder and vpu decoder
-completely independent, can they really work in parallel?
-
-Could you provide more details about what is
-shared between these devices?
-
-Thanks a lot!
-
-On Sun, 2019-01-06 at 02:31 +0800, Randy Li wrote:
-> It offers an example how a full features video codec
-> should be configured.
-> 
-> The original clocks assignment don't look good, if the clocks
-> lower than 300MHZ, most of decoing tasks would suffer from
-> timeout problem, 500MHZ is also a little high for RK3399
-> running in a stable state.
-> 
-> Signed-off-by: Randy Li <ayaka@soulik.info>
-> ---
->  .../boot/dts/rockchip/rk3399-sapphire.dtsi    | 29 ++++++++
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi      | 68 +++++++++++++++++--
->  2 files changed, 90 insertions(+), 7 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-> index 946d3589575a..c3db878bae45 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-> @@ -632,6 +632,35 @@
->  	dr_mode = "host";
->  };
->  
-> +&rkvdec {
-> +	status = "okay";
-> +};
-> +
-> +&rkvdec_srv {
-> +	status = "okay";
-> +};
-> +
-> +&vdec_mmu {
-> +	status = "okay";
-> +};
-> +
-> +&vdpu {
-> +	status = "okay";
-> +};
-> +
-> +&vepu {
-> +	status = "okay";
-> +};
-> +
-> +&vpu_service {
-> +	status = "okay";
-> +};
-> +
-> +&vpu_mmu {
-> +	status = "okay";
-> +
-> +};
-> +
->  &vopb {
->  	status = "okay";
->  };
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index b22b2e40422b..5fa3247e7bf0 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -1242,16 +1242,39 @@
->  		status = "disabled";
->  	};
->  
-> -	vpu: video-codec@ff650000 {
-> -		compatible = "rockchip,rk3399-vpu";
-> -		reg = <0x0 0xff650000 0x0 0x800>;
-> -		interrupts = <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH 0>,
-> -			     <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH 0>;
-> -		interrupt-names = "vepu", "vdpu";
-> +	vpu_service: vpu-srv {
-> +		compatible = "rockchip,mpp-service";
-> +		status = "disabled";
-> +	};
-> +
-> +	vepu: vpu-encoder@ff650000 {
-> +		compatible = "rockchip,vpu-encoder-v2";
-> +		reg = <0x0 0xff650000 0x0 0x400>;
-> +		interrupts = <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		interrupt-names = "irq_enc";
->  		clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
-> -		clock-names = "aclk", "hclk";
-> +		clock-names = "aclk_vcodec", "hclk_vcodec";
-> +		resets = <&cru SRST_H_VCODEC>, <&cru SRST_A_VCODEC>;
-> +		reset-names = "video_h", "video_a";
->  		iommus = <&vpu_mmu>;
->  		power-domains = <&power RK3399_PD_VCODEC>;
-> +		rockchip,srv = <&vpu_service>;
-> +		status = "disabled";
-> +	};
-> +
-> +	vdpu: vpu-decoder@ff650400 {
-> +		compatible = "rockchip,vpu-decoder-v2";
-> +		reg = <0x0 0xff650400 0x0 0x400>;
-> +		interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		interrupt-names = "irq_dec";
-> +		iommus = <&vpu_mmu>;
-> +		clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
-> +		clock-names = "aclk_vcodec", "hclk_vcodec";
-> +		resets = <&cru SRST_H_VCODEC>, <&cru SRST_A_VCODEC>;
-> +		reset-names = "video_h", "video_a";
-> +		power-domains = <&power RK3399_PD_VCODEC>;
-> +		rockchip,srv = <&vpu_service>;
-> +		status = "disabled";
->  	};
->  
->  	vpu_mmu: iommu@ff650800 {
-> @@ -1261,11 +1284,42 @@
->  		interrupt-names = "vpu_mmu";
->  		clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
->  		clock-names = "aclk", "iface";
-> +		assigned-clocks = <&cru ACLK_VCODEC_PRE>;
-> +		assigned-clock-parents = <&cru PLL_GPLL>;
->  		#iommu-cells = <0>;
->  		power-domains = <&power RK3399_PD_VCODEC>;
->  		status = "disabled";
->  	};
->  
-> +	rkvdec_srv: rkvdec-srv {
-> +		compatible = "rockchip,mpp-service";
-> +		status = "disabled";
-> +	};
-> +
-> +	rkvdec: video-decoder@ff660000 {
-> +		compatible = "rockchip,video-decoder-v1";
-> +		reg = <0x0 0xff660000 0x0 0x400>;
-> +		interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		interrupt-names = "irq_dec";
-> +		clocks = <&cru ACLK_VDU>, <&cru HCLK_VDU>,
-> +			 <&cru SCLK_VDU_CA>, <&cru SCLK_VDU_CORE>;
-> +		clock-names = "aclk_vcodec", "hclk_vcodec",
-> +			      "clk_cabac", "clk_core";
-> +		assigned-clocks = <&cru ACLK_VDU_PRE>, <&cru SCLK_VDU_CA>,
-> +				  <&cru SCLK_VDU_CORE>;
-> +		assigned-clock-parents = <&cru PLL_NPLL>, <&cru PLL_NPLL>,
-> +					 <&cru PLL_NPLL>;
-> +		resets = <&cru SRST_H_VDU>, <&cru SRST_A_VDU>,
-> +			 <&cru SRST_VDU_CORE>, <&cru SRST_VDU_CA>,
-> +			 <&cru SRST_A_VDU_NOC>, <&cru SRST_H_VDU_NOC>;
-> +		reset-names = "video_h", "video_a", "video_core", "video_cabac",
-> +			      "niu_a", "niu_h";
-> +		power-domains = <&power RK3399_PD_VDU>;
-> +		rockchip,srv = <&rkvdec_srv>;
-> +		iommus = <&vdec_mmu>;
-> +		status = "disabled";
-> +	};
-> +
->  	vdec_mmu: iommu@ff660480 {
->  		compatible = "rockchip,iommu";
->  		reg = <0x0 0xff660480 0x0 0x40>, <0x0 0xff6604c0 0x0 0x40>;
+Cj4gT24gSmFuIDYsIDIwMTksIGF0IDEwOjIyIFBNLCBFemVxdWllbCBHYXJjaWEgPGV6ZXF1aWVs
+QGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+IAo+IEhpIFJhbmR5LAo+IAo+IFRoYW5rcyBhIGxvdCBm
+b3IgdGhpcyBwYXRjaGVzLiBUaGV5IGFyZSByZWFsbHkgdXNlZnVsCj4gdG8gcHJvdmlkZSBtb3Jl
+IGluc2lnaHQgaW50byB0aGUgVlBVIGhhcmR3YXJlLgo+IAo+IFRoaXMgY2hhbmdlIHdpbGwgbWFr
+ZSB0aGUgdnB1IGVuY29kZXIgYW5kIHZwdSBkZWNvZGVyCj4gY29tcGxldGVseSBpbmRlcGVuZGVu
+dCwgY2FuIHRoZXkgcmVhbGx5IHdvcmsgaW4gcGFyYWxsZWw/CkFzIEkgc2FpZCBpdCBkZXBlbmRz
+IG9uIHRoZSBwbGF0Zm9ybSwgYnV0IHdpdGggdGhpcyBwYXRjaCwgdGhlIHVzZXIgc3BhY2Ugd291
+bGQgdGhpbmsgdGhleSBjYW4gd29yayBhdCB0aGUgc2FtZSB0aW1lLiBCVFcsIG5vdCBvbmx5IHRo
+ZSBkZWNvZGVyLCB0aGVyZSBpcyBhIHBvc3QgcHJvY2Vzc29yIHdpdGggdGhlIGRlY29kZXIsIGl0
+IGNhbiBiZSB1c2VkIGFzIHBhcnQgb2YgdGhlIGRlY29kZXIgcGlwZWxpbmUgd2l0aCBvbmx5IGEg
+bWFjcm8gYmxvY2sgZGVsYXkgb3IgcHJvY2VzcyB0aGUgZGF0YSBmcm9tIGFuIGV4dGVybmFsIGJ1
+ZmZlci4KSSBmb3JnZXQgdG8gd3JpdGUgYSBub3RlIG9uIHdoYXQgdGhpcyBkcml2ZXIgZG9lc27i
+gJl0IHByZXNlbnQuIFRoZSByZWFsIG9uZSB3b3VsZCBoYXZlIG11Y2ggY29tcGxleCBzY2hlZHVs
+ZXIgc3lzdGVtLCBidXQgdGhpcyBvbmUgaXMganVzdCBhIHF1ZXVlLiBNb3JlIHRhc2sgbWFuYWdl
+bWVudCBmZWF0dXJlIGFyZSBub3QgdGhlcmUuCkFsc28gdGhlIGNsb2NrIGJvb3N0aW5nIGlzIHJl
+bW92aW5nIGFuZCB0aGUgbG9hZGluZyBhbmFseXNpcywgd2hpY2ggYXJlIHVzZWZ1bCBmb3IgZW5j
+b2RlciwgZXNwZWNpYWxseSBvbiB0aGUgcnYxMTA4Lgo+IENvdWxkIHlvdSBwcm92aWRlIG1vcmUg
+ZGV0YWlscyBhYm91dCB3aGF0IGlzCj4gc2hhcmVkIGJldHdlZW4gdGhlc2UgZGV2aWNlcz8KTm8s
+IGlmIFJvY2tjaGlwIGRvZXNu4oCZdCB0ZWxsLCBteSBtb3V0aCBpcyBzZWFsZWQuCj4gVGhhbmtz
+IGEgbG90IQo+IAo+PiBPbiBTdW4sIDIwMTktMDEtMDYgYXQgMDI6MzEgKzA4MDAsIFJhbmR5IExp
+IHdyb3RlOgo+PiBJdCBvZmZlcnMgYW4gZXhhbXBsZSBob3cgYSBmdWxsIGZlYXR1cmVzIHZpZGVv
+IGNvZGVjCj4+IHNob3VsZCBiZSBjb25maWd1cmVkLgo+PiAKPj4gVGhlIG9yaWdpbmFsIGNsb2Nr
+cyBhc3NpZ25tZW50IGRvbid0IGxvb2sgZ29vZCwgaWYgdGhlIGNsb2Nrcwo+PiBsb3dlciB0aGFu
+IDMwME1IWiwgbW9zdCBvZiBkZWNvaW5nIHRhc2tzIHdvdWxkIHN1ZmZlciBmcm9tCj4+IHRpbWVv
+dXQgcHJvYmxlbSwgNTAwTUhaIGlzIGFsc28gYSBsaXR0bGUgaGlnaCBmb3IgUkszMzk5Cj4+IHJ1
+bm5pbmcgaW4gYSBzdGFibGUgc3RhdGUuCj4+IAo+PiBTaWduZWQtb2ZmLWJ5OiBSYW5keSBMaSA8
+YXlha2FAc291bGlrLmluZm8+Cj4+IC0tLQo+PiAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5
+LXNhcHBoaXJlLmR0c2kgICAgfCAyOSArKysrKysrKwo+PiBhcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
+Y2tjaGlwL3JrMzM5OS5kdHNpICAgICAgfCA2OCArKysrKysrKysrKysrKysrKy0tCj4+IDIgZmls
+ZXMgY2hhbmdlZCwgOTAgaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMoLSkKPj4gCj4+IGRpZmYg
+LS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1zYXBwaGlyZS5kdHNp
+IGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaQo+PiBp
+bmRleCA5NDZkMzU4OTU3NWEuLmMzZGI4NzhiYWU0NSAxMDA2NDQKPj4gLS0tIGEvYXJjaC9hcm02
+NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaQo+PiArKysgYi9hcmNoL2Fy
+bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1zYXBwaGlyZS5kdHNpCj4+IEBAIC02MzIsNiAr
+NjMyLDM1IEBACj4+ICAgZHJfbW9kZSA9ICJob3N0IjsKPj4gfTsKPj4gCj4+ICsmcmt2ZGVjIHsK
+Pj4gKyAgICBzdGF0dXMgPSAib2theSI7Cj4+ICt9Owo+PiArCj4+ICsmcmt2ZGVjX3NydiB7Cj4+
+ICsgICAgc3RhdHVzID0gIm9rYXkiOwo+PiArfTsKPj4gKwo+PiArJnZkZWNfbW11IHsKPj4gKyAg
+ICBzdGF0dXMgPSAib2theSI7Cj4+ICt9Owo+PiArCj4+ICsmdmRwdSB7Cj4+ICsgICAgc3RhdHVz
+ID0gIm9rYXkiOwo+PiArfTsKPj4gKwo+PiArJnZlcHUgewo+PiArICAgIHN0YXR1cyA9ICJva2F5
+IjsKPj4gK307Cj4+ICsKPj4gKyZ2cHVfc2VydmljZSB7Cj4+ICsgICAgc3RhdHVzID0gIm9rYXki
+Owo+PiArfTsKPj4gKwo+PiArJnZwdV9tbXUgewo+PiArICAgIHN0YXR1cyA9ICJva2F5IjsKPj4g
+Kwo+PiArfTsKPj4gKwo+PiAmdm9wYiB7Cj4+ICAgc3RhdHVzID0gIm9rYXkiOwo+PiB9Owo+PiBk
+aWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaSBiL2Fy
+Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kKPj4gaW5kZXggYjIyYjJlNDA0
+MjJiLi41ZmEzMjQ3ZTdiZjAgMTAwNjQ0Cj4+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
+a2NoaXAvcmszMzk5LmR0c2kKPj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
+azMzOTkuZHRzaQo+PiBAQCAtMTI0MiwxNiArMTI0MiwzOSBAQAo+PiAgICAgICBzdGF0dXMgPSAi
+ZGlzYWJsZWQiOwo+PiAgIH07Cj4+IAo+PiAtICAgIHZwdTogdmlkZW8tY29kZWNAZmY2NTAwMDAg
+ewo+PiAtICAgICAgICBjb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS12cHUiOwo+PiAtICAg
+ICAgICByZWcgPSA8MHgwIDB4ZmY2NTAwMDAgMHgwIDB4ODAwPjsKPj4gLSAgICAgICAgaW50ZXJy
+dXB0cyA9IDxHSUNfU1BJIDExNCBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+LAo+PiAtICAgICAgICAg
+ICAgICAgICA8R0lDX1NQSSAxMTMgSVJRX1RZUEVfTEVWRUxfSElHSCAwPjsKPj4gLSAgICAgICAg
+aW50ZXJydXB0LW5hbWVzID0gInZlcHUiLCAidmRwdSI7Cj4+ICsgICAgdnB1X3NlcnZpY2U6IHZw
+dS1zcnYgewo+PiArICAgICAgICBjb21wYXRpYmxlID0gInJvY2tjaGlwLG1wcC1zZXJ2aWNlIjsK
+Pj4gKyAgICAgICAgc3RhdHVzID0gImRpc2FibGVkIjsKPj4gKyAgICB9Owo+PiArCj4+ICsgICAg
+dmVwdTogdnB1LWVuY29kZXJAZmY2NTAwMDAgewo+PiArICAgICAgICBjb21wYXRpYmxlID0gInJv
+Y2tjaGlwLHZwdS1lbmNvZGVyLXYyIjsKPj4gKyAgICAgICAgcmVnID0gPDB4MCAweGZmNjUwMDAw
+IDB4MCAweDQwMD47Cj4+ICsgICAgICAgIGludGVycnVwdHMgPSA8R0lDX1NQSSAxMTQgSVJRX1RZ
+UEVfTEVWRUxfSElHSCAwPjsKPj4gKyAgICAgICAgaW50ZXJydXB0LW5hbWVzID0gImlycV9lbmMi
+Owo+PiAgICAgICBjbG9ja3MgPSA8JmNydSBBQ0xLX1ZDT0RFQz4sIDwmY3J1IEhDTEtfVkNPREVD
+PjsKPj4gLSAgICAgICAgY2xvY2stbmFtZXMgPSAiYWNsayIsICJoY2xrIjsKPj4gKyAgICAgICAg
+Y2xvY2stbmFtZXMgPSAiYWNsa192Y29kZWMiLCAiaGNsa192Y29kZWMiOwo+PiArICAgICAgICBy
+ZXNldHMgPSA8JmNydSBTUlNUX0hfVkNPREVDPiwgPCZjcnUgU1JTVF9BX1ZDT0RFQz47Cj4+ICsg
+ICAgICAgIHJlc2V0LW5hbWVzID0gInZpZGVvX2giLCAidmlkZW9fYSI7Cj4+ICAgICAgIGlvbW11
+cyA9IDwmdnB1X21tdT47Cj4+ICAgICAgIHBvd2VyLWRvbWFpbnMgPSA8JnBvd2VyIFJLMzM5OV9Q
+RF9WQ09ERUM+Owo+PiArICAgICAgICByb2NrY2hpcCxzcnYgPSA8JnZwdV9zZXJ2aWNlPjsKPj4g
+KyAgICAgICAgc3RhdHVzID0gImRpc2FibGVkIjsKPj4gKyAgICB9Owo+PiArCj4+ICsgICAgdmRw
+dTogdnB1LWRlY29kZXJAZmY2NTA0MDAgewo+PiArICAgICAgICBjb21wYXRpYmxlID0gInJvY2tj
+aGlwLHZwdS1kZWNvZGVyLXYyIjsKPj4gKyAgICAgICAgcmVnID0gPDB4MCAweGZmNjUwNDAwIDB4
+MCAweDQwMD47Cj4+ICsgICAgICAgIGludGVycnVwdHMgPSA8R0lDX1NQSSAxMTMgSVJRX1RZUEVf
+TEVWRUxfSElHSCAwPjsKPj4gKyAgICAgICAgaW50ZXJydXB0LW5hbWVzID0gImlycV9kZWMiOwo+
+PiArICAgICAgICBpb21tdXMgPSA8JnZwdV9tbXU+Owo+PiArICAgICAgICBjbG9ja3MgPSA8JmNy
+dSBBQ0xLX1ZDT0RFQz4sIDwmY3J1IEhDTEtfVkNPREVDPjsKPj4gKyAgICAgICAgY2xvY2stbmFt
+ZXMgPSAiYWNsa192Y29kZWMiLCAiaGNsa192Y29kZWMiOwo+PiArICAgICAgICByZXNldHMgPSA8
+JmNydSBTUlNUX0hfVkNPREVDPiwgPCZjcnUgU1JTVF9BX1ZDT0RFQz47Cj4+ICsgICAgICAgIHJl
+c2V0LW5hbWVzID0gInZpZGVvX2giLCAidmlkZW9fYSI7Cj4+ICsgICAgICAgIHBvd2VyLWRvbWFp
+bnMgPSA8JnBvd2VyIFJLMzM5OV9QRF9WQ09ERUM+Owo+PiArICAgICAgICByb2NrY2hpcCxzcnYg
+PSA8JnZwdV9zZXJ2aWNlPjsKPj4gKyAgICAgICAgc3RhdHVzID0gImRpc2FibGVkIjsKPj4gICB9
+Owo+PiAKPj4gICB2cHVfbW11OiBpb21tdUBmZjY1MDgwMCB7Cj4+IEBAIC0xMjYxLDExICsxMjg0
+LDQyIEBACj4+ICAgICAgIGludGVycnVwdC1uYW1lcyA9ICJ2cHVfbW11IjsKPj4gICAgICAgY2xv
+Y2tzID0gPCZjcnUgQUNMS19WQ09ERUM+LCA8JmNydSBIQ0xLX1ZDT0RFQz47Cj4+ICAgICAgIGNs
+b2NrLW5hbWVzID0gImFjbGsiLCAiaWZhY2UiOwo+PiArICAgICAgICBhc3NpZ25lZC1jbG9ja3Mg
+PSA8JmNydSBBQ0xLX1ZDT0RFQ19QUkU+Owo+PiArICAgICAgICBhc3NpZ25lZC1jbG9jay1wYXJl
+bnRzID0gPCZjcnUgUExMX0dQTEw+Owo+PiAgICAgICAjaW9tbXUtY2VsbHMgPSA8MD47Cj4+ICAg
+ICAgIHBvd2VyLWRvbWFpbnMgPSA8JnBvd2VyIFJLMzM5OV9QRF9WQ09ERUM+Owo+PiAgICAgICBz
+dGF0dXMgPSAiZGlzYWJsZWQiOwo+PiAgIH07Cj4+IAo+PiArICAgIHJrdmRlY19zcnY6IHJrdmRl
+Yy1zcnYgewo+PiArICAgICAgICBjb21wYXRpYmxlID0gInJvY2tjaGlwLG1wcC1zZXJ2aWNlIjsK
+Pj4gKyAgICAgICAgc3RhdHVzID0gImRpc2FibGVkIjsKPj4gKyAgICB9Owo+PiArCj4+ICsgICAg
+cmt2ZGVjOiB2aWRlby1kZWNvZGVyQGZmNjYwMDAwIHsKPj4gKyAgICAgICAgY29tcGF0aWJsZSA9
+ICJyb2NrY2hpcCx2aWRlby1kZWNvZGVyLXYxIjsKPj4gKyAgICAgICAgcmVnID0gPDB4MCAweGZm
+NjYwMDAwIDB4MCAweDQwMD47Cj4+ICsgICAgICAgIGludGVycnVwdHMgPSA8R0lDX1NQSSAxMTYg
+SVJRX1RZUEVfTEVWRUxfSElHSCAwPjsKPj4gKyAgICAgICAgaW50ZXJydXB0LW5hbWVzID0gImly
+cV9kZWMiOwo+PiArICAgICAgICBjbG9ja3MgPSA8JmNydSBBQ0xLX1ZEVT4sIDwmY3J1IEhDTEtf
+VkRVPiwKPj4gKyAgICAgICAgICAgICA8JmNydSBTQ0xLX1ZEVV9DQT4sIDwmY3J1IFNDTEtfVkRV
+X0NPUkU+Owo+PiArICAgICAgICBjbG9jay1uYW1lcyA9ICJhY2xrX3Zjb2RlYyIsICJoY2xrX3Zj
+b2RlYyIsCj4+ICsgICAgICAgICAgICAgICAgICAiY2xrX2NhYmFjIiwgImNsa19jb3JlIjsKPj4g
+KyAgICAgICAgYXNzaWduZWQtY2xvY2tzID0gPCZjcnUgQUNMS19WRFVfUFJFPiwgPCZjcnUgU0NM
+S19WRFVfQ0E+LAo+PiArICAgICAgICAgICAgICAgICAgPCZjcnUgU0NMS19WRFVfQ09SRT47Cj4+
+ICsgICAgICAgIGFzc2lnbmVkLWNsb2NrLXBhcmVudHMgPSA8JmNydSBQTExfTlBMTD4sIDwmY3J1
+IFBMTF9OUExMPiwKPj4gKyAgICAgICAgICAgICAgICAgICAgIDwmY3J1IFBMTF9OUExMPjsKPj4g
+KyAgICAgICAgcmVzZXRzID0gPCZjcnUgU1JTVF9IX1ZEVT4sIDwmY3J1IFNSU1RfQV9WRFU+LAo+
+PiArICAgICAgICAgICAgIDwmY3J1IFNSU1RfVkRVX0NPUkU+LCA8JmNydSBTUlNUX1ZEVV9DQT4s
+Cj4+ICsgICAgICAgICAgICAgPCZjcnUgU1JTVF9BX1ZEVV9OT0M+LCA8JmNydSBTUlNUX0hfVkRV
+X05PQz47Cj4+ICsgICAgICAgIHJlc2V0LW5hbWVzID0gInZpZGVvX2giLCAidmlkZW9fYSIsICJ2
+aWRlb19jb3JlIiwgInZpZGVvX2NhYmFjIiwKPj4gKyAgICAgICAgICAgICAgICAgICJuaXVfYSIs
+ICJuaXVfaCI7Cj4+ICsgICAgICAgIHBvd2VyLWRvbWFpbnMgPSA8JnBvd2VyIFJLMzM5OV9QRF9W
+RFU+Owo+PiArICAgICAgICByb2NrY2hpcCxzcnYgPSA8JnJrdmRlY19zcnY+Owo+PiArICAgICAg
+ICBpb21tdXMgPSA8JnZkZWNfbW11PjsKPj4gKyAgICAgICAgc3RhdHVzID0gImRpc2FibGVkIjsK
+Pj4gKyAgICB9Owo+PiArCj4+ICAgdmRlY19tbXU6IGlvbW11QGZmNjYwNDgwIHsKPj4gICAgICAg
+Y29tcGF0aWJsZSA9ICJyb2NrY2hpcCxpb21tdSI7Cj4+ICAgICAgIHJlZyA9IDwweDAgMHhmZjY2
+MDQ4MCAweDAgMHg0MD4sIDwweDAgMHhmZjY2MDRjMCAweDAgMHg0MD47Cj4gCj4gCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5l
+bCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
