@@ -1,98 +1,49 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2] drm/rockchip: Fix YUV buffers color rendering
-Date: Mon, 07 Jan 2019 14:26:03 +0100
-Message-ID: <3215325.nePTtMV2FM@phil>
-References: <20180215053300.70482-2-dcastagna@chromium.org>
- <20181214162920.20361-1-ezequiel@collabora.com>
+Subject: Re: [PATCH 00/15] PCI: endpoint: Cleanup EPC features
+Date: Mon, 07 Jan 2019 15:35:54 +0100
+Message-ID: <1936135.agpnLP3rXd@phil>
+References: <20190107064148.10152-1-kishon@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20181214162920.20361-1-ezequiel@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Daniele Castagna <dcastagna@chromium.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, kernel@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190107064148.10152-1-kishon@ti.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Alan Douglas <adouglas@cadence.com>, Shawn Lin <shawn.lin@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, Cyrille Pitchen <cyrille.pitchen@free-electrons.com>, Jia-Ju Bai <baijiaju1990@gmail.com>, linux-omap@vger.kernel.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpzb3JyeSwgb25seSBub3cgZ290IHRvIHRlc3QgdGhpcyBvbiBhY3R1YWwgaGFyZHdhcmUs
-CgpBbSBGcmVpdGFnLCAxNC4gRGV6ZW1iZXIgMjAxOCwgMTc6Mjk6MjAgQ0VUIHNjaHJpZWIgRXpl
-cXVpZWwgR2FyY2lhOgo+IEZyb206IERhbmllbGUgQ2FzdGFnbmEgPGRjYXN0YWduYUBjaHJvbWl1
-bS5vcmc+Cj4gCj4gQ3VycmVudGx5LCBZVVYgaGFyZHdhcmUgb3ZlcmxheXMgYXJlIGNvbnZlcnRl
-ZCB0byBSR0IgdXNpbmcKPiBhIGNvbG9yIHNwYWNlIGNvbnZlcnNpb24gZGlmZmVyZW50IHRoYW4g
-QlQuNjAxLgo+IAo+IFRoZSByZXN1bHQgaXMgdGhhdCBjb2xvcnMgb2YgZS5nLiBOVjEyIGJ1ZmZl
-cnMgZG9uJ3QgbWF0Y2gKPiBjb2xvcnMgb2YgWVVWIGhhcmR3YXJlIG92ZXJsYXlzLgo+IAo+IElu
-IG9yZGVyIHRvIGZpeCB0aGlzLCBlbmFibGUgWVVWMllVViBhbmQgc2V0IGFwcHJvcHJpYXRlIGNv
-ZWZmaWNpZW50cwo+IGZvciBmb3JtYXRzIHN1Y2ggYXMgTlYxMiB0byBiZSBkaXNwbGF5ZWQgY29y
-cmVjdGx5Lgo+IAo+IFRoaXMgY29tbWl0IHdhcyB0ZXN0ZWQgdXNpbmcgbW9kZXRlc3QsIGdzdHJl
-YW1lciBhbmQgY2hyb21lb3MgKGhhcmR3YXJlCj4gYWNjZWxlcmF0ZWQgdmlkZW8gcGxheWJhY2sp
-LiBCZWZvcmUgdGhlIGNvbW1pdCwgdGVzdHMgcmVuZGVyaW5nCj4gd2l0aCBOVjEyIGZvcm1hdCBy
-ZXN1bHRlZCBpbiBjb2xvcnMgbm90IGRpc3BsYXllZCBjb3JyZWN0bHkuCj4gCj4gVGVzdCBleGFt
-cGxlcyAoUkszMzk5IEZpY3VzIGJvYXJkIGNvbm5lY3RlZCB0byBIRE1JIG1vbml0b3IpOgo+IAo+
-ICAgJCBtb2RldGVzdCAzOUAzMjoxOTIweDEwODBATlYxMgo+ICAgJCBnc3QtbGF1bmNoLTEuMCB2
-aWRlb3Rlc3RyYyAhIHZpZGVvL3gtcmF3LGZvcm1hdD1OVjEyICEga21zc2luawo+IAo+IFNpZ25l
-ZC1vZmYtYnk6IERhbmllbGUgQ2FzdGFnbmEgPGRjYXN0YWduYUBjaHJvbWl1bS5vcmc+Cj4gW2V6
-ZXF1aWVsOiByZWJhc2Ugb24gbGludXgtbmV4dCBhbmQgbWFzc2FnZSBjb21taXQgbG9nXQo+IFNp
-Z25lZC1vZmYtYnk6IEV6ZXF1aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4KPiAt
-LS0KPiB2MjoKPiAgICogQWRkcmVzc2VkIGZlZWRiYWNrIGZyb20gU2VhbiBQYXVsCj4gICAqIFJl
-YmFzZWQgb24gbGludXgtbmV4dAo+IAo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX3ZvcC5jIHwgNDEgKysrKysrKysrKysrKysrKysrKystCj4gIGRyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmggfCAxMyArKysrKysrCj4gIGRyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMgfCAzNiArKysrKysrKysrKysrKysrKysK
-PiAgMyBmaWxlcyBjaGFuZ2VkLCA4OSBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4gCj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMg
-Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggZmI3
-MGZiNDg2ZmJmLi43OGM3ZjYzYTYwYzAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtNTIsNiArNTIsMTggQEAKPiAgCQl2b3BfcmVnX3Nl
-dCh2b3AsICZ3aW4tPnBoeS0+c2NsLT5leHQtPm5hbWUsIFwKPiAgCQkJICAgIHdpbi0+YmFzZSwg
-fjAsIHYsICNuYW1lKQo+ICAKPiArI2RlZmluZSBWT1BfV0lOX1lVVjJZVVZfU0VUKHgsIHdpbl95
-dXYyeXV2LCBuYW1lLCB2KSBcCj4gKwlkbyB7IFwKPiArCQlpZiAod2luX3l1djJ5dXYtPm5hbWUu
-bWFzaykgXAo+ICsJCQl2b3BfcmVnX3NldCh2b3AsICZ3aW5feXV2Mnl1di0+bmFtZSwgMCwgfjAs
-IHYsICNuYW1lKTsgXAo+ICsJfSB3aGlsZSAoMCkKPiArCj4gKyNkZWZpbmUgVk9QX1dJTl9ZVVYy
-WVVWX0NPRUZGSUNJRU5UX1NFVCh4LCB3aW5feXV2Mnl1diwgbmFtZSwgdikgXAo+ICsJZG8geyBc
-Cj4gKwkJaWYgKHdpbl95dXYyeXV2LT5waHktPm5hbWUubWFzaykgXAo+ICsJCQl2b3BfcmVnX3Nl
-dCh2b3AsICZ3aW5feXV2Mnl1di0+cGh5LT5uYW1lLCB3aW5feXV2Mnl1di0+YmFzZSwgfjAsIHYs
-ICNuYW1lKTsgXAo+ICsJfSB3aGlsZSAoMCkKPiArCgpXaGlsZSB0aGlzIHNlZW1zIHRvIHdvcmsg
-b24gcmszMzk5LCBpdCBoYW5ncyBib3RoIG15IHJrMzMyOCAocm9jazY0KQphbmQgcmszMjg4IChn
-b29nbGUtcGlua3kpIGR1cmluZyByb2NrY2hpcC1kcm0gcHJvYmUuCgpNYWtpbmcgdGhpcyBzb21l
-dGhpbmcgbGlrZQoKCWlmICh3aW5feXV2Mnl1diAmJiB3aW5feXV2Mnl1di0+cGh5LT5uYW1lLm1h
-c2spIFwKCmFrYSB0ZXN0aW5nIGZvciBleGlzdGVuY2Ugb2Ygd2luX3l1djJ5dXYgZmlyc3QsIG1h
-a2VzIHRoZW0gYm9vdCBhZ2FpbiwKc28gSSBndWVzcyBJIHJhbiBpbnRvIGEgKGZvciB3aGF0ZXZl
-ciByZWFzb24pIHNpbGVudCBudWxsLXB0ci1kZXJlZmVyZW5jZS4KCgo+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jIGIvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYwo+IGluZGV4IDA4ZmM0MGFmNTJjOC4uZmU3
-NTJkZjRlMDM4IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF92b3BfcmVnLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9w
-X3JlZy5jCj4gQEAgLTYzNyw2ICs2MzcsMzQgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3Bfb3V0
-cHV0IHJrMzM5OV9vdXRwdXQgPSB7Cj4gIAkubWlwaV9kdWFsX2NoYW5uZWxfZW4gPSBWT1BfUkVH
-KFJLMzI4OF9TWVNfQ1RSTCwgMHgxLCAzKSwKPiAgfTsKPiAgCj4gK3N0YXRpYyBjb25zdCBzdHJ1
-Y3Qgdm9wX3l1djJ5dXZfcGh5IHJrMzM5OV95dXYyeXV2X3dpbjAxX2RhdGEgPSB7Cj4gKwkueTJy
-X2NvZWZmaWNpZW50cyA9IHsKPiArCQlWT1BfUkVHKFJLMzM5OV9XSU4wX1lVVjJZVVZfWTJSICsg
-MCwgMHhmZmZmLCAwKSwKPiArCQlWT1BfUkVHKFJLMzM5OV9XSU4wX1lVVjJZVVZfWTJSICsgMCwg
-MHhmZmZmLCAxNiksCj4gKwkJVk9QX1JFRyhSSzMzOTlfV0lOMF9ZVVYyWVVWX1kyUiArIDQsIDB4
-ZmZmZiwgMCksCj4gKwkJVk9QX1JFRyhSSzMzOTlfV0lOMF9ZVVYyWVVWX1kyUiArIDQsIDB4ZmZm
-ZiwgMTYpLAo+ICsJCVZPUF9SRUcoUkszMzk5X1dJTjBfWVVWMllVVl9ZMlIgKyA4LCAweGZmZmYs
-IDApLAo+ICsJCVZPUF9SRUcoUkszMzk5X1dJTjBfWVVWMllVVl9ZMlIgKyA4LCAweGZmZmYsIDE2
-KSwKPiArCQlWT1BfUkVHKFJLMzM5OV9XSU4wX1lVVjJZVVZfWTJSICsgMTIsIDB4ZmZmZiwgMCks
-Cj4gKwkJVk9QX1JFRyhSSzMzOTlfV0lOMF9ZVVYyWVVWX1kyUiArIDEyLCAweGZmZmYsIDE2KSwK
-PiArCQlWT1BfUkVHKFJLMzM5OV9XSU4wX1lVVjJZVVZfWTJSICsgMTYsIDB4ZmZmZiwgMCksCj4g
-KwkJVk9QX1JFRyhSSzMzOTlfV0lOMF9ZVVYyWVVWX1kyUiArIDIwLCAweGZmZmZmZmZmLCAwKSwK
-PiArCQlWT1BfUkVHKFJLMzM5OV9XSU4wX1lVVjJZVVZfWTJSICsgMjQsIDB4ZmZmZmZmZmYsIDAp
-LAo+ICsJCVZPUF9SRUcoUkszMzk5X1dJTjBfWVVWMllVVl9ZMlIgKyAyOCwgMHhmZmZmZmZmZiwg
-MCksCj4gKwl9LAo+ICt9Owo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfeXV2Mnl1dl9w
-aHkgcmszMzk5X3l1djJ5dXZfd2luMjNfZGF0YSA9IHsgfTsKCmxvb2tpbmcgYXQgdGhlIHJrMzM5
-OSBUUk0gaXQgc2VlbXMgdGhhdCB3aW4yKzMgYWxzbyBoYXZlIHl1djJyZ2IKY29lZmZpY2llbnQg
-cmVnaXN0ZXJzLiBJIGRpZG4ndCBjaGVjayBpbiBkZXB0aCBidXQgYXJlIHRoZXkgc28gZGlmZmVy
-ZW50CnRoYXQgdGhleSBjYW5ub3QgYmUgc3VwcG9ydGVkPwoKQWthIHdoYXQgaXMgdGhlIGRpZmZl
-cmVuY2UgYmV0d2VlbiB3aW4wLzEgYW5kIHdpbjIvMyA/CgoKSGVpa28KCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Am Montag, 7. Januar 2019, 07:41:33 CET schrieb Kishon Vijay Abraham I:
+> Hi Lorenzo,
+> 
+> The Endpoint controller driver uses features member in 'struct pci_epc'
+> to advertise the list of supported features to the endpoint function
+> driver.
+> 
+> There are a few shortcomings with this approach.
+>   *) Certain endpoint controllers support fixed size BAR (e.g. TI's
+>      AM654 uses Designware configuration with fixed size BAR). The
+>      size of each BARs cannot be passed to the endpoint function
+>      driver.
+>   *) Too many macros for handling EPC features.
+>      (EPC_FEATURE_NO_LINKUP_NOTIFIER, EPC_FEATURE_BAR_MASK,
+>       EPC_FEATURE_MSIX_AVAILABLE, EPC_FEATURE_SET_BAR,
+>       EPC_FEATURE_GET_BAR)
+>   *) Endpoint controllers are directly modifying struct pci_epc
+>      members. (I have plans to move struct pci_epc to
+>      drivers/pci/endpoint so that pci_epc members are referenced
+>      only by endpoint core).
+> 
+> To overcome the above shortcomings, introduced pci_epc_get_features()
+> API, pci_epc_features structure and a ->get_features() callback.
+> 
+> Also added a patch to set BAR flags in pci_epf_alloc_space and
+> remove it from pci-epf-test function driver.
+> 
+> Tested on TI's DRA7xx platform.
+
+While I don't have that much PCI experience and hence cannot judge
+this cleanup as a whole, I can at least say, that my Rockchip rk3399
+still does find its PCIE-connected wifi card, so this series on rk3399
+
+Tested-by: Heiko Stuebner <heiko@sntech.de>
