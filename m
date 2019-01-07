@@ -1,18 +1,11 @@
-From: Randy Li <randy.li@rock-chips.com>
-Subject: Re: [linux-sunxi] [PATCH v2 1/2] media: v4l: Add definitions for the
- HEVC slice format and controls
-Date: Mon, 7 Jan 2019 11:49:29 +0800
-Message-ID: <776e63c9-d4a5-342a-e0f7-200ef144ffc4@rock-chips.com>
-References: <20181123130209.11696-1-paul.kocialkowski@bootlin.com>
- <20181123130209.11696-2-paul.kocialkowski@bootlin.com>
- <5515174.7lFZcYkk85@jernej-laptop>
- <ffe9c81db34b599f675ca5bbf02de360bf0a1608.camel@bootlin.com>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Subject: [PATCH 00/15] PCI: endpoint: Cleanup EPC features
+Date: Mon, 7 Jan 2019 12:11:33 +0530
+Message-ID: <20190107064148.10152-1-kishon@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <ffe9c81db34b599f675ca5bbf02de360bf0a1608.camel@bootlin.com>
-Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -22,77 +15,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Cc: devel@driverdev.osuosl.org, Alexandre Courbot <acourbot@chromium.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Randy Li <ayaka@soulik.info>, linux-kernel@vger.kernel.org, =?UTF-8?Q?Jernej_=c5=a0krabec?= <jernej.skrabec@gmail.com>, Tomasz Figa <tfiga@chromium.org>, Hans Verkuil <hverkuil@xs4all.nl>, linux-rockchip@lists.infradead.org, linux-sunxi@googlegroups.com, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Alan Douglas <adouglas@cadence.com>, Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, linux-kernel@vger.kernel.org, kishon@ti.com, linux-rockchip@lists.infradead.org, Jia-Ju Bai <baijiaju1990@gmail.com>, Cyrille Pitchen <cyrille.pitchen@free-electrons.com>, linux-pci@vger.kernel.org, linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDEyLzEyLzE4IDg6NTEgUE0sIFBhdWwgS29jaWFsa293c2tpIHdyb3RlOgo+IEhpLAo+Cj4g
-T24gV2VkLCAyMDE4LTEyLTA1IGF0IDIxOjU5ICswMTAwLCBKZXJuZWogxaBrcmFiZWMgd3JvdGU6
-Cj4KPj4+ICsKPj4+ICsjZGVmaW5lIFY0TDJfSEVWQ19EUEJfRU5UUllfUlBTX1NUX0NVUlJfQkVG
-T1JFCTB4MDEKPj4+ICsjZGVmaW5lIFY0TDJfSEVWQ19EUEJfRU5UUllfUlBTX1NUX0NVUlJfQUZU
-RVIJMHgwMgo+Pj4gKyNkZWZpbmUgVjRMMl9IRVZDX0RQQl9FTlRSWV9SUFNfTFRfQ1VSUgkJMHgw
-Mwo+Pj4gKwo+Pj4gKyNkZWZpbmUgVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVgJCTE2Cj4+
-PiArCj4+PiArc3RydWN0IHY0bDJfaGV2Y19kcGJfZW50cnkgewo+Pj4gKwlfX3UzMglidWZmZXJf
-dGFnOwo+Pj4gKwlfX3U4CXJwczsKPj4+ICsJX191OAlmaWVsZF9waWM7Cj4+PiArCV9fdTE2CXBp
-Y19vcmRlcl9jbnRbMl07Cj4+PiArfTsKClBsZWFzZSBhZGQgYSBwcm9wZXJ0eSBmb3IgcmVmZXJl
-bmNlIGluZGV4LCBpZiB0aGF0IHJwcyBpcyBub3QgdXNlZCBmb3IgCnRoaXMsIHNvbWUgZGV2aWNl
-IHdvdWxkIHJlcXVlc3QgdGhhdChub3QgdGhlIHJvY2tjaGlwIG9uZSkuIEFuZCAKUm9ja2NoaXAn
-cyBWRFBVMSBhbmQgVkRQVTIgZm9yIEFWQyB3b3VsZCByZXF1ZXN0IGEgc2ltaWxhciBwcm9wZXJ0
-eS4KCkFkZGluZyBhbm90aGVyIGJ1ZmZlcl90YWcgZm9yIHJlZmVycmluZyB0aGUgbWVtb3J5IG9m
-IHRoZSBtb3Rpb24gdmVjdG9ycyAKZm9yIGVhY2ggZnJhbWVzLiBPciBhIGJldHRlciBtZXRob2Qg
-aXMgYWRkIGEgbWV0YSBkYXRhIHRvIGVjaG8gcGljdHVyZSAKYnVmZmVyLMKgIHNpbmNlIHRoZSBw
-aWN0dXJlIG91dHB1dCBpcyBqdXN0IHRoZSBzYW1lIGFzIHRoZSBvcmlnaW5hbCwgCmRpc3BsYXkg
-d29uJ3QgY2FyZSB3aGV0aGVyIHRoZSBtb3Rpb24gdmVjdG9ycyBhcmUgd3JpdHRlbiB0aGUgYnV0
-dG9uIG9mIApwaWN0dXJlIG9yIHNvbWV3aGVyZSBlbHNlLgoKCj4+PiArCj4+PiArc3RydWN0IHY0
-bDJfaGV2Y19wcmVkX3dlaWdodF90YWJsZSB7Cj4+PiArCV9fdTgJbHVtYV9sb2cyX3dlaWdodF9k
-ZW5vbTsKPj4+ICsJX19zOAlkZWx0YV9jaHJvbWFfbG9nMl93ZWlnaHRfZGVub207Cj4+PiArCj4+
-PiArCV9fczgJZGVsdGFfbHVtYV93ZWlnaHRfbDBbVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9N
-QVhdOwo+Pj4gKwlfX3M4CWx1bWFfb2Zmc2V0X2wwW1Y0TDJfSEVWQ19EUEJfRU5UUklFU19OVU1f
-TUFYXTsKPj4+ICsJX19zOAlkZWx0YV9jaHJvbWFfd2VpZ2h0X2wwW1Y0TDJfSEVWQ19EUEJfRU5U
-UklFU19OVU1fTUFYXVsyXTsKPj4+ICsJX19zOAljaHJvbWFfb2Zmc2V0X2wwW1Y0TDJfSEVWQ19E
-UEJfRU5UUklFU19OVU1fTUFYXVsyXTsKPj4+ICsKPj4+ICsJX19zOAlkZWx0YV9sdW1hX3dlaWdo
-dF9sMVtWNEwyX0hFVkNfRFBCX0VOVFJJRVNfTlVNX01BWF07Cj4+PiArCV9fczgJbHVtYV9vZmZz
-ZXRfbDFbVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVhdOwo+Pj4gKwlfX3M4CWRlbHRhX2No
-cm9tYV93ZWlnaHRfbDFbVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVhdWzJdOwo+Pj4gKwlf
-X3M4CWNocm9tYV9vZmZzZXRfbDFbVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVhdWzJdOwo+
-Pj4gK307Cj4+PiArClRob3NlIHByb3BlcnRpZXMgSSB0aGluayBhcmUgbm90IG5lY2Vzc2FyeSBh
-cmUgYXBwbHlpbmcgZm9yIHRoZSAKUm9ja2NoaXAncyBkZXZpY2UsIG1heSBub3Qgd29yayBmb3Ig
-dGhlIG90aGVycy4KPj4+ICtzdHJ1Y3QgdjRsMl9jdHJsX2hldmNfc2xpY2VfcGFyYW1zIHsKPj4+
-ICsJX191MzIJYml0X3NpemU7Cj4+PiArCV9fdTMyCWRhdGFfYml0X29mZnNldDsKPj4+ICsKPj4+
-ICsJLyogSVNPL0lFQyAyMzAwOC0yLCBJVFUtVCBSZWMuIEguMjY1OiBOQUwgdW5pdCBoZWFkZXIg
-Ki8KPj4+ICsJX191OAluYWxfdW5pdF90eXBlOwo+Pj4gKwlfX3U4CW51aF90ZW1wb3JhbF9pZF9w
-bHVzMTsKPj4+ICsKPj4+ICsJLyogSVNPL0lFQyAyMzAwOC0yLCBJVFUtVCBSZWMuIEguMjY1OiBH
-ZW5lcmFsIHNsaWNlIHNlZ21lbnQgaGVhZGVyICovCj4+PiArCV9fdTgJc2xpY2VfdHlwZTsKPj4+
-ICsJX191OAljb2xvdXJfcGxhbmVfaWQ7Ci0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPj4+ICsJX191MTYJ
-c2xpY2VfcGljX29yZGVyX2NudDsKPj4+ICsJX191OAlzbGljZV9zYW9fbHVtYV9mbGFnOwo+Pj4g
-KwlfX3U4CXNsaWNlX3Nhb19jaHJvbWFfZmxhZzsKPj4+ICsJX191OAlzbGljZV90ZW1wb3JhbF9t
-dnBfZW5hYmxlZF9mbGFnOwo+Pj4gKwlfX3U4CW51bV9yZWZfaWR4X2wwX2FjdGl2ZV9taW51czE7
-Cj4+PiArCV9fdTgJbnVtX3JlZl9pZHhfbDFfYWN0aXZlX21pbnVzMTsKUm9ja2NoaXAncyBkZWNv
-ZGVyIGRvZXNuJ3QgdXNlIHRoaXMgcGFydC4KPj4+ICsJX191OAltdmRfbDFfemVyb19mbGFnOwo+
-Pj4gKwlfX3U4CWNhYmFjX2luaXRfZmxhZzsKPj4+ICsJX191OAljb2xsb2NhdGVkX2Zyb21fbDBf
-ZmxhZzsKPj4+ICsJX191OAljb2xsb2NhdGVkX3JlZl9pZHg7Cj4+PiArCV9fdTgJZml2ZV9taW51
-c19tYXhfbnVtX21lcmdlX2NhbmQ7Cj4+PiArCV9fdTgJdXNlX2ludGVnZXJfbXZfZmxhZzsKPj4+
-ICsJX19zOAlzbGljZV9xcF9kZWx0YTsKPj4+ICsJX19zOAlzbGljZV9jYl9xcF9vZmZzZXQ7Cj4+
-PiArCV9fczgJc2xpY2VfY3JfcXBfb2Zmc2V0Owo+Pj4gKwlfX3M4CXNsaWNlX2FjdF95X3FwX29m
-ZnNldDsKPj4+ICsJX19zOAlzbGljZV9hY3RfY2JfcXBfb2Zmc2V0Owo+Pj4gKwlfX3M4CXNsaWNl
-X2FjdF9jcl9xcF9vZmZzZXQ7Cj4+PiArCV9fdTgJc2xpY2VfZGVibG9ja2luZ19maWx0ZXJfZGlz
-YWJsZWRfZmxhZzsKPj4+ICsJX19zOAlzbGljZV9iZXRhX29mZnNldF9kaXYyOwo+Pj4gKwlfX3M4
-CXNsaWNlX3RjX29mZnNldF9kaXYyOwo+Pj4gKwlfX3U4CXNsaWNlX2xvb3BfZmlsdGVyX2Fjcm9z
-c19zbGljZXNfZW5hYmxlZF9mbGFnOwo+Pj4gKwo+Pj4gKwkvKiBJU08vSUVDIDIzMDA4LTIsIElU
-VS1UIFJlYy4gSC4yNjU6IFBpY3R1cmUgdGltaW5nIFNFSSBtZXNzYWdlICovCj4+PiArCV9fdTgJ
-cGljX3N0cnVjdDsKSSB0aGluayB0aGUgZGVjb2RlciBkb2Vzbid0IGNhcmUgYWJvdXQgdGhpcywg
-aXQgaXMgdXNlZCBmb3IgZGlzcGxheS4KPj4+ICsKPj4+ICsJLyogSVNPL0lFQyAyMzAwOC0yLCBJ
-VFUtVCBSZWMuIEguMjY1OiBHZW5lcmFsIHNsaWNlIHNlZ21lbnQgaGVhZGVyICovCj4+PiArCXN0
-cnVjdCB2NGwyX2hldmNfZHBiX2VudHJ5IGRwYltWNEwyX0hFVkNfRFBCX0VOVFJJRVNfTlVNX01B
-WF07Cj4+PiArCV9fdTgJbnVtX2FjdGl2ZV9kcGJfZW50cmllczsKPj4+ICsJX191OAlyZWZfaWR4
-X2wwW1Y0TDJfSEVWQ19EUEJfRU5UUklFU19OVU1fTUFYXTsKPj4+ICsJX191OAlyZWZfaWR4X2wx
-W1Y0TDJfSEVWQ19EUEJfRU5UUklFU19OVU1fTUFYXTsKPj4+ICsKPj4+ICsJX191OAludW1fcnBz
-X3BvY19zdF9jdXJyX2JlZm9yZTsKPj4+ICsJX191OAludW1fcnBzX3BvY19zdF9jdXJyX2FmdGVy
-Owo+Pj4gKwlfX3U4CW51bV9ycHNfcG9jX2x0X2N1cnI7Cj4+PiArCj4+PiArCS8qIElTTy9JRUMg
-MjMwMDgtMiwgSVRVLVQgUmVjLiBILjI2NTogV2VpZ2h0ZWQgcHJlZGljdGlvbiBwYXJhbWV0ZXIg
-Ki8KPj4+ICsJc3RydWN0IHY0bDJfaGV2Y19wcmVkX3dlaWdodF90YWJsZSBwcmVkX3dlaWdodF90
-YWJsZTsKPj4+ICt9Owo+Pj4gKwo+Pj4gICAjZW5kaWYKPj4KCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlz
-dApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
+Hi Lorenzo,
+
+The Endpoint controller driver uses features member in 'struct pci_epc'
+to advertise the list of supported features to the endpoint function
+driver.
+
+There are a few shortcomings with this approach.
+  *) Certain endpoint controllers support fixed size BAR (e.g. TI's
+     AM654 uses Designware configuration with fixed size BAR). The
+     size of each BARs cannot be passed to the endpoint function
+     driver.
+  *) Too many macros for handling EPC features.
+     (EPC_FEATURE_NO_LINKUP_NOTIFIER, EPC_FEATURE_BAR_MASK,
+      EPC_FEATURE_MSIX_AVAILABLE, EPC_FEATURE_SET_BAR,
+      EPC_FEATURE_GET_BAR)
+  *) Endpoint controllers are directly modifying struct pci_epc
+     members. (I have plans to move struct pci_epc to
+     drivers/pci/endpoint so that pci_epc members are referenced
+     only by endpoint core).
+
+To overcome the above shortcomings, introduced pci_epc_get_features()
+API, pci_epc_features structure and a ->get_features() callback.
+
+Also added a patch to set BAR flags in pci_epf_alloc_space and
+remove it from pci-epf-test function driver.
+
+Tested on TI's DRA7xx platform.
+
+Thanks
+Kishon
+
+Kishon Vijay Abraham I (15):
+  PCI: endpoint: Add new pci_epc_ops to get EPC features
+  PCI: dwc: Add ->get_features() callback function in dw_pcie_ep_ops
+  PCI: designware-plat: Populate ->get_features() dw_pcie_ep_ops
+  PCI: pci-dra7xx: Populate ->get_features() dw_pcie_ep_ops
+  PCI: rockchip: Populate ->get_features() dw_pcie_ep_ops
+  PCI: cadence: Populate ->get_features() cdns_pcie_epc_ops
+  PCI: endpoint: Add helper to get first unreserved BAR
+  PCI: endpoint: Fix pci_epf_alloc_space to set correct MEM TYPE flags
+  PCI: pci-epf-test: Remove setting epf_bar flags in function driver
+  PCI: pci-epf-test: Do not allocate next BARs memory if current BAR is
+    64Bit
+  PCI: pci-epf-test: Use pci_epc_get_features to get EPC features
+  PCI: cadence: Remove pci_epf_linkup from Cadence EP driver
+  PCI: rockchip: Remove pci_epf_linkup from Rockchip EP driver
+  PCI: designware-plat: Remove setting epc->features in Designware plat
+    EP driver
+  PCI: endpoint: Remove features member in struct pci_epc
+
+ drivers/pci/controller/dwc/pci-dra7xx.c       | 13 +++
+ .../pci/controller/dwc/pcie-designware-ep.c   | 12 +++
+ .../pci/controller/dwc/pcie-designware-plat.c | 17 +++-
+ drivers/pci/controller/dwc/pcie-designware.h  |  1 +
+ drivers/pci/controller/pcie-cadence-ep.c      | 25 +++---
+ drivers/pci/controller/pcie-rockchip-ep.c     | 16 +++-
+ drivers/pci/endpoint/functions/pci-epf-test.c | 80 ++++++++++---------
+ drivers/pci/endpoint/pci-epc-core.c           | 52 ++++++++++++
+ drivers/pci/endpoint/pci-epf-core.c           |  3 +
+ include/linux/pci-epc.h                       | 30 +++++--
+ 10 files changed, 185 insertions(+), 64 deletions(-)
+
+-- 
+2.17.1
