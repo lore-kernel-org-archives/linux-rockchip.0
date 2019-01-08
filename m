@@ -1,141 +1,162 @@
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH v2] drm/rockchip: Fix YUV buffers color rendering
-Date: Mon, 07 Jan 2019 17:07:18 -0300
-Message-ID: <234e9e802b33824dd98fb7e43dedf889837d3b70.camel@collabora.com>
-References: <20180215053300.70482-2-dcastagna@chromium.org>
- <20181214162920.20361-1-ezequiel@collabora.com> <3215325.nePTtMV2FM@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3215325.nePTtMV2FM@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Daniele Castagna <dcastagna-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
+From: Ayaka <ayaka@soulik.info>
+Subject: Re: [linux-sunxi] [PATCH v2 1/2] media: v4l: Add definitions for the HEVC slice format and controls
+Date: Tue, 8 Jan 2019 09:16:57 +0800
+Message-ID: <D8005130-F7FD-4CBD-8396-1BB08BB08E81@soulik.info>
+References: <20181123130209.11696-1-paul.kocialkowski@bootlin.com> <20181123130209.11696-2-paul.kocialkowski@bootlin.com> <5515174.7lFZcYkk85@jernej-laptop> <ffe9c81db34b599f675ca5bbf02de360bf0a1608.camel@bootlin.com> <776e63c9-d4a5-342a-e0f7-200ef144ffc4@rock-chips.com> <64c793e08d61181b78125b3956ec38623fa5d261.camel@bootlin.com>
+Mime-Version: 1.0 (1.0)
+Content-Type: text/plain;
+        charset=utf-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <64c793e08d61181b78125b3956ec38623fa5d261.camel@bootlin.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Cc: Randy Li <randy.li@rock-chips.com>, =?utf-8?Q?Jernej_=C5=A0krabec?= <jernej.skrabec@gmail.com>, linux-sunxi@googlegroups.com, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Hans Verkuil <hverkuil@xs4all.nl>, Ezequiel Garcia <ezequiel@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 2019-01-07 at 14:26 +0100, Heiko Stuebner wrote:
+
+
+Sent from my iPad
+
+> On Jan 7, 2019, at 5:57 PM, Paul Kocialkowski <paul.kocialkowski@bootlin.com> wrote:
+> 
 > Hi,
 > 
-> sorry, only now got to test this on actual hardware,
+>> On Mon, 2019-01-07 at 11:49 +0800, Randy Li wrote:
+>>> On 12/12/18 8:51 PM, Paul Kocialkowski wrote:
+>>> Hi,
+>>> 
+>>> On Wed, 2018-12-05 at 21:59 +0100, Jernej Škrabec wrote:
+>>> 
+>>>>> +
+>>>>> +#define V4L2_HEVC_DPB_ENTRY_RPS_ST_CURR_BEFORE    0x01
+>>>>> +#define V4L2_HEVC_DPB_ENTRY_RPS_ST_CURR_AFTER    0x02
+>>>>> +#define V4L2_HEVC_DPB_ENTRY_RPS_LT_CURR        0x03
+>>>>> +
+>>>>> +#define V4L2_HEVC_DPB_ENTRIES_NUM_MAX        16
+>>>>> +
+>>>>> +struct v4l2_hevc_dpb_entry {
+>>>>> +    __u32    buffer_tag;
+>>>>> +    __u8    rps;
+>>>>> +    __u8    field_pic;
+>>>>> +    __u16    pic_order_cnt[2];
+>>>>> +};
+>> 
+>> Please add a property for reference index, if that rps is not used for 
+>> this, some device would request that(not the rockchip one). And 
+>> Rockchip's VDPU1 and VDPU2 for AVC would request a similar property.
 > 
-> Am Freitag, 14. Dezember 2018, 17:29:20 CET schrieb Ezequiel Garcia:
-> > From: Daniele Castagna <dcastagna-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > 
-> > Currently, YUV hardware overlays are converted to RGB using
-> > a color space conversion different than BT.601.
-> > 
-> > The result is that colors of e.g. NV12 buffers don't match
-> > colors of YUV hardware overlays.
-> > 
-> > In order to fix this, enable YUV2YUV and set appropriate coefficients
-> > for formats such as NV12 to be displayed correctly.
-> > 
-> > This commit was tested using modetest, gstreamer and chromeos (hardware
-> > accelerated video playback). Before the commit, tests rendering
-> > with NV12 format resulted in colors not displayed correctly.
-> > 
-> > Test examples (RK3399 Ficus board connected to HDMI monitor):
-> > 
-> >   $ modetest 39@32:1920x1080@NV12
-> >   $ gst-launch-1.0 videotestrc ! video/x-raw,format=NV12 ! kmssink
-> > 
-> > Signed-off-by: Daniele Castagna <dcastagna-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > [ezequiel: rebase on linux-next and massage commit log]
-> > Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > ---
-> > v2:
-> >   * Addressed feedback from Sean Paul
-> >   * Rebased on linux-next
-> > 
-> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 41 ++++++++++++++++++++-
-> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.h | 13 +++++++
-> >  drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 36 ++++++++++++++++++
-> >  3 files changed, 89 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > index fb70fb486fbf..78c7f63a60c0 100644
-> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > @@ -52,6 +52,18 @@
-> >  		vop_reg_set(vop, &win->phy->scl->ext->name, \
-> >  			    win->base, ~0, v, #name)
-> >  
-> > +#define VOP_WIN_YUV2YUV_SET(x, win_yuv2yuv, name, v) \
-> > +	do { \
-> > +		if (win_yuv2yuv->name.mask) \
-> > +			vop_reg_set(vop, &win_yuv2yuv->name, 0, ~0, v, #name); \
-> > +	} while (0)
-> > +
-> > +#define VOP_WIN_YUV2YUV_COEFFICIENT_SET(x, win_yuv2yuv, name, v) \
-> > +	do { \
-> > +		if (win_yuv2yuv->phy->name.mask) \
-> > +			vop_reg_set(vop, &win_yuv2yuv->phy->name, win_yuv2yuv->base, ~0, v, #name); \
-> > +	} while (0)
-> > +
+> What exactly is that reference index? Is it a bitstream element or
+> something deduced from the bitstream?
 > 
-> While this seems to work on rk3399, it hangs both my rk3328 (rock64)
-> and rk3288 (google-pinky) during rockchip-drm probe.
+picture order count(POC) for HEVC and frame_num in AVC. I think it is the number used in list0(P slice and B slice) and list1(B slice).
+>> Adding another buffer_tag for referring the memory of the motion vectors 
+>> for each frames. Or a better method is add a meta data to echo picture 
+>> buffer,  since the picture output is just the same as the original, 
+>> display won't care whether the motion vectors are written the button of 
+>> picture or somewhere else.
 > 
-
-Oh, shame on me, I should've done that.
-
-> Making this something like
+> The motion vectors are passed as part of the raw bitstream data, in the
+> slices. Is there a case where the motion vectors are coded differently?
+No, it is an additional cache for decoder, even FFmpeg having such data, I think allwinner must output it into somewhere.
 > 
-> 	if (win_yuv2yuv && win_yuv2yuv->phy->name.mask) \
+>>>>> +
+>>>>> +struct v4l2_hevc_pred_weight_table {
+>>>>> +    __u8    luma_log2_weight_denom;
+>>>>> +    __s8    delta_chroma_log2_weight_denom;
+>>>>> +
+>>>>> +    __s8    delta_luma_weight_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+>>>>> +    __s8    luma_offset_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+>>>>> +    __s8    delta_chroma_weight_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
+>>>>> +    __s8    chroma_offset_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
+>>>>> +
+>>>>> +    __s8    delta_luma_weight_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+>>>>> +    __s8    luma_offset_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+>>>>> +    __s8    delta_chroma_weight_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
+>>>>> +    __s8    chroma_offset_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
+>>>>> +};
+>>>>> +
+>> Those properties I think are not necessary are applying for the 
+>> Rockchip's device, may not work for the others.
 > 
-> aka testing for existence of win_yuv2yuv first, makes them boot again,
-> so I guess I ran into a (for whatever reason) silent null-ptr-dereference.
+> Yes, it's possible that some of the elements are not necessary for some
+> decoders. What we want is to cover all the elements that might be
+> required for a decoder.
+I wonder whether allwinner need that, those sao flag usually ignored by decoder in design. But more is better than less, it is hard to extend a v4l2 structure  in the future, maybe a new HEVC profile would bring a new property, it is still too early for HEVC.
 > 
-
-Sounds good. I'll post a v3.
-
+>>>>> +struct v4l2_ctrl_hevc_slice_params {
+>>>>> +    __u32    bit_size;
+>>>>> +    __u32    data_bit_offset;
+>>>>> +
+>>>>> +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: NAL unit header */
+>>>>> +    __u8    nal_unit_type;
+>>>>> +    __u8    nuh_temporal_id_plus1;
+>>>>> +
+>>>>> +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header */
+>>>>> +    __u8    slice_type;
+>>>>> +    __u8    colour_plane_id;
+>> ----------------------------------------------------------------------------
+>>>>> +    __u16    slice_pic_order_cnt;
+>>>>> +    __u8    slice_sao_luma_flag;
+>>>>> +    __u8    slice_sao_chroma_flag;
+>>>>> +    __u8    slice_temporal_mvp_enabled_flag;
+>>>>> +    __u8    num_ref_idx_l0_active_minus1;
+>>>>> +    __u8    num_ref_idx_l1_active_minus1;
+>> Rockchip's decoder doesn't use this part.
+>>>>> +    __u8    mvd_l1_zero_flag;
+>>>>> +    __u8    cabac_init_flag;
+>>>>> +    __u8    collocated_from_l0_flag;
+>>>>> +    __u8    collocated_ref_idx;
+>>>>> +    __u8    five_minus_max_num_merge_cand;
+>>>>> +    __u8    use_integer_mv_flag;
+>>>>> +    __s8    slice_qp_delta;
+>>>>> +    __s8    slice_cb_qp_offset;
+>>>>> +    __s8    slice_cr_qp_offset;
+>>>>> +    __s8    slice_act_y_qp_offset;
+>>>>> +    __s8    slice_act_cb_qp_offset;
+>>>>> +    __s8    slice_act_cr_qp_offset;
+>>>>> +    __u8    slice_deblocking_filter_disabled_flag;
+>>>>> +    __s8    slice_beta_offset_div2;
+>>>>> +    __s8    slice_tc_offset_div2;
+>>>>> +    __u8    slice_loop_filter_across_slices_enabled_flag;
+>>>>> +
+>>>>> +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: Picture timing SEI message */
+>>>>> +    __u8    pic_struct;
+>> I think the decoder doesn't care about this, it is used for display.
 > 
-> > diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-> > index 08fc40af52c8..fe752df4e038 100644
-> > --- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-> > @@ -637,6 +637,34 @@ static const struct vop_output rk3399_output = {
-> >  	.mipi_dual_channel_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 3),
-> >  };
-> >  
-> > +static const struct vop_yuv2yuv_phy rk3399_yuv2yuv_win01_data = {
-> > +	.y2r_coefficients = {
-> > +		VOP_REG(RK3399_WIN0_YUV2YUV_Y2R + 0, 0xffff, 0),
-> > +		VOP_REG(RK3399_WIN0_YUV2YUV_Y2R + 0, 0xffff, 16),
-> > +		VOP_REG(RK3399_WIN0_YUV2YUV_Y2R + 4, 0xffff, 0),
-> > +		VOP_REG(RK3399_WIN0_YUV2YUV_Y2R + 4, 0xffff, 16),
-> > +		VOP_REG(RK3399_WIN0_YUV2YUV_Y2R + 8, 0xffff, 0),
-> > +		VOP_REG(RK3399_WIN0_YUV2YUV_Y2R + 8, 0xffff, 16),
-> > +		VOP_REG(RK3399_WIN0_YUV2YUV_Y2R + 12, 0xffff, 0),
-> > +		VOP_REG(RK3399_WIN0_YUV2YUV_Y2R + 12, 0xffff, 16),
-> > +		VOP_REG(RK3399_WIN0_YUV2YUV_Y2R + 16, 0xffff, 0),
-> > +		VOP_REG(RK3399_WIN0_YUV2YUV_Y2R + 20, 0xffffffff, 0),
-> > +		VOP_REG(RK3399_WIN0_YUV2YUV_Y2R + 24, 0xffffffff, 0),
-> > +		VOP_REG(RK3399_WIN0_YUV2YUV_Y2R + 28, 0xffffffff, 0),
-> > +	},
-> > +};
-> > +
-> > +static const struct vop_yuv2yuv_phy rk3399_yuv2yuv_win23_data = { };
+> The purpose of this field is to indicate whether the current picture is
+> a progressive frame or an interlaced field picture, which is useful for
+> decoding.
 > 
-> looking at the rk3399 TRM it seems that win2+3 also have yuv2rgb
-> coefficient registers. I didn't check in depth but are they so different
-> that they cannot be supported?
+> At least our decoder has a register field to indicate frame/top
+> field/bottom field, so we certainly need to keep the info around.
+> Looking at the spec and the ffmpeg implementation, it looks like this
+> flag of the bitstream is the usual way to report field coding.
+It depends whether the decoder cares about scan type or more, I wonder prefer general_interlaced_source_flag for just scan type, it would be better than reading another SEL.
 > 
-> Aka what is the difference between win0/1 and win2/3 ?
+> Cheers,
 > 
+> Paul
+Randy “ayaka” LI
 > 
-
-I think Sandy is the best to answer this. I can't say I'm an expert
-on the details of this hardware.
-
-Thanks,
-Eze
+>>>>> +
+>>>>> +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header */
+>>>>> +    struct v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+>>>>> +    __u8    num_active_dpb_entries;
+>>>>> +    __u8    ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+>>>>> +    __u8    ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+>>>>> +
+>>>>> +    __u8    num_rps_poc_st_curr_before;
+>>>>> +    __u8    num_rps_poc_st_curr_after;
+>>>>> +    __u8    num_rps_poc_lt_curr;
+>>>>> +
+>>>>> +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: Weighted prediction parameter */
+>>>>> +    struct v4l2_hevc_pred_weight_table pred_weight_table;
+>>>>> +};
+>>>>> +
+>>>>>  #endif
+> -- 
+> Paul Kocialkowski, Bootlin (formerly Free Electrons)
+> Embedded Linux and kernel engineering
+> https://bootlin.com
+> 
