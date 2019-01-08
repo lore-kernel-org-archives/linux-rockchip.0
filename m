@@ -1,116 +1,71 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH v2] drm/rockchip: Fix YUV buffers color rendering
-Date: Tue, 08 Jan 2019 14:17:04 -0300
-Message-ID: <aec1c04fa56641d7b9933027e9f2856ff405f1c2.camel@collabora.com>
-References: <20180215053300.70482-2-dcastagna@chromium.org>
- <20181214162920.20361-1-ezequiel@collabora.com> <3215325.nePTtMV2FM@phil>
- <234e9e802b33824dd98fb7e43dedf889837d3b70.camel@collabora.com>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Subject: Re: [PATCH 1/4] phy: rockchip-inno-usb2: fix misspelling and
+ kernel-doc documentation.
+Date: Tue, 8 Jan 2019 18:35:38 +0100
+Message-ID: <CAFqH_50tz1Toi6L1Ju5imyMRPzN1bDg7mxzcLrJWvdxOwknfdw@mail.gmail.com>
+References: <20180815095934.11205-1-enric.balletbo@collabora.com>
+ <20180815095934.11205-2-enric.balletbo@collabora.com> <2908229.jFki8unlfB@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <234e9e802b33824dd98fb7e43dedf889837d3b70.camel@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>
-Cc: Daniele Castagna <dcastagna@chromium.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <2908229.jFki8unlfB@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Kishon Vijay Abraham I <kishon@ti.com>, Alexandru Stan <amstan@chromium.org>, Guenter Roeck <groeck@google.com>, kieran.bingham@ideasonboard.com, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, kernel@collabora.com, Benson Leung <bleung@chromium.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCAyMDE5LTAxLTA3IGF0IDE3OjA3IC0wMzAwLCBFemVxdWllbCBHYXJjaWEgd3JvdGU6
-Cj4gT24gTW9uLCAyMDE5LTAxLTA3IGF0IDE0OjI2ICswMTAwLCBIZWlrbyBTdHVlYm5lciB3cm90
-ZToKPiA+IEhpLAo+ID4gCj4gPiBzb3JyeSwgb25seSBub3cgZ290IHRvIHRlc3QgdGhpcyBvbiBh
-Y3R1YWwgaGFyZHdhcmUsCj4gPiAKPiA+IEFtIEZyZWl0YWcsIDE0LiBEZXplbWJlciAyMDE4LCAx
-NzoyOToyMCBDRVQgc2NocmllYiBFemVxdWllbCBHYXJjaWE6Cj4gPiA+IEZyb206IERhbmllbGUg
-Q2FzdGFnbmEgPGRjYXN0YWduYUBjaHJvbWl1bS5vcmc+Cj4gPiA+IAo+ID4gPiBDdXJyZW50bHks
-IFlVViBoYXJkd2FyZSBvdmVybGF5cyBhcmUgY29udmVydGVkIHRvIFJHQiB1c2luZwo+ID4gPiBh
-IGNvbG9yIHNwYWNlIGNvbnZlcnNpb24gZGlmZmVyZW50IHRoYW4gQlQuNjAxLgo+ID4gPiAKPiA+
-ID4gVGhlIHJlc3VsdCBpcyB0aGF0IGNvbG9ycyBvZiBlLmcuIE5WMTIgYnVmZmVycyBkb24ndCBt
-YXRjaAo+ID4gPiBjb2xvcnMgb2YgWVVWIGhhcmR3YXJlIG92ZXJsYXlzLgo+ID4gPiAKPiA+ID4g
-SW4gb3JkZXIgdG8gZml4IHRoaXMsIGVuYWJsZSBZVVYyWVVWIGFuZCBzZXQgYXBwcm9wcmlhdGUg
-Y29lZmZpY2llbnRzCj4gPiA+IGZvciBmb3JtYXRzIHN1Y2ggYXMgTlYxMiB0byBiZSBkaXNwbGF5
-ZWQgY29ycmVjdGx5Lgo+ID4gPiAKPiA+ID4gVGhpcyBjb21taXQgd2FzIHRlc3RlZCB1c2luZyBt
-b2RldGVzdCwgZ3N0cmVhbWVyIGFuZCBjaHJvbWVvcyAoaGFyZHdhcmUKPiA+ID4gYWNjZWxlcmF0
-ZWQgdmlkZW8gcGxheWJhY2spLiBCZWZvcmUgdGhlIGNvbW1pdCwgdGVzdHMgcmVuZGVyaW5nCj4g
-PiA+IHdpdGggTlYxMiBmb3JtYXQgcmVzdWx0ZWQgaW4gY29sb3JzIG5vdCBkaXNwbGF5ZWQgY29y
-cmVjdGx5Lgo+ID4gPiAKPiA+ID4gVGVzdCBleGFtcGxlcyAoUkszMzk5IEZpY3VzIGJvYXJkIGNv
-bm5lY3RlZCB0byBIRE1JIG1vbml0b3IpOgo+ID4gPiAKPiA+ID4gICAkIG1vZGV0ZXN0IDM5QDMy
-OjE5MjB4MTA4MEBOVjEyCj4gPiA+ICAgJCBnc3QtbGF1bmNoLTEuMCB2aWRlb3Rlc3RyYyAhIHZp
-ZGVvL3gtcmF3LGZvcm1hdD1OVjEyICEga21zc2luawo+ID4gPiAKPiA+ID4gU2lnbmVkLW9mZi1i
-eTogRGFuaWVsZSBDYXN0YWduYSA8ZGNhc3RhZ25hQGNocm9taXVtLm9yZz4KPiA+ID4gW2V6ZXF1
-aWVsOiByZWJhc2Ugb24gbGludXgtbmV4dCBhbmQgbWFzc2FnZSBjb21taXQgbG9nXQo+ID4gPiBT
-aWduZWQtb2ZmLWJ5OiBFemVxdWllbCBHYXJjaWEgPGV6ZXF1aWVsQGNvbGxhYm9yYS5jb20+Cj4g
-PiA+IC0tLQo+ID4gPiB2MjoKPiA+ID4gICAqIEFkZHJlc3NlZCBmZWVkYmFjayBmcm9tIFNlYW4g
-UGF1bAo+ID4gPiAgICogUmViYXNlZCBvbiBsaW51eC1uZXh0Cj4gPiA+IAo+ID4gPiAgZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDQxICsrKysrKysrKysrKysr
-KysrKysrLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
-aCB8IDEzICsrKysrKysKPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92
-b3BfcmVnLmMgfCAzNiArKysrKysrKysrKysrKysrKysKPiA+ID4gIDMgZmlsZXMgY2hhbmdlZCwg
-ODkgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+ID4gPiAKPiA+ID4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gPiA+IGluZGV4IGZiNzBmYjQ4NmZi
-Zi4uNzhjN2Y2M2E2MGMwIDEwMDY0NAo+ID4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmMKPiA+ID4gQEAgLTUyLDYgKzUyLDE4IEBACj4gPiA+ICAJCXZv
-cF9yZWdfc2V0KHZvcCwgJndpbi0+cGh5LT5zY2wtPmV4dC0+bmFtZSwgXAo+ID4gPiAgCQkJICAg
-IHdpbi0+YmFzZSwgfjAsIHYsICNuYW1lKQo+ID4gPiAgCj4gPiA+ICsjZGVmaW5lIFZPUF9XSU5f
-WVVWMllVVl9TRVQoeCwgd2luX3l1djJ5dXYsIG5hbWUsIHYpIFwKPiA+ID4gKwlkbyB7IFwKPiA+
-ID4gKwkJaWYgKHdpbl95dXYyeXV2LT5uYW1lLm1hc2spIFwKPiA+ID4gKwkJCXZvcF9yZWdfc2V0
-KHZvcCwgJndpbl95dXYyeXV2LT5uYW1lLCAwLCB+MCwgdiwgI25hbWUpOyBcCj4gPiA+ICsJfSB3
-aGlsZSAoMCkKPiA+ID4gKwo+ID4gPiArI2RlZmluZSBWT1BfV0lOX1lVVjJZVVZfQ09FRkZJQ0lF
-TlRfU0VUKHgsIHdpbl95dXYyeXV2LCBuYW1lLCB2KSBcCj4gPiA+ICsJZG8geyBcCj4gPiA+ICsJ
-CWlmICh3aW5feXV2Mnl1di0+cGh5LT5uYW1lLm1hc2spIFwKPiA+ID4gKwkJCXZvcF9yZWdfc2V0
-KHZvcCwgJndpbl95dXYyeXV2LT5waHktPm5hbWUsIHdpbl95dXYyeXV2LT5iYXNlLCB+MCwgdiwg
-I25hbWUpOyBcCj4gPiA+ICsJfSB3aGlsZSAoMCkKPiA+ID4gKwo+ID4gCj4gPiBXaGlsZSB0aGlz
-IHNlZW1zIHRvIHdvcmsgb24gcmszMzk5LCBpdCBoYW5ncyBib3RoIG15IHJrMzMyOCAocm9jazY0
-KQo+ID4gYW5kIHJrMzI4OCAoZ29vZ2xlLXBpbmt5KSBkdXJpbmcgcm9ja2NoaXAtZHJtIHByb2Jl
-Lgo+ID4gCj4gCj4gT2gsIHNoYW1lIG9uIG1lLCBJIHNob3VsZCd2ZSBkb25lIHRoYXQuCj4gCj4g
-PiBNYWtpbmcgdGhpcyBzb21ldGhpbmcgbGlrZQo+ID4gCj4gPiAJaWYgKHdpbl95dXYyeXV2ICYm
-IHdpbl95dXYyeXV2LT5waHktPm5hbWUubWFzaykgXAo+ID4gCj4gPiBha2EgdGVzdGluZyBmb3Ig
-ZXhpc3RlbmNlIG9mIHdpbl95dXYyeXV2IGZpcnN0LCBtYWtlcyB0aGVtIGJvb3QgYWdhaW4sCj4g
-PiBzbyBJIGd1ZXNzIEkgcmFuIGludG8gYSAoZm9yIHdoYXRldmVyIHJlYXNvbikgc2lsZW50IG51
-bGwtcHRyLWRlcmVmZXJlbmNlLgo+ID4gCj4gCj4gU291bmRzIGdvb2QuIEknbGwgcG9zdCBhIHYz
-Lgo+IAo+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X3ZvcF9yZWcuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMK
-PiA+ID4gaW5kZXggMDhmYzQwYWY1MmM4Li5mZTc1MmRmNGUwMzggMTAwNjQ0Cj4gPiA+IC0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKPiA+ID4gKysrIGIv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYwo+ID4gPiBAQCAtNjM3
-LDYgKzYzNywzNCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHZvcF9vdXRwdXQgcmszMzk5X291dHB1
-dCA9IHsKPiA+ID4gIAkubWlwaV9kdWFsX2NoYW5uZWxfZW4gPSBWT1BfUkVHKFJLMzI4OF9TWVNf
-Q1RSTCwgMHgxLCAzKSwKPiA+ID4gIH07Cj4gPiA+ICAKPiA+ID4gK3N0YXRpYyBjb25zdCBzdHJ1
-Y3Qgdm9wX3l1djJ5dXZfcGh5IHJrMzM5OV95dXYyeXV2X3dpbjAxX2RhdGEgPSB7Cj4gPiA+ICsJ
-Lnkycl9jb2VmZmljaWVudHMgPSB7Cj4gPiA+ICsJCVZPUF9SRUcoUkszMzk5X1dJTjBfWVVWMllV
-Vl9ZMlIgKyAwLCAweGZmZmYsIDApLAo+ID4gPiArCQlWT1BfUkVHKFJLMzM5OV9XSU4wX1lVVjJZ
-VVZfWTJSICsgMCwgMHhmZmZmLCAxNiksCj4gPiA+ICsJCVZPUF9SRUcoUkszMzk5X1dJTjBfWVVW
-MllVVl9ZMlIgKyA0LCAweGZmZmYsIDApLAo+ID4gPiArCQlWT1BfUkVHKFJLMzM5OV9XSU4wX1lV
-VjJZVVZfWTJSICsgNCwgMHhmZmZmLCAxNiksCj4gPiA+ICsJCVZPUF9SRUcoUkszMzk5X1dJTjBf
-WVVWMllVVl9ZMlIgKyA4LCAweGZmZmYsIDApLAo+ID4gPiArCQlWT1BfUkVHKFJLMzM5OV9XSU4w
-X1lVVjJZVVZfWTJSICsgOCwgMHhmZmZmLCAxNiksCj4gPiA+ICsJCVZPUF9SRUcoUkszMzk5X1dJ
-TjBfWVVWMllVVl9ZMlIgKyAxMiwgMHhmZmZmLCAwKSwKPiA+ID4gKwkJVk9QX1JFRyhSSzMzOTlf
-V0lOMF9ZVVYyWVVWX1kyUiArIDEyLCAweGZmZmYsIDE2KSwKPiA+ID4gKwkJVk9QX1JFRyhSSzMz
-OTlfV0lOMF9ZVVYyWVVWX1kyUiArIDE2LCAweGZmZmYsIDApLAo+ID4gPiArCQlWT1BfUkVHKFJL
-MzM5OV9XSU4wX1lVVjJZVVZfWTJSICsgMjAsIDB4ZmZmZmZmZmYsIDApLAo+ID4gPiArCQlWT1Bf
-UkVHKFJLMzM5OV9XSU4wX1lVVjJZVVZfWTJSICsgMjQsIDB4ZmZmZmZmZmYsIDApLAo+ID4gPiAr
-CQlWT1BfUkVHKFJLMzM5OV9XSU4wX1lVVjJZVVZfWTJSICsgMjgsIDB4ZmZmZmZmZmYsIDApLAo+
-ID4gPiArCX0sCj4gPiA+ICt9Owo+ID4gPiArCj4gPiA+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHZv
-cF95dXYyeXV2X3BoeSByazMzOTlfeXV2Mnl1dl93aW4yM19kYXRhID0geyB9Owo+ID4gCj4gPiBs
-b29raW5nIGF0IHRoZSByazMzOTkgVFJNIGl0IHNlZW1zIHRoYXQgd2luMiszIGFsc28gaGF2ZSB5
-dXYycmdiCj4gPiBjb2VmZmljaWVudCByZWdpc3RlcnMuIEkgZGlkbid0IGNoZWNrIGluIGRlcHRo
-IGJ1dCBhcmUgdGhleSBzbyBkaWZmZXJlbnQKPiA+IHRoYXQgdGhleSBjYW5ub3QgYmUgc3VwcG9y
-dGVkPwo+ID4gCj4gPiBBa2Egd2hhdCBpcyB0aGUgZGlmZmVyZW5jZSBiZXR3ZWVuIHdpbjAvMSBh
-bmQgd2luMi8zID8KPiA+IAo+ID4gCj4gCj4gSSB0aGluayBTYW5keSBpcyB0aGUgYmVzdCB0byBh
-bnN3ZXIgdGhpcy4gSSBjYW4ndCBzYXkgSSdtIGFuIGV4cGVydAo+IG9uIHRoZSBkZXRhaWxzIG9m
-IHRoaXMgaGFyZHdhcmUuCj4gCgpSZWFkaW5nIHRocnUgdGhlIHNwZWMsIEkgc2VlIHdoYXQgd2lu
-cyAyIGFuZCAzIGRvbid0IHN1cHBvcnQgWVVWIGZvcm1hdHMsCnNvIHRoZSBmZWF0dXJlICh3aGF0
-ZXZlciBpdCdzIHB1cnBvc2UpIGlzIG5vdCBuZWVkZWQsIGFzIHRoZXJlJ3MKbm8gWVVWIGNvbG9y
-c3BhY2UgaXNzdWUuCgpMaWtlIEkgc2FpZCwgSSBkb24ndCBoYXZlIHNwZWNpZmljIGtub3dsZWRn
-ZSBvbiB0aGUgaGFyZHdhcmUuCgpUaGFua3MsCkV6ZQoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Heiko and all,
+
+Missatge de Heiko Stuebner <heiko@sntech.de> del dia dc., 15 d=E2=80=99ag.
+2018 a les 12:31:
+>
+> Am Mittwoch, 15. August 2018, 11:59:31 CEST schrieb Enric Balletbo i Serr=
+a:
+> > Fix the typo flase -> false and clean up the kernel-doc documentation i=
+n
+> > phy-rockchip-inno.usb2.c and fix the following warnings when documentat=
+ion
+> > is built.
+> >
+> >   :58: warning: missing initial short description
+> >   :69: warning: cannot understand function prototype: 'enum usb_chg_sta=
+te '
+> >   :97: warning: missing initial short description
+> >   :136: warning: cannot understand function prototype: 'struct rockchip=
+_usb2phy_port_cfg '
+> >   :157: warning: cannot understand function prototype: 'struct rockchip=
+_usb2phy_cfg '
+> >   :163: warning: Function parameter or member 'port_cfgs' not described=
+ in 'rockchip_usb2phy_cfg'
+> >   :187: warning: cannot understand function prototype: 'struct rockchip=
+_usb2phy_port '
+> >   :204: warning: Function parameter or member 'port_cfg' not described =
+in 'rockchip_usb2phy_port'
+> >   :207: warning: missing initial short description
+> >   :234: warning: Function parameter or member 'dev' not described in 'r=
+ockchip_usb2phy'
+> >   :234: warning: Function parameter or member 'clk480m_hw' not describe=
+d in 'rockchip_usb2phy'
+> >
+> > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+>
+
+I included this patch in these series because I found the errors when
+I was working on this. But this patch doesn't really depend on the
+other patches and probably I should have had to send independently. I
+am planning to send a new version of these series excluding this
+patch. I think that the patch can be already picked (still applies
+cleanly and is fine to pick?) or do you prefer I resend?
+
+Thanks,
+ Enric
+
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
