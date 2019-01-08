@@ -1,104 +1,229 @@
-From: Ayaka <ayaka@soulik.info>
-Subject: Re: [PATCH 4/4] arm64: dts: rockchip: add video codec for rk3399
-Date: Tue, 8 Jan 2019 15:40:08 +0800
-Message-ID: <F8ED7EBD-FC71-4E40-98A0-DD239EF9371D@soulik.info>
-References: <20190105183150.20266-1-ayaka@soulik.info> <20190105183150.20266-5-ayaka@soulik.info> <50db3bc3faea97182b7fe18b4d9677f7e1563eaa.camel@collabora.com> <CAC7DE03-A74C-4154-9443-BC91E6CED02E@soulik.info> <f3dcd25bb1c3f0544cb7eedd0b27633d923c0d27.camel@collabora.com> <C53B5CFA-2F9C-41E1-BBA8-D63819D0AC3D@soulik.info> <CAAEAJfCLxvJWrC1CNiSyLV9y=pOjzUBik5SUD0ZVUcnA-+HobQ@mail.gmail.com> <85C6CA4D-CC54-422B-BC2B-25EA10701696@soulik.info> <CAAFQd5AaVonqn92F=Oa_s_5fkn566+xubO5ijqHmnjg7d4j-8A@mail.gmail.com>
-Mime-Version: 1.0 (1.0)
-Content-Type: text/plain;
-        charset=utf-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAAFQd5AaVonqn92F=Oa_s_5fkn566+xubO5ijqHmnjg7d4j-8A@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Ezequiel Garcia <ezequiel@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, myy@miouyouyou.fr, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media <linux-media@vger.kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+From: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] media: v4l: Add definitions for the
+ HEVC slice format and controls
+Date: Tue, 08 Jan 2019 09:38:44 +0100
+Message-ID: <f982ef378a8ade075bc7077b93640e20ecebf9f4.camel@bootlin.com>
+References: <20181123130209.11696-1-paul.kocialkowski@bootlin.com>
+	 <20181123130209.11696-2-paul.kocialkowski@bootlin.com>
+	 <5515174.7lFZcYkk85@jernej-laptop>
+	 <ffe9c81db34b599f675ca5bbf02de360bf0a1608.camel@bootlin.com>
+	 <776e63c9-d4a5-342a-e0f7-200ef144ffc4@rock-chips.com>
+	 <64c793e08d61181b78125b3956ec38623fa5d261.camel@bootlin.com>
+	 <D8005130-F7FD-4CBD-8396-1BB08BB08E81@soulik.info>
+Reply-To: paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-sunxi+bncBCOO3QWNR4KRBFWD2HQQKGQEXXTXYDQ-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+In-Reply-To: <D8005130-F7FD-4CBD-8396-1BB08BB08E81-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+List-Post: <https://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Help: <https://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Archive: <https://groups.google.com/group/linux-sunxi
+List-Subscribe: <https://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
+ <https://groups.google.com/group/linux-sunxi/subscribe>
+To: Ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Cc: Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jernej =?UTF-8?Q?=C5=A0krabec?= <jernej.skrabec-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi,
 
+On Tue, 2019-01-08 at 09:16 +0800, Ayaka wrote:
+>=20
+> Sent from my iPad
+>=20
+> > On Jan 7, 2019, at 5:57 PM, Paul Kocialkowski <paul.kocialkowski@bootli=
+n.com> wrote:
+> >=20
+> > Hi,
+> >=20
+> > > On Mon, 2019-01-07 at 11:49 +0800, Randy Li wrote:
+> > > > On 12/12/18 8:51 PM, Paul Kocialkowski wrote:
+> > > > Hi,
+> > > >=20
+> > > > On Wed, 2018-12-05 at 21:59 +0100, Jernej =C5=A0krabec wrote:
+> > > >=20
+> > > > > > +
+> > > > > > +#define V4L2_HEVC_DPB_ENTRY_RPS_ST_CURR_BEFORE    0x01
+> > > > > > +#define V4L2_HEVC_DPB_ENTRY_RPS_ST_CURR_AFTER    0x02
+> > > > > > +#define V4L2_HEVC_DPB_ENTRY_RPS_LT_CURR        0x03
+> > > > > > +
+> > > > > > +#define V4L2_HEVC_DPB_ENTRIES_NUM_MAX        16
+> > > > > > +
+> > > > > > +struct v4l2_hevc_dpb_entry {
+> > > > > > +    __u32    buffer_tag;
+> > > > > > +    __u8    rps;
+> > > > > > +    __u8    field_pic;
+> > > > > > +    __u16    pic_order_cnt[2];
+> > > > > > +};
+> > >=20
+> > > Please add a property for reference index, if that rps is not used fo=
+r=20
+> > > this, some device would request that(not the rockchip one). And=20
+> > > Rockchip's VDPU1 and VDPU2 for AVC would request a similar property.
+> >=20
+> > What exactly is that reference index? Is it a bitstream element or
+> > something deduced from the bitstream?
+> >=20
+> picture order count(POC) for HEVC and frame_num in AVC. I think it is
+> the number used in list0(P slice and B slice) and list1(B slice).
 
-Sent from my iPad
+The picture order count is already the last field of the DPB entry
+structure. There is one for each field picture.
 
-> On Jan 8, 2019, at 2:33 PM, Tomasz Figa <tfiga@chromium.org> wrote:
-> 
->> On Mon, Jan 7, 2019 at 2:30 AM Ayaka <ayaka@soulik.info> wrote:
->> 
->> Hello Ezequiel
->> 
->> Sent from my iPad
->> 
->>>> On Jan 7, 2019, at 1:21 AM, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar> wrote:
->>>> 
->>>> On Sun, 6 Jan 2019 at 13:16, Ayaka <ayaka@soulik.info> wrote:
->>>> 
->>>> 
->>>> 
->>>> Sent from my iPad
->>>> 
->>>>> On Jan 7, 2019, at 12:04 AM, Ezequiel Garcia <ezequiel@collabora.com> wrote:
->>>>> 
->>>>> On Sun, 2019-01-06 at 23:05 +0800, Ayaka wrote:
->>>>>>> On Jan 6, 2019, at 10:22 PM, Ezequiel Garcia <ezequiel@collabora.com> wrote:
->>>>>>> 
->>>>>>> Hi Randy,
->>>>>>> 
->>>>>>> Thanks a lot for this patches. They are really useful
->>>>>>> to provide more insight into the VPU hardware.
->>>>>>> 
->>>>>>> This change will make the vpu encoder and vpu decoder
->>>>>>> completely independent, can they really work in parallel?
->>>>>> As I said it depends on the platform, but with this patch, the user space would think they can work at the same time.
->>>>> 
->>>>> 
->>>>> I think there is some confusion.
->>>>> 
->>>>> The devicetree is one thing: it is a hardware representation,
->>>>> a way to describe the hardware, for the kernel/bootloader to
->>>>> parse.
->>>>> 
->>>>> The userspace view will depend on the driver implementation.
->>>>> 
->>>>> The current devicetree and driver (without your patches),
->>>>> model the VPU as a single piece of hardware, exposing a decoder
->>>>> and an encoder.
->>>>> 
->>>>> The V4L driver will then create two video devices, i.e. /dev/videoX
->>>>> and /dev/videoY. So userspace sees an independent view of the
->>>>> devices.
->>>>> 
->>>> I knew that, the problem is that the driver should not always create a decoder and encoder pair, they may not exist at some platforms, even some platforms doesn’t have a encoder. You may have a look on the rk3328 I post on the first email as example.
->>> 
->>> That is correct. But that still doesn't tackle my question: is the
->>> hardware able to run a decoding and an encoding job in parallel?
->>> 
->> For rk3328, yes, you see I didn’t draw them in the same box.
->>> If not, then it's wrong to describe them as independent entities.
->>> 
->>>>> However, they are internally connected, and thus we can
->>>>> easily avoid two jobs running in parallel.
->>>>> 
->>>> That is what the mpp service did in my patches, handing the relationship between each devices. And it is not a easy work, maybe a 4k decoder would be blocked by another high frame rate encoding work or another decoder session. The vendor kernel have more worry about this,  but not in this version.
->>> 
->>> Right. That is one way to design it. Another way is having a single
->>> devicetree node for the VPU encoder/decoder "complex".
->> No, you can’t assume which one is in the combo group, it can be various. you see, in the rk3328, the vdpu is paired with an avs+ decoder. That is why I use a virtual device standing for scheduler.
-> 
-> First of all, thanks for all the input. Having more understanding of
-> the hardware and shortcomings of the current V4L2 APIs is really
-> important to let us further evolve the API and make sure that it works
-> for further use cases.
-I replied the problems of the v4l2 request API in the other threads. I am waiting the feedback from those threads.
-> 
-> As for the Device Tree itself, it doesn't always describe the hardware
-> in 100%.
-Also please note the merged device tree for the video codec won’t fix for most of the rockchip platform.
-> Most of the time it's just the necessary information to
-> choose and instantiate the right drivers and bind to the right
-> hardware resources. The information on which hardware instances on the
-> SoC can work independently can of course be described in DT (e.g. by
-> sub-nodes of a video-codec complex OR a set of phandles, e.g.
-> rockchip,shared-instances), but it's also perfectly fine to defer this
-> kind of knowledge to the drivers themselves.
-I wish there is a common mechanism for those device would share some resources. Although there is a multiple functions framework,  but that is not I want. They are multiple functions but they are used at the same time not separately.
-> 
-> Best regards,
-> Tomasz
+> > > Adding another buffer_tag for referring the memory of the motion vect=
+ors=20
+> > > for each frames. Or a better method is add a meta data to echo pictur=
+e=20
+> > > buffer,  since the picture output is just the same as the original,=
+=20
+> > > display won't care whether the motion vectors are written the button =
+of=20
+> > > picture or somewhere else.
+> >=20
+> > The motion vectors are passed as part of the raw bitstream data, in the
+> > slices. Is there a case where the motion vectors are coded differently?
+> No, it is an additional cache for decoder, even FFmpeg having such
+> data, I think allwinner must output it into somewhere.
+
+Ah yes I see what you mean! This is handled internally by our driver
+and not exposed to userspace. I don't think it would be a good idea to
+expose this cache or request that userspace allocates it like a video
+buffer.
+
+> > > > > > +
+> > > > > > +struct v4l2_hevc_pred_weight_table {
+> > > > > > +    __u8    luma_log2_weight_denom;
+> > > > > > +    __s8    delta_chroma_log2_weight_denom;
+> > > > > > +
+> > > > > > +    __s8    delta_luma_weight_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX=
+];
+> > > > > > +    __s8    luma_offset_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> > > > > > +    __s8    delta_chroma_weight_l0[V4L2_HEVC_DPB_ENTRIES_NUM_M=
+AX][2];
+> > > > > > +    __s8    chroma_offset_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2]=
+;
+> > > > > > +
+> > > > > > +    __s8    delta_luma_weight_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX=
+];
+> > > > > > +    __s8    luma_offset_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> > > > > > +    __s8    delta_chroma_weight_l1[V4L2_HEVC_DPB_ENTRIES_NUM_M=
+AX][2];
+> > > > > > +    __s8    chroma_offset_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2]=
+;
+> > > > > > +};
+> > > > > > +
+> > > Those properties I think are not necessary are applying for the=20
+> > > Rockchip's device, may not work for the others.
+> >=20
+> > Yes, it's possible that some of the elements are not necessary for some
+> > decoders. What we want is to cover all the elements that might be
+> > required for a decoder.
+> I wonder whether allwinner need that, those sao flag usually ignored
+> by decoder in design. But more is better than less, it is hard to
+> extend a v4l2 structure  in the future, maybe a new HEVC profile
+> would bring a new property, it is still too early for HEVC.
+
+Yes this is used by our decoder. The idea is to have all the basic
+bitstream elements in the structures (even if some decoders don't use
+them all) and add others for extension as separate controls later.
+
+> > > > > > +struct v4l2_ctrl_hevc_slice_params {
+> > > > > > +    __u32    bit_size;
+> > > > > > +    __u32    data_bit_offset;
+> > > > > > +
+> > > > > > +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: NAL unit header */
+> > > > > > +    __u8    nal_unit_type;
+> > > > > > +    __u8    nuh_temporal_id_plus1;
+> > > > > > +
+> > > > > > +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segmen=
+t header */
+> > > > > > +    __u8    slice_type;
+> > > > > > +    __u8    colour_plane_id;
+> > > ---------------------------------------------------------------------=
+-------
+> > > > > > +    __u16    slice_pic_order_cnt;
+> > > > > > +    __u8    slice_sao_luma_flag;
+> > > > > > +    __u8    slice_sao_chroma_flag;
+> > > > > > +    __u8    slice_temporal_mvp_enabled_flag;
+> > > > > > +    __u8    num_ref_idx_l0_active_minus1;
+> > > > > > +    __u8    num_ref_idx_l1_active_minus1;
+> > > Rockchip's decoder doesn't use this part.
+> > > > > > +    __u8    mvd_l1_zero_flag;
+> > > > > > +    __u8    cabac_init_flag;
+> > > > > > +    __u8    collocated_from_l0_flag;
+> > > > > > +    __u8    collocated_ref_idx;
+> > > > > > +    __u8    five_minus_max_num_merge_cand;
+> > > > > > +    __u8    use_integer_mv_flag;
+> > > > > > +    __s8    slice_qp_delta;
+> > > > > > +    __s8    slice_cb_qp_offset;
+> > > > > > +    __s8    slice_cr_qp_offset;
+> > > > > > +    __s8    slice_act_y_qp_offset;
+> > > > > > +    __s8    slice_act_cb_qp_offset;
+> > > > > > +    __s8    slice_act_cr_qp_offset;
+> > > > > > +    __u8    slice_deblocking_filter_disabled_flag;
+> > > > > > +    __s8    slice_beta_offset_div2;
+> > > > > > +    __s8    slice_tc_offset_div2;
+> > > > > > +    __u8    slice_loop_filter_across_slices_enabled_flag;
+> > > > > > +
+> > > > > > +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: Picture timing SEI m=
+essage */
+> > > > > > +    __u8    pic_struct;
+> > > I think the decoder doesn't care about this, it is used for display.
+> >=20
+> > The purpose of this field is to indicate whether the current picture is
+> > a progressive frame or an interlaced field picture, which is useful for
+> > decoding.
+> >=20
+> > At least our decoder has a register field to indicate frame/top
+> > field/bottom field, so we certainly need to keep the info around.
+> > Looking at the spec and the ffmpeg implementation, it looks like this
+> > flag of the bitstream is the usual way to report field coding.
+> It depends whether the decoder cares about scan type or more, I
+> wonder prefer general_interlaced_source_flag for just scan type, it
+> would be better than reading another SEL.
+
+Well we still need a way to indicate if the current data is top or
+bottom field for interlaced. I don't think that knowing that the whole
+video is interlaced would be precise enough.
+
+Cheers,
+
+Paul
+
+> > > > > > +
+> > > > > > +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segmen=
+t header */
+> > > > > > +    struct v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_M=
+AX];
+> > > > > > +    __u8    num_active_dpb_entries;
+> > > > > > +    __u8    ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> > > > > > +    __u8    ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> > > > > > +
+> > > > > > +    __u8    num_rps_poc_st_curr_before;
+> > > > > > +    __u8    num_rps_poc_st_curr_after;
+> > > > > > +    __u8    num_rps_poc_lt_curr;
+> > > > > > +
+> > > > > > +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: Weighted prediction =
+parameter */
+> > > > > > +    struct v4l2_hevc_pred_weight_table pred_weight_table;
+> > > > > > +};
+> > > > > > +
+> > > > > >  #endif
+> > --=20
+> > Paul Kocialkowski, Bootlin (formerly Free Electrons)
+> > Embedded Linux and kernel engineering
+> > https://bootlin.com
+> >=20
+--=20
+Paul Kocialkowski, Bootlin (formerly Free Electrons)
+Embedded Linux and kernel engineering
+https://bootlin.com
+
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-sunxi" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-sunxi+unsubscribe-/JYPxA39Uh5TLH3MbocFF+G/Ez6ZCGd0@public.gmane.org
+For more options, visit https://groups.google.com/d/optout.
