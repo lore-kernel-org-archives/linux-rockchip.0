@@ -1,54 +1,51 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH v2] dt-bindings: phy-rockchip-inno-usb2: add documentation for extcon property
-Date: Wed,  9 Jan 2019 18:17:39 +0100
-Message-ID: <20190109171739.11494-1-enric.balletbo@collabora.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: [PATCH 0/3] Support reflect-x/y on RK3328, RK3368, and RK3399
+Date: Wed,  9 Jan 2019 15:56:36 -0300
+Message-ID: <20190109185639.5093-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: kernel@collabora.com, bleung@chromium.org, heiko@sntech.de, groeck@google.com, kieran.bingham@ideasonboard.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: Daniele Castagna <dcastagna@chromium.org>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, "Kristian H . Kristensen" <hoegsberg@chromium.org>, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Commit 98898f3bc83c8 ("phy: rockchip-inno-usb2: support otg-port for
-rk3399") introduces the extcon property that is used to detect the
-cable-state. Document this property in the documentation binding.
-
-Fixes: 98898f3bc83c8 ("phy: rockchip-inno-usb2: support otg-port for rk3399")
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
-Hi all,
-
-This patch was send for the first time within these series [1], but
-might have more sense sent alone as doesn't depends on the rest of
-the series, so, remove from these series and send a second version
-that can be applied independently.
-
-Best regards,
-Enric
-
-[1] https://lkml.org/lkml/2018/8/15/141
-
-Changes in v2:
-- Split from the first version and send as a separate patch.
-- Mention that the extcon provides the cable-state. (Heiko)
-- Remove the introduced utmi-avalid documentation.
-
- .../devicetree/bindings/phy/phy-rockchip-inno-usb2.txt          | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
-index 074a7b3b0425..00639baae74a 100644
---- a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
-+++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
-@@ -23,6 +23,8 @@ Optional properties:
- 		 register files". When set driver will request its
- 		 phandle as one companion-grf for some special SoCs
- 		 (e.g RV1108).
-+ - extcon : phandle to the extcon device providing the cable state for
-+		 the otg phy.
- 
- Required nodes : a sub-node is required for each port the phy provides.
- 		 The sub-node name is used to identify host or otg port,
--- 
-2.20.1
+SGVyZSdzIGEgc21hbGwgc2VyaWVzIHN1cHBvcnRpbmcgcGxhbmUgcmVmbGVjdGlvbiAoYWthLiBt
+aXJyb3JpbmcpCnByb3BlcnRpZXMgb24gUkszMzI4LCBSSzMzNjgsIGFuZCBSSzMzOTkgU29Dcy4K
+Ck5vdGUgdGhhdCBSSzMyODggc3BlY2lmaWNhdGlvbiBkb2Vzbid0IHNlZW0gdG8gZG9jdW1lbnQg
+cmVnaXN0ZXJzCmZvciBwbGFuZSBtaXJyb3JpbmcsIGJ1dCBpbnN0ZWFkIGl0IG9ubHkgc2VlbXMg
+dG8gc3VwcG9ydCBtaXJyb3JpbmcKYXQgdGhlIGRpc3BsYXkgKENSVEMpIGxldmVsLgoKQSBzbWFs
+bCB0eXBvIGNsZWFudXAgcGF0Y2ggaXMgaW5jbHVkZWQsIGluIHBhdGNoIDEuIE5vdCByZWxhdGVk
+CnRvIHRoZSByb3RhdGlvbiBzdHVmZi4KCkluIG9yZGVyIHRvIHN1cHBvcnQgdGhpcyBmZWF0dXJl
+LCBwYXRjaCAyIHNlcGFyYXRlcyB0aGUgcmVnaXN0ZXIKc2V0IGZvciB3aW4wIGFuZCB3aW4xLgoK
+T25jZSB0aGF0J3MgZG9uZSwgcGF0Y2ggMyBjcmVhdGVzIHRoZSBwcm9wZXJ0aWVzLCBpZiBzdXBw
+b3J0ZWQKYnkgZWFjaCBwbGFuZS9Tb0MuCgpUaGUgZm9sbG93aW5nIG1vZGV0ZXN0IGNvbW1hbmRz
+IHdvdWxkIHRlc3QgdGhpcyBmZWF0dXJlLAp3aGVyZSAzMCBpcyB0aGUgcGxhbmUgSUQsIGFuZCA0
+OSA9IHJvdGF0ZV8wICsgcmVsZWN0X3kgKyByZWZsZWN0X3guCiAgICAKWCBtaXJyb3I6Cm1vZGV0
+ZXN0IC1zIDQzQDMzOjE5MjB4MTA4MEBYUjI0IC13IDMwOnJvdGF0aW9uOjE3CiAgICAKWSBtaXJy
+b3I6Cm1vZGV0ZXN0IC1zIDQzQDMzOjE5MjB4MTA4MEBYUjI0IC13IDMwOnJvdGF0aW9uOjMzCiAg
+ICAKWFkgbWlycm9yOgptb2RldGVzdCAtcyA0M0AzMzoxOTIweDEwODBAWFIyNCAtdyAzMDpyb3Rh
+dGlvbjo0OQoKVGhpcyB3b3JrIGhhcyBiZWVuIG9yaWdpbmFsbHkgYnkgRGFuaWVsZS4gSSBqdXN0
+IGNsZWFuZWQKdXAgdGhlIGltcGxlbWVudGF0aW9uIGEgaXQsIGFuZCBwb3J0ZWQgdGhlIGNvZGUg
+dG8gdXBzdHJlYW0uCgpUaGlzIHNlcmllcyBpcyBiYXNlZCBvbiBkcm0tbWlzYy1uZXh0IHBsdXMg
+aHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDc1Mjg5My8uCgpEYW5pZWxlIENh
+c3RhZ25hICgxKToKICBkcm0vcm9ja2NoaXA6IEFkZCByZWZsZWN0aW9uIHByb3BlcnRpZXMKCkV6
+ZXF1aWVsIEdhcmNpYSAoMik6CiAgZHJtL3JvY2tjaGlwOiBGaXggdHlwbyBpbiBWT1AgbWFjcm9z
+IGFyZ3VtZW50CiAgZHJtL3JvY2tjaGlwOiBTZXBhcmF0ZSBSSzMyODggZnJvbSBSSzMzNjggd2lu
+MDEgcmVnaXN0ZXJzCgogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
+YyB8IDQ3ICsrKysrKysrKysrKysrKysrKy0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV92b3AuaCB8ICAyICsKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF92b3BfcmVnLmMgfCAzNCArKysrKysrKysrKystLS0KIDMgZmlsZXMgY2hhbmdlZCwgNzAgaW5z
+ZXJ0aW9ucygrKSwgMTMgZGVsZXRpb25zKC0pCgotLSAKMi4yMC4xCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
