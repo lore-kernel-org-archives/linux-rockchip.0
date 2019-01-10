@@ -1,59 +1,83 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 4/4] dt-bindings: phy-rockchip-inno-usb2: add new rockchip,force-bvalid property.
-Date: Thu, 10 Jan 2019 13:31:41 +0100
-Message-ID: <4750582.8aBUlXA8d6@phil>
-References: <20180815095934.11205-1-enric.balletbo@collabora.com> <20180815222604.GB8193@rob-hp-laptop> <CAFqH_538JF7gmpQzgyShw-8nhUEtkVrGQ6vjkdc5neJd8JCAOQ@mail.gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 5/5] arm64: dts: rockchip: Fix nanopi4 uSD card detect
+Date: Thu, 10 Jan 2019 14:26:15 +0100
+Message-ID: <6110368.KK4K1XCW2x@phil>
+References: <cover.1546981251.git.robin.murphy@arm.com>
+ <6925511.AQqqGbhmY3@phil> <c2c40662-f7aa-75d5-572e-c58b21170b59@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFqH_538JF7gmpQzgyShw-8nhUEtkVrGQ6vjkdc5neJd8JCAOQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo Serra <eballetbo@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Alexandru Stan <amstan@chromium.org>, Guenter Roeck <groeck@google.com>, Kishon Vijay Abraham I <kishon@ti.com>, Frank Wang <frank.wang@rock-chips.com>, kieran.bingham@ideasonboard.com, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, kernel@collabora.com, Benson Leung <bleung@chromium.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <c2c40662-f7aa-75d5-572e-c58b21170b59-5wv7dgnIgG8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Enric,
-Am Donnerstag, 10. Januar 2019, 10:06:38 CET schrieb Enric Balletbo Serra:
-> Missatge de Rob Herring <robh@kernel.org> del dia dj., 16 d’ag. 2018 a les 0:26:
-> >
-> > On Wed, Aug 15, 2018 at 11:59:34AM +0200, Enric Balletbo i Serra wrote:
-> > > This property is used when the otg-id pin is not connected. When this
-> > > property is set it forces to set the B-Device Session Valid bit when the
-> > > port works as device and clears that bit when the port works as host.
-> > >
-> > > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> > > ---
-> > >
-> > >  .../devicetree/bindings/phy/phy-rockchip-inno-usb2.txt       | 5 +++++
-> > >  1 file changed, 5 insertions(+)
-> > >
-> > > diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
-> > > index 2d4808d3920b..55761f466c41 100644
-> > > --- a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
-> > > +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
-> > > @@ -48,6 +48,11 @@ Optional properties:
-> > >               See ./phy-bindings.txt for details.
-> > >   - rockchip,utmi-avalid : boolean, use the avalid register to get vbus status.
-> > >                         Otherwise, use the bvalid register.
-> > > + - rockchip,force-bvalid : boolean, set this to force the B-Device Session
-> > > +                       Valid bit when the usb port is in device mode. This
-> > > +                       is used when the otg-id pin is not connected.
-> > > +                       Only supported in case of compatible being:
-> > > +                       * "rockchip,rk3399-usb2phy"
-> >
-> > Shouldn't you describe the property of the h/w that ID pin is not
-> > connected, rather than what you do with that information.
-> >
+Am Mittwoch, 9. Januar 2019, 00:22:01 CET schrieb Robin Murphy:
+> On 2019-01-08 10:42 pm, Heiko Stuebner wrote:
+> > Am Dienstag, 8. Januar 2019, 22:57:27 CET schrieb Robin Murphy:
+> >> For whatever reason, the sdmmc_dectn function isn't working properly
+> >> as-is, and microSD insertion and removal goes unnoticed. Flipping the
+> >> pin into GPIO mode, however, does do the job, so let's just handle it
+> >> that way for now until someone feels inclined to figure out what GRF
+> >> voodoo or otherwise is needed for correct 'native' operation.
+> >>
+> >> Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+> >> ---
+> >>   arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi | 7 ++++++-
+> >>   1 file changed, 6 insertions(+), 1 deletion(-)
+> >>
+> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
+> >> index 9c723038d8f8..2a183a6af150 100644
+> >> --- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
+> >> +++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
+> >> @@ -505,6 +505,10 @@
+> >>   		sdmmc0_pwr_h: sdmmc0-pwr-h {
+> >>   			rockchip,pins = <0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
+> >>   		};
+> >> +
+> >> +		sdmmc0_det_l: sdmmc0-det-l {
+> > 
+> > alphabetically by node-name please,
+> > aka sdmmc0-det-* should be above sdmmc0-pwr-*
 > 
-> What about "rockchip, otg-id-not-connected"?
+> Right you are, not sure how that one slipped through.
+> 
+> > If you're respinning the whole series this should be fixed,
+> > otherwise I can also do that when applying.
+> 
+> I've fixed it up locally, although it might be worth holding off on this 
+> particular patch for the moment now that I've taken another look through 
+> the TRM and noticed those smoking-gun-looking bits in 
+> GRF_SIG_DETECT_CON{0,1} - I'll investigate...
 
-just pointing back to our discussion in patch3 about simply assuming
-id-not-connected in the case of the extcon missing
+Personally I'm very much fine with using a cd-gpio instead of trying
+to bring order to the GRF "chaos" ;-) as I'm also not really sure
+if we gain anything with the IP-internal detect mechanism.
 
-I still think that might be the cleaner variant? But I guess you're
-probably already looking into doing that as so far you only resend the
-cleanup patches :-) .
+But then do as you like :-D
 
+> [ side note - do you reckon there'd be any value in bolting a debugfs 
+> interface onto the GRF driver, or is the realistic answer to just use 
+> /dev/mem like everyone else and stop having silly ideas? ]
+
+I don't think it would help much ... especially when it really only outputs
+the register contents in the same way as mem or so does.
+
+Having to fiddle with GRF bits really should only happen in rare cases,
+so I guess mem should do the trick for that.
+
+And the GRF driver also was a bit controversial anyway, with the title
+of "dumping ground" looming over it ... so I'd like to keep it small
+and simple ;-) .
 
 Heiko
