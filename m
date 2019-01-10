@@ -1,49 +1,30 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3] drm/rockchip: Fix YUV buffers color rendering
-Date: Thu, 10 Jan 2019 23:55:10 +0100
-Message-ID: <4017149.IeGv9TzcRU@phil>
-References: <20181214162920.20361-1-ezequiel@collabora.com>
- <20190108214659.28794-1-ezequiel@collabora.com>
+Subject: Re: [PATCH v4] drm/rockchip: update cursors asynchronously through atomic.
+Date: Thu, 10 Jan 2019 23:58:20 +0100
+Message-ID: <2812027.QDNv8WpI9g@phil>
+References: <20181205123310.7965-1-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190108214659.28794-1-ezequiel@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Daniele Castagna <dcastagna@chromium.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, kernel@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181205123310.7965-1-helen.koike@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Helen Koike <helen.koike@collabora.com>
+Cc: Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Gustavo Padovan <gustavo.padovan@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Sean Paul <seanpaul@google.com>, kernel@collabora.com, =?ISO-8859-1?Q?St=E9phane?= Marchesin <marcheu@google.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRGllbnN0YWcsIDguIEphbnVhciAyMDE5LCAyMjo0Njo1OSBDRVQgc2NocmllYiBFemVxdWll
-bCBHYXJjaWE6Cj4gRnJvbTogRGFuaWVsZSBDYXN0YWduYSA8ZGNhc3RhZ25hQGNocm9taXVtLm9y
-Zz4KPiAKPiBDdXJyZW50bHksIFlVViBoYXJkd2FyZSBvdmVybGF5cyBhcmUgY29udmVydGVkIHRv
-IFJHQiB1c2luZwo+IGEgY29sb3Igc3BhY2UgY29udmVyc2lvbiBkaWZmZXJlbnQgdGhhbiBCVC42
-MDEuCj4gCj4gVGhlIHJlc3VsdCBpcyB0aGF0IGNvbG9ycyBvZiBlLmcuIE5WMTIgYnVmZmVycyBk
-b24ndCBtYXRjaAo+IGNvbG9ycyBvZiBZVVYgaGFyZHdhcmUgb3ZlcmxheXMuCj4gCj4gSW4gb3Jk
-ZXIgdG8gZml4IHRoaXMsIGVuYWJsZSBZVVYyWVVWIGFuZCBzZXQgYXBwcm9wcmlhdGUgY29lZmZp
-Y2llbnRzCj4gZm9yIGZvcm1hdHMgc3VjaCBhcyBOVjEyIHRvIGJlIGRpc3BsYXllZCBjb3JyZWN0
-bHkuCj4gCj4gVGhpcyBjb21taXQgd2FzIHRlc3RlZCB1c2luZyBtb2RldGVzdCwgZ3N0cmVhbWVy
-IGFuZCBjaHJvbWVvcyAoaGFyZHdhcmUKPiBhY2NlbGVyYXRlZCB2aWRlbyBwbGF5YmFjaykuIEJl
-Zm9yZSB0aGUgY29tbWl0LCB0ZXN0cyByZW5kZXJpbmcKPiB3aXRoIE5WMTIgZm9ybWF0IHJlc3Vs
-dGVkIGluIGNvbG9ycyBub3QgZGlzcGxheWVkIGNvcnJlY3RseS4KPiAKPiBUZXN0IGV4YW1wbGVz
-IChUZXN0ZWQgb24gUkszMzk5IGFuZCBSSzMyODggYm9hcmRzIGNvbm5lY3RlZCB0byBIRE1JIG1v
-bml0b3IpOgo+IAo+ICAgJCBtb2RldGVzdCAzOUAzMjoxOTIweDEwODBATlYxMgo+ICAgJCBnc3Qt
-bGF1bmNoLTEuMCB2aWRlb3Rlc3RyYyAhIHZpZGVvL3gtcmF3LGZvcm1hdD1OVjEyICEga21zc2lu
-awo+IAo+IFNpZ25lZC1vZmYtYnk6IERhbmllbGUgQ2FzdGFnbmEgPGRjYXN0YWduYUBjaHJvbWl1
-bS5vcmc+Cj4gW2V6ZXF1aWVsOiByZWJhc2Ugb24gbGludXgtbmV4dCBhbmQgbWFzc2FnZSBjb21t
-aXQgbG9nXQo+IFNpZ25lZC1vZmYtYnk6IEV6ZXF1aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29sbGFi
-b3JhLmNvbT4KPiAtLS0KPiB2MzogQWRkIGEgY2hlY2sgZm9yIG5vbi1udWxsIHdpbl95dXYyeXV2
-IGFzIHN1Z2dlc3RlZCBieSBIZWlrby4KCmFwcGxpZWQgdG8gZHJtLW1pc2MtbmV4dCBhZnRlciBt
-YWtpbmcgc3VyZSB0aGF0IGRpc3BsYXkga2VlcHMKd29ya2luZyBvbiBhbGwgcm9ja2NoaXAgc29j
-cyBub3cKClRoYW5rcwpIZWlrbwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVk
-ZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2RyaS1kZXZlbAo=
+Am Mittwoch, 5. Dezember 2018, 13:33:10 CET schrieb Helen Koike:
+> From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> 
+> Add support to async updates of cursors by using the new atomic
+> interface for that.
+> 
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> [updated for upstream]
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+
+applied to drm-misc-next after testing cursor operation on multiple
+machines.
+
+Thanks
+Heiko
