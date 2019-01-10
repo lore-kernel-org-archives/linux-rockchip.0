@@ -1,15 +1,14 @@
-From: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: Remove inconsistent use of 'arm,armv8'
- compatible string
-Date: Wed, 9 Jan 2019 20:27:09 -0600
-Message-ID: <20190110022709.kh5vlave65jn7m4g@kahuna>
-References: <20190109202934.29304-1-robh@kernel.org>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH 00/15] PCI: endpoint: Cleanup EPC features
+Date: Thu, 10 Jan 2019 10:35:00 +0530
+Message-ID: <ce1e4bab-5c7c-5593-d28f-2187a04baef6@ti.com>
+References: <20190107064148.10152-1-kishon@ti.com> <1936135.agpnLP3rXd@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20190109202934.29304-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+In-Reply-To: <1936135.agpnLP3rXd@phil>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,82 +18,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, bcm-kernel-feedback-list@broadcom
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Gustavo Pimentel <gustavo.pimentel-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alan Douglas <adouglas-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Jia-Ju Bai <baijiaju1990-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Cyrille Pitchen <cyrille.pitchen-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 14:29-20190109, Rob Herring wrote:
-> The 'arm,armv8' compatible string is only for software models. It adds
-> little value otherwise and is inconsistently used as a fallback on some
-> platforms. Remove it from those platforms.
+Hi Heiko,
+
+On 07/01/19 8:05 PM, Heiko Stuebner wrote:
+> Am Montag, 7. Januar 2019, 07:41:33 CET schrieb Kishon Vijay Abraham I:
+>> Hi Lorenzo,
+>>
+>> The Endpoint controller driver uses features member in 'struct pci_epc'
+>> to advertise the list of supported features to the endpoint function
+>> driver.
+>>
+>> There are a few shortcomings with this approach.
+>>   *) Certain endpoint controllers support fixed size BAR (e.g. TI's
+>>      AM654 uses Designware configuration with fixed size BAR). The
+>>      size of each BARs cannot be passed to the endpoint function
+>>      driver.
+>>   *) Too many macros for handling EPC features.
+>>      (EPC_FEATURE_NO_LINKUP_NOTIFIER, EPC_FEATURE_BAR_MASK,
+>>       EPC_FEATURE_MSIX_AVAILABLE, EPC_FEATURE_SET_BAR,
+>>       EPC_FEATURE_GET_BAR)
+>>   *) Endpoint controllers are directly modifying struct pci_epc
+>>      members. (I have plans to move struct pci_epc to
+>>      drivers/pci/endpoint so that pci_epc members are referenced
+>>      only by endpoint core).
+>>
+>> To overcome the above shortcomings, introduced pci_epc_get_features()
+>> API, pci_epc_features structure and a ->get_features() callback.
+>>
+>> Also added a patch to set BAR flags in pci_epf_alloc_space and
+>> remove it from pci-epf-test function driver.
+>>
+>> Tested on TI's DRA7xx platform.
 > 
-> This fixes warnings generated by the DT schema.
+> While I don't have that much PCI experience and hence cannot judge
+> this cleanup as a whole, I can at least say, that my Rockchip rk3399
+> still does find its PCIE-connected wifi card, so this series on rk3399
 > 
-> Reported-by: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
-> Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-> Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> ---
-[...]
+> Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-ARM SoC maintainers, At least on a quick look (I could be wrong), I
-think we don't have any explicit processor bindings documentation.
+Thank you for testing this series with PCIe controller configured in RC mode.
+It would be great if it could be tested with EP mode too.
 
-However, most of SoC folks seem to key off matches else where I
-guess..
+Thanks for the help.
 
-Not sure, while at this, you if you are planning on fixing up
-Documentation/devicetree/bindings/arm/arm-boards:
-compatible = "arm,cortex-a53","arm,armv8";
-Documentation/devicetree/bindings/arm/cpu-capacity.txt:
-compatible = "arm,cortex-a53","arm,armv8";
-
-Anyways, for TI SoC:
-
->  arch/arm64/boot/dts/ti/k3-am654.dtsi          |   8 +-
-> diff --git a/arch/arm64/boot/dts/ti/k3-am654.dtsi b/arch/arm64/boot/dts/ti/k3-am654.dtsi
-> index 2affa6f6617e..b221abf43ac2 100644
-> --- a/arch/arm64/boot/dts/ti/k3-am654.dtsi
-> +++ b/arch/arm64/boot/dts/ti/k3-am654.dtsi
-> @@ -34,7 +34,7 @@
->  		};
->  
->  		cpu0: cpu@0 {
-> -			compatible = "arm,cortex-a53", "arm,armv8";
-> +			compatible = "arm,cortex-a53";
->  			reg = <0x000>;
->  			device_type = "cpu";
->  			enable-method = "psci";
-> @@ -48,7 +48,7 @@
->  		};
->  
->  		cpu1: cpu@1 {
-> -			compatible = "arm,cortex-a53", "arm,armv8";
-> +			compatible = "arm,cortex-a53";
->  			reg = <0x001>;
->  			device_type = "cpu";
->  			enable-method = "psci";
-> @@ -62,7 +62,7 @@
->  		};
->  
->  		cpu2: cpu@100 {
-> -			compatible = "arm,cortex-a53", "arm,armv8";
-> +			compatible = "arm,cortex-a53";
->  			reg = <0x100>;
->  			device_type = "cpu";
->  			enable-method = "psci";
-> @@ -76,7 +76,7 @@
->  		};
->  
->  		cpu3: cpu@101 {
-> -			compatible = "arm,cortex-a53", "arm,armv8";
-> +			compatible = "arm,cortex-a53";
->  			reg = <0x101>;
->  			device_type = "cpu";
->  			enable-method = "psci";
-
-Acked-by: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>
-
--- 
-Regards,
-Nishanth Menon
+Cheers
+Kishon
