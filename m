@@ -1,30 +1,49 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v4] drm/rockchip: update cursors asynchronously through atomic.
-Date: Thu, 10 Jan 2019 23:58:20 +0100
-Message-ID: <2812027.QDNv8WpI9g@phil>
-References: <20181205123310.7965-1-helen.koike@collabora.com>
+Subject: Re: [PATCH 0/3] Support reflect-x/y on RK3328, RK3368, and RK3399
+Date: Fri, 11 Jan 2019 00:55:16 +0100
+Message-ID: <4156121.KF0xb9tBSE@phil>
+References: <20190109185639.5093-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181205123310.7965-1-helen.koike@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Helen Koike <helen.koike@collabora.com>
-Cc: Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Gustavo Padovan <gustavo.padovan@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Sean Paul <seanpaul@google.com>, kernel@collabora.com, =?ISO-8859-1?Q?St=E9phane?= Marchesin <marcheu@google.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190109185639.5093-1-ezequiel@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: Daniele Castagna <dcastagna@chromium.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, "Kristian H . Kristensen" <hoegsberg@chromium.org>, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 5. Dezember 2018, 13:33:10 CET schrieb Helen Koike:
-> From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> 
-> Add support to async updates of cursors by using the new atomic
-> interface for that.
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> [updated for upstream]
-> Signed-off-by: Helen Koike <helen.koike@collabora.com>
-
-applied to drm-misc-next after testing cursor operation on multiple
-machines.
-
-Thanks
-Heiko
+QW0gTWl0dHdvY2gsIDkuIEphbnVhciAyMDE5LCAxOTo1NjozNiBDRVQgc2NocmllYiBFemVxdWll
+bCBHYXJjaWE6Cj4gSGVyZSdzIGEgc21hbGwgc2VyaWVzIHN1cHBvcnRpbmcgcGxhbmUgcmVmbGVj
+dGlvbiAoYWthLiBtaXJyb3JpbmcpCj4gcHJvcGVydGllcyBvbiBSSzMzMjgsIFJLMzM2OCwgYW5k
+IFJLMzM5OSBTb0NzLgo+IAo+IE5vdGUgdGhhdCBSSzMyODggc3BlY2lmaWNhdGlvbiBkb2Vzbid0
+IHNlZW0gdG8gZG9jdW1lbnQgcmVnaXN0ZXJzCj4gZm9yIHBsYW5lIG1pcnJvcmluZywgYnV0IGlu
+c3RlYWQgaXQgb25seSBzZWVtcyB0byBzdXBwb3J0IG1pcnJvcmluZwo+IGF0IHRoZSBkaXNwbGF5
+IChDUlRDKSBsZXZlbC4KPiAKPiBBIHNtYWxsIHR5cG8gY2xlYW51cCBwYXRjaCBpcyBpbmNsdWRl
+ZCwgaW4gcGF0Y2ggMS4gTm90IHJlbGF0ZWQKPiB0byB0aGUgcm90YXRpb24gc3R1ZmYuCj4gCj4g
+SW4gb3JkZXIgdG8gc3VwcG9ydCB0aGlzIGZlYXR1cmUsIHBhdGNoIDIgc2VwYXJhdGVzIHRoZSBy
+ZWdpc3Rlcgo+IHNldCBmb3Igd2luMCBhbmQgd2luMS4KPiAKPiBPbmNlIHRoYXQncyBkb25lLCBw
+YXRjaCAzIGNyZWF0ZXMgdGhlIHByb3BlcnRpZXMsIGlmIHN1cHBvcnRlZAo+IGJ5IGVhY2ggcGxh
+bmUvU29DLgo+IAo+IFRoZSBmb2xsb3dpbmcgbW9kZXRlc3QgY29tbWFuZHMgd291bGQgdGVzdCB0
+aGlzIGZlYXR1cmUsCj4gd2hlcmUgMzAgaXMgdGhlIHBsYW5lIElELCBhbmQgNDkgPSByb3RhdGVf
+MCArIHJlbGVjdF95ICsgcmVmbGVjdF94Lgo+ICAgICAKPiBYIG1pcnJvcjoKPiBtb2RldGVzdCAt
+cyA0M0AzMzoxOTIweDEwODBAWFIyNCAtdyAzMDpyb3RhdGlvbjoxNwo+ICAgICAKPiBZIG1pcnJv
+cjoKPiBtb2RldGVzdCAtcyA0M0AzMzoxOTIweDEwODBAWFIyNCAtdyAzMDpyb3RhdGlvbjozMwo+
+ICAgICAKPiBYWSBtaXJyb3I6Cj4gbW9kZXRlc3QgLXMgNDNAMzM6MTkyMHgxMDgwQFhSMjQgLXcg
+MzA6cm90YXRpb246NDkKPiAKPiBUaGlzIHdvcmsgaGFzIGJlZW4gb3JpZ2luYWxseSBieSBEYW5p
+ZWxlLiBJIGp1c3QgY2xlYW5lZAo+IHVwIHRoZSBpbXBsZW1lbnRhdGlvbiBhIGl0LCBhbmQgcG9y
+dGVkIHRoZSBjb2RlIHRvIHVwc3RyZWFtLgo+IAo+IFRoaXMgc2VyaWVzIGlzIGJhc2VkIG9uIGRy
+bS1taXNjLW5leHQgcGx1cyBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEwNzUy
+ODkzLy4KCmFwcGxpZWQgYWxsIDMgdG8gZHJtLW1pc2MtbmV4dAoKVGhhbmtzIGEgbG90IGZvciBh
+bHNvIGNhdGNoaW5nIHRoYXQgcmVnaXN0ZXIgaXNzdWUuCkhlaWtvCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
+cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
