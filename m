@@ -1,49 +1,69 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 0/3] Support reflect-x/y on RK3328, RK3368, and RK3399
-Date: Fri, 11 Jan 2019 00:55:16 +0100
-Message-ID: <4156121.KF0xb9tBSE@phil>
-References: <20190109185639.5093-1-ezequiel@collabora.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: Remove inconsistent use of 'arm,armv8'
+ compatible string
+Date: Fri, 11 Jan 2019 07:57:12 -0600
+Message-ID: <CAL_JsqKMYY5RsCjzp4eMnW0YrohcqwmhVj0hfUEVrbGJEFx05w@mail.gmail.com>
+References: <20190109202934.29304-1-robh@kernel.org>
+ <20190110144537.p5setcurwu6bwrtl@rric.localdomain>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190109185639.5093-1-ezequiel@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Daniele Castagna <dcastagna@chromium.org>, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, "Kristian H . Kristensen" <hoegsberg@chromium.org>, kernel@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190110144537.p5setcurwu6bwrtl-vWBEXY7mpu582hYKe6nXyg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: "Richter, Robert" <Robert.Richter-YGCgFSpz5w/QT0dZR+AlfA@public.gmane.org>
+Cc: Nishanth Menon <nm-l0cyMroinI0@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "Nair,
+ Jayachandran" <Jayachandran.Nair-YGCgFSpz5w/QT0dZR+AlfA@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Gregory Clement <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <krzk@kerne>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTWl0dHdvY2gsIDkuIEphbnVhciAyMDE5LCAxOTo1NjozNiBDRVQgc2NocmllYiBFemVxdWll
-bCBHYXJjaWE6Cj4gSGVyZSdzIGEgc21hbGwgc2VyaWVzIHN1cHBvcnRpbmcgcGxhbmUgcmVmbGVj
-dGlvbiAoYWthLiBtaXJyb3JpbmcpCj4gcHJvcGVydGllcyBvbiBSSzMzMjgsIFJLMzM2OCwgYW5k
-IFJLMzM5OSBTb0NzLgo+IAo+IE5vdGUgdGhhdCBSSzMyODggc3BlY2lmaWNhdGlvbiBkb2Vzbid0
-IHNlZW0gdG8gZG9jdW1lbnQgcmVnaXN0ZXJzCj4gZm9yIHBsYW5lIG1pcnJvcmluZywgYnV0IGlu
-c3RlYWQgaXQgb25seSBzZWVtcyB0byBzdXBwb3J0IG1pcnJvcmluZwo+IGF0IHRoZSBkaXNwbGF5
-IChDUlRDKSBsZXZlbC4KPiAKPiBBIHNtYWxsIHR5cG8gY2xlYW51cCBwYXRjaCBpcyBpbmNsdWRl
-ZCwgaW4gcGF0Y2ggMS4gTm90IHJlbGF0ZWQKPiB0byB0aGUgcm90YXRpb24gc3R1ZmYuCj4gCj4g
-SW4gb3JkZXIgdG8gc3VwcG9ydCB0aGlzIGZlYXR1cmUsIHBhdGNoIDIgc2VwYXJhdGVzIHRoZSBy
-ZWdpc3Rlcgo+IHNldCBmb3Igd2luMCBhbmQgd2luMS4KPiAKPiBPbmNlIHRoYXQncyBkb25lLCBw
-YXRjaCAzIGNyZWF0ZXMgdGhlIHByb3BlcnRpZXMsIGlmIHN1cHBvcnRlZAo+IGJ5IGVhY2ggcGxh
-bmUvU29DLgo+IAo+IFRoZSBmb2xsb3dpbmcgbW9kZXRlc3QgY29tbWFuZHMgd291bGQgdGVzdCB0
-aGlzIGZlYXR1cmUsCj4gd2hlcmUgMzAgaXMgdGhlIHBsYW5lIElELCBhbmQgNDkgPSByb3RhdGVf
-MCArIHJlbGVjdF95ICsgcmVmbGVjdF94Lgo+ICAgICAKPiBYIG1pcnJvcjoKPiBtb2RldGVzdCAt
-cyA0M0AzMzoxOTIweDEwODBAWFIyNCAtdyAzMDpyb3RhdGlvbjoxNwo+ICAgICAKPiBZIG1pcnJv
-cjoKPiBtb2RldGVzdCAtcyA0M0AzMzoxOTIweDEwODBAWFIyNCAtdyAzMDpyb3RhdGlvbjozMwo+
-ICAgICAKPiBYWSBtaXJyb3I6Cj4gbW9kZXRlc3QgLXMgNDNAMzM6MTkyMHgxMDgwQFhSMjQgLXcg
-MzA6cm90YXRpb246NDkKPiAKPiBUaGlzIHdvcmsgaGFzIGJlZW4gb3JpZ2luYWxseSBieSBEYW5p
-ZWxlLiBJIGp1c3QgY2xlYW5lZAo+IHVwIHRoZSBpbXBsZW1lbnRhdGlvbiBhIGl0LCBhbmQgcG9y
-dGVkIHRoZSBjb2RlIHRvIHVwc3RyZWFtLgo+IAo+IFRoaXMgc2VyaWVzIGlzIGJhc2VkIG9uIGRy
-bS1taXNjLW5leHQgcGx1cyBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEwNzUy
-ODkzLy4KCmFwcGxpZWQgYWxsIDMgdG8gZHJtLW1pc2MtbmV4dAoKVGhhbmtzIGEgbG90IGZvciBh
-bHNvIGNhdGNoaW5nIHRoYXQgcmVnaXN0ZXIgaXNzdWUuCkhlaWtvCgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Thu, Jan 10, 2019 at 8:18 PM Richter, Robert
+<Robert.Richter-YGCgFSpz5w/QT0dZR+AlfA@public.gmane.org> wrote:
+>
+> Rob,
+>
+> On 09.01.19 14:29:34, Rob Herring wrote:
+> > External Email
+> >
+> > The 'arm,armv8' compatible string is only for software models. It adds
+> > little value otherwise and is inconsistently used as a fallback on some
+> > platforms. Remove it from those platforms.
+> >
+> > This fixes warnings generated by the DT schema.
+> >
+> > Reported-by: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
+> > Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+> > Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+> > Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> > ---
+> > armsoc folks, Please apply directly.
+>
+> > diff --git a/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi b/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi
+> > index ff5c4c47b22b..c616132f7d6d 100644
+> > --- a/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi
+> > +++ b/arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi
+> > @@ -27,28 +27,28 @@
+> >
+> >                 cpu@0 {
+> >                         device_type = "cpu";
+> > -                       compatible = "cavium,thunder2", "brcm,vulcan", "arm,armv8";
+> > +                       compatible = "cavium,thunder2";
+>
+> We are just checking if removing the "brcm,vulcan" string has any
+> impact on early silicon revisions we want to support (see also
+> BRCM_CPU_PART_VULCAN).
+>
+> Maybe you make this a separate change?
+
+Dropping brcm,vulcan was unintentional (regex fail). Though keeping it
+means we need a schema change as it was not documented to be a
+fallback.
+
+Rob
