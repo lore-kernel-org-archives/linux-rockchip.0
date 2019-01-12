@@ -1,43 +1,48 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: add ROCK Pi 4 DTS support
-Date: Fri, 11 Jan 2019 16:01:43 -0600
-Message-ID: <20190111220143.GA9773@bogus>
-References: <20190106044030.1484-1-Pragnesh_Patel@mentor.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 3/7] drm: rockchip: vop: add rk3066 vop definitions
+Date: Sat, 12 Jan 2019 19:53:37 +0100
+Message-ID: <2938788.qBnkOikdhP@phil>
+References: <20181229133318.18128-1-jbx6244@gmail.com>
+ <154632658.xpTMZOjgxT@phil> <20190111145424.GA21604@bogus>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190106044030.1484-1-Pragnesh_Patel@mentor.com>
-Sender: linux-kernel-owner@vger.kernel.org
-Cc: heiko@sntech.de, Akash Gajjar <Akash_Gajjar@mentor.com>, Pragnesh Patel <Pragnesh_Patel@mentor.com>, Mark Rutland <mark.rutland@arm.com>, Olof Johansson <olof@lixom.net>, Levin Du <djw@t-chip.com.cn>, Ezequiel Garcia <ezequiel@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Liang Chen <cl@rock-chips.com>, Vicente Bergas <vicencb@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190111145424.GA21604@bogus>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Rob Herring <robh@kernel.org>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, airlied@linux.ie, mturquette@baylibre.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, sboyd@kernel.org, Johan Jonker <jbx6244@gmail.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, 6 Jan 2019 10:10:10 +0530, <Pragnesh_Patel@mentor.com> wrote:
-> From: Akash Gajjar <Akash_Gajjar@mentor.com>
-> 
-> ROCK Pi 4 is RK3399 based SBC from radxa.com. board has a 1G/2G/4G lpddr4, CSI,
-> DSI, HDMI, OTG, USB 2.0, USB 3.0, 10/100/1000 RGMII Ethernet Phy, es8316 codec,
-> POE, WIFI (for Model B only), PCIE M.2 support on board.
-> 
-> This patch enables
-> - HDMI Display
-> - Console
-> - MMC, EMMC
-> - USB 2.0, USB-3.0
-> - Ethernet
-> 
-> Signed-off-by: Akash Gajjar <Akash_Gajjar@mentor.com>
-> Signed-off-by: Pragnesh Patel <Pragnesh_Patel@mentor.com>
-> ---
-> changes in v2
-> - hdmi regulator name correction
-> - replace gpio pin number with appropriate macro
-> 
->  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3399-rock-pi-4.dts    | 606 ++++++++++++++++++
->  3 files changed, 612 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
-> 
-
-Reviewed-by: Rob Herring <robh@kernel.org>
+QW0gRnJlaXRhZywgMTEuIEphbnVhciAyMDE5LCAxNTo1NDoyNCBDRVQgc2NocmllYiBSb2IgSGVy
+cmluZzoKPiBPbiBTdW4sIERlYyAzMCwgMjAxOCBhdCAwNjoyMjowMFBNICswMTAwLCBIZWlrbyBT
+dHVlYm5lciB3cm90ZToKPiA+IEhpIEpvaGFuLAo+ID4gCj4gPiBBbSBTYW1zdGFnLCAyOS4gRGV6
+ZW1iZXIgMjAxOCwgMTQ6MzM6MTQgQ0VUIHNjaHJpZWIgSm9oYW4gSm9ua2VyOgo+ID4gPiBGcm9t
+OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+Cj4gPiA+IAo+ID4gPiBUaGlzIHBh
+dGNoIGFkZHMgdGhlIHJrMzA2NiBWT1AgZGVmaW5pdGlvbnMuCj4gPiA+IAo+ID4gPiBUaGUgVk9Q
+IG9yIExDRCBDb250cm9sbGVyIHNlcnZlcyBhcyBpbnRlcmZhY2UgYmV0d2Vlbgo+ID4gPiBmcmFt
+ZWJ1ZmZlciBtZW1vcnkgYW5kIGEgZGlzcGxheSBkZXZpY2UgKExDRCBwYW5lbCBvciBUViBzZXQp
+Lgo+ID4gPiAKPiA+ID4gVGhpcyBTT0MgaGFzIHR3byBzeW1tZXRyaWNhbCBMQ0RDJ3MgZm9yIGEg
+ZHVhbCBwYW5lbCBhcHBsaWNhdGlvbi4KPiA+ID4gCj4gPiA+IEEgTENEQyBoYXMgNSBkaXNwbGF5
+IGxheWVycy4KPiA+ID4gT25seSAzIGFyZSB1c2VkIGhlcmUuCj4gPiA+IAo+ID4gPiAtIFZpZGVv
+IGxheWVyIDAgKFdpbjApCj4gPiA+IC0gVmlkZW8gbGF5ZXIgMSAoV2luMSkKPiA+ID4gLSBPU0Qg
+bGF5ZXIgICAgIChXaW4yKQo+ID4gCj4gPiBQYXRjaCBpdHNlbGYgbG9va3MgZ29vZCwgd2UnbGwg
+bmVlZCB0byB3YWl0IGEgYml0IHRvIGdpdmUgUm9iIGEgY2hhbmNlCj4gPiB0byBsb29rIGF0IHRo
+ZSAoc2ltcGxlKSBkdC1iaW5kaW5nIGNoYW5nZSBhbmQgSSdsbCBkcm9wIHRoZSBwYXJhZ3JhcGgK
+PiA+IGFib3V0IHRoZSBkaXNwbGF5IGxheWVycyB3aGVuIGFwcGx5aW5nLgo+IAo+IERvbid0IHdh
+aXQgb24gbWUgZm9yIHNpbXBsZSBvbmVsaW5lIGNvbXBhdGlibGUgYWRkaXRpb25zLgoKVGhpcyBt
+b3JlIG9yIGxlc3Mgd2FzIHRoZSBmYXVsdCBvZiB0aGUgeWVhciBjaGFuZ2UgOi1EIC4uLiBtb3N0
+IG9mCnRoZSB0aW1lIEknZCBhcHBseSBhIHNpbXBsZSBuZXcgY29tcGF0aWJsZSBlYXJsaWVyIGFu
+ZCBwb3NzaWJseQp3aXRob3V0IEFjayA7LSkgLgoKQW5kIEkndmUgYXBwbGllZCB0aGUgcGF0Y2gg
+dG8gZHJtLW1pc2MtbmV4dCBub3cgKGZvciA1LjEpLgoKSGVpa28KCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
