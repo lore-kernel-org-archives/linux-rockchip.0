@@ -1,33 +1,28 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 5/7] ARM: dts: rockchip: add rk3066 vop display nodes
-Date: Sat, 12 Jan 2019 20:24:23 +0100
-Message-ID: <2822435.PgMx1mWbPR@phil>
-References: <20181229133318.18128-1-jbx6244@gmail.com>
- <20181229133318.18128-6-jbx6244@gmail.com>
+Subject: Re: [PATCH 4/4] ARM: dts: rv1108: Add support for rv1108-elgin-r1 board
+Date: Sat, 12 Jan 2019 21:16:58 +0100
+Message-ID: <2576878.pKSbgTzd5o@phil>
+References: <20190104014023.17973-1-otavio@ossystems.com.br> <20190104014023.17973-4-otavio@ossystems.com.br>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20181229133318.18128-6-jbx6244@gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, airlied@linux.ie, mturquette@baylibre.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, sboyd@kernel.org, robh+dt@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190104014023.17973-4-otavio@ossystems.com.br>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Otavio Salvador <otavio@ossystems.com.br>
+Cc: linux-arm-kernel@lists.infradead.org, Jason Zhu <jason.zhu@rock-chips.com>, Vicent Chi <vicent.chi@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, Philipp Tomsic <philipp.tomsich@theobroma-systems.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Olof Johansson <olof@lixom.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gU2Ftc3RhZywgMjkuIERlemVtYmVyIDIwMTgsIDE0OjMzOjE2IENFVCBzY2hyaWViIEpvaGFu
-IEpvbmtlcjoKPiBGcm9tOiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+Cj4gCj4g
-VGhpcyBwYXRjaCBhZGRzIHRoZSBjb3JlIGRpc3BsYXkgc3Vic3lzdGVtIGFuZCB2b3Agbm9kZXMg
-dG8gcmszMDY2Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNo
-aXBzLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBKb2hhbiBKb25rZXIgPGpieDYyNDRAZ21haWwuY29t
-PgoKYXBwbGllZCBmb3IgNS4xCgpUaGFua3MKSGVpa28KCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Am Freitag, 4. Januar 2019, 02:40:23 CET schrieb Otavio Salvador:
+> rv1108-elgin-r1 board is based on Rockchip RV1108 SoC.
+> 
+> Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
+
+applied all 4 patches (including the vendor-prefix) for 5.1
+
+I've rearranged some minor properties in the board-dts to follow
+alphabetical ordering (emmc and gmac).
+
+
+Thanks
+Heiko
