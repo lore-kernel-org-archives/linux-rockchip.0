@@ -1,57 +1,40 @@
-From: Julia Lawall <Julia.Lawall@lip6.fr>
-Subject: [PATCH 3/4] drm/rockchip: add missing of_node_put
-Date: Sun, 13 Jan 2019 09:47:43 +0100
-Message-ID: <1547369264-24831-4-git-send-email-Julia.Lawall@lip6.fr>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 3/4] drm/rockchip: add missing of_node_put
+Date: Sun, 13 Jan 2019 19:48:49 +0100
+Message-ID: <3397932.PmTvevuZIG@phil>
 References: <1547369264-24831-1-git-send-email-Julia.Lawall@lip6.fr>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1547369264-24831-1-git-send-email-Julia.Lawall@lip6.fr>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sandy Huang <hjc@rock-chips.com>
-Cc: kernel-janitors@vger.kernel.org, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+ <1547369264-24831-4-git-send-email-Julia.Lawall@lip6.fr>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1547369264-24831-4-git-send-email-Julia.Lawall@lip6.fr>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Julia Lawall <Julia.Lawall@lip6.fr>
+Cc: David Airlie <airlied@linux.ie>, kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The device node iterators perform an of_node_get on each iteration, so a
-jump out of the loop requires an of_node_put.
-
-The semantic patch that fixes this problem is as follows
-(http://coccinelle.lip6.fr):
-
-// <smpl>
-@@
-expression root,e;
-local idexpression child;
-iterator name for_each_child_of_node;
-@@
-
- for_each_child_of_node(root, child) {
-   ... when != of_node_put(child)
-       when != e = child
-+  of_node_put(child);
-?  break;
-   ...
-}
-... when != child
-// </smpl>
-
-Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
-
----
- drivers/gpu/drm/rockchip/rockchip_rgb.c |    4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c b/drivers/gpu/drm/rockchip/rockchip_rgb.c
-index 96ac145..37f9302 100644
---- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
-@@ -113,8 +113,10 @@ struct rockchip_rgb *rockchip_rgb_init(struct device *dev,
- 		child_count++;
- 		ret = drm_of_find_panel_or_bridge(dev->of_node, 0, endpoint_id,
- 						  &panel, &bridge);
--		if (!ret)
-+		if (!ret) {
-+			of_node_put(endpoint);
- 			break;
-+		}
- 	}
- 
- 	of_node_put(port);
+QW0gU29ubnRhZywgMTMuIEphbnVhciAyMDE5LCAwOTo0Nzo0MyBDRVQgc2NocmllYiBKdWxpYSBM
+YXdhbGw6Cj4gVGhlIGRldmljZSBub2RlIGl0ZXJhdG9ycyBwZXJmb3JtIGFuIG9mX25vZGVfZ2V0
+IG9uIGVhY2ggaXRlcmF0aW9uLCBzbyBhCj4ganVtcCBvdXQgb2YgdGhlIGxvb3AgcmVxdWlyZXMg
+YW4gb2Zfbm9kZV9wdXQuCj4gCj4gVGhlIHNlbWFudGljIHBhdGNoIHRoYXQgZml4ZXMgdGhpcyBw
+cm9ibGVtIGlzIGFzIGZvbGxvd3MKPiAoaHR0cDovL2NvY2NpbmVsbGUubGlwNi5mcik6Cj4gCj4g
+Ly8gPHNtcGw+Cj4gQEAKPiBleHByZXNzaW9uIHJvb3QsZTsKPiBsb2NhbCBpZGV4cHJlc3Npb24g
+Y2hpbGQ7Cj4gaXRlcmF0b3IgbmFtZSBmb3JfZWFjaF9jaGlsZF9vZl9ub2RlOwo+IEBACj4gCj4g
+IGZvcl9lYWNoX2NoaWxkX29mX25vZGUocm9vdCwgY2hpbGQpIHsKPiAgICAuLi4gd2hlbiAhPSBv
+Zl9ub2RlX3B1dChjaGlsZCkKPiAgICAgICAgd2hlbiAhPSBlID0gY2hpbGQKPiArICBvZl9ub2Rl
+X3B1dChjaGlsZCk7Cj4gPyAgYnJlYWs7Cj4gICAgLi4uCj4gfQo+IC4uLiB3aGVuICE9IGNoaWxk
+Cj4gLy8gPC9zbXBsPgo+IAo+IFNpZ25lZC1vZmYtYnk6IEp1bGlhIExhd2FsbCA8SnVsaWEuTGF3
+YWxsQGxpcDYuZnI+CgpJJ3ZlIGFkZGVkIGEgZml4ZXMrc3RhYmxlIHRhZyBhbmQgYXBwbGllZCBp
+dCB0byBkcm0tbWlzYy1maXhlcwoKVGhhbmtzIGZvciBjYXRjaGluZyB0aGF0CkhlaWtvCgoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
