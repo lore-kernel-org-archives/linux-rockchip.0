@@ -1,35 +1,57 @@
 From: Julia Lawall <Julia.Lawall@lip6.fr>
-Subject: [PATCH 0/4] add missing of_node_puts
-Date: Sun, 13 Jan 2019 09:47:40 +0100
-Message-ID: <1547369264-24831-1-git-send-email-Julia.Lawall@lip6.fr>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-rockchip@lists.infradead.org
-Cc: David Airlie <airlied@linux.ie>, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: [PATCH 3/4] drm/rockchip: add missing of_node_put
+Date: Sun, 13 Jan 2019 09:47:43 +0100
+Message-ID: <1547369264-24831-4-git-send-email-Julia.Lawall@lip6.fr>
+References: <1547369264-24831-1-git-send-email-Julia.Lawall@lip6.fr>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1547369264-24831-1-git-send-email-Julia.Lawall@lip6.fr>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sandy Huang <hjc@rock-chips.com>
+Cc: kernel-janitors@vger.kernel.org, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlIGRldmljZSBub2RlIGl0ZXJhdG9ycyBwZXJmb3JtIGFuIG9mX25vZGVfZ2V0IG9uIGVhY2gg
-aXRlcmF0aW9uLCBzbyBhCmp1bXAgb3V0IG9mIHRoZSBsb29wIHJlcXVpcmVzIGFuIG9mX25vZGVf
-cHV0LgoKVGhlIHBhdGNoZXMgZm9yIGRyaXZlcnMvZ3B1L2RybS9pbXgvaW14LWxkYi5jIGFuZApk
-cml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuNGlfYmFja2VuZC5jIGNvbnRhaW4gc29tZSBhZGRlZCBv
-Zl9ub2RlX3B1dHMgZm9yCndoaWNoIHRoZSBuZWVkIHdhcyBpZGVudGlmaWVkIG1hbnVhbGx5LiAg
-RGV0YWlscyBhcmUgaW4gdGhlIHBhdGNoIGxvZ3MuCgotLS0KCiBkcml2ZXJzL2dwdS9kcm0vaW14
-L2lteC1sZGIuYyAgICAgICAgICAgfCAgIDI1ICsrKysrKysrKysrKysrKysrLS0tLS0tLS0KIGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICB8ICAgIDUgKysrKy0KIGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9yZ2IuYyB8ICAgIDQgKysrLQogZHJpdmVycy9n
-cHUvZHJtL3N1bjRpL3N1bjRpX2JhY2tlbmQuYyAgIHwgICAgMSArCiA0IGZpbGVzIGNoYW5nZWQs
-IDI1IGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+The device node iterators perform an of_node_get on each iteration, so a
+jump out of the loop requires an of_node_put.
+
+The semantic patch that fixes this problem is as follows
+(http://coccinelle.lip6.fr):
+
+// <smpl>
+@@
+expression root,e;
+local idexpression child;
+iterator name for_each_child_of_node;
+@@
+
+ for_each_child_of_node(root, child) {
+   ... when != of_node_put(child)
+       when != e = child
++  of_node_put(child);
+?  break;
+   ...
+}
+... when != child
+// </smpl>
+
+Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
+
+---
+ drivers/gpu/drm/rockchip/rockchip_rgb.c |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+index 96ac145..37f9302 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+@@ -113,8 +113,10 @@ struct rockchip_rgb *rockchip_rgb_init(struct device *dev,
+ 		child_count++;
+ 		ret = drm_of_find_panel_or_bridge(dev->of_node, 0, endpoint_id,
+ 						  &panel, &bridge);
+-		if (!ret)
++		if (!ret) {
++			of_node_put(endpoint);
+ 			break;
++		}
+ 	}
+ 
+ 	of_node_put(port);
