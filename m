@@ -1,49 +1,69 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 3/4] drm/rockchip: add missing of_node_put
-Date: Mon, 14 Jan 2019 11:09:05 +0100
-Message-ID: <10335721.Px6jQUZGiA@phil>
-References: <1547369264-24831-1-git-send-email-Julia.Lawall@lip6.fr>
- <3397932.PmTvevuZIG@phil> <20190114100556.GC10517@phenom.ffwll.local>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Subject: [PATCH v2 02/15] PCI: dwc: Add ->get_features() callback function in dw_pcie_ep_ops
+Date: Mon, 14 Jan 2019 16:45:00 +0530
+Message-ID: <20190114111513.21618-3-kishon@ti.com>
+References: <20190114111513.21618-1-kishon@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190114100556.GC10517@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Julia Lawall <Julia.Lawall@lip6.fr>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190114111513.21618-1-kishon@ti.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Alan Douglas <adouglas@cadence.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Jingoo Han <jingoohan1@gmail.com>, linux-omap@vger.kernel.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTW9udGFnLCAxNC4gSmFudWFyIDIwMTksIDExOjA1OjU2IENFVCBzY2hyaWViIERhbmllbCBW
-ZXR0ZXI6Cj4gT24gU3VuLCBKYW4gMTMsIDIwMTkgYXQgMDc6NDg6NDlQTSArMDEwMCwgSGVpa28g
-U3R1ZWJuZXIgd3JvdGU6Cj4gPiBBbSBTb25udGFnLCAxMy4gSmFudWFyIDIwMTksIDA5OjQ3OjQz
-IENFVCBzY2hyaWViIEp1bGlhIExhd2FsbDoKPiA+ID4gVGhlIGRldmljZSBub2RlIGl0ZXJhdG9y
-cyBwZXJmb3JtIGFuIG9mX25vZGVfZ2V0IG9uIGVhY2ggaXRlcmF0aW9uLCBzbyBhCj4gPiA+IGp1
-bXAgb3V0IG9mIHRoZSBsb29wIHJlcXVpcmVzIGFuIG9mX25vZGVfcHV0Lgo+ID4gPiAKPiA+ID4g
-VGhlIHNlbWFudGljIHBhdGNoIHRoYXQgZml4ZXMgdGhpcyBwcm9ibGVtIGlzIGFzIGZvbGxvd3MK
-PiA+ID4gKGh0dHA6Ly9jb2NjaW5lbGxlLmxpcDYuZnIpOgo+ID4gPiAKPiA+ID4gLy8gPHNtcGw+
-Cj4gPiA+IEBACj4gPiA+IGV4cHJlc3Npb24gcm9vdCxlOwo+ID4gPiBsb2NhbCBpZGV4cHJlc3Np
-b24gY2hpbGQ7Cj4gPiA+IGl0ZXJhdG9yIG5hbWUgZm9yX2VhY2hfY2hpbGRfb2Zfbm9kZTsKPiA+
-ID4gQEAKPiA+ID4gCj4gPiA+ICBmb3JfZWFjaF9jaGlsZF9vZl9ub2RlKHJvb3QsIGNoaWxkKSB7
-Cj4gPiA+ICAgIC4uLiB3aGVuICE9IG9mX25vZGVfcHV0KGNoaWxkKQo+ID4gPiAgICAgICAgd2hl
-biAhPSBlID0gY2hpbGQKPiA+ID4gKyAgb2Zfbm9kZV9wdXQoY2hpbGQpOwo+ID4gPiA/ICBicmVh
-azsKPiA+ID4gICAgLi4uCj4gPiA+IH0KPiA+ID4gLi4uIHdoZW4gIT0gY2hpbGQKPiA+ID4gLy8g
-PC9zbXBsPgo+ID4gPiAKPiA+ID4gU2lnbmVkLW9mZi1ieTogSnVsaWEgTGF3YWxsIDxKdWxpYS5M
-YXdhbGxAbGlwNi5mcj4KPiA+IAo+ID4gSSd2ZSBhZGRlZCBhIGZpeGVzK3N0YWJsZSB0YWcgYW5k
-IGFwcGxpZWQgaXQgdG8gZHJtLW1pc2MtZml4ZXMKPiAKPiBBbGwgb2YgdGhlbSBvciBqdXN0IHRo
-aXMgb25lIGhlcmU/IFRoZXNlIGNsZWFudXAgcGF0Y2hlcyBoYXZlIGEgaGlnaAo+IGNoYW5jZSBv
-ZiBmYWxsaW5nIHRocm91Z2ggY3JhY2tzLCBzbyB0YWtpbmcgdGhlbSBhbGwgdXN1YWxseSB3b3Jr
-cyBvdXQKPiBiZXR0ZXIgLi4uCgpUaGF0IGlzIHRoZSBvbmx5IG9uZSBJIGdvdCwgc28gcmlnaHQg
-bm93IEkgb25seSBhcHBsaWVkIHRoaXMgb25lIGluIG15IGluYm94LgpXZWVrZW5kIGFuZCBzdWNo
-IHJlc3VsdGVkIGluIG1lIG5vdCBnb2luZyBsb29raW5nIGZvciBvdGhlciBvbmVzLgoKSGVpa28K
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
-ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Each platform using Designware PCIe core can support different set of
+endpoint features. Add a new callback function ->get_features() in
+dw_pcie_ep_ops so that each platform using Designware PCIe core can
+advertise its supported features to the endpoint function driver.
+
+Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
+---
+ drivers/pci/controller/dwc/pcie-designware-ep.c | 12 ++++++++++++
+ drivers/pci/controller/dwc/pcie-designware.h    |  1 +
+ 2 files changed, 13 insertions(+)
+
+diff --git a/drivers/pci/controller/dwc/pcie-designware-ep.c b/drivers/pci/controller/dwc/pcie-designware-ep.c
+index a543c45c7224..7a2925a16ab8 100644
+--- a/drivers/pci/controller/dwc/pcie-designware-ep.c
++++ b/drivers/pci/controller/dwc/pcie-designware-ep.c
+@@ -355,6 +355,17 @@ static int dw_pcie_ep_start(struct pci_epc *epc)
+ 	return pci->ops->start_link(pci);
+ }
+ 
++static const struct pci_epc_features*
++dw_pcie_ep_get_features(struct pci_epc *epc, u8 func_no)
++{
++	struct dw_pcie_ep *ep = epc_get_drvdata(epc);
++
++	if (!ep->ops->get_features)
++		return NULL;
++
++	return ep->ops->get_features(ep);
++}
++
+ static const struct pci_epc_ops epc_ops = {
+ 	.write_header		= dw_pcie_ep_write_header,
+ 	.set_bar		= dw_pcie_ep_set_bar,
+@@ -368,6 +379,7 @@ static const struct pci_epc_ops epc_ops = {
+ 	.raise_irq		= dw_pcie_ep_raise_irq,
+ 	.start			= dw_pcie_ep_start,
+ 	.stop			= dw_pcie_ep_stop,
++	.get_features		= dw_pcie_ep_get_features,
+ };
+ 
+ int dw_pcie_ep_raise_legacy_irq(struct dw_pcie_ep *ep, u8 func_no)
+diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
+index 9943d8c68335..1f56e6ae34ff 100644
+--- a/drivers/pci/controller/dwc/pcie-designware.h
++++ b/drivers/pci/controller/dwc/pcie-designware.h
+@@ -192,6 +192,7 @@ struct dw_pcie_ep_ops {
+ 	void	(*ep_init)(struct dw_pcie_ep *ep);
+ 	int	(*raise_irq)(struct dw_pcie_ep *ep, u8 func_no,
+ 			     enum pci_epc_irq_type type, u16 interrupt_num);
++	const struct pci_epc_features* (*get_features)(struct dw_pcie_ep *ep);
+ };
+ 
+ struct dw_pcie_ep {
+-- 
+2.17.1
