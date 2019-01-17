@@ -1,45 +1,58 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 0/4] NanoPC-T4 (and a bit of NanoPi M4) support
-Date: Thu, 17 Jan 2019 15:01:36 +0100
-Message-ID: <21515619.cB86tSjWlH@phil>
-References: <cover.1547466003.git.robin.murphy@arm.com>
+From: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>
+Subject: Re: [PATCH] drm: Split out drm_probe_helper.h
+Date: Thu, 17 Jan 2019 17:45:41 +0100
+Message-ID: <20190117164541.GE3271@phenom.ffwll.local>
+References: <20190116163442.12622-1-daniel.vetter@ffwll.ch>
+ <20190116181018.GA27364@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <cover.1547466003.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20190116181018.GA27364-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/freedreno>
+List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
+Cc: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, DRI Development <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Daniel Vetter <daniel.vetter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Oleksandr Andrushchenko <oleksandr_andrushchenko-uRwfk40T5oI@public.gmane.org>, amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, nouveau-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, spice-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Jani Nikula <jani.nikula-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, etnaviv-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Jani Nikula <jani.nikula-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rodrigo Vivi <rod>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 14. Januar 2019, 13:05:30 CET schrieb Robin Murphy:
-> Hi all,
-> 
-> With the initial patch now queued (thankfully solving the version-number
-> conundrum), here's an updated v2 of my further changes with the tweaks
-> Heiko pointed out. Comparing GRF dumps didn't give any insight into the
-> SD card thing, so I've kept the GPIO patch; ~100 interrupts per insertion
-> is still more useful than 0!
-> 
-> Robin.
-> 
-> 
-> Robin Murphy (4):
->   arm64: dts: rockchip: Add DT for NanoPi M4
->   arm64: dts: rockchip: Refine nanopi4 differences
->   arm64: dts: rockchip: Add NanoPC-T4 IR receiver
->   arm64: dts: rockchip: 'Fix' nanopi4 uSD card detect
-
-queued all 4 for 5.1
-
-Thanks
-Heiko
+T24gV2VkLCBKYW4gMTYsIDIwMTkgYXQgMDc6MTA6MThQTSArMDEwMCwgU2FtIFJhdm5ib3JnIHdy
+b3RlOgo+IEhpIERhbmllbC4KPiAKPiA+IHY1OiBBY3R1YWxseSB0cnkgdG8gc29ydCB0aGVtLCBh
+bmQgd2hpbGUgYXQgaXQsIHNvcnQgYWxsIHRoZSBvbmVzIEkKPiA+IHRvdWNoLgo+IAo+IEFwcGxp
+ZWQgdGhpcyB2YXJpYW50IG9uIHRvcCBvZiBkcm0tbWlzYyBhbmQgZGlkIGEgYnVpbGQgdGVzdC4K
+PiBMb29rZWQgZ29vZCBmb3IgaWE2NCwgeDg2IGFuZCBhbHBoYS4KPiAKPiBUb29rIGEgY2xvc2Vy
+IGxvb2sgYXQgdGhlIGNoYW5nZXMgdG8gYXRtZWxfaGxjZCAtIGFuZCB0aGV5IGxvb2tlZCBPSy4K
+PiAKPiBCdXQgSSBub3RpY2VkIHRoYXQgYXRtZWxfaGxjZGMgdXNlcyBvbmx5IGRybV9rbXNfaGVs
+cGVyX3BvbGxfaW5pdCgpIGFuZAo+IGRybV9rbXNfaGVscGVyX3BvbGxfZmluaSgpLgo+IEJ1dCB0
+aGVyZSBhcmUgbm8gaGl0cyBvbiBEUk1fQ09OTkVDVE9SX1BPTEwgLSBzbyBJIHRoaW5rIHdlIG1h
+eWJlCj4gaGF2ZSBhIGRyaXZlciBoZXJlIHdoZXJlIHdlIGhhdmUgcGx1Z2dlZCB0aGUgZHJtX3Bv
+bGwgaW5mcmFzdHJ1Y3R1cmUsCj4gYnV0IGl0IGlzIG5vdCBpbiB1c2UuCj4gCj4gPiAgaW5jbHVk
+ZS9kcm0vZHJtX2NydGNfaGVscGVyLmggICAgICAgICAgICAgICAgIHwgMTYgLS0tLS0tLS0tLS0K
+PiAKPiBUaGUgbGlzdCBvZiBpbmNsdWRlIGZpbGVzIGluIHRoaXMgZmlsZSBjb3VsZCBiZSBkcm9w
+cGVkIGFuZCByZXBsYWNlZCBieToKPiBzdHJ1Y3QgZHJtX2Nvbm5lY3RvcjsKPiBzdHJ1Y3QgZHJt
+X2RldmljZTsKPiBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZTsKPiBzdHJ1Y3QgZHJtX2VuY29kZXI7
+Cj4gc3RydWN0IGRybV9mcmFtZWJ1ZmZlcjsKPiBzdHJ1Y3QgZHJtX21vZGVfc2V0Owo+IHN0cnVj
+dCBkcm1fbW9kZXNldF9hY3F1aXJlX2N0eDsKPiAKPiBJIHRyaWVkIHRvIGRvIHNvIG9uIHRvcCBv
+ZiB5b3VyIHBhdGNoLgo+IEJ1dCB0aGVyZSB3ZXJlIHRvbyBtYW55IGJ1aWxkIGVycnJvcyBhbmQg
+SSBzb21laG93IGxvc3QgdGhlIG1vdGl2YXRpb24uCgpZZWFoIHRoZSBkcm1fY3J0Y19oZWxwZXIu
+aCBoZWFkZXIgaXMgYSBiaXQgdGhlIG1pbmlhdHVyZSBkcm1QLmggZm9yIGxlZ2FjeQprbXMgZHJp
+dmVycy4gSnVzdCByZW1vdmluZyBpdCBmcm9tIGFsbCB0aGUgYXRvbWljIGRyaXZlcnMgY2F1c2Vk
+IGxvdHMgb2YKZmFsbG91dCwgSSBleHBlY3QgZXZlbiBtb3JlIGlmIHlvdSBlbnRpcmVseSByZW1v
+dmUgdGhlIGluY2x1ZGVzIGl0IGhhcy4KTWF5YmUgYSB0b2RvLCBjYXJlIHRvIHBscyBjcmVhdGUg
+dGhhdCBwYXRjaCBzaW5jZSBpdCdzIHlvdXIgaWRlYT8KLURhbmllbAoKPiAKPiAKPiA+ICBpbmNs
+dWRlL2RybS9kcm1fcHJvYmVfaGVscGVyLmggICAgICAgICAgICAgICAgfCAyNyArKysrKysrKysr
+KysrKysrKysrCj4gVGhpcyBvbiB0aGUgb3RoZXIgaGFuZCBpcyBmaW5lIC0gYXMgZXhwZWN0ZWQg
+YXMgdGhpcyBpcyBhIG5ldyBmaWxlLgo+IAo+IEJ1dCB0aGUgYWJvdmUgaXMganVzdCBzb21lIHJh
+bmRvbSBjb21tZW50cyBzbzoKPiAKPiBBY2tlZC1ieTogU2FtIFJhdm5ib3JnIDxzYW1AcmF2bmJv
+cmcub3JnPgoKLS0gCkRhbmllbCBWZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIsIEludGVsIENvcnBv
+cmF0aW9uCmh0dHA6Ly9ibG9nLmZmd2xsLmNoCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkZyZWVkcmVubyBtYWlsaW5nIGxpc3QKRnJlZWRyZW5vQGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2ZyZWVkcmVubwo=
