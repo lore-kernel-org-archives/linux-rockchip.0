@@ -1,88 +1,89 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [v8,
- 2/3] drm/rockchip: Add support for Rockchip Soc RGB output interface
-Date: Fri, 18 Jan 2019 13:34:47 +0100
-Message-ID: <1636679.fMryThW7k8@phil>
-References: <20180830211207.10480-3-heiko@sntech.de>
- <alpine.DEB.2.21.1901180131510.1647@nanos.tec.linutronix.de>
+From: Sam Ravnborg <sam@ravnborg.org>
+Subject: Re: [PATCH] drm: Split out drm_probe_helper.h
+Date: Mon, 21 Jan 2019 23:13:29 +0100
+Message-ID: <20190121221329.GA6512@ravnborg.org>
+References: <20190116163442.12622-1-daniel.vetter@ffwll.ch>
+ <20190116181018.GA27364@ravnborg.org>
+ <20190117164541.GE3271@phenom.ffwll.local>
+ <20190117174531.GA14041@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <alpine.DEB.2.21.1901180131510.1647-ecDvlHI5BZPZikZi3RtOZ1XZhhPuCNm+@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: Kate Stewart <kstewart-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20190117174531.GA14041@ravnborg.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: Neil Armstrong <narmstrong@baylibre.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <liviu.dudau@arm.com>, DRI Development <dri-devel@lists.freedesktop.org>, virtualization@lists.linux-foundation.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org, Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>, amd-gfx@lists.freedesktop.org, linux-rockchip@lists.infradead.org, nouveau@lists.freedesktop.org, spice-devel@lists.freedesktop.org, Jani Nikula <jani.nikula@intel.com>, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Rodrigo Vivi <rodrigo.vivi@intel.com>, linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.or
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Thomas,
-
-Am Freitag, 18. Januar 2019, 01:40:03 CET schrieb Thomas Gleixner:
-> On Thu, 30 Aug 2018, Heiko Stuebner wrote:
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
-> > @@ -0,0 +1,173 @@
-> > +//SPDX-License-Identifier: GPL-2.0+
-> > +/*
-> > + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
-> > + * Author:
-> > + *      Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > + *
-> > + * This software is licensed under the terms of the GNU General Public
-> > + * License version 2, as published by the Free Software Foundation, and
-> > + * may be copied, distributed, and modified under those terms.
-> > + *
-> > + * This program is distributed in the hope that it will be useful,
-> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + * GNU General Public License for more details.
-> 
-> The licensing in this file and in the corresponding header is broken.
-> 
-> > --- /dev/null
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_rgb.h
-> > @@ -0,0 +1,20 @@
-> > +//SPDX-License-Identifier: GPL-2.0+
-> > +/*
-> > + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
-> > + * Author:
-> > + *      Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > + *
-> > + * This software is licensed under the terms of the GNU General Public
-> > + * License version 2, as published by the Free Software Foundation, and
-> > + * may be copied, distributed, and modified under those terms.
-> > + *
-> > + * This program is distributed in the hope that it will be useful,
-> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + * GNU General Public License for more details.
-> > + */
-> 
-> Both files use the SPDX license identifier for GPL v2 or later, but the
-> license notice is clearly v2 only.
-> 
-> So the copyright holder needs to decide which one. And please remove the
-> boiler plate text. It's redundant.
-
-Not sure how to proceed as I haven't seen Sandy around for quite a bit,
-but the first versions didn't have a SPDX header and were GPL2-only (v1-v4)
-and the SPDX header was added in v5.
-
-So as a stopgap measure, I'd guess we could assume that the copyright
-intended GPL2-only?
-
-
-> Please fix ASAP, add a Fixes tag and cc stable so the inconsistency is
-> fixed in 4.20 as well.
-
-ok, once we have the direction of change set.
-
-
-Heiko
+SGkgRGFuaWVsIGV0IGFsLgoKPiA+IAo+ID4gWWVhaCB0aGUgZHJtX2NydGNfaGVscGVyLmggaGVh
+ZGVyIGlzIGEgYml0IHRoZSBtaW5pYXR1cmUgZHJtUC5oIGZvciBsZWdhY3kKPiA+IGttcyBkcml2
+ZXJzLiBKdXN0IHJlbW92aW5nIGl0IGZyb20gYWxsIHRoZSBhdG9taWMgZHJpdmVycyBjYXVzZWQg
+bG90cyBvZgo+ID4gZmFsbG91dCwgSSBleHBlY3QgZXZlbiBtb3JlIGlmIHlvdSBlbnRpcmVseSBy
+ZW1vdmUgdGhlIGluY2x1ZGVzIGl0IGhhcy4KPiA+IE1heWJlIGEgdG9kbywgY2FyZSB0byBwbHMg
+Y3JlYXRlIHRoYXQgcGF0Y2ggc2luY2UgaXQncyB5b3VyIGlkZWE/Cj4gCj4gVGhlIG1haW4gcmVh
+c29uIEkgYmFpbGVkIG91dCBpbml0aWFsbHkgd2FzIHRoYXQgdGhpcyB3b3VsZCBjcmVhdGUKPiBz
+bWFsbCBjaGFuZ2VzIHRvIHNldmVyYWwgb3RoZXJ3aXNlIHNlbGRvbWx5IHRvdWNoZWQgZmlsZXMu
+Cj4gQW5kIHRoZW4gd2Ugd291bGQgbGF0ZXIgY29tZSBhbmQgcmVtb3ZlIGRybVAuaCAtIHNvIGxv
+dHMgb2YKPiBzbWFsbCBidXQgaW5jcmVtZW50YWwgY2hhbmdlcyB0byB0aGUgc2FtZSBvdGhlcndp
+c2Ugc2VsZG9tbHkKPiBlZGl0ZWQgZmlsZXMuCj4gQW5kIHRoZSBqb2Igd2FzIG9ubHkgcGFydGlh
+bGx5IGRvbmUuCj4gCj4gSSB3aWxsIHRyeSB0byBleHBlcmltZW50IHdpdGggYW4gYXBwcm9hY2gg
+d2hlcmUgSSBjbGVhbiB1cCB0aGUKPiBpbmNsdWRlL2RybS8qLmggZmlsZXMgYSBsaXR0bGUgKGxp
+a2Ugc3VnZ2VzdGVkIGFib3ZlLCArZGVsZXRlIGRybVAuaAo+IGFuZCBtYXliZSBhIGJpdCBtb3Jl
+KS4KPiAKPiBUaGVuIHRvIHRyeSBvbiBhIGRyaXZlciBieSBkcml2ZXIgYmFzaXMgdG8gbWFrZSBp
+dCBidWlsZCB3aXRoIGEKPiBjbGVhbmVkIHNldCBvZiBpbmNsdWRlIGZpbGVzLgo+IEkgaG9wZSB0
+aGF0IHRoZSBjbGVhbmVkIHVwIGRyaXZlciBjYW4gc3RpbGwgYnVpbGQgd2l0aG91dCB0aGUKPiBj
+bGVhbmVkIGhlYWRlciBmaWxlcyBzbyB0aGUgY2hhbmdlcyBjYW4gYmUgc3VibWl0dGVkIHBpZWNl
+bWFsLgo+IAo+IFdpbGwgZG8gc28gd2l0aCBhbiBleWUgb24gdGhlIGxlc3NlciBtYWludGFpbmVk
+IGRyaXZlcnMgdG8gdHJ5IGl0Cj4gb3V0IHRvIGF2b2lkIGNyZWF0aW5nIHRvbyBtdWNoIGNocnVu
+Y2ggZm9yIG90aGVycy4KCkkgaGF2ZSBub3cgYSBmZXcgcGF0Y2hlcyBxdWV1ZWQsIGJ1dCB0aGUg
+cmVzdWx0IGlzIG5vdCB0b28gcHJldHR5LgpJIGRpZCB0aGUgZm9sbG93aW5nOgoKLSBGb3IgYWxs
+IGZpbGVzIGluIGluY2x1ZGUvZHJtLyouaCB0aGUgc2V0IG9mIGluY2x1ZGUgZmlsZXMKICB3ZXJl
+IGFkanVzdGVkIHRvIHRoZSBtaW5pbXVtIG51bWJlciBvZiBmaWxlcyByZXF1aXJlZCB0byBtYWtl
+CiAgdGhlbSBidWlsZCB3aXRob3V0IGFueSBvdGhlciBmaWxlcyBpbmNsdWRlZCBmaXJzdC4KCiAg
+Q3JlYXRlZCBvbmUgLmMgZmlsZSBmb3IgZWFjaCAuaCBmaWxlLiBUaGVuIGluY2x1ZGVkIHRoZSAu
+aAogIGZpbGUgYW5kIGFkanVzdGVkIHRvIHRoZSBtaW5pbWFsIHNldCBvZiBpbmNsdWRlIGZpbGVz
+LgogIEluIHRoZSBwcm9jZXNzIGEgbG90IG9mIGZvcndhcmRzIHdlcmUgYWRkZWQuCgotIERlbGV0
+ZWQgZHJtUC5oCgotIEZpeGVkIGJ1aWxkIG9mIGEgZmV3IGRyaXZlcnM6IHN0aSwgdGlsY2RjLCBn
+bWE1MDAsIHR2ZTIwMCwgdmlhCgpTb21lIG9ic2VydmF0aW9uczoKCi0gS2lsbGluZyBhbGwgdGhl
+IGluY2x1ZGVzIG5vdCBuZWVkZWQgaW4gdGhlIGhlYWRlcnMgZmlsZXMKICByZXN1bHRzIGluIGEg
+YSBsb3Qgb2YgZXh0cmEgY2hhbmdlcy4KICBFeGFtcGxlczoKICAgIGRybV9tb2RzZXNldF9oZWxw
+ZXJfdnRhYmxlcy5oIGlzIG5vIGxvbmdlcgogICAgaW5jbHVkZWQgYnkgYW55b25lLCBzbyBuZWVk
+cyB0byBiZSBhZGRlZCBpbiBtYW55IGZpbGVzCgogICAgZHJtX2F0b21pY19zdGF0ZV9oZWxwZXIu
+aCBpcyBubyBsb25nZXIgaW5jbHVkZWQKICAgIGJ5IGFueW9uZSBzbyBsaWtld2lzZSBuZWVkcyB0
+byBiZSBhZGRlZCBpbiBtYW55IGZpbGVzCgotIEl0IGlzIHZlcnkgdGVkaW91cyB0byBkbyB0aGlz
+IHByb3Blcmx5LgogIFRoZSBwcm9jZXNzIEkgZm9sbG93ZWQgd2FzOgogIC0gZGVsZXRlIC8gY29t
+bWVudCBvdXQgYWxsIGluY2x1ZGUgZmlsZXMKICAtIGFkZCBiYWNrIHRoZSBvYnZpb3VzIGZyb20g
+YSBxdWljayBzY2FuIG9mIHRoZSBjb2RlCiAgLSBidWlsZCAtIGZpeCAtIGJ1aWxkIC0gZml4IC0g
+YnVpbGQgLSBmaXggLi4uCiAgLSAgIG5leHQgZmlsZS4uLgoKLSBUaGUgcmVzdWx0IGlzIGVycm9y
+cHJvbmUgYXMgb25seSB0aGUgYWxseWVzY29uZmlnICsgYWxsbW9kY29uZmlnCiAgdmFyaWFudHMg
+YXJlIHRlc3RlZC4gQnV0IHJlYWxsaWZlIGNvbmZpZ3VyYXRpb25zIGFyZSBtb3JlIGRpdmVyc2Uu
+CgpDdXJyZW50IGRpZmZzdGF0OgogICAxMTEgZmlsZXMgY2hhbmdlZCwgNzcxIGluc2VydGlvbnMo
+KyksIDQwMSBkZWxldGlvbnMoLSkKClRoaXMgaXMgZm9yIHRoZSA1IGRyaXZlcnMgYWxvbmUgYW5k
+IG5vdCB0aGUgaGVhZGVyIGNsZWFudXAuClNvIGxvbmcgc3Rvcnkgc2hvcnQgLSB0aGlzIGlzIG5v
+dCBnb29kIGFuZCBub3QgdGhlIHdheSBmb3J3YXJkLgoKSSB3aWxsIHRyeSB0byBjb21lIHVwIHdp
+dGggYSBmZXcgaW1wcm92ZW1lbnRzIHRvIG1ha2UgdGhlCmhlYWRlcnMgZmlsZXMgc2VsZmNvbnRh
+aW5lZCwgYnV0IHJlc3RyaWN0ZWQgdG8gdGhlIGNoYW5nZXMgdGhhdAphZGQgZm9yd2FyZHMvaW5j
+bHVkZSB0byBhdm9pZCB0aGUgY2hydW5jaCBpbiBhbGwgdGhlIGRyaXZlcnMuCgpBbmQgdGhlbiBw
+b3N0IGZvciByZXZpZXcgYSBmZXcgcGF0Y2hlcyB0byBjbGVhbiB1cCBzb21lIGhlYWRlcnMuCklm
+IHRoZSBjbGVhbnVwIGdldHMgYSBnbyBJIHdpbGwgdHJ5IHRvIHBlcnN1YWRlIHRoZSBpbnRyb2R1
+Y3Rpb24Kb2YgdGhlc2UuClRoaXMgd2lsbCBpbmNsdWRlLCBidXQgd2lsbCBub3QgYmUgbGltaXRl
+ZCB0bywgdGhlIGFib3ZlIG1lbnRpb25lZApkcm1fY3J0Y19oZWxwZXIuaCBoZWFkZXIgZmlsZS4K
+CkZvciBub3cgdG9vIG11Y2ggdGltZSB3YXMgYWxyZWFkeSBzcGVudCBvbiB0aGlzLCBzbyBpdCBp
+cyBhdCB0aGUKbW9tZW50IHB1c2hlZCBiYWNrIG9uIG15IFRPRE8gbGlzdC4KVGhpcyBtYWlsIHNl
+cnZlIGFsc28gYXMgYSBraW5kIG9mICJ3aGVyZSBoYWQgSSBsZWZ0Iiwgd2hlbi9pZiBJCnBpY2sg
+dGhpcyB1cCBhZ2Fpbi4KCklmIHRoZXJlIGFyZSBhbnlvbmUgdGhhdCBrbm93cyBzb21lIHRvb2xp
+bmcgdGhhdCBjYW4gaGVscCBpbiB0aGUKcHJvY2VzcyBvZiBhZGp1c3RpbmcgdGhlIGhlYWRlciBm
+aWxlcyBJIGFtIGFsbCBlYXJzLgoKCVNhbQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
