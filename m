@@ -1,103 +1,212 @@
-From: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>
-Subject: Re: [PATCH] drm: Split out drm_probe_helper.h
-Date: Tue, 22 Jan 2019 09:03:36 +0100
-Message-ID: <CAKMK7uF_8yRycA4ZUyudH7dM23DOiFEkKStAbbAvD=79y_UE_Q@mail.gmail.com>
-References: <20190116163442.12622-1-daniel.vetter@ffwll.ch>
- <20190116181018.GA27364@ravnborg.org>
- <20190117164541.GE3271@phenom.ffwll.local>
- <20190117174531.GA14041@ravnborg.org> <20190121221329.GA6512@ravnborg.org>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 2/2] ARM: dts: rockchip: clean up the abuse of disable-wp
+Date: Tue, 22 Jan 2019 16:35:47 +0800
+Message-ID: <1548146147-90572-2-git-send-email-shawn.lin@rock-chips.com>
+References: <1548146147-90572-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-In-Reply-To: <20190121221329.GA6512-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/amd-gfx>
-List-Post: <mailto:amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "amd-gfx" <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
-Cc: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Nouveau Dev <nouveau-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, DRI Development <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "open list:VIRTIO CORE,
- NET..." <virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Daniel Vetter <daniel.vetter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, linux-samsung-soc <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Oleksandr Andrushchenko <oleksandr_andrushchenko-uRwfk40T5oI@public.gmane.org>, amd-gfx list <amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:DRM DRIVER FOR QXL VIRTUAL GPU" <spice-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Jani Nikula <jani.nikula-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-msm <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, intel-gfx <intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, The etnaviv authors <etnaviv-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1548146147-90572-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCBKYW4gMjEsIDIwMTkgYXQgMTE6MTMgUE0gU2FtIFJhdm5ib3JnIDxzYW1AcmF2bmJv
-cmcub3JnPiB3cm90ZToKPgo+IEhpIERhbmllbCBldCBhbC4KPgo+ID4gPgo+ID4gPiBZZWFoIHRo
-ZSBkcm1fY3J0Y19oZWxwZXIuaCBoZWFkZXIgaXMgYSBiaXQgdGhlIG1pbmlhdHVyZSBkcm1QLmgg
-Zm9yIGxlZ2FjeQo+ID4gPiBrbXMgZHJpdmVycy4gSnVzdCByZW1vdmluZyBpdCBmcm9tIGFsbCB0
-aGUgYXRvbWljIGRyaXZlcnMgY2F1c2VkIGxvdHMgb2YKPiA+ID4gZmFsbG91dCwgSSBleHBlY3Qg
-ZXZlbiBtb3JlIGlmIHlvdSBlbnRpcmVseSByZW1vdmUgdGhlIGluY2x1ZGVzIGl0IGhhcy4KPiA+
-ID4gTWF5YmUgYSB0b2RvLCBjYXJlIHRvIHBscyBjcmVhdGUgdGhhdCBwYXRjaCBzaW5jZSBpdCdz
-IHlvdXIgaWRlYT8KPiA+Cj4gPiBUaGUgbWFpbiByZWFzb24gSSBiYWlsZWQgb3V0IGluaXRpYWxs
-eSB3YXMgdGhhdCB0aGlzIHdvdWxkIGNyZWF0ZQo+ID4gc21hbGwgY2hhbmdlcyB0byBzZXZlcmFs
-IG90aGVyd2lzZSBzZWxkb21seSB0b3VjaGVkIGZpbGVzLgo+ID4gQW5kIHRoZW4gd2Ugd291bGQg
-bGF0ZXIgY29tZSBhbmQgcmVtb3ZlIGRybVAuaCAtIHNvIGxvdHMgb2YKPiA+IHNtYWxsIGJ1dCBp
-bmNyZW1lbnRhbCBjaGFuZ2VzIHRvIHRoZSBzYW1lIG90aGVyd2lzZSBzZWxkb21seQo+ID4gZWRp
-dGVkIGZpbGVzLgo+ID4gQW5kIHRoZSBqb2Igd2FzIG9ubHkgcGFydGlhbGx5IGRvbmUuCj4gPgo+
-ID4gSSB3aWxsIHRyeSB0byBleHBlcmltZW50IHdpdGggYW4gYXBwcm9hY2ggd2hlcmUgSSBjbGVh
-biB1cCB0aGUKPiA+IGluY2x1ZGUvZHJtLyouaCBmaWxlcyBhIGxpdHRsZSAobGlrZSBzdWdnZXN0
-ZWQgYWJvdmUsICtkZWxldGUgZHJtUC5oCj4gPiBhbmQgbWF5YmUgYSBiaXQgbW9yZSkuCj4gPgo+
-ID4gVGhlbiB0byB0cnkgb24gYSBkcml2ZXIgYnkgZHJpdmVyIGJhc2lzIHRvIG1ha2UgaXQgYnVp
-bGQgd2l0aCBhCj4gPiBjbGVhbmVkIHNldCBvZiBpbmNsdWRlIGZpbGVzLgo+ID4gSSBob3BlIHRo
-YXQgdGhlIGNsZWFuZWQgdXAgZHJpdmVyIGNhbiBzdGlsbCBidWlsZCB3aXRob3V0IHRoZQo+ID4g
-Y2xlYW5lZCBoZWFkZXIgZmlsZXMgc28gdGhlIGNoYW5nZXMgY2FuIGJlIHN1Ym1pdHRlZCBwaWVj
-ZW1hbC4KPiA+Cj4gPiBXaWxsIGRvIHNvIHdpdGggYW4gZXllIG9uIHRoZSBsZXNzZXIgbWFpbnRh
-aW5lZCBkcml2ZXJzIHRvIHRyeSBpdAo+ID4gb3V0IHRvIGF2b2lkIGNyZWF0aW5nIHRvbyBtdWNo
-IGNocnVuY2ggZm9yIG90aGVycy4KPgo+IEkgaGF2ZSBub3cgYSBmZXcgcGF0Y2hlcyBxdWV1ZWQs
-IGJ1dCB0aGUgcmVzdWx0IGlzIG5vdCB0b28gcHJldHR5Lgo+IEkgZGlkIHRoZSBmb2xsb3dpbmc6
-Cj4KPiAtIEZvciBhbGwgZmlsZXMgaW4gaW5jbHVkZS9kcm0vKi5oIHRoZSBzZXQgb2YgaW5jbHVk
-ZSBmaWxlcwo+ICAgd2VyZSBhZGp1c3RlZCB0byB0aGUgbWluaW11bSBudW1iZXIgb2YgZmlsZXMg
-cmVxdWlyZWQgdG8gbWFrZQo+ICAgdGhlbSBidWlsZCB3aXRob3V0IGFueSBvdGhlciBmaWxlcyBp
-bmNsdWRlZCBmaXJzdC4KPgo+ICAgQ3JlYXRlZCBvbmUgLmMgZmlsZSBmb3IgZWFjaCAuaCBmaWxl
-LiBUaGVuIGluY2x1ZGVkIHRoZSAuaAo+ICAgZmlsZSBhbmQgYWRqdXN0ZWQgdG8gdGhlIG1pbmlt
-YWwgc2V0IG9mIGluY2x1ZGUgZmlsZXMuCj4gICBJbiB0aGUgcHJvY2VzcyBhIGxvdCBvZiBmb3J3
-YXJkcyB3ZXJlIGFkZGVkLgo+Cj4gLSBEZWxldGVkIGRybVAuaAo+Cj4gLSBGaXhlZCBidWlsZCBv
-ZiBhIGZldyBkcml2ZXJzOiBzdGksIHRpbGNkYywgZ21hNTAwLCB0dmUyMDAsIHZpYQo+Cj4gU29t
-ZSBvYnNlcnZhdGlvbnM6Cj4KPiAtIEtpbGxpbmcgYWxsIHRoZSBpbmNsdWRlcyBub3QgbmVlZGVk
-IGluIHRoZSBoZWFkZXJzIGZpbGVzCj4gICByZXN1bHRzIGluIGEgYSBsb3Qgb2YgZXh0cmEgY2hh
-bmdlcy4KPiAgIEV4YW1wbGVzOgo+ICAgICBkcm1fbW9kc2VzZXRfaGVscGVyX3Z0YWJsZXMuaCBp
-cyBubyBsb25nZXIKPiAgICAgaW5jbHVkZWQgYnkgYW55b25lLCBzbyBuZWVkcyB0byBiZSBhZGRl
-ZCBpbiBtYW55IGZpbGVzCj4KPiAgICAgZHJtX2F0b21pY19zdGF0ZV9oZWxwZXIuaCBpcyBubyBs
-b25nZXIgaW5jbHVkZWQKPiAgICAgYnkgYW55b25lIHNvIGxpa2V3aXNlIG5lZWRzIHRvIGJlIGFk
-ZGVkIGluIG1hbnkgZmlsZXMKPgo+IC0gSXQgaXMgdmVyeSB0ZWRpb3VzIHRvIGRvIHRoaXMgcHJv
-cGVybHkuCj4gICBUaGUgcHJvY2VzcyBJIGZvbGxvd2VkIHdhczoKPiAgIC0gZGVsZXRlIC8gY29t
-bWVudCBvdXQgYWxsIGluY2x1ZGUgZmlsZXMKPiAgIC0gYWRkIGJhY2sgdGhlIG9idmlvdXMgZnJv
-bSBhIHF1aWNrIHNjYW4gb2YgdGhlIGNvZGUKPiAgIC0gYnVpbGQgLSBmaXggLSBidWlsZCAtIGZp
-eCAtIGJ1aWxkIC0gZml4IC4uLgo+ICAgLSAgIG5leHQgZmlsZS4uLgo+Cj4gLSBUaGUgcmVzdWx0
-IGlzIGVycm9ycHJvbmUgYXMgb25seSB0aGUgYWxseWVzY29uZmlnICsgYWxsbW9kY29uZmlnCj4g
-ICB2YXJpYW50cyBhcmUgdGVzdGVkLiBCdXQgcmVhbGxpZmUgY29uZmlndXJhdGlvbnMgYXJlIG1v
-cmUgZGl2ZXJzZS4KPgo+IEN1cnJlbnQgZGlmZnN0YXQ6Cj4gICAgMTExIGZpbGVzIGNoYW5nZWQs
-IDc3MSBpbnNlcnRpb25zKCspLCA0MDEgZGVsZXRpb25zKC0pCj4KPiBUaGlzIGlzIGZvciB0aGUg
-NSBkcml2ZXJzIGFsb25lIGFuZCBub3QgdGhlIGhlYWRlciBjbGVhbnVwLgo+IFNvIGxvbmcgc3Rv
-cnkgc2hvcnQgLSB0aGlzIGlzIG5vdCBnb29kIGFuZCBub3QgdGhlIHdheSBmb3J3YXJkLgo+Cj4g
-SSB3aWxsIHRyeSB0byBjb21lIHVwIHdpdGggYSBmZXcgaW1wcm92ZW1lbnRzIHRvIG1ha2UgdGhl
-Cj4gaGVhZGVycyBmaWxlcyBzZWxmY29udGFpbmVkLCBidXQgcmVzdHJpY3RlZCB0byB0aGUgY2hh
-bmdlcyB0aGF0Cj4gYWRkIGZvcndhcmRzL2luY2x1ZGUgdG8gYXZvaWQgdGhlIGNocnVuY2ggaW4g
-YWxsIHRoZSBkcml2ZXJzLgo+Cj4gQW5kIHRoZW4gcG9zdCBmb3IgcmV2aWV3IGEgZmV3IHBhdGNo
-ZXMgdG8gY2xlYW4gdXAgc29tZSBoZWFkZXJzLgo+IElmIHRoZSBjbGVhbnVwIGdldHMgYSBnbyBJ
-IHdpbGwgdHJ5IHRvIHBlcnN1YWRlIHRoZSBpbnRyb2R1Y3Rpb24KPiBvZiB0aGVzZS4KPiBUaGlz
-IHdpbGwgaW5jbHVkZSwgYnV0IHdpbGwgbm90IGJlIGxpbWl0ZWQgdG8sIHRoZSBhYm92ZSBtZW50
-aW9uZWQKPiBkcm1fY3J0Y19oZWxwZXIuaCBoZWFkZXIgZmlsZS4KPgo+IEZvciBub3cgdG9vIG11
-Y2ggdGltZSB3YXMgYWxyZWFkeSBzcGVudCBvbiB0aGlzLCBzbyBpdCBpcyBhdCB0aGUKPiBtb21l
-bnQgcHVzaGVkIGJhY2sgb24gbXkgVE9ETyBsaXN0Lgo+IFRoaXMgbWFpbCBzZXJ2ZSBhbHNvIGFz
-IGEga2luZCBvZiAid2hlcmUgaGFkIEkgbGVmdCIsIHdoZW4vaWYgSQo+IHBpY2sgdGhpcyB1cCBh
-Z2Fpbi4KPgo+IElmIHRoZXJlIGFyZSBhbnlvbmUgdGhhdCBrbm93cyBzb21lIHRvb2xpbmcgdGhh
-dCBjYW4gaGVscCBpbiB0aGUKPiBwcm9jZXNzIG9mIGFkanVzdGluZyB0aGUgaGVhZGVyIGZpbGVz
-IEkgYW0gYWxsIGVhcnMuCgpZZWFoIGluIHRoZSBwcm9jZXNzIG9mIHNwbGl0dGluZyB1cCBkcm1Q
-Lmggd2UndmUgY3JlYXRlZCBhIGZldyBzbWFsbGVyCnN1Y2ggcGlsZXMgb2YgaGVhZGVycy4gSSB0
-aGluayBpbiBzb21lIGNhc2VzIGl0J3MganVzdCBub3QgZ29pbmcgdG8gYmUKd29ydGggaXQgdG8g
-ZnVsbHkgc3BsaXQgdGhlbSB1cCwgZS5nLiBkcm1fY3J0Y19oZWxwZXIuaCBpcyBnb2luZyB0byBi
-ZQphIHB1cmUgbGVnYWN5IGhlbHBlciwgb25seSBuZWVkZWQgYnkgcHJlLWF0b21pYyBkcml2ZXJz
-LiBTcGxpdHRpbmcKdGhhdCB1cCBkb2Vzbid0IHNlZW0gdG8gdXNlZnVsIHRvIG1lLiBTaW1pbGFy
-bHkgd2UgbWlnaHQgd2FudApkcm1fYXRvbWljX2hlbHBlci5oIHRvIGtlZXAgcHVsbGluZyBpbiB0
-aGUgb3RoZXIgaGVscGVyIGhlYWRlcnMuIFNvCnByb2JhYmx5IGdvaW5nIHRvIGJlIGEganVkZ2Vt
-ZW50IGNhbGwgb24gYSBjYXNlLWJ5LWNhc2UgYmFzaXMuCi1EYW5pZWwKLS0gCkRhbmllbCBWZXR0
-ZXIKU29mdHdhcmUgRW5naW5lZXIsIEludGVsIENvcnBvcmF0aW9uCis0MSAoMCkgNzkgMzY1IDU3
-IDQ4IC0gaHR0cDovL2Jsb2cuZmZ3bGwuY2gKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KYW1kLWdmeCBtYWlsaW5nIGxpc3QKYW1kLWdmeEBsaXN0cy5mcmVl
-ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9hbWQtZ2Z4Cg==
+The mmc.txt didn't explicitly say disable-wp is for SD card slot
+only, but that is what it was designed for in the first place.
+
+Remove all disable-wp from emmc or sdio controller.
+
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+
+ arch/arm/boot/dts/rk3066a-bqcurie2.dts      | 1 -
+ arch/arm/boot/dts/rk3066a-mk808.dts         | 1 -
+ arch/arm/boot/dts/rk3066a-rayeager.dts      | 2 --
+ arch/arm/boot/dts/rk3188-bqedison2qc.dts    | 1 -
+ arch/arm/boot/dts/rk3188-px3-evb.dts        | 1 -
+ arch/arm/boot/dts/rk3229-evb.dts            | 1 -
+ arch/arm/boot/dts/rk3288-fennec.dts         | 1 -
+ arch/arm/boot/dts/rk3288-firefly-reload.dts | 1 -
+ arch/arm/boot/dts/rk3288-miqi.dts           | 1 -
+ arch/arm/boot/dts/rk3288-popmetal.dts       | 1 -
+ arch/arm/boot/dts/rk3288-rock2-square.dts   | 1 -
+ arch/arm/boot/dts/rk3288-tinker-s.dts       | 1 -
+ arch/arm/boot/dts/rk3288-vyasa.dts          | 1 -
+ 13 files changed, 14 deletions(-)
+
+diff --git a/arch/arm/boot/dts/rk3066a-bqcurie2.dts b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+index 1c925f2..0a56a2f 100644
+--- a/arch/arm/boot/dts/rk3066a-bqcurie2.dts
++++ b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+@@ -171,7 +171,6 @@
+ 	pinctrl-0 = <&sd1_clk &sd1_cmd &sd1_bus4>;
+ 
+ 	bus-width = <4>;
+-	disable-wp;
+ };
+ 
+ &pwm3 {
+diff --git a/arch/arm/boot/dts/rk3066a-mk808.dts b/arch/arm/boot/dts/rk3066a-mk808.dts
+index b6a8a82..9d2216d 100644
+--- a/arch/arm/boot/dts/rk3066a-mk808.dts
++++ b/arch/arm/boot/dts/rk3066a-mk808.dts
+@@ -101,7 +101,6 @@
+ 
+ &mmc1 {
+ 	bus-width = <4>;
+-	disable-wp;
+ 	non-removable;
+ 	pinctrl-0 = <&sd1_clk &sd1_cmd &sd1_bus4>;
+ 	pinctrl-names = "default";
+diff --git a/arch/arm/boot/dts/rk3066a-rayeager.dts b/arch/arm/boot/dts/rk3066a-rayeager.dts
+index cd126b9..949fa80 100644
+--- a/arch/arm/boot/dts/rk3066a-rayeager.dts
++++ b/arch/arm/boot/dts/rk3066a-rayeager.dts
+@@ -147,7 +147,6 @@
+ &emmc {
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
+-	disable-wp;
+ 	non-removable;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emmc_clk>, <&emmc_cmd>, <&emmc_rst>;
+@@ -309,7 +308,6 @@
+ 
+ &mmc1 {
+ 	bus-width = <4>;
+-	disable-wp;
+ 	non-removable;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sd1_clk>, <&sd1_cmd>, <&sd1_bus4>;
+diff --git a/arch/arm/boot/dts/rk3188-bqedison2qc.dts b/arch/arm/boot/dts/rk3188-bqedison2qc.dts
+index 887d1aa..cc66abb 100644
+--- a/arch/arm/boot/dts/rk3188-bqedison2qc.dts
++++ b/arch/arm/boot/dts/rk3188-bqedison2qc.dts
+@@ -227,7 +227,6 @@
+ &emmc {
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
+-	disable-wp;
+ 	non-removable;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emmc_clk &emmc_cmd>;
+diff --git a/arch/arm/boot/dts/rk3188-px3-evb.dts b/arch/arm/boot/dts/rk3188-px3-evb.dts
+index 9ae65c7..c0eaa9c 100644
+--- a/arch/arm/boot/dts/rk3188-px3-evb.dts
++++ b/arch/arm/boot/dts/rk3188-px3-evb.dts
+@@ -62,7 +62,6 @@
+ &emmc {
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
+-	disable-wp;
+ 	non-removable;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emmc_clk>, <&emmc_cmd>, <&emmc_rst>;
+diff --git a/arch/arm/boot/dts/rk3229-evb.dts b/arch/arm/boot/dts/rk3229-evb.dts
+index 4df7acc..350497a 100644
+--- a/arch/arm/boot/dts/rk3229-evb.dts
++++ b/arch/arm/boot/dts/rk3229-evb.dts
+@@ -137,7 +137,6 @@
+ 
+ &emmc {
+ 	cap-mmc-highspeed;
+-	disable-wp;
+ 	non-removable;
+ 	status = "okay";
+ };
+diff --git a/arch/arm/boot/dts/rk3288-fennec.dts b/arch/arm/boot/dts/rk3288-fennec.dts
+index b1b56df..29af26e 100644
+--- a/arch/arm/boot/dts/rk3288-fennec.dts
++++ b/arch/arm/boot/dts/rk3288-fennec.dts
+@@ -37,7 +37,6 @@
+ &emmc {
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
+-	disable-wp;
+ 	non-removable;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_pwr &emmc_bus8>;
+diff --git a/arch/arm/boot/dts/rk3288-firefly-reload.dts b/arch/arm/boot/dts/rk3288-firefly-reload.dts
+index 58ea8be..3a646c5 100644
+--- a/arch/arm/boot/dts/rk3288-firefly-reload.dts
++++ b/arch/arm/boot/dts/rk3288-firefly-reload.dts
+@@ -254,7 +254,6 @@
+ 	bus-width = <4>;
+ 	cap-sd-highspeed;
+ 	cap-sdio-irq;
+-	disable-wp;
+ 	mmc-pwrseq = <&sdio_pwrseq>;
+ 	non-removable;
+ 	pinctrl-names = "default";
+diff --git a/arch/arm/boot/dts/rk3288-miqi.dts b/arch/arm/boot/dts/rk3288-miqi.dts
+index 504ab11..fb7365b 100644
+--- a/arch/arm/boot/dts/rk3288-miqi.dts
++++ b/arch/arm/boot/dts/rk3288-miqi.dts
+@@ -87,7 +87,6 @@
+ &emmc {
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
+-	disable-wp;
+ 	non-removable;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emmc_clk>, <&emmc_cmd>, <&emmc_pwr>, <&emmc_bus8>;
+diff --git a/arch/arm/boot/dts/rk3288-popmetal.dts b/arch/arm/boot/dts/rk3288-popmetal.dts
+index 596435e..6a51940 100644
+--- a/arch/arm/boot/dts/rk3288-popmetal.dts
++++ b/arch/arm/boot/dts/rk3288-popmetal.dts
+@@ -109,7 +109,6 @@
+ &emmc {
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
+-	disable-wp;
+ 	mmc-ddr-1_8v;
+ 	mmc-hs200-1_8v;
+ 	non-removable;
+diff --git a/arch/arm/boot/dts/rk3288-rock2-square.dts b/arch/arm/boot/dts/rk3288-rock2-square.dts
+index 6a30cad..5b7e1c9 100644
+--- a/arch/arm/boot/dts/rk3288-rock2-square.dts
++++ b/arch/arm/boot/dts/rk3288-rock2-square.dts
+@@ -133,7 +133,6 @@
+ 	bus-width = <4>;
+ 	cap-sd-highspeed;
+ 	cap-sdio-irq;
+-	disable-wp;
+ 	mmc-pwrseq = <&sdio_pwrseq>;
+ 	non-removable;
+ 	pinctrl-names = "default";
+diff --git a/arch/arm/boot/dts/rk3288-tinker-s.dts b/arch/arm/boot/dts/rk3288-tinker-s.dts
+index 3709392..d97da89b 100644
+--- a/arch/arm/boot/dts/rk3288-tinker-s.dts
++++ b/arch/arm/boot/dts/rk3288-tinker-s.dts
+@@ -15,7 +15,6 @@
+ &emmc {
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
+-	disable-wp;
+ 	non-removable;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_pwr &emmc_bus8>;
+diff --git a/arch/arm/boot/dts/rk3288-vyasa.dts b/arch/arm/boot/dts/rk3288-vyasa.dts
+index 4856a9f..40b232e 100644
+--- a/arch/arm/boot/dts/rk3288-vyasa.dts
++++ b/arch/arm/boot/dts/rk3288-vyasa.dts
+@@ -121,7 +121,6 @@
+ &emmc {
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
+-	disable-wp;
+ 	non-removable;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_pwr &emmc_bus8>;
+-- 
+1.9.1
