@@ -1,89 +1,184 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH] drm: Split out drm_probe_helper.h
-Date: Mon, 21 Jan 2019 23:13:29 +0100
-Message-ID: <20190121221329.GA6512@ravnborg.org>
-References: <20190116163442.12622-1-daniel.vetter@ffwll.ch>
- <20190116181018.GA27364@ravnborg.org>
- <20190117164541.GE3271@phenom.ffwll.local>
- <20190117174531.GA14041@ravnborg.org>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Subject: Re: [PATCH 1/9] mm: Introduce new vm_insert_range and
+ vm_insert_range_buggy API
+Date: Tue, 22 Jan 2019 12:30:47 +0530
+Message-ID: <CAFqt6zYOpbwc8518f27W8_YOkuprdJJLyJg1fFB==wrFZLdEYQ@mail.gmail.com>
+References: <20190111150712.GA2696@jordon-HP-15-Notebook-PC>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20190117174531.GA14041@ravnborg.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <liviu.dudau@arm.com>, DRI Development <dri-devel@lists.freedesktop.org>, virtualization@lists.linux-foundation.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-stm32@st-md-mailman.stormreply.com, linux-samsung-soc@vger.kernel.org, Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>, amd-gfx@lists.freedesktop.org, linux-rockchip@lists.infradead.org, nouveau@lists.freedesktop.org, spice-devel@lists.freedesktop.org, Jani Nikula <jani.nikula@intel.com>, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Rodrigo Vivi <rodrigo.vivi@intel.com>, linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.or
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190111150712.GA2696@jordon-HP-15-Notebook-PC>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andrew Morton <akpm@linux-foundation.org>, Matthew Wilcox <willy@infradead.org>, Michal Hocko <mhocko@suse.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, vbabka@suse.cz, Rik van Riel <riel@surriel.com>, Stephen Rothwell <sfr@canb.auug.org.au>, rppt@linux.vnet.ibm.com, Peter Zijlstra <peterz@infradead.org>, Russell King - ARM Linux <linux@armlinux.org.uk>, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, Kees Cook <keescook@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, Kyungmin Park <kyungmin.park@samsung.com>, mchehab@kernel.org, Boris Ostrovsky <boris.ost>
+Cc: linux-kernel@vger.kernel.org, Linux-MM <linux-mm@kvack.org>, linux-arm-kernel@lists.infradead.org, linux1394-devel@lists.sourceforge.net, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, xen-devel@lists.xen.org, iommu@lists.linux-foundation.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGFuaWVsIGV0IGFsLgoKPiA+IAo+ID4gWWVhaCB0aGUgZHJtX2NydGNfaGVscGVyLmggaGVh
-ZGVyIGlzIGEgYml0IHRoZSBtaW5pYXR1cmUgZHJtUC5oIGZvciBsZWdhY3kKPiA+IGttcyBkcml2
-ZXJzLiBKdXN0IHJlbW92aW5nIGl0IGZyb20gYWxsIHRoZSBhdG9taWMgZHJpdmVycyBjYXVzZWQg
-bG90cyBvZgo+ID4gZmFsbG91dCwgSSBleHBlY3QgZXZlbiBtb3JlIGlmIHlvdSBlbnRpcmVseSBy
-ZW1vdmUgdGhlIGluY2x1ZGVzIGl0IGhhcy4KPiA+IE1heWJlIGEgdG9kbywgY2FyZSB0byBwbHMg
-Y3JlYXRlIHRoYXQgcGF0Y2ggc2luY2UgaXQncyB5b3VyIGlkZWE/Cj4gCj4gVGhlIG1haW4gcmVh
-c29uIEkgYmFpbGVkIG91dCBpbml0aWFsbHkgd2FzIHRoYXQgdGhpcyB3b3VsZCBjcmVhdGUKPiBz
-bWFsbCBjaGFuZ2VzIHRvIHNldmVyYWwgb3RoZXJ3aXNlIHNlbGRvbWx5IHRvdWNoZWQgZmlsZXMu
-Cj4gQW5kIHRoZW4gd2Ugd291bGQgbGF0ZXIgY29tZSBhbmQgcmVtb3ZlIGRybVAuaCAtIHNvIGxv
-dHMgb2YKPiBzbWFsbCBidXQgaW5jcmVtZW50YWwgY2hhbmdlcyB0byB0aGUgc2FtZSBvdGhlcndp
-c2Ugc2VsZG9tbHkKPiBlZGl0ZWQgZmlsZXMuCj4gQW5kIHRoZSBqb2Igd2FzIG9ubHkgcGFydGlh
-bGx5IGRvbmUuCj4gCj4gSSB3aWxsIHRyeSB0byBleHBlcmltZW50IHdpdGggYW4gYXBwcm9hY2gg
-d2hlcmUgSSBjbGVhbiB1cCB0aGUKPiBpbmNsdWRlL2RybS8qLmggZmlsZXMgYSBsaXR0bGUgKGxp
-a2Ugc3VnZ2VzdGVkIGFib3ZlLCArZGVsZXRlIGRybVAuaAo+IGFuZCBtYXliZSBhIGJpdCBtb3Jl
-KS4KPiAKPiBUaGVuIHRvIHRyeSBvbiBhIGRyaXZlciBieSBkcml2ZXIgYmFzaXMgdG8gbWFrZSBp
-dCBidWlsZCB3aXRoIGEKPiBjbGVhbmVkIHNldCBvZiBpbmNsdWRlIGZpbGVzLgo+IEkgaG9wZSB0
-aGF0IHRoZSBjbGVhbmVkIHVwIGRyaXZlciBjYW4gc3RpbGwgYnVpbGQgd2l0aG91dCB0aGUKPiBj
-bGVhbmVkIGhlYWRlciBmaWxlcyBzbyB0aGUgY2hhbmdlcyBjYW4gYmUgc3VibWl0dGVkIHBpZWNl
-bWFsLgo+IAo+IFdpbGwgZG8gc28gd2l0aCBhbiBleWUgb24gdGhlIGxlc3NlciBtYWludGFpbmVk
-IGRyaXZlcnMgdG8gdHJ5IGl0Cj4gb3V0IHRvIGF2b2lkIGNyZWF0aW5nIHRvbyBtdWNoIGNocnVu
-Y2ggZm9yIG90aGVycy4KCkkgaGF2ZSBub3cgYSBmZXcgcGF0Y2hlcyBxdWV1ZWQsIGJ1dCB0aGUg
-cmVzdWx0IGlzIG5vdCB0b28gcHJldHR5LgpJIGRpZCB0aGUgZm9sbG93aW5nOgoKLSBGb3IgYWxs
-IGZpbGVzIGluIGluY2x1ZGUvZHJtLyouaCB0aGUgc2V0IG9mIGluY2x1ZGUgZmlsZXMKICB3ZXJl
-IGFkanVzdGVkIHRvIHRoZSBtaW5pbXVtIG51bWJlciBvZiBmaWxlcyByZXF1aXJlZCB0byBtYWtl
-CiAgdGhlbSBidWlsZCB3aXRob3V0IGFueSBvdGhlciBmaWxlcyBpbmNsdWRlZCBmaXJzdC4KCiAg
-Q3JlYXRlZCBvbmUgLmMgZmlsZSBmb3IgZWFjaCAuaCBmaWxlLiBUaGVuIGluY2x1ZGVkIHRoZSAu
-aAogIGZpbGUgYW5kIGFkanVzdGVkIHRvIHRoZSBtaW5pbWFsIHNldCBvZiBpbmNsdWRlIGZpbGVz
-LgogIEluIHRoZSBwcm9jZXNzIGEgbG90IG9mIGZvcndhcmRzIHdlcmUgYWRkZWQuCgotIERlbGV0
-ZWQgZHJtUC5oCgotIEZpeGVkIGJ1aWxkIG9mIGEgZmV3IGRyaXZlcnM6IHN0aSwgdGlsY2RjLCBn
-bWE1MDAsIHR2ZTIwMCwgdmlhCgpTb21lIG9ic2VydmF0aW9uczoKCi0gS2lsbGluZyBhbGwgdGhl
-IGluY2x1ZGVzIG5vdCBuZWVkZWQgaW4gdGhlIGhlYWRlcnMgZmlsZXMKICByZXN1bHRzIGluIGEg
-YSBsb3Qgb2YgZXh0cmEgY2hhbmdlcy4KICBFeGFtcGxlczoKICAgIGRybV9tb2RzZXNldF9oZWxw
-ZXJfdnRhYmxlcy5oIGlzIG5vIGxvbmdlcgogICAgaW5jbHVkZWQgYnkgYW55b25lLCBzbyBuZWVk
-cyB0byBiZSBhZGRlZCBpbiBtYW55IGZpbGVzCgogICAgZHJtX2F0b21pY19zdGF0ZV9oZWxwZXIu
-aCBpcyBubyBsb25nZXIgaW5jbHVkZWQKICAgIGJ5IGFueW9uZSBzbyBsaWtld2lzZSBuZWVkcyB0
-byBiZSBhZGRlZCBpbiBtYW55IGZpbGVzCgotIEl0IGlzIHZlcnkgdGVkaW91cyB0byBkbyB0aGlz
-IHByb3Blcmx5LgogIFRoZSBwcm9jZXNzIEkgZm9sbG93ZWQgd2FzOgogIC0gZGVsZXRlIC8gY29t
-bWVudCBvdXQgYWxsIGluY2x1ZGUgZmlsZXMKICAtIGFkZCBiYWNrIHRoZSBvYnZpb3VzIGZyb20g
-YSBxdWljayBzY2FuIG9mIHRoZSBjb2RlCiAgLSBidWlsZCAtIGZpeCAtIGJ1aWxkIC0gZml4IC0g
-YnVpbGQgLSBmaXggLi4uCiAgLSAgIG5leHQgZmlsZS4uLgoKLSBUaGUgcmVzdWx0IGlzIGVycm9y
-cHJvbmUgYXMgb25seSB0aGUgYWxseWVzY29uZmlnICsgYWxsbW9kY29uZmlnCiAgdmFyaWFudHMg
-YXJlIHRlc3RlZC4gQnV0IHJlYWxsaWZlIGNvbmZpZ3VyYXRpb25zIGFyZSBtb3JlIGRpdmVyc2Uu
-CgpDdXJyZW50IGRpZmZzdGF0OgogICAxMTEgZmlsZXMgY2hhbmdlZCwgNzcxIGluc2VydGlvbnMo
-KyksIDQwMSBkZWxldGlvbnMoLSkKClRoaXMgaXMgZm9yIHRoZSA1IGRyaXZlcnMgYWxvbmUgYW5k
-IG5vdCB0aGUgaGVhZGVyIGNsZWFudXAuClNvIGxvbmcgc3Rvcnkgc2hvcnQgLSB0aGlzIGlzIG5v
-dCBnb29kIGFuZCBub3QgdGhlIHdheSBmb3J3YXJkLgoKSSB3aWxsIHRyeSB0byBjb21lIHVwIHdp
-dGggYSBmZXcgaW1wcm92ZW1lbnRzIHRvIG1ha2UgdGhlCmhlYWRlcnMgZmlsZXMgc2VsZmNvbnRh
-aW5lZCwgYnV0IHJlc3RyaWN0ZWQgdG8gdGhlIGNoYW5nZXMgdGhhdAphZGQgZm9yd2FyZHMvaW5j
-bHVkZSB0byBhdm9pZCB0aGUgY2hydW5jaCBpbiBhbGwgdGhlIGRyaXZlcnMuCgpBbmQgdGhlbiBw
-b3N0IGZvciByZXZpZXcgYSBmZXcgcGF0Y2hlcyB0byBjbGVhbiB1cCBzb21lIGhlYWRlcnMuCklm
-IHRoZSBjbGVhbnVwIGdldHMgYSBnbyBJIHdpbGwgdHJ5IHRvIHBlcnN1YWRlIHRoZSBpbnRyb2R1
-Y3Rpb24Kb2YgdGhlc2UuClRoaXMgd2lsbCBpbmNsdWRlLCBidXQgd2lsbCBub3QgYmUgbGltaXRl
-ZCB0bywgdGhlIGFib3ZlIG1lbnRpb25lZApkcm1fY3J0Y19oZWxwZXIuaCBoZWFkZXIgZmlsZS4K
-CkZvciBub3cgdG9vIG11Y2ggdGltZSB3YXMgYWxyZWFkeSBzcGVudCBvbiB0aGlzLCBzbyBpdCBp
-cyBhdCB0aGUKbW9tZW50IHB1c2hlZCBiYWNrIG9uIG15IFRPRE8gbGlzdC4KVGhpcyBtYWlsIHNl
-cnZlIGFsc28gYXMgYSBraW5kIG9mICJ3aGVyZSBoYWQgSSBsZWZ0Iiwgd2hlbi9pZiBJCnBpY2sg
-dGhpcyB1cCBhZ2Fpbi4KCklmIHRoZXJlIGFyZSBhbnlvbmUgdGhhdCBrbm93cyBzb21lIHRvb2xp
-bmcgdGhhdCBjYW4gaGVscCBpbiB0aGUKcHJvY2VzcyBvZiBhZGp1c3RpbmcgdGhlIGhlYWRlciBm
-aWxlcyBJIGFtIGFsbCBlYXJzLgoKCVNhbQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwK
+On Fri, Jan 11, 2019 at 8:33 PM Souptick Joarder <jrdr.linux@gmail.com> wrote:
+>
+> Previouly drivers have their own way of mapping range of
+> kernel pages/memory into user vma and this was done by
+> invoking vm_insert_page() within a loop.
+>
+> As this pattern is common across different drivers, it can
+> be generalized by creating new functions and use it across
+> the drivers.
+>
+> vm_insert_range() is the API which could be used to mapped
+> kernel memory/pages in drivers which has considered vm_pgoff
+>
+> vm_insert_range_buggy() is the API which could be used to map
+> range of kernel memory/pages in drivers which has not considered
+> vm_pgoff. vm_pgoff is passed default as 0 for those drivers.
+>
+> We _could_ then at a later "fix" these drivers which are using
+> vm_insert_range_buggy() to behave according to the normal vm_pgoff
+> offsetting simply by removing the _buggy suffix on the function
+> name and if that causes regressions, it gives us an easy way to revert.
+>
+> Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
+> Suggested-by: Russell King <linux@armlinux.org.uk>
+> Suggested-by: Matthew Wilcox <willy@infradead.org>
+
+Any comment on these APIs ?
+
+> ---
+>  include/linux/mm.h |  4 +++
+>  mm/memory.c        | 81 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  mm/nommu.c         | 14 ++++++++++
+>  3 files changed, 99 insertions(+)
+>
+> diff --git a/include/linux/mm.h b/include/linux/mm.h
+> index 5411de9..9d1dff6 100644
+> --- a/include/linux/mm.h
+> +++ b/include/linux/mm.h
+> @@ -2514,6 +2514,10 @@ unsigned long change_prot_numa(struct vm_area_struct *vma,
+>  int remap_pfn_range(struct vm_area_struct *, unsigned long addr,
+>                         unsigned long pfn, unsigned long size, pgprot_t);
+>  int vm_insert_page(struct vm_area_struct *, unsigned long addr, struct page *);
+> +int vm_insert_range(struct vm_area_struct *vma, struct page **pages,
+> +                               unsigned long num);
+> +int vm_insert_range_buggy(struct vm_area_struct *vma, struct page **pages,
+> +                               unsigned long num);
+>  vm_fault_t vmf_insert_pfn(struct vm_area_struct *vma, unsigned long addr,
+>                         unsigned long pfn);
+>  vm_fault_t vmf_insert_pfn_prot(struct vm_area_struct *vma, unsigned long addr,
+> diff --git a/mm/memory.c b/mm/memory.c
+> index 4ad2d29..00e66df 100644
+> --- a/mm/memory.c
+> +++ b/mm/memory.c
+> @@ -1520,6 +1520,87 @@ int vm_insert_page(struct vm_area_struct *vma, unsigned long addr,
+>  }
+>  EXPORT_SYMBOL(vm_insert_page);
+>
+> +/**
+> + * __vm_insert_range - insert range of kernel pages into user vma
+> + * @vma: user vma to map to
+> + * @pages: pointer to array of source kernel pages
+> + * @num: number of pages in page array
+> + * @offset: user's requested vm_pgoff
+> + *
+> + * This allows drivers to insert range of kernel pages they've allocated
+> + * into a user vma.
+> + *
+> + * If we fail to insert any page into the vma, the function will return
+> + * immediately leaving any previously inserted pages present.  Callers
+> + * from the mmap handler may immediately return the error as their caller
+> + * will destroy the vma, removing any successfully inserted pages. Other
+> + * callers should make their own arrangements for calling unmap_region().
+> + *
+> + * Context: Process context.
+> + * Return: 0 on success and error code otherwise.
+> + */
+> +static int __vm_insert_range(struct vm_area_struct *vma, struct page **pages,
+> +                               unsigned long num, unsigned long offset)
+> +{
+> +       unsigned long count = vma_pages(vma);
+> +       unsigned long uaddr = vma->vm_start;
+> +       int ret, i;
+> +
+> +       /* Fail if the user requested offset is beyond the end of the object */
+> +       if (offset > num)
+> +               return -ENXIO;
+> +
+> +       /* Fail if the user requested size exceeds available object size */
+> +       if (count > num - offset)
+> +               return -ENXIO;
+> +
+> +       for (i = 0; i < count; i++) {
+> +               ret = vm_insert_page(vma, uaddr, pages[offset + i]);
+> +               if (ret < 0)
+> +                       return ret;
+> +               uaddr += PAGE_SIZE;
+> +       }
+> +
+> +       return 0;
+> +}
+> +
+> +/**
+> + * vm_insert_range - insert range of kernel pages starts with non zero offset
+> + * @vma: user vma to map to
+> + * @pages: pointer to array of source kernel pages
+> + * @num: number of pages in page array
+> + *
+> + * Maps an object consisting of `num' `pages', catering for the user's
+> + * requested vm_pgoff
+> + *
+> + * Context: Process context. Called by mmap handlers.
+> + * Return: 0 on success and error code otherwise.
+> + */
+> +int vm_insert_range(struct vm_area_struct *vma, struct page **pages,
+> +                               unsigned long num)
+> +{
+> +       return __vm_insert_range(vma, pages, num, vma->vm_pgoff);
+> +}
+> +EXPORT_SYMBOL(vm_insert_range);
+> +
+> +/**
+> + * vm_insert_range_buggy - insert range of kernel pages starts with zero offset
+> + * @vma: user vma to map to
+> + * @pages: pointer to array of source kernel pages
+> + * @num: number of pages in page array
+> + *
+> + * Maps a set of pages, always starting at page[0]
+> + *
+> + * Context: Process context. Called by mmap handlers.
+> + * Return: 0 on success and error code otherwise.
+> + */
+> +int vm_insert_range_buggy(struct vm_area_struct *vma, struct page **pages,
+> +                               unsigned long num)
+> +{
+> +       return __vm_insert_range(vma, pages, num, 0);
+> +}
+> +EXPORT_SYMBOL(vm_insert_range_buggy);
+> +
+>  static vm_fault_t insert_pfn(struct vm_area_struct *vma, unsigned long addr,
+>                         pfn_t pfn, pgprot_t prot, bool mkwrite)
+>  {
+> diff --git a/mm/nommu.c b/mm/nommu.c
+> index 749276b..21d101e 100644
+> --- a/mm/nommu.c
+> +++ b/mm/nommu.c
+> @@ -473,6 +473,20 @@ int vm_insert_page(struct vm_area_struct *vma, unsigned long addr,
+>  }
+>  EXPORT_SYMBOL(vm_insert_page);
+>
+> +int vm_insert_range(struct vm_area_struct *vma, struct page **pages,
+> +                       unsigned long num)
+> +{
+> +       return -EINVAL;
+> +}
+> +EXPORT_SYMBOL(vm_insert_range);
+> +
+> +int vm_insert_range_buggy(struct vm_area_struct *vma, struct page **pages,
+> +                               unsigned long num)
+> +{
+> +       return -EINVAL;
+> +}
+> +EXPORT_SYMBOL(vm_insert_range_buggy);
+> +
+>  /*
+>   *  sys_brk() for the most part doesn't need the global kernel
+>   *  lock, except when an application is doing something nasty
+> --
+> 1.9.1
+>
