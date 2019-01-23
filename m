@@ -1,42 +1,78 @@
-From: Dmitry Voytik <voytikd@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: enable usb-host regulators during boot
-Date: Tue, 22 Jan 2019 23:38:48 +0100
-Message-ID: <20190122223848.6019-1-voytikd@gmail.com>
+From: Sandy Huang <hjc@rock-chips.com>
+Subject: [PATCH] drm/rockchip: rgb: update SPDX license identifier
+Date: Wed, 23 Jan 2019 18:14:39 +0800
+Message-ID: <1548238479-171491-1-git-send-email-hjc@rock-chips.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Katsuhiro Suzuki <katsuhiro@katsuster.net>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Dmitry Voytik <voytikd@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: hjc@rock-chips.com, tglx@linutronix.de, heiko@sntech.de, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-After commit ef05bcb60, boot from USB drives is broken.
-Fix this problem by enabling usb-host regulators during boot time.
+update SPDX License Identifier from GPL-2.0+ to GPL-2.0
+and drop some GPL text.
 
-Signed-off-by: Dmitry Voytik <voytikd@gmail.com>
+Signed-off-by: Sandy Huang <hjc@rock-chips.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_rgb.c | 11 +----------
+ drivers/gpu/drm/rockchip/rockchip_rgb.h | 11 +----------
+ 2 files changed, 2 insertions(+), 20 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index bd937d68ca3b..040b36ef0dd2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -40,6 +40,7 @@
- 		pinctrl-0 = <&usb30_host_drv>;
- 		regulator-name = "vcc_host_5v";
- 		regulator-always-on;
-+		regulator-boot-on;
- 		vin-supply = <&vcc_sys>;
- 	};
+diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+index 96ac145..ad9358f 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+@@ -1,17 +1,8 @@
+-//SPDX-License-Identifier: GPL-2.0+
++// SPDX-License-Identifier: GPL-2.0
+ /*
+  * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+  * Author:
+  *      Sandy Huang <hjc@rock-chips.com>
+- *
+- * This software is licensed under the terms of the GNU General Public
+- * License version 2, as published by the Free Software Foundation, and
+- * may be copied, distributed, and modified under those terms.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+  */
  
-@@ -51,6 +52,7 @@
- 		pinctrl-0 = <&usb20_host_drv>;
- 		regulator-name = "vcc_host1_5v";
- 		regulator-always-on;
-+		regulator-boot-on;
- 		vin-supply = <&vcc_sys>;
- 	};
+ #include <drm/drmP.h>
+diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.h b/drivers/gpu/drm/rockchip/rockchip_rgb.h
+index 38b52e6..27b9635 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_rgb.h
++++ b/drivers/gpu/drm/rockchip/rockchip_rgb.h
+@@ -1,17 +1,8 @@
+-//SPDX-License-Identifier: GPL-2.0+
++/* SPDX-License-Identifier: GPL-2.0 */
+ /*
+  * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+  * Author:
+  *      Sandy Huang <hjc@rock-chips.com>
+- *
+- * This software is licensed under the terms of the GNU General Public
+- * License version 2, as published by the Free Software Foundation, and
+- * may be copied, distributed, and modified under those terms.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+  */
  
+ #ifdef CONFIG_ROCKCHIP_RGB
 -- 
-2.20.1
+2.7.4
