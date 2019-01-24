@@ -1,235 +1,205 @@
 From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 Subject: Re: [linux-sunxi] [PATCH v2 1/2] media: v4l: Add definitions for
  the HEVC slice format and controls
-Date: Thu, 24 Jan 2019 11:27:14 +0100
-Message-ID: <bdf14f97e98f2fd06307545ab9038ac3c2086ae7.camel@bootlin.com>
+Date: Thu, 24 Jan 2019 11:36:24 +0100
+Message-ID: <7c9080caa52b7201636999dcb3c5cdbe3d80d82b.camel@bootlin.com>
 References: <20181123130209.11696-1-paul.kocialkowski@bootlin.com>
-         <20181123130209.11696-2-paul.kocialkowski@bootlin.com>
-         <5515174.7lFZcYkk85@jernej-laptop>
-         <ffe9c81db34b599f675ca5bbf02de360bf0a1608.camel@bootlin.com>
-         <776e63c9-d4a5-342a-e0f7-200ef144ffc4@rock-chips.com>
-         <64c793e08d61181b78125b3956ec38623fa5d261.camel@bootlin.com>
-         <D8005130-F7FD-4CBD-8396-1BB08BB08E81@soulik.info>
-         <f982ef378a8ade075bc7077b93640e20ecebf9f4.camel@bootlin.com>
-         <82FA0C3F-BC54-4D89-AECB-90D81B89B1CE@soulik.info>
-         <c3619a00-17e7-fb92-a427-a7478b96f356@soulik.info>
+ <20181123130209.11696-2-paul.kocialkowski@bootlin.com>
+ <5515174.7lFZcYkk85@jernej-laptop>
+ <ffe9c81db34b599f675ca5bbf02de360bf0a1608.camel@bootlin.com>
+ <776e63c9-d4a5-342a-e0f7-200ef144ffc4@rock-chips.com>
+ <64c793e08d61181b78125b3956ec38623fa5d261.camel@bootlin.com>
+ <D8005130-F7FD-4CBD-8396-1BB08BB08E81@soulik.info>
+ <f982ef378a8ade075bc7077b93640e20ecebf9f4.camel@bootlin.com>
+ <82FA0C3F-BC54-4D89-AECB-90D81B89B1CE@soulik.info>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <c3619a00-17e7-fb92-a427-a7478b96f356@soulik.info>
-Sender: linux-kernel-owner@vger.kernel.org
-To: ayaka <ayaka@soulik.info>
-Cc: Randy Li <randy.li@rock-chips.com>, Jernej =?UTF-8?Q?=C5=A0krabec?= <jernej.skrabec@gmail.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Hans Verkuil <hverkuil@xs4all.nl>, Ezequiel Garcia <ezequiel@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+In-Reply-To: <82FA0C3F-BC54-4D89-AECB-90D81B89B1CE@soulik.info>
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: Ayaka <ayaka@soulik.info>
+Cc: devel@driverdev.osuosl.org, Alexandre Courbot <acourbot@chromium.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Randy Li <randy.li@rock-chips.com>, linux-kernel@vger.kernel.org, Jernej =?UTF-8?Q?=C5=A0krabec?= <jernej.skrabec@gmail.com>, Tomasz Figa <tfiga@chromium.org>, Hans Verkuil <hverkuil@xs4all.nl>, linux-rockchip@lists.infradead.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Thu, 2019-01-10 at 21:32 +0800, ayaka wrote:
-> I forget a important thing, for the rkvdec and rk hevc decoder, it would 
-> requests cabac table, scaling list, picture parameter set and reference 
-> picture storing in one or various of DMA buffers. I am not talking about 
-> the data been parsed, the decoder would requests a raw data.
-> 
-> For the pps and rps, it is possible to reuse the slice header, just let 
-> the decoder know the offset from the bitstream bufer, I would suggest to 
-> add three properties(with sps) for them. But I think we need a method to 
-> mark a OUTPUT side buffer for those aux data.
-
-I'm quite confused about the hardware implementation then. From what
-you're saying, it seems that it takes the raw bitstream elements rather
-than parsed elements. Is it really a stateless implementation?
-
-The stateless implementation was designed with the idea that only the
-raw slice data should be passed in bitstream form to the decoder. For
-H.264, it seems that some decoders also need the slice header in raw
-bitstream form (because they take the full slice NAL unit), see the
-discussions in this thread:
-media: docs-rst: Document m2m stateless video decoder interface
-
-Can you detail exactly what the rockchip decoder absolutely needs in
-raw bitstream format?
-
-Cheers,
-
-Paul
-
-> On 1/8/19 6:00 PM, Ayaka wrote:
-> > Sent from my iPad
-> > 
-> > > On Jan 8, 2019, at 4:38 PM, Paul Kocialkowski <paul.kocialkowski@bootlin.com> wrote:
-> > > 
-> > > Hi,
-> > > 
-> > > > On Tue, 2019-01-08 at 09:16 +0800, Ayaka wrote:
-> > > > 
-> > > > Sent from my iPad
-> > > > 
-> > > > > On Jan 7, 2019, at 5:57 PM, Paul Kocialkowski <paul.kocialkowski@bootlin.com> wrote:
-> > > > > 
-> > > > > Hi,
-> > > > > 
-> > > > > > > On Mon, 2019-01-07 at 11:49 +0800, Randy Li wrote:
-> > > > > > > On 12/12/18 8:51 PM, Paul Kocialkowski wrote:
-> > > > > > > Hi,
-> > > > > > > 
-> > > > > > > On Wed, 2018-12-05 at 21:59 +0100, Jernej Škrabec wrote:
-> > > > > > > 
-> > > > > > > > > +
-> > > > > > > > > +#define V4L2_HEVC_DPB_ENTRY_RPS_ST_CURR_BEFORE    0x01
-> > > > > > > > > +#define V4L2_HEVC_DPB_ENTRY_RPS_ST_CURR_AFTER    0x02
-> > > > > > > > > +#define V4L2_HEVC_DPB_ENTRY_RPS_LT_CURR        0x03
-> > > > > > > > > +
-> > > > > > > > > +#define V4L2_HEVC_DPB_ENTRIES_NUM_MAX        16
-> > > > > > > > > +
-> > > > > > > > > +struct v4l2_hevc_dpb_entry {
-> > > > > > > > > +    __u32    buffer_tag;
-> > > > > > > > > +    __u8    rps;
-> > > > > > > > > +    __u8    field_pic;
-> > > > > > > > > +    __u16    pic_order_cnt[2];
-> > > > > > > > > +};
-> > > > > > Please add a property for reference index, if that rps is not used for
-> > > > > > this, some device would request that(not the rockchip one). And
-> > > > > > Rockchip's VDPU1 and VDPU2 for AVC would request a similar property.
-> > > > > What exactly is that reference index? Is it a bitstream element or
-> > > > > something deduced from the bitstream?
-> > > > > 
-> > > > picture order count(POC) for HEVC and frame_num in AVC. I think it is
-> > > > the number used in list0(P slice and B slice) and list1(B slice).
-> > > The picture order count is already the last field of the DPB entry
-> > > structure. There is one for each field picture.
-> > As we are not sure whether there is a field coded slice or CTU, I would hold this part and else about the field.
-> > > > > > Adding another buffer_tag for referring the memory of the motion vectors
-> > > > > > for each frames. Or a better method is add a meta data to echo picture
-> > > > > > buffer,  since the picture output is just the same as the original,
-> > > > > > display won't care whether the motion vectors are written the button of
-> > > > > > picture or somewhere else.
-> > > > > The motion vectors are passed as part of the raw bitstream data, in the
-> > > > > slices. Is there a case where the motion vectors are coded differently?
-> > > > No, it is an additional cache for decoder, even FFmpeg having such
-> > > > data, I think allwinner must output it into somewhere.
-> > > Ah yes I see what you mean! This is handled internally by our driver
-> > > and not exposed to userspace. I don't think it would be a good idea to
-> > > expose this cache or request that userspace allocates it like a video
-> > > buffer.
-> > > 
-> > No, usually the driver should allocate, as the user space have no idea on size of each devices.
-> > But for advantage user, application can fix a broken picture with a proper data or analysis a object motion from that.
-> > So I would suggest attaching this information to a picture buffer as a meta data.
-> > > > > > > > > +
-> > > > > > > > > +struct v4l2_hevc_pred_weight_table {
-> > > > > > > > > +    __u8    luma_log2_weight_denom;
-> > > > > > > > > +    __s8    delta_chroma_log2_weight_denom;
-> > > > > > > > > +
-> > > > > > > > > +    __s8    delta_luma_weight_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
-> > > > > > > > > +    __s8    luma_offset_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
-> > > > > > > > > +    __s8    delta_chroma_weight_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
-> > > > > > > > > +    __s8    chroma_offset_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
-> > > > > > > > > +
-> > > > > > > > > +    __s8    delta_luma_weight_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
-> > > > > > > > > +    __s8    luma_offset_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
-> > > > > > > > > +    __s8    delta_chroma_weight_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
-> > > > > > > > > +    __s8    chroma_offset_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
-> > > > > > > > > +};
-> > > > > > > > > +
-> > > > > > Those properties I think are not necessary are applying for the
-> > > > > > Rockchip's device, may not work for the others.
-> > > > > Yes, it's possible that some of the elements are not necessary for some
-> > > > > decoders. What we want is to cover all the elements that might be
-> > > > > required for a decoder.
-> > > > I wonder whether allwinner need that, those sao flag usually ignored
-> > > > by decoder in design. But more is better than less, it is hard to
-> > > > extend a v4l2 structure  in the future, maybe a new HEVC profile
-> > > > would bring a new property, it is still too early for HEVC.
-> > > Yes this is used by our decoder. The idea is to have all the basic
-> > > bitstream elements in the structures (even if some decoders don't use
-> > > them all) and add others for extension as separate controls later.
-> > > 
-> > > > > > > > > +struct v4l2_ctrl_hevc_slice_params {
-> > > > > > > > > +    __u32    bit_size;
-> > > > > > > > > +    __u32    data_bit_offset;
-> > > > > > > > > +
-> > > > > > > > > +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: NAL unit header */
-> > > > > > > > > +    __u8    nal_unit_type;
-> > > > > > > > > +    __u8    nuh_temporal_id_plus1;
-> > > > > > > > > +
-> > > > > > > > > +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header */
-> > > > > > > > > +    __u8    slice_type;
-> > > > > > > > > +    __u8    colour_plane_id;
-> > > > > > ----------------------------------------------------------------------------
-> > > > > > > > > +    __u16    slice_pic_order_cnt;
-> > > > > > > > > +    __u8    slice_sao_luma_flag;
-> > > > > > > > > +    __u8    slice_sao_chroma_flag;
-> > > > > > > > > +    __u8    slice_temporal_mvp_enabled_flag;
-> > > > > > > > > +    __u8    num_ref_idx_l0_active_minus1;
-> > > > > > > > > +    __u8    num_ref_idx_l1_active_minus1;
-> > > > > > Rockchip's decoder doesn't use this part.
-> > > > > > > > > +    __u8    mvd_l1_zero_flag;
-> > > > > > > > > +    __u8    cabac_init_flag;
-> > > > > > > > > +    __u8    collocated_from_l0_flag;
-> > > > > > > > > +    __u8    collocated_ref_idx;
-> > > > > > > > > +    __u8    five_minus_max_num_merge_cand;
-> > > > > > > > > +    __u8    use_integer_mv_flag;
-> > > > > > > > > +    __s8    slice_qp_delta;
-> > > > > > > > > +    __s8    slice_cb_qp_offset;
-> > > > > > > > > +    __s8    slice_cr_qp_offset;
-> > > > > > > > > +    __s8    slice_act_y_qp_offset;
-> > > > > > > > > +    __s8    slice_act_cb_qp_offset;
-> > > > > > > > > +    __s8    slice_act_cr_qp_offset;
-> > > > > > > > > +    __u8    slice_deblocking_filter_disabled_flag;
-> > > > > > > > > +    __s8    slice_beta_offset_div2;
-> > > > > > > > > +    __s8    slice_tc_offset_div2;
-> > > > > > > > > +    __u8    slice_loop_filter_across_slices_enabled_flag;
-> > > > > > > > > +
-> > > > > > > > > +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: Picture timing SEI message */
-> > > > > > > > > +    __u8    pic_struct;
-> > > > > > I think the decoder doesn't care about this, it is used for display.
-> > > > > The purpose of this field is to indicate whether the current picture is
-> > > > > a progressive frame or an interlaced field picture, which is useful for
-> > > > > decoding.
-> > > > > 
-> > > > > At least our decoder has a register field to indicate frame/top
-> > > > > field/bottom field, so we certainly need to keep the info around.
-> > > > > Looking at the spec and the ffmpeg implementation, it looks like this
-> > > > > flag of the bitstream is the usual way to report field coding.
-> > > > It depends whether the decoder cares about scan type or more, I
-> > > > wonder prefer general_interlaced_source_flag for just scan type, it
-> > > > would be better than reading another SEL.
-> > > Well we still need a way to indicate if the current data is top or
-> > > bottom field for interlaced. I don't think that knowing that the whole
-> > > video is interlaced would be precise enough.
-> > > 
-> > > Cheers,
-> > > 
-> > > Paul
-> > > 
-> > > > > > > > > +
-> > > > > > > > > +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header */
-> > > > > > > > > +    struct v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
-> > > > > > > > > +    __u8    num_active_dpb_entries;
-> > > > > > > > > +    __u8    ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
-> > > > > > > > > +    __u8    ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
-> > > > > > > > > +
-> > > > > > > > > +    __u8    num_rps_poc_st_curr_before;
-> > > > > > > > > +    __u8    num_rps_poc_st_curr_after;
-> > > > > > > > > +    __u8    num_rps_poc_lt_curr;
-> > > > > > > > > +
-> > > > > > > > > +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: Weighted prediction parameter */
-> > > > > > > > > +    struct v4l2_hevc_pred_weight_table pred_weight_table;
-> > > > > > > > > +};
-> > > > > > > > > +
-> > > > > > > > > #endif
-> > > > > -- 
-> > > > > Paul Kocialkowski, Bootlin (formerly Free Electrons)
-> > > > > Embedded Linux and kernel engineering
-> > > > > https://bootlin.com
-> > > > > 
-> > > -- 
-> > > Paul Kocialkowski, Bootlin (formerly Free Electrons)
-> > > Embedded Linux and kernel engineering
-> > > https://bootlin.com
-> > > 
--- 
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
+SGksCgpPbiBUdWUsIDIwMTktMDEtMDggYXQgMTg6MDAgKzA4MDAsIEF5YWthIHdyb3RlOgo+IAo+
+IFNlbnQgZnJvbSBteSBpUGFkCj4gCj4gPiBPbiBKYW4gOCwgMjAxOSwgYXQgNDozOCBQTSwgUGF1
+bCBLb2NpYWxrb3dza2kgPHBhdWwua29jaWFsa293c2tpQGJvb3RsaW4uY29tPiB3cm90ZToKPiA+
+IAo+ID4gSGksCj4gPiAKPiA+ID4gT24gVHVlLCAyMDE5LTAxLTA4IGF0IDA5OjE2ICswODAwLCBB
+eWFrYSB3cm90ZToKPiA+ID4gCj4gPiA+IFNlbnQgZnJvbSBteSBpUGFkCj4gPiA+IAo+ID4gPiA+
+IE9uIEphbiA3LCAyMDE5LCBhdCA1OjU3IFBNLCBQYXVsIEtvY2lhbGtvd3NraSA8cGF1bC5rb2Np
+YWxrb3dza2lAYm9vdGxpbi5jb20+IHdyb3RlOgo+ID4gPiA+IAo+ID4gPiA+IEhpLAo+ID4gPiA+
+IAo+ID4gPiA+ID4gPiBPbiBNb24sIDIwMTktMDEtMDcgYXQgMTE6NDkgKzA4MDAsIFJhbmR5IExp
+IHdyb3RlOgo+ID4gPiA+ID4gPiBPbiAxMi8xMi8xOCA4OjUxIFBNLCBQYXVsIEtvY2lhbGtvd3Nr
+aSB3cm90ZToKPiA+ID4gPiA+ID4gSGksCj4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiBPbiBXZWQs
+IDIwMTgtMTItMDUgYXQgMjE6NTkgKzAxMDAsIEplcm5laiDFoGtyYWJlYyB3cm90ZToKPiA+ID4g
+PiA+ID4gCj4gPiA+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ID4gPiArI2RlZmluZSBWNEwyX0hF
+VkNfRFBCX0VOVFJZX1JQU19TVF9DVVJSX0JFRk9SRSAgICAweDAxCj4gPiA+ID4gPiA+ID4gPiAr
+I2RlZmluZSBWNEwyX0hFVkNfRFBCX0VOVFJZX1JQU19TVF9DVVJSX0FGVEVSICAgIDB4MDIKPiA+
+ID4gPiA+ID4gPiA+ICsjZGVmaW5lIFY0TDJfSEVWQ19EUEJfRU5UUllfUlBTX0xUX0NVUlIgICAg
+ICAgIDB4MDMKPiA+ID4gPiA+ID4gPiA+ICsKPiA+ID4gPiA+ID4gPiA+ICsjZGVmaW5lIFY0TDJf
+SEVWQ19EUEJfRU5UUklFU19OVU1fTUFYICAgICAgICAxNgo+ID4gPiA+ID4gPiA+ID4gKwo+ID4g
+PiA+ID4gPiA+ID4gK3N0cnVjdCB2NGwyX2hldmNfZHBiX2VudHJ5IHsKPiA+ID4gPiA+ID4gPiA+
+ICsgICAgX191MzIgICAgYnVmZmVyX3RhZzsKPiA+ID4gPiA+ID4gPiA+ICsgICAgX191OCAgICBy
+cHM7Cj4gPiA+ID4gPiA+ID4gPiArICAgIF9fdTggICAgZmllbGRfcGljOwo+ID4gPiA+ID4gPiA+
+ID4gKyAgICBfX3UxNiAgICBwaWNfb3JkZXJfY250WzJdOwo+ID4gPiA+ID4gPiA+ID4gK307Cj4g
+PiA+ID4gPiAKPiA+ID4gPiA+IFBsZWFzZSBhZGQgYSBwcm9wZXJ0eSBmb3IgcmVmZXJlbmNlIGlu
+ZGV4LCBpZiB0aGF0IHJwcyBpcyBub3QgdXNlZCBmb3IgCj4gPiA+ID4gPiB0aGlzLCBzb21lIGRl
+dmljZSB3b3VsZCByZXF1ZXN0IHRoYXQobm90IHRoZSByb2NrY2hpcCBvbmUpLiBBbmQgCj4gPiA+
+ID4gPiBSb2NrY2hpcCdzIFZEUFUxIGFuZCBWRFBVMiBmb3IgQVZDIHdvdWxkIHJlcXVlc3QgYSBz
+aW1pbGFyIHByb3BlcnR5Lgo+ID4gPiA+IAo+ID4gPiA+IFdoYXQgZXhhY3RseSBpcyB0aGF0IHJl
+ZmVyZW5jZSBpbmRleD8gSXMgaXQgYSBiaXRzdHJlYW0gZWxlbWVudCBvcgo+ID4gPiA+IHNvbWV0
+aGluZyBkZWR1Y2VkIGZyb20gdGhlIGJpdHN0cmVhbT8KPiA+ID4gPiAKPiA+ID4gcGljdHVyZSBv
+cmRlciBjb3VudChQT0MpIGZvciBIRVZDIGFuZCBmcmFtZV9udW0gaW4gQVZDLiBJIHRoaW5rIGl0
+IGlzCj4gPiA+IHRoZSBudW1iZXIgdXNlZCBpbiBsaXN0MChQIHNsaWNlIGFuZCBCIHNsaWNlKSBh
+bmQgbGlzdDEoQiBzbGljZSkuCj4gPiAKPiA+IFRoZSBwaWN0dXJlIG9yZGVyIGNvdW50IGlzIGFs
+cmVhZHkgdGhlIGxhc3QgZmllbGQgb2YgdGhlIERQQiBlbnRyeQo+ID4gc3RydWN0dXJlLiBUaGVy
+ZSBpcyBvbmUgZm9yIGVhY2ggZmllbGQgcGljdHVyZS4KPiBBcyB3ZSBhcmUgbm90IHN1cmUgd2hl
+dGhlciB0aGVyZSBpcyBhIGZpZWxkIGNvZGVkIHNsaWNlIG9yIENUVSwgSQo+IHdvdWxkIGhvbGQg
+dGhpcyBwYXJ0IGFuZCBlbHNlIGFib3V0IHRoZSBmaWVsZC4KCkknbSBub3Qgc3VyZSB3aGF0IHlv
+dSBtZWFudCBoZXJlLCBzb3JyeS4KCj4gPiA+ID4gPiBBZGRpbmcgYW5vdGhlciBidWZmZXJfdGFn
+IGZvciByZWZlcnJpbmcgdGhlIG1lbW9yeSBvZiB0aGUgbW90aW9uIHZlY3RvcnMgCj4gPiA+ID4g
+PiBmb3IgZWFjaCBmcmFtZXMuIE9yIGEgYmV0dGVyIG1ldGhvZCBpcyBhZGQgYSBtZXRhIGRhdGEg
+dG8gZWNobyBwaWN0dXJlIAo+ID4gPiA+ID4gYnVmZmVyLCAgc2luY2UgdGhlIHBpY3R1cmUgb3V0
+cHV0IGlzIGp1c3QgdGhlIHNhbWUgYXMgdGhlIG9yaWdpbmFsLCAKPiA+ID4gPiA+IGRpc3BsYXkg
+d29uJ3QgY2FyZSB3aGV0aGVyIHRoZSBtb3Rpb24gdmVjdG9ycyBhcmUgd3JpdHRlbiB0aGUgYnV0
+dG9uIG9mIAo+ID4gPiA+ID4gcGljdHVyZSBvciBzb21ld2hlcmUgZWxzZS4KPiA+ID4gPiAKPiA+
+ID4gPiBUaGUgbW90aW9uIHZlY3RvcnMgYXJlIHBhc3NlZCBhcyBwYXJ0IG9mIHRoZSByYXcgYml0
+c3RyZWFtIGRhdGEsIGluIHRoZQo+ID4gPiA+IHNsaWNlcy4gSXMgdGhlcmUgYSBjYXNlIHdoZXJl
+IHRoZSBtb3Rpb24gdmVjdG9ycyBhcmUgY29kZWQgZGlmZmVyZW50bHk/Cj4gPiA+IE5vLCBpdCBp
+cyBhbiBhZGRpdGlvbmFsIGNhY2hlIGZvciBkZWNvZGVyLCBldmVuIEZGbXBlZyBoYXZpbmcgc3Vj
+aAo+ID4gPiBkYXRhLCBJIHRoaW5rIGFsbHdpbm5lciBtdXN0IG91dHB1dCBpdCBpbnRvIHNvbWV3
+aGVyZS4KPiA+IAo+ID4gQWggeWVzIEkgc2VlIHdoYXQgeW91IG1lYW4hIFRoaXMgaXMgaGFuZGxl
+ZCBpbnRlcm5hbGx5IGJ5IG91ciBkcml2ZXIKPiA+IGFuZCBub3QgZXhwb3NlZCB0byB1c2Vyc3Bh
+Y2UuIEkgZG9uJ3QgdGhpbmsgaXQgd291bGQgYmUgYSBnb29kIGlkZWEgdG8KPiA+IGV4cG9zZSB0
+aGlzIGNhY2hlIG9yIHJlcXVlc3QgdGhhdCB1c2Vyc3BhY2UgYWxsb2NhdGVzIGl0IGxpa2UgYSB2
+aWRlbwo+ID4gYnVmZmVyLgo+ID4gCj4gTm8sIHVzdWFsbHkgdGhlIGRyaXZlciBzaG91bGQgYWxs
+b2NhdGUsIGFzIHRoZSB1c2VyIHNwYWNlIGhhdmUgbm8KPiBpZGVhIG9uIHNpemUgb2YgZWFjaCBk
+ZXZpY2VzLgo+IEJ1dCBmb3IgYWR2YW50YWdlIHVzZXIsIGFwcGxpY2F0aW9uIGNhbiBmaXggYSBi
+cm9rZW4gcGljdHVyZSB3aXRoIGEKPiBwcm9wZXIgZGF0YSBvciBhbmFseXNpcyBhIG9iamVjdCBt
+b3Rpb24gZnJvbSB0aGF0Lgo+IFNvIEkgd291bGQgc3VnZ2VzdCBhdHRhY2hpbmcgdGhpcyBpbmZv
+cm1hdGlvbiB0byBhIHBpY3R1cmUgYnVmZmVyIGFzCj4gYSBtZXRhIGRhdGEuIAoKUmlnaHQsIHRo
+ZSBkcml2ZXIgd2lsbCBhbGxvY2F0ZSBjaHVua3Mgb2YgbWVtb3J5IGZvciB0aGUgZGVjb2RpbmcK
+bWV0YWRhdGEgdXNlZCBieSB0aGUgaGFyZHdhcmUgZGVjb2Rlci4KCldlbGwsIEkgZG9uJ3QgdGhp
+bmsgVjRMMiBoYXMgYW55IG1lY2hhbmlzbSB0byBleHBvc2UgdGhpcyBkYXRhIGZvciBub3cKYW5k
+IHNpbmNlIGl0J3MgdmVyeSBzcGVjaWZpYyB0byB0aGUgaGFyZHdhcmUgaW1wbGVtZW50YXRpb24s
+IEkgZ3Vlc3MKdGhlIGludGVyZXN0IGluIGhhdmluZyB0aGF0IGlzIGdlbmVyYWxseSBwcmV0dHkg
+bG93LgoKVGhhdCdzIG1heWJlIHNvbWV0aGluZyB0aGF0IGNvdWxkIGJlIGFkZGVkIGxhdGVyIGlm
+IHNvbWVvbmUgd2FudHMgdG8Kd29yayBvbiBpdCwgYnV0IEkgdGhpbmsgd2UgYXJlIGJldHRlciBv
+ZmYga2VlcGluZyB0aGlzIG1ldGFkYXRhIGhpZGRlbgpieSB0aGUgZHJpdmVyIGZvciBub3cuCgo+
+ID4gPiA+ID4gPiA+ID4gKwo+ID4gPiA+ID4gPiA+ID4gK3N0cnVjdCB2NGwyX2hldmNfcHJlZF93
+ZWlnaHRfdGFibGUgewo+ID4gPiA+ID4gPiA+ID4gKyAgICBfX3U4ICAgIGx1bWFfbG9nMl93ZWln
+aHRfZGVub207Cj4gPiA+ID4gPiA+ID4gPiArICAgIF9fczggICAgZGVsdGFfY2hyb21hX2xvZzJf
+d2VpZ2h0X2Rlbm9tOwo+ID4gPiA+ID4gPiA+ID4gKwo+ID4gPiA+ID4gPiA+ID4gKyAgICBfX3M4
+ICAgIGRlbHRhX2x1bWFfd2VpZ2h0X2wwW1Y0TDJfSEVWQ19EUEJfRU5UUklFU19OVU1fTUFYXTsK
+PiA+ID4gPiA+ID4gPiA+ICsgICAgX19zOCAgICBsdW1hX29mZnNldF9sMFtWNEwyX0hFVkNfRFBC
+X0VOVFJJRVNfTlVNX01BWF07Cj4gPiA+ID4gPiA+ID4gPiArICAgIF9fczggICAgZGVsdGFfY2hy
+b21hX3dlaWdodF9sMFtWNEwyX0hFVkNfRFBCX0VOVFJJRVNfTlVNX01BWF1bMl07Cj4gPiA+ID4g
+PiA+ID4gPiArICAgIF9fczggICAgY2hyb21hX29mZnNldF9sMFtWNEwyX0hFVkNfRFBCX0VOVFJJ
+RVNfTlVNX01BWF1bMl07Cj4gPiA+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ID4gPiArICAgIF9f
+czggICAgZGVsdGFfbHVtYV93ZWlnaHRfbDFbVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVhd
+Owo+ID4gPiA+ID4gPiA+ID4gKyAgICBfX3M4ICAgIGx1bWFfb2Zmc2V0X2wxW1Y0TDJfSEVWQ19E
+UEJfRU5UUklFU19OVU1fTUFYXTsKPiA+ID4gPiA+ID4gPiA+ICsgICAgX19zOCAgICBkZWx0YV9j
+aHJvbWFfd2VpZ2h0X2wxW1Y0TDJfSEVWQ19EUEJfRU5UUklFU19OVU1fTUFYXVsyXTsKPiA+ID4g
+PiA+ID4gPiA+ICsgICAgX19zOCAgICBjaHJvbWFfb2Zmc2V0X2wxW1Y0TDJfSEVWQ19EUEJfRU5U
+UklFU19OVU1fTUFYXVsyXTsKPiA+ID4gPiA+ID4gPiA+ICt9Owo+ID4gPiA+ID4gPiA+ID4gKwo+
+ID4gPiA+ID4gVGhvc2UgcHJvcGVydGllcyBJIHRoaW5rIGFyZSBub3QgbmVjZXNzYXJ5IGFyZSBh
+cHBseWluZyBmb3IgdGhlIAo+ID4gPiA+ID4gUm9ja2NoaXAncyBkZXZpY2UsIG1heSBub3Qgd29y
+ayBmb3IgdGhlIG90aGVycy4KPiA+ID4gPiAKPiA+ID4gPiBZZXMsIGl0J3MgcG9zc2libGUgdGhh
+dCBzb21lIG9mIHRoZSBlbGVtZW50cyBhcmUgbm90IG5lY2Vzc2FyeSBmb3Igc29tZQo+ID4gPiA+
+IGRlY29kZXJzLiBXaGF0IHdlIHdhbnQgaXMgdG8gY292ZXIgYWxsIHRoZSBlbGVtZW50cyB0aGF0
+IG1pZ2h0IGJlCj4gPiA+ID4gcmVxdWlyZWQgZm9yIGEgZGVjb2Rlci4KPiA+ID4gSSB3b25kZXIg
+d2hldGhlciBhbGx3aW5uZXIgbmVlZCB0aGF0LCB0aG9zZSBzYW8gZmxhZyB1c3VhbGx5IGlnbm9y
+ZWQKPiA+ID4gYnkgZGVjb2RlciBpbiBkZXNpZ24uIEJ1dCBtb3JlIGlzIGJldHRlciB0aGFuIGxl
+c3MsIGl0IGlzIGhhcmQgdG8KPiA+ID4gZXh0ZW5kIGEgdjRsMiBzdHJ1Y3R1cmUgIGluIHRoZSBm
+dXR1cmUsIG1heWJlIGEgbmV3IEhFVkMgcHJvZmlsZQo+ID4gPiB3b3VsZCBicmluZyBhIG5ldyBw
+cm9wZXJ0eSwgaXQgaXMgc3RpbGwgdG9vIGVhcmx5IGZvciBIRVZDLgo+ID4gCj4gPiBZZXMgdGhp
+cyBpcyB1c2VkIGJ5IG91ciBkZWNvZGVyLiBUaGUgaWRlYSBpcyB0byBoYXZlIGFsbCB0aGUgYmFz
+aWMKPiA+IGJpdHN0cmVhbSBlbGVtZW50cyBpbiB0aGUgc3RydWN0dXJlcyAoZXZlbiBpZiBzb21l
+IGRlY29kZXJzIGRvbid0IHVzZQo+ID4gdGhlbSBhbGwpIGFuZCBhZGQgb3RoZXJzIGZvciBleHRl
+bnNpb24gYXMgc2VwYXJhdGUgY29udHJvbHMgbGF0ZXIuCj4gPiAKPiA+ID4gPiA+ID4gPiA+ICtz
+dHJ1Y3QgdjRsMl9jdHJsX2hldmNfc2xpY2VfcGFyYW1zIHsKPiA+ID4gPiA+ID4gPiA+ICsgICAg
+X191MzIgICAgYml0X3NpemU7Cj4gPiA+ID4gPiA+ID4gPiArICAgIF9fdTMyICAgIGRhdGFfYml0
+X29mZnNldDsKPiA+ID4gPiA+ID4gPiA+ICsKPiA+ID4gPiA+ID4gPiA+ICsgICAgLyogSVNPL0lF
+QyAyMzAwOC0yLCBJVFUtVCBSZWMuIEguMjY1OiBOQUwgdW5pdCBoZWFkZXIgKi8KPiA+ID4gPiA+
+ID4gPiA+ICsgICAgX191OCAgICBuYWxfdW5pdF90eXBlOwo+ID4gPiA+ID4gPiA+ID4gKyAgICBf
+X3U4ICAgIG51aF90ZW1wb3JhbF9pZF9wbHVzMTsKPiA+ID4gPiA+ID4gPiA+ICsKPiA+ID4gPiA+
+ID4gPiA+ICsgICAgLyogSVNPL0lFQyAyMzAwOC0yLCBJVFUtVCBSZWMuIEguMjY1OiBHZW5lcmFs
+IHNsaWNlIHNlZ21lbnQgaGVhZGVyICovCj4gPiA+ID4gPiA+ID4gPiArICAgIF9fdTggICAgc2xp
+Y2VfdHlwZTsKPiA+ID4gPiA+ID4gPiA+ICsgICAgX191OCAgICBjb2xvdXJfcGxhbmVfaWQ7Cj4g
+PiA+ID4gPiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gPiA+ID4gPiA+ID4gPiArICAgIF9fdTE2ICAg
+IHNsaWNlX3BpY19vcmRlcl9jbnQ7Cj4gPiA+ID4gPiA+ID4gPiArICAgIF9fdTggICAgc2xpY2Vf
+c2FvX2x1bWFfZmxhZzsKPiA+ID4gPiA+ID4gPiA+ICsgICAgX191OCAgICBzbGljZV9zYW9fY2hy
+b21hX2ZsYWc7Cj4gPiA+ID4gPiA+ID4gPiArICAgIF9fdTggICAgc2xpY2VfdGVtcG9yYWxfbXZw
+X2VuYWJsZWRfZmxhZzsKPiA+ID4gPiA+ID4gPiA+ICsgICAgX191OCAgICBudW1fcmVmX2lkeF9s
+MF9hY3RpdmVfbWludXMxOwo+ID4gPiA+ID4gPiA+ID4gKyAgICBfX3U4ICAgIG51bV9yZWZfaWR4
+X2wxX2FjdGl2ZV9taW51czE7Cj4gPiA+ID4gPiBSb2NrY2hpcCdzIGRlY29kZXIgZG9lc24ndCB1
+c2UgdGhpcyBwYXJ0Lgo+ID4gPiA+ID4gPiA+ID4gKyAgICBfX3U4ICAgIG12ZF9sMV96ZXJvX2Zs
+YWc7Cj4gPiA+ID4gPiA+ID4gPiArICAgIF9fdTggICAgY2FiYWNfaW5pdF9mbGFnOwo+ID4gPiA+
+ID4gPiA+ID4gKyAgICBfX3U4ICAgIGNvbGxvY2F0ZWRfZnJvbV9sMF9mbGFnOwo+ID4gPiA+ID4g
+PiA+ID4gKyAgICBfX3U4ICAgIGNvbGxvY2F0ZWRfcmVmX2lkeDsKPiA+ID4gPiA+ID4gPiA+ICsg
+ICAgX191OCAgICBmaXZlX21pbnVzX21heF9udW1fbWVyZ2VfY2FuZDsKPiA+ID4gPiA+ID4gPiA+
+ICsgICAgX191OCAgICB1c2VfaW50ZWdlcl9tdl9mbGFnOwo+ID4gPiA+ID4gPiA+ID4gKyAgICBf
+X3M4ICAgIHNsaWNlX3FwX2RlbHRhOwo+ID4gPiA+ID4gPiA+ID4gKyAgICBfX3M4ICAgIHNsaWNl
+X2NiX3FwX29mZnNldDsKPiA+ID4gPiA+ID4gPiA+ICsgICAgX19zOCAgICBzbGljZV9jcl9xcF9v
+ZmZzZXQ7Cj4gPiA+ID4gPiA+ID4gPiArICAgIF9fczggICAgc2xpY2VfYWN0X3lfcXBfb2Zmc2V0
+Owo+ID4gPiA+ID4gPiA+ID4gKyAgICBfX3M4ICAgIHNsaWNlX2FjdF9jYl9xcF9vZmZzZXQ7Cj4g
+PiA+ID4gPiA+ID4gPiArICAgIF9fczggICAgc2xpY2VfYWN0X2NyX3FwX29mZnNldDsKPiA+ID4g
+PiA+ID4gPiA+ICsgICAgX191OCAgICBzbGljZV9kZWJsb2NraW5nX2ZpbHRlcl9kaXNhYmxlZF9m
+bGFnOwo+ID4gPiA+ID4gPiA+ID4gKyAgICBfX3M4ICAgIHNsaWNlX2JldGFfb2Zmc2V0X2RpdjI7
+Cj4gPiA+ID4gPiA+ID4gPiArICAgIF9fczggICAgc2xpY2VfdGNfb2Zmc2V0X2RpdjI7Cj4gPiA+
+ID4gPiA+ID4gPiArICAgIF9fdTggICAgc2xpY2VfbG9vcF9maWx0ZXJfYWNyb3NzX3NsaWNlc19l
+bmFibGVkX2ZsYWc7Cj4gPiA+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ID4gPiArICAgIC8qIElT
+Ty9JRUMgMjMwMDgtMiwgSVRVLVQgUmVjLiBILjI2NTogUGljdHVyZSB0aW1pbmcgU0VJIG1lc3Nh
+Z2UgKi8KPiA+ID4gPiA+ID4gPiA+ICsgICAgX191OCAgICBwaWNfc3RydWN0Owo+ID4gPiA+ID4g
+SSB0aGluayB0aGUgZGVjb2RlciBkb2Vzbid0IGNhcmUgYWJvdXQgdGhpcywgaXQgaXMgdXNlZCBm
+b3IgZGlzcGxheS4KPiA+ID4gPiAKPiA+ID4gPiBUaGUgcHVycG9zZSBvZiB0aGlzIGZpZWxkIGlz
+IHRvIGluZGljYXRlIHdoZXRoZXIgdGhlIGN1cnJlbnQgcGljdHVyZSBpcwo+ID4gPiA+IGEgcHJv
+Z3Jlc3NpdmUgZnJhbWUgb3IgYW4gaW50ZXJsYWNlZCBmaWVsZCBwaWN0dXJlLCB3aGljaCBpcyB1
+c2VmdWwgZm9yCj4gPiA+ID4gZGVjb2RpbmcuCj4gPiA+ID4gCj4gPiA+ID4gQXQgbGVhc3Qgb3Vy
+IGRlY29kZXIgaGFzIGEgcmVnaXN0ZXIgZmllbGQgdG8gaW5kaWNhdGUgZnJhbWUvdG9wCj4gPiA+
+ID4gZmllbGQvYm90dG9tIGZpZWxkLCBzbyB3ZSBjZXJ0YWlubHkgbmVlZCB0byBrZWVwIHRoZSBp
+bmZvIGFyb3VuZC4KPiA+ID4gPiBMb29raW5nIGF0IHRoZSBzcGVjIGFuZCB0aGUgZmZtcGVnIGlt
+cGxlbWVudGF0aW9uLCBpdCBsb29rcyBsaWtlIHRoaXMKPiA+ID4gPiBmbGFnIG9mIHRoZSBiaXRz
+dHJlYW0gaXMgdGhlIHVzdWFsIHdheSB0byByZXBvcnQgZmllbGQgY29kaW5nLgo+ID4gPiBJdCBk
+ZXBlbmRzIHdoZXRoZXIgdGhlIGRlY29kZXIgY2FyZXMgYWJvdXQgc2NhbiB0eXBlIG9yIG1vcmUs
+IEkKPiA+ID4gd29uZGVyIHByZWZlciBnZW5lcmFsX2ludGVybGFjZWRfc291cmNlX2ZsYWcgZm9y
+IGp1c3Qgc2NhbiB0eXBlLCBpdAo+ID4gPiB3b3VsZCBiZSBiZXR0ZXIgdGhhbiByZWFkaW5nIGFu
+b3RoZXIgU0VMLgo+ID4gCj4gPiBXZWxsIHdlIHN0aWxsIG5lZWQgYSB3YXkgdG8gaW5kaWNhdGUg
+aWYgdGhlIGN1cnJlbnQgZGF0YSBpcyB0b3Agb3IKPiA+IGJvdHRvbSBmaWVsZCBmb3IgaW50ZXJs
+YWNlZC4gSSBkb24ndCB0aGluayB0aGF0IGtub3dpbmcgdGhhdCB0aGUgd2hvbGUKPiA+IHZpZGVv
+IGlzIGludGVybGFjZWQgd291bGQgYmUgcHJlY2lzZSBlbm91Z2guCj4gPiAKPiA+IENoZWVycywK
+PiA+IAo+ID4gUGF1bAo+ID4gCj4gPiA+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ID4gPiArICAg
+IC8qIElTTy9JRUMgMjMwMDgtMiwgSVRVLVQgUmVjLiBILjI2NTogR2VuZXJhbCBzbGljZSBzZWdt
+ZW50IGhlYWRlciAqLwo+ID4gPiA+ID4gPiA+ID4gKyAgICBzdHJ1Y3QgdjRsMl9oZXZjX2RwYl9l
+bnRyeSBkcGJbVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVhdOwo+ID4gPiA+ID4gPiA+ID4g
+KyAgICBfX3U4ICAgIG51bV9hY3RpdmVfZHBiX2VudHJpZXM7Cj4gPiA+ID4gPiA+ID4gPiArICAg
+IF9fdTggICAgcmVmX2lkeF9sMFtWNEwyX0hFVkNfRFBCX0VOVFJJRVNfTlVNX01BWF07Cj4gPiA+
+ID4gPiA+ID4gPiArICAgIF9fdTggICAgcmVmX2lkeF9sMVtWNEwyX0hFVkNfRFBCX0VOVFJJRVNf
+TlVNX01BWF07Cj4gPiA+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ID4gPiArICAgIF9fdTggICAg
+bnVtX3Jwc19wb2Nfc3RfY3Vycl9iZWZvcmU7Cj4gPiA+ID4gPiA+ID4gPiArICAgIF9fdTggICAg
+bnVtX3Jwc19wb2Nfc3RfY3Vycl9hZnRlcjsKPiA+ID4gPiA+ID4gPiA+ICsgICAgX191OCAgICBu
+dW1fcnBzX3BvY19sdF9jdXJyOwo+ID4gPiA+ID4gPiA+ID4gKwo+ID4gPiA+ID4gPiA+ID4gKyAg
+ICAvKiBJU08vSUVDIDIzMDA4LTIsIElUVS1UIFJlYy4gSC4yNjU6IFdlaWdodGVkIHByZWRpY3Rp
+b24gcGFyYW1ldGVyICovCj4gPiA+ID4gPiA+ID4gPiArICAgIHN0cnVjdCB2NGwyX2hldmNfcHJl
+ZF93ZWlnaHRfdGFibGUgcHJlZF93ZWlnaHRfdGFibGU7Cj4gPiA+ID4gPiA+ID4gPiArfTsKPiA+
+ID4gPiA+ID4gPiA+ICsKPiA+ID4gPiA+ID4gPiA+ICNlbmRpZgo+ID4gPiA+IC0tIAo+ID4gPiA+
+IFBhdWwgS29jaWFsa293c2tpLCBCb290bGluIChmb3JtZXJseSBGcmVlIEVsZWN0cm9ucykKPiA+
+ID4gPiBFbWJlZGRlZCBMaW51eCBhbmQga2VybmVsIGVuZ2luZWVyaW5nCj4gPiA+ID4gaHR0cHM6
+Ly9ib290bGluLmNvbQo+ID4gPiA+IAo+ID4gLS0gCj4gPiBQYXVsIEtvY2lhbGtvd3NraSwgQm9v
+dGxpbiAoZm9ybWVybHkgRnJlZSBFbGVjdHJvbnMpCj4gPiBFbWJlZGRlZCBMaW51eCBhbmQga2Vy
+bmVsIGVuZ2luZWVyaW5nCj4gPiBodHRwczovL2Jvb3RsaW4uY29tCj4gPiAKLS0gClBhdWwgS29j
+aWFsa293c2tpLCBCb290bGluCkVtYmVkZGVkIExpbnV4IGFuZCBrZXJuZWwgZW5naW5lZXJpbmcK
+aHR0cHM6Ly9ib290bGluLmNvbQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5v
+cmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpdmVyZGV2LWRldmVsCg==
