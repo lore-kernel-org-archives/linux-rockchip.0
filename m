@@ -1,52 +1,46 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v3 6/7] arm64: dts: xilinx: ultra96: Standardize LED
- labels and triggers
-Date: Thu, 24 Jan 2019 10:49:30 -0600
-Message-ID: <CAL_Jsq+zfV66EZHX7psh2=r-=wDrmLLcr5PWtSzuKRNOdMR-Dw@mail.gmail.com>
-References: <20181029094245.7886-1-manivannan.sadhasivam@linaro.org>
- <20181029094245.7886-7-manivannan.sadhasivam@linaro.org> <20181221023708.GC3233@Mani-XPS-13-9360>
- <9f4f05cb-f326-a4e3-e306-cfbf64b629b4@xilinx.com>
+From: Daniel Vetter <daniel.vetter@ffwll.ch>
+Subject: [PATCH 21/26] drm/rockchip: Use drm_fb_helper_fill_info
+Date: Thu, 24 Jan 2019 17:58:26 +0100
+Message-ID: <20190124165831.16427-22-daniel.vetter@ffwll.ch>
+References: <20190124165831.16427-1-daniel.vetter@ffwll.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9f4f05cb-f326-a4e3-e306-cfbf64b629b4@xilinx.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Michal Simek <michal.simek@xilinx.com>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-arm-msm <linux-arm-msm@vger.kernel.org>, "open list:ARM/QUALCOMM SUPPORT" <linux-soc@vger.kernel.org>, Daniel Thompson <daniel.thompson@linaro.org>, Amit Kucheria <amit.kucheria@linaro.org>, Linus Walleij <linus.walleij@linaro.org>, koen.kooi@linaro.org, Nicolas Dechesne <nicolas.dechesne@linaro.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190124165831.16427-1-daniel.vetter@ffwll.ch>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: DRI Development <dri-devel@lists.freedesktop.org>
+Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Dec 21, 2018 at 12:51 AM Michal Simek <michal.simek@xilinx.com> wrote:
->
-> On 21. 12. 18 3:37, Manivannan Sadhasivam wrote:
-> > On Mon, Oct 29, 2018 at 03:12:44PM +0530, Manivannan Sadhasivam wrote:
-> >> For all 96Boards, the following standard is used for onboard LEDs.
-> >>
-> >> green:user1  default-trigger: heartbeat
-> >> green:user2  default-trigger: mmc0/disk-activity(onboard-storage)
-> >> green:user3  default-trigger: mmc1 (SD-card)
-> >> green:user4  default-trigger: none, panic-indicator
-> >> yellow:wlan  default-trigger: phy0tx
-> >> blue:bt      default-trigger: hci0-power
-> >>
-> >> So lets adopt the same for Ultra96, which is one of the 96Boards
-> >> CE and AI platform. Since the WLAN and BT LEDs are hardwired onboard,
-> >> consolidate only User LEDs.
-> >>
-> >
-> > Hello,
-> >
-> > Any update on this patch?
->
-> I am still waiting for reaction from Rob.
-> We are keep trying to keep backward compatibility and this patch is
-> breaking it that's why I want to know DT guys reaction on this change.
-
-dts changes and backwards compatibility are ultimately up to the
-platform maintainers. Your users can yell at you if they care. I only
-ask that changes that break compatibility are documented as doing so.
-
-Personally, I'm in favor of this change. I'd rather seem uniformity
-across boards and this is just a dev board and LED functions won't
-affect booting.
-
-Rob
+VGhpcyB3aWxsIHNldCBhbiBmYiBuYW1lIGZvciB0aGUgZmlyc3QgdGltZSEKClNpZ25lZC1vZmYt
+Ynk6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJAaW50ZWwuY29tPgpDYzogU2FuZHkgSHVh
+bmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KQ2M6ICJIZWlrbyBTdMO8Ym5lciIgPGhlaWtvQHNudGVj
+aC5kZT4KQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpDYzogbGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fZmJkZXYuYyB8IDQgKy0tLQogMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0
+aW9uKCspLCAzIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fZmJkZXYuYwppbmRleCA3YmQzYjg5MDIyYmUuLmQxMjE2NDg3OGUwNSAxMDA2NDQK
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5jCisrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYuYwpAQCAtOTAsMTMg
+KzkwLDExIEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2ZiZGV2X2NyZWF0ZShzdHJ1Y3QgZHJt
+X2ZiX2hlbHBlciAqaGVscGVyLAogCQlnb3RvIG91dDsKIAl9CiAKLQlmYmktPnBhciA9IGhlbHBl
+cjsKIAlmYmktPmZsYWdzID0gRkJJTkZPX0ZMQUdfREVGQVVMVDsKIAlmYmktPmZib3BzID0gJnJv
+Y2tjaGlwX2RybV9mYmRldl9vcHM7CiAKIAlmYiA9IGhlbHBlci0+ZmI7Ci0JZHJtX2ZiX2hlbHBl
+cl9maWxsX2ZpeChmYmksIGZiLT5waXRjaGVzWzBdLCBmYi0+Zm9ybWF0LT5kZXB0aCk7Ci0JZHJt
+X2ZiX2hlbHBlcl9maWxsX3ZhcihmYmksIGhlbHBlciwgc2l6ZXMtPmZiX3dpZHRoLCBzaXplcy0+
+ZmJfaGVpZ2h0KTsKKwlkcm1fZmJfaGVscGVyX2ZpbGxfaW5mbyhmYmksIGhlbHBlcik7CiAKIAlv
+ZmZzZXQgPSBmYmktPnZhci54b2Zmc2V0ICogYnl0ZXNfcGVyX3BpeGVsOwogCW9mZnNldCArPSBm
+YmktPnZhci55b2Zmc2V0ICogZmItPnBpdGNoZXNbMF07Ci0tIAoyLjIwLjEKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1h
+aWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
