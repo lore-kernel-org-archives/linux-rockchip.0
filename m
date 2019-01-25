@@ -1,93 +1,277 @@
-From: Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>
-Subject: [PATCH 26/26] drm/<drivers>: Don't set FBINFO_(FLAG_)DEFAULT
-Date: Thu, 24 Jan 2019 17:58:31 +0100
-Message-ID: <20190124165831.16427-27-daniel.vetter@ffwll.ch>
-References: <20190124165831.16427-1-daniel.vetter@ffwll.ch>
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Subject: Re: [linux-sunxi] [PATCH v2 1/2] media: v4l: Add definitions for
+ the HEVC slice format and controls
+Date: Fri, 25 Jan 2019 14:04:39 +0100
+Message-ID: <ab8ca098ad60f209fe97f79bb93b2d1e898da524.camel@bootlin.com>
+References: <20181123130209.11696-1-paul.kocialkowski@bootlin.com>
+         <20181123130209.11696-2-paul.kocialkowski@bootlin.com>
+         <5515174.7lFZcYkk85@jernej-laptop>
+         <ffe9c81db34b599f675ca5bbf02de360bf0a1608.camel@bootlin.com>
+         <776e63c9-d4a5-342a-e0f7-200ef144ffc4@rock-chips.com>
+         <64c793e08d61181b78125b3956ec38623fa5d261.camel@bootlin.com>
+         <D8005130-F7FD-4CBD-8396-1BB08BB08E81@soulik.info>
+         <f982ef378a8ade075bc7077b93640e20ecebf9f4.camel@bootlin.com>
+         <82FA0C3F-BC54-4D89-AECB-90D81B89B1CE@soulik.info>
+         <c3619a00-17e7-fb92-a427-a7478b96f356@soulik.info>
+         <bdf14f97e98f2fd06307545ab9038ac3c2086ae7.camel@bootlin.com>
+         <42520087-4EAE-4F7F-BCA0-42E422170E91@soulik.info>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190124165831.16427-1-daniel.vetter-/w4YWyX8dFk@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: DRI Development <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Patrik Jakobsson <patrik.r.jakobsson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Vetter <daniel.vetter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ben Skeggs <bskeggs-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, nouveau-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Alexander Kapshuk <alexander.kapshuk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Intel Graphics Development <intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Hans de Goede <hdegoede-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Seung-Woo Kim <sw0>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <42520087-4EAE-4F7F-BCA0-42E422170E91@soulik.info>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ayaka <ayaka@soulik.info>
+Cc: Randy Li <randy.li@rock-chips.com>, Jernej =?UTF-8?Q?=C5=A0krabec?= <jernej.skrabec@gmail.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Hans Verkuil <hverkuil@xs4all.nl>, Ezequiel Garcia <ezequiel@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SXQncyAwLgoKU2lnbmVkLW9mZi1ieTogRGFuaWVsIFZldHRlciA8ZGFuaWVsLnZldHRlckBpbnRl
-bC5jb20+CkNjOiBJbmtpIERhZSA8aW5raS5kYWVAc2Ftc3VuZy5jb20+CkNjOiBKb29ueW91bmcg
-U2hpbSA8ankwOTIyLnNoaW1Ac2Ftc3VuZy5jb20+CkNjOiBTZXVuZy1Xb28gS2ltIDxzdzAzMTIu
-a2ltQHNhbXN1bmcuY29tPgpDYzogS3l1bmdtaW4gUGFyayA8a3l1bmdtaW4ucGFya0BzYW1zdW5n
-LmNvbT4KQ2M6IEt1a2ppbiBLaW0gPGtnZW5lQGtlcm5lbC5vcmc+CkNjOiBLcnp5c3p0b2YgS296
-bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+CkNjOiBQYXRyaWsgSmFrb2Jzc29uIDxwYXRyaWsuci5q
-YWtvYnNzb25AZ21haWwuY29tPgpDYzogQmVuIFNrZWdncyA8YnNrZWdnc0ByZWRoYXQuY29tPgpD
-YzogU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KQ2M6ICJIZWlrbyBTdMO8Ym5lciIg
-PGhlaWtvQHNudGVjaC5kZT4KQ2M6IFRoaWVycnkgUmVkaW5nIDx0aGllcnJ5LnJlZGluZ0BnbWFp
-bC5jb20+CkNjOiBKb25hdGhhbiBIdW50ZXIgPGpvbmF0aGFuaEBudmlkaWEuY29tPgpDYzogSGFu
-cyBkZSBHb2VkZSA8aGRlZ29lZGVAcmVkaGF0LmNvbT4KQ2M6IEdyZWcgS3JvYWgtSGFydG1hbiA8
-Z3JlZ2toQGxpbnV4Zm91bmRhdGlvbi5vcmc+CkNjOiBEYW5pZWwgVmV0dGVyIDxkYW5pZWwudmV0
-dGVyQGZmd2xsLmNoPgpDYzogQmFydGxvbWllaiBab2xuaWVya2lld2ljeiA8Yi56b2xuaWVya2ll
-QHNhbXN1bmcuY29tPgpDYzogQWxleGFuZGVyIEthcHNodWsgPGFsZXhhbmRlci5rYXBzaHVrQGdt
-YWlsLmNvbT4KQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpDYzogbGlu
-dXgtc2Ftc3VuZy1zb2NAdmdlci5rZXJuZWwub3JnCkNjOiBub3V2ZWF1QGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpDYzogbGludXgt
-dGVncmFAdmdlci5rZXJuZWwub3JnCi0tLQogZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3Nf
-ZHJtX2ZiZGV2LmMgICAgIHwgMSAtCiBkcml2ZXJzL2dwdS9kcm0vZ21hNTAwL2ZyYW1lYnVmZmVy
-LmMgICAgICAgICAgfCAxIC0KIGRyaXZlcnMvZ3B1L2RybS9ub3V2ZWF1L25vdXZlYXVfZmJjb24u
-YyAgICAgICB8IDQgKystLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9m
-YmRldi5jIHwgMSAtCiBkcml2ZXJzL2dwdS9kcm0vdGVncmEvZmIuYyAgICAgICAgICAgICAgICAg
-ICAgfCAxIC0KIDUgZmlsZXMgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCA2IGRlbGV0aW9ucygt
-KQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RybV9mYmRldi5j
-IGIvZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHJtX2ZiZGV2LmMKaW5kZXggYjIwMTg5
-NjFiOWNmLi4wMGJmY2QyOGU1ODkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9leHlub3Mv
-ZXh5bm9zX2RybV9mYmRldi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2Ry
-bV9mYmRldi5jCkBAIC04Nyw3ICs4Nyw2IEBAIHN0YXRpYyBpbnQgZXh5bm9zX2RybV9mYmRldl91
-cGRhdGUoc3RydWN0IGRybV9mYl9oZWxwZXIgKmhlbHBlciwKIAkJcmV0dXJuIFBUUl9FUlIoZmJp
-KTsKIAl9CiAKLQlmYmktPmZsYWdzID0gRkJJTkZPX0ZMQUdfREVGQVVMVDsKIAlmYmktPmZib3Bz
-ID0gJmV4eW5vc19kcm1fZmJfb3BzOwogCiAJZHJtX2ZiX2hlbHBlcl9maWxsX2luZm8oZmJpLCBo
-ZWxwZXIpOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2dtYTUwMC9mcmFtZWJ1ZmZlci5j
-IGIvZHJpdmVycy9ncHUvZHJtL2dtYTUwMC9mcmFtZWJ1ZmZlci5jCmluZGV4IGM3YTVjMjlmOWE2
-OS4uM2I1OWRiYWRmYTYzIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vZ21hNTAwL2ZyYW1l
-YnVmZmVyLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2dtYTUwMC9mcmFtZWJ1ZmZlci5jCkBAIC00
-MDEsNyArNDAxLDYgQEAgc3RhdGljIGludCBwc2JmYl9jcmVhdGUoc3RydWN0IHBzYl9mYmRldiAq
-ZmJkZXYsCiAKIAlmYmRldi0+cHNiX2ZiX2hlbHBlci5mYiA9IGZiOwogCi0JaW5mby0+ZmxhZ3Mg
-PSBGQklORk9fREVGQVVMVDsKIAlpZiAoZGV2X3ByaXYtPm9wcy0+YWNjZWxfMmQgJiYgcGl0Y2hf
-bGluZXMgPiA4KQkvKiAyRCBlbmdpbmUgKi8KIAkJaW5mby0+ZmJvcHMgPSAmcHNiZmJfb3BzOwog
-CWVsc2UgaWYgKGd0dF9yb2xsKSB7CS8qIEdUVCByb2xsaW5nIHNlZW1zIGJlc3QgKi8KZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9ub3V2ZWF1L25vdXZlYXVfZmJjb24uYyBiL2RyaXZlcnMv
-Z3B1L2RybS9ub3V2ZWF1L25vdXZlYXVfZmJjb24uYwppbmRleCAzYTNkNDU0YjY1ZTMuLjExMzZl
-ZTI2MDA1ZiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL25vdXZlYXUvbm91dmVhdV9mYmNv
-bi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9ub3V2ZWF1L25vdXZlYXVfZmJjb24uYwpAQCAtMzcw
-LDkgKzM3MCw5IEBAIG5vdXZlYXVfZmJjb25fY3JlYXRlKHN0cnVjdCBkcm1fZmJfaGVscGVyICpo
-ZWxwZXIsCiAJZmJjb24tPmhlbHBlci5mYiA9ICZmYi0+YmFzZTsKIAogCWlmICghY2hhbikKLQkJ
-aW5mby0+ZmxhZ3MgPSBGQklORk9fREVGQVVMVCB8IEZCSU5GT19IV0FDQ0VMX0RJU0FCTEVEOwor
-CQlpbmZvLT5mbGFncyA9IEZCSU5GT19IV0FDQ0VMX0RJU0FCTEVEOwogCWVsc2UKLQkJaW5mby0+
-ZmxhZ3MgPSBGQklORk9fREVGQVVMVCB8IEZCSU5GT19IV0FDQ0VMX0NPUFlBUkVBIHwKKwkJaW5m
-by0+ZmxhZ3MgPSBGQklORk9fSFdBQ0NFTF9DT1BZQVJFQSB8CiAJCQkgICAgICBGQklORk9fSFdB
-Q0NFTF9GSUxMUkVDVCB8CiAJCQkgICAgICBGQklORk9fSFdBQ0NFTF9JTUFHRUJMSVQ7CiAJaW5m
-by0+ZmJvcHMgPSAmbm91dmVhdV9mYmNvbl9zd19vcHM7CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiZGV2LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX2ZiZGV2LmMKaW5kZXggZDEyMTY0ODc4ZTA1Li5mZWQ3ZDc2OTgx
-NjQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJk
-ZXYuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiZGV2LmMK
-QEAgLTkwLDcgKzkwLDYgQEAgc3RhdGljIGludCByb2NrY2hpcF9kcm1fZmJkZXZfY3JlYXRlKHN0
-cnVjdCBkcm1fZmJfaGVscGVyICpoZWxwZXIsCiAJCWdvdG8gb3V0OwogCX0KIAotCWZiaS0+Zmxh
-Z3MgPSBGQklORk9fRkxBR19ERUZBVUxUOwogCWZiaS0+ZmJvcHMgPSAmcm9ja2NoaXBfZHJtX2Zi
-ZGV2X29wczsKIAogCWZiID0gaGVscGVyLT5mYjsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
-bS90ZWdyYS9mYi5jIGIvZHJpdmVycy9ncHUvZHJtL3RlZ3JhL2ZiLmMKaW5kZXggODIzNDhkZGQw
-YjgzLi5lYTgyMTg0MDczYmQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS90ZWdyYS9mYi5j
-CisrKyBiL2RyaXZlcnMvZ3B1L2RybS90ZWdyYS9mYi5jCkBAIC0yNTUsNyArMjU1LDYgQEAgc3Rh
-dGljIGludCB0ZWdyYV9mYmRldl9wcm9iZShzdHJ1Y3QgZHJtX2ZiX2hlbHBlciAqaGVscGVyLAog
-CWhlbHBlci0+ZmIgPSBmYjsKIAloZWxwZXItPmZiZGV2ID0gaW5mbzsKIAotCWluZm8tPmZsYWdz
-ID0gRkJJTkZPX0ZMQUdfREVGQVVMVDsKIAlpbmZvLT5mYm9wcyA9ICZ0ZWdyYV9mYl9vcHM7CiAK
-IAlkcm1fZmJfaGVscGVyX2ZpbGxfaW5mbyhpbmZvLCBoZWxwZXIpOwotLSAKMi4yMC4xCgoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2No
-aXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
-L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi,
+
+On Thu, 2019-01-24 at 20:23 +0800, Ayaka wrote:
+> 
+> Sent from my iPad
+> 
+> > On Jan 24, 2019, at 6:27 PM, Paul Kocialkowski <paul.kocialkowski@bootlin.com> wrote:
+> > 
+> > Hi,
+> > 
+> > > On Thu, 2019-01-10 at 21:32 +0800, ayaka wrote:
+> > > I forget a important thing, for the rkvdec and rk hevc decoder, it would 
+> > > requests cabac table, scaling list, picture parameter set and reference 
+> > > picture storing in one or various of DMA buffers. I am not talking about 
+> > > the data been parsed, the decoder would requests a raw data.
+> > > 
+> > > For the pps and rps, it is possible to reuse the slice header, just let 
+> > > the decoder know the offset from the bitstream bufer, I would suggest to 
+> > > add three properties(with sps) for them. But I think we need a method to 
+> > > mark a OUTPUT side buffer for those aux data.
+> > 
+> > I'm quite confused about the hardware implementation then. From what
+> > you're saying, it seems that it takes the raw bitstream elements rather
+> > than parsed elements. Is it really a stateless implementation?
+> > 
+> > The stateless implementation was designed with the idea that only the
+> > raw slice data should be passed in bitstream form to the decoder. For
+> > H.264, it seems that some decoders also need the slice header in raw
+> > bitstream form (because they take the full slice NAL unit), see the
+> > discussions in this thread:
+> > media: docs-rst: Document m2m stateless video decoder interface
+> 
+> Stateless just mean it won’t track the previous result, but I don’t
+> think you can define what a date the hardware would need. Even you
+> just build a dpb for the decoder, it is still stateless, but parsing
+> less or more data from the bitstream doesn’t stop a decoder become a
+> stateless decoder.
+
+Yes fair enough, the format in which the hardware decoder takes the
+bitstream parameters does not make it stateless or stateful per-se.
+It's just that stateless decoders should have no particular reason for
+parsing the bitstream on their own since the hardware can be designed
+with registers for each relevant bitstream element to configure the
+decoding pipeline. That's how GPU-based decoder implementations are
+implemented (VAAPI/VDPAU/NVDEC, etc).
+
+So the format we have agreed on so far for the stateless interface is
+to pass parsed elements via v4l2 control structures.
+
+If the hardware can only work by parsing the bitstream itself, I'm not
+sure what the best solution would be. Reconstructing the bitstream in
+the kernel is a pretty bad option, but so is parsing in the kernel or
+having the data both in parsed and raw forms. Do you see another
+possibility?
+
+Cheers,
+
+Paul
+
+> > Can you detail exactly what the rockchip decoder absolutely needs in
+> > raw bitstream format?
+> > 
+> > Cheers,
+> > 
+> > Paul
+> > 
+> > > > On 1/8/19 6:00 PM, Ayaka wrote:
+> > > > Sent from my iPad
+> > > > 
+> > > > > On Jan 8, 2019, at 4:38 PM, Paul Kocialkowski <paul.kocialkowski@bootlin.com> wrote:
+> > > > > 
+> > > > > Hi,
+> > > > > 
+> > > > > > On Tue, 2019-01-08 at 09:16 +0800, Ayaka wrote:
+> > > > > > 
+> > > > > > Sent from my iPad
+> > > > > > 
+> > > > > > > On Jan 7, 2019, at 5:57 PM, Paul Kocialkowski <paul.kocialkowski@bootlin.com> wrote:
+> > > > > > > 
+> > > > > > > Hi,
+> > > > > > > 
+> > > > > > > > > On Mon, 2019-01-07 at 11:49 +0800, Randy Li wrote:
+> > > > > > > > > On 12/12/18 8:51 PM, Paul Kocialkowski wrote:
+> > > > > > > > > Hi,
+> > > > > > > > > 
+> > > > > > > > > On Wed, 2018-12-05 at 21:59 +0100, Jernej Škrabec wrote:
+> > > > > > > > > 
+> > > > > > > > > > > +
+> > > > > > > > > > > +#define V4L2_HEVC_DPB_ENTRY_RPS_ST_CURR_BEFORE    0x01
+> > > > > > > > > > > +#define V4L2_HEVC_DPB_ENTRY_RPS_ST_CURR_AFTER    0x02
+> > > > > > > > > > > +#define V4L2_HEVC_DPB_ENTRY_RPS_LT_CURR        0x03
+> > > > > > > > > > > +
+> > > > > > > > > > > +#define V4L2_HEVC_DPB_ENTRIES_NUM_MAX        16
+> > > > > > > > > > > +
+> > > > > > > > > > > +struct v4l2_hevc_dpb_entry {
+> > > > > > > > > > > +    __u32    buffer_tag;
+> > > > > > > > > > > +    __u8    rps;
+> > > > > > > > > > > +    __u8    field_pic;
+> > > > > > > > > > > +    __u16    pic_order_cnt[2];
+> > > > > > > > > > > +};
+> > > > > > > > Please add a property for reference index, if that rps is not used for
+> > > > > > > > this, some device would request that(not the rockchip one). And
+> > > > > > > > Rockchip's VDPU1 and VDPU2 for AVC would request a similar property.
+> > > > > > > What exactly is that reference index? Is it a bitstream element or
+> > > > > > > something deduced from the bitstream?
+> > > > > > > 
+> > > > > > picture order count(POC) for HEVC and frame_num in AVC. I think it is
+> > > > > > the number used in list0(P slice and B slice) and list1(B slice).
+> > > > > The picture order count is already the last field of the DPB entry
+> > > > > structure. There is one for each field picture.
+> > > > As we are not sure whether there is a field coded slice or CTU, I would hold this part and else about the field.
+> > > > > > > > Adding another buffer_tag for referring the memory of the motion vectors
+> > > > > > > > for each frames. Or a better method is add a meta data to echo picture
+> > > > > > > > buffer,  since the picture output is just the same as the original,
+> > > > > > > > display won't care whether the motion vectors are written the button of
+> > > > > > > > picture or somewhere else.
+> > > > > > > The motion vectors are passed as part of the raw bitstream data, in the
+> > > > > > > slices. Is there a case where the motion vectors are coded differently?
+> > > > > > No, it is an additional cache for decoder, even FFmpeg having such
+> > > > > > data, I think allwinner must output it into somewhere.
+> > > > > Ah yes I see what you mean! This is handled internally by our driver
+> > > > > and not exposed to userspace. I don't think it would be a good idea to
+> > > > > expose this cache or request that userspace allocates it like a video
+> > > > > buffer.
+> > > > > 
+> > > > No, usually the driver should allocate, as the user space have no idea on size of each devices.
+> > > > But for advantage user, application can fix a broken picture with a proper data or analysis a object motion from that.
+> > > > So I would suggest attaching this information to a picture buffer as a meta data.
+> > > > > > > > > > > +
+> > > > > > > > > > > +struct v4l2_hevc_pred_weight_table {
+> > > > > > > > > > > +    __u8    luma_log2_weight_denom;
+> > > > > > > > > > > +    __s8    delta_chroma_log2_weight_denom;
+> > > > > > > > > > > +
+> > > > > > > > > > > +    __s8    delta_luma_weight_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> > > > > > > > > > > +    __s8    luma_offset_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> > > > > > > > > > > +    __s8    delta_chroma_weight_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
+> > > > > > > > > > > +    __s8    chroma_offset_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
+> > > > > > > > > > > +
+> > > > > > > > > > > +    __s8    delta_luma_weight_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> > > > > > > > > > > +    __s8    luma_offset_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> > > > > > > > > > > +    __s8    delta_chroma_weight_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
+> > > > > > > > > > > +    __s8    chroma_offset_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
+> > > > > > > > > > > +};
+> > > > > > > > > > > +
+> > > > > > > > Those properties I think are not necessary are applying for the
+> > > > > > > > Rockchip's device, may not work for the others.
+> > > > > > > Yes, it's possible that some of the elements are not necessary for some
+> > > > > > > decoders. What we want is to cover all the elements that might be
+> > > > > > > required for a decoder.
+> > > > > > I wonder whether allwinner need that, those sao flag usually ignored
+> > > > > > by decoder in design. But more is better than less, it is hard to
+> > > > > > extend a v4l2 structure  in the future, maybe a new HEVC profile
+> > > > > > would bring a new property, it is still too early for HEVC.
+> > > > > Yes this is used by our decoder. The idea is to have all the basic
+> > > > > bitstream elements in the structures (even if some decoders don't use
+> > > > > them all) and add others for extension as separate controls later.
+> > > > > 
+> > > > > > > > > > > +struct v4l2_ctrl_hevc_slice_params {
+> > > > > > > > > > > +    __u32    bit_size;
+> > > > > > > > > > > +    __u32    data_bit_offset;
+> > > > > > > > > > > +
+> > > > > > > > > > > +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: NAL unit header */
+> > > > > > > > > > > +    __u8    nal_unit_type;
+> > > > > > > > > > > +    __u8    nuh_temporal_id_plus1;
+> > > > > > > > > > > +
+> > > > > > > > > > > +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header */
+> > > > > > > > > > > +    __u8    slice_type;
+> > > > > > > > > > > +    __u8    colour_plane_id;
+> > > > > > > > ----------------------------------------------------------------------------
+> > > > > > > > > > > +    __u16    slice_pic_order_cnt;
+> > > > > > > > > > > +    __u8    slice_sao_luma_flag;
+> > > > > > > > > > > +    __u8    slice_sao_chroma_flag;
+> > > > > > > > > > > +    __u8    slice_temporal_mvp_enabled_flag;
+> > > > > > > > > > > +    __u8    num_ref_idx_l0_active_minus1;
+> > > > > > > > > > > +    __u8    num_ref_idx_l1_active_minus1;
+> > > > > > > > Rockchip's decoder doesn't use this part.
+> > > > > > > > > > > +    __u8    mvd_l1_zero_flag;
+> > > > > > > > > > > +    __u8    cabac_init_flag;
+> > > > > > > > > > > +    __u8    collocated_from_l0_flag;
+> > > > > > > > > > > +    __u8    collocated_ref_idx;
+> > > > > > > > > > > +    __u8    five_minus_max_num_merge_cand;
+> > > > > > > > > > > +    __u8    use_integer_mv_flag;
+> > > > > > > > > > > +    __s8    slice_qp_delta;
+> > > > > > > > > > > +    __s8    slice_cb_qp_offset;
+> > > > > > > > > > > +    __s8    slice_cr_qp_offset;
+> > > > > > > > > > > +    __s8    slice_act_y_qp_offset;
+> > > > > > > > > > > +    __s8    slice_act_cb_qp_offset;
+> > > > > > > > > > > +    __s8    slice_act_cr_qp_offset;
+> > > > > > > > > > > +    __u8    slice_deblocking_filter_disabled_flag;
+> > > > > > > > > > > +    __s8    slice_beta_offset_div2;
+> > > > > > > > > > > +    __s8    slice_tc_offset_div2;
+> > > > > > > > > > > +    __u8    slice_loop_filter_across_slices_enabled_flag;
+> > > > > > > > > > > +
+> > > > > > > > > > > +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: Picture timing SEI message */
+> > > > > > > > > > > +    __u8    pic_struct;
+> > > > > > > > I think the decoder doesn't care about this, it is used for display.
+> > > > > > > The purpose of this field is to indicate whether the current picture is
+> > > > > > > a progressive frame or an interlaced field picture, which is useful for
+> > > > > > > decoding.
+> > > > > > > 
+> > > > > > > At least our decoder has a register field to indicate frame/top
+> > > > > > > field/bottom field, so we certainly need to keep the info around.
+> > > > > > > Looking at the spec and the ffmpeg implementation, it looks like this
+> > > > > > > flag of the bitstream is the usual way to report field coding.
+> > > > > > It depends whether the decoder cares about scan type or more, I
+> > > > > > wonder prefer general_interlaced_source_flag for just scan type, it
+> > > > > > would be better than reading another SEL.
+> > > > > Well we still need a way to indicate if the current data is top or
+> > > > > bottom field for interlaced. I don't think that knowing that the whole
+> > > > > video is interlaced would be precise enough.
+> > > > > 
+> > > > > Cheers,
+> > > > > 
+> > > > > Paul
+> > > > > 
+> > > > > > > > > > > +
+> > > > > > > > > > > +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header */
+> > > > > > > > > > > +    struct v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> > > > > > > > > > > +    __u8    num_active_dpb_entries;
+> > > > > > > > > > > +    __u8    ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> > > > > > > > > > > +    __u8    ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> > > > > > > > > > > +
+> > > > > > > > > > > +    __u8    num_rps_poc_st_curr_before;
+> > > > > > > > > > > +    __u8    num_rps_poc_st_curr_after;
+> > > > > > > > > > > +    __u8    num_rps_poc_lt_curr;
+> > > > > > > > > > > +
+> > > > > > > > > > > +    /* ISO/IEC 23008-2, ITU-T Rec. H.265: Weighted prediction parameter */
+> > > > > > > > > > > +    struct v4l2_hevc_pred_weight_table pred_weight_table;
+> > > > > > > > > > > +};
+> > > > > > > > > > > +
+> > > > > > > > > > > #endif
+> > > > > > > -- 
+> > > > > > > Paul Kocialkowski, Bootlin (formerly Free Electrons)
+> > > > > > > Embedded Linux and kernel engineering
+> > > > > > > https://bootlin.com
+> > > > > > > 
+> > > > > -- 
+> > > > > Paul Kocialkowski, Bootlin (formerly Free Electrons)
+> > > > > Embedded Linux and kernel engineering
+> > > > > https://bootlin.com
+> > > > > 
+> > -- 
+> > Paul Kocialkowski, Bootlin
+> > Embedded Linux and kernel engineering
+> > https://bootlin.com
+> > 
+-- 
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
