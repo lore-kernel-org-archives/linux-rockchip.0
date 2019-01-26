@@ -1,43 +1,51 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH] drm/rockchip: check yuv2yuv existence before assigning window
- data
-Date: Sat, 26 Jan 2019 01:24:37 +0100
-Message-ID: <2556882.Heuq80WCVD@phil>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH 1/3] arm64: dts: rockchip: fix rk3300-gru-bob graph_port
+ warning
+Date: Sat, 26 Jan 2019 11:37:28 +0100
+Message-ID: <20190126103730.3883-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org
-Cc: ezequiel@collabora.com, linux-rockchip@lists.infradead.org, dcastagna@chromium.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: devicetree@vger.kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Vicente Bergas <vicencb@gmail.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QmVmb3JlIGFzc2lnbmluZyB3aW5kb3cgZGF0YSwgd2Ugc2hvdWxkIGNoZWNrIGlmIHRoZSB5dXYy
-eXV2IHZvcC1kYXRhCmlzIHNldCBhdCBhbGwsIGJlY2F1c2UgaXQgbG9va3MgbGlrZSBpdCBjYW4g
-b3RoZXJ3aXNlIHJlZmVyZW5jZSBzb21ldGhpbmcKd3JvbmcsIGFzIEkgc2F3IG9uIG15IHJrMzE4
-OCB0b2RheSB3aGljaCBlbmRlZCB1cCBpbiBhIG51bGwgcG9pbnRlcgpkZXJlZmVyZW5jZSBpbiB2
-b3BfcGxhbmVfYXRvbWljX3VwZGF0ZSB3aGVuIGFjY2Vzc2luZyB0aGUgeXV2Mnl1diBkYXRhLgoK
-Rml4ZXM6IDFjMjFhYThmMmI2OCAoImRybS9yb2NrY2hpcDogRml4IFlVViBidWZmZXJzIGNvbG9y
-IHJlbmRlcmluZyIpClNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2gu
-ZGU+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDQg
-KysrLQogMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQoKZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCmluZGV4IDYxOWI2ZGIw
-NWQ1OC4uMWRjOWZkMWZmYmUzIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX3ZvcC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fdm9wLmMKQEAgLTE2NzUsNyArMTY3NSw5IEBAIHN0YXRpYyB2b2lkIHZvcF93aW5faW5p
-dChzdHJ1Y3Qgdm9wICp2b3ApCiAKIAkJdm9wX3dpbi0+ZGF0YSA9IHdpbl9kYXRhOwogCQl2b3Bf
-d2luLT52b3AgPSB2b3A7Ci0JCXZvcF93aW4tPnl1djJ5dXZfZGF0YSA9ICZ2b3BfZGF0YS0+d2lu
-X3l1djJ5dXZbaV07CisKKwkJaWYgKHZvcF9kYXRhLT53aW5feXV2Mnl1dikKKwkJCXZvcF93aW4t
-Pnl1djJ5dXZfZGF0YSA9ICZ2b3BfZGF0YS0+d2luX3l1djJ5dXZbaV07CiAJfQogfQogCi0tIAoy
-LjE5LjIKCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
-dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Ports are described by child 'port' nodes contained in the device node.
+'ports' is optional and is used to group all 'port' nodes which is not
+the case here.
+
+This patch fixes the following warning:
+
+arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts:25.9-29.5: Warning (graph_port): /edp-panel/ports: graph port node name should be 'port'
+
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
+
+ arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
+index 1ee0dc0d9f10..d1cf404b8708 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
+@@ -22,7 +22,7 @@
+ 		backlight = <&backlight>;
+ 		power-supply = <&pp3300_disp>;
+ 
+-		ports {
++		port {
+ 			panel_in_edp: endpoint {
+ 				remote-endpoint = <&edp_out_panel>;
+ 			};
+-- 
+2.20.1
