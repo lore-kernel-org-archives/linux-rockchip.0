@@ -1,43 +1,49 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH 3/3] arm64: dts: rockchip: fix rk3399-sapphire-excavator graph_port warning
-Date: Sat, 26 Jan 2019 11:37:30 +0100
-Message-ID: <20190126103730.3883-3-enric.balletbo@collabora.com>
-References: <20190126103730.3883-1-enric.balletbo@collabora.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH] drm/rockchip: check yuv2yuv existence before assigning
+ window data
+Date: Sat, 26 Jan 2019 11:52:59 -0300
+Message-ID: <6d4c5f16a3868042cb9a7973bbda7a15b0050046.camel@collabora.com>
+References: <2556882.Heuq80WCVD@phil>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190126103730.3883-1-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: devicetree@vger.kernel.org
-Cc: Vicente Bergas <vicencb@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, Klaus Goger <klaus.goger@theobroma-systems.com>, Douglas Anderson <dianders@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>, Matthias Brugger <mbrugger@suse.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <2556882.Heuq80WCVD@phil>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org, dcastagna@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ports are described by child 'port' nodes contained in the device node.
-'ports' is optional and is used to group all 'port' nodes which is not
-the case here.
-
-This patch fixes the following warning:
-
-arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts:94.9-98.5: Warning (graph_port): /edp-panel/ports: graph port node name should be 'port'
-
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
-
- arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-index 0b8f1edbd746..b48a63c3efc3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
-@@ -91,7 +91,7 @@
- 		pinctrl-0 = <&lcd_panel_reset>;
- 		power-supply = <&vcc3v3_s0>;
- 
--		ports {
-+		port {
- 			panel_in_edp: endpoint {
- 				remote-endpoint = <&edp_out_panel>;
- 			};
--- 
-2.20.1
+T24gU2F0LCAyMDE5LTAxLTI2IGF0IDAxOjI0ICswMTAwLCBIZWlrbyBTdHVlYm5lciB3cm90ZToK
+PiBCZWZvcmUgYXNzaWduaW5nIHdpbmRvdyBkYXRhLCB3ZSBzaG91bGQgY2hlY2sgaWYgdGhlIHl1
+djJ5dXYgdm9wLWRhdGEKPiBpcyBzZXQgYXQgYWxsLCBiZWNhdXNlIGl0IGxvb2tzIGxpa2UgaXQg
+Y2FuIG90aGVyd2lzZSByZWZlcmVuY2Ugc29tZXRoaW5nCj4gd3JvbmcsIGFzIEkgc2F3IG9uIG15
+IHJrMzE4OCB0b2RheSB3aGljaCBlbmRlZCB1cCBpbiBhIG51bGwgcG9pbnRlcgo+IGRlcmVmZXJl
+bmNlIGluIHZvcF9wbGFuZV9hdG9taWNfdXBkYXRlIHdoZW4gYWNjZXNzaW5nIHRoZSB5dXYyeXV2
+IGRhdGEuCj4gCj4gRml4ZXM6IDFjMjFhYThmMmI2OCAoImRybS9yb2NrY2hpcDogRml4IFlVViBi
+dWZmZXJzIGNvbG9yIHJlbmRlcmluZyIpCj4gU2lnbmVkLW9mZi1ieTogSGVpa28gU3R1ZWJuZXIg
+PGhlaWtvQHNudGVjaC5kZT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2RybV92b3AuYyB8IDQgKysrLQo+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCsp
+LCAxIGRlbGV0aW9uKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX3ZvcC5jCj4gaW5kZXggNjE5YjZkYjA1ZDU4Li4xZGM5ZmQxZmZiZTMgMTAwNjQ0Cj4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtMTY3NSw3ICsx
+Njc1LDkgQEAgc3RhdGljIHZvaWQgdm9wX3dpbl9pbml0KHN0cnVjdCB2b3AgKnZvcCkKPiAgCj4g
+IAkJdm9wX3dpbi0+ZGF0YSA9IHdpbl9kYXRhOwo+ICAJCXZvcF93aW4tPnZvcCA9IHZvcDsKPiAt
+CQl2b3Bfd2luLT55dXYyeXV2X2RhdGEgPSAmdm9wX2RhdGEtPndpbl95dXYyeXV2W2ldOwo+ICsK
+PiArCQlpZiAodm9wX2RhdGEtPndpbl95dXYyeXV2KQo+ICsJCQl2b3Bfd2luLT55dXYyeXV2X2Rh
+dGEgPSAmdm9wX2RhdGEtPndpbl95dXYyeXV2W2ldOwo+ICAJfQo+ICB9Cj4gIAoKVWdoLCBhbm90
+aGVyIG9uZSBvZiB0aGVzZS4KClJldmlld2VkLWJ5OiBFemVxdWllbCBHYXJjaWEgPGV6ZXF1aWVs
+QGNvbGxhYm9yYS5jb20+CgpUaGFua3MsCkV6ZQoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpLWRldmVsCg==
