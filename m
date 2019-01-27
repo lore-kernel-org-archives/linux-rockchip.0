@@ -1,30 +1,34 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/3] arm64: dts: rockchip: fix rk3300-gru-bob graph_port warning
-Date: Sun, 27 Jan 2019 22:08:00 +0100
-Message-ID: <4055651.A8C7SXy0L7@phil>
-References: <20190126103730.3883-1-enric.balletbo@collabora.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: enable usb-host regulators during
+ boot
+Date: Sun, 27 Jan 2019 23:15:43 +0100
+Message-ID: <2042016.tQT6YM4xNP@phil>
+References: <20190122223848.6019-1-voytikd@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190126103730.3883-1-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: devicetree@vger.kernel.org, Vicente Bergas <vicencb@gmail.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190122223848.6019-1-voytikd-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Dmitry Voytik <voytikd-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 26. Januar 2019, 11:37:28 CET schrieb Enric Balletbo i Serra:
-> Ports are described by child 'port' nodes contained in the device node.
-> 'ports' is optional and is used to group all 'port' nodes which is not
-> the case here.
+Am Dienstag, 22. Januar 2019, 23:38:48 CET schrieb Dmitry Voytik:
+> After commit ef05bcb60, boot from USB drives is broken.
+> Fix this problem by enabling usb-host regulators during boot time.
 > 
-> This patch fixes the following warning:
-> 
-> arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts:25.9-29.5: Warning (graph_port): /edp-panel/ports: graph port node name should be 'port'
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Signed-off-by: Dmitry Voytik <voytikd-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-I've squashed all 3 into one and applied the result as fix for 5.0
+added a fixes and cc-stable tag and applied as fix for 5.0
 
 Thanks
 Heiko
