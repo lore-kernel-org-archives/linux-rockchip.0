@@ -1,67 +1,53 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [Bug] Rockchip crypto driver sometimes produces wrong ciphertext
-Date: Sun, 27 Jan 2019 11:29:33 +0100
-Message-ID: <1894799.pWIprST79S@phil>
-References: <20190126210530.GB709@sol.localdomain>
- <CAKv+Gu-RKu9jt+2FnV2529zqyLGR8RSu8r4B8eOs-7Om-pL0aQ@mail.gmail.com>
+Subject: Re: [PATCH 21/26] drm/rockchip: Use drm_fb_helper_fill_info
+Date: Sun, 27 Jan 2019 20:18:58 +0100
+Message-ID: <4175833.BHsNDjujy6@phil>
+References: <20190124165831.16427-1-daniel.vetter@ffwll.ch>
+ <20190124165831.16427-22-daniel.vetter@ffwll.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAKv+Gu-RKu9jt+2FnV2529zqyLGR8RSu8r4B8eOs-7Om-pL0aQ@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Cc: Zain Wang <wzz@rock-chips.com>, Arnd Bergmann <arnd@arndb.de>, Eric Biggers <ebiggers@kernel.org>, linux-rockchip@lists.infradead.org, "open list:HARDWARE RANDOM NUMBER GENERATOR CORE" <linux-crypto@vger.kernel.org>, Olof Johansson <olof@lixom.net>, ezequiel@collabora.com, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190124165831.16427-22-daniel.vetter@ffwll.ch>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel.vetter@ffwll.ch>
+Cc: Intel Graphics Development <intel-gfx@lists.freedesktop.org>, DRI Development <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-(also add Ezequiel who has spent a bit of time on the rockchip crypto
-driver recently)
-
-Am Sonntag, 27. Januar 2019, 09:54:54 CET schrieb Ard Biesheuvel:
-> (add LAKML and arm-soc maintainers)
-> 
-> On Sat, 26 Jan 2019 at 22:05, Eric Biggers <ebiggers@kernel.org> wrote:
-> >
-> > Hello,
-> >
-> > I don't know whether anyone is actually maintaining the Rockchip crypto driver
-> > in drivers/crypto/rockchip/, but it's failing the improved crypto tests
-> > that I currently have out for review: https://patchwork.kernel.org/cover/10778089/
-> >
-> > See the boot logs for RK3288 from the KernelCI job here:
-> >
-> > https://storage.kernelci.org/ardb/for-kernelci/v5.0-rc1-86-geaffe22db9d1/arm/multi_v7_defconfig/lab-collabora/boot-rk3288-rock2-square.txt
-> > https://storage.kernelci.org/ardb/for-kernelci/v5.0-rc1-86-geaffe22db9d1/arm/multi_v7_defconfig/lab-collabora/boot-rk3288-veyron-jaq.txt
-> >
-> > alg: skcipher: ecb-aes-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: use_digest src_divs=[15.64%@+3258, 84.36%@+4059] dst_divs=[69.11%@+1796, 8.49%@+4027, 6.34%@+1, 16.6%@+4058] iv_offset=21\"
-> > alg: skcipher: cbc-aes-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_digest src_divs=[100.0%@alignmask+3993] dst_divs=[65.31%@alignmask+1435, 34.69%@+14]\"
-> > alg: skcipher: ecb-des-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_final src_divs=[<flush> 66.52%@+11, 33.48%@+1519] dst_divs=[58.82%@+1, 19.43%@+4082, 21.75%@+8]\"
-> > alg: skcipher: cbc-des-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_finup src_divs=[100.0%@+3980] dst_divs=[60.4%@+3763, 23.9%@+4011, 16.87%@+4046]\"
-> > alg: skcipher: ecb-des3-ede-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_digest src_divs=[100.0%@+4] dst_divs=[47.25%@+19, 14.83%@+22, 37.92%@+31]\"
-> > alg: skcipher: cbc-des3-ede-rk encryption test failed (wrong result) on test vector 0, cfg=\"two even aligned splits\"
-> >
-> > In other words: the ecb-aes-rk, cbc-aes-rk, ecb-des-rk, cbc-des-rk,
-> > ecb-des3-ede-rk, and cbc-des3-ede-rk algorithms are failing because they produce
-> > the wrong ciphertext on some scatterlist layouts.
-> >
-> > You can reproduce by pulling from
-> > https://git.kernel.org/pub/scm/linux/kernel/git/ebiggers/linux.git
-> > branch "testmgr-improvements", unsetting CONFIG_CRYPTO_MANAGER_DISABLE_TESTS,
-> > setting CONFIG_CRYPTO_MANAGER_EXTRA_TESTS=y, rebooting and checking dmesg.
-> >
-> > Note that I don't have this hardware myself, so if it turns out that no one is
-> > interested in fixing this anytime soon I'll instead have to propose disabling
-> > these algorithms until they can be fixed.
-> >
-> > Thanks,
-> >
-> > - Eric
-> 
+QW0gRG9ubmVyc3RhZywgMjQuIEphbnVhciAyMDE5LCAxNzo1ODoyNiBDRVQgc2NocmllYiBEYW5p
+ZWwgVmV0dGVyOgo+IFRoaXMgd2lsbCBzZXQgYW4gZmIgbmFtZSBmb3IgdGhlIGZpcnN0IHRpbWUh
+Cj4gCj4gU2lnbmVkLW9mZi1ieTogRGFuaWVsIFZldHRlciA8ZGFuaWVsLnZldHRlckBpbnRlbC5j
+b20+Cj4gQ2M6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+Cj4gQ2M6ICJIZWlrbyBT
+dMO8Ym5lciIgPGhlaWtvQHNudGVjaC5kZT4KPiBDYzogbGludXgtYXJtLWtlcm5lbEBsaXN0cy5p
+bmZyYWRlYWQub3JnCj4gQ2M6IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKCkFm
+dGVyIGxvb2tpbmcgdXAgdGhlIHJlc3Qgb2YgdGhlIHNlcmllcyBhbmQgYWxzbyByZWFsaXppbmcg
+dGhhdApmYmktPnBhciBzZWVtcyB0byBiZSBzZXQgd2hlbiBhIGNsaWVudCBhdHRhY2hlcyB0byB0
+aGUgZmIsCnRoaXMgbG9va3MgZ29vZCB0byBtZSwgc28KClJldmlld2VkLWJ5OiBIZWlrbyBTdHVl
+Ym5lciA8aGVpa29Ac250ZWNoLmRlPgoKPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV9mYmRldi5jIHwgNCArLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2Vy
+dGlvbigrKSwgMyBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV9mYmRldi5jCj4gaW5kZXggN2JkM2I4OTAyMmJlLi5kMTIxNjQ4NzhlMDUg
+MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRl
+di5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5j
+Cj4gQEAgLTkwLDEzICs5MCwxMSBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9mYmRldl9jcmVh
+dGUoc3RydWN0IGRybV9mYl9oZWxwZXIgKmhlbHBlciwKPiAgCQlnb3RvIG91dDsKPiAgCX0KPiAg
+Cj4gLQlmYmktPnBhciA9IGhlbHBlcjsKPiAgCWZiaS0+ZmxhZ3MgPSBGQklORk9fRkxBR19ERUZB
+VUxUOwo+ICAJZmJpLT5mYm9wcyA9ICZyb2NrY2hpcF9kcm1fZmJkZXZfb3BzOwo+ICAKPiAgCWZi
+ID0gaGVscGVyLT5mYjsKPiAtCWRybV9mYl9oZWxwZXJfZmlsbF9maXgoZmJpLCBmYi0+cGl0Y2hl
+c1swXSwgZmItPmZvcm1hdC0+ZGVwdGgpOwo+IC0JZHJtX2ZiX2hlbHBlcl9maWxsX3ZhcihmYmks
+IGhlbHBlciwgc2l6ZXMtPmZiX3dpZHRoLCBzaXplcy0+ZmJfaGVpZ2h0KTsKPiArCWRybV9mYl9o
+ZWxwZXJfZmlsbF9pbmZvKGZiaSwgaGVscGVyKTsKPiAgCj4gIAlvZmZzZXQgPSBmYmktPnZhci54
+b2Zmc2V0ICogYnl0ZXNfcGVyX3BpeGVsOwo+ICAJb2Zmc2V0ICs9IGZiaS0+dmFyLnlvZmZzZXQg
+KiBmYi0+cGl0Y2hlc1swXTsKPiAKCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
+ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2RyaS1kZXZlbAo=
