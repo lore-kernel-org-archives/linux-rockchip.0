@@ -1,15 +1,14 @@
-From: Tao Huang <huangtao@rock-chips.com>
-Subject: Re: [Bug] Rockchip crypto driver sometimes produces wrong ciphertext
-Date: Mon, 28 Jan 2019 11:14:32 +0800
-Message-ID: <f7a0d04c-339e-d9f8-7188-a27d55ad8b4d@rock-chips.com>
-References: <20190126210530.GB709@sol.localdomain>
- <CAKv+Gu-RKu9jt+2FnV2529zqyLGR8RSu8r4B8eOs-7Om-pL0aQ@mail.gmail.com>
- <1894799.pWIprST79S@phil>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Subject: Re: [PATCH 00/15] PCI: endpoint: Cleanup EPC features
+Date: Mon, 28 Jan 2019 10:31:03 +0530
+Message-ID: <ae09e4e2-3015-f4c9-4b3c-093f30e9b508@ti.com>
+References: <20190107064148.10152-1-kishon@ti.com>
+ <20190124145219.GD23362@e107981-ln.cambridge.arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1894799.pWIprST79S@phil>
+In-Reply-To: <20190124145219.GD23362@e107981-ln.cambridge.arm.com>
 Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
@@ -20,50 +19,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Eric Biggers <ebiggers@kernel.org>
-Cc: Zain Wang <wzz@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Zhang Zhijie <zhangzj@rock-chips.com>, linux-rockchip@lists.infradead.org, "open list:HARDWARE RANDOM NUMBER GENERATOR CORE" <linux-crypto@vger.kernel.org>, Olof Johansson <olof@lixom.net>, ezequiel@collabora.com, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Shawn Lin <shawn.lin@rock-chips.com>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Alan Douglas <adouglas@cadence.com>, Jia-Ju Bai <baijiaju1990@gmail.com>, Cyrille Pitchen <cyrille.pitchen@free-electrons.com>, Jingoo Han <jingoohan1@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Eric and Heiko:
+Hi,
 
->> On Sat, 26 Jan 2019 at 22:05, Eric Biggers <ebiggers@kernel.org> wrote:
->>>
->>> Hello,
->>>
->>> I don't know whether anyone is actually maintaining the Rockchip crypto driver
->>> in drivers/crypto/rockchip/, but it's failing the improved crypto tests
->>> that I currently have out for review: https://patchwork.kernel.org/cover/10778089/
-
-Zhang Zhijie, engineer from Rockchip, will try to fix this software bug.
-
->>>
->>> See the boot logs for RK3288 from the KernelCI job here:
->>>
->>> https://storage.kernelci.org/ardb/for-kernelci/v5.0-rc1-86-geaffe22db9d1/arm/multi_v7_defconfig/lab-collabora/boot-rk3288-rock2-square.txt
->>> https://storage.kernelci.org/ardb/for-kernelci/v5.0-rc1-86-geaffe22db9d1/arm/multi_v7_defconfig/lab-collabora/boot-rk3288-veyron-jaq.txt
->>>
->>> alg: skcipher: ecb-aes-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: use_digest src_divs=[15.64%@+3258, 84.36%@+4059] dst_divs=[69.11%@+1796, 8.49%@+4027, 6.34%@+1, 16.6%@+4058] iv_offset=21\"
->>> alg: skcipher: cbc-aes-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_digest src_divs=[100.0%@alignmask+3993] dst_divs=[65.31%@alignmask+1435, 34.69%@+14]\"
->>> alg: skcipher: ecb-des-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_final src_divs=[<flush> 66.52%@+11, 33.48%@+1519] dst_divs=[58.82%@+1, 19.43%@+4082, 21.75%@+8]\"
->>> alg: skcipher: cbc-des-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_finup src_divs=[100.0%@+3980] dst_divs=[60.4%@+3763, 23.9%@+4011, 16.87%@+4046]\"
->>> alg: skcipher: ecb-des3-ede-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_digest src_divs=[100.0%@+4] dst_divs=[47.25%@+19, 14.83%@+22, 37.92%@+31]\"
->>> alg: skcipher: cbc-des3-ede-rk encryption test failed (wrong result) on test vector 0, cfg=\"two even aligned splits\"
->>>
->>> In other words: the ecb-aes-rk, cbc-aes-rk, ecb-des-rk, cbc-des-rk,
->>> ecb-des3-ede-rk, and cbc-des3-ede-rk algorithms are failing because they produce
->>> the wrong ciphertext on some scatterlist layouts.
->>>
->>> You can reproduce by pulling from
->>> https://git.kernel.org/pub/scm/linux/kernel/git/ebiggers/linux.git
->>> branch "testmgr-improvements", unsetting CONFIG_CRYPTO_MANAGER_DISABLE_TESTS,
->>> setting CONFIG_CRYPTO_MANAGER_EXTRA_TESTS=y, rebooting and checking dmesg.
->>>
->>> Note that I don't have this hardware myself, so if it turns out that no one is
->>> interested in fixing this anytime soon I'll instead have to propose disabling
->>> these algorithms until they can be fixed.
->>>
->>> Thanks,
->>>
->>> - Eric
+On 24/01/19 8:22 PM, Lorenzo Pieralisi wrote:
+> On Mon, Jan 07, 2019 at 12:11:33PM +0530, Kishon Vijay Abraham I wrote:
+>> Hi Lorenzo,
 >>
+>> The Endpoint controller driver uses features member in 'struct pci_epc'
+>> to advertise the list of supported features to the endpoint function
+>> driver.
+>>
+>> There are a few shortcomings with this approach.
+>>   *) Certain endpoint controllers support fixed size BAR (e.g. TI's
+>>      AM654 uses Designware configuration with fixed size BAR). The
+>>      size of each BARs cannot be passed to the endpoint function
+>>      driver.
+>>   *) Too many macros for handling EPC features.
+>>      (EPC_FEATURE_NO_LINKUP_NOTIFIER, EPC_FEATURE_BAR_MASK,
+>>       EPC_FEATURE_MSIX_AVAILABLE, EPC_FEATURE_SET_BAR,
+>>       EPC_FEATURE_GET_BAR)
+>>   *) Endpoint controllers are directly modifying struct pci_epc
+>>      members. (I have plans to move struct pci_epc to
+>>      drivers/pci/endpoint so that pci_epc members are referenced
+>>      only by endpoint core).
+>>
+>> To overcome the above shortcomings, introduced pci_epc_get_features()
+>> API, pci_epc_features structure and a ->get_features() callback.
+>>
+>> Also added a patch to set BAR flags in pci_epf_alloc_space and
+>> remove it from pci-epf-test function driver.
+>>
+>> Tested on TI's DRA7xx platform.
 > 
+> Hi Kishon,
+> 
+> I have no major objections to this series but I would like to see some
+> testing done in EP mode (on test platforms other than DRA7XX) to make
+> sure it does not break anything.
+> 
+> Please do help Kishon get some testing done.
+
+Please test v2 of this series please [1]
+
+[1] -> https://www.spinics.net/lists/arm-kernel/msg699787.html
+
+Thanks
+Kishon
+
+> 
+> Thanks,
+> Lorenzo
+> 
+>> Thanks
+>> Kishon
+>>
+>> Kishon Vijay Abraham I (15):
+>>   PCI: endpoint: Add new pci_epc_ops to get EPC features
+>>   PCI: dwc: Add ->get_features() callback function in dw_pcie_ep_ops
+>>   PCI: designware-plat: Populate ->get_features() dw_pcie_ep_ops
+>>   PCI: pci-dra7xx: Populate ->get_features() dw_pcie_ep_ops
+>>   PCI: rockchip: Populate ->get_features() dw_pcie_ep_ops
+>>   PCI: cadence: Populate ->get_features() cdns_pcie_epc_ops
+>>   PCI: endpoint: Add helper to get first unreserved BAR
+>>   PCI: endpoint: Fix pci_epf_alloc_space to set correct MEM TYPE flags
+>>   PCI: pci-epf-test: Remove setting epf_bar flags in function driver
+>>   PCI: pci-epf-test: Do not allocate next BARs memory if current BAR is
+>>     64Bit
+>>   PCI: pci-epf-test: Use pci_epc_get_features to get EPC features
+>>   PCI: cadence: Remove pci_epf_linkup from Cadence EP driver
+>>   PCI: rockchip: Remove pci_epf_linkup from Rockchip EP driver
+>>   PCI: designware-plat: Remove setting epc->features in Designware plat
+>>     EP driver
+>>   PCI: endpoint: Remove features member in struct pci_epc
+>>
+>>  drivers/pci/controller/dwc/pci-dra7xx.c       | 13 +++
+>>  .../pci/controller/dwc/pcie-designware-ep.c   | 12 +++
+>>  .../pci/controller/dwc/pcie-designware-plat.c | 17 +++-
+>>  drivers/pci/controller/dwc/pcie-designware.h  |  1 +
+>>  drivers/pci/controller/pcie-cadence-ep.c      | 25 +++---
+>>  drivers/pci/controller/pcie-rockchip-ep.c     | 16 +++-
+>>  drivers/pci/endpoint/functions/pci-epf-test.c | 80 ++++++++++---------
+>>  drivers/pci/endpoint/pci-epc-core.c           | 52 ++++++++++++
+>>  drivers/pci/endpoint/pci-epf-core.c           |  3 +
+>>  include/linux/pci-epc.h                       | 30 +++++--
+>>  10 files changed, 185 insertions(+), 64 deletions(-)
+>>
+>> -- 
+>> 2.17.1
+>>
