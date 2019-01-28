@@ -1,56 +1,64 @@
-From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 4.19 046/258] drm/rockchip: fix for mailbox read size
-Date: Mon, 28 Jan 2019 10:55:52 -0500
-Message-ID: <20190128155924.51521-46-sashal@kernel.org>
-References: <20190128155924.51521-1-sashal@kernel.org>
+From: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: [PATCH AUTOSEL 4.14 030/170] drm/rockchip: fix for mailbox read size
+Date: Mon, 28 Jan 2019 11:09:40 -0500
+Message-ID: <20190128161200.55107-30-sashal@kernel.org>
+References: <20190128161200.55107-1-sashal@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190128155924.51521-1-sashal@kernel.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Sasha Levin <sashal@kernel.org>, linux-rockchip@lists.infradead.org, Damian Kos <dkos@cadence.com>, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190128161200.55107-1-sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogRGFtaWFuIEtvcyA8ZGtvc0BjYWRlbmNlLmNvbT4KClsgVXBzdHJlYW0gY29tbWl0IGZh
-NjhkNGY4NDc2YmVhNGNkZjQ0MTA2MmI2MTRiNDFiYjg1ZWYxZGEgXQoKU29tZSBvZiB0aGUgZnVu
-Y3Rpb25zIChsaWtlIGNkbl9kcF9kcGNkX3JlYWQsIGNkbl9kcF9nZXRfZWRpZF9ibG9jaykKYWxs
-b3cgdG8gcmVhZCA2NEtpQiwgYnV0IHRoZSBjZG5fZHBfbWFpbGJveF9yZWFkX3JlY2VpdmUsIHRo
-YXQgaXMKdXNlZCBieSB0aGVtLCBjYW4gcmVhZCBvbmx5IHVwIHRvIDI1NSBieXRlcyBhdCBvbmNl
-LiBOb3JtYWxseSwgaXQncwpub3QgYSBiaWcgaXNzdWUgYXMgRFBDRCBvciBFRElEIHJlYWRzIHdv
-bid0IChob3BlZnVsbHkpIGV4Y2VlZCB0aGF0CnZhbHVlLgpUaGUgcmVhbCBpc3N1ZSBoZXJlIGlz
-IHRoZSByZXZvY2F0aW9uIGxpc3QgcmVhZCBkdXJpbmcgdGhlIEhEQ1AKYXV0aGVudGljYXRpb24g
-cHJvY2Vzcy4gKHByb2JsZW1hdGljIHVzZSBjYXNlOgpodHRwczovL2Nocm9taXVtLmdvb2dsZXNv
-dXJjZS5jb20vY2hyb21pdW1vcy90aGlyZF9wYXJ0eS9rZXJuZWwvKy9jaHJvbWVvcy00LjQvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuYyMxMTUyKQpUaGUgbGlzdCBjYW4gcmVh
-Y2ggMTI3KjUrNCBieXRlcyAobnVtIGRldnMgKiA1IGJ5dGVzIHBlciBJRC9Ca3N2ICsKNCBieXRl
-cyBvZiBhbiBhZGRpdGlvbmFsIGluZm8pLgpJbiBvdGhlciB3b3JkcyAtIENUU2VzIHdpdGggSERD
-UCBSZXBlYXRlciB3b24ndCBwYXNzIHdpdGhvdXQgdGhpcwpmaXguIE9oLCBhbmQgdGhlIGRyaXZl
-ciB3aWxsIG1vc3QgbGlrZWx5IHN0b3Agd29ya2luZyAoYmVzdCBjYXNlCnNjZW5hcmlvKS4KClNp
-Z25lZC1vZmYtYnk6IERhbWlhbiBLb3MgPGRrb3NAY2FkZW5jZS5jb20+ClNpZ25lZC1vZmYtYnk6
-IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Ckxpbms6IGh0dHBzOi8vcGF0Y2h3b3Jr
-LmZyZWVkZXNrdG9wLm9yZy9wYXRjaC9tc2dpZC8xNTQxNTE4NjI1LTI1OTg0LTEtZ2l0LXNlbmQt
-ZW1haWwtZGtvc0BjYWRlbmNlLmNvbQpTaWduZWQtb2ZmLWJ5OiBTYXNoYSBMZXZpbiA8c2FzaGFs
-QGtlcm5lbC5vcmc+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1yZWcuYyB8
-IDIgKy0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQoKZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmMgYi9kcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5jCmluZGV4IDMxMDU5NjVmYzI2MC4uNWE0ODU0
-ODlhMWUyIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLXJlZy5j
-CisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtcmVnLmMKQEAgLTE0Nyw3ICsx
-NDcsNyBAQCBzdGF0aWMgaW50IGNkbl9kcF9tYWlsYm94X3ZhbGlkYXRlX3JlY2VpdmUoc3RydWN0
-IGNkbl9kcF9kZXZpY2UgKmRwLAogfQogCiBzdGF0aWMgaW50IGNkbl9kcF9tYWlsYm94X3JlYWRf
-cmVjZWl2ZShzdHJ1Y3QgY2RuX2RwX2RldmljZSAqZHAsCi0JCQkJICAgICAgIHU4ICpidWZmLCB1
-OCBidWZmX3NpemUpCisJCQkJICAgICAgIHU4ICpidWZmLCB1MTYgYnVmZl9zaXplKQogewogCXUz
-MiBpOwogCWludCByZXQ7Ci0tIAoyLjE5LjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbAo=
+From: Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
+
+[ Upstream commit fa68d4f8476bea4cdf441062b614b41bb85ef1da ]
+
+Some of the functions (like cdn_dp_dpcd_read, cdn_dp_get_edid_block)
+allow to read 64KiB, but the cdn_dp_mailbox_read_receive, that is
+used by them, can read only up to 255 bytes at once. Normally, it's
+not a big issue as DPCD or EDID reads won't (hopefully) exceed that
+value.
+The real issue here is the revocation list read during the HDCP
+authentication process. (problematic use case:
+https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4/drivers/gpu/drm/rockchip/cdn-dp-reg.c#1152)
+The list can reach 127*5+4 bytes (num devs * 5 bytes per ID/Bksv +
+4 bytes of an additional info).
+In other words - CTSes with HDCP Repeater won't pass without this
+fix. Oh, and the driver will most likely stop working (best case
+scenario).
+
+Signed-off-by: Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Link: https://patchwork.freedesktop.org/patch/msgid/1541518625-25984-1-git-send-email-dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org
+Signed-off-by: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+---
+ drivers/gpu/drm/rockchip/cdn-dp-reg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.c b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+index b14d211f6c21..0ed7e91471f6 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-reg.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
+@@ -147,7 +147,7 @@ static int cdn_dp_mailbox_validate_receive(struct cdn_dp_device *dp,
+ }
+ 
+ static int cdn_dp_mailbox_read_receive(struct cdn_dp_device *dp,
+-				       u8 *buff, u8 buff_size)
++				       u8 *buff, u16 buff_size)
+ {
+ 	u32 i;
+ 	int ret;
+-- 
+2.19.1
