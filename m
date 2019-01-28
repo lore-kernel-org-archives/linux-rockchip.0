@@ -1,113 +1,63 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: Re: [PATCH 00/15] PCI: endpoint: Cleanup EPC features
-Date: Mon, 28 Jan 2019 10:31:03 +0530
-Message-ID: <ae09e4e2-3015-f4c9-4b3c-093f30e9b508@ti.com>
-References: <20190107064148.10152-1-kishon@ti.com>
- <20190124145219.GD23362@e107981-ln.cambridge.arm.com>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Subject: Re: [PATCH 4/9] drm/rockchip/rockchip_drm_gem.c: Convert to use vm_insert_range
+Date: Mon, 28 Jan 2019 12:01:12 +0530
+Message-ID: <CAFqt6zYcd6XgFDz1vGcZpoeDPCpr5sODdUQ=3WF1z8ZKLxUBOQ@mail.gmail.com>
+References: <20190111150933.GA2760@jordon-HP-15-Notebook-PC>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190124145219.GD23362@e107981-ln.cambridge.arm.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Shawn Lin <shawn.lin@rock-chips.com>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Alan Douglas <adouglas@cadence.com>, Jia-Ju Bai <baijiaju1990@gmail.com>, Cyrille Pitchen <cyrille.pitchen@free-electrons.com>, Jingoo Han <jingoohan1@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190111150933.GA2760@jordon-HP-15-Notebook-PC>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andrew Morton <akpm@linux-foundation.org>, Matthew Wilcox <willy@infradead.org>, Michal Hocko <mhocko@suse.com>, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, Russell King - ARM Linux <linux@armlinux.org.uk>, robin.murphy@arm.com
+Cc: linux-kernel@vger.kernel.org, Linux-MM <linux-mm@kvack.org>, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Fri, Jan 11, 2019 at 8:35 PM Souptick Joarder <jrdr.linux@gmail.com> wrote:
+>
+> Convert to use vm_insert_range() to map range of kernel
+> memory to user vma.
+>
+> Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
 
-On 24/01/19 8:22 PM, Lorenzo Pieralisi wrote:
-> On Mon, Jan 07, 2019 at 12:11:33PM +0530, Kishon Vijay Abraham I wrote:
->> Hi Lorenzo,
->>
->> The Endpoint controller driver uses features member in 'struct pci_epc'
->> to advertise the list of supported features to the endpoint function
->> driver.
->>
->> There are a few shortcomings with this approach.
->>   *) Certain endpoint controllers support fixed size BAR (e.g. TI's
->>      AM654 uses Designware configuration with fixed size BAR). The
->>      size of each BARs cannot be passed to the endpoint function
->>      driver.
->>   *) Too many macros for handling EPC features.
->>      (EPC_FEATURE_NO_LINKUP_NOTIFIER, EPC_FEATURE_BAR_MASK,
->>       EPC_FEATURE_MSIX_AVAILABLE, EPC_FEATURE_SET_BAR,
->>       EPC_FEATURE_GET_BAR)
->>   *) Endpoint controllers are directly modifying struct pci_epc
->>      members. (I have plans to move struct pci_epc to
->>      drivers/pci/endpoint so that pci_epc members are referenced
->>      only by endpoint core).
->>
->> To overcome the above shortcomings, introduced pci_epc_get_features()
->> API, pci_epc_features structure and a ->get_features() callback.
->>
->> Also added a patch to set BAR flags in pci_epf_alloc_space and
->> remove it from pci-epf-test function driver.
->>
->> Tested on TI's DRA7xx platform.
-> 
-> Hi Kishon,
-> 
-> I have no major objections to this series but I would like to see some
-> testing done in EP mode (on test platforms other than DRA7XX) to make
-> sure it does not break anything.
-> 
-> Please do help Kishon get some testing done.
+Any comment on this patch ?
 
-Please test v2 of this series please [1]
-
-[1] -> https://www.spinics.net/lists/arm-kernel/msg699787.html
-
-Thanks
-Kishon
-
-> 
-> Thanks,
-> Lorenzo
-> 
->> Thanks
->> Kishon
->>
->> Kishon Vijay Abraham I (15):
->>   PCI: endpoint: Add new pci_epc_ops to get EPC features
->>   PCI: dwc: Add ->get_features() callback function in dw_pcie_ep_ops
->>   PCI: designware-plat: Populate ->get_features() dw_pcie_ep_ops
->>   PCI: pci-dra7xx: Populate ->get_features() dw_pcie_ep_ops
->>   PCI: rockchip: Populate ->get_features() dw_pcie_ep_ops
->>   PCI: cadence: Populate ->get_features() cdns_pcie_epc_ops
->>   PCI: endpoint: Add helper to get first unreserved BAR
->>   PCI: endpoint: Fix pci_epf_alloc_space to set correct MEM TYPE flags
->>   PCI: pci-epf-test: Remove setting epf_bar flags in function driver
->>   PCI: pci-epf-test: Do not allocate next BARs memory if current BAR is
->>     64Bit
->>   PCI: pci-epf-test: Use pci_epc_get_features to get EPC features
->>   PCI: cadence: Remove pci_epf_linkup from Cadence EP driver
->>   PCI: rockchip: Remove pci_epf_linkup from Rockchip EP driver
->>   PCI: designware-plat: Remove setting epc->features in Designware plat
->>     EP driver
->>   PCI: endpoint: Remove features member in struct pci_epc
->>
->>  drivers/pci/controller/dwc/pci-dra7xx.c       | 13 +++
->>  .../pci/controller/dwc/pcie-designware-ep.c   | 12 +++
->>  .../pci/controller/dwc/pcie-designware-plat.c | 17 +++-
->>  drivers/pci/controller/dwc/pcie-designware.h  |  1 +
->>  drivers/pci/controller/pcie-cadence-ep.c      | 25 +++---
->>  drivers/pci/controller/pcie-rockchip-ep.c     | 16 +++-
->>  drivers/pci/endpoint/functions/pci-epf-test.c | 80 ++++++++++---------
->>  drivers/pci/endpoint/pci-epc-core.c           | 52 ++++++++++++
->>  drivers/pci/endpoint/pci-epf-core.c           |  3 +
->>  include/linux/pci-epc.h                       | 30 +++++--
->>  10 files changed, 185 insertions(+), 64 deletions(-)
->>
->> -- 
->> 2.17.1
->>
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 17 ++---------------
+>  1 file changed, 2 insertions(+), 15 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> index a8db758..c9e207f 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> @@ -221,26 +221,13 @@ static int rockchip_drm_gem_object_mmap_iommu(struct drm_gem_object *obj,
+>                                               struct vm_area_struct *vma)
+>  {
+>         struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
+> -       unsigned int i, count = obj->size >> PAGE_SHIFT;
+> +       unsigned int count = obj->size >> PAGE_SHIFT;
+>         unsigned long user_count = vma_pages(vma);
+> -       unsigned long uaddr = vma->vm_start;
+> -       unsigned long offset = vma->vm_pgoff;
+> -       unsigned long end = user_count + offset;
+> -       int ret;
+>
+>         if (user_count == 0)
+>                 return -ENXIO;
+> -       if (end > count)
+> -               return -ENXIO;
+>
+> -       for (i = offset; i < end; i++) {
+> -               ret = vm_insert_page(vma, uaddr, rk_obj->pages[i]);
+> -               if (ret)
+> -                       return ret;
+> -               uaddr += PAGE_SIZE;
+> -       }
+> -
+> -       return 0;
+> +       return vm_insert_range(vma, rk_obj->pages, count);
+>  }
+>
+>  static int rockchip_drm_gem_object_mmap_dma(struct drm_gem_object *obj,
+> --
+> 1.9.1
+>
