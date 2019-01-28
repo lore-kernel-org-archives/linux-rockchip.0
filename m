@@ -1,63 +1,34 @@
-From: Souptick Joarder <jrdr.linux@gmail.com>
-Subject: Re: [PATCH 4/9] drm/rockchip/rockchip_drm_gem.c: Convert to use vm_insert_range
-Date: Mon, 28 Jan 2019 12:01:12 +0530
-Message-ID: <CAFqt6zYcd6XgFDz1vGcZpoeDPCpr5sODdUQ=3WF1z8ZKLxUBOQ@mail.gmail.com>
-References: <20190111150933.GA2760@jordon-HP-15-Notebook-PC>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] drm/rockchip: fix for mailbox read validation.
+Date: Mon, 28 Jan 2019 11:17:17 +0100
+Message-ID: <4752187.AQatX9g1G3@phil>
+References: <1542640463-18332-1-git-send-email-dkos@cadence.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190111150933.GA2760@jordon-HP-15-Notebook-PC>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew Morton <akpm@linux-foundation.org>, Matthew Wilcox <willy@infradead.org>, Michal Hocko <mhocko@suse.com>, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, Russell King - ARM Linux <linux@armlinux.org.uk>, robin.murphy@arm.com
-Cc: linux-kernel@vger.kernel.org, Linux-MM <linux-mm@kvack.org>, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1542640463-18332-1-git-send-email-dkos@cadence.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Damian Kos <dkos@cadence.com>
+Cc: David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jan 11, 2019 at 8:35 PM Souptick Joarder <jrdr.linux@gmail.com> wrote:
->
-> Convert to use vm_insert_range() to map range of kernel
-> memory to user vma.
->
-> Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
-
-Any comment on this patch ?
-
-> ---
->  drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 17 ++---------------
->  1 file changed, 2 insertions(+), 15 deletions(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> index a8db758..c9e207f 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> @@ -221,26 +221,13 @@ static int rockchip_drm_gem_object_mmap_iommu(struct drm_gem_object *obj,
->                                               struct vm_area_struct *vma)
->  {
->         struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
-> -       unsigned int i, count = obj->size >> PAGE_SHIFT;
-> +       unsigned int count = obj->size >> PAGE_SHIFT;
->         unsigned long user_count = vma_pages(vma);
-> -       unsigned long uaddr = vma->vm_start;
-> -       unsigned long offset = vma->vm_pgoff;
-> -       unsigned long end = user_count + offset;
-> -       int ret;
->
->         if (user_count == 0)
->                 return -ENXIO;
-> -       if (end > count)
-> -               return -ENXIO;
->
-> -       for (i = offset; i < end; i++) {
-> -               ret = vm_insert_page(vma, uaddr, rk_obj->pages[i]);
-> -               if (ret)
-> -                       return ret;
-> -               uaddr += PAGE_SIZE;
-> -       }
-> -
-> -       return 0;
-> +       return vm_insert_range(vma, rk_obj->pages, count);
->  }
->
->  static int rockchip_drm_gem_object_mmap_dma(struct drm_gem_object *obj,
-> --
-> 1.9.1
->
+QW0gTW9udGFnLCAxOS4gTm92ZW1iZXIgMjAxOCwgMTY6MTQ6MTQgQ0VUIHNjaHJpZWIgRGFtaWFu
+IEtvczoKPiBUaGlzIGlzIGJhc2ljYWxseSB0aGUgc2FtZSBmaXggYXMgaW4KPiBjb21taXQgZmE2
+OGQ0Zjg0NzZiICgiZHJtL3JvY2tjaGlwOiBmaXggZm9yIG1haWxib3ggcmVhZCBzaXplIikKPiBi
+dXQgZm9yIGNkbl9kcF9tYWlsYm94X3ZhbGlkYXRlX3JlY2VpdmUgZnVuY3Rpb24uCj4gCj4gU2Vl
+IHBhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEwNjcxOTgxLyBmb3IgZGV0YWlscy4KPiAKPiBT
+aWduZWQtb2ZmLWJ5OiBEYW1pYW4gS29zIDxka29zQGNhZGVuY2UuY29tPgoKZm9yZ290IHRoYXQg
+cGF0Y2ggaW4gbXkgaW5ib3ggc29tZWhvdyAuLi4gYXBwbGllZCB0byBkcm0tbWlzYy1uZXh0IG5v
+dwoKVGhhbmtzCkhlaWtvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
+LWRldmVsCg==
