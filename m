@@ -1,13 +1,26 @@
-From: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: [PATCH AUTOSEL 4.14 030/170] drm/rockchip: fix for mailbox read size
-Date: Mon, 28 Jan 2019 11:09:40 -0500
-Message-ID: <20190128161200.55107-30-sashal@kernel.org>
-References: <20190128161200.55107-1-sashal@kernel.org>
+From: Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [linux-sunxi] [PATCH v2 1/2] media: v4l: Add definitions for the
+ HEVC slice format and controls
+Date: Tue, 29 Jan 2019 16:44:35 +0900
+Message-ID: <CAPBb6MUJu3cX9A-E32bSSjxc1cvGP83ayzZzUxa5_QMf6niK4g@mail.gmail.com>
+References: <20181123130209.11696-1-paul.kocialkowski@bootlin.com>
+ <20181123130209.11696-2-paul.kocialkowski@bootlin.com>
+ <5515174.7lFZcYkk85@jernej-laptop>
+ <ffe9c81db34b599f675ca5bbf02de360bf0a1608.camel@bootlin.com>
+ <776e63c9-d4a5-342a-e0f7-200ef144ffc4@rock-chips.com>
+ <64c793e08d61181b78125b3956ec38623fa5d261.camel@bootlin.com>
+ <D8005130-F7FD-4CBD-8396-1BB08BB08E81@soulik.info>
+ <f982ef378a8ade075bc7077b93640e20ecebf9f4.camel@bootlin.com>
+ <82FA0C3F-BC54-4D89-AECB-90D81B89B1CE@soulik.info>
+ <c3619a00-17e7-fb92-a427-a7478b96f356@soulik.info>
+ <bdf14f97e98f2fd06307545ab9038ac3c2086ae7.camel@bootlin.com>
+ <42520087-4EAE-4F7F-BCA0-42E422170E91@soulik.info>
+ <ab8ca098ad60f209fe97f79bb93b2d1e898da524.camel@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190128161200.55107-1-sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+In-Reply-To: <ab8ca098ad60f209fe97f79bb93b2d1e898da524.camel-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,48 +30,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+To: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Cc: devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?Q?Jernej_=C5=A0krabec?= <jernej.skrabec-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
-
-[ Upstream commit fa68d4f8476bea4cdf441062b614b41bb85ef1da ]
-
-Some of the functions (like cdn_dp_dpcd_read, cdn_dp_get_edid_block)
-allow to read 64KiB, but the cdn_dp_mailbox_read_receive, that is
-used by them, can read only up to 255 bytes at once. Normally, it's
-not a big issue as DPCD or EDID reads won't (hopefully) exceed that
-value.
-The real issue here is the revocation list read during the HDCP
-authentication process. (problematic use case:
-https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4/drivers/gpu/drm/rockchip/cdn-dp-reg.c#1152)
-The list can reach 127*5+4 bytes (num devs * 5 bytes per ID/Bksv +
-4 bytes of an additional info).
-In other words - CTSes with HDCP Repeater won't pass without this
-fix. Oh, and the driver will most likely stop working (best case
-scenario).
-
-Signed-off-by: Damian Kos <dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Link: https://patchwork.freedesktop.org/patch/msgid/1541518625-25984-1-git-send-email-dkos-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org
-Signed-off-by: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- drivers/gpu/drm/rockchip/cdn-dp-reg.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.c b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
-index b14d211f6c21..0ed7e91471f6 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-reg.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
-@@ -147,7 +147,7 @@ static int cdn_dp_mailbox_validate_receive(struct cdn_dp_device *dp,
- }
- 
- static int cdn_dp_mailbox_read_receive(struct cdn_dp_device *dp,
--				       u8 *buff, u8 buff_size)
-+				       u8 *buff, u16 buff_size)
- {
- 	u32 i;
- 	int ret;
--- 
-2.19.1
+T24gRnJpLCBKYW4gMjUsIDIwMTkgYXQgMTA6MDQgUE0gUGF1bCBLb2NpYWxrb3dza2kKPHBhdWwu
+a29jaWFsa293c2tpQGJvb3RsaW4uY29tPiB3cm90ZToKPgo+IEhpLAo+Cj4gT24gVGh1LCAyMDE5
+LTAxLTI0IGF0IDIwOjIzICswODAwLCBBeWFrYSB3cm90ZToKPiA+Cj4gPiBTZW50IGZyb20gbXkg
+aVBhZAo+ID4KPiA+ID4gT24gSmFuIDI0LCAyMDE5LCBhdCA2OjI3IFBNLCBQYXVsIEtvY2lhbGtv
+d3NraSA8cGF1bC5rb2NpYWxrb3dza2lAYm9vdGxpbi5jb20+IHdyb3RlOgo+ID4gPgo+ID4gPiBI
+aSwKPiA+ID4KPiA+ID4gPiBPbiBUaHUsIDIwMTktMDEtMTAgYXQgMjE6MzIgKzA4MDAsIGF5YWth
+IHdyb3RlOgo+ID4gPiA+IEkgZm9yZ2V0IGEgaW1wb3J0YW50IHRoaW5nLCBmb3IgdGhlIHJrdmRl
+YyBhbmQgcmsgaGV2YyBkZWNvZGVyLCBpdCB3b3VsZAo+ID4gPiA+IHJlcXVlc3RzIGNhYmFjIHRh
+YmxlLCBzY2FsaW5nIGxpc3QsIHBpY3R1cmUgcGFyYW1ldGVyIHNldCBhbmQgcmVmZXJlbmNlCj4g
+PiA+ID4gcGljdHVyZSBzdG9yaW5nIGluIG9uZSBvciB2YXJpb3VzIG9mIERNQSBidWZmZXJzLiBJ
+IGFtIG5vdCB0YWxraW5nIGFib3V0Cj4gPiA+ID4gdGhlIGRhdGEgYmVlbiBwYXJzZWQsIHRoZSBk
+ZWNvZGVyIHdvdWxkIHJlcXVlc3RzIGEgcmF3IGRhdGEuCj4gPiA+ID4KPiA+ID4gPiBGb3IgdGhl
+IHBwcyBhbmQgcnBzLCBpdCBpcyBwb3NzaWJsZSB0byByZXVzZSB0aGUgc2xpY2UgaGVhZGVyLCBq
+dXN0IGxldAo+ID4gPiA+IHRoZSBkZWNvZGVyIGtub3cgdGhlIG9mZnNldCBmcm9tIHRoZSBiaXRz
+dHJlYW0gYnVmZXIsIEkgd291bGQgc3VnZ2VzdCB0bwo+ID4gPiA+IGFkZCB0aHJlZSBwcm9wZXJ0
+aWVzKHdpdGggc3BzKSBmb3IgdGhlbS4gQnV0IEkgdGhpbmsgd2UgbmVlZCBhIG1ldGhvZCB0bwo+
+ID4gPiA+IG1hcmsgYSBPVVRQVVQgc2lkZSBidWZmZXIgZm9yIHRob3NlIGF1eCBkYXRhLgo+ID4g
+Pgo+ID4gPiBJJ20gcXVpdGUgY29uZnVzZWQgYWJvdXQgdGhlIGhhcmR3YXJlIGltcGxlbWVudGF0
+aW9uIHRoZW4uIEZyb20gd2hhdAo+ID4gPiB5b3UncmUgc2F5aW5nLCBpdCBzZWVtcyB0aGF0IGl0
+IHRha2VzIHRoZSByYXcgYml0c3RyZWFtIGVsZW1lbnRzIHJhdGhlcgo+ID4gPiB0aGFuIHBhcnNl
+ZCBlbGVtZW50cy4gSXMgaXQgcmVhbGx5IGEgc3RhdGVsZXNzIGltcGxlbWVudGF0aW9uPwo+ID4g
+Pgo+ID4gPiBUaGUgc3RhdGVsZXNzIGltcGxlbWVudGF0aW9uIHdhcyBkZXNpZ25lZCB3aXRoIHRo
+ZSBpZGVhIHRoYXQgb25seSB0aGUKPiA+ID4gcmF3IHNsaWNlIGRhdGEgc2hvdWxkIGJlIHBhc3Nl
+ZCBpbiBiaXRzdHJlYW0gZm9ybSB0byB0aGUgZGVjb2Rlci4gRm9yCj4gPiA+IEguMjY0LCBpdCBz
+ZWVtcyB0aGF0IHNvbWUgZGVjb2RlcnMgYWxzbyBuZWVkIHRoZSBzbGljZSBoZWFkZXIgaW4gcmF3
+Cj4gPiA+IGJpdHN0cmVhbSBmb3JtIChiZWNhdXNlIHRoZXkgdGFrZSB0aGUgZnVsbCBzbGljZSBO
+QUwgdW5pdCksIHNlZSB0aGUKPiA+ID4gZGlzY3Vzc2lvbnMgaW4gdGhpcyB0aHJlYWQ6Cj4gPiA+
+IG1lZGlhOiBkb2NzLXJzdDogRG9jdW1lbnQgbTJtIHN0YXRlbGVzcyB2aWRlbyBkZWNvZGVyIGlu
+dGVyZmFjZQo+ID4KPiA+IFN0YXRlbGVzcyBqdXN0IG1lYW4gaXQgd29u4oCZdCB0cmFjayB0aGUg
+cHJldmlvdXMgcmVzdWx0LCBidXQgSSBkb27igJl0Cj4gPiB0aGluayB5b3UgY2FuIGRlZmluZSB3
+aGF0IGEgZGF0ZSB0aGUgaGFyZHdhcmUgd291bGQgbmVlZC4gRXZlbiB5b3UKPiA+IGp1c3QgYnVp
+bGQgYSBkcGIgZm9yIHRoZSBkZWNvZGVyLCBpdCBpcyBzdGlsbCBzdGF0ZWxlc3MsIGJ1dCBwYXJz
+aW5nCj4gPiBsZXNzIG9yIG1vcmUgZGF0YSBmcm9tIHRoZSBiaXRzdHJlYW0gZG9lc27igJl0IHN0
+b3AgYSBkZWNvZGVyIGJlY29tZSBhCj4gPiBzdGF0ZWxlc3MgZGVjb2Rlci4KPgo+IFllcyBmYWly
+IGVub3VnaCwgdGhlIGZvcm1hdCBpbiB3aGljaCB0aGUgaGFyZHdhcmUgZGVjb2RlciB0YWtlcyB0
+aGUKPiBiaXRzdHJlYW0gcGFyYW1ldGVycyBkb2VzIG5vdCBtYWtlIGl0IHN0YXRlbGVzcyBvciBz
+dGF0ZWZ1bCBwZXItc2UuCj4gSXQncyBqdXN0IHRoYXQgc3RhdGVsZXNzIGRlY29kZXJzIHNob3Vs
+ZCBoYXZlIG5vIHBhcnRpY3VsYXIgcmVhc29uIGZvcgo+IHBhcnNpbmcgdGhlIGJpdHN0cmVhbSBv
+biB0aGVpciBvd24gc2luY2UgdGhlIGhhcmR3YXJlIGNhbiBiZSBkZXNpZ25lZAo+IHdpdGggcmVn
+aXN0ZXJzIGZvciBlYWNoIHJlbGV2YW50IGJpdHN0cmVhbSBlbGVtZW50IHRvIGNvbmZpZ3VyZSB0
+aGUKPiBkZWNvZGluZyBwaXBlbGluZS4gVGhhdCdzIGhvdyBHUFUtYmFzZWQgZGVjb2RlciBpbXBs
+ZW1lbnRhdGlvbnMgYXJlCj4gaW1wbGVtZW50ZWQgKFZBQVBJL1ZEUEFVL05WREVDLCBldGMpLgo+
+Cj4gU28gdGhlIGZvcm1hdCB3ZSBoYXZlIGFncmVlZCBvbiBzbyBmYXIgZm9yIHRoZSBzdGF0ZWxl
+c3MgaW50ZXJmYWNlIGlzCj4gdG8gcGFzcyBwYXJzZWQgZWxlbWVudHMgdmlhIHY0bDIgY29udHJv
+bCBzdHJ1Y3R1cmVzLgo+Cj4gSWYgdGhlIGhhcmR3YXJlIGNhbiBvbmx5IHdvcmsgYnkgcGFyc2lu
+ZyB0aGUgYml0c3RyZWFtIGl0c2VsZiwgSSdtIG5vdAo+IHN1cmUgd2hhdCB0aGUgYmVzdCBzb2x1
+dGlvbiB3b3VsZCBiZS4gUmVjb25zdHJ1Y3RpbmcgdGhlIGJpdHN0cmVhbSBpbgo+IHRoZSBrZXJu
+ZWwgaXMgYSBwcmV0dHkgYmFkIG9wdGlvbiwgYnV0IHNvIGlzIHBhcnNpbmcgaW4gdGhlIGtlcm5l
+bCBvcgo+IGhhdmluZyB0aGUgZGF0YSBib3RoIGluIHBhcnNlZCBhbmQgcmF3IGZvcm1zLiBEbyB5
+b3Ugc2VlIGFub3RoZXIKPiBwb3NzaWJpbGl0eT8KCklzIHJlY29uc3RydWN0aW5nIHRoZSBiaXRz
+dHJlYW0gc28gYmFkPyBUaGUgdjRsMiBjb250cm9scyBwcm92aWRlIGEKZ2VuZXJpYyBpbnRlcmZh
+Y2UgdG8gYW4gZW5jb2RlZCBmb3JtYXQgd2hpY2ggdGhlIGRyaXZlciBuZWVkcyB0bwpjb252ZXJ0
+IGludG8gYSBzZXF1ZW5jZSB0aGF0IHRoZSBoYXJkd2FyZSBjYW4gdW5kZXJzdGFuZC4gVHlwaWNh
+bGx5CnRoaXMgaXMgZG9uZSBieSBwb3B1bGF0aW5nIGhhcmR3YXJlLXNwZWNpZmljIHN0cnVjdHVy
+ZXMuIENhbid0IHdlCmNvbnNpZGVyIHRoYXQgaW4gdGhpcyBzcGVjaWZpYyBpbnN0YW5jZSwgdGhl
+IGhhcmR3YXJlLXNwZWNpZmljCnN0cnVjdHVyZSBqdXN0IGhhcHBlbnMgdG8gYmUgaWRlbnRpY2Fs
+IHRvIHRoZSBvcmlnaW5hbCBiaXRzdHJlYW0KZm9ybWF0PwoKSSBhZ3JlZSB0aGF0IHRoaXMgaXMg
+bm90IHN0cmljdGx5IG9wdGltYWwgZm9yIHRoYXQgcGFydGljdWxhcgpoYXJkd2FyZSwgYnV0IHN1
+Y2ggaXMgdGhlIGNvc3Qgb2YgYWJzdHJhY3Rpb25zLCBhbmQgaW4gdGhpcyBzcGVjaWZpYwpjYXNl
+IEkgZG9uJ3QgYmVsaWV2ZSB0aGUgY29zdCB3b3VsZCBiZSBwYXJ0aWN1bGFybHkgaGlnaD8KCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
