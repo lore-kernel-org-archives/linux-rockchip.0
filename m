@@ -1,79 +1,72 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH] arm64: dts: rock960: Enable HDMI audio devices
-Date: Tue, 29 Jan 2019 09:08:11 -0300
-Message-ID: <e80f7cea65a51a2746aaef2c4efb1c1a474fbc1e.camel@collabora.com>
-References: <20190129113324.29440-1-ezequiel@collabora.com>
- <20190129114031.GA17014@Mani-XPS-13-9360>
+From: Michal Simek <michal.simek@xilinx.com>
+Subject: Re: [PATCH v3 6/7] arm64: dts: xilinx: ultra96: Standardize LED
+ labels and triggers
+Date: Tue, 29 Jan 2019 14:17:31 +0100
+Message-ID: <bf2c3b1e-7f89-4f68-589e-29f81c782c80@xilinx.com>
+References: <20181029094245.7886-1-manivannan.sadhasivam@linaro.org>
+ <20181029094245.7886-7-manivannan.sadhasivam@linaro.org>
+ <20181221023708.GC3233@Mani-XPS-13-9360>
+ <9f4f05cb-f326-a4e3-e306-cfbf64b629b4@xilinx.com>
+ <CAL_Jsq+zfV66EZHX7psh2=r-=wDrmLLcr5PWtSzuKRNOdMR-Dw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190129114031.GA17014@Mani-XPS-13-9360>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-rockchip@lists.infradead.org, kernel@collabora.com, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAL_Jsq+zfV66EZHX7psh2=r-=wDrmLLcr5PWtSzuKRNOdMR-Dw@mail.gmail.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Michal Simek <michal.simek@xilinx.com>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-arm-msm <linux-arm-msm@vger.kernel.org>, "open list:ARM/QUALCOMM SUPPORT" <linux-soc@vger.kernel.org>, Daniel Thompson <daniel.thompson@linaro.org>, Amit Kucheria <amit.kucheria@linaro.org>, Linus Walleij <linus.walleij@linaro.org>, koen.kooi@linaro.org, Nicolas Dechesne <nicolas.dechesne@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 2019-01-29 at 17:10 +0530, Manivannan Sadhasivam wrote:
-> On Tue, Jan 29, 2019 at 08:33:24AM -0300, Ezequiel Garcia wrote:
-> > This commit enable the hdmi-sound and i2s2 devices needed
-> > to have audio over HDMI.
-> > 
-> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+On 24. 01. 19 17:49, Rob Herring wrote:
+> On Fri, Dec 21, 2018 at 12:51 AM Michal Simek <michal.simek@xilinx.com> wrote:
+>>
+>> On 21. 12. 18 3:37, Manivannan Sadhasivam wrote:
+>>> On Mon, Oct 29, 2018 at 03:12:44PM +0530, Manivannan Sadhasivam wrote:
+>>>> For all 96Boards, the following standard is used for onboard LEDs.
+>>>>
+>>>> green:user1  default-trigger: heartbeat
+>>>> green:user2  default-trigger: mmc0/disk-activity(onboard-storage)
+>>>> green:user3  default-trigger: mmc1 (SD-card)
+>>>> green:user4  default-trigger: none, panic-indicator
+>>>> yellow:wlan  default-trigger: phy0tx
+>>>> blue:bt      default-trigger: hci0-power
+>>>>
+>>>> So lets adopt the same for Ultra96, which is one of the 96Boards
+>>>> CE and AI platform. Since the WLAN and BT LEDs are hardwired onboard,
+>>>> consolidate only User LEDs.
+>>>>
+>>>
+>>> Hello,
+>>>
+>>> Any update on this patch?
+>>
+>> I am still waiting for reaction from Rob.
+>> We are keep trying to keep backward compatibility and this patch is
+>> breaking it that's why I want to know DT guys reaction on this change.
 > 
-> Since this patch affects both Rock960 and Ficus, it should be mentioned
-> in the description. Other than that,
+> dts changes and backwards compatibility are ultimately up to the
+> platform maintainers. Your users can yell at you if they care. I only
+> ask that changes that break compatibility are documented as doing so.
 > 
+> Personally, I'm in favor of this change. I'd rather seem uniformity
+> across boards and this is just a dev board and LED functions won't
+> affect booting.
 
-Wish with named this Ficus board as just Rock960 EE, so it'd be obvious
-that it's part of the Rock960 family.
+Ok.
 
-> Acked-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> 
+Then please fix the patch and do it in a way
 
-Thanks!
+label = "green:user1"; /* ds2 */
 
-> Thanks,
-> Mani
-> 
-> > ---
-> >  arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi | 8 ++++++++
-> >  1 file changed, 8 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> > index f04a31d48ba4..1bbf0b1f9374 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> > @@ -94,6 +94,10 @@
-> >  	status = "okay";
-> >  };
-> >  
-> > +&hdmi_sound {
-> > +	status = "okay";
-> > +};
-> > +
-> >  &i2c0 {
-> >  	clock-frequency = <400000>;
-> >  	i2c-scl-rising-time-ns = <168>;
-> > @@ -336,6 +340,10 @@
-> >  	status = "okay";
-> >  };
-> >  
-> > +&i2s2 {
-> > +        status = "okay";
-> > +};
-> > +
-> >  &io_domains {
-> >  	bt656-supply = <&vcc1v8_s0>; /* bt656_gpio2ab_ms */
-> >  	audio-supply = <&vcc1v8_s0>; /* audio_gpio3d4a_ms */
-> > -- 
-> > 2.20.1
-> > 
+ds2 reflects name on schematics.
+
+in ds4 case default trigger is changes to mmc1. It suggests sd/emmc but
+on ultra96 it is sd slot and wifi on second slot.
+
+ds5 - linux,default-trigger = "none"; looks weird. None trigger should
+be simply ensured by removing that line.
+
+Thanks,
+Michal
