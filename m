@@ -1,72 +1,61 @@
-From: Michal Simek <michal.simek@xilinx.com>
-Subject: Re: [PATCH v3 6/7] arm64: dts: xilinx: ultra96: Standardize LED
- labels and triggers
-Date: Tue, 29 Jan 2019 14:17:31 +0100
-Message-ID: <bf2c3b1e-7f89-4f68-589e-29f81c782c80@xilinx.com>
-References: <20181029094245.7886-1-manivannan.sadhasivam@linaro.org>
- <20181029094245.7886-7-manivannan.sadhasivam@linaro.org>
- <20181221023708.GC3233@Mani-XPS-13-9360>
- <9f4f05cb-f326-a4e3-e306-cfbf64b629b4@xilinx.com>
- <CAL_Jsq+zfV66EZHX7psh2=r-=wDrmLLcr5PWtSzuKRNOdMR-Dw@mail.gmail.com>
+From: Otavio Salvador <otavio@ossystems.com.br>
+Subject: [PATCH 2/4] ARM: dts: rockchip: rv1108-elgin: Fix vcc5/6-supply representation
+Date: Tue, 29 Jan 2019 17:54:22 -0200
+Message-ID: <20190129195424.10161-2-otavio@ossystems.com.br>
+References: <20190129195424.10161-1-otavio@ossystems.com.br>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAL_Jsq+zfV66EZHX7psh2=r-=wDrmLLcr5PWtSzuKRNOdMR-Dw@mail.gmail.com>
-Content-Language: en-US
+In-Reply-To: <20190129195424.10161-1-otavio@ossystems.com.br>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Michal Simek <michal.simek@xilinx.com>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-arm-msm <linux-arm-msm@vger.kernel.org>, "open list:ARM/QUALCOMM SUPPORT" <linux-soc@vger.kernel.org>, Daniel Thompson <daniel.thompson@linaro.org>, Amit Kucheria <amit.kucheria@linaro.org>, Linus Walleij <linus.walleij@linaro.org>, koen.kooi@linaro.org, Nicolas Dechesne <nicolas.dechesne@linaro.org>
+To: linux-arm-kernel@lists.infradead.org
+Cc: Jason Zhu <jason.zhu@rock-chips.com>, Vicent Chi <vicent.chi@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, Philipp Tomsic <philipp.tomsich@theobroma-systems.com>, Tony Xie <tony.xie@rock-chips.com>, Otavio Salvador <otavio@ossystems.com.br>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 24. 01. 19 17:49, Rob Herring wrote:
-> On Fri, Dec 21, 2018 at 12:51 AM Michal Simek <michal.simek@xilinx.com> wrote:
->>
->> On 21. 12. 18 3:37, Manivannan Sadhasivam wrote:
->>> On Mon, Oct 29, 2018 at 03:12:44PM +0530, Manivannan Sadhasivam wrote:
->>>> For all 96Boards, the following standard is used for onboard LEDs.
->>>>
->>>> green:user1  default-trigger: heartbeat
->>>> green:user2  default-trigger: mmc0/disk-activity(onboard-storage)
->>>> green:user3  default-trigger: mmc1 (SD-card)
->>>> green:user4  default-trigger: none, panic-indicator
->>>> yellow:wlan  default-trigger: phy0tx
->>>> blue:bt      default-trigger: hci0-power
->>>>
->>>> So lets adopt the same for Ultra96, which is one of the 96Boards
->>>> CE and AI platform. Since the WLAN and BT LEDs are hardwired onboard,
->>>> consolidate only User LEDs.
->>>>
->>>
->>> Hello,
->>>
->>> Any update on this patch?
->>
->> I am still waiting for reaction from Rob.
->> We are keep trying to keep backward compatibility and this patch is
->> breaking it that's why I want to know DT guys reaction on this change.
-> 
-> dts changes and backwards compatibility are ultimately up to the
-> platform maintainers. Your users can yell at you if they care. I only
-> ask that changes that break compatibility are documented as doing so.
-> 
-> Personally, I'm in favor of this change. I'd rather seem uniformity
-> across boards and this is just a dev board and LED functions won't
-> affect booting.
+On rv1108-elgin-r1 board the RK805 VCC5 and VCC6 supplies come from
+the BUCK2 regulator at 2.2V, so fix the representation in the
+device tree.
 
-Ok.
+While at it, rename it from vdd_cam to vdd_buck2, which is a better
+name for the regulator label.
 
-Then please fix the patch and do it in a way
+Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
+---
 
-label = "green:user1"; /* ds2 */
+ arch/arm/boot/dts/rv1108-elgin-r1.dts | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
-ds2 reflects name on schematics.
-
-in ds4 case default trigger is changes to mmc1. It suggests sd/emmc but
-on ultra96 it is sd slot and wifi on second slot.
-
-ds5 - linux,default-trigger = "none"; looks weird. None trigger should
-be simply ensured by removing that line.
-
-Thanks,
-Michal
+diff --git a/arch/arm/boot/dts/rv1108-elgin-r1.dts b/arch/arm/boot/dts/rv1108-elgin-r1.dts
+index 7b24558f13e0..dc2ae1731ae2 100644
+--- a/arch/arm/boot/dts/rv1108-elgin-r1.dts
++++ b/arch/arm/boot/dts/rv1108-elgin-r1.dts
+@@ -74,8 +74,8 @@
+ 		vcc2-supply = <&vcc_sys>;
+ 		vcc3-supply = <&vcc_sys>;
+ 		vcc4-supply = <&vcc_sys>;
+-		vcc5-supply = <&vcc_sys>;
+-		vcc6-supply = <&vcc_sys>;
++		vcc5-supply = <&vdd_buck2>;
++		vcc6-supply = <&vdd_buck2>;
+ 
+ 		regulators {
+ 			vdd_core: DCDC_REG1 {
+@@ -90,10 +90,12 @@
+ 				};
+ 			};
+ 
+-			vdd_cam: DCDC_REG2 {
+-				regulator-name= "vdd_cam";
+-				regulator-min-microvolt = <700000>;
+-				regulator-max-microvolt = <2000000>;
++			vdd_buck2: DCDC_REG2 {
++				regulator-name= "vdd_buck2";
++				regulator-min-microvolt = <2200000>;
++				regulator-max-microvolt = <2200000>;
++				regulator-always-on;
++				regulator-boot-on;
+ 				regulator-state-mem {
+ 					regulator-state-disabled;
+ 				};
+-- 
+2.20.1
