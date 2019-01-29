@@ -1,13 +1,9 @@
-From: Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+From: Maxime Ripard <maxime.ripard@bootlin.com>
 Subject: Re: [linux-sunxi] [PATCH v2 1/2] media: v4l: Add definitions for the
  HEVC slice format and controls
-Date: Tue, 29 Jan 2019 16:44:35 +0900
-Message-ID: <CAPBb6MUJu3cX9A-E32bSSjxc1cvGP83ayzZzUxa5_QMf6niK4g@mail.gmail.com>
-References: <20181123130209.11696-1-paul.kocialkowski@bootlin.com>
- <20181123130209.11696-2-paul.kocialkowski@bootlin.com>
- <5515174.7lFZcYkk85@jernej-laptop>
- <ffe9c81db34b599f675ca5bbf02de360bf0a1608.camel@bootlin.com>
- <776e63c9-d4a5-342a-e0f7-200ef144ffc4@rock-chips.com>
+Date: Tue, 29 Jan 2019 09:09:44 +0100
+Message-ID: <20190129080944.pfhumtugsm7mzzcc@flea>
+References: <776e63c9-d4a5-342a-e0f7-200ef144ffc4@rock-chips.com>
  <64c793e08d61181b78125b3956ec38623fa5d261.camel@bootlin.com>
  <D8005130-F7FD-4CBD-8396-1BB08BB08E81@soulik.info>
  <f982ef378a8ade075bc7077b93640e20ecebf9f4.camel@bootlin.com>
@@ -16,84 +12,96 @@ References: <20181123130209.11696-1-paul.kocialkowski@bootlin.com>
  <bdf14f97e98f2fd06307545ab9038ac3c2086ae7.camel@bootlin.com>
  <42520087-4EAE-4F7F-BCA0-42E422170E91@soulik.info>
  <ab8ca098ad60f209fe97f79bb93b2d1e898da524.camel@bootlin.com>
+ <CAPBb6MUJu3cX9A-E32bSSjxc1cvGP83ayzZzUxa5_QMf6niK4g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <ab8ca098ad60f209fe97f79bb93b2d1e898da524.camel-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Cc: devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?Q?Jernej_=C5=A0krabec?= <jernej.skrabec-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAPBb6MUJu3cX9A-E32bSSjxc1cvGP83ayzZzUxa5_QMf6niK4g@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Alexandre Courbot <acourbot@chromium.org>
+Cc: Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Ayaka <ayaka@soulik.info>, Randy Li <randy.li@rock-chips.com>, Jernej =?utf-8?Q?=C5=A0krabec?= <jernej.skrabec@gmail.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Ezequiel Garcia <ezequiel@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBKYW4gMjUsIDIwMTkgYXQgMTA6MDQgUE0gUGF1bCBLb2NpYWxrb3dza2kKPHBhdWwu
-a29jaWFsa293c2tpQGJvb3RsaW4uY29tPiB3cm90ZToKPgo+IEhpLAo+Cj4gT24gVGh1LCAyMDE5
-LTAxLTI0IGF0IDIwOjIzICswODAwLCBBeWFrYSB3cm90ZToKPiA+Cj4gPiBTZW50IGZyb20gbXkg
-aVBhZAo+ID4KPiA+ID4gT24gSmFuIDI0LCAyMDE5LCBhdCA2OjI3IFBNLCBQYXVsIEtvY2lhbGtv
-d3NraSA8cGF1bC5rb2NpYWxrb3dza2lAYm9vdGxpbi5jb20+IHdyb3RlOgo+ID4gPgo+ID4gPiBI
-aSwKPiA+ID4KPiA+ID4gPiBPbiBUaHUsIDIwMTktMDEtMTAgYXQgMjE6MzIgKzA4MDAsIGF5YWth
-IHdyb3RlOgo+ID4gPiA+IEkgZm9yZ2V0IGEgaW1wb3J0YW50IHRoaW5nLCBmb3IgdGhlIHJrdmRl
-YyBhbmQgcmsgaGV2YyBkZWNvZGVyLCBpdCB3b3VsZAo+ID4gPiA+IHJlcXVlc3RzIGNhYmFjIHRh
-YmxlLCBzY2FsaW5nIGxpc3QsIHBpY3R1cmUgcGFyYW1ldGVyIHNldCBhbmQgcmVmZXJlbmNlCj4g
-PiA+ID4gcGljdHVyZSBzdG9yaW5nIGluIG9uZSBvciB2YXJpb3VzIG9mIERNQSBidWZmZXJzLiBJ
-IGFtIG5vdCB0YWxraW5nIGFib3V0Cj4gPiA+ID4gdGhlIGRhdGEgYmVlbiBwYXJzZWQsIHRoZSBk
-ZWNvZGVyIHdvdWxkIHJlcXVlc3RzIGEgcmF3IGRhdGEuCj4gPiA+ID4KPiA+ID4gPiBGb3IgdGhl
-IHBwcyBhbmQgcnBzLCBpdCBpcyBwb3NzaWJsZSB0byByZXVzZSB0aGUgc2xpY2UgaGVhZGVyLCBq
-dXN0IGxldAo+ID4gPiA+IHRoZSBkZWNvZGVyIGtub3cgdGhlIG9mZnNldCBmcm9tIHRoZSBiaXRz
-dHJlYW0gYnVmZXIsIEkgd291bGQgc3VnZ2VzdCB0bwo+ID4gPiA+IGFkZCB0aHJlZSBwcm9wZXJ0
-aWVzKHdpdGggc3BzKSBmb3IgdGhlbS4gQnV0IEkgdGhpbmsgd2UgbmVlZCBhIG1ldGhvZCB0bwo+
-ID4gPiA+IG1hcmsgYSBPVVRQVVQgc2lkZSBidWZmZXIgZm9yIHRob3NlIGF1eCBkYXRhLgo+ID4g
-Pgo+ID4gPiBJJ20gcXVpdGUgY29uZnVzZWQgYWJvdXQgdGhlIGhhcmR3YXJlIGltcGxlbWVudGF0
-aW9uIHRoZW4uIEZyb20gd2hhdAo+ID4gPiB5b3UncmUgc2F5aW5nLCBpdCBzZWVtcyB0aGF0IGl0
-IHRha2VzIHRoZSByYXcgYml0c3RyZWFtIGVsZW1lbnRzIHJhdGhlcgo+ID4gPiB0aGFuIHBhcnNl
-ZCBlbGVtZW50cy4gSXMgaXQgcmVhbGx5IGEgc3RhdGVsZXNzIGltcGxlbWVudGF0aW9uPwo+ID4g
-Pgo+ID4gPiBUaGUgc3RhdGVsZXNzIGltcGxlbWVudGF0aW9uIHdhcyBkZXNpZ25lZCB3aXRoIHRo
-ZSBpZGVhIHRoYXQgb25seSB0aGUKPiA+ID4gcmF3IHNsaWNlIGRhdGEgc2hvdWxkIGJlIHBhc3Nl
-ZCBpbiBiaXRzdHJlYW0gZm9ybSB0byB0aGUgZGVjb2Rlci4gRm9yCj4gPiA+IEguMjY0LCBpdCBz
-ZWVtcyB0aGF0IHNvbWUgZGVjb2RlcnMgYWxzbyBuZWVkIHRoZSBzbGljZSBoZWFkZXIgaW4gcmF3
-Cj4gPiA+IGJpdHN0cmVhbSBmb3JtIChiZWNhdXNlIHRoZXkgdGFrZSB0aGUgZnVsbCBzbGljZSBO
-QUwgdW5pdCksIHNlZSB0aGUKPiA+ID4gZGlzY3Vzc2lvbnMgaW4gdGhpcyB0aHJlYWQ6Cj4gPiA+
-IG1lZGlhOiBkb2NzLXJzdDogRG9jdW1lbnQgbTJtIHN0YXRlbGVzcyB2aWRlbyBkZWNvZGVyIGlu
-dGVyZmFjZQo+ID4KPiA+IFN0YXRlbGVzcyBqdXN0IG1lYW4gaXQgd29u4oCZdCB0cmFjayB0aGUg
-cHJldmlvdXMgcmVzdWx0LCBidXQgSSBkb27igJl0Cj4gPiB0aGluayB5b3UgY2FuIGRlZmluZSB3
-aGF0IGEgZGF0ZSB0aGUgaGFyZHdhcmUgd291bGQgbmVlZC4gRXZlbiB5b3UKPiA+IGp1c3QgYnVp
-bGQgYSBkcGIgZm9yIHRoZSBkZWNvZGVyLCBpdCBpcyBzdGlsbCBzdGF0ZWxlc3MsIGJ1dCBwYXJz
-aW5nCj4gPiBsZXNzIG9yIG1vcmUgZGF0YSBmcm9tIHRoZSBiaXRzdHJlYW0gZG9lc27igJl0IHN0
-b3AgYSBkZWNvZGVyIGJlY29tZSBhCj4gPiBzdGF0ZWxlc3MgZGVjb2Rlci4KPgo+IFllcyBmYWly
-IGVub3VnaCwgdGhlIGZvcm1hdCBpbiB3aGljaCB0aGUgaGFyZHdhcmUgZGVjb2RlciB0YWtlcyB0
-aGUKPiBiaXRzdHJlYW0gcGFyYW1ldGVycyBkb2VzIG5vdCBtYWtlIGl0IHN0YXRlbGVzcyBvciBz
-dGF0ZWZ1bCBwZXItc2UuCj4gSXQncyBqdXN0IHRoYXQgc3RhdGVsZXNzIGRlY29kZXJzIHNob3Vs
-ZCBoYXZlIG5vIHBhcnRpY3VsYXIgcmVhc29uIGZvcgo+IHBhcnNpbmcgdGhlIGJpdHN0cmVhbSBv
-biB0aGVpciBvd24gc2luY2UgdGhlIGhhcmR3YXJlIGNhbiBiZSBkZXNpZ25lZAo+IHdpdGggcmVn
-aXN0ZXJzIGZvciBlYWNoIHJlbGV2YW50IGJpdHN0cmVhbSBlbGVtZW50IHRvIGNvbmZpZ3VyZSB0
-aGUKPiBkZWNvZGluZyBwaXBlbGluZS4gVGhhdCdzIGhvdyBHUFUtYmFzZWQgZGVjb2RlciBpbXBs
-ZW1lbnRhdGlvbnMgYXJlCj4gaW1wbGVtZW50ZWQgKFZBQVBJL1ZEUEFVL05WREVDLCBldGMpLgo+
-Cj4gU28gdGhlIGZvcm1hdCB3ZSBoYXZlIGFncmVlZCBvbiBzbyBmYXIgZm9yIHRoZSBzdGF0ZWxl
-c3MgaW50ZXJmYWNlIGlzCj4gdG8gcGFzcyBwYXJzZWQgZWxlbWVudHMgdmlhIHY0bDIgY29udHJv
-bCBzdHJ1Y3R1cmVzLgo+Cj4gSWYgdGhlIGhhcmR3YXJlIGNhbiBvbmx5IHdvcmsgYnkgcGFyc2lu
-ZyB0aGUgYml0c3RyZWFtIGl0c2VsZiwgSSdtIG5vdAo+IHN1cmUgd2hhdCB0aGUgYmVzdCBzb2x1
-dGlvbiB3b3VsZCBiZS4gUmVjb25zdHJ1Y3RpbmcgdGhlIGJpdHN0cmVhbSBpbgo+IHRoZSBrZXJu
-ZWwgaXMgYSBwcmV0dHkgYmFkIG9wdGlvbiwgYnV0IHNvIGlzIHBhcnNpbmcgaW4gdGhlIGtlcm5l
-bCBvcgo+IGhhdmluZyB0aGUgZGF0YSBib3RoIGluIHBhcnNlZCBhbmQgcmF3IGZvcm1zLiBEbyB5
-b3Ugc2VlIGFub3RoZXIKPiBwb3NzaWJpbGl0eT8KCklzIHJlY29uc3RydWN0aW5nIHRoZSBiaXRz
-dHJlYW0gc28gYmFkPyBUaGUgdjRsMiBjb250cm9scyBwcm92aWRlIGEKZ2VuZXJpYyBpbnRlcmZh
-Y2UgdG8gYW4gZW5jb2RlZCBmb3JtYXQgd2hpY2ggdGhlIGRyaXZlciBuZWVkcyB0bwpjb252ZXJ0
-IGludG8gYSBzZXF1ZW5jZSB0aGF0IHRoZSBoYXJkd2FyZSBjYW4gdW5kZXJzdGFuZC4gVHlwaWNh
-bGx5CnRoaXMgaXMgZG9uZSBieSBwb3B1bGF0aW5nIGhhcmR3YXJlLXNwZWNpZmljIHN0cnVjdHVy
-ZXMuIENhbid0IHdlCmNvbnNpZGVyIHRoYXQgaW4gdGhpcyBzcGVjaWZpYyBpbnN0YW5jZSwgdGhl
-IGhhcmR3YXJlLXNwZWNpZmljCnN0cnVjdHVyZSBqdXN0IGhhcHBlbnMgdG8gYmUgaWRlbnRpY2Fs
-IHRvIHRoZSBvcmlnaW5hbCBiaXRzdHJlYW0KZm9ybWF0PwoKSSBhZ3JlZSB0aGF0IHRoaXMgaXMg
-bm90IHN0cmljdGx5IG9wdGltYWwgZm9yIHRoYXQgcGFydGljdWxhcgpoYXJkd2FyZSwgYnV0IHN1
-Y2ggaXMgdGhlIGNvc3Qgb2YgYWJzdHJhY3Rpb25zLCBhbmQgaW4gdGhpcyBzcGVjaWZpYwpjYXNl
-IEkgZG9uJ3QgYmVsaWV2ZSB0aGUgY29zdCB3b3VsZCBiZSBwYXJ0aWN1bGFybHkgaGlnaD8KCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
-aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Tue, Jan 29, 2019 at 04:44:35PM +0900, Alexandre Courbot wrote:
+> On Fri, Jan 25, 2019 at 10:04 PM Paul Kocialkowski
+> > On Thu, 2019-01-24 at 20:23 +0800, Ayaka wrote:
+> > >
+> > > Sent from my iPad
+> > >
+> > > > On Jan 24, 2019, at 6:27 PM, Paul Kocialkowski <paul.kocialkowski@bootlin.com> wrote:
+> > > >
+> > > > Hi,
+> > > >
+> > > > > On Thu, 2019-01-10 at 21:32 +0800, ayaka wrote:
+> > > > > I forget a important thing, for the rkvdec and rk hevc decoder, it would
+> > > > > requests cabac table, scaling list, picture parameter set and reference
+> > > > > picture storing in one or various of DMA buffers. I am not talking about
+> > > > > the data been parsed, the decoder would requests a raw data.
+> > > > >
+> > > > > For the pps and rps, it is possible to reuse the slice header, just let
+> > > > > the decoder know the offset from the bitstream bufer, I would suggest to
+> > > > > add three properties(with sps) for them. But I think we need a method to
+> > > > > mark a OUTPUT side buffer for those aux data.
+> > > >
+> > > > I'm quite confused about the hardware implementation then. From what
+> > > > you're saying, it seems that it takes the raw bitstream elements rather
+> > > > than parsed elements. Is it really a stateless implementation?
+> > > >
+> > > > The stateless implementation was designed with the idea that only the
+> > > > raw slice data should be passed in bitstream form to the decoder. For
+> > > > H.264, it seems that some decoders also need the slice header in raw
+> > > > bitstream form (because they take the full slice NAL unit), see the
+> > > > discussions in this thread:
+> > > > media: docs-rst: Document m2m stateless video decoder interface
+> > >
+> > > Stateless just mean it won’t track the previous result, but I don’t
+> > > think you can define what a date the hardware would need. Even you
+> > > just build a dpb for the decoder, it is still stateless, but parsing
+> > > less or more data from the bitstream doesn’t stop a decoder become a
+> > > stateless decoder.
+> >
+> > Yes fair enough, the format in which the hardware decoder takes the
+> > bitstream parameters does not make it stateless or stateful per-se.
+> > It's just that stateless decoders should have no particular reason for
+> > parsing the bitstream on their own since the hardware can be designed
+> > with registers for each relevant bitstream element to configure the
+> > decoding pipeline. That's how GPU-based decoder implementations are
+> > implemented (VAAPI/VDPAU/NVDEC, etc).
+> >
+> > So the format we have agreed on so far for the stateless interface is
+> > to pass parsed elements via v4l2 control structures.
+> >
+> > If the hardware can only work by parsing the bitstream itself, I'm not
+> > sure what the best solution would be. Reconstructing the bitstream in
+> > the kernel is a pretty bad option, but so is parsing in the kernel or
+> > having the data both in parsed and raw forms. Do you see another
+> > possibility?
+> 
+> Is reconstructing the bitstream so bad? The v4l2 controls provide a
+> generic interface to an encoded format which the driver needs to
+> convert into a sequence that the hardware can understand. Typically
+> this is done by populating hardware-specific structures. Can't we
+> consider that in this specific instance, the hardware-specific
+> structure just happens to be identical to the original bitstream
+> format?
+> 
+> I agree that this is not strictly optimal for that particular
+> hardware, but such is the cost of abstractions, and in this specific
+> case I don't believe the cost would be particularly high?
+
+I mean, that argument can be made for the rockchip driver as well. If
+reconstructing the bitstream is something we can do, and if we don't
+care about being suboptimal for one particular hardware, then why the
+rockchip driver doesn't just recreate the bitstream from that API?
+
+After all, this is just a hardware specific header that happens to be
+identical to the original bitstream format
+
+Maxime
+
+-- 
+Maxime Ripard, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
