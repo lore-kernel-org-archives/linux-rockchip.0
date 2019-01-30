@@ -1,81 +1,53 @@
-From: Damian Kos <dkos@cadence.com>
-Subject: [PATCH v7 3/4] dt-bindings: drm/bridge: Document Cadence MHDP bridge bindings
-Date: Wed, 30 Jan 2019 11:03:20 +0000
-Message-ID: <1548846209-16406-4-git-send-email-dkos@cadence.com>
-References: <1548846209-16406-1-git-send-email-dkos@cadence.com>
+From: lsh <lshua312@163.com>
+Subject: [PATCH] ASoC: rockchip: fix small typo
+Date: Wed, 30 Jan 2019 22:33:35 +0800
+Message-ID: <1548858815-20161-1-git-send-email-lshua312@163.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1548846209-16406-1-git-send-email-dkos@cadence.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: dkos@cadence.com, rafalc@cadence.com, piotrs@cadence.com, quentin.schulz@bootlin.com, jbergsagel@ti.com, Quentin Schulz <quentin.schulz@free-electrons.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: lgirdwood@gmail.com
+Cc: alsa-devel@alsa-project.org, heiko@sntech.de, linux-kernel@vger.kernel.org, lsh <lshua312@163.com>, tiwai@suse.com, perex@perex.cz, linux-rockchip@lists.infradead.org, broonie@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Quentin Schulz <quentin.schulz@free-electrons.com>
+codec_dai -> cpu_dai
 
-Document the bindings used for the Cadence MHDP DPI/DP bridge.
-
-Signed-off-by: Quentin Schulz <quentin.schulz@free-electrons.com>
-Signed-off-by: Damian Kos <dkos@cadence.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
+Signed-off-by: lsh <lshua312@163.com>
 ---
- .../bindings/display/bridge/cdns,mhdp.txt     | 47 +++++++++++++++++++
- 1 file changed, 47 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/bridge/cdns,mhdp.txt
+ sound/soc/rockchip/rockchip_rt5645.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/bridge/cdns,mhdp.txt b/Documentation/devicetree/bindings/display/bridge/cdns,mhdp.txt
-new file mode 100644
-index 000000000000..df2a00163ccf
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/bridge/cdns,mhdp.txt
-@@ -0,0 +1,47 @@
-+Cadence MHDP bridge
-+==========================
-+
-+The Cadence MHDP bridge is a DPI to DP bridge.
-+
-+Required properties:
-+- compatible: should be "cdns,mhdp8546",
-+- reg: physical base address and length of the controller's registers,
-+- clocks: DP bridge clock, it's used by the IP to know how to translate
-+	a number of clock cycles into a time (which is used to comply
-+	with DP standard timings and delays),
-+- phys: see the Documentation/devicetree/bindings/phy/phy-cadence-dp.txt
-+- phy-names: must be "dpphy"
-+
-+Required subnodes:
-+- ports: Ports as described in Documentation/devictree/bindings/graph.txt
-+	Port 0 - input port representing the DP bridge input
-+	Port 1 - output port representing the DP bridge output
-+
-+Example:
-+
-+	mhdp: dp-bridge@f0fb000000 {
-+		compatible = "cdns,mhdp8546";
-+		reg = <0xf0 0xfb000000 0x0 0x1000000>;
-+		clocks = <&mhdp_clock>;
-+		phys = <&dp_phy>;
-+		phy-names = "dpphy";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			port@0 {
-+				reg = <0>;
-+				dp_bridge_input: endpoint {
-+					remote-endpoint = <&xxx_dpi_output>;
-+				};
-+			};
-+
-+			port@1 {
-+				reg = <1>;
-+				dp_bridge_output: endpoint {
-+					remote-endpoint = <&xxx_dp_connector_input>;
-+				};
-+			};
-+		};
-+	};
+diff --git a/sound/soc/rockchip/rockchip_rt5645.c b/sound/soc/rockchip/rockchip_rt5645.c
+index 881c324..f88adf0 100644
+--- a/sound/soc/rockchip/rockchip_rt5645.c
++++ b/sound/soc/rockchip/rockchip_rt5645.c
+@@ -95,14 +95,16 @@ static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
+ 	ret = snd_soc_dai_set_sysclk(cpu_dai, 0, mclk,
+ 				     SND_SOC_CLOCK_OUT);
+ 	if (ret < 0) {
+-		dev_err(codec_dai->dev, "Can't set codec clock %d\n", ret);
++		dev_err(cpu_dai->dev,
++			"Can't set clock for cpu_dai %d\n", ret);
+ 		return ret;
+ 	}
+ 
+ 	ret = snd_soc_dai_set_sysclk(codec_dai, 0, mclk,
+ 				     SND_SOC_CLOCK_IN);
+ 	if (ret < 0) {
+-		dev_err(codec_dai->dev, "Can't set codec clock %d\n", ret);
++		dev_err(codec_dai->dev,
++			"Can't set clock for codec_dai %d\n", ret);
+ 		return ret;
+ 	}
+ 
 -- 
-2.17.1
+1.9.1
