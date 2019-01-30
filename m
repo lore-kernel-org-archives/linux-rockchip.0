@@ -1,104 +1,210 @@
-From: Ayaka <ayaka@soulik.info>
-Subject: Re: [linux-sunxi] [PATCH v2 1/2] media: v4l: Add definitions for the HEVC slice format and controls
-Date: Wed, 30 Jan 2019 15:03:51 +0800
-Message-ID: <3E2E3087-B2C7-48A9-B465-C4BDFA1250A7@soulik.info>
-References: <20181123130209.11696-1-paul.kocialkowski@bootlin.com> <20181123130209.11696-2-paul.kocialkowski@bootlin.com> <5515174.7lFZcYkk85@jernej-laptop> <ffe9c81db34b599f675ca5bbf02de360bf0a1608.camel@bootlin.com> <776e63c9-d4a5-342a-e0f7-200ef144ffc4@rock-chips.com> <64c793e08d61181b78125b3956ec38623fa5d261.camel@bootlin.com> <D8005130-F7FD-4CBD-8396-1BB08BB08E81@soulik.info> <f982ef378a8ade075bc7077b93640e20ecebf9f4.camel@bootlin.com> <82FA0C3F-BC54-4D89-AECB-90D81B89B1CE@soulik.info> <c3619a00-17e7-fb92-a427-a7478b96f356@soulik.info> <bdf14f97e98f2fd06307545ab9038ac3c2086ae7.camel@bootlin.com> <42520087-4EAE-4F7F-BCA0-42E422170E91@soulik.info> <ab8ca098ad60f209fe97f79bb93b2d1e898da524.camel@bootlin.com> <CAPBb6MUJu3cX9A-E32bSSjxc1cvGP83ayzZzUxa5_QMf6niK4g@mail.gmail.com> <2442b23d3b
- 0a00c1bd441298a712888e016acf92.camel@ndufresne.ca>
-Mime-Version: 1.0 (1.0)
-Content-Type: text/plain;
-        charset=utf-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2442b23d3b0a00c1bd441298a712888e016acf92.camel@ndufresne.ca>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Dufresne <nicolas@ndufresne.ca>
-Cc: Alexandre Courbot <acourbot@chromium.org>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Randy Li <randy.li@rock-chips.com>, =?utf-8?Q?Jernej_=C5=A0krabec?= <jernej.skrabec@gmail.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Maxime Ripard <maxime.ripard@bootlin.com>, Hans Verkuil <hverkuil@xs4all.nl>, Ezequiel Garcia <ezequiel@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, linux-rockchip@lists.infradead.org
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [linux-sunxi] [PATCH v2 1/2] media: v4l: Add definitions for the
+ HEVC slice format and controls
+Date: Wed, 30 Jan 2019 16:17:10 +0900
+Message-ID: <CAAFQd5AKBm8WfcV29-8LFHsVNEL177JWXxAHM8SqhghzZnVn_Q@mail.gmail.com>
+References: <20181123130209.11696-1-paul.kocialkowski@bootlin.com>
+ <20181123130209.11696-2-paul.kocialkowski@bootlin.com>
+ <5515174.7lFZcYkk85@jernej-laptop>
+ <ffe9c81db34b599f675ca5bbf02de360bf0a1608.camel@bootlin.com>
+ <776e63c9-d4a5-342a-e0f7-200ef144ffc4@rock-chips.com>
+ <64c793e08d61181b78125b3956ec38623fa5d261.camel@bootlin.com>
+ <D8005130-F7FD-4CBD-8396-1BB08BB08E81@soulik.info>
+ <f982ef378a8ade075bc7077b93640e20ecebf9f4.camel@bootlin.com>
+ <82FA0C3F-BC54-4D89-AECB-90D81B89B1CE@soulik.info>
+ <c3619a00-17e7-fb92-a427-a7478b96f356@soulik.info>
+ <bdf14f97e98f2fd06307545ab9038ac3c2086ae7.camel@bootlin.com>
+ <42520087-4EAE-4F7F-BCA0-42E422170E91@soulik.info>
+ <ab8ca098ad60f209fe97f79bb93b2d1e898da524.camel@bootlin.com>
+ <CAPBb6MUJu3cX9A-E32bSSjxc1cvGP83ayzZzUxa5_QMf6niK4g@mail.gmail.com>
+ <2442b23d3b0a00c1bd441298a712888e016acf92.camel@ndufresne.ca>
+ <CAPBb6MUsbdXvkomtkiq0ygTqj58h4yqVR0PotT=ft94Ai0nbhw@mail.gmail.com>
+ <CAAFQd5BJ6_eQ2QiQLdmkkkeWEiVQ_yo86QccOn9176ZRDQxc=Q@mail.gmail.com>
+ <5F14507E-1BE2-4A74-A59C-1DB3C3E07DBA@soulik.info>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <5F14507E-1BE2-4A74-A59C-1DB3C3E07DBA-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Cc: devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?Q?Jernej_=C5=A0krabec?= <jernej.skrabec-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
+ Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-Sent from my iPad
-
-> On Jan 30, 2019, at 5:41 AM, Nicolas Dufresne <nicolas@ndufresne.ca> wrote:
-> 
->> Le mardi 29 janvier 2019 à 16:44 +0900, Alexandre Courbot a écrit :
->> On Fri, Jan 25, 2019 at 10:04 PM Paul Kocialkowski
->> <paul.kocialkowski@bootlin.com> wrote:
->>> Hi,
->>> 
->>>> On Thu, 2019-01-24 at 20:23 +0800, Ayaka wrote:
->>>> Sent from my iPad
->>>> 
->>>>> On Jan 24, 2019, at 6:27 PM, Paul Kocialkowski <paul.kocialkowski@bootlin.com> wrote:
->>>>> 
->>>>> Hi,
->>>>> 
->>>>>> On Thu, 2019-01-10 at 21:32 +0800, ayaka wrote:
->>>>>> I forget a important thing, for the rkvdec and rk hevc decoder, it would
->>>>>> requests cabac table, scaling list, picture parameter set and reference
->>>>>> picture storing in one or various of DMA buffers. I am not talking about
->>>>>> the data been parsed, the decoder would requests a raw data.
->>>>>> 
->>>>>> For the pps and rps, it is possible to reuse the slice header, just let
->>>>>> the decoder know the offset from the bitstream bufer, I would suggest to
->>>>>> add three properties(with sps) for them. But I think we need a method to
->>>>>> mark a OUTPUT side buffer for those aux data.
->>>>> 
->>>>> I'm quite confused about the hardware implementation then. From what
->>>>> you're saying, it seems that it takes the raw bitstream elements rather
->>>>> than parsed elements. Is it really a stateless implementation?
->>>>> 
->>>>> The stateless implementation was designed with the idea that only the
->>>>> raw slice data should be passed in bitstream form to the decoder. For
->>>>> H.264, it seems that some decoders also need the slice header in raw
->>>>> bitstream form (because they take the full slice NAL unit), see the
->>>>> discussions in this thread:
->>>>> media: docs-rst: Document m2m stateless video decoder interface
->>>> 
->>>> Stateless just mean it won’t track the previous result, but I don’t
->>>> think you can define what a date the hardware would need. Even you
->>>> just build a dpb for the decoder, it is still stateless, but parsing
->>>> less or more data from the bitstream doesn’t stop a decoder become a
->>>> stateless decoder.
->>> 
->>> Yes fair enough, the format in which the hardware decoder takes the
->>> bitstream parameters does not make it stateless or stateful per-se.
->>> It's just that stateless decoders should have no particular reason for
->>> parsing the bitstream on their own since the hardware can be designed
->>> with registers for each relevant bitstream element to configure the
->>> decoding pipeline. That's how GPU-based decoder implementations are
->>> implemented (VAAPI/VDPAU/NVDEC, etc).
->>> 
->>> So the format we have agreed on so far for the stateless interface is
->>> to pass parsed elements via v4l2 control structures.
->>> 
->>> If the hardware can only work by parsing the bitstream itself, I'm not
->>> sure what the best solution would be. Reconstructing the bitstream in
->>> the kernel is a pretty bad option, but so is parsing in the kernel or
->>> having the data both in parsed and raw forms. Do you see another
->>> possibility?
->> 
->> Is reconstructing the bitstream so bad? The v4l2 controls provide a
->> generic interface to an encoded format which the driver needs to
->> convert into a sequence that the hardware can understand. Typically
->> this is done by populating hardware-specific structures. Can't we
->> consider that in this specific instance, the hardware-specific
->> structure just happens to be identical to the original bitstream
->> format?
-> 
-> At maximum allowed bitrate for let's say HEVC (940MB/s iirc), yes, it
-Lucky, most of hardware won’t be able to processing such a big buffer.
-General speaking, the register is 24bits for stream length in bytes.
-> would be really really bad. In GStreamer project we have discussed for
-> a while (but have never done anything about) adding the ability through
-> a bitmask to select which part of the stream need to be parsed, as
-> parsing itself was causing some overhead. Maybe similar thing applies,
-> though as per our new design, it's the fourcc that dictate the driver
-> behaviour, we'd need yet another fourcc for drivers that wants the full
-> bitstream (which seems odd if you have already parsed everything, I
-> think this need some clarification).
-> 
->> 
->> I agree that this is not strictly optimal for that particular
->> hardware, but such is the cost of abstractions, and in this specific
->> case I don't believe the cost would be particularly high?
+T24gV2VkLCBKYW4gMzAsIDIwMTkgYXQgMzoyOCBQTSBBeWFrYSA8YXlha2FAc291bGlrLmluZm8+
+IHdyb3RlOgo+Cj4KPgo+IFNlbnQgZnJvbSBteSBpUGFkCj4KPiA+IE9uIEphbiAzMCwgMjAxOSwg
+YXQgMTE6MzUgQU0sIFRvbWFzeiBGaWdhIDx0ZmlnYUBjaHJvbWl1bS5vcmc+IHdyb3RlOgo+ID4K
+PiA+IE9uIFdlZCwgSmFuIDMwLCAyMDE5IGF0IDExOjI5IEFNIEFsZXhhbmRyZSBDb3VyYm90Cj4g
+PiA8YWNvdXJib3RAY2hyb21pdW0ub3JnPiB3cm90ZToKPiA+Pgo+ID4+PiBPbiBXZWQsIEphbiAz
+MCwgMjAxOSBhdCA2OjQxIEFNIE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNh
+PiB3cm90ZToKPiA+Pj4KPiA+Pj4+IExlIG1hcmRpIDI5IGphbnZpZXIgMjAxOSDDoCAxNjo0NCAr
+MDkwMCwgQWxleGFuZHJlIENvdXJib3QgYSDDqWNyaXQgOgo+ID4+Pj4gT24gRnJpLCBKYW4gMjUs
+IDIwMTkgYXQgMTA6MDQgUE0gUGF1bCBLb2NpYWxrb3dza2kKPiA+Pj4+IDxwYXVsLmtvY2lhbGtv
+d3NraUBib290bGluLmNvbT4gd3JvdGU6Cj4gPj4+Pj4gSGksCj4gPj4+Pj4KPiA+Pj4+Pj4gT24g
+VGh1LCAyMDE5LTAxLTI0IGF0IDIwOjIzICswODAwLCBBeWFrYSB3cm90ZToKPiA+Pj4+Pj4gU2Vu
+dCBmcm9tIG15IGlQYWQKPiA+Pj4+Pj4KPiA+Pj4+Pj4+IE9uIEphbiAyNCwgMjAxOSwgYXQgNjoy
+NyBQTSwgUGF1bCBLb2NpYWxrb3dza2kgPHBhdWwua29jaWFsa293c2tpQGJvb3RsaW4uY29tPiB3
+cm90ZToKPiA+Pj4+Pj4+Cj4gPj4+Pj4+PiBIaSwKPiA+Pj4+Pj4+Cj4gPj4+Pj4+Pj4gT24gVGh1
+LCAyMDE5LTAxLTEwIGF0IDIxOjMyICswODAwLCBheWFrYSB3cm90ZToKPiA+Pj4+Pj4+PiBJIGZv
+cmdldCBhIGltcG9ydGFudCB0aGluZywgZm9yIHRoZSBya3ZkZWMgYW5kIHJrIGhldmMgZGVjb2Rl
+ciwgaXQgd291bGQKPiA+Pj4+Pj4+PiByZXF1ZXN0cyBjYWJhYyB0YWJsZSwgc2NhbGluZyBsaXN0
+LCBwaWN0dXJlIHBhcmFtZXRlciBzZXQgYW5kIHJlZmVyZW5jZQo+ID4+Pj4+Pj4+IHBpY3R1cmUg
+c3RvcmluZyBpbiBvbmUgb3IgdmFyaW91cyBvZiBETUEgYnVmZmVycy4gSSBhbSBub3QgdGFsa2lu
+ZyBhYm91dAo+ID4+Pj4+Pj4+IHRoZSBkYXRhIGJlZW4gcGFyc2VkLCB0aGUgZGVjb2RlciB3b3Vs
+ZCByZXF1ZXN0cyBhIHJhdyBkYXRhLgo+ID4+Pj4+Pj4+Cj4gPj4+Pj4+Pj4gRm9yIHRoZSBwcHMg
+YW5kIHJwcywgaXQgaXMgcG9zc2libGUgdG8gcmV1c2UgdGhlIHNsaWNlIGhlYWRlciwganVzdCBs
+ZXQKPiA+Pj4+Pj4+PiB0aGUgZGVjb2RlciBrbm93IHRoZSBvZmZzZXQgZnJvbSB0aGUgYml0c3Ry
+ZWFtIGJ1ZmVyLCBJIHdvdWxkIHN1Z2dlc3QgdG8KPiA+Pj4+Pj4+PiBhZGQgdGhyZWUgcHJvcGVy
+dGllcyh3aXRoIHNwcykgZm9yIHRoZW0uIEJ1dCBJIHRoaW5rIHdlIG5lZWQgYSBtZXRob2QgdG8K
+PiA+Pj4+Pj4+PiBtYXJrIGEgT1VUUFVUIHNpZGUgYnVmZmVyIGZvciB0aG9zZSBhdXggZGF0YS4K
+PiA+Pj4+Pj4+Cj4gPj4+Pj4+PiBJJ20gcXVpdGUgY29uZnVzZWQgYWJvdXQgdGhlIGhhcmR3YXJl
+IGltcGxlbWVudGF0aW9uIHRoZW4uIEZyb20gd2hhdAo+ID4+Pj4+Pj4geW91J3JlIHNheWluZywg
+aXQgc2VlbXMgdGhhdCBpdCB0YWtlcyB0aGUgcmF3IGJpdHN0cmVhbSBlbGVtZW50cyByYXRoZXIK
+PiA+Pj4+Pj4+IHRoYW4gcGFyc2VkIGVsZW1lbnRzLiBJcyBpdCByZWFsbHkgYSBzdGF0ZWxlc3Mg
+aW1wbGVtZW50YXRpb24/Cj4gPj4+Pj4+Pgo+ID4+Pj4+Pj4gVGhlIHN0YXRlbGVzcyBpbXBsZW1l
+bnRhdGlvbiB3YXMgZGVzaWduZWQgd2l0aCB0aGUgaWRlYSB0aGF0IG9ubHkgdGhlCj4gPj4+Pj4+
+PiByYXcgc2xpY2UgZGF0YSBzaG91bGQgYmUgcGFzc2VkIGluIGJpdHN0cmVhbSBmb3JtIHRvIHRo
+ZSBkZWNvZGVyLiBGb3IKPiA+Pj4+Pj4+IEguMjY0LCBpdCBzZWVtcyB0aGF0IHNvbWUgZGVjb2Rl
+cnMgYWxzbyBuZWVkIHRoZSBzbGljZSBoZWFkZXIgaW4gcmF3Cj4gPj4+Pj4+PiBiaXRzdHJlYW0g
+Zm9ybSAoYmVjYXVzZSB0aGV5IHRha2UgdGhlIGZ1bGwgc2xpY2UgTkFMIHVuaXQpLCBzZWUgdGhl
+Cj4gPj4+Pj4+PiBkaXNjdXNzaW9ucyBpbiB0aGlzIHRocmVhZDoKPiA+Pj4+Pj4+IG1lZGlhOiBk
+b2NzLXJzdDogRG9jdW1lbnQgbTJtIHN0YXRlbGVzcyB2aWRlbyBkZWNvZGVyIGludGVyZmFjZQo+
+ID4+Pj4+Pgo+ID4+Pj4+PiBTdGF0ZWxlc3MganVzdCBtZWFuIGl0IHdvbuKAmXQgdHJhY2sgdGhl
+IHByZXZpb3VzIHJlc3VsdCwgYnV0IEkgZG9u4oCZdAo+ID4+Pj4+PiB0aGluayB5b3UgY2FuIGRl
+ZmluZSB3aGF0IGEgZGF0ZSB0aGUgaGFyZHdhcmUgd291bGQgbmVlZC4gRXZlbiB5b3UKPiA+Pj4+
+Pj4ganVzdCBidWlsZCBhIGRwYiBmb3IgdGhlIGRlY29kZXIsIGl0IGlzIHN0aWxsIHN0YXRlbGVz
+cywgYnV0IHBhcnNpbmcKPiA+Pj4+Pj4gbGVzcyBvciBtb3JlIGRhdGEgZnJvbSB0aGUgYml0c3Ry
+ZWFtIGRvZXNu4oCZdCBzdG9wIGEgZGVjb2RlciBiZWNvbWUgYQo+ID4+Pj4+PiBzdGF0ZWxlc3Mg
+ZGVjb2Rlci4KPiA+Pj4+Pgo+ID4+Pj4+IFllcyBmYWlyIGVub3VnaCwgdGhlIGZvcm1hdCBpbiB3
+aGljaCB0aGUgaGFyZHdhcmUgZGVjb2RlciB0YWtlcyB0aGUKPiA+Pj4+PiBiaXRzdHJlYW0gcGFy
+YW1ldGVycyBkb2VzIG5vdCBtYWtlIGl0IHN0YXRlbGVzcyBvciBzdGF0ZWZ1bCBwZXItc2UuCj4g
+Pj4+Pj4gSXQncyBqdXN0IHRoYXQgc3RhdGVsZXNzIGRlY29kZXJzIHNob3VsZCBoYXZlIG5vIHBh
+cnRpY3VsYXIgcmVhc29uIGZvcgo+ID4+Pj4+IHBhcnNpbmcgdGhlIGJpdHN0cmVhbSBvbiB0aGVp
+ciBvd24gc2luY2UgdGhlIGhhcmR3YXJlIGNhbiBiZSBkZXNpZ25lZAo+ID4+Pj4+IHdpdGggcmVn
+aXN0ZXJzIGZvciBlYWNoIHJlbGV2YW50IGJpdHN0cmVhbSBlbGVtZW50IHRvIGNvbmZpZ3VyZSB0
+aGUKPiA+Pj4+PiBkZWNvZGluZyBwaXBlbGluZS4gVGhhdCdzIGhvdyBHUFUtYmFzZWQgZGVjb2Rl
+ciBpbXBsZW1lbnRhdGlvbnMgYXJlCj4gPj4+Pj4gaW1wbGVtZW50ZWQgKFZBQVBJL1ZEUEFVL05W
+REVDLCBldGMpLgo+ID4+Pj4+Cj4gPj4+Pj4gU28gdGhlIGZvcm1hdCB3ZSBoYXZlIGFncmVlZCBv
+biBzbyBmYXIgZm9yIHRoZSBzdGF0ZWxlc3MgaW50ZXJmYWNlIGlzCj4gPj4+Pj4gdG8gcGFzcyBw
+YXJzZWQgZWxlbWVudHMgdmlhIHY0bDIgY29udHJvbCBzdHJ1Y3R1cmVzLgo+ID4+Pj4+Cj4gPj4+
+Pj4gSWYgdGhlIGhhcmR3YXJlIGNhbiBvbmx5IHdvcmsgYnkgcGFyc2luZyB0aGUgYml0c3RyZWFt
+IGl0c2VsZiwgSSdtIG5vdAo+ID4+Pj4+IHN1cmUgd2hhdCB0aGUgYmVzdCBzb2x1dGlvbiB3b3Vs
+ZCBiZS4gUmVjb25zdHJ1Y3RpbmcgdGhlIGJpdHN0cmVhbSBpbgo+ID4+Pj4+IHRoZSBrZXJuZWwg
+aXMgYSBwcmV0dHkgYmFkIG9wdGlvbiwgYnV0IHNvIGlzIHBhcnNpbmcgaW4gdGhlIGtlcm5lbCBv
+cgo+ID4+Pj4+IGhhdmluZyB0aGUgZGF0YSBib3RoIGluIHBhcnNlZCBhbmQgcmF3IGZvcm1zLiBE
+byB5b3Ugc2VlIGFub3RoZXIKPiA+Pj4+PiBwb3NzaWJpbGl0eT8KPiA+Pj4+Cj4gPj4+PiBJcyBy
+ZWNvbnN0cnVjdGluZyB0aGUgYml0c3RyZWFtIHNvIGJhZD8gVGhlIHY0bDIgY29udHJvbHMgcHJv
+dmlkZSBhCj4gPj4+PiBnZW5lcmljIGludGVyZmFjZSB0byBhbiBlbmNvZGVkIGZvcm1hdCB3aGlj
+aCB0aGUgZHJpdmVyIG5lZWRzIHRvCj4gPj4+PiBjb252ZXJ0IGludG8gYSBzZXF1ZW5jZSB0aGF0
+IHRoZSBoYXJkd2FyZSBjYW4gdW5kZXJzdGFuZC4gVHlwaWNhbGx5Cj4gPj4+PiB0aGlzIGlzIGRv
+bmUgYnkgcG9wdWxhdGluZyBoYXJkd2FyZS1zcGVjaWZpYyBzdHJ1Y3R1cmVzLiBDYW4ndCB3ZQo+
+ID4+Pj4gY29uc2lkZXIgdGhhdCBpbiB0aGlzIHNwZWNpZmljIGluc3RhbmNlLCB0aGUgaGFyZHdh
+cmUtc3BlY2lmaWMKPiA+Pj4+IHN0cnVjdHVyZSBqdXN0IGhhcHBlbnMgdG8gYmUgaWRlbnRpY2Fs
+IHRvIHRoZSBvcmlnaW5hbCBiaXRzdHJlYW0KPiA+Pj4+IGZvcm1hdD8KPiA+Pj4KPiA+Pj4gQXQg
+bWF4aW11bSBhbGxvd2VkIGJpdHJhdGUgZm9yIGxldCdzIHNheSBIRVZDICg5NDBNQi9zIGlpcmMp
+LCB5ZXMsIGl0Cj4gPj4+IHdvdWxkIGJlIHJlYWxseSByZWFsbHkgYmFkLiBJbiBHU3RyZWFtZXIg
+cHJvamVjdCB3ZSBoYXZlIGRpc2N1c3NlZCBmb3IKPiA+Pj4gYSB3aGlsZSAoYnV0IGhhdmUgbmV2
+ZXIgZG9uZSBhbnl0aGluZyBhYm91dCkgYWRkaW5nIHRoZSBhYmlsaXR5IHRocm91Z2gKPiA+Pj4g
+YSBiaXRtYXNrIHRvIHNlbGVjdCB3aGljaCBwYXJ0IG9mIHRoZSBzdHJlYW0gbmVlZCB0byBiZSBw
+YXJzZWQsIGFzCj4gPj4+IHBhcnNpbmcgaXRzZWxmIHdhcyBjYXVzaW5nIHNvbWUgb3ZlcmhlYWQu
+IE1heWJlIHNpbWlsYXIgdGhpbmcgYXBwbGllcywKPiA+Pj4gdGhvdWdoIGFzIHBlciBvdXIgbmV3
+IGRlc2lnbiwgaXQncyB0aGUgZm91cmNjIHRoYXQgZGljdGF0ZSB0aGUgZHJpdmVyCj4gPj4+IGJl
+aGF2aW91ciwgd2UnZCBuZWVkIHlldCBhbm90aGVyIGZvdXJjYyBmb3IgZHJpdmVycyB0aGF0IHdh
+bnRzIHRoZSBmdWxsCj4gPj4+IGJpdHN0cmVhbSAod2hpY2ggc2VlbXMgb2RkIGlmIHlvdSBoYXZl
+IGFscmVhZHkgcGFyc2VkIGV2ZXJ5dGhpbmcsIEkKPiA+Pj4gdGhpbmsgdGhpcyBuZWVkIHNvbWUg
+Y2xhcmlmaWNhdGlvbikuCj4gPj4KPiA+PiBOb3RlIHRoYXQgSSBhbSBub3QgcHJvcG9zaW5nIHRv
+IHJlYnVpbGQgdGhlICplbnRpcmUqIGJpdHN0cmVhbQo+ID4+IGluLWtlcm5lbC4gV2hhdCBJIGFt
+IHNheWluZyBpcyB0aGF0IGlmIHRoZSBoYXJkd2FyZSBpbnRlcnByZXRzIHNvbWUKPiA+PiBzdHJ1
+Y3R1cmVzIChsaWtlIFNQUy9QUFMpIGluIHRoZWlyIHJhdyBmb3JtYXQsIHRoaXMgcmF3IGZvcm1h
+dCBjb3VsZAo+ID4+IGJlIHJlY29uc3RydWN0ZWQgZnJvbSB0aGUgc3RydWN0dXJlcyBwYXNzZWQg
+YnkgdXNlcnNwYWNlIGF0IG5lZ2xpZ2libGUKPiA+PiBjb3N0LiBTdWNoIG1hbmlwdWxhdGlvbiB3
+b3VsZCBvbmx5IGhhcHBlbiBvbiBhIHNtYWxsIGFtb3VudCBvZiBkYXRhLgo+ID4+Cj4gPj4gRXhw
+b3NpbmcgZmluZXItZ3JhaW5lZCBkcml2ZXIgcmVxdWlyZW1lbnRzIHRocm91Z2ggYSBiaXRtYXNr
+IG1heQo+ID4+IGRlc2VydmUgbW9yZSBleHBsb3JpbmcuIE1heWJlIHdlIGNvdWxkIGVuZCB3aXRo
+IGEgc3BlY3RydW0gb2YKPiA+PiBjYXBhYmlsaXRpZXMgdGhhdCB3b3VsZCBhbGxvdyB1cyB0byBj
+b3ZlciB0aGUgcmFuZ2UgZnJvbSBmdWxseQo+ID4+IHN0YXRlbGVzcyB0byBmdWxseSBzdGF0ZWZ1
+bCBJUHMgbW9yZSBzbW9vdGhseS4gUmlnaHQgbm93IHdlIGhhdmUgdHdvCj4gPj4gc3BlY2lmaWNh
+dGlvbnMgdGhhdCBvbmx5IGNvbnNpZGVyIHRoZSBleHRyZW1lcyBvZiB0aGF0IHJhbmdlLgo+ID4K
+PiA+IEkgZ2F2ZSBpdCBhIGJpdCBtb3JlIHRob3VnaHQgYW5kIGlmIHdlIGNvbWJpbmUgd2hhdCBO
+aWNvbGFzIHN1Z2dlc3RlZAo+ID4gYWJvdXQgdGhlIGJpdG1hc2sgY29udHJvbCB3aXRoIHRoZSB1
+c2Vyc3BhY2UgcHJvdmlkaW5nIHRoZSBmdWxsCj4gPiBiaXRzdHJlYW0gaW4gdGhlIE9VVFBVVCBi
+dWZmZXJzLCBzcGxpdCBpbnRvIHNvbWUgbG9naWNhbCB1bml0cyBhbmQKPiA+ICJ0YWdnZWQiIHdp
+dGggdGhlaXIgdHlwZSAoZS5nLiBTUFMsIFBQUywgc2xpY2UsIGV0Yy4pLCB3ZSBjb3VsZAo+ID4g
+cG90ZW50aWFsbHkgZ2V0IGFuIGludGVyZmFjZSB0aGF0IHdvdWxkIHdvcmsgZm9yIGFueSBraW5k
+IG9mIGRlY29kZXIgSQo+ID4gY2FuIHRoaW5rIG9mLCBhY3R1YWxseSBlbGltaW5hdGluZyB0aGUg
+Ym91bmRhcnkgYmV0d2VlbiBzdGF0ZWZ1bCBhbmQKPiA+IHN0YXRlbGVzcyBkZWNvZGVycy4KPiBJ
+IGFncmVlIHdpdGggdGhpcyBpZGVhLCB0aGF0IGlzIHdoYXQgSSB3YW50IGNhbGxpbmcgbWVtb3J5
+IHJlZ2lvbiBkZXNjcmlwdGlvbiB3aGlsZSBJIGFtIHN0aWxsIHN0cnVnZ2xpbmcgd2l0aCB1c2Vy
+c3BhY2UgdG8gcG9zdCBteSBkcml2ZXIgZGVtby4KPiA+Cj4gPiBGb3IgZXhhbXBsZSwgYSBmdWxs
+eSBzdGF0ZWZ1bCBkZWNvZGVyIHdvdWxkIGhhdmUgdGhlIGJpdG1hc2sgY29udHJvbAo+ID4gc2V0
+IHRvIDAgYW5kIGFjY2VwdCBkYXRhIGZyb20gYWxsIHRoZSBPVVRQVVQgYnVmZmVycyBhcyB0aGV5
+IGNvbWUuIEEKPiA+IGRlY29kZXIgdGhhdCBkb2Vzbid0IGRvIGFueSBwYXJzaW5nIG9uIGl0cyBv
+d24gd291bGQgaGF2ZSBhbGwgdGhlCj4gPiB2YWxpZCBiaXRzIGluIHRoZSBiaXRtYXNrIHNldCBh
+bmQgaWdub3JlIHRoZSBkYXRhIGluIE9VVFBVVCBidWZmZXJzCj4gPiB0YWdnZWQgYXMgYW55IGtp
+bmQgb2YgbWV0YWRhdGEuIEFuZCB0aGVuLCB3ZSBjb3VsZCBoYXZlIGFueSBjYXNlcyBpbgo+ID4g
+YmV0d2VlbiwgaW5jbHVkaW5nIHN0YXRlZnVsIGRlY29kZXJzIHdoaWNoIGp1c3QgY2FuJ3QgcGFy
+c2UgdGhlIHN0cmVhbQo+ID4gb24gdGhlaXIgb3duLCBidXQgc3RpbGwgbWFuYWdlIGFueXRoaW5n
+IGVsc2UgdGhlbXNlbHZlcywgb3Igc3RhdGVsZXNzCj4gPiBvbmVzIHdoaWNoIGNhbiBwYXJzZSBw
+YXJ0cyBvZiB0aGUgc3RyZWFtLCBsaWtlIHRoZSByazMzOTkgdmRlYyBjYW4KPiA+IHBhcnNlIHRo
+ZSBILjI2NCBzbGljZSBoZWFkZXJzIG9uIGl0cyBvd24uCj4gPgo+IEFjdHVhbGx5IG5vdCwgdGhl
+IHJrdmRlYyBhbmQgcmtoZXZjIGNhbiBwYXJzZSBtb3N0IGJ1dCBub3QgYWxsIHN5bnRheCBzZWN0
+aW9ucy4KPiBCZXNpZGVzIHRoZSB2cDkgZGVjb2RlciBvZiBya3ZkZWMgd29u4oCZdCBwYXJzZSBt
+b3N0IG9mIHRoZSBzeW50YXguCj4KPiBJIHRhbGtlZCB0byBzb21lIHJvY2tjaGlwIHN0YWZmIGFi
+b3V0IHRoZSBwZXJmb3JtYW5jZSBwcm9ibGVtIG9mIHJlY29uc3RydWN0aW9uIGJpdHN0cmVhbSBh
+ZnRlciB5ZXN0ZXJkYXkgYXJndWluZyB3aXRoIHRmaWdhIGF0IElSQyB5ZXN0ZXJkYXkuIEFsdGhv
+dWdoIDFtcyBsb29rcyBzbWFsbCB0byB0aG9zZSBkZWNvZGVyIHdoaWNoIGNhbiBkZWNvZGUgYSBw
+aWN0dXJlIG9mIGEgVUhEIDRLIEhFVkMgdmlkZW9zIGluIDltcywgaXQgaXMgZW5vdWdoIGZvciA2
+MGZwcy4gQnV0IGhvdyBhYm91dCBhIGhpZ2hlciBmcmFtZSByYXRlIGxpa2UgMTIwZnBzIG9yIDI0
+MGZwcyBhbmQgd2hlbiBpdCBjb21lcyB0byA4SyB3aGljaCBpcyB1c2VkIGluIEphcGFuIGJyb2Fk
+Y2FzdC4KCjEgbXMgZm9yIGEgNTAwIE1IeiBDUFUgKHdoaWNoIGlzIHF1aXRlIHNsb3cgdGhlc2Ug
+ZGF5cykgaXMgNTAwawpjeWNsZXMuIFdlIGRvbid0IGhhdmUgdG8gcmVjb25zdHJ1Y3QgdGhlIHdo
+b2xlIGJpdHN0cmVhbSwganVzdCB0aGUKcGFyc2VkIG1ldGFkYXRhIGFuZCBhbHNvIHdlIGRvbid0
+IGdldCBhIG5ldyBQUFMgb3IgU1BTIGV2ZXJ5IGZyYW1lLgpOb3Qgc3VyZSB3aGVyZSB5b3UgaGF2
+ZSB0aGlzIDEgbXMgZnJvbS4gTW9zdCBvZiB0aGUgZGlmZmVyZW5jZSBiZXR3ZWVuCm91ciBzdHJ1
+Y3R1cmVzIGFuZCB0aGUgYml0c3RyZWFtIGlzIHRoYXQgdGhlIGxhdHRlciBpcyBwYWNrZWQgYW5k
+CmNvdWxkIGJlIHZhcmlhYmxlIGxlbmd0aC4KCldlIGFjdHVhbGx5IGhhdmUgc29tZSBzYW1wbGUg
+Yml0c3RyZWFtIGFzc2VtYmx5IGNvZGUgZm9yIHRoZSByb2NrY2hpcCBlbmNvZGVyOgoKaHR0cHM6
+Ly9jaHJvbWl1bS5nb29nbGVzb3VyY2UuY29tL2Nocm9taXVtb3MvdGhpcmRfcGFydHkvbGlidjRs
+cGx1Z2lucy8rLzVlNjAzNDI1ODE0NmFmNmJlOTczZmI2YTViYjZiOWQ2ZTc0ODk0MzcvbGlidjRs
+LXJvY2tjaGlwX3YyL2xpYnZlcHUvaDI2NGUvaDI2NGUuYyMxNDgKaHR0cHM6Ly9jaHJvbWl1bS5n
+b29nbGVzb3VyY2UuY29tL2Nocm9taXVtb3MvdGhpcmRfcGFydHkvbGlidjRscGx1Z2lucy8rLzVl
+NjAzNDI1ODE0NmFmNmJlOTczZmI2YTViYjZiOWQ2ZTc0ODk0MzcvbGlidjRsLXJvY2tjaGlwX3Yy
+L2xpYnZlcHUvc3RyZWFtcy5jIzM2CgpEaXNhc3NlbWJsaW5nIHRoZSBzdHJlYW1fcHV0X2JpdHMo
+KSBnaXZlcyAzNiB0aHVtYjIgaW5zdHJ1Y3Rpb25zLAppbmNsdWRpbmcgMjMgZm9yIHRoZSBsb29w
+IGZvciBlYWNoIGJ5dGUgdGhhdCBpcyB3cml0dGVuLgpzdHJlYW1fd3JpdGVfdWUoKSBpcyBhIGJp
+dCBtb3JlIGNvbXBsaWNhdGVkLCBidXQgaW4gdGhlIHdvcnN0IGNhc2UgaXQKZW5kcyB1cCB3aXRo
+IDQgY2FsbHMgdG8gc3RyZWFtX3B1dF9iaXRzKCksIGVhY2ggYXQgbW9zdCBzcGFubmluZyA0CmJ5
+dGVzIGZvciBzaW1wbGljaXR5LgoKTGV0J3MgY291bnQgdGhlIG9wZXJhdGlvbnMgZm9yIFNQUyB0
+aGVuOgogKDEpIHN0cmVhbV9wdXRfYml0cygpIHNwYW5uaW5nIDEgYnl0ZTogMzMgdGltZXMKICgy
+KSBzdHJlYW1fcHV0X2JpdHMoKSBzcGFubmluZyB1cCB0byAzIGJ5dGVzOiA0IHRpbWVzCiAoMykg
+c3RyZWFtX3dyaXRlX3VlKCkgdXAgdG8gMzEgYml0czogMTkgdGltZXMKCkFkZGluZyBpdCB0b2dl
+dGhlcjoKKDEpIDMzICogMzYgKwooMikgNCAqICgzNiArIDIgKiAyMykgKwooMykgMTkgKiAoNCAq
+ICgzNiArIDMgKiAyMykpID0KCjExODggKyAzMjggKyA3OTgwID0gOTQ5NiB+PSAxMGsgaW5zdHJ1
+Y3Rpb25zCgpUaGUgY29kZSBhYm92ZSBkb2Vzbid0IHNlZW0gdG8gY29udGFpbiBhbnkgZXhwZW5z
+aXZlIGluc3RydWN0aW9ucywKbGlrZSBkaXZpc2lvbiwgc28gZm9yIGEgbW9kZXJuIHBpcGVsaW5l
+ZCBvdXQgb2Ygb3JkZXIgY29yZSAoZS5nLiBBNTMpLAppdCBjb3VsZCBiZSBzYWZlIHRvIGFzc3Vt
+ZSAxIGluc3RydWN0aW9uIHBlciBjeWNsZS4gQXQgNTAwIE1IeiB0aGF0CmdpdmVzIHlvdSAyMCB1
+c2Vjcy4KClNQUyBpcyB0aGUgbW9zdCBjb21wbGV4IGhlYWRlciBhbmQgZm9yIEguMjY0IHdlIGp1
+c3QgZG8gUFBTIGFuZCBzb21lCnNsaWNlIGhlYWRlcnMuIExldCdzIHJvdW5kIGl0IHVwIGEgYml0
+IGFuZCB3ZSBjb3VsZCBoYXZlIGFyb3VuZCAxMDAKdXNlY3MgZm9yIHRoZSBjb21wbGV0ZSBmcmFt
+ZSBtZXRhZGF0YS4KCj4KPiBJIHdvdWxkIGJyaW5nIG1vcmUgZGV0YWlsIGluIHRoZSBGT1NERU0g
+MjAxOSwgSSBtYXkgc3RheSBhdCBncmFwaGljcyBkZXZyb29tIGF0IFNhdHVyZGF5Lgo+ID4gVGhh
+dCBjb3VsZCBwb3RlbnRpYWxseSBsZXQgdXMgY29tcGxldGVseSBlbGltaW5hdGUgdGhlIGRpc3Rp
+bmN0aW9uCj4gPiBiZXR3ZWVuIHRoZSBzdGF0ZWZ1bCBhbmQgc3RhdGVsZXNzIGludGVyZmFjZXMg
+YW5kIGp1c3QgaGF2ZSBvbmUgdGhhdAo+ID4gY292ZXJzIGJvdGguCj4gPgo+ID4gVGhvdWdodHM/
+CgpBbnkgdGhvdWdodHMgb24gbXkgcHJvcG9zYWwgdG8gbWFrZSB0aGUgaW50ZXJmYWNlIG1vcmUg
+ZmxleGlibGU/IEFueQpzcGVjaWZpYyBleGFtcGxlcyBvZiBpc3N1ZXMgdGhhdCB3ZSBjb3VsZCBl
+bmNvdW50ZXIgdGhhdCB3b3VsZCBwcmV2ZW50Cml0IGZyb20gd29ya2luZyBlZmZpY2llbnRseSB3
+aXRoIFJvY2tjaGlwIChvciBvdGhlcikgaGFyZHdhcmU/CgpCZXN0IHJlZ2FyZHMsClRvbWFzegoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
+a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
