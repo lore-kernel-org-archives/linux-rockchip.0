@@ -1,200 +1,83 @@
-From: Mike Rapoport <rppt@linux.ibm.com>
-Subject: Re: [PATCHv2 1/9] mm: Introduce new vm_insert_range and
- vm_insert_range_buggy API
-Date: Thu, 31 Jan 2019 10:38:42 +0200
-Message-ID: <20190131083842.GE28876@rapoport-lnx>
-References: <20190131030812.GA2174@jordon-HP-15-Notebook-PC>
+From: Tony Xie <tony.xie@rock-chips.com>
+Subject: [PATCH v7 0/6] support a new type of PMIC,
+ including two chips(rk817 and rk809)
+Date: Thu, 31 Jan 2019 04:08:12 -0500
+Message-ID: <20190131090818.17430-1-tony.xie@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190131030812.GA2174@jordon-HP-15-Notebook-PC>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Souptick Joarder <jrdr.linux@gmail.com>
-Cc: akpm@linux-foundation.org, willy@infradead.org, mhocko@suse.com, kirill.shutemov@linux.intel.com, vbabka@suse.cz, riel@surriel.com, sfr@canb.auug.org.au, rppt@linux.vnet.ibm.com, peterz@infradead.org, linux@armlinux.org.uk, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, keescook@chromium.org, m.szyprowski@samsung.com, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, kyungmin.park@samsung.com, mchehab@kernel.org, boris.ostrovsky@oracle.com, jgross@suse.com, linux-kernel@vger.kernel.org, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux1394-devel@lists.sourceforge.net, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, xen-de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: tony.xie@rock-chips.com
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jan 31, 2019 at 08:38:12AM +0530, Souptick Joarder wrote:
-> Previouly drivers have their own way of mapping range of
-> kernel pages/memory into user vma and this was done by
-> invoking vm_insert_page() within a loop.
-> 
-> As this pattern is common across different drivers, it can
-> be generalized by creating new functions and use it across
-> the drivers.
-> 
-> vm_insert_range() is the API which could be used to mapped
-> kernel memory/pages in drivers which has considered vm_pgoff
-> 
-> vm_insert_range_buggy() is the API which could be used to map
-> range of kernel memory/pages in drivers which has not considered
-> vm_pgoff. vm_pgoff is passed default as 0 for those drivers.
-> 
-> We _could_ then at a later "fix" these drivers which are using
-> vm_insert_range_buggy() to behave according to the normal vm_pgoff
-> offsetting simply by removing the _buggy suffix on the function
-> name and if that causes regressions, it gives us an easy way to revert.
-> 
-> Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
-> Suggested-by: Russell King <linux@armlinux.org.uk>
-> Suggested-by: Matthew Wilcox <willy@infradead.org>
-> ---
->  include/linux/mm.h |  4 +++
->  mm/memory.c        | 81 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
->  mm/nommu.c         | 14 ++++++++++
->  3 files changed, 99 insertions(+)
-> 
-> diff --git a/include/linux/mm.h b/include/linux/mm.h
-> index 80bb640..25752b0 100644
-> --- a/include/linux/mm.h
-> +++ b/include/linux/mm.h
-> @@ -2565,6 +2565,10 @@ unsigned long change_prot_numa(struct vm_area_struct *vma,
->  int remap_pfn_range(struct vm_area_struct *, unsigned long addr,
->  			unsigned long pfn, unsigned long size, pgprot_t);
->  int vm_insert_page(struct vm_area_struct *, unsigned long addr, struct page *);
-> +int vm_insert_range(struct vm_area_struct *vma, struct page **pages,
-> +				unsigned long num);
-> +int vm_insert_range_buggy(struct vm_area_struct *vma, struct page **pages,
-> +				unsigned long num);
->  vm_fault_t vmf_insert_pfn(struct vm_area_struct *vma, unsigned long addr,
->  			unsigned long pfn);
->  vm_fault_t vmf_insert_pfn_prot(struct vm_area_struct *vma, unsigned long addr,
-> diff --git a/mm/memory.c b/mm/memory.c
-> index e11ca9d..0a4bf57 100644
-> --- a/mm/memory.c
-> +++ b/mm/memory.c
-> @@ -1520,6 +1520,87 @@ int vm_insert_page(struct vm_area_struct *vma, unsigned long addr,
->  }
->  EXPORT_SYMBOL(vm_insert_page);
-> 
-> +/**
-> + * __vm_insert_range - insert range of kernel pages into user vma
-> + * @vma: user vma to map to
-> + * @pages: pointer to array of source kernel pages
-> + * @num: number of pages in page array
-> + * @offset: user's requested vm_pgoff
-> + *
-> + * This allows drivers to insert range of kernel pages they've allocated
-> + * into a user vma.
-> + *
-> + * If we fail to insert any page into the vma, the function will return
-> + * immediately leaving any previously inserted pages present.  Callers
-> + * from the mmap handler may immediately return the error as their caller
-> + * will destroy the vma, removing any successfully inserted pages. Other
-> + * callers should make their own arrangements for calling unmap_region().
-> + *
-> + * Context: Process context.
-> + * Return: 0 on success and error code otherwise.
-> + */
-> +static int __vm_insert_range(struct vm_area_struct *vma, struct page **pages,
-> +				unsigned long num, unsigned long offset)
-> +{
-> +	unsigned long count = vma_pages(vma);
-> +	unsigned long uaddr = vma->vm_start;
-> +	int ret, i;
-> +
-> +	/* Fail if the user requested offset is beyond the end of the object */
-> +	if (offset > num)
-> +		return -ENXIO;
-> +
-> +	/* Fail if the user requested size exceeds available object size */
-> +	if (count > num - offset)
-> +		return -ENXIO;
-> +
-> +	for (i = 0; i < count; i++) {
-> +		ret = vm_insert_page(vma, uaddr, pages[offset + i]);
-> +		if (ret < 0)
-> +			return ret;
-> +		uaddr += PAGE_SIZE;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +/**
-> + * vm_insert_range - insert range of kernel pages starts with non zero offset
-> + * @vma: user vma to map to
-> + * @pages: pointer to array of source kernel pages
-> + * @num: number of pages in page array
-> + *
-> + * Maps an object consisting of `num' `pages', catering for the user's
-> + * requested vm_pgoff
-> + *
+Most of functions and registers of the rk817 and rk808 are the same,
+so they can share allmost all codes.
 
-The elaborate description you've added to __vm_insert_range() is better put
-here, as this is the "public" function.
+Their specifications are as follows:
+  1) The RK809 and RK809 consist of 5 DCDCs, 9 LDOs and have the same
+registers
+     for these components except dcdc5.
+  2) The dcdc5 is a boost dcdc for RK817 and is a buck for RK809.
+  3) The RK817 has one switch but The Rk809 has two.
 
-> + * Context: Process context. Called by mmap handlers.
-> + * Return: 0 on success and error code otherwise.
-> + */
-> +int vm_insert_range(struct vm_area_struct *vma, struct page **pages,
-> +				unsigned long num)
-> +{
-> +	return __vm_insert_range(vma, pages, num, vma->vm_pgoff);
-> +}
-> +EXPORT_SYMBOL(vm_insert_range);
-> +
-> +/**
-> + * vm_insert_range_buggy - insert range of kernel pages starts with zero offset
-> + * @vma: user vma to map to
-> + * @pages: pointer to array of source kernel pages
-> + * @num: number of pages in page array
-> + *
-> + * Maps a set of pages, always starting at page[0]
+Changes in V2:
+1. initialize the pm_pwroff_fn to NULL. 
+2. use EXPORT_SYMBOL_GPL to export pm_power_off_prepare.
+3. change patch 2/3/4/5 subjects. 
 
-Here I'd add something like:
+Changes in V3
+1. change patch 4 subjects
+2. replace pr_ with dev_ for printing in patch 2
+3. modify switch1 and switch2 configs in patch 2
+4. explain gpio information for rk809 and rk817 in patch 4
 
-Similar to vm_insert_range(), except that it explicitly sets @vm_pgoff to
-0. This function is intended for the drivers that did not consider
-@vm_pgoff.
+Changes in V4:
+1. modify some codes for patch 2 and patch 5 according to comments 
+2. add reviewer mail lists for patch 3 and 4
 
-> vm_insert_range_buggy() is the API which could be used to map
-> range of kernel memory/pages in drivers which has not considered
-> vm_pgoff. vm_pgoff is passed default as 0 for those drivers.
+Changes in V5:
+modify some codes for patch 1 according to reveiw comments for v3.
+ 1) remove the pm_power_off_prepare() and replace with shutdown
+call-back from syscore
+ 2) move the macro REGMAP_IRQ_M into the regmap.h and rename it
+REGMAP_IRQ_LINE
+ 3) make some dev_warn() log clear
 
-> + *
-> + * Context: Process context. Called by mmap handlers.
-> + * Return: 0 on success and error code otherwise.
-> + */
-> +int vm_insert_range_buggy(struct vm_area_struct *vma, struct page **pages,
-> +				unsigned long num)
-> +{
-> +	return __vm_insert_range(vma, pages, num, 0);
-> +}
-> +EXPORT_SYMBOL(vm_insert_range_buggy);
-> +
->  static vm_fault_t insert_pfn(struct vm_area_struct *vma, unsigned long addr,
->  			pfn_t pfn, pgprot_t prot, bool mkwrite)
->  {
-> diff --git a/mm/nommu.c b/mm/nommu.c
-> index 749276b..21d101e 100644
-> --- a/mm/nommu.c
-> +++ b/mm/nommu.c
-> @@ -473,6 +473,20 @@ int vm_insert_page(struct vm_area_struct *vma, unsigned long addr,
->  }
->  EXPORT_SYMBOL(vm_insert_page);
-> 
-> +int vm_insert_range(struct vm_area_struct *vma, struct page **pages,
-> +			unsigned long num)
-> +{
-> +	return -EINVAL;
-> +}
-> +EXPORT_SYMBOL(vm_insert_range);
-> +
-> +int vm_insert_range_buggy(struct vm_area_struct *vma, struct page **pages,
-> +				unsigned long num)
-> +{
-> +	return -EINVAL;
-> +}
-> +EXPORT_SYMBOL(vm_insert_range_buggy);
-> +
->  /*
->   *  sys_brk() for the most part doesn't need the global kernel
->   *  lock, except when an application is doing something nasty
-> -- 
-> 1.9.1
-> 
+Changes in V6:
+modify some codes according to reveiw comments for v5.
+
+Changes in V7:
+modify some codes for patch 2 according to reveiw comments.
+
+Tony Xie (6):
+  mfd: rk808: remove the id_table
+  mfd: rk808: Add RK817 and RK809 support
+  regulator: rk808: add RK809 and RK817 support.
+  dt-bindings: mfd: rk808: Add binding information for RK809 and RK817.
+  rtc: rk808: add RK809 and RK817 support.
+  clk: RK808: add RK809 and RK817 support.
+
+ .../devicetree/bindings/mfd/rk808.txt         |  44 ++
+ drivers/clk/Kconfig                           |   9 +-
+ drivers/clk/clk-rk808.c                       |  64 +-
+ drivers/mfd/Kconfig                           |   6 +-
+ drivers/mfd/rk808.c                           | 199 +++++-
+ drivers/regulator/Kconfig                     |   4 +-
+ drivers/regulator/rk808-regulator.c           | 657 +++++++++++++++++-
+ drivers/rtc/Kconfig                           |   4 +-
+ drivers/rtc/rtc-rk808.c                       |  68 +-
+ include/linux/mfd/rk808.h                     | 175 +++++
+ 10 files changed, 1164 insertions(+), 66 deletions(-)
 
 -- 
-Sincerely yours,
-Mike.
+2.17.1
