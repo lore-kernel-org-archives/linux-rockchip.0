@@ -1,77 +1,51 @@
-From: Tomi Valkeinen <tomi.valkeinen@ti.com>
-Subject: Re: [PATCH v7 0/4] drm: add support for Cadence MHDP DPI/DP bridge.
-Date: Thu, 31 Jan 2019 14:08:18 +0200
-Message-ID: <0f11a4d8-d576-5af8-b7f4-afe3ff26678f@ti.com>
-References: <1548846209-16406-1-git-send-email-dkos@cadence.com>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Subject: Re: [PATCHv2 1/9] mm: Introduce new vm_insert_range and
+ vm_insert_range_buggy API
+Date: Thu, 31 Jan 2019 18:01:52 +0530
+Message-ID: <CAFqt6zbxyMB3VCzbWo1rPdfKXLVTNx+RY0=guD5CRxD37gJzsA@mail.gmail.com>
+References: <20190131030812.GA2174@jordon-HP-15-Notebook-PC> <1701923.z6LKAITQJA@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1548846209-16406-1-git-send-email-dkos@cadence.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Damian Kos <dkos@cadence.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: jbergsagel@ti.com, rafalc@cadence.com, quentin.schulz@bootlin.com, piotrs@cadence.com
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1701923.z6LKAITQJA@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Andrew Morton <akpm@linux-foundation.org>, Matthew Wilcox <willy@infradead.org>, Michal Hocko <mhocko@suse.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, vbabka@suse.cz, Rik van Riel <riel@surriel.com>, Stephen Rothwell <sfr@canb.auug.org.au>, rppt@linux.vnet.ibm.com, Peter Zijlstra <peterz@infradead.org>, Russell King - ARM Linux <linux@armlinux.org.uk>, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, Kees Cook <keescook@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, Kyungmin Park <kyungmin.park@samsung.com>, mchehab@kernel.org, Boris Ostrovsky <boris.ostrovsky@oracle.com>, Juergen
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiAzMC8wMS8yMDE5IDEzOjAzLCBEYW1pYW4gS29zIHdyb3RlOgo+IEhlbGxvIQo+IAo+
-IFRoaXMgaXMgdGhlIHNlcmllcyBvZiBwYXRjaGVzIHRoYXQgd2lsbCBhZGQgc3VwcG9ydCBmb3Ig
-dGhlIENhZGVuY2UncyBEUEkvRFAKPiBicmlkZ2UuIFBsZWFzZSBub3RlIHRoYXQgdGhpcyBpcyBh
-IHByZWxpbWluYXJ5IHZlcnNpb24gb2YgdGhlIGRyaXZlciBhbmQgdGhlcmUKPiB3aWxsIGJlIG1v
-cmUgcGF0Y2hlcyBpbiB0aGUgZnV0dXJlIHdpdGggdXBkYXRlcywgZml4ZXMgYW5kIGltcHJvdmVt
-ZW50cy4KPiBQbGVhc2Uga2VlcCB0aGF0IGluIG1pbmQgd2hlbiBsb29raW5nIGF0IEZJWE1FL1RP
-RE8vWFhYIGNvbW1lbnRzLgo+IAo+IEluaXRpYWxseSwgTUhEUCBkcml2ZXIgd2FzIGRldmVsb3Bl
-ZCBhcyBhIERSTSBicmlkZ2UgZHJpdmVyIGFuZCB3YXMgcGxhbmVkIHRvCj4gYmUgcGxhY2VkIGlu
-IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvbWhkcC5jLiAgSG93ZXZlciwgdGhlcmUgd2FzIGFscmVh
-ZHkKPiBhIGRyaXZlciBmb3IgQ2FkZW5jZSdzIERQIGNvbnRyb2xsZXIgZGV2ZWxvcGVkIGJ5IFJv
-Y2tDaGlwLCBidXQgdGhhdCBkcml2ZXIKPiB1c2VzIHRoZSBkaWZmZXJlbnQgRFJNIGZyYW1ld29y
-ayBhbmQgbG9va3MgbGlrZSBhIHBhcnQgb2YgYSBiaWdnZXIgc3lzdGVtLgo+IEJvdGggY29udHJv
-bGxlcnMgKGluY2x1ZGluZyBmaXJtd2FyZSkgYXJlIHF1aXRlIGRpZmZlcmVudCBpbnRlcm5hbGx5
-Cj4gKE1TVC9GRUMvRFNDIHN1cHBvcnQsIGxpbmsgdHJhaW5pbmcgZG9uZSBieSBkcml2ZXIsIGFk
-ZGl0aW9uYWwgY29tbWFuZHMsIElSUSdzCj4gZXRjLikgYnV0IHRoZXkgaGF2ZSBzaW1pbGFyIHJl
-Z2lzdGVyIG1hcCwgZXhjZXB0IGZvciBGcmFtZXIvU3RyZWFtZXIgKHdoaWNoIGlzCj4gbm90aWNl
-YWJseSBkaWZmZXJlbnQpLCBzbyB0aGV5IGFwcGVhciBzaW1pbGFyLgo+IAo+IFRoZSBmb2xsb3dp
-bmcgcGF0Y2hlcyBjb250YWluOgo+IC0gTW92aW5nIGNvbW1vbiBjb2RlIHRvIGRyaXZlcnMvZ3B1
-L2RybS9icmlkZ2UvY2Rucy1taGRwLWNvbW1vbi4qIGFuZAo+ICAgbW9kaWZ5aW5nIGl0IGEgYml0
-IChtb3N0bHkgbmV3IHByZWZpeGVzIGZvciBmdW5jdGlvbnMgYW5kIGRhdGEgdHlwZXMpIHNvIGl0
-Cj4gICBjYW4gYmUgdXNlZCBieSB0d28sIGhpZ2hlciBsZXZlbCwgZHJpdmVycy4KPiAtIE1vZGlm
-eWluZyBleGlzdGluZyBSb2NrQ2hpcCdzIERQIGRyaXZlciB0byB1c2UgdGhlIGNvbW1vbiBjb2Rl
-IGFmdGVyIGNoYW5nZXMKPiAgIG1hZGUgdG8gaXQgKHVzZSB0aGUgbmV3IGNkbnNfbWhkcF9kZXZp
-Y2Ugc3RydWN0dXJlIGFuZCBuZXcgZnVuY3Rpb24gbmFtZXMpLgo+IC0gTW9kaWZ5aW5nIERSTSBo
-ZWxwZXJzIGEgYml0LiBTb21lIGFyZSByZXF1aXJlZCBmb3IgbmV3IGRyaXZlciwgc29tZSBhcmUK
-PiAgIHVwZGF0ZXMgZnJvbSBEUCAxLjIgdG8gMS4zIG9yIDEuNC4KPiAtIEFkZGluZyBkb2N1bWVu
-dGF0aW9uIGZvciBkZXZpY2UgdHJlZSBiaW5kaW5ncy4KPiAtIEFkZGluZyBwcmVsaW1pbmFyeSBD
-YWRlbmNlIERQSS9EUCBicmlkZ2UgZHJpdmVyLgo+IAo+IFNvbWUgb2YgdGhlIHRoaW5ncyB0aGF0
-IHdpbGwgYmUgYWRkZWQgbGF0ZXIgb24gaW5jbHVkZSAoYnV0IGFyZSBub3QgbGltaXRlZAo+IHRv
-KToKPiAtIERTQyBzdXBwb3J0Cj4gLSBGRUMgc3VwcG9ydAo+IC0gSERDUCBzdXBwb3J0CgpBIGZl
-dyByYW5kb20gY29tbWVudHMvcXVlc3Rpb25zIGFmdGVyIGEgcXVpY2sgbG9vayBhdCB0aGUgcGF0
-Y2hlcy4KClRoZSBuYW1lcyBvZiB0aGUgc291cmNlIGZpbGVzIGFuZCB0aGUga2VybmVsIEtjb25m
-aWcgYXJlIG9ubHkgYWJvdXQKIkNhZGVuY2UgRFAiLiBCdXQgdGhlIERUIGJpbmRpbmdzIGlzIGZv
-ciBjZG5zLG1oZHA4NTQ2LCBhbmQgdGhlCnJlc3VsdGluZyBtb2R1bGUgZmlsZSBpcyBtaGRwODU0
-Ni5rby4gSSB0aGluayBtb3JlIGNvbnNpc3RlbmN5IGhlcmUKd291bGQgYmUgZ29vZC4KCkkgcHJl
-c3VtZSB0aGUgcGFydCBudW1iZXIgKG9yIGZhbWlseT8gYXJlIHRoZXJlIG90aGVyIHNpbWlsYXIg
-cGFydHMgd2l0aApzaW1pbGFyIHBhcnQgbnVtYmVycz8pIGlzIHJlbGV2YW50LCBzbyBpdCBzaG91
-bGQgYmUgaW4gdGhlIEtjb25maWcKb3B0aW9uIGFuZCBoZWxwIHRleHQsIGFuZCBwcm9iYWJseSBp
-biB0aGUgZmlsZSBuYW1lcyB0b28uIFRoZSBtb2R1bGUKbmFtZSBzaG91bGQgaGF2ZSAiY2RucyIg
-cHJlZml4IHRoZXJlLCBzaW1pbGFyIHRvIHRoZSBzb3VyY2UgZmlsZXMgYW5kCnRoZSBjZG5zLWRz
-aS5rby4KCk9yIG1heWJlIHRoZSBzYW1lIGRyaXZlciB3aWxsIGhhbmRsZSBhbGwgQ2FkZW5jZSBE
-UCBwYXJ0cywgaW4gd2hpY2ggY2FzZQpnZW5lcmljIGZpbGVuYW1lcyBhcmUgZmluZSwgYnV0IHRo
-ZW4gdGhlIHJlc3VsdGluZyBrZXJuZWwgbW9kdWxlIHNob3VsZAphbHNvIGJlIGp1c3QgImNkbnMt
-bWhkcC5rbyIuCgpJIHNlZSBzb21lIGF1ZGlvIGZ1bmN0aW9ucyBpbiB0aGUgY29kZSwgYnV0IGl0
-J3Mgbm90IG1lbnRpb25lZCBpbiB0aGUgRFQKYmluZGluZ3MuIEknbSBub3QgYW4gYXVkaW8gZ3V5
-LCBidXQgdGhlIGRpc3BsYXkgYnJpZGdlcyB3aXRoIGF1ZGlvCnN1cHBvcnQgSSBoYXZlIHNlZW4g
-aGF2ZSBoYWQgRFQgYmluZGluZ3MgZm9yIHRoZSBhdWRpbyBzb3VyY2UgdG9vLiBJcwphdWRpbyBz
-dXBwb3J0ZWQgaW4gdGhlIGN1cnJlbnQgZHJpdmVyPwoKIFRvbWkKCi0tIApUZXhhcyBJbnN0cnVt
-ZW50cyBGaW5sYW5kIE95LCBQb3Jra2FsYW5rYXR1IDIyLCAwMDE4MCBIZWxzaW5raS4KWS10dW5u
-dXMvQnVzaW5lc3MgSUQ6IDA2MTU1MjEtNC4gS290aXBhaWtrYS9Eb21pY2lsZTogSGVsc2lua2kK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Thu, Jan 31, 2019 at 5:37 PM Heiko Stuebner <heiko@sntech.de> wrote:
+>
+> Am Donnerstag, 31. Januar 2019, 04:08:12 CET schrieb Souptick Joarder:
+> > Previouly drivers have their own way of mapping range of
+> > kernel pages/memory into user vma and this was done by
+> > invoking vm_insert_page() within a loop.
+> >
+> > As this pattern is common across different drivers, it can
+> > be generalized by creating new functions and use it across
+> > the drivers.
+> >
+> > vm_insert_range() is the API which could be used to mapped
+> > kernel memory/pages in drivers which has considered vm_pgoff
+> >
+> > vm_insert_range_buggy() is the API which could be used to map
+> > range of kernel memory/pages in drivers which has not considered
+> > vm_pgoff. vm_pgoff is passed default as 0 for those drivers.
+> >
+> > We _could_ then at a later "fix" these drivers which are using
+> > vm_insert_range_buggy() to behave according to the normal vm_pgoff
+> > offsetting simply by removing the _buggy suffix on the function
+> > name and if that causes regressions, it gives us an easy way to revert.
+> >
+> > Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
+> > Suggested-by: Russell King <linux@armlinux.org.uk>
+> > Suggested-by: Matthew Wilcox <willy@infradead.org>
+>
+> hmm, I'm missing a changelog here between v1 and v2.
+> Nevertheless I managed to test v1 on Rockchip hardware
+> and display is still working, including talking to Lima via prime.
+>
+> So if there aren't any big changes for v2, on Rockchip
+> Tested-by: Heiko Stuebner <heiko@sntech.de>
+
+Change log is available in [0/9].
+Patch [1/9] & [4/9] have no changes between v1 -> v2.
