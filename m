@@ -1,109 +1,127 @@
-From: Otavio Salvador <otavio@ossystems.com.br>
-Subject: [PATCH v2 3/3] ARM: dts: rockchip: rv1108-evb: Use the correct regulator properties
-Date: Thu, 31 Jan 2019 10:47:09 -0200
-Message-ID: <20190131124710.30238-3-otavio@ossystems.com.br>
-References: <20190131124710.30238-1-otavio@ossystems.com.br>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH 0/4] WIP: rockchip mpp for v4l2 video decoder
+Date: Thu, 31 Jan 2019 11:03:06 -0300
+Message-ID: <ef348923cfbd18a2566ec0e3d6af3d75b46c32aa.camel@collabora.com>
+References: <20190131031333.11905-1-ayaka@soulik.info>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190131124710.30238-1-otavio@ossystems.com.br>
+In-Reply-To: <20190131031333.11905-1-ayaka@soulik.info>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: Jason Zhu <jason.zhu@rock-chips.com>, Vicent Chi <vicent.chi@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, Philipp Tomsic <philipp.tomsich@theobroma-systems.com>, Tony Xie <tony.xie@rock-chips.com>, Otavio Salvador <otavio@ossystems.com.br>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+To: ayaka <ayaka@soulik.info>, linux-media@vger.kernel.org
+Cc: acourbot@chromium.org, nicolas@ndufresne.ca, paul.kocialkowski@bootlin.com, jernej.skrabec@gmail.com, joro@8bytes.org, mchehab@kernel.org, maxime.ripard@bootlin.com, hverkuil@xs4all.nl, thomas.petazzoni@bootlin.com, randy.li@rock-chips.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The following properties:
+Hey Ayaka!
 
-- regulator-state-enabled
-- regulator-state-disabled
-- regulator-state-uv
+On Thu, 2019-01-31 at 11:13 +0800, ayaka wrote:
+> From: Randy 'ayaka' Li <ayaka@soulik.info>
+> 
+> Hello
+>   Those patches are based on the previous vendor driver I post before,
+> but it can apply without the previous one.
+>   I really want to make it work before FOSDEM and I didn't. And upcoming
+> the lunar new year holiday would last two week.
+> 
+>   I have verified the v4l2 part but I meet a problem with power or
+> clock, it would be a complex problem, I would handle to solve it after I
+> am back. But I just tell my design on this kind dirver.
+> 
 
-are not valid ones as per
-Documentation/devicetree/bindings/regulator/regulator.txt
+This the branch I'm about to submit:
 
-Fix it by using the correct properties as per the dt bindings.
+http://git.infradead.org/users/ezequielg/linux/shortlog/refs/heads/vpu-mpeg-2-almost-ready-for-upstream
 
-Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
----
+And it has no power issues. Perhaps you can take a look inside,
+you might be just missing a few pm_ statements? Perhaps a devicetree thing?
 
-Changes in v2:
-- rebase on top of linux-next
+> A few questions I think you may ask I would like to answer it here.
+> 
 
- arch/arm/boot/dts/rv1108-evb.dts | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+I have another question: is this patchset meant to support for mpeg-2
+decoding only? I can't find any other codec code.
 
-diff --git a/arch/arm/boot/dts/rv1108-evb.dts b/arch/arm/boot/dts/rv1108-evb.dts
-index 203d83e3bbf5..30f3d0470ad9 100644
---- a/arch/arm/boot/dts/rv1108-evb.dts
-+++ b/arch/arm/boot/dts/rv1108-evb.dts
-@@ -97,8 +97,8 @@
- 				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-state-mem {
--					regulator-state-enabled;
--					regulator-state-uv = <900000>;
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <900000>;
- 				};
- 			};
- 
-@@ -107,7 +107,7 @@
- 				regulator-min-microvolt = <700000>;
- 				regulator-max-microvolt = <2000000>;
- 				regulator-state-mem {
--					regulator-state-disabled;
-+					regulator-off-in-suspend;
- 				};
- 			};
- 
-@@ -116,7 +116,7 @@
- 				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-state-mem {
--					regulator-state-enabled;
-+					regulator-on-in-suspend;
- 				};
- 			};
- 
-@@ -127,8 +127,8 @@
- 				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-state-mem {
--					regulator-state-enabled;
--					regulator-state-uv = <3300000>;
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
- 				};
- 			};
- 
-@@ -139,7 +139,7 @@
- 				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-state-mem {
--					regulator-state-disabled;
-+					regulator-off-in-suspend;
- 				};
- 			};
- 
-@@ -150,7 +150,7 @@
- 				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-state-mem {
--					regulator-state-disabled;
-+					regulator-off-in-suspend;
- 				};
- 			};
- 
-@@ -161,8 +161,8 @@
- 				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-state-mem {
--					regulator-state-enabled;
--					regulator-state-uv = <1000000>;
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
- 				};
- 			};
- 		};
--- 
-2.20.1
+Thanks,
+Ezequiel
+
+> 1. Why it is based on the previous vendor driver ?
+> The vendor driver I post to mail list is a clean version which having a
+> efficient work flow and those platform dependency controls having been
+> merged into it.
+> 
+> For the stateless device, V4L2 is just another interface for userspace
+> to translate it into registers.
+> 
+> 2. Why use a structure to store register infomation not marco ?
+> I really don't want to define many marcos for a device having more than
+> a hundred of registers. And there are many fields in a registers.
+> 
+> For the VDPU1/VDPU2 which would support more than 10 video codecs, these
+> two devices would re-use many registers for many codecs, It would be
+> hard to show the conflict relations between them in marco but more easy
+> with C union and structure.
+> 
+> BTW, I would prefer to write a number of registers into the device
+> though AHB bus not just generate one then write one, you can save some
+> times here.
+> 
+> 
+> Besides the two previous answers. I really have a big problem with v4l2
+> design. Which would driver wait the work of the previous picture is
+> done, leading a large gap time more idle of the device. 
+> 
+> I am ok the current face that v4l2 stateless driver is not stateless.
+> But it would limit the ability of stateless decoder. It is more flexible
+> to those videos having different resolution or orientation sequences.
+> 
+> But I don't like the method to reconstruct the bitstream in driver, it
+> is a bad idea to limit what data the device want. Those problem is
+> mainly talking in the HEVC slice thread. And it was ironic for the VPx
+> serial codec, which mixed compressed data and umcompress header together
+> and twisted. Even for the ITU H serial codec, it would become a problem
+> in SVC or Google Android CTS test.
+> 
+> And thanks kwiboo, ezequielg and Paulk, I copy some v4l2 code from their
+> code.
+> 
+> Randy Li (1):
+>   staging: video: rockchip: add video codec
+> 
+> ayaka (3):
+>   [WIP]: staging: video: rockchip: add v4l2 common
+>   [WIP] staging: video: rockchip: vdpu2
+>   [TEST]: rockchip: mpp: support qtable
+> 
+>  drivers/staging/Kconfig                       |    2 +
+>  drivers/staging/Makefile                      |    1 +
+>  drivers/staging/rockchip-mpp/Kconfig          |   54 +
+>  drivers/staging/rockchip-mpp/Makefile         |    8 +
+>  drivers/staging/rockchip-mpp/mpp_debug.h      |   87 ++
+>  drivers/staging/rockchip-mpp/mpp_dev_common.c | 1365 +++++++++++++++++
+>  drivers/staging/rockchip-mpp/mpp_dev_common.h |  215 +++
+>  drivers/staging/rockchip-mpp/mpp_dev_rkvdec.c |  878 +++++++++++
+>  drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c  |  755 +++++++++
+>  drivers/staging/rockchip-mpp/mpp_service.c    |  197 +++
+>  drivers/staging/rockchip-mpp/mpp_service.h    |   38 +
+>  drivers/staging/rockchip-mpp/rkvdec/hal.h     |   53 +
+>  drivers/staging/rockchip-mpp/rkvdec/regs.h    |  395 +++++
+>  drivers/staging/rockchip-mpp/vdpu2/hal.h      |   52 +
+>  drivers/staging/rockchip-mpp/vdpu2/mpeg2.c    |  253 +++
+>  drivers/staging/rockchip-mpp/vdpu2/regs.h     |  699 +++++++++
+>  16 files changed, 5052 insertions(+)
+>  create mode 100644 drivers/staging/rockchip-mpp/Kconfig
+>  create mode 100644 drivers/staging/rockchip-mpp/Makefile
+>  create mode 100644 drivers/staging/rockchip-mpp/mpp_debug.h
+>  create mode 100644 drivers/staging/rockchip-mpp/mpp_dev_common.c
+>  create mode 100644 drivers/staging/rockchip-mpp/mpp_dev_common.h
+>  create mode 100644 drivers/staging/rockchip-mpp/mpp_dev_rkvdec.c
+>  create mode 100644 drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c
+>  create mode 100644 drivers/staging/rockchip-mpp/mpp_service.c
+>  create mode 100644 drivers/staging/rockchip-mpp/mpp_service.h
+>  create mode 100644 drivers/staging/rockchip-mpp/rkvdec/hal.h
+>  create mode 100644 drivers/staging/rockchip-mpp/rkvdec/regs.h
+>  create mode 100644 drivers/staging/rockchip-mpp/vdpu2/hal.h
+>  create mode 100644 drivers/staging/rockchip-mpp/vdpu2/mpeg2.c
+>  create mode 100644 drivers/staging/rockchip-mpp/vdpu2/regs.h
+> 
