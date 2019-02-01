@@ -1,89 +1,69 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH] dt-bindings: display: rockchip: add document for rk3066 hdmi
-Date: Fri,  1 Feb 2019 13:32:35 +0100
-Message-ID: <20190201123235.1693-1-jbx6244@gmail.com>
-References: <20181229133318.18128-1-jbx6244@gmail.com>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Subject: Re: [PATCHv2 1/9] mm: Introduce new vm_insert_range and
+ vm_insert_range_buggy API
+Date: Fri, 1 Feb 2019 18:08:04 +0530
+Message-ID: <CAFqt6zbMHG3htSsOwV3SaEEp1rMbFCoDD_3EacDk1hw_a1HJeQ@mail.gmail.com>
+References: <20190131030812.GA2174@jordon-HP-15-Notebook-PC>
+ <1701923.z6LKAITQJA@phil> <CAFqt6zbxyMB3VCzbWo1rPdfKXLVTNx+RY0=guD5CRxD37gJzsA@mail.gmail.com>
+ <1572595.mVW1PIlZyR@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20181229133318.18128-1-jbx6244@gmail.com>
+In-Reply-To: <1572595.mVW1PIlZyR@phil>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: hjc@rock-chips.com, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@kernel.org, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: hjc@rock-chips.com, Andrew Morton <akpm@linux-foundation.org>, Matthew Wilcox <willy@infradead.org>, Michal Hocko <mhocko@suse.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, vbabka@suse.cz, Rik van Riel <riel@surriel.com>, Stephen Rothwell <sfr@canb.auug.org.au>, rppt@linux.vnet.ibm.com, Peter Zijlstra <peterz@infradead.org>, Russell King - ARM Linux <linux@armlinux.org.uk>, robin.murphy@arm.com, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, Kyungmin Park <kyungmin.park@samsung.com>, mchehab@kernel.org, Boris Ostrovsky <boris.ostrovsky@oracle.com>, Juergen Gross <jgross@suse.com>, linux-kernel@vger.kernel.org, Linux-MM <linux-mm@kvack.org>, linux-arm-kernel@lists.infradead.org, linux1394-devel@lists.sourceforge
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds a binding that describes the HDMI controller for
-rk3066.
+On Thu, Jan 31, 2019 at 6:04 PM Heiko Stuebner <heiko@sntech.de> wrote:
+>
+> Am Donnerstag, 31. Januar 2019, 13:31:52 CET schrieb Souptick Joarder:
+> > On Thu, Jan 31, 2019 at 5:37 PM Heiko Stuebner <heiko@sntech.de> wrote:
+> > >
+> > > Am Donnerstag, 31. Januar 2019, 04:08:12 CET schrieb Souptick Joarder:
+> > > > Previouly drivers have their own way of mapping range of
+> > > > kernel pages/memory into user vma and this was done by
+> > > > invoking vm_insert_page() within a loop.
+> > > >
+> > > > As this pattern is common across different drivers, it can
+> > > > be generalized by creating new functions and use it across
+> > > > the drivers.
+> > > >
+> > > > vm_insert_range() is the API which could be used to mapped
+> > > > kernel memory/pages in drivers which has considered vm_pgoff
+> > > >
+> > > > vm_insert_range_buggy() is the API which could be used to map
+> > > > range of kernel memory/pages in drivers which has not considered
+> > > > vm_pgoff. vm_pgoff is passed default as 0 for those drivers.
+> > > >
+> > > > We _could_ then at a later "fix" these drivers which are using
+> > > > vm_insert_range_buggy() to behave according to the normal vm_pgoff
+> > > > offsetting simply by removing the _buggy suffix on the function
+> > > > name and if that causes regressions, it gives us an easy way to revert.
+> > > >
+> > > > Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
+> > > > Suggested-by: Russell King <linux@armlinux.org.uk>
+> > > > Suggested-by: Matthew Wilcox <willy@infradead.org>
+> > >
+> > > hmm, I'm missing a changelog here between v1 and v2.
+> > > Nevertheless I managed to test v1 on Rockchip hardware
+> > > and display is still working, including talking to Lima via prime.
+> > >
+> > > So if there aren't any big changes for v2, on Rockchip
+> > > Tested-by: Heiko Stuebner <heiko@sntech.de>
+> >
+> > Change log is available in [0/9].
+> > Patch [1/9] & [4/9] have no changes between v1 -> v2.
+>
+> I never seem to get your cover-letters, so didn't see that, sorry.
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- .../display/rockchip/rk3066_hdmi-rockchip.txt      | 60 ++++++++++++++++++++++
- 1 file changed, 60 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/rockchip/rk3066_hdmi-rockchip.txt
+I added you in sender list for all cover-letters but it didn't reach
+your inbox :-)
+Thanks for reviewing and validating the patch.
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rk3066_hdmi-rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/rk3066_hdmi-rockchip.txt
-new file mode 100644
-index 000000000..6a8f3754f
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/rockchip/rk3066_hdmi-rockchip.txt
-@@ -0,0 +1,60 @@
-+Rockchip specific extensions for rk3066 HDMI
-+============================================
-+
-+Required properties:
-+- compatible:
-+	"rockchip,rk3066-hdmi";
-+- reg:
-+	Physical base address and length of the controller's registers.
-+- clocks, clock-names:
-+	Phandle to HDMI controller clock, name should be "hclk".
-+- interrupts:
-+	HDMI interrupt number.
-+- power-domains:
-+	Phandle to the RK3066_PD_VIO power domain.
-+- rockchip,grf:
-+	This soc uses GRF regs to switch the HDMI TX input between vop0 and vop1.
-+- ports:
-+	Contains one port node with two endpoints, numbered 0 and 1,
-+	connected respectively to vop0 and vop1.
-+- pinctrl-0, pinctrl-name:
-+	Switch the iomux for the HPD/I2C pins to HDMI function.
-+
-+Example:
-+	hdmi: hdmi@10116000 {
-+		compatible = "rockchip,rk3066-hdmi";
-+		reg = <0x10116000 0x2000>;
-+		interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru HCLK_HDMI>;
-+		clock-names = "hclk";
-+		power-domains = <&power RK3066_PD_VIO>;
-+		rockchip,grf = <&grf>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hdmii2c_xfer>, <&hdmi_hpd>;
-+		status = "disabled";
-+
-+		hdmi_in: port {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			hdmi_in_vop0: endpoint@0 {
-+				reg = <0>;
-+				remote-endpoint = <&vop0_out_hdmi>;
-+			};
-+			hdmi_in_vop1: endpoint@1 {
-+				reg = <1>;
-+				remote-endpoint = <&vop1_out_hdmi>;
-+			};
-+		};
-+	};
-+
-+&pinctrl {
-+		hdmi {
-+			hdmi_hpd: hdmi-hpd {
-+				rockchip,pins = <0 RK_PA0 1 &pcfg_pull_default>;
-+			};
-+			hdmii2c_xfer: hdmii2c-xfer {
-+				rockchip,pins = <0 RK_PA1 1 &pcfg_pull_none>,
-+						<0 RK_PA2 1 &pcfg_pull_none>;
-+			};
-+		};
-+};
--- 
-2.11.0
+>
+> But great that there weren't changes then :-)
+>
+> Heiko
+>
+>
