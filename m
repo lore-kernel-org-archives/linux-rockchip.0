@@ -1,25 +1,36 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 2/2] Rockchip arm64 devicetree fixes for 5.0
-Date: Fri, 01 Feb 2019 12:14:40 +0100
-Message-ID: <23121360.LiWTZRSn6P@phil>
-References: <7484850.KS8GUYnfXV@phil>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL] Rockchip clock updates for 5.1
+Date: Fri, 01 Feb 2019 12:17:47 +0100
+Message-ID: <48408534.cOKhDiQbmB@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <7484850.KS8GUYnfXV@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
+
+Hi Mike, Stephen,
+
+looks I can re-use my introduction from 4.20 and 5.0 - no big changes
+again this time.
+
+A rate_parent flag and some fixup for the fractional part of a PLL
+
+So please pull.
+
+
+Thanks
+Heiko
 
 The following changes since commit bfeffd155283772bbe78c6a05dec7c0128ee500c:
 
@@ -27,24 +38,23 @@ The following changes since commit bfeffd155283772bbe78c6a05dec7c0128ee500c:
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.0-rockchip-dts64fixes-1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.1-rockchip-clk1
 
-for you to fetch changes up to 26e2d7b03ea7ff254bf78305aa44dda62e70b78e:
+for you to fetch changes up to 491b00ff699356a8dab10eb517a1b44205514c9e:
 
-  arm64: dts: rockchip: enable usb-host regulators at boot on rk3328-rock64 (2019-01-27 23:14:04 +0100)
-
-----------------------------------------------------------------
-Fix for new dtc graph warnings and a regulator fix for rock64.
+  clk: rockchip: add CLK_SET_RATE_PARENT for rk3066 lcdc dclks (2019-01-07 09:17:15 +0100)
 
 ----------------------------------------------------------------
-Dmitry Voytik (1):
-      arm64: dts: rockchip: enable usb-host regulators at boot on rk3328-rock64
+Fix for PLL rate calculation on rk3328 and SET_RATE_PARENT flag
+for the display clock on rk3066.
 
-Enric Balletbo i Serra (1):
-      arm64: dts: rockchip: fix graph_port warning on rk3399 bob kevin and excavator
+----------------------------------------------------------------
+Finley Xiao (1):
+      clk: rockchip: add CLK_SET_RATE_PARENT for rk3066 lcdc dclks
 
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts             | 2 ++
- arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts            | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts          | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 2 +-
- 4 files changed, 5 insertions(+), 3 deletions(-)
+Katsuhiro Suzuki (1):
+      clk: rockchip: fix frac settings of GPLL clock for rk3328
+
+ drivers/clk/rockchip/clk-rk3188.c |  4 ++--
+ drivers/clk/rockchip/clk-rk3328.c | 12 ++++++------
+ 2 files changed, 8 insertions(+), 8 deletions(-)
