@@ -1,69 +1,190 @@
-From: Souptick Joarder <jrdr.linux@gmail.com>
-Subject: Re: [PATCHv2 1/9] mm: Introduce new vm_insert_range and
- vm_insert_range_buggy API
-Date: Fri, 1 Feb 2019 18:08:04 +0530
-Message-ID: <CAFqt6zbMHG3htSsOwV3SaEEp1rMbFCoDD_3EacDk1hw_a1HJeQ@mail.gmail.com>
-References: <20190131030812.GA2174@jordon-HP-15-Notebook-PC>
- <1701923.z6LKAITQJA@phil> <CAFqt6zbxyMB3VCzbWo1rPdfKXLVTNx+RY0=guD5CRxD37gJzsA@mail.gmail.com>
- <1572595.mVW1PIlZyR@phil>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH v2 4/7] drm: rockchip: introduce rk3066 hdmi
+Date: Fri, 1 Feb 2019 15:25:54 +0100
+Message-ID: <CA+z=w3UKrDODY964WOtq-FQhuFJWg4C2jKXn0=3QT45gJ3UG_A@mail.gmail.com>
+References: <20181229133318.18128-1-jbx6244@gmail.com> <20181229133318.18128-5-jbx6244@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1572595.mVW1PIlZyR@phil>
+In-Reply-To: <20181229133318.18128-5-jbx6244@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: hjc@rock-chips.com, Andrew Morton <akpm@linux-foundation.org>, Matthew Wilcox <willy@infradead.org>, Michal Hocko <mhocko@suse.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, vbabka@suse.cz, Rik van Riel <riel@surriel.com>, Stephen Rothwell <sfr@canb.auug.org.au>, rppt@linux.vnet.ibm.com, Peter Zijlstra <peterz@infradead.org>, Russell King - ARM Linux <linux@armlinux.org.uk>, robin.murphy@arm.com, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, Kyungmin Park <kyungmin.park@samsung.com>, mchehab@kernel.org, Boris Ostrovsky <boris.ostrovsky@oracle.com>, Juergen Gross <jgross@suse.com>, linux-kernel@vger.kernel.org, Linux-MM <linux-mm@kvack.org>, linux-arm-kernel@lists.infradead.org, linux1394-devel@lists.sourceforge
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com, airlied@linux.ie, robh+dt@kernel.org, mark.rutland@arm.com, mturquette@baylibre.com, sboyd@kernel.org, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jan 31, 2019 at 6:04 PM Heiko Stuebner <heiko@sntech.de> wrote:
->
-> Am Donnerstag, 31. Januar 2019, 13:31:52 CET schrieb Souptick Joarder:
-> > On Thu, Jan 31, 2019 at 5:37 PM Heiko Stuebner <heiko@sntech.de> wrote:
-> > >
-> > > Am Donnerstag, 31. Januar 2019, 04:08:12 CET schrieb Souptick Joarder:
-> > > > Previouly drivers have their own way of mapping range of
-> > > > kernel pages/memory into user vma and this was done by
-> > > > invoking vm_insert_page() within a loop.
-> > > >
-> > > > As this pattern is common across different drivers, it can
-> > > > be generalized by creating new functions and use it across
-> > > > the drivers.
-> > > >
-> > > > vm_insert_range() is the API which could be used to mapped
-> > > > kernel memory/pages in drivers which has considered vm_pgoff
-> > > >
-> > > > vm_insert_range_buggy() is the API which could be used to map
-> > > > range of kernel memory/pages in drivers which has not considered
-> > > > vm_pgoff. vm_pgoff is passed default as 0 for those drivers.
-> > > >
-> > > > We _could_ then at a later "fix" these drivers which are using
-> > > > vm_insert_range_buggy() to behave according to the normal vm_pgoff
-> > > > offsetting simply by removing the _buggy suffix on the function
-> > > > name and if that causes regressions, it gives us an easy way to revert.
-> > > >
-> > > > Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
-> > > > Suggested-by: Russell King <linux@armlinux.org.uk>
-> > > > Suggested-by: Matthew Wilcox <willy@infradead.org>
-> > >
-> > > hmm, I'm missing a changelog here between v1 and v2.
-> > > Nevertheless I managed to test v1 on Rockchip hardware
-> > > and display is still working, including talking to Lima via prime.
-> > >
-> > > So if there aren't any big changes for v2, on Rockchip
-> > > Tested-by: Heiko Stuebner <heiko@sntech.de>
-> >
-> > Change log is available in [0/9].
-> > Patch [1/9] & [4/9] have no changes between v1 -> v2.
->
-> I never seem to get your cover-letters, so didn't see that, sorry.
+Hi,
 
-I added you in sender list for all cover-letters but it didn't reach
-your inbox :-)
-Thanks for reviewing and validating the patch.
+Beside the binding for "rockchip,rk3066-vop" this patch series
+also has a new binding for "rockchip,rk3066-hdmi".
+Can Rob Herring advise here? Including the document describing the binding.
 
->
-> But great that there weren't changes then :-)
->
-> Heiko
->
->
+This patch still has the original license text included.
+Can the copyright holder (or Sandy) approve the replacement of the GPL text
+by a SPDX License Identifier for GPL-2.0?
+
+Is Heiko's test setup for rk3066 already functional?
+
+Thanks
+
+2018-12-29 14:33 GMT+01:00, Johan Jonker <jbx6244@gmail.com>:
+
+> +++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+> @@ -0,0 +1,928 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+> + *    Zheng Yang <zhengyang@rock-chips.com>
+> + *
+> + * This software is licensed under the terms of the GNU General Public
+> + * License version 2, as published by the Free Software Foundation, and
+> + * may be copied, distributed, and modified under those terms.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+
+> +static inline u8 rk3066_hdmi_get_power_mode(struct rk3066_hdmi *hdmi)
+> +{
+> +	return hdmi_readb(hdmi, HDMI_SYS_CTRL) & HDMI_SYS_POWER_MODE_MASK;
+> +}
+> +
+> +static void rk3066_hdmi_set_power_mode(struct rk3066_hdmi *hdmi, int mode)
+> +{
+> +	u8 current_mode, next_mode;
+> +	u8 i = 0;
+> +
+
+The function rk3066_hdmi_get_power_mode can also returns 0 with VIO
+power domain disabled.
+That would lead to an endless loop. Just replaced 0 with
+HDMI_SYS_POWER_MODE_A to prevent a crash.
+Please advise if this function is OK with you?
+
+> +	current_mode = rk3066_hdmi_get_power_mode(hdmi);
+> +
+> +	dev_dbg(hdmi->dev, "mode         :%d\n", mode);
+> +	dev_dbg(hdmi->dev, "current_mode :%d\n", current_mode);
+> +
+> +	if (current_mode == mode)
+> +		return;
+> +
+> +	do {
+> +		if (current_mode > mode)
+> +			next_mode = current_mode / 2;
+> +		else {
+> +			if (current_mode < HDMI_SYS_POWER_MODE_A)
+> +				next_mode = HDMI_SYS_POWER_MODE_A;
+> +			else
+> +				next_mode = current_mode * 2;
+> +		}
+> +
+> +		dev_dbg(hdmi->dev, "%d: next_mode :%d\n", i, next_mode);
+> +
+> +		if (next_mode != HDMI_SYS_POWER_MODE_D) {
+> +			hdmi_modb(hdmi, HDMI_SYS_CTRL,
+> +				  HDMI_SYS_POWER_MODE_MASK, next_mode);
+> +		} else {
+> +			hdmi_writeb(hdmi, HDMI_SYS_CTRL,
+> +				    HDMI_SYS_POWER_MODE_D |
+> +				    HDMI_SYS_PLL_RESET_MASK);
+> +			usleep_range(90, 100);
+> +			hdmi_writeb(hdmi, HDMI_SYS_CTRL,
+> +				    HDMI_SYS_POWER_MODE_D |
+> +				    HDMI_SYS_PLLB_RESET);
+> +			usleep_range(90, 100);
+> +			hdmi_writeb(hdmi, HDMI_SYS_CTRL,
+> +				    HDMI_SYS_POWER_MODE_D);
+> +		}
+> +		current_mode = next_mode;
+> +		i = i + 1;
+> +	} while ((next_mode != mode) && (i < 5));
+
+> +static const struct drm_display_mode edid_cea_modes[] = {
+> +	/* 4 - 1280x720@60Hz 16:9 */
+> +	{ DRM_MODE("1280x720", DRM_MODE_TYPE_DRIVER, 74250, 1280, 1390,
+> +		   1430, 1650, 0, 720, 725, 730, 750, 0,
+> +		   DRM_MODE_FLAG_PHSYNC | DRM_MODE_FLAG_PVSYNC),
+> +	  .vrefresh = 60, .picture_aspect_ratio = HDMI_PICTURE_ASPECT_16_9, },
+> +};
+> +
+> +static int rk3066_hdmi_connector_get_modes(struct drm_connector
+> *connector)
+> +{
+> +	struct rk3066_hdmi *hdmi = to_rk3066_hdmi(connector);
+> +	struct drm_display_mode *mode = NULL;
+> +	struct edid *edid;
+> +	int ret = 0;
+> +
+> +	if (!hdmi->ddc)
+> +		return 0;
+> +
+> +	hdmi->hdmi_data.sink_is_hdmi = false;
+> +
+> +	edid = drm_get_edid(connector, hdmi->ddc);
+> +	if (edid) {
+> +		hdmi->hdmi_data.sink_is_hdmi = drm_detect_hdmi_monitor(edid);
+> +
+> +		dev_info(hdmi->dev, "monitor type : %s : %dx%d cm\n",
+> +			(hdmi->hdmi_data.sink_is_hdmi ? "HDMI" : "DVI"),
+> +			edid->width_cm, edid->height_cm);
+> +
+> +		drm_connector_update_edid_property(connector, edid);
+> +		ret = drm_add_edid_modes(connector, edid);
+> +		kfree(edid);
+> +	}
+> +
+
+The DRM framework doesn't provide a function to make a CEA mode. DVI-D
+needs a mode set here.
+Adding more modes needs an extra for loop. For now one mode is enough.
+Just leave it that way.? Please advise.
+
+> +	if ((ret == 0) || (hdmi->hdmi_data.sink_is_hdmi == false)) {
+> +		hdmi->hdmi_data.sink_is_hdmi = false;
+> +
+> +		mode = drm_mode_duplicate(hdmi->drm_dev, &edid_cea_modes[0]);
+> +		if (!mode)
+> +			return ret;
+> +		mode->type |= DRM_MODE_TYPE_PREFERRED;
+> +		drm_mode_probed_add(connector, mode);
+> +		ret++;
+> +
+> +		dev_info(hdmi->dev, "no CEA mode found, use default\n");
+> +	}
+> +
+> +	return ret;
+> +}
+
+> +struct platform_driver rk3066_hdmi_driver = {
+> +	.probe  = rk3066_hdmi_probe,
+> +	.remove = rk3066_hdmi_remove,
+> +	.driver = {
+> +		.name = "rockchip-rk3066hdmi",
+> +		.of_match_table = rk3066_hdmi_dt_ids,
+> +	},
+> +};
+
+
+> diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.h
+> b/drivers/gpu/drm/rockchip/rk3066_hdmi.h
+> new file mode 100644
+> index 000000000..f4c2e2081
+> --- /dev/null
+> +++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.h
+> @@ -0,0 +1,235 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
+> + *    Zheng Yang <zhengyang@rock-chips.com>
+> + *
+> + * This software is licensed under the terms of the GNU General Public
+> + * License version 2, as published by the Free Software Foundation, and
+> + * may be copied, distributed, and modified under those terms.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
