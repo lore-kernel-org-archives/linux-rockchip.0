@@ -1,31 +1,38 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: enable mali power supply on
- rk3399-rockpro64
-Date: Sun, 03 Feb 2019 09:52:35 +0100
-Message-ID: <3269984.OcK9GHb2AQ@phil>
-References: <20190201225506.22985-1-andrius@stikonas.eu>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 1/3] ARM: dts: rockchip: rv1108-elgin: Fix
+ vcc5/6-supply representation
+Date: Sun, 03 Feb 2019 10:00:58 +0100
+Message-ID: <59585681.DkdmuU3GWD@phil>
+References: <20190131124710.30238-1-otavio@ossystems.com.br>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190201225506.22985-1-andrius-4ZmsDwijFH7sq35pWSNszA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andrius =?utf-8?B?xaB0aWtvbmFz?= <andrius-4ZmsDwijFH7sq35pWSNszA@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190131124710.30238-1-otavio@ossystems.com.br>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Otavio Salvador <otavio@ossystems.com.br>
+Cc: Jason Zhu <jason.zhu@rock-chips.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org, Tony Xie <tony.xie@rock-chips.com>, Vicent Chi <vicent.chi@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, Philipp Tomsic <philipp.tomsich@theobroma-systems.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRnJlaXRhZywgMS4gRmVicnVhciAyMDE5LCAyMzo1NTowNiBDRVQgc2NocmllYiBBbmRyaXVz
-IMWgdGlrb25hczoKPiBFbmFibGUgdGhlIGdwdSBub2RlIGFuZCBhZGQgdGhlIHN1cHBseWluZyBy
-ZWd1bGF0b3IKPiAKPiBTaWduZWQtb2ZmLWJ5OiBBbmRyaXVzIMWgdGlrb25hcyA8YW5kcml1c0Bz
-dGlrb25hcy5ldT4KCmFwcGxpZWQgZm9yIDUuMQoKVGhhbmtzCkhlaWtvCgoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Am Donnerstag, 31. Januar 2019, 13:47:07 CET schrieb Otavio Salvador:
+> On rv1108-elgin-r1 board the RK805 VCC5 and VCC6 supplies come from
+> the BUCK2 regulator at 2.2V, so fix the representation in the
+> device tree.
+> 
+> While at it, rename it from vdd_cam to vdd_buck2, which is a better
+> name for the regulator label.
+> 
+> Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
+
+applied all 3 for 5.1
+
+Thanks
+Heiko
