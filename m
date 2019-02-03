@@ -1,14 +1,13 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: add HDMI sound node for
- rk3328-rock64
-Date: Sun, 03 Feb 2019 10:06:38 +0100
-Message-ID: <1970132.3b67tCGWFf@phil>
-References: <20190202043444.9308-1-katsuhiro@katsuster.net>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: clean up the abuse of disable-wp
+Date: Sun, 03 Feb 2019 10:29:13 +0100
+Message-ID: <1569666.T8lu6EEEzz@phil>
+References: <1548146147-90572-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190202043444.9308-1-katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+In-Reply-To: <1548146147-90572-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,104 +17,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 2. Februar 2019, 05:34:44 CET schrieb Katsuhiro Suzuki:
-> This patch adds HDMI sound (I2S0) node and remove dma properties
-> from UART2 node for rock64.
+Am Dienstag, 22. Januar 2019, 09:35:46 CET schrieb Shawn Lin:
+> The mmc.txt didn't explicitly say disable-wp is for SD card slot
+> only, but that is what it was designed for in the first place.
 > 
-> The DMAC of rk3328 can use 8 channels at same time. Currently, total
-> 7 channels are used as follows:
->   - I2S1  2ch
->   - UART2 2ch
->   - SPDIF 1ch
->   - SPI0  2ch
+> Remove all disable-wp from emmc or sdio controller.
 > 
-> HDMI audio using I2S0 that requires 2ch but DMAC has only 1 channel.
-> 
-> UART2 can work without DMA resources, so this patch removes dma
-> allocation for UART2 and reuses it to I2S0.
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-I don't follow that description. How can i2s0 re-use the uart2 dma channels?
-Looking at the dma table in the TRM, uart2 has channels 6+7 while i2s0
-uses channels 11+12. They should just run concurrently?
-
-> 
-> Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-> ---
->  .../arm64/boot/dts/rockchip/rk3328-rock64.dts | 24 ++++++++++++++++++-
->  arch/arm64/boot/dts/rockchip/rk3328.dtsi      |  1 +
->  2 files changed, 24 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> index 2157a528276b..e21645aa3fa5 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> @@ -68,7 +68,8 @@
->  	sound {
->  		compatible = "audio-graph-card";
->  		label = "rockchip,rk3328";
-> -		dais = <&i2s1_p0
-> +		dais = <&i2s0_p0
-> +			&i2s1_p0
->  			&spdif_p0>;
->  	};
->  
-> @@ -141,6 +142,12 @@
->  
->  &hdmi {
->  	status = "okay";
-> +
-> +	port@0 {
-> +		hdmi_p0_0: endpoint {
-> +			remote-endpoint = <&i2s0_p0_0>;
-> +		};
-> +	};
->  };
->  
->  &hdmiphy {
-> @@ -256,6 +263,18 @@
->  	};
->  };
->  
-> +&i2s0 {
-> +	status = "okay";
-> +
-> +	i2s0_p0: port {
-> +		i2s0_p0_0: endpoint {
-> +			dai-format = "i2s";
-> +			mclk-fs = <256>;
-> +			remote-endpoint = <&hdmi_p0_0>;
-> +		};
-> +	};
-> +};
-> +
->  &i2s1 {
->  	status = "okay";
->  
-> @@ -343,6 +362,9 @@
->  
->  &uart2 {
->  	status = "okay";
-> +
-> +	/delete-property/ dmas;
-> +	/delete-property/ dma-names;
->  };
->  
->  &u2phy {
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> index 84f14b132e8f..374b5da93a35 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> @@ -665,6 +665,7 @@
->  		pinctrl-names = "default";
->  		pinctrl-0 = <&hdmi_cec &hdmii2c_xfer &hdmi_hpd>;
->  		rockchip,grf = <&grf>;
-> +		#sound-dai-cells = <0>;
-
-please make that a separate patch
-
-
-Heiko
+applied both for 5.1 some days ago already, just forgot to
+send the email.
