@@ -1,38 +1,121 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 1/3] ARM: dts: rockchip: rv1108-elgin: Fix
- vcc5/6-supply representation
-Date: Sun, 03 Feb 2019 10:00:58 +0100
-Message-ID: <59585681.DkdmuU3GWD@phil>
-References: <20190131124710.30238-1-otavio@ossystems.com.br>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: add HDMI sound node for
+ rk3328-rock64
+Date: Sun, 03 Feb 2019 10:06:38 +0100
+Message-ID: <1970132.3b67tCGWFf@phil>
+References: <20190202043444.9308-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190131124710.30238-1-otavio@ossystems.com.br>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Otavio Salvador <otavio@ossystems.com.br>
-Cc: Jason Zhu <jason.zhu@rock-chips.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org, Tony Xie <tony.xie@rock-chips.com>, Vicent Chi <vicent.chi@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, Philipp Tomsic <philipp.tomsich@theobroma-systems.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190202043444.9308-1-katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 31. Januar 2019, 13:47:07 CET schrieb Otavio Salvador:
-> On rv1108-elgin-r1 board the RK805 VCC5 and VCC6 supplies come from
-> the BUCK2 regulator at 2.2V, so fix the representation in the
-> device tree.
+Am Samstag, 2. Februar 2019, 05:34:44 CET schrieb Katsuhiro Suzuki:
+> This patch adds HDMI sound (I2S0) node and remove dma properties
+> from UART2 node for rock64.
 > 
-> While at it, rename it from vdd_cam to vdd_buck2, which is a better
-> name for the regulator label.
+> The DMAC of rk3328 can use 8 channels at same time. Currently, total
+> 7 channels are used as follows:
+>   - I2S1  2ch
+>   - UART2 2ch
+>   - SPDIF 1ch
+>   - SPI0  2ch
 > 
-> Signed-off-by: Otavio Salvador <otavio@ossystems.com.br>
+> HDMI audio using I2S0 that requires 2ch but DMAC has only 1 channel.
+> 
+> UART2 can work without DMA resources, so this patch removes dma
+> allocation for UART2 and reuses it to I2S0.
 
-applied all 3 for 5.1
+I don't follow that description. How can i2s0 re-use the uart2 dma channels?
+Looking at the dma table in the TRM, uart2 has channels 6+7 while i2s0
+uses channels 11+12. They should just run concurrently?
 
-Thanks
+> 
+> Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+> ---
+>  .../arm64/boot/dts/rockchip/rk3328-rock64.dts | 24 ++++++++++++++++++-
+>  arch/arm64/boot/dts/rockchip/rk3328.dtsi      |  1 +
+>  2 files changed, 24 insertions(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> index 2157a528276b..e21645aa3fa5 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> @@ -68,7 +68,8 @@
+>  	sound {
+>  		compatible = "audio-graph-card";
+>  		label = "rockchip,rk3328";
+> -		dais = <&i2s1_p0
+> +		dais = <&i2s0_p0
+> +			&i2s1_p0
+>  			&spdif_p0>;
+>  	};
+>  
+> @@ -141,6 +142,12 @@
+>  
+>  &hdmi {
+>  	status = "okay";
+> +
+> +	port@0 {
+> +		hdmi_p0_0: endpoint {
+> +			remote-endpoint = <&i2s0_p0_0>;
+> +		};
+> +	};
+>  };
+>  
+>  &hdmiphy {
+> @@ -256,6 +263,18 @@
+>  	};
+>  };
+>  
+> +&i2s0 {
+> +	status = "okay";
+> +
+> +	i2s0_p0: port {
+> +		i2s0_p0_0: endpoint {
+> +			dai-format = "i2s";
+> +			mclk-fs = <256>;
+> +			remote-endpoint = <&hdmi_p0_0>;
+> +		};
+> +	};
+> +};
+> +
+>  &i2s1 {
+>  	status = "okay";
+>  
+> @@ -343,6 +362,9 @@
+>  
+>  &uart2 {
+>  	status = "okay";
+> +
+> +	/delete-property/ dmas;
+> +	/delete-property/ dma-names;
+>  };
+>  
+>  &u2phy {
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> index 84f14b132e8f..374b5da93a35 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> @@ -665,6 +665,7 @@
+>  		pinctrl-names = "default";
+>  		pinctrl-0 = <&hdmi_cec &hdmii2c_xfer &hdmi_hpd>;
+>  		rockchip,grf = <&grf>;
+> +		#sound-dai-cells = <0>;
+
+please make that a separate patch
+
+
 Heiko
