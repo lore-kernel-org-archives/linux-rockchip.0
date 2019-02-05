@@ -1,122 +1,122 @@
-From: Bjorn Andersson <bjorn.andersson@linaro.org>
-Subject: Re: [PATCH v3 7/7] arm64: dts: qcom: apq8016-sbc: Standardize LED
- labels
-Date: Tue, 5 Feb 2019 11:24:12 -0800
-Message-ID: <20190205192412.GG31919@minitux>
-References: <20181029094245.7886-1-manivannan.sadhasivam@linaro.org>
- <20181029094245.7886-8-manivannan.sadhasivam@linaro.org>
- <20181221023554.GB3233@Mani-XPS-13-9360>
- <CAP71WjzWiCg-NXDnh58N-5O7kvNj+DDndSK04DeoPxFE2L8W0g@mail.gmail.com>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v1 00/10] Add MPEG-2 decoding to Rockchip VPU
+Date: Tue,  5 Feb 2019 17:24:07 -0300
+Message-ID: <20190205202417.16555-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAP71WjzWiCg-NXDnh58N-5O7kvNj+DDndSK04DeoPxFE2L8W0g@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Dechesne <nicolas.dechesne@linaro.org>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Andy Gross <andy.gross@linaro.org>, linux-leds@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, lkml <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, linux-arm-msm <linux-arm-msm@vger.kernel.org>, linux-soc@vger.kernel.org, Daniel Thompson <daniel.thompson@linaro.org>, Amit Kucheria <amit.kucheria@linaro.org>, Linus Walleij <linus.walleij@linaro.org>, Koen Kooi <koen.kooi@linaro.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue 05 Feb 11:00 PST 2019, Nicolas Dechesne wrote:
-
-> Hey Mani,
-> 
-> thanks for sending this out, it should have been just like that in the
-> first place ;)
-> 
-
-Thanks Nico for the confirmation, I will queue this for v5.2
-
-Regards,
-Bjorn
-
-> On Fri, Dec 21, 2018 at 3:36 AM Manivannan Sadhasivam
-> <manivannan.sadhasivam@linaro.org> wrote:
-> >
-> > On Mon, Oct 29, 2018 at 03:12:45PM +0530, Manivannan Sadhasivam wrote:
-> > > For all 96Boards, the following standard is used for onboard LEDs.
-> > >
-> > > green:user1  default-trigger: heartbeat
-> > > green:user2  default-trigger: mmc0/disk-activity(onboard-storage)
-> > > green:user3  default-trigger: mmc1 (SD-card)
-> > > green:user4  default-trigger: none, panic-indicator
-> > > yellow:wlan  default-trigger: phy0tx
-> > > blue:bt      default-trigger: hci0-power
-> > >
-> > > So lets adopt the same for APQ8016 SBC (Dragonboard410c), which is
-> > > one of the 96Boards CE platform.
-> > >
-> >
-> > Hello,
-> >
-> > Any update on this patch?
-> 
-> Reviewed-by: Nicolas Dechesne <nicolas.dechesne@linaro.org>
-> 
-> >
-> > Regards,
-> > Mani
-> >
-> > > Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> > > Acked-by: Amit Kucheria <amit.kucheria@linaro.org>
-> > > ---
-> > >  arch/arm64/boot/dts/qcom/apq8016-sbc.dtsi | 12 ++++++------
-> > >  1 file changed, 6 insertions(+), 6 deletions(-)
-> > >
-> > > diff --git a/arch/arm64/boot/dts/qcom/apq8016-sbc.dtsi b/arch/arm64/boot/dts/qcom/apq8016-sbc.dtsi
-> > > index 46feedf7c989..35f95154316b 100644
-> > > --- a/arch/arm64/boot/dts/qcom/apq8016-sbc.dtsi
-> > > +++ b/arch/arm64/boot/dts/qcom/apq8016-sbc.dtsi
-> > > @@ -300,28 +300,28 @@
-> > >                       compatible = "gpio-leds";
-> > >
-> > >                       led@1 {
-> > > -                             label = "apq8016-sbc:green:user1";
-> > > +                             label = "green:user1";
-> > >                               gpios = <&msmgpio 21 GPIO_ACTIVE_HIGH>;
-> > >                               linux,default-trigger = "heartbeat";
-> > >                               default-state = "off";
-> > >                       };
-> > >
-> > >                       led@2 {
-> > > -                             label = "apq8016-sbc:green:user2";
-> > > +                             label = "green:user2";
-> > >                               gpios = <&msmgpio 120 GPIO_ACTIVE_HIGH>;
-> > >                               linux,default-trigger = "mmc0";
-> > >                               default-state = "off";
-> > >                       };
-> > >
-> > >                       led@3 {
-> > > -                             label = "apq8016-sbc:green:user3";
-> > > +                             label = "green:user3";
-> > >                               gpios = <&pm8916_gpios 1 GPIO_ACTIVE_HIGH>;
-> > >                               linux,default-trigger = "mmc1";
-> > >                               default-state = "off";
-> > >                       };
-> > >
-> > >                       led@4 {
-> > > -                             label = "apq8016-sbc:green:user4";
-> > > +                             label = "green:user4";
-> > >                               gpios = <&pm8916_gpios 2 GPIO_ACTIVE_HIGH>;
-> > >                               linux,default-trigger = "none";
-> > >                               panic-indicator;
-> > > @@ -329,14 +329,14 @@
-> > >                       };
-> > >
-> > >                       led@5 {
-> > > -                             label = "apq8016-sbc:yellow:wlan";
-> > > +                             label = "yellow:wlan";
-> > >                               gpios = <&pm8916_mpps 2 GPIO_ACTIVE_HIGH>;
-> > >                               linux,default-trigger = "phy0tx";
-> > >                               default-state = "off";
-> > >                       };
-> > >
-> > >                       led@6 {
-> > > -                             label = "apq8016-sbc:blue:bt";
-> > > +                             label = "blue:bt";
-> > >                               gpios = <&pm8916_mpps 3 GPIO_ACTIVE_HIGH>;
-> > >                               linux,default-trigger = "bluetooth-power";
-> > >                               default-state = "off";
-> > > --
-> > > 2.17.1
-> > >
+VGhpcyBzZXJpZXMgaW50cm9kdWNlcyB0aGUgZGVjb2RpbmcgaW5mcmFzdHJ1Y3R1cmUgdGhhdCB3
+aWxsIGJlCnVzZWQgdG8gYWRkIHN1cHBvcnQgZm9yIG90aGVyIGNvZGVjcyBzdWNoIGFzIFZQOCwg
+VlA5IGFuZCBILjI2NC4KClRoZXJlIGFyZSBhIG51bWJlciBvZiB2NGwyLWNvbXBsaWFuY2UgaXNz
+dWVzLCB3aGljaCBJCndpbGwgYmUgYWRkcmVzc2luZyBzaG9ydGx5LiBGb3IgdGhvc2Ugd2FudGlu
+ZyB0byB0YWtlCmEgcGVlcCwgSSd2ZSBwYXN0ZWQgdGhlIHY0bDItY29tcGxpYW5jZSBpc3N1ZXMg
+aGVyZTogaHR0cDovL2l4LmlvLzFBZkouCgpNaW5vciBpc3N1ZXMgYXNpZGUsICJyZWxlYXNlIGVh
+cmx5IiB0aGV5IHNheSwgc28gaGVyZSBpdCBpcyEKCkFib3V0IHRoZSBKUEVHIGJvdW5jZSBidWZm
+ZXIsIHdlIGNhbiBwcm9iYWJseSBnZXQgcmlkIG9mIGl0LApidXQgZm9yIG5vdywgaXQncyBmaW5l
+IHRvIGtlZXAgaXQgYXMgaXQgd29uJ3QgYWZmZWN0IHZpZGVvIGRlY29kaW5nLgoKQWJvdXQgdGhl
+IG1lZGlhIGNvbnRyb2xsZXIgdG9wb2xvZ3kgY2hhbmdlLCB3aGljaCBpcyBubyBkb3VidAp0aGUg
+bmFzdGllc3QgY2hhbmdlIGluIHRoaXMgc2VyaWVzLCBpdCdzIGltcG9ydGFudCB0byBtZW50aW9u
+CnRoYXQgd2UgbmVlZCBtdWx0aXBsZSB2aWRlbyBpbnRlcmZhY2Ugbm9kZXM6IG9uZSB2aWRlbyBu
+b2RlCmZvciBlbmNvZGluZywgYW5kIG9uZSB2aWRlbyBub2RlIGZvciBkZWNvZGluZy4KClNpbmNl
+IHRoZSBWUFUgaXMgYSBzaW5nbGUgZW5naW5lLCBpdCBuZWVkcyBhIHNpbmdsZSBtZW0ybWVtIGRl
+dmljZQp0byBzZXJpYWxpemUgdGhlIGNvZGVjIGpvYnMgdGhydSBpdCwgdGFraW5nIGFkdmFudGFn
+ZSBvZiB0aGUKd2hvbGUgbWVtMm1lbSBpbmZyYXN0cnVjdHVyZS4KClRoaXMgd29ya3MgcGVyZmVj
+dGx5IHdlbGwsIGJ1dCByZXF1aXJlcyBhIHNvbWV3aGF0IGludm9sdmVkIHRvcG9sb2d5LgpGb3Ig
+dGhlIGVuY29kZXIgdGhlIGdyYXBoIGdvZXMgbGlrZSB0aGlzOgoK4pSM4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSQCuKUgiByb2NrY2hpcCxyazMzOTktdnB1LWVuYy1z
+b3VyY2Ug4pSCCuKUgiAgICAgICAgICAvZGV2L3ZpZGVvMCAgICAgICAgICAg4pSCCuKUlOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUmAogIOKUgwogIOKUgwogIOKWvAri
+lIzilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJAK4pSCICByb2NrY2hp
+cCxyazMzOTktdnB1LWVuYy1wcm9jICDilIIK4pSU4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSYCiAg4pSDCiAg4pSDCiAg4pa8CuKUjOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUkArilIIgIHJvY2tjaGlwLHJrMzM5OS12cHUtZW5jLXNpbmsg
+IOKUggrilIIgICAgICAgICAgL2Rldi92aWRlbzAgICAgICAgICAgIOKUggrilJTilIDilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJgKCkZvciB0aGUgZGVjb2RlciB0aGUgZ3Jh
+cGggZ29lcyBsaWtlIHRoaXM6CgrilIzilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lIDilIDilJAK4pSCIHJvY2tjaGlwLHJrMzM5OS12cHUtZGVjLXNvdXJjZSDilIIK4pSCICAgICAg
+ICAgIC9kZXYvdmlkZW8xICAgICAgICAgICDilIIK4pSU4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSYCiAg4pSDCiAg4pSDCiAg4pa8CuKUjOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUkArilIIgIHJvY2tjaGlwLHJrMzM5OS12cHUtZGVjLXBy
+b2MgIOKUggrilJTilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJgKICDi
+lIMKICDilIMKICDilrwK4pSM4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSQCuKUgiAgcm9ja2NoaXAscmszMzk5LXZwdS1kZWMtc2luayAg4pSCCuKUgiAgICAgICAgICAv
+ZGV2L3ZpZGVvMSAgICAgICAgICAg4pSCCuKUlOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUgOKUgOKUmAoKQm90aCBhcmUgdGllZCB0byB0aGUgc2FtZSBtZWRpYSBkZXZpY2UsCmku
+ZS4gL2Rldi9tZWRpYTAuIERvZXMgdGhpcyBjb21wbHkgd2l0aCB0aGUgbWVkaWEKY29udHJvbGxl
+ciBzcGVjaWZpY2F0aW9uPwoKVGhlIHBpeGVsIGZvcm1hdCBoZWxwZXJzIGRlc2VydmUgYSBkaXNj
+dXNzaW9uIG9mIGl0cyBvd24uCk5vdGUgdGhhdCB0aGVzZSBoZWxwZXJzIHdpbGwgYmUgdXNlZnVs
+IGZvciBwcm9iYWJseQptb3N0IFY0TCBkcml2ZXJzLiBTZWUgZm9yIGluc3RhbmNlLCB0aGlzIHJl
+Y2VudCBidWcKY2F1c2VkIGJ5IGJhZCBtYXRoIGluIHZpdmlkJ3Mgc2l6ZWltYWdlIGNhbGN1bGF0
+aW9uczoKCmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTA3OTYyMDEvCgpGaW5h
+bGx5LCBJIGhhdmUgdG8gdGhhbmsgSm9uYXMgS2FybG1hbiwgd2hvIGRpZCB0aGUgaW5pdGlhbApN
+UEVHLTIgZGVjb2Rpbmcgd29yayBhbmQgYWxzbyBmb3IgZ2V0dGluZyBtcHYrZmZtcGVnIHRvCndv
+cmsgdXNpbmcgdGhlIFJlcXVlc3QgQVBJLgoKVGhpcyBkcml2ZXIgY2FuIGJlIHRlc3RlZCB1c2lu
+ZyBtcHYrZmZtcGVnIGZvciB0aGUgdmlkZW8KZGVjb2Rpbmcgc2lkZSwgYW5kIHRoZSBQYW5mcm9z
+dCBtZXNhIGRyaXZlciBmb3IgcmVuZGVyaW5nLgoKSSBzaG91bGQgYmUgcG9zdGluZyBpbnN0cnVj
+dGlvbnMgdG8gc2V0IGFsbCBvZiB0aGlzIHVwLAphbmQgYWxzbyB3aWxsIGJlIHN1Ym1pdHRpbmcg
+dGhlIHN1cHBvcnQgZm9yIEgyNjQsIFZQOCBhbmQgVlA5LApob3BlZnVsbHkgdmVyeSBzb29uLgoK
+RXplcXVpZWwgR2FyY2lhICg5KToKICBtZWRpYTogSW50cm9kdWNlIGhlbHBlcnMgdG8gZmlsbCBw
+aXhlbCBmb3JtYXQgc3RydWN0cwogIHJvY2tjaGlwL3ZwdTogVXNlIHBpeGVsIGZvcm1hdCBoZWxw
+ZXJzCiAgcm9ja2NoaXAvdnB1OiBVc2UgdjRsMl9tMm1fYnVmX2NvcHlfZGF0YQogIHJvY2tjaGlw
+L3ZwdTogQ2xlYW51cCBtYWNyb2Jsb2NrIGFsaWdubWVudAogIHJvY2tjaGlwL3ZwdTogQ2xlYW51
+cCBKUEVHIGJvdW5jZSBidWZmZXIgbWFuYWdlbWVudAogIHJvY2tjaGlwL3ZwdTogT3Blbi1jb2Rl
+IG1lZGlhIGNvbnRyb2xsZXIgcmVnaXN0ZXIKICByb2NrY2hpcC92cHU6IFN1cHBvcnQgdGhlIFJl
+cXVlc3QgQVBJCiAgcm9ja2NoaXAvdnB1OiBBZGQgZGVjb2RlciBib2lsZXJwbGF0ZQogIHJvY2tj
+aGlwL3ZwdTogQWRkIHN1cHBvcnQgZm9yIG5vbi1zdGFuZGFyZCBjb250cm9scwoKSm9uYXMgS2Fy
+bG1hbiAoMSk6CiAgcm9ja2NoaXAvdnB1OiBBZGQgc3VwcG9ydCBmb3IgTVBFRy0yIGRlY29kaW5n
+CgogZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvTWFrZWZpbGUgICAgICAgICAgICAgIHwgICAyICst
+CiBkcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWNvbW1vbi5jICAgICAgICAgfCAgNzEgKysr
+CiBkcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWZvdXJjYy5jICAgICAgICAgfCAxMDkgKysr
+KwogZHJpdmVycy9zdGFnaW5nL21lZGlhL3JvY2tjaGlwL3ZwdS9NYWtlZmlsZSAgIHwgICA1ICst
+CiAuLi4vbWVkaWEvcm9ja2NoaXAvdnB1L3JrMzI4OF92cHVfaHcuYyAgICAgICAgfCAgIDQgKy0K
+IC4uLi9yb2NrY2hpcC92cHUvcmszMjg4X3ZwdV9od19qcGVnX2VuYy5jICAgICB8ICAgNCArLQog
+Li4uL21lZGlhL3JvY2tjaGlwL3ZwdS9yazMzOTlfdnB1X2h3LmMgICAgICAgIHwgIDYxICstCiAu
+Li4vcm9ja2NoaXAvdnB1L3JrMzM5OV92cHVfaHdfanBlZ19lbmMuYyAgICAgfCAgMTAgKy0KIC4u
+Li9yb2NrY2hpcC92cHUvcmszMzk5X3ZwdV9od19tcGVnMl9kZWMuYyAgICB8IDI2MyArKysrKysr
+KysKIC4uLi9zdGFnaW5nL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHUuaCB8IDExNSAr
+KystCiAuLi4vbWVkaWEvcm9ja2NoaXAvdnB1L3JvY2tjaGlwX3ZwdV9jb21tb24uaCAgfCAgMTAg
+KwogLi4uL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfZGVjLmMgICAgIHwgNTU3ICsr
+KysrKysrKysrKysrKysrKwogLi4uL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfZHJ2
+LmMgICAgIHwgNDI2ICsrKysrKysrKysrKy0tCiAuLi4vbWVkaWEvcm9ja2NoaXAvdnB1L3JvY2tj
+aGlwX3ZwdV9lbmMuYyAgICAgfCAxNTIgKystLS0KIC4uLi9tZWRpYS9yb2NrY2hpcC92cHUvcm9j
+a2NoaXBfdnB1X2h3LmggICAgICB8ICA0MiArKwogLi4uL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2Nr
+Y2hpcF92cHVfanBlZy5jICAgIHwgIDI1ICsKIC4uLi9tZWRpYS9yb2NrY2hpcC92cHUvcm9ja2No
+aXBfdnB1X21wZWcyLmMgICB8ICA2MSArKwogaW5jbHVkZS9tZWRpYS92NGwyLWNvbW1vbi5oICAg
+ICAgICAgICAgICAgICAgIHwgICA1ICsKIGluY2x1ZGUvbWVkaWEvdjRsMi1mb3VyY2MuaCAgICAg
+ICAgICAgICAgICAgICB8ICA1MyArKwogMTkgZmlsZXMgY2hhbmdlZCwgMTgwMyBpbnNlcnRpb25z
+KCspLCAxNzIgZGVsZXRpb25zKC0pCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZWRpYS92
+NGwyLWNvcmUvdjRsMi1mb3VyY2MuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2lu
+Zy9tZWRpYS9yb2NrY2hpcC92cHUvcmszMzk5X3ZwdV9od19tcGVnMl9kZWMuYwogY3JlYXRlIG1v
+ZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9yb2NrY2hpcC92cHUvcm9ja2NoaXBfdnB1
+X2RlYy5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JvY2tjaGlw
+L3ZwdS9yb2NrY2hpcF92cHVfbXBlZzIuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGluY2x1ZGUvbWVk
+aWEvdjRsMi1mb3VyY2MuaAoKLS0gCjIuMjAuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
