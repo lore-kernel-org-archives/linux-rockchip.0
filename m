@@ -1,75 +1,110 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH] drm/rockchip: Use drm_fbdev_generic_setup()
-Date: Mon, 4 Feb 2019 10:48:57 -0600
-Message-ID: <CAL_Jsq+s=Y1P+0S=Q=+UgrXZQQO4mLrvEg7TmzWfKfXJmPCuPg@mail.gmail.com>
-References: <20190202170711.29471-1-robh@kernel.org>
- <bebcbda6-1059-857b-4e7d-9751248f6804@tronnes.org>
- <CAL_JsqL-7bOCS+T1xuJBmSgwRN1shCSNeQPxreCH76_s9hEYWw@mail.gmail.com>
+From: Nicolas Dechesne <nicolas.dechesne@linaro.org>
+Subject: Re: [PATCH v3 7/7] arm64: dts: qcom: apq8016-sbc: Standardize LED labels
+Date: Tue, 5 Feb 2019 20:00:43 +0100
+Message-ID: <CAP71WjzWiCg-NXDnh58N-5O7kvNj+DDndSK04DeoPxFE2L8W0g@mail.gmail.com>
+References: <20181029094245.7886-1-manivannan.sadhasivam@linaro.org>
+ <20181029094245.7886-8-manivannan.sadhasivam@linaro.org> <20181221023554.GB3233@Mani-XPS-13-9360>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAL_JsqL-7bOCS+T1xuJBmSgwRN1shCSNeQPxreCH76_s9hEYWw@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: =?UTF-8?Q?Noralf_Tr=C3=B8nnes?= <noralf@tronnes.org>
-Cc: David Airlie <airlied@linux.ie>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20181221023554.GB3233@Mani-XPS-13-9360>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: Andy Gross <andy.gross@linaro.org>, linux-leds@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, lkml <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, linux-arm-msm <linux-arm-msm@vger.kernel.org>, linux-soc@vger.kernel.org, Daniel Thompson <daniel.thompson@linaro.org>, Amit Kucheria <amit.kucheria@linaro.org>, Linus Walleij <linus.walleij@linaro.org>, Koen Kooi <koen.kooi@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCBGZWIgNCwgMjAxOSBhdCA5OjAxIEFNIFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5v
-cmc+IHdyb3RlOgo+Cj4gT24gU2F0LCBGZWIgMiwgMjAxOSBhdCAxMjoyMiBQTSBOb3JhbGYgVHLD
-uG5uZXMgPG5vcmFsZkB0cm9ubmVzLm9yZz4gd3JvdGU6Cj4gPiBEZW4gMDIuMDIuMjAxOSAxOC4w
-Nywgc2tyZXYgUm9iIEhlcnJpbmc6Cj4gPiA+IE90aGVyIHRoYW4gdXNpbmcgYSByb2NrY2hpcF9n
-ZW1fb2JqZWN0IGRpcmVjdGx5LCB0aGUgUm9ja2NoaXAgZmJkZXYKPiA+ID4gc2V0dXAgaGFzIG5v
-dGhpbmcgc3BlY2lhbCBhbmQgY2FuIGJlIGNvbnZlcnRlZCB0byB1c2UgdGhlIGdlbmVyaWMgZmJk
-ZXYKPiA+ID4gZW11bGF0aW9uIGluc3RlYWQuCj4KPiBbLi4uXQo+Cj4gPiA+IC1zdGF0aWMgaW50
-IHJvY2tjaGlwX2RybV9mYmRldl9jcmVhdGUoc3RydWN0IGRybV9mYl9oZWxwZXIgKmhlbHBlciwK
-PiA+ID4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgZHJtX2ZiX2hl
-bHBlcl9zdXJmYWNlX3NpemUgKnNpemVzKQo+ID4gPiAtewo+ID4gPiAtICAgICBzdHJ1Y3Qgcm9j
-a2NoaXBfZHJtX3ByaXZhdGUgKnByaXZhdGUgPSB0b19kcm1fcHJpdmF0ZShoZWxwZXIpOwo+ID4g
-PiAtICAgICBzdHJ1Y3QgZHJtX21vZGVfZmJfY21kMiBtb2RlX2NtZCA9IHsgMCB9Owo+ID4gPiAt
-ICAgICBzdHJ1Y3QgZHJtX2RldmljZSAqZGV2ID0gaGVscGVyLT5kZXY7Cj4gPiA+IC0gICAgIHN0
-cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICpya19vYmo7Cj4gPiA+IC0gICAgIHN0cnVjdCBkcm1f
-ZnJhbWVidWZmZXIgKmZiOwo+ID4gPiAtICAgICB1bnNpZ25lZCBpbnQgYnl0ZXNfcGVyX3BpeGVs
-Owo+ID4gPiAtICAgICB1bnNpZ25lZCBsb25nIG9mZnNldDsKPiA+ID4gLSAgICAgc3RydWN0IGZi
-X2luZm8gKmZiaTsKPiA+ID4gLSAgICAgc2l6ZV90IHNpemU7Cj4gPiA+IC0gICAgIGludCByZXQ7
-Cj4gPiA+IC0KPiA+ID4gLSAgICAgYnl0ZXNfcGVyX3BpeGVsID0gRElWX1JPVU5EX1VQKHNpemVz
-LT5zdXJmYWNlX2JwcCwgOCk7Cj4gPiA+IC0KPiA+ID4gLSAgICAgbW9kZV9jbWQud2lkdGggPSBz
-aXplcy0+c3VyZmFjZV93aWR0aDsKPiA+ID4gLSAgICAgbW9kZV9jbWQuaGVpZ2h0ID0gc2l6ZXMt
-PnN1cmZhY2VfaGVpZ2h0Owo+ID4gPiAtICAgICBtb2RlX2NtZC5waXRjaGVzWzBdID0gc2l6ZXMt
-PnN1cmZhY2Vfd2lkdGggKiBieXRlc19wZXJfcGl4ZWw7Cj4gPiA+IC0gICAgIG1vZGVfY21kLnBp
-eGVsX2Zvcm1hdCA9IGRybV9tb2RlX2xlZ2FjeV9mYl9mb3JtYXQoc2l6ZXMtPnN1cmZhY2VfYnBw
-LAo+ID4gPiAtICAgICAgICAgICAgIHNpemVzLT5zdXJmYWNlX2RlcHRoKTsKPiA+ID4gLQo+ID4g
-PiAtICAgICBzaXplID0gbW9kZV9jbWQucGl0Y2hlc1swXSAqIG1vZGVfY21kLmhlaWdodDsKPiA+
-ID4gLQo+ID4gPiAtICAgICBya19vYmogPSByb2NrY2hpcF9nZW1fY3JlYXRlX29iamVjdChkZXYs
-IHNpemUsIHRydWUpOwo+ID4KPiA+IEkgZG9uJ3QgdGhpbmsgdGhlIGdlbmVyaWMgZW11bGF0aW9u
-IGluIGl0J3MgY3VycmVudCBmb3JtIHdpbGwgd29yayBmb3IKPiA+IHJvY2tjaGlwLiByb2NrY2hp
-cCB0cmVhdHMgZmJkZXYgYnVmZmVycyBhbmQgZHVtYiBidWZmZXJzIGRpZmZlcmVudGx5LiBJZgo+
-ID4gaXQgdXNlcyBETUEgYnVmZmVycywgdGhlbiB0aGUgZHVtYiBidWZmZXIgY2FuJ3QgZ2V0IGEg
-dmlydHVhbCBhZGRyZXNzLgo+Cj4gWWVzLCB5b3UgYXJlIHJpZ2h0LiBJIHRlc3RlZCB0aGUgaW9t
-bXUgY2FzZS4KPgo+ID4gRnJvbSByb2NrY2hpcF9nZW1fYWxsb2NfZG1hKCk6Cj4gPgo+ID4gICAg
-ICAgICBpZiAoIWFsbG9jX2ttYXApCj4gPiAgICAgICAgICAgICAgICAgcmtfb2JqLT5kbWFfYXR0
-cnMgfD0gRE1BX0FUVFJfTk9fS0VSTkVMX01BUFBJTkc7Cj4gPgo+ID4gRnJvbSByb2NrY2hpcF9n
-ZW1fcHJpbWVfdm1hcCgpOgo+ID4KPiA+ICAgICAgICAgaWYgKHJrX29iai0+ZG1hX2F0dHJzICYg
-RE1BX0FUVFJfTk9fS0VSTkVMX01BUFBJTkcpCj4gPiAgICAgICAgICAgICAgICAgcmV0dXJuIE5V
-TEw7Cj4gPgo+ID4gTWF5YmUgaXQncyBwb3NzaWJsZSB0byB2bWFwIGEgYnVmZmVyIGNyZWF0ZWQg
-dXNpbmcgZG1hX2FsbG9jX2F0dHJzKCkKPiA+IGFmdGVyIHRoZSBhbGxvY2F0aW9uPwo+Cj4gSXQg
-c2hvdWxkIGJlIHBvc3NpYmxlIEkgdGhpbmsgYXMgdGhhdCBpcyB3aGF0Cj4gZHJtX2dlbV9jbWFf
-cHJpbWVfaW1wb3J0X3NnX3RhYmxlX3ZtYXAoKSBkb2VzLiBPbmUgcHJvYmxlbSB0aG91Z2ggaXMK
-PiB5b3UgbWF5IGFscmVhZHkgaGF2ZSBhIG1hcHBpbmcgYmVjYXVzZSBETUFfQVRUUl9OT19LRVJO
-RUxfTUFQUElORyBpcwo+IGp1c3QgYSBzdWdnZXN0aW9uIChvbmx5IDMyLWJpdCBBUk0gaW1wbGVt
-ZW50cykgYW5kIHRoZXJlJ3Mgbm90IGEgd2F5Cj4gdG8gdGVsbCBpZiB5b3UgZ290IGEgbWFwcGlu
-ZyBvciBub3QuIE1heWJlIGl0J3Mgbm90IGFsbCB0aGF0IGltcG9ydGFudAo+IGlmIHRoZXJlIGFy
-ZSAyIG1hcHBpbmdzIGJlY2F1c2UgSSB0aGluayBvbmx5IGZiY29uIG5lZWRzIGEga2VybmVsCj4g
-bWFwcGluZy4KCkFzIGFub3RoZXIgZGF0YSBwb2ludCwgZXh5bm9zIGFsd2F5cyB1c2VzIERNQV9B
-VFRSX05PX0tFUk5FTF9NQVBQSU5HCmFuZCB0aGVuIHZtYXAncyBpdHMgZmJkZXYgYnVmZmVyLgoK
-Um9iCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hey Mani,
+
+thanks for sending this out, it should have been just like that in the
+first place ;)
+
+On Fri, Dec 21, 2018 at 3:36 AM Manivannan Sadhasivam
+<manivannan.sadhasivam@linaro.org> wrote:
+>
+> On Mon, Oct 29, 2018 at 03:12:45PM +0530, Manivannan Sadhasivam wrote:
+> > For all 96Boards, the following standard is used for onboard LEDs.
+> >
+> > green:user1  default-trigger: heartbeat
+> > green:user2  default-trigger: mmc0/disk-activity(onboard-storage)
+> > green:user3  default-trigger: mmc1 (SD-card)
+> > green:user4  default-trigger: none, panic-indicator
+> > yellow:wlan  default-trigger: phy0tx
+> > blue:bt      default-trigger: hci0-power
+> >
+> > So lets adopt the same for APQ8016 SBC (Dragonboard410c), which is
+> > one of the 96Boards CE platform.
+> >
+>
+> Hello,
+>
+> Any update on this patch?
+
+Reviewed-by: Nicolas Dechesne <nicolas.dechesne@linaro.org>
+
+>
+> Regards,
+> Mani
+>
+> > Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> > Acked-by: Amit Kucheria <amit.kucheria@linaro.org>
+> > ---
+> >  arch/arm64/boot/dts/qcom/apq8016-sbc.dtsi | 12 ++++++------
+> >  1 file changed, 6 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/arch/arm64/boot/dts/qcom/apq8016-sbc.dtsi b/arch/arm64/boot/dts/qcom/apq8016-sbc.dtsi
+> > index 46feedf7c989..35f95154316b 100644
+> > --- a/arch/arm64/boot/dts/qcom/apq8016-sbc.dtsi
+> > +++ b/arch/arm64/boot/dts/qcom/apq8016-sbc.dtsi
+> > @@ -300,28 +300,28 @@
+> >                       compatible = "gpio-leds";
+> >
+> >                       led@1 {
+> > -                             label = "apq8016-sbc:green:user1";
+> > +                             label = "green:user1";
+> >                               gpios = <&msmgpio 21 GPIO_ACTIVE_HIGH>;
+> >                               linux,default-trigger = "heartbeat";
+> >                               default-state = "off";
+> >                       };
+> >
+> >                       led@2 {
+> > -                             label = "apq8016-sbc:green:user2";
+> > +                             label = "green:user2";
+> >                               gpios = <&msmgpio 120 GPIO_ACTIVE_HIGH>;
+> >                               linux,default-trigger = "mmc0";
+> >                               default-state = "off";
+> >                       };
+> >
+> >                       led@3 {
+> > -                             label = "apq8016-sbc:green:user3";
+> > +                             label = "green:user3";
+> >                               gpios = <&pm8916_gpios 1 GPIO_ACTIVE_HIGH>;
+> >                               linux,default-trigger = "mmc1";
+> >                               default-state = "off";
+> >                       };
+> >
+> >                       led@4 {
+> > -                             label = "apq8016-sbc:green:user4";
+> > +                             label = "green:user4";
+> >                               gpios = <&pm8916_gpios 2 GPIO_ACTIVE_HIGH>;
+> >                               linux,default-trigger = "none";
+> >                               panic-indicator;
+> > @@ -329,14 +329,14 @@
+> >                       };
+> >
+> >                       led@5 {
+> > -                             label = "apq8016-sbc:yellow:wlan";
+> > +                             label = "yellow:wlan";
+> >                               gpios = <&pm8916_mpps 2 GPIO_ACTIVE_HIGH>;
+> >                               linux,default-trigger = "phy0tx";
+> >                               default-state = "off";
+> >                       };
+> >
+> >                       led@6 {
+> > -                             label = "apq8016-sbc:blue:bt";
+> > +                             label = "blue:bt";
+> >                               gpios = <&pm8916_mpps 3 GPIO_ACTIVE_HIGH>;
+> >                               linux,default-trigger = "bluetooth-power";
+> >                               default-state = "off";
+> > --
+> > 2.17.1
+> >
