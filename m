@@ -1,67 +1,37 @@
 From: Yizhuo <yzhai003@ucr.edu>
-Subject: [PATCH] phy: Variable "caldone" in function rockchip_emmc_phy_power()
- could be uninitialized
-Date: Tue,  5 Feb 2019 17:47:33 -0800
-Message-ID: <20190206014733.21094-1-yzhai003@ucr.edu>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-Cc: csong@cs.ucr.edu, Heiko Stuebner <heiko@sntech.de>, zhiyunq@cs.ucr.edu, linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>, Yizhuo <yzhai003@ucr.edu>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] phy: rockchip-typec: Variable "val" of function rockchip_usb3_phy_power_on() could be uninitialized
+Date: Tue,  5 Feb 2019 18:18:10 -0800
+Message-ID: <20190206021810.21596-1-yzhai003@ucr.edu>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: csong@cs.ucr.edu, zhiyunq@cs.ucr.edu, Yizhuo <yzhai003@ucr.edu>, Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In function rockchip_emmc_phy_power(), local variable "caldone"
-could be uninitialized if function regmap_read() returns -EINVAL.
-However, it will be used directly in the later context, which
-is potentially unsafe.
+In function rockchip_usb3_phy_power_on(), local variable
+"val" could be uninitialized if function regmap_read()
+returns -EINVAL. However, this value is directly used in
+later context. This is potentially unsafe.
 
 Signed-off-by: Yizhuo <yzhai003@ucr.edu>
 ---
- drivers/phy/rockchip/phy-rockchip-emmc.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-typec.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
-index f1b24f18e9b2..ca921ae08309 100644
---- a/drivers/phy/rockchip/phy-rockchip-emmc.c
-+++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
-@@ -85,11 +85,12 @@ struct rockchip_emmc_phy {
- static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
- {
- 	struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
--	unsigned int caldone;
-+	unsigned int caldone = 0;
- 	unsigned int dllrdy;
- 	unsigned int freqsel = PHYCTRL_FREQSEL_200M;
- 	unsigned long rate;
- 	unsigned long timeout;
-+	int err;
+diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
+index a958c9bced01..b1e24418cb2d 100644
+--- a/drivers/phy/rockchip/phy-rockchip-typec.c
++++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+@@ -716,7 +716,10 @@ static int rockchip_usb3_phy_power_on(struct phy *phy)
  
- 	/*
- 	 * Keep phyctrl_pdb and phyctrl_endll low to allow
-@@ -164,9 +165,14 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
- 	 * wait 5us for calpad busy trimming
- 	 */
- 	udelay(5);
--	regmap_read(rk_phy->reg_base,
-+	err = regmap_read(rk_phy->reg_base,
- 		    rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
- 		    &caldone);
-+	if (err) {
-+		pr_err("Failed to read status.\n");
-+		return err;
-+	}
+ 	/* wait TCPHY for pipe ready */
+ 	for (timeout = 0; timeout < 100; timeout++) {
+-		regmap_read(tcphy->grf_regs, reg->offset, &val);
++		ret = regmap_read(tcphy->grf_regs, reg->offset, &val);
++		if (ret)
++			goto unlock_ret;
 +
- 	caldone = (caldone >> PHYCTRL_CALDONE_SHIFT) & PHYCTRL_CALDONE_MASK;
- 	if (caldone != PHYCTRL_CALDONE_DONE) {
- 		pr_err("rockchip_emmc_phy_power: caldone timeout.\n");
+ 		if (!(val & BIT(reg->enable_bit))) {
+ 			tcphy->mode |= new_mode & (MODE_DFP_USB | MODE_UFP_USB);
+ 			goto unlock_ret;
 -- 
 2.17.1
