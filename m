@@ -1,36 +1,67 @@
-From: Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [GIT PULL] Rockchip clock updates for 5.1
-Date: Tue, 05 Feb 2019 14:08:23 -0800
-Message-ID: <154940450309.169292.16565688865245958654@swboyd.mtv.corp.google.com>
-References: <48408534.cOKhDiQbmB@phil>
+From: Yizhuo <yzhai003@ucr.edu>
+Subject: [PATCH] phy: Variable "caldone" in function rockchip_emmc_phy_power()
+ could be uninitialized
+Date: Tue,  5 Feb 2019 17:47:33 -0800
+Message-ID: <20190206014733.21094-1-yzhai003@ucr.edu>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <48408534.cOKhDiQbmB@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Cc: csong@cs.ucr.edu, Heiko Stuebner <heiko@sntech.de>, zhiyunq@cs.ucr.edu, linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>, Yizhuo <yzhai003@ucr.edu>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Heiko Stuebner (2019-02-01 03:17:47)
-> Hi Mike, Stephen,
-> 
-> looks I can re-use my introduction from 4.20 and 5.0 - no big changes
-> again this time.
-> 
-> A rate_parent flag and some fixup for the fractional part of a PLL
-> 
-> So please pull.
+In function rockchip_emmc_phy_power(), local variable "caldone"
+could be uninitialized if function regmap_read() returns -EINVAL.
+However, it will be used directly in the later context, which
+is potentially unsafe.
 
-Thanks. Pulled into clk-next. If you like I can pick patches directly
-from list if you send out a reviewed-by tag on the patches. I'm happy
-either way.
+Signed-off-by: Yizhuo <yzhai003@ucr.edu>
+---
+ drivers/phy/rockchip/phy-rockchip-emmc.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
+index f1b24f18e9b2..ca921ae08309 100644
+--- a/drivers/phy/rockchip/phy-rockchip-emmc.c
++++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
+@@ -85,11 +85,12 @@ struct rockchip_emmc_phy {
+ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+ {
+ 	struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
+-	unsigned int caldone;
++	unsigned int caldone = 0;
+ 	unsigned int dllrdy;
+ 	unsigned int freqsel = PHYCTRL_FREQSEL_200M;
+ 	unsigned long rate;
+ 	unsigned long timeout;
++	int err;
+ 
+ 	/*
+ 	 * Keep phyctrl_pdb and phyctrl_endll low to allow
+@@ -164,9 +165,14 @@ static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+ 	 * wait 5us for calpad busy trimming
+ 	 */
+ 	udelay(5);
+-	regmap_read(rk_phy->reg_base,
++	err = regmap_read(rk_phy->reg_base,
+ 		    rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
+ 		    &caldone);
++	if (err) {
++		pr_err("Failed to read status.\n");
++		return err;
++	}
++
+ 	caldone = (caldone >> PHYCTRL_CALDONE_SHIFT) & PHYCTRL_CALDONE_MASK;
+ 	if (caldone != PHYCTRL_CALDONE_DONE) {
+ 		pr_err("rockchip_emmc_phy_power: caldone timeout.\n");
+-- 
+2.17.1
