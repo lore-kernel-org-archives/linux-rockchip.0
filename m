@@ -1,168 +1,208 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: [PATCH] arm64: dts: rockchip: Add on-board WiFi/BT support for Rock960 boards
-Date: Thu,  7 Feb 2019 11:23:49 +0530
-Message-ID: <20190207055349.27919-1-manivannan.sadhasivam@linaro.org>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Subject: Re: [PATCHv2 1/9] mm: Introduce new vm_insert_range and
+ vm_insert_range_buggy API
+Date: Thu, 7 Feb 2019 21:19:47 +0530
+Message-ID: <CAFqt6za9xA_8OKiaaHXcO9go+RtPdjLY5Bz_fgQL+DZbermNhA@mail.gmail.com>
+References: <20190131030812.GA2174@jordon-HP-15-Notebook-PC> <20190131083842.GE28876@rapoport-lnx>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190131083842.GE28876@rapoport-lnx>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, ezequiel@collabora.com, tom@vamrs.com, dev@vamrs.com, linux-kernel@vger.kernel.org, mani@kernel.org, pbrobinson@gmail.com, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: Mike Rapoport <rppt@linux.ibm.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>, Matthew Wilcox <willy@infradead.org>, Michal Hocko <mhocko@suse.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, vbabka@suse.cz, Rik van Riel <riel@surriel.com>, Stephen Rothwell <sfr@canb.auug.org.au>, rppt@linux.vnet.ibm.com, Peter Zijlstra <peterz@infradead.org>, Russell King - ARM Linux <linux@armlinux.org.uk>, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, Kees Cook <keescook@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, Kyungmin Park <kyungmin.park@samsung.com>, mchehab@kernel.org, Boris Ostrovsky <boris.ost>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add on-board WiFi/BT support for Rock960 boards such as Rock960 based
-on AP6356S and Ficus based on AP6354 wireless modules.
+Hi Mike,
 
-Firmwares for the respective boards are available here:
+On Thu, Jan 31, 2019 at 2:09 PM Mike Rapoport <rppt@linux.ibm.com> wrote:
+>
+> On Thu, Jan 31, 2019 at 08:38:12AM +0530, Souptick Joarder wrote:
+> > Previouly drivers have their own way of mapping range of
+> > kernel pages/memory into user vma and this was done by
+> > invoking vm_insert_page() within a loop.
+> >
+> > As this pattern is common across different drivers, it can
+> > be generalized by creating new functions and use it across
+> > the drivers.
+> >
+> > vm_insert_range() is the API which could be used to mapped
+> > kernel memory/pages in drivers which has considered vm_pgoff
+> >
+> > vm_insert_range_buggy() is the API which could be used to map
+> > range of kernel memory/pages in drivers which has not considered
+> > vm_pgoff. vm_pgoff is passed default as 0 for those drivers.
+> >
+> > We _could_ then at a later "fix" these drivers which are using
+> > vm_insert_range_buggy() to behave according to the normal vm_pgoff
+> > offsetting simply by removing the _buggy suffix on the function
+> > name and if that causes regressions, it gives us an easy way to revert.
+> >
+> > Signed-off-by: Souptick Joarder <jrdr.linux@gmail.com>
+> > Suggested-by: Russell King <linux@armlinux.org.uk>
+> > Suggested-by: Matthew Wilcox <willy@infradead.org>
+> > ---
+> >  include/linux/mm.h |  4 +++
+> >  mm/memory.c        | 81 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+> >  mm/nommu.c         | 14 ++++++++++
+> >  3 files changed, 99 insertions(+)
+> >
+> > diff --git a/include/linux/mm.h b/include/linux/mm.h
+> > index 80bb640..25752b0 100644
+> > --- a/include/linux/mm.h
+> > +++ b/include/linux/mm.h
+> > @@ -2565,6 +2565,10 @@ unsigned long change_prot_numa(struct vm_area_struct *vma,
+> >  int remap_pfn_range(struct vm_area_struct *, unsigned long addr,
+> >                       unsigned long pfn, unsigned long size, pgprot_t);
+> >  int vm_insert_page(struct vm_area_struct *, unsigned long addr, struct page *);
+> > +int vm_insert_range(struct vm_area_struct *vma, struct page **pages,
+> > +                             unsigned long num);
+> > +int vm_insert_range_buggy(struct vm_area_struct *vma, struct page **pages,
+> > +                             unsigned long num);
+> >  vm_fault_t vmf_insert_pfn(struct vm_area_struct *vma, unsigned long addr,
+> >                       unsigned long pfn);
+> >  vm_fault_t vmf_insert_pfn_prot(struct vm_area_struct *vma, unsigned long addr,
+> > diff --git a/mm/memory.c b/mm/memory.c
+> > index e11ca9d..0a4bf57 100644
+> > --- a/mm/memory.c
+> > +++ b/mm/memory.c
+> > @@ -1520,6 +1520,87 @@ int vm_insert_page(struct vm_area_struct *vma, unsigned long addr,
+> >  }
+> >  EXPORT_SYMBOL(vm_insert_page);
+> >
+> > +/**
+> > + * __vm_insert_range - insert range of kernel pages into user vma
+> > + * @vma: user vma to map to
+> > + * @pages: pointer to array of source kernel pages
+> > + * @num: number of pages in page array
+> > + * @offset: user's requested vm_pgoff
+> > + *
+> > + * This allows drivers to insert range of kernel pages they've allocated
+> > + * into a user vma.
+> > + *
+> > + * If we fail to insert any page into the vma, the function will return
+> > + * immediately leaving any previously inserted pages present.  Callers
+> > + * from the mmap handler may immediately return the error as their caller
+> > + * will destroy the vma, removing any successfully inserted pages. Other
+> > + * callers should make their own arrangements for calling unmap_region().
+> > + *
+> > + * Context: Process context.
+> > + * Return: 0 on success and error code otherwise.
+> > + */
+> > +static int __vm_insert_range(struct vm_area_struct *vma, struct page **pages,
+> > +                             unsigned long num, unsigned long offset)
+> > +{
+> > +     unsigned long count = vma_pages(vma);
+> > +     unsigned long uaddr = vma->vm_start;
+> > +     int ret, i;
+> > +
+> > +     /* Fail if the user requested offset is beyond the end of the object */
+> > +     if (offset > num)
+> > +             return -ENXIO;
+> > +
+> > +     /* Fail if the user requested size exceeds available object size */
+> > +     if (count > num - offset)
+> > +             return -ENXIO;
+> > +
+> > +     for (i = 0; i < count; i++) {
+> > +             ret = vm_insert_page(vma, uaddr, pages[offset + i]);
+> > +             if (ret < 0)
+> > +                     return ret;
+> > +             uaddr += PAGE_SIZE;
+> > +     }
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +/**
+> > + * vm_insert_range - insert range of kernel pages starts with non zero offset
+> > + * @vma: user vma to map to
+> > + * @pages: pointer to array of source kernel pages
+> > + * @num: number of pages in page array
+> > + *
+> > + * Maps an object consisting of `num' `pages', catering for the user's
+> > + * requested vm_pgoff
+> > + *
+>
+> The elaborate description you've added to __vm_insert_range() is better put
+> here, as this is the "public" function.
+>
+> > + * Context: Process context. Called by mmap handlers.
+> > + * Return: 0 on success and error code otherwise.
+> > + */
+> > +int vm_insert_range(struct vm_area_struct *vma, struct page **pages,
+> > +                             unsigned long num)
+> > +{
+> > +     return __vm_insert_range(vma, pages, num, vma->vm_pgoff);
+> > +}
+> > +EXPORT_SYMBOL(vm_insert_range);
+> > +
+> > +/**
+> > + * vm_insert_range_buggy - insert range of kernel pages starts with zero offset
+> > + * @vma: user vma to map to
+> > + * @pages: pointer to array of source kernel pages
+> > + * @num: number of pages in page array
+> > + *
+> > + * Maps a set of pages, always starting at page[0]
+>
+> Here I'd add something like:
+>
+> Similar to vm_insert_range(), except that it explicitly sets @vm_pgoff to
+> 0. This function is intended for the drivers that did not consider
+> @vm_pgoff.
 
-http://people.linaro.org/~manivannan.sadhasivam/rock960_wifi/
-http://people.linaro.org/~manivannan.sadhasivam/ficus_wifi/
+Just thought to take opinion for documentation before placing it in v3.
+Does it looks fine ?
 
-Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
----
- .../boot/dts/rockchip/rk3399-rock960.dtsi     | 96 ++++++++++++++++++-
- 1 file changed, 95 insertions(+), 1 deletion(-)
++/**
++ * __vm_insert_range - insert range of kernel pages into user vma
++ * @vma: user vma to map to
++ * @pages: pointer to array of source kernel pages
++ * @num: number of pages in page array
++ * @offset: user's requested vm_pgoff
++ *
++ * This allow drivers to insert range of kernel pages into a user vma.
++ *
++ * Return: 0 on success and error code otherwise.
++ */
++static int __vm_insert_range(struct vm_area_struct *vma, struct page **pages,
++                               unsigned long num, unsigned long offset)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-index 56abbb08c133..1b2f7cd82244 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-@@ -9,6 +9,15 @@
- #include "rk3399-opp.dtsi"
- 
- / {
-+	sdio_pwrseq: sdio-pwrseq {
-+		compatible = "mmc-pwrseq-simple";
-+		clocks = <&rk808 1>;
-+		clock-names = "ext_clock";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_enable_h>;
-+		reset-gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
-+	};
-+
- 	vcc1v8_s0: vcc1v8-s0 {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc1v8_s0";
-@@ -362,6 +371,20 @@
- };
- 
- &pinctrl {
-+	bt {
-+		bt_enable_h: bt-enable-h {
-+			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		bt_host_wake_l: bt-host-wake-l {
-+			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		bt_wake_l: bt-wake-l {
-+			rockchip,pins = <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	sdmmc {
- 		sdmmc_bus1: sdmmc-bus1 {
- 			rockchip,pins =
-@@ -387,6 +410,26 @@
- 		};
- 	};
- 
-+	sdio0 {
-+		sdio0_bus4: sdio0-bus4 {
-+			rockchip,pins =
-+				<2 20 RK_FUNC_1 &pcfg_pull_up_20ma>,
-+				<2 21 RK_FUNC_1 &pcfg_pull_up_20ma>,
-+				<2 22 RK_FUNC_1 &pcfg_pull_up_20ma>,
-+				<2 23 RK_FUNC_1 &pcfg_pull_up_20ma>;
-+		};
-+
-+		sdio0_cmd: sdio0-cmd {
-+			rockchip,pins =
-+				<2 24 RK_FUNC_1 &pcfg_pull_up_20ma>;
-+		};
-+
-+		sdio0_clk: sdio0-clk {
-+			rockchip,pins =
-+				<2 25 RK_FUNC_1 &pcfg_pull_none_20ma>;
-+		};
-+	};
-+
- 	pmic {
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins =
-@@ -403,6 +446,19 @@
- 				<1 14 RK_FUNC_GPIO &pcfg_pull_down>;
- 		};
- 	};
-+
-+	sdio-pwrseq {
-+		wifi_enable_h: wifi-enable-h {
-+			rockchip,pins =
-+				<0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	wifi {
-+		wifi_host_wake_l: wifi-host-wake-l {
-+			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
- };
- 
- &pwm2 {
-@@ -413,6 +469,33 @@
- 	status = "okay";
- };
- 
-+&sdio0 {
-+	clock-frequency = <50000000>;
-+	bus-width = <4>;
-+	cap-sdio-irq;
-+	cap-sd-highspeed;
-+	no-emmc;
-+	keep-power-in-suspend;
-+	mmc-pwrseq = <&sdio_pwrseq>;
-+	non-removable;
-+	num-slots = <1>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
-+	sd-uhs-sdr104;
-+
-+	status = "okay";
-+
-+	brcmf: wifi@1 {
-+		compatible = "brcm,bcm4329-fmac";
-+		reg = <1>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
-+		interrupt-names = "host-wake";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_host_wake_l>;
-+	};
-+};
-+
- &sdhci {
- 	bus-width = <8>;
- 	mmc-hs400-1_8v;
-@@ -439,8 +522,19 @@
- 
- &uart0 {
- 	pinctrl-names = "default";
--	pinctrl-0 = <&uart0_xfer &uart0_cts>;
-+	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
- 	status = "okay";
-+
-+	bluetooth {
-+		compatible = "brcm,bcm43438-bt";
-+		clocks = <&rk808 1>;
-+		clock-names = "ext_clock";
-+		device-wakeup-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
-+		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
-+		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
-+	};
- };
- 
- &uart2 {
--- 
-2.17.1
+
++/**
++ * vm_insert_range - insert range of kernel pages starts with non zero offset
++ * @vma: user vma to map to
++ * @pages: pointer to array of source kernel pages
++ * @num: number of pages in page array
++ *
++ * Maps an object consisting of `num' `pages', catering for the user's
++ * requested vm_pgoff
++ *
++ * If we fail to insert any page into the vma, the function will return
++ * immediately leaving any previously inserted pages present.  Callers
++ * from the mmap handler may immediately return the error as their caller
++ * will destroy the vma, removing any successfully inserted pages. Other
++ * callers should make their own arrangements for calling unmap_region().
++ *
++ * Context: Process context. Called by mmap handlers.
++ * Return: 0 on success and error code otherwise.
++ */
++int vm_insert_range(struct vm_area_struct *vma, struct page **pages,
++                               unsigned long num)
+
+
++/**
++ * vm_insert_range_buggy - insert range of kernel pages starts with zero offset
++ * @vma: user vma to map to
++ * @pages: pointer to array of source kernel pages
++ * @num: number of pages in page array
++ *
++ * Similar to vm_insert_range(), except that it explicitly sets @vm_pgoff to
++ * 0. This function is intended for the drivers that did not consider
++ * @vm_pgoff.
++ *
++ * Context: Process context. Called by mmap handlers.
++ * Return: 0 on success and error code otherwise.
++ */
++int vm_insert_range_buggy(struct vm_area_struct *vma, struct page **pages,
++                               unsigned long num)
