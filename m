@@ -1,55 +1,89 @@
-From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: fix rk3328-roc-cc gmac2io stability
- issues
-Date: Mon, 11 Feb 2019 02:04:39 +0800
-Message-ID: <20190210180439.380-1-pgwipeout@gmail.com>
+From: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
+Subject: Re: [PATCH v2 00/15] PCI: endpoint: Cleanup EPC features
+Date: Mon, 11 Feb 2019 10:19:47 +0000
+Message-ID: <a0b12a7f-b341-28a2-edb8-b573d39f6e1b@synopsys.com>
+References: <20190114111513.21618-1-kishon@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190114111513.21618-1-kishon@ti.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Alan Douglas <adouglas@cadence.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Jingoo Han <jingoohan1@gmail.com>, "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Resubmission, signed off this time.
+Hi,
 
-This patch is a port of the fix from
-commit 73e42e186699 ("arm64: dts: rockchip: fix rock64 gmac2io stability
-issues")
+On 14/01/2019 11:14, Kishon Vijay Abraham I wrote:
+> Hi Lorenzo,
+> 
+> The Endpoint controller driver uses features member in 'struct pci_epc'
+> to advertise the list of supported features to the endpoint function
+> driver.
+> 
+> There are a few shortcomings with this approach.
+>   *) Certain endpoint controllers support fixed size BAR (e.g. TI's
+>      AM654 uses Designware configuration with fixed size BAR). The
+>      size of each BARs cannot be passed to the endpoint function
+>      driver.
+>   *) Too many macros for handling EPC features.
+>      (EPC_FEATURE_NO_LINKUP_NOTIFIER, EPC_FEATURE_BAR_MASK,
+>       EPC_FEATURE_MSIX_AVAILABLE, EPC_FEATURE_SET_BAR,
+>       EPC_FEATURE_GET_BAR)
+>   *) Endpoint controllers are directly modifying struct pci_epc
+>      members. (I have plans to move struct pci_epc to
+>      drivers/pci/endpoint so that pci_epc members are referenced
+>      only by endpoint core).
+> 
+> To overcome the above shortcomings, introduced pci_epc_get_features()
+> API, pci_epc_features structure and a ->get_features() callback.
+> 
+> Also added a patch to set BAR flags in pci_epf_alloc_space and
+> remove it from pci-epf-test function driver.
+> 
+> Changes from v1:
+> *) Fixed helper function to return '0' (or BAR_0) for any incorrect
+>    values in reserved BAR.
+> *) Do not set_bar or alloc space for BARs if the BARs are reserved
+> *) Fix incorrect check of epc_features in pci_epf_test_bind
+> 
+> Tested on TI's DRA7xx platform and AM654 platform. Support for PCIe
+> in AM654 platform will be posted shortly.
+> 
+> Kishon Vijay Abraham I (15):
+>   PCI: endpoint: Add new pci_epc_ops to get EPC features
+>   PCI: dwc: Add ->get_features() callback function in dw_pcie_ep_ops
+>   PCI: designware-plat: Populate ->get_features() dw_pcie_ep_ops
+>   PCI: pci-dra7xx: Populate ->get_features() dw_pcie_ep_ops
+>   PCI: rockchip: Populate ->get_features() dw_pcie_ep_ops
+>   PCI: cadence: Populate ->get_features() cdns_pcie_epc_ops
+>   PCI: endpoint: Add helper to get first unreserved BAR
+>   PCI: endpoint: Fix pci_epf_alloc_space to set correct MEM TYPE flags
+>   PCI: pci-epf-test: Remove setting epf_bar flags in function driver
+>   PCI: pci-epf-test: Do not allocate next BARs memory if current BAR is
+>     64Bit
+>   PCI: pci-epf-test: Use pci_epc_get_features to get EPC features
+>   PCI: cadence: Remove pci_epf_linkup from Cadence EP driver
+>   PCI: rockchip: Remove pci_epf_linkup from Rockchip EP driver
+>   PCI: designware-plat: Remove setting epc->features in Designware plat
+>     EP driver
+>   PCI: endpoint: Remove features member in struct pci_epc
+> 
+>  drivers/pci/controller/dwc/pci-dra7xx.c       | 13 +++
+>  .../pci/controller/dwc/pcie-designware-ep.c   | 12 +++
+>  .../pci/controller/dwc/pcie-designware-plat.c | 17 +++-
+>  drivers/pci/controller/dwc/pcie-designware.h  |  1 +
+>  drivers/pci/controller/pcie-cadence-ep.c      | 25 ++---
+>  drivers/pci/controller/pcie-rockchip-ep.c     | 16 +++-
+>  drivers/pci/endpoint/functions/pci-epf-test.c | 93 ++++++++++++-------
+>  drivers/pci/endpoint/pci-epc-core.c           | 53 +++++++++++
+>  drivers/pci/endpoint/pci-epf-core.c           |  4 +-
+>  include/linux/pci-epc.h                       | 31 +++++--
+>  10 files changed, 201 insertions(+), 64 deletions(-)
+> 
 
-As per that patch, enabling thresh dma mode force disables checksuming.
-This is necessary as tx checksuming does not work with packets larger
-than 1498.
+Sorry for the delay, I had a problem with my setup.
 
-The rk3328-roc-cc board exhibits tx stability issues with large packets
-similar to rock64's issues. This patch resolves that issue.
-
-Signed-off-by: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-
----
- arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index 99d0d9912950..33c44e857247 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -104,6 +104,7 @@
- 	phy-mode = "rgmii";
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&rgmiim1_pins>;
-+	snps,force_thresh_dma_mode;
- 	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
- 	snps,reset-active-low;
- 	snps,reset-delays-us = <0 10000 50000>;
--- 
-2.17.1
+Tested-by: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
