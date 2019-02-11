@@ -1,97 +1,114 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: Re: [PATCH v2 00/15] PCI: endpoint: Cleanup EPC features
-Date: Mon, 11 Feb 2019 18:07:57 +0530
-Message-ID: <47f1a416-6f8b-0c29-21ed-756ba76fc3f5@ti.com>
-References: <20190114111513.21618-1-kishon@ti.com>
- <a0b12a7f-b341-28a2-edb8-b573d39f6e1b@synopsys.com>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Subject: Re: [PATCHv2 1/9] mm: Introduce new vm_insert_range and
+ vm_insert_range_buggy API
+Date: Mon, 11 Feb 2019 22:36:15 +0530
+Message-ID: <CAFqt6zYGSn1dA8tdiH16Mq0bzkx5DmpUo+2RUZ0nTPm+nvZS7Q@mail.gmail.com>
+References: <20190131030812.GA2174@jordon-HP-15-Notebook-PC>
+ <20190131083842.GE28876@rapoport-lnx> <CAFqt6za9xA_8OKiaaHXcO9go+RtPdjLY5Bz_fgQL+DZbermNhA@mail.gmail.com>
+ <20190207164739.GX21860@bombadil.infradead.org> <CAFqt6zawBP5Yyy7nfoKz_6ugw8e4MVopvBaeKvaKoXcS-_oSNg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <a0b12a7f-b341-28a2-edb8-b573d39f6e1b@synopsys.com>
-Content-Language: en-US
+In-Reply-To: <CAFqt6zawBP5Yyy7nfoKz_6ugw8e4MVopvBaeKvaKoXcS-_oSNg@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Alan Douglas <adouglas@cadence.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Jingoo Han <jingoohan1@gmail.com>, "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Matthew Wilcox <willy@infradead.org>
+Cc: Mike Rapoport <rppt@linux.ibm.com>, Andrew Morton <akpm@linux-foundation.org>, Michal Hocko <mhocko@suse.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, vbabka@suse.cz, Rik van Riel <riel@surriel.com>, Stephen Rothwell <sfr@canb.auug.org.au>, rppt@linux.vnet.ibm.com, Peter Zijlstra <peterz@infradead.org>, Russell King - ARM Linux <linux@armlinux.org.uk>, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, Kees Cook <keescook@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, Kyungmin Park <kyungmin.park@samsung.com>, mchehab@kernel.org, Boris Ostrovsky <boris.ostro>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Fri, Feb 8, 2019 at 10:52 AM Souptick Joarder <jrdr.linux@gmail.com> wrote:
+>
+> On Thu, Feb 7, 2019 at 10:17 PM Matthew Wilcox <willy@infradead.org> wrote:
+> >
+> > On Thu, Feb 07, 2019 at 09:19:47PM +0530, Souptick Joarder wrote:
+> > > Just thought to take opinion for documentation before placing it in v3.
+> > > Does it looks fine ?
+> > >
+> > > +/**
+> > > + * __vm_insert_range - insert range of kernel pages into user vma
+> > > + * @vma: user vma to map to
+> > > + * @pages: pointer to array of source kernel pages
+> > > + * @num: number of pages in page array
+> > > + * @offset: user's requested vm_pgoff
+> > > + *
+> > > + * This allow drivers to insert range of kernel pages into a user vma.
+> > > + *
+> > > + * Return: 0 on success and error code otherwise.
+> > > + */
+> > > +static int __vm_insert_range(struct vm_area_struct *vma, struct page **pages,
+> > > +                               unsigned long num, unsigned long offset)
+> >
+> > For static functions, I prefer to leave off the second '*', ie make it
+> > formatted like a docbook comment, but not be processed like a docbook
+> > comment.  That avoids cluttering the html with descriptions of internal
+> > functions that people can't actually call.
+> >
+> > > +/**
+> > > + * vm_insert_range - insert range of kernel pages starts with non zero offset
+> > > + * @vma: user vma to map to
+> > > + * @pages: pointer to array of source kernel pages
+> > > + * @num: number of pages in page array
+> > > + *
+> > > + * Maps an object consisting of `num' `pages', catering for the user's
+> >
+> > Rather than using `num', you should use @num.
+> >
+> > > + * requested vm_pgoff
+> > > + *
+> > > + * If we fail to insert any page into the vma, the function will return
+> > > + * immediately leaving any previously inserted pages present.  Callers
+> > > + * from the mmap handler may immediately return the error as their caller
+> > > + * will destroy the vma, removing any successfully inserted pages. Other
+> > > + * callers should make their own arrangements for calling unmap_region().
+> > > + *
+> > > + * Context: Process context. Called by mmap handlers.
+> > > + * Return: 0 on success and error code otherwise.
+> > > + */
+> > > +int vm_insert_range(struct vm_area_struct *vma, struct page **pages,
+> > > +                               unsigned long num)
+> > >
+> > >
+> > > +/**
+> > > + * vm_insert_range_buggy - insert range of kernel pages starts with zero offset
+> > > + * @vma: user vma to map to
+> > > + * @pages: pointer to array of source kernel pages
+> > > + * @num: number of pages in page array
+> > > + *
+> > > + * Similar to vm_insert_range(), except that it explicitly sets @vm_pgoff to
+> >
+> > But vm_pgoff isn't a parameter, so it's misleading to format it as such.
+> >
+> > > + * 0. This function is intended for the drivers that did not consider
+> > > + * @vm_pgoff.
+> > > + *
+> > > + * Context: Process context. Called by mmap handlers.
+> > > + * Return: 0 on success and error code otherwise.
+> > > + */
+> > > +int vm_insert_range_buggy(struct vm_area_struct *vma, struct page **pages,
+> > > +                               unsigned long num)
+> >
+> > I don't think we should call it 'buggy'.  'zero' would make more sense
+> > as a suffix.
+>
+> suffix can be *zero or zero_offset* whichever suits better.
+>
+> >
+> > Given how this interface has evolved, I'm no longer sure than
+> > 'vm_insert_range' makes sense as the name for it.  Is it perhaps
+> > 'vm_map_object' or 'vm_map_pages'?
+> >
+>
+> I prefer vm_map_pages. Considering it, both the interface name can be changed
+> to *vm_insert_range -> vm_map_pages* and *vm_insert_range_buggy ->
+> vm_map_pages_{zero/zero_offset}.
+>
+> As this is only change in interface name and rest of code remain same
+> shall I post it in v3 ( with additional change log mentioned about interface
+> name changed) ?
+>
+> or,
+>
+> It will be a new patch series ( with carry forward all the Reviewed-by
+> / Tested-by on
+> vm_insert_range/ vm_insert_range_buggy ) ?
 
-
-On 11/02/19 3:49 PM, Gustavo Pimentel wrote:
-> Hi,
-> 
-> On 14/01/2019 11:14, Kishon Vijay Abraham I wrote:
->> Hi Lorenzo,
->>
->> The Endpoint controller driver uses features member in 'struct pci_epc'
->> to advertise the list of supported features to the endpoint function
->> driver.
->>
->> There are a few shortcomings with this approach.
->>   *) Certain endpoint controllers support fixed size BAR (e.g. TI's
->>      AM654 uses Designware configuration with fixed size BAR). The
->>      size of each BARs cannot be passed to the endpoint function
->>      driver.
->>   *) Too many macros for handling EPC features.
->>      (EPC_FEATURE_NO_LINKUP_NOTIFIER, EPC_FEATURE_BAR_MASK,
->>       EPC_FEATURE_MSIX_AVAILABLE, EPC_FEATURE_SET_BAR,
->>       EPC_FEATURE_GET_BAR)
->>   *) Endpoint controllers are directly modifying struct pci_epc
->>      members. (I have plans to move struct pci_epc to
->>      drivers/pci/endpoint so that pci_epc members are referenced
->>      only by endpoint core).
->>
->> To overcome the above shortcomings, introduced pci_epc_get_features()
->> API, pci_epc_features structure and a ->get_features() callback.
->>
->> Also added a patch to set BAR flags in pci_epf_alloc_space and
->> remove it from pci-epf-test function driver.
->>
->> Changes from v1:
->> *) Fixed helper function to return '0' (or BAR_0) for any incorrect
->>    values in reserved BAR.
->> *) Do not set_bar or alloc space for BARs if the BARs are reserved
->> *) Fix incorrect check of epc_features in pci_epf_test_bind
->>
->> Tested on TI's DRA7xx platform and AM654 platform. Support for PCIe
->> in AM654 platform will be posted shortly.
->>
->> Kishon Vijay Abraham I (15):
->>   PCI: endpoint: Add new pci_epc_ops to get EPC features
->>   PCI: dwc: Add ->get_features() callback function in dw_pcie_ep_ops
->>   PCI: designware-plat: Populate ->get_features() dw_pcie_ep_ops
->>   PCI: pci-dra7xx: Populate ->get_features() dw_pcie_ep_ops
->>   PCI: rockchip: Populate ->get_features() dw_pcie_ep_ops
->>   PCI: cadence: Populate ->get_features() cdns_pcie_epc_ops
->>   PCI: endpoint: Add helper to get first unreserved BAR
->>   PCI: endpoint: Fix pci_epf_alloc_space to set correct MEM TYPE flags
->>   PCI: pci-epf-test: Remove setting epf_bar flags in function driver
->>   PCI: pci-epf-test: Do not allocate next BARs memory if current BAR is
->>     64Bit
->>   PCI: pci-epf-test: Use pci_epc_get_features to get EPC features
->>   PCI: cadence: Remove pci_epf_linkup from Cadence EP driver
->>   PCI: rockchip: Remove pci_epf_linkup from Rockchip EP driver
->>   PCI: designware-plat: Remove setting epc->features in Designware plat
->>     EP driver
->>   PCI: endpoint: Remove features member in struct pci_epc
->>
->>  drivers/pci/controller/dwc/pci-dra7xx.c       | 13 +++
->>  .../pci/controller/dwc/pcie-designware-ep.c   | 12 +++
->>  .../pci/controller/dwc/pcie-designware-plat.c | 17 +++-
->>  drivers/pci/controller/dwc/pcie-designware.h  |  1 +
->>  drivers/pci/controller/pcie-cadence-ep.c      | 25 ++---
->>  drivers/pci/controller/pcie-rockchip-ep.c     | 16 +++-
->>  drivers/pci/endpoint/functions/pci-epf-test.c | 93 ++++++++++++-------
->>  drivers/pci/endpoint/pci-epc-core.c           | 53 +++++++++++
->>  drivers/pci/endpoint/pci-epf-core.c           |  4 +-
->>  include/linux/pci-epc.h                       | 31 +++++--
->>  10 files changed, 201 insertions(+), 64 deletions(-)
->>
-> 
-> Sorry for the delay, I had a problem with my setup.
-> 
-> Tested-by: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
-
-Thank you Gustavo!
-
--Kishon
+Any suggestion on this minor query ?
