@@ -1,89 +1,233 @@
-From: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
-Subject: Re: [PATCH v2 00/15] PCI: endpoint: Cleanup EPC features
-Date: Mon, 11 Feb 2019 10:19:47 +0000
-Message-ID: <a0b12a7f-b341-28a2-edb8-b573d39f6e1b@synopsys.com>
-References: <20190114111513.21618-1-kishon@ti.com>
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add on-board WiFi/BT support for
+ Rock960 boards
+Date: Mon, 11 Feb 2019 17:01:28 +0530
+Message-ID: <20190211113128.GA22843@mani>
+References: <20190207055349.27919-1-manivannan.sadhasivam@linaro.org>
+ <CALeDE9MNa+CDJR8bvS05f2UTKrhwMRo8jzdS5o8Ndu7H8V8Ldg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190114111513.21618-1-kishon@ti.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <CALeDE9MNa+CDJR8bvS05f2UTKrhwMRo8jzdS5o8Ndu7H8V8Ldg@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Alan Douglas <adouglas@cadence.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Jingoo Han <jingoohan1@gmail.com>, "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Peter Robinson <pbrobinson@gmail.com>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, ezequiel@collabora.com, tom@vamrs.com, dev@vamrs.com, linux-kernel@vger.kernel.org, mani@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Peter,
 
-On 14/01/2019 11:14, Kishon Vijay Abraham I wrote:
-> Hi Lorenzo,
+On Fri, Feb 08, 2019 at 04:45:01PM +0000, Peter Robinson wrote:
+> Hi Mani,
 > 
-> The Endpoint controller driver uses features member in 'struct pci_epc'
-> to advertise the list of supported features to the endpoint function
-> driver.
+> On Thu, Feb 7, 2019 at 5:54 AM Manivannan Sadhasivam
+> <manivannan.sadhasivam@linaro.org> wrote:
+> >
+> > Add on-board WiFi/BT support for Rock960 boards such as Rock960 based
+> > on AP6356S and Ficus based on AP6354 wireless modules.
+> >
+> > Firmwares for the respective boards are available here:
+> >
+> > http://people.linaro.org/~manivannan.sadhasivam/rock960_wifi/
+> > http://people.linaro.org/~manivannan.sadhasivam/ficus_wifi/
+> >
+> > Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 > 
-> There are a few shortcomings with this approach.
->   *) Certain endpoint controllers support fixed size BAR (e.g. TI's
->      AM654 uses Designware configuration with fixed size BAR). The
->      size of each BARs cannot be passed to the endpoint function
->      driver.
->   *) Too many macros for handling EPC features.
->      (EPC_FEATURE_NO_LINKUP_NOTIFIER, EPC_FEATURE_BAR_MASK,
->       EPC_FEATURE_MSIX_AVAILABLE, EPC_FEATURE_SET_BAR,
->       EPC_FEATURE_GET_BAR)
->   *) Endpoint controllers are directly modifying struct pci_epc
->      members. (I have plans to move struct pci_epc to
->      drivers/pci/endpoint so that pci_epc members are referenced
->      only by endpoint core).
+> There's some warnings on building these I noticed in testing this on Fedora:
 > 
-> To overcome the above shortcomings, introduced pci_epc_get_features()
-> API, pci_epc_features structure and a ->get_features() callback.
+>   DTC     arch/arm64/boot/dts/rockchip/rk3399-ficus.dtb
+> arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi:490.3-13: Warning
+> (reg_format): /dwmmc@fe310000/wifi@1:reg: property has invalid length
+> (4 bytes) (#address-cells == 2, #size-cells == 1)
+> arch/arm64/boot/dts/rockchip/rk3399-ficus.dtb: Warning
+> (pci_device_bus_num): Failed prerequisite 'reg_format'
+> arch/arm64/boot/dts/rockchip/rk3399-ficus.dtb: Warning (i2c_bus_reg):
+> Failed prerequisite 'reg_format'
+> arch/arm64/boot/dts/rockchip/rk3399-ficus.dtb: Warning (spi_bus_reg):
+> Failed prerequisite 'reg_format'
+> arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi:488.16-496.4: Warning
+> (avoid_default_addr_size): /dwmmc@fe310000/wifi@1: Relying on default
+> #address-cells value
+> arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi:488.16-496.4: Warning
+> (avoid_default_addr_size): /dwmmc@fe310000/wifi@1: Relying on default
+> #size-cells value
 > 
-> Also added a patch to set BAR flags in pci_epf_alloc_space and
-> remove it from pci-epf-test function driver.
-> 
-> Changes from v1:
-> *) Fixed helper function to return '0' (or BAR_0) for any incorrect
->    values in reserved BAR.
-> *) Do not set_bar or alloc space for BARs if the BARs are reserved
-> *) Fix incorrect check of epc_features in pci_epf_test_bind
-> 
-> Tested on TI's DRA7xx platform and AM654 platform. Support for PCIe
-> in AM654 platform will be posted shortly.
-> 
-> Kishon Vijay Abraham I (15):
->   PCI: endpoint: Add new pci_epc_ops to get EPC features
->   PCI: dwc: Add ->get_features() callback function in dw_pcie_ep_ops
->   PCI: designware-plat: Populate ->get_features() dw_pcie_ep_ops
->   PCI: pci-dra7xx: Populate ->get_features() dw_pcie_ep_ops
->   PCI: rockchip: Populate ->get_features() dw_pcie_ep_ops
->   PCI: cadence: Populate ->get_features() cdns_pcie_epc_ops
->   PCI: endpoint: Add helper to get first unreserved BAR
->   PCI: endpoint: Fix pci_epf_alloc_space to set correct MEM TYPE flags
->   PCI: pci-epf-test: Remove setting epf_bar flags in function driver
->   PCI: pci-epf-test: Do not allocate next BARs memory if current BAR is
->     64Bit
->   PCI: pci-epf-test: Use pci_epc_get_features to get EPC features
->   PCI: cadence: Remove pci_epf_linkup from Cadence EP driver
->   PCI: rockchip: Remove pci_epf_linkup from Rockchip EP driver
->   PCI: designware-plat: Remove setting epc->features in Designware plat
->     EP driver
->   PCI: endpoint: Remove features member in struct pci_epc
-> 
->  drivers/pci/controller/dwc/pci-dra7xx.c       | 13 +++
->  .../pci/controller/dwc/pcie-designware-ep.c   | 12 +++
->  .../pci/controller/dwc/pcie-designware-plat.c | 17 +++-
->  drivers/pci/controller/dwc/pcie-designware.h  |  1 +
->  drivers/pci/controller/pcie-cadence-ep.c      | 25 ++---
->  drivers/pci/controller/pcie-rockchip-ep.c     | 16 +++-
->  drivers/pci/endpoint/functions/pci-epf-test.c | 93 ++++++++++++-------
->  drivers/pci/endpoint/pci-epc-core.c           | 53 +++++++++++
->  drivers/pci/endpoint/pci-epf-core.c           |  4 +-
->  include/linux/pci-epc.h                       | 31 +++++--
->  10 files changed, 201 insertions(+), 64 deletions(-)
+>   DTC     arch/arm64/boot/dts/rockchip/rk3399-rock960.dtb
+> arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi:490.3-13: Warning
+> (reg_format): /dwmmc@fe310000/wifi@1:reg: property has invalid length
+> (4 bytes) (#address-cells == 2, #size-cells == 1)
+> arch/arm64/boot/dts/rockchip/rk3399-rock960.dtb: Warning
+> (pci_device_bus_num): Failed prerequisite 'reg_format'
+> arch/arm64/boot/dts/rockchip/rk3399-rock960.dtb: Warning
+> (i2c_bus_reg): Failed prerequisite 'reg_format'
+> arch/arm64/boot/dts/rockchip/rk3399-rock960.dtb: Warning
+> (spi_bus_reg): Failed prerequisite 'reg_format'
+> arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi:488.16-496.4: Warning
+> (avoid_default_addr_size): /dwmmc@fe310000/wifi@1: Relying on default
+> #address-cells value
+> arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi:488.16-496.4: Warning
+> (avoid_default_addr_size): /dwmmc@fe310000/wifi@1: Relying on default
+> #size-cells value
 > 
 
-Sorry for the delay, I had a problem with my setup.
+Hmm. Since the parent node "sdio0" is missing the address/size cells
+property, the default value has been used by the DTC. I think it would
+make sense to just drop the reg property from "wifi" node instead of
+modifying the parent "sdio0" node.
 
-Tested-by: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
+If no one has any issue over this, I'll send out another revision with the
+reg property removed.
+
+Thanks,
+Mani
+
+> > ---
+> >  .../boot/dts/rockchip/rk3399-rock960.dtsi     | 96 ++++++++++++++++++-
+> >  1 file changed, 95 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+> > index 56abbb08c133..1b2f7cd82244 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+> > @@ -9,6 +9,15 @@
+> >  #include "rk3399-opp.dtsi"
+> >
+> >  / {
+> > +       sdio_pwrseq: sdio-pwrseq {
+> > +               compatible = "mmc-pwrseq-simple";
+> > +               clocks = <&rk808 1>;
+> > +               clock-names = "ext_clock";
+> > +               pinctrl-names = "default";
+> > +               pinctrl-0 = <&wifi_enable_h>;
+> > +               reset-gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
+> > +       };
+> > +
+> >         vcc1v8_s0: vcc1v8-s0 {
+> >                 compatible = "regulator-fixed";
+> >                 regulator-name = "vcc1v8_s0";
+> > @@ -362,6 +371,20 @@
+> >  };
+> >
+> >  &pinctrl {
+> > +       bt {
+> > +               bt_enable_h: bt-enable-h {
+> > +                       rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +               };
+> > +
+> > +               bt_host_wake_l: bt-host-wake-l {
+> > +                       rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +               };
+> > +
+> > +               bt_wake_l: bt-wake-l {
+> > +                       rockchip,pins = <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +               };
+> > +       };
+> > +
+> >         sdmmc {
+> >                 sdmmc_bus1: sdmmc-bus1 {
+> >                         rockchip,pins =
+> > @@ -387,6 +410,26 @@
+> >                 };
+> >         };
+> >
+> > +       sdio0 {
+> > +               sdio0_bus4: sdio0-bus4 {
+> > +                       rockchip,pins =
+> > +                               <2 20 RK_FUNC_1 &pcfg_pull_up_20ma>,
+> > +                               <2 21 RK_FUNC_1 &pcfg_pull_up_20ma>,
+> > +                               <2 22 RK_FUNC_1 &pcfg_pull_up_20ma>,
+> > +                               <2 23 RK_FUNC_1 &pcfg_pull_up_20ma>;
+> > +               };
+> > +
+> > +               sdio0_cmd: sdio0-cmd {
+> > +                       rockchip,pins =
+> > +                               <2 24 RK_FUNC_1 &pcfg_pull_up_20ma>;
+> > +               };
+> > +
+> > +               sdio0_clk: sdio0-clk {
+> > +                       rockchip,pins =
+> > +                               <2 25 RK_FUNC_1 &pcfg_pull_none_20ma>;
+> > +               };
+> > +       };
+> > +
+> >         pmic {
+> >                 pmic_int_l: pmic-int-l {
+> >                         rockchip,pins =
+> > @@ -403,6 +446,19 @@
+> >                                 <1 14 RK_FUNC_GPIO &pcfg_pull_down>;
+> >                 };
+> >         };
+> > +
+> > +       sdio-pwrseq {
+> > +               wifi_enable_h: wifi-enable-h {
+> > +                       rockchip,pins =
+> > +                               <0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +               };
+> > +       };
+> > +
+> > +       wifi {
+> > +               wifi_host_wake_l: wifi-host-wake-l {
+> > +                       rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +               };
+> > +       };
+> >  };
+> >
+> >  &pwm2 {
+> > @@ -413,6 +469,33 @@
+> >         status = "okay";
+> >  };
+> >
+> > +&sdio0 {
+> > +       clock-frequency = <50000000>;
+> > +       bus-width = <4>;
+> > +       cap-sdio-irq;
+> > +       cap-sd-highspeed;
+> > +       no-emmc;
+> > +       keep-power-in-suspend;
+> > +       mmc-pwrseq = <&sdio_pwrseq>;
+> > +       non-removable;
+> > +       num-slots = <1>;
+> > +       pinctrl-names = "default";
+> > +       pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
+> > +       sd-uhs-sdr104;
+> > +
+> > +       status = "okay";
+> > +
+> > +       brcmf: wifi@1 {
+> > +               compatible = "brcm,bcm4329-fmac";
+> > +               reg = <1>;
+> > +               interrupt-parent = <&gpio0>;
+> > +               interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
+> > +               interrupt-names = "host-wake";
+> > +               pinctrl-names = "default";
+> > +               pinctrl-0 = <&wifi_host_wake_l>;
+> > +       };
+> > +};
+> > +
+> >  &sdhci {
+> >         bus-width = <8>;
+> >         mmc-hs400-1_8v;
+> > @@ -439,8 +522,19 @@
+> >
+> >  &uart0 {
+> >         pinctrl-names = "default";
+> > -       pinctrl-0 = <&uart0_xfer &uart0_cts>;
+> > +       pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
+> >         status = "okay";
+> > +
+> > +       bluetooth {
+> > +               compatible = "brcm,bcm43438-bt";
+> > +               clocks = <&rk808 1>;
+> > +               clock-names = "ext_clock";
+> > +               device-wakeup-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
+> > +               host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
+> > +               shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
+> > +               pinctrl-names = "default";
+> > +               pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
+> > +       };
+> >  };
+> >
+> >  &uart2 {
+> > --
+> > 2.17.1
+> >
