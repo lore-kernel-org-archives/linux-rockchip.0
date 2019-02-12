@@ -1,50 +1,78 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH v2 08/15] PCI: endpoint: Fix pci_epf_alloc_space to set
- correct MEM TYPE flags
-Date: Mon, 11 Feb 2019 17:37:32 +0000
-Message-ID: <20190211173723.GA31035@e107981-ln.cambridge.arm.com>
-References: <20190114111513.21618-1-kishon@ti.com>
- <20190114111513.21618-9-kishon@ti.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] phy: Variable "caldone" in function
+ rockchip_emmc_phy_power() could be uninitialized
+Date: Tue, 12 Feb 2019 11:47:31 +0100
+Message-ID: <1884796.YtlDmFZGdE@diego>
+References: <20190206014733.21094-1-yzhai003@ucr.edu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190114111513.21618-9-kishon@ti.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Alan Douglas <adouglas@cadence.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Bjorn Helgaas <bhelgaas@google.com>, Jingoo Han <jingoohan1@gmail.com>, linux-omap@vger.kernel.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190206014733.21094-1-yzhai003@ucr.edu>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Yizhuo <yzhai003@ucr.edu>
+Cc: csong@cs.ucr.edu, zhiyunq@cs.ucr.edu, linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jan 14, 2019 at 04:45:06PM +0530, Kishon Vijay Abraham I wrote:
-> pci_epf_alloc_space() sets the MEM TYPE flags to indicate a 32-bit
-> Base Address Register irrespective of the size. Fix it here to indicate
-> 64-bit BAR if the size is > 2GB.
+Am Mittwoch, 6. Februar 2019, 02:47:33 CET schrieb Yizhuo:
+> In function rockchip_emmc_phy_power(), local variable "caldone"
+> could be uninitialized if function regmap_read() returns -EINVAL.
+> However, it will be used directly in the later context, which
+> is potentially unsafe.
 > 
-> Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
+> Signed-off-by: Yizhuo <yzhai003@ucr.edu>
 > ---
->  drivers/pci/endpoint/pci-epf-core.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-
-This looks like a fix and should me marked as such. Does it work
-as as standalone patch if it gets backported ?
-
-Lorenzo
-
-> diff --git a/drivers/pci/endpoint/pci-epf-core.c b/drivers/pci/endpoint/pci-epf-core.c
-> index 825fa24427a3..8bfdcd291196 100644
-> --- a/drivers/pci/endpoint/pci-epf-core.c
-> +++ b/drivers/pci/endpoint/pci-epf-core.c
-> @@ -131,7 +131,9 @@ void *pci_epf_alloc_space(struct pci_epf *epf, size_t size, enum pci_barno bar)
->  	epf->bar[bar].phys_addr = phys_addr;
->  	epf->bar[bar].size = size;
->  	epf->bar[bar].barno = bar;
-> -	epf->bar[bar].flags = PCI_BASE_ADDRESS_SPACE_MEMORY;
-> +	epf->bar[bar].flags |= upper_32_bits(size) ?
-> +				PCI_BASE_ADDRESS_MEM_TYPE_64 :
-> +				PCI_BASE_ADDRESS_MEM_TYPE_32;
->  
->  	return space;
->  }
-> -- 
-> 2.17.1
+>  drivers/phy/rockchip/phy-rockchip-emmc.c | 10 ++++++++--
+>  1 file changed, 8 insertions(+), 2 deletions(-)
 > 
+> diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c
+> b/drivers/phy/rockchip/phy-rockchip-emmc.c index f1b24f18e9b2..ca921ae08309
+> 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-emmc.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
+> @@ -85,11 +85,12 @@ struct rockchip_emmc_phy {
+>  static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+>  {
+>  	struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
+> -	unsigned int caldone;
+> +	unsigned int caldone = 0;
+
+hmm, this may hide actual uninitialized uses in the future?
+With the added error handling below, there shouldn't be a case
+where caldone might be used uninitialized still?
+
+
+Heiko
+
+>  	unsigned int dllrdy;
+>  	unsigned int freqsel = PHYCTRL_FREQSEL_200M;
+>  	unsigned long rate;
+>  	unsigned long timeout;
+> +	int err;
+> 
+>  	/*
+>  	 * Keep phyctrl_pdb and phyctrl_endll low to allow
+> @@ -164,9 +165,14 @@ static int rockchip_emmc_phy_power(struct phy *phy,
+> bool on_off) * wait 5us for calpad busy trimming
+>  	 */
+>  	udelay(5);
+> -	regmap_read(rk_phy->reg_base,
+> +	err = regmap_read(rk_phy->reg_base,
+>  		    rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
+>  		    &caldone);
+> +	if (err) {
+> +		pr_err("Failed to read status.\n");
+> +		return err;
+> +	}
+> +
+>  	caldone = (caldone >> PHYCTRL_CALDONE_SHIFT) & PHYCTRL_CALDONE_MASK;
+>  	if (caldone != PHYCTRL_CALDONE_DONE) {
+>  		pr_err("rockchip_emmc_phy_power: caldone timeout.\n");
