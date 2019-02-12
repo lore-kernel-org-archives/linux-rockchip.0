@@ -1,56 +1,129 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: add HDMI sound node for rk3328-rock64
-Date: Tue, 12 Feb 2019 12:12:57 +0100
-Message-ID: <2275914.n7pQDzs7mT@diego>
-References: <20190202043444.9308-1-katsuhiro@katsuster.net> <1970132.3b67tCGWFf@phil> <c4ce7f7a-c791-ae0a-ad3d-02b2efa41709@katsuster.net>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH 11/15] PCI: pci-epf-test: Use pci_epc_get_features to get
+ EPC features
+Date: Tue, 12 Feb 2019 15:07:18 +0000
+Message-ID: <20190212150718.GA28306@e107981-ln.cambridge.arm.com>
+References: <20190107064148.10152-1-kishon@ti.com>
+ <20190107064148.10152-12-kishon@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <c4ce7f7a-c791-ae0a-ad3d-02b2efa41709@katsuster.net>
+Content-Disposition: inline
+In-Reply-To: <20190107064148.10152-12-kishon@ti.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Alan Douglas <adouglas@cadence.com>, Shawn Lin <shawn.lin@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Cyrille Pitchen <cyrille.pitchen@free-electrons.com>, Jia-Ju Bai <baijiaju1990@gmail.com>, linux-omap@vger.kernel.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Mon, Jan 07, 2019 at 12:11:44PM +0530, Kishon Vijay Abraham I wrote:
 
-Am Montag, 4. Februar 2019, 13:59:37 CET schrieb Katsuhiro Suzuki:
-> On 2019/02/03 18:06, Heiko Stuebner wrote:
-> > Am Samstag, 2. Februar 2019, 05:34:44 CET schrieb Katsuhiro Suzuki:
-> >> This patch adds HDMI sound (I2S0) node and remove dma properties
-> >> from UART2 node for rock64.
-> >> 
-> >> The DMAC of rk3328 can use 8 channels at same time. Currently, total
-> >> 
-> >> 7 channels are used as follows:
-> >>    - I2S1  2ch
-> >>    - UART2 2ch
-> >>    - SPDIF 1ch
-> >>    - SPI0  2ch
-> >> 
-> >> HDMI audio using I2S0 that requires 2ch but DMAC has only 1 channel.
-> >> 
-> >> UART2 can work without DMA resources, so this patch removes dma
-> >> allocation for UART2 and reuses it to I2S0.
-> > 
-> > I don't follow that description. How can i2s0 re-use the uart2 dma
-> > channels? Looking at the dma table in the TRM, uart2 has channels 6+7
-> > while i2s0 uses channels 11+12. They should just run concurrently?
+[...]
+
+>  static int pci_epf_test_bind(struct pci_epf *epf)
+>  {
+>  	int ret;
+>  	struct pci_epf_test *epf_test = epf_get_drvdata(epf);
+>  	struct pci_epf_header *header = epf->header;
+> +	const struct pci_epc_features *epc_features;
+> +	enum pci_barno test_reg_bar = BAR_0;
+>  	struct pci_epc *epc = epf->epc;
+>  	struct device *dev = &epf->dev;
+> +	bool linkup_notifier = false;
+> +	bool msix_capable = false;
+> +	bool msi_capable = true;
+>  
+>  	if (WARN_ON_ONCE(!epc))
+>  		return -EINVAL;
+>  
+> -	if (epc->features & EPC_FEATURE_NO_LINKUP_NOTIFIER)
+> -		epf_test->linkup_notifier = false;
+> -	else
+> -		epf_test->linkup_notifier = true;
+> -
+> -	epf_test->msix_available = epc->features & EPC_FEATURE_MSIX_AVAILABLE;
+> +	epc_features = pci_epc_get_features(epc, epf->func_no);
+
+I think it would work out better if struct pci_epc_features was
+allocated in the caller (stack) and pci_epc_get_features() take a
+pointer parameter to it rather than the callee and the callee would just
+have to fill it out, this also removes data in the driver that is not
+really useful.
+
+Is there any other reason behind the current design choice ?
+
+Thanks,
+Lorenzo
+
+> +	if (!epc_features) {
+> +		linkup_notifier = epc_features->linkup_notifier;
+> +		msix_capable = epc_features->msix_capable;
+> +		msi_capable = epc_features->msi_capable;
+> +		test_reg_bar = pci_epc_get_first_free_bar(epc_features);
+> +		pci_epf_configure_bar(epf, epc_features);
+> +	}
+>  
+> -	epf_test->test_reg_bar = EPC_FEATURE_GET_BAR(epc->features);
+> +	epf_test->test_reg_bar = test_reg_bar;
+>  
+>  	ret = pci_epc_write_header(epc, epf->func_no, header);
+>  	if (ret) {
+> @@ -492,13 +509,15 @@ static int pci_epf_test_bind(struct pci_epf *epf)
+>  	if (ret)
+>  		return ret;
+>  
+> -	ret = pci_epc_set_msi(epc, epf->func_no, epf->msi_interrupts);
+> -	if (ret) {
+> -		dev_err(dev, "MSI configuration failed\n");
+> -		return ret;
+> +	if (msi_capable) {
+> +		ret = pci_epc_set_msi(epc, epf->func_no, epf->msi_interrupts);
+> +		if (ret) {
+> +			dev_err(dev, "MSI configuration failed\n");
+> +			return ret;
+> +		}
+>  	}
+>  
+> -	if (epf_test->msix_available) {
+> +	if (msix_capable) {
+>  		ret = pci_epc_set_msix(epc, epf->func_no, epf->msix_interrupts);
+>  		if (ret) {
+>  			dev_err(dev, "MSI-X configuration failed\n");
+> @@ -506,7 +525,7 @@ static int pci_epf_test_bind(struct pci_epf *epf)
+>  		}
+>  	}
+>  
+> -	if (!epf_test->linkup_notifier)
+> +	if (!linkup_notifier)
+>  		queue_work(kpcitest_workqueue, &epf_test->cmd_handler.work);
+>  
+>  	return 0;
+> @@ -523,17 +542,6 @@ static int pci_epf_test_probe(struct pci_epf *epf)
+>  {
+>  	struct pci_epf_test *epf_test;
+>  	struct device *dev = &epf->dev;
+> -	const struct pci_epf_device_id *match;
+> -	struct pci_epf_test_data *data;
+> -	enum pci_barno test_reg_bar = BAR_0;
+> -	bool linkup_notifier = true;
+> -
+> -	match = pci_epf_match_device(pci_epf_test_ids, epf);
+> -	data = (struct pci_epf_test_data *)match->driver_data;
+> -	if (data) {
+> -		test_reg_bar = data->test_reg_bar;
+> -		linkup_notifier = data->linkup_notifier;
+> -	}
+>  
+>  	epf_test = devm_kzalloc(dev, sizeof(*epf_test), GFP_KERNEL);
+>  	if (!epf_test)
+> @@ -541,8 +549,6 @@ static int pci_epf_test_probe(struct pci_epf *epf)
+>  
+>  	epf->header = &test_header;
+>  	epf_test->epf = epf;
+> -	epf_test->test_reg_bar = test_reg_bar;
+> -	epf_test->linkup_notifier = linkup_notifier;
+>  
+>  	INIT_DELAYED_WORK(&epf_test->cmd_handler, pci_epf_test_cmd_handler);
+>  
+> -- 
+> 2.17.1
 > 
-> Sorry for confusing... 6 or 7 is as ID number of slave DMA channel.
-> TRM calls it 'Req number'. Req number 6+7 and 11+12 can work
-> concurrently but TRM says DMAC can transfer 8 DMA channels at same
-> time. So all 16 Req numbers cannot activate at same time. It should
-> be keep less or equal than 8 numbers.
-
-But that "shortcoming" of having more requests than channels is not
-something specific to the pl330, instead most dma controllers have that
-"problem", which seems to get solved by the virt-dma mechanism of
-dmaengine - which pl330 doesn't use so far. (but see pl080 for example)
-
-The devicetree only describes the hardware and is never meant as a
-configuration space for kernel-code shortcomings.
-
-
-Heiko
