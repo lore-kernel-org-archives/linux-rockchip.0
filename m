@@ -1,129 +1,74 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
 Subject: Re: [PATCH 11/15] PCI: pci-epf-test: Use pci_epc_get_features to get
  EPC features
-Date: Tue, 12 Feb 2019 15:07:18 +0000
-Message-ID: <20190212150718.GA28306@e107981-ln.cambridge.arm.com>
+Date: Wed, 13 Feb 2019 19:08:18 +0530
+Message-ID: <6d72cfdf-97a7-4aab-f746-d0e545431ea2@ti.com>
 References: <20190107064148.10152-1-kishon@ti.com>
  <20190107064148.10152-12-kishon@ti.com>
+ <20190212150718.GA28306@e107981-ln.cambridge.arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190107064148.10152-12-kishon@ti.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Alan Douglas <adouglas@cadence.com>, Shawn Lin <shawn.lin@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Cyrille Pitchen <cyrille.pitchen@free-electrons.com>, Jia-Ju Bai <baijiaju1990@gmail.com>, linux-omap@vger.kernel.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190212150718.GA28306-4tUPXFaYRHv6sAKXYmQ0tx/iLCjYCKR+VpNB7YpNyf8@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Gustavo Pimentel <gustavo.pimentel-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alan Douglas <adouglas-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Jia-Ju Bai <baijiaju1990-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Cyrille Pitchen <cyrille.pitchen-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jan 07, 2019 at 12:11:44PM +0530, Kishon Vijay Abraham I wrote:
+Hi Lorenzo,
 
-[...]
-
->  static int pci_epf_test_bind(struct pci_epf *epf)
->  {
->  	int ret;
->  	struct pci_epf_test *epf_test = epf_get_drvdata(epf);
->  	struct pci_epf_header *header = epf->header;
-> +	const struct pci_epc_features *epc_features;
-> +	enum pci_barno test_reg_bar = BAR_0;
->  	struct pci_epc *epc = epf->epc;
->  	struct device *dev = &epf->dev;
-> +	bool linkup_notifier = false;
-> +	bool msix_capable = false;
-> +	bool msi_capable = true;
->  
->  	if (WARN_ON_ONCE(!epc))
->  		return -EINVAL;
->  
-> -	if (epc->features & EPC_FEATURE_NO_LINKUP_NOTIFIER)
-> -		epf_test->linkup_notifier = false;
-> -	else
-> -		epf_test->linkup_notifier = true;
-> -
-> -	epf_test->msix_available = epc->features & EPC_FEATURE_MSIX_AVAILABLE;
-> +	epc_features = pci_epc_get_features(epc, epf->func_no);
-
-I think it would work out better if struct pci_epc_features was
-allocated in the caller (stack) and pci_epc_get_features() take a
-pointer parameter to it rather than the callee and the callee would just
-have to fill it out, this also removes data in the driver that is not
-really useful.
-
-Is there any other reason behind the current design choice ?
-
-Thanks,
-Lorenzo
-
-> +	if (!epc_features) {
-> +		linkup_notifier = epc_features->linkup_notifier;
-> +		msix_capable = epc_features->msix_capable;
-> +		msi_capable = epc_features->msi_capable;
-> +		test_reg_bar = pci_epc_get_first_free_bar(epc_features);
-> +		pci_epf_configure_bar(epf, epc_features);
-> +	}
->  
-> -	epf_test->test_reg_bar = EPC_FEATURE_GET_BAR(epc->features);
-> +	epf_test->test_reg_bar = test_reg_bar;
->  
->  	ret = pci_epc_write_header(epc, epf->func_no, header);
->  	if (ret) {
-> @@ -492,13 +509,15 @@ static int pci_epf_test_bind(struct pci_epf *epf)
->  	if (ret)
->  		return ret;
->  
-> -	ret = pci_epc_set_msi(epc, epf->func_no, epf->msi_interrupts);
-> -	if (ret) {
-> -		dev_err(dev, "MSI configuration failed\n");
-> -		return ret;
-> +	if (msi_capable) {
-> +		ret = pci_epc_set_msi(epc, epf->func_no, epf->msi_interrupts);
-> +		if (ret) {
-> +			dev_err(dev, "MSI configuration failed\n");
-> +			return ret;
-> +		}
->  	}
->  
-> -	if (epf_test->msix_available) {
-> +	if (msix_capable) {
->  		ret = pci_epc_set_msix(epc, epf->func_no, epf->msix_interrupts);
->  		if (ret) {
->  			dev_err(dev, "MSI-X configuration failed\n");
-> @@ -506,7 +525,7 @@ static int pci_epf_test_bind(struct pci_epf *epf)
->  		}
->  	}
->  
-> -	if (!epf_test->linkup_notifier)
-> +	if (!linkup_notifier)
->  		queue_work(kpcitest_workqueue, &epf_test->cmd_handler.work);
->  
->  	return 0;
-> @@ -523,17 +542,6 @@ static int pci_epf_test_probe(struct pci_epf *epf)
->  {
->  	struct pci_epf_test *epf_test;
->  	struct device *dev = &epf->dev;
-> -	const struct pci_epf_device_id *match;
-> -	struct pci_epf_test_data *data;
-> -	enum pci_barno test_reg_bar = BAR_0;
-> -	bool linkup_notifier = true;
-> -
-> -	match = pci_epf_match_device(pci_epf_test_ids, epf);
-> -	data = (struct pci_epf_test_data *)match->driver_data;
-> -	if (data) {
-> -		test_reg_bar = data->test_reg_bar;
-> -		linkup_notifier = data->linkup_notifier;
-> -	}
->  
->  	epf_test = devm_kzalloc(dev, sizeof(*epf_test), GFP_KERNEL);
->  	if (!epf_test)
-> @@ -541,8 +549,6 @@ static int pci_epf_test_probe(struct pci_epf *epf)
->  
->  	epf->header = &test_header;
->  	epf_test->epf = epf;
-> -	epf_test->test_reg_bar = test_reg_bar;
-> -	epf_test->linkup_notifier = linkup_notifier;
->  
->  	INIT_DELAYED_WORK(&epf_test->cmd_handler, pci_epf_test_cmd_handler);
->  
-> -- 
-> 2.17.1
+On 12/02/19 8:37 PM, Lorenzo Pieralisi wrote:
+> On Mon, Jan 07, 2019 at 12:11:44PM +0530, Kishon Vijay Abraham I wrote:
 > 
+> [...]
+> 
+>>  static int pci_epf_test_bind(struct pci_epf *epf)
+>>  {
+>>  	int ret;
+>>  	struct pci_epf_test *epf_test = epf_get_drvdata(epf);
+>>  	struct pci_epf_header *header = epf->header;
+>> +	const struct pci_epc_features *epc_features;
+>> +	enum pci_barno test_reg_bar = BAR_0;
+>>  	struct pci_epc *epc = epf->epc;
+>>  	struct device *dev = &epf->dev;
+>> +	bool linkup_notifier = false;
+>> +	bool msix_capable = false;
+>> +	bool msi_capable = true;
+>>  
+>>  	if (WARN_ON_ONCE(!epc))
+>>  		return -EINVAL;
+>>  
+>> -	if (epc->features & EPC_FEATURE_NO_LINKUP_NOTIFIER)
+>> -		epf_test->linkup_notifier = false;
+>> -	else
+>> -		epf_test->linkup_notifier = true;
+>> -
+>> -	epf_test->msix_available = epc->features & EPC_FEATURE_MSIX_AVAILABLE;
+>> +	epc_features = pci_epc_get_features(epc, epf->func_no);
+> 
+> I think it would work out better if struct pci_epc_features was
+> allocated in the caller (stack) and pci_epc_get_features() take a
+> pointer parameter to it rather than the callee and the callee would just
+> have to fill it out, this also removes data in the driver that is not
+> really useful.
+> 
+> Is there any other reason behind the current design choice ?
+
+Some drivers are used by multiple platforms each with different features. In
+such cases it's cleaner to have separate epc_feature table for each platform.
+
+I think the driver should maintain some sort of data to even populate
+pci_epc_features allocated by EP function driver.
+
+Thanks
+Kishon
