@@ -1,49 +1,88 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH v2 08/15] PCI: endpoint: Fix pci_epf_alloc_space to set
- correct MEM TYPE flags
-Date: Wed, 13 Feb 2019 19:17:14 +0530
-Message-ID: <ebadc615-f633-e84e-041a-99b7936a123b@ti.com>
-References: <20190114111513.21618-1-kishon@ti.com>
- <20190114111513.21618-9-kishon@ti.com>
- <20190211173723.GA31035@e107981-ln.cambridge.arm.com>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Subject: [PATCH v3 0/9] mm: Use vm_map_pages() and vm_map_pages_zero() API
+Date: Wed, 13 Feb 2019 19:30:35 +0530
+Message-ID: <20190213140035.GA21935@jordon-HP-15-Notebook-PC>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190211173723.GA31035-4tUPXFaYRHv6sAKXYmQ0tx/iLCjYCKR+VpNB7YpNyf8@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Gustavo Pimentel <gustavo.pimentel-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alan Douglas <adouglas-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+Sender: linux-kernel-owner@vger.kernel.org
+To: akpm@linux-foundation.org, willy@infradead.org, mhocko@suse.com, kirill.shutemov@linux.intel.com, vbabka@suse.cz, riel@surriel.com, sfr@canb.auug.org.au, rppt@linux.vnet.ibm.com, peterz@infradead.org, linux@armlinux.org.uk, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, keescook@chromium.org, m.szyprowski@samsung.com, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, kyungmin.park@samsung.com, mchehab@kernel.org, boris.ostrovsky@oracle.com, jgross@suse.com
+Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux1394-devel@lists.sourceforge.net, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, xen-devel@lists.xen.org, iommu@lists.linux-foundation.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Lorenzo,
+Previouly drivers have their own way of mapping range of
+kernel pages/memory into user vma and this was done by
+invoking vm_insert_page() within a loop.
 
-On 11/02/19 11:07 PM, Lorenzo Pieralisi wrote:
-> On Mon, Jan 14, 2019 at 04:45:06PM +0530, Kishon Vijay Abraham I wrote:
->> pci_epf_alloc_space() sets the MEM TYPE flags to indicate a 32-bit
->> Base Address Register irrespective of the size. Fix it here to indicate
->> 64-bit BAR if the size is > 2GB.
->>
->> Signed-off-by: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
->> ---
->>  drivers/pci/endpoint/pci-epf-core.c | 4 +++-
->>  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> This looks like a fix and should me marked as such. Does it work
-> as as standalone patch if it gets backported ?
+As this pattern is common across different drivers, it can
+be generalized by creating new functions and use it across
+the drivers.
 
-Yeah, it should work. But the current users doesn't allocate > 2GB and some
-EPC drivers configure their registers based on size. So nothing is broken
-without this patch as such.
+vm_map_pages() is the API which could be used to map
+kernel memory/pages in drivers which has considered vm_pgoff.
 
-Thanks
-Kishon
+vm_map_pages_zero() is the API which could be used to map
+range of kernel memory/pages in drivers which has not considered
+vm_pgoff. vm_pgoff is passed default as 0 for those drivers.
+
+We _could_ then at a later "fix" these drivers which are using
+vm_map_pages_zero() to behave according to the normal vm_pgoff
+offsetting simply by removing the _zero suffix on the function
+name and if that causes regressions, it gives us an easy way to revert.
+
+Tested on Rockchip hardware and display is working fine, including talking
+to Lima via prime.
+
+v1 -> v2:
+        Few Reviewed-by.
+
+        Updated the change log in [8/9]
+
+        In [7/9], vm_pgoff is treated in V4L2 API as a 'cookie'
+        to select a buffer, not as a in-buffer offset by design
+        and it always want to mmap a whole buffer from its beginning.
+        Added additional changes after discussing with Marek and
+        vm_map_pages() could be used instead of vm_map_pages_zero().
+
+v2 -> v3:
+        Corrected the documentation as per review comment.
+
+        As suggested in v2, renaming the interfaces to -
+        *vm_insert_range() -> vm_map_pages()* and
+        *vm_insert_range_buggy() -> vm_map_pages_zero()*.
+        As the interface is renamed, modified the code accordingly,
+        updated the change logs and modified the subject lines to use the
+        new interfaces. There is no other change apart from renaming and
+        using the new interface.
+
+	Patch[1/9] & [4/9], Tested on Rockchip hardware.
+
+Souptick Joarder (9):
+  mm: Introduce new vm_map_pages() and vm_map_pages_zero() API
+  arm: mm: dma-mapping: Convert to use vm_map_pages()
+  drivers/firewire/core-iso.c: Convert to use vm_map_pages_zero()
+  drm/rockchip/rockchip_drm_gem.c: Convert to use vm_map_pages()
+  drm/xen/xen_drm_front_gem.c: Convert to use vm_map_pages()
+  iommu/dma-iommu.c: Convert to use vm_map_pages()
+  videobuf2/videobuf2-dma-sg.c: Convert to use vm_map_pages()
+  xen/gntdev.c: Convert to use vm_map_pages()
+  xen/privcmd-buf.c: Convert to use vm_map_pages_zero()
+
+ arch/arm/mm/dma-mapping.c                          | 22 ++----
+ drivers/firewire/core-iso.c                        | 15 +---
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c        | 17 +----
+ drivers/gpu/drm/xen/xen_drm_front_gem.c            | 18 ++---
+ drivers/iommu/dma-iommu.c                          | 12 +---
+ drivers/media/common/videobuf2/videobuf2-core.c    |  7 ++
+ .../media/common/videobuf2/videobuf2-dma-contig.c  |  6 --
+ drivers/media/common/videobuf2/videobuf2-dma-sg.c  | 22 ++----
+ drivers/xen/gntdev.c                               | 16 ++---
+ drivers/xen/privcmd-buf.c                          |  8 +--
+ include/linux/mm.h                                 |  4 ++
+ mm/memory.c                                        | 81 ++++++++++++++++++++++
+ mm/nommu.c                                         | 14 ++++
+ 13 files changed, 136 insertions(+), 106 deletions(-)
+
+-- 
+1.9.1
