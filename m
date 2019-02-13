@@ -1,70 +1,71 @@
-From: Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v3 4/9] drm/rockchip/rockchip_drm_gem.c: Convert to use
- vm_map_pages()
-Date: Wed, 13 Feb 2019 19:34:36 +0530
-Message-ID: <20190213140436.GA22010@jordon-HP-15-Notebook-PC>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH 11/15] PCI: pci-epf-test: Use pci_epc_get_features to get
+ EPC features
+Date: Wed, 13 Feb 2019 14:36:46 +0000
+Message-ID: <20190213143646.GC25260@e107981-ln.cambridge.arm.com>
+References: <20190107064148.10152-1-kishon@ti.com>
+ <20190107064148.10152-12-kishon@ti.com>
+ <20190212150718.GA28306@e107981-ln.cambridge.arm.com>
+ <6d72cfdf-97a7-4aab-f746-d0e545431ea2@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, willy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, mhocko-IBi9RG/b67k@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org
-Cc: linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <6d72cfdf-97a7-4aab-f746-d0e545431ea2@ti.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Alan Douglas <adouglas@cadence.com>, Shawn Lin <shawn.lin@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Cyrille Pitchen <cyrille.pitchen@free-electrons.com>, Jia-Ju Bai <baijiaju1990@gmail.com>, linux-omap@vger.kernel.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Convert to use vm_map_pages() to map range of kernel
-memory to user vma.
+On Wed, Feb 13, 2019 at 07:08:18PM +0530, Kishon Vijay Abraham I wrote:
+> Hi Lorenzo,
+> 
+> On 12/02/19 8:37 PM, Lorenzo Pieralisi wrote:
+> > On Mon, Jan 07, 2019 at 12:11:44PM +0530, Kishon Vijay Abraham I wrote:
+> > 
+> > [...]
+> > 
+> >>  static int pci_epf_test_bind(struct pci_epf *epf)
+> >>  {
+> >>  	int ret;
+> >>  	struct pci_epf_test *epf_test = epf_get_drvdata(epf);
+> >>  	struct pci_epf_header *header = epf->header;
+> >> +	const struct pci_epc_features *epc_features;
+> >> +	enum pci_barno test_reg_bar = BAR_0;
+> >>  	struct pci_epc *epc = epf->epc;
+> >>  	struct device *dev = &epf->dev;
+> >> +	bool linkup_notifier = false;
+> >> +	bool msix_capable = false;
+> >> +	bool msi_capable = true;
+> >>  
+> >>  	if (WARN_ON_ONCE(!epc))
+> >>  		return -EINVAL;
+> >>  
+> >> -	if (epc->features & EPC_FEATURE_NO_LINKUP_NOTIFIER)
+> >> -		epf_test->linkup_notifier = false;
+> >> -	else
+> >> -		epf_test->linkup_notifier = true;
+> >> -
+> >> -	epf_test->msix_available = epc->features & EPC_FEATURE_MSIX_AVAILABLE;
+> >> +	epc_features = pci_epc_get_features(epc, epf->func_no);
+> > 
+> > I think it would work out better if struct pci_epc_features was
+> > allocated in the caller (stack) and pci_epc_get_features() take a
+> > pointer parameter to it rather than the callee and the callee would just
+> > have to fill it out, this also removes data in the driver that is not
+> > really useful.
+> > 
+> > Is there any other reason behind the current design choice ?
+> 
+> Some drivers are used by multiple platforms each with different features. In
+> such cases it's cleaner to have separate epc_feature table for each platform.
+> 
+> I think the driver should maintain some sort of data to even populate
+> pci_epc_features allocated by EP function driver.
 
-Tested on Rockchip hardware and display is working,
-including talking to Lima via prime.
+You mean that every EP controller driver should keep a table of
+pci_epc_features (instead of a single instance) to be matched using DT
+compatible strings to detect the platform variations ?
 
-Signed-off-by: Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 17 ++---------------
- 1 file changed, 2 insertions(+), 15 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-index a8db758..a2ebb08 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -221,26 +221,13 @@ static int rockchip_drm_gem_object_mmap_iommu(struct drm_gem_object *obj,
- 					      struct vm_area_struct *vma)
- {
- 	struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
--	unsigned int i, count = obj->size >> PAGE_SHIFT;
-+	unsigned int count = obj->size >> PAGE_SHIFT;
- 	unsigned long user_count = vma_pages(vma);
--	unsigned long uaddr = vma->vm_start;
--	unsigned long offset = vma->vm_pgoff;
--	unsigned long end = user_count + offset;
--	int ret;
- 
- 	if (user_count == 0)
- 		return -ENXIO;
--	if (end > count)
--		return -ENXIO;
- 
--	for (i = offset; i < end; i++) {
--		ret = vm_insert_page(vma, uaddr, rk_obj->pages[i]);
--		if (ret)
--			return ret;
--		uaddr += PAGE_SIZE;
--	}
--
--	return 0;
-+	return vm_map_pages(vma, rk_obj->pages, count);
- }
- 
- static int rockchip_drm_gem_object_mmap_dma(struct drm_gem_object *obj,
--- 
-1.9.1
+Thanks,
+Lorenzo
