@@ -1,13 +1,13 @@
 From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [GIT PULL 1/2] Rockchip dts32 updates for 5.1
-Date: Fri, 15 Feb 2019 14:36:18 +0100
-Message-ID: <CAK8P3a37LmyvaOH21uHiVrB8YQ6R2LtOGONky2hqCK+9AUZuqw@mail.gmail.com>
-References: <2570520.8EeqtpO5V7@phil>
+Subject: Re: [GIT PULL 2/2] Rockchip dts64 updates for 5.1
+Date: Fri, 15 Feb 2019 14:45:06 +0100
+Message-ID: <CAK8P3a2drxVzNgsKcM2ii62+NsVmsCiOKGirQeby0kOFRQnX_g@mail.gmail.com>
+References: <2570520.8EeqtpO5V7@phil> <1744093.FyxTZ0jN5f@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2570520.8EeqtpO5V7@phil>
+In-Reply-To: <1744093.FyxTZ0jN5f@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -21,18 +21,12 @@ To: Heiko Stuebner <heiko@sntech.de>
 Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Feb 1, 2019 at 12:23 PM Heiko Stuebner <heiko@sntech.de> wrote:
->
-> ----------------------------------------------------------------
-> New board the Elgin-R1 based on the rv1108 soc and a number of small
-> improvements for rv1108 as well. RK3066 got support for the core
-> display components and the Edison tablet got its touchscreen added.
-> Apart from that a wider fix to drop display-wp usage from places where
-> it shouldn't be used, a pin fix for Edison and a cleanup to prevent
-> rk3036 board from defining sound-dai-cells for core components in
-> each board separately.
+On Fri, Feb 1, 2019 at 12:24 PM Heiko Stuebner <heiko@sntech.de> wrote:
+> New boards are the Rock Pi 4, NanoPC-T4 and NanoPi-M4, with the last
+> two being part of a family and sharing bigger parts of the devicetree.
+> rk3328 got sound-related upgrades and a wider patch drops mmc display-wp
+> fields from nodes which shouldn't use it.
 
+Pulled into arm/dt, nice to see the additional rk3399 boards. Thanks,
 
-Pulled into arm/dt, thanks!
-
-      Arnd
+     Arnd
