@@ -1,48 +1,33 @@
-From: agajjar <Akash_Gajjar@mentor.com>
-Subject: Re: [PATCH 2/4] arm64: dts: rockchip: rockpro64 dts remove unused
- node
-Date: Fri, 15 Feb 2019 17:38:16 +0530
-Message-ID: <ac22440d-3b64-1cf2-205c-52ea7c1c23f9@mentor.com>
-References: <20190213170651.3210-1-Akash_Gajjar@mentor.com>
- <20190213170651.3210-3-Akash_Gajjar@mentor.com> <4653141.o6ZdamfZ6d@diego>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL 1/2] Rockchip arm32 devicetree fixes for 5.0
+Date: Fri, 15 Feb 2019 13:41:32 +0100
+Message-ID: <CAK8P3a34EbDO6TNDp8GBZ8zSZxyNmk=R8WWcd7AeNvaGgLk_QA@mail.gmail.com>
+References: <7484850.KS8GUYnfXV@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4653141.o6ZdamfZ6d@diego>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Oskari Lemmela <oskari@lemmela.net>, Shohei Maruyama <cheat.sc.linux@outlook.com>, Levin Du <djw@t-chip.com.cn>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <7484850.KS8GUYnfXV@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-On 2/15/2019 2:48 PM, Heiko Stübner wrote:
-> Am Mittwoch, 13. Februar 2019, 18:06:38 CET schrieb Akash Gajjar:
->> lcd panel pinmux and vcc1v8_s3 regulator is redundant and has a no impact,
->> so removing it.
->>
->> Signed-off-by: Akash Gajjar <Akash_Gajjar@mentor.com>
-Hi Heiko,
-> vcc1v8_s3 is actually also a emmc supply, so I'd like to keep it around
-> for completenes sake.
-
-Emmc module is supplied by PMIC vcc3v3_s3 (SWITCH_REG1) and vcc_1v8 
-(DCD_REG4).
-
-So I believe removing vcc1v8_s3 has no impact on emmc supply line.
-
-
-Thanks,
-Akash
-
+On Fri, Feb 1, 2019 at 12:13 PM Heiko Stuebner <heiko@sntech.de> wrote:
 >
-> I've now dropped the regulator portions so that only the lcd-pinmux
-> gets removed and reworded the commit message accordingly
-> and applied the result for 5.1
+> Hi Arnd, Kevin, Olof,
 >
-> Thanks
-> Heiko
->
->
->
+> please find below and in the following mail some fixes for Rockchip SoCs
+> on 5.0-rc. Nothing overly major thankfully.
+
+Pulled into arm/fixes, thanks
+
+     Arnd
