@@ -1,11 +1,14 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH] arm64: dts: rock960: Enable tsadc device
-Date: Fri, 15 Feb 2019 12:25:39 -0300
-Message-ID: <20190215152539.16606-1-ezequiel@collabora.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL 2/2] Rockchip dts64 updates for 5.1
+Date: Fri, 15 Feb 2019 16:38:43 +0100
+Message-ID: <CAK8P3a2UkmVOJDddi3rC=GFcBSeqciNuYaT8s3i5E4bOwJE1Bg@mail.gmail.com>
+References: <2570520.8EeqtpO5V7@phil> <1744093.FyxTZ0jN5f@phil>
+ <CAK8P3a2drxVzNgsKcM2ii62+NsVmsCiOKGirQeby0kOFRQnX_g@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CAK8P3a2drxVzNgsKcM2ii62+NsVmsCiOKGirQeby0kOFRQnX_g@mail.gmail.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -16,32 +19,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>, linux-arm-kernel@lists.infradead.org
+Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable the thermal sensor. This device also provides
-temperature shutdown protection. The shutdown value is
-set at 110C, as tested by the vendor.
+On Fri, Feb 15, 2019 at 2:45 PM Arnd Bergmann <arnd@arndb.de> wrote:
+>
+> On Fri, Feb 1, 2019 at 12:24 PM Heiko Stuebner <heiko@sntech.de> wrote:
+> > New boards are the Rock Pi 4, NanoPC-T4 and NanoPi-M4, with the last
+> > two being part of a family and sharing bigger parts of the devicetree.
+> > rk3328 got sound-related upgrades and a wider patch drops mmc display-wp
+> > fields from nodes which shouldn't use it.
+>
+> Pulled into arm/dt, nice to see the additional rk3399 boards. Thanks,
 
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi | 7 +++++++
- 1 file changed, 7 insertions(+)
+I still get some warnings during 'make dtb', all specific to rk3399:
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-index d64d5ac0804a..599c9752ed4d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-@@ -634,3 +634,10 @@
-         mali-supply = <&vdd_gpu>;
-         status = "okay";
- };
-+
-+&tsadc {
-+	rockchip,hw-tshut-mode = <1>;
-+	rockchip,hw-tshut-polarity = <1>;
-+	rockchip,hw-tshut-temp = <110000>;
-+	status = "okay";
-+};
--- 
-2.20.1
+../arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts:25.9-29.5: Warning
+(graph_port): /edp-panel/ports: graph port node name should be 'port'
+../arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts:46.9-50.5:
+Warning (graph_port): /edp-panel/ports: graph port node name should be
+'port'
+../arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts:94.9-98.5:
+Warning (graph_port): /edp-panel/ports: graph port node name should be
+'port'
+
+Can you see what is going on and send a fix?
+
+       Arnd
