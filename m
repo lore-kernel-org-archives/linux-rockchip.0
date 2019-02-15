@@ -1,61 +1,39 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [GIT PULL 2/2] Rockchip dts64 updates for 5.1
-Date: Fri, 15 Feb 2019 20:52:47 +0100
-Message-ID: <CAK8P3a1dg8PcaQXkY9XpqdWgSYYd_e01Cn3HxTjZxroaZir+=Q@mail.gmail.com>
-References: <2570520.8EeqtpO5V7@phil>
- <CAK8P3a2drxVzNgsKcM2ii62+NsVmsCiOKGirQeby0kOFRQnX_g@mail.gmail.com>
- <CAK8P3a2UkmVOJDddi3rC=GFcBSeqciNuYaT8s3i5E4bOwJE1Bg@mail.gmail.com>
- <3976614.8kaIahWTG7@diego>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 2/4] arm64: dts: rockchip: rockpro64 dts remove unused node
+Date: Fri, 15 Feb 2019 21:46:03 +0100
+Message-ID: <7155828.jr86DZMtXN@diego>
+References: <20190213170651.3210-1-Akash_Gajjar@mentor.com> <4653141.o6ZdamfZ6d@diego> <ac22440d-3b64-1cf2-205c-52ea7c1c23f9@mentor.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <3976614.8kaIahWTG7@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <ac22440d-3b64-1cf2-205c-52ea7c1c23f9@mentor.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: agajjar <Akash_Gajjar@mentor.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Oskari Lemmela <oskari@lemmela.net>, Shohei Maruyama <cheat.sc.linux@outlook.com>, Levin Du <djw@t-chip.com.cn>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBGZWIgMTUsIDIwMTkgYXQgODozMiBQTSBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250
-ZWNoLmRlPiB3cm90ZToKPgo+IEFtIEZyZWl0YWcsIDE1LiBGZWJydWFyIDIwMTksIDE2OjM4OjQz
-IENFVCBzY2hyaWViIEFybmQgQmVyZ21hbm46Cj4gPiBPbiBGcmksIEZlYiAxNSwgMjAxOSBhdCAy
-OjQ1IFBNIEFybmQgQmVyZ21hbm4gPGFybmRAYXJuZGIuZGU+IHdyb3RlOgo+ID4gPiBPbiBGcmks
-IEZlYiAxLCAyMDE5IGF0IDEyOjI0IFBNIEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+
-IHdyb3RlOgo+ID4gPiA+IE5ldyBib2FyZHMgYXJlIHRoZSBSb2NrIFBpIDQsIE5hbm9QQy1UNCBh
-bmQgTmFub1BpLU00LCB3aXRoIHRoZSBsYXN0Cj4gPiA+ID4gdHdvIGJlaW5nIHBhcnQgb2YgYSBm
-YW1pbHkgYW5kIHNoYXJpbmcgYmlnZ2VyIHBhcnRzIG9mIHRoZSBkZXZpY2V0cmVlLgo+ID4gPiA+
-IHJrMzMyOCBnb3Qgc291bmQtcmVsYXRlZCB1cGdyYWRlcyBhbmQgYSB3aWRlciBwYXRjaCBkcm9w
-cyBtbWMgZGlzcGxheS13cAo+ID4gPiA+IGZpZWxkcyBmcm9tIG5vZGVzIHdoaWNoIHNob3VsZG4n
-dCB1c2UgaXQuCj4gPiA+Cj4gPiA+IFB1bGxlZCBpbnRvIGFybS9kdCwgbmljZSB0byBzZWUgdGhl
-IGFkZGl0aW9uYWwgcmszMzk5IGJvYXJkcy4gVGhhbmtzLAo+ID4KPiA+IEkgc3RpbGwgZ2V0IHNv
-bWUgd2FybmluZ3MgZHVyaW5nICdtYWtlIGR0YicsIGFsbCBzcGVjaWZpYyB0byByazMzOTk6Cj4g
-Pgo+ID4gLi4vYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktZ3J1LWJvYi5kdHM6
-MjUuOS0yOS41OiBXYXJuaW5nCj4gPiAoZ3JhcGhfcG9ydCk6IC9lZHAtcGFuZWwvcG9ydHM6IGdy
-YXBoIHBvcnQgbm9kZSBuYW1lIHNob3VsZCBiZSAncG9ydCcKPiA+IC4uL2FyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvcmszMzk5LWdydS1rZXZpbi5kdHM6NDYuOS01MC41Ogo+ID4gV2Fybmlu
-ZyAoZ3JhcGhfcG9ydCk6IC9lZHAtcGFuZWwvcG9ydHM6IGdyYXBoIHBvcnQgbm9kZSBuYW1lIHNo
-b3VsZCBiZQo+ID4gJ3BvcnQnCj4gPiAuLi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3Jr
-MzM5OS1zYXBwaGlyZS1leGNhdmF0b3IuZHRzOjk0LjktOTguNToKPiA+IFdhcm5pbmcgKGdyYXBo
-X3BvcnQpOiAvZWRwLXBhbmVsL3BvcnRzOiBncmFwaCBwb3J0IG5vZGUgbmFtZSBzaG91bGQgYmUK
-PiA+ICdwb3J0Jwo+ID4KPiA+IENhbiB5b3Ugc2VlIHdoYXQgaXMgZ29pbmcgb24gYW5kIHNlbmQg
-YSBmaXg/Cj4KPiBobW0sIHRoYXQgc2hvdWxkIGFjdHVhbGx5IGJlIGZpeGVkIGJ5IHRoZSBmaXhl
-cy1wdWxsIHJlcXVlc3RzLCBzZWUKPiAgICAgICAgIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHVi
-L3NjbS9saW51eC9rZXJuZWwvZ2l0L2FybS9hcm0tc29jLmdpdC9jb21taXQvP2g9YXJtL2ZpeGVz
-JmlkPTI2Y2Q4NjU3YzdlNzQ1Njg2YTRjNTRhNWNjY2Y3MjFlZGUyMDhhMjUKPiBmb3IgcmVmZXJl
-bmNlLCB3aGljaCBzdXBwb3NlZGx5IGZpeGVzIGV4YWN0bHkgdGhlc2UgaXNzdWVzLgoKT2ssIGdv
-b2QuIEkgYWxzbyBhc2tlZCB0aGUgc2FtZSB0aGluZyBhYm91dCBvbWFwLCB3aGVyZSBJCm1hZGUg
-dGhlIHNhbWUgbWlzdGFrZS4gSSBjb25maXJtZWQgbm93IHRoYXQgbXkgZm9yLW5leHQKYnJhbmNo
-ICh3aGljaCBpbmNsdWRlcyB0aGUgZml4ZXMpIGRvZXMgbm90IGhhdmUgdGhpcyBpc3N1ZSwKaHRl
-IG9ubHkgd2FybmluZyBJIGdldCB0aGVyZSBpcyBmb3IgbXZlYnUva2lya3dvb2QKCiAgICAgICBB
-cm5kCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51
-eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1h
-cm0ta2VybmVsCg==
+Am Freitag, 15. Februar 2019, 13:08:16 CET schrieb agajjar:
+> On 2/15/2019 2:48 PM, Heiko Stübner wrote:
+> > Am Mittwoch, 13. Februar 2019, 18:06:38 CET schrieb Akash Gajjar:
+> >> lcd panel pinmux and vcc1v8_s3 regulator is redundant and has a no
+> >> impact,
+> >> so removing it.
+> >> 
+> >> Signed-off-by: Akash Gajjar <Akash_Gajjar@mentor.com>
+> 
+> Hi Heiko,
+> 
+> > vcc1v8_s3 is actually also a emmc supply, so I'd like to keep it around
+> > for completenes sake.
+> 
+> Emmc module is supplied by PMIC vcc3v3_s3 (SWITCH_REG1) and vcc_1v8
+> (DCD_REG4).
+> 
+> So I believe removing vcc1v8_s3 has no impact on emmc supply line.
+
+looking at the rockpro64 schematics page 10, I see vcca1v8_s3 linked
+to the emmc_vdd_1v8 input and obviously also as reference for the saradc.
+
+So I think we really could keep it around, so that the power-tree resembles
+the schematics more.
