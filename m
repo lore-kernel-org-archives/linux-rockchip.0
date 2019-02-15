@@ -1,88 +1,91 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH] arm64: dts: rockchip: Add nanopi4 bluetooth
-Date: Fri, 15 Feb 2019 00:02:34 +0000
-Message-ID: <a7c0fae925a838ad5bb540f4302614a94472b437.1550188024.git.robin.murphy@arm.com>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Subject: [PATCH v4 0/9] mm: Use vm_map_pages() and vm_map_pages_zero() API
+Date: Fri, 15 Feb 2019 08:11:05 +0530
+Message-ID: <20190215024104.GA26331@jordon-HP-15-Notebook-PC>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+Sender: linux-kernel-owner@vger.kernel.org
+To: akpm@linux-foundation.org, willy@infradead.org, mhocko@suse.com, kirill.shutemov@linux.intel.com, vbabka@suse.cz, riel@surriel.com, sfr@canb.auug.org.au, rppt@linux.vnet.ibm.com, peterz@infradead.org, linux@armlinux.org.uk, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, keescook@chromium.org, m.szyprowski@samsung.com, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, kyungmin.park@samsung.com, mchehab@kernel.org, boris.ostrovsky@oracle.com, jgross@suse.com
+Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, linux1394-devel@lists.sourceforge.net, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, xen-devel@lists.xen.org, iommu@lists.linux-foundation.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Describe the Bluetooth portion of the Ampak combo module - this is
-either an AP6356S or an AP6212 depending on the board variant, but
-there are no relevant compatibility differences between the two.
+Previouly drivers have their own way of mapping range of
+kernel pages/memory into user vma and this was done by
+invoking vm_insert_page() within a loop.
 
-Signed-off-by: Robin Murphy <robin.murphy@arm.com>
----
- .../boot/dts/rockchip/rk3399-nanopi4.dtsi     | 31 +++++++++++++++++--
- 1 file changed, 29 insertions(+), 2 deletions(-)
+As this pattern is common across different drivers, it can
+be generalized by creating new functions and use it across
+the drivers.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-index 2d304d2df62e..db48e986b361 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-@@ -218,7 +218,7 @@
- 	rk808: pmic@1b {
- 		compatible = "rockchip,rk808";
- 		reg = <0x1b>;
--		clock-output-names = "xin32k", "rk808-clkout2";
-+		clock-output-names = "xin32k", "rtc_clko_wifi";
- 		#clock-cells = <1>;
- 		interrupt-parent = <&gpio1>;
- 		interrupts = <21 IRQ_TYPE_LEVEL_LOW>;
-@@ -501,7 +501,20 @@
- 		};
- 	};
- 
--	sdio-pwrseq {
-+	sdio {
-+		bt_host_wake_l: bt-host-wake-l {
-+			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		bt_reg_on_h: bt-reg-on-h {
-+			/* external pullup to VCC1V8_PMUPLL */
-+			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		bt_wake_l: bt-wake-l {
-+			rockchip,pins = <2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
- 		wifi_reg_on_h: wifi-reg_on-h {
- 			rockchip,pins = <0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
-@@ -621,6 +634,20 @@
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&uart0_xfer &uart0_rts &uart0_cts>;
- 	status = "okay";
-+
-+	bluetooth {
-+		compatible = "brcm,bcm43438-bt";
-+		clocks = <&rk808 1>;
-+		clock-names = "lpo";
-+		device-wakeup-gpios = <&gpio2 RK_PD2 GPIO_ACTIVE_HIGH>;
-+		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
-+		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
-+		max-speed = <4000000>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_reg_on_h &bt_host_wake_l &bt_wake_l>;
-+		vbat-supply = <&vcc3v3_sys>;
-+		vddio-supply = <&vcc_1v8>;
-+	};
- };
- 
- &uart2 {
+vm_map_pages() is the API which could be used to map
+kernel memory/pages in drivers which has considered vm_pgoff.
+
+vm_map_pages_zero() is the API which could be used to map
+range of kernel memory/pages in drivers which has not considered
+vm_pgoff. vm_pgoff is passed default as 0 for those drivers.
+
+We _could_ then at a later "fix" these drivers which are using
+vm_map_pages_zero() to behave according to the normal vm_pgoff
+offsetting simply by removing the _zero suffix on the function
+name and if that causes regressions, it gives us an easy way to revert.
+
+Tested on Rockchip hardware and display is working fine, including talking
+to Lima via prime.
+
+v1 -> v2:
+        Few Reviewed-by.
+
+        Updated the change log in [8/9]
+
+        In [7/9], vm_pgoff is treated in V4L2 API as a 'cookie'
+        to select a buffer, not as a in-buffer offset by design
+        and it always want to mmap a whole buffer from its beginning.
+        Added additional changes after discussing with Marek and
+        vm_map_pages() could be used instead of vm_map_pages_zero().
+
+v2 -> v3:
+        Corrected the documentation as per review comment.
+
+        As suggested in v2, renaming the interfaces to -
+        *vm_insert_range() -> vm_map_pages()* and
+        *vm_insert_range_buggy() -> vm_map_pages_zero()*.
+        As the interface is renamed, modified the code accordingly,
+        updated the change logs and modified the subject lines to use the
+        new interfaces. There is no other change apart from renaming and
+        using the new interface.
+
+        Patch[1/9] & [4/9], Tested on Rockchip hardware.
+
+v3 -> v4:
+	Fixed build warnings on patch [8/9] reported by kbuild test robot.
+
+Souptick Joarder (9):
+  mm: Introduce new vm_map_pages() and vm_map_pages_zero() API
+  arm: mm: dma-mapping: Convert to use vm_map_pages()
+  drivers/firewire/core-iso.c: Convert to use vm_map_pages_zero()
+  drm/rockchip/rockchip_drm_gem.c: Convert to use vm_map_pages()
+  drm/xen/xen_drm_front_gem.c: Convert to use vm_map_pages()
+  iommu/dma-iommu.c: Convert to use vm_map_pages()
+  videobuf2/videobuf2-dma-sg.c: Convert to use vm_map_pages()
+  xen/gntdev.c: Convert to use vm_map_pages()
+  xen/privcmd-buf.c: Convert to use vm_map_pages_zero()
+
+ arch/arm/mm/dma-mapping.c                          | 22 ++----
+ drivers/firewire/core-iso.c                        | 15 +---
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c        | 17 +----
+ drivers/gpu/drm/xen/xen_drm_front_gem.c            | 18 ++---
+ drivers/iommu/dma-iommu.c                          | 12 +---
+ drivers/media/common/videobuf2/videobuf2-core.c    |  7 ++
+ .../media/common/videobuf2/videobuf2-dma-contig.c  |  6 --
+ drivers/media/common/videobuf2/videobuf2-dma-sg.c  | 22 ++----
+ drivers/xen/gntdev.c                               | 11 ++-
+ drivers/xen/privcmd-buf.c                          |  8 +--
+ include/linux/mm.h                                 |  4 ++
+ mm/memory.c                                        | 81 ++++++++++++++++++++++
+ mm/nommu.c                                         | 14 ++++
+ 13 files changed, 134 insertions(+), 103 deletions(-)
+
 -- 
-2.17.1
+1.9.1
