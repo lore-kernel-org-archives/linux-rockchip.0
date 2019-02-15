@@ -1,15 +1,16 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+From: Arnd Bergmann <arnd@arndb.de>
 Subject: Re: [GIT PULL 2/2] Rockchip dts64 updates for 5.1
-Date: Fri, 15 Feb 2019 20:32:01 +0100
-Message-ID: <3976614.8kaIahWTG7@diego>
+Date: Fri, 15 Feb 2019 20:52:47 +0100
+Message-ID: <CAK8P3a1dg8PcaQXkY9XpqdWgSYYd_e01Cn3HxTjZxroaZir+=Q@mail.gmail.com>
 References: <2570520.8EeqtpO5V7@phil>
  <CAK8P3a2drxVzNgsKcM2ii62+NsVmsCiOKGirQeby0kOFRQnX_g@mail.gmail.com>
  <CAK8P3a2UkmVOJDddi3rC=GFcBSeqciNuYaT8s3i5E4bOwJE1Bg@mail.gmail.com>
+ <3976614.8kaIahWTG7@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAK8P3a2UkmVOJDddi3rC=GFcBSeqciNuYaT8s3i5E4bOwJE1Bg@mail.gmail.com>
+In-Reply-To: <3976614.8kaIahWTG7@diego>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -19,36 +20,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Arnd Bergmann <arnd@arndb.de>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
 Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 15. Februar 2019, 16:38:43 CET schrieb Arnd Bergmann:
-> On Fri, Feb 15, 2019 at 2:45 PM Arnd Bergmann <arnd@arndb.de> wrote:
-> > On Fri, Feb 1, 2019 at 12:24 PM Heiko Stuebner <heiko@sntech.de> wrote:
-> > > New boards are the Rock Pi 4, NanoPC-T4 and NanoPi-M4, with the last
-> > > two being part of a family and sharing bigger parts of the devicetree.
-> > > rk3328 got sound-related upgrades and a wider patch drops mmc display-wp
-> > > fields from nodes which shouldn't use it.
-> > 
-> > Pulled into arm/dt, nice to see the additional rk3399 boards. Thanks,
-> 
-> I still get some warnings during 'make dtb', all specific to rk3399:
-> 
-> ../arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts:25.9-29.5: Warning
-> (graph_port): /edp-panel/ports: graph port node name should be 'port'
-> ../arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts:46.9-50.5:
-> Warning (graph_port): /edp-panel/ports: graph port node name should be
-> 'port'
-> ../arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts:94.9-98.5:
-> Warning (graph_port): /edp-panel/ports: graph port node name should be
-> 'port'
-> 
-> Can you see what is going on and send a fix?
-
-hmm, that should actually be fixed by the fixes-pull requests, see
-	https://git.kernel.org/pub/scm/linux/kernel/git/arm/arm-soc.git/commit/?h=arm/fixes&id=26cd8657c7e745686a4c54a5cccf721ede208a25
-for reference, which supposedly fixes exactly these issues.
-
-
-Heiko
+T24gRnJpLCBGZWIgMTUsIDIwMTkgYXQgODozMiBQTSBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250
+ZWNoLmRlPiB3cm90ZToKPgo+IEFtIEZyZWl0YWcsIDE1LiBGZWJydWFyIDIwMTksIDE2OjM4OjQz
+IENFVCBzY2hyaWViIEFybmQgQmVyZ21hbm46Cj4gPiBPbiBGcmksIEZlYiAxNSwgMjAxOSBhdCAy
+OjQ1IFBNIEFybmQgQmVyZ21hbm4gPGFybmRAYXJuZGIuZGU+IHdyb3RlOgo+ID4gPiBPbiBGcmks
+IEZlYiAxLCAyMDE5IGF0IDEyOjI0IFBNIEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+
+IHdyb3RlOgo+ID4gPiA+IE5ldyBib2FyZHMgYXJlIHRoZSBSb2NrIFBpIDQsIE5hbm9QQy1UNCBh
+bmQgTmFub1BpLU00LCB3aXRoIHRoZSBsYXN0Cj4gPiA+ID4gdHdvIGJlaW5nIHBhcnQgb2YgYSBm
+YW1pbHkgYW5kIHNoYXJpbmcgYmlnZ2VyIHBhcnRzIG9mIHRoZSBkZXZpY2V0cmVlLgo+ID4gPiA+
+IHJrMzMyOCBnb3Qgc291bmQtcmVsYXRlZCB1cGdyYWRlcyBhbmQgYSB3aWRlciBwYXRjaCBkcm9w
+cyBtbWMgZGlzcGxheS13cAo+ID4gPiA+IGZpZWxkcyBmcm9tIG5vZGVzIHdoaWNoIHNob3VsZG4n
+dCB1c2UgaXQuCj4gPiA+Cj4gPiA+IFB1bGxlZCBpbnRvIGFybS9kdCwgbmljZSB0byBzZWUgdGhl
+IGFkZGl0aW9uYWwgcmszMzk5IGJvYXJkcy4gVGhhbmtzLAo+ID4KPiA+IEkgc3RpbGwgZ2V0IHNv
+bWUgd2FybmluZ3MgZHVyaW5nICdtYWtlIGR0YicsIGFsbCBzcGVjaWZpYyB0byByazMzOTk6Cj4g
+Pgo+ID4gLi4vYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktZ3J1LWJvYi5kdHM6
+MjUuOS0yOS41OiBXYXJuaW5nCj4gPiAoZ3JhcGhfcG9ydCk6IC9lZHAtcGFuZWwvcG9ydHM6IGdy
+YXBoIHBvcnQgbm9kZSBuYW1lIHNob3VsZCBiZSAncG9ydCcKPiA+IC4uL2FyY2gvYXJtNjQvYm9v
+dC9kdHMvcm9ja2NoaXAvcmszMzk5LWdydS1rZXZpbi5kdHM6NDYuOS01MC41Ogo+ID4gV2Fybmlu
+ZyAoZ3JhcGhfcG9ydCk6IC9lZHAtcGFuZWwvcG9ydHM6IGdyYXBoIHBvcnQgbm9kZSBuYW1lIHNo
+b3VsZCBiZQo+ID4gJ3BvcnQnCj4gPiAuLi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3Jr
+MzM5OS1zYXBwaGlyZS1leGNhdmF0b3IuZHRzOjk0LjktOTguNToKPiA+IFdhcm5pbmcgKGdyYXBo
+X3BvcnQpOiAvZWRwLXBhbmVsL3BvcnRzOiBncmFwaCBwb3J0IG5vZGUgbmFtZSBzaG91bGQgYmUK
+PiA+ICdwb3J0Jwo+ID4KPiA+IENhbiB5b3Ugc2VlIHdoYXQgaXMgZ29pbmcgb24gYW5kIHNlbmQg
+YSBmaXg/Cj4KPiBobW0sIHRoYXQgc2hvdWxkIGFjdHVhbGx5IGJlIGZpeGVkIGJ5IHRoZSBmaXhl
+cy1wdWxsIHJlcXVlc3RzLCBzZWUKPiAgICAgICAgIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHVi
+L3NjbS9saW51eC9rZXJuZWwvZ2l0L2FybS9hcm0tc29jLmdpdC9jb21taXQvP2g9YXJtL2ZpeGVz
+JmlkPTI2Y2Q4NjU3YzdlNzQ1Njg2YTRjNTRhNWNjY2Y3MjFlZGUyMDhhMjUKPiBmb3IgcmVmZXJl
+bmNlLCB3aGljaCBzdXBwb3NlZGx5IGZpeGVzIGV4YWN0bHkgdGhlc2UgaXNzdWVzLgoKT2ssIGdv
+b2QuIEkgYWxzbyBhc2tlZCB0aGUgc2FtZSB0aGluZyBhYm91dCBvbWFwLCB3aGVyZSBJCm1hZGUg
+dGhlIHNhbWUgbWlzdGFrZS4gSSBjb25maXJtZWQgbm93IHRoYXQgbXkgZm9yLW5leHQKYnJhbmNo
+ICh3aGljaCBpbmNsdWRlcyB0aGUgZml4ZXMpIGRvZXMgbm90IGhhdmUgdGhpcyBpc3N1ZSwKaHRl
+IG9ubHkgd2FybmluZyBJIGdldCB0aGVyZSBpcyBmb3IgbXZlYnUva2lya3dvb2QKCiAgICAgICBB
+cm5kCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51
+eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1h
+cm0ta2VybmVsCg==
