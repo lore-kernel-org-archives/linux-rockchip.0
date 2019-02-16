@@ -1,33 +1,29 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH] ARM: dts: rockchip: rk3188-bqedison2qc: remove cap-mmc-highspeed from mmc1 node
-Date: Sat, 16 Feb 2019 11:25:45 +0100
-Message-ID: <20190216102545.1809-1-jbx6244@gmail.com>
+From: Yangtao Li <tiny.windzz@gmail.com>
+Subject: [PATCH 0/3] PM / devfreq: do some cleanup
+Date: Sat, 16 Feb 2019 10:18:23 -0500
+Message-ID: <20190216151826.11584-1-tiny.windzz@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+To: cw00.choi@samsung.com, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, heiko@sntech.de, thierry.reding@gmail.com, jonathanh@nvidia.com
+Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, Yangtao Li <tiny.windzz@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The mmc1 pins are used for SDIO with a wifi chip.
-The function mmc_sdio_switch_hs() only checks for MMC_CAP_SD_HIGHSPEED and
-not for MMC_CAP_MMC_HIGHSPEED, so cap-mmc-highspeed can be removed.
+The informations come from the coccinelle tool.
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- arch/arm/boot/dts/rk3188-bqedison2qc.dts | 1 -
- 1 file changed, 1 deletion(-)
+drivers/devfreq/tegra-devfreq.c:577:5-8: Unneeded variable: "ret".
+Return "0" on line 603
+drivers/devfreq/rk3399_dmc.c:325:2-3: Unneeded semicolon
+drivers/devfreq/event/rockchip-dfi.c:214:2-3: Unneeded semicolon
 
-diff --git a/arch/arm/boot/dts/rk3188-bqedison2qc.dts b/arch/arm/boot/dts/rk3188-bqedison2qc.dts
-index e0424daf2..4b798d1a5 100644
---- a/arch/arm/boot/dts/rk3188-bqedison2qc.dts
-+++ b/arch/arm/boot/dts/rk3188-bqedison2qc.dts
-@@ -446,7 +446,6 @@
- &mmc1 {
- 	bus-width = <4>;
- 	cap-sd-highspeed;
--	cap-mmc-highspeed;
- 	keep-power-in-suspend;
- 	mmc-pwrseq = <&sdio_pwrseq>;
- 	non-removable;
+Yangtao Li (3):
+  PM / devfreq: rk3399_dmc: remove unneeded semicolon
+  PM / devfreq: rockchip-dfi: remove unneeded semicolon
+  PM / devfreq: tegra: remove unneeded variable
+
+ drivers/devfreq/event/rockchip-dfi.c | 2 +-
+ drivers/devfreq/rk3399_dmc.c         | 2 +-
+ drivers/devfreq/tegra-devfreq.c      | 7 ++-----
+ 3 files changed, 4 insertions(+), 7 deletions(-)
+
 -- 
-2.11.0
+2.17.0
