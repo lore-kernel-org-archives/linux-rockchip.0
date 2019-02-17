@@ -1,14 +1,14 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] drm/rockchip: vop: Dither down to RGB666 if output bpc is
- 6
-Date: Sun, 17 Feb 2019 21:17:25 +0100
-Message-ID: <5787325.TG7Q2WIxUi@phil>
-References: <20190217134255.6287-1-urjaman@gmail.com>
+From: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
+Subject: Re: [PATCH 1/3] ARM: dts: rk3288 Tinker Board (S) sdcard changes
+Date: Sun, 17 Feb 2019 21:29:25 +0100 (CET)
+Message-ID: <1660942499.343639.1550435365757@email.ionos.de>
+References: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
+ <20190217121513.22965-2-beagleboard@davidjohnsummers.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190217134255.6287-1-urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <20190217121513.22965-2-beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,66 +18,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi David,
 
-Am Sonntag, 17. Februar 2019, 14:42:27 CET schrieb Urja Rannikko:
-> Tested to fix banding on the 6-bit panel of the ASUS C201.
+we need a better patch subject here e.g.
+
+ARM: dts: rk3288-tinker: Fix SD card detection
+
+plus a Fixes tag for the commit we want to fix.
+
+> David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org> hat am 17. Februar 2019 um 13:15 geschrieben:
 > 
-> Signed-off-by: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> 
+> This patch makes some minor changes to how the sd card is
+> described in the device tree for the ASUS Tinker Board (S). In
+> particular on the Tinker Board S, when booted from the eMMC, and with
+> no card in the sd slot, and the log has endless messages about not
+> being able to detect the card.
+> 
+> Several methods to remove this error have been tried, the only one
+> that works is the broken-cd and so that is what is applied here.
+> 
+> Alas the ASUS schematic is not clear enough to indicate if the card
+> detect is wired up to the cpu, the schematic does not show internal
+> wiring on the Tinker Board!
+> 
+> Now this error didn't show up on the Tinker Board, as that machine
+> only boots where there is a sd card installed. However as the TB and
+> TBS are so similar it is expected that the Tinker Board also doesn't
+> have a functioning card detect. Hence the change here is made to the
+> dtsi file, so it applies to both TB and TBS.
+> 
+> The disable-wp is also removed, it doesnt seem needed on the micro
+> sdcard slots, and without thisn the card can still be written
+> to. Hence this flag is also removed.
+> 
+> Signed-off-by: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
 > ---
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 14 ++++++++++----
->  1 file changed, 10 insertions(+), 4 deletions(-)
+>  arch/arm/boot/dts/rk3288-tinker.dtsi | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> index 0c35a88e33dd..96ba1b4cd07b 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> @@ -896,6 +896,7 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
->  	u16 vsync_len = adjusted_mode->vsync_end - adjusted_mode->vsync_start;
->  	u16 vact_st = adjusted_mode->vtotal - adjusted_mode->vsync_start;
->  	u16 vact_end = vact_st + vdisplay;
-> +	uint32_t dither_bits = 0;
->  	uint32_t pin_pol, val;
->  	int ret;
->  
-> @@ -951,10 +952,15 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
->  	    !(vop_data->feature & VOP_FEATURE_OUTPUT_RGB10))
->  		s->output_mode = ROCKCHIP_OUT_MODE_P888;
->  
-> -	if (s->output_mode == ROCKCHIP_OUT_MODE_AAAA && s->output_bpc == 8)
-> -		VOP_REG_SET(vop, common, pre_dither_down, 1);
-> -	else
-> -		VOP_REG_SET(vop, common, pre_dither_down, 0);
-> +	/* dither_down includes the bit for pre_dither_down */
-> +	if (s->output_bpc) { /* Only dither if bpc known. */
-> +		if (s->output_mode == ROCKCHIP_OUT_MODE_AAAA && s->output_bpc <= 8)
-> +			dither_bits = 0x1;
-> +		/* Enable allegro dither to RGB666 */
-> +		if (s->output_bpc == 6)
-> +			dither_bits |= 0x6;
-> +	}
-> +	VOP_REG_SET(vop, common, dither_down, dither_bits);
+> diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
+> index 2b38075a2917..fceaeed44e34 100644
+> --- a/arch/arm/boot/dts/rk3288-tinker.dtsi
+> +++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
+> @@ -432,9 +432,7 @@
+>  	bus-width = <4>;
+>  	cap-mmc-highspeed;
+>  	cap-sd-highspeed;
+> -	card-detect-delay = <200>;
+> -	disable-wp;			/* wp not hooked up */
 
-That won't work in this form. The vops change way to much in each
-iteration, so that these "bits" are not guaranteed to stay the same
-order for example.
+I think we should keep as long as it doesn't hurt.
 
-Another caveat is that the "pre_dither_down" option is even only
-available on rk3288 and rk3328 and right now pre_dither_down
-and dither_down options seem to overlay each other.
-
-In the vendor-kernel they seem to have changed how they handle
-dithering, including splitting up the dither-bits [0]. Sadly nobody
-from Rockchip seems to have found the time to upstream any of this.
-
-In any case, I'd suggest to get inspiration from there (including the
-constants) to get dithering in mainline into a nice state.
-
-
-Heiko
-
-[0] https://github.com/rockchip-linux/kernel/blob/release-4.4/drivers/gpu/drm/rockchip/rockchip_drm_vop.c#L2547
+> +	broken-cd;
+>  	pinctrl-names = "default";
+>  	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
+>  	status = "okay";
+> -- 
+> beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org
+> 
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
