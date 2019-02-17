@@ -1,89 +1,76 @@
-From: David Summers <beagleboard@davidjohnsummers.uk>
-Subject: [PATCH 3/3] ARM: dts: rk3288 Tinker Board (S) add bluetooth
-Date: Sun, 17 Feb 2019 12:15:13 +0000
-Message-ID: <20190217121513.22965-4-beagleboard@davidjohnsummers.uk>
-References: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: add HDMI sound node for rk3328-rock64
+Date: Sun, 17 Feb 2019 14:17:18 +0100
+Message-ID: <15054640.NB91u9fWWK@phil>
+References: <20190202043444.9308-1-katsuhiro@katsuster.net> <2275914.n7pQDzs7mT@diego> <16f4fcf0-e9c2-e925-e463-282cfff088c7@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com
-Cc: linux-rockchip@lists.infradead.org, David Summers <beagleboard@davidjohnsummers.uk>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <16f4fcf0-e9c2-e925-e463-282cfff088c7@katsuster.net>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch is to add Bluetooth to the ASUS Tinker Board (S) device
-tree.
+Am Sonntag, 17. Februar 2019, 11:58:36 CET schrieb Katsuhiro Suzuki:
+> Hello Heiko,
+> 
+> On 2019/02/12 20:12, Heiko Stübner wrote:
+> > Hi,
+> > 
+> > Am Montag, 4. Februar 2019, 13:59:37 CET schrieb Katsuhiro Suzuki:
+> >> On 2019/02/03 18:06, Heiko Stuebner wrote:
+> >>> Am Samstag, 2. Februar 2019, 05:34:44 CET schrieb Katsuhiro Suzuki:
+> >>>> This patch adds HDMI sound (I2S0) node and remove dma properties
+> >>>> from UART2 node for rock64.
+> >>>>
+> >>>> The DMAC of rk3328 can use 8 channels at same time. Currently, total
+> >>>>
+> >>>> 7 channels are used as follows:
+> >>>>     - I2S1  2ch
+> >>>>     - UART2 2ch
+> >>>>     - SPDIF 1ch
+> >>>>     - SPI0  2ch
+> >>>>
+> >>>> HDMI audio using I2S0 that requires 2ch but DMAC has only 1 channel.
+> >>>>
+> >>>> UART2 can work without DMA resources, so this patch removes dma
+> >>>> allocation for UART2 and reuses it to I2S0.
+> >>>
+> >>> I don't follow that description. How can i2s0 re-use the uart2 dma
+> >>> channels? Looking at the dma table in the TRM, uart2 has channels 6+7
+> >>> while i2s0 uses channels 11+12. They should just run concurrently?
+> >>
+> >> Sorry for confusing... 6 or 7 is as ID number of slave DMA channel.
+> >> TRM calls it 'Req number'. Req number 6+7 and 11+12 can work
+> >> concurrently but TRM says DMAC can transfer 8 DMA channels at same
+> >> time. So all 16 Req numbers cannot activate at same time. It should
+> >> be keep less or equal than 8 numbers.
+> > 
+> > But that "shortcoming" of having more requests than channels is not
+> > something specific to the pl330, instead most dma controllers have that
+> > "problem", which seems to get solved by the virt-dma mechanism of
+> > dmaengine - which pl330 doesn't use so far. (but see pl080 for example)
+> > 
+> 
+> I understand. I drop these patches.
+> 
+> 
+> > The devicetree only describes the hardware and is never meant as a
+> > configuration space for kernel-code shortcomings.
+> > 
+> 
+> Yes, right. I don't want to use device-tree as configuration space,
+> so which is better?
+> 
+> - Fix the pl330 driver first and after that add HDMI-sound node
+>    to device-tree.
+> - Just add HDMI-sound node to device-tree. If someone (include me)
+>    want to support virt-dma on pl330 driver, they will fix it.
+>    (PL330 will face error but all sounds works fine and UART still
+>    works fine with DMA error)
 
-This patch is more contraversal - so probably view it as a request for
-comments.
+I'd go with this second option :-) .
 
-The reason behind this, is this patch does not currently set Bluetooth
-working on the these boards. The problem is that the
-bluetooth/hci_h5.c driver, that is used for Realtek serial devices,
-depends on ACPI. Unfortantly ACPI can not be enabled on armv7 machines
-such as the TB(S). And so the kernel module for the RTL8723BS
-Bluetooth can not be loaded.
-
-However this patch is believed to be an accurate description of the
-Tinker Board (S) wiring. It is strongly based on the ASUS patch:
-
-https://github.com/TinkerBoard/debian_kernel/commit/6a3128ade33f758887048578ada61a4b7ab8e678
-
-As the Bluetooth is connected via a UART and this is wired into uart0,
-this has been described as a SerDev.
-
-The ASUS patch mentions the UART_CTS, but not the _RTS. Now as the
-RTL8723BS has both CTS and RTS on the uart, it has been assumed both
-are wired into uart0 on the cpu.
-
-The Bluetooth connection has several wake up pins both device and host
-and a reset pin. The wiring of these has been described; however how
-the kernel driver will use these isn't clear. E.g. should HOST_WAKE be
-an interupt?
-
-The main reason for asking for comments, is that when it comes time to
-make the changes to the bluetooth uart code, and add compatible flags,
-robh has indicated that this will only be accepted with a valid
-example. So the code below is that example. So I would like comments
-that this approach is valid, which can be used when the later
-submission comes. 
-
-Signed-off-by: David Summers <beagleboard@davidjohnsummers.uk>
----
- arch/arm/boot/dts/rk3288-tinker.dtsi | 11 +++++++++++
- 1 file changed, 11 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
-index e1796f340eef..931b4c652fdc 100644
---- a/arch/arm/boot/dts/rk3288-tinker.dtsi
-+++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
-@@ -481,6 +481,17 @@
- 
- &uart0 {
- 	status = "okay";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart0_xfer>, <&uart0_cts>, <&uart0_rts>;
-+
-+	bluetooth {
-+		clocks = <&rk808 RK808_CLKOUT1>;
-+		reset-gpios = <&gpio4 RK_PD5 GPIO_ACTIVE_LOW>;
-+		device-wake-gpios = <&gpio4 RK_PD2 GPIO_ACTIVE_HIGH>;
-+		host-wake-gpios = <&gpio4 RK_PD7 GPIO_ACTIVE_HIGH>;
-+		vcc-18-supply = <&vcc_18>;
-+		vcc-io-supply = <&vcc_io>;
-+	};
- };
- 
- &uart1 {
--- 
-beagleboard@davidjohnsummers.uk
+Heiko
