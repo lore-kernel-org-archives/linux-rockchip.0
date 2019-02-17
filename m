@@ -1,18 +1,14 @@
-From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Subject: Re: [PATCH] arm64: dts: rockchip: add HDMI sound node for
- rk3328-rock64
-Date: Sun, 17 Feb 2019 19:58:36 +0900
-Message-ID: <16f4fcf0-e9c2-e925-e463-282cfff088c7@katsuster.net>
-References: <20190202043444.9308-1-katsuhiro@katsuster.net>
- <1970132.3b67tCGWFf@phil>
- <c4ce7f7a-c791-ae0a-ad3d-02b2efa41709@katsuster.net>
- <2275914.n7pQDzs7mT@diego>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] ARM: dts: rockchip: rk3188-bqedison2qc: remove
+ cap-mmc-highspeed from mmc1 node
+Date: Sun, 17 Feb 2019 12:26:04 +0100
+Message-ID: <4226652.OplgTpc3Hz@phil>
+References: <20190216102545.1809-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2275914.n7pQDzs7mT@diego>
-Content-Language: en-US
+In-Reply-To: <20190216102545.1809-1-jbx6244@gmail.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -22,49 +18,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8gSGVpa28sCgpPbiAyMDE5LzAyLzEyIDIwOjEyLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToK
-PiBIaSwKPiAKPiBBbSBNb250YWcsIDQuIEZlYnJ1YXIgMjAxOSwgMTM6NTk6MzcgQ0VUIHNjaHJp
-ZWIgS2F0c3VoaXJvIFN1enVraToKPj4gT24gMjAxOS8wMi8wMyAxODowNiwgSGVpa28gU3R1ZWJu
-ZXIgd3JvdGU6Cj4+PiBBbSBTYW1zdGFnLCAyLiBGZWJydWFyIDIwMTksIDA1OjM0OjQ0IENFVCBz
-Y2hyaWViIEthdHN1aGlybyBTdXp1a2k6Cj4+Pj4gVGhpcyBwYXRjaCBhZGRzIEhETUkgc291bmQg
-KEkyUzApIG5vZGUgYW5kIHJlbW92ZSBkbWEgcHJvcGVydGllcwo+Pj4+IGZyb20gVUFSVDIgbm9k
-ZSBmb3Igcm9jazY0Lgo+Pj4+Cj4+Pj4gVGhlIERNQUMgb2YgcmszMzI4IGNhbiB1c2UgOCBjaGFu
-bmVscyBhdCBzYW1lIHRpbWUuIEN1cnJlbnRseSwgdG90YWwKPj4+Pgo+Pj4+IDcgY2hhbm5lbHMg
-YXJlIHVzZWQgYXMgZm9sbG93czoKPj4+PiAgICAgLSBJMlMxICAyY2gKPj4+PiAgICAgLSBVQVJU
-MiAyY2gKPj4+PiAgICAgLSBTUERJRiAxY2gKPj4+PiAgICAgLSBTUEkwICAyY2gKPj4+Pgo+Pj4+
-IEhETUkgYXVkaW8gdXNpbmcgSTJTMCB0aGF0IHJlcXVpcmVzIDJjaCBidXQgRE1BQyBoYXMgb25s
-eSAxIGNoYW5uZWwuCj4+Pj4KPj4+PiBVQVJUMiBjYW4gd29yayB3aXRob3V0IERNQSByZXNvdXJj
-ZXMsIHNvIHRoaXMgcGF0Y2ggcmVtb3ZlcyBkbWEKPj4+PiBhbGxvY2F0aW9uIGZvciBVQVJUMiBh
-bmQgcmV1c2VzIGl0IHRvIEkyUzAuCj4+Pgo+Pj4gSSBkb24ndCBmb2xsb3cgdGhhdCBkZXNjcmlw
-dGlvbi4gSG93IGNhbiBpMnMwIHJlLXVzZSB0aGUgdWFydDIgZG1hCj4+PiBjaGFubmVscz8gTG9v
-a2luZyBhdCB0aGUgZG1hIHRhYmxlIGluIHRoZSBUUk0sIHVhcnQyIGhhcyBjaGFubmVscyA2KzcK
-Pj4+IHdoaWxlIGkyczAgdXNlcyBjaGFubmVscyAxMSsxMi4gVGhleSBzaG91bGQganVzdCBydW4g
-Y29uY3VycmVudGx5Pwo+Pgo+PiBTb3JyeSBmb3IgY29uZnVzaW5nLi4uIDYgb3IgNyBpcyBhcyBJ
-RCBudW1iZXIgb2Ygc2xhdmUgRE1BIGNoYW5uZWwuCj4+IFRSTSBjYWxscyBpdCAnUmVxIG51bWJl
-cicuIFJlcSBudW1iZXIgNis3IGFuZCAxMSsxMiBjYW4gd29yawo+PiBjb25jdXJyZW50bHkgYnV0
-IFRSTSBzYXlzIERNQUMgY2FuIHRyYW5zZmVyIDggRE1BIGNoYW5uZWxzIGF0IHNhbWUKPj4gdGlt
-ZS4gU28gYWxsIDE2IFJlcSBudW1iZXJzIGNhbm5vdCBhY3RpdmF0ZSBhdCBzYW1lIHRpbWUuIEl0
-IHNob3VsZAo+PiBiZSBrZWVwIGxlc3Mgb3IgZXF1YWwgdGhhbiA4IG51bWJlcnMuCj4gCj4gQnV0
-IHRoYXQgInNob3J0Y29taW5nIiBvZiBoYXZpbmcgbW9yZSByZXF1ZXN0cyB0aGFuIGNoYW5uZWxz
-IGlzIG5vdAo+IHNvbWV0aGluZyBzcGVjaWZpYyB0byB0aGUgcGwzMzAsIGluc3RlYWQgbW9zdCBk
-bWEgY29udHJvbGxlcnMgaGF2ZSB0aGF0Cj4gInByb2JsZW0iLCB3aGljaCBzZWVtcyB0byBnZXQg
-c29sdmVkIGJ5IHRoZSB2aXJ0LWRtYSBtZWNoYW5pc20gb2YKPiBkbWFlbmdpbmUgLSB3aGljaCBw
-bDMzMCBkb2Vzbid0IHVzZSBzbyBmYXIuIChidXQgc2VlIHBsMDgwIGZvciBleGFtcGxlKQo+IAoK
-SSB1bmRlcnN0YW5kLiBJIGRyb3AgdGhlc2UgcGF0Y2hlcy4KCgo+IFRoZSBkZXZpY2V0cmVlIG9u
-bHkgZGVzY3JpYmVzIHRoZSBoYXJkd2FyZSBhbmQgaXMgbmV2ZXIgbWVhbnQgYXMgYQo+IGNvbmZp
-Z3VyYXRpb24gc3BhY2UgZm9yIGtlcm5lbC1jb2RlIHNob3J0Y29taW5ncy4KPiAKClllcywgcmln
-aHQuIEkgZG9uJ3Qgd2FudCB0byB1c2UgZGV2aWNlLXRyZWUgYXMgY29uZmlndXJhdGlvbiBzcGFj
-ZSwKc28gd2hpY2ggaXMgYmV0dGVyPwoKLSBGaXggdGhlIHBsMzMwIGRyaXZlciBmaXJzdCBhbmQg
-YWZ0ZXIgdGhhdCBhZGQgSERNSS1zb3VuZCBub2RlCiAgIHRvIGRldmljZS10cmVlLgotIEp1c3Qg
-YWRkIEhETUktc291bmQgbm9kZSB0byBkZXZpY2UtdHJlZS4gSWYgc29tZW9uZSAoaW5jbHVkZSBt
-ZSkKICAgd2FudCB0byBzdXBwb3J0IHZpcnQtZG1hIG9uIHBsMzMwIGRyaXZlciwgdGhleSB3aWxs
-IGZpeCBpdC4KICAgKFBMMzMwIHdpbGwgZmFjZSBlcnJvciBidXQgYWxsIHNvdW5kcyB3b3JrcyBm
-aW5lIGFuZCBVQVJUIHN0aWxsCiAgIHdvcmtzIGZpbmUgd2l0aCBETUEgZXJyb3IpCgo+IAo+IEhl
-aWtvCj4gCj4gCj4gCgpCZXN0IFJlZ2FyZHMsCkthdHN1aGlybyBTdXp1a2kKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFp
-bGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
+Am Samstag, 16. Februar 2019, 11:25:45 CET schrieb Johan Jonker:
+> The mmc1 pins are used for SDIO with a wifi chip.
+> The function mmc_sdio_switch_hs() only checks for MMC_CAP_SD_HIGHSPEED and
+> not for MMC_CAP_MMC_HIGHSPEED, so cap-mmc-highspeed can be removed.
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+
+applied for 5.1
+
+Thanks
+Heiko
