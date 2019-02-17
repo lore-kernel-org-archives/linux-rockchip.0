@@ -1,87 +1,159 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH 1/3] ARM: dts: rk3288 Tinker Board (S) sdcard changes
-Date: Sun, 17 Feb 2019 14:00:04 +0000
-Message-ID: <e83b0404-bd32-a5d5-2e32-e0f49b122b95@arm.com>
+From: Tony McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/3] ARM: dts: rk3288 Tinker Board (S) add wi-fi
+Date: Sun, 17 Feb 2019 09:32:04 -0500
+Message-ID: <CAERgokmpHQb2czJdx++qFoogFRmkvXZm=4BNOsVuCz-ZvgTEaw@mail.gmail.com>
 References: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
- <20190217121513.22965-2-beagleboard@davidjohnsummers.uk>
+ <20190217121513.22965-3-beagleboard@davidjohnsummers.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190217121513.22965-2-beagleboard@davidjohnsummers.uk>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: David Summers <beagleboard@davidjohnsummers.uk>, heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190217121513.22965-3-beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi David,
+A similar configuration has been in use on Armbian images since kernel
+4.14, but not in a clean enough format for submission. I will test
+this, but the only differences I see compared to ours are combination
+of the mystery "chip_h" power domain/reset with the Wifi one and the
+inclusion of sd_uhs_ddr50.
 
-On 2019-02-17 12:15 pm, David Summers wrote:
-> This patch makes some minor changes to how the sd card is
-> described in the device tree for the ASUS Tinker Board (S). In
-> particular on the Tinker Board S, when booted from the eMMC, and with
-> no card in the sd slot, and the log has endless messages about not
-> being able to detect the card.
-> 
-> Several methods to remove this error have been tried, the only one
-> that works is the broken-cd and so that is what is applied here.
+-Tony
 
-I don't have a Tinker Board, but the symptom sounds instantly familiar 
-from hacking on another RK3288 box; have you tried adding 
-"regulator-always-on" to the vccio_sd regulator?
-
-With the reference design (which I would assume the Tinker Board has no 
-reason to deviate from in this area), the CD pin is either wired 
-directly to the SoC with no external pull-up, or explicitly pulled up to 
-VCCIO_SD. Either way, when the dwmmc driver probes and discovers there 
-is no card present, it sets the currently-unnecessary vqmmc-supply as 
-inactive, and thus the regulator core turns off VCCIO_SD entirely. 
-Unfortunately, this removes the voltage from the entire I/O domain 
-including the internal pull-up, which ends up leaving the CD pin 
-floating and generating spurious events.
-
-Robin.
-
-> Alas the ASUS schematic is not clear enough to indicate if the card
-> detect is wired up to the cpu, the schematic does not show internal
-> wiring on the Tinker Board!
-> 
-> Now this error didn't show up on the Tinker Board, as that machine
-> only boots where there is a sd card installed. However as the TB and
-> TBS are so similar it is expected that the Tinker Board also doesn't
-> have a functioning card detect. Hence the change here is made to the
-> dtsi file, so it applies to both TB and TBS.
-> 
-> The disable-wp is also removed, it doesnt seem needed on the micro
-> sdcard slots, and without thisn the card can still be written
-> to. Hence this flag is also removed.
-> 
-> Signed-off-by: David Summers <beagleboard@davidjohnsummers.uk>
+On Sun, Feb 17, 2019 at 7:16 AM David Summers
+<beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org> wrote:
+>
+> This patch adds the wifi to the ASUS Tinker Board (S) machines.
+>
+> Unfortunatly neither the Tinker Board nor the Tinker Board S schematic
+> indicate how the WiFi is wired up on these devices. The WiFi is
+> provided by the RTL8723BS device, that has sdio WiFi and UART
+> Bluetooth. This patch just adds the WiFi interface.
+>
+> With no schematic, most of the wiring has been derived from the ASUS
+> patch to Debian:
+>
+> https://github.com/TinkerBoard/debian_kernel/commit/6a3128ade33f758887048578ada61a4b7ab8e678
+>
+> In conjunction with the pin out of the RTL8723BS device:
+>
+> http://files.pine64.org/doc/datasheet/pine64/RTL8723BS.pdf
+> http://cit.odessa.ua/media/pdf/Intel-Compute-Stick/FN-Link_F23BDSM25-W1.pdf
+>
+> The only unusual part is that to bring the card up, both the pins
+> RK_PD3 and RK_PD4 need to be pulled. Why this needs to be done is not
+> clear, best explaination is that they are connected to the RTL8723BS
+> pins WL_DIS# and BT_DIS#, which the data sheet vaguely says:
+>
+> Shared with GPIO9 This Pin Can Externally Shutdown the RTL8723BS WLAN
+> function when BT_DISn is Pulled Low. When this pin deasserted, SDIO
+> interface will be disabled. This pin can also support the WLAN Ra
+> dio-off function with host interface remaining connected.
+>
+> Anyway extensive testing the TheSaint on ArchLinux Arm Forum
+>
+> https://archlinuxarm.org/forum/viewtopic.php?f=44&t=13064&start=120#p60548
+>
+> Signed-off-by: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
+> Signed-off-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
 > ---
->   arch/arm/boot/dts/rk3288-tinker.dtsi | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
-> 
+>  arch/arm/boot/dts/rk3288-tinker.dtsi | 39 +++++++++++++++++++++++++---
+>  1 file changed, 36 insertions(+), 3 deletions(-)
+>
 > diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
-> index 2b38075a2917..fceaeed44e34 100644
+> index fceaeed44e34..e1796f340eef 100644
 > --- a/arch/arm/boot/dts/rk3288-tinker.dtsi
 > +++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
-> @@ -432,9 +432,7 @@
->   	bus-width = <4>;
->   	cap-mmc-highspeed;
->   	cap-sd-highspeed;
-> -	card-detect-delay = <200>;
-> -	disable-wp;			/* wp not hooked up */
-> +	broken-cd;
->   	pinctrl-names = "default";
->   	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
->   	status = "okay";
-> 
+> @@ -3,8 +3,9 @@
+>   * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd.
+>   */
+>
+>  #include "rk3288.dtsi"
+>  #include <dt-bindings/input/input.h>
+> +#include <dt-bindings/clock/rockchip,rk808.h>
+>
+>  / {
+>         chosen {
+> @@ -98,6 +97,15 @@
+>                 startup-delay-us = <100000>;
+>                 vin-supply = <&vcc_io>;
+>         };
+> +
+> +       sdio_pwrseq: sdio-pwrseq {
+> +               compatible = "mmc-pwrseq-simple";
+> +               clocks = <&rk808 RK808_CLKOUT1>;
+> +               clock-names = "ext_clock";
+> +               pinctrl-names = "default";
+> +               pinctrl-0 = <&wifi_enable>;
+> +               reset-gpios = <&gpio4 RK_PD3 GPIO_ACTIVE_LOW>, <&gpio4 RK_PD4 GPIO_ACTIVE_LOW>;
+> +       };
+>  };
+>
+>  &cpu0 {
+> @@ -337,8 +345,8 @@
+>
+>  &io_domains {
+>         status = "okay";
+> -
+>         sdcard-supply = <&vccio_sd>;
+> +       wifi-supply = <&vcc_18>;
+>  };
+>
+>  &pinctrl {
+> @@ -417,6 +425,12 @@
+>                         rockchip,pins = <7 8 RK_FUNC_GPIO &pcfg_pull_none>;
+>                 };
+>         };
+> +
+> +       sdio {
+> +               wifi_enable: wifi-enable {
+> +                       rockchip,pins = <4 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>, <4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
+> +               };
+> +       };
+>  };
+>
+>  &pwm0 {
+> @@ -440,6 +454,25 @@
+>         vqmmc-supply = <&vccio_sd>;
+>  };
+>
+> +&sdio0 {
+> +       bus-width = <4>;
+> +       cap-sd-highspeed;
+> +       cap-sdio-irq;
+> +       keep-power-in-suspend;
+> +       mmc-pwrseq = <&sdio_pwrseq>;
+> +       non-removable;
+> +       pinctrl-names = "default";
+> +       pinctrl-0 = <&sdio0_bus4>, <&sdio0_cmd>, <&sdio0_clk>, <&sdio0_int>;
+> +       max-frequency = <50000000>;
+> +       sd-uhs-sdr12;
+> +       sd-uhs-sdr25;
+> +       sd-uhs-sdr50;
+> +       sd-uhs-ddr50;
+> +       vmmc-supply = <&vcc_io>;
+> +       vqmmc-supply = <&vcc_18>;
+> +       status = "okay";
+> +};
+> +
+>  &tsadc {
+>         rockchip,hw-tshut-mode = <1>; /* tshut mode 0:CRU 1:GPIO */
+>         rockchip,hw-tshut-polarity = <1>; /* tshut polarity 0:LOW 1:HIGH */
+> --
+> beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
