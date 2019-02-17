@@ -1,11 +1,15 @@
-From: Urja Rannikko <urjaman@gmail.com>
-Subject: [PATCH] drm/rockchip: vop: Dither down to RGB666 if output bpc is 6
-Date: Sun, 17 Feb 2019 13:42:27 +0000
-Message-ID: <20190217134255.6287-1-urjaman@gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH 1/3] ARM: dts: rk3288 Tinker Board (S) sdcard changes
+Date: Sun, 17 Feb 2019 14:00:04 +0000
+Message-ID: <e83b0404-bd32-a5d5-2e32-e0f49b122b95@arm.com>
+References: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
+ <20190217121513.22965-2-beagleboard@davidjohnsummers.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190217121513.22965-2-beagleboard@davidjohnsummers.uk>
+Content-Language: en-GB
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -15,48 +19,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-rockchip@lists.infradead.org
-Cc: Urja Rannikko <urjaman@gmail.com>, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, hjc@rock-chips.com
+To: David Summers <beagleboard@davidjohnsummers.uk>, heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Tested to fix banding on the 6-bit panel of the ASUS C201.
+Hi David,
 
-Signed-off-by: Urja Rannikko <urjaman@gmail.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+On 2019-02-17 12:15 pm, David Summers wrote:
+> This patch makes some minor changes to how the sd card is
+> described in the device tree for the ASUS Tinker Board (S). In
+> particular on the Tinker Board S, when booted from the eMMC, and with
+> no card in the sd slot, and the log has endless messages about not
+> being able to detect the card.
+> 
+> Several methods to remove this error have been tried, the only one
+> that works is the broken-cd and so that is what is applied here.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 0c35a88e33dd..96ba1b4cd07b 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -896,6 +896,7 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
- 	u16 vsync_len = adjusted_mode->vsync_end - adjusted_mode->vsync_start;
- 	u16 vact_st = adjusted_mode->vtotal - adjusted_mode->vsync_start;
- 	u16 vact_end = vact_st + vdisplay;
-+	uint32_t dither_bits = 0;
- 	uint32_t pin_pol, val;
- 	int ret;
- 
-@@ -951,10 +952,15 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
- 	    !(vop_data->feature & VOP_FEATURE_OUTPUT_RGB10))
- 		s->output_mode = ROCKCHIP_OUT_MODE_P888;
- 
--	if (s->output_mode == ROCKCHIP_OUT_MODE_AAAA && s->output_bpc == 8)
--		VOP_REG_SET(vop, common, pre_dither_down, 1);
--	else
--		VOP_REG_SET(vop, common, pre_dither_down, 0);
-+	/* dither_down includes the bit for pre_dither_down */
-+	if (s->output_bpc) { /* Only dither if bpc known. */
-+		if (s->output_mode == ROCKCHIP_OUT_MODE_AAAA && s->output_bpc <= 8)
-+			dither_bits = 0x1;
-+		/* Enable allegro dither to RGB666 */
-+		if (s->output_bpc == 6)
-+			dither_bits |= 0x6;
-+	}
-+	VOP_REG_SET(vop, common, dither_down, dither_bits);
- 
- 	VOP_REG_SET(vop, common, out_mode, s->output_mode);
- 
--- 
-2.20.1
+I don't have a Tinker Board, but the symptom sounds instantly familiar 
+from hacking on another RK3288 box; have you tried adding 
+"regulator-always-on" to the vccio_sd regulator?
+
+With the reference design (which I would assume the Tinker Board has no 
+reason to deviate from in this area), the CD pin is either wired 
+directly to the SoC with no external pull-up, or explicitly pulled up to 
+VCCIO_SD. Either way, when the dwmmc driver probes and discovers there 
+is no card present, it sets the currently-unnecessary vqmmc-supply as 
+inactive, and thus the regulator core turns off VCCIO_SD entirely. 
+Unfortunately, this removes the voltage from the entire I/O domain 
+including the internal pull-up, which ends up leaving the CD pin 
+floating and generating spurious events.
+
+Robin.
+
+> Alas the ASUS schematic is not clear enough to indicate if the card
+> detect is wired up to the cpu, the schematic does not show internal
+> wiring on the Tinker Board!
+> 
+> Now this error didn't show up on the Tinker Board, as that machine
+> only boots where there is a sd card installed. However as the TB and
+> TBS are so similar it is expected that the Tinker Board also doesn't
+> have a functioning card detect. Hence the change here is made to the
+> dtsi file, so it applies to both TB and TBS.
+> 
+> The disable-wp is also removed, it doesnt seem needed on the micro
+> sdcard slots, and without thisn the card can still be written
+> to. Hence this flag is also removed.
+> 
+> Signed-off-by: David Summers <beagleboard@davidjohnsummers.uk>
+> ---
+>   arch/arm/boot/dts/rk3288-tinker.dtsi | 3 +--
+>   1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
+> index 2b38075a2917..fceaeed44e34 100644
+> --- a/arch/arm/boot/dts/rk3288-tinker.dtsi
+> +++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
+> @@ -432,9 +432,7 @@
+>   	bus-width = <4>;
+>   	cap-mmc-highspeed;
+>   	cap-sd-highspeed;
+> -	card-detect-delay = <200>;
+> -	disable-wp;			/* wp not hooked up */
+> +	broken-cd;
+>   	pinctrl-names = "default";
+>   	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
+>   	status = "okay";
+> 
