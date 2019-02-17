@@ -1,12 +1,14 @@
 From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-Subject: [PATCH v3 1/2] arm64: dts: rockchip: add #sound-dai-cells to HDMI of
- rk3328
-Date: Mon, 18 Feb 2019 02:34:06 +0900
-Message-ID: <20190217173407.29189-1-katsuhiro@katsuster.net>
+Subject: [PATCH v3 2/2] arm64: dts: rockchip: add HDMI sound node for
+ rk3328-rock64
+Date: Mon, 18 Feb 2019 02:34:07 +0900
+Message-ID: <20190217173407.29189-2-katsuhiro@katsuster.net>
+References: <20190217173407.29189-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190217173407.29189-1-katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,25 +22,85 @@ To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockch
 Cc: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds #sound-dai-cells to use HDMI node as audio
-codec from device tree of rk3328 boards.
+This patch adds HDMI sound (I2S0) node for rock64.
+
+After apply this patch, UART2 will fail to allocate DMA resources
+but UART driver can work fine without DMA.
+
+This error is related to the DMAC of rk3328 (pl330 or compatible).
+DMAC connected to 16 DMA sources. Each sources have ID number that is
+called 'Req number' in rk3328 TRM. Currently total 7 sources has been
+activated as follows:
+
+| Req number | Source | Required  |
+|            |        | channels  |
+|------------+--------+-----------|
+| 14, 15     | I2S1   | 2ch       |
+|  6,  7     | UART2  | 2ch       |
+|     10     | SPDIF  | 1ch       |
+|  8,  9     | SPI0   | 2ch       |
+|------------+--------+-----------|
+|            | Total  | 7ch       |
+
+HDMI audio needs to activate new source I2S0 (Req number 11 and 12).
+I2S0 can work concurrently with other sources, but rk3328 DMAC can
+use max 8 channels at same time. If I2S0 is simply activated by this
+patch, required DMAC channels will be 9. So last one (UART2) cannot
+allocate the DMA resources.
+
+Virt-dma mechanism for pl0330 DMAC driver is needed to fix this
+problem.
 
 Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ .../arm64/boot/dts/rockchip/rk3328-rock64.dts | 21 ++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 84f14b132e8f..374b5da93a35 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -665,6 +665,7 @@
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&hdmi_cec &hdmii2c_xfer &hdmi_hpd>;
- 		rockchip,grf = <&grf>;
-+		#sound-dai-cells = <0>;
- 		status = "disabled";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+index 2157a528276b..bfc0930d245c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+@@ -68,7 +68,8 @@
+ 	sound {
+ 		compatible = "audio-graph-card";
+ 		label = "rockchip,rk3328";
+-		dais = <&i2s1_p0
++		dais = <&i2s0_p0
++			&i2s1_p0
+ 			&spdif_p0>;
+ 	};
  
- 		ports {
+@@ -141,6 +142,12 @@
+ 
+ &hdmi {
+ 	status = "okay";
++
++	port@0 {
++		hdmi_p0_0: endpoint {
++			remote-endpoint = <&i2s0_p0_0>;
++		};
++	};
+ };
+ 
+ &hdmiphy {
+@@ -256,6 +263,18 @@
+ 	};
+ };
+ 
++&i2s0 {
++	status = "okay";
++
++	i2s0_p0: port {
++		i2s0_p0_0: endpoint {
++			dai-format = "i2s";
++			mclk-fs = <256>;
++			remote-endpoint = <&hdmi_p0_0>;
++		};
++	};
++};
++
+ &i2s1 {
+ 	status = "okay";
+ 
 -- 
 2.20.1
