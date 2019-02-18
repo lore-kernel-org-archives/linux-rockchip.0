@@ -1,85 +1,93 @@
-From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [RFC] mmc: core: set initial signal voltage on power off
-Date: Mon, 18 Feb 2019 12:54:36 +0100
-Message-ID: <CAPDyKFpfjKbbCF=wyERXpcLk2LDJD6zsPHTYegwtHrv5qPv8HA@mail.gmail.com>
-References: <AM3PR03MB09664161A7FA2BD68B2800A7AC620@AM3PR03MB0966.eurprd03.prod.outlook.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH 1/3] ARM: dts: rk3288 Tinker Board (S) sdcard changes
+Date: Mon, 18 Feb 2019 11:54:09 +0000
+Message-ID: <6a15343b-554b-6059-09af-f6511e740866@arm.com>
+References: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
+ <20190217121513.22965-2-beagleboard@davidjohnsummers.uk>
+ <e83b0404-bd32-a5d5-2e32-e0f49b122b95@arm.com>
+ <2d8ac4e6-b825-dca7-d3cb-57cb32b3230b@davidjohnsummers.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <AM3PR03MB09664161A7FA2BD68B2800A7AC620-XQTXrJX/giFAc9da7WRX18eAHadYHfrlvxpqHgZTriW3zl9H0oFU5g@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
-Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <2d8ac4e6-b825-dca7-d3cb-57cb32b3230b@davidjohnsummers.uk>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: David Summers <beagleboard@davidjohnsummers.uk>, heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, 17 Feb 2019 at 23:14, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org> wrote:
->
-> Some boards have SD card connectors where the power rail cannot be switched
-> off by the driver. If the card has not been power cycled, it may still be
-> using 1.8V signaling after a warm re-boot. Bootroms expecting 3.3V signaling
-> will fail to boot from a UHS card that continue to use 1.8V signaling.
+On 17/02/2019 15:19, David Summers wrote:
+> On 17/02/2019 14:00, Robin Murphy wrote:
+>> Hi David,
+>>
+>> On 2019-02-17 12:15 pm, David Summers wrote:
+>>> This patch makes some minor changes to how the sd card is
+>>> described in the device tree for the ASUS Tinker Board (S). In
+>>> particular on the Tinker Board S, when booted from the eMMC, and with
+>>> no card in the sd slot, and the log has endless messages about not
+>>> being able to detect the card.
+>>>
+>>> Several methods to remove this error have been tried, the only one
+>>> that works is the broken-cd and so that is what is applied here.
+>>
+>> I don't have a Tinker Board, but the symptom sounds instantly familiar 
+>> from hacking on another RK3288 box; have you tried adding 
+>> "regulator-always-on" to the vccio_sd regulator?
+>>
+>> With the reference design (which I would assume the Tinker Board has 
+>> no reason to deviate from in this area), the CD pin is either wired 
+>> directly to the SoC with no external pull-up, or explicitly pulled up 
+>> to VCCIO_SD. Either way, when the dwmmc driver probes and discovers 
+>> there is no card present, it sets the currently-unnecessary 
+>> vqmmc-supply as inactive, and thus the regulator core turns off 
+>> VCCIO_SD entirely. Unfortunately, this removes the voltage from the 
+>> entire I/O domain including the internal pull-up, which ends up 
+>> leaving the CD pin floating and generating spurious events.
+>>
+>> Robin.
+> 
+> Hi Robin,
+> 
+> An interesting suggestion - no it hasn't been tried to always set the 
+> vccio_sd regulator on. Will give it a go on ArchLinux Arm.
+> 
+> I guess this would explain why the Tinker Board booting from sd doesn't 
+> see the error, as its enabled probably in uboot and then keeps working.
+> 
+> IIRC though, if booting the TBS from eMMC, then inserting an sd card and 
+> the errors stop. I guess this wouldn't happen if the power wasn't applied?
 
-Is the problem limited to a "warm manual re-boot" or does it exists
-for an emergency reboot as well!?
+That's the fun part of this scenario - the presence of a card is 
+unambiguous, it's only the absence of one which depends on the pull-up 
+state, so whenever as a card is inserted everything does work correctly. 
+  Assuming they are the same errors I was seeing, they're from the 
+driver *thinking* a card is inserted due to CD floating low, then 
+failing to communicate with it, after which it powers down the I/O 
+interface again and the whole cycle begins anew.
 
->
-> Set initial signal voltage in mmc_power_off() to allow re-boot to function.
+> I guess also that "regulator-always-on" is a quick test - but that for 
+> submission to kernel it would be better done via "mmc-pwrseq-simple"?
 
-I think this sounds like a reasonable way forward, to improve the situation.
+No, it's a valid description of the hardware to say "disabling this 
+regulator makes something fail to work as expected" if that is truly the 
+case. Besides, pwrseq is about how to initialise a detected present 
+card, not how to correctly detect that presence in the first place.
 
->
-> This fixes re-boot with UHS cards on Asus Tinker Board (Rockchip RK3288),
-> same issue have been seen on some Rockchip RK3399 boards.
->
-> I am sending this as a RFC because I have no insights into SD/MMC subsystem,
-> this change fix a re-boot issue on my boards and does not break emmc/sdio.
-> Is this an acceptable workaround? Any advice is appreciated.
->
-> Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
-> ---
->  drivers/mmc/core/core.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
->
-> diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
-> index 5bd58b95d318..69d7021916ae 100644
-> --- a/drivers/mmc/core/core.c
-> +++ b/drivers/mmc/core/core.c
-> @@ -1684,6 +1684,14 @@ void mmc_power_off(struct mmc_host *host)
->         if (host->ios.power_mode == MMC_POWER_OFF)
->                 return;
->
-> +       mmc_set_initial_signal_voltage(host);
+> Anyway I set up a test - so we can confirm this.
 
-I would rather try to move this below mmc_set_initial_state() a few
-lines below in mmc_power_off(). To me, it seems safer to do the
-regular power off thingy first.
+Great - there is of course still the possibility that the pin really 
+isn't wired up at all, in which case ignoring CD and taking the CPU 
+overhead of polling would be the only option, but the vendor DT doesn't 
+have any signs to suggest that's the case, and makes me lean more 
+towards the pull-up issue.
 
-Additionally, I would drop the added delay below, as there is already
-a delay after calling mmc_set_initial_state() and I think/hope that
-should be sufficient.
-
-> +
-> +       /*
-> +        * This delay should be sufficient to allow the power supply
-> +        * to reach the minimum voltage.
-> +        */
-> +       mmc_delay(host->ios.power_delay_ms);
-> +
->         mmc_pwrseq_power_off(host);
->
->         host->ios.clock = 0;
-> --
-> 2.17.1
->
-
-Kind regards
-Uffe
+Robin.
