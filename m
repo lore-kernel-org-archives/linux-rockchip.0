@@ -1,115 +1,110 @@
-From: David Summers <beagleboard@davidjohnsummers.uk>
-Subject: Re: [PATCH 3/3] ARM: dts: rk3288 Tinker Board (S) add bluetooth
-Date: Mon, 18 Feb 2019 20:47:50 +0000
-Message-ID: <d5b6ffaf-cf7a-22af-f2fc-c085897ef95f@davidjohnsummers.uk>
+From: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
+Subject: Re: [PATCH 2/3] ARM: dts: rk3288 Tinker Board (S) add wi-fi
+Date: Mon, 18 Feb 2019 20:26:02 +0000
+Message-ID: <3e9a387c-2ebc-c762-6222-90efc851e4ed@davidjohnsummers.uk>
 References: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
- <20190217121513.22965-4-beagleboard@davidjohnsummers.uk>
- <2003821439.343814.1550437552156@email.ionos.de>
+ <20190217121513.22965-3-beagleboard@davidjohnsummers.uk>
+ <1528638260.343699.1550436208775@email.ionos.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2003821439.343814.1550437552156@email.ionos.de>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1528638260.343699.1550436208775-uEpKuDZ350hmhno068Nerg@public.gmane.org>
 Content-Language: en-PH
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Stefan Wahren <stefan.wahren@i2se.com>, heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com
-Cc: linux-rockchip@lists.infradead.org, Marcel Holtmann <marcel@holtmann.org>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTcvMDIvMjAxOSAyMTowNSwgU3RlZmFuIFdhaHJlbiB3cm90ZToKPiBIaSBEYXZpZCwKPgo+
-PiBEYXZpZCBTdW1tZXJzIDxiZWFnbGVib2FyZEBkYXZpZGpvaG5zdW1tZXJzLnVrPiBoYXQgYW0g
-MTcuIEZlYnJ1YXIgMjAxOSB1bSAxMzoxNSBnZXNjaHJpZWJlbjoKPj4KPj4KPj4gVGhpcyBwYXRj
-aCBpcyB0byBhZGQgQmx1ZXRvb3RoIHRvIHRoZSBBU1VTIFRpbmtlciBCb2FyZCAoUykgZGV2aWNl
-Cj4+IHRyZWUuCj4+Cj4+IFRoaXMgcGF0Y2ggaXMgbW9yZSBjb250cmF2ZXJzYWwgLSBzbyBwcm9i
-YWJseSB2aWV3IGl0IGFzIGEgcmVxdWVzdCBmb3IKPj4gY29tbWVudHMuCj4+Cj4+IFRoZSByZWFz
-b24gYmVoaW5kIHRoaXMsIGlzIHRoaXMgcGF0Y2ggZG9lcyBub3QgY3VycmVudGx5IHNldCBCbHVl
-dG9vdGgKPj4gd29ya2luZyBvbiB0aGUgdGhlc2UgYm9hcmRzLiBUaGUgcHJvYmxlbSBpcyB0aGF0
-IHRoZQo+PiBibHVldG9vdGgvaGNpX2g1LmMgZHJpdmVyLCB0aGF0IGlzIHVzZWQgZm9yIFJlYWx0
-ZWsgc2VyaWFsIGRldmljZXMsCj4+IGRlcGVuZHMgb24gQUNQSS4gVW5mb3J0YW50bHkgQUNQSSBj
-YW4gbm90IGJlIGVuYWJsZWQgb24gYXJtdjcgbWFjaGluZXMKPj4gc3VjaCBhcyB0aGUgVEIoUyku
-IEFuZCBzbyB0aGUga2VybmVsIG1vZHVsZSBmb3IgdGhlIFJUTDg3MjNCUwo+PiBCbHVldG9vdGgg
-Y2FuIG5vdCBiZSBsb2FkZWQuCj4+Cj4+IEhvd2V2ZXIgdGhpcyBwYXRjaCBpcyBiZWxpZXZlZCB0
-byBiZSBhbiBhY2N1cmF0ZSBkZXNjcmlwdGlvbiBvZiB0aGUKPj4gVGlua2VyIEJvYXJkIChTKSB3
-aXJpbmcuIEl0IGlzIHN0cm9uZ2x5IGJhc2VkIG9uIHRoZSBBU1VTIHBhdGNoOgo+Pgo+PiBodHRw
-czovL2dpdGh1Yi5jb20vVGlua2VyQm9hcmQvZGViaWFuX2tlcm5lbC9jb21taXQvNmEzMTI4YWRl
-MzNmNzU4ODg3MDQ4NTc4YWRhNjFhNGI3YWI4ZTY3OAo+Pgo+PiBBcyB0aGUgQmx1ZXRvb3RoIGlz
-IGNvbm5lY3RlZCB2aWEgYSBVQVJUIGFuZCB0aGlzIGlzIHdpcmVkIGludG8gdWFydDAsCj4+IHRo
-aXMgaGFzIGJlZW4gZGVzY3JpYmVkIGFzIGEgU2VyRGV2Lgo+Pgo+PiBUaGUgQVNVUyBwYXRjaCBt
-ZW50aW9ucyB0aGUgVUFSVF9DVFMsIGJ1dCBub3QgdGhlIF9SVFMuIE5vdyBhcyB0aGUKPj4gUlRM
-ODcyM0JTIGhhcyBib3RoIENUUyBhbmQgUlRTIG9uIHRoZSB1YXJ0LCBpdCBoYXMgYmVlbiBhc3N1
-bWVkIGJvdGgKPj4gYXJlIHdpcmVkIGludG8gdWFydDAgb24gdGhlIGNwdS4KPiB3aGljaCB3b3Vs
-ZCBiZSB2ZXJ5IHN0cmFuZ2UsIGJlY2F1c2Ugd2UgY291bGQgdXNlIEg0IGluc3RlYWQgb2YgSDUu
-CgpXZWxsIHRoZSBibHVldG9vdGggbWFpbnRhaW5lciBzYWlkIGl0IHdhcyBoY2lfaDUuCgpUaGUg
-ZGV2aWNlIGlzIEJUNC4wIGFuZCB0aGF0IHVuZGVyIFZvbHVtZSA0IEhDSSwgUGFydCBEIC0gMiB3
-aXJlIFVBUlQgClRyYW5zcG9ydCBMYXllciwgaW4gc2VjdGlvbiAxMS4yIHNheXMgdGhhdCBIYXJk
-d2FyZSBmbG93IGNvbnRyb2wgbWF5IGJlIAp1c2VkLgoKQWxzbyBpZiB5b3UgY2hlY2sgd2hhdCBB
-U1VTIGRpZDoKCmh0dHBzOi8vZ2l0aHViLmNvbS9UaW5rZXJCb2FyZC9kZWJpYW5fa2VybmVsL2Nv
-bW1pdC81MTA2ZDk0ODZjZjFjMmJhZDRmNzAxNjExZjUxYTUyNjE5MWM1NmFkCgpUaGV5IGFkZGVk
-IEg1IGNvZGUgdG8gdGhlIGhjaV9oNC5jLCBzZWVtcyBzdHJhbmdlIGJ1dCB0aGF0cyB3aGF0IHRo
-ZXkgCnNhaWQgdGhleSBkaWQuCgpOb3cgbWF5YmUgdGhlIFJUTDg3MjNCUyBjb3VsZCB3b3JrIHdp
-dGggdGhlIFVBUlQgVHJhbnNwb3J0IExheWVyLCBidXQgCnRoYXQgaGFzbid0IGJlZW4gZG9uZSB5
-ZXQuIDMgd2lyZSBoYXMgc29tZSBvdmVyaGVhZCwgYnV0IGl0IGRvZXNuJ3QgbG9vayAKbGlrZSBt
-dWNoLgoKVG8gbXkgbWluZCB0aG91Z2ggaXQgZG93biB0byB0aGUgYmx1ZXRvb3RoIE1haW50YWlu
-ZXIgLSBzbyBDQ2luZyBNYXJjZWwgCkhvbHRtYW5uIGluIC4uLgoKCj4+IFRoZSBCbHVldG9vdGgg
-Y29ubmVjdGlvbiBoYXMgc2V2ZXJhbCB3YWtlIHVwIHBpbnMgYm90aCBkZXZpY2UgYW5kIGhvc3QK
-Pj4gYW5kIGEgcmVzZXQgcGluLiBUaGUgd2lyaW5nIG9mIHRoZXNlIGhhcyBiZWVuIGRlc2NyaWJl
-ZDsgaG93ZXZlciBob3cKPj4gdGhlIGtlcm5lbCBkcml2ZXIgd2lsbCB1c2UgdGhlc2UgaXNuJ3Qg
-Y2xlYXIuIEUuZy4gc2hvdWxkIEhPU1RfV0FLRSBiZQo+PiBhbiBpbnRlcnVwdD8KPj4KPj4gVGhl
-IG1haW4gcmVhc29uIGZvciBhc2tpbmcgZm9yIGNvbW1lbnRzLCBpcyB0aGF0IHdoZW4gaXQgY29t
-ZXMgdGltZSB0bwo+PiBtYWtlIHRoZSBjaGFuZ2VzIHRvIHRoZSBibHVldG9vdGggdWFydCBjb2Rl
-LCBhbmQgYWRkIGNvbXBhdGlibGUgZmxhZ3MsCj4+IHJvYmggaGFzIGluZGljYXRlZCB0aGF0IHRo
-aXMgd2lsbCBvbmx5IGJlIGFjY2VwdGVkIHdpdGggYSB2YWxpZAo+PiBleGFtcGxlLiBTbyB0aGUg
-Y29kZSBiZWxvdyBpcyB0aGF0IGV4YW1wbGUuIFNvIEkgd291bGQgbGlrZSBjb21tZW50cwo+PiB0
-aGF0IHRoaXMgYXBwcm9hY2ggaXMgdmFsaWQsIHdoaWNoIGNhbiBiZSB1c2VkIHdoZW4gdGhlIGxh
-dGVyCj4+IHN1Ym1pc3Npb24gY29tZXMuCj4gQXNraW5nIGZvciBjb21tZW50IHNob3VsZCBiZSBt
-YXJrIHdpdGggUkZDIGluIHRoZSBwYXRjaCBzdWJqZWN0LgpPT3BzIG15IG1pc3Rha2UuCj4+IFNp
-Z25lZC1vZmYtYnk6IERhdmlkIFN1bW1lcnMgPGJlYWdsZWJvYXJkQGRhdmlkam9obnN1bW1lcnMu
-dWs+Cj4+IC0tLQo+PiAgIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC10aW5rZXIuZHRzaSB8IDEx
-ICsrKysrKysrKysrCj4+ICAgMSBmaWxlIGNoYW5nZWQsIDExIGluc2VydGlvbnMoKykKPj4KPj4g
-ZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC10aW5rZXIuZHRzaSBiL2FyY2gv
-YXJtL2Jvb3QvZHRzL3JrMzI4OC10aW5rZXIuZHRzaQo+PiBpbmRleCBlMTc5NmYzNDBlZWYuLjkz
-MWI0YzY1MmZkYyAxMDA2NDQKPj4gLS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXRpbmtl
-ci5kdHNpCj4+ICsrKyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC10aW5rZXIuZHRzaQo+PiBA
-QCAtNDgxLDYgKzQ4MSwxNyBAQAo+PiAgIAo+PiAgICZ1YXJ0MCB7Cj4+ICAgCXN0YXR1cyA9ICJv
-a2F5IjsKPj4gKwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+PiArCXBpbmN0cmwtMCA9IDwm
-dWFydDBfeGZlcj4sIDwmdWFydDBfY3RzPiwgPCZ1YXJ0MF9ydHM+Owo+PiArCj4+ICsJYmx1ZXRv
-b3RoIHsKPj4gKwkJY2xvY2tzID0gPCZyazgwOCBSSzgwOF9DTEtPVVQxPjsKPiBBcyB3ZSBhbHJl
-YWR5IGxpbmtlZCB0aGUgUks4MDggY2xvY2sgaW4gdGhlIHNkaW8gcHdyc2VxLCB3ZSBzaG91bGRu
-J3QgZG8gdGhpcyBoZXJlIGFnYWluLgo+Cj4+ICsJCXJlc2V0LWdwaW9zID0gPCZncGlvNCBSS19Q
-RDUgR1BJT19BQ1RJVkVfTE9XPjsKPiByZXNldC1ncGlvcyBpc24ndCBjb21wYXRpYmxlIHRvIGhj
-aV9oNSwgcGxlYXNlIHVzZSBteSBwcmVsaW1pbmFyeSBkdC1iaW5kaW5nCj4KPj4gKwkJZGV2aWNl
-LXdha2UtZ3Bpb3MgPSA8JmdwaW80IFJLX1BEMiBHUElPX0FDVElWRV9ISUdIPjsKPj4gKwkJaG9z
-dC13YWtlLWdwaW9zID0gPCZncGlvNCBSS19QRDcgR1BJT19BQ1RJVkVfSElHSD47Cj4gQUZBSUsg
-aGNpX2g1IGRvZXNuJ3Qgc3VwcG9ydCBob3N0LXdha2UgeWV0LiBTbyBpZiB5b3Ugd2FudCB0byBr
-ZWVwIGZvciB0aGUgZnV0dXJlIHdlIHNob3VsZCBtYWtlIGEgY29tbWVudC4KPgo+PiArCQl2Y2Mt
-MTgtc3VwcGx5ID0gPCZ2Y2NfMTg+Owo+PiArCQl2Y2MtaW8tc3VwcGx5ID0gPCZ2Y2NfaW8+Owo+
-IFBsZWFzZSBkcm9wIHRoZXNlIGFzIHRoZSBkcml2ZXIgZG9lc24ndCB1c2UgaXQgYW5kIGl0J3Mg
-YWxyZWFkeSBsaW5rZWQgaW4gdGhlIHNkaW8gcHdyc2VxLgo+Cj4gVGhhbmtzIFN0ZWZhbgo+Cj4+
-ICsJfTsKPiBbMV0gLSBodHRwczovL2dpc3QuZ2l0aHViLmNvbS9sYXRlZ29vZGJ5ZS83OWJhYzk5
-ZDRmMTE1OGE3MTlhNDhlYTNjNDVlYjdmMSNmaWxlLTAwMDItZHQtYmluZGluZ3MtYWRkLXN1cHBv
-cnQtZm9yLXJlYWx0ZWstYmx1ZXRvb3RoLXNlcmlhbC1wYXRjaAoKU29ycnkgSSBkaXNhZ3JlZSBo
-ZXJlLgoKTGFzdCB0aW1lIEkgcG9zdGVkIGFuIGV4YW1wbGUgcGF0Y2ggbGlrZSB0aGlzIHJvYmgg
-c2FpZCBjbGVhcmx5IHRoYXQgCnRoZXNlIHNob3VsZCBnaXZlIGNsb2NrcywgcG93ZXIsIGV0YzoK
-Cmh0dHBzOi8vd3d3LnNwaW5pY3MubmV0L2xpc3RzL2xpbnV4LWJsdWV0b290aC9tc2c3ODU0NS5o
-dG1sCmh0dHBzOi8vd3d3LnNwaW5pY3MubmV0L2xpc3RzL2xpbnV4LWJsdWV0b290aC9tc2c3ODU4
-NS5odG1sIAo8aHR0cHM6Ly93d3cuc3Bpbmljcy5uZXQvbGlzdHMvbGludXgtYmx1ZXRvb3RoL21z
-Zzc4NTg1Lmh0bWw+CgphbmQgYXMgaGUgaXMgbWFpbnRhaW5lciBoZSB3aW5zLgoKSSBjYW4gdW5k
-ZXJzdGFuZCBSb2JzIHBvc2l0aW9uLCBkZXZpY2UgdHJlZSBhcmUgZm9yIGRlc2NyaWJpbmcgaGFy
-ZHdhcmUsIAp0aGV5IGFyZW4ndCBwcmltYXJpbHkgZm9yIGhlbHBpbmcgY29kZSB0byBsb2FkLiBZ
-ZXMgdGhhdCBpcyBhIHNlY29uZCAKZWZmZWN0LCBpdHMgc28gaXQga25vd3Mgd2hhdCBpcyBpbsKg
-IHRoZSBoYXJkd2FyZS4gSW4gdGhpcyBjYXNlIHdoYXQgaWYgCnNvbWVvbmUgd2FudGVkIEJsdWV0
-b290aCwgYnV0IG5vdCBXaUZpIC0gdGhlbiB0aGUgQmx1ZXRvb3RoIHNob3VsZCBrbm93IAp3aGF0
-IHBvd2VyIGFuZCBjbG9ja3MgYXJlIG5lZWRlZC4gTm93IHRoYXQgdGhlIGRyaXZlciBkb2Vzbid0
-IHVuZGVyc3RhbmQgCnRoZXNlIHRoaW5ncyBpcyBzZWNvbmRhcnkuIE1heWJlIHRoYXQgd2lsbCBi
-ZSBjdXJlZCBpbiBmdXR1cmU/CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5l
-bEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+On 17/02/2019 20:43, Stefan Wahren wrote:
+> Hi David,
+>
+>> David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org> hat am 17. Februar 2019 um 13:15 geschrieben:
+>>
+>>
+>> +
+>> +	sdio_pwrseq: sdio-pwrseq {
+>> +		compatible = "mmc-pwrseq-simple";
+>> +		clocks = <&rk808 RK808_CLKOUT1>;
+>> +		clock-names = "ext_clock";
+>> +		pinctrl-names = "default";
+>> +		pinctrl-0 = <&wifi_enable>;
+> As i wrote at the Arch board it would be nice to keep the Asus comment here:
+>
+> /*
+>   * On the module itself this is one of these (depending
+>   * on the actual card populated):
+>   * - SDIO_RESET_L_WL_REG_ON
+>   * - PDN (power down when low)
+>   */
+>
+Sorry Stefan,
+
+I'm with Robin on this one. Three reasons:
+
+1) When you look at where ASUS added these comments:
+
+https://github.com/TinkerBoard/debian_kernel/commit/6a3128ade33f758887048578ada61a4b7ab8e678
+
+They has only added RK_PD4 = 28
+
+So at best to only applies to that change.
+
+2) If you look at datasheet:
+
+http://files.pine64.org/doc/datasheet/pine64/RTL8723BS.pdf
+http://cit.odessa.ua/media/pdf/Intel-Compute-Stick/FN-Link_F23BDSM25-W1.pdf
+
+Then neither of the two pins are mentioned, and the comment is not helpful
+
+3) Should dts have comments in? Over time I'm got to like git, and that 
+you click on blame. That is what showed in post one that the comment 
+only applied to one pin. To me blame point to the patch - and that 
+usually gives more details. Its why I explain that we don't know what 
+these two pins are attached to - this doesn't sound good, but actually 
+its all we know. So it explains things. So I now think that dts should 
+have very few comments in, and only where they *really* add something. 
+In this case we don't know what the comment means ..
+
+
+>> +		reset-gpios = <&gpio4 RK_PD3 GPIO_ACTIVE_LOW>, <&gpio4 RK_PD4 GPIO_ACTIVE_LOW>;
+>> +	};
+>>   };
+>>   
+>>   &cpu0 {
+>> @@ -337,8 +345,8 @@
+>>   
+>>   &io_domains {
+>>   	status = "okay";
+>> -
+> Please drop this whitespace change
+Most {} in dts don't have white space line in - only between {} {}. So a 
+white space line in the middle of a single {} is unusual. I can't see 
+what its needed for, or what it makes clearer. So to me removing makes 
+it more in line with everything else. If people are unhappy though I'll 
+add the white line back in again.
+>>   	sdcard-supply = <&vccio_sd>;
+>> +	wifi-supply = <&vcc_18>;
+>>   };
+>>   
+>>   &pinctrl {
+>> @@ -417,6 +425,12 @@
+>>   			rockchip,pins = <7 8 RK_FUNC_GPIO &pcfg_pull_none>;
+>>   		};
+>>   	};
+>> +
+>> +	sdio {
+>> +		wifi_enable: wifi-enable {
+>> +			rockchip,pins = <4 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>, <4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
+> Please make a line break after the first pin definition
+Yes that makes sense
+
+David
