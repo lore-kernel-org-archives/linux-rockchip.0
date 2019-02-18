@@ -1,62 +1,63 @@
-From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
-Subject: [RFC] mmc: core: set initial signal voltage on power off
-Date: Sun, 17 Feb 2019 22:14:38 +0000
-Message-ID: <AM3PR03MB09664161A7FA2BD68B2800A7AC620@AM3PR03MB0966.eurprd03.prod.outlook.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL 1/2] Rockchip dts32 updates for 5.1 - round 2
+Date: Mon, 18 Feb 2019 01:18:23 +0100
+Message-ID: <1972197.JU0Au1QvNm@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Some boards have SD card connectors where the power rail cannot be switched
-off by the driver. If the card has not been power cycled, it may still be
-using 1.8V signaling after a warm re-boot. Bootroms expecting 3.3V signaling
-will fail to boot from a UHS card that continue to use 1.8V signaling.
+Hi Arnd, Kevin Olof,
 
-Set initial signal voltage in mmc_power_off() to allow re-boot to function.
+please find below and in the reply a second round of Rockchip devicetree
+updates targetted at 5.1. Again nothing major just some more collected
+improvements. So if there is still time, please pull.
 
-This fixes re-boot with UHS cards on Asus Tinker Board (Rockchip RK3288),
-same issue have been seen on some Rockchip RK3399 boards.
+Thanks
+Heiko
 
-I am sending this as a RFC because I have no insights into SD/MMC subsystem,
-this change fix a re-boot issue on my boards and does not break emmc/sdio.
-Is this an acceptable workaround? Any advice is appreciated.
+The following changes since commit e6b97a47b5b9512828859778acafd3fe107b395e:
 
-Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
----
- drivers/mmc/core/core.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+  ARM: dts: rockchip: clean up the abuse of disable-wp (2019-01-28 10:51:55 +0100)
 
-diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
-index 5bd58b95d318..69d7021916ae 100644
---- a/drivers/mmc/core/core.c
-+++ b/drivers/mmc/core/core.c
-@@ -1684,6 +1684,14 @@ void mmc_power_off(struct mmc_host *host)
- 	if (host->ios.power_mode == MMC_POWER_OFF)
- 		return;
- 
-+	mmc_set_initial_signal_voltage(host);
-+
-+	/*
-+	 * This delay should be sufficient to allow the power supply
-+	 * to reach the minimum voltage.
-+	 */
-+	mmc_delay(host->ios.power_delay_ms);
-+
- 	mmc_pwrseq_power_off(host);
- 
- 	host->ios.clock = 0;
--- 
-2.17.1
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.1-rockchip-dts32-2
+
+for you to fetch changes up to 5aed37a5cdef6453eb3bf307574e19e547ca0432:
+
+  ARM: dts: rockchip: add chosen node on veyron devices (2019-02-16 21:18:26 +0100)
+
+----------------------------------------------------------------
+A number of improvements for rv1108 boards, removal of an obsolete property
+from the Edison tablet and a chosen node for veyron devices.
+
+----------------------------------------------------------------
+Enric Balletbo i Serra (1):
+      ARM: dts: rockchip: add chosen node on veyron devices
+
+Johan Jonker (1):
+      ARM: dts: rockchip: remove cap-mmc-highspeed from rk3188-bqedison2qc mmc1 node
+
+Otavio Salvador (3):
+      ARM: dts: rockchip: Fix vcc5/6-supply representation on rv1108-elgin
+      ARM: dts: rockchip: Use the correct regulator properties on rv1108-elgin
+      ARM: dts: rockchip: Use the correct regulator properties on rv1108-evb
+
+ arch/arm/boot/dts/rk3188-bqedison2qc.dts |  1 -
+ arch/arm/boot/dts/rk3288-veyron.dtsi     |  4 ++++
+ arch/arm/boot/dts/rv1108-elgin-r1.dts    | 34 +++++++++++++++++---------------
+ arch/arm/boot/dts/rv1108-evb.dts         | 20 +++++++++----------
+ 4 files changed, 32 insertions(+), 27 deletions(-)
