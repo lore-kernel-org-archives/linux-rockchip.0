@@ -1,11 +1,13 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 1/2] Rockchip dts32 updates for 5.1 - round 2
-Date: Mon, 18 Feb 2019 01:18:23 +0100
-Message-ID: <1972197.JU0Au1QvNm@phil>
+Subject: [GIT PULL 2/2] Rockchip dts64 updates for 5.1 - round 2
+Date: Mon, 18 Feb 2019 01:19:10 +0100
+Message-ID: <29818451.VkXVVsXLZK@phil>
+References: <1972197.JU0Au1QvNm@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1972197.JU0Au1QvNm@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -19,45 +21,38 @@ To: arm@kernel.org
 Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd, Kevin Olof,
-
-please find below and in the reply a second round of Rockchip devicetree
-updates targetted at 5.1. Again nothing major just some more collected
-improvements. So if there is still time, please pull.
-
-Thanks
-Heiko
-
-The following changes since commit e6b97a47b5b9512828859778acafd3fe107b395e:
-
-  ARM: dts: rockchip: clean up the abuse of disable-wp (2019-01-28 10:51:55 +0100)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.1-rockchip-dts32-2
-
-for you to fetch changes up to 5aed37a5cdef6453eb3bf307574e19e547ca0432:
-
-  ARM: dts: rockchip: add chosen node on veyron devices (2019-02-16 21:18:26 +0100)
-
-----------------------------------------------------------------
-A number of improvements for rv1108 boards, removal of an obsolete property
-from the Edison tablet and a chosen node for veyron devices.
-
-----------------------------------------------------------------
-Enric Balletbo i Serra (1):
-      ARM: dts: rockchip: add chosen node on veyron devices
-
-Johan Jonker (1):
-      ARM: dts: rockchip: remove cap-mmc-highspeed from rk3188-bqedison2qc mmc1 node
-
-Otavio Salvador (3):
-      ARM: dts: rockchip: Fix vcc5/6-supply representation on rv1108-elgin
-      ARM: dts: rockchip: Use the correct regulator properties on rv1108-elgin
-      ARM: dts: rockchip: Use the correct regulator properties on rv1108-evb
-
- arch/arm/boot/dts/rk3188-bqedison2qc.dts |  1 -
- arch/arm/boot/dts/rk3288-veyron.dtsi     |  4 ++++
- arch/arm/boot/dts/rv1108-elgin-r1.dts    | 34 +++++++++++++++++---------------
- arch/arm/boot/dts/rv1108-evb.dts         | 20 +++++++++----------
- 4 files changed, 32 insertions(+), 27 deletions(-)
+VGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdCA3OTE2NGM5OWRiMjg0ZDA3YWE0ZTg0
+ZTU3YjQ2OWQyMjU2MDk3OTljOgoKICBhcm02NDogZHRzOiByb2NrY2hpcDogY2xlYW4gdXAgdGhl
+IGFidXNlIG9mIGRpc2FibGUtd3AgKDIwMTktMDEtMjggMTA6NTE6MjIgKzAxMDApCgphcmUgYXZh
+aWxhYmxlIGluIHRoZSBHaXQgcmVwb3NpdG9yeSBhdDoKCiAgZ2l0Oi8vZ2l0Lmtlcm5lbC5vcmcv
+cHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L21taW5kL2xpbnV4LXJvY2tjaGlwLmdpdCB0YWdzL3Y1
+LjEtcm9ja2NoaXAtZHRzNjQtMgoKZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDAyMjYw
+YTYxOWVmZTU3NGQwZjZjMmE0NDIwYjhiNzZjNjgwMjI5NGU6CgogIGFybTY0OiBkdHM6IHJvY2tj
+aGlwOiBFbmFibGUgdHNhZGMgZGV2aWNlIG9uIHJvY2s5NjAgKDIwMTktMDItMTcgMjM6NTk6MDUg
+KzAxMDApCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tCnJvY2twcm82NCByZWd1bGF0b3IgaW1wcm92ZW1lbnRzLCByb2NrOTYw
+IGltcHJvdmVtZW50cyAodHNhZGMsIHdpZmksIGhkbWkKYXVkaW8pLCBuYW5vcGk0IGJsdWV0b290
+aCBzdXBwb3J0IGFuZCByazMzMjgtcm9jLWNjIGdtYWMgaW1wcm92ZW1lbnQuCgotLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCkFr
+YXNoIEdhamphciAoMyk6CiAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiByb2NrcHJvNjQgZHRz
+IG1ha2UgcmVndWxhdG9yIG1vcmUgcmVhZGFibGUKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6
+IHJvY2twcm82NCBkdHMgcmVtb3ZlIHVudXNlZCBsY2QtcmVzZXQgcGlubXV4CiAgICAgIGFybTY0
+OiBkdHM6IHJvY2tjaGlwOiByb2NrcHJvNjQgZHRzIGFkZCB1c2IgcmVndWxhdG9yCgpBbmRyaXVz
+IMWgdGlrb25hcyAoMSk6CiAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBlbmFibGUgbWFsaSBw
+b3dlciBzdXBwbHkgb24gcmszMzk5LXJvY2twcm82NAoKRXplcXVpZWwgR2FyY2lhICgyKToKICAg
+ICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEVuYWJsZSBIRE1JIGF1ZGlvIGRldmljZXMgb24gcmsz
+Mzk5LXJvY2s5NjAKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEVuYWJsZSB0c2FkYyBkZXZp
+Y2Ugb24gcm9jazk2MAoKTWFuaXZhbm5hbiBTYWRoYXNpdmFtICgxKToKICAgICAgYXJtNjQ6IGR0
+czogcm9ja2NoaXA6IEFkZCBvbi1ib2FyZCBXaUZpL0JUIHN1cHBvcnQgZm9yIFJvY2s5NjAgYm9h
+cmRzCgpQZXRlciBHZWlzICgxKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGZpeCByazMz
+Mjgtcm9jLWNjIGdtYWMyaW8gc3RhYmlsaXR5IGlzc3VlcwoKUm9iaW4gTXVycGh5ICgxKToKICAg
+ICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEFkZCBuYW5vcGk0IGJsdWV0b290aAoKIGFyY2gvYXJt
+NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LXJvYy1jYy5kdHMgICAgfCAgIDEgKwogYXJjaC9h
+cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktbmFub3BpNC5kdHNpICB8ICAzMSArKysrKy0K
+IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvY2s5NjAuZHRzaSAgfCAxMTAg
+KysrKysrKysrKysrKysrKysrKysrLQogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMz
+OTktcm9ja3BybzY0LmR0cyB8ICA4MyArKysrKysrKy0tLS0tLS0tCiA0IGZpbGVzIGNoYW5nZWQs
+IDE4NSBpbnNlcnRpb25zKCspLCA0MCBkZWxldGlvbnMoLSkKCgoKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBs
+aXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
