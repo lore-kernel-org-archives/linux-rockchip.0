@@ -1,72 +1,46 @@
-From: Jon Hunter <jonathanh@nvidia.com>
-Subject: Re: [PATCH 3/3] PM / devfreq: tegra: remove unneeded variable
-Date: Mon, 18 Feb 2019 09:55:43 +0000
-Message-ID: <abb56481-0cc7-3d31-2dae-ba602a423811@nvidia.com>
-References: <20190216151826.11584-1-tiny.windzz@gmail.com>
- <CGME20190216151918epcas1p25c2971b063cc66981fda6a67a8276585@epcas1p2.samsung.com>
- <20190216151826.11584-4-tiny.windzz@gmail.com>
- <7fe8f9ba-ffcc-55ed-38b0-f37538257c1b@samsung.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: [PATCH] arm64: dts: rockchip: enable mali on rock960 boards
+Date: Mon, 18 Feb 2019 06:58:57 -0300
+Message-ID: <20190218095857.26662-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <7fe8f9ba-ffcc-55ed-38b0-f37538257c1b@samsung.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chanwoo Choi <cw00.choi@samsung.com>, Yangtao Li <tiny.windzz@gmail.com>, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, heiko@sntech.de, thierry.reding@gmail.com
-Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Enable the mali gpu node.
 
-On 18/02/2019 00:38, Chanwoo Choi wrote:
-> On 19. 2. 17. =EC=98=A4=EC=A0=84 12:18, Yangtao Li wrote:
->> This variable is not used after initialization, so
->> remove it. And in order to unify the code style,
->> move the location where the dev_get_drvdata is called
->> by the way.
->>
->> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
->> ---
->>  drivers/devfreq/tegra-devfreq.c | 7 ++-----
->>  1 file changed, 2 insertions(+), 5 deletions(-)
->>
->> diff --git a/drivers/devfreq/tegra-devfreq.c b/drivers/devfreq/tegra-dev=
-freq.c
->> index c59d2eee5d30..c89ba7b834ff 100644
->> --- a/drivers/devfreq/tegra-devfreq.c
->> +++ b/drivers/devfreq/tegra-devfreq.c
->> @@ -573,10 +573,7 @@ static int tegra_governor_get_target(struct devfreq=
- *devfreq,
->>  static int tegra_governor_event_handler(struct devfreq *devfreq,
->>  					unsigned int event, void *data)
->>  {
->> -	struct tegra_devfreq *tegra;
->> -	int ret =3D 0;
->> -
->> -	tegra =3D dev_get_drvdata(devfreq->dev.parent);
->> +	struct tegra_devfreq *tegra =3D dev_get_drvdata(devfreq->dev.parent);
->> =20
->>  	switch (event) {
->>  	case DEVFREQ_GOV_START:
->> @@ -600,7 +597,7 @@ static int tegra_governor_event_handler(struct devfr=
-eq *devfreq,
->>  		break;
->>  	}
->> =20
->> -	return ret;
->> +	return 0;
->>  }
->> =20
->>  static struct devfreq_governor tegra_devfreq_governor =3D {
->>
->=20
-> Reviewed-by: Chanwoo Choi <cw00.choi@samsung.com>
->=20
+Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Acked-by: Jon Hunter <jonathanh@nvidia.com>
-
-Thanks!
-Jon
-
---=20
-nvpublic
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+index 2927db4dda9d..d1248065fe14 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+@@ -96,6 +96,11 @@
+ 	status = "okay";
+ };
+ 
++&gpu {
++	mali-supply = <&vdd_gpu>;
++	status = "okay";
++};
++
+ &hdmi {
+ 	ddc-i2c-bus = <&i2c3>;
+ 	pinctrl-names = "default";
+-- 
+2.20.1
