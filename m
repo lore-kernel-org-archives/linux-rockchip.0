@@ -1,44 +1,85 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [GIT PULL 2/2] Rockchip dts64 updates for 5.1 - round 2
-Date: Mon, 18 Feb 2019 11:20:07 +0100
-Message-ID: <CAK8P3a3mnfrBwCQQRReHRmOt_osr9KXC9svPT6AvEp8L81UhSg@mail.gmail.com>
-References: <1972197.JU0Au1QvNm@phil> <29818451.VkXVVsXLZK@phil>
+From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [RFC] mmc: core: set initial signal voltage on power off
+Date: Mon, 18 Feb 2019 12:54:36 +0100
+Message-ID: <CAPDyKFpfjKbbCF=wyERXpcLk2LDJD6zsPHTYegwtHrv5qPv8HA@mail.gmail.com>
+References: <AM3PR03MB09664161A7FA2BD68B2800A7AC620@AM3PR03MB0966.eurprd03.prod.outlook.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <29818451.VkXVVsXLZK@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <AM3PR03MB09664161A7FA2BD68B2800A7AC620-XQTXrJX/giFAc9da7WRX18eAHadYHfrlvxpqHgZTriW3zl9H0oFU5g@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Feb 18, 2019 at 1:19 AM Heiko Stuebner <heiko@sntech.de> wrote:
+On Sun, 17 Feb 2019 at 23:14, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org> wrote:
 >
-> The following changes since commit 79164c99db284d07aa4e84e57b469d225609799c:
->
->   arm64: dts: rockchip: clean up the abuse of disable-wp (2019-01-28 10:51:22 +0100)
->
-> are available in the Git repository at:
->
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.1-rockchip-dts64-2
->
-> for you to fetch changes up to 02260a619efe574d0f6c2a4420b8b76c6802294e:
->
->   arm64: dts: rockchip: Enable tsadc device on rock960 (2019-02-17 23:59:05 +0100)
->
-> ----------------------------------------------------------------
-> rockpro64 regulator improvements, rock960 improvements (tsadc, wifi, hdmi
-> audio), nanopi4 bluetooth support and rk3328-roc-cc gmac improvement.
+> Some boards have SD card connectors where the power rail cannot be switched
+> off by the driver. If the card has not been power cycled, it may still be
+> using 1.8V signaling after a warm re-boot. Bootroms expecting 3.3V signaling
+> will fail to boot from a UHS card that continue to use 1.8V signaling.
 
-Pulled into arm/dt, thanks!
+Is the problem limited to a "warm manual re-boot" or does it exists
+for an emergency reboot as well!?
 
-       Arnd
+>
+> Set initial signal voltage in mmc_power_off() to allow re-boot to function.
+
+I think this sounds like a reasonable way forward, to improve the situation.
+
+>
+> This fixes re-boot with UHS cards on Asus Tinker Board (Rockchip RK3288),
+> same issue have been seen on some Rockchip RK3399 boards.
+>
+> I am sending this as a RFC because I have no insights into SD/MMC subsystem,
+> this change fix a re-boot issue on my boards and does not break emmc/sdio.
+> Is this an acceptable workaround? Any advice is appreciated.
+>
+> Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+> ---
+>  drivers/mmc/core/core.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>
+> diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
+> index 5bd58b95d318..69d7021916ae 100644
+> --- a/drivers/mmc/core/core.c
+> +++ b/drivers/mmc/core/core.c
+> @@ -1684,6 +1684,14 @@ void mmc_power_off(struct mmc_host *host)
+>         if (host->ios.power_mode == MMC_POWER_OFF)
+>                 return;
+>
+> +       mmc_set_initial_signal_voltage(host);
+
+I would rather try to move this below mmc_set_initial_state() a few
+lines below in mmc_power_off(). To me, it seems safer to do the
+regular power off thingy first.
+
+Additionally, I would drop the added delay below, as there is already
+a delay after calling mmc_set_initial_state() and I think/hope that
+should be sufficient.
+
+> +
+> +       /*
+> +        * This delay should be sufficient to allow the power supply
+> +        * to reach the minimum voltage.
+> +        */
+> +       mmc_delay(host->ios.power_delay_ms);
+> +
+>         mmc_pwrseq_power_off(host);
+>
+>         host->ios.clock = 0;
+> --
+> 2.17.1
+>
+
+Kind regards
+Uffe
