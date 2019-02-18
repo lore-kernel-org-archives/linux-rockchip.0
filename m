@@ -1,11 +1,13 @@
 From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH] arm64: dts: rockchip: enable mali on rock960 boards
-Date: Mon, 18 Feb 2019 06:58:57 -0300
-Message-ID: <20190218095857.26662-1-ezequiel@collabora.com>
+Subject: [PATCH] arm64: dts: rockchip: enable mali on Rock Pi 4
+Date: Mon, 18 Feb 2019 07:05:55 -0300
+Message-ID: <20190218100555.27317-1-ezequiel@collabora.com>
+References: <20190218095857.26662-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190218095857.26662-1-ezequiel@collabora.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -23,14 +25,14 @@ Enable the mali gpu node.
 
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi | 5 +++++
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts | 5 +++++
  1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-index 2927db4dda9d..d1248065fe14 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-@@ -96,6 +96,11 @@
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
+index 4a543f2117d4..1e479d06e67e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
+@@ -157,6 +157,11 @@
  	status = "okay";
  };
  
@@ -40,7 +42,7 @@ index 2927db4dda9d..d1248065fe14 100644
 +};
 +
  &hdmi {
- 	ddc-i2c-bus = <&i2c3>;
  	pinctrl-names = "default";
+ 	pinctrl-0 = <&hdmi_cec>;
 -- 
 2.20.1
