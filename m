@@ -1,33 +1,58 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH] ARM: dts: rockchip: remove disable-wp from rv1108-elgin-r1 emmc node
-Date: Tue, 19 Feb 2019 14:03:17 +0100
-Message-ID: <20190219130317.2817-1-jbx6244@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Subject: [PATCH 2/2] arm64: dts: rockchip: fix cts,
+ rts pin assign of UART3 for rk3399
+Date: Tue, 19 Feb 2019 23:08:00 +0900
+Message-ID: <20190219140800.12624-2-katsuhiro@katsuster.net>
+References: <20190219140800.12624-1-katsuhiro@katsuster.net>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190219140800.12624-1-katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The mmc.txt didn't explicitly say disable-wp is for SD card slot only,
-but that is what it was designed for in the first place.
-Remove all disable-wp from emmc or sdio controllers.
+This patch fixes pin assign of cts and rts signal of UART3.
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Currently GPIO3_C2 and C3 pins are assigned but TRM says that
+GPIO3_C0 and C1 are correct.
+
+Refer:
+  RK3399 TRM v1.4 - Table 19-1 UART Interface Description
+
+Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
 ---
- arch/arm/boot/dts/rv1108-elgin-r1.dts | 1 -
- 1 file changed, 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rv1108-elgin-r1.dts b/arch/arm/boot/dts/rv1108-elgin-r1.dts
-index 1c4507b..b1db924 100644
---- a/arch/arm/boot/dts/rv1108-elgin-r1.dts
-+++ b/arch/arm/boot/dts/rv1108-elgin-r1.dts
-@@ -37,7 +37,6 @@
- &emmc {
- 	bus-width = <8>;
- 	cap-mmc-highspeed;
--	disable-wp;
- 	no-sd;
- 	no-sdio;
- 	non-removable;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 76fc2c7af80a..beaa92744a64 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -2535,12 +2535,12 @@
+ 
+ 			uart3_cts: uart3-cts {
+ 				rockchip,pins =
+-					<3 RK_PC2 RK_FUNC_2 &pcfg_pull_none>;
++					<3 RK_PC0 RK_FUNC_2 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart3_rts: uart3-rts {
+ 				rockchip,pins =
+-					<3 RK_PC3 RK_FUNC_2 &pcfg_pull_none>;
++					<3 RK_PC1 RK_FUNC_2 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
 -- 
-2.11.0
+2.20.1
