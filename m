@@ -1,16 +1,18 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH=5d_ARM=3a_dts=3a_rockchip=3a_remove_disabl?=
- =?UTF-8?B?ZS13cCBmcm9tIHJ2MTEwOC1lbGdpbi1yMSBlbW1jIG5vZGXjgJDor7fms6jmhI8=?=
- =?UTF-8?B?77yM6YKu5Lu255SxbGludXgtcm9ja2NoaXAtYm91bmNlcytzaGF3bi5saW49cm9j?=
- =?UTF-8?B?ay1jaGlwcy5jb21AbGlzdHMuaW5mcmFkZWFkLm9yZ+S7o+WPkeOAkQ==?=
-Date: Wed, 20 Feb 2019 10:06:42 +0800
-Message-ID: <a8251244-44e5-0423-16cf-de035a760248@rock-chips.com>
-References: <20190219130317.2817-1-jbx6244@gmail.com>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH 01/10] media: Introduce helpers to fill pixel format
+ structs
+Date: Wed, 20 Feb 2019 15:53:50 +0900
+Message-ID: <CAAFQd5DLTOJ0kheFdxzTV7Hrtc5MpG4Utn00HgNh06d+h_qJfQ@mail.gmail.com>
+References: <20190205202417.16555-1-ezequiel@collabora.com>
+ <20190205202417.16555-2-ezequiel@collabora.com>
+ <79ad7cf7-90d5-9542-06ea-e28ddeb14e94@xs4all.nl>
+ <85ff24016b4d4b55a1a02f1aee6b42dbbaf2279a.camel@collabora.com>
+ <d1ea8698-e4c6-a826-0820-b8395c8c2a6f@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190219130317.2817-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <d1ea8698-e4c6-a826-0820-b8395c8c2a6f-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,33 +22,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Cc: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Sakari Ailus <sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2019/2/19 21:03, Johan Jonker wrote:
-> The mmc.txt didn't explicitly say disable-wp is for SD card slot only,
-> but that is what it was designed for in the first place.
-> Remove all disable-wp from emmc or sdio controllers.
-> 
-> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> ---
->   arch/arm/boot/dts/rv1108-elgin-r1.dts | 1 -
->   1 file changed, 1 deletion(-)
-> 
-> diff --git a/arch/arm/boot/dts/rv1108-elgin-r1.dts b/arch/arm/boot/dts/rv1108-elgin-r1.dts
-> index 1c4507b..b1db924 100644
-> --- a/arch/arm/boot/dts/rv1108-elgin-r1.dts
-> +++ b/arch/arm/boot/dts/rv1108-elgin-r1.dts
-> @@ -37,7 +37,6 @@
->   &emmc {
->   	bus-width = <8>;
->   	cap-mmc-highspeed;
-> -	disable-wp;
+On Thu, Feb 7, 2019 at 1:36 AM Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org> wrote:
+>
+> On 2/6/19 5:22 PM, Ezequiel Garcia wrote:
+> > On Wed, 2019-02-06 at 11:43 +0100, Hans Verkuil wrote:
+> >> Hi Ezequiel,
+> >>
+> >> A quick review below. This looks really useful, BTW.
+> >>
+> >> On 2/5/19 9:24 PM, Ezequiel Garcia wrote:
 
-Reviewed-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+[snip]
+> >>> +/**
+> >>> + * struct v4l2_format_info - information about a V4L2 format
+> >>> + * @format: 4CC format identifier (V4L2_PIX_FMT_*)
+> >>> + * @header_size: Size of header, optional and used by compressed formats
+> >>> + * @num_planes: Number of planes (1 to 3)
+> >>
+> >> This is actually 1-4 since there may be an alpha channel as well. Not that we have
+> >> such formats since the only formats with an alpha channel are interleaved formats,
+> >> but it is possible.
 
->   	no-sd;
->   	no-sdio;
->   	non-removable;
-> 
+How about 1 to VIDEO_MAX_PLANES to be a bit more consistent?
+Tbh. I'm not sure why we have that defined to 8, but if we have such
+constant already, it could make sense to use it here as well.
+
+[snip]
+> >
+> > Also, note that drm-fourcc deprecates cpp, to support tile formats.
+> > Hopefully we don't need that here?
+>
+> We do have tile formats (V4L2_PIX_FMT_NV12MT_16X16), but it is up to the
+> driver to align width/height accordingly.
+>
+
+I'd still make these helpers align to the constraints defined by the
+format itself (e.g. 16x16), since it doesn't cost us anything, and
+have the driver do any further alignment only if they need so.
+
+> >
+> >>> + * @hsub: Horizontal chroma subsampling factor
+> >>> + * @vsub: Vertical chroma subsampling factor
+> >>
+> >> A bit too cryptic IMHO. I would prefer hdiv or hsubsampling. 'hsub' suggests
+> >> subtraction :-)
+> >>
+> >
+> > Ditto, this name follows drm-fourcc. I'm fine either way.
+> >
+
+I personally like hsub and vsub too, but maybe I just spent too much
+time with DRM code. *subsampling would make the initializers super
+wide, so if we decide that we don't like *sub, I'd go with *div.
+
+> >>> + * @multiplanar: Is it a multiplanar variant format? (e.g. NV12M)
+> >>
+> >> This should, I think, be renamed to num_non_contig_planes to indicate how many
+> >> non-contiguous planes there are in the format.
+> >>
+> >> So this value is 1 for NV12 and 2 for NV12M. For V4L2_PIX_FMT_YUV444M it is 3.
+> >>
+> >> You can stick this value directly into pixfmt_mp->num_planes.
+> >>
+> >
+> > Fine by me, but I have to admit I don't see the value of adding the
+> > number of non-contiguous planes. For multiplanar non-contiguous formats
+> > the number of planes is equal to the number of planes.
+>
+> Hmm, that's true. Choose whatever gives you the shortest code :-)
+>
+> >
+> > Although maybe it will be clear this way for readers?
+> >
+> >> As an aside: perhaps we should start calling the 'multiplanar API' the
+> >> 'multiple non-contiguous planes API', at least in the documentation. It's the
+
+To me, "multiple non-contiguous planes API" would suggest that the
+planes themselves are non-contiguous.
+
+Many drivers (especially Samsung ones) have a distinction between
+"color planes" and "memory planes" internally, so maybe "Multiple
+memory planes API" could make sense?
+
+> >> first time that I found a description that actually covers the real meaning.
+> >>
+> >
+> > Yes, indeed. In fact, my first version of this code had something like
+> > "is_noncontiguous" instead of the "multiplanar" field.
+>
+> I'm fine with that. Add a comment after it like: /* aka multiplanar */
+>
+
+FWIW, some of the drivers have .num_cplanes and .num_mplanes in their
+format descriptors.
+
+Best regards,
+Tomasz
