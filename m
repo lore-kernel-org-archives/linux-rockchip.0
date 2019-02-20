@@ -1,47 +1,88 @@
-From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: enable hdmi audio out for
- rk3399-rockpro64
-Date: Thu, 21 Feb 2019 00:12:26 +0900
-Message-ID: <20190220151226.30993-1-katsuhiro@katsuster.net>
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH] drm/rockchip: vop: reset scale mode when win is disabled
+Date: Wed, 20 Feb 2019 22:40:06 +0000
+Message-ID: <AM3PR03MB0966DE3E19BACE07328CD637AC7D0@AM3PR03MB0966.eurprd03.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+Cc: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Ezequiel Garcia <ezequiel@collabora.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Jonas Karlman <jonas@kwiboo.se>
 List-Id: linux-rockchip.vger.kernel.org
 
-The rockpro64 has hdmi support. So this patch enables hdmi audio
-feature that is defined in rk3399 devicetree.
+NV12 framebuffers produced by the VPU shows distorted on RK3288
+after win has been disabled when scaling is active.
 
-Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+This issue can be reproduced using a 1080p modeset by:
+- Scale a 1280x720 NV12 framebuffer to 1920x1080 on win0
+- Disable win0
+- Display a 1920x1080 NV12 framebuffer without scaling on win0
+- Output will now show the framebuffer distorted
+
+And by:
+- Scale a 1280x720 NV12 framebuffer to 1920x1080
+- Change to a 720p modeset (win gets disabled and scaling reset to none)
+- Output will now show the framebuffer distorted
+
+Fix this by setting scale mode to none when win is disabled.
+
+Fixes: 4c156c21c794 ("drm/rockchip: vop: support plane scale")
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-index 1f2394e0587d..cae7d4d01e0c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-@@ -215,6 +215,10 @@
- 	status = "okay";
- };
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index fb70fb486fbf..cdbb47566cac 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -511,6 +511,18 @@ static void vop_core_clks_disable(struct vop *vop)
+ 	clk_disable(vop->hclk);
+ }
  
-+&hdmi_sound {
-+	status = "okay";
-+};
++static void vop_win_disable(struct vop *vop, const struct vop_win_data *win)
++{
++	if (win->phy->scl && win->phy->scl->ext) {
++		VOP_SCL_SET_EXT(vop, win, yrgb_hor_scl_mode, SCALE_NONE);
++		VOP_SCL_SET_EXT(vop, win, yrgb_ver_scl_mode, SCALE_NONE);
++		VOP_SCL_SET_EXT(vop, win, cbcr_hor_scl_mode, SCALE_NONE);
++		VOP_SCL_SET_EXT(vop, win, cbcr_ver_scl_mode, SCALE_NONE);
++	}
 +
- &hdmi {
- 	ddc-i2c-bus = <&i2c3>;
- 	pinctrl-names = "default";
++	VOP_WIN_SET(vop, win, enable, 0);
++}
++
+ static int vop_enable(struct drm_crtc *crtc)
+ {
+ 	struct vop *vop = to_vop(crtc);
+@@ -556,7 +568,7 @@ static int vop_enable(struct drm_crtc *crtc)
+ 		struct vop_win *vop_win = &vop->win[i];
+ 		const struct vop_win_data *win = vop_win->data;
+ 
+-		VOP_WIN_SET(vop, win, enable, 0);
++		vop_win_disable(vop, win);
+ 	}
+ 	spin_unlock(&vop->reg_lock);
+ 
+@@ -700,7 +712,7 @@ static void vop_plane_atomic_disable(struct drm_plane *plane,
+ 
+ 	spin_lock(&vop->reg_lock);
+ 
+-	VOP_WIN_SET(vop, win, enable, 0);
++	vop_win_disable(vop, win);
+ 
+ 	spin_unlock(&vop->reg_lock);
+ }
+@@ -1476,7 +1488,7 @@ static int vop_initial(struct vop *vop)
+ 		int channel = i * 2 + 1;
+ 
+ 		VOP_WIN_SET(vop, win, channel, (channel + 1) << 4 | channel);
+-		VOP_WIN_SET(vop, win, enable, 0);
++		vop_win_disable(vop, win);
+ 		VOP_WIN_SET(vop, win, gate, 1);
+ 	}
+ 
 -- 
-2.20.1
+2.17.1
