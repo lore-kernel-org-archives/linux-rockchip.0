@@ -1,103 +1,33 @@
-From: David Summers <beagleboard@davidjohnsummers.uk>
-Subject: Re: [PATCH 1/3] ARM: dts: rk3288 Tinker Board (S) sdcard changes
-Date: Tue, 19 Feb 2019 20:13:46 +0000
-Message-ID: <7a5acd4a-71bc-0c94-2b9c-4c3a47a3446a@davidjohnsummers.uk>
-References: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
- <20190217121513.22965-2-beagleboard@davidjohnsummers.uk>
- <e83b0404-bd32-a5d5-2e32-e0f49b122b95@arm.com>
- <2d8ac4e6-b825-dca7-d3cb-57cb32b3230b@davidjohnsummers.uk>
- <6a15343b-554b-6059-09af-f6511e740866@arm.com>
+From: houlong wei <houlong.wei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 06/14] media: platform: fix several typos
+Date: Wed, 20 Feb 2019 08:46:20 +0800
+Message-ID: <1550623580.16735.3.camel@mhfsdcap03>
+References: <f235ba60b2b7e5fba09d3c6b0d5dbbd8a86ea9b9.1550518128.git.mchehab+samsung@kernel.org>
+ <362e90167292e8d0c03a8d0753cc26b89549d854.1550518128.git.mchehab+samsung@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <6a15343b-554b-6059-09af-f6511e740866@arm.com>
-Content-Language: en-PH
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Robin Murphy <robin.murphy@arm.com>, heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <362e90167292e8d0c03a8d0753cc26b89549d854.1550518128.git.mchehab+samsung-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mauro Carvalho Chehab <mchehab+samsung-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Andrew-CT Chen =?UTF-8?Q?=28=E9=99=B3=E6=99=BA=E8=BF=AA=29?= <Andrew-CT.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Alexandre Belloni <alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Minghsiu Tsai =?UTF-8?Q?=28=E8=94=A1=E6=98=8E=E4=BF=AE=29?= <Minghsiu.Tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Stanimir Varbanov <stanimir.varbanov-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "Lad, Prabhakar" <prabhakar.csengg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sylwester Nawrocki <s.nawrocki-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Andrzej Pietrasiewicz <andrzejtp2010-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Jonathan Corbet <corbet-T1hC0tSOHrs@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-stm32-XDFAJ8BFU24N7RejjzZ/LmGXanvQGlWp@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTgvMDIvMjAxOSAxMTo1NCwgUm9iaW4gTXVycGh5IHdyb3RlOgo+IE9uIDE3LzAyLzIwMTkg
-MTU6MTksIERhdmlkIFN1bW1lcnMgd3JvdGU6Cj4+IE9uIDE3LzAyLzIwMTkgMTQ6MDAsIFJvYmlu
-IE11cnBoeSB3cm90ZToKPj4+IEhpIERhdmlkLAo+Pj4KPj4+IE9uIDIwMTktMDItMTcgMTI6MTUg
-cG0sIERhdmlkIFN1bW1lcnMgd3JvdGU6Cj4+Pj4gVGhpcyBwYXRjaCBtYWtlcyBzb21lIG1pbm9y
-IGNoYW5nZXMgdG8gaG93IHRoZSBzZCBjYXJkIGlzCj4+Pj4gZGVzY3JpYmVkIGluIHRoZSBkZXZp
-Y2UgdHJlZSBmb3IgdGhlIEFTVVMgVGlua2VyIEJvYXJkIChTKS4gSW4KPj4+PiBwYXJ0aWN1bGFy
-IG9uIHRoZSBUaW5rZXIgQm9hcmQgUywgd2hlbiBib290ZWQgZnJvbSB0aGUgZU1NQywgYW5kIHdp
-dGgKPj4+PiBubyBjYXJkIGluIHRoZSBzZCBzbG90LCBhbmQgdGhlIGxvZyBoYXMgZW5kbGVzcyBt
-ZXNzYWdlcyBhYm91dCBub3QKPj4+PiBiZWluZyBhYmxlIHRvIGRldGVjdCB0aGUgY2FyZC4KPj4+
-Pgo+Pj4+IFNldmVyYWwgbWV0aG9kcyB0byByZW1vdmUgdGhpcyBlcnJvciBoYXZlIGJlZW4gdHJp
-ZWQsIHRoZSBvbmx5IG9uZQo+Pj4+IHRoYXQgd29ya3MgaXMgdGhlIGJyb2tlbi1jZCBhbmQgc28g
-dGhhdCBpcyB3aGF0IGlzIGFwcGxpZWQgaGVyZS4KPj4+Cj4+PiBJIGRvbid0IGhhdmUgYSBUaW5r
-ZXIgQm9hcmQsIGJ1dCB0aGUgc3ltcHRvbSBzb3VuZHMgaW5zdGFudGx5IAo+Pj4gZmFtaWxpYXIg
-ZnJvbSBoYWNraW5nIG9uIGFub3RoZXIgUkszMjg4IGJveDsgaGF2ZSB5b3UgdHJpZWQgYWRkaW5n
-IAo+Pj4gInJlZ3VsYXRvci1hbHdheXMtb24iIHRvIHRoZSB2Y2Npb19zZCByZWd1bGF0b3I/Cj4+
-Pgo+Pj4gV2l0aCB0aGUgcmVmZXJlbmNlIGRlc2lnbiAod2hpY2ggSSB3b3VsZCBhc3N1bWUgdGhl
-IFRpbmtlciBCb2FyZCBoYXMgCj4+PiBubyByZWFzb24gdG8gZGV2aWF0ZSBmcm9tIGluIHRoaXMg
-YXJlYSksIHRoZSBDRCBwaW4gaXMgZWl0aGVyIHdpcmVkIAo+Pj4gZGlyZWN0bHkgdG8gdGhlIFNv
-QyB3aXRoIG5vIGV4dGVybmFsIHB1bGwtdXAsIG9yIGV4cGxpY2l0bHkgcHVsbGVkIAo+Pj4gdXAg
-dG8gVkNDSU9fU0QuIEVpdGhlciB3YXksIHdoZW4gdGhlIGR3bW1jIGRyaXZlciBwcm9iZXMgYW5k
-IAo+Pj4gZGlzY292ZXJzIHRoZXJlIGlzIG5vIGNhcmQgcHJlc2VudCwgaXQgc2V0cyB0aGUgCj4+
-PiBjdXJyZW50bHktdW5uZWNlc3NhcnkgdnFtbWMtc3VwcGx5IGFzIGluYWN0aXZlLCBhbmQgdGh1
-cyB0aGUgCj4+PiByZWd1bGF0b3IgY29yZSB0dXJucyBvZmYgVkNDSU9fU0QgZW50aXJlbHkuIFVu
-Zm9ydHVuYXRlbHksIHRoaXMgCj4+PiByZW1vdmVzIHRoZSB2b2x0YWdlIGZyb20gdGhlIGVudGly
-ZSBJL08gZG9tYWluIGluY2x1ZGluZyB0aGUgCj4+PiBpbnRlcm5hbCBwdWxsLXVwLCB3aGljaCBl
-bmRzIHVwIGxlYXZpbmcgdGhlIENEIHBpbiBmbG9hdGluZyBhbmQgCj4+PiBnZW5lcmF0aW5nIHNw
-dXJpb3VzIGV2ZW50cy4KPj4+Cj4+PiBSb2Jpbi4KPj4KPj4gSGkgUm9iaW4sCj4+Cj4+IEFuIGlu
-dGVyZXN0aW5nIHN1Z2dlc3Rpb24gLSBubyBpdCBoYXNuJ3QgYmVlbiB0cmllZCB0byBhbHdheXMg
-c2V0IHRoZSAKPj4gdmNjaW9fc2QgcmVndWxhdG9yIG9uLiBXaWxsIGdpdmUgaXQgYSBnbyBvbiBB
-cmNoTGludXggQXJtLgo+Pgo+PiBJIGd1ZXNzIHRoaXMgd291bGQgZXhwbGFpbiB3aHkgdGhlIFRp
-bmtlciBCb2FyZCBib290aW5nIGZyb20gc2QgCj4+IGRvZXNuJ3Qgc2VlIHRoZSBlcnJvciwgYXMg
-aXRzIGVuYWJsZWQgcHJvYmFibHkgaW4gdWJvb3QgYW5kIHRoZW4gCj4+IGtlZXBzIHdvcmtpbmcu
-Cj4+Cj4+IElJUkMgdGhvdWdoLCBpZiBib290aW5nIHRoZSBUQlMgZnJvbSBlTU1DLCB0aGVuIGlu
-c2VydGluZyBhbiBzZCBjYXJkIAo+PiBhbmQgdGhlIGVycm9ycyBzdG9wLiBJIGd1ZXNzIHRoaXMg
-d291bGRuJ3QgaGFwcGVuIGlmIHRoZSBwb3dlciB3YXNuJ3QgCj4+IGFwcGxpZWQ/Cj4KPiBUaGF0
-J3MgdGhlIGZ1biBwYXJ0IG9mIHRoaXMgc2NlbmFyaW8gLSB0aGUgcHJlc2VuY2Ugb2YgYSBjYXJk
-IGlzIAo+IHVuYW1iaWd1b3VzLCBpdCdzIG9ubHkgdGhlIGFic2VuY2Ugb2Ygb25lIHdoaWNoIGRl
-cGVuZHMgb24gdGhlIHB1bGwtdXAgCj4gc3RhdGUsIHNvIHdoZW5ldmVyIGFzIGEgY2FyZCBpcyBp
-bnNlcnRlZCBldmVyeXRoaW5nIGRvZXMgd29yayAKPiBjb3JyZWN0bHkuIMKgQXNzdW1pbmcgdGhl
-eSBhcmUgdGhlIHNhbWUgZXJyb3JzIEkgd2FzIHNlZWluZywgdGhleSdyZSAKPiBmcm9tIHRoZSBk
-cml2ZXIgKnRoaW5raW5nKiBhIGNhcmQgaXMgaW5zZXJ0ZWQgZHVlIHRvIENEIGZsb2F0aW5nIGxv
-dywgCj4gdGhlbiBmYWlsaW5nIHRvIGNvbW11bmljYXRlIHdpdGggaXQsIGFmdGVyIHdoaWNoIGl0
-IHBvd2VycyBkb3duIHRoZSAKPiBJL08gaW50ZXJmYWNlIGFnYWluIGFuZCB0aGUgd2hvbGUgY3lj
-bGUgYmVnaW5zIGFuZXcuCj4KPj4gSSBndWVzcyBhbHNvIHRoYXQgInJlZ3VsYXRvci1hbHdheXMt
-b24iIGlzIGEgcXVpY2sgdGVzdCAtIGJ1dCB0aGF0IAo+PiBmb3Igc3VibWlzc2lvbiB0byBrZXJu
-ZWwgaXQgd291bGQgYmUgYmV0dGVyIGRvbmUgdmlhIAo+PiAibW1jLXB3cnNlcS1zaW1wbGUiPwo+
-Cj4gTm8sIGl0J3MgYSB2YWxpZCBkZXNjcmlwdGlvbiBvZiB0aGUgaGFyZHdhcmUgdG8gc2F5ICJk
-aXNhYmxpbmcgdGhpcyAKPiByZWd1bGF0b3IgbWFrZXMgc29tZXRoaW5nIGZhaWwgdG8gd29yayBh
-cyBleHBlY3RlZCIgaWYgdGhhdCBpcyB0cnVseSAKPiB0aGUgY2FzZS4gQmVzaWRlcywgcHdyc2Vx
-IGlzIGFib3V0IGhvdyB0byBpbml0aWFsaXNlIGEgZGV0ZWN0ZWQgCj4gcHJlc2VudCBjYXJkLCBu
-b3QgaG93IHRvIGNvcnJlY3RseSBkZXRlY3QgdGhhdCBwcmVzZW5jZSBpbiB0aGUgZmlyc3QgCj4g
-cGxhY2UuCj4KPj4gQW55d2F5IEkgc2V0IHVwIGEgdGVzdCAtIHNvIHdlIGNhbiBjb25maXJtIHRo
-aXMuCj4KPiBHcmVhdCAtIHRoZXJlIGlzIG9mIGNvdXJzZSBzdGlsbCB0aGUgcG9zc2liaWxpdHkg
-dGhhdCB0aGUgcGluIHJlYWxseSAKPiBpc24ndCB3aXJlZCB1cCBhdCBhbGwsIGluIHdoaWNoIGNh
-c2UgaWdub3JpbmcgQ0QgYW5kIHRha2luZyB0aGUgQ1BVIAo+IG92ZXJoZWFkIG9mIHBvbGxpbmcg
-d291bGQgYmUgdGhlIG9ubHkgb3B0aW9uLCBidXQgdGhlIHZlbmRvciBEVCAKPiBkb2Vzbid0IGhh
-dmUgYW55IHNpZ25zIHRvIHN1Z2dlc3QgdGhhdCdzIHRoZSBjYXNlLCBhbmQgbWFrZXMgbWUgbGVh
-biAKPiBtb3JlIHRvd2FyZHMgdGhlIHB1bGwtdXAgaXNzdWUuCj4KPiBSb2Jpbi4KClJvYmluLAoK
-SGVhcmQgYmFjayBmcm9tIHRoZSB1c2VyIG9uIEFyY2hMaW51eCBBcm0gd2hvIGhhcyBhIHRpbmtl
-ciBCb2FyZCBTLCBoZSAKdGVzdGVkIHlvdXIgc29sdXRpb24sIGFuZCBpdCB3b3JrZWQuCgpFeGNl
-bGxlbnQsIGFzIGl0IG1lYW5zIHRoZSBDUFUgd29uJ3QgaGF2ZSB0byBwb2xsIHRoZSBjYXJkIQoK
-SSdsbCBwcm9iYWJseSBhZGQgYm90aCAicmVndWxhdG9yLWFsd2F5cy1vbjsiIGFuZCAicmVndWxh
-dG9yLWJvb3Qtb247IiwgCmFzIHJlYWRpbmcgdGhlIHJlZ3VsYXRvciBkb2N1bWVudGF0aW9uLCBh
-bmQgdGhlIFRpbmtlciBCb2FyZCBib290cyBmcm9tIApzZCBjYXJkLCBhbmQgdGhlIFRpbmtlckJv
-YXJkIFMgaGFzIHRoZSBvcHRpb24gb2YgYm9vdGluZyBmcm9tIHRoZSBzZCAKY2FyZCAtIHdlIGNh
-biBiZSBmYWlybHkgc3VyZSB0aGF0IHVib290IGhhcyBhbHJlYWR5IGVuYWJsZWQgdGhlIHBvd2Vy
-IApzdXBwbHkuCgpTbyBiZXN0IHRvIHdpdGhkcmF3IHRoaXMgcGF0Y2guIEknbGwgZG8gYSBmcmVz
-aCBvbmUsIHdoZW4gSSBnZXQgdGltZSAtIApwcm9iYWJseSB0aGUgd2Vla2VuZCAuLi4KClRoYW5r
-cyBmb3IgdGhlIGhlbHAsIEkgc2hvdWxkIGhhdmUgdGhvdWdoIG9mIGxvb2tpbmcgYmV5b25kIHNk
-bW1jIHBhcnQgCm9mIGRldmljZSB0cmVlLiBTbyB3ZSBhcmUgZ3JhdGVmdWwgdGhhdCB5b3UgcmVt
-ZW1iZXJlZCB5b3VyIHNvbHV0aW9uIAp3aGVuIHlvdSBoYWQgdGhlIHByb2JsZW0gb24gYW5vdGhl
-ciBib2FyZC4KClJlZ2FyZHMsCgpEYXZpZAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFy
-bS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
+Hi Mauro,
+
+On Tue, 2019-02-19 at 03:29 +0800, Mauro Carvalho Chehab wrote:
+> drivers/media/platform/mtk-mdp/mtk_mdp_core.h      |  6 +++---
+
+For drivers/media/platform/mtk-mdp/*
+Reviewed-by: Houlong Wei <houlong.wei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+
+Thanks a lot.
