@@ -1,90 +1,52 @@
-From: Yong <yong.deng@magewell.com>
-Subject: Re: [PATCH 06/14] media: platform: fix several typos
-Date: Wed, 20 Feb 2019 09:15:14 +0800
-Message-ID: <20190220091514.04cc6347ef24647f6a009d49@magewell.com>
-References: <f235ba60b2b7e5fba09d3c6b0d5dbbd8a86ea9b9.1550518128.git.mchehab+samsung@kernel.org>
- <362e90167292e8d0c03a8d0753cc26b89549d854.1550518128.git.mchehab+samsung@kernel.org>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: =?UTF-8?Q?Re=3a_=5bPATCH=5d_ARM=3a_dts=3a_rockchip=3a_remove_disabl?=
+ =?UTF-8?B?ZS13cCBmcm9tIHJ2MTEwOC1lbGdpbi1yMSBlbW1jIG5vZGXjgJDor7fms6jmhI8=?=
+ =?UTF-8?B?77yM6YKu5Lu255SxbGludXgtcm9ja2NoaXAtYm91bmNlcytzaGF3bi5saW49cm9j?=
+ =?UTF-8?B?ay1jaGlwcy5jb21AbGlzdHMuaW5mcmFkZWFkLm9yZ+S7o+WPkeOAkQ==?=
+Date: Wed, 20 Feb 2019 10:06:42 +0800
+Message-ID: <a8251244-44e5-0423-16cf-de035a760248@rock-chips.com>
+References: <20190219130317.2817-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <362e90167292e8d0c03a8d0753cc26b89549d854.1550518128.git.mchehab+samsung@kernel.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Heiko Stuebner <heiko@sntech.de>, Maxime Ripard <maxime.ripard@bootlin.com>, Stanimir Varbanov <stanimir.varbanov@linaro.org>, Patrice Chotard <patrice.chotard@st.com>, Andrzej Hajda <a.hajda@samsung.com>, "Lad, Prabhakar" <prabhakar.csengg@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Michal Simek <michal.simek@xilinx.com>, Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>, linux-samsung-soc@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, Chen-Yu Tsai <wens@csie.org>, Krzysztof Kozlowski <krzk@kernel.org>, linux-stm32@st-md-mailman.stormreply.com, linux-rockchip@lists.infradead.org, Ludovic Desroches <ludovic.desroches@microchip.com>, Kukjin Kim <kgene@kernel.org>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190219130317.2817-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mauro,
-
-On Mon, 18 Feb 2019 14:29:00 -0500
-Mauro Carvalho Chehab <mchehab+samsung@kernel.org> wrote:
-
-> Use codespell to fix lots of typos over frontends.
+On 2019/2/19 21:03, Johan Jonker wrote:
+> The mmc.txt didn't explicitly say disable-wp is for SD card slot only,
+> but that is what it was designed for in the first place.
+> Remove all disable-wp from emmc or sdio controllers.
 > 
-> Manually verified to avoid false-positives.
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 > ---
->  drivers/media/platform/Kconfig                     |  2 +-
->  drivers/media/platform/atmel/atmel-isi.c           |  4 ++--
->  drivers/media/platform/coda/coda-jpeg.c            |  2 +-
->  drivers/media/platform/davinci/isif.c              |  4 ++--
->  drivers/media/platform/davinci/vpbe.c              |  2 +-
->  drivers/media/platform/davinci/vpif.c              |  2 +-
->  drivers/media/platform/davinci/vpif_display.c      |  4 ++--
->  .../media/platform/exynos4-is/fimc-is-command.h    |  2 +-
->  drivers/media/platform/exynos4-is/fimc-is-param.h  |  2 +-
->  drivers/media/platform/exynos4-is/media-dev.h      |  2 +-
->  drivers/media/platform/exynos4-is/mipi-csis.c      |  4 ++--
->  drivers/media/platform/marvell-ccic/mmp-driver.c   |  4 ++--
->  drivers/media/platform/mtk-mdp/mtk_mdp_core.h      |  6 +++---
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |  2 +-
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h |  4 ++--
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c |  2 +-
->  .../media/platform/mtk-vcodec/vdec/vdec_h264_if.c  |  4 ++--
->  .../media/platform/mtk-vcodec/vdec/vdec_vp8_if.c   |  2 +-
->  drivers/media/platform/mtk-vcodec/vdec_drv_if.h    |  2 +-
->  drivers/media/platform/mtk-vcodec/vdec_vpu_if.h    |  2 +-
->  drivers/media/platform/omap/omap_vout.c            |  4 ++--
->  drivers/media/platform/omap/omap_voutdef.h         |  4 ++--
->  drivers/media/platform/omap3isp/isp.c              |  2 +-
->  drivers/media/platform/omap3isp/ispccdc.c          |  4 ++--
->  drivers/media/platform/omap3isp/ispcsi2.c          |  2 +-
->  drivers/media/platform/pxa_camera.c                |  2 +-
->  drivers/media/platform/qcom/venus/core.h           |  2 +-
->  drivers/media/platform/rcar-vin/rcar-dma.c         |  2 +-
->  drivers/media/platform/rcar-vin/rcar-v4l2.c        |  4 ++--
->  drivers/media/platform/rockchip/rga/rga-hw.c       |  6 +++---
->  drivers/media/platform/s3c-camif/camif-core.h      |  2 +-
->  drivers/media/platform/s5p-jpeg/jpeg-core.h        |  4 ++--
->  drivers/media/platform/s5p-mfc/s5p_mfc_common.h    |  2 +-
->  drivers/media/platform/s5p-mfc/s5p_mfc_ctrl.c      |  2 +-
->  drivers/media/platform/s5p-mfc/s5p_mfc_dec.c       |  2 +-
->  drivers/media/platform/s5p-mfc/s5p_mfc_opr_v5.c    |  2 +-
->  drivers/media/platform/s5p-mfc/s5p_mfc_opr_v6.c    |  4 ++--
->  .../media/platform/sti/c8sectpfe/c8sectpfe-core.h  |  2 +-
->  drivers/media/platform/sti/delta/delta.h           |  2 +-
->  drivers/media/platform/sti/hva/hva-h264.c          |  2 +-
->  drivers/media/platform/stm32/stm32-dcmi.c          |  2 +-
->  drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.h |  2 +-
->  drivers/media/platform/ti-vpe/vpdma.c              | 14 +++++++-------
->  drivers/media/platform/ti-vpe/vpe.c                |  2 +-
->  drivers/media/platform/vsp1/vsp1_brx.c             |  4 ++--
->  drivers/media/platform/xilinx/xilinx-vip.c         |  2 +-
->  46 files changed, 70 insertions(+), 70 deletions(-)
+>   arch/arm/boot/dts/rv1108-elgin-r1.dts | 1 -
+>   1 file changed, 1 deletion(-)
+> 
+> diff --git a/arch/arm/boot/dts/rv1108-elgin-r1.dts b/arch/arm/boot/dts/rv1108-elgin-r1.dts
+> index 1c4507b..b1db924 100644
+> --- a/arch/arm/boot/dts/rv1108-elgin-r1.dts
+> +++ b/arch/arm/boot/dts/rv1108-elgin-r1.dts
+> @@ -37,7 +37,6 @@
+>   &emmc {
+>   	bus-width = <8>;
+>   	cap-mmc-highspeed;
+> -	disable-wp;
 
-For drivers/media/platform/sunxi/sun6i-csi/sun6i_csi.h
+Reviewed-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Reviewed-by: Yong Deng <yong.deng@magewell.com>
-
-
-Thanks,
-Yong
+>   	no-sd;
+>   	no-sdio;
+>   	non-removable;
+> 
