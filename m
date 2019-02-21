@@ -1,20 +1,20 @@
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH 01/10] media: Introduce helpers to fill pixel format
- structs
-Date: Thu, 21 Feb 2019 16:26:10 -0300
-Message-ID: <d53c1a3c8ffdc0bbc4460e6eaa4810456c723304.camel@collabora.com>
-References: <20190205202417.16555-1-ezequiel@collabora.com>
- <20190205202417.16555-2-ezequiel@collabora.com>
- <79ad7cf7-90d5-9542-06ea-e28ddeb14e94@xs4all.nl>
- <85ff24016b4d4b55a1a02f1aee6b42dbbaf2279a.camel@collabora.com>
- <d1ea8698-e4c6-a826-0820-b8395c8c2a6f@xs4all.nl>
- <CAAFQd5DLTOJ0kheFdxzTV7Hrtc5MpG4Utn00HgNh06d+h_qJfQ@mail.gmail.com>
- <ea53ac3d-a337-d725-3317-1cef42481820@xs4all.nl>
+From: Robert Foss <robert.foss-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: rk3399: Graphical artifacts when running for-next
+Date: Thu, 21 Feb 2019 20:42:02 +0100
+Message-ID: <905cfe71-c98d-f73d-8870-623129b5e470@collabora.com>
+References: <69ddf17a-232d-fc1f-f6a7-59dbde220395@collabora.com>
+ <2996476.nJxoliyDTa@phil>
+ <48fe80bd-92bf-41fa-f508-941765e4354b@collabora.com>
+ <1654246.IP1FNPqO5J@phil>
+ <ec6768e8-c6ce-b4e6-10b6-2880dbbdff4d@collabora.com>
+ <8d5e0ce1-b1c5-1f4b-fd81-f18f376fc756@collabora.com>
+ <eaec0319d2a79a49a39fc29bfe2473f2cec15b52.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <ea53ac3d-a337-d725-3317-1cef42481820-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+In-Reply-To: <eaec0319d2a79a49a39fc29bfe2473f2cec15b52.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -24,140 +24,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Sakari Ailus <sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Tom Cubie <tom-ZvE2cuBqvIQAvxtiuMwx3w@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 2019-02-20 at 09:39 +0100, Hans Verkuil wrote:
-> On 2/20/19 7:53 AM, Tomasz Figa wrote:
-> > On Thu, Feb 7, 2019 at 1:36 AM Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org> wrote:
-> > > On 2/6/19 5:22 PM, Ezequiel Garcia wrote:
-> > > > On Wed, 2019-02-06 at 11:43 +0100, Hans Verkuil wrote:
-> > > > > Hi Ezequiel,
-> > > > > 
-> > > > > A quick review below. This looks really useful, BTW.
-> > > > > 
-> > > > > On 2/5/19 9:24 PM, Ezequiel Garcia wrote:
-> > 
-> > [snip]
-> > > > > > +/**
-> > > > > > + * struct v4l2_format_info - information about a V4L2 format
-> > > > > > + * @format: 4CC format identifier (V4L2_PIX_FMT_*)
-> > > > > > + * @header_size: Size of header, optional and used by compressed formats
-> > > > > > + * @num_planes: Number of planes (1 to 3)
-> > > > > 
-> > > > > This is actually 1-4 since there may be an alpha channel as well. Not that we have
-> > > > > such formats since the only formats with an alpha channel are interleaved formats,
-> > > > > but it is possible.
-> > 
-> > How about 1 to VIDEO_MAX_PLANES to be a bit more consistent?
-> > Tbh. I'm not sure why we have that defined to 8, but if we have such
-> > constant already, it could make sense to use it here as well.
+
+
+On 2/21/19 8:15 PM, Ezequiel Garcia wrote:
+> Folks,
 > 
-> We didn't know at the time how many planes we would need. I think we
-> chose 8 because 1) that fit inside struct v4l2_format and 2) it allowed
-> room for planes carrying meta data.
+> On Thu, 2019-02-21 at 20:08 +0100, Robert Foss wrote:
+> [..]
 > 
-> In hindsight we probably should have chosen 4 instead of 8.
+> The clock debugging is obviously good research.
 > 
-> In any case, since this is an internal API I think chosing MAX_PLANES
-> here would waste unnecessary memory.
+>>>
+>>>
+>>> Additionally I've had a look at the libdrm modetest util, and it is reporting
+>>> far fewer modes than what I would expect on my 4k monitor.
+>>>
+> 
+> That said, this is also worth looking into.
+> I'm curious, is the EDID the kernel getting OK?
 > 
 
-4 it is then.
+Given that modetest lists way too few modes, I would think
+there could be some EDID related issues.
 
-> > [snip]
-> > > > Also, note that drm-fourcc deprecates cpp, to support tile formats.
-> > > > Hopefully we don't need that here?
-> > > 
-> > > We do have tile formats (V4L2_PIX_FMT_NV12MT_16X16), but it is up to the
-> > > driver to align width/height accordingly.
-> > > 
-> > 
-> > I'd still make these helpers align to the constraints defined by the
-> > format itself (e.g. 16x16), since it doesn't cost us anything, and
-> > have the driver do any further alignment only if they need so.
+> Thanks!
+> Eze
 > 
-> Yes, sorry, I should have said that: for tiled pixel formats this
-> struct should give the alignments.
-> 
-> But those alignments differ from hsub/vsub: those values restrict the
-> resolution, but the 'tiled' alignments are on top of that.
-> 
-
-Hm, OK. So the idea is support tiling formats on this helpers?
-
-Might need to change the way we describe formats, as DRM does,
-to incorporate some notion of pixel blocks.
-
-> > > > > > + * @hsub: Horizontal chroma subsampling factor
-> > > > > > + * @vsub: Vertical chroma subsampling factor
-> > > > > 
-> > > > > A bit too cryptic IMHO. I would prefer hdiv or hsubsampling. 'hsub' suggests
-> > > > > subtraction :-)
-> > > > > 
-> > > > 
-> > > > Ditto, this name follows drm-fourcc. I'm fine either way.
-> > > > 
-> > 
-> > I personally like hsub and vsub too, but maybe I just spent too much
-> > time with DRM code. *subsampling would make the initializers super
-> > wide, so if we decide that we don't like *sub, I'd go with *div.
-> > 
-
-Note that there's a v2 patch, where I went with *div :-)
-
-> > > > > > + * @multiplanar: Is it a multiplanar variant format? (e.g. NV12M)
-> > > > > 
-> > > > > This should, I think, be renamed to num_non_contig_planes to indicate how many
-> > > > > non-contiguous planes there are in the format.
-> > > > > 
-> > > > > So this value is 1 for NV12 and 2 for NV12M. For V4L2_PIX_FMT_YUV444M it is 3.
-> > > > > 
-> > > > > You can stick this value directly into pixfmt_mp->num_planes.
-> > > > > 
-> > > > 
-> > > > Fine by me, but I have to admit I don't see the value of adding the
-> > > > number of non-contiguous planes. For multiplanar non-contiguous formats
-> > > > the number of planes is equal to the number of planes.
-> > > 
-> > > Hmm, that's true. Choose whatever gives you the shortest code :-)
-> > > 
-> > > > Although maybe it will be clear this way for readers?
-> > > > 
-> > > > > As an aside: perhaps we should start calling the 'multiplanar API' the
-> > > > > 'multiple non-contiguous planes API', at least in the documentation. It's the
-> > 
-> > To me, "multiple non-contiguous planes API" would suggest that the
-> > planes themselves are non-contiguous.
-> > 
-> > Many drivers (especially Samsung ones) have a distinction between
-> > "color planes" and "memory planes" internally, so maybe "Multiple
-> > memory planes API" could make sense?
-> 
-> Huh, that's an idea. So _MPLANE should have been _MMPLANE?
-> 
-> > > > > first time that I found a description that actually covers the real meaning.
-> > > > > 
-> > > > 
-> > > > Yes, indeed. In fact, my first version of this code had something like
-> > > > "is_noncontiguous" instead of the "multiplanar" field.
-> > > 
-> > > I'm fine with that. Add a comment after it like: /* aka multiplanar */
-> > > 
-> > 
-> > FWIW, some of the drivers have .num_cplanes and .num_mplanes in their
-> > format descriptors.
-> 
-> 
-
-This sounds nice.
-
-To be clear, this means that instead of a boolean is_noncontigous, we describe
-the number of (non-contiguous) memory planes and the number of component planes.
-
-I really dislike the name "color planes", because it could be misleading
-as chroma planes, so I think "component planes" makes it more clear.
-
-Thanks for reviewing!
-Eze
