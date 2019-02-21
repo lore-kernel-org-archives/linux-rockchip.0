@@ -1,14 +1,16 @@
 From: Robert Foss <robert.foss-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Subject: Re: rk3399: Graphical artifacts when running for-next
-Date: Thu, 21 Feb 2019 16:46:19 +0100
-Message-ID: <48fe80bd-92bf-41fa-f508-941765e4354b@collabora.com>
+Date: Thu, 21 Feb 2019 17:38:25 +0100
+Message-ID: <ec6768e8-c6ce-b4e6-10b6-2880dbbdff4d@collabora.com>
 References: <69ddf17a-232d-fc1f-f6a7-59dbde220395@collabora.com>
  <2996476.nJxoliyDTa@phil>
+ <48fe80bd-92bf-41fa-f508-941765e4354b@collabora.com>
+ <1654246.IP1FNPqO5J@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2996476.nJxoliyDTa@phil>
+In-Reply-To: <1654246.IP1FNPqO5J@phil>
 Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
@@ -25,60 +27,88 @@ List-Id: linux-rockchip.vger.kernel.org
 
 
 
-On 2/21/19 2:26 PM, Heiko Stuebner wrote:
-> Hi Robert,
-> 
-> Am Donnerstag, 21. Februar 2019, 11:27:15 CET schrieb Robert Foss:
->> Hey Heiko,
+On 2/21/19 4:53 PM, Heiko Stuebner wrote:
+> Am Donnerstag, 21. Februar 2019, 16:46:19 CET schrieb Robert Foss:
 >>
->> I've just started booting the RK3399 based Radxa Rock Pi 4 on the mainline
->> kernel. Specifically on linux-rockchip/for-next, with an additional patch
->> adding the GPU DT node[1].
+>> On 2/21/19 2:26 PM, Heiko Stuebner wrote:
+>>> Hi Robert,
+>>>
+>>> Am Donnerstag, 21. Februar 2019, 11:27:15 CET schrieb Robert Foss:
+>>>> Hey Heiko,
+>>>>
+>>>> I've just started booting the RK3399 based Radxa Rock Pi 4 on the mainline
+>>>> kernel. Specifically on linux-rockchip/for-next, with an additional patch
+>>>> adding the GPU DT node[1].
+>>>>
+>>>> Unfortunately I'm seeing an artifact on all display output[2].
+>>>> It, from the VT to 3D content.
+>>>>
+>>>> Is this an issue that has been encountered before?
+>>>
+>>> I haven't seen something like this before. I do test graphics
+>>> on most Rockchip socs regularly (right now dw-hdmi only
+>>> on non-rk3399 socs though).
+>>>
+>>> Did you try full linux-next as well? My for-next branch obviously
+>>> only carries dt/soc-driver stuff but not things like drm-misc.
+>>>
+>>> One possible issue might be the generated clocks. You could check
+>>> $debug/clk/clk_summary for the dclk_vopX to see if that matches
+>>> the suggested clock for the mode. (For example check the requested
+>>> rate in rockchip_vop.c against what it actually gets).
+>>>
 >>
->> Unfortunately I'm seeing an artifact on all display output[2].
->> It, from the VT to 3D content.
+>> I had a look using the current linux-next/master, and I'm seeing the same results.
+>> Commit: 550f4769c7c4 - Add linux-next specific files for 20190221
 >>
->> Is this an issue that has been encountered before?
+>>
+>> I had also look at the debugfs output:
+>> # cat /sys/kernel/debug/clk/clk_summary | grep dclk_vop
+>>     dclk_vop0_div    0 1 0 27000000  0 0  50000
+>>       dclk_vop0      0 2 0 27000000  0 0 50000
+>>       dclk_vop0_frac 0 0 0 1350000   0 0 50000
+>>     dclk_vop1_div    1 1 0 59400000  0 0 50000
+>>       dclk_vop1      2 2 0 59400000  0 0 50000
+>>       dclk_vop1_frac 0 0 0 2970000   0 0 50000
+>>
+>> But I can't find a file named rockchip_vop.c exactly. And I'm not entirely sure
+>> about how to decipher the expected values from the driver.
 > 
-> I haven't seen something like this before. I do test graphics
-> on most Rockchip socs regularly (right now dw-hdmi only
-> on non-rk3399 socs though).
-> 
-> Did you try full linux-next as well? My for-next branch obviously
-> only carries dt/soc-driver stuff but not things like drm-misc.
-> 
-> One possible issue might be the generated clocks. You could check
-> $debug/clk/clk_summary for the dclk_vopX to see if that matches
-> the suggested clock for the mode. (For example check the requested
-> rate in rockchip_vop.c against what it actually gets).
-> 
+> drivers/gpu/drm/rockchip_drm_vop.c (my memory of the filename was faulty
+> it seems). As for comparing to the expected rate, I guess the easiest
+> way would be to just insert a printk into vop_crtc_mode_fixup()
+> after the clk_round_rate call, outputting both the requested and
+> calculated rate and then looking that up in the dmesg.
 
-I had a look using the current linux-next/master, and I'm seeing the same results.
-Commit: 550f4769c7c4 - Add linux-next specific files for 20190221
+dmesg:
+vop_crtc_mode_fixup() mode->clock=65000000  adjusted_mode->clock=61538000
+
+Is the adjusted clock withing the reasonable range?
 
 
-I had also look at the debugfs output:
-# cat /sys/kernel/debug/clk/clk_summary | grep dclk_vop
-   dclk_vop0_div    0 1 0 27000000  0 0  50000
-     dclk_vop0      0 2 0 27000000  0 0 50000
-     dclk_vop0_frac 0 0 0 1350000   0 0 50000
-   dclk_vop1_div    1 1 0 59400000  0 0 50000
-     dclk_vop1      2 2 0 59400000  0 0 50000
-     dclk_vop1_frac 0 0 0 2970000   0 0 50000
+Additionally I've had a look at the libdrm modetest util, and it is reporting
+far fewer modes than what I would expect on my 4k monitor.
 
-But I can't find a file named rockchip_vop.c exactly. And I'm not entirely sure 
-about how to decipher the expected values from the driver.
+As an added note, I have this board+monitor working using proprietary drivers, 
+and up to 4k resolutions.
 
-> Heiko
-> 
-> 
->> [1] https://patchwork.kernel.org/patch/10817637/mbox/
->> [2] https://photos.app.goo.gl/ArffJ3785JSeQatW7
->>
->>
->> Rob.
->>
-> 
-> 
-> 
-> 
+trying to open device 'rockchip'...done
+Encoders:
+id      crtc    type    possible crtcs  possible clones
+44      34      TMDS    0x00000003      0x00000000
+
+Connectors:
+id      encoder status          name            size (mm)       modes   encoders
+45      44      connected       HDMI-A-1        0x0             3       44
+   modes:
+         name refresh (Hz) hdisp hss hse htot vdisp vss vse vtot)
+   1024x768 60 1024 1048 1184 1344 768 771 777 806 65000 flags: nhsync, nvsync; 
+type: driver
+   800x600 60 800 840 968 1056 600 601 605 628 40000 flags: phsync, pvsync; 
+type: driver
+   800x600 56 800 824 896 1024 600 601 603 625 36000 flags: phsync, pvsync; 
+type: driver
+
+
+
+Rob.
