@@ -1,88 +1,108 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH] drm/rockchip: vop: reset scale mode when win is disabled
-Date: Wed, 20 Feb 2019 22:40:06 +0000
-Message-ID: <AM3PR03MB0966DE3E19BACE07328CD637AC7D0@AM3PR03MB0966.eurprd03.prod.outlook.com>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Subject: Re: [PATCH v4 0/9] mm: Use vm_map_pages() and vm_map_pages_zero() API
+Date: Thu, 21 Feb 2019 08:11:02 +0530
+Message-ID: <CAFqt6zbchvoD-MdEF2T52eOPQ2x4gZ4G-72oZkW5f_RiT1nXpA@mail.gmail.com>
+References: <20190215024104.GA26331@jordon-HP-15-Notebook-PC>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Cc: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Ezequiel Garcia <ezequiel@collabora.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Jonas Karlman <jonas@kwiboo.se>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190215024104.GA26331@jordon-HP-15-Notebook-PC>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Andrew Morton <akpm@linux-foundation.org>, Matthew Wilcox <willy@infradead.org>, Michal Hocko <mhocko@suse.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, Vlastimil Babka <vbabka@suse.cz>, Rik van Riel <riel@surriel.com>, Stephen Rothwell <sfr@canb.auug.org.au>, rppt@linux.vnet.ibm.com, Peter Zijlstra <peterz@infradead.org>, Russell King - ARM Linux <linux@armlinux.org.uk>, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, Kees Cook <keescook@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, Kyungmin Park <kyungmin.park@samsung.com>, mchehab@kernel.org, Boris Ostrovsky <boris.ostrovsky@oracle.com>, Juergen Gross <jgross@suse.com>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, xen-devel@lists.xen.org, Linux-MM <linux-mm@kvack.org>, iommu@lists.linux-foundation.org, linux1394-devel@lists.sourceforge.net, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-NV12 framebuffers produced by the VPU shows distorted on RK3288
-after win has been disabled when scaling is active.
+On Fri, Feb 15, 2019 at 8:06 AM Souptick Joarder <jrdr.linux@gmail.com> wrote:
+>
+> Previouly drivers have their own way of mapping range of
+> kernel pages/memory into user vma and this was done by
+> invoking vm_insert_page() within a loop.
+>
+> As this pattern is common across different drivers, it can
+> be generalized by creating new functions and use it across
+> the drivers.
+>
+> vm_map_pages() is the API which could be used to map
+> kernel memory/pages in drivers which has considered vm_pgoff.
+>
+> vm_map_pages_zero() is the API which could be used to map
+> range of kernel memory/pages in drivers which has not considered
+> vm_pgoff. vm_pgoff is passed default as 0 for those drivers.
+>
+> We _could_ then at a later "fix" these drivers which are using
+> vm_map_pages_zero() to behave according to the normal vm_pgoff
+> offsetting simply by removing the _zero suffix on the function
+> name and if that causes regressions, it gives us an easy way to revert.
+>
+> Tested on Rockchip hardware and display is working fine, including talking
+> to Lima via prime.
+>
+> v1 -> v2:
+>         Few Reviewed-by.
+>
+>         Updated the change log in [8/9]
+>
+>         In [7/9], vm_pgoff is treated in V4L2 API as a 'cookie'
+>         to select a buffer, not as a in-buffer offset by design
+>         and it always want to mmap a whole buffer from its beginning.
+>         Added additional changes after discussing with Marek and
+>         vm_map_pages() could be used instead of vm_map_pages_zero().
+>
+> v2 -> v3:
+>         Corrected the documentation as per review comment.
+>
+>         As suggested in v2, renaming the interfaces to -
+>         *vm_insert_range() -> vm_map_pages()* and
+>         *vm_insert_range_buggy() -> vm_map_pages_zero()*.
+>         As the interface is renamed, modified the code accordingly,
+>         updated the change logs and modified the subject lines to use the
+>         new interfaces. There is no other change apart from renaming and
+>         using the new interface.
+>
+>         Patch[1/9] & [4/9], Tested on Rockchip hardware.
+>
+> v3 -> v4:
+>         Fixed build warnings on patch [8/9] reported by kbuild test robot.
+>
+> Souptick Joarder (9):
+>   mm: Introduce new vm_map_pages() and vm_map_pages_zero() API
+>   arm: mm: dma-mapping: Convert to use vm_map_pages()
+>   drivers/firewire/core-iso.c: Convert to use vm_map_pages_zero()
+>   drm/rockchip/rockchip_drm_gem.c: Convert to use vm_map_pages()
+>   drm/xen/xen_drm_front_gem.c: Convert to use vm_map_pages()
+>   iommu/dma-iommu.c: Convert to use vm_map_pages()
+>   videobuf2/videobuf2-dma-sg.c: Convert to use vm_map_pages()
+>   xen/gntdev.c: Convert to use vm_map_pages()
+>   xen/privcmd-buf.c: Convert to use vm_map_pages_zero()
 
-This issue can be reproduced using a 1080p modeset by:
-- Scale a 1280x720 NV12 framebuffer to 1920x1080 on win0
-- Disable win0
-- Display a 1920x1080 NV12 framebuffer without scaling on win0
-- Output will now show the framebuffer distorted
+If no further comment, is it fine to take these patches to -mm
+tree for regression ?
 
-And by:
-- Scale a 1280x720 NV12 framebuffer to 1920x1080
-- Change to a 720p modeset (win gets disabled and scaling reset to none)
-- Output will now show the framebuffer distorted
-
-Fix this by setting scale mode to none when win is disabled.
-
-Fixes: 4c156c21c794 ("drm/rockchip: vop: support plane scale")
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 18 +++++++++++++++---
- 1 file changed, 15 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index fb70fb486fbf..cdbb47566cac 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -511,6 +511,18 @@ static void vop_core_clks_disable(struct vop *vop)
- 	clk_disable(vop->hclk);
- }
- 
-+static void vop_win_disable(struct vop *vop, const struct vop_win_data *win)
-+{
-+	if (win->phy->scl && win->phy->scl->ext) {
-+		VOP_SCL_SET_EXT(vop, win, yrgb_hor_scl_mode, SCALE_NONE);
-+		VOP_SCL_SET_EXT(vop, win, yrgb_ver_scl_mode, SCALE_NONE);
-+		VOP_SCL_SET_EXT(vop, win, cbcr_hor_scl_mode, SCALE_NONE);
-+		VOP_SCL_SET_EXT(vop, win, cbcr_ver_scl_mode, SCALE_NONE);
-+	}
-+
-+	VOP_WIN_SET(vop, win, enable, 0);
-+}
-+
- static int vop_enable(struct drm_crtc *crtc)
- {
- 	struct vop *vop = to_vop(crtc);
-@@ -556,7 +568,7 @@ static int vop_enable(struct drm_crtc *crtc)
- 		struct vop_win *vop_win = &vop->win[i];
- 		const struct vop_win_data *win = vop_win->data;
- 
--		VOP_WIN_SET(vop, win, enable, 0);
-+		vop_win_disable(vop, win);
- 	}
- 	spin_unlock(&vop->reg_lock);
- 
-@@ -700,7 +712,7 @@ static void vop_plane_atomic_disable(struct drm_plane *plane,
- 
- 	spin_lock(&vop->reg_lock);
- 
--	VOP_WIN_SET(vop, win, enable, 0);
-+	vop_win_disable(vop, win);
- 
- 	spin_unlock(&vop->reg_lock);
- }
-@@ -1476,7 +1488,7 @@ static int vop_initial(struct vop *vop)
- 		int channel = i * 2 + 1;
- 
- 		VOP_WIN_SET(vop, win, channel, (channel + 1) << 4 | channel);
--		VOP_WIN_SET(vop, win, enable, 0);
-+		vop_win_disable(vop, win);
- 		VOP_WIN_SET(vop, win, gate, 1);
- 	}
- 
--- 
-2.17.1
+>
+>  arch/arm/mm/dma-mapping.c                          | 22 ++----
+>  drivers/firewire/core-iso.c                        | 15 +---
+>  drivers/gpu/drm/rockchip/rockchip_drm_gem.c        | 17 +----
+>  drivers/gpu/drm/xen/xen_drm_front_gem.c            | 18 ++---
+>  drivers/iommu/dma-iommu.c                          | 12 +---
+>  drivers/media/common/videobuf2/videobuf2-core.c    |  7 ++
+>  .../media/common/videobuf2/videobuf2-dma-contig.c  |  6 --
+>  drivers/media/common/videobuf2/videobuf2-dma-sg.c  | 22 ++----
+>  drivers/xen/gntdev.c                               | 11 ++-
+>  drivers/xen/privcmd-buf.c                          |  8 +--
+>  include/linux/mm.h                                 |  4 ++
+>  mm/memory.c                                        | 81 ++++++++++++++++++++++
+>  mm/nommu.c                                         | 14 ++++
+>  13 files changed, 134 insertions(+), 103 deletions(-)
+>
+> --
+> 1.9.1
+>
