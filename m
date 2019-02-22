@@ -1,66 +1,42 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH] drm: bridge: dw-hdmi: Fix overflow workaround for
- Rockchip SoCs
-Date: Fri, 22 Feb 2019 14:28:14 +0200
-Message-ID: <20190222122814.GW3522@pendragon.ideasonboard.com>
-References: <AM3PR03MB0966818FAAAE6192FF4ED11AAC7D0@AM3PR03MB0966.eurprd03.prod.outlook.com>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: Re: [PATCH 1/3] Bluetooth: btusb: add QCA6174A compatible properties
+Date: Fri, 22 Feb 2019 10:04:06 -0800
+Message-ID: <20190222180406.GA223791@google.com>
+References: <20190222003403.128243-1-briannorris@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <AM3PR03MB0966818FAAAE6192FF4ED11AAC7D0@AM3PR03MB0966.eurprd03.prod.outlook.com>
+In-Reply-To: <20190222003403.128243-1-briannorris@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Archit Taneja <architt@codeaurora.org>, Andrzej Hajda <a.hajda@samsung.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Sean Paul <seanpaul@chromium.org>, Neil Armstrong <narmstrong@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Brian Norris <briannorris@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, Rajat Jain <rajatja@google.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jonas,
-
-Thank you for the patch.
-
-On Wed, Feb 20, 2019 at 07:52:31AM +0000, Jonas Karlman wrote:
-> The Rockchip RK3288 SoC (v2.00a) and RK3328/RK3399 SoCs (v2.11a) have
-> also been identified as needing this workaround with a single iteration.
+On Thu, Feb 21, 2019 at 04:34:01PM -0800, Brian Norris wrote:
+> We may need to specify a GPIO wake pin for this device, so add a
+> compatible property for it.
 > 
-> Fixes: be41fc55f1aa ("drm: bridge: dw-hdmi: Handle overflow workaround based on device version")
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-
-This makes me wonder if we have any device at all that doesn't need the
-workaround... The HDMI encoder in R-Car SoCs doesn't seem to require it,
-but it reports the same version number as on other SoCs that require the
-workaround, and enabling it doesn't seem to affect R-Car adversely.
-Should we thus enable it unconditionally ? Input from Synopsys would be
-useful.
-
+> There are at least to USB PID/VID variations of this chip: one with a
+> Lite-On ID and one with an Atheros ID.
+> 
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
 > ---
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 4 ++++
->  1 file changed, 4 insertions(+)
+>  drivers/bluetooth/btusb.c | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> index 64c3cf027518..14223c0ee784 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> @@ -1655,6 +1655,8 @@ static void dw_hdmi_clear_overflow(struct dw_hdmi *hdmi)
->  	 * iteration for others.
->  	 * The Amlogic Meson GX SoCs (v2.01a) have been identified as needing
->  	 * the workaround with a single iteration.
-> +	 * The Rockchip RK3288 SoC (v2.00a) and RK3328/RK3399 SoCs (v2.11a) have
-> +	 * been identified as needing the workaround with a single iteration.
->  	 */
+> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> index 470ee68555d9..380e6f38c607 100644
+> --- a/drivers/bluetooth/btusb.c
+> +++ b/drivers/bluetooth/btusb.c
+> @@ -2862,6 +2862,8 @@ static irqreturn_t btusb_oob_wake_handler(int irq, void *priv)
 >  
->  	switch (hdmi->version) {
-> @@ -1663,7 +1665,9 @@ static void dw_hdmi_clear_overflow(struct dw_hdmi *hdmi)
->  		break;
->  	case 0x131a:
->  	case 0x132a:
-> +	case 0x200a:
->  	case 0x201a:
-> +	case 0x211a:
->  	case 0x212a:
->  		count = 1;
->  		break;
+>  static const struct of_device_id btusb_match_table[] = {
+>  	{ .compatible = "usb1286,204e" },
+> +	{ .compatible = "usb0cf3,e300" }, /* QCA6174A */
+> +	{ .compatible = "usb04ca,301a" }, /* QCA6174A (Lite-On) */
+>  	{ }
+>  };
+>  MODULE_DEVICE_TABLE(of, btusb_match_table);
 
--- 
-Regards,
-
-Laurent Pinchart
+Reviewed-by: Matthias Kaehlcke <mka@chromium.org>
