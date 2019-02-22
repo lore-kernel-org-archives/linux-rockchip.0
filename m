@@ -1,186 +1,82 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: [PATCH 3/3] arm64: dts: rockchip: move QCA6174A wakeup pin into its USB node
-Date: Thu, 21 Feb 2019 16:34:03 -0800
-Message-ID: <20190222003403.128243-3-briannorris@chromium.org>
-References: <20190222003403.128243-1-briannorris@chromium.org>
+From: Robert Foss <robert.foss-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: rk3399: Graphical artifacts when running for-next
+Date: Fri, 22 Feb 2019 09:41:43 +0100
+Message-ID: <cc5be462-6684-f945-bee9-5b583aee6f37@collabora.com>
+References: <69ddf17a-232d-fc1f-f6a7-59dbde220395@collabora.com>
+ <2996476.nJxoliyDTa@phil>
+ <48fe80bd-92bf-41fa-f508-941765e4354b@collabora.com>
+ <1654246.IP1FNPqO5J@phil>
+ <ec6768e8-c6ce-b4e6-10b6-2880dbbdff4d@collabora.com>
+ <8d5e0ce1-b1c5-1f4b-fd81-f18f376fc756@collabora.com>
+ <eaec0319d2a79a49a39fc29bfe2473f2cec15b52.camel@collabora.com>
+ <905cfe71-c98d-f73d-8870-623129b5e470@collabora.com>
+ <AM3PR03MB096698953B17A52CA58EF251AC7E0@AM3PR03MB0966.eurprd03.prod.outlook.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190222003403.128243-1-briannorris@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, Matthias Kaehlcke <mka@chromium.org>, Rajat Jain <rajatja@google.com>, Brian Norris <briannorris@chromium.org>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <AM3PR03MB096698953B17A52CA58EF251AC7E0-XQTXrJX/giFAc9da7WRX18eAHadYHfrlvxpqHgZTriW3zl9H0oFU5g@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Tom Cubie <tom-ZvE2cuBqvIQAvxtiuMwx3w@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently, we don't coordinate BT USB activity with our handling of the
-BT out-of-band wake pin, and instead just use gpio-keys. That causes
-problems because we have no way of distinguishing wake activity due to a
-BT device (e.g., mouse) vs. the BT controller (e.g., re-configuring wake
-mask before suspend). This can cause spurious wake events just because
-we, for instance, try to reconfigure the host controller's event mask
-before suspending.
+Hey Jonas,
 
-We can avoid these synchronization problems by handling the BT wake pin
-directly in the btusb driver -- for all activity up until BT controller
-suspend(), we simply listen to normal USB activity (e.g., to know the
-difference between device and host activity); once we're really ready to
-suspend the host controller, there should be no more host activity, and
-only *then* do we unmask the GPIO interrupt.
+On 2/21/19 9:29 PM, Jonas Karlman wrote:
+> On 2019-02-21 20:42, Robert Foss wrote:
+>>
+>> On 2/21/19 8:15 PM, Ezequiel Garcia wrote:
+>>> Folks,
+>>>
+>>> On Thu, 2019-02-21 at 20:08 +0100, Robert Foss wrote:
+>>> [..]
+>>>
+>>> The clock debugging is obviously good research.
+>>>
+>>>>>
+>>>>> Additionally I've had a look at the libdrm modetest util, and it is reporting
+>>>>> far fewer modes than what I would expect on my 4k monitor.
+>>>>>
+>>> That said, this is also worth looking into.
+>>> I'm curious, is the EDID the kernel getting OK?
+>>>
+>> Given that modetest lists way too few modes, I would think
+>> there could be some EDID related issues.
+> 
+> It is more likely the issue is in dw_hdmi_rockchip_mode_valid(), it currently filters out
+> any mode not defined in rockchip_mpll_cfg.
+> That method needs some changes to allow for 4k modes and fractal refresh rates.
+> E.g. for RK3328 it should probably check the inno-hdmi-phy clock rates.
 
-This is already supported by btusb; we just need to describe the wake
-pin in the right node.
 
-We list 2 compatible properties, since both PID/VID pairs show up on
-Scarlet devices, and they're both essentially identical QCA6174A-based
-modules.
+This seemed like a good suggetions, so I disabled the rockchip_mpll_cfg in 
+dw_hdmi_rockchip_mode_valid(), and ran libdrm/modetest. I now have 5 modes.
+But no higher resolution ones, only low resolution ones that don't seem
 
-Also note that the polarity was wrong before: Qualcomm implemented WAKE
-as active high, not active low. We only got away with this because
-gpio-keys always reconfigured us as bi-directional edge-triggered.
+$ modetest
+[..]
+trying to open device 'rockchip'...done
+Encoders:
+id      crtc    type    possible crtcs  possible clones
+44      34      TMDS    0x00000003      0x00000000
 
-Finally, we have an external pull-up and a level-shifter on this line
-(we didn't notice Qualcomm's polarity in the initial design), so we
-can't do pull-down. Switch to pull-none.
-
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
-This patch is also required to make this stable, but since it's not
-really tied to the device tree, and it's an existing bug, I sent it
-separately:
-
-  https://lore.kernel.org/patchwork/patch/1044896/
-  Subject: Bluetooth: btusb: request wake pin with NOAUTOEN
-
- .../dts/rockchip/rk3399-gru-chromebook.dtsi   | 13 ++++++
- .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi | 46 ++++++++++++-------
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  | 13 ------
- 3 files changed, 42 insertions(+), 30 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-index c400be64170e..931640e9aed4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-@@ -200,6 +200,19 @@
- 		pinctrl-0 = <&bl_en>;
- 		pwm-delay-us = <10000>;
- 	};
-+
-+	gpio_keys: gpio-keys {
-+		compatible = "gpio-keys";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_host_wake_l>;
-+
-+		wake_on_bt: wake-on-bt {
-+			label = "Wake-on-Bluetooth";
-+			gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
-+			linux,code = <KEY_WAKEUP>;
-+			wakeup-source;
-+		};
-+	};
- };
- 
- &ppvar_bigcpu {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-index fc50b3ef758c..3e2196c08473 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-@@ -175,6 +175,21 @@
- 		pinctrl-0 = <&dmic_en>;
- 		wakeup-delay-ms = <250>;
- 	};
-+
-+	gpio_keys: gpio-keys {
-+		compatible = "gpio-keys";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pen_eject_odl>;
-+
-+		pen-insert {
-+			label = "Pen Insert";
-+			/* Insert = low, eject = high */
-+			gpios = <&gpio1 1 GPIO_ACTIVE_LOW>;
-+			linux,code = <SW_PEN_INSERTED>;
-+			linux,input-type = <EV_SW>;
-+			wakeup-source;
-+		};
-+	};
- };
- 
- /* pp900_s0 aliases */
-@@ -328,20 +343,6 @@ camera: &i2c7 {
- 		<400000000>;
- };
- 
--&gpio_keys {
--	pinctrl-names = "default";
--	pinctrl-0 = <&bt_host_wake_l>, <&pen_eject_odl>;
--
--	pen-insert {
--		label = "Pen Insert";
--		/* Insert = low, eject = high */
--		gpios = <&gpio1 1 GPIO_ACTIVE_LOW>;
--		linux,code = <SW_PEN_INSERTED>;
--		linux,input-type = <EV_SW>;
--		wakeup-source;
--	};
--};
--
- &i2c_tunnel {
- 	google,remote-bus = <0>;
- };
-@@ -437,8 +438,19 @@ camera: &i2c7 {
- 	status = "okay";
- };
- 
--&wake_on_bt {
--	gpios = <&gpio1 2 GPIO_ACTIVE_LOW>;
-+&usb_host0_ohci {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+
-+	qca_bt: bt@1 {
-+		compatible = "usb0cf3,e300", "usb04ca,301a";
-+		reg = <1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_host_wake_l>;
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <2 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "wakeup";
-+	};
- };
- 
- /* PINCTRL OVERRIDES */
-@@ -455,7 +467,7 @@ camera: &i2c7 {
- };
- 
- &bt_host_wake_l {
--	rockchip,pins = <1 2 RK_FUNC_GPIO &pcfg_pull_up>;
-+	rockchip,pins = <1 2 RK_FUNC_GPIO &pcfg_pull_none>;
- };
- 
- &ec_ap_int_l {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index ea607a601a86..da03fa9c5662 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -269,19 +269,6 @@
- 		#clock-cells = <0>;
- 	};
- 
--	gpio_keys: gpio-keys {
--		compatible = "gpio-keys";
--		pinctrl-names = "default";
--		pinctrl-0 = <&bt_host_wake_l>;
--
--		wake_on_bt: wake-on-bt {
--			label = "Wake-on-Bluetooth";
--			gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
--			linux,code = <KEY_WAKEUP>;
--			wakeup-source;
--		};
--	};
--
- 	max98357a: max98357a {
- 		compatible = "maxim,max98357a";
- 		pinctrl-names = "default";
--- 
-2.21.0.rc0.258.g878e2cd30e-goog
+Connectors:
+id      encoder status          name            size (mm)       modes   encoders
+45      44      connected       HDMI-A-1        0x0             5       44
+   modes:
+         name refresh (Hz) hdisp hss hse htot vdisp vss vse vtot)
+   1024x768 60 1024 1048 1184 1344 768 771 777 806 65000 flags: [..]
+   800x600 60 800 840 968 1056 600 601 605 628 40000 flags: [..]
+   800x600 56 800 824 896 1024 600 601 603 625 36000 flags: [..]
+   848x480 60 848 864 976 1088 480 486 494 517 33750 flags: [..]
+   640x480 60 640 656 752 800 480 490 492 525 25175 flags: [...]
