@@ -1,116 +1,38 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: rk3399: Graphical artifacts when running for-next
-Date: Thu, 21 Feb 2019 23:07:14 +0100
-Message-ID: <2359558.xDfqIedSRi@phil>
-References: <69ddf17a-232d-fc1f-f6a7-59dbde220395@collabora.com>
- <5313650.gBT5ZN9C5b@phil>
- <2aa6011a4bd85573c659fd960d0071718b73e39c.camel@collabora.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: [PATCH 1/3] Bluetooth: btusb: add QCA6174A compatible properties
+Date: Thu, 21 Feb 2019 16:34:01 -0800
+Message-ID: <20190222003403.128243-1-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2aa6011a4bd85573c659fd960d0071718b73e39c.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Robert Foss <robert.foss-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Tom Cubie <tom-ZvE2cuBqvIQAvxtiuMwx3w@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, Matthias Kaehlcke <mka@chromium.org>, Rajat Jain <rajatja@google.com>, Brian Norris <briannorris@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 21. Februar 2019, 22:52:39 CET schrieb Ezequiel Garcia:
-> On Thu, 2019-02-21 at 22:48 +0100, Heiko Stuebner wrote:
-> > Am Donnerstag, 21. Februar 2019, 17:38:25 CET schrieb Robert Foss:
-> > > On 2/21/19 4:53 PM, Heiko Stuebner wrote:
-> > > > Am Donnerstag, 21. Februar 2019, 16:46:19 CET schrieb Robert Foss:
-> > > > > On 2/21/19 2:26 PM, Heiko Stuebner wrote:
-> > > > > > Hi Robert,
-> > > > > > 
-> > > > > > Am Donnerstag, 21. Februar 2019, 11:27:15 CET schrieb Robert Foss:
-> > > > > > > Hey Heiko,
-> > > > > > > 
-> > > > > > > I've just started booting the RK3399 based Radxa Rock Pi 4 on the mainline
-> > > > > > > kernel. Specifically on linux-rockchip/for-next, with an additional patch
-> > > > > > > adding the GPU DT node[1].
-> > > > > > > 
-> > > > > > > Unfortunately I'm seeing an artifact on all display output[2].
-> > > > > > > It, from the VT to 3D content.
-> > > > > > > 
-> > > > > > > Is this an issue that has been encountered before?
-> > > > > > 
-> > > > > > I haven't seen something like this before. I do test graphics
-> > > > > > on most Rockchip socs regularly (right now dw-hdmi only
-> > > > > > on non-rk3399 socs though).
-> > > > > > 
-> > > > > > Did you try full linux-next as well? My for-next branch obviously
-> > > > > > only carries dt/soc-driver stuff but not things like drm-misc.
-> > > > > > 
-> > > > > > One possible issue might be the generated clocks. You could check
-> > > > > > $debug/clk/clk_summary for the dclk_vopX to see if that matches
-> > > > > > the suggested clock for the mode. (For example check the requested
-> > > > > > rate in rockchip_vop.c against what it actually gets).
-> > > > > > 
-> > > > > 
-> > > > > I had a look using the current linux-next/master, and I'm seeing the same results.
-> > > > > Commit: 550f4769c7c4 - Add linux-next specific files for 20190221
-> > > > > 
-> > > > > 
-> > > > > I had also look at the debugfs output:
-> > > > > # cat /sys/kernel/debug/clk/clk_summary | grep dclk_vop
-> > > > >     dclk_vop0_div    0 1 0 27000000  0 0  50000
-> > > > >       dclk_vop0      0 2 0 27000000  0 0 50000
-> > > > >       dclk_vop0_frac 0 0 0 1350000   0 0 50000
-> > > > >     dclk_vop1_div    1 1 0 59400000  0 0 50000
-> > > > >       dclk_vop1      2 2 0 59400000  0 0 50000
-> > > > >       dclk_vop1_frac 0 0 0 2970000   0 0 50000
-> > > > > 
-> > > > > But I can't find a file named rockchip_vop.c exactly. And I'm not entirely sure
-> > > > > about how to decipher the expected values from the driver.
-> > > > 
-> > > > drivers/gpu/drm/rockchip_drm_vop.c (my memory of the filename was faulty
-> > > > it seems). As for comparing to the expected rate, I guess the easiest
-> > > > way would be to just insert a printk into vop_crtc_mode_fixup()
-> > > > after the clk_round_rate call, outputting both the requested and
-> > > > calculated rate and then looking that up in the dmesg.
-> > > 
-> > > dmesg:
-> > > vop_crtc_mode_fixup() mode->clock=65000000  adjusted_mode->clock=61538000
-> > > 
-> > > Is the adjusted clock withing the reasonable range?
-> > 
-> > sadly, I have no real clue. I can cope with the hardware-centric parts like
-> > making encoders somehow work, but I'm way out of my depth when it comes
-> > to all this display-mode-voodoo.
-> > 
-> > > 
-> > > Additionally I've had a look at the libdrm modetest util, and it is reporting
-> > > far fewer modes than what I would expect on my 4k monitor.
-> > > 
-> > > As an added note, I have this board+monitor working using proprietary drivers, 
-> > > and up to 4k resolutions.
-> > 
-> > non-standard resolutions are still a bit of a problem I think.
-> > The vendor kernel (and also the CrOS kernel) does contain quite a number
-> > of hacks to make that work. (hacking up plls and the clock-tree, making
-> > it quite non-generic).
-> > 
-> > But yes, it seems that you only get 3 modes? That are way to few I think.
-> > My display at least  manages to get its 1080p native resolution, but I'm
-> > also in the bind of having only this one display, so cannot really test
-> > the more non-standard (or higher resolution) stuff.
-> > 
-> > Do you happen to have any other display you could attach to just compare
-> > what happens?
-> > 
-> > 
-> 
-> FWIW, I have a Samsung (old?) TV, and on the same board as Robert's,
-> with the same kernel and rootfs, I don't have any issues.
+We may need to specify a GPIO wake pin for this device, so add a
+compatible property for it.
 
-could you also take a look at the timing both requested and real
-clock rate?
+There are at least to USB PID/VID variations of this chip: one with a
+Lite-On ID and one with an Atheros ID.
+
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+---
+ drivers/bluetooth/btusb.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 470ee68555d9..380e6f38c607 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -2862,6 +2862,8 @@ static irqreturn_t btusb_oob_wake_handler(int irq, void *priv)
+ 
+ static const struct of_device_id btusb_match_table[] = {
+ 	{ .compatible = "usb1286,204e" },
++	{ .compatible = "usb0cf3,e300" }, /* QCA6174A */
++	{ .compatible = "usb04ca,301a" }, /* QCA6174A (Lite-On) */
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(of, btusb_match_table);
+-- 
+2.21.0.rc0.258.g878e2cd30e-goog
