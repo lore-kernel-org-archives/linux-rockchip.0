@@ -1,54 +1,101 @@
-From: David Summers <beagleboard@davidjohnsummers.uk>
-Subject: Re: [PATCH 0/3] ARM: dts: rk3288 Tinker Board (S) updates
-Date: Sat, 23 Feb 2019 19:42:59 +0000
-Message-ID: <50952b1a-4645-5648-2732-8051d6ed6af2@davidjohnsummers.uk>
-References: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
+From: Marc Zyngier <marc.zyngier@arm.com>
+Subject: [PATCH 0/4] mwifiex PCI/wake-up interrupt fixes
+Date: Sun, 24 Feb 2019 14:04:22 +0000
+Message-ID: <20190224140426.3267-1-marc.zyngier@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
-Content-Language: en-PH
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+To: Amitkumar Karwar <amitkarwar@gmail.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Ganapathi Bhat <gbhat@marvell.com>, Heiko Stuebner <heiko@sntech.de>, Kalle Valo <kvalo@codeaurora.org>, Nishant Sarmukadam <nishants@marvell.com>, Rob Herring <robh+dt@kernel.org>, Xinming Hu <huxinming820@gmail.com>
+Cc: "David S. Miller" <davem@davemloft.net>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-wireless@vger.kernel.org, netdev@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 17/02/2019 12:15, David Summers wrote:
-> Find in the following patches 3 sets of updates to the rk3288 ASUS
-> Tinker Board (S) device tree. The patches consist of:
->
->         1) Changes to sd card, to remove error
->         2) Add WiFi to the device tree
->         3) Add an outline for Bluetooth to the device tree
->
-> The patches have been developed by both Stefan and myself, and hence
-> have both our sign off.
->
-> The patches have been extensivly tested by TheSaint on ArchLinux Arm
-> Forum, details:
->
-> https://archlinuxarm.org/forum/viewtopic.php?f=44&t=13064&start=90
->
-> Each patch has more details on what is covered.
->
-> David.
->
-Oh yes - should note in this covering patch, that the 1st patch to 
-correct sd card detection; has been updated to v2. Now as this was the 
-first patch applied, it may affect the applying the second (and third 
-patch). So if these need to be updated based on the v2 version of the 
-first patch - just let me know. But whilst sill in the reviewing stage, 
-might as well stick with the original post for wifi.
+For quite some time, I wondered why the PCI mwifiex device built in my
+Chromebook was unable to use the good old legacy interrupts. But as MSIs
+were working fine, I never really bothered investigating. I finally had a
+look, and the result isn't very pretty.
 
-Regards,
+On this machine (rk3399-based kevin), the wake-up interrupt is described as
+such:
 
-David.
+&pci_rootport {
+	mvl_wifi: wifi@0,0 {
+		compatible = "pci1b4b,2b42";
+		reg = <0x83010000 0x0 0x00000000 0x0 0x00100000
+		       0x83010000 0x0 0x00100000 0x0 0x00100000>;
+		interrupt-parent = <&gpio0>;
+		interrupts = <8 IRQ_TYPE_LEVEL_LOW>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&wlan_host_wake_l>;
+		wakeup-source;
+	};
+};
+
+Note how the interrupt is part of the properties directly attached to the
+PCI node. And yet, this interrupt has nothing to do with a PCI legacy
+interrupt, as it is attached to the wake-up widget that bypasses the PCIe RC
+altogether (Yay for the broken design!). This is in total violation of the
+IEEE Std 1275-1994 spec[1], which clearly documents that such interrupt
+specifiers describe the PCI device interrupts, and must obey the
+INT-{A,B,C,D} mapping. Oops!
+
+The net effect of the above is that Linux tries to do something vaguely
+sensible, and uses the same interrupt for both the wake-up widget and the
+PCI device. This doesn't work for two reasons: (1) the wake-up widget grabs
+the interrupt in exclusive mode, and (2) the PCI interrupt is still routed
+to the RC, leading to a screaming interrupt. This simply cannot work.
+
+To sort out this mess, we need to lift the confusion between the two
+interrupts. This is done by extending the DT binding to allow the wake-up
+interrupt to be described in a 'wake-up' subnode, sidestepping the issue
+completely. On my Chromebook, it now looks like this:
+
+&pci_rootport {
+	mvl_wifi: wifi@0,0 {
+		compatible = "pci1b4b,2b42";
+		reg = <0x83010000 0x0 0x00000000 0x0 0x00100000
+		       0x83010000 0x0 0x00100000 0x0 0x00100000>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&wlan_host_wake_l>;
+		wake-up {
+			interrupt-parent = <&gpio0>;
+			interrupts = <8 IRQ_TYPE_LEVEL_LOW>;
+			wakeup-source;
+		};
+	};
+};
+
+The driver is then updated to look for this subnode first, and fallback to
+the original, broken behaviour (spitting out a warning in the offending
+configuration).
+
+For good measure, there are two additional patches:
+
+- The wake-up interrupt requesting is horribly racy, and could lead to
+  unpredictable behaviours. Let's fix that properly.
+
+- A final patch implementing the above transformation for the whole
+  RK3399-based Chromebook range, which all use the same broken
+  configuration.
+
+With all that, I finally have PCI legacy interrupts working with the mwifiex
+driver on my Chromebook.
+
+[1] http://www.devicetree.org/open-firmware/bindings/pci/pci2_1.pdf
+
+Marc Zyngier (4):
+  dt-bindings/marvell-8xxx: Allow wake-up interrupt to be placed in a
+    separate node
+  mwifiex: Fetch wake-up interrupt from 'wake-up' subnode when it exists
+  mwifiex: Flag wake-up interrupt as IRQ_NOAUTOEN rather than disabling
+    it too late
+  arm64: dts: rockchip: gru: Move wifi wake-up interrupt into its own
+    subnode
+
+ .../bindings/net/wireless/marvell-8xxx.txt    | 23 ++++++++++++++++++-
+ .../dts/rockchip/rk3399-gru-chromebook.dtsi   |  8 ++++---
+ drivers/net/wireless/marvell/mwifiex/main.c   | 13 +++++++++--
+ 3 files changed, 38 insertions(+), 6 deletions(-)
+
+-- 
+2.20.1
