@@ -1,191 +1,119 @@
-From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/3 v2] ARM: dts: rk3288-tinker.dtsi: Fix SD card detection
-Date: Mon, 25 Feb 2019 08:59:45 +0000
-Message-ID: <AM3PR03MB0966BAB53F14A0D644EF68FEAC7A0@AM3PR03MB0966.eurprd03.prod.outlook.com>
-References: <20190217121513.22965-2-beagleboard@davidjohnsummers.uk>
- <AM3PR03MB09663F32FC40000E42C1A722AC790@AM3PR03MB0966.eurprd03.prod.outlook.com>
- <e1f1a93e-505b-bf53-a253-5c1ddaeaebf8@davidjohnsummers.uk>
- <1827776.DXBEgXTPyu@diego>
+From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Subject: Re: [PATCH 0/4] mwifiex PCI/wake-up interrupt fixes
+Date: Mon, 25 Feb 2019 13:45:35 +0100
+Message-ID: <CAKv+Gu9OOzOxx0rTAZqM8r4q_hRmOp3b=KP7fwgNeiu67FCApA@mail.gmail.com>
+References: <20190224140426.3267-1-marc.zyngier@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1827776.DXBEgXTPyu@diego>
-Content-Language: en-US
-Content-ID: <FF1DB24E552EEB43B1B683BCF35274A0-yI6K9L9iJZCcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?Windows-1252?Q?Heiko_St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
-Cc: "mark.rutland-5wv7dgnIgG8@public.gmane.org" <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190224140426.3267-1-marc.zyngier@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Marc Zyngier <marc.zyngier@arm.com>
+Cc: Amitkumar Karwar <amitkarwar@gmail.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Ganapathi Bhat <gbhat@marvell.com>, Heiko Stuebner <heiko@sntech.de>, Kalle Valo <kvalo@codeaurora.org>, Nishant Sarmukadam <nishants@marvell.com>, Rob Herring <robh+dt@kernel.org>, Xinming Hu <huxinming820@gmail.com>, Devicetree List <devicetree@vger.kernel.org>, "<netdev@vger.kernel.org>" <netdev@vger.kernel.org>, "<linux-wireless@vger.kernel.org>" <linux-wireless@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2019-02-24 23:54, Heiko St=FCbner wrote:
-> Am Sonntag, 24. Februar 2019, 21:10:50 CET schrieb David Summers:
->> On 24/02/2019 19:56, Jonas Karlman wrote:
->>> On 2019-02-24 20:35, David Summers wrote:
->>>> On 24/02/2019 19:26, Jonas Karlman wrote:
->>>>> On 2019-02-22 19:47, David Summers wrote:
->>>>>> The Problem:
->>>>>>
->>>>>> On ASUS Tinker Board S, when booting from the eMMC, and there is no
->>>>>> card sd slot, then there are constant errors.
->>>>>>
->>>>>> Cause:
->>>>>>
->>>>>> Thanks must go to Robin Murphy @ ARM for idenifying the problem. The
->>>>>> rk808 on the Tinker Board and Tinker Board S has many regulators, one
->>>>>> vccio_sd powers the IO for the sd card. Unfortunatly this is also us=
-ed
->>>>>> in the card detect. Now when no card is install, the regulator is
->>>>>> powered down. This means that the card detect floats, and this means
->>>>>> random card detection.
->>>>>>
->>>>>> The Solution:
->>>>>>
->>>>>> Make sure that the sd IO is always powered, this means card detection
->>>>>> is always active, which is what should be done on a board with an sd
->>>>>> slot, which both the Tinker Board and Tinker Board S are. Hence chan=
-ge
->>>>>> is made to the .dtsi which takes effect on all Tinker Boards as
->>>>>> required.
->>>>>>
->>>>>> The change also adds "regulator-boot-on" the Tinker Board boot from
->>>>>> uboot, and the sd card is always one option. Hence the IO must be
->>>>>> powered in uboot, and so setting this flag.
->>>>>>
->>>>>> Also removed is "disable-wp" the micro sd card which are used have no
->>>>>> write  protection, so the concept doesn't mean anything, and the
->>>>>> Tinker Boards work without this. Hence it is removed to simply.
->>>>>>
->>>>>> This change came from ArchLinux Arm, but we note it is the fix also
->>>>>> used by Armbian:
->>>>>>
->>>>>> https://nam02.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2F=
-githu
->>>>>> b.com%2FMiouyouyou%2FRockMyy%2Fblob%2Fmaster%2Fpatches%2Fkernel%2Fv5=
-.0%
->>>>>> 2FDTS%2F0016-ARM-DTSI-rk3288-tinker-Setting-up-the-SD-regulators.pat=
-ch&
->>>>>> amp;data=3D02%7C01%7C%7Cf5937082939e4163c84b08d69a8f3b61%7C84df9e7fe=
-9f640
->>>>>> afb435aaaaaaaaaaaa%7C1%7C0%7C636866337295767294&amp;sdata=3DtK8QE3bs=
-G9LW%
->>>>>> 2FJcvFzLKa8%2BPj5u%2F8exbEn8m2vqKly0%3D&amp;reserved=3D0
->>>>>>
->>>>>> Signed-off-by: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
->>>>>> ---
->>>>>>
->>>>>>    arch/arm/boot/dts/rk3288-tinker.dtsi | 3 ++-
->>>>>>    1 file changed, 2 insertions(+), 1 deletion(-)
->>>>>>
->>>>>> diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi
->>>>>> b/arch/arm/boot/dts/rk3288-tinker.dtsi index
->>>>>> aa107ee41b8b..6b7e55085b0c 100644
->>>>>> --- a/arch/arm/boot/dts/rk3288-tinker.dtsi
->>>>>> +++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
->>>>>> @@ -254,6 +254,8 @@
->>>>>>
->>>>>>    			};
->>>>>>    			=
+On Sun, 24 Feb 2019 at 15:08, Marc Zyngier <marc.zyngier@arm.com> wrote:
+>
+> For quite some time, I wondered why the PCI mwifiex device built in my
+> Chromebook was unable to use the good old legacy interrupts. But as MSIs
+> were working fine, I never really bothered investigating. I finally had a
+> look, and the result isn't very pretty.
+>
+> On this machine (rk3399-based kevin), the wake-up interrupt is described as
+> such:
+>
+> &pci_rootport {
+>         mvl_wifi: wifi@0,0 {
+>                 compatible = "pci1b4b,2b42";
+>                 reg = <0x83010000 0x0 0x00000000 0x0 0x00100000
+>                        0x83010000 0x0 0x00100000 0x0 0x00100000>;
+>                 interrupt-parent = <&gpio0>;
+>                 interrupts = <8 IRQ_TYPE_LEVEL_LOW>;
+>                 pinctrl-names = "default";
+>                 pinctrl-0 = <&wlan_host_wake_l>;
+>                 wakeup-source;
+>         };
+> };
+>
+> Note how the interrupt is part of the properties directly attached to the
+> PCI node. And yet, this interrupt has nothing to do with a PCI legacy
+> interrupt, as it is attached to the wake-up widget that bypasses the PCIe RC
+> altogether (Yay for the broken design!). This is in total violation of the
+> IEEE Std 1275-1994 spec[1], which clearly documents that such interrupt
+> specifiers describe the PCI device interrupts, and must obey the
+> INT-{A,B,C,D} mapping. Oops!
+>
 
->>>>>>    			vccio_sd: LDO_REG5 {
->>>>>>
->>>>>> +				regulator-always-on;
->>>>>> +				regulator-boot-on;
->>>>>>
->>>>>>    				regulator-min-microvolt =3D <1800000>;
->>>>>>    				regulator-max-microvolt =3D <3300000>;
->>>>>>    				regulator-name =3D "vccio_sd";
->>>>>>
->>>>>> @@ -431,7 +433,6 @@
->>>>>>
->>>>>>    	cap-mmc-highspeed;
->>>>>>    	cap-sd-highspeed;
->>>>>>    	card-detect-delay =3D <200>;
->>>>>>
->>>>>> -	disable-wp;			/* wp not hooked up */
->>>>> I think disable-wp correctly describes that wp is not expected to work
->>>>> and should not be removed.>>> =
+The mapping of legacy PCIe INTx interrupts onto wired system
+interrupts is a property of the PCIe host controller, not of a
+particular PCIe device. So I would argue that the code is broken here
+as well: it should never attempt to interpret 'interrupt' properties
+at the PCI device level as having any bearing on how legacy interrupts
+are routed.
 
->>>>>   From comment in mmc_sd_get_ro():
->>>>> "Some systems don't feature a write-protect pin and don't need one.
->>>>> E.g. because they only have micro-SD card slot. For those systems
->>>>> assume that the SD card is always read-write."
->>>>>
->>>>> Without disable-wp core will call dw_mci_get_ro() to get wp status.
->>>>>
->>>>>
->>>>> This patch also fixes reboot when booting from sd-card and having emmc
->>>>> zeroed out.
->>>>>
->>>>> Tested-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
->>>>>
->>>>> Regards,
->>>>> Jonas
->>>>>
->>>>>>    	pinctrl-names =3D "default";
->>>>>>    	pinctrl-0 =3D <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
->>>>>>    	status =3D "okay";
->>>> Hi Jonas,
->>>>
->>>> Thanks for testing - did you get an error with "disable-wp" ?
->>>>
->>>> We tested this with @TheSaint On ArchLinux Arm, and it worked!
->>>>
->>>> With the "regulator-boot-on" and on reboot, it should keep power on the
->>>> sd card - so reboot should work.
->>> I tested both with and without "disable-wp" removed and both works with=
-out
->>> error. SD-card reboots now works as it should thanks to
->>> "regulator-always-on" and "regulator-boot-on", I only tested using both.
->>>
->>> On a side note I have also been testing [1] to make reboot with UHS sig=
-nal
->>> voltage work and will send out a RFC v2 after I have concluded testing =
-on
->>> my other devices supporting UHS signal voltage.
->>>
->>> [1]
->>> https://github.com/Kwiboo/linux-rockchip/compare/patch-rk-5.x-tinker-uh=
-s%
->>> 5E%5E%5E...patch-rk-5.x-tinker-uhs
->>>
->>> Regards,
->>> Jonas
->> Thanks.
->>
->> Glad your are testing - and I hope the uhs tests work.
->>
->> Alas for us to test uhs - and our user on Arch isn't so experienced. I
->> could push him to try different speeds - but to be honest I expect it to
->> be beyond his comfort zone.
->>
->> But its good to here you confirm "disable-wp" works. To my mind it says
->> we are sure that  all three changes in the patch are are correct.
->>
->> Hopefully this will be straight forward to Heiko to accept. Its the
->> simple patch of the 3 to accept ;)
-> From Jonas' explanation, I'd guess we want disable-wp to stay in the node,
-> and not remove it as it tells the system, that "there is no write protect =
-
-> status available" hence it doesn't need to check for it.
-
-Correct, I may have been unclear ealier but I think that the disable-wp sho=
-uld stay as it correctly describes
-that the board has a microSD slot that do not support write protection.
-
-Regards,
-Jonas
-
+> The net effect of the above is that Linux tries to do something vaguely
+> sensible, and uses the same interrupt for both the wake-up widget and the
+> PCI device. This doesn't work for two reasons: (1) the wake-up widget grabs
+> the interrupt in exclusive mode, and (2) the PCI interrupt is still routed
+> to the RC, leading to a screaming interrupt. This simply cannot work.
+>
+> To sort out this mess, we need to lift the confusion between the two
+> interrupts. This is done by extending the DT binding to allow the wake-up
+> interrupt to be described in a 'wake-up' subnode, sidestepping the issue
+> completely. On my Chromebook, it now looks like this:
+>
+> &pci_rootport {
+>         mvl_wifi: wifi@0,0 {
+>                 compatible = "pci1b4b,2b42";
+>                 reg = <0x83010000 0x0 0x00000000 0x0 0x00100000
+>                        0x83010000 0x0 0x00100000 0x0 0x00100000>;
+>                 pinctrl-names = "default";
+>                 pinctrl-0 = <&wlan_host_wake_l>;
+>                 wake-up {
+>                         interrupt-parent = <&gpio0>;
+>                         interrupts = <8 IRQ_TYPE_LEVEL_LOW>;
+>                         wakeup-source;
+>                 };
+>         };
+> };
+>
+> The driver is then updated to look for this subnode first, and fallback to
+> the original, broken behaviour (spitting out a warning in the offending
+> configuration).
+>
+> For good measure, there are two additional patches:
+>
+> - The wake-up interrupt requesting is horribly racy, and could lead to
+>   unpredictable behaviours. Let's fix that properly.
+>
+> - A final patch implementing the above transformation for the whole
+>   RK3399-based Chromebook range, which all use the same broken
+>   configuration.
+>
+> With all that, I finally have PCI legacy interrupts working with the mwifiex
+> driver on my Chromebook.
+>
+> [1] http://www.devicetree.org/open-firmware/bindings/pci/pci2_1.pdf
+>
+> Marc Zyngier (4):
+>   dt-bindings/marvell-8xxx: Allow wake-up interrupt to be placed in a
+>     separate node
+>   mwifiex: Fetch wake-up interrupt from 'wake-up' subnode when it exists
+>   mwifiex: Flag wake-up interrupt as IRQ_NOAUTOEN rather than disabling
+>     it too late
+>   arm64: dts: rockchip: gru: Move wifi wake-up interrupt into its own
+>     subnode
+>
+>  .../bindings/net/wireless/marvell-8xxx.txt    | 23 ++++++++++++++++++-
+>  .../dts/rockchip/rk3399-gru-chromebook.dtsi   |  8 ++++---
+>  drivers/net/wireless/marvell/mwifiex/main.c   | 13 +++++++++--
+>  3 files changed, 38 insertions(+), 6 deletions(-)
+>
+> --
+> 2.20.1
 >
 >
-> Heiko
->
->
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
