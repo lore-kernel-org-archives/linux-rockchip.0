@@ -1,77 +1,72 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 3/4] mwifiex: Flag wake-up interrupt as IRQ_NOAUTOEN
- rather than disabling it too late
-Date: Tue, 26 Feb 2019 15:34:14 -0800
-Message-ID: <20190226233413.GC174696@google.com>
+Subject: Re: [PATCH 0/4] mwifiex PCI/wake-up interrupt fixes
+Date: Tue, 26 Feb 2019 15:44:23 -0800
+Message-ID: <20190226234422.GD174696@google.com>
 References: <20190224140426.3267-1-marc.zyngier@arm.com>
- <20190224140426.3267-4-marc.zyngier@arm.com>
- <20190226233130.GB174696@google.com>
+ <CAKv+Gu9OOzOxx0rTAZqM8r4q_hRmOp3b=KP7fwgNeiu67FCApA@mail.gmail.com>
+ <5310b73b-4821-6dff-b9c0-34c59fb7fd72@arm.com>
+ <CAKv+Gu_=bQyVZqgUnJm9moCcaCcpDrag6NWGEpaR65=pMiTFJQ@mail.gmail.com>
+ <0c433a70-27f6-76ad-c46c-6015de1ffaa4@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190226233130.GB174696@google.com>
+In-Reply-To: <0c433a70-27f6-76ad-c46c-6015de1ffaa4@arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: Amitkumar Karwar <amitkarwar@gmail.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Ganapathi Bhat <gbhat@marvell.com>, Heiko Stuebner <heiko@sntech.de>, Kalle Valo <kvalo@codeaurora.org>, Nishant Sarmukadam <nishants@marvell.com>, Rob Herring <robh+dt@kernel.org>, Xinming Hu <huxinming820@gmail.com>, "David S. Miller" <davem@davemloft.net>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-wireless@vger.kernel.org, netdev@vger.kernel.org
+Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>, Amitkumar Karwar <amitkarwar@gmail.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Ganapathi Bhat <gbhat@marvell.com>, Heiko Stuebner <heiko@sntech.de>, Kalle Valo <kvalo@codeaurora.org>, Nishant Sarmukadam <nishants@marvell.com>, Rob Herring <robh+dt@kernel.org>, Xinming Hu <huxinming820@gmail.com>, Devicetree List <devicetree@vger.kernel.org>, "<netdev@vger.kernel.org>" <netdev@vger.kernel.org>, "<linux-wireless@vger.kernel.org>" <linux-wireless@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-pci@vger.kernel.org, linux-pm@vger.kernel.o
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Feb 26, 2019 at 03:31:31PM -0800, Brian Norris wrote:
-> Hi Marc,
-> 
-> On Sun, Feb 24, 2019 at 02:04:25PM +0000, Marc Zyngier wrote:
-> > The mwifiex driver makes unsafe assumptions about the state of the
-> > wake-up interrupt. It requests it and only then disable it. Of
-> > course, the interrupt may be screaming for whatever reason at that
-> > time, and the handler will then be called without the interrupt
-> > having been registered with the PM/wakeup subsystem. Oops.
-> > 
-> > The right way to handle this kind of situation is to flag the
-> > interrupt with IRQ_NOAUTOEN before requesting it. It will then
-> > stay disabled until someone (the wake-up subsystem) enables it.
-> > 
-> > Signed-off-by: Marc Zyngier <marc.zyngier@arm.com>
-> 
-> This could be:
-> 
-> Fixes: 853402a00823 ("mwifiex: Enable WoWLAN for both sdio and pcie")
+Hi,
 
-Also, this comes after a different change (that's not quite as clearly a
-backport-able bugfix). Perhaps it should go first in the series?
+On Tue, Feb 26, 2019 at 05:14:00PM +0000, Marc Zyngier wrote:
+> On 26/02/2019 16:21, Ard Biesheuvel wrote:
+> > On Mon, 25 Feb 2019 at 15:53, Marc Zyngier <marc.zyngier@arm.com> wrote:
+> >> It outlines one thing: If you have to interpret per-device PCI
+> >> properties from DT, you're in for serious trouble. I should get some
+> >> better HW.
+> >>
+> > 
+> > Yeah, it obviously makes no sense at all for the interrupt parent of a
+> > PCI device to deviate from the host bridge's interrupt parent, and
+> > it's quite unfortunate that we can't simply ban it now that the cat is
+> > out of the bag already.
+> > 
+> > Arguably, the wake up widget is not part of the PCI device, but I have
+> > no opinion as to whether it is better modeling it as a sub device as
+> > you are proposing or as an entirely separate device referenced via a
+> > phandle.
+> 
+> It is not that clear. The widget seems to be an integral part of the
+> device, as it is the same basic IP that is used for SDIO and USB.
+
+It's not really a widget specific to this IP. It's just a GPIO. It so
+happens that both SDIO and PCIe designs have wanted to use a GPIO for
+wakeup, as many other devices do. (Note: it's not just cheap ARM
+devices; pulling up some Intel Chromebook designs, I see the exact same
+WAKE# GPIO on their PCIe WiFi as well.)
+
+> It looks like the good old pre-PCI-2.2 days, where you had to have a
+> separate cable between your network card and the base-board for the
+> wake-up interrupt to be delivered. Starting with PCI-2.2, the bus can
+> carry the signal just fine. With PCIe, it should just be an interrupt
+> TLP sent to the RC, but that's obviously not within the capabilities of
+> the HW.
+
+You should search the PCI Express specification for WAKE#. There is a
+clearly-documented "side-band wake" feature that is part of the
+standard, as an alternative to in-band TLP wakeup. While you claim this
+is an ancient thing, it in fact still in use on many systems -- it's
+just usually abstracted better by ACPI firmware, whereas the dirty
+laundry is aired a bit more on a Device Tree system. And we got it
+wrong.
+
+> Anyway, it'd be good if the Marvell people could chime in and let us
+> know how they'd prefer to handle this.
+
+I'm not sure this is really a Marvell-specific problem. (Well, except
+for the marvell,wakeup-pin silliness, which is somewhat orthogonal.) In
+fact, if we cared a little more about Wake-on-WiFi, we'd be trying to
+support the same (out-of-band WAKE#) with other WiFi drivers.
 
 Brian
-
-> although, that was just borrowing the existing antipattern from SDIO
-> code..
-> 
-> Reviewed-by: Brian Norris <briannorris@chromium.org>
-> 
-> Thanks.
-> 
-> > ---
-> >  drivers/net/wireless/marvell/mwifiex/main.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/net/wireless/marvell/mwifiex/main.c b/drivers/net/wireless/marvell/mwifiex/main.c
-> > index 2105c2b7c627..82cf35e50579 100644
-> > --- a/drivers/net/wireless/marvell/mwifiex/main.c
-> > +++ b/drivers/net/wireless/marvell/mwifiex/main.c
-> > @@ -1610,6 +1610,7 @@ static void mwifiex_probe_of(struct mwifiex_adapter *adapter)
-> >  			 "wake-up interrupt outside 'wake-up' subnode of %pOF\n",
-> >  			 adapter->dt_node);
-> >  
-> > +	irq_set_status_flags(adapter->irq_wakeup, IRQ_NOAUTOEN);
-> >  	ret = devm_request_irq(dev, adapter->irq_wakeup,
-> >  			       mwifiex_irq_wakeup_handler, IRQF_TRIGGER_LOW,
-> >  			       "wifi_wake", adapter);
-> > @@ -1619,7 +1620,6 @@ static void mwifiex_probe_of(struct mwifiex_adapter *adapter)
-> >  		goto err_exit;
-> >  	}
-> >  
-> > -	disable_irq(adapter->irq_wakeup);
-> >  	if (device_init_wakeup(dev, true)) {
-> >  		dev_err(dev, "fail to init wakeup for mwifiex\n");
-> >  		goto err_exit;
-> > -- 
-> > 2.20.1
-> > 
