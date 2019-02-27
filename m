@@ -1,66 +1,50 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 0/4] mwifiex PCI/wake-up interrupt fixes
-Date: Wed, 27 Feb 2019 12:57:55 -0800
-Message-ID: <20190227205754.GF174696@google.com>
-References: <20190224140426.3267-1-marc.zyngier@arm.com>
- <20190226232822.GA174696@google.com>
- <d67512fe-42b4-513f-d27a-fed85c19e9c2@arm.com>
- <CAKv+Gu_fZK7dUqrrVPCejAZNWyUeMUX2ojQ=vQ3hiMkGF6e6tw@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] Bluetooth: btusb: add QCA6174A compatible properties
+Date: Wed, 27 Feb 2019 13:34:22 -0800
+Message-ID: <CA+ASDXOG43dRtqzZJuA4ixVvfpt-Wd1rUVMMG3QFRnNGOmY5GA@mail.gmail.com>
+References: <20190222225345.69084-1-briannorris@chromium.org> <C908FF06-43F1-4A5C-B80F-0982315DDB6A@holtmann.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAKv+Gu_fZK7dUqrrVPCejAZNWyUeMUX2ojQ=vQ3hiMkGF6e6tw@mail.gmail.com>
+In-Reply-To: <C908FF06-43F1-4A5C-B80F-0982315DDB6A@holtmann.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Cc: Marc Zyngier <marc.zyngier@arm.com>, Ganapathi Bhat <gbhat@marvell.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Devicetree List <devicetree@vger.kernel.org>, Xinming Hu <huxinming820@gmail.com>, "<netdev@vger.kernel.org>" <netdev@vger.kernel.org>, linux-pm <linux-pm@vger.kernel.org>, "<linux-wireless@vger.kernel.org>" <linux-wireless@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Amitkumar Karwar <amitkarwar@gmail.com>, linux-rockchip@lists.infradead.org, Nishant Sarmukadam <nishants@marvell.com>, Rob Herring <robh+dt@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lorenz
+To: Marcel Holtmann <marcel@holtmann.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Johan Hedberg <johan.hedberg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Douglas Anderson <dianders@chromium.org>, devicetree <devicetree@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Bluetooth mailing list <linux-bluetooth@vger.kernel.org>, Linux Kernel <linux-kernel@vger.kernel.org>, Matthias Kaehlcke <mka@chromium.org>, Rajat Jain <rajatja@google.com>, Robin Murphy <robin.murphy@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Ard,
+Hi Marcel,
 
-On Wed, Feb 27, 2019 at 11:16:12AM +0100, Ard Biesheuvel wrote:
-> On Wed, 27 Feb 2019 at 11:02, Marc Zyngier <marc.zyngier@arm.com> wrote:
-> > On 26/02/2019 23:28, Brian Norris wrote:
-> > > You're not the first person to notice this. All the motivations are not
-> > > necessarily painted clearly in their cover letter, but here are some
-> > > previous attempts at solving this problem:
-> > >
-> > > [RFC PATCH v11 0/5] PCI: rockchip: Move PCIe WAKE# handling into pci core
-> > > https://lkml.kernel.org/lkml/20171225114742.18920-1-jeffy.chen@rock-chips.com/
-> > > http://lkml.kernel.org/lkml/20171226023646.17722-1-jeffy.chen@rock-chips.com/
-> > >
-> > > As you can see by the 12th iteration, it wasn't left unsolved for lack
-> > > of trying...
+On Tue, Feb 26, 2019 at 11:53 PM Marcel Holtmann <marcel@holtmann.org> wrote:
+> > We may need to specify a GPIO wake pin for this device, so add a
+> > compatible property for it.
 > >
-> > I wasn't aware of this. That's definitely a better approach than my
-> > hack, and I would really like this to be revived.
+> > There are at least to USB PID/VID variations of this chip: one with a
+> > Lite-On ID and one with an Atheros ID.
 > >
-> 
-> I don't think this approach is entirely sound either.
+> > Signed-off-by: Brian Norris <briannorris@chromium.org>
+> > Reviewed-by: Matthias Kaehlcke <mka@chromium.org>
+> > ---
+> > v2:
+> > * drop leading zeroes from VID, per documented binding
+> > ---
+> > drivers/bluetooth/btusb.c | 2 ++
+> > 1 file changed, 2 insertions(+)
+>
+> all 3 patches have been applied to bluetooth-next tree.
 
-(I'm sure there may be problems with the above series. We probably
-should give it another shot though someday, as I think it's closer to
-the mark.)
+Thanks! I failed to repeat my comment from v1:
 
-> From the side of the PCI device, WAKE# is just a GPIO line, and how it
-> is wired into the system is an entirely separate matter. So I don't
-> think it is justified to overload the notion of legacy interrupts with
-> some other pin that may behave in a way that is vaguely similar to how
-> a true wake-up capable interrupt works.
+"""
+This patch is also required to make this stable, but since it's not
+really tied to the device tree, and it's an existing bug, I sent it
+separately:
 
-I think you've conflated INTx with WAKE# just a bit (and to be fair,
-that's exactly what the bad binding we're trying to replace did,
-accidentally). We're not trying to claim this WAKE# signal replaces the
-typical PCI interrupts, but it *is* an interrupt in some sense --
-"depending on your definition of interrupt", per our IRC conversation ;)
+  https://lore.kernel.org/patchwork/patch/1044896/
+  Subject: Bluetooth: btusb: request wake pin with NOAUTOEN
+"""
 
-> So I'd argue that we should add an optional 'wake-gpio' DT property
-> instead to the generic PCI device binding, and leave the interrupt
-> binding and discovery alone.
+Can you take this one too? Otherwise Scarlet will be less stable
+(possible interrupt storm at boot).
 
-So I think Mark Rutland already shot that one down; it's conceptually an
-interrupt from the device's perspective. We just need to figure out a
-good way of representing it that doesn't stomp on the existing INTx
-definitions.
-
+Regards,
 Brian
