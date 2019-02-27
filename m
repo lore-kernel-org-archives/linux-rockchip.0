@@ -1,124 +1,126 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH] dt-bindings: display: rockchip: add document for rk3066 hdmi
-Date: Wed, 27 Feb 2019 13:06:26 -0600
-Message-ID: <CABGGisyUfENpaHgE3u9ECiMYn-fvC22x3BRKdj2y3eCdgFjKUA@mail.gmail.com>
-References: <20181229133318.18128-1-jbx6244@gmail.com> <20190201123235.1693-1-jbx6244@gmail.com>
- <20190225165923.GA2578@bogus> <b183d099-dcb3-9c3f-7031-2bd54d7fe5bb@gmail.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 0/4] mwifiex PCI/wake-up interrupt fixes
+Date: Wed, 27 Feb 2019 12:51:46 -0800
+Message-ID: <20190227205139.GE174696@google.com>
+References: <20190224140426.3267-1-marc.zyngier@arm.com>
+ <20190226232822.GA174696@google.com>
+ <d67512fe-42b4-513f-d27a-fed85c19e9c2@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <b183d099-dcb3-9c3f-7031-2bd54d7fe5bb@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, hjc@rock-chips.com, airlied@linux.ie, Mark Rutland <mark.rutland@arm.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, devicetree@vger.kernel.org, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-clk <linux-clk@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <d67512fe-42b4-513f-d27a-fed85c19e9c2@arm.com>
+Sender: netdev-owner@vger.kernel.org
+To: Marc Zyngier <marc.zyngier@arm.com>
+Cc: Amitkumar Karwar <amitkarwar@gmail.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Ganapathi Bhat <gbhat@marvell.com>, Heiko Stuebner <heiko@sntech.de>, Kalle Valo <kvalo@codeaurora.org>, Nishant Sarmukadam <nishants@marvell.com>, Rob Herring <robh+dt@kernel.org>, Xinming Hu <huxinming820@gmail.com>, "David S. Miller" <davem@davemloft.net>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-pm@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Tony Lindgren <tony@atomide.com>, Lorenzo Pieralisi <Lorenzo.Pieralisi@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Feb 27, 2019 at 12:04 PM Johan Jonker <jbx6244@gmail.com> wrote:
->
-> Thanks for your advice.
->
-> On 2/25/19 5:59 PM, Rob Herring wrote:> On Fri, Feb 01, 2019 at
-> 01:32:35PM +0100, Johan Jonker wrote:
-> >> This patch adds a binding that describes the HDMI controller for
-> >> rk3066.
-> >
-> > This is not using the DW block like other Rockchip SoCs (IIRC)?
->
-> As outsider it's a little bit difficult to comment on that.
-> Maybe an insider can give a better answer.
-> The rk3066 is there early model.
-> Reusing blocks like in the later improved models wasn't in the fashion
-> yet I think.
-> Also comparing the rk3066-hdmi driver to the inno driver gives too many
-> differences in registers, sound support and irqs.
-> If it was similar they would have combined it in there own kernel.
-> Given the age there won't come any other support for it.
-> This is what we have...
+Hi Marc,
 
-Okay, if it looks different then good enough for me.
+On Wed, Feb 27, 2019 at 10:02:16AM +0000, Marc Zyngier wrote:
+> On 26/02/2019 23:28, Brian Norris wrote:
+> > On Sun, Feb 24, 2019 at 02:04:22PM +0000, Marc Zyngier wrote:
+> >> Note how the interrupt is part of the properties directly attached to the
+> >> PCI node. And yet, this interrupt has nothing to do with a PCI legacy
+> >> interrupt, as it is attached to the wake-up widget that bypasses the PCIe RC
+> >> altogether (Yay for the broken design!). This is in total violation of the
+> >> IEEE Std 1275-1994 spec[1], which clearly documents that such interrupt
+> >> specifiers describe the PCI device interrupts, and must obey the
+> >> INT-{A,B,C,D} mapping. Oops!
+> > 
+> > You're not the first person to notice this. All the motivations are not
+> > necessarily painted clearly in their cover letter, but here are some
+> > previous attempts at solving this problem:
+> > 
+> > [RFC PATCH v11 0/5] PCI: rockchip: Move PCIe WAKE# handling into pci core
+> > https://lkml.kernel.org/lkml/20171225114742.18920-1-jeffy.chen@rock-chips.com/
+> > http://lkml.kernel.org/lkml/20171226023646.17722-1-jeffy.chen@rock-chips.com/
+> > 
+> > As you can see by the 12th iteration, it wasn't left unsolved for lack
+> > of trying...
+> 
+> I wasn't aware of this. That's definitely a better approach than my
+> hack, and I would really like this to be revived.
 
-> >> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> >> ---
-> >>  .../display/rockchip/rk3066_hdmi-rockchip.txt      | 60
-> ++++++++++++++++++++++
-> >
-> > Using the compatible string plus '.txt' is the preferred naming.
->
-> Will change that in V2.
-> rk3066-hdmi      -> rk3066-hdmi-rockchip.txt
->
-> How about the other documents?
-> rk3036-inno-hdmi -> inno_hdmi-rockchip.txt
-> rk3288-dw-hdmi   -> dw_hdmi-rockchip.txt
-> rk3288-dp        -> analogix_dp-rockchip.txt
-> etc.
+Well, in some respects it may be better (mostly, handling in the PCI
+core rather than each driver). But I'm still unsure about the DT
+binding.
 
-Just leave them for now.
+And while perhaps I could find time to revive it, it's probably more
+expedient to kill the bad binding first.
 
-> >>  1 file changed, 60 insertions(+)
-> >>  create mode 100644
-> Documentation/devicetree/bindings/display/rockchip/rk3066_hdmi-rockchip.txt
-> >>
-> >> diff --git
-> a/Documentation/devicetree/bindings/display/rockchip/rk3066_hdmi-rockchip.txt
-> b/Documentation/devicetree/bindings/display/rockchip/rk3066_hdmi-rockchip.txt
-> >> new file mode 100644
-> >> index 000000000..6a8f3754f
-> >> --- /dev/null
-> >> +++
-> b/Documentation/devicetree/bindings/display/rockchip/rk3066_hdmi-rockchip.txt
-> >> @@ -0,0 +1,60 @@
-> >> +Rockchip specific extensions for rk3066 HDMI
-> >> +============================================
-> >> +
-> >> +Required properties:
-> >> +- compatible:
-> >> +    "rockchip,rk3066-hdmi";
-> >> +- reg:
-> >> +    Physical base address and length of the controller's registers.
-> >> +- clocks, clock-names:
-> >> +    Phandle to HDMI controller clock, name should be "hclk".
-> >> +- interrupts:
-> >> +    HDMI interrupt number.
-> >> +- power-domains:
-> >> +    Phandle to the RK3066_PD_VIO power domain.
-> >> +- rockchip,grf:
-> >> +    This soc uses GRF regs to switch the HDMI TX input between vop0 and
-> vop1.
-> >> +- ports:
->
-> Should "ports" be replaced by: "hdmi_in: port"?
-> What is preferred?
->
-> There are two different methods in use:
-> -1
->                 hdmi_in: port {
->
-> -2
->                 ports {
->                         hdmi_in: port {
+> > Frankly, if a proper DT replacement to the admittedly bad binding isn't
+> > agreed upon quickly, I'd be very happy to just have WAKE# support
+> > removed from the DTS for now, and the existing mwifiex binding should
+> > just be removed. (Wake-on-WiFi was never properly vetted on these
+> > platforms anyway.) It mostly serves to just cause problems like you've
+> > noticed.
+> 
+> Agreed. If there is no actual use for this, and that we can build a case
+> for a better solution, let's remove the wakeup support from the Gru DT
+> (it is invalid anyway), and bring it back if and when we get the right
+> level of support.
 
-Generally, you have 'ports' when there is more than one 'port' node
-which you should in this case.
++1
 
-> >> +    Contains one port node with two endpoints, numbered 0 and 1,
-> >> +    connected respectively to vop0 and vop1.
-> >
-> > You should have an output port to an hdmi-connector node (or bridge) as
-> > well.
->
-> Which hdmi-connector node?
-> Could you explane with an example?
+Today, something simple like NL80211_WOWLAN_TRIG_DISCONNECT and
+NL80211_WOWLAN_TRIG_NET_DETECT may work OK, but I'm not confident that
+anything more complicated is really a compelling story today (well,
+outside of Android, which has a massively more complicated--and not
+upstream--setup for this stuff).
 
-grep hdmi-connector in the tree there's lot's of examples.
+> [...]
+> 
+> > One problem Rockchip authors were also trying to resolve here is that
+> > PCIe WAKE# handling should not really be something the PCI device driver
+> > has to handle directly. Despite your complaints about not using in-band
+> > TLP wakeup, a separate WAKE# pin is in fact a documented part of the
+> > PCIe standard, and it so happens that the Rockchip RC does not support
+> > handling TLPs in S3, if you want to have decent power consumption. (Your
+> > "bad hardware" complaints could justifiably fall here, I suppose.)
+> > 
+> > Additionally, I've had pushback from PCI driver authors/maintainers on
+> > adding more special handling for this sort of interrupt property (not
+> > the binding specifically, but just the concept of handling WAKE# in the
+> > driver), as they claim this should be handled by the system firmware,
+> > when they set the appropriate wakeup flags, which filter down to
+> > __pci_enable_wake() -> platform_pci_set_wakeup(). That's how x86 systems
+> > do it (note: I know for a fact that many have a very similar
+> > architecture -- WAKE# is not routed to the RC, because, why does it need
+> > to? and they *don't* use TLP wakeup either -- they just hide it in
+> > firmware better), and it Just Works.
+> 
+> Even on an arm64 platform, there is no reason why a wakeup interrupt
+> couldn't be handled by FW rather than the OS. It just need to be wired
+> to the right spot (so that it generates a secure interrupt that can be
+> handled by FW).
 
-> The Rockchip hdmi nodes I'm aware off only use the port nodes as a way
-> to switch the hdmi input between the vop's.
-> The vop nodes can have multiple outputs.
+True...but then you also need a configuration (enable/disable) API for
+it too. I don't think we have such a per-device API? So it would be a
+pretty similar problem to solve anyway.
 
-Yes, that's the input side. And generally, muxing is represented as
-multiple endpoints.
+> > So, we basically concluded that we should standardize on a way to
+> > describe WAKE# interrupts such that PCI drivers don't have to deal with
+> > it at all, and the PCI core can do it for us. 12 revisions later
+> > and...we still never agreed on a good device tree binding for this.
+> 
+> Is the DT binding the only problem? Do we have an agreement for the core
+> code?
 
-Not all cases of HDMI have defined a connector node as that came along later.
+I'll have to re-read the old threads. I don't really remember where we
+got bogged down... I think one outstanding question was whether WAKE#
+should be associated with the port vs. the device. That might have been
+might fault for confusing that one though.
 
-Rob
+> > IOW, maybe your wake-up sub-node is the best way to side-step the
+> > problems of conflicting with the OF PCI spec. But I'd still really like
+> > to avoid parsing it in mwifiex, if at all possible.
+> 
+> Honestly, my solution is just a terrible hack. I wasn't aware that this
+> was a more general problem, and I'd love it to be addressed in the core
+> PCI code.
+
+Ack, so we agree.
+
+Thanks,
+Brian
