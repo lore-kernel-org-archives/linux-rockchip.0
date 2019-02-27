@@ -1,131 +1,45 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 3/3] mmc: dw_mmc-rockchip: Enable hardware unbusy interrupt
- support
-Date: Wed, 27 Feb 2019 11:36:43 +0800
-Message-ID: <1551238603-82412-4-git-send-email-shawn.lin@rock-chips.com>
-References: <1551238603-82412-1-git-send-email-shawn.lin@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1551238603-82412-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Wen Yang <wen.yang99@zte.com.cn>
+Subject: [PATCH 1/8] PCI: dwc: pci-dra7xx: fix a leaked reference by adding missing of_node_put
+Date: Wed, 27 Feb 2019 12:40:36 +0800
+Message-ID: <1551242443-27300-1-git-send-email-wen.yang99@zte.com.cn>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: benh@kernel.crashing.org
+Cc: paulus@samba.org, mpe@ellerman.id.au, tyreld@linux.vnet.ibm.com, bhelgaas@google.com, linuxppc-dev@lists.ozlabs.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, lorenzo.pieralisi@arm.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, thomas.petazzoni@bootlin.com, shawn.lin@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, minghuan.Lian@nxp.com, mingkai.hu@nxp.com, roy.zang@nxp.com, hayashi.kunihiko@socionext.com, yamada.masahiro@socionext.com, kishon@ti.com, linux-omap@vger.kernel.org, wang.yi59@zte.com.cn, Wen Yang <wen.yang99@zte.com.cn>
 List-Id: linux-rockchip.vger.kernel.org
 
-The new register for controlling hardware unbusy interrupt
-is in 0x120. It looks like:
+The call to of_get_next_child returns a node pointer with refcount
+incremented thus it must be explicitly decremented after the last
+usage.
+irq_domain_add_linear also calls of_node_get to increase refcount,
+so irq_domain will not be affected when it is released.
 
-|------------------------------------------------------------|
-|Bit    |  Attribute |  Reset Value  | Description           |
-|------------------------------------------------------------|
-|31:25  |    RO      |      0x0      |  reserved             |
-|------------------------------------------------------------|
-|24     |    RO      |      0x0      |  rdyint_cnt_finish    |
-|       |            |               |When high, it indicates|
-|	|            |               |that the rdyint counter|
-|       |            |               |is finished.           |
-|------------------------------------------------------------|
-|23:16  |    RO      |      0x0      |  rdyint_cnt_status    |
-|       |            |               |Couner status, reflect |
-|       |            |               |internal counter value.|
-|------------------------------------------------------------|
-|15:9   |    RO      |      0x0      |  reserved             |
-|------------------------------------------------------------|
-|8      |    RW      |      0x0      |  rdyint_gen_working   |
-|       |            |               |When set, IP starts to |
-|       |            |               |count and generate one |
-|       |            |               |rdyint trigger. After  |
-|       |            |               |the rdyint trigger is  |
-|       |            |               |generated, it will be  |
-|       |            |               |cleaned automatically. |
-|       |            |               |Software should set it |
-|       |            |               |again next time.       |
-|------------------------------------------------------------|
-|7:0    |    RW      |      0xff     |   rdyint_gen_maxval   |
-|       |            |               |Max counter value for  |
-|       |            |               |the IP to count when   |
-|       |            |               |rdyint_gen_working is  |
-|       |            |               |set. This counter is   |
-|       |            |               |based on biu_clk.      |
-|------------------------------------------------------------|
+Detected by coccinelle with the following warnings:
+./drivers/pci/controller/dwc/pci-dra7xx.c:252:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 241, but without a corresponding object release within this function.
+./drivers/pci/controller/dwc/pci-dra7xx.c:255:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 241, but without a corresponding object release within this function.
 
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-omap@vger.kernel.org
+Cc: linux-pci@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
 ---
+ drivers/pci/controller/dwc/pci-dra7xx.c | 1 +
+ 1 file changed, 1 insertion(+)
 
- drivers/mmc/host/dw_mmc-rockchip.c | 30 ++++++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
-
-diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-index 8c86a80..85b1e42 100644
---- a/drivers/mmc/host/dw_mmc-rockchip.c
-+++ b/drivers/mmc/host/dw_mmc-rockchip.c
-@@ -20,6 +20,9 @@
- #include "dw_mmc-pltfm.h"
+diff --git a/drivers/pci/controller/dwc/pci-dra7xx.c b/drivers/pci/controller/dwc/pci-dra7xx.c
+index ae84a69..627c91d 100644
+--- a/drivers/pci/controller/dwc/pci-dra7xx.c
++++ b/drivers/pci/controller/dwc/pci-dra7xx.c
+@@ -247,6 +247,7 @@ static int dra7xx_pcie_init_irq_domain(struct pcie_port *pp)
  
- #define RK3288_CLKGEN_DIV       2
-+#define RKMMC_RDYINT_GEN	0x120
-+#define RKMMC_RDYINT_GEN_WORKING BIT(8)
-+#define RKMMC_RDYINT_GEN_MAXVAL GENMASK(7, 0)
- 
- struct dw_mci_rockchip_priv_data {
- 	struct clk		*drv_clk;
-@@ -28,6 +31,23 @@ struct dw_mci_rockchip_priv_data {
- 	int			num_phases;
- };
- 
-+static int dw_mci_rockchip_prepare_hw_unbusy(struct dw_mci *host,
-+					     bool enable)
-+{
-+	u32 reg = readl(host->regs + RKMMC_RDYINT_GEN);
-+
-+	if (enable)
-+		/* Self-clean when generating unbusy int */
-+		reg |= RKMMC_RDYINT_GEN_WORKING;
-+	else
-+		/* Otherwise do it manually to avoid racing condition */
-+		reg &= ~RKMMC_RDYINT_GEN_WORKING;
-+
-+	writel(reg, host->regs + RKMMC_RDYINT_GEN);
-+
-+	return 0;
-+}
-+
- static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
- {
- 	struct dw_mci_rockchip_priv_data *priv = host->priv;
-@@ -301,6 +321,15 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
- 				    "rockchip,rk3288-dw-mshc"))
- 		host->bus_hz /= RK3288_CLKGEN_DIV;
- 
-+	/* Some Rockchip SoCs use hw unbusy int */
-+	if (of_device_is_compatible(host->dev->of_node,
-+				    "rockchip,rk1808-dw-mshc")) {
-+		host->hw_unbusy_int = 16;
-+		writel(~(RKMMC_RDYINT_GEN_WORKING |
-+			 RKMMC_RDYINT_GEN_MAXVAL),
-+		       host->regs + RKMMC_RDYINT_GEN);
-+	}
-+
- 	return 0;
- }
- 
-@@ -322,6 +351,7 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
- 	.set_ios		= dw_mci_rk3288_set_ios,
- 	.execute_tuning		= dw_mci_rk3288_execute_tuning,
- 	.parse_dt		= dw_mci_rk3288_parse_dt,
-+	.prepare_hw_unbusy      = dw_mci_rockchip_prepare_hw_unbusy,
- 	.init			= dw_mci_rockchip_init,
- };
- 
+ 	dra7xx->irq_domain = irq_domain_add_linear(pcie_intc_node, PCI_NUM_INTX,
+ 						   &intx_domain_ops, pp);
++	of_node_put(pcie_intc_node);
+ 	if (!dra7xx->irq_domain) {
+ 		dev_err(dev, "Failed to get a INTx IRQ domain\n");
+ 		return -ENODEV;
 -- 
-1.9.1
+2.9.5
