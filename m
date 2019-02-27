@@ -1,72 +1,483 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 0/4] mwifiex PCI/wake-up interrupt fixes
-Date: Tue, 26 Feb 2019 15:44:23 -0800
-Message-ID: <20190226234422.GD174696@google.com>
-References: <20190224140426.3267-1-marc.zyngier@arm.com>
- <CAKv+Gu9OOzOxx0rTAZqM8r4q_hRmOp3b=KP7fwgNeiu67FCApA@mail.gmail.com>
- <5310b73b-4821-6dff-b9c0-34c59fb7fd72@arm.com>
- <CAKv+Gu_=bQyVZqgUnJm9moCcaCcpDrag6NWGEpaR65=pMiTFJQ@mail.gmail.com>
- <0c433a70-27f6-76ad-c46c-6015de1ffaa4@arm.com>
+From: Shaobo He <shaobo@cs.utah.edu>
+Subject: [PATCH] Remove deductively redundant NULL pointer checks
+Date: Tue, 26 Feb 2019 17:43:57 -0700
+Message-ID: <1551228250-36426-1-git-send-email-shaobo@cs.utah.edu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <0c433a70-27f6-76ad-c46c-6015de1ffaa4@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Marc Zyngier <marc.zyngier@arm.com>
-Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>, Amitkumar Karwar <amitkarwar@gmail.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Ganapathi Bhat <gbhat@marvell.com>, Heiko Stuebner <heiko@sntech.de>, Kalle Valo <kvalo@codeaurora.org>, Nishant Sarmukadam <nishants@marvell.com>, Rob Herring <robh+dt@kernel.org>, Xinming Hu <huxinming820@gmail.com>, Devicetree List <devicetree@vger.kernel.org>, "<netdev@vger.kernel.org>" <netdev@vger.kernel.org>, "<linux-wireless@vger.kernel.org>" <linux-wireless@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-pci@vger.kernel.org, linux-pm@vger.kernel.o
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-media@vger.kernel.org
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Heiko Stuebner <heiko@sntech.de>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Kamil Debski <kamil@wypas.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Andrzej Hajda <a.hajda@samsung.com>, "open list:MEDIA DRIVERS FOR RENESAS - FDP1" <linux-renesas-soc@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Rick Chang <rick.chang@mediatek.com>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Hans Verkuil <hans.verkuil@cisco.com>, Bin Liu <bin.liu@mediatek.com>, Anton Leontiev <scileont@gmail.com>, Kees Cook <keescook@chromium.org>, Benoit Parrot <bparrot@ti.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Jacek Anaszewski <jacek.anaszewski@gmail.>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+The fixes included in this commit essentially removes NULL pointer
+checks on the return values of function `get_queue_ctx` as well as
+`v4l2_m2m_get_vq` defined in file v4l2-mem2mem.c.
 
-On Tue, Feb 26, 2019 at 05:14:00PM +0000, Marc Zyngier wrote:
-> On 26/02/2019 16:21, Ard Biesheuvel wrote:
-> > On Mon, 25 Feb 2019 at 15:53, Marc Zyngier <marc.zyngier@arm.com> wrote:
-> >> It outlines one thing: If you have to interpret per-device PCI
-> >> properties from DT, you're in for serious trouble. I should get some
-> >> better HW.
-> >>
-> > 
-> > Yeah, it obviously makes no sense at all for the interrupt parent of a
-> > PCI device to deviate from the host bridge's interrupt parent, and
-> > it's quite unfortunate that we can't simply ban it now that the cat is
-> > out of the bag already.
-> > 
-> > Arguably, the wake up widget is not part of the PCI device, but I have
-> > no opinion as to whether it is better modeling it as a sub device as
-> > you are proposing or as an entirely separate device referenced via a
-> > phandle.
-> 
-> It is not that clear. The widget seems to be an integral part of the
-> device, as it is the same basic IP that is used for SDIO and USB.
+Function `get_queue_ctx` is very unlikely to return a NULL pointer
+because its return value is an address composed of the base address
+pointed by `m2m_ctx` and an offset of field `out_q_ctx` or `cap_q_ctx`.
+Since the offset of either field is not 0, for the return value to be
+NULL, pointer `m2m_ctx` must be a very large unsigned value such that
+its addition to the offset overflows to NULL which may be undefined
+according to this post:
+https://wdtz.org/catching-pointer-overflow-bugs.html. Moreover, even if
+`m2m_ctx` is NULL, the return value cannot be NULL, either. Therefore, I
+think it is reasonable to conclude that the return value of function
+`get_queue_ctx` cannot be NULL.
 
-It's not really a widget specific to this IP. It's just a GPIO. It so
-happens that both SDIO and PCIe designs have wanted to use a GPIO for
-wakeup, as many other devices do. (Note: it's not just cheap ARM
-devices; pulling up some Intel Chromebook designs, I see the exact same
-WAKE# GPIO on their PCIe WiFi as well.)
+Given the return values of `get_queue_ctx` not being NULL, we can follow
+a similar reasoning to conclude that the return value of
+`v4l2_mem_get_vq` cannot be NULL since its return value is the same
+address as the return value of `get_queue_ctx`. Therefore, this patch
+also removes NULL pointer checks on the return values of
+`v4l2_mem_get_vq`.
 
-> It looks like the good old pre-PCI-2.2 days, where you had to have a
-> separate cable between your network card and the base-board for the
-> wake-up interrupt to be delivered. Starting with PCI-2.2, the bus can
-> carry the signal just fine. With PCIe, it should just be an interrupt
-> TLP sent to the RC, but that's obviously not within the capabilities of
-> the HW.
+Signed-off-by: Shaobo He <shaobo@cs.utah.edu>
+---
+ drivers/media/platform/coda/coda-common.c          |  4 ----
+ drivers/media/platform/imx-pxp.c                   |  7 -------
+ drivers/media/platform/m2m-deinterlace.c           |  7 -------
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c    |  7 -------
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |  7 -------
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 13 -------------
+ drivers/media/platform/mx2_emmaprp.c               |  7 -------
+ drivers/media/platform/rcar_fdp1.c                 |  3 ---
+ drivers/media/platform/rcar_jpu.c                  |  8 --------
+ drivers/media/platform/rockchip/rga/rga.c          |  4 ----
+ drivers/media/platform/s5p-g2d/g2d.c               |  4 ----
+ drivers/media/platform/s5p-jpeg/jpeg-core.c        |  7 -------
+ drivers/media/platform/sh_veu.c                    |  2 --
+ drivers/media/platform/ti-vpe/vpe.c                |  7 -------
+ drivers/media/platform/vicodec/vicodec-core.c      |  5 -----
+ drivers/media/platform/vim2m.c                     |  7 -------
+ drivers/media/v4l2-core/v4l2-mem2mem.c             |  4 ----
+ 17 files changed, 103 deletions(-)
 
-You should search the PCI Express specification for WAKE#. There is a
-clearly-documented "side-band wake" feature that is part of the
-standard, as an alternative to in-band TLP wakeup. While you claim this
-is an ancient thing, it in fact still in use on many systems -- it's
-just usually abstracted better by ACPI firmware, whereas the dirty
-laundry is aired a bit more on a Device Tree system. And we got it
-wrong.
-
-> Anyway, it'd be good if the Marvell people could chime in and let us
-> know how they'd prefer to handle this.
-
-I'm not sure this is really a Marvell-specific problem. (Well, except
-for the marvell,wakeup-pin silliness, which is somewhat orthogonal.) In
-fact, if we cared a little more about Wake-on-WiFi, we'd be trying to
-support the same (out-of-band WAKE#) with other WiFi drivers.
-
-Brian
+diff --git a/drivers/media/platform/coda/coda-common.c b/drivers/media/platform/coda/coda-common.c
+index 7518f01..ee1e05b 100644
+--- a/drivers/media/platform/coda/coda-common.c
++++ b/drivers/media/platform/coda/coda-common.c
+@@ -696,8 +696,6 @@ static int coda_s_fmt(struct coda_ctx *ctx, struct v4l2_format *f,
+ 	struct vb2_queue *vq;
+ 
+ 	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+ 
+ 	q_data = get_q_data(ctx, f->type);
+ 	if (!q_data)
+@@ -817,8 +815,6 @@ static int coda_s_fmt_vid_out(struct file *file, void *priv,
+ 	ctx->quantization = f->fmt.pix.quantization;
+ 
+ 	dst_vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
+-	if (!dst_vq)
+-		return -EINVAL;
+ 
+ 	/*
+ 	 * Setting the capture queue format is not possible while the capture
+diff --git a/drivers/media/platform/imx-pxp.c b/drivers/media/platform/imx-pxp.c
+index c1c2554..d079b3c 100644
+--- a/drivers/media/platform/imx-pxp.c
++++ b/drivers/media/platform/imx-pxp.c
+@@ -1071,13 +1071,8 @@ static int pxp_enum_fmt_vid_out(struct file *file, void *priv,
+ 
+ static int pxp_g_fmt(struct pxp_ctx *ctx, struct v4l2_format *f)
+ {
+-	struct vb2_queue *vq;
+ 	struct pxp_q_data *q_data;
+ 
+-	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+-
+ 	q_data = get_q_data(ctx, f->type);
+ 
+ 	f->fmt.pix.width	= q_data->width;
+@@ -1220,8 +1215,6 @@ static int pxp_s_fmt(struct pxp_ctx *ctx, struct v4l2_format *f)
+ 	struct vb2_queue *vq;
+ 
+ 	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+ 
+ 	q_data = get_q_data(ctx, f->type);
+ 	if (!q_data)
+diff --git a/drivers/media/platform/m2m-deinterlace.c b/drivers/media/platform/m2m-deinterlace.c
+index c62e598..df03ffd 100644
+--- a/drivers/media/platform/m2m-deinterlace.c
++++ b/drivers/media/platform/m2m-deinterlace.c
+@@ -497,13 +497,8 @@ static int vidioc_enum_fmt_vid_out(struct file *file, void *priv,
+ 
+ static int vidioc_g_fmt(struct deinterlace_ctx *ctx, struct v4l2_format *f)
+ {
+-	struct vb2_queue *vq;
+ 	struct deinterlace_q_data *q_data;
+ 
+-	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+-
+ 	q_data = get_q_data(f->type);
+ 
+ 	f->fmt.pix.width	= q_data->width;
+@@ -598,8 +593,6 @@ static int vidioc_s_fmt(struct deinterlace_ctx *ctx, struct v4l2_format *f)
+ 	struct vb2_queue *vq;
+ 
+ 	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+ 
+ 	q_data = get_q_data(f->type);
+ 	if (!q_data)
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+index 2a5d500..2da90ae 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+@@ -271,17 +271,12 @@ static int mtk_jpeg_try_fmt_mplane(struct v4l2_format *f,
+ static int mtk_jpeg_g_fmt_vid_mplane(struct file *file, void *priv,
+ 				     struct v4l2_format *f)
+ {
+-	struct vb2_queue *vq;
+ 	struct mtk_jpeg_q_data *q_data = NULL;
+ 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+ 	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
+ 	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+ 	int i;
+ 
+-	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+-
+ 	q_data = mtk_jpeg_get_q_data(ctx, f->type);
+ 
+ 	memset(pix_mp->reserved, 0, sizeof(pix_mp->reserved));
+@@ -372,8 +367,6 @@ static int mtk_jpeg_s_fmt_mplane(struct mtk_jpeg_ctx *ctx,
+ 	int i;
+ 
+ 	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+ 
+ 	q_data = mtk_jpeg_get_q_data(ctx, f->type);
+ 
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+index ba61964..d4006e5 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+@@ -955,15 +955,8 @@ static int vidioc_vdec_g_fmt(struct file *file, void *priv,
+ {
+ 	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
+ 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+-	struct vb2_queue *vq;
+ 	struct mtk_q_data *q_data;
+ 
+-	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
+-	if (!vq) {
+-		mtk_v4l2_err("no vb2 queue for type=%d", f->type);
+-		return -EINVAL;
+-	}
+-
+ 	q_data = mtk_vdec_get_q_data(ctx, f->type);
+ 
+ 	pix_mp->field = V4L2_FIELD_NONE;
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+index d1f1225..7c54690 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+@@ -430,10 +430,6 @@ static int vidioc_venc_s_fmt_cap(struct file *file, void *priv,
+ 	struct mtk_video_fmt *fmt;
+ 
+ 	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
+-	if (!vq) {
+-		mtk_v4l2_err("fail to get vq");
+-		return -EINVAL;
+-	}
+ 
+ 	if (vb2_is_busy(vq)) {
+ 		mtk_v4l2_err("queue busy");
+@@ -493,10 +489,6 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
+ 	struct v4l2_pix_format_mplane *pix_fmt_mp = &f->fmt.pix_mp;
+ 
+ 	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
+-	if (!vq) {
+-		mtk_v4l2_err("fail to get vq");
+-		return -EINVAL;
+-	}
+ 
+ 	if (vb2_is_busy(vq)) {
+ 		mtk_v4l2_err("queue busy");
+@@ -554,14 +546,9 @@ static int vidioc_venc_g_fmt(struct file *file, void *priv,
+ {
+ 	struct v4l2_pix_format_mplane *pix = &f->fmt.pix_mp;
+ 	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
+-	struct vb2_queue *vq;
+ 	struct mtk_q_data *q_data;
+ 	int i;
+ 
+-	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+-
+ 	q_data = mtk_venc_get_q_data(ctx, f->type);
+ 
+ 	pix->width = q_data->coded_width;
+diff --git a/drivers/media/platform/mx2_emmaprp.c b/drivers/media/platform/mx2_emmaprp.c
+index 27b078c..1366fde 100644
+--- a/drivers/media/platform/mx2_emmaprp.c
++++ b/drivers/media/platform/mx2_emmaprp.c
+@@ -436,13 +436,8 @@ static int vidioc_enum_fmt_vid_out(struct file *file, void *priv,
+ 
+ static int vidioc_g_fmt(struct emmaprp_ctx *ctx, struct v4l2_format *f)
+ {
+-	struct vb2_queue *vq;
+ 	struct emmaprp_q_data *q_data;
+ 
+-	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+-
+ 	q_data = get_q_data(ctx, f->type);
+ 
+ 	f->fmt.pix.width	= q_data->width;
+@@ -545,8 +540,6 @@ static int vidioc_s_fmt(struct emmaprp_ctx *ctx, struct v4l2_format *f)
+ 	int ret;
+ 
+ 	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+ 
+ 	q_data = get_q_data(ctx, f->type);
+ 	if (!q_data)
+diff --git a/drivers/media/platform/rcar_fdp1.c b/drivers/media/platform/rcar_fdp1.c
+index 6bda1ee..ef747d3 100644
+--- a/drivers/media/platform/rcar_fdp1.c
++++ b/drivers/media/platform/rcar_fdp1.c
+@@ -1407,9 +1407,6 @@ static int fdp1_g_fmt(struct file *file, void *priv, struct v4l2_format *f)
+ 	struct fdp1_q_data *q_data;
+ 	struct fdp1_ctx *ctx = fh_to_ctx(priv);
+ 
+-	if (!v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type))
+-		return -EINVAL;
+-
+ 	q_data = get_q_data(ctx, f->type);
+ 	f->fmt.pix_mp = q_data->format;
+ 
+diff --git a/drivers/media/platform/rcar_jpu.c b/drivers/media/platform/rcar_jpu.c
+index 1dfd2eb..a91664c 100644
+--- a/drivers/media/platform/rcar_jpu.c
++++ b/drivers/media/platform/rcar_jpu.c
+@@ -839,9 +839,6 @@ static int jpu_try_fmt(struct file *file, void *priv, struct v4l2_format *f)
+ {
+ 	struct jpu_ctx *ctx = fh_to_ctx(priv);
+ 
+-	if (!v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type))
+-		return -EINVAL;
+-
+ 	return __jpu_try_fmt(ctx, NULL, &f->fmt.pix_mp, f->type);
+ }
+ 
+@@ -855,8 +852,6 @@ static int jpu_s_fmt(struct file *file, void *priv, struct v4l2_format *f)
+ 	int ret;
+ 
+ 	vq = v4l2_m2m_get_vq(m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+ 
+ 	if (vb2_is_busy(vq)) {
+ 		v4l2_err(&ctx->jpu->v4l2_dev, "%s queue busy\n", __func__);
+@@ -880,9 +875,6 @@ static int jpu_g_fmt(struct file *file, void *priv, struct v4l2_format *f)
+ 	struct jpu_q_data *q_data;
+ 	struct jpu_ctx *ctx = fh_to_ctx(priv);
+ 
+-	if (!v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type))
+-		return -EINVAL;
+-
+ 	q_data = jpu_get_q_data(ctx, f->type);
+ 	f->fmt.pix_mp = q_data->format;
+ 
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index 5c65328..74b8e9d 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -470,12 +470,8 @@ static int vidioc_enum_fmt(struct file *file, void *prv, struct v4l2_fmtdesc *f)
+ static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ {
+ 	struct rga_ctx *ctx = prv;
+-	struct vb2_queue *vq;
+ 	struct rga_frame *frm;
+ 
+-	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+ 	frm = rga_get_frame(ctx, f->type);
+ 	if (IS_ERR(frm))
+ 		return PTR_ERR(frm);
+diff --git a/drivers/media/platform/s5p-g2d/g2d.c b/drivers/media/platform/s5p-g2d/g2d.c
+index 57ab1d1..dda4159 100644
+--- a/drivers/media/platform/s5p-g2d/g2d.c
++++ b/drivers/media/platform/s5p-g2d/g2d.c
+@@ -319,12 +319,8 @@ static int vidioc_enum_fmt(struct file *file, void *prv, struct v4l2_fmtdesc *f)
+ static int vidioc_g_fmt(struct file *file, void *prv, struct v4l2_format *f)
+ {
+ 	struct g2d_ctx *ctx = prv;
+-	struct vb2_queue *vq;
+ 	struct g2d_frame *frm;
+ 
+-	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+ 	frm = get_frame(ctx, f->type);
+ 	if (IS_ERR(frm))
+ 		return PTR_ERR(frm);
+diff --git a/drivers/media/platform/s5p-jpeg/jpeg-core.c b/drivers/media/platform/s5p-jpeg/jpeg-core.c
+index 3f9000b..4884725 100644
+--- a/drivers/media/platform/s5p-jpeg/jpeg-core.c
++++ b/drivers/media/platform/s5p-jpeg/jpeg-core.c
+@@ -1359,15 +1359,10 @@ static struct s5p_jpeg_q_data *get_q_data(struct s5p_jpeg_ctx *ctx,
+ 
+ static int s5p_jpeg_g_fmt(struct file *file, void *priv, struct v4l2_format *f)
+ {
+-	struct vb2_queue *vq;
+ 	struct s5p_jpeg_q_data *q_data = NULL;
+ 	struct v4l2_pix_format *pix = &f->fmt.pix;
+ 	struct s5p_jpeg_ctx *ct = fh_to_ctx(priv);
+ 
+-	vq = v4l2_m2m_get_vq(ct->fh.m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+-
+ 	if (f->type == V4L2_BUF_TYPE_VIDEO_CAPTURE &&
+ 	    ct->mode == S5P_JPEG_DECODE && !ct->hdr_parsed)
+ 		return -EINVAL;
+@@ -1620,8 +1615,6 @@ static int s5p_jpeg_s_fmt(struct s5p_jpeg_ctx *ct, struct v4l2_format *f)
+ 	unsigned int f_type;
+ 
+ 	vq = v4l2_m2m_get_vq(ct->fh.m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+ 
+ 	q_data = get_q_data(ct, f->type);
+ 	BUG_ON(q_data == NULL);
+diff --git a/drivers/media/platform/sh_veu.c b/drivers/media/platform/sh_veu.c
+index 09ae64a..6d59e16 100644
+--- a/drivers/media/platform/sh_veu.c
++++ b/drivers/media/platform/sh_veu.c
+@@ -554,8 +554,6 @@ static int sh_veu_s_fmt(struct sh_veu_file *veu_file, struct v4l2_format *f)
+ 		return ret;
+ 
+ 	vq = v4l2_m2m_get_vq(veu->m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+ 
+ 	if (vb2_is_busy(vq)) {
+ 		v4l2_err(&veu_file->veu_dev->v4l2_dev, "%s queue busy\n", __func__);
+diff --git a/drivers/media/platform/ti-vpe/vpe.c b/drivers/media/platform/ti-vpe/vpe.c
+index d70871d0..1620168 100644
+--- a/drivers/media/platform/ti-vpe/vpe.c
++++ b/drivers/media/platform/ti-vpe/vpe.c
+@@ -1537,14 +1537,9 @@ static int vpe_g_fmt(struct file *file, void *priv, struct v4l2_format *f)
+ {
+ 	struct v4l2_pix_format_mplane *pix = &f->fmt.pix_mp;
+ 	struct vpe_ctx *ctx = file2ctx(file);
+-	struct vb2_queue *vq;
+ 	struct vpe_q_data *q_data;
+ 	int i;
+ 
+-	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+-
+ 	q_data = get_q_data(ctx, f->type);
+ 
+ 	pix->width = q_data->width;
+@@ -1714,8 +1709,6 @@ static int __vpe_s_fmt(struct vpe_ctx *ctx, struct v4l2_format *f)
+ 	int i;
+ 
+ 	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+ 
+ 	if (vb2_is_busy(vq)) {
+ 		vpe_err(ctx->dev, "queue busy\n");
+diff --git a/drivers/media/platform/vicodec/vicodec-core.c b/drivers/media/platform/vicodec/vicodec-core.c
+index 0d7876f..9a2ab8b 100644
+--- a/drivers/media/platform/vicodec/vicodec-core.c
++++ b/drivers/media/platform/vicodec/vicodec-core.c
+@@ -445,16 +445,11 @@ static int vidioc_enum_fmt_vid_out(struct file *file, void *priv,
+ 
+ static int vidioc_g_fmt(struct vicodec_ctx *ctx, struct v4l2_format *f)
+ {
+-	struct vb2_queue *vq;
+ 	struct vicodec_q_data *q_data;
+ 	struct v4l2_pix_format_mplane *pix_mp;
+ 	struct v4l2_pix_format *pix;
+ 	const struct v4l2_fwht_pixfmt_info *info;
+ 
+-	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+-
+ 	q_data = get_q_data(ctx, f->type);
+ 	info = q_data->info;
+ 
+diff --git a/drivers/media/platform/vim2m.c b/drivers/media/platform/vim2m.c
+index 89d9c4c..6520719 100644
+--- a/drivers/media/platform/vim2m.c
++++ b/drivers/media/platform/vim2m.c
+@@ -484,13 +484,8 @@ static int vidioc_enum_fmt_vid_out(struct file *file, void *priv,
+ 
+ static int vidioc_g_fmt(struct vim2m_ctx *ctx, struct v4l2_format *f)
+ {
+-	struct vb2_queue *vq;
+ 	struct vim2m_q_data *q_data;
+ 
+-	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+-
+ 	q_data = get_q_data(ctx, f->type);
+ 
+ 	f->fmt.pix.width	= q_data->width;
+@@ -595,8 +590,6 @@ static int vidioc_s_fmt(struct vim2m_ctx *ctx, struct v4l2_format *f)
+ 	struct vb2_queue *vq;
+ 
+ 	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+-	if (!vq)
+-		return -EINVAL;
+ 
+ 	q_data = get_q_data(ctx, f->type);
+ 	if (!q_data)
+diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
+index 5bbdec5..1bbf4b0 100644
+--- a/drivers/media/v4l2-core/v4l2-mem2mem.c
++++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
+@@ -124,8 +124,6 @@ struct vb2_queue *v4l2_m2m_get_vq(struct v4l2_m2m_ctx *m2m_ctx,
+ 	struct v4l2_m2m_queue_ctx *q_ctx;
+ 
+ 	q_ctx = get_queue_ctx(m2m_ctx, type);
+-	if (!q_ctx)
+-		return NULL;
+ 
+ 	return &q_ctx->q;
+ }
+@@ -965,8 +963,6 @@ void v4l2_m2m_buf_queue(struct v4l2_m2m_ctx *m2m_ctx,
+ 	unsigned long flags;
+ 
+ 	q_ctx = get_queue_ctx(m2m_ctx, vbuf->vb2_buf.vb2_queue->type);
+-	if (!q_ctx)
+-		return;
+ 
+ 	spin_lock_irqsave(&q_ctx->rdy_spinlock, flags);
+ 	list_add_tail(&b->list, &q_ctx->rdy_queue);
+-- 
+1.9.1
