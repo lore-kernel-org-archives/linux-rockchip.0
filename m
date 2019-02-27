@@ -1,111 +1,140 @@
-From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [RFC] mmc: core: set initial signal voltage on power off
-Date: Wed, 27 Feb 2019 09:47:59 +0000
-Message-ID: <AM3PR03MB09663CB7F05563E9143611EDAC740@AM3PR03MB0966.eurprd03.prod.outlook.com>
-References: <AM3PR03MB09664161A7FA2BD68B2800A7AC620@AM3PR03MB0966.eurprd03.prod.outlook.com>
- <CAPDyKFpfjKbbCF=wyERXpcLk2LDJD6zsPHTYegwtHrv5qPv8HA@mail.gmail.com>
- <AM3PR03MB09666AFE4FC60E324C7EBDA8AC7C0@AM3PR03MB0966.eurprd03.prod.outlook.com>
- <CAPDyKFpCTN1CfMvSWAPC8CyASjF=uxRhf8KWcU8MRRsUjUbKHQ@mail.gmail.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
+Subject: Re: [PATCH 0/4] mwifiex PCI/wake-up interrupt fixes
+Date: Wed, 27 Feb 2019 10:02:16 +0000
+Message-ID: <d67512fe-42b4-513f-d27a-fed85c19e9c2@arm.com>
+References: <20190224140426.3267-1-marc.zyngier@arm.com>
+ <20190226232822.GA174696@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAPDyKFpCTN1CfMvSWAPC8CyASjF=uxRhf8KWcU8MRRsUjUbKHQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190226232822.GA174696@google.com>
 Content-Language: en-US
-Content-ID: <A95FBF1DDBF97C4DBE8DED78C65A226A-yI6K9L9iJZCcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>
+Cc: Amitkumar Karwar <amitkarwar@gmail.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Ganapathi Bhat <gbhat@marvell.com>, Heiko Stuebner <heiko@sntech.de>, Kalle Valo <kvalo@codeaurora.org>, Nishant Sarmukadam <nishants@marvell.com>, Rob Herring <robh+dt@kernel.org>, Xinming Hu <huxinming820@gmail.com>, "David S. Miller" <davem@davemloft.net>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-pm@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Tony Lindgren <tony@atomide.com>, Lorenzo Pieralisi <Lorenzo.Pieralisi@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2019-02-25 17:19, Ulf Hansson wrote:
-> On Tue, 19 Feb 2019 at 11:12, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org> wrote:
->> On 2019-02-18 12:54, Ulf Hansson wrote:
->>> On Sun, 17 Feb 2019 at 23:14, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org> wrote:
->>>> Some boards have SD card connectors where the power rail cannot be switched
->>>> off by the driver. If the card has not been power cycled, it may still be
->>>> using 1.8V signaling after a warm re-boot. Bootroms expecting 3.3V signaling
->>>> will fail to boot from a UHS card that continue to use 1.8V signaling.
->>> Is the problem limited to a "warm manual re-boot" or does it exists
->>> for an emergency reboot as well!?
->> I think the issue may also exist for emergency reboot based on the Asus Tinker Board kernel commit at [1],
->> not sure how this could be solved in an acceptable way. Personally I do not have sysrq enabled on my boards.
++ Lorenzo
+
+Hi Brian,
+
+On 26/02/2019 23:28, Brian Norris wrote:
+> + others
+> 
+> Hi Marc,
+> 
+> Thanks for the series. I have a few bits of history to add to this, and
+> some comments.
+> 
+> On Sun, Feb 24, 2019 at 02:04:22PM +0000, Marc Zyngier wrote:
+>> For quite some time, I wondered why the PCI mwifiex device built in my
+>> Chromebook was unable to use the good old legacy interrupts. But as MSIs
+>> were working fine, I never really bothered investigating. I finally had a
+>> look, and the result isn't very pretty.
 >>
->> [1] https://github.com/TinkerBoard/debian_kernel/commit/1e8970dbfc20166788e3428ec5203f7673f6087b
+>> On this machine (rk3399-based kevin), the wake-up interrupt is described as
+>> such:
 >>
-> For eMMC we have pwrseq_emmc.c, where we register a restart handler to
-> cover these cases. Not very nice, but the best we could come up with.
-
-Thanks, I will see if I can adopt something similar in a followup patch.
-
->
->>>> Set initial signal voltage in mmc_power_off() to allow re-boot to function.
->>> I think this sounds like a reasonable way forward, to improve the situation.
->> I may have exaggerated the issue in the above line, the board will reboot as long as
->> UHS 1.8V signaling is not used, current upstream device trees is missing the sd-uhs-* flags
->> and will thus reboot as they are capped at sd high speed and 3.3V signaling.
-> Okay, I see.
->
->>>> This fixes re-boot with UHS cards on Asus Tinker Board (Rockchip RK3288),
->>>> same issue have been seen on some Rockchip RK3399 boards.
->>>>
->>>> I am sending this as a RFC because I have no insights into SD/MMC subsystem,
->>>> this change fix a re-boot issue on my boards and does not break emmc/sdio.
->>>> Is this an acceptable workaround? Any advice is appreciated.
->>>>
->>>> Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
->>>> ---
->>>>  drivers/mmc/core/core.c | 8 ++++++++
->>>>  1 file changed, 8 insertions(+)
->>>>
->>>> diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
->>>> index 5bd58b95d318..69d7021916ae 100644
->>>> --- a/drivers/mmc/core/core.c
->>>> +++ b/drivers/mmc/core/core.c
->>>> @@ -1684,6 +1684,14 @@ void mmc_power_off(struct mmc_host *host)
->>>>         if (host->ios.power_mode == MMC_POWER_OFF)
->>>>                 return;
->>>>
->>>> +       mmc_set_initial_signal_voltage(host);
->>> I would rather try to move this below mmc_set_initial_state() a few
->>> lines below in mmc_power_off(). To me, it seems safer to do the
->>> regular power off thingy first.
->>>
->>> Additionally, I would drop the added delay below, as there is already
->>> a delay after calling mmc_set_initial_state() and I think/hope that
->>> should be sufficient.
->> Thanks for the suggestion, the reason I put the mmc_set_initial_signal_voltage() call
->> before mmc_pwrseq_power_off() call was to do it in reverse order of mmc_power_on(),
+>> &pci_rootport {
+>> 	mvl_wifi: wifi@0,0 {
+>> 		compatible = "pci1b4b,2b42";
+>> 		reg = <0x83010000 0x0 0x00000000 0x0 0x00100000
+>> 		       0x83010000 0x0 0x00100000 0x0 0x00100000>;
+>> 		interrupt-parent = <&gpio0>;
+>> 		interrupts = <8 IRQ_TYPE_LEVEL_LOW>;
+>> 		pinctrl-names = "default";
+>> 		pinctrl-0 = <&wlan_host_wake_l>;
+>> 		wakeup-source;
+>> 	};
+>> };
 >>
->> I will run some more tests on my boards to see if moving it below mmc_set_initial_state()
->> also makes it possible to reboot with UHS cards using 1.8V signaling enabled.
-> Great, so I am expecting an update from you, thanks!
+>> Note how the interrupt is part of the properties directly attached to the
+>> PCI node. And yet, this interrupt has nothing to do with a PCI legacy
+>> interrupt, as it is attached to the wake-up widget that bypasses the PCIe RC
+>> altogether (Yay for the broken design!). This is in total violation of the
+>> IEEE Std 1275-1994 spec[1], which clearly documents that such interrupt
+>> specifiers describe the PCI device interrupts, and must obey the
+>> INT-{A,B,C,D} mapping. Oops!
+> 
+> You're not the first person to notice this. All the motivations are not
+> necessarily painted clearly in their cover letter, but here are some
+> previous attempts at solving this problem:
+> 
+> [RFC PATCH v11 0/5] PCI: rockchip: Move PCIe WAKE# handling into pci core
+> https://lkml.kernel.org/lkml/20171225114742.18920-1-jeffy.chen@rock-chips.com/
+> http://lkml.kernel.org/lkml/20171226023646.17722-1-jeffy.chen@rock-chips.com/
+> 
+> As you can see by the 12th iteration, it wasn't left unsolved for lack
+> of trying...
 
-I have done some more testing and concluded that mmc_set_initial_signal_voltage() must be called
-before host->ios.vdd = 0 statement or the Tinker Board would not reboot from sd-card when 1.8V signal voltage is used.
-The sleep was not needed on my device.
+I wasn't aware of this. That's definitely a better approach than my
+hack, and I would really like this to be revived.
 
-I still want to do more tests on my other rockchip boards that have UHS support and is not enabled in device tree.
-Currently I test [1] where vccio_sd regulator-always-on/regulator-boot-on ensures the IO regulator is not powered off,
-sd-uhs-sdr* flags to enable UHS and mmc_set_initial_signal_voltage() to change IO regulator to 3.3V before reboot.
+> 
+> Frankly, if a proper DT replacement to the admittedly bad binding isn't
+> agreed upon quickly, I'd be very happy to just have WAKE# support
+> removed from the DTS for now, and the existing mwifiex binding should
+> just be removed. (Wake-on-WiFi was never properly vetted on these
+> platforms anyway.) It mostly serves to just cause problems like you've
+> noticed.
 
-I will follow up with more test results next week after I have tested on other rockchip rk3328/rk3399 devices.
+Agreed. If there is no actual use for this, and that we can build a case
+for a better solution, let's remove the wakeup support from the Gru DT
+(it is invalid anyway), and bring it back if and when we get the right
+level of support.
 
-[1] https://github.com/Kwiboo/linux-rockchip/compare/v5.0-rc7...patch-rk-5.x-tinker-uhs
+[...]
 
-Regards,
-Jonas
+> One problem Rockchip authors were also trying to resolve here is that
+> PCIe WAKE# handling should not really be something the PCI device driver
+> has to handle directly. Despite your complaints about not using in-band
+> TLP wakeup, a separate WAKE# pin is in fact a documented part of the
+> PCIe standard, and it so happens that the Rockchip RC does not support
+> handling TLPs in S3, if you want to have decent power consumption. (Your
+> "bad hardware" complaints could justifiably fall here, I suppose.)
+> 
+> Additionally, I've had pushback from PCI driver authors/maintainers on
+> adding more special handling for this sort of interrupt property (not
+> the binding specifically, but just the concept of handling WAKE# in the
+> driver), as they claim this should be handled by the system firmware,
+> when they set the appropriate wakeup flags, which filter down to
+> __pci_enable_wake() -> platform_pci_set_wakeup(). That's how x86 systems
+> do it (note: I know for a fact that many have a very similar
+> architecture -- WAKE# is not routed to the RC, because, why does it need
+> to? and they *don't* use TLP wakeup either -- they just hide it in
+> firmware better), and it Just Works.
 
->
-> [...]
->
-> Kind regards
-> Uffe
+Even on an arm64 platform, there is no reason why a wakeup interrupt
+couldn't be handled by FW rather than the OS. It just need to be wired
+to the right spot (so that it generates a secure interrupt that can be
+handled by FW).
+
+> So, we basically concluded that we should standardize on a way to
+> describe WAKE# interrupts such that PCI drivers don't have to deal with
+> it at all, and the PCI core can do it for us. 12 revisions later
+> and...we still never agreed on a good device tree binding for this.
+
+Is the DT binding the only problem? Do we have an agreement for the core
+code?
+
+> IOW, maybe your wake-up sub-node is the best way to side-step the
+> problems of conflicting with the OF PCI spec. But I'd still really like
+> to avoid parsing it in mwifiex, if at all possible.
+
+Honestly, my solution is just a terrible hack. I wasn't aware that this
+was a more general problem, and I'd love it to be addressed in the core
+PCI code.
+
+> (We'd still be left with the marvell,wakeup-pin propery to parse
+> specifically in mwifiex, which sadly has to exist because....well,
+> Samsung decided to do chip-on-board, and then they failed to use the
+> correct pin on Marvell's side when wiring up WAKE#. Sigh.)
+
+Oh well...
+
+Thanks,
+
+	M.
+-- 
+Jazz is not dead. It just smells funny...
