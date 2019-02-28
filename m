@@ -1,79 +1,85 @@
-From: "Rafael J. Wysocki" <rafael@kernel.org>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Subject: Re: [PATCH 0/4] mwifiex PCI/wake-up interrupt fixes
-Date: Thu, 28 Feb 2019 00:03:56 +0100
-Message-ID: <CAJZ5v0gZFDdtbKQ6y52x+X8yoiPhP6BhGYZO=R_varx2nwuv5g@mail.gmail.com>
-References: <20190224140426.3267-1-marc.zyngier@arm.com> <20190226232822.GA174696@google.com>
- <d67512fe-42b4-513f-d27a-fed85c19e9c2@arm.com> <CAKv+Gu_fZK7dUqrrVPCejAZNWyUeMUX2ojQ=vQ3hiMkGF6e6tw@mail.gmail.com>
+Date: Wed, 27 Feb 2019 18:29:21 -0800
+Message-ID: <CA+ASDXNT9Taqfoz7R1Z926Vi1fMNNLYg5vqcZTw2m6JvXk+75w@mail.gmail.com>
+References: <20190224140426.3267-1-marc.zyngier@arm.com>
+ <20190226232822.GA174696@google.com>
+ <d67512fe-42b4-513f-d27a-fed85c19e9c2@arm.com>
+ <CAKv+Gu_fZK7dUqrrVPCejAZNWyUeMUX2ojQ=vQ3hiMkGF6e6tw@mail.gmail.com>
  <20190227205754.GF174696@google.com>
+ <CAJZ5v0gZFDdtbKQ6y52x+X8yoiPhP6BhGYZO=R_varx2nwuv5g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190227205754.GF174696@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>, Ganapathi Bhat <gbhat@marvell.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Devicetree List <devicetree@vger.kernel.org>, Xinming Hu <huxinming820@gmail.com>, "<netdev@vger.kernel.org>" <netdev@vger.kernel.org>, linux-pm <linux-pm@vger.kernel.org>, "<linux-wireless@vger.kernel.org>" <linux-wireless@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Amitkumar Karwar <amitkarwar@gmail.com>, linux-rockchip@lists.infradead.org, Nishant Sarmukadam <nishants@marvell.com>, Rob Herring <robh+dt@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Enric
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAJZ5v0gZFDdtbKQ6y52x+X8yoiPhP6BhGYZO=R_varx2nwuv5g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: "Rafael J. Wysocki" <rafael-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tony Lindgren <tony-4v6yS6AI5VpBDgjK7y7TUQ@public.gmane.org>, "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Amitkumar Karwar <amitkarwar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lorenzo Pieralisi <Lorenzo.Pieralisi-5wv7dgnIgG8@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Devicetree List <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-pm <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Nishant Sarmukadam <nishants-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ganapathi Bhat <gbhat-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, Ard Biesheuvel <ard.biesheuvel-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Xinming Hu <huxinming820-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "<netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>" <netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "<linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>" <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linux
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Feb 27, 2019 at 9:58 PM Brian Norris <briannorris@chromium.org> wrote:
->
-> Hi Ard,
->
-> On Wed, Feb 27, 2019 at 11:16:12AM +0100, Ard Biesheuvel wrote:
-> > On Wed, 27 Feb 2019 at 11:02, Marc Zyngier <marc.zyngier@arm.com> wrote:
-> > > On 26/02/2019 23:28, Brian Norris wrote:
-> > > > You're not the first person to notice this. All the motivations are not
-> > > > necessarily painted clearly in their cover letter, but here are some
-> > > > previous attempts at solving this problem:
-> > > >
-> > > > [RFC PATCH v11 0/5] PCI: rockchip: Move PCIe WAKE# handling into pci core
-> > > > https://lkml.kernel.org/lkml/20171225114742.18920-1-jeffy.chen@rock-chips.com/
-> > > > http://lkml.kernel.org/lkml/20171226023646.17722-1-jeffy.chen@rock-chips.com/
-> > > >
-> > > > As you can see by the 12th iteration, it wasn't left unsolved for lack
-> > > > of trying...
-> > >
-> > > I wasn't aware of this. That's definitely a better approach than my
-> > > hack, and I would really like this to be revived.
-> > >
+Hi Rafael,
+
+On Wed, Feb 27, 2019 at 3:04 PM Rafael J. Wysocki <rafael-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+> On Wed, Feb 27, 2019 at 9:58 PM Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> > On Wed, Feb 27, 2019 at 11:16:12AM +0100, Ard Biesheuvel wrote:
+> > > So I'd argue that we should add an optional 'wake-gpio' DT property
+> > > instead to the generic PCI device binding, and leave the interrupt
+> > > binding and discovery alone.
 > >
-> > I don't think this approach is entirely sound either.
->
-> (I'm sure there may be problems with the above series. We probably
-> should give it another shot though someday, as I think it's closer to
-> the mark.)
->
-> > From the side of the PCI device, WAKE# is just a GPIO line, and how it
-> > is wired into the system is an entirely separate matter. So I don't
-> > think it is justified to overload the notion of legacy interrupts with
-> > some other pin that may behave in a way that is vaguely similar to how
-> > a true wake-up capable interrupt works.
->
-> I think you've conflated INTx with WAKE# just a bit (and to be fair,
-> that's exactly what the bad binding we're trying to replace did,
-> accidentally). We're not trying to claim this WAKE# signal replaces the
-> typical PCI interrupts, but it *is* an interrupt in some sense --
-> "depending on your definition of interrupt", per our IRC conversation ;)
->
-> > So I'd argue that we should add an optional 'wake-gpio' DT property
-> > instead to the generic PCI device binding, and leave the interrupt
-> > binding and discovery alone.
->
-> So I think Mark Rutland already shot that one down; it's conceptually an
-> interrupt from the device's perspective.
+> > So I think Mark Rutland already shot that one down; it's conceptually an
+> > interrupt from the device's perspective.
 
-Which device are you talking about?  The one that signals wakeup?  If
-so, then I beg to differ.
+Perhaps I shouldn't speak for Mark, but I am basically quoting him off IRC.
 
-On ACPI platforms WAKE# is represented as an ACPI GPE that is signaled
-through SCI and handled at a different level (on HW-reduced ACPI it
-actually can be a GPIO interrupt, but it still is handled with the
-help of AML).  The driver of the device signaling wakeup need not even
-be aware that WAKE# has been asserted.
+> Which device are you talking about?  The one that signals wakeup?  If
+> so, then I beg to differ.
 
-> We just need to figure out a good way of representing it that doesn't stomp on the existing INTx
-> definitions.
+Yes, the endpoint device.
 
-WAKE# is a signal that is converted into an interrupt, but that
-interrupt may arrive at some place your driver has nothing to do with.
-It generally doesn't make sense to represent it as an interrupt for
-the target device.
+> On ACPI platforms WAKE# is represented as an ACPI GPE that is signaled
+> through SCI and handled at a different level (on HW-reduced ACPI it
+> actually can be a GPIO interrupt, but it still is handled with the
+> help of AML).  The driver of the device signaling wakeup need not even
+> be aware that WAKE# has been asserted.
+
+Frankly, ACPI is not relevant to how we represent WAKE# in DT, IMO.
+Also, we're talking about the *device*, not the driver. When talking
+about Device Tree, that distinction is relevant.
+
+So while the driver need not be aware (and I agree! it only needs to
+care about enabling/disabling wake), *something* should be aware, and
+the signal that "something" should be receiving is simply "did WAKE
+happen"? That sounds basically like the device is signalling an
+interrupt to me.
+
+Maybe this goes back to some confusion we had elsewhere: what is the
+meaning of "interrupt" in device tree?
+
+> > We just need to figure out a good way of representing it that doesn't stomp on the existing INTx
+> > definitions.
+>
+> WAKE# is a signal that is converted into an interrupt, but that
+> interrupt may arrive at some place your driver has nothing to do with.
+
+I could agree with that, perhaps. But that's also what Device Tree is
+all about, really. We describe the relation between devices. So some
+other <foo> handles events that are triggered by <bar>, so we use a
+phandle to relate <bar> to <foo>.
+
+> It generally doesn't make sense to represent it as an interrupt for
+> the target device.
+
+What would you suggest then? I'm not clearly understanding how you
+think we should (a) describe (in DT) and (b) implement this WAKE#
+handling.
+
+Brian
