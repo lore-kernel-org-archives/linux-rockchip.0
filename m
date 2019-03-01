@@ -1,106 +1,120 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: Re: [PATCH 01/15] ARM: actions: fix a leaked reference by
- addingmissing of_node_put
-Date: Fri, 1 Mar 2019 21:25:23 +0530
-Message-ID: <20190301155523.GA1915@Mani-XPS-13-9360>
-References: <1551430616-42014-1-git-send-email-wen.yang99@zte.com.cn>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/3] phy: rockchip-emmc: Allow to set drive impedance via DTS.
+Date: Fri, 01 Mar 2019 16:59:25 +0100
+Message-ID: <2706069.0FZLJLT2V8@phil>
+References: <20190301153348.29870-1-christoph.muellner@theobroma-systems.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <1551430616-42014-1-git-send-email-wen.yang99@zte.com.cn>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Wen Yang <wen.yang99@zte.com.cn>, linus.walleij@linaro.org, afaerber@suse.de
-Cc: heiko@sntech.de, maxime.ripard@bootlin.com, catalin.marinas@arm.com, liviu.dudau@arm.com, michal.simek@xilinx.com, xuwei5@hisilicon.com, tmaimon77@gmail.com, lorenzo.pieralisi@arm.com, yuenn@google.com, will.deacon@arm.com, openbmc@lists.ozlabs.org, magnus.damm@gmail.com, linux@armlinux.org.uk, krzk@kernel.org, linux-samsung-soc@vger.kernel.org, wens@csie.org, kgene@kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com, linux-rockchip@lists.infradead.org, brendanhiggins@google.com, wang.yi59@zte.com.cn, rjui@broadcom.com, s.hauer@pengutronix.de, f.fainelli@gmail.com, linux-arm-kernel@lists.infradead.org, sbranden@broadcom.com, avifishman70@gmail.com, venture@google.com, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, dinguyen@kernel.org, horms@verge.net.au, kernel@pengutronix.de, sudeep.holla@arm.com, fabio.estevam@nxp.com, shawnguo@kernel
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190301153348.29870-1-christoph.muellner@theobroma-systems.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Christoph Muellner <christoph.muellner@theobroma-systems.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, shawn.lin@rock-chips.com, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kishon Vijay Abraham I <kishon@ti.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Douglas Anderson <dianders@chromium.org>, Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <mbrugger@suse.com>, Emil Renner Berthing <kernel@esmil.dk>, Tony Xie <tony.xie@rock-chips.com>, Randy Li <ayaka@soulik.info>, Vicente Bergas <vicencb@gmail.com>, Ezequiel Garcia <ezequiel@collabora.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Wen,
+Hi Christoph,
 
-On Fri, Mar 01, 2019 at 04:56:42PM +0800, Wen Yang wrote:
-> The call to of_get_next_child returns a node pointer with refcount
-> incremented thus it must be explicitly decremented after the last
-> usage.
-> =
-
-> Detected by coccinelle with the following warnings:
-> ./arch/arm/mach-actions/platsmp.c:112:2-8: ERROR: missing of_node_put; ac=
-quired a node pointer with refcount incremented on line 103, but without a =
-corresponding object release within this function.
-> ./arch/arm/mach-actions/platsmp.c:124:2-8: ERROR: missing of_node_put; ac=
-quired a node pointer with refcount incremented on line 115, but without a =
-corresponding object release within this function.
-> ./arch/arm/mach-actions/platsmp.c:137:3-9: ERROR: missing of_node_put; ac=
-quired a node pointer with refcount incremented on line 128, but without a =
-corresponding object release within this function.
-> =
-
-
-We have a floating patch for this:
-https://www.spinics.net/lists/arm-kernel/msg694544.html
-
-Andreas: Can you please take a second look at the patchset submitted by Lin=
-us
-Walleij and Russel for simplifying the Actions startup code?
-
-Thanks,
-Mani
-
-> Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
-> Cc: "Andreas F=E4rber" <afaerber@suse.de>
-> Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> Cc: Russell King <linux@armlinux.org.uk>
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-kernel@vger.kernel.org
+Am Freitag, 1. März 2019, 16:33:43 CET schrieb Christoph Muellner:
+> The rockchip-emmc PHY can be configured with different
+> drive impedance values. Currenlty a value of 50 Ohm is
+> hard coded into the driver.
+> 
+> This patch introduces the DTS property 'drive-impedance-ohm'
+> for the rockchip-emmc phy node, which uses the value from the DTS
+> to setup the drive impedance accordingly.
+> 
+> Signed-off-by: Christoph Muellner <christoph.muellner@theobroma-systems.com>
+> Signed-off-by: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
 > ---
->  arch/arm/mach-actions/platsmp.c | 3 +++
->  1 file changed, 3 insertions(+)
-> =
+>  drivers/phy/rockchip/phy-rockchip-emmc.c | 38 ++++++++++++++++++++++++++++++--
 
-> diff --git a/arch/arm/mach-actions/platsmp.c b/arch/arm/mach-actions/plat=
-smp.c
-> index 4fd479c..1a8e078 100644
-> --- a/arch/arm/mach-actions/platsmp.c
-> +++ b/arch/arm/mach-actions/platsmp.c
-> @@ -107,6 +107,7 @@ static void __init s500_smp_prepare_cpus(unsigned int=
- max_cpus)
->  	}
->  =
+looks good on first glance, but is missing an addition to the emmc-phy
+devicetree binding in
+	Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
 
->  	timer_base_addr =3D of_iomap(node, 0);
-> +	of_node_put(node);
->  	if (!timer_base_addr) {
->  		pr_err("%s: could not map timer registers\n", __func__);
->  		return;
-> @@ -119,6 +120,7 @@ static void __init s500_smp_prepare_cpus(unsigned int=
- max_cpus)
->  	}
->  =
 
->  	sps_base_addr =3D of_iomap(node, 0);
-> +	of_node_put(node);
->  	if (!sps_base_addr) {
->  		pr_err("%s: could not map sps registers\n", __func__);
->  		return;
-> @@ -132,6 +134,7 @@ static void __init s500_smp_prepare_cpus(unsigned int=
- max_cpus)
->  		}
->  =
+Heiko
 
->  		scu_base_addr =3D of_iomap(node, 0);
-> +		of_node_put(node);
->  		if (!scu_base_addr) {
->  			pr_err("%s: could not map scu registers\n", __func__);
->  			return;
-> -- =
-
-> 2.9.5
-> =
+>  1 file changed, 36 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
+> index 19bf84f0bc67..5413fa73dd45 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-emmc.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
+> @@ -87,6 +87,7 @@ struct rockchip_emmc_phy {
+>  	unsigned int	reg_offset;
+>  	struct regmap	*reg_base;
+>  	struct clk	*emmcclk;
+> +	unsigned int drive_impedance;
+>  };
+>  
+>  static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+> @@ -281,10 +282,10 @@ static int rockchip_emmc_phy_power_on(struct phy *phy)
+>  {
+>  	struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
+>  
+> -	/* Drive impedance: 50 Ohm */
+> +	/* Drive impedance: from DTS */
+>  	regmap_write(rk_phy->reg_base,
+>  		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+> -		     HIWORD_UPDATE(PHYCTRL_DR_50OHM,
+> +		     HIWORD_UPDATE(rk_phy->drive_impedance,
+>  				   PHYCTRL_DR_MASK,
+>  				   PHYCTRL_DR_SHIFT));
+>  
+> @@ -314,6 +315,28 @@ static const struct phy_ops ops = {
+>  	.owner		= THIS_MODULE,
+>  };
+>  
+> +static u32 convert_drive_impedance_ohm(struct platform_device *pdev, u32 dr_ohm)
+> +{
+> +	switch (dr_ohm) {
+> +	case 100:
+> +		return PHYCTRL_DR_100OHM;
+> +	case 66:
+> +		return PHYCTRL_DR_66OHM;
+> +	case 50:
+> +		return PHYCTRL_DR_50OHM;
+> +	case 40:
+> +		return PHYCTRL_DR_40OHM;
+> +	case 33:
+> +		return PHYCTRL_DR_33OHM;
+> +	}
+> +
+> +	dev_warn(&pdev->dev,
+> +		"Invalid value %u for drive-impedance-ohm. "
+> +		"Falling back to 50 Ohm.\n",
+> +		dr_ohm);
+> +	return PHYCTRL_DR_50OHM;
+> +}
+> +
+>  static int rockchip_emmc_phy_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+> @@ -322,6 +345,7 @@ static int rockchip_emmc_phy_probe(struct platform_device *pdev)
+>  	struct phy_provider *phy_provider;
+>  	struct regmap *grf;
+>  	unsigned int reg_offset;
+> +	u32 val;
+>  
+>  	if (!dev->parent || !dev->parent->of_node)
+>  		return -ENODEV;
+> @@ -345,6 +369,16 @@ static int rockchip_emmc_phy_probe(struct platform_device *pdev)
+>  	rk_phy->reg_offset = reg_offset;
+>  	rk_phy->reg_base = grf;
+>  
+> +	if (of_property_read_u32(dev->of_node, "drive-impedance-ohm", &val)) {
+> +		dev_info(dev,
+> +			"Missing drive-impedance-ohm property in node %s "
+> +			"Falling back to 50 Ohm.\n",
+> +			dev->of_node->name);
+> +		rk_phy->drive_impedance = PHYCTRL_DR_50OHM;
+> +	} else {
+> +		rk_phy->drive_impedance = convert_drive_impedance_ohm(pdev, val);
+> +	}
+> +
+>  	generic_phy = devm_phy_create(dev, dev->of_node, &ops);
+>  	if (IS_ERR(generic_phy)) {
+>  		dev_err(dev, "failed to create PHY\n");
+> 
