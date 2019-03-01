@@ -1,35 +1,194 @@
-From: Florian Fainelli <f.fainelli@gmail.com>
-Subject: Re: [PATCH 02/15] ARM: bcm: fix a leaked reference by addingmissing
- of_node_put
-Date: Fri, 1 Mar 2019 10:28:59 -0800
-Message-ID: <d4e943ba-d817-2559-1872-81a5d6785c83@gmail.com>
-References: <1551430616-42014-1-git-send-email-wen.yang99@zte.com.cn>
- <1551430616-42014-2-git-send-email-wen.yang99@zte.com.cn>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+From: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Subject: Re: [PATCH 1/3] phy: rockchip-emmc: Allow to set drive impedance via
+ DTS.
+Date: Fri, 1 Mar 2019 19:41:03 +0100
+Message-ID: <72859695-2E77-4EFF-9555-54907830849F@theobroma-systems.com>
+References: <20190301153348.29870-1-christoph.muellner@theobroma-systems.com>
+ <CAD=FV=UUuQYwh2DMgB5FLuiE1BwbTMTuc9rAte1J5L_JP5qk1Q@mail.gmail.com>
+ <CB9331AE-2FEC-4646-BD8E-BDF9F4E48F74@theobroma-systems.com>
+Mime-Version: 1.0 (Mac OS X Mail 11.5 \(3445.9.1\))
+Content-Type: text/plain;
+        charset=utf-8
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1551430616-42014-2-git-send-email-wen.yang99@zte.com.cn>
-Content-Language: en-US
+In-Reply-To: <CB9331AE-2FEC-4646-BD8E-BDF9F4E48F74@theobroma-systems.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Wen Yang <wen.yang99@zte.com.cn>, liviu.dudau@arm.com
-Cc: sudeep.holla@arm.com, lorenzo.pieralisi@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, kgene@kernel.org, krzk@kernel.org, linux-samsung-soc@vger.kernel.org, michal.simek@xilinx.com, afaerber@suse.de, manivannan.sadhasivam@linaro.org, dinguyen@kernel.org, heiko@sntech.de, linux-rockchip@lists.infradead.org, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, linus.walleij@linaro.org, avifishman70@gmail.com, tmaimon77@gmail.com, venture@google.com, yuenn@google.com, brendanhiggins@google.com, openbmc@lists.ozlabs.org, xuwei5@hisilicon.com, maxime.ripard@bootlin.com, wens@csie.org, catalin.marinas@arm.com, will.deacon@arm.com, horms@verge.net.au, magnus.damm@gmail.com, linux-renesas-soc@vger.kernel.org
+To: =?utf-8?Q?Christoph_M=C3=BCllner?= <christoph.muellner@theobroma-systems.com>
+Cc: Doug Anderson <dianders@chromium.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, Kishon Vijay Abraham I <kishon@ti.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <mbrugger@suse.com>, Emil Renner Berthing <kernel@esmil.dk>, Tony Xie <tony.xie@rock-chips.com>, Randy Li <ayaka@soulik.info>, Vicente Bergas <vicencb@gmail.com>, Ezequiel Garcia <ezequiel@collabora.com>, devicetree@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 3/1/19 12:56 AM, Wen Yang wrote:
-> The call to of_get_next_child returns a node pointer with refcount
-> incremented thus it must be explicitly decremented after the last
-> usage.
+
+
+> On 01.03.2019, at 19:09, Christoph Müllner <christoph.muellner@theobroma-systems.com> wrote:
 > 
-> Detected by coccinelle with the following warnings:
-> ./arch/arm/mach-bcm/board_bcm281xx.c:43:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 35, but without a corresponding object release within this function.
+> Hi Doug,
+> 
+>> On 01.03.2019, at 17:48, Doug Anderson <dianders@chromium.org> wrote:
+>> 
+>> Hi,
+>> 
+>> On Fri, Mar 1, 2019 at 7:37 AM Christoph Muellner
+>> <christoph.muellner@theobroma-systems.com> wrote:
+>>> 
+>>> The rockchip-emmc PHY can be configured with different
+>>> drive impedance values. Currenlty a value of 50 Ohm is
+>>> hard coded into the driver.
+>>> 
+>>> This patch introduces the DTS property 'drive-impedance-ohm'
+>>> for the rockchip-emmc phy node, which uses the value from the DTS
+>>> to setup the drive impedance accordingly.
+>>> 
+>>> Signed-off-by: Christoph Muellner <christoph.muellner@theobroma-systems.com>
+>>> Signed-off-by: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+>>> ---
+>>> drivers/phy/rockchip/phy-rockchip-emmc.c | 38 ++++++++++++++++++++++++++++++--
+>>> 1 file changed, 36 insertions(+), 2 deletions(-)
+>>> 
+>>> diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
+>>> index 19bf84f0bc67..5413fa73dd45 100644
+>>> --- a/drivers/phy/rockchip/phy-rockchip-emmc.c
+>>> +++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
+>>> @@ -87,6 +87,7 @@ struct rockchip_emmc_phy {
+>>>       unsigned int    reg_offset;
+>>>       struct regmap   *reg_base;
+>>>       struct clk      *emmcclk;
+>>> +       unsigned int drive_impedance;
+>>> };
+>>> 
+>>> static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
+>>> @@ -281,10 +282,10 @@ static int rockchip_emmc_phy_power_on(struct phy *phy)
+>>> {
+>>>       struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
+>>> 
+>>> -       /* Drive impedance: 50 Ohm */
+>>> +       /* Drive impedance: from DTS */
+>>>       regmap_write(rk_phy->reg_base,
+>>>                    rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+>>> -                    HIWORD_UPDATE(PHYCTRL_DR_50OHM,
+>>> +                    HIWORD_UPDATE(rk_phy->drive_impedance,
+>>>                                  PHYCTRL_DR_MASK,
+>>>                                  PHYCTRL_DR_SHIFT));
+>>> 
+>>> @@ -314,6 +315,28 @@ static const struct phy_ops ops = {
+>>>       .owner          = THIS_MODULE,
+>>> };
+>>> 
+>>> +static u32 convert_drive_impedance_ohm(struct platform_device *pdev, u32 dr_ohm)
+>>> +{
+>>> +       switch (dr_ohm) {
+>>> +       case 100:
+>>> +               return PHYCTRL_DR_100OHM;
+>>> +       case 66:
+>>> +               return PHYCTRL_DR_66OHM;
+>>> +       case 50:
+>>> +               return PHYCTRL_DR_50OHM;
+>>> +       case 40:
+>>> +               return PHYCTRL_DR_40OHM;
+>>> +       case 33:
+>>> +               return PHYCTRL_DR_33OHM;
+>>> +       }
+>>> +
+>>> +       dev_warn(&pdev->dev,
+>>> +               "Invalid value %u for drive-impedance-ohm. "
+>>> +               "Falling back to 50 Ohm.\n",
+>>> +               dr_ohm);
+>>> +       return PHYCTRL_DR_50OHM;
+>>> +}
+>>> +
+>>> static int rockchip_emmc_phy_probe(struct platform_device *pdev)
+>>> {
+>>>       struct device *dev = &pdev->dev;
+>>> @@ -322,6 +345,7 @@ static int rockchip_emmc_phy_probe(struct platform_device *pdev)
+>>>       struct phy_provider *phy_provider;
+>>>       struct regmap *grf;
+>>>       unsigned int reg_offset;
+>>> +       u32 val;
+>>> 
+>>>       if (!dev->parent || !dev->parent->of_node)
+>>>               return -ENODEV;
+>>> @@ -345,6 +369,16 @@ static int rockchip_emmc_phy_probe(struct platform_device *pdev)
+>>>       rk_phy->reg_offset = reg_offset;
+>>>       rk_phy->reg_base = grf;
+>>> 
+>>> +       if (of_property_read_u32(dev->of_node, "drive-impedance-ohm", &val)) {
+>>> +               dev_info(dev,
+>>> +                       "Missing drive-impedance-ohm property in node %s "
+>>> +                       "Falling back to 50 Ohm.\n",
+>>> +                       dev->of_node->name);
+>> 
+>> This is awfully noisy for something that pretty much all existing
+>> boards will run.  debug level instead of info level?  Also:
+> 
+> Removed for v2 as suggested by Robin.
+> 
+>> 
+>> * Don't split strings
+>> across lines
+>> 
+>> * There's a magic % thing to get the name of an OF node.  Use that.
+>> 
+>> 
+>>> +               rk_phy->drive_impedance = PHYCTRL_DR_50OHM;
+>>> +       } else {
+>>> +               rk_phy->drive_impedance = convert_drive_impedance_ohm(pdev, val);
+>>> +       }
+>> 
+>> It's been a long time since I looked at this, but I could have sworn
+>> that it was more complicated than that.  Specifically I though you
+>> were supposed to query the eMMC card for what it supported and then
+>> resolve that with what the host could support.
+>> 
+>> Assuming that this is supposed to be queried from the card (which is
+>> how I remember it) then you definitely don't want it in the device
+>> tree since you want to be able to stuff various different eMMC parts
+>> and we should be able to figure out the impedance at runtime.
+>> 
+>> 
+>> NOTE: IIRC the old value of 50 ohms is required to be supported by all
+>> hosts and cards and is specified to be the default.
+>> 
+> 
+> When using 50 ohms on our board in HS-400 mode (200 MHz), then
+> we see communication errors. These are cause by additional components
+> on the clock line, which damp the 200 Mhz signal too much.
+> 
+> We could do the following:
+> 
+> * sdhci.c provides a default implementation to set the drive impedance (in HOST_CONTROL2,
+>  like it is done already now as part of sdhci_set_ios())
+> * sdhci-of-arasan.c installs an alternative implementation in case of Rockchip's eMMC controller
+> * the alternative implementation uses a callback to the Rockchip's eMMC phy driver
 
-This looks fine, if you resubmit, can you add a missing space between
-"adding" and "missing"? This applies to all of your patches, so I am
-assuming you somehow scripted that, which should be easy to fix.
+Generally, I would not make this either-or (I may have been less than clear
+in my comments to the internal ticket), but rather teach the sdhci-driver to
+always notify the eMMC PHY driver (if there is one) of the change.
 
-With that changed:
+For the RK3399’s sdhci implementation, the bits in the HOST_CONTROL2
+register are ‘reserved’ and marked R/O, so the current implementation will
+not work anyway and the PHY driver needs to be notified of the change in
+requested drive-strength.
 
-Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
--- 
-Florian
+> * the Rockchip eMMC phy driver sets the drive impedance accordingly
+> 
+> But still we would need a mechanism to override this for our board.
+> And exactly this override mechanism is provided by the patch series.
+
+The PHY would then need to determine the proper operation point (or an
+mapping from a table) to achieve the requested line characteristic for any
+given board.  In other words: the DTS for puma would still contain an entry
+to allow us to override to 33 Ohm when switching to HS-400.
+
+> Thanks,
+> Christoph
+> 
+>> 
+>> I do see at least the summary of what I thought of this before at
+>> <https://patchwork.kernel.org/patch/9086541/>
+>> 
+>> 
+>> (Sorry if the above is wrong and feel free to correct me--I don't have
+>> time at the moment to do all the full research but hopefully you can
+>> dig more based on my pointers.  Feel free to call me on my BS)
+>> 
+>> 
+>> -Doug
