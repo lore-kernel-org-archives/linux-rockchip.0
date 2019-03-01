@@ -1,90 +1,35 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: add more cpu operating points for
- RK3328
-Date: Fri, 01 Mar 2019 19:24:12 +0100
-Message-ID: <29290155.VRdV4K0DQe@phil>
-References: <20190301175452.6701-1-papadakospan@gmail.com>
+From: Florian Fainelli <f.fainelli@gmail.com>
+Subject: Re: [PATCH 02/15] ARM: bcm: fix a leaked reference by addingmissing
+ of_node_put
+Date: Fri, 1 Mar 2019 10:28:59 -0800
+Message-ID: <d4e943ba-d817-2559-1872-81a5d6785c83@gmail.com>
+References: <1551430616-42014-1-git-send-email-wen.yang99@zte.com.cn>
+ <1551430616-42014-2-git-send-email-wen.yang99@zte.com.cn>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190301175452.6701-1-papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1551430616-42014-2-git-send-email-wen.yang99@zte.com.cn>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wen Yang <wen.yang99@zte.com.cn>, liviu.dudau@arm.com
+Cc: sudeep.holla@arm.com, lorenzo.pieralisi@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, kgene@kernel.org, krzk@kernel.org, linux-samsung-soc@vger.kernel.org, michal.simek@xilinx.com, afaerber@suse.de, manivannan.sadhasivam@linaro.org, dinguyen@kernel.org, heiko@sntech.de, linux-rockchip@lists.infradead.org, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, linus.walleij@linaro.org, avifishman70@gmail.com, tmaimon77@gmail.com, venture@google.com, yuenn@google.com, brendanhiggins@google.com, openbmc@lists.ozlabs.org, xuwei5@hisilicon.com, maxime.ripard@bootlin.com, wens@csie.org, catalin.marinas@arm.com, will.deacon@arm.com, horms@verge.net.au, magnus.damm@gmail.com, linux-renesas-soc@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On 3/1/19 12:56 AM, Wen Yang wrote:
+> The call to of_get_next_child returns a node pointer with refcount
+> incremented thus it must be explicitly decremented after the last
+> usage.
+> 
+> Detected by coccinelle with the following warnings:
+> ./arch/arm/mach-bcm/board_bcm281xx.c:43:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 35, but without a corresponding object release within this function.
 
-Am Freitag, 1. M=E4rz 2019, 18:54:53 CET schrieb Leonidas P. Papadakos:
-> This allows for greater max frequency on rk3328 boards,
-> increasing performance.
-> =
+This looks fine, if you resubmit, can you add a missing space between
+"adding" and "missing"? This applies to all of your patches, so I am
+assuming you somehow scripted that, which should be easy to fix.
 
-> It has been included in Armbian (a linux distibution for ARM boards)
-> for a while now without any reported issues
-> =
+With that changed:
 
-> https://github.com/armbian/build/blob/master/patch/kernel/rockchip64-defa=
-ult/enable-1392mhz-opp.patch
-> https://github.com/armbian/build/blob/master/patch/kernel/rockchip64-defa=
-ult/enable-1512mhz-opp.patch
-> =
-
-> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> Signed-off-by: Leonidas P. Papadakos <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
-> =
-
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/d=
-ts/rockchip/rk3328.dtsi
-> index 84f14b132..18caef3c3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> @@ -123,6 +123,20 @@
->  			opp-microvolt =3D <1300000>;
->  			clock-latency-ns =3D <40000>;
->  		};
-> +		opp-1392000000 {
-> +			opp-hz =3D /bits/ 64 <1392000000>;
-> +			opp-microvolt =3D <1350000 1350000 1350000>;
-> +			opp-microvolt-L0 =3D <1350000 1350000 1350000>;
-> +			opp-microvolt-L1 =3D <1325000 1325000 1325000>;
-
-I checked Rockchip's productpage and the chip really seems to be
-rated up to 1.5GHz, but you should get rid of opp-microvolt-Lx
-options as these are still vendor-specific regarding the leakage
-handling.
-
-While on it, when all microvolt elements are the same, using the
-absolute value instead of "preferred min max" saves a bit of space
-similar to the other OPPs in the file.
-
-Thanks
-Heiko
-
-> +			clock-latency-ns =3D <40000>;
-> +		};
-> +		opp-1512000000 {
-> +			opp-hz =3D /bits/ 64 <1512000000>;
-> +			opp-microvolt =3D <1450000 1450000 1450000>;
-> +			opp-microvolt-L0 =3D <1450000 1450000 1450000>;
-> +			opp-microvolt-L1 =3D <1425000 1425000 1425000>;
-> +			clock-latency-ns =3D <40000>;
-> +		};
->  	};
->  =
-
->  	amba {
-> =
+Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+-- 
+Florian
