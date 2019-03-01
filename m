@@ -1,77 +1,90 @@
-From: =?utf-8?Q?Christoph_M=C3=BCllner?=
-        <christoph.muellner@theobroma-systems.com>
-Subject: Re: [PATCH 1/3] dt-bindings: mmc: Add DTS property to disable DCMDs
- on Arasan controllers
-Date: Fri, 1 Mar 2019 19:19:59 +0100
-Message-ID: <E9DB0B97-8B74-4397-87EF-ED05D991E1E9@theobroma-systems.com>
-References: <20190301164349.60589-1-christoph.muellner@theobroma-systems.com>
- <9535423.1mel94qINy@phil>
-Mime-Version: 1.0 (Mac OS X Mail 11.5 \(3445.9.1\))
-Content-Type: text/plain;
-        charset=utf-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9535423.1mel94qINy@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, shawn.lin@rock-chips.com, ulf.hansson@linaro.org, adrian.hunter@intel.com, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Michal Simek <michal.simek@xilinx.com>, Douglas Anderson <dianders@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Viresh Kumar <viresh.kumar@linaro.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Shunqian Zheng <zhengsq@rock-chips.com>, Ezequiel Garcia <ezequiel@collabora.com>, Randy Li <ayaka@soulik.info>, Tony Xie <tony.xie@rock-chips.com>, Vicente Bergas <vicencb@gmail.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: add more cpu operating points for
+ RK3328
+Date: Fri, 01 Mar 2019 19:24:12 +0100
+Message-ID: <29290155.VRdV4K0DQe@phil>
+References: <20190301175452.6701-1-papadakospan@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190301175452.6701-1-papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi,
 
-> On 01.03.2019, at 19:17, Heiko Stuebner <heiko@sntech.de> wrote:
-> 
-> Am Freitag, 1. März 2019, 17:43:45 CET schrieb Christoph Muellner:
->> Direct commands (DCMDs) are an optional feature of eMMC 5.1's command
->> queue engine (CQE). The Arasan eMMC 5.1 controller uses the CQHCI,
->> which exposes a control register bit to enable the feature.
->> The current implementation sets this bit unconditionally.
->> 
->> This patch allows to surpress the feature activation,
->> by specifying the property disable-cqe-dcmd.
->> 
->> Signed-off-by: Christoph Muellner <christoph.muellner@theobroma-systems.com>
->> Signed-off-by: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-> 
-> Patch subject is needs improvement :-) .
-> I did scratch my head a lot regarding "where is the code change"
-> until I actually looked into the patch itself, so you probably want
-> 
-> 	mmc: sdhci-of-arasan: Add DTS property to disable DCMDs
-> 
-> or similar instead of "dt-bindings: ..." here to match the subsystem.
+Am Freitag, 1. M=E4rz 2019, 18:54:53 CET schrieb Leonidas P. Papadakos:
+> This allows for greater max frequency on rk3328 boards,
+> increasing performance.
+> =
 
-Yes, I've spotted this as well after sending it.
-I've already renamed to "mmc: sdhci-of-arasan: Add DTS property to disable DCMDs." for v2.
+> It has been included in Armbian (a linux distibution for ARM boards)
+> for a while now without any reported issues
+> =
 
-Thanks,
-Christoph
+> https://github.com/armbian/build/blob/master/patch/kernel/rockchip64-defa=
+ult/enable-1392mhz-opp.patch
+> https://github.com/armbian/build/blob/master/patch/kernel/rockchip64-defa=
+ult/enable-1512mhz-opp.patch
+> =
 
-> 
-> 
-> Heiko
-> 
->> ---
->> drivers/mmc/host/sdhci-of-arasan.c | 5 ++++-
->> 1 file changed, 4 insertions(+), 1 deletion(-)
->> 
->> diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
->> index c9e3e050ccc8..88dc3f00a5be 100644
->> --- a/drivers/mmc/host/sdhci-of-arasan.c
->> +++ b/drivers/mmc/host/sdhci-of-arasan.c
->> @@ -832,7 +832,10 @@ static int sdhci_arasan_probe(struct platform_device *pdev)
->> 		host->mmc_host_ops.start_signal_voltage_switch =
->> 					sdhci_arasan_voltage_switch;
->> 		sdhci_arasan->has_cqe = true;
->> -		host->mmc->caps2 |= MMC_CAP2_CQE | MMC_CAP2_CQE_DCMD;
->> +		host->mmc->caps2 |= MMC_CAP2_CQE;
->> +
->> +		if (!of_property_read_bool(np, "disable-cqe-dcmd"))
->> +			host->mmc->caps2 |= MMC_CAP2_CQE_DCMD;
->> 	}
->> 
->> 	ret = sdhci_arasan_add_host(sdhci_arasan);
->> 
-> 
-> 
-> 
-> 
+> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> Signed-off-by: Leonidas P. Papadakos <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+> =
+
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/d=
+ts/rockchip/rk3328.dtsi
+> index 84f14b132..18caef3c3 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> @@ -123,6 +123,20 @@
+>  			opp-microvolt =3D <1300000>;
+>  			clock-latency-ns =3D <40000>;
+>  		};
+> +		opp-1392000000 {
+> +			opp-hz =3D /bits/ 64 <1392000000>;
+> +			opp-microvolt =3D <1350000 1350000 1350000>;
+> +			opp-microvolt-L0 =3D <1350000 1350000 1350000>;
+> +			opp-microvolt-L1 =3D <1325000 1325000 1325000>;
+
+I checked Rockchip's productpage and the chip really seems to be
+rated up to 1.5GHz, but you should get rid of opp-microvolt-Lx
+options as these are still vendor-specific regarding the leakage
+handling.
+
+While on it, when all microvolt elements are the same, using the
+absolute value instead of "preferred min max" saves a bit of space
+similar to the other OPPs in the file.
+
+Thanks
+Heiko
+
+> +			clock-latency-ns =3D <40000>;
+> +		};
+> +		opp-1512000000 {
+> +			opp-hz =3D /bits/ 64 <1512000000>;
+> +			opp-microvolt =3D <1450000 1450000 1450000>;
+> +			opp-microvolt-L0 =3D <1450000 1450000 1450000>;
+> +			opp-microvolt-L1 =3D <1425000 1425000 1425000>;
+> +			clock-latency-ns =3D <40000>;
+> +		};
+>  	};
+>  =
+
+>  	amba {
+> =
