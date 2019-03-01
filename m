@@ -1,39 +1,58 @@
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [PATCH 08/15] ARM: shmobile: fix a leaked reference by
- addingmissing of_node_put
-Date: Fri, 1 Mar 2019 10:51:27 +0100
-Message-ID: <CAMuHMdWrY0UNhCA7a8oHVfdVNXaB=15qFuWqvuU9OZpf7-ecmg@mail.gmail.com>
-References: <1551430616-42014-1-git-send-email-wen.yang99@zte.com.cn> <1551430616-42014-8-git-send-email-wen.yang99@zte.com.cn>
+From: Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Subject: [PATCH 13/17] drm/rockchip: Convert to using
+ __drm_atomic_helper_crtc_reset() for reset.
+Date: Fri,  1 Mar 2019 13:56:23 +0100
+Message-ID: <20190301125627.7285-14-maarten.lankhorst@linux.intel.com>
+References: <20190301125627.7285-1-maarten.lankhorst@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1551430616-42014-8-git-send-email-wen.yang99@zte.com.cn>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wen Yang <wen.yang99@zte.com.cn>
-Cc: Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Russell King <linux@armlinux.org.uk>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, linux-samsung-soc@vger.kernel.org, Michal Simek <michal.simek@xilinx.com>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Dinh Nguyen <dinguyen@kernel.org>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadco>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190301125627.7285-1-maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Mar 1, 2019 at 9:57 AM Wen Yang <wen.yang99@zte.com.cn> wrote:
-> The call to of_get_next_child returns a node pointer with refcount
-> incremented thus it must be explicitly decremented after the last
-> usage.
->
-> Detected by coccinelle with the following warnings:
-> ./arch/arm/mach-shmobile/pm-rcar-gen2.c:77:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 66, but without a corresponding object release within this function.
-> ./arch/arm/mach-shmobile/pm-rcar-gen2.c:85:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 66, but without a corresponding object release within this function.
-> ./arch/arm/mach-shmobile/pm-rcar-gen2.c:90:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 66, but without a corresponding object release within this function.
->
-> Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
-
-Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+Q29udmVydCByb2NrY2hpcCB0byB1c2luZyBfX2RybV9hdG9taWNfaGVscGVyX2NydGNfcmVzZXQo
+KSwgaW5zdGVhZCBvZgp3cml0aW5nIGl0cyBvd24gdmVyc2lvbi4gSW5zdGVhZCBvZiBvcGVuIGNv
+ZGluZwpkZXN0cm95X3N0YXRlKCksIGNhbGwgaXQgZGlyZWN0bHkgZm9yIGZyZWVpbmcgdGhlIG9s
+ZCBzdGF0ZS4KClNpZ25lZC1vZmYtYnk6IE1hYXJ0ZW4gTGFua2hvcnN0IDxtYWFydGVuLmxhbmto
+b3JzdEBsaW51eC5pbnRlbC5jb20+CkNjOiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29t
+PgpDYzogIkhlaWtvIFN0w7xibmVyIiA8aGVpa29Ac250ZWNoLmRlPgpDYzogbGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fdm9wLmMgfCAyMiArKysrKysrKysrLS0tLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2Vk
+LCAxMSBpbnNlcnRpb25zKCspLCAxMSBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwppbmRleCBjN2Q0YzYwNzNlYTUuLjFjZjE2NThmMWMw
+MSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
+YworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCkBAIC0x
+MjAxLDE3ICsxMjAxLDYgQEAgc3RhdGljIHZvaWQgdm9wX2NydGNfZGVzdHJveShzdHJ1Y3QgZHJt
+X2NydGMgKmNydGMpCiAJZHJtX2NydGNfY2xlYW51cChjcnRjKTsKIH0KIAotc3RhdGljIHZvaWQg
+dm9wX2NydGNfcmVzZXQoc3RydWN0IGRybV9jcnRjICpjcnRjKQotewotCWlmIChjcnRjLT5zdGF0
+ZSkKLQkJX19kcm1fYXRvbWljX2hlbHBlcl9jcnRjX2Rlc3Ryb3lfc3RhdGUoY3J0Yy0+c3RhdGUp
+OwotCWtmcmVlKGNydGMtPnN0YXRlKTsKLQotCWNydGMtPnN0YXRlID0ga3phbGxvYyhzaXplb2Yo
+c3RydWN0IHJvY2tjaGlwX2NydGNfc3RhdGUpLCBHRlBfS0VSTkVMKTsKLQlpZiAoY3J0Yy0+c3Rh
+dGUpCi0JCWNydGMtPnN0YXRlLT5jcnRjID0gY3J0YzsKLX0KLQogc3RhdGljIHN0cnVjdCBkcm1f
+Y3J0Y19zdGF0ZSAqdm9wX2NydGNfZHVwbGljYXRlX3N0YXRlKHN0cnVjdCBkcm1fY3J0YyAqY3J0
+YykKIHsKIAlzdHJ1Y3Qgcm9ja2NoaXBfY3J0Y19zdGF0ZSAqcm9ja2NoaXBfc3RhdGU7CkBAIC0x
+MjMzLDYgKzEyMjIsMTcgQEAgc3RhdGljIHZvaWQgdm9wX2NydGNfZGVzdHJveV9zdGF0ZShzdHJ1
+Y3QgZHJtX2NydGMgKmNydGMsCiAJa2ZyZWUocyk7CiB9CiAKK3N0YXRpYyB2b2lkIHZvcF9jcnRj
+X3Jlc2V0KHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKK3sKKwlzdHJ1Y3Qgcm9ja2NoaXBfY3J0Y19z
+dGF0ZSAqY3J0Y19zdGF0ZSA9CisJCWt6YWxsb2Moc2l6ZW9mKCpjcnRjX3N0YXRlKSwgR0ZQX0tF
+Uk5FTCk7CisKKwlpZiAoY3J0Yy0+c3RhdGUpCisJCXZvcF9jcnRjX2Rlc3Ryb3lfc3RhdGUoY3J0
+YywgY3J0Yy0+c3RhdGUpOworCisJX19kcm1fYXRvbWljX2hlbHBlcl9jcnRjX3Jlc2V0KGNydGMs
+ICZjcnRjX3N0YXRlLT5iYXNlKTsKK30KKwogI2lmZGVmIENPTkZJR19EUk1fQU5BTE9HSVhfRFAK
+IHN0YXRpYyBzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqdm9wX2dldF9lZHBfY29ubmVjdG9yKHN0cnVj
+dCB2b3AgKnZvcCkKIHsKLS0gCjIuMjAuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
