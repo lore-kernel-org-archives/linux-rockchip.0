@@ -1,7 +1,8 @@
 From: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: add more cpu operating points for RK3328
-Date: Fri,  1 Mar 2019 19:54:53 +0200
-Message-ID: <20190301175452.6701-1-papadakospan@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: add rk3328-roc-cc cpu-supply entries
+ for all cpu nodes
+Date: Fri,  1 Mar 2019 20:07:21 +0200
+Message-ID: <20190301180721.7562-1-papadakospan@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -19,46 +20,36 @@ To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This allows for greater max frequency on rk3328 boards,
-increasing performance.
+In line with the rock64 dts, specify the cpu-supply
+for the other cpus as well
 
-It has been included in Armbian (a linux distibution for ARM boards)
-for a while now without any reported issues
-
-https://github.com/armbian/build/blob/master/patch/kernel/rockchip64-default/enable-1392mhz-opp.patch
-https://github.com/armbian/build/blob/master/patch/kernel/rockchip64-default/enable-1512mhz-opp.patch
-
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Signed-off-by: Leonidas P. Papadakos <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 84f14b132..18caef3c3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -123,6 +123,20 @@
- 			opp-microvolt = <1300000>;
- 			clock-latency-ns = <40000>;
- 		};
-+		opp-1392000000 {
-+			opp-hz = /bits/ 64 <1392000000>;
-+			opp-microvolt = <1350000 1350000 1350000>;
-+			opp-microvolt-L0 = <1350000 1350000 1350000>;
-+			opp-microvolt-L1 = <1325000 1325000 1325000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp-1512000000 {
-+			opp-hz = /bits/ 64 <1512000000>;
-+			opp-microvolt = <1450000 1450000 1450000>;
-+			opp-microvolt-L0 = <1450000 1450000 1450000>;
-+			opp-microvolt-L1 = <1425000 1425000 1425000>;
-+			clock-latency-ns = <40000>;
-+		};
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index 33c44e857..dd84b7bdb 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -87,6 +87,18 @@
+ 	cpu-supply = <&vdd_arm>;
+ };
  
- 	amba {
++&cpu1 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu2 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu3 {
++	cpu-supply = <&vdd_arm>;
++};
++
+ &emmc {
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
 -- 
 2.21.0
