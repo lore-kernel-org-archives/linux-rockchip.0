@@ -1,194 +1,101 @@
-From: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Subject: Re: [PATCH 1/3] phy: rockchip-emmc: Allow to set drive impedance via
- DTS.
-Date: Fri, 1 Mar 2019 19:41:03 +0100
-Message-ID: <72859695-2E77-4EFF-9555-54907830849F@theobroma-systems.com>
-References: <20190301153348.29870-1-christoph.muellner@theobroma-systems.com>
- <CAD=FV=UUuQYwh2DMgB5FLuiE1BwbTMTuc9rAte1J5L_JP5qk1Q@mail.gmail.com>
- <CB9331AE-2FEC-4646-BD8E-BDF9F4E48F74@theobroma-systems.com>
-Mime-Version: 1.0 (Mac OS X Mail 11.5 \(3445.9.1\))
-Content-Type: text/plain;
-        charset=utf-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CB9331AE-2FEC-4646-BD8E-BDF9F4E48F74@theobroma-systems.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?utf-8?Q?Christoph_M=C3=BCllner?= <christoph.muellner@theobroma-systems.com>
-Cc: Doug Anderson <dianders@chromium.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, Kishon Vijay Abraham I <kishon@ti.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <mbrugger@suse.com>, Emil Renner Berthing <kernel@esmil.dk>, Tony Xie <tony.xie@rock-chips.com>, Randy Li <ayaka@soulik.info>, Vicente Bergas <vicencb@gmail.com>, Ezequiel Garcia <ezequiel@collabora.com>, devicetree@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: add more cpu operating points for
+ RK3328
+Date: Fri, 1 Mar 2019 19:33:51 +0000
+Message-ID: <AM3PR03MB0966D92B504944D7C6D06123AC760@AM3PR03MB0966.eurprd03.prod.outlook.com>
+References: <20190301175452.6701-1-papadakospan@gmail.com>
+ <29290155.VRdV4K0DQe@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <29290155.VRdV4K0DQe@phil>
+Content-Language: en-US
+Content-ID: <6AAA4A575883D94AAE258BFF29544F0A-yI6K9L9iJZCcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+On 2019-03-01 19:24, Heiko Stuebner wrote:
+> Hi,
+>
+> Am Freitag, 1. M=E4rz 2019, 18:54:53 CET schrieb Leonidas P. Papadakos:
+>> This allows for greater max frequency on rk3328 boards,
+>> increasing performance.
+>>
+>> It has been included in Armbian (a linux distibution for ARM boards)
+>> for a while now without any reported issues
+>>
+>> https://github.com/armbian/build/blob/master/patch/kernel/rockchip64-def=
+ault/enable-1392mhz-opp.patch
+>> https://github.com/armbian/build/blob/master/patch/kernel/rockchip64-def=
+ault/enable-1512mhz-opp.patch
+>>
+>> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+>> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+>> Signed-off-by: Leonidas P. Papadakos <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+>> ---
+>>  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 14 ++++++++++++++
+>>  1 file changed, 14 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/=
+dts/rockchip/rk3328.dtsi
+>> index 84f14b132..18caef3c3 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+>> @@ -123,6 +123,20 @@
+>>  			opp-microvolt =3D <1300000>;
+>>  			clock-latency-ns =3D <40000>;
+>>  		};
+>> +		opp-1392000000 {
+>> +			opp-hz =3D /bits/ 64 <1392000000>;
+>> +			opp-microvolt =3D <1350000 1350000 1350000>;
+>> +			opp-microvolt-L0 =3D <1350000 1350000 1350000>;
+>> +			opp-microvolt-L1 =3D <1325000 1325000 1325000>;
+> I checked Rockchip's productpage and the chip really seems to be
+> rated up to 1.5GHz, but you should get rid of opp-microvolt-Lx
+> options as these are still vendor-specific regarding the leakage
+> handling.
 
+The datasheet at [1] lists Max CPU frequency of A53 as 1.4 Ghz in Table 3-2=
+ Recommended operating condition,
+is there a newer datasheet that lists 1.5 Ghz as recommended max?
 
-> On 01.03.2019, at 19:09, Christoph Müllner <christoph.muellner@theobroma-systems.com> wrote:
-> 
-> Hi Doug,
-> 
->> On 01.03.2019, at 17:48, Doug Anderson <dianders@chromium.org> wrote:
->> 
->> Hi,
->> 
->> On Fri, Mar 1, 2019 at 7:37 AM Christoph Muellner
->> <christoph.muellner@theobroma-systems.com> wrote:
->>> 
->>> The rockchip-emmc PHY can be configured with different
->>> drive impedance values. Currenlty a value of 50 Ohm is
->>> hard coded into the driver.
->>> 
->>> This patch introduces the DTS property 'drive-impedance-ohm'
->>> for the rockchip-emmc phy node, which uses the value from the DTS
->>> to setup the drive impedance accordingly.
->>> 
->>> Signed-off-by: Christoph Muellner <christoph.muellner@theobroma-systems.com>
->>> Signed-off-by: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
->>> ---
->>> drivers/phy/rockchip/phy-rockchip-emmc.c | 38 ++++++++++++++++++++++++++++++--
->>> 1 file changed, 36 insertions(+), 2 deletions(-)
->>> 
->>> diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
->>> index 19bf84f0bc67..5413fa73dd45 100644
->>> --- a/drivers/phy/rockchip/phy-rockchip-emmc.c
->>> +++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
->>> @@ -87,6 +87,7 @@ struct rockchip_emmc_phy {
->>>       unsigned int    reg_offset;
->>>       struct regmap   *reg_base;
->>>       struct clk      *emmcclk;
->>> +       unsigned int drive_impedance;
->>> };
->>> 
->>> static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
->>> @@ -281,10 +282,10 @@ static int rockchip_emmc_phy_power_on(struct phy *phy)
->>> {
->>>       struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
->>> 
->>> -       /* Drive impedance: 50 Ohm */
->>> +       /* Drive impedance: from DTS */
->>>       regmap_write(rk_phy->reg_base,
->>>                    rk_phy->reg_offset + GRF_EMMCPHY_CON6,
->>> -                    HIWORD_UPDATE(PHYCTRL_DR_50OHM,
->>> +                    HIWORD_UPDATE(rk_phy->drive_impedance,
->>>                                  PHYCTRL_DR_MASK,
->>>                                  PHYCTRL_DR_SHIFT));
->>> 
->>> @@ -314,6 +315,28 @@ static const struct phy_ops ops = {
->>>       .owner          = THIS_MODULE,
->>> };
->>> 
->>> +static u32 convert_drive_impedance_ohm(struct platform_device *pdev, u32 dr_ohm)
->>> +{
->>> +       switch (dr_ohm) {
->>> +       case 100:
->>> +               return PHYCTRL_DR_100OHM;
->>> +       case 66:
->>> +               return PHYCTRL_DR_66OHM;
->>> +       case 50:
->>> +               return PHYCTRL_DR_50OHM;
->>> +       case 40:
->>> +               return PHYCTRL_DR_40OHM;
->>> +       case 33:
->>> +               return PHYCTRL_DR_33OHM;
->>> +       }
->>> +
->>> +       dev_warn(&pdev->dev,
->>> +               "Invalid value %u for drive-impedance-ohm. "
->>> +               "Falling back to 50 Ohm.\n",
->>> +               dr_ohm);
->>> +       return PHYCTRL_DR_50OHM;
->>> +}
->>> +
->>> static int rockchip_emmc_phy_probe(struct platform_device *pdev)
->>> {
->>>       struct device *dev = &pdev->dev;
->>> @@ -322,6 +345,7 @@ static int rockchip_emmc_phy_probe(struct platform_device *pdev)
->>>       struct phy_provider *phy_provider;
->>>       struct regmap *grf;
->>>       unsigned int reg_offset;
->>> +       u32 val;
->>> 
->>>       if (!dev->parent || !dev->parent->of_node)
->>>               return -ENODEV;
->>> @@ -345,6 +369,16 @@ static int rockchip_emmc_phy_probe(struct platform_device *pdev)
->>>       rk_phy->reg_offset = reg_offset;
->>>       rk_phy->reg_base = grf;
->>> 
->>> +       if (of_property_read_u32(dev->of_node, "drive-impedance-ohm", &val)) {
->>> +               dev_info(dev,
->>> +                       "Missing drive-impedance-ohm property in node %s "
->>> +                       "Falling back to 50 Ohm.\n",
->>> +                       dev->of_node->name);
->> 
->> This is awfully noisy for something that pretty much all existing
->> boards will run.  debug level instead of info level?  Also:
-> 
-> Removed for v2 as suggested by Robin.
-> 
->> 
->> * Don't split strings
->> across lines
->> 
->> * There's a magic % thing to get the name of an OF node.  Use that.
->> 
->> 
->>> +               rk_phy->drive_impedance = PHYCTRL_DR_50OHM;
->>> +       } else {
->>> +               rk_phy->drive_impedance = convert_drive_impedance_ohm(pdev, val);
->>> +       }
->> 
->> It's been a long time since I looked at this, but I could have sworn
->> that it was more complicated than that.  Specifically I though you
->> were supposed to query the eMMC card for what it supported and then
->> resolve that with what the host could support.
->> 
->> Assuming that this is supposed to be queried from the card (which is
->> how I remember it) then you definitely don't want it in the device
->> tree since you want to be able to stuff various different eMMC parts
->> and we should be able to figure out the impedance at runtime.
->> 
->> 
->> NOTE: IIRC the old value of 50 ohms is required to be supported by all
->> hosts and cards and is specified to be the default.
->> 
-> 
-> When using 50 ohms on our board in HS-400 mode (200 MHz), then
-> we see communication errors. These are cause by additional components
-> on the clock line, which damp the 200 Mhz signal too much.
-> 
-> We could do the following:
-> 
-> * sdhci.c provides a default implementation to set the drive impedance (in HOST_CONTROL2,
->  like it is done already now as part of sdhci_set_ios())
-> * sdhci-of-arasan.c installs an alternative implementation in case of Rockchip's eMMC controller
-> * the alternative implementation uses a callback to the Rockchip's eMMC phy driver
+[1] http://opensource.rock-chips.com/images/d/d7/Rockchip_RK3328_Datasheet_=
+V1.1-20170309.pdf
 
-Generally, I would not make this either-or (I may have been less than clear
-in my comments to the internal ticket), but rather teach the sdhci-driver to
-always notify the eMMC PHY driver (if there is one) of the change.
+Regards,
+Jonas
 
-For the RK3399’s sdhci implementation, the bits in the HOST_CONTROL2
-register are ‘reserved’ and marked R/O, so the current implementation will
-not work anyway and the PHY driver needs to be notified of the change in
-requested drive-strength.
+>
+> While on it, when all microvolt elements are the same, using the
+> absolute value instead of "preferred min max" saves a bit of space
+> similar to the other OPPs in the file.
+>
+> Thanks
+> Heiko
+>
+>> +			clock-latency-ns =3D <40000>;
+>> +		};
+>> +		opp-1512000000 {
+>> +			opp-hz =3D /bits/ 64 <1512000000>;
+>> +			opp-microvolt =3D <1450000 1450000 1450000>;
+>> +			opp-microvolt-L0 =3D <1450000 1450000 1450000>;
+>> +			opp-microvolt-L1 =3D <1425000 1425000 1425000>;
+>> +			clock-latency-ns =3D <40000>;
+>> +		};
+>>  	};
+>>  =
 
-> * the Rockchip eMMC phy driver sets the drive impedance accordingly
-> 
-> But still we would need a mechanism to override this for our board.
-> And exactly this override mechanism is provided by the patch series.
-
-The PHY would then need to determine the proper operation point (or an
-mapping from a table) to achieve the requested line characteristic for any
-given board.  In other words: the DTS for puma would still contain an entry
-to allow us to override to 33 Ohm when switching to HS-400.
-
-> Thanks,
-> Christoph
-> 
->> 
->> I do see at least the summary of what I thought of this before at
->> <https://patchwork.kernel.org/patch/9086541/>
->> 
->> 
->> (Sorry if the above is wrong and feel free to correct me--I don't have
->> time at the moment to do all the full research but hopefully you can
->> dig more based on my pointers.  Feel free to call me on my BS)
->> 
->> 
->> -Doug
+>>  	amba {
+>>
+>
