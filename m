@@ -1,14 +1,16 @@
-From: Tony McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Subject: Re: [PATCH v2] arm64: dts: rockchip: give some life to the
  rk3328-roc-cc leds
-Date: Sat, 2 Mar 2019 09:32:17 -0500
-Message-ID: <CAERgokmRH2ebNQ8PcttyKKJ-yPQKwvWgvXcSAM_z=aa=yMSQFg@mail.gmail.com>
+Date: Sat, 2 Mar 2019 16:55:04 +0200
+Message-ID: <20190302145503.GA15735@X555LD>
 References: <20190302141335.4443-1-papadakospan@gmail.com>
+ <CAERgokmRH2ebNQ8PcttyKKJ-yPQKwvWgvXcSAM_z=aa=yMSQFg@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190302141335.4443-1-papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAERgokmRH2ebNQ8PcttyKKJ-yPQKwvWgvXcSAM_z=aa=yMSQFg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,64 +20,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+To: Tony McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Mar 2, 2019 at 9:13 AM Leonidas P. Papadakos
-<papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->
-> Assign the LEDs to heartbeat and sdcard io, as in other RK boards.
->
-> https://github.com/armbian/build/commit/f1affad5c7be62d6e93832af3556c7609edd0858
->
-> Signed-off-by: Leonidas P. Papadakos <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+On Sat, Mar 02, 2019 at 09:32:17AM -0500, Tony McKahan wrote:
+> On Sat, Mar 2, 2019 at 9:13 AM Leonidas P. Papadakos
+> <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> >
+> > Assign the LEDs to heartbeat and sdcard io, as in other RK boards.
+> >
+> > https://github.com/armbian/build/commit/f1affad5c7be62d6e93832af3556c7609edd0858
+> >
+> > Signed-off-by: Leonidas P. Papadakos <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> 
+> I will reach out to JMCC at Armbian and see if he wants tagged as
+> co-developer/etc.  It's not a big thing, but would be good to ask.
 
-I will reach out to JMCC at Armbian and see if he wants tagged as
-co-developer/etc.  It's not a big thing, but would be good to ask.
-
-> ---
-> v2: Don't specify disabled IR led for now
->
-> ---
->  .../arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 19 +++++++++++++++++++
->  1 file changed, 19 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-> index 33c44e857..171c377f8 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-> @@ -81,6 +81,25 @@
->                 regulator-always-on;
->                 regulator-boot-on;
->         };
-> +
-> +       leds {
-> +               compatible = "gpio-leds";
-> +               power {
-> +                       label = "firefly:blue:power";
-> +                       linux,default-trigger = "heartbeat";
-> +                       gpios = <&rk805 1 GPIO_ACTIVE_LOW>;
-> +                       default-state = "on";
-> +                       mode = <0x23>;
-> +               };
-> +
-> +               user {
-> +                       label = "firefly:yellow:user";
-> +                       linux,default-trigger = "mmc1";
-> +                       gpios = <&rk805 0 GPIO_ACTIVE_LOW>;
-> +                       default-state = "off";
-> +                       mode = <0x05>;
-> +               };
-> +       };
->  };
->
->  &cpu0 {
-> --
-> 2.21.0
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Good idea! I didn't know what the "infastructure" for this inclusion was.
