@@ -1,15 +1,15 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: give some life to the rk3328-roc-cc
- leds
-Date: Sat, 02 Mar 2019 11:54:15 +0100
-Message-ID: <1574993.2dzHSx1bDQ@phil>
-References: <20190301225813.19834-1-papadakospan@gmail.com>
- <1918569.2zEEYki6OE@phil> <20190302025106.GA19296@X555LD>
+Subject: Re: [PATCH] arm64: rk3399: Add capacity-dmips-mhz attributes
+Date: Sat, 02 Mar 2019 13:39:38 +0100
+Message-ID: <3583974.SIFqoyYqJB@phil>
+References: <20190224143525.15539-1-marc.zyngier@arm.com>
+ <9562f9e4-b832-5cc1-821f-696ededf8a02@arm.com>
+ <20190224210657.2cb54039@why.wild-wind.fr.eu.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190302025106.GA19296@X555LD>
+In-Reply-To: <20190224210657.2cb54039-Fmn/x+r+pSA9//JtdbceeD8Kkb2uy4ct@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,79 +19,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+To: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+Cc: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 2. M=E4rz 2019, 03:51:07 CET schrieb Leonidas P. Papadakos:
-> On Sat, Mar 02, 2019 at 01:31:11AM +0100, Heiko Stuebner wrote:
-> > Am Freitag, 1. M=E4rz 2019, 23:58:13 CET schrieb Leonidas P. Papadakos:
-> > > Assign the LED's to heartbeat and sdcard io, as in other RK boards.
-> > > =
+Hi Marc,
 
-> > > https://github.com/armbian/build/commit/f1affad5c7be62d6e93832af3556c=
-7609edd0858
-> > > =
+Am Sonntag, 24. Februar 2019, 22:06:57 CET schrieb Marc Zyngier:
+> On Sun, 24 Feb 2019 20:07:49 +0000
+> Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org> wrote:
 
-> > > Signed-off-by: Leonidas P. Papadakos <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> > > ---
-> > >  .../arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 27 +++++++++++++++++=
-++
-> > >  1 file changed, 27 insertions(+)
-> > > =
+[...]
 
-> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/ar=
-m64/boot/dts/rockchip/rk3328-roc-cc.dts
-> > > index 33c44e857..a881d4c8d 100644
-> > > --- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-> > > +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-> > > @@ -81,6 +81,33 @@
-> > >  		regulator-always-on;
-> > >  		regulator-boot-on;
-> > >  	};
-> > > +
-> > > +	leds {
-> > > +		compatible =3D "gpio-leds";
-> > > +		power {
-> > > +			label =3D "firefly:blue:power";
-> > > +			linux,default-trigger =3D "heartbeat";
-> > > +			gpios =3D <&rk805 1 GPIO_ACTIVE_LOW>;
-> > > +			default-state =3D "on";
-> > > +			mode =3D <0x23>;
-> > > +		};
-> > > +
-> > > +		user {
-> > > +			label =3D "firefly:yellow:user";
-> > > +			linux,default-trigger =3D "mmc1";
-> > > +			gpios =3D <&rk805 0 GPIO_ACTIVE_LOW>;
-> > > +			default-state =3D "off";
-> > > +			mode =3D <0x05>;
-> > > +		};
-> > > +
-> > > +		ir {
-> > > +			status =3D "disabled";
-> > =
+> > With the nits fixed,
+> > 
+> > Tested-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+> 
+> Cheers Robin. I'll post a v2 after -rc1.
 
-> > please explain that. Is this an IR transmitting LED? And why are you
-> > adding a disabled property?
-> > =
+You can do that earlier as well, if you want to get it off your plate :-)
+I'm normally not pausing patches over the merge-window, so from
+my side there is no need to wait for rc1.
 
-> > Similar to how the kernel should not contain commented out code
-> > having a disabled node in the actual board file is strange.
-> > =
-
-> > =
-
-> > Heiko
-> > =
-
-> =
-
-> It probably is. See the image of the board on this site:
-> https://shop.t-firefly.com/goods.php?id=3D65
-> =
-
-> Should I make a PATCH v2 without it?
-
-yes, that would be nice, as we don't want to add dead nodes
-to actual board devicetrees.
+Heiko
