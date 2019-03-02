@@ -1,48 +1,41 @@
-From: Tony McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: give some life to the
- rk3328-roc-cc leds
-Date: Sat, 2 Mar 2019 10:19:31 -0500
-Message-ID: <CAERgoknOi1GmHMJ+6Zjybt6+fUjjxif=dxb6+Q7Th-hrZ2NgNg@mail.gmail.com>
-References: <20190302141335.4443-1-papadakospan@gmail.com>
- <CAERgokmRH2ebNQ8PcttyKKJ-yPQKwvWgvXcSAM_z=aa=yMSQFg@mail.gmail.com>
- <20190302145503.GA15735@X555LD>
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH] arm64: dts: rockchip: enable HDMI CEC on rk3328
+Date: Sat, 2 Mar 2019 16:37:09 +0000
+Message-ID: <AM3PR03MB0966D220C0FEB19CBAE0D913AC770@AM3PR03MB0966.eurprd03.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190302145503.GA15735@X555LD>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Jonas Karlman <jonas@kwiboo.se>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Mar 2, 2019 at 9:55 AM Leonidas P. Papadakos
-<papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->
-> On Sat, Mar 02, 2019 at 09:32:17AM -0500, Tony McKahan wrote:
-> > On Sat, Mar 2, 2019 at 9:13 AM Leonidas P. Papadakos
-> > <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> > >
-> > > Assign the LEDs to heartbeat and sdcard io, as in other RK boards.
-> > >
-> > > https://github.com/armbian/build/commit/f1affad5c7be62d6e93832af3556c7609edd0858
-> > >
-> > > Signed-off-by: Leonidas P. Papadakos <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> >
-> > I will reach out to JMCC at Armbian and see if he wants tagged as
-> > co-developer/etc.  It's not a big thing, but would be good to ask.
->
-> Good idea! I didn't know what the "infastructure" for this inclusion was.
+This patch enables HDMI CEC on RK3328 devices
 
-https://www.kernel.org/doc/html/v5.0-rc8/process/submitting-patches.html
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-Sections 12 and 13 specifically.  I've been reading to try to get to
-where I'm willing to bother these guys with patches.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 81cc3c996e2a..fcb196212e8c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -657,9 +657,11 @@
+ 		interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>,
+ 			     <GIC_SPI 71 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru PCLK_HDMI>,
+-			 <&cru SCLK_HDMI_SFC>;
++			 <&cru SCLK_HDMI_SFC>,
++			 <&cru SCLK_RTC32K>;
+ 		clock-names = "iahb",
+-			      "isfr";
++			      "isfr",
++			      "cec";
+ 		phys = <&hdmiphy>;
+ 		phy-names = "hdmi";
+ 		pinctrl-names = "default";
+-- 
+2.17.1
