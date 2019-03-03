@@ -1,32 +1,95 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: enable mali on rock960 boards
-Date: Sun, 03 Mar 2019 15:19:46 +0100
-Message-ID: <1904856.DY3nI6j79G@phil>
-References: <20190218095857.26662-1-ezequiel@collabora.com>
+From: Tony McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: decrease rising edge time of UART2
+Date: Sun, 3 Mar 2019 10:13:05 -0500
+Message-ID: <CAERgoknAV1sACSPjM_u4WyWzLvmUntXMoEx=ccpFsqYZVeu__Q@mail.gmail.com>
+References: <20190303122705.27094-1-katsuhiro@katsuster.net>
+ <1623469.Hy6pdcMFRX@phil> <e722acb4-167f-8333-5c8a-b693815273f4@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190218095857.26662-1-ezequiel@collabora.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <e722acb4-167f-8333-5c8a-b693815273f4-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Akash Gajjar <Akash_Gajjar-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shohei Maruyama <cheat.sc.linux-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>, Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jakob Unterwurzacher <jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Oskari Lemmela <oskari-fV/XPr6JiiHR7s880joybQ@public.gmane.org>, Enric
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 18. Februar 2019, 10:58:57 CET schrieb Ezequiel Garcia:
-> Enable the mali gpu node.
-> 
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-
-applied both for 5.2
-
-Thanks
-Heiko
+T24gU3VuLCBNYXIgMywgMjAxOSBhdCA5OjA0IEFNIEthdHN1aGlybyBTdXp1a2kgPGthdHN1aGly
+b0BrYXRzdXN0ZXIubmV0PiB3cm90ZToKPgo+IEhlbGxvIEhlaWtvLAo+Cj4gVGhhbmsgeW91IGZv
+ciBjb21tZW50cy4KPgo+IE9uIDIwMTkvMDMvMDMgMjI6MTksIEhlaWtvIFN0dWVibmVyIHdyb3Rl
+Ogo+ID4gSGksCj4gPgo+ID4gQW0gU29ubnRhZywgMy4gTcOkcnogMjAxOSwgMTM6Mjc6MDUgQ0VU
+IHNjaHJpZWIgS2F0c3VoaXJvIFN1enVraToKPiA+PiBUaGlzIHBhdGNoIGluY3JlYXNlcyBkcml2
+ZSBzdHJlbmd0aCBvZiBVQVJUMiBmcm9tIDNtQSB0byAxMm1BIGZvcgo+ID4+IGdldHRpbmcgbW9y
+ZSBmYXN0ZXIgcmlzaW5nIGVkZ2UuCj4gPj4KPiA+PiBSb2NrUHJvNjQgaXMgdXNpbmcgYSB2ZXJ5
+IGhpZ2ggc3BlZWQgcmF0ZSAoMS41TWJwcykgZm9yIFVBUlQyLiBJbgo+ID4+IHRoaXMgc2V0dGlu
+ZywgYSBiaXQgd2lkdGggb2YgVUFSVCBpcyBhYm91dCA2Njducy4KPiA+Pgo+ID4+IEluIG15IGVu
+dmlyb25tZW50IChSb2NrUHJvNjQgVUFSVDIgd2l0aCBGVERJIEZUMjMyUkwgVUFSVC1VU0IKPiA+
+PiBjb252ZXJ0ZXIpLCBmYWxsaW5nIHRpbWUgb2YgUm9ja1BybzY0IFVBUlQyIGlzIDQwbnMsIGJ1
+dCByaWdpbmcgdGltZQo+ID4+IGlzIG92ZXIgNjUwbnMuIFNvIFVBUlQgcmVjZWl2ZXIgd2lsbCBn
+ZXQgd3JvbmcgZGF0YSwgYmVjYXVzZSByZWNlaXZlcgo+ID4+IHJlYWQgaW50ZXJtZWRpYXRlIGRh
+dGEgb2YgcmlzaW5nIGVkZ2UuCj4gPj4KPiA+PiBSaXNpbmcgdGltZSBiZWNvbWVzIDMwMG5zIGZy
+b20gNjUwbnMgaWYgYXBwbHkgdGhpcyBwYXRjaC4gVGhpcyBpcyBub3QKPiA+PiBwZXJmZWN0IHNv
+bHV0aW9uIGJ1dCBiZXR0ZXIgdGhhbiBub3cuCj4gPj4KPiA+PiBTaWduZWQtb2ZmLWJ5OiBLYXRz
+dWhpcm8gU3V6dWtpIDxrYXRzdWhpcm9Aa2F0c3VzdGVyLm5ldD4KPiA+PiAtLS0KPiA+PiAgIGFy
+Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kgfCA5ICsrKysrKystLQo+ID4+
+ICAgMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPiA+Cj4g
+PiB5b3VyIGNoYW5naW5nIGEgY29yZSByazMzOTkgcHJvcGVydHkgaGVyZSwgc28gSSdkIHJlYWxs
+eSBsaWtlIHRvIGdldAo+ID4gaW5wdXQgZnJvbSBvdGhlciBib2FyZCBzdGFrZWhvbGRlcnMgb24g
+dGhpcyBiZWZvcmUgYXBwbHlpbmcgYSBjb3JlCj4gPiBjaGFuZ2UuCj4gPgo+ID4gQ291bGQgeW91
+IGVpdGhlciBpbmNsdWRlIHRoZSBzdWJtaXR0ZXJzIG9mIG90aGVyIHJrMzM5OS1ib2FyZHMgaW4g
+dGhlCj4gPiByZWNpcGllbnQgbGlzdCBzbyB0aGF0IHRoZXkncmUgYXdhcmUgb3IgbGltaXQgdGhl
+IGNoYW5nZSB0byByb2NrcHJvNjQgZm9yCj4gPiB0aGUgdGltZSBiZWluZyAoYWthIG92ZXJyaWRp
+bmcgdGhlIHByb3BlcnR5IGluIHRoZSBib2FyZC1kdHMpIHBsZWFzZT8KPiA+Cj4KPiBPSywgSSdt
+IGFkZGluZyBvdGhlciBib2FyZHMgbWVtYmVycy4KPiBieSAuL3NjcmlwdHMvZ2V0X21haW50YWlu
+ZXIucGwgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktKi5kdHMKPgo+Cj4gUm9j
+a1BybzY0IGRpcmVjdGx5IGNvbm5lY3QgVUFSVDIgcGlucyBvZiBSSzMzOTkgdG8gZXh0ZXJuYWwg
+Y29ubmVjdG9yLgo+IEkgdGhpbmsgbWF5YmUgb3RoZXIgUkszMzk5IGJvYXJkcyBhcmUgZmFjaW5n
+IHNhbWUgcHJvYmxlbSwgYnV0IEkgY2Fubm90Cj4gY2hlY2sgaXQgYmVjYXVzZSBJIGhhdmUgUm9j
+a1BybzY0IG9ubHkuLi4KPgo+IEknbSBoYXBweSBpZiBzb21lb25lIHRlbGwgbWUgb3RoZXIgYm9h
+cmRzIHNpdHVhdGlvbi4KCkknbSBwdWxsaW5nIG91dCBvdGhlciByb2NrY2hpcCBib2FyZHMgbW9t
+ZW50YXJpbHkgdG8gc2VlIHdoYXQga2luZCBvZgpwb3B1bGF0aW9uIHdlIGhhdmUuCgpOb3RlIHRo
+ZXNlIGFyZSBub3QgYWxsIHJ1bm5pbmcgNS54IGtlcm5lbHMsIGhvd2V2ZXIgbm9uZSBvZiB0aGVt
+IGhhdmUKdGhlIFVBUlQyIGRyaXZlIGxldmVscyBtb2RpZmllZCB0byBteSBrbm93bGVkZ2UsIGFu
+ZCByZWdhcmRsZXNzLCBub25lCnNob3cgb3ZlciAxMDAgbnMuCgpib2FyZDogICAgcmlzZS9mYWxs
+CgpyazMzOTktcm9jLXBjOiA5MG5zLzkwbnMKcmszMzk5LXJvY2twcm82NCBWMi4wOiAgOTBucy80
+NW5zCnJrMzM5OS1yb2NrcHJvNjQgVjIuMTogIDQwbnMvNDFucwoKUGxlYXNlIG1ha2Ugc3VyZSB0
+aGVyZSdzIG5vdCBhIGxhcmdlIGFtb3VudCBvZiBmbHV4IG9yIHNvbWV0aGluZwphcm91bmQgdGhl
+IHRlcm1pbmFscyBvbiB5b3VyIGJvYXJkLCB0aGF0IHNlZW1zIGV4Y2Vzc2l2ZWx5IGhpZ2guCgo+
+Cj4gQmVzdCBSZWdhcmRzLAo+IEthdHN1aGlybyBTdXp1a2kKPgo+Cj4gPiBUaGFua3MKPiA+IEhl
+aWtvCj4gPgo+ID4KPiA+Cj4gPj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
+a2NoaXAvcmszMzk5LmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5k
+dHNpCj4gPj4gaW5kZXggYmVhYTkyNzQ0YTY0Li5lM2M4ZjkxZWFkNTAgMTAwNjQ0Cj4gPj4gLS0t
+IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+ID4+ICsrKyBiL2Fy
+Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kKPiA+PiBAQCAtMjAwMCw2ICsy
+MDAwLDExIEBACj4gPj4gICAgICAgICAgICAgICAgICAgICAgZHJpdmUtc3RyZW5ndGggPSA8OD47
+Cj4gPj4gICAgICAgICAgICAgIH07Cj4gPj4KPiA+PiArICAgICAgICAgICAgcGNmZ19wdWxsX3Vw
+XzEybWE6IHBjZmctcHVsbC11cC0xMm1hIHsKPiA+PiArICAgICAgICAgICAgICAgICAgICBiaWFz
+LXB1bGwtdXA7Cj4gPj4gKyAgICAgICAgICAgICAgICAgICAgZHJpdmUtc3RyZW5ndGggPSA8MTI+
+Owo+ID4+ICsgICAgICAgICAgICB9Owo+ID4+ICsKPiA+PiAgICAgICAgICAgICAgcGNmZ19wdWxs
+X3VwXzE4bWE6IHBjZmctcHVsbC11cC0xOG1hIHsKPiA+PiAgICAgICAgICAgICAgICAgICAgICBi
+aWFzLXB1bGwtdXA7Cj4gPj4gICAgICAgICAgICAgICAgICAgICAgZHJpdmUtc3RyZW5ndGggPSA8
+MTg+Owo+ID4+IEBAIC0yNTIxLDggKzI1MjYsOCBAQAo+ID4+ICAgICAgICAgICAgICB1YXJ0MmMg
+ewo+ID4+ICAgICAgICAgICAgICAgICAgICAgIHVhcnQyY194ZmVyOiB1YXJ0MmMteGZlciB7Cj4g
+Pj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICByb2NrY2hpcCxwaW5zID0KPiA+PiAtICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPDQgUktfUEMzIFJLX0ZVTkNfMSAmcGNm
+Z19wdWxsX3VwPiwKPiA+PiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPDQg
+UktfUEM0IFJLX0ZVTkNfMSAmcGNmZ19wdWxsX25vbmU+Owo+ID4+ICsgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICA8NCBSS19QQzMgUktfRlVOQ18xICZwY2ZnX3B1bGxfdXBfMTJt
+YT4sCj4gPj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDw0IFJLX1BDNCBS
+S19GVU5DXzEgJnBjZmdfcHVsbF9ub25lXzEybWE+Owo+ID4+ICAgICAgICAgICAgICAgICAgICAg
+IH07Cj4gPj4gICAgICAgICAgICAgIH07Cj4gPj4KPiA+Pgo+ID4KPiA+Cj4gPgo+ID4KPiA+Cj4g
+Pgo+Cj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+
+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
