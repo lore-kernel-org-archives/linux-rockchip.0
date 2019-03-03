@@ -1,136 +1,157 @@
-From: Tony McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: decrease rising edge time of UART2
-Date: Sun, 3 Mar 2019 14:12:46 -0500
-Message-ID: <CAERgok=cxtLqRmYXdrCaUF8mK2pPfGAPc6w3hdLaPgPmqKmkcw@mail.gmail.com>
-References: <20190303122705.27094-1-katsuhiro@katsuster.net>
- <1623469.Hy6pdcMFRX@phil> <e722acb4-167f-8333-5c8a-b693815273f4@katsuster.net>
- <CAERgoknAV1sACSPjM_u4WyWzLvmUntXMoEx=ccpFsqYZVeu__Q@mail.gmail.com>
- <26c3aea3-959f-bfb3-177f-3e5314494361@katsuster.net>
- <CAERgoknMO6xMzuhCn2kSHZm8Pt+6YH3jDvJckJq28u9OW08u2Q@mail.gmail.com>
+From: David Summers <beagleboard@davidjohnsummers.uk>
+Subject: Re: [PATCH 2/3] ARM: dts: rk3288 Tinker Board (S) add wi-fi
+Date: Sun, 3 Mar 2019 19:40:07 +0000
+Message-ID: <9df2e318-a459-bded-2971-90a6722e1a4f@davidjohnsummers.uk>
+References: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
+ <20190217121513.22965-3-beagleboard@davidjohnsummers.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAERgoknMO6xMzuhCn2kSHZm8Pt+6YH3jDvJckJq28u9OW08u2Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Akash Gajjar <Akash_Gajjar-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shohei Maruyama <cheat.sc.linux-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>, Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jakob Unterwurzacher <jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Oskari Lemmela <oskari-fV/XPr6JiiHR7s880joybQ@public.gmane.org>, Enric
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190217121513.22965-3-beagleboard@davidjohnsummers.uk>
+Content-Language: en-PH
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: Stefan Wahren <stefan.wahren@i2se.com>, linux-rockchip@lists.infradead.org, Tony McKahan <tonymckahan@gmail.com>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gU3VuLCBNYXIgMywgMjAxOSBhdCAxOjQ1IFBNIFRvbnkgTWNLYWhhbiA8dG9ueW1ja2FoYW5A
-Z21haWwuY29tPiB3cm90ZToKPgo+IEhlbGxvIEthdHN1c2hpcm8sCgpBbmQgYXBvbG9naWVzIGZv
-ciB0aGUgZXh0cmEgInMiLCB0eXBpbmcgdG9vIHF1aWNrbHkgSSdtIGFmcmFpZC4KPgo+IE9uIFN1
-biwgTWFyIDMsIDIwMTkgYXQgMTI6MzEgUE0gS2F0c3VoaXJvIFN1enVraQo+IDxrYXRzdWhpcm9A
-a2F0c3VzdGVyLm5ldD4gd3JvdGU6Cj4gPgo+ID4gSGVsbG8gVG9ueSwKPiA+Cj4gPiBPbiAyMDE5
-LzAzLzA0IDA6MTMsIFRvbnkgTWNLYWhhbiB3cm90ZToKPiA+ID4gT24gU3VuLCBNYXIgMywgMjAx
-OSBhdCA5OjA0IEFNIEthdHN1aGlybyBTdXp1a2kgPGthdHN1aGlyb0BrYXRzdXN0ZXIubmV0PiB3
-cm90ZToKPiA+ID4+Cj4gPiA+PiBIZWxsbyBIZWlrbywKPiA+ID4+Cj4gPiA+PiBUaGFuayB5b3Ug
-Zm9yIGNvbW1lbnRzLgo+ID4gPj4KPiA+ID4+IE9uIDIwMTkvMDMvMDMgMjI6MTksIEhlaWtvIFN0
-dWVibmVyIHdyb3RlOgo+ID4gPj4+IEhpLAo+ID4gPj4+Cj4gPiA+Pj4gQW0gU29ubnRhZywgMy4g
-TcOkcnogMjAxOSwgMTM6Mjc6MDUgQ0VUIHNjaHJpZWIgS2F0c3VoaXJvIFN1enVraToKPiA+ID4+
-Pj4gVGhpcyBwYXRjaCBpbmNyZWFzZXMgZHJpdmUgc3RyZW5ndGggb2YgVUFSVDIgZnJvbSAzbUEg
-dG8gMTJtQSBmb3IKPiA+ID4+Pj4gZ2V0dGluZyBtb3JlIGZhc3RlciByaXNpbmcgZWRnZS4KPiA+
-ID4+Pj4KPiA+ID4+Pj4gUm9ja1BybzY0IGlzIHVzaW5nIGEgdmVyeSBoaWdoIHNwZWVkIHJhdGUg
-KDEuNU1icHMpIGZvciBVQVJUMi4gSW4KPiA+ID4+Pj4gdGhpcyBzZXR0aW5nLCBhIGJpdCB3aWR0
-aCBvZiBVQVJUIGlzIGFib3V0IDY2N25zLgo+ID4gPj4+Pgo+ID4gPj4+PiBJbiBteSBlbnZpcm9u
-bWVudCAoUm9ja1BybzY0IFVBUlQyIHdpdGggRlRESSBGVDIzMlJMIFVBUlQtVVNCCj4gPiA+Pj4+
-IGNvbnZlcnRlciksIGZhbGxpbmcgdGltZSBvZiBSb2NrUHJvNjQgVUFSVDIgaXMgNDBucywgYnV0
-IHJpZ2luZyB0aW1lCj4gPiA+Pj4+IGlzIG92ZXIgNjUwbnMuIFNvIFVBUlQgcmVjZWl2ZXIgd2ls
-bCBnZXQgd3JvbmcgZGF0YSwgYmVjYXVzZSByZWNlaXZlcgo+ID4gPj4+PiByZWFkIGludGVybWVk
-aWF0ZSBkYXRhIG9mIHJpc2luZyBlZGdlLgo+ID4gPj4+Pgo+ID4gPj4+PiBSaXNpbmcgdGltZSBi
-ZWNvbWVzIDMwMG5zIGZyb20gNjUwbnMgaWYgYXBwbHkgdGhpcyBwYXRjaC4gVGhpcyBpcyBub3QK
-PiA+ID4+Pj4gcGVyZmVjdCBzb2x1dGlvbiBidXQgYmV0dGVyIHRoYW4gbm93Lgo+ID4gPj4+Pgo+
-ID4gPj4+PiBTaWduZWQtb2ZmLWJ5OiBLYXRzdWhpcm8gU3V6dWtpIDxrYXRzdWhpcm9Aa2F0c3Vz
-dGVyLm5ldD4KPiA+ID4+Pj4gLS0tCj4gPiA+Pj4+ICAgIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
-a2NoaXAvcmszMzk5LmR0c2kgfCA5ICsrKysrKystLQo+ID4gPj4+PiAgICAxIGZpbGUgY2hhbmdl
-ZCwgNyBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+ID4gPj4+Cj4gPiA+Pj4geW91ciBj
-aGFuZ2luZyBhIGNvcmUgcmszMzk5IHByb3BlcnR5IGhlcmUsIHNvIEknZCByZWFsbHkgbGlrZSB0
-byBnZXQKPiA+ID4+PiBpbnB1dCBmcm9tIG90aGVyIGJvYXJkIHN0YWtlaG9sZGVycyBvbiB0aGlz
-IGJlZm9yZSBhcHBseWluZyBhIGNvcmUKPiA+ID4+PiBjaGFuZ2UuCj4gPiA+Pj4KPiA+ID4+PiBD
-b3VsZCB5b3UgZWl0aGVyIGluY2x1ZGUgdGhlIHN1Ym1pdHRlcnMgb2Ygb3RoZXIgcmszMzk5LWJv
-YXJkcyBpbiB0aGUKPiA+ID4+PiByZWNpcGllbnQgbGlzdCBzbyB0aGF0IHRoZXkncmUgYXdhcmUg
-b3IgbGltaXQgdGhlIGNoYW5nZSB0byByb2NrcHJvNjQgZm9yCj4gPiA+Pj4gdGhlIHRpbWUgYmVp
-bmcgKGFrYSBvdmVycmlkaW5nIHRoZSBwcm9wZXJ0eSBpbiB0aGUgYm9hcmQtZHRzKSBwbGVhc2U/
-Cj4gPiA+Pj4KPiA+ID4+Cj4gPiA+PiBPSywgSSdtIGFkZGluZyBvdGhlciBib2FyZHMgbWVtYmVy
-cy4KPiA+ID4+IGJ5IC4vc2NyaXB0cy9nZXRfbWFpbnRhaW5lci5wbCBhcmNoL2FybTY0L2Jvb3Qv
-ZHRzL3JvY2tjaGlwL3JrMzM5OS0qLmR0cwo+ID4gPj4KPiA+ID4+Cj4gPiA+PiBSb2NrUHJvNjQg
-ZGlyZWN0bHkgY29ubmVjdCBVQVJUMiBwaW5zIG9mIFJLMzM5OSB0byBleHRlcm5hbCBjb25uZWN0
-b3IuCj4gPiA+PiBJIHRoaW5rIG1heWJlIG90aGVyIFJLMzM5OSBib2FyZHMgYXJlIGZhY2luZyBz
-YW1lIHByb2JsZW0sIGJ1dCBJIGNhbm5vdAo+ID4gPj4gY2hlY2sgaXQgYmVjYXVzZSBJIGhhdmUg
-Um9ja1BybzY0IG9ubHkuLi4KPiA+ID4+Cj4gPiA+PiBJJ20gaGFwcHkgaWYgc29tZW9uZSB0ZWxs
-IG1lIG90aGVyIGJvYXJkcyBzaXR1YXRpb24uCj4gPiA+Cj4gPiA+IEknbSBwdWxsaW5nIG91dCBv
-dGhlciByb2NrY2hpcCBib2FyZHMgbW9tZW50YXJpbHkgdG8gc2VlIHdoYXQga2luZCBvZgo+ID4g
-PiBwb3B1bGF0aW9uIHdlIGhhdmUuCj4gPiA+Cj4gPiA+IE5vdGUgdGhlc2UgYXJlIG5vdCBhbGwg
-cnVubmluZyA1Lngga2VybmVscywgaG93ZXZlciBub25lIG9mIHRoZW0gaGF2ZQo+ID4gPiB0aGUg
-VUFSVDIgZHJpdmUgbGV2ZWxzIG1vZGlmaWVkIHRvIG15IGtub3dsZWRnZSwgYW5kIHJlZ2FyZGxl
-c3MsIG5vbmUKPiA+ID4gc2hvdyBvdmVyIDEwMCBucy4KPiA+ID4KPiA+ID4gYm9hcmQ6ICAgIHJp
-c2UvZmFsbAo+ID4gPgo+ID4gPiByazMzOTktcm9jLXBjOiA5MG5zLzkwbnMKPiA+ID4gcmszMzk5
-LXJvY2twcm82NCBWMi4wOiAgOTBucy80NW5zCj4gPiA+IHJrMzM5OS1yb2NrcHJvNjQgVjIuMTog
-IDQwbnMvNDFucwo+ID4gPgo+ID4gPiBQbGVhc2UgbWFrZSBzdXJlIHRoZXJlJ3Mgbm90IGEgbGFy
-Z2UgYW1vdW50IG9mIGZsdXggb3Igc29tZXRoaW5nCj4gPiA+IGFyb3VuZCB0aGUgdGVybWluYWxz
-IG9uIHlvdXIgYm9hcmQsIHRoYXQgc2VlbXMgZXhjZXNzaXZlbHkgaGlnaC4KPiA+ID4KPiA+Cj4g
-PiBUaGFuayB5b3UgZm9yIHZhbHVhYmxlIGluZm9ybWF0aW9uLiBGb3IgbW9yZSBkZWVwbHkgZGlz
-Y3Vzc2lvbiwKPiA+IEkgdHJpZWQgb3RoZXIgY29uZGl0aW9ucyBhbmQgd2F0Y2ggdGhlIHJpc2Uv
-ZmFsbCB0aW1lcy4KPiA+Cj4gPiAxKSBOb3QgY29ubmVjdAo+ID4gVGhlIHJpc2UvZmFsbCB0aW1l
-cyBhcmUgNDBucy81bnMgd2hlbiBub3RoaW5nIGNvbm5lY3QgKGltcGVkYW5jZSBpcwo+ID4gdmVy
-eSBoaWdoKSB0byBleHRlcm5hbCBwaW4gb2YgUm9ja1BybzY0Lgo+ID4KPiA+IFdoYXQgVUFSVCBk
-ZXZpY2UgYXJlIHlvdSB1c2luZyB3aXRoIFJvY2tQcm82ND8gSWYgeW91IHVzZSBzb21lIGRldmlj
-ZQo+ID4gd2l0aCBSb2NrUHJvNjQgYW5kIGJvYXJkIHNob3dzIHJpc2UvZmFsbCB0aW1lcyA9IDkw
-bnMvNDVucywgbXkgZGV2aWNlCj4gPiBpcyBub3Qgc3VpdGFibGUgZm9yIFJvY2tQcm82NCBieSBz
-b21lIHJlYXNvbi4gU28gaXQncyBiZXR0ZXIgdG8gZHJvcAo+ID4gbXkgcGF0Y2guCj4KPiBUaGUg
-YWRhcHRlciBpcyBhbiBGVERJIEZUMjMyUkwgYnJlYWtvdXQgYm9hcmQsIGF0dGFjaGVkIHdpdGgg
-c29tZQo+IGdlbmVyaWMgRHVwb250IGNvbm5lY3RvciBqdW1wZXJzLgo+IEludGVyZXN0aW5nIHlv
-dXIgUm9ja1BybyBpcyBzaG93aW5nIHRoaXMgc3ltcHRvbSwgcGVyaGFwcyB0aGVyZSBpcyBhCj4g
-Y29sZCBzb2xkZXIgam9pbnQgc29tZXdoZXJlIGludHJvZHVjaW5nIHJlc2lzdGFuY2U/Cj4KPiA+
-Cj4gPiAyKSBPdGhlciBTb0MKPiA+IEkgaGF2ZSBvdGhlciBTb0MgYm9hcmQgcmszMzI4LXJvY2s2
-NCwgUm9jazY0IHNob3dzIHJpc2UvZmFsbCB0aW1lcyA9Cj4gPiA5MG5zLzgwbnMgd2hlbiBzYW1l
-IFVBUlQtVVNCIGRldmljZSBpcyBjb25uZWN0ZWQgdG8gVUFSVCBwaW4uCj4KPiBJIG1lYXN1cmVk
-IHNpbWlsYXIgb24gbXkgUm9jazY0IGFzIHdlbGwuCj4KPiA+Cj4gPiBJIHRoaW5rIGl0IHNob3dz
-IHJrMzM5OSdzIChvciBSb2NrUHJvNjQncz8pIGRyaXZlIHN0cmVuZ3RoIGlzIGEgbGl0dGxlCj4g
-PiB3ZWFrLiBTbyBpdCdzIGJldHRlciB0byBpbmNyZWFzZSB0aGUgZHJpdmUgc3RyZW5ndGggb2Yg
-VUFSVCBvZiByazMzOTkuCj4KPiBJIGRvIG5vdCB0aGluayB0aGlzIGlzIGEgYmFkIGlkZWEgZ2Vu
-ZXJhbGx5LCBpdCBzaW1wbHkgYWxsb3dzIGZvciBtb3JlCj4gYXZhaWxhYmxlIGN1cnJlbnQgZnJv
-bSB0aGUgaW50ZXJmYWNlLiAgSSdsbCBsZXQgb3RoZXJzIGJlIHRoZSBqdWRnZSBvZgo+IHRoYXQs
-IGhvd2V2ZXIuCj4KPiA+Cj4gPiBCZXN0IFJlZ2FyZHMsCj4gPiBLYXRzdWhpcm8gU3V6dWtpCj4g
-Pgo+ID4gPj4KPiA+ID4+IEJlc3QgUmVnYXJkcywKPiA+ID4+IEthdHN1aGlybyBTdXp1a2kKPiA+
-ID4+Cj4gPiA+Pgo+ID4gPj4+IFRoYW5rcwo+ID4gPj4+IEhlaWtvCj4gPiA+Pj4KPiA+ID4+Pgo+
-ID4gPj4+Cj4gPiA+Pj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3JrMzM5OS5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+
-ID4gPj4+PiBpbmRleCBiZWFhOTI3NDRhNjQuLmUzYzhmOTFlYWQ1MCAxMDA2NDQKPiA+ID4+Pj4g
-LS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+ID4gPj4+PiAr
-KysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpCj4gPiA+Pj4+IEBA
-IC0yMDAwLDYgKzIwMDAsMTEgQEAKPiA+ID4+Pj4gICAgICAgICAgICAgICAgICAgICAgIGRyaXZl
-LXN0cmVuZ3RoID0gPDg+Owo+ID4gPj4+PiAgICAgICAgICAgICAgIH07Cj4gPiA+Pj4+Cj4gPiA+
-Pj4+ICsgICAgICAgICAgICBwY2ZnX3B1bGxfdXBfMTJtYTogcGNmZy1wdWxsLXVwLTEybWEgewo+
-ID4gPj4+PiArICAgICAgICAgICAgICAgICAgICBiaWFzLXB1bGwtdXA7Cj4gPiA+Pj4+ICsgICAg
-ICAgICAgICAgICAgICAgIGRyaXZlLXN0cmVuZ3RoID0gPDEyPjsKPiA+ID4+Pj4gKyAgICAgICAg
-ICAgIH07Cj4gPiA+Pj4+ICsKPiA+ID4+Pj4gICAgICAgICAgICAgICBwY2ZnX3B1bGxfdXBfMTht
-YTogcGNmZy1wdWxsLXVwLTE4bWEgewo+ID4gPj4+PiAgICAgICAgICAgICAgICAgICAgICAgYmlh
-cy1wdWxsLXVwOwo+ID4gPj4+PiAgICAgICAgICAgICAgICAgICAgICAgZHJpdmUtc3RyZW5ndGgg
-PSA8MTg+Owo+ID4gPj4+PiBAQCAtMjUyMSw4ICsyNTI2LDggQEAKPiA+ID4+Pj4gICAgICAgICAg
-ICAgICB1YXJ0MmMgewo+ID4gPj4+PiAgICAgICAgICAgICAgICAgICAgICAgdWFydDJjX3hmZXI6
-IHVhcnQyYy14ZmVyIHsKPiA+ID4+Pj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcm9j
-a2NoaXAscGlucyA9Cj4gPiA+Pj4+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICA8NCBSS19QQzMgUktfRlVOQ18xICZwY2ZnX3B1bGxfdXA+LAo+ID4gPj4+PiAtICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgPDQgUktfUEM0IFJLX0ZVTkNfMSAmcGNmZ19wdWxs
-X25vbmU+Owo+ID4gPj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPDQg
-UktfUEMzIFJLX0ZVTkNfMSAmcGNmZ19wdWxsX3VwXzEybWE+LAo+ID4gPj4+PiArICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgPDQgUktfUEM0IFJLX0ZVTkNfMSAmcGNmZ19wdWxs
-X25vbmVfMTJtYT47Cj4gPiA+Pj4+ICAgICAgICAgICAgICAgICAgICAgICB9Owo+ID4gPj4+PiAg
-ICAgICAgICAgICAgIH07Cj4gPiA+Pj4+Cj4gPiA+Pj4+Cj4gPiA+Pj4KPiA+ID4+Pgo+ID4gPj4+
-Cj4gPiA+Pj4KPiA+ID4+Pgo+ID4gPj4+Cj4gPiA+Pgo+ID4gPj4KPiA+ID4+IF9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gPiA+PiBMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKPiA+ID4+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-PiA+ID4+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAKPiA+ID4KPiA+ID4KPiA+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+And so synthesis on where we are on the WiFi patch for the Thinker Boards.
+
+There have been very few comments, only really Tony McKahan from Armbian 
+- where they apply a similar patch. Tony was going to test the patch, 
+but we have heard nothing back. The patch has been tested on ArchLinux 
+Arm, and found to work.
+
+So with no further comments, I propose this is accepted as is. Heiko, 
+let me know if you want me to respin this patch to apply cleanly after 
+the sd card changes.
+
+David.
+
+
+
+On 17/02/2019 12:15, David Summers wrote:
+> This patch adds the wifi to the ASUS Tinker Board (S) machines.
+>
+> Unfortunatly neither the Tinker Board nor the Tinker Board S schematic
+> indicate how the WiFi is wired up on these devices. The WiFi is
+> provided by the RTL8723BS device, that has sdio WiFi and UART
+> Bluetooth. This patch just adds the WiFi interface.
+>
+> With no schematic, most of the wiring has been derived from the ASUS
+> patch to Debian:
+>
+> https://github.com/TinkerBoard/debian_kernel/commit/6a3128ade33f758887048578ada61a4b7ab8e678
+>
+> In conjunction with the pin out of the RTL8723BS device:
+>
+> http://files.pine64.org/doc/datasheet/pine64/RTL8723BS.pdf
+> http://cit.odessa.ua/media/pdf/Intel-Compute-Stick/FN-Link_F23BDSM25-W1.pdf
+>
+> The only unusual part is that to bring the card up, both the pins
+> RK_PD3 and RK_PD4 need to be pulled. Why this needs to be done is not
+> clear, best explaination is that they are connected to the RTL8723BS
+> pins WL_DIS# and BT_DIS#, which the data sheet vaguely says:
+>
+> Shared with GPIO9 This Pin Can Externally Shutdown the RTL8723BS WLAN
+> function when BT_DISn is Pulled Low. When this pin deasserted, SDIO
+> interface will be disabled. This pin can also support the WLAN Ra
+> dio-off function with host interface remaining connected.
+>
+> Anyway extensive testing the TheSaint on ArchLinux Arm Forum
+>
+> https://archlinuxarm.org/forum/viewtopic.php?f=44&t=13064&start=120#p60548
+>
+> Signed-off-by: David Summers <beagleboard@davidjohnsummers.uk>
+> Signed-off-by: Stefan Wahren <stefan.wahren@i2se.com>
+> ---
+>   arch/arm/boot/dts/rk3288-tinker.dtsi | 39 +++++++++++++++++++++++++---
+>   1 file changed, 36 insertions(+), 3 deletions(-)
+>
+> diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
+> index fceaeed44e34..e1796f340eef 100644
+> --- a/arch/arm/boot/dts/rk3288-tinker.dtsi
+> +++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
+> @@ -3,8 +3,9 @@
+>    * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd.
+>    */
+>   
+>   #include "rk3288.dtsi"
+>   #include <dt-bindings/input/input.h>
+> +#include <dt-bindings/clock/rockchip,rk808.h>
+>   
+>   / {
+>   	chosen {
+> @@ -98,6 +97,15 @@
+>   		startup-delay-us = <100000>;
+>   		vin-supply = <&vcc_io>;
+>   	};
+> +
+> +	sdio_pwrseq: sdio-pwrseq {
+> +		compatible = "mmc-pwrseq-simple";
+> +		clocks = <&rk808 RK808_CLKOUT1>;
+> +		clock-names = "ext_clock";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&wifi_enable>;
+> +		reset-gpios = <&gpio4 RK_PD3 GPIO_ACTIVE_LOW>, <&gpio4 RK_PD4 GPIO_ACTIVE_LOW>;
+> +	};
+>   };
+>   
+>   &cpu0 {
+> @@ -337,8 +345,8 @@
+>   
+>   &io_domains {
+>   	status = "okay";
+> -
+>   	sdcard-supply = <&vccio_sd>;
+> +	wifi-supply = <&vcc_18>;
+>   };
+>   
+>   &pinctrl {
+> @@ -417,6 +425,12 @@
+>   			rockchip,pins = <7 8 RK_FUNC_GPIO &pcfg_pull_none>;
+>   		};
+>   	};
+> +
+> +	sdio {
+> +		wifi_enable: wifi-enable {
+> +			rockchip,pins = <4 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>, <4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+>   };
+>   
+>   &pwm0 {
+> @@ -440,6 +454,25 @@
+>   	vqmmc-supply = <&vccio_sd>;
+>   };
+>   
+> +&sdio0 {
+> +	bus-width = <4>;
+> +	cap-sd-highspeed;
+> +	cap-sdio-irq;
+> +	keep-power-in-suspend;
+> +	mmc-pwrseq = <&sdio_pwrseq>;
+> +	non-removable;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&sdio0_bus4>, <&sdio0_cmd>, <&sdio0_clk>, <&sdio0_int>;
+> +	max-frequency = <50000000>;
+> +	sd-uhs-sdr12;
+> +	sd-uhs-sdr25;
+> +	sd-uhs-sdr50;
+> +	sd-uhs-ddr50;
+> +	vmmc-supply = <&vcc_io>;
+> +	vqmmc-supply = <&vcc_18>;
+> +	status = "okay";
+> +};
+> +
+>   &tsadc {
+>   	rockchip,hw-tshut-mode = <1>; /* tshut mode 0:CRU 1:GPIO */
+>   	rockchip,hw-tshut-polarity = <1>; /* tshut polarity 0:LOW 1:HIGH */
