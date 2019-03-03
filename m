@@ -1,13 +1,13 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2] arm64: rk3399: Add capacity-dmips-mhz attributes
-Date: Sun, 03 Mar 2019 14:35:40 +0100
-Message-ID: <17649285.loQdcguGhd@phil>
-References: <20190302131030.2091-1-marc.zyngier@arm.com>
+Subject: Re: [PATCH 0/3] Add leds, ir and fix regulator name on rk3328-rock64
+Date: Sun, 03 Mar 2019 14:51:13 +0100
+Message-ID: <21871055.QfYpCFHxls@phil>
+References: <AM3PR03MB0966DCE9C7BD0D0191467EFDAC770@AM3PR03MB0966.eurprd03.prod.outlook.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190302131030.2091-1-marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+In-Reply-To: <AM3PR03MB0966DCE9C7BD0D0191467EFDAC770-XQTXrJX/giFAc9da7WRX18eAHadYHfrlvxpqHgZTriW3zl9H0oFU5g@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,32 +17,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Cc: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 2. M=E4rz 2019, 14:10:30 CET schrieb Marc Zyngier:
-> The RK3399 has the interesting property to be a so called "big-little"
-> system, where not all the CPUs are equal (the A53s are much weaker
-> than the A72s).
+Am Samstag, 2. M=E4rz 2019, 17:56:56 CET schrieb Jonas Karlman:
+> This patchset fixes two regulator names and adds nodes to
+> enable use of leds and ir on Rock64.
 > =
 
-> So far, we're not telling the OS that there is such a difference in
-> processing capacity, and Linux assumes that they are equal. Too bad.
-> =
+> Jonas Karlman (3):
+>   arm64: dts: rockchip: fix regulator name on rk3328-rock64
+>   arm64: dts: rockchip: add leds node on rk3328-rock64
+>   arm64: dts: rockchip: add ir-receiver node on rk3328-rock64
 
-> Let's tell the OS about this by using the capacity-dmips-mhz
-> property. The values used here are those used on the Juno platform,
-> which is quite similar. This leads to the scheduler knowing that
-> it can pack more tasks on the A72s, and leads to a better interactive
-> experience.
-> =
+I've moved the ir-receiver node to its alphabetical position in the file
+and applied all 3 patches for 5.2 .
 
-> Tested-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-> Signed-off-by: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+You might want to check your mail setup though, the mail threading
+was broken. While all mails did contain In-Reply-To headers these didn't
+match the message IDs outlook.com set at all.
 
-Subject "arm64: dts: rockchip: foobar on rk3399" for the future please :-)
-I've fixed that up and applied the patch for 5.2
 
-Thanks
 Heiko
