@@ -1,106 +1,41 @@
-From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Subject: Re: [PATCH] arm64: dts: rockchip: decrease rising edge time of UART2
-Date: Sun, 3 Mar 2019 23:03:29 +0900
-Message-ID: <e722acb4-167f-8333-5c8a-b693815273f4@katsuster.net>
-References: <20190303122705.27094-1-katsuhiro@katsuster.net>
- <1623469.Hy6pdcMFRX@phil>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: fix rk3328-roc-cc gmac2io
+ tx/rx_delay
+Date: Sun, 03 Mar 2019 15:10:32 +0100
+Message-ID: <3120482.od4P9FZq9J@phil>
+References: <20190228222923.30418-1-papadakospan@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1623469.Hy6pdcMFRX@phil>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Akash Gajjar <Akash_Gajjar@mentor.com>, Brian Norris <briannorris@chromium.org>, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Douglas Anderson <dianders@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Levin Du <djw@t-chip.com.cn>, Linus Walleij <linus.walleij@linaro.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Matthias Brugger <mbrugger@suse.com>, Oskari Lemmela <oskari@lemmela.net>, Robin Murphy <robin.murphy@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>Sh
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190228222923.30418-1-papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Heiko,
+Am Donnerstag, 28. Februar 2019, 23:29:23 CET schrieb Leonidas P. Papadakos:
+> The rk3328-roc-cc board exhibits tx stability issues with large packets,
+> as does the rock64 board, which was fixed with this patch
+> https://patchwork.kernel.org/patch/10178969/
+> 
+> A similar patch was merged for the rk3328-roc-cc here
+> https://patchwork.kernel.org/patch/10804863/
+> but it doesn't include the tx/rx_delay tweaks, and I find that they
+> help with an issue where large transfers would bring the ethernet
+> link down, causing a link reset regularly.
+> 
+> Signed-off-by: Leonidas P. Papadakos <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-Thank you for comments.
+applied as fix for the 5.1-rc cycle starting in about 2 weeks.
 
-On 2019/03/03 22:19, Heiko Stuebner wrote:
-> Hi,
-> 
-> Am Sonntag, 3. März 2019, 13:27:05 CET schrieb Katsuhiro Suzuki:
->> This patch increases drive strength of UART2 from 3mA to 12mA for
->> getting more faster rising edge.
->>
->> RockPro64 is using a very high speed rate (1.5Mbps) for UART2. In
->> this setting, a bit width of UART is about 667ns.
->>
->> In my environment (RockPro64 UART2 with FTDI FT232RL UART-USB
->> converter), falling time of RockPro64 UART2 is 40ns, but riging time
->> is over 650ns. So UART receiver will get wrong data, because receiver
->> read intermediate data of rising edge.
->>
->> Rising time becomes 300ns from 650ns if apply this patch. This is not
->> perfect solution but better than now.
->>
->> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
->> ---
->>   arch/arm64/boot/dts/rockchip/rk3399.dtsi | 9 +++++++--
->>   1 file changed, 7 insertions(+), 2 deletions(-)
-> 
-> your changing a core rk3399 property here, so I'd really like to get
-> input from other board stakeholders on this before applying a core
-> change.
-> 
-> Could you either include the submitters of other rk3399-boards in the
-> recipient list so that they're aware or limit the change to rockpro64 for
-> the time being (aka overriding the property in the board-dts) please?
-> 
-
-OK, I'm adding other boards members.
-by ./scripts/get_maintainer.pl arch/arm64/boot/dts/rockchip/rk3399-*.dts
-
-
-RockPro64 directly connect UART2 pins of RK3399 to external connector.
-I think maybe other RK3399 boards are facing same problem, but I cannot
-check it because I have RockPro64 only...
-
-I'm happy if someone tell me other boards situation.
-
-Best Regards,
-Katsuhiro Suzuki
-
-
-> Thanks
-> Heiko
-> 
-> 
-> 
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->> index beaa92744a64..e3c8f91ead50 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->> @@ -2000,6 +2000,11 @@
->>   			drive-strength = <8>;
->>   		};
->>   
->> +		pcfg_pull_up_12ma: pcfg-pull-up-12ma {
->> +			bias-pull-up;
->> +			drive-strength = <12>;
->> +		};
->> +
->>   		pcfg_pull_up_18ma: pcfg-pull-up-18ma {
->>   			bias-pull-up;
->>   			drive-strength = <18>;
->> @@ -2521,8 +2526,8 @@
->>   		uart2c {
->>   			uart2c_xfer: uart2c-xfer {
->>   				rockchip,pins =
->> -					<4 RK_PC3 RK_FUNC_1 &pcfg_pull_up>,
->> -					<4 RK_PC4 RK_FUNC_1 &pcfg_pull_none>;
->> +					<4 RK_PC3 RK_FUNC_1 &pcfg_pull_up_12ma>,
->> +					<4 RK_PC4 RK_FUNC_1 &pcfg_pull_none_12ma>;
->>   			};
->>   		};
->>   
->>
-> 
-> 
-> 
-> 
-> 
-> 
+Thanks
+Heiko
