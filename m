@@ -1,157 +1,198 @@
-From: David Summers <beagleboard@davidjohnsummers.uk>
-Subject: Re: [PATCH 2/3] ARM: dts: rk3288 Tinker Board (S) add wi-fi
-Date: Sun, 3 Mar 2019 19:40:07 +0000
-Message-ID: <9df2e318-a459-bded-2971-90a6722e1a4f@davidjohnsummers.uk>
-References: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
- <20190217121513.22965-3-beagleboard@davidjohnsummers.uk>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: decrease rising edge time of UART2
+Date: Sun, 3 Mar 2019 19:50:49 +0000
+Message-ID: <7ac5038b-ce5d-89d1-4eee-6864837272c6@arm.com>
+References: <20190303122705.27094-1-katsuhiro@katsuster.net>
+ <1623469.Hy6pdcMFRX@phil>
+ <e722acb4-167f-8333-5c8a-b693815273f4@katsuster.net>
+ <CAERgoknAV1sACSPjM_u4WyWzLvmUntXMoEx=ccpFsqYZVeu__Q@mail.gmail.com>
+ <26c3aea3-959f-bfb3-177f-3e5314494361@katsuster.net>
+ <CAERgoknMO6xMzuhCn2kSHZm8Pt+6YH3jDvJckJq28u9OW08u2Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190217121513.22965-3-beagleboard@davidjohnsummers.uk>
-Content-Language: en-PH
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com
-Cc: Stefan Wahren <stefan.wahren@i2se.com>, linux-rockchip@lists.infradead.org, Tony McKahan <tonymckahan@gmail.com>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAERgoknMO6xMzuhCn2kSHZm8Pt+6YH3jDvJckJq28u9OW08u2Q@mail.gmail.com>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tony McKahan <tonymckahan@gmail.com>, Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Cc: Heiko Stuebner <heiko@sntech.de>, Akash Gajjar <Akash_Gajjar@mentor.com>, Brian Norris <briannorris@chromium.org>, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Douglas Anderson <dianders@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Levin Du <djw@t-chip.com.cn>, Linus Walleij <linus.walleij@linaro.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Matthias Brugger <mbrugger@suse.com>, Oskari Lemmela <oskari@lemmela.net>, Shawn Lin <shawn.lin@rock-chips.com>, Shohei Maruyama <cheat.sc.linux@outlook.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-And so synthesis on where we are on the WiFi patch for the Thinker Boards.
+On 2019-03-03 6:45 pm, Tony McKahan wrote:
+> Hello Katsushiro,
+> 
+> On Sun, Mar 3, 2019 at 12:31 PM Katsuhiro Suzuki
+> <katsuhiro@katsuster.net> wrote:
+>>
+>> Hello Tony,
+>>
+>> On 2019/03/04 0:13, Tony McKahan wrote:
+>>> On Sun, Mar 3, 2019 at 9:04 AM Katsuhiro Suzuki <katsuhiro@katsuster.net> wrote:
+>>>>
+>>>> Hello Heiko,
+>>>>
+>>>> Thank you for comments.
+>>>>
+>>>> On 2019/03/03 22:19, Heiko Stuebner wrote:
+>>>>> Hi,
+>>>>>
+>>>>> Am Sonntag, 3. März 2019, 13:27:05 CET schrieb Katsuhiro Suzuki:
+>>>>>> This patch increases drive strength of UART2 from 3mA to 12mA for
+>>>>>> getting more faster rising edge.
+>>>>>>
+>>>>>> RockPro64 is using a very high speed rate (1.5Mbps) for UART2. In
+>>>>>> this setting, a bit width of UART is about 667ns.
+>>>>>>
+>>>>>> In my environment (RockPro64 UART2 with FTDI FT232RL UART-USB
+>>>>>> converter), falling time of RockPro64 UART2 is 40ns, but riging time
+>>>>>> is over 650ns. So UART receiver will get wrong data, because receiver
+>>>>>> read intermediate data of rising edge.
+>>>>>>
+>>>>>> Rising time becomes 300ns from 650ns if apply this patch. This is not
+>>>>>> perfect solution but better than now.
+>>>>>>
+>>>>>> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+>>>>>> ---
+>>>>>>     arch/arm64/boot/dts/rockchip/rk3399.dtsi | 9 +++++++--
+>>>>>>     1 file changed, 7 insertions(+), 2 deletions(-)
+>>>>>
+>>>>> your changing a core rk3399 property here, so I'd really like to get
+>>>>> input from other board stakeholders on this before applying a core
+>>>>> change.
+>>>>>
+>>>>> Could you either include the submitters of other rk3399-boards in the
+>>>>> recipient list so that they're aware or limit the change to rockpro64 for
+>>>>> the time being (aka overriding the property in the board-dts) please?
+>>>>>
+>>>>
+>>>> OK, I'm adding other boards members.
+>>>> by ./scripts/get_maintainer.pl arch/arm64/boot/dts/rockchip/rk3399-*.dts
+>>>>
+>>>>
+>>>> RockPro64 directly connect UART2 pins of RK3399 to external connector.
+>>>> I think maybe other RK3399 boards are facing same problem, but I cannot
+>>>> check it because I have RockPro64 only...
+>>>>
+>>>> I'm happy if someone tell me other boards situation.
+>>>
+>>> I'm pulling out other rockchip boards momentarily to see what kind of
+>>> population we have.
+>>>
+>>> Note these are not all running 5.x kernels, however none of them have
+>>> the UART2 drive levels modified to my knowledge, and regardless, none
+>>> show over 100 ns.
+>>>
+>>> board:    rise/fall
+>>>
+>>> rk3399-roc-pc: 90ns/90ns
+>>> rk3399-rockpro64 V2.0:  90ns/45ns
+>>> rk3399-rockpro64 V2.1:  40ns/41ns
 
-There have been very few comments, only really Tony McKahan from Armbian 
-- where they apply a similar patch. Tony was going to test the patch, 
-but we have heard nothing back. The patch has been tested on ArchLinux 
-Arm, and found to work.
+I'm having to eyeball off a 20MHz analog scope (thank goodness for "yes" 
+being able to generate a nice periodic signal), but for my NanoPC-T4 
+with a cheap eBay FT232R adapter both rise and fall times are certainly 
+<100ns. FWIW I've not noticed any issues with letting the Bluetooth 
+interface on UART0 run flat-out at 4Mbaud either.
 
-So with no further comments, I propose this is accepted as is. Heiko, 
-let me know if you want me to respin this patch to apply cleanly after 
-the sd card changes.
+>>>
+>>> Please make sure there's not a large amount of flux or something
+>>> around the terminals on your board, that seems excessively high.
+>>>
+>>
+>> Thank you for valuable information. For more deeply discussion,
+>> I tried other conditions and watch the rise/fall times.
+>>
+>> 1) Not connect
+>> The rise/fall times are 40ns/5ns when nothing connect (impedance is
+>> very high) to external pin of RockPro64.
+>>
+>> What UART device are you using with RockPro64? If you use some device
+>> with RockPro64 and board shows rise/fall times = 90ns/45ns, my device
+>> is not suitable for RockPro64 by some reason. So it's better to drop
+>> my patch.
+> 
+> The adapter is an FTDI FT232RL breakout board, attached with some
+> generic Dupont connector jumpers.
+> Interesting your RockPro is showing this symptom, perhaps there is a
+> cold solder joint somewhere introducing resistance?
+> 
+>>
+>> 2) Other SoC
+>> I have other SoC board rk3328-rock64, Rock64 shows rise/fall times =
+>> 90ns/80ns when same UART-USB device is connected to UART pin.
+> 
+> I measured similar on my Rock64 as well.
+> 
+>>
+>> I think it shows rk3399's (or RockPro64's?) drive strength is a little
+>> weak. So it's better to increase the drive strength of UART of rk3399.
+> 
+> I do not think this is a bad idea generally, it simply allows for more
+> available current from the interface.  I'll let others be the judge of
+> that, however.
 
-David.
+There may be RK3399 users who would care about the possible EMI impact, 
+so it's probably still best to limit such a change to boards which 
+definitely need it.
 
+Robin.
 
-
-On 17/02/2019 12:15, David Summers wrote:
-> This patch adds the wifi to the ASUS Tinker Board (S) machines.
->
-> Unfortunatly neither the Tinker Board nor the Tinker Board S schematic
-> indicate how the WiFi is wired up on these devices. The WiFi is
-> provided by the RTL8723BS device, that has sdio WiFi and UART
-> Bluetooth. This patch just adds the WiFi interface.
->
-> With no schematic, most of the wiring has been derived from the ASUS
-> patch to Debian:
->
-> https://github.com/TinkerBoard/debian_kernel/commit/6a3128ade33f758887048578ada61a4b7ab8e678
->
-> In conjunction with the pin out of the RTL8723BS device:
->
-> http://files.pine64.org/doc/datasheet/pine64/RTL8723BS.pdf
-> http://cit.odessa.ua/media/pdf/Intel-Compute-Stick/FN-Link_F23BDSM25-W1.pdf
->
-> The only unusual part is that to bring the card up, both the pins
-> RK_PD3 and RK_PD4 need to be pulled. Why this needs to be done is not
-> clear, best explaination is that they are connected to the RTL8723BS
-> pins WL_DIS# and BT_DIS#, which the data sheet vaguely says:
->
-> Shared with GPIO9 This Pin Can Externally Shutdown the RTL8723BS WLAN
-> function when BT_DISn is Pulled Low. When this pin deasserted, SDIO
-> interface will be disabled. This pin can also support the WLAN Ra
-> dio-off function with host interface remaining connected.
->
-> Anyway extensive testing the TheSaint on ArchLinux Arm Forum
->
-> https://archlinuxarm.org/forum/viewtopic.php?f=44&t=13064&start=120#p60548
->
-> Signed-off-by: David Summers <beagleboard@davidjohnsummers.uk>
-> Signed-off-by: Stefan Wahren <stefan.wahren@i2se.com>
-> ---
->   arch/arm/boot/dts/rk3288-tinker.dtsi | 39 +++++++++++++++++++++++++---
->   1 file changed, 36 insertions(+), 3 deletions(-)
->
-> diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
-> index fceaeed44e34..e1796f340eef 100644
-> --- a/arch/arm/boot/dts/rk3288-tinker.dtsi
-> +++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
-> @@ -3,8 +3,9 @@
->    * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd.
->    */
->   
->   #include "rk3288.dtsi"
->   #include <dt-bindings/input/input.h>
-> +#include <dt-bindings/clock/rockchip,rk808.h>
->   
->   / {
->   	chosen {
-> @@ -98,6 +97,15 @@
->   		startup-delay-us = <100000>;
->   		vin-supply = <&vcc_io>;
->   	};
-> +
-> +	sdio_pwrseq: sdio-pwrseq {
-> +		compatible = "mmc-pwrseq-simple";
-> +		clocks = <&rk808 RK808_CLKOUT1>;
-> +		clock-names = "ext_clock";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&wifi_enable>;
-> +		reset-gpios = <&gpio4 RK_PD3 GPIO_ACTIVE_LOW>, <&gpio4 RK_PD4 GPIO_ACTIVE_LOW>;
-> +	};
->   };
->   
->   &cpu0 {
-> @@ -337,8 +345,8 @@
->   
->   &io_domains {
->   	status = "okay";
-> -
->   	sdcard-supply = <&vccio_sd>;
-> +	wifi-supply = <&vcc_18>;
->   };
->   
->   &pinctrl {
-> @@ -417,6 +425,12 @@
->   			rockchip,pins = <7 8 RK_FUNC_GPIO &pcfg_pull_none>;
->   		};
->   	};
-> +
-> +	sdio {
-> +		wifi_enable: wifi-enable {
-> +			rockchip,pins = <4 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>, <4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
->   };
->   
->   &pwm0 {
-> @@ -440,6 +454,25 @@
->   	vqmmc-supply = <&vccio_sd>;
->   };
->   
-> +&sdio0 {
-> +	bus-width = <4>;
-> +	cap-sd-highspeed;
-> +	cap-sdio-irq;
-> +	keep-power-in-suspend;
-> +	mmc-pwrseq = <&sdio_pwrseq>;
-> +	non-removable;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdio0_bus4>, <&sdio0_cmd>, <&sdio0_clk>, <&sdio0_int>;
-> +	max-frequency = <50000000>;
-> +	sd-uhs-sdr12;
-> +	sd-uhs-sdr25;
-> +	sd-uhs-sdr50;
-> +	sd-uhs-ddr50;
-> +	vmmc-supply = <&vcc_io>;
-> +	vqmmc-supply = <&vcc_18>;
-> +	status = "okay";
-> +};
-> +
->   &tsadc {
->   	rockchip,hw-tshut-mode = <1>; /* tshut mode 0:CRU 1:GPIO */
->   	rockchip,hw-tshut-polarity = <1>; /* tshut polarity 0:LOW 1:HIGH */
+> 
+>>
+>> Best Regards,
+>> Katsuhiro Suzuki
+>>
+>>>>
+>>>> Best Regards,
+>>>> Katsuhiro Suzuki
+>>>>
+>>>>
+>>>>> Thanks
+>>>>> Heiko
+>>>>>
+>>>>>
+>>>>>
+>>>>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>>>>>> index beaa92744a64..e3c8f91ead50 100644
+>>>>>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>>>>>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>>>>>> @@ -2000,6 +2000,11 @@
+>>>>>>                        drive-strength = <8>;
+>>>>>>                };
+>>>>>>
+>>>>>> +            pcfg_pull_up_12ma: pcfg-pull-up-12ma {
+>>>>>> +                    bias-pull-up;
+>>>>>> +                    drive-strength = <12>;
+>>>>>> +            };
+>>>>>> +
+>>>>>>                pcfg_pull_up_18ma: pcfg-pull-up-18ma {
+>>>>>>                        bias-pull-up;
+>>>>>>                        drive-strength = <18>;
+>>>>>> @@ -2521,8 +2526,8 @@
+>>>>>>                uart2c {
+>>>>>>                        uart2c_xfer: uart2c-xfer {
+>>>>>>                                rockchip,pins =
+>>>>>> -                                    <4 RK_PC3 RK_FUNC_1 &pcfg_pull_up>,
+>>>>>> -                                    <4 RK_PC4 RK_FUNC_1 &pcfg_pull_none>;
+>>>>>> +                                    <4 RK_PC3 RK_FUNC_1 &pcfg_pull_up_12ma>,
+>>>>>> +                                    <4 RK_PC4 RK_FUNC_1 &pcfg_pull_none_12ma>;
+>>>>>>                        };
+>>>>>>                };
+>>>>>>
+>>>>>>
+>>>>>
+>>>>>
+>>>>>
+>>>>>
+>>>>>
+>>>>>
+>>>>
+>>>>
+>>>> _______________________________________________
+>>>> Linux-rockchip mailing list
+>>>> Linux-rockchip@lists.infradead.org
+>>>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>>>
+>>>
+>>
