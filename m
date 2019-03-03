@@ -1,190 +1,175 @@
-From: Tony McKahan <tonymckahan@gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: decrease rising edge time of UART2
-Date: Sun, 3 Mar 2019 13:45:29 -0500
-Message-ID: <CAERgoknMO6xMzuhCn2kSHZm8Pt+6YH3jDvJckJq28u9OW08u2Q@mail.gmail.com>
-References: <20190303122705.27094-1-katsuhiro@katsuster.net>
- <1623469.Hy6pdcMFRX@phil> <e722acb4-167f-8333-5c8a-b693815273f4@katsuster.net>
- <CAERgoknAV1sACSPjM_u4WyWzLvmUntXMoEx=ccpFsqYZVeu__Q@mail.gmail.com> <26c3aea3-959f-bfb3-177f-3e5314494361@katsuster.net>
+From: Heiner Kallweit <hkallweit1@gmail.com>
+Subject: [PATCH net-next] net: phy: improve handling link_change_notify
+ callback
+Date: Sun, 3 Mar 2019 19:58:57 +0100
+Message-ID: <411b1c33-a245-0706-8afd-c4bea1b90f68@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <26c3aea3-959f-bfb3-177f-3e5314494361@katsuster.net>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Cc: Heiko Stuebner <heiko@sntech.de>, Akash Gajjar <Akash_Gajjar@mentor.com>, Brian Norris <briannorris@chromium.org>, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Douglas Anderson <dianders@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Levin Du <djw@t-chip.com.cn>, Linus Walleij <linus.walleij@linaro.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Matthias Brugger <mbrugger@suse.com>, Oskari Lemmela <oskari@lemmela.net>, Robin Murphy <robin.murphy@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>Sh
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, David Miller <davem@davemloft.net>, Heiko Stuebner <heiko@sntech.de>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Katsushiro,
+Currently the Phy driver's link_change_notify callback is called
+whenever the state machine is run (every second if polling), no matter
+whether the state changed or not. This isn't needed and may confuse
+users considering the name of the callback. Therefore let's change
+the behavior and call this callback only in case of an actual
+state change.
 
-On Sun, Mar 3, 2019 at 12:31 PM Katsuhiro Suzuki
-<katsuhiro@katsuster.net> wrote:
->
-> Hello Tony,
->
-> On 2019/03/04 0:13, Tony McKahan wrote:
-> > On Sun, Mar 3, 2019 at 9:04 AM Katsuhiro Suzuki <katsuhiro@katsuster.ne=
-t> wrote:
-> >>
-> >> Hello Heiko,
-> >>
-> >> Thank you for comments.
-> >>
-> >> On 2019/03/03 22:19, Heiko Stuebner wrote:
-> >>> Hi,
-> >>>
-> >>> Am Sonntag, 3. M=C3=A4rz 2019, 13:27:05 CET schrieb Katsuhiro Suzuki:
-> >>>> This patch increases drive strength of UART2 from 3mA to 12mA for
-> >>>> getting more faster rising edge.
-> >>>>
-> >>>> RockPro64 is using a very high speed rate (1.5Mbps) for UART2. In
-> >>>> this setting, a bit width of UART is about 667ns.
-> >>>>
-> >>>> In my environment (RockPro64 UART2 with FTDI FT232RL UART-USB
-> >>>> converter), falling time of RockPro64 UART2 is 40ns, but riging time
-> >>>> is over 650ns. So UART receiver will get wrong data, because receive=
-r
-> >>>> read intermediate data of rising edge.
-> >>>>
-> >>>> Rising time becomes 300ns from 650ns if apply this patch. This is no=
-t
-> >>>> perfect solution but better than now.
-> >>>>
-> >>>> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-> >>>> ---
-> >>>>    arch/arm64/boot/dts/rockchip/rk3399.dtsi | 9 +++++++--
-> >>>>    1 file changed, 7 insertions(+), 2 deletions(-)
-> >>>
-> >>> your changing a core rk3399 property here, so I'd really like to get
-> >>> input from other board stakeholders on this before applying a core
-> >>> change.
-> >>>
-> >>> Could you either include the submitters of other rk3399-boards in the
-> >>> recipient list so that they're aware or limit the change to rockpro64=
- for
-> >>> the time being (aka overriding the property in the board-dts) please?
-> >>>
-> >>
-> >> OK, I'm adding other boards members.
-> >> by ./scripts/get_maintainer.pl arch/arm64/boot/dts/rockchip/rk3399-*.d=
-ts
-> >>
-> >>
-> >> RockPro64 directly connect UART2 pins of RK3399 to external connector.
-> >> I think maybe other RK3399 boards are facing same problem, but I canno=
-t
-> >> check it because I have RockPro64 only...
-> >>
-> >> I'm happy if someone tell me other boards situation.
-> >
-> > I'm pulling out other rockchip boards momentarily to see what kind of
-> > population we have.
-> >
-> > Note these are not all running 5.x kernels, however none of them have
-> > the UART2 drive levels modified to my knowledge, and regardless, none
-> > show over 100 ns.
-> >
-> > board:    rise/fall
-> >
-> > rk3399-roc-pc: 90ns/90ns
-> > rk3399-rockpro64 V2.0:  90ns/45ns
-> > rk3399-rockpro64 V2.1:  40ns/41ns
-> >
-> > Please make sure there's not a large amount of flux or something
-> > around the terminals on your board, that seems excessively high.
-> >
->
-> Thank you for valuable information. For more deeply discussion,
-> I tried other conditions and watch the rise/fall times.
->
-> 1) Not connect
-> The rise/fall times are 40ns/5ns when nothing connect (impedance is
-> very high) to external pin of RockPro64.
->
-> What UART device are you using with RockPro64? If you use some device
-> with RockPro64 and board shows rise/fall times =3D 90ns/45ns, my device
-> is not suitable for RockPro64 by some reason. So it's better to drop
-> my patch.
+This requires changes to the at803x and rockchip drivers.
+at803x can be simplified so that it reacts on a state change to
+PHY_NOLINK only.
+The rockchip driver can also be much simplified. We simply re-init
+the AFE/DSP registers whenever we change to PHY_RUNNING and speed
+is 100Mbps. This causes very small overhead because we do this even
+if the speed was 100Mbps already. But this is neglectable and
+I think justified by the much simpler code.
 
-The adapter is an FTDI FT232RL breakout board, attached with some
-generic Dupont connector jumpers.
-Interesting your RockPro is showing this symptom, perhaps there is a
-cold solder joint somewhere introducing resistance?
+Changes are compile-tested only.
 
->
-> 2) Other SoC
-> I have other SoC board rk3328-rock64, Rock64 shows rise/fall times =3D
-> 90ns/80ns when same UART-USB device is connected to UART pin.
+Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
+---
+ drivers/net/phy/at803x.c   | 26 +++++++++-----------------
+ drivers/net/phy/phy.c      |  8 ++++----
+ drivers/net/phy/rockchip.c | 31 ++-----------------------------
+ 3 files changed, 15 insertions(+), 50 deletions(-)
 
-I measured similar on my Rock64 as well.
-
->
-> I think it shows rk3399's (or RockPro64's?) drive strength is a little
-> weak. So it's better to increase the drive strength of UART of rk3399.
-
-I do not think this is a bad idea generally, it simply allows for more
-available current from the interface.  I'll let others be the judge of
-that, however.
-
->
-> Best Regards,
-> Katsuhiro Suzuki
->
-> >>
-> >> Best Regards,
-> >> Katsuhiro Suzuki
-> >>
-> >>
-> >>> Thanks
-> >>> Heiko
-> >>>
-> >>>
-> >>>
-> >>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/b=
-oot/dts/rockchip/rk3399.dtsi
-> >>>> index beaa92744a64..e3c8f91ead50 100644
-> >>>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> >>>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> >>>> @@ -2000,6 +2000,11 @@
-> >>>>                       drive-strength =3D <8>;
-> >>>>               };
-> >>>>
-> >>>> +            pcfg_pull_up_12ma: pcfg-pull-up-12ma {
-> >>>> +                    bias-pull-up;
-> >>>> +                    drive-strength =3D <12>;
-> >>>> +            };
-> >>>> +
-> >>>>               pcfg_pull_up_18ma: pcfg-pull-up-18ma {
-> >>>>                       bias-pull-up;
-> >>>>                       drive-strength =3D <18>;
-> >>>> @@ -2521,8 +2526,8 @@
-> >>>>               uart2c {
-> >>>>                       uart2c_xfer: uart2c-xfer {
-> >>>>                               rockchip,pins =3D
-> >>>> -                                    <4 RK_PC3 RK_FUNC_1 &pcfg_pull_=
-up>,
-> >>>> -                                    <4 RK_PC4 RK_FUNC_1 &pcfg_pull_=
-none>;
-> >>>> +                                    <4 RK_PC3 RK_FUNC_1 &pcfg_pull_=
-up_12ma>,
-> >>>> +                                    <4 RK_PC4 RK_FUNC_1 &pcfg_pull_=
-none_12ma>;
-> >>>>                       };
-> >>>>               };
-> >>>>
-> >>>>
-> >>>
-> >>>
-> >>>
-> >>>
-> >>>
-> >>>
-> >>
-> >>
-> >> _______________________________________________
-> >> Linux-rockchip mailing list
-> >> Linux-rockchip@lists.infradead.org
-> >> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> >
-> >
->
+diff --git a/drivers/net/phy/at803x.c b/drivers/net/phy/at803x.c
+index f3e96191e..f315ab468 100644
+--- a/drivers/net/phy/at803x.c
++++ b/drivers/net/phy/at803x.c
+@@ -324,8 +324,6 @@ static int at803x_config_intr(struct phy_device *phydev)
+ 
+ static void at803x_link_change_notify(struct phy_device *phydev)
+ {
+-	struct at803x_priv *priv = phydev->priv;
+-
+ 	/*
+ 	 * Conduct a hardware reset for AT8030 every time a link loss is
+ 	 * signalled. This is necessary to circumvent a hardware bug that
+@@ -333,25 +331,19 @@ static void at803x_link_change_notify(struct phy_device *phydev)
+ 	 * in the FIFO. In such cases, the FIFO enters an error mode it
+ 	 * cannot recover from by software.
+ 	 */
+-	if (phydev->state == PHY_NOLINK) {
+-		if (phydev->mdio.reset && !priv->phy_reset) {
+-			struct at803x_context context;
++	if (phydev->state == PHY_NOLINK && phydev->mdio.reset) {
++		struct at803x_context context;
+ 
+-			at803x_context_save(phydev, &context);
++		at803x_context_save(phydev, &context);
+ 
+-			phy_device_reset(phydev, 1);
+-			msleep(1);
+-			phy_device_reset(phydev, 0);
+-			msleep(1);
++		phy_device_reset(phydev, 1);
++		msleep(1);
++		phy_device_reset(phydev, 0);
++		msleep(1);
+ 
+-			at803x_context_restore(phydev, &context);
++		at803x_context_restore(phydev, &context);
+ 
+-			phydev_dbg(phydev, "%s(): phy was reset\n",
+-				   __func__);
+-			priv->phy_reset = true;
+-		}
+-	} else {
+-		priv->phy_reset = false;
++		phydev_dbg(phydev, "%s(): phy was reset\n", __func__);
+ 	}
+ }
+ 
+diff --git a/drivers/net/phy/phy.c b/drivers/net/phy/phy.c
+index 3745220c5..5938c5acf 100644
+--- a/drivers/net/phy/phy.c
++++ b/drivers/net/phy/phy.c
+@@ -891,9 +891,6 @@ void phy_state_machine(struct work_struct *work)
+ 
+ 	old_state = phydev->state;
+ 
+-	if (phydev->drv && phydev->drv->link_change_notify)
+-		phydev->drv->link_change_notify(phydev);
+-
+ 	switch (phydev->state) {
+ 	case PHY_DOWN:
+ 	case PHY_READY:
+@@ -940,10 +937,13 @@ void phy_state_machine(struct work_struct *work)
+ 	if (err < 0)
+ 		phy_error(phydev);
+ 
+-	if (old_state != phydev->state)
++	if (old_state != phydev->state) {
+ 		phydev_dbg(phydev, "PHY state change %s -> %s\n",
+ 			   phy_state_to_str(old_state),
+ 			   phy_state_to_str(phydev->state));
++		if (phydev->drv && phydev->drv->link_change_notify)
++			phydev->drv->link_change_notify(phydev);
++	}
+ 
+ 	/* Only re-schedule a PHY state machine change if we are polling the
+ 	 * PHY, if PHY_IGNORE_INTERRUPT is set, then we will be moving
+diff --git a/drivers/net/phy/rockchip.c b/drivers/net/phy/rockchip.c
+index 95abf7072..9053b1d01 100644
+--- a/drivers/net/phy/rockchip.c
++++ b/drivers/net/phy/rockchip.c
+@@ -104,41 +104,14 @@ static int rockchip_integrated_phy_config_init(struct phy_device *phydev)
+ 
+ static void rockchip_link_change_notify(struct phy_device *phydev)
+ {
+-	int speed = SPEED_10;
+-
+-	if (phydev->autoneg == AUTONEG_ENABLE) {
+-		int reg = phy_read(phydev, MII_SPECIAL_CONTROL_STATUS);
+-
+-		if (reg < 0) {
+-			phydev_err(phydev, "phy_read err: %d.\n", reg);
+-			return;
+-		}
+-
+-		if (reg & MII_SPEED_100)
+-			speed = SPEED_100;
+-		else if (reg & MII_SPEED_10)
+-			speed = SPEED_10;
+-	} else {
+-		int bmcr = phy_read(phydev, MII_BMCR);
+-
+-		if (bmcr < 0) {
+-			phydev_err(phydev, "phy_read err: %d.\n", bmcr);
+-			return;
+-		}
+-
+-		if (bmcr & BMCR_SPEED100)
+-			speed = SPEED_100;
+-		else
+-			speed = SPEED_10;
+-	}
+-
+ 	/*
+ 	 * If mode switch happens from 10BT to 100BT, all DSP/AFE
+ 	 * registers are set to default values. So any AFE/DSP
+ 	 * registers have to be re-initialized in this case.
+ 	 */
+-	if ((phydev->speed == SPEED_10) && (speed == SPEED_100)) {
++	if (phydev->state == PHY_RUNNING && phydev->speed == SPEED_100) {
+ 		int ret = rockchip_integrated_phy_analog_init(phydev);
++
+ 		if (ret)
+ 			phydev_err(phydev, "rockchip_integrated_phy_analog_init err: %d.\n",
+ 				   ret);
+-- 
+2.21.0
