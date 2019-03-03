@@ -1,40 +1,122 @@
-From: =?UTF-8?q?Andrius=20=C5=A0tikonas?= <andrius@stikonas.eu>
-Subject: [PATCH] rockpro64: dts: fix gmac2io stability issues
-Date: Sun,  3 Mar 2019 22:32:04 +0000
-Message-ID: <20190303223204.23061-1-andrius@stikonas.eu>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH] Remove deductively redundant NULL pointer checks
+Date: Sun, 03 Mar 2019 20:34:09 -0300
+Message-ID: <1f7ab3d0a759c583fc33a83ee24ed780e40ce7a1.camel@collabora.com>
+References: <1551228250-36426-1-git-send-email-shaobo@cs.utah.edu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, heiko@sntech.de
-Cc: =?UTF-8?q?Andrius=20=C5=A0tikonas?= <andrius@stikonas.eu>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1551228250-36426-1-git-send-email-shaobo@cs.utah.edu>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shaobo He <shaobo@cs.utah.edu>, linux-media@vger.kernel.org
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Rick Chang <rick.chang@mediatek.com>, Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Jacob chen <jacob2.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Kyungmin Park <kyungmin.park@samsung.com>, Kamil Debski <kamil@wypas.org>, Andrzej Hajda <a.hajda@samsung.com>, Andrzej Pietrasiewicz <andrzej.p@samsung.com>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Benoit Parrot <bparrot@ti.com>, Hans Verkuil <hans.verkuil@cisco.com>, Kees
 List-Id: linux-rockchip.vger.kernel.org
 
-RW5hYmxlIHRocmVzaCBkbWEgbW9kZSB0byBkaXNhYmxlIGNoZWNrc3VtaW5nLgpTZWUgY29tbWl0
-IDczZTQyZTE4NjY5OTM0ZmE5NmNmMmJiNTQyOTFkYTU0MTc3MDc2ZDcgZm9yIHNpbWlsYXIgZml4
-IG9uIHJvY2s2NC4KCkluIHBhcnRpY3VsYXIsIHRoaXMgZml4ZXMgdGVycmlibGUgSVB2NiBwZXJm
-b3JtYW5jZS4KClNpZ25lZC1vZmYtYnk6IEFuZHJpdXMgxaB0aWtvbmFzIDxhbmRyaXVzQHN0aWtv
-bmFzLmV1PgotLS0KIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvY2twcm82
-NC5kdHMgfCAxICsKIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQoKZGlmZiAtLWdpdCBh
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvY2twcm82NC5kdHMgYi9hcmNo
-L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2NrcHJvNjQuZHRzCmluZGV4IGJlNzgx
-NzJhYmMwOS4uODU4YmQ5ODA2MDdhIDEwMDY0NAotLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzM5OS1yb2NrcHJvNjQuZHRzCisrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
-a2NoaXAvcmszMzk5LXJvY2twcm82NC5kdHMKQEAgLTE5Nyw2ICsxOTcsNyBAQAogCXBoeS1tb2Rl
-ID0gInJnbWlpIjsKIAlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwogCXBpbmN0cmwtMCA9IDwm
-cmdtaWlfcGlucz47CisJc25wcyxmb3JjZV90aHJlc2hfZG1hX21vZGU7CiAJc25wcyxyZXNldC1n
-cGlvID0gPCZncGlvMyBSS19QQjcgR1BJT19BQ1RJVkVfTE9XPjsKIAlzbnBzLHJlc2V0LWFjdGl2
-ZS1sb3c7CiAJc25wcyxyZXNldC1kZWxheXMtdXMgPSA8MCAxMDAwMCA1MDAwMD47Ci0tIAoyLjE5
-LjIKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51
-eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1h
-cm0ta2VybmVsCg==
+On Tue, 2019-02-26 at 17:43 -0700, Shaobo He wrote:
+> The fixes included in this commit essentially removes NULL pointer
+> checks on the return values of function `get_queue_ctx` as well as
+> `v4l2_m2m_get_vq` defined in file v4l2-mem2mem.c.
+> 
+> Function `get_queue_ctx` is very unlikely to return a NULL pointer
+> because its return value is an address composed of the base address
+> pointed by `m2m_ctx` and an offset of field `out_q_ctx` or `cap_q_ctx`.
+> Since the offset of either field is not 0, for the return value to be
+> NULL, pointer `m2m_ctx` must be a very large unsigned value such that
+> its addition to the offset overflows to NULL which may be undefined
+> according to this post:
+> https://wdtz.org/catching-pointer-overflow-bugs.html. Moreover, even if
+> `m2m_ctx` is NULL, the return value cannot be NULL, either. Therefore, I
+> think it is reasonable to conclude that the return value of function
+> `get_queue_ctx` cannot be NULL.
+> 
+> Given the return values of `get_queue_ctx` not being NULL, we can follow
+> a similar reasoning to conclude that the return value of
+> `v4l2_mem_get_vq` cannot be NULL since its return value is the same
+> address as the return value of `get_queue_ctx`. Therefore, this patch
+> also removes NULL pointer checks on the return values of
+> `v4l2_mem_get_vq`.
+> 
+> Signed-off-by: Shaobo He <shaobo@cs.utah.edu>
+
+Hi Shaobo,
+
+It seems this is v2 of 1551128631-19713-1-git-send-email-shaobo@cs.utah.edu,
+and it should be marked as such.
+
+Do you think you can read Documentation/process/submitting-patches.rst,
+for your future patches?
+
+Also, two comments...
+
+>  drivers/media/platform/coda/coda-common.c          |  4 ----
+>  drivers/media/platform/imx-pxp.c                   |  7 -------
+>  drivers/media/platform/m2m-deinterlace.c           |  7 -------
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c    |  7 -------
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |  7 -------
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 13 -------------
+>  drivers/media/platform/mx2_emmaprp.c               |  7 -------
+>  drivers/media/platform/rcar_fdp1.c                 |  3 ---
+>  drivers/media/platform/rcar_jpu.c                  |  8 --------
+>  drivers/media/platform/rockchip/rga/rga.c          |  4 ----
+>  drivers/media/platform/s5p-g2d/g2d.c               |  4 ----
+>  drivers/media/platform/s5p-jpeg/jpeg-core.c        |  7 -------
+>  drivers/media/platform/sh_veu.c                    |  2 --
+>  drivers/media/platform/ti-vpe/vpe.c                |  7 -------
+>  drivers/media/platform/vicodec/vicodec-core.c      |  5 -----
+>  drivers/media/platform/vim2m.c                     |  7 -------
+>  drivers/media/v4l2-core/v4l2-mem2mem.c             |  4 ----
+>  17 files changed, 103 deletions(-)
+> 
+> diff --git a/drivers/media/platform/coda/coda-common.c b/drivers/media/platform/coda/coda-common.c
+> index 7518f01..ee1e05b 100644
+> --- a/drivers/media/platform/coda/coda-common.c
+> +++ b/drivers/media/platform/coda/coda-common.c
+> @@ -696,8 +696,6 @@ static int coda_s_fmt(struct coda_ctx *ctx, struct v4l2_format *f,
+>  	struct vb2_queue *vq;
+>  
+>  	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+> -	if (!vq)
+> -		return -EINVAL;
+>  
+>  	q_data = get_q_data(ctx, f->type);
+>  	if (!q_data)
+> @@ -817,8 +815,6 @@ static int coda_s_fmt_vid_out(struct file *file, void *priv,
+>  	ctx->quantization = f->fmt.pix.quantization;
+>  
+>  	dst_vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
+> -	if (!dst_vq)
+> -		return -EINVAL;
+>  
+>  	/*
+>  	 * Setting the capture queue format is not possible while the capture
+> diff --git a/drivers/media/platform/imx-pxp.c b/drivers/media/platform/imx-pxp.c
+> index c1c2554..d079b3c 100644
+> --- a/drivers/media/platform/imx-pxp.c
+> +++ b/drivers/media/platform/imx-pxp.c
+> @@ -1071,13 +1071,8 @@ static int pxp_enum_fmt_vid_out(struct file *file, void *priv,
+>  
+>  static int pxp_g_fmt(struct pxp_ctx *ctx, struct v4l2_format *f)
+>  {
+> -	struct vb2_queue *vq;
+>  	struct pxp_q_data *q_data;
+>  
+> -	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+> -	if (!vq)
+> -		return -EINVAL;
+> -
+
+It seems your patch also removes unused code, but this is not really explained in the
+commit log.
+
+Perhaps it is better to split all these changes on their own patch:
+one patch to remove dead code, and then another patch to remove unneeded null checks.
+
+And also, I think you should add some comments, either in v4l2_m2m_get_vq's declaration
+or definition, explaining that the return value cannot be NULL.
+
+I have to say: I'm not a fan of "improvement" patches in code paths that
+are anything but hot... but knock yourself out!
+
+Thanks,
+Eze
