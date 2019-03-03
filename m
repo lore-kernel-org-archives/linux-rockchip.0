@@ -1,24 +1,28 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: enable HDMI CEC on rk3328
-Date: Sun, 03 Mar 2019 14:53:14 +0100
-Message-ID: <1731736.AI9y7MdPiA@phil>
-References: <AM3PR03MB0966D220C0FEB19CBAE0D913AC770@AM3PR03MB0966.eurprd03.prod.outlook.com>
+Subject: Re: [PATCH v3 1/2] arm64: dts: rockchip: add #sound-dai-cells to HDMI of rk3328
+Date: Sun, 03 Mar 2019 14:55:48 +0100
+Message-ID: <36101455.UDL3bTQpI8@phil>
+References: <20190217173407.29189-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <AM3PR03MB0966D220C0FEB19CBAE0D913AC770@AM3PR03MB0966.eurprd03.prod.outlook.com>
+In-Reply-To: <20190217173407.29189-1-katsuhiro@katsuster.net>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 2. März 2019, 17:37:09 CET schrieb Jonas Karlman:
-> This patch enables HDMI CEC on RK3328 devices
+Am Sonntag, 17. Februar 2019, 18:34:06 CET schrieb Katsuhiro Suzuki:
+> This patch adds #sound-dai-cells to use HDMI node as audio
+> codec from device tree of rk3328 boards.
 > 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
 
-applied for 5.2. I've added another sentence to the commit messsage for the
-origin of the (unusual) cec clock, marking the vendor-kernel as source.
+applied for 5.2 .
+
+I'm holding off of patch2 for a bit until you and Jonas can clarify that
+all is right as it is :-)
+
 
 Heiko
