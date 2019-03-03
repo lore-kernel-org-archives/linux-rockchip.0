@@ -1,122 +1,110 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH] Remove deductively redundant NULL pointer checks
-Date: Sun, 03 Mar 2019 20:34:09 -0300
-Message-ID: <1f7ab3d0a759c583fc33a83ee24ed780e40ce7a1.camel@collabora.com>
-References: <1551228250-36426-1-git-send-email-shaobo@cs.utah.edu>
+From: David Summers <beagleboard@davidjohnsummers.uk>
+Subject: Re: [PATCH 3/3] ARM: dts: rk3288 Tinker Board (S) add bluetooth
+Date: Sun, 3 Mar 2019 20:15:31 +0000
+Message-ID: <4de2979b-0553-300c-fea5-49d68e2b3580@davidjohnsummers.uk>
+References: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
+ <20190217121513.22965-4-beagleboard@davidjohnsummers.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1551228250-36426-1-git-send-email-shaobo@cs.utah.edu>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Shaobo He <shaobo@cs.utah.edu>, linux-media@vger.kernel.org
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Rick Chang <rick.chang@mediatek.com>, Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Jacob chen <jacob2.chen@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Kyungmin Park <kyungmin.park@samsung.com>, Kamil Debski <kamil@wypas.org>, Andrzej Hajda <a.hajda@samsung.com>, Andrzej Pietrasiewicz <andrzej.p@samsung.com>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Benoit Parrot <bparrot@ti.com>, Hans Verkuil <hans.verkuil@cisco.com>, Kees
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190217121513.22965-4-beagleboard@davidjohnsummers.uk>
+Content-Language: en-PH
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: heiko@sntech.de, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: devicetree@vger.kernel.org, Johan Hedberg <johan.hedberg@gmail.com>, "open list:BLUETOOTH DRIVERS" <linux-bluetooth@vger.kernel.org>, Marcel Holtmann <marcel@holtmann.org>, linux-rockchip@lists.infradead.org, Tony McKahan <tonymckahan@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 2019-02-26 at 17:43 -0700, Shaobo He wrote:
-> The fixes included in this commit essentially removes NULL pointer
-> checks on the return values of function `get_queue_ctx` as well as
-> `v4l2_m2m_get_vq` defined in file v4l2-mem2mem.c.
-> 
-> Function `get_queue_ctx` is very unlikely to return a NULL pointer
-> because its return value is an address composed of the base address
-> pointed by `m2m_ctx` and an offset of field `out_q_ctx` or `cap_q_ctx`.
-> Since the offset of either field is not 0, for the return value to be
-> NULL, pointer `m2m_ctx` must be a very large unsigned value such that
-> its addition to the offset overflows to NULL which may be undefined
-> according to this post:
-> https://wdtz.org/catching-pointer-overflow-bugs.html. Moreover, even if
-> `m2m_ctx` is NULL, the return value cannot be NULL, either. Therefore, I
-> think it is reasonable to conclude that the return value of function
-> `get_queue_ctx` cannot be NULL.
-> 
-> Given the return values of `get_queue_ctx` not being NULL, we can follow
-> a similar reasoning to conclude that the return value of
-> `v4l2_mem_get_vq` cannot be NULL since its return value is the same
-> address as the return value of `get_queue_ctx`. Therefore, this patch
-> also removes NULL pointer checks on the return values of
-> `v4l2_mem_get_vq`.
-> 
-> Signed-off-by: Shaobo He <shaobo@cs.utah.edu>
-
-Hi Shaobo,
-
-It seems this is v2 of 1551128631-19713-1-git-send-email-shaobo@cs.utah.edu,
-and it should be marked as such.
-
-Do you think you can read Documentation/process/submitting-patches.rst,
-for your future patches?
-
-Also, two comments...
-
->  drivers/media/platform/coda/coda-common.c          |  4 ----
->  drivers/media/platform/imx-pxp.c                   |  7 -------
->  drivers/media/platform/m2m-deinterlace.c           |  7 -------
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c    |  7 -------
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |  7 -------
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 13 -------------
->  drivers/media/platform/mx2_emmaprp.c               |  7 -------
->  drivers/media/platform/rcar_fdp1.c                 |  3 ---
->  drivers/media/platform/rcar_jpu.c                  |  8 --------
->  drivers/media/platform/rockchip/rga/rga.c          |  4 ----
->  drivers/media/platform/s5p-g2d/g2d.c               |  4 ----
->  drivers/media/platform/s5p-jpeg/jpeg-core.c        |  7 -------
->  drivers/media/platform/sh_veu.c                    |  2 --
->  drivers/media/platform/ti-vpe/vpe.c                |  7 -------
->  drivers/media/platform/vicodec/vicodec-core.c      |  5 -----
->  drivers/media/platform/vim2m.c                     |  7 -------
->  drivers/media/v4l2-core/v4l2-mem2mem.c             |  4 ----
->  17 files changed, 103 deletions(-)
-> 
-> diff --git a/drivers/media/platform/coda/coda-common.c b/drivers/media/platform/coda/coda-common.c
-> index 7518f01..ee1e05b 100644
-> --- a/drivers/media/platform/coda/coda-common.c
-> +++ b/drivers/media/platform/coda/coda-common.c
-> @@ -696,8 +696,6 @@ static int coda_s_fmt(struct coda_ctx *ctx, struct v4l2_format *f,
->  	struct vb2_queue *vq;
->  
->  	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
-> -	if (!vq)
-> -		return -EINVAL;
->  
->  	q_data = get_q_data(ctx, f->type);
->  	if (!q_data)
-> @@ -817,8 +815,6 @@ static int coda_s_fmt_vid_out(struct file *file, void *priv,
->  	ctx->quantization = f->fmt.pix.quantization;
->  
->  	dst_vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE);
-> -	if (!dst_vq)
-> -		return -EINVAL;
->  
->  	/*
->  	 * Setting the capture queue format is not possible while the capture
-> diff --git a/drivers/media/platform/imx-pxp.c b/drivers/media/platform/imx-pxp.c
-> index c1c2554..d079b3c 100644
-> --- a/drivers/media/platform/imx-pxp.c
-> +++ b/drivers/media/platform/imx-pxp.c
-> @@ -1071,13 +1071,8 @@ static int pxp_enum_fmt_vid_out(struct file *file, void *priv,
->  
->  static int pxp_g_fmt(struct pxp_ctx *ctx, struct v4l2_format *f)
->  {
-> -	struct vb2_queue *vq;
->  	struct pxp_q_data *q_data;
->  
-> -	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
-> -	if (!vq)
-> -		return -EINVAL;
-> -
-
-It seems your patch also removes unused code, but this is not really explained in the
-commit log.
-
-Perhaps it is better to split all these changes on their own patch:
-one patch to remove dead code, and then another patch to remove unneeded null checks.
-
-And also, I think you should add some comments, either in v4l2_m2m_get_vq's declaration
-or definition, explaining that the return value cannot be NULL.
-
-I have to say: I'm not a fan of "improvement" patches in code paths that
-are anything but hot... but knock yourself out!
-
-Thanks,
-Eze
+RmluYWxseSBvbiB0aGUgcGF0Y2ggdG8gZ2l2ZSBhbiBvdXRsaW5lIGRlc2NyaXB0aW9uIHRvIEJs
+dWV0b290aCBvbiB0aGUgClRpbmtlciBCb2FyZHMuCgpTeW50aGVzaXMgaGVyZSBpcyBoYXJkZXIu
+CgpPbiB0aGUgb25lIGhhbmQsIGl0IGlzIG5vbiBmdW5jdGlvbmluZyAtIGJlY2F1c2UgYWx0aG91
+Z2ggaXQgZGVzY3JpYmVzIAp0aGUgaGFyZHdhcmUsIGl0IGhhcyBubyBjb21wYXRpYmxlIGZsYWcs
+IGFuZCB0aGVyZSBpcyBubyBjdXJyZW50IGRyaXZlciAKaW4gdGhlIGtlcm5lbC4KCkl0IHNob3Vs
+ZCBiZSBzYWlkIHRob3VnaCB0aGVyZSBpcyBhIHBhdGNoIGZvciBhIHByb3Bvc2VkIGRyaXZlcjoK
+Cmh0dHBzOi8vd3d3LnNwaW5pY3MubmV0L2xpc3RzL2xpbnV4LWJsdWV0b290aC9tc2c3ODY2MS5o
+dG1sCgpBbmQgaWYgYWNjZXB0ZWQgdGhpcyB3b3VsZCBnaXZlIHRoZSBjb21wYXRpYmxlIGZsYWcu
+IFNvIHNob3VsZCB0aGlzIApjaGFuZ2Ugd2FpdCB1bnRpbCB0aGF0IGlzIGFkZGVkPwoKQW4gYWx0
+ZXJuYXRpdmUgYXBwcm9hY2ggdGhvdWdoIGFyaXNlcyBmcm9tIHdoYXQgVG9ueSBNY0thaGFuIG9m
+IEFybWJpYW4gCndyaXRlcwoKIkZvciB0aGUgQmx1ZXRvb3RoIEkgY2FuIGNvbmZpcm0gX1JUUyBp
+cyByZXF1aXJlZCIKClNvIHRoaXMgZGV2aWNlIHRyZWUgc2VnbWVudCBpcyB1c2VmdWwgLSBpdCBj
+b3JyZWN0bHkgZGVzY3JpYmVzIHRoZSB1YXJ0IApwb3J0aW9uIG9mIHRoZSBpbnRlcmZhY2UsIGFu
+ZCB0aGF0IGlzIGhhcmQgdG8gZGV0ZXJtaW5lIGZyb20gdGhlIEFTVVMgCmR0cy4gU28gdGhpcyBp
+cyB1c2VmdWwgaW5mb3JtYXRpb24gdG8gY2FwdHVyZS4KCk9uIHRoZSBwaW5vdXQgaW5mb3JtYXRp
+b24gb2YgdGhlIHJ0bDg3MjMuIFR3byBwb2ludHM6CgoxKSBpbmZvcm1hdGlvbiBsaWtlIGNsb2Nr
+LCBhbmQgdm9sdGFnZSBzdXBwbGllcywgYXJlIGZvcm1hbGx5IGhhcmR3YXJlIApjb3JyZWN0LCBi
+dXQgcHJhY3RpY2FsbHkgd2lsbCBwcm9iYWJseSBuZXZlciBiZSBhcHBsaWVkIHZpYSBibHVldG9v
+dGguIApJbnN0ZWFkIGl0cyB0aGUgd2lmaSB0aGF0IGJyaW5ncyB0aGlzIGhhcmR3YXJlIHVwLiBT
+byBzaG91bGQgdGhlc2UgYmUgCnN1cHBsaWVkIGlmIHVubGlrbHkgdG8gYmUgdXNlZD8gSSB0aGlu
+ayB0aGV5IHNob3VsZCBhcyB0aGV5IGZvcm1hbGx5IApkZXNjcmliZSB0aGUgaGFyZHdhcmUuCgoy
+KSBDb25mdXNpb24gb3ZlciBlbmFibGUtZ3Bpb3MgdnMgcmVzZXQtZ3Bpb3MKClRoZSBzZWNvbmQg
+YXBwZWFyZWQgb24gdGhlIGJsdWV0b290aCB0aHJlYWQ6CgpodHRwczovL3d3dy5zcGluaWNzLm5l
+dC9saXN0cy9saW51eC1ibHVldG9vdGgvbXNnNzg2NTQuaHRtbAoKc2hvdWxkIHRoaXMgYmUgd3Jp
+dHRlbjoKCmVuYWJsZS1ncGlvcyA9IDwmZ3BpbzQgUktfUEQ1IEdQSU9fQUNUSVZFX0xPVz47Cgpv
+cgoKcmVzZXQtZ3Bpb3MgPSA8JmdwaW80IFJLX1BENSBHUElPX0FDVElWRV9ISUdIPjsKClRoZSBk
+YXRhc2hlZXQgKGFzIGF2YWlsYWJsZSBhcyBpdCBpcyk6IApodHRwOi8vY2l0Lm9kZXNzYS51YS9t
+ZWRpYS9wZGYvSW50ZWwtQ29tcHV0ZS1TdGljay9GTi1MaW5rX0YyM0JEU00yNS1XMS5wZGYKClNh
+eXMgaXQgaXMgQlRfUlNUIC0gQlQgUmVzZXQgSU4KCmJ1dCB0aGUgY3VycmVudCBrZXJuZWwgZHJp
+dmVyIGhjaV9oNSBzYXlzOgoKaHR0cHM6Ly9naXRodWIuY29tL3RvcnZhbGRzL2xpbnV4L2Jsb2Iv
+bWFzdGVyL2RyaXZlcnMvYmx1ZXRvb3RoL2hjaV9oNS5jI0w5ODkKCiDCoMKgwqAgeyAiZW5hYmxl
+LWdwaW9zIiwgJmJ0cnRsX2VuYWJsZV9ncGlvcywgMSB9LAoKQW5kIFJvYkggY2xlYXJseSBoYXMg
+YSB2aWV3OgoKaHR0cHM6Ly93d3cuc3Bpbmljcy5uZXQvbGlzdHMvbGludXgtYmx1ZXRvb3RoL21z
+Zzc5MTM4Lmh0bWwKClNvIHRoZXJlIGlzIHN0aWxsIHNvbWUgY29uZnVzaW9uLgoKR3Vlc3MgaXRz
+IGEgcXVlc3Rpb24gb2YgaXQgYSBwYXJ0aWFsIGhhcmR3YXJlIGRlc2NyaXB0aW9uLCB3aXRoIHBv
+c3NpYmxlIApmYXVsdHMsIGlzIGJldHRlciB0aGFuIG5vIGRldmljZSB0cmVlIGRlc2NyaXB0aW9u
+IG9mIHRoZSBoYXJkd2FyZT8KCkFueSB2aWV3cz8KCgoKT24gMTcvMDIvMjAxOSAxMjoxNSwgRGF2
+aWQgU3VtbWVycyB3cm90ZToKPiBUaGlzIHBhdGNoIGlzIHRvIGFkZCBCbHVldG9vdGggdG8gdGhl
+IEFTVVMgVGlua2VyIEJvYXJkIChTKSBkZXZpY2UKPiB0cmVlLgo+Cj4gVGhpcyBwYXRjaCBpcyBt
+b3JlIGNvbnRyYXZlcnNhbCAtIHNvIHByb2JhYmx5IHZpZXcgaXQgYXMgYSByZXF1ZXN0IGZvcgo+
+IGNvbW1lbnRzLgo+Cj4gVGhlIHJlYXNvbiBiZWhpbmQgdGhpcywgaXMgdGhpcyBwYXRjaCBkb2Vz
+IG5vdCBjdXJyZW50bHkgc2V0IEJsdWV0b290aAo+IHdvcmtpbmcgb24gdGhlIHRoZXNlIGJvYXJk
+cy4gVGhlIHByb2JsZW0gaXMgdGhhdCB0aGUKPiBibHVldG9vdGgvaGNpX2g1LmMgZHJpdmVyLCB0
+aGF0IGlzIHVzZWQgZm9yIFJlYWx0ZWsgc2VyaWFsIGRldmljZXMsCj4gZGVwZW5kcyBvbiBBQ1BJ
+LiBVbmZvcnRhbnRseSBBQ1BJIGNhbiBub3QgYmUgZW5hYmxlZCBvbiBhcm12NyBtYWNoaW5lcwo+
+IHN1Y2ggYXMgdGhlIFRCKFMpLiBBbmQgc28gdGhlIGtlcm5lbCBtb2R1bGUgZm9yIHRoZSBSVEw4
+NzIzQlMKPiBCbHVldG9vdGggY2FuIG5vdCBiZSBsb2FkZWQuCj4KPiBIb3dldmVyIHRoaXMgcGF0
+Y2ggaXMgYmVsaWV2ZWQgdG8gYmUgYW4gYWNjdXJhdGUgZGVzY3JpcHRpb24gb2YgdGhlCj4gVGlu
+a2VyIEJvYXJkIChTKSB3aXJpbmcuIEl0IGlzIHN0cm9uZ2x5IGJhc2VkIG9uIHRoZSBBU1VTIHBh
+dGNoOgo+Cj4gaHR0cHM6Ly9naXRodWIuY29tL1RpbmtlckJvYXJkL2RlYmlhbl9rZXJuZWwvY29t
+bWl0LzZhMzEyOGFkZTMzZjc1ODg4NzA0ODU3OGFkYTYxYTRiN2FiOGU2NzgKPgo+IEFzIHRoZSBC
+bHVldG9vdGggaXMgY29ubmVjdGVkIHZpYSBhIFVBUlQgYW5kIHRoaXMgaXMgd2lyZWQgaW50byB1
+YXJ0MCwKPiB0aGlzIGhhcyBiZWVuIGRlc2NyaWJlZCBhcyBhIFNlckRldi4KPgo+IFRoZSBBU1VT
+IHBhdGNoIG1lbnRpb25zIHRoZSBVQVJUX0NUUywgYnV0IG5vdCB0aGUgX1JUUy4gTm93IGFzIHRo
+ZQo+IFJUTDg3MjNCUyBoYXMgYm90aCBDVFMgYW5kIFJUUyBvbiB0aGUgdWFydCwgaXQgaGFzIGJl
+ZW4gYXNzdW1lZCBib3RoCj4gYXJlIHdpcmVkIGludG8gdWFydDAgb24gdGhlIGNwdS4KPgo+IFRo
+ZSBCbHVldG9vdGggY29ubmVjdGlvbiBoYXMgc2V2ZXJhbCB3YWtlIHVwIHBpbnMgYm90aCBkZXZp
+Y2UgYW5kIGhvc3QKPiBhbmQgYSByZXNldCBwaW4uIFRoZSB3aXJpbmcgb2YgdGhlc2UgaGFzIGJl
+ZW4gZGVzY3JpYmVkOyBob3dldmVyIGhvdwo+IHRoZSBrZXJuZWwgZHJpdmVyIHdpbGwgdXNlIHRo
+ZXNlIGlzbid0IGNsZWFyLiBFLmcuIHNob3VsZCBIT1NUX1dBS0UgYmUKPiBhbiBpbnRlcnVwdD8K
+Pgo+IFRoZSBtYWluIHJlYXNvbiBmb3IgYXNraW5nIGZvciBjb21tZW50cywgaXMgdGhhdCB3aGVu
+IGl0IGNvbWVzIHRpbWUgdG8KPiBtYWtlIHRoZSBjaGFuZ2VzIHRvIHRoZSBibHVldG9vdGggdWFy
+dCBjb2RlLCBhbmQgYWRkIGNvbXBhdGlibGUgZmxhZ3MsCj4gcm9iaCBoYXMgaW5kaWNhdGVkIHRo
+YXQgdGhpcyB3aWxsIG9ubHkgYmUgYWNjZXB0ZWQgd2l0aCBhIHZhbGlkCj4gZXhhbXBsZS4gU28g
+dGhlIGNvZGUgYmVsb3cgaXMgdGhhdCBleGFtcGxlLiBTbyBJIHdvdWxkIGxpa2UgY29tbWVudHMK
+PiB0aGF0IHRoaXMgYXBwcm9hY2ggaXMgdmFsaWQsIHdoaWNoIGNhbiBiZSB1c2VkIHdoZW4gdGhl
+IGxhdGVyCj4gc3VibWlzc2lvbiBjb21lcy4KPgo+IFNpZ25lZC1vZmYtYnk6IERhdmlkIFN1bW1l
+cnMgPGJlYWdsZWJvYXJkQGRhdmlkam9obnN1bW1lcnMudWs+Cj4gLS0tCj4gICBhcmNoL2FybS9i
+b290L2R0cy9yazMyODgtdGlua2VyLmR0c2kgfCAxMSArKysrKysrKysrKwo+ICAgMSBmaWxlIGNo
+YW5nZWQsIDExIGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0
+cy9yazMyODgtdGlua2VyLmR0c2kgYi9hcmNoL2FybS9ib290L2R0cy9yazMyODgtdGlua2VyLmR0
+c2kKPiBpbmRleCBlMTc5NmYzNDBlZWYuLjkzMWI0YzY1MmZkYyAxMDA2NDQKPiAtLS0gYS9hcmNo
+L2FybS9ib290L2R0cy9yazMyODgtdGlua2VyLmR0c2kKPiArKysgYi9hcmNoL2FybS9ib290L2R0
+cy9yazMyODgtdGlua2VyLmR0c2kKPiBAQCAtNDgxLDYgKzQ4MSwxNyBAQAo+ICAgCj4gICAmdWFy
+dDAgewo+ICAgCXN0YXR1cyA9ICJva2F5IjsKPiArCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7
+Cj4gKwlwaW5jdHJsLTAgPSA8JnVhcnQwX3hmZXI+LCA8JnVhcnQwX2N0cz4sIDwmdWFydDBfcnRz
+PjsKPiArCj4gKwlibHVldG9vdGggewo+ICsJCWNsb2NrcyA9IDwmcms4MDggUks4MDhfQ0xLT1VU
+MT47Cj4gKwkJcmVzZXQtZ3Bpb3MgPSA8JmdwaW80IFJLX1BENSBHUElPX0FDVElWRV9MT1c+Owo+
+ICsJCWRldmljZS13YWtlLWdwaW9zID0gPCZncGlvNCBSS19QRDIgR1BJT19BQ1RJVkVfSElHSD47
+Cj4gKwkJaG9zdC13YWtlLWdwaW9zID0gPCZncGlvNCBSS19QRDcgR1BJT19BQ1RJVkVfSElHSD47
+Cj4gKwkJdmNjLTE4LXN1cHBseSA9IDwmdmNjXzE4PjsKPiArCQl2Y2MtaW8tc3VwcGx5ID0gPCZ2
+Y2NfaW8+Owo+ICsJfTsKPiAgIH07Cj4gICAKPiAgICZ1YXJ0MSB7CgoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGlu
+ZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
