@@ -1,175 +1,136 @@
-From: Heiner Kallweit <hkallweit1@gmail.com>
-Subject: [PATCH net-next] net: phy: improve handling link_change_notify
- callback
-Date: Sun, 3 Mar 2019 19:58:57 +0100
-Message-ID: <411b1c33-a245-0706-8afd-c4bea1b90f68@gmail.com>
+From: Tony McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: decrease rising edge time of UART2
+Date: Sun, 3 Mar 2019 14:12:46 -0500
+Message-ID: <CAERgok=cxtLqRmYXdrCaUF8mK2pPfGAPc6w3hdLaPgPmqKmkcw@mail.gmail.com>
+References: <20190303122705.27094-1-katsuhiro@katsuster.net>
+ <1623469.Hy6pdcMFRX@phil> <e722acb4-167f-8333-5c8a-b693815273f4@katsuster.net>
+ <CAERgoknAV1sACSPjM_u4WyWzLvmUntXMoEx=ccpFsqYZVeu__Q@mail.gmail.com>
+ <26c3aea3-959f-bfb3-177f-3e5314494361@katsuster.net>
+ <CAERgoknMO6xMzuhCn2kSHZm8Pt+6YH3jDvJckJq28u9OW08u2Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, David Miller <davem@davemloft.net>, Heiko Stuebner <heiko@sntech.de>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAERgoknMO6xMzuhCn2kSHZm8Pt+6YH3jDvJckJq28u9OW08u2Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Akash Gajjar <Akash_Gajjar-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shohei Maruyama <cheat.sc.linux-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>, Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jakob Unterwurzacher <jakob.unterwurzacher-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Oskari Lemmela <oskari-fV/XPr6JiiHR7s880joybQ@public.gmane.org>, Enric
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently the Phy driver's link_change_notify callback is called
-whenever the state machine is run (every second if polling), no matter
-whether the state changed or not. This isn't needed and may confuse
-users considering the name of the callback. Therefore let's change
-the behavior and call this callback only in case of an actual
-state change.
-
-This requires changes to the at803x and rockchip drivers.
-at803x can be simplified so that it reacts on a state change to
-PHY_NOLINK only.
-The rockchip driver can also be much simplified. We simply re-init
-the AFE/DSP registers whenever we change to PHY_RUNNING and speed
-is 100Mbps. This causes very small overhead because we do this even
-if the speed was 100Mbps already. But this is neglectable and
-I think justified by the much simpler code.
-
-Changes are compile-tested only.
-
-Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
----
- drivers/net/phy/at803x.c   | 26 +++++++++-----------------
- drivers/net/phy/phy.c      |  8 ++++----
- drivers/net/phy/rockchip.c | 31 ++-----------------------------
- 3 files changed, 15 insertions(+), 50 deletions(-)
-
-diff --git a/drivers/net/phy/at803x.c b/drivers/net/phy/at803x.c
-index f3e96191e..f315ab468 100644
---- a/drivers/net/phy/at803x.c
-+++ b/drivers/net/phy/at803x.c
-@@ -324,8 +324,6 @@ static int at803x_config_intr(struct phy_device *phydev)
- 
- static void at803x_link_change_notify(struct phy_device *phydev)
- {
--	struct at803x_priv *priv = phydev->priv;
--
- 	/*
- 	 * Conduct a hardware reset for AT8030 every time a link loss is
- 	 * signalled. This is necessary to circumvent a hardware bug that
-@@ -333,25 +331,19 @@ static void at803x_link_change_notify(struct phy_device *phydev)
- 	 * in the FIFO. In such cases, the FIFO enters an error mode it
- 	 * cannot recover from by software.
- 	 */
--	if (phydev->state == PHY_NOLINK) {
--		if (phydev->mdio.reset && !priv->phy_reset) {
--			struct at803x_context context;
-+	if (phydev->state == PHY_NOLINK && phydev->mdio.reset) {
-+		struct at803x_context context;
- 
--			at803x_context_save(phydev, &context);
-+		at803x_context_save(phydev, &context);
- 
--			phy_device_reset(phydev, 1);
--			msleep(1);
--			phy_device_reset(phydev, 0);
--			msleep(1);
-+		phy_device_reset(phydev, 1);
-+		msleep(1);
-+		phy_device_reset(phydev, 0);
-+		msleep(1);
- 
--			at803x_context_restore(phydev, &context);
-+		at803x_context_restore(phydev, &context);
- 
--			phydev_dbg(phydev, "%s(): phy was reset\n",
--				   __func__);
--			priv->phy_reset = true;
--		}
--	} else {
--		priv->phy_reset = false;
-+		phydev_dbg(phydev, "%s(): phy was reset\n", __func__);
- 	}
- }
- 
-diff --git a/drivers/net/phy/phy.c b/drivers/net/phy/phy.c
-index 3745220c5..5938c5acf 100644
---- a/drivers/net/phy/phy.c
-+++ b/drivers/net/phy/phy.c
-@@ -891,9 +891,6 @@ void phy_state_machine(struct work_struct *work)
- 
- 	old_state = phydev->state;
- 
--	if (phydev->drv && phydev->drv->link_change_notify)
--		phydev->drv->link_change_notify(phydev);
--
- 	switch (phydev->state) {
- 	case PHY_DOWN:
- 	case PHY_READY:
-@@ -940,10 +937,13 @@ void phy_state_machine(struct work_struct *work)
- 	if (err < 0)
- 		phy_error(phydev);
- 
--	if (old_state != phydev->state)
-+	if (old_state != phydev->state) {
- 		phydev_dbg(phydev, "PHY state change %s -> %s\n",
- 			   phy_state_to_str(old_state),
- 			   phy_state_to_str(phydev->state));
-+		if (phydev->drv && phydev->drv->link_change_notify)
-+			phydev->drv->link_change_notify(phydev);
-+	}
- 
- 	/* Only re-schedule a PHY state machine change if we are polling the
- 	 * PHY, if PHY_IGNORE_INTERRUPT is set, then we will be moving
-diff --git a/drivers/net/phy/rockchip.c b/drivers/net/phy/rockchip.c
-index 95abf7072..9053b1d01 100644
---- a/drivers/net/phy/rockchip.c
-+++ b/drivers/net/phy/rockchip.c
-@@ -104,41 +104,14 @@ static int rockchip_integrated_phy_config_init(struct phy_device *phydev)
- 
- static void rockchip_link_change_notify(struct phy_device *phydev)
- {
--	int speed = SPEED_10;
--
--	if (phydev->autoneg == AUTONEG_ENABLE) {
--		int reg = phy_read(phydev, MII_SPECIAL_CONTROL_STATUS);
--
--		if (reg < 0) {
--			phydev_err(phydev, "phy_read err: %d.\n", reg);
--			return;
--		}
--
--		if (reg & MII_SPEED_100)
--			speed = SPEED_100;
--		else if (reg & MII_SPEED_10)
--			speed = SPEED_10;
--	} else {
--		int bmcr = phy_read(phydev, MII_BMCR);
--
--		if (bmcr < 0) {
--			phydev_err(phydev, "phy_read err: %d.\n", bmcr);
--			return;
--		}
--
--		if (bmcr & BMCR_SPEED100)
--			speed = SPEED_100;
--		else
--			speed = SPEED_10;
--	}
--
- 	/*
- 	 * If mode switch happens from 10BT to 100BT, all DSP/AFE
- 	 * registers are set to default values. So any AFE/DSP
- 	 * registers have to be re-initialized in this case.
- 	 */
--	if ((phydev->speed == SPEED_10) && (speed == SPEED_100)) {
-+	if (phydev->state == PHY_RUNNING && phydev->speed == SPEED_100) {
- 		int ret = rockchip_integrated_phy_analog_init(phydev);
-+
- 		if (ret)
- 			phydev_err(phydev, "rockchip_integrated_phy_analog_init err: %d.\n",
- 				   ret);
--- 
-2.21.0
+T24gU3VuLCBNYXIgMywgMjAxOSBhdCAxOjQ1IFBNIFRvbnkgTWNLYWhhbiA8dG9ueW1ja2FoYW5A
+Z21haWwuY29tPiB3cm90ZToKPgo+IEhlbGxvIEthdHN1c2hpcm8sCgpBbmQgYXBvbG9naWVzIGZv
+ciB0aGUgZXh0cmEgInMiLCB0eXBpbmcgdG9vIHF1aWNrbHkgSSdtIGFmcmFpZC4KPgo+IE9uIFN1
+biwgTWFyIDMsIDIwMTkgYXQgMTI6MzEgUE0gS2F0c3VoaXJvIFN1enVraQo+IDxrYXRzdWhpcm9A
+a2F0c3VzdGVyLm5ldD4gd3JvdGU6Cj4gPgo+ID4gSGVsbG8gVG9ueSwKPiA+Cj4gPiBPbiAyMDE5
+LzAzLzA0IDA6MTMsIFRvbnkgTWNLYWhhbiB3cm90ZToKPiA+ID4gT24gU3VuLCBNYXIgMywgMjAx
+OSBhdCA5OjA0IEFNIEthdHN1aGlybyBTdXp1a2kgPGthdHN1aGlyb0BrYXRzdXN0ZXIubmV0PiB3
+cm90ZToKPiA+ID4+Cj4gPiA+PiBIZWxsbyBIZWlrbywKPiA+ID4+Cj4gPiA+PiBUaGFuayB5b3Ug
+Zm9yIGNvbW1lbnRzLgo+ID4gPj4KPiA+ID4+IE9uIDIwMTkvMDMvMDMgMjI6MTksIEhlaWtvIFN0
+dWVibmVyIHdyb3RlOgo+ID4gPj4+IEhpLAo+ID4gPj4+Cj4gPiA+Pj4gQW0gU29ubnRhZywgMy4g
+TcOkcnogMjAxOSwgMTM6Mjc6MDUgQ0VUIHNjaHJpZWIgS2F0c3VoaXJvIFN1enVraToKPiA+ID4+
+Pj4gVGhpcyBwYXRjaCBpbmNyZWFzZXMgZHJpdmUgc3RyZW5ndGggb2YgVUFSVDIgZnJvbSAzbUEg
+dG8gMTJtQSBmb3IKPiA+ID4+Pj4gZ2V0dGluZyBtb3JlIGZhc3RlciByaXNpbmcgZWRnZS4KPiA+
+ID4+Pj4KPiA+ID4+Pj4gUm9ja1BybzY0IGlzIHVzaW5nIGEgdmVyeSBoaWdoIHNwZWVkIHJhdGUg
+KDEuNU1icHMpIGZvciBVQVJUMi4gSW4KPiA+ID4+Pj4gdGhpcyBzZXR0aW5nLCBhIGJpdCB3aWR0
+aCBvZiBVQVJUIGlzIGFib3V0IDY2N25zLgo+ID4gPj4+Pgo+ID4gPj4+PiBJbiBteSBlbnZpcm9u
+bWVudCAoUm9ja1BybzY0IFVBUlQyIHdpdGggRlRESSBGVDIzMlJMIFVBUlQtVVNCCj4gPiA+Pj4+
+IGNvbnZlcnRlciksIGZhbGxpbmcgdGltZSBvZiBSb2NrUHJvNjQgVUFSVDIgaXMgNDBucywgYnV0
+IHJpZ2luZyB0aW1lCj4gPiA+Pj4+IGlzIG92ZXIgNjUwbnMuIFNvIFVBUlQgcmVjZWl2ZXIgd2ls
+bCBnZXQgd3JvbmcgZGF0YSwgYmVjYXVzZSByZWNlaXZlcgo+ID4gPj4+PiByZWFkIGludGVybWVk
+aWF0ZSBkYXRhIG9mIHJpc2luZyBlZGdlLgo+ID4gPj4+Pgo+ID4gPj4+PiBSaXNpbmcgdGltZSBi
+ZWNvbWVzIDMwMG5zIGZyb20gNjUwbnMgaWYgYXBwbHkgdGhpcyBwYXRjaC4gVGhpcyBpcyBub3QK
+PiA+ID4+Pj4gcGVyZmVjdCBzb2x1dGlvbiBidXQgYmV0dGVyIHRoYW4gbm93Lgo+ID4gPj4+Pgo+
+ID4gPj4+PiBTaWduZWQtb2ZmLWJ5OiBLYXRzdWhpcm8gU3V6dWtpIDxrYXRzdWhpcm9Aa2F0c3Vz
+dGVyLm5ldD4KPiA+ID4+Pj4gLS0tCj4gPiA+Pj4+ICAgIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
+a2NoaXAvcmszMzk5LmR0c2kgfCA5ICsrKysrKystLQo+ID4gPj4+PiAgICAxIGZpbGUgY2hhbmdl
+ZCwgNyBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+ID4gPj4+Cj4gPiA+Pj4geW91ciBj
+aGFuZ2luZyBhIGNvcmUgcmszMzk5IHByb3BlcnR5IGhlcmUsIHNvIEknZCByZWFsbHkgbGlrZSB0
+byBnZXQKPiA+ID4+PiBpbnB1dCBmcm9tIG90aGVyIGJvYXJkIHN0YWtlaG9sZGVycyBvbiB0aGlz
+IGJlZm9yZSBhcHBseWluZyBhIGNvcmUKPiA+ID4+PiBjaGFuZ2UuCj4gPiA+Pj4KPiA+ID4+PiBD
+b3VsZCB5b3UgZWl0aGVyIGluY2x1ZGUgdGhlIHN1Ym1pdHRlcnMgb2Ygb3RoZXIgcmszMzk5LWJv
+YXJkcyBpbiB0aGUKPiA+ID4+PiByZWNpcGllbnQgbGlzdCBzbyB0aGF0IHRoZXkncmUgYXdhcmUg
+b3IgbGltaXQgdGhlIGNoYW5nZSB0byByb2NrcHJvNjQgZm9yCj4gPiA+Pj4gdGhlIHRpbWUgYmVp
+bmcgKGFrYSBvdmVycmlkaW5nIHRoZSBwcm9wZXJ0eSBpbiB0aGUgYm9hcmQtZHRzKSBwbGVhc2U/
+Cj4gPiA+Pj4KPiA+ID4+Cj4gPiA+PiBPSywgSSdtIGFkZGluZyBvdGhlciBib2FyZHMgbWVtYmVy
+cy4KPiA+ID4+IGJ5IC4vc2NyaXB0cy9nZXRfbWFpbnRhaW5lci5wbCBhcmNoL2FybTY0L2Jvb3Qv
+ZHRzL3JvY2tjaGlwL3JrMzM5OS0qLmR0cwo+ID4gPj4KPiA+ID4+Cj4gPiA+PiBSb2NrUHJvNjQg
+ZGlyZWN0bHkgY29ubmVjdCBVQVJUMiBwaW5zIG9mIFJLMzM5OSB0byBleHRlcm5hbCBjb25uZWN0
+b3IuCj4gPiA+PiBJIHRoaW5rIG1heWJlIG90aGVyIFJLMzM5OSBib2FyZHMgYXJlIGZhY2luZyBz
+YW1lIHByb2JsZW0sIGJ1dCBJIGNhbm5vdAo+ID4gPj4gY2hlY2sgaXQgYmVjYXVzZSBJIGhhdmUg
+Um9ja1BybzY0IG9ubHkuLi4KPiA+ID4+Cj4gPiA+PiBJJ20gaGFwcHkgaWYgc29tZW9uZSB0ZWxs
+IG1lIG90aGVyIGJvYXJkcyBzaXR1YXRpb24uCj4gPiA+Cj4gPiA+IEknbSBwdWxsaW5nIG91dCBv
+dGhlciByb2NrY2hpcCBib2FyZHMgbW9tZW50YXJpbHkgdG8gc2VlIHdoYXQga2luZCBvZgo+ID4g
+PiBwb3B1bGF0aW9uIHdlIGhhdmUuCj4gPiA+Cj4gPiA+IE5vdGUgdGhlc2UgYXJlIG5vdCBhbGwg
+cnVubmluZyA1Lngga2VybmVscywgaG93ZXZlciBub25lIG9mIHRoZW0gaGF2ZQo+ID4gPiB0aGUg
+VUFSVDIgZHJpdmUgbGV2ZWxzIG1vZGlmaWVkIHRvIG15IGtub3dsZWRnZSwgYW5kIHJlZ2FyZGxl
+c3MsIG5vbmUKPiA+ID4gc2hvdyBvdmVyIDEwMCBucy4KPiA+ID4KPiA+ID4gYm9hcmQ6ICAgIHJp
+c2UvZmFsbAo+ID4gPgo+ID4gPiByazMzOTktcm9jLXBjOiA5MG5zLzkwbnMKPiA+ID4gcmszMzk5
+LXJvY2twcm82NCBWMi4wOiAgOTBucy80NW5zCj4gPiA+IHJrMzM5OS1yb2NrcHJvNjQgVjIuMTog
+IDQwbnMvNDFucwo+ID4gPgo+ID4gPiBQbGVhc2UgbWFrZSBzdXJlIHRoZXJlJ3Mgbm90IGEgbGFy
+Z2UgYW1vdW50IG9mIGZsdXggb3Igc29tZXRoaW5nCj4gPiA+IGFyb3VuZCB0aGUgdGVybWluYWxz
+IG9uIHlvdXIgYm9hcmQsIHRoYXQgc2VlbXMgZXhjZXNzaXZlbHkgaGlnaC4KPiA+ID4KPiA+Cj4g
+PiBUaGFuayB5b3UgZm9yIHZhbHVhYmxlIGluZm9ybWF0aW9uLiBGb3IgbW9yZSBkZWVwbHkgZGlz
+Y3Vzc2lvbiwKPiA+IEkgdHJpZWQgb3RoZXIgY29uZGl0aW9ucyBhbmQgd2F0Y2ggdGhlIHJpc2Uv
+ZmFsbCB0aW1lcy4KPiA+Cj4gPiAxKSBOb3QgY29ubmVjdAo+ID4gVGhlIHJpc2UvZmFsbCB0aW1l
+cyBhcmUgNDBucy81bnMgd2hlbiBub3RoaW5nIGNvbm5lY3QgKGltcGVkYW5jZSBpcwo+ID4gdmVy
+eSBoaWdoKSB0byBleHRlcm5hbCBwaW4gb2YgUm9ja1BybzY0Lgo+ID4KPiA+IFdoYXQgVUFSVCBk
+ZXZpY2UgYXJlIHlvdSB1c2luZyB3aXRoIFJvY2tQcm82ND8gSWYgeW91IHVzZSBzb21lIGRldmlj
+ZQo+ID4gd2l0aCBSb2NrUHJvNjQgYW5kIGJvYXJkIHNob3dzIHJpc2UvZmFsbCB0aW1lcyA9IDkw
+bnMvNDVucywgbXkgZGV2aWNlCj4gPiBpcyBub3Qgc3VpdGFibGUgZm9yIFJvY2tQcm82NCBieSBz
+b21lIHJlYXNvbi4gU28gaXQncyBiZXR0ZXIgdG8gZHJvcAo+ID4gbXkgcGF0Y2guCj4KPiBUaGUg
+YWRhcHRlciBpcyBhbiBGVERJIEZUMjMyUkwgYnJlYWtvdXQgYm9hcmQsIGF0dGFjaGVkIHdpdGgg
+c29tZQo+IGdlbmVyaWMgRHVwb250IGNvbm5lY3RvciBqdW1wZXJzLgo+IEludGVyZXN0aW5nIHlv
+dXIgUm9ja1BybyBpcyBzaG93aW5nIHRoaXMgc3ltcHRvbSwgcGVyaGFwcyB0aGVyZSBpcyBhCj4g
+Y29sZCBzb2xkZXIgam9pbnQgc29tZXdoZXJlIGludHJvZHVjaW5nIHJlc2lzdGFuY2U/Cj4KPiA+
+Cj4gPiAyKSBPdGhlciBTb0MKPiA+IEkgaGF2ZSBvdGhlciBTb0MgYm9hcmQgcmszMzI4LXJvY2s2
+NCwgUm9jazY0IHNob3dzIHJpc2UvZmFsbCB0aW1lcyA9Cj4gPiA5MG5zLzgwbnMgd2hlbiBzYW1l
+IFVBUlQtVVNCIGRldmljZSBpcyBjb25uZWN0ZWQgdG8gVUFSVCBwaW4uCj4KPiBJIG1lYXN1cmVk
+IHNpbWlsYXIgb24gbXkgUm9jazY0IGFzIHdlbGwuCj4KPiA+Cj4gPiBJIHRoaW5rIGl0IHNob3dz
+IHJrMzM5OSdzIChvciBSb2NrUHJvNjQncz8pIGRyaXZlIHN0cmVuZ3RoIGlzIGEgbGl0dGxlCj4g
+PiB3ZWFrLiBTbyBpdCdzIGJldHRlciB0byBpbmNyZWFzZSB0aGUgZHJpdmUgc3RyZW5ndGggb2Yg
+VUFSVCBvZiByazMzOTkuCj4KPiBJIGRvIG5vdCB0aGluayB0aGlzIGlzIGEgYmFkIGlkZWEgZ2Vu
+ZXJhbGx5LCBpdCBzaW1wbHkgYWxsb3dzIGZvciBtb3JlCj4gYXZhaWxhYmxlIGN1cnJlbnQgZnJv
+bSB0aGUgaW50ZXJmYWNlLiAgSSdsbCBsZXQgb3RoZXJzIGJlIHRoZSBqdWRnZSBvZgo+IHRoYXQs
+IGhvd2V2ZXIuCj4KPiA+Cj4gPiBCZXN0IFJlZ2FyZHMsCj4gPiBLYXRzdWhpcm8gU3V6dWtpCj4g
+Pgo+ID4gPj4KPiA+ID4+IEJlc3QgUmVnYXJkcywKPiA+ID4+IEthdHN1aGlybyBTdXp1a2kKPiA+
+ID4+Cj4gPiA+Pgo+ID4gPj4+IFRoYW5rcwo+ID4gPj4+IEhlaWtvCj4gPiA+Pj4KPiA+ID4+Pgo+
+ID4gPj4+Cj4gPiA+Pj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
+L3JrMzM5OS5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+
+ID4gPj4+PiBpbmRleCBiZWFhOTI3NDRhNjQuLmUzYzhmOTFlYWQ1MCAxMDA2NDQKPiA+ID4+Pj4g
+LS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+ID4gPj4+PiAr
+KysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpCj4gPiA+Pj4+IEBA
+IC0yMDAwLDYgKzIwMDAsMTEgQEAKPiA+ID4+Pj4gICAgICAgICAgICAgICAgICAgICAgIGRyaXZl
+LXN0cmVuZ3RoID0gPDg+Owo+ID4gPj4+PiAgICAgICAgICAgICAgIH07Cj4gPiA+Pj4+Cj4gPiA+
+Pj4+ICsgICAgICAgICAgICBwY2ZnX3B1bGxfdXBfMTJtYTogcGNmZy1wdWxsLXVwLTEybWEgewo+
+ID4gPj4+PiArICAgICAgICAgICAgICAgICAgICBiaWFzLXB1bGwtdXA7Cj4gPiA+Pj4+ICsgICAg
+ICAgICAgICAgICAgICAgIGRyaXZlLXN0cmVuZ3RoID0gPDEyPjsKPiA+ID4+Pj4gKyAgICAgICAg
+ICAgIH07Cj4gPiA+Pj4+ICsKPiA+ID4+Pj4gICAgICAgICAgICAgICBwY2ZnX3B1bGxfdXBfMTht
+YTogcGNmZy1wdWxsLXVwLTE4bWEgewo+ID4gPj4+PiAgICAgICAgICAgICAgICAgICAgICAgYmlh
+cy1wdWxsLXVwOwo+ID4gPj4+PiAgICAgICAgICAgICAgICAgICAgICAgZHJpdmUtc3RyZW5ndGgg
+PSA8MTg+Owo+ID4gPj4+PiBAQCAtMjUyMSw4ICsyNTI2LDggQEAKPiA+ID4+Pj4gICAgICAgICAg
+ICAgICB1YXJ0MmMgewo+ID4gPj4+PiAgICAgICAgICAgICAgICAgICAgICAgdWFydDJjX3hmZXI6
+IHVhcnQyYy14ZmVyIHsKPiA+ID4+Pj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcm9j
+a2NoaXAscGlucyA9Cj4gPiA+Pj4+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICA8NCBSS19QQzMgUktfRlVOQ18xICZwY2ZnX3B1bGxfdXA+LAo+ID4gPj4+PiAtICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgPDQgUktfUEM0IFJLX0ZVTkNfMSAmcGNmZ19wdWxs
+X25vbmU+Owo+ID4gPj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPDQg
+UktfUEMzIFJLX0ZVTkNfMSAmcGNmZ19wdWxsX3VwXzEybWE+LAo+ID4gPj4+PiArICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgPDQgUktfUEM0IFJLX0ZVTkNfMSAmcGNmZ19wdWxs
+X25vbmVfMTJtYT47Cj4gPiA+Pj4+ICAgICAgICAgICAgICAgICAgICAgICB9Owo+ID4gPj4+PiAg
+ICAgICAgICAgICAgIH07Cj4gPiA+Pj4+Cj4gPiA+Pj4+Cj4gPiA+Pj4KPiA+ID4+Pgo+ID4gPj4+
+Cj4gPiA+Pj4KPiA+ID4+Pgo+ID4gPj4+Cj4gPiA+Pgo+ID4gPj4KPiA+ID4+IF9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gPiA+PiBMaW51eC1yb2NrY2hp
+cCBtYWlsaW5nIGxpc3QKPiA+ID4+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+PiA+ID4+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAKPiA+ID4KPiA+ID4KPiA+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
