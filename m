@@ -1,66 +1,185 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH 01/15] ARM: actions: fix a leaked reference by
- addingmissing of_node_put
-Date: Mon, 4 Mar 2019 23:37:48 +0100
-Message-ID: <CACRpkda+8QZnaT-YoeccQGjg78y9-E-JoWBr3LJs62T03H4wQw@mail.gmail.com>
-References: <1551430616-42014-1-git-send-email-wen.yang99@zte.com.cn>
- <20190301155523.GA1915@Mani-XPS-13-9360> <CACRpkdb=E9_rm4_7DQV3dS5uOs1gozxEwN9MtWr0tTwmjcYe=A@mail.gmail.com>
- <20190304144829.GA5265@Mani-XPS-13-9360>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH v3 1/4] drm: rockchip: introduce rk3066 hdmi
+Date: Mon, 4 Mar 2019 23:48:30 +0100
+Message-ID: <b6b818d5-8c24-e01a-572e-97c1754c80e8@gmail.com>
+References: <20190302104116.1535-1-jbx6244@gmail.com>
+ <20190302104116.1535-2-jbx6244@gmail.com>
+ <20190303202308.GD13157@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190304144829.GA5265@Mani-XPS-13-9360>
+In-Reply-To: <20190303202308.GD13157@ravnborg.org>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: Wen Yang <wen.yang99@zte.com.cn>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Russell King <linux@armlinux.org.uk>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Michal Simek <michal.simek@xilinx.com>, Dinh Nguyen <dinguyen@kernel.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, Scott
+To: Sam Ravnborg <sam@ravnborg.org>
+Cc: heiko@sntech.de, mark.rutland@arm.com, devicetree@vger.kernel.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Mar 4, 2019 at 3:48 PM Manivannan Sadhasivam
-<manivannan.sadhasivam@linaro.org> wrote:
-> On Mon, Mar 04, 2019 at 01:29:33PM +0100, Linus Walleij wrote:
-> > On Fri, Mar 1, 2019 at 4:55 PM Manivannan Sadhasivam
-> > <manivannan.sadhasivam@linaro.org> wrote:
-> > > Hi Wen,
-> > >
-> > > On Fri, Mar 01, 2019 at 04:56:42PM +0800, Wen Yang wrote:
-> > > > The call to of_get_next_child returns a node pointer with refcount
-> > > > incremented thus it must be explicitly decremented after the last
-> > > > usage.
-> > > >
-> > > > Detected by coccinelle with the following warnings:
-> > > > ./arch/arm/mach-actions/platsmp.c:112:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 103, but without a corresponding object release within this function.
-> > > > ./arch/arm/mach-actions/platsmp.c:124:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 115, but without a corresponding object release within this function.
-> > > > ./arch/arm/mach-actions/platsmp.c:137:3-9: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 128, but without a corresponding object release within this function.
-> > > >
-> > >
-> > > We have a floating patch for this:
-> > > https://www.spinics.net/lists/arm-kernel/msg694544.html
-> > >
-> > > Andreas: Can you please take a second look at the patchset submitted by Linus
-> > > Walleij and Russel for simplifying the Actions startup code?
-> >
-> > Andreas wrote a version of simplifying secondary startup in the
-> > same spirit as Russell's patches, and it's merged and all
-> > is fine I think.
-> >
+Thanks for the useful review comments.
+
+With regard to the bugs something between rc1 and rc8 results
+in a freeze on poweroff. Power domain doesn't seem to turn off
+the vop and hdmi in rc8.
+For testing only.
+
+Forgot to ask rob+dt the prefered document name for "rockchip,rk3066-hdmi"
+Please advise if this is OK? "rockchip_rk3066-hdmi.txt"
+
+On 3/3/19 9:23 PM, Sam Ravnborg wrote:> Hi Johan.
 >
-> Oops. I think I missed that! Can you please point me to that patch? And how it
-> got merged? I did the PR for actions stuff this time and haven't included any
-> mach-actions patches.
+> Thanks for this nive driver.
+> A few review comments follows.
+>
+> 	Sam
+>
+> On Sat, Mar 02, 2019 at 11:41:13AM +0100, Johan Jonker wrote:
+>> From: Zheng Yang <zhengyang@rock-chips.com>
+>>
+>> Introduce rk3066 hdmi.
+> A little more info would be good here.
+> Do not assume all reader knows as much as you do.
 
-I just did git log arch/arm/mach-actions but I think it came in quite some time
-ago, not last merge window:
+Will add more text in V4.
 
-But you see:
-commit 6c2eb3e76fb84e2eb46d484f71fab469c0d9532c
-"ARM: owl: smp: Drop owl_secondary_boot()"
-commit bad29933fef76fb6ee577f4a0b6d145c1f52f663
-"ARM: owl: smp: Use __pa_symbol()"
-commit 18cfd9429d8a82c49add8f3ca9d366599bfcac45
-"ARM: owl: smp: Drop bogus holding pen"
+>> +#include <linux/clk.h>
+>> +#include <linux/mfd/syscon.h>
+>> +#include <linux/regmap.h>
+>> +
+>> +#include <drm/drm_of.h>
+>> +#include <drm/drmP.h>
+>> +#include <drm/drm_probe_helper.h>
+> Please do not use drmP.h in new files. The usage of drmP.h is deprecated.
+> Also please sort the include files, but keep the nice grouping.
 
-platsmp.c looks just fine these days. Except for what Wei's patch is fixing,
-of_node_put().
+You try to get rid of it and now I add one more to it ...
+Thank you for letting me know.
+The file drmP.h is used for:
+to_platform_device, platform_get_resource, platform_get_irq
+Replaced <drm/drmP.h> by <linux/platform_device.h>
 
-Yours,
-Linus Walleij
+>> +	int vic;
+> vic is used so much. It deserves an explanation.
+
+Is this OK?
+	int vic; // pointer to the current cea mode in the edid_cea_modes array
+
+hdmi->hdmi_data.vic = drm_match_cea_mode(mode);
+
+>> +	unsigned int enc_in_format;
+>
+> enc_in_format is in this patch only assinged.
+> aybe drop it (if not used in later patches)
+
+Will drop it. Possible leftover when they reused
+the inno-hdmi driver as template?
+
+>> +	u8 ddc_addr;
+>> +	u8 segment_addr;
+> The two members above are only used in rk3066_hdmi_i2c_write()
+> Maybe they can be made local variables?
+
+ddc_addr and segment_addr only get a value in the condition below and
+are reused.
+Should remain global.
+
+	if (msgs->addr == DDC_SEGMENT_ADDR)
+		hdmi->i2c->segment_addr = msgs->buf[0];
+	if (msgs->addr == DDC_ADDR)
+		hdmi->i2c->ddc_addr = msgs->buf[0];
+
+>> +	struct mutex lock; /*for i2c operation*/
+> Name the lock after what is protects, to avoid mis-use.
+
+Will change the name to i2c_lock.
+
+>> +	struct completion cmp;
+>
+> cmp is shorthand for "compare" - as we have a command named so.
+> Find a better name.
+
+Agree.
+
+>> +	struct drm_device *drm_dev;
+> The new way to do this is to embed the device.
+> See latest patches by Noralf in drm-misc-next, which include a nice
+example.
+
+That sounds more like a job for the Rockchip maintainers and
+not for a individual. With this driver they have 8 more to go ...
+
+	ADD_ROCKCHIP_SUB_DRIVER(vop_platform_driver, CONFIG_DRM_ROCKCHIP);
+	ADD_ROCKCHIP_SUB_DRIVER(rockchip_lvds_driver,
+				CONFIG_ROCKCHIP_LVDS);
+	ADD_ROCKCHIP_SUB_DRIVER(rockchip_dp_driver,
+				CONFIG_ROCKCHIP_ANALOGIX_DP);
+	ADD_ROCKCHIP_SUB_DRIVER(cdn_dp_driver, CONFIG_ROCKCHIP_CDN_DP);
+	ADD_ROCKCHIP_SUB_DRIVER(dw_hdmi_rockchip_pltfm_driver,
+				CONFIG_ROCKCHIP_DW_HDMI);
+	ADD_ROCKCHIP_SUB_DRIVER(dw_mipi_dsi_rockchip_driver,
+				CONFIG_ROCKCHIP_DW_MIPI_DSI);
+	ADD_ROCKCHIP_SUB_DRIVER(inno_hdmi_driver, CONFIG_ROCKCHIP_INNO_HDMI);
+	ADD_ROCKCHIP_SUB_DRIVER(rk3066_hdmi_driver,
+				CONFIG_ROCKCHIP_RK3066_HDMI);
+
+>> +	struct regmap *regmap;
+> +1 for using regmap.
+> But then there is still several readl_relaxed() writel_relaxed() calls?
+> They are in hdmi_readb() and hdmi_writeb(). Should a regmap had been
+used here too?
+
+Will rename hdmi->regmap to hdmi->grf_regmap to make it look more different
+between hdmi devm_ioremap and grf syscon_regmap.
+
+>> +	value |= vsync_offset << 4;
+> Replace 4 with HDMI_VIDEO_VSYNC_OFFSET_SHIFT??
+
+Looks like it. That's something only the author can tell.
+
+>> +	hdmi->regmap =
+>> +		syscon_regmap_lookup_by_phandle(hdmi->dev->of_node,
+>> +						"rockchip,grf");
+>
+> dev->of_node would be fine here. No reason to go via hdmi->
+
+Will replace the other hdmi->dev in this function by dev as well.
+
+>> +	hdmi->connector.funcs->destroy(&hdmi->connector);
+>> +	hdmi->encoder.funcs->destroy(&hdmi->encoder);
+> I think the destroy() function should not be called directly.
+
+Don't know what should be used instead. Please advise.
+
+>> +static const struct of_device_id rk3066_hdmi_dt_ids[] = {
+>> +	{ .compatible = "rockchip,rk3066-hdmi",
+>> +	},
+> MAke this a one-liner.
+>
+>> +	{},
+> Us { /* sentinal */ }, like most other drivers.
+
+Agree. But I prefere sentinel ...
+
+{ .compatible = "rockchip,rk3066-hdmi"},
+{ /* sentinel */ },
+
+>> +	.driver = {
+>> +		.name = "rockchip-rk3066hdmi",
+> Different naming are used for the driver in this file.
+> Coniser using a macro to align the naming.
+
+"rockchip,rk3066-hdmi" is related to "rockchip,rk3066-vop"
+
+"rockchip-rk3066hdmi" should remain in line with the other debug messages,
+else it gets a mess if you do a dmesg | grep ...
+
+[    0.576237] rockchip-pm-domain 20004000.pmu:power-controller:
+rockchip_pm_domain_probe
+[    1.198354] rockchip-vop 1010c000.vop: attaching to power domain 'pd_vio'
+[    1.437444] rockchip-drm display-subsystem: bound 10116000.hdmi (ops
+0xc0842d38)
+[    0.397567] rockchip-rk3066hdmi 10116000.hdmi: registered RK3066 HDMI
+I2C bus driver
+
+Not so good example.
+[   12.726332] dwmmc_rockchip 10214000.dwmmc: Using external DMA controller.
