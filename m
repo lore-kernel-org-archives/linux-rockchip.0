@@ -1,51 +1,54 @@
 From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Subject: Re: [PATCH v3 1/2] arm64: dts: rockchip: add #sound-dai-cells to HDMI
- of rk3328
-Date: Mon, 4 Mar 2019 23:00:02 +0900
-Message-ID: <262965ee-e9e8-60d7-d9fc-114b9eeff651@katsuster.net>
-References: <20190217173407.29189-1-katsuhiro@katsuster.net>
- <36101455.UDL3bTQpI8@phil>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: fix cts, rts pin assign of
+ UART3 for rk3399
+Date: Mon, 4 Mar 2019 23:00:06 +0900
+Message-ID: <79bf4a6a-59d1-7478-3a28-20ac6c1a44e9@katsuster.net>
+References: <20190219140800.12624-1-katsuhiro@katsuster.net>
+ <20190219140800.12624-2-katsuhiro@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <36101455.UDL3bTQpI8@phil>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190219140800.12624-2-katsuhiro@katsuster.net>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Heiko,
+ping...
 
-On 2019/03/03 22:55, Heiko Stuebner wrote:
-> Am Sonntag, 17. Februar 2019, 18:34:06 CET schrieb Katsuhiro Suzuki:
->> This patch adds #sound-dai-cells to use HDMI node as audio
->> codec from device tree of rk3328 boards.
->>
->> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+On 2019/02/19 23:08, Katsuhiro Suzuki wrote:
+> This patch fixes pin assign of cts and rts signal of UART3.
 > 
-> applied for 5.2 .
+> Currently GPIO3_C2 and C3 pins are assigned but TRM says that
+> GPIO3_C0 and C1 are correct.
 > 
-> I'm holding off of patch2 for a bit until you and Jonas can clarify that
-> all is right as it is :-)
-
-Thanks and I understand about patch 2.
-
-Best Regards,
-Katsuhiro Suzuki
-
+> Refer:
+>    RK3399 TRM v1.4 - Table 19-1 UART Interface Description
 > 
+> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+> ---
+>   arch/arm64/boot/dts/rockchip/rk3399.dtsi | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> Heiko
-> 
-> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 76fc2c7af80a..beaa92744a64 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -2535,12 +2535,12 @@
+>   
+>   			uart3_cts: uart3-cts {
+>   				rockchip,pins =
+> -					<3 RK_PC2 RK_FUNC_2 &pcfg_pull_none>;
+> +					<3 RK_PC0 RK_FUNC_2 &pcfg_pull_none>;
+>   			};
+>   
+>   			uart3_rts: uart3-rts {
+>   				rockchip,pins =
+> -					<3 RK_PC3 RK_FUNC_2 &pcfg_pull_none>;
+> +					<3 RK_PC1 RK_FUNC_2 &pcfg_pull_none>;
+>   			};
+>   		};
+>   
 > 
