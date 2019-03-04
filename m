@@ -1,70 +1,105 @@
-From: Avi Fishman <avifishman70@gmail.com>
-Subject: Re: [PATCH 06/15] arm: npcm: fix a leaked reference by addingmissing of_node_put
-Date: Mon, 4 Mar 2019 17:39:28 +0200
-Message-ID: <CAKKbWA5GkC7M9gm_HRN-4=neJKNH4JGRj1aaNsHyR7Ar54dS0A@mail.gmail.com>
-References: <1551430616-42014-1-git-send-email-wen.yang99@zte.com.cn> <1551430616-42014-6-git-send-email-wen.yang99@zte.com.cn>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v2 00/11] Add MPEG-2 decoding to Rockchip VPU
+Date: Mon,  4 Mar 2019 16:25:18 -0300
+Message-ID: <20190304192529.14200-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1551430616-42014-6-git-send-email-wen.yang99@zte.com.cn>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wen Yang <wen.yang99@zte.com.cn>
-Cc: liviu.dudau@arm.com, sudeep.holla@arm.com, lorenzo.pieralisi@arm.com, Russell King <linux@armlinux.org.uk>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, kgene@kernel.org, krzk@kernel.org, linux-samsung-soc@vger.kernel.org, michal.simek@xilinx.com, afaerber@suse.de, manivannan.sadhasivam@linaro.org, dinguyen@kernel.org, heiko@sntech.de, linux-rockchip@lists.infradead.org, Florian Fainelli <f.fainelli@gmail.com>, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, linus.walleij@linaro.org, Tomer Maimon <tmaimon77@gmail.com>, Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, Brendan Higgins <brendanhiggins@google.com>, OpenBMC Maillist <openbmc@lists.ozlabs.or>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Reviewed-by: Avi Fishman <avifishman70@gmail.com>
-
-Thanks
-
-On Fri, Mar 1, 2019 at 10:57 AM Wen Yang <wen.yang99@zte.com.cn> wrote:
->
-> The call to of_get_next_child returns a node pointer with refcount
-> incremented thus it must be explicitly decremented after the last
-> usage.
->
-> Detected by coccinelle with the following warnings:
-> ./arch/arm/mach-npcm/platsmp.c:52:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 31, but without a corresponding object release within this function.
-> ./arch/arm/mach-npcm/platsmp.c:68:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 60, but without a corresponding object release within this function.
->
-> Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
-> Cc: Avi Fishman <avifishman70@gmail.com>
-> Cc: Tomer Maimon <tmaimon77@gmail.com>
-> Cc: Patrick Venture <venture@google.com>
-> Cc: Nancy Yuen <yuenn@google.com>
-> Cc: Brendan Higgins <brendanhiggins@google.com>
-> Cc: Russell King <linux@armlinux.org.uk>
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: openbmc@lists.ozlabs.org
-> Cc: linux-kernel@vger.kernel.org
-> ---
->  arch/arm/mach-npcm/platsmp.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/arch/arm/mach-npcm/platsmp.c b/arch/arm/mach-npcm/platsmp.c
-> index 21633c7..fe63edc 100644
-> --- a/arch/arm/mach-npcm/platsmp.c
-> +++ b/arch/arm/mach-npcm/platsmp.c
-> @@ -35,6 +35,7 @@ static int npcm7xx_smp_boot_secondary(unsigned int cpu,
->                 goto out;
->         }
->         gcr_base = of_iomap(gcr_np, 0);
-> +       of_node_put(gcr_np);
->         if (!gcr_base) {
->                 pr_err("could not iomap gcr");
->                 ret = -ENOMEM;
-> @@ -63,6 +64,7 @@ static void __init npcm7xx_smp_prepare_cpus(unsigned int max_cpus)
->                 return;
->         }
->         scu_base = of_iomap(scu_np, 0);
-> +       of_node_put(scu_np);
->         if (!scu_base) {
->                 pr_err("could not iomap scu");
->                 return;
-> --
-> 2.9.5
->
-
-
--- 
-Regards,
-Avi
+VGhpcyBzZXJpZXMgaW50cm9kdWNlcyB0aGUgZGVjb2RpbmcgaW5mcmFzdHJ1Y3R1cmUgdGhhdCB3
+aWxsIGJlCnVzZWQgdG8gYWRkIHN1cHBvcnQgZm9yIG90aGVyIGNvZGVjcyBzdWNoIGFzIFZQOCwg
+VlA5IGFuZCBILjI2NC4KCkFzIGV4cGxhaW5lZCBpbiB0aGUgY292ZXIgbGV0dGVyIGZvciB0aGUg
+djEgcGF0Y2hzZXQsCnRoZSBkcml2ZXIgaXMgbm93IGV4cG9zaW5nIHR3byB2aWRlbyBkZXZpY2Ug
+bm9kZXMuClRoZSBWUFUgZW5jb2RlciBpcyBleHBvc2VkIG9uIC9kZXYvdmlkZW8wLCBhbmQgdGhl
+IFZQVSBkZWNvZGVyCmlzIGV4cG9zZWQgb24gL2Rldi92aWRlbzEuIEJvdGggZGV2aWNlcyBhcmUg
+dGllZCB0byB0aGUgc2FtZQptZW1vcnktdG8tbWVtb3J5IHF1ZXVlLCBhbmQgc2FtZSBtZWRpYSBk
+ZXZpY2UgL2Rldi9tZWRpYTAuCgpUaGVyZWZvcmUgdGhlcmUgYXJlIHR3byBtZWRpYSBncmFwaHM6
+CgrilIzilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJAK4pSCIHJvY2tj
+aGlwLHJrMzM5OS12cHUtZW5jLXNvdXJjZSDilIIK4pSCICAgICAgICAgIC9kZXYvdmlkZW8wICAg
+ICAgICAgICDilIIK4pSU4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSY
+CiAg4pSDCiAg4pSDCiAg4pa8CuKUjOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUkArilIIgIHJvY2tjaGlwLHJrMzM5OS12cHUtZW5jLXByb2MgIOKUggrilJTilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJgKICDilIMKICDilIMKICDilrwK4pSM
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSQCuKUgiAgcm9ja2NoaXAs
+cmszMzk5LXZwdS1lbmMtc2luayAg4pSCCuKUgiAgICAgICAgICAvZGV2L3ZpZGVvMCAgICAgICAg
+ICAg4pSCCuKUlOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUmAoK4pSM
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSQCuKUgiByb2NrY2hpcCxy
+azMzOTktdnB1LWRlYy1zb3VyY2Ug4pSCCuKUgiAgICAgICAgICAvZGV2L3ZpZGVvMSAgICAgICAg
+ICAg4pSCCuKUlOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUmAogIOKU
+gwogIOKUgwogIOKWvArilIzilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lJAK4pSCICByb2NrY2hpcCxyazMzOTktdnB1LWRlYy1wcm9jICDilIIK4pSU4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSYCiAg4pSDCiAg4pSDCiAg4pa8CuKUjOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUkArilIIgIHJvY2tjaGlwLHJrMzM5
+OS12cHUtZGVjLXNpbmsgIOKUggrilIIgICAgICAgICAgL2Rldi92aWRlbzEgICAgICAgICAgIOKU
+ggrilJTilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJgKCk9mIGNvdXJz
+ZSwgdGhpcyB3b3JrIGhhcyBiZWVuIHBvc3NpYmxlIHRoYW5rcyB0byBKb25hcyBLYXJsbWFuLCB3
+aG8gZGlkIHRoZSBpbml0aWFsCk1QRUctMiBkZWNvZGluZyB3b3JrIGFuZCBhbHNvIGdvdCBtcHYr
+ZmZtcGVnIHdvcmtpbmcgdXNpbmcgdGhlIFJlcXVlc3QgQVBJLgoKVGhpcyBkcml2ZXIgY2FuIGJl
+IHRlc3RlZCB1c2luZyBtcHYrZmZtcGVnIGZvciB0aGUgdmlkZW8KZGVjb2Rpbmcgc2lkZSwgYW5k
+IHRoZSBQYW5mcm9zdCBtZXNhIGRyaXZlciBmb3IgcmVuZGVyaW5nLgoKSSBzaG91bGQgYmUgcG9z
+dGluZyBpbnN0cnVjdGlvbnMgdG8gc2V0IGFsbCBvZiB0aGlzIHVwLAphbmQgYWxzbyB3aWxsIGJl
+IHN1Ym1pdHRpbmcgdGhlIHN1cHBvcnQgZm9yIEgyNjQsIFZQOCBhbmQgVlA5LApob3BlZnVsbHkg
+dmVyeSBzb29uLgoKdjI6CiAgKiBGaXhlZCBzb21lIG1pbm9yIGlzc3VlcyBicm91Z2h0IHVwIGJ5
+IHY0bDItY29tcGxpYW5jZS4KICAqIEZpeGVkIGJ5dGVzdXNlZCB3cm9uZ2x5IGFzc2lnbmVkIDAg
+b24gdGhlIE1QRUctMiBkZWNvZGVyLgogICogQWRkcmVzc2VkIGNvbW1lbnRzIGZyb20gSGFucyBh
+bmQgVG9tYXN6IG9uIHRoZSBwaXhlbCBmb3JtYXQKICAgIGhlbHBlcnMuCgpFemVxdWllbCBHYXJj
+aWEgKDEwKToKICByb2NrY2hpcC92cHU6IFJlbmFtZSBwaXhlbCBmb3JtYXQgaGVscGVycwogIG1l
+ZGlhOiBJbnRyb2R1Y2UgaGVscGVycyB0byBmaWxsIHBpeGVsIGZvcm1hdCBzdHJ1Y3RzCiAgcm9j
+a2NoaXAvdnB1OiBVc2UgcGl4ZWwgZm9ybWF0IGhlbHBlcnMKICByb2NrY2hpcC92cHU6IFVzZSB2
+NGwyX20ybV9idWZfY29weV9tZXRhZGF0YQogIHJvY2tjaGlwL3ZwdTogQ2xlYW51cCBtYWNyb2Js
+b2NrIGFsaWdubWVudAogIHJvY2tjaGlwL3ZwdTogQ2xlYW51cCBKUEVHIGJvdW5jZSBidWZmZXIg
+bWFuYWdlbWVudAogIHJvY2tjaGlwL3ZwdTogT3Blbi1jb2RlIG1lZGlhIGNvbnRyb2xsZXIgcmVn
+aXN0ZXIKICByb2NrY2hpcC92cHU6IFN1cHBvcnQgdGhlIFJlcXVlc3QgQVBJCiAgcm9ja2NoaXAv
+dnB1OiBBZGQgZGVjb2RlciBib2lsZXJwbGF0ZQogIHJvY2tjaGlwL3ZwdTogQWRkIHN1cHBvcnQg
+Zm9yIG5vbi1zdGFuZGFyZCBjb250cm9scwoKSm9uYXMgS2FybG1hbiAoMSk6CiAgcm9ja2NoaXAv
+dnB1OiBBZGQgc3VwcG9ydCBmb3IgTVBFRy0yIGRlY29kaW5nCgogZHJpdmVycy9tZWRpYS92NGwy
+LWNvcmUvdjRsMi1jb21tb24uYyAgICAgICAgIHwgMTg2ICsrKysrKwogZHJpdmVycy9zdGFnaW5n
+L21lZGlhL3JvY2tjaGlwL3ZwdS9NYWtlZmlsZSAgIHwgICA1ICstCiAuLi4vbWVkaWEvcm9ja2No
+aXAvdnB1L3JrMzI4OF92cHVfaHcuYyAgICAgICAgfCAgIDQgKy0KIC4uLi9yb2NrY2hpcC92cHUv
+cmszMjg4X3ZwdV9od19qcGVnX2VuYy5jICAgICB8ICAgNCArLQogLi4uL21lZGlhL3JvY2tjaGlw
+L3ZwdS9yazMzOTlfdnB1X2h3LmMgICAgICAgIHwgIDYxICstCiAuLi4vcm9ja2NoaXAvdnB1L3Jr
+MzM5OV92cHVfaHdfanBlZ19lbmMuYyAgICAgfCAgMTAgKy0KIC4uLi9yb2NrY2hpcC92cHUvcmsz
+Mzk5X3ZwdV9od19tcGVnMl9kZWMuYyAgICB8IDI2MyArKysrKysrKysKIC4uLi9zdGFnaW5nL21l
+ZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHUuaCB8IDExNSArKystCiAuLi4vbWVkaWEvcm9j
+a2NoaXAvdnB1L3JvY2tjaGlwX3ZwdV9jb21tb24uaCAgfCAgMTAgKwogLi4uL21lZGlhL3JvY2tj
+aGlwL3ZwdS9yb2NrY2hpcF92cHVfZGVjLmMgICAgIHwgNTU4ICsrKysrKysrKysrKysrKysrKwog
+Li4uL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfZHJ2LmMgICAgIHwgNDQwICsrKysr
+KysrKysrKy0tCiAuLi4vbWVkaWEvcm9ja2NoaXAvdnB1L3JvY2tjaGlwX3ZwdV9lbmMuYyAgICAg
+fCAxNTIgKystLS0KIC4uLi9tZWRpYS9yb2NrY2hpcC92cHUvcm9ja2NoaXBfdnB1X2h3LmggICAg
+ICB8ICA0MiArKwogLi4uL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfanBlZy5jICAg
+IHwgIDI1ICsKIC4uLi9tZWRpYS9yb2NrY2hpcC92cHUvcm9ja2NoaXBfdnB1X21wZWcyLmMgICB8
+ICA2MSArKwogaW5jbHVkZS9tZWRpYS92NGwyLWNvbW1vbi5oICAgICAgICAgICAgICAgICAgIHwg
+IDMyICsKIDE2IGZpbGVzIGNoYW5nZWQsIDE3OTUgaW5zZXJ0aW9ucygrKSwgMTczIGRlbGV0aW9u
+cygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9yb2NrY2hpcC92
+cHUvcmszMzk5X3ZwdV9od19tcGVnMl9kZWMuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMv
+c3RhZ2luZy9tZWRpYS9yb2NrY2hpcC92cHUvcm9ja2NoaXBfdnB1X2RlYy5jCiBjcmVhdGUgbW9k
+ZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVf
+bXBlZzIuYwoKLS0gCjIuMjAuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
+aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtcm9ja2NoaXAK
