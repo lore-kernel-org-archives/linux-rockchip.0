@@ -1,54 +1,39 @@
-From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: fix cts, rts pin assign of
- UART3 for rk3399
-Date: Mon, 4 Mar 2019 23:00:06 +0900
-Message-ID: <79bf4a6a-59d1-7478-3a28-20ac6c1a44e9@katsuster.net>
-References: <20190219140800.12624-1-katsuhiro@katsuster.net>
- <20190219140800.12624-2-katsuhiro@katsuster.net>
+From: Sudeep Holla <sudeep.holla@arm.com>
+Subject: Re: [PATCH 12/15] ARM: vexpress: fix a leaked reference by
+ addingmissing of_node_put
+Date: Mon, 4 Mar 2019 14:46:06 +0000
+Message-ID: <20190304144606.GA7466@e107155-lin>
+References: <1551430616-42014-1-git-send-email-wen.yang99@zte.com.cn>
+ <1551430616-42014-12-git-send-email-wen.yang99@zte.com.cn>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190219140800.12624-2-katsuhiro@katsuster.net>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1551430616-42014-12-git-send-email-wen.yang99@zte.com.cn>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Wen Yang <wen.yang99@zte.com.cn>
+Cc: liviu.dudau@arm.com, lorenzo.pieralisi@arm.com, linux@armlinux.org.uk, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, kgene@kernel.org, krzk@kernel.org, linux-samsung-soc@vger.kernel.org, michal.simek@xilinx.com, afaerber@suse.de, manivannan.sadhasivam@linaro.org, dinguyen@kernel.org, heiko@sntech.de, linux-rockchip@lists.infradead.org, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, linus.walleij@linaro.org, avifishman70@gmail.com, tmaimon77@gmail.com, venture@google.com, yuenn@google.com, brendanhiggins@google.com, openbmc@lists.ozlabs.org, xuwei5@hisilicon.com, maxime.ripard@bootlin.com, wens@csie.org, catalin.marinas@arm.com, will.deacon@arm.com, horms@verge.net.au, magnus.damm@gmail.comlinux-
 List-Id: linux-rockchip.vger.kernel.org
 
-ping...
+On Fri, Mar 01, 2019 at 04:56:53PM +0800, Wen Yang wrote:
+> The call to of_get_next_child returns a node pointer with refcount
+> incremented thus it must be explicitly decremented after the last
+> usage.
+> 
+> Detected by coccinelle with the following warnings:
+> ./arch/arm/mach-vexpress/dcscb.c:150:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 145, but without a corresponding object release within this function.
+> ./arch/arm/mach-vexpress/dcscb.c:160:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 145, but without a corresponding object release within this function.
+> ./arch/arm/mach-vexpress/dcscb.c:171:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 145, but without a corresponding object release within this function.
+> 
+> Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
+> Cc: Liviu Dudau <liviu.dudau@arm.com>
+> Cc: Sudeep Holla <sudeep.holla@arm.com>
 
-On 2019/02/19 23:08, Katsuhiro Suzuki wrote:
-> This patch fixes pin assign of cts and rts signal of UART3.
-> 
-> Currently GPIO3_C2 and C3 pins are assigned but TRM says that
-> GPIO3_C0 and C1 are correct.
-> 
-> Refer:
->    RK3399 TRM v1.4 - Table 19-1 UART Interface Description
-> 
-> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-> ---
->   arch/arm64/boot/dts/rockchip/rk3399.dtsi | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 76fc2c7af80a..beaa92744a64 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -2535,12 +2535,12 @@
->   
->   			uart3_cts: uart3-cts {
->   				rockchip,pins =
-> -					<3 RK_PC2 RK_FUNC_2 &pcfg_pull_none>;
-> +					<3 RK_PC0 RK_FUNC_2 &pcfg_pull_none>;
->   			};
->   
->   			uart3_rts: uart3-rts {
->   				rockchip,pins =
-> -					<3 RK_PC3 RK_FUNC_2 &pcfg_pull_none>;
-> +					<3 RK_PC1 RK_FUNC_2 &pcfg_pull_none>;
->   			};
->   		};
->   
-> 
+Looks good, assuming you want to take this as a series. Please shout if
+you want us to take this.
+
+Acked-by: Sudeep Holla <sudeep.holla@arm.com>
+
+--
+Regards,
+Sudeep
