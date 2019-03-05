@@ -1,25 +1,46 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: enable hdmi audio out for rk3399-rockpro64
-Date: Tue, 05 Mar 2019 01:11:30 +0100
-Message-ID: <3340031.bZNnUxiWAl@phil>
-References: <20190220151226.30993-1-katsuhiro@katsuster.net>
+From: Derek Basehore <dbasehore@chromium.org>
+Subject: [PATCH v2 0/6] Coordinated Clks
+Date: Mon,  4 Mar 2019 20:49:30 -0800
+Message-ID: <20190305044936.22267-1-dbasehore@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190220151226.30993-1-katsuhiro@katsuster.net>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-doc@vger.kernel.org, sboyd@kernel.org, mturquette@baylibre.com, heiko@sntech.de, aisheng.dong@nxp.com, mchehab+samsung@kernel.org, corbet@lwn.net, jbrunet@baylibre.com, Derek Basehore <dbasehore@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 20. Februar 2019, 16:12:26 CET schrieb Katsuhiro Suzuki:
-> The rockpro64 has hdmi support. So this patch enables hdmi audio
-> feature that is defined in rk3399 devicetree.
-> 
-> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+v2 changes:
+-Unrolled recursion in unprepare/disable for
+"clk: Remove recursion in clk_core_{prepare,enable}()"
+-Fixed issue with "clk: fix clk_calc_subtree compute duplications"
+-Fixed bug with too few allocated clk_change structs in
+"clk: add coordinated clk changes support"
+-Further cleaned up patches
 
-applied for 5.2
+Here's the first set of patches that I'm working on for the Common
+Clk Framework. Part of this patch series adds a new clk op,
+pre_rate_req. This is designed to replace the clk notifier approach
+that many clk drivers use right now to setup alt parents or temporary
+dividers. This should allow for the removal of the
+CLK_RECALC_NEW_RATES flag and the implementation of a better locking
+scheme for the prepare lock.
 
-Thanks
-Heiko
+Derek Basehore (5):
+  clk: fix clk_calc_subtree compute duplications
+  clk: change rates via list iteration
+  clk: add coordinated clk changes support
+  docs: driver-api: add pre_rate_req to clk documentation
+  clk: rockchip: use pre_rate_req for cpuclk
+
+Stephen Boyd (1):
+  clk: Remove recursion in clk_core_{prepare,enable}()
+
+ Documentation/driver-api/clk.rst |   7 +-
+ drivers/clk/clk.c                | 659 +++++++++++++++++++++++--------
+ drivers/clk/rockchip/clk-cpu.c   | 256 ++++++------
+ include/linux/clk-provider.h     |  10 +
+ 4 files changed, 642 insertions(+), 290 deletions(-)
+
+-- 
+2.21.0.352.gf09ad66450-goog
