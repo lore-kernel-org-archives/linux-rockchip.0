@@ -1,84 +1,99 @@
-From: =?UTF-8?B?6ZmI5Lqu?= <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH=5d_arm64=3a_dts=3a_rockchip=3a_add_more_cp?=
- =?UTF-8?B?dSBvcGVyYXRpbmcgcG9pbnRzIGZvciBSSzMzMjjjgJDor7fms6jmhI/vvIzpgq4=?=
- =?UTF-8?B?5Lu255SxbGludXgtcm9ja2NoaXAtYm91bmNlcytjbD1yb2NrLWNoaXBzLmNvbUBs?=
- =?UTF-8?B?aXN0cy5pbmZyYWRlYWQub3Jn5Luj5Y+R44CR?=
-Date: Tue, 5 Mar 2019 15:48:56 +0800
-Message-ID: <49258339-a852-2448-2f35-c1a37f807a9d@rock-chips.com>
-References: <20190301175452.6701-1-papadakospan@gmail.com>
- <29290155.VRdV4K0DQe@phil>
- <AM3PR03MB0966D92B504944D7C6D06123AC760@AM3PR03MB0966.eurprd03.prod.outlook.com>
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Subject: Re: [PATCH 01/15] ARM: actions: fix a leaked reference by
+ addingmissing of_node_put
+Date: Tue, 5 Mar 2019 09:55:05 +0000
+Message-ID: <20190305095505.znposuv6avjtbfwf@shell.armlinux.org.uk>
+References: <1551430616-42014-1-git-send-email-wen.yang99@zte.com.cn>
+ <20190301155523.GA1915@Mani-XPS-13-9360>
+ <CACRpkdb=E9_rm4_7DQV3dS5uOs1gozxEwN9MtWr0tTwmjcYe=A@mail.gmail.com>
+ <20190304144829.GA5265@Mani-XPS-13-9360>
+ <CACRpkda+8QZnaT-YoeccQGjg78y9-E-JoWBr3LJs62T03H4wQw@mail.gmail.com>
+ <CAOZjjhnDYHkWCd-zDqkFpg5FPoj-UxxNwVxfbg6QEahiASm10w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <AM3PR03MB0966D92B504944D7C6D06123AC760-XQTXrJX/giFAc9da7WRX18eAHadYHfrlvxpqHgZTriW3zl9H0oFU5g@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: "huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAOZjjhnDYHkWCd-zDqkFpg5FPoj-UxxNwVxfbg6QEahiASm10w@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Wen Yang <wen.yang99@zte.com.cn>, Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Michal Simek <michal.simek@xilinx.com>, Dinh Nguyen <dinguyen@kernel.org>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, Scott
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksIEFsbDoKCiDCoMKgwqAgwqDCoCBUaGUgMS40IEdoeiBhbmQgMS41IEdoeiBmcmVxdWVuY3kg
-aXMgbm90IHN0YWJsZSBmb3Igc29tZSBjaGlwcyAKb2YgcmszMzI4LCBzb8KgIHdlIHJlY29tbWVu
-ZCB1c2UgMS4zIEdoeiBhcyB0aGUgbWF4IGZyZXF1ZW5jeSBmb3IgcmszMzI4IApTb0NzLgoKIMKg
-wqDCoCDCoMKgwqAgQW5kIHRoZSBtYXggdm9sdGFnZSBvZiB2ZGRfY3B1IGlzIDEuMzVWLCBkbyBu
-b3QgZXhjZWVkIHRoYXQuCgrlnKggMjAxOS8zLzIg5LiK5Y2IMzozMywgSm9uYXMgS2FybG1hbiDl
-hpnpgZM6Cj4gT24gMjAxOS0wMy0wMSAxOToyNCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4+IEhp
-LAo+Pgo+PiBBbSBGcmVpdGFnLCAxLiBNw6RyeiAyMDE5LCAxODo1NDo1MyBDRVQgc2NocmllYiBM
-ZW9uaWRhcyBQLiBQYXBhZGFrb3M6Cj4+PiBUaGlzIGFsbG93cyBmb3IgZ3JlYXRlciBtYXggZnJl
-cXVlbmN5IG9uIHJrMzMyOCBib2FyZHMsCj4+PiBpbmNyZWFzaW5nIHBlcmZvcm1hbmNlLgo+Pj4K
-Pj4+IEl0IGhhcyBiZWVuIGluY2x1ZGVkIGluIEFybWJpYW4gKGEgbGludXggZGlzdGlidXRpb24g
-Zm9yIEFSTSBib2FyZHMpCj4+PiBmb3IgYSB3aGlsZSBub3cgd2l0aG91dCBhbnkgcmVwb3J0ZWQg
-aXNzdWVzCj4+Pgo+Pj4gaHR0cHM6Ly9naXRodWIuY29tL2FybWJpYW4vYnVpbGQvYmxvYi9tYXN0
-ZXIvcGF0Y2gva2VybmVsL3JvY2tjaGlwNjQtZGVmYXVsdC9lbmFibGUtMTM5Mm1oei1vcHAucGF0
-Y2gKPj4+IGh0dHBzOi8vZ2l0aHViLmNvbS9hcm1iaWFuL2J1aWxkL2Jsb2IvbWFzdGVyL3BhdGNo
-L2tlcm5lbC9yb2NrY2hpcDY0LWRlZmF1bHQvZW5hYmxlLTE1MTJtaHotb3BwLnBhdGNoCj4+Pgo+
-Pj4gQ2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4+PiBDYzogbGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+Pj4gU2lnbmVkLW9mZi1ieTogTGVvbmlkYXMgUC4g
-UGFwYWRha29zIDxwYXBhZGFrb3NwYW5AZ21haWwuY29tPgo+Pj4gLS0tCj4+PiAgIGFyY2gvYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LmR0c2kgfCAxNCArKysrKysrKysrKysrKwo+Pj4g
-ICAxIGZpbGUgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9h
-cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMyOC5kdHNpIGIvYXJjaC9hcm02NC9ib290
-L2R0cy9yb2NrY2hpcC9yazMzMjguZHRzaQo+Pj4gaW5kZXggODRmMTRiMTMyLi4xOGNhZWYzYzMg
-MTAwNjQ0Cj4+PiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMyOC5kdHNp
-Cj4+PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMyOC5kdHNpCj4+PiBA
-QCAtMTIzLDYgKzEyMywyMCBAQAo+Pj4gICAJCQlvcHAtbWljcm92b2x0ID0gPDEzMDAwMDA+Owo+
-Pj4gICAJCQljbG9jay1sYXRlbmN5LW5zID0gPDQwMDAwPjsKPj4+ICAgCQl9Owo+Pj4gKwkJb3Bw
-LTEzOTIwMDAwMDAgewo+Pj4gKwkJCW9wcC1oeiA9IC9iaXRzLyA2NCA8MTM5MjAwMDAwMD47Cj4+
-PiArCQkJb3BwLW1pY3Jvdm9sdCA9IDwxMzUwMDAwIDEzNTAwMDAgMTM1MDAwMD47Cj4+PiArCQkJ
-b3BwLW1pY3Jvdm9sdC1MMCA9IDwxMzUwMDAwIDEzNTAwMDAgMTM1MDAwMD47Cj4+PiArCQkJb3Bw
-LW1pY3Jvdm9sdC1MMSA9IDwxMzI1MDAwIDEzMjUwMDAgMTMyNTAwMD47Cj4+IEkgY2hlY2tlZCBS
-b2NrY2hpcCdzIHByb2R1Y3RwYWdlIGFuZCB0aGUgY2hpcCByZWFsbHkgc2VlbXMgdG8gYmUKPj4g
-cmF0ZWQgdXAgdG8gMS41R0h6LCBidXQgeW91IHNob3VsZCBnZXQgcmlkIG9mIG9wcC1taWNyb3Zv
-bHQtTHgKPj4gb3B0aW9ucyBhcyB0aGVzZSBhcmUgc3RpbGwgdmVuZG9yLXNwZWNpZmljIHJlZ2Fy
-ZGluZyB0aGUgbGVha2FnZQo+PiBoYW5kbGluZy4KPiBUaGUgZGF0YXNoZWV0IGF0IFsxXSBsaXN0
-cyBNYXggQ1BVIGZyZXF1ZW5jeSBvZiBBNTMgYXMgMS40IEdoeiBpbiBUYWJsZSAzLTIgUmVjb21t
-ZW5kZWQgb3BlcmF0aW5nIGNvbmRpdGlvbiwKPiBpcyB0aGVyZSBhIG5ld2VyIGRhdGFzaGVldCB0
-aGF0IGxpc3RzIDEuNSBHaHogYXMgcmVjb21tZW5kZWQgbWF4Pwo+Cj4gWzFdIGh0dHA6Ly9vcGVu
-c291cmNlLnJvY2stY2hpcHMuY29tL2ltYWdlcy9kL2Q3L1JvY2tjaGlwX1JLMzMyOF9EYXRhc2hl
-ZXRfVjEuMS0yMDE3MDMwOS5wZGYKPgo+IFJlZ2FyZHMsCj4gSm9uYXMKPgo+PiBXaGlsZSBvbiBp
-dCwgd2hlbiBhbGwgbWljcm92b2x0IGVsZW1lbnRzIGFyZSB0aGUgc2FtZSwgdXNpbmcgdGhlCj4+
-IGFic29sdXRlIHZhbHVlIGluc3RlYWQgb2YgInByZWZlcnJlZCBtaW4gbWF4IiBzYXZlcyBhIGJp
-dCBvZiBzcGFjZQo+PiBzaW1pbGFyIHRvIHRoZSBvdGhlciBPUFBzIGluIHRoZSBmaWxlLgo+Pgo+
-PiBUaGFua3MKPj4gSGVpa28KPj4KPj4+ICsJCQljbG9jay1sYXRlbmN5LW5zID0gPDQwMDAwPjsK
-Pj4+ICsJCX07Cj4+PiArCQlvcHAtMTUxMjAwMDAwMCB7Cj4+PiArCQkJb3BwLWh6ID0gL2JpdHMv
-IDY0IDwxNTEyMDAwMDAwPjsKPj4+ICsJCQlvcHAtbWljcm92b2x0ID0gPDE0NTAwMDAgMTQ1MDAw
-MCAxNDUwMDAwPjsKPj4+ICsJCQlvcHAtbWljcm92b2x0LUwwID0gPDE0NTAwMDAgMTQ1MDAwMCAx
-NDUwMDAwPjsKPj4+ICsJCQlvcHAtbWljcm92b2x0LUwxID0gPDE0MjUwMDAgMTQyNTAwMCAxNDI1
-MDAwPjsKPj4+ICsJCQljbG9jay1sYXRlbmN5LW5zID0gPDQwMDAwPjsKPj4+ICsJCX07Cj4+PiAg
-IAl9Owo+Pj4gICAKPj4+ICAgCWFtYmEgewo+Pj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+IExp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4KPgo+Cj4KCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Tue, Mar 05, 2019 at 07:21:19AM +0530, Manivannan Sadhasivam wrote:
+> On Tue, 5 Mar, 2019, 4:08 AM Linus Walleij <linus.walleij@linaro.org wrote:
+> 
+> > On Mon, Mar 4, 2019 at 3:48 PM Manivannan Sadhasivam
+> > <manivannan.sadhasivam@linaro.org> wrote:
+> > > On Mon, Mar 04, 2019 at 01:29:33PM +0100, Linus Walleij wrote:
+> > > > On Fri, Mar 1, 2019 at 4:55 PM Manivannan Sadhasivam
+> > > > <manivannan.sadhasivam@linaro.org> wrote:
+> > > > > Hi Wen,
+> > > > >
+> > > > > On Fri, Mar 01, 2019 at 04:56:42PM +0800, Wen Yang wrote:
+> > > > > > The call to of_get_next_child returns a node pointer with refcount
+> > > > > > incremented thus it must be explicitly decremented after the last
+> > > > > > usage.
+> > > > > >
+> > > > > > Detected by coccinelle with the following warnings:
+> > > > > > ./arch/arm/mach-actions/platsmp.c:112:2-8: ERROR: missing
+> > of_node_put; acquired a node pointer with refcount incremented on line 103,
+> > but without a corresponding object release within this function.
+> > > > > > ./arch/arm/mach-actions/platsmp.c:124:2-8: ERROR: missing
+> > of_node_put; acquired a node pointer with refcount incremented on line 115,
+> > but without a corresponding object release within this function.
+> > > > > > ./arch/arm/mach-actions/platsmp.c:137:3-9: ERROR: missing
+> > of_node_put; acquired a node pointer with refcount incremented on line 128,
+> > but without a corresponding object release within this function.
+> > > > > >
+> > > > >
+> > > > > We have a floating patch for this:
+> > > > > https://www.spinics.net/lists/arm-kernel/msg694544.html
+> > > > >
+> > > > > Andreas: Can you please take a second look at the patchset submitted
+> > by Linus
+> > > > > Walleij and Russel for simplifying the Actions startup code?
+> > > >
+> > > > Andreas wrote a version of simplifying secondary startup in the
+> > > > same spirit as Russell's patches, and it's merged and all
+> > > > is fine I think.
+> > > >
+> > >
+> > > Oops. I think I missed that! Can you please point me to that patch? And
+> > how it
+> > > got merged? I did the PR for actions stuff this time and haven't
+> > included any
+> > > mach-actions patches.
+> >
+> > I just did git log arch/arm/mach-actions but I think it came in quite some
+> > time
+> > ago, not last merge window:
+> >
+> > But you see:
+> > commit 6c2eb3e76fb84e2eb46d484f71fab469c0d9532c
+> > "ARM: owl: smp: Drop owl_secondary_boot()"
+> > commit bad29933fef76fb6ee577f4a0b6d145c1f52f663
+> > "ARM: owl: smp: Use __pa_symbol()"
+> > commit 18cfd9429d8a82c49add8f3ca9d366599bfcac45
+> > "ARM: owl: smp: Drop bogus holding pen"
+> >
+> > platsmp.c looks just fine these days. Except for what Wei's patch is
+> > fixing,
+> > of_node_put().
+> >
+> 
+> Nope. platsmp.c still requires some cleanup like removing the redundant
+> bootlock and pen_release flag as pointed out by Russel. Andreas just
+> replied to your cleanup patches but there was no follow up since that. So,
+> I guess we can just apply Russell's patches and this patch once Andreas is
+> fine with it (it looks good to me though).
+
+No.  My patches are in my tree queued for this merge window.  They
+are part of a series that can not be broken up and merged separately
+because all the per-platform patches need to be merged before the final
+patch "ARM: smp: remove arch-provided "pen_release"" otherwise the
+platforms break.  I thought that was already explained.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
