@@ -1,126 +1,88 @@
-From: Wen Yang <wen.yang99@zte.com.cn>
-Subject: [PATCH v2 07/15] ARM: rockchip: fix a leaked reference by adding missing of_node_put
-Date: Tue, 5 Mar 2019 19:33:58 +0800
-Message-ID: <1551785646-46173-7-git-send-email-wen.yang99@zte.com.cn>
-References: <1551785646-46173-1-git-send-email-wen.yang99@zte.com.cn>
+From: =?iso-8859-1?Q?M=E5ns_Rullg=E5rd?= <mans@mansr.com>
+Subject: Re: [PATCH v2 0/4] Patches to allow consistent mmc / mmcblk numbering w/ device tree
+Date: Tue, 05 Mar 2019 12:39:36 +0000
+Message-ID: <yw1x5zsx5wc7.fsf@mansr.com>
+References: <1461951139-6109-1-git-send-email-dianders@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1551785646-46173-1-git-send-email-wen.yang99@zte.com.cn>
+In-Reply-To: <1461951139-6109-1-git-send-email-dianders@chromium.org> (Douglas
+        Anderson's message of "Fri, 29 Apr 2016 10:32:15 -0700")
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: wang.yi59@zte.com.cn, Wen Yang <wen.yang99@zte.com.cn>, Russell King <linux@armlinux.org.uk>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: ulf.hansson@linaro.org, jh80.chung@samsung.com, shawn.lin@rock-chips.com, adrian.hunter@intel.com, stefan@agner.ch, linux-mmc@vger.kernel.org, computersforpeace@gmail.com, dmitry.torokhov@gmail.com, Heiko Stuebner <heiko@sntech.de>, jszhang@marvell.com, linux-rockchip@lists.infradead.org, devicetree-spec@vger.kernel.org, mark.rutland@arm.com, linux-kernel@vger.kernel.org, vbyravarasu@nvidia.com, lars@metafoo.de, linux@arm.linux.org.uk, jonathanh@nvidia.com, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, grundler@chromium.org, galak@codeaurora.org, lporzio@micron.com, robh+dt@kernel.org, chaotian.jing@mediatek.com, sergei.shtylyov@cogentembedded.com, sudeep.holla@arm.com, zhonghui.fu@linux.intel.com, kirill.shutem
 List-Id: linux-rockchip.vger.kernel.org
 
-The call to of_get_next_child returns a node pointer with refcount
-incremented thus it must be explicitly decremented after the last
-usage.
+Douglas Anderson <dianders@chromium.org> writes:
 
-Detected by coccinelle with the following warnings:
-./arch/arm/mach-rockchip/pm.c:269:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 259, but without a corresponding object release within this function.
-./arch/arm/mach-rockchip/pm.c:275:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 259, but without a corresponding object release within this function
-./arch/arm/mach-rockchip/platsmp.c:280:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 271, but without a corresponding object release within this function.
-./arch/arm/mach-rockchip/platsmp.c:284:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 271, but without a corresponding object release within this function.
-./arch/arm/mach-rockchip/platsmp.c:288:3-9: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 271, but without a corresponding object release within this function.
-./arch/arm/mach-rockchip/platsmp.c:302:3-9: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 293, but without a corresponding object release within this function.
-./arch/arm/mach-rockchip/platsmp.c:250:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 241, but without a corresponding object release within this function.
-./arch/arm/mach-rockchip/platsmp.c:260:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 241, but without a corresponding object release within this function.
-./arch/arm/mach-rockchip/platsmp.c:263:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 241, but without a corresponding object release within this function.
+> This series picks patches from various different places to produce what
+> I consider the best solution to getting consistent mmc and mmcblk
+> ordering.
+>
+> Why consistent ordering and why not just use UUIDs?  IMHO consistent
+> ordering solves a few different problems:
+>
+> 1. For poor, feeble-minded humans like me, have sane numbering for
+>    devices helps a lot.  When grepping through dmesg it's terribly handy
+>    if a given SDMMC device has a consistent number.  I know that I can
+>    do "dmesg | grep mmc0" or "dmesg | grep mmcblk0" to find info about
+>    the eMMC.  I know that I can do "dmesg | grep mmc1" to find info
+>    about the SD card slot.  I don't want it to matter which one probed
+>    first, I don't want it to matter if I'm working on a variant of the
+>    hardware that has the SD card slot disabled, and I don't want to care
+>    what my boot device was.  Worrying about what device number I got
+>    increases my cognitive load.
+>
+> 2. There are cases where it's not trivially easy during development to
+>    use the UUID.  Specifically I work a lot with coreboot / depthcharge
+>    as a BIOS.  When configured properly, that BIOS has a nice feature to
+>    allow you to fetch the kernel and kernel command line from TFTP by
+>    pressing Ctrl-N.  In this particular case the BIOS doesn't actually
+>    know which disk I'd like for my root filesystem, so it's not so easy
+>    for it to put the right UUID into the command line.  For this
+>    purpose, knowing that "mmcblk0" will always refer to eMMC is handy.
+>
+> Changes in v2:
+> - Rebased atop mmc-next
+> - Stat dynamic allocation after fixed allocation; thanks Wolfram!
+> - rk3288 patch new for v2
+>
+> Douglas Anderson (1):
+>   ARM: dts: rockchip: Add mmc aliases for rk3288 platform
+>
+> Jaehoon Chung (1):
+>   Documentation: mmc: Document mmc aliases
+>
+> Stefan Agner (2):
+>   mmc: read mmc alias from device tree
+>   mmc: use SD/MMC host ID for block device name ID
+>
+>  Documentation/devicetree/bindings/mmc/mmc.txt | 11 +++++++++++
+>  arch/arm/boot/dts/rk3288.dtsi                 |  4 ++++
+>  drivers/mmc/card/block.c                      |  2 +-
+>  drivers/mmc/core/host.c                       | 17 ++++++++++++++++-
+>  4 files changed, 32 insertions(+), 2 deletions(-)
 
-Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
-Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
-Cc: Russell King <linux@armlinux.org.uk>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
----
-v2->v1: add a missing space between "adding" and "missing"
+Did anyone ever come up with an acceptable solution for this?  After
+three years, I'm getting tired of rebasing these patches onto every new
+kernel.
 
- arch/arm/mach-rockchip/platsmp.c | 12 ++++++++----
- arch/arm/mach-rockchip/pm.c      | 11 ++++++-----
- 2 files changed, 14 insertions(+), 9 deletions(-)
+UUIDs or similar are NOT an option for multiple reasons:
 
-diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
-index 51984a4..f93d64e 100644
---- a/arch/arm/mach-rockchip/platsmp.c
-+++ b/arch/arm/mach-rockchip/platsmp.c
-@@ -277,19 +277,20 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
- 	sram_base_addr = of_iomap(node, 0);
- 	if (!sram_base_addr) {
- 		pr_err("%s: could not map sram registers\n", __func__);
--		return;
-+		goto out_put_node;
- 	}
- 
- 	if (has_pmu && rockchip_smp_prepare_pmu())
--		return;
-+		goto out_put_node;
- 
- 	if (read_cpuid_part() == ARM_CPU_PART_CORTEX_A9) {
- 		if (rockchip_smp_prepare_sram(node))
--			return;
-+			goto out_put_node;
- 
- 		/* enable the SCU power domain */
- 		pmu_set_power_domain(PMU_PWRDN_SCU, true);
- 
-+		of_node_put(node);
- 		node = of_find_compatible_node(NULL, NULL, "arm,cortex-a9-scu");
- 		if (!node) {
- 			pr_err("%s: missing scu\n", __func__);
-@@ -299,7 +300,7 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
- 		scu_base_addr = of_iomap(node, 0);
- 		if (!scu_base_addr) {
- 			pr_err("%s: could not map scu registers\n", __func__);
--			return;
-+			goto out_put_node;
- 		}
- 
- 		/*
-@@ -321,6 +322,9 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
- 	/* Make sure that all cores except the first are really off */
- 	for (i = 1; i < ncores; i++)
- 		pmu_set_power_domain(0 + i, false);
-+
-+out_put_node:
-+	of_node_put(node);
- }
- 
- static void __init rk3036_smp_prepare_cpus(unsigned int max_cpus)
-diff --git a/arch/arm/mach-rockchip/pm.c b/arch/arm/mach-rockchip/pm.c
-index 0592534..43a16c9 100644
---- a/arch/arm/mach-rockchip/pm.c
-+++ b/arch/arm/mach-rockchip/pm.c
-@@ -266,25 +266,26 @@ static int rk3288_suspend_init(struct device_node *np)
- 	rk3288_bootram_base = of_iomap(sram_np, 0);
- 	if (!rk3288_bootram_base) {
- 		pr_err("%s: could not map bootram base\n", __func__);
--		return -ENOMEM;
-+		ret = -ENOMEM;
-+		goto out_put_node;
- 	}
- 
- 	ret = of_address_to_resource(sram_np, 0, &res);
- 	if (ret) {
- 		pr_err("%s: could not get bootram phy addr\n", __func__);
--		return ret;
-+		goto out_put_node;
- 	}
- 	rk3288_bootram_phy = res.start;
- 
--	of_node_put(sram_np);
--
- 	rk3288_config_bootdata();
- 
- 	/* copy resume code and data to bootsram */
- 	memcpy(rk3288_bootram_base, rockchip_slp_cpu_resume,
- 	       rk3288_bootram_sz);
- 
--	return 0;
-+out_put_node:
-+	of_node_put(sram_np);
-+	return ret;
- }
- 
- static const struct platform_suspend_ops rk3288_suspend_ops = {
+- We have two rootfs partitions for ping-pong updates, so simply
+  referring to "the thing with ID foo" doesn't work.
+
+- Installing said updates needs direct access the device/partition,
+  which may not even have a filesystem.
+
+- The u-boot environment is stored in an eMMC "boot" partition, and
+  userspace needs to know where to find it.
+
+I'm sure I'm not the only one in a similar situation.
+
+Russel, feel free to shout abuse at me.  I don't care, but it makes you
+look stupid.
+
 -- 
-2.9.5
+Måns Rullgård
