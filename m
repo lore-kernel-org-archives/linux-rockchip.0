@@ -1,46 +1,83 @@
-From: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: fix rk3328-roc-cc gmac2io
- tx/rx_delay
-Date: Wed, 06 Mar 2019 03:36:59 +0200
-Message-ID: <1551836219.5698.0@gmail.com>
-References: <20190228222923.30418-1-papadakospan@gmail.com>
- <3120482.od4P9FZq9J@phil>
+From: "dbasehore ." <dbasehore@chromium.org>
+Subject: Re: [PATCH v2 1/6] clk: Remove recursion in clk_core_{prepare,
+ enable}()
+Date: Tue, 5 Mar 2019 20:11:57 -0800
+Message-ID: <CAGAzgsp0fWbH1f7gRKvhTotvdHMAL8gWw1bTKpVHfW9hJddXAw@mail.gmail.com>
+References: <20190305044936.22267-1-dbasehore@chromium.org>
+ <20190305044936.22267-2-dbasehore@chromium.org>
+ <155181177527.20095.15680753964583935841@swboyd.mtv.corp.google.com>
+ <CAGAzgso9-1j2XDsHQn+RbSTtV8Vqideu_nG=2qCJD94iyaxFFQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3120482.od4P9FZq9J@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CAGAzgso9-1j2XDsHQn+RbSTtV8Vqideu_nG=2qCJD94iyaxFFQ@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: aisheng.dong@nxp.com, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, linux-doc@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Jonathan Corbet <corbet@lwn.net>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, mchehab+samsung@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, jbrunet@baylibre.com
 List-Id: linux-rockchip.vger.kernel.org
 
-CgrOo8+EzrnPgiDOms+Fz4EsIDMgzpzOsc+BLCAyMDE5IGF0IDQ6MTAgzpzOnCwgzr8vzrcgSGVp
-a28gU3R1ZWJuZXIgCjxoZWlrb0BzbnRlY2guZGU+IM6tzrPPgc6xz4jOtToKPiBBbSBEb25uZXJz
-dGFnLCAyOC4gRmVicnVhciAyMDE5LCAyMzoyOToyMyBDRVQgc2NocmllYiBMZW9uaWRhcyBQLiAK
-PiBQYXBhZGFrb3M6Cj4+ICBUaGUgcmszMzI4LXJvYy1jYyBib2FyZCBleGhpYml0cyB0eCBzdGFi
-aWxpdHkgaXNzdWVzIHdpdGggbGFyZ2UgCj4+IHBhY2tldHMsCj4+ICBhcyBkb2VzIHRoZSByb2Nr
-NjQgYm9hcmQsIHdoaWNoIHdhcyBmaXhlZCB3aXRoIHRoaXMgcGF0Y2gKPj4gIGh0dHBzOi8vcGF0
-Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTAxNzg5NjkvCj4+IAo+PiAgQSBzaW1pbGFyIHBhdGNo
-IHdhcyBtZXJnZWQgZm9yIHRoZSByazMzMjgtcm9jLWNjIGhlcmUKPj4gIGh0dHBzOi8vcGF0Y2h3
-b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTA4MDQ4NjMvCj4+ICBidXQgaXQgZG9lc24ndCBpbmNsdWRl
-IHRoZSB0eC9yeF9kZWxheSB0d2Vha3MsIGFuZCBJIGZpbmQgdGhhdCB0aGV5Cj4+ICBoZWxwIHdp
-dGggYW4gaXNzdWUgd2hlcmUgbGFyZ2UgdHJhbnNmZXJzIHdvdWxkIGJyaW5nIHRoZSBldGhlcm5l
-dAo+PiAgbGluayBkb3duLCBjYXVzaW5nIGEgbGluayByZXNldCByZWd1bGFybHkuCj4+IAo+PiAg
-U2lnbmVkLW9mZi1ieTogTGVvbmlkYXMgUC4gUGFwYWRha29zIDxwYXBhZGFrb3NwYW5AZ21haWwu
-Y29tPgo+IAo+IGFwcGxpZWQgYXMgZml4IGZvciB0aGUgNS4xLXJjIGN5Y2xlIHN0YXJ0aW5nIGlu
-IGFib3V0IDIgd2Vla3MuCj4gCj4gVGhhbmtzCj4gSGVpa28KPiAKPiAKSXQgc2VlbXMgbGlrZSB0
-aGUgZGVsYXlzIGZvciB0aGUgcmszMzI4LXJvYy1jYyBzaG91bGQgYmUgbGlrZSB0aGlzOgoJdHhf
-ZGVsYXkgPSA8MHgyOD47CglyeF9kZWxheSA9IDwweDE2PjsKV2hhdCBzaG91bGQgSSBkbz8gTWFr
-ZSBhIG5ldyBwYXRjaD8gSWYgc28sIHdoYXQgdHJlZSBkbyBJIGJhc2UgaXQgb24/CgoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Tue, Mar 5, 2019 at 5:35 PM dbasehore . <dbasehore@chromium.org> wrote:
+>
+> On Tue, Mar 5, 2019 at 10:49 AM Stephen Boyd <sboyd@kernel.org> wrote:
+> >
+> > Quoting Derek Basehore (2019-03-04 20:49:31)
+> > > From: Stephen Boyd <sboyd@codeaurora.org>
+> > >
+> > > Enabling and preparing clocks can be written quite naturally with
+> > > recursion. We start at some point in the tree and recurse up the
+> > > tree to find the oldest parent clk that needs to be enabled or
+> > > prepared. Then we enable/prepare and return to the caller, going
+> > > back to the clk we started at and enabling/preparing along the
+> > > way. This also unroll the recursion in unprepare,disable which can
+> > > just be done in the order of walking up the clk tree.
+> > >
+> > > The problem is recursion isn't great for kernel code where we
+> > > have a limited stack size. Furthermore, we may be calling this
+> > > code inside clk_set_rate() which also has recursion in it, so
+> > > we're really not looking good if we encounter a tall clk tree.
+> > >
+> > > Let's create a stack instead by looping over the parent chain and
+> > > collecting clks of interest. Then the enable/prepare becomes as
+> > > simple as iterating over that list and calling enable.
+> > >
+> > > Modified verison of https://lore.kernel.org/patchwork/patch/814369/
+> > > -Fixed kernel warning
+> > > -unrolled recursion in unprepare/disable too
+> > >
+> > > Cc: Jerome Brunet <jbrunet@baylibre.com>
+> > > Signed-off-by: Stephen Boyd <sboyd@codeaurora.org>
+> > > Signed-off-by: Derek Basehore <dbasehore@chromium.org>
+> > > ---
+> >
+> > From the original post:
+> >
+> > "I have some vague fear that this may not work if a clk op is framework
+> > reentrant and attemps to call consumer clk APIs from within the clk ops.
+> > If the reentrant call tries to add a clk that's already in the list then
+> > we'll corrupt the list. Ugh."
+> >
+> > Do we have this sort of problem here? Or are you certain that we don't
+> > have clks that prepare or enable something that is already in the
+> > process of being prepared or enabled?
+>
+> I can look into whether anything's doing this and add a WARN_ON which
+> returns an error if we ever hit that case. If this is happening on
+> some platform, we'd want to correct that anyways.
+>
+
+Also, if we're ever able to move to another locking scheme (hopefully
+soon...), we can make the prepare/enable locks non-reentrant. Then if
+anyone recursively calls back into the framework for another
+prepare/enable, they will deadlock. I guess that's one way of making
+sure no one does that.
+
+> >
