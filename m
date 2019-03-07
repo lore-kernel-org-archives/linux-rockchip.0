@@ -1,7 +1,7 @@
 From: Randy Li <randy.li@rock-chips.com>
-Subject: [PATCH v2 4/6] staging: video: rockchip: add video codec
-Date: Thu,  7 Mar 2019 18:03:14 +0800
-Message-ID: <20190307100316.925-5-randy.li@rock-chips.com>
+Subject: [PATCH v2 1/6] arm64: dts: rockchip: add power domain to iommu
+Date: Thu,  7 Mar 2019 18:03:11 +0800
+Message-ID: <20190307100316.925-2-randy.li@rock-chips.com>
 References: <20190307100316.925-1-randy.li@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -25,29 +25,65 @@ From: Randy Li <ayaka@soulik.info>
 
 Signed-off-by: Randy Li <ayaka@soulik.info>
 ---
- drivers/staging/Kconfig  | 2 ++
- drivers/staging/Makefile | 1 +
- 2 files changed, 3 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 4 ++++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 ++
+ 2 files changed, 6 insertions(+)
 
-diff --git a/drivers/staging/Kconfig b/drivers/staging/Kconfig
-index c0901b96cfe4..5f84035e2a89 100644
---- a/drivers/staging/Kconfig
-+++ b/drivers/staging/Kconfig
-@@ -124,4 +124,6 @@ source "drivers/staging/axis-fifo/Kconfig"
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 84f14b132e8f..117d02e21932 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -581,6 +581,7 @@
+ 		clocks = <&cru ACLK_H265>, <&cru PCLK_H265>;
+ 		clock-names = "aclk", "iface";
+ 		#iommu-cells = <0>;
++		power-domains = <&power RK3328_PD_HEVC>;
+ 		status = "disabled";
+ 	};
  
- source "drivers/staging/erofs/Kconfig"
+@@ -592,6 +593,7 @@
+ 		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
+ 		clock-names = "aclk", "iface";
+ 		#iommu-cells = <0>;
++		power-domains = <&power RK3328_PD_HEVC>;
+ 		status = "disabled";
+ 	};
  
-+source "drivers/staging/rockchip-mpp/Kconfig"
-+
- endif # STAGING
-diff --git a/drivers/staging/Makefile b/drivers/staging/Makefile
-index 57c6bce13ff4..fc3ed97a0eab 100644
---- a/drivers/staging/Makefile
-+++ b/drivers/staging/Makefile
-@@ -52,3 +52,4 @@ obj-$(CONFIG_SOC_MT7621)	+= mt7621-dts/
- obj-$(CONFIG_STAGING_GASKET_FRAMEWORK)	+= gasket/
- obj-$(CONFIG_XIL_AXIS_FIFO)	+= axis-fifo/
- obj-$(CONFIG_EROFS_FS)		+= erofs/
-+obj-$(CONFIG_ROCKCHIP_MPP_SERVICE)	+= rockchip-mpp/
+@@ -603,6 +605,7 @@
+ 		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
+ 		clock-names = "aclk", "iface";
+ 		#iommu-cells = <0>;
++		power-domains = <&power RK3328_PD_VPU>;
+ 		status = "disabled";
+ 	};
+ 
+@@ -614,6 +617,7 @@
+ 		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>;
+ 		clock-names = "aclk", "iface";
+ 		#iommu-cells = <0>;
++		power-domains = <&power RK3328_PD_VIDEO>;
+ 		status = "disabled";
+ 	};
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index db9d948c0b03..23d061ab6fa6 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1263,6 +1263,7 @@
+ 		clock-names = "aclk", "iface";
+ 		#iommu-cells = <0>;
+ 		power-domains = <&power RK3399_PD_VCODEC>;
++		status = "disabled";
+ 	};
+ 
+ 	vdec_mmu: iommu@ff660480 {
+@@ -1273,6 +1274,7 @@
+ 		clocks = <&cru ACLK_VDU>, <&cru HCLK_VDU>;
+ 		clock-names = "aclk", "iface";
+ 		#iommu-cells = <0>;
++		power-domains = <&power RK3399_PD_VDU>;
+ 		status = "disabled";
+ 	};
+ 
 -- 
 2.20.1
