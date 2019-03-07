@@ -1,14 +1,15 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+From: Tomohiro Mayama <parly-gh-HEvi76orzLt5vQOrPBq+1Q@public.gmane.org>
 Subject: Re: rk3328-rock64: USB ports are broken since commit ef05bcb6
-Date: Thu, 7 Mar 2019 14:19:23 +0000
-Message-ID: <4543627b-e68d-2cd6-ebaa-b53d4e81a35d@arm.com>
+Date: Thu, 7 Mar 2019 23:51:19 +0900
+Message-ID: <2f9c467b-cec4-9d30-9fab-bf3c0165720d@iris.mystia.org>
 References: <f1894045-573b-dd6e-4453-fbec702aa9ad@iris.mystia.org>
+ <4543627b-e68d-2cd6-ebaa-b53d4e81a35d@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <f1894045-573b-dd6e-4453-fbec702aa9ad-HEvi76orzLt5vQOrPBq+1Q@public.gmane.org>
-Content-Language: en-GB
+In-Reply-To: <4543627b-e68d-2cd6-ebaa-b53d4e81a35d-5wv7dgnIgG8@public.gmane.org>
+Content-Language: en-US-large
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,41 +19,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Tomohiro Mayama <parly-gh-HEvi76orzLt5vQOrPBq+1Q@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: robin.murphy-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 07/03/2019 13:52, Tomohiro Mayama wrote:
-> Hello,
-> 
-> I'm experiencing a problem that Rock64 USB ports (both 2.0 and 3.0) are
-> not working.
-> 
-> After some investigation, I found that reverting a pin assignment change
-> by the commit ef05bcb6[1] seems to make functioning them again.
-> But according to the schematic[2], the pin assignment seems to be
-> correct. I suspect that the schematic might be incorrect.
+On 2019/03/07 23:19, Robin Murphy wrote:
+> Judging by that schematic, I suspect that the GPIO should probably be ACTIVE_LOW.
 
-Judging by that schematic, I suspect that the GPIO should probably be 
-ACTIVE_LOW.
+I tried patching according to your suggestion, and now it works fine.
+I'm going to make a patch after this.
 
-Robin.
+Thank you for your advice!
 
-> There are some people experiencing the same problem in Arch Linux ARM
-> forum[3].
-> 
-> Is this a known issue?
-> 
-> 
-> [1] https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/diff/?id=ef05bcb60c1a8841e38c91923ba998181117a87c
-> [2] http://files.pine64.org/doc/rock64/ROCK64_Schematic_v2.0_20171019.pdf, page 8
-> [3] https://archlinuxarm.org/forum/viewtopic.php?f=23&t=13321
-> 
-> 
-> Regards,
-> Tomohiro Mayama
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
+Regards,
+Tomohiro Mayama
