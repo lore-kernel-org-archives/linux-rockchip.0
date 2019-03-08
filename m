@@ -1,52 +1,60 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 0/3] Add hardware unbusy interrupt support for dw_mmc
-Date: Fri, 8 Mar 2019 14:37:20 +0800
-Message-ID: <d9049d70-822a-186d-9b18-d6082b97353b@rock-chips.com>
-References: <1551238603-82412-1-git-send-email-shawn.lin@rock-chips.com>
- <8d18eac0-d9f9-8785-75f4-bd304b5f3078@rock-chips.com>
+From: Dan Johansen <strit@manjaro.org>
+Subject: [PATCH] fix usb2 on rock64
+Date: Fri, 08 Mar 2019 08:35:10 +0100
+Message-ID: <693449761bdd3e435089e849b0114018@manjaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <8d18eac0-d9f9-8785-75f4-bd304b5f3078-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: ziyuan <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOS8zLzcgMTY6MjEsIHppeXVhbiB3cm90ZToKPiBUaGFua3MgZm9yIHF1aWNrbHkgd29y
-ayB0aGlzIG91dCwgaXQgd29ya3MgZmluZSBieSB0ZXN0aW5nIHVudGlsIG5vdywgCj4gYW5kIGl0
-IHBlcmZhY3RseSBtYWtlIHRoZSBzeXN0ZW0gd29yayBiZXR0ZXIgaW4gc2luZ2xlIGNvcmUgcGxh
-dGZvcm0uCj4gCj4gVGVzdGVkLWJ5OiBaaXl1YW4gWHUgPHh6eS54dUByb2NrLWNoaXBzLmNvbT4K
-ClRoYW5rcyBmb3IgdGVzdGluZy4gSSdtIHN0aWxsIHdhaXRpbmcgZm9yIGFueSBvdGhlcgpjb21t
-ZW50cyBiZWZvcmUgcmVzcGluIHYyLgoKPiAKPiBPbiAyMDE5LzIvMjcg5LiK5Y2IMTE6MzYsIFNo
-YXduIExpbiB3cm90ZToKPj4gRGVzaWduV2FyZSBNTUMgY29udHJvbGVyIGxhY2tzIHByb3BlciBo
-YXJkd2FyZSB3YWl0Cj4+IGJ1c3kgc3VwcG9ydCwgc28gdGhlIHNvZnR3YXJlIG11c3QgY2hlY2sg
-dGhlIGJ1c3kKPj4gc3RhdGUgaWYgdGhlIGZvbGxvd2luZyB0cmFuZnNlciBuZWVkIHVzZSBkYXRh
-IGxpbmUuCj4+IEFuZCBkd19tY2lfd2FpdF93aGlsZV9idXN5KCkgbm93IHVzZSBidXN5IGNoZWNr
-IG1vc3RseQo+PiB3aXRoIGhvc3QncyBsb2NrIGhvbGQsIGFuZCB3ZSBjYW4ndCByZWxpbmd1aXNo
-IENQVQo+PiBhdCB0aGlzIG1vbWVudCwgd2hpY2ggbWFrZXMgaXQgcmF0aGVyIHBhaW5mdWwgd2hl
-biB1c2VkCj4+IGluIGxvdy1lbmQgcGxhdGZvcm0uIFRvIHNvbHZlIHRoaXMsIFJvY2tjaGlwIGlu
-dmVudAo+PiBhIG5ldyBoYXJkd2FyZSB1bmJ1c3kgaW50ZXJydXB0IG1vZHVsZSwgd2hpY2ggY291
-bGQKPj4gZ2VuZXJhdGUgaW50ZXJydXB0IGlmIHRoZSBzdGF0ZSBtYWNoaW5lIHJ1bnMgZnJvbQo+
-PiBidXN5IHN0YXRlIGludG8gaWRsZSBzdGF0ZS4KPj4KPj4KPj4KPj4gU2hhd24gTGluICgzKToK
-Pj4gwqDCoCBtbWM6IGR3X21tYzogQ2hlY2sgYnVzeSBzdGF0ZSBpbiBkd19tY2lfcmVxdWVzdCgp
-Cj4+IMKgwqAgbW1jOiBkd19tbWM6IEFkZCBoYXJkd2FyZSB1bmJ1c3kgaW50ZXJydXB0IHN1cHBv
-cnQKPj4gwqDCoCBtbWM6IGR3X21tYy1yb2NrY2hpcDogRW5hYmxlIGhhcmR3YXJlIHVuYnVzeSBp
-bnRlcnJ1cHQgc3VwcG9ydAo+Pgo+PiDCoCBkcml2ZXJzL21tYy9ob3N0L2R3X21tYy1yb2NrY2hp
-cC5jIHwgMzAgKysrKysrKysrKysrKysrKysrKwo+PiDCoCBkcml2ZXJzL21tYy9ob3N0L2R3X21t
-Yy5jwqDCoMKgwqDCoMKgwqDCoMKgIHwgNjAgCj4+ICsrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKystCj4+IMKgIGRyaXZlcnMvbW1jL2hvc3QvZHdfbW1jLmjCoMKgwqDCoMKgwqDC
-oMKgwqAgfMKgIDYgKysrKwo+PiDCoCAzIGZpbGVzIGNoYW5nZWQsIDk1IGluc2VydGlvbnMoKyks
-IDEgZGVsZXRpb24oLSkKPj4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+ From 5d027bc9dc27b7bb46268e2f92e853368e5f097f Mon Sep 17 00:00:00 2001
+ From: Strit <strit@manjaro.org>
+Date: Tue, 5 Mar 2019 16:35:48 +0100
+Subject: [PATCH] fix usb2 port on rock64
+
+Fix the issue with usb not getting power on the rock64 board from 
+pine64.org.
+
+Signed-off-by: Dan Johansen <strit@manjaro.org>
+
+---
+  arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 4 ++--
+  1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts 
+b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+index 040b36ef0dd2..4877eb1c095a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+@@ -47,7 +47,7 @@
+  	vcc_host1_5v: vcc_otg_5v: vcc-host1-5v-regulator {
+  		compatible = "regulator-fixed";
+  		enable-active-high;
+-		gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
++		gpio = <&gpio0 RK_PD3 GPIO_ACTIVE_HIGH>;
+  		pinctrl-names = "default";
+  		pinctrl-0 = <&usb20_host_drv>;
+  		regulator-name = "vcc_host1_5v";
+@@ -266,7 +266,7 @@
+
+  	usb2 {
+  		usb20_host_drv: usb20-host-drv {
+-			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
+  		};
+  	};
+
+-- 
+2.20.1
