@@ -1,37 +1,47 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add Nanopi NEO4 initial support
-Date: Fri, 8 Mar 2019 14:13:10 -0600
-Message-ID: <CAL_JsqLkyfd0Tvuxn_i-24gCReo=CNhtb65zG6xxqVYJasDZrQ@mail.gmail.com>
-References: <20190308181202.11607-1-jagan@amarulasolutions.com>
+From: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: fix rk3328-roc-cc gmac2io
+ tx/rx_delay
+Date: Sat, 09 Mar 2019 01:26:43 +0200
+Message-ID: <1552087603.1401.0@gmail.com>
+References: <20190306223454.2959-1-papadakospan@gmail.com>
+ <24c5ffaa-644d-4623-a635-6842f67efe8a@gmail.com>
+ <1552008447.3271.0@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190308181202.11607-1-jagan@amarulasolutions.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Akash Gajjar <akash@openedev.com>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1552008447.3271.0-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Mar 8, 2019 at 12:12 PM Jagan Teki <jagan@amarulasolutions.com> wrote:
->
-> FriendlyElec NanoPi NEO4 is known to be a revision 4 based
-> NanoPi4 series of boards.
->
-> Most of know peripherals are shared between Nanopi M4 vs NEO4, except
-> - 1GB DDR3
-> - USB Host ports
-> - Missing DSI port
-> - USB 2.0 Host with USB2PHY0 (no USB2PH1)
->
-> Add support for it, by reusing existing rk3399-nanopi4.dtsi
->
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> Signed-off-by: Akash Gajjar <akash@openedev.com>
-> ---
->  .../devicetree/bindings/arm/rockchip.yaml     |  1 +
->  arch/arm64/boot/dts/rockchip/Makefile         |  1 +
->  .../boot/dts/rockchip/rk3399-nanopi-neo4.dts  | 50 +++++++++++++++++++
->  3 files changed, 52 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopi-neo4.dts
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+
+>> When I submitted the patch to fix the TX stability issue, I intended 
+>> to follow up with another patch for delay updates.
+>> Unfortunately, I was unable to locate a delay that was acceptable, 
+>> as I was never able to get below ~700 retry attempts on the TX side 
+>> in testing.
+>> 
+>> I am unsure if this is due to manufacturing defects or if I'm 
+>> missing something else.
+>> It may be worth considering implementing some sort of delay auto 
+>> tuning, similar to the mmc driver.
+>> Thoughts?
+> 
+> I feared as much. The delays on the tx side do seem to be more of a 
+> mitigation.
+> I you have the know-how for it, it would be pretty cool
+Interesting approach to this by ayufan:
+https://github.com/ayufan-rock64/linux-mainline-kernel/commit/41eeb7cd789ea7cac0cbf4b35b53055f354da757
+
+I hope he sends it upstream as well
