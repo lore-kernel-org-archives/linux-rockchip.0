@@ -1,80 +1,44 @@
-From: Randy Li <randy.li@rock-chips.com>
-Subject: [PATCH] [TEST]: media: vb2: reverse DMA addr of each plane
-Date: Fri,  8 Mar 2019 18:04:40 +0800
-Message-ID: <20190308100440.14601-1-randy.li@rock-chips.com>
+From: Tomohiro Mayama <parly-gh@iris.mystia.org>
+Subject: Re: [PATCH] fix usb2 on rock64
+Date: Fri, 8 Mar 2019 19:48:56 +0900
+Message-ID: <991ac738-1f5d-8bbd-9c0e-a7e6c05514d9@iris.mystia.org>
+References: <693449761bdd3e435089e849b0114018@manjaro.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-media@vger.kernel.org
-Cc: Randy Li <randy.li@rock-chips.com>, ayaka@soulik.info, joro@8bytes.org, iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org, pawel@osciak.com, m.szyprowski@samsung.com, kyungmin.park@samsung.com, mchehab@kernel.org, hverkuil@xs4all.nl, nicolas@ndufresne.ca, ezequiel@collabora.com, posciak@chromium.org, groeck@chromium.org, paul.kocialkowski@bootlin.com, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <693449761bdd3e435089e849b0114018@manjaro.org>
+Content-Language: en-US-large
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: strit@manjaro.org, linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-With the default iova and dma-iommu driver, the starting
-address of a new buffer would be at lower address than
-the previous one.
+Hello Dan,
 
-This patch can solve this problem simply, but I want
-a way to control the address direction of the IOMMU/IOVA.
+On 2019/03/08 16:35, Dan Johansen wrote:
+> -        gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
+> +        gpio = <&gpio0 RK_PD3 GPIO_ACTIVE_HIGH>;
 
-The reason why we(ayaka and I) need to do this is simple,
-some devices want a contiguous memory for its pixel data.
-But with the single plane buffer, there is not a properly way
-to export its buffer offsets with the userspace,
-since their bytesperline and offset are not full related
-to the picture width or height. You can find more detail
-in the previous mail.
+According to Robin's advice by reading the schematic, correct GPIO pin
+assignment is RK_PA2, but GPIO_ACTIVE_LOW. This fixed the USB problem
+for me.
 
-Besides, this patch won't solve all the problem, if you
-don't disable the size_aligned of the iova driver or
-there would be a gap between the plane 0 and plane 1.
+Please see the following thread:
+https://lists.infradead.org/pipermail/linux-rockchip/2019-March/023298.html
 
-This patch is used for showing the problem we met not
-for merging.
+Also please see this patch:
+https://lists.infradead.org/pipermail/linux-rockchip/2019-March/023300.html
 
-Signed-off-by: Randy Li <randy.li@rock-chips.com>
----
- drivers/media/common/videobuf2/videobuf2-core.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+Or won't your problem be fixed with this patch?
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 15b6b9c0a2e4..6762d1547e49 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -204,11 +204,11 @@ static int __vb2_buf_mem_alloc(struct vb2_buffer *vb)
- 	 * Allocate memory for all planes in this buffer
- 	 * NOTE: mmapped areas should be page aligned
- 	 */
--	for (plane = 0; plane < vb->num_planes; ++plane) {
--		unsigned long size = PAGE_ALIGN(vb->planes[plane].length);
-+	for (plane = vb->num_planes; plane > 0; --plane) {
-+		unsigned long size = PAGE_ALIGN(vb->planes[plane - 1].length);
- 
- 		mem_priv = call_ptr_memop(vb, alloc,
--				q->alloc_devs[plane] ? : q->dev,
-+				q->alloc_devs[plane - 1] ? : q->dev,
- 				q->dma_attrs, size, q->dma_dir, q->gfp_flags);
- 		if (IS_ERR_OR_NULL(mem_priv)) {
- 			if (mem_priv)
-@@ -217,15 +217,15 @@ static int __vb2_buf_mem_alloc(struct vb2_buffer *vb)
- 		}
- 
- 		/* Associate allocator private data with this plane */
--		vb->planes[plane].mem_priv = mem_priv;
-+		vb->planes[plane - 1].mem_priv = mem_priv;
- 	}
- 
- 	return 0;
- free:
- 	/* Free already allocated memory if one of the allocations failed */
--	for (; plane > 0; --plane) {
--		call_void_memop(vb, put, vb->planes[plane - 1].mem_priv);
--		vb->planes[plane - 1].mem_priv = NULL;
-+	for (; plane < vb->num_planes; plane++) {
-+		call_void_memop(vb, put, vb->planes[plane].mem_priv);
-+		vb->planes[plane].mem_priv = NULL;
- 	}
- 
- 	return ret;
--- 
-2.20.1
+Regards,
+Tomohiro
