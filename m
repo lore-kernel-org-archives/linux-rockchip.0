@@ -1,44 +1,42 @@
-From: Tomohiro Mayama <parly-gh@iris.mystia.org>
-Subject: Re: [PATCH] fix usb2 on rock64
-Date: Fri, 8 Mar 2019 19:48:56 +0900
-Message-ID: <991ac738-1f5d-8bbd-9c0e-a7e6c05514d9@iris.mystia.org>
-References: <693449761bdd3e435089e849b0114018@manjaro.org>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Subject: Re: [PATCH v2 2/3] dt-bindings: mmc: Add a new property
+ disable-cqe-dcmd.
+Date: Fri, 8 Mar 2019 14:46:47 +0200
+Message-ID: <37a96eda-196e-bacf-7ae2-5b9354c70273@intel.com>
+References: <20190307084329.25416-1-christoph.muellner@theobroma-systems.com>
+ <20190307084329.25416-2-christoph.muellner@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <693449761bdd3e435089e849b0114018@manjaro.org>
-Content-Language: en-US-large
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: strit@manjaro.org, linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190307084329.25416-2-christoph.muellner@theobroma-systems.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Christoph Muellner <christoph.muellner@theobroma-systems.com>, robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, shawn.lin@rock-chips.com, ulf.hansson@linaro.org
+Cc: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Michal Simek <michal.simek@xilinx.com>, Douglas Anderson <dianders@chromium.org>, Viresh Kumar <viresh.kumar@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Vicente Bergas <vicencb@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>, Randy Li <ayaka@soulik.info>, Tony Xie <tony.xie@rock-chips.com>, Ezequiel Garcia <ezequiel@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Lin Huang <hl@rock-chips.com>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Dan,
+On 7/03/19 10:43 AM, Christoph Muellner wrote:
+> This patch documents the new property disable-cqe-dcmd
+> for the Arasan eMMC 5.1 driver.
+> 
+> Signed-off-by: Christoph Muellner <christoph.muellner@theobroma-systems.com>
+> Signed-off-by: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+> ---
+>  Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+> index 1edbb049cccb..ec699bf98b7c 100644
+> --- a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+> +++ b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+> @@ -44,6 +44,10 @@ Optional Properties:
+>      properly. Test mode can be used to force the controller to function.
+>    - xlnx,int-clock-stable-broken: when present, the controller always reports
+>      that the internal clock is stable even when it is not.
+> +  - disable-cqe-dcmd: The eMMC 5.1 standard specifies direct commands (DCMDs)
+> +    as part of the command queue engine (CQE). On controllers with a CQHCI,
+> +    such as the Arasan eMMC 5.1 host controller, the driver has to enable DCMDs.
+> +    This is done unless disable-cqe-dcmd is specified.
 
-On 2019/03/08 16:35, Dan Johansen wrote:
-> -        gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
-> +        gpio = <&gpio0 RK_PD3 GPIO_ACTIVE_HIGH>;
-
-According to Robin's advice by reading the schematic, correct GPIO pin
-assignment is RK_PA2, but GPIO_ACTIVE_LOW. This fixed the USB problem
-for me.
-
-Please see the following thread:
-https://lists.infradead.org/pipermail/linux-rockchip/2019-March/023298.html
-
-Also please see this patch:
-https://lists.infradead.org/pipermail/linux-rockchip/2019-March/023300.html
-
-Or won't your problem be fixed with this patch?
-
-Regards,
-Tomohiro
+If "supports-cqe" is in mmc.txt, should "disable-cqe-dcmd" be there also?
