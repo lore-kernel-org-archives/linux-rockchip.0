@@ -1,45 +1,37 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH net-next] net: phy: improve handling link_change_notify
- callback
-Date: Fri, 08 Mar 2019 11:45:04 -0800 (PST)
-Message-ID: <20190308.114504.1575506888665763098.davem@davemloft.net>
-References: <411b1c33-a245-0706-8afd-c4bea1b90f68@gmail.com>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add Nanopi NEO4 initial support
+Date: Fri, 8 Mar 2019 14:13:10 -0600
+Message-ID: <CAL_JsqLkyfd0Tvuxn_i-24gCReo=CNhtb65zG6xxqVYJasDZrQ@mail.gmail.com>
+References: <20190308181202.11607-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <411b1c33-a245-0706-8afd-c4bea1b90f68@gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: hkallweit1@gmail.com
-Cc: andrew@lunn.ch, f.fainelli@gmail.com, heiko@sntech.de, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190308181202.11607-1-jagan@amarulasolutions.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Akash Gajjar <akash@openedev.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Heiner Kallweit <hkallweit1@gmail.com>
-Date: Sun, 3 Mar 2019 19:58:57 +0100
+On Fri, Mar 8, 2019 at 12:12 PM Jagan Teki <jagan@amarulasolutions.com> wrote:
+>
+> FriendlyElec NanoPi NEO4 is known to be a revision 4 based
+> NanoPi4 series of boards.
+>
+> Most of know peripherals are shared between Nanopi M4 vs NEO4, except
+> - 1GB DDR3
+> - USB Host ports
+> - Missing DSI port
+> - USB 2.0 Host with USB2PHY0 (no USB2PH1)
+>
+> Add support for it, by reusing existing rk3399-nanopi4.dtsi
+>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> Signed-off-by: Akash Gajjar <akash@openedev.com>
+> ---
+>  .../devicetree/bindings/arm/rockchip.yaml     |  1 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+>  .../boot/dts/rockchip/rk3399-nanopi-neo4.dts  | 50 +++++++++++++++++++
+>  3 files changed, 52 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopi-neo4.dts
 
-> Currently the Phy driver's link_change_notify callback is called
-> whenever the state machine is run (every second if polling), no matter
-> whether the state changed or not. This isn't needed and may confuse
-> users considering the name of the callback. Therefore let's change
-> the behavior and call this callback only in case of an actual
-> state change.
-> 
-> This requires changes to the at803x and rockchip drivers.
-> at803x can be simplified so that it reacts on a state change to
-> PHY_NOLINK only.
-> The rockchip driver can also be much simplified. We simply re-init
-> the AFE/DSP registers whenever we change to PHY_RUNNING and speed
-> is 100Mbps. This causes very small overhead because we do this even
-> if the speed was 100Mbps already. But this is neglectable and
-> I think justified by the much simpler code.
-> 
-> Changes are compile-tested only.
-> 
-> Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
-
-This is still rotting... I've marked it as deferred in patchwork.
-
-This is the kind of patch review and testing scenerio that simply
-drives me crazy as a maintainer.
-
-Patches should never rot.
+Reviewed-by: Rob Herring <robh@kernel.org>
