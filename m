@@ -1,60 +1,114 @@
-From: =?utf-8?Q?Christoph_M=C3=BCllner?=
-        <christoph.muellner@theobroma-systems.com>
-Subject: Re: [PATCH v2 2/3] dt-bindings: mmc: Add a new property
- disable-cqe-dcmd.
-Date: Fri, 8 Mar 2019 14:10:45 +0100
-Message-ID: <3BCC2A27-3AF4-4E5E-BBD4-6A5B49831D3C@theobroma-systems.com>
-References: <20190307084329.25416-1-christoph.muellner@theobroma-systems.com>
- <20190307084329.25416-2-christoph.muellner@theobroma-systems.com>
- <37a96eda-196e-bacf-7ae2-5b9354c70273@intel.com>
-Mime-Version: 1.0 (Mac OS X Mail 11.5 \(3445.9.1\))
-Content-Type: text/plain;
-        charset=us-ascii
-Content-Transfer-Encoding: 8BIT
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH] arm64: dts: rockchip: Add Nanopi NEO4 initial support
+Date: Fri,  8 Mar 2019 23:42:02 +0530
+Message-ID: <20190308181202.11607-1-jagan@amarulasolutions.com>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <37a96eda-196e-bacf-7ae2-5b9354c70273@intel.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Adrian Hunter <adrian.hunter@intel.com>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, Heiko Stuebner <heiko@sntech.de>, shawn.lin@rock-chips.com, ulf.hansson@linaro.org, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Michal Simek <michal.simek@xilinx.com>, Douglas Anderson <dianders@chromium.org>, Viresh Kumar <viresh.kumar@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Vicente Bergas <vicencb@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>, Randy Li <ayaka@soulik.info>, Tony Xie <tony.xie@rock-chips.com>, Ezequiel Garcia <ezequiel@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Lin Huang <hl@rock-chips.com>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchi
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jagan Teki <jagan@amarulasolutions.com>, Akash Gajjar <akash@openedev.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+FriendlyElec NanoPi NEO4 is known to be a revision 4 based
+NanoPi4 series of boards.
 
-> On 08.03.2019, at 13:46, Adrian Hunter <adrian.hunter@intel.com> wrote:
-> 
-> On 7/03/19 10:43 AM, Christoph Muellner wrote:
->> This patch documents the new property disable-cqe-dcmd
->> for the Arasan eMMC 5.1 driver.
->> 
->> Signed-off-by: Christoph Muellner <christoph.muellner@theobroma-systems.com>
->> Signed-off-by: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
->> ---
->> Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 4 ++++
->> 1 file changed, 4 insertions(+)
->> 
->> diff --git a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
->> index 1edbb049cccb..ec699bf98b7c 100644
->> --- a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
->> +++ b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
->> @@ -44,6 +44,10 @@ Optional Properties:
->>     properly. Test mode can be used to force the controller to function.
->>   - xlnx,int-clock-stable-broken: when present, the controller always reports
->>     that the internal clock is stable even when it is not.
->> +  - disable-cqe-dcmd: The eMMC 5.1 standard specifies direct commands (DCMDs)
->> +    as part of the command queue engine (CQE). On controllers with a CQHCI,
->> +    such as the Arasan eMMC 5.1 host controller, the driver has to enable DCMDs.
->> +    This is done unless disable-cqe-dcmd is specified.
-> 
-> If "supports-cqe" is in mmc.txt, should "disable-cqe-dcmd" be there also?
+Most of know peripherals are shared between Nanopi M4 vs NEO4, except
+- 1GB DDR3
+- USB Host ports
+- Missing DSI port
+- USB 2.0 Host with USB2PHY0 (no USB2PH1)
 
-The file mmc.txt says on top:
-"These properties are common to multiple MMC host controllers".
-As my patchset introduces "disable-cqe-dcmd" just for sdhci-of-arasan,
-I would say it should not go into that file.
+Add support for it, by reusing existing rk3399-nanopi4.dtsi
 
-Also I wonder why "supports-cqe" is in mmc.txt, because
-only sdhci-tegra.c is evaluating that property.
-So I would expect it to be documented in
-Documentation/devicetree/bindings/mmc/nvidia,tegra20-sdhci.txt
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Signed-off-by: Akash Gajjar <akash@openedev.com>
+---
+ .../devicetree/bindings/arm/rockchip.yaml     |  1 +
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+ .../boot/dts/rockchip/rk3399-nanopi-neo4.dts  | 50 +++++++++++++++++++
+ 3 files changed, 52 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopi-neo4.dts
 
-However, I see that "disable-cqe-dcmd" could go into other drivers as well.
-But is this enough to document it in mmc.txt?
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 061a03edf9c8..543237b7b297 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -97,6 +97,7 @@ properties:
+           - enum:
+               - friendlyarm,nanopc-t4
+               - friendlyarm,nanopi-m4
++              - friendlyarm,nanopi-neo4
+           - const: rockchip,rk3399
+ 
+       - description: GeekBuying GeekBox
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 1b28fa72ea0b..186281fb70dd 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -18,6 +18,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-gru-scarlet-inx.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-gru-scarlet-kd.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopc-t4.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-m4.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-neo4.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-puma-haikou.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-neo4.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-neo4.dts
+new file mode 100644
+index 000000000000..195410b089b9
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-neo4.dts
+@@ -0,0 +1,50 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (C) 2019 Amarula Solutions B.V.
++ * Author: Jagan Teki <jagan@amarulasolutions.com>
++ */
++
++/dts-v1/;
++
++#include "rk3399-nanopi4.dtsi"
++
++/ {
++	model = "FriendlyARM NanoPi NEO4";
++	compatible = "friendlyarm,nanopi-neo4", "rockchip,rk3399";
++
++	vdd_5v: vdd-5v {
++		compatible = "regulator-fixed";
++		regulator-name = "vdd_5v";
++		regulator-always-on;
++		regulator-boot-on;
++	};
++
++	vcc5v0_core: vcc5v0-core {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_core";
++		regulator-always-on;
++		regulator-boot-on;
++		vin-supply = <&vdd_5v>;
++	};
++
++	vcc5v0_usb1: vcc5v0-usb1 {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_usb1";
++		regulator-always-on;
++		regulator-boot-on;
++		vin-supply = <&vcc5v0_sys>;
++	};
++};
++
++&vcc3v3_sys {
++	vin-supply = <&vcc5v0_core>;
++};
++
++&u2phy0_host {
++	phy-supply = <&vcc5v0_usb1>;
++};
++
++&vbus_typec {
++	regulator-always-on;
++	vin-supply = <&vdd_5v>;
++};
+-- 
+2.18.0.321.gffc6fa0e3
