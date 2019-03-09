@@ -1,19 +1,16 @@
-From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Subject: Re: [PATCH v2] arm64: dts: rockchip: fix rk3328-roc-cc gmac2io
  tx/rx_delay
-Date: Sat, 9 Mar 2019 07:45:21 -0500
-Message-ID: <e9c539ce-f1cb-06f8-1083-ea64c9fd9e7b@gmail.com>
+Date: Sat, 09 Mar 2019 15:16:48 +0100
+Message-ID: <3966706.LBvcXR5hB6@phil>
 References: <20190306223454.2959-1-papadakospan@gmail.com>
- <24c5ffaa-644d-4623-a635-6842f67efe8a@gmail.com>
- <1552008447.3271.0@gmail.com> <1552087603.1401.0@gmail.com>
- <ec810aad-dd04-84e4-bfb0-98b005cf3f03@gmail.com>
  <1552101990.1401.3@gmail.com>
+ <e9c539ce-f1cb-06f8-1083-ea64c9fd9e7b@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1552101990.1401.3-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Content-Language: en-US
+In-Reply-To: <e9c539ce-f1cb-06f8-1083-ea64c9fd9e7b-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -23,61 +20,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMy84LzIwMTkgMTA6MjYgUE0sIExlb25pZGFzIFAuIFBhcGFkYWtvcyB3cm90ZToKPiAKPj4g
-U28gSSBkaXNjb3ZlcmVkIHRoZSBjYXVzZSBvZiBteSBUWCBpc3N1ZXMsIGF0IGxlYXN0IG9uIG15
-IHJrMzMyOC1yb2MtY2MuCj4+IFRoZSByazMzMjguZHRzaSBpcyBtaXNzaW5nIHNldmVyYWwgcmdt
-aWkgdHggcHVsbCBzdHJlbmd0aCB2YWx1ZXMuCj4+IFRoaXMgaXMgY2F1c2luZyB0aGVtIHRvIGRl
-ZmF1bHQgdG8gMG1hLgo+Pgo+PiBJJ3ZlIHB1c2hlZCB0aGVtIHRvIDEybWEsIHNhbWUgYXMgdGhl
-IG90aGVyIHR4IHZhbHVlcywgYW5kIEknbSBnZXR0aW5nIAo+PiA2MDAgbWJwcyB0eCwgd2l0aCBu
-byBUWCBmYWlsdXJlcy4KPj4KPj4gSSBhbSBhbHNvIGdvaW5nIHRvIHRlc3QgaGlzIGFkYXB0aXZl
-IHBhdGNoIG9uY2UgaXQncyBkb25lIGJ1aWxkaW5nLgo+Pgo+PiBUaG91Z2h0cz8KPj4KPj4KPj4g
-ZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjUvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LXJvYy1jYy5k
-dHMgCj4+IGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzMjgtcm9jLWNjLmR0cwo+
-PiBpbmRleCBjMDUxOWJjNTg4NGUuLjY5NjYyN2JmMzMzMSAxMDA2NDQKPj4gLS0tIGEvYXJjaC9h
-cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzMjgtcm9jLWNjLmR0cwo+PiArKysgYi9hcmNoL2Fy
-bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMyOC1yb2MtY2MuZHRzCj4+IEBAIC0yODAsNiArMjgw
-LDI2IEBACj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByb2NrY2hpcCxwaW5zID0gPDAgUktf
-UEEwIFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+Owo+PiDCoMKgwqDCoMKgwqDCoMKgIH07
-Cj4+IMKgwqDCoMKgIH07Cj4+ICsKPj4gK8KgwqDCoCBnbWFjLTEgewo+PiArwqDCoMKgwqDCoMKg
-wqAgcmdtaWltMV9waW5zOiByZ21paW0xLXBpbnMgewo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCByb2NrY2hpcCxwaW5zID0KPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAvKiBt
-YWNfdHhjbGsgKi8KPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8MCBSS19QQjAg
-MSAmcGNmZ19wdWxsX25vbmVfMTJtYT4sCj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgLyogbWFjX3R4ZW4gKi8KPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8MCBS
-S19QQjQgMSAmcGNmZ19wdWxsX25vbmVfMTJtYT4sCj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqAgLyogbWFjX2NsayAqLwo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IDwwIFJLX1BEMCAxICZwY2ZnX3B1bGxfbm9uZV8xMm1hPiwKPj4gK8KgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCAvKiBtYWNfdHhkMSAqLwo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgIDwwIFJLX1BDMCAxICZwY2ZnX3B1bGxfbm9uZV8xMm1hPiwKPj4gK8KgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCAvKiBtYWNfdHhkMCAqLwo+PiArwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIDwwIFJLX1BDMSAxICZwY2ZnX3B1bGxfbm9uZV8xMm1hPiwKPj4gK8KgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAvKiBtYWNfdHhkMyAqLwo+PiArwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIDwwIFJLX1BDNyAxICZwY2ZnX3B1bGxfbm9uZV8xMm1hPiwKPj4g
-K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAvKiBtYWNfdHhkMiAqLwo+PiArwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwwIFJLX1BDNiAxICZwY2ZnX3B1bGxfbm9uZV8xMm1h
-PjsKPj4gK8KgwqDCoMKgwqDCoMKgIH07Cj4+ICvCoMKgwqAgfTsKPj4gwqB9Owo+Pgo+PiDCoCZz
-ZG1tYyB7Cj4gR29vZCBmaW5kISBJdCBzZWVtcyBsaWtlIHRoZXkncmUgdGhlcmUgaW4gdGhlIGR0
-c2ksIGJ1dCBjb25maWd1cmVkIGFzIAo+IG5vbmUgd2hlbiBpdCBjb21lcyB0byBtYS4gSSdsbCB0
-ZXN0IGl0Cj4gCj4gCgpXaXRoIEF5dWZhbidzIHBhdGNoIG9mZmxvYWQgcGF0Y2ggYW5kIG15IHB1
-bGwgcGF0Y2gsIEkgbm93IGhhdmUgdGhlIApmb2xsb3dpbmcgcmVzdWx0czoKWyBJRF0gSW50ZXJ2
-YWwgICAgICAgICAgIFRyYW5zZmVyICAgICBCaXRyYXRlICAgICAgICAgUmV0cgpbICA1XSAgIDAu
-MDAtMTAuMDEgIHNlYyAgMTAyMiBNQnl0ZXMgICA4NTcgTWJpdHMvc2VjICA4ODUgICAgICAgICAg
-ICAgc2VuZGVyClsgIDVdICAgMC4wMC0xMC4wMSAgc2VjICAxMDIyIE1CeXRlcyAgIDg1NiBNYml0
-cy9zZWMgCnJlY2VpdmVyCgpldGgwOiBmbGFncz00MTYzPFVQLEJST0FEQ0FTVCxSVU5OSU5HLE1V
-TFRJQ0FTVD4gIG10dSAxNTAwCiAgICAgICAgIGluZXQ2IGZlODA6OmU4YjU6NWVmZjpmZTQ5OmQz
-NTMgIHByZWZpeGxlbiA2NCAgc2NvcGVpZCAweDIwPGxpbms+CiAgICAgICAgIGV0aGVyIGVhOmI1
-OjVlOjQ5OmQzOjUzICB0eHF1ZXVlbGVuIDEwMDAgIChFdGhlcm5ldCkKICAgICAgICAgUlggcGFj
-a2V0cyAzOTgyMiAgYnl0ZXMgMjY2ODYxOCAoMi42IE1CKQogICAgICAgICBSWCBlcnJvcnMgMCAg
-ZHJvcHBlZCAwICBvdmVycnVucyAwICBmcmFtZSAwCiAgICAgICAgIFRYIHBhY2tldHMgMTAwNTY0
-OSAgYnl0ZXMgMTUxNjY5ODE1OCAoMS41IEdCKQogICAgICAgICBUWCBlcnJvcnMgMCAgZHJvcHBl
-ZCAwIG92ZXJydW5zIDAgIGNhcnJpZXIgMCAgY29sbGlzaW9ucyAwCiAgICAgICAgIGRldmljZSBp
-bnRlcnJ1cHQgMjkKCk11Y2ggYmV0dGVyIG92ZXJhbGwsIHN0aWxsIG5vdCBwZXJmZWN0LCBidXQg
-SSB0aGluayBpdCBtaWdodCBiZSB3b3J0aCAKcmUtcnVubmluZyB0aGUgZGVsYXkgdGVzdHMgbm93
-LgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+Am Samstag, 9. M=E4rz 2019, 13:45:21 CET schrieb Peter Geis:
+> On 3/8/2019 10:26 PM, Leonidas P. Papadakos wrote:
+> > =
+
+> >> So I discovered the cause of my TX issues, at least on my rk3328-roc-c=
+c.
+> >> The rk3328.dtsi is missing several rgmii tx pull strength values.
+> >> This is causing them to default to 0ma.
+> >>
+> >> I've pushed them to 12ma, same as the other tx values, and I'm getting =
+
+> >> 600 mbps tx, with no TX failures.
+> >>
+> >> I am also going to test his adaptive patch once it's done building.
+> >>
+> >> Thoughts?
+> >>
+> >>
+> >> diff --git a/arch/arm65/boot/dts/rockchip/rk3328-roc-cc.dts =
+
+> >> b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+> >> index c0519bc5884e..696627bf3331 100644
+> >> --- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+> >> +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+> >> @@ -280,6 +280,26 @@
+> >>              rockchip,pins =3D <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
+> >>          };
+> >>      };
+> >> +
+> >> +    gmac-1 {
+> >> +        rgmiim1_pins: rgmiim1-pins {
+> >> +            rockchip,pins =3D
+> >> +                /* mac_txclk */
+> >> +                <0 RK_PB0 1 &pcfg_pull_none_12ma>,
+> >> +                /* mac_txen */
+> >> +                <0 RK_PB4 1 &pcfg_pull_none_12ma>,
+> >> +                /* mac_clk */
+> >> +                <0 RK_PD0 1 &pcfg_pull_none_12ma>,
+> >> +                /* mac_txd1 */
+> >> +                <0 RK_PC0 1 &pcfg_pull_none_12ma>,
+> >> +                /* mac_txd0 */
+> >> +                <0 RK_PC1 1 &pcfg_pull_none_12ma>,
+> >> +                /* mac_txd3 */
+> >> +                <0 RK_PC7 1 &pcfg_pull_none_12ma>,
+> >> +                /* mac_txd2 */
+> >> +                <0 RK_PC6 1 &pcfg_pull_none_12ma>;
+> >> +        };
+> >> +    };
+> >>  };
+> >>
+> >>  &sdmmc {
+> > Good find! It seems like they're there in the dtsi, but configured as =
+
+> > none when it comes to ma. I'll test it
+> > =
+
+> > =
+
+> =
+
+> With Ayufan's patch offload patch and my pull patch, I now have the =
+
+> following results:
+> [ ID] Interval           Transfer     Bitrate         Retr
+> [  5]   0.00-10.01  sec  1022 MBytes   857 Mbits/sec  885             sen=
+der
+> [  5]   0.00-10.01  sec  1022 MBytes   856 Mbits/sec =
+
+> receiver
+> =
+
+> eth0: flags=3D4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+>          inet6 fe80::e8b5:5eff:fe49:d353  prefixlen 64  scopeid 0x20<link>
+>          ether ea:b5:5e:49:d3:53  txqueuelen 1000  (Ethernet)
+>          RX packets 39822  bytes 2668618 (2.6 MB)
+>          RX errors 0  dropped 0  overruns 0  frame 0
+>          TX packets 1005649  bytes 1516698158 (1.5 GB)
+>          TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+>          device interrupt 29
+> =
+
+> Much better overall, still not perfect, but I think it might be worth =
+
+> re-running the delay tests now.
+
+also you could check if the thres-dma-flag is still necessary or can
+be removed - might be interesting to know if fixing the drive strength
+magically also fixes that issue.
+
+
+Heiko
