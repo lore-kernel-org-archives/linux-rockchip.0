@@ -1,38 +1,83 @@
-From: Kangjie Lu <kjlu@umn.edu>
-Subject: [PATCH] media: rga: fix NULL pointer dereferences
-Date: Sat,  9 Mar 2019 00:35:56 -0600
-Message-ID: <20190309063556.32487-1-kjlu@umn.edu>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: kjlu@umn.edu
-Cc: pakki001@umn.edu, Jacob chen <jacob2.chen@rock-chips.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: fix rk3328-roc-cc gmac2io
+ tx/rx_delay
+Date: Sat, 9 Mar 2019 07:45:21 -0500
+Message-ID: <e9c539ce-f1cb-06f8-1083-ea64c9fd9e7b@gmail.com>
+References: <20190306223454.2959-1-papadakospan@gmail.com>
+ <24c5ffaa-644d-4623-a635-6842f67efe8a@gmail.com>
+ <1552008447.3271.0@gmail.com> <1552087603.1401.0@gmail.com>
+ <ec810aad-dd04-84e4-bfb0-98b005cf3f03@gmail.com>
+ <1552101990.1401.3@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1552101990.1401.3-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-In case __get_free_pages fails, return -ENOMEM to avoid NULL
-pointer dereferences.
-
-Signed-off-by: Kangjie Lu <kjlu@umn.edu>
----
- drivers/media/platform/rockchip/rga/rga.c | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 5c653287185f..d42b214977a9 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -892,8 +892,13 @@ static int rga_probe(struct platform_device *pdev)
- 
- 	rga->src_mmu_pages =
- 		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
-+	if (!rga->src_mmu_pages)
-+		return -ENOMEM;
-+
- 	rga->dst_mmu_pages =
- 		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
-+	if (!rga->dst_mmu_pages)
-+		return -ENOMEM;
- 
- 	def_frame.stride = (def_frame.width * def_frame.fmt->depth) >> 3;
- 	def_frame.size = def_frame.stride * def_frame.height;
--- 
-2.17.1
+T24gMy84LzIwMTkgMTA6MjYgUE0sIExlb25pZGFzIFAuIFBhcGFkYWtvcyB3cm90ZToKPiAKPj4g
+U28gSSBkaXNjb3ZlcmVkIHRoZSBjYXVzZSBvZiBteSBUWCBpc3N1ZXMsIGF0IGxlYXN0IG9uIG15
+IHJrMzMyOC1yb2MtY2MuCj4+IFRoZSByazMzMjguZHRzaSBpcyBtaXNzaW5nIHNldmVyYWwgcmdt
+aWkgdHggcHVsbCBzdHJlbmd0aCB2YWx1ZXMuCj4+IFRoaXMgaXMgY2F1c2luZyB0aGVtIHRvIGRl
+ZmF1bHQgdG8gMG1hLgo+Pgo+PiBJJ3ZlIHB1c2hlZCB0aGVtIHRvIDEybWEsIHNhbWUgYXMgdGhl
+IG90aGVyIHR4IHZhbHVlcywgYW5kIEknbSBnZXR0aW5nIAo+PiA2MDAgbWJwcyB0eCwgd2l0aCBu
+byBUWCBmYWlsdXJlcy4KPj4KPj4gSSBhbSBhbHNvIGdvaW5nIHRvIHRlc3QgaGlzIGFkYXB0aXZl
+IHBhdGNoIG9uY2UgaXQncyBkb25lIGJ1aWxkaW5nLgo+Pgo+PiBUaG91Z2h0cz8KPj4KPj4KPj4g
+ZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjUvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LXJvYy1jYy5k
+dHMgCj4+IGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzMjgtcm9jLWNjLmR0cwo+
+PiBpbmRleCBjMDUxOWJjNTg4NGUuLjY5NjYyN2JmMzMzMSAxMDA2NDQKPj4gLS0tIGEvYXJjaC9h
+cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzMjgtcm9jLWNjLmR0cwo+PiArKysgYi9hcmNoL2Fy
+bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMyOC1yb2MtY2MuZHRzCj4+IEBAIC0yODAsNiArMjgw
+LDI2IEBACj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByb2NrY2hpcCxwaW5zID0gPDAgUktf
+UEEwIFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+Owo+PiDCoMKgwqDCoMKgwqDCoMKgIH07
+Cj4+IMKgwqDCoMKgIH07Cj4+ICsKPj4gK8KgwqDCoCBnbWFjLTEgewo+PiArwqDCoMKgwqDCoMKg
+wqAgcmdtaWltMV9waW5zOiByZ21paW0xLXBpbnMgewo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oCByb2NrY2hpcCxwaW5zID0KPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAvKiBt
+YWNfdHhjbGsgKi8KPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8MCBSS19QQjAg
+MSAmcGNmZ19wdWxsX25vbmVfMTJtYT4sCj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgLyogbWFjX3R4ZW4gKi8KPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8MCBS
+S19QQjQgMSAmcGNmZ19wdWxsX25vbmVfMTJtYT4sCj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqAgLyogbWFjX2NsayAqLwo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IDwwIFJLX1BEMCAxICZwY2ZnX3B1bGxfbm9uZV8xMm1hPiwKPj4gK8KgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoCAvKiBtYWNfdHhkMSAqLwo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIDwwIFJLX1BDMCAxICZwY2ZnX3B1bGxfbm9uZV8xMm1hPiwKPj4gK8KgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoCAvKiBtYWNfdHhkMCAqLwo+PiArwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIDwwIFJLX1BDMSAxICZwY2ZnX3B1bGxfbm9uZV8xMm1hPiwKPj4gK8KgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAvKiBtYWNfdHhkMyAqLwo+PiArwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgIDwwIFJLX1BDNyAxICZwY2ZnX3B1bGxfbm9uZV8xMm1hPiwKPj4g
+K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAvKiBtYWNfdHhkMiAqLwo+PiArwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwwIFJLX1BDNiAxICZwY2ZnX3B1bGxfbm9uZV8xMm1h
+PjsKPj4gK8KgwqDCoMKgwqDCoMKgIH07Cj4+ICvCoMKgwqAgfTsKPj4gwqB9Owo+Pgo+PiDCoCZz
+ZG1tYyB7Cj4gR29vZCBmaW5kISBJdCBzZWVtcyBsaWtlIHRoZXkncmUgdGhlcmUgaW4gdGhlIGR0
+c2ksIGJ1dCBjb25maWd1cmVkIGFzIAo+IG5vbmUgd2hlbiBpdCBjb21lcyB0byBtYS4gSSdsbCB0
+ZXN0IGl0Cj4gCj4gCgpXaXRoIEF5dWZhbidzIHBhdGNoIG9mZmxvYWQgcGF0Y2ggYW5kIG15IHB1
+bGwgcGF0Y2gsIEkgbm93IGhhdmUgdGhlIApmb2xsb3dpbmcgcmVzdWx0czoKWyBJRF0gSW50ZXJ2
+YWwgICAgICAgICAgIFRyYW5zZmVyICAgICBCaXRyYXRlICAgICAgICAgUmV0cgpbICA1XSAgIDAu
+MDAtMTAuMDEgIHNlYyAgMTAyMiBNQnl0ZXMgICA4NTcgTWJpdHMvc2VjICA4ODUgICAgICAgICAg
+ICAgc2VuZGVyClsgIDVdICAgMC4wMC0xMC4wMSAgc2VjICAxMDIyIE1CeXRlcyAgIDg1NiBNYml0
+cy9zZWMgCnJlY2VpdmVyCgpldGgwOiBmbGFncz00MTYzPFVQLEJST0FEQ0FTVCxSVU5OSU5HLE1V
+TFRJQ0FTVD4gIG10dSAxNTAwCiAgICAgICAgIGluZXQ2IGZlODA6OmU4YjU6NWVmZjpmZTQ5OmQz
+NTMgIHByZWZpeGxlbiA2NCAgc2NvcGVpZCAweDIwPGxpbms+CiAgICAgICAgIGV0aGVyIGVhOmI1
+OjVlOjQ5OmQzOjUzICB0eHF1ZXVlbGVuIDEwMDAgIChFdGhlcm5ldCkKICAgICAgICAgUlggcGFj
+a2V0cyAzOTgyMiAgYnl0ZXMgMjY2ODYxOCAoMi42IE1CKQogICAgICAgICBSWCBlcnJvcnMgMCAg
+ZHJvcHBlZCAwICBvdmVycnVucyAwICBmcmFtZSAwCiAgICAgICAgIFRYIHBhY2tldHMgMTAwNTY0
+OSAgYnl0ZXMgMTUxNjY5ODE1OCAoMS41IEdCKQogICAgICAgICBUWCBlcnJvcnMgMCAgZHJvcHBl
+ZCAwIG92ZXJydW5zIDAgIGNhcnJpZXIgMCAgY29sbGlzaW9ucyAwCiAgICAgICAgIGRldmljZSBp
+bnRlcnJ1cHQgMjkKCk11Y2ggYmV0dGVyIG92ZXJhbGwsIHN0aWxsIG5vdCBwZXJmZWN0LCBidXQg
+SSB0aGluayBpdCBtaWdodCBiZSB3b3J0aCAKcmUtcnVubmluZyB0aGUgZGVsYXkgdGVzdHMgbm93
+LgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
