@@ -1,96 +1,65 @@
-From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: fix rk3328-roc-cc gmac2io
- tx/rx_delay
-Date: Fri, 8 Mar 2019 21:39:06 -0500
-Message-ID: <ec810aad-dd04-84e4-bfb0-98b005cf3f03@gmail.com>
-References: <20190306223454.2959-1-papadakospan@gmail.com>
- <24c5ffaa-644d-4623-a635-6842f67efe8a@gmail.com>
- <1552008447.3271.0@gmail.com> <1552087603.1401.0@gmail.com>
+From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix vcc_host1_5v GPIO polarity on
+ rk3328-rock64
+Date: Sat, 9 Mar 2019 11:52:09 +0900
+Message-ID: <164d616b-f445-2aa6-e57a-e6db446eb121@katsuster.net>
+References: <4e9800cd-ac6d-9eb8-60d4-8e4b1aa761b9@iris.mystia.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1552087603.1401.0-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <4e9800cd-ac6d-9eb8-60d4-8e4b1aa761b9@iris.mystia.org>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Tomohiro Mayama <parly-gh@iris.mystia.org>, heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 3/8/2019 6:26 PM, Leonidas P. Papadakos wrote:
+Hello Mayama-san,
+
+On 2019/03/08 1:18, Tomohiro Mayama wrote:
+> This patch makes USB ports functioning again.
 > 
+> Signed-off-by: Tomohiro Mayama <parly-gh@iris.mystia.org>
+> ---
+>   arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 3 +--
+>   1 file changed, 1 insertion(+), 2 deletions(-)
 > 
->>> When I submitted the patch to fix the TX stability issue, I 
->>> intended to follow up with another patch for delay updates.
->>> Unfortunately, I was unable to locate a delay that was acceptable, 
->>> as I was never able to get below ~700 retry attempts on the TX 
->>> side in testing.
->>>
->>> I am unsure if this is due to manufacturing defects or if I'm 
->>> missing something else.
->>> It may be worth considering implementing some sort of delay auto 
->>> tuning, similar to the mmc driver.
->>> Thoughts?
->>
->> I feared as much. The delays on the tx side do seem to be more of a 
->> mitigation.
->> I you have the know-how for it, it would be pretty cool
-> Interesting approach to this by ayufan:
-> https://github.com/ayufan-rock64/linux-mainline-kernel/commit/41eeb7cd789ea7cac0cbf4b35b53055f354da757 
-> 
-> 
-> I hope he sends it upstream as well
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> index 21107d0f4378..7f365e448867 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> @@ -45,8 +45,7 @@
+>   
+>   	vcc_host1_5v: vcc_otg_5v: vcc-host1-5v-regulator {
+>   		compatible = "regulator-fixed";
+> -		enable-active-high;
+> -		gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
+> +		gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
+>   		pinctrl-names = "default";
+>   		pinctrl-0 = <&usb20_host_drv>;
+>   		regulator-name = "vcc_host1_5v";
 > 
 
-So I discovered the cause of my TX issues, at least on my rk3328-roc-cc.
-The rk3328.dtsi is missing several rgmii tx pull strength values.
-This is causing them to default to 0ma.
+After this patch applied, USB and S/PDIF both work well.
 
-I've pushed them to 12ma, same as the other tx values, and I'm getting 
-600 mbps tx, with no TX failures.
-
-I am also going to test his adaptive patch once it's done building.
-
-Thoughts?
+Tested-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
 
 
-diff --git a/arch/arm65/boot/dts/rockchip/rk3328-roc-cc.dts 
-b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index c0519bc5884e..696627bf3331 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -280,6 +280,26 @@
-  			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-  		};
-  	};
-+
-+	gmac-1 {
-+		rgmiim1_pins: rgmiim1-pins {
-+			rockchip,pins =
-+				/* mac_txclk */
-+				<0 RK_PB0 1 &pcfg_pull_none_12ma>,
-+				/* mac_txen */
-+				<0 RK_PB4 1 &pcfg_pull_none_12ma>,
-+				/* mac_clk */
-+				<0 RK_PD0 1 &pcfg_pull_none_12ma>,
-+				/* mac_txd1 */
-+				<0 RK_PC0 1 &pcfg_pull_none_12ma>,
-+				/* mac_txd0 */
-+				<0 RK_PC1 1 &pcfg_pull_none_12ma>,
-+				/* mac_txd3 */
-+				<0 RK_PC7 1 &pcfg_pull_none_12ma>,
-+				/* mac_txd2 */
-+				<0 RK_PC6 1 &pcfg_pull_none_12ma>;
-+		};
-+	};
-  };
+$ lsusb
+Bus 003 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 002: ID 046d:c526 Logitech, Inc. Nano Receiver
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 
-  &sdmmc {
+
+Best Regards,
+Katsuhiro Suzuki
