@@ -1,21 +1,23 @@
-From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Subject: Re: [PATCH v2] arm64: dts: rockchip: fix rk3328-roc-cc gmac2io
  tx/rx_delay
-Date: Sat, 9 Mar 2019 18:34:30 -0500
-Message-ID: <6d6a700a-39c9-25b6-dfff-296c0757603d@gmail.com>
+Date: Sun, 10 Mar 2019 02:26:36 +0200
+Message-ID: <20190310002636.GA3857@X555LD>
 References: <20190306223454.2959-1-papadakospan@gmail.com>
  <1552101990.1401.3@gmail.com>
- <e9c539ce-f1cb-06f8-1083-ea64c9fd9e7b@gmail.com> <3966706.LBvcXR5hB6@phil>
+ <e9c539ce-f1cb-06f8-1083-ea64c9fd9e7b@gmail.com>
+ <3966706.LBvcXR5hB6@phil>
  <4f17a798-ed28-8403-ed75-30fdf4bfc44b@gmail.com>
  <1552172735.1238.0@gmail.com>
  <1bab9d4c-5e9d-968d-026d-98e65af6e7ee@gmail.com>
  <1552173935.1238.1@gmail.com>
+ <6d6a700a-39c9-25b6-dfff-296c0757603d@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1552173935.1238.1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <6d6a700a-39c9-25b6-dfff-296c0757603d-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -25,55 +27,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Thomas McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-W2NsaXBdCj4+Pgo+Pj4gRm9yIHRoZSB0ZXN0IEkgdXNlIGlwZXJmMyAtcyBvbiBteSBsYXB0b3Ag
-KEdpZ2FiaXQgRXRoZXJuZXQpCj4+PiBhbmQgb24gdGhlIHJlbmVnYWRlOiBpcGVyZjMgLWMgPGxh
-cHRvcF9pcD4gLXQgMzAuCj4+Pgo+Pj4gSSB0cmllZCB1c2luZzoKPj4+IDEpIHRoZSBmb3JjZS10
-aHJlc2gtZG1hLW1vZGUgcGF0Y2ggYnkgaXRzZWxmIHdpdGggdGhlIGNoYW5nZWQgCj4+PiB/dHgv
-cnhfZGVsYXkuIChNYXliZSB0aGUgZGVmYXVsdCBvbmUgaXMgYmV0dGVyPyBJdCBuZWVkcyB0ZXN0
-aW5nIG5heXdheSkKPj4+IMKgwqAgTm8gc3NoIGxhZyBidXQgSSBkbyBnZXQgdGhlIExpbmsgcmVz
-ZXQgb24gdHggYWN0aXZpdHkKPj4+Cj4+PiAyKSBqdXN0IHRoaXMgcGF0Y2ggYnkgaXRzZWxmCj4+
-PiDCoMKgIHRoZSBzc2ggbGFnIGhpdCBtZSwgYnV0IGl0IGRvZXMgc2VlbSBiZXR0ZXIuIFRoZSBs
-aW5rIHJlc2V0IAo+Pj4gc3RpbGwgf2hhcHBlbnMKPj4+Cj4+PiAzKSB0aGUgZm9yY2UtdGhyZXNo
-LWRtYS1tb2RlIHBhdGNoIHdpdGggdGhpcyBvbmU6Cj4+PiDCoMKgIE5vIHNocyBsYWcsIGFuZCBh
-cyBiZWZvcmUsIHRoZSB0eCBhY3Rpdml0eSBzZWVtcyB0byBoaXQgbGVzcz8gCj4+PiAoTWF5YmUg
-f3BsYWNlYm8pIGJ1dCB0aGUgbGluayByZXNldCBkb2VzIGhhcHBlbiByZWd1bGFybHkuCj4+Pgo+
-Pj4gQXMgZmFyIGFzIEkgdW5kZXJzdGFuZCBheXVmYW4ncyBvZmZsb2FkIHBhdGNoIHJlbW92ZXMg
-dGhlIG5lZWQgZm9yIAo+Pj4gdGhlIH9mb3JjZS10aHJlc2gtZG1hLW1vZGUgZmxhZy4KPj4+IEkn
-bGwgdHJ5IGF5dWZhbidzIHBhdGNoIChhZGRpbmcgdGhlIG9wdGlvbiB0byB0aGUgcmszMzI4LXJv
-Yy1jYyBhcyAKPj4+IHdlbGwpIH90b2dldGhlciB3aXRoIHRoaXMgcGF0Y2guCj4+PiBNYXliZSBp
-dCdsbCBiZSBiZXR0ZXIKPj4+Cj4+Cj4+IFdlIGhhdmUgc2V2ZXJhbCBpc3N1ZXMgb24gdGhlIHJr
-MzMyOC4KPj4KPj4gVGhlIGZpcnN0IGlzc3VlLCB3aGljaCB5b3UgZGVzY3JpYmUgYXMgdGhlIHNz
-aCBsYWcsIGlzIHRoZSB0eC1vZmZsb2FkIAo+PiBpc3N1ZS4KPj4gUGFja2V0cyB0aGF0IGFyZSBs
-YXJnZXIgdGhhbiB0aGUgTVRVIGFuZCB3aWxsIGJlIGZyYWdtZW50ZWQgYnJlYWsgaWYgCj4+IHR4
-LW9mZmxvYWQgaXMgZW5hYmxlZC4KPj4gVG8gZml4IHRoaXMsIHlvdSBtdXN0IHNvbWVob3cgZGlz
-YWJsZSB0eC1vZmZsb2FkLgo+PiBmb3JjZS10aHJlc2gtZG1hLW1vZGUgZGlzYWJsZWQgdHgtb2Zm
-bG9hZCwgYnV0IGhhZCBvdGhlciBzaWRlIGVmZmVjdHMuCj4+IEF5dWZhbidzIHBhdGNoIGRpc2Fi
-bGVzIHR4LW9mZmxvYWQgb25seSBpZiB0aGUgcGFja2V0IGlzIGxhcmdlciB0aGFuIAo+PiAxNDk4
-Lgo+PiBZb3UgY2FuIGFsc28gZGlzYWJsZSB0eC1vZmZsb2FkIGZyb20gdXNlcnNwYWNlIHdpdGgg
-ZXRodG9vbC4KPj4KPj4gVGhlIHNlY29uZCBpc3N1ZSBpcyB0aGUgaGlnaCByYXRlIG9mIHR4IHBh
-Y2tldHMgYmVpbmcgY29ycnVwdGVkLCB3aGljaCAKPj4gbXkgcGF0Y2ggdG8gc2V0IHRoZSB0eCBw
-dWxsIHZhbHVlcyBmaXhlcy4KPj4KPj4gVGhlIHRoaXJkIGlzc3VlIGlzIHRoZSB0eCBhbmQgcngg
-ZGVsYXlzIG5lZWQgdG8gYmUgdHVuZWQgbm93IHRoYXQgdGhlIAo+PiB0eCBwYWNrZXQgY29ycnVw
-dGlvbiBpc3N1ZSBoYXMgYmVlbiBmaXhlZC4KPj4KPj4gSSBob3BlIHRoaXMgY2xlYXJzIHRoaW5n
-cyB1cCBhIGxpdHRsZSBmb3IgeW91Lgo+IAo+IFl1cCwgdGhhdCdzIHdoYXQgSSBoYXZlIGluIG15
-IG1pbmQgYWxyZWFkeS4gTXkgcHJldmlvdXMgY29tbWVudCB3YXNuJ3QgCj4gY2xlYXIsIEkga25v
-dy4KPiBJIHBpZWNlZCBpdCB0b2dldGhlciBhZnRlciB5b3VyIGRtYS1tb2RlIHBhdGNoLCBiZWNh
-dXNlIHRoYXQgb25lIGZpeGVkIAo+IHRoZSBzc2ggbGFnLgo+IE15IHByZXZpb3VzIGVtYWlsIHdh
-cyBqdXN0IHdoYXQgSSBzYXcgYWZ0ZXIgdGhvc2UgY2hhbmdlcy4KPiAKPiBJbiBteSBjYXNlIHRo
-ZSBsaW5rIHJlc2V0IHN0aWxsIGhhcHBlbnMgd2l0aCB5b3VyIHBhdGNoLgo+IAo+IFlvdSdyZSB0
-aGlua2luZyB0aGF0IHRoZSBjb21iaW5hdGlvbiBvZiB5b3VyIHBhdGNoLCBheXVmYW4ncyAKPiAi
-Y29uZGl0aW9uYWwiIHBhdGNoIGFuZCBhIHNwZWNpZmljIHR3ZWFrIGluIHRoZSBkZWxheXMgd291
-bGQgd29yayBmb3IgCj4gdGhlIG5ldHdvcmsgaW5zdGFiaWxpdHkgcHJvYmxlbT8KPiAKCkNvcnJl
-Y3QsIHRoZSBsaW5rLXJlc2V0IHRlbmRzIHRvIGhhcHBlbiB3aGVuIHRoZSBkZWxheXMgYXJlIGF0
-IHRoZSBlZGdlIApvZiB3b3JraW5nLgpUaGVyZSBpcyBhbHNvIHRoZSBwb3NzaWJpbGl0eSB0aGF0
-IGJvYXJkIGxldmVsIG1hbnVmYWN0dXJpbmcgdG9sZXJhbmNlcyAKYXJlIGNhdXNpbmcgaXNzdWVz
-IHdoZXJlIHRoZSBkZWxheSBjYW4gY2hhbmdlIGJldHdlZW4gYm9hcmRzLgpJZiB0aGlzIGlzIHRo
-ZSBjYXNlLCB3ZSB3aWxsIGhhdmUgdG8gbWFrZSBhbiBhdXRvLXR1bmUgZnVuY3Rpb24sIApwcm9i
-YWJseSBiYXNlZCBvZmYgdGhlIG1tYyB2ZXJzaW9uLgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+> > > We have several issues on the rk3328.
+> > > 
+> > > The first issue, which you describe as the ssh lag, is the
+> > > tx-offload issue.
+> > > Packets that are larger than the MTU and will be fragmented break if
+> > > tx-offload is enabled.
+> > > To fix this, you must somehow disable tx-offload.
+> > > force-thresh-dma-mode disabled tx-offload, but had other side effects.
+> > > Ayufan's patch disables tx-offload only if the packet is larger than
+> > > 1498.
+> > > You can also disable tx-offload from userspace with ethtool.
+> > > 
+> > > The second issue is the high rate of tx packets being corrupted,
+> > > which my patch to set the tx pull values fixes.
+> > > 
+> > > The third issue is the tx and rx delays need to be tuned now that
+> > > the tx packet corruption issue has been fixed.
+> > > 
+> > > I hope this clears things up a little for you.
+> > 
+> > Yup, that's what I have in my mind already. My previous comment wasn't
+> > clear, I know.
+> > I pieced it together after your dma-mode patch, because that one fixed
+> > the ssh lag.
+> > My previous email was just what I saw after those changes.
+> > 
+> > In my case the link reset still happens with your patch.
+> > 
+> > You're thinking that the combination of your patch, ayufan's
+> > "conditional" patch and a specific tweak in the delays would work for
+> > the network instability problem?
+> > 
+> 
+> Correct, the link-reset tends to happen when the delays are at the edge of
+> working.
+> There is also the possibility that board level manufacturing tolerances are
+> causing issues where the delay can change between boards.
+> If this is the case, we will have to make an auto-tune function, probably
+> based off the mmc version.
+
+So, I tried just your patch with archlinuxARM linux 5.0
+(meaning the tx/rx_delays are 0x25/0x11 respectively if I'm not mistaken)
+and disabled tx offload through ethtool.
+
+After 3 30-second iperf3 tests, no link resets! I get about the same speed you mentioned before,
+800-something to 700-something lowest.
+
+Seems like the delays that are already there in the dts are better than the ones I picked up from the Armbian dts.
+
+It's worth noting that I've never noticed a link reset in my ~3 months of using the 4.4 Rockchip kernel
+that Armbian packages using ayufan's linux-kernel repo. Maybe something there?
+
+All in all, it does seem to be much better with your patch.
