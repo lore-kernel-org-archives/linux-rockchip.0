@@ -1,13 +1,12 @@
-From: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix rk3328 rgmii high tx error rate
-Date: Sun, 10 Mar 2019 02:47:22 +0200
-Message-ID: <20190310004722.5140-1-papadakospan@gmail.com>
-References: <20190309182013.22162-1-pgwipeout@gmail.com>
+From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH] clk: rockchip: fix wrong clock definitions for rk3328
+Date: Sun, 10 Mar 2019 12:00:45 +0000
+Message-ID: <AM3PR03MB0966A06101CACDAEA4ECD72BAC4F0@AM3PR03MB0966.eurprd03.prod.outlook.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190309182013.22162-1-pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,8 +16,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "Leonidas P . Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+To: "linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Cc: Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-In the rk3328.dtsi, the previous /* mac_clk */ commented value is using 2ma, maybe the one you patch here should be 2ma as well?
+This patch fixes definition of several clock gate and select register
+that is wrong for rk3328 referring to the TRM and vendor kernel.
+Also use correct number of softrst registers.
+
+Fix clock definition for:
+- clk_crypto
+- aclk_h265
+- pclk_h265
+- aclk_h264
+- hclk_h264
+- aclk_axisram
+- aclk_gmac
+- aclk_usb3otg
+
+Fixes: fe3511ad8a1c ("clk: rockchip: add clock controller for rk3328")
+Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+---
+ drivers/clk/rockchip/clk-rk3328.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3328.c b/drivers/clk/rockchip/clk-rk3328.c
+index faa94adb2a37..5f6b6bcc2149 100644
+--- a/drivers/clk/rockchip/clk-rk3328.c
++++ b/drivers/clk/rockchip/clk-rk3328.c
+@@ -458,7 +458,7 @@ static struct rockchip_clk_branch rk3328_clk_branches[] __initdata = {
+ 			RK3328_CLKSEL_CON(35), 15, 1, MFLAGS, 8, 7, DFLAGS,
+ 			RK3328_CLKGATE_CON(2), 12, GFLAGS),
+ 	COMPOSITE(SCLK_CRYPTO, "clk_crypto", mux_2plls_p, 0,
+-			RK3328_CLKSEL_CON(20), 7, 1, MFLAGS, 0, 7, DFLAGS,
++			RK3328_CLKSEL_CON(20), 7, 1, MFLAGS, 0, 5, DFLAGS,
+ 			RK3328_CLKGATE_CON(2), 4, GFLAGS),
+ 	COMPOSITE_NOMUX(SCLK_TSADC, "clk_tsadc", "clk_24m", 0,
+ 			RK3328_CLKSEL_CON(22), 0, 10, DFLAGS,
+@@ -550,15 +550,15 @@ static struct rockchip_clk_branch rk3328_clk_branches[] __initdata = {
+ 	GATE(0, "hclk_rkvenc_niu", "hclk_rkvenc", 0,
+ 			RK3328_CLKGATE_CON(25), 1, GFLAGS),
+ 	GATE(ACLK_H265, "aclk_h265", "aclk_rkvenc", 0,
+-			RK3328_CLKGATE_CON(25), 0, GFLAGS),
++			RK3328_CLKGATE_CON(25), 2, GFLAGS),
+ 	GATE(PCLK_H265, "pclk_h265", "hclk_rkvenc", 0,
+-			RK3328_CLKGATE_CON(25), 1, GFLAGS),
++			RK3328_CLKGATE_CON(25), 3, GFLAGS),
+ 	GATE(ACLK_H264, "aclk_h264", "aclk_rkvenc", 0,
+-			RK3328_CLKGATE_CON(25), 0, GFLAGS),
++			RK3328_CLKGATE_CON(25), 4, GFLAGS),
+ 	GATE(HCLK_H264, "hclk_h264", "hclk_rkvenc", 0,
+-			RK3328_CLKGATE_CON(25), 1, GFLAGS),
++			RK3328_CLKGATE_CON(25), 5, GFLAGS),
+ 	GATE(ACLK_AXISRAM, "aclk_axisram", "aclk_rkvenc", CLK_IGNORE_UNUSED,
+-			RK3328_CLKGATE_CON(25), 0, GFLAGS),
++			RK3328_CLKGATE_CON(25), 6, GFLAGS),
+ 
+ 	COMPOSITE(SCLK_VENC_CORE, "sclk_venc_core", mux_4plls_p, 0,
+ 			RK3328_CLKSEL_CON(51), 14, 2, MFLAGS, 8, 5, DFLAGS,
+@@ -663,7 +663,7 @@ static struct rockchip_clk_branch rk3328_clk_branches[] __initdata = {
+ 
+ 	/* PD_GMAC */
+ 	COMPOSITE(ACLK_GMAC, "aclk_gmac", mux_2plls_hdmiphy_p, 0,
+-			RK3328_CLKSEL_CON(35), 6, 2, MFLAGS, 0, 5, DFLAGS,
++			RK3328_CLKSEL_CON(25), 6, 2, MFLAGS, 0, 5, DFLAGS,
+ 			RK3328_CLKGATE_CON(3), 2, GFLAGS),
+ 	COMPOSITE_NOMUX(PCLK_GMAC, "pclk_gmac", "aclk_gmac", 0,
+ 			RK3328_CLKSEL_CON(25), 8, 3, DFLAGS,
+@@ -733,7 +733,7 @@ static struct rockchip_clk_branch rk3328_clk_branches[] __initdata = {
+ 
+ 	/* PD_PERI */
+ 	GATE(0, "aclk_peri_noc", "aclk_peri", CLK_IGNORE_UNUSED, RK3328_CLKGATE_CON(19), 11, GFLAGS),
+-	GATE(ACLK_USB3OTG, "aclk_usb3otg", "aclk_peri", 0, RK3328_CLKGATE_CON(19), 4, GFLAGS),
++	GATE(ACLK_USB3OTG, "aclk_usb3otg", "aclk_peri", 0, RK3328_CLKGATE_CON(19), 14, GFLAGS),
+ 
+ 	GATE(HCLK_SDMMC, "hclk_sdmmc", "hclk_peri", 0, RK3328_CLKGATE_CON(19), 0, GFLAGS),
+ 	GATE(HCLK_SDIO, "hclk_sdio", "hclk_peri", 0, RK3328_CLKGATE_CON(19), 1, GFLAGS),
+@@ -913,7 +913,7 @@ static void __init rk3328_clk_init(struct device_node *np)
+ 				     &rk3328_cpuclk_data, rk3328_cpuclk_rates,
+ 				     ARRAY_SIZE(rk3328_cpuclk_rates));
+ 
+-	rockchip_register_softrst(np, 11, reg_base + RK3328_SOFTRST_CON(0),
++	rockchip_register_softrst(np, 12, reg_base + RK3328_SOFTRST_CON(0),
+ 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
+ 
+ 	rockchip_register_restart_notifier(ctx, RK3328_GLB_SRST_FST, NULL);
+-- 
+2.17.1
