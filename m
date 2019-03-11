@@ -1,38 +1,38 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: rk3399: rock960: Add missing
- GPIO for vcc5v0_host
-Date: Mon, 11 Mar 2019 23:40:57 +0530
-Message-ID: <CAMty3ZCS8G+dT4bHihovrug-2CCncA+BMg=Q2YYcsyjonSQPiQ@mail.gmail.com>
-References: <20190311150332.19492-1-jagan@amarulasolutions.com> <20190311150332.19492-3-jagan@amarulasolutions.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH] drm: rockchip: add shutdown function to poweroff VOP and
+ HDMI TX
+Date: Mon, 11 Mar 2019 19:14:27 +0100
+Message-ID: <CA+z=w3W+OYgxwejgfbNLJzFP28seh5ij62imuCDAY9XP_V39fQ@mail.gmail.com>
+References: <20190308183718.21409-1-jbx6244@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190311150332.19492-3-jagan@amarulasolutions.com>
+In-Reply-To: <20190308183718.21409-1-jbx6244@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: devicetree <devicetree@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, linux-kernel <linux-kernel@vger.kernel.org>, linux-amarula@amarulasolutions.com, Akash Gajjar <akash@openedev.com>
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com, airlied@linux.ie, daniel@ffwll.ch, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Mar 11, 2019 at 8:33 PM Jagan Teki <jagan@amarulasolutions.com> wrote:
->
-> vcc5v0_host on rock960 is bound to have GPIO4_PD1.
->
-> Add support for it.
->
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> Signed-off-by: Akash Gajjar <akash@openedev.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> index 68ca3bf9ea2f..c3d3343d6dde 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> @@ -68,6 +68,7 @@
->         vcc5v0_host: vcc5v0-host-regulator {
->                 compatible = "regulator-fixed";
->                 enable-active-high;
-> +               gpio = <&gpio4 RK_PD1 GPIO_ACTIVE_HIGH>;
+Hi,
 
-This is already present in dts file, sorry for the noise. please ignore.
+Just found out that this was patched and reverted before.(lol)
+The revert was 3 months ago for RK3399 boards, but other processors
+like RK3066 are left without shutdown now.
+
+What's the status for a fix?
+Keep using the old patch for now?
+
+
+drm/rockchip: shutdown drm subsystem on shutdown
+https://patchwork.kernel.org/patch/10556151/
+
+[for-4.20] Revert "drm/rockchip: Allow driver to be shutdown on reboot/kexec"
+https://patchwork.kernel.org/patch/10714725/
+
+2019-03-08 19:37 GMT+01:00, Johan Jonker <jbx6244@gmail.com>:
+> When a MK808 TV-stick with RK3066 processor
+> is given a poweroff command, the monitor doesn't turn blank,
+> but freezes. The VOP and HDMI share the same power domain,
+> so that means that both there clocks were never turned off.
+> Fix the disable of the VOP and HDMI TX by adding an extra
+> shutdown function that will unbind both drivers.
