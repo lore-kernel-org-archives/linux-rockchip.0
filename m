@@ -1,67 +1,60 @@
-From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix rk3328 rgmii high tx error rate
-Date: Tue, 12 Mar 2019 08:23:27 -0400
-Message-ID: <CAMdYzYrn2eEr=JzNFe3wp-VjoVHwxcQkf98zc0MSMh4j=0ZDvg@mail.gmail.com>
-References: <20190309182013.22162-1-pgwipeout@gmail.com>
- <20190310004722.5140-1-papadakospan@gmail.com>
- <1552356332.2607.1@gmail.com> <1552356823.2607.2@gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH net-next] net: phy: improve handling link_change_notify callback
+Date: Tue, 12 Mar 2019 13:27:27 +0100
+Message-ID: <3079158.ITs3Wk0qno@phil>
+References: <411b1c33-a245-0706-8afd-c4bea1b90f68@gmail.com> <20190304.113025.1437399524067140375.davem@davemloft.net> <20190304200630.GJ26378@lunn.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1552356823.2607.2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190304200630.GJ26378@lunn.ch>
+Sender: netdev-owner@vger.kernel.org
+To: Andrew Lunn <andrew@lunn.ch>, david.wu@rock-chips.com, zonque@gmail.com
+Cc: David Miller <davem@davemloft.net>, hkallweit1@gmail.com, f.fainelli@gmail.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Mar 11, 2019 at 10:13 PM Leonidas P. Papadakos
-<papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->
->
->
-> > I do have to say, This patch does fix my Link Reset issue reliably
-> > enough, so it does *something*
->
-> Well, I just tried the same things I did yesterday (iperf3 testts, GbE)
-> and it seems to work even without the patch. (?)
-> Using the defailt tx/rx delays though. (0x25,0x11)
->
+Hi Andrew, Heiner,
 
-Good Morning,
+Am Montag, 4. März 2019, 21:06:30 CET schrieb Andrew Lunn:
+> On Mon, Mar 04, 2019 at 11:30:25AM -0800, David Miller wrote:
+> > From: Heiner Kallweit <hkallweit1@gmail.com>
+> > Date: Sun, 3 Mar 2019 19:58:57 +0100
+> > 
+> > > Currently the Phy driver's link_change_notify callback is called
+> > > whenever the state machine is run (every second if polling), no matter
+> > > whether the state changed or not. This isn't needed and may confuse
+> > > users considering the name of the callback. Therefore let's change
+> > > the behavior and call this callback only in case of an actual
+> > > state change.
+> > > 
+> > > This requires changes to the at803x and rockchip drivers.
+> > > at803x can be simplified so that it reacts on a state change to
+> > > PHY_NOLINK only.
+> > > The rockchip driver can also be much simplified. We simply re-init
+> > > the AFE/DSP registers whenever we change to PHY_RUNNING and speed
+> > > is 100Mbps. This causes very small overhead because we do this even
+> > > if the speed was 100Mbps already. But this is neglectable and
+> > > I think justified by the much simpler code.
+> > > 
+> > > Changes are compile-tested only.
+> > > 
+> > > Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
+> > 
+> > Someone please review this.
+> 
+> Hi David
+> 
+> We should probably wait for a Tested-by: from Daniel Mack
+> <zonque@gmail.com> and David Wu <david.wu@rock-chips.com>, or
+> equivalent.
 
-So after getting Robin's response and the follow on responses, I've
-dug further into the RK3328 TRM, Specifications, and the rk3328-roc-cc
-schematics.
+We should probably add them to the list of recipients if we want
+tests from them, which I've done now.
 
-I've made the following discoveries:
-The labels in the rk3328.dtsi for those pins are inaccurate.
-For instance the first of the pins missing a drive setting RK_PB0 is
-labeled "mac_txclk", but it is in fact "gmac_txd1".
+@David: patch in question that changes the Rockchip eth-phy is
+https://patchwork.kernel.org/patch/10837217/
 
-What I thought was 0 ma is in fact 2 ma, which is the result of both
-bits being 0, apologies for the incorrect information.
-This is the resulting state following the pinmux driver initialization.
-This is still very low for the function performed, and is what is
-causing our tx issues.
-Essentially what we have is some of the tx lines are running at 12ma
-and some running at 2ma, which can cause imbalance issues.
+Sadly I don't have matching hardware to test this myself.
 
-This also calls into question if 12ma is the correct drive strength,
-or if we are driving too hard, leading to ringing on the interface.
-The highest default drive strength is the sd interfaces at 8ma.
-I've actually been running the sd interface at this level for a while,
-since the 4ma setting in the current dtsi was causing data corruption.
 
-I will conduct further tests, and resubmit the patch with the labels
-corrected, as well as other fixes.
-This may become a patch series, since I will be going through all of
-the pins and their expected values in the TRM.
+Heiko
