@@ -1,63 +1,70 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH 2/2] pwm: ensure pwm_apply_state() doesn't modify the
- state argument
-Date: Tue, 12 Mar 2019 13:59:51 +0100
-Message-ID: <20190312125951.2oo6q2gwavxd77ko@pengutronix.de>
-References: <20190312083537.23748-1-u.kleine-koenig@pengutronix.de>
- <20190312083537.23748-3-u.kleine-koenig@pengutronix.de>
- <20190312114247.GJ31026@ulmo>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20190312114247.GJ31026@ulmo>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: =?utf-8?Q?Christoph_M=C3=BCllner?=
+        <christoph.muellner@theobroma-systems.com>
+Subject: Re: [PATCH v2 2/4] dt-bindings: phy: Add a new property
+ drive-impedance-ohm for RK's emmc PHY
+Date: Tue, 12 Mar 2019 14:01:42 +0100
+Message-ID: <1C73976A-9039-4F7B-959A-4A1E1840EF68@theobroma-systems.com>
+References: <20190307084159.25236-1-christoph.muellner@theobroma-systems.com>
+ <20190307084159.25236-2-christoph.muellner@theobroma-systems.com>
+ <1924357.CMCVK5N5Qd@phil>
+Mime-Version: 1.0 (Mac OS X Mail 11.5 \(3445.9.1\))
+Content-Type: text/plain;
+        charset=utf-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1924357.CMCVK5N5Qd@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, shawn.lin@rock-chips.com, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kishon Vijay Abraham I <kishon@ti.com>, Brian Norris <briannorris@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Douglas Anderson <dianders@chromium.org>, Viresh Kumar <viresh.kumar@linaro.org>, Ezequiel Garcia <ezequiel@collabora.com>, Lin Huang <hl@rock-chips.com>, Randy Li <ayaka@soulik.info>, Tony Xie <tony.xie@rock-chips.com>, Vicente Bergas <vicencb@gmail.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Mar 12, 2019 at 12:42:47PM +0100, Thierry Reding wrote:
-> On Tue, Mar 12, 2019 at 09:35:37AM +0100, Uwe Kleine-K=F6nig wrote:
-> [...]
-> > diff --git a/drivers/pwm/pwm-sun4i.c b/drivers/pwm/pwm-sun4i.c
-> > index 470d4f71e7eb..52dace9f739e 100644
-> > --- a/drivers/pwm/pwm-sun4i.c
-> > +++ b/drivers/pwm/pwm-sun4i.c
-> [...]
-> > @@ -193,17 +193,11 @@ static int sun4i_pwm_calculate(struct sun4i_pwm_c=
-hip *sun4i_pwm,
-> >  	*dty =3D div;
-> >  	*prsclr =3D prescaler;
-> >  =
 
-> > -	div =3D (u64)pval * NSEC_PER_SEC * *prd;
-> > -	state->period =3D DIV_ROUND_CLOSEST_ULL(div, clk_rate);
-> > -
-> > -	div =3D (u64)pval * NSEC_PER_SEC * *dty;
-> > -	state->duty_cycle =3D DIV_ROUND_CLOSEST_ULL(div, clk_rate);
-> > -
-> =
+> On 12.03.2019, at 13:52, Heiko Stuebner <heiko@sntech.de> wrote:
+> 
+> Hi Christoph,
+> 
+> Am Donnerstag, 7. März 2019, 09:41:54 CET schrieb Christoph Muellner:
+>> This patch documents the new proprty drive-impedance-ohm for
+>> Rockchip's eMMC PHY node.
+>> 
+>> Signed-off-by: Christoph Muellner <christoph.muellner@theobroma-systems.com>
+>> Signed-off-by: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+>> ---
+>> Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt | 3 +++
+>> 1 file changed, 3 insertions(+)
+>> 
+>> diff --git a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+>> index e3ea55763b0a..5f5d999dacc3 100644
+>> --- a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+>> +++ b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+>> @@ -13,6 +13,9 @@ specified by name:
+> 
+> you might want to adapt the section headline as well, as right now it
+> talks about "Optional clocks", but should likely become the generic
+> "Optional properties" as in other bindings (including moving the clock-
+> binding.txt reference down into the clock elements)
 
-> Perhaps split this out into a separate patch like you did for Rockchip?
+Thank's for spotting this.
+Will do for v3.
 
-Ah right, I also forgot this driver when writing my cover lever, so
-there are actually two drivers that gave feedback.
+Thanks,
+Christoph
 
-Will respin later today.
-
-Best regards
-Uwe
-
--- =
-
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+> 
+> 
+> Heiko
+> 
+>> 		(because most boards can get basic functionality without having
+>> 		access to it), it is strongly suggested.
+>>  - clocks: Should have a phandle to the card clock exported by the SDHCI driver.
+>> + - drive-impedance-ohm: Specifies the drive impedance in Ohm.
+>> +                        Possible values are 33, 40, 50, 66 and 100.
+>> +                        If not set, the default value of 50 will be applied.
+>> 
+>> Example:
+>> 
+>> 
+> 
+> 
+> 
+> 
