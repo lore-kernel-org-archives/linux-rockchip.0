@@ -1,67 +1,50 @@
-From: Kangjie Lu <kjlu@umn.edu>
-Subject: [PATCH v2] media: rga: fix NULL pointer dereferences and a memory leak
-Date: Tue, 12 Mar 2019 01:58:24 -0500
-Message-ID: <20190312065824.19646-1-kjlu@umn.edu>
-References: <6fc9f670-a199-b83d-ff0a-d4cdb8cb80d1@arm.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <6fc9f670-a199-b83d-ff0a-d4cdb8cb80d1@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: kjlu@umn.edu
-Cc: pakki001@umn.edu, Jacob chen <jacob2.chen@rock-chips.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 0/3] Add hardware unbusy interrupt support for dw_mmc
+Date: Tue, 12 Mar 2019 15:35:06 +0800
+Message-ID: <1552376109-126335-1-git-send-email-shawn.lin@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-In case __get_free_pages fails, the fix releases resources and
-return -ENOMEM to avoid NULL pointer dereferences.
 
-Also, the fix frees pages when video_register_device fails to
-avoid a memory leak.
+DesignWare MMC controler lacks proper hardware wait
+busy support, so the software must check the busy
+state if the following tranfser need use data line.
+And dw_mci_wait_while_busy() now use busy check mostly
+with host's lock hold, and we can't relinguish CPU
+at this moment, which makes it rather painful when used
+in low-end platform. To solve this, Rockchip invent
+a new hardware unbusy interrupt module, which could
+generate interrupt if the state machine runs from
+busy state into idle state.
 
-Signed-off-by: Kangjie Lu <kjlu@umn.edu>
----
- drivers/media/platform/rockchip/rga/rga.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 5c653287185f..307b7ab0ab64 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -892,8 +892,17 @@ static int rga_probe(struct platform_device *pdev)
- 
- 	rga->src_mmu_pages =
- 		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
-+	if (!rga->src_mmu_pages) {
-+		ret = -ENOMEM;
-+		goto rel_vdev;
-+	}
-+
- 	rga->dst_mmu_pages =
- 		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
-+	if (!rga->dst_mmu_pages) {
-+		ret = -ENOMEM;
-+		goto free_dst_pages;
-+	}
- 
- 	def_frame.stride = (def_frame.width * def_frame.fmt->depth) >> 3;
- 	def_frame.size = def_frame.stride * def_frame.height;
-@@ -901,7 +910,7 @@ static int rga_probe(struct platform_device *pdev)
- 	ret = video_register_device(vfd, VFL_TYPE_GRABBER, -1);
- 	if (ret) {
- 		v4l2_err(&rga->v4l2_dev, "Failed to register video device\n");
--		goto rel_vdev;
-+		goto free_pages;
- 	}
- 
- 	v4l2_info(&rga->v4l2_dev, "Registered %s as /dev/%s\n",
-@@ -909,6 +918,10 @@ static int rga_probe(struct platform_device *pdev)
- 
- 	return 0;
- 
-+free_pages:
-+	free_pages((unsigned long)rga->src_mmu_pages, 3);
-+free_dst_pages:
-+	free_pages((unsigned long)rga->dst_mmu_pages, 3);
- rel_vdev:
- 	video_device_release(vfd);
- unreg_video_dev:
+Changes in v2:
+- add tag from Ziyuan Xu
+- remove lock for checking event since it's already atomic operation
+
+Shawn Lin (3):
+  mmc: dw_mmc: Check busy state in dw_mci_request()
+  mmc: dw_mmc: Add hardware unbusy interrupt support
+  mmc: dw_mmc-rockchip: Enable hardware unbusy interrupt support
+
+ drivers/mmc/host/dw_mmc-rockchip.c | 30 ++++++++++++++++++++
+ drivers/mmc/host/dw_mmc.c          | 56 +++++++++++++++++++++++++++++++++++++-
+ drivers/mmc/host/dw_mmc.h          |  6 ++++
+ 3 files changed, 91 insertions(+), 1 deletion(-)
+
 -- 
-2.17.1
+1.9.1
