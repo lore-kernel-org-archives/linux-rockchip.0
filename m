@@ -1,41 +1,81 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 2/3] dt-bindings: mmc: Add a new property
- disable-cqe-dcmd.
-Date: Tue, 12 Mar 2019 14:28:03 -0500
-Message-ID: <20190312192803.GA19594@bogus>
-References: <20190307084329.25416-1-christoph.muellner@theobroma-systems.com>
- <20190307084329.25416-2-christoph.muellner@theobroma-systems.com>
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Subject: Re: [PATCH net-next] net: phy: improve handling link_change_notify
+ callback
+Date: Tue, 12 Mar 2019 23:19:18 +0000
+Message-ID: <20190312231918.csaemkfjx53yxlrh@shell.armlinux.org.uk>
+References: <411b1c33-a245-0706-8afd-c4bea1b90f68@gmail.com>
+ <20190304.113025.1437399524067140375.davem@davemloft.net>
+ <20190304200630.GJ26378@lunn.ch>
+ <3079158.ITs3Wk0qno@phil>
+ <945fb25c-c854-27f3-1e98-18a5c981d59f@zonque.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190307084329.25416-2-christoph.muellner@theobroma-systems.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Christoph Muellner <christoph.muellner@theobroma-systems.com>
-Cc: mark.rutland@arm.com, heiko@sntech.de, shawn.lin@rock-chips.com, ulf.hansson@linaro.org, adrian.hunter@intel.com, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Michal Simek <michal.simek@xilinx.com>, Douglas Anderson <dianders@chromium.org>, Viresh Kumar <viresh.kumar@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Vicente Bergas <vicencb@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>, Randy Li <ayaka@soulik.info>, Tony Xie <tony.xie@rock-chips.com>, Ezequiel Garcia <ezequiel@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Lin Huang <hl@rock-chips.com>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.or
+In-Reply-To: <945fb25c-c854-27f3-1e98-18a5c981d59f@zonque.org>
+Sender: netdev-owner@vger.kernel.org
+To: Daniel Mack <daniel@zonque.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew@lunn.ch>, david.wu@rock-chips.com, f.fainelli@gmail.com, netdev@vger.kernel.org, linux-rockchip@lists.infradead.org, David Miller <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, hkallweit1@gmail.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Mar 07, 2019 at 09:43:27AM +0100, Christoph Muellner wrote:
-> This patch documents the new property disable-cqe-dcmd
-> for the Arasan eMMC 5.1 driver.
+On Tue, Mar 12, 2019 at 06:50:59PM +0100, Daniel Mack wrote:
+> On 12/3/2019 1:27 PM, Heiko Stuebner wrote:
+> > Hi Andrew, Heiner,
+> > 
+> > Am Montag, 4. März 2019, 21:06:30 CET schrieb Andrew Lunn:
+> >> On Mon, Mar 04, 2019 at 11:30:25AM -0800, David Miller wrote:
+> >>> From: Heiner Kallweit <hkallweit1@gmail.com>
+> >>> Date: Sun, 3 Mar 2019 19:58:57 +0100
+> >>>
+> >>>> Currently the Phy driver's link_change_notify callback is called
+> >>>> whenever the state machine is run (every second if polling), no matter
+> >>>> whether the state changed or not. This isn't needed and may confuse
+> >>>> users considering the name of the callback. Therefore let's change
+> >>>> the behavior and call this callback only in case of an actual
+> >>>> state change.
+> >>>>
+> >>>> This requires changes to the at803x and rockchip drivers.
+> >>>> at803x can be simplified so that it reacts on a state change to
+> >>>> PHY_NOLINK only.
+> >>>> The rockchip driver can also be much simplified. We simply re-init
+> >>>> the AFE/DSP registers whenever we change to PHY_RUNNING and speed
+> >>>> is 100Mbps. This causes very small overhead because we do this even
+> >>>> if the speed was 100Mbps already. But this is neglectable and
+> >>>> I think justified by the much simpler code.
+> >>>>
+> >>>> Changes are compile-tested only.
+> >>>>
+> >>>> Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
+> >>>
+> >>> Someone please review this.
+> >>
+> >> Hi David
+> >>
+> >> We should probably wait for a Tested-by: from Daniel Mack
+> >> <zonque@gmail.com> and David Wu <david.wu@rock-chips.com>, or
+> >> equivalent.
+> > 
+> > We should probably add them to the list of recipients if we want
+> > tests from them, which I've done now.
+> > 
+> > @David: patch in question that changes the Rockchip eth-phy is
+> > https://patchwork.kernel.org/patch/10837217/
+> > 
+> > Sadly I don't have matching hardware to test this myself.
 > 
-> Signed-off-by: Christoph Muellner <christoph.muellner@theobroma-systems.com>
-> Signed-off-by: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-> ---
->  Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 4 ++++
->  1 file changed, 4 insertions(+)
+> Thanks for considering me, but I don't have access to that hardware
+> either right now.
 > 
-> diff --git a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-> index 1edbb049cccb..ec699bf98b7c 100644
-> --- a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-> +++ b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-> @@ -44,6 +44,10 @@ Optional Properties:
->      properly. Test mode can be used to force the controller to function.
->    - xlnx,int-clock-stable-broken: when present, the controller always reports
->      that the internal clock is stable even when it is not.
-> +  - disable-cqe-dcmd: The eMMC 5.1 standard specifies direct commands (DCMDs)
-> +    as part of the command queue engine (CQE). On controllers with a CQHCI,
-> +    such as the Arasan eMMC 5.1 host controller, the driver has to enable DCMDs.
-> +    This is done unless disable-cqe-dcmd is specified.
+> The changes look straight forward to me however, so just go ahead an
+> apply this. Once I get back to that setup, I'll report in case of a
+> regression.
 
-Should be common either for all controllers or all SDHCI controllers?
+SolidRun Hummingboards and Cubox-i use AR8035 with the FEC driver, so
+would be ideal to test - unfortunately I'm up to my eyeballs trying to
+diagnose Armada 8040 comphy issues so can't test at the moment.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
