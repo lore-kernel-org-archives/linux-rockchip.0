@@ -1,12 +1,14 @@
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: [PATCH 0/2] pwm: ensure pwm_apply_state() doesn't modify the state
- argument
-Date: Tue, 12 Mar 2019 09:35:35 +0100
-Message-ID: <20190312083537.23748-1-u.kleine-koenig@pengutronix.de>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: rk3288: fix missing grf reference in
+ tsadc node
+Date: Tue, 12 Mar 2019 09:42:33 +0100
+Message-ID: <1950463.k8Yvi4fDWQ@phil>
+References: <AM3PR03MB0966E8AA93CC1B7CA355CECEAC790@AM3PR03MB0966.eurprd03.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <AM3PR03MB0966E8AA93CC1B7CA355CECEAC790-XQTXrJX/giFAc9da7WRX18eAHadYHfrlvxpqHgZTriW3zl9H0oFU5g@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -16,34 +18,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8sCgp0aGlzIHNlcmllcyBpcyBhIGZvbGxvd3VwIHRvIG15IG1haWwgY2xhaW1pbmcgdGhh
-dCBjaGFuZ2luZyB0aGUgc3RhdGUKYXJndW1lbnQgZm9yIGEgY2FsbGVyIG9mIHB3bV9hcHBseV9z
-dGF0ZSgpIGlzIGEgYmFkIGlkZWEuIFNlZSB0aGUgY29tbWl0CmxvZyBmb3IgdGhlIHNlY29uZCBw
-YXRjaCBmb3IgdGhlIHJlYXNvbmluZy4KClRoZSBvbmx5IGRyaXZlciB0aGF0IGFjdHVhbGx5IG1v
-ZGlmaWVkIHRoZSBhcmd1bWVudCBpcyB0aGUgcm9ja2NoaXAKZHJpdmVyIHdoaWNoIGhvd3ZlciBk
-aWRuJ3QgZW5zdXJlIHRoYXQgc3RydWN0IHB3bV9kZXZpY2U6OnN0YXRlIGlzCnVwZGF0ZWQgYWNj
-b3JkaW5nbHkgd2hpY2ggbWFkZSBwd21fZ2V0X3N0YXRlKCkgcmV0dXJuIHRoZSBvbGQgc3RhdGUu
-IFRoZQpmaXJzdCBwYXRjaCBhZGRyZXNzZXMgdGhpcyBieSBkcm9wcGluZyB0aGUgbW9kaWZpY2F0
-aW9uLgoKQmVzdCByZWdhcmRzClV3ZQoKVXdlIEtsZWluZS1Lw7ZuaWcgKDIpOgogIHB3bTogcm9j
-a2NoaXA6IERvbid0IHVwZGF0ZSB0aGUgc3RhdGUgZm9yIHRoZSBjYWxsZXIgb2YKICAgIHB3bV9h
-cHBseV9zdGF0ZSgpCiAgcHdtOiBlbnN1cmUgcHdtX2FwcGx5X3N0YXRlKCkgZG9lc24ndCBtb2Rp
-ZnkgdGhlIHN0YXRlIGFyZ3VtZW50CgogZHJpdmVycy9wd20vY29yZS5jICAgICAgICAgICAgfCAg
-MiArLQogZHJpdmVycy9wd20vcHdtLWF0bWVsLWhsY2RjLmMgfCAgMiArLQogZHJpdmVycy9wd20v
-cHdtLWF0bWVsLmMgICAgICAgfCAgMiArLQogZHJpdmVycy9wd20vcHdtLWJjbS1pcHJvYy5jICAg
-fCAgMiArLQogZHJpdmVycy9wd20vcHdtLWNyb3MtZWMuYyAgICAgfCAgMiArLQogZHJpdmVycy9w
-d20vcHdtLWhpYnZ0LmMgICAgICAgfCAgMiArLQogZHJpdmVycy9wd20vcHdtLWlteDI3LmMgICAg
-ICAgfCAgMiArLQogZHJpdmVycy9wd20vcHdtLWxwc3MuYyAgICAgICAgfCAgMiArLQogZHJpdmVy
-cy9wd20vcHdtLW1lc29uLmMgICAgICAgfCAgMiArLQogZHJpdmVycy9wd20vcHdtLXJjYXIuYyAg
-ICAgICAgfCAgMiArLQogZHJpdmVycy9wd20vcHdtLXJvY2tjaGlwLmMgICAgfCAxMCArKy0tLS0t
-LS0tCiBkcml2ZXJzL3B3bS9wd20tc3RtMzItbHAuYyAgICB8ICAyICstCiBkcml2ZXJzL3B3bS9w
-d20tc3VuNGkuYyAgICAgICB8IDEwICsrLS0tLS0tLS0KIGRyaXZlcnMvcHdtL3B3bS16eC5jICAg
-ICAgICAgIHwgIDIgKy0KIGluY2x1ZGUvbGludXgvcHdtLmggICAgICAgICAgIHwgIDQgKystLQog
-MTUgZmlsZXMgY2hhbmdlZCwgMTggaW5zZXJ0aW9ucygrKSwgMzAgZGVsZXRpb25zKC0pCgotLSAK
-Mi4yMC4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAo=
+Am Sonntag, 24. Februar 2019, 22:52:00 CET schrieb Jonas Karlman:
+> The following message can be seen during boot:
+> 
+>   rockchip-thermal ff280000.tsadc: Missing rockchip,grf property
+> 
+> Fix this by adding rockchip,grf property to tsadc node.
+> 
+> Fixes: b67d6bc38823 ("ARM: dts: rockchip: add main thermal info to rk3288")
+> Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+
+applied for 5.2
+
+The warning doesn't affect rk3288 (v2 tsadc) and the grf requirement
+only got introduced later on after the rk3288 tsadc node, so I've dropped
+the Fixes tag, also reducing the workload of the stable poeple
+
+In general it looks like driver quality of the tsadc deteriorated over time,
+as it shouldn't warn about missing GRF references on platforms not
+needing it in the first place. And GRF locations should of course also
+live in the per-soc data structures as GRF register never are stable
+like the constants currently suggest.
