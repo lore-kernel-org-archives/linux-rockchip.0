@@ -1,14 +1,16 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 3/3] mmc: dw_mmc-rockchip: Enable hardware unbusy interrupt
- support
-Date: Tue, 12 Mar 2019 15:35:09 +0800
-Message-ID: <1552376109-126335-4-git-send-email-shawn.lin@rock-chips.com>
-References: <1552376109-126335-1-git-send-email-shawn.lin@rock-chips.com>
+From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Subject: Re: [PATCH v2 02/11] media: Introduce helpers to fill pixel format
+ structs
+Date: Tue, 12 Mar 2019 09:29:08 +0100
+Message-ID: <c1316b02-7df1-5517-f899-7e6f22f8ba31@xs4all.nl>
+References: <20190304192529.14200-1-ezequiel@collabora.com>
+ <20190304192529.14200-3-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1552376109-126335-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <20190304192529.14200-3-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,117 +20,277 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The new register for controlling hardware unbusy interrupt
-is in 0x120. It looks like:
+On 3/4/19 8:25 PM, Ezequiel Garcia wrote:
+> Add two new API helpers, v4l2_fill_pixfmt and v4l2_fill_pixfmt_mp,
+> to be used by drivers to calculate plane sizes and bytes per lines.
+> 
+> Note that driver-specific padding and alignment are not
+> taken into account, and must be done by drivers using this API.
+> 
+> Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+>  drivers/media/v4l2-core/v4l2-common.c | 186 ++++++++++++++++++++++++++
+>  include/media/v4l2-common.h           |  32 +++++
+>  2 files changed, 218 insertions(+)
+> 
+> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+> index 663730f088cd..11a16bb3efda 100644
+> --- a/drivers/media/v4l2-core/v4l2-common.c
+> +++ b/drivers/media/v4l2-core/v4l2-common.c
+> @@ -44,6 +44,7 @@
+>   * Added Gerd Knorrs v4l1 enhancements (Justin Schoeman)
+>   */
+>  
+> +#include <linux/ctype.h>
+>  #include <linux/module.h>
+>  #include <linux/types.h>
+>  #include <linux/kernel.h>
+> @@ -445,3 +446,188 @@ int v4l2_s_parm_cap(struct video_device *vdev,
+>  	return ret;
+>  }
+>  EXPORT_SYMBOL_GPL(v4l2_s_parm_cap);
+> +
+> +static char printable_char(int c)
+> +{
+> +	return isascii(c) && isprint(c) ? c : '?';
+> +}
+> +
+> +const char *v4l2_get_fourcc_name(uint32_t format)
+> +{
+> +	static char buf[8];
+> +
+> +	snprintf(buf, 8,
+> +		 "%c%c%c%c%s",
+> +		 printable_char(format & 0xff),
+> +		 printable_char((format >> 8) & 0xff),
+> +		 printable_char((format >> 16) & 0xff),
+> +		 printable_char((format >> 24) & 0x7f),
+> +		 (format & BIT(31)) ? "-BE" : "");
+> +
+> +	return buf;
+> +}
+> +EXPORT_SYMBOL(v4l2_get_fourcc_name);
 
-|------------------------------------------------------------|
-|Bit    |  Attribute |  Reset Value  | Description           |
-|------------------------------------------------------------|
-|31:25  |    RO      |      0x0      |  reserved             |
-|------------------------------------------------------------|
-|24     |    RO      |      0x0      |  rdyint_cnt_finish    |
-|       |            |               |When high, it indicates|
-|	|            |               |that the rdyint counter|
-|       |            |               |is finished.           |
-|------------------------------------------------------------|
-|23:16  |    RO      |      0x0      |  rdyint_cnt_status    |
-|       |            |               |Couner status, reflect |
-|       |            |               |internal counter value.|
-|------------------------------------------------------------|
-|15:9   |    RO      |      0x0      |  reserved             |
-|------------------------------------------------------------|
-|8      |    RW      |      0x0      |  rdyint_gen_working   |
-|       |            |               |When set, IP starts to |
-|       |            |               |count and generate one |
-|       |            |               |rdyint trigger. After  |
-|       |            |               |the rdyint trigger is  |
-|       |            |               |generated, it will be  |
-|       |            |               |cleaned automatically. |
-|       |            |               |Software should set it |
-|       |            |               |again next time.       |
-|------------------------------------------------------------|
-|7:0    |    RW      |      0xff     |   rdyint_gen_maxval   |
-|       |            |               |Max counter value for  |
-|       |            |               |the IP to count when   |
-|       |            |               |rdyint_gen_working is  |
-|       |            |               |set. This counter is   |
-|       |            |               |based on biu_clk.      |
-|------------------------------------------------------------|
+This function isn't re-entrant, but it should be. Multiple threads may be
+calling it at the same time.
 
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Tested-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
+It is probably best to pass the buffer pointer as an argument.
 
-Changes in v2: None
+I would also prefer to split this patch into two: the first adding
+v4l2_format_info, the second adding v4l2_get_fourcc_name. This in case
+that the v4l2_get_fourcc_name() function needs more work.
 
- drivers/mmc/host/dw_mmc-rockchip.c | 30 ++++++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+Regards,
 
-diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-index 8c86a80..85b1e42 100644
---- a/drivers/mmc/host/dw_mmc-rockchip.c
-+++ b/drivers/mmc/host/dw_mmc-rockchip.c
-@@ -20,6 +20,9 @@
- #include "dw_mmc-pltfm.h"
- 
- #define RK3288_CLKGEN_DIV       2
-+#define RKMMC_RDYINT_GEN	0x120
-+#define RKMMC_RDYINT_GEN_WORKING BIT(8)
-+#define RKMMC_RDYINT_GEN_MAXVAL GENMASK(7, 0)
- 
- struct dw_mci_rockchip_priv_data {
- 	struct clk		*drv_clk;
-@@ -28,6 +31,23 @@ struct dw_mci_rockchip_priv_data {
- 	int			num_phases;
- };
- 
-+static int dw_mci_rockchip_prepare_hw_unbusy(struct dw_mci *host,
-+					     bool enable)
-+{
-+	u32 reg = readl(host->regs + RKMMC_RDYINT_GEN);
-+
-+	if (enable)
-+		/* Self-clean when generating unbusy int */
-+		reg |= RKMMC_RDYINT_GEN_WORKING;
-+	else
-+		/* Otherwise do it manually to avoid racing condition */
-+		reg &= ~RKMMC_RDYINT_GEN_WORKING;
-+
-+	writel(reg, host->regs + RKMMC_RDYINT_GEN);
-+
-+	return 0;
-+}
-+
- static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
- {
- 	struct dw_mci_rockchip_priv_data *priv = host->priv;
-@@ -301,6 +321,15 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
- 				    "rockchip,rk3288-dw-mshc"))
- 		host->bus_hz /= RK3288_CLKGEN_DIV;
- 
-+	/* Some Rockchip SoCs use hw unbusy int */
-+	if (of_device_is_compatible(host->dev->of_node,
-+				    "rockchip,rk1808-dw-mshc")) {
-+		host->hw_unbusy_int = 16;
-+		writel(~(RKMMC_RDYINT_GEN_WORKING |
-+			 RKMMC_RDYINT_GEN_MAXVAL),
-+		       host->regs + RKMMC_RDYINT_GEN);
-+	}
-+
- 	return 0;
- }
- 
-@@ -322,6 +351,7 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
- 	.set_ios		= dw_mci_rk3288_set_ios,
- 	.execute_tuning		= dw_mci_rk3288_execute_tuning,
- 	.parse_dt		= dw_mci_rk3288_parse_dt,
-+	.prepare_hw_unbusy      = dw_mci_rockchip_prepare_hw_unbusy,
- 	.init			= dw_mci_rockchip_init,
- };
- 
--- 
-1.9.1
+	Hans
+
+> +
+> +const struct v4l2_format_info *v4l2_format_info(u32 format)
+> +{
+> +	static const struct v4l2_format_info formats[] = {
+> +		/* RGB formats */
+> +		{ .format = V4L2_PIX_FMT_BGR24,   .mem_planes = 1, .comp_planes = 1, .bpp = { 3, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_RGB24,   .mem_planes = 1, .comp_planes = 1, .bpp = { 3, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_HSV24,   .mem_planes = 1, .comp_planes = 1, .bpp = { 3, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_BGR32,   .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_XBGR32,  .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_RGB32,   .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_XRGB32,  .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_HSV32,   .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_ARGB32,  .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_ABGR32,  .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_GREY,    .mem_planes = 1, .comp_planes = 1, .bpp = { 1, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> +
+> +		/* YUV packed formats */
+> +		{ .format = V4L2_PIX_FMT_YUYV,    .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .hdiv = 2, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_YVYU,    .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .hdiv = 2, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_UYVY,    .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .hdiv = 2, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_VYUY,    .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .hdiv = 2, .vdiv = 1 },
+> +
+> +		/* YUV planar formats */
+> +		{ .format = V4L2_PIX_FMT_NV12,    .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 2 },
+> +		{ .format = V4L2_PIX_FMT_NV21,    .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 2 },
+> +		{ .format = V4L2_PIX_FMT_NV16,    .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_NV61,    .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_NV24,    .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_NV42,    .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> +
+> +		{ .format = V4L2_PIX_FMT_YUV410,  .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 4, .vdiv = 4 },
+> +		{ .format = V4L2_PIX_FMT_YVU410,  .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 4, .vdiv = 4 },
+> +		{ .format = V4L2_PIX_FMT_YUV411P, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 4, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_YUV420,  .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 2 },
+> +		{ .format = V4L2_PIX_FMT_YVU420,  .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 2 },
+> +		{ .format = V4L2_PIX_FMT_YUV422P, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 1 },
+> +
+> +		/* YUV planar formats, non contiguous variant */
+> +		{ .format = V4L2_PIX_FMT_YUV420M, .mem_planes = 3, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 2 },
+> +		{ .format = V4L2_PIX_FMT_YVU420M, .mem_planes = 3, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 2 },
+> +		{ .format = V4L2_PIX_FMT_YUV422M, .mem_planes = 3, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_YVU422M, .mem_planes = 3, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_YUV444M, .mem_planes = 3, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 1, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_YVU444M, .mem_planes = 3, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 1, .vdiv = 1 },
+> +
+> +		{ .format = V4L2_PIX_FMT_NV12M,   .mem_planes = 2, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 2 },
+> +		{ .format = V4L2_PIX_FMT_NV21M,   .mem_planes = 2, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 2 },
+> +		{ .format = V4L2_PIX_FMT_NV16M,   .mem_planes = 2, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_NV61M,   .mem_planes = 2, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 1 },
+> +	};
+> +	unsigned int i;
+> +
+> +	for (i = 0; i < ARRAY_SIZE(formats); ++i)
+> +		if (formats[i].format == format)
+> +			return &formats[i];
+> +	return NULL;
+> +}
+> +EXPORT_SYMBOL(v4l2_format_info);
+> +
+> +static inline unsigned int v4l2_format_block_width(const struct v4l2_format_info *info, int plane)
+> +{
+> +	if (!info->block_w[plane])
+> +		return 1;
+> +	return info->block_w[plane];
+> +}
+> +
+> +static inline unsigned int v4l2_format_block_height(const struct v4l2_format_info *info, int plane)
+> +{
+> +	if (!info->block_h[plane])
+> +		return 1;
+> +	return info->block_h[plane];
+> +}
+> +
+> +int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
+> +			 int pixelformat, int width, int height)
+> +{
+> +	const struct v4l2_format_info *info;
+> +	struct v4l2_plane_pix_format *plane;
+> +	int i;
+> +
+> +	info = v4l2_format_info(pixelformat);
+> +	if (!info)
+> +		return -EINVAL;
+> +
+> +	pixfmt->width = width;
+> +	pixfmt->height = height;
+> +	pixfmt->pixelformat = pixelformat;
+> +	pixfmt->num_planes = info->mem_planes;
+> +
+> +	if (info->mem_planes == 1) {
+> +		plane = &pixfmt->plane_fmt[0];
+> +		plane->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
+> +		plane->sizeimage = 0;
+> +
+> +		for (i = 0; i < info->comp_planes; i++) {
+> +			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
+> +			unsigned int vdiv = (i == 0) ? 1 : info->vdiv;
+> +			unsigned int aligned_width;
+> +			unsigned int aligned_height;
+> +
+> +			aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
+> +			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
+> +
+> +			plane->sizeimage += info->bpp[i] *
+> +				DIV_ROUND_UP(aligned_width, hdiv) *
+> +				DIV_ROUND_UP(aligned_height, vdiv);
+> +		}
+> +	} else {
+> +		for (i = 0; i < info->comp_planes; i++) {
+> +			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
+> +			unsigned int vdiv = (i == 0) ? 1 : info->vdiv;
+> +			unsigned int aligned_width;
+> +			unsigned int aligned_height;
+> +
+> +			aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
+> +			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
+> +
+> +			plane = &pixfmt->plane_fmt[i];
+> +			plane->bytesperline =
+> +				info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv);
+> +			plane->sizeimage =
+> +				plane->bytesperline * DIV_ROUND_UP(aligned_height, vdiv);
+> +		}
+> +	}
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt_mp);
+> +
+> +int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, int pixelformat, int width, int height)
+> +{
+> +	const struct v4l2_format_info *info;
+> +	int i;
+> +
+> +	info = v4l2_format_info(pixelformat);
+> +	if (!info)
+> +		return -EINVAL;
+> +
+> +	/* Single planar API cannot be used for multi plane formats. */
+> +	if (info->mem_planes > 1)
+> +		return -EINVAL;
+> +
+> +	pixfmt->width = width;
+> +	pixfmt->height = height;
+> +	pixfmt->pixelformat = pixelformat;
+> +	pixfmt->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
+> +	pixfmt->sizeimage = 0;
+> +
+> +	for (i = 0; i < info->comp_planes; i++) {
+> +		unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
+> +		unsigned int vdiv = (i == 0) ? 1 : info->vdiv;
+> +		unsigned int aligned_width;
+> +		unsigned int aligned_height;
+> +
+> +		aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
+> +		aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
+> +
+> +		pixfmt->sizeimage += info->bpp[i] *
+> +			DIV_ROUND_UP(aligned_width, hdiv) *
+> +			DIV_ROUND_UP(aligned_height, vdiv);
+> +	}
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
+> diff --git a/include/media/v4l2-common.h b/include/media/v4l2-common.h
+> index 2b93cb281fa5..937b74a946cd 100644
+> --- a/include/media/v4l2-common.h
+> +++ b/include/media/v4l2-common.h
+> @@ -392,4 +392,36 @@ int v4l2_s_parm_cap(struct video_device *vdev,
+>  	((u64)(a).numerator * (b).denominator OP	\
+>  	(u64)(b).numerator * (a).denominator)
+>  
+> +/* ------------------------------------------------------------------------- */
+> +
+> +/* Pixel format and FourCC helpers */
+> +
+> +/**
+> + * struct v4l2_format_info - information about a V4L2 format
+> + * @format: 4CC format identifier (V4L2_PIX_FMT_*)
+> + * @mem_planes: Number of memory planes, which includes the alpha plane (1 to 4).
+> + * @comp_planes: Number of component planes, which includes the alpha plane (1 to 4).
+> + * @bpp: Array of per-plane bytes per pixel
+> + * @hdiv: Horizontal chroma subsampling factor
+> + * @vdiv: Vertical chroma subsampling factor
+> + */
+> +struct v4l2_format_info {
+> +	u32 format;
+> +	u8 mem_planes;
+> +	u8 comp_planes;
+> +	u8 bpp[4];
+> +	u8 hdiv;
+> +	u8 vdiv;
+> +	u8 block_w[4];
+> +	u8 block_h[4];
+> +};
+> +
+> +const struct v4l2_format_info *v4l2_format_info(u32 format);
+> +const char *v4l2_get_fourcc_name(u32 format);
+> +
+> +int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, int pixelformat,
+> +		     int width, int height);
+> +int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt, int pixelformat,
+> +			int width, int height);
+> +
+>  #endif /* V4L2_COMMON_H_ */
+> 
