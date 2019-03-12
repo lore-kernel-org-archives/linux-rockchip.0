@@ -1,111 +1,73 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 1/4] phy: rockchip-emmc: Allow to set drive impedance via DTS.
-Date: Tue, 12 Mar 2019 14:07:39 +0100
-Message-ID: <1571188.ajMNexS2DJ@phil>
-References: <20190307084159.25236-1-christoph.muellner@theobroma-systems.com>
+Subject: Re: [PATCH v2 2/3] dt-bindings: mmc: Add a new property disable-cqe-dcmd.
+Date: Tue, 12 Mar 2019 14:17:55 +0100
+Message-ID: <4793843.T1TZ7EF8k3@phil>
+References: <20190307084329.25416-1-christoph.muellner@theobroma-systems.com> <37a96eda-196e-bacf-7ae2-5b9354c70273@intel.com> <3BCC2A27-3AF4-4E5E-BBD4-6A5B49831D3C@theobroma-systems.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190307084159.25236-1-christoph.muellner@theobroma-systems.com>
+In-Reply-To: <3BCC2A27-3AF4-4E5E-BBD4-6A5B49831D3C@theobroma-systems.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Christoph Muellner <christoph.muellner@theobroma-systems.com>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, shawn.lin@rock-chips.com, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kishon Vijay Abraham I <kishon@ti.com>, Brian Norris <briannorris@chromium.org>, Matthias Brugger <mbrugger@suse.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Douglas Anderson <dianders@chromium.org>, Viresh Kumar <viresh.kumar@linaro.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Vicente Bergas <vicencb@gmail.com>, Randy Li <ayaka@soulik.info>, Tony Xie <tony.xie@rock-chips.com>, Ezequiel Garcia <ezequiel@collabora.com>, Lin Huang <hl@rock-chips.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infrad
+To: Christoph =?ISO-8859-1?Q?M=FCllner?= <christoph.muellner@theobroma-systems.com>
+Cc: Adrian Hunter <adrian.hunter@intel.com>, robh+dt@kernel.org, mark.rutland@arm.com, shawn.lin@rock-chips.com, ulf.hansson@linaro.org, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Michal Simek <michal.simek@xilinx.com>, Douglas Anderson <dianders@chromium.org>, Viresh Kumar <viresh.kumar@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Vicente Bergas <vicencb@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>, Randy Li <ayaka@soulik.info>, Tony Xie <tony.xie@rock-chips.com>, Ezequiel Garcia <ezequiel@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Lin Huang <hl@rock-chips.com>, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.orglinux-
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 7. März 2019, 09:41:53 CET schrieb Christoph Muellner:
-> The rockchip-emmc PHY can be configured with different
-> drive impedance values. Currenlty a value of 50 Ohm is
-> hard coded into the driver.
+Am Freitag, 8. März 2019, 14:10:45 CET schrieb Christoph Müllner:
 > 
-> This patch introduces the DTS property 'drive-impedance-ohm'
-> for the rockchip-emmc phy node, which uses the value from the DTS
-> to setup the drive impedance accordingly.
+> > On 08.03.2019, at 13:46, Adrian Hunter <adrian.hunter@intel.com> wrote:
+> > 
+> > On 7/03/19 10:43 AM, Christoph Muellner wrote:
+> >> This patch documents the new property disable-cqe-dcmd
+> >> for the Arasan eMMC 5.1 driver.
+> >> 
+> >> Signed-off-by: Christoph Muellner <christoph.muellner@theobroma-systems.com>
+> >> Signed-off-by: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+> >> ---
+> >> Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 4 ++++
+> >> 1 file changed, 4 insertions(+)
+> >> 
+> >> diff --git a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+> >> index 1edbb049cccb..ec699bf98b7c 100644
+> >> --- a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+> >> +++ b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+> >> @@ -44,6 +44,10 @@ Optional Properties:
+> >>     properly. Test mode can be used to force the controller to function.
+> >>   - xlnx,int-clock-stable-broken: when present, the controller always reports
+> >>     that the internal clock is stable even when it is not.
+> >> +  - disable-cqe-dcmd: The eMMC 5.1 standard specifies direct commands (DCMDs)
+> >> +    as part of the command queue engine (CQE). On controllers with a CQHCI,
+> >> +    such as the Arasan eMMC 5.1 host controller, the driver has to enable DCMDs.
+> >> +    This is done unless disable-cqe-dcmd is specified.
+
+This needs a rewording please. See below for hw-description vs. driver, so
+the description should be centered around why this is a property of the hw
+[like faulty controller implementation or whatever]
+
+
+> > If "supports-cqe" is in mmc.txt, should "disable-cqe-dcmd" be there also?
 > 
-> Signed-off-by: Christoph Muellner <christoph.muellner@theobroma-systems.com>
-> Signed-off-by: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+> The file mmc.txt says on top:
+> "These properties are common to multiple MMC host controllers".
+> As my patchset introduces "disable-cqe-dcmd" just for sdhci-of-arasan,
+> I would say it should not go into that file.
+> 
+> Also I wonder why "supports-cqe" is in mmc.txt, because
+> only sdhci-tegra.c is evaluating that property.
+> So I would expect it to be documented in
+> Documentation/devicetree/bindings/mmc/nvidia,tegra20-sdhci.txt
+> 
+> However, I see that "disable-cqe-dcmd" could go into other drivers as well.
+> But is this enough to document it in mmc.txt?
 
-change itself looks good
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Devicetree is always about describing the hardware capabilites and never
+about the actual nitty-gritty of driver implementation, aka it is not meant
+as a space for hardware-independent config-settings or such.
 
-Though I cannot say too much about the electrical side.
-
+As for only tegra evaluating this, is probably because it is still so new, like
+january 2019 and Rob explicitly suggested it becoming common [0], which
+suggests that the disable-cqe-dcmds should probably also be common.
 
 Heiko
 
-> ---
->  drivers/phy/rockchip/phy-rockchip-emmc.c | 30 ++++++++++++++++++++++++++++--
->  1 file changed, 28 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
-> index 19bf84f0bc67..b804c6bf4b55 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-emmc.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
-> @@ -87,6 +87,7 @@ struct rockchip_emmc_phy {
->  	unsigned int	reg_offset;
->  	struct regmap	*reg_base;
->  	struct clk	*emmcclk;
-> +	unsigned int drive_impedance;
->  };
->  
->  static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
-> @@ -281,10 +282,10 @@ static int rockchip_emmc_phy_power_on(struct phy *phy)
->  {
->  	struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
->  
-> -	/* Drive impedance: 50 Ohm */
-> +	/* Drive impedance: from DTS */
->  	regmap_write(rk_phy->reg_base,
->  		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
-> -		     HIWORD_UPDATE(PHYCTRL_DR_50OHM,
-> +		     HIWORD_UPDATE(rk_phy->drive_impedance,
->  				   PHYCTRL_DR_MASK,
->  				   PHYCTRL_DR_SHIFT));
->  
-> @@ -314,6 +315,26 @@ static const struct phy_ops ops = {
->  	.owner		= THIS_MODULE,
->  };
->  
-> +static u32 convert_drive_impedance_ohm(struct platform_device *pdev, u32 dr_ohm)
-> +{
-> +	switch (dr_ohm) {
-> +	case 100:
-> +		return PHYCTRL_DR_100OHM;
-> +	case 66:
-> +		return PHYCTRL_DR_66OHM;
-> +	case 50:
-> +		return PHYCTRL_DR_50OHM;
-> +	case 40:
-> +		return PHYCTRL_DR_40OHM;
-> +	case 33:
-> +		return PHYCTRL_DR_33OHM;
-> +	}
-> +
-> +	dev_warn(&pdev->dev, "Invalid value %u for drive-impedance-ohm.\n",
-> +		 dr_ohm);
-> +	return PHYCTRL_DR_50OHM;
-> +}
-> +
->  static int rockchip_emmc_phy_probe(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
-> @@ -322,6 +343,7 @@ static int rockchip_emmc_phy_probe(struct platform_device *pdev)
->  	struct phy_provider *phy_provider;
->  	struct regmap *grf;
->  	unsigned int reg_offset;
-> +	u32 val;
->  
->  	if (!dev->parent || !dev->parent->of_node)
->  		return -ENODEV;
-> @@ -344,6 +366,10 @@ static int rockchip_emmc_phy_probe(struct platform_device *pdev)
->  
->  	rk_phy->reg_offset = reg_offset;
->  	rk_phy->reg_base = grf;
-> +	rk_phy->drive_impedance = PHYCTRL_DR_50OHM;
-> +
-> +	if (!of_property_read_u32(dev->of_node, "drive-impedance-ohm", &val))
-> +		rk_phy->drive_impedance = convert_drive_impedance_ohm(pdev, val);
->  
->  	generic_phy = devm_phy_create(dev, dev->of_node, &ops);
->  	if (IS_ERR(generic_phy)) {
-> 
+[0] https://lore.kernel.org/patchwork/patch/1031163/
