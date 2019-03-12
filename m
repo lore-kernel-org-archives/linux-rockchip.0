@@ -1,107 +1,165 @@
-From: Boris Brezillon <boris.brezillon@collabora.com>
-Subject: Re: [PATCH v2 1/5] drm/rockchip: fix fb references in async update
-Date: Tue, 12 Mar 2019 16:52:43 +0100
-Message-ID: <20190312165243.5b771e4a@collabora.com>
-References: <20190312022204.2775-1-helen.koike@collabora.com>
- <20190312022204.2775-2-helen.koike@collabora.com>
- <20190312073438.05ad8173@collabora.com>
- <f888a2d0-c6b1-8995-7254-ba2923dd22f9@collabora.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v2 2/3] dt-bindings: mmc: Add a new property
+ disable-cqe-dcmd.
+Date: Tue, 12 Mar 2019 18:10:56 +0100
+Message-ID: <2038789.ZmMFo7ZELZ@diego>
+References: <20190307084329.25416-1-christoph.muellner@theobroma-systems.com>
+ <4793843.T1TZ7EF8k3@phil>
+ <D7EF0176-0EBD-4401-83BE-E7F951F88CAA@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <f888a2d0-c6b1-8995-7254-ba2923dd22f9@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Helen Koike <helen.koike@collabora.com>
-Cc: =?UTF-8?B?U3TDqXBoYW5l?= Marchesin <marcheu@google.com>, Sean Paul <seanpaul@google.com>, David Airlie <airlied@linux.ie>, daniel.vetter@ffwll.ch, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, kernel@collabora.com, nicholas.kazlauskas@amd.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <D7EF0176-0EBD-4401-83BE-E7F951F88CAA@theobroma-systems.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Christoph =?ISO-8859-1?Q?M=FCllner?= <christoph.muellner@theobroma-systems.com>
+Cc: mark.rutland@arm.com, ulf.hansson@linaro.org, Emil Renner Berthing <kernel@esmil.dk>, Viresh Kumar <viresh.kumar@linaro.org>, shawn.lin@rock-chips.com, Adrian Hunter <adrian.hunter@intel.com>, Tony Xie <tony.xie@rock-chips.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Michal Simek <michal.simek@xilinx.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Randy Li <ayaka@soulik.info>, Vicente Bergas <vicencb@gmail.com>, robh+dt@kernel.org, Ezequiel Garcia <ezequiel@collabora.com>, linux-arm-kernel@lists.infradead.org, Lin Huang <hl@rock-chips.com>, linux-mmc@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCAxMiBNYXIgMjAxOSAxMjozNDo0NSAtMDMwMApIZWxlbiBLb2lrZSA8aGVsZW4ua29p
-a2VAY29sbGFib3JhLmNvbT4gd3JvdGU6Cgo+IE9uIDMvMTIvMTkgMzozNCBBTSwgQm9yaXMgQnJl
-emlsbG9uIHdyb3RlOgo+ID4gT24gTW9uLCAxMSBNYXIgMjAxOSAyMzoyMTo1OSAtMDMwMAo+ID4g
-SGVsZW4gS29pa2UgPGhlbGVuLmtvaWtlQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+ID4gICAKPiA+
-PiBJbiB0aGUgY2FzZSBvZiBhc3luYyB1cGRhdGUsIG1vZGlmaWNhdGlvbnMgYXJlIGRvbmUgaW4g
-cGxhY2UsIGkuZS4gaW4gdGhlCj4gPj4gY3VycmVudCBwbGFuZSBzdGF0ZSwgc28gdGhlIG5ld19z
-dGF0ZSBpcyBwcmVwYXJlZCBhbmQgdGhlIG5ld19zdGF0ZSBpcwo+ID4+IGNsZWFudXAgdXAgKGlu
-c3RlYWQgb2YgdGhlIG9sZF9zdGF0ZSwgZGlmZXJyZW50bHkgb24gd2hhdCBoYXBwZW4gaW4gYSAg
-Cj4gPiAKPiA+ICAgXiBjbGVhbmVkIHVwCQkJCV4gZGlmZmVyZW50bHkgKGJ1dCBtYXliZQo+ID4g
-InVubGlrZSB3aGF0IGhhcHBlbnMiIGlzIG1vcmUgYXBwcm9wcmlhdGUgaGVyZSkuCj4gPiAgIAo+
-ID4+IG5vcm1hbCBzeW5jIHVwZGF0ZSkuCj4gPj4gVG8gY2xlYW51cCB0aGUgb2xkX2ZiIHByb3Bl
-cmx5LCBpdCBuZWVkcyB0byBiZSBwbGFjZWQgaW4gdGhlIG5ld19zdGF0ZQo+ID4+IGluIHRoZSBl
-bmQgb2YgYXN5bmNfdXBkYXRlLCBzbyBjbGVhbnVwIGNhbGwgd2lsbCB1bnJlZmVyZW5jZSB0aGUg
-b2xkX2ZiCj4gPj4gY29ycmVjdGx5Lgo+ID4+Cj4gPj4gQWxzbywgdGhlIHByZXZpb3VzIGNvZGUg
-aGFkIGE6Cj4gPj4KPiA+PiAJcGxhbmVfc3RhdGUgPSBwbGFuZS0+ZnVuY3MtPmF0b21pY19kdXBs
-aWNhdGVfc3RhdGUocGxhbmUpOwo+ID4+IAkuLi4KPiA+PiAJc3dhcChwbGFuZV9zdGF0ZSwgcGxh
-bmUtPnN0YXRlKTsKPiA+Pgo+ID4+IAlpZiAocGxhbmUtPnN0YXRlLT5mYiAmJiBwbGFuZS0+c3Rh
-dGUtPmZiICE9IG5ld19zdGF0ZS0+ZmIpIHsKPiA+PiAJLi4uCj4gPj4gCX0KPiA+Pgo+ID4+IFdo
-aWNoIHdhcyB3cm9uZywgYXMgdGhlIGZiIHdlcmUganVzdCBhc3NpZ25lZCB0byBiZSBlcXVhbCwg
-c28gdGhpcyBpZgo+ID4+IHN0YXRlbWVudCBuZXZlcnMgZXZhbHVhdGVzIHRvIHRydWUuCj4gPj4K
-PiA+PiBBbm90aGVyIGRldGFpbHMgaXMgdGhhdCB0aGUgZnVuY3Rpb24gZHJtX2NydGNfdmJsYW5r
-X2dldCgpIGNhbiBvbmx5IGJlCj4gPj4gY2FsbGVkIHdoZW4gdm9wLT5pc19lbmFibGVkIGlzIHRy
-dWUsIG90aGVyd2lzZSBpdCBoYXMgbm8gZWZmZWN0IGFuZAo+ID4+IHRyb3dzIGEgV0FSTl9PTigp
-Lgo+ID4+Cj4gPj4gQ2FsbGluZyBkcm1fYXRvbWljX3NldF9mYl9mb3JfcGxhbmUoKSAod2hpY2gg
-Z2V0IGEgcmVmZXJlbnQgb2YgdGhlIG5ldwo+ID4+IGZiIGFuZCBwdXMgdGhlIG9sZCBmYikgaXMg
-bm90IHJlcXVpcmVkLCBhcyBpdCBpcyB0YWtlbiBjYXJlIGJ5Cj4gPj4gZHJtX21vZGVfY3Vyc29y
-X3VuaXZlcnNhbCgpIHdoZW4gY2FsbGluZwo+ID4+IGRybV9hdG9taWNfaGVscGVyX3VwZGF0ZV9w
-bGFuZSgpLgo+ID4+Cj4gPj4gU2lnbmVkLW9mZi1ieTogSGVsZW4gS29pa2UgPGhlbGVuLmtvaWtl
-QGNvbGxhYm9yYS5jb20+Cj4gPj4KPiA+PiAtLS0KPiA+PiBIZWxsbywKPiA+Pgo+ID4+IEkgdGVz
-dGVkIG9uIHRoZSByb2NrY2hpcCBmaWN1cyB2MS4xIHVzaW5nIGlndCBwbGFuZV9jdXJzb3JfbGVn
-YWN5IGFuZAo+ID4+IGttc19jdXJzb3JfbGVnYWN5IGFuZCBJIGRpZG4ndCBzZWUgYW55IHJlZ3Jl
-c3Npb25zLgo+ID4+Cj4gPj4gQ2hhbmdlcyBpbiB2MjogTm9uZQo+ID4+Cj4gPj4gIGRyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCA0MiArKysrKysrKysrKystLS0t
-LS0tLS0KPiA+PiAgMSBmaWxlIGNoYW5nZWQsIDI0IGluc2VydGlvbnMoKyksIDE4IGRlbGV0aW9u
-cygtKQo+ID4+Cj4gPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
-Y2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
-cC5jCj4gPj4gaW5kZXggYzdkNGM2MDczZWE1Li5hMWVlOGMxNTZhN2IgMTAwNjQ0Cj4gPj4gLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ID4+ICsrKyBi
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiA+PiBAQCAtOTEy
-LDMwICs5MTIsMzEgQEAgc3RhdGljIHZvaWQgdm9wX3BsYW5lX2F0b21pY19hc3luY191cGRhdGUo
-c3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCj4gPj4gIAkJCQkJICBzdHJ1Y3QgZHJtX3BsYW5lX3N0
-YXRlICpuZXdfc3RhdGUpCj4gPj4gIHsKPiA+PiAgCXN0cnVjdCB2b3AgKnZvcCA9IHRvX3ZvcChw
-bGFuZS0+c3RhdGUtPmNydGMpOwo+ID4+IC0Jc3RydWN0IGRybV9wbGFuZV9zdGF0ZSAqcGxhbmVf
-c3RhdGU7Cj4gPj4gKwlzdHJ1Y3QgZHJtX2ZyYW1lYnVmZmVyICpvbGRfZmIgPSBwbGFuZS0+c3Rh
-dGUtPmZiOwo+ID4+ICAKPiA+PiAtCXBsYW5lX3N0YXRlID0gcGxhbmUtPmZ1bmNzLT5hdG9taWNf
-ZHVwbGljYXRlX3N0YXRlKHBsYW5lKTsKPiA+PiAtCXBsYW5lX3N0YXRlLT5jcnRjX3ggPSBuZXdf
-c3RhdGUtPmNydGNfeDsKPiA+PiAtCXBsYW5lX3N0YXRlLT5jcnRjX3kgPSBuZXdfc3RhdGUtPmNy
-dGNfeTsKPiA+PiAtCXBsYW5lX3N0YXRlLT5jcnRjX2ggPSBuZXdfc3RhdGUtPmNydGNfaDsKPiA+
-PiAtCXBsYW5lX3N0YXRlLT5jcnRjX3cgPSBuZXdfc3RhdGUtPmNydGNfdzsKPiA+PiAtCXBsYW5l
-X3N0YXRlLT5zcmNfeCA9IG5ld19zdGF0ZS0+c3JjX3g7Cj4gPj4gLQlwbGFuZV9zdGF0ZS0+c3Jj
-X3kgPSBuZXdfc3RhdGUtPnNyY195Owo+ID4+IC0JcGxhbmVfc3RhdGUtPnNyY19oID0gbmV3X3N0
-YXRlLT5zcmNfaDsKPiA+PiAtCXBsYW5lX3N0YXRlLT5zcmNfdyA9IG5ld19zdGF0ZS0+c3JjX3c7
-Cj4gPj4gLQo+ID4+IC0JaWYgKHBsYW5lX3N0YXRlLT5mYiAhPSBuZXdfc3RhdGUtPmZiKQo+ID4+
-IC0JCWRybV9hdG9taWNfc2V0X2ZiX2Zvcl9wbGFuZShwbGFuZV9zdGF0ZSwgbmV3X3N0YXRlLT5m
-Yik7Cj4gPj4gLQo+ID4+IC0Jc3dhcChwbGFuZV9zdGF0ZSwgcGxhbmUtPnN0YXRlKTsKPiA+PiAt
-Cj4gPj4gLQlpZiAocGxhbmUtPnN0YXRlLT5mYiAmJiBwbGFuZS0+c3RhdGUtPmZiICE9IG5ld19z
-dGF0ZS0+ZmIpIHsKPiA+PiArCS8qCj4gPj4gKwkgKiBBIHNjYW5vdXQgY2FuIHN0aWxsIGJlIG9j
-Y3VycmluZywgc28gd2UgY2FuJ3QgZHJvcCB0aGUgcmVmZXJlbmNlIHRvCj4gPj4gKwkgKiB0aGUg
-b2xkIGZyYW1lYnVmZmVyLiBUbyBzb2x2ZSB0aGlzIHdlIGdldCBhIHJlZmVyZW5jZSB0byBvbGRf
-ZmIgYW5kCj4gPj4gKwkgKiBzZXQgYSB3b3JrZXIgdG8gcmVsZWFzZSBpdCBsYXRlci4gIAo+ID4g
-Cj4gPiBIbSwgZG9lc24ndCBsb29rIGxpa2UgYW4gYXN5bmMgdXBkYXRlIHRvIG1lIGlmIHdlIGhh
-dmUgdG8gd2FpdCBmb3IgdGhlCj4gPiBuZXh0IFZCTEFOSyB0byBoYXBwZW4gdG8gZ2V0IHRoZSBu
-ZXcgY29udGVudCBvbiB0aGUgc2NyZWVuLiBNYXliZSB3ZQo+ID4gc2hvdWxkIHJlamVjdCBhc3lu
-YyB1cGRhdGVzIHdoZW4gb2xkX2ZiICE9IG5ld19mYiBpbiB0aGUgcmsgIAo+ID4gLT5hc3luY19j
-aGVjaygpIGhvb2suICAKPiAKPiBVbmxlc3MgSSBhbSBtaXN1bmRlcnN0YW5kaW5nIHRoaXMsIHdl
-IGRvbid0IHdhaXQgaGVyZSwgd2UganVzdCBncmFiIGEKPiByZWZlcmVuY2UgdG8gdGhlIGZiIGlu
-IGNhc2UgaXQgaXMgYmVpbmcgc3RpbGwgdXNlZCBieSB0aGUgaHcsIHNvIGl0Cj4gZG9lc24ndCBn
-ZXQgcmVsZWFzZWQgcHJlbWF0dXJlbHkuCgpJIHdhcyBqdXN0IHJlYWN0aW5nIHRvIHRoZSBjb21t
-ZW50IHRoYXQgc2F5cyB0aGUgbmV3IEZCIHNob3VsZCBzdGF5CmFyb3VuZCB1bnRpbCB0aGUgbmV4
-dCBWQkxBTksgZXZlbnQgaGFwcGVucy4gSWYgdGhlIEZCIG11c3Qgc3RheSBhcm91bmQKdGhhdCBw
-cm9iYWJseSBtZWFucyB0aGUgSFcgaXMgc3RpbGwgdXNpbmcsIHdoaWNoIG1hZGUgbWUgd29uZGVy
-IGlmIHRoaXMKSFcgYWN0dWFsbHkgc3VwcG9ydHMgYXN5bmMgdXBkYXRlICh3aGVyZSBhc3luYyBt
-ZWFucyAidXBkYXRlIG5vdyBhbmQKZG9uJ3QgY2FyZSBhYm91dCBhYm91dCB0ZWFyaW5nIikuIE9y
-IG1heWJlIGl0IHRha2VzIHNvbWUgdGltZSB0byBzd2l0Y2gKdG8gdGhlIG5ldyBGQiBhbmQgd2Fp
-dGluZyBmb3IgdGhlIG5leHQgVkJMQU5LIHRvIHJlbGVhc2UgdGhlIG9sZCBGQiB3YXMKYW4gZWFz
-eSBzb2x1dGlvbiB0byBub3Qgd2FpdCBmb3IgdGhlIGZsaXAgdG8gYWN0dWFsbHkgaGFwcGVuIGlu
-Ci0+YXN5bmNfdXBkYXRlKCkgKHdoaWNoIGlzIGtpbmQgb2YgYSBjb21iaW5hdGlvbiBvZiBhc3lu
-Yytub24tYmxvY2tpbmcpLgoKQW55d2F5LCBsZXQncyBrZWVwIGl0IGxpa2UgdGhhdC4KX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
-bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Hi Christoph,
+
+Am Dienstag, 12. M=E4rz 2019, 15:46:44 CET schrieb Christoph M=FCllner:
+> > On 12.03.2019, at 14:17, Heiko Stuebner <heiko@sntech.de> wrote:
+> > =
+
+> > Am Freitag, 8. M=E4rz 2019, 14:10:45 CET schrieb Christoph M=FCllner:
+> >>> On 08.03.2019, at 13:46, Adrian Hunter <adrian.hunter@intel.com> wrot=
+e:
+> >>> =
+
+> >>> On 7/03/19 10:43 AM, Christoph Muellner wrote:
+> >>>> This patch documents the new property disable-cqe-dcmd
+> >>>> for the Arasan eMMC 5.1 driver.
+> >>>> =
+
+> >>>> Signed-off-by: Christoph Muellner
+> >>>> <christoph.muellner@theobroma-systems.com> Signed-off-by: Philipp
+> >>>> Tomsich <philipp.tomsich@theobroma-systems.com> ---
+> >>>> Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 4 ++++
+> >>>> 1 file changed, 4 insertions(+)
+> >>>> =
+
+> >>>> diff --git a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+> >>>> b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt index
+> >>>> 1edbb049cccb..ec699bf98b7c 100644
+> >>>> --- a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+> >>>> +++ b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+> >>>> =
+
+> >>>> @@ -44,6 +44,10 @@ Optional Properties:
+> >>>>    properly. Test mode can be used to force the controller to functi=
+on.
+> >>>>  =
+
+> >>>>  - xlnx,int-clock-stable-broken: when present, the controller always
+> >>>>  reports
+> >>>>  =
+
+> >>>>    that the internal clock is stable even when it is not.
+> >>>> =
+
+> >>>> +  - disable-cqe-dcmd: The eMMC 5.1 standard specifies direct comman=
+ds
+> >>>> (DCMDs) +    as part of the command queue engine (CQE). On controlle=
+rs
+> >>>> with a CQHCI, +    such as the Arasan eMMC 5.1 host controller, the
+> >>>> driver has to enable DCMDs. +    This is done unless disable-cqe-dcmd
+> >>>> is specified.
+> > =
+
+> > This needs a rewording please. See below for hw-description vs. driver,=
+ so
+> > the description should be centered around why this is a property of the=
+ hw
+> > [like faulty controller implementation or whatever]
+> =
+
+> I understand, that you prefer a HW-specific name for a property
+> over one, that explains the actual effect.
+
+Actually I think the property-name is just fine :-) .
+
+The description might profit from a rewording though. Aka not driver-
+centric but hw-centric, describing why some controllers may need the
+option to disable these dcmds (controller bugs or whatever).
+
+
+Heiko
+
+
+
+> However, using disable-<feature> (which is always a directive for the dri=
+ver
+> and not a HW description) is not uncommon:
+> =
+
+> * disable-wp should be "no-wp-line-connection"
+> * disable-over-current -> "no-over-current-line-connection"
+> * srp-disable -> "not-existing-srp-implementation"
+> * ...
+> =
+
+> But I don't mind using something else.
+> Would "broken-cqe-dcmd" (like broken-cd or broken-flash-reset) be ok?
+> Or other suggestions?
+> =
+
+> Also I'd like to mention, that my first implementation was
+> "supports-cqe-dcmd". I guess that would be a good choice, if it would have
+> been there
+> from the beginning. Introducing it now, would silently disable DCMD
+> for existing DTBs. Therefore I went on to "disable-cqe-dcmd".
+> =
+
+> >>> If "supports-cqe" is in mmc.txt, should "disable-cqe-dcmd" be there
+> >>> also?
+> >> =
+
+> >> The file mmc.txt says on top:
+> >> "These properties are common to multiple MMC host controllers".
+> >> As my patchset introduces "disable-cqe-dcmd" just for sdhci-of-arasan,
+> >> I would say it should not go into that file.
+> >> =
+
+> >> Also I wonder why "supports-cqe" is in mmc.txt, because
+> >> only sdhci-tegra.c is evaluating that property.
+> >> So I would expect it to be documented in
+> >> Documentation/devicetree/bindings/mmc/nvidia,tegra20-sdhci.txt
+> >> =
+
+> >> However, I see that "disable-cqe-dcmd" could go into other drivers as
+> >> well.
+> >> But is this enough to document it in mmc.txt?
+> > =
+
+> > Devicetree is always about describing the hardware capabilites and never
+> > about the actual nitty-gritty of driver implementation, aka it is not
+> > meant
+> > as a space for hardware-independent config-settings or such.
+> > =
+
+> > As for only tegra evaluating this, is probably because it is still so n=
+ew,
+> > like january 2019 and Rob explicitly suggested it becoming common [0],
+> > which suggests that the disable-cqe-dcmds should probably also be commo=
+n.
+> So mmc.txt lists "standardised" names for properties to reduce the risk
+> of having similar, but distinct names for different MMC drivers.
+> So whenever you want to introduce a new property for a driver,
+> check if there isn't already something defined in mmc.txt.
+> =
+
+> When seeing it this way, it clearly makes sense to have the property ther=
+e.
+> =
+
+> Thanks,
+> Christoph
