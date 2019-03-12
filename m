@@ -1,14 +1,14 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 1/3] arm: dts: rk3288-tinker.dtsi: Fix SD card detection
-Date: Tue, 12 Mar 2019 15:22:46 +0100
-Message-ID: <50094675.5IylMcgSg6@phil>
-References: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
- <20190309153923.22806-1-beagleboard@davidjohnsummers.uk>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: add more cpu operating points
+ for RK3328
+Date: Tue, 12 Mar 2019 15:28:12 +0100
+Message-ID: <3244682.NxM2pYm5n6@phil>
+References: <20190301195552.12562-1-papadakospan@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190309153923.22806-1-beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
+In-Reply-To: <20190301195552.12562-1-papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,74 +18,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jonas,
-
-Am Samstag, 9. M=E4rz 2019, 16:39:21 CET schrieb David Summers:
-> The Problem:
+Am Freitag, 1. M=E4rz 2019, 20:55:53 CET schrieb Leonidas P. Papadakos:
+> This allows for greater max frequency on rk3328 boards,
+> increasing performance.
 > =
 
-> On ASUS Tinker Board S, when booting from the eMMC, and there is card
-> in the sd slot, there are constant errors.
+> It has been included in Armbian (a linux distibution for ARM boards)
+> for a while now without any reported issues
 > =
 
-> Also when warm reboot, uboot can not access the sd slot
+> https://github.com/armbian/build/blob/master/patch/kernel/rockchip64-defa=
+ult/enable-1392mhz-opp.patch
+> https://github.com/armbian/build/blob/master/patch/kernel/rockchip64-defa=
+ult/enable-1512mhz-opp.patch
 > =
 
-> Cause:
-> =
+> Signed-off-by: Leonidas P. Papadakos <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-> Identified by Robin Murphy @ ARM. The Card Detect on rk3288
-> devices is pulled up by vccio-sd; so when the regulator powers this
-> off, card detect gives spurious errors. A second problem, is during
-> power down, vccio-sd apprears to be powered down. This causes a
-> problem when warm rebooting from the sd card. This was identified by
-> Jonas Karlman.
-> =
+as per the response from Rockchip regarding the maximum specification,
+we'll stay within the save area of frequencies - so not adding these
+higher ones.
 
-> History:
-> =
+Overclocking a chip is a personal prerogative but should not be part
+of the general mainline devicetree.
 
-> A common fault on these rk3288 board, which impliment the reference
-> design.
-> =
 
-> When this arose before:
-> =
-
-> http://lists.infradead.org/pipermail/linux-arm-kernel/2014-August/281153.=
-html
-> =
-
-> And Ulf and Jaehoon clearly said this was a broken card detect design,
-> which should be solved via polling
-> =
-
-> Solution:
-> =
-
-> Hence broken-cd is set as a property. This cures the errors. The
-> powering down of vccio-sd during reboot is cured by adding
-> regulator-boot-on.
-> =
-
-> This solutions has been fairly widely reviewed and tested.
-> =
-
-> Signed-off-by: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
-> Reviewed by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-> Reviewed by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
-
-in v2, you gave a
-Tested-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
-it seems, which somehow transformed into a reviewed-by in v3.
-
-V3 did change a bit in its approach - for the better, but do you approve
-of adding that Reviewed-by above (and maybe also providing a Tested-by
-for the new approach)?
-
-Thanks
 Heiko
