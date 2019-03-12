@@ -1,171 +1,94 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v2 1/5] drm/rockchip: fix fb references in async update
-Date: Tue, 12 Mar 2019 12:04:53 +0100
-Message-ID: <20190312110453.GB2665@phenom.ffwll.local>
-References: <20190312022204.2775-1-helen.koike@collabora.com>
- <20190312022204.2775-2-helen.koike@collabora.com>
- <20190312073438.05ad8173@collabora.com>
+From: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/2] pwm: ensure pwm_apply_state() doesn't modify the
+ state argument
+Date: Tue, 12 Mar 2019 12:42:47 +0100
+Message-ID: <20190312114247.GJ31026@ulmo>
+References: <20190312083537.23748-1-u.kleine-koenig@pengutronix.de>
+ <20190312083537.23748-3-u.kleine-koenig@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190312073438.05ad8173@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Boris Brezillon <boris.brezillon@collabora.com>
-Cc: Helen Koike <helen.koike@collabora.com>, dri-devel@lists.freedesktop.org, nicholas.kazlauskas@amd.com, andrey.grodzovsky@amd.com, daniel.vetter@ffwll.ch, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, David Airlie <airlied@linux.ie>, Sean Paul <seanpaul@google.com>, kernel@collabora.com, harry.wentland@amd.com, =?iso-8859-1?Q?St=E9phane?= Marchesin <marcheu@google.com>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
+Content-Type: multipart/mixed; boundary="===============2295942472798456377=="
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190312083537.23748-3-u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Mar 12, 2019 at 07:34:38AM +0100, Boris Brezillon wrote:
-> On Mon, 11 Mar 2019 23:21:59 -0300
-> Helen Koike <helen.koike@collabora.com> wrote:
-> 
-> > In the case of async update, modifications are done in place, i.e. in the
-> > current plane state, so the new_state is prepared and the new_state is
-> > cleanup up (instead of the old_state, diferrently on what happen in a
-> 
->   ^ cleaned up				^ differently (but maybe
-> "unlike what happens" is more appropriate here).
-> 
-> > normal sync update).
-> > To cleanup the old_fb properly, it needs to be placed in the new_state
-> > in the end of async_update, so cleanup call will unreference the old_fb
-> > correctly.
-> > 
-> > Also, the previous code had a:
-> > 
-> > 	plane_state = plane->funcs->atomic_duplicate_state(plane);
-> > 	...
-> > 	swap(plane_state, plane->state);
-> > 
-> > 	if (plane->state->fb && plane->state->fb != new_state->fb) {
-> > 	...
-> > 	}
-> > 
-> > Which was wrong, as the fb were just assigned to be equal, so this if
-> > statement nevers evaluates to true.
-> > 
-> > Another details is that the function drm_crtc_vblank_get() can only be
-> > called when vop->is_enabled is true, otherwise it has no effect and
-> > trows a WARN_ON().
-> > 
-> > Calling drm_atomic_set_fb_for_plane() (which get a referent of the new
-> > fb and pus the old fb) is not required, as it is taken care by
-> > drm_mode_cursor_universal() when calling
-> > drm_atomic_helper_update_plane().
-> > 
-> > Signed-off-by: Helen Koike <helen.koike@collabora.com>
-> > 
-> > ---
-> > Hello,
-> > 
-> > I tested on the rockchip ficus v1.1 using igt plane_cursor_legacy and
-> > kms_cursor_legacy and I didn't see any regressions.
-> > 
-> > Changes in v2: None
-> > 
-> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 42 ++++++++++++---------
-> >  1 file changed, 24 insertions(+), 18 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > index c7d4c6073ea5..a1ee8c156a7b 100644
-> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > @@ -912,30 +912,31 @@ static void vop_plane_atomic_async_update(struct drm_plane *plane,
-> >  					  struct drm_plane_state *new_state)
-> >  {
-> >  	struct vop *vop = to_vop(plane->state->crtc);
-> > -	struct drm_plane_state *plane_state;
-> > +	struct drm_framebuffer *old_fb = plane->state->fb;
-> >  
-> > -	plane_state = plane->funcs->atomic_duplicate_state(plane);
-> > -	plane_state->crtc_x = new_state->crtc_x;
-> > -	plane_state->crtc_y = new_state->crtc_y;
-> > -	plane_state->crtc_h = new_state->crtc_h;
-> > -	plane_state->crtc_w = new_state->crtc_w;
-> > -	plane_state->src_x = new_state->src_x;
-> > -	plane_state->src_y = new_state->src_y;
-> > -	plane_state->src_h = new_state->src_h;
-> > -	plane_state->src_w = new_state->src_w;
-> > -
-> > -	if (plane_state->fb != new_state->fb)
-> > -		drm_atomic_set_fb_for_plane(plane_state, new_state->fb);
-> > -
-> > -	swap(plane_state, plane->state);
-> > -
-> > -	if (plane->state->fb && plane->state->fb != new_state->fb) {
-> > +	/*
-> > +	 * A scanout can still be occurring, so we can't drop the reference to
-> > +	 * the old framebuffer. To solve this we get a reference to old_fb and
-> > +	 * set a worker to release it later.
-> 
-> Hm, doesn't look like an async update to me if we have to wait for the
-> next VBLANK to happen to get the new content on the screen. Maybe we
-> should reject async updates when old_fb != new_fb in the rk
-> ->async_check() hook. 
 
-Scanning out garbage because the old buffer is unpinned too quickly is one
-of the long-term "features" of async updates. At least for features.
+--===============2295942472798456377==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="k1BdFSKqAqVdu8k/"
+Content-Disposition: inline
 
-It's another one of these things we need to fix. Which might become easier
-if we switch to usual state switching, since then we can punt the
-cleanup_plane phase to a worker.
 
-Note that depending upon the gpu this might not just result in garbage but
-hangs, usually when there's an iommu and the chip dies if it accesses an
-unmapped page.
+--k1BdFSKqAqVdu8k/
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Probably something to fix later on in async framework.
--Daniel
-> 
-> > +	 */
-> > +	if (vop->is_enabled &&
-> > +	    plane->state->fb && plane->state->fb != new_state->fb) {
-> >  		drm_framebuffer_get(plane->state->fb);
-> >  		WARN_ON(drm_crtc_vblank_get(plane->state->crtc) != 0);
-> >  		drm_flip_work_queue(&vop->fb_unref_work, plane->state->fb);
-> >  		set_bit(VOP_PENDING_FB_UNREF, &vop->pending);
-> >  	}
-> 
-> In any case, I think this should be called after
-> vop_plane_atomic_update() to prevent the situation where the VBLANK
-> event happens between this point and the following
-> vop_plane_atomic_update() call.
-> 
-> >  
-> > +	plane->state->crtc_x = new_state->crtc_x;
-> > +	plane->state->crtc_y = new_state->crtc_y;
-> > +	plane->state->crtc_h = new_state->crtc_h;
-> > +	plane->state->crtc_w = new_state->crtc_w;
-> > +	plane->state->src_x = new_state->src_x;
-> > +	plane->state->src_y = new_state->src_y;
-> > +	plane->state->src_h = new_state->src_h;
-> > +	plane->state->src_w = new_state->src_w;
-> > +	plane->state->fb = new_state->fb;
-> 
-> Any reason not to use swap() here and reference plane->state->fb
-> instead of new_state->fb after this point?
-> 
-> > +
-> >  	if (vop->is_enabled) {
-> >  		rockchip_drm_psr_inhibit_get_state(new_state->state);
-> >  		vop_plane_atomic_update(plane, plane->state);
-> > @@ -945,7 +946,12 @@ static void vop_plane_atomic_async_update(struct drm_plane *plane,
-> >  		rockchip_drm_psr_inhibit_put_state(new_state->state);
-> >  	}
-> >  
-> > -	plane->funcs->atomic_destroy_state(plane, plane_state);
-> > +	/*
-> > +	 * In async update we perform inplace modifications and release the
-> > +	 * new_state. The following is required so we release the reference of
-> > +	 * the old framebuffer.
-> > +	 */
-> > +	new_state->fb = old_fb;
-> >  }
-> >  
-> >  static const struct drm_plane_helper_funcs plane_helper_funcs = {
-> 
+On Tue, Mar 12, 2019 at 09:35:37AM +0100, Uwe Kleine-K=C3=B6nig wrote:
+[...]
+> diff --git a/drivers/pwm/pwm-sun4i.c b/drivers/pwm/pwm-sun4i.c
+> index 470d4f71e7eb..52dace9f739e 100644
+> --- a/drivers/pwm/pwm-sun4i.c
+> +++ b/drivers/pwm/pwm-sun4i.c
+[...]
+> @@ -193,17 +193,11 @@ static int sun4i_pwm_calculate(struct sun4i_pwm_chi=
+p *sun4i_pwm,
+>  	*dty =3D div;
+>  	*prsclr =3D prescaler;
+> =20
+> -	div =3D (u64)pval * NSEC_PER_SEC * *prd;
+> -	state->period =3D DIV_ROUND_CLOSEST_ULL(div, clk_rate);
+> -
+> -	div =3D (u64)pval * NSEC_PER_SEC * *dty;
+> -	state->duty_cycle =3D DIV_ROUND_CLOSEST_ULL(div, clk_rate);
+> -
 
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+Perhaps split this out into a separate patch like you did for Rockchip?
+
+Thierry
+
+--k1BdFSKqAqVdu8k/
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAlyHmzcACgkQ3SOs138+
+s6En1w/+OtBNSufaD4xXqdVJo7Hc7Qlaf7/f3MI0GNRskdXvbElkwZjfN25P/lv2
+YCXpoKihJbbJWb6fX9P9sfXeuCnat51T0u8XgS9+NddAdm053hBIa+9HIgwhbhJU
+XYTzj4U6nj1T8zHRGpjv82DWJGI6MaTIx/F9nC05V/564YUFCAOlPRwNBFfWCyKt
+aLI7H2UdCWHSg4cmm9j9+6A357832tweijEAXPpNK0j6osb+Crjmz0D9bythr/qg
+UuaA6WwPYo2b4GIie32H0QTFiGEwzO6on8zijIEqQk9wkWF9wnH4PdMUCM0QHnmy
+tNRBsxtUt6WRhxHQq6/JtBImqb0vTI6p3FiyEgi3+nG0HkRpHkiTPAQo/2FjeF0n
+PRncC3gtUlpj5CfkzKBvFMoDGs73CAwwFeWrBv23Zw7lHavZuTwBHfBchKf70wT8
+r9Lk2NBQPfTSkN+2+PyTI6EsO4/kt5euui+rx4nJOofMMRH1Y5rAXie4YO8/bHAO
+4smRwdOctgEYt0+5AZLE9B2AYlHO3qo4jcuwjk1Kp9czlKnOfdAXuc4Qkv9ztMDO
+lXUoU7nvZlfAh+iLeOQDjZXTkU5+/d8mpRLdSoreW/53Ii3apVKlpw9arAE5Tm31
+RKrnq2Ar3RLMiy+u6MNIegx8ZtdqXbfMnr9EIwiR92zzGj0g/8E=
+=/tir
+-----END PGP SIGNATURE-----
+
+--k1BdFSKqAqVdu8k/--
+
+
+--===============2295942472798456377==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2295942472798456377==--
