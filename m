@@ -1,43 +1,30 @@
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: Re: [PATCH v3 1/4] drm: rockchip: introduce rk3066 hdmi
-Date: Tue, 12 Mar 2019 19:10:33 +0100
-Message-ID: <d53892e0-17f9-1c7f-b7d3-2794fad09207@gmail.com>
-References: <20190302104116.1535-1-jbx6244@gmail.com>
- <20190302104116.1535-2-jbx6244@gmail.com>
- <20190303202308.GD13157@ravnborg.org>
- <b6b818d5-8c24-e01a-572e-97c1754c80e8@gmail.com>
+Subject: Re: [PATCH v4 1/4] drm: rockchip: introduce rk3066 hdmi
+Date: Tue, 12 Mar 2019 19:49:08 +0100
+Message-ID: <CA+z=w3XtC-_rJsE5oYKzQdiXteHyCYM2ya1Q+unRO2UBDz9BHw@mail.gmail.com>
+References: <20190306224113.24853-1-jbx6244@gmail.com> <20190306224113.24853-2-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <b6b818d5-8c24-e01a-572e-97c1754c80e8@gmail.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Sam Ravnborg <sam@ravnborg.org>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, heiko@sntech.de, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190306224113.24853-2-jbx6244@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com, airlied@linux.ie, daniel@ffwll.ch, robh+dt@kernel.org, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 3/4/19 11:48 PM, Johan Jonker wrote:
->
-> With regard to the bugs something between rc1 and rc8 results
-> in a freeze on poweroff. Power domain doesn't seem to turn off
-> the vop and hdmi in rc8.
+Hi,
 
+Would like to add some "Tested-by:" tags.
+Is Rockchip or someone with RK3066 hardware able to test this patch
+with a HDMI TV or DVI monitor and give a report?
+
+Power domain doesn't seem to turn off the vop and hdmi in v5.0-rc8.
 The bug is due to a patch revert earlier this year.
-To shutdown MK808 one can continue to use the patch at the link below
-until this issue is fix by them.
+To shutdown MK808 one can continue to use the patch at the link below until this
+issue is fixed by them.
 
 drm/rockchip: shutdown drm subsystem on shutdown
 https://patchwork.kernel.org/patch/10556151/
 
-[for-4.20] Revert "drm/rockchip: Allow driver to be shutdown on
-reboot/kexec"
+[for-4.20] Revert "drm/rockchip: Allow driver to be shutdown on reboot/kexec"
 https://patchwork.kernel.org/patch/10714725/
