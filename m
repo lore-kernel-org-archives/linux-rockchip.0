@@ -1,134 +1,79 @@
-From: Peter Geis <pgwipeout@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: fix rk3328 rgmii high tx error rate
-Date: Wed, 13 Mar 2019 18:45:36 +0000
-Message-ID: <20190313184535.15759-1-pgwipeout@gmail.com>
+From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH] arm64: dts: rockchip: fix rk3328 sdmmc0 write errors
+Date: Wed, 13 Mar 2019 19:02:30 +0000
+Message-ID: <20190313190229.16962-1-pgwipeout@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Peter Geis <pgwipeout@gmail.com>, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org, "Leonidas P . Papadakos" <papadakospan@gmail.com>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "Leonidas P . Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Resubmitting, after further research, review, comments, and suggestions.
+Various rk3328 based boards experience occasional sdmmc0 write errors.
+This is due to the rk3328.dtsi tx drive levels being set to 4ma, vs
+8ma per the rk3328 datasheet default settings.
 
-Several rk3328 based boards experience high rgmii tx error rates.
-This is due to several pins in the rk3328.dtsi rgmii pinmux that are
-missing a defined pull strength setting.
-This causes the pinmux driver to default to 2ma (bit mask 00).
+Fix this by setting the tx signal pins to 8ma.
+Inspiration from tonymac32's patch,
+https://github.com/ayufan-rock64/linux-kernel/commit/dc1212b347e0da17c5460bcc0a56b07d02bac3f8
 
-These pins are only defined in the rk3328.dtsi, and are not listed in
-the rk3328 specification.
-The TRM only lists them as "Reserved"
-(RK3328 TRM V1.1, 3.3.3 Detail Register Description, GRF_GPIO0B_IOMUX,
-GRF_GPIO0C_IOMUX, GRF_GPIO0D_IOMUX).
-However, removal of these pins from the rgmii pinmux definition causes
-the interface to fail to transmit.
-
-Also, the rgmii tx and rx pins defined in the dtsi are not consistent
-with the rk3328 specification, with tx pins currently set to 12ma and
-rx pins set to 2ma.
-
-Fix this by setting tx pins to 8ma and the rx pins to 4ma, consistent
-with the specification.
-Defining the drive strength for the undefined pins eliminated the high
-tx packet error rate observed under heavy data transfers.
-Aligning the drive strength to the TRM values eliminated the occasional
-packet retry errors under iperf3 testing.
-This allows much higher data rates with no recorded tx errors.
+Fixes issues on the rk3328-roc-cc and the rk3328-rock64 (as per the
+above commit message).
 
 Tested on the rk3328-roc-cc board.
 
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+Signed-off-by: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 44 ++++++++++++------------
- 1 file changed, 22 insertions(+), 22 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 84f14b132e8f..c55a3f1a87ff 100644
+index c55a3f1a87ff..dabef1a21649 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -1642,50 +1642,50 @@
- 			rgmiim1_pins: rgmiim1-pins {
- 				rockchip,pins =
- 					/* mac_txclk */
--					<1 RK_PB4 2 &pcfg_pull_none_12ma>,
-+					<1 RK_PB4 2 &pcfg_pull_none_8ma>,
- 					/* mac_rxclk */
--					<1 RK_PB5 2 &pcfg_pull_none_2ma>,
-+					<1 RK_PB5 2 &pcfg_pull_none_4ma>,
- 					/* mac_mdio */
--					<1 RK_PC3 2 &pcfg_pull_none_2ma>,
-+					<1 RK_PC3 2 &pcfg_pull_none_4ma>,
- 					/* mac_txen */
--					<1 RK_PD1 2 &pcfg_pull_none_12ma>,
-+					<1 RK_PD1 2 &pcfg_pull_none_8ma>,
- 					/* mac_clk */
--					<1 RK_PC5 2 &pcfg_pull_none_2ma>,
-+					<1 RK_PC5 2 &pcfg_pull_none_4ma>,
- 					/* mac_rxdv */
--					<1 RK_PC6 2 &pcfg_pull_none_2ma>,
-+					<1 RK_PC6 2 &pcfg_pull_none_4ma>,
- 					/* mac_mdc */
--					<1 RK_PC7 2 &pcfg_pull_none_2ma>,
-+					<1 RK_PC7 2 &pcfg_pull_none_4ma>,
- 					/* mac_rxd1 */
--					<1 RK_PB2 2 &pcfg_pull_none_2ma>,
-+					<1 RK_PB2 2 &pcfg_pull_none_4ma>,
- 					/* mac_rxd0 */
--					<1 RK_PB3 2 &pcfg_pull_none_2ma>,
-+					<1 RK_PB3 2 &pcfg_pull_none_4ma>,
- 					/* mac_txd1 */
--					<1 RK_PB0 2 &pcfg_pull_none_12ma>,
-+					<1 RK_PB0 2 &pcfg_pull_none_8ma>,
- 					/* mac_txd0 */
--					<1 RK_PB1 2 &pcfg_pull_none_12ma>,
-+					<1 RK_PB1 2 &pcfg_pull_none_8ma>,
- 					/* mac_rxd3 */
--					<1 RK_PB6 2 &pcfg_pull_none_2ma>,
-+					<1 RK_PB6 2 &pcfg_pull_none_4ma>,
- 					/* mac_rxd2 */
--					<1 RK_PB7 2 &pcfg_pull_none_2ma>,
-+					<1 RK_PB7 2 &pcfg_pull_none_4ma>,
- 					/* mac_txd3 */
--					<1 RK_PC0 2 &pcfg_pull_none_12ma>,
-+					<1 RK_PC0 2 &pcfg_pull_none_8ma>,
- 					/* mac_txd2 */
--					<1 RK_PC1 2 &pcfg_pull_none_12ma>,
-+					<1 RK_PC1 2 &pcfg_pull_none_8ma>,
+@@ -1445,11 +1445,11 @@
  
- 					/* mac_txclk */
--					<0 RK_PB0 1 &pcfg_pull_none>,
-+					<0 RK_PB0 1 &pcfg_pull_none_8ma>,
- 					/* mac_txen */
--					<0 RK_PB4 1 &pcfg_pull_none>,
-+					<0 RK_PB4 1 &pcfg_pull_none_8ma>,
- 					/* mac_clk */
--					<0 RK_PD0 1 &pcfg_pull_none>,
-+					<0 RK_PD0 1 &pcfg_pull_none_4ma>,
- 					/* mac_txd1 */
--					<0 RK_PC0 1 &pcfg_pull_none>,
-+					<0 RK_PC0 1 &pcfg_pull_none_8ma>,
- 					/* mac_txd0 */
--					<0 RK_PC1 1 &pcfg_pull_none>,
-+					<0 RK_PC1 1 &pcfg_pull_none_8ma>,
- 					/* mac_txd3 */
--					<0 RK_PC7 1 &pcfg_pull_none>,
-+					<0 RK_PC7 1 &pcfg_pull_none_8ma>,
- 					/* mac_txd2 */
--					<0 RK_PC6 1 &pcfg_pull_none>;
-+					<0 RK_PC6 1 &pcfg_pull_none_8ma>;
+ 		sdmmc0 {
+ 			sdmmc0_clk: sdmmc0-clk {
+-				rockchip,pins = <1 RK_PA6 1 &pcfg_pull_none_4ma>;
++				rockchip,pins = <1 RK_PA6 1 &pcfg_pull_none_8ma>;
  			};
  
- 			rmiim1_pins: rmiim1-pins {
+ 			sdmmc0_cmd: sdmmc0-cmd {
+-				rockchip,pins = <1 RK_PA4 1 &pcfg_pull_up_4ma>;
++				rockchip,pins = <1 RK_PA4 1 &pcfg_pull_up_8ma>;
+ 			};
+ 
+ 			sdmmc0_dectn: sdmmc0-dectn {
+@@ -1461,14 +1461,14 @@
+ 			};
+ 
+ 			sdmmc0_bus1: sdmmc0-bus1 {
+-				rockchip,pins = <1 RK_PA0 1 &pcfg_pull_up_4ma>;
++				rockchip,pins = <1 RK_PA0 1 &pcfg_pull_up_8ma>;
+ 			};
+ 
+ 			sdmmc0_bus4: sdmmc0-bus4 {
+-				rockchip,pins = <1 RK_PA0 1 &pcfg_pull_up_4ma>,
+-						<1 RK_PA1 1 &pcfg_pull_up_4ma>,
+-						<1 RK_PA2 1 &pcfg_pull_up_4ma>,
+-						<1 RK_PA3 1 &pcfg_pull_up_4ma>;
++				rockchip,pins = <1 RK_PA0 1 &pcfg_pull_up_8ma>,
++						<1 RK_PA1 1 &pcfg_pull_up_8ma>,
++						<1 RK_PA2 1 &pcfg_pull_up_8ma>,
++						<1 RK_PA3 1 &pcfg_pull_up_8ma>;
+ 			};
+ 
+ 			sdmmc0_gpio: sdmmc0-gpio {
 -- 
 2.20.1
