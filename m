@@ -1,167 +1,134 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v2 1/5] drm/rockchip: fix fb references in async update
-Date: Wed, 13 Mar 2019 15:08:02 -0300
-Message-ID: <ed44e1f4-07da-b1cb-b5cb-d34d29758502@collabora.com>
-References: <20190312022204.2775-1-helen.koike@collabora.com>
- <20190312022204.2775-2-helen.koike@collabora.com>
- <20190312073438.05ad8173@collabora.com>
- <f888a2d0-c6b1-8995-7254-ba2923dd22f9@collabora.com>
- <20190312165243.5b771e4a@collabora.com>
- <CAAFQd5CCEDaxLbw0E9NJJ-tEcHd8-Lidvcvt8qfPAnKu7uuj8w@mail.gmail.com>
- <05750143-708b-b84e-af67-82ec6815bd89@daenzer.net>
+From: Peter Geis <pgwipeout@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: fix rk3328 rgmii high tx error rate
+Date: Wed, 13 Mar 2019 18:45:36 +0000
+Message-ID: <20190313184535.15759-1-pgwipeout@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <05750143-708b-b84e-af67-82ec6815bd89@daenzer.net>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Michel_D=c3=a4nzer?= <michel@daenzer.net>, Tomasz Figa <tfiga@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>
-Cc: =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@google.com>, Sean Paul <seanpaul@google.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, kernel@collabora.com, nicholas.kazlauskas@amd.com, "list@263.net:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>, Joerg Roedel <joro@8bytes.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, Peter Geis <pgwipeout@gmail.com>, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org, "Leonidas P . Papadakos" <papadakospan@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+Resubmitting, after further research, review, comments, and suggestions.
 
+Several rk3328 based boards experience high rgmii tx error rates.
+This is due to several pins in the rk3328.dtsi rgmii pinmux that are
+missing a defined pull strength setting.
+This causes the pinmux driver to default to 2ma (bit mask 00).
 
-On 3/13/19 6:58 AM, Michel Dänzer wrote:
-> On 2019-03-13 4:42 a.m., Tomasz Figa wrote:
->> On Wed, Mar 13, 2019 at 12:52 AM Boris Brezillon
->> <boris.brezillon@collabora.com> wrote:
->>>
->>> On Tue, 12 Mar 2019 12:34:45 -0300
->>> Helen Koike <helen.koike@collabora.com> wrote:
->>>
->>>> On 3/12/19 3:34 AM, Boris Brezillon wrote:
->>>>> On Mon, 11 Mar 2019 23:21:59 -0300
->>>>> Helen Koike <helen.koike@collabora.com> wrote:
->>>>>
->>>>>> In the case of async update, modifications are done in place, i.e. in the
->>>>>> current plane state, so the new_state is prepared and the new_state is
->>>>>> cleanup up (instead of the old_state, diferrently on what happen in a
->>>>>
->>>>>   ^ cleaned up                              ^ differently (but maybe
->>>>> "unlike what happens" is more appropriate here).
->>>>>
->>>>>> normal sync update).
->>>>>> To cleanup the old_fb properly, it needs to be placed in the new_state
->>>>>> in the end of async_update, so cleanup call will unreference the old_fb
->>>>>> correctly.
->>>>>>
->>>>>> Also, the previous code had a:
->>>>>>
->>>>>>    plane_state = plane->funcs->atomic_duplicate_state(plane);
->>>>>>    ...
->>>>>>    swap(plane_state, plane->state);
->>>>>>
->>>>>>    if (plane->state->fb && plane->state->fb != new_state->fb) {
->>>>>>    ...
->>>>>>    }
->>>>>>
->>>>>> Which was wrong, as the fb were just assigned to be equal, so this if
->>>>>> statement nevers evaluates to true.
->>>>>>
->>>>>> Another details is that the function drm_crtc_vblank_get() can only be
->>>>>> called when vop->is_enabled is true, otherwise it has no effect and
->>>>>> trows a WARN_ON().
->>>>>>
->>>>>> Calling drm_atomic_set_fb_for_plane() (which get a referent of the new
->>>>>> fb and pus the old fb) is not required, as it is taken care by
->>>>>> drm_mode_cursor_universal() when calling
->>>>>> drm_atomic_helper_update_plane().
->>>>>>
->>>>>> Signed-off-by: Helen Koike <helen.koike@collabora.com>
->>>>>>
->>>>>> ---
->>>>>> Hello,
->>>>>>
->>>>>> I tested on the rockchip ficus v1.1 using igt plane_cursor_legacy and
->>>>>> kms_cursor_legacy and I didn't see any regressions.
->>>>>>
->>>>>> Changes in v2: None
->>>>>>
->>>>>>  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 42 ++++++++++++---------
->>>>>>  1 file changed, 24 insertions(+), 18 deletions(-)
->>>>>>
->>>>>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
->>>>>> index c7d4c6073ea5..a1ee8c156a7b 100644
->>>>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
->>>>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
->>>>>> @@ -912,30 +912,31 @@ static void vop_plane_atomic_async_update(struct drm_plane *plane,
->>>>>>                                      struct drm_plane_state *new_state)
->>>>>>  {
->>>>>>    struct vop *vop = to_vop(plane->state->crtc);
->>>>>> -  struct drm_plane_state *plane_state;
->>>>>> +  struct drm_framebuffer *old_fb = plane->state->fb;
->>>>>>
->>>>>> -  plane_state = plane->funcs->atomic_duplicate_state(plane);
->>>>>> -  plane_state->crtc_x = new_state->crtc_x;
->>>>>> -  plane_state->crtc_y = new_state->crtc_y;
->>>>>> -  plane_state->crtc_h = new_state->crtc_h;
->>>>>> -  plane_state->crtc_w = new_state->crtc_w;
->>>>>> -  plane_state->src_x = new_state->src_x;
->>>>>> -  plane_state->src_y = new_state->src_y;
->>>>>> -  plane_state->src_h = new_state->src_h;
->>>>>> -  plane_state->src_w = new_state->src_w;
->>>>>> -
->>>>>> -  if (plane_state->fb != new_state->fb)
->>>>>> -          drm_atomic_set_fb_for_plane(plane_state, new_state->fb);
->>>>>> -
->>>>>> -  swap(plane_state, plane->state);
->>>>>> -
->>>>>> -  if (plane->state->fb && plane->state->fb != new_state->fb) {
->>>>>> +  /*
->>>>>> +   * A scanout can still be occurring, so we can't drop the reference to
->>>>>> +   * the old framebuffer. To solve this we get a reference to old_fb and
->>>>>> +   * set a worker to release it later.
->>>>>
->>>>> Hm, doesn't look like an async update to me if we have to wait for the
->>>>> next VBLANK to happen to get the new content on the screen. Maybe we
->>>>> should reject async updates when old_fb != new_fb in the rk
->>>>> ->async_check() hook.
->>>>
->>>> Unless I am misunderstanding this, we don't wait here, we just grab a
->>>> reference to the fb in case it is being still used by the hw, so it
->>>> doesn't get released prematurely.
->>>
->>> I was just reacting to the comment that says the new FB should stay
->>> around until the next VBLANK event happens. If the FB must stay around
->>> that probably means the HW is still using, which made me wonder if this
->>> HW actually supports async update (where async means "update now and
->>> don't care about about tearing"). Or maybe it takes some time to switch
->>> to the new FB and waiting for the next VBLANK to release the old FB was
->>> an easy solution to not wait for the flip to actually happen in
->>> ->async_update() (which is kind of a combination of async+non-blocking).
->>
->> The hardware switches framebuffers on vblank, so whatever framebuffer
->> is currently being scanned out from needs to stay there until the
->> hardware switches to the new one in shadow registers. If that doesn't
->> happen, you get IOMMU faults and the display controller stops working
->> since we don't have any fault handling currently, just printing a
->> message.
-> 
-> Sounds like your hardware doesn't actually support async flips. It's
-> probably better for the driver not to pretend otherwise.
-> 
-> 
+These pins are only defined in the rk3328.dtsi, and are not listed in
+the rk3328 specification.
+The TRM only lists them as "Reserved"
+(RK3328 TRM V1.1, 3.3.3 Detail Register Description, GRF_GPIO0B_IOMUX,
+GRF_GPIO0C_IOMUX, GRF_GPIO0D_IOMUX).
+However, removal of these pins from the rgmii pinmux definition causes
+the interface to fail to transmit.
 
-I think wee need to clarify the meaning of the async_update callback
-(and we should clarify it in the docs).
+Also, the rgmii tx and rx pins defined in the dtsi are not consistent
+with the rk3328 specification, with tx pins currently set to 12ma and
+rx pins set to 2ma.
 
-The way I understand what the async_update callback should do is: don't
-block (i.e. don't wait for the next vblank), and update the hw state at
-some point with the latest state from the last call to async_update.
+Fix this by setting tx pins to 8ma and the rx pins to 4ma, consistent
+with the specification.
+Defining the drive strength for the undefined pins eliminated the high
+tx packet error rate observed under heavy data transfers.
+Aligning the drive strength to the TRM values eliminated the occasional
+packet retry errors under iperf3 testing.
+This allows much higher data rates with no recorded tx errors.
 
-Which means that: any driver can implement the async_update callback,
-independently if it supports changing its state right away or not.
-If hw supports, async_update can change the hw state right away, if not,
-then changes will be applied in the next vblank (it can even amend the
-pending commit if there is one).
-With this, we can remove all the legacy cursor code to use the
-async_update callback, since async_update can be called 100 times before
-the next vblank, and the latest state will be set to the hw without
-waiting 100 vblanks.
+Tested on the rk3328-roc-cc board.
 
-Please, let me know if this is your understanding as well. If not, then
-we need to remodel things.
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 44 ++++++++++++------------
+ 1 file changed, 22 insertions(+), 22 deletions(-)
 
-Thanks,
-Helen
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 84f14b132e8f..c55a3f1a87ff 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -1642,50 +1642,50 @@
+ 			rgmiim1_pins: rgmiim1-pins {
+ 				rockchip,pins =
+ 					/* mac_txclk */
+-					<1 RK_PB4 2 &pcfg_pull_none_12ma>,
++					<1 RK_PB4 2 &pcfg_pull_none_8ma>,
+ 					/* mac_rxclk */
+-					<1 RK_PB5 2 &pcfg_pull_none_2ma>,
++					<1 RK_PB5 2 &pcfg_pull_none_4ma>,
+ 					/* mac_mdio */
+-					<1 RK_PC3 2 &pcfg_pull_none_2ma>,
++					<1 RK_PC3 2 &pcfg_pull_none_4ma>,
+ 					/* mac_txen */
+-					<1 RK_PD1 2 &pcfg_pull_none_12ma>,
++					<1 RK_PD1 2 &pcfg_pull_none_8ma>,
+ 					/* mac_clk */
+-					<1 RK_PC5 2 &pcfg_pull_none_2ma>,
++					<1 RK_PC5 2 &pcfg_pull_none_4ma>,
+ 					/* mac_rxdv */
+-					<1 RK_PC6 2 &pcfg_pull_none_2ma>,
++					<1 RK_PC6 2 &pcfg_pull_none_4ma>,
+ 					/* mac_mdc */
+-					<1 RK_PC7 2 &pcfg_pull_none_2ma>,
++					<1 RK_PC7 2 &pcfg_pull_none_4ma>,
+ 					/* mac_rxd1 */
+-					<1 RK_PB2 2 &pcfg_pull_none_2ma>,
++					<1 RK_PB2 2 &pcfg_pull_none_4ma>,
+ 					/* mac_rxd0 */
+-					<1 RK_PB3 2 &pcfg_pull_none_2ma>,
++					<1 RK_PB3 2 &pcfg_pull_none_4ma>,
+ 					/* mac_txd1 */
+-					<1 RK_PB0 2 &pcfg_pull_none_12ma>,
++					<1 RK_PB0 2 &pcfg_pull_none_8ma>,
+ 					/* mac_txd0 */
+-					<1 RK_PB1 2 &pcfg_pull_none_12ma>,
++					<1 RK_PB1 2 &pcfg_pull_none_8ma>,
+ 					/* mac_rxd3 */
+-					<1 RK_PB6 2 &pcfg_pull_none_2ma>,
++					<1 RK_PB6 2 &pcfg_pull_none_4ma>,
+ 					/* mac_rxd2 */
+-					<1 RK_PB7 2 &pcfg_pull_none_2ma>,
++					<1 RK_PB7 2 &pcfg_pull_none_4ma>,
+ 					/* mac_txd3 */
+-					<1 RK_PC0 2 &pcfg_pull_none_12ma>,
++					<1 RK_PC0 2 &pcfg_pull_none_8ma>,
+ 					/* mac_txd2 */
+-					<1 RK_PC1 2 &pcfg_pull_none_12ma>,
++					<1 RK_PC1 2 &pcfg_pull_none_8ma>,
+ 
+ 					/* mac_txclk */
+-					<0 RK_PB0 1 &pcfg_pull_none>,
++					<0 RK_PB0 1 &pcfg_pull_none_8ma>,
+ 					/* mac_txen */
+-					<0 RK_PB4 1 &pcfg_pull_none>,
++					<0 RK_PB4 1 &pcfg_pull_none_8ma>,
+ 					/* mac_clk */
+-					<0 RK_PD0 1 &pcfg_pull_none>,
++					<0 RK_PD0 1 &pcfg_pull_none_4ma>,
+ 					/* mac_txd1 */
+-					<0 RK_PC0 1 &pcfg_pull_none>,
++					<0 RK_PC0 1 &pcfg_pull_none_8ma>,
+ 					/* mac_txd0 */
+-					<0 RK_PC1 1 &pcfg_pull_none>,
++					<0 RK_PC1 1 &pcfg_pull_none_8ma>,
+ 					/* mac_txd3 */
+-					<0 RK_PC7 1 &pcfg_pull_none>,
++					<0 RK_PC7 1 &pcfg_pull_none_8ma>,
+ 					/* mac_txd2 */
+-					<0 RK_PC6 1 &pcfg_pull_none>;
++					<0 RK_PC6 1 &pcfg_pull_none_8ma>;
+ 			};
+ 
+ 			rmiim1_pins: rmiim1-pins {
+-- 
+2.20.1
