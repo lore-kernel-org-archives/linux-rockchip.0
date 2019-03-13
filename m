@@ -1,81 +1,122 @@
-From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-Subject: Re: [PATCH net-next] net: phy: improve handling link_change_notify
- callback
-Date: Tue, 12 Mar 2019 23:19:18 +0000
-Message-ID: <20190312231918.csaemkfjx53yxlrh@shell.armlinux.org.uk>
-References: <411b1c33-a245-0706-8afd-c4bea1b90f68@gmail.com>
- <20190304.113025.1437399524067140375.davem@davemloft.net>
- <20190304200630.GJ26378@lunn.ch>
- <3079158.ITs3Wk0qno@phil>
- <945fb25c-c854-27f3-1e98-18a5c981d59f@zonque.org>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH v2 1/5] drm/rockchip: fix fb references in async update
+Date: Wed, 13 Mar 2019 12:42:45 +0900
+Message-ID: <CAAFQd5CCEDaxLbw0E9NJJ-tEcHd8-Lidvcvt8qfPAnKu7uuj8w@mail.gmail.com>
+References: <20190312022204.2775-1-helen.koike@collabora.com>
+ <20190312022204.2775-2-helen.koike@collabora.com>
+ <20190312073438.05ad8173@collabora.com>
+ <f888a2d0-c6b1-8995-7254-ba2923dd22f9@collabora.com>
+ <20190312165243.5b771e4a@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <945fb25c-c854-27f3-1e98-18a5c981d59f@zonque.org>
-Sender: netdev-owner@vger.kernel.org
-To: Daniel Mack <daniel@zonque.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew@lunn.ch>, david.wu@rock-chips.com, f.fainelli@gmail.com, netdev@vger.kernel.org, linux-rockchip@lists.infradead.org, David Miller <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, hkallweit1@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190312165243.5b771e4a@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Boris Brezillon <boris.brezillon@collabora.com>
+Cc: =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@google.com>, Sean Paul <seanpaul@google.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Helen Koike <helen.koike@collabora.com>, kernel@collabora.com, nicholas.kazlauskas@amd.com, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Mar 12, 2019 at 06:50:59PM +0100, Daniel Mack wrote:
-> On 12/3/2019 1:27 PM, Heiko Stuebner wrote:
-> > Hi Andrew, Heiner,
-> > 
-> > Am Montag, 4. März 2019, 21:06:30 CET schrieb Andrew Lunn:
-> >> On Mon, Mar 04, 2019 at 11:30:25AM -0800, David Miller wrote:
-> >>> From: Heiner Kallweit <hkallweit1@gmail.com>
-> >>> Date: Sun, 3 Mar 2019 19:58:57 +0100
-> >>>
-> >>>> Currently the Phy driver's link_change_notify callback is called
-> >>>> whenever the state machine is run (every second if polling), no matter
-> >>>> whether the state changed or not. This isn't needed and may confuse
-> >>>> users considering the name of the callback. Therefore let's change
-> >>>> the behavior and call this callback only in case of an actual
-> >>>> state change.
-> >>>>
-> >>>> This requires changes to the at803x and rockchip drivers.
-> >>>> at803x can be simplified so that it reacts on a state change to
-> >>>> PHY_NOLINK only.
-> >>>> The rockchip driver can also be much simplified. We simply re-init
-> >>>> the AFE/DSP registers whenever we change to PHY_RUNNING and speed
-> >>>> is 100Mbps. This causes very small overhead because we do this even
-> >>>> if the speed was 100Mbps already. But this is neglectable and
-> >>>> I think justified by the much simpler code.
-> >>>>
-> >>>> Changes are compile-tested only.
-> >>>>
-> >>>> Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
-> >>>
-> >>> Someone please review this.
-> >>
-> >> Hi David
-> >>
-> >> We should probably wait for a Tested-by: from Daniel Mack
-> >> <zonque@gmail.com> and David Wu <david.wu@rock-chips.com>, or
-> >> equivalent.
-> > 
-> > We should probably add them to the list of recipients if we want
-> > tests from them, which I've done now.
-> > 
-> > @David: patch in question that changes the Rockchip eth-phy is
-> > https://patchwork.kernel.org/patch/10837217/
-> > 
-> > Sadly I don't have matching hardware to test this myself.
-> 
-> Thanks for considering me, but I don't have access to that hardware
-> either right now.
-> 
-> The changes look straight forward to me however, so just go ahead an
-> apply this. Once I get back to that setup, I'll report in case of a
-> regression.
-
-SolidRun Hummingboards and Cubox-i use AR8035 with the FEC driver, so
-would be ideal to test - unfortunately I'm up to my eyeballs trying to
-diagnose Armada 8040 comphy issues so can't test at the moment.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-According to speedtest.net: 11.9Mbps down 500kbps up
+T24gV2VkLCBNYXIgMTMsIDIwMTkgYXQgMTI6NTIgQU0gQm9yaXMgQnJlemlsbG9uCjxib3Jpcy5i
+cmV6aWxsb25AY29sbGFib3JhLmNvbT4gd3JvdGU6Cj4KPiBPbiBUdWUsIDEyIE1hciAyMDE5IDEy
+OjM0OjQ1IC0wMzAwCj4gSGVsZW4gS29pa2UgPGhlbGVuLmtvaWtlQGNvbGxhYm9yYS5jb20+IHdy
+b3RlOgo+Cj4gPiBPbiAzLzEyLzE5IDM6MzQgQU0sIEJvcmlzIEJyZXppbGxvbiB3cm90ZToKPiA+
+ID4gT24gTW9uLCAxMSBNYXIgMjAxOSAyMzoyMTo1OSAtMDMwMAo+ID4gPiBIZWxlbiBLb2lrZSA8
+aGVsZW4ua29pa2VAY29sbGFib3JhLmNvbT4gd3JvdGU6Cj4gPiA+Cj4gPiA+PiBJbiB0aGUgY2Fz
+ZSBvZiBhc3luYyB1cGRhdGUsIG1vZGlmaWNhdGlvbnMgYXJlIGRvbmUgaW4gcGxhY2UsIGkuZS4g
+aW4gdGhlCj4gPiA+PiBjdXJyZW50IHBsYW5lIHN0YXRlLCBzbyB0aGUgbmV3X3N0YXRlIGlzIHBy
+ZXBhcmVkIGFuZCB0aGUgbmV3X3N0YXRlIGlzCj4gPiA+PiBjbGVhbnVwIHVwIChpbnN0ZWFkIG9m
+IHRoZSBvbGRfc3RhdGUsIGRpZmVycmVudGx5IG9uIHdoYXQgaGFwcGVuIGluIGEKPiA+ID4KPiA+
+ID4gICBeIGNsZWFuZWQgdXAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeIGRpZmZlcmVu
+dGx5IChidXQgbWF5YmUKPiA+ID4gInVubGlrZSB3aGF0IGhhcHBlbnMiIGlzIG1vcmUgYXBwcm9w
+cmlhdGUgaGVyZSkuCj4gPiA+Cj4gPiA+PiBub3JtYWwgc3luYyB1cGRhdGUpLgo+ID4gPj4gVG8g
+Y2xlYW51cCB0aGUgb2xkX2ZiIHByb3Blcmx5LCBpdCBuZWVkcyB0byBiZSBwbGFjZWQgaW4gdGhl
+IG5ld19zdGF0ZQo+ID4gPj4gaW4gdGhlIGVuZCBvZiBhc3luY191cGRhdGUsIHNvIGNsZWFudXAg
+Y2FsbCB3aWxsIHVucmVmZXJlbmNlIHRoZSBvbGRfZmIKPiA+ID4+IGNvcnJlY3RseS4KPiA+ID4+
+Cj4gPiA+PiBBbHNvLCB0aGUgcHJldmlvdXMgY29kZSBoYWQgYToKPiA+ID4+Cj4gPiA+PiAgICBw
+bGFuZV9zdGF0ZSA9IHBsYW5lLT5mdW5jcy0+YXRvbWljX2R1cGxpY2F0ZV9zdGF0ZShwbGFuZSk7
+Cj4gPiA+PiAgICAuLi4KPiA+ID4+ICAgIHN3YXAocGxhbmVfc3RhdGUsIHBsYW5lLT5zdGF0ZSk7
+Cj4gPiA+Pgo+ID4gPj4gICAgaWYgKHBsYW5lLT5zdGF0ZS0+ZmIgJiYgcGxhbmUtPnN0YXRlLT5m
+YiAhPSBuZXdfc3RhdGUtPmZiKSB7Cj4gPiA+PiAgICAuLi4KPiA+ID4+ICAgIH0KPiA+ID4+Cj4g
+PiA+PiBXaGljaCB3YXMgd3JvbmcsIGFzIHRoZSBmYiB3ZXJlIGp1c3QgYXNzaWduZWQgdG8gYmUg
+ZXF1YWwsIHNvIHRoaXMgaWYKPiA+ID4+IHN0YXRlbWVudCBuZXZlcnMgZXZhbHVhdGVzIHRvIHRy
+dWUuCj4gPiA+Pgo+ID4gPj4gQW5vdGhlciBkZXRhaWxzIGlzIHRoYXQgdGhlIGZ1bmN0aW9uIGRy
+bV9jcnRjX3ZibGFua19nZXQoKSBjYW4gb25seSBiZQo+ID4gPj4gY2FsbGVkIHdoZW4gdm9wLT5p
+c19lbmFibGVkIGlzIHRydWUsIG90aGVyd2lzZSBpdCBoYXMgbm8gZWZmZWN0IGFuZAo+ID4gPj4g
+dHJvd3MgYSBXQVJOX09OKCkuCj4gPiA+Pgo+ID4gPj4gQ2FsbGluZyBkcm1fYXRvbWljX3NldF9m
+Yl9mb3JfcGxhbmUoKSAod2hpY2ggZ2V0IGEgcmVmZXJlbnQgb2YgdGhlIG5ldwo+ID4gPj4gZmIg
+YW5kIHB1cyB0aGUgb2xkIGZiKSBpcyBub3QgcmVxdWlyZWQsIGFzIGl0IGlzIHRha2VuIGNhcmUg
+YnkKPiA+ID4+IGRybV9tb2RlX2N1cnNvcl91bml2ZXJzYWwoKSB3aGVuIGNhbGxpbmcKPiA+ID4+
+IGRybV9hdG9taWNfaGVscGVyX3VwZGF0ZV9wbGFuZSgpLgo+ID4gPj4KPiA+ID4+IFNpZ25lZC1v
+ZmYtYnk6IEhlbGVuIEtvaWtlIDxoZWxlbi5rb2lrZUBjb2xsYWJvcmEuY29tPgo+ID4gPj4KPiA+
+ID4+IC0tLQo+ID4gPj4gSGVsbG8sCj4gPiA+Pgo+ID4gPj4gSSB0ZXN0ZWQgb24gdGhlIHJvY2tj
+aGlwIGZpY3VzIHYxLjEgdXNpbmcgaWd0IHBsYW5lX2N1cnNvcl9sZWdhY3kgYW5kCj4gPiA+PiBr
+bXNfY3Vyc29yX2xlZ2FjeSBhbmQgSSBkaWRuJ3Qgc2VlIGFueSByZWdyZXNzaW9ucy4KPiA+ID4+
+Cj4gPiA+PiBDaGFuZ2VzIGluIHYyOiBOb25lCj4gPiA+Pgo+ID4gPj4gIGRyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCA0MiArKysrKysrKysrKystLS0tLS0tLS0K
+PiA+ID4+ICAxIGZpbGUgY2hhbmdlZCwgMjQgaW5zZXJ0aW9ucygrKSwgMTggZGVsZXRpb25zKC0p
+Cj4gPiA+Pgo+ID4gPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
+cC5jCj4gPiA+PiBpbmRleCBjN2Q0YzYwNzNlYTUuLmExZWU4YzE1NmE3YiAxMDA2NDQKPiA+ID4+
+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiA+ID4+
+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiA+ID4+
+IEBAIC05MTIsMzAgKzkxMiwzMSBAQCBzdGF0aWMgdm9pZCB2b3BfcGxhbmVfYXRvbWljX2FzeW5j
+X3VwZGF0ZShzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKPiA+ID4+ICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICpuZXdfc3RhdGUpCj4g
+PiA+PiAgewo+ID4gPj4gICAgc3RydWN0IHZvcCAqdm9wID0gdG9fdm9wKHBsYW5lLT5zdGF0ZS0+
+Y3J0Yyk7Cj4gPiA+PiAtICBzdHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICpwbGFuZV9zdGF0ZTsKPiA+
+ID4+ICsgIHN0cnVjdCBkcm1fZnJhbWVidWZmZXIgKm9sZF9mYiA9IHBsYW5lLT5zdGF0ZS0+ZmI7
+Cj4gPiA+Pgo+ID4gPj4gLSAgcGxhbmVfc3RhdGUgPSBwbGFuZS0+ZnVuY3MtPmF0b21pY19kdXBs
+aWNhdGVfc3RhdGUocGxhbmUpOwo+ID4gPj4gLSAgcGxhbmVfc3RhdGUtPmNydGNfeCA9IG5ld19z
+dGF0ZS0+Y3J0Y194Owo+ID4gPj4gLSAgcGxhbmVfc3RhdGUtPmNydGNfeSA9IG5ld19zdGF0ZS0+
+Y3J0Y195Owo+ID4gPj4gLSAgcGxhbmVfc3RhdGUtPmNydGNfaCA9IG5ld19zdGF0ZS0+Y3J0Y19o
+Owo+ID4gPj4gLSAgcGxhbmVfc3RhdGUtPmNydGNfdyA9IG5ld19zdGF0ZS0+Y3J0Y193Owo+ID4g
+Pj4gLSAgcGxhbmVfc3RhdGUtPnNyY194ID0gbmV3X3N0YXRlLT5zcmNfeDsKPiA+ID4+IC0gIHBs
+YW5lX3N0YXRlLT5zcmNfeSA9IG5ld19zdGF0ZS0+c3JjX3k7Cj4gPiA+PiAtICBwbGFuZV9zdGF0
+ZS0+c3JjX2ggPSBuZXdfc3RhdGUtPnNyY19oOwo+ID4gPj4gLSAgcGxhbmVfc3RhdGUtPnNyY193
+ID0gbmV3X3N0YXRlLT5zcmNfdzsKPiA+ID4+IC0KPiA+ID4+IC0gIGlmIChwbGFuZV9zdGF0ZS0+
+ZmIgIT0gbmV3X3N0YXRlLT5mYikKPiA+ID4+IC0gICAgICAgICAgZHJtX2F0b21pY19zZXRfZmJf
+Zm9yX3BsYW5lKHBsYW5lX3N0YXRlLCBuZXdfc3RhdGUtPmZiKTsKPiA+ID4+IC0KPiA+ID4+IC0g
+IHN3YXAocGxhbmVfc3RhdGUsIHBsYW5lLT5zdGF0ZSk7Cj4gPiA+PiAtCj4gPiA+PiAtICBpZiAo
+cGxhbmUtPnN0YXRlLT5mYiAmJiBwbGFuZS0+c3RhdGUtPmZiICE9IG5ld19zdGF0ZS0+ZmIpIHsK
+PiA+ID4+ICsgIC8qCj4gPiA+PiArICAgKiBBIHNjYW5vdXQgY2FuIHN0aWxsIGJlIG9jY3Vycmlu
+Zywgc28gd2UgY2FuJ3QgZHJvcCB0aGUgcmVmZXJlbmNlIHRvCj4gPiA+PiArICAgKiB0aGUgb2xk
+IGZyYW1lYnVmZmVyLiBUbyBzb2x2ZSB0aGlzIHdlIGdldCBhIHJlZmVyZW5jZSB0byBvbGRfZmIg
+YW5kCj4gPiA+PiArICAgKiBzZXQgYSB3b3JrZXIgdG8gcmVsZWFzZSBpdCBsYXRlci4KPiA+ID4K
+PiA+ID4gSG0sIGRvZXNuJ3QgbG9vayBsaWtlIGFuIGFzeW5jIHVwZGF0ZSB0byBtZSBpZiB3ZSBo
+YXZlIHRvIHdhaXQgZm9yIHRoZQo+ID4gPiBuZXh0IFZCTEFOSyB0byBoYXBwZW4gdG8gZ2V0IHRo
+ZSBuZXcgY29udGVudCBvbiB0aGUgc2NyZWVuLiBNYXliZSB3ZQo+ID4gPiBzaG91bGQgcmVqZWN0
+IGFzeW5jIHVwZGF0ZXMgd2hlbiBvbGRfZmIgIT0gbmV3X2ZiIGluIHRoZSByawo+ID4gPiAtPmFz
+eW5jX2NoZWNrKCkgaG9vay4KPiA+Cj4gPiBVbmxlc3MgSSBhbSBtaXN1bmRlcnN0YW5kaW5nIHRo
+aXMsIHdlIGRvbid0IHdhaXQgaGVyZSwgd2UganVzdCBncmFiIGEKPiA+IHJlZmVyZW5jZSB0byB0
+aGUgZmIgaW4gY2FzZSBpdCBpcyBiZWluZyBzdGlsbCB1c2VkIGJ5IHRoZSBodywgc28gaXQKPiA+
+IGRvZXNuJ3QgZ2V0IHJlbGVhc2VkIHByZW1hdHVyZWx5Lgo+Cj4gSSB3YXMganVzdCByZWFjdGlu
+ZyB0byB0aGUgY29tbWVudCB0aGF0IHNheXMgdGhlIG5ldyBGQiBzaG91bGQgc3RheQo+IGFyb3Vu
+ZCB1bnRpbCB0aGUgbmV4dCBWQkxBTksgZXZlbnQgaGFwcGVucy4gSWYgdGhlIEZCIG11c3Qgc3Rh
+eSBhcm91bmQKPiB0aGF0IHByb2JhYmx5IG1lYW5zIHRoZSBIVyBpcyBzdGlsbCB1c2luZywgd2hp
+Y2ggbWFkZSBtZSB3b25kZXIgaWYgdGhpcwo+IEhXIGFjdHVhbGx5IHN1cHBvcnRzIGFzeW5jIHVw
+ZGF0ZSAod2hlcmUgYXN5bmMgbWVhbnMgInVwZGF0ZSBub3cgYW5kCj4gZG9uJ3QgY2FyZSBhYm91
+dCBhYm91dCB0ZWFyaW5nIikuIE9yIG1heWJlIGl0IHRha2VzIHNvbWUgdGltZSB0byBzd2l0Y2gK
+PiB0byB0aGUgbmV3IEZCIGFuZCB3YWl0aW5nIGZvciB0aGUgbmV4dCBWQkxBTksgdG8gcmVsZWFz
+ZSB0aGUgb2xkIEZCIHdhcwo+IGFuIGVhc3kgc29sdXRpb24gdG8gbm90IHdhaXQgZm9yIHRoZSBm
+bGlwIHRvIGFjdHVhbGx5IGhhcHBlbiBpbgo+IC0+YXN5bmNfdXBkYXRlKCkgKHdoaWNoIGlzIGtp
+bmQgb2YgYSBjb21iaW5hdGlvbiBvZiBhc3luYytub24tYmxvY2tpbmcpLgoKVGhlIGhhcmR3YXJl
+IHN3aXRjaGVzIGZyYW1lYnVmZmVycyBvbiB2YmxhbmssIHNvIHdoYXRldmVyIGZyYW1lYnVmZmVy
+CmlzIGN1cnJlbnRseSBiZWluZyBzY2FubmVkIG91dCBmcm9tIG5lZWRzIHRvIHN0YXkgdGhlcmUg
+dW50aWwgdGhlCmhhcmR3YXJlIHN3aXRjaGVzIHRvIHRoZSBuZXcgb25lIGluIHNoYWRvdyByZWdp
+c3RlcnMuIElmIHRoYXQgZG9lc24ndApoYXBwZW4sIHlvdSBnZXQgSU9NTVUgZmF1bHRzIGFuZCB0
+aGUgZGlzcGxheSBjb250cm9sbGVyIHN0b3BzIHdvcmtpbmcKc2luY2Ugd2UgZG9uJ3QgaGF2ZSBh
+bnkgZmF1bHQgaGFuZGxpbmcgY3VycmVudGx5LCBqdXN0IHByaW50aW5nIGEKbWVzc2FnZS4KCkJl
+c3QgcmVnYXJkcywKVG9tYXN6Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
+dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbA==
