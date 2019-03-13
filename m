@@ -1,80 +1,95 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 2/3] arm: dts: rk3288-tinker.dtsi: Enable WiFi
-Date: Tue, 12 Mar 2019 21:55:08 +0100
-Message-ID: <2230941.OycJZGmSUK@diego>
-References: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
- <383c9884-4885-34e1-9ef7-96e936bb211d@arm.com>
- <c91db9a2-4283-0ea5-949e-ed190a7a8083@davidjohnsummers.uk>
+From: Steven Price <steven.price@arm.com>
+Subject: Re: [PATCH v2] media: rga: fix NULL pointer dereferences and a memory
+ leak
+Date: Wed, 13 Mar 2019 13:35:51 +0000
+Message-ID: <ff11d704-489f-836e-6c9d-1b2fb5e963b6@arm.com>
+References: <6fc9f670-a199-b83d-ff0a-d4cdb8cb80d1@arm.com>
+ <20190312065824.19646-1-kjlu@umn.edu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <c91db9a2-4283-0ea5-949e-ed190a7a8083-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
-Cc: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Tony McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190312065824.19646-1-kjlu@umn.edu>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kangjie Lu <kjlu@umn.edu>
+Cc: Heiko Stuebner <heiko@sntech.de>, Jacob chen <jacob2.chen@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, pakki001@umn.edu, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 12. M=E4rz 2019, 21:41:24 CET schrieb David Summers:
-> On 11/03/2019 22:18, Robin Murphy wrote:
-> > On 2019-03-09 3:39 pm, David Summers wrote:
-> >> Signed-off-by: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
-> >> Signed-off-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
-> >> Tested-by: Tony McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> >> Reviewed-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-> > =
+On 12/03/2019 06:58, Kangjie Lu wrote:
+> In case __get_free_pages fails, the fix releases resources and
+> return -ENOMEM to avoid NULL pointer dereferences.
+> 
+> Also, the fix frees pages when video_register_device fails to
+> avoid a memory leak.
+> 
+> Signed-off-by: Kangjie Lu <kjlu@umn.edu>
+> ---
+>  drivers/media/platform/rockchip/rga/rga.c | 15 ++++++++++++++-
+>  1 file changed, 14 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+> index 5c653287185f..307b7ab0ab64 100644
+> --- a/drivers/media/platform/rockchip/rga/rga.c
+> +++ b/drivers/media/platform/rockchip/rga/rga.c
+> @@ -892,8 +892,17 @@ static int rga_probe(struct platform_device *pdev)
+>  
+>  	rga->src_mmu_pages =
+>  		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
+> +	if (!rga->src_mmu_pages) {
+> +		ret = -ENOMEM;
+> +		goto rel_vdev;
+> +	}
+> +
+>  	rga->dst_mmu_pages =
+>  		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
+> +	if (!rga->dst_mmu_pages) {
+> +		ret = -ENOMEM;
+> +		goto free_dst_pages;
+> +	}
+>  
+>  	def_frame.stride = (def_frame.width * def_frame.fmt->depth) >> 3;
+>  	def_frame.size = def_frame.stride * def_frame.height;
+> @@ -901,7 +910,7 @@ static int rga_probe(struct platform_device *pdev)
+>  	ret = video_register_device(vfd, VFL_TYPE_GRABBER, -1);
+>  	if (ret) {
+>  		v4l2_err(&rga->v4l2_dev, "Failed to register video device\n");
+> -		goto rel_vdev;
+> +		goto free_pages;
+>  	}
+>  
+>  	v4l2_info(&rga->v4l2_dev, "Registered %s as /dev/%s\n",
+> @@ -909,6 +918,10 @@ static int rga_probe(struct platform_device *pdev)
+>  
+>  	return 0;
+>  
+> +free_pages:
+> +	free_pages((unsigned long)rga->src_mmu_pages, 3);
+> +free_dst_pages:
+> +	free_pages((unsigned long)rga->dst_mmu_pages, 3);
+>  rel_vdev:
+>  	video_device_release(vfd);
+>  unreg_video_dev:
 
-> > Erm, I don't think I did... :(
-> > =
+That looks good. However looking into the error path more closely it
+appears that this was already rather broken. Here's the original:
 
-> > Please see section 13 of Documentation/process/submitting-patches.rst
-> > for what that tag means.
-> > =
+> rel_vdev:
+> 	video_device_release(vfd);
+> unreg_video_dev:
+> 	video_unregister_device(rga->vfd);
+> unreg_v4l2_dev:
+> 	v4l2_device_unregister(&rga->v4l2_dev);
+> err_put_clk:
+> 	pm_runtime_disable(rga->dev);
 
-> > FWIW this is the kind of patch I might have considered formally
-> > reviewing if I had enough first-hand experience of the Tinker Board or
-> > Realtek SDIO modules to judge correctness, but sadly I have zero of
-> > either.
-> > =
+video_device_release() is simply a call to kfree(), but
+video_unregister_device will then be called with the same pointer
+(rga->vfd is set to vfd further up). Which will then cause a
+use-after-free on the pointer.
 
-> > Robin.
-> > =
+It might be a good idea to test this error path, for example make the
+video_register_device() call always fail and run with memory debuggers
+enabled (e.g. CONFIG_KASAN or CONFIG_DEBUG_KMEM_LEAK).
 
-> >> Test-by: TheSaint @ ArchLinux ARM
-> =
-
-> Apols Robin. I read to much into your understanding of the comments that
-> were talked to be added....
-> =
-
-> Yes Stefan but at least as much, maybe more work into this patch than I
-> did. He was the man that made it close to what we could mainline. I only
-> added very little, but then again I was also the one pushing for mainlini=
-ng.
-> =
-
-> So if only one sign off - Probably Stefan did most.
-
-Nope, that was the reason for my Co-developed-by question.
-If you look into the submitting patches document there is a special tag
-Co-Developed-by to give credit to the author that is not the "patch-from".
-
-And in this case all authors also get a signed-off-by line.
-
-> =
-
-> Heiko: Same question as before do you want me to resend which cleared up
-> signoff? Just send me an email - and I'll do whatever is best for you.
-
-As in the other mail, resending for things like that is not necessary in my
-case. I just need to hunt down the relevant information as you can see :-D
-
-Heiko
+Steve
