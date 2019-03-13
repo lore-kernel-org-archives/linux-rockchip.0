@@ -1,22 +1,14 @@
-From: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: fix rk3328-roc-cc gmac2io
- tx/rx_delay
-Date: Wed, 13 Mar 2019 22:20:01 +0200
-Message-ID: <1552508401.2008.0@gmail.com>
-References: <20190306223454.2959-1-papadakospan@gmail.com>
- <1552101990.1401.3@gmail.com>
- <e9c539ce-f1cb-06f8-1083-ea64c9fd9e7b@gmail.com> <3966706.LBvcXR5hB6@phil>
- <4f17a798-ed28-8403-ed75-30fdf4bfc44b@gmail.com>
- <1552172735.1238.0@gmail.com>
- <1bab9d4c-5e9d-968d-026d-98e65af6e7ee@gmail.com>
- <1552173935.1238.1@gmail.com>
- <6d6a700a-39c9-25b6-dfff-296c0757603d@gmail.com>
- <20190310002636.GA3857@X555LD>
+From: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2] drm/rockchip: vop: Support dithering to RGB666
+Date: Wed, 13 Mar 2019 20:26:55 +0000
+Message-ID: <CAPCnQJnDB5Z=xNCdBw0R3k18GDKdUeZ__2fBA_YKYzZ6Rdny2Q@mail.gmail.com>
+References: <20190217134255.6287-1-urjaman@gmail.com>
+ <20190219100848.2222-1-urjaman@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190310002636.GA3857@X555LD>
+In-Reply-To: <20190219100848.2222-1-urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -26,63 +18,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: ayufan-1nXcilf+G7OHXe+LvDLADg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Thomas McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgrOo8+EzrnPgiDOms+Fz4EsIDEwIM6czrHPgSwgMjAxOSBhdCAyOjI2IM6gzpwsIM6/L863ICJM
-ZW9uaWRhcyBQLiAKUGFwYWRha29zIiA8cGFwYWRha29zcGFuQGdtYWlsLmNvbT4gzq3Os8+BzrHP
-iM61Ogo+PiAgPiA+IFdlIGhhdmUgc2V2ZXJhbCBpc3N1ZXMgb24gdGhlIHJrMzMyOC4KPj4gID4g
-Pgo+PiAgPiA+IFRoZSBmaXJzdCBpc3N1ZSwgd2hpY2ggeW91IGRlc2NyaWJlIGFzIHRoZSBzc2gg
-bGFnLCBpcyB0aGUKPj4gID4gPiB0eC1vZmZsb2FkIGlzc3VlLgo+PiAgPiA+IFBhY2tldHMgdGhh
-dCBhcmUgbGFyZ2VyIHRoYW4gdGhlIE1UVSBhbmQgd2lsbCBiZSBmcmFnbWVudGVkIAo+PiBicmVh
-ayBpZgo+PiAgPiA+IHR4LW9mZmxvYWQgaXMgZW5hYmxlZC4KPj4gID4gPiBUbyBmaXggdGhpcywg
-eW91IG11c3Qgc29tZWhvdyBkaXNhYmxlIHR4LW9mZmxvYWQuCj4+ICA+ID4gZm9yY2UtdGhyZXNo
-LWRtYS1tb2RlIGRpc2FibGVkIHR4LW9mZmxvYWQsIGJ1dCBoYWQgb3RoZXIgc2lkZSAKPj4gZWZm
-ZWN0cy4KPj4gID4gPiBBeXVmYW4ncyBwYXRjaCBkaXNhYmxlcyB0eC1vZmZsb2FkIG9ubHkgaWYg
-dGhlIHBhY2tldCBpcyBsYXJnZXIgCj4+IHRoYW4KPj4gID4gPiAxNDk4Lgo+PiAgPiA+IFlvdSBj
-YW4gYWxzbyBkaXNhYmxlIHR4LW9mZmxvYWQgZnJvbSB1c2Vyc3BhY2Ugd2l0aCBldGh0b29sLgo+
-PiAgPiA+Cj4+ICA+ID4gVGhlIHNlY29uZCBpc3N1ZSBpcyB0aGUgaGlnaCByYXRlIG9mIHR4IHBh
-Y2tldHMgYmVpbmcgY29ycnVwdGVkLAo+PiAgPiA+IHdoaWNoIG15IHBhdGNoIHRvIHNldCB0aGUg
-dHggcHVsbCB2YWx1ZXMgZml4ZXMuCj4+ICA+ID4KPj4gID4gPiBUaGUgdGhpcmQgaXNzdWUgaXMg
-dGhlIHR4IGFuZCByeCBkZWxheXMgbmVlZCB0byBiZSB0dW5lZCBub3cgCj4+IHRoYXQKPj4gID4g
-PiB0aGUgdHggcGFja2V0IGNvcnJ1cHRpb24gaXNzdWUgaGFzIGJlZW4gZml4ZWQuCj4+ICA+ID4K
-Pj4gID4gPiBJIGhvcGUgdGhpcyBjbGVhcnMgdGhpbmdzIHVwIGEgbGl0dGxlIGZvciB5b3UuCj4+
-ICA+Cj4+ICA+IFl1cCwgdGhhdCdzIHdoYXQgSSBoYXZlIGluIG15IG1pbmQgYWxyZWFkeS4gTXkg
-cHJldmlvdXMgY29tbWVudCAKPj4gd2Fzbid0Cj4+ICA+IGNsZWFyLCBJIGtub3cuCj4+ICA+IEkg
-cGllY2VkIGl0IHRvZ2V0aGVyIGFmdGVyIHlvdXIgZG1hLW1vZGUgcGF0Y2gsIGJlY2F1c2UgdGhh
-dCBvbmUgCj4+IGZpeGVkCj4+ICA+IHRoZSBzc2ggbGFnLgo+PiAgPiBNeSBwcmV2aW91cyBlbWFp
-bCB3YXMganVzdCB3aGF0IEkgc2F3IGFmdGVyIHRob3NlIGNoYW5nZXMuCj4+ICA+Cj4+ICA+IElu
-IG15IGNhc2UgdGhlIGxpbmsgcmVzZXQgc3RpbGwgaGFwcGVucyB3aXRoIHlvdXIgcGF0Y2guCj4+
-ICA+Cj4+ICA+IFlvdSdyZSB0aGlua2luZyB0aGF0IHRoZSBjb21iaW5hdGlvbiBvZiB5b3VyIHBh
-dGNoLCBheXVmYW4ncwo+PiAgPiAiY29uZGl0aW9uYWwiIHBhdGNoIGFuZCBhIHNwZWNpZmljIHR3
-ZWFrIGluIHRoZSBkZWxheXMgd291bGQgd29yayAKPj4gZm9yCj4+ICA+IHRoZSBuZXR3b3JrIGlu
-c3RhYmlsaXR5IHByb2JsZW0/Cj4+ICA+Cj4+IAo+PiAgQ29ycmVjdCwgdGhlIGxpbmstcmVzZXQg
-dGVuZHMgdG8gaGFwcGVuIHdoZW4gdGhlIGRlbGF5cyBhcmUgYXQgdGhlIAo+PiBlZGdlIG9mCj4+
-ICB3b3JraW5nLgo+PiAgVGhlcmUgaXMgYWxzbyB0aGUgcG9zc2liaWxpdHkgdGhhdCBib2FyZCBs
-ZXZlbCBtYW51ZmFjdHVyaW5nIAo+PiB0b2xlcmFuY2VzIGFyZQo+PiAgY2F1c2luZyBpc3N1ZXMg
-d2hlcmUgdGhlIGRlbGF5IGNhbiBjaGFuZ2UgYmV0d2VlbiBib2FyZHMuCj4+ICBJZiB0aGlzIGlz
-IHRoZSBjYXNlLCB3ZSB3aWxsIGhhdmUgdG8gbWFrZSBhbiBhdXRvLXR1bmUgZnVuY3Rpb24sIAo+
-PiBwcm9iYWJseQo+PiAgYmFzZWQgb2ZmIHRoZSBtbWMgdmVyc2lvbi4KPiAKPiBTbywgSSB0cmll
-ZCBqdXN0IHlvdXIgcGF0Y2ggd2l0aCBhcmNobGludXhBUk0gbGludXggNS4wCj4gKG1lYW5pbmcg
-dGhlIHR4L3J4X2RlbGF5cyBhcmUgMHgyNS8weDExIHJlc3BlY3RpdmVseSBpZiBJJ20gbm90IAo+
-IG1pc3Rha2VuKQo+IGFuZCBkaXNhYmxlZCB0eCBvZmZsb2FkIHRocm91Z2ggZXRodG9vbC4KPiAK
-PiBBZnRlciAzIDMwLXNlY29uZCBpcGVyZjMgdGVzdHMsIG5vIGxpbmsgcmVzZXRzISBJIGdldCBh
-Ym91dCB0aGUgc2FtZSAKPiBzcGVlZCB5b3UgbWVudGlvbmVkIGJlZm9yZSwKPiA4MDAtc29tZXRo
-aW5nIHRvIDcwMC1zb21ldGhpbmcgbG93ZXN0Lgo+IAo+IFNlZW1zIGxpa2UgdGhlIGRlbGF5cyB0
-aGF0IGFyZSBhbHJlYWR5IHRoZXJlIGluIHRoZSBkdHMgYXJlIGJldHRlciAKPiB0aGFuIHRoZSBv
-bmVzIEkgcGlja2VkIHVwIGZyb20gdGhlIEFybWJpYW4gZHRzLgo+IAo+IEl0J3Mgd29ydGggbm90
-aW5nIHRoYXQgSSd2ZSBuZXZlciBub3RpY2VkIGEgbGluayByZXNldCBpbiBteSB+MyAKPiBtb250
-aHMgb2YgdXNpbmcgdGhlIDQuNCBSb2NrY2hpcCBrZXJuZWwKPiB0aGF0IEFybWJpYW4gcGFja2Fn
-ZXMgdXNpbmcgYXl1ZmFuJ3MgbGludXgta2VybmVsIHJlcG8uIE1heWJlIAo+IHNvbWV0aGluZyB0
-aGVyZT8KPiAKPiBBbGwgaW4gYWxsLCBpdCBkb2VzIHNlZW0gdG8gYmUgbXVjaCBiZXR0ZXIgd2l0
-aCB5b3VyIHBhdGNoLgoKSSd2ZSBiZWVuIHRyeWluZyB0byByZWFjaCBheXVmYW4gYWJvdXQgaGlz
-IHBhdGNoLCBnZXR0aW5nIGlzIGludG8gCm1haW5saW5lOgpodHRwczovL2dpdGh1Yi5jb20vYXl1
-ZmFuLXJvY2s2NC9saW51eC1tYWlubGluZS1rZXJuZWwvY29tbWl0LzQxZWViN2NkNzg5ZWE3Y2Fj
-MGNiZjRiMzViNTMwNTVmMzU0ZGE3NTcKCmJ1dCBpdCBzZWVtcyBoZSdzIG5vdCByZXNwb25kaW5n
-LiBJJ2xsIGNjIGhpbS4KSGlzIHBhdGNoIHdvdWxkIGJlIGEgcmVhbGx5IGNvb2wgZml4IGlmIGl0
-IGNvdWxkIGJlIGluIDUuMSwgb3IgZXZlbiA1LjIsCmFzIGEgcmVwbGFjZW1lbnQgdG8gZm9yY2Vf
-dGhyZXNoX2RtYV9tb2RlCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+Hi,
+
+Umm, Ping?
+
+-- 
+Urja Rannikko
