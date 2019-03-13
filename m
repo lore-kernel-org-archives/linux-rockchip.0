@@ -1,79 +1,88 @@
-From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: fix rk3328 sdmmc0 write errors
-Date: Wed, 13 Mar 2019 19:02:30 +0000
-Message-ID: <20190313190229.16962-1-pgwipeout@gmail.com>
+From: David Summers <beagleboard@davidjohnsummers.uk>
+Subject: Re: [PATCH v3 3/3] arm: dts: rk3288-tinker.dtsi: Add outline
+ Bluetooth support
+Date: Wed, 13 Mar 2019 20:02:24 +0000
+Message-ID: <f71f537d-f7d3-dda8-a960-13dd442d75c4@davidjohnsummers.uk>
+References: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
+ <20190309153923.22806-1-beagleboard@davidjohnsummers.uk>
+ <20190309153923.22806-3-beagleboard@davidjohnsummers.uk>
+ <4537885.W6WcYDDAQ4@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "Leonidas P . Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <4537885.W6WcYDDAQ4@diego>
+Content-Language: en-PH
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Cc: linux-bluetooth@vger.kernel.org, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, arm-linux <linux-arm-kernel@lists.infradead.org>, devicetree <devicetree@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Various rk3328 based boards experience occasional sdmmc0 write errors.
-This is due to the rk3328.dtsi tx drive levels being set to 4ma, vs
-8ma per the rk3328 datasheet default settings.
-
-Fix this by setting the tx signal pins to 8ma.
-Inspiration from tonymac32's patch,
-https://github.com/ayufan-rock64/linux-kernel/commit/dc1212b347e0da17c5460bcc0a56b07d02bac3f8
-
-Fixes issues on the rk3328-roc-cc and the rk3328-rock64 (as per the
-above commit message).
-
-Tested on the rk3328-roc-cc board.
-
-Signed-off-by: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index c55a3f1a87ff..dabef1a21649 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -1445,11 +1445,11 @@
- 
- 		sdmmc0 {
- 			sdmmc0_clk: sdmmc0-clk {
--				rockchip,pins = <1 RK_PA6 1 &pcfg_pull_none_4ma>;
-+				rockchip,pins = <1 RK_PA6 1 &pcfg_pull_none_8ma>;
- 			};
- 
- 			sdmmc0_cmd: sdmmc0-cmd {
--				rockchip,pins = <1 RK_PA4 1 &pcfg_pull_up_4ma>;
-+				rockchip,pins = <1 RK_PA4 1 &pcfg_pull_up_8ma>;
- 			};
- 
- 			sdmmc0_dectn: sdmmc0-dectn {
-@@ -1461,14 +1461,14 @@
- 			};
- 
- 			sdmmc0_bus1: sdmmc0-bus1 {
--				rockchip,pins = <1 RK_PA0 1 &pcfg_pull_up_4ma>;
-+				rockchip,pins = <1 RK_PA0 1 &pcfg_pull_up_8ma>;
- 			};
- 
- 			sdmmc0_bus4: sdmmc0-bus4 {
--				rockchip,pins = <1 RK_PA0 1 &pcfg_pull_up_4ma>,
--						<1 RK_PA1 1 &pcfg_pull_up_4ma>,
--						<1 RK_PA2 1 &pcfg_pull_up_4ma>,
--						<1 RK_PA3 1 &pcfg_pull_up_4ma>;
-+				rockchip,pins = <1 RK_PA0 1 &pcfg_pull_up_8ma>,
-+						<1 RK_PA1 1 &pcfg_pull_up_8ma>,
-+						<1 RK_PA2 1 &pcfg_pull_up_8ma>,
-+						<1 RK_PA3 1 &pcfg_pull_up_8ma>;
- 			};
- 
- 			sdmmc0_gpio: sdmmc0-gpio {
--- 
-2.20.1
+T24gMTMvMDMvMjAxOSAxMDo1NiwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gSGkgRGF2aWQsCj4K
+PiBBbSBTYW1zdGFnLCA5LiBNw6RyeiAyMDE5LCAxNjozOToyMyBDRVQgc2NocmllYiBEYXZpZCBT
+dW1tZXJzOgo+PiBUaGlzIHBhdGNoIGlzIGFuIG91dGxpbmUgZm9yIGJsdWV0b290aCBvbiB0aGUg
+QVNVUyBUaW5rZXIgQm9hcmQgKFMpLgo+Pgo+PiBCbHVldG9vdGggaXMgcHJvdmlkZWQgbXkgUlRM
+ODcyM0JTIG9uIHRoZXNlIG1hY2hpbmUsIGFuZCB0aGlzIGlzIHdpcmVkCj4+IGludG8gVUFSVDAu
+Cj4+Cj4+IEhlcmUgdGhpcyBpcyBwZXJmb3JtZWQgYXMgYSBTZXJEZXYgZGV2aWNlLgo+Pgo+PiBO
+b3cgYXMgcHJlc2VudGVkLCB0aGlzIGRvZXMgbm90IGdpdmUgZnVuY3Rpb25pbmcgYmx1ZXRvb3Ro
+LiBUaGUKPj4gdXBkYXRlcyBuZWVkZWQgdG8gdGhlIGRldmljZSBkcml2ZXI6Cj4+Cj4+IGh0dHBz
+Oi8vd3d3LnNwaW5pY3MubmV0L2xpc3RzL2xpbnV4LWJsdWV0b290aC9tc2c3ODY2MS5odG1sCj4+
+Cj4+IEhhdmVuJ3QgeWV0IGJlZW4gYWNjZXB0ZWQuIFNvIHRoaXMgZGV2aWNlIHRyZWUgaG9vayBk
+b2Vzbid0IHlldCBoYXZlCj4+ICJyZWFsdGVrLHJ0bDg3MjNicy1idCIgY29tcGF0aWJsZSBmbGFn
+Lgo+Pgo+PiBJdCBpcyBob3dldmVyIHN0aWxsIHN1Ym1pdHRlZCBhcyBhIHBhdGNoLCBhcyBpdCBz
+ZXRzIHRoZSBVQVJUIHVwCj4+IGNvcnJlY3RseS4gQW5kIHNvIGJhc2ljIGNvbW11bmNpYXRpb24g
+Y2FuIGJlIGhhZCB3aXRoIHRoZSBkZXZpY2UuIFRoaXMKPj4gaGFzIGJlZW4gY29uZmlybWVkIGJ5
+IFRvbnkgTWNLYWhhbiBAIEFybWJpYW4sIGluIHBhcnRpY3VsYXIgdGhhdCB0aGUKPj4gQ1RTL1JU
+UyBpcyBuZWVkZWQuCj4+Cj4+IFdoZW4gVmFzaWx5IHBhdGNoIGlzIGFjY2VwdGVkLCB0aGlzIHdp
+bGwgYmUgYWRkZWQgYXMgYSBtaW5vciBwYXRjaCBvbgo+PiB0b3Agb2YgdGhpcyBwYXRjaDsgYXMg
+dGhpcyBwYXRjaCBnaXZlcyB0aGUgcGlucyBuZWVkZWQuCj4+Cj4+IFRoZSBvbmUgb2RkaXR5LCBp
+cyB0aGUgUkVTRVQgcGluLCBpdCBpcyBsYWJlbGVkIHRoaXMgd2F5IG9uIHRoZQo+PiBzY2hlbWF0
+aWMuIEhvd2V2ZXIgdGhlIGhjaV9oNS5jIGRyaXZlciBjYWxscyB0aGlzIEVOQUJMRS4gSGVyZSB3
+ZSBoYXZlCj4+IHN0dWNrIHdpdGggdGhlIHNjaGVtYXRpYyBuYW1lLgo+Pgo+PiBTaWduZWQtb2Zm
+LWJ5OiBEYXZpZCBTdW1tZXJzIDxiZWFnbGVib2FyZEBkYXZpZGpvaG5zdW1tZXJzLnVrPgo+PiAt
+LS0KPj4gICBhcmNoL2FybS9ib290L2R0cy9yazMyODgtdGlua2VyLmR0c2kgfCAxMSArKysrKysr
+KysrKwo+PiAgIDEgZmlsZSBjaGFuZ2VkLCAxMSBpbnNlcnRpb25zKCspCj4+Cj4+IGRpZmYgLS1n
+aXQgYS9hcmNoL2FybS9ib290L2R0cy9yazMyODgtdGlua2VyLmR0c2kKPj4gYi9hcmNoL2FybS9i
+b290L2R0cy9yazMyODgtdGlua2VyLmR0c2kgaW5kZXggMGZmYWIxYjdjOTQwLi5kMjlmNWIzNGQ3
+ZTYKPj4gMTAwNjQ0Cj4+IC0tLSBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC10aW5rZXIuZHRz
+aQo+PiArKysgYi9hcmNoL2FybS9ib290L2R0cy9yazMyODgtdGlua2VyLmR0c2kKPj4gQEAgLTQ4
+Niw2ICs0ODYsMTcgQEAKPj4KPj4gICAmdWFydDAgewo+PiAgIAlzdGF0dXMgPSAib2theSI7Cj4+
+ICsJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4gKwlwaW5jdHJsLTAgPSA8JnVhcnQwX3hm
+ZXI+LCA8JnVhcnQwX2N0cz4sIDwmdWFydDBfcnRzPjsKPj4gKwo+PiArCWJsdWV0b290aCB7Cj4+
+ICsJCWNsb2NrcyA9IDwmcms4MDggUks4MDhfQ0xLT1VUMT47Cj4+ICsJCXJlc2V0LWdwaW9zID0g
+PCZncGlvNCBSS19QRDUgR1BJT19BQ1RJVkVfSElHSD47Cj4+ICsJCWRldmljZS13YWtlLWdwaW9z
+ID0gPCZncGlvNCBSS19QRDIgR1BJT19BQ1RJVkVfSElHSD47Cj4+ICsJCWhvc3Qtd2FrZS1ncGlv
+cyA9IDwmZ3BpbzQgUktfUEQ3IEdQSU9fQUNUSVZFX0hJR0g+Owo+PiArCQl2Y2MtMTgtc3VwcGx5
+ID0gPCZ2Y2NfMTg+Owo+PiArCQl2Y2MtaW8tc3VwcGx5ID0gPCZ2Y2NfaW8+Owo+PiArCX07Cj4g
+QXMgdGhpcyBpcyBzdXBwb3NlZCB0byB3b3JrIGFzIHNlcmlhbCBhdHRhY2hlZCBkZXZpY2UgaXQg
+c2hvdWxkIGZvbGxvdyBhCj4gZHQtYmluZGluZywgc28gZmlyc3Qgb2YgYWxsIGRlZmluaXRseSBu
+ZWVkcyBhIGNvbXBhdGlibGUgYW5kIGEgYmluZGluZwo+IHNwZWNpZnlpbmcgYWxsIHRoZSBwcm9w
+ZXJ0aWVzIGRlY2xhcmVkIGFib3ZlLgo+Cj4gU2VlIGZvciBleGFtcGxlIERvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9uZXQvYnJvYWRjb20tYmx1ZXRvb3RoLnR4dAo+IGZvciBhIHNp
+bWlsYXIgZGV2aWNlLgo+Cj4gSGVpa28KPgo+CkhlaWtvLAoKWWVzIEkgdW5kZXJzdGFuZC4gTWVh
+bnMgSSdsbCBuZWVkIHRvIHRha2UgY2FyZSBub3QgdG8gbG9vc2UgdGhlc2UgZW1haWwsIAphcyBn
+ZXR0aW5nIGFsbCB0aGUgcGlucyByaWdodCB0b29rIHNvbWUgdGltZSAuLi4KCkknbGwgcHJvYmFi
+bHkgZm9sbG93IApodHRwczovL3d3dy5zcGluaWNzLm5ldC9saXN0cy9saW51eC1ibHVldG9vdGgv
+bXNnNzg2NTQuaHRtbCBpZiBpdCBnZXRzIAphY2NlcHRlZC4gVGhhdCBpcyB0aGUgbWFpbiBwcm9i
+bGVtIGhlcmUsIGF0IHRoZSBtb21lbnQgdGhlcmUgaXMgbm8gCmNvbXBhdGlibGUgdGhhdCBjYW4g
+YmUgdXNlZCwgYXMgbm9uZSB5ZXQgYWNjZXB0ZWQuCgpSb2IgSCwgUXVlc3Rpb24gZm9yIHlvdSwg
+YmVmb3JlIHlvdSBzYWlkIFsxXToKCj4gVGhlcmUncyBubyBpbnRlcnJ1cHRzLCBHUElPIGNvbnRy
+b2wgbGluZXMsIHBvd2VyIHN1cHBsaWVzLCBldGMuIGZvcgo+IHRoZXNlIGNoaXBzPyBUaGUgYmlu
+ZGluZyBzaG91bGQgYmUgY29tcGxldGUgZXZlbiBpZiB5b3VyIHBsYXRmb3JtCj4gZG9lc24ndCBu
+ZWVkIHRoZXNlLgpOb3cgaXRzIGNsZWFyIHRoYXQgc28gZmFyIHRoZSBkcml2ZXIgZm9yIGJsdWV0
+b290aCBkb2Vzbid0IGtub3cgYWJvdXQgCnN1cHBseSwgYW5kIGNsb2NrcyBldGMuCgpTbyBzaG91
+bGQgdGhlc2UgYmUgaW5jbHVkZWQgaW4gdGhlIGR0cywgYXMgYSBjb3JyZWN0IGRlc2NyaXB0aW9u
+IGFzIGhvdyAKaXRzIHdpcmVkOyBldmVuIGlmIG5vdCB1c2VkIGluIHRoZSBjdXJyZW50IGRyaXZl
+ciwgdGhleSBtYXkgYmUgdXNlZCBpbiAKZnV0dXJlLgoKQW0gaGFwcHkgdG8gZG8gd2hhdGV2ZXIg
+YmVzdC4KClJlZ2FyZHMsCgpEYXZpZC4KClsxXSBodHRwczovL3d3dy5zcGluaWNzLm5ldC9saXN0
+cy9saW51eC1ibHVldG9vdGgvbXNnNzg1NDUuaHRtbAoKCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdAps
+aW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
