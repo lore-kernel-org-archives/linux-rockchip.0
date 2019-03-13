@@ -1,14 +1,15 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 1/3] arm: dts: rk3288-tinker.dtsi: Fix SD card detection
-Date: Wed, 13 Mar 2019 11:40:45 +0100
-Message-ID: <3123627.puci4abFsC@diego>
+Subject: Re: [PATCH v3 2/3] arm: dts: rk3288-tinker.dtsi: Enable WiFi
+Date: Wed, 13 Mar 2019 11:50:27 +0100
+Message-ID: <51774018.eXxrgBCrf5@diego>
 References: <20190217121513.22965-1-beagleboard@davidjohnsummers.uk>
  <20190309153923.22806-1-beagleboard@davidjohnsummers.uk>
+ <20190309153923.22806-2-beagleboard@davidjohnsummers.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190309153923.22806-1-beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
+In-Reply-To: <20190309153923.22806-2-beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,73 +20,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Tony McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 9. M=E4rz 2019, 16:39:21 CET schrieb David Summers:
-> The Problem:
+Am Samstag, 9. M=E4rz 2019, 16:39:22 CET schrieb David Summers:
+> This patch adds wifi support to the ASUS Tinker Board (S) machines.
 > =
 
-> On ASUS Tinker Board S, when booting from the eMMC, and there is card
-> in the sd slot, there are constant errors.
+> This is provided by an wifi card (RTL8723BS) wired into the sdio interfac=
+e.
 > =
 
-> Also when warm reboot, uboot can not access the sd slot
+> It requires certain pins pulled, to enable the WiFi.
 > =
 
-> Cause:
+> The schematics for these board do not show the WiFi connection, so the
+> connections have been taken from:
 > =
 
-> Identified by Robin Murphy @ ARM. The Card Detect on rk3288
-> devices is pulled up by vccio-sd; so when the regulator powers this
-> off, card detect gives spurious errors. A second problem, is during
-> power down, vccio-sd apprears to be powered down. This causes a
-> problem when warm rebooting from the sd card. This was identified by
-> Jonas Karlman.
+> https://github.com/TinkerBoard/debian_kernel/blob/develop/arch/arm/boot/d=
+ts/
+> rk3288-miniarm.dts
 > =
 
-> History:
+> In particular the pulling of two pins.
 > =
 
-> A common fault on these rk3288 board, which impliment the reference
-> design.
-> =
-
-> When this arose before:
-> =
-
-> http://lists.infradead.org/pipermail/linux-arm-kernel/2014-August/281153.=
-htm
-> l
-> =
-
-> And Ulf and Jaehoon clearly said this was a broken card detect design,
-> which should be solved via polling
-> =
-
-> Solution:
-> =
-
-> Hence broken-cd is set as a property. This cures the errors. The
-> powering down of vccio-sd during reboot is cured by adding
-> regulator-boot-on.
-> =
-
-> This solutions has been fairly widely reviewed and tested.
+> This patch is almost identical to v1. A few additional line breaks for
+> readability. On Armbian, they did not use sd-uhs-ddr50, so this has
+> been removed. It does not change functionality. The ASUS patch set
+> sd-uhs-sdr104;.
 > =
 
 > Signed-off-by: David Summers <beagleboard-8lkWs+DogrrqRUWtDFdff/XRex20P6io@public.gmane.org>
-> Reviewed by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-> Reviewed by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
-> Test by: TheSaint @ ArchLinux Arm
+> Signed-off-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
+> Tested-by: Tony McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Reviewed-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+> Test-by: TheSaint @ ArchLinux ARM
 
-applied as fix for 5.1 with the following modifications:
-- new subject: "ARM: dts: rockchip: Fix SD card detection on rk3288-tinker"
-  to match the subsystem
-- adapted Reviewed and Tested tags as collected from involved parties
-- added Fixes and Cc-stable tags (pointing to the dtsi-split only to ease
-  load of stable maintainers, as hopefully most people will use somewhat
-  recent kernels on sbcs]
+applied for 5.2 with the following changes:
+- adapted subject to match the subsystem
+- updated received tags as negotiated yesterday
+- reordered some nodes and properties to match general sorting
+  (by @address first, otherwise largely alphabetical)
 
-
+Thanks
 Heiko
