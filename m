@@ -1,131 +1,89 @@
-From: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 5/5] drm: don't block fb changes for async plane updates
-Date: Wed, 13 Mar 2019 21:20:26 -0300
-Message-ID: <20190314002027.7833-6-helen.koike@collabora.com>
-References: <20190314002027.7833-1-helen.koike@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-In-Reply-To: <20190314002027.7833-1-helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/amd-gfx>
-List-Post: <mailto:amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "amd-gfx" <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, nicholas.kazlauskas-5C7GfCeVMHo@public.gmane.org
-Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sean Paul <seanpaul-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, daniel.vetter-/w4YWyX8dFk@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, harry.wentland-5C7GfCeVMHo@public.gmane.org, andrey.grodzovsky-5C7GfCeVMHo@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sean Paul <sean-p7yTbzM4H96eqtR555YLDQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+From: Kangjie Lu <kjlu@umn.edu>
+Subject: [PATCH v3] media: rga: fix NULL pointer dereferences, use-after-free, memory leak
+Date: Thu, 14 Mar 2019 00:03:44 -0500
+Message-ID: <20190314050344.29790-1-kjlu@umn.edu>
+References: <ff11d704-489f-836e-6c9d-1b2fb5e963b6@arm.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <ff11d704-489f-836e-6c9d-1b2fb5e963b6@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: kjlu@umn.edu
+Cc: pakki001@umn.edu, Jacob chen <jacob2.chen@rock-chips.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SW4gdGhlIGNhc2Ugb2YgYSBub3JtYWwgc3luYyB1cGRhdGUsIHRoZSBwcmVwYXJhdGlvbiBvZiBm
-cmFtZWJ1ZmZlcnMgKGJlCml0IGNhbGxpbmcgZHJtX2F0b21pY19oZWxwZXJfcHJlcGFyZV9wbGFu
-ZXMoKSBvciBkb2luZyBzZXR1cHMgd2l0aApkcm1fZnJhbWVidWZmZXJfZ2V0KCkpIGFyZSBwZXJm
-b3JtZWQgaW4gdGhlIG5ld19zdGF0ZSBhbmQgdGhlIHJlc3BlY3RpdmUKY2xlYW51cHMgYXJlIHBl
-cmZvcm1lZCBpbiB0aGUgb2xkX3N0YXRlLgoKSW4gdGhlIGNhc2Ugb2YgYXN5bmMgdXBkYXRlcywg
-dGhlIHByZXBhcmF0aW9uIGlzIGFsc28gZG9uZSBpbiB0aGUKbmV3X3N0YXRlIGJ1dCB0aGUgY2xl
-YW51cHMgYXJlIGRvbmUgaW4gdGhlIG5ld19zdGF0ZSAoYmVjYXVzZSB1cGRhdGVzCmFyZSBwZXJm
-b3JtZWQgaW4gcGxhY2UsIGkuZS4gaW4gdGhlIGN1cnJlbnQgc3RhdGUpLgoKVGhlIGN1cnJlbnQg
-Y29kZSBibG9ja3MgYXN5bmMgdWRwYXRlcyB3aGVuIHRoZSBmYiBpcyBjaGFuZ2VkLCB0dXJuaW5n
-CmFzeW5jIHVwZGF0ZXMgaW50byBzeW5jIHVwZGF0ZXMsIHNsb3dpbmcgZG93biBjdXJzb3IgdXBk
-YXRlcyBhbmQKaW50cm9kdWNpbmcgcmVncmVzc2lvbnMgaW4gaWd0IHRlc3RzIHdpdGggZXJyb3Jz
-IG9mIHR5cGU6CgoiQ1JJVElDQUw6IGNvbXBsZXRlZCA5NyBjdXJzb3IgdXBkYXRlZCBpbiBhIHBl
-cmlvZCBvZiAzMCBmbGlwcywgd2UKZXhwZWN0IHRvIGNvbXBsZXRlIGFwcHJveGltYXRlbHkgMTUz
-NjAgdXBkYXRlcywgd2l0aCB0aGUgdGhyZXNob2xkIHNldAphdCA3NjgwIgoKRmIgY2hhbmdlcyBp
-biBhc3luYyB1cGRhdGVzIHdlcmUgcHJldmVudGVkIHRvIGF2b2lkIHRoZSBmb2xsb3dpbmcgc2Nl
-bmFyaW86CgotIEFzeW5jIHVwZGF0ZSwgb2xkZmIgPSBOVUxMLCBuZXdmYiA9IGZiMSwgcHJlcGFy
-ZSBmYjEsIGNsZWFudXAgZmIxCi0gQXN5bmMgdXBkYXRlLCBvbGRmYiA9IGZiMSwgbmV3ZmIgPSBm
-YjIsIHByZXBhcmUgZmIyLCBjbGVhbnVwIGZiMgotIE5vbi1hc3luYyBjb21taXQsIG9sZGZiID0g
-ZmIyLCBuZXdmYiA9IGZiMSwgcHJlcGFyZSBmYjEsIGNsZWFudXAgZmIyICh3cm9uZykKV2hlcmUg
-d2UgaGF2ZSBhIHNpbmdsZSBjYWxsIHRvIHByZXBhcmUgZmIyIGJ1dCBkb3VibGUgY2xlYW51cCBj
-YWxsIHRvIGZiMi4KClRvIHNvbHZlIHRoZSBhYm92ZSBwcm9ibGVtcywgaW5zdGVhZCBvZiBibG9j
-a2luZyBhc3luYyBmYiBjaGFuZ2VzLCB3ZQpwbGFjZSB0aGUgb2xkIGZyYW1lYnVmZmVyIGluIHRo
-ZSBuZXdfc3RhdGUgb2JqZWN0LCBzbyB3aGVuIHRoZSBjb2RlCnBlcmZvcm1zIGNsZWFudXBzIGlu
-IHRoZSBuZXdfc3RhdGUgaXQgd2lsbCBjbGVhbnVwIHRoZSBvbGRfZmIgYW5kIHdlCndpbGwgaGF2
-ZSB0aGUgZm9sbG93aW5nIHNjZW5hcmlvIGluc3RlYWQ6CgotIEFzeW5jIHVwZGF0ZSwgb2xkZmIg
-PSBOVUxMLCBuZXdmYiA9IGZiMSwgcHJlcGFyZSBmYjEsIG5vIGNsZWFudXAKLSBBc3luYyB1cGRh
-dGUsIG9sZGZiID0gZmIxLCBuZXdmYiA9IGZiMiwgcHJlcGFyZSBmYjIsIGNsZWFudXAgZmIxCi0g
-Tm9uLWFzeW5jIGNvbW1pdCwgb2xkZmIgPSBmYjIsIG5ld2ZiID0gZmIxLCBwcmVwYXJlIGZiMSwg
-Y2xlYW51cCBmYjIKCldoZXJlIGNhbGxzIHRvIHByZXBhcmUvY2xlYW51cCBhcmUgYmFsYW5jZWQu
-CgpDYzogPHN0YWJsZUB2Z2VyLmtlcm5lbC5vcmc+ICMgdjQuMTQrCkZpeGVzOiAyNWRjMTk0YjM0
-ZGQgKCJkcm06IEJsb2NrIGZiIGNoYW5nZXMgZm9yIGFzeW5jIHBsYW5lIHVwZGF0ZXMiKQpTdWdn
-ZXN0ZWQtYnk6IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMuYnJlemlsbG9uQGNvbGxhYm9yYS5jb20+
-ClNpZ25lZC1vZmYtYnk6IEhlbGVuIEtvaWtlIDxoZWxlbi5rb2lrZUBjb2xsYWJvcmEuY29tPgpS
-ZXZpZXdlZC1ieTogQm9yaXMgQnJlemlsbG9uIDxib3Jpcy5icmV6aWxsb25AY29sbGFib3JhLmNv
-bT4KUmV2aWV3ZWQtYnk6IE5pY2hvbGFzIEthemxhdXNrYXMgPG5pY2hvbGFzLmthemxhdXNrYXNA
-YW1kLmNvbT4KCi0tLQpIZWxsbywKCkkgYWRkZWQgYSBUT0RPIGluIGRybV9hdG9taWNfaGVscGVy
-X2FzeW5jX2NvbW1pdCgpIHJlZ2FyZGluZyBkb2luZyBhCmZ1bGwgc3RhdGUgc3dhcCgpLCBCb3Jp
-cyBhbmQgTmljaG9sYXMsIGxldCBtZSBrbm93IGlmIHRoaXMgaXMgb2sgYW5kIGlmCkkgY2FuIGtl
-ZXAgeW91ciBSZXZpZXdlZC1ieSB0YWdzKQoKQXMgbWVudGlvbmVkIGluIHRoZSBjb3ZlciBsZXR0
-ZXIsIEkgdGVzdGVkIGluIGFsbW9zdCBhbGwgcGxhdGZvcm1zIHdpdGgKaWd0IHBsYW5lX2N1cnNv
-cl9sZWdhY3kgYW5kIGttc19jdXJzb3JfbGVnYWN5IGFuZCBJIGRpZG4ndCBzZWUgYW55CnJlZ3Jl
-c3Npb25zLiBCdXQgSSBjb3VsZG4ndCB0ZXN0IG9uIE1TTSBhbmQgQU1EIGJlY2F1c2UgSSBkb24n
-dCBoYXZlCnRoZSBoYXJkd2FyZSBJIHdvdWxkIGFwcHJlY2lhdGUgaWYgYW55b25lIGNvdWxkIGhl
-bHAgbWUgdGVzdGluZyB0aG9zZS4KClRoYW5rcyEKSGVsZW4KCkNoYW5nZXMgaW4gdjM6Ci0gQWRk
-IFJldmlld2VkLWJ5IHRhZ3MKLSBBZGQgVE9ETyBpbiBkcm1fYXRvbWljX2hlbHBlcl9hc3luY19j
-b21taXQoKQoKQ2hhbmdlcyBpbiB2MjoKLSBDaGFuZ2UgdGhlIG9yZGVyIG9mIHRoZSBwYXRjaCBp
-biB0aGUgc2VyaWVzLCBhZGQgdGhpcyBhcyB0aGUgbGFzdCBvbmUuCi0gQWRkIGRvY3VtZW50YXRp
-b24KLSBzL2JhbGxhbmNlZC9iYWxhbmNlZAoKIGRyaXZlcnMvZ3B1L2RybS9kcm1fYXRvbWljX2hl
-bHBlci5jICAgICAgfCAyMiArKysrKysrKysrKystLS0tLS0tLS0tCiBpbmNsdWRlL2RybS9kcm1f
-bW9kZXNldF9oZWxwZXJfdnRhYmxlcy5oIHwgIDUgKysrKysKIDIgZmlsZXMgY2hhbmdlZCwgMTcg
-aW5zZXJ0aW9ucygrKSwgMTAgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
-ZHJtL2RybV9hdG9taWNfaGVscGVyLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21pY19oZWxw
-ZXIuYwppbmRleCAyNDUzNjc4ZDExODYuLmRlNTgxMmMzNjJiNSAxMDA2NDQKLS0tIGEvZHJpdmVy
-cy9ncHUvZHJtL2RybV9hdG9taWNfaGVscGVyLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9h
-dG9taWNfaGVscGVyLmMKQEAgLTE2MDgsMTUgKzE2MDgsNiBAQCBpbnQgZHJtX2F0b21pY19oZWxw
-ZXJfYXN5bmNfY2hlY2soc3RydWN0IGRybV9kZXZpY2UgKmRldiwKIAkgICAgb2xkX3BsYW5lX3N0
-YXRlLT5jcnRjICE9IG5ld19wbGFuZV9zdGF0ZS0+Y3J0YykKIAkJcmV0dXJuIC1FSU5WQUw7CiAK
-LQkvKgotCSAqIEZJWE1FOiBTaW5jZSBwcmVwYXJlX2ZiIGFuZCBjbGVhbnVwX2ZiIGFyZSBhbHdh
-eXMgY2FsbGVkIG9uCi0JICogdGhlIG5ld19wbGFuZV9zdGF0ZSBmb3IgYXN5bmMgdXBkYXRlcyB3
-ZSBuZWVkIHRvIGJsb2NrIGZyYW1lYnVmZmVyCi0JICogY2hhbmdlcy4gVGhpcyBwcmV2ZW50cyB1
-c2Ugb2YgYSBmYiB0aGF0J3MgYmVlbiBjbGVhbmVkIHVwIGFuZAotCSAqIGRvdWJsZSBjbGVhbnVw
-cyBmcm9tIG9jY3VyaW5nLgotCSAqLwotCWlmIChvbGRfcGxhbmVfc3RhdGUtPmZiICE9IG5ld19w
-bGFuZV9zdGF0ZS0+ZmIpCi0JCXJldHVybiAtRUlOVkFMOwotCiAJZnVuY3MgPSBwbGFuZS0+aGVs
-cGVyX3ByaXZhdGU7CiAJaWYgKCFmdW5jcy0+YXRvbWljX2FzeW5jX3VwZGF0ZSkKIAkJcmV0dXJu
-IC1FSU5WQUw7CkBAIC0xNjQ3LDYgKzE2MzgsOCBAQCBFWFBPUlRfU1lNQk9MKGRybV9hdG9taWNf
-aGVscGVyX2FzeW5jX2NoZWNrKTsKICAqIGRybV9hdG9taWNfYXN5bmNfY2hlY2soKSBzdWNjZWVk
-cy4gQXN5bmMgY29tbWl0cyBhcmUgbm90IHN1cHBvc2VkIHRvIHN3YXAKICAqIHRoZSBzdGF0ZXMg
-bGlrZSBub3JtYWwgc3luYyBjb21taXRzLCBidXQganVzdCBkbyBpbi1wbGFjZSBjaGFuZ2VzIG9u
-IHRoZQogICogY3VycmVudCBzdGF0ZS4KKyAqCisgKiBUT0RPOiBJbXBsZW1lbnQgZnVsbCBzd2Fw
-IGluc3RlYWQgb2YgZG9pbmcgaW4tcGxhY2UgY2hhbmdlcy4KICAqLwogdm9pZCBkcm1fYXRvbWlj
-X2hlbHBlcl9hc3luY19jb21taXQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKIAkJCQkgICAgc3Ry
-dWN0IGRybV9hdG9taWNfc3RhdGUgKnN0YXRlKQpAQCAtMTY1Nyw2ICsxNjUwLDkgQEAgdm9pZCBk
-cm1fYXRvbWljX2hlbHBlcl9hc3luY19jb21taXQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKIAlp
-bnQgaTsKIAogCWZvcl9lYWNoX25ld19wbGFuZV9pbl9zdGF0ZShzdGF0ZSwgcGxhbmUsIHBsYW5l
-X3N0YXRlLCBpKSB7CisJCXN0cnVjdCBkcm1fZnJhbWVidWZmZXIgKm5ld19mYiA9IHBsYW5lX3N0
-YXRlLT5mYjsKKwkJc3RydWN0IGRybV9mcmFtZWJ1ZmZlciAqb2xkX2ZiID0gcGxhbmUtPnN0YXRl
-LT5mYjsKKwogCQlmdW5jcyA9IHBsYW5lLT5oZWxwZXJfcHJpdmF0ZTsKIAkJZnVuY3MtPmF0b21p
-Y19hc3luY191cGRhdGUocGxhbmUsIHBsYW5lX3N0YXRlKTsKIApAQCAtMTY2NSwxMSArMTY2MSwx
-NyBAQCB2b2lkIGRybV9hdG9taWNfaGVscGVyX2FzeW5jX2NvbW1pdChzdHJ1Y3QgZHJtX2Rldmlj
-ZSAqZGV2LAogCQkgKiBwbGFuZS0+c3RhdGUgaW4tcGxhY2UsIG1ha2Ugc3VyZSBhdCBsZWFzdCBj
-b21tb24KIAkJICogcHJvcGVydGllcyBoYXZlIGJlZW4gcHJvcGVybHkgdXBkYXRlZC4KIAkJICov
-Ci0JCVdBUk5fT05fT05DRShwbGFuZS0+c3RhdGUtPmZiICE9IHBsYW5lX3N0YXRlLT5mYik7CisJ
-CVdBUk5fT05fT05DRShwbGFuZS0+c3RhdGUtPmZiICE9IG5ld19mYik7CiAJCVdBUk5fT05fT05D
-RShwbGFuZS0+c3RhdGUtPmNydGNfeCAhPSBwbGFuZV9zdGF0ZS0+Y3J0Y194KTsKIAkJV0FSTl9P
-Tl9PTkNFKHBsYW5lLT5zdGF0ZS0+Y3J0Y195ICE9IHBsYW5lX3N0YXRlLT5jcnRjX3kpOwogCQlX
-QVJOX09OX09OQ0UocGxhbmUtPnN0YXRlLT5zcmNfeCAhPSBwbGFuZV9zdGF0ZS0+c3JjX3gpOwog
-CQlXQVJOX09OX09OQ0UocGxhbmUtPnN0YXRlLT5zcmNfeSAhPSBwbGFuZV9zdGF0ZS0+c3JjX3kp
-OworCisJCS8qCisJCSAqIE1ha2Ugc3VyZSB0aGUgRkJzIGhhdmUgYmVlbiBzd2FwcGVkIHNvIHRo
-YXQgY2xlYW51cHMgaW4gdGhlCisJCSAqIG5ld19zdGF0ZSBwZXJmb3JtcyBhIGNsZWFudXAgaW4g
-dGhlIG9sZCBGQi4KKwkJICovCisJCVdBUk5fT05fT05DRShwbGFuZV9zdGF0ZS0+ZmIgIT0gb2xk
-X2ZiKTsKIAl9CiB9CiBFWFBPUlRfU1lNQk9MKGRybV9hdG9taWNfaGVscGVyX2FzeW5jX2NvbW1p
-dCk7CmRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1fbW9kZXNldF9oZWxwZXJfdnRhYmxlcy5o
-IGIvaW5jbHVkZS9kcm0vZHJtX21vZGVzZXRfaGVscGVyX3Z0YWJsZXMuaAppbmRleCBjZmI3YmU0
-MGJlZDcuLmNlNTgyZThlOGYyZiAxMDA2NDQKLS0tIGEvaW5jbHVkZS9kcm0vZHJtX21vZGVzZXRf
-aGVscGVyX3Z0YWJsZXMuaAorKysgYi9pbmNsdWRlL2RybS9kcm1fbW9kZXNldF9oZWxwZXJfdnRh
-Ymxlcy5oCkBAIC0xMTc0LDYgKzExNzQsMTEgQEAgc3RydWN0IGRybV9wbGFuZV9oZWxwZXJfZnVu
-Y3MgewogCSAqIGN1cnJlbnQgb25lIHdpdGggdGhlIG5ldyBwbGFuZSBjb25maWd1cmF0aW9ucyBp
-biB0aGUgbmV3CiAJICogcGxhbmVfc3RhdGUuCiAJICoKKwkgKiBEcml2ZXJzIHNob3VsZCBhbHNv
-IHN3YXAgdGhlIGZyYW1lYnVmZmVycyBiZXR3ZWVuIHBsYW5lIHN0YXRlCisJICogYW5kIG5ld19z
-dGF0ZS4gVGhpcyBpcyByZXF1aXJlZCBiZWNhdXNlIHByZXBhcmUgYW5kIGNsZWFudXAgY2FsbHMK
-KwkgKiBhcmUgcGVyZm9ybWVkIG9uIHRoZSBuZXdfc3RhdGUgb2JqZWN0LCB0aGVuIHRvIGNsZWFu
-dXAgdGhlIG9sZAorCSAqIGZyYW1lYnVmZmVyLCBpdCBuZWVkcyB0byBiZSBwbGFjZWQgaW5zaWRl
-IHRoZSBuZXdfc3RhdGUgb2JqZWN0LgorCSAqCiAJICogRklYTUU6CiAJICogIC0gSXQgb25seSB3
-b3JrcyBmb3Igc2luZ2xlIHBsYW5lIHVwZGF0ZXMKIAkgKiAgLSBBc3luYyBQYWdlZmxpcHMgYXJl
-IG5vdCBzdXBwb3J0ZWQgeWV0Ci0tIAoyLjIwLjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmFtZC1nZnggbWFpbGluZyBsaXN0CmFtZC1nZnhAbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
-dGluZm8vYW1kLWdmeA==
+1. dma_alloc_attrs, __get_free_pages can fail and return NULL.
+Further uses of their return values lead to NULL pointer
+dereferences
+
+2. In the error-handling path, video_unregister_device uses
+"rga->vfd" which has been freed by video_device_release
+
+3. The error handling for v4l2_m2m_init and video_register_device
+has memory-leak issues
+
+The patch fixes the above issues.
+
+Signed-off-by: Kangjie Lu <kjlu@umn.edu>
+---
+ drivers/media/platform/rockchip/rga/rga.c | 26 ++++++++++++++++++++---
+ 1 file changed, 23 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index 5c653287185f..468365ceb99d 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -889,11 +889,24 @@ static int rga_probe(struct platform_device *pdev)
+ 	rga->cmdbuf_virt = dma_alloc_attrs(rga->dev, RGA_CMDBUF_SIZE,
+ 					   &rga->cmdbuf_phy, GFP_KERNEL,
+ 					   DMA_ATTR_WRITE_COMBINE);
++	if (!rga->cmdbuf_virt) {
++		ret = -ENOMEM;
++		goto unreg_video_dev;
++	}
+ 
+ 	rga->src_mmu_pages =
+ 		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
++	if (!rga->src_mmu_pages) {
++		ret = -ENOMEM;
++		goto free_dma_attrs;
++	}
++
+ 	rga->dst_mmu_pages =
+ 		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
++	if (!rga->dst_mmu_pages) {
++		ret = -ENOMEM;
++		goto free_dst_pages;
++	}
+ 
+ 	def_frame.stride = (def_frame.width * def_frame.fmt->depth) >> 3;
+ 	def_frame.size = def_frame.stride * def_frame.height;
+@@ -901,7 +914,7 @@ static int rga_probe(struct platform_device *pdev)
+ 	ret = video_register_device(vfd, VFL_TYPE_GRABBER, -1);
+ 	if (ret) {
+ 		v4l2_err(&rga->v4l2_dev, "Failed to register video device\n");
+-		goto rel_vdev;
++		goto free_pages;
+ 	}
+ 
+ 	v4l2_info(&rga->v4l2_dev, "Registered %s as /dev/%s\n",
+@@ -909,10 +922,17 @@ static int rga_probe(struct platform_device *pdev)
+ 
+ 	return 0;
+ 
+-rel_vdev:
+-	video_device_release(vfd);
++free_pages:
++	free_pages((unsigned long)rga->src_mmu_pages, 3);
++free_dst_pages:
++	free_pages((unsigned long)rga->dst_mmu_pages, 3);
++free_dma_attrs:
++	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
++		       rga->cmdbuf_phy,
++		       DMA_ATTR_WRITE_COMBINE);
+ unreg_video_dev:
+ 	video_unregister_device(rga->vfd);
++	video_device_release(vfd);
+ unreg_v4l2_dev:
+ 	v4l2_device_unregister(&rga->v4l2_dev);
+ err_put_clk:
+-- 
+2.17.1
