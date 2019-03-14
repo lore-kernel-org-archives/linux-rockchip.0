@@ -1,126 +1,112 @@
-From: =?UTF-8?Q?Michel_D=c3=a4nzer?= <michel-otUistvHUpPR7s880joybQ@public.gmane.org>
-Subject: Re: [PATCH v2 1/5] drm/rockchip: fix fb references in async update
-Date: Thu, 14 Mar 2019 10:15:49 +0100
-Message-ID: <d91d5582-3ccf-2249-21ee-9ccf115096b2@daenzer.net>
-References: <20190312022204.2775-1-helen.koike@collabora.com>
-	<20190312022204.2775-2-helen.koike@collabora.com>
-	<20190312073438.05ad8173@collabora.com>
-	<f888a2d0-c6b1-8995-7254-ba2923dd22f9@collabora.com>
-	<20190312165243.5b771e4a@collabora.com>
-	<CAAFQd5CCEDaxLbw0E9NJJ-tEcHd8-Lidvcvt8qfPAnKu7uuj8w@mail.gmail.com>
-	<05750143-708b-b84e-af67-82ec6815bd89@daenzer.net>
-	<ed44e1f4-07da-b1cb-b5cb-d34d29758502@collabora.com>
+From: Steven Price <steven.price@arm.com>
+Subject: Re: [PATCH v3] media: rga: fix NULL pointer dereferences,
+ use-after-free, memory leak
+Date: Thu, 14 Mar 2019 10:30:15 +0000
+Message-ID: <3471f9df-ad8e-59c8-07d4-454dcc45e480@arm.com>
+References: <ff11d704-489f-836e-6c9d-1b2fb5e963b6@arm.com>
+ <20190314050344.29790-1-kjlu@umn.edu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <ed44e1f4-07da-b1cb-b5cb-d34d29758502-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Content-Language: en-CA
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sean Paul <seanpaul-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, nicholas.kazlauskas-5C7GfCeVMHo@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190314050344.29790-1-kjlu@umn.edu>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kangjie Lu <kjlu@umn.edu>
+Cc: Heiko Stuebner <heiko@sntech.de>, Jacob chen <jacob2.chen@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, pakki001@umn.edu, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOS0wMy0xMyA3OjA4IHAubS4sIEhlbGVuIEtvaWtlIHdyb3RlOgo+IE9uIDMvMTMvMTkg
-Njo1OCBBTSwgTWljaGVsIETDpG56ZXIgd3JvdGU6Cj4+IE9uIDIwMTktMDMtMTMgNDo0MiBhLm0u
-LCBUb21hc3ogRmlnYSB3cm90ZToKPj4+IE9uIFdlZCwgTWFyIDEzLCAyMDE5IGF0IDEyOjUyIEFN
-IEJvcmlzIEJyZXppbGxvbgo+Pj4gPGJvcmlzLmJyZXppbGxvbkBjb2xsYWJvcmEuY29tPiB3cm90
-ZToKPj4+PiBPbiBUdWUsIDEyIE1hciAyMDE5IDEyOjM0OjQ1IC0wMzAwCj4+Pj4gSGVsZW4gS29p
-a2UgPGhlbGVuLmtvaWtlQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+Pj4+PiBPbiAzLzEyLzE5IDM6
-MzQgQU0sIEJvcmlzIEJyZXppbGxvbiB3cm90ZToKPj4+Pj4+IE9uIE1vbiwgMTEgTWFyIDIwMTkg
-MjM6MjE6NTkgLTAzMDAKPj4+Pj4+IEhlbGVuIEtvaWtlIDxoZWxlbi5rb2lrZUBjb2xsYWJvcmEu
-Y29tPiB3cm90ZToKPj4+Pj4+Cj4+Pj4+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX2RybV92b3AuYwo+Pj4+Pj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4+Pj4+PiBAQCAtOTEyLDMwICs5MTIsMzEgQEAgc3RhdGlj
-IHZvaWQgdm9wX3BsYW5lX2F0b21pY19hc3luY191cGRhdGUoc3RydWN0IGRybV9wbGFuZSAqcGxh
-bmUsCj4+Pj4+Pj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBk
-cm1fcGxhbmVfc3RhdGUgKm5ld19zdGF0ZSkKPj4+Pj4+PiAgewo+Pj4+Pj4+ICAgIHN0cnVjdCB2
-b3AgKnZvcCA9IHRvX3ZvcChwbGFuZS0+c3RhdGUtPmNydGMpOwo+Pj4+Pj4+IC0gIHN0cnVjdCBk
-cm1fcGxhbmVfc3RhdGUgKnBsYW5lX3N0YXRlOwo+Pj4+Pj4+ICsgIHN0cnVjdCBkcm1fZnJhbWVi
-dWZmZXIgKm9sZF9mYiA9IHBsYW5lLT5zdGF0ZS0+ZmI7Cj4+Pj4+Pj4KPj4+Pj4+PiAtICBwbGFu
-ZV9zdGF0ZSA9IHBsYW5lLT5mdW5jcy0+YXRvbWljX2R1cGxpY2F0ZV9zdGF0ZShwbGFuZSk7Cj4+
-Pj4+Pj4gLSAgcGxhbmVfc3RhdGUtPmNydGNfeCA9IG5ld19zdGF0ZS0+Y3J0Y194Owo+Pj4+Pj4+
-IC0gIHBsYW5lX3N0YXRlLT5jcnRjX3kgPSBuZXdfc3RhdGUtPmNydGNfeTsKPj4+Pj4+PiAtICBw
-bGFuZV9zdGF0ZS0+Y3J0Y19oID0gbmV3X3N0YXRlLT5jcnRjX2g7Cj4+Pj4+Pj4gLSAgcGxhbmVf
-c3RhdGUtPmNydGNfdyA9IG5ld19zdGF0ZS0+Y3J0Y193Owo+Pj4+Pj4+IC0gIHBsYW5lX3N0YXRl
-LT5zcmNfeCA9IG5ld19zdGF0ZS0+c3JjX3g7Cj4+Pj4+Pj4gLSAgcGxhbmVfc3RhdGUtPnNyY195
-ID0gbmV3X3N0YXRlLT5zcmNfeTsKPj4+Pj4+PiAtICBwbGFuZV9zdGF0ZS0+c3JjX2ggPSBuZXdf
-c3RhdGUtPnNyY19oOwo+Pj4+Pj4+IC0gIHBsYW5lX3N0YXRlLT5zcmNfdyA9IG5ld19zdGF0ZS0+
-c3JjX3c7Cj4+Pj4+Pj4gLQo+Pj4+Pj4+IC0gIGlmIChwbGFuZV9zdGF0ZS0+ZmIgIT0gbmV3X3N0
-YXRlLT5mYikKPj4+Pj4+PiAtICAgICAgICAgIGRybV9hdG9taWNfc2V0X2ZiX2Zvcl9wbGFuZShw
-bGFuZV9zdGF0ZSwgbmV3X3N0YXRlLT5mYik7Cj4+Pj4+Pj4gLQo+Pj4+Pj4+IC0gIHN3YXAocGxh
-bmVfc3RhdGUsIHBsYW5lLT5zdGF0ZSk7Cj4+Pj4+Pj4gLQo+Pj4+Pj4+IC0gIGlmIChwbGFuZS0+
-c3RhdGUtPmZiICYmIHBsYW5lLT5zdGF0ZS0+ZmIgIT0gbmV3X3N0YXRlLT5mYikgewo+Pj4+Pj4+
-ICsgIC8qCj4+Pj4+Pj4gKyAgICogQSBzY2Fub3V0IGNhbiBzdGlsbCBiZSBvY2N1cnJpbmcsIHNv
-IHdlIGNhbid0IGRyb3AgdGhlIHJlZmVyZW5jZSB0bwo+Pj4+Pj4+ICsgICAqIHRoZSBvbGQgZnJh
-bWVidWZmZXIuIFRvIHNvbHZlIHRoaXMgd2UgZ2V0IGEgcmVmZXJlbmNlIHRvIG9sZF9mYiBhbmQK
-Pj4+Pj4+PiArICAgKiBzZXQgYSB3b3JrZXIgdG8gcmVsZWFzZSBpdCBsYXRlci4KPj4+Pj4+Cj4+
-Pj4+PiBIbSwgZG9lc24ndCBsb29rIGxpa2UgYW4gYXN5bmMgdXBkYXRlIHRvIG1lIGlmIHdlIGhh
-dmUgdG8gd2FpdCBmb3IgdGhlCj4+Pj4+PiBuZXh0IFZCTEFOSyB0byBoYXBwZW4gdG8gZ2V0IHRo
-ZSBuZXcgY29udGVudCBvbiB0aGUgc2NyZWVuLiBNYXliZSB3ZQo+Pj4+Pj4gc2hvdWxkIHJlamVj
-dCBhc3luYyB1cGRhdGVzIHdoZW4gb2xkX2ZiICE9IG5ld19mYiBpbiB0aGUgcmsKPj4+Pj4+IC0+
-YXN5bmNfY2hlY2soKSBob29rLgo+Pj4+Pgo+Pj4+PiBVbmxlc3MgSSBhbSBtaXN1bmRlcnN0YW5k
-aW5nIHRoaXMsIHdlIGRvbid0IHdhaXQgaGVyZSwgd2UganVzdCBncmFiIGEKPj4+Pj4gcmVmZXJl
-bmNlIHRvIHRoZSBmYiBpbiBjYXNlIGl0IGlzIGJlaW5nIHN0aWxsIHVzZWQgYnkgdGhlIGh3LCBz
-byBpdAo+Pj4+PiBkb2Vzbid0IGdldCByZWxlYXNlZCBwcmVtYXR1cmVseS4KPj4+Pgo+Pj4+IEkg
-d2FzIGp1c3QgcmVhY3RpbmcgdG8gdGhlIGNvbW1lbnQgdGhhdCBzYXlzIHRoZSBuZXcgRkIgc2hv
-dWxkIHN0YXkKPj4+PiBhcm91bmQgdW50aWwgdGhlIG5leHQgVkJMQU5LIGV2ZW50IGhhcHBlbnMu
-IElmIHRoZSBGQiBtdXN0IHN0YXkgYXJvdW5kCj4+Pj4gdGhhdCBwcm9iYWJseSBtZWFucyB0aGUg
-SFcgaXMgc3RpbGwgdXNpbmcsIHdoaWNoIG1hZGUgbWUgd29uZGVyIGlmIHRoaXMKPj4+PiBIVyBh
-Y3R1YWxseSBzdXBwb3J0cyBhc3luYyB1cGRhdGUgKHdoZXJlIGFzeW5jIG1lYW5zICJ1cGRhdGUg
-bm93IGFuZAo+Pj4+IGRvbid0IGNhcmUgYWJvdXQgYWJvdXQgdGVhcmluZyIpLiBPciBtYXliZSBp
-dCB0YWtlcyBzb21lIHRpbWUgdG8gc3dpdGNoCj4+Pj4gdG8gdGhlIG5ldyBGQiBhbmQgd2FpdGlu
-ZyBmb3IgdGhlIG5leHQgVkJMQU5LIHRvIHJlbGVhc2UgdGhlIG9sZCBGQiB3YXMKPj4+PiBhbiBl
-YXN5IHNvbHV0aW9uIHRvIG5vdCB3YWl0IGZvciB0aGUgZmxpcCB0byBhY3R1YWxseSBoYXBwZW4g
-aW4KPj4+PiAtPmFzeW5jX3VwZGF0ZSgpICh3aGljaCBpcyBraW5kIG9mIGEgY29tYmluYXRpb24g
-b2YgYXN5bmMrbm9uLWJsb2NraW5nKS4KPj4+Cj4+PiBUaGUgaGFyZHdhcmUgc3dpdGNoZXMgZnJh
-bWVidWZmZXJzIG9uIHZibGFuaywgc28gd2hhdGV2ZXIgZnJhbWVidWZmZXIKPj4+IGlzIGN1cnJl
-bnRseSBiZWluZyBzY2FubmVkIG91dCBmcm9tIG5lZWRzIHRvIHN0YXkgdGhlcmUgdW50aWwgdGhl
-Cj4+PiBoYXJkd2FyZSBzd2l0Y2hlcyB0byB0aGUgbmV3IG9uZSBpbiBzaGFkb3cgcmVnaXN0ZXJz
-LiBJZiB0aGF0IGRvZXNuJ3QKPj4+IGhhcHBlbiwgeW91IGdldCBJT01NVSBmYXVsdHMgYW5kIHRo
-ZSBkaXNwbGF5IGNvbnRyb2xsZXIgc3RvcHMgd29ya2luZwo+Pj4gc2luY2Ugd2UgZG9uJ3QgaGF2
-ZSBhbnkgZmF1bHQgaGFuZGxpbmcgY3VycmVudGx5LCBqdXN0IHByaW50aW5nIGEKPj4+IG1lc3Nh
-Z2UuCj4+Cj4+IFNvdW5kcyBsaWtlIHlvdXIgaGFyZHdhcmUgZG9lc24ndCBhY3R1YWxseSBzdXBw
-b3J0IGFzeW5jIGZsaXBzLiBJdCdzCj4+IHByb2JhYmx5IGJldHRlciBmb3IgdGhlIGRyaXZlciBu
-b3QgdG8gcHJldGVuZCBvdGhlcndpc2UuCj4gCj4gSSB0aGluayB3ZWUgbmVlZCB0byBjbGFyaWZ5
-IHRoZSBtZWFuaW5nIG9mIHRoZSBhc3luY191cGRhdGUgY2FsbGJhY2sKPiAoYW5kIHdlIHNob3Vs
-ZCBjbGFyaWZ5IGl0IGluIHRoZSBkb2NzKS4KPiAKPiBUaGUgd2F5IEkgdW5kZXJzdGFuZCB3aGF0
-IHRoZSBhc3luY191cGRhdGUgY2FsbGJhY2sgc2hvdWxkIGRvIGlzOiBkb24ndAo+IGJsb2NrIChp
-LmUuIGRvbid0IHdhaXQgZm9yIHRoZSBuZXh0IHZibGFuayksCgpOb3RlIHRoYXQgdGhvc2UgYXJl
-IHR3byBzZXBhcmF0ZSB0aGluZ3MuICJBc3luYyBmbGlwcyIgYXJlIGFib3V0ICJkb24ndAp3YWl0
-IGZvciB2YmxhbmsiLCBub3QgYWJvdXQgImRvbid0IGJsb2NrIi4KCgo+IGFuZCB1cGRhdGUgdGhl
-IGh3IHN0YXRlIGF0IHNvbWUgcG9pbnQgd2l0aCB0aGUgbGF0ZXN0IHN0YXRlIGZyb20gdGhlCj4g
-bGFzdCBjYWxsIHRvIGFzeW5jX3VwZGF0ZS4KPiAKPiBXaGljaCBtZWFucyB0aGF0OiBhbnkgZHJp
-dmVyIGNhbiBpbXBsZW1lbnQgdGhlIGFzeW5jX3VwZGF0ZSBjYWxsYmFjaywKPiBpbmRlcGVuZGVu
-dGx5IGlmIGl0IHN1cHBvcnRzIGNoYW5naW5nIGl0cyBzdGF0ZSByaWdodCBhd2F5IG9yIG5vdC4K
-PiBJZiBodyBzdXBwb3J0cywgYXN5bmNfdXBkYXRlIGNhbiBjaGFuZ2UgdGhlIGh3IHN0YXRlIHJp
-Z2h0IGF3YXksIGlmIG5vdCwKPiB0aGVuIGNoYW5nZXMgd2lsbCBiZSBhcHBsaWVkIGluIHRoZSBu
-ZXh0IHZibGFuayAoaXQgY2FuIGV2ZW4gYW1lbmQgdGhlCj4gcGVuZGluZyBjb21taXQgaWYgdGhl
-cmUgaXMgb25lKS4KPiBXaXRoIHRoaXMsIHdlIGNhbiByZW1vdmUgYWxsIHRoZSBsZWdhY3kgY3Vy
-c29yIGNvZGUgdG8gdXNlIHRoZQo+IGFzeW5jX3VwZGF0ZSBjYWxsYmFjaywgc2luY2UgYXN5bmNf
-dXBkYXRlIGNhbiBiZSBjYWxsZWQgMTAwIHRpbWVzIGJlZm9yZQo+IHRoZSBuZXh0IHZibGFuaywg
-YW5kIHRoZSBsYXRlc3Qgc3RhdGUgd2lsbCBiZSBzZXQgdG8gdGhlIGh3IHdpdGhvdXQKPiB3YWl0
-aW5nIDEwMCB2YmxhbmtzLgo+IAo+IFBsZWFzZSwgbGV0IG1lIGtub3cgaWYgdGhpcyBpcyB5b3Vy
-IHVuZGVyc3RhbmRpbmcgYXMgd2VsbC4gSWYgbm90LCB0aGVuCj4gd2UgbmVlZCB0byByZW1vZGVs
-IHRoaW5ncy4KCldoaWxlIHRoaXMgbWF5IG1ha2Ugc2Vuc2UgZm9yIGN1cnNvciB1cGRhdGVzLCBJ
-IGRvbid0IHRoaW5rIGl0IGRvZXMgZm9yCmFzeW5jIGZsaXBzLiBJZiB0aGUgZmxpcCBvbmx5IGFj
-dHVhbGx5IHRha2VzIGVmZmVjdCBkdXJpbmcgdGhlIG5leHQKdmJsYW5rLCBpdCBkb2Vzbid0IHJl
-YWxseSBmaXQgdGhlIGRlZmluaXRpb24gYW5kIHVzZXJzcGFjZSBleHBlY3RhdGlvbgpvZiBhbiBh
-c3luYyBmbGlwLiBJdCdzIGJldHRlciB0byBjbGVhcmx5IGNvbW11bmljYXRlIHRvIHVzZXJzcGFj
-ZSB0aGF0CnRoZSBoYXJkd2FyZSBjYW5ub3QgZG8gYXN5bmMgZmxpcHMsIHRoYW4gdG8gcHJldGVu
-ZCBpdCBjYW4gYW5kIGZha2UKdGhlbS4gVXNlcnNwYWNlIGhhcyB0byBkZWFsIHdpdGggdGhpcyBh
-bnl3YXksIHNpbmNlIGFzeW5jIGZsaXBzIHdlcmVuJ3QKYWx3YXlzIHN1cHBvcnRlZCBpbiBnZW5l
-cmFsLgoKCi0tIApFYXJ0aGxpbmcgTWljaGVsIETDpG56ZXIgICAgICAgICAgICAgICB8ICAgICAg
-ICAgICAgICBodHRwczovL3d3dy5hbWQuY29tCkxpYnJlIHNvZnR3YXJlIGVudGh1c2lhc3QgICAg
-ICAgICAgICAgfCAgICAgICAgICAgICBNZXNhIGFuZCBYIGRldmVsb3BlcgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwppb21tdSBtYWlsaW5nIGxpc3QKaW9t
-bXVAbGlzdHMubGludXgtZm91bmRhdGlvbi5vcmcKaHR0cHM6Ly9saXN0cy5saW51eGZvdW5kYXRp
-b24ub3JnL21haWxtYW4vbGlzdGluZm8vaW9tbXU=
+On 14/03/2019 05:03, Kangjie Lu wrote:
+> 1. dma_alloc_attrs, __get_free_pages can fail and return NULL.
+> Further uses of their return values lead to NULL pointer
+> dereferences
+> 
+> 2. In the error-handling path, video_unregister_device uses
+> "rga->vfd" which has been freed by video_device_release
+> 
+> 3. The error handling for v4l2_m2m_init and video_register_device
+> has memory-leak issues
+> 
+> The patch fixes the above issues.
+> 
+> Signed-off-by: Kangjie Lu <kjlu@umn.edu>
+
+Reviewed-by: Steven Price <steven.price@arm.com>
+
+Yes, that looks like it solves the issues with the clean up - thanks for
+reworking it!
+
+> ---
+>  drivers/media/platform/rockchip/rga/rga.c | 26 ++++++++++++++++++++---
+>  1 file changed, 23 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+> index 5c653287185f..468365ceb99d 100644
+> --- a/drivers/media/platform/rockchip/rga/rga.c
+> +++ b/drivers/media/platform/rockchip/rga/rga.c
+> @@ -889,11 +889,24 @@ static int rga_probe(struct platform_device *pdev)
+>  	rga->cmdbuf_virt = dma_alloc_attrs(rga->dev, RGA_CMDBUF_SIZE,
+>  					   &rga->cmdbuf_phy, GFP_KERNEL,
+>  					   DMA_ATTR_WRITE_COMBINE);
+> +	if (!rga->cmdbuf_virt) {
+> +		ret = -ENOMEM;
+> +		goto unreg_video_dev;
+> +	}
+>  
+>  	rga->src_mmu_pages =
+>  		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
+> +	if (!rga->src_mmu_pages) {
+> +		ret = -ENOMEM;
+> +		goto free_dma_attrs;
+> +	}
+> +
+>  	rga->dst_mmu_pages =
+>  		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
+> +	if (!rga->dst_mmu_pages) {
+> +		ret = -ENOMEM;
+> +		goto free_dst_pages;
+> +	}
+>  
+>  	def_frame.stride = (def_frame.width * def_frame.fmt->depth) >> 3;
+>  	def_frame.size = def_frame.stride * def_frame.height;
+> @@ -901,7 +914,7 @@ static int rga_probe(struct platform_device *pdev)
+>  	ret = video_register_device(vfd, VFL_TYPE_GRABBER, -1);
+>  	if (ret) {
+>  		v4l2_err(&rga->v4l2_dev, "Failed to register video device\n");
+> -		goto rel_vdev;
+> +		goto free_pages;
+>  	}
+>  
+>  	v4l2_info(&rga->v4l2_dev, "Registered %s as /dev/%s\n",
+> @@ -909,10 +922,17 @@ static int rga_probe(struct platform_device *pdev)
+>  
+>  	return 0;
+>  
+> -rel_vdev:
+> -	video_device_release(vfd);
+> +free_pages:
+> +	free_pages((unsigned long)rga->src_mmu_pages, 3);
+> +free_dst_pages:
+> +	free_pages((unsigned long)rga->dst_mmu_pages, 3);
+
+Minor comment: free_pages accepts a NULL pointer (or more precisely 0,
+since it takes an unsigned long), it just returns having done nothing.
+So there isn't actually any harm in calling free_pages unconditionally
+in the error path (since rga is initialised to all zeros). You can save
+a couple of labels in the error path using that trick.
+
+Thanks,
+
+Steve
+
+> +free_dma_attrs:
+> +	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
+> +		       rga->cmdbuf_phy,
+> +		       DMA_ATTR_WRITE_COMBINE);
+>  unreg_video_dev:
+>  	video_unregister_device(rga->vfd);
+> +	video_device_release(vfd);
+>  unreg_v4l2_dev:
+>  	v4l2_device_unregister(&rga->v4l2_dev);
+>  err_put_clk:
+> 
