@@ -1,30 +1,60 @@
-From: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2] drm/rockchip: vop: Support dithering to RGB666
-Date: Wed, 13 Mar 2019 20:26:55 +0000
-Message-ID: <CAPCnQJnDB5Z=xNCdBw0R3k18GDKdUeZ__2fBA_YKYzZ6Rdny2Q@mail.gmail.com>
-References: <20190217134255.6287-1-urjaman@gmail.com>
- <20190219100848.2222-1-urjaman@gmail.com>
+From: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v3 0/5] drm: Fix fb changes for async updates
+Date: Wed, 13 Mar 2019 21:20:21 -0300
+Message-ID: <20190314002027.7833-1-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190219100848.2222-1-urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/amd-gfx>,
+ <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/amd-gfx>
+List-Post: <mailto:amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/amd-gfx>,
+ <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "amd-gfx" <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, nicholas.kazlauskas-5C7GfCeVMHo@public.gmane.org
+Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sean Paul <seanpaul-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, daniel.vetter-/w4YWyX8dFk@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org, Mamta Shukla <mamtashukla555-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Anthony Koo <Anthony.Koo-5C7GfCeVMHo@public.gmane.org>, =?UTF-8?q?Ville=20Syrj=C3=A4l=C3=A4?= <ville.syrjala-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "David (ChunMing) Zhou" <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Bhawanpreet Lakha <Bhawanpreet.Lakha-5C7GfCeVMHo@public.gmane.org>, David Francis <David.Francis-5C7GfCeVMHo@public.gmane.org>, amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, harry.wentland-5C7GfCeVMHo@public.gmane.org, andrey.grodzovsky-5C7GfCeVMHo@public.gmane.org, Leo Li <sunpeng.li-5C7GfCeVMHo@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Mikita Lipski <mikita.lipski-5C7GfCeVMHo@public.gmane.org>, Sean Paul <sean-p7yTbzM4H96eqtR555YLDQ@public.gmane.org>lin
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Umm, Ping?
-
--- 
-Urja Rannikko
+SGVsbG8sCgpUaGlzIHNlcmllcyBmaXhlcyB0aGUgc2xvdyBkb3duIGluIHBlcmZvcm1hbmNlIGlu
+dHJvZHVjZWQgYnkKIltQQVRDSCB2Ml0gZHJtOiBCbG9jayBmYiBjaGFuZ2VzIGZvciBhc3luYyBw
+bGFuZSB1cGRhdGVzIiB3aGVyZSBhc3luYyB1cGRhdGUKZmFsbHMgYmFjayB0byBhIHN5bmMgdXBk
+YXRlLCBjYXVzaW5nIGlndCBmYWlsdXJlcyBvZiB0eXBlOgoKICAgICJDUklUSUNBTDogY29tcGxl
+dGVkIDk3IGN1cnNvciB1cGRhdGVkIGluIGEgcGVyaW9kIG9mIDMwIGZsaXBzLCB3ZQogICAgZXhw
+ZWN0IHRvIGNvbXBsZXRlIGFwcHJveGltYXRlbHkgMTUzNjAgdXBkYXRlcywgd2l0aCB0aGUgdGhy
+ZXNob2xkIHNldAogICAgYXQgNzY4MCIKClBsZWFzZSByZWFkIHRoZSBjb21taXQgbWVzc2FnZSBv
+ZiAiZHJtOiBkb24ndCBibG9jayBmYiBjaGFuZ2VzIGZvciBhc3luYwpwbGFuZSB1cGRhdGVzIiB0
+byB1bmRlcnN0YW5kIGhvdyBpdCB3b3Jrcy4KCkkgdGVzdGVkIG9uIHRoZSByb2NrY2hpcCwgb24g
+aTkxNSBhbmQgb24gdmM0IHdpdGggaWd0IHBsYW5lX2N1cnNvcl9sZWdhY3kgYW5kCmttc19jdXJz
+b3JfbGVnYWN5IGFuZCBJIGRpZG4ndCBzZWUgYW55IHJlZ3Jlc3Npb25zLgoKSSBjb3VsZG4ndCB0
+ZXN0IG9uIE1TTSBhbmQgQU1EIGJlY2F1c2UgSSBkb24ndCBoYXZlIHRoZSBoYXJkd2FyZQpJIHdv
+dWxkIGFwcHJlY2lhdGUgaWYgYW55b25lIGNvdWxkIGhlbHAgbWUgdGVzdGluZyB0aG9zZS4KCnYx
+IGxpbms6IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvY292ZXIvMTA4Mzc4NDcvCgpUaGFu
+a3MhCkhlbGVuCgpDaGFuZ2VzIGluIHYzOgotIHVzZSBzd2FwKCkgdG8gc3dhcCBvbGQgYW5kIG5l
+dyBmcmFtZWJ1ZmZlcnMgaW4gYXN5bmNfdXBkYXRlCi0gZ2V0IHRoZSByZWZlcmVuY2UgdG8gb2xk
+X2ZiIGFuZCBzZXQgdGhlIHdvcmtlciBhZnRlciB2b3BfcGxhbmVfYXRvbWljX3VwZGF0ZSgpCi0g
+YWRkIGEgRklYTUUgdGFnIGZvciB3aGVuIHdlIGhhdmUgbXVsdGlwbGUgZmJzIHRvIGJlIHJlbGVh
+c2VkIHdoZW4KdmJsYW5rIGhhcHBlbnMuCi0gdXBkYXRlIGNvbW1pdCBtZXNzYWdlCi0gQWRkIFJl
+dmlld2VkLWJ5IHRhZ3MKLSBBZGQgVE9ETyBpbiBkcm1fYXRvbWljX2hlbHBlcl9hc3luY19jb21t
+aXQoKQoKQ2hhbmdlcyBpbiB2MjoKLSBhZGRlZCByZXZpZXdlZC1ieSB0YWcKLSB1cGRhdGUgQ0Mg
+c3RhYmxlIGFuZCBGaXhlcyB0YWcKLSBBZGRlZCByZXZpZXdlZC1ieSB0YWcKLSB1cGRhdGVkIEND
+IHN0YWJsZSBhbmQgRml4ZXMgdGFnCi0gQ2hhbmdlIHRoZSBvcmRlciBvZiB0aGUgcGF0Y2ggaW4g
+dGhlIHNlcmllcywgYWRkIHRoaXMgYXMgdGhlIGxhc3Qgb25lLgotIEFkZCBkb2N1bWVudGF0aW9u
+Ci0gcy9iYWxsYW5jZWQvYmFsYW5jZWQKCkhlbGVuIEtvaWtlICg1KToKICBkcm0vcm9ja2NoaXA6
+IGZpeCBmYiByZWZlcmVuY2VzIGluIGFzeW5jIHVwZGF0ZQogIGRybS9hbWQ6IGZpeCBmYiByZWZl
+cmVuY2VzIGluIGFzeW5jIHVwZGF0ZQogIGRybS9tc206IGZpeCBmYiByZWZlcmVuY2VzIGluIGFz
+eW5jIHVwZGF0ZQogIGRybS92YzQ6IGZpeCBmYiByZWZlcmVuY2VzIGluIGFzeW5jIHVwZGF0ZQog
+IGRybTogZG9uJ3QgYmxvY2sgZmIgY2hhbmdlcyBmb3IgYXN5bmMgcGxhbmUgdXBkYXRlcwoKIC4u
+Li9ncHUvZHJtL2FtZC9kaXNwbGF5L2FtZGdwdV9kbS9hbWRncHVfZG0uYyB8ICAzICstCiBkcml2
+ZXJzL2dwdS9kcm0vZHJtX2F0b21pY19oZWxwZXIuYyAgICAgICAgICAgfCAyMiArKysrLS0tLQog
+ZHJpdmVycy9ncHUvZHJtL21zbS9kaXNwL21kcDUvbWRwNV9wbGFuZS5jICAgIHwgIDQgKysKIGRy
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgICB8IDUxICsrKysrKysr
+KystLS0tLS0tLS0KIGRyaXZlcnMvZ3B1L2RybS92YzQvdmM0X3BsYW5lLmMgICAgICAgICAgICAg
+ICB8ICAyICstCiBpbmNsdWRlL2RybS9kcm1fbW9kZXNldF9oZWxwZXJfdnRhYmxlcy5oICAgICAg
+fCAgNSArKwogNiBmaWxlcyBjaGFuZ2VkLCA0OSBpbnNlcnRpb25zKCspLCAzOCBkZWxldGlvbnMo
+LSkKCi0tIAoyLjIwLjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmFtZC1nZnggbWFpbGluZyBsaXN0CmFtZC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vYW1kLWdmeA==
