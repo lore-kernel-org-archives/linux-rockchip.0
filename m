@@ -1,127 +1,221 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH] drm/bridge: dw-hdmi: disable SCDC configuration for
- invalid setups
-Date: Fri, 15 Mar 2019 10:45:03 -0500
-Message-ID: <CAL_JsqJ_+=h_Xpdm2RJd0mtHS1YxtxDwNxY19oAe4-+JNd8A7A@mail.gmail.com>
-References: <20190315095414.28520-1-narmstrong@baylibre.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: Re: [PATCH v2 1/5] drm/rockchip: fix fb references in async update
+Date: Fri, 15 Mar 2019 13:54:31 -0300
+Message-ID: <db673e6a-7dbb-f529-69b8-afff68dc91db@collabora.com>
+References: <20190312022204.2775-1-helen.koike@collabora.com>
+ <20190312022204.2775-2-helen.koike@collabora.com>
+ <20190312073438.05ad8173@collabora.com>
+ <f888a2d0-c6b1-8995-7254-ba2923dd22f9@collabora.com>
+ <20190312165243.5b771e4a@collabora.com>
+ <CAAFQd5CCEDaxLbw0E9NJJ-tEcHd8-Lidvcvt8qfPAnKu7uuj8w@mail.gmail.com>
+ <05750143-708b-b84e-af67-82ec6815bd89@daenzer.net>
+ <ed44e1f4-07da-b1cb-b5cb-d34d29758502@collabora.com>
+ <d91d5582-3ccf-2249-21ee-9ccf115096b2@daenzer.net>
+ <dd7de9ff-0ac8-80fd-b88b-250bdf988921@collabora.com>
+ <61b8420e-9b63-b67f-e9a8-fb8a0cb7d219@daenzer.net>
+ <20190315112519.0af4fdc0@collabora.com>
+ <e51a154f-ff4c-b4bc-4075-1a662ae89364@daenzer.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190315095414.28520-1-narmstrong@baylibre.com>
+In-Reply-To: <e51a154f-ff4c-b4bc-4075-1a662ae89364@daenzer.net>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Neil Armstrong <narmstrong@baylibre.com>
-Cc: Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, "heiko@sntech.de" <heiko@sntech.de>, linux-amlogic@lists.infradead.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Jernej Skrabec <jernej.skrabec@siol.net>
+To: =?UTF-8?Q?Michel_D=c3=a4nzer?= <michel@daenzer.net>, Boris Brezillon <boris.brezillon@collabora.com>
+Cc: =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@google.com>, Sean Paul <seanpaul@google.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "list@263.net:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>, kernel@collabora.com, nicholas.kazlauskas@amd.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Mar 15, 2019 at 4:54 AM Neil Armstrong <narmstrong@baylibre.com> wrote:
->
-> This patch is an attempt to limit HDMI 2.0 SCDC setup when :
-> - the SoC embeds an HDMI 1.4 only controller
-> - the EDID supports SCDC but not scrambling
-> - the EDID supports SCDC scrambling but not for low TMDS bit rates,
->   while only supporting low TMDS bit rates
->
-> This to avoid communicating with the SCDC DDC slave uncessary, and
-> setting the DW-HDMI TMDS Scrambler setup when not supported by the
-> underlying hardware.
->
-> Reported-by: Rob Herring <robh@kernel.org>
-> Fixes: 264fce6cc2c1 ("drm/bridge: dw-hdmi: Add SCDC and TMDS Scrambling support")
-> Signed-off-by: Neil Armstrong <narmstrong@baylibre.com>
-> ---
->
-> Rob,
->
-> this patch should also solve your issue with your 11' display, could you
-> test it ?
 
-That works for me.
 
-Tested-by: Rob Herring <robh@kernel.org>
+On 3/15/19 8:29 AM, Michel Dänzer wrote:
+> On 2019-03-15 11:25 a.m., Boris Brezillon wrote:
+>> On Fri, 15 Mar 2019 11:11:36 +0100
+>> Michel Dänzer <michel@daenzer.net> wrote:
+>>
+>>> On 2019-03-14 6:51 p.m., Helen Koike wrote:
+>>>> On 3/14/19 6:15 AM, Michel Dänzer wrote:  
+>>>>> On 2019-03-13 7:08 p.m., Helen Koike wrote:  
+>>>>>> On 3/13/19 6:58 AM, Michel Dänzer wrote:  
+>>>>>>> On 2019-03-13 4:42 a.m., Tomasz Figa wrote:  
+>>>>>>>> On Wed, Mar 13, 2019 at 12:52 AM Boris Brezillon
+>>>>>>>> <boris.brezillon@collabora.com> wrote:  
+>>>>>>>>> On Tue, 12 Mar 2019 12:34:45 -0300
+>>>>>>>>> Helen Koike <helen.koike@collabora.com> wrote:  
+>>>>>>>>>> On 3/12/19 3:34 AM, Boris Brezillon wrote:  
+>>>>>>>>>>> On Mon, 11 Mar 2019 23:21:59 -0300
+>>>>>>>>>>> Helen Koike <helen.koike@collabora.com> wrote:
+>>>>>>>>>>>  
+>>>>>>>>>>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>>>>>>>>>>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>>>>>>>>>>>> @@ -912,30 +912,31 @@ static void vop_plane_atomic_async_update(struct drm_plane *plane,
+>>>>>>>>>>>>                                      struct drm_plane_state *new_state)
+>>>>>>>>>>>>  {
+>>>>>>>>>>>>    struct vop *vop = to_vop(plane->state->crtc);
+>>>>>>>>>>>> -  struct drm_plane_state *plane_state;
+>>>>>>>>>>>> +  struct drm_framebuffer *old_fb = plane->state->fb;
+>>>>>>>>>>>>
+>>>>>>>>>>>> -  plane_state = plane->funcs->atomic_duplicate_state(plane);
+>>>>>>>>>>>> -  plane_state->crtc_x = new_state->crtc_x;
+>>>>>>>>>>>> -  plane_state->crtc_y = new_state->crtc_y;
+>>>>>>>>>>>> -  plane_state->crtc_h = new_state->crtc_h;
+>>>>>>>>>>>> -  plane_state->crtc_w = new_state->crtc_w;
+>>>>>>>>>>>> -  plane_state->src_x = new_state->src_x;
+>>>>>>>>>>>> -  plane_state->src_y = new_state->src_y;
+>>>>>>>>>>>> -  plane_state->src_h = new_state->src_h;
+>>>>>>>>>>>> -  plane_state->src_w = new_state->src_w;
+>>>>>>>>>>>> -
+>>>>>>>>>>>> -  if (plane_state->fb != new_state->fb)
+>>>>>>>>>>>> -          drm_atomic_set_fb_for_plane(plane_state, new_state->fb);
+>>>>>>>>>>>> -
+>>>>>>>>>>>> -  swap(plane_state, plane->state);
+>>>>>>>>>>>> -
+>>>>>>>>>>>> -  if (plane->state->fb && plane->state->fb != new_state->fb) {
+>>>>>>>>>>>> +  /*
+>>>>>>>>>>>> +   * A scanout can still be occurring, so we can't drop the reference to
+>>>>>>>>>>>> +   * the old framebuffer. To solve this we get a reference to old_fb and
+>>>>>>>>>>>> +   * set a worker to release it later.  
+>>>>>>>>>>>
+>>>>>>>>>>> Hm, doesn't look like an async update to me if we have to wait for the
+>>>>>>>>>>> next VBLANK to happen to get the new content on the screen. Maybe we
+>>>>>>>>>>> should reject async updates when old_fb != new_fb in the rk  
+>>>>>>>>>>> ->async_check() hook.  
+>>>>>>>>>>
+>>>>>>>>>> Unless I am misunderstanding this, we don't wait here, we just grab a
+>>>>>>>>>> reference to the fb in case it is being still used by the hw, so it
+>>>>>>>>>> doesn't get released prematurely.  
+>>>>>>>>>
+>>>>>>>>> I was just reacting to the comment that says the new FB should stay
+>>>>>>>>> around until the next VBLANK event happens. If the FB must stay around
+>>>>>>>>> that probably means the HW is still using, which made me wonder if this
+>>>>>>>>> HW actually supports async update (where async means "update now and
+>>>>>>>>> don't care about about tearing"). Or maybe it takes some time to switch
+>>>>>>>>> to the new FB and waiting for the next VBLANK to release the old FB was
+>>>>>>>>> an easy solution to not wait for the flip to actually happen in  
+>>>>>>>>> ->async_update() (which is kind of a combination of async+non-blocking).  
+>>>>>>>>
+>>>>>>>> The hardware switches framebuffers on vblank, so whatever framebuffer
+>>>>>>>> is currently being scanned out from needs to stay there until the
+>>>>>>>> hardware switches to the new one in shadow registers. If that doesn't
+>>>>>>>> happen, you get IOMMU faults and the display controller stops working
+>>>>>>>> since we don't have any fault handling currently, just printing a
+>>>>>>>> message.  
+>>>>>>>
+>>>>>>> Sounds like your hardware doesn't actually support async flips. It's
+>>>>>>> probably better for the driver not to pretend otherwise.  
+>>>>>>
+>>>>>> I think wee need to clarify the meaning of the async_update callback
+>>>>>> (and we should clarify it in the docs).
+>>>>>>
+>>>>>> The way I understand what the async_update callback should do is: don't
+>>>>>> block (i.e. don't wait for the next vblank),  
+>>>>>
+>>>>> Note that those are two separate things. "Async flips" are about "don't
+>>>>> wait for vblank", not about "don't block".
+>>>>>
+>>>>>  
+>>>>>> and update the hw state at some point with the latest state from the
+>>>>>> last call to async_update.
+>>>>>>
+>>>>>> Which means that: any driver can implement the async_update callback,
+>>>>>> independently if it supports changing its state right away or not.
+>>>>>> If hw supports, async_update can change the hw state right away, if not,
+>>>>>> then changes will be applied in the next vblank (it can even amend the
+>>>>>> pending commit if there is one).
+>>>>>> With this, we can remove all the legacy cursor code to use the
+>>>>>> async_update callback, since async_update can be called 100 times before
+>>>>>> the next vblank, and the latest state will be set to the hw without
+>>>>>> waiting 100 vblanks.
+>>>>>>
+>>>>>> Please, let me know if this is your understanding as well. If not, then
+>>>>>> we need to remodel things.  
+>>>>>
+>>>>> While this may make sense for cursor updates, I don't think it does for
+>>>>> async flips. If the flip only actually takes effect during the next
+>>>>> vblank, it doesn't really fit the definition and userspace expectation
+>>>>> of an async flip. It's better to clearly communicate to userspace that
+>>>>> the hardware cannot do async flips, than to pretend it can and fake
+>>>>> them. Userspace has to deal with this anyway, since async flips weren't
+>>>>> always supported in general.  
+>>>>
+>>>> What do you think if we separate two concepts here:
+>>>>
+>>>> - amend mode: works like cursor updates, i.e, update the hw state at
+>>>> some point with the latest state from the last call to async_update. No
+>>>> special hardware support is required.
+>>>>
+>>>> - async update: update hw state immediately. This depends if the hw
+>>>> supports it or not.
+>>>>
+>>>> Every async update is an amend, but the opposite is not necessarily true.
+>>>>
+>>>> What do you think if we rename the current async_update to amend_update,
+>>>> and we add a parameter "force_async" to it? (or maybe
+>>>> force_immediate_update?)
+>>>> Then amend_check with force_async=1 would fail if the hardware doesn't
+>>>> support it (we could also add flags in the capabilities to inform
+>>>> userspace the expected behaviour of things and if the hw supports
+>>>> force_sync).
+>>>>
+>>>> Like this, we can implement the cursors using the amend_update (which is
+>>>> now called async_update), and async_flips with amend_update with
+>>>> force_async=1.  
+>>>
+>>> Might force_async make sense for cursor updates as well? I thought some
+>>> hardware supported HW cursor updates outside of vblank, but I'm not sure.
 
-Too answer your question on the other thread, there's not really any
-model name for the panel I have. Probably what's in the EDID is the
-best thing to go on.
+What I had in mind was actually:
+amend_update() -> could do a real async or not depending on the hw
+force_async=1 -> it means amend_update will fail if the hw doesn't
+support it.
 
-Here's the panel on Amazon:
+>>>
+>>> Without force_async, are cursor updates always applied to the hardware
+>>> on the next vblank, even if the pending commit is delayed further (e.g.
+>>> because a fence it depends on doesn't signal before vblank)? If cursor
+>>> updates can be delayed beyond the next vblank, that can result in bad
+>>> user experience.
+>>
+>> You mean you have
+>>
+>> 1. sync/regular update pending (waiting on a fence)
+>> 2. async update on top of #1
+>>
+>> ?
+> 
+> Yeah.
+> 
+> 
 
-https://www.amazon.com/gp/product/B07GDDG3WJ/ref=ppx_yo_dt_b_asin_title_o00_s01?ie=UTF8&psc=1
+Actually I was thinking in another solution (without this force_async flag).
 
-> If this works, I will focus on the underlying issue where the RK3399 SoC
-> freezes in your setup.
->
-> Thanks,
-> Neil
->
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 34 ++++++++++++++++++++---
->  1 file changed, 30 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> index a63e5f0dae56..db761329a1e3 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> @@ -1037,6 +1037,31 @@ void dw_hdmi_phy_i2c_write(struct dw_hdmi *hdmi, unsigned short data,
->  }
->  EXPORT_SYMBOL_GPL(dw_hdmi_phy_i2c_write);
->
-> +/* Filter out invalid setups to avoid configuring SCDC and scrambling */
-> +static bool dw_hdmi_support_scdc(struct dw_hdmi *hdmi)
-> +{
-> +       struct drm_display_info *display = &hdmi->connector.display_info;
-> +
-> +       /* Completely disable SCDC support for older controllers */
-> +       if (hdmi->version < 0x200a)
-> +               return false;
-> +
-> +       /* Disable if SCDC is not supported, or if an HF-VSDB block is absent */
-> +       if (!display->hdmi.scdc.supported ||
-> +           !display->hdmi.scdc.scrambling.supported)
-> +               return false;
-> +
-> +       /*
-> +        * Disable if display only support low TMDS rates and scrambling
-> +        * for low rates is not supported either
-> +        */
-> +       if (!display->hdmi.scdc.scrambling.low_rates &&
-> +           display->max_tmds_clock <= 340000)
-> +               return false;
-> +
-> +       return true;
-> +}
-> +
->  /*
->   * HDMI2.0 Specifies the following procedure for High TMDS Bit Rates:
->   * - The Source shall suspend transmission of the TMDS clock and data
-> @@ -1055,7 +1080,7 @@ void dw_hdmi_set_high_tmds_clock_ratio(struct dw_hdmi *hdmi)
->         unsigned long mtmdsclock = hdmi->hdmi_data.video_mode.mtmdsclock;
->
->         /* Control for TMDS Bit Period/TMDS Clock-Period Ratio */
-> -       if (hdmi->connector.display_info.hdmi.scdc.supported) {
-> +       if (dw_hdmi_support_scdc(hdmi)) {
->                 if (mtmdsclock > HDMI14_MAX_TMDSCLK)
->                         drm_scdc_set_high_tmds_clock_ratio(hdmi->ddc, 1);
->                 else
-> @@ -1579,8 +1604,9 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
->
->         /* Set up HDMI_FC_INVIDCONF */
->         inv_val = (hdmi->hdmi_data.hdcp_enable ||
-> -                  vmode->mtmdsclock > HDMI14_MAX_TMDSCLK ||
-> -                  hdmi_info->scdc.scrambling.low_rates ?
-> +                  (dw_hdmi_support_scdc(hdmi) &&
-> +                   (vmode->mtmdsclock > HDMI14_MAX_TMDSCLK ||
-> +                    hdmi_info->scdc.scrambling.low_rates)) ?
->                 HDMI_FC_INVIDCONF_HDCP_KEEPOUT_ACTIVE :
->                 HDMI_FC_INVIDCONF_HDCP_KEEPOUT_INACTIVE);
->
-> @@ -1646,7 +1672,7 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
->         }
->
->         /* Scrambling Control */
-> -       if (hdmi_info->scdc.supported) {
-> +       if (dw_hdmi_support_scdc(hdmi)) {
->                 if (vmode->mtmdsclock > HDMI14_MAX_TMDSCLK ||
->                     hdmi_info->scdc.scrambling.low_rates) {
->                         /*
-> --
-> 2.20.1
->
+Instead of having this force_async, we can have two capabilities:
+
+CAP_ASYNC: means the hw supports real async
+CAP_AMEND: means that the driver supports amend the in-flight update so
+that the new one will take its place in the queue (i.e. the current
+legacy cursor behavior).
+
+If (!CAP_AMEND && !CAP_ASYNC)
+	* use a sync update or update the FB content in place without flipping
+buffers.
+	* legacy cursor update will fallback to sync update.
+	* async flip is not supported.
+
+If (CAP_AMEND && !CAP_ASYNC)
+	* legacy cursor update will amend in-flight pending updates (like how
+rockchip does now) or it will fallback to a sync update if not possible.
+	* async flip is not supported.
+
+If (!CAP_AMEND && CAP_ASYNC)
+	* not sure yet what this would mean.
+
+If (CAP_AMEND && CAP_ASYNC)
+	* legacy cursor update will perform real async update.
+	* async flip is supported.
+
+
+What do you think?
+
+Regards
+Helen
