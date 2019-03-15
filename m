@@ -1,97 +1,127 @@
-From: Alexis Ballier <aballier@gentoo.org>
-Subject: [PATCH 3/3] arm64: dts: rockchip: rk3399-orangepi: Add the fusb typec manager
-Date: Fri, 15 Mar 2019 15:58:21 +0100
-Message-ID: <20190315145818.23610-4-aballier@gentoo.org>
-References: <20190315145818.23610-1-aballier@gentoo.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH] drm/bridge: dw-hdmi: disable SCDC configuration for
+ invalid setups
+Date: Fri, 15 Mar 2019 10:45:03 -0500
+Message-ID: <CAL_JsqJ_+=h_Xpdm2RJd0mtHS1YxtxDwNxY19oAe4-+JNd8A7A@mail.gmail.com>
+References: <20190315095414.28520-1-narmstrong@baylibre.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190315145818.23610-1-aballier@gentoo.org>
+In-Reply-To: <20190315095414.28520-1-narmstrong@baylibre.com>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: Alexis Ballier <aballier@gentoo.org>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Neil Armstrong <narmstrong@baylibre.com>
+Cc: Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, "heiko@sntech.de" <heiko@sntech.de>, linux-amlogic@lists.infradead.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Jernej Skrabec <jernej.skrabec@siol.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-Also rename its regulator to match the schematic names.
+On Fri, Mar 15, 2019 at 4:54 AM Neil Armstrong <narmstrong@baylibre.com> wrote:
+>
+> This patch is an attempt to limit HDMI 2.0 SCDC setup when :
+> - the SoC embeds an HDMI 1.4 only controller
+> - the EDID supports SCDC but not scrambling
+> - the EDID supports SCDC scrambling but not for low TMDS bit rates,
+>   while only supporting low TMDS bit rates
+>
+> This to avoid communicating with the SCDC DDC slave uncessary, and
+> setting the DW-HDMI TMDS Scrambler setup when not supported by the
+> underlying hardware.
+>
+> Reported-by: Rob Herring <robh@kernel.org>
+> Fixes: 264fce6cc2c1 ("drm/bridge: dw-hdmi: Add SCDC and TMDS Scrambling support")
+> Signed-off-by: Neil Armstrong <narmstrong@baylibre.com>
+> ---
+>
+> Rob,
+>
+> this patch should also solve your issue with your 11' display, could you
+> test it ?
 
-Signed-off-by: Alexis Ballier <aballier@gentoo.org>
-Cc: devicetree@vger.kernel.org
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
+That works for me.
 
----
- .../boot/dts/rockchip/rk3399-orangepi.dts     | 26 +++++++++++++++----
- 1 file changed, 21 insertions(+), 5 deletions(-)
+Tested-by: Rob Herring <robh@kernel.org>
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-index 96ccbe5c4f0c..2166be171df8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-@@ -136,13 +136,13 @@
- 		vin-supply = <&vcc_sys>;
- 	};
- 
--	vcc5v0_typec0: vcc5v0-typec0-regulator {
-+	vbus_typec: vbus-typec-regulator {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
- 		gpio = <&gpio1 RK_PA3 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
--		pinctrl-0 = <&vcc5v0_typec0_en>;
--		regulator-name = "vcc5v0_typec0";
-+		pinctrl-0 = <&vcc5v0_typec_en>;
-+		regulator-name = "vbus_typec";
- 		vin-supply = <&vcc_sys>;
- 	};
- 
-@@ -505,6 +505,16 @@
- 		pinctrl-0 = <&light_int_l>;
- 		vdd-supply = <&vcc3v3_s3>;
- 	};
-+
-+	fusb302@22 {
-+		compatible = "fcs,fusb302";
-+		reg = <0x22>;
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <RK_PA2 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&chg_cc_int_l>;
-+		vbus-supply = <&vbus_typec>;
-+	};
- };
- 
- &io_domains {
-@@ -547,7 +557,7 @@
- 				<4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
--		vcc5v0_typec0_en: vcc5v0-typec0-en {
-+		vcc5v0_typec_en: vcc5v0-typec-en {
- 			rockchip,pins =
- 				<1 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
-@@ -596,6 +606,12 @@
- 			rockchip,pins = <4 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
-+
-+	fusb302 {
-+		chg_cc_int_l: chg-cc-int-l {
-+			rockchip,pins = <1 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
- };
- 
- &pwm0 {
-@@ -677,7 +693,7 @@
- 	status = "okay";
- 
- 	u2phy0_otg: otg-port {
--		phy-supply = <&vcc5v0_typec0>;
-+		phy-supply = <&vbus_typec>;
- 		status = "okay";
- 	};
- 
--- 
-2.21.0
+Too answer your question on the other thread, there's not really any
+model name for the panel I have. Probably what's in the EDID is the
+best thing to go on.
+
+Here's the panel on Amazon:
+
+https://www.amazon.com/gp/product/B07GDDG3WJ/ref=ppx_yo_dt_b_asin_title_o00_s01?ie=UTF8&psc=1
+
+> If this works, I will focus on the underlying issue where the RK3399 SoC
+> freezes in your setup.
+>
+> Thanks,
+> Neil
+>
+>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 34 ++++++++++++++++++++---
+>  1 file changed, 30 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> index a63e5f0dae56..db761329a1e3 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> @@ -1037,6 +1037,31 @@ void dw_hdmi_phy_i2c_write(struct dw_hdmi *hdmi, unsigned short data,
+>  }
+>  EXPORT_SYMBOL_GPL(dw_hdmi_phy_i2c_write);
+>
+> +/* Filter out invalid setups to avoid configuring SCDC and scrambling */
+> +static bool dw_hdmi_support_scdc(struct dw_hdmi *hdmi)
+> +{
+> +       struct drm_display_info *display = &hdmi->connector.display_info;
+> +
+> +       /* Completely disable SCDC support for older controllers */
+> +       if (hdmi->version < 0x200a)
+> +               return false;
+> +
+> +       /* Disable if SCDC is not supported, or if an HF-VSDB block is absent */
+> +       if (!display->hdmi.scdc.supported ||
+> +           !display->hdmi.scdc.scrambling.supported)
+> +               return false;
+> +
+> +       /*
+> +        * Disable if display only support low TMDS rates and scrambling
+> +        * for low rates is not supported either
+> +        */
+> +       if (!display->hdmi.scdc.scrambling.low_rates &&
+> +           display->max_tmds_clock <= 340000)
+> +               return false;
+> +
+> +       return true;
+> +}
+> +
+>  /*
+>   * HDMI2.0 Specifies the following procedure for High TMDS Bit Rates:
+>   * - The Source shall suspend transmission of the TMDS clock and data
+> @@ -1055,7 +1080,7 @@ void dw_hdmi_set_high_tmds_clock_ratio(struct dw_hdmi *hdmi)
+>         unsigned long mtmdsclock = hdmi->hdmi_data.video_mode.mtmdsclock;
+>
+>         /* Control for TMDS Bit Period/TMDS Clock-Period Ratio */
+> -       if (hdmi->connector.display_info.hdmi.scdc.supported) {
+> +       if (dw_hdmi_support_scdc(hdmi)) {
+>                 if (mtmdsclock > HDMI14_MAX_TMDSCLK)
+>                         drm_scdc_set_high_tmds_clock_ratio(hdmi->ddc, 1);
+>                 else
+> @@ -1579,8 +1604,9 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
+>
+>         /* Set up HDMI_FC_INVIDCONF */
+>         inv_val = (hdmi->hdmi_data.hdcp_enable ||
+> -                  vmode->mtmdsclock > HDMI14_MAX_TMDSCLK ||
+> -                  hdmi_info->scdc.scrambling.low_rates ?
+> +                  (dw_hdmi_support_scdc(hdmi) &&
+> +                   (vmode->mtmdsclock > HDMI14_MAX_TMDSCLK ||
+> +                    hdmi_info->scdc.scrambling.low_rates)) ?
+>                 HDMI_FC_INVIDCONF_HDCP_KEEPOUT_ACTIVE :
+>                 HDMI_FC_INVIDCONF_HDCP_KEEPOUT_INACTIVE);
+>
+> @@ -1646,7 +1672,7 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
+>         }
+>
+>         /* Scrambling Control */
+> -       if (hdmi_info->scdc.supported) {
+> +       if (dw_hdmi_support_scdc(hdmi)) {
+>                 if (vmode->mtmdsclock > HDMI14_MAX_TMDSCLK ||
+>                     hdmi_info->scdc.scrambling.low_rates) {
+>                         /*
+> --
+> 2.20.1
+>
