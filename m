@@ -1,20 +1,11 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH] arm64: dts: rockchip: add usb3 controller node for RK3328
- SoCs
-Date: Thu, 14 Mar 2019 20:07:50 +0000
-Message-ID: <AM3PR03MB0966BA1BAD15470960C71AB9AC4B0@AM3PR03MB0966.eurprd03.prod.outlook.com>
-References: <20190314182035.7101-1-papadakospan@gmail.com>
- <5530020.nRYjYCbPGH@diego> <1552590510.1381.1@gmail.com>
- <3517438.8SjcAmMXWL@diego>
- <CAMdYzYpbv+6gJ23E_pH+EG+gOhvoJ-3vZZXEeH7UkD5qv+OO5g@mail.gmail.com>
- <AM3PR03MB0966D234062854A5217539B8AC4B0@AM3PR03MB0966.eurprd03.prod.outlook.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: [PATCH] arm64: dts: rockchip: Add nanopi4 ethernet phy
+Date: Fri, 15 Mar 2019 01:05:30 +0000
+Message-ID: <93a1654c1a905795d6cfff214379b68158ec4d3f.1552611930.git.robin.murphy@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <AM3PR03MB0966D234062854A5217539B8AC4B0@AM3PR03MB0966.eurprd03.prod.outlook.com>
-Content-Language: en-US
-Content-ID: <EDD0EFFD68A72745984950FFC0360294@eurprd03.prod.outlook.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -24,72 +15,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Peter Geis <pgwipeout@gmail.com>, =?utf-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "william.wu@rock-chips.com" <william.wu@rock-chips.com>, "Leonidas P. Papadakos" <papadakospan@gmail.com>
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlIHVzYjMgaXNzdWUgSGVpa28gZGVzY3JpYmUgaXMgc3RpbGwgdGhlcmUsIG15IHVzYjMgZGV2
-aWNlIGlzIG9ubHkgZGlzY292ZXJlZCBvbmNlIG9uIG15IFJvY2sgNjQuDQpJIG11c3QgaGF2ZSBv
-bmx5IHRlc3RlZCBpbnNlcnRpbmcgbXkgdXNiMyBkZXZpY2VzIG9uY2Ugd2hlbiBJIHRlc3Rpbmcg
-YmVmb3JlLg0KDQpSZWdhcmRzLA0KSm9uYXMNCg0KT24gMjAxOS0wMy0xNCAyMDo1MiwgSm9uYXMg
-S2FybG1hbiB3cm90ZToNCj4gSSBoYXZlIGJlZW4gdXNpbmcgdGhhdCBjbGsgcGF0Y2ggc2luY2Ug
-SSBzdGFydGVkIGluaXRpYWwgdGVzdGluZyBvZiByazMzMjggb24gbWFpbmxpbmUgNC4xNiBbMV0N
-Cj4gYW5kIEkgY2Fubm90IHJlbWVtYmVyIHNlZWluZyBhbnkgcmVhbCBpc3N1ZSB3aXRoIHVzYjIv
-dXNiMyAoYmVzaWRlIHVzYiByZWd1bGF0b3IgcmVsYXRlZCBpc3N1ZSkuDQo+IFRoZSBjbGsgcGF0
-Y2ggbWF5IGhhdmUgaGVscGVkIHdpdGggc29tZSB1c2IgaXNzdWVzIHRoYXQgSSBuZXZlciBleHBl
-cmllbmNlZCA6LSkNCj4NCj4gWzFdIGh0dHBzOi8vZ2l0aHViLmNvbS9Ld2lib28vbGludXgtcm9j
-a2NoaXAvY29tbWl0cy9yb2NrY2hpcC00LjE2L2RyaXZlcnMvY2xrL3JvY2tjaGlwDQo+DQo+IFJl
-Z2FyZHMsDQo+IEpvbmFzDQo+DQo+IE9uIDIwMTktMDMtMTQgMjA6MjQsIFBldGVyIEdlaXMgd3Jv
-dGU6DQo+PiBIYXMgYW55b25lIHRlc3RlZCB0aGlzIHNpbmNlIEpvbmFzIEthcmxtYW4ncyBjbGsg
-cGF0Y2ggbGFuZGVkPw0KPj4gSSBub3RpY2VkIGEgbG90IG9mIG15IFVTQiBob3RwbHVnIGlzc3Vl
-cyBkaXNhcHBlYXJlZCB3aGVuIEkgcHVsbGVkDQo+PiB0aGF0IHBhdGNoIGluLg0KPj4gRXNwZWNp
-YWxseSBzaW5jZSBvbmUgb2YgdGhlIGZpeGVzIHdhcyBhY2xrX3VzYjNvdGcsIHNpbmNlIGl0IHdh
-cw0KPj4gaW5jb3JyZWN0bHkgZGVmaW5lZCB0byB1c2IyJ3MgYWNsay4NCj4+DQo+PiBPbiBUaHUs
-IE1hciAxNCwgMjAxOSBhdCAzOjIxIFBNIEhlaWtvIFN0w7xibmVyIDxoZWlrb0BzbnRlY2guZGU+
-IHdyb3RlOg0KPj4+IEhpIGFnYWluIDotKQ0KPj4+DQo+Pj4gQW0gRG9ubmVyc3RhZywgMTQuIE3D
-pHJ6IDIwMTksIDIwOjA4OjMwIENFVCBzY2hyaWViIExlb25pZGFzIFAuIFBhcGFkYWtvczoNCj4+
-Pj4gSSBtdXN0IHNheSB3aXRoIG15IHRlc3RpbmcsIEkgbmV2ZXIgcmVhbGx5IGhhdmUgYW55IGRp
-c2Nvbm5lY3RzLiBNeQ0KPj4+PiBkcml2ZSBnZW5lcmFsbHkgd29ya3MNCj4+PiBJdCdzIG5vdCBh
-bnkgZGlzY29ubmVjdHMsIGl0IGlzIHJlYWxseSB3aGVuIHlvdSB1bnBsdWcgdGhlIGRldmljZSBm
-cm9tDQo+Pj4gdGhlIHJvb3QgcG9ydCB0aGF0IHRoZQ0KPj4+DQo+Pj4+IFN1cmVseSBpdCdzIGJl
-dHRlciB0aGF0IGl0IHdvcmtzIHNvbWV3aGF0IHRoYW4gbm90IGF0IGFsbC4NCj4+Pj4gTWF5YmUg
-d2UgY291bGQgaW5jbHVkZSB0aGUgcGF0Y2hlcyBhbmQgcmV2ZXJ0IHRoZW0gbGF0ZXIgaWYgYSBz
-b2x1dGlvbg0KPj4+PiBhcnJpc2VzPw0KPj4+Pg0KPj4+PiBPciBpcyB0aGF0IGFnYWluc3QgdGhl
-IExpbnV4IHdheSBvZiBkb2luZyB0aGluZ3M/DQo+Pj4gVGhlIG1haW4gaXNzdWUgaXMNCj4+PiAg
-ICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzMyOC1kd2MzIiwgInJvY2tj
-aGlwLHJrMzM5OS1kd2MzIjsNCj4+Pg0KPj4+IGJlY2F1c2U6DQo+Pj4gKDEpIE9uIHRoZSBkZXZp
-Y2V0cmVlLXNpZGUgeW91IGRlY2xhcmUgdGhhdCB0aGV5IGFyZSBjb21wYXRpYmxlIHdoaWNoIG1h
-eQ0KPj4+ICAgICBvciBtYXkgbm90IGNvbmZsaWN0IHdpdGggbmVlZGVkIGxhdGVyIGNoYW5nZXMN
-Cj4+PiAoMikgT24gdGhlIGtlcm5lbC1kcml2ZXItc2lkZSB3aXRoIHRoZSBjdXJyZW50IHN0YXR1
-cyB0aGUgcmszMzI4LWR3YzMNCj4+PiAgICAgd2lsbCBnZXQgaWdub3JlZCBhbmQgcmszMzk5LWR3
-YzMgdXNlZCB0byBiaW5kIHRvIHRoZSBnZW5lcmljIGR0LWR3YzMNCj4+PiAgICAgZHJpdmVyLg0K
-Pj4+ICAgICBGcm9tIGxvb2tpbmcgYXQgdGhlIFJvY2tjaGlwIGNvZGUgaW4gdGhlIHZlbmRvciBr
-ZXJuZWwgd2UgbWF5IHZlcnkgd2VsbA0KPj4+ICAgICBuZWVkIGEgc2VwYXJhdGUgZHJpdmVyIHRv
-IGhhbmRsZSB0aGUgYmlnIGlzc3VlIHdoaWNoIGNyZWF0ZXMgdGhlIGlzc3VlDQo+Pj4gICAgIHdo
-aWNoIGRyaXZlciB3aWxsIGJpbmQgdG8gdGhlIGR0LW5vZGUuIEl0IHdpbGwgYmUgZWl0aGVyIHRo
-ZSBnZW5lcmljIG9uZQ0KPj4+ICAgICBiaW5kaW5nIHRvIHRoZSByazMzOTktZHdjMyBvciB0aGUg
-c3BlY2lhbCBvbmUgYmluZGluZyB0byByazMzMjgtZHdjMy4NCj4+PiAgICAgQW5kIHNhZGx5IGl0
-IHdpbGwgcHJvYmFibHkgZGVwZW5kIG9uIHdoaWNoIG1vZHVsZSBnZXRzIGxvYWRlZCBmaXJzdC4N
-Cj4+Pg0KPj4+IEFuZCBkZXZpY2V0cmVlcyBhcmUgc3VwcG9zZWQgdG8gYmUgYmFja3dhcmRzIGNv
-bXBhdGlibGUgc28gYSBuZXdlcg0KPj4+IGtlcm5lbCBzaG91bGQga2VlcCB3b3JraW5nIHdpdGgg
-YW4gb2xkIGRldmljZXRyZWUuDQo+Pj4NCj4+PiBBIHBvc3NpYmxlIHdheSBmb3J3YXJkIHdvdWxk
-IGJlIHRvIGludHJvZHVjZSBhIHNlcGFyYXRlIGNvbXBhdGlibGUgZm9yDQo+Pj4gcmszMzI4IChi
-b3RoIGluIHRoZSBiaW5kaW5nIGRvYyBhbmQgdGhlIGdlbmVyaWMgZHdjMyBkcml2ZXIpLCBzbyB0
-aGF0DQo+Pj4gd2UgZ2V0IG9ubHkgYQ0KPj4+ICAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAi
-cm9ja2NoaXAscmszMzI4LWR3YzMiOw0KPj4+DQo+Pj4gV2hpY2ggdGhlbiBldmVuIGNhbiBtb3Zl
-IGVhc2lseSBpbnRvIGEgbmV3IGRyaXZlciBpZiBuZWNlc3Nhcnkgd2l0aG91dA0KPj4+IGNhdXNp
-bmcgaXNzdWVzIGZvciBleGlzdGluZyBkZXZpY2V0cmVlcy4NCj4+Pg0KPj4+IEhlaWtvDQo+Pj4N
-Cj4+Pg0KPj4+DQo+Pj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18NCj4+PiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QNCj4+PiBMaW51eC1yb2NrY2hp
-cEBsaXN0cy5pbmZyYWRlYWQub3JnDQo+Pj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcA0KPj4gX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18NCj4+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdA0K
-Pj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZw0KPj4gaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcA0KPiBfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KPiBMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QNCj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZw0KPiBodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwDQoN
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFy
-bS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1r
-ZXJuZWwK
+The nanopi4 boards have the INTB pin of the RTL8211E phy wired up, so we
+can make use of that and avoid having to poll for line status changes.
+Apparently RTL8211E only requires 30ms of post-reset delay, so we may as
+well save a little bit of time there as well.
+
+Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+---
+ .../boot/dts/rockchip/rk3399-nanopi4.dtsi     | 27 +++++++++++++++++--
+ 1 file changed, 25 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
+index d325e117287b..dd16c80d923e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
+@@ -148,15 +148,28 @@
+ 	assigned-clocks = <&cru SCLK_RMII_SRC>;
+ 	clock_in_out = "input";
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&rgmii_pins>;
++	pinctrl-0 = <&rgmii_pins>, <&phy_intb>, <&phy_rstb>;
++	phy-handle = <&rtl8211e>;
+ 	phy-mode = "rgmii";
+ 	phy-supply = <&vcc3v3_s3>;
+ 	snps,reset-active-low;
+-	snps,reset-delays-us = <0 10000 50000>;
++	snps,reset-delays-us = <0 10000 30000>;
+ 	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
+ 	tx_delay = <0x28>;
+ 	rx_delay = <0x11>;
+ 	status = "okay";
++
++	mdio {
++		compatible = "snps,dwmac-mdio";
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		rtl8211e: phy@1 {
++			reg = <1>;
++			interrupt-parent = <&gpio3>;
++			interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
++		};
++	};
+ };
+ 
+ &gpu {
+@@ -481,6 +494,16 @@
+ 		};
+ 	};
+ 
++	phy {
++		phy_intb: phy-intb {
++			rockchip,pins = <3 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++
++		phy_rstb: phy-rstb {
++			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	pmic {
+ 		cpu_b_sleep: cpu-b-sleep {
+ 			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_down>;
+-- 
+2.17.1
