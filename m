@@ -1,94 +1,108 @@
-From: Eric Biggers <ebiggers@kernel.org>
-Subject: Re: [Bug] Rockchip crypto driver sometimes produces wrong ciphertext
-Date: Thu, 14 Mar 2019 20:31:40 -0700
-Message-ID: <20190315033140.GB1671@sol.localdomain>
-References: <20190126210530.GB709@sol.localdomain>
- <CAKv+Gu-RKu9jt+2FnV2529zqyLGR8RSu8r4B8eOs-7Om-pL0aQ@mail.gmail.com>
- <1894799.pWIprST79S@phil>
- <f7a0d04c-339e-d9f8-7188-a27d55ad8b4d@rock-chips.com>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Subject: [PATCH] drm/bridge: dw-hdmi: disable SCDC configuration for invalid setups
+Date: Fri, 15 Mar 2019 10:54:14 +0100
+Message-ID: <20190315095414.28520-1-narmstrong@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <f7a0d04c-339e-d9f8-7188-a27d55ad8b4d@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Zhang Zhijie <zhangzj@rock-chips.com>
-Cc: Tao Huang <huangtao@rock-chips.com>, Zain Wang <wzz@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, linux-rockchip@lists.infradead.org, "open list:HARDWARE RANDOM NUMBER GENERATOR CORE" <linux-crypto@vger.kernel.org>, Olof Johansson <olof@lixom.net>, ezequiel@collabora.com, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: a.hajda@samsung.com, Laurent.pinchart@ideasonboard.com, heiko@sntech.de, robh@kernel.org
+Cc: Neil Armstrong <narmstrong@baylibre.com>, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, jernej.skrabec@siol.net
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Zhang,
+This patch is an attempt to limit HDMI 2.0 SCDC setup when :
+- the SoC embeds an HDMI 1.4 only controller
+- the EDID supports SCDC but not scrambling
+- the EDID supports SCDC scrambling but not for low TMDS bit rates,
+  while only supporting low TMDS bit rates
 
-On Mon, Jan 28, 2019 at 11:14:32AM +0800, Tao Huang wrote:
-> Hi Eric and Heiko:
-> 
-> >> On Sat, 26 Jan 2019 at 22:05, Eric Biggers <ebiggers@kernel.org> wrote:
-> >>>
-> >>> Hello,
-> >>>
-> >>> I don't know whether anyone is actually maintaining the Rockchip crypto driver
-> >>> in drivers/crypto/rockchip/, but it's failing the improved crypto tests
-> >>> that I currently have out for review: https://patchwork.kernel.org/cover/10778089/
-> 
-> Zhang Zhijie, engineer from Rockchip, will try to fix this software bug.
-> 
-> >>>
-> >>> See the boot logs for RK3288 from the KernelCI job here:
-> >>>
-> >>> https://storage.kernelci.org/ardb/for-kernelci/v5.0-rc1-86-geaffe22db9d1/arm/multi_v7_defconfig/lab-collabora/boot-rk3288-rock2-square.txt
-> >>> https://storage.kernelci.org/ardb/for-kernelci/v5.0-rc1-86-geaffe22db9d1/arm/multi_v7_defconfig/lab-collabora/boot-rk3288-veyron-jaq.txt
-> >>>
-> >>> alg: skcipher: ecb-aes-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: use_digest src_divs=[15.64%@+3258, 84.36%@+4059] dst_divs=[69.11%@+1796, 8.49%@+4027, 6.34%@+1, 16.6%@+4058] iv_offset=21\"
-> >>> alg: skcipher: cbc-aes-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_digest src_divs=[100.0%@alignmask+3993] dst_divs=[65.31%@alignmask+1435, 34.69%@+14]\"
-> >>> alg: skcipher: ecb-des-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_final src_divs=[<flush> 66.52%@+11, 33.48%@+1519] dst_divs=[58.82%@+1, 19.43%@+4082, 21.75%@+8]\"
-> >>> alg: skcipher: cbc-des-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_finup src_divs=[100.0%@+3980] dst_divs=[60.4%@+3763, 23.9%@+4011, 16.87%@+4046]\"
-> >>> alg: skcipher: ecb-des3-ede-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_digest src_divs=[100.0%@+4] dst_divs=[47.25%@+19, 14.83%@+22, 37.92%@+31]\"
-> >>> alg: skcipher: cbc-des3-ede-rk encryption test failed (wrong result) on test vector 0, cfg=\"two even aligned splits\"
-> >>>
-> >>> In other words: the ecb-aes-rk, cbc-aes-rk, ecb-des-rk, cbc-des-rk,
-> >>> ecb-des3-ede-rk, and cbc-des3-ede-rk algorithms are failing because they produce
-> >>> the wrong ciphertext on some scatterlist layouts.
-> >>>
-> >>> You can reproduce by pulling from
-> >>> https://git.kernel.org/pub/scm/linux/kernel/git/ebiggers/linux.git
-> >>> branch "testmgr-improvements", unsetting CONFIG_CRYPTO_MANAGER_DISABLE_TESTS,
-> >>> setting CONFIG_CRYPTO_MANAGER_EXTRA_TESTS=y, rebooting and checking dmesg.
-> >>>
-> >>> Note that I don't have this hardware myself, so if it turns out that no one is
-> >>> interested in fixing this anytime soon I'll instead have to propose disabling
-> >>> these algorithms until they can be fixed.
-> >>>
-> >>> Thanks,
-> >>>
-> >>> - Eric
-> >>
+This to avoid communicating with the SCDC DDC slave uncessary, and
+setting the DW-HDMI TMDS Scrambler setup when not supported by the
+underlying hardware.
 
-Thanks for the fixes, but I've improved the self-tests more, and there is
-another bug.  See the KernelCI job here:
+Reported-by: Rob Herring <robh@kernel.org>
+Fixes: 264fce6cc2c1 ("drm/bridge: dw-hdmi: Add SCDC and TMDS Scrambling support")
+Signed-off-by: Neil Armstrong <narmstrong@baylibre.com>
+---
 
-	https://kernelci.org/boot/all/job/ardb/branch/for-kernelci/kernel/v5.0-11071-g7d597cc3f0ef/
+Rob,
 
-The self-tests are failing on the rk3288-rock2-square platform:
+this patch should also solve your issue with your 11' display, could you
+test it ?
+If this works, I will focus on the underlying issue where the RK3399 SoC
+freezes in your setup.
 
-	alg: skcipher: cbc-aes-rk encryption test failed (wrong output IV) on test vector 0, cfg=\"in-place\"
-	alg: skcipher: cbc-des-rk encryption test failed (wrong output IV) on test vector 0, cfg=\"in-place\"
-	alg: skcipher: cbc-des3-ede-rk encryption test failed (wrong output IV) on test vector 0, cfg=\"in-place\"
+Thanks,
+Neil
 
-The issue is that the self-tests now verify that CBC implementations update the
-IV buffer to contain the next IV, aka the last ciphertext block.  But the
-Rockchip crypto driver doesn't do that, so it needs to be fixed.
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 34 ++++++++++++++++++++---
+ 1 file changed, 30 insertions(+), 4 deletions(-)
 
-This has always been a requirement for CBC implementations so that users can
-chain CBC requests.  Unfortunately it was just never tested for...
-
-This should be easily reproducible using the mainline kernel.
-
-- Eric
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index a63e5f0dae56..db761329a1e3 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -1037,6 +1037,31 @@ void dw_hdmi_phy_i2c_write(struct dw_hdmi *hdmi, unsigned short data,
+ }
+ EXPORT_SYMBOL_GPL(dw_hdmi_phy_i2c_write);
+ 
++/* Filter out invalid setups to avoid configuring SCDC and scrambling */
++static bool dw_hdmi_support_scdc(struct dw_hdmi *hdmi)
++{
++	struct drm_display_info *display = &hdmi->connector.display_info;
++
++	/* Completely disable SCDC support for older controllers */
++	if (hdmi->version < 0x200a)
++		return false;
++
++	/* Disable if SCDC is not supported, or if an HF-VSDB block is absent */
++	if (!display->hdmi.scdc.supported ||
++	    !display->hdmi.scdc.scrambling.supported)
++		return false;
++
++	/*
++	 * Disable if display only support low TMDS rates and scrambling
++	 * for low rates is not supported either
++	 */
++	if (!display->hdmi.scdc.scrambling.low_rates &&
++	    display->max_tmds_clock <= 340000)
++		return false;
++
++	return true;
++}
++
+ /*
+  * HDMI2.0 Specifies the following procedure for High TMDS Bit Rates:
+  * - The Source shall suspend transmission of the TMDS clock and data
+@@ -1055,7 +1080,7 @@ void dw_hdmi_set_high_tmds_clock_ratio(struct dw_hdmi *hdmi)
+ 	unsigned long mtmdsclock = hdmi->hdmi_data.video_mode.mtmdsclock;
+ 
+ 	/* Control for TMDS Bit Period/TMDS Clock-Period Ratio */
+-	if (hdmi->connector.display_info.hdmi.scdc.supported) {
++	if (dw_hdmi_support_scdc(hdmi)) {
+ 		if (mtmdsclock > HDMI14_MAX_TMDSCLK)
+ 			drm_scdc_set_high_tmds_clock_ratio(hdmi->ddc, 1);
+ 		else
+@@ -1579,8 +1604,9 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
+ 
+ 	/* Set up HDMI_FC_INVIDCONF */
+ 	inv_val = (hdmi->hdmi_data.hdcp_enable ||
+-		   vmode->mtmdsclock > HDMI14_MAX_TMDSCLK ||
+-		   hdmi_info->scdc.scrambling.low_rates ?
++		   (dw_hdmi_support_scdc(hdmi) &&
++		    (vmode->mtmdsclock > HDMI14_MAX_TMDSCLK ||
++		     hdmi_info->scdc.scrambling.low_rates)) ?
+ 		HDMI_FC_INVIDCONF_HDCP_KEEPOUT_ACTIVE :
+ 		HDMI_FC_INVIDCONF_HDCP_KEEPOUT_INACTIVE);
+ 
+@@ -1646,7 +1672,7 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
+ 	}
+ 
+ 	/* Scrambling Control */
+-	if (hdmi_info->scdc.supported) {
++	if (dw_hdmi_support_scdc(hdmi)) {
+ 		if (vmode->mtmdsclock > HDMI14_MAX_TMDSCLK ||
+ 		    hdmi_info->scdc.scrambling.low_rates) {
+ 			/*
+-- 
+2.20.1
