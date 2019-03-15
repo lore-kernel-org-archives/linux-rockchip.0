@@ -1,221 +1,127 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v2 1/5] drm/rockchip: fix fb references in async update
-Date: Fri, 15 Mar 2019 13:54:31 -0300
-Message-ID: <db673e6a-7dbb-f529-69b8-afff68dc91db@collabora.com>
-References: <20190312022204.2775-1-helen.koike@collabora.com>
- <20190312022204.2775-2-helen.koike@collabora.com>
- <20190312073438.05ad8173@collabora.com>
- <f888a2d0-c6b1-8995-7254-ba2923dd22f9@collabora.com>
- <20190312165243.5b771e4a@collabora.com>
- <CAAFQd5CCEDaxLbw0E9NJJ-tEcHd8-Lidvcvt8qfPAnKu7uuj8w@mail.gmail.com>
- <05750143-708b-b84e-af67-82ec6815bd89@daenzer.net>
- <ed44e1f4-07da-b1cb-b5cb-d34d29758502@collabora.com>
- <d91d5582-3ccf-2249-21ee-9ccf115096b2@daenzer.net>
- <dd7de9ff-0ac8-80fd-b88b-250bdf988921@collabora.com>
- <61b8420e-9b63-b67f-e9a8-fb8a0cb7d219@daenzer.net>
- <20190315112519.0af4fdc0@collabora.com>
- <e51a154f-ff4c-b4bc-4075-1a662ae89364@daenzer.net>
+From: Tim Harvey <tharvey@gateworks.com>
+Subject: Re: [PATCH v2 0/4] Patches to allow consistent mmc / mmcblk numbering
+ w/ device tree
+Date: Fri, 15 Mar 2019 14:52:10 -0700
+Message-ID: <CAJ+vNU1PxK-B63Dc3AgzYb9POyxxoF-xPOWBEpxJ+3eVNK8xqw@mail.gmail.com>
+References: <1461951139-6109-1-git-send-email-dianders@chromium.org> <yw1x5zsx5wc7.fsf@mansr.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e51a154f-ff4c-b4bc-4075-1a662ae89364@daenzer.net>
-Content-Language: en-US
+In-Reply-To: <yw1x5zsx5wc7.fsf@mansr.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Michel_D=c3=a4nzer?= <michel@daenzer.net>, Boris Brezillon <boris.brezillon@collabora.com>
-Cc: =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@google.com>, Sean Paul <seanpaul@google.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "list@263.net:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>, kernel@collabora.com, nicholas.kazlauskas@amd.com, linux-arm-kernel@lists.infradead.org
+To: =?UTF-8?B?TcOlbnMgUnVsbGfDpXJk?= <mans@mansr.com>, Marek Vasut <marex@denx.de>
+Cc: Douglas Anderson <dianders@chromium.org>, Ulf Hansson <ulf.hansson@linaro.org>, Jaehoon Chung <jh80.chung@samsung.com>, shawn.lin@rock-chips.com, Adrian Hunter <adrian.hunter@intel.com>, stefan@agner.ch, Linux MMC List <linux-mmc@vger.kernel.org>, Brian Norris <computersforpeace@gmail.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Jisheng Zhang <jszhang@marvell.com>, linux-rockchip@lists.infradead.org, devicetree-spec@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, open list <linux-kernel@vger.kernel.org>, vbyravarasu@nvidia.com, Lars-Peter Clausen <lars@metafoo.de>, Russell King - ARM Linux <linux@arm.linux.org.uk>, jonathanh@nvidia.com, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Pawel
 List-Id: linux-rockchip.vger.kernel.org
 
+Tim Harvey - Principal Software EngineerGateworks Corporation -
+http://www.gateworks.com/3026 S. Higuera St. San Luis Obispo CA
+93401805-781-2000
+On Tue, Mar 5, 2019 at 4:39 AM M=C3=A5ns Rullg=C3=A5rd <mans@mansr.com> wro=
+te:
+>
+> Douglas Anderson <dianders@chromium.org> writes:
+>
+> > This series picks patches from various different places to produce what
+> > I consider the best solution to getting consistent mmc and mmcblk
+> > ordering.
+> >
+> > Why consistent ordering and why not just use UUIDs?  IMHO consistent
+> > ordering solves a few different problems:
+> >
+> > 1. For poor, feeble-minded humans like me, have sane numbering for
+> >    devices helps a lot.  When grepping through dmesg it's terribly hand=
+y
+> >    if a given SDMMC device has a consistent number.  I know that I can
+> >    do "dmesg | grep mmc0" or "dmesg | grep mmcblk0" to find info about
+> >    the eMMC.  I know that I can do "dmesg | grep mmc1" to find info
+> >    about the SD card slot.  I don't want it to matter which one probed
+> >    first, I don't want it to matter if I'm working on a variant of the
+> >    hardware that has the SD card slot disabled, and I don't want to car=
+e
+> >    what my boot device was.  Worrying about what device number I got
+> >    increases my cognitive load.
+> >
+> > 2. There are cases where it's not trivially easy during development to
+> >    use the UUID.  Specifically I work a lot with coreboot / depthcharge
+> >    as a BIOS.  When configured properly, that BIOS has a nice feature t=
+o
+> >    allow you to fetch the kernel and kernel command line from TFTP by
+> >    pressing Ctrl-N.  In this particular case the BIOS doesn't actually
+> >    know which disk I'd like for my root filesystem, so it's not so easy
+> >    for it to put the right UUID into the command line.  For this
+> >    purpose, knowing that "mmcblk0" will always refer to eMMC is handy.
+> >
+> > Changes in v2:
+> > - Rebased atop mmc-next
+> > - Stat dynamic allocation after fixed allocation; thanks Wolfram!
+> > - rk3288 patch new for v2
+> >
+> > Douglas Anderson (1):
+> >   ARM: dts: rockchip: Add mmc aliases for rk3288 platform
+> >
+> > Jaehoon Chung (1):
+> >   Documentation: mmc: Document mmc aliases
+> >
+> > Stefan Agner (2):
+> >   mmc: read mmc alias from device tree
+> >   mmc: use SD/MMC host ID for block device name ID
+> >
+> >  Documentation/devicetree/bindings/mmc/mmc.txt | 11 +++++++++++
+> >  arch/arm/boot/dts/rk3288.dtsi                 |  4 ++++
+> >  drivers/mmc/card/block.c                      |  2 +-
+> >  drivers/mmc/core/host.c                       | 17 ++++++++++++++++-
+> >  4 files changed, 32 insertions(+), 2 deletions(-)
+>
+> Did anyone ever come up with an acceptable solution for this?  After
+> three years, I'm getting tired of rebasing these patches onto every new
+> kernel.
+>
+> UUIDs or similar are NOT an option for multiple reasons:
+>
+> - We have two rootfs partitions for ping-pong updates, so simply
+>   referring to "the thing with ID foo" doesn't work.
+>
+> - Installing said updates needs direct access the device/partition,
+>   which may not even have a filesystem.
+>
+> - The u-boot environment is stored in an eMMC "boot" partition, and
+>   userspace needs to know where to find it.
+>
+> I'm sure I'm not the only one in a similar situation.
+>
+> Russel, feel free to shout abuse at me.  I don't care, but it makes you
+> look stupid.
+>
 
+Completely agree here - we need a dt solution that allows us to
+specify ordering.
 
-On 3/15/19 8:29 AM, Michel Dänzer wrote:
-> On 2019-03-15 11:25 a.m., Boris Brezillon wrote:
->> On Fri, 15 Mar 2019 11:11:36 +0100
->> Michel Dänzer <michel@daenzer.net> wrote:
->>
->>> On 2019-03-14 6:51 p.m., Helen Koike wrote:
->>>> On 3/14/19 6:15 AM, Michel Dänzer wrote:  
->>>>> On 2019-03-13 7:08 p.m., Helen Koike wrote:  
->>>>>> On 3/13/19 6:58 AM, Michel Dänzer wrote:  
->>>>>>> On 2019-03-13 4:42 a.m., Tomasz Figa wrote:  
->>>>>>>> On Wed, Mar 13, 2019 at 12:52 AM Boris Brezillon
->>>>>>>> <boris.brezillon@collabora.com> wrote:  
->>>>>>>>> On Tue, 12 Mar 2019 12:34:45 -0300
->>>>>>>>> Helen Koike <helen.koike@collabora.com> wrote:  
->>>>>>>>>> On 3/12/19 3:34 AM, Boris Brezillon wrote:  
->>>>>>>>>>> On Mon, 11 Mar 2019 23:21:59 -0300
->>>>>>>>>>> Helen Koike <helen.koike@collabora.com> wrote:
->>>>>>>>>>>  
->>>>>>>>>>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
->>>>>>>>>>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
->>>>>>>>>>>> @@ -912,30 +912,31 @@ static void vop_plane_atomic_async_update(struct drm_plane *plane,
->>>>>>>>>>>>                                      struct drm_plane_state *new_state)
->>>>>>>>>>>>  {
->>>>>>>>>>>>    struct vop *vop = to_vop(plane->state->crtc);
->>>>>>>>>>>> -  struct drm_plane_state *plane_state;
->>>>>>>>>>>> +  struct drm_framebuffer *old_fb = plane->state->fb;
->>>>>>>>>>>>
->>>>>>>>>>>> -  plane_state = plane->funcs->atomic_duplicate_state(plane);
->>>>>>>>>>>> -  plane_state->crtc_x = new_state->crtc_x;
->>>>>>>>>>>> -  plane_state->crtc_y = new_state->crtc_y;
->>>>>>>>>>>> -  plane_state->crtc_h = new_state->crtc_h;
->>>>>>>>>>>> -  plane_state->crtc_w = new_state->crtc_w;
->>>>>>>>>>>> -  plane_state->src_x = new_state->src_x;
->>>>>>>>>>>> -  plane_state->src_y = new_state->src_y;
->>>>>>>>>>>> -  plane_state->src_h = new_state->src_h;
->>>>>>>>>>>> -  plane_state->src_w = new_state->src_w;
->>>>>>>>>>>> -
->>>>>>>>>>>> -  if (plane_state->fb != new_state->fb)
->>>>>>>>>>>> -          drm_atomic_set_fb_for_plane(plane_state, new_state->fb);
->>>>>>>>>>>> -
->>>>>>>>>>>> -  swap(plane_state, plane->state);
->>>>>>>>>>>> -
->>>>>>>>>>>> -  if (plane->state->fb && plane->state->fb != new_state->fb) {
->>>>>>>>>>>> +  /*
->>>>>>>>>>>> +   * A scanout can still be occurring, so we can't drop the reference to
->>>>>>>>>>>> +   * the old framebuffer. To solve this we get a reference to old_fb and
->>>>>>>>>>>> +   * set a worker to release it later.  
->>>>>>>>>>>
->>>>>>>>>>> Hm, doesn't look like an async update to me if we have to wait for the
->>>>>>>>>>> next VBLANK to happen to get the new content on the screen. Maybe we
->>>>>>>>>>> should reject async updates when old_fb != new_fb in the rk  
->>>>>>>>>>> ->async_check() hook.  
->>>>>>>>>>
->>>>>>>>>> Unless I am misunderstanding this, we don't wait here, we just grab a
->>>>>>>>>> reference to the fb in case it is being still used by the hw, so it
->>>>>>>>>> doesn't get released prematurely.  
->>>>>>>>>
->>>>>>>>> I was just reacting to the comment that says the new FB should stay
->>>>>>>>> around until the next VBLANK event happens. If the FB must stay around
->>>>>>>>> that probably means the HW is still using, which made me wonder if this
->>>>>>>>> HW actually supports async update (where async means "update now and
->>>>>>>>> don't care about about tearing"). Or maybe it takes some time to switch
->>>>>>>>> to the new FB and waiting for the next VBLANK to release the old FB was
->>>>>>>>> an easy solution to not wait for the flip to actually happen in  
->>>>>>>>> ->async_update() (which is kind of a combination of async+non-blocking).  
->>>>>>>>
->>>>>>>> The hardware switches framebuffers on vblank, so whatever framebuffer
->>>>>>>> is currently being scanned out from needs to stay there until the
->>>>>>>> hardware switches to the new one in shadow registers. If that doesn't
->>>>>>>> happen, you get IOMMU faults and the display controller stops working
->>>>>>>> since we don't have any fault handling currently, just printing a
->>>>>>>> message.  
->>>>>>>
->>>>>>> Sounds like your hardware doesn't actually support async flips. It's
->>>>>>> probably better for the driver not to pretend otherwise.  
->>>>>>
->>>>>> I think wee need to clarify the meaning of the async_update callback
->>>>>> (and we should clarify it in the docs).
->>>>>>
->>>>>> The way I understand what the async_update callback should do is: don't
->>>>>> block (i.e. don't wait for the next vblank),  
->>>>>
->>>>> Note that those are two separate things. "Async flips" are about "don't
->>>>> wait for vblank", not about "don't block".
->>>>>
->>>>>  
->>>>>> and update the hw state at some point with the latest state from the
->>>>>> last call to async_update.
->>>>>>
->>>>>> Which means that: any driver can implement the async_update callback,
->>>>>> independently if it supports changing its state right away or not.
->>>>>> If hw supports, async_update can change the hw state right away, if not,
->>>>>> then changes will be applied in the next vblank (it can even amend the
->>>>>> pending commit if there is one).
->>>>>> With this, we can remove all the legacy cursor code to use the
->>>>>> async_update callback, since async_update can be called 100 times before
->>>>>> the next vblank, and the latest state will be set to the hw without
->>>>>> waiting 100 vblanks.
->>>>>>
->>>>>> Please, let me know if this is your understanding as well. If not, then
->>>>>> we need to remodel things.  
->>>>>
->>>>> While this may make sense for cursor updates, I don't think it does for
->>>>> async flips. If the flip only actually takes effect during the next
->>>>> vblank, it doesn't really fit the definition and userspace expectation
->>>>> of an async flip. It's better to clearly communicate to userspace that
->>>>> the hardware cannot do async flips, than to pretend it can and fake
->>>>> them. Userspace has to deal with this anyway, since async flips weren't
->>>>> always supported in general.  
->>>>
->>>> What do you think if we separate two concepts here:
->>>>
->>>> - amend mode: works like cursor updates, i.e, update the hw state at
->>>> some point with the latest state from the last call to async_update. No
->>>> special hardware support is required.
->>>>
->>>> - async update: update hw state immediately. This depends if the hw
->>>> supports it or not.
->>>>
->>>> Every async update is an amend, but the opposite is not necessarily true.
->>>>
->>>> What do you think if we rename the current async_update to amend_update,
->>>> and we add a parameter "force_async" to it? (or maybe
->>>> force_immediate_update?)
->>>> Then amend_check with force_async=1 would fail if the hardware doesn't
->>>> support it (we could also add flags in the capabilities to inform
->>>> userspace the expected behaviour of things and if the hw supports
->>>> force_sync).
->>>>
->>>> Like this, we can implement the cursors using the amend_update (which is
->>>> now called async_update), and async_flips with amend_update with
->>>> force_async=1.  
->>>
->>> Might force_async make sense for cursor updates as well? I thought some
->>> hardware supported HW cursor updates outside of vblank, but I'm not sure.
+I support a variety of IMX6 boards where for PCB routing reasons the
+bootable MMC device is not always the first sdhc (sometimes the first
+one is an SDIO radio for example). It seems ridiculous that I can't
+handle this with:
 
-What I had in mind was actually:
-amend_update() -> could do a real async or not depending on the hw
-force_async=1 -> it means amend_update will fail if the hw doesn't
-support it.
+        aliases {
+                mmc0 =3D &usdhc3; /* MMC boot device */
+                mmc1 =3D &usdhc2; /* SDIO radio */
+        };
 
->>>
->>> Without force_async, are cursor updates always applied to the hardware
->>> on the next vblank, even if the pending commit is delayed further (e.g.
->>> because a fence it depends on doesn't signal before vblank)? If cursor
->>> updates can be delayed beyond the next vblank, that can result in bad
->>> user experience.
->>
->> You mean you have
->>
->> 1. sync/regular update pending (waiting on a fence)
->> 2. async update on top of #1
->>
->> ?
-> 
-> Yeah.
-> 
-> 
+I see the imx6q-dhcom-som added in
+52c7a088badd665a09ca9307ffa91e88d5686a7d re-defines the default
+imx6qdl.dtsi mmc0-mmc3 aiases but I don't see any handling of this in
+code anywhere - am I missing something?
 
-Actually I was thinking in another solution (without this force_async flag).
+Marek, why did you change the alias ordering for imx6q-dhcom-som.dtsi?
+(maybe your carrying around a patch to make this useful?)
 
-Instead of having this force_async, we can have two capabilities:
++       aliases {
++               mmc0 =3D &usdhc2;
++               mmc1 =3D &usdhc3;
++               mmc2 =3D &usdhc4;
++               mmc3 =3D &usdhc1;
++       };
 
-CAP_ASYNC: means the hw supports real async
-CAP_AMEND: means that the driver supports amend the in-flight update so
-that the new one will take its place in the queue (i.e. the current
-legacy cursor behavior).
+Regards,
 
-If (!CAP_AMEND && !CAP_ASYNC)
-	* use a sync update or update the FB content in place without flipping
-buffers.
-	* legacy cursor update will fallback to sync update.
-	* async flip is not supported.
-
-If (CAP_AMEND && !CAP_ASYNC)
-	* legacy cursor update will amend in-flight pending updates (like how
-rockchip does now) or it will fallback to a sync update if not possible.
-	* async flip is not supported.
-
-If (!CAP_AMEND && CAP_ASYNC)
-	* not sure yet what this would mean.
-
-If (CAP_AMEND && CAP_ASYNC)
-	* legacy cursor update will perform real async update.
-	* async flip is supported.
-
-
-What do you think?
-
-Regards
-Helen
+Tim
