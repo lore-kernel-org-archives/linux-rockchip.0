@@ -1,70 +1,32 @@
-From: David Wu <david.wu@rock-chips.com>
-Subject: Re: [PATCH net-next] net: phy: improve handling link_change_notify
- callback
-Date: Fri, 15 Mar 2019 21:29:39 +0800
-Message-ID: <552608df-fbf8-0937-ef64-4ee4d4ccb3d7@rock-chips.com>
-References: <411b1c33-a245-0706-8afd-c4bea1b90f68@gmail.com>
- <20190304.113025.1437399524067140375.davem@davemloft.net>
- <20190304200630.GJ26378@lunn.ch> <3079158.ITs3Wk0qno@phil>
- <945fb25c-c854-27f3-1e98-18a5c981d59f@zonque.org>
+From: Alexis Ballier <aballier@gentoo.org>
+Subject: [PATCH 0/3] Small improvements/bugfixes to the rk3399-opi dt
+Date: Fri, 15 Mar 2019 15:58:15 +0100
+Message-ID: <20190315145818.23610-1-aballier@gentoo.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <945fb25c-c854-27f3-1e98-18a5c981d59f@zonque.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Daniel Mack <daniel@zonque.org>, Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew@lunn.ch>
-Cc: f.fainelli@gmail.com, netdev@vger.kernel.org, linux-rockchip@lists.infradead.org, David Miller <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, hkallweit1@gmail.com
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: Alexis Ballier <aballier@gentoo.org>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgrlnKggMjAxOS8zLzEzIOS4iuWNiDE6NTAsIERhbmllbCBNYWNrIOWGmemBkzoKPiBPbiAxMi8z
-LzIwMTkgMToyNyBQTSwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4+IEhpIEFuZHJldywgSGVpbmVy
-LAo+Pgo+PiBBbSBNb250YWcsIDQuIE3DpHJ6IDIwMTksIDIxOjA2OjMwIENFVCBzY2hyaWViIEFu
-ZHJldyBMdW5uOgo+Pj4gT24gTW9uLCBNYXIgMDQsIDIwMTkgYXQgMTE6MzA6MjVBTSAtMDgwMCwg
-RGF2aWQgTWlsbGVyIHdyb3RlOgo+Pj4+IEZyb206IEhlaW5lciBLYWxsd2VpdCA8aGthbGx3ZWl0
-MUBnbWFpbC5jb20+Cj4+Pj4gRGF0ZTogU3VuLCAzIE1hciAyMDE5IDE5OjU4OjU3ICswMTAwCj4+
-Pj4KPj4+Pj4gQ3VycmVudGx5IHRoZSBQaHkgZHJpdmVyJ3MgbGlua19jaGFuZ2Vfbm90aWZ5IGNh
-bGxiYWNrIGlzIGNhbGxlZAo+Pj4+PiB3aGVuZXZlciB0aGUgc3RhdGUgbWFjaGluZSBpcyBydW4g
-KGV2ZXJ5IHNlY29uZCBpZiBwb2xsaW5nKSwgbm8gbWF0dGVyCj4+Pj4+IHdoZXRoZXIgdGhlIHN0
-YXRlIGNoYW5nZWQgb3Igbm90LiBUaGlzIGlzbid0IG5lZWRlZCBhbmQgbWF5IGNvbmZ1c2UKPj4+
-Pj4gdXNlcnMgY29uc2lkZXJpbmcgdGhlIG5hbWUgb2YgdGhlIGNhbGxiYWNrLiBUaGVyZWZvcmUg
-bGV0J3MgY2hhbmdlCj4+Pj4+IHRoZSBiZWhhdmlvciBhbmQgY2FsbCB0aGlzIGNhbGxiYWNrIG9u
-bHkgaW4gY2FzZSBvZiBhbiBhY3R1YWwKPj4+Pj4gc3RhdGUgY2hhbmdlLgo+Pj4+Pgo+Pj4+PiBU
-aGlzIHJlcXVpcmVzIGNoYW5nZXMgdG8gdGhlIGF0ODAzeCBhbmQgcm9ja2NoaXAgZHJpdmVycy4K
-Pj4+Pj4gYXQ4MDN4IGNhbiBiZSBzaW1wbGlmaWVkIHNvIHRoYXQgaXQgcmVhY3RzIG9uIGEgc3Rh
-dGUgY2hhbmdlIHRvCj4+Pj4+IFBIWV9OT0xJTksgb25seS4KPj4+Pj4gVGhlIHJvY2tjaGlwIGRy
-aXZlciBjYW4gYWxzbyBiZSBtdWNoIHNpbXBsaWZpZWQuIFdlIHNpbXBseSByZS1pbml0Cj4+Pj4+
-IHRoZSBBRkUvRFNQIHJlZ2lzdGVycyB3aGVuZXZlciB3ZSBjaGFuZ2UgdG8gUEhZX1JVTk5JTkcg
-YW5kIHNwZWVkCj4+Pj4+IGlzIDEwME1icHMuIFRoaXMgY2F1c2VzIHZlcnkgc21hbGwgb3Zlcmhl
-YWQgYmVjYXVzZSB3ZSBkbyB0aGlzIGV2ZW4KPj4+Pj4gaWYgdGhlIHNwZWVkIHdhcyAxMDBNYnBz
-IGFscmVhZHkuIEJ1dCB0aGlzIGlzIG5lZ2xlY3RhYmxlIGFuZAo+Pj4+PiBJIHRoaW5rIGp1c3Rp
-ZmllZCBieSB0aGUgbXVjaCBzaW1wbGVyIGNvZGUuCj4+Pj4+Cj4+Pj4+IENoYW5nZXMgYXJlIGNv
-bXBpbGUtdGVzdGVkIG9ubHkuCj4+Pj4+Cj4+Pj4+IFNpZ25lZC1vZmYtYnk6IEhlaW5lciBLYWxs
-d2VpdCA8aGthbGx3ZWl0MUBnbWFpbC5jb20+Cj4+Pj4KPj4+PiBTb21lb25lIHBsZWFzZSByZXZp
-ZXcgdGhpcy4KPj4+Cj4+PiBIaSBEYXZpZAo+Pj4KPj4+IFdlIHNob3VsZCBwcm9iYWJseSB3YWl0
-IGZvciBhIFRlc3RlZC1ieTogZnJvbSBEYW5pZWwgTWFjawo+Pj4gPHpvbnF1ZUBnbWFpbC5jb20+
-IGFuZCBEYXZpZCBXdSA8ZGF2aWQud3VAcm9jay1jaGlwcy5jb20+LCBvcgo+Pj4gZXF1aXZhbGVu
-dC4KPj4KPj4gV2Ugc2hvdWxkIHByb2JhYmx5IGFkZCB0aGVtIHRvIHRoZSBsaXN0IG9mIHJlY2lw
-aWVudHMgaWYgd2Ugd2FudAo+PiB0ZXN0cyBmcm9tIHRoZW0sIHdoaWNoIEkndmUgZG9uZSBub3cu
-Cj4+Cj4+IEBEYXZpZDogcGF0Y2ggaW4gcXVlc3Rpb24gdGhhdCBjaGFuZ2VzIHRoZSBSb2NrY2hp
-cCBldGgtcGh5IGlzCj4+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTA4Mzcy
-MTcvCgpJIHRoaW5rIGkgY2FuIGZpbmQgYSBoYXJkd2FyZSB0byB0ZXN0IHRoaXMuCgo+Pgo+PiBT
-YWRseSBJIGRvbid0IGhhdmUgbWF0Y2hpbmcgaGFyZHdhcmUgdG8gdGVzdCB0aGlzIG15c2VsZi4K
-PiAKPiBUaGFua3MgZm9yIGNvbnNpZGVyaW5nIG1lLCBidXQgSSBkb24ndCBoYXZlIGFjY2VzcyB0
-byB0aGF0IGhhcmR3YXJlCj4gZWl0aGVyIHJpZ2h0IG5vdy4KPiAKPiBUaGUgY2hhbmdlcyBsb29r
-IHN0cmFpZ2h0IGZvcndhcmQgdG8gbWUgaG93ZXZlciwgc28ganVzdCBnbyBhaGVhZCBhbgo+IGFw
-cGx5IHRoaXMuIE9uY2UgSSBnZXQgYmFjayB0byB0aGF0IHNldHVwLCBJJ2xsIHJlcG9ydCBpbiBj
-YXNlIG9mIGEKPiByZWdyZXNzaW9uLgo+IAo+IAo+IFRoYW5rcywKPiBEYWluZWwKPiAKPiAKPiAK
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgt
-YXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJt
-LWtlcm5lbAo=
+This patch series is based on the rockchip/v5.2-armsoc/dts64 branch and
+fixes a few mistakes in the rk3399-orangepi.dts I sent a couple weeks ago.
+
+Alexis Ballier (3):
+  arm64: dts: rockchip: rk3399-orangepi: Fix clock names and add missing
+    supplies for bluetooth
+  arm64: dts: rockchip: rk3399-orangepi: Specify vid supply for the
+    compass (AK09911)
+  arm64: dts: rockchip: rk3399-orangepi: Add the fusb typec manager
+
+ .../boot/dts/rockchip/rk3399-orangepi.dts     | 31 +++++++++++++++----
+ 1 file changed, 25 insertions(+), 6 deletions(-)
+
+Cc: devicetree@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+
+-- 
+2.21.0
