@@ -1,7 +1,7 @@
 From: Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH] arm64: dts: rockchip: Add nanopi4 ethernet phy
-Date: Fri, 15 Mar 2019 01:05:30 +0000
-Message-ID: <93a1654c1a905795d6cfff214379b68158ec4d3f.1552611930.git.robin.murphy@arm.com>
+Subject: [PATCH] arm64: dts: rockchip: Add PWM fan for NanoPC-T4
+Date: Fri, 15 Mar 2019 01:05:53 +0000
+Message-ID: <c5a0100395d44fe460c460bb4f8e8d7324ae63b3.1552611953.git.robin.murphy@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -19,67 +19,94 @@ To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The nanopi4 boards have the INTB pin of the RTL8211E phy wired up, so we
-can make use of that and avoid having to poll for line status changes.
-Apparently RTL8211E only requires 30ms of post-reset delay, so we may as
-well save a little bit of time there as well.
+NanoPC-T4 has a dedicated circuit for driving a 12V fan from PWM1,
+so let's add that along with some rough empirically-derived thermal
+settings for the benefit of anyone determined enough to hook one up.
+
+The vendor does not currently offer a suitable fan, but this seems as
+good a place as any to note that pre-terminated 3-pin JST GH connectors
+are readily available online, and if you even have to ask, then splicing
+one of those really will be orders of magnitude cheaper and simpler than
+getting set up to crimp the teeny-tiny things by hand.
 
 Signed-off-by: Robin Murphy <robin.murphy@arm.com>
 ---
- .../boot/dts/rockchip/rk3399-nanopi4.dtsi     | 27 +++++++++++++++++--
- 1 file changed, 25 insertions(+), 2 deletions(-)
+ .../boot/dts/rockchip/rk3399-nanopc-t4.dts    | 63 +++++++++++++++++++
+ 1 file changed, 63 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-index d325e117287b..dd16c80d923e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-@@ -148,15 +148,28 @@
- 	assigned-clocks = <&cru SCLK_RMII_SRC>;
- 	clock_in_out = "input";
- 	pinctrl-names = "default";
--	pinctrl-0 = <&rgmii_pins>;
-+	pinctrl-0 = <&rgmii_pins>, <&phy_intb>, <&phy_rstb>;
-+	phy-handle = <&rtl8211e>;
- 	phy-mode = "rgmii";
- 	phy-supply = <&vcc3v3_s3>;
- 	snps,reset-active-low;
--	snps,reset-delays-us = <0 10000 50000>;
-+	snps,reset-delays-us = <0 10000 30000>;
- 	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
- 	tx_delay = <0x28>;
- 	rx_delay = <0x11>;
- 	status = "okay";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
+index 84433cf02be9..b10cf44f590c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
+@@ -52,6 +52,69 @@
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&ir_rx>;
+ 	};
 +
-+	mdio {
-+		compatible = "snps,dwmac-mdio";
-+		#address-cells = <1>;
-+		#size-cells = <0>;
++	fan: pwm-fan {
++		compatible = "pwm-fan";
++		/*
++		 * With 20KHz PWM and an EVERCOOL EC4007H12SA fan, these levels
++		 * work out to 0, ~1200, ~3000, and 5000RPM respectively.
++		 */
++		cooling-levels = <0 12 18 255>;
++		#cooling-cells = <2>;
++		fan-supply = <&vcc12v0_sys>;
++		pwms = <&pwm1 0 50000 0>;
++	};
++};
 +
-+		rtl8211e: phy@1 {
-+			reg = <1>;
-+			interrupt-parent = <&gpio3>;
-+			interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
++&cpu_thermal {
++	trips {
++		cpu_warm: cpu_warm {
++			temperature = <55000>;
++			hysteresis = <2000>;
++			type = "active";
++		};
++		cpu_hot: cpu_hot {
++			temperature = <65000>;
++			hysteresis = <2000>;
++			type = "active";
++		};
++	};
++
++	cooling-maps {
++		map2 {
++			trip = <&cpu_warm>;
++			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
++		};
++		map3 {
++			trip = <&cpu_hot>;
++			cooling-device = <&fan 2 THERMAL_NO_LIMIT>;
++		};
++	};
++};
++
++&gpu_thermal {
++	trips {
++		gpu_warm: gpu_warm {
++			temperature = <55000>;
++			hysteresis = <2000>;
++			type = "active";
++		};
++		gpu_hot: gpu_hot {
++			temperature = <65000>;
++			hysteresis = <2000>;
++			type = "active";
++		};
++	};
++	cooling-maps {
++		map1 {
++			trip = <&gpu_warm>;
++			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
++		};
++		map2 {
++			trip = <&gpu_hot>;
++			cooling-device = <&fan 2 THERMAL_NO_LIMIT>;
 +		};
 +	};
  };
  
- &gpu {
-@@ -481,6 +494,16 @@
- 		};
- 	};
- 
-+	phy {
-+		phy_intb: phy-intb {
-+			rockchip,pins = <3 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		phy_rstb: phy-rstb {
-+			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	pmic {
- 		cpu_b_sleep: cpu-b-sleep {
- 			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_down>;
+ &pinctrl {
 -- 
 2.17.1
