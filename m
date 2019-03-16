@@ -1,65 +1,95 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: fix rk3328 rgmii high tx error rate
-Date: Sat, 16 Mar 2019 21:00:24 +0100
-Message-ID: <5627989.CJK7gzyIMr@phil>
-References: <20190313184535.15759-1-pgwipeout@gmail.com>
+From: "Ezequiel Garcia" <ezequiel.garcia@collabora.com>
+Subject: =?utf-8?q?Re=3A?==?utf-8?q?_=5BBug=5D?= Rockchip crypto driver
+ sometimes produces wrong ciphertext
+Date: Sat, 16 Mar 2019 22:31:43 +0000
+Message-ID: <875-5c8d7980-7-55088a00@27384378>
+References: <20190315033140.GB1671@sol.localdomain>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190313184535.15759-1-pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "Leonidas P . Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190315033140.GB1671@sol.localdomain>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Eric Biggers <ebiggers@kernel.org>, Gael Portay <gael.portay@collabora.com>
+Cc: Tao Huang <huangtao@rock-chips.com>, Zain Wang <wzz@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Zhang Zhijie <zhangzj@rock-chips.com>, linux-rockchip@lists.infradead.org, =?utf-8?q?open_list=3AHARDWARE_RANDOM_NUMBER_GENERATOR_CORE?= <linux-crypto@vger.kernel.org>, Olof Johansson <olof@lixom.net>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 13. M=E4rz 2019, 19:45:36 CET schrieb Peter Geis:
-> Resubmitting, after further research, review, comments, and suggestions.
-> =
-
-> Several rk3328 based boards experience high rgmii tx error rates.
-> This is due to several pins in the rk3328.dtsi rgmii pinmux that are
-> missing a defined pull strength setting.
-> This causes the pinmux driver to default to 2ma (bit mask 00).
-> =
-
-> These pins are only defined in the rk3328.dtsi, and are not listed in
-> the rk3328 specification.
-> The TRM only lists them as "Reserved"
-> (RK3328 TRM V1.1, 3.3.3 Detail Register Description, GRF_GPIO0B_IOMUX,
-> GRF_GPIO0C_IOMUX, GRF_GPIO0D_IOMUX).
-> However, removal of these pins from the rgmii pinmux definition causes
-> the interface to fail to transmit.
-> =
-
-> Also, the rgmii tx and rx pins defined in the dtsi are not consistent
-> with the rk3328 specification, with tx pins currently set to 12ma and
-> rx pins set to 2ma.
-> =
-
-> Fix this by setting tx pins to 8ma and the rx pins to 4ma, consistent
-> with the specification.
-> Defining the drive strength for the undefined pins eliminated the high
-> tx packet error rate observed under heavy data transfers.
-> Aligning the drive strength to the TRM values eliminated the occasional
-> packet retry errors under iperf3 testing.
-> This allows much higher data rates with no recorded tx errors.
-> =
-
-> Tested on the rk3328-roc-cc board.
-> =
-
-> Signed-off-by: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-
-applied as fix for 5.1 after adding Fixes and Cc-stable-tags
-
-Thanks
-Heiko
+Adding my colleague Gael, who has been working on fixing this driver.
+ 
+On Friday, March 15, 2019 00:31 -03, Eric Biggers <ebiggers@kernel.org> wrote: 
+ 
+> Hi Zhang,
+> 
+> On Mon, Jan 28, 2019 at 11:14:32AM +0800, Tao Huang wrote:
+> > Hi Eric and Heiko:
+> > 
+> > >> On Sat, 26 Jan 2019 at 22:05, Eric Biggers <ebiggers@kernel.org> wrote:
+> > >>>
+> > >>> Hello,
+> > >>>
+> > >>> I don't know whether anyone is actually maintaining the Rockchip crypto driver
+> > >>> in drivers/crypto/rockchip/, but it's failing the improved crypto tests
+> > >>> that I currently have out for review: https://patchwork.kernel.org/cover/10778089/
+> > 
+> > Zhang Zhijie, engineer from Rockchip, will try to fix this software bug.
+> > 
+> > >>>
+> > >>> See the boot logs for RK3288 from the KernelCI job here:
+> > >>>
+> > >>> https://storage.kernelci.org/ardb/for-kernelci/v5.0-rc1-86-geaffe22db9d1/arm/multi_v7_defconfig/lab-collabora/boot-rk3288-rock2-square.txt
+> > >>> https://storage.kernelci.org/ardb/for-kernelci/v5.0-rc1-86-geaffe22db9d1/arm/multi_v7_defconfig/lab-collabora/boot-rk3288-veyron-jaq.txt
+> > >>>
+> > >>> alg: skcipher: ecb-aes-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: use_digest src_divs=[15.64%@+3258, 84.36%@+4059] dst_divs=[69.11%@+1796, 8.49%@+4027, 6.34%@+1, 16.6%@+4058] iv_offset=21\"
+> > >>> alg: skcipher: cbc-aes-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_digest src_divs=[100.0%@alignmask+3993] dst_divs=[65.31%@alignmask+1435, 34.69%@+14]\"
+> > >>> alg: skcipher: ecb-des-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_final src_divs=[<flush> 66.52%@+11, 33.48%@+1519] dst_divs=[58.82%@+1, 19.43%@+4082, 21.75%@+8]\"
+> > >>> alg: skcipher: cbc-des-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_finup src_divs=[100.0%@+3980] dst_divs=[60.4%@+3763, 23.9%@+4011, 16.87%@+4046]\"
+> > >>> alg: skcipher: ecb-des3-ede-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_digest src_divs=[100.0%@+4] dst_divs=[47.25%@+19, 14.83%@+22, 37.92%@+31]\"
+> > >>> alg: skcipher: cbc-des3-ede-rk encryption test failed (wrong result) on test vector 0, cfg=\"two even aligned splits\"
+> > >>>
+> > >>> In other words: the ecb-aes-rk, cbc-aes-rk, ecb-des-rk, cbc-des-rk,
+> > >>> ecb-des3-ede-rk, and cbc-des3-ede-rk algorithms are failing because they produce
+> > >>> the wrong ciphertext on some scatterlist layouts.
+> > >>>
+> > >>> You can reproduce by pulling from
+> > >>> https://git.kernel.org/pub/scm/linux/kernel/git/ebiggers/linux.git
+> > >>> branch "testmgr-improvements", unsetting CONFIG_CRYPTO_MANAGER_DISABLE_TESTS,
+> > >>> setting CONFIG_CRYPTO_MANAGER_EXTRA_TESTS=y, rebooting and checking dmesg.
+> > >>>
+> > >>> Note that I don't have this hardware myself, so if it turns out that no one is
+> > >>> interested in fixing this anytime soon I'll instead have to propose disabling
+> > >>> these algorithms until they can be fixed.
+> > >>>
+> > >>> Thanks,
+> > >>>
+> > >>> - Eric
+> > >>
+> 
+> Thanks for the fixes, but I've improved the self-tests more, and there is
+> another bug.  See the KernelCI job here:
+> 
+> 	https://kernelci.org/boot/all/job/ardb/branch/for-kernelci/kernel/v5.0-11071-g7d597cc3f0ef/
+> 
+> The self-tests are failing on the rk3288-rock2-square platform:
+> 
+> 	alg: skcipher: cbc-aes-rk encryption test failed (wrong output IV) on test vector 0, cfg=\"in-place\"
+> 	alg: skcipher: cbc-des-rk encryption test failed (wrong output IV) on test vector 0, cfg=\"in-place\"
+> 	alg: skcipher: cbc-des3-ede-rk encryption test failed (wrong output IV) on test vector 0, cfg=\"in-place\"
+> 
+> The issue is that the self-tests now verify that CBC implementations update the
+> IV buffer to contain the next IV, aka the last ciphertext block.  But the
+> Rockchip crypto driver doesn't do that, so it needs to be fixed.
+> 
+> This has always been a requirement for CBC implementations so that users can
+> chain CBC requests.  Unfortunately it was just never tested for...
+> 
+> This should be easily reproducible using the mainline kernel.
+> 
+> - Eric
