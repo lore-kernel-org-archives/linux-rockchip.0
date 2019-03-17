@@ -1,14 +1,19 @@
-From: "Ezequiel Garcia" <ezequiel.garcia@collabora.com>
-Subject: =?utf-8?q?Re=3A?==?utf-8?q?_=5BBug=5D?= Rockchip crypto driver
- sometimes produces wrong ciphertext
-Date: Sat, 16 Mar 2019 22:31:43 +0000
-Message-ID: <875-5c8d7980-7-55088a00@27384378>
-References: <20190315033140.GB1671@sol.localdomain>
+From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Subject: Re: [PATCH v3 2/2] arm64: dts: rockchip: add HDMI sound node for
+ rk3328-rock64
+Date: Sun, 17 Mar 2019 18:54:46 +0900
+Message-ID: <b855ff66-19e5-4ea5-3337-23d5ada1bf1c@katsuster.net>
+References: <20190217173407.29189-1-katsuhiro@katsuster.net>
+ <20190217173407.29189-2-katsuhiro@katsuster.net>
+ <d42dd768-d6c1-098d-759f-e3576d0edcc2@katsuster.net>
+ <AM3PR03MB0966F2308C6003C192A68F4DAC770@AM3PR03MB0966.eurprd03.prod.outlook.com>
+ <fb36eddb-ef3b-df4a-5e1a-6f8866726ae9@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190315033140.GB1671@sol.localdomain>
+In-Reply-To: <fb36eddb-ef3b-df4a-5e1a-6f8866726ae9@katsuster.net>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -18,78 +23,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Eric Biggers <ebiggers@kernel.org>, Gael Portay <gael.portay@collabora.com>
-Cc: Tao Huang <huangtao@rock-chips.com>, Zain Wang <wzz@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Zhang Zhijie <zhangzj@rock-chips.com>, linux-rockchip@lists.infradead.org, =?utf-8?q?open_list=3AHARDWARE_RANDOM_NUMBER_GENERATOR_CORE?= <linux-crypto@vger.kernel.org>, Olof Johansson <olof@lixom.net>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Adding my colleague Gael, who has been working on fixing this driver.
- 
-On Friday, March 15, 2019 00:31 -03, Eric Biggers <ebiggers@kernel.org> wrote: 
- 
-> Hi Zhang,
-> 
-> On Mon, Jan 28, 2019 at 11:14:32AM +0800, Tao Huang wrote:
-> > Hi Eric and Heiko:
-> > 
-> > >> On Sat, 26 Jan 2019 at 22:05, Eric Biggers <ebiggers@kernel.org> wrote:
-> > >>>
-> > >>> Hello,
-> > >>>
-> > >>> I don't know whether anyone is actually maintaining the Rockchip crypto driver
-> > >>> in drivers/crypto/rockchip/, but it's failing the improved crypto tests
-> > >>> that I currently have out for review: https://patchwork.kernel.org/cover/10778089/
-> > 
-> > Zhang Zhijie, engineer from Rockchip, will try to fix this software bug.
-> > 
-> > >>>
-> > >>> See the boot logs for RK3288 from the KernelCI job here:
-> > >>>
-> > >>> https://storage.kernelci.org/ardb/for-kernelci/v5.0-rc1-86-geaffe22db9d1/arm/multi_v7_defconfig/lab-collabora/boot-rk3288-rock2-square.txt
-> > >>> https://storage.kernelci.org/ardb/for-kernelci/v5.0-rc1-86-geaffe22db9d1/arm/multi_v7_defconfig/lab-collabora/boot-rk3288-veyron-jaq.txt
-> > >>>
-> > >>> alg: skcipher: ecb-aes-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: use_digest src_divs=[15.64%@+3258, 84.36%@+4059] dst_divs=[69.11%@+1796, 8.49%@+4027, 6.34%@+1, 16.6%@+4058] iv_offset=21\"
-> > >>> alg: skcipher: cbc-aes-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_digest src_divs=[100.0%@alignmask+3993] dst_divs=[65.31%@alignmask+1435, 34.69%@+14]\"
-> > >>> alg: skcipher: ecb-des-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_final src_divs=[<flush> 66.52%@+11, 33.48%@+1519] dst_divs=[58.82%@+1, 19.43%@+4082, 21.75%@+8]\"
-> > >>> alg: skcipher: cbc-des-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_finup src_divs=[100.0%@+3980] dst_divs=[60.4%@+3763, 23.9%@+4011, 16.87%@+4046]\"
-> > >>> alg: skcipher: ecb-des3-ede-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_digest src_divs=[100.0%@+4] dst_divs=[47.25%@+19, 14.83%@+22, 37.92%@+31]\"
-> > >>> alg: skcipher: cbc-des3-ede-rk encryption test failed (wrong result) on test vector 0, cfg=\"two even aligned splits\"
-> > >>>
-> > >>> In other words: the ecb-aes-rk, cbc-aes-rk, ecb-des-rk, cbc-des-rk,
-> > >>> ecb-des3-ede-rk, and cbc-des3-ede-rk algorithms are failing because they produce
-> > >>> the wrong ciphertext on some scatterlist layouts.
-> > >>>
-> > >>> You can reproduce by pulling from
-> > >>> https://git.kernel.org/pub/scm/linux/kernel/git/ebiggers/linux.git
-> > >>> branch "testmgr-improvements", unsetting CONFIG_CRYPTO_MANAGER_DISABLE_TESTS,
-> > >>> setting CONFIG_CRYPTO_MANAGER_EXTRA_TESTS=y, rebooting and checking dmesg.
-> > >>>
-> > >>> Note that I don't have this hardware myself, so if it turns out that no one is
-> > >>> interested in fixing this anytime soon I'll instead have to propose disabling
-> > >>> these algorithms until they can be fixed.
-> > >>>
-> > >>> Thanks,
-> > >>>
-> > >>> - Eric
-> > >>
-> 
-> Thanks for the fixes, but I've improved the self-tests more, and there is
-> another bug.  See the KernelCI job here:
-> 
-> 	https://kernelci.org/boot/all/job/ardb/branch/for-kernelci/kernel/v5.0-11071-g7d597cc3f0ef/
-> 
-> The self-tests are failing on the rk3288-rock2-square platform:
-> 
-> 	alg: skcipher: cbc-aes-rk encryption test failed (wrong output IV) on test vector 0, cfg=\"in-place\"
-> 	alg: skcipher: cbc-des-rk encryption test failed (wrong output IV) on test vector 0, cfg=\"in-place\"
-> 	alg: skcipher: cbc-des3-ede-rk encryption test failed (wrong output IV) on test vector 0, cfg=\"in-place\"
-> 
-> The issue is that the self-tests now verify that CBC implementations update the
-> IV buffer to contain the next IV, aka the last ciphertext block.  But the
-> Rockchip crypto driver doesn't do that, so it needs to be fixed.
-> 
-> This has always been a requirement for CBC implementations so that users can
-> chain CBC requests.  Unfortunately it was just never tested for...
-> 
-> This should be easily reproducible using the mainline kernel.
-> 
-> - Eric
+SGVsbG8gSm9uYXMsCgpIb3cgYWJvdXQgdGhpcyB0b3BpYz8KCkkgdGhpbmsgdGhpcyBwYXRjaCBk
+b2VzIG5vdCBoYXZlIGJhZCBlZmZlY3QgZm9yIG11bHRpIGNoYW5uZWwKc291bmQgb2YgSERNSS4g
+SWYgeW91IGRvbid0IHRoaW5rIHNvLCBwbGVhc2UgdGVsbCBtZS4KSSB3YWl0IHlvdXIgc291bmQg
+cGF0Y2ggYW5kIGFmdGVyIHJlLWNoZWNrIHRoaXMgcGF0Y2guCgpCZXN0IFJlZ2FyZHMsCkthdHN1
+aGlybyBTdXp1a2kKCk9uIDIwMTkvMDMvMDMgNDoyNiwgS2F0c3VoaXJvIFN1enVraSB3cm90ZToK
+PiBIZWxsbyBKb25hcywKPiAKPiBUaGFua3MgZm9yIHlvdXIgY29tbWVudHMuCj4gCj4gT24gMjAx
+OS8wMy8wMyAyOjIwLCBKb25hcyBLYXJsbWFuIHdyb3RlOgo+PiBPbiAyMDE5LTAzLTAyIDE1OjE5
+LCBLYXRzdWhpcm8gU3V6dWtpIHdyb3RlOgo+Pj4gUGluZy4uLgo+Pj4KPj4+IE9uIDIwMTkvMDIv
+MTggMjozNCwgS2F0c3VoaXJvIFN1enVraSB3cm90ZToKPj4+PiBUaGlzIHBhdGNoIGFkZHMgSERN
+SSBzb3VuZCAoSTJTMCkgbm9kZSBmb3Igcm9jazY0Lgo+Pj4+Cj4+Pj4gQWZ0ZXIgYXBwbHkgdGhp
+cyBwYXRjaCwgVUFSVDIgd2lsbCBmYWlsIHRvIGFsbG9jYXRlIERNQSByZXNvdXJjZXMKPj4+PiBi
+dXQgVUFSVCBkcml2ZXIgY2FuIHdvcmsgZmluZSB3aXRob3V0IERNQS4KPj4+Pgo+Pj4+IFRoaXMg
+ZXJyb3IgaXMgcmVsYXRlZCB0byB0aGUgRE1BQyBvZiByazMzMjggKHBsMzMwIG9yIGNvbXBhdGli
+bGUpLgo+Pj4+IERNQUMgY29ubmVjdGVkIHRvIDE2IERNQSBzb3VyY2VzLiBFYWNoIHNvdXJjZXMg
+aGF2ZSBJRCBudW1iZXIgdGhhdCBpcwo+Pj4+IGNhbGxlZCAnUmVxIG51bWJlcicgaW4gcmszMzI4
+IFRSTS4gQ3VycmVudGx5IHRvdGFsIDcgc291cmNlcyBoYXMgYmVlbgo+Pj4+IGFjdGl2YXRlZCBh
+cyBmb2xsb3dzOgo+Pj4+Cj4+Pj4gfCBSZXEgbnVtYmVyIHwgU291cmNlIHwgUmVxdWlyZWTCoCB8
+Cj4+Pj4gfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgwqDCoMKgwqDCoMKgIHwgY2hhbm5lbHPC
+oCB8Cj4+Pj4gfC0tLS0tLS0tLS0tLSstLS0tLS0tLSstLS0tLS0tLS0tLXwKPj4+PiB8IDE0LCAx
+NcKgwqDCoMKgIHwgSTJTMcKgwqAgfCAyY2jCoMKgwqDCoMKgwqAgfAo+Pj4+IHzCoCA2LMKgIDfC
+oMKgwqDCoCB8IFVBUlQywqAgfCAyY2jCoMKgwqDCoMKgwqAgfAo+Pj4+IHzCoMKgwqDCoCAxMMKg
+wqDCoMKgIHwgU1BESUbCoCB8IDFjaMKgwqDCoMKgwqDCoCB8Cj4+Pj4gfMKgIDgswqAgOcKgwqDC
+oMKgIHwgU1BJMMKgwqAgfCAyY2jCoMKgwqDCoMKgwqAgfAo+Pj4+IHwtLS0tLS0tLS0tLS0rLS0t
+LS0tLS0rLS0tLS0tLS0tLS18Cj4+Pj4gfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCBUb3RhbMKg
+IHwgN2NowqDCoMKgwqDCoMKgIHwKPj4+Pgo+Pj4+IEhETUkgYXVkaW8gbmVlZHMgdG8gYWN0aXZh
+dGUgbmV3IHNvdXJjZSBJMlMwIChSZXEgbnVtYmVyIDExIGFuZCAxMikuCj4+Pj4gSTJTMCBjYW4g
+d29yayBjb25jdXJyZW50bHkgd2l0aCBvdGhlciBzb3VyY2VzLCBidXQgcmszMzI4IERNQUMgY2Fu
+Cj4+Pj4gdXNlIG1heCA4IGNoYW5uZWxzIGF0IHNhbWUgdGltZS4gSWYgSTJTMCBpcyBzaW1wbHkg
+YWN0aXZhdGVkIGJ5IHRoaXMKPj4+PiBwYXRjaCwgcmVxdWlyZWQgRE1BQyBjaGFubmVscyB3aWxs
+IGJlIDkuIFNvIGxhc3Qgb25lIChVQVJUMikgY2Fubm90Cj4+Pj4gYWxsb2NhdGUgdGhlIERNQSBy
+ZXNvdXJjZXMuCj4+Pj4KPj4+PiBWaXJ0LWRtYSBtZWNoYW5pc20gZm9yIHBsMDMzMCBETUFDIGRy
+aXZlciBpcyBuZWVkZWQgdG8gZml4IHRoaXMKPj4+PiBwcm9ibGVtLgo+Pj4+Cj4+Pj4gU2lnbmVk
+LW9mZi1ieTogS2F0c3VoaXJvIFN1enVraSA8a2F0c3VoaXJvQGthdHN1c3Rlci5uZXQ+Cj4+Pj4g
+LS0tCj4+Pj4gwqDCoCAuLi4vYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LXJvY2s2NC5k
+dHMgfCAyMSAKPj4+PiArKysrKysrKysrKysrKysrKystCj4+Pj4gwqDCoCAxIGZpbGUgY2hhbmdl
+ZCwgMjAgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+Pj4+Cj4+Pj4gZGlmZiAtLWdpdCBh
+L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LXJvY2s2NC5kdHMgCj4+Pj4gYi9h
+cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMyOC1yb2NrNjQuZHRzCj4+Pj4gaW5kZXgg
+MjE1N2E1MjgyNzZiLi5iZmMwOTMwZDI0NWMgMTAwNjQ0Cj4+Pj4gLS0tIGEvYXJjaC9hcm02NC9i
+b290L2R0cy9yb2NrY2hpcC9yazMzMjgtcm9jazY0LmR0cwo+Pj4+ICsrKyBiL2FyY2gvYXJtNjQv
+Ym9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LXJvY2s2NC5kdHMKPj4+PiBAQCAtNjgsNyArNjgsOCBA
+QAo+Pj4+IMKgwqDCoMKgwqDCoCBzb3VuZCB7Cj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqAgY29t
+cGF0aWJsZSA9ICJhdWRpby1ncmFwaC1jYXJkIjsKPj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoCBs
+YWJlbCA9ICJyb2NrY2hpcCxyazMzMjgiOwo+Pj4+IC3CoMKgwqDCoMKgwqDCoCBkYWlzID0gPCZp
+MnMxX3AwCj4+Pj4gK8KgwqDCoMKgwqDCoMKgIGRhaXMgPSA8JmkyczBfcDAKPj4+PiArwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoCAmaTJzMV9wMAo+Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgJnNwZGlmX3AwPjsKPj4KPj4gSSBhbSB3b3JraW5nIG9uIG11bHRpLWNoYW5uZWwgaGRtaSBh
+dWRpbyBzdXBwb3J0IGZvciBkdy1oZG1pIGF0IFsxXSAKPj4gYW5kIGFyZSB3b25kZXJpbmcgaWYg
+aGF2aW5nIG11bHRpcGxlIGRhaXMgb24gb25lIGdyYXBoIGNhcmQKPj4gaW5zdGVhZCBvZiBhIHNl
+cGFyYXRlIGhkbWkgc291bmQgY2FyZCB3aWxsIGFmZmVjdCB0aGUgYWJpbGl0eSB0byAKPj4gZGVm
+aW5lIGEgcHJvcGVyIGFsc2EgY29uZmlnIGZvciBtdWx0aSBjaGFubmVsIGhkbWkgc291bmQuCj4+
+Cj4+IFsxXSAKPj4gaHR0cHM6Ly9naXRodWIuY29tL0t3aWJvby9saW51eC1yb2NrY2hpcC9jb21w
+YXJlLzg4NzRjMjA2ZDYxM2RjNTc1ZjVjYjZlMzg1ZTdhODY2MDIwMTM4ZDAuLi45MmIyMGVhYTZi
+NmRkMmNmMzQxOGE0MjhmOTA1ZDEwYmJjNjI3MjRmIAo+Pgo+Pgo+IAo+IEl0IHNlZW1zIGEgcGFy
+dCBvZiBtdWx0aSBjaGFubmVsICg1LjEgY2gpIGhhcyBhbHJlYWR5IGJlZW4gc3VwcG9ydGVkCj4g
+Ynkgcm9ja2NoaXAtaTJzIGFuZCBkdy1oZG1pLiBTbyBJIGFwcGxpZWQgdGhpcyBwYXRjaCBhbmQg
+dHJpZWQgYmVsb3cKPiBjb21tYW5kLgo+ICDCoCBzcGVha2VyLXRlc3QgLUQgaHc6MCwwIC1mIDQ4
+MDAwIC1jIDYKPiBJdCBkb2VzIG5vdCByZXR1cm4gZXJyb3JzLgo+IAo+IFdvdWxkIHlvdSB0ZWxs
+IG1lIG1vcmUgZGV0YWlscyB5b3Ugd29ycmllZCBhYm91dCBpZiBzb21ldGhpbmcgd3Jvbmc/Cj4g
+Cj4gCj4gRllJOiBSb2NrNjQgUENNIGRldmljZXMgYXJlIGFzIGZvbGxvd3MgYWZ0ZXIgYXBwbGll
+ZCB0aGlzIHBhdGNoLgo+IH5+fn5+Cj4gJCBjYXQgL3Byb2MvYXNvdW5kL3BjbQo+IDAwLTAwOiBm
+ZjAwMDAwMC5pMnMtaTJzLWhpZmkgaTJzLWhpZmktMCA6wqAgOiBwbGF5YmFjayAxCj4gMDAtMDE6
+IGZmMDEwMDAwLmkycy1yazMzMjgtaGlmaSBmZjQxMDAwMC5jb2RlYy0xIDrCoCA6IHBsYXliYWNr
+IDEgOiAKPiBjYXB0dXJlIDEKPiAwMC0wMjogZmYwMzAwMDAuc3BkaWYtZGl0LWhpZmkgZGl0LWhp
+ZmktMiA6wqAgOiBwbGF5YmFjayAxCj4gfn5+fn4KPiAKPiBCZXN0IFJlZ2FyZHMsCj4gS2F0c3Vo
+aXJvIFN1enVraQo+IAo+IAo+PiBSZWdhcmRzLAo+PiBKb25hcwo+Pgo+Pj4+IMKgwqDCoMKgwqDC
+oCB9Owo+Pj4+IEBAIC0xNDEsNiArMTQyLDEyIEBACj4+Pj4gwqDCoCAmaGRtaSB7Cj4+Pj4gwqDC
+oMKgwqDCoMKgIHN0YXR1cyA9ICJva2F5IjsKPj4+PiArCj4+Pj4gK8KgwqDCoCBwb3J0QDAgewo+
+Pj4+ICvCoMKgwqDCoMKgwqDCoCBoZG1pX3AwXzA6IGVuZHBvaW50IHsKPj4+PiArwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoCByZW1vdGUtZW5kcG9pbnQgPSA8JmkyczBfcDBfMD47Cj4+Pj4gK8KgwqDC
+oMKgwqDCoMKgIH07Cj4+Pj4gK8KgwqDCoCB9Owo+Pj4+IMKgwqAgfTsKPj4+PiDCoMKgICZoZG1p
+cGh5IHsKPj4+PiBAQCAtMjU2LDYgKzI2MywxOCBAQAo+Pj4+IMKgwqDCoMKgwqDCoCB9Owo+Pj4+
+IMKgwqAgfTsKPj4+PiArJmkyczAgewo+Pj4+ICvCoMKgwqAgc3RhdHVzID0gIm9rYXkiOwo+Pj4+
+ICsKPj4+PiArwqDCoMKgIGkyczBfcDA6IHBvcnQgewo+Pj4+ICvCoMKgwqDCoMKgwqDCoCBpMnMw
+X3AwXzA6IGVuZHBvaW50IHsKPj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBkYWktZm9ybWF0
+ID0gImkycyI7Cj4+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbWNsay1mcyA9IDwyNTY+Owo+
+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJlbW90ZS1lbmRwb2ludCA9IDwmaGRtaV9wMF8w
+PjsKPj4+PiArwqDCoMKgwqDCoMKgwqAgfTsKPj4+PiArwqDCoMKgIH07Cj4+Pj4gK307Cj4+Pj4g
+Kwo+Pj4+IMKgwqAgJmkyczEgewo+Pj4+IMKgwqDCoMKgwqDCoCBzdGF0dXMgPSAib2theSI7Cj4+
+Pj4KPj4+Cj4+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+Xwo+Pj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4+PiBMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCj4+PiBodHRwczovL25hbTAzLnNhZmVsaW5rcy5wcm90ZWN0aW9uLm91
+dGxvb2suY29tLz91cmw9aHR0cCUzQSUyRiUyRmxpc3RzLmluZnJhZGVhZC5vcmclMkZtYWlsbWFu
+JTJGbGlzdGluZm8lMkZsaW51eC1yb2NrY2hpcCZhbXA7ZGF0YT0wMiU3QzAxJTdDJTdDZmNiMGQ2
+YzQzZGVkNGQ1ZTdkNGMwOGQ2OWYxYTIyNmQlN0M4NGRmOWU3ZmU5ZjY0MGFmYjQzNWFhYWFhYWFh
+YWFhYSU3QzElN0MwJTdDNjM2ODcxMzMxOTIyMDkwNDI2JmFtcDtzZGF0YT1BQmIlMkZvJTJGTUFH
+dkZCSCUyQjM3dVFyNnJ6biUyQiUyRlhCQVh5aUdmdjIlMkJNTzBSUW9RJTNEJmFtcDtyZXNlcnZl
+ZD0wIAo+Pj4KPj4KPj4KPj4KPiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0t
+a2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
