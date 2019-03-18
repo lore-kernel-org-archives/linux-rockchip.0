@@ -1,14 +1,13 @@
 From: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: Re: [PATCH v2] drm/rockchip: vop: Support dithering to RGB666
-Date: Mon, 18 Mar 2019 13:47:37 +0000
-Message-ID: <CAPCnQJ=V32yJ01NZr0EO8hjjs=-zj+0MGddS+qd6txWqFs0mvg@mail.gmail.com>
-References: <CAPCnQJnDB5Z=xNCdBw0R3k18GDKdUeZ__2fBA_YKYzZ6Rdny2Q@mail.gmail.com>
- <223cf04e-5b35-4194-33c2-5614b329ec4b@gmail.com>
+Subject: [PATCH v3] drm/rockchip: vop: Support dithering to RGB666
+Date: Mon, 18 Mar 2019 13:57:01 +0000
+Message-ID: <20190318135701.7098-1-urjaman@gmail.com>
+References: <20190219100848.2222-1-urjaman@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <223cf04e-5b35-4194-33c2-5614b329ec4b-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <20190219100848.2222-1-urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,31 +18,166 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Mar 14, 2019 at 5:20 PM Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->
-> How about RK3066? See/use linux-next.
-Hi and thanks for the notice. The rest of this mail "addressed" for
-anyone interested.
+Splits out the dither register bits and introduces
+the same config enumerations as in the rockchip kernel tree.
+Tested to fix the banding on my ASUS C201.
 
-I've added the dither bits for RK3066 - it doesnt have the bit for
-Allegro/FRC (sel)
-which really isnt a problem, but brought up a question for me:
-Should the code avoid calling vop_reg_write with unsupported registers/bits?
-I assumed a yes, but based on my tests it already does it on RK3288..
-(atleast x/y_mir_en and act_info iirc).
+Signed-off-by: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+v3: Support RK3066 which doesnt have the sel bit, thus question:
+should we avoid that vop_reg_write call if the bit isnt supported
+as i did? If yes should i add a macro for the test?
+(Since that doesnt yet exist in this version of the driver)
+- 
+This is a version of the patch that is quite inspired by the rockchip
+kernel tree (that i hadn't looked at enough), but still keeps
+to just implementing RGB666 dithering because more changes
+are needed to get the information in place for detecting RGB565,
+but adding that should be easier afterwards.
 
-This only results in a "Warning: not support reg_name" print in drm
-debug output,
-but to me printing warnings during normal operations (even if they're
-only in debug output)
-seems wrong.
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 26 +++++++++++++++++----
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h | 14 ++++++++++-
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 20 ++++++++++++++--
+ 3 files changed, 53 insertions(+), 7 deletions(-)
 
-I'll be sending a v3 of the patch after this mail, and i did avoid the
-unnecessary
-write for now, but i expect to be changing that line of code :P
-
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index c7d4c6073ea5..26b4d74c109e 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1086,10 +1086,28 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
+ 	    !(vop_data->feature & VOP_FEATURE_OUTPUT_RGB10))
+ 		s->output_mode = ROCKCHIP_OUT_MODE_P888;
+ 
+-	if (s->output_mode == ROCKCHIP_OUT_MODE_AAAA && s->output_bpc == 8)
+-		VOP_REG_SET(vop, common, pre_dither_down, 1);
+-	else
+-		VOP_REG_SET(vop, common, pre_dither_down, 0);
++	if (s->output_bpc) { /* Only dither if bpc known. */
++		if (vop_data->feature & VOP_FEATURE_OUTPUT_RGB10) {
++			if (s->output_mode == ROCKCHIP_OUT_MODE_AAAA && s->output_bpc <= 8)
++				VOP_REG_SET(vop, common, pre_dither_down, 1);
++			else
++				VOP_REG_SET(vop, common, pre_dither_down, 0);
++		}
++		if (s->output_bpc == 6) {
++			if (&vop->data->common->dither_down_sel.mask)
++				VOP_REG_SET(vop, common, dither_down_sel, DITHER_DOWN_ALLEGRO);
++
++			VOP_REG_SET(vop, common, dither_down_mode, RGB888_TO_RGB666);
++			VOP_REG_SET(vop, common, dither_down_en, 1);
++		} else {
++			VOP_REG_SET(vop, common, dither_down_en, 0);
++		}
++	} else {
++		if (vop_data->feature & VOP_FEATURE_OUTPUT_RGB10)
++			VOP_REG_SET(vop, common, pre_dither_down, 0);
++
++		VOP_REG_SET(vop, common, dither_down_en, 0);
++	}
+ 
+ 	VOP_REG_SET(vop, common, out_mode, s->output_mode);
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+index 04ed401d2325..e64351dab610 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+@@ -71,7 +71,9 @@ struct vop_common {
+ 	struct vop_reg dsp_blank;
+ 	struct vop_reg data_blank;
+ 	struct vop_reg pre_dither_down;
+-	struct vop_reg dither_down;
++	struct vop_reg dither_down_sel;
++	struct vop_reg dither_down_mode;
++	struct vop_reg dither_down_en;
+ 	struct vop_reg dither_up;
+ 	struct vop_reg gate_en;
+ 	struct vop_reg mmu_en;
+@@ -287,6 +289,16 @@ enum scale_down_mode {
+ 	SCALE_DOWN_AVG = 0x1
+ };
+ 
++enum dither_down_mode {
++	RGB888_TO_RGB565 = 0x0,
++	RGB888_TO_RGB666 = 0x1
++};
++
++enum dither_down_mode_sel {
++	DITHER_DOWN_ALLEGRO = 0x0,
++	DITHER_DOWN_FRC = 0x1
++};
++
+ enum vop_pol {
+ 	HSYNC_POSITIVE = 0,
+ 	VSYNC_POSITIVE = 1,
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+index bd76328c0fdb..e732b73033c8 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+@@ -137,6 +137,9 @@ static const struct vop_common rk3036_common = {
+ 	.standby = VOP_REG_SYNC(RK3036_SYS_CTRL, 0x1, 30),
+ 	.out_mode = VOP_REG(RK3036_DSP_CTRL0, 0xf, 0),
+ 	.dsp_blank = VOP_REG(RK3036_DSP_CTRL1, 0x1, 24),
++	.dither_down_sel = VOP_REG(RK3036_DSP_CTRL0, 0x1, 27),
++	.dither_down_en = VOP_REG(RK3036_DSP_CTRL0, 0x1, 11),
++	.dither_down_mode = VOP_REG(RK3036_DSP_CTRL0, 0x1, 10),
+ 	.cfg_done = VOP_REG_SYNC(RK3036_REG_CFG_DONE, 0x1, 0),
+ };
+ 
+@@ -200,6 +203,9 @@ static const struct vop_common px30_common = {
+ 	.standby = VOP_REG_SYNC(PX30_SYS_CTRL2, 0x1, 1),
+ 	.out_mode = VOP_REG(PX30_DSP_CTRL2, 0xf, 16),
+ 	.dsp_blank = VOP_REG(PX30_DSP_CTRL2, 0x1, 14),
++	.dither_down_en = VOP_REG(PX30_DSP_CTRL2, 0x1, 8),
++	.dither_down_sel = VOP_REG(PX30_DSP_CTRL2, 0x1, 7),
++	.dither_down_mode = VOP_REG(PX30_DSP_CTRL2, 0x1, 6),
+ 	.cfg_done = VOP_REG_SYNC(PX30_REG_CFG_DONE, 0x1, 0),
+ };
+ 
+@@ -365,6 +371,8 @@ static const struct vop_common rk3066_common = {
+ 	.standby = VOP_REG(RK3066_SYS_CTRL0, 0x1, 1),
+ 	.out_mode = VOP_REG(RK3066_DSP_CTRL0, 0xf, 0),
+ 	.cfg_done = VOP_REG(RK3066_REG_CFG_DONE, 0x1, 0),
++	.dither_down_en = VOP_REG(RK3066_DSP_CTRL0, 0x1, 11),
++	.dither_down_mode = VOP_REG(RK3066_DSP_CTRL0, 0x1, 10),
+ 	.dsp_blank = VOP_REG(RK3066_DSP_CTRL1, 0x1, 24),
+ };
+ 
+@@ -458,6 +466,9 @@ static const struct vop_common rk3188_common = {
+ 	.standby = VOP_REG(RK3188_SYS_CTRL, 0x1, 30),
+ 	.out_mode = VOP_REG(RK3188_DSP_CTRL0, 0xf, 0),
+ 	.cfg_done = VOP_REG(RK3188_REG_CFG_DONE, 0x1, 0),
++	.dither_down_sel = VOP_REG(RK3188_DSP_CTRL0, 0x1, 27),
++	.dither_down_en = VOP_REG(RK3188_DSP_CTRL0, 0x1, 11),
++	.dither_down_mode = VOP_REG(RK3188_DSP_CTRL0, 0x1, 10),
+ 	.dsp_blank = VOP_REG(RK3188_DSP_CTRL1, 0x3, 24),
+ };
+ 
+@@ -585,8 +596,10 @@ static const struct vop_common rk3288_common = {
+ 	.standby = VOP_REG_SYNC(RK3288_SYS_CTRL, 0x1, 22),
+ 	.gate_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 23),
+ 	.mmu_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 20),
++	.dither_down_sel = VOP_REG(RK3288_DSP_CTRL1, 0x1, 4),
++	.dither_down_mode = VOP_REG(RK3288_DSP_CTRL1, 0x1, 3),
++	.dither_down_en = VOP_REG(RK3288_DSP_CTRL1, 0x1, 2),
+ 	.pre_dither_down = VOP_REG(RK3288_DSP_CTRL1, 0x1, 1),
+-	.dither_down = VOP_REG(RK3288_DSP_CTRL1, 0xf, 1),
+ 	.dither_up = VOP_REG(RK3288_DSP_CTRL1, 0x1, 6),
+ 	.data_blank = VOP_REG(RK3288_DSP_CTRL0, 0x1, 19),
+ 	.dsp_blank = VOP_REG(RK3288_DSP_CTRL0, 0x3, 18),
+@@ -878,7 +891,10 @@ static const struct vop_misc rk3328_misc = {
+ 
+ static const struct vop_common rk3328_common = {
+ 	.standby = VOP_REG_SYNC(RK3328_SYS_CTRL, 0x1, 22),
+-	.dither_down = VOP_REG(RK3328_DSP_CTRL1, 0xf, 1),
++	.dither_down_sel = VOP_REG(RK3328_DSP_CTRL1, 0x1, 4),
++	.dither_down_mode = VOP_REG(RK3328_DSP_CTRL1, 0x1, 3),
++	.dither_down_en = VOP_REG(RK3328_DSP_CTRL1, 0x1, 2),
++	.pre_dither_down = VOP_REG(RK3328_DSP_CTRL1, 0x1, 1),
+ 	.dither_up = VOP_REG(RK3328_DSP_CTRL1, 0x1, 6),
+ 	.dsp_blank = VOP_REG(RK3328_DSP_CTRL0, 0x3, 18),
+ 	.out_mode = VOP_REG(RK3328_DSP_CTRL0, 0xf, 0),
 -- 
-Urja Rannikko
+2.21.0
