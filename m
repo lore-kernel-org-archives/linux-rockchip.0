@@ -1,179 +1,42 @@
-From: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v4] drm/rockchip: vop: Support dithering to RGB666
-Date: Mon, 18 Mar 2019 15:44:12 +0000
-Message-ID: <20190318154412.26994-1-urjaman@gmail.com>
-References: <20190318135701.7098-1-urjaman@gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] drm/rockchip: vop: reset scale mode when win is disabled
+Date: Mon, 18 Mar 2019 19:04:47 +0100
+Message-ID: <3050762.S3h3RRttz1@diego>
+References: <AM3PR03MB0966DE3E19BACE07328CD637AC7D0@AM3PR03MB0966.eurprd03.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190318135701.7098-1-urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <AM3PR03MB0966DE3E19BACE07328CD637AC7D0@AM3PR03MB0966.eurprd03.prod.outlook.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: David Airlie <airlied@linux.ie>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Ezequiel Garcia <ezequiel@collabora.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Splits out the dither register bits and introduces
-the same config enumerations as in the rockchip kernel tree.
-Tested to fix the banding on my ASUS C201.
-
-Signed-off-by: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
-v4: Simplified the code flow and allow vop_write_reg to deal
-with unsupported bits - maybe clean up the debug output later..
--
-v3: Support RK3066
-- 
-This is a version of the patch that is quite inspired by the rockchip
-kernel tree (that i hadn't looked at enough), but still keeps
-to just implementing RGB666 dithering because more changes
-are needed to get the information in place for detecting RGB565,
-but adding that should be easier afterwards.
--
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 11 ++++++++++-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h | 14 +++++++++++++-
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 20 ++++++++++++++++++--
- 3 files changed, 41 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index c7d4c6073ea5..a7cbf6c9a153 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1029,6 +1029,7 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
- 	u16 vact_st = adjusted_mode->vtotal - adjusted_mode->vsync_start;
- 	u16 vact_end = vact_st + vdisplay;
- 	uint32_t pin_pol, val;
-+	int dither_bpc = s->output_bpc ? s->output_bpc : 10;
- 	int ret;
- 
- 	mutex_lock(&vop->vop_lock);
-@@ -1086,11 +1087,19 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
- 	    !(vop_data->feature & VOP_FEATURE_OUTPUT_RGB10))
- 		s->output_mode = ROCKCHIP_OUT_MODE_P888;
- 
--	if (s->output_mode == ROCKCHIP_OUT_MODE_AAAA && s->output_bpc == 8)
-+	if (s->output_mode == ROCKCHIP_OUT_MODE_AAAA && dither_bpc <= 8)
- 		VOP_REG_SET(vop, common, pre_dither_down, 1);
- 	else
- 		VOP_REG_SET(vop, common, pre_dither_down, 0);
- 
-+	if (dither_bpc == 6) {
-+		VOP_REG_SET(vop, common, dither_down_sel, DITHER_DOWN_ALLEGRO);
-+		VOP_REG_SET(vop, common, dither_down_mode, RGB888_TO_RGB666);
-+		VOP_REG_SET(vop, common, dither_down_en, 1);
-+	} else {
-+		VOP_REG_SET(vop, common, dither_down_en, 0);
-+	}
-+
- 	VOP_REG_SET(vop, common, out_mode, s->output_mode);
- 
- 	VOP_REG_SET(vop, modeset, htotal_pw, (htotal << 16) | hsync_len);
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-index 04ed401d2325..e64351dab610 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-@@ -71,7 +71,9 @@ struct vop_common {
- 	struct vop_reg dsp_blank;
- 	struct vop_reg data_blank;
- 	struct vop_reg pre_dither_down;
--	struct vop_reg dither_down;
-+	struct vop_reg dither_down_sel;
-+	struct vop_reg dither_down_mode;
-+	struct vop_reg dither_down_en;
- 	struct vop_reg dither_up;
- 	struct vop_reg gate_en;
- 	struct vop_reg mmu_en;
-@@ -287,6 +289,16 @@ enum scale_down_mode {
- 	SCALE_DOWN_AVG = 0x1
- };
- 
-+enum dither_down_mode {
-+	RGB888_TO_RGB565 = 0x0,
-+	RGB888_TO_RGB666 = 0x1
-+};
-+
-+enum dither_down_mode_sel {
-+	DITHER_DOWN_ALLEGRO = 0x0,
-+	DITHER_DOWN_FRC = 0x1
-+};
-+
- enum vop_pol {
- 	HSYNC_POSITIVE = 0,
- 	VSYNC_POSITIVE = 1,
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index bd76328c0fdb..e732b73033c8 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -137,6 +137,9 @@ static const struct vop_common rk3036_common = {
- 	.standby = VOP_REG_SYNC(RK3036_SYS_CTRL, 0x1, 30),
- 	.out_mode = VOP_REG(RK3036_DSP_CTRL0, 0xf, 0),
- 	.dsp_blank = VOP_REG(RK3036_DSP_CTRL1, 0x1, 24),
-+	.dither_down_sel = VOP_REG(RK3036_DSP_CTRL0, 0x1, 27),
-+	.dither_down_en = VOP_REG(RK3036_DSP_CTRL0, 0x1, 11),
-+	.dither_down_mode = VOP_REG(RK3036_DSP_CTRL0, 0x1, 10),
- 	.cfg_done = VOP_REG_SYNC(RK3036_REG_CFG_DONE, 0x1, 0),
- };
- 
-@@ -200,6 +203,9 @@ static const struct vop_common px30_common = {
- 	.standby = VOP_REG_SYNC(PX30_SYS_CTRL2, 0x1, 1),
- 	.out_mode = VOP_REG(PX30_DSP_CTRL2, 0xf, 16),
- 	.dsp_blank = VOP_REG(PX30_DSP_CTRL2, 0x1, 14),
-+	.dither_down_en = VOP_REG(PX30_DSP_CTRL2, 0x1, 8),
-+	.dither_down_sel = VOP_REG(PX30_DSP_CTRL2, 0x1, 7),
-+	.dither_down_mode = VOP_REG(PX30_DSP_CTRL2, 0x1, 6),
- 	.cfg_done = VOP_REG_SYNC(PX30_REG_CFG_DONE, 0x1, 0),
- };
- 
-@@ -365,6 +371,8 @@ static const struct vop_common rk3066_common = {
- 	.standby = VOP_REG(RK3066_SYS_CTRL0, 0x1, 1),
- 	.out_mode = VOP_REG(RK3066_DSP_CTRL0, 0xf, 0),
- 	.cfg_done = VOP_REG(RK3066_REG_CFG_DONE, 0x1, 0),
-+	.dither_down_en = VOP_REG(RK3066_DSP_CTRL0, 0x1, 11),
-+	.dither_down_mode = VOP_REG(RK3066_DSP_CTRL0, 0x1, 10),
- 	.dsp_blank = VOP_REG(RK3066_DSP_CTRL1, 0x1, 24),
- };
- 
-@@ -458,6 +466,9 @@ static const struct vop_common rk3188_common = {
- 	.standby = VOP_REG(RK3188_SYS_CTRL, 0x1, 30),
- 	.out_mode = VOP_REG(RK3188_DSP_CTRL0, 0xf, 0),
- 	.cfg_done = VOP_REG(RK3188_REG_CFG_DONE, 0x1, 0),
-+	.dither_down_sel = VOP_REG(RK3188_DSP_CTRL0, 0x1, 27),
-+	.dither_down_en = VOP_REG(RK3188_DSP_CTRL0, 0x1, 11),
-+	.dither_down_mode = VOP_REG(RK3188_DSP_CTRL0, 0x1, 10),
- 	.dsp_blank = VOP_REG(RK3188_DSP_CTRL1, 0x3, 24),
- };
- 
-@@ -585,8 +596,10 @@ static const struct vop_common rk3288_common = {
- 	.standby = VOP_REG_SYNC(RK3288_SYS_CTRL, 0x1, 22),
- 	.gate_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 23),
- 	.mmu_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 20),
-+	.dither_down_sel = VOP_REG(RK3288_DSP_CTRL1, 0x1, 4),
-+	.dither_down_mode = VOP_REG(RK3288_DSP_CTRL1, 0x1, 3),
-+	.dither_down_en = VOP_REG(RK3288_DSP_CTRL1, 0x1, 2),
- 	.pre_dither_down = VOP_REG(RK3288_DSP_CTRL1, 0x1, 1),
--	.dither_down = VOP_REG(RK3288_DSP_CTRL1, 0xf, 1),
- 	.dither_up = VOP_REG(RK3288_DSP_CTRL1, 0x1, 6),
- 	.data_blank = VOP_REG(RK3288_DSP_CTRL0, 0x1, 19),
- 	.dsp_blank = VOP_REG(RK3288_DSP_CTRL0, 0x3, 18),
-@@ -878,7 +891,10 @@ static const struct vop_misc rk3328_misc = {
- 
- static const struct vop_common rk3328_common = {
- 	.standby = VOP_REG_SYNC(RK3328_SYS_CTRL, 0x1, 22),
--	.dither_down = VOP_REG(RK3328_DSP_CTRL1, 0xf, 1),
-+	.dither_down_sel = VOP_REG(RK3328_DSP_CTRL1, 0x1, 4),
-+	.dither_down_mode = VOP_REG(RK3328_DSP_CTRL1, 0x1, 3),
-+	.dither_down_en = VOP_REG(RK3328_DSP_CTRL1, 0x1, 2),
-+	.pre_dither_down = VOP_REG(RK3328_DSP_CTRL1, 0x1, 1),
- 	.dither_up = VOP_REG(RK3328_DSP_CTRL1, 0x1, 6),
- 	.dsp_blank = VOP_REG(RK3328_DSP_CTRL0, 0x3, 18),
- 	.out_mode = VOP_REG(RK3328_DSP_CTRL0, 0xf, 0),
--- 
-2.21.0
+SGkgSm9uYXMsCgpBbSBNaXR0d29jaCwgMjAuIEZlYnJ1YXIgMjAxOSwgMjM6NDA6MDYgQ0VUIHNj
+aHJpZWIgSm9uYXMgS2FybG1hbjoKPiBOVjEyIGZyYW1lYnVmZmVycyBwcm9kdWNlZCBieSB0aGUg
+VlBVIHNob3dzIGRpc3RvcnRlZCBvbiBSSzMyODgKPiBhZnRlciB3aW4gaGFzIGJlZW4gZGlzYWJs
+ZWQgd2hlbiBzY2FsaW5nIGlzIGFjdGl2ZS4KPiAKPiBUaGlzIGlzc3VlIGNhbiBiZSByZXByb2R1
+Y2VkIHVzaW5nIGEgMTA4MHAgbW9kZXNldCBieToKPiAtIFNjYWxlIGEgMTI4MHg3MjAgTlYxMiBm
+cmFtZWJ1ZmZlciB0byAxOTIweDEwODAgb24gd2luMAo+IC0gRGlzYWJsZSB3aW4wCj4gLSBEaXNw
+bGF5IGEgMTkyMHgxMDgwIE5WMTIgZnJhbWVidWZmZXIgd2l0aG91dCBzY2FsaW5nIG9uIHdpbjAK
+PiAtIE91dHB1dCB3aWxsIG5vdyBzaG93IHRoZSBmcmFtZWJ1ZmZlciBkaXN0b3J0ZWQKPiAKPiBB
+bmQgYnk6Cj4gLSBTY2FsZSBhIDEyODB4NzIwIE5WMTIgZnJhbWVidWZmZXIgdG8gMTkyMHgxMDgw
+Cj4gLSBDaGFuZ2UgdG8gYSA3MjBwIG1vZGVzZXQgKHdpbiBnZXRzIGRpc2FibGVkIGFuZCBzY2Fs
+aW5nIHJlc2V0IHRvIG5vbmUpCj4gLSBPdXRwdXQgd2lsbCBub3cgc2hvdyB0aGUgZnJhbWVidWZm
+ZXIgZGlzdG9ydGVkCj4gCj4gRml4IHRoaXMgYnkgc2V0dGluZyBzY2FsZSBtb2RlIHRvIG5vbmUg
+d2hlbiB3aW4gaXMgZGlzYWJsZWQuCj4gCj4gRml4ZXM6IDRjMTU2YzIxYzc5NCAoImRybS9yb2Nr
+Y2hpcDogdm9wOiBzdXBwb3J0IHBsYW5lIHNjYWxlIikKPiBTaWduZWQtb2ZmLWJ5OiBKb25hcyBL
+YXJsbWFuIDxqb25hc0Brd2lib28uc2U+CgphcHBsaWVkIHRvIGRybS1taXNjLWZpeGVzIC0gc29y
+cnkgaXQgdG9vayBzbyBsb25nIHRvIHRlc3QgYW5kIGFwcGx5LgoKVGhhbmtzCkhlaWtvCgoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
