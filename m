@@ -1,96 +1,62 @@
-From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-Subject: Re: [PATCH v2 0/4] Patches to allow consistent mmc / mmcblk
- numbering w/ device tree
-Date: Sun, 17 Mar 2019 16:59:57 +0000
-Message-ID: <20190317165957.k6lxxaq3hbs2owqz@shell.armlinux.org.uk>
-References: <1461951139-6109-1-git-send-email-dianders@chromium.org>
- <yw1x5zsx5wc7.fsf@mansr.com>
- <CAJ+vNU1PxK-B63Dc3AgzYb9POyxxoF-xPOWBEpxJ+3eVNK8xqw@mail.gmail.com>
- <d5310138-7fdd-973d-5210-3fc91c4686ee@denx.de>
- <yw1xftrn2em9.fsf@mansr.com>
- <1fcd4dad-1e00-67cc-ac5d-24640ae34340@denx.de>
- <20190316153900.xqi55awrockovmsi@shell.armlinux.org.uk>
- <c23d6c4edf92d58aec86da811eaa97a5@agner.ch>
- <yw1xbm2930rr.fsf@mansr.com>
+From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 0/3] Add hardware unbusy interrupt support for dw_mmc
+Date: Mon, 18 Mar 2019 11:51:57 +0100
+Message-ID: <CAPDyKFq6mBrs0qFpBJbD0QAOBKJ68yL=L-_iEb7spfODZLYDBg@mail.gmail.com>
+References: <1552376109-126335-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <yw1xbm2930rr.fsf@mansr.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?iso-8859-1?Q?M=E5ns_Rullg=E5rd?= <mans@mansr.com>
-Cc: Stefan Agner <stefan@agner.ch>, Marek Vasut <marex@denx.de>, Tim Harvey <tharvey@gateworks.com>, Douglas Anderson <dianders@chromium.org>, Ulf Hansson <ulf.hansson@linaro.org>, Jaehoon Chung <jh80.chung@samsung.com>, shawn.lin@rock-chips.com, Adrian Hunter <adrian.hunter@intel.com>, Linux MMC List <linux-mmc@vger.kernel.org>, Brian Norris <computersforpeace@gmail.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Jisheng Zhang <jszhang@marvell.com>, linux-rockchip@lists.infradead.org, devicetree-spec@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, open list <linux-kernel@vger.kernel.org>, vbyravarasu@nvidia.com, Lars-Peter Clausen <lars@metafoo.de>, jonathanh@nvidia.com, linux-arm-kernel@lists.infradead.orgde
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1552376109-126335-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, Mar 17, 2019 at 04:48:24PM +0000, Måns Rullgård wrote:
-> Stefan Agner <stefan@agner.ch> writes:
-> 
-> > On 16.03.2019 16:39, Russell King - ARM Linux admin wrote:
-> >> On Sat, Mar 16, 2019 at 01:33:58PM +0100, Marek Vasut wrote:
-> >>> If you have a FS or partition table there, it does.
-> >>> If you don't, I agree ... that's a problem.
-> >> 
-> >> eMMC boot partitions are called mmcblkXbootY, and unless you have more
-> >> than one eMMC device on the system, they can be found either by looking
-> >> for /dev/mmcblk*boot* or by querying udev.  The advantage of using udev
-> >> is you can discover the physical device behind it by looking at DEVPATH,
-> >> ID_PATH, etc, but you may not have that installed on an embedded device.
-> >> 
-> >> However, as I say, just looking for /dev/mmcblk*boot* is sufficient to
-> >> find the eMMC boot partitions where there is just one eMMC device
-> >> present (which seems to be the standard setup.)
-> >> 
-> >>> > I don't care the slightest what the numbering is, as long as it is
-> >>> > stable.  On some hardware, with an unpatched kernel, the mmc device
-> >>> > numbering changes depending on whether or not an SD card is inserted on
-> >>> > boot.  Getting rid of that behaviour is really all I want.
-> >>>
-> >>> Agreed, that would be an improvement.
-> >> 
-> >> The mmc device numbering was tied to the mmc host numbering a while back
-> >> and the order that the hosts are probed should be completely independent
-> >> of whether a card is inserted or not:
-> >> 
-> >>         snprintf(md->disk->disk_name, sizeof(md->disk->disk_name),
-> >>                  "mmcblk%u%s", card->host->index, subname ? subname : "");
-> >> 
-> >>         snprintf(rpmb_name, sizeof(rpmb_name),
-> >>                  "mmcblk%u%s", card->host->index, subname ? subname : "");
-> >> 
-> >> I suspect that Mans is quoting something from the dim and distant past
-> >> to confuse the issue - as shown above, it is now dependent on the host
-> >> numbering order not the order in which cards are inserted.
-> >
-> > Commit 9aaf3437aa72 ("mmc: block: Use the mmc host device index as the
-> > mmcblk device index") which came in with v4.6 enables constant mmc block
-> > device numbering. I can confirm that it works nicely, and it improved
-> > the situation a lot.
-> 
-> That's the answer I was looking for.  I guess we can drop these patches
-> from our kernels then.
-> 
-> > That being said, we still use a patch downstream which allows
-> > renumbering using an alias. We deal with a bunch of different boards
-> > with different SoC's. I have a couple of SD cards with various rootfs
-> > and use internal eMMC boot quite often as well. Remembering which board
-> > uses which numbering is a pain. Maintaining a patch is just easier...
-> > Furthermore, U-Boot allows reordering and all boards I deal with use mmc
-> > 0 for the internal eMMC. The aliases allow consistency.
-> 
-> Since pretty much every other device type supports renumbering with DT
-> aliases, it would make sense to do this for mmc as well.
+On Tue, 12 Mar 2019 at 08:36, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>
+>
+> DesignWare MMC controler lacks proper hardware wait
+> busy support, so the software must check the busy
+> state if the following tranfser need use data line.
+> And dw_mci_wait_while_busy() now use busy check mostly
+> with host's lock hold, and we can't relinguish CPU
+> at this moment, which makes it rather painful when used
+> in low-end platform. To solve this, Rockchip invent
+> a new hardware unbusy interrupt module, which could
+> generate interrupt if the state machine runs from
+> busy state into idle state.
+>
+>
+> Changes in v2:
+> - add tag from Ziyuan Xu
+> - remove lock for checking event since it's already atomic operation
+>
+> Shawn Lin (3):
+>   mmc: dw_mmc: Check busy state in dw_mci_request()
+>   mmc: dw_mmc: Add hardware unbusy interrupt support
+>   mmc: dw_mmc-rockchip: Enable hardware unbusy interrupt support
+>
+>  drivers/mmc/host/dw_mmc-rockchip.c | 30 ++++++++++++++++++++
+>  drivers/mmc/host/dw_mmc.c          | 56 +++++++++++++++++++++++++++++++++++++-
+>  drivers/mmc/host/dw_mmc.h          |  6 ++++
+>  3 files changed, 91 insertions(+), 1 deletion(-)
+>
+> --
+> 1.9.1
+>
+>
+>
 
-SATA does not.  SCSI devices, whether they are disks, cdroms, tape
-drives or whatever have always been allocated dynamically in the
-order that they are discovered.
+Applied for next, thanks!
 
-Ethernet also does not, and davem remains opposed the idea of fixed
-allocation in the kernel.
-
-It's only a minority that demand fixed enumeration of devices.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-According to speedtest.net: 11.9Mbps down 500kbps up
+Kind regards
+Uffe
