@@ -1,14 +1,13 @@
-From: Gael PORTAY <gael.portay-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [Bug] Rockchip crypto driver sometimes produces wrong ciphertext
-Date: Mon, 18 Mar 2019 11:03:04 -0400
-Message-ID: <20c7a1d9-bc68-c5e5-d666-6db2d10b1f87@collabora.com>
-References: <875-5c8d7980-7-55088a00@27384378>
+From: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v4] drm/rockchip: vop: Support dithering to RGB666
+Date: Mon, 18 Mar 2019 15:44:12 +0000
+Message-ID: <20190318154412.26994-1-urjaman@gmail.com>
+References: <20190318135701.7098-1-urjaman@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <875-5c8d7980-7-55088a00@27384378>
-Content-Language: en-US
+In-Reply-To: <20190318135701.7098-1-urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,95 +17,163 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel.garcia-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Eric Biggers <ebiggers-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Ard Biesheuvel <ard.biesheuvel-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Zhang Zhijie <zhangzj-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "open list:HARDWARE RANDOM NUMBER GENERATOR CORE" <linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
+Splits out the dither register bits and introduces
+the same config enumerations as in the rockchip kernel tree.
+Tested to fix the banding on my ASUS C201.
 
-On 3/16/19 6:31 PM, Ezequiel Garcia wrote:
-> Adding my colleague Gael, who has been working on fixing this driver.
->   
+Signed-off-by: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+v4: Simplified the code flow and allow vop_write_reg to deal
+with unsupported bits - maybe clean up the debug output later..
+-
+v3: Support RK3066
+- 
+This is a version of the patch that is quite inspired by the rockchip
+kernel tree (that i hadn't looked at enough), but still keeps
+to just implementing RGB666 dithering because more changes
+are needed to get the information in place for detecting RGB565,
+but adding that should be easier afterwards.
+-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 11 ++++++++++-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h | 14 +++++++++++++-
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 20 ++++++++++++++++++--
+ 3 files changed, 41 insertions(+), 4 deletions(-)
 
-I have a couple of pending commits that may fix that issue.
-
-I will give it a try, and get back to you then.
-
-> On Friday, March 15, 2019 00:31 -03, Eric Biggers <ebiggers-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
->   
->> Hi Zhang,
->>
->> On Mon, Jan 28, 2019 at 11:14:32AM +0800, Tao Huang wrote:
->>> Hi Eric and Heiko:
->>>
->>>>> On Sat, 26 Jan 2019 at 22:05, Eric Biggers <ebiggers-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
->>>>>>
->>>>>> Hello,
->>>>>>
->>>>>> I don't know whether anyone is actually maintaining the Rockchip crypto driver
->>>>>> in drivers/crypto/rockchip/, but it's failing the improved crypto tests
->>>>>> that I currently have out for review: https://patchwork.kernel.org/cover/10778089/
->>>
->>> Zhang Zhijie, engineer from Rockchip, will try to fix this software bug.
->>>
->>>>>>
->>>>>> See the boot logs for RK3288 from the KernelCI job here:
->>>>>>
->>>>>> https://storage.kernelci.org/ardb/for-kernelci/v5.0-rc1-86-geaffe22db9d1/arm/multi_v7_defconfig/lab-collabora/boot-rk3288-rock2-square.txt
->>>>>> https://storage.kernelci.org/ardb/for-kernelci/v5.0-rc1-86-geaffe22db9d1/arm/multi_v7_defconfig/lab-collabora/boot-rk3288-veyron-jaq.txt
->>>>>>
->>>>>> alg: skcipher: ecb-aes-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: use_digest src_divs=[15.64%@+3258, 84.36%@+4059] dst_divs=[69.11%@+1796, 8.49%@+4027, 6.34%@+1, 16.6%@+4058] iv_offset=21\"
->>>>>> alg: skcipher: cbc-aes-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_digest src_divs=[100.0%@alignmask+3993] dst_divs=[65.31%@alignmask+1435, 34.69%@+14]\"
->>>>>> alg: skcipher: ecb-des-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_final src_divs=[<flush> 66.52%@+11, 33.48%@+1519] dst_divs=[58.82%@+1, 19.43%@+4082, 21.75%@+8]\"
->>>>>> alg: skcipher: cbc-des-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_finup src_divs=[100.0%@+3980] dst_divs=[60.4%@+3763, 23.9%@+4011, 16.87%@+4046]\"
->>>>>> alg: skcipher: ecb-des3-ede-rk encryption test failed (wrong result) on test vector 0, cfg=\"random: may_sleep use_digest src_divs=[100.0%@+4] dst_divs=[47.25%@+19, 14.83%@+22, 37.92%@+31]\"
->>>>>> alg: skcipher: cbc-des3-ede-rk encryption test failed (wrong result) on test vector 0, cfg=\"two even aligned splits\"
->>>>>>
->>>>>> In other words: the ecb-aes-rk, cbc-aes-rk, ecb-des-rk, cbc-des-rk,
->>>>>> ecb-des3-ede-rk, and cbc-des3-ede-rk algorithms are failing because they produce
->>>>>> the wrong ciphertext on some scatterlist layouts.
->>>>>>
->>>>>> You can reproduce by pulling from
->>>>>> https://git.kernel.org/pub/scm/linux/kernel/git/ebiggers/linux.git
->>>>>> branch "testmgr-improvements", unsetting CONFIG_CRYPTO_MANAGER_DISABLE_TESTS,
->>>>>> setting CONFIG_CRYPTO_MANAGER_EXTRA_TESTS=y, rebooting and checking dmesg.
->>>>>>
->>>>>> Note that I don't have this hardware myself, so if it turns out that no one is
->>>>>> interested in fixing this anytime soon I'll instead have to propose disabling
->>>>>> these algorithms until they can be fixed.
->>>>>>
->>>>>> Thanks,
->>>>>>
->>>>>> - Eric
->>>>>
->>
->> Thanks for the fixes, but I've improved the self-tests more, and there is
->> another bug.  See the KernelCI job here:
->>
->> 	https://kernelci.org/boot/all/job/ardb/branch/for-kernelci/kernel/v5.0-11071-g7d597cc3f0ef/
->>
->> The self-tests are failing on the rk3288-rock2-square platform:
->>
->> 	alg: skcipher: cbc-aes-rk encryption test failed (wrong output IV) on test vector 0, cfg=\"in-place\"
->> 	alg: skcipher: cbc-des-rk encryption test failed (wrong output IV) on test vector 0, cfg=\"in-place\"
->> 	alg: skcipher: cbc-des3-ede-rk encryption test failed (wrong output IV) on test vector 0, cfg=\"in-place\"
->>
->> The issue is that the self-tests now verify that CBC implementations update the
->> IV buffer to contain the next IV, aka the last ciphertext block.  But the
->> Rockchip crypto driver doesn't do that, so it needs to be fixed.
->>
->> This has always been a requirement for CBC implementations so that users can
->> chain CBC requests.  Unfortunately it was just never tested for...
->>
->> This should be easily reproducible using the mainline kernel.
->>
->> - Eric
-> 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-> 
-
-Gael
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index c7d4c6073ea5..a7cbf6c9a153 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1029,6 +1029,7 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
+ 	u16 vact_st = adjusted_mode->vtotal - adjusted_mode->vsync_start;
+ 	u16 vact_end = vact_st + vdisplay;
+ 	uint32_t pin_pol, val;
++	int dither_bpc = s->output_bpc ? s->output_bpc : 10;
+ 	int ret;
+ 
+ 	mutex_lock(&vop->vop_lock);
+@@ -1086,11 +1087,19 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
+ 	    !(vop_data->feature & VOP_FEATURE_OUTPUT_RGB10))
+ 		s->output_mode = ROCKCHIP_OUT_MODE_P888;
+ 
+-	if (s->output_mode == ROCKCHIP_OUT_MODE_AAAA && s->output_bpc == 8)
++	if (s->output_mode == ROCKCHIP_OUT_MODE_AAAA && dither_bpc <= 8)
+ 		VOP_REG_SET(vop, common, pre_dither_down, 1);
+ 	else
+ 		VOP_REG_SET(vop, common, pre_dither_down, 0);
+ 
++	if (dither_bpc == 6) {
++		VOP_REG_SET(vop, common, dither_down_sel, DITHER_DOWN_ALLEGRO);
++		VOP_REG_SET(vop, common, dither_down_mode, RGB888_TO_RGB666);
++		VOP_REG_SET(vop, common, dither_down_en, 1);
++	} else {
++		VOP_REG_SET(vop, common, dither_down_en, 0);
++	}
++
+ 	VOP_REG_SET(vop, common, out_mode, s->output_mode);
+ 
+ 	VOP_REG_SET(vop, modeset, htotal_pw, (htotal << 16) | hsync_len);
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+index 04ed401d2325..e64351dab610 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+@@ -71,7 +71,9 @@ struct vop_common {
+ 	struct vop_reg dsp_blank;
+ 	struct vop_reg data_blank;
+ 	struct vop_reg pre_dither_down;
+-	struct vop_reg dither_down;
++	struct vop_reg dither_down_sel;
++	struct vop_reg dither_down_mode;
++	struct vop_reg dither_down_en;
+ 	struct vop_reg dither_up;
+ 	struct vop_reg gate_en;
+ 	struct vop_reg mmu_en;
+@@ -287,6 +289,16 @@ enum scale_down_mode {
+ 	SCALE_DOWN_AVG = 0x1
+ };
+ 
++enum dither_down_mode {
++	RGB888_TO_RGB565 = 0x0,
++	RGB888_TO_RGB666 = 0x1
++};
++
++enum dither_down_mode_sel {
++	DITHER_DOWN_ALLEGRO = 0x0,
++	DITHER_DOWN_FRC = 0x1
++};
++
+ enum vop_pol {
+ 	HSYNC_POSITIVE = 0,
+ 	VSYNC_POSITIVE = 1,
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+index bd76328c0fdb..e732b73033c8 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+@@ -137,6 +137,9 @@ static const struct vop_common rk3036_common = {
+ 	.standby = VOP_REG_SYNC(RK3036_SYS_CTRL, 0x1, 30),
+ 	.out_mode = VOP_REG(RK3036_DSP_CTRL0, 0xf, 0),
+ 	.dsp_blank = VOP_REG(RK3036_DSP_CTRL1, 0x1, 24),
++	.dither_down_sel = VOP_REG(RK3036_DSP_CTRL0, 0x1, 27),
++	.dither_down_en = VOP_REG(RK3036_DSP_CTRL0, 0x1, 11),
++	.dither_down_mode = VOP_REG(RK3036_DSP_CTRL0, 0x1, 10),
+ 	.cfg_done = VOP_REG_SYNC(RK3036_REG_CFG_DONE, 0x1, 0),
+ };
+ 
+@@ -200,6 +203,9 @@ static const struct vop_common px30_common = {
+ 	.standby = VOP_REG_SYNC(PX30_SYS_CTRL2, 0x1, 1),
+ 	.out_mode = VOP_REG(PX30_DSP_CTRL2, 0xf, 16),
+ 	.dsp_blank = VOP_REG(PX30_DSP_CTRL2, 0x1, 14),
++	.dither_down_en = VOP_REG(PX30_DSP_CTRL2, 0x1, 8),
++	.dither_down_sel = VOP_REG(PX30_DSP_CTRL2, 0x1, 7),
++	.dither_down_mode = VOP_REG(PX30_DSP_CTRL2, 0x1, 6),
+ 	.cfg_done = VOP_REG_SYNC(PX30_REG_CFG_DONE, 0x1, 0),
+ };
+ 
+@@ -365,6 +371,8 @@ static const struct vop_common rk3066_common = {
+ 	.standby = VOP_REG(RK3066_SYS_CTRL0, 0x1, 1),
+ 	.out_mode = VOP_REG(RK3066_DSP_CTRL0, 0xf, 0),
+ 	.cfg_done = VOP_REG(RK3066_REG_CFG_DONE, 0x1, 0),
++	.dither_down_en = VOP_REG(RK3066_DSP_CTRL0, 0x1, 11),
++	.dither_down_mode = VOP_REG(RK3066_DSP_CTRL0, 0x1, 10),
+ 	.dsp_blank = VOP_REG(RK3066_DSP_CTRL1, 0x1, 24),
+ };
+ 
+@@ -458,6 +466,9 @@ static const struct vop_common rk3188_common = {
+ 	.standby = VOP_REG(RK3188_SYS_CTRL, 0x1, 30),
+ 	.out_mode = VOP_REG(RK3188_DSP_CTRL0, 0xf, 0),
+ 	.cfg_done = VOP_REG(RK3188_REG_CFG_DONE, 0x1, 0),
++	.dither_down_sel = VOP_REG(RK3188_DSP_CTRL0, 0x1, 27),
++	.dither_down_en = VOP_REG(RK3188_DSP_CTRL0, 0x1, 11),
++	.dither_down_mode = VOP_REG(RK3188_DSP_CTRL0, 0x1, 10),
+ 	.dsp_blank = VOP_REG(RK3188_DSP_CTRL1, 0x3, 24),
+ };
+ 
+@@ -585,8 +596,10 @@ static const struct vop_common rk3288_common = {
+ 	.standby = VOP_REG_SYNC(RK3288_SYS_CTRL, 0x1, 22),
+ 	.gate_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 23),
+ 	.mmu_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 20),
++	.dither_down_sel = VOP_REG(RK3288_DSP_CTRL1, 0x1, 4),
++	.dither_down_mode = VOP_REG(RK3288_DSP_CTRL1, 0x1, 3),
++	.dither_down_en = VOP_REG(RK3288_DSP_CTRL1, 0x1, 2),
+ 	.pre_dither_down = VOP_REG(RK3288_DSP_CTRL1, 0x1, 1),
+-	.dither_down = VOP_REG(RK3288_DSP_CTRL1, 0xf, 1),
+ 	.dither_up = VOP_REG(RK3288_DSP_CTRL1, 0x1, 6),
+ 	.data_blank = VOP_REG(RK3288_DSP_CTRL0, 0x1, 19),
+ 	.dsp_blank = VOP_REG(RK3288_DSP_CTRL0, 0x3, 18),
+@@ -878,7 +891,10 @@ static const struct vop_misc rk3328_misc = {
+ 
+ static const struct vop_common rk3328_common = {
+ 	.standby = VOP_REG_SYNC(RK3328_SYS_CTRL, 0x1, 22),
+-	.dither_down = VOP_REG(RK3328_DSP_CTRL1, 0xf, 1),
++	.dither_down_sel = VOP_REG(RK3328_DSP_CTRL1, 0x1, 4),
++	.dither_down_mode = VOP_REG(RK3328_DSP_CTRL1, 0x1, 3),
++	.dither_down_en = VOP_REG(RK3328_DSP_CTRL1, 0x1, 2),
++	.pre_dither_down = VOP_REG(RK3328_DSP_CTRL1, 0x1, 1),
+ 	.dither_up = VOP_REG(RK3328_DSP_CTRL1, 0x1, 6),
+ 	.dsp_blank = VOP_REG(RK3328_DSP_CTRL0, 0x3, 18),
+ 	.out_mode = VOP_REG(RK3328_DSP_CTRL0, 0xf, 0),
+-- 
+2.21.0
