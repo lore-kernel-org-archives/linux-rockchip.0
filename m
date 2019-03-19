@@ -1,33 +1,48 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v7 0/6] support a new type of PMIC,including two
- chips(rk817 and rk809)
-Date: Tue, 19 Mar 2019 14:47:17 +0000
-Message-ID: <20190319144717.GG4731@dell>
-References: <20190102102002.29245-1-tony.xie@rock-chips.com>
- <36121846.smLYK4jT4q@diego>
+From: Yue Haibing <yuehaibing@huawei.com>
+Subject: [PATCH -next] phy: rockchip-typec: Make usb3_pll_cfg and dp_pll_cfg static
+Date: Tue, 19 Mar 2019 23:30:28 +0800
+Message-ID: <20190319153028.22452-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <36121846.smLYK4jT4q@diego>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: Tony Xie <tony.xie@rock-chips.com>, broonie@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com
+To: kishon@ti.com, heiko@sntech.de
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, YueHaibing <yuehaibing@huawei.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 19 Mar 2019, Heiko Stübner wrote:
-> Am Mittwoch, 2. Januar 2019, 11:19:56 CET schrieb Tony Xie:
-> > Most of functions and registers of the rk817 and rk808 are the same,
-> > so they can share allmost all codes.
-> 
-> do you have this series on your radar somewhere or should Tony
-> resend the series? As it looks like it fell through the cracks somehow.
+From: YueHaibing <yuehaibing@huawei.com>
 
-It wasn't, but it is now, thanks.
+Fix sparse warning:
 
+drivers/phy/rockchip/phy-rockchip-typec.c:403:16: warning: symbol 'usb3_pll_cfg' was not declared. Should it be static?
+drivers/phy/rockchip/phy-rockchip-typec.c:420:16: warning: symbol 'dp_pll_cfg' was not declared. Should it be static?
+
+Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+---
+ drivers/phy/rockchip/phy-rockchip-typec.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
+index e32edee..8ad366e 100644
+--- a/drivers/phy/rockchip/phy-rockchip-typec.c
++++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+@@ -400,7 +400,7 @@ struct phy_reg {
+ 	u32 addr;
+ };
+ 
+-struct phy_reg usb3_pll_cfg[] = {
++static struct phy_reg usb3_pll_cfg[] = {
+ 	{ 0xf0,		CMN_PLL0_VCOCAL_INIT },
+ 	{ 0x18,		CMN_PLL0_VCOCAL_ITER },
+ 	{ 0xd0,		CMN_PLL0_INTDIV },
+@@ -417,7 +417,7 @@ struct phy_reg usb3_pll_cfg[] = {
+ 	{ 0x8,		CMN_DIAG_PLL0_LF_PROG },
+ };
+ 
+-struct phy_reg dp_pll_cfg[] = {
++static struct phy_reg dp_pll_cfg[] = {
+ 	{ 0xf0,		CMN_PLL1_VCOCAL_INIT },
+ 	{ 0x18,		CMN_PLL1_VCOCAL_ITER },
+ 	{ 0x30b9,	CMN_PLL1_VCOCAL_START },
 -- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+2.7.4
