@@ -1,109 +1,173 @@
-From: =?UTF-8?q?Ga=C3=ABl=20PORTAY?= <gael.portay@collabora.com>
-Subject: [PATCH v2 5/5] arm64: dts: rockchip: Enable dmc and dfi nodes on gru.
-Date: Tue, 19 Mar 2019 14:13:23 -0400
-Message-ID: <20190319181323.22804-6-gael.portay@collabora.com>
-References: <20190319181323.22804-1-gael.portay@collabora.com>
+From: Heiner Kallweit <hkallweit1@gmail.com>
+Subject: [PATCH net-next] net: phy: improve handling link_change_notify
+ callback
+Date: Tue, 19 Mar 2019 19:56:51 +0100
+Message-ID: <85f94f2f-8d1b-214f-a4af-afaf26d68ca0@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190319181323.22804-1-gael.portay@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lin Huang <hl@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Derek Basehore <dbasehore@chromium.org>, Randy Li <ayaka@soulik.info>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Mark Rutland <mark.rutland@arm.com>, kernel@collabora.com, =?UTF-8?q?Ga=C3=ABl=20PORTAY?= <gael.portay@collabora.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Language: en-US
+Sender: netdev-owner@vger.kernel.org
+To: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, David Miller <davem@davemloft.net>, Heiko Stuebner <heiko@sntech.de>, David Wu <david.wu@rock-chips.com>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Lin Huang <hl@rock-chips.com>
+Currently the Phy driver's link_change_notify callback is called
+whenever the state machine is run (every second if polling), no matter
+whether the state changed or not. This isn't needed and may confuse
+users considering the name of the callback. Actually it contradicts
+its kernel-doc description. Therefore let's change the behavior and
+call this callback only in case of an actual state change.
 
-Enable the DMC (Dynamic Memory Controller) and the DFI (DDR PHY Interface)
-nodes on gru/kevin boards so we can support DDR DVFS.
+This requires changes to the at803x and rockchip drivers.
+at803x can be simplified so that it reacts on a state change to
+PHY_NOLINK only.
+The rockchip driver can also be much simplified. We simply re-init
+the AFE/DSP registers whenever we change to PHY_RUNNING and speed
+is 100Mbps. This causes very small overhead because we do this even
+if the speed was 100Mbps already. But this is negligible and
+I think justified by the much simpler code.
 
-Signed-off-by: Lin Huang <hl@rock-chips.com>
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>
+Changes are compile-tested only.
+
+A little bit problematic seems to be to find somebody with the
+hardware to test the changes to the two PHY drivers. See also [0].
+David may be able to test the Rockchip driver.
+
+[0] https://marc.info/?t=153782508800006&r=1&w=2
+
+Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
 ---
+ drivers/net/phy/at803x.c   | 26 +++++++++-----------------
+ drivers/net/phy/phy.c      |  8 ++++----
+ drivers/net/phy/rockchip.c | 31 ++-----------------------------
+ 3 files changed, 15 insertions(+), 50 deletions(-)
 
-Changes in v2:
-- [PATCH 8/8] Move center-supply attribute of dmc node in file
-              rk3399-gru-chromebook.dtsi (where ppvar_centerlogic is
-	      defined).
-
-Changes in v1: None
-
- .../dts/rockchip/rk3399-gru-chromebook.dtsi   |  4 ++++
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  | 20 +++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  2 +-
- 3 files changed, 25 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-index 931640e9aed4..cfb81356c61e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-@@ -400,3 +400,7 @@ ap_i2c_tp: &i2c5 {
- 		rockchip,pins = <0 8 RK_FUNC_GPIO &pcfg_pull_none>;
- 	};
- };
-+
-+&dmc {
-+	center-supply = <&ppvar_centerlogic>;
-+};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index da03fa9c5662..d14dce679e7a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -289,6 +289,12 @@
- 	status = "okay";
- };
+diff --git a/drivers/net/phy/at803x.c b/drivers/net/phy/at803x.c
+index f3e96191e..f315ab468 100644
+--- a/drivers/net/phy/at803x.c
++++ b/drivers/net/phy/at803x.c
+@@ -324,8 +324,6 @@ static int at803x_config_intr(struct phy_device *phydev)
  
-+&dmc_opp_table {
-+	opp04 {
-+		opp-suspend;
-+	};
-+};
-+
- /*
-  * Set some suspend operating points to avoid OVP in suspend
-  *
-@@ -368,6 +374,10 @@
- 		<200000000>;
- };
- 
-+&display_subsystem {
-+	devfreq = <&dmc>;
-+};
-+
- &emmc_phy {
- 	status = "okay";
- };
-@@ -489,6 +499,16 @@ ap_i2c_audio: &i2c8 {
- 	status = "okay";
- };
- 
-+&dfi {
-+	status = "okay";
-+};
-+
-+&dmc {
-+	status = "okay";
-+	upthreshold = <25>;
-+	downdifferential = <15>;
-+};
-+
- &sdhci {
+ static void at803x_link_change_notify(struct phy_device *phydev)
+ {
+-	struct at803x_priv *priv = phydev->priv;
+-
  	/*
- 	 * Signal integrity isn't great at 200 MHz and 150 MHz (DDR) gives the
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 8fe86a3e7658..010b3e5267a0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -156,7 +156,7 @@
- 		};
- 	};
+ 	 * Conduct a hardware reset for AT8030 every time a link loss is
+ 	 * signalled. This is necessary to circumvent a hardware bug that
+@@ -333,25 +331,19 @@ static void at803x_link_change_notify(struct phy_device *phydev)
+ 	 * in the FIFO. In such cases, the FIFO enters an error mode it
+ 	 * cannot recover from by software.
+ 	 */
+-	if (phydev->state == PHY_NOLINK) {
+-		if (phydev->mdio.reset && !priv->phy_reset) {
+-			struct at803x_context context;
++	if (phydev->state == PHY_NOLINK && phydev->mdio.reset) {
++		struct at803x_context context;
  
--	display-subsystem {
-+	display_subsystem: display-subsystem {
- 		compatible = "rockchip,display-subsystem";
- 		ports = <&vopl_out>, <&vopb_out>;
- 	};
+-			at803x_context_save(phydev, &context);
++		at803x_context_save(phydev, &context);
+ 
+-			phy_device_reset(phydev, 1);
+-			msleep(1);
+-			phy_device_reset(phydev, 0);
+-			msleep(1);
++		phy_device_reset(phydev, 1);
++		msleep(1);
++		phy_device_reset(phydev, 0);
++		msleep(1);
+ 
+-			at803x_context_restore(phydev, &context);
++		at803x_context_restore(phydev, &context);
+ 
+-			phydev_dbg(phydev, "%s(): phy was reset\n",
+-				   __func__);
+-			priv->phy_reset = true;
+-		}
+-	} else {
+-		priv->phy_reset = false;
++		phydev_dbg(phydev, "%s(): phy was reset\n", __func__);
+ 	}
+ }
+ 
+diff --git a/drivers/net/phy/phy.c b/drivers/net/phy/phy.c
+index 3745220c5..5938c5acf 100644
+--- a/drivers/net/phy/phy.c
++++ b/drivers/net/phy/phy.c
+@@ -891,9 +891,6 @@ void phy_state_machine(struct work_struct *work)
+ 
+ 	old_state = phydev->state;
+ 
+-	if (phydev->drv && phydev->drv->link_change_notify)
+-		phydev->drv->link_change_notify(phydev);
+-
+ 	switch (phydev->state) {
+ 	case PHY_DOWN:
+ 	case PHY_READY:
+@@ -940,10 +937,13 @@ void phy_state_machine(struct work_struct *work)
+ 	if (err < 0)
+ 		phy_error(phydev);
+ 
+-	if (old_state != phydev->state)
++	if (old_state != phydev->state) {
+ 		phydev_dbg(phydev, "PHY state change %s -> %s\n",
+ 			   phy_state_to_str(old_state),
+ 			   phy_state_to_str(phydev->state));
++		if (phydev->drv && phydev->drv->link_change_notify)
++			phydev->drv->link_change_notify(phydev);
++	}
+ 
+ 	/* Only re-schedule a PHY state machine change if we are polling the
+ 	 * PHY, if PHY_IGNORE_INTERRUPT is set, then we will be moving
+diff --git a/drivers/net/phy/rockchip.c b/drivers/net/phy/rockchip.c
+index 95abf7072..9053b1d01 100644
+--- a/drivers/net/phy/rockchip.c
++++ b/drivers/net/phy/rockchip.c
+@@ -104,41 +104,14 @@ static int rockchip_integrated_phy_config_init(struct phy_device *phydev)
+ 
+ static void rockchip_link_change_notify(struct phy_device *phydev)
+ {
+-	int speed = SPEED_10;
+-
+-	if (phydev->autoneg == AUTONEG_ENABLE) {
+-		int reg = phy_read(phydev, MII_SPECIAL_CONTROL_STATUS);
+-
+-		if (reg < 0) {
+-			phydev_err(phydev, "phy_read err: %d.\n", reg);
+-			return;
+-		}
+-
+-		if (reg & MII_SPEED_100)
+-			speed = SPEED_100;
+-		else if (reg & MII_SPEED_10)
+-			speed = SPEED_10;
+-	} else {
+-		int bmcr = phy_read(phydev, MII_BMCR);
+-
+-		if (bmcr < 0) {
+-			phydev_err(phydev, "phy_read err: %d.\n", bmcr);
+-			return;
+-		}
+-
+-		if (bmcr & BMCR_SPEED100)
+-			speed = SPEED_100;
+-		else
+-			speed = SPEED_10;
+-	}
+-
+ 	/*
+ 	 * If mode switch happens from 10BT to 100BT, all DSP/AFE
+ 	 * registers are set to default values. So any AFE/DSP
+ 	 * registers have to be re-initialized in this case.
+ 	 */
+-	if ((phydev->speed == SPEED_10) && (speed == SPEED_100)) {
++	if (phydev->state == PHY_RUNNING && phydev->speed == SPEED_100) {
+ 		int ret = rockchip_integrated_phy_analog_init(phydev);
++
+ 		if (ret)
+ 			phydev_err(phydev, "rockchip_integrated_phy_analog_init err: %d.\n",
+ 				   ret);
 -- 
 2.21.0
