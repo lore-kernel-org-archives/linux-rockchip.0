@@ -1,92 +1,33 @@
-From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 1/3] mmc: dw_mmc: Check busy state in dw_mci_request()
-Date: Tue, 19 Mar 2019 15:41:11 +0100
-Message-ID: <CAPDyKFqMjEbM1L5=AjDv46xZt5KxOk8GLMGbWsdq2Xcxoi3gTg@mail.gmail.com>
-References: <1552986778-33904-1-git-send-email-shawn.lin@rock-chips.com>
- <1552986778-33904-2-git-send-email-shawn.lin@rock-chips.com>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH v7 0/6] support a new type of PMIC,including two
+ chips(rk817 and rk809)
+Date: Tue, 19 Mar 2019 14:47:17 +0000
+Message-ID: <20190319144717.GG4731@dell>
+References: <20190102102002.29245-1-tony.xie@rock-chips.com>
+ <36121846.smLYK4jT4q@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1552986778-33904-2-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <36121846.smLYK4jT4q@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Cc: Tony Xie <tony.xie@rock-chips.com>, broonie@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 19 Mar 2019 at 10:14, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->
-> Move it from dw_mci_start_command() to dw_mci_request().
-> Then dw_mci_wait_while_busy() isn't called with host's
-> lock hold.
+On Tue, 19 Mar 2019, Heiko Stübner wrote:
+> Am Mittwoch, 2. Januar 2019, 11:19:56 CET schrieb Tony Xie:
+> > Most of functions and registers of the rk817 and rk808 are the same,
+> > so they can share allmost all codes.
+> 
+> do you have this series on your radar somewhere or should Tony
+> resend the series? As it looks like it fell through the cracks somehow.
 
-So, I decided to have a closer look at this.
+It wasn't, but it is now, thanks.
 
->
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Tested-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->
-> Changes in v3: None
-> Changes in v2: None
->
->  drivers/mmc/host/dw_mmc.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-> index 80dc2fd..703dedf 100644
-> --- a/drivers/mmc/host/dw_mmc.c
-> +++ b/drivers/mmc/host/dw_mmc.c
-> @@ -426,7 +426,6 @@ static void dw_mci_start_command(struct dw_mci *host,
->
->         mci_writel(host, CMDARG, cmd->arg);
->         wmb(); /* drain writebuffer */
-> -       dw_mci_wait_while_busy(host, cmd_flags);
->
->         mci_writel(host, CMD, cmd_flags | SDMMC_CMD_START);
->
-> @@ -1419,6 +1418,10 @@ static void dw_mci_request(struct mmc_host *mmc, struct mmc_request *mrq)
->                 return;
->         }
->
-> +       if ((mrq->cmd->opcode != MMC_SEND_STATUS && mrq->cmd->data) &&
-> +           !(mrq->cmd->opcode == SD_SWITCH_VOLTAGE))
-> +               dw_mci_wait_while_busy(host, SDMMC_CMD_PRV_DAT_WAIT);
-> +
-
-This looks weird, because according to the change-log it sounds like
-you are moving things around to just avoid having the "lock" held.
-
-To me, there seems to be more changes because of the new checks for
-the "opcode" above, no?
-
- Moreover, dw_mci_wait_while_busy() is also called from
-mci_send_cmd(), which means it may still be called with the "lock" is
-held. That is really confusing and needs more explanation.
-
->         spin_lock_bh(&host->lock);
->
->         dw_mci_queue_request(host, slot, mrq);
-> --
-> 1.9.1
->
->
->
-
-Finally, I am not sure I understand why dw_mci_wait_while_busy() is
-called before starting a command, at all. That seems wrong to me.
-Instead, shouldn't we look at cmd->flags & MMC_RSP_BUSY, for the
-request in question and don't call mmc_request_done() for it, before
-the card have stop signaled busy. At least that the behavior the mmc
-core expects by the driver.
-
-Kind regards
-Uffe
+-- 
+Lee Jones [李琼斯]
+Linaro Services Technical Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
