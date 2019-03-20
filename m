@@ -1,131 +1,118 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: Re: [PATCH v2 3/5] devfreq: rk3399_dmc: Pass ODT and auto power down
- parameters to TF-A.
-Date: Tue, 19 Mar 2019 17:33:52 -0700
-Message-ID: <20190320003352.GN112750@google.com>
-References: <20190319181323.22804-1-gael.portay@collabora.com>
- <20190319181323.22804-4-gael.portay@collabora.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: =?UTF-8?Q?Re=3a_=5bPATCH_v3_1/3=5d_mmc=3a_dw=5fmmc=3a_Check_busy_st?=
+ =?UTF-8?B?YXRlIGluIGR3X21jaV9yZXF1ZXN0KCnjgJDor7fms6jmhI/vvIzpgq7ku7bnlLFs?=
+ =?UTF-8?B?aW51eC1tbWMtb3duZXJAdmdlci5rZXJuZWwub3Jn5Luj5Y+R44CR?=
+Date: Wed, 20 Mar 2019 10:06:39 +0800
+Message-ID: <cd9d8614-87fb-8016-baf6-5bfd98fcf135@rock-chips.com>
+References: <1552986778-33904-1-git-send-email-shawn.lin@rock-chips.com>
+ <1552986778-33904-2-git-send-email-shawn.lin@rock-chips.com>
+ <CAPDyKFqMjEbM1L5=AjDv46xZt5KxOk8GLMGbWsdq2Xcxoi3gTg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190319181323.22804-4-gael.portay@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?utf-8?B?R2HDq2w=?= PORTAY <gael.portay@collabora.com>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lin Huang <hl@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Derek Basehore <dbasehore@chromium.org>, Randy Li <ayaka@soulik.info>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, kernel@collabora.com
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAPDyKFqMjEbM1L5=AjDv46xZt5KxOk8GLMGbWsdq2Xcxoi3gTg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Gaël,
 
-On Tue, Mar 19, 2019 at 02:13:21PM -0400, Gaël PORTAY wrote:
-> From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+On 2019/3/19 22:41, Ulf Hansson wrote:
+> On Tue, 19 Mar 2019 at 10:14, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>>
+>> Move it from dw_mci_start_command() to dw_mci_request().
+>> Then dw_mci_wait_while_busy() isn't called with host's
+>> lock hold.
 > 
-> Trusted Firmware-A (TF-A) for rk3399 implements a SiP call to get the
-> on-die termination (ODT) and auto power down parameters from kernel,
-> this patch adds the functionality to do this. Also, if DDR clock
-> frequency is lower than the on-die termination (ODT) disable frequency
-> this driver should disable the DDR ODT.
+> So, I decided to have a closer look at this.
 > 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> Reviewed-by: Chanwoo Choi <cw00.choi@samsung.com>
-> ---
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> Tested-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> ---
+>>
+>> Changes in v3: None
+>> Changes in v2: None
+>>
+>>   drivers/mmc/host/dw_mmc.c | 5 ++++-
+>>   1 file changed, 4 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+>> index 80dc2fd..703dedf 100644
+>> --- a/drivers/mmc/host/dw_mmc.c
+>> +++ b/drivers/mmc/host/dw_mmc.c
+>> @@ -426,7 +426,6 @@ static void dw_mci_start_command(struct dw_mci *host,
+>>
+>>          mci_writel(host, CMDARG, cmd->arg);
+>>          wmb(); /* drain writebuffer */
+>> -       dw_mci_wait_while_busy(host, cmd_flags);
+>>
+>>          mci_writel(host, CMD, cmd_flags | SDMMC_CMD_START);
+>>
+>> @@ -1419,6 +1418,10 @@ static void dw_mci_request(struct mmc_host *mmc, struct mmc_request *mrq)
+>>                  return;
+>>          }
+>>
+>> +       if ((mrq->cmd->opcode != MMC_SEND_STATUS && mrq->cmd->data) &&
+>> +           !(mrq->cmd->opcode == SD_SWITCH_VOLTAGE))
+>> +               dw_mci_wait_while_busy(host, SDMMC_CMD_PRV_DAT_WAIT);
+>> +
 > 
-> Changes in v2: None
+> This looks weird, because according to the change-log it sounds like
+> you are moving things around to just avoid having the "lock" held.
 > 
-> Changes in v1:
-> - [RFC 3/10] Add an explanation for platform SIP calls.
-> - [RFC 3/10] Change if statement for a switch.
-> - [RFC 3/10] Rename ddr_flag to odt_enable to be more clear.
+> To me, there seems to be more changes because of the new checks for
+> the "opcode" above, no?
+
+yes, that's what original dw_mci_wait_while_busy() did internally.
+
 > 
->  drivers/devfreq/rk3399_dmc.c        | 74 ++++++++++++++++++++++++++++-
->  include/soc/rockchip/rockchip_sip.h |  1 +
->  2 files changed, 74 insertions(+), 1 deletion(-)
+>   Moreover, dw_mci_wait_while_busy() is also called from
+> mci_send_cmd(), which means it may still be called with the "lock" is
+> held. That is really confusing and needs more explanation.
+
+dwmmc need to send a *NULL* cmd with SDMMC_CMD_UPD_CLK set in its CMD
+register, in order to update bus clock, which is quite differnet from
+others hosts. So mci_send_cmd()->dw_mci_wait_while_busy() is used for 
+updating bus clock but not in the hot path. So the main concern is to
+move dw_mci_wait_while_busy() out from normal data requst.
+
+
 > 
-> diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
-> ...
->  static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
-> @@ -80,6 +86,8 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
->  	struct dev_pm_opp *opp;
->  	unsigned long old_clk_rate = dmcfreq->rate;
->  	unsigned long target_volt, target_rate;
-> +	struct arm_smccc_res res;
-> +	bool odt_enable = false;
->  	int err;
->  
->  	opp = devfreq_recommended_opp(dev, freq, flags);
-> @@ -95,6 +103,19 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
->  
->  	mutex_lock(&dmcfreq->lock);
->  
-> +	if (target_rate >= dmcfreq->odt_dis_freq)
-> +		odt_enable = true;
-> +
-> +	/*
-> +	 * This makes a SMC call to the TF-A to set the DDR PD (power-down)
-> +	 * timings and to enable or disable the ODT (on-die termination)
-> +	 * resistors.
-> +	 */
-> +	arm_smccc_smc(ROCKCHIP_SIP_DRAM_FREQ, dmcfreq->odt_pd_arg0,
-> +		      dmcfreq->odt_pd_arg1,
-> +		      ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD,
-> +		      odt_enable, 0, 0, 0, &res);
+>>          spin_lock_bh(&host->lock);
+>>
+>>          dw_mci_queue_request(host, slot, mrq);
+>> --
+>> 1.9.1
+>>
+>>
+>>
+> 
+> Finally, I am not sure I understand why dw_mci_wait_while_busy() is
+> called before starting a command, at all. That seems wrong to me.
+> Instead, shouldn't we look at cmd->flags & MMC_RSP_BUSY, for the
+> request in question and don't call mmc_request_done() for it, before
+> the card have stop signaled busy. At least that the behavior the mmc
+> core expects by the driver.
+> 
 
-Is it necessary/desirable to make this call for every frequency
-change? IIUC it should be only needed when odt_enable changes and the
-driver could track the state. If the DDR frequency doesn't change too
-often and the overhead of the call is small it shouldn't be really
-important though.
+yes, that was from commit 0bdbd0e88cf6b603("mmc: dw_mmc: Don't start 
+commands while busy"), and it says "We'll leverage the existing dw_mmc
+knowledge about whether it should wait for the previous command to
+finish to know whether we should check for busy before sending the
+command". I think the word, "leverage", explains the whole point, seems
+a little tricky though.
 
-> @@ -294,11 +315,13 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
->  {
->  	struct arm_smccc_res res;
->  	struct device *dev = &pdev->dev;
-> -	struct device_node *np = pdev->dev.of_node;
-> +	struct device_node *np = pdev->dev.of_node, *node;
->  	struct rk3399_dmcfreq *data;
->  	int ret, index, size;
->  	uint32_t *timing;
->  	struct dev_pm_opp *opp;
-> +	u32 ddr_type;
-> +	u32 val;
->  
->  	data = devm_kzalloc(dev, sizeof(struct rk3399_dmcfreq), GFP_KERNEL);
->  	if (!data)
-> @@ -334,6 +357,34 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
->  		return ret;
->  	}
->  
-> +	/* Try to find the optional reference to the pmu syscon */
-> +	node = of_parse_phandle(np, "rockchip,pmu", 0);
-> +	if (node) {
-
-The 'optional' part doesn't seem to be accurate: according to the
-binding (https://lore.kernel.org/patchwork/patch/1052322/) the
-property is required and the code below assumes that data->regmap_pmu
-is set.
-
-> +		data->regmap_pmu = syscon_node_to_regmap(node);
-> +		if (IS_ERR(data->regmap_pmu))
-> +			return PTR_ERR(data->regmap_pmu);
-> +	}
-> +
-> +	/* Get DDR type */
-
-nit: the comment doesn't add much value, thanks to good variable
-naming this is evident from the code.
-
-> +	regmap_read(data->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
-> +	ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
-> +		    RK3399_PMUGRF_DDRTYPE_MASK;
-> +
-> +	/* Get the odt_dis_freq parameter in function of the DDR type */
-
-nit: ditto
-
-(if you prefer to keep these comments I'm not opposed to keeping them,
-but I don't think they are needed)
-
-Cheers
-
-Matthias
+> Kind regards
+> Uffe
+> 
+> 
