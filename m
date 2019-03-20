@@ -1,52 +1,49 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH net-next] net: phy: improve handling link_change_notify
- callback
-Date: Wed, 20 Mar 2019 10:50:10 -0700 (PDT)
-Message-ID: <20190320.105010.192905616973367477.davem@davemloft.net>
-References: <85f94f2f-8d1b-214f-a4af-afaf26d68ca0@gmail.com>
+From: =?utf-8?B?R2HDq2w=?= PORTAY <gael.portay@collabora.com>
+Subject: Re: [PATCH v2 5/5] arm64: dts: rockchip: Enable dmc and dfi nodes on
+ gru.
+Date: Wed, 20 Mar 2019 14:35:32 -0400
+Message-ID: <20190320183532.ko2j7ggqfxey7co5@archlinux.localdomain>
+References: <20190319181323.22804-1-gael.portay@collabora.com>
+ <CGME20190319181359epcas4p11159b40adf1c883d179e18356d4cbd30@epcas4p1.samsung.com>
+ <20190319181323.22804-6-gael.portay@collabora.com>
+ <3adc4347-7dd9-106f-e564-26d39ff38ffb@samsung.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <85f94f2f-8d1b-214f-a4af-afaf26d68ca0@gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: hkallweit1@gmail.com
-Cc: andrew@lunn.ch, f.fainelli@gmail.com, heiko@sntech.de, david.wu@rock-chips.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <3adc4347-7dd9-106f-e564-26d39ff38ffb@samsung.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chanwoo Choi <cw00.choi@samsung.com>
+Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lin Huang <hl@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Derek Basehore <dbasehore@chromium.org>, Randy Li <ayaka@soulik.info>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Heiner Kallweit <hkallweit1@gmail.com>
-Date: Tue, 19 Mar 2019 19:56:51 +0100
+Hi Chanwoo,
 
-> Currently the Phy driver's link_change_notify callback is called
-> whenever the state machine is run (every second if polling), no matter
-> whether the state changed or not. This isn't needed and may confuse
-> users considering the name of the callback. Actually it contradicts
-> its kernel-doc description. Therefore let's change the behavior and
-> call this callback only in case of an actual state change.
+On Wed, Mar 20, 2019 at 02:05:21PM +0900, Chanwoo Choi wrote:
+> ...
+> > +&display_subsystem {
+> > +	devfreq = <&dmc>;
+> > +};
 > 
-> This requires changes to the at803x and rockchip drivers.
-> at803x can be simplified so that it reacts on a state change to
-> PHY_NOLINK only.
-> The rockchip driver can also be much simplified. We simply re-init
-> the AFE/DSP registers whenever we change to PHY_RUNNING and speed
-> is 100Mbps. This causes very small overhead because we do this even
-> if the speed was 100Mbps already. But this is negligible and
-> I think justified by the much simpler code.
-> 
-> Changes are compile-tested only.
-> 
-> A little bit problematic seems to be to find somebody with the
-> hardware to test the changes to the two PHY drivers. See also [0].
-> David may be able to test the Rockchip driver.
-> 
-> [0] https://marc.info/?t=153782508800006&r=1&w=2
-> 
-> Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
+> When I checked the rockchip_drm_drv.c on linux-next.git (20190320),
+> there are no any codes about this. Maybe it should be removed.
+>
 
-I'm just going to apply this, let's see what happens as I don't really see
-any value after all of this time of waiting for testing that may or may not
-happen.
+Good catch! This is a artifact that remain after I removed two patches
+from v1.
 
-We can always revert.
+> > ...
+> 
+> -- 
+> Best Regards,
+> Chanwoo Choi
+> Samsung Electronics
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
-Thanks.
+Best Regards,
+Gaël
