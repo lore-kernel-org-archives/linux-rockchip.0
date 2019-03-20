@@ -1,81 +1,27 @@
-From: Tomi Valkeinen <tomi.valkeinen@ti.com>
-Subject: Re: [PATCH v7 0/4] drm: add support for Cadence MHDP DPI/DP bridge.
-Date: Wed, 20 Mar 2019 11:33:46 +0200
-Message-ID: <ce6ed2e6-90d5-fc7a-4d6d-ab27d62c5432@ti.com>
-References: <1548846209-16406-1-git-send-email-dkos@cadence.com>
- <0f11a4d8-d576-5af8-b7f4-afe3ff26678f@ti.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <0f11a4d8-d576-5af8-b7f4-afe3ff26678f@ti.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Damian Kos <dkos@cadence.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Maxime Ripard <maxime.ripard@bootlin.com>, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, jbergsagel@ti.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, rafalc@cadence.com, Rob Herring <robh+dt@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, piotrs@cadence.com, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, quentin.schulz@bootlin.com
+From: Alexander Kochetkov <al.kochet@gmail.com>
+Subject: [PATCH 0/2] Fix eMMC hang on rk3188 and earlier
+Date: Wed, 20 Mar 2019 20:48:03 +0300
+Message-ID: <1553104085-32312-1-git-send-email-al.kochet@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Alexander Kochetkov <al.kochet@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-RGFtaWFuLCBwaW5nLgoKT24gMzEvMDEvMjAxOSAxNDowOCwgVG9taSBWYWxrZWluZW4gd3JvdGU6
-Cj4gSGksCj4gCj4gT24gMzAvMDEvMjAxOSAxMzowMywgRGFtaWFuIEtvcyB3cm90ZToKPj4gSGVs
-bG8hCj4+Cj4+IFRoaXMgaXMgdGhlIHNlcmllcyBvZiBwYXRjaGVzIHRoYXQgd2lsbCBhZGQgc3Vw
-cG9ydCBmb3IgdGhlIENhZGVuY2UncyBEUEkvRFAKPj4gYnJpZGdlLiBQbGVhc2Ugbm90ZSB0aGF0
-IHRoaXMgaXMgYSBwcmVsaW1pbmFyeSB2ZXJzaW9uIG9mIHRoZSBkcml2ZXIgYW5kIHRoZXJlCj4+
-IHdpbGwgYmUgbW9yZSBwYXRjaGVzIGluIHRoZSBmdXR1cmUgd2l0aCB1cGRhdGVzLCBmaXhlcyBh
-bmQgaW1wcm92ZW1lbnRzLgo+PiBQbGVhc2Uga2VlcCB0aGF0IGluIG1pbmQgd2hlbiBsb29raW5n
-IGF0IEZJWE1FL1RPRE8vWFhYIGNvbW1lbnRzLgo+Pgo+PiBJbml0aWFsbHksIE1IRFAgZHJpdmVy
-IHdhcyBkZXZlbG9wZWQgYXMgYSBEUk0gYnJpZGdlIGRyaXZlciBhbmQgd2FzIHBsYW5lZCB0bwo+
-PiBiZSBwbGFjZWQgaW4gZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9taGRwLmMuICBIb3dldmVyLCB0
-aGVyZSB3YXMgYWxyZWFkeQo+PiBhIGRyaXZlciBmb3IgQ2FkZW5jZSdzIERQIGNvbnRyb2xsZXIg
-ZGV2ZWxvcGVkIGJ5IFJvY2tDaGlwLCBidXQgdGhhdCBkcml2ZXIKPj4gdXNlcyB0aGUgZGlmZmVy
-ZW50IERSTSBmcmFtZXdvcmsgYW5kIGxvb2tzIGxpa2UgYSBwYXJ0IG9mIGEgYmlnZ2VyIHN5c3Rl
-bS4KPj4gQm90aCBjb250cm9sbGVycyAoaW5jbHVkaW5nIGZpcm13YXJlKSBhcmUgcXVpdGUgZGlm
-ZmVyZW50IGludGVybmFsbHkKPj4gKE1TVC9GRUMvRFNDIHN1cHBvcnQsIGxpbmsgdHJhaW5pbmcg
-ZG9uZSBieSBkcml2ZXIsIGFkZGl0aW9uYWwgY29tbWFuZHMsIElSUSdzCj4+IGV0Yy4pIGJ1dCB0
-aGV5IGhhdmUgc2ltaWxhciByZWdpc3RlciBtYXAsIGV4Y2VwdCBmb3IgRnJhbWVyL1N0cmVhbWVy
-ICh3aGljaCBpcwo+PiBub3RpY2VhYmx5IGRpZmZlcmVudCksIHNvIHRoZXkgYXBwZWFyIHNpbWls
-YXIuCj4+Cj4+IFRoZSBmb2xsb3dpbmcgcGF0Y2hlcyBjb250YWluOgo+PiAtIE1vdmluZyBjb21t
-b24gY29kZSB0byBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2NkbnMtbWhkcC1jb21tb24uKiBhbmQK
-Pj4gICBtb2RpZnlpbmcgaXQgYSBiaXQgKG1vc3RseSBuZXcgcHJlZml4ZXMgZm9yIGZ1bmN0aW9u
-cyBhbmQgZGF0YSB0eXBlcykgc28gaXQKPj4gICBjYW4gYmUgdXNlZCBieSB0d28sIGhpZ2hlciBs
-ZXZlbCwgZHJpdmVycy4KPj4gLSBNb2RpZnlpbmcgZXhpc3RpbmcgUm9ja0NoaXAncyBEUCBkcml2
-ZXIgdG8gdXNlIHRoZSBjb21tb24gY29kZSBhZnRlciBjaGFuZ2VzCj4+ICAgbWFkZSB0byBpdCAo
-dXNlIHRoZSBuZXcgY2Ruc19taGRwX2RldmljZSBzdHJ1Y3R1cmUgYW5kIG5ldyBmdW5jdGlvbiBu
-YW1lcykuCj4+IC0gTW9kaWZ5aW5nIERSTSBoZWxwZXJzIGEgYml0LiBTb21lIGFyZSByZXF1aXJl
-ZCBmb3IgbmV3IGRyaXZlciwgc29tZSBhcmUKPj4gICB1cGRhdGVzIGZyb20gRFAgMS4yIHRvIDEu
-MyBvciAxLjQuCj4+IC0gQWRkaW5nIGRvY3VtZW50YXRpb24gZm9yIGRldmljZSB0cmVlIGJpbmRp
-bmdzLgo+PiAtIEFkZGluZyBwcmVsaW1pbmFyeSBDYWRlbmNlIERQSS9EUCBicmlkZ2UgZHJpdmVy
-Lgo+Pgo+PiBTb21lIG9mIHRoZSB0aGluZ3MgdGhhdCB3aWxsIGJlIGFkZGVkIGxhdGVyIG9uIGlu
-Y2x1ZGUgKGJ1dCBhcmUgbm90IGxpbWl0ZWQKPj4gdG8pOgo+PiAtIERTQyBzdXBwb3J0Cj4+IC0g
-RkVDIHN1cHBvcnQKPj4gLSBIRENQIHN1cHBvcnQKPiAKPiBBIGZldyByYW5kb20gY29tbWVudHMv
-cXVlc3Rpb25zIGFmdGVyIGEgcXVpY2sgbG9vayBhdCB0aGUgcGF0Y2hlcy4KPiAKPiBUaGUgbmFt
-ZXMgb2YgdGhlIHNvdXJjZSBmaWxlcyBhbmQgdGhlIGtlcm5lbCBLY29uZmlnIGFyZSBvbmx5IGFi
-b3V0Cj4gIkNhZGVuY2UgRFAiLiBCdXQgdGhlIERUIGJpbmRpbmdzIGlzIGZvciBjZG5zLG1oZHA4
-NTQ2LCBhbmQgdGhlCj4gcmVzdWx0aW5nIG1vZHVsZSBmaWxlIGlzIG1oZHA4NTQ2LmtvLiBJIHRo
-aW5rIG1vcmUgY29uc2lzdGVuY3kgaGVyZQo+IHdvdWxkIGJlIGdvb2QuCj4gCj4gSSBwcmVzdW1l
-IHRoZSBwYXJ0IG51bWJlciAob3IgZmFtaWx5PyBhcmUgdGhlcmUgb3RoZXIgc2ltaWxhciBwYXJ0
-cyB3aXRoCj4gc2ltaWxhciBwYXJ0IG51bWJlcnM/KSBpcyByZWxldmFudCwgc28gaXQgc2hvdWxk
-IGJlIGluIHRoZSBLY29uZmlnCj4gb3B0aW9uIGFuZCBoZWxwIHRleHQsIGFuZCBwcm9iYWJseSBp
-biB0aGUgZmlsZSBuYW1lcyB0b28uIFRoZSBtb2R1bGUKPiBuYW1lIHNob3VsZCBoYXZlICJjZG5z
-IiBwcmVmaXggdGhlcmUsIHNpbWlsYXIgdG8gdGhlIHNvdXJjZSBmaWxlcyBhbmQKPiB0aGUgY2Ru
-cy1kc2kua28uCj4gCj4gT3IgbWF5YmUgdGhlIHNhbWUgZHJpdmVyIHdpbGwgaGFuZGxlIGFsbCBD
-YWRlbmNlIERQIHBhcnRzLCBpbiB3aGljaCBjYXNlCj4gZ2VuZXJpYyBmaWxlbmFtZXMgYXJlIGZp
-bmUsIGJ1dCB0aGVuIHRoZSByZXN1bHRpbmcga2VybmVsIG1vZHVsZSBzaG91bGQKPiBhbHNvIGJl
-IGp1c3QgImNkbnMtbWhkcC5rbyIuCj4gCj4gSSBzZWUgc29tZSBhdWRpbyBmdW5jdGlvbnMgaW4g
-dGhlIGNvZGUsIGJ1dCBpdCdzIG5vdCBtZW50aW9uZWQgaW4gdGhlIERUCj4gYmluZGluZ3MuIEkn
-bSBub3QgYW4gYXVkaW8gZ3V5LCBidXQgdGhlIGRpc3BsYXkgYnJpZGdlcyB3aXRoIGF1ZGlvCj4g
-c3VwcG9ydCBJIGhhdmUgc2VlbiBoYXZlIGhhZCBEVCBiaW5kaW5ncyBmb3IgdGhlIGF1ZGlvIHNv
-dXJjZSB0b28uIElzCj4gYXVkaW8gc3VwcG9ydGVkIGluIHRoZSBjdXJyZW50IGRyaXZlcj8KPiAK
-PiAgVG9taQo+IAoKLS0gClRleGFzIEluc3RydW1lbnRzIEZpbmxhbmQgT3ksIFBvcmtrYWxhbmth
-dHUgMjIsIDAwMTgwIEhlbHNpbmtpLgpZLXR1bm51cy9CdXNpbmVzcyBJRDogMDYxNTUyMS00LiBL
-b3RpcGFpa2thL0RvbWljaWxlOiBIZWxzaW5raQpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
-cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcmktZGV2ZWw=
+Hello!
+
+I found, that sometimes dw_mmc driver stop transfer data to
+eMMC card on my rk3188 based board. One of tranfers hangs then
+doing EDMA transfer and controller gives HTO. And here is a fix.
+
+Alexander Kochetkov (2):
+  mmc: dw_mmc: add init_slot() hook to platform function table
+  mmc: dw_mmc-rockchip: fix transfer hangs on rk3188
+
+ drivers/mmc/host/dw_mmc-rockchip.c |   19 +++++++++++++++++++
+ drivers/mmc/host/dw_mmc.c          |    4 ++++
+ drivers/mmc/host/dw_mmc.h          |    2 ++
+ 3 files changed, 25 insertions(+)
+
+-- 
+1.7.9.5
