@@ -1,173 +1,131 @@
-From: Heiner Kallweit <hkallweit1@gmail.com>
-Subject: [PATCH net-next] net: phy: improve handling link_change_notify
- callback
-Date: Tue, 19 Mar 2019 19:56:51 +0100
-Message-ID: <85f94f2f-8d1b-214f-a4af-afaf26d68ca0@gmail.com>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: Re: [PATCH v2 3/5] devfreq: rk3399_dmc: Pass ODT and auto power down
+ parameters to TF-A.
+Date: Tue, 19 Mar 2019 17:33:52 -0700
+Message-ID: <20190320003352.GN112750@google.com>
+References: <20190319181323.22804-1-gael.portay@collabora.com>
+ <20190319181323.22804-4-gael.portay@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Language: en-US
-Sender: netdev-owner@vger.kernel.org
-To: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, David Miller <davem@davemloft.net>, Heiko Stuebner <heiko@sntech.de>, David Wu <david.wu@rock-chips.com>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190319181323.22804-4-gael.portay@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?utf-8?B?R2HDq2w=?= PORTAY <gael.portay@collabora.com>
+Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lin Huang <hl@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Derek Basehore <dbasehore@chromium.org>, Randy Li <ayaka@soulik.info>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently the Phy driver's link_change_notify callback is called
-whenever the state machine is run (every second if polling), no matter
-whether the state changed or not. This isn't needed and may confuse
-users considering the name of the callback. Actually it contradicts
-its kernel-doc description. Therefore let's change the behavior and
-call this callback only in case of an actual state change.
+Hi Gaël,
 
-This requires changes to the at803x and rockchip drivers.
-at803x can be simplified so that it reacts on a state change to
-PHY_NOLINK only.
-The rockchip driver can also be much simplified. We simply re-init
-the AFE/DSP registers whenever we change to PHY_RUNNING and speed
-is 100Mbps. This causes very small overhead because we do this even
-if the speed was 100Mbps already. But this is negligible and
-I think justified by the much simpler code.
+On Tue, Mar 19, 2019 at 02:13:21PM -0400, Gaël PORTAY wrote:
+> From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> 
+> Trusted Firmware-A (TF-A) for rk3399 implements a SiP call to get the
+> on-die termination (ODT) and auto power down parameters from kernel,
+> this patch adds the functionality to do this. Also, if DDR clock
+> frequency is lower than the on-die termination (ODT) disable frequency
+> this driver should disable the DDR ODT.
+> 
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Reviewed-by: Chanwoo Choi <cw00.choi@samsung.com>
+> ---
+> 
+> Changes in v2: None
+> 
+> Changes in v1:
+> - [RFC 3/10] Add an explanation for platform SIP calls.
+> - [RFC 3/10] Change if statement for a switch.
+> - [RFC 3/10] Rename ddr_flag to odt_enable to be more clear.
+> 
+>  drivers/devfreq/rk3399_dmc.c        | 74 ++++++++++++++++++++++++++++-
+>  include/soc/rockchip/rockchip_sip.h |  1 +
+>  2 files changed, 74 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
+> ...
+>  static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
+> @@ -80,6 +86,8 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
+>  	struct dev_pm_opp *opp;
+>  	unsigned long old_clk_rate = dmcfreq->rate;
+>  	unsigned long target_volt, target_rate;
+> +	struct arm_smccc_res res;
+> +	bool odt_enable = false;
+>  	int err;
+>  
+>  	opp = devfreq_recommended_opp(dev, freq, flags);
+> @@ -95,6 +103,19 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
+>  
+>  	mutex_lock(&dmcfreq->lock);
+>  
+> +	if (target_rate >= dmcfreq->odt_dis_freq)
+> +		odt_enable = true;
+> +
+> +	/*
+> +	 * This makes a SMC call to the TF-A to set the DDR PD (power-down)
+> +	 * timings and to enable or disable the ODT (on-die termination)
+> +	 * resistors.
+> +	 */
+> +	arm_smccc_smc(ROCKCHIP_SIP_DRAM_FREQ, dmcfreq->odt_pd_arg0,
+> +		      dmcfreq->odt_pd_arg1,
+> +		      ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD,
+> +		      odt_enable, 0, 0, 0, &res);
 
-Changes are compile-tested only.
+Is it necessary/desirable to make this call for every frequency
+change? IIUC it should be only needed when odt_enable changes and the
+driver could track the state. If the DDR frequency doesn't change too
+often and the overhead of the call is small it shouldn't be really
+important though.
 
-A little bit problematic seems to be to find somebody with the
-hardware to test the changes to the two PHY drivers. See also [0].
-David may be able to test the Rockchip driver.
+> @@ -294,11 +315,13 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
+>  {
+>  	struct arm_smccc_res res;
+>  	struct device *dev = &pdev->dev;
+> -	struct device_node *np = pdev->dev.of_node;
+> +	struct device_node *np = pdev->dev.of_node, *node;
+>  	struct rk3399_dmcfreq *data;
+>  	int ret, index, size;
+>  	uint32_t *timing;
+>  	struct dev_pm_opp *opp;
+> +	u32 ddr_type;
+> +	u32 val;
+>  
+>  	data = devm_kzalloc(dev, sizeof(struct rk3399_dmcfreq), GFP_KERNEL);
+>  	if (!data)
+> @@ -334,6 +357,34 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
+>  		return ret;
+>  	}
+>  
+> +	/* Try to find the optional reference to the pmu syscon */
+> +	node = of_parse_phandle(np, "rockchip,pmu", 0);
+> +	if (node) {
 
-[0] https://marc.info/?t=153782508800006&r=1&w=2
+The 'optional' part doesn't seem to be accurate: according to the
+binding (https://lore.kernel.org/patchwork/patch/1052322/) the
+property is required and the code below assumes that data->regmap_pmu
+is set.
 
-Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
----
- drivers/net/phy/at803x.c   | 26 +++++++++-----------------
- drivers/net/phy/phy.c      |  8 ++++----
- drivers/net/phy/rockchip.c | 31 ++-----------------------------
- 3 files changed, 15 insertions(+), 50 deletions(-)
+> +		data->regmap_pmu = syscon_node_to_regmap(node);
+> +		if (IS_ERR(data->regmap_pmu))
+> +			return PTR_ERR(data->regmap_pmu);
+> +	}
+> +
+> +	/* Get DDR type */
 
-diff --git a/drivers/net/phy/at803x.c b/drivers/net/phy/at803x.c
-index f3e96191e..f315ab468 100644
---- a/drivers/net/phy/at803x.c
-+++ b/drivers/net/phy/at803x.c
-@@ -324,8 +324,6 @@ static int at803x_config_intr(struct phy_device *phydev)
- 
- static void at803x_link_change_notify(struct phy_device *phydev)
- {
--	struct at803x_priv *priv = phydev->priv;
--
- 	/*
- 	 * Conduct a hardware reset for AT8030 every time a link loss is
- 	 * signalled. This is necessary to circumvent a hardware bug that
-@@ -333,25 +331,19 @@ static void at803x_link_change_notify(struct phy_device *phydev)
- 	 * in the FIFO. In such cases, the FIFO enters an error mode it
- 	 * cannot recover from by software.
- 	 */
--	if (phydev->state == PHY_NOLINK) {
--		if (phydev->mdio.reset && !priv->phy_reset) {
--			struct at803x_context context;
-+	if (phydev->state == PHY_NOLINK && phydev->mdio.reset) {
-+		struct at803x_context context;
- 
--			at803x_context_save(phydev, &context);
-+		at803x_context_save(phydev, &context);
- 
--			phy_device_reset(phydev, 1);
--			msleep(1);
--			phy_device_reset(phydev, 0);
--			msleep(1);
-+		phy_device_reset(phydev, 1);
-+		msleep(1);
-+		phy_device_reset(phydev, 0);
-+		msleep(1);
- 
--			at803x_context_restore(phydev, &context);
-+		at803x_context_restore(phydev, &context);
- 
--			phydev_dbg(phydev, "%s(): phy was reset\n",
--				   __func__);
--			priv->phy_reset = true;
--		}
--	} else {
--		priv->phy_reset = false;
-+		phydev_dbg(phydev, "%s(): phy was reset\n", __func__);
- 	}
- }
- 
-diff --git a/drivers/net/phy/phy.c b/drivers/net/phy/phy.c
-index 3745220c5..5938c5acf 100644
---- a/drivers/net/phy/phy.c
-+++ b/drivers/net/phy/phy.c
-@@ -891,9 +891,6 @@ void phy_state_machine(struct work_struct *work)
- 
- 	old_state = phydev->state;
- 
--	if (phydev->drv && phydev->drv->link_change_notify)
--		phydev->drv->link_change_notify(phydev);
--
- 	switch (phydev->state) {
- 	case PHY_DOWN:
- 	case PHY_READY:
-@@ -940,10 +937,13 @@ void phy_state_machine(struct work_struct *work)
- 	if (err < 0)
- 		phy_error(phydev);
- 
--	if (old_state != phydev->state)
-+	if (old_state != phydev->state) {
- 		phydev_dbg(phydev, "PHY state change %s -> %s\n",
- 			   phy_state_to_str(old_state),
- 			   phy_state_to_str(phydev->state));
-+		if (phydev->drv && phydev->drv->link_change_notify)
-+			phydev->drv->link_change_notify(phydev);
-+	}
- 
- 	/* Only re-schedule a PHY state machine change if we are polling the
- 	 * PHY, if PHY_IGNORE_INTERRUPT is set, then we will be moving
-diff --git a/drivers/net/phy/rockchip.c b/drivers/net/phy/rockchip.c
-index 95abf7072..9053b1d01 100644
---- a/drivers/net/phy/rockchip.c
-+++ b/drivers/net/phy/rockchip.c
-@@ -104,41 +104,14 @@ static int rockchip_integrated_phy_config_init(struct phy_device *phydev)
- 
- static void rockchip_link_change_notify(struct phy_device *phydev)
- {
--	int speed = SPEED_10;
--
--	if (phydev->autoneg == AUTONEG_ENABLE) {
--		int reg = phy_read(phydev, MII_SPECIAL_CONTROL_STATUS);
--
--		if (reg < 0) {
--			phydev_err(phydev, "phy_read err: %d.\n", reg);
--			return;
--		}
--
--		if (reg & MII_SPEED_100)
--			speed = SPEED_100;
--		else if (reg & MII_SPEED_10)
--			speed = SPEED_10;
--	} else {
--		int bmcr = phy_read(phydev, MII_BMCR);
--
--		if (bmcr < 0) {
--			phydev_err(phydev, "phy_read err: %d.\n", bmcr);
--			return;
--		}
--
--		if (bmcr & BMCR_SPEED100)
--			speed = SPEED_100;
--		else
--			speed = SPEED_10;
--	}
--
- 	/*
- 	 * If mode switch happens from 10BT to 100BT, all DSP/AFE
- 	 * registers are set to default values. So any AFE/DSP
- 	 * registers have to be re-initialized in this case.
- 	 */
--	if ((phydev->speed == SPEED_10) && (speed == SPEED_100)) {
-+	if (phydev->state == PHY_RUNNING && phydev->speed == SPEED_100) {
- 		int ret = rockchip_integrated_phy_analog_init(phydev);
-+
- 		if (ret)
- 			phydev_err(phydev, "rockchip_integrated_phy_analog_init err: %d.\n",
- 				   ret);
--- 
-2.21.0
+nit: the comment doesn't add much value, thanks to good variable
+naming this is evident from the code.
+
+> +	regmap_read(data->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
+> +	ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
+> +		    RK3399_PMUGRF_DDRTYPE_MASK;
+> +
+> +	/* Get the odt_dis_freq parameter in function of the DDR type */
+
+nit: ditto
+
+(if you prefer to keep these comments I'm not opposed to keeping them,
+but I don't think they are needed)
+
+Cheers
+
+Matthias
