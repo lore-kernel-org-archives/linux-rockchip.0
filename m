@@ -1,118 +1,125 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH_v3_1/3=5d_mmc=3a_dw=5fmmc=3a_Check_busy_st?=
- =?UTF-8?B?YXRlIGluIGR3X21jaV9yZXF1ZXN0KCnjgJDor7fms6jmhI/vvIzpgq7ku7bnlLFs?=
- =?UTF-8?B?aW51eC1tbWMtb3duZXJAdmdlci5rZXJuZWwub3Jn5Luj5Y+R44CR?=
-Date: Wed, 20 Mar 2019 10:06:39 +0800
-Message-ID: <cd9d8614-87fb-8016-baf6-5bfd98fcf135@rock-chips.com>
-References: <1552986778-33904-1-git-send-email-shawn.lin@rock-chips.com>
- <1552986778-33904-2-git-send-email-shawn.lin@rock-chips.com>
- <CAPDyKFqMjEbM1L5=AjDv46xZt5KxOk8GLMGbWsdq2Xcxoi3gTg@mail.gmail.com>
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Subject: Re: [PATCH v2 5/5] arm64: dts: rockchip: Enable dmc and dfi nodes
+ on gru.
+Date: Wed, 20 Mar 2019 14:05:21 +0900
+Message-ID: <3adc4347-7dd9-106f-e564-26d39ff38ffb@samsung.com>
+References: <20190319181323.22804-1-gael.portay@collabora.com>
+        <CGME20190319181359epcas4p11159b40adf1c883d179e18356d4cbd30@epcas4p1.samsung.com>
+        <20190319181323.22804-6-gael.portay@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAPDyKFqMjEbM1L5=AjDv46xZt5KxOk8GLMGbWsdq2Xcxoi3gTg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190319181323.22804-6-gael.portay@collabora.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?Q?Ga=c3=abl_PORTAY?= <gael.portay@collabora.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lin Huang <hl@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Derek Basehore <dbasehore@chromium.org>, Randy Li <ayaka@soulik.info>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Gaël,
 
-On 2019/3/19 22:41, Ulf Hansson wrote:
-> On Tue, 19 Mar 2019 at 10:14, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->>
->> Move it from dw_mci_start_command() to dw_mci_request().
->> Then dw_mci_wait_while_busy() isn't called with host's
->> lock hold.
+On 19. 3. 20. 오전 3:13, Gaël PORTAY wrote:
+> From: Lin Huang <hl@rock-chips.com>
 > 
-> So, I decided to have a closer look at this.
+> Enable the DMC (Dynamic Memory Controller) and the DFI (DDR PHY Interface)
+> nodes on gru/kevin boards so we can support DDR DVFS.
 > 
->>
->> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> Tested-by: Ziyuan Xu <xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>
->> Changes in v3: None
->> Changes in v2: None
->>
->>   drivers/mmc/host/dw_mmc.c | 5 ++++-
->>   1 file changed, 4 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
->> index 80dc2fd..703dedf 100644
->> --- a/drivers/mmc/host/dw_mmc.c
->> +++ b/drivers/mmc/host/dw_mmc.c
->> @@ -426,7 +426,6 @@ static void dw_mci_start_command(struct dw_mci *host,
->>
->>          mci_writel(host, CMDARG, cmd->arg);
->>          wmb(); /* drain writebuffer */
->> -       dw_mci_wait_while_busy(host, cmd_flags);
->>
->>          mci_writel(host, CMD, cmd_flags | SDMMC_CMD_START);
->>
->> @@ -1419,6 +1418,10 @@ static void dw_mci_request(struct mmc_host *mmc, struct mmc_request *mrq)
->>                  return;
->>          }
->>
->> +       if ((mrq->cmd->opcode != MMC_SEND_STATUS && mrq->cmd->data) &&
->> +           !(mrq->cmd->opcode == SD_SWITCH_VOLTAGE))
->> +               dw_mci_wait_while_busy(host, SDMMC_CMD_PRV_DAT_WAIT);
->> +
+> Signed-off-by: Lin Huang <hl@rock-chips.com>
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>
+> ---
 > 
-> This looks weird, because according to the change-log it sounds like
-> you are moving things around to just avoid having the "lock" held.
+> Changes in v2:
+> - [PATCH 8/8] Move center-supply attribute of dmc node in file
+>               rk3399-gru-chromebook.dtsi (where ppvar_centerlogic is
+> 	      defined).
 > 
-> To me, there seems to be more changes because of the new checks for
-> the "opcode" above, no?
+> Changes in v1: None
+> 
+>  .../dts/rockchip/rk3399-gru-chromebook.dtsi   |  4 ++++
+>  arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  | 20 +++++++++++++++++++
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  2 +-
+>  3 files changed, 25 insertions(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+> index 931640e9aed4..cfb81356c61e 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+> @@ -400,3 +400,7 @@ ap_i2c_tp: &i2c5 {
+>  		rockchip,pins = <0 8 RK_FUNC_GPIO &pcfg_pull_none>;
+>  	};
+>  };
+> +
+> +&dmc {
+> +	center-supply = <&ppvar_centerlogic>;
+> +};
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> index da03fa9c5662..d14dce679e7a 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+> @@ -289,6 +289,12 @@
+>  	status = "okay";
+>  };
+>  
+> +&dmc_opp_table {
+> +	opp04 {
+> +		opp-suspend;
+> +	};
+> +};
+> +
+>  /*
+>   * Set some suspend operating points to avoid OVP in suspend
+>   *
+> @@ -368,6 +374,10 @@
+>  		<200000000>;
+>  };
+>  
+> +&display_subsystem {
+> +	devfreq = <&dmc>;
+> +};
 
-yes, that's what original dw_mci_wait_while_busy() did internally.
+When I checked the rockchip_drm_drv.c on linux-next.git (20190320),
+there are no any codes about this. Maybe it should be removed.
 
+> +
+>  &emmc_phy {
+>  	status = "okay";
+>  };
+> @@ -489,6 +499,16 @@ ap_i2c_audio: &i2c8 {
+>  	status = "okay";
+>  };
+>  
+> +&dfi {
+> +	status = "okay";
+> +};
+> +
+> +&dmc {
+> +	status = "okay";
+> +	upthreshold = <25>;
+> +	downdifferential = <15>;
+> +};
+> +
+>  &sdhci {
+>  	/*
+>  	 * Signal integrity isn't great at 200 MHz and 150 MHz (DDR) gives the
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 8fe86a3e7658..010b3e5267a0 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -156,7 +156,7 @@
+>  		};
+>  	};
+>  
+> -	display-subsystem {
+> +	display_subsystem: display-subsystem {
+>  		compatible = "rockchip,display-subsystem";
+>  		ports = <&vopl_out>, <&vopb_out>;
+>  	};
 > 
->   Moreover, dw_mci_wait_while_busy() is also called from
-> mci_send_cmd(), which means it may still be called with the "lock" is
-> held. That is really confusing and needs more explanation.
 
-dwmmc need to send a *NULL* cmd with SDMMC_CMD_UPD_CLK set in its CMD
-register, in order to update bus clock, which is quite differnet from
-others hosts. So mci_send_cmd()->dw_mci_wait_while_busy() is used for 
-updating bus clock but not in the hot path. So the main concern is to
-move dw_mci_wait_while_busy() out from normal data requst.
 
-
-> 
->>          spin_lock_bh(&host->lock);
->>
->>          dw_mci_queue_request(host, slot, mrq);
->> --
->> 1.9.1
->>
->>
->>
-> 
-> Finally, I am not sure I understand why dw_mci_wait_while_busy() is
-> called before starting a command, at all. That seems wrong to me.
-> Instead, shouldn't we look at cmd->flags & MMC_RSP_BUSY, for the
-> request in question and don't call mmc_request_done() for it, before
-> the card have stop signaled busy. At least that the behavior the mmc
-> core expects by the driver.
-> 
-
-yes, that was from commit 0bdbd0e88cf6b603("mmc: dw_mmc: Don't start 
-commands while busy"), and it says "We'll leverage the existing dw_mmc
-knowledge about whether it should wait for the previous command to
-finish to know whether we should check for busy before sending the
-command". I think the word, "leverage", explains the whole point, seems
-a little tricky though.
-
-> Kind regards
-> Uffe
-> 
-> 
+-- 
+Best Regards,
+Chanwoo Choi
+Samsung Electronics
