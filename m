@@ -1,131 +1,57 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH] ARM: dts: rockchip: Add vdd_logic to rk3288-veyron
-Date: Thu, 21 Mar 2019 13:19:44 -0700
-Message-ID: <20190321201944.34684-1-dianders@chromium.org>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: Re: [PATCH v5 1/5] drm: rockchip: introduce rk3066 hdmi
+Date: Thu, 21 Mar 2019 21:35:45 +0100
+Message-ID: <fe1b8049-37be-f911-ec5e-399875db46fe@gmail.com>
+References: <20190321001440.31057-2-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: mka@chromium.org, ryandcase@chromium.org, Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190321001440.31057-2-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The vdd_logic rail controls the voltage supplied to misc logic on
-rk3288, including the voltage supplied to the memory controller.  The
-vcc logic is implemented by a PWM regulator.
+Hi,
 
-Right now there are no consumers of vdd_logic on veyron but if anyone
-ever wants to try to add DDR Freq they'd need it.
+On Heiko's request the function rk3066_hdmi_connector_get_modes() was
+made equel to the inno driver. The variable "sink_is_hdmi" now only
+changes with valid edid. What happens if we plug in a device with valid
+hdmi video and then with something wrong with edid then "sink_is_hdmi"
+never turns false. Shouldn't we add an extra statement in this and in
+the inno driver that makes sure that "sink_is_hdmi" is false in all
+other cases? Please advise.
 
-Note that in the downstream Chrome OS kernel the PWM regulator has
-a voltage table with these points:
-  1350000 0%
-  1300000 10%
-  1250000 20%
-  1200000 31%
-  1150000 41%
-  1125000 46%
-  1100000 52%
-  1050000 62%
-  1000000 72%
-   950000 83%
 
-The DDR Freq driver in the downstream kernel only uses some of those
-points, namely:
-  DDR3:  1200000, 1150000, 1100000, 1050000
-  LPDDR:          1150000, 1100000, 1050000
-
-When adapting the downstream kernel to upstream I have opted to switch
-to using the "continuous" mode of the PWM regulator driver.  This was
-the only way I could get the upstream driver to achieve _exactly_ the
-same voltages as the downstream driver could.  Specifically note that
-the old driver in downstream Chrome OS 3.14 _didn't_ have the
-DIV_ROUND_CLOSEST_ULL() in the Rockchip PLL driver.  That means if I
-use the same (downstream) table I might end up with a duty cycle
-that's 1 larger than was used downstream, leading to a slightly
-different voltage.  Due to the way the rounding worked I couldn't even
-just adjust the "percent" by 1 for a given voltage level--certain duty
-cycles just aren't achievable with the upstream math for voltage
-tables.
-
-Using continuous mode you can achieve the exact same duty cycle by
-simply adjusting the voltage you use by a tad bit.  The voltages that
-are equivalent to the ones used in the downstream kernel's table are:
-  1350000, 1304472, 1255691, 1200407, 1154878,
-  1128862, 1099593, 1050813, 1005285, 950000
-
-Note that the top/bottom voltage is exactly the same just due to the
-way that continuous mode is calculated and the fact that I used those
-as anchors.  I didn't make any attempt to do the resistor math (as was
-done on rk3399-gru).
-
-If anyone ever gets DDRFreq working on veyron upstream they should
-thus adjust the voltage specified in the DDRFreq operating points
-slightly (as per the above) to obtain the existing/tested values.  AKA
-you'd use:
-  DDR3:  1200407, 1154878, 1099593, 1050813
-  LPDDR:          1154878, 1099593, 1050813
-
-A few other notes:
-- The "period" here (1994) is different than the "period" downstream
-  (2000) for similar reasons: there's a DIV_ROUND_CLOSEST_ULL() that
-  wasn't downstream.  With 1994 upstream comes up with the same value
-  (0x94) to program into the hardware that downstream put there.  As
-  far as I can tell 0x94 actually means 1993.27.
-- The duty cycle unit of 0x94 was picked by just matching the period
-  which nicely allows us to insert 0x7b as that value to program into
-  the hardware for 950mV.  The 0x7b was found by observing what the
-  downstream kernel calculated (not that the system can actually run
-  with vdd_log at 950 mV).
-- The downstream kernel can also be seen to program a different value
-  into the CTRL field.  Upstream achieves 0x0b and downstream 0x1b.
-  This is because the upstream commit bc834d7b07b4 ("pwm: rockchip:
-  Move the configuration of polarity") fixed a bug by adding "ctrl &=
-  ~PWM_POLARITY_MASK".  Downstream accidentally left bit 4 set.
-  Luckily this bit doesn't matter--it's only used when the PWM goes
-  inactive (AKA if it's in oneshot mode or is disabled) and we don't
-  do that for the PWM regulator.
-
-I measured the voltage of vdd_log while adjusting it and found that
-with the upstream kernel voltage difference between requested and
-actual was 9.2 mV at 950 mV and 13.4 mV at 1350 mV with in-between
-voltages consistently showing ~1% error.  This error is likely
-expected as voltage can be seen to sag a bit when more load is put on
-the rail.
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
-
- arch/arm/boot/dts/rk3288-veyron.dtsi | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
-index 0bc2409f6903..5181d9435fda 100644
---- a/arch/arm/boot/dts/rk3288-veyron.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
-@@ -95,6 +95,23 @@
- 		regulator-boot-on;
- 		vin-supply = <&vcc_5v>;
- 	};
++static int rk3066_hdmi_connector_get_modes(struct drm_connector *connector)
++{
++	struct rk3066_hdmi *hdmi = to_rk3066_hdmi(connector);
++	struct edid *edid;
++	int ret = 0;
 +
-+	vdd_logic: vdd-logic {
-+		compatible = "pwm-regulator";
-+		regulator-name = "vdd_logic";
++	if (!hdmi->ddc)
++		return 0;
 +
-+		pwms = <&pwm1 0 1994 0>;
-+		pwm-supply = <&vcc33_sys>;
+
+Add extra statement here:
+	hdmi->hdmi_data.sink_is_hdmi = false;
+
++	edid = drm_get_edid(connector, hdmi->ddc);
++	if (edid) {
++		hdmi->hdmi_data.sink_is_hdmi = drm_detect_hdmi_monitor(edid);
++		drm_connector_update_edid_property(connector, edid);
++		ret = drm_add_edid_modes(connector, edid);
++		kfree(edid);
++	}
 +
-+		pwm-dutycycle-range = <0x7b 0>;
-+		pwm-dutycycle-unit = <0x94>;
-+
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <950000>;
-+		regulator-max-microvolt = <1350000>;
-+		regulator-ramp-delay = <4000>;
-+	};
- };
- 
- &cpu0 {
--- 
-2.21.0.225.g810b269d1ac-goog
++	return ret;
++}
