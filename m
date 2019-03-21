@@ -1,83 +1,87 @@
-From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Subject: Re: [PATCH] arm64: dts: rockchip: add rk3399 UART DMAs
-Date: Fri, 22 Mar 2019 01:13:46 +0900
-Message-ID: <5cb5878b-dc91-764e-1000-66c87024880c@katsuster.net>
-References: <20190321144058.16918-1-katsuhiro@katsuster.net>
- <d49f9b76-902a-5393-c983-cdef850c7a9c@arm.com>
+From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Subject: [PATCH v2] arm64: dts: rockchip: add rk3399 UART DMAs
+Date: Fri, 22 Mar 2019 01:22:44 +0900
+Message-ID: <20190321162244.10080-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <d49f9b76-902a-5393-c983-cdef850c7a9c@arm.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8gUm9iaW4sCgpPbiAyMDE5LzAzLzIyIDA6MjEsIFJvYmluIE11cnBoeSB3cm90ZToKPiBP
-biAyMS8wMy8yMDE5IDE0OjQwLCBLYXRzdWhpcm8gU3V6dWtpIHdyb3RlOgo+PiBBZGQgVUFSVCBk
-bWEgY2hhbm5lbHMgYXMgc3BlY2lmaWVkIGJ5IHRoZSByazMzOTkgVFJNLgo+IAo+IE5vIFVBUlQ0
-PyBUaGF0J3MgYXJndWFibHkgb25lIG9mIHRoZSBtb3JlIHVzZWZ1bCBvbmVzLCBzaW5jZSAxIGFu
-ZCAzIAo+IG9mdGVuIGVuZCB1cCBtdXhlZCB0byBldGhlcm5ldCBpbnN0ZWFkLgo+IAoKT29wcy4u
-LiBJIGZvcmdvdCB0byBhZGQgZm9yIFVBUlQ0LiBUaGFuayB5b3UgZm9yIHBvaW50aW5nIG91dC4K
-Cgo+IEFsc28sIGRvZXMgVUFSVCBETUEgYWN0dWFsbHkgd29yayB5ZXQ/IEkgZ3Vlc3MgSSBjYW4g
-dHJ5IGZvciBteXNlbGYgb25jZSAKPiBJIGdldCBob21lLCBidXQgSSByZW1lbWJlciBsYXN0IHRp
-bWUgSSBsb29rZWQgaXQgd2FzIGJhaWxpbmcgb3V0IGJlY2F1c2UgCj4gdGhlIDgyNTAgZHJpdmVy
-IHdhbnRlZCBhIGRtYWVuZ2luZSBmZWF0dXJlIHRoYXQgdGhlIHBsMzMwIGRyaXZlciBkaWRuJ3Qg
-Cj4gaW1wbGVtZW50Lgo+IAoKSSB0aGluayBpdCB3b3JrcyBjb3JyZWN0bHkuIEJlY2F1c2UgcGwz
-MzBfaXJxX2hhbmRsZXIoKSB0aGF0IGlzCklSUSBoYW5kbGVyIG9mIFBMMzMwIGlzIGNhbGxlZCB3
-aGVuIG15IHBhdGNoIGFwcGxpZWQgYW5kIGhhbmRsZXIKaXMgbm90IGNhbGxlZCBpZiBub3QgYXBw
-bGllZC4KCgpCZXN0IFJlZ2FyZHMsCkthdHN1aGlybyBTdXp1a2kKCj4gUm9iaW4uCj4gCj4+IFJl
-ZmVyOgo+PiBSSzMzOTkgVFJNIFYxLjQ6IENoYXB0ZXIgMTIgRE1BIENvbnRyb2xsZXIKPj4KPj4g
-U2lnbmVkLW9mZi1ieTogS2F0c3VoaXJvIFN1enVraSA8a2F0c3VoaXJvQGthdHN1c3Rlci5uZXQ+
-Cj4+IC0tLQo+PiDCoCBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpIHwg
-OCArKysrKysrKwo+PiDCoCAxIGZpbGUgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspCj4+Cj4+IGRp
-ZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpIAo+PiBi
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kKPj4gaW5kZXggMDMwMWUz
-ZTAxYjM4Li40ZWVkN2FhZTY5ODkgMTAwNjQ0Cj4+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMv
-cm9ja2NoaXAvcmszMzk5LmR0c2kKPj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
-cC9yazMzOTkuZHRzaQo+PiBAQCAtNjM1LDYgKzYzNSw4IEBACj4+IMKgwqDCoMKgwqDCoMKgwqDC
-oCBjbG9ja3MgPSA8JmNydSBTQ0xLX1VBUlQwPiwgPCZjcnUgUENMS19VQVJUMD47Cj4+IMKgwqDC
-oMKgwqDCoMKgwqDCoCBjbG9jay1uYW1lcyA9ICJiYXVkY2xrIiwgImFwYl9wY2xrIjsKPj4gwqDC
-oMKgwqDCoMKgwqDCoMKgIGludGVycnVwdHMgPSA8R0lDX1NQSSA5OSBJUlFfVFlQRV9MRVZFTF9I
-SUdIIDA+Owo+PiArwqDCoMKgwqDCoMKgwqAgZG1hcyA9IDwmZG1hY19wZXJpIDA+LCA8JmRtYWNf
-cGVyaSAxPjsKPj4gK8KgwqDCoMKgwqDCoMKgIGRtYS1uYW1lcyA9ICJ0eCIsICJyeCI7Cj4+IMKg
-wqDCoMKgwqDCoMKgwqDCoCByZWctc2hpZnQgPSA8Mj47Cj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBy
-ZWctaW8td2lkdGggPSA8ND47Cj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBwaW5jdHJsLW5hbWVzID0g
-ImRlZmF1bHQiOwo+PiBAQCAtNjQ4LDYgKzY1MCw4IEBACj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBj
-bG9ja3MgPSA8JmNydSBTQ0xLX1VBUlQxPiwgPCZjcnUgUENMS19VQVJUMT47Cj4+IMKgwqDCoMKg
-wqDCoMKgwqDCoCBjbG9jay1uYW1lcyA9ICJiYXVkY2xrIiwgImFwYl9wY2xrIjsKPj4gwqDCoMKg
-wqDCoMKgwqDCoMKgIGludGVycnVwdHMgPSA8R0lDX1NQSSA5OCBJUlFfVFlQRV9MRVZFTF9ISUdI
-IDA+Owo+PiArwqDCoMKgwqDCoMKgwqAgZG1hcyA9IDwmZG1hY19wZXJpIDI+LCA8JmRtYWNfcGVy
-aSAzPjsKPj4gK8KgwqDCoMKgwqDCoMKgIGRtYS1uYW1lcyA9ICJ0eCIsICJyeCI7Cj4+IMKgwqDC
-oMKgwqDCoMKgwqDCoCByZWctc2hpZnQgPSA8Mj47Cj4+IMKgwqDCoMKgwqDCoMKgwqDCoCByZWct
-aW8td2lkdGggPSA8ND47Cj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBwaW5jdHJsLW5hbWVzID0gImRl
-ZmF1bHQiOwo+PiBAQCAtNjYxLDYgKzY2NSw4IEBACj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBjbG9j
-a3MgPSA8JmNydSBTQ0xLX1VBUlQyPiwgPCZjcnUgUENMS19VQVJUMj47Cj4+IMKgwqDCoMKgwqDC
-oMKgwqDCoCBjbG9jay1uYW1lcyA9ICJiYXVkY2xrIiwgImFwYl9wY2xrIjsKPj4gwqDCoMKgwqDC
-oMKgwqDCoMKgIGludGVycnVwdHMgPSA8R0lDX1NQSSAxMDAgSVJRX1RZUEVfTEVWRUxfSElHSCAw
-PjsKPj4gK8KgwqDCoMKgwqDCoMKgIGRtYXMgPSA8JmRtYWNfcGVyaSA0PiwgPCZkbWFjX3Blcmkg
-NT47Cj4+ICvCoMKgwqDCoMKgwqDCoCBkbWEtbmFtZXMgPSAidHgiLCAicngiOwo+PiDCoMKgwqDC
-oMKgwqDCoMKgwqAgcmVnLXNoaWZ0ID0gPDI+Owo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgcmVnLWlv
-LXdpZHRoID0gPDQ+Owo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgcGluY3RybC1uYW1lcyA9ICJkZWZh
-dWx0IjsKPj4gQEAgLTY3NCw2ICs2ODAsOCBAQAo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgY2xvY2tz
-ID0gPCZjcnUgU0NMS19VQVJUMz4sIDwmY3J1IFBDTEtfVUFSVDM+Owo+PiDCoMKgwqDCoMKgwqDC
-oMKgwqAgY2xvY2stbmFtZXMgPSAiYmF1ZGNsayIsICJhcGJfcGNsayI7Cj4+IMKgwqDCoMKgwqDC
-oMKgwqDCoCBpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTAxIElSUV9UWVBFX0xFVkVMX0hJR0ggMD47
-Cj4+ICvCoMKgwqDCoMKgwqDCoCBkbWFzID0gPCZkbWFjX3BlcmkgNj4sIDwmZG1hY19wZXJpIDc+
-Owo+PiArwqDCoMKgwqDCoMKgwqAgZG1hLW5hbWVzID0gInR4IiwgInJ4IjsKPj4gwqDCoMKgwqDC
-oMKgwqDCoMKgIHJlZy1zaGlmdCA9IDwyPjsKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIHJlZy1pby13
-aWR0aCA9IDw0PjsKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIHBpbmN0cmwtbmFtZXMgPSAiZGVmYXVs
-dCI7Cj4+Cj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtYXJtLWtlcm5lbAo=
+Add UART dma channels as specified by the rk3399 TRM.
+
+Refer:
+RK3399 TRM V1.4: Chapter 12 DMA Controller
+
+Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+
+---
+
+Changes from v1:
+  - Add dma property for UART4
+---
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 0301e3e01b38..31e487202676 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -635,6 +635,8 @@
+ 		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
+ 		clock-names = "baudclk", "apb_pclk";
+ 		interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
++		dmas = <&dmac_peri 0>, <&dmac_peri 1>;
++		dma-names = "tx", "rx";
+ 		reg-shift = <2>;
+ 		reg-io-width = <4>;
+ 		pinctrl-names = "default";
+@@ -648,6 +650,8 @@
+ 		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
+ 		clock-names = "baudclk", "apb_pclk";
+ 		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH 0>;
++		dmas = <&dmac_peri 2>, <&dmac_peri 3>;
++		dma-names = "tx", "rx";
+ 		reg-shift = <2>;
+ 		reg-io-width = <4>;
+ 		pinctrl-names = "default";
+@@ -661,6 +665,8 @@
+ 		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
+ 		clock-names = "baudclk", "apb_pclk";
+ 		interrupts = <GIC_SPI 100 IRQ_TYPE_LEVEL_HIGH 0>;
++		dmas = <&dmac_peri 4>, <&dmac_peri 5>;
++		dma-names = "tx", "rx";
+ 		reg-shift = <2>;
+ 		reg-io-width = <4>;
+ 		pinctrl-names = "default";
+@@ -674,6 +680,8 @@
+ 		clocks = <&cru SCLK_UART3>, <&cru PCLK_UART3>;
+ 		clock-names = "baudclk", "apb_pclk";
+ 		interrupts = <GIC_SPI 101 IRQ_TYPE_LEVEL_HIGH 0>;
++		dmas = <&dmac_peri 6>, <&dmac_peri 7>;
++		dma-names = "tx", "rx";
+ 		reg-shift = <2>;
+ 		reg-io-width = <4>;
+ 		pinctrl-names = "default";
+@@ -1152,6 +1160,8 @@
+ 		clocks = <&pmucru SCLK_UART4_PMU>, <&pmucru PCLK_UART4_PMU>;
+ 		clock-names = "baudclk", "apb_pclk";
+ 		interrupts = <GIC_SPI 102 IRQ_TYPE_LEVEL_HIGH 0>;
++		dmas = <&dmac_peri 8>, <&dmac_peri 9>;
++		dma-names = "tx", "rx";
+ 		reg-shift = <2>;
+ 		reg-io-width = <4>;
+ 		pinctrl-names = "default";
+-- 
+2.20.1
