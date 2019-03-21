@@ -1,65 +1,131 @@
-From: Gael PORTAY <gael.portay@collabora.com>
-Subject: Re: [Bug] Rockchip crypto driver sometimes produces wrong ciphertext
-Date: Thu, 21 Mar 2019 13:04:08 -0400
-Message-ID: <cb075264-614e-5741-b6b9-4aa014e5277d@collabora.com>
-References: <875-5c8d7980-7-55088a00@27384378>
- <20c7a1d9-bc68-c5e5-d666-6db2d10b1f87@collabora.com>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] ARM: dts: rockchip: Add vdd_logic to rk3288-veyron
+Date: Thu, 21 Mar 2019 13:19:44 -0700
+Message-ID: <20190321201944.34684-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20c7a1d9-bc68-c5e5-d666-6db2d10b1f87@collabora.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Ezequiel Garcia <ezequiel.garcia@collabora.com>, Eric Biggers <ebiggers@kernel.org>
-Cc: Tao Huang <huangtao@rock-chips.com>, Zain Wang <wzz@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Zhang Zhijie <zhangzj@rock-chips.com>, linux-rockchip@lists.infradead.org, "open list:HARDWARE RANDOM NUMBER GENERATOR CORE" <linux-crypto@vger.kernel.org>, Olof Johansson <olof@lixom.net>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mka@chromium.org, ryandcase@chromium.org, Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8sCgpPbiAzLzE4LzE5IDExOjAzIEFNLCBHYWVsIFBPUlRBWSB3cm90ZToKPiBIZWxsbywK
-PiAKPiBPbiAzLzE2LzE5IDY6MzEgUE0sIEV6ZXF1aWVsIEdhcmNpYSB3cm90ZToKPj4gQWRkaW5n
-IG15IGNvbGxlYWd1ZSBHYWVsLCB3aG8gaGFzIGJlZW4gd29ya2luZyBvbiBmaXhpbmcgdGhpcyBk
-cml2ZXIuCj4gCj4gSSBoYXZlIGEgY291cGxlIG9mIHBlbmRpbmcgY29tbWl0cyB0aGF0IG1heSBm
-aXggdGhhdCBpc3N1ZS4KPiAKPiBJIHdpbGwgZ2l2ZSBpdCBhIHRyeSwgYW5kIGdldCBiYWNrIHRv
-IHlvdSB0aGVuLgo+IAoKVGhlIHBhdGNoZXMgSSBoYWQgZml4IHRoZSBzYW1lIGlzc3VlIHRoYW4g
-cmVjZW50IGNvbW1pdCB0byBbMV0gYW5kIFsyXSAKaW4gYSBkaWZmZXJlbnQgd2F5LgoKQnV0IHRo
-ZXkgZG8gbm90IGZpeCB0aGUgaXNzdWUgYmVsb3cuCgo+PiAuLi4KPj4+Cj4+PiBUaGFua3MgZm9y
-IHRoZSBmaXhlcywgYnV0IEkndmUgaW1wcm92ZWQgdGhlIHNlbGYtdGVzdHMgbW9yZSwgYW5kIAo+
-Pj4gdGhlcmUgaXMKPj4+IGFub3RoZXIgYnVnLsKgIFNlZSB0aGUgS2VybmVsQ0kgam9iIGhlcmU6
-Cj4+Pgo+Pj4gwqDCoMKgwqBodHRwczovL2tlcm5lbGNpLm9yZy9ib290L2FsbC9qb2IvYXJkYi9i
-cmFuY2gvZm9yLWtlcm5lbGNpL2tlcm5lbC92NS4wLTExMDcxLWc3ZDU5N2NjM2YwZWYvIAo+Pj4K
-Pj4+Cj4+PiBUaGUgc2VsZi10ZXN0cyBhcmUgZmFpbGluZyBvbiB0aGUgcmszMjg4LXJvY2syLXNx
-dWFyZSBwbGF0Zm9ybToKPj4+Cj4+PiDCoMKgwqDCoGFsZzogc2tjaXBoZXI6IGNiYy1hZXMtcmsg
-ZW5jcnlwdGlvbiB0ZXN0IGZhaWxlZCAod3Jvbmcgb3V0cHV0IAo+Pj4gSVYpIG9uIHRlc3QgdmVj
-dG9yIDAsIGNmZz1cImluLXBsYWNlXCIKPj4+IMKgwqDCoMKgYWxnOiBza2NpcGhlcjogY2JjLWRl
-cy1yayBlbmNyeXB0aW9uIHRlc3QgZmFpbGVkICh3cm9uZyBvdXRwdXQgCj4+PiBJVikgb24gdGVz
-dCB2ZWN0b3IgMCwgY2ZnPVwiaW4tcGxhY2VcIgo+Pj4gwqDCoMKgwqBhbGc6IHNrY2lwaGVyOiBj
-YmMtZGVzMy1lZGUtcmsgZW5jcnlwdGlvbiB0ZXN0IGZhaWxlZCAod3JvbmcgCj4+PiBvdXRwdXQg
-SVYpIG9uIHRlc3QgdmVjdG9yIDAsIGNmZz1cImluLXBsYWNlXCIKPj4+Cj4+PiBUaGUgaXNzdWUg
-aXMgdGhhdCB0aGUgc2VsZi10ZXN0cyBub3cgdmVyaWZ5IHRoYXQgQ0JDIGltcGxlbWVudGF0aW9u
-cyAKPj4+IHVwZGF0ZSB0aGUKPj4+IElWIGJ1ZmZlciB0byBjb250YWluIHRoZSBuZXh0IElWLCBh
-a2EgdGhlIGxhc3QgY2lwaGVydGV4dCBibG9jay7CoCBCdXQgCj4+PiB0aGUKPj4+IFJvY2tjaGlw
-IGNyeXB0byBkcml2ZXIgZG9lc24ndCBkbyB0aGF0LCBzbyBpdCBuZWVkcyB0byBiZSBmaXhlZC4K
-Pj4+Cj4+PiBUaGlzIGhhcyBhbHdheXMgYmVlbiBhIHJlcXVpcmVtZW50IGZvciBDQkMgaW1wbGVt
-ZW50YXRpb25zIHNvIHRoYXQgCj4+PiB1c2VycyBjYW4KPj4+IGNoYWluIENCQyByZXF1ZXN0cy7C
-oCBVbmZvcnR1bmF0ZWx5IGl0IHdhcyBqdXN0IG5ldmVyIHRlc3RlZCBmb3IuLi4KPj4+Cj4+PiBU
-aGlzIHNob3VsZCBiZSBlYXNpbHkgcmVwcm9kdWNpYmxlIHVzaW5nIHRoZSBtYWlubGluZSBrZXJu
-ZWwuCj4+Pgo+Pj4gLSBFcmljCj4+Cj4+Cj4+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCj4+IGxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0Cj4+IGxp
-bnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwo+PiBodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwKPj4KPiAKPiBHYWVsCgpb
-MV06IApodHRwczovL2dpdGh1Yi5jb20vdG9ydmFsZHMvbGludXgvY29tbWl0L2MxYzIxNGFkY2I1
-NmQzNjQzMzQ4MGM4ZmVkZjc3MjQ5OGU3ZTUzOWMjZGlmZi00NDAzMTNmOWQyNWY2NWMxNGQ0YmZm
-YjEzNjBhM2M2MApbMl06IApodHRwczovL2dpdGh1Yi5jb20vdG9ydmFsZHMvbGludXgvY29tbWl0
-LzQzNTk2NjlhMDg3NjMzMTMyMjAzYzUyZDY3ZGQ4YzMxZTA5ZTdiMmUjZGlmZi00NDAzMTNmOWQy
-NWY2NWMxNGQ0YmZmYjEzNjBhM2M2MAoKR2FlbAoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgt
-YXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+The vdd_logic rail controls the voltage supplied to misc logic on
+rk3288, including the voltage supplied to the memory controller.  The
+vcc logic is implemented by a PWM regulator.
+
+Right now there are no consumers of vdd_logic on veyron but if anyone
+ever wants to try to add DDR Freq they'd need it.
+
+Note that in the downstream Chrome OS kernel the PWM regulator has
+a voltage table with these points:
+  1350000 0%
+  1300000 10%
+  1250000 20%
+  1200000 31%
+  1150000 41%
+  1125000 46%
+  1100000 52%
+  1050000 62%
+  1000000 72%
+   950000 83%
+
+The DDR Freq driver in the downstream kernel only uses some of those
+points, namely:
+  DDR3:  1200000, 1150000, 1100000, 1050000
+  LPDDR:          1150000, 1100000, 1050000
+
+When adapting the downstream kernel to upstream I have opted to switch
+to using the "continuous" mode of the PWM regulator driver.  This was
+the only way I could get the upstream driver to achieve _exactly_ the
+same voltages as the downstream driver could.  Specifically note that
+the old driver in downstream Chrome OS 3.14 _didn't_ have the
+DIV_ROUND_CLOSEST_ULL() in the Rockchip PLL driver.  That means if I
+use the same (downstream) table I might end up with a duty cycle
+that's 1 larger than was used downstream, leading to a slightly
+different voltage.  Due to the way the rounding worked I couldn't even
+just adjust the "percent" by 1 for a given voltage level--certain duty
+cycles just aren't achievable with the upstream math for voltage
+tables.
+
+Using continuous mode you can achieve the exact same duty cycle by
+simply adjusting the voltage you use by a tad bit.  The voltages that
+are equivalent to the ones used in the downstream kernel's table are:
+  1350000, 1304472, 1255691, 1200407, 1154878,
+  1128862, 1099593, 1050813, 1005285, 950000
+
+Note that the top/bottom voltage is exactly the same just due to the
+way that continuous mode is calculated and the fact that I used those
+as anchors.  I didn't make any attempt to do the resistor math (as was
+done on rk3399-gru).
+
+If anyone ever gets DDRFreq working on veyron upstream they should
+thus adjust the voltage specified in the DDRFreq operating points
+slightly (as per the above) to obtain the existing/tested values.  AKA
+you'd use:
+  DDR3:  1200407, 1154878, 1099593, 1050813
+  LPDDR:          1154878, 1099593, 1050813
+
+A few other notes:
+- The "period" here (1994) is different than the "period" downstream
+  (2000) for similar reasons: there's a DIV_ROUND_CLOSEST_ULL() that
+  wasn't downstream.  With 1994 upstream comes up with the same value
+  (0x94) to program into the hardware that downstream put there.  As
+  far as I can tell 0x94 actually means 1993.27.
+- The duty cycle unit of 0x94 was picked by just matching the period
+  which nicely allows us to insert 0x7b as that value to program into
+  the hardware for 950mV.  The 0x7b was found by observing what the
+  downstream kernel calculated (not that the system can actually run
+  with vdd_log at 950 mV).
+- The downstream kernel can also be seen to program a different value
+  into the CTRL field.  Upstream achieves 0x0b and downstream 0x1b.
+  This is because the upstream commit bc834d7b07b4 ("pwm: rockchip:
+  Move the configuration of polarity") fixed a bug by adding "ctrl &=
+  ~PWM_POLARITY_MASK".  Downstream accidentally left bit 4 set.
+  Luckily this bit doesn't matter--it's only used when the PWM goes
+  inactive (AKA if it's in oneshot mode or is disabled) and we don't
+  do that for the PWM regulator.
+
+I measured the voltage of vdd_log while adjusting it and found that
+with the upstream kernel voltage difference between requested and
+actual was 9.2 mV at 950 mV and 13.4 mV at 1350 mV with in-between
+voltages consistently showing ~1% error.  This error is likely
+expected as voltage can be seen to sag a bit when more load is put on
+the rail.
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+
+ arch/arm/boot/dts/rk3288-veyron.dtsi | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
+index 0bc2409f6903..5181d9435fda 100644
+--- a/arch/arm/boot/dts/rk3288-veyron.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
+@@ -95,6 +95,23 @@
+ 		regulator-boot-on;
+ 		vin-supply = <&vcc_5v>;
+ 	};
++
++	vdd_logic: vdd-logic {
++		compatible = "pwm-regulator";
++		regulator-name = "vdd_logic";
++
++		pwms = <&pwm1 0 1994 0>;
++		pwm-supply = <&vcc33_sys>;
++
++		pwm-dutycycle-range = <0x7b 0>;
++		pwm-dutycycle-unit = <0x94>;
++
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <950000>;
++		regulator-max-microvolt = <1350000>;
++		regulator-ramp-delay = <4000>;
++	};
+ };
+ 
+ &cpu0 {
+-- 
+2.21.0.225.g810b269d1ac-goog
