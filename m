@@ -1,57 +1,71 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: Re: [PATCH v5 1/5] drm: rockchip: introduce rk3066 hdmi
-Date: Thu, 21 Mar 2019 21:35:45 +0100
-Message-ID: <fe1b8049-37be-f911-ec5e-399875db46fe@gmail.com>
-References: <20190321001440.31057-2-jbx6244@gmail.com>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: Re: [PATCH 1/4] ARM: dts: rockchip: Fix gic/efuse sort ordering for
+ rk3288
+Date: Thu, 21 Mar 2019 14:06:13 -0700
+Message-ID: <20190321210613.GQ112750@google.com>
+References: <20190320201402.114309-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190321001440.31057-2-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190320201402.114309-1-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, ryandcase@chromium.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Wed, Mar 20, 2019 at 01:13:59PM -0700, Douglas Anderson wrote:
+> It can be seen that 0xffb40000 < 0xffc01000, thus efuse comes first.
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+> 
+>  arch/arm/boot/dts/rk3288.dtsi | 26 +++++++++++++-------------
+>  1 file changed, 13 insertions(+), 13 deletions(-)
+> 
+> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+> index 09868dcee34b..e9f454248398 100644
+> --- a/arch/arm/boot/dts/rk3288.dtsi
+> +++ b/arch/arm/boot/dts/rk3288.dtsi
+> @@ -1378,19 +1378,6 @@
+>  		reg = <0x0 0xffaf0080 0x0 0x20>;
+>  	};
+>  
+> -	gic: interrupt-controller@ffc01000 {
+> -		compatible = "arm,gic-400";
+> -		interrupt-controller;
+> -		#interrupt-cells = <3>;
+> -		#address-cells = <0>;
+> -
+> -		reg = <0x0 0xffc01000 0x0 0x1000>,
+> -		      <0x0 0xffc02000 0x0 0x2000>,
+> -		      <0x0 0xffc04000 0x0 0x2000>,
+> -		      <0x0 0xffc06000 0x0 0x2000>;
+> -		interrupts = <GIC_PPI 9 0xf04>;
+> -	};
+> -
+>  	efuse: efuse@ffb40000 {
+>  		compatible = "rockchip,rk3288-efuse";
+>  		reg = <0x0 0xffb40000 0x0 0x20>;
+> @@ -1404,6 +1391,19 @@
+>  		};
+>  	};
+>  
+> +	gic: interrupt-controller@ffc01000 {
+> +		compatible = "arm,gic-400";
+> +		interrupt-controller;
+> +		#interrupt-cells = <3>;
+> +		#address-cells = <0>;
+> +
+> +		reg = <0x0 0xffc01000 0x0 0x1000>,
+> +		      <0x0 0xffc02000 0x0 0x2000>,
+> +		      <0x0 0xffc04000 0x0 0x2000>,
+> +		      <0x0 0xffc06000 0x0 0x2000>;
+> +		interrupts = <GIC_PPI 9 0xf04>;
+> +	};
+> +
+>  	pinctrl: pinctrl {
+>  		compatible = "rockchip,rk3288-pinctrl";
+>  		rockchip,grf = <&grf>;
 
-On Heiko's request the function rk3066_hdmi_connector_get_modes() was
-made equel to the inno driver. The variable "sink_is_hdmi" now only
-changes with valid edid. What happens if we plug in a device with valid
-hdmi video and then with something wrong with edid then "sink_is_hdmi"
-never turns false. Shouldn't we add an extra statement in this and in
-the inno driver that makes sure that "sink_is_hdmi" is false in all
-other cases? Please advise.
-
-
-+static int rk3066_hdmi_connector_get_modes(struct drm_connector *connector)
-+{
-+	struct rk3066_hdmi *hdmi = to_rk3066_hdmi(connector);
-+	struct edid *edid;
-+	int ret = 0;
-+
-+	if (!hdmi->ddc)
-+		return 0;
-+
-
-Add extra statement here:
-	hdmi->hdmi_data.sink_is_hdmi = false;
-
-+	edid = drm_get_edid(connector, hdmi->ddc);
-+	if (edid) {
-+		hdmi->hdmi_data.sink_is_hdmi = drm_detect_hdmi_monitor(edid);
-+		drm_connector_update_edid_property(connector, edid);
-+		ret = drm_add_edid_modes(connector, edid);
-+		kfree(edid);
-+	}
-+
-+	return ret;
-+}
+Reviewed-by: Matthias Kaehlcke <mka@chromium.org>
