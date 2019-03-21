@@ -1,87 +1,65 @@
-From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-Subject: [PATCH v2] arm64: dts: rockchip: add rk3399 UART DMAs
-Date: Fri, 22 Mar 2019 01:22:44 +0900
-Message-ID: <20190321162244.10080-1-katsuhiro@katsuster.net>
+From: Gael PORTAY <gael.portay@collabora.com>
+Subject: Re: [Bug] Rockchip crypto driver sometimes produces wrong ciphertext
+Date: Thu, 21 Mar 2019 13:04:08 -0400
+Message-ID: <cb075264-614e-5741-b6b9-4aa014e5277d@collabora.com>
+References: <875-5c8d7980-7-55088a00@27384378>
+ <20c7a1d9-bc68-c5e5-d666-6db2d10b1f87@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20c7a1d9-bc68-c5e5-d666-6db2d10b1f87@collabora.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Ezequiel Garcia <ezequiel.garcia@collabora.com>, Eric Biggers <ebiggers@kernel.org>
+Cc: Tao Huang <huangtao@rock-chips.com>, Zain Wang <wzz@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Zhang Zhijie <zhangzj@rock-chips.com>, linux-rockchip@lists.infradead.org, "open list:HARDWARE RANDOM NUMBER GENERATOR CORE" <linux-crypto@vger.kernel.org>, Olof Johansson <olof@lixom.net>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add UART dma channels as specified by the rk3399 TRM.
-
-Refer:
-RK3399 TRM V1.4: Chapter 12 DMA Controller
-
-Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-
----
-
-Changes from v1:
-  - Add dma property for UART4
----
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 0301e3e01b38..31e487202676 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -635,6 +635,8 @@
- 		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
- 		clock-names = "baudclk", "apb_pclk";
- 		interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
-+		dmas = <&dmac_peri 0>, <&dmac_peri 1>;
-+		dma-names = "tx", "rx";
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
- 		pinctrl-names = "default";
-@@ -648,6 +650,8 @@
- 		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
- 		clock-names = "baudclk", "apb_pclk";
- 		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH 0>;
-+		dmas = <&dmac_peri 2>, <&dmac_peri 3>;
-+		dma-names = "tx", "rx";
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
- 		pinctrl-names = "default";
-@@ -661,6 +665,8 @@
- 		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
- 		clock-names = "baudclk", "apb_pclk";
- 		interrupts = <GIC_SPI 100 IRQ_TYPE_LEVEL_HIGH 0>;
-+		dmas = <&dmac_peri 4>, <&dmac_peri 5>;
-+		dma-names = "tx", "rx";
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
- 		pinctrl-names = "default";
-@@ -674,6 +680,8 @@
- 		clocks = <&cru SCLK_UART3>, <&cru PCLK_UART3>;
- 		clock-names = "baudclk", "apb_pclk";
- 		interrupts = <GIC_SPI 101 IRQ_TYPE_LEVEL_HIGH 0>;
-+		dmas = <&dmac_peri 6>, <&dmac_peri 7>;
-+		dma-names = "tx", "rx";
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
- 		pinctrl-names = "default";
-@@ -1152,6 +1160,8 @@
- 		clocks = <&pmucru SCLK_UART4_PMU>, <&pmucru PCLK_UART4_PMU>;
- 		clock-names = "baudclk", "apb_pclk";
- 		interrupts = <GIC_SPI 102 IRQ_TYPE_LEVEL_HIGH 0>;
-+		dmas = <&dmac_peri 8>, <&dmac_peri 9>;
-+		dma-names = "tx", "rx";
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
- 		pinctrl-names = "default";
--- 
-2.20.1
+SGVsbG8sCgpPbiAzLzE4LzE5IDExOjAzIEFNLCBHYWVsIFBPUlRBWSB3cm90ZToKPiBIZWxsbywK
+PiAKPiBPbiAzLzE2LzE5IDY6MzEgUE0sIEV6ZXF1aWVsIEdhcmNpYSB3cm90ZToKPj4gQWRkaW5n
+IG15IGNvbGxlYWd1ZSBHYWVsLCB3aG8gaGFzIGJlZW4gd29ya2luZyBvbiBmaXhpbmcgdGhpcyBk
+cml2ZXIuCj4gCj4gSSBoYXZlIGEgY291cGxlIG9mIHBlbmRpbmcgY29tbWl0cyB0aGF0IG1heSBm
+aXggdGhhdCBpc3N1ZS4KPiAKPiBJIHdpbGwgZ2l2ZSBpdCBhIHRyeSwgYW5kIGdldCBiYWNrIHRv
+IHlvdSB0aGVuLgo+IAoKVGhlIHBhdGNoZXMgSSBoYWQgZml4IHRoZSBzYW1lIGlzc3VlIHRoYW4g
+cmVjZW50IGNvbW1pdCB0byBbMV0gYW5kIFsyXSAKaW4gYSBkaWZmZXJlbnQgd2F5LgoKQnV0IHRo
+ZXkgZG8gbm90IGZpeCB0aGUgaXNzdWUgYmVsb3cuCgo+PiAuLi4KPj4+Cj4+PiBUaGFua3MgZm9y
+IHRoZSBmaXhlcywgYnV0IEkndmUgaW1wcm92ZWQgdGhlIHNlbGYtdGVzdHMgbW9yZSwgYW5kIAo+
+Pj4gdGhlcmUgaXMKPj4+IGFub3RoZXIgYnVnLsKgIFNlZSB0aGUgS2VybmVsQ0kgam9iIGhlcmU6
+Cj4+Pgo+Pj4gwqDCoMKgwqBodHRwczovL2tlcm5lbGNpLm9yZy9ib290L2FsbC9qb2IvYXJkYi9i
+cmFuY2gvZm9yLWtlcm5lbGNpL2tlcm5lbC92NS4wLTExMDcxLWc3ZDU5N2NjM2YwZWYvIAo+Pj4K
+Pj4+Cj4+PiBUaGUgc2VsZi10ZXN0cyBhcmUgZmFpbGluZyBvbiB0aGUgcmszMjg4LXJvY2syLXNx
+dWFyZSBwbGF0Zm9ybToKPj4+Cj4+PiDCoMKgwqDCoGFsZzogc2tjaXBoZXI6IGNiYy1hZXMtcmsg
+ZW5jcnlwdGlvbiB0ZXN0IGZhaWxlZCAod3Jvbmcgb3V0cHV0IAo+Pj4gSVYpIG9uIHRlc3QgdmVj
+dG9yIDAsIGNmZz1cImluLXBsYWNlXCIKPj4+IMKgwqDCoMKgYWxnOiBza2NpcGhlcjogY2JjLWRl
+cy1yayBlbmNyeXB0aW9uIHRlc3QgZmFpbGVkICh3cm9uZyBvdXRwdXQgCj4+PiBJVikgb24gdGVz
+dCB2ZWN0b3IgMCwgY2ZnPVwiaW4tcGxhY2VcIgo+Pj4gwqDCoMKgwqBhbGc6IHNrY2lwaGVyOiBj
+YmMtZGVzMy1lZGUtcmsgZW5jcnlwdGlvbiB0ZXN0IGZhaWxlZCAod3JvbmcgCj4+PiBvdXRwdXQg
+SVYpIG9uIHRlc3QgdmVjdG9yIDAsIGNmZz1cImluLXBsYWNlXCIKPj4+Cj4+PiBUaGUgaXNzdWUg
+aXMgdGhhdCB0aGUgc2VsZi10ZXN0cyBub3cgdmVyaWZ5IHRoYXQgQ0JDIGltcGxlbWVudGF0aW9u
+cyAKPj4+IHVwZGF0ZSB0aGUKPj4+IElWIGJ1ZmZlciB0byBjb250YWluIHRoZSBuZXh0IElWLCBh
+a2EgdGhlIGxhc3QgY2lwaGVydGV4dCBibG9jay7CoCBCdXQgCj4+PiB0aGUKPj4+IFJvY2tjaGlw
+IGNyeXB0byBkcml2ZXIgZG9lc24ndCBkbyB0aGF0LCBzbyBpdCBuZWVkcyB0byBiZSBmaXhlZC4K
+Pj4+Cj4+PiBUaGlzIGhhcyBhbHdheXMgYmVlbiBhIHJlcXVpcmVtZW50IGZvciBDQkMgaW1wbGVt
+ZW50YXRpb25zIHNvIHRoYXQgCj4+PiB1c2VycyBjYW4KPj4+IGNoYWluIENCQyByZXF1ZXN0cy7C
+oCBVbmZvcnR1bmF0ZWx5IGl0IHdhcyBqdXN0IG5ldmVyIHRlc3RlZCBmb3IuLi4KPj4+Cj4+PiBU
+aGlzIHNob3VsZCBiZSBlYXNpbHkgcmVwcm9kdWNpYmxlIHVzaW5nIHRoZSBtYWlubGluZSBrZXJu
+ZWwuCj4+Pgo+Pj4gLSBFcmljCj4+Cj4+Cj4+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCj4+IGxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0Cj4+IGxp
+bnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwo+PiBodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwKPj4KPiAKPiBHYWVsCgpb
+MV06IApodHRwczovL2dpdGh1Yi5jb20vdG9ydmFsZHMvbGludXgvY29tbWl0L2MxYzIxNGFkY2I1
+NmQzNjQzMzQ4MGM4ZmVkZjc3MjQ5OGU3ZTUzOWMjZGlmZi00NDAzMTNmOWQyNWY2NWMxNGQ0YmZm
+YjEzNjBhM2M2MApbMl06IApodHRwczovL2dpdGh1Yi5jb20vdG9ydmFsZHMvbGludXgvY29tbWl0
+LzQzNTk2NjlhMDg3NjMzMTMyMjAzYzUyZDY3ZGQ4YzMxZTA5ZTdiMmUjZGlmZi00NDAzMTNmOWQy
+NWY2NWMxNGQ0YmZmYjEzNjBhM2M2MAoKR2FlbAoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgt
+YXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
