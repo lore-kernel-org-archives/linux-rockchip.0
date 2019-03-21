@@ -1,64 +1,167 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: Re: [PATCH v2 3/5] devfreq: rk3399_dmc: Pass ODT and auto power down
- parameters to TF-A.
-Date: Wed, 20 Mar 2019 15:02:23 -0700
-Message-ID: <20190320220223.GP112750@google.com>
-References: <20190319181323.22804-1-gael.portay@collabora.com>
- <20190319181323.22804-4-gael.portay@collabora.com>
- <20190320003352.GN112750@google.com>
- <20190320215013.43zgvyn5frnb3yud@archlinux.localdomain>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v5 0/5] Enable rk3066 VOP and HDMI for MK808
+Date: Thu, 21 Mar 2019 01:14:35 +0100
+Message-ID: <20190321001440.31057-1-jbx6244@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190320215013.43zgvyn5frnb3yud@archlinux.localdomain>
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?utf-8?B?R2HDq2w=?= PORTAY <gael.portay@collabora.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Derek Basehore <dbasehore@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-rockchip@lists.infradead.org, Randy Li <ayaka@soulik.info>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, Lin Huang <hl@rock-chips.com>
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com, airlied@linux.ie, daniel@ffwll.ch, robh+dt@kernel.org, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Gaël,
+For testing only.
 
-On Wed, Mar 20, 2019 at 05:50:13PM -0400, Gaël PORTAY wrote:
-> Hi Matthias,
-> 
-> On Tue, Mar 19, 2019 at 05:33:52PM -0700, Matthias Kaehlcke wrote:
-> > ...
-> > > @@ -95,6 +103,19 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
-> > >  
-> > >  	mutex_lock(&dmcfreq->lock);
-> > >  
-> > > +	if (target_rate >= dmcfreq->odt_dis_freq)
-> > > +		odt_enable = true;
-> > > +
-> > > +	/*
-> > > +	 * This makes a SMC call to the TF-A to set the DDR PD (power-down)
-> > > +	 * timings and to enable or disable the ODT (on-die termination)
-> > > +	 * resistors.
-> > > +	 */
-> > > +	arm_smccc_smc(ROCKCHIP_SIP_DRAM_FREQ, dmcfreq->odt_pd_arg0,
-> > > +		      dmcfreq->odt_pd_arg1,
-> > > +		      ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD,
-> > > +		      odt_enable, 0, 0, 0, &res);
-> > 
-> > Is it necessary/desirable to make this call for every frequency
-> > change? IIUC it should be only needed when odt_enable changes and the
-> > driver could track the state. If the DDR frequency doesn't change too
-> > often and the overhead of the call is small it shouldn't be really
-> > important though.
-> >
-> 
-> I will test your solution first to make sure there is no regression to
-> run that call for frequency change only.
+Version: V5
 
-If there is no frequency change the function returns at the
-beginning. My suggestion was to only do the call when 'odt_enable'
-changes, i.e. when a change (up or down) passes the 'odt_dis_freq'
-threshold.
+Title: Enable rk3066 VOP and HDMI for MK808.
 
-> Also, the call takes around 300us.
+This patch serie only works in combination with a MK808 TV stick and
+a rk3066 processor. Other boxes and tablets with a rk3066
+need extra software for power management and lcd's.
 
-Thanks for the info!
+What does it do:
 
-Matthias
+With these kernel patches a MK808 can show 2 penguins and a console
+on a DVI-D monitor in combination with a framebuffer.
+
+Not tested:
+
+HDMI TV
+HDCP
+DRM
+Xorg
+Display managers
+Android
+etc.
+
+Problems:
+
+DRM functions keep changing every rc.
+With v5.0-rc8 the monitor doesn't blank on poweroff, it freezes
+due to a patch revert some time ago.
+
+  drm/rockchip: shutdown drm subsystem on shutdown
+    https://patchwork.kernel.org/patch/10556151/
+  drm/rockchip: Allow driver to be shutdown on reboot/kexec
+    https://patchwork.kernel.org/patch/10556135/
+  [for-4.20] Revert "drm/rockchip: Allow driver to be shutdown on reboot/kexec"
+    https://patchwork.kernel.org/patch/10714725/
+
+To get the rk3066 hdmi driver accepted DVI-D support is removed.
+(Fixed screen size support for DVI-D with extra patch.)
+
+HDMI sound not included.
+etc.
+
+///////////////////////////////////////////
+Changes V5:
+
+rockchip,rk3066-hdmi.txt
+  add Reviewed-by tag
+
+rk3066_hdmi.c
+  change order in unbind function
+  add goto err_disable_i2c to rk3066_hdmi_bind function
+  change dev_foobar calls to their DRM_* equivalents
+  remove rk3066_hdmi_i2c_irq function
+  use define constants in rk3066_hdmi_encoder_enable function
+  add comment to rk3066_hdmi_config_phy function
+  small text style changes
+  remove DVI-D support
+  (add DVI-D support with extra patch)
+
+rk3066_hdmi.h
+  add define constants
+
+///////////////////////////////////////////
+Changes V4:
+
+rockchip,rk3066-hdmi.txt
+  change document name
+
+rk3066_hdmi.c
+  add more info in commit message
+  replace deprecated drmP.h include
+  small text style changes
+  explain vic variable
+  remove enc_in_format
+  change lock name
+  change regmap name
+  change cmp name
+  replace hdmi->dev by dev
+  use sentinel
+  use HDMI_VIDEO_VSYNC_OFFSET_SHIFT define
+  remove unused module macros
+  change driver name for dmesg
+
+///////////////////////////////////////////
+Changes V3:
+
+updated to v5.0-rc8
+removed patches that are already added to linux-next
+
+rk3066_hdmi.c
+  removed gpl text
+  small style changes
+  removed unused includes
+  add include for:
+    drm_helper_hpd_irq_event
+    drm_helper_probe_single_connector_modes
+  update drm_hdmi_avi_infoframe_from_display_mode function call
+
+rk3066_hdmi.h
+  removed gpl text
+
+rk3066a.dtsi
+  add extra port for hdmi connector node
+
+rk3066a-mk808.dts
+  add hdmi connector node
+  connect hdmi_out with hdmi_con_in
+
+rk3066-hdmi.txt
+  add extra port for hdmi connector node
+
+///////////////////////////////////////////
+
+# How to make rkfs.cpio
+
+find . | cpio -o --format=newc > ../rkfs.cpio
+
+# How to compile/flash
+
+make menuconfig  ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabi-
+make -j4  ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabi-
+
+cp ./arch/arm/boot/zImage ../zImage-dtb
+cat ./arch/arm/boot/dts/rk3066a-mk808.dtb >> ../zImage-dtb
+../tools/rkcrc -k ../zImage-dtb ../mk808.img
+sudo ../tools/rkflashtool w 0x4000 0x8000 < ../mk808.img
+sudo ../tools/rkflashtool b
+
+///////////////////////////////////////////
+
+Johan Jonker (3):
+  ARM: dts: rockchip: rk3066a-mk808: enable vop0 and hdmi nodes
+  dt-bindings: display: rockchip: add document for rk3066 hdmi
+  drm: rockchip: add fixed screen size DVI-D support for rk3066 hdmi
+
+Zheng Yang (2):
+  drm: rockchip: introduce rk3066 hdmi
+  ARM: dts: rockchip: add rk3066 hdmi nodes
+
+ .../display/rockchip/rockchip,rk3066-hdmi.txt      |  72 ++
+ arch/arm/boot/dts/rk3066a-mk808.dts                |  29 +
+ arch/arm/boot/dts/rk3066a.dtsi                     |  52 ++
+ drivers/gpu/drm/rockchip/Kconfig                   |   8 +
+ drivers/gpu/drm/rockchip/Makefile                  |   1 +
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c             | 889 +++++++++++++++++++++
+ drivers/gpu/drm/rockchip/rk3066_hdmi.h             | 229 ++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c        |   2 +
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h        |   1 +
+ 9 files changed, 1283 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,rk3066-hdmi.txt
+ create mode 100644 drivers/gpu/drm/rockchip/rk3066_hdmi.c
+ create mode 100644 drivers/gpu/drm/rockchip/rk3066_hdmi.h
+
+-- 
+2.11.0
