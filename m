@@ -1,193 +1,93 @@
-From: =?UTF-8?q?Ga=C3=ABl=20PORTAY?= <gael.portay@collabora.com>
-Subject: [PATCH v3 3/5] devfreq: rk3399_dmc: Pass ODT and auto power down parameters to TF-A.
-Date: Thu, 21 Mar 2019 19:14:38 -0400
-Message-ID: <20190321231440.19031-4-gael.portay@collabora.com>
-References: <20190321231440.19031-1-gael.portay@collabora.com>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: Re: [PATCH v2 3/5] devfreq: rk3399_dmc: Pass ODT and auto power down
+ parameters to TF-A.
+Date: Thu, 21 Mar 2019 17:01:07 -0700
+Message-ID: <20190322000107.GU112750@google.com>
+References: <20190319181323.22804-1-gael.portay@collabora.com>
+ <20190319181323.22804-4-gael.portay@collabora.com>
+ <20190320003352.GN112750@google.com>
+ <20190320215013.43zgvyn5frnb3yud@archlinux.localdomain>
+ <20190320220223.GP112750@google.com>
+ <20190321231055.j7z23f3k3rcngq4u@archlinux.localdomain>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190321231440.19031-1-gael.portay@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20190321231055.j7z23f3k3rcngq4u@archlinux.localdomain>
 Sender: linux-kernel-owner@vger.kernel.org
-To: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lin Huang <hl@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Derek Basehore <dbasehore@chromium.org>, Randy Li <ayaka@soulik.info>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Mark Rutland <mark.rutland@arm.com>, =?UTF-8?q?Ga=C3=ABl=20PORTAY?= <gael.portay@collabora.com>
+To: =?utf-8?B?R2HDq2w=?= PORTAY <gael.portay@collabora.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Derek Basehore <dbasehore@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-rockchip@lists.infradead.org, Randy Li <ayaka@soulik.info>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Hi Gaël,
 
-Trusted Firmware-A (TF-A) for rk3399 implements a SiP call to get the
-on-die termination (ODT) and auto power down parameters from kernel,
-this patch adds the functionality to do this. Also, if DDR clock
-frequency is lower than the on-die termination (ODT) disable frequency
-this driver should disable the DDR ODT.
+On Thu, Mar 21, 2019 at 07:10:55PM -0400, Gaël PORTAY wrote:
+> Matthias,
+> 
+> On Wed, Mar 20, 2019 at 03:02:23PM -0700, Matthias Kaehlcke wrote:
+> > Hi Gaël,
+> > 
+> > On Wed, Mar 20, 2019 at 05:50:13PM -0400, Gaël PORTAY wrote:
+> > > Hi Matthias,
+> > > 
+> > > On Tue, Mar 19, 2019 at 05:33:52PM -0700, Matthias Kaehlcke wrote:
+> > > > ...
+> > > > > @@ -95,6 +103,19 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
+> > > > >  
+> > > > >  	mutex_lock(&dmcfreq->lock);
+> > > > >  
+> > > > > +	if (target_rate >= dmcfreq->odt_dis_freq)
+> > > > > +		odt_enable = true;
+> > > > > +
+> > > > > +	/*
+> > > > > +	 * This makes a SMC call to the TF-A to set the DDR PD (power-down)
+> > > > > +	 * timings and to enable or disable the ODT (on-die termination)
+> > > > > +	 * resistors.
+> > > > > +	 */
+> > > > > +	arm_smccc_smc(ROCKCHIP_SIP_DRAM_FREQ, dmcfreq->odt_pd_arg0,
+> > > > > +		      dmcfreq->odt_pd_arg1,
+> > > > > +		      ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD,
+> > > > > +		      odt_enable, 0, 0, 0, &res);
+> > > > 
+> > > > Is it necessary/desirable to make this call for every frequency
+> > > > change? IIUC it should be only needed when odt_enable changes and the
+> > > > driver could track the state. If the DDR frequency doesn't change too
+> > > > often and the overhead of the call is small it shouldn't be really
+> > > > important though.
+> > > >
+> > > 
+> > > I will test your solution first to make sure there is no regression to
+> > > run that call for frequency change only.
+> > 
+> 
+> Oops, I wanted to say when odt_enable changes since last call.
+> 
+> > If there is no frequency change the function returns at the
+> > beginning. My suggestion was to only do the call when 'odt_enable'
+> > changes, i.e. when a change (up or down) passes the 'odt_dis_freq'
+> > threshold.
+> > 
+> 
+> So, for a reason that I ignore, if we try to save unecessary calls to
+> ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD (odt_enable has not changed since
+> last call), we get stalled in the call to ROCKCHIP_SIP_CONFIG_SET_RAGE
+> that follows. The function arm_smccc_smc never returns and the device
+> hard hang.
 
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Reviewed-by: Chanwoo Choi <cw00.choi@samsung.com>
-Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>
----
+Thanks for giving it a try!
 
-Changes in v3:
-- [PATCH v2 3/5] Add Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>.
-		 Remove comments.
-		 Move pmu dt parsing after dt-parsing of timings to fix
-		  data->odt_dis_freq value.
+Did your code ensure to perform the SMC call for the first frequency
+change? If not the problem could be that the DDR PD timings and ODT
+resistors are not properly configured for the new frequency.
 
-Changes in v2: None
+In case you already did this or it doesn't help I think it's fine to
+just do the call always, we can always revisit this later.
 
-Changes in v1:
-- [RFC 3/10] Add an explanation for platform SIP calls.
-- [RFC 3/10] Change if statement for a switch.
-- [RFC 3/10] Rename ddr_flag to odt_enable to be more clear.
+> Thanks to your remark, I have also fixed an issue with the odt_dis_freq
+> value. Its value is initialized to 0 in the probe function. Thus the
+> odt_enable is always true (target_rate > 0). I moved its initialization
+> after the timings are parsed from the device-tree; its value is now none
+> zero (333000000 in my case).
 
- drivers/devfreq/rk3399_dmc.c        | 71 ++++++++++++++++++++++++++++-
- include/soc/rockchip/rockchip_sip.h |  1 +
- 2 files changed, 71 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
-index e795ad2b3f6b..daf19e121c99 100644
---- a/drivers/devfreq/rk3399_dmc.c
-+++ b/drivers/devfreq/rk3399_dmc.c
-@@ -18,14 +18,17 @@
- #include <linux/devfreq.h>
- #include <linux/devfreq-event.h>
- #include <linux/interrupt.h>
-+#include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/pm_opp.h>
-+#include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
- #include <linux/rwsem.h>
- #include <linux/suspend.h>
- 
-+#include <soc/rockchip/rk3399_grf.h>
- #include <soc/rockchip/rockchip_sip.h>
- 
- struct dram_timing {
-@@ -69,8 +72,11 @@ struct rk3399_dmcfreq {
- 	struct mutex lock;
- 	struct dram_timing timing;
- 	struct regulator *vdd_center;
-+	struct regmap *regmap_pmu;
- 	unsigned long rate, target_rate;
- 	unsigned long volt, target_volt;
-+	unsigned int odt_dis_freq;
-+	int odt_pd_arg0, odt_pd_arg1;
- };
- 
- static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
-@@ -80,6 +86,8 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
- 	struct dev_pm_opp *opp;
- 	unsigned long old_clk_rate = dmcfreq->rate;
- 	unsigned long target_volt, target_rate;
-+	struct arm_smccc_res res;
-+	bool odt_enable = false;
- 	int err;
- 
- 	opp = devfreq_recommended_opp(dev, freq, flags);
-@@ -95,6 +103,19 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
- 
- 	mutex_lock(&dmcfreq->lock);
- 
-+	if (target_rate >= dmcfreq->odt_dis_freq)
-+		odt_enable = true;
-+
-+	/*
-+	 * This makes a SMC call to the TF-A to set the DDR PD (power-down)
-+	 * timings and to enable or disable the ODT (on-die termination)
-+	 * resistors.
-+	 */
-+	arm_smccc_smc(ROCKCHIP_SIP_DRAM_FREQ, dmcfreq->odt_pd_arg0,
-+		      dmcfreq->odt_pd_arg1,
-+		      ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD,
-+		      odt_enable, 0, 0, 0, &res);
-+
- 	/*
- 	 * If frequency scaling from low to high, adjust voltage first.
- 	 * If frequency scaling from high to low, adjust frequency first.
-@@ -294,11 +315,13 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
- {
- 	struct arm_smccc_res res;
- 	struct device *dev = &pdev->dev;
--	struct device_node *np = pdev->dev.of_node;
-+	struct device_node *np = pdev->dev.of_node, *node;
- 	struct rk3399_dmcfreq *data;
- 	int ret, index, size;
- 	uint32_t *timing;
- 	struct dev_pm_opp *opp;
-+	u32 ddr_type;
-+	u32 val;
- 
- 	data = devm_kzalloc(dev, sizeof(struct rk3399_dmcfreq), GFP_KERNEL);
- 	if (!data)
-@@ -354,10 +377,56 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
- 		}
- 	}
- 
-+	node = of_parse_phandle(np, "rockchip,pmu", 0);
-+	if (node) {
-+		data->regmap_pmu = syscon_node_to_regmap(node);
-+		if (IS_ERR(data->regmap_pmu))
-+			return PTR_ERR(data->regmap_pmu);
-+	}
-+
-+	regmap_read(data->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
-+	ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
-+		    RK3399_PMUGRF_DDRTYPE_MASK;
-+
-+	switch (ddr_type) {
-+	case RK3399_PMUGRF_DDRTYPE_DDR3:
-+		data->odt_dis_freq = data->timing.ddr3_odt_dis_freq;
-+		break;
-+	case RK3399_PMUGRF_DDRTYPE_LPDDR3:
-+		data->odt_dis_freq = data->timing.lpddr3_odt_dis_freq;
-+		break;
-+	case RK3399_PMUGRF_DDRTYPE_LPDDR4:
-+		data->odt_dis_freq = data->timing.lpddr4_odt_dis_freq;
-+		break;
-+	default:
-+		return -EINVAL;
-+	};
-+
- 	arm_smccc_smc(ROCKCHIP_SIP_DRAM_FREQ, 0, 0,
- 		      ROCKCHIP_SIP_CONFIG_DRAM_INIT,
- 		      0, 0, 0, 0, &res);
- 
-+	/*
-+	 * In TF-A there is a platform SIP call to set the PD (power-down)
-+	 * timings and to enable or disable the ODT (on-die termination).
-+	 * This call needs three arguments as follows:
-+	 *
-+	 * arg0:
-+	 *     bit[0-7]   : sr_idle
-+	 *     bit[8-15]  : sr_mc_gate_idle
-+	 *     bit[16-31] : standby idle
-+	 * arg1:
-+	 *     bit[0-11]  : pd_idle
-+	 *     bit[16-27] : srpd_lite_idle
-+	 * arg2:
-+	 *     bit[0]     : odt enable
-+	 */
-+	data->odt_pd_arg0 = (data->timing.sr_idle & 0xff) |
-+			    ((data->timing.sr_mc_gate_idle & 0xff) << 8) |
-+			    ((data->timing.standby_idle & 0xffff) << 16);
-+	data->odt_pd_arg1 = (data->timing.pd_idle & 0xfff) |
-+			    ((data->timing.srpd_lite_idle & 0xfff) << 16);
-+
- 	/*
- 	 * We add a devfreq driver to our parent since it has a device tree node
- 	 * with operating points.
-diff --git a/include/soc/rockchip/rockchip_sip.h b/include/soc/rockchip/rockchip_sip.h
-index 7e28092c4d3d..ad9482c56797 100644
---- a/include/soc/rockchip/rockchip_sip.h
-+++ b/include/soc/rockchip/rockchip_sip.h
-@@ -23,5 +23,6 @@
- #define ROCKCHIP_SIP_CONFIG_DRAM_GET_RATE	0x05
- #define ROCKCHIP_SIP_CONFIG_DRAM_CLR_IRQ	0x06
- #define ROCKCHIP_SIP_CONFIG_DRAM_SET_PARAM	0x07
-+#define ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD	0x08
- 
- #endif
--- 
-2.21.0
+Great!
