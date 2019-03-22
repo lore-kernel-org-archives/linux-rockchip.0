@@ -1,70 +1,49 @@
-From: =?utf-8?B?R2HDq2w=?= PORTAY <gael.portay@collabora.com>
-Subject: Re: [PATCH v2 3/5] devfreq: rk3399_dmc: Pass ODT and auto power down
- parameters to TF-A.
-Date: Fri, 22 Mar 2019 08:45:26 -0400
-Message-ID: <20190322124525.ge5thq4a7c6ufcra@archlinux.localdomain>
-References: <20190319181323.22804-1-gael.portay@collabora.com>
- <20190319181323.22804-4-gael.portay@collabora.com>
- <20190320003352.GN112750@google.com>
- <20190320215013.43zgvyn5frnb3yud@archlinux.localdomain>
- <20190320220223.GP112750@google.com>
- <20190321231055.j7z23f3k3rcngq4u@archlinux.localdomain>
- <20190322000107.GU112750@google.com>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] ARM: dts: rockchip: Add dvs-gpios to rk3288-veyron-jerry
+Date: Fri, 22 Mar 2019 09:52:09 -0700
+Message-ID: <20190322165209.196926-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <20190322000107.GU112750@google.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Kaehlcke <mka@chromium.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Derek Basehore <dbasehore@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-rockchip@lists.infradead.org, Randy Li <ayaka@soulik.info>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, Lin Huang <hl@rock-chips.com>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mka@chromium.org, ryandcase@chromium.org, Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Matthias,
+When the rk3288-jerry device tree was first submitted we left out the
+dvs-gpios because I pointed out that the property "dvs-gpios" wasn't
+yet supported upstream [1].  Soon after that the property was added in
+commit bad47ad2eef3 ("regulator: rk808: fixed the overshoot when
+adjust voltage").  ...but we forgot to go back and add the property to
+the jerry device tree file.  Let's do so now.
 
-On Thu, Mar 21, 2019 at 05:01:07PM -0700, Matthias Kaehlcke wrote:
-> > ...
-> > 
-> > So, for a reason that I ignore, if we try to save unecessary calls to
-> > ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD (odt_enable has not changed since
-> > last call), we get stalled in the call to ROCKCHIP_SIP_CONFIG_SET_RAGE
-> > that follows. The function arm_smccc_smc never returns and the device
-> > hard hang.
-> 
-> Thanks for giving it a try!
-> 
-> Did your code ensure to perform the SMC call for the first frequency
-> change? If not the problem could be that the DDR PD timings and ODT
-> resistors are not properly configured for the new frequency.
-> 
+NOTE: without this patch, jerry is likely still stable (thanks to the
+fallback of making many small jumps in the rk808 regulator code) but
+it'll take quite a bit longer to make voltage transitions.
 
-The DRAM_ODT_PD SMC call is supposed to be performed before the
-DRAM_SET_RATE; unless someone else is doing the set_rate.
+[1] https://lore.kernel.org/linux-arm-kernel/CAD=FV=WwFgjzbk9xF5TU_ie6UnHQMyrZ176D4+jJTWWOoaKC2Q@mail.gmail.com/
 
-Does the ODT resistors should be configured for every existing
-frequency?
+Fixes: f3ee390e4ef2 ("ARM: dts: rockchip: add veyron-jerry board")
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
 
-> In case you already did this or it doesn't help I think it's fine to
-> just do the call always, we can always revisit this later.
-> 
+ arch/arm/boot/dts/rk3288-veyron-jerry.dts | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Okay, sounds good.
-
-> > Thanks to your remark, I have also fixed an issue with the odt_dis_freq
-> > value. Its value is initialized to 0 in the probe function. Thus the
-> > odt_enable is always true (target_rate > 0). I moved its initialization
-> > after the timings are parsed from the device-tree; its value is now none
-> > zero (333000000 in my case).
-> 
-> Great!
-
-Gael
+diff --git a/arch/arm/boot/dts/rk3288-veyron-jerry.dts b/arch/arm/boot/dts/rk3288-veyron-jerry.dts
+index 2ba89895c33a..cc3019dc38e1 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-jerry.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-jerry.dts
+@@ -61,7 +61,9 @@
+ 
+ &rk808 {
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&pmic_int_l>;
++	pinctrl-0 = <&pmic_int_l &dvs_1 &dvs_2>;
++	dvs-gpios = <&gpio7 RK_PB4 GPIO_ACTIVE_HIGH>,
++		    <&gpio7 RK_PB7 GPIO_ACTIVE_HIGH>;
+ 
+ 	regulators {
+ 		mic_vcc: LDO_REG2 {
+-- 
+2.21.0.392.gf8f6787159e-goog
