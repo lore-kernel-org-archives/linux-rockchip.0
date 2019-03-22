@@ -1,93 +1,65 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: Re: [PATCH v2 3/5] devfreq: rk3399_dmc: Pass ODT and auto power down
- parameters to TF-A.
-Date: Thu, 21 Mar 2019 17:01:07 -0700
-Message-ID: <20190322000107.GU112750@google.com>
-References: <20190319181323.22804-1-gael.portay@collabora.com>
- <20190319181323.22804-4-gael.portay@collabora.com>
- <20190320003352.GN112750@google.com>
- <20190320215013.43zgvyn5frnb3yud@archlinux.localdomain>
- <20190320220223.GP112750@google.com>
- <20190321231055.j7z23f3k3rcngq4u@archlinux.localdomain>
+From: Christoph Muellner <christoph.muellner@theobroma-systems.com>
+Subject: [PATCH v3 2/4] dt-bindings: phy: Add a new property
+ drive-impedance-ohm for RK's emmc PHY
+Date: Fri, 22 Mar 2019 12:34:51 +0100
+Message-ID: <20190322113456.16324-2-christoph.muellner@theobroma-systems.com>
+References: <20190322113456.16324-1-christoph.muellner@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190321231055.j7z23f3k3rcngq4u@archlinux.localdomain>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?utf-8?B?R2HDq2w=?= PORTAY <gael.portay@collabora.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Derek Basehore <dbasehore@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-rockchip@lists.infradead.org, Randy Li <ayaka@soulik.info>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, Lin Huang <hl@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190322113456.16324-1-christoph.muellner@theobroma-systems.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, shawn.lin@rock-chips.com
+Cc: devicetree@vger.kernel.org, Matthias Brugger <mbrugger@suse.com>, Viresh Kumar <viresh.kumar@linaro.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Vicente Bergas <vicencb@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org, Tony Xie <tony.xie@rock-chips.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-arm-kernel@lists.infradead.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Randy Li <ayaka@soulik.info>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Ezequiel Garcia <ezequiel@collabora.com>, linux-kernel@vger.kernel.org, Christoph Muellner <christoph.muellner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Gaël,
+This patch documents the new proprty drive-impedance-ohm for
+Rockchip's eMMC PHY node.
 
-On Thu, Mar 21, 2019 at 07:10:55PM -0400, Gaël PORTAY wrote:
-> Matthias,
-> 
-> On Wed, Mar 20, 2019 at 03:02:23PM -0700, Matthias Kaehlcke wrote:
-> > Hi Gaël,
-> > 
-> > On Wed, Mar 20, 2019 at 05:50:13PM -0400, Gaël PORTAY wrote:
-> > > Hi Matthias,
-> > > 
-> > > On Tue, Mar 19, 2019 at 05:33:52PM -0700, Matthias Kaehlcke wrote:
-> > > > ...
-> > > > > @@ -95,6 +103,19 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
-> > > > >  
-> > > > >  	mutex_lock(&dmcfreq->lock);
-> > > > >  
-> > > > > +	if (target_rate >= dmcfreq->odt_dis_freq)
-> > > > > +		odt_enable = true;
-> > > > > +
-> > > > > +	/*
-> > > > > +	 * This makes a SMC call to the TF-A to set the DDR PD (power-down)
-> > > > > +	 * timings and to enable or disable the ODT (on-die termination)
-> > > > > +	 * resistors.
-> > > > > +	 */
-> > > > > +	arm_smccc_smc(ROCKCHIP_SIP_DRAM_FREQ, dmcfreq->odt_pd_arg0,
-> > > > > +		      dmcfreq->odt_pd_arg1,
-> > > > > +		      ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD,
-> > > > > +		      odt_enable, 0, 0, 0, &res);
-> > > > 
-> > > > Is it necessary/desirable to make this call for every frequency
-> > > > change? IIUC it should be only needed when odt_enable changes and the
-> > > > driver could track the state. If the DDR frequency doesn't change too
-> > > > often and the overhead of the call is small it shouldn't be really
-> > > > important though.
-> > > >
-> > > 
-> > > I will test your solution first to make sure there is no regression to
-> > > run that call for frequency change only.
-> > 
-> 
-> Oops, I wanted to say when odt_enable changes since last call.
-> 
-> > If there is no frequency change the function returns at the
-> > beginning. My suggestion was to only do the call when 'odt_enable'
-> > changes, i.e. when a change (up or down) passes the 'odt_dis_freq'
-> > threshold.
-> > 
-> 
-> So, for a reason that I ignore, if we try to save unecessary calls to
-> ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD (odt_enable has not changed since
-> last call), we get stalled in the call to ROCKCHIP_SIP_CONFIG_SET_RAGE
-> that follows. The function arm_smccc_smc never returns and the device
-> hard hang.
+Signed-off-by: Christoph Muellner <christoph.muellner@theobroma-systems.com>
+Signed-off-by: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+---
+ Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-Thanks for giving it a try!
-
-Did your code ensure to perform the SMC call for the first frequency
-change? If not the problem could be that the DDR PD timings and ODT
-resistors are not properly configured for the new frequency.
-
-In case you already did this or it doesn't help I think it's fine to
-just do the call always, we can always revisit this later.
-
-> Thanks to your remark, I have also fixed an issue with the odt_dis_freq
-> value. Its value is initialized to 0 in the probe function. Thus the
-> odt_enable is always true (target_rate > 0). I moved its initialization
-> after the timings are parsed from the device-tree; its value is now none
-> zero (333000000 in my case).
-
-Great!
+diff --git a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+index e3ea55763b0a..e728786f21e0 100644
+--- a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
++++ b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+@@ -7,12 +7,15 @@ Required properties:
+  - reg: PHY register address offset and length in "general
+    register files"
+ 
+-Optional clocks using the clock bindings (see ../clock/clock-bindings.txt),
+-specified by name:
++Optional properties:
+  - clock-names: Should contain "emmcclk".  Although this is listed as optional
+ 		(because most boards can get basic functionality without having
+ 		access to it), it is strongly suggested.
++		See ../clock/clock-bindings.txt for details.
+  - clocks: Should have a phandle to the card clock exported by the SDHCI driver.
++ - drive-impedance-ohm: Specifies the drive impedance in Ohm.
++                        Possible values are 33, 40, 50, 66 and 100.
++                        If not set, the default value of 50 will be applied.
+ 
+ Example:
+ 
+@@ -29,6 +32,7 @@ grf: syscon@ff770000 {
+ 		reg = <0xf780 0x20>;
+ 		clocks = <&sdhci>;
+ 		clock-names = "emmcclk";
++		drive-impedance-ohm = <50>;
+ 		#phy-cells = <0>;
+ 	};
+ };
+-- 
+2.11.0
