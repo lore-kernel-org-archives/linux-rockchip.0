@@ -1,47 +1,35 @@
-From: Alyssa Rosenzweig <alyssa-kyPdXwtBHbIqQpLF9uBUvQ@public.gmane.org>
-Subject: [PATCH] ASoC: rockchip: Select DMA_PL330 by RK3399 audio
-Date: Sat, 23 Mar 2019 23:24:33 -0700
-Message-ID: <20190324062433.2369-1-alyssa@rosenzweig.io>
+From: syzbot <syzbot+83f2d54ec6b7e417e13f@syzkaller.appspotmail.com>
+Subject: Re: WARNING in batadv_mcast_mla_tt_retract
+Date: Sun, 24 Mar 2019 00:35:01 -0700
+Message-ID: <0000000000002c5a7f0584d220fa@google.com>
+References: <000000000000fa4f60057e499989@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alyssa Rosenzweig <alyssa-kyPdXwtBHbIqQpLF9uBUvQ@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <000000000000fa4f60057e499989@google.com>
+Sender: netdev-owner@vger.kernel.org
+To: a@unstable.cc, alexander.h.duyck@intel.com, amritha.nambiar@intel.com, avagin@gmail.com, b.a.t.m.a.n@lists.open-mesh.org, davem@davemloft.net, devicetree@vger.kernel.org, dmitry.torokhov@gmail.com, heiko@sntech.de, jeffrey.t.kirsher@intel.com, joe@perches.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, mareklindner@neomailbox.ch, mark.rutland@arm.com, netdev@vger.kernel.org, robh+dt@kernel.org, sw@simonwunderlich.de, syzkaller-bugs@googlegroups.com, tyhicks@canonical.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Without the appropriate DMA controller selected, the RK3399 audio
-drivers compile but fail immediately. Accordingly, selecting the RK3399
-audio without the corresponding PL330 controller is an invalid
-configuration. Prevent this by an appropriate `select` directive in the
-Kconfig.
+syzbot has bisected this bug to:
 
-Signed-off-by: Alyssa Rosenzweig <alyssa-kyPdXwtBHbIqQpLF9uBUvQ@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- sound/soc/rockchip/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+commit 2ed30cfcf866f657349bf9f54a017a957cd98378
+Author: Heiko Stuebner <heiko@sntech.de>
+Date:   Thu Aug 2 11:36:41 2018 +0000
 
-diff --git a/sound/soc/rockchip/Kconfig b/sound/soc/rockchip/Kconfig
-index 957046ac6c8c..fa3cab461a60 100644
---- a/sound/soc/rockchip/Kconfig
-+++ b/sound/soc/rockchip/Kconfig
-@@ -73,6 +73,7 @@ config SND_SOC_RK3399_GRU_SOUND
- 	select SND_SOC_RT5514_SPI
- 	select SND_SOC_HDMI_CODEC
- 	select SND_SOC_DMIC
-+	select PL330_DMA
- 	help
- 	  Say Y or M here if you want to add support multiple codecs for SoC
- 	  audio on Rockchip RK3399 GRU boards.
--- 
-2.20.1
+     arm64: dts: rockchip: enable dwc2-based otg controller on px30-evb
+
+bisection log:  https://syzkaller.appspot.com/x/bisect.txt?x=177e9917200000
+start commit:   4b3c31c8 Merge branch 'i2c/for-current' of git://git.kerne..
+git tree:       upstream
+final crash:    https://syzkaller.appspot.com/x/report.txt?x=14fe9917200000
+console output: https://syzkaller.appspot.com/x/log.txt?x=10fe9917200000
+kernel config:  https://syzkaller.appspot.com/x/.config?x=b05cfdb4ee8ab9b2
+dashboard link: https://syzkaller.appspot.com/bug?extid=83f2d54ec6b7e417e13f
+syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=139c6408c00000
+
+Reported-by: syzbot+83f2d54ec6b7e417e13f@syzkaller.appspotmail.com
+Fixes: 2ed30cfcf866 ("arm64: dts: rockchip: enable dwc2-based otg  
+controller on px30-evb")
+
+For information about bisection process see: https://goo.gl/tpsmEJ#bisection
