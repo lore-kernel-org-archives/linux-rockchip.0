@@ -1,35 +1,28 @@
-From: syzbot <syzbot+83f2d54ec6b7e417e13f@syzkaller.appspotmail.com>
-Subject: Re: WARNING in batadv_mcast_mla_tt_retract
-Date: Sun, 24 Mar 2019 00:35:01 -0700
-Message-ID: <0000000000002c5a7f0584d220fa@google.com>
-References: <000000000000fa4f60057e499989@google.com>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH 1/2] dt-bindings: ARM: dts: rockchip: Add bindings for rk3288-veyron-mighty
+Date: Sun, 24 Mar 2019 16:18:45 -0500
+Message-ID: <CAL_JsqK=kt3k=eXn6uuHoRboWMqLFbnqAvAveVmOjOC0+MK5gw@mail.gmail.com>
+References: <20190322194310.61365-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <000000000000fa4f60057e499989@google.com>
-Sender: netdev-owner@vger.kernel.org
-To: a@unstable.cc, alexander.h.duyck@intel.com, amritha.nambiar@intel.com, avagin@gmail.com, b.a.t.m.a.n@lists.open-mesh.org, davem@davemloft.net, devicetree@vger.kernel.org, dmitry.torokhov@gmail.com, heiko@sntech.de, jeffrey.t.kirsher@intel.com, joe@perches.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, mareklindner@neomailbox.ch, mark.rutland@arm.com, netdev@vger.kernel.org, robh+dt@kernel.org, sw@simonwunderlich.de, syzkaller-bugs@googlegroups.com, tyhicks@canonical.com
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190322194310.61365-1-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, devicetree@vger.kernel.org, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Alexis Ballier <aballier@gentoo.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Robin Murphy <robin.murphy@arm.com>, Jagan Teki <jagan@amarulasolutions.com>, Mark Rutland <mark.rutland@arm.com>, Akash Gajjar <Akash_Gajjar@mentor.com>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-syzbot has bisected this bug to:
+On Fri, Mar 22, 2019 at 2:43 PM Douglas Anderson <dianders@chromium.org> wrote:
+>
+> Mighty is basically the same Chromebook as Jaq but it has a full-sized
+> SD slot and some different (slightly more rugged) plastics around it.
+> Like Jaq, Mighty may show up with various different brandings but all
+> of them have the same board inside.
+>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+>
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 13 ++++++++++++-
+>  1 file changed, 12 insertions(+), 1 deletion(-)
 
-commit 2ed30cfcf866f657349bf9f54a017a957cd98378
-Author: Heiko Stuebner <heiko@sntech.de>
-Date:   Thu Aug 2 11:36:41 2018 +0000
-
-     arm64: dts: rockchip: enable dwc2-based otg controller on px30-evb
-
-bisection log:  https://syzkaller.appspot.com/x/bisect.txt?x=177e9917200000
-start commit:   4b3c31c8 Merge branch 'i2c/for-current' of git://git.kerne..
-git tree:       upstream
-final crash:    https://syzkaller.appspot.com/x/report.txt?x=14fe9917200000
-console output: https://syzkaller.appspot.com/x/log.txt?x=10fe9917200000
-kernel config:  https://syzkaller.appspot.com/x/.config?x=b05cfdb4ee8ab9b2
-dashboard link: https://syzkaller.appspot.com/bug?extid=83f2d54ec6b7e417e13f
-syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=139c6408c00000
-
-Reported-by: syzbot+83f2d54ec6b7e417e13f@syzkaller.appspotmail.com
-Fixes: 2ed30cfcf866 ("arm64: dts: rockchip: enable dwc2-based otg  
-controller on px30-evb")
-
-For information about bisection process see: https://goo.gl/tpsmEJ#bisection
+Reviewed-by: Rob Herring <robh@kernel.org>
