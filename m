@@ -1,57 +1,60 @@
-From: Emil Velikov <emil.velikov-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH v2 02/11] media: Introduce helpers to fill pixel format
- structs
-Date: Mon, 25 Mar 2019 14:32:08 +0000
-Message-ID: <20190325143207.GA24966@arch-x1c3>
-References: <20190304192529.14200-1-ezequiel@collabora.com>
- <20190304192529.14200-3-ezequiel@collabora.com>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v2 1/2] dt-bindings: ARM: dts: rockchip: Add bindings for rk3288-veyron-mighty
+Date: Mon, 25 Mar 2019 09:20:04 -0700
+Message-ID: <20190325162005.99391-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20190304192529.14200-3-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mka@chromium.org, ryandcase@chromium.org, Douglas Anderson <dianders@chromium.org>, Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org, Alexis Ballier <aballier@gentoo.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Akash Gajjar <Akash_Gajjar@mentor.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Ezequiel,
+Mighty is basically the same Chromebook as Jaq but it has a full-sized
+SD slot and some different (slightly more rugged) plastics around it.
+Like Jaq, Mighty may show up with various different brandings but all
+of them have the same board inside.
 
-On 2019/03/04, Ezequiel Garcia wrote:
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
 
-> +
-> +/* Pixel format and FourCC helpers */
-> +
-> +/**
-> + * struct v4l2_format_info - information about a V4L2 format
-> + * @format: 4CC format identifier (V4L2_PIX_FMT_*)
-> + * @mem_planes: Number of memory planes, which includes the alpha plane (1 to 4).
-> + * @comp_planes: Number of component planes, which includes the alpha plane (1 to 4).
-> + * @bpp: Array of per-plane bytes per pixel
-> + * @hdiv: Horizontal chroma subsampling factor
-> + * @vdiv: Vertical chroma subsampling factor
-> + */
-> +struct v4l2_format_info {
-> +	u32 format;
-> +	u8 mem_planes;
-> +	u8 comp_planes;
-> +	u8 bpp[4];
-> +	u8 hdiv;
-> +	u8 vdiv;
-> +	u8 block_w[4];
-> +	u8 block_h[4];
+Changes in v2:
+- Add Rob Rerring's Reviewed-by tag.
 
-Please don't forget to document block_[wh]. Plus you can draw some extra
-inspiration from drm_format_info in include/drm/drm_fourcc.h ;-)
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
-HTH
-Emil
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 864ee1fddcb0..5c6bbf10abc9 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -147,7 +147,7 @@ properties:
+           - const: google,gru
+           - const: rockchip,rk3399
+ 
+-      - description: Google Jaq (Haier Chromebook 11 and more)
++      - description: Google Jaq (Haier Chromebook 11 and more w/ uSD)
+         items:
+           - const: google,veyron-jaq-rev5
+           - const: google,veyron-jaq-rev4
+@@ -206,6 +206,17 @@ properties:
+           - const: google,veyron
+           - const: rockchip,rk3288
+ 
++      - description: Google Mighty (Haier Chromebook 11 and more w/ SD)
++        items:
++          - const: google,veyron-mighty-rev5
++          - const: google,veyron-mighty-rev4
++          - const: google,veyron-mighty-rev3
++          - const: google,veyron-mighty-rev2
++          - const: google,veyron-mighty-rev1
++          - const: google,veyron-mighty
++          - const: google,veyron
++          - const: rockchip,rk3288
++
+       - description: Google Minnie (Asus Chromebook Flip C100P)
+         items:
+           - const: google,veyron-minnie-rev4
+-- 
+2.21.0.392.gf8f6787159e-goog
