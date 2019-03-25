@@ -1,43 +1,69 @@
-From: MyungJoo Ham <myungjoo.ham@samsung.com>
-Subject: RE: [PATCH v3 2/5] dt-bindings: devfreq: rk3399_dmc: Add
- rockchip,pmu phandle.
-Date: Mon, 25 Mar 2019 13:55:42 +0900
-Message-ID: <20190325045542epcms1p585d5cec9453adef9b4531ff2a2bf5be6@epcms1p5>
-References: <20190321231440.19031-3-gael.portay@collabora.com>
-        <20190321231440.19031-1-gael.portay@collabora.com>
-        <CGME20190321231447epcas2p4de5947e1eced053fee285ccd75d1d669@epcms1p5>
-Reply-To: myungjoo.ham@samsung.com
+From: Zhang Zhijie <zhangzj@rock-chips.com>
+Subject: Re: [Bug] Rockchip crypto driver sometimes produces wrong ciphertext
+Date: Mon, 25 Mar 2019 14:31:32 +0800
+Message-ID: <f59e52ea-d0b8-0eff-e290-f35f2126c8e6@rock-chips.com>
+References: <875-5c8d7980-7-55088a00@27384378>
+ <20c7a1d9-bc68-c5e5-d666-6db2d10b1f87@collabora.com>
+ <cb075264-614e-5741-b6b9-4aa014e5277d@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190321231440.19031-3-gael.portay@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lin Huang <hl@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Derek Basehore <dbasehore@chromium.org>, Randy Li <ayaka@soulik.info>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infra>
-Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh@kernel.org>, =?UTF-8?B?R2HDq2wgUE9SVEFZ?= <gael.portay@collabora.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <cb075264-614e-5741-b6b9-4aa014e5277d@collabora.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Gael PORTAY <gael.portay@collabora.com>, Ezequiel Garcia <ezequiel.garcia@collabora.com>, Eric Biggers <ebiggers@kernel.org>
+Cc: Tao Huang <huangtao@rock-chips.com>, Zain Wang <wzz@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, linux-rockchip@lists.infradead.org, "open list:HARDWARE RANDOM NUMBER GENERATOR CORE" <linux-crypto@vger.kernel.org>, Olof Johansson <olof@lixom.net>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
->From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->
->The Rockchip DMC (Dynamic Memory Interface) needs to access to the PMU
->general register files to know the DRAM type, so add a phandle to the
->syscon that manages these registers.
->
->Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->Reviewed-by: Chanwoo Choi <cw00.choi@samsung.com>
->Acked-by: Rob Herring <robh@kernel.org>
->Signed-off-by: Gael PORTAY <gael.portay@collabora.com>
->---
->
->Changes in v3:
->- [PATCH v2 2/5] Add Signed-off-by: Gael PORTAY <gael.portay@collabora.com>.
->
->Changes in v2: None
->
->Changes in v1:
->- [RFC 2/10] Add reviewed and acked tags from Chanwoo Choi and Rob Herring
->
-> Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt | 2 ++
-> 1 file changed, 2 insertions(+)
-
-Acked-by: MyungJoo Ham <myungjoo.ham@samsung.com>
+SGkgRXJpYyBhbmQgR2FlbCwKCk9uIDIwMTkvMy8yMiDkuIrljYgxOjA0LCBHYWVsIFBPUlRBWSB3
+cm90ZToKPiBIZWxsbywKPgo+IE9uIDMvMTgvMTkgMTE6MDMgQU0sIEdhZWwgUE9SVEFZIHdyb3Rl
+Ogo+PiBIZWxsbywKPj4KPj4gT24gMy8xNi8xOSA2OjMxIFBNLCBFemVxdWllbCBHYXJjaWEgd3Jv
+dGU6Cj4+PiBBZGRpbmcgbXkgY29sbGVhZ3VlIEdhZWwsIHdobyBoYXMgYmVlbiB3b3JraW5nIG9u
+IGZpeGluZyB0aGlzIGRyaXZlci4KPj4KPj4gSSBoYXZlIGEgY291cGxlIG9mIHBlbmRpbmcgY29t
+bWl0cyB0aGF0IG1heSBmaXggdGhhdCBpc3N1ZS4KPj4KPj4gSSB3aWxsIGdpdmUgaXQgYSB0cnks
+IGFuZCBnZXQgYmFjayB0byB5b3UgdGhlbi4KPj4KPgo+IFRoZSBwYXRjaGVzIEkgaGFkIGZpeCB0
+aGUgc2FtZSBpc3N1ZSB0aGFuIHJlY2VudCBjb21taXQgdG8gWzFdIGFuZCBbMl0gCj4gaW4gYSBk
+aWZmZXJlbnQgd2F5Lgo+Cj4gQnV0IHRoZXkgZG8gbm90IGZpeCB0aGUgaXNzdWUgYmVsb3cuCgpJ
+IHdpbGwgdHJ5IHRvIGZpeCB0aGUgaXNzdWUgYmVsb3cuCgo+Cj4+PiAuLi4KPj4+Pgo+Pj4+IFRo
+YW5rcyBmb3IgdGhlIGZpeGVzLCBidXQgSSd2ZSBpbXByb3ZlZCB0aGUgc2VsZi10ZXN0cyBtb3Jl
+LCBhbmQgCj4+Pj4gdGhlcmUgaXMKPj4+PiBhbm90aGVyIGJ1Zy7CoCBTZWUgdGhlIEtlcm5lbENJ
+IGpvYiBoZXJlOgo+Pj4+Cj4+Pj4gwqDCoMKgwqBodHRwczovL2tlcm5lbGNpLm9yZy9ib290L2Fs
+bC9qb2IvYXJkYi9icmFuY2gvZm9yLWtlcm5lbGNpL2tlcm5lbC92NS4wLTExMDcxLWc3ZDU5N2Nj
+M2YwZWYvIAo+Pj4+Cj4+Pj4KPj4+PiBUaGUgc2VsZi10ZXN0cyBhcmUgZmFpbGluZyBvbiB0aGUg
+cmszMjg4LXJvY2syLXNxdWFyZSBwbGF0Zm9ybToKPj4+Pgo+Pj4+IMKgwqDCoMKgYWxnOiBza2Np
+cGhlcjogY2JjLWFlcy1yayBlbmNyeXB0aW9uIHRlc3QgZmFpbGVkICh3cm9uZyBvdXRwdXQgCj4+
+Pj4gSVYpIG9uIHRlc3QgdmVjdG9yIDAsIGNmZz1cImluLXBsYWNlXCIKPj4+PiDCoMKgwqDCoGFs
+Zzogc2tjaXBoZXI6IGNiYy1kZXMtcmsgZW5jcnlwdGlvbiB0ZXN0IGZhaWxlZCAod3Jvbmcgb3V0
+cHV0IAo+Pj4+IElWKSBvbiB0ZXN0IHZlY3RvciAwLCBjZmc9XCJpbi1wbGFjZVwiCj4+Pj4gwqDC
+oMKgwqBhbGc6IHNrY2lwaGVyOiBjYmMtZGVzMy1lZGUtcmsgZW5jcnlwdGlvbiB0ZXN0IGZhaWxl
+ZCAod3JvbmcgCj4+Pj4gb3V0cHV0IElWKSBvbiB0ZXN0IHZlY3RvciAwLCBjZmc9XCJpbi1wbGFj
+ZVwiCj4+Pj4KPj4+PiBUaGUgaXNzdWUgaXMgdGhhdCB0aGUgc2VsZi10ZXN0cyBub3cgdmVyaWZ5
+IHRoYXQgQ0JDIAo+Pj4+IGltcGxlbWVudGF0aW9ucyB1cGRhdGUgdGhlCj4+Pj4gSVYgYnVmZmVy
+IHRvIGNvbnRhaW4gdGhlIG5leHQgSVYsIGFrYSB0aGUgbGFzdCBjaXBoZXJ0ZXh0IGJsb2NrLsKg
+IAo+Pj4+IEJ1dCB0aGUKPj4+PiBSb2NrY2hpcCBjcnlwdG8gZHJpdmVyIGRvZXNuJ3QgZG8gdGhh
+dCwgc28gaXQgbmVlZHMgdG8gYmUgZml4ZWQuCj4+Pj4KPj4+PiBUaGlzIGhhcyBhbHdheXMgYmVl
+biBhIHJlcXVpcmVtZW50IGZvciBDQkMgaW1wbGVtZW50YXRpb25zIHNvIHRoYXQgCj4+Pj4gdXNl
+cnMgY2FuCj4+Pj4gY2hhaW4gQ0JDIHJlcXVlc3RzLsKgIFVuZm9ydHVuYXRlbHkgaXQgd2FzIGp1
+c3QgbmV2ZXIgdGVzdGVkIGZvci4uLgo+Pj4+Cj4+Pj4gVGhpcyBzaG91bGQgYmUgZWFzaWx5IHJl
+cHJvZHVjaWJsZSB1c2luZyB0aGUgbWFpbmxpbmUga2VybmVsLgo+Pj4+Cj4+Pj4gLSBFcmljCj4+
+Pgo+Pj4KPj4+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+Cj4+PiBsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdAo+Pj4gbGludXgtYXJtLWtlcm5lbEBs
+aXN0cy5pbmZyYWRlYWQub3JnCj4+PiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwKPj4+Cj4+Cj4+IEdhZWwKPgo+IFsxXTogCj4gaHR0
+cHM6Ly9naXRodWIuY29tL3RvcnZhbGRzL2xpbnV4L2NvbW1pdC9jMWMyMTRhZGNiNTZkMzY0MzM0
+ODBjOGZlZGY3NzI0OThlN2U1MzljI2RpZmYtNDQwMzEzZjlkMjVmNjVjMTRkNGJmZmIxMzYwYTNj
+NjAKPiBbMl06IAo+IGh0dHBzOi8vZ2l0aHViLmNvbS90b3J2YWxkcy9saW51eC9jb21taXQvNDM1
+OTY2OWEwODc2MzMxMzIyMDNjNTJkNjdkZDhjMzFlMDllN2IyZSNkaWZmLTQ0MDMxM2Y5ZDI1ZjY1
+YzE0ZDRiZmZiMTM2MGEzYzYwCj4KPiBHYWVsCj4KPgoKCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdAps
+aW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
