@@ -1,103 +1,35 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] ARM: dts: rockchip: Add vdd_logic to rk3288-veyron
-Date: Mon, 25 Mar 2019 13:30:16 +0100
-Message-ID: <4531156.B27Co0TEWW@phil>
-References: <20190321201944.34684-1-dianders@chromium.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: add rk3399 UART DMAs
+Date: Mon, 25 Mar 2019 13:34:39 +0100
+Message-ID: <8309531.dRdlsDmmhi@phil>
+References: <20190321162244.10080-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190321201944.34684-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: mka@chromium.org, ryandcase@chromium.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190321162244.10080-1-katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 21. März 2019, 21:19:44 CET schrieb Douglas Anderson:
-> The vdd_logic rail controls the voltage supplied to misc logic on
-> rk3288, including the voltage supplied to the memory controller.  The
-> vcc logic is implemented by a PWM regulator.
-> 
-> Right now there are no consumers of vdd_logic on veyron but if anyone
-> ever wants to try to add DDR Freq they'd need it.
-> 
-> Note that in the downstream Chrome OS kernel the PWM regulator has
-> a voltage table with these points:
->   1350000 0%
->   1300000 10%
->   1250000 20%
->   1200000 31%
->   1150000 41%
->   1125000 46%
->   1100000 52%
->   1050000 62%
->   1000000 72%
->    950000 83%
-> 
-> The DDR Freq driver in the downstream kernel only uses some of those
-> points, namely:
->   DDR3:  1200000, 1150000, 1100000, 1050000
->   LPDDR:          1150000, 1100000, 1050000
-> 
-> When adapting the downstream kernel to upstream I have opted to switch
-> to using the "continuous" mode of the PWM regulator driver.  This was
-> the only way I could get the upstream driver to achieve _exactly_ the
-> same voltages as the downstream driver could.  Specifically note that
-> the old driver in downstream Chrome OS 3.14 _didn't_ have the
-> DIV_ROUND_CLOSEST_ULL() in the Rockchip PLL driver.  That means if I
-> use the same (downstream) table I might end up with a duty cycle
-> that's 1 larger than was used downstream, leading to a slightly
-> different voltage.  Due to the way the rounding worked I couldn't even
-> just adjust the "percent" by 1 for a given voltage level--certain duty
-> cycles just aren't achievable with the upstream math for voltage
-> tables.
-> 
-> Using continuous mode you can achieve the exact same duty cycle by
-> simply adjusting the voltage you use by a tad bit.  The voltages that
-> are equivalent to the ones used in the downstream kernel's table are:
->   1350000, 1304472, 1255691, 1200407, 1154878,
->   1128862, 1099593, 1050813, 1005285, 950000
-> 
-> Note that the top/bottom voltage is exactly the same just due to the
-> way that continuous mode is calculated and the fact that I used those
-> as anchors.  I didn't make any attempt to do the resistor math (as was
-> done on rk3399-gru).
-> 
-> If anyone ever gets DDRFreq working on veyron upstream they should
-> thus adjust the voltage specified in the DDRFreq operating points
-> slightly (as per the above) to obtain the existing/tested values.  AKA
-> you'd use:
->   DDR3:  1200407, 1154878, 1099593, 1050813
->   LPDDR:          1154878, 1099593, 1050813
-> 
-> A few other notes:
-> - The "period" here (1994) is different than the "period" downstream
->   (2000) for similar reasons: there's a DIV_ROUND_CLOSEST_ULL() that
->   wasn't downstream.  With 1994 upstream comes up with the same value
->   (0x94) to program into the hardware that downstream put there.  As
->   far as I can tell 0x94 actually means 1993.27.
-> - The duty cycle unit of 0x94 was picked by just matching the period
->   which nicely allows us to insert 0x7b as that value to program into
->   the hardware for 950mV.  The 0x7b was found by observing what the
->   downstream kernel calculated (not that the system can actually run
->   with vdd_log at 950 mV).
-> - The downstream kernel can also be seen to program a different value
->   into the CTRL field.  Upstream achieves 0x0b and downstream 0x1b.
->   This is because the upstream commit bc834d7b07b4 ("pwm: rockchip:
->   Move the configuration of polarity") fixed a bug by adding "ctrl &=
->   ~PWM_POLARITY_MASK".  Downstream accidentally left bit 4 set.
->   Luckily this bit doesn't matter--it's only used when the PWM goes
->   inactive (AKA if it's in oneshot mode or is disabled) and we don't
->   do that for the PWM regulator.
-> 
-> I measured the voltage of vdd_log while adjusting it and found that
-> with the upstream kernel voltage difference between requested and
-> actual was 9.2 mV at 950 mV and 13.4 mV at 1350 mV with in-between
-> voltages consistently showing ~1% error.  This error is likely
-> expected as voltage can be seen to sag a bit when more load is put on
-> the rail.
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Am Donnerstag, 21. M=E4rz 2019, 17:22:44 CET schrieb Katsuhiro Suzuki:
+> Add UART dma channels as specified by the rk3399 TRM.
+> =
+
+> Refer:
+> RK3399 TRM V1.4: Chapter 12 DMA Controller
+> =
+
+> Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
 
 applied for 5.2
 
