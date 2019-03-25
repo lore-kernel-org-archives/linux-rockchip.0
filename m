@@ -1,121 +1,97 @@
-From: Neil Armstrong <narmstrong@baylibre.com>
+From: Andrzej Hajda <a.hajda@samsung.com>
 Subject: Re: [PATCH] drm/bridge: dw-hdmi: disable SCDC configuration for
  invalid setups
-Date: Mon, 25 Mar 2019 11:22:34 +0100
-Message-ID: <c4032279-3cc5-aeb8-a255-2715bc130e11@baylibre.com>
-References: <20190315095414.28520-1-narmstrong@baylibre.com>
+Date: Mon, 25 Mar 2019 12:37:01 +0100
+Message-ID: <6faa365e-2a4d-3666-b00f-79f36258106c@samsung.com>
+References: <CGME20190315095421epcas4p3321555f6918dc4e420acdbf23121338f@epcas4p3.samsung.com>
+ <20190315095414.28520-1-narmstrong@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20190315095414.28520-1-narmstrong@baylibre.com>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: a.hajda@samsung.com, Laurent.pinchart@ideasonboard.com, heiko@sntech.de, robh@kernel.org
-Cc: linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, jernej.skrabec@siol.net
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Neil Armstrong <narmstrong@baylibre.com>, Laurent.pinchart@ideasonboard.com, heiko@sntech.de, robh@kernel.org
+Cc: linux-amlogic@lists.infradead.org, jernej.skrabec@siol.net, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Andrzej, Laurent,
-
-Gentle ping,
-Did you have time to review this fix ?
-
-Thanks !
-Neil
-
-On 15/03/2019 10:54, Neil Armstrong wrote:
-> This patch is an attempt to limit HDMI 2.0 SCDC setup when :
-> - the SoC embeds an HDMI 1.4 only controller
-> - the EDID supports SCDC but not scrambling
-> - the EDID supports SCDC scrambling but not for low TMDS bit rates,
->   while only supporting low TMDS bit rates
-> 
-> This to avoid communicating with the SCDC DDC slave uncessary, and
-> setting the DW-HDMI TMDS Scrambler setup when not supported by the
-> underlying hardware.
-> 
-> Reported-by: Rob Herring <robh@kernel.org>
-> Fixes: 264fce6cc2c1 ("drm/bridge: dw-hdmi: Add SCDC and TMDS Scrambling support")
-> Signed-off-by: Neil Armstrong <narmstrong@baylibre.com>
-> ---
-> 
-> Rob,
-> 
-> this patch should also solve your issue with your 11' display, could you
-> test it ?
-> If this works, I will focus on the underlying issue where the RK3399 SoC
-> freezes in your setup.
-> 
-> Thanks,
-> Neil
-> 
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 34 ++++++++++++++++++++---
->  1 file changed, 30 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> index a63e5f0dae56..db761329a1e3 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> @@ -1037,6 +1037,31 @@ void dw_hdmi_phy_i2c_write(struct dw_hdmi *hdmi, unsigned short data,
->  }
->  EXPORT_SYMBOL_GPL(dw_hdmi_phy_i2c_write);
->  
-> +/* Filter out invalid setups to avoid configuring SCDC and scrambling */
-> +static bool dw_hdmi_support_scdc(struct dw_hdmi *hdmi)
-> +{
-> +	struct drm_display_info *display = &hdmi->connector.display_info;
-> +
-> +	/* Completely disable SCDC support for older controllers */
-> +	if (hdmi->version < 0x200a)
-> +		return false;
-> +
-> +	/* Disable if SCDC is not supported, or if an HF-VSDB block is absent */
-> +	if (!display->hdmi.scdc.supported ||
-> +	    !display->hdmi.scdc.scrambling.supported)
-> +		return false;
-> +
-> +	/*
-> +	 * Disable if display only support low TMDS rates and scrambling
-> +	 * for low rates is not supported either
-> +	 */
-> +	if (!display->hdmi.scdc.scrambling.low_rates &&
-> +	    display->max_tmds_clock <= 340000)
-> +		return false;
-> +
-> +	return true;
-> +}
-> +
->  /*
->   * HDMI2.0 Specifies the following procedure for High TMDS Bit Rates:
->   * - The Source shall suspend transmission of the TMDS clock and data
-> @@ -1055,7 +1080,7 @@ void dw_hdmi_set_high_tmds_clock_ratio(struct dw_hdmi *hdmi)
->  	unsigned long mtmdsclock = hdmi->hdmi_data.video_mode.mtmdsclock;
->  
->  	/* Control for TMDS Bit Period/TMDS Clock-Period Ratio */
-> -	if (hdmi->connector.display_info.hdmi.scdc.supported) {
-> +	if (dw_hdmi_support_scdc(hdmi)) {
->  		if (mtmdsclock > HDMI14_MAX_TMDSCLK)
->  			drm_scdc_set_high_tmds_clock_ratio(hdmi->ddc, 1);
->  		else
-> @@ -1579,8 +1604,9 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
->  
->  	/* Set up HDMI_FC_INVIDCONF */
->  	inv_val = (hdmi->hdmi_data.hdcp_enable ||
-> -		   vmode->mtmdsclock > HDMI14_MAX_TMDSCLK ||
-> -		   hdmi_info->scdc.scrambling.low_rates ?
-> +		   (dw_hdmi_support_scdc(hdmi) &&
-> +		    (vmode->mtmdsclock > HDMI14_MAX_TMDSCLK ||
-> +		     hdmi_info->scdc.scrambling.low_rates)) ?
->  		HDMI_FC_INVIDCONF_HDCP_KEEPOUT_ACTIVE :
->  		HDMI_FC_INVIDCONF_HDCP_KEEPOUT_INACTIVE);
->  
-> @@ -1646,7 +1672,7 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
->  	}
->  
->  	/* Scrambling Control */
-> -	if (hdmi_info->scdc.supported) {
-> +	if (dw_hdmi_support_scdc(hdmi)) {
->  		if (vmode->mtmdsclock > HDMI14_MAX_TMDSCLK ||
->  		    hdmi_info->scdc.scrambling.low_rates) {
->  			/*
-> 
+T24gMTUuMDMuMjAxOSAxMDo1NCwgTmVpbCBBcm1zdHJvbmcgd3JvdGU6Cj4gVGhpcyBwYXRjaCBp
+cyBhbiBhdHRlbXB0IHRvIGxpbWl0IEhETUkgMi4wIFNDREMgc2V0dXAgd2hlbiA6Cj4gLSB0aGUg
+U29DIGVtYmVkcyBhbiBIRE1JIDEuNCBvbmx5IGNvbnRyb2xsZXIKPiAtIHRoZSBFRElEIHN1cHBv
+cnRzIFNDREMgYnV0IG5vdCBzY3JhbWJsaW5nCj4gLSB0aGUgRURJRCBzdXBwb3J0cyBTQ0RDIHNj
+cmFtYmxpbmcgYnV0IG5vdCBmb3IgbG93IFRNRFMgYml0IHJhdGVzLAo+ICAgd2hpbGUgb25seSBz
+dXBwb3J0aW5nIGxvdyBUTURTIGJpdCByYXRlcwo+Cj4gVGhpcyB0byBhdm9pZCBjb21tdW5pY2F0
+aW5nIHdpdGggdGhlIFNDREMgRERDIHNsYXZlIHVuY2Vzc2FyeSwgYW5kCj4gc2V0dGluZyB0aGUg
+RFctSERNSSBUTURTIFNjcmFtYmxlciBzZXR1cCB3aGVuIG5vdCBzdXBwb3J0ZWQgYnkgdGhlCj4g
+dW5kZXJseWluZyBoYXJkd2FyZS4KPgo+IFJlcG9ydGVkLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBr
+ZXJuZWwub3JnPgo+IEZpeGVzOiAyNjRmY2U2Y2MyYzEgKCJkcm0vYnJpZGdlOiBkdy1oZG1pOiBB
+ZGQgU0NEQyBhbmQgVE1EUyBTY3JhbWJsaW5nIHN1cHBvcnQiKQo+IFNpZ25lZC1vZmYtYnk6IE5l
+aWwgQXJtc3Ryb25nIDxuYXJtc3Ryb25nQGJheWxpYnJlLmNvbT4KPiAtLS0KPgo+IFJvYiwKPgo+
+IHRoaXMgcGF0Y2ggc2hvdWxkIGFsc28gc29sdmUgeW91ciBpc3N1ZSB3aXRoIHlvdXIgMTEnIGRp
+c3BsYXksIGNvdWxkIHlvdQo+IHRlc3QgaXQgPwo+IElmIHRoaXMgd29ya3MsIEkgd2lsbCBmb2N1
+cyBvbiB0aGUgdW5kZXJseWluZyBpc3N1ZSB3aGVyZSB0aGUgUkszMzk5IFNvQwo+IGZyZWV6ZXMg
+aW4geW91ciBzZXR1cC4KPgo+IFRoYW5rcywKPiBOZWlsCj4KPiAgZHJpdmVycy9ncHUvZHJtL2Jy
+aWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMgfCAzNCArKysrKysrKysrKysrKysrKysrKy0tLQo+ICAx
+IGZpbGUgY2hhbmdlZCwgMzAgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKPgo+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyBiL2RyaXZl
+cnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jCj4gaW5kZXggYTYzZTVmMGRhZTU2
+Li5kYjc2MTMyOWExZTMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5v
+cHN5cy9kdy1oZG1pLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3
+LWhkbWkuYwo+IEBAIC0xMDM3LDYgKzEwMzcsMzEgQEAgdm9pZCBkd19oZG1pX3BoeV9pMmNfd3Jp
+dGUoc3RydWN0IGR3X2hkbWkgKmhkbWksIHVuc2lnbmVkIHNob3J0IGRhdGEsCj4gIH0KPiAgRVhQ
+T1JUX1NZTUJPTF9HUEwoZHdfaGRtaV9waHlfaTJjX3dyaXRlKTsKPiAgCj4gKy8qIEZpbHRlciBv
+dXQgaW52YWxpZCBzZXR1cHMgdG8gYXZvaWQgY29uZmlndXJpbmcgU0NEQyBhbmQgc2NyYW1ibGlu
+ZyAqLwo+ICtzdGF0aWMgYm9vbCBkd19oZG1pX3N1cHBvcnRfc2NkYyhzdHJ1Y3QgZHdfaGRtaSAq
+aGRtaSkKPiArewo+ICsJc3RydWN0IGRybV9kaXNwbGF5X2luZm8gKmRpc3BsYXkgPSAmaGRtaS0+
+Y29ubmVjdG9yLmRpc3BsYXlfaW5mbzsKPiArCj4gKwkvKiBDb21wbGV0ZWx5IGRpc2FibGUgU0NE
+QyBzdXBwb3J0IGZvciBvbGRlciBjb250cm9sbGVycyAqLwo+ICsJaWYgKGhkbWktPnZlcnNpb24g
+PCAweDIwMGEpCj4gKwkJcmV0dXJuIGZhbHNlOwo+ICsKPiArCS8qIERpc2FibGUgaWYgU0NEQyBp
+cyBub3Qgc3VwcG9ydGVkLCBvciBpZiBhbiBIRi1WU0RCIGJsb2NrIGlzIGFic2VudCAqLwo+ICsJ
+aWYgKCFkaXNwbGF5LT5oZG1pLnNjZGMuc3VwcG9ydGVkIHx8Cj4gKwkgICAgIWRpc3BsYXktPmhk
+bWkuc2NkYy5zY3JhbWJsaW5nLnN1cHBvcnRlZCkKPiArCQlyZXR1cm4gZmFsc2U7Cj4gKwo+ICsJ
+LyoKPiArCSAqIERpc2FibGUgaWYgZGlzcGxheSBvbmx5IHN1cHBvcnQgbG93IFRNRFMgcmF0ZXMg
+YW5kIHNjcmFtYmxpbmcKPiArCSAqIGZvciBsb3cgcmF0ZXMgaXMgbm90IHN1cHBvcnRlZCBlaXRo
+ZXIKPiArCSAqLwo+ICsJaWYgKCFkaXNwbGF5LT5oZG1pLnNjZGMuc2NyYW1ibGluZy5sb3dfcmF0
+ZXMgJiYKPiArCSAgICBkaXNwbGF5LT5tYXhfdG1kc19jbG9jayA8PSAzNDAwMDApCj4gKwkJcmV0
+dXJuIGZhbHNlOwo+ICsKPiArCXJldHVybiB0cnVlOwo+ICt9Cj4gKwo+ICAvKgo+ICAgKiBIRE1J
+Mi4wIFNwZWNpZmllcyB0aGUgZm9sbG93aW5nIHByb2NlZHVyZSBmb3IgSGlnaCBUTURTIEJpdCBS
+YXRlczoKPiAgICogLSBUaGUgU291cmNlIHNoYWxsIHN1c3BlbmQgdHJhbnNtaXNzaW9uIG9mIHRo
+ZSBUTURTIGNsb2NrIGFuZCBkYXRhCj4gQEAgLTEwNTUsNyArMTA4MCw3IEBAIHZvaWQgZHdfaGRt
+aV9zZXRfaGlnaF90bWRzX2Nsb2NrX3JhdGlvKHN0cnVjdCBkd19oZG1pICpoZG1pKQo+ICAJdW5z
+aWduZWQgbG9uZyBtdG1kc2Nsb2NrID0gaGRtaS0+aGRtaV9kYXRhLnZpZGVvX21vZGUubXRtZHNj
+bG9jazsKPiAgCj4gIAkvKiBDb250cm9sIGZvciBUTURTIEJpdCBQZXJpb2QvVE1EUyBDbG9jay1Q
+ZXJpb2QgUmF0aW8gKi8KPiAtCWlmIChoZG1pLT5jb25uZWN0b3IuZGlzcGxheV9pbmZvLmhkbWku
+c2NkYy5zdXBwb3J0ZWQpIHsKPiArCWlmIChkd19oZG1pX3N1cHBvcnRfc2NkYyhoZG1pKSkgewo+
+ICAJCWlmIChtdG1kc2Nsb2NrID4gSERNSTE0X01BWF9UTURTQ0xLKQo+ICAJCQlkcm1fc2NkY19z
+ZXRfaGlnaF90bWRzX2Nsb2NrX3JhdGlvKGhkbWktPmRkYywgMSk7Cj4gIAkJZWxzZQo+IEBAIC0x
+NTc5LDggKzE2MDQsOSBAQCBzdGF0aWMgdm9pZCBoZG1pX2F2X2NvbXBvc2VyKHN0cnVjdCBkd19o
+ZG1pICpoZG1pLAo+ICAKPiAgCS8qIFNldCB1cCBIRE1JX0ZDX0lOVklEQ09ORiAqLwo+ICAJaW52
+X3ZhbCA9IChoZG1pLT5oZG1pX2RhdGEuaGRjcF9lbmFibGUgfHwKPiAtCQkgICB2bW9kZS0+bXRt
+ZHNjbG9jayA+IEhETUkxNF9NQVhfVE1EU0NMSyB8fAo+IC0JCSAgIGhkbWlfaW5mby0+c2NkYy5z
+Y3JhbWJsaW5nLmxvd19yYXRlcyA/Cj4gKwkJICAgKGR3X2hkbWlfc3VwcG9ydF9zY2RjKGhkbWkp
+ICYmCj4gKwkJICAgICh2bW9kZS0+bXRtZHNjbG9jayA+IEhETUkxNF9NQVhfVE1EU0NMSyB8fAo+
+ICsJCSAgICAgaGRtaV9pbmZvLT5zY2RjLnNjcmFtYmxpbmcubG93X3JhdGVzKSkgPwo+ICAJCUhE
+TUlfRkNfSU5WSURDT05GX0hEQ1BfS0VFUE9VVF9BQ1RJVkUgOgo+ICAJCUhETUlfRkNfSU5WSURD
+T05GX0hEQ1BfS0VFUE9VVF9JTkFDVElWRSk7CgoKVGhlIGNvbmRpdGlvbiBpcyBoYXJkIHRvIHJl
+YWQsIGJ1dCBJIGhhdmUgbm8gaWRlYSBhdG0gaG93IG1ha2UgaXQKY29tcGFjdCBhbmQgcHJldHR5
+IDopCgpBbnl3YXk6CgpSZXZpZXdlZC1ieTogQW5kcnplaiBIYWpkYSA8YS5oYWpkYUBzYW1zdW5n
+LmNvbT4KCgpBcyBJIHJlbWVtYmVyIHlvdSBjYW4gcXVldWUgaXQgdG8gZHJtLW1pc2MsIGlmIG5v
+dCBJIGNhbiBkbyBpdCwganVzdCBsZXQKbWUga25vdy4KCgrCoC0tClJlZ2FyZHMKQW5kcnplagoK
+Cgo+ICAKPiBAQCAtMTY0Niw3ICsxNjcyLDcgQEAgc3RhdGljIHZvaWQgaGRtaV9hdl9jb21wb3Nl
+cihzdHJ1Y3QgZHdfaGRtaSAqaGRtaSwKPiAgCX0KPiAgCj4gIAkvKiBTY3JhbWJsaW5nIENvbnRy
+b2wgKi8KPiAtCWlmIChoZG1pX2luZm8tPnNjZGMuc3VwcG9ydGVkKSB7Cj4gKwlpZiAoZHdfaGRt
+aV9zdXBwb3J0X3NjZGMoaGRtaSkpIHsKPiAgCQlpZiAodm1vZGUtPm10bWRzY2xvY2sgPiBIRE1J
+MTRfTUFYX1RNRFNDTEsgfHwKPiAgCQkgICAgaGRtaV9pbmZvLT5zY2RjLnNjcmFtYmxpbmcubG93
+X3JhdGVzKSB7Cj4gIAkJCS8qCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpLWRldmVs
