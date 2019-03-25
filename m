@@ -1,59 +1,57 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v3 2/3] mmc: sdhci-of-arasan: Add DTS property to disable DCMDs.
-Date: Mon, 25 Mar 2019 14:54:16 +0100
-Message-ID: <CAPDyKFrPBY14bvG7ZLON2xTTWEc2a1JjLdeDSkGmtdAZy5hokQ@mail.gmail.com>
-References: <20190322113808.16858-1-christoph.muellner@theobroma-systems.com>
- <20190322113808.16858-2-christoph.muellner@theobroma-systems.com>
- <CAPDyKFrDq-zBsqqe23hj4ynfYnrGxAr0tWxvYEJu8Kvh0i=h9A@mail.gmail.com> <2D2515D6-1E11-4EA3-B016-EC37A9E3091D@theobroma-systems.com>
+From: Emil Velikov <emil.velikov-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v2 02/11] media: Introduce helpers to fill pixel format
+ structs
+Date: Mon, 25 Mar 2019 14:32:08 +0000
+Message-ID: <20190325143207.GA24966@arch-x1c3>
+References: <20190304192529.14200-1-ezequiel@collabora.com>
+ <20190304192529.14200-3-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2D2515D6-1E11-4EA3-B016-EC37A9E3091D@theobroma-systems.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Christoph_M=C3=BCllner?= <christoph.muellner@theobroma-systems.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, Adrian Hunter <adrian.hunter@intel.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Michal Simek <michal.simek@xilinx.com>, Viresh Kumar <viresh.kumar@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>, Douglas Anderson <dianders@chromium.org>, Tony Xie <tony.xie@rock-chips.com>, Randy Li <ayaka@soulik.info>, Vicente Bergas <vicencb@gmail.com>, Ezequiel Garcia <ezequiel@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, DTML <devicetree@vger.kernel.org>, Linux
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20190304192529.14200-3-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 25 Mar 2019 at 14:39, Christoph M=C3=BCllner
-<christoph.muellner@theobroma-systems.com> wrote:
->
->
-> > On 25.03.2019, at 14:27, Ulf Hansson <ulf.hansson@linaro.org> wrote:
-> >
-> > On Fri, 22 Mar 2019 at 12:39, Christoph Muellner
-> > <christoph.muellner@theobroma-systems.com> wrote:
-> >>
-> >> Direct commands (DCMDs) are an optional feature of eMMC 5.1's command
-> >> queue engine (CQE). The Arasan eMMC 5.1 controller uses the CQHCI,
-> >> which exposes a control register bit to enable the feature.
-> >> The current implementation sets this bit unconditionally.
-> >>
-> >> This patch allows to suppress the feature activation,
-> >> by specifying the property disable-cqe-dcmd.
-> >>
-> >> Signed-off-by: Christoph Muellner <christoph.muellner@theobroma-system=
-s.com>
-> >> Signed-off-by: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-> >> Acked-by: Adrian Hunter <adrian.hunter@intel.com>
-> >
-> > Applied for next, thanks!
-> >
-> > Perhaps both patch1 and patch2 should be tagged for stable? Then
-> > please tell me and I can add a tag.
->
-> Hi Ulf,
->
-> yes tagging for stable would be nice.
-> I guess, the following would fit:
->
-> Fixes: 84362d79f436 ("mmc: sdhci-of-arasan: Add CQHCI support for arasan,=
-sdhci-5.1")
->
+Hi Ezequiel,
 
-Great, I have added that to both of the commits and a stable tag. Thanks!
+On 2019/03/04, Ezequiel Garcia wrote:
 
-[...]
+> +
+> +/* Pixel format and FourCC helpers */
+> +
+> +/**
+> + * struct v4l2_format_info - information about a V4L2 format
+> + * @format: 4CC format identifier (V4L2_PIX_FMT_*)
+> + * @mem_planes: Number of memory planes, which includes the alpha plane (1 to 4).
+> + * @comp_planes: Number of component planes, which includes the alpha plane (1 to 4).
+> + * @bpp: Array of per-plane bytes per pixel
+> + * @hdiv: Horizontal chroma subsampling factor
+> + * @vdiv: Vertical chroma subsampling factor
+> + */
+> +struct v4l2_format_info {
+> +	u32 format;
+> +	u8 mem_planes;
+> +	u8 comp_planes;
+> +	u8 bpp[4];
+> +	u8 hdiv;
+> +	u8 vdiv;
+> +	u8 block_w[4];
+> +	u8 block_h[4];
 
-Kind regards
-Uffe
+Please don't forget to document block_[wh]. Plus you can draw some extra
+inspiration from drm_format_info in include/drm/drm_fourcc.h ;-)
+
+HTH
+Emil
