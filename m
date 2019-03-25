@@ -1,148 +1,36 @@
-From: Neil Armstrong <narmstrong@baylibre.com>
-Subject: Re: [PATCH] drm/bridge: dw-hdmi: disable SCDC configuration for
- invalid setups
-Date: Mon, 25 Mar 2019 13:12:08 +0100
-Message-ID: <c771a0a0-e62e-db7e-b3f7-6ff3f4a915d8@baylibre.com>
-References: <CGME20190315095421epcas4p3321555f6918dc4e420acdbf23121338f@epcas4p3.samsung.com>
- <20190315095414.28520-1-narmstrong@baylibre.com>
- <6faa365e-2a4d-3666-b00f-79f36258106c@samsung.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/2] dt-bindings: ARM: dts: rockchip: Add rk3288-veyron-jerry rev 10-15
+Date: Mon, 25 Mar 2019 13:25:20 +0100
+Message-ID: <22847786.E0k6fS2MZ4@phil>
+References: <20190322195924.70448-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <6faa365e-2a4d-3666-b00f-79f36258106c@samsung.com>
-Content-Language: en-US
+In-Reply-To: <20190322195924.70448-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andrzej Hajda <a.hajda@samsung.com>, Laurent.pinchart@ideasonboard.com, heiko@sntech.de, robh@kernel.org
-Cc: linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, jernej.skrabec@siol.net
+To: Douglas Anderson <dianders@chromium.org>
+Cc: mka@chromium.org, ryandcase@chromium.org, devicetree@vger.kernel.org, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Alexis Ballier <aballier@gentoo.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Akash Gajjar <Akash_Gajjar@mentor.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 25/03/2019 12:37, Andrzej Hajda wrote:
-> On 15.03.2019 10:54, Neil Armstrong wrote:
->> This patch is an attempt to limit HDMI 2.0 SCDC setup when :
->> - the SoC embeds an HDMI 1.4 only controller
->> - the EDID supports SCDC but not scrambling
->> - the EDID supports SCDC scrambling but not for low TMDS bit rates,
->>   while only supporting low TMDS bit rates
->>
->> This to avoid communicating with the SCDC DDC slave uncessary, and
->> setting the DW-HDMI TMDS Scrambler setup when not supported by the
->> underlying hardware.
->>
->> Reported-by: Rob Herring <robh@kernel.org>
->> Fixes: 264fce6cc2c1 ("drm/bridge: dw-hdmi: Add SCDC and TMDS Scrambling support")
->> Signed-off-by: Neil Armstrong <narmstrong@baylibre.com>
->> ---
->>
->> Rob,
->>
->> this patch should also solve your issue with your 11' display, could you
->> test it ?
->> If this works, I will focus on the underlying issue where the RK3399 SoC
->> freezes in your setup.
->>
->> Thanks,
->> Neil
->>
->>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 34 ++++++++++++++++++++---
->>  1 file changed, 30 insertions(+), 4 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
->> index a63e5f0dae56..db761329a1e3 100644
->> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
->> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
->> @@ -1037,6 +1037,31 @@ void dw_hdmi_phy_i2c_write(struct dw_hdmi *hdmi, unsigned short data,
->>  }
->>  EXPORT_SYMBOL_GPL(dw_hdmi_phy_i2c_write);
->>  
->> +/* Filter out invalid setups to avoid configuring SCDC and scrambling */
->> +static bool dw_hdmi_support_scdc(struct dw_hdmi *hdmi)
->> +{
->> +	struct drm_display_info *display = &hdmi->connector.display_info;
->> +
->> +	/* Completely disable SCDC support for older controllers */
->> +	if (hdmi->version < 0x200a)
->> +		return false;
->> +
->> +	/* Disable if SCDC is not supported, or if an HF-VSDB block is absent */
->> +	if (!display->hdmi.scdc.supported ||
->> +	    !display->hdmi.scdc.scrambling.supported)
->> +		return false;
->> +
->> +	/*
->> +	 * Disable if display only support low TMDS rates and scrambling
->> +	 * for low rates is not supported either
->> +	 */
->> +	if (!display->hdmi.scdc.scrambling.low_rates &&
->> +	    display->max_tmds_clock <= 340000)
->> +		return false;
->> +
->> +	return true;
->> +}
->> +
->>  /*
->>   * HDMI2.0 Specifies the following procedure for High TMDS Bit Rates:
->>   * - The Source shall suspend transmission of the TMDS clock and data
->> @@ -1055,7 +1080,7 @@ void dw_hdmi_set_high_tmds_clock_ratio(struct dw_hdmi *hdmi)
->>  	unsigned long mtmdsclock = hdmi->hdmi_data.video_mode.mtmdsclock;
->>  
->>  	/* Control for TMDS Bit Period/TMDS Clock-Period Ratio */
->> -	if (hdmi->connector.display_info.hdmi.scdc.supported) {
->> +	if (dw_hdmi_support_scdc(hdmi)) {
->>  		if (mtmdsclock > HDMI14_MAX_TMDSCLK)
->>  			drm_scdc_set_high_tmds_clock_ratio(hdmi->ddc, 1);
->>  		else
->> @@ -1579,8 +1604,9 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
->>  
->>  	/* Set up HDMI_FC_INVIDCONF */
->>  	inv_val = (hdmi->hdmi_data.hdcp_enable ||
->> -		   vmode->mtmdsclock > HDMI14_MAX_TMDSCLK ||
->> -		   hdmi_info->scdc.scrambling.low_rates ?
->> +		   (dw_hdmi_support_scdc(hdmi) &&
->> +		    (vmode->mtmdsclock > HDMI14_MAX_TMDSCLK ||
->> +		     hdmi_info->scdc.scrambling.low_rates)) ?
->>  		HDMI_FC_INVIDCONF_HDCP_KEEPOUT_ACTIVE :
->>  		HDMI_FC_INVIDCONF_HDCP_KEEPOUT_INACTIVE);
+Am Freitag, 22. März 2019, 20:59:23 CET schrieb Douglas Anderson:
+> As far as I can tell/remember rev10 was originally created to support
+> making a SKU of jerry that had a different LCD.  rev11-rev15 were
+> added to give some wiggle room for future builds.  Downstream has a
+> separate device tree for rev10-rev15 (compared to rev3-rev7) with the
+> expectation that differences relating to the LCD would be accounted
+> for there but nothing was ever added to the rev10-rev15 making it
+> identical to the rev3-rev7 one.
 > 
+> It's likely nothing actually shipped with rev10-rev15 but they are
+> listed in the downstream kernel's device tree and it seems like it
+> should add a little safety if we match them here just in case
+> something actually shipped with one of these revisions and that device
+> will break if we don't claim support.
 > 
-> The condition is hard to read, but I have no idea atm how make it
-> compact and pretty :)
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-I made my best to make it barely readable...
+applied both for 5.2
 
-We may need to reword this condition since on the DW-HMI in the Allwinner
-H6, this is no more needed for scrambling !
-
-> 
-> Anyway:
-> 
-> Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
-> 
-> 
-> As I remember you can queue it to drm-misc, if not I can do it, just let
-> me know.
-
-I can and I'm queuing it right now, thanks for the review !
-
-Neil
-
-> 
-> 
-> Â --
-> Regards
-> Andrzej
-> 
-> 
-> 
->>  
->> @@ -1646,7 +1672,7 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
->>  	}
->>  
->>  	/* Scrambling Control */
->> -	if (hdmi_info->scdc.supported) {
->> +	if (dw_hdmi_support_scdc(hdmi)) {
->>  		if (vmode->mtmdsclock > HDMI14_MAX_TMDSCLK ||
->>  		    hdmi_info->scdc.scrambling.low_rates) {
->>  			/*
-> 
-> 
+Thanks
+Heiko
