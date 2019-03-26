@@ -1,89 +1,39 @@
-From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Subject: Re: [PATCH] arm64: dts: rockchip: decrease rising edge time of UART2
-Date: Wed, 27 Mar 2019 01:26:27 +0900
-Message-ID: <6aee31ac-59e8-b827-6ed5-53a92ab48e35@katsuster.net>
-References: <20190303122705.27094-1-katsuhiro@katsuster.net>
- <b35a6d3d-d3af-de0b-1dc8-6849d86c7b71@katsuster.net>
- <01af012d-0ef0-b3af-4d14-188ff5c9a7c9@katsuster.net>
- <3054532.smugdETXvr@diego> <8292814b-05ab-c0a1-2e80-733b32793e15@arm.com>
- <5fc62eb4-4907-2c00-0267-8b4ab260590d@katsuster.net>
- <b27b3aaa-3285-6037-d3f4-88811978bd7a@arm.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v2 1/3] Bluetooth: btusb: add QCA6174A compatible properties
+Date: Tue, 26 Mar 2019 11:45:57 -0700
+Message-ID: <CA+ASDXMePkQDRfaSwNGnRYyGdsuvfUCXBtDK79o2mP=1hdNQUA@mail.gmail.com>
+References: <20190222225345.69084-1-briannorris@chromium.org>
+ <C908FF06-43F1-4A5C-B80F-0982315DDB6A@holtmann.org> <CA+ASDXOG43dRtqzZJuA4ixVvfpt-Wd1rUVMMG3QFRnNGOmY5GA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <b27b3aaa-3285-6037-d3f4-88811978bd7a@arm.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Robin Murphy <robin.murphy@arm.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Oskari Lemmela <oskari@lemmela.net>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, Linus Walleij <linus.walleij@linaro.org>, Akash Gajjar <Akash_Gajjar@mentor.com>, Vicente Bergas <vicencb@gmail.com>, Tony McKahan <tonymckahan@gmail.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Shawn Lin <shawn.lin@rock-chips.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CA+ASDXOG43dRtqzZJuA4ixVvfpt-Wd1rUVMMG3QFRnNGOmY5GA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Marcel Holtmann <marcel@holtmann.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Johan Hedberg <johan.hedberg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Douglas Anderson <dianders@chromium.org>, devicetree <devicetree@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Bluetooth mailing list <linux-bluetooth@vger.kernel.org>, Linux Kernel <linux-kernel@vger.kernel.org>, Matthias Kaehlcke <mka@chromium.org>, Rajat Jain <rajatja@google.com>, Robin Murphy <robin.murphy@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8gUm9iaW4sCgpPbiAyMDE5LzAzLzI3IDA6NDMsIFJvYmluIE11cnBoeSB3cm90ZToKPiBP
-biAyNi8wMy8yMDE5IDE0OjI5LCBLYXRzdWhpcm8gU3V6dWtpIHdyb3RlOgo+PiBIZWxsbyBIZWlr
-bywgUm9iaW4sCj4+Cj4+IFRoYW5rIHlvdSBmb3IgeW91ciBzdWdnZXN0aW9uLiBZZXMsIEkgZm91
-bmQgJmlvX2RvbWFpbnN7fSBub2RlIGluCj4+IGRldmljZSB0cmVlIHRvby4gSSdtIHRlbXBvcmFy
-eSBmaXhpbmcgdGhpcyBwcm9ibGVtIGJ5IHBhdGNoIGxpa2UgYXMgCj4+IFJvYmluJ3Mgc3VnZ2Vz
-dGlvbi4KPj4KPj4gQnV0IEknbSBjb25mdXNpbmcgdGhhdCBSb2NrUHJvNjQgc2NoZW1hdGljcyAo
-UG93ZXIgRG9tYWluIE1hcCkgc2F5cwo+PiBkZWZhdWx0IHZvbHRhZ2Ugb2YgYXVkaW9fZ3BpbzNk
-X2dwaW80YSBpcyAxLjhWIGFuZCBncGlvMTgzMF9ncGlvNGNkIGlzCj4+IDMuMFYuIEl0IHNob3dz
-IHRoYXQgY3VycmVudCBzZXR0aW5nIG9mIGRldmljZSB0cmVlIGlzIGNvcnJlY3QuCj4gCj4gT2gs
-IEkgaGFkbid0IHNwb3R0ZWQgdGhhdCwgSSBqdXN0IGxvb2tlZCBhdCBwMTYgd2hlcmUgaXQgc2hv
-d3MgQVBJTzVfVkREIAo+IHN1cHBsaWVkIGJ5IFZDQ18zVjAuIEkgd291bGQgYXNzdW1lIHRoYXQg
-dGhhdCBwb3dlciBkb21haW4gbWFwIHBhZ2UgCj4gc2ltcGx5IG5ldmVyIGdvdCB1cGRhdGVkIHdo
-ZW4gdGhlIGFjdHVhbCBSb2NrUHJvNjQgZGVzaWduIHdhcyBjaGFuZ2VkIAo+IGF3YXkgZnJvbSB0
-aGUgUm9ja2NoaXAgcmVmZXJlbmNlIHNjaGVtYXRpYy4KPiAKClRoYW5rcywgSSBhZ3JlZSB3aXRo
-IHlvdS4gUG93ZXIgRG9tYWluIE1hcCBpcyBzdGF5aW5nIG9sZCBvciBzb21ldGhpbmcKd3Jvbmcu
-Li4gSSB3aWxsIHNlbmQgcGF0Y2ggdG8gZml4IEFQSU81IGRvbWFpbiB2b2x0YWdlLgoKQmVzdCBS
-ZWdhcmRzLApLYXRzdWhpcm8gU3V6dWtpCgoKPiBSb2Jpbi4KPiAKPj4gSSBkb24ndCB1bmRlcnN0
-YW5kIHdoeSBvdGhlciBwZXJzb24gd2hvIGlzIHVzaW5nIGxpbnV4LW5leHQgZG9lcyBub3QKPj4g
-ZmFjZSB0aGlzIHByb2JsZW0uLi4/Pwo+Pgo+PiBCZXN0IFJlZ2FyZHMsCj4+IEthdHN1aGlybyBT
-dXp1a2kKPj4KPj4KPj4gT24gMjAxOS8wMy8yNiAyMjo1OCwgUm9iaW4gTXVycGh5IHdyb3RlOgo+
-Pj4gT24gMjYvMDMvMjAxOSAxMzo1MSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4+Pj4gSGksCj4+
-Pj4KPj4+PiBBbSBEaWVuc3RhZywgMjYuIE3DpHJ6IDIwMTksIDE0OjM5OjQyIENFVCBzY2hyaWVi
-IEthdHN1aGlybyBTdXp1a2k6Cj4+Pj4+IEhlbGxvIFRvbnksIFJvYmluLAo+Pj4+Pgo+Pj4+PiBJ
-IGNvbnRpbnVlIHRvIGludmVzdGlnYXRlIFVBUlQgVFggcmlzaW5nIHRpbWUgcHJvYmxlbS4gUmVj
-ZW50bHksIEkgCj4+Pj4+IGZvdW5kCj4+Pj4+IG9uZSBvZiBjYXVzZSBvZiB0aGlzIHByb2JsZW0u
-Cj4+Pj4+Cj4+Pj4+IEluIG15IGVudmlyb25tZW50LCB0aGlzIHByb2JsZW0gb2NjdXJyZWQgb24g
-bGludXgtbmV4dCBvbmx5LiBVLUJvb3QgCj4+Pj4+IGRvZXMKPj4+Pj4gbm90IGZhY2UgaXQuIFNv
-IEkgY29tcGFyZWQgc2V0dGluZ3MgYmV0d2VlbiBVLUJvb3QgYW5kIGxpbnV4LW5leHQuIAo+Pj4+
-PiBBZnRlcgo+Pj4+PiBJIGZvdW5kIEdSRl9JT19WU0VMIChhZGRyZXNzIDB4ZmY3N2U2NDApIHJl
-Z2lzdGVyIGlzIGRpZmZlci4KPj4+Pj4KPj4+Pj4KPj4+Pj4gV291bGQgeW91IHRlbGwgbWUgd2hh
-dCB2YWx1ZSBpcyBzdG9yZWQgaW50byB0aGlzIHJlZ2lzdGVyPwo+Pj4+Pgo+Pj4+Pgo+Pj4+PiBN
-eSBSb2NrUHJvNjQsIGluaXRpYWxseSAweDAwMDAwMDAwIGlzIHNldCBidXQgMHgwMDAwMDAwMyBp
-cyBzZXQgZHVyaW5nCj4+Pj4+IGxpbnV4IGJvb3QuIFVBUlQgVFggcmlzaW5nIHRpbWUgYmVjb21l
-cyBmaW5lIGlmIHNldCBib3RoIGJpdCAxIGFuZCAKPj4+Pj4gYml0IDMKPj4+Pj4gb3IgY2xlYXIg
-Ym90aCBiaXRzLgo+Pj4+Cj4+Pj4gR1JGX0lPX1ZTRUwgaXMgdGhlIHZvbHRhZ2UtZG9tYWluIHNl
-bGVjdGlvbiBmb3IgZGlmZmVyZW50IGRvbWFpbnMsCj4+Pj4gc2VlIHRoZSAmaW9fZG9tYWluc3t9
-IG5vZGUgaW4geW91ciByb2NrcHJvNjQgZHRzLgo+Pj4+IFRoZSBzb2MgbmVlZHMgdG8ga25vdyB3
-aXRoIHdoYXQgdm9sdGFnZSBzb21lIG9mIGl0cyBpbnB1dHMgYXJlCj4+Pj4gc3VwcGxpZWQuCj4+
-Pj4KPj4+PiBCaXRzIGFyZToKPj4+PiAwIC0gYnQ2NTYKPj4+PiAxIC0gYXVkaW8KPj4+PiAyIC0g
-c2RtbWMKPj4+PiAzIC0gZ3BpbzE4MzMKPj4+Pgo+Pj4+IFRoZXNlIGJpdHMgbXVzdCBjb3JyZXNw
-b25kIG9mIHRoZSB2b2x0YWdlcyBvZiB0aGVpciByZWd1bGF0b3JzLAo+Pj4+IDAgZm9yIDMuM1Yg
-YW5kIDEgZm9yIDEuOFYuCj4+Pj4KPj4+PiBCdXQgdGhlIHZjYzF2OF9kdnAgcmVndWxhdG9yIGNv
-bm5lY3RlZCB0byB0aGUgYnQ2NTYgaW5wdXQgaGFzCj4+Pj4gbm90IGNoYW5nZWQgc2luY2UgdGhl
-IGluaXRpYWwgc3VibWlzc2lvbiBvZiB0aGUgZGV2aWNldHJlZS4KPj4+Cj4+PiBIbW0sIGJhc2Vk
-IG9uIGEgbG9vayB0aHJvdWdoIHRoZSByb2NrcHJvNjQgc2NoZW1hdGljLCBkb2VzIHRoaXMgaGVs
-cD8KPj4+Cj4+PiBSb2Jpbi4KPj4+Cj4+PiAtLS0tLT44LS0tLS0KPj4+IGRpZmYgLS1naXQgYS9h
-cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2NrcHJvNjQuZHRzIAo+Pj4gYi9h
-cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2NrcHJvNjQuZHRzCj4+PiBpbmRl
-eCAxZjIzOTRlMDU4N2QuLmQ0NzNjZTI5MGYwYyAxMDA2NDQKPj4+IC0tLSBhL2FyY2gvYXJtNjQv
-Ym9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvY2twcm82NC5kdHMKPj4+ICsrKyBiL2FyY2gvYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvY2twcm82NC5kdHMKPj4+IEBAIC01MDQsNyAr
-NTA0LDcgQEAKPj4+IMKgwqDCoMKgwqAgc3RhdHVzID0gIm9rYXkiOwo+Pj4KPj4+IMKgwqDCoMKg
-wqAgYnQ2NTYtc3VwcGx5ID0gPCZ2Y2MxdjhfZHZwPjsKPj4+IC3CoMKgwqAgYXVkaW8tc3VwcGx5
-ID0gPCZ2Y2NhMXY4X2NvZGVjPjsKPj4+ICvCoMKgwqAgYXVkaW8tc3VwcGx5ID0gPCZ2Y2NfM3Yw
-PjsKPj4+IMKgwqDCoMKgwqAgc2RtbWMtc3VwcGx5ID0gPCZ2Y2Nfc2Rpbz47Cj4+PiDCoMKgwqDC
-oMKgIGdwaW8xODMwLXN1cHBseSA9IDwmdmNjXzN2MD47Cj4+PiDCoMKgfTsKPj4+Cj4+Cj4gCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJt
-LWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtl
-cm5lbAo=
+On Wed, Feb 27, 2019 at 1:34 PM Brian Norris <briannorris@chromium.org> wrote:
+> On Tue, Feb 26, 2019 at 11:53 PM Marcel Holtmann <marcel@holtmann.org> wrote:
+> > all 3 patches have been applied to bluetooth-next tree.
+>
+> Thanks! I failed to repeat my comment from v1:
+>
+> """
+> This patch is also required to make this stable, but since it's not
+> really tied to the device tree, and it's an existing bug, I sent it
+> separately:
+>
+>   https://lore.kernel.org/patchwork/patch/1044896/
+>   Subject: Bluetooth: btusb: request wake pin with NOAUTOEN
+> """
+>
+> Can you take this one too? Otherwise Scarlet will be less stable
+> (possible interrupt storm at boot).
+
+Ping? RK3399/Scarlet is currently in bad shape on v5.1-rc2, since it
+doesn't have the interrupt storm fix.
+
+I'll ping on that patch directly too.
+
+Brian
