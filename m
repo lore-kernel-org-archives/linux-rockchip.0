@@ -1,58 +1,50 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: add rk3399 UART DMAs
-Date: Wed, 27 Mar 2019 13:00:16 +0100
-Message-ID: <14265087.Gbs4YZABJo@phil>
-References: <20190321162244.10080-1-katsuhiro@katsuster.net> <f2d0a95f-33c0-cdeb-80e3-0cd04bd0871d@arm.com> <e7bcf8b9-123e-eb30-f47d-7f8855f30ccb@katsuster.net>
+From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Subject: [PATCH] arm64: dts: rockchip: fix IO domain voltage setting of APIO5
+Date: Wed, 27 Mar 2019 21:03:17 +0900
+Message-ID: <20190327120317.15256-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e7bcf8b9-123e-eb30-f47d-7f8855f30ccb@katsuster.net>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Cc: Robin Murphy <robin.murphy@arm.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+This patch fixes IO domain voltage setting that is related to
+audio_gpio3d4a_ms (bit 1) of GRF_IO_VSEL.
 
-Am Dienstag, 26. März 2019, 14:49:16 CET schrieb Katsuhiro Suzuki:
-> Hello Robin,
-> 
-> Sorry for inconvenience. Since I don't adhere enabling DMA for UARTs,
-> please revert my patch if you need.
+This is because RockPro64 schematics P.16 says that regulator
+supplies 3.0V power to APIO5_VDD. So audio_gpio3d4a_ms bit should
+be clear (means 3.0V). Power domain map is saying different thing
+(supplies 1.8V) but I believe P.16 is actual connectings.
 
-I've dropped the patch from my queue now.
+Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Suggested-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> BTW, there are DMA properties in RK3328 device-tree like as this patch.
-> RK3328 UART DMA could not work correctly too...??
-
-I remember Rockcihip dma-controllers having issues with burst-sizes
-and flushing (there is a no-flushp option in pl330), so it's
-possible that all share the same error up to rk3399 and rk3328
-
-But so far no-one has shouted regarding the rk3328.
-
-
-Heiko
-
-> On 2019/03/26 20:48, Robin Murphy wrote:
-> > On 25/03/2019 12:34, Heiko Stuebner wrote:
-> >> Am Donnerstag, 21. März 2019, 17:22:44 CET schrieb Katsuhiro Suzuki:
-> >>> Add UART dma channels as specified by the rk3399 TRM.
-> >>>
-> >>> Refer:
-> >>> RK3399 TRM V1.4: Chapter 12 DMA Controller
-> >>>
-> >>> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-> >>
-> >> applied for 5.2
-> > 
-> > As a heads-up, I did manage to try my board with this patch applied over 
-> > the weekend, and it makes probing the bluetooth adapter fail with 
-> > communication errors, so I'm not sure the 8250 and pl330 drivers are 
-> > really cooperating well enough :(
-> > 
-> > Robin.
-> > 
-> 
-> 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+index 791fb0ee9722..20ec7d1c25d7 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+@@ -508,7 +508,7 @@
+ 	status = "okay";
+ 
+ 	bt656-supply = <&vcc1v8_dvp>;
+-	audio-supply = <&vcca1v8_codec>;
++	audio-supply = <&vcc_3v0>;
+ 	sdmmc-supply = <&vcc_sdio>;
+ 	gpio1830-supply = <&vcc_3v0>;
+ };
+-- 
+2.20.1
