@@ -1,64 +1,58 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: Re: [PATCH v2 3/5] devfreq: rk3399_dmc: Pass ODT and auto power down
- parameters to TF-A.
-Date: Tue, 26 Mar 2019 17:24:41 -0700
-Message-ID: <20190327002441.GB112750@google.com>
-References: <20190319181323.22804-1-gael.portay@collabora.com>
- <20190319181323.22804-4-gael.portay@collabora.com>
- <20190320003352.GN112750@google.com>
- <20190320215013.43zgvyn5frnb3yud@archlinux.localdomain>
- <20190320220223.GP112750@google.com>
- <20190321231055.j7z23f3k3rcngq4u@archlinux.localdomain>
- <20190322000107.GU112750@google.com>
- <20190322124525.ge5thq4a7c6ufcra@archlinux.localdomain>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: add rk3399 UART DMAs
+Date: Wed, 27 Mar 2019 13:00:16 +0100
+Message-ID: <14265087.Gbs4YZABJo@phil>
+References: <20190321162244.10080-1-katsuhiro@katsuster.net> <f2d0a95f-33c0-cdeb-80e3-0cd04bd0871d@arm.com> <e7bcf8b9-123e-eb30-f47d-7f8855f30ccb@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190322124525.ge5thq4a7c6ufcra@archlinux.localdomain>
+In-Reply-To: <e7bcf8b9-123e-eb30-f47d-7f8855f30ccb@katsuster.net>
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?utf-8?B?R2HDq2w=?= PORTAY <gael.portay@collabora.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Derek Basehore <dbasehore@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-rockchip@lists.infradead.org, Randy Li <ayaka@soulik.info>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, Lin Huang <hl@rock-chips.com>
+To: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Cc: Robin Murphy <robin.murphy@arm.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Mar 22, 2019 at 08:45:26AM -0400, GaÃ«l PORTAY wrote:
-> Hi Matthias,
+Hi,
+
+Am Dienstag, 26. März 2019, 14:49:16 CET schrieb Katsuhiro Suzuki:
+> Hello Robin,
 > 
-> On Thu, Mar 21, 2019 at 05:01:07PM -0700, Matthias Kaehlcke wrote:
-> > > ...
-> > > 
-> > > So, for a reason that I ignore, if we try to save unecessary calls to
-> > > ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD (odt_enable has not changed since
-> > > last call), we get stalled in the call to ROCKCHIP_SIP_CONFIG_SET_RAGE
-> > > that follows. The function arm_smccc_smc never returns and the device
-> > > hard hang.
+> Sorry for inconvenience. Since I don't adhere enabling DMA for UARTs,
+> please revert my patch if you need.
+
+I've dropped the patch from my queue now.
+
+> BTW, there are DMA properties in RK3328 device-tree like as this patch.
+> RK3328 UART DMA could not work correctly too...??
+
+I remember Rockcihip dma-controllers having issues with burst-sizes
+and flushing (there is a no-flushp option in pl330), so it's
+possible that all share the same error up to rk3399 and rk3328
+
+But so far no-one has shouted regarding the rk3328.
+
+
+Heiko
+
+> On 2019/03/26 20:48, Robin Murphy wrote:
+> > On 25/03/2019 12:34, Heiko Stuebner wrote:
+> >> Am Donnerstag, 21. März 2019, 17:22:44 CET schrieb Katsuhiro Suzuki:
+> >>> Add UART dma channels as specified by the rk3399 TRM.
+> >>>
+> >>> Refer:
+> >>> RK3399 TRM V1.4: Chapter 12 DMA Controller
+> >>>
+> >>> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+> >>
+> >> applied for 5.2
 > > 
-> > Thanks for giving it a try!
+> > As a heads-up, I did manage to try my board with this patch applied over 
+> > the weekend, and it makes probing the bluetooth adapter fail with 
+> > communication errors, so I'm not sure the 8250 and pl330 drivers are 
+> > really cooperating well enough :(
 > > 
-> > Did your code ensure to perform the SMC call for the first frequency
-> > change? If not the problem could be that the DDR PD timings and ODT
-> > resistors are not properly configured for the new frequency.
+> > Robin.
 > > 
 > 
-> The DRAM_ODT_PD SMC call is supposed to be performed before the
-> DRAM_SET_RATE; unless someone else is doing the set_rate.
-
-However earlier the call wasn't done at all, and that didn't cause
-problems.
-
-> Does the ODT resistors should be configured for every existing
-> frequency?
-
-I don't have any background here. My initial assumption would be that
-it should be enough to re-configure them when the frequency passes the
-threshold in either direction.
-
-Anyway, IIUC there shouldn't be more than 5 frequency changes per
-second (polling_ms = 200), and likely no all of them would pass the
-threshold, so it seems limiting the calls (if possible) would be a
-micro-optimization and is probably not worth the hassle :)
-
-Thanks
-
-Matthias
+> 
