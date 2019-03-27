@@ -1,177 +1,124 @@
-From: Damian Kos <dkos@cadence.com>
-Subject: RE: [PATCH v7 0/4] drm: add support for Cadence MHDP DPI/DP bridge.
-Date: Wed, 27 Mar 2019 14:58:30 +0000
-Message-ID: <BYAPR07MB43111E34594899FC375D16BDCD580@BYAPR07MB4311.namprd07.prod.outlook.com>
-References: <1548846209-16406-1-git-send-email-dkos@cadence.com>
- <0f11a4d8-d576-5af8-b7f4-afe3ff26678f@ti.com>
- <ce6ed2e6-90d5-fc7a-4d6d-ab27d62c5432@ti.com>
+From: Tim Harvey <tharvey@gateworks.com>
+Subject: Re: [PATCH v2 0/4] Patches to allow consistent mmc / mmcblk numbering
+ w/ device tree
+Date: Wed, 27 Mar 2019 10:37:19 -0700
+Message-ID: <CAJ+vNU0v8FXStXCfJUk5uJXiPuGGFLNW7aHOYfSoNJgu9qXHKw@mail.gmail.com>
+References: <1461951139-6109-1-git-send-email-dianders@chromium.org>
+ <yw1x5zsx5wc7.fsf@mansr.com> <CAJ+vNU1PxK-B63Dc3AgzYb9POyxxoF-xPOWBEpxJ+3eVNK8xqw@mail.gmail.com>
+ <d5310138-7fdd-973d-5210-3fc91c4686ee@denx.de> <yw1xftrn2em9.fsf@mansr.com>
+ <1fcd4dad-1e00-67cc-ac5d-24640ae34340@denx.de> <20190316153900.xqi55awrockovmsi@shell.armlinux.org.uk>
+ <c23d6c4edf92d58aec86da811eaa97a5@agner.ch> <yw1xbm2930rr.fsf@mansr.com> <20190317165957.k6lxxaq3hbs2owqz@shell.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <ce6ed2e6-90d5-fc7a-4d6d-ab27d62c5432@ti.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Tomi Valkeinen <tomi.valkeinen@ti.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Maxime Ripard <maxime.ripard@bootlin.com>, =?utf-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, David Airlie <airlied@linux.ie>, "jbergsagel@ti.com" <jbergsagel@ti.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sandy Huang <hjc@rock-chips.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Andrzej Hajda <a.hajda@samsung.com>, Rafal Ciepiela <rafalc@cadence.com>, Rob Herring <robh+dt@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel@ffwll.ch>, Anil Joy Varughese <aniljoy@cadence.com>, Piotr Sroka <piotrs@cadence.com>, Sean Paul <sean@poorly.run>, linux-arm-kernel@li
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190317165957.k6lxxaq3hbs2owqz@shell.armlinux.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Cc: =?UTF-8?B?TcOlbnMgUnVsbGfDpXJk?= <mans@mansr.com>, Stefan Agner <stefan@agner.ch>, Marek Vasut <marex@denx.de>, Douglas Anderson <dianders@chromium.org>, Ulf Hansson <ulf.hansson@linaro.org>, Jaehoon Chung <jh80.chung@samsung.com>, shawn.lin@rock-chips.com, Adrian Hunter <adrian.hunter@intel.com>, Linux MMC List <linux-mmc@vger.kernel.org>, Brian Norris <computersforpeace@gmail.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Jisheng Zhang <jszhang@marvell.com>, linux-rockchip@lists.infradead.org, devicetree-spec@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, open list <linux-kernel@vger.kernel.org>, Venu Byravarasu IN <vbyravarasu@nvidia.com>, Lars-Peter Clausen <lars@metafoo.de>, jonathanh@nvidia.comlinu
 List-Id: linux-rockchip.vger.kernel.org
 
-PkRhbWlhbiwgcGluZy4NCj4NCj5PbiAzMS8wMS8yMDE5IDE0OjA4LCBUb21pIFZhbGtlaW5lbiB3
-cm90ZToNCj4+IEhpLA0KPj4gDQo+PiBPbiAzMC8wMS8yMDE5IDEzOjAzLCBEYW1pYW4gS29zIHdy
-b3RlOg0KPj4+IEhlbGxvIQ0KPj4+DQo+Pj4gVGhpcyBpcyB0aGUgc2VyaWVzIG9mIHBhdGNoZXMg
-dGhhdCB3aWxsIGFkZCBzdXBwb3J0IGZvciB0aGUgQ2FkZW5jZSdzIERQSS9EUA0KPj4+IGJyaWRn
-ZS4gUGxlYXNlIG5vdGUgdGhhdCB0aGlzIGlzIGEgcHJlbGltaW5hcnkgdmVyc2lvbiBvZiB0aGUg
-ZHJpdmVyIGFuZCB0aGVyZQ0KPj4+IHdpbGwgYmUgbW9yZSBwYXRjaGVzIGluIHRoZSBmdXR1cmUg
-d2l0aCB1cGRhdGVzLCBmaXhlcyBhbmQgaW1wcm92ZW1lbnRzLg0KPj4+IFBsZWFzZSBrZWVwIHRo
-YXQgaW4gbWluZCB3aGVuIGxvb2tpbmcgYXQgRklYTUUvVE9ETy9YWFggY29tbWVudHMuDQo+Pj4N
-Cj4+PiBJbml0aWFsbHksIE1IRFAgZHJpdmVyIHdhcyBkZXZlbG9wZWQgYXMgYSBEUk0gYnJpZGdl
-IGRyaXZlciBhbmQgd2FzIHBsYW5lZCB0bw0KPj4+IGJlIHBsYWNlZCBpbiBkcml2ZXJzL2dwdS9k
-cm0vYnJpZGdlL21oZHAuYy4gIEhvd2V2ZXIsIHRoZXJlIHdhcyBhbHJlYWR5DQo+Pj4gYSBkcml2
-ZXIgZm9yIENhZGVuY2UncyBEUCBjb250cm9sbGVyIGRldmVsb3BlZCBieSBSb2NrQ2hpcCwgYnV0
-IHRoYXQgZHJpdmVyDQo+Pj4gdXNlcyB0aGUgZGlmZmVyZW50IERSTSBmcmFtZXdvcmsgYW5kIGxv
-b2tzIGxpa2UgYSBwYXJ0IG9mIGEgYmlnZ2VyIHN5c3RlbS4NCj4+PiBCb3RoIGNvbnRyb2xsZXJz
-IChpbmNsdWRpbmcgZmlybXdhcmUpIGFyZSBxdWl0ZSBkaWZmZXJlbnQgaW50ZXJuYWxseQ0KPj4+
-IChNU1QvRkVDL0RTQyBzdXBwb3J0LCBsaW5rIHRyYWluaW5nIGRvbmUgYnkgZHJpdmVyLCBhZGRp
-dGlvbmFsIGNvbW1hbmRzLCBJUlEncw0KPj4+IGV0Yy4pIGJ1dCB0aGV5IGhhdmUgc2ltaWxhciBy
-ZWdpc3RlciBtYXAsIGV4Y2VwdCBmb3IgRnJhbWVyL1N0cmVhbWVyICh3aGljaCBpcw0KPj4+IG5v
-dGljZWFibHkgZGlmZmVyZW50KSwgc28gdGhleSBhcHBlYXIgc2ltaWxhci4NCj4+Pg0KPj4+IFRo
-ZSBmb2xsb3dpbmcgcGF0Y2hlcyBjb250YWluOg0KPj4+IC0gTW92aW5nIGNvbW1vbiBjb2RlIHRv
-IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvY2Rucy1taGRwLWNvbW1vbi4qIGFuZA0KPj4+ICAgbW9k
-aWZ5aW5nIGl0IGEgYml0IChtb3N0bHkgbmV3IHByZWZpeGVzIGZvciBmdW5jdGlvbnMgYW5kIGRh
-dGEgdHlwZXMpIHNvIGl0DQo+Pj4gICBjYW4gYmUgdXNlZCBieSB0d28sIGhpZ2hlciBsZXZlbCwg
-ZHJpdmVycy4NCj4+PiAtIE1vZGlmeWluZyBleGlzdGluZyBSb2NrQ2hpcCdzIERQIGRyaXZlciB0
-byB1c2UgdGhlIGNvbW1vbiBjb2RlIGFmdGVyIGNoYW5nZXMNCj4+PiAgIG1hZGUgdG8gaXQgKHVz
-ZSB0aGUgbmV3IGNkbnNfbWhkcF9kZXZpY2Ugc3RydWN0dXJlIGFuZCBuZXcgZnVuY3Rpb24gbmFt
-ZXMpLg0KPj4+IC0gTW9kaWZ5aW5nIERSTSBoZWxwZXJzIGEgYml0LiBTb21lIGFyZSByZXF1aXJl
-ZCBmb3IgbmV3IGRyaXZlciwgc29tZSBhcmUNCj4+PiAgIHVwZGF0ZXMgZnJvbSBEUCAxLjIgdG8g
-MS4zIG9yIDEuNC4NCj4+PiAtIEFkZGluZyBkb2N1bWVudGF0aW9uIGZvciBkZXZpY2UgdHJlZSBi
-aW5kaW5ncy4NCj4+PiAtIEFkZGluZyBwcmVsaW1pbmFyeSBDYWRlbmNlIERQSS9EUCBicmlkZ2Ug
-ZHJpdmVyLg0KPj4+DQo+Pj4gU29tZSBvZiB0aGUgdGhpbmdzIHRoYXQgd2lsbCBiZSBhZGRlZCBs
-YXRlciBvbiBpbmNsdWRlIChidXQgYXJlIG5vdCBsaW1pdGVkDQo+Pj4gdG8pOg0KPj4+IC0gRFND
-IHN1cHBvcnQNCj4+PiAtIEZFQyBzdXBwb3J0DQo+Pj4gLSBIRENQIHN1cHBvcnQNCj4+IA0KPj4g
-QSBmZXcgcmFuZG9tIGNvbW1lbnRzL3F1ZXN0aW9ucyBhZnRlciBhIHF1aWNrIGxvb2sgYXQgdGhl
-IHBhdGNoZXMuDQo+PiANCj4+IFRoZSBuYW1lcyBvZiB0aGUgc291cmNlIGZpbGVzIGFuZCB0aGUg
-a2VybmVsIEtjb25maWcgYXJlIG9ubHkgYWJvdXQNCj4+ICJDYWRlbmNlIERQIi4gQnV0IHRoZSBE
-VCBiaW5kaW5ncyBpcyBmb3IgY2RucyxtaGRwODU0NiwgYW5kIHRoZQ0KPj4gcmVzdWx0aW5nIG1v
-ZHVsZSBmaWxlIGlzIG1oZHA4NTQ2LmtvLiBJIHRoaW5rIG1vcmUgY29uc2lzdGVuY3kgaGVyZQ0K
-Pj4gd291bGQgYmUgZ29vZC4NCj4+IA0KPj4gSSBwcmVzdW1lIHRoZSBwYXJ0IG51bWJlciAob3Ig
-ZmFtaWx5PyBhcmUgdGhlcmUgb3RoZXIgc2ltaWxhciBwYXJ0cyB3aXRoDQo+PiBzaW1pbGFyIHBh
-cnQgbnVtYmVycz8pIGlzIHJlbGV2YW50LCBzbyBpdCBzaG91bGQgYmUgaW4gdGhlIEtjb25maWcN
-Cj4+IG9wdGlvbiBhbmQgaGVscCB0ZXh0LCBhbmQgcHJvYmFibHkgaW4gdGhlIGZpbGUgbmFtZXMg
-dG9vLiBUaGUgbW9kdWxlDQo+PiBuYW1lIHNob3VsZCBoYXZlICJjZG5zIiBwcmVmaXggdGhlcmUs
-IHNpbWlsYXIgdG8gdGhlIHNvdXJjZSBmaWxlcyBhbmQNCj4+IHRoZSBjZG5zLWRzaS5rby4NCj4+
-IA0KPj4gT3IgbWF5YmUgdGhlIHNhbWUgZHJpdmVyIHdpbGwgaGFuZGxlIGFsbCBDYWRlbmNlIERQ
-IHBhcnRzLCBpbiB3aGljaCBjYXNlDQo+PiBnZW5lcmljIGZpbGVuYW1lcyBhcmUgZmluZSwgYnV0
-IHRoZW4gdGhlIHJlc3VsdGluZyBrZXJuZWwgbW9kdWxlIHNob3VsZA0KPj4gYWxzbyBiZSBqdXN0
-ICJjZG5zLW1oZHAua28iLg0KV2Ugd291bGQgYmUgdmVyeSBoYXBweSB0byBoYXZlIGEgc2VwYXJh
-dGUgZHJpdmVyIGZvciBtaGRwODU0NiBpbnN0ZWFkIG9mDQptaXhpbmcgaXQgd2l0aCBSb2NrY2hp
-cCdzIGRyaXZlci4gVW5mb3J0dW5hdGVseSB3ZSBuZWVkIHRvIGhhdmUgb25lIGRyaXZlcg0KZm9y
-IGJvdGggSVAncywgc28gSSdsbCBqdXN0IGNoYW5nZSBtaGRwODU0Ni5rbyB0byBjZG5zLW1oZHAu
-a28uIChVbmxlc3MsDQptYWludGFpbmVycyBnaXZlIHVzIGEgZ3JlZW4gbGlnaHQgZm9yIHRoZSBk
-ZWRpY2F0ZWQgZHJpdmVyPykNCj4+IA0KPj4gSSBzZWUgc29tZSBhdWRpbyBmdW5jdGlvbnMgaW4g
-dGhlIGNvZGUsIGJ1dCBpdCdzIG5vdCBtZW50aW9uZWQgaW4gdGhlIERUDQo+PiBiaW5kaW5ncy4g
-SSdtIG5vdCBhbiBhdWRpbyBndXksIGJ1dCB0aGUgZGlzcGxheSBicmlkZ2VzIHdpdGggYXVkaW8N
-Cj4+IHN1cHBvcnQgSSBoYXZlIHNlZW4gaGF2ZSBoYWQgRFQgYmluZGluZ3MgZm9yIHRoZSBhdWRp
-byBzb3VyY2UgdG9vLiBJcw0KPj4gYXVkaW8gc3VwcG9ydGVkIGluIHRoZSBjdXJyZW50IGRyaXZl
-cj8NCj4+IA0KQXMgZmFyIGFzIEkga25vdywgYXVkaW8gaXMgd29ya2luZywgYnV0IEkgY2FuJ3Qg
-ZG91YmxlIGNoZWNrIGl0IHJpZ2h0IG5vdw0KZHVlIHRvIGhlYXZ5IGxvYWQgb24gbXkgYmFjayBy
-aWdodCBub3cuIEknbGwgdHJ5IHRvIGZpbmQgdGltZSBmb3IgdGhhdCBpbiB0aGUNCm5leHQgd2Vl
-ay4gQnV0LCBsaWtlIEkndmUgbWVudGlvbmVkIGVhcmxpZXIgSSBkb24ndCBzZWUgYSByZWFzb24g
-d2h5IGF1ZGlvDQpjb2RlICh0aGF0IGV4aXN0cyBpbiB0aGUgbWFpbmxpbmUpIHdvdWxkbid0IHdv
-cmsuDQpJJ20gbm90IGFuIGF1ZGlvIGd1eSBteXNlbGYuIFdoZW4gdXBkYXRpbmcgZHQgYmluZGlu
-Z3MgSSB0b29rIHRoZSBkdCBiaW5kaW5ncw0KZm9yIG90aGVyIGJyaWRnZXMgYXMgYW4gZXhhbXBs
-ZSwgYnV0IEkgZGlkIG5vdCBzZWUgYW55IGJpbmRpbmdzIGZvciBhdWRpbyBpbg0KdGhlbS4gSSBk
-aWRuJ3QgY2hlY2sgYWxsIG9mIHRoZW0uIENhbiB5b3UgcGxlYXNlIGxldCBtZSBrbm93IHdoaWNo
-IGJyaWRnZXMNCmFyZSB5b3Ugd2VyZSByZWZlcnJpbmcgdG8/IEluIG91ciB0ZXN0IGVudmlyb25t
-ZW50IHdlIGRpZG4ndCB1c2UgYW55IGF1ZGlvDQpkcml2ZXIgYXMgYXVkaW8gZ2VuZXJhdG9yIGlz
-IHNvIHNpbXBsZSB0aGF0IGl0IGlzIHBhcnQgb2YgdGhlIHJlZ2lzdGVyIHNwYWNlDQpvZiBJUCBh
-bmQgd2UgZGlkbid0IGV2ZW4gbmVlZCB0byBpbmNsdWRlIHRoaXMgZGV2aWNlIGluIC5kdHMgZmls
-ZS4gQXVkaW8gKGxpa2UNCnRoZSB2aWRlbykgaXMgY29uZmlndXJlZCBhbmQgZW5hYmxlZCBieSBj
-b2RlIHRoYXQgaXMgbm90IGluY2x1ZGVkIGluIHRoZSBwYXRjaA0KKGZvciBvYnZpb3VzIHJlYXNv
-bnMpLg0KU28sIGluIHNob3J0LCB5ZXMsIGRyaXZlciBzdXBwb3J0cyBhdWRpbyBhbmQgd2Ugd2ls
-bCBpbmNsdWRlIGRlc2NyaXB0aW9uIGZvcg0KYXVkaW8gaW5wdXQgcG9ydCBpbiB0aGUgZHQgYmlu
-ZGluZ3MuDQo+PiAgVG9taQ0KPj4gDQo+DQo+IC0tIA0KPiBUZXhhcyBJbnN0cnVtZW50cyBGaW5s
-YW5kIE95LCBQb3Jra2FsYW5rYXR1IDIyLCAwMDE4MCBIZWxzaW5raS4NCj4gWS10dW5udXMvQnVz
-aW5lc3MgSUQ6IDA2MTU1MjEtNC4gS290aXBhaWtrYS9Eb21pY2lsZTogSGVsc2lua2kNCg0KUmVn
-YXJkcywNCkRhbWlhbg0KDQotLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KRnJvbTogVG9taSBW
-YWxrZWluZW4gPHRvbWkudmFsa2VpbmVuQHRpLmNvbT4gDQpTZW50OiBXZWRuZXNkYXksIE1hcmNo
-IDIwLCAyMDE5IDEwOjM0DQpUbzogRGFtaWFuIEtvcyA8ZGtvc0BjYWRlbmNlLmNvbT4NCkNjOiBE
-YXZpZCBBaXJsaWUgPGFpcmxpZWRAbGludXguaWU+OyBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3
-bGwuY2g+OyBSb2IgSGVycmluZyA8cm9iaCtkdEBrZXJuZWwub3JnPjsgTWFyayBSdXRsYW5kIDxt
-YXJrLnJ1dGxhbmRAYXJtLmNvbT47IEFuZHJ6ZWogSGFqZGEgPGEuaGFqZGFAc2Ftc3VuZy5jb20+
-OyBMYXVyZW50IFBpbmNoYXJ0IDxMYXVyZW50LnBpbmNoYXJ0QGlkZWFzb25ib2FyZC5jb20+OyBN
-YWFydGVuIExhbmtob3JzdCA8bWFhcnRlbi5sYW5raG9yc3RAbGludXguaW50ZWwuY29tPjsgTWF4
-aW1lIFJpcGFyZCA8bWF4aW1lLnJpcGFyZEBib290bGluLmNvbT47IFNlYW4gUGF1bCA8c2VhbkBw
-b29ybHkucnVuPjsgU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT47IEhlaWtvIFN0w7xi
-bmVyIDxoZWlrb0BzbnRlY2guZGU+OyBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnOyBk
-ZXZpY2V0cmVlQHZnZXIua2VybmVsLm9yZzsgbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZzsg
-bGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnOyBsaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnOyBqYmVyZ3NhZ2VsQHRpLmNvbTsgcXVlbnRpbi5zY2h1bHpAYm9vdGxp
-bi5jb207IFBpb3RyIFNyb2thIDxwaW90cnNAY2FkZW5jZS5jb20+OyBSYWZhbCBDaWVwaWVsYSA8
-cmFmYWxjQGNhZGVuY2UuY29tPg0KU3ViamVjdDogUmU6IFtQQVRDSCB2NyAwLzRdIGRybTogYWRk
-IHN1cHBvcnQgZm9yIENhZGVuY2UgTUhEUCBEUEkvRFAgYnJpZGdlLg0KDQpFWFRFUk5BTCBNQUlM
-DQoNCg0KRGFtaWFuLCBwaW5nLg0KDQpPbiAzMS8wMS8yMDE5IDE0OjA4LCBUb21pIFZhbGtlaW5l
-biB3cm90ZToNCj4gSGksDQo+IA0KPiBPbiAzMC8wMS8yMDE5IDEzOjAzLCBEYW1pYW4gS29zIHdy
-b3RlOg0KPj4gSGVsbG8hDQo+Pg0KPj4gVGhpcyBpcyB0aGUgc2VyaWVzIG9mIHBhdGNoZXMgdGhh
-dCB3aWxsIGFkZCBzdXBwb3J0IGZvciB0aGUgQ2FkZW5jZSdzIERQSS9EUA0KPj4gYnJpZGdlLiBQ
-bGVhc2Ugbm90ZSB0aGF0IHRoaXMgaXMgYSBwcmVsaW1pbmFyeSB2ZXJzaW9uIG9mIHRoZSBkcml2
-ZXIgYW5kIHRoZXJlDQo+PiB3aWxsIGJlIG1vcmUgcGF0Y2hlcyBpbiB0aGUgZnV0dXJlIHdpdGgg
-dXBkYXRlcywgZml4ZXMgYW5kIGltcHJvdmVtZW50cy4NCj4+IFBsZWFzZSBrZWVwIHRoYXQgaW4g
-bWluZCB3aGVuIGxvb2tpbmcgYXQgRklYTUUvVE9ETy9YWFggY29tbWVudHMuDQo+Pg0KPj4gSW5p
-dGlhbGx5LCBNSERQIGRyaXZlciB3YXMgZGV2ZWxvcGVkIGFzIGEgRFJNIGJyaWRnZSBkcml2ZXIg
-YW5kIHdhcyBwbGFuZWQgdG8NCj4+IGJlIHBsYWNlZCBpbiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdl
-L21oZHAuYy4gIEhvd2V2ZXIsIHRoZXJlIHdhcyBhbHJlYWR5DQo+PiBhIGRyaXZlciBmb3IgQ2Fk
-ZW5jZSdzIERQIGNvbnRyb2xsZXIgZGV2ZWxvcGVkIGJ5IFJvY2tDaGlwLCBidXQgdGhhdCBkcml2
-ZXINCj4+IHVzZXMgdGhlIGRpZmZlcmVudCBEUk0gZnJhbWV3b3JrIGFuZCBsb29rcyBsaWtlIGEg
-cGFydCBvZiBhIGJpZ2dlciBzeXN0ZW0uDQo+PiBCb3RoIGNvbnRyb2xsZXJzIChpbmNsdWRpbmcg
-ZmlybXdhcmUpIGFyZSBxdWl0ZSBkaWZmZXJlbnQgaW50ZXJuYWxseQ0KPj4gKE1TVC9GRUMvRFND
-IHN1cHBvcnQsIGxpbmsgdHJhaW5pbmcgZG9uZSBieSBkcml2ZXIsIGFkZGl0aW9uYWwgY29tbWFu
-ZHMsIElSUSdzDQo+PiBldGMuKSBidXQgdGhleSBoYXZlIHNpbWlsYXIgcmVnaXN0ZXIgbWFwLCBl
-eGNlcHQgZm9yIEZyYW1lci9TdHJlYW1lciAod2hpY2ggaXMNCj4+IG5vdGljZWFibHkgZGlmZmVy
-ZW50KSwgc28gdGhleSBhcHBlYXIgc2ltaWxhci4NCj4+DQo+PiBUaGUgZm9sbG93aW5nIHBhdGNo
-ZXMgY29udGFpbjoNCj4+IC0gTW92aW5nIGNvbW1vbiBjb2RlIHRvIGRyaXZlcnMvZ3B1L2RybS9i
-cmlkZ2UvY2Rucy1taGRwLWNvbW1vbi4qIGFuZA0KPj4gICBtb2RpZnlpbmcgaXQgYSBiaXQgKG1v
-c3RseSBuZXcgcHJlZml4ZXMgZm9yIGZ1bmN0aW9ucyBhbmQgZGF0YSB0eXBlcykgc28gaXQNCj4+
-ICAgY2FuIGJlIHVzZWQgYnkgdHdvLCBoaWdoZXIgbGV2ZWwsIGRyaXZlcnMuDQo+PiAtIE1vZGlm
-eWluZyBleGlzdGluZyBSb2NrQ2hpcCdzIERQIGRyaXZlciB0byB1c2UgdGhlIGNvbW1vbiBjb2Rl
-IGFmdGVyIGNoYW5nZXMNCj4+ICAgbWFkZSB0byBpdCAodXNlIHRoZSBuZXcgY2Ruc19taGRwX2Rl
-dmljZSBzdHJ1Y3R1cmUgYW5kIG5ldyBmdW5jdGlvbiBuYW1lcykuDQo+PiAtIE1vZGlmeWluZyBE
-Uk0gaGVscGVycyBhIGJpdC4gU29tZSBhcmUgcmVxdWlyZWQgZm9yIG5ldyBkcml2ZXIsIHNvbWUg
-YXJlDQo+PiAgIHVwZGF0ZXMgZnJvbSBEUCAxLjIgdG8gMS4zIG9yIDEuNC4NCj4+IC0gQWRkaW5n
-IGRvY3VtZW50YXRpb24gZm9yIGRldmljZSB0cmVlIGJpbmRpbmdzLg0KPj4gLSBBZGRpbmcgcHJl
-bGltaW5hcnkgQ2FkZW5jZSBEUEkvRFAgYnJpZGdlIGRyaXZlci4NCj4+DQo+PiBTb21lIG9mIHRo
-ZSB0aGluZ3MgdGhhdCB3aWxsIGJlIGFkZGVkIGxhdGVyIG9uIGluY2x1ZGUgKGJ1dCBhcmUgbm90
-IGxpbWl0ZWQNCj4+IHRvKToNCj4+IC0gRFNDIHN1cHBvcnQNCj4+IC0gRkVDIHN1cHBvcnQNCj4+
-IC0gSERDUCBzdXBwb3J0DQo+IA0KPiBBIGZldyByYW5kb20gY29tbWVudHMvcXVlc3Rpb25zIGFm
-dGVyIGEgcXVpY2sgbG9vayBhdCB0aGUgcGF0Y2hlcy4NCj4gDQo+IFRoZSBuYW1lcyBvZiB0aGUg
-c291cmNlIGZpbGVzIGFuZCB0aGUga2VybmVsIEtjb25maWcgYXJlIG9ubHkgYWJvdXQNCj4gIkNh
-ZGVuY2UgRFAiLiBCdXQgdGhlIERUIGJpbmRpbmdzIGlzIGZvciBjZG5zLG1oZHA4NTQ2LCBhbmQg
-dGhlDQo+IHJlc3VsdGluZyBtb2R1bGUgZmlsZSBpcyBtaGRwODU0Ni5rby4gSSB0aGluayBtb3Jl
-IGNvbnNpc3RlbmN5IGhlcmUNCj4gd291bGQgYmUgZ29vZC4NCj4gDQo+IEkgcHJlc3VtZSB0aGUg
-cGFydCBudW1iZXIgKG9yIGZhbWlseT8gYXJlIHRoZXJlIG90aGVyIHNpbWlsYXIgcGFydHMgd2l0
-aA0KPiBzaW1pbGFyIHBhcnQgbnVtYmVycz8pIGlzIHJlbGV2YW50LCBzbyBpdCBzaG91bGQgYmUg
-aW4gdGhlIEtjb25maWcNCj4gb3B0aW9uIGFuZCBoZWxwIHRleHQsIGFuZCBwcm9iYWJseSBpbiB0
-aGUgZmlsZSBuYW1lcyB0b28uIFRoZSBtb2R1bGUNCj4gbmFtZSBzaG91bGQgaGF2ZSAiY2RucyIg
-cHJlZml4IHRoZXJlLCBzaW1pbGFyIHRvIHRoZSBzb3VyY2UgZmlsZXMgYW5kDQo+IHRoZSBjZG5z
-LWRzaS5rby4NCj4gDQo+IE9yIG1heWJlIHRoZSBzYW1lIGRyaXZlciB3aWxsIGhhbmRsZSBhbGwg
-Q2FkZW5jZSBEUCBwYXJ0cywgaW4gd2hpY2ggY2FzZQ0KPiBnZW5lcmljIGZpbGVuYW1lcyBhcmUg
-ZmluZSwgYnV0IHRoZW4gdGhlIHJlc3VsdGluZyBrZXJuZWwgbW9kdWxlIHNob3VsZA0KPiBhbHNv
-IGJlIGp1c3QgImNkbnMtbWhkcC5rbyIuDQo+IA0KPiBJIHNlZSBzb21lIGF1ZGlvIGZ1bmN0aW9u
-cyBpbiB0aGUgY29kZSwgYnV0IGl0J3Mgbm90IG1lbnRpb25lZCBpbiB0aGUgRFQNCj4gYmluZGlu
-Z3MuIEknbSBub3QgYW4gYXVkaW8gZ3V5LCBidXQgdGhlIGRpc3BsYXkgYnJpZGdlcyB3aXRoIGF1
-ZGlvDQo+IHN1cHBvcnQgSSBoYXZlIHNlZW4gaGF2ZSBoYWQgRFQgYmluZGluZ3MgZm9yIHRoZSBh
-dWRpbyBzb3VyY2UgdG9vLiBJcw0KPiBhdWRpbyBzdXBwb3J0ZWQgaW4gdGhlIGN1cnJlbnQgZHJp
-dmVyPw0KPiANCj4gIFRvbWkNCj4gDQoNCi0tIA0KVGV4YXMgSW5zdHJ1bWVudHMgRmlubGFuZCBP
-eSwgUG9ya2thbGFua2F0dSAyMiwgMDAxODAgSGVsc2lua2kuDQpZLXR1bm51cy9CdXNpbmVzcyBJ
-RDogMDYxNTUyMS00LiBLb3RpcGFpa2thL0RvbWljaWxlOiBIZWxzaW5raQ0KX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWls
-aW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+On Sun, Mar 17, 2019 at 10:00 AM Russell King - ARM Linux admin
+<linux@armlinux.org.uk> wrote:
+>
+> On Sun, Mar 17, 2019 at 04:48:24PM +0000, M=C3=A5ns Rullg=C3=A5rd wrote:
+> > Stefan Agner <stefan@agner.ch> writes:
+> >
+> > > On 16.03.2019 16:39, Russell King - ARM Linux admin wrote:
+> > >> On Sat, Mar 16, 2019 at 01:33:58PM +0100, Marek Vasut wrote:
+> > >>> If you have a FS or partition table there, it does.
+> > >>> If you don't, I agree ... that's a problem.
+> > >>
+> > >> eMMC boot partitions are called mmcblkXbootY, and unless you have mo=
+re
+> > >> than one eMMC device on the system, they can be found either by look=
+ing
+> > >> for /dev/mmcblk*boot* or by querying udev.  The advantage of using u=
+dev
+> > >> is you can discover the physical device behind it by looking at DEVP=
+ATH,
+> > >> ID_PATH, etc, but you may not have that installed on an embedded dev=
+ice.
+> > >>
+> > >> However, as I say, just looking for /dev/mmcblk*boot* is sufficient =
+to
+> > >> find the eMMC boot partitions where there is just one eMMC device
+> > >> present (which seems to be the standard setup.)
+> > >>
+> > >>> > I don't care the slightest what the numbering is, as long as it i=
+s
+> > >>> > stable.  On some hardware, with an unpatched kernel, the mmc devi=
+ce
+> > >>> > numbering changes depending on whether or not an SD card is inser=
+ted on
+> > >>> > boot.  Getting rid of that behaviour is really all I want.
+> > >>>
+> > >>> Agreed, that would be an improvement.
+> > >>
+> > >> The mmc device numbering was tied to the mmc host numbering a while =
+back
+> > >> and the order that the hosts are probed should be completely indepen=
+dent
+> > >> of whether a card is inserted or not:
+> > >>
+> > >>         snprintf(md->disk->disk_name, sizeof(md->disk->disk_name),
+> > >>                  "mmcblk%u%s", card->host->index, subname ? subname =
+: "");
+> > >>
+> > >>         snprintf(rpmb_name, sizeof(rpmb_name),
+> > >>                  "mmcblk%u%s", card->host->index, subname ? subname =
+: "");
+> > >>
+> > >> I suspect that Mans is quoting something from the dim and distant pa=
+st
+> > >> to confuse the issue - as shown above, it is now dependent on the ho=
+st
+> > >> numbering order not the order in which cards are inserted.
+> > >
+> > > Commit 9aaf3437aa72 ("mmc: block: Use the mmc host device index as th=
+e
+> > > mmcblk device index") which came in with v4.6 enables constant mmc bl=
+ock
+> > > device numbering. I can confirm that it works nicely, and it improved
+> > > the situation a lot.
+> >
+> > That's the answer I was looking for.  I guess we can drop these patches
+> > from our kernels then.
+> >
+> > > That being said, we still use a patch downstream which allows
+> > > renumbering using an alias. We deal with a bunch of different boards
+> > > with different SoC's. I have a couple of SD cards with various rootfs
+> > > and use internal eMMC boot quite often as well. Remembering which boa=
+rd
+> > > uses which numbering is a pain. Maintaining a patch is just easier...
+> > > Furthermore, U-Boot allows reordering and all boards I deal with use =
+mmc
+> > > 0 for the internal eMMC. The aliases allow consistency.
+> >
+> > Since pretty much every other device type supports renumbering with DT
+> > aliases, it would make sense to do this for mmc as well.
+>
+> SATA does not.  SCSI devices, whether they are disks, cdroms, tape
+> drives or whatever have always been allocated dynamically in the
+> order that they are discovered.
+>
+> Ethernet also does not, and davem remains opposed the idea of fixed
+> allocation in the kernel.
+>
+> It's only a minority that demand fixed enumeration of devices.
+>
+
+Russell,
+
+How does this case differ form defining a 'stdout-path' in the chosen
+node of the device-tree [1] purposed to provide a path to the boot
+console device among multiple UART's a board may have.
+
+Again, I'm merely trying to overcome the fact that on one of my IMX6
+boards usdhc2 registers as 'mmcblk0' and is an SDIO radio while usdhc3
+registers as 'mmcblk1' and is the only 'bootable' device. I'm not all
+that familiar with SDIO drivers... perhaps its completely wrong that
+the IMX6 MMC driver is registering usdhc2 as a 'block device'?
+
+Tim
+[1] https://www.kernel.org/doc/Documentation/devicetree/bindings/chosen.txt
