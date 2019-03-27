@@ -1,69 +1,28 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: add rk3399 UART DMAs
-Date: Wed, 27 Mar 2019 12:10:05 +0000
-Message-ID: <07287fad-c3e6-bcf2-a247-fe4f5031900e@arm.com>
-References: <20190321162244.10080-1-katsuhiro@katsuster.net>
- <8309531.dRdlsDmmhi@phil> <f2d0a95f-33c0-cdeb-80e3-0cd04bd0871d@arm.com>
- <e7bcf8b9-123e-eb30-f47d-7f8855f30ccb@katsuster.net>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 1/2] dt-bindings: ARM: dts: rockchip: Add bindings for rk3288-veyron-mighty
+Date: Wed, 27 Mar 2019 13:19:36 +0100
+Message-ID: <1915099.lzZODYNdzv@phil>
+References: <20190325162005.99391-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e7bcf8b9-123e-eb30-f47d-7f8855f30ccb@katsuster.net>
-Content-Language: en-GB
+In-Reply-To: <20190325162005.99391-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Katsuhiro Suzuki <katsuhiro@katsuster.net>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: mka@chromium.org, ryandcase@chromium.org, Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org, Alexis Ballier <aballier@gentoo.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Akash Gajjar <Akash_Gajjar@mentor.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 26/03/2019 13:49, Katsuhiro Suzuki wrote:
-> Hello Robin,
+Am Montag, 25. März 2019, 17:20:04 CET schrieb Douglas Anderson:
+> Mighty is basically the same Chromebook as Jaq but it has a full-sized
+> SD slot and some different (slightly more rugged) plastics around it.
+> Like Jaq, Mighty may show up with various different brandings but all
+> of them have the same board inside.
 > 
-> Sorry for inconvenience. Since I don't adhere enabling DMA for UARTs,
-> please revert my patch if you need.
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 
-I found a little time to fire up the board again this morning, so I gave 
-this another try to double-check - in fact this time I only saw it fail 
-3 times in 15 reboots. So something's certainly not quite right, but 
-it's not quite as terrible as the first try implied.
+applied both patches for 5.2
 
-My suspicion at this point is that the DMA implementation might be 
-losing characters occasionally, and obviously the bluetooth firmware 
-transfer is going to be a lot more sensitive to that than a text console is.
-
-> BTW, there are DMA properties in RK3328 device-tree like as this patch.
-> RK3328 UART DMA could not work correctly too...??
-
-Quite possibly, although my 3328 box doesn't have any UARTS connected or 
-exposed other than the standard debug console, so I can't easily 
-investigate there. I do have a 3288 box with similar serial bluetooth to 
-my 3399 which might be worth digging out for comparison with an 
-up-to-date kernel.
-
-Robin.
-
-> 
-> Best Regards,
-> Katsuhiro Suzuki
-> 
-> 
-> On 2019/03/26 20:48, Robin Murphy wrote:
->> On 25/03/2019 12:34, Heiko Stuebner wrote:
->>> Am Donnerstag, 21. MÃ¤rz 2019, 17:22:44 CET schrieb Katsuhiro Suzuki:
->>>> Add UART dma channels as specified by the rk3399 TRM.
->>>>
->>>> Refer:
->>>> RK3399 TRM V1.4: Chapter 12 DMA Controller
->>>>
->>>> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
->>>
->>> applied for 5.2
->>
->> As a heads-up, I did manage to try my board with this patch applied 
->> over the weekend, and it makes probing the bluetooth adapter fail with 
->> communication errors, so I'm not sure the 8250 and pl330 drivers are 
->> really cooperating well enough :(
->>
->> Robin.
->>
-> 
+Thanks
+Heiko
