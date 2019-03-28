@@ -1,15 +1,16 @@
-From: Jack Mitchell <ml-psbXN780rFT10XsdtD+oqA@public.gmane.org>
-Subject: Re: rk3399: nanopc-t4 usb otg
-Date: Thu, 28 Mar 2019 13:32:26 +0000
-Message-ID: <28a5b5e5-90f9-7e5e-c078-ab4515c47b49@embed.me.uk>
-References: <a94d70c2-8495-bf91-41c5-bff013ade381@embed.me.uk>
- <2458cca9-4209-7658-b4ba-e2067a3fbce5@arm.com>
+From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Subject: Re: [PATCH v2 08/11] rockchip/vpu: Support the Request API
+Date: Thu, 28 Mar 2019 14:59:00 +0100
+Message-ID: <0618322f-ac2b-fbcd-47f2-68173318f8d7@xs4all.nl>
+References: <20190304192529.14200-1-ezequiel@collabora.com>
+ <20190304192529.14200-9-ezequiel@collabora.com>
+ <CAAFQd5C5zo=03-mLh4OztKS+dCjVMUe1Za25ff+dWjxQDLFLng@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2458cca9-4209-7658-b4ba-e2067a3fbce5-5wv7dgnIgG8@public.gmane.org>
-Content-Language: en-GB
+In-Reply-To: <CAAFQd5C5zo=03-mLh4OztKS+dCjVMUe1Za25ff+dWjxQDLFLng-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,44 +20,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjgvMDMvMjAxOSAxMjoyMSwgUm9iaW4gTXVycGh5IHdyb3RlOgo+IEhpIEphY2ssCj4KPiBP
-biAyOC8wMy8yMDE5IDExOjM0LCBKYWNrIE1pdGNoZWxsIHdyb3RlOgo+PiBIaSwKPj4KPj4gQ2Fu
-IGFueW9uZSBjb25maXJtIHdvcmtpbmcgb3BlcmF0aW9uIG9mIFVTQiBPVEcgb3ZlciBhIHR5cGUg
-YyBwaHkgb24gYW4KPj4gUkszMzk5IGF0IGNvbW1pdCA4YzJmZmQ5MTc0Nzc5MDE0YzNmZTFmOTZk
-OWRjMzY0MWQ5MTc1ZjAwICh0YWc6Cj4+IHY1LjEtcmMyKS4KPj4KPj4gSSd2ZSBnb3QgYSBuYW5v
-cGMtdDQgaGVyZSBhbmQgd2hlbiBJIHRyeSB0byBsb2FkIHRoZSBnX2V0aGVyIGRyaXZlciBJCj4+
-IHJlY2VpdmUKPj4KPj4gW8KgwqDCoCA2LjM1OTI4MF0gdWRjLWNvcmU6IGNvdWxkbid0IGZpbmQg
-YW4gYXZhaWxhYmxlIFVEQyAtIGFkZGVkCj4+IFtnX2V0aGVyXSB0byBsaXN0IG9mIHBlbmRpbmcg
-ZHJpdmVycwo+Pgo+PiBJJ3ZlIGhhZCBhIGxvb2sgdGhyb3VnaCB0aGUgZHRzIGFuZCBhbGwgc2Vl
-bXMgdG8gYmUgaW4gb3JkZXIuIFVTQgo+PiBkZXZpY2VzIHdvcmsgZmluZSBpbiB0aGUgaG9zdCBw
-b3J0cyBhbmQgSSd2ZSBjb25maXJtZWQgb3RnIG1vZGUuCj4+Cj4+IHJvb3RAcmszMzk5Oi9zeXMv
-a2VybmVsL2RlYnVnL2ZlODAwMDAwLmR3YzMjIGNhdCBtb2RlCj4+IG90Zwo+Pgo+PiBUaGUgY2Fi
-bGUgaXMgYmVpbmcgZGV0ZWN0ZWQgYXQgcGx1Zy91bnBsdWcgYXMgY2FuIGJlIHNlZW4gZnJvbQo+
-Pgo+PiBbIDEyNTIuNDc5MjczXSBwaHkgcGh5LWZmNzcwMDAwLnN5c2Nvbjp1c2IyLXBoeUBlNDUw
-LjI6IGNoYXJnZXIgPQo+PiBVU0JfU0RQX0NIQVJHRVIKPj4KPj4gTXkgZGVmY29uZmlnIGlzIHRo
-ZSBzdGFuZGFyZCBhcm02NCBhcyBwcm92aWRlZCB3aXRoIHRoZSBhZGRpdGlvbiBvZgo+PiBDT05G
-SUdfVVNCX0VUSD1tLgo+Pgo+PiBBbnkgaW5mb3JtYXRpb24gd291bGQgYmUgaGVscGZ1bCwgZXNw
-ZWNpYWxseSBpZiB0aGlzIGlzIHdvcmtpbmcgb24gb3RoZXIKPj4gMzM5OSBiYXNlZCBib2FyZHMg
-YXQgdGhlIG1lbnRpb25lZCBjb21taXQuCj4KPiBJJ3ZlIG5vdCB0cmllZCB0aGUgdHlwZSBDIHBv
-cnQgc2luY2UgSSB3YXMgcGxheWluZyB3aXRoIHRoZSBpbml0aWFsCj4gZHRzLCBidXQgSUlSQyBu
-b3QgZXZlbiBob3N0IG1vZGUgd2FzIHdvcmtpbmcgYXQgdGhhdCBwb2ludC4gTXkgdmFndWUKPiB1
-bmRlcnN0YW5kaW5nIGlzIHRoYXQgdGhlcmUgd2FzIChhbmQgcHJvYmFibHkgc3RpbGwgaXMpIHNv
-bWUKPiBjb21tdW5pY2F0aW9uIG1pc3NpbmcgYmV0d2VlbiB0aGUgZnVzYjMwMiBkcml2ZXIgYW5k
-IHRoZSBkd2MzIGRyaXZlcgo+IChzaW5jZSBOYW5vUEMtVDQgaXMgdXNpbmcgdGhhdCBleHRlcm5h
-bCBjaGlwIHJhdGhlciB0aGFuIHRoZSBSSzMzOTkncwo+IGludGVybmFsIHR5cGUgQyBjb250cm9s
-bGVyKS4KPgo+IEl0J3MgY2VydGFpbmx5IHNvbWV0aGluZyBJJ3ZlIGJlZW4gbWVhbmluZyB0byBj
-b21lIGJhY2sgYW5kIHRha2UKPiBhbm90aGVyIGxvb2sgYXQsIHNvIEknbGwgdHJ5IHRvIGhhdmUg
-YSBwbGF5IG92ZXIgdGhlIHdlZWtlbmQgdG8gc2VlCj4gaG93IG11Y2ggSSBjYW4gbWFrZSBzZW5z
-ZSBvZi4KPgo+IFJvYmluLgoKVGhhbmtzIFJvYmluLCBhbmQgSSBhcHByZWNpYXRlIHlvdSBhZGRp
-bmcgdGhlIGluaXRpYWwgZHRzLCBJJ3ZlIGdvdCBhCnBhdGNoIGZvciBtYWlubGluZSB1Ym9vdCB3
-aGljaCBJJ2xsIHRyeSBzdWJtaXQgc29vbiB3aGljaCBnaXZlcyB1cyBhCmZ1bGwgbWFpbmxpbmUg
-c3RhY2suCgpJJ3ZlIHNlZW4gb3RoZXIgZGlzY3Vzc2lvbnMgYXJvdW5kIHRoZSBmdXNiMzAyIHdp
-dGggb3RoZXIgYm9hcmRzIHNvIEknbGwKdHJ5IHBva2luZyBhcm91bmQgYW5kIHNlZSBpZiBJIGNh
-biBjb21lIHVwIHdpdGggYW55dGhpbmcuCgpUaGFua3MgZm9yIHRoZSB0aXAhCgpDaGVlcnMsCgpK
-YWNrLgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+On 3/28/19 8:20 AM, Tomasz Figa wrote:
+
+<snip>
+
+>> +static int rockchip_vpu_buf_out_validate(struct vb2_buffer *vb)
+>> +{
+>> +       struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
+>> +
+>> +       vbuf->field = V4L2_FIELD_NONE;
+> 
+> Hmm, "validate" in the name of this callback would suggest that we
+> should just check the contents, not change them. Hans, what was the
+> intention when adding this callback? Are we missing the const
+> specifier in the argument?
+
+See the original commit log:
+
+https://www.mail-archive.com/linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org/msg143163.html
+
+It is allowed to either just validate and return an error if wrong,
+or change it to something known to be valid. In particular, userspace
+can set this to FIELD_ANY, and in that case the driver must replace
+it with something valid.
+
+Most drivers just support FIELD_NONE, and just set it.
+
+That said, I think we should tighten the spec for this as this is
+not well documented.
+
+I propose that if vbuf->field == FIELD_ANY, then replace it with something
+sane. Otherwise validate it and return an error if the field value
+is not supported.
+
+And FIELD_ALTERNATE is never allowed here, that's always wrong.
+
+Regards,
+
+	Hans
