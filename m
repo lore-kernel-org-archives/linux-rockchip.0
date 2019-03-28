@@ -1,83 +1,87 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v4 6/7] ARM: dts: rockchip: Specify rk3288-veyron-jerry's display timings
-Date: Thu, 28 Mar 2019 10:17:09 -0700
-Message-ID: <20190328171710.31949-7-dianders@chromium.org>
+Subject: [PATCH v4 4/7] drm/panel: simple: Use display_timing for Innolux
+ n116bge
+Date: Thu, 28 Mar 2019 10:17:07 -0700
+Message-ID: <20190328171710.31949-5-dianders@chromium.org>
 References: <20190328171710.31949-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20190328171710.31949-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dri-devel@lists.freedesktop.org, Boris Brezillon <boris.brezillon@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, =?UTF-8?q?Enric=20Balletb=C3=B2?= <enric.balletbo@collabora.com>, Rob Herring <robh+dt@kernel.org>, mka@chromium.org, Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Cc: Rob Herring <robh+dt@kernel.org>, David Airlie <airlied@linux.ie>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Boris Brezillon <boris.brezillon@collabora.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?UTF-8?q?Enric=20Balletb=C3=B2?= <enric.balletbo@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, mka@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Let's document the display timings that jerry has been using out in
-the field.  This uses the standard blankings but a slightly slower
-clock rate, thus getting a refresh rate 58.3 Hz.
-
-NOTE: this won't really do anything except cause DRM to properly
-report the refresh rate since vop_crtc_mode_fixup() was rounding the
-pixel clock to 74.25 MHz anyway.  Apparently the adjusted rate isn't
-exposed to userspace so it's important that the rate we're trying to
-achieve is mostly right.
-
-For the downstream kernel change related to this see See
-https://crrev.com/c/324558.
-
-NOTE: minnie will be fixed up in a future patch, so for now we'll just
-delete the panel timings there.
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
-
-Changes in v4:
-- rk3288-veyron-jerry patch new for v4.
-
-Changes in v3: None
-Changes in v2: None
-
- arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi | 14 ++++++++++++++
- arch/arm/boot/dts/rk3288-veyron-minnie.dts      |  2 ++
- 2 files changed, 16 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-index b54746df3661..0b1789b50c21 100644
---- a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-@@ -76,6 +76,20 @@
- 		power-supply = <&vcc33_lcd>;
- 		backlight = <&backlight>;
- 
-+		panel-timing {
-+			clock-frequency = <74250000>;
-+			hactive = <1366>;
-+			hfront-porch = <136>;
-+			hback-porch = <60>;
-+			hsync-len = <30>;
-+			hsync-active = <0>;
-+			vactive = <768>;
-+			vfront-porch = <8>;
-+			vback-porch = <12>;
-+			vsync-len = <12>;
-+			vsync-active = <0>;
-+		};
-+
- 		ports {
- 			panel_in: port {
- 				panel_in_edp: endpoint {
-diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-index f95d0c5fcf71..ca7512ade222 100644
---- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-@@ -142,6 +142,8 @@
- &panel {
- 	compatible = "auo,b101ean01", "simple-panel";
- 	power-supply= <&panel_regulator>;
-+
-+	/delete-node/ panel-timing;
- };
- 
- &rk808 {
--- 
-2.21.0.392.gf8f6787159e-goog
+Q29udmVydCB0aGUgSW5ub2x1eCBuMTE2YmdlIGZyb20gdXNpbmcgYSBmaXhlZCBtb2RlIHRvIHNw
+ZWNpZnlpbmcgYQpkaXNwbGF5IHRpbWluZyB3aXRoIG1pbi90eXAvbWF4IHZhbHVlcy4KCk5vdGUg
+dGhhdCB0aGUgbjExNmJnZSdzIGRhdGFzaGVldCBkb2Vzbid0IGZpdCB0b28gd2VsbCBpbnRvIERS
+TSdzIHdheQpvZiBzcGVjaWZ5aW5nIHRoaW5ncy4gIFNwZWNpZmljYWxseSB0aGUgcGFuZWwncyBk
+YXRhc2hlZXQganVzdApzcGVjaWZpZXMgdGhlIHZlcnRpY2FsIGJsYW5raW5nIHBlcmlvZCBhbmQg
+aG9yaXpvbnRhbCBibGFua2luZyBwZXJpb2QKYW5kIGRvZXNuJ3QgYnJlYWsgdGhpbmdzIG91dC4g
+IEZvciBub3cgd2UnbGwgbGVhdmUgZXZlcnl0aGluZyBhcyBhCmZpeGVkIHZhbHVlIGJ1dCBqdXN0
+IGFsbG93IGFkanVzdGluZyB0aGUgcGl4ZWwgY2xvY2suICBJJ3ZlIGFkZGVkIGEKY29tbWVudCBv
+biB3aGF0IHRoZSBkYXRhc2hlZXQgY2xhaW1zIHNvIHNvbWVvbmUgY291bGQgbGF0ZXIgZXhwYW5k
+CnRoaW5ncyB0byBmaXQgdGhlaXIgbmVlZHMgaWYgdGhleSB3YW50ZWQgdG8gdGVzdCBvdGhlciBi
+bGFua2luZwpwZXJpb2RzLgoKVGhlIGdvYWwgaGVyZSBpcyB0byBiZSBhYmxlIHRvIHNwZWNpZnkg
+dGhlIHBhbmVsIHRpbWluZ3MgaW4gdGhlIGRldmljZQp0cmVlIGZvciBzZXZlcmFsIHJrMzI4OCBD
+aHJvbWVib29rcyAobGlrZSByazMyODgtdmVyeW9uLWplcnJ5KS4gIFRoZXNlCkNocm9tZWJvb2tz
+IGhhdmUgYWxsIGJlZW4gcnVubmluZyBpbiB0aGUgZG93bnN0cmVhbSBrZXJuZWwgd2l0aCB0aGUK
+c3RhbmRhcmQgcG9yY2hlcyBhbmQgc3luYyBsZW5ndGhzIGJ1dCBqdXN0IHdpdGggYSBzbGlnaHRs
+eSBzbG93ZXIKcGl4ZWwgY2xvY2sgYmVjYXVzZSB0aGUgNzYuNDIgTUh6IGNsb2NrIGlzIG5vdCBh
+Y2hpZXZhYmxlIGZyb20gdGhlCmZpeGVkIFBMTCB0aGF0IHdhcyBhdmFpbGFibGUuICBUaGVzZSBD
+aHJvbWVib29rcyBvbmx5IGFjaGlldmUgYQpyZWZyZXNoIHJhdGUgb2YgfjU4IEh6LiAgV2hpbGUg
+aXQncyBwcm9iYWJsZSB0aGF0IHdlIGNvdWxkIGFkanVzdCB0aGUKdGltaW5ncyB0byBhY2hpZXZl
+IDYwIEh6IGl0J3MgcHJvYmFibHkgd2lzZXN0IHRvIG1hdGNoIHdoYXQncyBiZWVuCnJ1bm5pbmcg
+b24gdGhlc2UgZGV2aWNlcyBhbGwgdGhlc2UgeWVhcnMuCgpJJ2xsIG5vdGUgdGhhdCB0aG91Z2gg
+dGhlIHVwc3RyZWFtIGtlcm5lbCBoYXMgYWx3YXlzIHRyaWVkIHRvIGFjaGlldmUKNzYuNDIgTUh6
+LCBpdCBoYXMgYWN0dWFsbHkgYmVlbiBydW5uaW5nIGF0IDc0LjI1IE1IeiBhbHNvIHNpbmNlIHRo
+ZQp2aWRlbyBwcm9jZXNzb3IgaXMgcGFyZW50ZWQgb2ZmIHRoZSBzYW1lIGZpeGVkIFBMTC4KCkNo
+YW5nZXMgaW4gdjQ6CiAtIGRpc3BsYXlfdGltaW5nIGZvciBJbm5vbHV4IG4xMTZiZ2UgbmV3IGZv
+ciB2NC4KClNpZ25lZC1vZmYtYnk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVt
+Lm9yZz4KLS0tCgogZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5jIHwgMzcgKysr
+KysrKysrKysrKysrKystLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDIzIGluc2VydGlvbnMo
+KyksIDE0IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9wYW5lbC9w
+YW5lbC1zaW1wbGUuYyBiL2RyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUuYwppbmRl
+eCBhZDRmNGFhYzJkNDQuLjdkNDA3ZmFiMzYyOCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJt
+L3BhbmVsL3BhbmVsLXNpbXBsZS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1z
+aW1wbGUuYwpAQCAtMTU1MCwyMyArMTU1MCwzMiBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHBhbmVs
+X2Rlc2MgaW5ub2x1eF9nMTIxeDFfbDAzID0gewogCX0sCiB9OwogCi1zdGF0aWMgY29uc3Qgc3Ry
+dWN0IGRybV9kaXNwbGF5X21vZGUgaW5ub2x1eF9uMTE2YmdlX21vZGUgPSB7Ci0JLmNsb2NrID0g
+NzY0MjAsCi0JLmhkaXNwbGF5ID0gMTM2NiwKLQkuaHN5bmNfc3RhcnQgPSAxMzY2ICsgMTM2LAot
+CS5oc3luY19lbmQgPSAxMzY2ICsgMTM2ICsgMzAsCi0JLmh0b3RhbCA9IDEzNjYgKyAxMzYgKyAz
+MCArIDYwLAotCS52ZGlzcGxheSA9IDc2OCwKLQkudnN5bmNfc3RhcnQgPSA3NjggKyA4LAotCS52
+c3luY19lbmQgPSA3NjggKyA4ICsgMTIsCi0JLnZ0b3RhbCA9IDc2OCArIDggKyAxMiArIDEyLAot
+CS52cmVmcmVzaCA9IDYwLAotCS5mbGFncyA9IERSTV9NT0RFX0ZMQUdfTkhTWU5DIHwgRFJNX01P
+REVfRkxBR19OVlNZTkMsCisvKgorICogRGF0YXNoZWV0IHNwZWNpZmllcyB0aGF0IGF0IDYwIEh6
+IHJlZnJlc2ggcmF0ZToKKyAqIC0gdG90YWwgaG9yaXpvbnRhbCB0aW1lOiB7IDE1MDYsIDE1OTIs
+IDE3MTYgfQorICogLSB0b3RhbCB2ZXJ0aWNhbCB0aW1lOiB7IDc4OCwgODAwLCA4NjggfQorICoK
+KyAqIC4uLmJ1dCBkb2Vzbid0IGdvIGludG8gZXhhY3RseSBob3cgdGhhdCBzaG91bGQgYmUgc3Bs
+aXQgaW50byBhIGZyb250CisgKiBwb3JjaCwgYmFjayBwb3JjaCwgb3Igc3luYyBsZW5ndGguICBG
+b3Igbm93IHdlJ2xsIGxlYXZlIGEgc2luZ2xlIHNldHRpbmcKKyAqIGhlcmUgd2hpY2ggYWxsb3dz
+IGEgYml0IG9mIHR3ZWFraW5nIG9mIHRoZSBwaXhlbCBjbG9jayBhdCB0aGUgZXhwZW5zZSBvZgor
+ICogcmVmcmVzaCByYXRlLgorICovCitzdGF0aWMgY29uc3Qgc3RydWN0IGRpc3BsYXlfdGltaW5n
+IGlubm9sdXhfbjExNmJnZV90aW1pbmcgPSB7CisJLnBpeGVsY2xvY2sgPSB7IDcyNjAwMDAwLCA3
+NjQyMDAwMCwgODAyNDAwMDAgfSwKKwkuaGFjdGl2ZSA9IHsgMTM2NiwgMTM2NiwgMTM2NiB9LAor
+CS5oZnJvbnRfcG9yY2ggPSB7IDEzNiwgMTM2LCAxMzYgfSwKKwkuaGJhY2tfcG9yY2ggPSB7IDYw
+LCA2MCwgNjAgfSwKKwkuaHN5bmNfbGVuID0geyAzMCwgMzAsIDMwIH0sCisJLnZhY3RpdmUgPSB7
+IDc2OCwgNzY4LCA3NjggfSwKKwkudmZyb250X3BvcmNoID0geyA4LCA4LCA4IH0sCisJLnZiYWNr
+X3BvcmNoID0geyAxMiwgMTIsIDEyIH0sCisJLnZzeW5jX2xlbiA9IHsgMTIsIDEyLCAxMiB9LAor
+CS5mbGFncyA9IERJU1BMQVlfRkxBR1NfVlNZTkNfTE9XIHwgRElTUExBWV9GTEFHU19IU1lOQ19M
+T1csCiB9OwogCiBzdGF0aWMgY29uc3Qgc3RydWN0IHBhbmVsX2Rlc2MgaW5ub2x1eF9uMTE2Ymdl
+ID0gewotCS5tb2RlcyA9ICZpbm5vbHV4X24xMTZiZ2VfbW9kZSwKLQkubnVtX21vZGVzID0gMSwK
+KwkudGltaW5ncyA9ICZpbm5vbHV4X24xMTZiZ2VfdGltaW5nLAorCS5udW1fdGltaW5ncyA9IDEs
+CiAJLmJwYyA9IDYsCiAJLnNpemUgPSB7CiAJCS53aWR0aCA9IDI1NiwKLS0gCjIuMjEuMC4zOTIu
+Z2Y4ZjY3ODcxNTllLWdvb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
+dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbA==
