@@ -1,77 +1,76 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v4 3/7] arm64: dts: rockchip: Specify override mode for kevin panel
-Date: Thu, 28 Mar 2019 10:17:06 -0700
-Message-ID: <20190328171710.31949-4-dianders@chromium.org>
+Subject: [PATCH v4 5/7] drm/panel: simple: Use display_timing for AUO b101ean01
+Date: Thu, 28 Mar 2019 10:17:08 -0700
+Message-ID: <20190328171710.31949-6-dianders@chromium.org>
 References: <20190328171710.31949-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20190328171710.31949-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dri-devel@lists.freedesktop.org, Boris Brezillon <boris.brezillon@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, =?UTF-8?q?Enric=20Balletb=C3=B2?= <enric.balletbo@collabora.com>, Rob Herring <robh+dt@kernel.org>, mka@chromium.org, Doug Anderson <dianders@chromium.org>, Eric Anholt <eric@anholt.net>, Jeffy Chen <jeffy.chen@rock-chips.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, devicetree@vger.kernel.org, Brian Norris <briannorris@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-kernel@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Viresh Kumar <viresh.kumar>
+Cc: linux-rockchip@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dri-devel@lists.freedesktop.org, Boris Brezillon <boris.brezillon@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, =?UTF-8?q?Enric=20Balletb=C3=B2?= <enric.balletbo@collabora.com>, Rob Herring <robh+dt@kernel.org>, mka@chromium.org, Douglas Anderson <dianders@chromium.org>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Sean Paul <seanpaul@chromium.org>
+Convert the AUO b101ean01 from using a fixed mode to specifying a
+display timing with min/typ/max values.
 
-This patch adds an override mode for kevin devices. The mode increases
-both back porches to allow a pixel clock of 26666kHz as opposed to the
-'typical' value of 252750kHz. This is needed to avoid interference with
-the touch digitizer on these laptops.
+The AUO b101ean01's datasheet says:
+* Vertical blanking min is 12
+* Horizontal blanking min is 60
+* Pixel clock is between 65.3 MHz and 75 MHz
 
-Cc: Doug Anderson <dianders@chromium.org>
-Cc: Eric Anholt <eric@anholt.net>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: Rob Herring <robh+dt@kernel.org>
-Cc: Stéphane Marchesin <marcheu@chromium.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>
-Cc: devicetree@vger.kernel.org
-Cc: dri-devel@lists.freedesktop.org
-Cc: linux-rockchip@lists.infradead.org
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
-Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+The goal here is to be able to specify the proper timing in device
+tree to use on rk3288-veyron-minnie to match what the downstream
+kernel is using so that it can used the fixed PLL.
+
+Changes in v4:
+ - display_timing for AUO b101ean01 new for v4.
+
 Signed-off-by: Douglas Anderson <dianders@chromium.org>
 ---
 
-Changes in v4:
-- Rebase to top of Heiko's tree
-- Converted changelog to after-the-cut for non-DRM change.
+ drivers/gpu/drm/panel/panel-simple.c | 25 ++++++++++++-------------
+ 1 file changed, 12 insertions(+), 13 deletions(-)
 
-Changes in v3:
-- Unwrap the timing from display-timings and rename panel-timing (Rob)
-
-Changes in v2:
-- Wrap the timing in display-timings node to match binding (Rob/Thierry)
-
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-index 15e254a77391..454f4149585f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-@@ -43,6 +43,20 @@
- 		backlight = <&backlight>;
- 		power-supply = <&pp3300_disp>;
+diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
+index 7d407fab3628..c6c0625e1684 100644
+--- a/drivers/gpu/drm/panel/panel-simple.c
++++ b/drivers/gpu/drm/panel/panel-simple.c
+@@ -568,22 +568,21 @@ static const struct panel_desc auo_b101aw03 = {
+ 	},
+ };
  
-+		panel-timing {
-+			clock-frequency = <266604720>;
-+			hactive = <2400>;
-+			hfront-porch = <48>;
-+			hback-porch = <84>;
-+			hsync-len = <32>;
-+			hsync-active = <0>;
-+			vactive = <1600>;
-+			vfront-porch = <3>;
-+			vback-porch = <120>;
-+			vsync-len = <10>;
-+			vsync-active = <0>;
-+		};
-+
- 		port {
- 			panel_in_edp: endpoint {
- 				remote-endpoint = <&edp_out_panel>;
+-static const struct drm_display_mode auo_b101ean01_mode = {
+-	.clock = 72500,
+-	.hdisplay = 1280,
+-	.hsync_start = 1280 + 119,
+-	.hsync_end = 1280 + 119 + 32,
+-	.htotal = 1280 + 119 + 32 + 21,
+-	.vdisplay = 800,
+-	.vsync_start = 800 + 4,
+-	.vsync_end = 800 + 4 + 20,
+-	.vtotal = 800 + 4 + 20 + 8,
+-	.vrefresh = 60,
++static const struct display_timing auo_b101ean01_timing = {
++	.pixelclock = { 65300000, 72500000, 75000000 },
++	.hactive = { 1280, 1280, 1280 },
++	.hfront_porch = { 18, 119, 119 },
++	.hback_porch = { 21, 21, 21 },
++	.hsync_len = { 32, 32, 32 },
++	.vactive = { 800, 800, 800 },
++	.vfront_porch = { 4, 4, 4 },
++	.vback_porch = { 8, 8, 8 },
++	.vsync_len = { 18, 20, 20 },
+ };
+ 
+ static const struct panel_desc auo_b101ean01 = {
+-	.modes = &auo_b101ean01_mode,
+-	.num_modes = 1,
++	.timings = &auo_b101ean01_timing,
++	.num_timings = 1,
+ 	.bpc = 6,
+ 	.size = {
+ 		.width = 217,
 -- 
 2.21.0.392.gf8f6787159e-goog
