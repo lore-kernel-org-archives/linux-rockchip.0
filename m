@@ -1,123 +1,77 @@
-From: Kangjie Lu <kjlu@umn.edu>
-Subject: Re: [PATCH v3] media: rga: fix NULL pointer dereferences,
- use-after-free, memory leak
-Date: Thu, 28 Mar 2019 10:00:09 -0500
-Message-ID: <c1751cd8-f93d-7045-d7ed-911c88ba9650@umn.edu>
-References: <ff11d704-489f-836e-6c9d-1b2fb5e963b6@arm.com>
- <20190314050344.29790-1-kjlu@umn.edu>
- <47c6d19c-96bd-49e1-7a3e-702fc50df670@xs4all.nl>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v4 0/7] drm/panel: simple: Add mode support to devicetree
+Date: Thu, 28 Mar 2019 10:17:03 -0700
+Message-ID: <20190328171710.31949-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <47c6d19c-96bd-49e1-7a3e-702fc50df670@xs4all.nl>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: pakki001@umn.edu, Jacob chen <jacob2.chen@rock-chips.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, David Airlie <airlied@linux.ie>, Viresh Kumar <viresh.kumar@linaro.org>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Boris Brezillon <boris.brezillon@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?UTF-8?q?Enric=20Balletb=C3=B2?= <enric.balletbo@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, mka@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-On 3/28/19 9:47 AM, Hans Verkuil wrote:
-> Hi Kangjie,
->
-> Unfortunately there are more issues with the cleanup sequence in
-> this probe function:
->
-> On 3/14/19 6:03 AM, Kangjie Lu wrote:
->> 1. dma_alloc_attrs, __get_free_pages can fail and return NULL.
->> Further uses of their return values lead to NULL pointer
->> dereferences
->>
->> 2. In the error-handling path, video_unregister_device uses
->> "rga->vfd" which has been freed by video_device_release
->>
->> 3. The error handling for v4l2_m2m_init and video_register_device
->> has memory-leak issues
->>
->> The patch fixes the above issues.
->>
->> Signed-off-by: Kangjie Lu <kjlu@umn.edu>
->> ---
->>   drivers/media/platform/rockchip/rga/rga.c | 26 ++++++++++++++++++++---
->>   1 file changed, 23 insertions(+), 3 deletions(-)
->>
->> diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
->> index 5c653287185f..468365ceb99d 100644
->> --- a/drivers/media/platform/rockchip/rga/rga.c
->> +++ b/drivers/media/platform/rockchip/rga/rga.c
->> @@ -889,11 +889,24 @@ static int rga_probe(struct platform_device *pdev)
->>   	rga->cmdbuf_virt = dma_alloc_attrs(rga->dev, RGA_CMDBUF_SIZE,
->>   					   &rga->cmdbuf_phy, GFP_KERNEL,
->>   					   DMA_ATTR_WRITE_COMBINE);
->> +	if (!rga->cmdbuf_virt) {
->> +		ret = -ENOMEM;
->> +		goto unreg_video_dev;
-> Actually, the unreg_video_dev label makes no sense: if the video device
-> is successfully registered, then probe() returns 0. So you never need to
-> unregister the video device again. You *do* need to release it with
-> video_device_release().
->
-> So this should be a goto rel_vdev.
->
-> And the cleanup sequence at the end also fails to call v4l2_m2m_release().
->
-> Can you make v4?
-
-
-Thanks for the feedback. Will send a v4.
-
-
->
-> Thanks!
->
-> 	Hans
->
->> +	}
->>   
->>   	rga->src_mmu_pages =
->>   		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
->> +	if (!rga->src_mmu_pages) {
->> +		ret = -ENOMEM;
->> +		goto free_dma_attrs;
->> +	}
->> +
->>   	rga->dst_mmu_pages =
->>   		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
->> +	if (!rga->dst_mmu_pages) {
->> +		ret = -ENOMEM;
->> +		goto free_dst_pages;
->> +	}
->>   
->>   	def_frame.stride = (def_frame.width * def_frame.fmt->depth) >> 3;
->>   	def_frame.size = def_frame.stride * def_frame.height;
->> @@ -901,7 +914,7 @@ static int rga_probe(struct platform_device *pdev)
->>   	ret = video_register_device(vfd, VFL_TYPE_GRABBER, -1);
->>   	if (ret) {
->>   		v4l2_err(&rga->v4l2_dev, "Failed to register video device\n");
->> -		goto rel_vdev;
->> +		goto free_pages;
->>   	}
->>   
->>   	v4l2_info(&rga->v4l2_dev, "Registered %s as /dev/%s\n",
->> @@ -909,10 +922,17 @@ static int rga_probe(struct platform_device *pdev)
->>   
->>   	return 0;
->>   
->> -rel_vdev:
->> -	video_device_release(vfd);
->> +free_pages:
->> +	free_pages((unsigned long)rga->src_mmu_pages, 3);
->> +free_dst_pages:
->> +	free_pages((unsigned long)rga->dst_mmu_pages, 3);
->> +free_dma_attrs:
->> +	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
->> +		       rga->cmdbuf_phy,
->> +		       DMA_ATTR_WRITE_COMBINE);
->>   unreg_video_dev:
->>   	video_unregister_device(rga->vfd);
->> +	video_device_release(vfd);
->>   unreg_v4l2_dev:
->>   	v4l2_device_unregister(&rga->v4l2_dev);
->>   err_put_clk:
->>
+SSdtIHJldml2aW5nIFNlYW4gUGF1bCdzIG9sZCBwYXRjaHNldCB0byBnZXQgbW9kZSBzdXBwb3J0
+IGluIGRldmljZQp0cmVlLiAgVGhlIGNvdmVyIGxldHRlciBmb3IgaGlzIHYzIGlzIGF0OgpodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9hcmNoaXZlcy9kcmktZGV2ZWwvMjAxOC1GZWJydWFy
+eS8xNjUxNjIuaHRtbAoKSSd2ZSBwdWxsZWQgdG9nZXRoZXIgdGhlIHBhdGNoZXMgdGhhdCBkaWRu
+J3QgbGFuZCBpbiB2MywgYWRkcmVzc2VkCm91dHN0YW5kaW5nIGZlZWRiYWNrLCBhbmQgcmVwb3N0
+ZWQuICBBdG9wIHRoZW0gSSd2ZSBhZGRlZCBwYXRjaGVzIGZvcgpyazMyODgtdmV5cm9uLWplcnJ5
+IGFuZCByazMyODgtdmVyeW9uLW1pbm5pZS4KClBsZWFzZSBsZXQgbWUga25vdyBob3cgdGhleSBs
+b29rLgoKSW4gZ2VuZXJhbCBJIGhhdmUgYWRkZWQgcGVvcGxlIHRvIHRoZSB3aG9sZSBzZXJpZXMg
+d2hvIEkgdGhpbmsgd291bGQKbGlrZSB0aGUgd2hvbGUgc2VyaWVzIGFuZCB0aGVuIGxldCBnZXRf
+bWFpbnRhaW5lciBwaWNrIGV4dHJhIHBlb3BsZSBpdAp0aGlua3MgYXJlIHJlbGV2YW50IHRvIGVh
+Y2ggaW5kaXZpZHVhbCBwYXRjaC4gIElmIEkgc2VlIHlvdSByZXNwb25kIHRvCmFueSBvZiB0aGUg
+cGF0Y2hlcyBpbiB0aGUgc2VyaWVzLCB0aG91Z2gsIEknbGwgYWRkIHlvdSB0byB0aGUgd2hvbGUK
+c2VyaWVzIENjIGxpc3QgbmV4dCB0aW1lLgoKQ2hhbmdlcyBpbiB2NDoKLSBTaW1wbGlmeSBkZXNj
+LiBmb3Igd2hlbiBvdmVycmlkZSBzaG91bGQgYmUgdXNlZCAoVGhpZXJyeS9MYXVyZW50KQotIFJl
+bW92ZWQgUm9iIEggcmV2aWV3IHNpbmNlIGl0J3MgYmVlbiBhIHllYXIgYW5kIHdvcmRpbmcgY2hh
+bmdlZAotIERvbid0IGFkZCBtb2RlIGZyb20gdGltaW5nIGlmIG92ZXJyaWRlIHdhcyBzcGVjaWZp
+ZWQgKFRoaWVycnkpCi0gQWRkIHdhcm5pbmcgaWYgdGltaW5nIGFuZCBmaXhlZCBtb2RlIHdhcyBz
+cGVjaWZpZWQgKFRoaWVycnkpCi0gRG9uJ3QgYWRkIGZpeGVkIG1vZGUgaWYgdGltaW5nIHdhcyBz
+cGVjaWZpZWQgKFRoaWVycnkpCi0gUmVmYWN0b3IvcmVuYW1lIGEgYml0IHRvIGF2b2lkIGV4dHJh
+IGluZGVudGF0aW9uIGZyb20gImlmIiB0ZXN0cwotIGkgc2hvdWxkIGJlIHVuc2lnbmVkIChUaGll
+cnJ5KQotIEFkZCBhbm5veWluZyBXQVJOX09OcyBmb3Igc29tZSBjYXNlcyAoVGhpZXJyeSkKLSBT
+aW1wbGlmeSAnTm8gZGlzcGxheV90aW1pbmcgZm91bmQnIGhhbmRsaW5nIChUaGllcnJ5KQotIFJl
+bmFtZSB0byBwYW5lbF9zaW1wbGVfcGFyc2Vfb3ZlcnJpZGVfbW9kZSgpIChUaGllcnJ5KQotIFJl
+YmFzZSB0byB0b3Agb2YgSGVpa28ncyB0cmVlCi0gQ29udmVydGVkIGNoYW5nZWxvZyB0byBhZnRl
+ci10aGUtY3V0IGZvciBub24tRFJNIGNoYW5nZS4KLSBkaXNwbGF5X3RpbWluZyBmb3IgSW5ub2x1
+eCBuMTE2YmdlIG5ldyBmb3IgdjQuCi0gZGlzcGxheV90aW1pbmcgZm9yIEFVTyBiMTAxZWFuMDEg
+bmV3IGZvciB2NC4KLSByazMyODgtdmV5cm9uLWplcnJ5IHBhdGNoIG5ldyBmb3IgdjQuCi0gcmsz
+Mjg4LXZleXJvbi1taW5uaWUgcGF0Y2ggbmV3IGZvciB2NC4KCkNoYW5nZXMgaW4gdjM6Ci0gR28g
+YmFjayB0byB1c2luZyB0aGUgdGltaW5nIHN1Ym5vZGUgZGlyZWN0bHksIGJ1dCByZW5hbWUgdG8K
+ICBwYW5lbC10aW1pbmcgKFJvYikKLSBObyBsb25nZXIgcGFyc2UgZGlzcGxheS10aW1pbmdzIHN1
+Ym5vZGUsIHVzZSBwYW5lbC10aW1pbmcgKFJvYikKLSBVbndyYXAgdGhlIHRpbWluZyBmcm9tIGRp
+c3BsYXktdGltaW5ncyBhbmQgcmVuYW1lIHBhbmVsLXRpbWluZyAoUm9iKQoKQ2hhbmdlcyBpbiB2
+MjoKLSBTcGxpdCBvdXQgdGhlIGJpbmRpbmcgaW50byBhIG5ldyBwYXRjaCAoUm9iKQotIGRpc3Bs
+YXktdGltaW5ncyBpcyBhIG5ldyBzZWN0aW9uIChSb2IpCi0gVXNlIHRoZSBmdWxsIGRpc3BsYXkt
+dGltaW5ncyBzdWJub2RlIGluc3RlYWQgb2YgcGlja2luZyB0aGUgdGltaW5nCiAgb3V0IChSb2Iv
+VGhpZXJyeSkKLSBQYXJzZSB0aGUgZnVsbCBkaXNwbGF5LXRpbWluZ3Mgbm9kZSAodXNpbmcgdGhl
+IG5hdGl2ZS1tb2RlKSAoUm9iKQotIFdyYXAgdGhlIHRpbWluZyBpbiBkaXNwbGF5LXRpbWluZ3Mg
+bm9kZSB0byBtYXRjaCBiaW5kaW5nIChSb2IvVGhpZXJyeSkKCkRvdWdsYXMgQW5kZXJzb24gKDQp
+OgogIGRybS9wYW5lbDogc2ltcGxlOiBVc2UgZGlzcGxheV90aW1pbmcgZm9yIElubm9sdXggbjEx
+NmJnZQogIGRybS9wYW5lbDogc2ltcGxlOiBVc2UgZGlzcGxheV90aW1pbmcgZm9yIEFVTyBiMTAx
+ZWFuMDEKICBBUk06IGR0czogcm9ja2NoaXA6IFNwZWNpZnkgcmszMjg4LXZleXJvbi1qZXJyeSdz
+IGRpc3BsYXkgdGltaW5ncwogIEFSTTogZHRzOiByb2NrY2hpcDogU3BlY2lmeSByazMyODgtdmV5
+cm9uLW1pbm5pZSdzIGRpc3BsYXkgdGltaW5ncwoKU2VhbiBQYXVsICgzKToKICBkdC1iaW5kaW5n
+czogQWRkIHBhbmVsLXRpbWluZyBzdWJub2RlIHRvIHNpbXBsZS1wYW5lbAogIGRybS9wYW5lbDog
+c2ltcGxlOiBBZGQgYWJpbGl0eSB0byBvdmVycmlkZSB0eXBpY2FsIHRpbWluZwogIGFybTY0OiBk
+dHM6IHJvY2tjaGlwOiBTcGVjaWZ5IG92ZXJyaWRlIG1vZGUgZm9yIGtldmluIHBhbmVsCgogLi4u
+L2JpbmRpbmdzL2Rpc3BsYXkvcGFuZWwvc2ltcGxlLXBhbmVsLnR4dCAgIHwgIDI0ICsrKwogLi4u
+L2Jvb3QvZHRzL3JrMzI4OC12ZXlyb24tY2hyb21lYm9vay5kdHNpICAgIHwgIDE0ICsrCiBhcmNo
+L2FybS9ib290L2R0cy9yazMyODgtdmV5cm9uLW1pbm5pZS5kdHMgICAgfCAgMTQgKysKIC4uLi9i
+b290L2R0cy9yb2NrY2hpcC9yazMzOTktZ3J1LWtldmluLmR0cyAgICB8ICAxNCArKwogZHJpdmVy
+cy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5jICAgICAgICAgIHwgMTcxICsrKysrKysrKysr
+KysrLS0tLQogNSBmaWxlcyBjaGFuZ2VkLCAyMDUgaW5zZXJ0aW9ucygrKSwgMzIgZGVsZXRpb25z
+KC0pCgotLSAKMi4yMS4wLjM5Mi5nZjhmNjc4NzE1OWUtZ29vZwoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
+ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
