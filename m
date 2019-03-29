@@ -1,81 +1,156 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v4 1/7] dt-bindings: Add panel-timing subnode to
- simple-panel
-Date: Thu, 28 Mar 2019 16:50:13 -0700
-Message-ID: <CAD=FV=WOKSHWCHPv9kQT7np6v_ZYBmAsnTpAHJv7zRS_3b46JQ@mail.gmail.com>
-References: <20190328171710.31949-1-dianders@chromium.org>
- <20190328171710.31949-2-dianders@chromium.org>
- <f2f82f439f2b7586cb4c83f15122d8d19952d596.camel@collabora.com>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 06/11] rockchip/vpu: Cleanup JPEG bounce buffer
+ management
+Date: Fri, 29 Mar 2019 12:21:47 +0900
+Message-ID: <CAAFQd5Dd29Jmv7dgBrkX8DLN9+MJ5cbpNnK4rU9K+upxer7RfQ@mail.gmail.com>
+References: <20190304192529.14200-1-ezequiel@collabora.com>
+ <20190304192529.14200-7-ezequiel@collabora.com>
+ <CAAFQd5DjVDhFMc=WpnvF61yBcPm=BUQhVtBWSyphkkM8QubFzA@mail.gmail.com>
+ <cb9d6645edaf8335f2cdd3094830e80b10ff051f.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <f2f82f439f2b7586cb4c83f15122d8d19952d596.camel@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, Jeffy Chen <jeffy.chen@rock-chips.com>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thierry Reding <thierry.reding@gmail.com>, Sean Paul <seanpaul@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Boris Brezillon <boris.brezillon@collabora.com>, =?UTF-8?Q?Enric_Balletb=C3=B2?= <enric.balletbo@collabora.com>, Rob Herring <robh+dt@kernel.org>, Matthias Kaehlcke <mka@chromium.org>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <cb9d6645edaf8335f2cdd3094830e80b10ff051f.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgoKT24gVGh1LCBNYXIgMjgsIDIwMTkgYXQgMToyNyBQTSBFemVxdWllbCBHYXJjaWEgPGV6
-ZXF1aWVsQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+Cj4gT24gVGh1LCAyMDE5LTAzLTI4IGF0IDEw
-OjE3IC0wNzAwLCBEb3VnbGFzIEFuZGVyc29uIHdyb3RlOgo+ID4gRnJvbTogU2VhbiBQYXVsIDxz
-ZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4gPgo+ID4gVGhpcyBwYXRjaCBhZGRzIGEgbmV3IHN1Ym5v
-ZGUgdG8gc2ltcGxlLXBhbmVsIGFsbG93aW5nIHVzIHRvIG92ZXJyaWRlCj4gPiB0aGUgdHlwaWNh
-bCB0aW1pbmcgZXhwcmVzc2VkIGluIHRoZSBwYW5lbCdzIGRpc3BsYXlfdGltaW5nLgo+ID4KPiA+
-IENoYW5nZXMgaW4gdjI6Cj4gPiAgLSBTcGxpdCBvdXQgdGhlIGJpbmRpbmcgaW50byBhIG5ldyBw
-YXRjaCAoUm9iKQo+ID4gIC0gZGlzcGxheS10aW1pbmdzIGlzIGEgbmV3IHNlY3Rpb24gKFJvYikK
-PiA+ICAtIFVzZSB0aGUgZnVsbCBkaXNwbGF5LXRpbWluZ3Mgc3Vibm9kZSBpbnN0ZWFkIG9mIHBp
-Y2tpbmcgdGhlIHRpbWluZwo+ID4gICAgb3V0IChSb2IvVGhpZXJyeSkKPiA+IENoYW5nZXMgaW4g
-djM6Cj4gPiAgLSBHbyBiYWNrIHRvIHVzaW5nIHRoZSB0aW1pbmcgc3Vibm9kZSBkaXJlY3RseSwg
-YnV0IHJlbmFtZSB0bwo+ID4gICAgcGFuZWwtdGltaW5nIChSb2IpCj4gPiBDaGFuZ2VzIGluIHY0
-Ogo+ID4gIC0gU2ltcGxpZnkgZGVzYy4gZm9yIHdoZW4gb3ZlcnJpZGUgc2hvdWxkIGJlIHVzZWQg
-KFRoaWVycnkvTGF1cmVudCkKPiA+ICAtIFJlbW92ZWQgUm9iIEggcmV2aWV3IHNpbmNlIGl0J3Mg
-YmVlbiBhIHllYXIgYW5kIHdvcmRpbmcgY2hhbmdlZAo+ID4KPiA+IENjOiBEb3VnIEFuZGVyc29u
-IDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+Cj4gPiBDYzogRXJpYyBBbmhvbHQgPGVyaWNAYW5ob2x0
-Lm5ldD4KPiA+IENjOiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+ID4gQ2M6IEpl
-ZmZ5IENoZW4gPGplZmZ5LmNoZW5Acm9jay1jaGlwcy5jb20+Cj4gPiBDYzogUm9iIEhlcnJpbmcg
-PHJvYmgrZHRAa2VybmVsLm9yZz4KPiA+IENjOiBTdMOpcGhhbmUgTWFyY2hlc2luIDxtYXJjaGV1
-QGNocm9taXVtLm9yZz4KPiA+IENjOiBUaGllcnJ5IFJlZGluZyA8dGhpZXJyeS5yZWRpbmdAZ21h
-aWwuY29tPgo+ID4gQ2M6IGRldmljZXRyZWVAdmdlci5rZXJuZWwub3JnCj4gPiBDYzogZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+ID4gQ2M6IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKPiA+IFNpZ25lZC1vZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21p
-dW0ub3JnPgo+ID4gU2lnbmVkLW9mZi1ieTogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hy
-b21pdW0ub3JnPgo+ID4gLS0tCj4gPgo+ID4gIC4uLi9iaW5kaW5ncy9kaXNwbGF5L3BhbmVsL3Np
-bXBsZS1wYW5lbC50eHQgICB8IDI0ICsrKysrKysrKysrKysrKysrKysKPiA+ICAxIGZpbGUgY2hh
-bmdlZCwgMjQgaW5zZXJ0aW9ucygrKQo+ID4KPiA+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9u
-L2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9zaW1wbGUtcGFuZWwudHh0IGIvRG9j
-dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcGFuZWwvc2ltcGxlLXBhbmVs
-LnR4dAo+ID4gaW5kZXggYjJiODcyYzcxMGYyLi42MTU3Zjg2ZGRjZTQgMTAwNjQ0Cj4gPiAtLS0g
-YS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9zaW1wbGUt
-cGFuZWwudHh0Cj4gPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlz
-cGxheS9wYW5lbC9zaW1wbGUtcGFuZWwudHh0Cj4gPiBAQCAtMTUsNiArMTUsMTggQEAgT3B0aW9u
-YWwgcHJvcGVydGllczoKPiA+ICAgIChob3QgcGx1ZyBkZXRlY3QpIHNpZ25hbCwgYnV0IHRoZSBz
-aWduYWwgaXNuJ3QgaG9va2VkIHVwIHNvIHdlIHNob3VsZAo+ID4gICAgaGFyZGNvZGUgdGhlIG1h
-eCBkZWxheSBmcm9tIHRoZSBwYW5lbCBzcGVjIHdoZW4gcG93ZXJpbmcgdXAgdGhlIHBhbmVsLgo+
-ID4KPiA+ICtwYW5lbC10aW1pbmcgc3Vibm9kZQo+ID4gKy0tLS0tLS0tLS0tLS0tLS0tLS0tCj4g
-PiArCj4gPiArVGhpcyBvcHRpb25hbCBzdWJub2RlIGlzIGZvciBkZXZpY2VzIHdoaWNoIHJlcXVp
-cmUgYSBtb2RlIGRpZmZlcmluZwo+ID4gK2Zyb20gdGhlIHBhbmVsJ3MgInR5cGljYWwiIGRpc3Bs
-YXkgdGltaW5nLiAgVGhlIHBhbmVsIHRpbWluZ3MgcHJvdmlkZWQKPiA+ICtoZXJlIHdpbGwgYmUg
-aWdub3JlZCBpZiB0aGV5IGFyZSBmb3VuZCB0byBiZSBvdXRzaWRlIG9mIGFsbG93YWJsZQo+ID4g
-K3JhbmdlcyBmb3IgdGhlIGdpdmVuIHBhbmVsLgo+ID4gKwo+Cj4gSXMgaXQgT0sgdG8gcHV0IHRo
-aXMgY29tbWVudCBhYm91dCBob3cgdGhlIGltcGxlbWVudGF0aW9uCj4gd2lsbCBiZWhhdmUgd2hl
-biB2YWx1ZXMgYXJlIG91dCBvZiByYW5nZSwgZ2l2ZW4gdGhpcyBpcyBqdXN0IGEgYmluZGluZwo+
-IHNwZWM/Cj4KPiBQZXJoYXBzIC1pZiBuZWVkZWQtIHRoaXMgc2VudGVuY2UgY2FuIGJlIHJlcGhy
-YXNlZCB0byBzdGF0ZSB0aGF0LAo+IGUuZy4gdGhlIE9TIG1heSBub3QgYmUgYWJsZSB0byBhcHBs
-eSB0aGVzZSB2YWx1ZXMsIGlmIHRoZSBjb250cm9sbGVyCj4gb3IgZGV2aWNlIGlzIHVuYWJsZSB0
-bz8KCkkgd2lsbCBkZWZlciB0byBSb2IgSC4gb24gdGhpcyBvbmUsIGJ1dCBJJ20gaGFwcHkgdG8g
-c2ltcGx5IHJlbW92ZSB0aGUKbGFzdCBzZW50ZW5jZS4gIEkgd2FzIHRyeWluZyB0byBhZGQgYSBt
-b3JlIE9TLWFnbm9zdGljIHZlcnNpb24gb2YgdGhlCmJ1bGxldCBwb2ludHMgZnJvbSBWMyBidXQg
-YWdyZWUgdGhhdCB3ZSBjb3VsZCBqdXN0IHJlbW92ZSB0aGlzIGZyb20KdGhlIGJpbmRpbmdzIGNv
-bXBsZXRlbHkuCgoKLURvdWcKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-LWRldmVs
+On Fri, Mar 29, 2019 at 3:30 AM Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+>
+> On Thu, 2019-03-28 at 15:15 +0900, Tomasz Figa wrote:
+> > Hi Ezequiel,
+> >
+> > On Tue, Mar 5, 2019 at 4:26 AM Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+> > > In order to make the code more generic, introduce a pair of start/stop
+> > > codec operations, and use them to allocate and release the JPEG bounce
+> > > buffer.
+> > >
+> > > Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> > > ---
+> > >  .../media/rockchip/vpu/rk3288_vpu_hw.c        |  2 ++
+> > >  .../rockchip/vpu/rk3288_vpu_hw_jpeg_enc.c     |  4 +--
+> > >  .../media/rockchip/vpu/rk3399_vpu_hw.c        |  2 ++
+> > >  .../rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c     |  4 +--
+> > >  .../staging/media/rockchip/vpu/rockchip_vpu.h | 12 ++++----
+> > >  .../media/rockchip/vpu/rockchip_vpu_drv.c     | 10 +++++--
+> > >  .../media/rockchip/vpu/rockchip_vpu_enc.c     | 23 +++++----------
+> > >  .../media/rockchip/vpu/rockchip_vpu_hw.h      | 28 +++++++++++++++++++
+> > >  .../media/rockchip/vpu/rockchip_vpu_jpeg.c    | 25 +++++++++++++++++
+> > >  9 files changed, 81 insertions(+), 29 deletions(-)
+> > >
+> >
+> > Thanks for the series! Really sorry for late reply...
+> >
+> > [snip]
+> >
+> > > diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
+> > > index 1ec2be483e27..76ee24abc141 100644
+> > > --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
+> > > +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
+> > > @@ -124,10 +124,7 @@ struct rockchip_vpu_dev {
+> > >   * @jpeg_quality:      User-specified JPEG compression quality.
+> > >   *
+> > >   * @codec_ops:         Set of operations related to codec mode.
+> > > - *
+> > > - * @bounce_dma_addr:   Bounce buffer bus address.
+> > > - * @bounce_buf:                Bounce buffer pointer.
+> > > - * @bounce_size:       Bounce buffer size.
+> > > + * @jpeg_enc_ctx:      JPEG-encoding context.
+> > >   */
+> > >  struct rockchip_vpu_ctx {
+> > >         struct rockchip_vpu_dev *dev;
+> > > @@ -146,9 +143,10 @@ struct rockchip_vpu_ctx {
+> > >
+> > >         const struct rockchip_vpu_codec_ops *codec_ops;
+> > >
+> > > -       dma_addr_t bounce_dma_addr;
+> > > -       void *bounce_buf;
+> > > -       size_t bounce_size;
+> > > +       /* Specific for particular codec modes. */
+> > > +       union {
+> > > +               struct rockchip_vpu_jpeg_enc_hw_ctx jpeg_enc_ctx;
+> > > +       };
+> >
+> > nit: Would it perhaps make it a bit cleaner to call the union "ctx"?
+> > Then we wouldn't need to repeat "_ctx" in every field.
+> >
+>
+> Well, the struct is already rockchip_vpu_ctx, so access would look like:
+>
+>    ctx->ctx.jpeg_enc, ctx->ctx.mpeg2_dec
+>
+> Perhaps we can just drop the _ctx, and so:
+>
+>    ctx->jpeg_enc, ctx->mpeg2_dec
+>
+
+Even better, thanks.
+
+> > >  };
+> > >
+> > >  /**
+> > > diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+> > > index 5647b0bdac20..1a6dd36c71ab 100644
+> > > --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+> > > +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+> > > @@ -64,10 +64,16 @@ static void rockchip_vpu_job_finish(struct rockchip_vpu_dev *vpu,
+> > >         avail_size = vb2_plane_size(&dst->vb2_buf, 0) -
+> > >                      ctx->vpu_dst_fmt->header_size;
+> > >         if (bytesused <= avail_size) {
+> > > -               if (ctx->bounce_buf) {
+> > > +               /*
+> > > +                * This works while JPEG is the only encoder this driver
+> > > +                * supports. We will have to abstract this step, or get
+> > > +                * rid of the bounce buffer before we can support
+> > > +                * encoding other codecs.
+> >
+> > Hmm, why wouldn't it work for other encoders, which shouldn't require
+> > a bounce buffer?
+> >
+>
+> Well, I had a TODO item to remove the bounce buffer for JPEG.
+>
+> IIRC, the ChromeOS VPU driver doesn't have any bounce buffer,
+> so I was under the impression we wouldn't need one.
+>
+> However, we have yet to discuss the encoder implementation.
+> We might decide to produce the headers for some video coded format,
+> in which case we might need a bounce buffer.
+
+We don't really need a bounce buffer to handle headers, we can do a
+memmove() instead, as we did for the VP8 encoder [1]. However, it was
+more like a loopback - the driver would just copy the header that the
+userspace set through a control, so we decided to drop it and move
+completely to the userspace [2] for H.264.
+
+[1] https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5bc4e95afddd1300368d0552b228824252bd789f/drivers/media/platform/rk3288-vpu/rk3288_vpu_hw_vp8e.c#52
+[2] https://chromium.googlesource.com/chromiumos/third_party/libv4lplugins/+/5e6034258146af6be973fb6a5bb6b9d6e7489437/libv4l-rockchip_v2/libvepu/h264e/h264e.c#591
+
+>
+> In any case, this is just a comment to reflect that this piece
+> of code is just temporary.
+>
+
+My point is that the comment suggests that other encoders would be
+affected by this, which I don't believe is true, because the code
+explicitly checks if the bounce buffer pointer is non-NULL and for
+other encoders it would be NULL.
+
+/*
+ * The bounce buffer is only for the JPEG encoder.
+ * TODO: Rework the JPEG encoder to eliminate the need
+ * for a bounce buffer.
+ */
+
+Best regards,
+Tomasz
