@@ -1,157 +1,70 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 07/11] rockchip/vpu: Open-code media controller register
-Date: Fri, 29 Mar 2019 16:43:04 +0900
-Message-ID: <CAAFQd5CJbZ3EjhPBFdrHGuJeKdSr27we4Vy3U8J0dypcJkFPKg@mail.gmail.com>
-References: <20190304192529.14200-1-ezequiel@collabora.com>
- <20190304192529.14200-8-ezequiel@collabora.com>
- <CAAFQd5AVgcj9vMsnE4yKm3uNnFPJ_1KpvX8t9bioVg4Cp2Wy=Q@mail.gmail.com>
- <81754d3621042384b272700d724336582ff1a94c.camel@collabora.com>
+From: Tomi Valkeinen <tomi.valkeinen@ti.com>
+Subject: Re: [PATCH v7 0/4] drm: add support for Cadence MHDP DPI/DP bridge.
+Date: Fri, 29 Mar 2019 11:42:51 +0200
+Message-ID: <5f7a3cdf-b5b5-34ef-ca58-b75b9bc1c326@ti.com>
+References: <1548846209-16406-1-git-send-email-dkos@cadence.com>
+ <0f11a4d8-d576-5af8-b7f4-afe3ff26678f@ti.com>
+ <ce6ed2e6-90d5-fc7a-4d6d-ab27d62c5432@ti.com>
+ <BYAPR07MB43111E34594899FC375D16BDCD580@BYAPR07MB4311.namprd07.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <81754d3621042384b272700d724336582ff1a94c.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <BYAPR07MB43111E34594899FC375D16BDCD580@BYAPR07MB4311.namprd07.prod.outlook.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Damian Kos <dkos@cadence.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Maxime Ripard <maxime.ripard@bootlin.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Anil Joy Varughese <aniljoy@cadence.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, "quentin.schulz@bootlin.com" <quentin.schulz@bootlin.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Piotr Sroka <piotrs@cadence.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Rafal Ciepiela <rafalc@cadence.com>, "jbergsagel@ti.com" <jbergsagel@ti.com>, David Airlie <airlied@linux.ie>, "Sarha, Jyri" <jsarha@ti.com>, Rob Herring <robh+dt@kernel.org>, Sean Paul <sean@poorly.run>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Mar 29, 2019 at 5:05 AM Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
->
-> On Thu, 2019-03-28 at 16:11 +0900, Tomasz Figa wrote:
-> > On Tue, Mar 5, 2019 at 4:27 AM Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
-[snip]
-> > > + * @source_pad:                &struct media_pad with the source pad.
-> > > + *                     Used only when the M2M device is registered via
-> > > + *                     v4l2_m2m_unregister_media_controller().
-> > > + * @sink:              &struct media_entity pointer with the sink entity
-> > > + *                     Used only when the M2M device is registered via
-> > > + *                     v4l2_m2m_unregister_media_controller().
-> > > + * @sink_pad:          &struct media_pad with the sink pad.
-> > > + *                     Used only when the M2M device is registered via
-> > > + *                     v4l2_m2m_unregister_media_controller().
-> > > + * @proc:              &struct media_entity pointer with the M2M device itself.
-> > > + * @proc_pads:         &struct media_pad with the @proc pads.
-> > > + *                     Used only when the M2M device is registered via
-> > > + *                     v4l2_m2m_unregister_media_controller().
-> > > + * @intf_devnode:      &struct media_intf devnode pointer with the interface
-> > > + *                     with controls the M2M device.
-> > > + */
-> > > +struct rockchip_vpu_mc {
-> > > +       struct media_entity     *source;
-> > > +       struct media_pad        source_pad;
-> > > +       struct media_entity     sink;
-> > > +       struct media_pad        sink_pad;
-> > > +       struct media_entity     proc;
-> > > +       struct media_pad        proc_pads[2];
-> > > +       struct media_intf_devnode *intf_devnode;
-> > > +};
-> > > +
-> > >  /**
-> > >   * struct rockchip_vpu_dev - driver data
-> > >   * @v4l2_dev:          V4L2 device to register video devices for.
-> > > @@ -78,6 +110,8 @@ enum rockchip_vpu_codec_mode {
-> > >   * @mdev:              media device associated to this device.
-> > >   * @vfd_enc:           Video device for encoder.
-> > >   * @pdev:              Pointer to VPU platform device.
-> > > + * @mc:                        Array of media controller topology structs
-> >
-> > Is it just me or there is something wrong with indentation here?
-> >
->
-> It seems to be fine here -- it's all tabs.
-
-Hmm, never mind then.
-
-> > > +
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +static int rockchip_register_mc(struct media_device *mdev,
-> > > +                               struct rockchip_vpu_mc *mc,
-> > > +                               struct video_device *vdev,
-> > > +                               int function)
-> > > +{
-> > > +       struct media_link *link;
-> > > +       int ret;
-> > > +
-> > > +       /* Create the three encoder entities with their pads */
-> > > +       mc->source = &vdev->entity;
-> > > +       mc->source_pad.flags = MEDIA_PAD_FL_SOURCE;
-> > > +       ret = rockchip_vpu_register_entity(mdev, mc->source,
-> > > +                       "source", &mc->source_pad, 1, MEDIA_ENT_F_IO_V4L, vdev);
-> > > +       if (ret)
-> > > +               return ret;
-> > > +
-> > > +       mc->proc_pads[0].flags = MEDIA_PAD_FL_SINK;
-> > > +       mc->proc_pads[1].flags = MEDIA_PAD_FL_SOURCE;
-> > > +       ret = rockchip_vpu_register_entity(mdev, &mc->proc,
-> > > +                       "proc", mc->proc_pads, 2, function, vdev);
-> > > +       if (ret)
-> > > +               goto err_rel_entity0;
-> > > +
-> > > +       mc->sink_pad.flags = MEDIA_PAD_FL_SINK;
-> > > +       ret = rockchip_vpu_register_entity(mdev, &mc->sink,
-> > > +                       "sink", &mc->sink_pad, 1, MEDIA_ENT_F_IO_V4L, vdev);
-> > > +       if (ret)
-> > > +               goto err_rel_entity1;
-> > > +
-> > > +       /* Connect the three entities */
-> > > +       ret = media_create_pad_link(mc->source, 0, &mc->proc, 1,
-> > > +                       MEDIA_LNK_FL_IMMUTABLE | MEDIA_LNK_FL_ENABLED);
-> > > +       if (ret)
-> > > +               goto err_rel_entity2;
-> > > +
-> > > +       ret = media_create_pad_link(&mc->proc, 0, &mc->sink, 0,
-> > > +                       MEDIA_LNK_FL_IMMUTABLE | MEDIA_LNK_FL_ENABLED);
-> > > +       if (ret)
-> > > +               goto err_rm_links0;
-> > > +
-> > > +       /* Create video interface */
-> > > +       mc->intf_devnode = media_devnode_create(mdev,
-> > > +                       MEDIA_INTF_T_V4L_VIDEO, 0,
-> > > +                       VIDEO_MAJOR, vdev->minor);
-> > > +       if (!mc->intf_devnode) {
-> > > +               ret = -ENOMEM;
-> > > +               goto err_rm_links1;
-> > > +       }
-> > > +
-> > > +       /* Connect the two DMA engines to the interface */
-> > > +       link = media_create_intf_link(mc->source,
-> > > +                       &mc->intf_devnode->intf,
-> > > +                       MEDIA_LNK_FL_IMMUTABLE | MEDIA_LNK_FL_ENABLED);
-> > > +       if (!link) {
-> > > +               ret = -ENOMEM;
-> > > +               goto err_rm_devnode;
-> > > +       }
-> > > +
-> > > +       link = media_create_intf_link(&mc->sink,
-> > > +                       &mc->intf_devnode->intf,
-> > > +                       MEDIA_LNK_FL_IMMUTABLE | MEDIA_LNK_FL_ENABLED);
-> > > +       if (!link) {
-> > > +               ret = -ENOMEM;
-> > > +               goto err_rm_intf_link;
-> > > +       }
-> > > +       return 0;
-> > > +
-> > > +err_rm_intf_link:
-> > > +       media_remove_intf_links(&mc->intf_devnode->intf);
-> >
-> > Do we need to explicitly remove the links here? The entity removal
-> > functions remove the links implicitly.
-> >
->
-> You mean the media_devnode_remove, right? In that case, seems you are right.
-
-Yep. And also media_device_unregister_entity().
-
-Best regards,
-Tomasz
+T24gMjcvMDMvMjAxOSAxNjo1OCwgRGFtaWFuIEtvcyB3cm90ZToKCj4gV2Ugd291bGQgYmUgdmVy
+eSBoYXBweSB0byBoYXZlIGEgc2VwYXJhdGUgZHJpdmVyIGZvciBtaGRwODU0NiBpbnN0ZWFkIG9m
+Cj4gbWl4aW5nIGl0IHdpdGggUm9ja2NoaXAncyBkcml2ZXIuIFVuZm9ydHVuYXRlbHkgd2UgbmVl
+ZCB0byBoYXZlIG9uZSBkcml2ZXIKPiBmb3IgYm90aCBJUCdzLCBzbyBJJ2xsIGp1c3QgY2hhbmdl
+IG1oZHA4NTQ2LmtvIHRvIGNkbnMtbWhkcC5rby4gKFVubGVzcywKPiBtYWludGFpbmVycyBnaXZl
+IHVzIGEgZ3JlZW4gbGlnaHQgZm9yIHRoZSBkZWRpY2F0ZWQgZHJpdmVyPykKCk9rLiBJIGRvbid0
+IGtub3cgYWJvdXQgdGhlIGRpZmZlcmVuY2VzLCBzbyBJIGNhbid0IHNheSBtdWNoIGhlcmUuIEJ1
+dCBJCmRvIHRoaW5rIHRoYXQgeW91IHNob3VsZG4ndCBjb21iaW5lIGRyaXZlcnMgZm9yIHR3byBk
+aWZmZXJlbnQgSVBzIHVubGVzcwp0aGV5IGFyZSB2ZXJ5IHNpbWlsYXIuIEFuZCBpZiB0d28gZGlm
+ZmVyZW50IElQcyBoYXZlIGEgYmxvY2sgdGhhdCdzIHRoZQpzYW1lL3NpbWlsYXIsIHRoZSBjb2Rl
+IGZvciB0aGF0IGJsb2NrIGNhbiBiZSBleHRyYWN0ZWQgdG8gYSAibGlicmFyeSIKdXNlZCBieSBi
+b3RoIGRyaXZlcnMuCgo+Pj4gSSBzZWUgc29tZSBhdWRpbyBmdW5jdGlvbnMgaW4gdGhlIGNvZGUs
+IGJ1dCBpdCdzIG5vdCBtZW50aW9uZWQgaW4gdGhlIERUCj4+PiBiaW5kaW5ncy4gSSdtIG5vdCBh
+biBhdWRpbyBndXksIGJ1dCB0aGUgZGlzcGxheSBicmlkZ2VzIHdpdGggYXVkaW8KPj4+IHN1cHBv
+cnQgSSBoYXZlIHNlZW4gaGF2ZSBoYWQgRFQgYmluZGluZ3MgZm9yIHRoZSBhdWRpbyBzb3VyY2Ug
+dG9vLiBJcwo+Pj4gYXVkaW8gc3VwcG9ydGVkIGluIHRoZSBjdXJyZW50IGRyaXZlcj8KPj4+Cj4g
+QXMgZmFyIGFzIEkga25vdywgYXVkaW8gaXMgd29ya2luZywgYnV0IEkgY2FuJ3QgZG91YmxlIGNo
+ZWNrIGl0IHJpZ2h0IG5vdwo+IGR1ZSB0byBoZWF2eSBsb2FkIG9uIG15IGJhY2sgcmlnaHQgbm93
+LiBJJ2xsIHRyeSB0byBmaW5kIHRpbWUgZm9yIHRoYXQgaW4gdGhlCj4gbmV4dCB3ZWVrLiBCdXQs
+IGxpa2UgSSd2ZSBtZW50aW9uZWQgZWFybGllciBJIGRvbid0IHNlZSBhIHJlYXNvbiB3aHkgYXVk
+aW8KPiBjb2RlICh0aGF0IGV4aXN0cyBpbiB0aGUgbWFpbmxpbmUpIHdvdWxkbid0IHdvcmsuCj4g
+SSdtIG5vdCBhbiBhdWRpbyBndXkgbXlzZWxmLiBXaGVuIHVwZGF0aW5nIGR0IGJpbmRpbmdzIEkg
+dG9vayB0aGUgZHQgYmluZGluZ3MKPiBmb3Igb3RoZXIgYnJpZGdlcyBhcyBhbiBleGFtcGxlLCBi
+dXQgSSBkaWQgbm90IHNlZSBhbnkgYmluZGluZ3MgZm9yIGF1ZGlvIGluCj4gdGhlbS4gSSBkaWRu
+J3QgY2hlY2sgYWxsIG9mIHRoZW0uIENhbiB5b3UgcGxlYXNlIGxldCBtZSBrbm93IHdoaWNoIGJy
+aWRnZXMKPiBhcmUgeW91IHdlcmUgcmVmZXJyaW5nIHRvPyBJbiBvdXIgdGVzdCBlbnZpcm9ubWVu
+dCB3ZSBkaWRuJ3QgdXNlIGFueSBhdWRpbwo+IGRyaXZlciBhcyBhdWRpbyBnZW5lcmF0b3IgaXMg
+c28gc2ltcGxlIHRoYXQgaXQgaXMgcGFydCBvZiB0aGUgcmVnaXN0ZXIgc3BhY2UKPiBvZiBJUCBh
+bmQgd2UgZGlkbid0IGV2ZW4gbmVlZCB0byBpbmNsdWRlIHRoaXMgZGV2aWNlIGluIC5kdHMgZmls
+ZS4gQXVkaW8gKGxpa2UKPiB0aGUgdmlkZW8pIGlzIGNvbmZpZ3VyZWQgYW5kIGVuYWJsZWQgYnkg
+Y29kZSB0aGF0IGlzIG5vdCBpbmNsdWRlZCBpbiB0aGUgcGF0Y2gKPiAoZm9yIG9idmlvdXMgcmVh
+c29ucykuCj4gU28sIGluIHNob3J0LCB5ZXMsIGRyaXZlciBzdXBwb3J0cyBhdWRpbyBhbmQgd2Ug
+d2lsbCBpbmNsdWRlIGRlc2NyaXB0aW9uIGZvcgo+IGF1ZGlvIGlucHV0IHBvcnQgaW4gdGhlIGR0
+IGJpbmRpbmdzLgoKT2suIEp5cmkgU2FyaGEgPGpzYXJoYUB0aS5jb20+IHJlY2VudGx5IHNlbnQg
+ImRybS9icmlkZ2U6IHNpaTkwMng6CkhETUktYXVkaW8gc3VwcG9ydCBhbmQgc29tZSBmaXhlcyIg
+c2VyaWVzLCBhbmQgSSB0aGluayB0ZGE5OTh4X2Rydi5jCmFsc28gaGFzIHNvbWUgYXVkaW8gc3Vw
+cG9ydC4gQnV0IEknbSBubyBhdWRpbyBndXkgZWl0aGVyID0pLiBJIHdhcyBqdXN0CmN1cmlvdXMg
+YWJvdXQgdGhlIHN0YXR1cyBvZiB0aGUgYXVkaW8uCgogVG9taQoKLS0gClRleGFzIEluc3RydW1l
+bnRzIEZpbmxhbmQgT3ksIFBvcmtrYWxhbmthdHUgMjIsIDAwMTgwIEhlbHNpbmtpLgpZLXR1bm51
+cy9CdXNpbmVzcyBJRDogMDYxNTUyMS00LiBLb3RpcGFpa2thL0RvbWljaWxlOiBIZWxzaW5raQpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
