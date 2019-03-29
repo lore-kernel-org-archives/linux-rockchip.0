@@ -1,70 +1,66 @@
-From: Tomi Valkeinen <tomi.valkeinen@ti.com>
-Subject: Re: [PATCH v7 0/4] drm: add support for Cadence MHDP DPI/DP bridge.
-Date: Fri, 29 Mar 2019 11:42:51 +0200
-Message-ID: <5f7a3cdf-b5b5-34ef-ca58-b75b9bc1c326@ti.com>
-References: <1548846209-16406-1-git-send-email-dkos@cadence.com>
- <0f11a4d8-d576-5af8-b7f4-afe3ff26678f@ti.com>
- <ce6ed2e6-90d5-fc7a-4d6d-ab27d62c5432@ti.com>
- <BYAPR07MB43111E34594899FC375D16BDCD580@BYAPR07MB4311.namprd07.prod.outlook.com>
+From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Subject: [PATCH] media: staging: use strscpy() instead of strlcpy()
+Date: Fri, 29 Mar 2019 11:29:43 -0400
+Message-ID: <e5ba9c47436888e9cc4c0cda6ca61ade31e703c0.1553873376.git.mchehab+samsung@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <BYAPR07MB43111E34594899FC375D16BDCD580@BYAPR07MB4311.namprd07.prod.outlook.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Damian Kos <dkos@cadence.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Maxime Ripard <maxime.ripard@bootlin.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Anil Joy Varughese <aniljoy@cadence.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, "quentin.schulz@bootlin.com" <quentin.schulz@bootlin.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Piotr Sroka <piotrs@cadence.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Rafal Ciepiela <rafalc@cadence.com>, "jbergsagel@ti.com" <jbergsagel@ti.com>, David Airlie <airlied@linux.ie>, "Sarha, Jyri" <jsarha@ti.com>, Rob Herring <robh+dt@kernel.org>, Sean Paul <sean@poorly.run>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Cc: devel@driverdev.osuosl.org, Fabio Estevam <festevam@gmail.com>, YueHaibing <yuehaibing@huawei.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, linux-rockchip@lists.infradead.org, Ezequiel Garcia <ezequiel@collabora.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sascha Hauer <s.hauer@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>, Mauro Carvalho Chehab <mchehab@infradead.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>, Steve Longerbeam <slongerbeam@gmail.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Shawn Guo <shawnguo@kernel.org>, linux-arm-kernel@lists.infradead.org, Linux Media Mailing List <linux-media@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjcvMDMvMjAxOSAxNjo1OCwgRGFtaWFuIEtvcyB3cm90ZToKCj4gV2Ugd291bGQgYmUgdmVy
-eSBoYXBweSB0byBoYXZlIGEgc2VwYXJhdGUgZHJpdmVyIGZvciBtaGRwODU0NiBpbnN0ZWFkIG9m
-Cj4gbWl4aW5nIGl0IHdpdGggUm9ja2NoaXAncyBkcml2ZXIuIFVuZm9ydHVuYXRlbHkgd2UgbmVl
-ZCB0byBoYXZlIG9uZSBkcml2ZXIKPiBmb3IgYm90aCBJUCdzLCBzbyBJJ2xsIGp1c3QgY2hhbmdl
-IG1oZHA4NTQ2LmtvIHRvIGNkbnMtbWhkcC5rby4gKFVubGVzcywKPiBtYWludGFpbmVycyBnaXZl
-IHVzIGEgZ3JlZW4gbGlnaHQgZm9yIHRoZSBkZWRpY2F0ZWQgZHJpdmVyPykKCk9rLiBJIGRvbid0
-IGtub3cgYWJvdXQgdGhlIGRpZmZlcmVuY2VzLCBzbyBJIGNhbid0IHNheSBtdWNoIGhlcmUuIEJ1
-dCBJCmRvIHRoaW5rIHRoYXQgeW91IHNob3VsZG4ndCBjb21iaW5lIGRyaXZlcnMgZm9yIHR3byBk
-aWZmZXJlbnQgSVBzIHVubGVzcwp0aGV5IGFyZSB2ZXJ5IHNpbWlsYXIuIEFuZCBpZiB0d28gZGlm
-ZmVyZW50IElQcyBoYXZlIGEgYmxvY2sgdGhhdCdzIHRoZQpzYW1lL3NpbWlsYXIsIHRoZSBjb2Rl
-IGZvciB0aGF0IGJsb2NrIGNhbiBiZSBleHRyYWN0ZWQgdG8gYSAibGlicmFyeSIKdXNlZCBieSBi
-b3RoIGRyaXZlcnMuCgo+Pj4gSSBzZWUgc29tZSBhdWRpbyBmdW5jdGlvbnMgaW4gdGhlIGNvZGUs
-IGJ1dCBpdCdzIG5vdCBtZW50aW9uZWQgaW4gdGhlIERUCj4+PiBiaW5kaW5ncy4gSSdtIG5vdCBh
-biBhdWRpbyBndXksIGJ1dCB0aGUgZGlzcGxheSBicmlkZ2VzIHdpdGggYXVkaW8KPj4+IHN1cHBv
-cnQgSSBoYXZlIHNlZW4gaGF2ZSBoYWQgRFQgYmluZGluZ3MgZm9yIHRoZSBhdWRpbyBzb3VyY2Ug
-dG9vLiBJcwo+Pj4gYXVkaW8gc3VwcG9ydGVkIGluIHRoZSBjdXJyZW50IGRyaXZlcj8KPj4+Cj4g
-QXMgZmFyIGFzIEkga25vdywgYXVkaW8gaXMgd29ya2luZywgYnV0IEkgY2FuJ3QgZG91YmxlIGNo
-ZWNrIGl0IHJpZ2h0IG5vdwo+IGR1ZSB0byBoZWF2eSBsb2FkIG9uIG15IGJhY2sgcmlnaHQgbm93
-LiBJJ2xsIHRyeSB0byBmaW5kIHRpbWUgZm9yIHRoYXQgaW4gdGhlCj4gbmV4dCB3ZWVrLiBCdXQs
-IGxpa2UgSSd2ZSBtZW50aW9uZWQgZWFybGllciBJIGRvbid0IHNlZSBhIHJlYXNvbiB3aHkgYXVk
-aW8KPiBjb2RlICh0aGF0IGV4aXN0cyBpbiB0aGUgbWFpbmxpbmUpIHdvdWxkbid0IHdvcmsuCj4g
-SSdtIG5vdCBhbiBhdWRpbyBndXkgbXlzZWxmLiBXaGVuIHVwZGF0aW5nIGR0IGJpbmRpbmdzIEkg
-dG9vayB0aGUgZHQgYmluZGluZ3MKPiBmb3Igb3RoZXIgYnJpZGdlcyBhcyBhbiBleGFtcGxlLCBi
-dXQgSSBkaWQgbm90IHNlZSBhbnkgYmluZGluZ3MgZm9yIGF1ZGlvIGluCj4gdGhlbS4gSSBkaWRu
-J3QgY2hlY2sgYWxsIG9mIHRoZW0uIENhbiB5b3UgcGxlYXNlIGxldCBtZSBrbm93IHdoaWNoIGJy
-aWRnZXMKPiBhcmUgeW91IHdlcmUgcmVmZXJyaW5nIHRvPyBJbiBvdXIgdGVzdCBlbnZpcm9ubWVu
-dCB3ZSBkaWRuJ3QgdXNlIGFueSBhdWRpbwo+IGRyaXZlciBhcyBhdWRpbyBnZW5lcmF0b3IgaXMg
-c28gc2ltcGxlIHRoYXQgaXQgaXMgcGFydCBvZiB0aGUgcmVnaXN0ZXIgc3BhY2UKPiBvZiBJUCBh
-bmQgd2UgZGlkbid0IGV2ZW4gbmVlZCB0byBpbmNsdWRlIHRoaXMgZGV2aWNlIGluIC5kdHMgZmls
-ZS4gQXVkaW8gKGxpa2UKPiB0aGUgdmlkZW8pIGlzIGNvbmZpZ3VyZWQgYW5kIGVuYWJsZWQgYnkg
-Y29kZSB0aGF0IGlzIG5vdCBpbmNsdWRlZCBpbiB0aGUgcGF0Y2gKPiAoZm9yIG9idmlvdXMgcmVh
-c29ucykuCj4gU28sIGluIHNob3J0LCB5ZXMsIGRyaXZlciBzdXBwb3J0cyBhdWRpbyBhbmQgd2Ug
-d2lsbCBpbmNsdWRlIGRlc2NyaXB0aW9uIGZvcgo+IGF1ZGlvIGlucHV0IHBvcnQgaW4gdGhlIGR0
-IGJpbmRpbmdzLgoKT2suIEp5cmkgU2FyaGEgPGpzYXJoYUB0aS5jb20+IHJlY2VudGx5IHNlbnQg
-ImRybS9icmlkZ2U6IHNpaTkwMng6CkhETUktYXVkaW8gc3VwcG9ydCBhbmQgc29tZSBmaXhlcyIg
-c2VyaWVzLCBhbmQgSSB0aGluayB0ZGE5OTh4X2Rydi5jCmFsc28gaGFzIHNvbWUgYXVkaW8gc3Vw
-cG9ydC4gQnV0IEknbSBubyBhdWRpbyBndXkgZWl0aGVyID0pLiBJIHdhcyBqdXN0CmN1cmlvdXMg
-YWJvdXQgdGhlIHN0YXR1cyBvZiB0aGUgYXVkaW8uCgogVG9taQoKLS0gClRleGFzIEluc3RydW1l
-bnRzIEZpbmxhbmQgT3ksIFBvcmtrYWxhbmthdHUgMjIsIDAwMTgwIEhlbHNpbmtpLgpZLXR1bm51
-cy9CdXNpbmVzcyBJRDogMDYxNTUyMS00LiBLb3RpcGFpa2thL0RvbWljaWxlOiBIZWxzaW5raQpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
+There are a few left overs at staging with were still using the
+deprecated strlcpy() function.
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+---
+ drivers/staging/media/imx/imx-media-dev-common.c      | 4 ++--
+ drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/media/imx/imx-media-dev-common.c b/drivers/staging/media/imx/imx-media-dev-common.c
+index 910594125889..6cd93419b81d 100644
+--- a/drivers/staging/media/imx/imx-media-dev-common.c
++++ b/drivers/staging/media/imx/imx-media-dev-common.c
+@@ -30,7 +30,7 @@ struct imx_media_dev *imx_media_dev_init(struct device *dev)
+ 
+ 	dev_set_drvdata(dev, imxmd);
+ 
+-	strlcpy(imxmd->md.model, "imx-media", sizeof(imxmd->md.model));
++	strscpy(imxmd->md.model, "imx-media", sizeof(imxmd->md.model));
+ 	imxmd->md.ops = &imx_media_md_ops;
+ 	imxmd->md.dev = dev;
+ 
+@@ -38,7 +38,7 @@ struct imx_media_dev *imx_media_dev_init(struct device *dev)
+ 
+ 	imxmd->v4l2_dev.mdev = &imxmd->md;
+ 	imxmd->v4l2_dev.notify = imx_media_notify;
+-	strlcpy(imxmd->v4l2_dev.name, "imx-media",
++	strscpy(imxmd->v4l2_dev.name, "imx-media",
+ 		sizeof(imxmd->v4l2_dev.name));
+ 
+ 	media_device_init(&imxmd->md);
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+index 57611464ad07..58721c46fba4 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+@@ -462,7 +462,7 @@ static int rockchip_vpu_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	vpu->mdev.dev = vpu->dev;
+-	strlcpy(vpu->mdev.model, DRIVER_NAME, sizeof(vpu->mdev.model));
++	strscpy(vpu->mdev.model, DRIVER_NAME, sizeof(vpu->mdev.model));
+ 	media_device_init(&vpu->mdev);
+ 	vpu->v4l2_dev.mdev = &vpu->mdev;
+ 
+-- 
+2.20.1
