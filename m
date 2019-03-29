@@ -1,77 +1,106 @@
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Subject: Re: [PATCH] media: staging: use strscpy() instead of strlcpy()
-Date: Fri, 29 Mar 2019 16:30:31 +0100
-Message-ID: <b76b3f81-e9c9-cc13-0b34-ce149fa7b213@xs4all.nl>
-References: <e5ba9c47436888e9cc4c0cda6ca61ade31e703c0.1553873376.git.mchehab+samsung@kernel.org>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v4 1/7] dt-bindings: Add panel-timing subnode to simple-panel
+Date: Fri, 29 Mar 2019 11:12:45 -0500
+Message-ID: <CAL_JsqJNPMnVLyPGeK5Jd=QVSO1zWvPEiPcgas03yP_P66M-uw@mail.gmail.com>
+References: <20190328171710.31949-1-dianders@chromium.org> <20190328171710.31949-2-dianders@chromium.org>
+ <f2f82f439f2b7586cb4c83f15122d8d19952d596.camel@collabora.com> <CAD=FV=WOKSHWCHPv9kQT7np6v_ZYBmAsnTpAHJv7zRS_3b46JQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-In-Reply-To: <e5ba9c47436888e9cc4c0cda6ca61ade31e703c0.1553873376.git.mchehab+samsung@kernel.org>
-Content-Language: en-US
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-Cc: devel@driverdev.osuosl.org, YueHaibing <yuehaibing@huawei.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Ezequiel Garcia <ezequiel@collabora.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sascha Hauer <s.hauer@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>, Mauro Carvalho Chehab <mchehab@infradead.org>, linux-rockchip@lists.infradead.org, NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>, Steve Longerbeam <slongerbeam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, linux-arm-kernel@lists.infradead.org, Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=WOKSHWCHPv9kQT7np6v_ZYBmAsnTpAHJv7zRS_3b46JQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dri-devel <dri-devel@lists.freedesktop.org>, Boris Brezillon <boris.brezillon@collabora.com>, =?UTF-8?Q?Enric_Balletb=C3=B2?= <enric.balletbo@collabora.com>, Matthias Kaehlcke <mka@chromium.org>, Eric Anholt <eric@anholt.net>, Jeffy Chen <jeffy.chen@rock-chips.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, David Airlie <airlied@linux.ie>, Mark Rutland <mark.rutland@arm.com>, Daniel Vetter <daniel@ffwll.>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 3/29/19 4:29 PM, Mauro Carvalho Chehab wrote:
-> There are a few left overs at staging with were still using the
-> deprecated strlcpy() function.
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+On Thu, Mar 28, 2019 at 6:50 PM Doug Anderson <dianders@chromium.org> wrote=
+:
+>
+> Hi,
+>
+>
+> On Thu, Mar 28, 2019 at 1:27 PM Ezequiel Garcia <ezequiel@collabora.com> =
+wrote:
+> >
+> > On Thu, 2019-03-28 at 10:17 -0700, Douglas Anderson wrote:
+> > > From: Sean Paul <seanpaul@chromium.org>
+> > >
+> > > This patch adds a new subnode to simple-panel allowing us to override
+> > > the typical timing expressed in the panel's display_timing.
+> > >
+> > > Changes in v2:
+> > >  - Split out the binding into a new patch (Rob)
+> > >  - display-timings is a new section (Rob)
+> > >  - Use the full display-timings subnode instead of picking the timing
+> > >    out (Rob/Thierry)
+> > > Changes in v3:
+> > >  - Go back to using the timing subnode directly, but rename to
+> > >    panel-timing (Rob)
+> > > Changes in v4:
+> > >  - Simplify desc. for when override should be used (Thierry/Laurent)
+> > >  - Removed Rob H review since it's been a year and wording changed
+> > >
+> > > Cc: Doug Anderson <dianders@chromium.org>
+> > > Cc: Eric Anholt <eric@anholt.net>
+> > > Cc: Heiko Stuebner <heiko@sntech.de>
+> > > Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+> > > Cc: Rob Herring <robh+dt@kernel.org>
+> > > Cc: St=C3=A9phane Marchesin <marcheu@chromium.org>
+> > > Cc: Thierry Reding <thierry.reding@gmail.com>
+> > > Cc: devicetree@vger.kernel.org
+> > > Cc: dri-devel@lists.freedesktop.org
+> > > Cc: linux-rockchip@lists.infradead.org
+> > > Signed-off-by: Sean Paul <seanpaul@chromium.org>
+> > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > > ---
+> > >
+> > >  .../bindings/display/panel/simple-panel.txt   | 24 +++++++++++++++++=
+++
+> > >  1 file changed, 24 insertions(+)
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/display/panel/simple-p=
+anel.txt b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
+> > > index b2b872c710f2..6157f86ddce4 100644
+> > > --- a/Documentation/devicetree/bindings/display/panel/simple-panel.tx=
+t
+> > > +++ b/Documentation/devicetree/bindings/display/panel/simple-panel.tx=
+t
+> > > @@ -15,6 +15,18 @@ Optional properties:
+> > >    (hot plug detect) signal, but the signal isn't hooked up so we sho=
+uld
+> > >    hardcode the max delay from the panel spec when powering up the pa=
+nel.
+> > >
+> > > +panel-timing subnode
+> > > +--------------------
+> > > +
+> > > +This optional subnode is for devices which require a mode differing
+> > > +from the panel's "typical" display timing.  The panel timings provid=
+ed
+> > > +here will be ignored if they are found to be outside of allowable
+> > > +ranges for the given panel.
+> > > +
+> >
+> > Is it OK to put this comment about how the implementation
+> > will behave when values are out of range, given this is just a binding
+> > spec?
+> >
+> > Perhaps -if needed- this sentence can be rephrased to state that,
+> > e.g. the OS may not be able to apply these values, if the controller
+> > or device is unable to?
+>
+> I will defer to Rob H. on this one, but I'm happy to simply remove the
+> last sentence.  I was trying to add a more OS-agnostic version of the
+> bullet points from V3 but agree that we could just remove this from
+> the bindings completely.
 
-Reviewed-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Following my opinion that it's not the kernel's job to validate
+bindings, I would say it's fine for the OS to blindly apply them if it
+chooses.
 
-Thanks!
+Plus with schema, you can provide the ranges of values and validate
+DTs up front (unless you want to validate some result of math
+operations).
 
-	Hans
-
-> ---
->  drivers/staging/media/imx/imx-media-dev-common.c      | 4 ++--
->  drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c | 2 +-
->  2 files changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/staging/media/imx/imx-media-dev-common.c b/drivers/staging/media/imx/imx-media-dev-common.c
-> index 910594125889..6cd93419b81d 100644
-> --- a/drivers/staging/media/imx/imx-media-dev-common.c
-> +++ b/drivers/staging/media/imx/imx-media-dev-common.c
-> @@ -30,7 +30,7 @@ struct imx_media_dev *imx_media_dev_init(struct device *dev)
->  
->  	dev_set_drvdata(dev, imxmd);
->  
-> -	strlcpy(imxmd->md.model, "imx-media", sizeof(imxmd->md.model));
-> +	strscpy(imxmd->md.model, "imx-media", sizeof(imxmd->md.model));
->  	imxmd->md.ops = &imx_media_md_ops;
->  	imxmd->md.dev = dev;
->  
-> @@ -38,7 +38,7 @@ struct imx_media_dev *imx_media_dev_init(struct device *dev)
->  
->  	imxmd->v4l2_dev.mdev = &imxmd->md;
->  	imxmd->v4l2_dev.notify = imx_media_notify;
-> -	strlcpy(imxmd->v4l2_dev.name, "imx-media",
-> +	strscpy(imxmd->v4l2_dev.name, "imx-media",
->  		sizeof(imxmd->v4l2_dev.name));
->  
->  	media_device_init(&imxmd->md);
-> diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-> index 57611464ad07..58721c46fba4 100644
-> --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-> +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-> @@ -462,7 +462,7 @@ static int rockchip_vpu_probe(struct platform_device *pdev)
->  	}
->  
->  	vpu->mdev.dev = vpu->dev;
-> -	strlcpy(vpu->mdev.model, DRIVER_NAME, sizeof(vpu->mdev.model));
-> +	strscpy(vpu->mdev.model, DRIVER_NAME, sizeof(vpu->mdev.model));
->  	media_device_init(&vpu->mdev);
->  	vpu->v4l2_dev.mdev = &vpu->mdev;
->  
-> 
+Rob
