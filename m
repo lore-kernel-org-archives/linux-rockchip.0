@@ -1,51 +1,79 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v4 6/7] ARM: dts: rockchip: Specify rk3288-veyron-jerry's display timings
-Date: Fri, 29 Mar 2019 20:20:00 +0100
-Message-ID: <7960623.ZFqGeXkhir@diego>
-References: <20190328171710.31949-1-dianders@chromium.org> <20190328171710.31949-7-dianders@chromium.org>
+From: Mukesh Ojha <mojha@codeaurora.org>
+Subject: Re: [PATCH] media: staging: use strscpy() instead of strlcpy()
+Date: Sat, 30 Mar 2019 02:01:54 +0530
+Message-ID: <401f327c-7a68-2a1f-d359-92b3bfb71579@codeaurora.org>
+References: <e5ba9c47436888e9cc4c0cda6ca61ade31e703c0.1553873376.git.mchehab+samsung@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190328171710.31949-7-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Sean Paul <seanpaul@chromium.org>, linux-rockchip@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dri-devel@lists.freedesktop.org, Boris Brezillon <boris.brezillon@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, Enric =?ISO-8859-1?Q?Balletb=F2?= <enric.balletbo@collabora.com>, Rob Herring <robh+dt@kernel.org>, mka@chromium.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+In-Reply-To: <e5ba9c47436888e9cc4c0cda6ca61ade31e703c0.1553873376.git.mchehab+samsung@kernel.org>
+Content-Language: en-US
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Cc: devel@driverdev.osuosl.org, Heiko Stuebner <heiko@sntech.de>, Ezequiel Garcia <ezequiel@collabora.com>, Sascha Hauer <s.hauer@pengutronix.de>, Steve Longerbeam <slongerbeam@gmail.com>, YueHaibing <yuehaibing@huawei.com>, Shawn Guo <shawnguo@kernel.org>, Mauro Carvalho Chehab <mchehab@infradead.org>, linux-rockchip@lists.infradead.org, NXP Linux Team <linux-imx@nxp.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org, Linux Media Mailing List <linux-media@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 28. März 2019, 18:17:09 CET schrieb Douglas Anderson:
-> Let's document the display timings that jerry has been using out in
-> the field.  This uses the standard blankings but a slightly slower
-> clock rate, thus getting a refresh rate 58.3 Hz.
-> 
-> NOTE: this won't really do anything except cause DRM to properly
-> report the refresh rate since vop_crtc_mode_fixup() was rounding the
-> pixel clock to 74.25 MHz anyway.  Apparently the adjusted rate isn't
-> exposed to userspace so it's important that the rate we're trying to
-> achieve is mostly right.
-> 
-> For the downstream kernel change related to this see See
-> https://crrev.com/c/324558.
-> 
-> NOTE: minnie will be fixed up in a future patch, so for now we'll just
-> delete the panel timings there.
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+
+On 3/29/2019 8:59 PM, Mauro Carvalho Chehab wrote:
+> There are a few left overs at staging with were still using the
+> deprecated strlcpy() function.
+>
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+
+s/with/which
+
+
+Reviewed-by: Mukesh Ojha <mojha@codeaurora.org>
+
+Cheers,
+-Mukesh
+
 > ---
-> 
-> Changes in v4:
-> - rk3288-veyron-jerry patch new for v4.
-> 
-> Changes in v3: None
-> Changes in v2: None
-> 
->  arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi | 14 ++++++++++++++
-
-hmm, the commit message explicitly mentions jerry, but this is the
-general panel definition for most veyron-chromebooks (jerry, pinky, jaq,...)?
-
-It does work on both pinky and jerry for me, so I guess just the commit
-message needs a bit adapting?
-
-
-Heiko
+>   drivers/staging/media/imx/imx-media-dev-common.c      | 4 ++--
+>   drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c | 2 +-
+>   2 files changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/media/imx/imx-media-dev-common.c b/drivers/staging/media/imx/imx-media-dev-common.c
+> index 910594125889..6cd93419b81d 100644
+> --- a/drivers/staging/media/imx/imx-media-dev-common.c
+> +++ b/drivers/staging/media/imx/imx-media-dev-common.c
+> @@ -30,7 +30,7 @@ struct imx_media_dev *imx_media_dev_init(struct device *dev)
+>   
+>   	dev_set_drvdata(dev, imxmd);
+>   
+> -	strlcpy(imxmd->md.model, "imx-media", sizeof(imxmd->md.model));
+> +	strscpy(imxmd->md.model, "imx-media", sizeof(imxmd->md.model));
+>   	imxmd->md.ops = &imx_media_md_ops;
+>   	imxmd->md.dev = dev;
+>   
+> @@ -38,7 +38,7 @@ struct imx_media_dev *imx_media_dev_init(struct device *dev)
+>   
+>   	imxmd->v4l2_dev.mdev = &imxmd->md;
+>   	imxmd->v4l2_dev.notify = imx_media_notify;
+> -	strlcpy(imxmd->v4l2_dev.name, "imx-media",
+> +	strscpy(imxmd->v4l2_dev.name, "imx-media",
+>   		sizeof(imxmd->v4l2_dev.name));
+>   
+>   	media_device_init(&imxmd->md);
+> diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+> index 57611464ad07..58721c46fba4 100644
+> --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+> +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+> @@ -462,7 +462,7 @@ static int rockchip_vpu_probe(struct platform_device *pdev)
+>   	}
+>   
+>   	vpu->mdev.dev = vpu->dev;
+> -	strlcpy(vpu->mdev.model, DRIVER_NAME, sizeof(vpu->mdev.model));
+> +	strscpy(vpu->mdev.model, DRIVER_NAME, sizeof(vpu->mdev.model));
+>   	media_device_init(&vpu->mdev);
+>   	vpu->v4l2_dev.mdev = &vpu->mdev;
+>   
