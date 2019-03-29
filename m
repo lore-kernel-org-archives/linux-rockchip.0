@@ -1,58 +1,51 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v4 4/7] drm/panel: simple: Use display_timing for Innolux
- n116bge
-Date: Fri, 29 Mar 2019 20:17:57 +0100
-Message-ID: <4434574.6rqfZtZq1D@diego>
-References: <20190328171710.31949-1-dianders@chromium.org>
- <20190328171710.31949-5-dianders@chromium.org>
+Subject: Re: [PATCH v4 6/7] ARM: dts: rockchip: Specify rk3288-veyron-jerry's display timings
+Date: Fri, 29 Mar 2019 20:20:00 +0100
+Message-ID: <7960623.ZFqGeXkhir@diego>
+References: <20190328171710.31949-1-dianders@chromium.org> <20190328171710.31949-7-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190328171710.31949-5-dianders@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190328171710.31949-7-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Douglas Anderson <dianders@chromium.org>
-Cc: Rob Herring <robh+dt@kernel.org>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Thierry Reding <thierry.reding@gmail.com>, Sean Paul <seanpaul@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Boris Brezillon <boris.brezillon@collabora.com>, Enric =?ISO-8859-1?Q?Balletb=F2?= <enric.balletbo@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, mka@chromium.org
+Cc: Thierry Reding <thierry.reding@gmail.com>, Sean Paul <seanpaul@chromium.org>, linux-rockchip@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dri-devel@lists.freedesktop.org, Boris Brezillon <boris.brezillon@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, Enric =?ISO-8859-1?Q?Balletb=F2?= <enric.balletbo@collabora.com>, Rob Herring <robh+dt@kernel.org>, mka@chromium.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRG9ubmVyc3RhZywgMjguIE3DpHJ6IDIwMTksIDE4OjE3OjA3IENFVCBzY2hyaWViIERvdWds
-YXMgQW5kZXJzb246Cj4gQ29udmVydCB0aGUgSW5ub2x1eCBuMTE2YmdlIGZyb20gdXNpbmcgYSBm
-aXhlZCBtb2RlIHRvIHNwZWNpZnlpbmcgYQo+IGRpc3BsYXkgdGltaW5nIHdpdGggbWluL3R5cC9t
-YXggdmFsdWVzLgo+IAo+IE5vdGUgdGhhdCB0aGUgbjExNmJnZSdzIGRhdGFzaGVldCBkb2Vzbid0
-IGZpdCB0b28gd2VsbCBpbnRvIERSTSdzIHdheQo+IG9mIHNwZWNpZnlpbmcgdGhpbmdzLiAgU3Bl
-Y2lmaWNhbGx5IHRoZSBwYW5lbCdzIGRhdGFzaGVldCBqdXN0Cj4gc3BlY2lmaWVzIHRoZSB2ZXJ0
-aWNhbCBibGFua2luZyBwZXJpb2QgYW5kIGhvcml6b250YWwgYmxhbmtpbmcgcGVyaW9kCj4gYW5k
-IGRvZXNuJ3QgYnJlYWsgdGhpbmdzIG91dC4gIEZvciBub3cgd2UnbGwgbGVhdmUgZXZlcnl0aGlu
-ZyBhcyBhCj4gZml4ZWQgdmFsdWUgYnV0IGp1c3QgYWxsb3cgYWRqdXN0aW5nIHRoZSBwaXhlbCBj
-bG9jay4gIEkndmUgYWRkZWQgYQo+IGNvbW1lbnQgb24gd2hhdCB0aGUgZGF0YXNoZWV0IGNsYWlt
-cyBzbyBzb21lb25lIGNvdWxkIGxhdGVyIGV4cGFuZAo+IHRoaW5ncyB0byBmaXQgdGhlaXIgbmVl
-ZHMgaWYgdGhleSB3YW50ZWQgdG8gdGVzdCBvdGhlciBibGFua2luZwo+IHBlcmlvZHMuCj4gCj4g
-VGhlIGdvYWwgaGVyZSBpcyB0byBiZSBhYmxlIHRvIHNwZWNpZnkgdGhlIHBhbmVsIHRpbWluZ3Mg
-aW4gdGhlIGRldmljZQo+IHRyZWUgZm9yIHNldmVyYWwgcmszMjg4IENocm9tZWJvb2tzIChsaWtl
-IHJrMzI4OC12ZXJ5b24tamVycnkpLiAgVGhlc2UKPiBDaHJvbWVib29rcyBoYXZlIGFsbCBiZWVu
-IHJ1bm5pbmcgaW4gdGhlIGRvd25zdHJlYW0ga2VybmVsIHdpdGggdGhlCj4gc3RhbmRhcmQgcG9y
-Y2hlcyBhbmQgc3luYyBsZW5ndGhzIGJ1dCBqdXN0IHdpdGggYSBzbGlnaHRseSBzbG93ZXIKPiBw
-aXhlbCBjbG9jayBiZWNhdXNlIHRoZSA3Ni40MiBNSHogY2xvY2sgaXMgbm90IGFjaGlldmFibGUg
-ZnJvbSB0aGUKPiBmaXhlZCBQTEwgdGhhdCB3YXMgYXZhaWxhYmxlLiAgVGhlc2UgQ2hyb21lYm9v
-a3Mgb25seSBhY2hpZXZlIGEKPiByZWZyZXNoIHJhdGUgb2YgfjU4IEh6LiAgV2hpbGUgaXQncyBw
-cm9iYWJsZSB0aGF0IHdlIGNvdWxkIGFkanVzdCB0aGUKPiB0aW1pbmdzIHRvIGFjaGlldmUgNjAg
-SHogaXQncyBwcm9iYWJseSB3aXNlc3QgdG8gbWF0Y2ggd2hhdCdzIGJlZW4KPiBydW5uaW5nIG9u
-IHRoZXNlIGRldmljZXMgYWxsIHRoZXNlIHllYXJzLgo+IAo+IEknbGwgbm90ZSB0aGF0IHRob3Vn
-aCB0aGUgdXBzdHJlYW0ga2VybmVsIGhhcyBhbHdheXMgdHJpZWQgdG8gYWNoaWV2ZQo+IDc2LjQy
-IE1IeiwgaXQgaGFzIGFjdHVhbGx5IGJlZW4gcnVubmluZyBhdCA3NC4yNSBNSHogYWxzbyBzaW5j
-ZSB0aGUKPiB2aWRlbyBwcm9jZXNzb3IgaXMgcGFyZW50ZWQgb2ZmIHRoZSBzYW1lIGZpeGVkIFBM
-TC4KPiAKPiBDaGFuZ2VzIGluIHY0Ogo+ICAtIGRpc3BsYXlfdGltaW5nIGZvciBJbm5vbHV4IG4x
-MTZiZ2UgbmV3IGZvciB2NC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBEb3VnbGFzIEFuZGVyc29uIDxk
-aWFuZGVyc0BjaHJvbWl1bS5vcmc+CgpvbiBhIHJrMzI4OC1qZXJyeSBhbmQgcmszMjg4LXBpbmt5
-ClRlc3RlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Am Donnerstag, 28. März 2019, 18:17:09 CET schrieb Douglas Anderson:
+> Let's document the display timings that jerry has been using out in
+> the field.  This uses the standard blankings but a slightly slower
+> clock rate, thus getting a refresh rate 58.3 Hz.
+> 
+> NOTE: this won't really do anything except cause DRM to properly
+> report the refresh rate since vop_crtc_mode_fixup() was rounding the
+> pixel clock to 74.25 MHz anyway.  Apparently the adjusted rate isn't
+> exposed to userspace so it's important that the rate we're trying to
+> achieve is mostly right.
+> 
+> For the downstream kernel change related to this see See
+> https://crrev.com/c/324558.
+> 
+> NOTE: minnie will be fixed up in a future patch, so for now we'll just
+> delete the panel timings there.
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+> 
+> Changes in v4:
+> - rk3288-veyron-jerry patch new for v4.
+> 
+> Changes in v3: None
+> Changes in v2: None
+> 
+>  arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi | 14 ++++++++++++++
+
+hmm, the commit message explicitly mentions jerry, but this is the
+general panel definition for most veyron-chromebooks (jerry, pinky, jaq,...)?
+
+It does work on both pinky and jerry for me, so I guess just the commit
+message needs a bit adapting?
+
+
+Heiko
