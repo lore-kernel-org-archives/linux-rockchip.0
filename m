@@ -1,79 +1,65 @@
-From: Mukesh Ojha <mojha@codeaurora.org>
-Subject: Re: [PATCH] media: staging: use strscpy() instead of strlcpy()
-Date: Sat, 30 Mar 2019 02:01:54 +0530
-Message-ID: <401f327c-7a68-2a1f-d359-92b3bfb71579@codeaurora.org>
-References: <e5ba9c47436888e9cc4c0cda6ca61ade31e703c0.1553873376.git.mchehab+samsung@kernel.org>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] clk: rockchip: Fix video codec clocks on rk3288
+Date: Fri, 29 Mar 2019 14:54:55 -0700
+Message-ID: <20190329215455.159717-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-In-Reply-To: <e5ba9c47436888e9cc4c0cda6ca61ade31e703c0.1553873376.git.mchehab+samsung@kernel.org>
-Content-Language: en-US
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-Cc: devel@driverdev.osuosl.org, Heiko Stuebner <heiko@sntech.de>, Ezequiel Garcia <ezequiel@collabora.com>, Sascha Hauer <s.hauer@pengutronix.de>, Steve Longerbeam <slongerbeam@gmail.com>, YueHaibing <yuehaibing@huawei.com>, Shawn Guo <shawnguo@kernel.org>, Mauro Carvalho Chehab <mchehab@infradead.org>, linux-rockchip@lists.infradead.org, NXP Linux Team <linux-imx@nxp.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org, Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Tomasz Figa <tfiga@chromium.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, Ezequiel Garcia <ezequiel@collabora.com>, ryandcase@chromium.org, Elaine Zhang <zhangqing@rock-chips.com>, mka@chromium.org, Douglas Anderson <dianders@chromium.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+It appears that there is a typo in the rk3288 TRM.  For
+GRF_SOC_CON0[7] it says that 0 means "vepu" and 1 means "vdpu".  It's
+the other way around.
 
-On 3/29/2019 8:59 PM, Mauro Carvalho Chehab wrote:
-> There are a few left overs at staging with were still using the
-> deprecated strlcpy() function.
->
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+How do I know?  Here's my evidence:
 
-s/with/which
+1. Prior to commit 4d3e84f99628 ("clk: rockchip: describe aclk_vcodec
+   using the new muxgrf type on rk3288") we always pretended that we
+   were using "aclk_vdpu" and the comment in the code said that this
+   matched the default setting in the system.  In fact the default
+   setting is 0 according to the TRM and according to reading memory
+   at bootup.  In addition rk3288-based Chromebooks ran like this and
+   the video codecs worked.
+2. With the existing clock code if you boot up and try to enable the
+   new VIDEO_ROCKCHIP_VPU as a module (and without "clk_ignore_unused"
+   on the command line), you get errors like "failed to get ack on
+   domain 'pd_video', val=0x80208".  After flipping vepu/vdpu things
+   init OK.
+3. If I export and add both the vepu and vdpu to the list of clocks
+   for RK3288_PD_VIDEO I can get past the power domain errors, but now
+   I freeze when the vpu_mmu gets initted.
+4. If I just mark the "vdpu" as IGNORE_UNUSED then everything boots up
+   and probes OK showing that somehow the "vdpu" was important to keep
+   enabled.  This is because we were actually using it as a parent.
+5. After this change I can hack "aclk_vcodec_pre" to parent from
+   "aclk_vepu" using assigned-clocks and the video codec still probes
+   OK.
 
+Fixes: 4d3e84f99628 ("clk: rockchip: describe aclk_vcodec using the new muxgrf type on rk3288")
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+I currently have no way to test the JPEG mem2mem driver, so hopefully
+others can test this and make sure it's happy for them.  I'm just
+happy not to get strange errors at boot anymore.
 
-Reviewed-by: Mukesh Ojha <mojha@codeaurora.org>
+ drivers/clk/rockchip/clk-rk3288.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Cheers,
--Mukesh
-
-> ---
->   drivers/staging/media/imx/imx-media-dev-common.c      | 4 ++--
->   drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c | 2 +-
->   2 files changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/staging/media/imx/imx-media-dev-common.c b/drivers/staging/media/imx/imx-media-dev-common.c
-> index 910594125889..6cd93419b81d 100644
-> --- a/drivers/staging/media/imx/imx-media-dev-common.c
-> +++ b/drivers/staging/media/imx/imx-media-dev-common.c
-> @@ -30,7 +30,7 @@ struct imx_media_dev *imx_media_dev_init(struct device *dev)
->   
->   	dev_set_drvdata(dev, imxmd);
->   
-> -	strlcpy(imxmd->md.model, "imx-media", sizeof(imxmd->md.model));
-> +	strscpy(imxmd->md.model, "imx-media", sizeof(imxmd->md.model));
->   	imxmd->md.ops = &imx_media_md_ops;
->   	imxmd->md.dev = dev;
->   
-> @@ -38,7 +38,7 @@ struct imx_media_dev *imx_media_dev_init(struct device *dev)
->   
->   	imxmd->v4l2_dev.mdev = &imxmd->md;
->   	imxmd->v4l2_dev.notify = imx_media_notify;
-> -	strlcpy(imxmd->v4l2_dev.name, "imx-media",
-> +	strscpy(imxmd->v4l2_dev.name, "imx-media",
->   		sizeof(imxmd->v4l2_dev.name));
->   
->   	media_device_init(&imxmd->md);
-> diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-> index 57611464ad07..58721c46fba4 100644
-> --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-> +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-> @@ -462,7 +462,7 @@ static int rockchip_vpu_probe(struct platform_device *pdev)
->   	}
->   
->   	vpu->mdev.dev = vpu->dev;
-> -	strlcpy(vpu->mdev.model, DRIVER_NAME, sizeof(vpu->mdev.model));
-> +	strscpy(vpu->mdev.model, DRIVER_NAME, sizeof(vpu->mdev.model));
->   	media_device_init(&vpu->mdev);
->   	vpu->v4l2_dev.mdev = &vpu->mdev;
->   
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 5a67b7869960..4d767f9c3a80 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -219,7 +219,7 @@ PNAME(mux_hsadcout_p)	= { "hsadc_src", "ext_hsadc" };
+ PNAME(mux_edp_24m_p)	= { "ext_edp_24m", "xin24m" };
+ PNAME(mux_tspout_p)	= { "cpll", "gpll", "npll", "xin27m" };
+ 
+-PNAME(mux_aclk_vcodec_pre_p)	= { "aclk_vepu", "aclk_vdpu" };
++PNAME(mux_aclk_vcodec_pre_p)	= { "aclk_vdpu", "aclk_vepu" };
+ PNAME(mux_usbphy480m_p)		= { "sclk_otgphy1_480m", "sclk_otgphy2_480m",
+ 				    "sclk_otgphy0_480m" };
+ PNAME(mux_hsicphy480m_p)	= { "cpll", "gpll", "usbphy480m_src" };
+-- 
+2.21.0.392.gf8f6787159e-goog
