@@ -1,119 +1,64 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v4 1/7] dt-bindings: Add panel-timing subnode to simple-panel
-Date: Fri, 29 Mar 2019 09:14:43 -0700
-Message-ID: <CAD=FV=UeGChy6iJH1r9tDLmBHP1UR3f3N+7ofJ-pqWC5jYgo5A@mail.gmail.com>
-References: <20190328171710.31949-1-dianders@chromium.org> <20190328171710.31949-2-dianders@chromium.org>
- <f2f82f439f2b7586cb4c83f15122d8d19952d596.camel@collabora.com>
- <CAD=FV=WOKSHWCHPv9kQT7np6v_ZYBmAsnTpAHJv7zRS_3b46JQ@mail.gmail.com> <CAL_JsqJNPMnVLyPGeK5Jd=QVSO1zWvPEiPcgas03yP_P66M-uw@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v4 2/7] drm/panel: simple: Add ability to override typical
+ timing
+Date: Fri, 29 Mar 2019 20:13:33 +0100
+Message-ID: <1637882.fJ8YATuT5C@diego>
+References: <20190328171710.31949-1-dianders@chromium.org>
+ <20190328171710.31949-3-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAL_JsqJNPMnVLyPGeK5Jd=QVSO1zWvPEiPcgas03yP_P66M-uw@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dri-devel <dri-devel@lists.freedesktop.org>, Boris Brezillon <boris.brezillon@collabora.com>, =?UTF-8?Q?Enric_Balletb=C3=B2?= <enric.balletbo@collabora.com>, Matthias Kaehlcke <mka@chromium.org>, Eric Anholt <eric@anholt.net>, Jeffy Chen <jeffy.chen@rock-chips.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, David Airlie <airlied@linux.ie>, Mark Rutland <mark.rutland@arm.com>, Daniel Vetter <daniel@ffwll.>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190328171710.31949-3-dianders@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Douglas Anderson <dianders@chromium.org>
+Cc: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, David Airlie <airlied@linux.ie>, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Thierry Reding <thierry.reding@gmail.com>, Sean Paul <seanpaul@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Boris Brezillon <boris.brezillon@collabora.com>, Enric =?ISO-8859-1?Q?Balletb=F2?= <enric.balletbo@collabora.com>, =?ISO-8859-1?Q?St=E9phane?= Marchesin <marcheu@chromium.org>, Ezequiel Garcia <ezequiel@collabora.com>, mka@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Fri, Mar 29, 2019 at 9:13 AM Rob Herring <robh+dt@kernel.org> wrote:
->
-> On Thu, Mar 28, 2019 at 6:50 PM Doug Anderson <dianders@chromium.org> wro=
-te:
-> >
-> > Hi,
-> >
-> >
-> > On Thu, Mar 28, 2019 at 1:27 PM Ezequiel Garcia <ezequiel@collabora.com=
-> wrote:
-> > >
-> > > On Thu, 2019-03-28 at 10:17 -0700, Douglas Anderson wrote:
-> > > > From: Sean Paul <seanpaul@chromium.org>
-> > > >
-> > > > This patch adds a new subnode to simple-panel allowing us to overri=
-de
-> > > > the typical timing expressed in the panel's display_timing.
-> > > >
-> > > > Changes in v2:
-> > > >  - Split out the binding into a new patch (Rob)
-> > > >  - display-timings is a new section (Rob)
-> > > >  - Use the full display-timings subnode instead of picking the timi=
-ng
-> > > >    out (Rob/Thierry)
-> > > > Changes in v3:
-> > > >  - Go back to using the timing subnode directly, but rename to
-> > > >    panel-timing (Rob)
-> > > > Changes in v4:
-> > > >  - Simplify desc. for when override should be used (Thierry/Laurent=
-)
-> > > >  - Removed Rob H review since it's been a year and wording changed
-> > > >
-> > > > Cc: Doug Anderson <dianders@chromium.org>
-> > > > Cc: Eric Anholt <eric@anholt.net>
-> > > > Cc: Heiko Stuebner <heiko@sntech.de>
-> > > > Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
-> > > > Cc: Rob Herring <robh+dt@kernel.org>
-> > > > Cc: St=C3=A9phane Marchesin <marcheu@chromium.org>
-> > > > Cc: Thierry Reding <thierry.reding@gmail.com>
-> > > > Cc: devicetree@vger.kernel.org
-> > > > Cc: dri-devel@lists.freedesktop.org
-> > > > Cc: linux-rockchip@lists.infradead.org
-> > > > Signed-off-by: Sean Paul <seanpaul@chromium.org>
-> > > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > > > ---
-> > > >
-> > > >  .../bindings/display/panel/simple-panel.txt   | 24 +++++++++++++++=
-++++
-> > > >  1 file changed, 24 insertions(+)
-> > > >
-> > > > diff --git a/Documentation/devicetree/bindings/display/panel/simple=
--panel.txt b/Documentation/devicetree/bindings/display/panel/simple-panel.t=
-xt
-> > > > index b2b872c710f2..6157f86ddce4 100644
-> > > > --- a/Documentation/devicetree/bindings/display/panel/simple-panel.=
-txt
-> > > > +++ b/Documentation/devicetree/bindings/display/panel/simple-panel.=
-txt
-> > > > @@ -15,6 +15,18 @@ Optional properties:
-> > > >    (hot plug detect) signal, but the signal isn't hooked up so we s=
-hould
-> > > >    hardcode the max delay from the panel spec when powering up the =
-panel.
-> > > >
-> > > > +panel-timing subnode
-> > > > +--------------------
-> > > > +
-> > > > +This optional subnode is for devices which require a mode differin=
-g
-> > > > +from the panel's "typical" display timing.  The panel timings prov=
-ided
-> > > > +here will be ignored if they are found to be outside of allowable
-> > > > +ranges for the given panel.
-> > > > +
-> > >
-> > > Is it OK to put this comment about how the implementation
-> > > will behave when values are out of range, given this is just a bindin=
-g
-> > > spec?
-> > >
-> > > Perhaps -if needed- this sentence can be rephrased to state that,
-> > > e.g. the OS may not be able to apply these values, if the controller
-> > > or device is unable to?
-> >
-> > I will defer to Rob H. on this one, but I'm happy to simply remove the
-> > last sentence.  I was trying to add a more OS-agnostic version of the
-> > bullet points from V3 but agree that we could just remove this from
-> > the bindings completely.
->
-> Following my opinion that it's not the kernel's job to validate
-> bindings, I would say it's fine for the OS to blindly apply them if it
-> chooses.
->
-> Plus with schema, you can provide the ranges of values and validate
-> DTs up front (unless you want to validate some result of math
-> operations).
-
-OK, I'll remove the sentence and repost sometime early next week.  Thanks!
-
--Doug
+QW0gRG9ubmVyc3RhZywgMjguIE3DpHJ6IDIwMTksIDE4OjE3OjA1IENFVCBzY2hyaWViIERvdWds
+YXMgQW5kZXJzb246Cj4gRnJvbTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4g
+Cj4gVGhpcyBwYXRjaCBhZGRzIHRoZSBhYmlsaXR5IHRvIG92ZXJyaWRlIHRoZSB0eXBpY2FsIGRp
+c3BsYXkgdGltaW5nIGZvciBhCj4gZ2l2ZW4gcGFuZWwuIFRoaXMgaXMgdXNlZnVsIGZvciBkZXZp
+Y2VzIHdoaWNoIGhhdmUgdGltaW5nIGNvbnN0cmFpbnRzCj4gdGhhdCBkbyBub3QgYXBwbHkgYWNy
+b3NzIHRoZSBlbnRpcmUgZGlzcGxheSBkcml2ZXIgKGVnOiB0byBhdm9pZAo+IGNyb3NzdGFsayBi
+ZXR3ZWVuIHBhbmVsIGFuZCBkaWdpdGl6ZXIgb24gY2VydGFpbiBsYXB0b3BzKS4gVGhlIHJ1bGVz
+IGFyZQo+IGFzIGZvbGxvd3M6Cj4gCj4gLSBwYW5lbCBtdXN0IG5vdCBzcGVjaWZ5IGZpeGVkIG1v
+ZGUgKHNpbmNlIHRoZSBvdmVycmlkZSBtb2RlIHdpbGwKPiAgIGVpdGhlciBiZSB0aGUgc2FtZSBh
+cyB0aGUgZml4ZWQgbW9kZSwgb3Igd2UnbGwgYmUgdW5hYmxlIHRvCj4gICBjaGVjayB0aGUgYm91
+bmRzIG9mIHRoZSBvdmVycmllZCkKPiAtIHBhbmVsIG11c3Qgc3BlY2lmeSBhdCBsZWFzdCBvbmUg
+ZGlzcGxheV90aW1pbmcgcmFuZ2Ugd2hpY2ggd2lsbCBiZQo+ICAgdXNlZCB0byBlbnN1cmUgdGhl
+IG92ZXJyaWRlIG1vZGUgZml0cyB3aXRoaW4gaXRzIGJvdW5kcwo+IAo+IENoYW5nZXMgaW4gdjI6
+Cj4gIC0gUGFyc2UgdGhlIGZ1bGwgZGlzcGxheS10aW1pbmdzIG5vZGUgKHVzaW5nIHRoZSBuYXRp
+dmUtbW9kZSkgKFJvYikKPiBDaGFuZ2VzIGluIHYzOgo+ICAtIE5vIGxvbmdlciBwYXJzZSBkaXNw
+bGF5LXRpbWluZ3Mgc3Vibm9kZSwgdXNlIHBhbmVsLXRpbWluZyAoUm9iKQo+IENoYW5nZXMgaW4g
+djQ6Cj4gIC0gRG9uJ3QgYWRkIG1vZGUgZnJvbSB0aW1pbmcgaWYgb3ZlcnJpZGUgd2FzIHNwZWNp
+ZmllZCAoVGhpZXJyeSkKPiAgLSBBZGQgd2FybmluZyBpZiB0aW1pbmcgYW5kIGZpeGVkIG1vZGUg
+d2FzIHNwZWNpZmllZCAoVGhpZXJyeSkKPiAgLSBEb24ndCBhZGQgZml4ZWQgbW9kZSBpZiB0aW1p
+bmcgd2FzIHNwZWNpZmllZCAoVGhpZXJyeSkKPiAgLSBSZWZhY3Rvci9yZW5hbWUgYSBiaXQgdG8g
+YXZvaWQgZXh0cmEgaW5kZW50YXRpb24gZnJvbSAiaWYiIHRlc3RzCj4gIC0gaSBzaG91bGQgYmUg
+dW5zaWduZWQgKFRoaWVycnkpCj4gIC0gQWRkIGFubm95aW5nIFdBUk5fT05zIGZvciBzb21lIGNh
+c2VzIChUaGllcnJ5KQo+ICAtIFNpbXBsaWZ5ICdObyBkaXNwbGF5X3RpbWluZyBmb3VuZCcgaGFu
+ZGxpbmcgKFRoaWVycnkpCj4gIC0gUmVuYW1lIHRvIHBhbmVsX3NpbXBsZV9wYXJzZV9vdmVycmlk
+ZV9tb2RlKCkgKFRoaWVycnkpCj4gCj4gQ2M6IERvdWcgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9t
+aXVtLm9yZz4KPiBDYzogRXJpYyBBbmhvbHQgPGVyaWNAYW5ob2x0Lm5ldD4KPiBDYzogSGVpa28g
+U3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiBDYzogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkBy
+b2NrLWNoaXBzLmNvbT4KPiBDYzogUm9iIEhlcnJpbmcgPHJvYmgrZHRAa2VybmVsLm9yZz4KPiBD
+YzogU3TDqXBoYW5lIE1hcmNoZXNpbiA8bWFyY2hldUBjaHJvbWl1bS5vcmc+Cj4gQ2M6IFRoaWVy
+cnkgUmVkaW5nIDx0aGllcnJ5LnJlZGluZ0BnbWFpbC5jb20+Cj4gQ2M6IGRldmljZXRyZWVAdmdl
+ci5rZXJuZWwub3JnCj4gQ2M6IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBTaWdu
+ZWQtb2ZmLWJ5OiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPiBUZXN0ZWQtYnk6
+IEVucmljIEJhbGxldGJvIGkgU2VycmEgPGVucmljLmJhbGxldGJvQGNvbGxhYm9yYS5jb20+Cj4g
+U2lnbmVkLW9mZi1ieTogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPgoK
+b24gYSByazMzOTkta2V2aW4gYW5kIHJrMzI4OC1qZXJyeQpUZXN0ZWQtYnk6IEhlaWtvIFN0dWVi
+bmVyIDxoZWlrb0BzbnRlY2guZGU+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpLWRldmVs
