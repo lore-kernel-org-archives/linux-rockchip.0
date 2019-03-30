@@ -1,55 +1,173 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] drm: bridge: dw-hdmi: Fix overflow workaround for
- Rockchip SoCs
-Date: Sat, 30 Mar 2019 10:24:16 +0100
-Message-ID: <2505351.MTFty8Ks2V@phil>
-References: <AM3PR03MB0966818FAAAE6192FF4ED11AAC7D0@AM3PR03MB0966.eurprd03.prod.outlook.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <AM3PR03MB0966818FAAAE6192FF4ED11AAC7D0@AM3PR03MB0966.eurprd03.prod.outlook.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Sean Paul <seanpaul@chromium.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v6 0/4] Enable rk3066 VOP and HDMI for MK808
+Date: Sat, 30 Mar 2019 10:56:35 +0100
+Message-ID: <20190330095639.14626-1-jbx6244@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com, airlied@linux.ie, daniel@ffwll.ch, robh+dt@kernel.org, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTWl0dHdvY2gsIDIwLiBGZWJydWFyIDIwMTksIDA4OjUyOjMxIENFVCBzY2hyaWViIEpvbmFz
-IEthcmxtYW46Cj4gVGhlIFJvY2tjaGlwIFJLMzI4OCBTb0MgKHYyLjAwYSkgYW5kIFJLMzMyOC9S
-SzMzOTkgU29DcyAodjIuMTFhKSBoYXZlCj4gYWxzbyBiZWVuIGlkZW50aWZpZWQgYXMgbmVlZGlu
-ZyB0aGlzIHdvcmthcm91bmQgd2l0aCBhIHNpbmdsZSBpdGVyYXRpb24uCj4gCj4gRml4ZXM6IGJl
-NDFmYzU1ZjFhYSAoImRybTogYnJpZGdlOiBkdy1oZG1pOiBIYW5kbGUgb3ZlcmZsb3cgd29ya2Fy
-b3VuZCBiYXNlZCBvbiBkZXZpY2UgdmVyc2lvbiIpCj4gU2lnbmVkLW9mZi1ieTogSm9uYXMgS2Fy
-bG1hbiA8am9uYXNAa3dpYm9vLnNlPgoKT24gcmszMzI4IGFuZCByazMyODgKVGVzdGVkLWJ5OiBI
-ZWlrbyBTdHVlYmVyIDxoZWlrb0BzbnRlY2guZGU+CgpJZiBJIHJlbWVtYmVyIGNvcnJlY3RseSwg
-dGhpcyBzaG91bGQgcmVtb3ZlIHRoZSBwaW5rIGxpbmUgdGhhdCBzaG93cyB1cApzb21ldGltZXMu
-IFdpdGggdGhpcyBwYXRjaCBJIGNvdWxkbid0IHNlZSBpdCBhbnltb3JlIGR1cmluZyBtdWx0aXBs
-ZQpyZWJvb3RzLgoKSGVpa28KCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3Bz
-eXMvZHctaGRtaS5jIHwgNCArKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKykK
-PiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1p
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYwo+IGluZGV4IDY0
-YzNjZjAyNzUxOC4uMTQyMjNjMGVlNzg0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9i
-cmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9z
-eW5vcHN5cy9kdy1oZG1pLmMKPiBAQCAtMTY1NSw2ICsxNjU1LDggQEAgc3RhdGljIHZvaWQgZHdf
-aGRtaV9jbGVhcl9vdmVyZmxvdyhzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPiAgCSAqIGl0ZXJhdGlv
-biBmb3Igb3RoZXJzLgo+ICAJICogVGhlIEFtbG9naWMgTWVzb24gR1ggU29DcyAodjIuMDFhKSBo
-YXZlIGJlZW4gaWRlbnRpZmllZCBhcyBuZWVkaW5nCj4gIAkgKiB0aGUgd29ya2Fyb3VuZCB3aXRo
-IGEgc2luZ2xlIGl0ZXJhdGlvbi4KPiArCSAqIFRoZSBSb2NrY2hpcCBSSzMyODggU29DICh2Mi4w
-MGEpIGFuZCBSSzMzMjgvUkszMzk5IFNvQ3MgKHYyLjExYSkgaGF2ZQo+ICsJICogYmVlbiBpZGVu
-dGlmaWVkIGFzIG5lZWRpbmcgdGhlIHdvcmthcm91bmQgd2l0aCBhIHNpbmdsZSBpdGVyYXRpb24u
-Cj4gIAkgKi8KPiAgCj4gIAlzd2l0Y2ggKGhkbWktPnZlcnNpb24pIHsKPiBAQCAtMTY2Myw3ICsx
-NjY1LDkgQEAgc3RhdGljIHZvaWQgZHdfaGRtaV9jbGVhcl9vdmVyZmxvdyhzdHJ1Y3QgZHdfaGRt
-aSAqaGRtaSkKPiAgCQlicmVhazsKPiAgCWNhc2UgMHgxMzFhOgo+ICAJY2FzZSAweDEzMmE6Cj4g
-KwljYXNlIDB4MjAwYToKPiAgCWNhc2UgMHgyMDFhOgo+ICsJY2FzZSAweDIxMWE6Cj4gIAljYXNl
-IDB4MjEyYToKPiAgCQljb3VudCA9IDE7Cj4gIAkJYnJlYWs7Cj4gCgoKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
+For testing only.
+
+Version: V6
+
+Title: Enable rk3066 VOP and HDMI for MK808.
+
+This patch serie only works in combination with a MK808 TV stick and
+a rk3066 processor. Other boxes and tablets with a rk3066
+need extra software for power management and lcd's.
+
+What does it do:
+
+With these kernel patches a MK808 can show 2 penguins and a console
+on a DVI-D monitor in combination with a framebuffer.
+
+Not tested:
+
+HDMI TV
+HDCP
+DRM
+Xorg
+Display managers
+Android
+etc.
+
+Problems:
+
+DRM functions keep changing every rc.
+With v5.1-rc1 the monitor doesn't blank on poweroff, it freezes
+due to a patch revert some time ago.
+
+  drm/rockchip: shutdown drm subsystem on shutdown
+    https://patchwork.kernel.org/patch/10556151/
+  drm/rockchip: Allow driver to be shutdown on reboot/kexec
+    https://patchwork.kernel.org/patch/10556135/
+  [for-4.20] Revert "drm/rockchip: Allow driver to be shutdown on reboot/kexec"
+    https://patchwork.kernel.org/patch/10714725/
+
+DVI-D monitors without CEA modes can add a fixed mode
+to the kernel command line as workaround.
+For example: video=HDMI-A-1:1280x720@60
+
+HDMI sound not included.
+etc.
+
+///////////////////////////////////////////
+Changes V6:
+
+rk3066_hdmi.c
+  add goto err_cleanup_hdmi to rk3066_hdmi_bind function
+  small text style changes
+
+///////////////////////////////////////////
+Changes V5:
+
+rockchip,rk3066-hdmi.txt
+  add Reviewed-by tag
+
+rk3066_hdmi.c
+  change order in unbind function
+  add goto err_disable_i2c to rk3066_hdmi_bind function
+  change dev_foobar calls to their DRM_* equivalents
+  remove rk3066_hdmi_i2c_irq function
+  use define constants in rk3066_hdmi_encoder_enable function
+  add comment to rk3066_hdmi_config_phy function
+  small text style changes
+  remove DVI-D support
+
+rk3066_hdmi.h
+  add define constants
+
+///////////////////////////////////////////
+Changes V4:
+
+rockchip,rk3066-hdmi.txt
+  change document name
+
+rk3066_hdmi.c
+  add more info in commit message
+  replace deprecated drmP.h include
+  small text style changes
+  explain vic variable
+  remove enc_in_format
+  change lock name
+  change regmap name
+  change cmp name
+  replace hdmi->dev by dev
+  use sentinel
+  use HDMI_VIDEO_VSYNC_OFFSET_SHIFT define
+  remove unused module macros
+  change driver name for dmesg
+
+///////////////////////////////////////////
+Changes V3:
+
+updated to v5.0-rc8
+removed patches that are already added to linux-next
+
+rk3066_hdmi.c
+  removed gpl text
+  small style changes
+  removed unused includes
+  add include for:
+    drm_helper_hpd_irq_event
+    drm_helper_probe_single_connector_modes
+  update drm_hdmi_avi_infoframe_from_display_mode function call
+
+rk3066_hdmi.h
+  removed gpl text
+
+rk3066a.dtsi
+  add extra port for hdmi connector node
+
+rk3066a-mk808.dts
+  add hdmi connector node
+  connect hdmi_out with hdmi_con_in
+
+rk3066-hdmi.txt
+  add extra port for hdmi connector node
+
+///////////////////////////////////////////
+
+# How to make rkfs.cpio
+
+find . | cpio -o --format=newc > ../rkfs.cpio
+
+# How to compile/flash
+
+make menuconfig  ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabi-
+make -j4  ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabi-
+
+cp ./arch/arm/boot/zImage ../zImage-dtb
+cat ./arch/arm/boot/dts/rk3066a-mk808.dtb >> ../zImage-dtb
+../tools/rkcrc -k ../zImage-dtb ../mk808.img
+sudo ../tools/rkflashtool w 0x4000 0x8000 < ../mk808.img
+sudo ../tools/rkflashtool b
+
+///////////////////////////////////////////
+
+Johan Jonker (2):
+  ARM: dts: rockchip: rk3066a-mk808: enable vop0 and hdmi nodes
+  dt-bindings: display: rockchip: add document for rk3066 hdmi
+
+Zheng Yang (2):
+  drm: rockchip: introduce rk3066 hdmi
+  ARM: dts: rockchip: add rk3066 hdmi nodes
+
+ .../display/rockchip/rockchip,rk3066-hdmi.txt      |  72 ++
+ arch/arm/boot/dts/rk3066a-mk808.dts                |  29 +
+ arch/arm/boot/dts/rk3066a.dtsi                     |  52 ++
+ drivers/gpu/drm/rockchip/Kconfig                   |   8 +
+ drivers/gpu/drm/rockchip/Makefile                  |   1 +
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c             | 869 +++++++++++++++++++++
+ drivers/gpu/drm/rockchip/rk3066_hdmi.h             | 229 ++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c        |   2 +
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h        |   1 +
+ 9 files changed, 1263 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,rk3066-hdmi.txt
+ create mode 100644 drivers/gpu/drm/rockchip/rk3066_hdmi.c
+ create mode 100644 drivers/gpu/drm/rockchip/rk3066_hdmi.h
+
+-- 
+2.11.0
