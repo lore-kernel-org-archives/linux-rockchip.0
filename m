@@ -1,78 +1,55 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 1/3] pwm: rockchip: Don't update the state for the
- caller of pwm_apply_state()
-Date: Sat, 30 Mar 2019 10:17:42 +0100
-Message-ID: <1707507.TOMHpQGrZ7@phil>
-References: <20190312214605.10223-1-u.kleine-koenig@pengutronix.de>
- <20190312214605.10223-2-u.kleine-koenig@pengutronix.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] drm: bridge: dw-hdmi: Fix overflow workaround for
+ Rockchip SoCs
+Date: Sat, 30 Mar 2019 10:24:16 +0100
+Message-ID: <2505351.MTFty8Ks2V@phil>
+References: <AM3PR03MB0966818FAAAE6192FF4ED11AAC7D0@AM3PR03MB0966.eurprd03.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190312214605.10223-2-u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <AM3PR03MB0966818FAAAE6192FF4ED11AAC7D0@AM3PR03MB0966.eurprd03.prod.outlook.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Sean Paul <seanpaul@chromium.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-[adding two chromeos people, because veyron and gru are quite
-heavy users of the rockchip pwm for both backlight and regulators]
-
-Doug, Brian: patchwork patch is here:
-https://patchwork.kernel.org/patch/10851001/
-
-Am Dienstag, 12. M=E4rz 2019, 22:46:03 CET schrieb Uwe Kleine-K=F6nig:
-> The pwm-rockchip driver is one of only two PWM drivers which updates the
-> state for the caller of pwm_apply_state(). This might have surprising
-> results if the caller reuses the values expecting them to still
-> represent the same state. Also note that this feedback was incomplete as
-> the matching struct pwm_device::state wasn't updated and so
-> pwm_get_state still returned the originally requested state.
-> =
-
-> Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-
-I've tested this on both veyron and gru with backlight and pwm regulator
-and at least both still come up, so
-Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-
-But hopefully Doug or Brian could also provide another test-point.
-
-Heiko
-
-> ---
->  drivers/pwm/pwm-rockchip.c | 6 ------
->  1 file changed, 6 deletions(-)
-> =
-
-> diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
-> index 4d99d468df09..16186bcd99e0 100644
-> --- a/drivers/pwm/pwm-rockchip.c
-> +++ b/drivers/pwm/pwm-rockchip.c
-> @@ -215,12 +215,6 @@ static int rockchip_pwm_apply(struct pwm_chip *chip,=
- struct pwm_device *pwm,
->  			goto out;
->  	}
->  =
-
-> -	/*
-> -	 * Update the state with the real hardware, which can differ a bit
-> -	 * because of period/duty_cycle approximation.
-> -	 */
-> -	rockchip_pwm_get_state(chip, pwm, state);
-> -
->  out:
->  	clk_disable(pc->pclk);
->  =
-
-> =
+QW0gTWl0dHdvY2gsIDIwLiBGZWJydWFyIDIwMTksIDA4OjUyOjMxIENFVCBzY2hyaWViIEpvbmFz
+IEthcmxtYW46Cj4gVGhlIFJvY2tjaGlwIFJLMzI4OCBTb0MgKHYyLjAwYSkgYW5kIFJLMzMyOC9S
+SzMzOTkgU29DcyAodjIuMTFhKSBoYXZlCj4gYWxzbyBiZWVuIGlkZW50aWZpZWQgYXMgbmVlZGlu
+ZyB0aGlzIHdvcmthcm91bmQgd2l0aCBhIHNpbmdsZSBpdGVyYXRpb24uCj4gCj4gRml4ZXM6IGJl
+NDFmYzU1ZjFhYSAoImRybTogYnJpZGdlOiBkdy1oZG1pOiBIYW5kbGUgb3ZlcmZsb3cgd29ya2Fy
+b3VuZCBiYXNlZCBvbiBkZXZpY2UgdmVyc2lvbiIpCj4gU2lnbmVkLW9mZi1ieTogSm9uYXMgS2Fy
+bG1hbiA8am9uYXNAa3dpYm9vLnNlPgoKT24gcmszMzI4IGFuZCByazMyODgKVGVzdGVkLWJ5OiBI
+ZWlrbyBTdHVlYmVyIDxoZWlrb0BzbnRlY2guZGU+CgpJZiBJIHJlbWVtYmVyIGNvcnJlY3RseSwg
+dGhpcyBzaG91bGQgcmVtb3ZlIHRoZSBwaW5rIGxpbmUgdGhhdCBzaG93cyB1cApzb21ldGltZXMu
+IFdpdGggdGhpcyBwYXRjaCBJIGNvdWxkbid0IHNlZSBpdCBhbnltb3JlIGR1cmluZyBtdWx0aXBs
+ZQpyZWJvb3RzLgoKSGVpa28KCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3Bz
+eXMvZHctaGRtaS5jIHwgNCArKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKykK
+PiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1p
+LmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYwo+IGluZGV4IDY0
+YzNjZjAyNzUxOC4uMTQyMjNjMGVlNzg0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9i
+cmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9z
+eW5vcHN5cy9kdy1oZG1pLmMKPiBAQCAtMTY1NSw2ICsxNjU1LDggQEAgc3RhdGljIHZvaWQgZHdf
+aGRtaV9jbGVhcl9vdmVyZmxvdyhzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPiAgCSAqIGl0ZXJhdGlv
+biBmb3Igb3RoZXJzLgo+ICAJICogVGhlIEFtbG9naWMgTWVzb24gR1ggU29DcyAodjIuMDFhKSBo
+YXZlIGJlZW4gaWRlbnRpZmllZCBhcyBuZWVkaW5nCj4gIAkgKiB0aGUgd29ya2Fyb3VuZCB3aXRo
+IGEgc2luZ2xlIGl0ZXJhdGlvbi4KPiArCSAqIFRoZSBSb2NrY2hpcCBSSzMyODggU29DICh2Mi4w
+MGEpIGFuZCBSSzMzMjgvUkszMzk5IFNvQ3MgKHYyLjExYSkgaGF2ZQo+ICsJICogYmVlbiBpZGVu
+dGlmaWVkIGFzIG5lZWRpbmcgdGhlIHdvcmthcm91bmQgd2l0aCBhIHNpbmdsZSBpdGVyYXRpb24u
+Cj4gIAkgKi8KPiAgCj4gIAlzd2l0Y2ggKGhkbWktPnZlcnNpb24pIHsKPiBAQCAtMTY2Myw3ICsx
+NjY1LDkgQEAgc3RhdGljIHZvaWQgZHdfaGRtaV9jbGVhcl9vdmVyZmxvdyhzdHJ1Y3QgZHdfaGRt
+aSAqaGRtaSkKPiAgCQlicmVhazsKPiAgCWNhc2UgMHgxMzFhOgo+ICAJY2FzZSAweDEzMmE6Cj4g
+KwljYXNlIDB4MjAwYToKPiAgCWNhc2UgMHgyMDFhOgo+ICsJY2FzZSAweDIxMWE6Cj4gIAljYXNl
+IDB4MjEyYToKPiAgCQljb3VudCA9IDE7Cj4gIAkJYnJlYWs7Cj4gCgoKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
