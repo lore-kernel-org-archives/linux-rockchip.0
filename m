@@ -1,36 +1,37 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v4] drm/rockchip: vop: Support dithering to RGB666
-Date: Sat, 30 Mar 2019 23:47:20 +0100
-Message-ID: <1899265.dpITUf1FJ4@phil>
-References: <20190318135701.7098-1-urjaman@gmail.com>
- <20190318154412.26994-1-urjaman@gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v6 4/4] dt-bindings: display: rockchip: add document for
+ rk3066 hdmi
+Date: Sun, 31 Mar 2019 15:57:17 +0200
+Message-ID: <8942337.6SUkryshbf@phil>
+References: <20190330095639.14626-1-jbx6244@gmail.com>
+ <20190330095639.14626-5-jbx6244@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190318154412.26994-1-urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190330095639.14626-5-jbx6244@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, airlied@linux.ie, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, daniel@ffwll.ch, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 18. M=E4rz 2019, 16:44:12 CET schrieb Urja Rannikko:
-> Splits out the dither register bits and introduces
-> the same config enumerations as in the rockchip kernel tree.
-> Tested to fix the banding on my ASUS C201.
+Am Samstag, 30. M=E4rz 2019, 10:56:39 CEST schrieb Johan Jonker:
+> This patch adds a binding that describes the HDMI controller for
+> rk3066.
 > =
 
-> Signed-off-by: Urja Rannikko <urjaman-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 
-applied to drm-misc-next ... so for 5.2
+applied to drm-misc-next, so should land in 5.2
 
 Thanks
 Heiko
