@@ -1,55 +1,28 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v6 1/4] drm: rockchip: introduce rk3066 hdmi
-Date: Sun, 31 Mar 2019 16:01:15 +0200
-Message-ID: <3503295.Ps5hWAbIar@phil>
-References: <20190330095639.14626-1-jbx6244@gmail.com>
- <20190330095639.14626-2-jbx6244@gmail.com>
+Subject: Re: [PATCH v6 2/4] ARM: dts: rockchip: add rk3066 hdmi nodes
+Date: Sun, 31 Mar 2019 17:36:02 +0200
+Message-ID: <129514949.lNtq4q1g8b@phil>
+References: <20190330095639.14626-1-jbx6244@gmail.com> <20190330095639.14626-3-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190330095639.14626-2-jbx6244@gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190330095639.14626-3-jbx6244@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Johan Jonker <jbx6244@gmail.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: hjc@rock-chips.com, airlied@linux.ie, daniel@ffwll.ch, robh+dt@kernel.org, mark.rutland@arm.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSm9oYW4sCgpBbSBTYW1zdGFnLCAzMC4gTcOkcnogMjAxOSwgMTA6NTY6MzYgQ0VTVCBzY2hy
-aWViIEpvaGFuIEpvbmtlcjoKPiBGcm9tOiBaaGVuZyBZYW5nIDx6aGVuZ3lhbmdAcm9jay1jaGlw
-cy5jb20+Cj4gCj4gVGhlIFJLMzA2NiBIRE1JIFRYIHNlcnZlcyBhcyBpbnRlcmZhY2UgYmV0d2Vl
-biBhIExDRCBDb250cm9sbGVyIGFuZAo+IGEgSERNSSBidXMuIEEgSERNSSBUWCBjb25zaXN0cyBv
-ZiBvbmUgSERNSSB0cmFuc21pdHRlciBjb250cm9sbGVyIGFuZAo+IG9uZSBIRE1JIHRyYW5zbWl0
-dGVyIFBIWS4gVGhlIGludGVyZmFjZSBoYXMgdGhyZWUgKDMpIDgtYml0IGRhdGEgY2hhbm5lbHMK
-PiB3aGljaCBjYW4gYmUgY29uZmlndXJlZCBmb3IgYSBudW1iZXIgb2YgYnVzIHdpZHRocyAoOC8x
-MC8xMi8xNi8yMC8yNC1iaXQpCj4gYW5kIGRpZmZlcmVudCB2aWRlbyBmb3JtYXRzIChSR0IsIFlD
-YkNyKS4KPiAKPiBGZWF0dXJlczoKPiBIRE1JIHZlcnNpb24gMS40YSwgSERDUCByZXZpc2lvbiAx
-LjQgYW5kCj4gRFZJIHZlcnNpb24gMS4wIGNvbXBsaWFudCB0cmFuc21pdHRlci4KPiBTdXBwb3J0
-cyBEVFYgcmVzb2x1dGlvbnMgZnJvbSA0ODBpIHRvIDEwODBpL3AgSEQuCj4gTWFzdGVyIEkyQyBp
-bnRlcmZhY2UgZm9yIGEgRERDIGNvbm5lY3Rpb24uCj4gSERNSSBUWCBzdXBwb3J0cyBtdWx0aXBs
-ZSBwb3dlciBzYXZlIG1vZGVzLgo+IFRoZSBIRE1JIFRYIGlucHV0IGNhbiBzd2l0Y2ggYmV0d2Vl
-biBMQ0RDMCBhbmQgTENEQzEuCj4gKFNvdW5kIHN1cHBvcnQgaXMgbm90IGluY2x1ZGVkIGluIHRo
-aXMgcGF0Y2gpCj4gCj4gU2lnbmVkLW9mZi1ieTogWmhlbmcgWWFuZyA8emhlbmd5YW5nQHJvY2st
-Y2hpcHMuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEpvaGFuIEpvbmtlciA8amJ4NjI0NEBnbWFpbC5j
-b20+CgphcHBsaWVkIHRvIGRybS1taXNjLW5leHQgd2l0aCBhIHNtYWxsaXNoIGNoYW5nZSBhcyBk
-ZXNjcmliZWQgYmVsb3csCnBsZWFzZSBkb3VibGUgY2hlY2suIFswXQoKPiArc3RhdGljIGludAo+
-ICtyazMwNjZfaGRtaV9wcm9iZV9zaW5nbGVfY29ubmVjdG9yX21vZGVzKHN0cnVjdCBkcm1fY29u
-bmVjdG9yICpjb25uZWN0b3IsCj4gKwkJCQkJIHVpbnQzMl90IG1heFgsIHVpbnQzMl90IG1heFkp
-Cj4gK3sKCmluc3RlYWQgb2YKCj4gKwlyZXR1cm4gZHJtX2hlbHBlcl9wcm9iZV9zaW5nbGVfY29u
-bmVjdG9yX21vZGVzKGNvbm5lY3RvciwgMTkyMCwgMTA4MCk7CgppdCBpcyBub3cgZG9pbmcKCisJ
-aWYgKG1heFggPiAxOTIwKQorCQltYXhYID0gMTkyMDsKKwlpZiAobWF4WSA+IDEwODApCisJCW1h
-eFkgPSAxMDgwOworCisJcmV0dXJuIGRybV9oZWxwZXJfcHJvYmVfc2luZ2xlX2Nvbm5lY3Rvcl9t
-b2Rlcyhjb25uZWN0b3IsIG1heFgsIG1heFkpOwoKdG8gdGFrZSBpbnRvIGFjY291bnQgbWF4WCAv
-IG1heFkgYmVpbmcgYWxyZWFkeSBiZWxvdyAxOTIweDEwODAKCj4gK30KCgpIZWlrbwoKWzBdIGh0
-dHBzOi8vY2dpdC5mcmVlZGVza3RvcC5vcmcvZHJtL2RybS1taXNjL2NvbW1pdC8/aWQ9Zjg0ZDNk
-MzdiN2ZiYjAyMmUzM2I3OWQ1NDM3NDQ2NmY2ZmJjNzE4NgoKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+Am Samstag, 30. März 2019, 10:56:37 CEST schrieb Johan Jonker:
+> From: Zheng Yang <zhengyang@rock-chips.com>
+> 
+> This patch adds the hdmi nodes to rk3066.
+> 
+> Signed-off-by: Zheng Yang <zhengyang@rock-chips.com>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+
+applied for 5.2 after correcting the alphabetical sorting of some
+properties.
+
+Thanks
+Heiko
