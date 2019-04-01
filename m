@@ -1,15 +1,14 @@
 From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 10/11] rockchip/vpu: Add support for non-standard
- controls
-Date: Mon, 1 Apr 2019 12:14:40 +0900
-Message-ID: <CAAFQd5ApNfr-t-HfWP-6JKJUgMwkr6oXWFgOhUqzj46JO2AS8Q@mail.gmail.com>
+Subject: Re: [PATCH v2 11/11] rockchip/vpu: Add support for MPEG-2 decoding
+Date: Mon, 1 Apr 2019 12:52:08 +0900
+Message-ID: <CAAFQd5C0-v=ZiOt36ibuO6uo3+0GzD-DBifKsY5v1d6ukvrnfA@mail.gmail.com>
 References: <20190304192529.14200-1-ezequiel@collabora.com>
- <20190304192529.14200-11-ezequiel@collabora.com>
+ <20190304192529.14200-12-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190304192529.14200-11-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+In-Reply-To: <20190304192529.14200-12-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -25,221 +24,172 @@ List-Id: linux-rockchip.vger.kernel.org
 
 On Tue, Mar 5, 2019 at 4:27 AM Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
 >
-> Rework the way controls are registered by the driver,
-> so it can support non-standard controls, such as those
-> used by stateless codecs.
+> From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
 >
-> Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> ---
->  .../media/rockchip/vpu/rk3288_vpu_hw.c        |  2 +-
->  .../media/rockchip/vpu/rk3399_vpu_hw.c        |  2 +-
->  .../staging/media/rockchip/vpu/rockchip_vpu.h | 24 ++++++-
->  .../media/rockchip/vpu/rockchip_vpu_common.h  |  1 +
->  .../media/rockchip/vpu/rockchip_vpu_drv.c     | 65 +++++++++++++++++--
->  5 files changed, 84 insertions(+), 10 deletions(-)
->
-> diff --git a/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw.c b/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw.c
-> index 056ee017c798..630eded99c68 100644
-> --- a/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw.c
-> +++ b/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw.c
-> @@ -112,7 +112,7 @@ const struct rockchip_vpu_variant rk3288_vpu_variant = {
->         .enc_fmts = rk3288_vpu_enc_fmts,
->         .num_enc_fmts = ARRAY_SIZE(rk3288_vpu_enc_fmts),
->         .codec_ops = rk3288_vpu_codec_ops,
-> -       .codec = RK_VPU_CODEC_JPEG,
-> +       .codec = RK_VPU_JPEG_ENCODER,
->         .vepu_irq = rk3288_vepu_irq,
->         .init = rk3288_vpu_hw_init,
->         .clk_names = {"aclk", "hclk"},
-> diff --git a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
-> index 0263584e616d..9eae1e6f1393 100644
-> --- a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
-> +++ b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
-> @@ -129,7 +129,7 @@ const struct rockchip_vpu_variant rk3399_vpu_variant = {
->         .enc_offset = 0x0,
->         .enc_fmts = rk3399_vpu_enc_fmts,
->         .num_enc_fmts = ARRAY_SIZE(rk3399_vpu_enc_fmts),
-> -       .codec = RK_VPU_CODEC_JPEG,
-> +       .codec = RK_VPU_JPEG_ENCODER,
->         .codec_ops = rk3399_vpu_codec_ops,
->         .vepu_irq = rk3399_vepu_irq,
->         .vdpu_irq = rk3399_vdpu_irq,
-> diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
-> index b383c89ecc17..a90fc2dfae99 100644
-> --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
-> +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
-> @@ -25,6 +25,7 @@
->
->  #include "rockchip_vpu_hw.h"
->
-> +#define ROCKCHIP_VPU_MAX_CTRLS          32
->  #define ROCKCHIP_VPU_MAX_CLOCKS                4
->
->  #define JPEG_MB_DIM                    16
-> @@ -34,7 +35,10 @@
->  struct rockchip_vpu_ctx;
->  struct rockchip_vpu_codec_ops;
->
-> -#define RK_VPU_CODEC_JPEG BIT(0)
-> +#define RK_VPU_JPEG_ENCODER    BIT(0)
-> +#define RK_VPU_ENCODERS                0x0000ffff
+[snip]
 > +
-> +#define RK_VPU_DECODERS                0xffff0000
->
->  /**
->   * struct rockchip_vpu_variant - information about VPU hardware variant
-> @@ -79,6 +83,20 @@ enum rockchip_vpu_codec_mode {
->         RK_VPU_MODE_JPEG_ENC,
->  };
->
-> +/*
-> + * struct rockchip_vpu_ctrl - helper type to declare supported controls
-> + * @id:                V4L2 control ID (V4L2_CID_xxx)
-> + * @is_std:    boolean to distinguish standard from customs control.
-> + * @codec:     codec id this control belong to (RK_VPU_JPEG_ENCODER, etc.)
-> + * @cfg:       control configuration
-> + */
-> +struct rockchip_vpu_ctrl {
-> +       unsigned int id;
-> +       unsigned int is_std;
+> +#define PICT_TOP_FIELD     1
+> +#define PICT_BOTTOM_FIELD  2
+> +#define PICT_FRAME         3
 
-Perhaps is_custom would make more sense? I'd expect most, if not all,
-of the controls to be standard. (Actually I wonder why the MPEG2
-controls are not standard.)
+These 3 seem to be the standard values applying to some fields of the
+MPEG2 controls. Why aren't they defined next to corresponding
+structures?
 
-> +       unsigned int codec;
-> +       struct v4l2_ctrl_config cfg;
-> +};
 > +
->  /*
->   * struct rockchip_vpu_mc - media controller data
->   *
-> @@ -169,6 +187,8 @@ struct rockchip_vpu_dev {
->   * @dst_fmt:           V4L2 pixel format of active destination format.
->   *
->   * @ctrl_handler:      Control handler used to register controls.
-> + * @ctrls:             Array of supported controls.
-> + * @num_ctrls:         Number of controls populated in the array.
->   * @jpeg_quality:      User-specified JPEG compression quality.
->   *
->   * @codec_ops:         Set of operations related to codec mode.
-> @@ -188,6 +208,8 @@ struct rockchip_vpu_ctx {
->         struct v4l2_pix_format_mplane dst_fmt;
->
->         struct v4l2_ctrl_handler ctrl_handler;
-> +       struct v4l2_ctrl *ctrls[ROCKCHIP_VPU_MAX_CTRLS];
-> +       unsigned int num_ctrls;
->         int jpeg_quality;
->
->         const struct rockchip_vpu_codec_ops *codec_ops;
-> diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_common.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu_common.h
-> index 7e5fce3bf215..70b8ac1c7503 100644
-> --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_common.h
-> +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_common.h
-> @@ -23,6 +23,7 @@ extern const struct v4l2_ioctl_ops rockchip_vpu_dec_ioctl_ops;
->  extern const struct vb2_ops rockchip_vpu_enc_queue_ops;
->  extern const struct vb2_ops rockchip_vpu_dec_queue_ops;
->
-> +void *rockchip_vpu_find_control_data(struct rockchip_vpu_ctx *ctx, unsigned int id);
->  void rockchip_vpu_enc_reset_src_fmt(struct rockchip_vpu_dev *vpu,
->                                     struct rockchip_vpu_ctx *ctx);
->  void rockchip_vpu_enc_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
-> diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-> index 27a9da86f1d0..f5c941f34c90 100644
-> --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-> +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-> @@ -276,26 +276,77 @@ static int rockchip_vpu_s_ctrl(struct v4l2_ctrl *ctrl)
->         return 0;
->  }
->
-> +void *rockchip_vpu_find_control_data(struct rockchip_vpu_ctx *ctx, unsigned int id)
+> +static void
+> +rk3399_vpu_mpeg2_dec_set_quantization(struct rockchip_vpu_dev *vpu,
+> +                                     struct rockchip_vpu_ctx *ctx)
 > +{
-> +       unsigned int i;
+> +       struct v4l2_ctrl_mpeg2_quantization *quantization;
 > +
-> +       for (i = 0; i < ctx->num_ctrls; i++) {
-> +               if (!ctx->ctrls[i])
-> +                       continue;
-> +               if (ctx->ctrls[i]->id == id)
-> +                       return ctx->ctrls[i]->p_cur.p;
-> +       }
-> +       return NULL;
+> +       quantization = rockchip_vpu_get_ctrl(ctx,
+> +                               V4L2_CID_MPEG_VIDEO_MPEG2_QUANTIZATION);
+> +       rockchip_vpu_mpeg2_dec_copy_qtable(ctx->mpeg2_dec_ctx.qtable.cpu, quantization);
+> +       vdpu_write_relaxed(vpu, ctx->mpeg2_dec_ctx.qtable.dma, VDPU_REG_QTABLE_BASE);
 > +}
 > +
-
-Couldn't we just use v4l2_ctrl_find() to get the control from the
-handler and then read the value from it?
-
->  static const struct v4l2_ctrl_ops rockchip_vpu_ctrl_ops = {
->         .s_ctrl = rockchip_vpu_s_ctrl,
->  };
->
-> +static struct rockchip_vpu_ctrl controls[] = {
-> +       {
-> +               .id = V4L2_CID_JPEG_COMPRESSION_QUALITY,
-> +               .codec = RK_VPU_JPEG_ENCODER,
-> +               .is_std = 1,
-> +               .cfg = {
-> +                       .min = 5,
-> +                       .max = 100,
-> +                       .step = 1,
-> +                       .def = 50,
-> +               },
-> +       },
-> +};
+> +static void rk3399_vpu_mpeg2_dec_set_buffers(struct rockchip_vpu_dev *vpu,
+> +                                            struct rockchip_vpu_ctx *ctx,
+> +                                            struct vb2_buffer *src_buf,
+> +                                            struct vb2_buffer *dst_buf,
+> +                                            const struct v4l2_mpeg2_sequence *sequence,
+> +                                            const struct v4l2_mpeg2_picture *picture,
+> +                                            const struct v4l2_ctrl_mpeg2_slice_params *slice_params)
+> +{
+> +       dma_addr_t forward_addr = 0, backward_addr = 0;
+> +       dma_addr_t current_addr, addr;
+> +       struct vb2_queue *vq;
 > +
->  static int rockchip_vpu_ctrls_setup(struct rockchip_vpu_dev *vpu,
->                                     struct rockchip_vpu_ctx *ctx)
->  {
-> -       v4l2_ctrl_handler_init(&ctx->ctrl_handler, 1);
-> -       if (vpu->variant->codec & RK_VPU_CODEC_JPEG) {
-> -               v4l2_ctrl_new_std(&ctx->ctrl_handler, &rockchip_vpu_ctrl_ops,
-> -                                 V4L2_CID_JPEG_COMPRESSION_QUALITY,
-> -                                 5, 100, 1, 50);
-> +       int j, i, num_ctrls = ARRAY_SIZE(controls);
-> +       int allowed_codecs;
+> +       vq = v4l2_m2m_get_dst_vq(ctx->fh.m2m_ctx);
 > +
-> +       if (ctx->is_enc)
-> +               allowed_codecs = vpu->variant->codec & RK_VPU_ENCODERS;
-> +       else
-> +               allowed_codecs = vpu->variant->codec & RK_VPU_DECODERS;
-> +
-> +       if (num_ctrls > ARRAY_SIZE(ctx->ctrls)) {
-> +               vpu_err("context control array not large enough\n");
-> +               return -EINVAL;
+> +       switch (picture->picture_coding_type) {
+> +       case V4L2_MPEG2_PICTURE_CODING_TYPE_B:
+> +               backward_addr = rockchip_vpu_get_ref(vq, slice_params->backward_ref_ts);
+> +               /* fall-through */
+> +       case V4L2_MPEG2_PICTURE_CODING_TYPE_P:
+> +               forward_addr = rockchip_vpu_get_ref(vq, slice_params->forward_ref_ts);
 > +       }
 > +
-> +       v4l2_ctrl_handler_init(&ctx->ctrl_handler, num_ctrls);
+> +       /* Source bitstream buffer */
+> +       addr = vb2_dma_contig_plane_dma_addr(src_buf, 0);
+> +       vdpu_write_relaxed(vpu, addr, VDPU_REG_RLC_VLC_BASE);
 > +
-> +       for (i = 0, j = 0; i < num_ctrls; i++) {
-> +               if (!(allowed_codecs & controls[i].codec))
-> +                       continue;
-> +               if (controls[i].is_std) {
-> +                       v4l2_ctrl_new_std(&ctx->ctrl_handler, &rockchip_vpu_ctrl_ops,
-> +                                         controls[i].id, controls[i].cfg.min, controls[i].cfg.max,
-> +                                         controls[i].cfg.step, controls[i].cfg.def);
-
-No need to save the control pointer to ctx->ctrls[]? (Actually, with
-my comment above, we wouldn't need ctx->ctrls[] at all.)
-
-> +               } else {
-> +                       controls[i].cfg.id = controls[i].id;
-> +                       ctx->ctrls[j++] = v4l2_ctrl_new_custom(&ctx->ctrl_handler,
-> +                                                              &controls[i].cfg, NULL);
-> +               }
+> +       /* Destination frame buffer */
+> +       addr = vb2_dma_contig_plane_dma_addr(dst_buf, 0);
+> +       current_addr = addr;
 > +
->                 if (ctx->ctrl_handler.error) {
-> -                       vpu_err("Adding JPEG control failed %d\n",
-> +                       vpu_err("Adding control (%d) failed %d\n",
-> +                               controls[i].id,
->                                 ctx->ctrl_handler.error);
->                         v4l2_ctrl_handler_free(&ctx->ctrl_handler);
->                         return ctx->ctrl_handler.error;
->                 }
->         }
-> -
-> +       ctx->num_ctrls = j;
->         return v4l2_ctrl_handler_setup(&ctx->ctrl_handler);
->  }
+> +       if (picture->picture_structure == PICT_BOTTOM_FIELD)
+> +               addr += DIV_ROUND_UP(sequence->horizontal_size, 16) << 4;
+
+Shouldn't this rather use the bytesperline taken from ctx->dst_fmt?
+
+Also, why do we divide it (with rounding up) by 16 and then again
+multiply by 16 (=== << 4)? Isn't this just ALIGN(..., 16)?
+
+> +       vdpu_write_relaxed(vpu, addr, VDPU_REG_DEC_OUT_BASE);
+> +
+> +       if (!forward_addr)
+> +               forward_addr = current_addr;
+> +       if (!backward_addr)
+> +               backward_addr = current_addr;
+> +
+> +       /* Set forward ref frame (top/bottom field) */
+> +       if (picture->picture_structure == PICT_FRAME ||
+> +           picture->picture_coding_type == V4L2_MPEG2_PICTURE_CODING_TYPE_B ||
+> +           (picture->picture_structure == PICT_TOP_FIELD && picture->top_field_first) ||
+> +           (picture->picture_structure == PICT_BOTTOM_FIELD && !picture->top_field_first)) {
+> +               vdpu_write_relaxed(vpu, forward_addr, VDPU_REG_REFER0_BASE);
+> +               vdpu_write_relaxed(vpu, forward_addr, VDPU_REG_REFER1_BASE);
+> +       } else if (picture->picture_structure == PICT_TOP_FIELD) {
+> +               vdpu_write_relaxed(vpu, forward_addr, VDPU_REG_REFER0_BASE);
+> +               vdpu_write_relaxed(vpu, current_addr, VDPU_REG_REFER1_BASE);
+> +       } else if (picture->picture_structure == PICT_BOTTOM_FIELD) {
+> +               vdpu_write_relaxed(vpu, current_addr, VDPU_REG_REFER0_BASE);
+> +               vdpu_write_relaxed(vpu, forward_addr, VDPU_REG_REFER1_BASE);
+> +       }
+> +
+> +       /* Set backward ref frame (top/bottom field) */
+> +       vdpu_write_relaxed(vpu, backward_addr, VDPU_REG_REFER2_BASE);
+> +       vdpu_write_relaxed(vpu, backward_addr, VDPU_REG_REFER3_BASE);
+> +}
+> +
+> +void rk3399_vpu_mpeg2_dec_run(struct rockchip_vpu_ctx *ctx)
+> +{
+> +       struct rockchip_vpu_dev *vpu = ctx->dev;
+> +       struct vb2_v4l2_buffer *src_buf, *dst_buf;
+> +       const struct v4l2_ctrl_mpeg2_slice_params *slice_params;
+> +       const struct v4l2_mpeg2_sequence *sequence;
+> +       const struct v4l2_mpeg2_picture *picture;
+> +       u32 reg;
+> +
+> +       src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> +       dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> +
+> +       /* Apply request controls if any */
+> +       v4l2_ctrl_request_setup(src_buf->vb2_buf.req_obj.req,
+> +                               &ctx->ctrl_handler);
+> +
+> +       slice_params = rockchip_vpu_get_ctrl(ctx,
+> +                               V4L2_CID_MPEG_VIDEO_MPEG2_SLICE_PARAMS);
+> +       if (!slice_params)
+> +               return;
+
+Shouldn't we fail the run here (i.e. return the buffers with error
+state)? But actually, is this even possible to happen?
+
+> +       sequence = &slice_params->sequence;
+> +       picture = &slice_params->picture;
+> +
+> +       reg = VDPU_REG_DEC_ADV_PRE_DIS(0) |
+> +             VDPU_REG_DEC_SCMD_DIS(0) |
+> +             VDPU_REG_FILTERING_DIS(1) |
+> +             VDPU_REG_DEC_LATENCY(0);
+> +       vdpu_write_relaxed(vpu, reg, VDPU_SWREG(50));
+> +
+> +       reg = VDPU_REG_INIT_QP(1) |
+> +             VDPU_REG_STREAM_LEN(slice_params->bit_size >> 3);
+> +       vdpu_write_relaxed(vpu, reg, VDPU_SWREG(51));
+> +
+> +       reg = VDPU_REG_APF_THRESHOLD(8) |
+> +             VDPU_REG_STARTMB_X(0) |
+> +             VDPU_REG_STARTMB_Y(0);
+> +       vdpu_write_relaxed(vpu, reg, VDPU_SWREG(52));
+> +
+> +       reg = VDPU_REG_DEC_MODE(5);
+> +       vdpu_write_relaxed(vpu, reg, VDPU_SWREG(53));
+> +
+> +       reg = VDPU_REG_DEC_STRENDIAN_E(1) |
+> +             VDPU_REG_DEC_STRSWAP32_E(1) |
+> +             VDPU_REG_DEC_OUTSWAP32_E(1) |
+> +             VDPU_REG_DEC_INSWAP32_E(1) |
+> +             VDPU_REG_DEC_OUT_ENDIAN(1) |
+> +             VDPU_REG_DEC_IN_ENDIAN(1);
+> +       vdpu_write_relaxed(vpu, reg, VDPU_SWREG(54));
+> +
+> +       reg = VDPU_REG_DEC_DATA_DISC_E(0) |
+> +             VDPU_REG_DEC_MAX_BURST(16) |
+> +             VDPU_REG_DEC_AXI_WR_ID(0) |
+> +             VDPU_REG_DEC_AXI_RD_ID(0);
+> +       vdpu_write_relaxed(vpu, reg, VDPU_SWREG(56));
+> +
+> +       reg = VDPU_REG_RLC_MODE_E(0) |
+> +             VDPU_REG_PIC_INTERLACE_E(!sequence->progressive_sequence) |
+> +             VDPU_REG_PIC_FIELDMODE_E(picture->picture_structure != PICT_FRAME) |
+> +             VDPU_REG_PIC_B_E(picture->picture_coding_type == V4L2_MPEG2_PICTURE_CODING_TYPE_B) |
+> +             VDPU_REG_PIC_INTER_E(picture->picture_coding_type != V4L2_MPEG2_PICTURE_CODING_TYPE_I) |
+> +             VDPU_REG_PIC_TOPFIELD_E(picture->picture_structure == PICT_TOP_FIELD) |
+> +             VDPU_REG_FWD_INTERLACE_E(0) |
+> +             VDPU_REG_WRITE_MVS_E(0) |
+> +             VDPU_REG_DEC_TIMEOUT_E(1) |
+> +             VDPU_REG_DEC_CLK_GATE_E(1);
+> +       vdpu_write_relaxed(vpu, reg, VDPU_SWREG(57));
+> +
+> +       reg = VDPU_REG_PIC_MB_WIDTH(DIV_ROUND_UP(sequence->horizontal_size, 16)) |
+> +             VDPU_REG_PIC_MB_HEIGHT_P(DIV_ROUND_UP(sequence->vertical_size, 16)) |
+
+This should also come from the format. (The format should be detected
+based on those fields, before allocating buffers, though.)
 
 Best regards,
 Tomasz
