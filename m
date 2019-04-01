@@ -1,60 +1,72 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v5 5/7] drm/panel: simple: Use display_timing for AUO b101ean01
-Date: Mon,  1 Apr 2019 10:17:22 -0700
-Message-ID: <20190401171724.215780-6-dianders@chromium.org>
-References: <20190401171724.215780-1-dianders@chromium.org>
+From: "Leonidas P. Papadakos" <papadakospan@gmail.com>
+Subject: [PATCH 2/2] arm64: dts: rockchip: disable TX offload for mtu bigger than 1498 for some SoCs
+Date: Mon,  1 Apr 2019 21:20:29 +0300
+Message-ID: <20190401182029.31362-1-papadakospan@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190401171724.215780-1-dianders@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>
-Cc: Rob Herring <robh+dt@kernel.org>, David Airlie <airlied@linux.ie>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Boris Brezillon <boris.brezillon@collabora.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?UTF-8?q?Enric=20Balletb=C3=B2?= <enric.balletbo@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, mka@chromium.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@st.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, "Leonidas P. Papadakos" <papadakospan@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Q29udmVydCB0aGUgQVVPIGIxMDFlYW4wMSBmcm9tIHVzaW5nIGEgZml4ZWQgbW9kZSB0byBzcGVj
-aWZ5aW5nIGEKZGlzcGxheSB0aW1pbmcgd2l0aCBtaW4vdHlwL21heCB2YWx1ZXMuCgpUaGUgQVVP
-IGIxMDFlYW4wMSdzIGRhdGFzaGVldCBzYXlzOgoqIFZlcnRpY2FsIGJsYW5raW5nIG1pbiBpcyAx
-MgoqIEhvcml6b250YWwgYmxhbmtpbmcgbWluIGlzIDYwCiogUGl4ZWwgY2xvY2sgaXMgYmV0d2Vl
-biA2NS4zIE1IeiBhbmQgNzUgTUh6CgpUaGUgZ29hbCBoZXJlIGlzIHRvIGJlIGFibGUgdG8gc3Bl
-Y2lmeSB0aGUgcHJvcGVyIHRpbWluZyBpbiBkZXZpY2UKdHJlZSB0byB1c2Ugb24gcmszMjg4LXZl
-eXJvbi1taW5uaWUgdG8gbWF0Y2ggd2hhdCB0aGUgZG93bnN0cmVhbQprZXJuZWwgaXMgdXNpbmcg
-c28gdGhhdCBpdCBjYW4gdXNlZCB0aGUgZml4ZWQgUExMLgoKQ2hhbmdlcyBpbiB2NDoKIC0gZGlz
-cGxheV90aW1pbmcgZm9yIEFVTyBiMTAxZWFuMDEgbmV3IGZvciB2NC4KClNpZ25lZC1vZmYtYnk6
-IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KLS0tCgogZHJpdmVycy9n
-cHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5jIHwgMjUgKysrKysrKysrKysrLS0tLS0tLS0tLS0t
-LQogMSBmaWxlIGNoYW5nZWQsIDEyIGluc2VydGlvbnMoKyksIDEzIGRlbGV0aW9ucygtKQoKZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUuYyBiL2RyaXZlcnMv
-Z3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUuYwppbmRleCA3ZDQwN2ZhYjM2MjguLmM2YzA2MjVl
-MTY4NCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5jCisr
-KyBiL2RyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUuYwpAQCAtNTY4LDIyICs1Njgs
-MjEgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBwYW5lbF9kZXNjIGF1b19iMTAxYXcwMyA9IHsKIAl9
-LAogfTsKIAotc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlIGF1b19iMTAxZWFu
-MDFfbW9kZSA9IHsKLQkuY2xvY2sgPSA3MjUwMCwKLQkuaGRpc3BsYXkgPSAxMjgwLAotCS5oc3lu
-Y19zdGFydCA9IDEyODAgKyAxMTksCi0JLmhzeW5jX2VuZCA9IDEyODAgKyAxMTkgKyAzMiwKLQku
-aHRvdGFsID0gMTI4MCArIDExOSArIDMyICsgMjEsCi0JLnZkaXNwbGF5ID0gODAwLAotCS52c3lu
-Y19zdGFydCA9IDgwMCArIDQsCi0JLnZzeW5jX2VuZCA9IDgwMCArIDQgKyAyMCwKLQkudnRvdGFs
-ID0gODAwICsgNCArIDIwICsgOCwKLQkudnJlZnJlc2ggPSA2MCwKK3N0YXRpYyBjb25zdCBzdHJ1
-Y3QgZGlzcGxheV90aW1pbmcgYXVvX2IxMDFlYW4wMV90aW1pbmcgPSB7CisJLnBpeGVsY2xvY2sg
-PSB7IDY1MzAwMDAwLCA3MjUwMDAwMCwgNzUwMDAwMDAgfSwKKwkuaGFjdGl2ZSA9IHsgMTI4MCwg
-MTI4MCwgMTI4MCB9LAorCS5oZnJvbnRfcG9yY2ggPSB7IDE4LCAxMTksIDExOSB9LAorCS5oYmFj
-a19wb3JjaCA9IHsgMjEsIDIxLCAyMSB9LAorCS5oc3luY19sZW4gPSB7IDMyLCAzMiwgMzIgfSwK
-KwkudmFjdGl2ZSA9IHsgODAwLCA4MDAsIDgwMCB9LAorCS52ZnJvbnRfcG9yY2ggPSB7IDQsIDQs
-IDQgfSwKKwkudmJhY2tfcG9yY2ggPSB7IDgsIDgsIDggfSwKKwkudnN5bmNfbGVuID0geyAxOCwg
-MjAsIDIwIH0sCiB9OwogCiBzdGF0aWMgY29uc3Qgc3RydWN0IHBhbmVsX2Rlc2MgYXVvX2IxMDFl
-YW4wMSA9IHsKLQkubW9kZXMgPSAmYXVvX2IxMDFlYW4wMV9tb2RlLAotCS5udW1fbW9kZXMgPSAx
-LAorCS50aW1pbmdzID0gJmF1b19iMTAxZWFuMDFfdGltaW5nLAorCS5udW1fdGltaW5ncyA9IDEs
-CiAJLmJwYyA9IDYsCiAJLnNpemUgPSB7CiAJCS53aWR0aCA9IDIxNywKLS0gCjIuMjEuMC4zOTIu
-Z2Y4ZjY3ODcxNTllLWdvb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aS1kZXZlbA==
+From: =?UTF-8?q?Kamil=20Trzci=C5=84ski?= <ayufan@ayufan.eu>
+
+Some rockchip boards (like the rock64, and the renegade) exhibit an issue where
+tx checksuming does not work with packets larger than 1498.
+
+This is bad for network stability.
+
+The previous approach was using force_thresh_dma_mode, which does more than
+disable TX offload, something we do not need
+
+this patch depends on patch:
+stmmac: introduce flag to dynamically disable TX offload for rockchip devices
+
+Signed-off-by: Leonidas P. Papadakos <papadakospan@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts    | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts    | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts | 1 +
+ 3 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index c213ad74d..16ced107d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -136,7 +136,7 @@
+ 	phy-mode = "rgmii";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&rgmiim1_pins>;
+-	snps,force_thresh_dma_mode;
++	rockchip,bugged_tx_coe;
+ 	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
+ 	snps,reset-active-low;
+ 	snps,reset-delays-us = <0 10000 50000>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+index 7cfd5ca6c..cab2e1da6 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+@@ -150,7 +150,7 @@
+ 	phy-mode = "rgmii";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&rgmiim1_pins>;
+-	snps,force_thresh_dma_mode;
++	rockchip,bugged_tx_coe;
+ 	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
+ 	snps,reset-active-low;
+ 	snps,reset-delays-us = <0 10000 50000>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+index 791fb0ee9..a1221dca1 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+@@ -207,6 +207,7 @@
+ 	phy-mode = "rgmii";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&rgmii_pins>;
++	rockchip,bugged_tx_coe;
+ 	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
+ 	snps,reset-active-low;
+ 	snps,reset-delays-us = <0 10000 50000>;
+-- 
+2.21.0
