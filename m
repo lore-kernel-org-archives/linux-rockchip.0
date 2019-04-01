@@ -1,72 +1,78 @@
-From: "Leonidas P. Papadakos" <papadakospan@gmail.com>
-Subject: [PATCH 2/2] arm64: dts: rockchip: disable TX offload for mtu bigger than 1498 for some SoCs
-Date: Mon,  1 Apr 2019 21:20:29 +0300
-Message-ID: <20190401182029.31362-1-papadakospan@gmail.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 1/3] pwm: rockchip: Don't update the state for the
+ caller of pwm_apply_state()
+Date: Mon, 1 Apr 2019 15:45:47 -0700
+Message-ID: <CAD=FV=WZHouhGcxOgNG3006XajJQaAp0uq9WjeKRikQx1ru4TA@mail.gmail.com>
+References: <20190312214605.10223-1-u.kleine-koenig@pengutronix.de>
+ <20190312214605.10223-2-u.kleine-koenig@pengutronix.de>
+ <1707507.TOMHpQGrZ7@phil>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@st.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, "Leonidas P. Papadakos" <papadakospan@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1707507.TOMHpQGrZ7@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: =?UTF-8?q?Kamil=20Trzci=C5=84ski?= <ayufan@ayufan.eu>
-
-Some rockchip boards (like the rock64, and the renegade) exhibit an issue where
-tx checksuming does not work with packets larger than 1498.
-
-This is bad for network stability.
-
-The previous approach was using force_thresh_dma_mode, which does more than
-disable TX offload, something we do not need
-
-this patch depends on patch:
-stmmac: introduce flag to dynamically disable TX offload for rockchip devices
-
-Signed-off-by: Leonidas P. Papadakos <papadakospan@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts    | 2 +-
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts    | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts | 1 +
- 3 files changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index c213ad74d..16ced107d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -136,7 +136,7 @@
- 	phy-mode = "rgmii";
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&rgmiim1_pins>;
--	snps,force_thresh_dma_mode;
-+	rockchip,bugged_tx_coe;
- 	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
- 	snps,reset-active-low;
- 	snps,reset-delays-us = <0 10000 50000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index 7cfd5ca6c..cab2e1da6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -150,7 +150,7 @@
- 	phy-mode = "rgmii";
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&rgmiim1_pins>;
--	snps,force_thresh_dma_mode;
-+	rockchip,bugged_tx_coe;
- 	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
- 	snps,reset-active-low;
- 	snps,reset-delays-us = <0 10000 50000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-index 791fb0ee9..a1221dca1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-@@ -207,6 +207,7 @@
- 	phy-mode = "rgmii";
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&rgmii_pins>;
-+	rockchip,bugged_tx_coe;
- 	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
- 	snps,reset-active-low;
- 	snps,reset-delays-us = <0 10000 50000>;
--- 
-2.21.0
+SGksCgpPbiBTYXQsIE1hciAzMCwgMjAxOSBhdCAyOjE3IEFNIEhlaWtvIFN0dWVibmVyIDxoZWlr
+b0BzbnRlY2guZGU+IHdyb3RlOgo+Cj4gSGksCj4KPiBbYWRkaW5nIHR3byBjaHJvbWVvcyBwZW9w
+bGUsIGJlY2F1c2UgdmV5cm9uIGFuZCBncnUgYXJlIHF1aXRlCj4gaGVhdnkgdXNlcnMgb2YgdGhl
+IHJvY2tjaGlwIHB3bSBmb3IgYm90aCBiYWNrbGlnaHQgYW5kIHJlZ3VsYXRvcnNdCj4KPiBEb3Vn
+LCBCcmlhbjogcGF0Y2h3b3JrIHBhdGNoIGlzIGhlcmU6Cj4gaHR0cHM6Ly9wYXRjaHdvcmsua2Vy
+bmVsLm9yZy9wYXRjaC8xMDg1MTAwMS8KPgo+IEFtIERpZW5zdGFnLCAxMi4gTcOkcnogMjAxOSwg
+MjI6NDY6MDMgQ0VUIHNjaHJpZWIgVXdlIEtsZWluZS1Lw7ZuaWc6Cj4gPiBUaGUgcHdtLXJvY2tj
+aGlwIGRyaXZlciBpcyBvbmUgb2Ygb25seSB0d28gUFdNIGRyaXZlcnMgd2hpY2ggdXBkYXRlcyB0
+aGUKPiA+IHN0YXRlIGZvciB0aGUgY2FsbGVyIG9mIHB3bV9hcHBseV9zdGF0ZSgpLiBUaGlzIG1p
+Z2h0IGhhdmUgc3VycHJpc2luZwo+ID4gcmVzdWx0cyBpZiB0aGUgY2FsbGVyIHJldXNlcyB0aGUg
+dmFsdWVzIGV4cGVjdGluZyB0aGVtIHRvIHN0aWxsCj4gPiByZXByZXNlbnQgdGhlIHNhbWUgc3Rh
+dGUuCgpJdCBtYXkgb3IgbWF5IG5vdCBiZSBzdXJwcmlzaW5nLCBidXQgaXQgaXMgd2VsbCBkb2N1
+bWVudGVkLiAgU3BlY2lmaWNhbGx5OgoKICogcHdtX2FwcGx5X3N0YXRlKCkgLSBhdG9taWNhbGx5
+IGFwcGx5IGEgbmV3IHN0YXRlIHRvIGEgUFdNIGRldmljZQogKiBAcHdtOiBQV00gZGV2aWNlCiAq
+IEBzdGF0ZTogbmV3IHN0YXRlIHRvIGFwcGx5LiBUaGlzIGNhbiBiZSBhZGp1c3RlZCBieSB0aGUg
+UFdNIGRyaXZlcgogKiAgICBpZiB0aGUgcmVxdWVzdGVkIGNvbmZpZyBpcyBub3QgYWNoaWV2YWJs
+ZSwgZm9yIGV4YW1wbGUsCiAqICAgIC0+ZHV0eV9jeWNsZSBhbmQgLT5wZXJpb2QgbWlnaHQgYmUg
+YXBwcm94aW1hdGVkLgoKSSBkb24ndCB0aGluayB5b3VyIHNlcmllcyB1cGRhdGVzIHRoYXQgZG9j
+dW1lbnRhdGlvbiwgcmlnaHQ/CgoKPiA+IEFsc28gbm90ZSB0aGF0IHRoaXMgZmVlZGJhY2sgd2Fz
+IGluY29tcGxldGUgYXMKPiA+IHRoZSBtYXRjaGluZyBzdHJ1Y3QgcHdtX2RldmljZTo6c3RhdGUg
+d2Fzbid0IHVwZGF0ZWQgYW5kIHNvCj4gPiBwd21fZ2V0X3N0YXRlIHN0aWxsIHJldHVybmVkIHRo
+ZSBvcmlnaW5hbGx5IHJlcXVlc3RlZCBzdGF0ZS4KClRoZSBmcmFtZXdvcmsgaGFuZGxlcyB0aGF0
+LiAgVGFrZSBhIGxvb2sgYXQgcHdtX2FwcGx5X3N0YXRlKCk/ICBJdCBkb2VzOgoKLS0tCgplcnIg
+PSBwd20tPmNoaXAtPm9wcy0+YXBwbHkocHdtLT5jaGlwLCBwd20sIHN0YXRlKTsKaWYgKGVycikK
+ICAgIHJldHVybiBlcnI7Cgpwd20tPnN0YXRlID0gKnN0YXRlOwoKLS0tCgpTbyBJIHRoaW5rIGl0
+IHdhc24ndCBpbmNvbXBsZXRlIHVubGVzcyBJIG1pc3VuZGVyc3Rvb2Q/CgoKPiA+IFNpZ25lZC1v
+ZmYtYnk6IFV3ZSBLbGVpbmUtS8O2bmlnIDx1LmtsZWluZS1rb2VuaWdAcGVuZ3V0cm9uaXguZGU+
+Cj4KPiBJJ3ZlIHRlc3RlZCB0aGlzIG9uIGJvdGggdmV5cm9uIGFuZCBncnUgd2l0aCBiYWNrbGln
+aHQgYW5kIHB3bSByZWd1bGF0b3IKPiBhbmQgYXQgbGVhc3QgYm90aCBzdGlsbCBjb21lIHVwLCBz
+bwo+IFRlc3RlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPgo+IEJ1dCBo
+b3BlZnVsbHkgRG91ZyBvciBCcmlhbiBjb3VsZCBhbHNvIHByb3ZpZGUgYW5vdGhlciB0ZXN0LXBv
+aW50LgoKSSdkIGRlZmluaXRlbHkgYmUgY29uY2VybmVkIGJ5IHRoaXMgY2hhbmdlLiAgU3BlY2lm
+aWNhbGx5IGZvciB0aGUgUFdNCnJlZ3VsYXRvciBsaXR0bGUgZGV0YWlscyBhYm91dCBleGFjdGx5
+IHdoYXQgZHV0eSBjeWNsZSAvIHBlcmlvZCB5b3UKZ290IGNvdWxkIGJlIHByZXR0eSBpbXBvcnRh
+bnQuCgpJIGd1ZXNzIHRoZSBwcm9ibGVtIGhlcmUgaXMgdGhhdCBwd21fZ2V0X3N0YXRlKCkgZG9l
+c24ndCBhY3R1YWxseSBjYWxsCmludG8gdGhlIFBXTSBkcml2ZXJzLCBpdCBqdXN0IHJldHVybnMg
+dGhlIGxhc3Qgc3RhdGUgdGhhdCB3YXMgYXBwbGllZC4KSG93IGRvZXMgb25lIGdldCB0aGUgc3Rh
+dGU/ICBJIGd1ZXNzIHlvdSBjb3VsZCBjaGFuZ2UgZ2V0X3N0YXRlKCkgdG8KYWN0dWFsbHkgY2Fs
+bCBpbnRvIHRoZSBQV00gZHJpdmVyJ3MgZ2V0X3N0YXRlIGlmIGl0IGV4aXN0cz8gIC4uLmJ1dAp5
+b3VyIHBhdGNoIHNldCBkb2Vzbid0IGNoYW5nZSB0aGF0IGJlaGF2aW9yLi4uCgpGb3IgaW5zdGFu
+Y2UsIGxvb2sgYXQgcHdtX3JlZ3VsYXRvcl9zZXRfdm9sdGFnZSgpLiAgVGhlIGZpcnN0IGxpbmUK
+dGhlcmUgaXMgIHB3bV9pbml0X3N0YXRlKCkuICBUaGF0IGNhbGxzIGludG8gcHdtX2dldF9zdGF0
+ZSgpIHdoaWNoCmp1c3QgZ3JhYnMgdGhlIGNhY2hlZCBzdGF0ZS4gIElmIHRoZSBsYXN0IGNhbGwg
+dG8gcHdtX2FwcGx5X3N0YXRlKCkKZGlkbid0IHVwZGF0ZSB0aGF0IHRoZW4gaXQgc2VlbXMgbGlr
+ZSBpdCdkIGJlIGJhZC4KCgpOT1RFOiBpdCdzIF9wb3NzaWJsZV8geW91IGNvdWxkIHN0aWxsIGNo
+YW5nZSB0aGUgcHdtX2FwcGx5X3N0YXRlKCkKZnVuY3Rpb24gdG8gYmUgY29uc3QuICBJIHRoaW5r
+IG1vc3Qgb2YgdGhlIG5lZWQgaGVyZSBpcyB0aGF0IGZ1dHVyZQpjYWxscyB0byBwd21fZ2V0X3N0
+YXRlKCkgZ2V0IHRoZSBhY3R1YWwgc3RhdGUsIG5vdCB0aGUgd2lzaGVkLWZvcgpzdGF0ZS4KCgoK
+LURvdWcKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
