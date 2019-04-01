@@ -1,57 +1,82 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH 1/8] PCI: dwc: pci-dra7xx: fix a leaked reference by
- adding missing of_node_put
-Date: Mon, 1 Apr 2019 11:03:18 +0100
-Message-ID: <20190401100318.GB30501@e107981-ln.cambridge.arm.com>
-References: <1551242443-27300-1-git-send-email-wen.yang99@zte.com.cn>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v5 0/7] drm/panel: simple: Add mode support to devicetree
+Date: Mon,  1 Apr 2019 10:17:17 -0700
+Message-ID: <20190401171724.215780-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1551242443-27300-1-git-send-email-wen.yang99@zte.com.cn>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wen Yang <wen.yang99@zte.com.cn>
-Cc: benh@kernel.crashing.org, paulus@samba.org, mpe@ellerman.id.au, tyreld@linux.vnet.ibm.com, bhelgaas@google.com, linuxppc-dev@lists.ozlabs.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, ryder.lee@mediatek.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, thomas.petazzoni@bootlin.com, shawn.lin@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, minghuan.Lian@nxp.com, mingkai.hu@nxp.com, roy.zang@nxp.com, hayashi.kunihiko@socionext.com, yamada.masahiro@socionext.com, kishon@ti.com, linux-omap@vger.kernel.org, wang.yi59@zte.com.cn
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, David Airlie <airlied@linux.ie>, Viresh Kumar <viresh.kumar@linaro.org>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Boris Brezillon <boris.brezillon@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?UTF-8?q?Enric=20Balletb=C3=B2?= <enric.balletbo@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, mka@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Feb 27, 2019 at 12:40:36PM +0800, Wen Yang wrote:
-> The call to of_get_next_child returns a node pointer with refcount
-> incremented thus it must be explicitly decremented after the last
-> usage.
-> irq_domain_add_linear also calls of_node_get to increase refcount,
-> so irq_domain will not be affected when it is released.
-> 
-> Detected by coccinelle with the following warnings:
-> ./drivers/pci/controller/dwc/pci-dra7xx.c:252:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 241, but without a corresponding object release within this function.
-> ./drivers/pci/controller/dwc/pci-dra7xx.c:255:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 241, but without a corresponding object release within this function.
-> 
-> Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
-> Cc: Kishon Vijay Abraham I <kishon@ti.com>
-> Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-> Cc: Bjorn Helgaas <bhelgaas@google.com>
-> Cc: linux-omap@vger.kernel.org
-> Cc: linux-pci@vger.kernel.org
-> Cc: linux-kernel@vger.kernel.org
-> ---
->  drivers/pci/controller/dwc/pci-dra7xx.c | 1 +
->  1 file changed, 1 insertion(+)
-
-Applied the series to pci/misc for v5.2, thanks.
-
-Lorenzo
-
-> diff --git a/drivers/pci/controller/dwc/pci-dra7xx.c b/drivers/pci/controller/dwc/pci-dra7xx.c
-> index ae84a69..627c91d 100644
-> --- a/drivers/pci/controller/dwc/pci-dra7xx.c
-> +++ b/drivers/pci/controller/dwc/pci-dra7xx.c
-> @@ -247,6 +247,7 @@ static int dra7xx_pcie_init_irq_domain(struct pcie_port *pp)
->  
->  	dra7xx->irq_domain = irq_domain_add_linear(pcie_intc_node, PCI_NUM_INTX,
->  						   &intx_domain_ops, pp);
-> +	of_node_put(pcie_intc_node);
->  	if (!dra7xx->irq_domain) {
->  		dev_err(dev, "Failed to get a INTx IRQ domain\n");
->  		return -ENODEV;
-> -- 
-> 2.9.5
-> 
+SSdtIHJldml2aW5nIFNlYW4gUGF1bCdzIG9sZCBwYXRjaHNldCB0byBnZXQgbW9kZSBzdXBwb3J0
+IGluIGRldmljZQp0cmVlLiAgVGhlIGNvdmVyIGxldHRlciBmb3IgaGlzIHYzIGlzIGF0OgpodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9hcmNoaXZlcy9kcmktZGV2ZWwvMjAxOC1GZWJydWFy
+eS8xNjUxNjIuaHRtbAoKTm8gY29kZSBpcyBkaWZmZXJlbnQgYmV0d2VlbiB2NCBhbmQgdjUsIGp1
+c3QgY29tbWl0IG1lc3NhZ2VzIGFuZCB0ZXh0CmluIHRoZSBiaW5kaW5ncy4KCkkndmUgcHVsbGVk
+IHRvZ2V0aGVyIHRoZSBwYXRjaGVzIHRoYXQgZGlkbid0IGxhbmQgaW4gdjMsIGFkZHJlc3NlZApv
+dXRzdGFuZGluZyBmZWVkYmFjaywgYW5kIHJlcG9zdGVkLiAgQXRvcCB0aGVtIEkndmUgYWRkZWQg
+cGF0Y2hlcyBmb3IKcmszMjg4LXZleXJvbi1jaHJvbWVib29rICh1c2VkIGZvciBqYXEsIGplcnJ5
+LCBtaWdodHksIHNwZWVkeSkgYW5kCnJrMzI4OC12ZXJ5b24tbWlubmllLgoKUGxlYXNlIGxldCBt
+ZSBrbm93IGhvdyB0aGV5IGxvb2suCgpJbiBnZW5lcmFsIEkgaGF2ZSBhZGRlZCBwZW9wbGUgdG8g
+dGhlIHdob2xlIHNlcmllcyB3aG8gSSB0aGluayB3b3VsZApsaWtlIHRoZSB3aG9sZSBzZXJpZXMg
+YW5kIHRoZW4gbGV0IGdldF9tYWludGFpbmVyIHBpY2sgZXh0cmEgcGVvcGxlIGl0CnRoaW5rcyBh
+cmUgcmVsZXZhbnQgdG8gZWFjaCBpbmRpdmlkdWFsIHBhdGNoLiAgSWYgSSBzZWUgeW91IHJlc3Bv
+bmQgdG8KYW55IG9mIHRoZSBwYXRjaGVzIGluIHRoZSBzZXJpZXMsIHRob3VnaCwgSSdsbCBhZGQg
+eW91IHRvIHRoZSB3aG9sZQpzZXJpZXMgQ2MgbGlzdCBuZXh0IHRpbWUuCgpDaGFuZ2VzIGluIHY1
+OgotIFJlbW92ZWQgYml0IGFib3V0IE9TIG1heSBpZ25vcmUgKFJvYi9FemVxdWllbCkKLSBBZGRl
+ZCBIZWlrbydzIFRlc3RlZC1ieQotIEl0J3Mgbm90IGp1c3QgamVycnksIGl0J3MgbW9zdCByazMy
+ODggQ2hyb21lYm9va3MgKEhlaWtvKQoKQ2hhbmdlcyBpbiB2NDoKLSBTaW1wbGlmeSBkZXNjLiBm
+b3Igd2hlbiBvdmVycmlkZSBzaG91bGQgYmUgdXNlZCAoVGhpZXJyeS9MYXVyZW50KQotIFJlbW92
+ZWQgUm9iIEggcmV2aWV3IHNpbmNlIGl0J3MgYmVlbiBhIHllYXIgYW5kIHdvcmRpbmcgY2hhbmdl
+ZAotIERvbid0IGFkZCBtb2RlIGZyb20gdGltaW5nIGlmIG92ZXJyaWRlIHdhcyBzcGVjaWZpZWQg
+KFRoaWVycnkpCi0gQWRkIHdhcm5pbmcgaWYgdGltaW5nIGFuZCBmaXhlZCBtb2RlIHdhcyBzcGVj
+aWZpZWQgKFRoaWVycnkpCi0gRG9uJ3QgYWRkIGZpeGVkIG1vZGUgaWYgdGltaW5nIHdhcyBzcGVj
+aWZpZWQgKFRoaWVycnkpCi0gUmVmYWN0b3IvcmVuYW1lIGEgYml0IHRvIGF2b2lkIGV4dHJhIGlu
+ZGVudGF0aW9uIGZyb20gImlmIiB0ZXN0cwotIGkgc2hvdWxkIGJlIHVuc2lnbmVkIChUaGllcnJ5
+KQotIEFkZCBhbm5veWluZyBXQVJOX09OcyBmb3Igc29tZSBjYXNlcyAoVGhpZXJyeSkKLSBTaW1w
+bGlmeSAnTm8gZGlzcGxheV90aW1pbmcgZm91bmQnIGhhbmRsaW5nIChUaGllcnJ5KQotIFJlbmFt
+ZSB0byBwYW5lbF9zaW1wbGVfcGFyc2Vfb3ZlcnJpZGVfbW9kZSgpIChUaGllcnJ5KQotIFJlYmFz
+ZSB0byB0b3Agb2YgSGVpa28ncyB0cmVlCi0gQ29udmVydGVkIGNoYW5nZWxvZyB0byBhZnRlci10
+aGUtY3V0IGZvciBub24tRFJNIGNoYW5nZS4KLSBkaXNwbGF5X3RpbWluZyBmb3IgSW5ub2x1eCBu
+MTE2YmdlIG5ldyBmb3IgdjQuCi0gZGlzcGxheV90aW1pbmcgZm9yIEFVTyBiMTAxZWFuMDEgbmV3
+IGZvciB2NC4KLSByazMyODgtdmV5cm9uLWplcnJ5IHBhdGNoIG5ldyBmb3IgdjQuCi0gcmszMjg4
+LXZleXJvbi1taW5uaWUgcGF0Y2ggbmV3IGZvciB2NC4KCkNoYW5nZXMgaW4gdjM6Ci0gR28gYmFj
+ayB0byB1c2luZyB0aGUgdGltaW5nIHN1Ym5vZGUgZGlyZWN0bHksIGJ1dCByZW5hbWUgdG8KICBw
+YW5lbC10aW1pbmcgKFJvYikKLSBObyBsb25nZXIgcGFyc2UgZGlzcGxheS10aW1pbmdzIHN1Ym5v
+ZGUsIHVzZSBwYW5lbC10aW1pbmcgKFJvYikKLSBVbndyYXAgdGhlIHRpbWluZyBmcm9tIGRpc3Bs
+YXktdGltaW5ncyBhbmQgcmVuYW1lIHBhbmVsLXRpbWluZyAoUm9iKQoKQ2hhbmdlcyBpbiB2MjoK
+LSBTcGxpdCBvdXQgdGhlIGJpbmRpbmcgaW50byBhIG5ldyBwYXRjaCAoUm9iKQotIGRpc3BsYXkt
+dGltaW5ncyBpcyBhIG5ldyBzZWN0aW9uIChSb2IpCi0gVXNlIHRoZSBmdWxsIGRpc3BsYXktdGlt
+aW5ncyBzdWJub2RlIGluc3RlYWQgb2YgcGlja2luZyB0aGUgdGltaW5nCiAgb3V0IChSb2IvVGhp
+ZXJyeSkKLSBQYXJzZSB0aGUgZnVsbCBkaXNwbGF5LXRpbWluZ3Mgbm9kZSAodXNpbmcgdGhlIG5h
+dGl2ZS1tb2RlKSAoUm9iKQotIFdyYXAgdGhlIHRpbWluZyBpbiBkaXNwbGF5LXRpbWluZ3Mgbm9k
+ZSB0byBtYXRjaCBiaW5kaW5nIChSb2IvVGhpZXJyeSkKCkRvdWdsYXMgQW5kZXJzb24gKDQpOgog
+IGRybS9wYW5lbDogc2ltcGxlOiBVc2UgZGlzcGxheV90aW1pbmcgZm9yIElubm9sdXggbjExNmJn
+ZQogIGRybS9wYW5lbDogc2ltcGxlOiBVc2UgZGlzcGxheV90aW1pbmcgZm9yIEFVTyBiMTAxZWFu
+MDEKICBBUk06IGR0czogcm9ja2NoaXA6IFNwZWNpZnkgcmszMjg4LXZleXJvbi1jaHJvbWVib29r
+J3MgZGlzcGxheSB0aW1pbmdzCiAgQVJNOiBkdHM6IHJvY2tjaGlwOiBTcGVjaWZ5IHJrMzI4OC12
+ZXlyb24tbWlubmllJ3MgZGlzcGxheSB0aW1pbmdzCgpTZWFuIFBhdWwgKDMpOgogIGR0LWJpbmRp
+bmdzOiBBZGQgcGFuZWwtdGltaW5nIHN1Ym5vZGUgdG8gc2ltcGxlLXBhbmVsCiAgZHJtL3BhbmVs
+OiBzaW1wbGU6IEFkZCBhYmlsaXR5IHRvIG92ZXJyaWRlIHR5cGljYWwgdGltaW5nCiAgYXJtNjQ6
+IGR0czogcm9ja2NoaXA6IFNwZWNpZnkgb3ZlcnJpZGUgbW9kZSBmb3Iga2V2aW4gcGFuZWwKCiAu
+Li4vYmluZGluZ3MvZGlzcGxheS9wYW5lbC9zaW1wbGUtcGFuZWwudHh0ICAgfCAgMjIgKysrCiAu
+Li4vYm9vdC9kdHMvcmszMjg4LXZleXJvbi1jaHJvbWVib29rLmR0c2kgICAgfCAgMTQgKysKIGFy
+Y2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC12ZXlyb24tbWlubmllLmR0cyAgICB8ICAxNCArKwogLi4u
+L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1ncnUta2V2aW4uZHRzICAgIHwgIDE0ICsrCiBkcml2
+ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtc2ltcGxlLmMgICAgICAgICAgfCAxNzEgKysrKysrKysr
+KysrKystLS0tCiA1IGZpbGVzIGNoYW5nZWQsIDIwMyBpbnNlcnRpb25zKCspLCAzMiBkZWxldGlv
+bnMoLSkKCi0tIAoyLjIxLjAuMzkyLmdmOGY2Nzg3MTU5ZS1nb29nCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
