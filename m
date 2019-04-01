@@ -1,101 +1,205 @@
-From: Souptick Joarder <jrdr.linux@gmail.com>
-Subject: Re: [RESEND PATCH v4 0/9] mm: Use vm_map_pages() and
- vm_map_pages_zero() API
-Date: Mon, 1 Apr 2019 10:56:02 +0530
-Message-ID: <CAFqt6zaV5zcc495BBk1Wi7p+zOF8y=P5KRfKkvwY=stagUFKWQ@mail.gmail.com>
-References: <cover.1552921225.git.jrdr.linux@gmail.com>
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v1 1/3] thermal: rockchip: add pinctrl control
+Date: Mon,  1 Apr 2019 14:43:03 +0800
+Message-ID: <1554100985-11385-2-git-send-email-zhangqing@rock-chips.com>
+References: <1554100985-11385-1-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1552921225.git.jrdr.linux@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew Morton <akpm@linux-foundation.org>, Matthew Wilcox <willy@infradead.org>, Michal Hocko <mhocko@suse.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, Vlastimil Babka <vbabka@suse.cz>, Rik van Riel <riel@surriel.com>, Stephen Rothwell <sfr@canb.auug.org.au>, rppt@linux.vnet.ibm.com, Peter Zijlstra <peterz@infradead.org>, Russell King - ARM Linux <linux@armlinux.org.uk>, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, Kees Cook <keescook@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, Kyungmin Park <kyungmin.park@samsung.com>, mchehab@kernel.org
-Cc: linux-kernel@vger.kernel.org, Linux-MM <linux-mm@kvack.org>, linux-arm-kernel@lists.infradead.org, linux1394-devel@lists.sourceforge.net, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, xen-devel@lists.xen.org, iommu@lists.linux-foundation.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1554100985-11385-1-git-send-email-zhangqing@rock-chips.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: heiko@sntech.de
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>, huangtao@rock-chips.com, linux-pm@vger.kernel.org, xxx@rock-chips.com, daniel.lezcano@linaro.org, linux-kernel@vger.kernel.org, xf@rock-chips.com, edubezval@gmail.com, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, rui.zhang@intel.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Andrew,
+Based on the TSADC Tshut mode to select pinctrl,
+instead of setting pinctrl based on architecture
+(Not depends on pinctrl setting by "init" or "default").
+And it requires setting the tshut polarity before select pinctrl.
 
-On Tue, Mar 19, 2019 at 7:47 AM Souptick Joarder <jrdr.linux@gmail.com> wrote:
->
-> Previouly drivers have their own way of mapping range of
-> kernel pages/memory into user vma and this was done by
-> invoking vm_insert_page() within a loop.
->
-> As this pattern is common across different drivers, it can
-> be generalized by creating new functions and use it across
-> the drivers.
->
-> vm_map_pages() is the API which could be used to map
-> kernel memory/pages in drivers which has considered vm_pgoff.
->
-> vm_map_pages_zero() is the API which could be used to map
-> range of kernel memory/pages in drivers which has not considered
-> vm_pgoff. vm_pgoff is passed default as 0 for those drivers.
->
-> We _could_ then at a later "fix" these drivers which are using
-> vm_map_pages_zero() to behave according to the normal vm_pgoff
-> offsetting simply by removing the _zero suffix on the function
-> name and if that causes regressions, it gives us an easy way to revert.
->
-> Tested on Rockchip hardware and display is working fine, including talking
-> to Lima via prime.
->
-> v1 -> v2:
->         Few Reviewed-by.
->
->         Updated the change log in [8/9]
->
->         In [7/9], vm_pgoff is treated in V4L2 API as a 'cookie'
->         to select a buffer, not as a in-buffer offset by design
->         and it always want to mmap a whole buffer from its beginning.
->         Added additional changes after discussing with Marek and
->         vm_map_pages() could be used instead of vm_map_pages_zero().
->
-> v2 -> v3:
->         Corrected the documentation as per review comment.
->
->         As suggested in v2, renaming the interfaces to -
->         *vm_insert_range() -> vm_map_pages()* and
->         *vm_insert_range_buggy() -> vm_map_pages_zero()*.
->         As the interface is renamed, modified the code accordingly,
->         updated the change logs and modified the subject lines to use the
->         new interfaces. There is no other change apart from renaming and
->         using the new interface.
->
->         Patch[1/9] & [4/9], Tested on Rockchip hardware.
->
-> v3 -> v4:
->         Fixed build warnings on patch [8/9] reported by kbuild test robot.
->
-> Souptick Joarder (9):
->   mm: Introduce new vm_map_pages() and vm_map_pages_zero() API
->   arm: mm: dma-mapping: Convert to use vm_map_pages()
->   drivers/firewire/core-iso.c: Convert to use vm_map_pages_zero()
->   drm/rockchip/rockchip_drm_gem.c: Convert to use vm_map_pages()
->   drm/xen/xen_drm_front_gem.c: Convert to use vm_map_pages()
->   iommu/dma-iommu.c: Convert to use vm_map_pages()
->   videobuf2/videobuf2-dma-sg.c: Convert to use vm_map_pages()
->   xen/gntdev.c: Convert to use vm_map_pages()
->   xen/privcmd-buf.c: Convert to use vm_map_pages_zero()
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/thermal/rockchip_thermal.c | 61 +++++++++++++++++++++++++++++++-------
+ 1 file changed, 50 insertions(+), 11 deletions(-)
 
-Is it fine to take these patches into mm tree for regression ?
-
->
->  arch/arm/mm/dma-mapping.c                          | 22 ++----
->  drivers/firewire/core-iso.c                        | 15 +---
->  drivers/gpu/drm/rockchip/rockchip_drm_gem.c        | 17 +----
->  drivers/gpu/drm/xen/xen_drm_front_gem.c            | 18 ++---
->  drivers/iommu/dma-iommu.c                          | 12 +---
->  drivers/media/common/videobuf2/videobuf2-core.c    |  7 ++
->  .../media/common/videobuf2/videobuf2-dma-contig.c  |  6 --
->  drivers/media/common/videobuf2/videobuf2-dma-sg.c  | 22 ++----
->  drivers/xen/gntdev.c                               | 11 ++-
->  drivers/xen/privcmd-buf.c                          |  8 +--
->  include/linux/mm.h                                 |  4 ++
->  mm/memory.c                                        | 81 ++++++++++++++++++++++
->  mm/nommu.c                                         | 14 ++++
->  13 files changed, 134 insertions(+), 103 deletions(-)
->
-> --
-> 1.9.1
->
+diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+index 9c7643d62ed7..faa6c7792155 100644
+--- a/drivers/thermal/rockchip_thermal.c
++++ b/drivers/thermal/rockchip_thermal.c
+@@ -34,7 +34,7 @@
+  */
+ enum tshut_mode {
+ 	TSHUT_MODE_CRU = 0,
+-	TSHUT_MODE_GPIO,
++	TSHUT_MODE_OTP,
+ };
+ 
+ /**
+@@ -172,6 +172,9 @@ struct rockchip_thermal_data {
+ 	int tshut_temp;
+ 	enum tshut_mode tshut_mode;
+ 	enum tshut_polarity tshut_polarity;
++	struct pinctrl *pinctrl;
++	struct pinctrl_state *gpio_state;
++	struct pinctrl_state *otp_state;
+ };
+ 
+ /**
+@@ -807,7 +810,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+ 	u32 val;
+ 
+ 	val = readl_relaxed(regs + TSADCV2_INT_EN);
+-	if (mode == TSHUT_MODE_GPIO) {
++	if (mode == TSHUT_MODE_OTP) {
+ 		val &= ~TSADCV2_SHUT_2CRU_SRC_EN(chn);
+ 		val |= TSADCV2_SHUT_2GPIO_SRC_EN(chn);
+ 	} else {
+@@ -822,7 +825,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+ 	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
+ 	.chn_num = 1, /* one channel for tsadc */
+ 
+-	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
++	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+ 	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+ 	.tshut_temp = 95000,
+ 
+@@ -846,7 +849,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+ 	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
+ 	.chn_num = 1, /* one channel for tsadc */
+ 
+-	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
++	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+ 	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+ 	.tshut_temp = 95000,
+ 
+@@ -871,7 +874,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+ 	.chn_id[SENSOR_GPU] = 2, /* gpu sensor is channel 2 */
+ 	.chn_num = 2, /* two channels for tsadc */
+ 
+-	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
++	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+ 	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+ 	.tshut_temp = 95000,
+ 
+@@ -919,7 +922,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+ 	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
+ 	.chn_num = 2, /* two channels for tsadc */
+ 
+-	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
++	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+ 	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+ 	.tshut_temp = 95000,
+ 
+@@ -944,7 +947,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+ 	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
+ 	.chn_num = 2, /* two channels for tsadc */
+ 
+-	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
++	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+ 	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+ 	.tshut_temp = 95000,
+ 
+@@ -969,7 +972,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+ 	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
+ 	.chn_num = 2, /* two channels for tsadc */
+ 
+-	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
++	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+ 	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+ 	.tshut_temp = 95000,
+ 
+@@ -1080,6 +1083,20 @@ static int rockchip_thermal_get_temp(void *_sensor, int *out_temp)
+ 	.set_trips = rockchip_thermal_set_trips,
+ };
+ 
++static void thermal_pinctrl_select_otp(struct rockchip_thermal_data *thermal)
++{
++	if (!IS_ERR(thermal->pinctrl) && !IS_ERR_OR_NULL(thermal->otp_state))
++		pinctrl_select_state(thermal->pinctrl,
++				     thermal->otp_state);
++}
++
++static void thermal_pinctrl_select_gpio(struct rockchip_thermal_data *thermal)
++{
++	if (!IS_ERR(thermal->pinctrl) && !IS_ERR_OR_NULL(thermal->gpio_state))
++		pinctrl_select_state(thermal->pinctrl,
++				     thermal->gpio_state);
++}
++
+ static int rockchip_configure_from_dt(struct device *dev,
+ 				      struct device_node *np,
+ 				      struct rockchip_thermal_data *thermal)
+@@ -1103,7 +1120,7 @@ static int rockchip_configure_from_dt(struct device *dev,
+ 	if (of_property_read_u32(np, "rockchip,hw-tshut-mode", &tshut_mode)) {
+ 		dev_warn(dev,
+ 			 "Missing tshut mode property, using default (%s)\n",
+-			 thermal->chip->tshut_mode == TSHUT_MODE_GPIO ?
++			 thermal->chip->tshut_mode == TSHUT_MODE_OTP ?
+ 				"gpio" : "cru");
+ 		thermal->tshut_mode = thermal->chip->tshut_mode;
+ 	} else {
+@@ -1242,6 +1259,8 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 		return error;
+ 	}
+ 
++	thermal->chip->control(thermal->regs, false);
++
+ 	error = clk_prepare_enable(thermal->clk);
+ 	if (error) {
+ 		dev_err(&pdev->dev, "failed to enable converter clock: %d\n",
+@@ -1267,6 +1286,24 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 	thermal->chip->initialize(thermal->grf, thermal->regs,
+ 				  thermal->tshut_polarity);
+ 
++	if (thermal->tshut_mode == TSHUT_MODE_OTP) {
++		thermal->pinctrl = devm_pinctrl_get(&pdev->dev);
++		if (IS_ERR(thermal->pinctrl))
++			dev_err(&pdev->dev, "failed to find thermal pinctrl\n");
++
++		thermal->gpio_state = pinctrl_lookup_state(thermal->pinctrl,
++							   "gpio");
++		if (IS_ERR_OR_NULL(thermal->gpio_state))
++			dev_err(&pdev->dev, "failed to find thermal gpio state\n");
++
++		thermal->otp_state = pinctrl_lookup_state(thermal->pinctrl,
++							  "otpout");
++		if (IS_ERR_OR_NULL(thermal->otp_state))
++			dev_err(&pdev->dev, "failed to find thermal otpout state\n");
++
++		thermal_pinctrl_select_otp(thermal);
++	}
++
+ 	for (i = 0; i < thermal->chip->chn_num; i++) {
+ 		error = rockchip_thermal_register_sensor(pdev, thermal,
+ 						&thermal->sensors[i],
+@@ -1338,7 +1375,8 @@ static int __maybe_unused rockchip_thermal_suspend(struct device *dev)
+ 	clk_disable(thermal->pclk);
+ 	clk_disable(thermal->clk);
+ 
+-	pinctrl_pm_select_sleep_state(dev);
++	if (thermal->tshut_mode == TSHUT_MODE_OTP)
++		thermal_pinctrl_select_gpio(thermal);
+ 
+ 	return 0;
+ }
+@@ -1383,7 +1421,8 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
+ 	for (i = 0; i < thermal->chip->chn_num; i++)
+ 		rockchip_thermal_toggle_sensor(&thermal->sensors[i], true);
+ 
+-	pinctrl_pm_select_default_state(dev);
++	if (thermal->tshut_mode == TSHUT_MODE_OTP)
++		thermal_pinctrl_select_otp(thermal);
+ 
+ 	return 0;
+ }
+-- 
+1.9.1
