@@ -1,14 +1,12 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 2/2] arm64: dts: rockchip: bulk convert gpios to their
- constant counterparts
-Date: Tue,  2 Apr 2019 14:18:52 +0200
-Message-ID: <20190402121852.14442-2-heiko@sntech.de>
-References: <20190402121852.14442-1-heiko@sntech.de>
+Subject: [PATCH 1/2] ARM: dts: rockchip: bulk convert gpios to their constant
+ counterparts
+Date: Tue,  2 Apr 2019 14:18:51 +0200
+Message-ID: <20190402121852.14442-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190402121852.14442-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -83,645 +81,1103 @@ Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
 goes on top of my v5.2-armsoc/dts64 branch
 
- arch/arm64/boot/dts/rockchip/px30-evb.dts     |   4 +-
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts   |   2 +-
- arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi  |  34 +-
- .../boot/dts/rockchip/rk3368-geekbox.dts      |   8 +-
- .../boot/dts/rockchip/rk3368-lion-haikou.dts  |  14 +-
- arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi |   8 +-
- .../dts/rockchip/rk3368-orion-r68-meta.dts    |  46 +--
- .../boot/dts/rockchip/rk3368-px5-evb.dts      |   6 +-
- arch/arm64/boot/dts/rockchip/rk3368-r88.dts   |  36 +--
- arch/arm64/boot/dts/rockchip/rk3368.dtsi      | 240 +++++++-------
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts   |   6 +-
- arch/arm64/boot/dts/rockchip/rk3399-ficus.dts |  18 +-
- .../boot/dts/rockchip/rk3399-gru-bob.dts      |   2 +-
- .../dts/rockchip/rk3399-gru-chromebook.dtsi   |  14 +-
- .../boot/dts/rockchip/rk3399-gru-kevin.dts    |   8 +-
- .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi |  68 ++--
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  |  56 ++--
- .../boot/dts/rockchip/rk3399-nanopc-t4.dts    |   2 +-
- .../boot/dts/rockchip/rk3399-orangepi.dts     |   2 +-
- .../boot/dts/rockchip/rk3399-puma-haikou.dts  |  12 +-
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi |  18 +-
- .../boot/dts/rockchip/rk3399-rock960.dtsi     |  32 +-
- .../boot/dts/rockchip/rk3399-sapphire.dtsi    |   4 +-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi      | 306 +++++++++---------
- 24 files changed, 473 insertions(+), 473 deletions(-)
+ arch/arm/boot/dts/rk3036-kylin.dts            |  10 +-
+ arch/arm/boot/dts/rk3036.dtsi                 | 136 ++++-----
+ arch/arm/boot/dts/rk3066a-marsboard.dts       |   2 +-
+ arch/arm/boot/dts/rk3066a-mk808.dts           |   8 +-
+ arch/arm/boot/dts/rk3066a-rayeager.dts        |  26 +-
+ arch/arm/boot/dts/rk3066a.dtsi                | 180 +++++------
+ arch/arm/boot/dts/rk3188-px3-evb.dts          |   4 +-
+ arch/arm/boot/dts/rk3188-radxarock.dts        |  14 +-
+ arch/arm/boot/dts/rk3188.dtsi                 | 210 ++++++-------
+ arch/arm/boot/dts/rk322x.dtsi                 | 170 +++++------
+ arch/arm/boot/dts/rk3288-evb-act8846.dts      |   4 +-
+ arch/arm/boot/dts/rk3288-evb.dtsi             |  26 +-
+ arch/arm/boot/dts/rk3288-fennec.dts           |  10 +-
+ arch/arm/boot/dts/rk3288-firefly-beta.dts     |   4 +-
+ .../boot/dts/rk3288-firefly-reload-core.dtsi  |  10 +-
+ arch/arm/boot/dts/rk3288-firefly-reload.dts   |  36 +--
+ arch/arm/boot/dts/rk3288-firefly.dts          |   4 +-
+ arch/arm/boot/dts/rk3288-firefly.dtsi         |  38 +--
+ arch/arm/boot/dts/rk3288-miqi.dts             |  28 +-
+ arch/arm/boot/dts/rk3288-phycore-rdk.dts      |  28 +-
+ arch/arm/boot/dts/rk3288-phycore-som.dtsi     |  30 +-
+ arch/arm/boot/dts/rk3288-r89.dts              |  14 +-
+ arch/arm/boot/dts/rk3288-rock2-som.dtsi       |   4 +-
+ arch/arm/boot/dts/rk3288-rock2-square.dts     |  18 +-
+ arch/arm/boot/dts/rk3288-tinker.dtsi          |  30 +-
+ .../boot/dts/rk3288-veyron-analog-audio.dtsi  |   8 +-
+ arch/arm/boot/dts/rk3288-veyron-brain.dts     |   8 +-
+ .../boot/dts/rk3288-veyron-chromebook.dtsi    |  18 +-
+ arch/arm/boot/dts/rk3288-veyron-jaq.dts       |  14 +-
+ arch/arm/boot/dts/rk3288-veyron-jerry.dts     |  14 +-
+ arch/arm/boot/dts/rk3288-veyron-mickey.dts    |   6 +-
+ arch/arm/boot/dts/rk3288-veyron-mighty.dts    |   2 +-
+ arch/arm/boot/dts/rk3288-veyron-minnie.dts    |  24 +-
+ arch/arm/boot/dts/rk3288-veyron-pinky.dts     |   6 +-
+ arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi    |  16 +-
+ arch/arm/boot/dts/rk3288-veyron-speedy.dts    |  14 +-
+ arch/arm/boot/dts/rk3288-veyron.dtsi          |  50 +--
+ arch/arm/boot/dts/rk3288-vyasa.dts            |   6 +-
+ arch/arm/boot/dts/rk3288.dtsi                 | 286 +++++++++---------
+ arch/arm/boot/dts/rv1108.dtsi                 | 138 ++++-----
+ 40 files changed, 827 insertions(+), 827 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30-evb.dts b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-index 263d7f3dbc44..6eb7407a84aa 100644
---- a/arch/arm64/boot/dts/rockchip/px30-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-@@ -145,12 +145,12 @@
- 
- 		soc_slppin_slp: soc_slppin_slp {
- 			rockchip,pins =
--				<0 RK_PA4 RK_FUNC_1 &pcfg_pull_none>;
-+				<0 RK_PA4 1 &pcfg_pull_none>;
- 		};
- 
- 		soc_slppin_rst: soc_slppin_rst {
- 			rockchip,pins =
--				<0 RK_PA4 RK_FUNC_2 &pcfg_pull_none>;
-+				<0 RK_PA4 2 &pcfg_pull_none>;
- 		};
- 	};
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-index 8302d86d35c4..49c4b96da3d4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-@@ -208,7 +208,7 @@
- 	sdio-pwrseq {
- 		wifi_enable_h: wifi-enable-h {
- 		rockchip,pins =
--			<1 18 RK_FUNC_GPIO &pcfg_pull_none>;
-+			<1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi b/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
-index e96eb62f362b..1c52f47c43a6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
-@@ -154,60 +154,60 @@
- 
- 	backlight {
- 		bl_en: bl-en {
--			rockchip,pins = <0 20 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <0 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	emmc {
- 		emmc_bus8: emmc-bus8 {
--			rockchip,pins = <1 18 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 19 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 20 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 21 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 22 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 23 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 24 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 25 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
-+			rockchip,pins = <1 RK_PC2 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PC3 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PC4 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PC5 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PC6 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PC7 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PD0 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PD1 2 &pcfg_pull_up_drv_8ma>;
- 		};
- 
- 		emmc-clk {
--			rockchip,pins = <2 4 RK_FUNC_2 &pcfg_pull_none_drv_8ma>;
-+			rockchip,pins = <2 RK_PA4 2 &pcfg_pull_none_drv_8ma>;
- 		};
- 
- 		emmc-cmd {
--			rockchip,pins = <1 26 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
-+			rockchip,pins = <1 RK_PD2 2 &pcfg_pull_up_drv_8ma>;
- 		};
- 
- 		emmc_reset: emmc-reset {
--			rockchip,pins = <2 3 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <2 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	keys {
- 		pwr_key: pwr-key {
--			rockchip,pins = <0 2 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>;
+diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
+index 0173eb11ec28..fb3cf005cc90 100644
+--- a/arch/arm/boot/dts/rk3036-kylin.dts
++++ b/arch/arm/boot/dts/rk3036-kylin.dts
+@@ -368,31 +368,31 @@
+ &pinctrl {
+ 	leds {
+ 		led_ctl: led-ctl {
+-			rockchip,pins = <2 30 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
  		};
  	};
  
  	pmic {
  		pmic_int: pmic-int {
--			rockchip,pins = <0 1 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_up>;
+-			rockchip,pins = <2 2 RK_FUNC_GPIO &pcfg_pull_default>;
++			rockchip,pins = <2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_default>;
  		};
  	};
  
  	sdio {
- 		wifi_reg_on: wifi-reg-on {
--			rockchip,pins = <3 4 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <3 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		bt_rst: bt-rst {
--			rockchip,pins = <3 5 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <3 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	usb {
- 		host_vbus_drv: host-vbus-drv {
--			rockchip,pins = <0 4 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts b/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
-index 8fa550cbd1a4..1d0778ff217c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
-@@ -233,23 +233,23 @@
- &pinctrl {
- 	ir {
- 		ir_int: ir-int {
--			rockchip,pins = <3 30 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <3 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	keys {
- 		pwr_key: pwr-key {
--			rockchip,pins = <0 2 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	pmic {
- 		pmic_sleep: pmic-sleep {
--			rockchip,pins = <0 0 RK_FUNC_2 &pcfg_pull_none>;
-+			rockchip,pins = <0 RK_PA0 2 &pcfg_pull_none>;
- 		};
- 
- 		pmic_int: pmic-int {
--			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
-index fca8e87d8f52..8251f3c0d0a8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
-@@ -113,34 +113,34 @@
- 		haikou_pin_hog: haikou-pin-hog {
- 			rockchip,pins =
- 				/* LID_BTN */
--				<RK_GPIO3 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>,
- 				/* BATLOW# */
--				<RK_GPIO0 RK_PD6 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<0 RK_PD6 RK_FUNC_GPIO &pcfg_pull_up>,
- 				/* SLP_BTN# */
--				<RK_GPIO3 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>,
- 				/* BIOS_DISABLE# */
--				<RK_GPIO3 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
-+				<3 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- 
- 	leds {
- 		led_sd_haikou: led-sd-gpio {
- 			rockchip,pins =
--				<RK_GPIO0 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<0 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		bt_wake_h: bt-wake-h {
+-			rockchip,pins = <2 8 RK_FUNC_GPIO &pcfg_pull_default>;
++			rockchip,pins = <2 RK_PB0 RK_FUNC_GPIO &pcfg_pull_default>;
  		};
  	};
  
  	sdmmc {
- 		sdmmc_cd_gpio: sdmmc-cd-gpio {
- 			rockchip,pins =
--				<RK_GPIO2 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<2 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		sdmmc_pwr: sdmmc-pwr {
+-			rockchip,pins = <2 28 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
  		};
  	};
  
- 	usb_otg {
- 		otg_vbus_drv: otg-vbus-drv {
- 			rockchip,pins =
--				<RK_GPIO0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 	sleep {
+ 		global_pwroff: global-pwroff {
+-			rockchip,pins = <2 7 RK_FUNC_1 &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PA7 1 &pcfg_pull_none>;
  		};
  	};
  };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi b/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi
-index 1b35d612b660..8f6fcfe65bb2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi
-@@ -274,17 +274,17 @@
- 	leds {
- 		led_pins_module: led-module-gpio {
- 			rockchip,pins =
--				<RK_GPIO2 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>,
--				<RK_GPIO3 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<2 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>,
-+				<3 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 	pmic {
- 		pmic_int_l: pmic-int-l {
--			rockchip,pins = <RK_GPIO0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index 59c90863b0e7..0290ea4edd32 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -551,71 +551,71 @@
+ 
+ 		pwm0 {
+ 			pwm0_pin: pwm0-pin {
+-				rockchip,pins = <0 0 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PA0 2 &pcfg_pull_none>;
+ 			};
  		};
  
- 		pmic_sleep: pmic-sleep {
--			rockchip,pins = <RK_GPIO0 RK_PA0 RK_FUNC_2 &pcfg_pull_none>;
-+			rockchip,pins = <0 RK_PA0 2 &pcfg_pull_none>;
- 		};
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts b/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
-index f5aa3cad67c5..6cc310255da8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
-@@ -226,73 +226,73 @@
- 
- 	emmc {
- 		emmc_bus8: emmc-bus8 {
--			rockchip,pins = <1 18 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 19 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 20 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 21 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 22 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 23 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 24 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 25 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
-+			rockchip,pins = <1 RK_PC2 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PC3 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PC4 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PC5 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PC6 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PC7 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PD0 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PD1 2 &pcfg_pull_up_drv_8ma>;
+ 		pwm1 {
+ 			pwm1_pin: pwm1-pin {
+-				rockchip,pins = <0 1 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PA1 2 &pcfg_pull_none>;
+ 			};
  		};
  
- 		emmc-clk {
--			rockchip,pins = <2 4 RK_FUNC_2 &pcfg_pull_none_drv_8ma>;
-+			rockchip,pins = <2 RK_PA4 2 &pcfg_pull_none_drv_8ma>;
+ 		pwm2 {
+ 			pwm2_pin: pwm2-pin {
+-				rockchip,pins = <0 1 2 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PA1 2 &pcfg_pull_none>;
+ 			};
  		};
  
- 		emmc-cmd {
--			rockchip,pins = <1 26 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
-+			rockchip,pins = <1 RK_PD2 2 &pcfg_pull_up_drv_8ma>;
+ 		pwm3 {
+ 			pwm3_pin: pwm3-pin {
+-				rockchip,pins = <0 27 1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PD3 1 &pcfg_pull_none>;
+ 			};
  		};
  
- 		emmc_reset: emmc-reset {
--			rockchip,pins = <2 3 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <2 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
+ 		sdmmc {
+ 			sdmmc_clk: sdmmc-clk {
+-				rockchip,pins = <1 16 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PC0 1 &pcfg_pull_none>;
+ 			};
  
- 	keys {
- 		pwr_key: pwr-key {
--			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_down>;
-+			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_down>;
- 		};
- 	};
+ 			sdmmc_cmd: sdmmc-cmd {
+-				rockchip,pins = <1 15 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PB7 1 &pcfg_pull_default>;
+ 			};
  
- 	leds {
- 		stby_pwren: stby-pwren {
--			rockchip,pins = <0 12 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
+ 			sdmmc_cd: sdmmc-cd {
+-				rockchip,pins = <1 17 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PC1 1 &pcfg_pull_default>;
+ 			};
  
- 		led_ctl: led-ctl {
--			rockchip,pins = <3 29 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
+ 			sdmmc_bus1: sdmmc-bus1 {
+-				rockchip,pins = <1 18 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PC2 1 &pcfg_pull_default>;
+ 			};
  
- 	sdmmc {
- 		sdmmc_clk: sdmmc-clk {
--			rockchip,pins = <2 9 RK_FUNC_1 &pcfg_pull_none_drv_8ma>;
-+			rockchip,pins = <2 RK_PB1 1 &pcfg_pull_none_drv_8ma>;
- 		};
- 
- 		sdmmc_cmd: sdmmc-cmd {
--			rockchip,pins = <2 10 RK_FUNC_1 &pcfg_pull_up_drv_8ma>;
-+			rockchip,pins = <2 RK_PB2 1 &pcfg_pull_up_drv_8ma>;
+ 			sdmmc_bus4: sdmmc-bus4 {
+-				rockchip,pins = <1 18 RK_FUNC_1 &pcfg_pull_default>,
+-						<1 19 RK_FUNC_1 &pcfg_pull_default>,
+-						<1 20 RK_FUNC_1 &pcfg_pull_default>,
+-						<1 21 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PC2 1 &pcfg_pull_default>,
++						<1 RK_PC3 1 &pcfg_pull_default>,
++						<1 RK_PC4 1 &pcfg_pull_default>,
++						<1 RK_PC5 1 &pcfg_pull_default>;
+ 			};
  		};
  
- 		sdmmc_cd: sdmmc-cd {
--			rockchip,pins = <2 11 RK_FUNC_1 &pcfg_pull_up_drv_8ma>;
-+			rockchip,pins = <2 RK_PB3 1 &pcfg_pull_up_drv_8ma>;
+ 		sdio {
+ 			sdio_bus1: sdio-bus1 {
+-				rockchip,pins = <0 11 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <0 RK_PB3 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			sdio_bus4: sdio-bus4 {
+-				rockchip,pins = <0 11 RK_FUNC_1 &pcfg_pull_default>,
+-						<0 12 RK_FUNC_1 &pcfg_pull_default>,
+-						<0 13 RK_FUNC_1 &pcfg_pull_default>,
+-						<0 14 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <0 RK_PB3 1 &pcfg_pull_default>,
++						<0 RK_PB4 1 &pcfg_pull_default>,
++						<0 RK_PB5 1 &pcfg_pull_default>,
++						<0 RK_PB6 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			sdio_cmd: sdio-cmd {
+-				rockchip,pins = <0 8 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <0 RK_PB0 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			sdio_clk: sdio-clk {
+-				rockchip,pins = <0 9 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PB1 1 &pcfg_pull_none>;
+ 			};
  		};
  
- 		sdmmc_bus1: sdmmc-bus1 {
--			rockchip,pins = <2 5 RK_FUNC_1 &pcfg_pull_up_drv_8ma>;
-+			rockchip,pins = <2 RK_PA5 1 &pcfg_pull_up_drv_8ma>;
- 		};
- 
- 		sdmmc_bus4: sdmmc-bus4 {
--			rockchip,pins = <2 5 RK_FUNC_1 &pcfg_pull_up_drv_8ma>,
--					<2 6 RK_FUNC_1 &pcfg_pull_up_drv_8ma>,
--					<2 7 RK_FUNC_1 &pcfg_pull_up_drv_8ma>,
--					<2 8 RK_FUNC_1 &pcfg_pull_up_drv_8ma>;
-+			rockchip,pins = <2 RK_PA5 1 &pcfg_pull_up_drv_8ma>,
-+					<2 RK_PA6 1 &pcfg_pull_up_drv_8ma>,
-+					<2 RK_PA7 1 &pcfg_pull_up_drv_8ma>,
-+					<2 RK_PB0 1 &pcfg_pull_up_drv_8ma>;
- 		};
- 	};
- 
- 	usb {
- 		host_vbus_drv: host-vbus-drv {
--			rockchip,pins = <0 4 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts b/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
-index 41edcfd53184..231db0305a03 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
-@@ -218,17 +218,17 @@
- &pinctrl {
- 	keys {
- 		pwr_key: pwr-key {
--			rockchip,pins = <0 2 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	pmic {
- 		pmic_sleep: pmic-sleep {
--			rockchip,pins = <0 0 RK_FUNC_2 &pcfg_pull_none>;
-+			rockchip,pins = <0 RK_PA0 2 &pcfg_pull_none>;
- 		};
- 
- 		pmic_int: pmic-int {
--			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-index d34064c65f10..006a1fb6a816 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-@@ -235,64 +235,64 @@
- 
- 	emmc {
- 		emmc_bus8: emmc-bus8 {
--			rockchip,pins = <1 18 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 19 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 20 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 21 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 22 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 23 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 24 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
--					<1 25 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
-+			rockchip,pins = <1 RK_PC2 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PC3 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PC4 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PC5 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PC6 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PC7 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PD0 2 &pcfg_pull_up_drv_8ma>,
-+					<1 RK_PD1 2 &pcfg_pull_up_drv_8ma>;
- 		};
- 
- 		emmc-clk {
--			rockchip,pins = <2 4 RK_FUNC_2 &pcfg_pull_none_drv_8ma>;
-+			rockchip,pins = <2 RK_PA4 2 &pcfg_pull_none_drv_8ma>;
- 		};
- 
- 		emmc-cmd {
--			rockchip,pins = <1 26 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
-+			rockchip,pins = <1 RK_PD2 2 &pcfg_pull_up_drv_8ma>;
- 		};
- 
- 		emmc_reset: emmc-reset {
--			rockchip,pins = <2 3 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <2 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	ir {
- 		ir_int: ir-int {
--			rockchip,pins = <3 30 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <3 RK_PD6 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- 
- 	keys {
- 		pwr_key: pwr-key {
--			rockchip,pins = <0 2 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- 
- 	leds {
- 		stby_pwren: stby-pwren {
--			rockchip,pins = <0 12 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		led_ctl: led-ctl {
--			rockchip,pins = <3 29 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	sdio {
- 		wifi_reg_on: wifi-reg-on {
--			rockchip,pins = <3 4 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <3 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		bt_rst: bt-rst {
--			rockchip,pins = <3 5 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <3 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	usb {
- 		host_vbus_drv: host-vbus-drv {
--			rockchip,pins = <0 4 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index 06e7c31d7d07..fd86188010b2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -881,345 +881,345 @@
- 
- 		emmc {
+@@ -625,135 +625,135 @@
+ 			 * We also have external pulls, so disable the internal ones.
+ 			 */
  			emmc_clk: emmc-clk {
 -				rockchip,pins = <2 4 RK_FUNC_2 &pcfg_pull_none>;
 +				rockchip,pins = <2 RK_PA4 2 &pcfg_pull_none>;
  			};
  
  			emmc_cmd: emmc-cmd {
--				rockchip,pins = <1 26 RK_FUNC_2 &pcfg_pull_up>;
-+				rockchip,pins = <1 RK_PD2 2 &pcfg_pull_up>;
- 			};
- 
- 			emmc_pwr: emmc-pwr {
--				rockchip,pins = <1 27 RK_FUNC_2 &pcfg_pull_up>;
-+				rockchip,pins = <1 RK_PD3 2 &pcfg_pull_up>;
- 			};
- 
- 			emmc_bus1: emmc-bus1 {
--				rockchip,pins = <1 18 RK_FUNC_2 &pcfg_pull_up>;
-+				rockchip,pins = <1 RK_PC2 2 &pcfg_pull_up>;
- 			};
- 
- 			emmc_bus4: emmc-bus4 {
--				rockchip,pins = <1 18 RK_FUNC_2 &pcfg_pull_up>,
--						<1 19 RK_FUNC_2 &pcfg_pull_up>,
--						<1 20 RK_FUNC_2 &pcfg_pull_up>,
--						<1 21 RK_FUNC_2 &pcfg_pull_up>;
-+				rockchip,pins = <1 RK_PC2 2 &pcfg_pull_up>,
-+						<1 RK_PC3 2 &pcfg_pull_up>,
-+						<1 RK_PC4 2 &pcfg_pull_up>,
-+						<1 RK_PC5 2 &pcfg_pull_up>;
+-				rockchip,pins = <2 1 RK_FUNC_2 &pcfg_pull_default>;
++				rockchip,pins = <2 RK_PA1 2 &pcfg_pull_default>;
  			};
  
  			emmc_bus8: emmc-bus8 {
--				rockchip,pins = <1 18 RK_FUNC_2 &pcfg_pull_up>,
--						<1 19 RK_FUNC_2 &pcfg_pull_up>,
--						<1 20 RK_FUNC_2 &pcfg_pull_up>,
--						<1 21 RK_FUNC_2 &pcfg_pull_up>,
--						<1 22 RK_FUNC_2 &pcfg_pull_up>,
--						<1 23 RK_FUNC_2 &pcfg_pull_up>,
--						<1 24 RK_FUNC_2 &pcfg_pull_up>,
--						<1 25 RK_FUNC_2 &pcfg_pull_up>;
-+				rockchip,pins = <1 RK_PC2 2 &pcfg_pull_up>,
-+						<1 RK_PC3 2 &pcfg_pull_up>,
-+						<1 RK_PC4 2 &pcfg_pull_up>,
-+						<1 RK_PC5 2 &pcfg_pull_up>,
-+						<1 RK_PC6 2 &pcfg_pull_up>,
-+						<1 RK_PC7 2 &pcfg_pull_up>,
-+						<1 RK_PD0 2 &pcfg_pull_up>,
-+						<1 RK_PD1 2 &pcfg_pull_up>;
+-				rockchip,pins = <1 24 RK_FUNC_2 &pcfg_pull_default>,
+-						<1 25 RK_FUNC_2 &pcfg_pull_default>,
+-						<1 26 RK_FUNC_2 &pcfg_pull_default>,
+-						<1 27 RK_FUNC_2 &pcfg_pull_default>,
+-						<1 28 RK_FUNC_2 &pcfg_pull_default>,
+-						<1 29 RK_FUNC_2 &pcfg_pull_default>,
+-						<1 30 RK_FUNC_2 &pcfg_pull_default>,
+-						<1 31 RK_FUNC_2 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PD0 2 &pcfg_pull_default>,
++						<1 RK_PD1 2 &pcfg_pull_default>,
++						<1 RK_PD2 2 &pcfg_pull_default>,
++						<1 RK_PD3 2 &pcfg_pull_default>,
++						<1 RK_PD4 2 &pcfg_pull_default>,
++						<1 RK_PD5 2 &pcfg_pull_default>,
++						<1 RK_PD6 2 &pcfg_pull_default>,
++						<1 RK_PD7 2 &pcfg_pull_default>;
  			};
  		};
  
- 		gmac {
- 			rgmii_pins: rgmii-pins {
--				rockchip,pins =	<3 22 RK_FUNC_1 &pcfg_pull_none>,
--						<3 24 RK_FUNC_1 &pcfg_pull_none>,
--						<3 19 RK_FUNC_1 &pcfg_pull_none>,
--						<3 8 RK_FUNC_1 &pcfg_pull_none_12ma>,
--						<3 9 RK_FUNC_1 &pcfg_pull_none_12ma>,
--						<3 10 RK_FUNC_1 &pcfg_pull_none_12ma>,
--						<3 14 RK_FUNC_1 &pcfg_pull_none_12ma>,
--						<3 28 RK_FUNC_1 &pcfg_pull_none_12ma>,
--						<3 13 RK_FUNC_1 &pcfg_pull_none_12ma>,
--						<3 15 RK_FUNC_1 &pcfg_pull_none>,
--						<3 16 RK_FUNC_1 &pcfg_pull_none>,
--						<3 17 RK_FUNC_1 &pcfg_pull_none>,
--						<3 18 RK_FUNC_1 &pcfg_pull_none>,
--						<3 25 RK_FUNC_1 &pcfg_pull_none>,
--						<3 20 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins =	<3 RK_PC6 1 &pcfg_pull_none>,
-+						<3 RK_PD0 1 &pcfg_pull_none>,
-+						<3 RK_PC3 1 &pcfg_pull_none>,
-+						<3 RK_PB0 1 &pcfg_pull_none_12ma>,
-+						<3 RK_PB1 1 &pcfg_pull_none_12ma>,
-+						<3 RK_PB2 1 &pcfg_pull_none_12ma>,
-+						<3 RK_PB6 1 &pcfg_pull_none_12ma>,
-+						<3 RK_PD4 1 &pcfg_pull_none_12ma>,
-+						<3 RK_PB5 1 &pcfg_pull_none_12ma>,
-+						<3 RK_PB7 1 &pcfg_pull_none>,
-+						<3 RK_PC0 1 &pcfg_pull_none>,
-+						<3 RK_PC1 1 &pcfg_pull_none>,
-+						<3 RK_PC2 1 &pcfg_pull_none>,
-+						<3 RK_PD1 1 &pcfg_pull_none>,
-+						<3 RK_PC4 1 &pcfg_pull_none>;
+ 		emac {
+ 			emac_xfer: emac-xfer {
+-				rockchip,pins = <2 10 RK_FUNC_1 &pcfg_pull_default>, /* crs_dvalid */
+-						<2 13 RK_FUNC_1 &pcfg_pull_default>, /* tx_en */
+-						<2 14 RK_FUNC_1 &pcfg_pull_default>, /* mac_clk */
+-						<2 15 RK_FUNC_1 &pcfg_pull_default>, /* rx_err */
+-						<2 16 RK_FUNC_1 &pcfg_pull_default>, /* rxd1 */
+-						<2 17 RK_FUNC_1 &pcfg_pull_default>, /* rxd0 */
+-						<2 18 RK_FUNC_1 &pcfg_pull_default>, /* txd1 */
+-						<2 19 RK_FUNC_1 &pcfg_pull_default>; /* txd0 */
++				rockchip,pins = <2 RK_PB2 1 &pcfg_pull_default>, /* crs_dvalid */
++						<2 RK_PB5 1 &pcfg_pull_default>, /* tx_en */
++						<2 RK_PB6 1 &pcfg_pull_default>, /* mac_clk */
++						<2 RK_PB7 1 &pcfg_pull_default>, /* rx_err */
++						<2 RK_PC0 1 &pcfg_pull_default>, /* rxd1 */
++						<2 RK_PC1 1 &pcfg_pull_default>, /* rxd0 */
++						<2 RK_PC2 1 &pcfg_pull_default>, /* txd1 */
++						<2 RK_PC3 1 &pcfg_pull_default>; /* txd0 */
  			};
  
- 			rmii_pins: rmii-pins {
--				rockchip,pins =	<3 22 RK_FUNC_1 &pcfg_pull_none>,
--						<3 24 RK_FUNC_1 &pcfg_pull_none>,
--						<3 19 RK_FUNC_1 &pcfg_pull_none>,
--						<3 8 RK_FUNC_1 &pcfg_pull_none_12ma>,
--						<3 9 RK_FUNC_1 &pcfg_pull_none_12ma>,
--						<3 13 RK_FUNC_1 &pcfg_pull_none_12ma>,
--						<3 15 RK_FUNC_1 &pcfg_pull_none>,
--						<3 16 RK_FUNC_1 &pcfg_pull_none>,
--						<3 20 RK_FUNC_1 &pcfg_pull_none>,
--						<3 21 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins =	<3 RK_PC6 1 &pcfg_pull_none>,
-+						<3 RK_PD0 1 &pcfg_pull_none>,
-+						<3 RK_PC3 1 &pcfg_pull_none>,
-+						<3 RK_PB0 1 &pcfg_pull_none_12ma>,
-+						<3 RK_PB1 1 &pcfg_pull_none_12ma>,
-+						<3 RK_PB5 1 &pcfg_pull_none_12ma>,
-+						<3 RK_PB7 1 &pcfg_pull_none>,
-+						<3 RK_PC0 1 &pcfg_pull_none>,
-+						<3 RK_PC4 1 &pcfg_pull_none>,
-+						<3 RK_PC5 1 &pcfg_pull_none>;
+ 			emac_mdio: emac-mdio {
+-				rockchip,pins = <2 12 RK_FUNC_1 &pcfg_pull_default>, /* mac_md */
+-						<2 25 RK_FUNC_1 &pcfg_pull_default>; /* mac_mdclk */
++				rockchip,pins = <2 RK_PB4 1 &pcfg_pull_default>, /* mac_md */
++						<2 RK_PD1 1 &pcfg_pull_default>; /* mac_mdclk */
  			};
  		};
  
  		i2c0 {
  			i2c0_xfer: i2c0-xfer {
--				rockchip,pins = <0 6 RK_FUNC_1 &pcfg_pull_none>,
--						<0 7 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins = <0 RK_PA6 1 &pcfg_pull_none>,
-+						<0 RK_PA7 1 &pcfg_pull_none>;
+-				rockchip,pins = <0 0 RK_FUNC_1 &pcfg_pull_none>,
+-						<0 1 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PA0 1 &pcfg_pull_none>,
++						<0 RK_PA1 1 &pcfg_pull_none>;
  			};
  		};
  
  		i2c1 {
  			i2c1_xfer: i2c1-xfer {
--				rockchip,pins = <2 21 RK_FUNC_1 &pcfg_pull_none>,
--						<2 22 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins = <2 RK_PC5 1 &pcfg_pull_none>,
-+						<2 RK_PC6 1 &pcfg_pull_none>;
+-				rockchip,pins = <0 2 RK_FUNC_1 &pcfg_pull_none>,
+-						<0 3 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PA2 1 &pcfg_pull_none>,
++						<0 RK_PA3 1 &pcfg_pull_none>;
  			};
  		};
  
  		i2c2 {
  			i2c2_xfer: i2c2-xfer {
--				rockchip,pins = <0 9 RK_FUNC_2 &pcfg_pull_none>,
--						<3 31 RK_FUNC_2 &pcfg_pull_none>;
-+				rockchip,pins = <0 RK_PB1 2 &pcfg_pull_none>,
-+						<3 RK_PD7 2 &pcfg_pull_none>;
+-				rockchip,pins = <2 20 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 21 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PC4 1 &pcfg_pull_none>,
++						<2 RK_PC5 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		i2s {
+ 			i2s_bus: i2s-bus {
+-				rockchip,pins = <1 0 RK_FUNC_1 &pcfg_pull_default>,
+-						<1 1 RK_FUNC_1 &pcfg_pull_default>,
+-						<1 2 RK_FUNC_1 &pcfg_pull_default>,
+-						<1 3 RK_FUNC_1 &pcfg_pull_default>,
+-						<1 4 RK_FUNC_1 &pcfg_pull_default>,
+-						<1 5 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PA0 1 &pcfg_pull_default>,
++						<1 RK_PA1 1 &pcfg_pull_default>,
++						<1 RK_PA2 1 &pcfg_pull_default>,
++						<1 RK_PA3 1 &pcfg_pull_default>,
++						<1 RK_PA4 1 &pcfg_pull_default>,
++						<1 RK_PA5 1 &pcfg_pull_default>;
+ 			};
+ 		};
+ 
+ 		hdmi {
+ 			hdmi_ctl: hdmi-ctl {
+-				rockchip,pins = <1 8  RK_FUNC_1 &pcfg_pull_none>,
+-						<1 9  RK_FUNC_1 &pcfg_pull_none>,
+-						<1 10 RK_FUNC_1 &pcfg_pull_none>,
+-						<1 11 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PB0  1 &pcfg_pull_none>,
++						<1 RK_PB1  1 &pcfg_pull_none>,
++						<1 RK_PB2 1 &pcfg_pull_none>,
++						<1 RK_PB3 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		uart0 {
+ 			uart0_xfer: uart0-xfer {
+-				rockchip,pins = <0 16 RK_FUNC_1 &pcfg_pull_default>,
+-						<0 17 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PC0 1 &pcfg_pull_default>,
++						<0 RK_PC1 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart0_cts: uart0-cts {
+-				rockchip,pins = <0 18 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <0 RK_PC2 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			uart0_rts: uart0-rts {
+-				rockchip,pins = <0 19 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PC3 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		uart1 {
+ 			uart1_xfer: uart1-xfer {
+-				rockchip,pins = <2 22 RK_FUNC_1 &pcfg_pull_default>,
+-						<2 23 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PC6 1 &pcfg_pull_default>,
++						<2 RK_PC7 1 &pcfg_pull_none>;
+ 			};
+ 			/* no rts / cts for uart1 */
+ 		};
+ 
+ 		uart2 {
+ 			uart2_xfer: uart2-xfer {
+-				rockchip,pins = <1 18 RK_FUNC_2 &pcfg_pull_default>,
+-						<1 19 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PC2 2 &pcfg_pull_default>,
++						<1 RK_PC3 2 &pcfg_pull_none>;
+ 			};
+ 			/* no rts / cts for uart2 */
+ 		};
+ 
+ 		spi-pins {
+ 			spi_txd:spi-txd {
+-				rockchip,pins = <1 29 RK_FUNC_3 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PD5 3 &pcfg_pull_default>;
+ 			};
+ 
+ 			spi_rxd:spi-rxd {
+-				rockchip,pins = <1 28 RK_FUNC_3 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PD4 3 &pcfg_pull_default>;
+ 			};
+ 
+ 			spi_clk:spi-clk {
+-				rockchip,pins = <2 0 RK_FUNC_2 &pcfg_pull_default>;
++				rockchip,pins = <2 RK_PA0 2 &pcfg_pull_default>;
+ 			};
+ 
+ 			spi_cs0:spi-cs0 {
+-				rockchip,pins = <1 30 RK_FUNC_3 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PD6 3 &pcfg_pull_default>;
+ 
+ 			};
+ 
+ 			spi_cs1:spi-cs1 {
+-				rockchip,pins = <1 31 RK_FUNC_3 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PD7 3 &pcfg_pull_default>;
+ 
+ 			};
+ 		};
+diff --git a/arch/arm/boot/dts/rk3066a-marsboard.dts b/arch/arm/boot/dts/rk3066a-marsboard.dts
+index ce525b956ae5..7e01f6406a86 100644
+--- a/arch/arm/boot/dts/rk3066a-marsboard.dts
++++ b/arch/arm/boot/dts/rk3066a-marsboard.dts
+@@ -168,7 +168,7 @@
+ &pinctrl {
+ 	lan8720a {
+ 		phy_int: phy-int {
+-			rockchip,pins = <RK_GPIO1 26 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <1 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3066a-mk808.dts b/arch/arm/boot/dts/rk3066a-mk808.dts
+index 8bc259d3e450..365eff621113 100644
+--- a/arch/arm/boot/dts/rk3066a-mk808.dts
++++ b/arch/arm/boot/dts/rk3066a-mk808.dts
+@@ -136,25 +136,25 @@
+ &pinctrl {
+ 	usb-host {
+ 		host_drv: host-drv {
+-			rockchip,pins = <RK_GPIO0 6 RK_FUNC_GPIO &pcfg_pull_default>;
++			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_default>;
+ 		};
+ 	};
+ 
+ 	usb-otg {
+ 		otg_drv: otg-drv {
+-			rockchip,pins = <RK_GPIO0 5 RK_FUNC_GPIO &pcfg_pull_default>;
++			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_default>;
+ 		};
+ 	};
+ 
+ 	sdmmc {
+ 		sdmmc_pwr: sdmmc-pwr {
+-			rockchip,pins = <RK_GPIO3 7 RK_FUNC_GPIO &pcfg_pull_default>;
++			rockchip,pins = <3 RK_PA7 RK_FUNC_GPIO &pcfg_pull_default>;
+ 		};
+ 	};
+ 
+ 	sdio {
+ 		wifi_pwr: wifi-pwr {
+-			rockchip,pins = <RK_GPIO3 24 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <3 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3066a-rayeager.dts b/arch/arm/boot/dts/rk3066a-rayeager.dts
+index 949fa800582d..f9db6bb9fa11 100644
+--- a/arch/arm/boot/dts/rk3066a-rayeager.dts
++++ b/arch/arm/boot/dts/rk3066a-rayeager.dts
+@@ -322,71 +322,71 @@
+ 
+ 	ak8963 {
+ 		comp_int: comp-int {
+-			rockchip,pins = <4 17 RK_FUNC_GPIO &pcfg_pull_default>;
++			rockchip,pins = <4 RK_PC1 RK_FUNC_GPIO &pcfg_pull_default>;
+ 		};
+ 	};
+ 
+ 	emac {
+ 		rmii_rst: rmii-rst {
+-			rockchip,pins = <1 30 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <1 RK_PD6 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 	};
+ 
+ 	ir {
+ 		ir_int: ir-int {
+-			rockchip,pins = <6 1 RK_FUNC_GPIO &pcfg_pull_default>;
++			rockchip,pins = <6 RK_PA1 RK_FUNC_GPIO &pcfg_pull_default>;
+ 		};
+ 	};
+ 
+ 	keys {
+ 		pwr_key: pwr-key {
+-			rockchip,pins = <6 2 RK_FUNC_GPIO &pcfg_pull_default>;
++			rockchip,pins = <6 RK_PA2 RK_FUNC_GPIO &pcfg_pull_default>;
+ 		};
+ 	};
+ 
+ 	mma8452 {
+ 		gsensor_int: gsensor-int {
+-			rockchip,pins = <4 16 RK_FUNC_GPIO &pcfg_pull_default>;
++			rockchip,pins = <4 RK_PC0 RK_FUNC_GPIO &pcfg_pull_default>;
+ 		};
+ 	};
+ 
+ 	mmc {
+ 		sdmmc_pwr: sdmmc-pwr {
+-			rockchip,pins = <3 7 RK_FUNC_GPIO &pcfg_pull_default>;
++			rockchip,pins = <3 RK_PA7 RK_FUNC_GPIO &pcfg_pull_default>;
+ 		};
+ 	};
+ 
+ 	usb_host {
+ 		host_drv: host-drv {
+-			rockchip,pins = <0 6 RK_FUNC_GPIO &pcfg_pull_default>;
++			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_default>;
+ 		};
+ 
+ 		hub_rst: hub-rst {
+-			rockchip,pins = <1 31 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <1 RK_PD7 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 
+ 		sata_pwr: sata-pwr {
+-			rockchip,pins = <4 22 RK_FUNC_GPIO &pcfg_pull_default>;
++			rockchip,pins = <4 RK_PC6 RK_FUNC_GPIO &pcfg_pull_default>;
+ 		};
+ 
+ 		sata_reset: sata-reset {
+-			rockchip,pins = <0 13 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <0 RK_PB5 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 	};
+ 
+ 	usb_otg {
+ 		otg_drv: otg-drv {
+-			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_default>;
++			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_default>;
+ 		};
+ 	};
+ 
+ 	tps {
+ 		pmic_int: pmic-int {
+-			rockchip,pins = <6 4 RK_FUNC_GPIO &pcfg_pull_default>;
++			rockchip,pins = <6 RK_PA4 RK_FUNC_GPIO &pcfg_pull_default>;
+ 		};
+ 
+ 		pwr_hold: pwr-hold {
+-			rockchip,pins = <6 8 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <6 RK_PB0 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
+index d9504fd456a7..3d1b02f45ffd 100644
+--- a/arch/arm/boot/dts/rk3066a.dtsi
++++ b/arch/arm/boot/dts/rk3066a.dtsi
+@@ -391,33 +391,33 @@
+ 
+ 		emac {
+ 			emac_xfer: emac-xfer {
+-				rockchip,pins = <RK_GPIO1 16 RK_FUNC_2 &pcfg_pull_none>, /* mac_clk */
+-						<RK_GPIO1 17 RK_FUNC_2 &pcfg_pull_none>, /* tx_en */
+-						<RK_GPIO1 18 RK_FUNC_2 &pcfg_pull_none>, /* txd1 */
+-						<RK_GPIO1 19 RK_FUNC_2 &pcfg_pull_none>, /* txd0 */
+-						<RK_GPIO1 20 RK_FUNC_2 &pcfg_pull_none>, /* rx_err */
+-						<RK_GPIO1 21 RK_FUNC_2 &pcfg_pull_none>, /* crs_dvalid */
+-						<RK_GPIO1 22 RK_FUNC_2 &pcfg_pull_none>, /* rxd1 */
+-						<RK_GPIO1 23 RK_FUNC_2 &pcfg_pull_none>; /* rxd0 */
++				rockchip,pins = <1 RK_PC0 2 &pcfg_pull_none>, /* mac_clk */
++						<1 RK_PC1 2 &pcfg_pull_none>, /* tx_en */
++						<1 RK_PC2 2 &pcfg_pull_none>, /* txd1 */
++						<1 RK_PC3 2 &pcfg_pull_none>, /* txd0 */
++						<1 RK_PC4 2 &pcfg_pull_none>, /* rx_err */
++						<1 RK_PC5 2 &pcfg_pull_none>, /* crs_dvalid */
++						<1 RK_PC6 2 &pcfg_pull_none>, /* rxd1 */
++						<1 RK_PC7 2 &pcfg_pull_none>; /* rxd0 */
+ 			};
+ 
+ 			emac_mdio: emac-mdio {
+-				rockchip,pins = <RK_GPIO1 24 RK_FUNC_2 &pcfg_pull_none>, /* mac_md */
+-						<RK_GPIO1 25 RK_FUNC_2 &pcfg_pull_none>; /* mac_mdclk */
++				rockchip,pins = <1 RK_PD0 2 &pcfg_pull_none>, /* mac_md */
++						<1 RK_PD1 2 &pcfg_pull_none>; /* mac_mdclk */
+ 			};
+ 		};
+ 
+ 		emmc {
+ 			emmc_clk: emmc-clk {
+-				rockchip,pins = <RK_GPIO3 31 RK_FUNC_2 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PD7 2 &pcfg_pull_default>;
+ 			};
+ 
+ 			emmc_cmd: emmc-cmd {
+-				rockchip,pins = <RK_GPIO4 9 RK_FUNC_2 &pcfg_pull_default>;
++				rockchip,pins = <4 RK_PB1 2 &pcfg_pull_default>;
+ 			};
+ 
+ 			emmc_rst: emmc-rst {
+-				rockchip,pins = <RK_GPIO4 10 RK_FUNC_2 &pcfg_pull_default>;
++				rockchip,pins = <4 RK_PB2 2 &pcfg_pull_default>;
+ 			};
+ 
+ 			/*
+@@ -441,243 +441,243 @@
+ 
+ 		i2c0 {
+ 			i2c0_xfer: i2c0-xfer {
+-				rockchip,pins = <RK_GPIO2 28 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO2 29 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PD4 1 &pcfg_pull_none>,
++						<2 RK_PD5 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		i2c1 {
+ 			i2c1_xfer: i2c1-xfer {
+-				rockchip,pins = <RK_GPIO2 30 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO2 31 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PD6 1 &pcfg_pull_none>,
++						<2 RK_PD7 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		i2c2 {
+ 			i2c2_xfer: i2c2-xfer {
+-				rockchip,pins = <RK_GPIO3 0 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO3 1 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PA0 1 &pcfg_pull_none>,
++						<3 RK_PA1 1 &pcfg_pull_none>;
  			};
  		};
  
  		i2c3 {
  			i2c3_xfer: i2c3-xfer {
--				rockchip,pins = <1 16 RK_FUNC_1 &pcfg_pull_none>,
--						<1 17 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins = <1 RK_PC0 1 &pcfg_pull_none>,
-+						<1 RK_PC1 1 &pcfg_pull_none>;
+-				rockchip,pins = <RK_GPIO3 2 RK_FUNC_2 &pcfg_pull_none>,
+-						<RK_GPIO3 3 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PA2 2 &pcfg_pull_none>,
++						<3 RK_PA3 2 &pcfg_pull_none>;
  			};
  		};
  
  		i2c4 {
  			i2c4_xfer: i2c4-xfer {
--				rockchip,pins = <3 24 RK_FUNC_2 &pcfg_pull_none>,
--						<3 25 RK_FUNC_2 &pcfg_pull_none>;
+-				rockchip,pins = <RK_GPIO3 4 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO3 5 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PA4 1 &pcfg_pull_none>,
++						<3 RK_PA5 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		pwm0 {
+ 			pwm0_out: pwm0-out {
+-				rockchip,pins = <RK_GPIO0 3 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PA3 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		pwm1 {
+ 			pwm1_out: pwm1-out {
+-				rockchip,pins = <RK_GPIO0 4 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PA4 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		pwm2 {
+ 			pwm2_out: pwm2-out {
+-				rockchip,pins = <RK_GPIO0 30 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PD6 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		pwm3 {
+ 			pwm3_out: pwm3-out {
+-				rockchip,pins = <RK_GPIO0 31 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PD7 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		spi0 {
+ 			spi0_clk: spi0-clk {
+-				rockchip,pins = <RK_GPIO1 5 RK_FUNC_2 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PA5 2 &pcfg_pull_default>;
+ 			};
+ 			spi0_cs0: spi0-cs0 {
+-				rockchip,pins = <RK_GPIO1 4 RK_FUNC_2 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PA4 2 &pcfg_pull_default>;
+ 			};
+ 			spi0_tx: spi0-tx {
+-				rockchip,pins = <RK_GPIO1 7 RK_FUNC_2 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PA7 2 &pcfg_pull_default>;
+ 			};
+ 			spi0_rx: spi0-rx {
+-				rockchip,pins = <RK_GPIO1 6 RK_FUNC_2 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PA6 2 &pcfg_pull_default>;
+ 			};
+ 			spi0_cs1: spi0-cs1 {
+-				rockchip,pins = <RK_GPIO4 15 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <4 RK_PB7 1 &pcfg_pull_default>;
+ 			};
+ 		};
+ 
+ 		spi1 {
+ 			spi1_clk: spi1-clk {
+-				rockchip,pins = <RK_GPIO2 19 RK_FUNC_2 &pcfg_pull_default>;
++				rockchip,pins = <2 RK_PC3 2 &pcfg_pull_default>;
+ 			};
+ 			spi1_cs0: spi1-cs0 {
+-				rockchip,pins = <RK_GPIO2 20 RK_FUNC_2 &pcfg_pull_default>;
++				rockchip,pins = <2 RK_PC4 2 &pcfg_pull_default>;
+ 			};
+ 			spi1_rx: spi1-rx {
+-				rockchip,pins = <RK_GPIO2 22 RK_FUNC_2 &pcfg_pull_default>;
++				rockchip,pins = <2 RK_PC6 2 &pcfg_pull_default>;
+ 			};
+ 			spi1_tx: spi1-tx {
+-				rockchip,pins = <RK_GPIO2 21 RK_FUNC_2 &pcfg_pull_default>;
++				rockchip,pins = <2 RK_PC5 2 &pcfg_pull_default>;
+ 			};
+ 			spi1_cs1: spi1-cs1 {
+-				rockchip,pins = <RK_GPIO2 23 RK_FUNC_2 &pcfg_pull_default>;
++				rockchip,pins = <2 RK_PC7 2 &pcfg_pull_default>;
+ 			};
+ 		};
+ 
+ 		uart0 {
+ 			uart0_xfer: uart0-xfer {
+-				rockchip,pins = <RK_GPIO1 0 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO1 1 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PA0 1 &pcfg_pull_default>,
++						<1 RK_PA1 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			uart0_cts: uart0-cts {
+-				rockchip,pins = <RK_GPIO1 2 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PA2 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			uart0_rts: uart0-rts {
+-				rockchip,pins = <RK_GPIO1 3 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PA3 1 &pcfg_pull_default>;
+ 			};
+ 		};
+ 
+ 		uart1 {
+ 			uart1_xfer: uart1-xfer {
+-				rockchip,pins = <RK_GPIO1 4 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO1 5 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PA4 1 &pcfg_pull_default>,
++						<1 RK_PA5 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			uart1_cts: uart1-cts {
+-				rockchip,pins = <RK_GPIO1 6 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PA6 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			uart1_rts: uart1-rts {
+-				rockchip,pins = <RK_GPIO1 7 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PA7 1 &pcfg_pull_default>;
+ 			};
+ 		};
+ 
+ 		uart2 {
+ 			uart2_xfer: uart2-xfer {
+-				rockchip,pins = <RK_GPIO1 8 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO1 9 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <1 RK_PB0 1 &pcfg_pull_default>,
++						<1 RK_PB1 1 &pcfg_pull_default>;
+ 			};
+ 			/* no rts / cts for uart2 */
+ 		};
+ 
+ 		uart3 {
+ 			uart3_xfer: uart3-xfer {
+-				rockchip,pins = <RK_GPIO3 27 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO3 28 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PD3 1 &pcfg_pull_default>,
++						<3 RK_PD4 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			uart3_cts: uart3-cts {
+-				rockchip,pins = <RK_GPIO3 29 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PD5 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			uart3_rts: uart3-rts {
+-				rockchip,pins = <RK_GPIO3 30 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PD6 1 &pcfg_pull_default>;
+ 			};
+ 		};
+ 
+ 		sd0 {
+ 			sd0_clk: sd0-clk {
+-				rockchip,pins = <RK_GPIO3 8 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PB0 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			sd0_cmd: sd0-cmd {
+-				rockchip,pins = <RK_GPIO3 9 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PB1 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			sd0_cd: sd0-cd {
+-				rockchip,pins = <RK_GPIO3 14 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PB6 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			sd0_wp: sd0-wp {
+-				rockchip,pins = <RK_GPIO3 15 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PB7 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			sd0_bus1: sd0-bus-width1 {
+-				rockchip,pins = <RK_GPIO3 10 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PB2 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			sd0_bus4: sd0-bus-width4 {
+-				rockchip,pins = <RK_GPIO3 10 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO3 11 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO3 12 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO3 13 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PB2 1 &pcfg_pull_default>,
++						<3 RK_PB3 1 &pcfg_pull_default>,
++						<3 RK_PB4 1 &pcfg_pull_default>,
++						<3 RK_PB5 1 &pcfg_pull_default>;
+ 			};
+ 		};
+ 
+ 		sd1 {
+ 			sd1_clk: sd1-clk {
+-				rockchip,pins = <RK_GPIO3 21 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PC5 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			sd1_cmd: sd1-cmd {
+-				rockchip,pins = <RK_GPIO3 16 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PC0 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			sd1_cd: sd1-cd {
+-				rockchip,pins = <RK_GPIO3 22 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PC6 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			sd1_wp: sd1-wp {
+-				rockchip,pins = <RK_GPIO3 23 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PC7 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			sd1_bus1: sd1-bus-width1 {
+-				rockchip,pins = <RK_GPIO3 17 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PC1 1 &pcfg_pull_default>;
+ 			};
+ 
+ 			sd1_bus4: sd1-bus-width4 {
+-				rockchip,pins = <RK_GPIO3 17 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO3 18 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO3 19 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO3 20 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <3 RK_PC1 1 &pcfg_pull_default>,
++						<3 RK_PC2 1 &pcfg_pull_default>,
++						<3 RK_PC3 1 &pcfg_pull_default>,
++						<3 RK_PC4 1 &pcfg_pull_default>;
+ 			};
+ 		};
+ 
+ 		i2s0 {
+ 			i2s0_bus: i2s0-bus {
+-				rockchip,pins = <RK_GPIO0 7 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 8 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 9 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 10 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 11 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 12 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 13 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 14 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 15 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <0 RK_PA7 1 &pcfg_pull_default>,
++						<0 RK_PB0 1 &pcfg_pull_default>,
++						<0 RK_PB1 1 &pcfg_pull_default>,
++						<0 RK_PB2 1 &pcfg_pull_default>,
++						<0 RK_PB3 1 &pcfg_pull_default>,
++						<0 RK_PB4 1 &pcfg_pull_default>,
++						<0 RK_PB5 1 &pcfg_pull_default>,
++						<0 RK_PB6 1 &pcfg_pull_default>,
++						<0 RK_PB7 1 &pcfg_pull_default>;
+ 			};
+ 		};
+ 
+ 		i2s1 {
+ 			i2s1_bus: i2s1-bus {
+-				rockchip,pins = <RK_GPIO0 16 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 17 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 18 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 19 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 20 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 21 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <0 RK_PC0 1 &pcfg_pull_default>,
++						<0 RK_PC1 1 &pcfg_pull_default>,
++						<0 RK_PC2 1 &pcfg_pull_default>,
++						<0 RK_PC3 1 &pcfg_pull_default>,
++						<0 RK_PC4 1 &pcfg_pull_default>,
++						<0 RK_PC5 1 &pcfg_pull_default>;
+ 			};
+ 		};
+ 
+ 		i2s2 {
+ 			i2s2_bus: i2s2-bus {
+-				rockchip,pins = <RK_GPIO0 24 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 25 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 26 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 27 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 28 RK_FUNC_1 &pcfg_pull_default>,
+-						<RK_GPIO0 29 RK_FUNC_1 &pcfg_pull_default>;
++				rockchip,pins = <0 RK_PD0 1 &pcfg_pull_default>,
++						<0 RK_PD1 1 &pcfg_pull_default>,
++						<0 RK_PD2 1 &pcfg_pull_default>,
++						<0 RK_PD3 1 &pcfg_pull_default>,
++						<0 RK_PD4 1 &pcfg_pull_default>,
++						<0 RK_PD5 1 &pcfg_pull_default>;
+ 			};
+ 		};
+ 	};
+diff --git a/arch/arm/boot/dts/rk3188-px3-evb.dts b/arch/arm/boot/dts/rk3188-px3-evb.dts
+index c0eaa9c5490b..c32e1d441cf7 100644
+--- a/arch/arm/boot/dts/rk3188-px3-evb.dts
++++ b/arch/arm/boot/dts/rk3188-px3-evb.dts
+@@ -247,10 +247,10 @@
+ 
+ 	usb {
+ 		host_vbus_drv: host-vbus-drv {
+-			rockchip,pins = <0 3 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 		otg_vbus_drv: otg-vbus-drv {
+-			rockchip,pins = <2 31 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PD7 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3188-radxarock.dts b/arch/arm/boot/dts/rk3188-radxarock.dts
+index 94bc81c24049..c9a7f5409960 100644
+--- a/arch/arm/boot/dts/rk3188-radxarock.dts
++++ b/arch/arm/boot/dts/rk3188-radxarock.dts
+@@ -307,40 +307,40 @@
+ 
+ 	act8846 {
+ 		act8846_dvs0_ctl: act8846-dvs0-ctl {
+-			rockchip,pins = <RK_GPIO3 27 RK_FUNC_GPIO &pcfg_output_low>;
++			rockchip,pins = <3 RK_PD3 RK_FUNC_GPIO &pcfg_output_low>;
+ 		};
+ 	};
+ 
+ 	hym8563 {
+ 		rtc_int: rtc-int {
+-			rockchip,pins = <RK_GPIO0 0 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	lan8720a  {
+ 		phy_int: phy-int {
+-			rockchip,pins = <RK_GPIO3 26 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <3 RK_PD2 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	ir-receiver {
+ 		ir_recv_pin: ir-recv-pin {
+-			rockchip,pins = <RK_GPIO0 10 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	sd0 {
+ 		sdmmc_pwr: sdmmc-pwr {
+-			rockchip,pins = <RK_GPIO3 1 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <3 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	usb {
+ 		host_vbus_drv: host-vbus-drv {
+-			rockchip,pins = <0 3 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 		otg_vbus_drv: otg-vbus-drv {
+-			rockchip,pins = <2 31 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PD7 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index 3ed49898f4b2..10ede65d90f3 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -315,15 +315,15 @@
+ 
+ 		emmc {
+ 			emmc_clk: emmc-clk {
+-				rockchip,pins = <RK_GPIO0 24 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PD0 2 &pcfg_pull_none>;
+ 			};
+ 
+ 			emmc_cmd: emmc-cmd {
+-				rockchip,pins = <RK_GPIO0 26 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PD2 2 &pcfg_pull_up>;
+ 			};
+ 
+ 			emmc_rst: emmc-rst {
+-				rockchip,pins = <RK_GPIO0 27 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PD3 2 &pcfg_pull_none>;
+ 			};
+ 
+ 			/*
+@@ -336,291 +336,291 @@
+ 
+ 		emac {
+ 			emac_xfer: emac-xfer {
+-				rockchip,pins = <RK_GPIO3 16 RK_FUNC_2 &pcfg_pull_none>, /* tx_en */
+-						<RK_GPIO3 17 RK_FUNC_2 &pcfg_pull_none>, /* txd1 */
+-						<RK_GPIO3 18 RK_FUNC_2 &pcfg_pull_none>, /* txd0 */
+-						<RK_GPIO3 19 RK_FUNC_2 &pcfg_pull_none>, /* rxd0 */
+-						<RK_GPIO3 20 RK_FUNC_2 &pcfg_pull_none>, /* rxd1 */
+-						<RK_GPIO3 21 RK_FUNC_2 &pcfg_pull_none>, /* mac_clk */
+-						<RK_GPIO3 22 RK_FUNC_2 &pcfg_pull_none>, /* rx_err */
+-						<RK_GPIO3 23 RK_FUNC_2 &pcfg_pull_none>; /* crs_dvalid */
++				rockchip,pins = <3 RK_PC0 2 &pcfg_pull_none>, /* tx_en */
++						<3 RK_PC1 2 &pcfg_pull_none>, /* txd1 */
++						<3 RK_PC2 2 &pcfg_pull_none>, /* txd0 */
++						<3 RK_PC3 2 &pcfg_pull_none>, /* rxd0 */
++						<3 RK_PC4 2 &pcfg_pull_none>, /* rxd1 */
++						<3 RK_PC5 2 &pcfg_pull_none>, /* mac_clk */
++						<3 RK_PC6 2 &pcfg_pull_none>, /* rx_err */
++						<3 RK_PC7 2 &pcfg_pull_none>; /* crs_dvalid */
+ 			};
+ 
+ 			emac_mdio: emac-mdio {
+-				rockchip,pins = <RK_GPIO3 24 RK_FUNC_2 &pcfg_pull_none>,
+-						<RK_GPIO3 25 RK_FUNC_2 &pcfg_pull_none>;
 +				rockchip,pins = <3 RK_PD0 2 &pcfg_pull_none>,
 +						<3 RK_PD1 2 &pcfg_pull_none>;
  			};
  		};
  
- 		i2c5 {
- 			i2c5_xfer: i2c5-xfer {
--				rockchip,pins = <3 26 RK_FUNC_2 &pcfg_pull_none>,
--						<3 27 RK_FUNC_2 &pcfg_pull_none>;
-+				rockchip,pins = <3 RK_PD2 2 &pcfg_pull_none>,
-+						<3 RK_PD3 2 &pcfg_pull_none>;
+ 		i2c0 {
+ 			i2c0_xfer: i2c0-xfer {
+-				rockchip,pins = <RK_GPIO1 24 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO1 25 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PD0 1 &pcfg_pull_none>,
++						<1 RK_PD1 1 &pcfg_pull_none>;
  			};
  		};
  
- 		i2s {
- 			i2s_8ch_bus: i2s-8ch-bus {
--				rockchip,pins = <2 12 RK_FUNC_1 &pcfg_pull_none>,
--						<2 13 RK_FUNC_1 &pcfg_pull_none>,
--						<2 14 RK_FUNC_1 &pcfg_pull_none>,
--						<2 15 RK_FUNC_1 &pcfg_pull_none>,
--						<2 16 RK_FUNC_1 &pcfg_pull_none>,
--						<2 17 RK_FUNC_1 &pcfg_pull_none>,
--						<2 18 RK_FUNC_1 &pcfg_pull_none>,
--						<2 19 RK_FUNC_1 &pcfg_pull_none>,
--						<2 20 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins = <2 RK_PB4 1 &pcfg_pull_none>,
+ 		i2c1 {
+ 			i2c1_xfer: i2c1-xfer {
+-				rockchip,pins = <RK_GPIO1 26 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO1 27 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PD2 1 &pcfg_pull_none>,
++						<1 RK_PD3 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		i2c2 {
+ 			i2c2_xfer: i2c2-xfer {
+-				rockchip,pins = <RK_GPIO1 28 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO1 29 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PD4 1 &pcfg_pull_none>,
++						<1 RK_PD5 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		i2c3 {
+ 			i2c3_xfer: i2c3-xfer {
+-				rockchip,pins = <RK_GPIO3 14 RK_FUNC_2 &pcfg_pull_none>,
+-						<RK_GPIO3 15 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PB6 2 &pcfg_pull_none>,
++						<3 RK_PB7 2 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		i2c4 {
+ 			i2c4_xfer: i2c4-xfer {
+-				rockchip,pins = <RK_GPIO1 30 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO1 31 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PD6 1 &pcfg_pull_none>,
++						<1 RK_PD7 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		lcdc1 {
+ 			lcdc1_dclk: lcdc1-dclk {
+-				rockchip,pins = <2 RK_PD0 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PD0 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			lcdc1_den: lcdc1-den {
+-				rockchip,pins = <2 RK_PD1 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PD1 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			lcdc1_hsync: lcdc1-hsync {
+-				rockchip,pins = <2 RK_PD2 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PD2 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			lcdc1_vsync: lcdc1-vsync {
+-				rockchip,pins = <2 RK_PD3 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PD3 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			lcdc1_rgb24: ldcd1-rgb24 {
+-				rockchip,pins = <2 RK_PA0 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PA1 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PA2 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PA3 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PA4 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PA5 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PA6 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PA7 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PB0 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PB1 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PB2 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PB3 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PB4 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PB5 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PB6 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PB7 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PC0 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PC1 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PC2 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PC3 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PC4 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PC5 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PC6 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 RK_PC7 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PA0 1 &pcfg_pull_none>,
++						<2 RK_PA1 1 &pcfg_pull_none>,
++						<2 RK_PA2 1 &pcfg_pull_none>,
++						<2 RK_PA3 1 &pcfg_pull_none>,
++						<2 RK_PA4 1 &pcfg_pull_none>,
++						<2 RK_PA5 1 &pcfg_pull_none>,
++						<2 RK_PA6 1 &pcfg_pull_none>,
++						<2 RK_PA7 1 &pcfg_pull_none>,
++						<2 RK_PB0 1 &pcfg_pull_none>,
++						<2 RK_PB1 1 &pcfg_pull_none>,
++						<2 RK_PB2 1 &pcfg_pull_none>,
++						<2 RK_PB3 1 &pcfg_pull_none>,
++						<2 RK_PB4 1 &pcfg_pull_none>,
 +						<2 RK_PB5 1 &pcfg_pull_none>,
 +						<2 RK_PB6 1 &pcfg_pull_none>,
 +						<2 RK_PB7 1 &pcfg_pull_none>,
@@ -729,1800 +1185,2995 @@ index 06e7c31d7d07..fd86188010b2 100644
 +						<2 RK_PC1 1 &pcfg_pull_none>,
 +						<2 RK_PC2 1 &pcfg_pull_none>,
 +						<2 RK_PC3 1 &pcfg_pull_none>,
-+						<2 RK_PC4 1 &pcfg_pull_none>;
++						<2 RK_PC4 1 &pcfg_pull_none>,
++						<2 RK_PC5 1 &pcfg_pull_none>,
++						<2 RK_PC6 1 &pcfg_pull_none>,
++						<2 RK_PC7 1 &pcfg_pull_none>;
  			};
  		};
  
  		pwm0 {
- 			pwm0_pin: pwm0-pin {
--				rockchip,pins = <3 8 RK_FUNC_2 &pcfg_pull_none>;
-+				rockchip,pins = <3 RK_PB0 2 &pcfg_pull_none>;
+ 			pwm0_out: pwm0-out {
+-				rockchip,pins = <RK_GPIO3 27 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PD3 1 &pcfg_pull_none>;
  			};
  		};
  
  		pwm1 {
- 			pwm1_pin: pwm1-pin {
--				rockchip,pins = <0 8 RK_FUNC_2 &pcfg_pull_none>;
-+				rockchip,pins = <0 RK_PB0 2 &pcfg_pull_none>;
+ 			pwm1_out: pwm1-out {
+-				rockchip,pins = <RK_GPIO3 28 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PD4 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		pwm2 {
+ 			pwm2_out: pwm2-out {
+-				rockchip,pins = <RK_GPIO3 29 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PD5 1 &pcfg_pull_none>;
  			};
  		};
  
  		pwm3 {
- 			pwm3_pin: pwm3-pin {
--				rockchip,pins = <3 29 RK_FUNC_3 &pcfg_pull_none>;
-+				rockchip,pins = <3 RK_PD5 3 &pcfg_pull_none>;
- 			};
- 		};
- 
- 		sdio0 {
- 			sdio0_bus1: sdio0-bus1 {
--				rockchip,pins = <2 28 RK_FUNC_1 &pcfg_pull_up>;
-+				rockchip,pins = <2 RK_PD4 1 &pcfg_pull_up>;
- 			};
- 
- 			sdio0_bus4: sdio0-bus4 {
--				rockchip,pins = <2 28 RK_FUNC_1 &pcfg_pull_up>,
--						<2 29 RK_FUNC_1 &pcfg_pull_up>,
--						<2 30 RK_FUNC_1 &pcfg_pull_up>,
--						<2 31 RK_FUNC_1 &pcfg_pull_up>;
-+				rockchip,pins = <2 RK_PD4 1 &pcfg_pull_up>,
-+						<2 RK_PD5 1 &pcfg_pull_up>,
-+						<2 RK_PD6 1 &pcfg_pull_up>,
-+						<2 RK_PD7 1 &pcfg_pull_up>;
- 			};
- 
- 			sdio0_cmd: sdio0-cmd {
--				rockchip,pins = <3 0 RK_FUNC_1 &pcfg_pull_up>;
-+				rockchip,pins = <3 RK_PA0 1 &pcfg_pull_up>;
- 			};
- 
- 			sdio0_clk: sdio0-clk {
--				rockchip,pins = <3 1 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins = <3 RK_PA1 1 &pcfg_pull_none>;
- 			};
- 
- 			sdio0_cd: sdio0-cd {
--				rockchip,pins = <3 2 RK_FUNC_1 &pcfg_pull_up>;
-+				rockchip,pins = <3 RK_PA2 1 &pcfg_pull_up>;
- 			};
- 
- 			sdio0_wp: sdio0-wp {
--				rockchip,pins = <3 3 RK_FUNC_1 &pcfg_pull_up>;
-+				rockchip,pins = <3 RK_PA3 1 &pcfg_pull_up>;
- 			};
- 
- 			sdio0_pwr: sdio0-pwr {
--				rockchip,pins = <3 4 RK_FUNC_1 &pcfg_pull_up>;
-+				rockchip,pins = <3 RK_PA4 1 &pcfg_pull_up>;
- 			};
- 
- 			sdio0_bkpwr: sdio0-bkpwr {
--				rockchip,pins = <3 5 RK_FUNC_1 &pcfg_pull_up>;
-+				rockchip,pins = <3 RK_PA5 1 &pcfg_pull_up>;
- 			};
- 
- 			sdio0_int: sdio0-int {
--				rockchip,pins = <3 6 RK_FUNC_1 &pcfg_pull_up>;
-+				rockchip,pins = <3 RK_PA6 1 &pcfg_pull_up>;
- 			};
- 		};
- 
- 		sdmmc {
- 			sdmmc_clk: sdmmc-clk {
--				rockchip,pins = <2 9 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins = <2 RK_PB1 1 &pcfg_pull_none>;
- 			};
- 
- 			sdmmc_cmd: sdmmc-cmd {
--				rockchip,pins = <2 10 RK_FUNC_1 &pcfg_pull_up>;
-+				rockchip,pins = <2 RK_PB2 1 &pcfg_pull_up>;
- 			};
- 
- 			sdmmc_cd: sdmmc-cd {
--				rockchip,pins = <2 11 RK_FUNC_1 &pcfg_pull_up>;
-+				rockchip,pins = <2 RK_PB3 1 &pcfg_pull_up>;
- 			};
- 
- 			sdmmc_bus1: sdmmc-bus1 {
--				rockchip,pins = <2 5 RK_FUNC_1 &pcfg_pull_up>;
-+				rockchip,pins = <2 RK_PA5 1 &pcfg_pull_up>;
- 			};
- 
- 			sdmmc_bus4: sdmmc-bus4 {
--				rockchip,pins = <2 5 RK_FUNC_1 &pcfg_pull_up>,
--						<2 6 RK_FUNC_1 &pcfg_pull_up>,
--						<2 7 RK_FUNC_1 &pcfg_pull_up>,
--						<2 8 RK_FUNC_1 &pcfg_pull_up>;
-+				rockchip,pins = <2 RK_PA5 1 &pcfg_pull_up>,
-+						<2 RK_PA6 1 &pcfg_pull_up>,
-+						<2 RK_PA7 1 &pcfg_pull_up>,
-+						<2 RK_PB0 1 &pcfg_pull_up>;
- 			};
- 		};
- 
- 		spdif {
- 			spdif_tx: spdif-tx {
--				rockchip,pins =	<2 RK_PC7 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins =	<2 RK_PC7 1 &pcfg_pull_none>;
+ 			pwm3_out: pwm3-out {
+-				rockchip,pins = <RK_GPIO3 30 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PD6 1 &pcfg_pull_none>;
  			};
  		};
  
  		spi0 {
  			spi0_clk: spi0-clk {
--				rockchip,pins = <1 29 RK_FUNC_2 &pcfg_pull_up>;
-+				rockchip,pins = <1 RK_PD5 2 &pcfg_pull_up>;
+-				rockchip,pins = <RK_GPIO1 6 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <1 RK_PA6 2 &pcfg_pull_up>;
  			};
  			spi0_cs0: spi0-cs0 {
--				rockchip,pins = <1 24 RK_FUNC_3 &pcfg_pull_up>;
-+				rockchip,pins = <1 RK_PD0 3 &pcfg_pull_up>;
- 			};
- 			spi0_cs1: spi0-cs1 {
--				rockchip,pins = <1 25 RK_FUNC_3 &pcfg_pull_up>;
-+				rockchip,pins = <1 RK_PD1 3 &pcfg_pull_up>;
+-				rockchip,pins = <RK_GPIO1 7 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <1 RK_PA7 2 &pcfg_pull_up>;
  			};
  			spi0_tx: spi0-tx {
--				rockchip,pins = <1 23 RK_FUNC_3 &pcfg_pull_up>;
-+				rockchip,pins = <1 RK_PC7 3 &pcfg_pull_up>;
+-				rockchip,pins = <RK_GPIO1 5 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <1 RK_PA5 2 &pcfg_pull_up>;
  			};
  			spi0_rx: spi0-rx {
--				rockchip,pins = <1 22 RK_FUNC_3 &pcfg_pull_up>;
-+				rockchip,pins = <1 RK_PC6 3 &pcfg_pull_up>;
+-				rockchip,pins = <RK_GPIO1 4 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <1 RK_PA4 2 &pcfg_pull_up>;
+ 			};
+ 			spi0_cs1: spi0-cs1 {
+-				rockchip,pins = <RK_GPIO1 15 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <1 RK_PB7 1 &pcfg_pull_up>;
  			};
  		};
  
  		spi1 {
  			spi1_clk: spi1-clk {
--				rockchip,pins = <1 14 RK_FUNC_2 &pcfg_pull_up>;
-+				rockchip,pins = <1 RK_PB6 2 &pcfg_pull_up>;
+-				rockchip,pins = <RK_GPIO0 30 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PD6 1 &pcfg_pull_up>;
  			};
  			spi1_cs0: spi1-cs0 {
--				rockchip,pins = <1 15 RK_FUNC_2 &pcfg_pull_up>;
-+				rockchip,pins = <1 RK_PB7 2 &pcfg_pull_up>;
- 			};
- 			spi1_cs1: spi1-cs1 {
--				rockchip,pins = <3 28 RK_FUNC_2 &pcfg_pull_up>;
-+				rockchip,pins = <3 RK_PD4 2 &pcfg_pull_up>;
+-				rockchip,pins = <RK_GPIO0 31 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PD7 1 &pcfg_pull_up>;
  			};
  			spi1_rx: spi1-rx {
--				rockchip,pins = <1 16 RK_FUNC_2 &pcfg_pull_up>;
-+				rockchip,pins = <1 RK_PC0 2 &pcfg_pull_up>;
+-				rockchip,pins = <RK_GPIO0 28 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PD4 1 &pcfg_pull_up>;
  			};
  			spi1_tx: spi1-tx {
--				rockchip,pins = <1 17 RK_FUNC_2 &pcfg_pull_up>;
-+				rockchip,pins = <1 RK_PC1 2 &pcfg_pull_up>;
+-				rockchip,pins = <RK_GPIO0 29 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PD5 1 &pcfg_pull_up>;
  			};
- 		};
- 
- 		spi2 {
- 			spi2_clk: spi2-clk {
--				rockchip,pins = <0 12 RK_FUNC_2 &pcfg_pull_up>;
-+				rockchip,pins = <0 RK_PB4 2 &pcfg_pull_up>;
- 			};
- 			spi2_cs0: spi2-cs0 {
--				rockchip,pins = <0 13 RK_FUNC_2 &pcfg_pull_up>;
-+				rockchip,pins = <0 RK_PB5 2 &pcfg_pull_up>;
- 			};
- 			spi2_rx: spi2-rx {
--				rockchip,pins = <0 10 RK_FUNC_2 &pcfg_pull_up>;
-+				rockchip,pins = <0 RK_PB2 2 &pcfg_pull_up>;
- 			};
- 			spi2_tx: spi2-tx {
--				rockchip,pins = <0 11 RK_FUNC_2 &pcfg_pull_up>;
-+				rockchip,pins = <0 RK_PB3 2 &pcfg_pull_up>;
- 			};
- 		};
- 
- 		tsadc {
- 			otp_gpio: otp-gpio {
--				rockchip,pins = <0 3 RK_FUNC_GPIO &pcfg_pull_none>;
-+				rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
- 			};
- 
- 			otp_out: otp-out {
--				rockchip,pins = <0 3 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins = <0 RK_PA3 1 &pcfg_pull_none>;
+ 			spi1_cs1: spi1-cs1 {
+-				rockchip,pins = <RK_GPIO1 14 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <1 RK_PB6 2 &pcfg_pull_up>;
  			};
  		};
  
  		uart0 {
  			uart0_xfer: uart0-xfer {
--				rockchip,pins = <2 24 RK_FUNC_1 &pcfg_pull_up>,
--						<2 25 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins = <2 RK_PD0 1 &pcfg_pull_up>,
-+						<2 RK_PD1 1 &pcfg_pull_none>;
+-				rockchip,pins = <RK_GPIO1 0 RK_FUNC_1 &pcfg_pull_up>,
+-						<RK_GPIO1 1 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PA0 1 &pcfg_pull_up>,
++						<1 RK_PA1 1 &pcfg_pull_none>;
  			};
  
  			uart0_cts: uart0-cts {
--				rockchip,pins = <2 26 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins = <2 RK_PD2 1 &pcfg_pull_none>;
+-				rockchip,pins = <RK_GPIO1 2 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PA2 1 &pcfg_pull_none>;
  			};
  
  			uart0_rts: uart0-rts {
--				rockchip,pins = <2 27 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins = <2 RK_PD3 1 &pcfg_pull_none>;
+-				rockchip,pins = <RK_GPIO1 3 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PA3 1 &pcfg_pull_none>;
  			};
  		};
  
  		uart1 {
  			uart1_xfer: uart1-xfer {
--				rockchip,pins = <0 20 RK_FUNC_3 &pcfg_pull_up>,
--						<0 21 RK_FUNC_3 &pcfg_pull_none>;
-+				rockchip,pins = <0 RK_PC4 3 &pcfg_pull_up>,
-+						<0 RK_PC5 3 &pcfg_pull_none>;
+-				rockchip,pins = <RK_GPIO1 4 RK_FUNC_1 &pcfg_pull_up>,
+-						<RK_GPIO1 5 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PA4 1 &pcfg_pull_up>,
++						<1 RK_PA5 1 &pcfg_pull_none>;
  			};
  
  			uart1_cts: uart1-cts {
--				rockchip,pins = <0 22 RK_FUNC_3 &pcfg_pull_none>;
-+				rockchip,pins = <0 RK_PC6 3 &pcfg_pull_none>;
+-				rockchip,pins = <RK_GPIO1 6 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PA6 1 &pcfg_pull_none>;
  			};
  
  			uart1_rts: uart1-rts {
--				rockchip,pins = <0 23 RK_FUNC_3 &pcfg_pull_none>;
-+				rockchip,pins = <0 RK_PC7 3 &pcfg_pull_none>;
+-				rockchip,pins = <RK_GPIO1 7 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PA7 1 &pcfg_pull_none>;
  			};
  		};
  
  		uart2 {
  			uart2_xfer: uart2-xfer {
--				rockchip,pins = <2 6 RK_FUNC_2 &pcfg_pull_up>,
--						<2 5 RK_FUNC_2 &pcfg_pull_none>;
-+				rockchip,pins = <2 RK_PA6 2 &pcfg_pull_up>,
-+						<2 RK_PA5 2 &pcfg_pull_none>;
+-				rockchip,pins = <RK_GPIO1 8 RK_FUNC_1 &pcfg_pull_up>,
+-						<RK_GPIO1 9 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PB0 1 &pcfg_pull_up>,
++						<1 RK_PB1 1 &pcfg_pull_none>;
  			};
  			/* no rts / cts for uart2 */
  		};
  
  		uart3 {
  			uart3_xfer: uart3-xfer {
--				rockchip,pins = <3 29 RK_FUNC_2 &pcfg_pull_up>,
--						<3 30 RK_FUNC_3 &pcfg_pull_none>;
-+				rockchip,pins = <3 RK_PD5 2 &pcfg_pull_up>,
-+						<3 RK_PD6 3 &pcfg_pull_none>;
+-				rockchip,pins = <RK_GPIO1 10 RK_FUNC_1 &pcfg_pull_up>,
+-						<RK_GPIO1 11 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PB2 1 &pcfg_pull_up>,
++						<1 RK_PB3 1 &pcfg_pull_none>;
  			};
  
  			uart3_cts: uart3-cts {
--				rockchip,pins = <3 16 RK_FUNC_2 &pcfg_pull_none>;
-+				rockchip,pins = <3 RK_PC0 2 &pcfg_pull_none>;
+-				rockchip,pins = <RK_GPIO1 12 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PB4 1 &pcfg_pull_none>;
  			};
  
  			uart3_rts: uart3-rts {
--				rockchip,pins = <3 17 RK_FUNC_2 &pcfg_pull_none>;
-+				rockchip,pins = <3 RK_PC1 2 &pcfg_pull_none>;
+-				rockchip,pins = <RK_GPIO1 13 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PB5 1 &pcfg_pull_none>;
  			};
  		};
  
- 		uart4 {
- 			uart4_xfer: uart4-xfer {
--				rockchip,pins = <0 27 RK_FUNC_3 &pcfg_pull_up>,
--						<0 26 RK_FUNC_3 &pcfg_pull_none>;
-+				rockchip,pins = <0 RK_PD3 3 &pcfg_pull_up>,
-+						<0 RK_PD2 3 &pcfg_pull_none>;
+ 		sd0 {
+ 			sd0_clk: sd0-clk {
+-				rockchip,pins = <RK_GPIO3 2 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PA2 1 &pcfg_pull_none>;
  			};
  
- 			uart4_cts: uart4-cts {
--				rockchip,pins = <0 24 RK_FUNC_3 &pcfg_pull_none>;
-+				rockchip,pins = <0 RK_PD0 3 &pcfg_pull_none>;
+ 			sd0_cmd: sd0-cmd {
+-				rockchip,pins = <RK_GPIO3 3 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PA3 1 &pcfg_pull_none>;
  			};
  
- 			uart4_rts: uart4-rts {
--				rockchip,pins = <0 25 RK_FUNC_3 &pcfg_pull_none>;
-+				rockchip,pins = <0 RK_PD1 3 &pcfg_pull_none>;
+ 			sd0_cd: sd0-cd {
+-				rockchip,pins = <RK_GPIO3 8 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PB0 1 &pcfg_pull_none>;
  			};
- 		};
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-index 959ddc3c7df5..77008dca45bc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-@@ -208,19 +208,19 @@
- 	pmic {
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins =
--				<1 21 RK_FUNC_GPIO &pcfg_pull_up>;
-+				<1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
  
- 		pmic_dvs2: pmic-dvs2 {
- 			rockchip,pins =
--				<1 18 RK_FUNC_GPIO &pcfg_pull_down>;
-+				<1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
- 		};
- 	};
- 
- 	usb2 {
- 		vcc5v0_host_en: vcc5v0-host-en {
- 			rockchip,pins =
--				<4 25 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-index 027d428917b8..6b059bd7a04f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-@@ -95,53 +95,53 @@
- 	gmac {
- 		rgmii_sleep_pins: rgmii-sleep-pins {
- 			rockchip,pins =
--				<3 15 RK_FUNC_GPIO &pcfg_output_low>;
-+				<3 RK_PB7 RK_FUNC_GPIO &pcfg_output_low>;
- 		};
- 	};
- 
- 	pcie {
- 		pcie_drv: pcie-drv {
- 			rockchip,pins =
--				<1 24 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<1 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 			sd0_wp: sd0-wp {
+-				rockchip,pins = <RK_GPIO3 9 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PB1 1 &pcfg_pull_none>;
  			};
- 	};
  
- 	usb2 {
- 		host_vbus_drv: host-vbus-drv {
- 			rockchip,pins =
--				<4 27 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<4 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	leds {
- 		user_led1: user_led1 {
- 			rockchip,pins =
--				<4 25 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		user_led2: user_led2 {
- 			rockchip,pins =
--				<4 26 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<4 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		user_led3: user_led3 {
- 			rockchip,pins =
--				<4 30 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<4 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		user_led4: user_led4 {
- 			rockchip,pins =
--				<1 0 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<1 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		wlan_led: wlan_led {
- 			rockchip,pins =
--				<1 1 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<1 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		bt_led: bt_led {
- 			rockchip,pins =
--				<1 4 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
-index d1cf404b8708..a9f4d6d7d2b7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
-@@ -73,7 +73,7 @@
- &pinctrl {
- 	tpm {
- 		h1_int_od_l: h1-int-od-l {
--			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-index 931640e9aed4..7cd6d470c1cb 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-@@ -365,27 +365,27 @@ ap_i2c_tp: &i2c5 {
- &pinctrl {
- 	discrete-regulators {
- 		pp1500_en: pp1500-en {
--			rockchip,pins = <RK_GPIO0 10 RK_FUNC_GPIO
-+			rockchip,pins = <0 RK_PB2 RK_FUNC_GPIO
- 					 &pcfg_pull_none>;
- 		};
- 
- 		pp1800_audio_en: pp1800-audio-en {
--			rockchip,pins = <RK_GPIO0 2 RK_FUNC_GPIO
-+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO
- 					 &pcfg_pull_down>;
- 		};
- 
- 		pp3000_en: pp3000-en {
--			rockchip,pins = <RK_GPIO0 12 RK_FUNC_GPIO
-+			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO
- 					 &pcfg_pull_none>;
- 		};
- 
- 		pp3300_disp_en: pp3300-disp-en {
--			rockchip,pins = <RK_GPIO4 27 RK_FUNC_GPIO
-+			rockchip,pins = <4 RK_PD3 RK_FUNC_GPIO
- 					 &pcfg_pull_none>;
- 		};
- 
- 		wlan_module_pd_l: wlan-module-pd-l {
--			rockchip,pins = <RK_GPIO0 4 RK_FUNC_GPIO
-+			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO
- 					 &pcfg_pull_down>;
- 		};
- 	};
-@@ -393,10 +393,10 @@ ap_i2c_tp: &i2c5 {
- 
- &wifi {
- 	wifi_perst_l: wifi-perst-l {
--		rockchip,pins = <2 27 RK_FUNC_GPIO &pcfg_pull_none>;
-+		rockchip,pins = <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
- 	};
- 
- 	wlan_host_wake_l: wlan-host-wake-l {
--		rockchip,pins = <0 8 RK_FUNC_GPIO &pcfg_pull_none>;
-+		rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-index 15e254a77391..3e2272b56eb7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-@@ -290,24 +290,24 @@ ap_i2c_dig: &i2c2 {
- 	digitizer {
- 		/* Has external pullup */
- 		cpu1_dig_irq_l: cpu1-dig-irq-l {
--			rockchip,pins = <2 4 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <2 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		/* Has external pullup */
- 		cpu1_dig_pdct_l: cpu1-dig-pdct-l {
--			rockchip,pins = <2 5 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <2 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	discrete-regulators {
- 		cpu3_pen_pwr_en: cpu3-pen-pwr-en {
--			rockchip,pins = <4 30 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <4 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	pen {
- 		cpu1_pen_eject: cpu1-pen-eject {
--			rockchip,pins = <0 13 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PB5 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-index 62ea7d6a7d4a..50dfab51f175 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-@@ -455,58 +455,58 @@ camera: &i2c7 {
- 
- /* PINCTRL OVERRIDES */
- &ec_ap_int_l {
--	rockchip,pins = <1 18 RK_FUNC_GPIO &pcfg_pull_up>;
-+	rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_up>;
- };
- 
- &ap_fw_wp {
--	rockchip,pins = <0 13 RK_FUNC_GPIO &pcfg_pull_none>;
-+	rockchip,pins = <0 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
- };
- 
- &bl_en {
--	rockchip,pins = <4 21 RK_FUNC_GPIO &pcfg_pull_none>;
-+	rockchip,pins = <4 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
- };
- 
- &bt_host_wake_l {
--	rockchip,pins = <1 2 RK_FUNC_GPIO &pcfg_pull_none>;
-+	rockchip,pins = <1 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
- };
- 
- &ec_ap_int_l {
--	rockchip,pins = <1 18 RK_FUNC_GPIO &pcfg_pull_up>;
-+	rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_up>;
- };
- 
- &headset_int_l {
--	rockchip,pins = <1 23 RK_FUNC_GPIO &pcfg_pull_up>;
-+	rockchip,pins = <1 RK_PC7 RK_FUNC_GPIO &pcfg_pull_up>;
- };
- 
- &i2s0_8ch_bus {
- 	rockchip,pins =
--		<3 24 RK_FUNC_1 &pcfg_pull_none_6ma>,
--		<3 25 RK_FUNC_1 &pcfg_pull_none_6ma>,
--		<3 26 RK_FUNC_1 &pcfg_pull_none_6ma>,
--		<3 27 RK_FUNC_1 &pcfg_pull_none_6ma>,
--		<3 31 RK_FUNC_1 &pcfg_pull_none_6ma>,
--		<4 0 RK_FUNC_1 &pcfg_pull_none_6ma>;
-+		<3 RK_PD0 1 &pcfg_pull_none_6ma>,
-+		<3 RK_PD1 1 &pcfg_pull_none_6ma>,
-+		<3 RK_PD2 1 &pcfg_pull_none_6ma>,
-+		<3 RK_PD3 1 &pcfg_pull_none_6ma>,
-+		<3 RK_PD7 1 &pcfg_pull_none_6ma>,
-+		<4 RK_PA0 1 &pcfg_pull_none_6ma>;
- };
- 
- /* there is no external pull up, so need to set this pin pull up */
- &sdmmc_cd_gpio {
--	rockchip,pins = <1 11 RK_FUNC_GPIO &pcfg_pull_up>;
-+	rockchip,pins = <1 RK_PB3 RK_FUNC_GPIO &pcfg_pull_up>;
- };
- 
- &sd_pwr_1800_sel {
--	rockchip,pins = <2 28 RK_FUNC_GPIO &pcfg_pull_up>;
-+	rockchip,pins = <2 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
- };
- 
- &sdmode_en {
--	rockchip,pins = <0 2 RK_FUNC_GPIO &pcfg_pull_down>;
-+	rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_down>;
- };
- 
- &touch_reset_l {
--	rockchip,pins = <0 10 RK_FUNC_GPIO &pcfg_pull_down>;
-+	rockchip,pins = <0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_down>;
- };
- 
- &touch_int_l {
--	rockchip,pins = <1 4 RK_FUNC_GPIO &pcfg_pull_down>;
-+	rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_down>;
- };
- 
- &pinctrl {
-@@ -523,84 +523,84 @@ camera: &i2c7 {
- 
- 	camera {
- 		pp1250_cam_en: pp1250-dvdd {
--			rockchip,pins = <2 4 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <2 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		pp2800_cam_en: pp2800-avdd {
--			rockchip,pins = <2 24 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <2 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		ucam_rst: ucam_rst {
--			rockchip,pins = <2 3 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <2 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		wcam_rst: wcam_rst {
--			rockchip,pins = <2 5 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <2 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	digitizer {
- 		pen_int_odl: pen-int-odl {
--			rockchip,pins = <1 0 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <1 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 
- 		pen_reset_l: pen-reset-l {
--			rockchip,pins = <0 12 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	discrete-regulators {
- 		display_rst_l: display-rst-l {
--			rockchip,pins = <4 25 RK_FUNC_GPIO &pcfg_pull_down>;
-+			rockchip,pins = <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_down>;
- 		};
- 
- 		ppvarp_lcd_en: ppvarp-lcd-en {
--			rockchip,pins = <4 27 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <4 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		ppvarn_lcd_en: ppvarn-lcd-en {
--			rockchip,pins = <4 28 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	dmic {
- 		dmic_en: dmic-en {
--			rockchip,pins = <4 3 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <4 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	pen {
- 		pen_eject_odl: pen-eject-odl {
--			rockchip,pins = <1 1 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <1 RK_PA1 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- 
- 	tpm {
- 		h1_int_od_l: h1-int-od-l {
--			rockchip,pins = <1 17 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- };
- 
- &wifi {
- 	bt_en_1v8_l: bt-en-1v8-l {
--		rockchip,pins = <0 8 RK_FUNC_GPIO &pcfg_pull_none>;
-+		rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
- 	};
- 
- 	wlan_pd_1v8_l: wlan-pd-1v8-l {
--		rockchip,pins = <0 4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
- 	};
- 
- 	/* Default pull-up, but just to be clear */
- 	wlan_rf_kill_1v8_l: wlan-rf-kill-1v8-l {
--		rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
- 	};
- 
- 	wifi_perst_l: wifi-perst-l {
--		rockchip,pins = <0 3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
- 	};
- 
- 	wlan_host_wake_l: wlan-host-wake-l {
--		rockchip,pins = <1 3 RK_FUNC_GPIO &pcfg_pull_up>;
-+		rockchip,pins = <1 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index da03fa9c5662..dd5624975c9b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -676,29 +676,29 @@ ap_i2c_audio: &i2c8 {
- 
- 	backlight-enable {
- 		bl_en: bl-en {
--			rockchip,pins = <1 17 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	cros-ec {
- 		ec_ap_int_l: ec-ap-int-l {
--			rockchip,pins = <RK_GPIO0 1 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- 
- 	discrete-regulators {
- 		sd_io_pwr_en: sd-io-pwr-en {
--			rockchip,pins = <RK_GPIO2 2 RK_FUNC_GPIO
-+			rockchip,pins = <2 RK_PA2 RK_FUNC_GPIO
- 					 &pcfg_pull_none>;
- 		};
- 
- 		sd_pwr_1800_sel: sd-pwr-1800-sel {
--			rockchip,pins = <RK_GPIO2 28 RK_FUNC_GPIO
-+			rockchip,pins = <2 RK_PD4 RK_FUNC_GPIO
- 					 &pcfg_pull_none>;
- 		};
- 
- 		sd_slot_pwr_en: sd-slot-pwr-en {
--			rockchip,pins = <RK_GPIO4 29 RK_FUNC_GPIO
-+			rockchip,pins = <4 RK_PD5 RK_FUNC_GPIO
- 					 &pcfg_pull_none>;
- 		};
- 	};
-@@ -706,17 +706,17 @@ ap_i2c_audio: &i2c8 {
- 	codec {
- 		/* Has external pullup */
- 		headset_int_l: headset-int-l {
--			rockchip,pins = <1 23 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <1 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		mic_int: mic-int {
--			rockchip,pins = <1 13 RK_FUNC_GPIO &pcfg_pull_down>;
-+			rockchip,pins = <1 RK_PB5 RK_FUNC_GPIO &pcfg_pull_down>;
- 		};
- 	};
- 
- 	max98357a {
- 		sdmode_en: sdmode-en {
--			rockchip,pins = <1 2 RK_FUNC_GPIO &pcfg_pull_down>;
-+			rockchip,pins = <1 RK_PA2 RK_FUNC_GPIO &pcfg_pull_down>;
- 		};
- 	};
- 
-@@ -727,7 +727,7 @@ ap_i2c_audio: &i2c8 {
- 			 * to hack this as gpio, so the EP could be able to
- 			 * de-assert it along and make ClockPM(CPM) work.
- 			 */
--			rockchip,pins = <2 26 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
-@@ -738,20 +738,20 @@ ap_i2c_audio: &i2c8 {
- 		 */
- 		sdmmc_bus4: sdmmc-bus4 {
- 			rockchip,pins =
--				<4 8 RK_FUNC_1 &pcfg_pull_none_8ma>,
--				<4 9 RK_FUNC_1 &pcfg_pull_none_8ma>,
--				<4 10 RK_FUNC_1 &pcfg_pull_none_8ma>,
--				<4 11 RK_FUNC_1 &pcfg_pull_none_8ma>;
-+				<4 RK_PB0 1 &pcfg_pull_none_8ma>,
-+				<4 RK_PB1 1 &pcfg_pull_none_8ma>,
-+				<4 RK_PB2 1 &pcfg_pull_none_8ma>,
-+				<4 RK_PB3 1 &pcfg_pull_none_8ma>;
- 		};
- 
- 		sdmmc_clk: sdmmc-clk {
- 			rockchip,pins =
--				<4 12 RK_FUNC_1 &pcfg_pull_none_8ma>;
-+				<4 RK_PB4 1 &pcfg_pull_none_8ma>;
- 		};
- 
- 		sdmmc_cmd: sdmmc-cmd {
- 			rockchip,pins =
--				<4 13 RK_FUNC_1 &pcfg_pull_none_8ma>;
-+				<4 RK_PB5 1 &pcfg_pull_none_8ma>;
- 		};
- 
- 		/*
-@@ -765,12 +765,12 @@ ap_i2c_audio: &i2c8 {
- 		 */
- 		sdmmc_cd: sdmmc-cd {
- 			rockchip,pins =
--				<0 7 RK_FUNC_1 &pcfg_pull_none>;
-+				<0 RK_PA7 1 &pcfg_pull_none>;
- 		};
- 
- 		/* This is where we actually hook up CD; has external pull */
- 		sdmmc_cd_gpio: sdmmc-cd-gpio {
--			rockchip,pins = <4 24 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <4 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
-@@ -780,47 +780,47 @@ ap_i2c_audio: &i2c8 {
- 			 * Pull down SPI1 CLK/CS/RX/TX during suspend, to
- 			 * prevent leakage.
- 			 */
--			rockchip,pins = <1 9 RK_FUNC_GPIO &pcfg_pull_down>,
--					<1 10 RK_FUNC_GPIO &pcfg_pull_down>,
--					<1 7 RK_FUNC_GPIO &pcfg_pull_down>,
--					<1 8 RK_FUNC_GPIO &pcfg_pull_down>;
-+			rockchip,pins = <1 RK_PB1 RK_FUNC_GPIO &pcfg_pull_down>,
-+					<1 RK_PB2 RK_FUNC_GPIO &pcfg_pull_down>,
-+					<1 RK_PA7 RK_FUNC_GPIO &pcfg_pull_down>,
-+					<1 RK_PB0 RK_FUNC_GPIO &pcfg_pull_down>;
- 		};
- 	};
- 
- 	touchscreen {
- 		touch_int_l: touch-int-l {
--			rockchip,pins = <3 13 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <3 RK_PB5 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 
- 		touch_reset_l: touch-reset-l {
--			rockchip,pins = <4 26 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <4 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	trackpad {
- 		ap_i2c_tp_pu_en: ap-i2c-tp-pu-en {
--			rockchip,pins = <3 12 RK_FUNC_GPIO &pcfg_output_high>;
-+			rockchip,pins = <3 RK_PB4 RK_FUNC_GPIO &pcfg_output_high>;
- 		};
- 
- 		trackpad_int_l: trackpad-int-l {
--			rockchip,pins = <1 4 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- 
- 	wifi: wifi {
- 		wlan_module_reset_l: wlan-module-reset-l {
--			rockchip,pins = <1 11 RK_FUNC_GPIO &pcfg_pull_none>;
-+			rockchip,pins = <1 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
- 		bt_host_wake_l: bt-host-wake-l {
- 			/* Kevin has an external pull up, but Gru does not */
--			rockchip,pins = <0 3 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- 
- 	write-protect {
- 		ap_fw_wp: ap-fw-wp {
--			rockchip,pins = <1 18 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-index 931c3dbf1b7d..2a127985ab17 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-@@ -125,7 +125,7 @@
- 	ir {
- 		ir_rx: ir-rx {
- 			/* external pullup to VCC3V3_SYS, despite being 1.8V :/ */
--			rockchip,pins = <0 RK_PA6 RK_FUNC_1 &pcfg_pull_none>;
-+			rockchip,pins = <0 RK_PA6 1 &pcfg_pull_none>;
- 		};
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-index 2166be171df8..0541dfce924d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-@@ -547,7 +547,7 @@
- 	sd {
- 		sdmmc0_pwr_h: sdmmc0-pwr-h {
- 			rockchip,pins =
--				<RK_GPIO0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-index 1e6a71066c16..d80d6b726820 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-@@ -168,27 +168,27 @@
- 		haikou_pin_hog: haikou-pin-hog {
- 			rockchip,pins =
- 			  /* LID_BTN */
--			  <RK_GPIO0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>,
-+			  <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>,
- 			  /* BATLOW# */
--			  <RK_GPIO0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>,
-+			  <0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>,
- 			  /* SLP_BTN# */
--			  <RK_GPIO0 RK_PB3 RK_FUNC_GPIO &pcfg_pull_up>,
-+			  <0 RK_PB3 RK_FUNC_GPIO &pcfg_pull_up>,
- 			  /* BIOS_DISABLE# */
--			  <RK_GPIO0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>;
-+			  <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- 
- 	leds {
- 		led_sd_haikou: led-sd-gpio {
- 			rockchip,pins =
--			  <RK_GPIO1 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-+			  <1 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	usb2 {
- 		otg_vbus_drv: otg-vbus-drv {
- 			rockchip,pins =
--			  <RK_GPIO0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-+			  <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index 4f75bb6b2f14..6be1d4430427 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -414,10 +414,10 @@
-  */
- &i2s0_2ch_bus {
- 	rockchip,pins =
--		<RK_GPIO3 RK_PD0 RK_FUNC_1 &pcfg_pull_none>,
--		<RK_GPIO3 RK_PD2 RK_FUNC_1 &pcfg_pull_none>,
--		<RK_GPIO3 RK_PD3 RK_FUNC_1 &pcfg_pull_none>,
--		<RK_GPIO3 RK_PD7 RK_FUNC_1 &pcfg_pull_none>;
-+		<3 RK_PD0 1 &pcfg_pull_none>,
-+		<3 RK_PD2 1 &pcfg_pull_none>,
-+		<3 RK_PD3 1 &pcfg_pull_none>,
-+		<3 RK_PD7 1 &pcfg_pull_none>;
- };
- 
- &io_domains {
-@@ -441,29 +441,29 @@
- 	i2c8 {
- 		i2c8_xfer_a: i2c8-xfer {
- 			rockchip,pins =
--			  <RK_GPIO1 RK_PC4 RK_FUNC_1 &pcfg_pull_up>,
--			  <RK_GPIO1 RK_PC5 RK_FUNC_1 &pcfg_pull_up>;
-+			  <1 RK_PC4 1 &pcfg_pull_up>,
-+			  <1 RK_PC5 1 &pcfg_pull_up>;
- 		};
- 	};
- 
- 	leds {
- 		led_pin_module: led-module-gpio {
- 			rockchip,pins =
--			  <RK_GPIO2 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
-+			  <2 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
- 	pmic {
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins =
--			  <RK_GPIO1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_up>;
-+			  <1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- 
- 	usb2 {
- 		vcc5v0_host_en: vcc5v0-host-en {
- 			rockchip,pins =
--			  <RK_GPIO4 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
-+			  <4 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-index 5ba2aeca0fa8..c7d48d41e184 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-@@ -411,62 +411,62 @@
- 	sdmmc {
- 		sdmmc_bus1: sdmmc-bus1 {
- 			rockchip,pins =
--				<4 8 RK_FUNC_1 &pcfg_pull_up_8ma>;
-+				<4 RK_PB0 1 &pcfg_pull_up_8ma>;
- 		};
- 
- 		sdmmc_bus4: sdmmc-bus4 {
- 			rockchip,pins =
--				<4 8 RK_FUNC_1 &pcfg_pull_up_8ma>,
--				<4 9 RK_FUNC_1 &pcfg_pull_up_8ma>,
--				<4 10 RK_FUNC_1 &pcfg_pull_up_8ma>,
--				<4 11 RK_FUNC_1 &pcfg_pull_up_8ma>;
-+				<4 RK_PB0 1 &pcfg_pull_up_8ma>,
-+				<4 RK_PB1 1 &pcfg_pull_up_8ma>,
-+				<4 RK_PB2 1 &pcfg_pull_up_8ma>,
-+				<4 RK_PB3 1 &pcfg_pull_up_8ma>;
- 		};
- 
- 		sdmmc_clk: sdmmc-clk {
- 			rockchip,pins =
--				<4 12 RK_FUNC_1 &pcfg_pull_none_18ma>;
-+				<4 RK_PB4 1 &pcfg_pull_none_18ma>;
- 		};
- 
- 		sdmmc_cmd: sdmmc-cmd {
- 			rockchip,pins =
--				<4 13 RK_FUNC_1 &pcfg_pull_up_8ma>;
-+				<4 RK_PB5 1 &pcfg_pull_up_8ma>;
- 		};
- 	};
- 
- 	sdio0 {
- 		sdio0_bus4: sdio0-bus4 {
- 			rockchip,pins =
--				<2 20 RK_FUNC_1 &pcfg_pull_up_20ma>,
--				<2 21 RK_FUNC_1 &pcfg_pull_up_20ma>,
--				<2 22 RK_FUNC_1 &pcfg_pull_up_20ma>,
--				<2 23 RK_FUNC_1 &pcfg_pull_up_20ma>;
-+				<2 RK_PC4 1 &pcfg_pull_up_20ma>,
-+				<2 RK_PC5 1 &pcfg_pull_up_20ma>,
-+				<2 RK_PC6 1 &pcfg_pull_up_20ma>,
-+				<2 RK_PC7 1 &pcfg_pull_up_20ma>;
- 		};
- 
- 		sdio0_cmd: sdio0-cmd {
- 			rockchip,pins =
--				<2 24 RK_FUNC_1 &pcfg_pull_up_20ma>;
-+				<2 RK_PD0 1 &pcfg_pull_up_20ma>;
- 		};
- 
- 		sdio0_clk: sdio0-clk {
- 			rockchip,pins =
--				<2 25 RK_FUNC_1 &pcfg_pull_none_20ma>;
-+				<2 RK_PD1 1 &pcfg_pull_none_20ma>;
- 		};
- 	};
- 
- 	pmic {
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins =
--				<1 21 RK_FUNC_GPIO &pcfg_pull_up>;
-+				<1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 
- 		vsel1_gpio: vsel1-gpio {
- 			rockchip,pins =
--				<1 17 RK_FUNC_GPIO &pcfg_pull_down>;
-+				<1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_down>;
- 		};
- 
- 		vsel2_gpio: vsel2-gpio {
- 			rockchip,pins =
--				<1 14 RK_FUNC_GPIO &pcfg_pull_down>;
-+				<1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_down>;
- 		};
- 	};
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-index 946d3589575a..04623e52ac5d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-@@ -471,7 +471,7 @@
- 	fan {
- 		motor_pwr: motor-pwr {
- 			rockchip,pins =
--				<RK_GPIO1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
-@@ -493,7 +493,7 @@
- 	sd {
- 		sdmmc0_pwr_h: sdmmc0-pwr-h {
- 			rockchip,pins =
--				<RK_GPIO0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
-+				<0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 382297ecfefa..f54c855f8cdf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -2053,14 +2053,14 @@
- 
- 		clock {
- 			clk_32k: clk-32k {
--				rockchip,pins = <0 0 RK_FUNC_2 &pcfg_pull_none>;
-+				rockchip,pins = <0 RK_PA0 2 &pcfg_pull_none>;
+ 			sd0_pwr: sd0-pwr {
+-				rockchip,pins = <RK_GPIO3 1 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PA1 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			sd0_bus1: sd0-bus-width1 {
+-				rockchip,pins = <RK_GPIO3 4 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PA4 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			sd0_bus4: sd0-bus-width4 {
+-				rockchip,pins = <RK_GPIO3 4 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO3 5 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO3 6 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO3 7 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PA4 1 &pcfg_pull_none>,
++						<3 RK_PA5 1 &pcfg_pull_none>,
++						<3 RK_PA6 1 &pcfg_pull_none>,
++						<3 RK_PA7 1 &pcfg_pull_none>;
  			};
  		};
  
- 		edp {
- 			edp_hpd: edp-hpd {
- 				rockchip,pins =
--					<4 23 RK_FUNC_2 &pcfg_pull_none>;
-+					<4 RK_PC7 2 &pcfg_pull_none>;
+ 		sd1 {
+ 			sd1_clk: sd1-clk {
+-				rockchip,pins = <RK_GPIO3 21 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PC5 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			sd1_cmd: sd1-cmd {
+-				rockchip,pins = <RK_GPIO3 16 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PC0 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			sd1_cd: sd1-cd {
+-				rockchip,pins = <RK_GPIO3 22 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PC6 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			sd1_wp: sd1-wp {
+-				rockchip,pins = <RK_GPIO3 23 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PC7 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			sd1_bus1: sd1-bus-width1 {
+-				rockchip,pins = <RK_GPIO3 17 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PC1 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			sd1_bus4: sd1-bus-width4 {
+-				rockchip,pins = <RK_GPIO3 17 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO3 18 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO3 19 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO3 20 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PC1 1 &pcfg_pull_none>,
++						<3 RK_PC2 1 &pcfg_pull_none>,
++						<3 RK_PC3 1 &pcfg_pull_none>,
++						<3 RK_PC4 1 &pcfg_pull_none>;
  			};
  		};
  
-@@ -2068,576 +2068,576 @@
+ 		i2s0 {
+ 			i2s0_bus: i2s0-bus {
+-				rockchip,pins = <RK_GPIO1 16 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO1 17 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO1 18 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO1 19 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO1 20 RK_FUNC_1 &pcfg_pull_none>,
+-						<RK_GPIO1 21 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PC0 1 &pcfg_pull_none>,
++						<1 RK_PC1 1 &pcfg_pull_none>,
++						<1 RK_PC2 1 &pcfg_pull_none>,
++						<1 RK_PC3 1 &pcfg_pull_none>,
++						<1 RK_PC4 1 &pcfg_pull_none>,
++						<1 RK_PC5 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		spdif {
+ 			spdif_tx: spdif-tx {
+-				rockchip,pins = <RK_GPIO1 14 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PB6 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 	};
+diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
+index 29f19076dceb..da102fff96a2 100644
+--- a/arch/arm/boot/dts/rk322x.dtsi
++++ b/arch/arm/boot/dts/rk322x.dtsi
+@@ -865,228 +865,228 @@
+ 
+ 		emmc {
+ 			emmc_clk: emmc-clk {
+-				rockchip,pins = <2 7 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PA7 2 &pcfg_pull_none>;
+ 			};
+ 
+ 			emmc_cmd: emmc-cmd {
+-				rockchip,pins = <1 22 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PC6 2 &pcfg_pull_none>;
+ 			};
+ 
+ 			emmc_bus8: emmc-bus8 {
+-				rockchip,pins = <1 24 RK_FUNC_2 &pcfg_pull_none>,
+-						<1 25 RK_FUNC_2 &pcfg_pull_none>,
+-						<1 26 RK_FUNC_2 &pcfg_pull_none>,
+-						<1 27 RK_FUNC_2 &pcfg_pull_none>,
+-						<1 28 RK_FUNC_2 &pcfg_pull_none>,
+-						<1 29 RK_FUNC_2 &pcfg_pull_none>,
+-						<1 30 RK_FUNC_2 &pcfg_pull_none>,
+-						<1 31 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PD0 2 &pcfg_pull_none>,
++						<1 RK_PD1 2 &pcfg_pull_none>,
++						<1 RK_PD2 2 &pcfg_pull_none>,
++						<1 RK_PD3 2 &pcfg_pull_none>,
++						<1 RK_PD4 2 &pcfg_pull_none>,
++						<1 RK_PD5 2 &pcfg_pull_none>,
++						<1 RK_PD6 2 &pcfg_pull_none>,
++						<1 RK_PD7 2 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		gmac {
  			rgmii_pins: rgmii-pins {
- 				rockchip,pins =
- 					/* mac_txclk */
--					<3 17 RK_FUNC_1 &pcfg_pull_none_13ma>,
-+					<3 RK_PC1 1 &pcfg_pull_none_13ma>,
- 					/* mac_rxclk */
--					<3 14 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PB6 1 &pcfg_pull_none>,
- 					/* mac_mdio */
--					<3 13 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PB5 1 &pcfg_pull_none>,
- 					/* mac_txen */
--					<3 12 RK_FUNC_1 &pcfg_pull_none_13ma>,
-+					<3 RK_PB4 1 &pcfg_pull_none_13ma>,
- 					/* mac_clk */
--					<3 11 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PB3 1 &pcfg_pull_none>,
- 					/* mac_rxdv */
--					<3 9 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PB1 1 &pcfg_pull_none>,
- 					/* mac_mdc */
--					<3 8 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PB0 1 &pcfg_pull_none>,
- 					/* mac_rxd1 */
--					<3 7 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PA7 1 &pcfg_pull_none>,
- 					/* mac_rxd0 */
--					<3 6 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PA6 1 &pcfg_pull_none>,
- 					/* mac_txd1 */
--					<3 5 RK_FUNC_1 &pcfg_pull_none_13ma>,
-+					<3 RK_PA5 1 &pcfg_pull_none_13ma>,
- 					/* mac_txd0 */
--					<3 4 RK_FUNC_1 &pcfg_pull_none_13ma>,
-+					<3 RK_PA4 1 &pcfg_pull_none_13ma>,
- 					/* mac_rxd3 */
--					<3 3 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PA3 1 &pcfg_pull_none>,
- 					/* mac_rxd2 */
--					<3 2 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PA2 1 &pcfg_pull_none>,
- 					/* mac_txd3 */
--					<3 1 RK_FUNC_1 &pcfg_pull_none_13ma>,
-+					<3 RK_PA1 1 &pcfg_pull_none_13ma>,
- 					/* mac_txd2 */
--					<3 0 RK_FUNC_1 &pcfg_pull_none_13ma>;
-+					<3 RK_PA0 1 &pcfg_pull_none_13ma>;
+-				rockchip,pins = <2 14 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 12 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 25 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 19 RK_FUNC_1 &pcfg_pull_none_drv_12ma>,
+-						<2 18 RK_FUNC_1 &pcfg_pull_none_drv_12ma>,
+-						<2 22 RK_FUNC_1 &pcfg_pull_none_drv_12ma>,
+-						<2 23 RK_FUNC_1 &pcfg_pull_none_drv_12ma>,
+-						<2 9 RK_FUNC_1 &pcfg_pull_none_drv_12ma>,
+-						<2 13 RK_FUNC_1 &pcfg_pull_none_drv_12ma>,
+-						<2 17 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 16 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 21 RK_FUNC_2 &pcfg_pull_none>,
+-						<2 20 RK_FUNC_2 &pcfg_pull_none>,
+-						<2 11 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 8 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PB6 1 &pcfg_pull_none>,
++						<2 RK_PB4 1 &pcfg_pull_none>,
++						<2 RK_PD1 1 &pcfg_pull_none>,
++						<2 RK_PC3 1 &pcfg_pull_none_drv_12ma>,
++						<2 RK_PC2 1 &pcfg_pull_none_drv_12ma>,
++						<2 RK_PC6 1 &pcfg_pull_none_drv_12ma>,
++						<2 RK_PC7 1 &pcfg_pull_none_drv_12ma>,
++						<2 RK_PB1 1 &pcfg_pull_none_drv_12ma>,
++						<2 RK_PB5 1 &pcfg_pull_none_drv_12ma>,
++						<2 RK_PC1 1 &pcfg_pull_none>,
++						<2 RK_PC0 1 &pcfg_pull_none>,
++						<2 RK_PC5 2 &pcfg_pull_none>,
++						<2 RK_PC4 2 &pcfg_pull_none>,
++						<2 RK_PB3 1 &pcfg_pull_none>,
++						<2 RK_PB0 1 &pcfg_pull_none>;
  			};
  
  			rmii_pins: rmii-pins {
- 				rockchip,pins =
- 					/* mac_mdio */
--					<3 13 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PB5 1 &pcfg_pull_none>,
- 					/* mac_txen */
--					<3 12 RK_FUNC_1 &pcfg_pull_none_13ma>,
-+					<3 RK_PB4 1 &pcfg_pull_none_13ma>,
- 					/* mac_clk */
--					<3 11 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PB3 1 &pcfg_pull_none>,
- 					/* mac_rxer */
--					<3 10 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PB2 1 &pcfg_pull_none>,
- 					/* mac_rxdv */
--					<3 9 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PB1 1 &pcfg_pull_none>,
- 					/* mac_mdc */
--					<3 8 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PB0 1 &pcfg_pull_none>,
- 					/* mac_rxd1 */
--					<3 7 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PA7 1 &pcfg_pull_none>,
- 					/* mac_rxd0 */
--					<3 6 RK_FUNC_1 &pcfg_pull_none>,
-+					<3 RK_PA6 1 &pcfg_pull_none>,
- 					/* mac_txd1 */
--					<3 5 RK_FUNC_1 &pcfg_pull_none_13ma>,
-+					<3 RK_PA5 1 &pcfg_pull_none_13ma>,
- 					/* mac_txd0 */
--					<3 4 RK_FUNC_1 &pcfg_pull_none_13ma>;
-+					<3 RK_PA4 1 &pcfg_pull_none_13ma>;
+-				rockchip,pins = <2 14 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 12 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 25 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 19 RK_FUNC_1 &pcfg_pull_none_drv_12ma>,
+-						<2 18 RK_FUNC_1 &pcfg_pull_none_drv_12ma>,
+-						<2 13 RK_FUNC_1 &pcfg_pull_none_drv_12ma>,
+-						<2 17 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 16 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 8 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 15 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PB6 1 &pcfg_pull_none>,
++						<2 RK_PB4 1 &pcfg_pull_none>,
++						<2 RK_PD1 1 &pcfg_pull_none>,
++						<2 RK_PC3 1 &pcfg_pull_none_drv_12ma>,
++						<2 RK_PC2 1 &pcfg_pull_none_drv_12ma>,
++						<2 RK_PB5 1 &pcfg_pull_none_drv_12ma>,
++						<2 RK_PC1 1 &pcfg_pull_none>,
++						<2 RK_PC0 1 &pcfg_pull_none>,
++						<2 RK_PB0 1 &pcfg_pull_none>,
++						<2 RK_PB7 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			phy_pins: phy-pins {
+-				rockchip,pins = <2 14 RK_FUNC_2 &pcfg_pull_none>,
+-						<2 8 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PB6 2 &pcfg_pull_none>,
++						<2 RK_PB0 2 &pcfg_pull_none>;
  			};
  		};
  
  		i2c0 {
  			i2c0_xfer: i2c0-xfer {
- 				rockchip,pins =
--					<1 15 RK_FUNC_2 &pcfg_pull_none>,
--					<1 16 RK_FUNC_2 &pcfg_pull_none>;
-+					<1 RK_PB7 2 &pcfg_pull_none>,
-+					<1 RK_PC0 2 &pcfg_pull_none>;
+-				rockchip,pins = <0 0 RK_FUNC_1 &pcfg_pull_none>,
+-						<0 1 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PA0 1 &pcfg_pull_none>,
++						<0 RK_PA1 1 &pcfg_pull_none>;
  			};
  		};
  
  		i2c1 {
  			i2c1_xfer: i2c1-xfer {
- 				rockchip,pins =
--					<4 2 RK_FUNC_1 &pcfg_pull_none>,
--					<4 1 RK_FUNC_1 &pcfg_pull_none>;
-+					<4 RK_PA2 1 &pcfg_pull_none>,
-+					<4 RK_PA1 1 &pcfg_pull_none>;
+-				rockchip,pins = <0 2 RK_FUNC_1 &pcfg_pull_none>,
+-						<0 3 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PA2 1 &pcfg_pull_none>,
++						<0 RK_PA3 1 &pcfg_pull_none>;
  			};
  		};
  
  		i2c2 {
  			i2c2_xfer: i2c2-xfer {
- 				rockchip,pins =
--					<2 1 RK_FUNC_2 &pcfg_pull_none_12ma>,
--					<2 0 RK_FUNC_2 &pcfg_pull_none_12ma>;
-+					<2 RK_PA1 2 &pcfg_pull_none_12ma>,
-+					<2 RK_PA0 2 &pcfg_pull_none_12ma>;
+-				rockchip,pins = <2 20 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 21 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PC4 1 &pcfg_pull_none>,
++						<2 RK_PC5 1 &pcfg_pull_none>;
  			};
  		};
  
  		i2c3 {
  			i2c3_xfer: i2c3-xfer {
- 				rockchip,pins =
--					<4 17 RK_FUNC_1 &pcfg_pull_none>,
--					<4 16 RK_FUNC_1 &pcfg_pull_none>;
-+					<4 RK_PC1 1 &pcfg_pull_none>,
-+					<4 RK_PC0 1 &pcfg_pull_none>;
+-				rockchip,pins = <0 6 RK_FUNC_1 &pcfg_pull_none>,
+-						<0 7 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PA6 1 &pcfg_pull_none>,
++						<0 RK_PA7 1 &pcfg_pull_none>;
  			};
  		};
  
- 		i2c4 {
- 			i2c4_xfer: i2c4-xfer {
- 				rockchip,pins =
--					<1 12 RK_FUNC_1 &pcfg_pull_none>,
--					<1 11 RK_FUNC_1 &pcfg_pull_none>;
-+					<1 RK_PB4 1 &pcfg_pull_none>,
-+					<1 RK_PB3 1 &pcfg_pull_none>;
+ 		spi-0 {
+ 			spi0_clk: spi0-clk {
+-				rockchip,pins = <0 9 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PB1 2 &pcfg_pull_up>;
+ 			};
+ 			spi0_cs0: spi0-cs0 {
+-				rockchip,pins = <0 14 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PB6 2 &pcfg_pull_up>;
+ 			};
+ 			spi0_tx: spi0-tx {
+-				rockchip,pins = <0 11 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PB3 2 &pcfg_pull_up>;
+ 			};
+ 			spi0_rx: spi0-rx {
+-				rockchip,pins = <0 13 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PB5 2 &pcfg_pull_up>;
+ 			};
+ 			spi0_cs1: spi0-cs1 {
+-				rockchip,pins = <1 12 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <1 RK_PB4 1 &pcfg_pull_up>;
  			};
  		};
  
- 		i2c5 {
- 			i2c5_xfer: i2c5-xfer {
- 				rockchip,pins =
--					<3 11 RK_FUNC_2 &pcfg_pull_none>,
--					<3 10 RK_FUNC_2 &pcfg_pull_none>;
-+					<3 RK_PB3 2 &pcfg_pull_none>,
-+					<3 RK_PB2 2 &pcfg_pull_none>;
+ 		spi-1 {
+ 			spi1_clk: spi1-clk {
+-				rockchip,pins = <0 23 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PC7 2 &pcfg_pull_up>;
  			};
- 		};
- 
- 		i2c6 {
- 			i2c6_xfer: i2c6-xfer {
- 				rockchip,pins =
--					<2 10 RK_FUNC_2 &pcfg_pull_none>,
--					<2 9 RK_FUNC_2 &pcfg_pull_none>;
-+					<2 RK_PB2 2 &pcfg_pull_none>,
-+					<2 RK_PB1 2 &pcfg_pull_none>;
+ 			spi1_cs0: spi1-cs0 {
+-				rockchip,pins = <2 2 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <2 RK_PA2 2 &pcfg_pull_up>;
  			};
- 		};
- 
- 		i2c7 {
- 			i2c7_xfer: i2c7-xfer {
- 				rockchip,pins =
--					<2 8 RK_FUNC_2 &pcfg_pull_none>,
--					<2 7 RK_FUNC_2 &pcfg_pull_none>;
-+					<2 RK_PB0 2 &pcfg_pull_none>,
-+					<2 RK_PA7 2 &pcfg_pull_none>;
+ 			spi1_rx: spi1-rx {
+-				rockchip,pins = <2 0 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <2 RK_PA0 2 &pcfg_pull_up>;
  			};
- 		};
- 
- 		i2c8 {
- 			i2c8_xfer: i2c8-xfer {
- 				rockchip,pins =
--					<1 21 RK_FUNC_1 &pcfg_pull_none>,
--					<1 20 RK_FUNC_1 &pcfg_pull_none>;
-+					<1 RK_PC5 1 &pcfg_pull_none>,
-+					<1 RK_PC4 1 &pcfg_pull_none>;
+ 			spi1_tx: spi1-tx {
+-				rockchip,pins = <2 1 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <2 RK_PA1 2 &pcfg_pull_up>;
  			};
- 		};
- 
- 		i2s0 {
- 			i2s0_2ch_bus: i2s0-2ch-bus {
- 				rockchip,pins =
--					<3 24 RK_FUNC_1 &pcfg_pull_none>,
--					<3 25 RK_FUNC_1 &pcfg_pull_none>,
--					<3 26 RK_FUNC_1 &pcfg_pull_none>,
--					<3 27 RK_FUNC_1 &pcfg_pull_none>,
--					<3 31 RK_FUNC_1 &pcfg_pull_none>,
--					<4 0 RK_FUNC_1 &pcfg_pull_none>;
-+					<3 RK_PD0 1 &pcfg_pull_none>,
-+					<3 RK_PD1 1 &pcfg_pull_none>,
-+					<3 RK_PD2 1 &pcfg_pull_none>,
-+					<3 RK_PD3 1 &pcfg_pull_none>,
-+					<3 RK_PD7 1 &pcfg_pull_none>,
-+					<4 RK_PA0 1 &pcfg_pull_none>;
- 			};
- 
- 			i2s0_8ch_bus: i2s0-8ch-bus {
- 				rockchip,pins =
--					<3 24 RK_FUNC_1 &pcfg_pull_none>,
--					<3 25 RK_FUNC_1 &pcfg_pull_none>,
--					<3 26 RK_FUNC_1 &pcfg_pull_none>,
--					<3 27 RK_FUNC_1 &pcfg_pull_none>,
--					<3 28 RK_FUNC_1 &pcfg_pull_none>,
--					<3 29 RK_FUNC_1 &pcfg_pull_none>,
--					<3 30 RK_FUNC_1 &pcfg_pull_none>,
--					<3 31 RK_FUNC_1 &pcfg_pull_none>,
--					<4 0 RK_FUNC_1 &pcfg_pull_none>;
-+					<3 RK_PD0 1 &pcfg_pull_none>,
-+					<3 RK_PD1 1 &pcfg_pull_none>,
-+					<3 RK_PD2 1 &pcfg_pull_none>,
-+					<3 RK_PD3 1 &pcfg_pull_none>,
-+					<3 RK_PD4 1 &pcfg_pull_none>,
-+					<3 RK_PD5 1 &pcfg_pull_none>,
-+					<3 RK_PD6 1 &pcfg_pull_none>,
-+					<3 RK_PD7 1 &pcfg_pull_none>,
-+					<4 RK_PA0 1 &pcfg_pull_none>;
+ 			spi1_cs1: spi1-cs1 {
+-				rockchip,pins = <2 3 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <2 RK_PA3 2 &pcfg_pull_up>;
  			};
  		};
  
  		i2s1 {
- 			i2s1_2ch_bus: i2s1-2ch-bus {
- 				rockchip,pins =
--					<4 3 RK_FUNC_1 &pcfg_pull_none>,
--					<4 4 RK_FUNC_1 &pcfg_pull_none>,
--					<4 5 RK_FUNC_1 &pcfg_pull_none>,
--					<4 6 RK_FUNC_1 &pcfg_pull_none>,
--					<4 7 RK_FUNC_1 &pcfg_pull_none>;
-+					<4 RK_PA3 1 &pcfg_pull_none>,
-+					<4 RK_PA4 1 &pcfg_pull_none>,
-+					<4 RK_PA5 1 &pcfg_pull_none>,
-+					<4 RK_PA6 1 &pcfg_pull_none>,
-+					<4 RK_PA7 1 &pcfg_pull_none>;
+ 			i2s1_bus: i2s1-bus {
+-				rockchip,pins = <0 8 RK_FUNC_1 &pcfg_pull_none>,
+-						<0 9 RK_FUNC_1 &pcfg_pull_none>,
+-						<0 11 RK_FUNC_1 &pcfg_pull_none>,
+-						<0 12 RK_FUNC_1 &pcfg_pull_none>,
+-						<0 13 RK_FUNC_1 &pcfg_pull_none>,
+-						<0 14 RK_FUNC_1 &pcfg_pull_none>,
+-						<1 2 RK_FUNC_2 &pcfg_pull_none>,
+-						<1 4 RK_FUNC_2 &pcfg_pull_none>,
+-						<1 5 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PB0 1 &pcfg_pull_none>,
++						<0 RK_PB1 1 &pcfg_pull_none>,
++						<0 RK_PB3 1 &pcfg_pull_none>,
++						<0 RK_PB4 1 &pcfg_pull_none>,
++						<0 RK_PB5 1 &pcfg_pull_none>,
++						<0 RK_PB6 1 &pcfg_pull_none>,
++						<1 RK_PA2 2 &pcfg_pull_none>,
++						<1 RK_PA4 2 &pcfg_pull_none>,
++						<1 RK_PA5 2 &pcfg_pull_none>;
  			};
  		};
  
- 		sdio0 {
- 			sdio0_bus1: sdio0-bus1 {
- 				rockchip,pins =
--					<2 RK_PC4 RK_FUNC_1 &pcfg_pull_up>;
-+					<2 RK_PC4 1 &pcfg_pull_up>;
- 			};
- 
- 			sdio0_bus4: sdio0-bus4 {
- 				rockchip,pins =
--					<2 RK_PC4 RK_FUNC_1 &pcfg_pull_up>,
--					<2 RK_PC5 RK_FUNC_1 &pcfg_pull_up>,
--					<2 RK_PC6 RK_FUNC_1 &pcfg_pull_up>,
--					<2 RK_PC7 RK_FUNC_1 &pcfg_pull_up>;
-+					<2 RK_PC4 1 &pcfg_pull_up>,
-+					<2 RK_PC5 1 &pcfg_pull_up>,
-+					<2 RK_PC6 1 &pcfg_pull_up>,
-+					<2 RK_PC7 1 &pcfg_pull_up>;
- 			};
- 
- 			sdio0_cmd: sdio0-cmd {
- 				rockchip,pins =
--					<2 RK_PD0 RK_FUNC_1 &pcfg_pull_up>;
-+					<2 RK_PD0 1 &pcfg_pull_up>;
- 			};
- 
- 			sdio0_clk: sdio0-clk {
- 				rockchip,pins =
--					<2 RK_PD1 RK_FUNC_1 &pcfg_pull_none>;
-+					<2 RK_PD1 1 &pcfg_pull_none>;
- 			};
- 
- 			sdio0_cd: sdio0-cd {
- 				rockchip,pins =
--					<2 RK_PD2 RK_FUNC_1 &pcfg_pull_up>;
-+					<2 RK_PD2 1 &pcfg_pull_up>;
- 			};
- 
- 			sdio0_pwr: sdio0-pwr {
- 				rockchip,pins =
--					<2 RK_PD3 RK_FUNC_1 &pcfg_pull_up>;
-+					<2 RK_PD3 1 &pcfg_pull_up>;
- 			};
- 
- 			sdio0_bkpwr: sdio0-bkpwr {
- 				rockchip,pins =
--					<2 RK_PD4 RK_FUNC_1 &pcfg_pull_up>;
-+					<2 RK_PD4 1 &pcfg_pull_up>;
- 			};
- 
- 			sdio0_wp: sdio0-wp {
- 				rockchip,pins =
--					<0 RK_PA3 RK_FUNC_1 &pcfg_pull_up>;
-+					<0 RK_PA3 1 &pcfg_pull_up>;
- 			};
- 
- 			sdio0_int: sdio0-int {
- 				rockchip,pins =
--					<0 RK_PA4 RK_FUNC_1 &pcfg_pull_up>;
-+					<0 RK_PA4 1 &pcfg_pull_up>;
+ 		pwm0 {
+ 			pwm0_pin: pwm0-pin {
+-				rockchip,pins = <3 21 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PC5 1 &pcfg_pull_none>;
  			};
  		};
  
- 		sdmmc {
- 			sdmmc_bus1: sdmmc-bus1 {
- 				rockchip,pins =
--					<4 RK_PB0 RK_FUNC_1 &pcfg_pull_up>;
-+					<4 RK_PB0 1 &pcfg_pull_up>;
- 			};
- 
- 			sdmmc_bus4: sdmmc-bus4 {
- 				rockchip,pins =
--					<4 RK_PB0 RK_FUNC_1 &pcfg_pull_up>,
--					<4 RK_PB1 RK_FUNC_1 &pcfg_pull_up>,
--					<4 RK_PB2 RK_FUNC_1 &pcfg_pull_up>,
--					<4 RK_PB3 RK_FUNC_1 &pcfg_pull_up>;
-+					<4 RK_PB0 1 &pcfg_pull_up>,
-+					<4 RK_PB1 1 &pcfg_pull_up>,
-+					<4 RK_PB2 1 &pcfg_pull_up>,
-+					<4 RK_PB3 1 &pcfg_pull_up>;
- 			};
- 
- 			sdmmc_clk: sdmmc-clk {
- 				rockchip,pins =
--					<4 RK_PB4 RK_FUNC_1 &pcfg_pull_none>;
-+					<4 RK_PB4 1 &pcfg_pull_none>;
- 			};
- 
- 			sdmmc_cmd: sdmmc-cmd {
- 				rockchip,pins =
--					<4 RK_PB5 RK_FUNC_1 &pcfg_pull_up>;
-+					<4 RK_PB5 1 &pcfg_pull_up>;
- 			};
- 
- 			sdmmc_cd: sdmmc-cd {
- 				rockchip,pins =
--					<0 RK_PA7 RK_FUNC_1 &pcfg_pull_up>;
-+					<0 RK_PA7 1 &pcfg_pull_up>;
- 			};
- 
- 			sdmmc_wp: sdmmc-wp {
- 				rockchip,pins =
--					<0 RK_PB0 RK_FUNC_1 &pcfg_pull_up>;
-+					<0 RK_PB0 1 &pcfg_pull_up>;
+ 		pwm1 {
+ 			pwm1_pin: pwm1-pin {
+-				rockchip,pins = <0 30 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PD6 2 &pcfg_pull_none>;
  			};
  		};
+ 
+ 		pwm2 {
+ 			pwm2_pin: pwm2-pin {
+-				rockchip,pins = <1 12 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PB4 2 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		pwm3 {
+ 			pwm3_pin: pwm3-pin {
+-				rockchip,pins = <1 11 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PB3 2 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		spdif {
+ 			spdif_tx: spdif-tx {
+-				rockchip,pins = <3 31 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PD7 2 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		tsadc {
+ 			otp_gpio: otp-gpio {
+-				rockchip,pins = <0 24 RK_FUNC_GPIO &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 			};
+ 
+ 			otp_out: otp-out {
+-				rockchip,pins = <0 24 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PD0 2 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		uart0 {
+ 			uart0_xfer: uart0-xfer {
+-				rockchip,pins = <2 26 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 27 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PD2 1 &pcfg_pull_none>,
++						<2 RK_PD3 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart0_cts: uart0-cts {
+-				rockchip,pins = <2 29 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PD5 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart0_rts: uart0-rts {
+-				rockchip,pins = <0 17 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PC1 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		uart1 {
+ 			uart1_xfer: uart1-xfer {
+-				rockchip,pins = <1 9 RK_FUNC_1 &pcfg_pull_none>,
+-						<1 10 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PB1 1 &pcfg_pull_none>,
++						<1 RK_PB2 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart1_cts: uart1-cts {
+-				rockchip,pins = <1 8 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PB0 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart1_rts: uart1-rts {
+-				rockchip,pins = <1 11 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PB3 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		uart2 {
+ 			uart2_xfer: uart2-xfer {
+-				rockchip,pins = <1 18 RK_FUNC_2 &pcfg_pull_up>,
+-						<1 19 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PC2 2 &pcfg_pull_up>,
++						<1 RK_PC3 2 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart21_xfer: uart21-xfer {
+-				rockchip,pins = <1 10 RK_FUNC_2 &pcfg_pull_up>,
+-						<1 9 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PB2 2 &pcfg_pull_up>,
++						<1 RK_PB1 2 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart2_cts: uart2-cts {
+-				rockchip,pins = <0 25 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PD1 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart2_rts: uart2-rts {
+-				rockchip,pins = <0 24 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PD0 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 	};
+diff --git a/arch/arm/boot/dts/rk3288-evb-act8846.dts b/arch/arm/boot/dts/rk3288-evb-act8846.dts
+index 6592c809e2a5..80080767c365 100644
+--- a/arch/arm/boot/dts/rk3288-evb-act8846.dts
++++ b/arch/arm/boot/dts/rk3288-evb-act8846.dts
+@@ -175,13 +175,13 @@
+ &pinctrl {
+ 	lcd {
+ 		lcd_en: lcd-en  {
+-			rockchip,pins = <7 3 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	wifi {
+ 		wifi_pwr: wifi-pwr {
+-			rockchip,pins = <7 9 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-evb.dtsi b/arch/arm/boot/dts/rk3288-evb.dtsi
+index 97e4d552ff0f..820440715302 100644
+--- a/arch/arm/boot/dts/rk3288-evb.dtsi
++++ b/arch/arm/boot/dts/rk3288-evb.dtsi
+@@ -314,25 +314,25 @@
+ 
+ 	backlight {
+ 		bl_en: bl-en {
+-			rockchip,pins = <7 2 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	buttons {
+ 		pwrbtn: pwrbtn {
+-			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	lcd {
+ 		lcd_cs: lcd-cs {
+-			rockchip,pins = <7 4 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	pmic {
+ 		pmic_int: pmic-int {
+-			rockchip,pins = <RK_GPIO0 4 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+@@ -342,34 +342,34 @@
+ 		 * high-speed mode on EVB board so bump up to 8ma.
+ 		 */
+ 		sdmmc_bus4: sdmmc-bus4 {
+-			rockchip,pins = <6 16 RK_FUNC_1 &pcfg_pull_up_drv_8ma>,
+-					<6 17 RK_FUNC_1 &pcfg_pull_up_drv_8ma>,
+-					<6 18 RK_FUNC_1 &pcfg_pull_up_drv_8ma>,
+-					<6 19 RK_FUNC_1 &pcfg_pull_up_drv_8ma>;
++			rockchip,pins = <6 RK_PC0 1 &pcfg_pull_up_drv_8ma>,
++					<6 RK_PC1 1 &pcfg_pull_up_drv_8ma>,
++					<6 RK_PC2 1 &pcfg_pull_up_drv_8ma>,
++					<6 RK_PC3 1 &pcfg_pull_up_drv_8ma>;
+ 		};
+ 
+ 		sdmmc_clk: sdmmc-clk {
+-			rockchip,pins = <6 20 RK_FUNC_1 &pcfg_pull_none_drv_8ma>;
++			rockchip,pins = <6 RK_PC4 1 &pcfg_pull_none_drv_8ma>;
+ 		};
+ 
+ 		sdmmc_cmd: sdmmc-cmd {
+-			rockchip,pins = <6 21 RK_FUNC_1 &pcfg_pull_up_drv_8ma>;
++			rockchip,pins = <6 RK_PC5 1 &pcfg_pull_up_drv_8ma>;
+ 		};
+ 
+ 		sdmmc_pwr: sdmmc-pwr {
+-			rockchip,pins = <7 11 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	usb {
+ 		host_vbus_drv: host-vbus-drv {
+-			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	eth_phy {
+ 		eth_phy_pwr: eth-phy-pwr {
+-			rockchip,pins = <0 6 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-fennec.dts b/arch/arm/boot/dts/rk3288-fennec.dts
+index 29af26e6d442..4847cf902a15 100644
+--- a/arch/arm/boot/dts/rk3288-fennec.dts
++++ b/arch/arm/boot/dts/rk3288-fennec.dts
+@@ -278,27 +278,27 @@
+ 
+ 	gmac {
+ 		phy_int: phy-int {
+-			rockchip,pins = <0 9 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 
+ 		phy_pmeb: phy-pmeb {
+-			rockchip,pins = <0 8 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 
+ 		phy_rst: phy-rst {
+-			rockchip,pins = <4 8 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 	};
+ 
+ 	pmic {
+ 		pmic_int: pmic-int {
+-			rockchip,pins = <RK_GPIO0 4 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	usbphy {
+ 		host_drv: host-drv {
+-			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-firefly-beta.dts b/arch/arm/boot/dts/rk3288-firefly-beta.dts
+index 0f3c29d7fbab..135e8832141f 100644
+--- a/arch/arm/boot/dts/rk3288-firefly-beta.dts
++++ b/arch/arm/boot/dts/rk3288-firefly-beta.dts
+@@ -18,13 +18,13 @@
+ &pinctrl {
+ 	act8846 {
+ 		pmic_vsel: pmic-vsel {
+-			rockchip,pins = <7 1 RK_FUNC_GPIO &pcfg_output_low>;
++			rockchip,pins = <7 RK_PA1 RK_FUNC_GPIO &pcfg_output_low>;
+ 		};
+ 	};
+ 
+ 	ir {
+ 		ir_int: ir-int {
+-			rockchip,pins = <7 5 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <7 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+index f57f286a93c3..61435d8ee37b 100644
+--- a/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
++++ b/arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi
+@@ -224,25 +224,25 @@
+ 
+ 	act8846 {
+ 		pwr_hold: pwr-hold {
+-			rockchip,pins = <0 1 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <0 RK_PA1 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 
+ 		pmic_vsel: pmic-vsel {
+-			rockchip,pins = <7 14 RK_FUNC_GPIO &pcfg_output_low>;
++			rockchip,pins = <7 RK_PB6 RK_FUNC_GPIO &pcfg_output_low>;
+ 		};
+ 	};
+ 
+ 	gmac {
+ 		phy_int: phy-int {
+-			rockchip,pins = <0 9 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 
+ 		phy_pmeb: phy-pmeb {
+-			rockchip,pins = <0 8 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 
+ 		phy_rst: phy-rst {
+-			rockchip,pins = <4 8 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-firefly-reload.dts b/arch/arm/boot/dts/rk3288-firefly-reload.dts
+index 3a646c5f4fcf..1574383fd2dc 100644
+--- a/arch/arm/boot/dts/rk3288-firefly-reload.dts
++++ b/arch/arm/boot/dts/rk3288-firefly-reload.dts
+@@ -306,39 +306,39 @@
+ &pinctrl {
+ 	ir {
+ 		ir_int: ir-int {
+-			rockchip,pins = <7 0 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <7 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	dvp {
+ 		dvp_pwr: dvp-pwr {
+-			rockchip,pins = <0 11 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		cif_pwr: cif-pwr {
+-			rockchip,pins = <7 12 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	hym8563 {
+ 		rtc_int: rtc-int {
+-			rockchip,pins = <7 4 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <7 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	keys {
+ 		pwr_key: pwr-key {
+-			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	leds {
+ 		power_led: power-led {
+-			rockchip,pins = <8 2 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <8 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		work_led: work-led {
+-			rockchip,pins = <8 1 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <8 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+@@ -348,44 +348,44 @@
+ 		 * high-speed mode on firefly board so bump up to 12ma.
+ 		 */
+ 		sdmmc_bus4: sdmmc-bus4 {
+-			rockchip,pins = <6 16 RK_FUNC_1 &pcfg_pull_up_drv_12ma>,
+-					<6 17 RK_FUNC_1 &pcfg_pull_up_drv_12ma>,
+-					<6 18 RK_FUNC_1 &pcfg_pull_up_drv_12ma>,
+-					<6 19 RK_FUNC_1 &pcfg_pull_up_drv_12ma>;
++			rockchip,pins = <6 RK_PC0 1 &pcfg_pull_up_drv_12ma>,
++					<6 RK_PC1 1 &pcfg_pull_up_drv_12ma>,
++					<6 RK_PC2 1 &pcfg_pull_up_drv_12ma>,
++					<6 RK_PC3 1 &pcfg_pull_up_drv_12ma>;
+ 		};
+ 
+ 		sdmmc_clk: sdmmc-clk {
+-			rockchip,pins = <6 20 RK_FUNC_1 &pcfg_pull_none_12ma>;
++			rockchip,pins = <6 RK_PC4 1 &pcfg_pull_none_12ma>;
+ 		};
+ 
+ 		sdmmc_cmd: sdmmc-cmd {
+-			rockchip,pins = <6 21 RK_FUNC_1 &pcfg_pull_up_drv_12ma>;
++			rockchip,pins = <6 RK_PC5 1 &pcfg_pull_up_drv_12ma>;
+ 		};
+ 
+ 		sdmmc_pwr: sdmmc-pwr {
+-			rockchip,pins = <7 11 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	sdio {
+ 		wifi_enable: wifi-enable {
+-			rockchip,pins = <4 28 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	usb_host {
+ 		host_vbus_drv: host-vbus-drv {
+-			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		usbhub_rst: usbhub-rst {
+-			rockchip,pins = <8 3 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <8 RK_PA3 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 	};
+ 
+ 	usb_otg {
+ 		otg_vbus_drv: otg-vbus-drv {
+-			rockchip,pins = <0 12 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-firefly.dts b/arch/arm/boot/dts/rk3288-firefly.dts
+index 556ab42dd81c..313459dab2e4 100644
+--- a/arch/arm/boot/dts/rk3288-firefly.dts
++++ b/arch/arm/boot/dts/rk3288-firefly.dts
+@@ -18,13 +18,13 @@
+ &pinctrl {
+ 	act8846 {
+ 		pmic_vsel: pmic-vsel {
+-			rockchip,pins = <7 14 RK_FUNC_GPIO &pcfg_output_low>;
++			rockchip,pins = <7 RK_PB6 RK_FUNC_GPIO &pcfg_output_low>;
+ 		};
+ 	};
+ 
+ 	ir {
+ 		ir_int: ir-int {
+-			rockchip,pins = <7 0 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <7 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
+index a6ff7eac4aa8..5e0a19004e46 100644
+--- a/arch/arm/boot/dts/rk3288-firefly.dtsi
++++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
+@@ -392,49 +392,49 @@
+ 
+ 	act8846 {
+ 		pwr_hold: pwr-hold {
+-			rockchip,pins = <0 1 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <0 RK_PA1 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 	};
+ 
+ 	dvp {
+ 		dvp_pwr: dvp-pwr {
+-			rockchip,pins = <0 11 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	gmac {
+ 		phy_int: phy-int {
+-			rockchip,pins = <0 9 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 
+ 		phy_pmeb: phy-pmeb {
+-			rockchip,pins = <0 8 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 
+ 		phy_rst: phy-rst {
+-			rockchip,pins = <4 8 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 	};
+ 
+ 	hym8563 {
+ 		rtc_int: rtc-int {
+-			rockchip,pins = <7 4 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <7 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	keys {
+ 		pwr_key: pwr-key {
+-			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	leds {
+ 		power_led: power-led {
+-			rockchip,pins = <8 2 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <8 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		work_led: work-led {
+-			rockchip,pins = <8 1 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <8 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+@@ -444,38 +444,38 @@
+ 		 * high-speed mode on firefly board so bump up to 12ma.
+ 		 */
+ 		sdmmc_bus4: sdmmc-bus4 {
+-			rockchip,pins = <6 16 RK_FUNC_1 &pcfg_pull_up_drv_12ma>,
+-					<6 17 RK_FUNC_1 &pcfg_pull_up_drv_12ma>,
+-					<6 18 RK_FUNC_1 &pcfg_pull_up_drv_12ma>,
+-					<6 19 RK_FUNC_1 &pcfg_pull_up_drv_12ma>;
++			rockchip,pins = <6 RK_PC0 1 &pcfg_pull_up_drv_12ma>,
++					<6 RK_PC1 1 &pcfg_pull_up_drv_12ma>,
++					<6 RK_PC2 1 &pcfg_pull_up_drv_12ma>,
++					<6 RK_PC3 1 &pcfg_pull_up_drv_12ma>;
+ 		};
+ 
+ 		sdmmc_clk: sdmmc-clk {
+-			rockchip,pins = <6 20 RK_FUNC_1 &pcfg_pull_none_12ma>;
++			rockchip,pins = <6 RK_PC4 1 &pcfg_pull_none_12ma>;
+ 		};
+ 
+ 		sdmmc_cmd: sdmmc-cmd {
+-			rockchip,pins = <6 21 RK_FUNC_1 &pcfg_pull_up_drv_12ma>;
++			rockchip,pins = <6 RK_PC5 1 &pcfg_pull_up_drv_12ma>;
+ 		};
+ 
+ 		sdmmc_pwr: sdmmc-pwr {
+-			rockchip,pins = <7 11 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	usb_host {
+ 		host_vbus_drv: host-vbus-drv {
+-			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		usbhub_rst: usbhub-rst {
+-			rockchip,pins = <8 3 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <8 RK_PA3 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 	};
+ 
+ 	usb_otg {
+ 		otg_vbus_drv: otg-vbus-drv {
+-			rockchip,pins = <0 12 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-miqi.dts b/arch/arm/boot/dts/rk3288-miqi.dts
+index fb7365b604bb..c41d012c8850 100644
+--- a/arch/arm/boot/dts/rk3288-miqi.dts
++++ b/arch/arm/boot/dts/rk3288-miqi.dts
+@@ -296,29 +296,29 @@
+ 
+ 	act8846 {
+ 		pmic_int: pmic-int {
+-			rockchip,pins = <0 4 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 
+ 		pmic_sleep: pmic-sleep {
+-			rockchip,pins = <0 0 RK_FUNC_GPIO &pcfg_output_low>;
++			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_output_low>;
+ 		};
+ 
+ 		pmic_vsel: pmic-vsel {
+-			rockchip,pins = <7 1 RK_FUNC_GPIO &pcfg_output_low>;
++			rockchip,pins = <7 RK_PA1 RK_FUNC_GPIO &pcfg_output_low>;
+ 		};
+ 	};
+ 
+ 	gmac {
+ 		phy_int: phy-int {
+-			rockchip,pins = <0 9 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 
+ 		phy_pmeb: phy-pmeb {
+-			rockchip,pins = <0 8 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 
+ 		phy_rst: phy-rst {
+-			rockchip,pins = <4 8 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 	};
+ 
+@@ -328,28 +328,28 @@
+ 		 * high-speed mode on firefly board so bump up to 12ma.
+ 		 */
+ 		sdmmc_bus4: sdmmc-bus4 {
+-			rockchip,pins = <6 16 RK_FUNC_1 &pcfg_pull_up_drv_12ma>,
+-					<6 17 RK_FUNC_1 &pcfg_pull_up_drv_12ma>,
+-					<6 18 RK_FUNC_1 &pcfg_pull_up_drv_12ma>,
+-					<6 19 RK_FUNC_1 &pcfg_pull_up_drv_12ma>;
++			rockchip,pins = <6 RK_PC0 1 &pcfg_pull_up_drv_12ma>,
++					<6 RK_PC1 1 &pcfg_pull_up_drv_12ma>,
++					<6 RK_PC2 1 &pcfg_pull_up_drv_12ma>,
++					<6 RK_PC3 1 &pcfg_pull_up_drv_12ma>;
+ 		};
+ 
+ 		sdmmc_clk: sdmmc-clk {
+-			rockchip,pins = <6 20 RK_FUNC_1 &pcfg_pull_none_12ma>;
++			rockchip,pins = <6 RK_PC4 1 &pcfg_pull_none_12ma>;
+ 		};
+ 
+ 		sdmmc_cmd: sdmmc-cmd {
+-			rockchip,pins = <6 21 RK_FUNC_1 &pcfg_pull_up_drv_12ma>;
++			rockchip,pins = <6 RK_PC5 1 &pcfg_pull_up_drv_12ma>;
+ 		};
+ 
+ 		sdmmc_pwr: sdmmc-pwr {
+-			rockchip,pins = <7 11 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	usb_host {
+ 		host_vbus_drv: host-vbus-drv {
+-			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-phycore-rdk.dts b/arch/arm/boot/dts/rk3288-phycore-rdk.dts
+index 7077c3403483..1e33859de484 100644
+--- a/arch/arm/boot/dts/rk3288-phycore-rdk.dts
++++ b/arch/arm/boot/dts/rk3288-phycore-rdk.dts
+@@ -160,15 +160,15 @@
+ 	buttons {
+ 		user_button_pins: user-button-pins {
+ 			/* button 1 */
+-			rockchip,pins = <8 3 RK_FUNC_GPIO &pcfg_pull_up>,
++			rockchip,pins = <8 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>,
+ 			/* button 2 */
+-					<8 0 RK_FUNC_GPIO &pcfg_pull_up>;
++					<8 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	rv4162 {
+ 		i2c_rtc_int: i2c-rtc-int {
+-			rockchip,pins = <5 10 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <5 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+@@ -178,44 +178,44 @@
+ 		 * high-speed mode on pcm-947 board so bump up to 12 mA.
+ 		 */
+ 		sdmmc_bus4: sdmmc-bus4 {
+-			rockchip,pins = <6 16 RK_FUNC_1 &pcfg_pull_up_drv_12ma>,
+-					<6 17 RK_FUNC_1 &pcfg_pull_up_drv_12ma>,
+-					<6 18 RK_FUNC_1 &pcfg_pull_up_drv_12ma>,
+-					<6 19 RK_FUNC_1 &pcfg_pull_up_drv_12ma>;
++			rockchip,pins = <6 RK_PC0 1 &pcfg_pull_up_drv_12ma>,
++					<6 RK_PC1 1 &pcfg_pull_up_drv_12ma>,
++					<6 RK_PC2 1 &pcfg_pull_up_drv_12ma>,
++					<6 RK_PC3 1 &pcfg_pull_up_drv_12ma>;
+ 		};
+ 
+ 		sdmmc_clk: sdmmc-clk {
+-			rockchip,pins = <6 20 RK_FUNC_1 &pcfg_pull_none_12ma>;
++			rockchip,pins = <6 RK_PC4 1 &pcfg_pull_none_12ma>;
+ 		};
+ 
+ 		sdmmc_cmd: sdmmc-cmd {
+-			rockchip,pins = <6 21 RK_FUNC_1 &pcfg_pull_up_drv_12ma>;
++			rockchip,pins = <6 RK_PC5 1 &pcfg_pull_up_drv_12ma>;
+ 		};
+ 
+ 		sdmmc_pwr: sdmmc-pwr {
+-			rockchip,pins = <7 11 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	touchscreen {
+ 		ts_irq_pin: ts-irq-pin {
+-			rockchip,pins = <5 15 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <5 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	usb_host {
+ 		host0_vbus_drv: host0-vbus-drv {
+-			rockchip,pins = <2 13 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		host1_vbus_drv: host1-vbus-drv {
+-			rockchip,pins = <2 0 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	usb_otg {
+ 		otg_vbus_drv: otg-vbus-drv {
+-			rockchip,pins = <2 12 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-phycore-som.dtsi b/arch/arm/boot/dts/rk3288-phycore-som.dtsi
+index c218dd54c9b5..77a47b9b756d 100644
+--- a/arch/arm/boot/dts/rk3288-phycore-som.dtsi
++++ b/arch/arm/boot/dts/rk3288-phycore-som.dtsi
+@@ -342,49 +342,49 @@
+ 		 * We also have external pulls, so disable the internal ones.
+ 		 */
+ 		emmc_clk: emmc-clk {
+-			rockchip,pins = <3 18 RK_FUNC_2 &pcfg_pull_none_12ma>;
++			rockchip,pins = <3 RK_PC2 2 &pcfg_pull_none_12ma>;
+ 		};
+ 
+ 		emmc_cmd: emmc-cmd {
+-			rockchip,pins = <3 16 RK_FUNC_2 &pcfg_pull_none_12ma>;
++			rockchip,pins = <3 RK_PC0 2 &pcfg_pull_none_12ma>;
+ 		};
+ 
+ 		emmc_bus8: emmc-bus8 {
+-			rockchip,pins = <3 0 RK_FUNC_2 &pcfg_pull_none_12ma>,
+-					<3 1 RK_FUNC_2 &pcfg_pull_none_12ma>,
+-					<3 2 RK_FUNC_2 &pcfg_pull_none_12ma>,
+-					<3 3 RK_FUNC_2 &pcfg_pull_none_12ma>,
+-					<3 4 RK_FUNC_2 &pcfg_pull_none_12ma>,
+-					<3 5 RK_FUNC_2 &pcfg_pull_none_12ma>,
+-					<3 6 RK_FUNC_2 &pcfg_pull_none_12ma>,
+-					<3 7 RK_FUNC_2 &pcfg_pull_none_12ma>;
++			rockchip,pins = <3 RK_PA0 2 &pcfg_pull_none_12ma>,
++					<3 RK_PA1 2 &pcfg_pull_none_12ma>,
++					<3 RK_PA2 2 &pcfg_pull_none_12ma>,
++					<3 RK_PA3 2 &pcfg_pull_none_12ma>,
++					<3 RK_PA4 2 &pcfg_pull_none_12ma>,
++					<3 RK_PA5 2 &pcfg_pull_none_12ma>,
++					<3 RK_PA6 2 &pcfg_pull_none_12ma>,
++					<3 RK_PA7 2 &pcfg_pull_none_12ma>;
+ 		};
+ 	};
+ 
+ 	gmac {
+ 		phy_int: phy-int {
+-			rockchip,pins = <4 2 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 
+ 		phy_rst: phy-rst {
+-			rockchip,pins = <4 8 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 	};
+ 
+ 	leds {
+ 		user_led: user-led {
+-			rockchip,pins = <7 2 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <7 RK_PA2 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 	};
+ 
+ 	pmic {
+ 		pmic_int: pmic-int {
+-			rockchip,pins = <RK_GPIO0 4 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 
+ 		/* Pin for switching state between sleep and non-sleep state */
+ 		pmic_sleep: pmic-sleep {
+-			rockchip,pins = <RK_GPIO0 0 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-r89.dts b/arch/arm/boot/dts/rk3288-r89.dts
+index 28972fb4e221..a6ffc381abaa 100644
+--- a/arch/arm/boot/dts/rk3288-r89.dts
++++ b/arch/arm/boot/dts/rk3288-r89.dts
+@@ -265,39 +265,39 @@
+ 
+ 	act8846 {
+ 		pmic_vsel: pmic-vsel {
+-			rockchip,pins = <7 1 RK_FUNC_GPIO &pcfg_output_low>;
++			rockchip,pins = <7 RK_PA1 RK_FUNC_GPIO &pcfg_output_low>;
+ 		};
+ 
+ 		pwr_hold: pwr-hold {
+-			rockchip,pins = <0 6 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 	};
+ 
+ 	buttons {
+ 		pwrbtn: pwrbtn {
+-			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	ir {
+ 		ir_int: ir-int {
+-			rockchip,pins = <7 0 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <7 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	pmic {
+ 		pmic_int: pmic-int {
+-			rockchip,pins = <RK_GPIO0 4 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	usb {
+ 		host_vbus_drv: host-vbus-drv {
+-			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		otg_vbus_drv: otg-vbus-drv {
+-			rockchip,pins = <0 12 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-rock2-som.dtsi b/arch/arm/boot/dts/rk3288-rock2-som.dtsi
+index 32e1ab336662..9f9e2bfd1295 100644
+--- a/arch/arm/boot/dts/rk3288-rock2-som.dtsi
++++ b/arch/arm/boot/dts/rk3288-rock2-som.dtsi
+@@ -231,13 +231,13 @@
+ 
+ 	emmc {
+ 			emmc_reset: emmc-reset {
+-				rockchip,pins = <3 9 RK_FUNC_GPIO &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
+ 			};
+ 	};
+ 
+ 	gmac {
+ 		phy_rst: phy-rst {
+-			rockchip,pins = <4 8 RK_FUNC_GPIO  &pcfg_output_high>;
++			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO  &pcfg_output_high>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-rock2-square.dts b/arch/arm/boot/dts/rk3288-rock2-square.dts
+index 5b7e1c9e92e1..cdcdc921ee09 100644
+--- a/arch/arm/boot/dts/rk3288-rock2-square.dts
++++ b/arch/arm/boot/dts/rk3288-rock2-square.dts
+@@ -204,53 +204,53 @@
+ &pinctrl {
+ 	ir {
+ 		ir_int: ir-int {
+-			rockchip,pins = <8 1 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <8 RK_PA1 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	keys {
+ 		pwr_key: pwr-key {
+-			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	pmic {
+ 		pmic_int: pmic-int {
+-			rockchip,pins = <0 4 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	headphone {
+ 		hp_det: hp-det {
+-			rockchip,pins = <7 7 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PA7 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		phone_ctl: phone-ctl {
+-			rockchip,pins = <8 0 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <8 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	usb {
+ 		host_vbus_drv: host-vbus-drv {
+-			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	sata {
+ 		sata_pwr_en: sata-pwr-en {
+-			rockchip,pins = <0 13 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	sdmmc {
+ 		sdmmc_pwr: sdmmc-pwr {
+-			rockchip,pins = <7 11 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	sdio {
+ 		wifi_enable: wifi-enable {
+-			rockchip,pins = <4 28 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
+index b053589f8ff8..1e6bbd63808f 100644
+--- a/arch/arm/boot/dts/rk3288-tinker.dtsi
++++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
+@@ -363,68 +363,68 @@
+ 
+ 	backlight {
+ 		bl_en: bl-en {
+-			rockchip,pins = <7 2 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	buttons {
+ 		pwrbtn: pwrbtn {
+-			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	eth_phy {
+ 		eth_phy_pwr: eth-phy-pwr {
+-			rockchip,pins = <0 6 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	pmic {
+ 		pmic_int: pmic-int {
+-			rockchip,pins = <RK_GPIO0 4 RK_FUNC_GPIO \
++			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO \
+ 					&pcfg_pull_up>;
+ 		};
+ 
+ 		dvs_1: dvs-1 {
+-			rockchip,pins = <RK_GPIO0 11 RK_FUNC_GPIO \
++			rockchip,pins = <0 RK_PB3 RK_FUNC_GPIO \
+ 					&pcfg_pull_down>;
+ 		};
+ 
+ 		dvs_2: dvs-2 {
+-			rockchip,pins = <RK_GPIO0 12 RK_FUNC_GPIO \
++			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO \
+ 					&pcfg_pull_down>;
+ 		};
+ 	};
+ 
+ 	sdmmc {
+ 		sdmmc_bus4: sdmmc-bus4 {
+-			rockchip,pins = <6 16 RK_FUNC_1 &pcfg_pull_up_drv_8ma>,
+-					<6 17 RK_FUNC_1 &pcfg_pull_up_drv_8ma>,
+-					<6 18 RK_FUNC_1 &pcfg_pull_up_drv_8ma>,
+-					<6 19 RK_FUNC_1 &pcfg_pull_up_drv_8ma>;
++			rockchip,pins = <6 RK_PC0 1 &pcfg_pull_up_drv_8ma>,
++					<6 RK_PC1 1 &pcfg_pull_up_drv_8ma>,
++					<6 RK_PC2 1 &pcfg_pull_up_drv_8ma>,
++					<6 RK_PC3 1 &pcfg_pull_up_drv_8ma>;
+ 		};
+ 
+ 		sdmmc_clk: sdmmc-clk {
+-			rockchip,pins = <6 20 RK_FUNC_1 \
++			rockchip,pins = <6 RK_PC4 1 \
+ 					&pcfg_pull_none_drv_8ma>;
+ 		};
+ 
+ 		sdmmc_cmd: sdmmc-cmd {
+-			rockchip,pins = <6 21 RK_FUNC_1 &pcfg_pull_up_drv_8ma>;
++			rockchip,pins = <6 RK_PC5 1 &pcfg_pull_up_drv_8ma>;
+ 		};
+ 
+ 		sdmmc_pwr: sdmmc-pwr {
+-			rockchip,pins = <7 11 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	usb {
+ 		host_vbus_drv: host-vbus-drv {
+-			rockchip,pins = <0 14 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		pwr_3g: pwr-3g {
+-			rockchip,pins = <7 8 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+diff --git a/arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi b/arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi
+index eaf921694e68..445270aa136e 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi
+@@ -73,7 +73,7 @@
+ &pinctrl {
+ 	codec {
+ 		hp_det: hp-det {
+-			rockchip,pins = <6 5 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <6 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 
+ 		/*
+@@ -82,17 +82,17 @@
+ 		 * we've got a ts3a227e chip but the driver requires it.
+ 		 */
+ 		int_codec: int-codec {
+-			rockchip,pins = <6 7 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <6 RK_PA7 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
+ 
+ 		mic_det: mic-det {
+-			rockchip,pins = <6 11 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <6 RK_PB3 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	headset {
+ 		ts3a227e_int_l: ts3a227e-int-l {
+-			rockchip,pins = <0 3 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-veyron-brain.dts b/arch/arm/boot/dts/rk3288-veyron-brain.dts
+index 5c94a33d695d..406146cbff29 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-brain.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-brain.dts
+@@ -42,23 +42,23 @@
+ &pinctrl {
+ 	hdmi {
+ 		vcc50_hdmi_en: vcc50-hdmi-en {
+-			rockchip,pins = <7 2 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	pmic {
+ 		dvs_1: dvs-1 {
+-			rockchip,pins = <7 11 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <7 RK_PB3 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
+ 
+ 		dvs_2: dvs-2 {
+-			rockchip,pins = <7 15 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <7 RK_PB7 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
+ 	};
+ 
+ 	usb-host {
+ 		usb2_pwr_en: usb2-pwr-en {
+-			rockchip,pins = <0 12 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
+index b54746df3661..72c4754032e9 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
+@@ -244,51 +244,51 @@
+ 
+ 	backlight {
+ 		bl_en: bl-en {
+-			rockchip,pins = <7 2 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	buttons {
+ 		ap_lid_int_l: ap-lid-int-l {
+-			rockchip,pins = <0 6 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	charger {
+ 		ac_present_ap: ac-present-ap {
+-			rockchip,pins = <0 8 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	cros-ec {
+ 		ec_int: ec-int {
+-			rockchip,pins = <7 7 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PA7 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	suspend {
+ 		suspend_l_wake: suspend-l-wake {
+-			rockchip,pins = <0 17 RK_FUNC_GPIO &pcfg_output_low>;
++			rockchip,pins = <0 RK_PC1 RK_FUNC_GPIO &pcfg_output_low>;
+ 		};
+ 
+ 		suspend_l_sleep: suspend-l-sleep {
+-			rockchip,pins = <0 17 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <0 RK_PC1 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 	};
+ 
+ 	trackpad {
+ 		trackpad_int: trackpad-int {
+-			rockchip,pins = <7 3 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <7 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	usb-host {
+ 		host1_pwr_en: host1-pwr-en {
+-			rockchip,pins = <0 11 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		usbotg_pwren_h: usbotg-pwren-h {
+-			rockchip,pins = <0 12 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-veyron-jaq.dts b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
+index 9d6814c7f285..e248f55ee8d2 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-jaq.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
+@@ -138,39 +138,39 @@
+ &pinctrl {
+ 	backlight {
+ 		bl_pwr_en: bl_pwr_en {
+-			rockchip,pins = <2 12 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	buck-5v {
+ 		drv_5v: drv-5v {
+-			rockchip,pins = <7 21 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	hdmi {
+ 		vcc50_hdmi_en: vcc50-hdmi-en {
+-			rockchip,pins = <5 19 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <5 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	lcd {
+ 		lcd_enable_h: lcd-en {
+-			rockchip,pins = <7 14 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		avdd_1v8_disp_en: avdd-1v8-disp-en {
+-			rockchip,pins = <2 13 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	pmic {
+ 		dvs_1: dvs-1 {
+-			rockchip,pins = <7 12 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <7 RK_PB4 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
+ 
+ 		dvs_2: dvs-2 {
+-			rockchip,pins = <7 15 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <7 RK_PB7 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-veyron-jerry.dts b/arch/arm/boot/dts/rk3288-veyron-jerry.dts
+index 3e8f700a0d64..b1613af83d5d 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-jerry.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-jerry.dts
+@@ -106,39 +106,39 @@
+ &pinctrl {
+ 	backlight {
+ 		bl_pwr_en: bl_pwr_en {
+-			rockchip,pins = <2 12 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	buck-5v {
+ 		drv_5v: drv-5v {
+-			rockchip,pins = <7 21 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	hdmi {
+ 		vcc50_hdmi_en: vcc50-hdmi-en {
+-			rockchip,pins = <5 19 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <5 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	lcd {
+ 		lcd_enable_h: lcd-en {
+-			rockchip,pins = <7 14 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		avdd_1v8_disp_en: avdd-1v8-disp-en {
+-			rockchip,pins = <2 13 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	pmic {
+ 		dvs_1: dvs-1 {
+-			rockchip,pins = <7 12 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <7 RK_PB4 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
+ 
+ 		dvs_2: dvs-2 {
+-			rockchip,pins = <7 15 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <7 RK_PB7 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-veyron-mickey.dts b/arch/arm/boot/dts/rk3288-veyron-mickey.dts
+index d889ab3c8235..e852594417b5 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-mickey.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-mickey.dts
+@@ -186,17 +186,17 @@
+ &pinctrl {
+ 	hdmi {
+ 		power_hdmi_on: power-hdmi-on {
+-			rockchip,pins = <7 11 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	pmic {
+ 		dvs_1: dvs-1 {
+-			rockchip,pins = <7 12 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <7 RK_PB4 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
+ 
+ 		dvs_2: dvs-2 {
+-			rockchip,pins = <7 15 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <7 RK_PB7 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-veyron-mighty.dts b/arch/arm/boot/dts/rk3288-veyron-mighty.dts
+index f640857cbdae..27fbc07476d2 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-mighty.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-mighty.dts
+@@ -28,7 +28,7 @@
+ &pinctrl {
+ 	sdmmc {
+ 		sdmmc_wp_gpio: sdmmc-wp-gpio {
+-			rockchip,pins = <7 10 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <7 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+index f95d0c5fcf71..468a1818545d 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+@@ -191,65 +191,65 @@
+ &pinctrl {
+ 	backlight {
+ 		bl_pwr_en: bl_pwr_en {
+-			rockchip,pins = <2 12 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	buck-5v {
+ 		drv_5v: drv-5v {
+-			rockchip,pins = <7 21 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	buttons {
+ 		volum_down_l: volum-down-l {
+-			rockchip,pins = <5 11 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <5 RK_PB3 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 
+ 		volum_up_l: volum-up-l {
+-			rockchip,pins = <5 10 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <5 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	hdmi {
+ 		vcc50_hdmi_en: vcc50-hdmi-en {
+-			rockchip,pins = <5 19 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <5 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	lcd {
+ 		lcd_enable_h: lcd-en {
+-			rockchip,pins = <7 14 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		avdd_1v8_disp_en: avdd-1v8-disp-en {
+-			rockchip,pins = <2 13 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	pmic {
+ 		dvs_1: dvs-1 {
+-			rockchip,pins = <7 12 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <7 RK_PB4 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
+ 
+ 		dvs_2: dvs-2 {
+-			rockchip,pins = <7 15 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <7 RK_PB7 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
+ 	};
+ 
+ 	prochot {
+ 		gpio_prochot: gpio-prochot {
+-			rockchip,pins = <2 8 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	touchscreen {
+ 		touch_int: touch-int {
+-			rockchip,pins = <2 14 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		touch_rst: touch-rst {
+-			rockchip,pins = <2 15 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-veyron-pinky.dts b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
+index 2950aadf49f0..9645be7b3d8c 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-pinky.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
+@@ -55,19 +55,19 @@
+ &pinctrl {
+ 	buttons {
+ 		pwr_key_h: pwr-key-h {
+-			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	emmc {
+ 		emmc_reset: emmc-reset {
+-			rockchip,pins = <7 12 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <7 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	sdmmc {
+ 		sdmmc_wp_gpio: sdmmc-wp-gpio {
+-			rockchip,pins = <7 10 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <7 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi b/arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi
+index a4570444cc79..fe950f9863e8 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi
+@@ -16,18 +16,18 @@
+ 		 * We also have external pulls, so disable the internal ones.
+ 		 */
+ 		sdmmc_bus4: sdmmc-bus4 {
+-			rockchip,pins = <6 16 RK_FUNC_1 &pcfg_pull_none_drv_8ma>,
+-					<6 17 RK_FUNC_1 &pcfg_pull_none_drv_8ma>,
+-					<6 18 RK_FUNC_1 &pcfg_pull_none_drv_8ma>,
+-					<6 19 RK_FUNC_1 &pcfg_pull_none_drv_8ma>;
++			rockchip,pins = <6 RK_PC0 1 &pcfg_pull_none_drv_8ma>,
++					<6 RK_PC1 1 &pcfg_pull_none_drv_8ma>,
++					<6 RK_PC2 1 &pcfg_pull_none_drv_8ma>,
++					<6 RK_PC3 1 &pcfg_pull_none_drv_8ma>;
+ 		};
+ 
+ 		sdmmc_clk: sdmmc-clk {
+-			rockchip,pins = <6 20 RK_FUNC_1 &pcfg_pull_none_drv_8ma>;
++			rockchip,pins = <6 RK_PC4 1 &pcfg_pull_none_drv_8ma>;
+ 		};
+ 
+ 		sdmmc_cmd: sdmmc-cmd {
+-			rockchip,pins = <6 21 RK_FUNC_1 &pcfg_pull_none_drv_8ma>;
++			rockchip,pins = <6 RK_PC5 1 &pcfg_pull_none_drv_8ma>;
+ 		};
+ 
+ 		/*
+@@ -37,12 +37,12 @@
+ 		 * think there's a card inserted
+ 		 */
+ 		sdmmc_cd_disabled: sdmmc-cd-disabled {
+-			rockchip,pins = <6 22 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <6 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		/* This is where we actually hook up CD */
+ 		sdmmc_cd_gpio: sdmmc-cd-gpio {
+-			rockchip,pins = <7 5 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-veyron-speedy.dts b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
+index e16421d80d22..2ac8748a3a0c 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-speedy.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
+@@ -104,39 +104,39 @@
+ &pinctrl {
+ 	backlight {
+ 		bl_pwr_en: bl_pwr_en {
+-			rockchip,pins = <2 12 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	buck-5v {
+ 		drv_5v: drv-5v {
+-			rockchip,pins = <7 21 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	hdmi {
+ 		vcc50_hdmi_en: vcc50-hdmi-en {
+-			rockchip,pins = <5 19 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <5 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	lcd {
+ 		lcd_enable_h: lcd-en {
+-			rockchip,pins = <7 14 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		avdd_1v8_disp_en: avdd-1v8-disp-en {
+-			rockchip,pins = <2 13 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	pmic {
+ 		dvs_1: dvs-1 {
+-			rockchip,pins = <7 12 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <7 RK_PB4 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
+ 
+ 		dvs_2: dvs-2 {
+-			rockchip,pins = <7 15 RK_FUNC_GPIO &pcfg_pull_down>;
++			rockchip,pins = <7 RK_PB7 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
+index 5181d9435fda..4752f646aaf5 100644
+--- a/arch/arm/boot/dts/rk3288-veyron.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
+@@ -477,13 +477,13 @@
+ 
+ 	buttons {
+ 		pwr_key_l: pwr-key-l {
+-			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	emmc {
+ 		emmc_reset: emmc-reset {
+-			rockchip,pins = <2 9 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <2 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		/*
+@@ -491,51 +491,51 @@
+ 		 * We also have external pulls, so disable the internal ones.
+ 		 */
+ 		emmc_clk: emmc-clk {
+-			rockchip,pins = <3 18 RK_FUNC_2 &pcfg_pull_none_drv_8ma>;
++			rockchip,pins = <3 RK_PC2 2 &pcfg_pull_none_drv_8ma>;
+ 		};
+ 
+ 		emmc_cmd: emmc-cmd {
+-			rockchip,pins = <3 16 RK_FUNC_2 &pcfg_pull_none_drv_8ma>;
++			rockchip,pins = <3 RK_PC0 2 &pcfg_pull_none_drv_8ma>;
+ 		};
+ 
+ 		emmc_bus8: emmc-bus8 {
+-			rockchip,pins = <3 0 RK_FUNC_2 &pcfg_pull_none_drv_8ma>,
+-					<3 1 RK_FUNC_2 &pcfg_pull_none_drv_8ma>,
+-					<3 2 RK_FUNC_2 &pcfg_pull_none_drv_8ma>,
+-					<3 3 RK_FUNC_2 &pcfg_pull_none_drv_8ma>,
+-					<3 4 RK_FUNC_2 &pcfg_pull_none_drv_8ma>,
+-					<3 5 RK_FUNC_2 &pcfg_pull_none_drv_8ma>,
+-					<3 6 RK_FUNC_2 &pcfg_pull_none_drv_8ma>,
+-					<3 7 RK_FUNC_2 &pcfg_pull_none_drv_8ma>;
++			rockchip,pins = <3 RK_PA0 2 &pcfg_pull_none_drv_8ma>,
++					<3 RK_PA1 2 &pcfg_pull_none_drv_8ma>,
++					<3 RK_PA2 2 &pcfg_pull_none_drv_8ma>,
++					<3 RK_PA3 2 &pcfg_pull_none_drv_8ma>,
++					<3 RK_PA4 2 &pcfg_pull_none_drv_8ma>,
++					<3 RK_PA5 2 &pcfg_pull_none_drv_8ma>,
++					<3 RK_PA6 2 &pcfg_pull_none_drv_8ma>,
++					<3 RK_PA7 2 &pcfg_pull_none_drv_8ma>;
+ 		};
+ 	};
+ 
+ 	pmic {
+ 		pmic_int_l: pmic-int-l {
+-			rockchip,pins = <RK_GPIO0 4 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	reboot {
+ 		ap_warm_reset_h: ap-warm-reset-h {
+-			rockchip,pins = <RK_GPIO0 13 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	recovery-switch {
+ 		rec_mode_l: rec-mode-l {
+-			rockchip,pins = <0 9 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	sdio0 {
+ 		wifi_enable_h: wifienable-h {
+-			rockchip,pins = <4 28 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		/* NOTE: mislabelled on schematic; should be bt_enable_h */
+ 		bt_enable_l: bt-enable-l {
+-			rockchip,pins = <4 29 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <4 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+ 		/*
+@@ -543,30 +543,30 @@
+ 		 * We also have external pulls, so disable the internal ones.
+ 		 */
+ 		sdio0_bus4: sdio0-bus4 {
+-			rockchip,pins = <4 20 RK_FUNC_1 &pcfg_pull_none_drv_8ma>,
+-					<4 21 RK_FUNC_1 &pcfg_pull_none_drv_8ma>,
+-					<4 22 RK_FUNC_1 &pcfg_pull_none_drv_8ma>,
+-					<4 23 RK_FUNC_1 &pcfg_pull_none_drv_8ma>;
++			rockchip,pins = <4 RK_PC4 1 &pcfg_pull_none_drv_8ma>,
++					<4 RK_PC5 1 &pcfg_pull_none_drv_8ma>,
++					<4 RK_PC6 1 &pcfg_pull_none_drv_8ma>,
++					<4 RK_PC7 1 &pcfg_pull_none_drv_8ma>;
+ 		};
+ 
+ 		sdio0_cmd: sdio0-cmd {
+-			rockchip,pins = <4 24 RK_FUNC_1 &pcfg_pull_none_drv_8ma>;
++			rockchip,pins = <4 RK_PD0 1 &pcfg_pull_none_drv_8ma>;
+ 		};
+ 
+ 		sdio0_clk: sdio0-clk {
+-			rockchip,pins = <4 25 RK_FUNC_1 &pcfg_pull_none_drv_8ma>;
++			rockchip,pins = <4 RK_PD1 1 &pcfg_pull_none_drv_8ma>;
+ 		};
+ 	};
+ 
+ 	tpm {
+ 		tpm_int_h: tpm-int-h {
+-			rockchip,pins = <7 4 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+ 	write-protect {
+ 		fw_wp_ap: fw-wp-ap {
+-			rockchip,pins = <7 6 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <7 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rk3288-vyasa.dts b/arch/arm/boot/dts/rk3288-vyasa.dts
+index 40b232eb5011..ba06e9f97ddc 100644
+--- a/arch/arm/boot/dts/rk3288-vyasa.dts
++++ b/arch/arm/boot/dts/rk3288-vyasa.dts
+@@ -448,13 +448,13 @@
+ 
+ 	pmic {
+ 		pmic_int: pmic-int {
+-			rockchip,pins = <RK_GPIO0 4 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+ 	usb_host {
+ 		phy_pwr_en: phy-pwr-en {
+-			rockchip,pins = <RK_GPIO2 RK_PB1 RK_FUNC_GPIO &pcfg_output_high>;
++			rockchip,pins = <2 RK_PB1 RK_FUNC_GPIO &pcfg_output_high>;
+ 		};
+ 
+ 		usb2_pwr_en: usb2-pwr-en {
+@@ -464,7 +464,7 @@
+ 
+ 	usb_otg {
+ 		otg_vbus_drv: otg-vbus-drv {
+-			rockchip,pins = <RK_GPIO0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 
+ 		};
+ 	};
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 743a7d85daf7..23e9c5253019 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -1532,16 +1532,16 @@
+ 
+ 		hdmi {
+ 			hdmi_cec_c0: hdmi-cec-c0 {
+-				rockchip,pins = <7 RK_PC0 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <7 RK_PC0 2 &pcfg_pull_none>;
+ 			};
+ 
+ 			hdmi_cec_c7: hdmi-cec-c7 {
+-				rockchip,pins = <7 RK_PC7 RK_FUNC_4 &pcfg_pull_none>;
++				rockchip,pins = <7 RK_PC7 4 &pcfg_pull_none>;
+ 			};
+ 
+ 			hdmi_ddc: hdmi-ddc {
+-				rockchip,pins = <7 19 RK_FUNC_2 &pcfg_pull_none>,
+-						<7 20 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <7 RK_PC3 2 &pcfg_pull_none>,
++						<7 RK_PC4 2 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+@@ -1564,421 +1564,421 @@
  
  		sleep {
- 			ap_pwroff: ap-pwroff {
--				rockchip,pins = <1 5 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins = <1 RK_PA5 1 &pcfg_pull_none>;
+ 			global_pwroff: global-pwroff {
+-				rockchip,pins = <0 0 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PA0 1 &pcfg_pull_none>;
  			};
  
  			ddrio_pwroff: ddrio-pwroff {
 -				rockchip,pins = <0 1 RK_FUNC_1 &pcfg_pull_none>;
 +				rockchip,pins = <0 RK_PA1 1 &pcfg_pull_none>;
  			};
- 		};
  
- 		spdif {
- 			spdif_bus: spdif-bus {
- 				rockchip,pins =
--					<4 21 RK_FUNC_1 &pcfg_pull_none>;
-+					<4 RK_PC5 1 &pcfg_pull_none>;
+ 			ddr0_retention: ddr0-retention {
+-				rockchip,pins = <0 2 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PA2 1 &pcfg_pull_up>;
  			};
  
- 			spdif_bus_1: spdif-bus-1 {
- 				rockchip,pins =
--					<3 RK_PC0 RK_FUNC_3 &pcfg_pull_none>;
-+					<3 RK_PC0 3 &pcfg_pull_none>;
+ 			ddr1_retention: ddr1-retention {
+-				rockchip,pins = <0 3 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PA3 1 &pcfg_pull_up>;
+ 			};
+ 		};
+ 
+ 		edp {
+ 			edp_hpd: edp-hpd {
+-				rockchip,pins = <7 11 RK_FUNC_2 &pcfg_pull_down>;
++				rockchip,pins = <7 RK_PB3 2 &pcfg_pull_down>;
+ 			};
+ 		};
+ 
+ 		i2c0 {
+ 			i2c0_xfer: i2c0-xfer {
+-				rockchip,pins = <0 15 RK_FUNC_1 &pcfg_pull_none>,
+-						<0 16 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PB7 1 &pcfg_pull_none>,
++						<0 RK_PC0 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		i2c1 {
+ 			i2c1_xfer: i2c1-xfer {
+-				rockchip,pins = <8 4 RK_FUNC_1 &pcfg_pull_none>,
+-						<8 5 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <8 RK_PA4 1 &pcfg_pull_none>,
++						<8 RK_PA5 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		i2c2 {
+ 			i2c2_xfer: i2c2-xfer {
+-				rockchip,pins = <6 9 RK_FUNC_1 &pcfg_pull_none>,
+-						<6 10 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <6 RK_PB1 1 &pcfg_pull_none>,
++						<6 RK_PB2 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		i2c3 {
+ 			i2c3_xfer: i2c3-xfer {
+-				rockchip,pins = <2 16 RK_FUNC_1 &pcfg_pull_none>,
+-						<2 17 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PC0 1 &pcfg_pull_none>,
++						<2 RK_PC1 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		i2c4 {
+ 			i2c4_xfer: i2c4-xfer {
+-				rockchip,pins = <7 17 RK_FUNC_1 &pcfg_pull_none>,
+-						<7 18 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <7 RK_PC1 1 &pcfg_pull_none>,
++						<7 RK_PC2 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		i2c5 {
+ 			i2c5_xfer: i2c5-xfer {
+-				rockchip,pins = <7 19 RK_FUNC_1 &pcfg_pull_none>,
+-						<7 20 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <7 RK_PC3 1 &pcfg_pull_none>,
++						<7 RK_PC4 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		i2s0 {
+ 			i2s0_bus: i2s0-bus {
+-				rockchip,pins = <6 0 RK_FUNC_1 &pcfg_pull_none>,
+-						<6 1 RK_FUNC_1 &pcfg_pull_none>,
+-						<6 2 RK_FUNC_1 &pcfg_pull_none>,
+-						<6 3 RK_FUNC_1 &pcfg_pull_none>,
+-						<6 4 RK_FUNC_1 &pcfg_pull_none>,
+-						<6 8 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <6 RK_PA0 1 &pcfg_pull_none>,
++						<6 RK_PA1 1 &pcfg_pull_none>,
++						<6 RK_PA2 1 &pcfg_pull_none>,
++						<6 RK_PA3 1 &pcfg_pull_none>,
++						<6 RK_PA4 1 &pcfg_pull_none>,
++						<6 RK_PB0 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		lcdc {
+ 			lcdc_ctl: lcdc-ctl {
+-				rockchip,pins = <1 24 RK_FUNC_1 &pcfg_pull_none>,
+-						<1 25 RK_FUNC_1 &pcfg_pull_none>,
+-						<1 26 RK_FUNC_1 &pcfg_pull_none>,
+-						<1 27 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PD0 1 &pcfg_pull_none>,
++						<1 RK_PD1 1 &pcfg_pull_none>,
++						<1 RK_PD2 1 &pcfg_pull_none>,
++						<1 RK_PD3 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		sdmmc {
+ 			sdmmc_clk: sdmmc-clk {
+-				rockchip,pins = <6 20 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <6 RK_PC4 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			sdmmc_cmd: sdmmc-cmd {
+-				rockchip,pins = <6 21 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <6 RK_PC5 1 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdmmc_cd: sdmmc-cd {
+-				rockchip,pins = <6 22 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <6 RK_PC6 1 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdmmc_bus1: sdmmc-bus1 {
+-				rockchip,pins = <6 16 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <6 RK_PC0 1 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdmmc_bus4: sdmmc-bus4 {
+-				rockchip,pins = <6 16 RK_FUNC_1 &pcfg_pull_up>,
+-						<6 17 RK_FUNC_1 &pcfg_pull_up>,
+-						<6 18 RK_FUNC_1 &pcfg_pull_up>,
+-						<6 19 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <6 RK_PC0 1 &pcfg_pull_up>,
++						<6 RK_PC1 1 &pcfg_pull_up>,
++						<6 RK_PC2 1 &pcfg_pull_up>,
++						<6 RK_PC3 1 &pcfg_pull_up>;
+ 			};
+ 		};
+ 
+ 		sdio0 {
+ 			sdio0_bus1: sdio0-bus1 {
+-				rockchip,pins = <4 20 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <4 RK_PC4 1 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdio0_bus4: sdio0-bus4 {
+-				rockchip,pins = <4 20 RK_FUNC_1 &pcfg_pull_up>,
+-						<4 21 RK_FUNC_1 &pcfg_pull_up>,
+-						<4 22 RK_FUNC_1 &pcfg_pull_up>,
+-						<4 23 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <4 RK_PC4 1 &pcfg_pull_up>,
++						<4 RK_PC5 1 &pcfg_pull_up>,
++						<4 RK_PC6 1 &pcfg_pull_up>,
++						<4 RK_PC7 1 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdio0_cmd: sdio0-cmd {
+-				rockchip,pins = <4 24 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <4 RK_PD0 1 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdio0_clk: sdio0-clk {
+-				rockchip,pins = <4 25 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <4 RK_PD1 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			sdio0_cd: sdio0-cd {
+-				rockchip,pins = <4 26 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <4 RK_PD2 1 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdio0_wp: sdio0-wp {
+-				rockchip,pins = <4 27 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <4 RK_PD3 1 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdio0_pwr: sdio0-pwr {
+-				rockchip,pins = <4 28 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <4 RK_PD4 1 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdio0_bkpwr: sdio0-bkpwr {
+-				rockchip,pins = <4 29 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <4 RK_PD5 1 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdio0_int: sdio0-int {
+-				rockchip,pins = <4 30 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <4 RK_PD6 1 &pcfg_pull_up>;
+ 			};
+ 		};
+ 
+ 		sdio1 {
+ 			sdio1_bus1: sdio1-bus1 {
+-				rockchip,pins = <3 24 4 &pcfg_pull_up>;
++				rockchip,pins = <3 RK_PD0 4 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdio1_bus4: sdio1-bus4 {
+-				rockchip,pins = <3 24 4 &pcfg_pull_up>,
+-						<3 25 4 &pcfg_pull_up>,
+-						<3 26 4 &pcfg_pull_up>,
+-						<3 27 4 &pcfg_pull_up>;
++				rockchip,pins = <3 RK_PD0 4 &pcfg_pull_up>,
++						<3 RK_PD1 4 &pcfg_pull_up>,
++						<3 RK_PD2 4 &pcfg_pull_up>,
++						<3 RK_PD3 4 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdio1_cd: sdio1-cd {
+-				rockchip,pins = <3 28 4 &pcfg_pull_up>;
++				rockchip,pins = <3 RK_PD4 4 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdio1_wp: sdio1-wp {
+-				rockchip,pins = <3 29 4 &pcfg_pull_up>;
++				rockchip,pins = <3 RK_PD5 4 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdio1_bkpwr: sdio1-bkpwr {
+-				rockchip,pins = <3 30 4 &pcfg_pull_up>;
++				rockchip,pins = <3 RK_PD6 4 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdio1_int: sdio1-int {
+-				rockchip,pins = <3 31 4 &pcfg_pull_up>;
++				rockchip,pins = <3 RK_PD7 4 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdio1_cmd: sdio1-cmd {
+-				rockchip,pins = <4 6 4 &pcfg_pull_up>;
++				rockchip,pins = <4 RK_PA6 4 &pcfg_pull_up>;
+ 			};
+ 
+ 			sdio1_clk: sdio1-clk {
+-				rockchip,pins = <4 7 4 &pcfg_pull_none>;
++				rockchip,pins = <4 RK_PA7 4 &pcfg_pull_none>;
+ 			};
+ 
+ 			sdio1_pwr: sdio1-pwr {
+-				rockchip,pins = <4 9 4 &pcfg_pull_up>;
++				rockchip,pins = <4 RK_PB1 4 &pcfg_pull_up>;
+ 			};
+ 		};
+ 
+ 		emmc {
+ 			emmc_clk: emmc-clk {
+-				rockchip,pins = <3 18 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PC2 2 &pcfg_pull_none>;
+ 			};
+ 
+ 			emmc_cmd: emmc-cmd {
+-				rockchip,pins = <3 16 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <3 RK_PC0 2 &pcfg_pull_up>;
+ 			};
+ 
+ 			emmc_pwr: emmc-pwr {
+-				rockchip,pins = <3 9 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <3 RK_PB1 2 &pcfg_pull_up>;
+ 			};
+ 
+ 			emmc_bus1: emmc-bus1 {
+-				rockchip,pins = <3 0 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <3 RK_PA0 2 &pcfg_pull_up>;
+ 			};
+ 
+ 			emmc_bus4: emmc-bus4 {
+-				rockchip,pins = <3 0 RK_FUNC_2 &pcfg_pull_up>,
+-						<3 1 RK_FUNC_2 &pcfg_pull_up>,
+-						<3 2 RK_FUNC_2 &pcfg_pull_up>,
+-						<3 3 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <3 RK_PA0 2 &pcfg_pull_up>,
++						<3 RK_PA1 2 &pcfg_pull_up>,
++						<3 RK_PA2 2 &pcfg_pull_up>,
++						<3 RK_PA3 2 &pcfg_pull_up>;
+ 			};
+ 
+ 			emmc_bus8: emmc-bus8 {
+-				rockchip,pins = <3 0 RK_FUNC_2 &pcfg_pull_up>,
+-						<3 1 RK_FUNC_2 &pcfg_pull_up>,
+-						<3 2 RK_FUNC_2 &pcfg_pull_up>,
+-						<3 3 RK_FUNC_2 &pcfg_pull_up>,
+-						<3 4 RK_FUNC_2 &pcfg_pull_up>,
+-						<3 5 RK_FUNC_2 &pcfg_pull_up>,
+-						<3 6 RK_FUNC_2 &pcfg_pull_up>,
+-						<3 7 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <3 RK_PA0 2 &pcfg_pull_up>,
++						<3 RK_PA1 2 &pcfg_pull_up>,
++						<3 RK_PA2 2 &pcfg_pull_up>,
++						<3 RK_PA3 2 &pcfg_pull_up>,
++						<3 RK_PA4 2 &pcfg_pull_up>,
++						<3 RK_PA5 2 &pcfg_pull_up>,
++						<3 RK_PA6 2 &pcfg_pull_up>,
++						<3 RK_PA7 2 &pcfg_pull_up>;
  			};
  		};
  
  		spi0 {
  			spi0_clk: spi0-clk {
- 				rockchip,pins =
--					<3 6 RK_FUNC_2 &pcfg_pull_up>;
-+					<3 RK_PA6 2 &pcfg_pull_up>;
+-				rockchip,pins = <5 12 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <5 RK_PB4 1 &pcfg_pull_up>;
  			};
  			spi0_cs0: spi0-cs0 {
- 				rockchip,pins =
--					<3 7 RK_FUNC_2 &pcfg_pull_up>;
-+					<3 RK_PA7 2 &pcfg_pull_up>;
- 			};
- 			spi0_cs1: spi0-cs1 {
- 				rockchip,pins =
--					<3 8 RK_FUNC_2 &pcfg_pull_up>;
-+					<3 RK_PB0 2 &pcfg_pull_up>;
+-				rockchip,pins = <5 13 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <5 RK_PB5 1 &pcfg_pull_up>;
  			};
  			spi0_tx: spi0-tx {
- 				rockchip,pins =
--					<3 5 RK_FUNC_2 &pcfg_pull_up>;
-+					<3 RK_PA5 2 &pcfg_pull_up>;
+-				rockchip,pins = <5 14 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <5 RK_PB6 1 &pcfg_pull_up>;
  			};
  			spi0_rx: spi0-rx {
- 				rockchip,pins =
--					<3 4 RK_FUNC_2 &pcfg_pull_up>;
-+					<3 RK_PA4 2 &pcfg_pull_up>;
+-				rockchip,pins = <5 15 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <5 RK_PB7 1 &pcfg_pull_up>;
+ 			};
+ 			spi0_cs1: spi0-cs1 {
+-				rockchip,pins = <5 16 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <5 RK_PC0 1 &pcfg_pull_up>;
  			};
  		};
- 
  		spi1 {
  			spi1_clk: spi1-clk {
- 				rockchip,pins =
--					<1 9 RK_FUNC_2 &pcfg_pull_up>;
-+					<1 RK_PB1 2 &pcfg_pull_up>;
+-				rockchip,pins = <7 12 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <7 RK_PB4 2 &pcfg_pull_up>;
  			};
  			spi1_cs0: spi1-cs0 {
- 				rockchip,pins =
--					<1 10 RK_FUNC_2 &pcfg_pull_up>;
-+					<1 RK_PB2 2 &pcfg_pull_up>;
+-				rockchip,pins = <7 13 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <7 RK_PB5 2 &pcfg_pull_up>;
  			};
  			spi1_rx: spi1-rx {
- 				rockchip,pins =
--					<1 7 RK_FUNC_2 &pcfg_pull_up>;
-+					<1 RK_PA7 2 &pcfg_pull_up>;
+-				rockchip,pins = <7 14 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <7 RK_PB6 2 &pcfg_pull_up>;
  			};
  			spi1_tx: spi1-tx {
- 				rockchip,pins =
--					<1 8 RK_FUNC_2 &pcfg_pull_up>;
-+					<1 RK_PB0 2 &pcfg_pull_up>;
+-				rockchip,pins = <7 15 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <7 RK_PB7 2 &pcfg_pull_up>;
  			};
  		};
  
  		spi2 {
+ 			spi2_cs1: spi2-cs1 {
+-				rockchip,pins = <8 3 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <8 RK_PA3 1 &pcfg_pull_up>;
+ 			};
  			spi2_clk: spi2-clk {
- 				rockchip,pins =
--					<2 11 RK_FUNC_1 &pcfg_pull_up>;
-+					<2 RK_PB3 1 &pcfg_pull_up>;
+-				rockchip,pins = <8 6 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <8 RK_PA6 1 &pcfg_pull_up>;
  			};
  			spi2_cs0: spi2-cs0 {
- 				rockchip,pins =
--					<2 12 RK_FUNC_1 &pcfg_pull_up>;
-+					<2 RK_PB4 1 &pcfg_pull_up>;
+-				rockchip,pins = <8 7 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <8 RK_PA7 1 &pcfg_pull_up>;
  			};
  			spi2_rx: spi2-rx {
- 				rockchip,pins =
--					<2 9 RK_FUNC_1 &pcfg_pull_up>;
-+					<2 RK_PB1 1 &pcfg_pull_up>;
+-				rockchip,pins = <8 8 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <8 RK_PB0 1 &pcfg_pull_up>;
  			};
  			spi2_tx: spi2-tx {
- 				rockchip,pins =
--					<2 10 RK_FUNC_1 &pcfg_pull_up>;
-+					<2 RK_PB2 1 &pcfg_pull_up>;
- 			};
- 		};
- 
- 		spi3 {
- 			spi3_clk: spi3-clk {
- 				rockchip,pins =
--					<1 17 RK_FUNC_1 &pcfg_pull_up>;
-+					<1 RK_PC1 1 &pcfg_pull_up>;
- 			};
- 			spi3_cs0: spi3-cs0 {
- 				rockchip,pins =
--					<1 18 RK_FUNC_1 &pcfg_pull_up>;
-+					<1 RK_PC2 1 &pcfg_pull_up>;
- 			};
- 			spi3_rx: spi3-rx {
- 				rockchip,pins =
--					<1 15 RK_FUNC_1 &pcfg_pull_up>;
-+					<1 RK_PB7 1 &pcfg_pull_up>;
- 			};
- 			spi3_tx: spi3-tx {
- 				rockchip,pins =
--					<1 16 RK_FUNC_1 &pcfg_pull_up>;
-+					<1 RK_PC0 1 &pcfg_pull_up>;
- 			};
- 		};
- 
- 		spi4 {
- 			spi4_clk: spi4-clk {
- 				rockchip,pins =
--					<3 2 RK_FUNC_2 &pcfg_pull_up>;
-+					<3 RK_PA2 2 &pcfg_pull_up>;
- 			};
- 			spi4_cs0: spi4-cs0 {
- 				rockchip,pins =
--					<3 3 RK_FUNC_2 &pcfg_pull_up>;
-+					<3 RK_PA3 2 &pcfg_pull_up>;
- 			};
- 			spi4_rx: spi4-rx {
- 				rockchip,pins =
--					<3 0 RK_FUNC_2 &pcfg_pull_up>;
-+					<3 RK_PA0 2 &pcfg_pull_up>;
- 			};
- 			spi4_tx: spi4-tx {
- 				rockchip,pins =
--					<3 1 RK_FUNC_2 &pcfg_pull_up>;
-+					<3 RK_PA1 2 &pcfg_pull_up>;
- 			};
- 		};
- 
- 		spi5 {
- 			spi5_clk: spi5-clk {
- 				rockchip,pins =
--					<2 22 RK_FUNC_2 &pcfg_pull_up>;
-+					<2 RK_PC6 2 &pcfg_pull_up>;
- 			};
- 			spi5_cs0: spi5-cs0 {
- 				rockchip,pins =
--					<2 23 RK_FUNC_2 &pcfg_pull_up>;
-+					<2 RK_PC7 2 &pcfg_pull_up>;
- 			};
- 			spi5_rx: spi5-rx {
- 				rockchip,pins =
--					<2 20 RK_FUNC_2 &pcfg_pull_up>;
-+					<2 RK_PC4 2 &pcfg_pull_up>;
- 			};
- 			spi5_tx: spi5-tx {
- 				rockchip,pins =
--					<2 21 RK_FUNC_2 &pcfg_pull_up>;
-+					<2 RK_PC5 2 &pcfg_pull_up>;
- 			};
- 		};
- 
- 		testclk {
- 			test_clkout0: test-clkout0 {
- 				rockchip,pins =
--					<0 0 RK_FUNC_1 &pcfg_pull_none>;
-+					<0 RK_PA0 1 &pcfg_pull_none>;
- 			};
- 
- 			test_clkout1: test-clkout1 {
- 				rockchip,pins =
--					<2 25 RK_FUNC_2 &pcfg_pull_none>;
-+					<2 RK_PD1 2 &pcfg_pull_none>;
- 			};
- 
- 			test_clkout2: test-clkout2 {
- 				rockchip,pins =
--					<0 8 RK_FUNC_3 &pcfg_pull_none>;
-+					<0 RK_PB0 3 &pcfg_pull_none>;
- 			};
- 		};
- 
- 		tsadc {
- 			otp_gpio: otp-gpio {
--				rockchip,pins = <1 6 RK_FUNC_GPIO &pcfg_pull_none>;
-+				rockchip,pins = <1 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
- 			};
- 
- 			otp_out: otp-out {
--				rockchip,pins = <1 6 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins = <1 RK_PA6 1 &pcfg_pull_none>;
+-				rockchip,pins = <8 9 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <8 RK_PB1 1 &pcfg_pull_up>;
  			};
  		};
  
  		uart0 {
  			uart0_xfer: uart0-xfer {
- 				rockchip,pins =
--					<2 16 RK_FUNC_1 &pcfg_pull_up>,
--					<2 17 RK_FUNC_1 &pcfg_pull_none>;
-+					<2 RK_PC0 1 &pcfg_pull_up>,
-+					<2 RK_PC1 1 &pcfg_pull_none>;
+-				rockchip,pins = <4 16 RK_FUNC_1 &pcfg_pull_up>,
+-						<4 17 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <4 RK_PC0 1 &pcfg_pull_up>,
++						<4 RK_PC1 1 &pcfg_pull_none>;
  			};
  
  			uart0_cts: uart0-cts {
- 				rockchip,pins =
--					<2 18 RK_FUNC_1 &pcfg_pull_none>;
-+					<2 RK_PC2 1 &pcfg_pull_none>;
+-				rockchip,pins = <4 18 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <4 RK_PC2 1 &pcfg_pull_up>;
  			};
  
  			uart0_rts: uart0-rts {
- 				rockchip,pins =
--					<2 19 RK_FUNC_1 &pcfg_pull_none>;
-+					<2 RK_PC3 1 &pcfg_pull_none>;
+-				rockchip,pins = <4 19 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <4 RK_PC3 1 &pcfg_pull_none>;
  			};
  		};
  
  		uart1 {
  			uart1_xfer: uart1-xfer {
- 				rockchip,pins =
--					<3 12 RK_FUNC_2 &pcfg_pull_up>,
--					<3 13 RK_FUNC_2 &pcfg_pull_none>;
-+					<3 RK_PB4 2 &pcfg_pull_up>,
-+					<3 RK_PB5 2 &pcfg_pull_none>;
+-				rockchip,pins = <5 8 RK_FUNC_1 &pcfg_pull_up>,
+-						<5 9 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <5 RK_PB0 1 &pcfg_pull_up>,
++						<5 RK_PB1 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart1_cts: uart1-cts {
+-				rockchip,pins = <5 10 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <5 RK_PB2 1 &pcfg_pull_up>;
+ 			};
+ 
+ 			uart1_rts: uart1-rts {
+-				rockchip,pins = <5 11 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <5 RK_PB3 1 &pcfg_pull_none>;
  			};
  		};
  
- 		uart2a {
- 			uart2a_xfer: uart2a-xfer {
- 				rockchip,pins =
--					<4 8 RK_FUNC_2 &pcfg_pull_up>,
--					<4 9 RK_FUNC_2 &pcfg_pull_none>;
-+					<4 RK_PB0 2 &pcfg_pull_up>,
-+					<4 RK_PB1 2 &pcfg_pull_none>;
+ 		uart2 {
+ 			uart2_xfer: uart2-xfer {
+-				rockchip,pins = <7 22 RK_FUNC_1 &pcfg_pull_up>,
+-						<7 23 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <7 RK_PC6 1 &pcfg_pull_up>,
++						<7 RK_PC7 1 &pcfg_pull_none>;
  			};
- 		};
- 
- 		uart2b {
- 			uart2b_xfer: uart2b-xfer {
- 				rockchip,pins =
--					<4 16 RK_FUNC_2 &pcfg_pull_up>,
--					<4 17 RK_FUNC_2 &pcfg_pull_none>;
-+					<4 RK_PC0 2 &pcfg_pull_up>,
-+					<4 RK_PC1 2 &pcfg_pull_none>;
- 			};
- 		};
- 
- 		uart2c {
- 			uart2c_xfer: uart2c-xfer {
- 				rockchip,pins =
--					<4 19 RK_FUNC_1 &pcfg_pull_up>,
--					<4 20 RK_FUNC_1 &pcfg_pull_none>;
-+					<4 RK_PC3 1 &pcfg_pull_up>,
-+					<4 RK_PC4 1 &pcfg_pull_none>;
- 			};
+ 			/* no rts / cts for uart2 */
  		};
  
  		uart3 {
  			uart3_xfer: uart3-xfer {
- 				rockchip,pins =
--					<3 14 RK_FUNC_2 &pcfg_pull_up>,
--					<3 15 RK_FUNC_2 &pcfg_pull_none>;
-+					<3 RK_PB6 2 &pcfg_pull_up>,
-+					<3 RK_PB7 2 &pcfg_pull_none>;
+-				rockchip,pins = <7 7 RK_FUNC_1 &pcfg_pull_up>,
+-						<7 8 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <7 RK_PA7 1 &pcfg_pull_up>,
++						<7 RK_PB0 1 &pcfg_pull_none>;
  			};
  
  			uart3_cts: uart3-cts {
- 				rockchip,pins =
--					<3 18 RK_FUNC_2 &pcfg_pull_none>;
-+					<3 RK_PC2 2 &pcfg_pull_none>;
+-				rockchip,pins = <7 9 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <7 RK_PB1 1 &pcfg_pull_up>;
  			};
  
  			uart3_rts: uart3-rts {
- 				rockchip,pins =
--					<3 19 RK_FUNC_2 &pcfg_pull_none>;
-+					<3 RK_PC3 2 &pcfg_pull_none>;
+-				rockchip,pins = <7 10 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <7 RK_PB2 1 &pcfg_pull_none>;
  			};
  		};
  
  		uart4 {
  			uart4_xfer: uart4-xfer {
- 				rockchip,pins =
--					<1 7 RK_FUNC_1 &pcfg_pull_up>,
--					<1 8 RK_FUNC_1 &pcfg_pull_none>;
-+					<1 RK_PA7 1 &pcfg_pull_up>,
-+					<1 RK_PB0 1 &pcfg_pull_none>;
+-				rockchip,pins = <5 15 3 &pcfg_pull_up>,
+-						<5 14 3 &pcfg_pull_none>;
++				rockchip,pins = <5 RK_PB7 3 &pcfg_pull_up>,
++						<5 RK_PB6 3 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart4_cts: uart4-cts {
+-				rockchip,pins = <5 12 3 &pcfg_pull_up>;
++				rockchip,pins = <5 RK_PB4 3 &pcfg_pull_up>;
+ 			};
+ 
+ 			uart4_rts: uart4-rts {
+-				rockchip,pins = <5 13 3 &pcfg_pull_none>;
++				rockchip,pins = <5 RK_PB5 3 &pcfg_pull_none>;
  			};
  		};
  
- 		uarthdcp {
- 			uarthdcp_xfer: uarthdcp-xfer {
- 				rockchip,pins =
--					<4 21 RK_FUNC_2 &pcfg_pull_up>,
--					<4 22 RK_FUNC_2 &pcfg_pull_none>;
-+					<4 RK_PC5 2 &pcfg_pull_up>,
-+					<4 RK_PC6 2 &pcfg_pull_none>;
+ 		tsadc {
+ 			otp_gpio: otp-gpio {
+-				rockchip,pins = <0 10 RK_FUNC_GPIO &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 			};
+ 
+ 			otp_out: otp-out {
+-				rockchip,pins = <0 10 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PB2 1 &pcfg_pull_none>;
  			};
  		};
  
  		pwm0 {
  			pwm0_pin: pwm0-pin {
- 				rockchip,pins =
--					<4 RK_PC2 RK_FUNC_1 &pcfg_pull_none>;
-+					<4 RK_PC2 1 &pcfg_pull_none>;
- 			};
- 
- 			pwm0_pin_pull_down: pwm0-pin-pull-down {
- 				rockchip,pins =
--					<4 RK_PC2 RK_FUNC_1 &pcfg_pull_down>;
-+					<4 RK_PC2 1 &pcfg_pull_down>;
- 			};
- 
- 			vop0_pwm_pin: vop0-pwm-pin {
- 				rockchip,pins =
--					<4 RK_PC2 RK_FUNC_2 &pcfg_pull_none>;
-+					<4 RK_PC2 2 &pcfg_pull_none>;
- 			};
- 
- 			vop1_pwm_pin: vop1-pwm-pin {
- 				rockchip,pins =
--					<4 RK_PC2 RK_FUNC_3 &pcfg_pull_none>;
-+					<4 RK_PC2 3 &pcfg_pull_none>;
+-				rockchip,pins = <7 0 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <7 RK_PA0 1 &pcfg_pull_none>;
  			};
  		};
  
  		pwm1 {
  			pwm1_pin: pwm1-pin {
- 				rockchip,pins =
--					<4 RK_PC6 RK_FUNC_1 &pcfg_pull_none>;
-+					<4 RK_PC6 1 &pcfg_pull_none>;
- 			};
- 
- 			pwm1_pin_pull_down: pwm1-pin-pull-down {
- 				rockchip,pins =
--					<4 RK_PC6 RK_FUNC_1 &pcfg_pull_down>;
-+					<4 RK_PC6 1 &pcfg_pull_down>;
+-				rockchip,pins = <7 1 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <7 RK_PA1 1 &pcfg_pull_none>;
  			};
  		};
  
  		pwm2 {
  			pwm2_pin: pwm2-pin {
- 				rockchip,pins =
--					<1 RK_PC3 RK_FUNC_1 &pcfg_pull_none>;
-+					<1 RK_PC3 1 &pcfg_pull_none>;
- 			};
- 
- 			pwm2_pin_pull_down: pwm2-pin-pull-down {
- 				rockchip,pins =
--					<1 RK_PC3 RK_FUNC_1 &pcfg_pull_down>;
-+					<1 RK_PC3 1 &pcfg_pull_down>;
+-				rockchip,pins = <7 22 3 &pcfg_pull_none>;
++				rockchip,pins = <7 RK_PC6 3 &pcfg_pull_none>;
  			};
  		};
  
- 		pwm3a {
- 			pwm3a_pin: pwm3a-pin {
- 				rockchip,pins =
--					<0 RK_PA6 RK_FUNC_1 &pcfg_pull_none>;
-+					<0 RK_PA6 1 &pcfg_pull_none>;
+ 		pwm3 {
+ 			pwm3_pin: pwm3-pin {
+-				rockchip,pins = <7 23 3 &pcfg_pull_none>;
++				rockchip,pins = <7 RK_PC7 3 &pcfg_pull_none>;
  			};
  		};
  
- 		pwm3b {
- 			pwm3b_pin: pwm3b-pin {
- 				rockchip,pins =
--					<1 RK_PB6 RK_FUNC_1 &pcfg_pull_none>;
-+					<1 RK_PB6 1 &pcfg_pull_none>;
+ 		gmac {
+ 			rgmii_pins: rgmii-pins {
+-				rockchip,pins = <3 30 3 &pcfg_pull_none>,
+-						<3 31 3 &pcfg_pull_none>,
+-						<3 26 3 &pcfg_pull_none>,
+-						<3 27 3 &pcfg_pull_none>,
+-						<3 28 3 &pcfg_pull_none_12ma>,
+-						<3 29 3 &pcfg_pull_none_12ma>,
+-						<3 24 3 &pcfg_pull_none_12ma>,
+-						<3 25 3 &pcfg_pull_none_12ma>,
+-						<4 0 3 &pcfg_pull_none>,
+-						<4 5 3 &pcfg_pull_none>,
+-						<4 6 3 &pcfg_pull_none>,
+-						<4 9 3 &pcfg_pull_none_12ma>,
+-						<4 4 3 &pcfg_pull_none_12ma>,
+-						<4 1 3 &pcfg_pull_none>,
+-						<4 3 3 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PD6 3 &pcfg_pull_none>,
++						<3 RK_PD7 3 &pcfg_pull_none>,
++						<3 RK_PD2 3 &pcfg_pull_none>,
++						<3 RK_PD3 3 &pcfg_pull_none>,
++						<3 RK_PD4 3 &pcfg_pull_none_12ma>,
++						<3 RK_PD5 3 &pcfg_pull_none_12ma>,
++						<3 RK_PD0 3 &pcfg_pull_none_12ma>,
++						<3 RK_PD1 3 &pcfg_pull_none_12ma>,
++						<4 RK_PA0 3 &pcfg_pull_none>,
++						<4 RK_PA5 3 &pcfg_pull_none>,
++						<4 RK_PA6 3 &pcfg_pull_none>,
++						<4 RK_PB1 3 &pcfg_pull_none_12ma>,
++						<4 RK_PA4 3 &pcfg_pull_none_12ma>,
++						<4 RK_PA1 3 &pcfg_pull_none>,
++						<4 RK_PA3 3 &pcfg_pull_none>;
+ 			};
+ 
+ 			rmii_pins: rmii-pins {
+-				rockchip,pins = <3 30 3 &pcfg_pull_none>,
+-						<3 31 3 &pcfg_pull_none>,
+-						<3 28 3 &pcfg_pull_none>,
+-						<3 29 3 &pcfg_pull_none>,
+-						<4 0 3 &pcfg_pull_none>,
+-						<4 5 3 &pcfg_pull_none>,
+-						<4 4 3 &pcfg_pull_none>,
+-						<4 1 3 &pcfg_pull_none>,
+-						<4 2 3 &pcfg_pull_none>,
+-						<4 3 3 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PD6 3 &pcfg_pull_none>,
++						<3 RK_PD7 3 &pcfg_pull_none>,
++						<3 RK_PD4 3 &pcfg_pull_none>,
++						<3 RK_PD5 3 &pcfg_pull_none>,
++						<4 RK_PA0 3 &pcfg_pull_none>,
++						<4 RK_PA5 3 &pcfg_pull_none>,
++						<4 RK_PA4 3 &pcfg_pull_none>,
++						<4 RK_PA1 3 &pcfg_pull_none>,
++						<4 RK_PA2 3 &pcfg_pull_none>,
++						<4 RK_PA3 3 &pcfg_pull_none>;
  			};
  		};
  
- 		hdmi {
- 			hdmi_i2c_xfer: hdmi-i2c-xfer {
- 				rockchip,pins =
--					<4 RK_PC1 RK_FUNC_3 &pcfg_pull_none>,
--					<4 RK_PC0 RK_FUNC_3 &pcfg_pull_none>;
-+					<4 RK_PC1 3 &pcfg_pull_none>,
-+					<4 RK_PC0 3 &pcfg_pull_none>;
+ 		spdif {
+ 			spdif_tx: spdif-tx {
+-				rockchip,pins = <RK_GPIO6 11 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <6 RK_PB3 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 	};
+diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
+index f47ac86d2852..5876690ee09e 100644
+--- a/arch/arm/boot/dts/rv1108.dtsi
++++ b/arch/arm/boot/dts/rv1108.dtsi
+@@ -682,58 +682,58 @@
+ 
+ 		emmc {
+ 			emmc_bus8: emmc-bus8 {
+-				rockchip,pins = <2 RK_PA0 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
+-						<2 RK_PA1 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
+-						<2 RK_PA2 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
+-						<2 RK_PA3 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
+-						<2 RK_PA4 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
+-						<2 RK_PA5 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
+-						<2 RK_PA6 RK_FUNC_2 &pcfg_pull_up_drv_8ma>,
+-						<2 RK_PA7 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
++				rockchip,pins = <2 RK_PA0 2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA1 2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA2 2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA3 2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA4 2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA5 2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA6 2 &pcfg_pull_up_drv_8ma>,
++						<2 RK_PA7 2 &pcfg_pull_up_drv_8ma>;
  			};
  
- 			hdmi_cec: hdmi-cec {
- 				rockchip,pins =
--					<4 RK_PC7 RK_FUNC_1 &pcfg_pull_none>;
-+					<4 RK_PC7 1 &pcfg_pull_none>;
+ 			emmc_clk: emmc-clk {
+-				rockchip,pins = <2 RK_PB6 RK_FUNC_1 &pcfg_pull_none_drv_8ma>;
++				rockchip,pins = <2 RK_PB6 1 &pcfg_pull_none_drv_8ma>;
+ 			};
+ 
+ 			emmc_cmd: emmc-cmd {
+-				rockchip,pins = <2 RK_PB4 RK_FUNC_2 &pcfg_pull_up_drv_8ma>;
++				rockchip,pins = <2 RK_PB4 2 &pcfg_pull_up_drv_8ma>;
  			};
  		};
  
+ 		gmac {
+ 			rmii_pins: rmii-pins {
+-				rockchip,pins =	<1 RK_PC5 RK_FUNC_2 &pcfg_pull_none>,
+-						<1 RK_PC3 RK_FUNC_2 &pcfg_pull_none>,
+-						<1 RK_PC4 RK_FUNC_2 &pcfg_pull_none>,
+-						<1 RK_PB2 RK_FUNC_3 &pcfg_pull_none_drv_12ma>,
+-						<1 RK_PB3 RK_FUNC_3 &pcfg_pull_none_drv_12ma>,
+-						<1 RK_PB4 RK_FUNC_3 &pcfg_pull_none_drv_12ma>,
+-						<1 RK_PB5 RK_FUNC_3 &pcfg_pull_none>,
+-						<1 RK_PB6 RK_FUNC_3 &pcfg_pull_none>,
+-						<1 RK_PB7 RK_FUNC_3 &pcfg_pull_none>,
+-						<1 RK_PC2 RK_FUNC_3 &pcfg_pull_none>;
++				rockchip,pins =	<1 RK_PC5 2 &pcfg_pull_none>,
++						<1 RK_PC3 2 &pcfg_pull_none>,
++						<1 RK_PC4 2 &pcfg_pull_none>,
++						<1 RK_PB2 3 &pcfg_pull_none_drv_12ma>,
++						<1 RK_PB3 3 &pcfg_pull_none_drv_12ma>,
++						<1 RK_PB4 3 &pcfg_pull_none_drv_12ma>,
++						<1 RK_PB5 3 &pcfg_pull_none>,
++						<1 RK_PB6 3 &pcfg_pull_none>,
++						<1 RK_PB7 3 &pcfg_pull_none>,
++						<1 RK_PC2 3 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		i2c0 {
+ 			i2c0_xfer: i2c0-xfer {
+-				rockchip,pins = <0 RK_PB1 RK_FUNC_1 &pcfg_pull_none_smt>,
+-						<0 RK_PB2 RK_FUNC_1 &pcfg_pull_none_smt>;
++				rockchip,pins = <0 RK_PB1 1 &pcfg_pull_none_smt>,
++						<0 RK_PB2 1 &pcfg_pull_none_smt>;
+ 			};
+ 		};
+ 
+ 		i2c1 {
+ 			i2c1_xfer: i2c1-xfer {
+-				rockchip,pins = <2 RK_PD3 RK_FUNC_1 &pcfg_pull_up>,
+-						<2 RK_PD4 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <2 RK_PD3 1 &pcfg_pull_up>,
++						<2 RK_PD4 1 &pcfg_pull_up>;
+ 			};
+ 		};
+ 
+ 		i2c2m1 {
+ 			i2c2m1_xfer: i2c2m1-xfer {
+-				rockchip,pins = <0 RK_PC2 RK_FUNC_2 &pcfg_pull_none>,
+-						<0 RK_PC6 RK_FUNC_3 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PC2 2 &pcfg_pull_none>,
++						<0 RK_PC6 3 &pcfg_pull_none>;
+ 			};
+ 
+ 			i2c2m1_gpio: i2c2m1-gpio {
+@@ -744,8 +744,8 @@
+ 
+ 		i2c2m05v {
+ 			i2c2m05v_xfer: i2c2m05v-xfer {
+-				rockchip,pins = <1 RK_PD5 RK_FUNC_2 &pcfg_pull_none>,
+-						<1 RK_PD4 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PD5 2 &pcfg_pull_none>,
++						<1 RK_PD4 2 &pcfg_pull_none>;
+ 			};
+ 
+ 			i2c2m05v_gpio: i2c2m05v-gpio {
+@@ -756,123 +756,123 @@
+ 
+ 		i2c3 {
+ 			i2c3_xfer: i2c3-xfer {
+-				rockchip,pins = <0 RK_PB6 RK_FUNC_1 &pcfg_pull_none>,
+-						<0 RK_PC4 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PB6 1 &pcfg_pull_none>,
++						<0 RK_PC4 2 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		pwm0 {
+ 			pwm0_pin: pwm0-pin {
+-				rockchip,pins = <0 RK_PC5 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PC5 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		pwm1 {
+ 			pwm1_pin: pwm1-pin {
+-				rockchip,pins = <0 RK_PC4 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PC4 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		pwm2 {
+ 			pwm2_pin: pwm2-pin {
+-				rockchip,pins = <0 RK_PC6 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PC6 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		pwm3 {
+ 			pwm3_pin: pwm3-pin {
+-				rockchip,pins = <0 RK_PC0 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PC0 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		pwm4 {
+ 			pwm4_pin: pwm4-pin {
+-				rockchip,pins = <1 RK_PC1 RK_FUNC_3 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PC1 3 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		pwm5 {
+ 			pwm5_pin: pwm5-pin {
+-				rockchip,pins = <1 RK_PA7 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PA7 2 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		pwm6 {
+ 			pwm6_pin: pwm6-pin {
+-				rockchip,pins = <1 RK_PB0 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PB0 2 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		pwm7 {
+ 			pwm7_pin: pwm7-pin {
+-				rockchip,pins = <1 RK_PB1 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PB1 2 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		sdmmc {
+ 			sdmmc_clk: sdmmc-clk {
+-				rockchip,pins = <3 RK_PC4 RK_FUNC_1 &pcfg_pull_none_drv_4ma>;
++				rockchip,pins = <3 RK_PC4 1 &pcfg_pull_none_drv_4ma>;
+ 			};
+ 
+ 			sdmmc_cmd: sdmmc-cmd {
+-				rockchip,pins = <3 RK_PC5 RK_FUNC_1 &pcfg_pull_up_drv_4ma>;
++				rockchip,pins = <3 RK_PC5 1 &pcfg_pull_up_drv_4ma>;
+ 			};
+ 
+ 			sdmmc_cd: sdmmc-cd {
+-				rockchip,pins = <0 RK_PA1 RK_FUNC_1 &pcfg_pull_up_drv_4ma>;
++				rockchip,pins = <0 RK_PA1 1 &pcfg_pull_up_drv_4ma>;
+ 			};
+ 
+ 			sdmmc_bus1: sdmmc-bus1 {
+-				rockchip,pins = <3 RK_PC3 RK_FUNC_1 &pcfg_pull_up_drv_4ma>;
++				rockchip,pins = <3 RK_PC3 1 &pcfg_pull_up_drv_4ma>;
+ 			};
+ 
+ 			sdmmc_bus4: sdmmc-bus4 {
+-				rockchip,pins = <3 RK_PC3 RK_FUNC_1 &pcfg_pull_up_drv_4ma>,
+-						<3 RK_PC2 RK_FUNC_1 &pcfg_pull_up_drv_4ma>,
+-						<3 RK_PC1 RK_FUNC_1 &pcfg_pull_up_drv_4ma>,
+-						<3 RK_PC0 RK_FUNC_1 &pcfg_pull_up_drv_4ma>;
++				rockchip,pins = <3 RK_PC3 1 &pcfg_pull_up_drv_4ma>,
++						<3 RK_PC2 1 &pcfg_pull_up_drv_4ma>,
++						<3 RK_PC1 1 &pcfg_pull_up_drv_4ma>,
++						<3 RK_PC0 1 &pcfg_pull_up_drv_4ma>;
+ 			};
+ 		};
+ 
+ 		spim0 {
+ 			spim0_clk: spim0-clk {
+-				rockchip,pins = <1 RK_PD0 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <1 RK_PD0 2 &pcfg_pull_up>;
+ 			};
+ 
+ 			spim0_cs0: spim0-cs0 {
+-				rockchip,pins = <1 RK_PD1 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <1 RK_PD1 2 &pcfg_pull_up>;
+ 			};
+ 
+ 			spim0_tx: spim0-tx {
+-				rockchip,pins = <1 RK_PD3 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <1 RK_PD3 2 &pcfg_pull_up>;
+ 			};
+ 
+ 			spim0_rx: spim0-rx {
+-				rockchip,pins = <1 RK_PD2 RK_FUNC_2 &pcfg_pull_up>;
++				rockchip,pins = <1 RK_PD2 2 &pcfg_pull_up>;
+ 			};
+ 		};
+ 
+ 		spim1 {
+ 			spim1_clk: spim1-clk {
+-				rockchip,pins = <0 RK_PA3 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PA3 1 &pcfg_pull_up>;
+ 			};
+ 
+ 			spim1_cs0: spim1-cs0 {
+-				rockchip,pins = <0 RK_PA4 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PA4 1 &pcfg_pull_up>;
+ 			};
+ 
+ 			spim1_rx: spim1-rx {
+-				rockchip,pins = <0 RK_PB0 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PB0 1 &pcfg_pull_up>;
+ 			};
+ 
+ 			spim1_tx: spim1-tx {
+-				rockchip,pins = <0 RK_PA7 RK_FUNC_1 &pcfg_pull_up>;
++				rockchip,pins = <0 RK_PA7 1 &pcfg_pull_up>;
+ 			};
+ 		};
+ 
+ 		tsadc {
+ 			otp_out: otp-out {
+-				rockchip,pins = <0 RK_PB7 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <0 RK_PB7 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			otp_gpio: otp-gpio {
+@@ -882,16 +882,16 @@
+ 
+ 		uart0 {
+ 			uart0_xfer: uart0-xfer {
+-				rockchip,pins = <3 RK_PA6 RK_FUNC_1 &pcfg_pull_up>,
+-						<3 RK_PA5 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PA6 1 &pcfg_pull_up>,
++						<3 RK_PA5 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart0_cts: uart0-cts {
+-				rockchip,pins = <3 RK_PA4 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PA4 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart0_rts: uart0-rts {
+-				rockchip,pins = <3 RK_PA3 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PA3 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart0_rts_gpio: uart0-rts-gpio {
+@@ -901,40 +901,40 @@
+ 
+ 		uart1 {
+ 			uart1_xfer: uart1-xfer {
+-				rockchip,pins = <1 RK_PD3 RK_FUNC_1 &pcfg_pull_up>,
+-						<1 RK_PD2 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PD3 1 &pcfg_pull_up>,
++						<1 RK_PD2 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart1_cts: uart1-cts {
+-				rockchip,pins = <1 RK_PD0 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PD0 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart1_rts: uart1-rts {
+-				rockchip,pins = <1 RK_PD1 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PD1 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		uart2m0 {
+ 			uart2m0_xfer: uart2m0-xfer {
+-				rockchip,pins = <2 RK_PD2 RK_FUNC_1 &pcfg_pull_up>,
+-						<2 RK_PD1 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PD2 1 &pcfg_pull_up>,
++						<2 RK_PD1 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		uart2m1 {
+ 			uart2m1_xfer: uart2m1-xfer {
+-				rockchip,pins = <3 RK_PC3 RK_FUNC_2 &pcfg_pull_up>,
+-						<3 RK_PC2 RK_FUNC_2 &pcfg_pull_none>;
++				rockchip,pins = <3 RK_PC3 2 &pcfg_pull_up>,
++						<3 RK_PC2 2 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+ 		uart2_5v {
+ 			uart2_5v_cts: uart2_5v-cts {
+-				rockchip,pins = <1 RK_PD4 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PD4 1 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart2_5v_rts: uart2_5v-rts {
+-				rockchip,pins = <1 RK_PD5 RK_FUNC_1 &pcfg_pull_none>;
++				rockchip,pins = <1 RK_PD5 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 	};
 -- 
 2.20.1
