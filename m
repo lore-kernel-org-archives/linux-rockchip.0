@@ -1,34 +1,23 @@
-From: Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH] platform/chrome: cros_ec_spi: Transfer messages at high
- priority
-Date: Tue, 2 Apr 2019 17:21:17 -0700
-Message-ID: <20190403002117.GM112750@google.com>
-References: <20190402224445.64823-1-dianders@chromium.org>
- <20190402231917.GL112750@google.com>
+From: Guenter Roeck <groeck@google.com>
+Subject: Re: [PATCH] platform/chrome: cros_ec_spi: Transfer messages at high priority
+Date: Tue, 2 Apr 2019 20:17:03 -0700
+Message-ID: <CABXOdTcE1d2mURSkTAUQda9vcYZhGnmT+Y_NH6xQU9begDh+Qw@mail.gmail.com>
+References: <20190402224445.64823-1-dianders@chromium.org> <20190402231917.GL112750@google.com>
  <CAD=FV=V3S7=GNrA8JnUE+wHin8UwFTeL22EBMuDr4AFTu1nKsw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAD=FV=V3S7=GNrA8JnUE+wHin8UwFTeL22EBMuDr4AFTu1nKsw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Randall Spangler <rspangler-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ryan Case <ryandcase-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Benson Leung <bleung-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=V3S7=GNrA8JnUE+wHin8UwFTeL22EBMuDr4AFTu1nKsw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Matthias Kaehlcke <mka@chromium.org>, Benson Leung <bleung@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Alexandru M Stan <amstan@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Simon Glass <sjg@chromium.org>, Brian Norris <briannorris@chromium.org>, Guenter Roeck <groeck@chromium.org>, Mark Brown <broonie@kernel.org>, Ryan Case <ryandcase@chromium.org>, Randall Spangler <rspangler@chromium.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Apr 02, 2019 at 04:38:29PM -0700, Doug Anderson wrote:
+On Tue, Apr 2, 2019 at 4:38 PM Doug Anderson <dianders@chromium.org> wrote:
+>
 > Hi,
-> 
-> On Tue, Apr 2, 2019 at 4:19 PM Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+>
+> On Tue, Apr 2, 2019 at 4:19 PM Matthias Kaehlcke <mka@chromium.org> wrote:
 > >
 > > Hi Doug,
 > >
@@ -91,7 +80,7 @@ On Tue, Apr 02, 2019 at 04:38:29PM -0700, Doug Anderson wrote:
 > > >
 > > > [1] https://crbug.com/678675
 > > >
-> > > Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
 > > > ---
 > > >
 > > >  drivers/platform/chrome/cros_ec_spi.c | 107 ++++++++++++++++++++++++--
@@ -122,40 +111,78 @@ On Tue, Apr 02, 2019 at 04:38:29PM -0700, Doug Anderson wrote:
 > > completion. This would add a few extra lines to deal with the
 > > completion, in exchange the code to create the workqueue could be
 > > removed.
-> 
+>
 > I'm not convinced using the "system_highpri_wq" is a great idea here.
 > Using flush_workqueue() on the "system_highpri_wq" seems like a recipe
 > for deadlock but I need to flush to get the result back.  See the
 > comments in flush_scheduled_work() for some discussion here.
-> 
+>
+
+Given that high priority workqueues are used all over the place, and
+system_highpri_wq is only rarely used, hijacking the latter doesn't
+seem to be such a good idea to me either. I also recall that we had to
+drop using system qorkqueues at a previous company and replace them
+with local workqueues because we got into timing trouble when using
+system workqueues.
+
+Having said that, the combination of queue_work() immediately followed
+by flush_workqueue() seems odd and appears to violate the wole idea of
+work _queues_. I wonder if there is a better solution available to
+solve problems like this. I also wonder if we solve a problem here, or
+if we work around its symptoms. AFAICS, the delay translates into a
+udelay(), meaning an active wait loop. Has anyone an understanding why
+this translates into a spi transfer error, and how using a workqueue
+(which I guess may offload the active wait to another CPU) solves that
+problem ? Also, are we sure that this isn't a problem with the SPI
+driver ?
+
+Guenter
+
 > I guess you're suggesting using a completion instead of the flush but
 > I think the deadlock potentials are the same.  If we're currently
 > running on the "system_highpri_wq" (because one of our callers
 > happened to be on it) or there are some shared resources between
 > another user of the "system_highpri_wq" and us then we'll just sitting
 > waiting for the completion, won't we?
-
-I'm no workqueue expert, but I think the deadlock potential isn't the same:
-
-With flush_workqueue() the deadlock would occur when running as work
-item of the the same workqueue, i.e. the work is waiting for itself.
-
-If we are running on "system_highpri_wq", schedule a new work on this
-workqueue and wait for it, the Concurrency Managed Workqueue (cmwq)
-will launch a worker for our work, which can run while we are waiting
-for the work and be woken up when it is done.
-
-(https://www.kernel.org/doc/html/v5.0/core-api/workqueue.html)
-
-Other users of "system_highpri_wq" shouldn't cause long delays, unless
-they are CPU hogs, which could/should be considered a bug.
-
+>
 > I would bet that currently nobody actually ends up in this situation
 > because there aren't lots of users of the "system_highpri_wq", but it
 > still doesn't seem like a good design.  Is it really that expensive to
 > have our own workqueue?
-
-I don't think it's excessively expensive, but why use the extra
-resources and lifetime management code if it doesn't provide any
-significant advantages? In terms of deadlocks I even have the
-impression the wq + completion is a more robust solution.
+>
+>
+> > > +     return params.ret;
+> > > +}
+> > > +
+> > > +static void cros_ec_cmd_xfer_spi_work(struct work_struct *work)
+> > > +{
+> > > +     struct cros_ec_xfer_work_params *params;
+> > > +
+> > > +     params = container_of(work, struct cros_ec_xfer_work_params, work);
+> > > +     params->ret = do_cros_ec_cmd_xfer_spi(params->ec_dev, params->ec_msg);
+> > > +}
+> > > +
+> > > +static int cros_ec_cmd_xfer_spi(struct cros_ec_device *ec_dev,
+> > > +                             struct cros_ec_command *ec_msg)
+> > > +{
+> > > +     struct cros_ec_spi *ec_spi = ec_dev->priv;
+> > > +     struct cros_ec_xfer_work_params params;
+> > > +
+> > > +     INIT_WORK(&params.work, cros_ec_cmd_xfer_spi_work);
+> > > +     params.ec_dev = ec_dev;
+> > > +     params.ec_msg = ec_msg;
+> > > +
+> > > +     queue_work(ec_spi->high_pri_wq, &params.work);
+> > > +     flush_workqueue(ec_spi->high_pri_wq);
+> > > +
+> > > +     return params.ret;
+> > > +}
+> >
+> > This is essentially a copy of cros_ec_pkt_xfer_spi() above. You
+> > could add a wrapper that receives the work function to avoid the
+> > duplicate code.
+>
+> Good point.  I'll wait a day or two for more feedback and then post a
+> new version with that change.
+>
+> -Doug
