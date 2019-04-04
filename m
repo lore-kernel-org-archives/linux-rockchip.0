@@ -1,63 +1,57 @@
-From: David Wu <david.wu@rock-chips.com>
-Subject: Re: [PATCH net-next] net: phy: improve handling link_change_notify
- callback
-Date: Thu, 4 Apr 2019 19:04:44 +0800
-Message-ID: <979da9a7-54e3-651b-4ed7-6b044922d648@rock-chips.com>
-References: <85f94f2f-8d1b-214f-a4af-afaf26d68ca0@gmail.com>
- <20190320.105010.192905616973367477.davem@davemloft.net>
+From: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v2] arm64: dts: rockchip: eMMC additions for rk3328-roc-cc
+Date: Thu,  4 Apr 2019 14:23:29 +0300
+Message-ID: <20190404112329.8157-1-papadakospan@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20190320.105010.192905616973367477.davem@davemloft.net>
-Content-Language: en-US
-Sender: netdev-owner@vger.kernel.org
-To: David Miller <davem@davemloft.net>, hkallweit1@gmail.com
-Cc: andrew@lunn.ch, f.fainelli@gmail.com, heiko@sntech.de, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiner,
+The eMMC 5.x that Libre Computer provide for their boards supports HS200 mode.
+The support is already included in the dts for their newest board:
 
-Today i apply this patch, I test it on the RK3328 which has the phy,
-it looks good, and link state switching between 10M/100M is correct.
+La Frite (AML-S805X-AC)
+dts: arch/arm64/boot/dts/amlogic/meson-gxl-s805x-libretech-ac.dts
 
-ÔÚ 2019/3/21 ÉÏÎç1:50, David Miller Ð´µÀ:
-> From: Heiner Kallweit <hkallweit1@gmail.com>
-> Date: Tue, 19 Mar 2019 19:56:51 +0100
-> 
->> Currently the Phy driver's link_change_notify callback is called
->> whenever the state machine is run (every second if polling), no matter
->> whether the state changed or not. This isn't needed and may confuse
->> users considering the name of the callback. Actually it contradicts
->> its kernel-doc description. Therefore let's change the behavior and
->> call this callback only in case of an actual state change.
->>
->> This requires changes to the at803x and rockchip drivers.
->> at803x can be simplified so that it reacts on a state change to
->> PHY_NOLINK only.
->> The rockchip driver can also be much simplified. We simply re-init
->> the AFE/DSP registers whenever we change to PHY_RUNNING and speed
->> is 100Mbps. This causes very small overhead because we do this even
->> if the speed was 100Mbps already. But this is negligible and
->> I think justified by the much simpler code.
->>
->> Changes are compile-tested only.
->>
->> A little bit problematic seems to be to find somebody with the
->> hardware to test the changes to the two PHY drivers. See also [0].
->> David may be able to test the Rockchip driver.
->>
->> [0] https://marc.info/?t=153782508800006&r=1&w=2
->>
->> Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
-> 
-> I'm just going to apply this, let's see what happens as I don't really see
-> any value after all of this time of waiting for testing that may or may not
-> happen.
-> 
-> We can always revert.
-> 
-> Thanks.
-> 
-> 
-> 
+That same eMMC is supported in the ROC-RK3328-CC:
+https://www.loverpi.com/products/libre-computer-board-emmc-5-x-module
+
+This increases the speed of the eMMC significantly.
+
+Signed-off-by: Leonidas P. Papadakos <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+Changes since v1:
+- disable-wp isn't needed.
+- limit max_frequency to 150MHz for rk3328
+
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index c213ad74d..db3246995 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -122,6 +122,9 @@
+ &emmc {
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
++	max-frequency = <150000000>;
++	mmc-ddr-1_8v;
++	mmc-hs200-1_8v;
+ 	non-removable;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
+-- 
+2.21.0
