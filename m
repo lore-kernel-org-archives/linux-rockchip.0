@@ -1,56 +1,65 @@
-From: Pascal Van Leeuwen <pvanleeuwen-TMv6SC2IrX7YdpcV/sKalQ@public.gmane.org>
-Subject: RE: [Bug] Rockchip crypto driver sometimes produces wrong ciphertext
-Date: Thu, 4 Apr 2019 13:41:50 +0000
-Message-ID: <AM5PR0901MB115570ABE89DC1285AE07E60D2500@AM5PR0901MB1155.eurprd09.prod.outlook.com>
-References: <20190126210530.GB709@sol.localdomain>
- <CAKv+Gu-RKu9jt+2FnV2529zqyLGR8RSu8r4B8eOs-7Om-pL0aQ@mail.gmail.com>
- <1894799.pWIprST79S@phil>
- <f7a0d04c-339e-d9f8-7188-a27d55ad8b4d@rock-chips.com>
- <20190315033140.GB1671@sol.localdomain>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: Re: [PATCH v3] platform/chrome: cros_ec_spi: Transfer messages at
+ high priority
+Date: Thu, 4 Apr 2019 17:00:36 +0200
+Message-ID: <b54ef6c0-512a-19ff-e4f3-6963dfe9e8bd@collabora.com>
+References: <20190403203137.203582-1-dianders@chromium.org>
+ <20190403210436.GS112750@google.com>
+ <CAD=FV=Whd4upxDDOrmVt=HgjEiGNuL2FccOfezpAFsy5yB55JA@mail.gmail.com>
+ <20190403211943.GT112750@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190315033140.GB1671-8Kz7deQLoS0mYvmMESoHnA@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Eric Biggers <ebiggers-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Zhang Zhijie <zhangzj-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Ard Biesheuvel <ard.biesheuvel-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:HARDWARE RANDOM NUMBER
- GENERATOR CORE" <linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, "ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org" <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190403211943.GT112750@google.com>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Kaehlcke <mka@chromium.org>, Doug Anderson <dianders@chromium.org>
+Cc: Benson Leung <bleung@chromium.org>, Alexandru M Stan <amstan@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Simon Glass <sjg@chromium.org>, Brian Norris <briannorris@chromium.org>, Guenter Roeck <groeck@chromium.org>, Mark Brown <broonie@kernel.org>, Ryan Case <ryandcase@chromium.org>, Randall Spangler <rspangler@chromium.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-> The issue is that the self-tests now verify that CBC implementations update the
-> IV buffer to contain the next IV, aka the last ciphertext block.  But the Rockchip
-> crypto driver doesn't do that, so it needs to be fixed.
->
-> This has always been a requirement for CBC implementations so that users can
-> chain CBC requests.  Unfortunately it was just never tested for...
->
-This did not immediately trigger me when it came flying past a couple of weeks
-ago, but I ran into the same issue today with the inside_secure driver I'm playing
-with: it does NOT return correct IV outputs for CBC modes.
+Hi Doug,
 
-However ... I'd like to question that very requirement ... if I may :-)
+Thanks for sending this patch upstream.
 
-My reasoning is that this IV output *is* available as the last block of either the
-output (for encrypt) or input (for decrypt) datastream. So requiring it to be
-updated in the IV buffer as well seems redundant to me. It burdens the driver
-with an extra data copy operation, while in the majority of practicle use cases
-you would not even *need* this output IV. (chaining IV's would not work on
-a hardware accelerator anyway, because you would need to serialize the
-datastream, meaning you run at the speed of the round-trip latency instead
-of the throughput, which is typically one to two orders of a magnitude slower)
+On 3/4/19 23:19, Matthias Kaehlcke wrote:
+> On Wed, Apr 03, 2019 at 02:08:40PM -0700, Doug Anderson wrote:
+>> Hi,
+>>
+>> On Wed, Apr 3, 2019 at 2:04 PM Matthias Kaehlcke <mka@chromium.org> wrote:
+>>>> +static int cros_ec_xfer_high_pri(struct cros_ec_device *ec_dev,
+>>>
+>>> nit: the fact that a high priority workqueue is used is an
+>>> implementation detail, since the driver has no function to perform a
+>>> transfer with 'normal'/low priority there is no need to distinguish
+>>> between the two cases. In this sense I'd be inclined to remove the
+>>> 'high_pri' from the function names.
+>>>
+>>> Sorry for not mentioning this earlier, I focussed on other
+>>> details, anyway it's just a nit.
+>>
+>> I still kinda like having the "high_pri" in there since the point of
+>> this function is to transfer the work onto the high priority
+>> workqueue.  It's not an exported function so having the implementation
+>> detail leak into the name isn't a bad thing, is it?
+> 
+> IMO the long name with details mostly irrelevant to the caller (they
+> want to do a 'normal' transfer, the function should do the right thing
+> to get that done) is more distracting than helpful. But yeah, this is
+> definitely 'nit/bikeshed' territory ;-)
+> 
+>> ...so unless someone else thinks the name should change or you feel
+>> strongly about it I won't plan to change the name.
+> 
+> no strong feelings on my side, just wanted to mention it.
+> 
 
-And in the odd case you do need it, you can just grab it from the data buffer
-yourself.
+Tested on veyron-jaq, veyron-minnie and peach-pi (well with peach-pi I didn't
+reproduce the issue but at least I know doesn't breaks anything)
 
-Pascal van Leeuwen
-Silicon IP Architect, Multi-Protocol Engines
+I'll add this patch to the chrome-platform for-next branch for the auto-builders
+to play with and launch some few more automated tests. If all goes well I'll
+queue this patch to chrome-platform-5.2.
+
+Thanks,
+ Enric
