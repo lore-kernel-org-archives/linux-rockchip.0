@@ -1,63 +1,34 @@
-From: Eric Biggers <ebiggers@kernel.org>
-Subject: Re: [Bug] Rockchip crypto driver sometimes produces wrong ciphertext
-Date: Thu, 4 Apr 2019 10:12:05 -0700
-Message-ID: <20190404171204.GA121392@gmail.com>
-References: <20190126210530.GB709@sol.localdomain>
- <CAKv+Gu-RKu9jt+2FnV2529zqyLGR8RSu8r4B8eOs-7Om-pL0aQ@mail.gmail.com>
- <1894799.pWIprST79S@phil>
- <f7a0d04c-339e-d9f8-7188-a27d55ad8b4d@rock-chips.com>
- <20190315033140.GB1671@sol.localdomain>
- <AM5PR0901MB115570ABE89DC1285AE07E60D2500@AM5PR0901MB1155.eurprd09.prod.outlook.com>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] mwifiex: Make resume actually do something useful again
+ on SDIO cards
+Date: Thu, 4 Apr 2019 13:47:17 -0700
+Message-ID: <CA+ASDXNfOUmMEWYwts8PuiDaEjuoPK+tZ0BhDSSte5u5toydkA@mail.gmail.com>
+References: <20190404040106.40519-1-dianders@chromium.org> <874l7egxdj.fsf@codeaurora.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <AM5PR0901MB115570ABE89DC1285AE07E60D2500@AM5PR0901MB1155.eurprd09.prod.outlook.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Herbert Xu <herbert@gondor.apana.org.au>
-Cc: Tao Huang <huangtao@rock-chips.com>, Zain Wang <wzz@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Pascal Van Leeuwen <pvanleeuwen@insidesecure.com>, Zhang Zhijie <zhangzj@rock-chips.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "open list:HARDWARE RANDOM NUMBER GENERATOR CORE" <linux-crypto@vger.kernel.org>, Olof Johansson <olof@lixom.net>, "ezequiel@collabora.com" <ezequiel@collabora.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <874l7egxdj.fsf-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ryan Case <ryandcase-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Ganapathi Bhat <gbhat-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Amitkumar Karwar <amitkarwar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linux Kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Nishant Sarmukadam <nishants-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, "<netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>" <netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Xinming Hu <huxinming820-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Apr 04, 2019 at 01:41:50PM +0000, Pascal Van Leeuwen wrote:
-> > The issue is that the self-tests now verify that CBC implementations update the
-> > IV buffer to contain the next IV, aka the last ciphertext block.  But the Rockchip
-> > crypto driver doesn't do that, so it needs to be fixed.
-> >
-> > This has always been a requirement for CBC implementations so that users can
-> > chain CBC requests.  Unfortunately it was just never tested for...
-> >
-> This did not immediately trigger me when it came flying past a couple of weeks
-> ago, but I ran into the same issue today with the inside_secure driver I'm playing
-> with: it does NOT return correct IV outputs for CBC modes.
-> 
-> However ... I'd like to question that very requirement ... if I may :-)
-> 
-> My reasoning is that this IV output *is* available as the last block of either the
-> output (for encrypt) or input (for decrypt) datastream. So requiring it to be
-> updated in the IV buffer as well seems redundant to me. It burdens the driver
-> with an extra data copy operation, while in the majority of practicle use cases
-> you would not even *need* this output IV. (chaining IV's would not work on
-> a hardware accelerator anyway, because you would need to serialize the
-> datastream, meaning you run at the speed of the round-trip latency instead
-> of the throughput, which is typically one to two orders of a magnitude slower)
-> 
-> And in the odd case you do need it, you can just grab it from the data buffer
-> yourself.
-> 
-> Pascal van Leeuwen
-> Silicon IP Architect, Multi-Protocol Engines
-> 
+On Wed, Apr 3, 2019 at 10:20 PM Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org> wrote:
+> Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
+> > Fixes: fc3a2fcaa1ba ("mwifiex: use atomic bitops to represent adapter status variables")
+> > Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>
+> I'm planning to queue this for 5.1.
 
-Herbert, can you explain what users actually rely on the next IV being returned?
-I don't know all the historical context behind this.
+With an explicit
 
-- Eric
+Cc: <stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+
+please? Somebody would likely pick it up anyway, but it's nice to be explicit.
+
+Not that it really matters, but also:
+
+Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+Thanks,
+Brian
