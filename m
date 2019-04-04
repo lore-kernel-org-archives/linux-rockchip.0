@@ -1,30 +1,18 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: rockchip: pdm: Mark RXFIFO_DATA as volatile and
- precious" to the asoc tree
-Date: Thu,  4 Apr 2019 15:16:19 +0700 (+07)
-Message-ID: <20190404081619.75DA7441D3C@finisterre.ee.mobilebroadband>
-References: <1554350228-24440-1-git-send-email-sugar.zhang@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1554350228-24440-1-git-send-email-sugar.zhang@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Subject: Applied "ASoC: rockchip: pdm: adjust waterlevel in frame unit" to the asoc tree
+Date: Thu,  4 Apr 2019 15:16:34 +0700 (+07)
+Message-ID: <20190404081634.31E08441D3C@finisterre.ee.mobilebroadband>
+References: <1554350189-24318-1-git-send-email-sugar.zhang@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1554350189-24318-1-git-send-email-sugar.zhang@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: alsa-devel@alsa-project.org, heiko@sntech.de, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, broonie@kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: Mark Brown <broonie@kernel.org>, heiko@sntech.debroonie@kernel.org, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
 The patch
 
-   ASoC: rockchip: pdm: Mark RXFIFO_DATA as volatile and precious
+   ASoC: rockchip: pdm: adjust waterlevel in frame unit
 
 has been applied to the asoc tree at
 
@@ -49,58 +37,35 @@ to this mail.
 Thanks,
 Mark
 
-From b126fc07328749269021ac53173f9afdd6947248 Mon Sep 17 00:00:00 2001
+From 430f5da69b9323d5e7faca95bc30e61be4fcbbbf Mon Sep 17 00:00:00 2001
 From: Sugar Zhang <sugar.zhang@rock-chips.com>
-Date: Thu, 4 Apr 2019 11:57:08 +0800
-Subject: [PATCH] ASoC: rockchip: pdm: Mark RXFIFO_DATA as volatile and
- precious
+Date: Thu, 4 Apr 2019 11:56:29 +0800
+Subject: [PATCH] ASoC: rockchip: pdm: adjust waterlevel in frame unit
 
-This patch marks RXFIFO_DATA as precious to avoid being read
-outside a call from the driver, such as regmap debugfs
+This patch make the waterlevel more reasonable, because the pdm
+controller share the single FIFO(128 entries) with each channel.
+adjust waterlevel in frame to meet the vad or dma frames request.
 
 Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
 Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
- sound/soc/rockchip/rockchip_pdm.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ sound/soc/rockchip/rockchip_pdm.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/sound/soc/rockchip/rockchip_pdm.c b/sound/soc/rockchip/rockchip_pdm.c
-index 068453596470..6c0f242db5ef 100644
+index 3e1c5fd5b32b..955cdc2b8fc5 100644
 --- a/sound/soc/rockchip/rockchip_pdm.c
 +++ b/sound/soc/rockchip/rockchip_pdm.c
-@@ -417,6 +417,7 @@ static bool rockchip_pdm_rd_reg(struct device *dev, unsigned int reg)
- 	case PDM_INT_CLR:
- 	case PDM_INT_ST:
- 	case PDM_DATA_VALID:
-+	case PDM_RXFIFO_DATA:
- 	case PDM_VERSION:
- 		return true;
- 	default:
-@@ -431,6 +432,17 @@ static bool rockchip_pdm_volatile_reg(struct device *dev, unsigned int reg)
- 	case PDM_FIFO_CTRL:
- 	case PDM_INT_CLR:
- 	case PDM_INT_ST:
-+	case PDM_RXFIFO_DATA:
-+		return true;
-+	default:
-+		return false;
-+	}
-+}
-+
-+static bool rockchip_pdm_precious_reg(struct device *dev, unsigned int reg)
-+{
-+	switch (reg) {
-+	case PDM_RXFIFO_DATA:
- 		return true;
- 	default:
- 		return false;
-@@ -453,6 +465,7 @@ static const struct regmap_config rockchip_pdm_regmap_config = {
- 	.writeable_reg = rockchip_pdm_wr_reg,
- 	.readable_reg = rockchip_pdm_rd_reg,
- 	.volatile_reg = rockchip_pdm_volatile_reg,
-+	.precious_reg = rockchip_pdm_precious_reg,
- 	.cache_type = REGCACHE_FLAT,
- };
+@@ -255,8 +255,9 @@ static int rockchip_pdm_hw_params(struct snd_pcm_substream *substream,
+ 	regmap_update_bits(pdm->regmap, PDM_CTRL0,
+ 			   PDM_PATH_MSK | PDM_VDW_MSK,
+ 			   val);
++	/* all channels share the single FIFO */
+ 	regmap_update_bits(pdm->regmap, PDM_DMA_CTRL, PDM_DMA_RDL_MSK,
+-			   PDM_DMA_RDL(16));
++			   PDM_DMA_RDL(8 * params_channels(params)));
  
+ 	return 0;
+ }
 -- 
 2.20.1
