@@ -1,66 +1,220 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH=5d_arm64=3a_dts=3a_rockchip=3a_eMMC_additi?=
- =?UTF-8?B?b25zIGZvciByazMzMjgtcm9jLWNj44CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGlu?=
- =?UTF-8?Q?ux-rockchip-bounces+shawn=2elin=3drock-chips=2ecom=40lists=2einfr?=
- =?UTF-8?B?YWRlYWQub3Jn5Luj5Y+R44CR?=
-Date: Thu, 4 Apr 2019 09:54:25 +0800
-Message-ID: <1c00cc1e-fbe4-ad3b-fb9a-877284322f04@rock-chips.com>
-References: <20190403215051.29536-1-papadakospan@gmail.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v1 1/3] thermal: rockchip: add pinctrl control
+Date: Thu, 4 Apr 2019 05:03:33 +0200
+Message-ID: <30325add-d75a-6775-50c0-d2d2274ff81e@linaro.org>
+References: <1554100985-11385-1-git-send-email-zhangqing@rock-chips.com>
+ <1554100985-11385-2-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190403215051.29536-1-papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1554100985-11385-2-git-send-email-zhangqing@rock-chips.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>, heiko@sntech.de
+Cc: rui.zhang@intel.com, edubezval@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2019/4/4 5:50, Leonidas P. Papadakos wrote:
-> The eMMC 5.x that Libre Computer provide for their boards supports HS200 mode.
-> The support is already included in the dts for their newest board:
-> 
-> La Frite (AML-S805X-AC)
-> dts: arch/arm64/boot/dts/amlogic/meson-gxl-s805x-libretech-ac.dts
-> 
-> That same eMMC is supported in the ROC-RK3328-CC:
-> https://www.loverpi.com/products/libre-computer-board-emmc-5-x-module
-> 
-> This increases the speed of the eMMC significantly.
-> 
-> Signed-off-by: Leonidas P. Papadakos <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+On 01/04/2019 08:43, Elaine Zhang wrote:
+> Based on the TSADC Tshut mode to select pinctrl,
+> instead of setting pinctrl based on architecture
+> (Not depends on pinctrl setting by "init" or "default").
+> And it requires setting the tshut polarity before select pinctrl.
+
+I'm not sure to fully read the description. Can you rephrase/elaborate
+the changelog?
+
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 > ---
->   arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 4 ++++
->   1 file changed, 4 insertions(+)
+>  drivers/thermal/rockchip_thermal.c | 61 +++++++++++++++++++++++++++++++-------
+>  1 file changed, 50 insertions(+), 11 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-> index c213ad74d..c3cf56107 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-> @@ -122,6 +122,10 @@
->   &emmc {
->   	bus-width = <8>;
->   	cap-mmc-highspeed;
-> +	disable-wp;
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+> index 9c7643d62ed7..faa6c7792155 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -34,7 +34,7 @@
+>   */
+>  enum tshut_mode {
+>  	TSHUT_MODE_CRU = 0,
+> -	TSHUT_MODE_GPIO,
+> +	TSHUT_MODE_OTP,
 
-disable-wp isn't needed.
+Why do you change the enum name? The impact on the patch is much higher,
+no ?
 
-> +	max-frequency = <200000000>;
+>  };
+>  
+>  /**
+> @@ -172,6 +172,9 @@ struct rockchip_thermal_data {
+>  	int tshut_temp;
+>  	enum tshut_mode tshut_mode;
+>  	enum tshut_polarity tshut_polarity;
+> +	struct pinctrl *pinctrl;
+> +	struct pinctrl_state *gpio_state;
+> +	struct pinctrl_state *otp_state;
+>  };
+>  
+>  /**
+> @@ -807,7 +810,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+>  	u32 val;
+>  
+>  	val = readl_relaxed(regs + TSADCV2_INT_EN);
+> -	if (mode == TSHUT_MODE_GPIO) {
+> +	if (mode == TSHUT_MODE_OTP) {
+>  		val &= ~TSADCV2_SHUT_2CRU_SRC_EN(chn);
+>  		val |= TSADCV2_SHUT_2GPIO_SRC_EN(chn);
+>  	} else {
+> @@ -822,7 +825,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+>  	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
+>  	.chn_num = 1, /* one channel for tsadc */
+>  
+> -	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+> +	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+>  	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>  	.tshut_temp = 95000,
+>  
+> @@ -846,7 +849,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+>  	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
+>  	.chn_num = 1, /* one channel for tsadc */
+>  
+> -	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+> +	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+>  	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>  	.tshut_temp = 95000,
+>  
+> @@ -871,7 +874,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+>  	.chn_id[SENSOR_GPU] = 2, /* gpu sensor is channel 2 */
+>  	.chn_num = 2, /* two channels for tsadc */
+>  
+> -	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+> +	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+>  	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>  	.tshut_temp = 95000,
+>  
+> @@ -919,7 +922,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+>  	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
+>  	.chn_num = 2, /* two channels for tsadc */
+>  
+> -	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+> +	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+>  	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>  	.tshut_temp = 95000,
+>  
+> @@ -944,7 +947,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+>  	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
+>  	.chn_num = 2, /* two channels for tsadc */
+>  
+> -	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+> +	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+>  	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>  	.tshut_temp = 95000,
+>  
+> @@ -969,7 +972,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+>  	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
+>  	.chn_num = 2, /* two channels for tsadc */
+>  
+> -	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+> +	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+>  	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>  	.tshut_temp = 95000,
+>  
+> @@ -1080,6 +1083,20 @@ static int rockchip_thermal_get_temp(void *_sensor, int *out_temp)
+>  	.set_trips = rockchip_thermal_set_trips,
+>  };
+>  
+> +static void thermal_pinctrl_select_otp(struct rockchip_thermal_data *thermal)
+> +{
+> +	if (!IS_ERR(thermal->pinctrl) && !IS_ERR_OR_NULL(thermal->otp_state))
+> +		pinctrl_select_state(thermal->pinctrl,
+> +				     thermal->otp_state);
+> +}
+> +
+> +static void thermal_pinctrl_select_gpio(struct rockchip_thermal_data *thermal)
+> +{
+> +	if (!IS_ERR(thermal->pinctrl) && !IS_ERR_OR_NULL(thermal->gpio_state))
+> +		pinctrl_select_state(thermal->pinctrl,
+> +				     thermal->gpio_state);
+> +}
 
-AFAIK, the 200Mhz eMMC SI for rk3328 is not so good for MP,
-so I suggest you to limit it to 150MHz.:)
+You should not have to create a couple of specific functions just to
+check the pinctrl pointers are set. The caller should do that.
 
-> +	mmc-ddr-1_8v;
-> +	mmc-hs200-1_8v;
->   	non-removable;
->   	pinctrl-names = "default";
->   	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
+>  static int rockchip_configure_from_dt(struct device *dev,
+>  				      struct device_node *np,
+>  				      struct rockchip_thermal_data *thermal)
+> @@ -1103,7 +1120,7 @@ static int rockchip_configure_from_dt(struct device *dev,
+>  	if (of_property_read_u32(np, "rockchip,hw-tshut-mode", &tshut_mode)) {
+>  		dev_warn(dev,
+>  			 "Missing tshut mode property, using default (%s)\n",
+> -			 thermal->chip->tshut_mode == TSHUT_MODE_GPIO ?
+> +			 thermal->chip->tshut_mode == TSHUT_MODE_OTP ?
+>  				"gpio" : "cru");
+>  		thermal->tshut_mode = thermal->chip->tshut_mode;
+>  	} else {
+> @@ -1242,6 +1259,8 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+>  		return error;
+>  	}
+>  
+> +	thermal->chip->control(thermal->regs, false);
+> +
+>  	error = clk_prepare_enable(thermal->clk);
+>  	if (error) {
+>  		dev_err(&pdev->dev, "failed to enable converter clock: %d\n",
+> @@ -1267,6 +1286,24 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+>  	thermal->chip->initialize(thermal->grf, thermal->regs,
+>  				  thermal->tshut_polarity);
+>  
+> +	if (thermal->tshut_mode == TSHUT_MODE_OTP) {
+> +		thermal->pinctrl = devm_pinctrl_get(&pdev->dev);
+> +		if (IS_ERR(thermal->pinctrl))
+> +			dev_err(&pdev->dev, "failed to find thermal pinctrl\n");
+> +
+> +		thermal->gpio_state = pinctrl_lookup_state(thermal->pinctrl,
+> +							   "gpio");
+> +		if (IS_ERR_OR_NULL(thermal->gpio_state))
+> +			dev_err(&pdev->dev, "failed to find thermal gpio state\n");
+> +
+> +		thermal->otp_state = pinctrl_lookup_state(thermal->pinctrl,
+> +							  "otpout");
+> +		if (IS_ERR_OR_NULL(thermal->otp_state))
+> +			dev_err(&pdev->dev, "failed to find thermal otpout state\n");
+
+What is the meaning for the rest of the code if the lookup fails for any
+of those ?
+
+> +		thermal_pinctrl_select_otp(thermal);
+> +	}
+> +
+>  	for (i = 0; i < thermal->chip->chn_num; i++) {
+>  		error = rockchip_thermal_register_sensor(pdev, thermal,
+>  						&thermal->sensors[i],
+> @@ -1338,7 +1375,8 @@ static int __maybe_unused rockchip_thermal_suspend(struct device *dev)
+>  	clk_disable(thermal->pclk);
+>  	clk_disable(thermal->clk);
+>  
+> -	pinctrl_pm_select_sleep_state(dev);
+> +	if (thermal->tshut_mode == TSHUT_MODE_OTP)
+> +		thermal_pinctrl_select_gpio(thermal);
+>  
+>  	return 0;
+>  }
+> @@ -1383,7 +1421,8 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
+>  	for (i = 0; i < thermal->chip->chn_num; i++)
+>  		rockchip_thermal_toggle_sensor(&thermal->sensors[i], true);
+>  
+> -	pinctrl_pm_select_default_state(dev);
+> +	if (thermal->tshut_mode == TSHUT_MODE_OTP)
+> +		thermal_pinctrl_select_otp(thermal);
+>  
+>  	return 0;
+>  }
 > 
+
+
+-- 
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
