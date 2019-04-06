@@ -1,51 +1,46 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v5 1/7] dt-bindings: Add panel-timing subnode to simple-panel
-Date: Sat, 06 Apr 2019 01:06:30 -0500
-Message-ID: <5ca841e8.1c69fb81.fc058.3930@mx.google.com>
-References: <20190401171724.215780-1-dianders@chromium.org> <20190401171724.215780-2-dianders@chromium.org>
+From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Subject: [PATCH] arm64: dts: rockchip: fix cts, rts pin assign of UART3 for rk3399
+Date: Sun,  7 Apr 2019 00:35:57 +0900
+Message-ID: <20190406153557.25930-1-katsuhiro@katsuster.net>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190401171724.215780-2-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>, linux-rockchip@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dri-devel@lists.freedesktop.org, Boris Brezillon <boris.brezillon@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, =?UTF-8?q?Enric=20Balletb=C3=B2?= <enric.balletbo@collabora.com>, mka@chromium.org, Eric Anholt <eric@anholt.net>, Jeffy Chen <jeffy.chen@rock-chips.com>, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, David Airlie <airlied@linux.ie>, Mark Rutland <mark.rutland@arm.com>, Daniel Vetter <daniel@ffwll.ch>
+To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Katsuhiro Suzuki <katsuhiro@katsuster.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon,  1 Apr 2019 10:17:18 -0700, Douglas Anderson wrote:
-> From: Sean Paul <seanpaul@chromium.org>
-> 
-> This patch adds a new subnode to simple-panel allowing us to override
-> the typical timing expressed in the panel's display_timing.
-> 
-> Changes in v2:
->  - Split out the binding into a new patch (Rob)
->  - display-timings is a new section (Rob)
->  - Use the full display-timings subnode instead of picking the timing
->    out (Rob/Thierry)
-> Changes in v3:
->  - Go back to using the timing subnode directly, but rename to
->    panel-timing (Rob)
-> Changes in v4:
->  - Simplify desc. for when override should be used (Thierry/Laurent)
->  - Removed Rob H review since it's been a year and wording changed
-> Changes in v5:
->  - Removed bit about OS may ignore (Rob/Ezequiel)
-> 
-> Cc: Doug Anderson <dianders@chromium.org>
-> Cc: Eric Anholt <eric@anholt.net>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
-> Cc: Rob Herring <robh+dt@kernel.org>
-> Cc: Stéphane Marchesin <marcheu@chromium.org>
-> Cc: Thierry Reding <thierry.reding@gmail.com>
-> Cc: devicetree@vger.kernel.org
-> Cc: dri-devel@lists.freedesktop.org
-> Cc: linux-rockchip@lists.infradead.org
-> Signed-off-by: Sean Paul <seanpaul@chromium.org>
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> 
->  .../bindings/display/panel/simple-panel.txt   | 22 +++++++++++++++++++
->  1 file changed, 22 insertions(+)
-> 
+This patch fixes pin assign of cts and rts signal of UART3.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Currently GPIO3_C2 and C3 pins are assigned but TRM says that
+GPIO3_C0 and C1 are correct.
+
+Refer:
+  RK3399 TRM v1.4 - Table 19-1 UART Interface Description
+
+Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+---
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index f54c855f8cdf..196ac9b78076 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -2543,12 +2543,12 @@
+ 
+ 			uart3_cts: uart3-cts {
+ 				rockchip,pins =
+-					<3 RK_PC2 2 &pcfg_pull_none>;
++					<3 RK_PC0 2 &pcfg_pull_none>;
+ 			};
+ 
+ 			uart3_rts: uart3-rts {
+ 				rockchip,pins =
+-					<3 RK_PC3 2 &pcfg_pull_none>;
++					<3 RK_PC1 2 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+-- 
+2.20.1
