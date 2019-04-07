@@ -1,86 +1,43 @@
-From: Emil Renner Berthing <emil.renner.berthing@gmail.com>
-Subject: Re: [BUG] Rockchip SPI: long burst writes produce unexpected result
-Date: Sun, 7 Apr 2019 21:55:10 +0200
-Message-ID: <CANBLGcyeroURDCHrBPRQ8bbhNsy9u0LkCq0MQmWUyvPR=p4b8w@mail.gmail.com>
-References: <21d83ed2-a8db-49cf-ba8c-c7844157d7b0@gmail.com>
+From: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH net-next] net: phy: switch drivers to use dynamic feature
+ detection
+Date: Sun, 7 Apr 2019 13:31:37 -0700
+Message-ID: <53f5d96e-4594-7a32-792d-4837479da7f2@gmail.com>
+References: <0cc96fab-e102-c0d1-ade0-90e3e06dc9f1@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <21d83ed2-a8db-49cf-ba8c-c7844157d7b0@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Vicente Bergas <vicencb@gmail.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <0cc96fab-e102-c0d1-ade0-90e3e06dc9f1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiner Kallweit <hkallweit1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Ray Jui <rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Scott Branden <sbranden-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Richard Cochran <richardcochran-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Vicente,
 
-On Sat, 6 Apr 2019 at 19:35, Vicente Bergas <vicencb@gmail.com> wrote:
->
-> Hi,
-> i have been experiencing issues writing to NOR-Flash SPI Memories
-> from two RK3399-based platforms: gru-kevin and sapphire board.
-> For kevin, this resulted in a bricked device because that memory
-> is the only boot device.
-> Fortunately an external programmer is available.
->
-> In order to isolate where the issue can be, several tests have been
-> done, after which it makes me think the issue is related to the
-> Rockchip SPI driver.
->
-> 4KB burst reads work fine.
-> The issue is only observed on the write burst length.
->
-> Test user     user/kernel kernel    RK3399
-> Num  space    interface   space       SoC   Status Notes
-> --------------------------------------------------------
-> 1    flashrom linux_mtd   MTD/RKspi RKspi   Fail
-> 2    flashrom linux_spi   RKspi     RKspi   Fail
-> 3    flashrom linux_spi   spi_gpio  GPIO    OK
-> 4    custom   linux_spi   spi_gpio  GPIO    OK   260-byte burst writes
-> 5    custom   linux_spi   RKspi     RKspi   Fail 260-byte burst writes
-> 6    custom   linux_spi   RKspi     RKspi   OK     1-byte burst writes
-> 7    custom   linux_spi   RKspi     RKspi   OK    47-byte burst writes
-> 8    custom   linux_spi   RKspi     RKspi   Fail  48-byte burst writes
->
-> 3, 4) Unaccetably slow, device tree is
->   spi_gpio {
->     compatible = "spi-gpio";
->     #address-cells = <1>;
->     #size-cells = <0>;
->     cs-gpios   = <&gpio1 RK_PB2 GPIO_ACTIVE_HIGH>;
->     sck-gpios  = <&gpio1 RK_PB1 GPIO_ACTIVE_HIGH>;
->     mosi-gpios = <&gpio1 RK_PB0 GPIO_ACTIVE_HIGH>;
->     miso-gpios = <&gpio1 RK_PA7 GPIO_ACTIVE_HIGH>;
->     num-chipselects = <1>;
->     spidev@0 {
->       compatible = "spidev";
->       reg = <0>;
->       spi-max-frequency = <50000000>;
->     };
->   };
-> 2, 5, 6, 7, 8) device tree is
->   &spi1 {
 
-Since you say reverting the "set min/max speed" patch fixes your issues
-could you try raising the spi clock like this and see if it works for you?
+On 4/7/2019 2:57 AM, Heiner Kallweit wrote:
+> Recently genphy_read_abilities() has been added that dynamically detects
+> clause 22 PHY abilities. I *think* this detection should work with all
+> supported PHY's, at least for the ones with basic features sets, i.e.
+> PHY_BASIC_FEATURES and PHY_GBIT_FEATURES. So let's remove setting these
+> features explicitly and rely on phylib feature detection.
+> 
+> I don't have access to most of these PHY's, therefore I'd appreciate
+> regression testing.
 
-+       assigned-clocks = <&cru SCLK_SPI1>;
-+       assigned-clock-rates = <400000000>;
-
-Of course the driver shouldn't let you configure the spi-controller in a way
-that makes it skip bytes, but if this works for you then I still think
-you're better off explicitly setting the spi clock speed rather than having
-the driver raise it for you. At least while it does it without
-checking for errors
-or having a way to lower it again as outlined in the commit message.
-
->     status = "okay";
->     spidev@0 {
->       compatible = "spidev";
->       reg = <0>;
->       spi-max-frequency = <50000000>;
->     };
->   };
-> ...
-
-/Emil
+The nice thing about the features is that we can right away tell which
+PHY entries are Fast Ethernet/Gigabit etc... so if you remove that
+assignment, we would need at least a standardized comment allowing us to
+quickly grep for that information.
+-- 
+Florian
