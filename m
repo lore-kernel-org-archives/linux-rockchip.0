@@ -1,36 +1,53 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [PATCH net-next] net: phy: switch drivers to use dynamic feature
- detection
-Date: Mon, 8 Apr 2019 20:12:49 +0200
-Message-ID: <20190408181249.GH15267@lunn.ch>
-References: <0cc96fab-e102-c0d1-ade0-90e3e06dc9f1@gmail.com>
- <20190407221312.GA14347@lunn.ch>
- <bc5c192e-78ce-89b1-eeae-541836f5f0fb@gmail.com>
+From: Eric Biggers <ebiggers@kernel.org>
+Subject: Re: [Bug] Rockchip crypto driver sometimes produces wrong ciphertext
+Date: Mon, 8 Apr 2019 11:27:58 -0700
+Message-ID: <20190408182757.GD9145@gmail.com>
+References: <20190126210530.GB709@sol.localdomain>
+ <CAKv+Gu-RKu9jt+2FnV2529zqyLGR8RSu8r4B8eOs-7Om-pL0aQ@mail.gmail.com>
+ <1894799.pWIprST79S@phil>
+ <f7a0d04c-339e-d9f8-7188-a27d55ad8b4d@rock-chips.com>
+ <20190315033140.GB1671@sol.localdomain>
+ <AM5PR0901MB115570ABE89DC1285AE07E60D2500@AM5PR0901MB1155.eurprd09.prod.outlook.com>
+ <20190404171204.GA121392@gmail.com>
+ <20190407124211.fv7pjsozxhnhw56i@gondor.apana.org.au>
+ <AM6PR09MB352377D3A58CE6C12464414ED2530@AM6PR09MB3523.eurprd09.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <netdev-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <bc5c192e-78ce-89b1-eeae-541836f5f0fb@gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Florian Fainelli <f.fainelli@gmail.com>, David Miller <davem@davemloft.net>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, Richard Cochran <richardcochran@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, bcm-kernel-feedback-list@broadcom.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
+In-Reply-To: <AM6PR09MB352377D3A58CE6C12464414ED2530@AM6PR09MB3523.eurprd09.prod.outlook.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Pascal Van Leeuwen <pvanleeuwen@insidesecure.com>
+Cc: Tao Huang <huangtao@rock-chips.com>, Zain Wang <wzz@rock-chips.com>, Herbert Xu <herbert@gondor.apana.org.au>, Arnd Bergmann <arnd@arndb.de>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Zhang Zhijie <zhangzj@rock-chips.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "open list:HARDWARE RANDOM NUMBER GENERATOR CORE" <linux-crypto@vger.kernel.org>, Olof Johansson <olof@lixom.net>, "ezequiel@collabora.com" <ezequiel@collabora.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-> Splitting the series and waiting for a Tested-by, as proposed by Richard,
-> may be problematic because most PHY drivers don't have a dedicated
-> maintainer, and we lack the hardware to test.
+On Sun, Apr 07, 2019 at 07:12:43PM +0000, Pascal Van Leeuwen wrote:
+> 
+> Fact is, there are at least 2 hardware device drivers NOT doing this - and
+> I want to bet a nice sum of money there will be more - and that this has
+> not been noticed prior to adding these tests to testmgr, otherwise this
+> would have been fixed by now. Which seems to confirm that there is no
+> real use case for this functionality.
+> 
 
-Well, we could split out those we know are likely to get tested.  I
-have a number of boards with Marvell devices i can test. Florian has
-Broadcom boards. I also have a couple of boards with Micrel KSZ8041,
-which would be interesting because they are Fast Ethernet. Bootlin can
-test some of the mscc PHYs.
+I really shouldn't have to say this, but just because something hasn't been
+reported doesn't mean it's not a real problem.  Someone could easily be affected
+by one of these bugs where crypto drivers produce the wrong output, and never
+notice it because their use case doesn't involve checking the output against
+another implementation.  Or, perhaps they noticed but never reported it
+upstream.  Or perhaps they didn't have the time or skill to debug the problem so
+just they disabled the broken driver, or used No Crypto instead.
 
-We also might want to get some targeted testing. The microchip_t1.c
-could be interesting, since it is a T1 device. There was another T1
-added in the last year, but i forget which.
+That's why we have tests -- so bugs can be detected immediately rather than
+maybe years out in the field after causing critical security vulnerabilities.
 
-Just doing this testing might give us an idea if we really should
-expect problems.
-
-      Andrew
+- Eric
