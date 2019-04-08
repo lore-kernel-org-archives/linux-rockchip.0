@@ -1,58 +1,97 @@
-From: Herbert Xu <herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org>
-Subject: Re: [Bug] Rockchip crypto driver sometimes produces wrong ciphertext
-Date: Mon, 8 Apr 2019 17:06:04 +0800
-Message-ID: <20190408090604.7v7s5xhfvwthknio@gondor.apana.org.au>
-References: <CAKv+Gu-RKu9jt+2FnV2529zqyLGR8RSu8r4B8eOs-7Om-pL0aQ@mail.gmail.com>
- <1894799.pWIprST79S@phil>
- <f7a0d04c-339e-d9f8-7188-a27d55ad8b4d@rock-chips.com>
- <20190315033140.GB1671@sol.localdomain>
- <AM5PR0901MB115570ABE89DC1285AE07E60D2500@AM5PR0901MB1155.eurprd09.prod.outlook.com>
- <20190404171204.GA121392@gmail.com>
- <20190407124211.fv7pjsozxhnhw56i@gondor.apana.org.au>
- <AM6PR09MB352377D3A58CE6C12464414ED2530@AM6PR09MB3523.eurprd09.prod.outlook.com>
- <20190408055841.xa5dof4e5xqgaitv@gondor.apana.org.au>
- <AM6PR09MB35238739075B080390C11341D22C0@AM6PR09MB3523.eurprd09.prod.outlook.com>
+From: Boris Brezillon <boris.brezillon@collabora.com>
+Subject: Re: [PATCH v5 1/7] dt-bindings: Add panel-timing subnode to
+ simple-panel
+Date: Mon, 8 Apr 2019 11:10:06 +0200
+Message-ID: <20190408111006.6b8fe312@collabora.com>
+References: <20190401171724.215780-1-dianders@chromium.org>
+        <20190401171724.215780-2-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <AM6PR09MB35238739075B080390C11341D22C0-BMP/HIh3pkp4VU3MGTQapqF+KQg4AgVRvxpqHgZTriW3zl9H0oFU5g@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Pascal Van Leeuwen <pvanleeuwen-TMv6SC2IrX7YdpcV/sKalQ@public.gmane.org>
-Cc: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Zhang Zhijie <zhangzj-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Zain Wang <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Ard Biesheuvel <ard.biesheuvel-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Eric Biggers <ebiggers-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:HARDWARE RANDOM NUMBER GENERATOR CORE" <linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, "ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org" <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190401171724.215780-2-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>, linux-rockchip@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dri-devel@lists.freedesktop.org, Ezequiel Garcia <ezequiel@collabora.com>, Enric =?UTF-8?B?QmFsbGV0YsOy?= <enric.balletbo@collabora.com>, Rob Herring <robh+dt@kernel.org>, mka@chromium.org, Eric Anholt <eric@anholt.net>, Jeffy Chen <jeffy.chen@rock-chips.com>, =?UTF-8?B?U3TDqXBoYW5l?= Marchesin <marcheu@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, David Airlie <airlied@linux.ie>, Mark Rutland <mark.rutland@arm.com>, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Apr 08, 2019 at 08:59:02AM +0000, Pascal Van Leeuwen wrote:
+On Mon,  1 Apr 2019 10:17:18 -0700
+Douglas Anderson <dianders@chromium.org> wrote:
+
+> From: Sean Paul <seanpaul@chromium.org>
 > 
-> It would be nice to have some option in testmgr to just test the core algorithm
-> itself and not all the nitty gritty corners of the API that may not be relevant
-> i.e. split off the core algorithm cases (e.g. proper straightforward encryption
-> of a single block of data with a certain key) from the API cases.
-> Perhaps a driver could advertise this through some flag: "I'm not fully API
-> compliant, so just test the algorithm and not any API corner cases". Or even
-> "please don't test me, I will test myself".
+> This patch adds a new subnode to simple-panel allowing us to override
+> the typical timing expressed in the panel's display_timing.
 > 
-> An alternative approach would be capability flags to advertise specific API
-> features, but I can see how you can quickly go overboard with that.
+> Changes in v2:
+>  - Split out the binding into a new patch (Rob)
+>  - display-timings is a new section (Rob)
+>  - Use the full display-timings subnode instead of picking the timing
+>    out (Rob/Thierry)
+> Changes in v3:
+>  - Go back to using the timing subnode directly, but rename to
+>    panel-timing (Rob)
+> Changes in v4:
+>  - Simplify desc. for when override should be used (Thierry/Laurent)
+>  - Removed Rob H review since it's been a year and wording changed
+> Changes in v5:
+>  - Removed bit about OS may ignore (Rob/Ezequiel)
+> 
+> Cc: Doug Anderson <dianders@chromium.org>
+> Cc: Eric Anholt <eric@anholt.net>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Cc: Rob Herring <robh+dt@kernel.org>
+> Cc: Stéphane Marchesin <marcheu@chromium.org>
+> Cc: Thierry Reding <thierry.reding@gmail.com>
+> Cc: devicetree@vger.kernel.org
+> Cc: dri-devel@lists.freedesktop.org
+> Cc: linux-rockchip@lists.infradead.org
+> Signed-off-by: Sean Paul <seanpaul@chromium.org>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-What we could do is have the user specify an explicit flag saying
-that they do not care about the output IV.  You could then skip the
-output IV step in your driver.
+Reviewed-by: Boris Brezillon <boris.brezillon@collabora.com>
 
-But you'll have to code this up, including the bit on the user-side
-to actually set the flag.
-
-Cheers,
--- 
-Email: Herbert Xu <herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+> ---
+> 
+>  .../bindings/display/panel/simple-panel.txt   | 22 +++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/panel/simple-panel.txt b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
+> index b2b872c710f2..93882268c0b9 100644
+> --- a/Documentation/devicetree/bindings/display/panel/simple-panel.txt
+> +++ b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
+> @@ -15,6 +15,16 @@ Optional properties:
+>    (hot plug detect) signal, but the signal isn't hooked up so we should
+>    hardcode the max delay from the panel spec when powering up the panel.
+>  
+> +panel-timing subnode
+> +--------------------
+> +
+> +This optional subnode is for devices which require a mode differing
+> +from the panel's "typical" display timing.
+> +
+> +Format information on the panel-timing subnode can be found in
+> +display-timing.txt.
+> +
+> +
+>  Example:
+>  
+>  	panel: panel {
+> @@ -25,4 +35,16 @@ Example:
+>  		enable-gpios = <&gpio 90 0>;
+>  
+>  		backlight = <&backlight>;
+> +
+> +		panel-timing {
+> +			clock-frequency = <266604720>;
+> +			hactive = <2400>;
+> +			hfront-porch = <48>;
+> +			hback-porch = <84>;
+> +			hsync-len = <32>;
+> +			vactive = <1600>;
+> +			vfront-porch = <3>;
+> +			vback-porch = <120>;
+> +			vsync-len = <10>;
+> +		};
+>  	};
