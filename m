@@ -1,173 +1,99 @@
-From: Boris Brezillon <boris.brezillon@collabora.com>
-Subject: Re: [PATCH v5 2/7] drm/panel: simple: Add ability to override
- typical timing
-Date: Mon, 8 Apr 2019 11:10:58 +0200
-Message-ID: <20190408111058.5f0a4a3b@collabora.com>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH v5 1/7] dt-bindings: Add panel-timing subnode to
+ simple-panel
+Date: Mon, 8 Apr 2019 12:32:40 +0200
+Message-ID: <20190408103240.GF6644@ulmo>
 References: <20190401171724.215780-1-dianders@chromium.org>
- <20190401171724.215780-3-dianders@chromium.org>
+ <20190401171724.215780-2-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190401171724.215780-3-dianders@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="6v9BRtpmy+umdQlo"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190401171724.215780-2-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Douglas Anderson <dianders@chromium.org>
-Cc: devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Thierry Reding <thierry.reding@gmail.com>, Sean Paul <seanpaul@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?UTF-8?B?U3TDqXBoYW5l?= Marchesin <marcheu@chromium.org>, Enric =?UTF-8?B?QmFsbGV0YsOy?= <enric.balletbo@collabora.com>, Rob Herring <robh+dt@kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>, mka@chromium.org
+Cc: Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>, linux-rockchip@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dri-devel@lists.freedesktop.org, Boris Brezillon <boris.brezillon@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, Enric =?utf-8?B?QmFsbGV0YsOy?= <enric.balletbo@collabora.com>, Rob Herring <robh+dt@kernel.org>, mka@chromium.org, Eric Anholt <eric@anholt.net>, Jeffy Chen <jeffy.chen@rock-chips.com>, =?utf-8?B?U3TDqXBoYW5l?= Marchesin <marcheu@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, David Airlie <airlied@linux.ie>, Mark Rutland <mark.rutland@arm.com>, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCAgMSBBcHIgMjAxOSAxMDoxNzoxOSAtMDcwMApEb3VnbGFzIEFuZGVyc29uIDxkaWFu
-ZGVyc0BjaHJvbWl1bS5vcmc+IHdyb3RlOgoKPiBGcm9tOiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNo
-cm9taXVtLm9yZz4KPiAKPiBUaGlzIHBhdGNoIGFkZHMgdGhlIGFiaWxpdHkgdG8gb3ZlcnJpZGUg
-dGhlIHR5cGljYWwgZGlzcGxheSB0aW1pbmcgZm9yIGEKPiBnaXZlbiBwYW5lbC4gVGhpcyBpcyB1
-c2VmdWwgZm9yIGRldmljZXMgd2hpY2ggaGF2ZSB0aW1pbmcgY29uc3RyYWludHMKPiB0aGF0IGRv
-IG5vdCBhcHBseSBhY3Jvc3MgdGhlIGVudGlyZSBkaXNwbGF5IGRyaXZlciAoZWc6IHRvIGF2b2lk
-Cj4gY3Jvc3N0YWxrIGJldHdlZW4gcGFuZWwgYW5kIGRpZ2l0aXplciBvbiBjZXJ0YWluIGxhcHRv
-cHMpLiBUaGUgcnVsZXMgYXJlCj4gYXMgZm9sbG93czoKPiAKPiAtIHBhbmVsIG11c3Qgbm90IHNw
-ZWNpZnkgZml4ZWQgbW9kZSAoc2luY2UgdGhlIG92ZXJyaWRlIG1vZGUgd2lsbAo+ICAgZWl0aGVy
-IGJlIHRoZSBzYW1lIGFzIHRoZSBmaXhlZCBtb2RlLCBvciB3ZSdsbCBiZSB1bmFibGUgdG8KPiAg
-IGNoZWNrIHRoZSBib3VuZHMgb2YgdGhlIG92ZXJyaWVkKQo+IC0gcGFuZWwgbXVzdCBzcGVjaWZ5
-IGF0IGxlYXN0IG9uZSBkaXNwbGF5X3RpbWluZyByYW5nZSB3aGljaCB3aWxsIGJlCj4gICB1c2Vk
-IHRvIGVuc3VyZSB0aGUgb3ZlcnJpZGUgbW9kZSBmaXRzIHdpdGhpbiBpdHMgYm91bmRzCj4gCj4g
-Q2hhbmdlcyBpbiB2MjoKPiAgLSBQYXJzZSB0aGUgZnVsbCBkaXNwbGF5LXRpbWluZ3Mgbm9kZSAo
-dXNpbmcgdGhlIG5hdGl2ZS1tb2RlKSAoUm9iKQo+IENoYW5nZXMgaW4gdjM6Cj4gIC0gTm8gbG9u
-Z2VyIHBhcnNlIGRpc3BsYXktdGltaW5ncyBzdWJub2RlLCB1c2UgcGFuZWwtdGltaW5nIChSb2Ip
-Cj4gQ2hhbmdlcyBpbiB2NDoKPiAgLSBEb24ndCBhZGQgbW9kZSBmcm9tIHRpbWluZyBpZiBvdmVy
-cmlkZSB3YXMgc3BlY2lmaWVkIChUaGllcnJ5KQo+ICAtIEFkZCB3YXJuaW5nIGlmIHRpbWluZyBh
-bmQgZml4ZWQgbW9kZSB3YXMgc3BlY2lmaWVkIChUaGllcnJ5KQo+ICAtIERvbid0IGFkZCBmaXhl
-ZCBtb2RlIGlmIHRpbWluZyB3YXMgc3BlY2lmaWVkIChUaGllcnJ5KQo+ICAtIFJlZmFjdG9yL3Jl
-bmFtZSBhIGJpdCB0byBhdm9pZCBleHRyYSBpbmRlbnRhdGlvbiBmcm9tICJpZiIgdGVzdHMKPiAg
-LSBpIHNob3VsZCBiZSB1bnNpZ25lZCAoVGhpZXJyeSkKPiAgLSBBZGQgYW5ub3lpbmcgV0FSTl9P
-TnMgZm9yIHNvbWUgY2FzZXMgKFRoaWVycnkpCj4gIC0gU2ltcGxpZnkgJ05vIGRpc3BsYXlfdGlt
-aW5nIGZvdW5kJyBoYW5kbGluZyAoVGhpZXJyeSkKPiAgLSBSZW5hbWUgdG8gcGFuZWxfc2ltcGxl
-X3BhcnNlX292ZXJyaWRlX21vZGUoKSAoVGhpZXJyeSkKPiBDaGFuZ2VzIGluIHY1Ogo+ICAtIEFk
-ZGVkIEhlaWtvJ3MgVGVzdGVkLWJ5Cj4gCj4gQ2M6IERvdWcgQW5kZXJzb24gPGRpYW5kZXJzQGNo
-cm9taXVtLm9yZz4KPiBDYzogRXJpYyBBbmhvbHQgPGVyaWNAYW5ob2x0Lm5ldD4KPiBDYzogSGVp
-a28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiBDYzogSmVmZnkgQ2hlbiA8amVmZnkuY2hl
-bkByb2NrLWNoaXBzLmNvbT4KPiBDYzogUm9iIEhlcnJpbmcgPHJvYmgrZHRAa2VybmVsLm9yZz4K
-PiBDYzogU3TDqXBoYW5lIE1hcmNoZXNpbiA8bWFyY2hldUBjaHJvbWl1bS5vcmc+Cj4gQ2M6IFRo
-aWVycnkgUmVkaW5nIDx0aGllcnJ5LnJlZGluZ0BnbWFpbC5jb20+Cj4gQ2M6IGRldmljZXRyZWVA
-dmdlci5rZXJuZWwub3JnCj4gQ2M6IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBT
-aWduZWQtb2ZmLWJ5OiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPiBUZXN0ZWQt
-Ynk6IEVucmljIEJhbGxldGJvIGkgU2VycmEgPGVucmljLmJhbGxldGJvQGNvbGxhYm9yYS5jb20+
-Cj4gU2lnbmVkLW9mZi1ieTogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21pdW0ub3Jn
-Pgo+IFRlc3RlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KClJldmlld2Vk
-LWJ5OiBCb3JpcyBCcmV6aWxsb24gPGJvcmlzLmJyZXppbGxvbkBjb2xsYWJvcmEuY29tPgoKPiAt
-LS0KPiAKPiAgZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5jIHwgMTA5ICsrKysr
-KysrKysrKysrKysrKysrKysrKystLQo+ICAxIGZpbGUgY2hhbmdlZCwgMTA0IGluc2VydGlvbnMo
-KyksIDUgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9wYW5l
-bC9wYW5lbC1zaW1wbGUuYyBiL2RyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUuYwo+
-IGluZGV4IDllODIxOGY2YTNmMi4uYWQ0ZjRhYWMyZDQ0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9wYW5l
-bC9wYW5lbC1zaW1wbGUuYwo+IEBAIC0zNCw2ICszNCw3IEBACj4gICNpbmNsdWRlIDxkcm0vZHJt
-X3BhbmVsLmg+Cj4gIAo+ICAjaW5jbHVkZSA8dmlkZW8vZGlzcGxheV90aW1pbmcuaD4KPiArI2lu
-Y2x1ZGUgPHZpZGVvL29mX2Rpc3BsYXlfdGltaW5nLmg+Cj4gICNpbmNsdWRlIDx2aWRlby92aWRl
-b21vZGUuaD4KPiAgCj4gIHN0cnVjdCBwYW5lbF9kZXNjIHsKPiBAQCAtOTEsNiArOTIsOCBAQCBz
-dHJ1Y3QgcGFuZWxfc2ltcGxlIHsKPiAgCXN0cnVjdCBpMmNfYWRhcHRlciAqZGRjOwo+ICAKPiAg
-CXN0cnVjdCBncGlvX2Rlc2MgKmVuYWJsZV9ncGlvOwo+ICsKPiArCXN0cnVjdCBkcm1fZGlzcGxh
-eV9tb2RlIG92ZXJyaWRlX21vZGU7Cj4gIH07Cj4gIAo+ICBzdGF0aWMgaW5saW5lIHN0cnVjdCBw
-YW5lbF9zaW1wbGUgKnRvX3BhbmVsX3NpbXBsZShzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCkKPiBA
-QCAtOTgsMTYgKzEwMSwxMyBAQCBzdGF0aWMgaW5saW5lIHN0cnVjdCBwYW5lbF9zaW1wbGUgKnRv
-X3BhbmVsX3NpbXBsZShzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCkKPiAgCXJldHVybiBjb250YWlu
-ZXJfb2YocGFuZWwsIHN0cnVjdCBwYW5lbF9zaW1wbGUsIGJhc2UpOwo+ICB9Cj4gIAo+IC1zdGF0
-aWMgaW50IHBhbmVsX3NpbXBsZV9nZXRfZml4ZWRfbW9kZXMoc3RydWN0IHBhbmVsX3NpbXBsZSAq
-cGFuZWwpCj4gK3N0YXRpYyB1bnNpZ25lZCBpbnQgcGFuZWxfc2ltcGxlX2dldF90aW1pbmdzX21v
-ZGVzKHN0cnVjdCBwYW5lbF9zaW1wbGUgKnBhbmVsKQo+ICB7Cj4gIAlzdHJ1Y3QgZHJtX2Nvbm5l
-Y3RvciAqY29ubmVjdG9yID0gcGFuZWwtPmJhc2UuY29ubmVjdG9yOwo+ICAJc3RydWN0IGRybV9k
-ZXZpY2UgKmRybSA9IHBhbmVsLT5iYXNlLmRybTsKPiAgCXN0cnVjdCBkcm1fZGlzcGxheV9tb2Rl
-ICptb2RlOwo+ICAJdW5zaWduZWQgaW50IGksIG51bSA9IDA7Cj4gIAo+IC0JaWYgKCFwYW5lbC0+
-ZGVzYykKPiAtCQlyZXR1cm4gMDsKPiAtCj4gIAlmb3IgKGkgPSAwOyBpIDwgcGFuZWwtPmRlc2Mt
-Pm51bV90aW1pbmdzOyBpKyspIHsKPiAgCQljb25zdCBzdHJ1Y3QgZGlzcGxheV90aW1pbmcgKmR0
-ID0gJnBhbmVsLT5kZXNjLT50aW1pbmdzW2ldOwo+ICAJCXN0cnVjdCB2aWRlb21vZGUgdm07Cj4g
-QEAgLTEzMSw2ICsxMzEsMTYgQEAgc3RhdGljIGludCBwYW5lbF9zaW1wbGVfZ2V0X2ZpeGVkX21v
-ZGVzKHN0cnVjdCBwYW5lbF9zaW1wbGUgKnBhbmVsKQo+ICAJCW51bSsrOwo+ICAJfQo+ICAKPiAr
-CXJldHVybiBudW07Cj4gK30KPiArCj4gK3N0YXRpYyB1bnNpZ25lZCBpbnQgcGFuZWxfc2ltcGxl
-X2dldF9maXhlZF9tb2RlcyhzdHJ1Y3QgcGFuZWxfc2ltcGxlICpwYW5lbCkKPiArewo+ICsJc3Ry
-dWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciA9IHBhbmVsLT5iYXNlLmNvbm5lY3RvcjsKPiAr
-CXN0cnVjdCBkcm1fZGV2aWNlICpkcm0gPSBwYW5lbC0+YmFzZS5kcm07Cj4gKwlzdHJ1Y3QgZHJt
-X2Rpc3BsYXlfbW9kZSAqbW9kZTsKPiArCXVuc2lnbmVkIGludCBpLCBudW0gPSAwOwo+ICsKPiAg
-CWZvciAoaSA9IDA7IGkgPCBwYW5lbC0+ZGVzYy0+bnVtX21vZGVzOyBpKyspIHsKPiAgCQljb25z
-dCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbSA9ICZwYW5lbC0+ZGVzYy0+bW9kZXNbaV07Cj4g
-IAo+IEBAIC0xNTIsNiArMTYyLDQ0IEBAIHN0YXRpYyBpbnQgcGFuZWxfc2ltcGxlX2dldF9maXhl
-ZF9tb2RlcyhzdHJ1Y3QgcGFuZWxfc2ltcGxlICpwYW5lbCkKPiAgCQludW0rKzsKPiAgCX0KPiAg
-Cj4gKwlyZXR1cm4gbnVtOwo+ICt9Cj4gKwo+ICtzdGF0aWMgaW50IHBhbmVsX3NpbXBsZV9nZXRf
-bm9uX2VkaWRfbW9kZXMoc3RydWN0IHBhbmVsX3NpbXBsZSAqcGFuZWwpCj4gK3sKPiArCXN0cnVj
-dCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IgPSBwYW5lbC0+YmFzZS5jb25uZWN0b3I7Cj4gKwlz
-dHJ1Y3QgZHJtX2RldmljZSAqZHJtID0gcGFuZWwtPmJhc2UuZHJtOwo+ICsJc3RydWN0IGRybV9k
-aXNwbGF5X21vZGUgKm1vZGU7Cj4gKwlib29sIGhhc19vdmVycmlkZSA9IHBhbmVsLT5vdmVycmlk
-ZV9tb2RlLnR5cGU7Cj4gKwl1bnNpZ25lZCBpbnQgbnVtID0gMDsKPiArCj4gKwlpZiAoIXBhbmVs
-LT5kZXNjKQo+ICsJCXJldHVybiAwOwo+ICsKPiArCWlmIChoYXNfb3ZlcnJpZGUpIHsKPiArCQlt
-b2RlID0gZHJtX21vZGVfZHVwbGljYXRlKGRybSwgJnBhbmVsLT5vdmVycmlkZV9tb2RlKTsKPiAr
-CQlpZiAobW9kZSkgewo+ICsJCQlkcm1fbW9kZV9wcm9iZWRfYWRkKGNvbm5lY3RvciwgbW9kZSk7
-Cj4gKwkJCW51bSA9IDE7Cj4gKwkJfSBlbHNlIHsKPiArCQkJZGV2X2Vycihkcm0tPmRldiwgImZh
-aWxlZCB0byBhZGQgb3ZlcnJpZGUgbW9kZVxuIik7Cj4gKwkJfQo+ICsJfQo+ICsKPiArCS8qIE9u
-bHkgYWRkIHRpbWluZ3MgaWYgb3ZlcnJpZGUgd2FzIG5vdCB0aGVyZSBvciBmYWlsZWQgdG8gdmFs
-aWRhdGUgKi8KPiArCWlmIChudW0gPT0gMCAmJiBwYW5lbC0+ZGVzYy0+bnVtX3RpbWluZ3MpCj4g
-KwkJbnVtID0gcGFuZWxfc2ltcGxlX2dldF90aW1pbmdzX21vZGVzKHBhbmVsKTsKPiArCj4gKwkv
-Kgo+ICsJICogT25seSBhZGQgZml4ZWQgbW9kZXMgaWYgdGltaW5ncy9vdmVycmlkZSBhZGRlZCBu
-byBtb2RlLgo+ICsJICoKPiArCSAqIFdlIHNob3VsZCBvbmx5IGV2ZXIgaGF2ZSBlaXRoZXIgdGhl
-IGRpc3BsYXkgdGltaW5ncyBzcGVjaWZpZWQKPiArCSAqIG9yIGEgZml4ZWQgbW9kZS4gQW55dGhp
-bmcgZWxzZSBpcyByYXRoZXIgYm9ndXMuCj4gKwkgKi8KPiArCVdBUk5fT04ocGFuZWwtPmRlc2Mt
-Pm51bV90aW1pbmdzICYmIHBhbmVsLT5kZXNjLT5udW1fbW9kZXMpOwo+ICsJaWYgKG51bSA9PSAw
-KQo+ICsJCW51bSA9IHBhbmVsX3NpbXBsZV9nZXRfZml4ZWRfbW9kZXMocGFuZWwpOwo+ICsKPiAg
-CWNvbm5lY3Rvci0+ZGlzcGxheV9pbmZvLmJwYyA9IHBhbmVsLT5kZXNjLT5icGM7Cj4gIAljb25u
-ZWN0b3ItPmRpc3BsYXlfaW5mby53aWR0aF9tbSA9IHBhbmVsLT5kZXNjLT5zaXplLndpZHRoOwo+
-ICAJY29ubmVjdG9yLT5kaXNwbGF5X2luZm8uaGVpZ2h0X21tID0gcGFuZWwtPmRlc2MtPnNpemUu
-aGVpZ2h0Owo+IEBAIC0yNjgsNyArMzE2LDcgQEAgc3RhdGljIGludCBwYW5lbF9zaW1wbGVfZ2V0
-X21vZGVzKHN0cnVjdCBkcm1fcGFuZWwgKnBhbmVsKQo+ICAJfQo+ICAKPiAgCS8qIGFkZCBoYXJk
-LWNvZGVkIHBhbmVsIG1vZGVzICovCj4gLQludW0gKz0gcGFuZWxfc2ltcGxlX2dldF9maXhlZF9t
-b2RlcyhwKTsKPiArCW51bSArPSBwYW5lbF9zaW1wbGVfZ2V0X25vbl9lZGlkX21vZGVzKHApOwo+
-ICAKPiAgCXJldHVybiBudW07Cj4gIH0KPiBAQCAtMjk5LDEwICszNDcsNTggQEAgc3RhdGljIGNv
-bnN0IHN0cnVjdCBkcm1fcGFuZWxfZnVuY3MgcGFuZWxfc2ltcGxlX2Z1bmNzID0gewo+ICAJLmdl
-dF90aW1pbmdzID0gcGFuZWxfc2ltcGxlX2dldF90aW1pbmdzLAo+ICB9Owo+ICAKPiArI2RlZmlu
-ZSBQQU5FTF9TSU1QTEVfQk9VTkRTX0NIRUNLKHRvX2NoZWNrLCBib3VuZHMsIGZpZWxkKSBcCj4g
-KwkodG9fY2hlY2stPmZpZWxkLnR5cCA+PSBib3VuZHMtPmZpZWxkLm1pbiAmJiBcCj4gKwkgdG9f
-Y2hlY2stPmZpZWxkLnR5cCA8PSBib3VuZHMtPmZpZWxkLm1heCkKPiArc3RhdGljIHZvaWQgcGFu
-ZWxfc2ltcGxlX3BhcnNlX292ZXJyaWRlX21vZGUoc3RydWN0IGRldmljZSAqZGV2LAo+ICsJCQkJ
-CSAgICAgc3RydWN0IHBhbmVsX3NpbXBsZSAqcGFuZWwsCj4gKwkJCQkJICAgICBjb25zdCBzdHJ1
-Y3QgZGlzcGxheV90aW1pbmcgKm90KQo+ICt7Cj4gKwljb25zdCBzdHJ1Y3QgcGFuZWxfZGVzYyAq
-ZGVzYyA9IHBhbmVsLT5kZXNjOwo+ICsJc3RydWN0IHZpZGVvbW9kZSB2bTsKPiArCXVuc2lnbmVk
-IGludCBpOwo+ICsKPiArCWlmIChXQVJOX09OKGRlc2MtPm51bV9tb2RlcykpIHsKPiArCQlkZXZf
-ZXJyKGRldiwgIlJlamVjdCBvdmVycmlkZSBtb2RlOiBwYW5lbCBoYXMgYSBmaXhlZCBtb2RlXG4i
-KTsKPiArCQlyZXR1cm47Cj4gKwl9Cj4gKwlpZiAoV0FSTl9PTighZGVzYy0+bnVtX3RpbWluZ3Mp
-KSB7Cj4gKwkJZGV2X2VycihkZXYsICJSZWplY3Qgb3ZlcnJpZGUgbW9kZTogbm8gdGltaW5ncyBz
-cGVjaWZpZWRcbiIpOwo+ICsJCXJldHVybjsKPiArCX0KPiArCj4gKwlmb3IgKGkgPSAwOyBpIDwg
-cGFuZWwtPmRlc2MtPm51bV90aW1pbmdzOyBpKyspIHsKPiArCQljb25zdCBzdHJ1Y3QgZGlzcGxh
-eV90aW1pbmcgKmR0ID0gJnBhbmVsLT5kZXNjLT50aW1pbmdzW2ldOwo+ICsKPiArCQlpZiAoIVBB
-TkVMX1NJTVBMRV9CT1VORFNfQ0hFQ0sob3QsIGR0LCBoYWN0aXZlKSB8fAo+ICsJCSAgICAhUEFO
-RUxfU0lNUExFX0JPVU5EU19DSEVDSyhvdCwgZHQsIGhmcm9udF9wb3JjaCkgfHwKPiArCQkgICAg
-IVBBTkVMX1NJTVBMRV9CT1VORFNfQ0hFQ0sob3QsIGR0LCBoYmFja19wb3JjaCkgfHwKPiArCQkg
-ICAgIVBBTkVMX1NJTVBMRV9CT1VORFNfQ0hFQ0sob3QsIGR0LCBoc3luY19sZW4pIHx8Cj4gKwkJ
-ICAgICFQQU5FTF9TSU1QTEVfQk9VTkRTX0NIRUNLKG90LCBkdCwgdmFjdGl2ZSkgfHwKPiArCQkg
-ICAgIVBBTkVMX1NJTVBMRV9CT1VORFNfQ0hFQ0sob3QsIGR0LCB2ZnJvbnRfcG9yY2gpIHx8Cj4g
-KwkJICAgICFQQU5FTF9TSU1QTEVfQk9VTkRTX0NIRUNLKG90LCBkdCwgdmJhY2tfcG9yY2gpIHx8
-Cj4gKwkJICAgICFQQU5FTF9TSU1QTEVfQk9VTkRTX0NIRUNLKG90LCBkdCwgdnN5bmNfbGVuKSkK
-PiArCQkJY29udGludWU7Cj4gKwo+ICsJCWlmIChvdC0+ZmxhZ3MgIT0gZHQtPmZsYWdzKQo+ICsJ
-CQljb250aW51ZTsKPiArCj4gKwkJdmlkZW9tb2RlX2Zyb21fdGltaW5nKG90LCAmdm0pOwo+ICsJ
-CWRybV9kaXNwbGF5X21vZGVfZnJvbV92aWRlb21vZGUoJnZtLCAmcGFuZWwtPm92ZXJyaWRlX21v
-ZGUpOwo+ICsJCXBhbmVsLT5vdmVycmlkZV9tb2RlLnR5cGUgfD0gRFJNX01PREVfVFlQRV9EUklW
-RVIgfAo+ICsJCQkJCSAgICAgRFJNX01PREVfVFlQRV9QUkVGRVJSRUQ7Cj4gKwkJYnJlYWs7Cj4g
-Kwl9Cj4gKwo+ICsJaWYgKFdBUk5fT04oIXBhbmVsLT5vdmVycmlkZV9tb2RlLnR5cGUpKQo+ICsJ
-CWRldl9lcnIoZGV2LCAiUmVqZWN0IG92ZXJyaWRlIG1vZGU6IE5vIGRpc3BsYXlfdGltaW5nIGZv
-dW5kXG4iKTsKPiArfQo+ICsKPiAgc3RhdGljIGludCBwYW5lbF9zaW1wbGVfcHJvYmUoc3RydWN0
-IGRldmljZSAqZGV2LCBjb25zdCBzdHJ1Y3QgcGFuZWxfZGVzYyAqZGVzYykKPiAgewo+ICAJc3Ry
-dWN0IGRldmljZV9ub2RlICpiYWNrbGlnaHQsICpkZGM7Cj4gIAlzdHJ1Y3QgcGFuZWxfc2ltcGxl
-ICpwYW5lbDsKPiArCXN0cnVjdCBkaXNwbGF5X3RpbWluZyBkdDsKPiAgCWludCBlcnI7Cj4gIAo+
-ICAJcGFuZWwgPSBkZXZtX2t6YWxsb2MoZGV2LCBzaXplb2YoKnBhbmVsKSwgR0ZQX0tFUk5FTCk7
-Cj4gQEAgLTM0OCw2ICs0NDQsOSBAQCBzdGF0aWMgaW50IHBhbmVsX3NpbXBsZV9wcm9iZShzdHJ1
-Y3QgZGV2aWNlICpkZXYsIGNvbnN0IHN0cnVjdCBwYW5lbF9kZXNjICpkZXNjKQo+ICAJCX0KPiAg
-CX0KPiAgCj4gKwlpZiAoIW9mX2dldF9kaXNwbGF5X3RpbWluZyhkZXYtPm9mX25vZGUsICJwYW5l
-bC10aW1pbmciLCAmZHQpKQo+ICsJCXBhbmVsX3NpbXBsZV9wYXJzZV9vdmVycmlkZV9tb2RlKGRl
-diwgcGFuZWwsICZkdCk7Cj4gKwo+ICAJZHJtX3BhbmVsX2luaXQoJnBhbmVsLT5iYXNlKTsKPiAg
-CXBhbmVsLT5iYXNlLmRldiA9IGRldjsKPiAgCXBhbmVsLT5iYXNlLmZ1bmNzID0gJnBhbmVsX3Np
-bXBsZV9mdW5jczsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
-ZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZl
-bA==
+
+--6v9BRtpmy+umdQlo
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Apr 01, 2019 at 10:17:18AM -0700, Douglas Anderson wrote:
+> From: Sean Paul <seanpaul@chromium.org>
+>=20
+> This patch adds a new subnode to simple-panel allowing us to override
+> the typical timing expressed in the panel's display_timing.
+>=20
+> Changes in v2:
+>  - Split out the binding into a new patch (Rob)
+>  - display-timings is a new section (Rob)
+>  - Use the full display-timings subnode instead of picking the timing
+>    out (Rob/Thierry)
+> Changes in v3:
+>  - Go back to using the timing subnode directly, but rename to
+>    panel-timing (Rob)
+> Changes in v4:
+>  - Simplify desc. for when override should be used (Thierry/Laurent)
+>  - Removed Rob H review since it's been a year and wording changed
+> Changes in v5:
+>  - Removed bit about OS may ignore (Rob/Ezequiel)
+>=20
+> Cc: Doug Anderson <dianders@chromium.org>
+> Cc: Eric Anholt <eric@anholt.net>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Cc: Rob Herring <robh+dt@kernel.org>
+> Cc: St=C3=A9phane Marchesin <marcheu@chromium.org>
+> Cc: Thierry Reding <thierry.reding@gmail.com>
+> Cc: devicetree@vger.kernel.org
+> Cc: dri-devel@lists.freedesktop.org
+> Cc: linux-rockchip@lists.infradead.org
+> Signed-off-by: Sean Paul <seanpaul@chromium.org>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+>=20
+>  .../bindings/display/panel/simple-panel.txt   | 22 +++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/display/panel/simple-panel=
+=2Etxt b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
+> index b2b872c710f2..93882268c0b9 100644
+> --- a/Documentation/devicetree/bindings/display/panel/simple-panel.txt
+> +++ b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
+> @@ -15,6 +15,16 @@ Optional properties:
+>    (hot plug detect) signal, but the signal isn't hooked up so we should
+>    hardcode the max delay from the panel spec when powering up the panel.
+> =20
+> +panel-timing subnode
+
+Is there any reason why we need the panel- prefix? This is already part
+of a panel definition, so it's completely redundant. Why not just name
+the subnode "timing"?
+
+Thierry
+
+--6v9BRtpmy+umdQlo
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAlyrI0cACgkQ3SOs138+
+s6EmNw/6Av1wNN5Roa8hoku4c8OavdcswUnRwEzieyEcc6eYFZLYSNb26xrVN1Ln
+rbyIjZVK6CSnIxrjaEN8kYzUcyUMnr0ovP9enJ9TCCyZoTBid+E5czhmpUHjsv/R
+V3yRVqTzfwrZ3lRwk+ZOnD7VrxithhIiiLiV62TsNGytGWMn02V1aTSp0+2tSrQE
+aUhKgWtc5DU1wXfR6ZHp3hhuUSJKqcOECuNyJ1tRqmuTtaKiEbrRPWxX32TZhKsv
+JFClYZ8CS+Lq2ybtl0tT+33dofVFSLvEsxEAxaxFixWrgcbXW0uwQxmE795WfaoC
+o15jXzQJa5qbZ+hLcvPY5nVdLeMH0I1/V0vTQf3Zd1vVRKG3kT3GRMNAi2HUK5mU
+ITPJdnxpGVoAEO0hGtlZGBTocb+nnWhdV9H5z1iN5bUkV2H41JoqyRT7HX+V1tjp
++c9l2kk4+K9tyZsLj0Igw9v2YvD1Hmtlvb7S2ptDD/IPHKzfgk2LetcXzcCi4leG
+CtrFBFKvNWrwr1YAtDgqiSa4XRNnWyUkkA5PSdfZvtgLNsb3AEKK82mhsohMWnZB
+ARHTqUYo5PFtrd1vtHB6hsEbZxZbJ913UOFFztph7OgMwPTOobUdxzP+/EJwxlD7
+UvxmywqatQoLvv2RSQFrO6PzPYgfSOtf8F2sQJV0nK7DKb6pfCA=
+=B+cu
+-----END PGP SIGNATURE-----
+
+--6v9BRtpmy+umdQlo--
