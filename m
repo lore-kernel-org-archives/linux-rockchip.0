@@ -1,37 +1,53 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH net-next] net: phy: switch drivers to use dynamic
- feature detection
-Date: Tue, 09 Apr 2019 13:59:44 -0700 (PDT)
-Message-ID: <20190409.135944.1516944884952068835.davem@davemloft.net>
-References: <0cc96fab-e102-c0d1-ade0-90e3e06dc9f1@gmail.com>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: [PATCH] ARM: dts: rockchip: Add BT_EN to the power sequence for veyron
+Date: Tue,  9 Apr 2019 16:14:05 -0700
+Message-ID: <20190409231405.189335-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <0cc96fab-e102-c0d1-ade0-90e3e06dc9f1@gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: hkallweit1@gmail.com
-Cc: andrew@lunn.ch, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, richardcochran@gmail.com, khilman@baylibre.com, heiko@sntech.de, bcm-kernel-feedback-list@broadcom.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Heiner Kallweit <hkallweit1@gmail.com>
-Date: Sun, 7 Apr 2019 11:57:13 +0200
+Add GPIO D5 (BT_ENABLE_L) as reset-GPIO to the power sequence for the
+Bluetooth/WiFi module. On devices with a Broadcom module the signal
+needs to be asserted to use Bluetooth.
 
-> Recently genphy_read_abilities() has been added that dynamically detects
-> clause 22 PHY abilities. I *think* this detection should work with all
-> supported PHY's, at least for the ones with basic features sets, i.e.
-> PHY_BASIC_FEATURES and PHY_GBIT_FEATURES. So let's remove setting these
-> features explicitly and rely on phylib feature detection.
-> 
-> I don't have access to most of these PHY's, therefore I'd appreciate
-> regression testing.
-> 
-> Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
+Note that BT_ENABLE_L is a misnomer in the schematics, the signal
+actually is active-high.
 
-This appears to need to be done differently.
+Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+---
+ arch/arm/boot/dts/rk3288-veyron.dtsi | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
 
-A question was asked as to why fast ethernet PHY identification from the
-source is important, well I'd say it's important for someone working on
-the PHY code to see how "all fast ethernet PHY drivers do or handle X"
-
-:-)
+diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
+index 0bc2409f6903..a4cd851dc313 100644
+--- a/arch/arm/boot/dts/rk3288-veyron.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
+@@ -62,12 +62,19 @@
+ 		pinctrl-0 = <&bt_enable_l>, <&wifi_enable_h>;
+ 
+ 		/*
+-		 * On the module itself this is one of these (depending
+-		 * on the actual card populated):
++		 * Depending on the actual card populated GPIO4 D4 and D5
++		 * correspond to one of these signals on the module:
++		 *
++		 * D4:
+ 		 * - SDIO_RESET_L_WL_REG_ON
+ 		 * - PDN (power down when low)
++		 *
++		 * D5:
++		 * - BT_I2S_WS_BT_RFDISABLE_L
++		 * - No connect
+ 		 */
+-		reset-gpios = <&gpio4 RK_PD4 GPIO_ACTIVE_LOW>;
++		reset-gpios = <&gpio4 RK_PD4 GPIO_ACTIVE_LOW>,
++			      <&gpio4 RK_PD5 GPIO_ACTIVE_LOW>;
+ 	};
+ 
+ 	vcc_5v: vcc-5v {
+-- 
+2.21.0.392.gf8f6787159e-goog
