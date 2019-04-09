@@ -1,67 +1,113 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [RESEND PATCH v2] usb: dwc2: disable power_down on rockchip for regression
-Date: Mon, 8 Apr 2019 15:48:10 -0700
-Message-ID: <CAD=FV=WG64ZuAZCLWZe4CeYHEmpo2TNPeane_yS6Fg6xnGU9DQ@mail.gmail.com>
-References: <ae079099-4a29-7ae7-afa3-00dad26e81c2@halemmerich.com> <f40fd3bf-97aa-b4ac-8260-6fa727909e3b@halemmerich.com>
+From: Souptick Joarder <jrdr.linux@gmail.com>
+Subject: Re: [RESEND PATCH v4 0/9] mm: Use vm_map_pages() and
+ vm_map_pages_zero() API
+Date: Tue, 9 Apr 2019 11:47:37 +0530
+Message-ID: <CAFqt6zbDk7OAdk-WXG50Frppny0DOpdwR1vnTS7pCpjf66j3aQ@mail.gmail.com>
+References: <cover.1552921225.git.jrdr.linux@gmail.com> <CAFqt6zaV5zcc495BBk1Wi7p+zOF8y=P5KRfKkvwY=stagUFKWQ@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <f40fd3bf-97aa-b4ac-8260-6fa727909e3b@halemmerich.com>
-Sender: stable-owner@vger.kernel.org
-To: stable@vger.kernel.org
-Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, linux-usb@vger.kernel.org, Minas Harutyunyan <hminas@synopsys.com>, Hal Emmerich <hal@halemmerich.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAFqt6zaV5zcc495BBk1Wi7p+zOF8y=P5KRfKkvwY=stagUFKWQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andrew Morton <akpm@linux-foundation.org>, Matthew Wilcox <willy@infradead.org>, Michal Hocko <mhocko@suse.com>, "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>, Vlastimil Babka <vbabka@suse.cz>, Rik van Riel <riel@surriel.com>, Stephen Rothwell <sfr@canb.auug.org.au>, rppt@linux.vnet.ibm.com, Peter Zijlstra <peterz@infradead.org>, Russell King - ARM Linux <linux@armlinux.org.uk>, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, Kees Cook <keescook@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, Kyungmin Park <kyungmin.park@samsung.com>, mchehab@kernel.org
+Cc: linux-kernel@vger.kernel.org, Linux-MM <linux-mm@kvack.org>, linux-arm-kernel@lists.infradead.org, linux1394-devel@lists.sourceforge.net, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, xen-devel@lists.xen.org, iommu@lists.linux-foundation.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Andrew/ Michal,
 
-On Fri, Oct 26, 2018 at 7:38 AM Hal Emmerich <hal@halemmerich.com> wrote:
+On Mon, Apr 1, 2019 at 10:56 AM Souptick Joarder <jrdr.linux@gmail.com> wrote:
 >
+> Hi Andrew,
 >
-> From 04fbf78e4e569bf872f1ffcb0a6f9b89569dc913 Mon Sep 17 00:00:00 2001
-> From: Hal Emmerich <hal@halemmerich.com>
-> Date: Thu, 19 Jul 2018 21:48:08 -0500
-> Subject: [PATCH] usb: dwc2: disable power_down on rockchip devices
+> On Tue, Mar 19, 2019 at 7:47 AM Souptick Joarder <jrdr.linux@gmail.com> wrote:
+> >
+> > Previouly drivers have their own way of mapping range of
+> > kernel pages/memory into user vma and this was done by
+> > invoking vm_insert_page() within a loop.
+> >
+> > As this pattern is common across different drivers, it can
+> > be generalized by creating new functions and use it across
+> > the drivers.
+> >
+> > vm_map_pages() is the API which could be used to map
+> > kernel memory/pages in drivers which has considered vm_pgoff.
+> >
+> > vm_map_pages_zero() is the API which could be used to map
+> > range of kernel memory/pages in drivers which has not considered
+> > vm_pgoff. vm_pgoff is passed default as 0 for those drivers.
+> >
+> > We _could_ then at a later "fix" these drivers which are using
+> > vm_map_pages_zero() to behave according to the normal vm_pgoff
+> > offsetting simply by removing the _zero suffix on the function
+> > name and if that causes regressions, it gives us an easy way to revert.
+> >
+> > Tested on Rockchip hardware and display is working fine, including talking
+> > to Lima via prime.
+> >
+> > v1 -> v2:
+> >         Few Reviewed-by.
+> >
+> >         Updated the change log in [8/9]
+> >
+> >         In [7/9], vm_pgoff is treated in V4L2 API as a 'cookie'
+> >         to select a buffer, not as a in-buffer offset by design
+> >         and it always want to mmap a whole buffer from its beginning.
+> >         Added additional changes after discussing with Marek and
+> >         vm_map_pages() could be used instead of vm_map_pages_zero().
+> >
+> > v2 -> v3:
+> >         Corrected the documentation as per review comment.
+> >
+> >         As suggested in v2, renaming the interfaces to -
+> >         *vm_insert_range() -> vm_map_pages()* and
+> >         *vm_insert_range_buggy() -> vm_map_pages_zero()*.
+> >         As the interface is renamed, modified the code accordingly,
+> >         updated the change logs and modified the subject lines to use the
+> >         new interfaces. There is no other change apart from renaming and
+> >         using the new interface.
+> >
+> >         Patch[1/9] & [4/9], Tested on Rockchip hardware.
+> >
+> > v3 -> v4:
+> >         Fixed build warnings on patch [8/9] reported by kbuild test robot.
+> >
+> > Souptick Joarder (9):
+> >   mm: Introduce new vm_map_pages() and vm_map_pages_zero() API
+> >   arm: mm: dma-mapping: Convert to use vm_map_pages()
+> >   drivers/firewire/core-iso.c: Convert to use vm_map_pages_zero()
+> >   drm/rockchip/rockchip_drm_gem.c: Convert to use vm_map_pages()
+> >   drm/xen/xen_drm_front_gem.c: Convert to use vm_map_pages()
+> >   iommu/dma-iommu.c: Convert to use vm_map_pages()
+> >   videobuf2/videobuf2-dma-sg.c: Convert to use vm_map_pages()
+> >   xen/gntdev.c: Convert to use vm_map_pages()
+> >   xen/privcmd-buf.c: Convert to use vm_map_pages_zero()
 >
->  The bug would let the usb controller enter partial power down,
->  which was formally known as hibernate, upon boot if nothing was plugged
->  in to the port. Partial power down couldn't be exited properly, so any
->  usb devices plugged in after boot would not be usable.
->
->  Before the name change, params.hibernation was false by default, so
->  _dwc2_hcd_suspend() would skip entering hibernation. With the
->  rename, _dwc2_hcd_suspend() was changed to use  params.power_down
->  to decide whether or not to enter partial power down.
->
->  Since params.power_down is non-zero by default, it needs to be set
->  to 0 for rockchip devices to restore functionality.
->
->  This bug was reported in the linux-usb thread:
->  REGRESSION: usb: dwc2: USB device not seen after boot
->
->  The commit that caused this regression is:
->  6d23ee9caa6790aea047f9aca7f3c03cb8d96eb6
->
-> Signed-off-by: Hal Emmerich <hal@halemmerich.com>
-> Acked-by: Minas Harutyunyan <hminas@synopsys.com>
-> ---
->  drivers/usb/dwc2/params.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/drivers/usb/dwc2/params.c b/drivers/usb/dwc2/params.c
-> index bf7052e037d6..09292dc977e4 100644
-> --- a/drivers/usb/dwc2/params.c
-> +++ b/drivers/usb/dwc2/params.c
-> @@ -81,6 +81,7 @@ static void dwc2_set_rk_params(struct dwc2_hsotg *hsotg)
->         p->host_perio_tx_fifo_size = 256;
->         p->ahbcfg = GAHBCFG_HBSTLEN_INCR16 <<
->                 GAHBCFG_HBSTLEN_SHIFT;
-> +       p->power_down = 0;
+> Is it fine to take these patches into mm tree for regression ?
 
-This landed as commit c216765d3a1d ("usb: dwc2: disable power_down on
-rockchip devices").  Can it please go to stable?  Hotplug of USB on
-v4.19 stable, for example, is currently broken due to the lack of this
-patch.
+v4 of this series has not received any further comments/ kbuild error
+in last 8 weeks (including
+the previously posted v4).
 
-Thanks!
+Any suggestion, if it safe to take these changes through mm tree ? or any
+other tree is preferred ?
 
--Doug
+>
+> >
+> >  arch/arm/mm/dma-mapping.c                          | 22 ++----
+> >  drivers/firewire/core-iso.c                        | 15 +---
+> >  drivers/gpu/drm/rockchip/rockchip_drm_gem.c        | 17 +----
+> >  drivers/gpu/drm/xen/xen_drm_front_gem.c            | 18 ++---
+> >  drivers/iommu/dma-iommu.c                          | 12 +---
+> >  drivers/media/common/videobuf2/videobuf2-core.c    |  7 ++
+> >  .../media/common/videobuf2/videobuf2-dma-contig.c  |  6 --
+> >  drivers/media/common/videobuf2/videobuf2-dma-sg.c  | 22 ++----
+> >  drivers/xen/gntdev.c                               | 11 ++-
+> >  drivers/xen/privcmd-buf.c                          |  8 +--
+> >  include/linux/mm.h                                 |  4 ++
+> >  mm/memory.c                                        | 81 ++++++++++++++++++++++
+> >  mm/nommu.c                                         | 14 ++++
+> >  13 files changed, 134 insertions(+), 103 deletions(-)
+> >
+> > --
+> > 1.9.1
+> >
