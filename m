@@ -1,58 +1,37 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH] soc: rockchip: Set the proper PWM for rk3288
-Date: Tue,  9 Apr 2019 13:49:05 -0700
-Message-ID: <20190409204905.152432-1-dianders@chromium.org>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH net-next] net: phy: switch drivers to use dynamic
+ feature detection
+Date: Tue, 09 Apr 2019 13:59:44 -0700 (PDT)
+Message-ID: <20190409.135944.1516944884952068835.davem@davemloft.net>
+References: <0cc96fab-e102-c0d1-ade0-90e3e06dc9f1@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Caesar Wang <caesar.wang@rock-chips.com>, mka@chromium.org, ryandcase@chromium.org, Douglas Anderson <dianders@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <0cc96fab-e102-c0d1-ade0-90e3e06dc9f1@gmail.com>
+Sender: netdev-owner@vger.kernel.org
+To: hkallweit1@gmail.com
+Cc: andrew@lunn.ch, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, richardcochran@gmail.com, khilman@baylibre.com, heiko@sntech.de, bcm-kernel-feedback-list@broadcom.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The rk3288 SoC has two PWM implementations available, the "old"
-implementation and the "new" one.  You can switch between the two of
-them by flipping a bit in the grf.
+From: Heiner Kallweit <hkallweit1@gmail.com>
+Date: Sun, 7 Apr 2019 11:57:13 +0200
 
-The "old" implementation is the default at chip power up but isn't the
-one that's officially supposed to be used.  ...and, in fact, the
-driver that gets selected in Linux using the rk3288 device tree only
-supports the "new" implementation.
+> Recently genphy_read_abilities() has been added that dynamically detects
+> clause 22 PHY abilities. I *think* this detection should work with all
+> supported PHY's, at least for the ones with basic features sets, i.e.
+> PHY_BASIC_FEATURES and PHY_GBIT_FEATURES. So let's remove setting these
+> features explicitly and rely on phylib feature detection.
+> 
+> I don't have access to most of these PHY's, therefore I'd appreciate
+> regression testing.
+> 
+> Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
 
-Long ago I tried to get a switch to the right IP block landed in the
-PWM driver (search for "rk3288: Switch to use the proper PWM IP") but
-that got rejected.  In the mean time the grf has grown a full-fledged
-driver that already sets other random bits like this.  That means we
-can now get the fix landed.
+This appears to need to be done differently.
 
-For those wondering how things could have possibly worked for the last
-4.5 years, folks have mostly been relying on the bootloader to set
-this bit.  ...but occasionally folks have pointed back to my old patch
-series [1] in downstream kernels.
+A question was asked as to why fast ethernet PHY identification from the
+source is important, well I'd say it's important for someone working on
+the PHY code to see how "all fast ethernet PHY drivers do or handle X"
 
-[1] https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg1391597.html
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
-
- drivers/soc/rockchip/grf.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
-index 96882ffde67e..3b81e1d75a97 100644
---- a/drivers/soc/rockchip/grf.c
-+++ b/drivers/soc/rockchip/grf.c
-@@ -66,9 +66,11 @@ static const struct rockchip_grf_info rk3228_grf __initconst = {
- };
- 
- #define RK3288_GRF_SOC_CON0		0x244
-+#define RK3288_GRF_SOC_CON2		0x24c
- 
- static const struct rockchip_grf_value rk3288_defaults[] __initconst = {
- 	{ "jtag switching", RK3288_GRF_SOC_CON0, HIWORD_UPDATE(0, 1, 12) },
-+	{ "pwm select", RK3288_GRF_SOC_CON2, HIWORD_UPDATE(1, 1, 0) },
- };
- 
- static const struct rockchip_grf_info rk3288_grf __initconst = {
--- 
-2.21.0.392.gf8f6787159e-goog
+:-)
