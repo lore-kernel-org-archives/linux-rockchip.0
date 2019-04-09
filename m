@@ -1,67 +1,58 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH 2/3] clk: rockchip: Make rkpwm a critical clock on rk3288
-Date: Tue,  9 Apr 2019 13:47:06 -0700
-Message-ID: <20190409204707.150347-3-dianders@chromium.org>
-References: <20190409204707.150347-1-dianders@chromium.org>
+Subject: [PATCH] soc: rockchip: Set the proper PWM for rk3288
+Date: Tue,  9 Apr 2019 13:49:05 -0700
+Message-ID: <20190409204905.152432-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190409204707.150347-1-dianders@chromium.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Elaine Zhang <zhangqing@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, mka@chromium.org, ryandcase@chromium.org, Caesar Wang <caesar.wang@rock-chips.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org, Caesar Wang <caesar.wang@rock-chips.com>, mka@chromium.org, ryandcase@chromium.org, Douglas Anderson <dianders@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Most rk3288-based boards are derived from the EVB and thus use a PWM
-regulator for the logic rail.  However, most rk3288-based boards don't
-specify the PWM regulator in their device tree.  We'll deal with that
-by making it critical.
+The rk3288 SoC has two PWM implementations available, the "old"
+implementation and the "new" one.  You can switch between the two of
+them by flipping a bit in the grf.
 
-NOTE: it's important to make it critical and not just IGNORE_UNUSED
-because all PWMs in the system share the same clock.  We don't want
-another PWM user to turn the clock on and off and kill the logic rail.
+The "old" implementation is the default at chip power up but isn't the
+one that's officially supposed to be used.  ...and, in fact, the
+driver that gets selected in Linux using the rk3288 device tree only
+supports the "new" implementation.
 
-This change is in preparation for actually having the PWMs in the
-rk3288 device tree actually point to the proper PWM clock.  Up until
-now they've all pointed to the clock for the old IP block and they've
-all worked due to the fact that rkpwm was IGNORE_UNUSED and that the
-clock rates for both clocks were the same.
+Long ago I tried to get a switch to the right IP block landed in the
+PWM driver (search for "rk3288: Switch to use the proper PWM IP") but
+that got rejected.  In the mean time the grf has grown a full-fledged
+driver that already sets other random bits like this.  That means we
+can now get the fix landed.
+
+For those wondering how things could have possibly worked for the last
+4.5 years, folks have mostly been relying on the bootloader to set
+this bit.  ...but occasionally folks have pointed back to my old patch
+series [1] in downstream kernels.
+
+[1] https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg1391597.html
 
 Signed-off-by: Douglas Anderson <dianders@chromium.org>
 ---
 
- drivers/clk/rockchip/clk-rk3288.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/soc/rockchip/grf.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 06287810474e..c3321eade23e 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -697,7 +697,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	GATE(PCLK_TZPC, "pclk_tzpc", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 3, GFLAGS),
- 	GATE(PCLK_UART2, "pclk_uart2", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 9, GFLAGS),
- 	GATE(PCLK_EFUSE256, "pclk_efuse_256", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 10, GFLAGS),
--	GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 11, GFLAGS),
-+	GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 11, GFLAGS),
- 
- 	/* ddrctrl [DDR Controller PHY clock] gates */
- 	GATE(0, "nclk_ddrupctl0", "ddrphy", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 4, GFLAGS),
-@@ -837,6 +837,7 @@ static const char *const rk3288_critical_clocks[] __initconst = {
- 	"pclk_alive_niu",
- 	"pclk_pd_pmu",
- 	"pclk_pmu_niu",
-+	"pclk_rkpwm",
+diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
+index 96882ffde67e..3b81e1d75a97 100644
+--- a/drivers/soc/rockchip/grf.c
++++ b/drivers/soc/rockchip/grf.c
+@@ -66,9 +66,11 @@ static const struct rockchip_grf_info rk3228_grf __initconst = {
  };
  
- static void __iomem *rk3288_cru_base;
+ #define RK3288_GRF_SOC_CON0		0x244
++#define RK3288_GRF_SOC_CON2		0x24c
+ 
+ static const struct rockchip_grf_value rk3288_defaults[] __initconst = {
+ 	{ "jtag switching", RK3288_GRF_SOC_CON0, HIWORD_UPDATE(0, 1, 12) },
++	{ "pwm select", RK3288_GRF_SOC_CON2, HIWORD_UPDATE(1, 1, 0) },
+ };
+ 
+ static const struct rockchip_grf_info rk3288_grf __initconst = {
 -- 
 2.21.0.392.gf8f6787159e-goog
