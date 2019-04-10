@@ -1,14 +1,15 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 2/3] clk: rockchip: Make rkpwm a critical clock on rk3288
-Date: Wed, 10 Apr 2019 08:25:37 -0700
-Message-ID: <CAD=FV=Vyy4bNJV=t2yALP3dAnm0-QsR55F5B==uUoi-Tp6b7Vg@mail.gmail.com>
+Subject: Re: [PATCH 1/3] Revert "clk: rockchip: mark noc and some special clk
+ as critical on rk3288"
+Date: Wed, 10 Apr 2019 08:34:16 -0700
+Message-ID: <CAD=FV=WXWnYDzGUyyz--JBY6QBcYNEorgAqUAesnctXJqptSBw@mail.gmail.com>
 References: <20190409204707.150347-1-dianders@chromium.org>
- <20190409204707.150347-3-dianders@chromium.org> <50b744cd-b8d9-79ca-ba2d-6765808aa5e5@rock-chips.com>
+ <20190409204707.150347-2-dianders@chromium.org> <b7093a17-b30c-cdec-b02c-c6bc5a8d08c9@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <50b744cd-b8d9-79ca-ba2d-6765808aa5e5@rock-chips.com>
+In-Reply-To: <b7093a17-b30c-cdec-b02c-c6bc5a8d08c9@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: "elaine.zhang" <zhangqing@rock-chips.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Caesar Wang <caesar.wang@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, linux-clk <linux-clk@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
@@ -16,115 +17,146 @@ List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Tue, Apr 9, 2019 at 11:42 PM elaine.zhang <zhangqing@rock-chips.com> wro=
+On Tue, Apr 9, 2019 at 11:23 PM elaine.zhang <zhangqing@rock-chips.com> wro=
 te:
 >
 > hi,
 >
 > =E5=9C=A8 2019/4/10 =E4=B8=8A=E5=8D=884:47, Douglas Anderson =E5=86=99=E9=
 =81=93:
-> > Most rk3288-based boards are derived from the EVB and thus use a PWM
-> > regulator for the logic rail.  However, most rk3288-based boards don't
-> > specify the PWM regulator in their device tree.  We'll deal with that
-> > by making it critical.
+> > This reverts commit 55bb6a633c33caf68ab470907ecf945289cb733d.
 > >
-> > NOTE: it's important to make it critical and not just IGNORE_UNUSED
-> > because all PWMs in the system share the same clock.  We don't want
-> > another PWM user to turn the clock on and off and kill the logic rail.
+> > The clocks that were enabled by that patch are pretty questionable.
+> > Specifically looking at what has been shipping on rk3288-veyron
+> > Chromebooks almost all of these clocks are safely turned off and cause
+> > no apparent problems.  If some boards need these clocks turned on for
+> > some reason then it seems like we should figure out how to do that at
+> > a board level.
 > >
-> > This change is in preparation for actually having the PWMs in the
-> > rk3288 device tree actually point to the proper PWM clock.  Up until
-> > now they've all pointed to the clock for the old IP block and they've
-> > all worked due to the fact that rkpwm was IGNORE_UNUSED and that the
-> > clock rates for both clocks were the same.
+> > NOTE: turning these clocks off doesn't seem to do a whole lot in terms
+> > of power savings (checking the power on the logic rail).  It appears
+> > to save maybe 1-2mW.  ...but still it seems like we should turn the
+> > clocks off if they aren't needed.
+> >
+> > Digging into the clocks here to describe why they shouldn't need to be
+> > left on:
+> >
+> > atclk: No documentation about this clock other than that it goes to
+> > the CPU.  CPU functions fine without it on.
+> >
+> > jtag: Presumably this clock is only needed if you're debugging with
+> > JTAG.  It doesn't seem like it makes sense to waste power for every
+> > rk3288 user.  Perhaps this could be turned on with a CONFIG option?
+> >
+> > pclk_dbg, pclk_core_niu: On veyron Chromebooks we turn these two
+> > clocks on only during kernel panics in order to access some coresight
+> > registers.  Since nothing in the upstream kernel does this we should
+> > be able to leave them off safely.
+> >
+> > hsicphy12m_xin12m: There is no indication of why this clock would need
+> > to be turned on for boards that don't use HSIC.
+> >
+> > pclk_ddrupctl[0-1], pclk_publ0[0-1]: On veyron Chromebooks we turn
+> > these 4 clocks on only when doing DDR transitions and they are off
+> > otherwise.  I see no reason why they'd need to be on in the upstream
+> > kernel which doesn't support DDRFreq.
+> >
+> > pmu_hclk_otg0: A "chip design defect" is mentioned in the original
+> > patch but no details.  This clock has always been gated in shipping
+> > veyron Chromebooks so presumably this chip defect doesn't affect all
+> > boards.
 > >
 > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
 > > ---
 > >
-> >   drivers/clk/rockchip/clk-rk3288.c | 3 ++-
-> >   1 file changed, 2 insertions(+), 1 deletion(-)
+> >   drivers/clk/rockchip/clk-rk3288.c | 14 ++++----------
+> >   1 file changed, 4 insertions(+), 10 deletions(-)
 > >
 > > diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/c=
 lk-rk3288.c
-> > index 06287810474e..c3321eade23e 100644
+> > index 5a67b7869960..06287810474e 100644
 > > --- a/drivers/clk/rockchip/clk-rk3288.c
 > > +++ b/drivers/clk/rockchip/clk-rk3288.c
-> > @@ -697,7 +697,7 @@ static struct rockchip_clk_branch rk3288_clk_branch=
+> > @@ -313,13 +313,13 @@ static struct rockchip_clk_branch rk3288_clk_bran=
+ches[] __initdata =3D {
+> >       COMPOSITE_NOMUX(0, "aclk_core_mp", "armclk", CLK_IGNORE_UNUSED,
+> >                       RK3288_CLKSEL_CON(0), 4, 4, DFLAGS | CLK_DIVIDER_=
+READ_ONLY,
+> >                       RK3288_CLKGATE_CON(12), 6, GFLAGS),
+> > -     COMPOSITE_NOMUX(0, "atclk", "armclk", CLK_IGNORE_UNUSED,
+> > +     COMPOSITE_NOMUX(0, "atclk", "armclk", 0,
+> >                       RK3288_CLKSEL_CON(37), 4, 5, DFLAGS | CLK_DIVIDER=
+_READ_ONLY,
+> >                       RK3288_CLKGATE_CON(12), 7, GFLAGS),
+> >       COMPOSITE_NOMUX(0, "pclk_dbg_pre", "armclk", CLK_IGNORE_UNUSED,
+> >                       RK3288_CLKSEL_CON(37), 9, 5, DFLAGS | CLK_DIVIDER=
+_READ_ONLY,
+> >                       RK3288_CLKGATE_CON(12), 8, GFLAGS),
+> > -     GATE(0, "pclk_dbg", "pclk_dbg_pre", CLK_IGNORE_UNUSED,
+> > +     GATE(0, "pclk_dbg", "pclk_dbg_pre", 0,
+> >                       RK3288_CLKGATE_CON(12), 9, GFLAGS),
+> >       GATE(0, "cs_dbg", "pclk_dbg_pre", CLK_IGNORE_UNUSED,
+> >                       RK3288_CLKGATE_CON(12), 10, GFLAGS),
+> > @@ -647,7 +647,7 @@ static struct rockchip_clk_branch rk3288_clk_branch=
 es[] __initdata =3D {
-> >       GATE(PCLK_TZPC, "pclk_tzpc", "pclk_cpu", 0, RK3288_CLKGATE_CON(11=
-), 3, GFLAGS),
-> >       GATE(PCLK_UART2, "pclk_uart2", "pclk_cpu", 0, RK3288_CLKGATE_CON(=
-11), 9, GFLAGS),
-> >       GATE(PCLK_EFUSE256, "pclk_efuse_256", "pclk_cpu", 0, RK3288_CLKGA=
-TE_CON(11), 10, GFLAGS),
-> > -     GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", CLK_IGNORE_UNUSED, RK3=
-288_CLKGATE_CON(11), 11, GFLAGS),
-> > +     GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", 0, RK3288_CLKGATE_CON(=
-11), 11, GFLAGS),
+> >       INVERTER(SCLK_HSADC, "sclk_hsadc", "sclk_hsadc_out",
+> >                       RK3288_CLKSEL_CON(22), 7, IFLAGS),
 > >
-> >       /* ddrctrl [DDR Controller PHY clock] gates */
-> >       GATE(0, "nclk_ddrupctl0", "ddrphy", CLK_IGNORE_UNUSED, RK3288_CLK=
-GATE_CON(11), 4, GFLAGS),
-> > @@ -837,6 +837,7 @@ static const char *const rk3288_critical_clocks[] _=
-_initconst =3D {
+> > -     GATE(0, "jtag", "ext_jtag", CLK_IGNORE_UNUSED,
+> > +     GATE(0, "jtag", "ext_jtag", 0,
+> >                       RK3288_CLKGATE_CON(4), 14, GFLAGS),
+> CLK_IGNORE_UNUSED:
+> Whether to close the unused clk after clk init complete. not affect
+> there own enable/disable.
+> JTAG is not have device node, when need jtag to debug, may be the system
+> is crashed, there is no way to turn on this clk.
+
+As I mentioned in the commit message this seems like the kind of thing
+that should be controlled by a CONFIG_ option.  It's a debug option
+that's fine to have on all the time but consumes resources so some
+people might want to turn it off.
+
+
+> >       COMPOSITE_NODIV(SCLK_USBPHY480M_SRC, "usbphy480m_src", mux_usbphy=
+480m_p, 0,
+> > @@ -656,7 +656,7 @@ static struct rockchip_clk_branch rk3288_clk_branch=
+es[] __initdata =3D {
+> >       COMPOSITE_NODIV(SCLK_HSICPHY480M, "sclk_hsicphy480m", mux_hsicphy=
+480m_p, 0,
+> >                       RK3288_CLKSEL_CON(29), 0, 2, MFLAGS,
+> >                       RK3288_CLKGATE_CON(3), 6, GFLAGS),
+> > -     GATE(0, "hsicphy12m_xin12m", "xin12m", CLK_IGNORE_UNUSED,
+> > +     GATE(0, "hsicphy12m_xin12m", "xin12m", 0,
+> >                       RK3288_CLKGATE_CON(13), 9, GFLAGS),
+> >       DIV(0, "hsicphy12m_usbphy", "sclk_hsicphy480m", 0,
+> >                       RK3288_CLKSEL_CON(11), 8, 6, DFLAGS),
+> > @@ -837,12 +837,6 @@ static const char *const rk3288_critical_clocks[] =
+__initconst =3D {
 > >       "pclk_alive_niu",
 > >       "pclk_pd_pmu",
 > >       "pclk_pmu_niu",
-> > +     "pclk_rkpwm",
->
-> pwm have device node, can enable and disable it in the pwm drivers.
->
-> pwm regulator use pwm node as:
->
-> pwms =3D <&pwm2 0 25000 1>
->
-> when set Logic voltage:
->
-> pwm_regulator_set_voltage()
->
->      --> pwm_apply_state()
->
->          -->clk_enable()
->
->          -->pwm_enable()
->
->          -->pwm_config()
->
->          -->pinctrl_select()
->
->          --....
->
-> For mark pclk_rkpwm as critical,do you have any questions, or provides
-> some log or more information.
+> > -     "pclk_core_niu",
+> > -     "pclk_ddrupctl0",
+> > -     "pclk_publ0",
+> > -     "pclk_ddrupctl1",
+> > -     "pclk_publ1",
+> These clks needed enable, device node not use this clk, so we mark it as
+> critical.
 
-Right, if we actually specify the PWM used for the PWM regulator in
-the device tree then there is no need to mark it as a critical clock.
-In fact rk3288-veyron devices boot absolutely fine without marking
-this clock as critical.  Actually, it seems like the way the PWM
-framework works (IIRC it was designed this way specifically to support
-PWM regulators) is that even just specifying that pwm1 is "okay" is
-enough to keep the clock on even if the PWM regulator isn't specified.
-
-...however...
-
-Take a look at, for instance, the rk3288-evb device tree file.
-Nowhere in there does it specify that the PWM used for the PWM
-regulator should be on.  Presumably that means that if we don't mark
-the clock as critical then rk3288-evb will fail to boot.  That's easy
-for me to fix since I have the rk3288-evb schematics, but what about
-other rk3288 boards?  We could make educated guesses about each of
-them and/or fix things are we hear about breakages.
-
-...but...
-
-All the above would only be worth doing if we thought someone would
-get some benefit out of it.  I'd bet that pretty much all rk3288-based
-boards use a PWM regulator.  Thus, in reality, everyone will want the
-rkpwm clock on all the time anyway.  In that case going through all
-that extra work / potentially breaking other boards doesn't seem worth
-it.  Just mark the clock as critical.
+What breaks if you don't enable these clocks?  As far as I can tell
+these clocks only need to be enabled while touching memory controller
+registers (deep suspend/resume and DDRFreq transitions).  On
+Chromebooks everything works fine with these clocks only turned on
+when needed.
 
 
+> > -     "pmu_hclk_otg0",
+> It's a soc bug, pmu_hclk_otg0 must always on.
+
+So you said in your previous commit message.  However we've shipped
+lots and lots of Chromebooks with this clock off.  Can you explain
+what is broken?  Is this only needed for gadget mode (which we don't
+use), for instance?
 
 
 -Doug
