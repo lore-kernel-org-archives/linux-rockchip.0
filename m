@@ -1,43 +1,73 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: [PATCH] ARM: dts: rockchip: Remove unnecessary setting of UART0 SCLK rate on veyron
-Date: Wed, 10 Apr 2019 11:30:10 -0700
-Message-ID: <20190410183010.21307-1-mka@chromium.org>
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH] clk: rockchip: Fix video codec clocks on rk3288
+Date: Wed, 10 Apr 2019 18:38:52 +0000
+Message-ID: <AM3PR03MB09665B2755982816D2FC37E4AC2E0@AM3PR03MB0966.eurprd03.prod.outlook.com>
+References: <20190329215455.159717-1-dianders@chromium.org>
+ <CAD=FV=V22Z2ziNZs5syzd1wpT4AwpXtTHP52wKvN5drgf06Z8Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=V22Z2ziNZs5syzd1wpT4AwpXtTHP52wKvN5drgf06Z8Q@mail.gmail.com>
+Content-Language: en-US
+Content-ID: <E2F0DD6E8F33E84C932599DB5F0FF22E@eurprd03.prod.outlook.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, Matthias Kaehlcke <mka@chromium.org>
+To: Doug Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
+Cc: Tomasz Figa <tfiga@chromium.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, Ezequiel Garcia <ezequiel@collabora.com>, Ryan Case <ryandcase@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk <linux-clk@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Some veyron devices have a Bluetooth controller connected on UART0.
-The UART needs to operate at a high speed, however setting the clock
-rate at initialization has no practical effect. During initialization
-user space adjusts the UART baudrate multiple times, which ends up
-changing the SCLK rate. After a successful initiatalization the clk
-is running at the desired speed (48MHz).
-
-Remove the unnecessary clock rate configuration from the DT.
-
-Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
----
- arch/arm/boot/dts/rk3288-veyron.dtsi | 4 ----
- 1 file changed, 4 deletions(-)
-
-diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
-index 0bc2409f6903..97e980383e25 100644
---- a/arch/arm/boot/dts/rk3288-veyron.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
-@@ -378,10 +378,6 @@
- &uart0 {
- 	status = "okay";
- 
--	/* We need to go faster than 24MHz, so adjust clock parents / rates */
--	assigned-clocks = <&cru SCLK_UART0>;
--	assigned-clock-rates = <48000000>;
--
- 	/* Pins don't include flow control by default; add that in */
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
--- 
-2.21.0.392.gf8f6787159e-goog
+T24gMjAxOS0wNC0xMCAxNzo0NSwgRG91ZyBBbmRlcnNvbiB3cm90ZToNCj4gSGksDQo+DQo+IE9u
+IEZyaSwgTWFyIDI5LCAyMDE5IGF0IDI6NTUgUE0gRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNA
+Y2hyb21pdW0ub3JnPiB3cm90ZToNCj4+IEl0IGFwcGVhcnMgdGhhdCB0aGVyZSBpcyBhIHR5cG8g
+aW4gdGhlIHJrMzI4OCBUUk0uICBGb3INCj4+IEdSRl9TT0NfQ09OMFs3XSBpdCBzYXlzIHRoYXQg
+MCBtZWFucyAidmVwdSIgYW5kIDEgbWVhbnMgInZkcHUiLiAgSXQncw0KPj4gdGhlIG90aGVyIHdh
+eSBhcm91bmQuDQo+Pg0KPj4gSG93IGRvIEkga25vdz8gIEhlcmUncyBteSBldmlkZW5jZToNCj4+
+DQo+PiAxLiBQcmlvciB0byBjb21taXQgNGQzZTg0Zjk5NjI4ICgiY2xrOiByb2NrY2hpcDogZGVz
+Y3JpYmUgYWNsa192Y29kZWMNCj4+ICAgIHVzaW5nIHRoZSBuZXcgbXV4Z3JmIHR5cGUgb24gcmsz
+Mjg4Iikgd2UgYWx3YXlzIHByZXRlbmRlZCB0aGF0IHdlDQo+PiAgICB3ZXJlIHVzaW5nICJhY2xr
+X3ZkcHUiIGFuZCB0aGUgY29tbWVudCBpbiB0aGUgY29kZSBzYWlkIHRoYXQgdGhpcw0KPj4gICAg
+bWF0Y2hlZCB0aGUgZGVmYXVsdCBzZXR0aW5nIGluIHRoZSBzeXN0ZW0uICBJbiBmYWN0IHRoZSBk
+ZWZhdWx0DQo+PiAgICBzZXR0aW5nIGlzIDAgYWNjb3JkaW5nIHRvIHRoZSBUUk0gYW5kIGFjY29y
+ZGluZyB0byByZWFkaW5nIG1lbW9yeQ0KPj4gICAgYXQgYm9vdHVwLiAgSW4gYWRkaXRpb24gcmsz
+Mjg4LWJhc2VkIENocm9tZWJvb2tzIHJhbiBsaWtlIHRoaXMgYW5kDQo+PiAgICB0aGUgdmlkZW8g
+Y29kZWNzIHdvcmtlZC4NCj4+IDIuIFdpdGggdGhlIGV4aXN0aW5nIGNsb2NrIGNvZGUgaWYgeW91
+IGJvb3QgdXAgYW5kIHRyeSB0byBlbmFibGUgdGhlDQo+PiAgICBuZXcgVklERU9fUk9DS0NISVBf
+VlBVIGFzIGEgbW9kdWxlIChhbmQgd2l0aG91dCAiY2xrX2lnbm9yZV91bnVzZWQiDQo+PiAgICBv
+biB0aGUgY29tbWFuZCBsaW5lKSwgeW91IGdldCBlcnJvcnMgbGlrZSAiZmFpbGVkIHRvIGdldCBh
+Y2sgb24NCj4+ICAgIGRvbWFpbiAncGRfdmlkZW8nLCB2YWw9MHg4MDIwOCIuICBBZnRlciBmbGlw
+cGluZyB2ZXB1L3ZkcHUgdGhpbmdzDQo+PiAgICBpbml0IE9LLg0KPj4gMy4gSWYgSSBleHBvcnQg
+YW5kIGFkZCBib3RoIHRoZSB2ZXB1IGFuZCB2ZHB1IHRvIHRoZSBsaXN0IG9mIGNsb2Nrcw0KPj4g
+ICAgZm9yIFJLMzI4OF9QRF9WSURFTyBJIGNhbiBnZXQgcGFzdCB0aGUgcG93ZXIgZG9tYWluIGVy
+cm9ycywgYnV0IG5vdw0KPj4gICAgSSBmcmVlemUgd2hlbiB0aGUgdnB1X21tdSBnZXRzIGluaXR0
+ZWQuDQo+PiA0LiBJZiBJIGp1c3QgbWFyayB0aGUgInZkcHUiIGFzIElHTk9SRV9VTlVTRUQgdGhl
+biBldmVyeXRoaW5nIGJvb3RzIHVwDQo+PiAgICBhbmQgcHJvYmVzIE9LIHNob3dpbmcgdGhhdCBz
+b21laG93IHRoZSAidmRwdSIgd2FzIGltcG9ydGFudCB0byBrZWVwDQo+PiAgICBlbmFibGVkLiAg
+VGhpcyBpcyBiZWNhdXNlIHdlIHdlcmUgYWN0dWFsbHkgdXNpbmcgaXQgYXMgYSBwYXJlbnQuDQo+
+PiA1LiBBZnRlciB0aGlzIGNoYW5nZSBJIGNhbiBoYWNrICJhY2xrX3Zjb2RlY19wcmUiIHRvIHBh
+cmVudCBmcm9tDQo+PiAgICAiYWNsa192ZXB1IiB1c2luZyBhc3NpZ25lZC1jbG9ja3MgYW5kIHRo
+ZSB2aWRlbyBjb2RlYyBzdGlsbCBwcm9iZXMNCj4+ICAgIE9LLg0KPj4NCj4+IEZpeGVzOiA0ZDNl
+ODRmOTk2MjggKCJjbGs6IHJvY2tjaGlwOiBkZXNjcmliZSBhY2xrX3Zjb2RlYyB1c2luZyB0aGUg
+bmV3IG11eGdyZiB0eXBlIG9uIHJrMzI4OCIpDQo+PiBTaWduZWQtb2ZmLWJ5OiBEb3VnbGFzIEFu
+ZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+DQo+PiAtLS0NCj4+IEkgY3VycmVudGx5IGhh
+dmUgbm8gd2F5IHRvIHRlc3QgdGhlIEpQRUcgbWVtMm1lbSBkcml2ZXIsIHNvIGhvcGVmdWxseQ0K
+Pj4gb3RoZXJzIGNhbiB0ZXN0IHRoaXMgYW5kIG1ha2Ugc3VyZSBpdCdzIGhhcHB5IGZvciB0aGVt
+LiAgSSdtIGp1c3QNCj4+IGhhcHB5IG5vdCB0byBnZXQgc3RyYW5nZSBlcnJvcnMgYXQgYm9vdCBh
+bnltb3JlLg0KPj4NCj4+ICBkcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMjg4LmMgfCAyICst
+DQo+PiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pDQo+IEFu
+eSB0aG91Z2h0cyBhYm91dCB0aGlzIHBhdGNoPyAgSSdtIDk5LjklIGNlcnRhaW4gaXQncyBjb3Jy
+ZWN0IGFuZA0KPiBpdCdkIGJlIG5pY2UgdG8gZ2V0IGl0IGxhbmRlZC4gIEhlaWtvOiBJIGFzc3Vt
+ZSB5b3UncmUgc3RpbGwNCj4gY29sbGVjdGluZyBSb2NrY2hpcCBjbG9jayBwYXRjaGVzIGFuZCB3
+b3VsZCBiZSB0aGUgb25lIHRvIGFwcGx5IGl0IGFuZA0KPiAoYXQgc29tZSBwb2ludCkgc2VuZCBh
+IHB1bGwgcmVxdWVzdCB0byB0aGUgY2xvY2sgdHJlZT8NCj4NCj4gLURvdWcNCg0KVGhpcyBjbGsg
+Zml4IGlzIG5lZWRlZCB0byBtYWtlIE1QRUctMiBkZWNvZGluZyB3b3JrIG9uIG15IFJLMzI4OCBU
+aW5rZXIgQm9hcmQgdXNpbmcgdGhlDQpyb2NrY2hpcCB2cHUgcGF0Y2hzZXQgYW5kIGEgcGF0Y2gg
+dG8gYWRkIFJLMzI4OCBzcGVjaWZpYyBNUEVHLTIgY29kZSBbMV0uDQoNCkFsc28gbm90ZSB0aGF0
+IHRoZSBzYW1lIGNoYW5nZSB3YXMgc3VnZ2VzdGVkIGluIGEgcHJldmlvdXMgcGF0Y2ggWzJdIGZy
+b20gYnkgYXlha2EuDQoNCklmIHBvc3NpYmxlIHBsZWFzZSBhbHNvIGFkZCB0aGUgQ0xLX1NFVF9S
+QVRFX1BBUkVOVCBjaGFuZ2UgZnJvbSBbM10gaW4gYSBwb3NzaWJsZSB2MiwNCnRoYXQgZml4ZXMg
+YXNzaWduaW5nIHRoZSBhY2xrX3Zjb2RlYyBjbGsgdG8gNDAwTWh6IGluIHRoZSByb2NrY2hpcCB2
+cHUgZHJpdmVyLg0KDQpbMV0gaHR0cHM6Ly9naXRodWIuY29tL0t3aWJvby9saW51eC1yb2NrY2hp
+cC9jb21taXQvMWY3ODA5M2UwNWM3MzYwNTE1YTE4NWY0OGI3YzVjYjhiYTFlM2UxNQ0KWzJdIGh0
+dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTcyNTU1My8NClszXSBodHRwczovL2dp
+dGh1Yi5jb20vS3dpYm9vL2xpbnV4LXJvY2tjaGlwL2NvbW1pdC85MjE2ZGEzZjE1MjFhMGJlNTg4
+OTIzNWFiZTdmYTA5M2E0ODk0MTYwDQoNClJlZ2FyZHMsDQpKb25hcw0KDQo=
