@@ -1,88 +1,126 @@
-From: "elaine.zhang" <zhangqing@rock-chips.com>
-Subject: Re: [PATCH 2/3] clk: rockchip: Make rkpwm a critical clock on rk3288
-Date: Wed, 10 Apr 2019 14:42:21 +0800
-Message-ID: <50b744cd-b8d9-79ca-ba2d-6765808aa5e5@rock-chips.com>
-References: <20190409204707.150347-1-dianders@chromium.org>
- <20190409204707.150347-3-dianders@chromium.org>
+From: ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Subject: [PATCH v3 0/9] [WIP]: rockchip mpp for v4l2 video deocder
+Date: Wed, 10 Apr 2019 20:42:17 +0800
+Message-ID: <20190410124226.8612-1-ayaka@soulik.info>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190409204707.150347-3-dianders@chromium.org>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Caesar Wang <caesar.wang@rock-chips.com>, linux-rockchip@lists.infradead.org, mka@chromium.org, ryandcase@chromium.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, Randy 'ayaka' Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jernej.skrabec-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-hi,
+From: Randy 'ayaka' Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
 
-在 2019/4/10 上午4:47, Douglas Anderson 写道:
-> Most rk3288-based boards are derived from the EVB and thus use a PWM
-> regulator for the logic rail.  However, most rk3288-based boards don't
-> specify the PWM regulator in their device tree.  We'll deal with that
-> by making it critical.
->
-> NOTE: it's important to make it critical and not just IGNORE_UNUSED
-> because all PWMs in the system share the same clock.  We don't want
-> another PWM user to turn the clock on and off and kill the logic rail.
->
-> This change is in preparation for actually having the PWMs in the
-> rk3288 device tree actually point to the proper PWM clock.  Up until
-> now they've all pointed to the clock for the old IP block and they've
-> all worked due to the fact that rkpwm was IGNORE_UNUSED and that the
-> clock rates for both clocks were the same.
->
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
->
->   drivers/clk/rockchip/clk-rk3288.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-> index 06287810474e..c3321eade23e 100644
-> --- a/drivers/clk/rockchip/clk-rk3288.c
-> +++ b/drivers/clk/rockchip/clk-rk3288.c
-> @@ -697,7 +697,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
->   	GATE(PCLK_TZPC, "pclk_tzpc", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 3, GFLAGS),
->   	GATE(PCLK_UART2, "pclk_uart2", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 9, GFLAGS),
->   	GATE(PCLK_EFUSE256, "pclk_efuse_256", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 10, GFLAGS),
-> -	GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 11, GFLAGS),
-> +	GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 11, GFLAGS),
->   
->   	/* ddrctrl [DDR Controller PHY clock] gates */
->   	GATE(0, "nclk_ddrupctl0", "ddrphy", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 4, GFLAGS),
-> @@ -837,6 +837,7 @@ static const char *const rk3288_critical_clocks[] __initconst = {
->   	"pclk_alive_niu",
->   	"pclk_pd_pmu",
->   	"pclk_pmu_niu",
-> +	"pclk_rkpwm",
+Although I really hate the bitstream construction in kernel and I think
+many people realise its problems, I still take the advise from ndufresne to
+release this version. This should be released in a early week but
+I was sick that time.
 
-pwm have device node, can enable and disable it in the pwm drivers.
+After reviewed the documents from Rockchip and I have confirmed that with
+some rockchip staff, those documents are not update to date. So you may
+find some part is different comparing to official document.
 
-pwm regulator use pwm node as:
+The v4l2-request-test from bootlin won't work. Its slice data doesn't
+have a start code which making it not a complete nal unit. And I found
+its slice header information may not be correct. Even comparing to the
+Big buck bunny's origin files, neither the slice data nor sequence
+information matches.
 
-pwms = <&pwm2 0 25000 1>
+I extracted a slice data from Rockchip mpp to verify my driver, it work
+fine, you can find it on my github. I only verified the I slice now,
+I have not verified P or B slice. Hopefully it would work.
 
-when set Logic voltage:
+I have the same problem with v4l2-request-test on HEVC as well so even
+this version shipped with HEVC bitstream construction, I didn't know
+whether it would work.
 
-pwm_regulator_set_voltage()
+I need some time to prepare the userspace tool or it is really hard for
+HEVC to write slice info manually.
 
-     --> pwm_apply_state()
+Changlog
+v3: add AVC support for rkvdec
+v2: add MPEG-2 support for vdpu2
+v1: inital version
 
-         -->clk_enable()
+Randy Li (7):
+  staging: video: rockchip: add v4l2 decoder
+  rockchip: mpp: rkvdec: rbsp
+  [WIP]: rockchip: mpp: HEVC decoder ctrl data
+  [TEST]: rockchip: mpp: support qtable
+  [TEST]: rockchip: mpp: vdpu2: move qtable to input buffer
+  arm64: dts: rockchip: boost clocks for rk3328
+  arm64: dts: rockchip: add video codec for rk3328
 
-         -->pwm_enable()
+ayaka (2):
+  [WIP]: rockchip: mpp: H.264 decoder ctrl data
+  [TEST]: rkvdec: spspps address alignment
 
-         -->pwm_config()
+ arch/arm64/boot/dts/rockchip/rk3328-evb.dts   |   32 +
+ .../arm64/boot/dts/rockchip/rk3328-rock64.dts |   32 +
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi      |  112 +-
+ drivers/staging/Kconfig                       |    2 +
+ drivers/staging/Makefile                      |    1 +
+ drivers/staging/rockchip-mpp/Kconfig          |   33 +
+ drivers/staging/rockchip-mpp/Makefile         |   12 +
+ drivers/staging/rockchip-mpp/mpp_debug.h      |   87 +
+ drivers/staging/rockchip-mpp/mpp_dev_common.c | 1390 +++++++
+ drivers/staging/rockchip-mpp/mpp_dev_common.h |  215 +
+ drivers/staging/rockchip-mpp/mpp_dev_rkvdec.c |  924 +++++
+ drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c  |  607 +++
+ drivers/staging/rockchip-mpp/mpp_service.c    |  197 +
+ drivers/staging/rockchip-mpp/mpp_service.h    |   38 +
+ .../staging/rockchip-mpp/rkvdec/avc-data.c    |  239 ++
+ .../staging/rockchip-mpp/rkvdec/avc-data.h    |   40 +
+ drivers/staging/rockchip-mpp/rkvdec/avc.c     |  259 ++
+ drivers/staging/rockchip-mpp/rkvdec/cabac.h   | 3614 +++++++++++++++++
+ drivers/staging/rockchip-mpp/rkvdec/hal.h     |   70 +
+ .../staging/rockchip-mpp/rkvdec/hevc-data.c   |  208 +
+ .../staging/rockchip-mpp/rkvdec/hevc-data.h   |   27 +
+ drivers/staging/rockchip-mpp/rkvdec/hevc.c    |  169 +
+ drivers/staging/rockchip-mpp/rkvdec/rbsp.c    |   96 +
+ drivers/staging/rockchip-mpp/rkvdec/rbsp.h    |   30 +
+ drivers/staging/rockchip-mpp/rkvdec/regs.h    |  377 ++
+ drivers/staging/rockchip-mpp/vdpu2/avc.c      |  165 +
+ drivers/staging/rockchip-mpp/vdpu2/hal.h      |   52 +
+ drivers/staging/rockchip-mpp/vdpu2/mpeg2.c    |  277 ++
+ drivers/staging/rockchip-mpp/vdpu2/regs.h     |  670 +++
+ include/uapi/video/rk_vpu_service.h           |  101 +
+ 30 files changed, 10072 insertions(+), 4 deletions(-)
+ create mode 100644 drivers/staging/rockchip-mpp/Kconfig
+ create mode 100644 drivers/staging/rockchip-mpp/Makefile
+ create mode 100644 drivers/staging/rockchip-mpp/mpp_debug.h
+ create mode 100644 drivers/staging/rockchip-mpp/mpp_dev_common.c
+ create mode 100644 drivers/staging/rockchip-mpp/mpp_dev_common.h
+ create mode 100644 drivers/staging/rockchip-mpp/mpp_dev_rkvdec.c
+ create mode 100644 drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c
+ create mode 100644 drivers/staging/rockchip-mpp/mpp_service.c
+ create mode 100644 drivers/staging/rockchip-mpp/mpp_service.h
+ create mode 100644 drivers/staging/rockchip-mpp/rkvdec/avc-data.c
+ create mode 100644 drivers/staging/rockchip-mpp/rkvdec/avc-data.h
+ create mode 100644 drivers/staging/rockchip-mpp/rkvdec/avc.c
+ create mode 100644 drivers/staging/rockchip-mpp/rkvdec/cabac.h
+ create mode 100644 drivers/staging/rockchip-mpp/rkvdec/hal.h
+ create mode 100644 drivers/staging/rockchip-mpp/rkvdec/hevc-data.c
+ create mode 100644 drivers/staging/rockchip-mpp/rkvdec/hevc-data.h
+ create mode 100644 drivers/staging/rockchip-mpp/rkvdec/hevc.c
+ create mode 100644 drivers/staging/rockchip-mpp/rkvdec/rbsp.c
+ create mode 100644 drivers/staging/rockchip-mpp/rkvdec/rbsp.h
+ create mode 100644 drivers/staging/rockchip-mpp/rkvdec/regs.h
+ create mode 100644 drivers/staging/rockchip-mpp/vdpu2/avc.c
+ create mode 100644 drivers/staging/rockchip-mpp/vdpu2/hal.h
+ create mode 100644 drivers/staging/rockchip-mpp/vdpu2/mpeg2.c
+ create mode 100644 drivers/staging/rockchip-mpp/vdpu2/regs.h
+ create mode 100644 include/uapi/video/rk_vpu_service.h
 
-         -->pinctrl_select()
-
-         --....
-
-For mark pclk_rkpwm as critical,do you have any questions, or provides 
-some log or more information.
-
->   };
->   
->   static void __iomem *rk3288_cru_base;
+-- 
+2.20.1
