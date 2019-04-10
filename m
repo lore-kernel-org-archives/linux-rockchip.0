@@ -1,73 +1,48 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH] clk: rockchip: Fix video codec clocks on rk3288
-Date: Wed, 10 Apr 2019 18:38:52 +0000
-Message-ID: <AM3PR03MB09665B2755982816D2FC37E4AC2E0@AM3PR03MB0966.eurprd03.prod.outlook.com>
-References: <20190329215455.159717-1-dianders@chromium.org>
- <CAD=FV=V22Z2ziNZs5syzd1wpT4AwpXtTHP52wKvN5drgf06Z8Q@mail.gmail.com>
+From: Heiner Kallweit <hkallweit1@gmail.com>
+Subject: Re: [PATCH net-next] net: phy: switch drivers to use dynamic feature
+ detection
+Date: Wed, 10 Apr 2019 21:31:21 +0200
+Message-ID: <cbd952f0-117f-8418-e82f-5460dc0d99d0@gmail.com>
+References: <0cc96fab-e102-c0d1-ade0-90e3e06dc9f1@gmail.com>
+ <20190409.135944.1516944884952068835.davem@davemloft.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=V22Z2ziNZs5syzd1wpT4AwpXtTHP52wKvN5drgf06Z8Q@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190409.135944.1516944884952068835.davem@davemloft.net>
 Content-Language: en-US
-Content-ID: <E2F0DD6E8F33E84C932599DB5F0FF22E@eurprd03.prod.outlook.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
-Cc: Tomasz Figa <tfiga@chromium.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, Ezequiel Garcia <ezequiel@collabora.com>, Ryan Case <ryandcase@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk <linux-clk@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Sender: netdev-owner@vger.kernel.org
+To: David Miller <davem@davemloft.net>, f.fainelli@gmail.com
+Cc: andrew@lunn.ch, rjui@broadcom.com, sbranden@broadcom.com, richardcochran@gmail.com, khilman@baylibre.com, heiko@sntech.de, bcm-kernel-feedback-list@broadcom.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOS0wNC0xMCAxNzo0NSwgRG91ZyBBbmRlcnNvbiB3cm90ZToNCj4gSGksDQo+DQo+IE9u
-IEZyaSwgTWFyIDI5LCAyMDE5IGF0IDI6NTUgUE0gRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNA
-Y2hyb21pdW0ub3JnPiB3cm90ZToNCj4+IEl0IGFwcGVhcnMgdGhhdCB0aGVyZSBpcyBhIHR5cG8g
-aW4gdGhlIHJrMzI4OCBUUk0uICBGb3INCj4+IEdSRl9TT0NfQ09OMFs3XSBpdCBzYXlzIHRoYXQg
-MCBtZWFucyAidmVwdSIgYW5kIDEgbWVhbnMgInZkcHUiLiAgSXQncw0KPj4gdGhlIG90aGVyIHdh
-eSBhcm91bmQuDQo+Pg0KPj4gSG93IGRvIEkga25vdz8gIEhlcmUncyBteSBldmlkZW5jZToNCj4+
-DQo+PiAxLiBQcmlvciB0byBjb21taXQgNGQzZTg0Zjk5NjI4ICgiY2xrOiByb2NrY2hpcDogZGVz
-Y3JpYmUgYWNsa192Y29kZWMNCj4+ICAgIHVzaW5nIHRoZSBuZXcgbXV4Z3JmIHR5cGUgb24gcmsz
-Mjg4Iikgd2UgYWx3YXlzIHByZXRlbmRlZCB0aGF0IHdlDQo+PiAgICB3ZXJlIHVzaW5nICJhY2xr
-X3ZkcHUiIGFuZCB0aGUgY29tbWVudCBpbiB0aGUgY29kZSBzYWlkIHRoYXQgdGhpcw0KPj4gICAg
-bWF0Y2hlZCB0aGUgZGVmYXVsdCBzZXR0aW5nIGluIHRoZSBzeXN0ZW0uICBJbiBmYWN0IHRoZSBk
-ZWZhdWx0DQo+PiAgICBzZXR0aW5nIGlzIDAgYWNjb3JkaW5nIHRvIHRoZSBUUk0gYW5kIGFjY29y
-ZGluZyB0byByZWFkaW5nIG1lbW9yeQ0KPj4gICAgYXQgYm9vdHVwLiAgSW4gYWRkaXRpb24gcmsz
-Mjg4LWJhc2VkIENocm9tZWJvb2tzIHJhbiBsaWtlIHRoaXMgYW5kDQo+PiAgICB0aGUgdmlkZW8g
-Y29kZWNzIHdvcmtlZC4NCj4+IDIuIFdpdGggdGhlIGV4aXN0aW5nIGNsb2NrIGNvZGUgaWYgeW91
-IGJvb3QgdXAgYW5kIHRyeSB0byBlbmFibGUgdGhlDQo+PiAgICBuZXcgVklERU9fUk9DS0NISVBf
-VlBVIGFzIGEgbW9kdWxlIChhbmQgd2l0aG91dCAiY2xrX2lnbm9yZV91bnVzZWQiDQo+PiAgICBv
-biB0aGUgY29tbWFuZCBsaW5lKSwgeW91IGdldCBlcnJvcnMgbGlrZSAiZmFpbGVkIHRvIGdldCBh
-Y2sgb24NCj4+ICAgIGRvbWFpbiAncGRfdmlkZW8nLCB2YWw9MHg4MDIwOCIuICBBZnRlciBmbGlw
-cGluZyB2ZXB1L3ZkcHUgdGhpbmdzDQo+PiAgICBpbml0IE9LLg0KPj4gMy4gSWYgSSBleHBvcnQg
-YW5kIGFkZCBib3RoIHRoZSB2ZXB1IGFuZCB2ZHB1IHRvIHRoZSBsaXN0IG9mIGNsb2Nrcw0KPj4g
-ICAgZm9yIFJLMzI4OF9QRF9WSURFTyBJIGNhbiBnZXQgcGFzdCB0aGUgcG93ZXIgZG9tYWluIGVy
-cm9ycywgYnV0IG5vdw0KPj4gICAgSSBmcmVlemUgd2hlbiB0aGUgdnB1X21tdSBnZXRzIGluaXR0
-ZWQuDQo+PiA0LiBJZiBJIGp1c3QgbWFyayB0aGUgInZkcHUiIGFzIElHTk9SRV9VTlVTRUQgdGhl
-biBldmVyeXRoaW5nIGJvb3RzIHVwDQo+PiAgICBhbmQgcHJvYmVzIE9LIHNob3dpbmcgdGhhdCBz
-b21laG93IHRoZSAidmRwdSIgd2FzIGltcG9ydGFudCB0byBrZWVwDQo+PiAgICBlbmFibGVkLiAg
-VGhpcyBpcyBiZWNhdXNlIHdlIHdlcmUgYWN0dWFsbHkgdXNpbmcgaXQgYXMgYSBwYXJlbnQuDQo+
-PiA1LiBBZnRlciB0aGlzIGNoYW5nZSBJIGNhbiBoYWNrICJhY2xrX3Zjb2RlY19wcmUiIHRvIHBh
-cmVudCBmcm9tDQo+PiAgICAiYWNsa192ZXB1IiB1c2luZyBhc3NpZ25lZC1jbG9ja3MgYW5kIHRo
-ZSB2aWRlbyBjb2RlYyBzdGlsbCBwcm9iZXMNCj4+ICAgIE9LLg0KPj4NCj4+IEZpeGVzOiA0ZDNl
-ODRmOTk2MjggKCJjbGs6IHJvY2tjaGlwOiBkZXNjcmliZSBhY2xrX3Zjb2RlYyB1c2luZyB0aGUg
-bmV3IG11eGdyZiB0eXBlIG9uIHJrMzI4OCIpDQo+PiBTaWduZWQtb2ZmLWJ5OiBEb3VnbGFzIEFu
-ZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+DQo+PiAtLS0NCj4+IEkgY3VycmVudGx5IGhh
-dmUgbm8gd2F5IHRvIHRlc3QgdGhlIEpQRUcgbWVtMm1lbSBkcml2ZXIsIHNvIGhvcGVmdWxseQ0K
-Pj4gb3RoZXJzIGNhbiB0ZXN0IHRoaXMgYW5kIG1ha2Ugc3VyZSBpdCdzIGhhcHB5IGZvciB0aGVt
-LiAgSSdtIGp1c3QNCj4+IGhhcHB5IG5vdCB0byBnZXQgc3RyYW5nZSBlcnJvcnMgYXQgYm9vdCBh
-bnltb3JlLg0KPj4NCj4+ICBkcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMjg4LmMgfCAyICst
-DQo+PiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pDQo+IEFu
-eSB0aG91Z2h0cyBhYm91dCB0aGlzIHBhdGNoPyAgSSdtIDk5LjklIGNlcnRhaW4gaXQncyBjb3Jy
-ZWN0IGFuZA0KPiBpdCdkIGJlIG5pY2UgdG8gZ2V0IGl0IGxhbmRlZC4gIEhlaWtvOiBJIGFzc3Vt
-ZSB5b3UncmUgc3RpbGwNCj4gY29sbGVjdGluZyBSb2NrY2hpcCBjbG9jayBwYXRjaGVzIGFuZCB3
-b3VsZCBiZSB0aGUgb25lIHRvIGFwcGx5IGl0IGFuZA0KPiAoYXQgc29tZSBwb2ludCkgc2VuZCBh
-IHB1bGwgcmVxdWVzdCB0byB0aGUgY2xvY2sgdHJlZT8NCj4NCj4gLURvdWcNCg0KVGhpcyBjbGsg
-Zml4IGlzIG5lZWRlZCB0byBtYWtlIE1QRUctMiBkZWNvZGluZyB3b3JrIG9uIG15IFJLMzI4OCBU
-aW5rZXIgQm9hcmQgdXNpbmcgdGhlDQpyb2NrY2hpcCB2cHUgcGF0Y2hzZXQgYW5kIGEgcGF0Y2gg
-dG8gYWRkIFJLMzI4OCBzcGVjaWZpYyBNUEVHLTIgY29kZSBbMV0uDQoNCkFsc28gbm90ZSB0aGF0
-IHRoZSBzYW1lIGNoYW5nZSB3YXMgc3VnZ2VzdGVkIGluIGEgcHJldmlvdXMgcGF0Y2ggWzJdIGZy
-b20gYnkgYXlha2EuDQoNCklmIHBvc3NpYmxlIHBsZWFzZSBhbHNvIGFkZCB0aGUgQ0xLX1NFVF9S
-QVRFX1BBUkVOVCBjaGFuZ2UgZnJvbSBbM10gaW4gYSBwb3NzaWJsZSB2MiwNCnRoYXQgZml4ZXMg
-YXNzaWduaW5nIHRoZSBhY2xrX3Zjb2RlYyBjbGsgdG8gNDAwTWh6IGluIHRoZSByb2NrY2hpcCB2
-cHUgZHJpdmVyLg0KDQpbMV0gaHR0cHM6Ly9naXRodWIuY29tL0t3aWJvby9saW51eC1yb2NrY2hp
-cC9jb21taXQvMWY3ODA5M2UwNWM3MzYwNTE1YTE4NWY0OGI3YzVjYjhiYTFlM2UxNQ0KWzJdIGh0
-dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTcyNTU1My8NClszXSBodHRwczovL2dp
-dGh1Yi5jb20vS3dpYm9vL2xpbnV4LXJvY2tjaGlwL2NvbW1pdC85MjE2ZGEzZjE1MjFhMGJlNTg4
-OTIzNWFiZTdmYTA5M2E0ODk0MTYwDQoNClJlZ2FyZHMsDQpKb25hcw0KDQo=
+On 09.04.2019 22:59, David Miller wrote:
+> From: Heiner Kallweit <hkallweit1@gmail.com>
+> Date: Sun, 7 Apr 2019 11:57:13 +0200
+> 
+>> Recently genphy_read_abilities() has been added that dynamically detects
+>> clause 22 PHY abilities. I *think* this detection should work with all
+>> supported PHY's, at least for the ones with basic features sets, i.e.
+>> PHY_BASIC_FEATURES and PHY_GBIT_FEATURES. So let's remove setting these
+>> features explicitly and rely on phylib feature detection.
+>>
+>> I don't have access to most of these PHY's, therefore I'd appreciate
+>> regression testing.
+>>
+>> Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
+> 
+> This appears to need to be done differently.
+> 
+> A question was asked as to why fast ethernet PHY identification from the
+> source is important, well I'd say it's important for someone working on
+> the PHY code to see how "all fast ethernet PHY drivers do or handle X"
+> 
+Then, what we could do: Change all occurrences of
+.features = PHY_XXX_FEATURES
+to
+/* PHY_XXX_FEATURES */
+
+Would this be an acceptable option?
+
+> :-)
+> 
