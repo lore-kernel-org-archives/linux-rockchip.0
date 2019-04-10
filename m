@@ -1,7 +1,7 @@
 From: ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Subject: [PATCH v3 3/9] [WIP]: rockchip: mpp: HEVC decoder ctrl data
-Date: Wed, 10 Apr 2019 20:42:20 +0800
-Message-ID: <20190410124226.8612-4-ayaka@soulik.info>
+Subject: [PATCH v3 5/9] [TEST]: rockchip: mpp: support qtable
+Date: Wed, 10 Apr 2019 20:42:22 +0800
+Message-ID: <20190410124226.8612-6-ayaka@soulik.info>
 References: <20190410124226.8612-1-ayaka@soulik.info>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -23,292 +23,107 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Not done yet, not enough data.
-
-Signed-off-by: Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+I don't care, I don't want to store buffers for a session.
+I just want to use it to verify the FFmpeg.
 ---
- drivers/staging/rockchip-mpp/Makefile         |   4 +-
- .../staging/rockchip-mpp/rkvdec/hevc-data.c   | 208 ++++++++++++++++++
- .../staging/rockchip-mpp/rkvdec/hevc-data.h   |  27 +++
- drivers/staging/rockchip-mpp/rkvdec/hevc.c    |   2 +
- 4 files changed, 240 insertions(+), 1 deletion(-)
- create mode 100644 drivers/staging/rockchip-mpp/rkvdec/hevc-data.c
- create mode 100644 drivers/staging/rockchip-mpp/rkvdec/hevc-data.h
+ drivers/staging/rockchip-mpp/mpp_dev_common.h |  3 +++
+ drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c  |  5 ++++-
+ drivers/staging/rockchip-mpp/vdpu2/mpeg2.c    | 13 ++++++++-----
+ 3 files changed, 15 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/staging/rockchip-mpp/Makefile b/drivers/staging/rockchip-mpp/Makefile
-index 9722b0059563..8da33fa5142d 100644
---- a/drivers/staging/rockchip-mpp/Makefile
-+++ b/drivers/staging/rockchip-mpp/Makefile
-@@ -1,7 +1,9 @@
- # SPDX-License-Identifier: GPL-2.0
- rk-mpp-service-objs := mpp_service.o
- rk-mpp-device-objs := mpp_dev_common.o
--rk-mpp-vdec-objs := mpp_dev_rkvdec.o rkvdec/hevc.o rkvdec/avc.o
-+rk-mpp-vdec-objs := mpp_dev_rkvdec.o
-+rk-mpp-vdec-objs += rkvdec/avc.o
-+rk-mpp-vdec-objs += rkvdec/hevc.o rkvdec/hevc-data.o rkvdec/rbsp.o
- rk-mpp-vdpu2-objs := mpp_dev_vdpu2.o vdpu2/mpeg2.o
+diff --git a/drivers/staging/rockchip-mpp/mpp_dev_common.h b/drivers/staging/rockchip-mpp/mpp_dev_common.h
+index 36770af53a95..33d7725be67b 100644
+--- a/drivers/staging/rockchip-mpp/mpp_dev_common.h
++++ b/drivers/staging/rockchip-mpp/mpp_dev_common.h
+@@ -100,6 +100,9 @@ struct mpp_session {
+ 	struct v4l2_ctrl_handler ctrl_handler;
+ 	/* TODO: FIXME: slower than helper function ? */
+ 	struct v4l2_ctrl **ctrls;
++
++	dma_addr_t qtable_addr;
++	void *qtable_vaddr;
+ };
  
- obj-$(CONFIG_ROCKCHIP_MPP_SERVICE) += rk-mpp-service.o
-diff --git a/drivers/staging/rockchip-mpp/rkvdec/hevc-data.c b/drivers/staging/rockchip-mpp/rkvdec/hevc-data.c
-new file mode 100644
-index 000000000000..26694a2f46c5
---- /dev/null
-+++ b/drivers/staging/rockchip-mpp/rkvdec/hevc-data.c
-@@ -0,0 +1,208 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * Copyright (C) 2019 Randy Li, <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-+ *
-+ * This software is licensed under the terms of the GNU General Public
-+ * License version 2, as published by the Free Software Foundation, and
-+ * may be copied, distributed, and modified under those terms.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ */
-+
-+#include "hevc-data.h"
-+
-+/* 7.3.2.2.1 General sequence parameter set RBSP syntax */
-+int rkvdec_hevc_write_sps(struct rbsp *rbsp,
-+			  const struct v4l2_ctrl_hevc_sps *sps)
-+{
-+	/* TODO: sps_video_parameter_set_id */
-+	rbsp_write_bits(rbsp, 4, 0);
-+	/* TODO: sps_seq_parameter_set_id */
-+	rbsp_write_bits(rbsp, 4, 0);
-+	/* chroma_format_idc */
-+	rbsp_write_bits(rbsp, 2, sps->chroma_format_idc);
-+	rbsp_write_bits(rbsp, 13, sps->pic_width_in_luma_samples);
-+	rbsp_write_bits(rbsp, 13, sps->pic_height_in_luma_samples);
-+	/* bit_depth_luma */
-+	rbsp_write_bits(rbsp, 4, sps->bit_depth_luma_minus8 + 8);
-+	rbsp_write_bits(rbsp, 4, sps->bit_depth_chroma_minus8 + 8);
-+	/* log2_max_pic_order_cnt_lsb */
-+	rbsp_write_bits(rbsp, 5, sps->log2_max_pic_order_cnt_lsb_minus4 + 4);
-+	/* FIXME it is 3 bits in document */
-+	rbsp_write_bits(rbsp, 2, sps->log2_diff_max_min_luma_coding_block_size);
-+	/* log2_min_luma_coding_block_size */
-+	rbsp_write_bits(rbsp, 3,
-+			sps->log2_min_luma_coding_block_size_minus3 + 3);
-+	/* log2_min_transform_block_size */
-+	rbsp_write_bits(rbsp, 3,
-+			sps->log2_min_luma_transform_block_size_minus2 + 2);
-+	rbsp_write_bits(rbsp, 2,
-+			sps->log2_diff_max_min_luma_transform_block_size);
-+	rbsp_write_bits(rbsp, 3, sps->max_transform_hierarchy_depth_inter);
-+	rbsp_write_bits(rbsp, 3, sps->max_transform_hierarchy_depth_intra);
-+
-+	rbsp_write_flag(rbsp, sps->scaling_list_enabled_flag);
-+	rbsp_write_flag(rbsp, sps->amp_enabled_flag);
-+	rbsp_write_flag(rbsp, sps->sample_adaptive_offset_enabled_flag);
-+	rbsp_write_flag(rbsp, sps->pcm_enabled_flag);
-+
-+	/* pcm_sample_bit_depth_luma */
-+	rbsp_write_bits(rbsp, 4, sps->pcm_sample_bit_depth_luma_minus1 + 1);
-+	/* pcm_sample_bit_depth_chroma */
-+	rbsp_write_bits(rbsp, 4, sps->pcm_sample_bit_depth_chroma_minus1 + 1);
-+	rbsp_write_flag(rbsp, sps->pcm_loop_filter_disabled_flag);
-+
-+	rbsp_write_bits(rbsp, 3,
-+			sps->log2_diff_max_min_pcm_luma_coding_block_size);
-+	/* log2_min_pcm_luma_coding_block_size */
-+	rbsp_write_bits(rbsp, 3,
-+			sps->log2_min_pcm_luma_coding_block_size_minus3 + 3);
-+	rbsp_write_bits(rbsp, 7, sps->num_short_term_ref_pic_sets);
-+	rbsp_write_flag(rbsp, sps->long_term_ref_pics_present_flag);
-+	rbsp_write_bits(rbsp, 6, sps->num_long_term_ref_pics_sps);
-+	rbsp_write_flag(rbsp, sps->sps_temporal_mvp_enabled_flag);
-+	rbsp_write_flag(rbsp, sps->strong_intra_smoothing_enabled_flag);
-+	/* Above is 100 bits total */
-+#if 0
-+	/* transform_skip_rotation_enabled_flag to intra_smoothing_disabled_flag */
-+	rbsp_write_bits(rbsp, 7, 0);
-+	/* sps_max_dec_pic_buffering_minus1 */
-+	rbsp_write_bits(rbsp, 4, sps->sps_max_dec_pic_buffering_minus1);
-+	rbsp_write_flag(rbsp, sps->separate_colour_plane_flag);
-+	/* TODO: high_precision_offsets_enabled */
-+	rbsp_write_flag(rbsp, 0);
-+	/* TODO: persistent_rice_adaptation_enabled_flag */
-+	rbsp_write_flag(rbsp, 0);
-+	/* reserved */
-+	rbsp_write_bits(rbsp, 14, 0xffffffff);
-+#else
-+	rbsp_write_bits(rbsp, 7, 0);
-+	/* padding */
-+	rbsp_write_bits(rbsp, 21, 0xffffffff);
-+#endif
-+
-+	return 0;
-+}
-+
-+int rkvdec_hevc_write_pps(struct rbsp *rbsp,
-+			  const struct v4l2_ctrl_hevc_sps *sps,
-+			  const struct v4l2_ctrl_hevc_pps *pps,
-+			  const struct v4l2_ctrl_hevc_slice_params *slice_params)
-+{
-+
-+	u32 min_cb_log2_size_y, ctb_log2_size_y, log2_min_cu_qp_delta_size;
-+	u16 column_width[20] = { 0, };
-+	u16 row_height[22] = { 0, };
-+	u8 i;
-+
-+	min_cb_log2_size_y = sps->log2_min_luma_coding_block_size_minus3 + 3;
-+	ctb_log2_size_y = min_cb_log2_size_y +
-+	    sps->log2_diff_max_min_luma_coding_block_size;
-+
-+	log2_min_cu_qp_delta_size = ctb_log2_size_y - pps->diff_cu_qp_delta_depth;
-+
-+	/* pps_pic_parameter_set_id */
-+	rbsp_write_bits(rbsp, 6, 0);
-+	/* pps_seq_parameter_set_id */
-+	rbsp_write_bits(rbsp, 4, 0);
-+	/* dependent_slice_segments_enabled_flag */
-+	rbsp_write_flag(rbsp, pps->dependent_slice_segment_flag);
-+	rbsp_write_flag(rbsp, pps->output_flag_present_flag);
-+	/* FIXME it is 3 bits in document */
-+	rbsp_write_bits(rbsp, 13, pps->num_extra_slice_header_bits);
-+	/* sign_data_hiding_flag */
-+	rbsp_write_flag(rbsp, pps->sign_data_hiding_enabled_flag);
-+	rbsp_write_flag(rbsp, pps->cabac_init_present_flag);
-+	/* FIXME: from slice params ? */
-+	rbsp_write_bits(rbsp, 4, slice_params->num_ref_idx_l0_active_minus1 + 1);
-+	rbsp_write_bits(rbsp, 4, slice_params->num_ref_idx_l1_active_minus1 + 1);
-+	/* FIXME it is 6 bits in document init_qp_minus26 */
-+	rbsp_write_bits(rbsp, 7, pps->init_qp_minus26);
-+	rbsp_write_flag(rbsp, pps->constrained_intra_pred_flag);
-+	rbsp_write_flag(rbsp, pps->transform_skip_enabled_flag);
-+	rbsp_write_flag(rbsp, pps->cu_qp_delta_enabled_flag);
-+	/* Log2MinCuQpDeltaSize */
-+	rbsp_write_bits(rbsp, 3, log2_min_cu_qp_delta_size);
-+	rbsp_write_bits(rbsp, 5, pps->pps_cb_qp_offset);
-+	rbsp_write_bits(rbsp, 5, pps->pps_cr_qp_offset);
-+	rbsp_write_flag(rbsp, pps->pps_slice_chroma_qp_offsets_present_flag);
-+	rbsp_write_flag(rbsp, pps->weighted_pred_flag);
-+	rbsp_write_flag(rbsp, pps->weighted_bipred_flag);
-+	rbsp_write_flag(rbsp, pps->transquant_bypass_enabled_flag);
-+	rbsp_write_flag(rbsp, pps->tiles_enabled_flag);
-+	rbsp_write_flag(rbsp, pps->entropy_coding_sync_enabled_flag);
-+	rbsp_write_flag(rbsp, pps->pps_loop_filter_across_slices_enabled_flag);
-+	rbsp_write_flag(rbsp, pps->loop_filter_across_tiles_enabled_flag);
-+	rbsp_write_flag(rbsp, pps->deblocking_filter_override_enabled_flag);
-+	/* pps_deblocking_filter_disabled_flag */
-+	rbsp_write_flag(rbsp, pps->pps_disable_deblocking_filter_flag);
-+	rbsp_write_bits(rbsp, 4, pps->pps_beta_offset_div2);
-+	rbsp_write_bits(rbsp, 4, pps->pps_tc_offset_div2);
-+	rbsp_write_flag(rbsp, pps->lists_modification_present_flag);
-+	rbsp_write_bits(rbsp, 3, pps->log2_parallel_merge_level_minus2 + 2);
-+	rbsp_write_flag(rbsp, pps->slice_segment_header_extension_present_flag);
-+	/* reserved, log2_transform_skip_max_size_minus2 */
-+	rbsp_write_bits(rbsp, 3, 0);
-+	/* num_tile_columns */
-+	rbsp_write_bits(rbsp, 5, pps->num_tile_columns_minus1 + 1);
-+	/* num_tile_rows */
-+	rbsp_write_bits(rbsp, 5, pps->num_tile_rows_minus1 + 1);
-+	/* ? */
-+	rbsp_write_bits(rbsp, 3, 2);
-+	/* align 30 ? */
-+	rbsp_write_bits(rbsp, 32, 0xffffffff);
-+
-+	/* TODO: support tile video */
-+	column_width[0] = 0;
-+	row_height[0] = 0;
-+
-+	for (i = 0; i < 20; i++) {
-+		if (column_width[i])
-+			column_width[i]--;
-+		rbsp_write_bits(rbsp, column_width[i], 8);
-+	}
-+	for (i = 0; i < 22; i++) {
-+		if (row_height[i])
-+			row_height[i]--;
-+		rbsp_write_bits(rbsp, row_height[i], 8);
-+	}
-+
-+	/* TODO: scaleing_address */
-+
-+	return 0;
-+}
-+
-+int rkvdec_hevc_write_soft_rps(struct rbsp *rbsp,
-+			  const struct v4l2_ctrl_hevc_slice_params *slice_params)
-+{
-+	int i;
-+
-+	for (i = 0; i < 15; i++) {
-+		/* FIXME: is long term */
-+		rbsp_write_flag(rbsp, 0);
-+		rbsp_write_bits(rbsp, 4, slice_params->ref_idx_l0[i]);
-+	}
-+
-+	for (i = 0; i < 15; i++) {
-+		/* FIXME: is long term */
-+		rbsp_write_flag(rbsp, 0);
-+		rbsp_write_bits(rbsp, 4, slice_params->ref_idx_l1[i]);
-+	}
-+	/* TODO: lowdelay_flag */
-+	rbsp_write_flag(rbsp, 1);
-+
-+	/* TODO: Rps_bit_offset_include_lt */
-+	rbsp_write_bits(rbsp, 10, 0);
-+	rbsp_write_bits(rbsp, 9, 0);
-+}
-+
-+/* 7.3.7 Short-term reference picture set syntax */
-+int rkvdec_hevc_write_rps(struct rbsp *rbsp,
-+			  const struct v4l2_ctrl_hevc_pps *pps)
-+{
-+
-+}
-diff --git a/drivers/staging/rockchip-mpp/rkvdec/hevc-data.h b/drivers/staging/rockchip-mpp/rkvdec/hevc-data.h
-new file mode 100644
-index 000000000000..6b94cd41d377
---- /dev/null
-+++ b/drivers/staging/rockchip-mpp/rkvdec/hevc-data.h
-@@ -0,0 +1,27 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * Copyright (C) 2019 Randy Li, <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-+ *
-+ * This software is licensed under the terms of the GNU General Public
-+ * License version 2, as published by the Free Software Foundation, and
-+ * may be copied, distributed, and modified under those terms.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ */
-+
-+#include <linux/types.h>
-+
-+#include <linux/videodev2.h>
-+#include <media/v4l2-ctrls.h>
-+
-+#include "rbsp.h"
-+
-+int rkvdec_hevc_write_sps(struct rbsp *rbsp,
-+			  const struct v4l2_ctrl_hevc_sps *sps);
-+
-+int rkvdec_hevc_write_rps(struct rbsp *rbsp,
-+			  const struct v4l2_ctrl_hevc_pps *pps);
-diff --git a/drivers/staging/rockchip-mpp/rkvdec/hevc.c b/drivers/staging/rockchip-mpp/rkvdec/hevc.c
-index 78f150000128..6f74ce45533a 100644
---- a/drivers/staging/rockchip-mpp/rkvdec/hevc.c
-+++ b/drivers/staging/rockchip-mpp/rkvdec/hevc.c
-@@ -25,6 +25,8 @@
- #include "hal.h"
- #include "regs.h"
+ /* The context for the a task */
+diff --git a/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c b/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c
+index dbd9f334562e..1be73ab9c2be 100644
+--- a/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c
++++ b/drivers/staging/rockchip-mpp/mpp_dev_vdpu2.c
+@@ -246,6 +246,9 @@ static int rkvdpu_open(struct file *filp)
+ 	if (IS_ERR_OR_NULL(session))
+ 		return PTR_ERR(session);
  
-+#include "hevc-data.h"
-+
- static void init_hw_cfg(struct rkvdec_regs *p_regs)
++	session->qtable_vaddr = dmam_alloc_coherent(mpp_dev->dev, 64 * 4,
++						    &session->qtable_addr,
++						    GFP_KERNEL);
+ 	filp->private_data = &session->fh;
+ 	pm_runtime_get_sync(mpp_dev->dev);
+ 
+@@ -529,7 +532,7 @@ static int rockchip_mpp_rkvdpu_probe(struct platform_device *pdev)
+ 	ret = mpp_dev_register_node(mpp_dev, mpp_dev->variant->node_name,
+ 				    NULL, &rkvdpu_ioctl_ops);
+ 	if (ret)
+-		dev_err(dev, "register char device failed: %d\n", ret);
++		dev_err(dev, "register v4l2/media device failed: %d\n", ret);
+ 
+ 	memcpy(mpp_dev->fmt_out, fmt_out_templ, sizeof(fmt_out_templ));
+ 	memcpy(mpp_dev->fmt_cap, fmt_cap_templ, sizeof(fmt_cap_templ));
+diff --git a/drivers/staging/rockchip-mpp/vdpu2/mpeg2.c b/drivers/staging/rockchip-mpp/vdpu2/mpeg2.c
+index d32958c4cb20..837ee4a4a000 100644
+--- a/drivers/staging/rockchip-mpp/vdpu2/mpeg2.c
++++ b/drivers/staging/rockchip-mpp/vdpu2/mpeg2.c
+@@ -52,7 +52,7 @@ static const u8 intra_default_q_matrix[64] = {
+ static void mpeg2_dec_copy_qtable(u8 * qtable, const struct v4l2_ctrl_mpeg2_quantization
+ 				  *ctrl)
  {
- 	p_regs->sw_interrupt.dec_e = 1;
+-	int i, n;
++	int i;
+ 
+ 	if (!qtable || !ctrl)
+ 		return;
+@@ -111,16 +111,12 @@ int rkvdpu_mpeg2_gen_reg(struct mpp_session *session, void *regs,
+ 			 struct vb2_v4l2_buffer *src_buf)
+ {
+ 	const struct v4l2_ctrl_mpeg2_slice_params *params;
+-	const struct v4l2_ctrl_mpeg2_quantization *quantization;
+ 	const struct v4l2_mpeg2_sequence *sequence;
+ 	const struct v4l2_mpeg2_picture *picture;
+ 	struct vdpu2_regs *p_regs = regs;
+ 
+ 	params = rockchip_mpp_get_cur_ctrl(session,
+ 					   V4L2_CID_MPEG_VIDEO_MPEG2_SLICE_PARAMS);
+-	quantization = rockchip_mpp_get_cur_ctrl(session,
+-						 V4L2_CID_MPEG_VIDEO_MPEG2_QUANTIZATION);
+-
+ 	if (!params)
+ 		return -EINVAL;
+ 
+@@ -211,6 +207,7 @@ int rkvdpu_mpeg2_prepare_buf(struct mpp_session *session, void *regs)
+ {
+ 	const struct v4l2_ctrl_mpeg2_slice_params *params;
+ 	const struct v4l2_mpeg2_sequence *sequence;
++	const struct v4l2_ctrl_mpeg2_quantization *quantization;
+ 	const struct v4l2_mpeg2_picture *picture;
+ 	struct vb2_v4l2_buffer *dst_buf;
+ 	dma_addr_t cur_addr, fwd_addr, bwd_addr;
+@@ -223,6 +220,9 @@ int rkvdpu_mpeg2_prepare_buf(struct mpp_session *session, void *regs)
+ 	picture = &params->picture;
+ 	sequence = &params->sequence;
+ 
++	quantization = rockchip_mpp_get_cur_ctrl(session,
++			V4L2_CID_MPEG_VIDEO_MPEG2_QUANTIZATION);
++
+ 	dst_buf = v4l2_m2m_next_dst_buf(session->fh.m2m_ctx);
+ 	cur_addr = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
+ 
+@@ -266,5 +266,8 @@ int rkvdpu_mpeg2_prepare_buf(struct mpp_session *session, void *regs)
+ 		p_regs->sw135.refer3_base = cur_addr >> 2;
+ 	}
+ 
++	mpeg2_dec_copy_qtable(session->qtable_vaddr, quantization);
++        p_regs->sw61.qtable_base = session->qtable_addr;
++
+ 	return 0;
+ }
 -- 
 2.20.1
