@@ -1,168 +1,103 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH] mmc: dw_mmc: Disable SDIO interrupts while suspended to fix suspend/resume
-Date: Wed, 10 Apr 2019 15:12:37 -0700
-Message-ID: <20190410221237.160856-1-dianders@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] clk: rockchip: Fix video codec clocks on rk3288
+Date: Wed, 10 Apr 2019 16:37:33 -0700
+Message-ID: <CAD=FV=W=gPgYNrVAXYa=9bz1e5+KBD1Xu7UK-pPkH25esFiW9A@mail.gmail.com>
+References: <20190329215455.159717-1-dianders@chromium.org>
+ <CAD=FV=V22Z2ziNZs5syzd1wpT4AwpXtTHP52wKvN5drgf06Z8Q@mail.gmail.com>
+ <AM3PR03MB09665B2755982816D2FC37E4AC2E0@AM3PR03MB0966.eurprd03.prod.outlook.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <stable-owner@vger.kernel.org>
-Sender: stable-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Kalle Valo <kvalo@codeaurora.org>, heiko@sntech.de, linux-rockchip@lists.infradead.org, briannorris@chromium.org, linux-wireless@vger.kernel.org, mka@chromium.org, ryandcase@chromium.org, Douglas Anderson <dianders@chromium.org>, stable@vger.kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <AM3PR03MB09665B2755982816D2FC37E4AC2E0@AM3PR03MB0966.eurprd03.prod.outlook.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Ziyuan Xu <xzy.xu@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Elaine Zhang <zhangqing@rock-chips.com>, LKML <linux-kernel@vger.kernel.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, Ezequiel Garcia <ezequiel@collabora.com>, linux-clk <linux-clk@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Processing SDIO interrupts while dw_mmc is suspended (or partly
-suspended) seems like a bad idea.  We really don't want to be
-processing them until we've gotten ourselves fully powered up.
+Hi,
 
-You might be wondering how it's even possible to become suspended when
-an SDIO interrupt is active.  As can be seen in
-dw_mci_enable_sdio_irq(), we explicitly keep dw_mmc out of runtime
-suspend when the SDIO interrupt is enabled.  ...but even though we
-stop normal runtime suspend transitions when SDIO interrupts are
-enabled, the dw_mci_runtime_suspend() can still get called for a full
-system suspend.
+On Wed, Apr 10, 2019 at 11:38 AM Jonas Karlman <jonas@kwiboo.se> wrote:
+>
+> On 2019-04-10 17:45, Doug Anderson wrote:
+> > Hi,
+> >
+> > On Fri, Mar 29, 2019 at 2:55 PM Douglas Anderson <dianders@chromium.org> wrote:
+> >> It appears that there is a typo in the rk3288 TRM.  For
+> >> GRF_SOC_CON0[7] it says that 0 means "vepu" and 1 means "vdpu".  It's
+> >> the other way around.
+> >>
+> >> How do I know?  Here's my evidence:
+> >>
+> >> 1. Prior to commit 4d3e84f99628 ("clk: rockchip: describe aclk_vcodec
+> >>    using the new muxgrf type on rk3288") we always pretended that we
+> >>    were using "aclk_vdpu" and the comment in the code said that this
+> >>    matched the default setting in the system.  In fact the default
+> >>    setting is 0 according to the TRM and according to reading memory
+> >>    at bootup.  In addition rk3288-based Chromebooks ran like this and
+> >>    the video codecs worked.
+> >> 2. With the existing clock code if you boot up and try to enable the
+> >>    new VIDEO_ROCKCHIP_VPU as a module (and without "clk_ignore_unused"
+> >>    on the command line), you get errors like "failed to get ack on
+> >>    domain 'pd_video', val=0x80208".  After flipping vepu/vdpu things
+> >>    init OK.
+> >> 3. If I export and add both the vepu and vdpu to the list of clocks
+> >>    for RK3288_PD_VIDEO I can get past the power domain errors, but now
+> >>    I freeze when the vpu_mmu gets initted.
+> >> 4. If I just mark the "vdpu" as IGNORE_UNUSED then everything boots up
+> >>    and probes OK showing that somehow the "vdpu" was important to keep
+> >>    enabled.  This is because we were actually using it as a parent.
+> >> 5. After this change I can hack "aclk_vcodec_pre" to parent from
+> >>    "aclk_vepu" using assigned-clocks and the video codec still probes
+> >>    OK.
+> >>
+> >> Fixes: 4d3e84f99628 ("clk: rockchip: describe aclk_vcodec using the new muxgrf type on rk3288")
+> >> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> >> ---
+> >> I currently have no way to test the JPEG mem2mem driver, so hopefully
+> >> others can test this and make sure it's happy for them.  I'm just
+> >> happy not to get strange errors at boot anymore.
+> >>
+> >>  drivers/clk/rockchip/clk-rk3288.c | 2 +-
+> >>  1 file changed, 1 insertion(+), 1 deletion(-)
+> > Any thoughts about this patch?  I'm 99.9% certain it's correct and
+> > it'd be nice to get it landed.  Heiko: I assume you're still
+> > collecting Rockchip clock patches and would be the one to apply it and
+> > (at some point) send a pull request to the clock tree?
+> >
+> > -Doug
+>
+> This clk fix is needed to make MPEG-2 decoding work on my RK3288 Tinker Board using the
+> rockchip vpu patchset and a patch to add RK3288 specific MPEG-2 code [1].
+>
+> Also note that the same change was suggested in a previous patch [2] from by ayaka.
+>
+> If possible please also add the CLK_SET_RATE_PARENT change from [3] in a possible v2,
+> that fixes assigning the aclk_vcodec clk to 400Mhz in the rockchip vpu driver.
+>
+> [1] https://github.com/Kwiboo/linux-rockchip/commit/1f78093e05c7360515a185f48b7c5cb8ba1e3e15
+> [2] https://patchwork.kernel.org/patch/9725553/
+> [3] https://github.com/Kwiboo/linux-rockchip/commit/9216da3f1521a0be5889235abe7fa093a4894160
 
-Let's handle all this by explicitly masking SDIO interrupts in the
-suspend call and unmasking them later in the resume call.  To do this
-cleanly I'll keep track of whether the client requested that SDIO
-interrupts be enabled so that we can reliably restore them regardless
-of whether we're masking them for one reason or another.
+Thanks for the pointers!  Now I'm 99.9999% certain that my patch is
+correct instead of just 99.9%.  ;-)
 
-Without this fix it can be seen that rk3288-veyron Chromebooks with
-Marvell WiFi would sometimes fail to resume WiFi even after picking my
-recent mwifiex patch [1].  Specifically you'd see messages like this:
-  mwifiex_sdio mmc1:0001:1: Firmware wakeup failed
-  mwifiex_sdio mmc1:0001:1: PREP_CMD: FW in reset state
+IMO the CLK_SET_RATE_PARENT should probably be a separate patch but it
+does seem like we need it.  ...and actually the patch adding it should
+have a Fixes tag of the same commit.  Prior to that commit the parent
+of "aclk_vcodec" was "aclk_vdpu".  As a gate clock it would
+automatically have CLK_SET_RATE_PARENT so you could easily set the
+rate.  ...and it looks as if the downstream video codec driver in
+Chrome OS relies on this too.
 
-...and tracing through the resume code in the failing cases showed
-that we were processing a SDIO interrupt really early in the resume
-call.
+I'm happy to add that in a v2 if Heiko is happy with it.
 
-NOTE: downstream in Chrome OS 3.14 and 3.18 kernels (both of which
-support the Marvell SDIO WiFi card) we had a patch ("CHROMIUM: sdio:
-Defer SDIO interrupt handling until after resume") [2].  Presumably
-this is the same problem that was solved by that patch.
-
-[1] https://lkml.kernel.org/r/20190404040106.40519-1-dianders@chromium.org
-[2] https://crrev.com/c/230765
-
-Cc: <stable@vger.kernel.org>
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
-I didn't put any "Fixes" tag here, but presumably this could be
-backported to whichever kernels folks found it useful for.  I have at
-least confirmed that kernels v4.14 and v4.19 (as well as v5.1-rc2)
-show the problem.  It is very easy to pick this to v4.19 and it
-definitely fixes the problem there.
-
-I haven't spent the time to pick this to 4.14 myself, but presumably
-it wouldn't be too hard to backport this as far as v4.13 since that
-contains commit 32dba73772f8 ("mmc: dw_mmc: Convert to use
-MMC_CAP2_SDIO_IRQ_NOTHREAD for SDIO IRQs").  Prior to that it might
-make sense for anyone experiencing this problem to just pick the old
-CHROMIUM patch to fix them.
-
- drivers/mmc/host/dw_mmc.c | 24 ++++++++++++++++++++----
- drivers/mmc/host/dw_mmc.h |  3 +++
- 2 files changed, 23 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-index 80dc2fd6576c..432f6e3ddd43 100644
---- a/drivers/mmc/host/dw_mmc.c
-+++ b/drivers/mmc/host/dw_mmc.c
-@@ -1664,7 +1664,8 @@ static void dw_mci_init_card(struct mmc_host *mmc, struct mmc_card *card)
- 	}
- }
- 
--static void __dw_mci_enable_sdio_irq(struct dw_mci_slot *slot, int enb)
-+static void __dw_mci_enable_sdio_irq(struct dw_mci_slot *slot, bool enb,
-+				     bool client_requested)
- {
- 	struct dw_mci *host = slot->host;
- 	unsigned long irqflags;
-@@ -1672,6 +1673,17 @@ static void __dw_mci_enable_sdio_irq(struct dw_mci_slot *slot, int enb)
- 
- 	spin_lock_irqsave(&host->irq_lock, irqflags);
- 
-+	/*
-+	 * If this was requested by the client save the request.  If this
-+	 * wasn't required by the client then logically AND it with the
-+	 * client request since we want to disable if either the client
-+	 * disabled OR we have some other reason to disable.
-+	 */
-+	if (client_requested)
-+		host->client_sdio_enb = enb;
-+	else if (!host->client_sdio_enb)
-+		enb = 0;
-+
- 	/* Enable/disable Slot Specific SDIO interrupt */
- 	int_mask = mci_readl(host, INTMASK);
- 	if (enb)
-@@ -1688,7 +1700,7 @@ static void dw_mci_enable_sdio_irq(struct mmc_host *mmc, int enb)
- 	struct dw_mci_slot *slot = mmc_priv(mmc);
- 	struct dw_mci *host = slot->host;
- 
--	__dw_mci_enable_sdio_irq(slot, enb);
-+	__dw_mci_enable_sdio_irq(slot, enb, true);
- 
- 	/* Avoid runtime suspending the device when SDIO IRQ is enabled */
- 	if (enb)
-@@ -1701,7 +1713,7 @@ static void dw_mci_ack_sdio_irq(struct mmc_host *mmc)
- {
- 	struct dw_mci_slot *slot = mmc_priv(mmc);
- 
--	__dw_mci_enable_sdio_irq(slot, 1);
-+	__dw_mci_enable_sdio_irq(slot, true, false);
- }
- 
- static int dw_mci_execute_tuning(struct mmc_host *mmc, u32 opcode)
-@@ -2734,7 +2746,7 @@ static irqreturn_t dw_mci_interrupt(int irq, void *dev_id)
- 		if (pending & SDMMC_INT_SDIO(slot->sdio_id)) {
- 			mci_writel(host, RINTSTS,
- 				   SDMMC_INT_SDIO(slot->sdio_id));
--			__dw_mci_enable_sdio_irq(slot, 0);
-+			__dw_mci_enable_sdio_irq(slot, false, false);
- 			sdio_signal_irq(slot->mmc);
- 		}
- 
-@@ -3424,6 +3436,8 @@ int dw_mci_runtime_suspend(struct device *dev)
- {
- 	struct dw_mci *host = dev_get_drvdata(dev);
- 
-+	__dw_mci_enable_sdio_irq(host->slot, false, false);
-+
- 	if (host->use_dma && host->dma_ops->exit)
- 		host->dma_ops->exit(host);
- 
-@@ -3490,6 +3504,8 @@ int dw_mci_runtime_resume(struct device *dev)
- 	/* Now that slots are all setup, we can enable card detect */
- 	dw_mci_enable_cd(host);
- 
-+	__dw_mci_enable_sdio_irq(host->slot, true, false);
-+
- 	return 0;
- 
- err:
-diff --git a/drivers/mmc/host/dw_mmc.h b/drivers/mmc/host/dw_mmc.h
-index 46e9f8ec5398..dfbace0f5043 100644
---- a/drivers/mmc/host/dw_mmc.h
-+++ b/drivers/mmc/host/dw_mmc.h
-@@ -127,6 +127,7 @@ struct dw_mci_dma_slave {
-  * @cmd11_timer: Timer for SD3.0 voltage switch over scheme.
-  * @cto_timer: Timer for broken command transfer over scheme.
-  * @dto_timer: Timer for broken data transfer over scheme.
-+ * @client_sdio_enb: The value last passed to enable_sdio_irq.
-  *
-  * Locking
-  * =======
-@@ -234,6 +235,8 @@ struct dw_mci {
- 	struct timer_list       cmd11_timer;
- 	struct timer_list       cto_timer;
- 	struct timer_list       dto_timer;
-+
-+	bool			client_sdio_enb;
- };
- 
- /* DMA ops for Internal/External DMAC interface */
--- 
-2.21.0.392.gf8f6787159e-goog
+-Doug
