@@ -1,98 +1,259 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] clk: rockchip: Fix video codec clocks on rk3288
-Date: Thu, 11 Apr 2019 08:38:20 +0200
-Message-ID: <3815078.yV5O778F5b@diego>
-References: <20190329215455.159717-1-dianders@chromium.org> <AM3PR03MB09665B2755982816D2FC37E4AC2E0@AM3PR03MB0966.eurprd03.prod.outlook.com> <CAD=FV=W=gPgYNrVAXYa=9bz1e5+KBD1Xu7UK-pPkH25esFiW9A@mail.gmail.com>
+From: "elaine.zhang" <zhangqing@rock-chips.com>
+Subject: Re: [PATCH v1 1/3] thermal: rockchip: add pinctrl control
+Date: Thu, 11 Apr 2019 15:46:59 +0800
+Message-ID: <db977a75-195f-4c98-ef84-aa186b484e0d@rock-chips.com>
+References: <1554100985-11385-1-git-send-email-zhangqing@rock-chips.com>
+ <1554100985-11385-2-git-send-email-zhangqing@rock-chips.com>
+ <30325add-d75a-6775-50c0-d2d2274ff81e@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=W=gPgYNrVAXYa=9bz1e5+KBD1Xu7UK-pPkH25esFiW9A@mail.gmail.com>
+In-Reply-To: <30325add-d75a-6775-50c0-d2d2274ff81e@linaro.org>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Jonas Karlman <jonas@kwiboo.se>, Elaine Zhang <zhangqing@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, Ezequiel Garcia <ezequiel@collabora.com>, Ryan Case <ryandcase@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk <linux-clk@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, heiko@sntech.de
+Cc: rui.zhang@intel.com, edubezval@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
+hi,
 
-Am Donnerstag, 11. April 2019, 01:37:33 CEST schrieb Doug Anderson:
-> Hi,
-> 
-> On Wed, Apr 10, 2019 at 11:38 AM Jonas Karlman <jonas@kwiboo.se> wrote:
-> >
-> > On 2019-04-10 17:45, Doug Anderson wrote:
-> > > Hi,
-> > >
-> > > On Fri, Mar 29, 2019 at 2:55 PM Douglas Anderson <dianders@chromium.org> wrote:
-> > >> It appears that there is a typo in the rk3288 TRM.  For
-> > >> GRF_SOC_CON0[7] it says that 0 means "vepu" and 1 means "vdpu".  It's
-> > >> the other way around.
-> > >>
-> > >> How do I know?  Here's my evidence:
-> > >>
-> > >> 1. Prior to commit 4d3e84f99628 ("clk: rockchip: describe aclk_vcodec
-> > >>    using the new muxgrf type on rk3288") we always pretended that we
-> > >>    were using "aclk_vdpu" and the comment in the code said that this
-> > >>    matched the default setting in the system.  In fact the default
-> > >>    setting is 0 according to the TRM and according to reading memory
-> > >>    at bootup.  In addition rk3288-based Chromebooks ran like this and
-> > >>    the video codecs worked.
-> > >> 2. With the existing clock code if you boot up and try to enable the
-> > >>    new VIDEO_ROCKCHIP_VPU as a module (and without "clk_ignore_unused"
-> > >>    on the command line), you get errors like "failed to get ack on
-> > >>    domain 'pd_video', val=0x80208".  After flipping vepu/vdpu things
-> > >>    init OK.
-> > >> 3. If I export and add both the vepu and vdpu to the list of clocks
-> > >>    for RK3288_PD_VIDEO I can get past the power domain errors, but now
-> > >>    I freeze when the vpu_mmu gets initted.
-> > >> 4. If I just mark the "vdpu" as IGNORE_UNUSED then everything boots up
-> > >>    and probes OK showing that somehow the "vdpu" was important to keep
-> > >>    enabled.  This is because we were actually using it as a parent.
-> > >> 5. After this change I can hack "aclk_vcodec_pre" to parent from
-> > >>    "aclk_vepu" using assigned-clocks and the video codec still probes
-> > >>    OK.
-> > >>
-> > >> Fixes: 4d3e84f99628 ("clk: rockchip: describe aclk_vcodec using the new muxgrf type on rk3288")
-> > >> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > >> ---
-> > >> I currently have no way to test the JPEG mem2mem driver, so hopefully
-> > >> others can test this and make sure it's happy for them.  I'm just
-> > >> happy not to get strange errors at boot anymore.
-> > >>
-> > >>  drivers/clk/rockchip/clk-rk3288.c | 2 +-
-> > >>  1 file changed, 1 insertion(+), 1 deletion(-)
-> > > Any thoughts about this patch?  I'm 99.9% certain it's correct and
-> > > it'd be nice to get it landed.  Heiko: I assume you're still
-> > > collecting Rockchip clock patches and would be the one to apply it and
-> > > (at some point) send a pull request to the clock tree?
-> > >
-> > > -Doug
-> >
-> > This clk fix is needed to make MPEG-2 decoding work on my RK3288 Tinker Board using the
-> > rockchip vpu patchset and a patch to add RK3288 specific MPEG-2 code [1].
-> >
-> > Also note that the same change was suggested in a previous patch [2] from by ayaka.
-> >
-> > If possible please also add the CLK_SET_RATE_PARENT change from [3] in a possible v2,
-> > that fixes assigning the aclk_vcodec clk to 400Mhz in the rockchip vpu driver.
-> >
-> > [1] https://github.com/Kwiboo/linux-rockchip/commit/1f78093e05c7360515a185f48b7c5cb8ba1e3e15
-> > [2] https://patchwork.kernel.org/patch/9725553/
-> > [3] https://github.com/Kwiboo/linux-rockchip/commit/9216da3f1521a0be5889235abe7fa093a4894160
-> 
-> Thanks for the pointers!  Now I'm 99.9999% certain that my patch is
-> correct instead of just 99.9%.  ;-)
-> 
-> IMO the CLK_SET_RATE_PARENT should probably be a separate patch but it
-> does seem like we need it.  ...and actually the patch adding it should
-> have a Fixes tag of the same commit.  Prior to that commit the parent
-> of "aclk_vcodec" was "aclk_vdpu".  As a gate clock it would
-> automatically have CLK_SET_RATE_PARENT so you could easily set the
-> rate.  ...and it looks as if the downstream video codec driver in
-> Chrome OS relies on this too.
-> 
-> I'm happy to add that in a v2 if Heiko is happy with it.
+在 2019/4/4 上午11:03, Daniel Lezcano 写道:
+> On 01/04/2019 08:43, Elaine Zhang wrote:
+>> Based on the TSADC Tshut mode to select pinctrl,
+>> instead of setting pinctrl based on architecture
+>> (Not depends on pinctrl setting by "init" or "default").
+>> And it requires setting the tshut polarity before select pinctrl.
+> I'm not sure to fully read the description. Can you rephrase/elaborate
+> the changelog?
+Example:
+         tsadc: tsadc@ff250000 {
+                     compatible = "rockchip,rk3328-tsadc";
+                     .....
+                 pinctrl-names = "init", "default", "sleep";
+                     pinctrl-0 = <&otp_gpio>;
+                     pinctrl-1 = <&otp_out>;
+                     pinctrl-2 = <&otp_gpio>;
+                     status = "disabled";
+                 .....
+             };
+         &tsadc {
+                 rockchip,hw-tshut-mode = <0>; /* tshut mode 0:CRU 1:GPIO */
+                 status = "okay";
+         };
+     Application on the product, hope tsadc overtemperature reset cru to 
+restart.
+     But when pinctrl is initialized, it will setting pinctrl by "init" 
+and "default".
+     So the pinctrl will set iomux to "otp_out", which may be make 
+system crash.
+     tsadc gpio iomux:
+     "otp_gpio" : just normal gpio, keep default level.
+     "otp_out" : tsadc shut down io, when overtemperature,this io may be 
+trigger high
+     level or low level(depend on the tsadc polarity).
 
-Sounds very sensible to me to combine these 2 parts.
+     After correction:
+     if rockchip,hw-tshut-mode = <0>; (tsadc overtemperature reset cru 
+to restart)
+     select pinctrl to otp_gpio
+     if rockchip,hw-tshut-mode = <1>;(tsadc overtemperature IO triggers 
+output at high or low levels)
+     select pinctrl to otp_out.
+     Actively select iomux based on rockchip,hw-tshut-mode,
+     rather than relying on the pinctrl framework to select iomux.
+>> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+>> ---
+>>   drivers/thermal/rockchip_thermal.c | 61 +++++++++++++++++++++++++++++++-------
+>>   1 file changed, 50 insertions(+), 11 deletions(-)
+>>
+>> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+>> index 9c7643d62ed7..faa6c7792155 100644
+>> --- a/drivers/thermal/rockchip_thermal.c
+>> +++ b/drivers/thermal/rockchip_thermal.c
+>> @@ -34,7 +34,7 @@
+>>    */
+>>   enum tshut_mode {
+>>   	TSHUT_MODE_CRU = 0,
+>> -	TSHUT_MODE_GPIO,
+>> +	TSHUT_MODE_OTP,
+> Why do you change the enum name? The impact on the patch is much higher,
+> no ?
 
-Heiko
+I just want to make it a little bit more intuitive to understand the 
+definition of mode.
+
+TSHUT_MODE_CRU: pinctrl select iomux to otp_gpio,the io is normal io.
+TSHUT_MODE_OTP: pinctrl select iomux to otp_out, the io is tsadc shut io.
+
+>
+>>   };
+>>   
+>>   /**
+>> @@ -172,6 +172,9 @@ struct rockchip_thermal_data {
+>>   	int tshut_temp;
+>>   	enum tshut_mode tshut_mode;
+>>   	enum tshut_polarity tshut_polarity;
+>> +	struct pinctrl *pinctrl;
+>> +	struct pinctrl_state *gpio_state;
+>> +	struct pinctrl_state *otp_state;
+>>   };
+>>   
+>>   /**
+>> @@ -807,7 +810,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+>>   	u32 val;
+>>   
+>>   	val = readl_relaxed(regs + TSADCV2_INT_EN);
+>> -	if (mode == TSHUT_MODE_GPIO) {
+>> +	if (mode == TSHUT_MODE_OTP) {
+>>   		val &= ~TSADCV2_SHUT_2CRU_SRC_EN(chn);
+>>   		val |= TSADCV2_SHUT_2GPIO_SRC_EN(chn);
+>>   	} else {
+>> @@ -822,7 +825,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+>>   	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
+>>   	.chn_num = 1, /* one channel for tsadc */
+>>   
+>> -	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+>> +	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+>>   	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>>   	.tshut_temp = 95000,
+>>   
+>> @@ -846,7 +849,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+>>   	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
+>>   	.chn_num = 1, /* one channel for tsadc */
+>>   
+>> -	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+>> +	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+>>   	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>>   	.tshut_temp = 95000,
+>>   
+>> @@ -871,7 +874,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+>>   	.chn_id[SENSOR_GPU] = 2, /* gpu sensor is channel 2 */
+>>   	.chn_num = 2, /* two channels for tsadc */
+>>   
+>> -	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+>> +	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+>>   	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>>   	.tshut_temp = 95000,
+>>   
+>> @@ -919,7 +922,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+>>   	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
+>>   	.chn_num = 2, /* two channels for tsadc */
+>>   
+>> -	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+>> +	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+>>   	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>>   	.tshut_temp = 95000,
+>>   
+>> @@ -944,7 +947,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+>>   	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
+>>   	.chn_num = 2, /* two channels for tsadc */
+>>   
+>> -	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+>> +	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+>>   	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>>   	.tshut_temp = 95000,
+>>   
+>> @@ -969,7 +972,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+>>   	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
+>>   	.chn_num = 2, /* two channels for tsadc */
+>>   
+>> -	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
+>> +	.tshut_mode = TSHUT_MODE_OTP, /* default TSHUT via GPIO give PMIC */
+>>   	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
+>>   	.tshut_temp = 95000,
+>>   
+>> @@ -1080,6 +1083,20 @@ static int rockchip_thermal_get_temp(void *_sensor, int *out_temp)
+>>   	.set_trips = rockchip_thermal_set_trips,
+>>   };
+>>   
+>> +static void thermal_pinctrl_select_otp(struct rockchip_thermal_data *thermal)
+>> +{
+>> +	if (!IS_ERR(thermal->pinctrl) && !IS_ERR_OR_NULL(thermal->otp_state))
+>> +		pinctrl_select_state(thermal->pinctrl,
+>> +				     thermal->otp_state);
+>> +}
+>> +
+>> +static void thermal_pinctrl_select_gpio(struct rockchip_thermal_data *thermal)
+>> +{
+>> +	if (!IS_ERR(thermal->pinctrl) && !IS_ERR_OR_NULL(thermal->gpio_state))
+>> +		pinctrl_select_state(thermal->pinctrl,
+>> +				     thermal->gpio_state);
+>> +}
+> You should not have to create a couple of specific functions just to
+> check the pinctrl pointers are set. The caller should do that.
+Because there are several places where the call is made,create a couple 
+of specific functions reduce a lot of duplicated code.
+>
+>>   static int rockchip_configure_from_dt(struct device *dev,
+>>   				      struct device_node *np,
+>>   				      struct rockchip_thermal_data *thermal)
+>> @@ -1103,7 +1120,7 @@ static int rockchip_configure_from_dt(struct device *dev,
+>>   	if (of_property_read_u32(np, "rockchip,hw-tshut-mode", &tshut_mode)) {
+>>   		dev_warn(dev,
+>>   			 "Missing tshut mode property, using default (%s)\n",
+>> -			 thermal->chip->tshut_mode == TSHUT_MODE_GPIO ?
+>> +			 thermal->chip->tshut_mode == TSHUT_MODE_OTP ?
+>>   				"gpio" : "cru");
+>>   		thermal->tshut_mode = thermal->chip->tshut_mode;
+>>   	} else {
+>> @@ -1242,6 +1259,8 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+>>   		return error;
+>>   	}
+>>   
+>> +	thermal->chip->control(thermal->regs, false);
+>> +
+>>   	error = clk_prepare_enable(thermal->clk);
+>>   	if (error) {
+>>   		dev_err(&pdev->dev, "failed to enable converter clock: %d\n",
+>> @@ -1267,6 +1286,24 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+>>   	thermal->chip->initialize(thermal->grf, thermal->regs,
+>>   				  thermal->tshut_polarity);
+>>   
+>> +	if (thermal->tshut_mode == TSHUT_MODE_OTP) {
+>> +		thermal->pinctrl = devm_pinctrl_get(&pdev->dev);
+>> +		if (IS_ERR(thermal->pinctrl))
+>> +			dev_err(&pdev->dev, "failed to find thermal pinctrl\n");
+>> +
+>> +		thermal->gpio_state = pinctrl_lookup_state(thermal->pinctrl,
+>> +							   "gpio");
+>> +		if (IS_ERR_OR_NULL(thermal->gpio_state))
+>> +			dev_err(&pdev->dev, "failed to find thermal gpio state\n");
+>> +
+>> +		thermal->otp_state = pinctrl_lookup_state(thermal->pinctrl,
+>> +							  "otpout");
+>> +		if (IS_ERR_OR_NULL(thermal->otp_state))
+>> +			dev_err(&pdev->dev, "failed to find thermal otpout state\n");
+> What is the meaning for the rest of the code if the lookup fails for any
+> of those ?
+If the lookup fails for any of those， The pinctrl is no longer set and 
+remains in its default state(otp_gpio normal io).
+>
+>> +		thermal_pinctrl_select_otp(thermal);
+>> +	}
+>> +
+>>   	for (i = 0; i < thermal->chip->chn_num; i++) {
+>>   		error = rockchip_thermal_register_sensor(pdev, thermal,
+>>   						&thermal->sensors[i],
+>> @@ -1338,7 +1375,8 @@ static int __maybe_unused rockchip_thermal_suspend(struct device *dev)
+>>   	clk_disable(thermal->pclk);
+>>   	clk_disable(thermal->clk);
+>>   
+>> -	pinctrl_pm_select_sleep_state(dev);
+>> +	if (thermal->tshut_mode == TSHUT_MODE_OTP)
+>> +		thermal_pinctrl_select_gpio(thermal);
+>>   
+>>   	return 0;
+>>   }
+>> @@ -1383,7 +1421,8 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
+>>   	for (i = 0; i < thermal->chip->chn_num; i++)
+>>   		rockchip_thermal_toggle_sensor(&thermal->sensors[i], true);
+>>   
+>> -	pinctrl_pm_select_default_state(dev);
+>> +	if (thermal->tshut_mode == TSHUT_MODE_OTP)
+>> +		thermal_pinctrl_select_otp(thermal);
+>>   
+>>   	return 0;
+>>   }
+>>
+>
