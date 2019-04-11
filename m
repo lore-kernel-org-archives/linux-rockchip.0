@@ -1,52 +1,54 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: add rk3399 UART DMAs
-Date: Thu, 11 Apr 2019 14:46:15 +0200
-Message-ID: <2463729.IUJ8mRE5Ts@phil>
-References: <20190321162244.10080-1-katsuhiro@katsuster.net> <14265087.Gbs4YZABJo@phil> <69d5d0fd-00c3-36ae-596e-1b9f9452a07a@arm.com>
+Subject: Re: [PATCH v7 2/6] mfd: rk808: Add RK817 and RK809 support
+Date: Thu, 11 Apr 2019 14:52:47 +0200
+Message-ID: <518340124.P20tlEWT52@phil>
+References: <20190102102002.29245-1-tony.xie@rock-chips.com> <20190102102002.29245-3-tony.xie@rock-chips.com> <20190402063305.GZ4187@dell>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <69d5d0fd-00c3-36ae-596e-1b9f9452a07a@arm.com>
+In-Reply-To: <20190402063305.GZ4187@dell>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Katsuhiro Suzuki <katsuhiro@katsuster.net>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Lee Jones <lee.jones@linaro.org>
+Cc: Tony Xie <tony.xie@rock-chips.com>, broonie@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Robin,
+Hi Lee,
 
-Am Samstag, 30. März 2019, 00:24:16 CEST schrieb Robin Murphy:
-> On 2019-03-27 12:00 pm, Heiko Stuebner wrote:
-> > Hi,
-> > 
-> > Am Dienstag, 26. März 2019, 14:49:16 CET schrieb Katsuhiro Suzuki:
-> >> Hello Robin,
-> >>
-> >> Sorry for inconvenience. Since I don't adhere enabling DMA for UARTs,
-> >> please revert my patch if you need.
-> > 
-> > I've dropped the patch from my queue now.
-> > 
-> >> BTW, there are DMA properties in RK3328 device-tree like as this patch.
-> >> RK3328 UART DMA could not work correctly too...??
-> > 
-> > I remember Rockcihip dma-controllers having issues with burst-sizes
-> > and flushing (there is a no-flushp option in pl330), so it's
-> > possible that all share the same error up to rk3399 and rk3328
-> > 
-> > But so far no-one has shouted regarding the rk3328.
+Am Dienstag, 2. April 2019, 08:33:05 CEST schrieb Lee Jones:
+> On Wed, 02 Jan 2019, Tony Xie wrote:
 > 
-> Let me be the first, then, I guess :)
+> > The RK809 and RK817 are a Power Management IC (PMIC) for multimedia
+> > and handheld devices. They contains the following components:
+> >   - Regulators
+> >   - RTC
+> >   - Clocking
+> > 
+> > Both RK809 and RK817 chips are using a similar register map,
+> > so we can reuse the RTC and Clocking functionality.
+> > Most of regulators have a some implementation also.
+> > 
+> > Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
+> > Acked-by: Stephen Boyd <sboyd@kernel.org>
+> > ---
+> >  drivers/mfd/Kconfig       |   6 +-
+> >  drivers/mfd/rk808.c       | 192 +++++++++++++++++++++++++++++++++++++-
+> >  include/linux/mfd/rk808.h | 172 ++++++++++++++++++++++++++++++++++
+> >  3 files changed, 364 insertions(+), 6 deletions(-)
 > 
-> I found an easy way to observe the problem on my 3399, and I've just 
-> fired up my 3328 box with a 5.0 distro kernel to find that it behaves 
-> the same. Basically just dump a large pile of text into 'less' on the 
-> serial console, and scroll through line-by-line - certain lines get 
-> dropped except for a few characters at the end.
-> 
-> I'll see if I can narrow it down a bit, starting with trying 
-> broken-flushp...
+> For my own reference:
+>   Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
 
-did you manage to find time for that test you wanted to do?
+do you have some sort of merge plan for this or are you waiting for
+specific Acks? I guess if we're waiting for an Ack from Mark Brown,
+we'll need a resend of the patch.
+
+All other patches have Acks from their subsystem maintainers (rtc, clk)
+so you could pick up all patches except patch3 and I could just resend
+this one, which in turn could also go through the regulator tree.
+
+Otherwise we'll probably need a resend of the series, as Mark most of
+the time doesn't keep old patch series around.
+
 
 Heiko
