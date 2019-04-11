@@ -1,65 +1,91 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: add rk3399 UART DMAs
-Date: Thu, 11 Apr 2019 14:48:12 +0100
-Message-ID: <8d164cfe-c345-aa45-aaf3-11983f9142e5@arm.com>
-References: <20190321162244.10080-1-katsuhiro@katsuster.net>
- <14265087.Gbs4YZABJo@phil> <69d5d0fd-00c3-36ae-596e-1b9f9452a07a@arm.com>
- <2463729.IUJ8mRE5Ts@phil>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v2] clk: rockchip: Fix video codec clocks on rk3288
+Date: Thu, 11 Apr 2019 06:55:55 -0700
+Message-ID: <20190411135555.235625-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2463729.IUJ8mRE5Ts@phil>
-Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: Katsuhiro Suzuki <katsuhiro@katsuster.net>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: Jonas Karlman <jonas@kwiboo.se>, Tomasz Figa <tfiga@chromium.org>, Randy Li <ayaka@soulik.info>, Ziyuan Xu <xzy.xu@rock-chips.com>, Ezequiel Garcia <ezequiel@collabora.com>, ryandcase@chromium.org, Elaine Zhang <zhangqing@rock-chips.com>, mka@chromium.org, Douglas Anderson <dianders@chromium.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 11/04/2019 13:46, Heiko Stuebner wrote:
-> Hi Robin,
-> 
-> Am Samstag, 30. März 2019, 00:24:16 CEST schrieb Robin Murphy:
->> On 2019-03-27 12:00 pm, Heiko Stuebner wrote:
->>> Hi,
->>>
->>> Am Dienstag, 26. März 2019, 14:49:16 CET schrieb Katsuhiro Suzuki:
->>>> Hello Robin,
->>>>
->>>> Sorry for inconvenience. Since I don't adhere enabling DMA for UARTs,
->>>> please revert my patch if you need.
->>>
->>> I've dropped the patch from my queue now.
->>>
->>>> BTW, there are DMA properties in RK3328 device-tree like as this patch.
->>>> RK3328 UART DMA could not work correctly too...??
->>>
->>> I remember Rockcihip dma-controllers having issues with burst-sizes
->>> and flushing (there is a no-flushp option in pl330), so it's
->>> possible that all share the same error up to rk3399 and rk3328
->>>
->>> But so far no-one has shouted regarding the rk3328.
->>
->> Let me be the first, then, I guess :)
->>
->> I found an easy way to observe the problem on my 3399, and I've just
->> fired up my 3328 box with a 5.0 distro kernel to find that it behaves
->> the same. Basically just dump a large pile of text into 'less' on the
->> serial console, and scroll through line-by-line - certain lines get
->> dropped except for a few characters at the end.
->>
->> I'll see if I can narrow it down a bit, starting with trying
->> broken-flushp...
-> 
-> did you manage to find time for that test you wanted to do?
+It appears that there is a typo in the rk3288 TRM.  For
+GRF_SOC_CON0[7] it says that 0 means "vepu" and 1 means "vdpu".  It's
+the other way around.
 
-Sadly not - I got somewhat distracted by the ethernet thing, and since 
-then I've had too much else going on to follow up on any of my 'for fun' 
-projects :(
+How do I know?  Here's my evidence:
 
-If it helps, from a quick look based on what I can remember off-hand, 
-Rockchip UARTs in general have probably been using DMA since 4.19 with 
-d8095f94e195 ("dmaengine: add support for reporting pause and resume 
-separately").
+1. Prior to commit 4d3e84f99628 ("clk: rockchip: describe aclk_vcodec
+   using the new muxgrf type on rk3288") we always pretended that we
+   were using "aclk_vdpu" and the comment in the code said that this
+   matched the default setting in the system.  In fact the default
+   setting is 0 according to the TRM and according to reading memory
+   at bootup.  In addition rk3288-based Chromebooks ran like this and
+   the video codecs worked.
+2. With the existing clock code if you boot up and try to enable the
+   new VIDEO_ROCKCHIP_VPU as a module (and without "clk_ignore_unused"
+   on the command line), you get errors like "failed to get ack on
+   domain 'pd_video', val=0x80208".  After flipping vepu/vdpu things
+   init OK.
+3. If I export and add both the vepu and vdpu to the list of clocks
+   for RK3288_PD_VIDEO I can get past the power domain errors, but now
+   I freeze when the vpu_mmu gets initted.
+4. If I just mark the "vdpu" as IGNORE_UNUSED then everything boots up
+   and probes OK showing that somehow the "vdpu" was important to keep
+   enabled.  This is because we were actually using it as a parent.
+5. After this change I can hack "aclk_vcodec_pre" to parent from
+   "aclk_vepu" using assigned-clocks and the video codec still probes
+   OK.
+6. Rockchip has said so on the mailing list [1].
 
-Robin.
+...so let's fix it.
+
+Let's also add CLK_SET_RATE_PARENT to "aclk_vcodec_pre" as suggested
+by Jonas Karlman.  Prior to the same commit you could do
+clk_set_rate() on "aclk_vcodec" and it would change "aclk_vdpu".
+That's because "aclk_vcodec" was a simple gate clock (always gets
+CLK_SET_RATE_PARENT) and its direct parent was "aclk_vdpu".  After
+that commit "aclk_vcodec_pre" gets in the way so we need to add
+CLK_SET_RATE_PARENT to it too.
+
+[1] https://lkml.kernel.org/r/1d17b015-9e17-34b9-baf8-c285dc1957aa@rock-chips.com
+
+Fixes: 4d3e84f99628 ("clk: rockchip: describe aclk_vcodec using the new muxgrf type on rk3288")
+Suggested-by: Jonas Karlman <jonas@kwiboo.se>
+Suggested-by: Randy Li <ayaka@soulik.info>
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+
+Changes in v2:
+- Now also has CLK_SET_RATE_PARENT for "aclk_vcodec_pre"
+- Added Suggested-by tags for prior work
+- Added link to Elaine saying that this is indeed correct
+
+ drivers/clk/rockchip/clk-rk3288.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 5a67b7869960..51e8e799debb 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -219,7 +219,7 @@ PNAME(mux_hsadcout_p)	= { "hsadc_src", "ext_hsadc" };
+ PNAME(mux_edp_24m_p)	= { "ext_edp_24m", "xin24m" };
+ PNAME(mux_tspout_p)	= { "cpll", "gpll", "npll", "xin27m" };
+ 
+-PNAME(mux_aclk_vcodec_pre_p)	= { "aclk_vepu", "aclk_vdpu" };
++PNAME(mux_aclk_vcodec_pre_p)	= { "aclk_vdpu", "aclk_vepu" };
+ PNAME(mux_usbphy480m_p)		= { "sclk_otgphy1_480m", "sclk_otgphy2_480m",
+ 				    "sclk_otgphy0_480m" };
+ PNAME(mux_hsicphy480m_p)	= { "cpll", "gpll", "usbphy480m_src" };
+@@ -420,7 +420,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "aclk_vdpu", mux_pll_src_cpll_gpll_usb480m_p, 0,
+ 			RK3288_CLKSEL_CON(32), 14, 2, MFLAGS, 8, 5, DFLAGS,
+ 			RK3288_CLKGATE_CON(3), 11, GFLAGS),
+-	MUXGRF(0, "aclk_vcodec_pre", mux_aclk_vcodec_pre_p, 0,
++	MUXGRF(0, "aclk_vcodec_pre", mux_aclk_vcodec_pre_p, CLK_SET_RATE_PARENT,
+ 			RK3288_GRF_SOC_CON(0), 7, 1, MFLAGS),
+ 	GATE(ACLK_VCODEC, "aclk_vcodec", "aclk_vcodec_pre", 0,
+ 		RK3288_CLKGATE_CON(9), 0, GFLAGS),
+-- 
+2.21.0.392.gf8f6787159e-goog
