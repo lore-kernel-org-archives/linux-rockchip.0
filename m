@@ -1,30 +1,52 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: fix cts, rts pin assign of UART3 for rk3399
-Date: Thu, 11 Apr 2019 14:42:04 +0200
-Message-ID: <3217226.65qr7uJ2Ov@phil>
-References: <20190406153557.25930-1-katsuhiro@katsuster.net>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: add rk3399 UART DMAs
+Date: Thu, 11 Apr 2019 14:46:15 +0200
+Message-ID: <2463729.IUJ8mRE5Ts@phil>
+References: <20190321162244.10080-1-katsuhiro@katsuster.net> <14265087.Gbs4YZABJo@phil> <69d5d0fd-00c3-36ae-596e-1b9f9452a07a@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190406153557.25930-1-katsuhiro@katsuster.net>
+In-Reply-To: <69d5d0fd-00c3-36ae-596e-1b9f9452a07a@arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Katsuhiro Suzuki <katsuhiro@katsuster.net>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 6. April 2019, 17:35:57 CEST schrieb Katsuhiro Suzuki:
-> This patch fixes pin assign of cts and rts signal of UART3.
-> 
-> Currently GPIO3_C2 and C3 pins are assigned but TRM says that
-> GPIO3_C0 and C1 are correct.
-> 
-> Refer:
->   RK3399 TRM v1.4 - Table 19-1 UART Interface Description
-> 
-> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Hi Robin,
 
-applied for 5.2
+Am Samstag, 30. März 2019, 00:24:16 CEST schrieb Robin Murphy:
+> On 2019-03-27 12:00 pm, Heiko Stuebner wrote:
+> > Hi,
+> > 
+> > Am Dienstag, 26. März 2019, 14:49:16 CET schrieb Katsuhiro Suzuki:
+> >> Hello Robin,
+> >>
+> >> Sorry for inconvenience. Since I don't adhere enabling DMA for UARTs,
+> >> please revert my patch if you need.
+> > 
+> > I've dropped the patch from my queue now.
+> > 
+> >> BTW, there are DMA properties in RK3328 device-tree like as this patch.
+> >> RK3328 UART DMA could not work correctly too...??
+> > 
+> > I remember Rockcihip dma-controllers having issues with burst-sizes
+> > and flushing (there is a no-flushp option in pl330), so it's
+> > possible that all share the same error up to rk3399 and rk3328
+> > 
+> > But so far no-one has shouted regarding the rk3328.
+> 
+> Let me be the first, then, I guess :)
+> 
+> I found an easy way to observe the problem on my 3399, and I've just 
+> fired up my 3328 box with a 5.0 distro kernel to find that it behaves 
+> the same. Basically just dump a large pile of text into 'less' on the 
+> serial console, and scroll through line-by-line - certain lines get 
+> dropped except for a few characters at the end.
+> 
+> I'll see if I can narrow it down a bit, starting with trying 
+> broken-flushp...
 
-Thanks
+did you manage to find time for that test you wanted to do?
+
 Heiko
