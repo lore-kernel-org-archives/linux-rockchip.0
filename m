@@ -1,58 +1,63 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] clk: rockchip: rk3288: Limit use of USB PHY clock to USB
-Date: Thu, 11 Apr 2019 21:03:07 +0200
-Message-ID: <3787637.WUkDPpUsF8@diego>
-References: <20190411175917.173566-1-mka@chromium.org>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: add rk3399 UART DMAs
+Date: Thu, 11 Apr 2019 20:17:36 +0100
+Message-ID: <2e5a1468-9a65-9cc5-f96c-272faeb92ec9@arm.com>
+References: <20190321162244.10080-1-katsuhiro@katsuster.net>
+ <14265087.Gbs4YZABJo@phil> <69d5d0fd-00c3-36ae-596e-1b9f9452a07a@arm.com>
+ <2463729.IUJ8mRE5Ts@phil> <8d164cfe-c345-aa45-aaf3-11983f9142e5@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190411175917.173566-1-mka@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Kaehlcke <mka@chromium.org>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <8d164cfe-c345-aa45-aaf3-11983f9142e5@arm.com>
+Content-Language: en-GB
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Katsuhiro Suzuki <katsuhiro@katsuster.net>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Matthias,
-
-Am Donnerstag, 11. April 2019, 19:59:17 CEST schrieb Matthias Kaehlcke:
-> The USB PHY clock can be configured as (grand) parent of uart0_sclk and
-> sclk_gpu. It has been observed that UART0 doesn't work reliably in high
-> speed mode with the PHY clock as input when certain USB devices are
-> plugged to the USB HOST1 port (see https://crrev.com/c/320543).
-> 
-> Prefix the name of the PHY clock with a '.' in the non-USB muxes to
-> effectively remove the clock as input from these muxes.
-> 
-> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
-> ---
->  drivers/clk/rockchip/clk-rk3288.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-> index 5a67b7869960..677bc5485201 100644
-> --- a/drivers/clk/rockchip/clk-rk3288.c
-> +++ b/drivers/clk/rockchip/clk-rk3288.c
-> @@ -200,8 +200,8 @@ PNAME(mux_aclk_cpu_src_p)	= { "cpll_aclk_cpu", "gpll_aclk_cpu" };
->  PNAME(mux_pll_src_cpll_gpll_p)		= { "cpll", "gpll" };
->  PNAME(mux_pll_src_npll_cpll_gpll_p)	= { "npll", "cpll", "gpll" };
->  PNAME(mux_pll_src_cpll_gpll_npll_p)	= { "cpll", "gpll", "npll" };
-> -PNAME(mux_pll_src_cpll_gpll_usb480m_p)	= { "cpll", "gpll", "usbphy480m_src" };
-> -PNAME(mux_pll_src_cpll_gll_usb_npll_p)	= { "cpll", "gpll", "usbphy480m_src", "npll" };
-> +PNAME(mux_pll_src_cpll_gpll_usb480m_p)	= { "cpll", "gpll", ".usbphy480m_src" };
-> +PNAME(mux_pll_src_cpll_gll_usb_npll_p)	= { "cpll", "gpll", ".usbphy480m_src", "npll" };
-
-In general I like to have things like the clock-tree described fully
-and let the kernel handle correct sourcing ... but:
-
-As you write this seems like a systemic problem when just connecting
-random peripherals can create unstable clock source frequencies,
-so I tend to agree here ... but:
-
-Can we please find a more "talking" name for this ... because as with the
-above someone will find the "." and submit a fix for it ;-) .
-
-So just name it "unstable_dummy" or so?
-
-
-Heiko
+T24gMjAxOS0wNC0xMSAyOjQ4IHBtLCBSb2JpbiBNdXJwaHkgd3JvdGU6Cj4gT24gMTEvMDQvMjAx
+OSAxMzo0NiwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4+IEhpIFJvYmluLAo+Pgo+PiBBbSBTYW1z
+dGFnLCAzMC4gTcOkcnogMjAxOSwgMDA6MjQ6MTYgQ0VTVCBzY2hyaWViIFJvYmluIE11cnBoeToK
+Pj4+IE9uIDIwMTktMDMtMjcgMTI6MDAgcG0sIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+Pj4+IEhp
+LAo+Pj4+Cj4+Pj4gQW0gRGllbnN0YWcsIDI2LiBNw6RyeiAyMDE5LCAxNDo0OToxNiBDRVQgc2No
+cmllYiBLYXRzdWhpcm8gU3V6dWtpOgo+Pj4+PiBIZWxsbyBSb2JpbiwKPj4+Pj4KPj4+Pj4gU29y
+cnkgZm9yIGluY29udmVuaWVuY2UuIFNpbmNlIEkgZG9uJ3QgYWRoZXJlIGVuYWJsaW5nIERNQSBm
+b3IgVUFSVHMsCj4+Pj4+IHBsZWFzZSByZXZlcnQgbXkgcGF0Y2ggaWYgeW91IG5lZWQuCj4+Pj4K
+Pj4+PiBJJ3ZlIGRyb3BwZWQgdGhlIHBhdGNoIGZyb20gbXkgcXVldWUgbm93Lgo+Pj4+Cj4+Pj4+
+IEJUVywgdGhlcmUgYXJlIERNQSBwcm9wZXJ0aWVzIGluIFJLMzMyOCBkZXZpY2UtdHJlZSBsaWtl
+IGFzIHRoaXMgCj4+Pj4+IHBhdGNoLgo+Pj4+PiBSSzMzMjggVUFSVCBETUEgY291bGQgbm90IHdv
+cmsgY29ycmVjdGx5IHRvby4uLj8/Cj4+Pj4KPj4+PiBJIHJlbWVtYmVyIFJvY2tjaWhpcCBkbWEt
+Y29udHJvbGxlcnMgaGF2aW5nIGlzc3VlcyB3aXRoIGJ1cnN0LXNpemVzCj4+Pj4gYW5kIGZsdXNo
+aW5nICh0aGVyZSBpcyBhIG5vLWZsdXNocCBvcHRpb24gaW4gcGwzMzApLCBzbyBpdCdzCj4+Pj4g
+cG9zc2libGUgdGhhdCBhbGwgc2hhcmUgdGhlIHNhbWUgZXJyb3IgdXAgdG8gcmszMzk5IGFuZCBy
+azMzMjgKPj4+Pgo+Pj4+IEJ1dCBzbyBmYXIgbm8tb25lIGhhcyBzaG91dGVkIHJlZ2FyZGluZyB0
+aGUgcmszMzI4Lgo+Pj4KPj4+IExldCBtZSBiZSB0aGUgZmlyc3QsIHRoZW4sIEkgZ3Vlc3MgOikK
+Pj4+Cj4+PiBJIGZvdW5kIGFuIGVhc3kgd2F5IHRvIG9ic2VydmUgdGhlIHByb2JsZW0gb24gbXkg
+MzM5OSwgYW5kIEkndmUganVzdAo+Pj4gZmlyZWQgdXAgbXkgMzMyOCBib3ggd2l0aCBhIDUuMCBk
+aXN0cm8ga2VybmVsIHRvIGZpbmQgdGhhdCBpdCBiZWhhdmVzCj4+PiB0aGUgc2FtZS4gQmFzaWNh
+bGx5IGp1c3QgZHVtcCBhIGxhcmdlIHBpbGUgb2YgdGV4dCBpbnRvICdsZXNzJyBvbiB0aGUKPj4+
+IHNlcmlhbCBjb25zb2xlLCBhbmQgc2Nyb2xsIHRocm91Z2ggbGluZS1ieS1saW5lIC0gY2VydGFp
+biBsaW5lcyBnZXQKPj4+IGRyb3BwZWQgZXhjZXB0IGZvciBhIGZldyBjaGFyYWN0ZXJzIGF0IHRo
+ZSBlbmQuCj4+Pgo+Pj4gSSdsbCBzZWUgaWYgSSBjYW4gbmFycm93IGl0IGRvd24gYSBiaXQsIHN0
+YXJ0aW5nIHdpdGggdHJ5aW5nCj4+PiBicm9rZW4tZmx1c2hwLi4uCj4+Cj4+IGRpZCB5b3UgbWFu
+YWdlIHRvIGZpbmQgdGltZSBmb3IgdGhhdCB0ZXN0IHlvdSB3YW50ZWQgdG8gZG8/Cj4gCj4gU2Fk
+bHkgbm90IC0gSSBnb3Qgc29tZXdoYXQgZGlzdHJhY3RlZCBieSB0aGUgZXRoZXJuZXQgdGhpbmcs
+IGFuZCBzaW5jZSAKPiB0aGVuIEkndmUgaGFkIHRvbyBtdWNoIGVsc2UgZ29pbmcgb24gdG8gZm9s
+bG93IHVwIG9uIGFueSBvZiBteSAnZm9yIGZ1bicgCj4gcHJvamVjdHMgOigKClVyZ2gsIGFuZCBp
+dCB0dXJucyBvdXQgd2hhdCBJIHRob3VnaHQgd2VyZSBkcm9wcGVkIGNoYXJhY3RlcnMgc2VlbXMg
+dG8gCmp1c3QgYmUgbXkgY29uc29sZSBoYW5kbGluZyBsaW5lIHdyYXBwaW5nIHdlaXJkbHksIHNv
+IG5vdyBJIGhhdmUgbm8gaWRlYSAKaWYgUkszMzI4IGFjdHVhbGx5IGhhcyBhbiBpc3N1ZSwgYW5k
+IGNvbWluZyB1cCB3aXRoIGEgcmVsaWFibGUgCnJlcHJvZHVjZXIgZm9yIFJLMzM5OSBpcyBnb2lu
+ZyB0byB0YWtlIHNvbWUgdGhvdWdodC4uLgoKUm9iaW4uCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdAps
+aW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
