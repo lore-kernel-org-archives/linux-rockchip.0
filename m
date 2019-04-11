@@ -1,54 +1,70 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v7 2/6] mfd: rk808: Add RK817 and RK809 support
-Date: Thu, 11 Apr 2019 14:52:47 +0200
-Message-ID: <518340124.P20tlEWT52@phil>
-References: <20190102102002.29245-1-tony.xie@rock-chips.com> <20190102102002.29245-3-tony.xie@rock-chips.com> <20190402063305.GZ4187@dell>
+Subject: Re: [PATCH v3 4/5] arm64: dts: rk3399: Add dfi and dmc nodes.
+Date: Thu, 11 Apr 2019 15:20:53 +0200
+Message-ID: <7786013.gjegOBUKu0@phil>
+References: <20190321231440.19031-1-gael.portay@collabora.com> <20190321231440.19031-5-gael.portay@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190402063305.GZ4187@dell>
+In-Reply-To: <20190321231440.19031-5-gael.portay@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
-Cc: Tony Xie <tony.xie@rock-chips.com>, broonie@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com
+To: =?ISO-8859-1?Q?Ga=EBl?= PORTAY <gael.portay@collabora.com>
+Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lin Huang <hl@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Derek Basehore <dbasehore@chromium.org>, Randy Li <ayaka@soulik.info>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Lee,
+Hi Gaël,
 
-Am Dienstag, 2. April 2019, 08:33:05 CEST schrieb Lee Jones:
-> On Wed, 02 Jan 2019, Tony Xie wrote:
+Am Freitag, 22. März 2019, 00:14:39 CEST schrieb Gaël PORTAY:
+> From: Lin Huang <hl@rock-chips.com>
 > 
-> > The RK809 and RK817 are a Power Management IC (PMIC) for multimedia
-> > and handheld devices. They contains the following components:
-> >   - Regulators
-> >   - RTC
-> >   - Clocking
-> > 
-> > Both RK809 and RK817 chips are using a similar register map,
-> > so we can reuse the RTC and Clocking functionality.
-> > Most of regulators have a some implementation also.
-> > 
-> > Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
-> > Acked-by: Stephen Boyd <sboyd@kernel.org>
-> > ---
-> >  drivers/mfd/Kconfig       |   6 +-
-> >  drivers/mfd/rk808.c       | 192 +++++++++++++++++++++++++++++++++++++-
-> >  include/linux/mfd/rk808.h | 172 ++++++++++++++++++++++++++++++++++
-> >  3 files changed, 364 insertions(+), 6 deletions(-)
+> These are required to support DDR DVFS on rk3399 platform. The patch also
+> introduces a new file with default DRAM settings.
 > 
-> For my own reference:
->   Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
+> Signed-off-by: Lin Huang <hl@rock-chips.com>
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>
 
-do you have some sort of merge plan for this or are you waiting for
-specific Acks? I guess if we're waiting for an Ack from Mark Brown,
-we'll need a resend of the patch.
+> +	dmc: dmc {
+> +		compatible = "rockchip,rk3399-dmc";
+> +		rockchip,pmu = <&pmugrf>;
+> +		devfreq-events = <&dfi>;
+> +		clocks = <&cru SCLK_DDRC>;
+> +		clock-names = "dmc_clk";
+> +		status = "disabled";
+> +		rockchip,ddr3_speed_bin = <21>;
+> +		rockchip,pd_idle = <0x40>;
+> +		rockchip,sr_idle = <0x2>;
+> +		rockchip,sr_mc_gate_idle = <0x3>;
+> +		rockchip,srpd_lite_idle	= <0x4>;
+> +		rockchip,standby_idle = <0x2000>;
+> +		rockchip,dram_dll_dis_freq = <300000000>;
+> +		rockchip,phy_dll_dis_freq = <125000000>;
+> +		rockchip,auto_pd_dis_freq = <666000000>;
+> +		rockchip,ddr3_odt_dis_freq = <333000000>;
+> +		rockchip,ddr3_drv = <DDR3_DS_40ohm>;
+> +		rockchip,ddr3_odt = <DDR3_ODT_120ohm>;
+> +		rockchip,phy_ddr3_ca_drv = <PHY_DRV_ODT_40>;
+> +		rockchip,phy_ddr3_dq_drv = <PHY_DRV_ODT_40>;
+> +		rockchip,phy_ddr3_odt = <PHY_DRV_ODT_240>;
+> +		rockchip,lpddr3_odt_dis_freq = <333000000>;
+> +		rockchip,lpddr3_drv = <LP3_DS_34ohm>;
+> +		rockchip,lpddr3_odt = <LP3_ODT_240ohm>;
+> +		rockchip,phy_lpddr3_ca_drv = <PHY_DRV_ODT_40>;
+> +		rockchip,phy_lpddr3_dq_drv = <PHY_DRV_ODT_40>;
+> +		rockchip,phy_lpddr3_odt = <PHY_DRV_ODT_240>;
+> +		rockchip,lpddr4_odt_dis_freq = <333000000>;
+> +		rockchip,lpddr4_drv = <LP4_PDDS_60ohm>;
+> +		rockchip,lpddr4_dq_odt = <LP4_DQ_ODT_40ohm>;
+> +		rockchip,lpddr4_ca_odt = <LP4_CA_ODT_40ohm>;
+> +		rockchip,phy_lpddr4_ca_drv = <PHY_DRV_ODT_40>;
+> +		rockchip,phy_lpddr4_ck_cs_drv = <PHY_DRV_ODT_80>;
+> +		rockchip,phy_lpddr4_dq_drv = <PHY_DRV_ODT_80>;
+> +		rockchip,phy_lpddr4_odt = <PHY_DRV_ODT_60>;
 
-All other patches have Acks from their subsystem maintainers (rtc, clk)
-so you could pick up all patches except patch3 and I could just resend
-this one, which in turn could also go through the regulator tree.
-
-Otherwise we'll probably need a resend of the series, as Mark most of
-the time doesn't keep old patch series around.
+as Rob mentioned in his review, these values look board-specific,
+so should probably move over to the specific board you're using them
+on?
 
 
 Heiko
