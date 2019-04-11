@@ -1,144 +1,98 @@
-From: "elaine.zhang" <zhangqing@rock-chips.com>
-Subject: Re: [PATCH 2/3] clk: rockchip: Make rkpwm a critical clock on rk3288
-Date: Thu, 11 Apr 2019 11:42:49 +0800
-Message-ID: <43b5ef8c-4617-bdc5-7109-35eac228b8f9@rock-chips.com>
-References: <20190409204707.150347-1-dianders@chromium.org>
- <20190409204707.150347-3-dianders@chromium.org>
- <50b744cd-b8d9-79ca-ba2d-6765808aa5e5@rock-chips.com>
- <CAD=FV=Vyy4bNJV=t2yALP3dAnm0-QsR55F5B==uUoi-Tp6b7Vg@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] clk: rockchip: Fix video codec clocks on rk3288
+Date: Thu, 11 Apr 2019 08:38:20 +0200
+Message-ID: <3815078.yV5O778F5b@diego>
+References: <20190329215455.159717-1-dianders@chromium.org> <AM3PR03MB09665B2755982816D2FC37E4AC2E0@AM3PR03MB0966.eurprd03.prod.outlook.com> <CAD=FV=W=gPgYNrVAXYa=9bz1e5+KBD1Xu7UK-pPkH25esFiW9A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=Vyy4bNJV=t2yALP3dAnm0-QsR55F5B==uUoi-Tp6b7Vg@mail.gmail.com>
-Content-Language: en-US
+In-Reply-To: <CAD=FV=W=gPgYNrVAXYa=9bz1e5+KBD1Xu7UK-pPkH25esFiW9A@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Doug Anderson <dianders@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Caesar Wang <caesar.wang@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, linux-clk <linux-clk@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: Jonas Karlman <jonas@kwiboo.se>, Elaine Zhang <zhangqing@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>, Ziyuan Xu <xzy.xu@rock-chips.com>, Ezequiel Garcia <ezequiel@collabora.com>, Ryan Case <ryandcase@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk <linux-clk@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-hi,
+Hi Doug,
 
-在 2019/4/10 下午11:25, Doug Anderson 写道:
+Am Donnerstag, 11. April 2019, 01:37:33 CEST schrieb Doug Anderson:
 > Hi,
->
-> On Tue, Apr 9, 2019 at 11:42 PM elaine.zhang <zhangqing@rock-chips.com> wrote:
->> hi,
->>
->> 在 2019/4/10 上午4:47, Douglas Anderson 写道:
->>> Most rk3288-based boards are derived from the EVB and thus use a PWM
->>> regulator for the logic rail.  However, most rk3288-based boards don't
->>> specify the PWM regulator in their device tree.  We'll deal with that
->>> by making it critical.
->>>
->>> NOTE: it's important to make it critical and not just IGNORE_UNUSED
->>> because all PWMs in the system share the same clock.  We don't want
->>> another PWM user to turn the clock on and off and kill the logic rail.
->>>
->>> This change is in preparation for actually having the PWMs in the
->>> rk3288 device tree actually point to the proper PWM clock.  Up until
->>> now they've all pointed to the clock for the old IP block and they've
->>> all worked due to the fact that rkpwm was IGNORE_UNUSED and that the
->>> clock rates for both clocks were the same.
->>>
->>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
->>> ---
->>>
->>>    drivers/clk/rockchip/clk-rk3288.c | 3 ++-
->>>    1 file changed, 2 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
->>> index 06287810474e..c3321eade23e 100644
->>> --- a/drivers/clk/rockchip/clk-rk3288.c
->>> +++ b/drivers/clk/rockchip/clk-rk3288.c
->>> @@ -697,7 +697,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
->>>        GATE(PCLK_TZPC, "pclk_tzpc", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 3, GFLAGS),
->>>        GATE(PCLK_UART2, "pclk_uart2", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 9, GFLAGS),
->>>        GATE(PCLK_EFUSE256, "pclk_efuse_256", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 10, GFLAGS),
->>> -     GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 11, GFLAGS),
->>> +     GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 11, GFLAGS),
->>>
->>>        /* ddrctrl [DDR Controller PHY clock] gates */
->>>        GATE(0, "nclk_ddrupctl0", "ddrphy", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 4, GFLAGS),
->>> @@ -837,6 +837,7 @@ static const char *const rk3288_critical_clocks[] __initconst = {
->>>        "pclk_alive_niu",
->>>        "pclk_pd_pmu",
->>>        "pclk_pmu_niu",
->>> +     "pclk_rkpwm",
->> pwm have device node, can enable and disable it in the pwm drivers.
->>
->> pwm regulator use pwm node as:
->>
->> pwms = <&pwm2 0 25000 1>
->>
->> when set Logic voltage:
->>
->> pwm_regulator_set_voltage()
->>
->>       --> pwm_apply_state()
->>
->>           -->clk_enable()
->>
->>           -->pwm_enable()
->>
->>           -->pwm_config()
->>
->>           -->pinctrl_select()
->>
->>           --....
->>
->> For mark pclk_rkpwm as critical,do you have any questions, or provides
->> some log or more information.
-> Right, if we actually specify the PWM used for the PWM regulator in
-> the device tree then there is no need to mark it as a critical clock.
-> In fact rk3288-veyron devices boot absolutely fine without marking
-> this clock as critical.  Actually, it seems like the way the PWM
-> framework works (IIRC it was designed this way specifically to support
-> PWM regulators) is that even just specifying that pwm1 is "okay" is
-> enough to keep the clock on even if the PWM regulator isn't specified.
->
-> ...however...
->
-> Take a look at, for instance, the rk3288-evb device tree file.
-> Nowhere in there does it specify that the PWM used for the PWM
-> regulator should be on.  Presumably that means that if we don't mark
-> the clock as critical then rk3288-evb will fail to boot.  That's easy
-> for me to fix since I have the rk3288-evb schematics, but what about
-> other rk3288 boards?  We could make educated guesses about each of
-> them and/or fix things are we hear about breakages.
->
-> ...but...
->
-> All the above would only be worth doing if we thought someone would
-> get some benefit out of it.  I'd bet that pretty much all rk3288-based
-> boards use a PWM regulator.  Thus, in reality, everyone will want the
-> rkpwm clock on all the time anyway.  In that case going through all
-> that extra work / potentially breaking other boards doesn't seem worth
-> it.  Just mark the clock as critical.
+> 
+> On Wed, Apr 10, 2019 at 11:38 AM Jonas Karlman <jonas@kwiboo.se> wrote:
+> >
+> > On 2019-04-10 17:45, Doug Anderson wrote:
+> > > Hi,
+> > >
+> > > On Fri, Mar 29, 2019 at 2:55 PM Douglas Anderson <dianders@chromium.org> wrote:
+> > >> It appears that there is a typo in the rk3288 TRM.  For
+> > >> GRF_SOC_CON0[7] it says that 0 means "vepu" and 1 means "vdpu".  It's
+> > >> the other way around.
+> > >>
+> > >> How do I know?  Here's my evidence:
+> > >>
+> > >> 1. Prior to commit 4d3e84f99628 ("clk: rockchip: describe aclk_vcodec
+> > >>    using the new muxgrf type on rk3288") we always pretended that we
+> > >>    were using "aclk_vdpu" and the comment in the code said that this
+> > >>    matched the default setting in the system.  In fact the default
+> > >>    setting is 0 according to the TRM and according to reading memory
+> > >>    at bootup.  In addition rk3288-based Chromebooks ran like this and
+> > >>    the video codecs worked.
+> > >> 2. With the existing clock code if you boot up and try to enable the
+> > >>    new VIDEO_ROCKCHIP_VPU as a module (and without "clk_ignore_unused"
+> > >>    on the command line), you get errors like "failed to get ack on
+> > >>    domain 'pd_video', val=0x80208".  After flipping vepu/vdpu things
+> > >>    init OK.
+> > >> 3. If I export and add both the vepu and vdpu to the list of clocks
+> > >>    for RK3288_PD_VIDEO I can get past the power domain errors, but now
+> > >>    I freeze when the vpu_mmu gets initted.
+> > >> 4. If I just mark the "vdpu" as IGNORE_UNUSED then everything boots up
+> > >>    and probes OK showing that somehow the "vdpu" was important to keep
+> > >>    enabled.  This is because we were actually using it as a parent.
+> > >> 5. After this change I can hack "aclk_vcodec_pre" to parent from
+> > >>    "aclk_vepu" using assigned-clocks and the video codec still probes
+> > >>    OK.
+> > >>
+> > >> Fixes: 4d3e84f99628 ("clk: rockchip: describe aclk_vcodec using the new muxgrf type on rk3288")
+> > >> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > >> ---
+> > >> I currently have no way to test the JPEG mem2mem driver, so hopefully
+> > >> others can test this and make sure it's happy for them.  I'm just
+> > >> happy not to get strange errors at boot anymore.
+> > >>
+> > >>  drivers/clk/rockchip/clk-rk3288.c | 2 +-
+> > >>  1 file changed, 1 insertion(+), 1 deletion(-)
+> > > Any thoughts about this patch?  I'm 99.9% certain it's correct and
+> > > it'd be nice to get it landed.  Heiko: I assume you're still
+> > > collecting Rockchip clock patches and would be the one to apply it and
+> > > (at some point) send a pull request to the clock tree?
+> > >
+> > > -Doug
+> >
+> > This clk fix is needed to make MPEG-2 decoding work on my RK3288 Tinker Board using the
+> > rockchip vpu patchset and a patch to add RK3288 specific MPEG-2 code [1].
+> >
+> > Also note that the same change was suggested in a previous patch [2] from by ayaka.
+> >
+> > If possible please also add the CLK_SET_RATE_PARENT change from [3] in a possible v2,
+> > that fixes assigning the aclk_vcodec clk to 400Mhz in the rockchip vpu driver.
+> >
+> > [1] https://github.com/Kwiboo/linux-rockchip/commit/1f78093e05c7360515a185f48b7c5cb8ba1e3e15
+> > [2] https://patchwork.kernel.org/patch/9725553/
+> > [3] https://github.com/Kwiboo/linux-rockchip/commit/9216da3f1521a0be5889235abe7fa093a4894160
+> 
+> Thanks for the pointers!  Now I'm 99.9999% certain that my patch is
+> correct instead of just 99.9%.  ;-)
+> 
+> IMO the CLK_SET_RATE_PARENT should probably be a separate patch but it
+> does seem like we need it.  ...and actually the patch adding it should
+> have a Fixes tag of the same commit.  Prior to that commit the parent
+> of "aclk_vcodec" was "aclk_vdpu".  As a gate clock it would
+> automatically have CLK_SET_RATE_PARENT so you could easily set the
+> rate.  ...and it looks as if the downstream video codec driver in
+> Chrome OS relies on this too.
+> 
+> I'm happy to add that in a v2 if Heiko is happy with it.
 
-I have no problem with changing it like this, but I think it is better 
-to modify dts:
+Sounds very sensible to me to combine these 2 parts.
 
-vdd_log: vdd-log {
-         compatible = "pwm-regulator";
-         rockchip,pwm_id = <2>; //for rk uboot
-         rockchip,pwm_voltage = <900000>; // for rk uboot
-         pwms = <&pwm2 0 25000 1>;
-         regulator-name = "vdd_log";
-         regulator-min-microvolt = <800000>;//hw logic min voltage
-         regulator-max-microvolt = <1400000>;//hw logic max voltage
-         regulator-always-on;
-         regulator-boot-on;
-     };
-
-Maybe we did not push the modification of this part in rk3288-evb, I 
-will push to deal with this.(rk3229-evb.dts and rk3399 has been already 
-pushed)
->
->
->
->
-> -Doug
->
->
->
+Heiko
