@@ -1,70 +1,65 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3 4/5] arm64: dts: rk3399: Add dfi and dmc nodes.
-Date: Thu, 11 Apr 2019 15:20:53 +0200
-Message-ID: <7786013.gjegOBUKu0@phil>
-References: <20190321231440.19031-1-gael.portay@collabora.com> <20190321231440.19031-5-gael.portay@collabora.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: add rk3399 UART DMAs
+Date: Thu, 11 Apr 2019 14:48:12 +0100
+Message-ID: <8d164cfe-c345-aa45-aaf3-11983f9142e5@arm.com>
+References: <20190321162244.10080-1-katsuhiro@katsuster.net>
+ <14265087.Gbs4YZABJo@phil> <69d5d0fd-00c3-36ae-596e-1b9f9452a07a@arm.com>
+ <2463729.IUJ8mRE5Ts@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190321231440.19031-5-gael.portay@collabora.com>
+In-Reply-To: <2463729.IUJ8mRE5Ts@phil>
+Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?ISO-8859-1?Q?Ga=EBl?= PORTAY <gael.portay@collabora.com>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lin Huang <hl@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Derek Basehore <dbasehore@chromium.org>, Randy Li <ayaka@soulik.info>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Katsuhiro Suzuki <katsuhiro@katsuster.net>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Gaël,
-
-Am Freitag, 22. März 2019, 00:14:39 CEST schrieb Gaël PORTAY:
-> From: Lin Huang <hl@rock-chips.com>
+On 11/04/2019 13:46, Heiko Stuebner wrote:
+> Hi Robin,
 > 
-> These are required to support DDR DVFS on rk3399 platform. The patch also
-> introduces a new file with default DRAM settings.
+> Am Samstag, 30. MÃ¤rz 2019, 00:24:16 CEST schrieb Robin Murphy:
+>> On 2019-03-27 12:00 pm, Heiko Stuebner wrote:
+>>> Hi,
+>>>
+>>> Am Dienstag, 26. MÃ¤rz 2019, 14:49:16 CET schrieb Katsuhiro Suzuki:
+>>>> Hello Robin,
+>>>>
+>>>> Sorry for inconvenience. Since I don't adhere enabling DMA for UARTs,
+>>>> please revert my patch if you need.
+>>>
+>>> I've dropped the patch from my queue now.
+>>>
+>>>> BTW, there are DMA properties in RK3328 device-tree like as this patch.
+>>>> RK3328 UART DMA could not work correctly too...??
+>>>
+>>> I remember Rockcihip dma-controllers having issues with burst-sizes
+>>> and flushing (there is a no-flushp option in pl330), so it's
+>>> possible that all share the same error up to rk3399 and rk3328
+>>>
+>>> But so far no-one has shouted regarding the rk3328.
+>>
+>> Let me be the first, then, I guess :)
+>>
+>> I found an easy way to observe the problem on my 3399, and I've just
+>> fired up my 3328 box with a 5.0 distro kernel to find that it behaves
+>> the same. Basically just dump a large pile of text into 'less' on the
+>> serial console, and scroll through line-by-line - certain lines get
+>> dropped except for a few characters at the end.
+>>
+>> I'll see if I can narrow it down a bit, starting with trying
+>> broken-flushp...
 > 
-> Signed-off-by: Lin Huang <hl@rock-chips.com>
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>
+> did you manage to find time for that test you wanted to do?
 
-> +	dmc: dmc {
-> +		compatible = "rockchip,rk3399-dmc";
-> +		rockchip,pmu = <&pmugrf>;
-> +		devfreq-events = <&dfi>;
-> +		clocks = <&cru SCLK_DDRC>;
-> +		clock-names = "dmc_clk";
-> +		status = "disabled";
-> +		rockchip,ddr3_speed_bin = <21>;
-> +		rockchip,pd_idle = <0x40>;
-> +		rockchip,sr_idle = <0x2>;
-> +		rockchip,sr_mc_gate_idle = <0x3>;
-> +		rockchip,srpd_lite_idle	= <0x4>;
-> +		rockchip,standby_idle = <0x2000>;
-> +		rockchip,dram_dll_dis_freq = <300000000>;
-> +		rockchip,phy_dll_dis_freq = <125000000>;
-> +		rockchip,auto_pd_dis_freq = <666000000>;
-> +		rockchip,ddr3_odt_dis_freq = <333000000>;
-> +		rockchip,ddr3_drv = <DDR3_DS_40ohm>;
-> +		rockchip,ddr3_odt = <DDR3_ODT_120ohm>;
-> +		rockchip,phy_ddr3_ca_drv = <PHY_DRV_ODT_40>;
-> +		rockchip,phy_ddr3_dq_drv = <PHY_DRV_ODT_40>;
-> +		rockchip,phy_ddr3_odt = <PHY_DRV_ODT_240>;
-> +		rockchip,lpddr3_odt_dis_freq = <333000000>;
-> +		rockchip,lpddr3_drv = <LP3_DS_34ohm>;
-> +		rockchip,lpddr3_odt = <LP3_ODT_240ohm>;
-> +		rockchip,phy_lpddr3_ca_drv = <PHY_DRV_ODT_40>;
-> +		rockchip,phy_lpddr3_dq_drv = <PHY_DRV_ODT_40>;
-> +		rockchip,phy_lpddr3_odt = <PHY_DRV_ODT_240>;
-> +		rockchip,lpddr4_odt_dis_freq = <333000000>;
-> +		rockchip,lpddr4_drv = <LP4_PDDS_60ohm>;
-> +		rockchip,lpddr4_dq_odt = <LP4_DQ_ODT_40ohm>;
-> +		rockchip,lpddr4_ca_odt = <LP4_CA_ODT_40ohm>;
-> +		rockchip,phy_lpddr4_ca_drv = <PHY_DRV_ODT_40>;
-> +		rockchip,phy_lpddr4_ck_cs_drv = <PHY_DRV_ODT_80>;
-> +		rockchip,phy_lpddr4_dq_drv = <PHY_DRV_ODT_80>;
-> +		rockchip,phy_lpddr4_odt = <PHY_DRV_ODT_60>;
+Sadly not - I got somewhat distracted by the ethernet thing, and since 
+then I've had too much else going on to follow up on any of my 'for fun' 
+projects :(
 
-as Rob mentioned in his review, these values look board-specific,
-so should probably move over to the specific board you're using them
-on?
+If it helps, from a quick look based on what I can remember off-hand, 
+Rockchip UARTs in general have probably been using DMA since 4.19 with 
+d8095f94e195 ("dmaengine: add support for reporting pause and resume 
+separately").
 
-
-Heiko
+Robin.
