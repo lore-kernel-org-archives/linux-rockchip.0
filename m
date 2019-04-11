@@ -1,51 +1,58 @@
-From: Tom Murphy <tmurphy@arista.com>
-Subject: [PATCH 9/9] iommu/amd: Add allocated domain to global list earlier
-Date: Thu, 11 Apr 2019 19:47:38 +0100
-Message-ID: <20190411184741.27540-10-tmurphy@arista.com>
-References: <20190411184741.27540-1-tmurphy@arista.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] clk: rockchip: rk3288: Limit use of USB PHY clock to USB
+Date: Thu, 11 Apr 2019 21:03:07 +0200
+Message-ID: <3787637.WUkDPpUsF8@diego>
+References: <20190411175917.173566-1-mka@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190411184741.27540-1-tmurphy@arista.com>
+In-Reply-To: <20190411175917.173566-1-mka@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: iommu@lists.linux-foundation.org
-Cc: dima@arista.com, jamessewart@arista.com, murphyt7@tcd.ie, Tom Murphy <tmurphy@arista.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <marc.zyngier@arm.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchi
+To: Matthias Kaehlcke <mka@chromium.org>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-dma_ops_domain_free() expects domain to be in a global list.
-Arguably, could be called before protection_domain_init().
+Hi Matthias,
 
-Signed-off-by: Dmitry Safonov <dima@arista.com>
-Signed-off-by: Tom Murphy <tmurphy@arista.com>
----
- drivers/iommu/amd_iommu.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+Am Donnerstag, 11. April 2019, 19:59:17 CEST schrieb Matthias Kaehlcke:
+> The USB PHY clock can be configured as (grand) parent of uart0_sclk and
+> sclk_gpu. It has been observed that UART0 doesn't work reliably in high
+> speed mode with the PHY clock as input when certain USB devices are
+> plugged to the USB HOST1 port (see https://crrev.com/c/320543).
+> 
+> Prefix the name of the PHY clock with a '.' in the non-USB muxes to
+> effectively remove the clock as input from these muxes.
+> 
+> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+> ---
+>  drivers/clk/rockchip/clk-rk3288.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+> index 5a67b7869960..677bc5485201 100644
+> --- a/drivers/clk/rockchip/clk-rk3288.c
+> +++ b/drivers/clk/rockchip/clk-rk3288.c
+> @@ -200,8 +200,8 @@ PNAME(mux_aclk_cpu_src_p)	= { "cpll_aclk_cpu", "gpll_aclk_cpu" };
+>  PNAME(mux_pll_src_cpll_gpll_p)		= { "cpll", "gpll" };
+>  PNAME(mux_pll_src_npll_cpll_gpll_p)	= { "npll", "cpll", "gpll" };
+>  PNAME(mux_pll_src_cpll_gpll_npll_p)	= { "cpll", "gpll", "npll" };
+> -PNAME(mux_pll_src_cpll_gpll_usb480m_p)	= { "cpll", "gpll", "usbphy480m_src" };
+> -PNAME(mux_pll_src_cpll_gll_usb_npll_p)	= { "cpll", "gpll", "usbphy480m_src", "npll" };
+> +PNAME(mux_pll_src_cpll_gpll_usb480m_p)	= { "cpll", "gpll", ".usbphy480m_src" };
+> +PNAME(mux_pll_src_cpll_gll_usb_npll_p)	= { "cpll", "gpll", ".usbphy480m_src", "npll" };
 
-diff --git a/drivers/iommu/amd_iommu.c b/drivers/iommu/amd_iommu.c
-index 02b351834a3b..bfb021d656aa 100644
---- a/drivers/iommu/amd_iommu.c
-+++ b/drivers/iommu/amd_iommu.c
-@@ -1801,8 +1801,12 @@ static struct protection_domain *dma_ops_domain_alloc(void)
- 	if (!domain)
- 		return NULL;
- 
--	if (protection_domain_init(domain))
--		goto free_domain;
-+	if (protection_domain_init(domain)) {
-+		kfree(domain);
-+		return NULL;
-+	}
-+
-+	add_domain_to_list(domain);
- 
- 	domain->mode = PAGE_MODE_3_LEVEL;
- 	domain->pt_root = (void *)get_zeroed_page(GFP_KERNEL);
-@@ -1824,8 +1828,6 @@ static struct protection_domain *dma_ops_domain_alloc(void)
- 	/* Initialize reserved ranges */
- 	iommu_dma_copy_reserved_iova(&reserved_iova_ranges, &domain->domain);
- 
--	add_domain_to_list(domain);
--
- 	return domain;
- 
- free_cookie:
--- 
-2.17.1
+In general I like to have things like the clock-tree described fully
+and let the kernel handle correct sourcing ... but:
+
+As you write this seems like a systemic problem when just connecting
+random peripherals can create unstable clock source frequencies,
+so I tend to agree here ... but:
+
+Can we please find a more "talking" name for this ... because as with the
+above someone will find the "." and submit a fix for it ;-) .
+
+So just name it "unstable_dummy" or so?
+
+
+Heiko
