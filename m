@@ -1,42 +1,46 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: [PATCH] clk: rockchip: rk3288: Limit use of USB PHY clock to USB
-Date: Thu, 11 Apr 2019 10:59:17 -0700
-Message-ID: <20190411175917.173566-1-mka@chromium.org>
+From: Tom Murphy <tmurphy@arista.com>
+Subject: [PATCH 0/9] iommu/amd: Convert the AMD iommu driver to the dma-iommu api
+Date: Thu, 11 Apr 2019 19:47:29 +0100
+Message-ID: <20190411184741.27540-1-tmurphy@arista.com>
 Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, Matthias Kaehlcke <mka@chromium.org>
+To: iommu@lists.linux-foundation.org
+Cc: dima@arista.com, jamessewart@arista.com, murphyt7@tcd.ie, Tom Murphy <tmurphy@arista.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Marc Zyngier <marc.zyngier@arm.com>, Thomas Gleixner <tglx@linutronix.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchi
 List-Id: linux-rockchip.vger.kernel.org
 
-The USB PHY clock can be configured as (grand) parent of uart0_sclk and
-sclk_gpu. It has been observed that UART0 doesn't work reliably in high
-speed mode with the PHY clock as input when certain USB devices are
-plugged to the USB HOST1 port (see https://crrev.com/c/320543).
+Convert the AMD iommu driver to the dma-iommu api and remove the iova
+handling code from the AMD iommu driver.
 
-Prefix the name of the PHY clock with a '.' in the non-USB muxes to
-effectively remove the clock as input from these muxes.
+Tom Murphy (9):
+  iommu/dma-iommu: Add iommu_map_atomic
+  iommu/dma-iommu: Add function to flush any cached not present IOTLB
+    entries
+  iommu/dma-iommu: Add iommu_dma_copy_reserved_iova,
+    iommu_dma_apply_resv_region to the dma-iommu api
+  iommu/dma-iommu: Add iommu_dma_map_page_coherent
+  iommu/amd: Implement .flush_np_cache
+  iommu/amd: Implement map_atomic
+  iommu/amd: Use the dma-iommu api
+  iommu/amd: Clean up unused functions
+  iommu/amd: Add allocated domain to global list earlier
 
-Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
----
- drivers/clk/rockchip/clk-rk3288.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/iommu/Kconfig          |   1 +
+ drivers/iommu/amd_iommu.c      | 468 ++++++++-------------------------
+ drivers/iommu/arm-smmu-v3.c    |   1 +
+ drivers/iommu/arm-smmu.c       |   1 +
+ drivers/iommu/dma-iommu.c      |  68 ++++-
+ drivers/iommu/exynos-iommu.c   |   1 +
+ drivers/iommu/iommu.c          |  46 +++-
+ drivers/iommu/ipmmu-vmsa.c     |   1 +
+ drivers/iommu/mtk_iommu.c      |   1 +
+ drivers/iommu/qcom_iommu.c     |   1 +
+ drivers/iommu/rockchip-iommu.c |   1 +
+ include/linux/dma-iommu.h      |  10 +
+ include/linux/iommu.h          |  25 ++
+ 13 files changed, 253 insertions(+), 372 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 5a67b7869960..677bc5485201 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -200,8 +200,8 @@ PNAME(mux_aclk_cpu_src_p)	= { "cpll_aclk_cpu", "gpll_aclk_cpu" };
- PNAME(mux_pll_src_cpll_gpll_p)		= { "cpll", "gpll" };
- PNAME(mux_pll_src_npll_cpll_gpll_p)	= { "npll", "cpll", "gpll" };
- PNAME(mux_pll_src_cpll_gpll_npll_p)	= { "cpll", "gpll", "npll" };
--PNAME(mux_pll_src_cpll_gpll_usb480m_p)	= { "cpll", "gpll", "usbphy480m_src" };
--PNAME(mux_pll_src_cpll_gll_usb_npll_p)	= { "cpll", "gpll", "usbphy480m_src", "npll" };
-+PNAME(mux_pll_src_cpll_gpll_usb480m_p)	= { "cpll", "gpll", ".usbphy480m_src" };
-+PNAME(mux_pll_src_cpll_gll_usb_npll_p)	= { "cpll", "gpll", ".usbphy480m_src", "npll" };
- 
- PNAME(mux_mmc_src_p)	= { "cpll", "gpll", "xin24m", "xin24m" };
- PNAME(mux_i2s_pre_p)	= { "i2s_src", "i2s_frac", "ext_i2s", "xin12m" };
 -- 
-2.21.0.392.gf8f6787159e-goog
+2.17.1
