@@ -1,99 +1,91 @@
-From: ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Subject: Re: [PATCH v3 1/9] staging: video: rockchip: add v4l2 decoder
-Date: Fri, 12 Apr 2019 07:13:34 +0800
-Message-ID: <8efb73e4-5d6c-aec2-4255-64b6603d23d8@soulik.info>
-References: <20190410124226.8612-1-ayaka@soulik.info>
- <20190410124226.8612-2-ayaka@soulik.info>
- <2b225e07b03359311c21ab2b3c41096a97beb338.camel@ndufresne.ca>
- <cc5816d8-43cb-aedc-e496-f92baf37e6b3@rock-chips.com>
- <88dc2edc5e6146d4dc0a8367b5bbe9aaa6241d0b.camel@ndufresne.ca>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH 1/5] clk: rockchip: Turn on "aclk_dmac1" for suspend
+Date: Thu, 11 Apr 2019 16:21:53 -0700
+Message-ID: <20190411232157.55125-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <88dc2edc5e6146d4dc0a8367b5bbe9aaa6241d0b.camel-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, jernej.skrabec-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
+Cc: dbasehore@chromium.org, amstan@chromium.org, linux-rockchip@lists.infradead.org, briannorris@chromium.org, mka@chromium.org, ryandcase@chromium.org, Chris Zhong <zyw@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDQvMTIvMTkgMTI6MTIgQU0sIE5pY29sYXMgRHVmcmVzbmUgd3JvdGU6Cj4gTGUgamV1ZGkg
-MTEgYXZyaWwgMjAxOSDDoCAwOToyOSArMDgwMCwgUmFuZHkgTGkgYSDDqWNyaXQgOgo+Pj4gV2Ug
-YWdyZWVkIHdpdGggTWF4aW1lIGFuZCBFemVxdWllbCB0aGF0IHRoZXJlIHdpbGwgYmUgdHdvIGRp
-c3RpbmN0Cj4+PiBmb3JtYXQsIFY0TDJfUElYX0ZNVF9IMjY0X1NMSUNFX1JBVyBhbmQgVjRMMl9Q
-SVhfRk1UX0gyNjRfU0xJQ0VfQU5ORVhCLgo+Pj4gQW5kIHVzZXItcGFjZSB3aWxsIHRha2UgY2Fy
-ZSBvZiBwcm92aWRpbmcgdGhlIHJpZ2h0IGluZm9ybWF0aW9uLgo+PiBJIGhhdmUgbm8gaWRlYSBv
-biB3aGF0IGRvZXMgdGhlIFNMSUNFX1JBVyBtZWFuIGhlcmUuCj4gSWYgeW91IHNraXAgdGhlIE5B
-TCBoZWFkZXJzLCBTTElDRV9SQVcgaXMgd2hhdCBpcyBsZWZ0LiBUaGlzIGlzIGV4YWN0bHkKPiB3
-aGF0IGlzIHBhc3NlZCBpbiBWQUFQSSwgYW5kIHdoYXQgbWFrZXMgUm9ja2NoaXAgSFcgZGlmZmlj
-dWx0IHRvCj4gc3VwcG9ydCB0aHJvdWdoIHRoaXMgYWJzdHJhY3Rpb24gYXBwYXJlbnRseS4gVGhl
-IHJhdGlvbmFsZSBpcyB0aGF0IGFsbAo+IHRoZSBpbmZvcm1hdGlvbiB0aGF0IHdhcyBpbiB0aGUg
-cmVzdCBvZiB0aGUgYml0c3RyZWFtIGlzIGFscmVhZHkgcGFzc2VkCj4gaW4gQyBzdHJ1Y3R1cmVz
-LiBJZiB0aGlzIGlzbid0IHRoZSBjYXNlLCBsZXQgbWUga25vdywgc2luY2UgaXQgd291bGQgYmUK
-PiBhIGJhZCBuYW1lIGluZGVlZC4KClllcywgaXQgaXMgY2FsbGVkIGFzIEFWQzEgYXMgdXN1YWwu
-IFNMSUNFX1JBVyBkb2Vzbid0IGluZGljYXRlIGFueXRoaW5nLCAKaXQgY2FuIGJlIEFWQ0NDIG9y
-IHNvbWV0aGluZyBlbHNlLgoKWW91IG11c3QgZm9sbG93IGEgc3RhbmRhcmQgYXMgdGhlcmUgaXMu
-Cgo+Cj4gUGF1bCBhc2tlZCB1cyB3aHkgbm90IGFsd2F5cyByZXF1aXJlZCBBTk5FWC1CIHdpdGgg
-c3RhcnQgY29kZSBhcyBhCj4gc3VwZXIgc2V0LiBUaGlzIGlzIG5vdCB2ZXJ5IGVmZmljaWVudCwg
-c2luY2UgaXQgbWVhbnMgdGhhdCB3aGVuZXZlciB5b3UKPiBoYXZlIGEgc3RyZWFtIGZyb20gYW4g
-SVNPTVA0IG1lZGlhLCB5b3UgZW5kdXAgaGF2aW5nIHRvIGNvbnZlcnQgdGhlIEFWQwo+IGhlYWRl
-cnMgaW50byBBTk5FWC1CIHN0YXJ0IGNvZGUsIGFuZCB5b3UgbG9vc2UgdGhlIG9wdGltaXphdGlv
-biB0aGUgQVZDCj4gaGVhZGVyIHByb3ZpZGVzIChBVkMgZm9ybWF0IGlzIGJhc2ljYWxseSBqdXN0
-IGEgTkFMIHR5cGUgYW5kIGl0J3Mgc2l6ZSwKPiBzbyB5b3UgY2FuIG5hdmlnYXRlIHRocm91Z2gg
-dGhlIHN0cmVhbSB3aXRoIHZlcnkgbGl0dGxlIHJlYWRzKS4gVGhlCgpCdXQgaWYgYSBmcmFtZSBp
-cyBjb25zaXN0ZWQgd2l0aCBtb3JlIHRoYW4gMSBzbGljZSwgaXQgd29uJ3Qgd29yaywgCmFsdGhv
-dWdoIGl0IGlzIG5vdCBzdXBwb3J0ZWQgYnkgY3VycmVudCBWNEwyIGZyYW1ld29yay4gQW55d2F5
-IHRoZSBzdGFydCAKY29kZSBpcyBuZWNlc3NhcnkgaW4gQW5uZXggQiBvZiB0aGUgSC4yNjQgU1BF
-QyBvciBoYXJkd2FyZSBjYW4ndCBoYW5kbGUgCm1vcmUgdGhhbiAxIG5hbCB1bml0IGZvciBhbnkg
-cHVycG9zZS4KCkFkZGluZyBhIDI0Yml0cyBvciAzMmJpdHMgaGVhZGVyIHdvbid0IGNvc3QgbXVj
-aCBDUFUgdGltZSwgbXVjaCBsZXNzIAp0aGFuIGJpdHN0cmVhbSByZWNvbnN0cnVjdGlvbi4KCkFu
-eXdheSB5b3Ugd29uJ3Qgbm90IG9ubHkgbWVldCB0aGlzIHByb2JsZW0gd2l0aCBILjI2NCBidXQg
-YWxzbyBILjI2NS4KCj4gb3RoZXIgdGhpbmcgaXMgdGhlIG1lbW9yeSBhbGlnbm1lbnQgdGhlIHJl
-cXVpcmUgbmVlZHMuIEkgc3VzcGVjdCB0aGF0CkkgYW0gc3VyZSBiaXRzdHJlYW0gZG9lc24ndCBy
-ZXF1aXJlZCBhbnkgbWVtb3J5IGFsaWdubWVudC4KPiBpZiB0aGUgSFcgcmVxdWlyZSBTTElDRV9S
-QVcsIHlvdSBjYW5ub3QganVzdCBwYXNzIGEgcmFuZG9tIHBvaW50ZXIKPiBvZmZzZXQuIFNvIHlv
-dSdkIG5lZWQgYW5vdGhlciBidWZmZXIgdGhlIHVzZXJzcGFjZSBkYXRhIHRvLiBIaWRkZW4KSSB0
-aGluayB5b3UgY2FuLCBoYXJkd2FyZSB1c3VhbGx5IGhhcyBhIHJlZ2lzdGVyIHRvIGxldCBpdCBz
-a2lwIGEgZmV3IApiaXRzIG9mIHRoZSBpbnB1dCBzdHJlYW0uCj4gY29waWVzIGluIGRyaXZlcnMg
-YXJlIHF1aXRlIGJhZCwgaXQncyBiZXR0ZXIgdG8gbGVhdmUgaXQgdG8gdXNlcnNwYWNlCj4gd2hl
-biB3ZSBjYW4gaW4gbXkgb3Bpbmlvbi4KPgo+IE5vdyB0aGF0IEknbSBzYXlpbmcgdGhhdCBvdXQt
-bG91ZCwgSSB3b25kZXIgaG93IHRoZSAib25lIHY0bDIgYnVmZmVyCj4gcGVyIGZyYW1lIiByZXN0
-cmljdGlvbiBjYW4gYmUgcmVzcGVjdGVkIGZvciBTTElDRV9SQVcuIFRoZSByZWNlaXZlcgo+IHdv
-dWxkIGhhdmUgbm8gd2F5IHRvIGtub3cgd2hlcmUgZWFjaCBzbGljZXMgYXJlLiBJc24ndCB0aGVy
-ZSBhIGJpZyBmbGF3Cj4gaW4gdGhpcyByZXN0cmljdGlvbiA/IE9yIGRpZCBJIG1pc3MtdW5kZXJz
-dG9vZCB0aGUgZm9ybWF0LCBhbmQKPiBTTElDRV9SQVcgaXMgYSBiYWQgbmFtZSA/Cj4KPj4gQW5u
-ZXggQiBkZXNjcmliZSBhIGJ5dGUgc3RyZWFtIGZvcm1hdCBidXQgaXQgZG9lc24ndCBtZWFuIGl0
-IHNob3VsZAo+PiBzaGlwIHNsaWNlIGRhdGEgd2l0aCBTUFMgb3IgUFBTCj4gU0xJQ0UgbWVhbnMg
-aXQgd29uJ3QgcGFzcyBTUFMgb3IgUFBTIGluLWJhbmQuIE9ubHkgc2xpY2UgTkFMcyBhbmQgcGVy
-Cj4gc2xpY2UgYXV4aWxpYXJ5IGRhdGEgaWYgdGhlcmUgaXMgYW55LiBEbyBSb2NrY2hpcCBuZWVk
-cyB0aGUgb3JpZ2luYWwKPiBTUFMvUFBTIGJpdHN0cmVhbSA/IElmIHNvLCBhbGwgb2YgdGhlbSA/
-IG9yIGp1c3QgdGhlIGFjdGl2YXRlZCBvbmUgPwo+IEFuZCB3aGVuID8KClllcywgSSB0aG91Z2gg
-eW91IGtub3cgdGhhdCwgSSB0YWxrZWQgd2l0aCB5b3UgYmVmb3JlLiBJIHRob3VnaCB0aGF0IGlz
-IAp3aHkgZXplcXVpZWwgd2FudCB0aGlzLgoKQnV0IHRoYXQgU1BTL1BQUyBpcyBub3QgMTAwJSBj
-b21wYXRpYmxlIHdpdGggSVRVIGRvY3VtZW50LgoKPgo+PiBUaGUgcHJvYmxlbSBvZiBib290bGlu
-IGRlbW8gaXMgaXQgZm9sbG93cyBBbm5leCBCIGJ1dCB3aXRob3UgYSBzdGFydAo+PiBjb2RlICEh
-ISEKPiBXZSdsbCBmaXggdGhhdCBpZiB3ZSBkZWNpZGUgdG8gdXNlIHRoaXMgZm9yIHRlc3Rpbmcu
-IEl0IHdhcyBhbGwgZWFybHkKPiBhbmQgdW5zcGVjaWZpZWQuIFNMSUNFX0FOTkVYQiB3aWxsIGhh
-dmUgYSBzdGFydCBjb2RlIG9mIGNvdXJzZSwgYXMgSQpCZXNpZGVzIEkgZm91bmQgaXRzIFNQUy9Q
-UFMgZG9lc24ndCBtYXRjaCB0aGUgb3JpZ2luYWwgZmlsZSwgSSBkaWRuJ3QgCm1ha2UgdGhpcyBj
-bGVhcmx5IGluIHRoZSBwcmV2aW91cyBlbWFpbC4KPiBkb24ndCBzZWUgaG93IHlvdSBjYW4gY2Fs
-bCB0aGlzIEFOTkVYQiBvdGhlcndpc2UuIEFuZCBJJ20gcHJldHR5IHN1cmUKPiB0aGUgcmVhc29u
-IFJvY2tjaGlwIG5lZWQgaXQgaXMgdG8gYmUgYWJsZSB0byBzcGxpdCB0aGUgc2xpY2VzICh3ZSBu
-ZWVkCj4gdG8ga2VlcCBpbiBtaW5kIHRoYXQgbXVsdGlwbGUgc2xpY2VzIHBlciBmcmFtZSBpcyBj
-b21tb25seSB1c2VkIGluCj4gdmlkZW8gY29uZmVyZW5jZSBzdHJlYW1pbmcpLiBUaGUgZm9ybWF0
-IGRvY3VtZW50YXRpb24gc2hvdWxkIGJlIHJlYWxseQo+IGNsZWFyIGFib3V0IHdoYXQgaXQgaXMs
-IGFuZCBpZiBhbm90aGVyIEhXIHdpdGggYW5vdGhlciBmb3JtYXQgY29tZXMKPiB0aGF0IGRvZXMg
-bm90IG1hdGNoLCBpdCBzaG91bGQgZGVmaW5lIGFuZCBkb2N1bWVudCBhIG5ldyBmb3JtYXQuCj4K
-PiBjaGVlcnMsCj4gTmljb2xhcwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+Experimentally it can be seen that going into deep sleep (specifically
+setting PMU_CLR_DMA and PMU_CLR_BUS in RK3288_PMU_PWRMODE_CON1)
+appears to fail unless "aclk_dmac1" is on.  The failure is that the
+system never signals that it made it into suspend on the GLOBAL_PWROFF
+pin and it just hangs.
+
+NOTE that it's confirmed that it's the actual suspend that fails, not
+one of the earlier calls to read/write registers.  Specifically if you
+comment out the "PMU_GLOBAL_INT_DISABLE" setting in
+rk3288_slp_mode_set() and then comment out the "cpu_do_idle()" call in
+rockchip_lpmode_enter() then you can exercise the whole suspend path
+without any crashing.
+
+This is currently not a problem with suspend upstream because there is
+no current way to exercise the deep suspend code.  However, anyone
+trying to make it work will run into this issue.
+
+This was not a problem on shipping rk3288-based Chromebooks because
+those devices all ran on an old kernel based on 3.14.  On that kernel
+"aclk_dmac1" appears to be left on all the time.
+
+There are several ways to skin this problem.
+
+A) We could add "aclk_dmac1" to the list of critical clocks and that
+apperas to work, but presumably that wastes power.
+
+B) We could keep a list of "struct clk" objects to enable at suspend
+time in clk-rk3288.c and use the standard clock APIs.
+
+C) We could make the rk3288-pmu driver keep a list of clocks to enable
+at suspend time.  Presumably this would require a dts and bindings
+change.
+
+D) We could just whack the clock on in the existing syscore suspend
+function where we whack a bunch of other clocks.  This is particularly
+easy because we know for sure that the clock's only parent
+("aclk_cpu") is a critical clock so we don't need to do anything more
+than ungate it.
+
+In this case I have chosen D) because it seemed like the least work,
+but any of the other options would presumably also work fine.
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+
+ drivers/clk/rockchip/clk-rk3288.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 5a67b7869960..b245367393cd 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -859,6 +859,9 @@ static const int rk3288_saved_cru_reg_ids[] = {
+ 	RK3288_CLKSEL_CON(10),
+ 	RK3288_CLKSEL_CON(33),
+ 	RK3288_CLKSEL_CON(37),
++
++	/* We turn aclk_dmac1 on for suspend; this will restore it */
++	RK3288_CLKGATE_CON(10),
+ };
+ 
+ static u32 rk3288_saved_cru_regs[ARRAY_SIZE(rk3288_saved_cru_reg_ids)];
+@@ -874,6 +877,14 @@ static int rk3288_clk_suspend(void)
+ 				readl_relaxed(rk3288_cru_base + reg_id);
+ 	}
+ 
++	/*
++	 * Going into deep sleep (specifically setting PMU_CLR_DMA in
++	 * RK3288_PMU_PWRMODE_CON1) appears to fail unless
++	 * "aclk_dmac1" is on.
++	 */
++	writel_relaxed(1 << (12 + 16),
++		       rk3288_cru_base + RK3288_CLKGATE_CON(10));
++
+ 	/*
+ 	 * Switch PLLs other than DPLL (for SDRAM) to slow mode to
+ 	 * avoid crashes on resume. The Mask ROM on the system will
+-- 
+2.21.0.392.gf8f6787159e-goog
