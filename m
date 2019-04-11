@@ -1,232 +1,99 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/3] Revert "clk: rockchip: mark noc and some special clk as critical on rk3288"
-Date: Fri, 12 Apr 2019 00:05:57 +0200
-Message-ID: <1820193.6uR021mFLB@diego>
-References: <20190409204707.150347-1-dianders@chromium.org> <1491b5f1-e9f9-5718-76e5-0a49814ed76d@rock-chips.com> <CAD=FV=Ue3C3gMWx9hnQr=+LU77xdemLbsWozFZoCuQAACjiCUg@mail.gmail.com>
+From: ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
+Subject: Re: [PATCH v3 1/9] staging: video: rockchip: add v4l2 decoder
+Date: Fri, 12 Apr 2019 07:13:34 +0800
+Message-ID: <8efb73e4-5d6c-aec2-4255-64b6603d23d8@soulik.info>
+References: <20190410124226.8612-1-ayaka@soulik.info>
+ <20190410124226.8612-2-ayaka@soulik.info>
+ <2b225e07b03359311c21ab2b3c41096a97beb338.camel@ndufresne.ca>
+ <cc5816d8-43cb-aedc-e496-f92baf37e6b3@rock-chips.com>
+ <88dc2edc5e6146d4dc0a8367b5bbe9aaa6241d0b.camel@ndufresne.ca>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=Ue3C3gMWx9hnQr=+LU77xdemLbsWozFZoCuQAACjiCUg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: "elaine.zhang" <zhangqing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Caesar Wang <caesar.wang@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, linux-clk <linux-clk@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <88dc2edc5e6146d4dc0a8367b5bbe9aaa6241d0b.camel-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Randy Li <randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, jernej.skrabec-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Am Donnerstag, 11. April 2019, 17:26:41 CEST schrieb Doug Anderson:
-> On Wed, Apr 10, 2019 at 8:27 PM elaine.zhang <zhangqing@rock-chips.com> wrote:
-> > 在 2019/4/10 下午11:34, Doug Anderson 写道:
-> > On Tue, Apr 9, 2019 at 11:23 PM elaine.zhang <zhangqing@rock-chips.com> wrote:
-> > 在 2019/4/10 上午4:47, Douglas Anderson 写道:
-> >
-> > This reverts commit 55bb6a633c33caf68ab470907ecf945289cb733d.
-> >
-> > The clocks that were enabled by that patch are pretty questionable.
-> > Specifically looking at what has been shipping on rk3288-veyron
-> > Chromebooks almost all of these clocks are safely turned off and cause
-> > no apparent problems.  If some boards need these clocks turned on for
-> > some reason then it seems like we should figure out how to do that at
-> > a board level.
-> >
-> > NOTE: turning these clocks off doesn't seem to do a whole lot in terms
-> > of power savings (checking the power on the logic rail).  It appears
-> > to save maybe 1-2mW.  ...but still it seems like we should turn the
-> > clocks off if they aren't needed.
-> >
-> > Digging into the clocks here to describe why they shouldn't need to be
-> > left on:
-> >
-> > atclk: No documentation about this clock other than that it goes to
-> > the CPU.  CPU functions fine without it on.
-> >
-> > jtag: Presumably this clock is only needed if you're debugging with
-> > JTAG.  It doesn't seem like it makes sense to waste power for every
-> > rk3288 user.  Perhaps this could be turned on with a CONFIG option?
-> >
-> > pclk_dbg, pclk_core_niu: On veyron Chromebooks we turn these two
-> > clocks on only during kernel panics in order to access some coresight
-> > registers.  Since nothing in the upstream kernel does this we should
-> > be able to leave them off safely.
-> >
-> > hsicphy12m_xin12m: There is no indication of why this clock would need
-> > to be turned on for boards that don't use HSIC.
-> >
-> > pclk_ddrupctl[0-1], pclk_publ0[0-1]: On veyron Chromebooks we turn
-> > these 4 clocks on only when doing DDR transitions and they are off
-> > otherwise.  I see no reason why they'd need to be on in the upstream
-> > kernel which doesn't support DDRFreq.
-> >
-> > pmu_hclk_otg0: A "chip design defect" is mentioned in the original
-> > patch but no details.  This clock has always been gated in shipping
-> > veyron Chromebooks so presumably this chip defect doesn't affect all
-> > boards.
-> >
-> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > ---
-> >
-> >   drivers/clk/rockchip/clk-rk3288.c | 14 ++++----------
-> >   1 file changed, 4 insertions(+), 10 deletions(-)
-> >
-> > diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-> > index 5a67b7869960..06287810474e 100644
-> > --- a/drivers/clk/rockchip/clk-rk3288.c
-> > +++ b/drivers/clk/rockchip/clk-rk3288.c
-> > @@ -313,13 +313,13 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
-> >       COMPOSITE_NOMUX(0, "aclk_core_mp", "armclk", CLK_IGNORE_UNUSED,
-> >                       RK3288_CLKSEL_CON(0), 4, 4, DFLAGS | CLK_DIVIDER_READ_ONLY,
-> >                       RK3288_CLKGATE_CON(12), 6, GFLAGS),
-> > -     COMPOSITE_NOMUX(0, "atclk", "armclk", CLK_IGNORE_UNUSED,
-> > +     COMPOSITE_NOMUX(0, "atclk", "armclk", 0,
-> >                       RK3288_CLKSEL_CON(37), 4, 5, DFLAGS | CLK_DIVIDER_READ_ONLY,
-> >                       RK3288_CLKGATE_CON(12), 7, GFLAGS),
-> >       COMPOSITE_NOMUX(0, "pclk_dbg_pre", "armclk", CLK_IGNORE_UNUSED,
-> >                       RK3288_CLKSEL_CON(37), 9, 5, DFLAGS | CLK_DIVIDER_READ_ONLY,
-> >                       RK3288_CLKGATE_CON(12), 8, GFLAGS),
-> > -     GATE(0, "pclk_dbg", "pclk_dbg_pre", CLK_IGNORE_UNUSED,
-> > +     GATE(0, "pclk_dbg", "pclk_dbg_pre", 0,
-> >                       RK3288_CLKGATE_CON(12), 9, GFLAGS),
-> >       GATE(0, "cs_dbg", "pclk_dbg_pre", CLK_IGNORE_UNUSED,
-> >                       RK3288_CLKGATE_CON(12), 10, GFLAGS),
-> > @@ -647,7 +647,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
-> >       INVERTER(SCLK_HSADC, "sclk_hsadc", "sclk_hsadc_out",
-> >                       RK3288_CLKSEL_CON(22), 7, IFLAGS),
-> >
-> > -     GATE(0, "jtag", "ext_jtag", CLK_IGNORE_UNUSED,
-> > +     GATE(0, "jtag", "ext_jtag", 0,
-> >                       RK3288_CLKGATE_CON(4), 14, GFLAGS),
-> >
-> > CLK_IGNORE_UNUSED:
-> > Whether to close the unused clk after clk init complete. not affect
-> > there own enable/disable.
-> > JTAG is not have device node, when need jtag to debug, may be the system
-> > is crashed, there is no way to turn on this clk.
-> >
-> > As I mentioned in the commit message this seems like the kind of thing
-> > that should be controlled by a CONFIG_ option.  It's a debug option
-> > that's fine to have on all the time but consumes resources so some
-> > people might want to turn it off.
-> >
-> > Currently,  CONFIG_ option is not implemented. We will refer to this suggestion.
-> >
-> > For debug,  I don't hope to remove the flag CLK_IGNORE_UNUSED.(The clk static power is very small)
-> 
-> I'll leave it up to Heiko for what to do here.  I agree that it's not
-> tons of power (this whole patch saved 1-2 mW on the INT rail) but I'd
-> still prefer for clocks to be off if they can.  In general one could
-> also argue that keeping JTAG off by default could be good for
-> security.
-> 
-> ...but I guess I have to wonder how you're doing JTAG on upstream
-> kernels without any extra patches anyway.  Automatic JTAG switching is
-> turned off in "drivers/soc/rockchip/grf.c".  ...and by default the
-> JTAG signals are muxed as the SD Card.  So presumably you've already
-> got extra patches in order to make JTAG work.
-> 
-> I assume that the clocks that are important for JTAG are "atclk",
-> "jtag", "pclk_dbg", and "pclk_core_niu".
-
-Isn't JTAG part of the coresight package anyway? The whole coresight
-stuff, so in an upstream-context I'd somehow expect it to get activated
-through that. Or is it actually separate and only in the debug-diagram
-in the TRM mixed into coresight?
-
-In any case I'm with Doug here, for jtag you need to modify your kernel
-anyway for pinctrl settings, so could also enable the clock in that case.
-
-
-> >       COMPOSITE_NODIV(SCLK_USBPHY480M_SRC, "usbphy480m_src", mux_usbphy480m_p, 0,
-> > @@ -656,7 +656,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
-> >       COMPOSITE_NODIV(SCLK_HSICPHY480M, "sclk_hsicphy480m", mux_hsicphy480m_p, 0,
-> >                       RK3288_CLKSEL_CON(29), 0, 2, MFLAGS,
-> >                       RK3288_CLKGATE_CON(3), 6, GFLAGS),
-> > -     GATE(0, "hsicphy12m_xin12m", "xin12m", CLK_IGNORE_UNUSED,
-> > +     GATE(0, "hsicphy12m_xin12m", "xin12m", 0,
-> >                       RK3288_CLKGATE_CON(13), 9, GFLAGS),
-> >       DIV(0, "hsicphy12m_usbphy", "sclk_hsicphy480m", 0,
-> >                       RK3288_CLKSEL_CON(11), 8, 6, DFLAGS),
-> > @@ -837,12 +837,6 @@ static const char *const rk3288_critical_clocks[] __initconst = {
-> >       "pclk_alive_niu",
-> >       "pclk_pd_pmu",
-> >       "pclk_pmu_niu",
-> > -     "pclk_core_niu",
-> > -     "pclk_ddrupctl0",
-> > -     "pclk_publ0",
-> > -     "pclk_ddrupctl1",
-> > -     "pclk_publ1",
-> >
-> > These clks needed enable, device node not use this clk, so we mark it as
-> > critical.
-> >
-> > What breaks if you don't enable these clocks?  As far as I can tell
-> > these clocks only need to be enabled while touching memory controller
-> > registers (deep suspend/resume and DDRFreq transitions).  On
-> > Chromebooks everything works fine with these clocks only turned on
-> > when needed.
-> >
-> > If need to enable these clks, ddrupctl0/ddrupctl1/publ0/publ1 clks no driver to handle them, so mark these clk as  critical.
-> 
-> Perhaps it's just a typo, but you say "If need to enable".  I see no
-> evidence that these clocks need to be enabled unless there is code
-> touching memory controller registers.  Thus we don't need to enable
-> them so they don't need to be critical.
-
-yep ... maybe Elaine can clarify in what other activities these clocks
-are needed ... I guess any ddr-scaling code would activate them
-before touching memory-controller-registers.
-
-
-> > -     "pmu_hclk_otg0",
-> >
-> > It's a soc bug, pmu_hclk_otg0 must always on.
-> >
-> > So you said in your previous commit message.  However we've shipped
-> > lots and lots of Chromebooks with this clock off.  Can you explain
-> > what is broken?  Is this only needed for gadget mode (which we don't
-> > use), for instance?
-> >
-> > test case:
-> >
-> > recovery test,  < 1 hour , system crash.
-> >
-> > log:
-> >
-> > [  127.569629] I[0:      swapper/0:    0] GOTGCTL        @0xFFFFFF8000B80000 : 0x00400010
-> > [  127.569644] I[0:      swapper/0:    0] GOTGINT        @0xFFFFFF8000B80004 : 0x00400010
-> > [  127.569659] I[0:      swapper/0:    0] GAHBCFG        @0xFFFFFF8000B80008 : 0x00400010
-> > [  127.569673] I[0:      swapper/0:    0] GUSBCFG        @0xFFFFFF8000B8000C : 0x00400010
-> > [  127.569688] I[0:      swapper/0:    0] GRSTCTL        @0xFFFFFF8000B80010 : 0x00400010
-> > [  127.569702] I[0:      swapper/0:    0] GINTSTS        @0xFFFFFF8000B80014 : 0x00400010
-> > [  127.569718] I[0:      swapper/0:    0] GINTMSK        @0xFFFFFF8000B80018 : 0x00400010
-> > [  127.569733] I[0:      swapper/0:    0] GRXSTSR        @0xFFFFFF8000B8001C : 0x00400010
-> > [  127.569748] I[0:      swapper/0:    0] GRXFSIZ        @0xFFFFFF8000B80024 : 0x00400010
-> 
-> I don't know what a "recovery test" is and I don't understand your logs.
-> 
-> Can you explain we do not run into this on Chromebooks?
-> 
-> 
-> > reason:
-> >
-> > USB OTG controller supports turning off most logic power, and then only one PMU module is left. This clock cannot be turned off, which is similar to the always on module in USB OTG.
-> 
-> Can't you just add a patch to the dwc2 driver to have it grab this
-> clock?  I assume this clock doesn't need to be turned on unless you're
-> using the OTG contoller in a certain way?
-
-So far we don't really know where the clock in question is sitting
-in the clock hirarchy. For example the kernel got a new interconnect
-framework recently, so handling non-device clocks in a device may haunt
-us later on.
-
-@Elaine: could you elaborate what pmu_hclk_otg0 actually is for please?
-
-
-> NOTE: nowhere in your responses did you talk about why
-> "hsicphy12m_xin12m" needed to be marked as IGNORE_UNUSED.  I guess
-> you're OK with removing that?
-
-
-Thanks
-Heiko
+Ck9uIDQvMTIvMTkgMTI6MTIgQU0sIE5pY29sYXMgRHVmcmVzbmUgd3JvdGU6Cj4gTGUgamV1ZGkg
+MTEgYXZyaWwgMjAxOSDDoCAwOToyOSArMDgwMCwgUmFuZHkgTGkgYSDDqWNyaXQgOgo+Pj4gV2Ug
+YWdyZWVkIHdpdGggTWF4aW1lIGFuZCBFemVxdWllbCB0aGF0IHRoZXJlIHdpbGwgYmUgdHdvIGRp
+c3RpbmN0Cj4+PiBmb3JtYXQsIFY0TDJfUElYX0ZNVF9IMjY0X1NMSUNFX1JBVyBhbmQgVjRMMl9Q
+SVhfRk1UX0gyNjRfU0xJQ0VfQU5ORVhCLgo+Pj4gQW5kIHVzZXItcGFjZSB3aWxsIHRha2UgY2Fy
+ZSBvZiBwcm92aWRpbmcgdGhlIHJpZ2h0IGluZm9ybWF0aW9uLgo+PiBJIGhhdmUgbm8gaWRlYSBv
+biB3aGF0IGRvZXMgdGhlIFNMSUNFX1JBVyBtZWFuIGhlcmUuCj4gSWYgeW91IHNraXAgdGhlIE5B
+TCBoZWFkZXJzLCBTTElDRV9SQVcgaXMgd2hhdCBpcyBsZWZ0LiBUaGlzIGlzIGV4YWN0bHkKPiB3
+aGF0IGlzIHBhc3NlZCBpbiBWQUFQSSwgYW5kIHdoYXQgbWFrZXMgUm9ja2NoaXAgSFcgZGlmZmlj
+dWx0IHRvCj4gc3VwcG9ydCB0aHJvdWdoIHRoaXMgYWJzdHJhY3Rpb24gYXBwYXJlbnRseS4gVGhl
+IHJhdGlvbmFsZSBpcyB0aGF0IGFsbAo+IHRoZSBpbmZvcm1hdGlvbiB0aGF0IHdhcyBpbiB0aGUg
+cmVzdCBvZiB0aGUgYml0c3RyZWFtIGlzIGFscmVhZHkgcGFzc2VkCj4gaW4gQyBzdHJ1Y3R1cmVz
+LiBJZiB0aGlzIGlzbid0IHRoZSBjYXNlLCBsZXQgbWUga25vdywgc2luY2UgaXQgd291bGQgYmUK
+PiBhIGJhZCBuYW1lIGluZGVlZC4KClllcywgaXQgaXMgY2FsbGVkIGFzIEFWQzEgYXMgdXN1YWwu
+IFNMSUNFX1JBVyBkb2Vzbid0IGluZGljYXRlIGFueXRoaW5nLCAKaXQgY2FuIGJlIEFWQ0NDIG9y
+IHNvbWV0aGluZyBlbHNlLgoKWW91IG11c3QgZm9sbG93IGEgc3RhbmRhcmQgYXMgdGhlcmUgaXMu
+Cgo+Cj4gUGF1bCBhc2tlZCB1cyB3aHkgbm90IGFsd2F5cyByZXF1aXJlZCBBTk5FWC1CIHdpdGgg
+c3RhcnQgY29kZSBhcyBhCj4gc3VwZXIgc2V0LiBUaGlzIGlzIG5vdCB2ZXJ5IGVmZmljaWVudCwg
+c2luY2UgaXQgbWVhbnMgdGhhdCB3aGVuZXZlciB5b3UKPiBoYXZlIGEgc3RyZWFtIGZyb20gYW4g
+SVNPTVA0IG1lZGlhLCB5b3UgZW5kdXAgaGF2aW5nIHRvIGNvbnZlcnQgdGhlIEFWQwo+IGhlYWRl
+cnMgaW50byBBTk5FWC1CIHN0YXJ0IGNvZGUsIGFuZCB5b3UgbG9vc2UgdGhlIG9wdGltaXphdGlv
+biB0aGUgQVZDCj4gaGVhZGVyIHByb3ZpZGVzIChBVkMgZm9ybWF0IGlzIGJhc2ljYWxseSBqdXN0
+IGEgTkFMIHR5cGUgYW5kIGl0J3Mgc2l6ZSwKPiBzbyB5b3UgY2FuIG5hdmlnYXRlIHRocm91Z2gg
+dGhlIHN0cmVhbSB3aXRoIHZlcnkgbGl0dGxlIHJlYWRzKS4gVGhlCgpCdXQgaWYgYSBmcmFtZSBp
+cyBjb25zaXN0ZWQgd2l0aCBtb3JlIHRoYW4gMSBzbGljZSwgaXQgd29uJ3Qgd29yaywgCmFsdGhv
+dWdoIGl0IGlzIG5vdCBzdXBwb3J0ZWQgYnkgY3VycmVudCBWNEwyIGZyYW1ld29yay4gQW55d2F5
+IHRoZSBzdGFydCAKY29kZSBpcyBuZWNlc3NhcnkgaW4gQW5uZXggQiBvZiB0aGUgSC4yNjQgU1BF
+QyBvciBoYXJkd2FyZSBjYW4ndCBoYW5kbGUgCm1vcmUgdGhhbiAxIG5hbCB1bml0IGZvciBhbnkg
+cHVycG9zZS4KCkFkZGluZyBhIDI0Yml0cyBvciAzMmJpdHMgaGVhZGVyIHdvbid0IGNvc3QgbXVj
+aCBDUFUgdGltZSwgbXVjaCBsZXNzIAp0aGFuIGJpdHN0cmVhbSByZWNvbnN0cnVjdGlvbi4KCkFu
+eXdheSB5b3Ugd29uJ3Qgbm90IG9ubHkgbWVldCB0aGlzIHByb2JsZW0gd2l0aCBILjI2NCBidXQg
+YWxzbyBILjI2NS4KCj4gb3RoZXIgdGhpbmcgaXMgdGhlIG1lbW9yeSBhbGlnbm1lbnQgdGhlIHJl
+cXVpcmUgbmVlZHMuIEkgc3VzcGVjdCB0aGF0CkkgYW0gc3VyZSBiaXRzdHJlYW0gZG9lc24ndCBy
+ZXF1aXJlZCBhbnkgbWVtb3J5IGFsaWdubWVudC4KPiBpZiB0aGUgSFcgcmVxdWlyZSBTTElDRV9S
+QVcsIHlvdSBjYW5ub3QganVzdCBwYXNzIGEgcmFuZG9tIHBvaW50ZXIKPiBvZmZzZXQuIFNvIHlv
+dSdkIG5lZWQgYW5vdGhlciBidWZmZXIgdGhlIHVzZXJzcGFjZSBkYXRhIHRvLiBIaWRkZW4KSSB0
+aGluayB5b3UgY2FuLCBoYXJkd2FyZSB1c3VhbGx5IGhhcyBhIHJlZ2lzdGVyIHRvIGxldCBpdCBz
+a2lwIGEgZmV3IApiaXRzIG9mIHRoZSBpbnB1dCBzdHJlYW0uCj4gY29waWVzIGluIGRyaXZlcnMg
+YXJlIHF1aXRlIGJhZCwgaXQncyBiZXR0ZXIgdG8gbGVhdmUgaXQgdG8gdXNlcnNwYWNlCj4gd2hl
+biB3ZSBjYW4gaW4gbXkgb3Bpbmlvbi4KPgo+IE5vdyB0aGF0IEknbSBzYXlpbmcgdGhhdCBvdXQt
+bG91ZCwgSSB3b25kZXIgaG93IHRoZSAib25lIHY0bDIgYnVmZmVyCj4gcGVyIGZyYW1lIiByZXN0
+cmljdGlvbiBjYW4gYmUgcmVzcGVjdGVkIGZvciBTTElDRV9SQVcuIFRoZSByZWNlaXZlcgo+IHdv
+dWxkIGhhdmUgbm8gd2F5IHRvIGtub3cgd2hlcmUgZWFjaCBzbGljZXMgYXJlLiBJc24ndCB0aGVy
+ZSBhIGJpZyBmbGF3Cj4gaW4gdGhpcyByZXN0cmljdGlvbiA/IE9yIGRpZCBJIG1pc3MtdW5kZXJz
+dG9vZCB0aGUgZm9ybWF0LCBhbmQKPiBTTElDRV9SQVcgaXMgYSBiYWQgbmFtZSA/Cj4KPj4gQW5u
+ZXggQiBkZXNjcmliZSBhIGJ5dGUgc3RyZWFtIGZvcm1hdCBidXQgaXQgZG9lc24ndCBtZWFuIGl0
+IHNob3VsZAo+PiBzaGlwIHNsaWNlIGRhdGEgd2l0aCBTUFMgb3IgUFBTCj4gU0xJQ0UgbWVhbnMg
+aXQgd29uJ3QgcGFzcyBTUFMgb3IgUFBTIGluLWJhbmQuIE9ubHkgc2xpY2UgTkFMcyBhbmQgcGVy
+Cj4gc2xpY2UgYXV4aWxpYXJ5IGRhdGEgaWYgdGhlcmUgaXMgYW55LiBEbyBSb2NrY2hpcCBuZWVk
+cyB0aGUgb3JpZ2luYWwKPiBTUFMvUFBTIGJpdHN0cmVhbSA/IElmIHNvLCBhbGwgb2YgdGhlbSA/
+IG9yIGp1c3QgdGhlIGFjdGl2YXRlZCBvbmUgPwo+IEFuZCB3aGVuID8KClllcywgSSB0aG91Z2gg
+eW91IGtub3cgdGhhdCwgSSB0YWxrZWQgd2l0aCB5b3UgYmVmb3JlLiBJIHRob3VnaCB0aGF0IGlz
+IAp3aHkgZXplcXVpZWwgd2FudCB0aGlzLgoKQnV0IHRoYXQgU1BTL1BQUyBpcyBub3QgMTAwJSBj
+b21wYXRpYmxlIHdpdGggSVRVIGRvY3VtZW50LgoKPgo+PiBUaGUgcHJvYmxlbSBvZiBib290bGlu
+IGRlbW8gaXMgaXQgZm9sbG93cyBBbm5leCBCIGJ1dCB3aXRob3UgYSBzdGFydAo+PiBjb2RlICEh
+ISEKPiBXZSdsbCBmaXggdGhhdCBpZiB3ZSBkZWNpZGUgdG8gdXNlIHRoaXMgZm9yIHRlc3Rpbmcu
+IEl0IHdhcyBhbGwgZWFybHkKPiBhbmQgdW5zcGVjaWZpZWQuIFNMSUNFX0FOTkVYQiB3aWxsIGhh
+dmUgYSBzdGFydCBjb2RlIG9mIGNvdXJzZSwgYXMgSQpCZXNpZGVzIEkgZm91bmQgaXRzIFNQUy9Q
+UFMgZG9lc24ndCBtYXRjaCB0aGUgb3JpZ2luYWwgZmlsZSwgSSBkaWRuJ3QgCm1ha2UgdGhpcyBj
+bGVhcmx5IGluIHRoZSBwcmV2aW91cyBlbWFpbC4KPiBkb24ndCBzZWUgaG93IHlvdSBjYW4gY2Fs
+bCB0aGlzIEFOTkVYQiBvdGhlcndpc2UuIEFuZCBJJ20gcHJldHR5IHN1cmUKPiB0aGUgcmVhc29u
+IFJvY2tjaGlwIG5lZWQgaXQgaXMgdG8gYmUgYWJsZSB0byBzcGxpdCB0aGUgc2xpY2VzICh3ZSBu
+ZWVkCj4gdG8ga2VlcCBpbiBtaW5kIHRoYXQgbXVsdGlwbGUgc2xpY2VzIHBlciBmcmFtZSBpcyBj
+b21tb25seSB1c2VkIGluCj4gdmlkZW8gY29uZmVyZW5jZSBzdHJlYW1pbmcpLiBUaGUgZm9ybWF0
+IGRvY3VtZW50YXRpb24gc2hvdWxkIGJlIHJlYWxseQo+IGNsZWFyIGFib3V0IHdoYXQgaXQgaXMs
+IGFuZCBpZiBhbm90aGVyIEhXIHdpdGggYW5vdGhlciBmb3JtYXQgY29tZXMKPiB0aGF0IGRvZXMg
+bm90IG1hdGNoLCBpdCBzaG91bGQgZGVmaW5lIGFuZCBkb2N1bWVudCBhIG5ldyBmb3JtYXQuCj4K
+PiBjaGVlcnMsCj4gTmljb2xhcwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
