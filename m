@@ -1,63 +1,152 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: add rk3399 UART DMAs
-Date: Thu, 11 Apr 2019 20:17:36 +0100
-Message-ID: <2e5a1468-9a65-9cc5-f96c-272faeb92ec9@arm.com>
-References: <20190321162244.10080-1-katsuhiro@katsuster.net>
- <14265087.Gbs4YZABJo@phil> <69d5d0fd-00c3-36ae-596e-1b9f9452a07a@arm.com>
- <2463729.IUJ8mRE5Ts@phil> <8d164cfe-c345-aa45-aaf3-11983f9142e5@arm.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 2/3] clk: rockchip: Make rkpwm a critical clock on rk3288
+Date: Thu, 11 Apr 2019 21:20:09 +0200
+Message-ID: <3228689.801YVuiu6B@diego>
+References: <20190409204707.150347-1-dianders@chromium.org> <43b5ef8c-4617-bdc5-7109-35eac228b8f9@rock-chips.com> <CAD=FV=VYYU1ZJfCaNdM--B_8jRRDR3prbmMzj2_3UJO9NbeaPw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <8d164cfe-c345-aa45-aaf3-11983f9142e5@arm.com>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Katsuhiro Suzuki <katsuhiro@katsuster.net>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=VYYU1ZJfCaNdM--B_8jRRDR3prbmMzj2_3UJO9NbeaPw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: "elaine.zhang" <zhangqing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Caesar Wang <caesar.wang@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, linux-clk <linux-clk@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOS0wNC0xMSAyOjQ4IHBtLCBSb2JpbiBNdXJwaHkgd3JvdGU6Cj4gT24gMTEvMDQvMjAx
-OSAxMzo0NiwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4+IEhpIFJvYmluLAo+Pgo+PiBBbSBTYW1z
-dGFnLCAzMC4gTcOkcnogMjAxOSwgMDA6MjQ6MTYgQ0VTVCBzY2hyaWViIFJvYmluIE11cnBoeToK
-Pj4+IE9uIDIwMTktMDMtMjcgMTI6MDAgcG0sIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+Pj4+IEhp
-LAo+Pj4+Cj4+Pj4gQW0gRGllbnN0YWcsIDI2LiBNw6RyeiAyMDE5LCAxNDo0OToxNiBDRVQgc2No
-cmllYiBLYXRzdWhpcm8gU3V6dWtpOgo+Pj4+PiBIZWxsbyBSb2JpbiwKPj4+Pj4KPj4+Pj4gU29y
-cnkgZm9yIGluY29udmVuaWVuY2UuIFNpbmNlIEkgZG9uJ3QgYWRoZXJlIGVuYWJsaW5nIERNQSBm
-b3IgVUFSVHMsCj4+Pj4+IHBsZWFzZSByZXZlcnQgbXkgcGF0Y2ggaWYgeW91IG5lZWQuCj4+Pj4K
-Pj4+PiBJJ3ZlIGRyb3BwZWQgdGhlIHBhdGNoIGZyb20gbXkgcXVldWUgbm93Lgo+Pj4+Cj4+Pj4+
-IEJUVywgdGhlcmUgYXJlIERNQSBwcm9wZXJ0aWVzIGluIFJLMzMyOCBkZXZpY2UtdHJlZSBsaWtl
-IGFzIHRoaXMgCj4+Pj4+IHBhdGNoLgo+Pj4+PiBSSzMzMjggVUFSVCBETUEgY291bGQgbm90IHdv
-cmsgY29ycmVjdGx5IHRvby4uLj8/Cj4+Pj4KPj4+PiBJIHJlbWVtYmVyIFJvY2tjaWhpcCBkbWEt
-Y29udHJvbGxlcnMgaGF2aW5nIGlzc3VlcyB3aXRoIGJ1cnN0LXNpemVzCj4+Pj4gYW5kIGZsdXNo
-aW5nICh0aGVyZSBpcyBhIG5vLWZsdXNocCBvcHRpb24gaW4gcGwzMzApLCBzbyBpdCdzCj4+Pj4g
-cG9zc2libGUgdGhhdCBhbGwgc2hhcmUgdGhlIHNhbWUgZXJyb3IgdXAgdG8gcmszMzk5IGFuZCBy
-azMzMjgKPj4+Pgo+Pj4+IEJ1dCBzbyBmYXIgbm8tb25lIGhhcyBzaG91dGVkIHJlZ2FyZGluZyB0
-aGUgcmszMzI4Lgo+Pj4KPj4+IExldCBtZSBiZSB0aGUgZmlyc3QsIHRoZW4sIEkgZ3Vlc3MgOikK
-Pj4+Cj4+PiBJIGZvdW5kIGFuIGVhc3kgd2F5IHRvIG9ic2VydmUgdGhlIHByb2JsZW0gb24gbXkg
-MzM5OSwgYW5kIEkndmUganVzdAo+Pj4gZmlyZWQgdXAgbXkgMzMyOCBib3ggd2l0aCBhIDUuMCBk
-aXN0cm8ga2VybmVsIHRvIGZpbmQgdGhhdCBpdCBiZWhhdmVzCj4+PiB0aGUgc2FtZS4gQmFzaWNh
-bGx5IGp1c3QgZHVtcCBhIGxhcmdlIHBpbGUgb2YgdGV4dCBpbnRvICdsZXNzJyBvbiB0aGUKPj4+
-IHNlcmlhbCBjb25zb2xlLCBhbmQgc2Nyb2xsIHRocm91Z2ggbGluZS1ieS1saW5lIC0gY2VydGFp
-biBsaW5lcyBnZXQKPj4+IGRyb3BwZWQgZXhjZXB0IGZvciBhIGZldyBjaGFyYWN0ZXJzIGF0IHRo
-ZSBlbmQuCj4+Pgo+Pj4gSSdsbCBzZWUgaWYgSSBjYW4gbmFycm93IGl0IGRvd24gYSBiaXQsIHN0
-YXJ0aW5nIHdpdGggdHJ5aW5nCj4+PiBicm9rZW4tZmx1c2hwLi4uCj4+Cj4+IGRpZCB5b3UgbWFu
-YWdlIHRvIGZpbmQgdGltZSBmb3IgdGhhdCB0ZXN0IHlvdSB3YW50ZWQgdG8gZG8/Cj4gCj4gU2Fk
-bHkgbm90IC0gSSBnb3Qgc29tZXdoYXQgZGlzdHJhY3RlZCBieSB0aGUgZXRoZXJuZXQgdGhpbmcs
-IGFuZCBzaW5jZSAKPiB0aGVuIEkndmUgaGFkIHRvbyBtdWNoIGVsc2UgZ29pbmcgb24gdG8gZm9s
-bG93IHVwIG9uIGFueSBvZiBteSAnZm9yIGZ1bicgCj4gcHJvamVjdHMgOigKClVyZ2gsIGFuZCBp
-dCB0dXJucyBvdXQgd2hhdCBJIHRob3VnaHQgd2VyZSBkcm9wcGVkIGNoYXJhY3RlcnMgc2VlbXMg
-dG8gCmp1c3QgYmUgbXkgY29uc29sZSBoYW5kbGluZyBsaW5lIHdyYXBwaW5nIHdlaXJkbHksIHNv
-IG5vdyBJIGhhdmUgbm8gaWRlYSAKaWYgUkszMzI4IGFjdHVhbGx5IGhhcyBhbiBpc3N1ZSwgYW5k
-IGNvbWluZyB1cCB3aXRoIGEgcmVsaWFibGUgCnJlcHJvZHVjZXIgZm9yIFJLMzM5OSBpcyBnb2lu
-ZyB0byB0YWtlIHNvbWUgdGhvdWdodC4uLgoKUm9iaW4uCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdAps
-aW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
+Hi Doug, Elaine,
+
+Am Donnerstag, 11. April 2019, 16:42:23 CEST schrieb Doug Anderson:
+> On Wed, Apr 10, 2019 at 8:42 PM elaine.zhang <zhangqing@rock-chips.com> wrote:
+> > 在 2019/4/10 下午11:25, Doug Anderson 写道:
+> > > On Tue, Apr 9, 2019 at 11:42 PM elaine.zhang <zhangqing@rock-chips.com> wrote:
+> > >> 在 2019/4/10 上午4:47, Douglas Anderson 写道:
+> > >>> Most rk3288-based boards are derived from the EVB and thus use a PWM
+> > >>> regulator for the logic rail.  However, most rk3288-based boards don't
+> > >>> specify the PWM regulator in their device tree.  We'll deal with that
+> > >>> by making it critical.
+> > >>>
+> > >>> NOTE: it's important to make it critical and not just IGNORE_UNUSED
+> > >>> because all PWMs in the system share the same clock.  We don't want
+> > >>> another PWM user to turn the clock on and off and kill the logic rail.
+> > >>>
+> > >>> This change is in preparation for actually having the PWMs in the
+> > >>> rk3288 device tree actually point to the proper PWM clock.  Up until
+> > >>> now they've all pointed to the clock for the old IP block and they've
+> > >>> all worked due to the fact that rkpwm was IGNORE_UNUSED and that the
+> > >>> clock rates for both clocks were the same.
+> > >>>
+> > >>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > >>> ---
+> > >>>
+> > >>>    drivers/clk/rockchip/clk-rk3288.c | 3 ++-
+> > >>>    1 file changed, 2 insertions(+), 1 deletion(-)
+> > >>>
+> > >>> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+> > >>> index 06287810474e..c3321eade23e 100644
+> > >>> --- a/drivers/clk/rockchip/clk-rk3288.c
+> > >>> +++ b/drivers/clk/rockchip/clk-rk3288.c
+> > >>> @@ -697,7 +697,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+> > >>>        GATE(PCLK_TZPC, "pclk_tzpc", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 3, GFLAGS),
+> > >>>        GATE(PCLK_UART2, "pclk_uart2", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 9, GFLAGS),
+> > >>>        GATE(PCLK_EFUSE256, "pclk_efuse_256", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 10, GFLAGS),
+> > >>> -     GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 11, GFLAGS),
+> > >>> +     GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 11, GFLAGS),
+> > >>>
+> > >>>        /* ddrctrl [DDR Controller PHY clock] gates */
+> > >>>        GATE(0, "nclk_ddrupctl0", "ddrphy", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 4, GFLAGS),
+> > >>> @@ -837,6 +837,7 @@ static const char *const rk3288_critical_clocks[] __initconst = {
+> > >>>        "pclk_alive_niu",
+> > >>>        "pclk_pd_pmu",
+> > >>>        "pclk_pmu_niu",
+> > >>> +     "pclk_rkpwm",
+> > >> pwm have device node, can enable and disable it in the pwm drivers.
+> > >>
+> > >> pwm regulator use pwm node as:
+> > >>
+> > >> pwms = <&pwm2 0 25000 1>
+> > >>
+> > >> when set Logic voltage:
+> > >>
+> > >> pwm_regulator_set_voltage()
+> > >>
+> > >>       --> pwm_apply_state()
+> > >>
+> > >>           -->clk_enable()
+> > >>
+> > >>           -->pwm_enable()
+> > >>
+> > >>           -->pwm_config()
+> > >>
+> > >>           -->pinctrl_select()
+> > >>
+> > >>           --....
+> > >>
+> > >> For mark pclk_rkpwm as critical,do you have any questions, or provides
+> > >> some log or more information.
+> > > Right, if we actually specify the PWM used for the PWM regulator in
+> > > the device tree then there is no need to mark it as a critical clock.
+> > > In fact rk3288-veyron devices boot absolutely fine without marking
+> > > this clock as critical.  Actually, it seems like the way the PWM
+> > > framework works (IIRC it was designed this way specifically to support
+> > > PWM regulators) is that even just specifying that pwm1 is "okay" is
+> > > enough to keep the clock on even if the PWM regulator isn't specified.
+> > >
+> > > ...however...
+> > >
+> > > Take a look at, for instance, the rk3288-evb device tree file.
+> > > Nowhere in there does it specify that the PWM used for the PWM
+> > > regulator should be on.  Presumably that means that if we don't mark
+> > > the clock as critical then rk3288-evb will fail to boot.  That's easy
+> > > for me to fix since I have the rk3288-evb schematics, but what about
+> > > other rk3288 boards?  We could make educated guesses about each of
+> > > them and/or fix things are we hear about breakages.
+> > >
+> > > ...but...
+> > >
+> > > All the above would only be worth doing if we thought someone would
+> > > get some benefit out of it.  I'd bet that pretty much all rk3288-based
+> > > boards use a PWM regulator.  Thus, in reality, everyone will want the
+> > > rkpwm clock on all the time anyway.  In that case going through all
+> > > that extra work / potentially breaking other boards doesn't seem worth
+> > > it.  Just mark the clock as critical.
+> >
+> > I have no problem with changing it like this, but I think it is better
+> > to modify dts:
+> >
+> > vdd_log: vdd-log {
+> >          compatible = "pwm-regulator";
+> >          rockchip,pwm_id = <2>; //for rk uboot
+> >          rockchip,pwm_voltage = <900000>; // for rk uboot
+> >          pwms = <&pwm2 0 25000 1>;
+> >          regulator-name = "vdd_log";
+> >          regulator-min-microvolt = <800000>;//hw logic min voltage
+> >          regulator-max-microvolt = <1400000>;//hw logic max voltage
+> >          regulator-always-on;
+> >          regulator-boot-on;
+> >      };
+> >
+> > Maybe we did not push the modification of this part in rk3288-evb, I
+> > will push to deal with this.(rk3229-evb.dts and rk3399 has been already
+> > pushed)
+> 
+> Heiko: do you have advice for how you'd like this to proceed?  We
+> could certainly land patch #3 in this series without patch #2 and then
+> pick up the pieces as we find boards that no longer boot.  As I've
+> argued I'm not sure that's worth the effort, but I'll leave it up to
+> you.
+
+So I've skimmed through a number of rk3288 device-schematics and
+at least there pwm-based logic-regulator is only part of some of the
+rk808-based designs. All the act8846-based boards use one of its
+regulator-outputs for the logic supply. So this matters for at least the
+veyron-boards and the rk3288-evb ... but not the phycore.
+
+But it also is part of a vital system for veyron and they won't really like
+if somewhere during probe the pwm-clock gets turned off ;-) .
+
+So I tend to agree with Doug and will just apply the make-critical patch.
+If Stephen's "handoff" clock-type [critical until a driver claims it]
+materializes some-time, we can switch to that.
+
+
+Heiko
