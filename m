@@ -1,139 +1,144 @@
-From: Ayaka <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>
-Subject: Re: [PATCH v3 0/9] [WIP]: rockchip mpp for v4l2 video deocder
-Date: Thu, 11 Apr 2019 09:33:06 +0800
-Message-ID: <54F8FAAC-2EFB-408D-963F-B7EB329646FF@soulik.info>
-References: <20190410124226.8612-1-ayaka@soulik.info>
- <7fec1a2101ec1304d35d5c757cc98f916eda20c6.camel@ndufresne.ca>
-Mime-Version: 1.0 (1.0)
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <7fec1a2101ec1304d35d5c757cc98f916eda20c6.camel-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>
-Cc: paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, randy.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jernej.skrabec-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: "elaine.zhang" <zhangqing@rock-chips.com>
+Subject: Re: [PATCH 2/3] clk: rockchip: Make rkpwm a critical clock on rk3288
+Date: Thu, 11 Apr 2019 11:42:49 +0800
+Message-ID: <43b5ef8c-4617-bdc5-7109-35eac228b8f9@rock-chips.com>
+References: <20190409204707.150347-1-dianders@chromium.org>
+ <20190409204707.150347-3-dianders@chromium.org>
+ <50b744cd-b8d9-79ca-ba2d-6765808aa5e5@rock-chips.com>
+ <CAD=FV=Vyy4bNJV=t2yALP3dAnm0-QsR55F5B==uUoi-Tp6b7Vg@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=Vyy4bNJV=t2yALP3dAnm0-QsR55F5B==uUoi-Tp6b7Vg@mail.gmail.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Caesar Wang <caesar.wang@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, linux-clk <linux-clk@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpTZW50IGZyb20gbXkgaVBhZAoKPiBPbiBBcHIgMTEsIDIwMTksIGF0IDEyOjAxIEFNLCBOaWNv
-bGFzIER1ZnJlc25lIDxuaWNvbGFzQG5kdWZyZXNuZS5jYT4gd3JvdGU6Cj4gCj4+IExlIG1lcmNy
-ZWRpIDEwIGF2cmlsIDIwMTkgw6AgMjA6NDIgKzA4MDAsIGF5YWthIGEgw6ljcml0IDoKPj4gRnJv
-bTogUmFuZHkgJ2F5YWthJyBMaSA8YXlha2FAc291bGlrLmluZm8+Cj4+IAo+PiBBbHRob3VnaCBJ
-IHJlYWxseSBoYXRlIHRoZSBiaXRzdHJlYW0gY29uc3RydWN0aW9uIGluIGtlcm5lbCBhbmQgSSB0
-aGluawo+PiBtYW55IHBlb3BsZSByZWFsaXNlIGl0cyBwcm9ibGVtcywgSSBzdGlsbCB0YWtlIHRo
-ZSBhZHZpc2UgZnJvbSBuZHVmcmVzbmUgdG8KPj4gcmVsZWFzZSB0aGlzIHZlcnNpb24uIFRoaXMg
-c2hvdWxkIGJlIHJlbGVhc2VkIGluIGEgZWFybHkgd2VlayBidXQKPj4gSSB3YXMgc2ljayB0aGF0
-IHRpbWUuCj4+IAo+PiBBZnRlciByZXZpZXdlZCB0aGUgZG9jdW1lbnRzIGZyb20gUm9ja2NoaXAg
-YW5kIEkgaGF2ZSBjb25maXJtZWQgdGhhdCB3aXRoCj4+IHNvbWUgcm9ja2NoaXAgc3RhZmYsIHRo
-b3NlIGRvY3VtZW50cyBhcmUgbm90IHVwZGF0ZSB0byBkYXRlLiBTbyB5b3UgbWF5Cj4+IGZpbmQg
-c29tZSBwYXJ0IGlzIGRpZmZlcmVudCBjb21wYXJpbmcgdG8gb2ZmaWNpYWwgZG9jdW1lbnQuCj4+
-IAo+PiBUaGUgdjRsMi1yZXF1ZXN0LXRlc3QgZnJvbSBib290bGluIHdvbid0IHdvcmsuIEl0cyBz
-bGljZSBkYXRhIGRvZXNuJ3QKPj4gaGF2ZSBhIHN0YXJ0IGNvZGUgd2hpY2ggbWFraW5nIGl0IG5v
-dCBhIGNvbXBsZXRlIG5hbCB1bml0LiBBbmQgSSBmb3VuZAo+PiBpdHMgc2xpY2UgaGVhZGVyIGlu
-Zm9ybWF0aW9uIG1heSBub3QgYmUgY29ycmVjdC4gRXZlbiBjb21wYXJpbmcgdG8gdGhlCj4+IEJp
-ZyBidWNrIGJ1bm55J3Mgb3JpZ2luIGZpbGVzLCBuZWl0aGVyIHRoZSBzbGljZSBkYXRhIG5vciBz
-ZXF1ZW5jZQo+PiBpbmZvcm1hdGlvbiBtYXRjaGVzLgo+IAo+IFRoZSB1bi1vcmRlcmVkIHJlZmxp
-c3QgdGFibGUgZ2VuZXJhdGVkIGJ5IHRoZXNlIHRlc3RzIG9yIHRoZSB2NGwyIFZBQVBJCj4gZHJp
-dmVyIGFyZSBrbm93biB0byBiZSBicm9rZW4uIFRoZXkgaGF2ZSBuZXZlciBiZWVuIHRlc3RlZC4g
-RXplcXVpZWwKPiBhbmQgSSBhcmUgZ29pbmcgdG8gdmFsaWRhdGUgYWdhaW5zdCBNVlBQIHVzZXJz
-cGFjZSBpZiB0aGlzIHVuLW9yZGVyZWQKPiBsaXN0IGVmZmVjdGl2ZWx5IHdoYXQgd2UgdGhpbmsg
-aXQgaXMsIGFuZCB3aWxsIHRyeSBhbmQgZ2V0IHNvbWUgZml4ZXMKPiBpbiBhdCBsZWFzdCBvbmUg
-c2VsZWN0ZWQgdXNlcnNwYWNlLiBPdGhlcndpc2UgaXQncyBub3QgcG9zc2libGUgdG8gdGVzdAo+
-IGVhc2lseS4KSSBoYXZlIG5vIGlkZWEgb24gd2hhdCB0aGUgdW4tb3JkZXJlZCBtZWFucywgaGFy
-ZHdhcmUgd291bGQgb25seSBjYXJlIGFib3V0IHRoZSBQT0Mgb2YgYSByZWZlcmVuY2UgZnJhbWUg
-d2hpY2ggd291bGQgbWF0Y2ggaXRzIGxpc3QwKFAgb3IgQikgYW5kIGxpc3QxKEIgc2xpY2UpLgpJ
-IHdvdWxkIHN1Z2dlc3QgdG8gcmVtb3ZlIGRlY29kZV9wYXJhbSBvZiBBVkMgbGF0ZXIsIGFzIGl0
-cyBzbGljZV9wYXJhbSBoYXMgY29udGFpbnMgZW5vdWdoIGluZm9ybWF0aW9uIHRvIGRlY29kZSBh
-IHNsaWNlIGFuZCBpdHMgcmVmZXJlbmNlLgo+IAo+PiAKPj4gSSBleHRyYWN0ZWQgYSBzbGljZSBk
-YXRhIGZyb20gUm9ja2NoaXAgbXBwIHRvIHZlcmlmeSBteSBkcml2ZXIsIGl0IHdvcmsKPj4gZmlu
-ZSwgeW91IGNhbiBmaW5kIGl0IG9uIG15IGdpdGh1Yi4gSSBvbmx5IHZlcmlmaWVkIHRoZSBJIHNs
-aWNlIG5vdywKPj4gSSBoYXZlIG5vdCB2ZXJpZmllZCBQIG9yIEIgc2xpY2UuIEhvcGVmdWxseSBp
-dCB3b3VsZCB3b3JrLgo+IAo+IElmIHlvdSBoYXZlIHNvbWUgaW5mb3JtYXRpb24gdG8gc2hhcmUg
-aXQgd291bGQgYmUgbmljZS4gSSdtIHN1cmUgd2UgY2FuCj4gY29vcGVyYXRlIG9uIHRoaXMgaWYg
-eW91IGFyZSB3aWxsaW5nIHRvLgo+IAo+PiAKPj4gSSBoYXZlIHRoZSBzYW1lIHByb2JsZW0gd2l0
-aCB2NGwyLXJlcXVlc3QtdGVzdCBvbiBIRVZDIGFzIHdlbGwgc28gZXZlbgo+PiB0aGlzIHZlcnNp
-b24gc2hpcHBlZCB3aXRoIEhFVkMgYml0c3RyZWFtIGNvbnN0cnVjdGlvbiwgSSBkaWRuJ3Qga25v
-dwo+PiB3aGV0aGVyIGl0IHdvdWxkIHdvcmsuCj4+IAo+PiBJIG5lZWQgc29tZSB0aW1lIHRvIHBy
-ZXBhcmUgdGhlIHVzZXJzcGFjZSB0b29sIG9yIGl0IGlzIHJlYWxseSBoYXJkIGZvcgo+PiBIRVZD
-IHRvIHdyaXRlIHNsaWNlIGluZm8gbWFudWFsbHkuCj4+IAo+PiBDaGFuZ2xvZwo+PiB2MzogYWRk
-IEFWQyBzdXBwb3J0IGZvciBya3ZkZWMKPj4gdjI6IGFkZCBNUEVHLTIgc3VwcG9ydCBmb3IgdmRw
-dTIKPj4gdjE6IGluaXRhbCB2ZXJzaW9uCj4+IAo+PiBSYW5keSBMaSAoNyk6Cj4+ICBzdGFnaW5n
-OiB2aWRlbzogcm9ja2NoaXA6IGFkZCB2NGwyIGRlY29kZXIKPj4gIHJvY2tjaGlwOiBtcHA6IHJr
-dmRlYzogcmJzcAo+PiAgW1dJUF06IHJvY2tjaGlwOiBtcHA6IEhFVkMgZGVjb2RlciBjdHJsIGRh
-dGEKPj4gIFtURVNUXTogcm9ja2NoaXA6IG1wcDogc3VwcG9ydCBxdGFibGUKPj4gIFtURVNUXTog
-cm9ja2NoaXA6IG1wcDogdmRwdTI6IG1vdmUgcXRhYmxlIHRvIGlucHV0IGJ1ZmZlcgo+PiAgYXJt
-NjQ6IGR0czogcm9ja2NoaXA6IGJvb3N0IGNsb2NrcyBmb3IgcmszMzI4Cj4+ICBhcm02NDogZHRz
-OiByb2NrY2hpcDogYWRkIHZpZGVvIGNvZGVjIGZvciByazMzMjgKPj4gCj4+IGF5YWthICgyKToK
-Pj4gIFtXSVBdOiByb2NrY2hpcDogbXBwOiBILjI2NCBkZWNvZGVyIGN0cmwgZGF0YQo+PiAgW1RF
-U1RdOiBya3ZkZWM6IHNwc3BwcyBhZGRyZXNzIGFsaWdubWVudAo+PiAKPj4gYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9yazMzMjgtZXZiLmR0cyAgIHwgICAzMiArCj4+IC4uLi9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9yazMzMjgtcm9jazY0LmR0cyB8ICAgMzIgKwo+PiBhcmNoL2FybTY0
-L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMyOC5kdHNpICAgICAgfCAgMTEyICstCj4+IGRyaXZlcnMv
-c3RhZ2luZy9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgICB8ICAgIDIgKwo+PiBkcml2ZXJz
-L3N0YWdpbmcvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICAgfCAgICAxICsKPj4gZHJpdmVy
-cy9zdGFnaW5nL3JvY2tjaGlwLW1wcC9LY29uZmlnICAgICAgICAgIHwgICAzMyArCj4+IGRyaXZl
-cnMvc3RhZ2luZy9yb2NrY2hpcC1tcHAvTWFrZWZpbGUgICAgICAgICB8ICAgMTIgKwo+PiBkcml2
-ZXJzL3N0YWdpbmcvcm9ja2NoaXAtbXBwL21wcF9kZWJ1Zy5oICAgICAgfCAgIDg3ICsKPj4gZHJp
-dmVycy9zdGFnaW5nL3JvY2tjaGlwLW1wcC9tcHBfZGV2X2NvbW1vbi5jIHwgMTM5MCArKysrKysr
-Cj4+IGRyaXZlcnMvc3RhZ2luZy9yb2NrY2hpcC1tcHAvbXBwX2Rldl9jb21tb24uaCB8ICAyMTUg
-Kwo+PiBkcml2ZXJzL3N0YWdpbmcvcm9ja2NoaXAtbXBwL21wcF9kZXZfcmt2ZGVjLmMgfCAgOTI0
-ICsrKysrCj4+IGRyaXZlcnMvc3RhZ2luZy9yb2NrY2hpcC1tcHAvbXBwX2Rldl92ZHB1Mi5jICB8
-ICA2MDcgKysrCj4+IGRyaXZlcnMvc3RhZ2luZy9yb2NrY2hpcC1tcHAvbXBwX3NlcnZpY2UuYyAg
-ICB8ICAxOTcgKwo+PiBkcml2ZXJzL3N0YWdpbmcvcm9ja2NoaXAtbXBwL21wcF9zZXJ2aWNlLmgg
-ICAgfCAgIDM4ICsKPj4gLi4uL3N0YWdpbmcvcm9ja2NoaXAtbXBwL3JrdmRlYy9hdmMtZGF0YS5j
-ICAgIHwgIDIzOSArKwo+PiAuLi4vc3RhZ2luZy9yb2NrY2hpcC1tcHAvcmt2ZGVjL2F2Yy1kYXRh
-LmggICAgfCAgIDQwICsKPj4gZHJpdmVycy9zdGFnaW5nL3JvY2tjaGlwLW1wcC9ya3ZkZWMvYXZj
-LmMgICAgIHwgIDI1OSArKwo+PiBkcml2ZXJzL3N0YWdpbmcvcm9ja2NoaXAtbXBwL3JrdmRlYy9j
-YWJhYy5oICAgfCAzNjE0ICsrKysrKysrKysrKysrKysrCj4+IGRyaXZlcnMvc3RhZ2luZy9yb2Nr
-Y2hpcC1tcHAvcmt2ZGVjL2hhbC5oICAgICB8ICAgNzAgKwo+PiAuLi4vc3RhZ2luZy9yb2NrY2hp
-cC1tcHAvcmt2ZGVjL2hldmMtZGF0YS5jICAgfCAgMjA4ICsKPj4gLi4uL3N0YWdpbmcvcm9ja2No
-aXAtbXBwL3JrdmRlYy9oZXZjLWRhdGEuaCAgIHwgICAyNyArCj4+IGRyaXZlcnMvc3RhZ2luZy9y
-b2NrY2hpcC1tcHAvcmt2ZGVjL2hldmMuYyAgICB8ICAxNjkgKwo+PiBkcml2ZXJzL3N0YWdpbmcv
-cm9ja2NoaXAtbXBwL3JrdmRlYy9yYnNwLmMgICAgfCAgIDk2ICsKPj4gZHJpdmVycy9zdGFnaW5n
-L3JvY2tjaGlwLW1wcC9ya3ZkZWMvcmJzcC5oICAgIHwgICAzMCArCj4+IGRyaXZlcnMvc3RhZ2lu
-Zy9yb2NrY2hpcC1tcHAvcmt2ZGVjL3JlZ3MuaCAgICB8ICAzNzcgKysKPj4gZHJpdmVycy9zdGFn
-aW5nL3JvY2tjaGlwLW1wcC92ZHB1Mi9hdmMuYyAgICAgIHwgIDE2NSArCj4+IGRyaXZlcnMvc3Rh
-Z2luZy9yb2NrY2hpcC1tcHAvdmRwdTIvaGFsLmggICAgICB8ICAgNTIgKwo+PiBkcml2ZXJzL3N0
-YWdpbmcvcm9ja2NoaXAtbXBwL3ZkcHUyL21wZWcyLmMgICAgfCAgMjc3ICsrCj4+IGRyaXZlcnMv
-c3RhZ2luZy9yb2NrY2hpcC1tcHAvdmRwdTIvcmVncy5oICAgICB8ICA2NzAgKysrCj4+IGluY2x1
-ZGUvdWFwaS92aWRlby9ya192cHVfc2VydmljZS5oICAgICAgICAgICB8ICAxMDEgKwo+PiAzMCBm
-aWxlcyBjaGFuZ2VkLCAxMDA3MiBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQo+PiBjcmVh
-dGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL3JvY2tjaGlwLW1wcC9LY29uZmlnCj4+IGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvcm9ja2NoaXAtbXBwL01ha2VmaWxlCj4+
-IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvcm9ja2NoaXAtbXBwL21wcF9kZWJ1
-Zy5oCj4+IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvcm9ja2NoaXAtbXBwL21w
-cF9kZXZfY29tbW9uLmMKPj4gY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9yb2Nr
-Y2hpcC1tcHAvbXBwX2Rldl9jb21tb24uaAo+PiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9z
-dGFnaW5nL3JvY2tjaGlwLW1wcC9tcHBfZGV2X3JrdmRlYy5jCj4+IGNyZWF0ZSBtb2RlIDEwMDY0
-NCBkcml2ZXJzL3N0YWdpbmcvcm9ja2NoaXAtbXBwL21wcF9kZXZfdmRwdTIuYwo+PiBjcmVhdGUg
-bW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL3JvY2tjaGlwLW1wcC9tcHBfc2VydmljZS5jCj4+
-IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvcm9ja2NoaXAtbXBwL21wcF9zZXJ2
-aWNlLmgKPj4gY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9yb2NrY2hpcC1tcHAv
-cmt2ZGVjL2F2Yy1kYXRhLmMKPj4gY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9y
-b2NrY2hpcC1tcHAvcmt2ZGVjL2F2Yy1kYXRhLmgKPj4gY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
-cnMvc3RhZ2luZy9yb2NrY2hpcC1tcHAvcmt2ZGVjL2F2Yy5jCj4+IGNyZWF0ZSBtb2RlIDEwMDY0
-NCBkcml2ZXJzL3N0YWdpbmcvcm9ja2NoaXAtbXBwL3JrdmRlYy9jYWJhYy5oCj4+IGNyZWF0ZSBt
-b2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvcm9ja2NoaXAtbXBwL3JrdmRlYy9oYWwuaAo+PiBj
-cmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL3JvY2tjaGlwLW1wcC9ya3ZkZWMvaGV2
-Yy1kYXRhLmMKPj4gY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9yb2NrY2hpcC1t
-cHAvcmt2ZGVjL2hldmMtZGF0YS5oCj4+IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdp
-bmcvcm9ja2NoaXAtbXBwL3JrdmRlYy9oZXZjLmMKPj4gY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
-cnMvc3RhZ2luZy9yb2NrY2hpcC1tcHAvcmt2ZGVjL3Jic3AuYwo+PiBjcmVhdGUgbW9kZSAxMDA2
-NDQgZHJpdmVycy9zdGFnaW5nL3JvY2tjaGlwLW1wcC9ya3ZkZWMvcmJzcC5oCj4+IGNyZWF0ZSBt
-b2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvcm9ja2NoaXAtbXBwL3JrdmRlYy9yZWdzLmgKPj4g
-Y3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9yb2NrY2hpcC1tcHAvdmRwdTIvYXZj
-LmMKPj4gY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9yb2NrY2hpcC1tcHAvdmRw
-dTIvaGFsLmgKPj4gY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9yb2NrY2hpcC1t
-cHAvdmRwdTIvbXBlZzIuYwo+PiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL3Jv
-Y2tjaGlwLW1wcC92ZHB1Mi9yZWdzLmgKPj4gY3JlYXRlIG1vZGUgMTAwNjQ0IGluY2x1ZGUvdWFw
-aS92aWRlby9ya192cHVfc2VydmljZS5oCj4+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+hi,
+
+在 2019/4/10 下午11:25, Doug Anderson 写道:
+> Hi,
+>
+> On Tue, Apr 9, 2019 at 11:42 PM elaine.zhang <zhangqing@rock-chips.com> wrote:
+>> hi,
+>>
+>> 在 2019/4/10 上午4:47, Douglas Anderson 写道:
+>>> Most rk3288-based boards are derived from the EVB and thus use a PWM
+>>> regulator for the logic rail.  However, most rk3288-based boards don't
+>>> specify the PWM regulator in their device tree.  We'll deal with that
+>>> by making it critical.
+>>>
+>>> NOTE: it's important to make it critical and not just IGNORE_UNUSED
+>>> because all PWMs in the system share the same clock.  We don't want
+>>> another PWM user to turn the clock on and off and kill the logic rail.
+>>>
+>>> This change is in preparation for actually having the PWMs in the
+>>> rk3288 device tree actually point to the proper PWM clock.  Up until
+>>> now they've all pointed to the clock for the old IP block and they've
+>>> all worked due to the fact that rkpwm was IGNORE_UNUSED and that the
+>>> clock rates for both clocks were the same.
+>>>
+>>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+>>> ---
+>>>
+>>>    drivers/clk/rockchip/clk-rk3288.c | 3 ++-
+>>>    1 file changed, 2 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+>>> index 06287810474e..c3321eade23e 100644
+>>> --- a/drivers/clk/rockchip/clk-rk3288.c
+>>> +++ b/drivers/clk/rockchip/clk-rk3288.c
+>>> @@ -697,7 +697,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+>>>        GATE(PCLK_TZPC, "pclk_tzpc", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 3, GFLAGS),
+>>>        GATE(PCLK_UART2, "pclk_uart2", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 9, GFLAGS),
+>>>        GATE(PCLK_EFUSE256, "pclk_efuse_256", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 10, GFLAGS),
+>>> -     GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 11, GFLAGS),
+>>> +     GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 11, GFLAGS),
+>>>
+>>>        /* ddrctrl [DDR Controller PHY clock] gates */
+>>>        GATE(0, "nclk_ddrupctl0", "ddrphy", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 4, GFLAGS),
+>>> @@ -837,6 +837,7 @@ static const char *const rk3288_critical_clocks[] __initconst = {
+>>>        "pclk_alive_niu",
+>>>        "pclk_pd_pmu",
+>>>        "pclk_pmu_niu",
+>>> +     "pclk_rkpwm",
+>> pwm have device node, can enable and disable it in the pwm drivers.
+>>
+>> pwm regulator use pwm node as:
+>>
+>> pwms = <&pwm2 0 25000 1>
+>>
+>> when set Logic voltage:
+>>
+>> pwm_regulator_set_voltage()
+>>
+>>       --> pwm_apply_state()
+>>
+>>           -->clk_enable()
+>>
+>>           -->pwm_enable()
+>>
+>>           -->pwm_config()
+>>
+>>           -->pinctrl_select()
+>>
+>>           --....
+>>
+>> For mark pclk_rkpwm as critical,do you have any questions, or provides
+>> some log or more information.
+> Right, if we actually specify the PWM used for the PWM regulator in
+> the device tree then there is no need to mark it as a critical clock.
+> In fact rk3288-veyron devices boot absolutely fine without marking
+> this clock as critical.  Actually, it seems like the way the PWM
+> framework works (IIRC it was designed this way specifically to support
+> PWM regulators) is that even just specifying that pwm1 is "okay" is
+> enough to keep the clock on even if the PWM regulator isn't specified.
+>
+> ...however...
+>
+> Take a look at, for instance, the rk3288-evb device tree file.
+> Nowhere in there does it specify that the PWM used for the PWM
+> regulator should be on.  Presumably that means that if we don't mark
+> the clock as critical then rk3288-evb will fail to boot.  That's easy
+> for me to fix since I have the rk3288-evb schematics, but what about
+> other rk3288 boards?  We could make educated guesses about each of
+> them and/or fix things are we hear about breakages.
+>
+> ...but...
+>
+> All the above would only be worth doing if we thought someone would
+> get some benefit out of it.  I'd bet that pretty much all rk3288-based
+> boards use a PWM regulator.  Thus, in reality, everyone will want the
+> rkpwm clock on all the time anyway.  In that case going through all
+> that extra work / potentially breaking other boards doesn't seem worth
+> it.  Just mark the clock as critical.
+
+I have no problem with changing it like this, but I think it is better 
+to modify dts:
+
+vdd_log: vdd-log {
+         compatible = "pwm-regulator";
+         rockchip,pwm_id = <2>; //for rk uboot
+         rockchip,pwm_voltage = <900000>; // for rk uboot
+         pwms = <&pwm2 0 25000 1>;
+         regulator-name = "vdd_log";
+         regulator-min-microvolt = <800000>;//hw logic min voltage
+         regulator-max-microvolt = <1400000>;//hw logic max voltage
+         regulator-always-on;
+         regulator-boot-on;
+     };
+
+Maybe we did not push the modification of this part in rk3288-evb, I 
+will push to deal with this.(rk3229-evb.dts and rk3399 has been already 
+pushed)
+>
+>
+>
+>
+> -Doug
+>
+>
+>
