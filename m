@@ -1,141 +1,61 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v1 5/6] clk: rockchip: add pll up and down when change pll freq
-Date: Fri, 12 Apr 2019 10:28:53 -0700
-Message-ID: <CAD=FV=XzDZHX7q-h7jAGpoqXyz_C5RJhbZuXo2gM=1kZeAwRUQ@mail.gmail.com>
-References: <1554284549-24916-1-git-send-email-zhangqing@rock-chips.com>
- <1554284649-26764-1-git-send-email-zhangqing@rock-chips.com> <5677286.2uEqRd8HI1@diego>
+Subject: Re: [PATCH v2] drm/rockchip: shutdown drm subsystem on shutdown
+Date: Fri, 12 Apr 2019 10:43:24 -0700
+Message-ID: <CAD=FV=WYLtRqHvqDCx4Yy7gp_AEjAXtTbPzZnqTGKZBoXwCa0Q@mail.gmail.com>
+References: <20190402113753.10118-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5677286.2uEqRd8HI1@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Elaine Zhang <zhangqing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-clk <linux-clk@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, xxx <xxx@rock-chips.com>, xf@rock-chips.com, =?UTF-8?B?6buE5rab?= <huangtao@rock-chips.com>, Brian Norris <briannorris@chromium.org>
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20190402113753.10118-1-heiko@sntech.de>
+Sender: stable-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Sandy Huang <hjc@rock-chips.com>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Vicente Bergas <vicencb@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>, Marc Zyngier <marc.zyngier@arm.com>, Brian Norris <briannorris@chromium.org>, Doug Anderson <dianders@chromium.org>, stable@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Fri, Apr 12, 2019 at 5:16 AM Heiko St=C3=BCbner <heiko@sntech.de> wrote:
+On Tue, Apr 2, 2019 at 4:38 AM Heiko Stuebner <heiko@sntech.de> wrote:
 >
-> Hi Elaine,
+> From: Vicente Bergas <vicencb@gmail.com>
 >
-> Am Mittwoch, 3. April 2019, 11:44:09 CEST schrieb Elaine Zhang:
-> > set pll sequence:
-> >       ->set pll to slow mode or other plls
-> >       ->set pll down
-> >       ->set pll params
-> >       ->set pll up
-> >       ->wait pll lock status
-> >       ->set pll to normal mode
-> >
-> > To slove the system error:
-> > wait_pll_lock: timeout waiting for pll to lock
-> > pll_set_params: pll update unsucessful,
-> >               trying to restore old params
+> As explained by Robin Murphy:
+> > the IOMMU shutdown disables paging, so if the VOP is still
+> > scanning out then that will result in whatever IOVAs it was using now going
+> > straight out onto the bus as physical addresses.
 >
-> Can you tell me on what soc this was experienced?
+> We had a more radical approach before in commit
+> 7f3ef5dedb14 ("drm/rockchip: Allow driver to be shutdown on reboot/kexec")
+> but that resulted in new warnings and oopses on shutdown on rk3399
+> chromeos devices.
 >
-> The patch includes rk3399, but I don't think the CrOS kernel
-> does powerdown the pll when changing the cpu-frequency
-> [added Doug and Brian for clarification and possible testing :-) ]
+> So second try is resurrecting Vicentes shutdown change which should
+> achieve the same result but in a less drastic way.
+>
+> Fixes: 63238173b2fa ("Revert drm/rockchip: Allow driver to be shutdown on reboot/kexec")
+> Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Cc: Robin Murphy <robin.murphy@arm.com>
+> Cc: Marc Zyngier <marc.zyngier@arm.com>
+> Cc: Brian Norris <briannorris@chromium.org>
+> Cc: Doug Anderson <dianders@chromium.org>
+> Cc: stable@vger.kernel.org
+> Suggested-by: JeffyChen <jeffy.chen@rock-chips.com>
+> Suggested-by: Robin Murphy <robin.murphy@arm.com>
+> Signed-off-by: Vicente Bergas <vicencb@gmail.com>
+> [adapted commit message to explain the history]
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
 
-As far as I can tell you're right.  We don't seem to have it and I'm
-not aware of problems.
+I picked this back to the Chrome OS 4.19 kernel and tried it on
+rk3288-veyron-jerry.  Rebooting caused no complaints (I confirmed this
+code was running by adding a printk).
 
+I plugged in to an HDMI monitor.  Rebooting caused no complaints.
 
-> But I did find that the M0 code in ATF does actually power-down the
-> PLL and follow your outline from above. So essentially I'd just like
-> a thumbs up from chromeos people if they have the time.
+I then let the display idle off (just in case that mattered).  Again
+no complaints.
 
-It does seem like it should be fine in general to do it.  It's one
-extra step but presumably it should be fine.
+Thus, in case it's helpful:
 
-In general the Rockchip PLL programming guidelines have always been a
-bit funny.  Looking at the version of the doc I have, I see phrases
-like "The PLL programming support changed on-the-fly and the PLL will
-simply slew to the new frequency" which makes me feel like you're
-supposed to be able to change the PLL frequency without powering down.
-This is repeated in another part of the manual which talks about the
-glitches that can happen when changing the PLL on the fly: it doesn't
-say not to do it, it just says to expect glitches (which can be
-avoided by changing the parent first).
-
-...but then in another section of the doc it talks about asserting PD
-before doing a frequency change!  :-P
-
-Though in that same section it says: "Release PD after no less than
-1us from the time it was asserted."  Even though probably 1 us has
-passed, I'd still expect a udelay(1) to be explicit here.
-
-
-One other thing that concerns me a little about this patch is that I
-wonder if it is legal to call rockchip_rk3399_pll_set_params() while
-the PLL is off.  AKA is it OK to change the rate of a PLL while it is
-not enabled?  I'm not saying that this would have worked before
-(actually, you might end up hitting the exact error "timeout waiting
-for pll to lock"), but now it seems even worse because we'll
-implicitly turning on the PLL.  ...a part of me wonders if this is the
-root cause of the problem Elaine's patch is trying to solve: that some
-code was trying to set the rate of a PLL before enabling it.
-
-
-So, tl; dr:
-* I doubt this patch is needed on rk3399, but it probably won't hurt.
-* If you're going to do the power down, you should add the udelay()
-* There's a bug on 3036.  See below.
-* You should change your patch so it doesn't enable the PLL if it
-wasn't already enabled.
-
-
-> > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> > ---
-> >  drivers/clk/rockchip/clk-pll.c | 19 +++++++++++++++++++
-> >  1 file changed, 19 insertions(+)
-> >
-> > diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-=
-pll.c
-> > index dd0433d4753e..9fe1227e77e9 100644
-> > --- a/drivers/clk/rockchip/clk-pll.c
-> > +++ b/drivers/clk/rockchip/clk-pll.c
-> > @@ -208,6 +208,11 @@ static int rockchip_rk3036_pll_set_params(struct r=
-ockchip_clk_pll *pll,
-> >               rate_change_remuxed =3D 1;
-> >       }
-> >
-> > +     /* set pll power down */
-> > +     writel(HIWORD_UPDATE(1,
-> > +                          RK3036_PLLCON1_PWRDOWN, 13),
-
-This does not do what you think it does.  It should be:
-
-HIWORD_UPDATE(RK3036_PLLCON1_PWRDOWN,
-     RK3036_PLLCON1_PWRDOWN, 0)
-
-...without that my compiler yells at me:
-
-signed shift result (0x40000000000) requires 44 bits to represent
-
-...and the compiler is, indeed, correct.
-
-
-> > +            pll->reg_base + RK3036_PLLCON(1));
-> > +
-> >       /* update pll values */
-> >       writel_relaxed(HIWORD_UPDATE(rate->fbdiv, RK3036_PLLCON0_FBDIV_MA=
-SK,
-> >                                         RK3036_PLLCON0_FBDIV_SHIFT) |
-> > @@ -229,6 +234,10 @@ static int rockchip_rk3036_pll_set_params(struct r=
-ockchip_clk_pll *pll,
-> >       pllcon |=3D rate->frac << RK3036_PLLCON2_FRAC_SHIFT;
-> >       writel_relaxed(pllcon, pll->reg_base + RK3036_PLLCON(2));
-> >
-> > +     /* set pll power up */
-> > +     writel(HIWORD_UPDATE(0, RK3036_PLLCON1_PWRDOWN, 13),
-> > +            pll->reg_base + RK3036_PLLCON(1));
-
-In a similar vein, the above should be:
-
-writel(HIWORD_UPDATE(0, RK3036_PLLCON1_PWRDOWN, 0),
-
-...since RK3036_PLLCON1_PWRDOWN already has the shift.
+Tested-by: Douglas Anderson <dianders@chromium.org>
