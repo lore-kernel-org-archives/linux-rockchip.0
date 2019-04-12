@@ -1,52 +1,64 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH] PCI: rockchip: fix bitwise operations on status and
- ROCKCHIP_PCIE_EP_CMD_STATUS_IS
-Date: Fri, 12 Apr 2019 10:51:25 +0100
-Message-ID: <20190412095125.GB8113@red-moon>
-References: <20190330150910.9389-1-colin.king@canonical.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 1/5] clk: rockchip: Turn on "aclk_dmac1" for suspend
+Date: Fri, 12 Apr 2019 12:06:45 +0200
+Message-ID: <17495106.TRDjcDkMKC@diego>
+References: <20190411232157.55125-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190330150910.9389-1-colin.king@canonical.com>
+In-Reply-To: <20190411232157.55125-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Colin King <colin.king@canonical.com>, Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Elaine Zhang <zhangqing@rock-chips.com>, dbasehore@chromium.org, amstan@chromium.org, linux-rockchip@lists.infradead.org, briannorris@chromium.org, mka@chromium.org, ryandcase@chromium.org, Chris Zhong <zyw@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Mar 30, 2019 at 03:09:10PM +0000, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
+Am Freitag, 12. April 2019, 01:21:53 CEST schrieb Douglas Anderson:
+> Experimentally it can be seen that going into deep sleep (specifically
+> setting PMU_CLR_DMA and PMU_CLR_BUS in RK3288_PMU_PWRMODE_CON1)
+> appears to fail unless "aclk_dmac1" is on.  The failure is that the
+> system never signals that it made it into suspend on the GLOBAL_PWROFF
+> pin and it just hangs.
 > 
-> Currently the bitwise operations on the u16 variable 'status' with
-> the setting ROCKCHIP_PCIE_EP_CMD_STATUS_IS are incorrect because
-> ROCKCHIP_PCIE_EP_CMD_STATUS_IS is 1UL<<19 which is wider than the
-> u16 variable.  Fix this by making status a u32.  (Not tested).
+> NOTE that it's confirmed that it's the actual suspend that fails, not
+> one of the earlier calls to read/write registers.  Specifically if you
+> comment out the "PMU_GLOBAL_INT_DISABLE" setting in
+> rk3288_slp_mode_set() and then comment out the "cpu_do_idle()" call in
+> rockchip_lpmode_enter() then you can exercise the whole suspend path
+> without any crashing.
 > 
-> Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
-> ---
->  drivers/pci/controller/pcie-rockchip-ep.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-
-Shawn,
-
-I need your ACK on this patch, thanks.
-
-Lorenzo
-
-> diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-> index a5d799e2dff2..d743b0a48988 100644
-> --- a/drivers/pci/controller/pcie-rockchip-ep.c
-> +++ b/drivers/pci/controller/pcie-rockchip-ep.c
-> @@ -350,7 +350,7 @@ static void rockchip_pcie_ep_assert_intx(struct rockchip_pcie_ep *ep, u8 fn,
->  	struct rockchip_pcie *rockchip = &ep->rockchip;
->  	u32 r = ep->max_regions - 1;
->  	u32 offset;
-> -	u16 status;
-> +	u32 status;
->  	u8 msg_code;
->  
->  	if (unlikely(ep->irq_pci_addr != ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR ||
-> -- 
-> 2.20.1
+> This is currently not a problem with suspend upstream because there is
+> no current way to exercise the deep suspend code.  However, anyone
+> trying to make it work will run into this issue.
 > 
+> This was not a problem on shipping rk3288-based Chromebooks because
+> those devices all ran on an old kernel based on 3.14.  On that kernel
+> "aclk_dmac1" appears to be left on all the time.
+> 
+> There are several ways to skin this problem.
+> 
+> A) We could add "aclk_dmac1" to the list of critical clocks and that
+> apperas to work, but presumably that wastes power.
+> 
+> B) We could keep a list of "struct clk" objects to enable at suspend
+> time in clk-rk3288.c and use the standard clock APIs.
+> 
+> C) We could make the rk3288-pmu driver keep a list of clocks to enable
+> at suspend time.  Presumably this would require a dts and bindings
+> change.
+> 
+> D) We could just whack the clock on in the existing syscore suspend
+> function where we whack a bunch of other clocks.  This is particularly
+> easy because we know for sure that the clock's only parent
+> ("aclk_cpu") is a critical clock so we don't need to do anything more
+> than ungate it.
+> 
+> In this case I have chosen D) because it seemed like the least work,
+> but any of the other options would presumably also work fine.
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+
+applied for 5.2 with Elaine's rb
+
+Thanks
+Heiko
