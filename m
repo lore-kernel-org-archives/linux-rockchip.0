@@ -1,56 +1,69 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] ARM: dts: rockchip: Add dynamic-power-coefficient for rk3288
-Date: Fri, 12 Apr 2019 12:08:21 +0200
-Message-ID: <9063550.zi1cCdPW0A@diego>
-References: <20190412000158.248080-1-mka@chromium.org>
+From: Emil Renner Berthing <kernel-sKpHZLTYfq0@public.gmane.org>
+Subject: [PATCH] spi: rockchip: turn down tx dma bursts
+Date: Fri, 12 Apr 2019 12:53:20 +0200
+Message-ID: <20190412105320.2924-1-kernel@esmil.dk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190412000158.248080-1-mka@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Kaehlcke <mka@chromium.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Emil Renner Berthing <kernel-sKpHZLTYfq0@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 12. April 2019, 02:01:58 CEST schrieb Matthias Kaehlcke:
-> The value was determined with the following method:
-> 
-> - take CPUs 1-3 offline
-> - for each OPP
->   - set cpufreq min and max freq to OPP freq
->   - start dhrystone benchmark
->   - measure CPU power consumption during 10s
->   - calculate Cx for OPPx
->     - Cx = (Px - P1) / (Vx²fx - V1²f1)          [1]
->       using the following units: mW / Ghz / V   [2]
-> - C = avg(C2, ..., Cn)
-> 
-> [1] see commit 4daa001a1773 ("arm64: dts: juno: Add cpu
->      dynamic-power-coefficient information")
-> [2] https://patchwork.kernel.org/patch/10493615/#22158551
-> 
-> FTR, these are the values for the different OPPs:
-> 
-> freq (kHz)   	mV		Px (mW)		Cx
-> 
-> 126000		900		39
-> 216000		900		66		370
-> 312000		900		95		372
-> 408000		900		122		363
-> 600000		900		177		359
-> 696000		950		230		363
-> 816000		1000		297		361
-> 1008000		1050		404		362
-> 1200000		1100		528		362
-> 1416000		1200		770		377
-> 1512000		1300		984		385
-> 1608000		1350		1156		394
-> 
-> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+This fixes tx and bi-directional dma transfers on rk3399-gru-kevin.
 
-I've applied this for 5.2 but moved the new entries
-below the clock properties for some more alphabetic ordering.
+It seems the SPI fifo must have room for 2 bursts when the dma_tx_req
+signal is generated or it might skip some words. This in turn makes
+the rx dma channel never complete for bi-directional transfers.
 
+Fix it by setting tx burst length to fifo_len / 4 and the dma
+watermark to fifo_len / 2.
 
-Heiko
+However the rk3399 TRM says (sic):
+"DMAC support incrementing-address burst and fixed-address burst. But in
+the case of access SPI and UART at byte or halfword size, DMAC only
+support fixed-address burst and the address must be aligned to word."
+
+So this relies on fifo_len being a multiple of 16 such that the
+burst length (= fifo_len / 4) is a multiple of 4 and the addresses
+will be word-aligned.
+
+Fixes: dcfc861d24ec ("spi: rockchip: adjust dma watermark and burstlen")
+Signed-off-by: Emil Renner Berthing <kernel-sKpHZLTYfq0@public.gmane.org>
+---
+ drivers/spi/spi-rockchip.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 3912526ead66..19f6a76f1c07 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -425,7 +425,7 @@ static int rockchip_spi_prepare_dma(struct rockchip_spi *rs,
+ 			.direction = DMA_MEM_TO_DEV,
+ 			.dst_addr = rs->dma_addr_tx,
+ 			.dst_addr_width = rs->n_bytes,
+-			.dst_maxburst = rs->fifo_len / 2,
++			.dst_maxburst = rs->fifo_len / 4,
+ 		};
+ 
+ 		dmaengine_slave_config(master->dma_tx, &txconf);
+@@ -526,7 +526,7 @@ static void rockchip_spi_config(struct rockchip_spi *rs,
+ 	else
+ 		writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_RXFTLR);
+ 
+-	writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_DMATDLR);
++	writel_relaxed(rs->fifo_len / 2, rs->regs + ROCKCHIP_SPI_DMATDLR);
+ 	writel_relaxed(0, rs->regs + ROCKCHIP_SPI_DMARDLR);
+ 	writel_relaxed(dmacr, rs->regs + ROCKCHIP_SPI_DMACR);
+ 
+-- 
+2.21.0
