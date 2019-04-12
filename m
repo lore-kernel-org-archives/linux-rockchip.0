@@ -1,56 +1,44 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 2/5] pinctrl: rockchip: fix leaked of_node references
-Date: Fri, 12 Apr 2019 10:08:25 +0200
-Message-ID: <4822039.BKTqNpLmcE@diego>
-References: <1555048943-39589-1-git-send-email-wen.yang99@zte.com.cn> <1555048943-39589-3-git-send-email-wen.yang99@zte.com.cn>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: Re: [PATCH v3] platform/chrome: cros_ec_spi: Transfer messages at
+ high priority
+Date: Fri, 12 Apr 2019 11:23:19 +0200
+Message-ID: <9fce8b1c-e277-2eeb-4b0d-e6b0e1851419@collabora.com>
+References: <20190403203137.203582-1-dianders@chromium.org>
+ <CA+ASDXNmxspD_3p-BftgySn5mPSYvSTeEXkzNS9B+ReZho-Uyw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1555048943-39589-3-git-send-email-wen.yang99@zte.com.cn>
+In-Reply-To: <CA+ASDXNmxspD_3p-BftgySn5mPSYvSTeEXkzNS9B+ReZho-Uyw@mail.gmail.com>
+Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
-To: Wen Yang <wen.yang99@zte.com.cn>
-Cc: linux-kernel@vger.kernel.org, wang.yi59@zte.com.cn, Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>
+Cc: Benson Leung <bleung@chromium.org>, Alexandru M Stan <amstan@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Simon Glass <sjg@chromium.org>, Guenter Roeck <groeck@chromium.org>, Mark Brown <broonie@kernel.org>, Ryan Case <ryandcase@chromium.org>, Randall Spangler <rspangler@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Linux Kernel <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-Am Freitag, 12. April 2019, 08:02:20 CEST schrieb Wen Yang:
-> The call to of_parse_phandle returns a node pointer with refcount
-> incremented thus it must be explicitly decremented after the last
-> usage.
+On 12/4/19 3:27, Brian Norris wrote:
+> On Wed, Apr 3, 2019 at 1:32 PM Douglas Anderson <dianders@chromium.org> wrote:
+>> +static int cros_ec_xfer_high_pri(struct cros_ec_device *ec_dev,
+>> +                                struct cros_ec_command *ec_msg,
+>> +                                cros_ec_xfer_fn_t fn)
+>> +{
+>> +       struct cros_ec_xfer_work_params params;
+>> +
+>> +       INIT_WORK(&params.work, cros_ec_xfer_high_pri_work);
 > 
-> Detected by coccinelle with the following warnings:
-> ./drivers/pinctrl/pinctrl-rockchip.c:3221:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 3196, but without a corresponding object release within this function.
-> ./drivers/pinctrl/pinctrl-rockchip.c:3223:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 3196, but without a corresponding object release within this function.
-> 
-> Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
-> Cc: Linus Walleij <linus.walleij@linaro.org>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: linux-gpio@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-kernel@vger.kernel.org
-> ---
->  drivers/pinctrl/pinctrl-rockchip.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-> index 16bf21b..e22d387 100644
-> --- a/drivers/pinctrl/pinctrl-rockchip.c
-> +++ b/drivers/pinctrl/pinctrl-rockchip.c
-> @@ -3195,6 +3195,7 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank,
->  
->  		node = of_parse_phandle(bank->of_node->parent,
->  					"rockchip,pmu", 0);
-> +		of_node_put(node);
->  		if (!node) {
->  			if (of_address_to_resource(bank->of_node, 1, &res)) {
->  				dev_err(info->dev, "cannot find IO resource for bank\n");
+> Sorry for the late review, but this should have been
+> INIT_WORK_ONSTACK(). Should it be a new patch, or is this in a
+> non-rebasing tree yet?
 > 
 
-hmm, the conditional does still use the node pointer, so the of_node_put
-should probably be below the whole if clause?
+No need to resend, I'll do the modification myself and push again.
 
+Thanks,
+ Enric
 
-Heiko
+> Otherwise, looks fine to me:
+> 
+> Reviewed-by: Brian Norris <briannorris@chromium.org>
+> 
