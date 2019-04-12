@@ -1,69 +1,71 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH 3/5] ARM: dts: rockchip: Add DDR retention/poweroff to rk3288-veyron hogs
-Date: Thu, 11 Apr 2019 16:21:55 -0700
-Message-ID: <20190411232157.55125-3-dianders@chromium.org>
-References: <20190411232157.55125-1-dianders@chromium.org>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: [PATCH] ARM: dts: rockchip: Add dynamic-power-coefficient for rk3288
+Date: Thu, 11 Apr 2019 17:01:58 -0700
+Message-ID: <20190412000158.248080-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190411232157.55125-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
-Cc: dbasehore@chromium.org, amstan@chromium.org, linux-rockchip@lists.infradead.org, briannorris@chromium.org, mka@chromium.org, ryandcase@chromium.org, Chris Zhong <zyw@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: devicetree@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Even though upstream Linux doesn't yet go into deep enough suspend to
-get DDR into self refresh, there is no harm in setting these pins up.
-They'll only actually do something if we go into a deeper suspend but
-leaving them configed always is fine.
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
-
- arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi | 4 ++++
- arch/arm/boot/dts/rk3288-veyron.dtsi            | 4 ++++
- 2 files changed, 8 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-index 72c4754032e9..b9cc90f0f25c 100644
---- a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-@@ -229,6 +229,8 @@
- &pinctrl {
- 	pinctrl-0 = <
- 		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
- 		&global_pwroff
- 
- 		/* Wake only */
-@@ -236,6 +238,8 @@
- 	>;
- 	pinctrl-1 = <
- 		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
- 		&global_pwroff
- 
- 		/* Sleep only */
-diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
-index 5c67acc3e6d8..279d7f4ecce0 100644
---- a/arch/arm/boot/dts/rk3288-veyron.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
-@@ -451,10 +451,14 @@
- 	pinctrl-names = "default", "sleep";
- 	pinctrl-0 = <
- 		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
- 		&global_pwroff
- 	>;
- 	pinctrl-1 = <
- 		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
- 		&global_pwroff
- 	>;
- 
--- 
-2.21.0.392.gf8f6787159e-goog
+VGhlIHZhbHVlIHdhcyBkZXRlcm1pbmVkIHdpdGggdGhlIGZvbGxvd2luZyBtZXRob2Q6CgotIHRh
+a2UgQ1BVcyAxLTMgb2ZmbGluZQotIGZvciBlYWNoIE9QUAogIC0gc2V0IGNwdWZyZXEgbWluIGFu
+ZCBtYXggZnJlcSB0byBPUFAgZnJlcQogIC0gc3RhcnQgZGhyeXN0b25lIGJlbmNobWFyawogIC0g
+bWVhc3VyZSBDUFUgcG93ZXIgY29uc3VtcHRpb24gZHVyaW5nIDEwcwogIC0gY2FsY3VsYXRlIEN4
+IGZvciBPUFB4CiAgICAtIEN4ID0gKFB4IC0gUDEpIC8gKFZ4wrJmeCAtIFYxwrJmMSkgICAgICAg
+ICAgWzFdCiAgICAgIHVzaW5nIHRoZSBmb2xsb3dpbmcgdW5pdHM6IG1XIC8gR2h6IC8gViAgIFsy
+XQotIEMgPSBhdmcoQzIsIC4uLiwgQ24pCgpbMV0gc2VlIGNvbW1pdCA0ZGFhMDAxYTE3NzMgKCJh
+cm02NDogZHRzOiBqdW5vOiBBZGQgY3B1CiAgICAgZHluYW1pYy1wb3dlci1jb2VmZmljaWVudCBp
+bmZvcm1hdGlvbiIpClsyXSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEwNDkz
+NjE1LyMyMjE1ODU1MQoKRlRSLCB0aGVzZSBhcmUgdGhlIHZhbHVlcyBmb3IgdGhlIGRpZmZlcmVu
+dCBPUFBzOgoKZnJlcSAoa0h6KSAgIAltVgkJUHggKG1XKQkJQ3gKCjEyNjAwMAkJOTAwCQkzOQoy
+MTYwMDAJCTkwMAkJNjYJCTM3MAozMTIwMDAJCTkwMAkJOTUJCTM3Mgo0MDgwMDAJCTkwMAkJMTIy
+CQkzNjMKNjAwMDAwCQk5MDAJCTE3NwkJMzU5CjY5NjAwMAkJOTUwCQkyMzAJCTM2Mwo4MTYwMDAJ
+CTEwMDAJCTI5NwkJMzYxCjEwMDgwMDAJCTEwNTAJCTQwNAkJMzYyCjEyMDAwMDAJCTExMDAJCTUy
+OAkJMzYyCjE0MTYwMDAJCTEyMDAJCTc3MAkJMzc3CjE1MTIwMDAJCTEzMDAJCTk4NAkJMzg1CjE2
+MDgwMDAJCTEzNTAJCTExNTYJCTM5NAoKU2lnbmVkLW9mZi1ieTogTWF0dGhpYXMgS2FlaGxja2Ug
+PG1rYUBjaHJvbWl1bS5vcmc+Ci0tLQpJIGNvdWxkbid0IGZpbmQgYW55IHJlYWxseSBjb21wcmVo
+ZW5zaXZlIGluZm9ybWF0aW9uIG9uIGRldGVybWluaW5nCnRoZSBkeW5hbWljLXBvd2VyLWNvZWZm
+aWNpZW50LCB0aGUgbWV0aG9kIHVzZWQgaXMgbXkgdW5kZXJzdGFuZGluZwptb3N0bHkgZGVyaXZl
+ZCBmcm9tIHRoZSBzb3VyY2VzIG1lbnRpb25lZCBhYm92ZSwgdGhlIHJlc3VsdGluZyB2YWx1ZQpp
+cyB3aXRoaW4gYSByZWFzb25hYmxlIHJhbmdlIGFuZCB0aGUgcmFuZ2Ugb2YgdGhlIGludGVybWVk
+aWF0ZSBDeAp2YWx1ZXMgaXMgY29uc2lzdGVudC4gSWYgc29tZW9uZSBrbm93cyBiZXR0ZXIgYW5k
+IHRoaW5ncyBzaG91bGQgYmUKZG9uZSBkaWZmZXJlbnRseSBwbGVhc2Ugc2hhcmUgeW91ciBrbm93
+bGVkZ2UgOikKLS0tCiBhcmNoL2FybS9ib290L2R0cy9yazMyODguZHRzaSB8IDQgKysrKwogMSBm
+aWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3Qv
+ZHRzL3JrMzI4OC5kdHNpIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LmR0c2kKaW5kZXggMjNl
+OWM1MjUzMDE5Li5mMGQ5MmIwNDVjNTcgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtL2Jvb3QvZHRzL3Jr
+MzI4OC5kdHNpCisrKyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC5kdHNpCkBAIC02MSw2ICs2
+MSw3IEBACiAJCQlyZWcgPSA8MHg1MDA+OwogCQkJcmVzZXRzID0gPCZjcnUgU1JTVF9DT1JFMD47
+CiAJCQlvcGVyYXRpbmctcG9pbnRzLXYyID0gPCZjcHVfb3BwX3RhYmxlPjsKKwkJCWR5bmFtaWMt
+cG93ZXItY29lZmZpY2llbnQgPSA8MzcwPjsKIAkJCSNjb29saW5nLWNlbGxzID0gPDI+OyAvKiBt
+aW4gZm9sbG93ZWQgYnkgbWF4ICovCiAJCQljbG9jay1sYXRlbmN5ID0gPDQwMDAwPjsKIAkJCWNs
+b2NrcyA9IDwmY3J1IEFSTUNMSz47CkBAIC03MSw2ICs3Miw3IEBACiAJCQlyZWcgPSA8MHg1MDE+
+OwogCQkJcmVzZXRzID0gPCZjcnUgU1JTVF9DT1JFMT47CiAJCQlvcGVyYXRpbmctcG9pbnRzID0g
+PCZjcHVfb3BwX3RhYmxlPjsKKwkJCWR5bmFtaWMtcG93ZXItY29lZmZpY2llbnQgPSA8MzcwPjsK
+IAkJCSNjb29saW5nLWNlbGxzID0gPDI+OyAvKiBtaW4gZm9sbG93ZWQgYnkgbWF4ICovCiAJCQlj
+bG9jay1sYXRlbmN5ID0gPDQwMDAwPjsKIAkJCWNsb2NrcyA9IDwmY3J1IEFSTUNMSz47CkBAIC04
+MSw2ICs4Myw3IEBACiAJCQlyZWcgPSA8MHg1MDI+OwogCQkJcmVzZXRzID0gPCZjcnUgU1JTVF9D
+T1JFMj47CiAJCQlvcGVyYXRpbmctcG9pbnRzID0gPCZjcHVfb3BwX3RhYmxlPjsKKwkJCWR5bmFt
+aWMtcG93ZXItY29lZmZpY2llbnQgPSA8MzcwPjsKIAkJCSNjb29saW5nLWNlbGxzID0gPDI+OyAv
+KiBtaW4gZm9sbG93ZWQgYnkgbWF4ICovCiAJCQljbG9jay1sYXRlbmN5ID0gPDQwMDAwPjsKIAkJ
+CWNsb2NrcyA9IDwmY3J1IEFSTUNMSz47CkBAIC05MSw2ICs5NCw3IEBACiAJCQlyZWcgPSA8MHg1
+MDM+OwogCQkJcmVzZXRzID0gPCZjcnUgU1JTVF9DT1JFMz47CiAJCQlvcGVyYXRpbmctcG9pbnRz
+ID0gPCZjcHVfb3BwX3RhYmxlPjsKKwkJCWR5bmFtaWMtcG93ZXItY29lZmZpY2llbnQgPSA8Mzcw
+PjsKIAkJCSNjb29saW5nLWNlbGxzID0gPDI+OyAvKiBtaW4gZm9sbG93ZWQgYnkgbWF4ICovCiAJ
+CQljbG9jay1sYXRlbmN5ID0gPDQwMDAwPjsKIAkJCWNsb2NrcyA9IDwmY3J1IEFSTUNMSz47Ci0t
+IAoyLjIxLjAuMzkyLmdmOGY2Nzg3MTU5ZS1nb29nCgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGlu
+dXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
