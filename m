@@ -1,73 +1,52 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] clk: rockchip: rk3288: Limit use of USB PHY clock to USB
-Date: Fri, 12 Apr 2019 11:30:37 +0200
-Message-ID: <2029012.W0xZ3ly3fY@diego>
-References: <20190411175917.173566-1-mka@chromium.org> <3787637.WUkDPpUsF8@diego> <20190412001657.GV112750@google.com>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH] PCI: rockchip: fix bitwise operations on status and
+ ROCKCHIP_PCIE_EP_CMD_STATUS_IS
+Date: Fri, 12 Apr 2019 10:51:25 +0100
+Message-ID: <20190412095125.GB8113@red-moon>
+References: <20190330150910.9389-1-colin.king@canonical.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190412001657.GV112750@google.com>
+Content-Disposition: inline
+In-Reply-To: <20190330150910.9389-1-colin.king@canonical.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Kaehlcke <mka@chromium.org>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>
+To: Colin King <colin.king@canonical.com>, Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 12. April 2019, 02:16:57 CEST schrieb Matthias Kaehlcke:
-> Hi Heiko,
+On Sat, Mar 30, 2019 at 03:09:10PM +0000, Colin King wrote:
+> From: Colin Ian King <colin.king@canonical.com>
 > 
-> On Thu, Apr 11, 2019 at 09:03:07PM +0200, Heiko Stübner wrote:
-> > Hi Matthias,
-> > 
-> > Am Donnerstag, 11. April 2019, 19:59:17 CEST schrieb Matthias Kaehlcke:
-> > > The USB PHY clock can be configured as (grand) parent of uart0_sclk and
-> > > sclk_gpu. It has been observed that UART0 doesn't work reliably in high
-> > > speed mode with the PHY clock as input when certain USB devices are
-> > > plugged to the USB HOST1 port (see https://crrev.com/c/320543).
-> > > 
-> > > Prefix the name of the PHY clock with a '.' in the non-USB muxes to
-> > > effectively remove the clock as input from these muxes.
-> > > 
-> > > Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
-> > > ---
-> > >  drivers/clk/rockchip/clk-rk3288.c | 4 ++--
-> > >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > > 
-> > > diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-> > > index 5a67b7869960..677bc5485201 100644
-> > > --- a/drivers/clk/rockchip/clk-rk3288.c
-> > > +++ b/drivers/clk/rockchip/clk-rk3288.c
-> > > @@ -200,8 +200,8 @@ PNAME(mux_aclk_cpu_src_p)	= { "cpll_aclk_cpu", "gpll_aclk_cpu" };
-> > >  PNAME(mux_pll_src_cpll_gpll_p)		= { "cpll", "gpll" };
-> > >  PNAME(mux_pll_src_npll_cpll_gpll_p)	= { "npll", "cpll", "gpll" };
-> > >  PNAME(mux_pll_src_cpll_gpll_npll_p)	= { "cpll", "gpll", "npll" };
-> > > -PNAME(mux_pll_src_cpll_gpll_usb480m_p)	= { "cpll", "gpll", "usbphy480m_src" };
-> > > -PNAME(mux_pll_src_cpll_gll_usb_npll_p)	= { "cpll", "gpll", "usbphy480m_src", "npll" };
-> > > +PNAME(mux_pll_src_cpll_gpll_usb480m_p)	= { "cpll", "gpll", ".usbphy480m_src" };
-> > > +PNAME(mux_pll_src_cpll_gll_usb_npll_p)	= { "cpll", "gpll", ".usbphy480m_src", "npll" };
-> > 
-> > In general I like to have things like the clock-tree described fully
-> > and let the kernel handle correct sourcing ... but:
-> > 
-> > As you write this seems like a systemic problem when just connecting
-> > random peripherals can create unstable clock source frequencies,
-> > so I tend to agree here ... but:
-> > 
-> > Can we please find a more "talking" name for this ... because as with the
-> > above someone will find the "." and submit a fix for it ;-) .
-> > 
-> > So just name it "unstable_dummy" or so?
+> Currently the bitwise operations on the u16 variable 'status' with
+> the setting ROCKCHIP_PCIE_EP_CMD_STATUS_IS are incorrect because
+> ROCKCHIP_PCIE_EP_CMD_STATUS_IS is 1UL<<19 which is wider than the
+> u16 variable.  Fix this by making status a u32.  (Not tested).
 > 
-> I looked for some common pattern, but couldn't find one. I liked the
-> '.' since it leaves the name of the clock mostly intact, just hiding
-> it (similar to a leading '.' in a Linux file system). But I agree that
-> it might not be expressive enough. I still like the idea to keep the
-> clock name around for reference, maybe we could name it
-> "unstable:usbphy480m_src" or similar. If you don't object I'll send a
-> patch with this some time tomorrow.
+> Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
+>  drivers/pci/controller/pcie-rockchip-ep.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-I've just adapted the patch to use the new parent-name you suggested
-and applied it for 5.2 So no need to resend :-) .
+Shawn,
 
-Thanks
-Heiko
+I need your ACK on this patch, thanks.
+
+Lorenzo
+
+> diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
+> index a5d799e2dff2..d743b0a48988 100644
+> --- a/drivers/pci/controller/pcie-rockchip-ep.c
+> +++ b/drivers/pci/controller/pcie-rockchip-ep.c
+> @@ -350,7 +350,7 @@ static void rockchip_pcie_ep_assert_intx(struct rockchip_pcie_ep *ep, u8 fn,
+>  	struct rockchip_pcie *rockchip = &ep->rockchip;
+>  	u32 r = ep->max_regions - 1;
+>  	u32 offset;
+> -	u16 status;
+> +	u32 status;
+>  	u8 msg_code;
+>  
+>  	if (unlikely(ep->irq_pci_addr != ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR ||
+> -- 
+> 2.20.1
+> 
