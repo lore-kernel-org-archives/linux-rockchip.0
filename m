@@ -1,44 +1,73 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: Re: [PATCH v3] platform/chrome: cros_ec_spi: Transfer messages at
- high priority
-Date: Fri, 12 Apr 2019 11:23:19 +0200
-Message-ID: <9fce8b1c-e277-2eeb-4b0d-e6b0e1851419@collabora.com>
-References: <20190403203137.203582-1-dianders@chromium.org>
- <CA+ASDXNmxspD_3p-BftgySn5mPSYvSTeEXkzNS9B+ReZho-Uyw@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] clk: rockchip: rk3288: Limit use of USB PHY clock to USB
+Date: Fri, 12 Apr 2019 11:30:37 +0200
+Message-ID: <2029012.W0xZ3ly3fY@diego>
+References: <20190411175917.173566-1-mka@chromium.org> <3787637.WUkDPpUsF8@diego> <20190412001657.GV112750@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CA+ASDXNmxspD_3p-BftgySn5mPSYvSTeEXkzNS9B+ReZho-Uyw@mail.gmail.com>
-Content-Language: en-GB
+In-Reply-To: <20190412001657.GV112750@google.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>
-Cc: Benson Leung <bleung@chromium.org>, Alexandru M Stan <amstan@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Simon Glass <sjg@chromium.org>, Guenter Roeck <groeck@chromium.org>, Mark Brown <broonie@kernel.org>, Ryan Case <ryandcase@chromium.org>, Randall Spangler <rspangler@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Linux Kernel <linux-kernel@vger.kernel.org>
+To: Matthias Kaehlcke <mka@chromium.org>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On 12/4/19 3:27, Brian Norris wrote:
-> On Wed, Apr 3, 2019 at 1:32 PM Douglas Anderson <dianders@chromium.org> wrote:
->> +static int cros_ec_xfer_high_pri(struct cros_ec_device *ec_dev,
->> +                                struct cros_ec_command *ec_msg,
->> +                                cros_ec_xfer_fn_t fn)
->> +{
->> +       struct cros_ec_xfer_work_params params;
->> +
->> +       INIT_WORK(&params.work, cros_ec_xfer_high_pri_work);
+Am Freitag, 12. April 2019, 02:16:57 CEST schrieb Matthias Kaehlcke:
+> Hi Heiko,
 > 
-> Sorry for the late review, but this should have been
-> INIT_WORK_ONSTACK(). Should it be a new patch, or is this in a
-> non-rebasing tree yet?
+> On Thu, Apr 11, 2019 at 09:03:07PM +0200, Heiko Stübner wrote:
+> > Hi Matthias,
+> > 
+> > Am Donnerstag, 11. April 2019, 19:59:17 CEST schrieb Matthias Kaehlcke:
+> > > The USB PHY clock can be configured as (grand) parent of uart0_sclk and
+> > > sclk_gpu. It has been observed that UART0 doesn't work reliably in high
+> > > speed mode with the PHY clock as input when certain USB devices are
+> > > plugged to the USB HOST1 port (see https://crrev.com/c/320543).
+> > > 
+> > > Prefix the name of the PHY clock with a '.' in the non-USB muxes to
+> > > effectively remove the clock as input from these muxes.
+> > > 
+> > > Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+> > > ---
+> > >  drivers/clk/rockchip/clk-rk3288.c | 4 ++--
+> > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > > 
+> > > diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+> > > index 5a67b7869960..677bc5485201 100644
+> > > --- a/drivers/clk/rockchip/clk-rk3288.c
+> > > +++ b/drivers/clk/rockchip/clk-rk3288.c
+> > > @@ -200,8 +200,8 @@ PNAME(mux_aclk_cpu_src_p)	= { "cpll_aclk_cpu", "gpll_aclk_cpu" };
+> > >  PNAME(mux_pll_src_cpll_gpll_p)		= { "cpll", "gpll" };
+> > >  PNAME(mux_pll_src_npll_cpll_gpll_p)	= { "npll", "cpll", "gpll" };
+> > >  PNAME(mux_pll_src_cpll_gpll_npll_p)	= { "cpll", "gpll", "npll" };
+> > > -PNAME(mux_pll_src_cpll_gpll_usb480m_p)	= { "cpll", "gpll", "usbphy480m_src" };
+> > > -PNAME(mux_pll_src_cpll_gll_usb_npll_p)	= { "cpll", "gpll", "usbphy480m_src", "npll" };
+> > > +PNAME(mux_pll_src_cpll_gpll_usb480m_p)	= { "cpll", "gpll", ".usbphy480m_src" };
+> > > +PNAME(mux_pll_src_cpll_gll_usb_npll_p)	= { "cpll", "gpll", ".usbphy480m_src", "npll" };
+> > 
+> > In general I like to have things like the clock-tree described fully
+> > and let the kernel handle correct sourcing ... but:
+> > 
+> > As you write this seems like a systemic problem when just connecting
+> > random peripherals can create unstable clock source frequencies,
+> > so I tend to agree here ... but:
+> > 
+> > Can we please find a more "talking" name for this ... because as with the
+> > above someone will find the "." and submit a fix for it ;-) .
+> > 
+> > So just name it "unstable_dummy" or so?
 > 
+> I looked for some common pattern, but couldn't find one. I liked the
+> '.' since it leaves the name of the clock mostly intact, just hiding
+> it (similar to a leading '.' in a Linux file system). But I agree that
+> it might not be expressive enough. I still like the idea to keep the
+> clock name around for reference, maybe we could name it
+> "unstable:usbphy480m_src" or similar. If you don't object I'll send a
+> patch with this some time tomorrow.
 
-No need to resend, I'll do the modification myself and push again.
+I've just adapted the patch to use the new parent-name you suggested
+and applied it for 5.2 So no need to resend :-) .
 
-Thanks,
- Enric
-
-> Otherwise, looks fine to me:
-> 
-> Reviewed-by: Brian Norris <briannorris@chromium.org>
-> 
+Thanks
+Heiko
