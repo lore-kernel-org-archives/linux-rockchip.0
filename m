@@ -1,74 +1,31 @@
-From: Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH] clk: rockchip: rk3288: Limit use of USB PHY clock to USB
-Date: Thu, 11 Apr 2019 17:16:57 -0700
-Message-ID: <20190412001657.GV112750@google.com>
-References: <20190411175917.173566-1-mka@chromium.org>
- <3787637.WUkDPpUsF8@diego>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v3] platform/chrome: cros_ec_spi: Transfer messages at
+ high priority
+Date: Thu, 11 Apr 2019 18:27:17 -0700
+Message-ID: <CA+ASDXNmxspD_3p-BftgySn5mPSYvSTeEXkzNS9B+ReZho-Uyw@mail.gmail.com>
+References: <20190403203137.203582-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <3787637.WUkDPpUsF8@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190403203137.203582-1-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Benson Leung <bleung@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Alexandru M Stan <amstan@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Simon Glass <sjg@chromium.org>, Guenter Roeck <groeck@chromium.org>, Mark Brown <broonie@kernel.org>, Ryan Case <ryandcase@chromium.org>, Randall Spangler <rspangler@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Linux Kernel <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgpPbiBUaHUsIEFwciAxMSwgMjAxOSBhdCAwOTowMzowN1BNICswMjAwLCBIZWlr
-byBTdMO8Ym5lciB3cm90ZToKPiBIaSBNYXR0aGlhcywKPiAKPiBBbSBEb25uZXJzdGFnLCAxMS4g
-QXByaWwgMjAxOSwgMTk6NTk6MTcgQ0VTVCBzY2hyaWViIE1hdHRoaWFzIEthZWhsY2tlOgo+ID4g
-VGhlIFVTQiBQSFkgY2xvY2sgY2FuIGJlIGNvbmZpZ3VyZWQgYXMgKGdyYW5kKSBwYXJlbnQgb2Yg
-dWFydDBfc2NsayBhbmQKPiA+IHNjbGtfZ3B1LiBJdCBoYXMgYmVlbiBvYnNlcnZlZCB0aGF0IFVB
-UlQwIGRvZXNuJ3Qgd29yayByZWxpYWJseSBpbiBoaWdoCj4gPiBzcGVlZCBtb2RlIHdpdGggdGhl
-IFBIWSBjbG9jayBhcyBpbnB1dCB3aGVuIGNlcnRhaW4gVVNCIGRldmljZXMgYXJlCj4gPiBwbHVn
-Z2VkIHRvIHRoZSBVU0IgSE9TVDEgcG9ydCAoc2VlIGh0dHBzOi8vY3JyZXYuY29tL2MvMzIwNTQz
-KS4KPiA+IAo+ID4gUHJlZml4IHRoZSBuYW1lIG9mIHRoZSBQSFkgY2xvY2sgd2l0aCBhICcuJyBp
-biB0aGUgbm9uLVVTQiBtdXhlcyB0bwo+ID4gZWZmZWN0aXZlbHkgcmVtb3ZlIHRoZSBjbG9jayBh
-cyBpbnB1dCBmcm9tIHRoZXNlIG11eGVzLgo+ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBNYXR0aGlh
-cyBLYWVobGNrZSA8bWthQGNocm9taXVtLm9yZz4KPiA+IC0tLQo+ID4gIGRyaXZlcnMvY2xrL3Jv
-Y2tjaGlwL2Nsay1yazMyODguYyB8IDQgKystLQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2Vy
-dGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2Ns
-ay9yb2NrY2hpcC9jbGstcmszMjg4LmMgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMjg4
-LmMKPiA+IGluZGV4IDVhNjdiNzg2OTk2MC4uNjc3YmM1NDg1MjAxIDEwMDY0NAo+ID4gLS0tIGEv
-ZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzI4OC5jCj4gPiArKysgYi9kcml2ZXJzL2Nsay9y
-b2NrY2hpcC9jbGstcmszMjg4LmMKPiA+IEBAIC0yMDAsOCArMjAwLDggQEAgUE5BTUUobXV4X2Fj
-bGtfY3B1X3NyY19wKQk9IHsgImNwbGxfYWNsa19jcHUiLCAiZ3BsbF9hY2xrX2NwdSIgfTsKPiA+
-ICBQTkFNRShtdXhfcGxsX3NyY19jcGxsX2dwbGxfcCkJCT0geyAiY3BsbCIsICJncGxsIiB9Owo+
-ID4gIFBOQU1FKG11eF9wbGxfc3JjX25wbGxfY3BsbF9ncGxsX3ApCT0geyAibnBsbCIsICJjcGxs
-IiwgImdwbGwiIH07Cj4gPiAgUE5BTUUobXV4X3BsbF9zcmNfY3BsbF9ncGxsX25wbGxfcCkJPSB7
-ICJjcGxsIiwgImdwbGwiLCAibnBsbCIgfTsKPiA+IC1QTkFNRShtdXhfcGxsX3NyY19jcGxsX2dw
-bGxfdXNiNDgwbV9wKQk9IHsgImNwbGwiLCAiZ3BsbCIsICJ1c2JwaHk0ODBtX3NyYyIgfTsKPiA+
-IC1QTkFNRShtdXhfcGxsX3NyY19jcGxsX2dsbF91c2JfbnBsbF9wKQk9IHsgImNwbGwiLCAiZ3Bs
-bCIsICJ1c2JwaHk0ODBtX3NyYyIsICJucGxsIiB9Owo+ID4gK1BOQU1FKG11eF9wbGxfc3JjX2Nw
-bGxfZ3BsbF91c2I0ODBtX3ApCT0geyAiY3BsbCIsICJncGxsIiwgIi51c2JwaHk0ODBtX3NyYyIg
-fTsKPiA+ICtQTkFNRShtdXhfcGxsX3NyY19jcGxsX2dsbF91c2JfbnBsbF9wKQk9IHsgImNwbGwi
-LCAiZ3BsbCIsICIudXNicGh5NDgwbV9zcmMiLCAibnBsbCIgfTsKPiAKPiBJbiBnZW5lcmFsIEkg
-bGlrZSB0byBoYXZlIHRoaW5ncyBsaWtlIHRoZSBjbG9jay10cmVlIGRlc2NyaWJlZCBmdWxseQo+
-IGFuZCBsZXQgdGhlIGtlcm5lbCBoYW5kbGUgY29ycmVjdCBzb3VyY2luZyAuLi4gYnV0Ogo+IAo+
-IEFzIHlvdSB3cml0ZSB0aGlzIHNlZW1zIGxpa2UgYSBzeXN0ZW1pYyBwcm9ibGVtIHdoZW4ganVz
-dCBjb25uZWN0aW5nCj4gcmFuZG9tIHBlcmlwaGVyYWxzIGNhbiBjcmVhdGUgdW5zdGFibGUgY2xv
-Y2sgc291cmNlIGZyZXF1ZW5jaWVzLAo+IHNvIEkgdGVuZCB0byBhZ3JlZSBoZXJlIC4uLiBidXQ6
-Cj4gCj4gQ2FuIHdlIHBsZWFzZSBmaW5kIGEgbW9yZSAidGFsa2luZyIgbmFtZSBmb3IgdGhpcyAu
-Li4gYmVjYXVzZSBhcyB3aXRoIHRoZQo+IGFib3ZlIHNvbWVvbmUgd2lsbCBmaW5kIHRoZSAiLiIg
-YW5kIHN1Ym1pdCBhIGZpeCBmb3IgaXQgOy0pIC4KPiAKPiBTbyBqdXN0IG5hbWUgaXQgInVuc3Rh
-YmxlX2R1bW15IiBvciBzbz8KCkkgbG9va2VkIGZvciBzb21lIGNvbW1vbiBwYXR0ZXJuLCBidXQg
-Y291bGRuJ3QgZmluZCBvbmUuIEkgbGlrZWQgdGhlCicuJyBzaW5jZSBpdCBsZWF2ZXMgdGhlIG5h
-bWUgb2YgdGhlIGNsb2NrIG1vc3RseSBpbnRhY3QsIGp1c3QgaGlkaW5nCml0IChzaW1pbGFyIHRv
-IGEgbGVhZGluZyAnLicgaW4gYSBMaW51eCBmaWxlIHN5c3RlbSkuIEJ1dCBJIGFncmVlIHRoYXQK
-aXQgbWlnaHQgbm90IGJlIGV4cHJlc3NpdmUgZW5vdWdoLiBJIHN0aWxsIGxpa2UgdGhlIGlkZWEg
-dG8ga2VlcCB0aGUKY2xvY2sgbmFtZSBhcm91bmQgZm9yIHJlZmVyZW5jZSwgbWF5YmUgd2UgY291
-bGQgbmFtZSBpdAoidW5zdGFibGU6dXNicGh5NDgwbV9zcmMiIG9yIHNpbWlsYXIuIElmIHlvdSBk
-b24ndCBvYmplY3QgSSdsbCBzZW5kIGEKcGF0Y2ggd2l0aCB0aGlzIHNvbWUgdGltZSB0b21vcnJv
-dy4KClRoYW5rcwoKTWF0dGhpYXMKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+On Wed, Apr 3, 2019 at 1:32 PM Douglas Anderson <dianders@chromium.org> wrote:
+> +static int cros_ec_xfer_high_pri(struct cros_ec_device *ec_dev,
+> +                                struct cros_ec_command *ec_msg,
+> +                                cros_ec_xfer_fn_t fn)
+> +{
+> +       struct cros_ec_xfer_work_params params;
+> +
+> +       INIT_WORK(&params.work, cros_ec_xfer_high_pri_work);
+
+Sorry for the late review, but this should have been
+INIT_WORK_ONSTACK(). Should it be a new patch, or is this in a
+non-rebasing tree yet?
+
+Otherwise, looks fine to me:
+
+Reviewed-by: Brian Norris <briannorris@chromium.org>
