@@ -1,54 +1,86 @@
 From: "elaine.zhang" <zhangqing@rock-chips.com>
-Subject: Re: [PATCH 5/5] ARM: dts: rockchip: vdd_gpu off in suspend for
- rk3288-veyron
-Date: Fri, 12 Apr 2019 09:55:18 +0800
-Message-ID: <70a7fea1-3818-b386-d951-013f94110f73@rock-chips.com>
+Subject: Re: [PATCH 1/5] clk: rockchip: Turn on "aclk_dmac1" for suspend
+Date: Fri, 12 Apr 2019 09:56:57 +0800
+Message-ID: <3ae87289-a359-16cb-69fd-ecf48c17fb8d@rock-chips.com>
 References: <20190411232157.55125-1-dianders@chromium.org>
- <20190411232157.55125-5-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190411232157.55125-5-dianders@chromium.org>
+Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190411232157.55125-1-dianders@chromium.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: dbasehore@chromium.org, amstan@chromium.org, linux-rockchip@lists.infradead.org, briannorris@chromium.org, mka@chromium.org, ryandcase@chromium.org, Chris Zhong <zyw@rock-chips.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Cc: briannorris@chromium.org, amstan@chromium.org, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, dbasehore@chromium.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, mka@chromium.org, ryandcase@chromium.org, Chris Zhong <zyw@rock-chips.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-hi,
-
-ÔÚ 2019/4/12 ÉÏÎç7:21, Douglas Anderson Ð´µÀ:
-> At some point long long ago the downstream GPU driver would crash if
-> we turned the GPU off during suspend.  For some context you can see:
->
-> https://chromium-review.googlesource.com/#/c/215780/5..6/arch/arm/boot/dts/rk3288-pinky-rev2.dts
->
-> At some point in time not too long after that got fixed.
->
-> It's unclear why the GPU is left enabled during suspend on the
-> mainline kernel.  Everything seems fine if I turn this off, so let's
-> do it.
->
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
->
->   arch/arm/boot/dts/rk3288-veyron.dtsi | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
-> index 279d7f4ecce0..1252522392c7 100644
-> --- a/arch/arm/boot/dts/rk3288-veyron.dtsi
-> +++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
-> @@ -217,8 +217,7 @@
->   				regulator-max-microvolt = <1250000>;
->   				regulator-ramp-delay = <6001>;
->   				regulator-state-mem {
-> -					regulator-on-in-suspend;
-> -					regulator-suspend-microvolt = <1000000>;
-> +					regulator-off-in-suspend;
->   				};
->   			};
->   
-
-Reviewed-by: Elaine Zhang<zhangqing@rock-chips.com>
+aGksCgrU2iAyMDE5LzQvMTIgyc/O5zc6MjEsIERvdWdsYXMgQW5kZXJzb24g0LS1wDoKPiBFeHBl
+cmltZW50YWxseSBpdCBjYW4gYmUgc2VlbiB0aGF0IGdvaW5nIGludG8gZGVlcCBzbGVlcCAoc3Bl
+Y2lmaWNhbGx5Cj4gc2V0dGluZyBQTVVfQ0xSX0RNQSBhbmQgUE1VX0NMUl9CVVMgaW4gUkszMjg4
+X1BNVV9QV1JNT0RFX0NPTjEpCj4gYXBwZWFycyB0byBmYWlsIHVubGVzcyAiYWNsa19kbWFjMSIg
+aXMgb24uICBUaGUgZmFpbHVyZSBpcyB0aGF0IHRoZQo+IHN5c3RlbSBuZXZlciBzaWduYWxzIHRo
+YXQgaXQgbWFkZSBpdCBpbnRvIHN1c3BlbmQgb24gdGhlIEdMT0JBTF9QV1JPRkYKPiBwaW4gYW5k
+IGl0IGp1c3QgaGFuZ3MuCj4KPiBOT1RFIHRoYXQgaXQncyBjb25maXJtZWQgdGhhdCBpdCdzIHRo
+ZSBhY3R1YWwgc3VzcGVuZCB0aGF0IGZhaWxzLCBub3QKPiBvbmUgb2YgdGhlIGVhcmxpZXIgY2Fs
+bHMgdG8gcmVhZC93cml0ZSByZWdpc3RlcnMuICBTcGVjaWZpY2FsbHkgaWYgeW91Cj4gY29tbWVu
+dCBvdXQgdGhlICJQTVVfR0xPQkFMX0lOVF9ESVNBQkxFIiBzZXR0aW5nIGluCj4gcmszMjg4X3Ns
+cF9tb2RlX3NldCgpIGFuZCB0aGVuIGNvbW1lbnQgb3V0IHRoZSAiY3B1X2RvX2lkbGUoKSIgY2Fs
+bCBpbgo+IHJvY2tjaGlwX2xwbW9kZV9lbnRlcigpIHRoZW4geW91IGNhbiBleGVyY2lzZSB0aGUg
+d2hvbGUgc3VzcGVuZCBwYXRoCj4gd2l0aG91dCBhbnkgY3Jhc2hpbmcuCj4KPiBUaGlzIGlzIGN1
+cnJlbnRseSBub3QgYSBwcm9ibGVtIHdpdGggc3VzcGVuZCB1cHN0cmVhbSBiZWNhdXNlIHRoZXJl
+IGlzCj4gbm8gY3VycmVudCB3YXkgdG8gZXhlcmNpc2UgdGhlIGRlZXAgc3VzcGVuZCBjb2RlLiAg
+SG93ZXZlciwgYW55b25lCj4gdHJ5aW5nIHRvIG1ha2UgaXQgd29yayB3aWxsIHJ1biBpbnRvIHRo
+aXMgaXNzdWUuCj4KPiBUaGlzIHdhcyBub3QgYSBwcm9ibGVtIG9uIHNoaXBwaW5nIHJrMzI4OC1i
+YXNlZCBDaHJvbWVib29rcyBiZWNhdXNlCj4gdGhvc2UgZGV2aWNlcyBhbGwgcmFuIG9uIGFuIG9s
+ZCBrZXJuZWwgYmFzZWQgb24gMy4xNC4gIE9uIHRoYXQga2VybmVsCj4gImFjbGtfZG1hYzEiIGFw
+cGVhcnMgdG8gYmUgbGVmdCBvbiBhbGwgdGhlIHRpbWUuCj4KPiBUaGVyZSBhcmUgc2V2ZXJhbCB3
+YXlzIHRvIHNraW4gdGhpcyBwcm9ibGVtLgo+Cj4gQSkgV2UgY291bGQgYWRkICJhY2xrX2RtYWMx
+IiB0byB0aGUgbGlzdCBvZiBjcml0aWNhbCBjbG9ja3MgYW5kIHRoYXQKPiBhcHBlcmFzIHRvIHdv
+cmssIGJ1dCBwcmVzdW1hYmx5IHRoYXQgd2FzdGVzIHBvd2VyLgo+Cj4gQikgV2UgY291bGQga2Vl
+cCBhIGxpc3Qgb2YgInN0cnVjdCBjbGsiIG9iamVjdHMgdG8gZW5hYmxlIGF0IHN1c3BlbmQKPiB0
+aW1lIGluIGNsay1yazMyODguYyBhbmQgdXNlIHRoZSBzdGFuZGFyZCBjbG9jayBBUElzLgo+Cj4g
+QykgV2UgY291bGQgbWFrZSB0aGUgcmszMjg4LXBtdSBkcml2ZXIga2VlcCBhIGxpc3Qgb2YgY2xv
+Y2tzIHRvIGVuYWJsZQo+IGF0IHN1c3BlbmQgdGltZS4gIFByZXN1bWFibHkgdGhpcyB3b3VsZCBy
+ZXF1aXJlIGEgZHRzIGFuZCBiaW5kaW5ncwo+IGNoYW5nZS4KPgo+IEQpIFdlIGNvdWxkIGp1c3Qg
+d2hhY2sgdGhlIGNsb2NrIG9uIGluIHRoZSBleGlzdGluZyBzeXNjb3JlIHN1c3BlbmQKPiBmdW5j
+dGlvbiB3aGVyZSB3ZSB3aGFjayBhIGJ1bmNoIG9mIG90aGVyIGNsb2Nrcy4gIFRoaXMgaXMgcGFy
+dGljdWxhcmx5Cj4gZWFzeSBiZWNhdXNlIHdlIGtub3cgZm9yIHN1cmUgdGhhdCB0aGUgY2xvY2sn
+cyBvbmx5IHBhcmVudAo+ICgiYWNsa19jcHUiKSBpcyBhIGNyaXRpY2FsIGNsb2NrIHNvIHdlIGRv
+bid0IG5lZWQgdG8gZG8gYW55dGhpbmcgbW9yZQo+IHRoYW4gdW5nYXRlIGl0Lgo+Cj4gSW4gdGhp
+cyBjYXNlIEkgaGF2ZSBjaG9zZW4gRCkgYmVjYXVzZSBpdCBzZWVtZWQgbGlrZSB0aGUgbGVhc3Qg
+d29yaywKPiBidXQgYW55IG9mIHRoZSBvdGhlciBvcHRpb25zIHdvdWxkIHByZXN1bWFibHkgYWxz
+byB3b3JrIGZpbmUuCj4KPiBTaWduZWQtb2ZmLWJ5OiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVy
+c0BjaHJvbWl1bS5vcmc+Cj4gLS0tCj4KPiAgIGRyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMy
+ODguYyB8IDExICsrKysrKysrKysrCj4gICAxIGZpbGUgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygr
+KQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMyODguYyBiL2Ry
+aXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMyODguYwo+IGluZGV4IDVhNjdiNzg2OTk2MC4uYjI0
+NTM2NzM5M2NkIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMyODgu
+Ywo+ICsrKyBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMyODguYwo+IEBAIC04NTksNiAr
+ODU5LDkgQEAgc3RhdGljIGNvbnN0IGludCByazMyODhfc2F2ZWRfY3J1X3JlZ19pZHNbXSA9IHsK
+PiAgIAlSSzMyODhfQ0xLU0VMX0NPTigxMCksCj4gICAJUkszMjg4X0NMS1NFTF9DT04oMzMpLAo+
+ICAgCVJLMzI4OF9DTEtTRUxfQ09OKDM3KSwKPiArCj4gKwkvKiBXZSB0dXJuIGFjbGtfZG1hYzEg
+b24gZm9yIHN1c3BlbmQ7IHRoaXMgd2lsbCByZXN0b3JlIGl0ICovCj4gKwlSSzMyODhfQ0xLR0FU
+RV9DT04oMTApLAo+ICAgfTsKPiAgIAo+ICAgc3RhdGljIHUzMiByazMyODhfc2F2ZWRfY3J1X3Jl
+Z3NbQVJSQVlfU0laRShyazMyODhfc2F2ZWRfY3J1X3JlZ19pZHMpXTsKPiBAQCAtODc0LDYgKzg3
+NywxNCBAQCBzdGF0aWMgaW50IHJrMzI4OF9jbGtfc3VzcGVuZCh2b2lkKQo+ICAgCQkJCXJlYWRs
+X3JlbGF4ZWQocmszMjg4X2NydV9iYXNlICsgcmVnX2lkKTsKPiAgIAl9Cj4gICAKPiArCS8qCj4g
+KwkgKiBHb2luZyBpbnRvIGRlZXAgc2xlZXAgKHNwZWNpZmljYWxseSBzZXR0aW5nIFBNVV9DTFJf
+RE1BIGluCj4gKwkgKiBSSzMyODhfUE1VX1BXUk1PREVfQ09OMSkgYXBwZWFycyB0byBmYWlsIHVu
+bGVzcwo+ICsJICogImFjbGtfZG1hYzEiIGlzIG9uLgo+ICsJICovCj4gKwl3cml0ZWxfcmVsYXhl
+ZCgxIDw8ICgxMiArIDE2KSwKPiArCQkgICAgICAgcmszMjg4X2NydV9iYXNlICsgUkszMjg4X0NM
+S0dBVEVfQ09OKDEwKSk7Cj4gKwo+ICAgCS8qCj4gICAJICogU3dpdGNoIFBMTHMgb3RoZXIgdGhh
+biBEUExMIChmb3IgU0RSQU0pIHRvIHNsb3cgbW9kZSB0bwo+ICAgCSAqIGF2b2lkIGNyYXNoZXMg
+b24gcmVzdW1lLiBUaGUgTWFzayBST00gb24gdGhlIHN5c3RlbSB3aWxsCgpUaGFuayB5b3UgZm9y
+IHlvdXIgY29ycmVjdGlvbi4KClJldmlld2VkLWJ5OiBFbGFpbmUgWmhhbmc8emhhbmdxaW5nQHJv
+Y2stY2hpcHMuY29tPgoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBs
+aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtYXJtLWtlcm5lbAo=
