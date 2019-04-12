@@ -1,155 +1,85 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v2] clk: rockchip: undo several noc and special clocks as
- critical on rk3288
-Date: Fri, 12 Apr 2019 18:58:34 +0100
-Message-ID: <6d877246-c59a-151c-973e-ad1161417d39@arm.com>
-References: <20190412161747.107107-1-dianders@chromium.org>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: Re: [PATCH] clk: rockchip: rk3288: Limit use of USB PHY clock to USB
+Date: Fri, 12 Apr 2019 11:02:55 -0700
+Message-ID: <20190412180255.GW112750@google.com>
+References: <20190411175917.173566-1-mka@chromium.org>
+ <3787637.WUkDPpUsF8@diego>
+ <20190412001657.GV112750@google.com>
+ <2029012.W0xZ3ly3fY@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190412161747.107107-1-dianders@chromium.org>
-Content-Language: en-GB
+Content-Disposition: inline
+In-Reply-To: <2029012.W0xZ3ly3fY@diego>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
-Cc: Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, mka@chromium.org, ryandcase@chromium.org, Caesar Wang <caesar.wang@rock-chips.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12/04/2019 17:17, Douglas Anderson wrote:
-> This is mostly a revert of commit 55bb6a633c33 ("clk: rockchip: mark
-> noc and some special clk as critical on rk3288") except that we're
-> keeping "pmu_hclk_otg0" as critical still.
+On Fri, Apr 12, 2019 at 11:30:37AM +0200, Heiko Stübner wrote:
+> Am Freitag, 12. April 2019, 02:16:57 CEST schrieb Matthias Kaehlcke:
+> > Hi Heiko,
+> > 
+> > On Thu, Apr 11, 2019 at 09:03:07PM +0200, Heiko Stübner wrote:
+> > > Hi Matthias,
+> > > 
+> > > Am Donnerstag, 11. April 2019, 19:59:17 CEST schrieb Matthias Kaehlcke:
+> > > > The USB PHY clock can be configured as (grand) parent of uart0_sclk and
+> > > > sclk_gpu. It has been observed that UART0 doesn't work reliably in high
+> > > > speed mode with the PHY clock as input when certain USB devices are
+> > > > plugged to the USB HOST1 port (see https://crrev.com/c/320543).
+> > > > 
+> > > > Prefix the name of the PHY clock with a '.' in the non-USB muxes to
+> > > > effectively remove the clock as input from these muxes.
+> > > > 
+> > > > Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+> > > > ---
+> > > >  drivers/clk/rockchip/clk-rk3288.c | 4 ++--
+> > > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > > > 
+> > > > diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+> > > > index 5a67b7869960..677bc5485201 100644
+> > > > --- a/drivers/clk/rockchip/clk-rk3288.c
+> > > > +++ b/drivers/clk/rockchip/clk-rk3288.c
+> > > > @@ -200,8 +200,8 @@ PNAME(mux_aclk_cpu_src_p)	= { "cpll_aclk_cpu", "gpll_aclk_cpu" };
+> > > >  PNAME(mux_pll_src_cpll_gpll_p)		= { "cpll", "gpll" };
+> > > >  PNAME(mux_pll_src_npll_cpll_gpll_p)	= { "npll", "cpll", "gpll" };
+> > > >  PNAME(mux_pll_src_cpll_gpll_npll_p)	= { "cpll", "gpll", "npll" };
+> > > > -PNAME(mux_pll_src_cpll_gpll_usb480m_p)	= { "cpll", "gpll", "usbphy480m_src" };
+> > > > -PNAME(mux_pll_src_cpll_gll_usb_npll_p)	= { "cpll", "gpll", "usbphy480m_src", "npll" };
+> > > > +PNAME(mux_pll_src_cpll_gpll_usb480m_p)	= { "cpll", "gpll", ".usbphy480m_src" };
+> > > > +PNAME(mux_pll_src_cpll_gll_usb_npll_p)	= { "cpll", "gpll", ".usbphy480m_src", "npll" };
+> > > 
+> > > In general I like to have things like the clock-tree described fully
+> > > and let the kernel handle correct sourcing ... but:
+> > > 
+> > > As you write this seems like a systemic problem when just connecting
+> > > random peripherals can create unstable clock source frequencies,
+> > > so I tend to agree here ... but:
+> > > 
+> > > Can we please find a more "talking" name for this ... because as with the
+> > > above someone will find the "." and submit a fix for it ;-) .
+> > > 
+> > > So just name it "unstable_dummy" or so?
+> > 
+> > I looked for some common pattern, but couldn't find one. I liked the
+> > '.' since it leaves the name of the clock mostly intact, just hiding
+> > it (similar to a leading '.' in a Linux file system). But I agree that
+> > it might not be expressive enough. I still like the idea to keep the
+> > clock name around for reference, maybe we could name it
+> > "unstable:usbphy480m_src" or similar. If you don't object I'll send a
+> > patch with this some time tomorrow.
 > 
-> NOTE: turning these clocks off doesn't seem to do a whole lot in terms
-> of power savings (checking the power on the logic rail).  It appears
-> to save maybe 1-2mW.  ...but still it seems like we should turn the
-> clocks off if they aren't needed.
-> 
-> About "pmu_hclk_otg0" (the one clock from the original commit we're
-> still keeping critical) from an email thread:
-> 
->> pmu ahb clock
->>
->> Function: Clock to pmu module when hibernation and/or ADP is
->> enabled. Must be greater than or equal to 30 MHz.
->>
->> If the SOC design does not support hibernation/ADP function, only have
->> hclk_otg, this clk can be switched according to the usage of otg.
->> If the SOC design support hibernation/ADP, has two clocks, hclk_otg and
->> pmu_hclk_otg0.
->> Hclk_otg belongs to the closed part of otg logic, which can be switched
->> according to the use of otg.
->>
->> pmu_hclk_otg0 belongs to the always on part.
->>
->> As for whether pmu_hclk_otg0 can be turned off when otg is not in use,
->> we have not tested. IC suggest make pmu_hclk_otg0 always on.
-> 
-> For the rest of the clocks:
-> 
-> atclk: No documentation about this clock other than that it goes to
-> the CPU.  CPU functions fine without it on.  Maybe needed for JTAG?
+> I've just adapted the patch to use the new parent-name you suggested
+> and applied it for 5.2 So no need to resend :-) .
 
-FWIW, the two brief references in the TRM imply that's the ATB clock, 
-which would make it part of the CoreSight tracing gubbins[1] - I can't 
-see any evidence that RK3288 has an ETR or ETB for self-hosted tracing, 
-so it may well only be relevant for external trace hardware (wherein 
-GRF_SOC_CON7 suggests that it might spew trace data out of the parallel 
-LCD interface pins).
+Pefect, thanks!
 
-> jtag: Presumably this clock is only needed if you're debugging with
-> JTAG.  It doesn't seem like it makes sense to waste power for every
-> rk3288 user.  In any case to do JTAG you'd need private patches to
-> adjust the pinctrl the mux the JTAG out anyway.
-> 
-> pclk_dbg, pclk_core_niu: On veyron Chromebooks we turn these two
-> clocks on only during kernel panics in order to access some coresight
-> registers.  Since nothing in the upstream kernel does this we should
-> be able to leave them off safely.  Maybe also needed for JTAG?
+I don't see the patch in the git.kernel.org repo (nor
+https://lore.kernel.org/patchwork/patch/1060781/), looks like the push
+is still pending.
 
-Similarly, pclk_dbg sounds like the APB clock for the CPU external debug 
-interface[2] (which I suspect is probably somewhere in that "A17_Debug" 
-region at 0xffb80000 that the DT doesn't even go near).
+Cheers
 
-I would imagine that as long as a hardware debugger can establish a 
-JTAG/SWD connection to the DAP, it would then have an initialisation 
-script which knows what values to poke where in order to configure 
-additional pinmux/clocks/CoreSight components/etc. to the appropriate 
-state, so I'd hope that Linux shouldn't have to care about those details 
-either way.
-
-Robin.
-
-[1] http://infocenter.arm.com/help/topic/com.arm.doc.ddi0535b/CHDJFFCH.html
-[2] http://infocenter.arm.com/help/topic/com.arm.doc.ddi0535b/BABBCDGE.html
-
-> hsicphy12m_xin12m: There is no indication of why this clock would need
-> to be turned on for boards that don't use HSIC.
-> 
-> pclk_ddrupctl[0-1], pclk_publ0[0-1]: On veyron Chromebooks we turn
-> these 4 clocks on only when doing DDR transitions and they are off
-> otherwise.  I see no reason why they'd need to be on in the upstream
-> kernel which doesn't support DDRFreq.
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> 
-> Changes in v2:
-> - Now keep pmu_hclk_otg0 as critical.
-> - Updated description since this isn't a clean revert.
-> - PWM patches have landed, so just one patch in the series now.
-> 
->   drivers/clk/rockchip/clk-rk3288.c | 13 ++++---------
->   1 file changed, 4 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-> index f47d514cba36..13668ad59f2e 100644
-> --- a/drivers/clk/rockchip/clk-rk3288.c
-> +++ b/drivers/clk/rockchip/clk-rk3288.c
-> @@ -313,13 +313,13 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
->   	COMPOSITE_NOMUX(0, "aclk_core_mp", "armclk", CLK_IGNORE_UNUSED,
->   			RK3288_CLKSEL_CON(0), 4, 4, DFLAGS | CLK_DIVIDER_READ_ONLY,
->   			RK3288_CLKGATE_CON(12), 6, GFLAGS),
-> -	COMPOSITE_NOMUX(0, "atclk", "armclk", CLK_IGNORE_UNUSED,
-> +	COMPOSITE_NOMUX(0, "atclk", "armclk", 0,
->   			RK3288_CLKSEL_CON(37), 4, 5, DFLAGS | CLK_DIVIDER_READ_ONLY,
->   			RK3288_CLKGATE_CON(12), 7, GFLAGS),
->   	COMPOSITE_NOMUX(0, "pclk_dbg_pre", "armclk", CLK_IGNORE_UNUSED,
->   			RK3288_CLKSEL_CON(37), 9, 5, DFLAGS | CLK_DIVIDER_READ_ONLY,
->   			RK3288_CLKGATE_CON(12), 8, GFLAGS),
-> -	GATE(0, "pclk_dbg", "pclk_dbg_pre", CLK_IGNORE_UNUSED,
-> +	GATE(0, "pclk_dbg", "pclk_dbg_pre", 0,
->   			RK3288_CLKGATE_CON(12), 9, GFLAGS),
->   	GATE(0, "cs_dbg", "pclk_dbg_pre", CLK_IGNORE_UNUSED,
->   			RK3288_CLKGATE_CON(12), 10, GFLAGS),
-> @@ -647,7 +647,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
->   	INVERTER(SCLK_HSADC, "sclk_hsadc", "sclk_hsadc_out",
->   			RK3288_CLKSEL_CON(22), 7, IFLAGS),
->   
-> -	GATE(0, "jtag", "ext_jtag", CLK_IGNORE_UNUSED,
-> +	GATE(0, "jtag", "ext_jtag", 0,
->   			RK3288_CLKGATE_CON(4), 14, GFLAGS),
->   
->   	COMPOSITE_NODIV(SCLK_USBPHY480M_SRC, "usbphy480m_src", mux_usbphy480m_p, 0,
-> @@ -656,7 +656,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
->   	COMPOSITE_NODIV(SCLK_HSICPHY480M, "sclk_hsicphy480m", mux_hsicphy480m_p, 0,
->   			RK3288_CLKSEL_CON(29), 0, 2, MFLAGS,
->   			RK3288_CLKGATE_CON(3), 6, GFLAGS),
-> -	GATE(0, "hsicphy12m_xin12m", "xin12m", CLK_IGNORE_UNUSED,
-> +	GATE(0, "hsicphy12m_xin12m", "xin12m", 0,
->   			RK3288_CLKGATE_CON(13), 9, GFLAGS),
->   	DIV(0, "hsicphy12m_usbphy", "sclk_hsicphy480m", 0,
->   			RK3288_CLKSEL_CON(11), 8, 6, DFLAGS),
-> @@ -837,11 +837,6 @@ static const char *const rk3288_critical_clocks[] __initconst = {
->   	"pclk_alive_niu",
->   	"pclk_pd_pmu",
->   	"pclk_pmu_niu",
-> -	"pclk_core_niu",
-> -	"pclk_ddrupctl0",
-> -	"pclk_publ0",
-> -	"pclk_ddrupctl1",
-> -	"pclk_publ1",
->   	"pmu_hclk_otg0",
->   	/* pwm-regulators on some boards, so handoff-critical later */
->   	"pclk_rkpwm",
-> 
+Matthias
