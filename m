@@ -1,85 +1,127 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: use non-secure timer as broadcast on
- rk3288
-Date: Fri, 12 Apr 2019 18:04:28 +0200
-Message-ID: <6218040.Bsc25Bnu9O@diego>
-References: <20190412160012.13066-1-heiko@sntech.de>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v2] clk: rockchip: undo several noc and special clocks as critical on rk3288
+Date: Fri, 12 Apr 2019 09:17:47 -0700
+Message-ID: <20190412161747.107107-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190412160012.13066-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Caesar Wang <caesar.wang@rock-chips.com>, linux-rockchip@lists.infradead.org, mka@chromium.org, ryandcase@chromium.org, linux-clk@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 12. April 2019, 18:00:12 CEST schrieb Heiko Stuebner:
-> The rk3288 soc has 2 separate timer blocks one with 6 channels and
-> another one with 2 channels that can be set as secure.
-> 
-> Firmware variants using psci might want to make use of that feature
-> making both channels of the secure timer inaccessible for a kernel
-> running in non-secure mode, which affects the timer currently used
-> as broadcast.
-> 
-> Therefore move over to using the other (still unused) timer block
-> for that. The timer clock in the original node was also wrong,
-> as it was pointing to the 6-channel block already, while the clock
-> of the 2ch block gets controlled from the secure-grf.
-> 
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+This is mostly a revert of commit 55bb6a633c33 ("clk: rockchip: mark
+noc and some special clk as critical on rk3288") except that we're
+keeping "pmu_hclk_otg0" as critical still.
 
-And I just realized, that this is probably dumb, as the timers0-5 are in
-cpu powerdomain, while 6+7 are in the alive pd, so probably only the
-secure timers are always on, while 0-5 are likely shutdown during
-suspend.
+NOTE: turning these clocks off doesn't seem to do a whole lot in terms
+of power savings (checking the power on the logic rail).  It appears
+to save maybe 1-2mW.  ...but still it seems like we should turn the
+clocks off if they aren't needed.
 
+About "pmu_hclk_otg0" (the one clock from the original commit we're
+still keeping critical) from an email thread:
 
-> ---
->  arch/arm/boot/dts/rk3288.dtsi | 16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
-> 
-> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-> index a024d1e7e74c..54c408694eac 100644
-> --- a/arch/arm/boot/dts/rk3288.dtsi
-> +++ b/arch/arm/boot/dts/rk3288.dtsi
-> @@ -229,14 +229,6 @@
->  		clock-frequency = <24000000>;
->  	};
->  
-> -	timer: timer@ff810000 {
-> -		compatible = "rockchip,rk3288-timer";
-> -		reg = <0x0 0xff810000 0x0 0x20>;
-> -		interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>;
-> -		clocks = <&xin24m>, <&cru PCLK_TIMER>;
-> -		clock-names = "timer", "pclk";
-> -	};
-> -
->  	display-subsystem {
->  		compatible = "rockchip,display-subsystem";
->  		ports = <&vopl_out>, <&vopb_out>;
-> @@ -714,6 +706,14 @@
->  		status = "disabled";
->  	};
->  
-> +	timer: timer@ff6b0000 {
-> +		compatible = "rockchip,rk3288-timer";
-> +		reg = <0x0 0xff6b0000 0x0 0x20>;
-> +		interrupts = <GIC_SPI 66 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&xin24m>, <&cru PCLK_TIMER>;
-> +		clock-names = "timer", "pclk";
-> +	};
-> +
->  	bus_intmem@ff700000 {
->  		compatible = "mmio-sram";
->  		reg = <0x0 0xff700000 0x0 0x18000>;
-> 
+> pmu ahb clock
+>
+> Function: Clock to pmu module when hibernation and/or ADP is
+> enabled. Must be greater than or equal to 30 MHz.
+>
+> If the SOC design does not support hibernation/ADP function, only have
+> hclk_otg, this clk can be switched according to the usage of otg.
+> If the SOC design support hibernation/ADP, has two clocks, hclk_otg and
+> pmu_hclk_otg0.
+> Hclk_otg belongs to the closed part of otg logic, which can be switched
+> according to the use of otg.
+>
+> pmu_hclk_otg0 belongs to the always on part.
+>
+> As for whether pmu_hclk_otg0 can be turned off when otg is not in use,
+> we have not tested. IC suggest make pmu_hclk_otg0 always on.
+
+For the rest of the clocks:
+
+atclk: No documentation about this clock other than that it goes to
+the CPU.  CPU functions fine without it on.  Maybe needed for JTAG?
+
+jtag: Presumably this clock is only needed if you're debugging with
+JTAG.  It doesn't seem like it makes sense to waste power for every
+rk3288 user.  In any case to do JTAG you'd need private patches to
+adjust the pinctrl the mux the JTAG out anyway.
+
+pclk_dbg, pclk_core_niu: On veyron Chromebooks we turn these two
+clocks on only during kernel panics in order to access some coresight
+registers.  Since nothing in the upstream kernel does this we should
+be able to leave them off safely.  Maybe also needed for JTAG?
+
+hsicphy12m_xin12m: There is no indication of why this clock would need
+to be turned on for boards that don't use HSIC.
+
+pclk_ddrupctl[0-1], pclk_publ0[0-1]: On veyron Chromebooks we turn
+these 4 clocks on only when doing DDR transitions and they are off
+otherwise.  I see no reason why they'd need to be on in the upstream
+kernel which doesn't support DDRFreq.
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+
+Changes in v2:
+- Now keep pmu_hclk_otg0 as critical.
+- Updated description since this isn't a clean revert.
+- PWM patches have landed, so just one patch in the series now.
+
+ drivers/clk/rockchip/clk-rk3288.c | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index f47d514cba36..13668ad59f2e 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -313,13 +313,13 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+ 	COMPOSITE_NOMUX(0, "aclk_core_mp", "armclk", CLK_IGNORE_UNUSED,
+ 			RK3288_CLKSEL_CON(0), 4, 4, DFLAGS | CLK_DIVIDER_READ_ONLY,
+ 			RK3288_CLKGATE_CON(12), 6, GFLAGS),
+-	COMPOSITE_NOMUX(0, "atclk", "armclk", CLK_IGNORE_UNUSED,
++	COMPOSITE_NOMUX(0, "atclk", "armclk", 0,
+ 			RK3288_CLKSEL_CON(37), 4, 5, DFLAGS | CLK_DIVIDER_READ_ONLY,
+ 			RK3288_CLKGATE_CON(12), 7, GFLAGS),
+ 	COMPOSITE_NOMUX(0, "pclk_dbg_pre", "armclk", CLK_IGNORE_UNUSED,
+ 			RK3288_CLKSEL_CON(37), 9, 5, DFLAGS | CLK_DIVIDER_READ_ONLY,
+ 			RK3288_CLKGATE_CON(12), 8, GFLAGS),
+-	GATE(0, "pclk_dbg", "pclk_dbg_pre", CLK_IGNORE_UNUSED,
++	GATE(0, "pclk_dbg", "pclk_dbg_pre", 0,
+ 			RK3288_CLKGATE_CON(12), 9, GFLAGS),
+ 	GATE(0, "cs_dbg", "pclk_dbg_pre", CLK_IGNORE_UNUSED,
+ 			RK3288_CLKGATE_CON(12), 10, GFLAGS),
+@@ -647,7 +647,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+ 	INVERTER(SCLK_HSADC, "sclk_hsadc", "sclk_hsadc_out",
+ 			RK3288_CLKSEL_CON(22), 7, IFLAGS),
+ 
+-	GATE(0, "jtag", "ext_jtag", CLK_IGNORE_UNUSED,
++	GATE(0, "jtag", "ext_jtag", 0,
+ 			RK3288_CLKGATE_CON(4), 14, GFLAGS),
+ 
+ 	COMPOSITE_NODIV(SCLK_USBPHY480M_SRC, "usbphy480m_src", mux_usbphy480m_p, 0,
+@@ -656,7 +656,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+ 	COMPOSITE_NODIV(SCLK_HSICPHY480M, "sclk_hsicphy480m", mux_hsicphy480m_p, 0,
+ 			RK3288_CLKSEL_CON(29), 0, 2, MFLAGS,
+ 			RK3288_CLKGATE_CON(3), 6, GFLAGS),
+-	GATE(0, "hsicphy12m_xin12m", "xin12m", CLK_IGNORE_UNUSED,
++	GATE(0, "hsicphy12m_xin12m", "xin12m", 0,
+ 			RK3288_CLKGATE_CON(13), 9, GFLAGS),
+ 	DIV(0, "hsicphy12m_usbphy", "sclk_hsicphy480m", 0,
+ 			RK3288_CLKSEL_CON(11), 8, 6, DFLAGS),
+@@ -837,11 +837,6 @@ static const char *const rk3288_critical_clocks[] __initconst = {
+ 	"pclk_alive_niu",
+ 	"pclk_pd_pmu",
+ 	"pclk_pmu_niu",
+-	"pclk_core_niu",
+-	"pclk_ddrupctl0",
+-	"pclk_publ0",
+-	"pclk_ddrupctl1",
+-	"pclk_publ1",
+ 	"pmu_hclk_otg0",
+ 	/* pwm-regulators on some boards, so handoff-critical later */
+ 	"pclk_rkpwm",
+-- 
+2.21.0.392.gf8f6787159e-goog
