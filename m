@@ -1,113 +1,76 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 1/3] Revert "clk: rockchip: mark noc and some special clk
- as critical on rk3288"
-Date: Fri, 12 Apr 2019 08:41:18 -0700
-Message-ID: <CAD=FV=V8OdOCd819i51WnBSo=C=Y7dqBtH1gTpZiVhnNWn4OJg@mail.gmail.com>
-References: <20190409204707.150347-1-dianders@chromium.org>
- <1491b5f1-e9f9-5718-76e5-0a49814ed76d@rock-chips.com> <CAD=FV=Ue3C3gMWx9hnQr=+LU77xdemLbsWozFZoCuQAACjiCUg@mail.gmail.com>
- <1820193.6uR021mFLB@diego> <1f61e93d-c1d9-4438-de0e-d65c7eb248bf@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: use non-secure timer as broadcast on
+ rk3288
+Date: Fri, 12 Apr 2019 18:00:12 +0200
+Message-ID: <20190412160012.13066-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1f61e93d-c1d9-4438-de0e-d65c7eb248bf@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: "elaine.zhang" <zhangqing@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Caesar Wang <caesar.wang@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, linux-clk <linux-clk@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+The rk3288 soc has 2 separate timer blocks one with 6 channels and
+another one with 2 channels that can be set as secure.
 
-On Thu, Apr 11, 2019 at 6:43 PM elaine.zhang <zhangqing@rock-chips.com> wro=
-te:
-> >>> -     "pmu_hclk_otg0",
-> >>>
-> >>> It's a soc bug, pmu_hclk_otg0 must always on.
-> >>>
-> >>> So you said in your previous commit message.  However we've shipped
-> >>> lots and lots of Chromebooks with this clock off.  Can you explain
-> >>> what is broken?  Is this only needed for gadget mode (which we don't
-> >>> use), for instance?
-> >>>
-> >>> test case:
-> >>>
-> >>> recovery test,  < 1 hour , system crash.
-> >>>
-> >>> log:
-> >>>
-> >>> [  127.569629] I[0:      swapper/0:    0] GOTGCTL        @0xFFFFFF800=
-0B80000 : 0x00400010
-> >>> [  127.569644] I[0:      swapper/0:    0] GOTGINT        @0xFFFFFF800=
-0B80004 : 0x00400010
-> >>> [  127.569659] I[0:      swapper/0:    0] GAHBCFG        @0xFFFFFF800=
-0B80008 : 0x00400010
-> >>> [  127.569673] I[0:      swapper/0:    0] GUSBCFG        @0xFFFFFF800=
-0B8000C : 0x00400010
-> >>> [  127.569688] I[0:      swapper/0:    0] GRSTCTL        @0xFFFFFF800=
-0B80010 : 0x00400010
-> >>> [  127.569702] I[0:      swapper/0:    0] GINTSTS        @0xFFFFFF800=
-0B80014 : 0x00400010
-> >>> [  127.569718] I[0:      swapper/0:    0] GINTMSK        @0xFFFFFF800=
-0B80018 : 0x00400010
-> >>> [  127.569733] I[0:      swapper/0:    0] GRXSTSR        @0xFFFFFF800=
-0B8001C : 0x00400010
-> >>> [  127.569748] I[0:      swapper/0:    0] GRXFSIZ        @0xFFFFFF800=
-0B80024 : 0x00400010
-> >> I don't know what a "recovery test" is and I don't understand your log=
-s.
-> >>
-> >> Can you explain we do not run into this on Chromebooks?
-> >>
-> >>
-> >>> reason:
-> >>>
-> >>> USB OTG controller supports turning off most logic power, and then on=
-ly one PMU module is left. This clock cannot be turned off, which is simila=
-r to the always on module in USB OTG.
-> >> Can't you just add a patch to the dwc2 driver to have it grab this
-> >> clock?  I assume this clock doesn't need to be turned on unless you're
-> >> using the OTG contoller in a certain way?
-> > So far we don't really know where the clock in question is sitting
-> > in the clock hirarchy. For example the kernel got a new interconnect
-> > framework recently, so handling non-device clocks in a device may haunt
-> > us later on.
-> >
-> > @Elaine: could you elaborate what pmu_hclk_otg0 actually is for please?
->
-> Doug:
->
-> Recovry test: Regular factory tests, including restart, adb debugging,
-> clear data/factory Settings, and clear cache.
-> I'm not clear whether the test was added by chromebooks.
->
-> Heiko:
->
-> pmu_hclk_otg0=EF=BC=9A pmu ahb clock
->
-> Function: Clock to pmu module when hibernation and/or ADP is
-> enabled.Must be greater than or equal to 30 MHz.
+Firmware variants using psci might want to make use of that feature
+making both channels of the secure timer inaccessible for a kernel
+running in non-secure mode, which affects the timer currently used
+as broadcast.
 
-Does this mean we can enable hibernation in dwc2 once we turn this
-clock on?  I think right now hibernation doesn't work for dwc2 on
-rk3288.  Not that I know a ton about dwc2's hibernation modes, but
-I've certainly bumped up against it when enabling power down modes.
-In fact I'm planning to post some patches soon...  I'll CC you.
+Therefore move over to using the other (still unused) timer block
+for that. The timer clock in the original node was also wrong,
+as it was pointing to the 6-channel block already, while the clock
+of the 2ch block gets controlled from the secure-grf.
 
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3288.dtsi | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-> If the SOC design does not support hibernation/ADP function, only have
-> hclk_otg, this clk can be switched according to the usage of otg.
-> If the SOC design support hibernation/ADP, has two clocks, hclk_otg and
-> pmu_hclk_otg0.
-> Hclk_otg belongs to the closed part of otg logic, which can be switched
-> according to the use of otg.
->
-> pmu_hclk_otg0 belongs to the always on part.
->
-> As for whether pmu_hclk_otg0 can be turned off when otg is not in use,
-> we have not tested. IC suggest make pmu_hclk_otg0 always on.
-
-OK.  I'm fine with this clock staying as a critical clock for now.
-
-I'll send out a v2 shortly.
-
--Doug
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index a024d1e7e74c..54c408694eac 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -229,14 +229,6 @@
+ 		clock-frequency = <24000000>;
+ 	};
+ 
+-	timer: timer@ff810000 {
+-		compatible = "rockchip,rk3288-timer";
+-		reg = <0x0 0xff810000 0x0 0x20>;
+-		interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&xin24m>, <&cru PCLK_TIMER>;
+-		clock-names = "timer", "pclk";
+-	};
+-
+ 	display-subsystem {
+ 		compatible = "rockchip,display-subsystem";
+ 		ports = <&vopl_out>, <&vopb_out>;
+@@ -714,6 +706,14 @@
+ 		status = "disabled";
+ 	};
+ 
++	timer: timer@ff6b0000 {
++		compatible = "rockchip,rk3288-timer";
++		reg = <0x0 0xff6b0000 0x0 0x20>;
++		interrupts = <GIC_SPI 66 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&xin24m>, <&cru PCLK_TIMER>;
++		clock-names = "timer", "pclk";
++	};
++
+ 	bus_intmem@ff700000 {
+ 		compatible = "mmio-sram";
+ 		reg = <0x0 0xff700000 0x0 0x18000>;
+-- 
+2.20.1
