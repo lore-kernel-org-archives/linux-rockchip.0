@@ -1,57 +1,37 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH 3/4] ARM: dts: rockchip: Hook resets up to USB PHYs on rk3288.
-Date: Fri, 12 Apr 2019 15:41:48 -0700
-Message-ID: <20190412224149.106971-4-dianders@chromium.org>
-References: <20190412224149.106971-1-dianders@chromium.org>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH v2 net-next] net: phy: switch drivers to use dynamic
+ feature detection
+Date: Sat, 13 Apr 2019 00:47:37 +0200
+Message-ID: <20190412224737.GA1004@lunn.ch>
+References: <3179601a-c58d-4df3-5d90-eb3598d2827b@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190412224149.106971-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Minas Harutyunyan <hminas@synopsys.com>, Heiko Stuebner <heiko@sntech.de>, Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: amstan@chromium.org, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, Randy Li <ayaka@soulik.info>, mka@chromium.org, ryandcase@chromium.org, jwerner@chromium.org, Elaine Zhang <zhangqing@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <3179601a-c58d-4df3-5d90-eb3598d2827b@gmail.com>
+Sender: netdev-owner@vger.kernel.org
+To: Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Florian Fainelli <f.fainelli@gmail.com>, David Miller <davem@davemloft.net>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, Richard Cochran <richardcochran@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, bcm-kernel-feedback-list@broadcom.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Let's hook up the resets to the three USB PHYs on rk3288 as per the
-bindings.  This is in preparation for a future patch that will set the
-"snps,reset-phy-on-wake" on the host port.
+On Fri, Apr 12, 2019 at 08:47:03PM +0200, Heiner Kallweit wrote:
+> Recently genphy_read_abilities() has been added that dynamically detects
+> clause 22 PHY abilities. I *think* this detection should work with all
+> supported PHY's, at least for the ones with basic features sets, i.e.
+> PHY_BASIC_FEATURES and PHY_GBIT_FEATURES. So let's remove setting these
+> features explicitly and rely on phylib feature detection.
+> 
+> I don't have access to most of these PHY's, therefore I'd appreciate
+> regression testing.
 
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
+Hi Heiner
 
- arch/arm/boot/dts/rk3288.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+I tested v1 on the following PHYs:
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 2e604f0afa98..92e0600595f8 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -905,6 +905,8 @@
- 				clocks = <&cru SCLK_OTGPHY0>;
- 				clock-names = "phyclk";
- 				#clock-cells = <0>;
-+				resets = <&cru SRST_USBOTG_PHY>;
-+				reset-names = "phy-reset";
- 			};
- 
- 			usbphy1: usb-phy@334 {
-@@ -913,6 +915,8 @@
- 				clocks = <&cru SCLK_OTGPHY1>;
- 				clock-names = "phyclk";
- 				#clock-cells = <0>;
-+				resets = <&cru SRST_USBHOST0_PHY>;
-+				reset-names = "phy-reset";
- 			};
- 
- 			usbphy2: usb-phy@348 {
-@@ -921,6 +925,8 @@
- 				clocks = <&cru SCLK_OTGPHY2>;
- 				clock-names = "phyclk";
- 				#clock-cells = <0>;
-+				resets = <&cru SRST_USBHOST1_PHY>;
-+				reset-names = "phy-reset";
- 			};
- 		};
- 	};
--- 
-2.21.0.392.gf8f6787159e-goog
+88E1510, 88E1540, 88E6390, KSZ8041, 88E1545
+
+No obvious regressions.
+
+Tested-by: Andrew Lunn <andrew@lunn.ch>
+
+    Andrew
