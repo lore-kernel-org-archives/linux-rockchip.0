@@ -1,83 +1,95 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v1 1/6] clk: rockchip: Add supprot to limit input rate for
- fractional divider
-Date: Fri, 12 Apr 2019 14:39:33 +0200
-Message-ID: <2068630.7I2iUbhqZj@diego>
-References: <1554284549-24916-1-git-send-email-zhangqing@rock-chips.com>
- <3395739.hcHkC3K37q@diego>
- <0e47770b-fa20-74f9-8548-c07aebdcaa53@theobroma-systems.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: [PATCH v3 0/4] async vs amend - UAPI
+Date: Fri, 12 Apr 2019 09:58:23 -0300
+Message-ID: <20190412125827.5877-1-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <0e47770b-fa20-74f9-8548-c07aebdcaa53@theobroma-systems.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Christoph =?ISO-8859-1?Q?M=FCllner?= <christoph.muellner@theobroma-systems.com>
-Cc: huangtao@rock-chips.com, xxx@rock-chips.com, xf@rock-chips.com, sboyd@kernel.org, mturquette@baylibre.com, Elaine Zhang <zhangqing@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Finley Xiao <finley.xiao@rock-chips.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>
+Cc: dnicoara@chromium.org, daniels@collabora.com, alexandros.frantzis@collabora.com, daniel.vetter@ffwll.ch, linux-kernel@vger.kernel.org, tomasz Figa <tfiga@chromium.org>, tina.zhang@intel.com, boris.brezillon@collabora.com, Sean Paul <seanpaul@google.com>, kernel@collabora.com, nicholas.kazlauskas@amd.com, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@google.com>, Gustavo Padovan <gustavo.padovan@collabora.com>, Helen Koike <helen.koike@collabora.com>, Sean Paul <sean@poorly.run>, Sandy Huang <hjc@rock-chips.com>, linux-doc@vger.kernel.org, Thomas Zimmermann <tzimmermann@suse.de>, Jonathan Corbet <corbet@lwn.net>, Alex Deucher <alexander.deucher@amd.com>, Bhawanpreet Lakha <Bhawanpreet.Lakha@amd.com>, "David (ChunMing) Zhou" <David1.Zhou@amd.com>, Anthony Koo <Anthon>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 12. April 2019, 14:32:08 CEST schrieb Christoph M=FCllner:
-> =
 
-> On 12.04.19 14:21, Heiko St=FCbner wrote:
-> > Hi Christoph,
-> > =
+Hi,
 
-> > Am Freitag, 12. April 2019, 14:12:52 CEST schrieb Christoph M=FCllner:
-> >> On 12.04.19 13:52, Heiko St=FCbner wrote:
-> >>> Am Mittwoch, 3. April 2019, 11:42:24 CEST schrieb Elaine Zhang:
-> >>>> From: Finley Xiao <finley.xiao@rock-chips.com>
-> >>>>
-> >>>> From Rockchips fractional divider usage, some clocks can be generated
-> >>>> by fractional divider, but the input clock frequency of fractional
-> >>>> divider should be less than a specified value.
-> >>>>
-> >>>> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> >>>> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> >>>
-> >>> can you tell me where these maximum input values come from?
-> >>>
-> >>> I talked to Christoph from Theobroma (Cc'ed) last week and he mention=
-ed
-> >>> that they're using the fractional divider with a higher input frequen=
-cy
-> >>> to create a very specific frequency [some details are gone from my me=
-mory
-> >>> though] they can't get otherwise.
-> >>>
-> >>> So I really don't want to break their working setup by introducing ba=
-rriers
-> >>> that are not strictly necessary.
-> >>>
-> >>> @Christoph: can you describe the bits from your fractional setup that
-> >>> I've forgotten please?
-> >>
-> >> We need to set the I2S0 clock to 24.56 MHz.
-> >>
-> >> When restricting the input frequency to a maximum of 600 Mhz,
-> >> we could use the integer divider to get 400 Mhz (dividing by 2).
-> >> However, with the 400 Mhz as input to the frac divider,
-> >> we run into the problem, that the maximum possible output frequency
-> >> is 20 MHz (there is another restriction which states that the
-> >> fraction input : output frequency must be >=3D 20).
-> > =
+This patch series is an attempt to clarify some concepts and how things
+are hooked inside drm.
 
-> > just for clarification, what is the current input frequency you
-> > already use sucessfully?
-> =
+There are two main concepts that are similar but different and are
+causing some confusion:
 
-> Our working setup uses the integer divider to reduce to 400 MHz
-> and uses the frac divider to get something near 24.56 MHz.
-> I have to admit I have never measured what's on the clock line.
+    - Asynchronous update: is the ability change the hw state at any time, not
+    only during vblank.
 
-Ah ok, so the 600MHz input maximum is ok for your setup and the "< 20"
-ratio is the question. I thought I remembered you using a higher than
-600MHz input rate. [bad memory on my side]
+    - Amend update: is the ability to perform 1000 commits to be applied as soon
+    as possible without waiting for 1000 vblanks.
+
+async updates can be seen as amend, but the opposite is not true.
+Please see documentation on the commit
+	"drm/atomic: rename async_{update,check} to amend_{update,check}"
+for a more detailed explanation.
+
+To perform an async update, we already have the DRM_MODE_PAGE_FLIP_ASYNC
+flag in the atomic API and it is already being used by amdgpu in the
+atomic path.
+
+The first two commits clarifies these differences. The last two are
+RFCs that exposes new async and amend features to userspace.
+
+We introduce in this series the flag DRM_MODE_ATOMIC_AMEND to expose
+the amend feature to userspace.
+The main reasons to expose this through atomic api is to avoid mixing legacy
+with modern/atomic API (since their interactions are not well defined)
+and to be able to explicitly manage the cursor plane.
+
+And the last commit hooks the current async implementations with the
+DRM_MODE_PAGE_FLIP_ASYNC flag.
+
+Please, see the message in each commit and the documentation that was
+added for more details and let me know what you think.
+
+Thanks
+Helen
+
+Changes in v3:
+- rebase tree
+- rebase on top of renaming async_update to amend_update
+- improve documentation
+- don't fall back to a normal commit if amend is not possible when
+requested through the atomic api
+
+Changes in v2:
+- rebase tree
+- do not fall back to a non-async update if if there isn't any
+pending commit to amend
+
+Changes in v1:
+- https://patchwork.freedesktop.org/patch/243088/
+- Only enable it if userspace requests it.
+- Only allow async update for cursor type planes.
+- Rename ASYNC_UPDATE for ATOMIC_AMEND.
+
+Helen Koike (4):
+  drm/uapi: add documentation for atomic flags
+  drm/atomic: rename async_{update,check} to amend_{update,check}
+  drm/atomic: add ATOMIC_AMEND flag to the Atomic IOCTL.
+  drm/atomic: hook atomic_async_{check,update} with PAGE_FLIP_ASYNC flag
+
+ Documentation/gpu/drm-kms-helpers.rst         |   8 +-
+ .../gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c |  15 +-
+ drivers/gpu/drm/drm_atomic_helper.c           | 157 ++++++++++++++----
+ drivers/gpu/drm/drm_atomic_uapi.c             |   9 +
+ drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c    |   6 +
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c   |  12 +-
+ drivers/gpu/drm/vc4/vc4_kms.c                 |   4 +-
+ drivers/gpu/drm/vc4/vc4_plane.c               |   6 +
+ include/drm/drm_atomic.h                      |   4 +-
+ include/drm/drm_atomic_helper.h               |   9 +-
+ include/drm/drm_modeset_helper_vtables.h      |  69 ++++++--
+ include/uapi/drm/drm_mode.h                   |  27 ++-
+ 12 files changed, 264 insertions(+), 62 deletions(-)
+
+-- 
+2.20.1
