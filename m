@@ -1,61 +1,155 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2] drm/rockchip: shutdown drm subsystem on shutdown
-Date: Fri, 12 Apr 2019 10:43:24 -0700
-Message-ID: <CAD=FV=WYLtRqHvqDCx4Yy7gp_AEjAXtTbPzZnqTGKZBoXwCa0Q@mail.gmail.com>
-References: <20190402113753.10118-1-heiko@sntech.de>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH v2] clk: rockchip: undo several noc and special clocks as
+ critical on rk3288
+Date: Fri, 12 Apr 2019 18:58:34 +0100
+Message-ID: <6d877246-c59a-151c-973e-ad1161417d39@arm.com>
+References: <20190412161747.107107-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20190402113753.10118-1-heiko@sntech.de>
-Sender: stable-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Sandy Huang <hjc@rock-chips.com>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Vicente Bergas <vicencb@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>, Marc Zyngier <marc.zyngier@arm.com>, Brian Norris <briannorris@chromium.org>, Doug Anderson <dianders@chromium.org>, stable@vger.kernel.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190412161747.107107-1-dianders@chromium.org>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
+Cc: Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, mka@chromium.org, ryandcase@chromium.org, Caesar Wang <caesar.wang@rock-chips.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On 12/04/2019 17:17, Douglas Anderson wrote:
+> This is mostly a revert of commit 55bb6a633c33 ("clk: rockchip: mark
+> noc and some special clk as critical on rk3288") except that we're
+> keeping "pmu_hclk_otg0" as critical still.
+> 
+> NOTE: turning these clocks off doesn't seem to do a whole lot in terms
+> of power savings (checking the power on the logic rail).  It appears
+> to save maybe 1-2mW.  ...but still it seems like we should turn the
+> clocks off if they aren't needed.
+> 
+> About "pmu_hclk_otg0" (the one clock from the original commit we're
+> still keeping critical) from an email thread:
+> 
+>> pmu ahb clock
+>>
+>> Function: Clock to pmu module when hibernation and/or ADP is
+>> enabled. Must be greater than or equal to 30 MHz.
+>>
+>> If the SOC design does not support hibernation/ADP function, only have
+>> hclk_otg, this clk can be switched according to the usage of otg.
+>> If the SOC design support hibernation/ADP, has two clocks, hclk_otg and
+>> pmu_hclk_otg0.
+>> Hclk_otg belongs to the closed part of otg logic, which can be switched
+>> according to the use of otg.
+>>
+>> pmu_hclk_otg0 belongs to the always on part.
+>>
+>> As for whether pmu_hclk_otg0 can be turned off when otg is not in use,
+>> we have not tested. IC suggest make pmu_hclk_otg0 always on.
+> 
+> For the rest of the clocks:
+> 
+> atclk: No documentation about this clock other than that it goes to
+> the CPU.  CPU functions fine without it on.  Maybe needed for JTAG?
 
-On Tue, Apr 2, 2019 at 4:38 AM Heiko Stuebner <heiko@sntech.de> wrote:
->
-> From: Vicente Bergas <vicencb@gmail.com>
->
-> As explained by Robin Murphy:
-> > the IOMMU shutdown disables paging, so if the VOP is still
-> > scanning out then that will result in whatever IOVAs it was using now going
-> > straight out onto the bus as physical addresses.
->
-> We had a more radical approach before in commit
-> 7f3ef5dedb14 ("drm/rockchip: Allow driver to be shutdown on reboot/kexec")
-> but that resulted in new warnings and oopses on shutdown on rk3399
-> chromeos devices.
->
-> So second try is resurrecting Vicentes shutdown change which should
-> achieve the same result but in a less drastic way.
->
-> Fixes: 63238173b2fa ("Revert drm/rockchip: Allow driver to be shutdown on reboot/kexec")
-> Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
-> Cc: Robin Murphy <robin.murphy@arm.com>
-> Cc: Marc Zyngier <marc.zyngier@arm.com>
-> Cc: Brian Norris <briannorris@chromium.org>
-> Cc: Doug Anderson <dianders@chromium.org>
-> Cc: stable@vger.kernel.org
-> Suggested-by: JeffyChen <jeffy.chen@rock-chips.com>
-> Suggested-by: Robin Murphy <robin.murphy@arm.com>
-> Signed-off-by: Vicente Bergas <vicencb@gmail.com>
-> [adapted commit message to explain the history]
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+FWIW, the two brief references in the TRM imply that's the ATB clock, 
+which would make it part of the CoreSight tracing gubbins[1] - I can't 
+see any evidence that RK3288 has an ETR or ETB for self-hosted tracing, 
+so it may well only be relevant for external trace hardware (wherein 
+GRF_SOC_CON7 suggests that it might spew trace data out of the parallel 
+LCD interface pins).
+
+> jtag: Presumably this clock is only needed if you're debugging with
+> JTAG.  It doesn't seem like it makes sense to waste power for every
+> rk3288 user.  In any case to do JTAG you'd need private patches to
+> adjust the pinctrl the mux the JTAG out anyway.
+> 
+> pclk_dbg, pclk_core_niu: On veyron Chromebooks we turn these two
+> clocks on only during kernel panics in order to access some coresight
+> registers.  Since nothing in the upstream kernel does this we should
+> be able to leave them off safely.  Maybe also needed for JTAG?
+
+Similarly, pclk_dbg sounds like the APB clock for the CPU external debug 
+interface[2] (which I suspect is probably somewhere in that "A17_Debug" 
+region at 0xffb80000 that the DT doesn't even go near).
+
+I would imagine that as long as a hardware debugger can establish a 
+JTAG/SWD connection to the DAP, it would then have an initialisation 
+script which knows what values to poke where in order to configure 
+additional pinmux/clocks/CoreSight components/etc. to the appropriate 
+state, so I'd hope that Linux shouldn't have to care about those details 
+either way.
+
+Robin.
+
+[1] http://infocenter.arm.com/help/topic/com.arm.doc.ddi0535b/CHDJFFCH.html
+[2] http://infocenter.arm.com/help/topic/com.arm.doc.ddi0535b/BABBCDGE.html
+
+> hsicphy12m_xin12m: There is no indication of why this clock would need
+> to be turned on for boards that don't use HSIC.
+> 
+> pclk_ddrupctl[0-1], pclk_publ0[0-1]: On veyron Chromebooks we turn
+> these 4 clocks on only when doing DDR transitions and they are off
+> otherwise.  I see no reason why they'd need to be on in the upstream
+> kernel which doesn't support DDRFreq.
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 > ---
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
-
-I picked this back to the Chrome OS 4.19 kernel and tried it on
-rk3288-veyron-jerry.  Rebooting caused no complaints (I confirmed this
-code was running by adding a printk).
-
-I plugged in to an HDMI monitor.  Rebooting caused no complaints.
-
-I then let the display idle off (just in case that mattered).  Again
-no complaints.
-
-Thus, in case it's helpful:
-
-Tested-by: Douglas Anderson <dianders@chromium.org>
+> 
+> Changes in v2:
+> - Now keep pmu_hclk_otg0 as critical.
+> - Updated description since this isn't a clean revert.
+> - PWM patches have landed, so just one patch in the series now.
+> 
+>   drivers/clk/rockchip/clk-rk3288.c | 13 ++++---------
+>   1 file changed, 4 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+> index f47d514cba36..13668ad59f2e 100644
+> --- a/drivers/clk/rockchip/clk-rk3288.c
+> +++ b/drivers/clk/rockchip/clk-rk3288.c
+> @@ -313,13 +313,13 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+>   	COMPOSITE_NOMUX(0, "aclk_core_mp", "armclk", CLK_IGNORE_UNUSED,
+>   			RK3288_CLKSEL_CON(0), 4, 4, DFLAGS | CLK_DIVIDER_READ_ONLY,
+>   			RK3288_CLKGATE_CON(12), 6, GFLAGS),
+> -	COMPOSITE_NOMUX(0, "atclk", "armclk", CLK_IGNORE_UNUSED,
+> +	COMPOSITE_NOMUX(0, "atclk", "armclk", 0,
+>   			RK3288_CLKSEL_CON(37), 4, 5, DFLAGS | CLK_DIVIDER_READ_ONLY,
+>   			RK3288_CLKGATE_CON(12), 7, GFLAGS),
+>   	COMPOSITE_NOMUX(0, "pclk_dbg_pre", "armclk", CLK_IGNORE_UNUSED,
+>   			RK3288_CLKSEL_CON(37), 9, 5, DFLAGS | CLK_DIVIDER_READ_ONLY,
+>   			RK3288_CLKGATE_CON(12), 8, GFLAGS),
+> -	GATE(0, "pclk_dbg", "pclk_dbg_pre", CLK_IGNORE_UNUSED,
+> +	GATE(0, "pclk_dbg", "pclk_dbg_pre", 0,
+>   			RK3288_CLKGATE_CON(12), 9, GFLAGS),
+>   	GATE(0, "cs_dbg", "pclk_dbg_pre", CLK_IGNORE_UNUSED,
+>   			RK3288_CLKGATE_CON(12), 10, GFLAGS),
+> @@ -647,7 +647,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+>   	INVERTER(SCLK_HSADC, "sclk_hsadc", "sclk_hsadc_out",
+>   			RK3288_CLKSEL_CON(22), 7, IFLAGS),
+>   
+> -	GATE(0, "jtag", "ext_jtag", CLK_IGNORE_UNUSED,
+> +	GATE(0, "jtag", "ext_jtag", 0,
+>   			RK3288_CLKGATE_CON(4), 14, GFLAGS),
+>   
+>   	COMPOSITE_NODIV(SCLK_USBPHY480M_SRC, "usbphy480m_src", mux_usbphy480m_p, 0,
+> @@ -656,7 +656,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+>   	COMPOSITE_NODIV(SCLK_HSICPHY480M, "sclk_hsicphy480m", mux_hsicphy480m_p, 0,
+>   			RK3288_CLKSEL_CON(29), 0, 2, MFLAGS,
+>   			RK3288_CLKGATE_CON(3), 6, GFLAGS),
+> -	GATE(0, "hsicphy12m_xin12m", "xin12m", CLK_IGNORE_UNUSED,
+> +	GATE(0, "hsicphy12m_xin12m", "xin12m", 0,
+>   			RK3288_CLKGATE_CON(13), 9, GFLAGS),
+>   	DIV(0, "hsicphy12m_usbphy", "sclk_hsicphy480m", 0,
+>   			RK3288_CLKSEL_CON(11), 8, 6, DFLAGS),
+> @@ -837,11 +837,6 @@ static const char *const rk3288_critical_clocks[] __initconst = {
+>   	"pclk_alive_niu",
+>   	"pclk_pd_pmu",
+>   	"pclk_pmu_niu",
+> -	"pclk_core_niu",
+> -	"pclk_ddrupctl0",
+> -	"pclk_publ0",
+> -	"pclk_ddrupctl1",
+> -	"pclk_publ1",
+>   	"pmu_hclk_otg0",
+>   	/* pwm-regulators on some boards, so handoff-critical later */
+>   	"pclk_rkpwm",
+> 
