@@ -1,60 +1,56 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH] drm: bridge: dw-hdmi: Fix overflow workaround for
- Rockchip SoCs
-Date: Fri, 12 Apr 2019 08:26:11 +0200
-Message-ID: <36fa1dc0-dc58-8941-840f-d56a29b8c654@samsung.com>
-References: <CGME20190220075334epcas3p16f66503f11d0bacdcf316b232f441fd0@epcas3p1.samsung.com>
-        <AM3PR03MB0966818FAAAE6192FF4ED11AAC7D0@AM3PR03MB0966.eurprd03.prod.outlook.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 2/5] pinctrl: rockchip: fix leaked of_node references
+Date: Fri, 12 Apr 2019 10:08:25 +0200
+Message-ID: <4822039.BKTqNpLmcE@diego>
+References: <1555048943-39589-1-git-send-email-wen.yang99@zte.com.cn> <1555048943-39589-3-git-send-email-wen.yang99@zte.com.cn>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <AM3PR03MB0966818FAAAE6192FF4ED11AAC7D0@AM3PR03MB0966.eurprd03.prod.outlook.com>
-Content-Language: en-US
+In-Reply-To: <1555048943-39589-3-git-send-email-wen.yang99@zte.com.cn>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jonas Karlman <jonas@kwiboo.se>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Cc: Archit Taneja <architt@codeaurora.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Sean Paul <seanpaul@chromium.org>, Neil Armstrong <narmstrong@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Wen Yang <wen.yang99@zte.com.cn>
+Cc: linux-kernel@vger.kernel.org, wang.yi59@zte.com.cn, Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 20.02.2019 08:52, Jonas Karlman wrote:
-> The Rockchip RK3288 SoC (v2.00a) and RK3328/RK3399 SoCs (v2.11a) have
-> also been identified as needing this workaround with a single iteration.
->
-> Fixes: be41fc55f1aa ("drm: bridge: dw-hdmi: Handle overflow workaround based on device version")
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Hi,
 
-
-Queued to drm-misc-fixes.
-
---
-Regards
-Andrzej
-
-
+Am Freitag, 12. April 2019, 08:02:20 CEST schrieb Wen Yang:
+> The call to of_parse_phandle returns a node pointer with refcount
+> incremented thus it must be explicitly decremented after the last
+> usage.
+> 
+> Detected by coccinelle with the following warnings:
+> ./drivers/pinctrl/pinctrl-rockchip.c:3221:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 3196, but without a corresponding object release within this function.
+> ./drivers/pinctrl/pinctrl-rockchip.c:3223:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 3196, but without a corresponding object release within this function.
+> 
+> Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-gpio@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-kernel@vger.kernel.org
 > ---
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 4 ++++
->  1 file changed, 4 insertions(+)
->
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> index 64c3cf027518..14223c0ee784 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> @@ -1655,6 +1655,8 @@ static void dw_hdmi_clear_overflow(struct dw_hdmi *hdmi)
->  	 * iteration for others.
->  	 * The Amlogic Meson GX SoCs (v2.01a) have been identified as needing
->  	 * the workaround with a single iteration.
-> +	 * The Rockchip RK3288 SoC (v2.00a) and RK3328/RK3399 SoCs (v2.11a) have
-> +	 * been identified as needing the workaround with a single iteration.
->  	 */
+>  drivers/pinctrl/pinctrl-rockchip.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+> index 16bf21b..e22d387 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> @@ -3195,6 +3195,7 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank,
 >  
->  	switch (hdmi->version) {
-> @@ -1663,7 +1665,9 @@ static void dw_hdmi_clear_overflow(struct dw_hdmi *hdmi)
->  		break;
->  	case 0x131a:
->  	case 0x132a:
-> +	case 0x200a:
->  	case 0x201a:
-> +	case 0x211a:
->  	case 0x212a:
->  		count = 1;
->  		break;
+>  		node = of_parse_phandle(bank->of_node->parent,
+>  					"rockchip,pmu", 0);
+> +		of_node_put(node);
+>  		if (!node) {
+>  			if (of_address_to_resource(bank->of_node, 1, &res)) {
+>  				dev_err(info->dev, "cannot find IO resource for bank\n");
+> 
+
+hmm, the conditional does still use the node pointer, so the of_node_put
+should probably be below the whole if clause?
+
+
+Heiko
