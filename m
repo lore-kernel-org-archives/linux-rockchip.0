@@ -1,107 +1,102 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v3 2/4] drm/atomic: rename async_{update,check} to
- amend_{update,check}
-Date: Fri, 12 Apr 2019 11:06:13 -0300
-Message-ID: <bda69249-f193-9dbc-5186-7139fb2c365a@collabora.com>
+From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v3 2/4] drm/atomic: rename async_{update,
+ check} to amend_{update, check}
+Date: Fri, 12 Apr 2019 16:38:35 +0200
+Message-ID: <20190412163835.5407984f@collabora.com>
 References: <20190412125827.5877-1-helen.koike@collabora.com>
  <20190412125827.5877-3-helen.koike@collabora.com>
  <20190412154957.558e49f8@collabora.com>
+ <bda69249-f193-9dbc-5186-7139fb2c365a@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190412154957.558e49f8@collabora.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Boris Brezillon <boris.brezillon@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, dnicoara@chromium.org, daniels@collabora.com, alexandros.frantzis@collabora.com, daniel.vetter@ffwll.ch, linux-kernel@vger.kernel.org, tomasz Figa <tfiga@chromium.org>, tina.zhang@intel.com, Sean Paul <seanpaul@google.com>, kernel@collabora.com, nicholas.kazlauskas@amd.com, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@google.com>, Gustavo Padovan <gustavo.padovan@collabora.com>, Sean Paul <sean@poorly.run>, Sandy Huang <hjc@rock-chips.com>, linux-doc@vger.kernel.org, Thomas Zimmermann <tzimmermann@suse.de>, Jonathan Corbet <corbet@lwn.net>, Harry Wentland <harry.wentland@amd.com>, Alex Deucher <alexander.deucher@amd.com>, Bhawanpreet Lakha <Bhawanpreet.Lakha@amd.com>, "David (ChunMing) Zhou" <David1.Zhou@amd.>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+In-Reply-To: <bda69249-f193-9dbc-5186-7139fb2c365a-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/freedreno>
+List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
+ <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
+Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+To: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sean Paul <seanpaul-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, alexandros.frantzis-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, daniel.vetter-/w4YWyX8dFk@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, Mamta Shukla <mamtashukla555-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, tina.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Anthony Koo <Anthony.Koo-5C7GfCeVMHo@public.gmane.org>, Ville =?UTF-8?B?U3lyasOkbMOk?= <ville.syrjala-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "David (ChunMing) Zhou" <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Jonathan Corbet <corbet-T1hC0tSOHrs@public.gmane.org>, Sean Paul <sean-p7yTbzM4H96eqtR555YLDQ@public.gmane.org>, David Francis <David.Francis-5C7GfCeVMHo@public.gmane.org>, linux-doc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Harry Wentland <harry.wentland-5C7GfCeVMHo@public.gmane.org>, daniels-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Leo Li <sunpeng.li-5C7GfCeVMHo@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Boris,
-
-On 4/12/19 10:49 AM, Boris Brezillon wrote:
-> Hi Helen,
-> 
-> On Fri, 12 Apr 2019 09:58:25 -0300
-> Helen Koike <helen.koike@collabora.com> wrote:
-> 
->> Asynchronous update is the ability change the hw state at any time, not
->> only during vblank.
->>
->> Amend mode is the ability to perform 1000 commits to be applied as soon
->> as possible without waiting for 1000 vblanks.
->>
->> async updates can be seen as amend, but the opposite is not true.
->>
->> &drm_plane_helper_funcs.atomic_async_{update,check}() was being used by
->> drivers to implement amend and not async. So rename them to amend.
->>
->> Also improve docs explaining the difference.
->>
->> If asynchronous is required, normal page flip can be performed using
->> DRM_MODE_PAGE_FLIP_ASYNC flag.
->>
->> Signed-off-by: Helen Koike <helen.koike@collabora.com>
->>
->> ---
->> Hello,
->>
->> I would like to officially clarify what async update means by adding it
->> in the docs.
->> Please correct me if I am wrong, but the current async_{update,check}
->> callbacks are being used to do amend (the legacy cursor behavior), i.e.
->> to allow 1000 updates without waiting for 1000 vblanks.
-> 
-> Right now, the semantic of async update is driver dependent. Some
-> drivers will amend the last commit touching that plane (amend semantic),
-> others will update the plane buffer immediately which might cause
-> tearing (async semantic).
-
-In my pov, async updates holds the properties of an amend update, so all
-async updates we have are amend, but the opposite is not true.
-
-> 
->>
->> So I would like to clarify this in the docs and rename the current
->> callbacks to reflect this behaviour.
-> 
-> I'm all for this clarification, but I don't think renaming the async
-> hooks is a good idea, since some drivers will not do real 'amend'. So,
-> you're changing the name, but it's still confusing :-).
-> 
-> How about adding new hooks (and/or flags) for the AMEND case, and
-> keeping the async path untouched. We can then let drivers that
-> currently implement async as amend implement the amend hooks instead.
-> Once you've done that, you can hook that up to the legacy cursor update
-> path so that it first tries one then the other and finally falls back
-> to a sync update if none of ASYNC/AMEND is possible.
-
-I kinda did this (I re-introduced async in the last patch in the
-series). I know this order is confusing, but as rockchip doesn't
-implement true async, I would have to do a bunch of modifs at once to
-keep the commits consistent, but I can re-work on that if it makes
-things clearer.
-
-> 
->>
->> I also see that for real async updates, the flag
->> DRM_MODE_PAGE_FLIP_ASYNC can be used in a normal sync update (it is
->> already being used by some drivers actually, in the atomic path, not only
->> in the legacy page flip, at least is what I understood from
->> amdgpu_dm_atomic_commit_tail() implementation).
-> 
-> Yes, right now, async does not necessarily imply non-block, but
-> Daniel seemed to think that most users want non-block when they do an
-> async page flip, so maybe it should be clarified too.
-
-users could combine NONBLOCK flag with PAGE_FLIP_ASYNC, no? (we need to
-add code for it of course).
-
-Thanks
-Helen
-
-> 
-> Regards,
-> 
-> Boris
-> 
+T24gRnJpLCAxMiBBcHIgMjAxOSAxMTowNjoxMyAtMDMwMApIZWxlbiBLb2lrZSA8aGVsZW4ua29p
+a2VAY29sbGFib3JhLmNvbT4gd3JvdGU6Cgo+IEhpIEJvcmlzLAo+IAo+IE9uIDQvMTIvMTkgMTA6
+NDkgQU0sIEJvcmlzIEJyZXppbGxvbiB3cm90ZToKPiA+IEhpIEhlbGVuLAo+ID4gCj4gPiBPbiBG
+cmksIDEyIEFwciAyMDE5IDA5OjU4OjI1IC0wMzAwCj4gPiBIZWxlbiBLb2lrZSA8aGVsZW4ua29p
+a2VAY29sbGFib3JhLmNvbT4gd3JvdGU6Cj4gPiAgIAo+ID4+IEFzeW5jaHJvbm91cyB1cGRhdGUg
+aXMgdGhlIGFiaWxpdHkgY2hhbmdlIHRoZSBodyBzdGF0ZSBhdCBhbnkgdGltZSwgbm90Cj4gPj4g
+b25seSBkdXJpbmcgdmJsYW5rLgo+ID4+Cj4gPj4gQW1lbmQgbW9kZSBpcyB0aGUgYWJpbGl0eSB0
+byBwZXJmb3JtIDEwMDAgY29tbWl0cyB0byBiZSBhcHBsaWVkIGFzIHNvb24KPiA+PiBhcyBwb3Nz
+aWJsZSB3aXRob3V0IHdhaXRpbmcgZm9yIDEwMDAgdmJsYW5rcy4KPiA+Pgo+ID4+IGFzeW5jIHVw
+ZGF0ZXMgY2FuIGJlIHNlZW4gYXMgYW1lbmQsIGJ1dCB0aGUgb3Bwb3NpdGUgaXMgbm90IHRydWUu
+Cj4gPj4KPiA+PiAmZHJtX3BsYW5lX2hlbHBlcl9mdW5jcy5hdG9taWNfYXN5bmNfe3VwZGF0ZSxj
+aGVja30oKSB3YXMgYmVpbmcgdXNlZCBieQo+ID4+IGRyaXZlcnMgdG8gaW1wbGVtZW50IGFtZW5k
+IGFuZCBub3QgYXN5bmMuIFNvIHJlbmFtZSB0aGVtIHRvIGFtZW5kLgo+ID4+Cj4gPj4gQWxzbyBp
+bXByb3ZlIGRvY3MgZXhwbGFpbmluZyB0aGUgZGlmZmVyZW5jZS4KPiA+Pgo+ID4+IElmIGFzeW5j
+aHJvbm91cyBpcyByZXF1aXJlZCwgbm9ybWFsIHBhZ2UgZmxpcCBjYW4gYmUgcGVyZm9ybWVkIHVz
+aW5nCj4gPj4gRFJNX01PREVfUEFHRV9GTElQX0FTWU5DIGZsYWcuCj4gPj4KPiA+PiBTaWduZWQt
+b2ZmLWJ5OiBIZWxlbiBLb2lrZSA8aGVsZW4ua29pa2VAY29sbGFib3JhLmNvbT4KPiA+Pgo+ID4+
+IC0tLQo+ID4+IEhlbGxvLAo+ID4+Cj4gPj4gSSB3b3VsZCBsaWtlIHRvIG9mZmljaWFsbHkgY2xh
+cmlmeSB3aGF0IGFzeW5jIHVwZGF0ZSBtZWFucyBieSBhZGRpbmcgaXQKPiA+PiBpbiB0aGUgZG9j
+cy4KPiA+PiBQbGVhc2UgY29ycmVjdCBtZSBpZiBJIGFtIHdyb25nLCBidXQgdGhlIGN1cnJlbnQg
+YXN5bmNfe3VwZGF0ZSxjaGVja30KPiA+PiBjYWxsYmFja3MgYXJlIGJlaW5nIHVzZWQgdG8gZG8g
+YW1lbmQgKHRoZSBsZWdhY3kgY3Vyc29yIGJlaGF2aW9yKSwgaS5lLgo+ID4+IHRvIGFsbG93IDEw
+MDAgdXBkYXRlcyB3aXRob3V0IHdhaXRpbmcgZm9yIDEwMDAgdmJsYW5rcy4gIAo+ID4gCj4gPiBS
+aWdodCBub3csIHRoZSBzZW1hbnRpYyBvZiBhc3luYyB1cGRhdGUgaXMgZHJpdmVyIGRlcGVuZGVu
+dC4gU29tZQo+ID4gZHJpdmVycyB3aWxsIGFtZW5kIHRoZSBsYXN0IGNvbW1pdCB0b3VjaGluZyB0
+aGF0IHBsYW5lIChhbWVuZCBzZW1hbnRpYyksCj4gPiBvdGhlcnMgd2lsbCB1cGRhdGUgdGhlIHBs
+YW5lIGJ1ZmZlciBpbW1lZGlhdGVseSB3aGljaCBtaWdodCBjYXVzZQo+ID4gdGVhcmluZyAoYXN5
+bmMgc2VtYW50aWMpLiAgCj4gCj4gSW4gbXkgcG92LCBhc3luYyB1cGRhdGVzIGhvbGRzIHRoZSBw
+cm9wZXJ0aWVzIG9mIGFuIGFtZW5kIHVwZGF0ZSwgc28gYWxsCj4gYXN5bmMgdXBkYXRlcyB3ZSBo
+YXZlIGFyZSBhbWVuZCwgYnV0IHRoZSBvcHBvc2l0ZSBpcyBub3QgdHJ1ZS4KCkJ5IGRvaW5nIHRo
+YXQgeW91IGtlZXAgdGhlIGRlZmluaXRpb24gcXVpdGUgdmFndWUsIGFuZCBkZXZlbG9wZXJzIHdp
+bGwKc3RpbGwgY29uZnVzZWQgYWJvdXQgd2hhdCB0aGV5IHNob3VsZCBkbyB3aGVuIEFNRU5EIGlz
+IHJlcXVlc3RlZC4gV2h5Cm5vdCBkaXN0aW5ndWlzaGluZyBBTUVORCBhbmQgQVNZTkMgbm93PwoK
+QU1FTkQ6IHJlcGxhY2UgdGhlIHBlbmRpbmcgcGxhbmUgdXBkYXRlIChpZiBhbnkpIGJ5IHRoZSBu
+ZXcgb25lLCBhbmQKbWFrZSBzdXJlIHRoaW5ncyB3aWxsIGJlIGFwcGxpZWQgb24gdGhlIG5leHQg
+VkJMQU5LIChpZiBub3RoaW5nIGVsc2UKYW1lbmRzIHRoZSBjb21taXQgaW4gdGhlIG1lYW50aW1l
+KQoKQVNZTkM6IHVwZGF0ZSB0aGluZ3MgaW1tZWRpYXRlbHkgKGRvbid0IHdhaXQgZm9yIFZCTEFO
+SykKCj4gCj4gPiAgIAo+ID4+Cj4gPj4gU28gSSB3b3VsZCBsaWtlIHRvIGNsYXJpZnkgdGhpcyBp
+biB0aGUgZG9jcyBhbmQgcmVuYW1lIHRoZSBjdXJyZW50Cj4gPj4gY2FsbGJhY2tzIHRvIHJlZmxl
+Y3QgdGhpcyBiZWhhdmlvdXIuICAKPiA+IAo+ID4gSSdtIGFsbCBmb3IgdGhpcyBjbGFyaWZpY2F0
+aW9uLCBidXQgSSBkb24ndCB0aGluayByZW5hbWluZyB0aGUgYXN5bmMKPiA+IGhvb2tzIGlzIGEg
+Z29vZCBpZGVhLCBzaW5jZSBzb21lIGRyaXZlcnMgd2lsbCBub3QgZG8gcmVhbCAnYW1lbmQnLiBT
+bywKPiA+IHlvdSdyZSBjaGFuZ2luZyB0aGUgbmFtZSwgYnV0IGl0J3Mgc3RpbGwgY29uZnVzaW5n
+IDotKS4KPiA+IAo+ID4gSG93IGFib3V0IGFkZGluZyBuZXcgaG9va3MgKGFuZC9vciBmbGFncykg
+Zm9yIHRoZSBBTUVORCBjYXNlLCBhbmQKPiA+IGtlZXBpbmcgdGhlIGFzeW5jIHBhdGggdW50b3Vj
+aGVkLiBXZSBjYW4gdGhlbiBsZXQgZHJpdmVycyB0aGF0Cj4gPiBjdXJyZW50bHkgaW1wbGVtZW50
+IGFzeW5jIGFzIGFtZW5kIGltcGxlbWVudCB0aGUgYW1lbmQgaG9va3MgaW5zdGVhZC4KPiA+IE9u
+Y2UgeW91J3ZlIGRvbmUgdGhhdCwgeW91IGNhbiBob29rIHRoYXQgdXAgdG8gdGhlIGxlZ2FjeSBj
+dXJzb3IgdXBkYXRlCj4gPiBwYXRoIHNvIHRoYXQgaXQgZmlyc3QgdHJpZXMgb25lIHRoZW4gdGhl
+IG90aGVyIGFuZCBmaW5hbGx5IGZhbGxzIGJhY2sKPiA+IHRvIGEgc3luYyB1cGRhdGUgaWYgbm9u
+ZSBvZiBBU1lOQy9BTUVORCBpcyBwb3NzaWJsZS4gIAo+IAo+IEkga2luZGEgZGlkIHRoaXMgKEkg
+cmUtaW50cm9kdWNlZCBhc3luYyBpbiB0aGUgbGFzdCBwYXRjaCBpbiB0aGUKPiBzZXJpZXMpLiBJ
+IGtub3cgdGhpcyBvcmRlciBpcyBjb25mdXNpbmcsIGJ1dCBhcyByb2NrY2hpcCBkb2Vzbid0Cj4g
+aW1wbGVtZW50IHRydWUgYXN5bmMsIEkgd291bGQgaGF2ZSB0byBkbyBhIGJ1bmNoIG9mIG1vZGlm
+cyBhdCBvbmNlIHRvCj4ga2VlcCB0aGUgY29tbWl0cyBjb25zaXN0ZW50LCBidXQgSSBjYW4gcmUt
+d29yayBvbiB0aGF0IGlmIGl0IG1ha2VzCj4gdGhpbmdzIGNsZWFyZXIuCgpMZXQncyB3YWl0IGZv
+ciBtb3JlIGZlZWRiYWNrIGJlZm9yZSB0YWtpbmcgYSBkZWNpc2lvbiBvbiB0aGlzIGFzcGVjdC4K
+Cj4gCj4gPiAgIAo+ID4+Cj4gPj4gSSBhbHNvIHNlZSB0aGF0IGZvciByZWFsIGFzeW5jIHVwZGF0
+ZXMsIHRoZSBmbGFnCj4gPj4gRFJNX01PREVfUEFHRV9GTElQX0FTWU5DIGNhbiBiZSB1c2VkIGlu
+IGEgbm9ybWFsIHN5bmMgdXBkYXRlIChpdCBpcwo+ID4+IGFscmVhZHkgYmVpbmcgdXNlZCBieSBz
+b21lIGRyaXZlcnMgYWN0dWFsbHksIGluIHRoZSBhdG9taWMgcGF0aCwgbm90IG9ubHkKPiA+PiBp
+biB0aGUgbGVnYWN5IHBhZ2UgZmxpcCwgYXQgbGVhc3QgaXMgd2hhdCBJIHVuZGVyc3Rvb2QgZnJv
+bQo+ID4+IGFtZGdwdV9kbV9hdG9taWNfY29tbWl0X3RhaWwoKSBpbXBsZW1lbnRhdGlvbikuICAK
+PiA+IAo+ID4gWWVzLCByaWdodCBub3csIGFzeW5jIGRvZXMgbm90IG5lY2Vzc2FyaWx5IGltcGx5
+IG5vbi1ibG9jaywgYnV0Cj4gPiBEYW5pZWwgc2VlbWVkIHRvIHRoaW5rIHRoYXQgbW9zdCB1c2Vy
+cyB3YW50IG5vbi1ibG9jayB3aGVuIHRoZXkgZG8gYW4KPiA+IGFzeW5jIHBhZ2UgZmxpcCwgc28g
+bWF5YmUgaXQgc2hvdWxkIGJlIGNsYXJpZmllZCB0b28uICAKPiAKPiB1c2VycyBjb3VsZCBjb21i
+aW5lIE5PTkJMT0NLIGZsYWcgd2l0aCBQQUdFX0ZMSVBfQVNZTkMsIG5vPyAod2UgbmVlZCB0bwo+
+IGFkZCBjb2RlIGZvciBpdCBvZiBjb3Vyc2UpLgoKSSBndWVzcyBBTUQgZ29lcyB0aHJvdWdoIHRo
+ZSBzeW5jIHVwZGF0ZSBwYXRoIHRvIGd1YXJhbnRlZSB0aGF0IGZlbmNlcwphcmUgc2lnbmFsZWQg
+YmVmb3JlIGRvaW5nIHRoZSBwYWdlIGZsaXAsIGJ1dCBtb3N0IG9mIHRoZSB0aW1lLCB3aGVuIHlv
+dQpkbyBhbiBhc3luYyBwYWdlIGZsaXAgeW91IGRvbid0IHdhbnQgdG8gYmxvY2sgOi0pLgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpGcmVlZHJlbm8gbWFp
+bGluZyBsaXN0CkZyZWVkcmVub0BsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9mcmVlZHJlbm8=
