@@ -1,64 +1,56 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/5] clk: rockchip: Turn on "aclk_dmac1" for suspend
-Date: Fri, 12 Apr 2019 12:06:45 +0200
-Message-ID: <17495106.TRDjcDkMKC@diego>
-References: <20190411232157.55125-1-dianders@chromium.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: Add dynamic-power-coefficient for rk3288
+Date: Fri, 12 Apr 2019 12:08:21 +0200
+Message-ID: <9063550.zi1cCdPW0A@diego>
+References: <20190412000158.248080-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190411232157.55125-1-dianders@chromium.org>
+In-Reply-To: <20190412000158.248080-1-mka@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Elaine Zhang <zhangqing@rock-chips.com>, dbasehore@chromium.org, amstan@chromium.org, linux-rockchip@lists.infradead.org, briannorris@chromium.org, mka@chromium.org, ryandcase@chromium.org, Chris Zhong <zyw@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Matthias Kaehlcke <mka@chromium.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 12. April 2019, 01:21:53 CEST schrieb Douglas Anderson:
-> Experimentally it can be seen that going into deep sleep (specifically
-> setting PMU_CLR_DMA and PMU_CLR_BUS in RK3288_PMU_PWRMODE_CON1)
-> appears to fail unless "aclk_dmac1" is on.  The failure is that the
-> system never signals that it made it into suspend on the GLOBAL_PWROFF
-> pin and it just hangs.
+Am Freitag, 12. April 2019, 02:01:58 CEST schrieb Matthias Kaehlcke:
+> The value was determined with the following method:
 > 
-> NOTE that it's confirmed that it's the actual suspend that fails, not
-> one of the earlier calls to read/write registers.  Specifically if you
-> comment out the "PMU_GLOBAL_INT_DISABLE" setting in
-> rk3288_slp_mode_set() and then comment out the "cpu_do_idle()" call in
-> rockchip_lpmode_enter() then you can exercise the whole suspend path
-> without any crashing.
+> - take CPUs 1-3 offline
+> - for each OPP
+>   - set cpufreq min and max freq to OPP freq
+>   - start dhrystone benchmark
+>   - measure CPU power consumption during 10s
+>   - calculate Cx for OPPx
+>     - Cx = (Px - P1) / (Vx²fx - V1²f1)          [1]
+>       using the following units: mW / Ghz / V   [2]
+> - C = avg(C2, ..., Cn)
 > 
-> This is currently not a problem with suspend upstream because there is
-> no current way to exercise the deep suspend code.  However, anyone
-> trying to make it work will run into this issue.
+> [1] see commit 4daa001a1773 ("arm64: dts: juno: Add cpu
+>      dynamic-power-coefficient information")
+> [2] https://patchwork.kernel.org/patch/10493615/#22158551
 > 
-> This was not a problem on shipping rk3288-based Chromebooks because
-> those devices all ran on an old kernel based on 3.14.  On that kernel
-> "aclk_dmac1" appears to be left on all the time.
+> FTR, these are the values for the different OPPs:
 > 
-> There are several ways to skin this problem.
+> freq (kHz)   	mV		Px (mW)		Cx
 > 
-> A) We could add "aclk_dmac1" to the list of critical clocks and that
-> apperas to work, but presumably that wastes power.
+> 126000		900		39
+> 216000		900		66		370
+> 312000		900		95		372
+> 408000		900		122		363
+> 600000		900		177		359
+> 696000		950		230		363
+> 816000		1000		297		361
+> 1008000		1050		404		362
+> 1200000		1100		528		362
+> 1416000		1200		770		377
+> 1512000		1300		984		385
+> 1608000		1350		1156		394
 > 
-> B) We could keep a list of "struct clk" objects to enable at suspend
-> time in clk-rk3288.c and use the standard clock APIs.
-> 
-> C) We could make the rk3288-pmu driver keep a list of clocks to enable
-> at suspend time.  Presumably this would require a dts and bindings
-> change.
-> 
-> D) We could just whack the clock on in the existing syscore suspend
-> function where we whack a bunch of other clocks.  This is particularly
-> easy because we know for sure that the clock's only parent
-> ("aclk_cpu") is a critical clock so we don't need to do anything more
-> than ungate it.
-> 
-> In this case I have chosen D) because it seemed like the least work,
-> but any of the other options would presumably also work fine.
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
 
-applied for 5.2 with Elaine's rb
+I've applied this for 5.2 but moved the new entries
+below the clock properties for some more alphabetic ordering.
 
-Thanks
+
 Heiko
