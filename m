@@ -1,127 +1,141 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v2] clk: rockchip: undo several noc and special clocks as critical on rk3288
-Date: Fri, 12 Apr 2019 09:17:47 -0700
-Message-ID: <20190412161747.107107-1-dianders@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v1 5/6] clk: rockchip: add pll up and down when change pll freq
+Date: Fri, 12 Apr 2019 10:28:53 -0700
+Message-ID: <CAD=FV=XzDZHX7q-h7jAGpoqXyz_C5RJhbZuXo2gM=1kZeAwRUQ@mail.gmail.com>
+References: <1554284549-24916-1-git-send-email-zhangqing@rock-chips.com>
+ <1554284649-26764-1-git-send-email-zhangqing@rock-chips.com> <5677286.2uEqRd8HI1@diego>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5677286.2uEqRd8HI1@diego>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Caesar Wang <caesar.wang@rock-chips.com>, linux-rockchip@lists.infradead.org, mka@chromium.org, ryandcase@chromium.org, linux-clk@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Elaine Zhang <zhangqing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-clk <linux-clk@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, xxx <xxx@rock-chips.com>, xf@rock-chips.com, =?UTF-8?B?6buE5rab?= <huangtao@rock-chips.com>, Brian Norris <briannorris@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This is mostly a revert of commit 55bb6a633c33 ("clk: rockchip: mark
-noc and some special clk as critical on rk3288") except that we're
-keeping "pmu_hclk_otg0" as critical still.
+Hi,
 
-NOTE: turning these clocks off doesn't seem to do a whole lot in terms
-of power savings (checking the power on the logic rail).  It appears
-to save maybe 1-2mW.  ...but still it seems like we should turn the
-clocks off if they aren't needed.
-
-About "pmu_hclk_otg0" (the one clock from the original commit we're
-still keeping critical) from an email thread:
-
-> pmu ahb clock
+On Fri, Apr 12, 2019 at 5:16 AM Heiko St=C3=BCbner <heiko@sntech.de> wrote:
 >
-> Function: Clock to pmu module when hibernation and/or ADP is
-> enabled. Must be greater than or equal to 30 MHz.
+> Hi Elaine,
 >
-> If the SOC design does not support hibernation/ADP function, only have
-> hclk_otg, this clk can be switched according to the usage of otg.
-> If the SOC design support hibernation/ADP, has two clocks, hclk_otg and
-> pmu_hclk_otg0.
-> Hclk_otg belongs to the closed part of otg logic, which can be switched
-> according to the use of otg.
+> Am Mittwoch, 3. April 2019, 11:44:09 CEST schrieb Elaine Zhang:
+> > set pll sequence:
+> >       ->set pll to slow mode or other plls
+> >       ->set pll down
+> >       ->set pll params
+> >       ->set pll up
+> >       ->wait pll lock status
+> >       ->set pll to normal mode
+> >
+> > To slove the system error:
+> > wait_pll_lock: timeout waiting for pll to lock
+> > pll_set_params: pll update unsucessful,
+> >               trying to restore old params
 >
-> pmu_hclk_otg0 belongs to the always on part.
+> Can you tell me on what soc this was experienced?
 >
-> As for whether pmu_hclk_otg0 can be turned off when otg is not in use,
-> we have not tested. IC suggest make pmu_hclk_otg0 always on.
+> The patch includes rk3399, but I don't think the CrOS kernel
+> does powerdown the pll when changing the cpu-frequency
+> [added Doug and Brian for clarification and possible testing :-) ]
 
-For the rest of the clocks:
+As far as I can tell you're right.  We don't seem to have it and I'm
+not aware of problems.
 
-atclk: No documentation about this clock other than that it goes to
-the CPU.  CPU functions fine without it on.  Maybe needed for JTAG?
 
-jtag: Presumably this clock is only needed if you're debugging with
-JTAG.  It doesn't seem like it makes sense to waste power for every
-rk3288 user.  In any case to do JTAG you'd need private patches to
-adjust the pinctrl the mux the JTAG out anyway.
+> But I did find that the M0 code in ATF does actually power-down the
+> PLL and follow your outline from above. So essentially I'd just like
+> a thumbs up from chromeos people if they have the time.
 
-pclk_dbg, pclk_core_niu: On veyron Chromebooks we turn these two
-clocks on only during kernel panics in order to access some coresight
-registers.  Since nothing in the upstream kernel does this we should
-be able to leave them off safely.  Maybe also needed for JTAG?
+It does seem like it should be fine in general to do it.  It's one
+extra step but presumably it should be fine.
 
-hsicphy12m_xin12m: There is no indication of why this clock would need
-to be turned on for boards that don't use HSIC.
+In general the Rockchip PLL programming guidelines have always been a
+bit funny.  Looking at the version of the doc I have, I see phrases
+like "The PLL programming support changed on-the-fly and the PLL will
+simply slew to the new frequency" which makes me feel like you're
+supposed to be able to change the PLL frequency without powering down.
+This is repeated in another part of the manual which talks about the
+glitches that can happen when changing the PLL on the fly: it doesn't
+say not to do it, it just says to expect glitches (which can be
+avoided by changing the parent first).
 
-pclk_ddrupctl[0-1], pclk_publ0[0-1]: On veyron Chromebooks we turn
-these 4 clocks on only when doing DDR transitions and they are off
-otherwise.  I see no reason why they'd need to be on in the upstream
-kernel which doesn't support DDRFreq.
+...but then in another section of the doc it talks about asserting PD
+before doing a frequency change!  :-P
 
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
+Though in that same section it says: "Release PD after no less than
+1us from the time it was asserted."  Even though probably 1 us has
+passed, I'd still expect a udelay(1) to be explicit here.
 
-Changes in v2:
-- Now keep pmu_hclk_otg0 as critical.
-- Updated description since this isn't a clean revert.
-- PWM patches have landed, so just one patch in the series now.
 
- drivers/clk/rockchip/clk-rk3288.c | 13 ++++---------
- 1 file changed, 4 insertions(+), 9 deletions(-)
+One other thing that concerns me a little about this patch is that I
+wonder if it is legal to call rockchip_rk3399_pll_set_params() while
+the PLL is off.  AKA is it OK to change the rate of a PLL while it is
+not enabled?  I'm not saying that this would have worked before
+(actually, you might end up hitting the exact error "timeout waiting
+for pll to lock"), but now it seems even worse because we'll
+implicitly turning on the PLL.  ...a part of me wonders if this is the
+root cause of the problem Elaine's patch is trying to solve: that some
+code was trying to set the rate of a PLL before enabling it.
 
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index f47d514cba36..13668ad59f2e 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -313,13 +313,13 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	COMPOSITE_NOMUX(0, "aclk_core_mp", "armclk", CLK_IGNORE_UNUSED,
- 			RK3288_CLKSEL_CON(0), 4, 4, DFLAGS | CLK_DIVIDER_READ_ONLY,
- 			RK3288_CLKGATE_CON(12), 6, GFLAGS),
--	COMPOSITE_NOMUX(0, "atclk", "armclk", CLK_IGNORE_UNUSED,
-+	COMPOSITE_NOMUX(0, "atclk", "armclk", 0,
- 			RK3288_CLKSEL_CON(37), 4, 5, DFLAGS | CLK_DIVIDER_READ_ONLY,
- 			RK3288_CLKGATE_CON(12), 7, GFLAGS),
- 	COMPOSITE_NOMUX(0, "pclk_dbg_pre", "armclk", CLK_IGNORE_UNUSED,
- 			RK3288_CLKSEL_CON(37), 9, 5, DFLAGS | CLK_DIVIDER_READ_ONLY,
- 			RK3288_CLKGATE_CON(12), 8, GFLAGS),
--	GATE(0, "pclk_dbg", "pclk_dbg_pre", CLK_IGNORE_UNUSED,
-+	GATE(0, "pclk_dbg", "pclk_dbg_pre", 0,
- 			RK3288_CLKGATE_CON(12), 9, GFLAGS),
- 	GATE(0, "cs_dbg", "pclk_dbg_pre", CLK_IGNORE_UNUSED,
- 			RK3288_CLKGATE_CON(12), 10, GFLAGS),
-@@ -647,7 +647,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	INVERTER(SCLK_HSADC, "sclk_hsadc", "sclk_hsadc_out",
- 			RK3288_CLKSEL_CON(22), 7, IFLAGS),
- 
--	GATE(0, "jtag", "ext_jtag", CLK_IGNORE_UNUSED,
-+	GATE(0, "jtag", "ext_jtag", 0,
- 			RK3288_CLKGATE_CON(4), 14, GFLAGS),
- 
- 	COMPOSITE_NODIV(SCLK_USBPHY480M_SRC, "usbphy480m_src", mux_usbphy480m_p, 0,
-@@ -656,7 +656,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	COMPOSITE_NODIV(SCLK_HSICPHY480M, "sclk_hsicphy480m", mux_hsicphy480m_p, 0,
- 			RK3288_CLKSEL_CON(29), 0, 2, MFLAGS,
- 			RK3288_CLKGATE_CON(3), 6, GFLAGS),
--	GATE(0, "hsicphy12m_xin12m", "xin12m", CLK_IGNORE_UNUSED,
-+	GATE(0, "hsicphy12m_xin12m", "xin12m", 0,
- 			RK3288_CLKGATE_CON(13), 9, GFLAGS),
- 	DIV(0, "hsicphy12m_usbphy", "sclk_hsicphy480m", 0,
- 			RK3288_CLKSEL_CON(11), 8, 6, DFLAGS),
-@@ -837,11 +837,6 @@ static const char *const rk3288_critical_clocks[] __initconst = {
- 	"pclk_alive_niu",
- 	"pclk_pd_pmu",
- 	"pclk_pmu_niu",
--	"pclk_core_niu",
--	"pclk_ddrupctl0",
--	"pclk_publ0",
--	"pclk_ddrupctl1",
--	"pclk_publ1",
- 	"pmu_hclk_otg0",
- 	/* pwm-regulators on some boards, so handoff-critical later */
- 	"pclk_rkpwm",
--- 
-2.21.0.392.gf8f6787159e-goog
+
+So, tl; dr:
+* I doubt this patch is needed on rk3399, but it probably won't hurt.
+* If you're going to do the power down, you should add the udelay()
+* There's a bug on 3036.  See below.
+* You should change your patch so it doesn't enable the PLL if it
+wasn't already enabled.
+
+
+> > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> > ---
+> >  drivers/clk/rockchip/clk-pll.c | 19 +++++++++++++++++++
+> >  1 file changed, 19 insertions(+)
+> >
+> > diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-=
+pll.c
+> > index dd0433d4753e..9fe1227e77e9 100644
+> > --- a/drivers/clk/rockchip/clk-pll.c
+> > +++ b/drivers/clk/rockchip/clk-pll.c
+> > @@ -208,6 +208,11 @@ static int rockchip_rk3036_pll_set_params(struct r=
+ockchip_clk_pll *pll,
+> >               rate_change_remuxed =3D 1;
+> >       }
+> >
+> > +     /* set pll power down */
+> > +     writel(HIWORD_UPDATE(1,
+> > +                          RK3036_PLLCON1_PWRDOWN, 13),
+
+This does not do what you think it does.  It should be:
+
+HIWORD_UPDATE(RK3036_PLLCON1_PWRDOWN,
+     RK3036_PLLCON1_PWRDOWN, 0)
+
+...without that my compiler yells at me:
+
+signed shift result (0x40000000000) requires 44 bits to represent
+
+...and the compiler is, indeed, correct.
+
+
+> > +            pll->reg_base + RK3036_PLLCON(1));
+> > +
+> >       /* update pll values */
+> >       writel_relaxed(HIWORD_UPDATE(rate->fbdiv, RK3036_PLLCON0_FBDIV_MA=
+SK,
+> >                                         RK3036_PLLCON0_FBDIV_SHIFT) |
+> > @@ -229,6 +234,10 @@ static int rockchip_rk3036_pll_set_params(struct r=
+ockchip_clk_pll *pll,
+> >       pllcon |=3D rate->frac << RK3036_PLLCON2_FRAC_SHIFT;
+> >       writel_relaxed(pllcon, pll->reg_base + RK3036_PLLCON(2));
+> >
+> > +     /* set pll power up */
+> > +     writel(HIWORD_UPDATE(0, RK3036_PLLCON1_PWRDOWN, 13),
+> > +            pll->reg_base + RK3036_PLLCON(1));
+
+In a similar vein, the above should be:
+
+writel(HIWORD_UPDATE(0, RK3036_PLLCON1_PWRDOWN, 0),
+
+...since RK3036_PLLCON1_PWRDOWN already has the shift.
