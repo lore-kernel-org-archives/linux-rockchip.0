@@ -1,51 +1,61 @@
-From: Alyssa Rosenzweig <alyssa@rosenzweig.io>
-Subject: [PATCH] ASoC: rockchip: Select DMA_PL330 by RK3399 audio
-Date: Sun, 14 Apr 2019 14:02:12 -0700
-Message-ID: <20190414210212.2144-1-alyssa@rosenzweig.io>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] PCI: rockchip: fix bitwise operations on status and
+ ROCKCHIP_PCIE_EP_CMD_STATUS_IS
+Date: Mon, 15 Apr 2019 09:46:54 +0800
+Message-ID: <1df4816e-8d16-e894-e99e-ee16cd1c4cb8@rock-chips.com>
+References: <20190330150910.9389-1-colin.king@canonical.com>
+ <20190412095125.GB8113@red-moon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=gbk; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-rockchip@lists.infradead.org
-Cc: alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Mark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org, Alyssa Rosenzweig <alyssa@rosenzweig.io>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190412095125.GB8113@red-moon>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Colin King <colin.king@canonical.com>
+Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Without the appropriate DMA controller selected, the RK3399 audio
-drivers compile but fail immediately. Accordingly, selecting the RK3399
-audio without the corresponding PL330 controller is an invalid
-configuration. Prevent errors (otherwise forcing the driver to unload at
-runtime)  by an appropriate `select` directive in the Kconfig.
 
-Signed-off-by: Alyssa Rosenzweig <alyssa@rosenzweig.io>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Liam Girdwood <lgirdwood@gmail.com>
-Cc: Mark Brown <broonie@kernel.org>
-Cc: Jaroslav Kysela <perex@perex.cz>
-Cc: Takashi Iwai <tiwai@suse.com>
----
- sound/soc/rockchip/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+On 2019/4/12 17:51, Lorenzo Pieralisi wrote:
+> On Sat, Mar 30, 2019 at 03:09:10PM +0000, Colin King wrote:
+>> From: Colin Ian King <colin.king@canonical.com>
+>>
+>> Currently the bitwise operations on the u16 variable 'status' with
+>> the setting ROCKCHIP_PCIE_EP_CMD_STATUS_IS are incorrect because
+>> ROCKCHIP_PCIE_EP_CMD_STATUS_IS is 1UL<<19 which is wider than the
+>> u16 variable.  Fix this by making status a u32.  (Not tested).
+>>
+>> Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
+>> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+>> ---
+>>   drivers/pci/controller/pcie-rockchip-ep.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> Shawn,
+> 
+> I need your ACK on this patch, thanks.
 
-diff --git a/sound/soc/rockchip/Kconfig b/sound/soc/rockchip/Kconfig
-index 957046ac6c8c..fa3cab461a60 100644
---- a/sound/soc/rockchip/Kconfig
-+++ b/sound/soc/rockchip/Kconfig
-@@ -73,6 +73,7 @@ config SND_SOC_RK3399_GRU_SOUND
- 	select SND_SOC_RT5514_SPI
- 	select SND_SOC_HDMI_CODEC
- 	select SND_SOC_DMIC
-+	select PL330_DMA
- 	help
- 	  Say Y or M here if you want to add support multiple codecs for SoC
- 	  audio on Rockchip RK3399 GRU boards.
--- 
-2.20.1
+Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+> 
+> Lorenzo
+> 
+>> diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
+>> index a5d799e2dff2..d743b0a48988 100644
+>> --- a/drivers/pci/controller/pcie-rockchip-ep.c
+>> +++ b/drivers/pci/controller/pcie-rockchip-ep.c
+>> @@ -350,7 +350,7 @@ static void rockchip_pcie_ep_assert_intx(struct rockchip_pcie_ep *ep, u8 fn,
+>>   	struct rockchip_pcie *rockchip = &ep->rockchip;
+>>   	u32 r = ep->max_regions - 1;
+>>   	u32 offset;
+>> -	u16 status;
+>> +	u32 status;
+>>   	u8 msg_code;
+>>   
+>>   	if (unlikely(ep->irq_pci_addr != ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR ||
+>> -- 
+>> 2.20.1
+>>
+> 
+> 
+> 
