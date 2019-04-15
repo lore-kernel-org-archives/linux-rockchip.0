@@ -1,32 +1,113 @@
-From: Tom Murphy <tmurphy@arista.com>
-Subject: Re: [PATCH 5/9] iommu/amd: Implement .flush_np_cache
-Date: Mon, 15 Apr 2019 19:18:21 +0100
-Message-ID: <CAPL0++49xZk=bfkBu4e0cS_NA3gs7_z0tiifZBL+Jp8d_6S1rg@mail.gmail.com>
-References: <20190411184741.27540-1-tmurphy@arista.com> <20190411184741.27540-6-tmurphy@arista.com>
- <20190415063351.GD1377@infradead.org>
+From: =?UTF-8?q?Ga=C3=ABl=20PORTAY?= <gael.portay@collabora.com>
+Subject: [PATCH v4 0/5] Add support for drm/rockchip to dynamically control the DDR frequency.
+Date: Mon, 15 Apr 2019 17:29:43 -0400
+Message-ID: <20190415212948.7736-1-gael.portay@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190415063351.GD1377@infradead.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Christoph Hellwig <hch@infradead.org>, joerg.roedel@amd.com
-Cc: iommu@lists.linux-foundation.org, Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, David Brown <david.brown@linaro.org>, linux-samsung-soc@vger.kernel.org, Dmitry Safonov <dima@arista.com>, Krzysztof Kozlowski <krzk@kernel.org>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Andy Gross <andy.gross@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Tom Murphy <murphyt7@tcd.ie>, Robin Murphy <robin.murphy@arm.com>
+To: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lin Huang <hl@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Derek Basehore <dbasehore@chromium.org>, Randy Li <ayaka@soulik.info>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, =?UTF-8?q?Ga=C3=ABl=20PORTAY?= <gael.portay@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This is a cut and paste from the current amd_iommu driver. I really
-have no idea if it's a good idea or not. It looks like
-joerg.roedel@amd.com might be the person to ask.
+Dear all,
 
-@Joerg Roedel should we keep this?
+The rk3399 platform has a DFI controller that can monitor DDR load and a
+DMC driver that talks with the TF-A (Trusted Firmware-A) to dynamically
+set the DDR frequency with following flow.
 
-On Mon, Apr 15, 2019 at 7:33 AM Christoph Hellwig <hch@infradead.org> wrote:
->
-> > +static void amd_iommu_flush_np_cache(struct iommu_domain *domain,
-> > +             unsigned long iova, size_t size)
-> > +{
-> > +     struct protection_domain *dom = to_pdomain(domain);
-> > +
-> > +     if (unlikely(amd_iommu_np_cache)) {
->
-> Is this case really so unlikely that it needs a static branch prediction
-> hint?
+             kernel                          Trusted Firmware-A
+                                                  (bl31)
+        monitor ddr load
+                |
+                |
+        get_target_rate
+                |
+                |           pass rate to TF-A
+        clk_set_rate(ddr) --------------------->run ddr dvs flow
+                                                    |
+                                                    |
+                 <------------------------------end ddr dvs flow
+                |
+                |
+              return
+
+These patches add support for devfreq to dynamically control the DDR
+frequency for the gru chromebooks. By default it uses the
+'simple_ondemand' governor which can adjust the frequency based on the
+DDR load.
+
+Waiting for your feedback.
+
+Best regards,
+Gaël
+
+Note: The RFC and the first patchset contained three patches to sync the
+DDR frequency change within the vblank. These patches was removed.
+
+Changes in v4:
+- [PATCH v3 1/5] Add Acked-by: MyungJoo Ham <myungjoo.ham@samsung.com>.
+- [PATCH v3 2/5] Add Acked-by: MyungJoo Ham <myungjoo.ham@samsung.com>.
+- [PATCH v3 3/5] Add Acked-by: MyungJoo Ham <myungjoo.ham@samsung.com>.
+- [PATCH v3 4/5] Remove board related DDR settings (moved to 5/5).
+- [PATCH v3 5/5] Add board related DDR settings (moved from 5/5).
+
+Changes in v3:
+- [PATCH v2 1/5] Add Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>.
+- [PATCH v2 2/5] Add Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>.
+- [PATCH v2 3/5] Add Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>.
+		 Remove comments.
+		 Move pmu dt parsing after dt-parsing of timings to fix
+		  data->odt_dis_freq value.
+- [PATCH v2 5/5] Remove display_subsystem nodes.
+
+Changes in v2:
+- [PATCH 1/8] Really add Acked-by: Chanwoo Choi <cw00.choi@samsung.com>.
+- [PATCH 4/8] Removed from patchset.
+- [PATCH 5/8] Removed from patchset.
+- [PATCH 6/8] Removed from patchset.
+- [PATCH 7/8] Reword the commit message to reflect the removal of
+              rk3390-dram-default-timing.dts in v1.
+- [PATCH 8/8] Move center-supply attribute of dmc node in file
+              rk3399-gru-chromebook.dtsi (where ppvar_centerlogic is
+	      defined).
+
+Changes in v1:
+- [RFC 1/10] Add Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
+- [RFC 1/10] s/Generic/General/ (Robin Murphy)
+- [RFC 2/10] Add reviewed and acked tags from Chanwoo Choi and Rob Herring
+- [RFC 3/10] Add an explanation for platform SIP calls.
+- [RFC 3/10] Change if statement for a switch.
+- [RFC 3/10] Rename ddr_flag to odt_enable to be more clear.
+- [RFC 4/10] Removed from the series. I did not found a use case where not holding the mutex causes the issue.
+- [RFC 7/10] Removed from the series. I did not found a use case where this matters.
+- [RFC 8/10] Move rk3399-dram.h to dt-includes.
+- [RFC 8/10] Put sdram default values under the dmc node.
+- [RFC 8/10] Removed rk3399-dram-default-timing.dts
+
+Enric Balletbo i Serra (3):
+  devfreq: rockchip-dfi: Move GRF definitions to a common place.
+  dt-bindings: devfreq: rk3399_dmc: Add rockchip,pmu phandle.
+  devfreq: rk3399_dmc: Pass ODT and auto power down parameters to TF-A.
+
+Lin Huang (2):
+  arm64: dts: rk3399: Add dfi and dmc nodes.
+  arm64: dts: rockchip: Enable dmc and dfi nodes on gru.
+
+ .../bindings/devfreq/rk3399_dmc.txt           |  2 +
+ .../dts/rockchip/rk3399-gru-chromebook.dtsi   |  4 +
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  | 46 ++++++++++++
+ .../boot/dts/rockchip/rk3399-op1-opp.dtsi     | 29 ++++++++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi      | 19 +++++
+ drivers/devfreq/event/rockchip-dfi.c          | 23 ++----
+ drivers/devfreq/rk3399_dmc.c                  | 71 +++++++++++++++++-
+ include/dt-bindings/power/rk3399-dram.h       | 73 +++++++++++++++++++
+ include/soc/rockchip/rk3399_grf.h             | 21 ++++++
+ include/soc/rockchip/rockchip_sip.h           |  1 +
+ 10 files changed, 272 insertions(+), 17 deletions(-)
+ create mode 100644 include/dt-bindings/power/rk3399-dram.h
+ create mode 100644 include/soc/rockchip/rk3399_grf.h
+
+-- 
+2.21.0
