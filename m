@@ -1,50 +1,97 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH] PCI: rockchip: fix bitwise operations on status and
- ROCKCHIP_PCIE_EP_CMD_STATUS_IS
-Date: Mon, 15 Apr 2019 11:03:01 +0100
-Message-ID: <20190415100301.GA12127@red-moon>
-References: <20190330150910.9389-1-colin.king@canonical.com>
+From: Jonas Gorski <jonas.gorski@gmail.com>
+Subject: [PATCH RFT V2 0/8] clk: make register endianness a run-time property
+Date: Mon, 15 Apr 2019 12:10:38 +0200
+Message-ID: <20190415101046.5872-1-jonas.gorski@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190330150910.9389-1-colin.king@canonical.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Colin King <colin.king@canonical.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-clk@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org
+Cc: Peter De Schrijver <pdeschrijver@nvidia.com>, Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@kernel.org>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Michael Turquette <mturquette@baylibre.com>, Michal Simek <michal.simek@xilinx.com>, Jonathan Hunter <jonathanh@nvidia.com>, Prashant Gaikwad <pgaikwad@nvidia.com>, Paul Mackerras <paulus@samba.org>, NXP Linux Team <linux-imx@nxp.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Michael Ellerman <mpe@ellerman.id.au>, Thierry Reding <thierry.reding@gmail.com>, Anatolij Gustschin <agust@denx.de>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Mar 30, 2019 at 03:09:10PM +0000, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
-> 
-> Currently the bitwise operations on the u16 variable 'status' with
-> the setting ROCKCHIP_PCIE_EP_CMD_STATUS_IS are incorrect because
-> ROCKCHIP_PCIE_EP_CMD_STATUS_IS is 1UL<<19 which is wider than the
-> u16 variable.  Fix this by making status a u32.  (Not tested).
-> 
-> Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
-> ---
->  drivers/pci/controller/pcie-rockchip-ep.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+Currently the endianness for register accesses of basic clocks if fixed
+based on the architecture (BE for PowerPC, LE for everyone else). This
+is inconvenient for architectures that support both.
 
-Applied to pci/rockchip for v5.2, thanks.
+To avoid adding more rules to the #ifdef, this patchset adds new flags
+to the basic clocks to tag the registers as BE then converts the only
+big endian machine PowerPC to use it.
 
-Lorenzo
+While not used by PowerPC, also add big endian support to clk-fractional-
+divider and clk-multiplier, to cover all basic clocks.
+Technically clk-multiplier isn't one as it doesn't provide any
+registration functions and none of its users set the basic clock flag,
+but nevertheless it and its flags are defined clk-provider.h. So I think
+it's close enough to a basic clock to still count.
 
-> diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-> index a5d799e2dff2..d743b0a48988 100644
-> --- a/drivers/pci/controller/pcie-rockchip-ep.c
-> +++ b/drivers/pci/controller/pcie-rockchip-ep.c
-> @@ -350,7 +350,7 @@ static void rockchip_pcie_ep_assert_intx(struct rockchip_pcie_ep *ep, u8 fn,
->  	struct rockchip_pcie *rockchip = &ep->rockchip;
->  	u32 r = ep->max_regions - 1;
->  	u32 offset;
-> -	u16 status;
-> +	u32 status;
->  	u8 msg_code;
->  
->  	if (unlikely(ep->irq_pci_addr != ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR ||
-> -- 
-> 2.20.1
-> 
+That way we can drop the special casing for PowerPC, and allow other big
+endian platforms/drivers to make use of the basic clocks.
+
+In addition, we can now drop clk_readl and clk_writel, and replace them
+with normal readl and writel accessors everywhere.
+
+Still RFT because I don't have a PowerPC device to test, and especially
+not a 512x one. I did compile test it though!
+
+I looked really hard, and this is the only place I could find where a
+PowerPC platform (indirectly) used the clk accessors.
+
+None of the regular drivers in clk/ were selected in any of the powerpc
+defconfigs, and this was the only platform code that registered basic
+clocks.
+
+Changelog:
+
+V1 -> V2:
+ * switch from global flag to per-clock flag
+ * also added fractional divider and multiplier clocks, to make all
+   basic or quasi basic clocks support big endian
+ * reordered the basic clock patches in alphabetical order
+ * drop clk_{readl,writel} instead of adding BE variants and use
+   common accessors directly
+ * dropped the RFC, as I got comments (yay). More always welcome of
+   course :-)
+
+Jonas Gorski (8):
+  clk: divider: add explicit big endian support
+  clk: fractional-divider: add explicit big endian support
+  clk: gate: add explicit big endian support
+  clk: multiplier: add explicit big endian support
+  clk: mux: add explicit big endian support
+  powerpc/512x: mark clocks as big endian
+  clk: core: remove powerpc special handling
+  clk: core: replace clk_{readl,writel} with {readl,writel}
+
+ arch/powerpc/platforms/512x/clock-commonclk.c | 11 +++---
+ drivers/clk/clk-divider.c                     | 26 +++++++++++---
+ drivers/clk/clk-fractional-divider.c          | 22 ++++++++++--
+ drivers/clk/clk-gate.c                        | 22 ++++++++++--
+ drivers/clk/clk-multiplier.c                  | 22 ++++++++++--
+ drivers/clk/clk-mux.c                         | 22 ++++++++++--
+ drivers/clk/clk-xgene.c                       |  6 ++--
+ drivers/clk/hisilicon/clk-hisi-phase.c        |  4 +--
+ drivers/clk/imx/clk-divider-gate.c            | 20 +++++------
+ drivers/clk/imx/clk-sccg-pll.c                | 12 +++----
+ drivers/clk/nxp/clk-lpc18xx-ccu.c             |  6 ++--
+ drivers/clk/nxp/clk-lpc18xx-cgu.c             | 24 ++++++-------
+ drivers/clk/rockchip/clk-ddr.c                |  2 +-
+ drivers/clk/rockchip/clk-half-divider.c       |  6 ++--
+ drivers/clk/tegra/clk-tegra124.c              |  4 +--
+ drivers/clk/tegra/clk-tegra210.c              |  6 ++--
+ drivers/clk/zynq/clkc.c                       |  6 ++--
+ drivers/clk/zynq/pll.c                        | 18 +++++-----
+ include/linux/clk-provider.h                  | 51 +++++++++++----------------
+ 19 files changed, 182 insertions(+), 108 deletions(-)
+
+-- 
+2.13.2
