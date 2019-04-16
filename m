@@ -1,7 +1,8 @@
 From: Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [REBASE PATCH v5 8/9] xen/gntdev.c: Convert to use vm_map_pages()
-Date: Tue, 16 Apr 2019 17:19:49 +0530
-Message-ID: <88e56e82d2db98705c2d842e9c9806c00b366d67.1552921225.git.jrdr.linux__43142.3969146394$1555415284$gmane$org@gmail.com>
+Subject: [REBASE PATCH v5 9/9] xen/privcmd-buf.c: Convert to use
+	vm_map_pages_zero()
+Date: Tue, 16 Apr 2019 17:19:50 +0530
+Message-ID: <acf678e81d554d01a9b590716ac0ccbdcdf71c25.1552921225.git.jrdr.linux__43053.4463770286$1555415295$gmane$org@gmail.com>
 References: <cover.1552921225.git.jrdr.linux@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -23,47 +24,38 @@ To: akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, willy-wEGCiKHe2LqWVf
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, xen-devel-GuqFBffKawuEi8DpZVb4nw@public.gmane.org, linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux1394-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Convert to use vm_map_pages() to map range of kernel
+Convert to use vm_map_pages_zero() to map range of kernel
 memory to user vma.
 
-map->count is passed to vm_map_pages() and internal API
-verify map->count against count ( count = vma_pages(vma))
-for page array boundary overrun condition.
+This driver has ignored vm_pgoff. We could later "fix" these drivers
+to behave according to the normal vm_pgoff offsetting simply by
+removing the _zero suffix on the function name and if that causes
+regressions, it gives us an easy way to revert.
 
 Signed-off-by: Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Reviewed-by: Boris Ostrovsky <boris.ostrovsky-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
 ---
- drivers/xen/gntdev.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
+ drivers/xen/privcmd-buf.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/xen/gntdev.c b/drivers/xen/gntdev.c
-index 5efc5ee..5d64262 100644
---- a/drivers/xen/gntdev.c
-+++ b/drivers/xen/gntdev.c
-@@ -1084,7 +1084,7 @@ static int gntdev_mmap(struct file *flip, struct vm_area_struct *vma)
- 	int index = vma->vm_pgoff;
- 	int count = vma_pages(vma);
- 	struct gntdev_grant_map *map;
--	int i, err = -EINVAL;
-+	int err = -EINVAL;
- 
- 	if ((vma->vm_flags & VM_WRITE) && !(vma->vm_flags & VM_SHARED))
- 		return -EINVAL;
-@@ -1145,12 +1145,9 @@ static int gntdev_mmap(struct file *flip, struct vm_area_struct *vma)
- 		goto out_put_map;
- 
- 	if (!use_ptemod) {
--		for (i = 0; i < count; i++) {
--			err = vm_insert_page(vma, vma->vm_start + i*PAGE_SIZE,
--				map->pages[i]);
--			if (err)
--				goto out_put_map;
+diff --git a/drivers/xen/privcmd-buf.c b/drivers/xen/privcmd-buf.c
+index de01a6d..d02dc43 100644
+--- a/drivers/xen/privcmd-buf.c
++++ b/drivers/xen/privcmd-buf.c
+@@ -166,12 +166,8 @@ static int privcmd_buf_mmap(struct file *file, struct vm_area_struct *vma)
+ 	if (vma_priv->n_pages != count)
+ 		ret = -ENOMEM;
+ 	else
+-		for (i = 0; i < vma_priv->n_pages; i++) {
+-			ret = vm_insert_page(vma, vma->vm_start + i * PAGE_SIZE,
+-					     vma_priv->pages[i]);
+-			if (ret)
+-				break;
 -		}
-+		err = vm_map_pages(vma, map->pages, map->count);
-+		if (err)
-+			goto out_put_map;
- 	} else {
- #ifdef CONFIG_X86
- 		/*
++		ret = vm_map_pages_zero(vma, vma_priv->pages,
++						vma_priv->n_pages);
+ 
+ 	if (ret)
+ 		privcmd_buf_vmapriv_free(vma_priv);
 -- 
 1.9.1
