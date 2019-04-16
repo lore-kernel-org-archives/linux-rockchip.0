@@ -1,13 +1,15 @@
 From: Mark Brown <broonie@kernel.org>
 Subject: Re: [PATCH] ASoC: rockchip: Select DMA_PL330 by RK3399
 	audio
-Date: Tue, 16 Apr 2019 17:27:35 +0100
-Message-ID: <20190416162735.GI4834@sirena.org.uk>
+Date: Tue, 16 Apr 2019 17:37:17 +0100
+Message-ID: <20190416163717.GJ4834@sirena.org.uk>
 References: <20190414210212.2144-1-alyssa@rosenzweig.io>
+ <20190416162735.GI4834@sirena.org.uk>
+ <20190416163434.GB17199@rosenzweig.io>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============6333624106899294032=="
+Content-Type: multipart/mixed; boundary="===============8485183367496144235=="
 Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20190414210212.2144-1-alyssa@rosenzweig.io>
+In-Reply-To: <20190416163434.GB17199@rosenzweig.io>
 List-Unsubscribe: <https://mailman.alsa-project.org/mailman/options/alsa-devel>,
  <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
 List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
@@ -22,56 +24,45 @@ Cc: alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Takashi Iwai 
 List-Id: linux-rockchip.vger.kernel.org
 
 
---===============6333624106899294032==
+--===============8485183367496144235==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="rCb8EA+9TsBVtA92"
+	protocol="application/pgp-signature"; boundary="F4+N/OgRSdC8YnqX"
 Content-Disposition: inline
 
 
---rCb8EA+9TsBVtA92
+--F4+N/OgRSdC8YnqX
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-On Sun, Apr 14, 2019 at 02:02:12PM -0700, Alyssa Rosenzweig wrote:
-> Without the appropriate DMA controller selected, the RK3399 audio
-> drivers compile but fail immediately. Accordingly, selecting the RK3399
-> audio without the corresponding PL330 controller is an invalid
-> configuration. Prevent errors (otherwise forcing the driver to unload at
-> runtime)  by an appropriate `select` directive in the Kconfig.
+On Tue, Apr 16, 2019 at 09:34:34AM -0700, Alyssa Rosenzweig wrote:
 
-This breaks the build as it enables CONFIG_PL330 but that depends on
-AMBA which isn't selected so we end up with:
+> Independent of this, should PL330 be selecting AMBA then?
 
-ld: drivers/dma/pl330.o: in function `pl330_driver_init':
-pl330.c:(.init.text+0x8): undefined reference to `amba_driver_register'
-ld: drivers/dma/pl330.o: in function `pl330_driver_exit':
-pl330.c:(.exit.text+0x8): undefined reference to `amba_driver_unregister'
-make: *** [Makefile:1029: vmlinux] Error 1
+No, it's a dependency already.  The problem is selects ignore
+dependencies.
 
-in my test configs.
-
---rCb8EA+9TsBVtA92
+--F4+N/OgRSdC8YnqX
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAly2AncACgkQJNaLcl1U
-h9Dy7gf/X/zWP2wVe8pN6N+wdZXeihoh9hWhvrv76tXugzt39qnQyd+vjK7Qj6P9
-YVB5fGNU8fYqFdWPpSpNDKyJYVyHyu5lRqJMsrq4NlEZiDTPVKUY77hVOpOnCdxc
-TGSkuXZ1YrSym5shJOozh0WjfSpmfod9jaz8kVYcdZ/BpLAbFoK6nvjExT9FgqfU
-fMZ882Oa0YKkvkn8jHk0RggGtg276lpr/RjvxbbwiAgM3/MiVmzjg1We+Q7tOjED
-iTTlV7zS4efo9R2zUagyuD2mOZZ3OSe0Q/w+OAaJDk0LhXTvsnsWrkRyhiLRavrb
-MkSdhem4xHS7Eq11z2Y9VLV3BvOdFA==
-=7L4S
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAly2BL0ACgkQJNaLcl1U
+h9AaHQf/QMXGbWmLRrHLIBm2kZAdXpYdCckDOm+1yovetxRDHdOaY+TBNkyrCWQv
+oCI47mX1fjQUeTsjwMFJmcMvZFKMXDIexw7F7gqymK5rBm83w/4W3Hm8Y8mKw3SF
+C9Rd3XzeZCOX0VOgq2akIRVbyRuwRrVi593K70Q5amKV+b6Ahw5GNDwZh9lRxMuJ
+Lw2y36kaT+NFak0kjxKXxX/49sxuEM8ZTuMXMEKr4DTdygVwDgUAAeK0jfQBuVaW
+7JY/cUVHm87K9tKlI7wc5fpGfLsUIivCimmU7hzm0eCRKYOkJ4GFe2qHsVuEPEAw
+rutGjxazs1zw2cj1oX/D0mjcxwP4Xw==
+=WcuD
 -----END PGP SIGNATURE-----
 
---rCb8EA+9TsBVtA92--
+--F4+N/OgRSdC8YnqX--
 
---===============6333624106899294032==
+--===============8485183367496144235==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
 
---===============6333624106899294032==--
+--===============8485183367496144235==--
