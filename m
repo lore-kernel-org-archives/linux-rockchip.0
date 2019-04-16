@@ -1,130 +1,69 @@
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: Re: [PATCH v2 00/14] rockchip: Add new rk3399 boards
-Date: Tue, 16 Apr 2019 13:58:56 +0200
-Message-ID: <8216614edcf5bb4485a4ac3334be720f3677d52f.camel@bootlin.com>
-References: <20190416105647.18437-1-jagan@amarulasolutions.com>
+From: Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [REBASE PATCH v5 8/9] xen/gntdev.c: Convert to use vm_map_pages()
+Date: Tue, 16 Apr 2019 17:19:49 +0530
+Message-ID: <88e56e82d2db98705c2d842e9c9806c00b366d67.1552921225.git.jrdr.linux__18633.1600927346$1555415977$gmane$org@gmail.com>
+References: <cover.1552921225.git.jrdr.linux@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20190416105647.18437-1-jagan@amarulasolutions.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, Akash Gajjar <akash@openedev.com>
-Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <cover.1552921225.git.jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <cover.1552921225.git.jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+References: <cover.1552921225.git.jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, willy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, mhocko-IBi9RG/b67k@public.gmane.org, kirill.shutemov-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, vbabka-AlSwsSmVLrQ@public.gmane.org, riel-ebMLmSuQjDVBDgjK7y7TUQ@public.gmane.org, sfr-3FnU+UHB4dNDw9hX6IcOSA@public.gmane.org, rppt-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org, peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org, iamjoonsoo.kim-Hm3cg6mZ9cc@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, keescook-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, stefanr-MtYdepGKPcBMYopoZt5u/LNAH6kLmebB@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, oleksandr_andrushchenko-uRwfk40T5oI@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, boris.ostrovsky-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, jgross-IBi9RG/b67k@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, xen-devel-GuqFBffKawuEi8DpZVb4nw@public.gmane.org, linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux1394-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpMZSBtYXJkaSAxNiBhdnJpbCAyMDE5IMOgIDE2OjI2ICswNTMwLCBKYWdhbiBUZWtpIGEg
-w6ljcml0IDoKPiBUaGlzIHNlcmllcyBpcyBjb21iaW5hdGlvbiBvZiBwcmV2aW91cyB2ZXJzaW9u
-WzFdIHBsdXMgbmV3IHJrMzM5OQo+IGJvYXJkcyBhZGRpdGlvbi4KClRoYW5rcyBmb3IgZm9sbG93
-aW5nLXVwIG9uIHRoaXMgc2VyaWVzIQoKPiBPdmVyYWxsIHRoaXMgc2VyaWVzIGFkZCBzdXBwb3J0
-IGJlbG93IHJrMzM5OSBib2FyZHMKPiAtIE9yYW5nZXBpIFJLMzM5OQo+IC0gTmFub3BjIFQ0Cj4g
-LSBOYW5vcGkgTTQKPiAtIE5hbm9waSBORU80Cj4gLSBPcmFuZ2VwaSBSSzMzOTkKPiAtIFJvY2tw
-cm82NAo+IAo+IEFsbCB0aGUgcmVzcGVjdGl2ZSBkdHMoaSkgZmlsZXMgYXJlIHN5bmNlZCBmcm9t
-IExpbnV4IDUuMS1yYzIgYW5kIGZldwo+IGR0cyhpKSBmcm9tIGxpbnV4LW5leHQuCj4gCj4gTmFu
-b3BpIE5FTzQsIFJvY2twcm82NCBhcmUgc3VwcG9ydGluZyB2aWEgUm9ja2NoaXAgbWluaWxvYWRl
-ciwgYW5kIHJlc3QKPiBzdXBwb3J0IGJvdGggUm9ja2NoaXAgbWluaWxvYWRlciBhbG9uZyB3aXRo
-IFUtQm9vdCBTUEwuCj4gCj4gLSBSb2NrcHJvNjQsIGlzIG5vdCBwb3NzaWJsZSB0byBib290IHZp
-YSBVLUJvb3QgU1BMIHNpbmNlIGl0IGhhcyBkZXBlbmRlbmN5IHdpdGggTFBERFI0IAo+ICAgY29k
-ZSB3aGljaCBpcyB3b3JrLWluLXByb2dyZXNzIGFuZCBhcyBzb29uIGl0IGFycml2ZWQgaW4gbWFp
-bGluZyBsaXN0LCB3aWxsIHVwZGF0ZSB0aGUgCj4gICBzYW1lIHdpdGggZGRyIGR0c2kuCj4gLSBO
-YW5vcGkgTkVPNCBoYXMgc29tZSBkZHIgaXNzdWUgd2l0aFsyXSByazMzOTktc2RyYW0tZGRyMy0x
-ODY2LmR0c2ksCj4gICB3aWxsIHVwZGF0ZSB0aGUgc2FtZSB3aXRoIFUtQm9vdCBTUEwgb25jZSBp
-dCBpcyBmaXhlZC4KCkhhcyB0aGUgc3RhdHVzIGV2b2x2ZWQgc2luY2U/IEl0IGxvb2tzIGxpa2Ug
-Ym90aCBoYXZlIFNQTCBlbmFibGVkIGluCnRoaXMgc2VyaWVzLiBJZiB0aGUgU1BMIGRvZXNuJ3Qg
-c3VwcG9ydCBEUkFNIGNvbmZpZ3VyYXRpb24geWV0LCBpdApzaG91bGQgcHJvYmFibHkgYmUgZXhw
-bGljaXRseSBkaXNhYmxlZC4KCkNoZWVycywKClBhdWwKCj4gcGF0Y2ggMSwgMjogU3luYyByazMz
-OTkgZHRzaSBmaWxlcyBmcm9tIExpbnV4IDUuMS1yYzIKPiAKPiBwYXRjaCAzOiBDcmVhdGUgZ2xv
-YmFsIHJrMzM5OS11LWJvb3QuZHRzaQo+IAo+IHBhdGNoIDQ6IG1vdmUgZGVmYXVsdCBTUExfRklU
-X0dFTkVSQVRPUiB0byBLY29uZmlnCj4gCj4gcGF0Y2ggNTogTW92ZSBjb21tb24gcmszMzk5IGNv
-bmZpZ3MgaW50byBLY29uZmlnCj4gCj4gcGF0Y2ggNjogQWRkIE9yYW5nZXBpIFJLMzM5OSBzdXBw
-b3J0Cj4gCj4gcGF0Y2ggNzogU3luYyByazMzOTktbmFub3BpNC5kdHNpIGZyb20gTGludXggCj4g
-Cj4gcGF0Y2ggODogRml4IGZvciBzZG1tYyBDRCBwaW4KPiAKPiBwYXRjaCA5OiBBZGQgNEdCIExQ
-RERSMy0xODY2IGRkciBkdHNpCj4gCj4gcGF0Y2ggMTA6IEFkZCBOYW5vcGkgTTQgc3VwcG9ydAo+
-IAo+IHBhdGNoIDExOiBBZGQgTmFub3BjIFQ0IHN1cHBvcnQKPiAKPiBwYXRjaCAxMjogQWRkIE5h
-bm9waSBORU80IHN1cHBvcnQKPiAKPiBwYXRjaCAxMzogQWRkIFJvY2twcm82NCBzdXBwb3J0Cj4g
-Cj4gcGF0Y2ggMTQ6IEdsb2JhbCBkb2N1bWVudCBmb3IgYnVpbGQvZmxhc2ggCj4gCj4gWzJdIGh0
-dHBzOi8vbWFyYy5pbmZvLz9sPXUtYm9vdCZtPTE1NDY3MTgzNTMyODQ2OSZ3PTIKPiBbMV0gaHR0
-cHM6Ly9wYXRjaHdvcmsub3psYWJzLm9yZy9wYXRjaC8xMDU0MjA4Lwo+IAo+IEFueSBpbnB1dHM/
-Cj4gSmFnYW4uCj4gCj4gSmFnYW4gVGVraSAoMTQpOgo+ICAgcm9ja2NoaXA6IGR0czogcmszMzk5
-OiBTeW5jIHJrMzM5OS1vcHAgZnJvbSBMaW51eAo+ICAgcm9ja2NoaXA6IGR0czogcmszMzk5OiBT
-eW5jIHB3bTJfcGluX3B1bGxfZG93biBmcm9tIExpbnV4IDUuMS1yYzIKPiAgIHJvY2tjaGlwOiBk
-dHM6IHJrMzM5OTogQ3JlYXRlIGluaXRpYWwgcmszMzk5LXUtYm9vdC5kdHNpCj4gICBLY29uZmln
-OiBBZGQgZGVmYXVsdCBTUExfRklUX0dFTkVSQVRPUiBmb3Igcm9ja2NoaXAKPiAgIGFybTogcm9j
-a2NoaXA6IHJrMzM5OTogTW92ZSBjb21tb24gY29uZmlncyBpbiBLY29uZmlnCj4gICByb2NrY2hp
-cDogcmszMzk5OiBBZGQgT3JhbmdlcGkgUkszMzk5IHN1cHBvcnQKPiAgIHJvY2tjaGlwOiBkdHM6
-IHJrMzM5OTogU3luYyByazMzOTktbmFub3BpNC5kdHNpIGZyb20gTGludXgKPiAgIHJvY2tjaGlw
-OiBkdHM6IHJrMzM5OTogbmFub3BpNDogVXNlIENEIHBpbiBhcyBSS19GVU5DXzEKPiAgIHJvY2tj
-aGlwOiByazMzOTk6IEFkZCA0R0IgTFBERFIzLTE4NjYgRE1DIHNldHRpbmdzCj4gICByb2NrY2hp
-cDogcmszMzk5OiBBZGQgTmFub3BpIE00IGJvYXJkIHN1cHBvcnQKPiAgIHJvY2tjaGlwOiByazMz
-OTk6IEFkZCBOYW5vcGMgVDQgYm9hcmQgc3VwcG9ydAo+ICAgcm9ja2NoaXA6IHJrMzM5OTogQWRk
-IE5hbm9waSBORU80IGJvYXJkIHN1cHBvcnQKPiAgIHJvY2tjaGlwOiByazMzOTk6IEFkZCBSb2Nr
-cHJvNjQgYm9hcmQgc3VwcG9ydAo+ICAgZG9jOiByb2NrY2hpcDogQWRkIGdsb2JhbCBkb2MgZm9y
-IHJrMzM5OSBidWlsZC9mbGFzaAo+IAo+ICBLY29uZmlnICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgfCAgICAxICsKPiAgYXJjaC9hcm0vZHRzL01ha2VmaWxlICAgICAgICAg
-ICAgICAgICAgICAgICAgIHwgICAgNSArCj4gIGFyY2gvYXJtL2R0cy9yazMzOTktZXZiLmR0cyAg
-ICAgICAgICAgICAgICAgICB8ICAgIDEgLQo+ICBhcmNoL2FybS9kdHMvcmszMzk5LWZpcmVmbHku
-ZHRzICAgICAgICAgICAgICAgfCAgICAxIC0KPiAgYXJjaC9hcm0vZHRzL3JrMzM5OS1uYW5vcGMt
-dDQtdS1ib290LmR0c2kgICAgIHwgICAgNyArCj4gIGFyY2gvYXJtL2R0cy9yazMzOTktbmFub3Bj
-LXQ0LmR0cyAgICAgICAgICAgICB8ICAgOTEgKwo+ICBhcmNoL2FybS9kdHMvcmszMzk5LW5hbm9w
-aS1tNC11LWJvb3QuZHRzaSAgICAgfCAgICA3ICsKPiAgYXJjaC9hcm0vZHRzL3JrMzM5OS1uYW5v
-cGktbTQuZHRzICAgICAgICAgICAgIHwgICA2NiArCj4gIGFyY2gvYXJtL2R0cy9yazMzOTktbmFu
-b3BpLW5lbzQtdS1ib290LmR0c2kgICB8ICAgIDYgKwo+ICBhcmNoL2FybS9kdHMvcmszMzk5LW5h
-bm9waS1uZW80LmR0cyAgICAgICAgICAgfCAgIDUwICsKPiAgYXJjaC9hcm0vZHRzL3JrMzM5OS1u
-YW5vcGk0LmR0c2kgICAgICAgICAgICAgIHwgIDY5OSArKysrKysrKwo+ICBhcmNoL2FybS9kdHMv
-cmszMzk5LW9wcC5kdHNpICAgICAgICAgICAgICAgICAgfCAgMTMzICsrCj4gIGFyY2gvYXJtL2R0
-cy9yazMzOTktb3JhbmdlcGktdS1ib290LmR0c2kgICAgICB8ICAgIDcgKwo+ICBhcmNoL2FybS9k
-dHMvcmszMzk5LW9yYW5nZXBpLmR0cyAgICAgICAgICAgICAgfCAgNzcxICsrKysrKysrKwo+ICBh
-cmNoL2FybS9kdHMvcmszMzk5LXB1bWEuZHRzaSAgICAgICAgICAgICAgICAgfCAgICAxIC0KPiAg
-YXJjaC9hcm0vZHRzL3JrMzM5OS1yb2NrcHJvNjQtdS1ib290LmR0c2kgICAgIHwgICAgNiArCj4g
-IGFyY2gvYXJtL2R0cy9yazMzOTktcm9ja3BybzY0LmR0cyAgICAgICAgICAgICB8ICA3MTIgKysr
-KysrKysKPiAgLi4uL2FybS9kdHMvcmszMzk5LXNkcmFtLWxwZGRyMy00R0ItMTg2Ni5kdHNpIHwg
-MTUzNSArKysrKysrKysrKysrKysrKwo+ICBhcmNoL2FybS9kdHMvcmszMzk5LXUtYm9vdC5kdHNp
-ICAgICAgICAgICAgICAgfCAgICA4ICsKPiAgYXJjaC9hcm0vZHRzL3JrMzM5OS5kdHNpICAgICAg
-ICAgICAgICAgICAgICAgIHwgICAgNiArCj4gIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZp
-ZyAgICAgICAgICAgICAgICB8ICAgMTYgKwo+ICBib2FyZC9yb2NrY2hpcC9ldmJfcmszMzk5L01B
-SU5UQUlORVJTICAgICAgICAgfCAgIDMyICsKPiAgY29uZmlncy9jaHJvbWVib29rX2JvYl9kZWZj
-b25maWcgICAgICAgICAgICAgIHwgICAxNyAtCj4gIGNvbmZpZ3MvZXZiLXJrMzM5OV9kZWZjb25m
-aWcgICAgICAgICAgICAgICAgICB8ICAgMTcgLQo+ICBjb25maWdzL2ZpY3VzLXJrMzM5OV9kZWZj
-b25maWcgICAgICAgICAgICAgICAgfCAgIDE3IC0KPiAgY29uZmlncy9maXJlZmx5LXJrMzM5OV9k
-ZWZjb25maWcgICAgICAgICAgICAgIHwgICAxNyAtCj4gIGNvbmZpZ3MvbmFub3BjLXQ0LXJrMzM5
-OV9kZWZjb25maWcgICAgICAgICAgICB8ICAgNTggKwo+ICBjb25maWdzL25hbm9waS1tNC1yazMz
-OTlfZGVmY29uZmlnICAgICAgICAgICAgfCAgIDU4ICsKPiAgY29uZmlncy9uYW5vcGktbmVvNC1y
-azMzOTlfZGVmY29uZmlnICAgICAgICAgIHwgICA1OCArCj4gIGNvbmZpZ3Mvb3JhbmdlcGktcmsz
-Mzk5X2RlZmNvbmZpZyAgICAgICAgICAgICB8ICAgNTggKwo+ICBjb25maWdzL3B1bWEtcmszMzk5
-X2RlZmNvbmZpZyAgICAgICAgICAgICAgICAgfCAgIDE2IC0KPiAgY29uZmlncy9yb2NrOTYwLXJr
-MzM5OV9kZWZjb25maWcgICAgICAgICAgICAgIHwgICAxNyAtCj4gIGNvbmZpZ3Mvcm9ja3BybzY0
-LXJrMzM5OV9kZWZjb25maWcgICAgICAgICAgICB8ICAgNTggKwo+ICBkb2MvUkVBRE1FLnJvY2tj
-aGlwICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMjA5ICsrLQo+ICAzNCBmaWxlcyBjaGFu
-Z2VkLCA0NjU2IGluc2VydGlvbnMoKyksIDEwNSBkZWxldGlvbnMoLSkKPiAgY3JlYXRlIG1vZGUg
-MTAwNjQ0IGFyY2gvYXJtL2R0cy9yazMzOTktbmFub3BjLXQ0LXUtYm9vdC5kdHNpCj4gIGNyZWF0
-ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmszMzk5LW5hbm9wYy10NC5kdHMKPiAgY3JlYXRl
-IG1vZGUgMTAwNjQ0IGFyY2gvYXJtL2R0cy9yazMzOTktbmFub3BpLW00LXUtYm9vdC5kdHNpCj4g
-IGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmszMzk5LW5hbm9waS1tNC5kdHMKPiAg
-Y3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtL2R0cy9yazMzOTktbmFub3BpLW5lbzQtdS1ib290
-LmR0c2kKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtL2R0cy9yazMzOTktbmFub3BpLW5l
-bzQuZHRzCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmszMzk5LW5hbm9waTQu
-ZHRzaQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vZHRzL3JrMzM5OS1vcHAuZHRzaQo+
-ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vZHRzL3JrMzM5OS1vcmFuZ2VwaS11LWJvb3Qu
-ZHRzaQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vZHRzL3JrMzM5OS1vcmFuZ2VwaS5k
-dHMKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtL2R0cy9yazMzOTktcm9ja3BybzY0LXUt
-Ym9vdC5kdHNpCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmszMzk5LXJvY2tw
-cm82NC5kdHMKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtL2R0cy9yazMzOTktc2RyYW0t
-bHBkZHIzLTRHQi0xODY2LmR0c2kKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtL2R0cy9y
-azMzOTktdS1ib290LmR0c2kKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGNvbmZpZ3MvbmFub3BjLXQ0
-LXJrMzM5OV9kZWZjb25maWcKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGNvbmZpZ3MvbmFub3BpLW00
-LXJrMzM5OV9kZWZjb25maWcKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGNvbmZpZ3MvbmFub3BpLW5l
-bzQtcmszMzk5X2RlZmNvbmZpZwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgY29uZmlncy9vcmFuZ2Vw
-aS1yazMzOTlfZGVmY29uZmlnCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBjb25maWdzL3JvY2twcm82
-NC1yazMzOTlfZGVmY29uZmlnCj4gCi0tIApQYXVsIEtvY2lhbGtvd3NraSwgQm9vdGxpbgpFbWJl
-ZGRlZCBMaW51eCBhbmQga2VybmVsIGVuZ2luZWVyaW5nCmh0dHBzOi8vYm9vdGxpbi5jb20KCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWls
-aW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3Rp
-bmZvL3UtYm9vdAo=
+Convert to use vm_map_pages() to map range of kernel
+memory to user vma.
+
+map->count is passed to vm_map_pages() and internal API
+verify map->count against count ( count = vma_pages(vma))
+for page array boundary overrun condition.
+
+Signed-off-by: Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Reviewed-by: Boris Ostrovsky <boris.ostrovsky-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+---
+ drivers/xen/gntdev.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/xen/gntdev.c b/drivers/xen/gntdev.c
+index 5efc5ee..5d64262 100644
+--- a/drivers/xen/gntdev.c
++++ b/drivers/xen/gntdev.c
+@@ -1084,7 +1084,7 @@ static int gntdev_mmap(struct file *flip, struct vm_area_struct *vma)
+ 	int index = vma->vm_pgoff;
+ 	int count = vma_pages(vma);
+ 	struct gntdev_grant_map *map;
+-	int i, err = -EINVAL;
++	int err = -EINVAL;
+ 
+ 	if ((vma->vm_flags & VM_WRITE) && !(vma->vm_flags & VM_SHARED))
+ 		return -EINVAL;
+@@ -1145,12 +1145,9 @@ static int gntdev_mmap(struct file *flip, struct vm_area_struct *vma)
+ 		goto out_put_map;
+ 
+ 	if (!use_ptemod) {
+-		for (i = 0; i < count; i++) {
+-			err = vm_insert_page(vma, vma->vm_start + i*PAGE_SIZE,
+-				map->pages[i]);
+-			if (err)
+-				goto out_put_map;
+-		}
++		err = vm_map_pages(vma, map->pages, map->count);
++		if (err)
++			goto out_put_map;
+ 	} else {
+ #ifdef CONFIG_X86
+ 		/*
+-- 
+1.9.1
