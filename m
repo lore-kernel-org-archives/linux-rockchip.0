@@ -1,97 +1,77 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH 6/9] iommu/amd: Implement map_atomic
-Date: Tue, 16 Apr 2019 15:13:16 +0100
-Message-ID: <78f2114b-0dcb-2dcf-c3b3-411e064b079f@arm.com>
-References: <20190411184741.27540-1-tmurphy@arista.com>
- <20190411184741.27540-7-tmurphy@arista.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH] ASoC: rockchip: Select DMA_PL330 by RK3399
+	audio
+Date: Tue, 16 Apr 2019 17:27:35 +0100
+Message-ID: <20190416162735.GI4834@sirena.org.uk>
+References: <20190414210212.2144-1-alyssa@rosenzweig.io>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190411184741.27540-7-tmurphy@arista.com>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tom Murphy <tmurphy@arista.com>, iommu@lists.linux-foundation.org
-Cc: dima@arista.com, jamessewart@arista.com, murphyt7@tcd.ie, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Marc Zyngier <marc.zyngier@arm.com>, Thomas Gleixner <tglx@linutronix.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============6333624106899294032=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20190414210212.2144-1-alyssa@rosenzweig.io>
+List-Unsubscribe: <https://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <https://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: "Alsa-devel" <alsa-devel-bounces@alsa-project.org>
+To: Alyssa Rosenzweig <alyssa@rosenzweig.io>
+Cc: alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 11/04/2019 19:47, Tom Murphy wrote:
-> Instead of using a spin lock I removed the mutex lock from both the
-> amd_iommu_map and amd_iommu_unmap path as well. iommu_map doesn’t lock
-> while mapping and so if iommu_map is called by two different threads on
-> the same iova region it results in a race condition even with the locks.
-> So the locking in amd_iommu_map and amd_iommu_unmap doesn't add any real
-> protection. The solution to this is for whatever manages the allocated
-> iova’s externally to make sure iommu_map isn’t called twice on the same
-> region at the same time.
 
-Note that that assumption is not necessarily sufficient - even with 
-correct address space management you can have cases like two threads 
-mapping adjacent pages, where even thought they are targeting different 
-PTEs they can race to install/modify intermediate levels of the 
-pagetable. I believe AMD is actually OK in that regard, but some drivers 
-*are* relying on locking for correctness so it can't just be 
-unequivocally removed everywhere.
+--===============6333624106899294032==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="rCb8EA+9TsBVtA92"
+Content-Disposition: inline
 
-Robin.
 
-> Signed-off-by: Tom Murphy <tmurphy@arista.com>
-> ---
->   drivers/iommu/amd_iommu.c | 25 ++++++++++++++++++-------
->   1 file changed, 18 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/iommu/amd_iommu.c b/drivers/iommu/amd_iommu.c
-> index 2d4ee10626b4..b45e0e033adc 100644
-> --- a/drivers/iommu/amd_iommu.c
-> +++ b/drivers/iommu/amd_iommu.c
-> @@ -3089,12 +3089,12 @@ static int amd_iommu_attach_device(struct iommu_domain *dom,
->   	return ret;
->   }
->   
-> -static int amd_iommu_map(struct iommu_domain *dom, unsigned long iova,
-> -			 phys_addr_t paddr, size_t page_size, int iommu_prot)
-> +static int __amd_iommu_map(struct iommu_domain *dom, unsigned long iova,
-> +			 phys_addr_t paddr, size_t page_size, int iommu_prot,
-> +			 gfp_t gfp)
->   {
->   	struct protection_domain *domain = to_pdomain(dom);
->   	int prot = 0;
-> -	int ret;
->   
->   	if (domain->mode == PAGE_MODE_NONE)
->   		return -EINVAL;
-> @@ -3104,11 +3104,21 @@ static int amd_iommu_map(struct iommu_domain *dom, unsigned long iova,
->   	if (iommu_prot & IOMMU_WRITE)
->   		prot |= IOMMU_PROT_IW;
->   
-> -	mutex_lock(&domain->api_lock);
-> -	ret = iommu_map_page(domain, iova, paddr, page_size, prot, GFP_KERNEL);
-> -	mutex_unlock(&domain->api_lock);
-> +	return iommu_map_page(domain, iova, paddr, page_size, prot, gfp);
-> +}
->   
-> -	return ret;
-> +static int amd_iommu_map(struct iommu_domain *dom, unsigned long iova,
-> +			 phys_addr_t paddr, size_t page_size, int iommu_prot)
-> +{
-> +	return __amd_iommu_map(dom, iova, paddr, page_size, iommu_prot,
-> +			GFP_KERNEL);
-> +}
-> +
-> +static int amd_iommu_map_atomic(struct iommu_domain *dom, unsigned long iova,
-> +			 phys_addr_t paddr, size_t page_size, int iommu_prot)
-> +{
-> +	return __amd_iommu_map(dom, iova, paddr, page_size, iommu_prot,
-> +			GFP_ATOMIC);
->   }
->   
->   static size_t amd_iommu_unmap(struct iommu_domain *dom, unsigned long iova,
-> @@ -3262,6 +3272,7 @@ const struct iommu_ops amd_iommu_ops = {
->   	.attach_dev = amd_iommu_attach_device,
->   	.detach_dev = amd_iommu_detach_device,
->   	.map = amd_iommu_map,
-> +	.map_atomic = amd_iommu_map_atomic,
->   	.unmap = amd_iommu_unmap,
->   	.iova_to_phys = amd_iommu_iova_to_phys,
->   	.add_device = amd_iommu_add_device,
-> 
+--rCb8EA+9TsBVtA92
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Sun, Apr 14, 2019 at 02:02:12PM -0700, Alyssa Rosenzweig wrote:
+> Without the appropriate DMA controller selected, the RK3399 audio
+> drivers compile but fail immediately. Accordingly, selecting the RK3399
+> audio without the corresponding PL330 controller is an invalid
+> configuration. Prevent errors (otherwise forcing the driver to unload at
+> runtime)  by an appropriate `select` directive in the Kconfig.
+
+This breaks the build as it enables CONFIG_PL330 but that depends on
+AMBA which isn't selected so we end up with:
+
+ld: drivers/dma/pl330.o: in function `pl330_driver_init':
+pl330.c:(.init.text+0x8): undefined reference to `amba_driver_register'
+ld: drivers/dma/pl330.o: in function `pl330_driver_exit':
+pl330.c:(.exit.text+0x8): undefined reference to `amba_driver_unregister'
+make: *** [Makefile:1029: vmlinux] Error 1
+
+in my test configs.
+
+--rCb8EA+9TsBVtA92
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAly2AncACgkQJNaLcl1U
+h9Dy7gf/X/zWP2wVe8pN6N+wdZXeihoh9hWhvrv76tXugzt39qnQyd+vjK7Qj6P9
+YVB5fGNU8fYqFdWPpSpNDKyJYVyHyu5lRqJMsrq4NlEZiDTPVKUY77hVOpOnCdxc
+TGSkuXZ1YrSym5shJOozh0WjfSpmfod9jaz8kVYcdZ/BpLAbFoK6nvjExT9FgqfU
+fMZ882Oa0YKkvkn8jHk0RggGtg276lpr/RjvxbbwiAgM3/MiVmzjg1We+Q7tOjED
+iTTlV7zS4efo9R2zUagyuD2mOZZ3OSe0Q/w+OAaJDk0LhXTvsnsWrkRyhiLRavrb
+MkSdhem4xHS7Eq11z2Y9VLV3BvOdFA==
+=7L4S
+-----END PGP SIGNATURE-----
+
+--rCb8EA+9TsBVtA92--
+
+--===============6333624106899294032==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============6333624106899294032==--
