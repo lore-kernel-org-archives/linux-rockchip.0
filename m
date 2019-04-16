@@ -1,26 +1,43 @@
-From: Alyssa Rosenzweig <alyssa-kyPdXwtBHbIqQpLF9uBUvQ@public.gmane.org>
-Subject: Re: [PATCH] ASoC: rockchip: Select DMA_PL330 by RK3399 audio
-Date: Tue, 16 Apr 2019 09:34:34 -0700
-Message-ID: <20190416163434.GB17199@rosenzweig.io>
-References: <20190414210212.2144-1-alyssa@rosenzweig.io>
- <20190416162735.GI4834@sirena.org.uk>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v2 0/4] usb: dwc2: Another attempt handling rk3288's remote wake quirk
+Date: Tue, 16 Apr 2019 14:53:47 -0700
+Message-ID: <20190416215351.242246-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20190416162735.GI4834-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Minas Harutyunyan <hminas@synopsys.com>, Heiko Stuebner <heiko@sntech.de>, Felipe Balbi <felipe.balbi@linux.intel.com>
+Cc: amstan@chromium.org, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, Randy Li <ayaka@soulik.info>, mka@chromium.org, ryandcase@chromium.org, jwerner@chromium.org, Elaine Zhang <zhangqing@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Independent of this, should PL330 be selecting AMBA then?
+This is another attempt to upstream the code to unwedge the rk3288's
+"host" USB port when it sees a remote wakeup.  Previously I attempted
+this [1] and it appears that Randy Li made some attempts too [2] which
+resulted in at least the PHY bindings for the USB PHY landing as well
+as the USB PHY support.  Nice!
+
+Hopefully this addresses previous comments and could land this time?
+
+[1] https://lkml.kernel.org/r/1446236275-12698-2-git-send-email-dianders@chromium.org
+[2] https://lkml.kernel.org/r/1472939729-15187-4-git-send-email-ayaka@soulik.info
+
+Changes in v2:
+- Cancel the work when dwc2 is freed (Matthias).
+
+Douglas Anderson (4):
+  dt-bindings: usb: dwc2: Document quirk to reset PHY upon wakeup
+  usb: dwc2: optionally assert phy reset when waking up
+  ARM: dts: rockchip: Hook resets up to USB PHYs on rk3288.
+  ARM: dts: rockchip: Add quirk for resetting rk3288's dwc2 host on
+    wakeup
+
+ Documentation/devicetree/bindings/usb/dwc2.txt |  2 ++
+ arch/arm/boot/dts/rk3288.dtsi                  |  7 +++++++
+ drivers/usb/dwc2/core.h                        |  5 +++++
+ drivers/usb/dwc2/core_intr.c                   | 12 ++++++++++++
+ drivers/usb/dwc2/hcd.c                         | 18 +++++++++++++++---
+ drivers/usb/dwc2/platform.c                    |  9 +++++++++
+ 6 files changed, 50 insertions(+), 3 deletions(-)
+
+-- 
+2.21.0.593.g511ec345e18-goog
