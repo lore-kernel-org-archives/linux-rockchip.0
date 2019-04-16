@@ -1,7 +1,8 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 01/14] rockchip: dts: rk3399: Sync rk3399-opp from Linux
-Date: Tue, 16 Apr 2019 16:26:34 +0530
-Message-ID: <20190416105647.18437-2-jagan@amarulasolutions.com>
+Subject: [PATCH v2 02/14] rockchip: dts: rk3399: Sync pwm2_pin_pull_down from
+ Linux 5.1-rc2
+Date: Tue, 16 Apr 2019 16:26:35 +0530
+Message-ID: <20190416105647.18437-3-jagan@amarulasolutions.com>
 References: <20190416105647.18437-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,156 +22,35 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Sync rk3399-opp.dtsi from Linux.
+To make successful build with dts(i) files syncing from Linux 5.1-rc2
+the rk3399.dtsi would require pwm2_pin_pull_down.
 
-Linux commit details about the rk3399-opp.dtsi sync:
-"arm64: dts: rockchip: use SPDX-License-Identifier"
-(sha1: 4ee99cebd486238ac433da823b95cc5f8d8a6905)
+So, sync the pwm2_pin_pull_down node from Linux 5.1-rc2.  Since this
+node is strictly not part of any commit alone, I have mentioned
+Linux 5.1-rc2 tag for future reference of where would this sync
+coming from.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- arch/arm/dts/rk3399-opp.dtsi | 133 +++++++++++++++++++++++++++++++++++
- 1 file changed, 133 insertions(+)
- create mode 100644 arch/arm/dts/rk3399-opp.dtsi
+ arch/arm/dts/rk3399.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/arch/arm/dts/rk3399-opp.dtsi b/arch/arm/dts/rk3399-opp.dtsi
-new file mode 100644
-index 0000000000..d6f1095abb
---- /dev/null
-+++ b/arch/arm/dts/rk3399-opp.dtsi
-@@ -0,0 +1,133 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2016-2017 Fuzhou Rockchip Electronics Co., Ltd
-+ */
+diff --git a/arch/arm/dts/rk3399.dtsi b/arch/arm/dts/rk3399.dtsi
+index b53e41b4dc..99471f6287 100644
+--- a/arch/arm/dts/rk3399.dtsi
++++ b/arch/arm/dts/rk3399.dtsi
+@@ -2495,6 +2495,12 @@
+ 				rockchip,pins =
+ 					<1 RK_PC3 RK_FUNC_1 &pcfg_pull_none>;
+ 			};
 +
-+/ {
-+	cluster0_opp: opp-table0 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
 +
-+		opp00 {
-+			opp-hz = /bits/ 64 <408000000>;
-+			opp-microvolt = <800000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp01 {
-+			opp-hz = /bits/ 64 <600000000>;
-+			opp-microvolt = <800000>;
-+		};
-+		opp02 {
-+			opp-hz = /bits/ 64 <816000000>;
-+			opp-microvolt = <850000>;
-+		};
-+		opp03 {
-+			opp-hz = /bits/ 64 <1008000000>;
-+			opp-microvolt = <925000>;
-+		};
-+		opp04 {
-+			opp-hz = /bits/ 64 <1200000000>;
-+			opp-microvolt = <1000000>;
-+		};
-+		opp05 {
-+			opp-hz = /bits/ 64 <1416000000>;
-+			opp-microvolt = <1125000>;
-+		};
-+	};
-+
-+	cluster1_opp: opp-table1 {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+
-+		opp00 {
-+			opp-hz = /bits/ 64 <408000000>;
-+			opp-microvolt = <800000>;
-+			clock-latency-ns = <40000>;
-+		};
-+		opp01 {
-+			opp-hz = /bits/ 64 <600000000>;
-+			opp-microvolt = <800000>;
-+		};
-+		opp02 {
-+			opp-hz = /bits/ 64 <816000000>;
-+			opp-microvolt = <825000>;
-+		};
-+		opp03 {
-+			opp-hz = /bits/ 64 <1008000000>;
-+			opp-microvolt = <875000>;
-+		};
-+		opp04 {
-+			opp-hz = /bits/ 64 <1200000000>;
-+			opp-microvolt = <950000>;
-+		};
-+		opp05 {
-+			opp-hz = /bits/ 64 <1416000000>;
-+			opp-microvolt = <1025000>;
-+		};
-+		opp06 {
-+			opp-hz = /bits/ 64 <1608000000>;
-+			opp-microvolt = <1100000>;
-+		};
-+		opp07 {
-+			opp-hz = /bits/ 64 <1800000000>;
-+			opp-microvolt = <1200000>;
-+		};
-+	};
-+
-+	gpu_opp_table: opp-table2 {
-+		compatible = "operating-points-v2";
-+
-+		opp00 {
-+			opp-hz = /bits/ 64 <200000000>;
-+			opp-microvolt = <800000>;
-+		};
-+		opp01 {
-+			opp-hz = /bits/ 64 <297000000>;
-+			opp-microvolt = <800000>;
-+		};
-+		opp02 {
-+			opp-hz = /bits/ 64 <400000000>;
-+			opp-microvolt = <825000>;
-+		};
-+		opp03 {
-+			opp-hz = /bits/ 64 <500000000>;
-+			opp-microvolt = <875000>;
-+		};
-+		opp04 {
-+			opp-hz = /bits/ 64 <600000000>;
-+			opp-microvolt = <925000>;
-+		};
-+		opp05 {
-+			opp-hz = /bits/ 64 <800000000>;
-+			opp-microvolt = <1100000>;
-+		};
-+	};
-+};
-+
-+&cpu_l0 {
-+	operating-points-v2 = <&cluster0_opp>;
-+};
-+
-+&cpu_l1 {
-+	operating-points-v2 = <&cluster0_opp>;
-+};
-+
-+&cpu_l2 {
-+	operating-points-v2 = <&cluster0_opp>;
-+};
-+
-+&cpu_l3 {
-+	operating-points-v2 = <&cluster0_opp>;
-+};
-+
-+&cpu_b0 {
-+	operating-points-v2 = <&cluster1_opp>;
-+};
-+
-+&cpu_b1 {
-+	operating-points-v2 = <&cluster1_opp>;
-+};
-+
-+&gpu {
-+	operating-points-v2 = <&gpu_opp_table>;
-+};
++			pwm2_pin_pull_down: pwm2-pin-pull-down {
++				rockchip,pins =
++					<1 RK_PC3 RK_FUNC_1 &pcfg_pull_down>;
++			};
+ 		};
+ 
+ 		pwm3a {
 -- 
 2.18.0.321.gffc6fa0e3
