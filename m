@@ -1,173 +1,263 @@
-From: kbuild test robot <lkp@intel.com>
-Subject: Re: [PATCH RFT V2 1/8] clk: divider: add explicit big endian support
-Date: Tue, 16 Apr 2019 12:05:48 +0800
-Message-ID: <201904161252.kWbdH4TW%lkp@intel.com>
-References: <20190415101046.5872-2-jonas.gorski@gmail.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v1 1/3] thermal: rockchip: add pinctrl control
+Date: Tue, 16 Apr 2019 12:12:05 +0200
+Message-ID: <6267ffc8-6ca4-86ad-7f87-c669bc9f3454@linaro.org>
+References: <1554100985-11385-1-git-send-email-zhangqing@rock-chips.com>
+ <1554100985-11385-2-git-send-email-zhangqing@rock-chips.com>
+ <30325add-d75a-6775-50c0-d2d2274ff81e@linaro.org>
+ <db977a75-195f-4c98-ef84-aa186b484e0d@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <20190415101046.5872-2-jonas.gorski@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jonas Gorski <jonas.gorski@gmail.com>
-Cc: Prashant Gaikwad <pgaikwad@nvidia.com>, Sascha Hauer <s.hauer@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@kernel.org>, Fabio Estevam <festevam@gmail.com>, Peter De Schrijver <pdeschrijver@nvidia.com>, Michal Simek <michal.simek@xilinx.com>, Shawn Guo <shawnguo@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Michael Turquette <mturquette@baylibre.com>, Paul Mackerras <paulus@samba.org>, kbuild-all@01.org, Pengutronix Kernel Team <kernel@pengutronix.de>, linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, Anatolij Gustschin <agust@denx.de>, linuxppc-dev@lists.ozlabs.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, NXP Linux Team <linux-imx@nxp.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <db977a75-195f-4c98-ef84-aa186b484e0d@rock-chips.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: "elaine.zhang" <zhangqing@rock-chips.com>, heiko@sntech.de
+Cc: rui.zhang@intel.com, edubezval@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jonas,
 
-Thank you for the patch! Perhaps something to improve:
+Hi Elaine,
 
-[auto build test WARNING on clk/clk-next]
-[also build test WARNING on v5.1-rc5 next-20190415]
-[if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
+On 11/04/2019 09:46, elaine.zhang wrote:
+> hi,
+> 
+> 在 2019/4/4 上午11:03, Daniel Lezcano 写道:
+>> On 01/04/2019 08:43, Elaine Zhang wrote:
+>>> Based on the TSADC Tshut mode to select pinctrl,
+>>> instead of setting pinctrl based on architecture
+>>> (Not depends on pinctrl setting by "init" or "default").
+>>> And it requires setting the tshut polarity before select pinctrl.
+>> I'm not sure to fully read the description. Can you rephrase/elaborate
+>> the changelog?
+> Example:
+>         tsadc: tsadc@ff250000 {
+>                     compatible = "rockchip,rk3328-tsadc";
+>                     .....
+>                 pinctrl-names = "init", "default", "sleep";
+>                     pinctrl-0 = <&otp_gpio>;
+>                     pinctrl-1 = <&otp_out>;
+>                     pinctrl-2 = <&otp_gpio>;
+>                     status = "disabled";
+>                 .....
+>             };
+>         &tsadc {
+>                 rockchip,hw-tshut-mode = <0>; /* tshut mode 0:CRU 1:GPIO */
+>                 status = "okay";
+>         };
+>     Application on the product, hope tsadc overtemperature reset cru to
+> restart.
+>     But when pinctrl is initialized, it will setting pinctrl by "init"
+> and "default".
+>     So the pinctrl will set iomux to "otp_out", which may be make system
+> crash.
 
-url:    https://github.com/0day-ci/linux/commits/Jonas-Gorski/clk-make-register-endianness-a-run-time-property/20190415-235847
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
-reproduce:
-        # apt-get install sparse
-        make ARCH=x86_64 allmodconfig
-        make C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__'
+why?
+
+>     tsadc gpio iomux:
+>     "otp_gpio" : just normal gpio, keep default level.
+>     "otp_out" : tsadc shut down io, when overtemperature,this io may be
+> trigger high
+>     level or low level(depend on the tsadc polarity).
+> 
+>     After correction:
+>     if rockchip,hw-tshut-mode = <0>; (tsadc overtemperature reset cru to
+> restart)
+>     select pinctrl to otp_gpio
+>     if rockchip,hw-tshut-mode = <1>;(tsadc overtemperature IO triggers
+> output at high or low levels)
+>     select pinctrl to otp_out.
+>     Actively select iomux based on rockchip,hw-tshut-mode,
+>     rather than relying on the pinctrl framework to select iomux.
+
+Let me rephrase it and tell me if I understood correctly:
+
+"When the temperature sensor mode is set to 0, it will automatically
+reset the board via the Clock-Reset-Unit (CRU) if the over temperature
+threshold is reached. However, when the pinctrl initializes, it does a
+transition to "otp_out" which may lead the SoC to crash (why?)
+
+Explicitly use the pinctrl to set/unset the right mode instead of
+relying on the pinctrl init mode"
+
+So this patch is a fix and it must contain the Fixes: ... tag.
 
 
-sparse warnings: (new ones prefixed by >>)
+>>> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+>>> ---
+>>>   drivers/thermal/rockchip_thermal.c | 61
+>>> +++++++++++++++++++++++++++++++-------
+>>>   1 file changed, 50 insertions(+), 11 deletions(-)
+>>>
+>>> diff --git a/drivers/thermal/rockchip_thermal.c
+>>> b/drivers/thermal/rockchip_thermal.c
+>>> index 9c7643d62ed7..faa6c7792155 100644
+>>> --- a/drivers/thermal/rockchip_thermal.c
+>>> +++ b/drivers/thermal/rockchip_thermal.c
+>>> @@ -34,7 +34,7 @@
+>>>    */
+>>>   enum tshut_mode {
+>>>       TSHUT_MODE_CRU = 0,
+>>> -    TSHUT_MODE_GPIO,
+>>> +    TSHUT_MODE_OTP,
+>> Why do you change the enum name? The impact on the patch is much higher,
+>> no ?
+> 
+> I just want to make it a little bit more intuitive to understand the
+> definition of mode.
+> 
+> TSHUT_MODE_CRU: pinctrl select iomux to otp_gpio,the io is normal io.
+> TSHUT_MODE_OTP: pinctrl select iomux to otp_out, the io is tsadc shut io.
 
-   drivers/clk/clk-divider.c:317:18: sparse: expression using sizeof(void)
-   drivers/clk/clk-divider.c:317:18: sparse: expression using sizeof(void)
->> drivers/clk/clk-divider.c:391:44: sparse: incorrect type in argument 1 (different address spaces) @@    expected struct clk_divider *divider @@    got voistruct clk_divider *divider @@
-   drivers/clk/clk-divider.c:391:44:    expected struct clk_divider *divider
-   drivers/clk/clk-divider.c:391:44:    got void [noderef] <asn:2>*reg
-   drivers/clk/clk-divider.c:416:16: sparse: expression using sizeof(void)
-   drivers/clk/clk-divider.c:416:16: sparse: expression using sizeof(void)
-   drivers/clk/clk-divider.c:441:44: sparse: incorrect type in argument 1 (different address spaces) @@    expected struct clk_divider *divider @@    got voistruct clk_divider *divider @@
-   drivers/clk/clk-divider.c:441:44:    expected struct clk_divider *divider
-   drivers/clk/clk-divider.c:441:44:    got void [noderef] <asn:2>*reg
+I understand, but at the end the changes for this patch are counter
+intuitive, so it is preferable to keep it as is so we can review the
+important part.
 
-vim +391 drivers/clk/clk-divider.c
+[ ... ]
 
-   289	
-   290	static int clk_divider_bestdiv(struct clk_hw *hw, struct clk_hw *parent,
-   291				       unsigned long rate,
-   292				       unsigned long *best_parent_rate,
-   293				       const struct clk_div_table *table, u8 width,
-   294				       unsigned long flags)
-   295	{
-   296		int i, bestdiv = 0;
-   297		unsigned long parent_rate, best = 0, now, maxdiv;
-   298		unsigned long parent_rate_saved = *best_parent_rate;
-   299	
-   300		if (!rate)
-   301			rate = 1;
-   302	
-   303		maxdiv = _get_maxdiv(table, width, flags);
-   304	
-   305		if (!(clk_hw_get_flags(hw) & CLK_SET_RATE_PARENT)) {
-   306			parent_rate = *best_parent_rate;
-   307			bestdiv = _div_round(table, parent_rate, rate, flags);
-   308			bestdiv = bestdiv == 0 ? 1 : bestdiv;
-   309			bestdiv = bestdiv > maxdiv ? maxdiv : bestdiv;
-   310			return bestdiv;
-   311		}
-   312	
-   313		/*
-   314		 * The maximum divider we can use without overflowing
-   315		 * unsigned long in rate * i below
-   316		 */
- > 317		maxdiv = min(ULONG_MAX / rate, maxdiv);
-   318	
-   319		for (i = _next_div(table, 0, flags); i <= maxdiv;
-   320						     i = _next_div(table, i, flags)) {
-   321			if (rate * i == parent_rate_saved) {
-   322				/*
-   323				 * It's the most ideal case if the requested rate can be
-   324				 * divided from parent clock without needing to change
-   325				 * parent rate, so return the divider immediately.
-   326				 */
-   327				*best_parent_rate = parent_rate_saved;
-   328				return i;
-   329			}
-   330			parent_rate = clk_hw_round_rate(parent, rate * i);
-   331			now = DIV_ROUND_UP_ULL((u64)parent_rate, i);
-   332			if (_is_best_div(rate, now, best, flags)) {
-   333				bestdiv = i;
-   334				best = now;
-   335				*best_parent_rate = parent_rate;
-   336			}
-   337		}
-   338	
-   339		if (!bestdiv) {
-   340			bestdiv = _get_maxdiv(table, width, flags);
-   341			*best_parent_rate = clk_hw_round_rate(parent, 1);
-   342		}
-   343	
-   344		return bestdiv;
-   345	}
-   346	
-   347	long divider_round_rate_parent(struct clk_hw *hw, struct clk_hw *parent,
-   348				       unsigned long rate, unsigned long *prate,
-   349				       const struct clk_div_table *table,
-   350				       u8 width, unsigned long flags)
-   351	{
-   352		int div;
-   353	
-   354		div = clk_divider_bestdiv(hw, parent, rate, prate, table, width, flags);
-   355	
-   356		return DIV_ROUND_UP_ULL((u64)*prate, div);
-   357	}
-   358	EXPORT_SYMBOL_GPL(divider_round_rate_parent);
-   359	
-   360	long divider_ro_round_rate_parent(struct clk_hw *hw, struct clk_hw *parent,
-   361					  unsigned long rate, unsigned long *prate,
-   362					  const struct clk_div_table *table, u8 width,
-   363					  unsigned long flags, unsigned int val)
-   364	{
-   365		int div;
-   366	
-   367		div = _get_div(table, val, flags, width);
-   368	
-   369		/* Even a read-only clock can propagate a rate change */
-   370		if (clk_hw_get_flags(hw) & CLK_SET_RATE_PARENT) {
-   371			if (!parent)
-   372				return -EINVAL;
-   373	
-   374			*prate = clk_hw_round_rate(parent, rate * div);
-   375		}
-   376	
-   377		return DIV_ROUND_UP_ULL((u64)*prate, div);
-   378	}
-   379	EXPORT_SYMBOL_GPL(divider_ro_round_rate_parent);
-   380	
-   381	
-   382	static long clk_divider_round_rate(struct clk_hw *hw, unsigned long rate,
-   383					unsigned long *prate)
-   384	{
-   385		struct clk_divider *divider = to_clk_divider(hw);
-   386	
-   387		/* if read only, just return current value */
-   388		if (divider->flags & CLK_DIVIDER_READ_ONLY) {
-   389			u32 val;
-   390	
- > 391			val = clk_div_readl(divider->reg) >> divider->shift;
-   392			val &= clk_div_mask(divider->width);
-   393	
-   394			return divider_ro_round_rate(hw, rate, prate, divider->table,
-   395						     divider->width, divider->flags,
-   396						     val);
-   397		}
-   398	
-   399		return divider_round_rate(hw, rate, prate, divider->table,
-   400					  divider->width, divider->flags);
-   401	}
-   402	
+>>>   +static void thermal_pinctrl_select_otp(struct
+>>> rockchip_thermal_data *thermal)
+>>> +{
+>>> +    if (!IS_ERR(thermal->pinctrl) &&
+>>> !IS_ERR_OR_NULL(thermal->otp_state))
+>>> +        pinctrl_select_state(thermal->pinctrl,
+>>> +                     thermal->otp_state);
+>>> +}
+>>> +
+>>> +static void thermal_pinctrl_select_gpio(struct rockchip_thermal_data
+>>> *thermal)
+>>> +{
+>>> +    if (!IS_ERR(thermal->pinctrl) &&
+>>> !IS_ERR_OR_NULL(thermal->gpio_state))
+>>> +        pinctrl_select_state(thermal->pinctrl,
+>>> +                     thermal->gpio_state);
+>>> +}
+>> You should not have to create a couple of specific functions just to
+>> check the pinctrl pointers are set. The caller should do that.
+> Because there are several places where the call is made,create a couple
+> of specific functions reduce a lot of duplicated code.
 
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+No, that does not reduce a lot of duplicated code, it hides the fact
+there is no control from the caller. See the comments below.
+
+[ ... ]
+
+>>>   static int rockchip_configure_from_dt(struct device *dev,
+>>>                         struct device_node *np,
+>>>                         struct rockchip_thermal_data *thermal)
+>>> @@ -1103,7 +1120,7 @@ static int rockchip_configure_from_dt(struct
+>>> device *dev,
+>>>       if (of_property_read_u32(np, "rockchip,hw-tshut-mode",
+>>> &tshut_mode)) {
+>>>           dev_warn(dev,
+>>>                "Missing tshut mode property, using default (%s)\n",
+>>> -             thermal->chip->tshut_mode == TSHUT_MODE_GPIO ?
+>>> +             thermal->chip->tshut_mode == TSHUT_MODE_OTP ?
+>>>                   "gpio" : "cru");
+>>>           thermal->tshut_mode = thermal->chip->tshut_mode;
+>>>       } else {
+>>> @@ -1242,6 +1259,8 @@ static int rockchip_thermal_probe(struct
+>>> platform_device *pdev)
+>>>           return error;
+>>>       }
+>>>   +    thermal->chip->control(thermal->regs, false);
+>>> +
+>>>       error = clk_prepare_enable(thermal->clk);
+>>>       if (error) {
+>>>           dev_err(&pdev->dev, "failed to enable converter clock: %d\n",
+>>> @@ -1267,6 +1286,24 @@ static int rockchip_thermal_probe(struct
+>>> platform_device *pdev)
+>>>       thermal->chip->initialize(thermal->grf, thermal->regs,
+>>>                     thermal->tshut_polarity);
+>>>   +    if (thermal->tshut_mode == TSHUT_MODE_OTP) {
+>>> +        thermal->pinctrl = devm_pinctrl_get(&pdev->dev);
+>>> +        if (IS_ERR(thermal->pinctrl))
+>>> +            dev_err(&pdev->dev, "failed to find thermal pinctrl\n");
+>>> +
+>>> +        thermal->gpio_state = pinctrl_lookup_state(thermal->pinctrl,
+>>> +                               "gpio");
+
+panic if devm_pinctrl_get fails.
+
+>>> +        if (IS_ERR_OR_NULL(thermal->gpio_state))
+>>> +            dev_err(&pdev->dev, "failed to find thermal gpio state\n");
+>>> +
+>>> +        thermal->otp_state = pinctrl_lookup_state(thermal->pinctrl,
+>>> +                              "otpout");
+>>> +        if (IS_ERR_OR_NULL(thermal->otp_state))
+>>> +            dev_err(&pdev->dev, "failed to find thermal otpout
+>>> state\n");
+>> What is the meaning for the rest of the code if the lookup fails for any
+>> of those ?
+> If the lookup fails for any of those， The pinctrl is no longer set and
+> remains in its default state(otp_gpio normal io).
+>>
+>>> +        thermal_pinctrl_select_otp(thermal);
+>>> +    }
+>>> +
+
+It is pointless to have a otp_state and a gpio_state field. Just use one
+as the configuration tells you which lookup to do.
+
+In case of error, just bail out. It is pointless to continue with a
+broken configuration.
+
+	thermal->pinctrl = devm_pinctrl_get(&pdev->dev);
+	if (IS_ERR(thermal->pinctrl)) {
+		dev_err(&pdev->dev, "....");
+		return PTR_ERR(thermal->pinctrl);
+	}
+
+	thermal->pinctrl_state =
+		pinctrl_lookup_state(thermal->pinctrl,
+			thermal->tshut_mode == TSHUT_MODE_OTP ?
+			"otp" : "gpio");
+
+	if (IS_ERR_OR_NULL(thermal->pinctrl_state)) {
+		dev_err(&pdev->dev, "....");
+		return -EINVAL;
+	}
+
+
+No need to use the thermal_pinctrl_select_otp/gpio wrappers, just
+replace them with:
+
+pinctrl_select_state(thermal->pinctrl, thermal->pinctrl_state);
+
+and use it unconditionally.
+
+
+>>>       for (i = 0; i < thermal->chip->chn_num; i++) {
+>>>           error = rockchip_thermal_register_sensor(pdev, thermal,
+>>>                           &thermal->sensors[i],
+>>> @@ -1338,7 +1375,8 @@ static int __maybe_unused
+>>> rockchip_thermal_suspend(struct device *dev)
+>>>       clk_disable(thermal->pclk);
+>>>       clk_disable(thermal->clk);
+>>>   -    pinctrl_pm_select_sleep_state(dev);
+>>> +    if (thermal->tshut_mode == TSHUT_MODE_OTP)
+>>> +        thermal_pinctrl_select_gpio(thermal);
+>>>         return 0;
+>>>   }
+>>> @@ -1383,7 +1421,8 @@ static int __maybe_unused
+>>> rockchip_thermal_resume(struct device *dev)
+>>>       for (i = 0; i < thermal->chip->chn_num; i++)
+>>>           rockchip_thermal_toggle_sensor(&thermal->sensors[i], true);
+>>>   -    pinctrl_pm_select_default_state(dev);
+>>> +    if (thermal->tshut_mode == TSHUT_MODE_OTP)
+>>> +        thermal_pinctrl_select_otp(thermal);
+>>>         return 0;
+>>>   }
+>>>
+>>
+> 
+> 
+
+
+-- 
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
