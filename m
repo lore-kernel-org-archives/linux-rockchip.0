@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 10/14] rockchip: rk3399: Add Nanopi M4 board support
-Date: Tue, 16 Apr 2019 16:26:43 +0530
-Message-ID: <20190416105647.18437-11-jagan@amarulasolutions.com>
+Subject: [PATCH v2 11/14] rockchip: rk3399: Add Nanopc T4 board support
+Date: Tue, 16 Apr 2019 16:26:44 +0530
+Message-ID: <20190416105647.18437-12-jagan@amarulasolutions.com>
 References: <20190416105647.18437-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,54 +21,57 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add initial support for Nanopi M4 board.
+Add initial support for Nanopc T4 board.
 
 Specification
 - Rockchip RK3399
 - Dual-Channel 4GB LPDDR3-1866
 - SD card slot
-- eMMC socket
+- 16GB eMMC
 - RTL8211E 1Gbps
 - AP6356S WiFI/BT
-- HDMI In/Out, DP, MIPI DSI/CSI
-- USB 3.0 x4
+- HDMI In/Out, DP, MIPI DSI/CSI, eDP
+- USB 3.0, 2.0
 - USB Type C power and data
-- GPIO1, GPIO2 expansion ports
-- DC5V/3A
+- GPIO expansion ports
+- DC 12V/2A
 
-Commit details of rk3399-nanopi-m4.dts sync from Linux 5.1-rc2:
-"arm64: dts: rockchip: Refine nanopi4 differences"
-(sha1: c62ffaf5026d0b7633e62b2cea8450b5543c349a)
+Commit details of rk3399-nanopc-t4.dts sync from Linux 5.1-rc2:
+"arm64: dts: rockchip: Add NanoPC-T4 IR receiver"
+(sha1: 95658e21b1707ad7844f873db2fdaa295109a5a3)
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
+Note: Hardware on the way, since it shared same DDR with Nanopi M4
+I'm confident it will boot.
+
  arch/arm/dts/Makefile                     |  1 +
- arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi |  7 +++
- arch/arm/dts/rk3399-nanopi-m4.dts         | 66 +++++++++++++++++++++++
- board/rockchip/evb_rk3399/MAINTAINERS     |  6 +++
- configs/nanopi-m4-rk3399_defconfig        | 58 ++++++++++++++++++++
- 5 files changed, 138 insertions(+)
- create mode 100644 arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi
- create mode 100644 arch/arm/dts/rk3399-nanopi-m4.dts
- create mode 100644 configs/nanopi-m4-rk3399_defconfig
+ arch/arm/dts/rk3399-nanopc-t4-u-boot.dtsi |  7 ++
+ arch/arm/dts/rk3399-nanopc-t4.dts         | 91 +++++++++++++++++++++++
+ board/rockchip/evb_rk3399/MAINTAINERS     |  6 ++
+ configs/nanopc-t4-rk3399_defconfig        | 58 +++++++++++++++
+ 5 files changed, 163 insertions(+)
+ create mode 100644 arch/arm/dts/rk3399-nanopc-t4-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-nanopc-t4.dts
+ create mode 100644 configs/nanopc-t4-rk3399_defconfig
 
 diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-index 6d55b0caf8..d2ac26b556 100644
+index d2ac26b556..e048565bb6 100644
 --- a/arch/arm/dts/Makefile
 +++ b/arch/arm/dts/Makefile
 @@ -87,6 +87,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
  	rk3399-evb.dtb \
  	rk3399-firefly.dtb \
  	rk3399-gru-bob.dtb \
-+	rk3399-nanopi-m4.dtb \
++	rk3399-nanopc-t4.dtb \
+ 	rk3399-nanopi-m4.dtb \
  	rk3399-orangepi.dtb \
  	rk3399-puma-ddr1333.dtb \
- 	rk3399-puma-ddr1600.dtb \
-diff --git a/arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi b/arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi
+diff --git a/arch/arm/dts/rk3399-nanopc-t4-u-boot.dtsi b/arch/arm/dts/rk3399-nanopc-t4-u-boot.dtsi
 new file mode 100644
 index 0000000000..1173d496ec
 --- /dev/null
-+++ b/arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi
++++ b/arch/arm/dts/rk3399-nanopc-t4-u-boot.dtsi
 @@ -0,0 +1,7 @@
 +// SPDX-License-Identifier: GPL-2.0+
 +/*
@@ -77,100 +80,125 @@ index 0000000000..1173d496ec
 +
 +#include "rk3399-u-boot.dtsi"
 +#include "rk3399-sdram-lpddr3-4GB-1866.dtsi"
-diff --git a/arch/arm/dts/rk3399-nanopi-m4.dts b/arch/arm/dts/rk3399-nanopi-m4.dts
+diff --git a/arch/arm/dts/rk3399-nanopc-t4.dts b/arch/arm/dts/rk3399-nanopc-t4.dts
 new file mode 100644
-index 0000000000..60358ab8c7
+index 0000000000..84433cf02b
 --- /dev/null
-+++ b/arch/arm/dts/rk3399-nanopi-m4.dts
-@@ -0,0 +1,66 @@
++++ b/arch/arm/dts/rk3399-nanopc-t4.dts
+@@ -0,0 +1,91 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
-+ * FriendlyElec NanoPi M4 board device tree source
++ * FriendlyElec NanoPC-T4 board device tree source
 + *
 + * Copyright (c) 2018 FriendlyElec Computer Tech. Co., Ltd.
 + * (http://www.friendlyarm.com)
 + *
 + * Copyright (c) 2018 Collabora Ltd.
-+ * Copyright (c) 2019 Arm Ltd.
 + */
 +
 +/dts-v1/;
 +#include "rk3399-nanopi4.dtsi"
 +
 +/ {
-+	model = "FriendlyElec NanoPi M4";
-+	compatible = "friendlyarm,nanopi-m4", "rockchip,rk3399";
++	model = "FriendlyElec NanoPC-T4";
++	compatible = "friendlyarm,nanopc-t4", "rockchip,rk3399";
 +
-+	vdd_5v: vdd-5v {
++	vcc12v0_sys: vcc12v0-sys {
 +		compatible = "regulator-fixed";
-+		regulator-name = "vdd_5v";
 +		regulator-always-on;
 +		regulator-boot-on;
++		regulator-max-microvolt = <12000000>;
++		regulator-min-microvolt = <12000000>;
++		regulator-name = "vcc12v0_sys";
 +	};
 +
-+	vcc5v0_core: vcc5v0-core {
++	vcc5v0_host0: vcc5v0-host0 {
 +		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_core";
 +		regulator-always-on;
 +		regulator-boot-on;
-+		vin-supply = <&vdd_5v>;
-+	};
-+
-+	vcc5v0_usb1: vcc5v0-usb1 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_usb1";
-+		regulator-always-on;
-+		regulator-boot-on;
++		regulator-name = "vcc5v0_host0";
 +		vin-supply = <&vcc5v0_sys>;
 +	};
 +
-+	vcc5v0_usb2: vcc5v0-usb2 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_usb2";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vcc5v0_sys>;
++	adc-keys {
++		compatible = "adc-keys";
++		io-channels = <&saradc 1>;
++		io-channel-names = "buttons";
++		keyup-threshold-microvolt = <1800000>;
++		poll-interval = <100>;
++
++		recovery {
++			label = "Recovery";
++			linux,code = <KEY_VENDOR>;
++			press-threshold-microvolt = <18000>;
++		};
++	};
++
++	ir-receiver {
++		compatible = "gpio-ir-receiver";
++		gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&ir_rx>;
 +	};
 +};
 +
-+&vcc3v3_sys {
-+	vin-supply = <&vcc5v0_core>;
++&pinctrl {
++	ir {
++		ir_rx: ir-rx {
++			/* external pullup to VCC3V3_SYS, despite being 1.8V :/ */
++			rockchip,pins = <0 RK_PA6 RK_FUNC_1 &pcfg_pull_none>;
++		};
++	};
++};
++
++&sdhci {
++	mmc-hs400-1_8v;
++	mmc-hs400-enhanced-strobe;
 +};
 +
 +&u2phy0_host {
-+	phy-supply = <&vcc5v0_usb1>;
++	phy-supply = <&vcc5v0_host0>;
 +};
 +
 +&u2phy1_host {
-+	phy-supply = <&vcc5v0_usb2>;
++	phy-supply = <&vcc5v0_host0>;
++};
++
++&vcc5v0_sys {
++	vin-supply = <&vcc12v0_sys>;
++};
++
++&vcc3v3_sys {
++	vin-supply = <&vcc12v0_sys>;
 +};
 +
 +&vbus_typec {
-+	regulator-always-on;
-+	vin-supply = <&vdd_5v>;
++	enable-active-high;
++	gpios = <&gpio4 RK_PD2 GPIO_ACTIVE_HIGH>;
++	vin-supply = <&vcc5v0_sys>;
 +};
 diff --git a/board/rockchip/evb_rk3399/MAINTAINERS b/board/rockchip/evb_rk3399/MAINTAINERS
-index 07ee8ce92c..ae43805a6a 100644
+index ae43805a6a..5917abb9c1 100644
 --- a/board/rockchip/evb_rk3399/MAINTAINERS
 +++ b/board/rockchip/evb_rk3399/MAINTAINERS
 @@ -6,6 +6,12 @@ F:      include/configs/evb_rk3399.h
  F:      configs/evb-rk3399_defconfig
  F:      configs/firefly-rk3399_defconfig
  
-+NANOPI-M4
++NANOPC-T4
 +M:	Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 +S:	Maintained
-+F:	configs/nanopi-m4-rk3399_defconfig
-+F:	arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi
++F:	configs/nanopic-t4-rk3399_defconfig
++F:	arch/arm/dts/rk3399-nanopic-t4-u-boot.dtsi
 +
- ORANGEPI-RK3399
+ NANOPI-M4
  M:	Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
  S:	Maintained
-diff --git a/configs/nanopi-m4-rk3399_defconfig b/configs/nanopi-m4-rk3399_defconfig
+diff --git a/configs/nanopc-t4-rk3399_defconfig b/configs/nanopc-t4-rk3399_defconfig
 new file mode 100644
-index 0000000000..be36a28315
+index 0000000000..7ba4f85485
 --- /dev/null
-+++ b/configs/nanopi-m4-rk3399_defconfig
++++ b/configs/nanopc-t4-rk3399_defconfig
 @@ -0,0 +1,58 @@
 +CONFIG_ARM=y
 +CONFIG_ARCH_ROCKCHIP=y
@@ -185,7 +213,7 @@ index 0000000000..be36a28315
 +CONFIG_SPL_STACK_R_ADDR=0x80000
 +CONFIG_DEBUG_UART=y
 +CONFIG_NR_DRAM_BANKS=1
-+CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-nanopi-m4.dtb"
++CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-nanopc-t4.dtb"
 +# CONFIG_DISPLAY_CPUINFO is not set
 +CONFIG_DISPLAY_BOARDINFO_LATE=y
 +CONFIG_SPL_STACK_R=y
@@ -198,7 +226,7 @@ index 0000000000..be36a28315
 +# CONFIG_CMD_SETEXPR is not set
 +CONFIG_CMD_TIME=y
 +CONFIG_SPL_OF_CONTROL=y
-+CONFIG_DEFAULT_DEVICE_TREE="rk3399-nanopi-m4"
++CONFIG_DEFAULT_DEVICE_TREE="rk3399-nanopc-t4"
 +CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
 +CONFIG_ENV_IS_IN_MMC=y
 +CONFIG_ROCKCHIP_GPIO=y
