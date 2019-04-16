@@ -1,81 +1,58 @@
-From: Souptick Joarder <jrdr.linux@gmail.com>
-Subject: [REBASE PATCH v5 7/9] videobuf2/videobuf2-dma-sg.c:
- Convert to use vm_map_pages()
-Date: Tue, 16 Apr 2019 17:19:48 +0530
-Message-ID: <a953fe6b3056de1cc6eab654effdd4a22f125375.1552921225.git.jrdr.linux__20152.0086078503$1555415315$gmane$org@gmail.com>
+From: Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [REBASE PATCH v5 6/9] iommu/dma-iommu.c: Convert to use vm_map_pages()
+Date: Tue, 16 Apr 2019 17:19:47 +0530
+Message-ID: <80c3d220fc6ada73a88ce43ca049afb55a889258.1552921225.git.jrdr.linux__42980.2029555262$1555415319$gmane$org@gmail.com>
 References: <cover.1552921225.git.jrdr.linux@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <xen-devel-bounces@lists.xenproject.org>
-In-Reply-To: <cover.1552921225.git.jrdr.linux@gmail.com>
-In-Reply-To: <cover.1552921225.git.jrdr.linux@gmail.com>
-References: <cover.1552921225.git.jrdr.linux@gmail.com>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-To: akpm@linux-foundation.org, willy@infradead.org, mhocko@suse.com, kirill.shutemov@linux.intel.com, vbabka@suse.cz, riel@surriel.com, sfr@canb.auug.org.au, rppt@linux.vnet.ibm.com, peterz@infradead.org, linux@armlinux.org.uk, robin.murphy@arm.com, iamjoonsoo.kim@lge.com, treding@nvidia.com, keescook@chromium.org, m.szyprowski@samsung.com, stefanr@s5r6.in-berlin.de, hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, oleksandr_andrushchenko@epam.com, joro@8bytes.org, pawel@osciak.com, kyungmin.park@samsung.com, mchehab@kernel.org, boris.ostrovsky@oracle.com, jgross@suse.com
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, xen-devel@lists.xen.org, linux-mm@kvack.org, iommu@lists.linux-foundation.org, Souptick Joarder <jrdr.linux@gmail.com>, linux1394-devel@lists.sourceforge.net, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <cover.1552921225.git.jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <cover.1552921225.git.jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+References: <cover.1552921225.git.jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, willy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, mhocko-IBi9RG/b67k@public.gmane.org, kirill.shutemov-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, vbabka-AlSwsSmVLrQ@public.gmane.org, riel-ebMLmSuQjDVBDgjK7y7TUQ@public.gmane.org, sfr-3FnU+UHB4dNDw9hX6IcOSA@public.gmane.org, rppt-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org, peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org, iamjoonsoo.kim-Hm3cg6mZ9cc@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, keescook-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, stefanr-MtYdepGKPcBMYopoZt5u/LNAH6kLmebB@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, oleksandr_andrushchenko-uRwfk40T5oI@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, boris.ostrovsky-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, jgross-IBi9RG/b67k@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, xen-devel-GuqFBffKawuEi8DpZVb4nw@public.gmane.org, linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux1394-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Q29udmVydCB0byB1c2Ugdm1fbWFwX3BhZ2VzKCkgdG8gbWFwIHJhbmdlIG9mIGtlcm5lbCBtZW1v
-cnkKdG8gdXNlciB2bWEuCgp2bV9wZ29mZiBpcyB0cmVhdGVkIGluIFY0TDIgQVBJIGFzIGEgJ2Nv
-b2tpZScgdG8gc2VsZWN0IGEgYnVmZmVyLApub3QgYXMgYSBpbi1idWZmZXIgb2Zmc2V0IGJ5IGRl
-c2lnbiBhbmQgaXQgYWx3YXlzIHdhbnQgdG8gbW1hcCBhCndob2xlIGJ1ZmZlciBmcm9tIGl0cyBi
-ZWdpbm5pbmcuCgpTaWduZWQtb2ZmLWJ5OiBTb3VwdGljayBKb2FyZGVyIDxqcmRyLmxpbnV4QGdt
-YWlsLmNvbT4KU3VnZ2VzdGVkLWJ5OiBNYXJlayBTenlwcm93c2tpIDxtLnN6eXByb3dza2lAc2Ft
-c3VuZy5jb20+ClJldmlld2VkLWJ5OiBNYXJlayBTenlwcm93c2tpIDxtLnN6eXByb3dza2lAc2Ft
-c3VuZy5jb20+Ci0tLQogZHJpdmVycy9tZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1j
-b3JlLmMgICAgfCAgNyArKysrKysrCiAuLi4vbWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92aWRlb2J1
-ZjItZG1hLWNvbnRpZy5jICB8ICA2IC0tLS0tLQogZHJpdmVycy9tZWRpYS9jb21tb24vdmlkZW9i
-dWYyL3ZpZGVvYnVmMi1kbWEtc2cuYyAgfCAyMiArKysrKystLS0tLS0tLS0tLS0tLS0tCiAzIGZp
-bGVzIGNoYW5nZWQsIDEzIGluc2VydGlvbnMoKyksIDIyIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvbWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92aWRlb2J1ZjItY29yZS5jIGIvZHJp
-dmVycy9tZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1jb3JlLmMKaW5kZXggNzBlOGMz
-My4uY2E0NTc3YSAxMDA2NDQKLS0tIGEvZHJpdmVycy9tZWRpYS9jb21tb24vdmlkZW9idWYyL3Zp
-ZGVvYnVmMi1jb3JlLmMKKysrIGIvZHJpdmVycy9tZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVv
-YnVmMi1jb3JlLmMKQEAgLTIxNzUsNiArMjE3NSwxMyBAQCBpbnQgdmIyX21tYXAoc3RydWN0IHZi
-Ml9xdWV1ZSAqcSwgc3RydWN0IHZtX2FyZWFfc3RydWN0ICp2bWEpCiAJCWdvdG8gdW5sb2NrOwog
-CX0KIAorCS8qCisJICogdm1fcGdvZmYgaXMgdHJlYXRlZCBpbiBWNEwyIEFQSSBhcyBhICdjb29r
-aWUnIHRvIHNlbGVjdCBhIGJ1ZmZlciwKKwkgKiBub3QgYXMgYSBpbi1idWZmZXIgb2Zmc2V0LiBX
-ZSBhbHdheXMgd2FudCB0byBtbWFwIGEgd2hvbGUgYnVmZmVyCisJICogZnJvbSBpdHMgYmVnaW5u
-aW5nLgorCSAqLworCXZtYS0+dm1fcGdvZmYgPSAwOworCiAJcmV0ID0gY2FsbF9tZW1vcCh2Yiwg
-bW1hcCwgdmItPnBsYW5lc1twbGFuZV0ubWVtX3ByaXYsIHZtYSk7CiAKIHVubG9jazoKZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvbWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92aWRlb2J1ZjItZG1hLWNvbnRp
-Zy5jIGIvZHJpdmVycy9tZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1kbWEtY29udGln
-LmMKaW5kZXggYWZmMGFiNy4uNDYyNDVjNSAxMDA2NDQKLS0tIGEvZHJpdmVycy9tZWRpYS9jb21t
-b24vdmlkZW9idWYyL3ZpZGVvYnVmMi1kbWEtY29udGlnLmMKKysrIGIvZHJpdmVycy9tZWRpYS9j
-b21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1kbWEtY29udGlnLmMKQEAgLTE4NiwxMiArMTg2LDYg
-QEAgc3RhdGljIGludCB2YjJfZGNfbW1hcCh2b2lkICpidWZfcHJpdiwgc3RydWN0IHZtX2FyZWFf
-c3RydWN0ICp2bWEpCiAJCXJldHVybiAtRUlOVkFMOwogCX0KIAotCS8qCi0JICogZG1hX21tYXBf
-KiB1c2VzIHZtX3Bnb2ZmIGFzIGluLWJ1ZmZlciBvZmZzZXQsIGJ1dCB3ZSB3YW50IHRvCi0JICog
-bWFwIHdob2xlIGJ1ZmZlcgotCSAqLwotCXZtYS0+dm1fcGdvZmYgPSAwOwotCiAJcmV0ID0gZG1h
-X21tYXBfYXR0cnMoYnVmLT5kZXYsIHZtYSwgYnVmLT5jb29raWUsCiAJCWJ1Zi0+ZG1hX2FkZHIs
-IGJ1Zi0+c2l6ZSwgYnVmLT5hdHRycyk7CiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvY29t
-bW9uL3ZpZGVvYnVmMi92aWRlb2J1ZjItZG1hLXNnLmMgYi9kcml2ZXJzL21lZGlhL2NvbW1vbi92
-aWRlb2J1ZjIvdmlkZW9idWYyLWRtYS1zZy5jCmluZGV4IDAxNWU3MzcuLmQ2YjhlY2EgMTAwNjQ0
-Ci0tLSBhL2RyaXZlcnMvbWVkaWEvY29tbW9uL3ZpZGVvYnVmMi92aWRlb2J1ZjItZG1hLXNnLmMK
-KysrIGIvZHJpdmVycy9tZWRpYS9jb21tb24vdmlkZW9idWYyL3ZpZGVvYnVmMi1kbWEtc2cuYwpA
-QCAtMzI4LDI4ICszMjgsMTggQEAgc3RhdGljIHVuc2lnbmVkIGludCB2YjJfZG1hX3NnX251bV91
-c2Vycyh2b2lkICpidWZfcHJpdikKIHN0YXRpYyBpbnQgdmIyX2RtYV9zZ19tbWFwKHZvaWQgKmJ1
-Zl9wcml2LCBzdHJ1Y3Qgdm1fYXJlYV9zdHJ1Y3QgKnZtYSkKIHsKIAlzdHJ1Y3QgdmIyX2RtYV9z
-Z19idWYgKmJ1ZiA9IGJ1Zl9wcml2OwotCXVuc2lnbmVkIGxvbmcgdWFkZHIgPSB2bWEtPnZtX3N0
-YXJ0OwotCXVuc2lnbmVkIGxvbmcgdXNpemUgPSB2bWEtPnZtX2VuZCAtIHZtYS0+dm1fc3RhcnQ7
-Ci0JaW50IGkgPSAwOworCWludCBlcnI7CiAKIAlpZiAoIWJ1ZikgewogCQlwcmludGsoS0VSTl9F
-UlIgIk5vIG1lbW9yeSB0byBtYXBcbiIpOwogCQlyZXR1cm4gLUVJTlZBTDsKIAl9CiAKLQlkbyB7
-Ci0JCWludCByZXQ7Ci0KLQkJcmV0ID0gdm1faW5zZXJ0X3BhZ2Uodm1hLCB1YWRkciwgYnVmLT5w
-YWdlc1tpKytdKTsKLQkJaWYgKHJldCkgewotCQkJcHJpbnRrKEtFUk5fRVJSICJSZW1hcHBpbmcg
-bWVtb3J5LCBlcnJvcjogJWRcbiIsIHJldCk7Ci0JCQlyZXR1cm4gcmV0OwotCQl9Ci0KLQkJdWFk
-ZHIgKz0gUEFHRV9TSVpFOwotCQl1c2l6ZSAtPSBQQUdFX1NJWkU7Ci0JfSB3aGlsZSAodXNpemUg
-PiAwKTsKLQorCWVyciA9IHZtX21hcF9wYWdlcyh2bWEsIGJ1Zi0+cGFnZXMsIGJ1Zi0+bnVtX3Bh
-Z2VzKTsKKwlpZiAoZXJyKSB7CisJCXByaW50ayhLRVJOX0VSUiAiUmVtYXBwaW5nIG1lbW9yeSwg
-ZXJyb3I6ICVkXG4iLCBlcnIpOworCQlyZXR1cm4gZXJyOworCX0KIAogCS8qCiAJICogVXNlIGNv
-bW1vbiB2bV9hcmVhIG9wZXJhdGlvbnMgdG8gdHJhY2sgYnVmZmVyIHJlZmNvdW50LgotLSAKMS45
-LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpYZW4t
-ZGV2ZWwgbWFpbGluZyBsaXN0Clhlbi1kZXZlbEBsaXN0cy54ZW5wcm9qZWN0Lm9yZwpodHRwczov
-L2xpc3RzLnhlbnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8veGVuLWRldmVs
+Convert to use vm_map_pages() to map range of kernel
+memory to user vma.
+
+Signed-off-by: Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ drivers/iommu/dma-iommu.c | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
+
+diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
+index d19f3d6..bacebff 100644
+--- a/drivers/iommu/dma-iommu.c
++++ b/drivers/iommu/dma-iommu.c
+@@ -620,17 +620,7 @@ struct page **iommu_dma_alloc(struct device *dev, size_t size, gfp_t gfp,
+ 
+ int iommu_dma_mmap(struct page **pages, size_t size, struct vm_area_struct *vma)
+ {
+-	unsigned long uaddr = vma->vm_start;
+-	unsigned int i, count = PAGE_ALIGN(size) >> PAGE_SHIFT;
+-	int ret = -ENXIO;
+-
+-	for (i = vma->vm_pgoff; i < count && uaddr < vma->vm_end; i++) {
+-		ret = vm_insert_page(vma, uaddr, pages[i]);
+-		if (ret)
+-			break;
+-		uaddr += PAGE_SIZE;
+-	}
+-	return ret;
++	return vm_map_pages(vma, pages, PAGE_ALIGN(size) >> PAGE_SHIFT);
+ }
+ 
+ static dma_addr_t __iommu_dma_map(struct device *dev, phys_addr_t phys,
+-- 
+1.9.1
