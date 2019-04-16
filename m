@@ -1,16 +1,15 @@
-From: Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [REBASE PATCH v5 7/9] videobuf2/videobuf2-dma-sg.c: Convert to use
- vm_map_pages()
-Date: Tue, 16 Apr 2019 17:19:48 +0530
-Message-ID: <a953fe6b3056de1cc6eab654effdd4a22f125375.1552921225.git.jrdr.linux__9341.14727876789$1555415980$gmane$org@gmail.com>
-References: <cover.1552921225.git.jrdr.linux@gmail.com>
+From: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [U-Boot] [PATCH v2 01/14] rockchip: dts: rk3399: Sync
+ rk3399-opp from Linux
+Date: Tue, 16 Apr 2019 13:59:35 +0200
+Message-ID: <2ba6663f0aad1f1ca8164766181e203fd83a574e.camel@bootlin.com>
+References: <20190416105647.18437-1-jagan@amarulasolutions.com>
+ <20190416105647.18437-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <cover.1552921225.git.jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-In-Reply-To: <cover.1552921225.git.jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-References: <cover.1552921225.git.jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <20190416105647.18437-2-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,99 +19,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, willy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, mhocko-IBi9RG/b67k@public.gmane.org, kirill.shutemov-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, vbabka-AlSwsSmVLrQ@public.gmane.org, riel-ebMLmSuQjDVBDgjK7y7TUQ@public.gmane.org, sfr-3FnU+UHB4dNDw9hX6IcOSA@public.gmane.org, rppt-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org, peterz-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org, iamjoonsoo.kim-Hm3cg6mZ9cc@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, keescook-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, stefanr-MtYdepGKPcBMYopoZt5u/LNAH6kLmebB@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, oleksandr_andrushchenko-uRwfk40T5oI@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, boris.ostrovsky-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org, jgross-IBi9RG/b67k@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, xen-devel-GuqFBffKawuEi8DpZVb4nw@public.gmane.org, linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux1394-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Convert to use vm_map_pages() to map range of kernel memory
-to user vma.
-
-vm_pgoff is treated in V4L2 API as a 'cookie' to select a buffer,
-not as a in-buffer offset by design and it always want to mmap a
-whole buffer from its beginning.
-
-Signed-off-by: Souptick Joarder <jrdr.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Suggested-by: Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Reviewed-by: Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
----
- drivers/media/common/videobuf2/videobuf2-core.c    |  7 +++++++
- .../media/common/videobuf2/videobuf2-dma-contig.c  |  6 ------
- drivers/media/common/videobuf2/videobuf2-dma-sg.c  | 22 ++++++----------------
- 3 files changed, 13 insertions(+), 22 deletions(-)
-
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 70e8c33..ca4577a 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -2175,6 +2175,13 @@ int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
- 		goto unlock;
- 	}
- 
-+	/*
-+	 * vm_pgoff is treated in V4L2 API as a 'cookie' to select a buffer,
-+	 * not as a in-buffer offset. We always want to mmap a whole buffer
-+	 * from its beginning.
-+	 */
-+	vma->vm_pgoff = 0;
-+
- 	ret = call_memop(vb, mmap, vb->planes[plane].mem_priv, vma);
- 
- unlock:
-diff --git a/drivers/media/common/videobuf2/videobuf2-dma-contig.c b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-index aff0ab7..46245c5 100644
---- a/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-+++ b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-@@ -186,12 +186,6 @@ static int vb2_dc_mmap(void *buf_priv, struct vm_area_struct *vma)
- 		return -EINVAL;
- 	}
- 
--	/*
--	 * dma_mmap_* uses vm_pgoff as in-buffer offset, but we want to
--	 * map whole buffer
--	 */
--	vma->vm_pgoff = 0;
--
- 	ret = dma_mmap_attrs(buf->dev, vma, buf->cookie,
- 		buf->dma_addr, buf->size, buf->attrs);
- 
-diff --git a/drivers/media/common/videobuf2/videobuf2-dma-sg.c b/drivers/media/common/videobuf2/videobuf2-dma-sg.c
-index 015e737..d6b8eca 100644
---- a/drivers/media/common/videobuf2/videobuf2-dma-sg.c
-+++ b/drivers/media/common/videobuf2/videobuf2-dma-sg.c
-@@ -328,28 +328,18 @@ static unsigned int vb2_dma_sg_num_users(void *buf_priv)
- static int vb2_dma_sg_mmap(void *buf_priv, struct vm_area_struct *vma)
- {
- 	struct vb2_dma_sg_buf *buf = buf_priv;
--	unsigned long uaddr = vma->vm_start;
--	unsigned long usize = vma->vm_end - vma->vm_start;
--	int i = 0;
-+	int err;
- 
- 	if (!buf) {
- 		printk(KERN_ERR "No memory to map\n");
- 		return -EINVAL;
- 	}
- 
--	do {
--		int ret;
--
--		ret = vm_insert_page(vma, uaddr, buf->pages[i++]);
--		if (ret) {
--			printk(KERN_ERR "Remapping memory, error: %d\n", ret);
--			return ret;
--		}
--
--		uaddr += PAGE_SIZE;
--		usize -= PAGE_SIZE;
--	} while (usize > 0);
--
-+	err = vm_map_pages(vma, buf->pages, buf->num_pages);
-+	if (err) {
-+		printk(KERN_ERR "Remapping memory, error: %d\n", err);
-+		return err;
-+	}
- 
- 	/*
- 	 * Use common vm_area operations to track buffer refcount.
--- 
-1.9.1
+TGUgbWFyZGkgMTYgYXZyaWwgMjAxOSDDoCAxNjoyNiArMDUzMCwgSmFnYW4gVGVraSBhIMOpY3Jp
+dCA6Cj4gU3luYyByazMzOTktb3BwLmR0c2kgZnJvbSBMaW51eC4KPiAKPiBMaW51eCBjb21taXQg
+ZGV0YWlscyBhYm91dCB0aGUgcmszMzk5LW9wcC5kdHNpIHN5bmM6Cj4gImFybTY0OiBkdHM6IHJv
+Y2tjaGlwOiB1c2UgU1BEWC1MaWNlbnNlLUlkZW50aWZpZXIiCj4gKHNoYTE6IDRlZTk5Y2ViZDQ4
+NjIzOGFjNDMzZGE4MjNiOTVjYzVmOGQ4YTY5MDUpCj4gCj4gU2lnbmVkLW9mZi1ieTogSmFnYW4g
+VGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+CgpSZXZpZXdlZC1ieTogUGF1bCBLb2Np
+YWxrb3dza2kgPHBhdWwua29jaWFsa293c2tpQGJvb3RsaW4uY29tPgoKQ2hlZXJzLAoKUGF1bAoK
+PiAtLS0KPiAgYXJjaC9hcm0vZHRzL3JrMzM5OS1vcHAuZHRzaSB8IDEzMyArKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMTMzIGluc2VydGlvbnMo
+KykKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtL2R0cy9yazMzOTktb3BwLmR0c2kKPiAK
+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vZHRzL3JrMzM5OS1vcHAuZHRzaSBiL2FyY2gvYXJtL2R0
+cy9yazMzOTktb3BwLmR0c2kKPiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+IGluZGV4IDAwMDAwMDAw
+MDAuLmQ2ZjEwOTVhYmIKPiAtLS0gL2Rldi9udWxsCj4gKysrIGIvYXJjaC9hcm0vZHRzL3JrMzM5
+OS1vcHAuZHRzaQo+IEBAIC0wLDAgKzEsMTMzIEBACj4gKy8vIFNQRFgtTGljZW5zZS1JZGVudGlm
+aWVyOiAoR1BMLTIuMCsgT1IgTUlUKQo+ICsvKgo+ICsgKiBDb3B5cmlnaHQgKGMpIDIwMTYtMjAx
+NyBGdXpob3UgUm9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uLCBMdGQKPiArICovCj4gKwo+ICsvIHsK
+PiArCWNsdXN0ZXIwX29wcDogb3BwLXRhYmxlMCB7Cj4gKwkJY29tcGF0aWJsZSA9ICJvcGVyYXRp
+bmctcG9pbnRzLXYyIjsKPiArCQlvcHAtc2hhcmVkOwo+ICsKPiArCQlvcHAwMCB7Cj4gKwkJCW9w
+cC1oeiA9IC9iaXRzLyA2NCA8NDA4MDAwMDAwPjsKPiArCQkJb3BwLW1pY3Jvdm9sdCA9IDw4MDAw
+MDA+Owo+ICsJCQljbG9jay1sYXRlbmN5LW5zID0gPDQwMDAwPjsKPiArCQl9Owo+ICsJCW9wcDAx
+IHsKPiArCQkJb3BwLWh6ID0gL2JpdHMvIDY0IDw2MDAwMDAwMDA+Owo+ICsJCQlvcHAtbWljcm92
+b2x0ID0gPDgwMDAwMD47Cj4gKwkJfTsKPiArCQlvcHAwMiB7Cj4gKwkJCW9wcC1oeiA9IC9iaXRz
+LyA2NCA8ODE2MDAwMDAwPjsKPiArCQkJb3BwLW1pY3Jvdm9sdCA9IDw4NTAwMDA+Owo+ICsJCX07
+Cj4gKwkJb3BwMDMgewo+ICsJCQlvcHAtaHogPSAvYml0cy8gNjQgPDEwMDgwMDAwMDA+Owo+ICsJ
+CQlvcHAtbWljcm92b2x0ID0gPDkyNTAwMD47Cj4gKwkJfTsKPiArCQlvcHAwNCB7Cj4gKwkJCW9w
+cC1oeiA9IC9iaXRzLyA2NCA8MTIwMDAwMDAwMD47Cj4gKwkJCW9wcC1taWNyb3ZvbHQgPSA8MTAw
+MDAwMD47Cj4gKwkJfTsKPiArCQlvcHAwNSB7Cj4gKwkJCW9wcC1oeiA9IC9iaXRzLyA2NCA8MTQx
+NjAwMDAwMD47Cj4gKwkJCW9wcC1taWNyb3ZvbHQgPSA8MTEyNTAwMD47Cj4gKwkJfTsKPiArCX07
+Cj4gKwo+ICsJY2x1c3RlcjFfb3BwOiBvcHAtdGFibGUxIHsKPiArCQljb21wYXRpYmxlID0gIm9w
+ZXJhdGluZy1wb2ludHMtdjIiOwo+ICsJCW9wcC1zaGFyZWQ7Cj4gKwo+ICsJCW9wcDAwIHsKPiAr
+CQkJb3BwLWh6ID0gL2JpdHMvIDY0IDw0MDgwMDAwMDA+Owo+ICsJCQlvcHAtbWljcm92b2x0ID0g
+PDgwMDAwMD47Cj4gKwkJCWNsb2NrLWxhdGVuY3ktbnMgPSA8NDAwMDA+Owo+ICsJCX07Cj4gKwkJ
+b3BwMDEgewo+ICsJCQlvcHAtaHogPSAvYml0cy8gNjQgPDYwMDAwMDAwMD47Cj4gKwkJCW9wcC1t
+aWNyb3ZvbHQgPSA8ODAwMDAwPjsKPiArCQl9Owo+ICsJCW9wcDAyIHsKPiArCQkJb3BwLWh6ID0g
+L2JpdHMvIDY0IDw4MTYwMDAwMDA+Owo+ICsJCQlvcHAtbWljcm92b2x0ID0gPDgyNTAwMD47Cj4g
+KwkJfTsKPiArCQlvcHAwMyB7Cj4gKwkJCW9wcC1oeiA9IC9iaXRzLyA2NCA8MTAwODAwMDAwMD47
+Cj4gKwkJCW9wcC1taWNyb3ZvbHQgPSA8ODc1MDAwPjsKPiArCQl9Owo+ICsJCW9wcDA0IHsKPiAr
+CQkJb3BwLWh6ID0gL2JpdHMvIDY0IDwxMjAwMDAwMDAwPjsKPiArCQkJb3BwLW1pY3Jvdm9sdCA9
+IDw5NTAwMDA+Owo+ICsJCX07Cj4gKwkJb3BwMDUgewo+ICsJCQlvcHAtaHogPSAvYml0cy8gNjQg
+PDE0MTYwMDAwMDA+Owo+ICsJCQlvcHAtbWljcm92b2x0ID0gPDEwMjUwMDA+Owo+ICsJCX07Cj4g
+KwkJb3BwMDYgewo+ICsJCQlvcHAtaHogPSAvYml0cy8gNjQgPDE2MDgwMDAwMDA+Owo+ICsJCQlv
+cHAtbWljcm92b2x0ID0gPDExMDAwMDA+Owo+ICsJCX07Cj4gKwkJb3BwMDcgewo+ICsJCQlvcHAt
+aHogPSAvYml0cy8gNjQgPDE4MDAwMDAwMDA+Owo+ICsJCQlvcHAtbWljcm92b2x0ID0gPDEyMDAw
+MDA+Owo+ICsJCX07Cj4gKwl9Owo+ICsKPiArCWdwdV9vcHBfdGFibGU6IG9wcC10YWJsZTIgewo+
+ICsJCWNvbXBhdGlibGUgPSAib3BlcmF0aW5nLXBvaW50cy12MiI7Cj4gKwo+ICsJCW9wcDAwIHsK
+PiArCQkJb3BwLWh6ID0gL2JpdHMvIDY0IDwyMDAwMDAwMDA+Owo+ICsJCQlvcHAtbWljcm92b2x0
+ID0gPDgwMDAwMD47Cj4gKwkJfTsKPiArCQlvcHAwMSB7Cj4gKwkJCW9wcC1oeiA9IC9iaXRzLyA2
+NCA8Mjk3MDAwMDAwPjsKPiArCQkJb3BwLW1pY3Jvdm9sdCA9IDw4MDAwMDA+Owo+ICsJCX07Cj4g
+KwkJb3BwMDIgewo+ICsJCQlvcHAtaHogPSAvYml0cy8gNjQgPDQwMDAwMDAwMD47Cj4gKwkJCW9w
+cC1taWNyb3ZvbHQgPSA8ODI1MDAwPjsKPiArCQl9Owo+ICsJCW9wcDAzIHsKPiArCQkJb3BwLWh6
+ID0gL2JpdHMvIDY0IDw1MDAwMDAwMDA+Owo+ICsJCQlvcHAtbWljcm92b2x0ID0gPDg3NTAwMD47
+Cj4gKwkJfTsKPiArCQlvcHAwNCB7Cj4gKwkJCW9wcC1oeiA9IC9iaXRzLyA2NCA8NjAwMDAwMDAw
+PjsKPiArCQkJb3BwLW1pY3Jvdm9sdCA9IDw5MjUwMDA+Owo+ICsJCX07Cj4gKwkJb3BwMDUgewo+
+ICsJCQlvcHAtaHogPSAvYml0cy8gNjQgPDgwMDAwMDAwMD47Cj4gKwkJCW9wcC1taWNyb3ZvbHQg
+PSA8MTEwMDAwMD47Cj4gKwkJfTsKPiArCX07Cj4gK307Cj4gKwo+ICsmY3B1X2wwIHsKPiArCW9w
+ZXJhdGluZy1wb2ludHMtdjIgPSA8JmNsdXN0ZXIwX29wcD47Cj4gK307Cj4gKwo+ICsmY3B1X2wx
+IHsKPiArCW9wZXJhdGluZy1wb2ludHMtdjIgPSA8JmNsdXN0ZXIwX29wcD47Cj4gK307Cj4gKwo+
+ICsmY3B1X2wyIHsKPiArCW9wZXJhdGluZy1wb2ludHMtdjIgPSA8JmNsdXN0ZXIwX29wcD47Cj4g
+K307Cj4gKwo+ICsmY3B1X2wzIHsKPiArCW9wZXJhdGluZy1wb2ludHMtdjIgPSA8JmNsdXN0ZXIw
+X29wcD47Cj4gK307Cj4gKwo+ICsmY3B1X2IwIHsKPiArCW9wZXJhdGluZy1wb2ludHMtdjIgPSA8
+JmNsdXN0ZXIxX29wcD47Cj4gK307Cj4gKwo+ICsmY3B1X2IxIHsKPiArCW9wZXJhdGluZy1wb2lu
+dHMtdjIgPSA8JmNsdXN0ZXIxX29wcD47Cj4gK307Cj4gKwo+ICsmZ3B1IHsKPiArCW9wZXJhdGlu
+Zy1wb2ludHMtdjIgPSA8JmdwdV9vcHBfdGFibGU+Owo+ICt9OwotLSAKUGF1bCBLb2NpYWxrb3dz
+a2ksIEJvb3RsaW4KRW1iZWRkZWQgTGludXggYW5kIGtlcm5lbCBlbmdpbmVlcmluZwpodHRwczov
+L2Jvb3RsaW4uY29tCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1yb2NrY2hpcAo=
