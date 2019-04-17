@@ -1,11 +1,15 @@
-From: "Leonidas P. Papadakos" <papadakospan@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: set TX PBL for rk3328-roc-cc gmac
-Date: Thu, 18 Apr 2019 00:01:00 +0300
-Message-ID: <20190417210059.26262-1-papadakospan@gmail.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH RFT V2 2/8] clk: fractional-divider: add explicit big
+ endian support
+Date: Wed, 17 Apr 2019 16:30:53 -0700
+Message-ID: <155554385335.15276.1472868812556796901@swboyd.mtv.corp.google.com>
+References: <20190415101046.5872-1-jonas.gorski@gmail.com>
+ <20190415101046.5872-3-jonas.gorski@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190415101046.5872-3-jonas.gorski@gmail.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -15,47 +19,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Jose Abreu <jose.abreu@synopsys.com>, Robin Murphy <robin.murphy@arm.com>
-Cc: devicetree@vger.kernel.org, "Leonidas P. Papadakos" <papadakospan@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Jonas Gorski <jonas.gorski@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, linuxppc-dev@lists.ozlabs.org
+Cc: Peter De Schrijver <pdeschrijver@nvidia.com>, Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Michael Turquette <mturquette@baylibre.com>, Michal Simek <michal.simek@xilinx.com>, Jonathan Hunter <jonathanh@nvidia.com>, Prashant Gaikwad <pgaikwad@nvidia.com>, Paul Mackerras <paulus@samba.org>, NXP Linux Team <linux-imx@nxp.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Michael Ellerman <mpe@ellerman.id.au>, Thierry Reding <thierry.reding@gmail.com>, Anatolij Gustschin <agust@denx.de>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Some rockchip boards have issues with tx checksumming for packets
-larger than 1498 B.
+Quoting Jonas Gorski (2019-04-15 03:10:40)
+> diff --git a/drivers/clk/clk-fractional-divider.c b/drivers/clk/clk-fractional-divider.c
+> index fdfe2e423d15..b9988d3b3828 100644
+> --- a/drivers/clk/clk-fractional-divider.c
+> +++ b/drivers/clk/clk-fractional-divider.c
+> @@ -13,6 +13,22 @@
+>  #include <linux/slab.h>
+>  #include <linux/rational.h>
+>  
+> +static inline u32 clk_fd_readl(struct clk_fractional_divider *fd)
+> +{
+> +       if (fd->flags & CLK_FRAC_DIVIDER_BIG_ENDIAN)
+> +               return ioread32be(fd->reg);
+> +       else
+> +               return clk_readl(fd->reg);
 
-An iperf test will tell you that transmissions stop almost immediately.
+Can you write it without the else?
 
-A workaround to this issue is disabling TX checksumming offload,
-and one of the ways to do that is snps,force_thresh_dma_mode.
+       if (fd->flags & CLK_FRAC_DIVIDER_BIG_ENDIAN)
+               return ioread32be(fd->reg);
 
-But after some discussion here it seems there is another path:
-https://lkml.org/lkml/2019/4/5/148
+       return clk_readl(fd->reg);
 
-Setting txpbl is a better-performing (maybe temporary) solution
-compared to disabling T offload.
-
-In my testing with a Libre Computer Renegade, this was the best
-all-around option, and increasing the MTU doesn't cause a queue timeout anymore.
-
-Signed-off-by: Leonidas P. Papadakos <papadakospan@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index 5d499c908..974f2dcdf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -141,10 +141,10 @@
- 	phy-mode = "rgmii";
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&rgmiim1_pins>;
--	snps,force_thresh_dma_mode;
- 	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
- 	snps,reset-active-low;
- 	snps,reset-delays-us = <0 10000 50000>;
-+	snps,txpbl = <0x4>;
- 	tx_delay = <0x24>;
- 	rx_delay = <0x18>;
- 	status = "okay";
--- 
-2.21.0
+This same comment applies to all the basic clk types.
