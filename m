@@ -1,57 +1,61 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH v2 00/14] rockchip: Add new rk3399 boards
-Date: Wed, 17 Apr 2019 16:49:44 +0530
-Message-ID: <CAMty3ZAwhdLBzKeXpVJPgi3Do0wjWAgTL0jLiFaiy32tjuKQoA@mail.gmail.com>
-References: <20190416105647.18437-1-jagan@amarulasolutions.com>
- <8216614edcf5bb4485a4ac3334be720f3677d52f.camel@bootlin.com>
+From: "Leonidas P. Papadakos" <papadakospan@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: set TX PBL for rk3328-roc-cc gmac
+Date: Thu, 18 Apr 2019 00:01:00 +0300
+Message-ID: <20190417210059.26262-1-papadakospan@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <8216614edcf5bb4485a4ac3334be720f3677d52f.camel@bootlin.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Cc: U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, Akash Gajjar <akash@openedev.com>, linux-amarula@amarulasolutions.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Jose Abreu <jose.abreu@synopsys.com>, Robin Murphy <robin.murphy@arm.com>
+Cc: devicetree@vger.kernel.org, "Leonidas P. Papadakos" <papadakospan@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUGF1bCwKCk9uIFR1ZSwgQXByIDE2LCAyMDE5IGF0IDU6MjkgUE0gUGF1bCBLb2NpYWxrb3dz
-a2kKPHBhdWwua29jaWFsa293c2tpQGJvb3RsaW4uY29tPiB3cm90ZToKPgo+IEhpLAo+Cj4gTGUg
-bWFyZGkgMTYgYXZyaWwgMjAxOSDDoCAxNjoyNiArMDUzMCwgSmFnYW4gVGVraSBhIMOpY3JpdCA6
-Cj4gPiBUaGlzIHNlcmllcyBpcyBjb21iaW5hdGlvbiBvZiBwcmV2aW91cyB2ZXJzaW9uWzFdIHBs
-dXMgbmV3IHJrMzM5OQo+ID4gYm9hcmRzIGFkZGl0aW9uLgo+Cj4gVGhhbmtzIGZvciBmb2xsb3dp
-bmctdXAgb24gdGhpcyBzZXJpZXMhCj4KPiA+IE92ZXJhbGwgdGhpcyBzZXJpZXMgYWRkIHN1cHBv
-cnQgYmVsb3cgcmszMzk5IGJvYXJkcwo+ID4gLSBPcmFuZ2VwaSBSSzMzOTkKPiA+IC0gTmFub3Bj
-IFQ0Cj4gPiAtIE5hbm9waSBNNAo+ID4gLSBOYW5vcGkgTkVPNAo+ID4gLSBPcmFuZ2VwaSBSSzMz
-OTkKPiA+IC0gUm9ja3BybzY0Cj4gPgo+ID4gQWxsIHRoZSByZXNwZWN0aXZlIGR0cyhpKSBmaWxl
-cyBhcmUgc3luY2VkIGZyb20gTGludXggNS4xLXJjMiBhbmQgZmV3Cj4gPiBkdHMoaSkgZnJvbSBs
-aW51eC1uZXh0Lgo+ID4KPiA+IE5hbm9waSBORU80LCBSb2NrcHJvNjQgYXJlIHN1cHBvcnRpbmcg
-dmlhIFJvY2tjaGlwIG1pbmlsb2FkZXIsIGFuZCByZXN0Cj4gPiBzdXBwb3J0IGJvdGggUm9ja2No
-aXAgbWluaWxvYWRlciBhbG9uZyB3aXRoIFUtQm9vdCBTUEwuCj4gPgo+ID4gLSBSb2NrcHJvNjQs
-IGlzIG5vdCBwb3NzaWJsZSB0byBib290IHZpYSBVLUJvb3QgU1BMIHNpbmNlIGl0IGhhcyBkZXBl
-bmRlbmN5IHdpdGggTFBERFI0Cj4gPiAgIGNvZGUgd2hpY2ggaXMgd29yay1pbi1wcm9ncmVzcyBh
-bmQgYXMgc29vbiBpdCBhcnJpdmVkIGluIG1haWxpbmcgbGlzdCwgd2lsbCB1cGRhdGUgdGhlCj4g
-PiAgIHNhbWUgd2l0aCBkZHIgZHRzaS4KPiA+IC0gTmFub3BpIE5FTzQgaGFzIHNvbWUgZGRyIGlz
-c3VlIHdpdGhbMl0gcmszMzk5LXNkcmFtLWRkcjMtMTg2Ni5kdHNpLAo+ID4gICB3aWxsIHVwZGF0
-ZSB0aGUgc2FtZSB3aXRoIFUtQm9vdCBTUEwgb25jZSBpdCBpcyBmaXhlZC4KClRoYW5rcyBmb3Ig
-eW91ciB0aW1lIG9uIHJldmlld2luZyB0aGUgc2VyaWVzLgoKPgo+IEhhcyB0aGUgc3RhdHVzIGV2
-b2x2ZWQgc2luY2U/IEl0IGxvb2tzIGxpa2UgYm90aCBoYXZlIFNQTCBlbmFibGVkIGluCgpGb3Ig
-cm9ja3BybzY0LCBJJ20gdHJ5aW5nIGhhcmQgdG8gZ2V0IHRoaW5ncyB1cC4gbmVvNCBJIGhhdmUg
-dHJpZWQKbWFueSBvcHRpb25zIHRvIGRpZyBpbnRvIGV4aXN0aW5nIHJrMzM5OS1zZHJhbS1kZHIz
-LTE4NjYuZHRzaSB0bwpwcm9kdWNlIDFHQiB0aW1pbmdzIGJ1dCBub3Qgc3VjY2VlZCBhdCB0aGUg
-ZW5kLgoKPiB0aGlzIHNlcmllcy4gSWYgdGhlIFNQTCBkb2Vzbid0IHN1cHBvcnQgRFJBTSBjb25m
-aWd1cmF0aW9uIHlldCwgaXQKPiBzaG91bGQgcHJvYmFibHkgYmUgZXhwbGljaXRseSBkaXNhYmxl
-ZC4KClRydWUsIGluZGVlZCBJIGV2ZW4gdHJpZWQgb2YgZGlzYWJsaW5nIFNQTCBmb3IgdGhlc2Ug
-Ym9hcmRzIGJ1dCBpdApyYXRoZXIgYml0IGhhcmQgdG8gbWFuYWdlIGxvdCBvZiBLY29uZmlnIG9w
-dGlvbnMgdG8gcmV3b3JrIHNpbmNlCnJrMzM5OSBtYWtlIHRoZSBib2FyZHMgZG8gdXNlIFNQTCBi
-eSBkZWZhdWx0LiBTaW5jZSB0aGUgd29yayBmb3IgZGRyCmluLXByb2dyZXNzIEkgbWFyayBpdCBh
-cyBpdCBpcy4KCkphZ2FuLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8v
-bGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
+Some rockchip boards have issues with tx checksumming for packets
+larger than 1498 B.
+
+An iperf test will tell you that transmissions stop almost immediately.
+
+A workaround to this issue is disabling TX checksumming offload,
+and one of the ways to do that is snps,force_thresh_dma_mode.
+
+But after some discussion here it seems there is another path:
+https://lkml.org/lkml/2019/4/5/148
+
+Setting txpbl is a better-performing (maybe temporary) solution
+compared to disabling T offload.
+
+In my testing with a Libre Computer Renegade, this was the best
+all-around option, and increasing the MTU doesn't cause a queue timeout anymore.
+
+Signed-off-by: Leonidas P. Papadakos <papadakospan@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index 5d499c908..974f2dcdf 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -141,10 +141,10 @@
+ 	phy-mode = "rgmii";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&rgmiim1_pins>;
+-	snps,force_thresh_dma_mode;
+ 	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
+ 	snps,reset-active-low;
+ 	snps,reset-delays-us = <0 10000 50000>;
++	snps,txpbl = <0x4>;
+ 	tx_delay = <0x24>;
+ 	rx_delay = <0x18>;
+ 	status = "okay";
+-- 
+2.21.0
