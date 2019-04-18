@@ -1,54 +1,48 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 0/5] USB: dwc2: Allow wakeup from suspend;
- enable for rk3288-veyron
-Date: Thu, 18 Apr 2019 08:54:48 -0700
-Message-ID: <CAD=FV=XDLqcdq_BypUYsJHKX+DY0VWvCACYgZiHeG8E3Dbwxcw@mail.gmail.com>
-References: <20190418001356.124334-1-dianders@chromium.org>
- <e4b3cd69-1c91-dfbe-bea7-bbca89ca1348@synopsys.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] mwifiex: Make resume actually do something useful again
+ on SDIO cards
+Date: Thu, 18 Apr 2019 09:31:51 -0700
+Message-ID: <CAD=FV=WgTUgMg-r2ZJ6rKOiv5Lw_m-EX6c0it6znA9v8AO+z_A@mail.gmail.com>
+References: <20190404040106.40519-1-dianders@chromium.org>
+ <874l7egxdj.fsf@codeaurora.org>
+ <CA+ASDXNfOUmMEWYwts8PuiDaEjuoPK+tZ0BhDSSte5u5toydkA@mail.gmail.com>
+ <87ef6hruno.fsf@kamboji.qca.qualcomm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <e4b3cd69-1c91-dfbe-bea7-bbca89ca1348@synopsys.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>, Artur Petrosyan <Arthur.Petrosyan@synopsys.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Amelie Delaunay <amelie.delaunay@st.com>, "heiko@sntech.de" <heiko@sntech.de>, Kai-Heng Feng <kai.heng.feng@canonical.com>, "zyw@rock-chips.com" <zyw@rock-chips.com>, Stefan Wahren <stefan.wahren@i2se.com>, Nicolas Boichat <drinkcat@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "mka@chromium.org" <mka@chromium.org>, Alan Stern <stern@rowland.harvard.edu>, Jon Flatley <jflat@chromium.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Elaine Zhang <zhangqing@rock-chips.com>, "amstan@chromium.org" <amstan@chromium.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Randy Li <ayaka@soulik.info>, Rob Herring <robh+dt@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Mathias Nyman <mathias.nyman@linux.intel.com>, Greg Kroah-Hartman <gregkh@>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <87ef6hruno.fsf-HodKDYzPHsUD5k0oWYwrnHL1okKdlPRT@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: Ganapathi Bhat <gbhat-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Xinming Hu <huxinming820-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "<netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>" <netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linux Kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Amitkumar Karwar <amitkarwar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Nishant Sarmukadam <nishants-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ryan Case <ryandcase-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Thu, Apr 18, 2019 at 5:41 AM Minas Harutyunyan
-<Minas.Harutyunyan@synopsys.com> wrote:
-> Did you consider/reviewed patch series from Artur Petrosyan "[PATCH
-> 00/14] usb: dwc2: Fix and improve power saving modes" (submitted on
-> April 12) which fixing partial power down and hibernation flows for both
-> modes: host and device?
-> I suspect that this both patch series can be in conflict.
+On Thu, Apr 4, 2019 at 8:35 PM Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org> wrote:
+>
+> Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
+>
+> > On Wed, Apr 3, 2019 at 10:20 PM Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org> wrote:
+> >> Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
+> >> > Fixes: fc3a2fcaa1ba ("mwifiex: use atomic bitops to represent
+> >> > adapter status variables")
+> >> > Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> >>
+> >> I'm planning to queue this for 5.1.
 
-No, I wasn't aware of them.  I'd like to try them out, but it looks
-like it's currently impossible because they're not archived anywhere
-that I can find.
+Do you know when you plan to queue this?  I don't see the patch in
+Linus's tree nor in linux-next.  Just want to make sure it didn't get
+forgotten...
 
-1. LKML wasn't copied, so I can't find them on lore.kernel.org.  It is
-suggested to CC LKML on all patches.
-
-2. The Linux USB patchwork only has the cover letter plus the first 6
-patches.  See <https://patchwork.kernel.org/cover/10898333/>
-
-3. Searching my own archives I only see the cover letter plus the
-first 6 patches.
-
-Maybe you have some other pointer to how I can retrieve them?  I guess
-I could try the first 6 patches without the later 8 but I'd rather get
-the whole set...
-
+Thanks!
 
 -Doug
