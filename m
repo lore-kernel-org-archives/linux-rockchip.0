@@ -1,69 +1,203 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v2 0/5] USB: dwc2: Allow wakeup from suspend; enable for rk3288-veyron
-Date: Wed, 17 Apr 2019 17:13:51 -0700
-Message-ID: <20190418001356.124334-1-dianders@chromium.org>
+Subject: [PATCH v2 1/5] usb: dwc2: bus suspend/resume for hosts with DWC2_POWER_DOWN_PARAM_NONE
+Date: Wed, 17 Apr 2019 17:13:52 -0700
+Message-ID: <20190418001356.124334-2-dianders@chromium.org>
+References: <20190418001356.124334-1-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190418001356.124334-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Minas Harutyunyan <hminas@synopsys.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, heiko@sntech.de
-Cc: Alan Stern <stern@rowland.harvard.edu>, Artur Petrosyan <Arthur.Petrosyan@synopsys.com>, amstan@chromium.org, linux-rockchip@lists.infradead.org, William Wu <william.wu@rock-chips.com>, linux-usb@vger.kernel.org, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, zyw@rock-chips.com, mka@chromium.org, ryandcase@chromium.org, Amelie Delaunay <amelie.delaunay@st.com>, jwerner@chromium.org, dinguyen@opensource.altera.com, Elaine Zhang <zhangqing@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, linux-arm-kernel@lists.infradead.org, Kai-Heng Feng <kai.heng.feng@canonical.com>, Mathias Nyman <mathias.nyman@linux.intel.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>, Jon Flatley <jf>
+Cc: Alan Stern <stern@rowland.harvard.edu>, Artur Petrosyan <Arthur.Petrosyan@synopsys.com>, amstan@chromium.org, linux-rockchip@lists.infradead.org, William Wu <william.wu@rock-chips.com>, linux-usb@vger.kernel.org, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, zyw@rock-chips.com, mka@chromium.org, ryandcase@chromium.org, Amelie Delaunay <amelie.delaunay@st.com>, jwerner@chromium.org, dinguyen@opensource.altera.com, Elaine Zhang <zhangqing@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This re-hashes two older series I posted a long time ago, re-basing
-them to mainline.  ...well, technically, atop another dwc2 series I
-recently posted:
+This is an attempt to rehash commit 0cf884e819e0 ("usb: dwc2: add bus
+suspend/resume for dwc2") on ToT.  That commit was reverted in commit
+b0bb9bb6ce01 ("Revert "usb: dwc2: add bus suspend/resume for dwc2"")
+because apparently it broke the Altera SOCFPGA.
 
-* usb: dwc2: Another attempt handling rk3288's remote wake quirk
-  https://lkml.kernel.org/r/20190416215351.242246-1-dianders@chromium.org
-  https://lore.kernel.org/patchwork/cover/1062972/
+With all the changes that have happened to dwc2 in the meantime, it's
+possible that the Altera SOCFPGA will just magically work with this
+change now.  ...and it would be good to get bus suspend/resume
+implemented.
 
-In general I've tried to add links to each patch pointing to relevant
-older discussion.  Here are overall links to the cover letters though.
-Note that for the previous "allow wakeup" series the discussion was
-scattered a bit between the original post and the repost.
+This change is a forward port of one that's been living in the Chrome
+OS 3.14 kernel tree.
 
-* usb: dwc2: bus suspend/resume that's not hibernate
-  https://lkml.kernel.org/r/1446237173-15263-1-git-send-email-dianders@chromium.org
-  https://lore.kernel.org/patchwork/patch/613761/
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+This patch was last posted at:
 
-* dwc2 patches to allow wakeup on Rockchip rk3288
-  https://lkml.kernel.org/r/1435017144-2971-1-git-send-email-dianders@chromium.org
-  https://lore.kernel.org/patchwork/cover/572944/
+https://lkml.kernel.org/r/1446237173-15263-1-git-send-email-dianders@chromium.org
 
-* dwc2 patches to allow wakeup on Rockchip rk3288 (REPOST)
-  https://lkml.kernel.org/r/1436207224-21849-1-git-send-email-dianders@chromium.org
-  https://lore.kernel.org/patchwork/cover/576120/
+...and appears to have died the death of silence.  Maybe it could get
+some bake time in linuxnext if we can't find any proactive testing?
 
-I'm hoping there's a better chance of these things landing this time
-around, but I guess we'll see.  ;-)
+I will also freely admit that I don't know tons about the theory
+behind this patch.  I'm mostly just re-hashing the original commit
+from Kever that was reverted since:
+* Turning on partial power down on rk3288 doesn't "just work".  I
+  don't get hotplug events.  This is despite dwc2 auto-detecting that
+  we are power optimized.
+* If we don't do something like this commit we don't get into as low
+  of a power mode.
 
-In case it's helpful I've put what I tested (which is based on Heiko's
-for-next branch and includes patches to enable deep suspend plus two
-other s2r fixes) at:
+Changes in v2: None
 
-https://chromium.googlesource.com/chromiumos/third_party/kernel/+log/refs/sandbox/dianders/190417-testing-dwc2-wakeup
+ drivers/usb/dwc2/hcd.c | 84 ++++++++++++++++++++++++++----------------
+ 1 file changed, 53 insertions(+), 31 deletions(-)
 
-Changes in v2:
-- Rebased to mainline atop rk3288 remote wake quirk series.
-- rk3288-veyron dts patch new for v2.
-
-Douglas Anderson (5):
-  usb: dwc2: bus suspend/resume for hosts with
-    DWC2_POWER_DOWN_PARAM_NONE
-  USB: Export usb_wakeup_enabled_descendants()
-  Documentation: dt-bindings: Add snps,need-phy-for-wake for dwc2 USB
-  USB: dwc2: Don't turn off the usbphy in suspend if wakeup is enabled
-  ARM: dts: rockchip: Allow wakeup from rk3288-veyron's dwc2 USB ports
-
- .../devicetree/bindings/usb/dwc2.txt          |  3 +
- arch/arm/boot/dts/rk3288-veyron.dtsi          |  2 +
- drivers/usb/core/hub.c                        |  7 +-
- drivers/usb/dwc2/core.h                       |  5 ++
- drivers/usb/dwc2/hcd.c                        | 84 ++++++++++++-------
- drivers/usb/dwc2/platform.c                   | 43 +++++++++-
- include/linux/usb/hcd.h                       |  5 ++
- 7 files changed, 113 insertions(+), 36 deletions(-)
-
+diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+index e272d020012e..978232a9e4a8 100644
+--- a/drivers/usb/dwc2/hcd.c
++++ b/drivers/usb/dwc2/hcd.c
+@@ -4482,6 +4482,7 @@ static int _dwc2_hcd_suspend(struct usb_hcd *hcd)
+ 	unsigned long flags;
+ 	int ret = 0;
+ 	u32 hprt0;
++	u32 pcgctl;
+ 
+ 	spin_lock_irqsave(&hsotg->lock, flags);
+ 
+@@ -4497,7 +4498,7 @@ static int _dwc2_hcd_suspend(struct usb_hcd *hcd)
+ 	if (hsotg->op_state == OTG_STATE_B_PERIPHERAL)
+ 		goto unlock;
+ 
+-	if (hsotg->params.power_down != DWC2_POWER_DOWN_PARAM_PARTIAL)
++	if (hsotg->params.power_down > DWC2_POWER_DOWN_PARAM_PARTIAL)
+ 		goto skip_power_saving;
+ 
+ 	/*
+@@ -4506,21 +4507,35 @@ static int _dwc2_hcd_suspend(struct usb_hcd *hcd)
+ 	 */
+ 	if (!hsotg->bus_suspended) {
+ 		hprt0 = dwc2_read_hprt0(hsotg);
+-		hprt0 |= HPRT0_SUSP;
+-		hprt0 &= ~HPRT0_PWR;
+-		dwc2_writel(hsotg, hprt0, HPRT0);
+-		spin_unlock_irqrestore(&hsotg->lock, flags);
+-		dwc2_vbus_supply_exit(hsotg);
+-		spin_lock_irqsave(&hsotg->lock, flags);
++		if (hprt0 & HPRT0_CONNSTS) {
++			hprt0 |= HPRT0_SUSP;
++			if (hsotg->params.power_down == DWC2_POWER_DOWN_PARAM_PARTIAL)
++				hprt0 &= ~HPRT0_PWR;
++			dwc2_writel(hsotg, hprt0, HPRT0);
++		}
++		if (hsotg->params.power_down == DWC2_POWER_DOWN_PARAM_PARTIAL) {
++			spin_unlock_irqrestore(&hsotg->lock, flags);
++			dwc2_vbus_supply_exit(hsotg);
++			spin_lock_irqsave(&hsotg->lock, flags);
++		} else {
++			pcgctl = readl(hsotg->regs + PCGCTL);
++			pcgctl |= PCGCTL_STOPPCLK;
++			writel(pcgctl, hsotg->regs + PCGCTL);
++		}
+ 	}
+ 
+-	/* Enter partial_power_down */
+-	ret = dwc2_enter_partial_power_down(hsotg);
+-	if (ret) {
+-		if (ret != -ENOTSUPP)
+-			dev_err(hsotg->dev,
+-				"enter partial_power_down failed\n");
+-		goto skip_power_saving;
++	if (hsotg->params.power_down == DWC2_POWER_DOWN_PARAM_PARTIAL) {
++		/* Enter partial_power_down */
++		ret = dwc2_enter_partial_power_down(hsotg);
++		if (ret) {
++			if (ret != -ENOTSUPP)
++				dev_err(hsotg->dev,
++					"enter partial_power_down failed\n");
++			goto skip_power_saving;
++		}
++
++		/* After entering partial_power_down, hardware is no more accessible */
++		clear_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);
+ 	}
+ 
+ 	/* Ask phy to be suspended */
+@@ -4530,9 +4545,6 @@ static int _dwc2_hcd_suspend(struct usb_hcd *hcd)
+ 		spin_lock_irqsave(&hsotg->lock, flags);
+ 	}
+ 
+-	/* After entering partial_power_down, hardware is no more accessible */
+-	clear_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);
+-
+ skip_power_saving:
+ 	hsotg->lx_state = DWC2_L2;
+ unlock:
+@@ -4545,6 +4557,7 @@ static int _dwc2_hcd_resume(struct usb_hcd *hcd)
+ {
+ 	struct dwc2_hsotg *hsotg = dwc2_hcd_to_hsotg(hcd);
+ 	unsigned long flags;
++	u32 pcgctl;
+ 	int ret = 0;
+ 
+ 	spin_lock_irqsave(&hsotg->lock, flags);
+@@ -4555,17 +4568,11 @@ static int _dwc2_hcd_resume(struct usb_hcd *hcd)
+ 	if (hsotg->lx_state != DWC2_L2)
+ 		goto unlock;
+ 
+-	if (hsotg->params.power_down != DWC2_POWER_DOWN_PARAM_PARTIAL) {
++	if (hsotg->params.power_down > DWC2_POWER_DOWN_PARAM_PARTIAL) {
+ 		hsotg->lx_state = DWC2_L0;
+ 		goto unlock;
+ 	}
+ 
+-	/*
+-	 * Set HW accessible bit before powering on the controller
+-	 * since an interrupt may rise.
+-	 */
+-	set_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);
+-
+ 	/*
+ 	 * Enable power if not already done.
+ 	 * This must not be spinlocked since duration
+@@ -4577,10 +4584,23 @@ static int _dwc2_hcd_resume(struct usb_hcd *hcd)
+ 		spin_lock_irqsave(&hsotg->lock, flags);
+ 	}
+ 
+-	/* Exit partial_power_down */
+-	ret = dwc2_exit_partial_power_down(hsotg, true);
+-	if (ret && (ret != -ENOTSUPP))
+-		dev_err(hsotg->dev, "exit partial_power_down failed\n");
++	if (hsotg->params.power_down == DWC2_POWER_DOWN_PARAM_PARTIAL) {
++		/*
++		 * Set HW accessible bit before powering on the controller
++		 * since an interrupt may rise.
++		 */
++		set_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);
++
++
++		/* Exit partial_power_down */
++		ret = dwc2_exit_partial_power_down(hsotg, true);
++		if (ret && (ret != -ENOTSUPP))
++			dev_err(hsotg->dev, "exit partial_power_down failed\n");
++	} else {
++		pcgctl = readl(hsotg->regs + PCGCTL);
++		pcgctl &= ~PCGCTL_STOPPCLK;
++		writel(pcgctl, hsotg->regs + PCGCTL);
++	}
+ 
+ 	hsotg->lx_state = DWC2_L0;
+ 
+@@ -4592,10 +4612,12 @@ static int _dwc2_hcd_resume(struct usb_hcd *hcd)
+ 		spin_unlock_irqrestore(&hsotg->lock, flags);
+ 		dwc2_port_resume(hsotg);
+ 	} else {
+-		dwc2_vbus_supply_init(hsotg);
++		if (hsotg->params.power_down == DWC2_POWER_DOWN_PARAM_PARTIAL) {
++			dwc2_vbus_supply_init(hsotg);
+ 
+-		/* Wait for controller to correctly update D+/D- level */
+-		usleep_range(3000, 5000);
++			/* Wait for controller to correctly update D+/D- level */
++			usleep_range(3000, 5000);
++		}
+ 
+ 		/*
+ 		 * Clear Port Enable and Port Status changes.
 -- 
 2.21.0.593.g511ec345e18-goog
