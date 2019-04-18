@@ -1,66 +1,51 @@
-From: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Subject: =?utf-8?B?UmU6IFtQQVRDSCB2MiAwOS8xNF0gcm9ja2NoaXA6IHJrMzM5OTog?=
- =?utf-8?B?QWRkIDRHQiBMUEREUjMtMTg2NiBETUMgc2V0dGluZ3PjgJDor7fms6jmhI8=?=
- =?utf-8?B?77yM6YKu5Lu255SxbGludXgtcm9ja2NoaXAtYm91bmNlcytrZXZlci55YW5n?=
- =?utf-8?B?PXJvY2stY2hpcHMuY29tQGxpc3RzLmluZnJhZGVhZC5vcmfku6Plj5HjgJE=?=
-Date: Thu, 18 Apr 2019 08:30:42 +0200
-Message-ID: <4D33D402-161A-44DD-97D4-284C27B3500C@theobroma-systems.com>
-References: <20190416105647.18437-1-jagan@amarulasolutions.com>
- <20190416105647.18437-10-jagan@amarulasolutions.com>
- <275140ce-e159-37c4-c7b3-81d21d07a009@rock-chips.com>
- <CAMty3ZC4fm7GtH91ztdyaozh8v-xpMGa23KhR_GCoZ9saCeknQ@mail.gmail.com>
- <12b48e92-be80-3600-6ab2-2c0d4c132603@rock-chips.com>
-Mime-Version: 1.0 (Mac OS X Mail 11.5 \(3445.9.1\))
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2] drm/rockchip: shutdown drm subsystem on shutdown
+Date: Thu, 18 Apr 2019 10:32:52 +0200
+Message-ID: <16214989.ofMSVjYgR7@phil>
+References: <20190402113753.10118-1-heiko@sntech.de>
+Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <12b48e92-be80-3600-6ab2-2c0d4c132603-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Liviu Dudau <liviu-I3yL/QOVVjH10XsdtD+oqA@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+Content-Transfer-Encoding: 7Bit
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20190402113753.10118-1-heiko@sntech.de>
+Sender: stable-owner@vger.kernel.org
+To: hjc@rock-chips.com
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Vicente Bergas <vicencb@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>, Marc Zyngier <marc.zyngier@arm.com>, Brian Norris <briannorris@chromium.org>, Doug Anderson <dianders@chromium.org>, stable@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Am Dienstag, 2. April 2019, 13:37:53 CEST schrieb Heiko Stuebner:
+> From: Vicente Bergas <vicencb@gmail.com>
+> 
+> As explained by Robin Murphy:
+> > the IOMMU shutdown disables paging, so if the VOP is still
+> > scanning out then that will result in whatever IOVAs it was using now going
+> > straight out onto the bus as physical addresses.
+> 
+> We had a more radical approach before in commit
+> 7f3ef5dedb14 ("drm/rockchip: Allow driver to be shutdown on reboot/kexec")
+> but that resulted in new warnings and oopses on shutdown on rk3399
+> chromeos devices.
+> 
+> So second try is resurrecting Vicentes shutdown change which should
+> achieve the same result but in a less drastic way.
+> 
+> Fixes: 63238173b2fa ("Revert drm/rockchip: Allow driver to be shutdown on reboot/kexec")
+> Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Cc: Robin Murphy <robin.murphy@arm.com>
+> Cc: Marc Zyngier <marc.zyngier@arm.com>
+> Cc: Brian Norris <briannorris@chromium.org>
+> Cc: Doug Anderson <dianders@chromium.org>
+> Cc: stable@vger.kernel.org
+> Suggested-by: JeffyChen <jeffy.chen@rock-chips.com>
+> Suggested-by: Robin Murphy <robin.murphy@arm.com>
+> Signed-off-by: Vicente Bergas <vicencb@gmail.com>
+> [adapted commit message to explain the history]
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
+applied to drm-misc-next
 
-> On 18.04.2019, at 04:57, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> 
-> Hi Jagan,
-> 
-> 
-> On 04/17/2019 07:11 PM, Jagan Teki wrote:
->> On Wed, Apr 17, 2019 at 1:10 PM Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->>> Hi Jagan,
->>> 
->>> 
->>> On 04/16/2019 06:56 PM, Jagan Teki wrote:
->>>> Add sdram dtsi file for 4GB LPDDR3-1866 DMC settings by reverse
->>>> engineered from the rk3399_ddr_933Mhz_v1.14.bin file.
->>>> 
->>>> Full credits to 'Liviu Dudau' who is the real author for this change.
->>>> 
->>>> Signed-off-by: Liviu Dudau <liviu-I3yL/QOVVjH10XsdtD+oqA@public.gmane.org>
->>>> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
->>>> ---
->>>> .../arm/dts/rk3399-sdram-lpddr3-4GB-1866.dtsi | 1535 +++++++++++++++++
->>> Could you use rk3399-sdram-lpddr3-samsung-4GB-1866.dtsi directly?
->>> I think it should able to work.
->> I supposed to take the same, but thought that it would be some samsung
->> specific setting. but seems like it is nearly same and it worked. will
->> update to use this. thanks!
-> 
-> I have check with rockchip dram driver owner, this setting is more generic
-> while the -samsung- dtsi is more for dedicate chromebook.
-> So I think we can merge this patch for other boards who using Rockchip
-> reference design.
-> 
-> Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Not fixes, to give it more exposure this time. It still has a stable tag
+so should nevertheless trickle down to stable in time as well.
 
-Reviewed-by: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Thanks for all the testing
+Heiko
