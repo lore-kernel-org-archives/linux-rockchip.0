@@ -1,7 +1,7 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v2 1/5] usb: dwc2: bus suspend/resume for hosts with DWC2_POWER_DOWN_PARAM_NONE
-Date: Wed, 17 Apr 2019 17:13:52 -0700
-Message-ID: <20190418001356.124334-2-dianders@chromium.org>
+Subject: [PATCH v2 4/5] USB: dwc2: Don't turn off the usbphy in suspend if wakeup is enabled
+Date: Wed, 17 Apr 2019 17:13:55 -0700
+Message-ID: <20190418001356.124334-5-dianders@chromium.org>
 References: <20190418001356.124334-1-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,192 +12,155 @@ To: Minas Harutyunyan <hminas@synopsys.com>, Felipe Balbi <felipe.balbi@linux.in
 Cc: Alan Stern <stern@rowland.harvard.edu>, Artur Petrosyan <Arthur.Petrosyan@synopsys.com>, amstan@chromium.org, linux-rockchip@lists.infradead.org, William Wu <william.wu@rock-chips.com>, linux-usb@vger.kernel.org, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, zyw@rock-chips.com, mka@chromium.org, ryandcase@chromium.org, Amelie Delaunay <amelie.delaunay@st.com>, jwerner@chromium.org, dinguyen@opensource.altera.com, Elaine Zhang <zhangqing@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This is an attempt to rehash commit 0cf884e819e0 ("usb: dwc2: add bus
-suspend/resume for dwc2") on ToT.  That commit was reverted in commit
-b0bb9bb6ce01 ("Revert "usb: dwc2: add bus suspend/resume for dwc2"")
-because apparently it broke the Altera SOCFPGA.
+If the 'snps,need-phy-for-wake' is set in the device tree then:
 
-With all the changes that have happened to dwc2 in the meantime, it's
-possible that the Altera SOCFPGA will just magically work with this
-change now.  ...and it would be good to get bus suspend/resume
-implemented.
+- We know that we can wakeup, so call device_set_wakeup_capable().
+  The USB core will use this knowledge to enable wakeup by default.
+- We know that we should keep the PHY on during suspend if something
+  on our root hub needs remote wakeup.  This requires the patch (USB:
+  Export usb_wakeup_enabled_descendants()).  Note that we don't keep
+  the PHY on at suspend time if it's not needed because it would be a
+  power draw.
 
-This change is a forward port of one that's been living in the Chrome
-OS 3.14 kernel tree.
+If we later find some users of dwc2 that can support wakeup without
+keeping the PHY on we may want to add a way to call
+device_set_wakeup_capable() without keeping the PHY on at suspend
+time.
 
 Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 ---
-This patch was last posted at:
+For relevant prior discussion of this idea, see:
 
-https://lkml.kernel.org/r/1446237173-15263-1-git-send-email-dianders@chromium.org
+https://lkml.kernel.org/r/1436207224-21849-4-git-send-email-dianders@chromium.org
 
-...and appears to have died the death of silence.  Maybe it could get
-some bake time in linuxnext if we can't find any proactive testing?
+If I'm reading all the responses correctly folks were of the opinion
+that this patch is still the right way to go.
 
-I will also freely admit that I don't know tons about the theory
-behind this patch.  I'm mostly just re-hashing the original commit
-from Kever that was reverted since:
-* Turning on partial power down on rk3288 doesn't "just work".  I
-  don't get hotplug events.  This is despite dwc2 auto-detecting that
-  we are power optimized.
-* If we don't do something like this commit we don't get into as low
-  of a power mode.
+Changes in v2:
+- Rebased to mainline atop rk3288 remote wake quirk series.
 
-Changes in v2: None
+ drivers/usb/dwc2/core.h     |  5 +++++
+ drivers/usb/dwc2/platform.c | 43 +++++++++++++++++++++++++++++++++++--
+ 2 files changed, 46 insertions(+), 2 deletions(-)
 
- drivers/usb/dwc2/hcd.c | 84 ++++++++++++++++++++++++++----------------
- 1 file changed, 53 insertions(+), 31 deletions(-)
-
-diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
-index e272d020012e..978232a9e4a8 100644
---- a/drivers/usb/dwc2/hcd.c
-+++ b/drivers/usb/dwc2/hcd.c
-@@ -4482,6 +4482,7 @@ static int _dwc2_hcd_suspend(struct usb_hcd *hcd)
- 	unsigned long flags;
- 	int ret = 0;
- 	u32 hprt0;
-+	u32 pcgctl;
+diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
+index f30748f4fe7e..a99fe7851352 100644
+--- a/drivers/usb/dwc2/core.h
++++ b/drivers/usb/dwc2/core.h
+@@ -861,6 +861,9 @@ struct dwc2_hregs_backup {
+  * @hibernated:		True if core is hibernated
+  * @reset_phy_on_wake:	Quirk saying that we should assert PHY reset on a
+  *			remote wakeup.
++ * @phy_off_for_suspend: Status of whether we turned the PHY off at suspend.
++ * @need_phy_for_wake:	Quirk saying that we should keep the PHY on at
++ *			suspend if we need USB to wake us up.
+  * @frame_number:       Frame number read from the core. For both device
+  *			and host modes. The value ranges are from 0
+  *			to HFNUM_MAX_FRNUM.
+@@ -1049,6 +1052,8 @@ struct dwc2_hsotg {
+ 	unsigned int ll_hw_enabled:1;
+ 	unsigned int hibernated:1;
+ 	unsigned int reset_phy_on_wake:1;
++	unsigned int need_phy_for_wake:1;
++	unsigned int phy_off_for_suspend:1;
+ 	u16 frame_number;
  
- 	spin_lock_irqsave(&hsotg->lock, flags);
+ 	struct phy *phy;
+diff --git a/drivers/usb/dwc2/platform.c b/drivers/usb/dwc2/platform.c
+index 9b65b766e0b9..6f0271c5d163 100644
+--- a/drivers/usb/dwc2/platform.c
++++ b/drivers/usb/dwc2/platform.c
+@@ -47,7 +47,9 @@
+ #include <linux/phy/phy.h>
+ #include <linux/platform_data/s3c-hsotg.h>
+ #include <linux/reset.h>
++#include <linux/usb.h>
  
-@@ -4497,7 +4498,7 @@ static int _dwc2_hcd_suspend(struct usb_hcd *hcd)
- 	if (hsotg->op_state == OTG_STATE_B_PERIPHERAL)
- 		goto unlock;
++#include <linux/usb/hcd.h>
+ #include <linux/usb/of.h>
  
--	if (hsotg->params.power_down != DWC2_POWER_DOWN_PARAM_PARTIAL)
-+	if (hsotg->params.power_down > DWC2_POWER_DOWN_PARAM_PARTIAL)
- 		goto skip_power_saving;
+ #include "core.h"
+@@ -450,6 +452,10 @@ static int dwc2_driver_probe(struct platform_device *dev)
+ 	if (retval)
+ 		goto error;
  
- 	/*
-@@ -4506,21 +4507,35 @@ static int _dwc2_hcd_suspend(struct usb_hcd *hcd)
- 	 */
- 	if (!hsotg->bus_suspended) {
- 		hprt0 = dwc2_read_hprt0(hsotg);
--		hprt0 |= HPRT0_SUSP;
--		hprt0 &= ~HPRT0_PWR;
--		dwc2_writel(hsotg, hprt0, HPRT0);
--		spin_unlock_irqrestore(&hsotg->lock, flags);
--		dwc2_vbus_supply_exit(hsotg);
--		spin_lock_irqsave(&hsotg->lock, flags);
-+		if (hprt0 & HPRT0_CONNSTS) {
-+			hprt0 |= HPRT0_SUSP;
-+			if (hsotg->params.power_down == DWC2_POWER_DOWN_PARAM_PARTIAL)
-+				hprt0 &= ~HPRT0_PWR;
-+			dwc2_writel(hsotg, hprt0, HPRT0);
-+		}
-+		if (hsotg->params.power_down == DWC2_POWER_DOWN_PARAM_PARTIAL) {
-+			spin_unlock_irqrestore(&hsotg->lock, flags);
-+			dwc2_vbus_supply_exit(hsotg);
-+			spin_lock_irqsave(&hsotg->lock, flags);
-+		} else {
-+			pcgctl = readl(hsotg->regs + PCGCTL);
-+			pcgctl |= PCGCTL_STOPPCLK;
-+			writel(pcgctl, hsotg->regs + PCGCTL);
-+		}
- 	}
- 
--	/* Enter partial_power_down */
--	ret = dwc2_enter_partial_power_down(hsotg);
--	if (ret) {
--		if (ret != -ENOTSUPP)
--			dev_err(hsotg->dev,
--				"enter partial_power_down failed\n");
--		goto skip_power_saving;
-+	if (hsotg->params.power_down == DWC2_POWER_DOWN_PARAM_PARTIAL) {
-+		/* Enter partial_power_down */
-+		ret = dwc2_enter_partial_power_down(hsotg);
-+		if (ret) {
-+			if (ret != -ENOTSUPP)
-+				dev_err(hsotg->dev,
-+					"enter partial_power_down failed\n");
-+			goto skip_power_saving;
-+		}
++	hsotg->need_phy_for_wake =
++		of_property_read_bool(dev->dev.of_node,
++				      "snps,need-phy-for-wake");
 +
-+		/* After entering partial_power_down, hardware is no more accessible */
-+		clear_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);
+ 	/*
+ 	 * Reset before dwc2_get_hwparams() then it could get power-on real
+ 	 * reset value form registers.
+@@ -481,6 +487,14 @@ static int dwc2_driver_probe(struct platform_device *dev)
+ 		hsotg->gadget_enabled = 1;
  	}
  
- 	/* Ask phy to be suspended */
-@@ -4530,9 +4545,6 @@ static int _dwc2_hcd_suspend(struct usb_hcd *hcd)
- 		spin_lock_irqsave(&hsotg->lock, flags);
- 	}
++	/*
++	 * If we need PHY for wakeup we must be wakeup capable.
++	 * When we have a device that can wake without the PHY we
++	 * can adjust this condition.
++	 */
++	if (hsotg->need_phy_for_wake)
++		device_set_wakeup_capable(&dev->dev, true);
++
+ 	hsotg->reset_phy_on_wake =
+ 		of_property_read_bool(dev->dev.of_node,
+ 				      "snps,reset-phy-on-wake");
+@@ -516,6 +530,28 @@ static int dwc2_driver_probe(struct platform_device *dev)
+ 	return retval;
+ }
  
--	/* After entering partial_power_down, hardware is no more accessible */
--	clear_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);
--
- skip_power_saving:
- 	hsotg->lx_state = DWC2_L2;
- unlock:
-@@ -4545,6 +4557,7 @@ static int _dwc2_hcd_resume(struct usb_hcd *hcd)
++static bool __maybe_unused dwc2_can_poweroff_phy(struct dwc2_hsotg *dwc2)
++{
++	struct usb_device *root_hub = dwc2_hsotg_to_hcd(dwc2)->self.root_hub;
++
++	if (!dwc2->ll_hw_enabled)
++		return false;
++
++	/* If the controller isn't allowed to wakeup then we can power off. */
++	if (!device_may_wakeup(dwc2->dev))
++		return true;
++
++	/*
++	 * We don't want to power off the PHY if something under the
++	 * root hub has wakeup enabled.
++	 */
++	if (usb_wakeup_enabled_descendants(root_hub))
++		return false;
++
++	/* No reason to keep the PHY powered, so allow poweroff */
++	return true;
++}
++
+ static int __maybe_unused dwc2_suspend(struct device *dev)
  {
- 	struct dwc2_hsotg *hsotg = dwc2_hcd_to_hsotg(hcd);
- 	unsigned long flags;
-+	u32 pcgctl;
- 	int ret = 0;
+ 	struct dwc2_hsotg *dwc2 = dev_get_drvdata(dev);
+@@ -524,8 +560,10 @@ static int __maybe_unused dwc2_suspend(struct device *dev)
+ 	if (dwc2_is_device_mode(dwc2))
+ 		dwc2_hsotg_suspend(dwc2);
  
- 	spin_lock_irqsave(&hsotg->lock, flags);
-@@ -4555,17 +4568,11 @@ static int _dwc2_hcd_resume(struct usb_hcd *hcd)
- 	if (hsotg->lx_state != DWC2_L2)
- 		goto unlock;
- 
--	if (hsotg->params.power_down != DWC2_POWER_DOWN_PARAM_PARTIAL) {
-+	if (hsotg->params.power_down > DWC2_POWER_DOWN_PARAM_PARTIAL) {
- 		hsotg->lx_state = DWC2_L0;
- 		goto unlock;
- 	}
- 
--	/*
--	 * Set HW accessible bit before powering on the controller
--	 * since an interrupt may rise.
--	 */
--	set_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);
--
- 	/*
- 	 * Enable power if not already done.
- 	 * This must not be spinlocked since duration
-@@ -4577,10 +4584,23 @@ static int _dwc2_hcd_resume(struct usb_hcd *hcd)
- 		spin_lock_irqsave(&hsotg->lock, flags);
- 	}
- 
--	/* Exit partial_power_down */
--	ret = dwc2_exit_partial_power_down(hsotg, true);
--	if (ret && (ret != -ENOTSUPP))
--		dev_err(hsotg->dev, "exit partial_power_down failed\n");
-+	if (hsotg->params.power_down == DWC2_POWER_DOWN_PARAM_PARTIAL) {
-+		/*
-+		 * Set HW accessible bit before powering on the controller
-+		 * since an interrupt may rise.
-+		 */
-+		set_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);
-+
-+
-+		/* Exit partial_power_down */
-+		ret = dwc2_exit_partial_power_down(hsotg, true);
-+		if (ret && (ret != -ENOTSUPP))
-+			dev_err(hsotg->dev, "exit partial_power_down failed\n");
-+	} else {
-+		pcgctl = readl(hsotg->regs + PCGCTL);
-+		pcgctl &= ~PCGCTL_STOPPCLK;
-+		writel(pcgctl, hsotg->regs + PCGCTL);
+-	if (dwc2->ll_hw_enabled)
++	if (dwc2_can_poweroff_phy(dwc2)) {
+ 		ret = __dwc2_lowlevel_hw_disable(dwc2);
++		dwc2->phy_off_for_suspend = true;
 +	}
  
- 	hsotg->lx_state = DWC2_L0;
+ 	return ret;
+ }
+@@ -535,11 +573,12 @@ static int __maybe_unused dwc2_resume(struct device *dev)
+ 	struct dwc2_hsotg *dwc2 = dev_get_drvdata(dev);
+ 	int ret = 0;
  
-@@ -4592,10 +4612,12 @@ static int _dwc2_hcd_resume(struct usb_hcd *hcd)
- 		spin_unlock_irqrestore(&hsotg->lock, flags);
- 		dwc2_port_resume(hsotg);
- 	} else {
--		dwc2_vbus_supply_init(hsotg);
-+		if (hsotg->params.power_down == DWC2_POWER_DOWN_PARAM_PARTIAL) {
-+			dwc2_vbus_supply_init(hsotg);
+-	if (dwc2->ll_hw_enabled) {
++	if (dwc2->phy_off_for_suspend && dwc2->ll_hw_enabled) {
+ 		ret = __dwc2_lowlevel_hw_enable(dwc2);
+ 		if (ret)
+ 			return ret;
+ 	}
++	dwc2->phy_off_for_suspend = false;
  
--		/* Wait for controller to correctly update D+/D- level */
--		usleep_range(3000, 5000);
-+			/* Wait for controller to correctly update D+/D- level */
-+			usleep_range(3000, 5000);
-+		}
- 
- 		/*
- 		 * Clear Port Enable and Port Status changes.
+ 	if (dwc2_is_device_mode(dwc2))
+ 		ret = dwc2_hsotg_resume(dwc2);
 -- 
 2.21.0.593.g511ec345e18-goog
