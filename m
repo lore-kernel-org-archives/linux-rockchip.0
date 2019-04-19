@@ -1,79 +1,99 @@
-From: Artur Petrosyan <Arthur.Petrosyan@synopsys.com>
-Subject: Re: [PATCH v2 0/5] USB: dwc2: Allow wakeup from suspend; enable for
- rk3288-veyron
-Date: Fri, 19 Apr 2019 16:44:34 +0000
-Message-ID: <SN1PR12MB24319D0BF93E22B6B913E6CAA7270@SN1PR12MB2431.namprd12.prod.outlook.com>
-References: <20190418001356.124334-1-dianders@chromium.org>
- <e4b3cd69-1c91-dfbe-bea7-bbca89ca1348@synopsys.com>
- <CAD=FV=XDLqcdq_BypUYsJHKX+DY0VWvCACYgZiHeG8E3Dbwxcw@mail.gmail.com>
- <SN1PR12MB2431F918E4731FAA50A373B6A7270@SN1PR12MB2431.namprd12.prod.outlook.com>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH 2/2] ARM: errata: add support for A12/A17 errata CR711784
+Date: Fri, 19 Apr 2019 15:18:03 -0700
+Message-ID: <20190419221803.99322-2-dianders@chromium.org>
+References: <20190419221803.99322-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Doug Anderson <dianders@chromium.org>, Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Amelie Delaunay <amelie.delaunay@st.com>, "heiko@sntech.de" <heiko@sntech.de>, Kai-Heng Feng <kai.heng.feng@canonical.com>, "zyw@rock-chips.com" <zyw@rock-chips.com>, Stefan Wahren <stefan.wahren@i2se.com>, Nicolas Boichat <drinkcat@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "mka@chromium.org" <mka@chromium.org>, Alan Stern <stern@rowland.harvard.edu>, Jon Flatley <jflat@chromium.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Elaine Zhang <zhangqing@rock-chips.com>, "amstan@chromium.org" <amstan@chromium.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Randy Li <ayaka@soulik.info>, Rob Herring <robh+dt@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Mathias Nyman <mathias.nyman@linux.intel.com>, Greg Kroah-Hartman <gregkh@>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190419221803.99322-1-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Russell King <linux@armlinux.org.uk>
+Cc: mark.rutland@arm.com, Salva.Climent@arm.com, linux-rockchip@lists.infradead.org, sonnyrao@chromium.org, will.deacon@arm.com, bbatacha@arm.com, mka@chromium.org, robin.murphy@arm.com, heiko@sntech.de, Douglas Anderson <dianders@chromium.org>, Arnd Bergmann <arnd@arndb.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-kernel@vger.kernel.org, Paul Burton <paul.burton@mips.com>, Palmer Dabbelt <palmer@sifive.com>, Florian Fainelli <f.fainelli@gmail.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Marc Zyngier <marc.zyngier@arm.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, linux-arm-kernel@lists.infradead.org, Tony Lindgren <tony@atomide.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
+This adds a code for turning on chicken bit 11, which appears to avoid
+a potential CPU deadlock that could occur.  The exact set of
+instruction needed to trigger this errata is not totaly known but we
+have a high level of confidence that the problem is fixed by setting
+chicken bit 11.
 
-On 4/19/2019 15:43, Artur Petrosyan wrote:
-> Hi,
-> 
-> On 4/18/2019 19:55, Doug Anderson wrote:
->> Hi,
->>
->> On Thu, Apr 18, 2019 at 5:41 AM Minas Harutyunyan
->> <Minas.Harutyunyan@synopsys.com> wrote:
->>> Did you consider/reviewed patch series from Artur Petrosyan "[PATCH
->>> 00/14] usb: dwc2: Fix and improve power saving modes" (submitted on
->>> April 12) which fixing partial power down and hibernation flows for both
->>> modes: host and device?
->>> I suspect that this both patch series can be in conflict.
->>
->> No, I wasn't aware of them.  I'd like to try them out, but it looks
->> like it's currently impossible because they're not archived anywhere
->> that I can find.
->>
->> 1. LKML wasn't copied, so I can't find them on lore.kernel.org.  It is
->> suggested to CC LKML on all patches.
->>
->> 2. The Linux USB patchwork only has the cover letter plus the first 6
->> patches.  See <https://urldefense.proofpoint.com/v2/url?u=https-3A__patchwork.kernel.org_cover_10898333_&d=DwIBaQ&c=DPL6_X_6JkXFx7AXWqB0tg&r=9hPBFKCJ_nBjJhGVrrlYOeOQjP_HlVzYqrC_D7niMJI&m=rJbofHXqjP3sUBgEikaZ89fRWtsquvhFUkhSPguCiWw&s=_CrI0uolquXIYC5SuoZ1vBs7BM19VfCceI96qZm9kAY&e=>
->>
->> 3. Searching my own archives I only see the cover letter plus the
->> first 6 patches.
->>
->> Maybe you have some other pointer to how I can retrieve them?  I guess
->> I could try the first 6 patches without the later 8 but I'd rather get
->> the whole set...
->>
->>
->> -Doug
->>
-> 
-> 
-> I have resend the patch set. You can find it with cover letter
-> "[PATCH v1 00/14] usb: dwc2: Fix and improve power saving modes."
-> 
-> Let me know if you need any help.
-> 
+All details are in http://crbug.com/711784
 
-I am so sorry to inform you that the patches have not reached to LKML.
-Looks like there is a problem with the kernel mailing list servers or 
-our local servers.
-Will try to fix this as soon as possible and let you know about it.
+This erratum has no known number and thus I have tagged it CR711784
+(after the Chrome OS bug number).  I have created separate A12 / A17
+configs to match how the rest of the A12 / A17 errata is handled.
 
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+
+ arch/arm/Kconfig      | 18 ++++++++++++++++++
+ arch/arm/mm/proc-v7.S | 10 ++++++++++
+ 2 files changed, 28 insertions(+)
+
+diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
+index 4376fe74f95e..34ec9039206b 100644
+--- a/arch/arm/Kconfig
++++ b/arch/arm/Kconfig
+@@ -1181,6 +1181,13 @@ config ARM_ERRATA_857271
+ 	  hang. The workaround is expected to have a negligible performance
+ 	  impact.
+ 
++config ARM_ERRATA_CR711784_A12
++	bool "ARM errata: A12: conditional instructions can lead to a CPU hang"
++	depends on CPU_V7
++	help
++	  This option enables the workaround for a Cortex-A12 erratum without a
++	  number. The problems are best described in https://crbug.com/711784
++
+ config ARM_ERRATA_852421
+ 	bool "ARM errata: A17: DMB ST might fail to create order between stores"
+ 	depends on CPU_V7
+@@ -1212,6 +1219,17 @@ config ARM_ERRATA_857272
+ 	  config option from the A12 erratum due to the way errata are checked
+ 	  for and handled.
+ 
++config ARM_ERRATA_CR711784_A17
++	bool "ARM errata: A17: conditional instructions can lead to a CPU hang"
++	depends on CPU_V7
++	help
++	  This option enables the workaround for a Cortex-A17 erratum without a
++	  number. The problems are best described in https://crbug.com/711784
++	  This erratum is not known to be fixed in any A17 revision.
++	  This is identical to Cortex-A12 erratum CR711784.  It is a separate
++	  config option from the A12 erratum due to the way errata are checked
++	  for and handled.
++
+ endmenu
+ 
+ source "arch/arm/common/Kconfig"
+diff --git a/arch/arm/mm/proc-v7.S b/arch/arm/mm/proc-v7.S
+index cd2accbab844..a5156ea734ee 100644
+--- a/arch/arm/mm/proc-v7.S
++++ b/arch/arm/mm/proc-v7.S
+@@ -396,6 +396,11 @@ __ca12_errata:
+ 	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
+ 	orr	r10, r10, #1 << 10		@ set bit #10
+ 	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
++#endif
++#ifdef CONFIG_ARM_ERRATA_CR711784_A12
++	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
++	orr	r10, r10, #1 << 11		@ set bit #11
++	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
+ #endif
+ 	b	__errata_finish
+ 
+@@ -416,6 +421,11 @@ __ca17_errata:
+ 	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
+ 	orr	r10, r10, #1 << 10		@ set bit #10
+ 	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
++#endif
++#ifdef CONFIG_ARM_ERRATA_CR711784_A17
++	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
++	orr	r10, r10, #1 << 11		@ set bit #11
++	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
+ #endif
+ 	b	__errata_finish
+ 
 -- 
-Regards,
-Artur
+2.21.0.593.g511ec345e18-goog
