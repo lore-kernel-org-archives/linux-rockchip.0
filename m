@@ -1,18 +1,19 @@
-From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 1/3] pwm: rockchip: Don't update the state for the
- caller of pwm_apply_state()
-Date: Thu, 18 Apr 2019 17:27:05 -0700
-Message-ID: <CA+ASDXO=szekU97iTDK9vqWjT+JtAKeCNTyoY=8aSi5d+v4mkA@mail.gmail.com>
-References: <20190312214605.10223-1-u.kleine-koenig@pengutronix.de>
- <20190312214605.10223-2-u.kleine-koenig@pengutronix.de>
- <1707507.TOMHpQGrZ7@phil>
- <CAD=FV=WZHouhGcxOgNG3006XajJQaAp0uq9WjeKRikQx1ru4TA@mail.gmail.com>
- <20190408143914.uucb5dwafq3cnsmk@pengutronix.de>
+From: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH] mwifiex: Make resume actually do something useful again
+ on SDIO cards
+Date: Fri, 19 Apr 2019 07:03:11 +0300
+Message-ID: <87k1fq1w1s.fsf@kamboji.qca.qualcomm.com>
+References: <20190404040106.40519-1-dianders@chromium.org>
+ <874l7egxdj.fsf@codeaurora.org>
+ <CA+ASDXNfOUmMEWYwts8PuiDaEjuoPK+tZ0BhDSSte5u5toydkA@mail.gmail.com>
+ <87ef6hruno.fsf@kamboji.qca.qualcomm.com>
+ <CAD=FV=WgTUgMg-r2ZJ6rKOiv5Lw_m-EX6c0it6znA9v8AO+z_A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190408143914.uucb5dwafq3cnsmk-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+In-Reply-To: <CAD=FV=WgTUgMg-r2ZJ6rKOiv5Lw_m-EX6c0it6znA9v8AO+z_A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+ (Doug Anderson's message of "Thu, 18 Apr 2019 09:31:51 -0700")
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -22,50 +23,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Ganapathi Bhat <gbhat-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Xinming Hu <huxinming820-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "<netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>" <netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linux Kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Amitkumar Karwar <amitkarwar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Nishant Sarmukadam <nishants-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ryan Case <ryandcase-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpJJ20gbm90IHN1cmUgaWYgSSdtIG1pc3JlYWRpbmcgeW91LCBidXQgSSB0aG91Z2h0IEkn
-ZCBhZGQgaGVyZSBiZWZvcmUKdGhpcyBleHBpcmVzIG91dCBvZiBteSBpbmJveDoKCk9uIE1vbiwg
-QXByIDgsIDIwMTkgYXQgNzozOSBBTSBVd2UgS2xlaW5lLUvDtm5pZwo8dS5rbGVpbmUta29lbmln
-QHBlbmd1dHJvbml4LmRlPiB3cm90ZToKPiBNeSBpbnRlbnRpb24gaGVyZSBpcyBtb3JlIHRvIG1h
-a2UgYWxsIGRyaXZlcnMgYmVoYXZlIHRoZSBzYW1lIHdheSBhbmQKPiBiZWNhdXNlIG9ubHkgdHdv
-IGRyaXZlcnMgdXBkYXRlZCB0aGUgcHdtX3N0YXRlIHRoaXMgd2FzIHRoZSB2YXJpYW50IEkKPiBy
-ZW1vdmVkLgoKVG8gYmUgY2xlYXIsIHRoaXMgcGF0Y2ggb24gaXRzIG93biBpcyBwcm9iYWJseSBi
-cmVha2luZyB0aGluZ3MuIEp1c3QKYmVjYXVzZSB0aGUgb3RoZXIgZHJpdmVycyBkb24ndCBpbXBs
-ZW1lbnQgdGhlIGRvY3VtZW50ZWQgYmVoYXZpb3IKZG9lc24ndCBtZWFuIHlvdSBzaG91bGQgYnJl
-YWsgdGhpcyBkcml2ZXIuIE1heWJlIHRoZSBvdGhlcnMganVzdAphcmVuJ3QgdXNlZCBpbiBwcmVj
-aXNlIGVub3VnaCBzY2VuYXJpb3Mgd2hlcmUgdGhpcyBtYXR0ZXJzLgoKPiBXaGVuIHlvdSBzYXkg
-dGhhdCB0aGUgY2FsbGVyIG1pZ2h0IGFjdHVhbGx5IGNhcmUgYWJvdXQgdGhlIGV4YWN0Cj4gcGFy
-YW1ldGVycyBJIGZ1bGx5IGFncmVlLiBJbiB0aGlzIGNhc2UgaG93ZXZlciB0aGUgY29uc3VtZXIg
-c2hvdWxkIGJlCj4gYWJsZSB0byBrbm93IHRoZSByZXN1bHQgYmVmb3JlIGFjdHVhbGx5IGFwcGx5
-aW5nIGl0LiBTbyBpZiB5b3UgZG8KPgo+ICAgICAgICAgcHdtX2FwcGx5X3N0YXRlKHB3bSwgeyAu
-cGVyaW9kID0gMTcsIC5kdXR5X2N5Y2xlID0gMTIsIC4uLn0pCj4KPiBhbmQgdGhpcyByZXN1bHRz
-IGluIC5wZXJpb2QgPSAxMDAgYW5kIC5kdXR5X2N5Y2xlID0gMCB0aGVuIHByb2JhYmx5IHRoZQo+
-IGJhZCB0aGluZ3MgeW91IHdhbnQgdG8ga25vdyBhYm91dCBhbHJlYWR5IGhhcHBlbmQuIFNvIG15
-IGlkZWEgaXMgYSBuZXcKPiBmdW5jdGlvbiBwd21fcm91bmRfc3RhdGUoKSB0aGF0IGRvZXMgdGhl
-IGFkYXB0aW9ucyB0byBwd21fc3RhdGUgd2l0aG91dAo+IGFwcGx5aW5nIGl0IHRvIHRoZSBoYXJk
-d2FyZS4gQWZ0ZXIgdGhhdCBwd21fYXBwbHlfc3RhdGUgY291bGQgZG8gdGhlCj4gZm9sbG93aW5n
-Ogo+Cj4gICAgICAgICByc3RhdGUgPSBwd21fcm91bmRfc3RhdGUocHdtLCBzdGF0ZSkKPiAgICAg
-ICAgIHB3bS5hcHBseShwd20sIHN0YXRlKQo+ICAgICAgICAgZ3N0YXRlID0gcHdtX2dldF9zdGF0
-ZShwd20pCj4KPiAgICAgICAgIGlmIHJzdGF0ZSAhPSBnc3RhdGU6Cj4gICAgICAgICAgICAgICAg
-IHdhcm4gYWJvdXQgcHJvYmxlbXMKCkZvciBvdXIgY2FzZSAod2UncmUgdXNpbmcgdGhpcyB3aXRo
-IHB3bS1yZWd1bGF0b3IpLCBJIGRvbid0IHJlY2FsbCBbKl0Kd2UgbmVlZCB0byBiZSAxMDAlIHBy
-ZWNpc2UgYWJvdXQgdGhlIHBlcmlvZCwgYnV0IHdlIGRvIG5lZWQgdG8gYmUgYXMKcHJlY2lzZSBh
-cyBwb3NzaWJsZSB3aXRoIHRoZSBkdXR5OnBlcmlvZCByYXRpbyAtLSBzbyBvbmNlIHdlIGdldCB0
-aGUKImZlZWRiYWNrIiBmcm9tIHRoZSB1bmRlcmx5aW5nIFBXTSBkcml2ZXIgd2hhdCB0aGUgcmVh
-bCBwZXJpb2Qgd2lsbApiZSwgd2UgYWRqdXN0IHRoZSBkdXR5IGFwcHJvcHJpYXRlbHkuCgpTbyBJ
-IGRvbid0IHNlZSB0aGF0ICJ3YXJuaW5nIiB3b3VsZCByZWFsbHkgaGVscCBmb3IgdGhpcyBwYXJ0
-aWN1bGFyIGNhc2UuCgo+IEJ1dCBiZWZvcmUgZG9pbmcgdGhhdCBJIHRoaW5rIGl0IHdvdWxkIGJl
-IHNlbnNpYmxlIHRvIGFsc28gZml4IHRoZSBydWxlcwo+IGhvdyB0aGUgcm91bmRfc3RhdGUgY2Fs
-bGJhY2sgaXMgc3VwcG9zZWQgdG8gcm91bmQuCgpJJ20gbm90IHF1aXRlIHN1cmUgSSBncm9rIGV4
-YWN0bHkgd2hhdCB5b3UncmUgcGxhbm5pbmcsIGJ1dCBJIHdvdWxkCm11Y2ggYXBwcmVjaWF0ZSBp
-ZiB5b3UgZGlkbid0IGJyZWFrIHRoaW5ncyBvbiB0aGUgd2F5IHRvd2FyZCBmaXhpbmcKdGhlbSA7
-KQoKVGhhbmtzLApCcmlhbgoKWypdIFdvcmtpbmcgb2ZmIGEgc29tZXdoYXQgc3RhbGUgbWVtb3J5
-IGFuZCBhIHJlZnJlc2hlciBwYXNzIG92ZXIgdGhlIGNvZGUuCgo+IEFwYXJ0IGZyb20gdGhhdCBJ
-IGFncmVlIHRoYXQgcHdtX2dldF9zdGF0ZSBzaG91bGQgcmV0dXJuIHRoZSBhY3R1YWxseQo+IGlt
-cGxlbWVudGVkIGNvbmZpZ3VyYXRpb24uCj4KPiBCZXN0IHJlZ2FyZHMKPiBVd2UKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
+
+> On Thu, Apr 4, 2019 at 8:35 PM Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org> wrote:
+>>
+>> Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
+>>
+>> > On Wed, Apr 3, 2019 at 10:20 PM Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org> wrote:
+>> >> Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
+>> >> > Fixes: fc3a2fcaa1ba ("mwifiex: use atomic bitops to represent
+>> >> > adapter status variables")
+>> >> > Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>> >>
+>> >> I'm planning to queue this for 5.1.
+>
+> Do you know when you plan to queue this?  I don't see the patch in
+> Linus's tree nor in linux-next.  Just want to make sure it didn't get
+> forgotten...
+
+It's on my queue and not forgotten:
+
+https://patchwork.kernel.org/patch/10884883/
+
+Due to various reasons I'm really struggling with patches right now,
+sorry about that, but I'm slowly catching up. I should be able to apply
+this within a week.
+
+-- 
+Kalle Valo
