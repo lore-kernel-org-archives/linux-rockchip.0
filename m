@@ -1,7 +1,8 @@
 From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 06/15] rockchip/vpu: Support the Request API
-Date: Mon, 22 Apr 2019 10:08:09 +0200
-Message-ID: <20190422080818.29130-7-boris.brezillon@collabora.com>
+Subject: [PATCH v3 10/15] rockchip/vpu: Provide a helper to reset both src and
+ dst formats
+Date: Mon, 22 Apr 2019 10:08:13 +0200
+Message-ID: <20190422080818.29130-11-boris.brezillon@collabora.com>
 References: <20190422080818.29130-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,122 +22,94 @@ To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Han
 Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+When initializing a context, the core wants to reset both src and dst
+formats. Right now the order doesn't matter, but if we want to have a
+valid default width/height on the non-coded/raw format side (src in
+case of encoders, dst in case of decoders), we need to reset those
+formats in the right order: first the coded-format side, then the other,
+such that width and height on the raw format side can be taken from
+the coded format.
 
-Introduce support for the Request API. Although the JPEG encoder
-does not mandate using the Request API, it's perfectly possible to
-use it, if the application wants to.
+Let's provide a helper that will reset both formats and make sure this
+is done in the right order.
 
-Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
---
-Changes from v2:
-* Drop unrelated mdev.bus_info changes.
-* Remove the get_ref and get_ctrl helpers as they are not used yet.
 ---
- .../rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c     |  6 ++++++
- .../media/rockchip/vpu/rockchip_vpu_drv.c     |  7 +++++++
- .../media/rockchip/vpu/rockchip_vpu_enc.c     | 19 +++++++++++++++++++
- 3 files changed, 32 insertions(+)
+Changes from v2:
+* New patch
+---
+ .../staging/media/rockchip/vpu/rockchip_vpu_drv.c  |  3 +--
+ .../staging/media/rockchip/vpu/rockchip_vpu_v4l2.c | 14 ++++++++++----
+ .../staging/media/rockchip/vpu/rockchip_vpu_v4l2.h |  5 +----
+ 3 files changed, 12 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c
-index 6f9f5158d193..74823d25cd8d 100644
---- a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c
-+++ b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c
-@@ -113,11 +113,15 @@ void rk3399_vpu_jpeg_enc_run(struct rockchip_vpu_ctx *ctx)
- 	struct rockchip_vpu_dev *vpu = ctx->dev;
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
- 	struct rockchip_vpu_jpeg_ctx jpeg_ctx;
-+	struct media_request *src_req;
- 	u32 reg;
- 
- 	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
- 	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
- 
-+	src_req = src_buf->vb2_buf.req_obj.req;
-+	v4l2_ctrl_request_setup(src_req, &ctx->ctrl_handler);
-+
- 	memset(&jpeg_ctx, 0, sizeof(jpeg_ctx));
- 	jpeg_ctx.buffer = vb2_plane_vaddr(&dst_buf->vb2_buf, 0);
- 	jpeg_ctx.width = ctx->dst_fmt.width;
-@@ -153,6 +157,8 @@ void rk3399_vpu_jpeg_enc_run(struct rockchip_vpu_ctx *ctx)
- 		| VEPU_REG_ENCODE_FORMAT_JPEG
- 		| VEPU_REG_ENCODE_ENABLE;
- 
-+	v4l2_ctrl_request_complete(src_req, &ctx->ctrl_handler);
-+
- 	/* Kick the watchdog and start encoding */
- 	schedule_delayed_work(&vpu->watchdog_work, msecs_to_jiffies(2000));
- 	vepu_write(vpu, reg, VEPU_REG_ENCODE_START);
 diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-index b3dfaad84282..86a34df16b58 100644
+index d729b27c95db..8c02a7a2e65f 100644
 --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
 +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-@@ -162,6 +162,7 @@ enc_queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
- 	src_vq->lock = &ctx->dev->vpu_mutex;
- 	src_vq->dev = ctx->dev->v4l2_dev.dev;
-+	src_vq->supports_requests = true;
+@@ -272,8 +272,7 @@ static int rockchip_vpu_open(struct file *filp)
+ 	filp->private_data = &ctx->fh;
+ 	v4l2_fh_add(&ctx->fh);
  
- 	ret = vb2_queue_init(src_vq);
- 	if (ret)
-@@ -326,6 +327,11 @@ static const struct of_device_id of_rockchip_vpu_match[] = {
- };
- MODULE_DEVICE_TABLE(of, of_rockchip_vpu_match);
+-	rockchip_vpu_reset_dst_fmt(vpu, ctx);
+-	rockchip_vpu_reset_src_fmt(vpu, ctx);
++	rockchip_vpu_reset_fmts(ctx);
  
-+static const struct media_device_ops rockchip_m2m_media_ops = {
-+	.req_validate = vb2_request_validate,
-+	.req_queue = v4l2_m2m_request_queue,
-+};
-+
- static int rockchip_vpu_video_device_register(struct rockchip_vpu_dev *vpu)
- {
- 	const struct of_device_id *match;
-@@ -614,6 +620,7 @@ static int rockchip_vpu_probe(struct platform_device *pdev)
- 	vpu->mdev.dev = vpu->dev;
- 	strscpy(vpu->mdev.model, DRIVER_NAME, sizeof(vpu->mdev.model));
- 	media_device_init(&vpu->mdev);
-+	vpu->mdev.ops = &rockchip_m2m_media_ops;
- 	vpu->v4l2_dev.mdev = &vpu->mdev;
- 
- 	ret = rockchip_vpu_video_device_register(vpu);
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
-index 0ace50746f2e..7ca3025f64f9 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
-@@ -555,14 +555,33 @@ static void rockchip_vpu_stop_streaming(struct vb2_queue *q)
- 			vbuf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
- 		if (!vbuf)
- 			break;
-+		v4l2_ctrl_request_complete(vbuf->vb2_buf.req_obj.req,
-+					   &ctx->ctrl_handler);
- 		v4l2_m2m_buf_done(vbuf, VB2_BUF_STATE_ERROR);
- 	}
+ 	ret = rockchip_vpu_ctrls_setup(vpu, ctx);
+ 	if (ret) {
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c
+index 7a03bf0a6359..832f3b015f1d 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c
+@@ -261,8 +261,8 @@ vidioc_try_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ 	return 0;
  }
  
-+static void rockchip_vpu_buf_request_complete(struct vb2_buffer *vb)
+-void rockchip_vpu_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
+-				struct rockchip_vpu_ctx *ctx)
++static void rockchip_vpu_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
++				       struct rockchip_vpu_ctx *ctx)
+ {
+ 	struct v4l2_pix_format_mplane *fmt = &ctx->dst_fmt;
+ 
+@@ -286,8 +286,8 @@ void rockchip_vpu_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
+ 		fmt->width * fmt->height * ctx->vpu_dst_fmt->max_depth;
+ }
+ 
+-void rockchip_vpu_reset_src_fmt(struct rockchip_vpu_dev *vpu,
+-				struct rockchip_vpu_ctx *ctx)
++static void rockchip_vpu_reset_src_fmt(struct rockchip_vpu_dev *vpu,
++				       struct rockchip_vpu_ctx *ctx)
+ {
+ 	struct v4l2_pix_format_mplane *fmt = &ctx->src_fmt;
+ 	unsigned int width, height;
+@@ -309,6 +309,12 @@ void rockchip_vpu_reset_src_fmt(struct rockchip_vpu_dev *vpu,
+ 	v4l2_fill_pixfmt_mp(fmt, ctx->vpu_src_fmt->fourcc, width, height);
+ }
+ 
++void rockchip_vpu_reset_fmts(struct rockchip_vpu_ctx *ctx)
 +{
-+	struct rockchip_vpu_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
-+
-+	v4l2_ctrl_request_complete(vb->req_obj.req, &ctx->ctrl_handler);
++	rockchip_vpu_reset_dst_fmt(ctx->dev, ctx);
++	rockchip_vpu_reset_src_fmt(ctx->dev, ctx);
 +}
 +
-+static int rockchip_vpu_buf_out_validate(struct vb2_buffer *vb)
-+{
-+	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-+
-+	vbuf->field = V4L2_FIELD_NONE;
-+	return 0;
-+}
-+
- const struct vb2_ops rockchip_vpu_enc_queue_ops = {
- 	.queue_setup = rockchip_vpu_queue_setup,
- 	.buf_prepare = rockchip_vpu_buf_prepare,
- 	.buf_queue = rockchip_vpu_buf_queue,
-+	.buf_out_validate = rockchip_vpu_buf_out_validate,
-+	.buf_request_complete = rockchip_vpu_buf_request_complete,
- 	.start_streaming = rockchip_vpu_start_streaming,
- 	.stop_streaming = rockchip_vpu_stop_streaming,
- 	.wait_prepare = vb2_ops_wait_prepare,
+ static int
+ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ {
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.h
+index 816bd3988218..493e8751d22d 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.h
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.h
+@@ -21,9 +21,6 @@
+ extern const struct v4l2_ioctl_ops rockchip_vpu_ioctl_ops;
+ extern const struct vb2_ops rockchip_vpu_queue_ops;
+ 
+-void rockchip_vpu_reset_src_fmt(struct rockchip_vpu_dev *vpu,
+-				struct rockchip_vpu_ctx *ctx);
+-void rockchip_vpu_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
+-				struct rockchip_vpu_ctx *ctx);
++void rockchip_vpu_reset_fmts(struct rockchip_vpu_ctx *ctx);
+ 
+ #endif /* ROCKCHIP_VPU_V4L2_H_ */
 -- 
 2.20.1
