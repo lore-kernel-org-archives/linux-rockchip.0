@@ -1,78 +1,86 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] mmc: dw_mmc: Disable SDIO interrupts while suspended to
- fix suspend/resume
-Date: Mon, 22 Apr 2019 08:21:27 -0700
-Message-ID: <CAD=FV=Wm+T+W=LWTSiwBT3UQWG7YKQdGuL2+BmAFQhk8CYY1mQ@mail.gmail.com>
-References: <20190410221237.160856-1-dianders@chromium.org>
+Subject: Re: [PATCH v2] clk: rockchip: undo several noc and special clocks as
+ critical on rk3288
+Date: Mon, 22 Apr 2019 08:23:48 -0700
+Message-ID: <CAD=FV=Xkdc_yPCjVUh96atdiB4fo4h3oNZYe45ef+eLeVUVM8g@mail.gmail.com>
+References: <20190412161747.107107-1-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190410221237.160856-1-dianders@chromium.org>
+In-Reply-To: <20190412161747.107107-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Kalle Valo <kvalo@codeaurora.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, stable@vger.kernel.org, Linux MMC List <linux-mmc@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Caesar Wang <caesar.wang@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, linux-clk <linux-clk@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Elaine,
 
-On Wed, Apr 10, 2019 at 3:13 PM Douglas Anderson <dianders@chromium.org> wrote:
+On Fri, Apr 12, 2019 at 9:18 AM Douglas Anderson <dianders@chromium.org> wrote:
 >
-> Processing SDIO interrupts while dw_mmc is suspended (or partly
-> suspended) seems like a bad idea.  We really don't want to be
-> processing them until we've gotten ourselves fully powered up.
+> This is mostly a revert of commit 55bb6a633c33 ("clk: rockchip: mark
+> noc and some special clk as critical on rk3288") except that we're
+> keeping "pmu_hclk_otg0" as critical still.
 >
-> You might be wondering how it's even possible to become suspended when
-> an SDIO interrupt is active.  As can be seen in
-> dw_mci_enable_sdio_irq(), we explicitly keep dw_mmc out of runtime
-> suspend when the SDIO interrupt is enabled.  ...but even though we
-> stop normal runtime suspend transitions when SDIO interrupts are
-> enabled, the dw_mci_runtime_suspend() can still get called for a full
-> system suspend.
+> NOTE: turning these clocks off doesn't seem to do a whole lot in terms
+> of power savings (checking the power on the logic rail).  It appears
+> to save maybe 1-2mW.  ...but still it seems like we should turn the
+> clocks off if they aren't needed.
 >
-> Let's handle all this by explicitly masking SDIO interrupts in the
-> suspend call and unmasking them later in the resume call.  To do this
-> cleanly I'll keep track of whether the client requested that SDIO
-> interrupts be enabled so that we can reliably restore them regardless
-> of whether we're masking them for one reason or another.
+> About "pmu_hclk_otg0" (the one clock from the original commit we're
+> still keeping critical) from an email thread:
 >
-> Without this fix it can be seen that rk3288-veyron Chromebooks with
-> Marvell WiFi would sometimes fail to resume WiFi even after picking my
-> recent mwifiex patch [1].  Specifically you'd see messages like this:
->   mwifiex_sdio mmc1:0001:1: Firmware wakeup failed
->   mwifiex_sdio mmc1:0001:1: PREP_CMD: FW in reset state
+> > pmu ahb clock
+> >
+> > Function: Clock to pmu module when hibernation and/or ADP is
+> > enabled. Must be greater than or equal to 30 MHz.
+> >
+> > If the SOC design does not support hibernation/ADP function, only have
+> > hclk_otg, this clk can be switched according to the usage of otg.
+> > If the SOC design support hibernation/ADP, has two clocks, hclk_otg and
+> > pmu_hclk_otg0.
+> > Hclk_otg belongs to the closed part of otg logic, which can be switched
+> > according to the use of otg.
+> >
+> > pmu_hclk_otg0 belongs to the always on part.
+> >
+> > As for whether pmu_hclk_otg0 can be turned off when otg is not in use,
+> > we have not tested. IC suggest make pmu_hclk_otg0 always on.
 >
-> ...and tracing through the resume code in the failing cases showed
-> that we were processing a SDIO interrupt really early in the resume
-> call.
+> For the rest of the clocks:
 >
-> NOTE: downstream in Chrome OS 3.14 and 3.18 kernels (both of which
-> support the Marvell SDIO WiFi card) we had a patch ("CHROMIUM: sdio:
-> Defer SDIO interrupt handling until after resume") [2].  Presumably
-> this is the same problem that was solved by that patch.
+> atclk: No documentation about this clock other than that it goes to
+> the CPU.  CPU functions fine without it on.  Maybe needed for JTAG?
 >
-> [1] https://lkml.kernel.org/r/20190404040106.40519-1-dianders@chromium.org
-> [2] https://crrev.com/c/230765
+> jtag: Presumably this clock is only needed if you're debugging with
+> JTAG.  It doesn't seem like it makes sense to waste power for every
+> rk3288 user.  In any case to do JTAG you'd need private patches to
+> adjust the pinctrl the mux the JTAG out anyway.
 >
-> Cc: <stable@vger.kernel.org>
+> pclk_dbg, pclk_core_niu: On veyron Chromebooks we turn these two
+> clocks on only during kernel panics in order to access some coresight
+> registers.  Since nothing in the upstream kernel does this we should
+> be able to leave them off safely.  Maybe also needed for JTAG?
+>
+> hsicphy12m_xin12m: There is no indication of why this clock would need
+> to be turned on for boards that don't use HSIC.
+>
+> pclk_ddrupctl[0-1], pclk_publ0[0-1]: On veyron Chromebooks we turn
+> these 4 clocks on only when doing DDR transitions and they are off
+> otherwise.  I see no reason why they'd need to be on in the upstream
+> kernel which doesn't support DDRFreq.
+>
 > Signed-off-by: Douglas Anderson <dianders@chromium.org>
 > ---
-> I didn't put any "Fixes" tag here, but presumably this could be
-> backported to whichever kernels folks found it useful for.  I have at
-> least confirmed that kernels v4.14 and v4.19 (as well as v5.1-rc2)
-> show the problem.  It is very easy to pick this to v4.19 and it
-> definitely fixes the problem there.
 >
-> I haven't spent the time to pick this to 4.14 myself, but presumably
-> it wouldn't be too hard to backport this as far as v4.13 since that
-> contains commit 32dba73772f8 ("mmc: dw_mmc: Convert to use
-> MMC_CAP2_SDIO_IRQ_NOTHREAD for SDIO IRQs").  Prior to that it might
-> make sense for anyone experiencing this problem to just pick the old
-> CHROMIUM patch to fix them.
+> Changes in v2:
+> - Now keep pmu_hclk_otg0 as critical.
+> - Updated description since this isn't a clean revert.
+> - PWM patches have landed, so just one patch in the series now.
 >
->  drivers/mmc/host/dw_mmc.c | 24 ++++++++++++++++++++----
->  drivers/mmc/host/dw_mmc.h |  3 +++
->  2 files changed, 23 insertions(+), 4 deletions(-)
+>  drivers/clk/rockchip/clk-rk3288.c | 13 ++++---------
+>  1 file changed, 4 insertions(+), 9 deletions(-)
 
-Jaehoon / Shawn: any thoughts on this patch?
+From previous discussions I think you're all happy with this patch
+now, right?  Care to give it an official Reviewed-by tag?
 
 -Doug
