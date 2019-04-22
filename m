@@ -1,76 +1,96 @@
-From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 14/15] rockchip/vpu: Add support for MPEG-2 decoding
-Date: Mon, 22 Apr 2019 15:28:44 +0000
-Message-ID: <DB8PR03MB58987F631F913769E150BD3DAC220@DB8PR03MB5898.eurprd03.prod.outlook.com>
-References: <20190422080818.29130-1-boris.brezillon@collabora.com>
- <20190422080818.29130-15-boris.brezillon@collabora.com>
- <DB8PR03MB5898C649C628B6FDEF4E2C80AC220@DB8PR03MB5898.eurprd03.prod.outlook.com>
- <20190422171223.48cd51fc@collabora.com>
+From: Artur Petrosyan <Arthur.Petrosyan@synopsys.com>
+Subject: Re: [PATCH v2 0/5] USB: dwc2: Allow wakeup from suspend; enable for
+ rk3288-veyron
+Date: Mon, 22 Apr 2019 15:50:29 +0000
+Message-ID: <SN1PR12MB2431362F11279C1C0E9E7793A7220@SN1PR12MB2431.namprd12.prod.outlook.com>
+References: <20190418001356.124334-1-dianders@chromium.org>
+ <e4b3cd69-1c91-dfbe-bea7-bbca89ca1348@synopsys.com>
+ <CAD=FV=XDLqcdq_BypUYsJHKX+DY0VWvCACYgZiHeG8E3Dbwxcw@mail.gmail.com>
+ <SN1PR12MB2431F918E4731FAA50A373B6A7270@SN1PR12MB2431.namprd12.prod.outlook.com>
+ <SN1PR12MB24319D0BF93E22B6B913E6CAA7270@SN1PR12MB2431.namprd12.prod.outlook.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190422171223.48cd51fc-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Language: en-US
-Content-ID: <52E62053DE4FAB45883385E2D2CCDEC4-yI6K9L9iJZCcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, "kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org" <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, "linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>, Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>
+Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, "heiko@sntech.de" <heiko@sntech.de>, Alan Stern <stern@rowland.harvard.edu>, "amstan@chromium.org" <amstan@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, William Wu <william.wu@rock-chips.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, "zyw@rock-chips.com" <zyw@rock-chips.com>, "mka@chromium.org" <mka@chromium.org>, "ryandcase@chromium.org" <ryandcase@chromium.org>, Amelie Delaunay <amelie.delaunay@st.com>, "jwerner@chromium.org" <jwerner@chromium.org>, Elaine Zhang <zhangqing@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2019-04-22 17:12, Boris Brezillon wrote:
-> On Mon, 22 Apr 2019 14:59:17 +0000
-> Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org> wrote:
->
->> On 2019-04-22 10:08, Boris Brezillon wrote:
->>> From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>  
->> Please restore my commit authorship, it seems to have changed in v3.
-> Oops, sorry about that, it was not intentional.
-
-Thanks :-)
-
->
->> I would appreciate if you can pick the fixups from [1] and [2] to sync rk3288/rk3399 code.
-> Sure, I'll have a look.
->
->> Please also squash both MPEG-2 commits, that is closer to the original commit at [4].
-> Hm, okay. I thought it'd be preferable to split that in 2 or even 3
-> commits (one adding the core infra and one per platform), but if
-> everyone is okay with having things squashed in a single commit I'll do
-> that.
-
-If you think it is better to split please do. I am biased and see both platforms as one that only differ in hwreg order.
-
-Regards,
-Jonas
-
->
->> This module seems to crash after repeated rmmod / insmod, calls to video_device_release
->> seems to be the culprit for crash. There is also an issue with uneven pm runtime autosuspend calls
->> leaving clocks enabled when module is unloaded.
->>
->> Feel free to pick/squash any of the changes at [3], they fixes the crash and uneven autosuspend for me.
-> Will do.
->
->> MPEG-2 decoding is working on my RK3288 and RK3399 devices.
->>
->> Fixup commits:
->> [1] https://github.com/Kwiboo/linux-rockchip/commit/8d8b5aca522176d17b6a0f13da57fd9b8e7d1e9a
->> [2] https://github.com/Kwiboo/linux-rockchip/commit/75de5f322ffe889154832f6ebfb08e48257af526
->> [3] https://github.com/Kwiboo/linux-rockchip/commit/0729b53c825a630c9040d28541d2635a42177361
->>
->> Original MPEG-2 commit:
->> [4] https://github.com/Kwiboo/linux-rockchip/commit/25d9502927540c6f17c65d52a350b28c664cbf5a
->>
->> Thanks,
-> Thanks for reviewing/testing/debugging.
->
-> Boris
+Hi Doug,=0A=
+=0A=
+On 4/19/2019 20:44, Artur Petrosyan wrote:=0A=
+> Hi Doug,=0A=
+> =0A=
+> On 4/19/2019 15:43, Artur Petrosyan wrote:=0A=
+>> Hi,=0A=
+>>=0A=
+>> On 4/18/2019 19:55, Doug Anderson wrote:=0A=
+>>> Hi,=0A=
+>>>=0A=
+>>> On Thu, Apr 18, 2019 at 5:41 AM Minas Harutyunyan=0A=
+>>> <Minas.Harutyunyan@synopsys.com> wrote:=0A=
+>>>> Did you consider/reviewed patch series from Artur Petrosyan "[PATCH=0A=
+>>>> 00/14] usb: dwc2: Fix and improve power saving modes" (submitted on=0A=
+>>>> April 12) which fixing partial power down and hibernation flows for bo=
+th=0A=
+>>>> modes: host and device?=0A=
+>>>> I suspect that this both patch series can be in conflict.=0A=
+>>>=0A=
+>>> No, I wasn't aware of them.  I'd like to try them out, but it looks=0A=
+>>> like it's currently impossible because they're not archived anywhere=0A=
+>>> that I can find.=0A=
+>>>=0A=
+>>> 1. LKML wasn't copied, so I can't find them on lore.kernel.org.  It is=
+=0A=
+>>> suggested to CC LKML on all patches.=0A=
+>>>=0A=
+>>> 2. The Linux USB patchwork only has the cover letter plus the first 6=
+=0A=
+>>> patches.  See <https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__p=
+atchwork.kernel.org_cover_10898333_&d=3DDwIBaQ&c=3DDPL6_X_6JkXFx7AXWqB0tg&r=
+=3D9hPBFKCJ_nBjJhGVrrlYOeOQjP_HlVzYqrC_D7niMJI&m=3DrJbofHXqjP3sUBgEikaZ89fR=
+WtsquvhFUkhSPguCiWw&s=3D_CrI0uolquXIYC5SuoZ1vBs7BM19VfCceI96qZm9kAY&e=3D>=
+=0A=
+>>>=0A=
+>>> 3. Searching my own archives I only see the cover letter plus the=0A=
+>>> first 6 patches.=0A=
+>>>=0A=
+>>> Maybe you have some other pointer to how I can retrieve them?  I guess=
+=0A=
+>>> I could try the first 6 patches without the later 8 but I'd rather get=
+=0A=
+>>> the whole set...=0A=
+>>>=0A=
+>>>=0A=
+>>> -Doug=0A=
+>>>=0A=
+>>=0A=
+>>=0A=
+>> I have resend the patch set. You can find it with cover letter=0A=
+>> "[PATCH v1 00/14] usb: dwc2: Fix and improve power saving modes."=0A=
+>>=0A=
+>> Let me know if you need any help.=0A=
+>>=0A=
+> =0A=
+> I am so sorry to inform you that the patches have not reached to LKML.=0A=
+> Looks like there is a problem with the kernel mailing list servers or=0A=
+> our local servers.=0A=
+> Will try to fix this as soon as possible and let you know about it.=0A=
+> =0A=
+=0A=
+My patches has reached to LKML. You can find them with the patch set =0A=
+title "[PATCH v1 00/14] usb: dwc2: Fix and improve power saving modes."=0A=
+=0A=
+This is the link to the patch set in marc.info=0A=
+"https://marc.info/?l=3Dlinux-usb&m=3D155570003924638&w=3D2"=0A=
+and a link in patchwork.kernel.org=0A=
+"https://patchwork.kernel.org/project/linux-usb/list/?submitter=3D180003"=
+=0A=
+=0A=
+Sorry for the delay.=0A=
+=0A=
+-- =0A=
+Regards,=0A=
+Artur=0A=
