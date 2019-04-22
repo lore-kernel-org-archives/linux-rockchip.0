@@ -1,7 +1,7 @@
 From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 09/15] rockchip/vpu: Move encoder logic to a common place
-Date: Mon, 22 Apr 2019 10:08:12 +0200
-Message-ID: <20190422080818.29130-10-boris.brezillon@collabora.com>
+Subject: [PATCH v3 13/15] rockchip/vpu: Add support for non-standard controls
+Date: Mon, 22 Apr 2019 10:08:16 +0200
+Message-ID: <20190422080818.29130-14-boris.brezillon@collabora.com>
 References: <20190422080818.29130-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,176 +21,180 @@ To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Han
 Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The V4L2/VB2 implementation for the encoder and decoder logic are very
-similar, so let's rename rockchip_vpu_enc.c file into
-rockchip_vpu_v4l2.c and remove the _enc_ part in objects/functions
-exposed in rockchip_vpu_v4l2.h. We also rename the enc_queue_init()
-function (in rockchip_vpu_drv.c) queue_init() since it will be used
-to initialize both type of queues.
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 
-The implementation itself will be patched to support the decoding case
-when decoder support is added.
+Rework the way controls are registered by the driver,
+so it can support non-standard controls, such as those
+used by stateless codecs.
 
-Suggested-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
+--
 Changes from v2:
-* New patch
+* Got rid of unused ctrls related fields.
+* Removed unndeeded is_std internal field.
 ---
- drivers/staging/media/rockchip/vpu/Makefile        |  2 +-
- .../staging/media/rockchip/vpu/rockchip_vpu_drv.c  | 14 +++++++-------
- .../{rockchip_vpu_enc.c => rockchip_vpu_v4l2.c}    | 14 +++++++-------
- .../staging/media/rockchip/vpu/rockchip_vpu_v4l2.h | 12 ++++++------
- 4 files changed, 21 insertions(+), 21 deletions(-)
- rename drivers/staging/media/rockchip/vpu/{rockchip_vpu_enc.c => rockchip_vpu_v4l2.c} (97%)
+ .../media/rockchip/vpu/rk3288_vpu_hw.c        |  2 +-
+ .../media/rockchip/vpu/rk3399_vpu_hw.c        |  2 +-
+ .../staging/media/rockchip/vpu/rockchip_vpu.h | 17 ++++++-
+ .../media/rockchip/vpu/rockchip_vpu_drv.c     | 51 +++++++++++++++----
+ 4 files changed, 59 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/staging/media/rockchip/vpu/Makefile b/drivers/staging/media/rockchip/vpu/Makefile
-index e9d733bb7632..ae512173e7e4 100644
---- a/drivers/staging/media/rockchip/vpu/Makefile
-+++ b/drivers/staging/media/rockchip/vpu/Makefile
-@@ -2,7 +2,7 @@ obj-$(CONFIG_VIDEO_ROCKCHIP_VPU) += rockchip-vpu.o
+diff --git a/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw.c b/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw.c
+index a874a0d83c2d..da19f1cad957 100644
+--- a/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw.c
++++ b/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw.c
+@@ -112,7 +112,7 @@ const struct rockchip_vpu_variant rk3288_vpu_variant = {
+ 	.enc_fmts = rk3288_vpu_enc_fmts,
+ 	.num_enc_fmts = ARRAY_SIZE(rk3288_vpu_enc_fmts),
+ 	.codec_ops = rk3288_vpu_codec_ops,
+-	.codec = RK_VPU_CODEC_JPEG,
++	.codec = RK_VPU_JPEG_ENCODER,
+ 	.vepu_irq = rk3288_vepu_irq,
+ 	.init = rk3288_vpu_hw_init,
+ 	.clk_names = {"aclk", "hclk"},
+diff --git a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
+index 87460fe179f5..42e08ce4b0c6 100644
+--- a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
++++ b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
+@@ -129,7 +129,7 @@ const struct rockchip_vpu_variant rk3399_vpu_variant = {
+ 	.enc_offset = 0x0,
+ 	.enc_fmts = rk3399_vpu_enc_fmts,
+ 	.num_enc_fmts = ARRAY_SIZE(rk3399_vpu_enc_fmts),
+-	.codec = RK_VPU_CODEC_JPEG,
++	.codec = RK_VPU_JPEG_ENCODER,
+ 	.codec_ops = rk3399_vpu_codec_ops,
+ 	.vepu_irq = rk3399_vepu_irq,
+ 	.vdpu_irq = rk3399_vdpu_irq,
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
+index 17bcfd302283..360df35648fc 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
+@@ -34,7 +34,10 @@
+ struct rockchip_vpu_ctx;
+ struct rockchip_vpu_codec_ops;
  
- rockchip-vpu-y += \
- 		rockchip_vpu_drv.o \
--		rockchip_vpu_enc.o \
-+		rockchip_vpu_v4l2.o \
- 		rk3288_vpu_hw.o \
- 		rk3288_vpu_hw_jpeg_enc.o \
- 		rk3399_vpu_hw.o \
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-index 041116855bab..d729b27c95db 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-@@ -140,7 +140,7 @@ static struct v4l2_m2m_ops vpu_m2m_ops = {
+-#define RK_VPU_CODEC_JPEG BIT(0)
++#define RK_VPU_JPEG_ENCODER	BIT(0)
++#define RK_VPU_ENCODERS		0x0000ffff
++
++#define RK_VPU_DECODERS		0xffff0000
+ 
+ /**
+  * struct rockchip_vpu_variant - information about VPU hardware variant
+@@ -89,6 +92,18 @@ enum rockchip_vpu_type {
+ 	RK_VPU_DECODER,
  };
  
- static int
--enc_queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
-+queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
++/*
++ * struct rockchip_vpu_ctrl - helper type to declare supported controls
++ * @id:		V4L2 control ID (V4L2_CID_xxx)
++ * @codec:	codec id this control belong to (RK_VPU_JPEG_ENCODER, etc.)
++ * @cfg:	control configuration
++ */
++struct rockchip_vpu_ctrl {
++	unsigned int id;
++	unsigned int codec;
++	struct v4l2_ctrl_config cfg;
++};
++
+ /*
+  * struct rockchip_vpu_mc - media controller data
+  *
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+index d344fdd88476..141363deef4a 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+@@ -248,22 +248,51 @@ static const struct v4l2_ctrl_ops rockchip_vpu_ctrl_ops = {
+ 	.s_ctrl = rockchip_vpu_s_ctrl,
+ };
+ 
++static struct rockchip_vpu_ctrl controls[] = {
++	{
++		.id = V4L2_CID_JPEG_COMPRESSION_QUALITY,
++		.codec = RK_VPU_JPEG_ENCODER,
++		.cfg = {
++			.min = 5,
++			.max = 100,
++			.step = 1,
++			.def = 50,
++		},
++	},
++};
++
+ static int rockchip_vpu_ctrls_setup(struct rockchip_vpu_dev *vpu,
+-				    struct rockchip_vpu_ctx *ctx)
++				    struct rockchip_vpu_ctx *ctx,
++				    int allowed_codecs)
  {
- 	struct rockchip_vpu_ctx *ctx = priv;
- 	int ret;
-@@ -148,7 +148,7 @@ enc_queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 	src_vq->type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
- 	src_vq->io_modes = VB2_MMAP | VB2_DMABUF;
- 	src_vq->drv_priv = ctx;
--	src_vq->ops = &rockchip_vpu_enc_queue_ops;
-+	src_vq->ops = &rockchip_vpu_queue_ops;
- 	src_vq->mem_ops = &vb2_dma_contig_memops;
+-	v4l2_ctrl_handler_init(&ctx->ctrl_handler, 1);
+-	if (vpu->variant->codec & RK_VPU_CODEC_JPEG) {
+-		v4l2_ctrl_new_std(&ctx->ctrl_handler, &rockchip_vpu_ctrl_ops,
+-				  V4L2_CID_JPEG_COMPRESSION_QUALITY,
+-				  5, 100, 1, 50);
++	int j, i, num_ctrls = ARRAY_SIZE(controls);
++
++	v4l2_ctrl_handler_init(&ctx->ctrl_handler, num_ctrls);
++
++	for (i = 0, j = 0; i < num_ctrls; i++) {
++		if (!(allowed_codecs & controls[i].codec))
++			continue;
++		if (!controls[i].cfg.elem_size) {
++			v4l2_ctrl_new_std(&ctx->ctrl_handler,
++					  &rockchip_vpu_ctrl_ops,
++					  controls[i].id, controls[i].cfg.min,
++					  controls[i].cfg.max,
++					  controls[i].cfg.step,
++					  controls[i].cfg.def);
++		} else {
++			controls[i].cfg.id = controls[i].id;
++			v4l2_ctrl_new_custom(&ctx->ctrl_handler,
++					     &controls[i].cfg, NULL);
++		}
++
+ 		if (ctx->ctrl_handler.error) {
+-			vpu_err("Adding JPEG control failed %d\n",
++			vpu_err("Adding control (%d) failed %d\n",
++				controls[i].id,
+ 				ctx->ctrl_handler.error);
+ 			v4l2_ctrl_handler_free(&ctx->ctrl_handler);
+ 			return ctx->ctrl_handler.error;
+ 		}
+ 	}
+-
+ 	return v4l2_ctrl_handler_setup(&ctx->ctrl_handler);
+ }
+ 
+@@ -276,7 +305,7 @@ static int rockchip_vpu_open(struct file *filp)
+ 	struct rockchip_vpu_dev *vpu = video_drvdata(filp);
+ 	struct video_device *vdev = video_devdata(filp);
+ 	struct rockchip_vpu_ctx *ctx;
+-	int ret;
++	int allowed_codecs, ret;
  
  	/*
-@@ -179,7 +179,7 @@ enc_queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 	dst_vq->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
- 	dst_vq->io_modes = VB2_MMAP | VB2_DMABUF;
- 	dst_vq->drv_priv = ctx;
--	dst_vq->ops = &rockchip_vpu_enc_queue_ops;
-+	dst_vq->ops = &rockchip_vpu_queue_ops;
- 	dst_vq->mem_ops = &vb2_vmalloc_memops;
- 	dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
- 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
-@@ -259,7 +259,7 @@ static int rockchip_vpu_open(struct file *filp)
+ 	 * We do not need any extra locking here, because we operate only
+@@ -293,10 +322,12 @@ static int rockchip_vpu_open(struct file *filp)
+ 
  	ctx->dev = vpu;
- 	if (vdev == vpu->vfd_enc)
+ 	if (vdev == vpu->vfd_enc) {
++		allowed_codecs = vpu->variant->codec & RK_VPU_ENCODERS;
+ 		ctx->buf_finish = rockchip_vpu_enc_buf_finish;
  		ctx->fh.m2m_ctx = v4l2_m2m_ctx_init(vpu->m2m_dev, ctx,
--						    &enc_queue_init);
-+						    queue_init);
- 	else
- 		ctx->fh.m2m_ctx = ERR_PTR(-ENODEV);
- 	if (IS_ERR(ctx->fh.m2m_ctx)) {
-@@ -272,8 +272,8 @@ static int rockchip_vpu_open(struct file *filp)
- 	filp->private_data = &ctx->fh;
- 	v4l2_fh_add(&ctx->fh);
+ 						    queue_init);
+ 	} else if (vdev == vpu->vfd_dec) {
++		allowed_codecs = vpu->variant->codec & RK_VPU_DECODERS;
+ 		ctx->buf_finish = rockchip_vpu_dec_buf_finish;
+ 		ctx->fh.m2m_ctx = v4l2_m2m_ctx_init(vpu->m2m_dev, ctx,
+ 						    queue_init);
+@@ -315,7 +346,7 @@ static int rockchip_vpu_open(struct file *filp)
  
--	rockchip_vpu_enc_reset_dst_fmt(vpu, ctx);
--	rockchip_vpu_enc_reset_src_fmt(vpu, ctx);
-+	rockchip_vpu_reset_dst_fmt(vpu, ctx);
-+	rockchip_vpu_reset_src_fmt(vpu, ctx);
+ 	rockchip_vpu_reset_fmts(ctx);
  
- 	ret = rockchip_vpu_ctrls_setup(vpu, ctx);
+-	ret = rockchip_vpu_ctrls_setup(vpu, ctx);
++	ret = rockchip_vpu_ctrls_setup(vpu, ctx, allowed_codecs);
  	if (ret) {
-@@ -349,7 +349,7 @@ static int rockchip_vpu_video_device_register(struct rockchip_vpu_dev *vpu)
- 	vfd->v4l2_dev = &vpu->v4l2_dev;
- 	vfd->vfl_dir = VFL_DIR_M2M;
- 	vfd->device_caps = V4L2_CAP_STREAMING | V4L2_CAP_VIDEO_M2M_MPLANE;
--	vfd->ioctl_ops = &rockchip_vpu_enc_ioctl_ops;
-+	vfd->ioctl_ops = &rockchip_vpu_ioctl_ops;
- 	snprintf(vfd->name, sizeof(vfd->name), "%s-enc", match->compatible);
- 	vpu->vfd_enc = vfd;
- 	video_set_drvdata(vfd, vpu);
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c
-similarity index 97%
-rename from drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
-rename to drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c
-index 09ebc3934389..7a03bf0a6359 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c
-@@ -261,8 +261,8 @@ vidioc_try_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
- 	return 0;
- }
- 
--void rockchip_vpu_enc_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
--				    struct rockchip_vpu_ctx *ctx)
-+void rockchip_vpu_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
-+				struct rockchip_vpu_ctx *ctx)
- {
- 	struct v4l2_pix_format_mplane *fmt = &ctx->dst_fmt;
- 
-@@ -286,8 +286,8 @@ void rockchip_vpu_enc_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
- 		fmt->width * fmt->height * ctx->vpu_dst_fmt->max_depth;
- }
- 
--void rockchip_vpu_enc_reset_src_fmt(struct rockchip_vpu_dev *vpu,
--				    struct rockchip_vpu_ctx *ctx)
-+void rockchip_vpu_reset_src_fmt(struct rockchip_vpu_dev *vpu,
-+				struct rockchip_vpu_ctx *ctx)
- {
- 	struct v4l2_pix_format_mplane *fmt = &ctx->src_fmt;
- 	unsigned int width, height;
-@@ -388,11 +388,11 @@ vidioc_s_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_format *f)
- 	 * the raw format again after we return, so we don't need
- 	 * anything smarter.
- 	 */
--	rockchip_vpu_enc_reset_src_fmt(vpu, ctx);
-+	rockchip_vpu_reset_src_fmt(vpu, ctx);
- 	return 0;
- }
- 
--const struct v4l2_ioctl_ops rockchip_vpu_enc_ioctl_ops = {
-+const struct v4l2_ioctl_ops rockchip_vpu_ioctl_ops = {
- 	.vidioc_querycap = vidioc_querycap,
- 	.vidioc_enum_framesizes = vidioc_enum_framesizes,
- 
-@@ -576,7 +576,7 @@ static int rockchip_vpu_buf_out_validate(struct vb2_buffer *vb)
- 	return 0;
- }
- 
--const struct vb2_ops rockchip_vpu_enc_queue_ops = {
-+const struct vb2_ops rockchip_vpu_queue_ops = {
- 	.queue_setup = rockchip_vpu_queue_setup,
- 	.buf_prepare = rockchip_vpu_buf_prepare,
- 	.buf_queue = rockchip_vpu_buf_queue,
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.h
-index 50ad40dfb4f4..816bd3988218 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.h
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.h
-@@ -18,12 +18,12 @@
- 
- #include "rockchip_vpu.h"
- 
--extern const struct v4l2_ioctl_ops rockchip_vpu_enc_ioctl_ops;
--extern const struct vb2_ops rockchip_vpu_enc_queue_ops;
-+extern const struct v4l2_ioctl_ops rockchip_vpu_ioctl_ops;
-+extern const struct vb2_ops rockchip_vpu_queue_ops;
- 
--void rockchip_vpu_enc_reset_src_fmt(struct rockchip_vpu_dev *vpu,
--				    struct rockchip_vpu_ctx *ctx);
--void rockchip_vpu_enc_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
--				    struct rockchip_vpu_ctx *ctx);
-+void rockchip_vpu_reset_src_fmt(struct rockchip_vpu_dev *vpu,
-+				struct rockchip_vpu_ctx *ctx);
-+void rockchip_vpu_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
-+				struct rockchip_vpu_ctx *ctx);
- 
- #endif /* ROCKCHIP_VPU_V4L2_H_ */
+ 		vpu_err("Failed to set up controls\n");
+ 		goto err_fh_free;
 -- 
 2.20.1
