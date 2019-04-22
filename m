@@ -1,7 +1,7 @@
 From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 01/15] rockchip/vpu: Use pixel format helpers
-Date: Mon, 22 Apr 2019 10:08:04 +0200
-Message-ID: <20190422080818.29130-2-boris.brezillon@collabora.com>
+Subject: [PATCH v3 04/15] rockchip/vpu: Cleanup JPEG bounce buffer management
+Date: Mon, 22 Apr 2019 10:08:07 +0200
+Message-ID: <20190422080818.29130-5-boris.brezillon@collabora.com>
 References: <20190422080818.29130-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -23,133 +23,290 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 
-Now that we've introduced the pixel format helpers, use them
-in vpu driver, and get rid of the internal helpers.
+In order to make the code more generic, introduce a pair of start/stop
+codec operations, and use them to allocate and release the JPEG bounce
+buffer.
 
 Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
 Changes from v2:
-- None
----
- .../media/rockchip/vpu/rockchip_vpu_enc.c     | 91 +------------------
- 1 file changed, 2 insertions(+), 89 deletions(-)
 
+* Reword bounce buffer comment, so it's specific about JPEG.
+* Rename helpers, start/stop to init/exit.
+* Rename "jpeg_enc_ctx" to "jpeg_enc", since it's clear it's a member
+  of a "_ctx" struct.
+---
+ .../media/rockchip/vpu/rk3288_vpu_hw.c        |  2 ++
+ .../rockchip/vpu/rk3288_vpu_hw_jpeg_enc.c     |  4 +--
+ .../media/rockchip/vpu/rk3399_vpu_hw.c        |  2 ++
+ .../rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c     |  4 +--
+ .../staging/media/rockchip/vpu/rockchip_vpu.h | 12 ++++----
+ .../media/rockchip/vpu/rockchip_vpu_drv.c     |  9 ++++--
+ .../media/rockchip/vpu/rockchip_vpu_enc.c     | 23 +++++----------
+ .../media/rockchip/vpu/rockchip_vpu_hw.h      | 28 ++++++++++++++++++
+ .../media/rockchip/vpu/rockchip_vpu_jpeg.c    | 29 +++++++++++++++++++
+ 9 files changed, 84 insertions(+), 29 deletions(-)
+
+diff --git a/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw.c b/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw.c
+index a5e9d183fffd..a874a0d83c2d 100644
+--- a/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw.c
++++ b/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw.c
+@@ -98,6 +98,8 @@ static const struct rockchip_vpu_codec_ops rk3288_vpu_codec_ops[] = {
+ 	[RK_VPU_MODE_JPEG_ENC] = {
+ 		.run = rk3288_vpu_jpeg_enc_run,
+ 		.reset = rk3288_vpu_enc_reset,
++		.init = rockchip_vpu_jpeg_enc_init,
++		.exit = rockchip_vpu_jpeg_enc_exit,
+ 	},
+ };
+ 
+diff --git a/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw_jpeg_enc.c b/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw_jpeg_enc.c
+index 06daea66fb49..791353ae01e7 100644
+--- a/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw_jpeg_enc.c
++++ b/drivers/staging/media/rockchip/vpu/rk3288_vpu_hw_jpeg_enc.c
+@@ -37,9 +37,9 @@ static void rk3288_vpu_jpeg_enc_set_buffers(struct rockchip_vpu_dev *vpu,
+ 
+ 	WARN_ON(pix_fmt->num_planes > 3);
+ 
+-	vepu_write_relaxed(vpu, ctx->bounce_dma_addr,
++	vepu_write_relaxed(vpu, ctx->jpeg_enc.bounce_buffer.dma,
+ 			   VEPU_REG_ADDR_OUTPUT_STREAM);
+-	vepu_write_relaxed(vpu, ctx->bounce_size,
++	vepu_write_relaxed(vpu, ctx->jpeg_enc.bounce_buffer.size,
+ 			   VEPU_REG_STR_BUF_LIMIT);
+ 
+ 	if (pix_fmt->num_planes == 1) {
+diff --git a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
+index 6fdef61e2127..f4effad00605 100644
+--- a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
++++ b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
+@@ -98,6 +98,8 @@ static const struct rockchip_vpu_codec_ops rk3399_vpu_codec_ops[] = {
+ 	[RK_VPU_MODE_JPEG_ENC] = {
+ 		.run = rk3399_vpu_jpeg_enc_run,
+ 		.reset = rk3399_vpu_enc_reset,
++		.init = rockchip_vpu_jpeg_enc_init,
++		.exit = rockchip_vpu_jpeg_enc_exit,
+ 	},
+ };
+ 
+diff --git a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c
+index 3d438797692e..6f9f5158d193 100644
+--- a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c
++++ b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c
+@@ -69,9 +69,9 @@ static void rk3399_vpu_jpeg_enc_set_buffers(struct rockchip_vpu_dev *vpu,
+ 
+ 	WARN_ON(pix_fmt->num_planes > 3);
+ 
+-	vepu_write_relaxed(vpu, ctx->bounce_dma_addr,
++	vepu_write_relaxed(vpu, ctx->jpeg_enc.bounce_buffer.dma,
+ 			   VEPU_REG_ADDR_OUTPUT_STREAM);
+-	vepu_write_relaxed(vpu, ctx->bounce_size,
++	vepu_write_relaxed(vpu, ctx->jpeg_enc.bounce_buffer.size,
+ 			   VEPU_REG_STR_BUF_LIMIT);
+ 
+ 	if (pix_fmt->num_planes == 1) {
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
+index 1ec2be483e27..b15c02333a70 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
+@@ -124,10 +124,7 @@ struct rockchip_vpu_dev {
+  * @jpeg_quality:	User-specified JPEG compression quality.
+  *
+  * @codec_ops:		Set of operations related to codec mode.
+- *
+- * @bounce_dma_addr:	Bounce buffer bus address.
+- * @bounce_buf:		Bounce buffer pointer.
+- * @bounce_size:	Bounce buffer size.
++ * @jpeg_enc:		JPEG-encoding context.
+  */
+ struct rockchip_vpu_ctx {
+ 	struct rockchip_vpu_dev *dev;
+@@ -146,9 +143,10 @@ struct rockchip_vpu_ctx {
+ 
+ 	const struct rockchip_vpu_codec_ops *codec_ops;
+ 
+-	dma_addr_t bounce_dma_addr;
+-	void *bounce_buf;
+-	size_t bounce_size;
++	/* Specific for particular codec modes. */
++	union {
++		struct rockchip_vpu_jpeg_enc_hw_ctx jpeg_enc;
++	};
+ };
+ 
+ /**
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+index 3638aa1fd25d..39e911797189 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+@@ -63,10 +63,15 @@ static void rockchip_vpu_job_finish(struct rockchip_vpu_dev *vpu,
+ 	avail_size = vb2_plane_size(&dst->vb2_buf, 0) -
+ 		     ctx->vpu_dst_fmt->header_size;
+ 	if (bytesused <= avail_size) {
+-		if (ctx->bounce_buf) {
++		/*
++		 * The bounce buffer is only for the JPEG encoder.
++		 * TODO: Rework the JPEG encoder to eliminate the need
++		 * for a bounce buffer.
++		 */
++		if (ctx->jpeg_enc.bounce_buffer.cpu) {
+ 			memcpy(vb2_plane_vaddr(&dst->vb2_buf, 0) +
+ 			       ctx->vpu_dst_fmt->header_size,
+-			       ctx->bounce_buf, bytesused);
++			       ctx->jpeg_enc.bounce_buffer.cpu, bytesused);
+ 		}
+ 		dst->vb2_buf.planes[0].bytesused =
+ 			ctx->vpu_dst_fmt->header_size + bytesused;
 diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
-index fb5e36aedd8c..4451bb2dc3d7 100644
+index ae1ff3d9b9d2..0ace50746f2e 100644
 --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
 +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
-@@ -30,93 +30,6 @@
- #include "rockchip_vpu_hw.h"
- #include "rockchip_vpu_common.h"
- 
--/**
-- * struct v4l2_format_info - information about a V4L2 format
-- * @format: 4CC format identifier (V4L2_PIX_FMT_*)
-- * @header_size: Size of header, optional and used by compressed formats
-- * @num_planes: Number of planes (1 to 3)
-- * @cpp: Number of bytes per pixel (per plane)
-- * @hsub: Horizontal chroma subsampling factor
-- * @vsub: Vertical chroma subsampling factor
-- * @is_compressed: Is it a compressed format?
-- * @multiplanar: Is it a multiplanar variant format? (e.g. NV12M)
-- */
--struct rockchip_vpu_v4l2_format_info {
--	u32 format;
--	u32 header_size;
--	u8 num_planes;
--	u8 cpp[3];
--	u8 hsub;
--	u8 vsub;
--	u8 is_compressed;
--	u8 multiplanar;
--};
--
--static const struct rockchip_vpu_v4l2_format_info *
--rockchip_vpu_v4l2_format_info(u32 format)
--{
--	static const struct rockchip_vpu_v4l2_format_info formats[] = {
--		{ .format = V4L2_PIX_FMT_YUV420M,	.num_planes = 3, .cpp = { 1, 1, 1 }, .hsub = 2, .vsub = 2, .multiplanar = 1 },
--		{ .format = V4L2_PIX_FMT_NV12M,		.num_planes = 2, .cpp = { 1, 2, 0 }, .hsub = 2, .vsub = 2, .multiplanar = 1 },
--		{ .format = V4L2_PIX_FMT_YUYV,		.num_planes = 1, .cpp = { 2, 0, 0 }, .hsub = 2, .vsub = 1 },
--		{ .format = V4L2_PIX_FMT_UYVY,		.num_planes = 1, .cpp = { 2, 0, 0 }, .hsub = 2, .vsub = 1 },
--	};
--	unsigned int i;
--
--	for (i = 0; i < ARRAY_SIZE(formats); ++i) {
--		if (formats[i].format == format)
--			return &formats[i];
--	}
--
--	vpu_err("Unsupported V4L 4CC format (%08x)\n", format);
--	return NULL;
--}
--
--static void
--fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
--	       int pixelformat, int width, int height)
--{
--	const struct rockchip_vpu_v4l2_format_info *info;
--	struct v4l2_plane_pix_format *plane;
--	int i;
--
--	info = rockchip_vpu_v4l2_format_info(pixelformat);
--	if (!info)
--		return;
--
--	pixfmt->width = width;
--	pixfmt->height = height;
--	pixfmt->pixelformat = pixelformat;
--
--	if (!info->multiplanar) {
--		pixfmt->num_planes = 1;
--		plane = &pixfmt->plane_fmt[0];
--		plane->bytesperline = info->is_compressed ?
--					0 : width * info->cpp[0];
--		plane->sizeimage = info->header_size;
--		for (i = 0; i < info->num_planes; i++) {
--			unsigned int hsub = (i == 0) ? 1 : info->hsub;
--			unsigned int vsub = (i == 0) ? 1 : info->vsub;
--
--			plane->sizeimage += info->cpp[i] *
--				DIV_ROUND_UP(width, hsub) *
--				DIV_ROUND_UP(height, vsub);
--		}
--	} else {
--		pixfmt->num_planes = info->num_planes;
--		for (i = 0; i < info->num_planes; i++) {
--			unsigned int hsub = (i == 0) ? 1 : info->hsub;
--			unsigned int vsub = (i == 0) ? 1 : info->vsub;
--
--			plane = &pixfmt->plane_fmt[i];
--			plane->bytesperline =
--				info->cpp[i] * DIV_ROUND_UP(width, hsub);
--			plane->sizeimage =
--				plane->bytesperline * DIV_ROUND_UP(height, vsub);
--		}
--	}
--}
--
- static const struct rockchip_vpu_fmt *
- rockchip_vpu_find_format(struct rockchip_vpu_ctx *ctx, u32 fourcc)
+@@ -514,6 +514,7 @@ static int rockchip_vpu_start_streaming(struct vb2_queue *q, unsigned int count)
  {
-@@ -339,7 +252,7 @@ vidioc_try_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
- 	height = round_up(height, JPEG_MB_DIM);
+ 	struct rockchip_vpu_ctx *ctx = vb2_get_drv_priv(q);
+ 	enum rockchip_vpu_codec_mode codec_mode;
++	int ret = 0;
  
- 	/* Fill remaining fields */
--	fill_pixfmt_mp(pix_mp, fmt->fourcc, width, height);
-+	v4l2_fill_pixfmt_mp(pix_mp, fmt->fourcc, width, height);
+ 	if (V4L2_TYPE_IS_OUTPUT(q->type))
+ 		ctx->sequence_out = 0;
+@@ -526,17 +527,10 @@ static int rockchip_vpu_start_streaming(struct vb2_queue *q, unsigned int count)
+ 	vpu_debug(4, "Codec mode = %d\n", codec_mode);
+ 	ctx->codec_ops = &ctx->dev->variant->codec_ops[codec_mode];
  
- 	for (i = 0; i < pix_mp->num_planes; i++) {
- 		memset(pix_mp->plane_fmt[i].reserved, 0,
-@@ -393,7 +306,7 @@ void rockchip_vpu_enc_reset_src_fmt(struct rockchip_vpu_dev *vpu,
- 	fmt->quantization = V4L2_QUANTIZATION_DEFAULT;
- 	fmt->xfer_func = V4L2_XFER_FUNC_DEFAULT;
- 
--	fill_pixfmt_mp(fmt, ctx->vpu_src_fmt->fourcc, width, height);
-+	v4l2_fill_pixfmt_mp(fmt, ctx->vpu_src_fmt->fourcc, width, height);
+-	/* A bounce buffer is needed for the JPEG payload */
+-	if (!V4L2_TYPE_IS_OUTPUT(q->type)) {
+-		ctx->bounce_size = ctx->dst_fmt.plane_fmt[0].sizeimage -
+-				  ctx->vpu_dst_fmt->header_size;
+-		ctx->bounce_buf = dma_alloc_attrs(ctx->dev->dev,
+-						  ctx->bounce_size,
+-						  &ctx->bounce_dma_addr,
+-						  GFP_KERNEL,
+-						  DMA_ATTR_ALLOC_SINGLE_PAGES);
+-	}
+-	return 0;
++	if (!V4L2_TYPE_IS_OUTPUT(q->type))
++		if (ctx->codec_ops && ctx->codec_ops->init)
++			ret = ctx->codec_ops->init(ctx);
++	return ret;
  }
  
- static int
+ static void rockchip_vpu_stop_streaming(struct vb2_queue *q)
+@@ -544,11 +538,8 @@ static void rockchip_vpu_stop_streaming(struct vb2_queue *q)
+ 	struct rockchip_vpu_ctx *ctx = vb2_get_drv_priv(q);
+ 
+ 	if (!V4L2_TYPE_IS_OUTPUT(q->type))
+-		dma_free_attrs(ctx->dev->dev,
+-			       ctx->bounce_size,
+-			       ctx->bounce_buf,
+-			       ctx->bounce_dma_addr,
+-			       DMA_ATTR_ALLOC_SINGLE_PAGES);
++		if (ctx->codec_ops && ctx->codec_ops->exit)
++			ctx->codec_ops->exit(ctx);
+ 
+ 	/*
+ 	 * The mem2mem framework calls v4l2_m2m_cancel_job before
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
+index 2b955da1be1a..46716d121538 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
+@@ -18,9 +18,33 @@ struct rockchip_vpu_ctx;
+ struct rockchip_vpu_buf;
+ struct rockchip_vpu_variant;
+ 
++/**
++ * struct rockchip_vpu_aux_buf - auxiliary DMA buffer for hardware data
++ * @cpu:	CPU pointer to the buffer.
++ * @dma:	DMA address of the buffer.
++ * @size:	Size of the buffer.
++ */
++struct rockchip_vpu_aux_buf {
++	void *cpu;
++	dma_addr_t dma;
++	size_t size;
++};
++
++/**
++ * struct rockchip_vpu_jpeg_enc_hw_ctx
++ * @bounce_buffer:	Bounce buffer
++ */
++struct rockchip_vpu_jpeg_enc_hw_ctx {
++	struct rockchip_vpu_aux_buf bounce_buffer;
++};
++
+ /**
+  * struct rockchip_vpu_codec_ops - codec mode specific operations
+  *
++ * @init:	If needed, can be used for initialization.
++ *		Optional and called from process context.
++ * @exit:	If needed, can be used to undo the .init phase.
++ *		Optional and called from process context.
+  * @run:	Start single {en,de)coding job. Called from atomic context
+  *		to indicate that a pair of buffers is ready and the hardware
+  *		should be programmed and started.
+@@ -28,6 +52,8 @@ struct rockchip_vpu_variant;
+  * @reset:	Reset the hardware in case of a timeout.
+  */
+ struct rockchip_vpu_codec_ops {
++	int (*init)(struct rockchip_vpu_ctx *ctx);
++	void (*exit)(struct rockchip_vpu_ctx *ctx);
+ 	void (*run)(struct rockchip_vpu_ctx *ctx);
+ 	void (*done)(struct rockchip_vpu_ctx *ctx, enum vb2_buffer_state);
+ 	void (*reset)(struct rockchip_vpu_ctx *ctx);
+@@ -54,5 +80,7 @@ void rockchip_vpu_irq_done(struct rockchip_vpu_dev *vpu,
+ 
+ void rk3288_vpu_jpeg_enc_run(struct rockchip_vpu_ctx *ctx);
+ void rk3399_vpu_jpeg_enc_run(struct rockchip_vpu_ctx *ctx);
++int rockchip_vpu_jpeg_enc_init(struct rockchip_vpu_ctx *ctx);
++void rockchip_vpu_jpeg_enc_exit(struct rockchip_vpu_ctx *ctx);
+ 
+ #endif /* ROCKCHIP_VPU_HW_H_ */
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_jpeg.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_jpeg.c
+index 0ff0badc1f7a..30b97d207dc5 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_jpeg.c
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_jpeg.c
+@@ -6,9 +6,11 @@
+  * Copyright (C) Jean-Francois Moine (http://moinejf.free.fr)
+  * Copyright (C) 2014 Philipp Zabel, Pengutronix
+  */
++#include <linux/dma-mapping.h>
+ #include <linux/kernel.h>
+ #include <linux/string.h>
+ #include "rockchip_vpu_jpeg.h"
++#include "rockchip_vpu.h"
+ 
+ #define LUMA_QUANT_OFF		7
+ #define CHROMA_QUANT_OFF	72
+@@ -288,3 +290,30 @@ void rockchip_vpu_jpeg_header_assemble(struct rockchip_vpu_jpeg_ctx *ctx)
+ 
+ 	jpeg_set_quality(buf, ctx->quality);
+ }
++
++int rockchip_vpu_jpeg_enc_init(struct rockchip_vpu_ctx *ctx)
++{
++	ctx->jpeg_enc.bounce_buffer.size =
++		ctx->dst_fmt.plane_fmt[0].sizeimage -
++		ctx->vpu_dst_fmt->header_size;
++
++	ctx->jpeg_enc.bounce_buffer.cpu =
++		dma_alloc_attrs(ctx->dev->dev,
++				ctx->jpeg_enc.bounce_buffer.size,
++				&ctx->jpeg_enc.bounce_buffer.dma,
++				GFP_KERNEL,
++				DMA_ATTR_ALLOC_SINGLE_PAGES);
++	if (!ctx->jpeg_enc.bounce_buffer.cpu)
++		return -ENOMEM;
++
++	return 0;
++}
++
++void rockchip_vpu_jpeg_enc_exit(struct rockchip_vpu_ctx *ctx)
++{
++	dma_free_attrs(ctx->dev->dev,
++		       ctx->jpeg_enc.bounce_buffer.size,
++		       ctx->jpeg_enc.bounce_buffer.cpu,
++		       ctx->jpeg_enc.bounce_buffer.dma,
++		       DMA_ATTR_ALLOC_SINGLE_PAGES);
++}
 -- 
 2.20.1
