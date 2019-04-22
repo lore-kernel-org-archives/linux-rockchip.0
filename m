@@ -1,86 +1,76 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2] clk: rockchip: undo several noc and special clocks as
- critical on rk3288
-Date: Mon, 22 Apr 2019 08:23:48 -0700
-Message-ID: <CAD=FV=Xkdc_yPCjVUh96atdiB4fo4h3oNZYe45ef+eLeVUVM8g@mail.gmail.com>
-References: <20190412161747.107107-1-dianders@chromium.org>
+From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v3 14/15] rockchip/vpu: Add support for MPEG-2 decoding
+Date: Mon, 22 Apr 2019 15:28:44 +0000
+Message-ID: <DB8PR03MB58987F631F913769E150BD3DAC220@DB8PR03MB5898.eurprd03.prod.outlook.com>
+References: <20190422080818.29130-1-boris.brezillon@collabora.com>
+ <20190422080818.29130-15-boris.brezillon@collabora.com>
+ <DB8PR03MB5898C649C628B6FDEF4E2C80AC220@DB8PR03MB5898.eurprd03.prod.outlook.com>
+ <20190422171223.48cd51fc@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190412161747.107107-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Caesar Wang <caesar.wang@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, linux-clk <linux-clk@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190422171223.48cd51fc-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Language: en-US
+Content-ID: <52E62053DE4FAB45883385E2D2CCDEC4-yI6K9L9iJZCcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, "kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org" <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, "linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Elaine,
+On 2019-04-22 17:12, Boris Brezillon wrote:
+> On Mon, 22 Apr 2019 14:59:17 +0000
+> Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org> wrote:
+>
+>> On 2019-04-22 10:08, Boris Brezillon wrote:
+>>> From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>  
+>> Please restore my commit authorship, it seems to have changed in v3.
+> Oops, sorry about that, it was not intentional.
 
-On Fri, Apr 12, 2019 at 9:18 AM Douglas Anderson <dianders@chromium.org> wrote:
->
-> This is mostly a revert of commit 55bb6a633c33 ("clk: rockchip: mark
-> noc and some special clk as critical on rk3288") except that we're
-> keeping "pmu_hclk_otg0" as critical still.
->
-> NOTE: turning these clocks off doesn't seem to do a whole lot in terms
-> of power savings (checking the power on the logic rail).  It appears
-> to save maybe 1-2mW.  ...but still it seems like we should turn the
-> clocks off if they aren't needed.
->
-> About "pmu_hclk_otg0" (the one clock from the original commit we're
-> still keeping critical) from an email thread:
->
-> > pmu ahb clock
-> >
-> > Function: Clock to pmu module when hibernation and/or ADP is
-> > enabled. Must be greater than or equal to 30 MHz.
-> >
-> > If the SOC design does not support hibernation/ADP function, only have
-> > hclk_otg, this clk can be switched according to the usage of otg.
-> > If the SOC design support hibernation/ADP, has two clocks, hclk_otg and
-> > pmu_hclk_otg0.
-> > Hclk_otg belongs to the closed part of otg logic, which can be switched
-> > according to the use of otg.
-> >
-> > pmu_hclk_otg0 belongs to the always on part.
-> >
-> > As for whether pmu_hclk_otg0 can be turned off when otg is not in use,
-> > we have not tested. IC suggest make pmu_hclk_otg0 always on.
->
-> For the rest of the clocks:
->
-> atclk: No documentation about this clock other than that it goes to
-> the CPU.  CPU functions fine without it on.  Maybe needed for JTAG?
->
-> jtag: Presumably this clock is only needed if you're debugging with
-> JTAG.  It doesn't seem like it makes sense to waste power for every
-> rk3288 user.  In any case to do JTAG you'd need private patches to
-> adjust the pinctrl the mux the JTAG out anyway.
->
-> pclk_dbg, pclk_core_niu: On veyron Chromebooks we turn these two
-> clocks on only during kernel panics in order to access some coresight
-> registers.  Since nothing in the upstream kernel does this we should
-> be able to leave them off safely.  Maybe also needed for JTAG?
->
-> hsicphy12m_xin12m: There is no indication of why this clock would need
-> to be turned on for boards that don't use HSIC.
->
-> pclk_ddrupctl[0-1], pclk_publ0[0-1]: On veyron Chromebooks we turn
-> these 4 clocks on only when doing DDR transitions and they are off
-> otherwise.  I see no reason why they'd need to be on in the upstream
-> kernel which doesn't support DDRFreq.
->
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
->
-> Changes in v2:
-> - Now keep pmu_hclk_otg0 as critical.
-> - Updated description since this isn't a clean revert.
-> - PWM patches have landed, so just one patch in the series now.
->
->  drivers/clk/rockchip/clk-rk3288.c | 13 ++++---------
->  1 file changed, 4 insertions(+), 9 deletions(-)
+Thanks :-)
 
-From previous discussions I think you're all happy with this patch
-now, right?  Care to give it an official Reviewed-by tag?
+>
+>> I would appreciate if you can pick the fixups from [1] and [2] to sync rk3288/rk3399 code.
+> Sure, I'll have a look.
+>
+>> Please also squash both MPEG-2 commits, that is closer to the original commit at [4].
+> Hm, okay. I thought it'd be preferable to split that in 2 or even 3
+> commits (one adding the core infra and one per platform), but if
+> everyone is okay with having things squashed in a single commit I'll do
+> that.
 
--Doug
+If you think it is better to split please do. I am biased and see both platforms as one that only differ in hwreg order.
+
+Regards,
+Jonas
+
+>
+>> This module seems to crash after repeated rmmod / insmod, calls to video_device_release
+>> seems to be the culprit for crash. There is also an issue with uneven pm runtime autosuspend calls
+>> leaving clocks enabled when module is unloaded.
+>>
+>> Feel free to pick/squash any of the changes at [3], they fixes the crash and uneven autosuspend for me.
+> Will do.
+>
+>> MPEG-2 decoding is working on my RK3288 and RK3399 devices.
+>>
+>> Fixup commits:
+>> [1] https://github.com/Kwiboo/linux-rockchip/commit/8d8b5aca522176d17b6a0f13da57fd9b8e7d1e9a
+>> [2] https://github.com/Kwiboo/linux-rockchip/commit/75de5f322ffe889154832f6ebfb08e48257af526
+>> [3] https://github.com/Kwiboo/linux-rockchip/commit/0729b53c825a630c9040d28541d2635a42177361
+>>
+>> Original MPEG-2 commit:
+>> [4] https://github.com/Kwiboo/linux-rockchip/commit/25d9502927540c6f17c65d52a350b28c664cbf5a
+>>
+>> Thanks,
+> Thanks for reviewing/testing/debugging.
+>
+> Boris
