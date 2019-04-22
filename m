@@ -1,7 +1,7 @@
 From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 08/15] rockchip/vpu: Remove a useless test
-Date: Mon, 22 Apr 2019 10:08:11 +0200
-Message-ID: <20190422080818.29130-9-boris.brezillon@collabora.com>
+Subject: [PATCH v3 03/15] rockchip/vpu: Cleanup macroblock alignment
+Date: Mon, 22 Apr 2019 10:08:06 +0200
+Message-ID: <20190422080818.29130-4-boris.brezillon@collabora.com>
 References: <20190422080818.29130-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,33 +21,71 @@ To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Han
 Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-vdev is guaranteed to be equal to vpu->vfd_enc thanks a test done a few
-lines above. Remove this useless test.
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 
+We need to make the macrobock alignment generic, in order
+to support multiple codecs.
+
+Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
 Changes from v2:
-* New patch
+- None
 ---
- drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ .../media/rockchip/vpu/rockchip_vpu_enc.c     | 20 ++++++++-----------
+ 1 file changed, 8 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-index a0d25bbbfa49..041116855bab 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-@@ -272,10 +272,8 @@ static int rockchip_vpu_open(struct file *filp)
- 	filp->private_data = &ctx->fh;
- 	v4l2_fh_add(&ctx->fh);
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
+index 4451bb2dc3d7..ae1ff3d9b9d2 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
+@@ -203,8 +203,8 @@ vidioc_try_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ 			       fmt->frmsize.min_height,
+ 			       fmt->frmsize.max_height);
+ 	/* Round up to macroblocks. */
+-	pix_mp->width = round_up(pix_mp->width, JPEG_MB_DIM);
+-	pix_mp->height = round_up(pix_mp->height, JPEG_MB_DIM);
++	pix_mp->width = round_up(pix_mp->width, fmt->frmsize.step_width);
++	pix_mp->height = round_up(pix_mp->height, fmt->frmsize.step_height);
  
--	if (vdev == vpu->vfd_enc) {
--		rockchip_vpu_enc_reset_dst_fmt(vpu, ctx);
--		rockchip_vpu_enc_reset_src_fmt(vpu, ctx);
--	}
-+	rockchip_vpu_enc_reset_dst_fmt(vpu, ctx);
-+	rockchip_vpu_enc_reset_src_fmt(vpu, ctx);
+ 	/*
+ 	 * For compressed formats the application can specify
+@@ -248,8 +248,8 @@ vidioc_try_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ 		       ctx->vpu_dst_fmt->frmsize.min_height,
+ 		       ctx->vpu_dst_fmt->frmsize.max_height);
+ 	/* Round up to macroblocks. */
+-	width = round_up(width, JPEG_MB_DIM);
+-	height = round_up(height, JPEG_MB_DIM);
++	width = round_up(width, ctx->vpu_dst_fmt->frmsize.step_width);
++	height = round_up(height, ctx->vpu_dst_fmt->frmsize.step_height);
  
- 	ret = rockchip_vpu_ctrls_setup(vpu, ctx);
- 	if (ret) {
+ 	/* Fill remaining fields */
+ 	v4l2_fill_pixfmt_mp(pix_mp, fmt->fourcc, width, height);
+@@ -338,10 +338,8 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ 	ctx->dst_fmt.height = pix_mp->height;
+ 
+ 	vpu_debug(0, "OUTPUT codec mode: %d\n", ctx->vpu_src_fmt->codec_mode);
+-	vpu_debug(0, "fmt - w: %d, h: %d, mb - w: %d, h: %d\n",
+-		  pix_mp->width, pix_mp->height,
+-		  JPEG_MB_WIDTH(pix_mp->width),
+-		  JPEG_MB_HEIGHT(pix_mp->height));
++	vpu_debug(0, "fmt - w: %d, h: %d\n",
++		  pix_mp->width, pix_mp->height);
+ 	return 0;
+ }
+ 
+@@ -380,10 +378,8 @@ vidioc_s_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ 	ctx->dst_fmt = *pix_mp;
+ 
+ 	vpu_debug(0, "CAPTURE codec mode: %d\n", ctx->vpu_dst_fmt->codec_mode);
+-	vpu_debug(0, "fmt - w: %d, h: %d, mb - w: %d, h: %d\n",
+-		  pix_mp->width, pix_mp->height,
+-		  JPEG_MB_WIDTH(pix_mp->width),
+-		  JPEG_MB_HEIGHT(pix_mp->height));
++	vpu_debug(0, "fmt - w: %d, h: %d\n",
++		  pix_mp->width, pix_mp->height);
+ 
+ 	/*
+ 	 * Current raw format might have become invalid with newly
 -- 
 2.20.1
