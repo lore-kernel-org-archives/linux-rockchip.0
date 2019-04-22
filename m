@@ -1,11 +1,13 @@
 From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 00/15] Add MPEG-2 decoding to Rockchip VPU
-Date: Mon, 22 Apr 2019 10:08:03 +0200
-Message-ID: <20190422080818.29130-1-boris.brezillon@collabora.com>
+Subject: [PATCH v3 01/15] rockchip/vpu: Use pixel format helpers
+Date: Mon, 22 Apr 2019 10:08:04 +0200
+Message-ID: <20190422080818.29130-2-boris.brezillon@collabora.com>
+References: <20190422080818.29130-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190422080818.29130-1-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,97 +21,135 @@ To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Han
 Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhpcyBzZXJpZXMgaW50cm9kdWNlcyB0aGUgZGVjb2RpbmcgaW5mcmFzdHJ1Y3R1cmUgdGhhdCB3
-aWxsIGJlCnVzZWQgdG8gYWRkIHN1cHBvcnQgZm9yIG90aGVyIGNvZGVjcyBzdWNoIGFzIFZQOCwg
-VlA5IGFuZCBILjI2NC4KCkFzIGV4cGxhaW5lZCBpbiB0aGUgY292ZXIgbGV0dGVyIGZvciB0aGUg
-djEgcGF0Y2hzZXQsCnRoZSBkcml2ZXIgaXMgbm93IGV4cG9zaW5nIHR3byB2aWRlbyBkZXZpY2Ug
-bm9kZXMuClRoZSBWUFUgZW5jb2RlciBpcyBleHBvc2VkIG9uIC9kZXYvdmlkZW8wLCBhbmQgdGhl
-IFZQVSBkZWNvZGVyCmlzIGV4cG9zZWQgb24gL2Rldi92aWRlbzEuIEJvdGggZGV2aWNlcyBhcmUg
-dGllZCB0byB0aGUgc2FtZQptZW1vcnktdG8tbWVtb3J5IHF1ZXVlLCBhbmQgc2FtZSBtZWRpYSBk
-ZXZpY2UgL2Rldi9tZWRpYTAuCgpUaGVyZWZvcmUgdGhlcmUgYXJlIHR3byBtZWRpYSBncmFwaHM6
-CgrilIzilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
-lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJAK4pSCIHJvY2tj
-aGlwLHJrMzM5OS12cHUtZW5jLXNvdXJjZSDilIIK4pSCICAgICAgICAgIC9kZXYvdmlkZW8wICAg
-ICAgICAgICDilIIK4pSU4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
-4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSY
-CiAg4pSDCiAg4pSDCiAg4pa8CuKUjOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
-gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
-gOKUgOKUkArilIIgIHJvY2tjaGlwLHJrMzM5OS12cHUtZW5jLXByb2MgIOKUggrilJTilIDilIDi
-lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
-lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJgKICDilIMKICDilIMKICDilrwK4pSM
-4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
-4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSQCuKUgiAgcm9ja2NoaXAs
-cmszMzk5LXZwdS1lbmMtc2luayAg4pSCCuKUgiAgICAgICAgICAvZGV2L3ZpZGVvMCAgICAgICAg
-ICAg4pSCCuKUlOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
-gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUmAoK4pSM
-4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
-4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSQCuKUgiByb2NrY2hpcCxy
-azMzOTktdnB1LWRlYy1zb3VyY2Ug4pSCCuKUgiAgICAgICAgICAvZGV2L3ZpZGVvMSAgICAgICAg
-ICAg4pSCCuKUlOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
-gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUmAogIOKU
-gwogIOKUgwogIOKWvArilIzilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
-lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
-lJAK4pSCICByb2NrY2hpcCxyazMzOTktdnB1LWRlYy1wcm9jICDilIIK4pSU4pSA4pSA4pSA4pSA
-4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
-4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSYCiAg4pSDCiAg4pSDCiAg4pa8CuKUjOKUgOKU
-gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
-gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUkArilIIgIHJvY2tjaGlwLHJrMzM5
-OS12cHUtZGVjLXNpbmsgIOKUggrilIIgICAgICAgICAgL2Rldi92aWRlbzEgICAgICAgICAgIOKU
-ggrilJTilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
-lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJgKCk9mIGNvdXJz
-ZSwgdGhpcyB3b3JrIGhhcyBiZWVuIHBvc3NpYmxlIHRoYW5rcyB0byBKb25hcyBLYXJsbWFuLCB3
-aG8gZGlkCnRoZSBpbml0aWFsIE1QRUctMiBkZWNvZGluZyB3b3JrIGFuZCBhbHNvIGdvdCBtcHYr
-ZmZtcGVnIHdvcmtpbmcgdXNpbmcKdGhlIFJlcXVlc3QgQVBJLgoKUmVnYXJkcywKCkJvcmlzCgp2
-MzoKICAqIFNoYXJlIG1vcmUgY29kZSBiZXR3ZWVuIHRoZSBlbmNvZGVyL2RlY29kZXIgbG9naWMg
-KFZCMi9WNEwyCiAgICBpbnRlcmZhY2UgaW1wbGVtZW50YXRpb24pCiAgKiBBZGQgYSBwYXRjaCB0
-byBzdXBwb3J0IE1QRUcyIGRlY29kaW5nIG9uIFJLMzI4OCAoSm9uYXMpCiAgKiBTZXZlcmFsIGZp
-eGVzL2ltcHJvdmVtZW50cyBhbGwgb3ZlciB0aGUgcGxhY2UgKHNlZSBjaGFuZ2Vsb2cKICAgIGlu
-IGVhY2ggcGF0Y2ggZm9yIG1vcmUgZGV0YWlscykKCnYyOgogICogRml4ZWQgc29tZSBtaW5vciBp
-c3N1ZXMgYnJvdWdodCB1cCBieSB2NGwyLWNvbXBsaWFuY2UuCiAgKiBGaXhlZCBieXRlc3VzZWQg
-d3JvbmdseSBhc3NpZ25lZCAwIG9uIHRoZSBNUEVHLTIgZGVjb2Rlci4KICAqIEFkZHJlc3NlZCBj
-b21tZW50cyBmcm9tIEhhbnMgYW5kIFRvbWFzeiBvbiB0aGUgcGl4ZWwgZm9ybWF0CiAgICBoZWxw
-ZXJzLgoKQm9yaXMgQnJlemlsbG9uICg1KToKICByb2NrY2hpcC92cHU6IFJlbmFtZSByb2NrY2hp
-cF92cHVfY29tbW9uLmggaW50byByb2NrY2hpcF92cHVfdjRsMi5oCiAgcm9ja2NoaXAvdnB1OiBS
-ZW1vdmUgYSB1c2VsZXNzIHRlc3QKICByb2NrY2hpcC92cHU6IE1vdmUgZW5jb2RlciBsb2dpYyB0
-byBhIGNvbW1vbiBwbGFjZQogIHJvY2tjaGlwL3ZwdTogUHJvdmlkZSBhIGhlbHBlciB0byByZXNl
-dCBib3RoIHNyYyBhbmQgZHN0IGZvcm1hdHMKICByb2NrY2hpcC92cHU6IFByZXBhcmUgdGhpbmdz
-IHRvIHN1cHBvcnQgZGVjb2RlcnMKCkV6ZXF1aWVsIEdhcmNpYSAoOSk6CiAgcm9ja2NoaXAvdnB1
-OiBVc2UgcGl4ZWwgZm9ybWF0IGhlbHBlcnMKICByb2NrY2hpcC92cHU6IFVzZSB2NGwyX20ybV9i
-dWZfY29weV9tZXRhZGF0YQogIHJvY2tjaGlwL3ZwdTogQ2xlYW51cCBtYWNyb2Jsb2NrIGFsaWdu
-bWVudAogIHJvY2tjaGlwL3ZwdTogQ2xlYW51cCBKUEVHIGJvdW5jZSBidWZmZXIgbWFuYWdlbWVu
-dAogIHJvY2tjaGlwL3ZwdTogT3Blbi1jb2RlIG1lZGlhIGNvbnRyb2xsZXIgcmVnaXN0ZXIKICBy
-b2NrY2hpcC92cHU6IFN1cHBvcnQgdGhlIFJlcXVlc3QgQVBJCiAgcm9ja2NoaXAvdnB1OiBBZGQg
-ZGVjb2RlciBib2lsZXJwbGF0ZQogIHJvY2tjaGlwL3ZwdTogQWRkIHN1cHBvcnQgZm9yIG5vbi1z
-dGFuZGFyZCBjb250cm9scwogIHJvY2tjaGlwL3ZwdTogQWRkIHN1cHBvcnQgZm9yIE1QRUctMiBk
-ZWNvZGluZwoKSm9uYXMgS2FybG1hbiAoMSk6CiAgcm9ja2NoaXAvdnB1OiBBZGQgc3VwcG9ydCBm
-b3IgTVBFRy0yIGRlY29kaW5nIG9uIFJLMzI4OAoKIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9yb2Nr
-Y2hpcC92cHUvTWFrZWZpbGUgICB8ICAgNyArLQogLi4uL21lZGlhL3JvY2tjaGlwL3ZwdS9yazMy
-ODhfdnB1X2h3LmMgICAgICAgIHwgIDYxICstCiAuLi4vcm9ja2NoaXAvdnB1L3JrMzI4OF92cHVf
-aHdfanBlZ19lbmMuYyAgICAgfCAgIDYgKy0KIC4uLi9yb2NrY2hpcC92cHUvcmszMjg4X3ZwdV9o
-d19tcGVnMl9kZWMuYyAgICB8IDI1NyArKysrKysrCiAuLi4vbWVkaWEvcm9ja2NoaXAvdnB1L3Jr
-MzI4OF92cHVfcmVncy5oICAgICAgfCAgIDEgKwogLi4uL21lZGlhL3JvY2tjaGlwL3ZwdS9yazMz
-OTlfdnB1X2h3LmMgICAgICAgIHwgIDYxICstCiAuLi4vcm9ja2NoaXAvdnB1L3JrMzM5OV92cHVf
-aHdfanBlZ19lbmMuYyAgICAgfCAgMTIgKy0KIC4uLi9yb2NrY2hpcC92cHUvcmszMzk5X3ZwdV9o
-d19tcGVnMl9kZWMuYyAgICB8IDI3MyArKysrKysrCiAuLi4vc3RhZ2luZy9tZWRpYS9yb2NrY2hp
-cC92cHUvcm9ja2NoaXBfdnB1LmggfCAxMTUgKystCiAuLi4vbWVkaWEvcm9ja2NoaXAvdnB1L3Jv
-Y2tjaGlwX3ZwdV9jb21tb24uaCAgfCAgMzAgKy0KIC4uLi9tZWRpYS9yb2NrY2hpcC92cHUvcm9j
-a2NoaXBfdnB1X2Rydi5jICAgICB8IDQ1NiArKysrKysrKysrLS0KIC4uLi9tZWRpYS9yb2NrY2hp
-cC92cHUvcm9ja2NoaXBfdnB1X2VuYy5jICAgICB8IDY3MCAtLS0tLS0tLS0tLS0tLS0tLS0KIC4u
-Li9tZWRpYS9yb2NrY2hpcC92cHUvcm9ja2NoaXBfdnB1X2h3LmggICAgICB8ICA0NCArKwogLi4u
-L21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfanBlZy5jICAgIHwgIDI5ICsKIC4uLi9t
-ZWRpYS9yb2NrY2hpcC92cHUvcm9ja2NoaXBfdnB1X21wZWcyLmMgICB8ICA2MSArKwogLi4uL21l
-ZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfdjRsMi5jICAgIHwgNjY4ICsrKysrKysrKysr
-KysrKysrCiAuLi4vbWVkaWEvcm9ja2NoaXAvdnB1L3JvY2tjaGlwX3ZwdV92NGwyLmggICAgfCAg
-MjYgKwogMTcgZmlsZXMgY2hhbmdlZCwgMjAxNiBpbnNlcnRpb25zKCspLCA3NjEgZGVsZXRpb25z
-KC0pCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JvY2tjaGlwL3Zw
-dS9yazMyODhfdnB1X2h3X21wZWcyX2RlYy5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9z
-dGFnaW5nL21lZGlhL3JvY2tjaGlwL3ZwdS9yazMzOTlfdnB1X2h3X21wZWcyX2RlYy5jCiBkZWxl
-dGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hp
-cF92cHVfZW5jLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvcm9j
-a2NoaXAvdnB1L3JvY2tjaGlwX3ZwdV9tcGVnMi5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
-cy9zdGFnaW5nL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfdjRsMi5jCiBjcmVhdGUg
-bW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92
-cHVfdjRsMi5oCgotLSAKMi4yMC4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+
+Now that we've introduced the pixel format helpers, use them
+in vpu driver, and get rid of the internal helpers.
+
+Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+Changes from v2:
+- None
+---
+ .../media/rockchip/vpu/rockchip_vpu_enc.c     | 91 +------------------
+ 1 file changed, 2 insertions(+), 89 deletions(-)
+
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
+index fb5e36aedd8c..4451bb2dc3d7 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
+@@ -30,93 +30,6 @@
+ #include "rockchip_vpu_hw.h"
+ #include "rockchip_vpu_common.h"
+ 
+-/**
+- * struct v4l2_format_info - information about a V4L2 format
+- * @format: 4CC format identifier (V4L2_PIX_FMT_*)
+- * @header_size: Size of header, optional and used by compressed formats
+- * @num_planes: Number of planes (1 to 3)
+- * @cpp: Number of bytes per pixel (per plane)
+- * @hsub: Horizontal chroma subsampling factor
+- * @vsub: Vertical chroma subsampling factor
+- * @is_compressed: Is it a compressed format?
+- * @multiplanar: Is it a multiplanar variant format? (e.g. NV12M)
+- */
+-struct rockchip_vpu_v4l2_format_info {
+-	u32 format;
+-	u32 header_size;
+-	u8 num_planes;
+-	u8 cpp[3];
+-	u8 hsub;
+-	u8 vsub;
+-	u8 is_compressed;
+-	u8 multiplanar;
+-};
+-
+-static const struct rockchip_vpu_v4l2_format_info *
+-rockchip_vpu_v4l2_format_info(u32 format)
+-{
+-	static const struct rockchip_vpu_v4l2_format_info formats[] = {
+-		{ .format = V4L2_PIX_FMT_YUV420M,	.num_planes = 3, .cpp = { 1, 1, 1 }, .hsub = 2, .vsub = 2, .multiplanar = 1 },
+-		{ .format = V4L2_PIX_FMT_NV12M,		.num_planes = 2, .cpp = { 1, 2, 0 }, .hsub = 2, .vsub = 2, .multiplanar = 1 },
+-		{ .format = V4L2_PIX_FMT_YUYV,		.num_planes = 1, .cpp = { 2, 0, 0 }, .hsub = 2, .vsub = 1 },
+-		{ .format = V4L2_PIX_FMT_UYVY,		.num_planes = 1, .cpp = { 2, 0, 0 }, .hsub = 2, .vsub = 1 },
+-	};
+-	unsigned int i;
+-
+-	for (i = 0; i < ARRAY_SIZE(formats); ++i) {
+-		if (formats[i].format == format)
+-			return &formats[i];
+-	}
+-
+-	vpu_err("Unsupported V4L 4CC format (%08x)\n", format);
+-	return NULL;
+-}
+-
+-static void
+-fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
+-	       int pixelformat, int width, int height)
+-{
+-	const struct rockchip_vpu_v4l2_format_info *info;
+-	struct v4l2_plane_pix_format *plane;
+-	int i;
+-
+-	info = rockchip_vpu_v4l2_format_info(pixelformat);
+-	if (!info)
+-		return;
+-
+-	pixfmt->width = width;
+-	pixfmt->height = height;
+-	pixfmt->pixelformat = pixelformat;
+-
+-	if (!info->multiplanar) {
+-		pixfmt->num_planes = 1;
+-		plane = &pixfmt->plane_fmt[0];
+-		plane->bytesperline = info->is_compressed ?
+-					0 : width * info->cpp[0];
+-		plane->sizeimage = info->header_size;
+-		for (i = 0; i < info->num_planes; i++) {
+-			unsigned int hsub = (i == 0) ? 1 : info->hsub;
+-			unsigned int vsub = (i == 0) ? 1 : info->vsub;
+-
+-			plane->sizeimage += info->cpp[i] *
+-				DIV_ROUND_UP(width, hsub) *
+-				DIV_ROUND_UP(height, vsub);
+-		}
+-	} else {
+-		pixfmt->num_planes = info->num_planes;
+-		for (i = 0; i < info->num_planes; i++) {
+-			unsigned int hsub = (i == 0) ? 1 : info->hsub;
+-			unsigned int vsub = (i == 0) ? 1 : info->vsub;
+-
+-			plane = &pixfmt->plane_fmt[i];
+-			plane->bytesperline =
+-				info->cpp[i] * DIV_ROUND_UP(width, hsub);
+-			plane->sizeimage =
+-				plane->bytesperline * DIV_ROUND_UP(height, vsub);
+-		}
+-	}
+-}
+-
+ static const struct rockchip_vpu_fmt *
+ rockchip_vpu_find_format(struct rockchip_vpu_ctx *ctx, u32 fourcc)
+ {
+@@ -339,7 +252,7 @@ vidioc_try_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ 	height = round_up(height, JPEG_MB_DIM);
+ 
+ 	/* Fill remaining fields */
+-	fill_pixfmt_mp(pix_mp, fmt->fourcc, width, height);
++	v4l2_fill_pixfmt_mp(pix_mp, fmt->fourcc, width, height);
+ 
+ 	for (i = 0; i < pix_mp->num_planes; i++) {
+ 		memset(pix_mp->plane_fmt[i].reserved, 0,
+@@ -393,7 +306,7 @@ void rockchip_vpu_enc_reset_src_fmt(struct rockchip_vpu_dev *vpu,
+ 	fmt->quantization = V4L2_QUANTIZATION_DEFAULT;
+ 	fmt->xfer_func = V4L2_XFER_FUNC_DEFAULT;
+ 
+-	fill_pixfmt_mp(fmt, ctx->vpu_src_fmt->fourcc, width, height);
++	v4l2_fill_pixfmt_mp(fmt, ctx->vpu_src_fmt->fourcc, width, height);
+ }
+ 
+ static int
+-- 
+2.20.1
