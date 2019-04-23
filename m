@@ -1,74 +1,110 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2] clk: rockchip: undo several noc and special clocks as critical on rk3288
-Date: Tue, 23 Apr 2019 12:17:46 +0200
-Message-ID: <3726336.aAcGqF7Y7P@phil>
-References: <20190412161747.107107-1-dianders@chromium.org>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH 2/2] ARM: errata: add support for A12/A17 errata CR711784
+Date: Tue, 23 Apr 2019 11:19:25 +0100
+Message-ID: <c28d37ab-b6d1-4bd0-9e03-dcf9ce499fc8@arm.com>
+References: <20190419221803.99322-1-dianders@chromium.org>
+ <20190419221803.99322-2-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190412161747.107107-1-dianders@chromium.org>
+In-Reply-To: <20190419221803.99322-2-dianders@chromium.org>
+Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Elaine Zhang <zhangqing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Caesar Wang <caesar.wang@rock-chips.com>, linux-rockchip@lists.infradead.org, mka@chromium.org, ryandcase@chromium.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Douglas Anderson <dianders@chromium.org>, Russell King <linux@armlinux.org.uk>
+Cc: mark.rutland@arm.com, Salva.Climent@arm.com, linux-rockchip@lists.infradead.org, sonnyrao@chromium.org, will.deacon@arm.com, bbatacha@arm.com, mka@chromium.org, heiko@sntech.de, Arnd Bergmann <arnd@arndb.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-kernel@vger.kernel.org, Paul Burton <paul.burton@mips.com>, Palmer Dabbelt <palmer@sifive.com>, Florian Fainelli <f.fainelli@gmail.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Marc Zyngier <marc.zyngier@arm.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, linux-arm-kernel@lists.infradead.org, Tony Lindgren <tony@atomide.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 12. April 2019, 18:17:47 CEST schrieb Douglas Anderson:
-> This is mostly a revert of commit 55bb6a633c33 ("clk: rockchip: mark
-> noc and some special clk as critical on rk3288") except that we're
-> keeping "pmu_hclk_otg0" as critical still.
+Hi Doug,
+
+On 19/04/2019 23:18, Douglas Anderson wrote:
+> This adds a code for turning on chicken bit 11, which appears to avoid
+> a potential CPU deadlock that could occur.  The exact set of
+> instruction needed to trigger this errata is not totaly known but we
+> have a high level of confidence that the problem is fixed by setting
+> chicken bit 11.
 > 
-> NOTE: turning these clocks off doesn't seem to do a whole lot in terms
-> of power savings (checking the power on the logic rail).  It appears
-> to save maybe 1-2mW.  ...but still it seems like we should turn the
-> clocks off if they aren't needed.
+> All details are in http://crbug.com/711784
 > 
-> About "pmu_hclk_otg0" (the one clock from the original commit we're
-> still keeping critical) from an email thread:
-> 
-> > pmu ahb clock
-> >
-> > Function: Clock to pmu module when hibernation and/or ADP is
-> > enabled. Must be greater than or equal to 30 MHz.
-> >
-> > If the SOC design does not support hibernation/ADP function, only have
-> > hclk_otg, this clk can be switched according to the usage of otg.
-> > If the SOC design support hibernation/ADP, has two clocks, hclk_otg and
-> > pmu_hclk_otg0.
-> > Hclk_otg belongs to the closed part of otg logic, which can be switched
-> > according to the use of otg.
-> >
-> > pmu_hclk_otg0 belongs to the always on part.
-> >
-> > As for whether pmu_hclk_otg0 can be turned off when otg is not in use,
-> > we have not tested. IC suggest make pmu_hclk_otg0 always on.
-> 
-> For the rest of the clocks:
-> 
-> atclk: No documentation about this clock other than that it goes to
-> the CPU.  CPU functions fine without it on.  Maybe needed for JTAG?
-> 
-> jtag: Presumably this clock is only needed if you're debugging with
-> JTAG.  It doesn't seem like it makes sense to waste power for every
-> rk3288 user.  In any case to do JTAG you'd need private patches to
-> adjust the pinctrl the mux the JTAG out anyway.
-> 
-> pclk_dbg, pclk_core_niu: On veyron Chromebooks we turn these two
-> clocks on only during kernel panics in order to access some coresight
-> registers.  Since nothing in the upstream kernel does this we should
-> be able to leave them off safely.  Maybe also needed for JTAG?
-> 
-> hsicphy12m_xin12m: There is no indication of why this clock would need
-> to be turned on for boards that don't use HSIC.
-> 
-> pclk_ddrupctl[0-1], pclk_publ0[0-1]: On veyron Chromebooks we turn
-> these 4 clocks on only when doing DDR transitions and they are off
-> otherwise.  I see no reason why they'd need to be on in the upstream
-> kernel which doesn't support DDRFreq.
-> 
+> This erratum has no known number and thus I have tagged it CR711784
+> (after the Chrome OS bug number).  I have created separate A12 / A17
+> configs to match how the rest of the A12 / A17 errata is handled.
+
+The written-up workarounds for 85727[12] do actually say to set both 
+bits 10 and 11 of the diagnostic register, so you could probably just 
+fold this into the first patch and not have to worry about what to call it.
+
+Robin.
+
 > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-
-applied for 5.2
-
-Thanks
-Heiko
+> ---
+> 
+>   arch/arm/Kconfig      | 18 ++++++++++++++++++
+>   arch/arm/mm/proc-v7.S | 10 ++++++++++
+>   2 files changed, 28 insertions(+)
+> 
+> diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
+> index 4376fe74f95e..34ec9039206b 100644
+> --- a/arch/arm/Kconfig
+> +++ b/arch/arm/Kconfig
+> @@ -1181,6 +1181,13 @@ config ARM_ERRATA_857271
+>   	  hang. The workaround is expected to have a negligible performance
+>   	  impact.
+>   
+> +config ARM_ERRATA_CR711784_A12
+> +	bool "ARM errata: A12: conditional instructions can lead to a CPU hang"
+> +	depends on CPU_V7
+> +	help
+> +	  This option enables the workaround for a Cortex-A12 erratum without a
+> +	  number. The problems are best described in https://crbug.com/711784
+> +
+>   config ARM_ERRATA_852421
+>   	bool "ARM errata: A17: DMB ST might fail to create order between stores"
+>   	depends on CPU_V7
+> @@ -1212,6 +1219,17 @@ config ARM_ERRATA_857272
+>   	  config option from the A12 erratum due to the way errata are checked
+>   	  for and handled.
+>   
+> +config ARM_ERRATA_CR711784_A17
+> +	bool "ARM errata: A17: conditional instructions can lead to a CPU hang"
+> +	depends on CPU_V7
+> +	help
+> +	  This option enables the workaround for a Cortex-A17 erratum without a
+> +	  number. The problems are best described in https://crbug.com/711784
+> +	  This erratum is not known to be fixed in any A17 revision.
+> +	  This is identical to Cortex-A12 erratum CR711784.  It is a separate
+> +	  config option from the A12 erratum due to the way errata are checked
+> +	  for and handled.
+> +
+>   endmenu
+>   
+>   source "arch/arm/common/Kconfig"
+> diff --git a/arch/arm/mm/proc-v7.S b/arch/arm/mm/proc-v7.S
+> index cd2accbab844..a5156ea734ee 100644
+> --- a/arch/arm/mm/proc-v7.S
+> +++ b/arch/arm/mm/proc-v7.S
+> @@ -396,6 +396,11 @@ __ca12_errata:
+>   	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
+>   	orr	r10, r10, #1 << 10		@ set bit #10
+>   	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
+> +#endif
+> +#ifdef CONFIG_ARM_ERRATA_CR711784_A12
+> +	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
+> +	orr	r10, r10, #1 << 11		@ set bit #11
+> +	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
+>   #endif
+>   	b	__errata_finish
+>   
+> @@ -416,6 +421,11 @@ __ca17_errata:
+>   	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
+>   	orr	r10, r10, #1 << 10		@ set bit #10
+>   	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
+> +#endif
+> +#ifdef CONFIG_ARM_ERRATA_CR711784_A17
+> +	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
+> +	orr	r10, r10, #1 << 11		@ set bit #11
+> +	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
+>   #endif
+>   	b	__errata_finish
+>   
+> 
