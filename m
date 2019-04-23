@@ -1,87 +1,47 @@
-From: Jonas Gorski <jonas.gorski@gmail.com>
-Subject: Re: [PATCH RFT V3 1/8] clk: divider: add explicit big endian support
-Date: Tue, 23 Apr 2019 12:39:59 +0200
-Message-ID: <CAOiHx=mjhzG-i8H5R0A+Mu3mcBXTNEaaBhC8rwCQPMWArDA+1A@mail.gmail.com>
-References: <20190418111211.10474-1-jonas.gorski@gmail.com>
- <20190418111211.10474-2-jonas.gorski@gmail.com>
- <CAMuHMdX7E8fR+2s-gPgGLKUCdW_--YUDW7w+op3BDurgACFEmA@mail.gmail.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 2/2] ARM: errata: add support for A12/A17 errata CR711784
+Date: Tue, 23 Apr 2019 07:37:53 -0700
+Message-ID: <CAD=FV=XWGm6vhdDdYJOSfftYsevnS8VuQUox_9z-kU=08M1oJg@mail.gmail.com>
+References: <20190419221803.99322-1-dianders@chromium.org> <20190419221803.99322-2-dianders@chromium.org>
+ <c28d37ab-b6d1-4bd0-9e03-dcf9ce499fc8@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAMuHMdX7E8fR+2s-gPgGLKUCdW_--YUDW7w+op3BDurgACFEmA@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Prashant Gaikwad <pgaikwad@nvidia.com>, Heiko Stuebner <heiko@sntech.de>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Michael Turquette <mturquette@baylibre.com>, Thierry Reding <thierry.reding@gmail.com>, Paul Mackerras <paulus@samba.org>, Fabio Estevam <festevam@gmail.com>, linux-clk <linux-clk@vger.kernel.org>, Michael Ellerman <mpe@ellerman.id.au>, Michal Simek <michal.simek@xilinx.com>, Jonathan Hunter <jonathanh@nvidia.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, NXP Linux Team <linux-imx@nxp.com>, Anatolij Gustschin <agust@denx.de>, Sascha Hauer <s.hauer@pengutronix.de>, linux-tegra <linux-tegra@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Stephen Boyd <sboyd@kernel.org>, linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, Peter De Schrijver <pdeschrijver@nvidia.com>, Pengutronix Kernel Team <kernel@pengutron>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <c28d37ab-b6d1-4bd0-9e03-dcf9ce499fc8@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Russell King <linux@armlinux.org.uk>, Mark Rutland <mark.rutland@arm.com>, Jose Salvador Climent Bayarri <Salva.Climent@arm.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Sonny Rao <sonnyrao@chromium.org>, Will Deacon <will.deacon@arm.com>, Bobby Batacharia <bbatacha@arm.com>, Matthias Kaehlcke <mka@chromium.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, LKML <linux-kernel@vger.kernel.org>, Paul Burton <paul.burton@mips.com>, Palmer Dabbelt <palmer@sifive.com>, Florian Fainelli <f.fainelli@gmail.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Marc Zyngier <marc.zyngier@arm.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Lin
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Geert,
+Hi,
 
-On Tue, 23 Apr 2019 at 09:49, Geert Uytterhoeven <geert@linux-m68k.org> wrote:
+On Tue, Apr 23, 2019 at 3:19 AM Robin Murphy <robin.murphy@arm.com> wrote:
 >
-> Hi Jonas,
+> Hi Doug,
 >
-> On Thu, Apr 18, 2019 at 1:12 PM Jonas Gorski <jonas.gorski@gmail.com> wrote:
-> > Add a clock specific flag to switch register accesses to big endian, to
-> > allow runtime configuration of big endian divider clocks.
+> On 19/04/2019 23:18, Douglas Anderson wrote:
+> > This adds a code for turning on chicken bit 11, which appears to avoid
+> > a potential CPU deadlock that could occur.  The exact set of
+> > instruction needed to trigger this errata is not totaly known but we
+> > have a high level of confidence that the problem is fixed by setting
+> > chicken bit 11.
 > >
-> > Signed-off-by: Jonas Gorski <jonas.gorski@gmail.com>
-> > ---
-> > V2 -> V3:
-> >  * fix passed arguments to clk_div_readl found by kbuild
-> >  * drop unneeded else in clk_div_readl
-> > V1 -> V2:
-> >  * switch from global to local flag
+> > All details are in http://crbug.com/711784
 > >
-> >  drivers/clk/clk-divider.c    | 26 ++++++++++++++++++++++----
-> >  include/linux/clk-provider.h |  4 ++++
-> >  2 files changed, 26 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/drivers/clk/clk-divider.c b/drivers/clk/clk-divider.c
-> > index e5a17265cfaf..25c7404e376c 100644
-> > --- a/drivers/clk/clk-divider.c
-> > +++ b/drivers/clk/clk-divider.c
-> > @@ -25,6 +25,24 @@
-> >   * parent - fixed parent.  No clk_set_parent support
-> >   */
-> >
-> > +static inline u32 clk_div_readl(struct clk_divider *divider)
-> > +{
-> > +       if (divider->flags & CLK_DIVIDER_BIG_ENDIAN)
-> > +               return ioread32be(divider->reg);
-> > +
-> > +       return clk_readl(divider->reg);
-> > +}
-> > +
-> > +static inline void clk_div_writel(struct clk_divider *divider, u32 val)
-> > +{
-> > +       if (divider->flags & CLK_DIVIDER_BIG_ENDIAN)
-> > +               iowrite32be(val, divider->reg);
-> > +       else
-> > +               clk_writel(val, divider->reg);
-> > +}
-> > +
-> > +#define div_mask(width)        ((1 << (width)) - 1)
+> > This erratum has no known number and thus I have tagged it CR711784
+> > (after the Chrome OS bug number).  I have created separate A12 / A17
+> > configs to match how the rest of the A12 / A17 errata is handled.
 >
-> What's the purpose of adding this definition?
-> It does not seem to be used.
+> The written-up workarounds for 85727[12] do actually say to set both
+> bits 10 and 11 of the diagnostic register, so you could probably just
+> fold this into the first patch and not have to worry about what to call it.
+>
+> Robin.
 
-No purpose at all, it's an uncaught artifact from rebasing ._.
+Thanks!  I was unable to find any official docs here and my past
+contacts with ARM about this matter have been silent.  All I had was a
+preliminary errata description and it only included bit 10.
 
-Stephen, which one is your preferred way of fixing that?
+I'll spin a v2 with them both together then.
 
-a) a new V4 patchset without this line
-b) a follow up patch that removes it
-c) just removing the line yourself
-
-
-Regards
-Jonas
+-Doug
