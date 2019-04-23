@@ -1,110 +1,42 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH 2/2] ARM: errata: add support for A12/A17 errata CR711784
-Date: Tue, 23 Apr 2019 11:19:25 +0100
-Message-ID: <c28d37ab-b6d1-4bd0-9e03-dcf9ce499fc8@arm.com>
-References: <20190419221803.99322-1-dianders@chromium.org>
- <20190419221803.99322-2-dianders@chromium.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: fix IO domain voltage setting of
+ APIO5
+Date: Tue, 23 Apr 2019 12:31:16 +0200
+Message-ID: <1963530.P7P6axORlu@phil>
+References: <20190327120317.15256-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190419221803.99322-2-dianders@chromium.org>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>, Russell King <linux@armlinux.org.uk>
-Cc: mark.rutland@arm.com, Salva.Climent@arm.com, linux-rockchip@lists.infradead.org, sonnyrao@chromium.org, will.deacon@arm.com, bbatacha@arm.com, mka@chromium.org, heiko@sntech.de, Arnd Bergmann <arnd@arndb.de>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-kernel@vger.kernel.org, Paul Burton <paul.burton@mips.com>, Palmer Dabbelt <palmer@sifive.com>, Florian Fainelli <f.fainelli@gmail.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Marc Zyngier <marc.zyngier@arm.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, linux-arm-kernel@lists.infradead.org, Tony Lindgren <tony@atomide.com>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190327120317.15256-1-katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
+Am Mittwoch, 27. M=E4rz 2019, 13:03:17 CEST schrieb Katsuhiro Suzuki:
+> This patch fixes IO domain voltage setting that is related to
+> audio_gpio3d4a_ms (bit 1) of GRF_IO_VSEL.
+> =
 
-On 19/04/2019 23:18, Douglas Anderson wrote:
-> This adds a code for turning on chicken bit 11, which appears to avoid
-> a potential CPU deadlock that could occur.  The exact set of
-> instruction needed to trigger this errata is not totaly known but we
-> have a high level of confidence that the problem is fixed by setting
-> chicken bit 11.
-> 
-> All details are in http://crbug.com/711784
-> 
-> This erratum has no known number and thus I have tagged it CR711784
-> (after the Chrome OS bug number).  I have created separate A12 / A17
-> configs to match how the rest of the A12 / A17 errata is handled.
+> This is because RockPro64 schematics P.16 says that regulator
+> supplies 3.0V power to APIO5_VDD. So audio_gpio3d4a_ms bit should
+> be clear (means 3.0V). Power domain map is saying different thing
+> (supplies 1.8V) but I believe P.16 is actual connectings.
+> =
 
-The written-up workarounds for 85727[12] do actually say to set both 
-bits 10 and 11 of the diagnostic register, so you could probably just 
-fold this into the first patch and not have to worry about what to call it.
+> Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+> Suggested-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
 
-Robin.
+applied for 5.2
 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> 
->   arch/arm/Kconfig      | 18 ++++++++++++++++++
->   arch/arm/mm/proc-v7.S | 10 ++++++++++
->   2 files changed, 28 insertions(+)
-> 
-> diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-> index 4376fe74f95e..34ec9039206b 100644
-> --- a/arch/arm/Kconfig
-> +++ b/arch/arm/Kconfig
-> @@ -1181,6 +1181,13 @@ config ARM_ERRATA_857271
->   	  hang. The workaround is expected to have a negligible performance
->   	  impact.
->   
-> +config ARM_ERRATA_CR711784_A12
-> +	bool "ARM errata: A12: conditional instructions can lead to a CPU hang"
-> +	depends on CPU_V7
-> +	help
-> +	  This option enables the workaround for a Cortex-A12 erratum without a
-> +	  number. The problems are best described in https://crbug.com/711784
-> +
->   config ARM_ERRATA_852421
->   	bool "ARM errata: A17: DMB ST might fail to create order between stores"
->   	depends on CPU_V7
-> @@ -1212,6 +1219,17 @@ config ARM_ERRATA_857272
->   	  config option from the A12 erratum due to the way errata are checked
->   	  for and handled.
->   
-> +config ARM_ERRATA_CR711784_A17
-> +	bool "ARM errata: A17: conditional instructions can lead to a CPU hang"
-> +	depends on CPU_V7
-> +	help
-> +	  This option enables the workaround for a Cortex-A17 erratum without a
-> +	  number. The problems are best described in https://crbug.com/711784
-> +	  This erratum is not known to be fixed in any A17 revision.
-> +	  This is identical to Cortex-A12 erratum CR711784.  It is a separate
-> +	  config option from the A12 erratum due to the way errata are checked
-> +	  for and handled.
-> +
->   endmenu
->   
->   source "arch/arm/common/Kconfig"
-> diff --git a/arch/arm/mm/proc-v7.S b/arch/arm/mm/proc-v7.S
-> index cd2accbab844..a5156ea734ee 100644
-> --- a/arch/arm/mm/proc-v7.S
-> +++ b/arch/arm/mm/proc-v7.S
-> @@ -396,6 +396,11 @@ __ca12_errata:
->   	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
->   	orr	r10, r10, #1 << 10		@ set bit #10
->   	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
-> +#endif
-> +#ifdef CONFIG_ARM_ERRATA_CR711784_A12
-> +	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
-> +	orr	r10, r10, #1 << 11		@ set bit #11
-> +	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
->   #endif
->   	b	__errata_finish
->   
-> @@ -416,6 +421,11 @@ __ca17_errata:
->   	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
->   	orr	r10, r10, #1 << 10		@ set bit #10
->   	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
-> +#endif
-> +#ifdef CONFIG_ARM_ERRATA_CR711784_A17
-> +	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
-> +	orr	r10, r10, #1 << 11		@ set bit #11
-> +	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
->   #endif
->   	b	__errata_finish
->   
-> 
+Thanks
+Heiko
