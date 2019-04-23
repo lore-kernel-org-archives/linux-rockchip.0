@@ -1,34 +1,101 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [alsa-devel] [PATCH] ASoC: rockchip: add missing INTERLEAVED PCM attribute
-Date: Tue, 23 Apr 2019 15:26:42 -0700
-Message-ID: <CAD=FV=WKV3eLsg3mWpmCWYjvk2JY4_Q-20v1Ohzy=02+LjpPnw@mail.gmail.com>
-References: <20180910163932.13722-1-katsuhiro@katsuster.net>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v2] ARM: errata: Workaround errata A12 857271 / A17 857272
+Date: Tue, 23 Apr 2019 15:59:59 -0700
+Message-ID: <20190423225959.43742-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20180910163932.13722-1-katsuhiro@katsuster.net>
-Sender: stable-owner@vger.kernel.org
-To: stable@vger.kernel.org
-Cc: Katsuhiro Suzuki <katsuhiro@katsuster.net>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, ALSA Development Mailing List <alsa-devel@alsa-project.org>, Heiko Stuebner <heiko@sntech.de>, Mark Brown <broonie@kernel.org>, Urja Rannikko <urjaman@gmail.com>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Russell King <linux@armlinux.org.uk>
+Cc: mark.rutland@arm.com, Salva.Climent@arm.com, marc.w.gonzalez@free.fr, linux-rockchip@lists.infradead.org, sonnyrao@chromium.org, will.deacon@arm.com, bbatacha@arm.com, mka@chromium.org, robin.murphy@arm.com, heiko@sntech.de, Douglas Anderson <dianders@chromium.org>, linux-arm-kernel@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-kernel@vger.kernel.org, Paul Burton <paul.burton@mips.com>, Palmer Dabbelt <palmer@sifive.com>, Marc Zyngier <marc.zyngier@arm.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Andrew Morton <akpm@linux-foundation.org>, Tony Lindgren <tony@atomide.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+This adds support for working around errata A12 857271 / A17 857272.
+These errata were causing hangs on rk3288-based Chromebooks and it was
+confirmed that this workaround fixed the problems.  In the Chrome OS
+3.14 kernel this was treated as two errata: ERRATA_FOOBAR [1] and
+ERRATA_CR711784 [2].  Apparently the two errata got lumped together at
+some point in time.
 
-On Sep 10, 2018 at 4:39 PM Katsuhiro Suzuki <katsuhiro@katsuster.net> wrote:
->
-> This patch adds SNDRV_PCM_INFO_INTERLEAVED into PCM hardware info.
->
-> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-> ---
->  sound/soc/rockchip/rockchip_pcm.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+Let's actually get the workaround landed.
 
-I just tracked down that audio was broken on 4.19 and needs this
-change to work.  Stable: can you please pick it?  Specifically I
-believe you'd want to treat it as if it had:
+[1] https://crrev.com/c/342753
+[2] https://crbug.com/711784
 
-Fixes: 75b31192fe6a ("ASoC: rockchip: add config for rockchip
-dmaengine pcm register")
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: Sonny Rao <sonnyrao@chromium.org>
+---
 
+Changes in v2:
+- Squashed bits 10 and 11 into one errata.
 
--Doug
+ arch/arm/Kconfig      | 18 ++++++++++++++++++
+ arch/arm/mm/proc-v7.S | 10 ++++++++++
+ 2 files changed, 28 insertions(+)
+
+diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
+index b509cd338219..59fdcd51d7ee 100644
+--- a/arch/arm/Kconfig
++++ b/arch/arm/Kconfig
+@@ -1172,6 +1172,14 @@ config ARM_ERRATA_825619
+ 	  DMB NSHST or DMB ISHST instruction followed by a mix of Cacheable
+ 	  and Device/Strongly-Ordered loads and stores might cause deadlock
+ 
++config ARM_ERRATA_857271
++	bool "ARM errata: A12: CPU might deadlock under some very rare internal conditions"
++	depends on CPU_V7
++	help
++	  This option enables the workaround for the 857271 Cortex-A12
++	  (all revs) erratum. Under very rare timing conditions, the CPU might
++	  hang. The workaround is expected to have a < 1% performance impact.
++
+ config ARM_ERRATA_852421
+ 	bool "ARM errata: A17: DMB ST might fail to create order between stores"
+ 	depends on CPU_V7
+@@ -1193,6 +1201,16 @@ config ARM_ERRATA_852423
+ 	  config option from the A12 erratum due to the way errata are checked
+ 	  for and handled.
+ 
++config ARM_ERRATA_857272
++	bool "ARM errata: A17: CPU might deadlock under some very rare internal conditions"
++	depends on CPU_V7
++	help
++	  This option enables the workaround for the 857272 Cortex-A17 erratum.
++	  This erratum is not known to be fixed in any A17 revision.
++	  This is identical to Cortex-A12 erratum 857271.  It is a separate
++	  config option from the A12 erratum due to the way errata are checked
++	  for and handled.
++
+ endmenu
+ 
+ source "arch/arm/common/Kconfig"
+diff --git a/arch/arm/mm/proc-v7.S b/arch/arm/mm/proc-v7.S
+index 339eb17c9808..2966086d8a45 100644
+--- a/arch/arm/mm/proc-v7.S
++++ b/arch/arm/mm/proc-v7.S
+@@ -391,6 +391,11 @@ __ca12_errata:
+ 	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
+ 	orr	r10, r10, #1 << 24		@ set bit #24
+ 	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
++#endif
++#ifdef CONFIG_ARM_ERRATA_857271
++	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
++	orr	r10, r10, #3 << 10		@ set bits #10 and #11
++	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
+ #endif
+ 	b	__errata_finish
+ 
+@@ -406,6 +411,11 @@ __ca17_errata:
+ 	mrcle	p15, 0, r10, c15, c0, 1		@ read diagnostic register
+ 	orrle	r10, r10, #1 << 12		@ set bit #12
+ 	mcrle	p15, 0, r10, c15, c0, 1		@ write diagnostic register
++#endif
++#ifdef CONFIG_ARM_ERRATA_857272
++	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
++	orr	r10, r10, #3 << 10		@ set bits #10 and #11
++	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
+ #endif
+ 	b	__errata_finish
+ 
+-- 
+2.21.0.593.g511ec345e18-goog
