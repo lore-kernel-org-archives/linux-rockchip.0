@@ -1,36 +1,152 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH RFT V3 1/8] clk: divider: add explicit big endian support
-Date: Tue, 23 Apr 2019 10:40:06 -0700
-Message-ID: <155604120699.15276.12116926593244975174@swboyd.mtv.corp.google.com>
-References: <20190418111211.10474-1-jonas.gorski@gmail.com>
- <20190418111211.10474-2-jonas.gorski@gmail.com>
- <CAMuHMdX7E8fR+2s-gPgGLKUCdW_--YUDW7w+op3BDurgACFEmA@mail.gmail.com>
- <CAOiHx=mjhzG-i8H5R0A+Mu3mcBXTNEaaBhC8rwCQPMWArDA+1A@mail.gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 07/15] ARM: rockchip: fix a leaked reference by adding missing of_node_put
+Date: Tue, 23 Apr 2019 19:48:53 +0200
+Message-ID: <1645207.xa1a3A0MYx@phil>
+References: <1551785646-46173-1-git-send-email-wen.yang99@zte.com.cn> <1551785646-46173-7-git-send-email-wen.yang99@zte.com.cn>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAOiHx=mjhzG-i8H5R0A+Mu3mcBXTNEaaBhC8rwCQPMWArDA+1A@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Geert Uytterhoeven <geert@linux-m68k.org>, Jonas Gorski <jonas.gorski@gmail.com>
-Cc: Prashant Gaikwad <pgaikwad@nvidia.com>, Sascha Hauer <s.hauer@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>, Michael Ellerman <mpe@ellerman.id.au>, Fabio Estevam <festevam@gmail.com>, Peter De Schrijver <pdeschrijver@nvidia.com>, Michal Simek <michal.simek@xilinx.com>, Shawn Guo <shawnguo@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Michael Turquette <mturquette@baylibre.com>, Paul Mackerras <paulus@samba.org>, NXP Linux Team <linux-imx@nxp.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, linux-tegra <linux-tegra@vger.kernel.org>, Thierry Reding <thierry.reding@gmail.com>, Anatolij Gustschin <agust@denx.de>, linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, linux-clk <linux-clk@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infrade>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1551785646-46173-7-git-send-email-wen.yang99@zte.com.cn>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wen Yang <wen.yang99@zte.com.cn>
+Cc: linux-kernel@vger.kernel.org, wang.yi59@zte.com.cn, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Jonas Gorski (2019-04-23 03:39:59)
-> No purpose at all, it's an uncaught artifact from rebasing ._.
-> 
-> Stephen, which one is your preferred way of fixing that?
-> 
-> a) a new V4 patchset without this line
-> b) a follow up patch that removes it
-> c) just removing the line yourself
+Hi,
 
-I'll go for c and fix up things. Thanks for the catch Geert!
+sorry that this took so long to look at, but I think it needs a bit of
+rework, see below:
+
+Am Dienstag, 5. März 2019, 12:33:58 CEST schrieb Wen Yang:
+> The call to of_get_next_child returns a node pointer with refcount
+> incremented thus it must be explicitly decremented after the last
+> usage.
+> 
+> Detected by coccinelle with the following warnings:
+> ./arch/arm/mach-rockchip/pm.c:269:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 259, but without a corresponding object release within this function.
+> ./arch/arm/mach-rockchip/pm.c:275:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 259, but without a corresponding object release within this function
+> ./arch/arm/mach-rockchip/platsmp.c:280:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 271, but without a corresponding object release within this function.
+> ./arch/arm/mach-rockchip/platsmp.c:284:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 271, but without a corresponding object release within this function.
+> ./arch/arm/mach-rockchip/platsmp.c:288:3-9: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 271, but without a corresponding object release within this function.
+> ./arch/arm/mach-rockchip/platsmp.c:302:3-9: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 293, but without a corresponding object release within this function.
+> ./arch/arm/mach-rockchip/platsmp.c:250:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 241, but without a corresponding object release within this function.
+> ./arch/arm/mach-rockchip/platsmp.c:260:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 241, but without a corresponding object release within this function.
+> ./arch/arm/mach-rockchip/platsmp.c:263:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 241, but without a corresponding object release within this function.
+> 
+> Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
+> Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+> Cc: Russell King <linux@armlinux.org.uk>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-kernel@vger.kernel.org
+> ---
+> v2->v1: add a missing space between "adding" and "missing"
+> 
+>  arch/arm/mach-rockchip/platsmp.c | 12 ++++++++----
+>  arch/arm/mach-rockchip/pm.c      | 11 ++++++-----
+>  2 files changed, 14 insertions(+), 9 deletions(-)
+> 
+> diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
+> index 51984a4..f93d64e 100644
+> --- a/arch/arm/mach-rockchip/platsmp.c
+> +++ b/arch/arm/mach-rockchip/platsmp.c
+> @@ -277,19 +277,20 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
+>  	sram_base_addr = of_iomap(node, 0);
+
+just do the of_node_put here and drop the whole error gotos?
+Because node in this case only holds the possible pointer to 
+
+>  	if (!sram_base_addr) {
+>  		pr_err("%s: could not map sram registers\n", __func__);
+> -		return;
+> +		goto out_put_node;
+>  	}
+>  
+>  	if (has_pmu && rockchip_smp_prepare_pmu())
+> -		return;
+> +		goto out_put_node;
+>  
+>  	if (read_cpuid_part() == ARM_CPU_PART_CORTEX_A9) {
+>  		if (rockchip_smp_prepare_sram(node))
+> -			return;
+> +			goto out_put_node;
+>  
+>  		/* enable the SCU power domain */
+>  		pmu_set_power_domain(PMU_PWRDN_SCU, true);
+>  
+> +		of_node_put(node);
+>  		node = of_find_compatible_node(NULL, NULL, "arm,cortex-a9-scu");
+>  		if (!node) {
+>  			pr_err("%s: missing scu\n", __func__);
+> @@ -299,7 +300,7 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
+>  		scu_base_addr = of_iomap(node, 0);
+
+similarly just put the scu node here?
+
+>  		if (!scu_base_addr) {
+>  			pr_err("%s: could not map scu registers\n", __func__);
+> -			return;
+> +			goto out_put_node;
+>  		}
+>  
+>  		/*
+> @@ -321,6 +322,9 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
+>  	/* Make sure that all cores except the first are really off */
+>  	for (i = 1; i < ncores; i++)
+>  		pmu_set_power_domain(0 + i, false);
+> +
+> +out_put_node:
+> +	of_node_put(node);
+>  }
+>  
+>  static void __init rk3036_smp_prepare_cpus(unsigned int max_cpus)
+> diff --git a/arch/arm/mach-rockchip/pm.c b/arch/arm/mach-rockchip/pm.c
+> index 0592534..43a16c9 100644
+> --- a/arch/arm/mach-rockchip/pm.c
+> +++ b/arch/arm/mach-rockchip/pm.c
+> @@ -266,25 +266,26 @@ static int rk3288_suspend_init(struct device_node *np)
+>  	rk3288_bootram_base = of_iomap(sram_np, 0);
+>  	if (!rk3288_bootram_base) {
+>  		pr_err("%s: could not map bootram base\n", __func__);
+
+just add a regular of_node_put here?
+
+> -		return -ENOMEM;
+> +		ret = -ENOMEM;
+> +		goto out_put_node;
+>  	}
+>  
+>  	ret = of_address_to_resource(sram_np, 0, &res);
+>  	if (ret) {
+>  		pr_err("%s: could not get bootram phy addr\n", __func__);
+
+and here as well? Not having to follow gotos might improve readability
+especially as after here the node isn't used anymore as indicated by the
+already existing of_node_put below which should be kept.
+
+
+Heiko
+
+> -		return ret;
+> +		goto out_put_node;
+>  	}
+>  	rk3288_bootram_phy = res.start;
+>  
+> -	of_node_put(sram_np);
+> -
+>  	rk3288_config_bootdata();
+>  
+>  	/* copy resume code and data to bootsram */
+>  	memcpy(rk3288_bootram_base, rockchip_slp_cpu_resume,
+>  	       rk3288_bootram_sz);
+>  
+> -	return 0;
+> +out_put_node:
+> +	of_node_put(sram_np);
+> +	return ret;
+>  }
+>  
+>  static const struct platform_suspend_ops rk3288_suspend_ops = {
+> 
