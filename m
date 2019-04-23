@@ -1,96 +1,97 @@
-From: Artur Petrosyan <Arthur.Petrosyan@synopsys.com>
-Subject: Re: [PATCH v2 0/5] USB: dwc2: Allow wakeup from suspend; enable for
- rk3288-veyron
-Date: Mon, 22 Apr 2019 15:50:29 +0000
-Message-ID: <SN1PR12MB2431362F11279C1C0E9E7793A7220@SN1PR12MB2431.namprd12.prod.outlook.com>
-References: <20190418001356.124334-1-dianders@chromium.org>
- <e4b3cd69-1c91-dfbe-bea7-bbca89ca1348@synopsys.com>
- <CAD=FV=XDLqcdq_BypUYsJHKX+DY0VWvCACYgZiHeG8E3Dbwxcw@mail.gmail.com>
- <SN1PR12MB2431F918E4731FAA50A373B6A7270@SN1PR12MB2431.namprd12.prod.outlook.com>
- <SN1PR12MB24319D0BF93E22B6B913E6CAA7270@SN1PR12MB2431.namprd12.prod.outlook.com>
+From: "elaine.zhang" <zhangqing@rock-chips.com>
+Subject: Re: [PATCH v2] clk: rockchip: undo several noc and special clocks as
+ critical on rk3288
+Date: Tue, 23 Apr 2019 09:15:10 +0800
+Message-ID: <a8bd1681-0d24-e8d5-9f81-77e8fcb61c63@rock-chips.com>
+References: <20190412161747.107107-1-dianders@chromium.org>
+ <CAD=FV=Xkdc_yPCjVUh96atdiB4fo4h3oNZYe45ef+eLeVUVM8g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=Xkdc_yPCjVUh96atdiB4fo4h3oNZYe45ef+eLeVUVM8g@mail.gmail.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>, Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>
-Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, "heiko@sntech.de" <heiko@sntech.de>, Alan Stern <stern@rowland.harvard.edu>, "amstan@chromium.org" <amstan@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, William Wu <william.wu@rock-chips.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, "zyw@rock-chips.com" <zyw@rock-chips.com>, "mka@chromium.org" <mka@chromium.org>, "ryandcase@chromium.org" <ryandcase@chromium.org>, Amelie Delaunay <amelie.delaunay@st.com>, "jwerner@chromium.org" <jwerner@chromium.org>, Elaine Zhang <zhangqing@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Doug Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Caesar Wang <caesar.wang@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, linux-clk <linux-clk@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,=0A=
-=0A=
-On 4/19/2019 20:44, Artur Petrosyan wrote:=0A=
-> Hi Doug,=0A=
-> =0A=
-> On 4/19/2019 15:43, Artur Petrosyan wrote:=0A=
->> Hi,=0A=
->>=0A=
->> On 4/18/2019 19:55, Doug Anderson wrote:=0A=
->>> Hi,=0A=
->>>=0A=
->>> On Thu, Apr 18, 2019 at 5:41 AM Minas Harutyunyan=0A=
->>> <Minas.Harutyunyan@synopsys.com> wrote:=0A=
->>>> Did you consider/reviewed patch series from Artur Petrosyan "[PATCH=0A=
->>>> 00/14] usb: dwc2: Fix and improve power saving modes" (submitted on=0A=
->>>> April 12) which fixing partial power down and hibernation flows for bo=
-th=0A=
->>>> modes: host and device?=0A=
->>>> I suspect that this both patch series can be in conflict.=0A=
->>>=0A=
->>> No, I wasn't aware of them.  I'd like to try them out, but it looks=0A=
->>> like it's currently impossible because they're not archived anywhere=0A=
->>> that I can find.=0A=
->>>=0A=
->>> 1. LKML wasn't copied, so I can't find them on lore.kernel.org.  It is=
-=0A=
->>> suggested to CC LKML on all patches.=0A=
->>>=0A=
->>> 2. The Linux USB patchwork only has the cover letter plus the first 6=
-=0A=
->>> patches.  See <https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__p=
-atchwork.kernel.org_cover_10898333_&d=3DDwIBaQ&c=3DDPL6_X_6JkXFx7AXWqB0tg&r=
-=3D9hPBFKCJ_nBjJhGVrrlYOeOQjP_HlVzYqrC_D7niMJI&m=3DrJbofHXqjP3sUBgEikaZ89fR=
-WtsquvhFUkhSPguCiWw&s=3D_CrI0uolquXIYC5SuoZ1vBs7BM19VfCceI96qZm9kAY&e=3D>=
-=0A=
->>>=0A=
->>> 3. Searching my own archives I only see the cover letter plus the=0A=
->>> first 6 patches.=0A=
->>>=0A=
->>> Maybe you have some other pointer to how I can retrieve them?  I guess=
-=0A=
->>> I could try the first 6 patches without the later 8 but I'd rather get=
-=0A=
->>> the whole set...=0A=
->>>=0A=
->>>=0A=
->>> -Doug=0A=
->>>=0A=
->>=0A=
->>=0A=
->> I have resend the patch set. You can find it with cover letter=0A=
->> "[PATCH v1 00/14] usb: dwc2: Fix and improve power saving modes."=0A=
->>=0A=
->> Let me know if you need any help.=0A=
->>=0A=
-> =0A=
-> I am so sorry to inform you that the patches have not reached to LKML.=0A=
-> Looks like there is a problem with the kernel mailing list servers or=0A=
-> our local servers.=0A=
-> Will try to fix this as soon as possible and let you know about it.=0A=
-> =0A=
-=0A=
-My patches has reached to LKML. You can find them with the patch set =0A=
-title "[PATCH v1 00/14] usb: dwc2: Fix and improve power saving modes."=0A=
-=0A=
-This is the link to the patch set in marc.info=0A=
-"https://marc.info/?l=3Dlinux-usb&m=3D155570003924638&w=3D2"=0A=
-and a link in patchwork.kernel.org=0A=
-"https://patchwork.kernel.org/project/linux-usb/list/?submitter=3D180003"=
-=0A=
-=0A=
-Sorry for the delay.=0A=
-=0A=
--- =0A=
-Regards,=0A=
-Artur=0A=
+hi,
+
+在 2019/4/22 下午11:23, Doug Anderson 写道:
+> Elaine,
+>
+> On Fri, Apr 12, 2019 at 9:18 AM Douglas Anderson <dianders@chromium.org> wrote:
+>> This is mostly a revert of commit 55bb6a633c33 ("clk: rockchip: mark
+>> noc and some special clk as critical on rk3288") except that we're
+>> keeping "pmu_hclk_otg0" as critical still.
+>>
+>> NOTE: turning these clocks off doesn't seem to do a whole lot in terms
+>> of power savings (checking the power on the logic rail).  It appears
+>> to save maybe 1-2mW.  ...but still it seems like we should turn the
+>> clocks off if they aren't needed.
+>>
+>> About "pmu_hclk_otg0" (the one clock from the original commit we're
+>> still keeping critical) from an email thread:
+>>
+>>> pmu ahb clock
+>>>
+>>> Function: Clock to pmu module when hibernation and/or ADP is
+>>> enabled. Must be greater than or equal to 30 MHz.
+>>>
+>>> If the SOC design does not support hibernation/ADP function, only have
+>>> hclk_otg, this clk can be switched according to the usage of otg.
+>>> If the SOC design support hibernation/ADP, has two clocks, hclk_otg and
+>>> pmu_hclk_otg0.
+>>> Hclk_otg belongs to the closed part of otg logic, which can be switched
+>>> according to the use of otg.
+>>>
+>>> pmu_hclk_otg0 belongs to the always on part.
+>>>
+>>> As for whether pmu_hclk_otg0 can be turned off when otg is not in use,
+>>> we have not tested. IC suggest make pmu_hclk_otg0 always on.
+>> For the rest of the clocks:
+>>
+>> atclk: No documentation about this clock other than that it goes to
+>> the CPU.  CPU functions fine without it on.  Maybe needed for JTAG?
+>>
+>> jtag: Presumably this clock is only needed if you're debugging with
+>> JTAG.  It doesn't seem like it makes sense to waste power for every
+>> rk3288 user.  In any case to do JTAG you'd need private patches to
+>> adjust the pinctrl the mux the JTAG out anyway.
+>>
+>> pclk_dbg, pclk_core_niu: On veyron Chromebooks we turn these two
+>> clocks on only during kernel panics in order to access some coresight
+>> registers.  Since nothing in the upstream kernel does this we should
+>> be able to leave them off safely.  Maybe also needed for JTAG?
+>>
+>> hsicphy12m_xin12m: There is no indication of why this clock would need
+>> to be turned on for boards that don't use HSIC.
+>>
+>> pclk_ddrupctl[0-1], pclk_publ0[0-1]: On veyron Chromebooks we turn
+>> these 4 clocks on only when doing DDR transitions and they are off
+>> otherwise.  I see no reason why they'd need to be on in the upstream
+>> kernel which doesn't support DDRFreq.
+>>
+>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+>> ---
+>>
+>> Changes in v2:
+>> - Now keep pmu_hclk_otg0 as critical.
+>> - Updated description since this isn't a clean revert.
+>> - PWM patches have landed, so just one patch in the series now.
+>>
+>>   drivers/clk/rockchip/clk-rk3288.c | 13 ++++---------
+>>   1 file changed, 4 insertions(+), 9 deletions(-)
+> >From previous discussions I think you're all happy with this patch
+> now, right?  Care to give it an official Reviewed-by tag?
+
+Yes.
+
+Reviewed-by: Elaine Zhang <zhangqing@rock-chips.com>
+
+>
+> -Doug
+>
+>
+>
