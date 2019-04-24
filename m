@@ -1,106 +1,78 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL 1/5] Rockchip dts32 updates for 5.2 - round 2
-Date: Wed, 24 Apr 2019 19:57:03 +0200
-Message-ID: <3379363.gjmLGbHmEH@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL 2/5] Rockchip dts64 updates for 5.2 - round 2
+Date: Wed, 24 Apr 2019 19:57:56 +0200
+Message-ID: <1566191.x5jUQ05xmK@phil>
+References: <3379363.gjmLGbHmEH@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <3379363.gjmLGbHmEH@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd, Kevin Olof,
+The following changes since commit b4e1728232d64b8040dae9b5405cf2db7ebd4e8b:
 
-please find below and in the replies round2 of Rockchip devicetree updates
-targetted at 5.2. Again nothing major but a lot of attention for the rk3288
-and a lot of general updates - Please pull.
-
-The devicetree updates (32+64 bit) go on top of the previous tags from
-round 1, while the other just go on top of 5.1-rc1 (or later of course).
-
-Thanks
-Heiko
-
-The following changes since commit 4b028ebd4e3d86c61161b3a937b746043006dcbe:
-
-  ARM: dts: rockchip: enable vop0 and hdmi nodes to rk3066a-mk808 (2019-03-31 17:28:05 +0200)
+  arm64: dts: rockchip: Decrease emmc-phy's drive impedance on rk3399-puma (2019-03-27 13:45:27 +0100)
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.2-rockchip-dts32-2
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.2-rockchip-dts64-2
 
-for you to fetch changes up to 356150e86d75653d1f679c6ef583144b26d0a686:
+for you to fetch changes up to 798689e45190756c2eca6656ee4c624370a5012a:
 
-  ARM: dts: rockchip: vdd_gpu off in suspend for rk3288-veyron (2019-04-12 22:28:38 +0200)
-
-----------------------------------------------------------------
-Much love for rk3288 in general (power coefficients for the scheduler)
-and veyron chromeos devices in particular (regulators, suspend, cleanups)
-and bulk conversion of the remaining gpios to the helper constants denoting
-the iomux.
+  arm64: dts: rockchip: fix IO domain voltage setting of APIO5 on rockpro64 (2019-04-23 23:29:08 +0200)
 
 ----------------------------------------------------------------
-Douglas Anderson (3):
-      ARM: dts: rockchip: Add DDR retention/poweroff to rk3288-veyron hogs
-      ARM: dts: rockchip: vcc33_ccd off in suspend for rk3288-veyron-chromebook
-      ARM: dts: rockchip: vdd_gpu off in suspend for rk3288-veyron
+Bulk conversion of remaining gpios to the helper constants, new peripherals
+for the rk3328-roc-cc and some minor fixes for rk3399 and rockpro64.
 
+----------------------------------------------------------------
 Heiko Stuebner (1):
-      ARM: dts: rockchip: bulk convert gpios to their constant counterparts
+      arm64: dts: rockchip: bulk convert gpios to their constant counterparts
 
-Matthias Kaehlcke (3):
-      ARM: dts: rockchip: Remove unnecessary setting of UART0 SCLK rate on veyron
-      ARM: dts: rockchip: Add BT_EN to the power sequence for veyron
-      ARM: dts: rockchip: Add dynamic-power-coefficient for rk3288
+Katsuhiro Suzuki (2):
+      arm64: dts: rockchip: fix cts, rts pin assign of UART3 for rk3399
+      arm64: dts: rockchip: fix IO domain voltage setting of APIO5 on rockpro64
 
- arch/arm/boot/dts/rk3036-kylin.dts                |  10 +-
- arch/arm/boot/dts/rk3036.dtsi                     | 136 +++++-----
- arch/arm/boot/dts/rk3066a-marsboard.dts           |   2 +-
- arch/arm/boot/dts/rk3066a-mk808.dts               |   8 +-
- arch/arm/boot/dts/rk3066a-rayeager.dts            |  26 +-
- arch/arm/boot/dts/rk3066a.dtsi                    | 180 +++++++-------
- arch/arm/boot/dts/rk3188-px3-evb.dts              |   4 +-
- arch/arm/boot/dts/rk3188-radxarock.dts            |  14 +-
- arch/arm/boot/dts/rk3188.dtsi                     | 210 ++++++++--------
- arch/arm/boot/dts/rk322x.dtsi                     | 170 ++++++-------
- arch/arm/boot/dts/rk3288-evb-act8846.dts          |   4 +-
- arch/arm/boot/dts/rk3288-evb.dtsi                 |  26 +-
- arch/arm/boot/dts/rk3288-fennec.dts               |  10 +-
- arch/arm/boot/dts/rk3288-firefly-beta.dts         |   4 +-
- arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi |  10 +-
- arch/arm/boot/dts/rk3288-firefly-reload.dts       |  36 +--
- arch/arm/boot/dts/rk3288-firefly.dts              |   4 +-
- arch/arm/boot/dts/rk3288-firefly.dtsi             |  38 +--
- arch/arm/boot/dts/rk3288-miqi.dts                 |  28 +--
- arch/arm/boot/dts/rk3288-phycore-rdk.dts          |  28 +--
- arch/arm/boot/dts/rk3288-phycore-som.dtsi         |  30 +--
- arch/arm/boot/dts/rk3288-r89.dts                  |  14 +-
- arch/arm/boot/dts/rk3288-rock2-som.dtsi           |   4 +-
- arch/arm/boot/dts/rk3288-rock2-square.dts         |  18 +-
- arch/arm/boot/dts/rk3288-tinker.dtsi              |  30 +--
- arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi |   8 +-
- arch/arm/boot/dts/rk3288-veyron-brain.dts         |   8 +-
- arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi   |  25 +-
- arch/arm/boot/dts/rk3288-veyron-jaq.dts           |  14 +-
- arch/arm/boot/dts/rk3288-veyron-jerry.dts         |  14 +-
- arch/arm/boot/dts/rk3288-veyron-mickey.dts        |   6 +-
- arch/arm/boot/dts/rk3288-veyron-mighty.dts        |   2 +-
- arch/arm/boot/dts/rk3288-veyron-minnie.dts        |  24 +-
- arch/arm/boot/dts/rk3288-veyron-pinky.dts         |   6 +-
- arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi        |  16 +-
- arch/arm/boot/dts/rk3288-veyron-speedy.dts        |  14 +-
- arch/arm/boot/dts/rk3288-veyron.dtsi              |  74 +++---
- arch/arm/boot/dts/rk3288-vyasa.dts                |   6 +-
- arch/arm/boot/dts/rk3288.dtsi                     | 290 +++++++++++-----------
- arch/arm/boot/dts/rv1108.dtsi                     | 138 +++++-----
- 40 files changed, 851 insertions(+), 838 deletions(-)
+Leonidas P. Papadakos (2):
+      arm64: dts: rockchip: eMMC additions for rk3328-roc-cc
+      arm64: dts: rockchip: enable display nodes on rk3328-roc-cc
+
+ arch/arm64/boot/dts/rockchip/px30-evb.dts          |   4 +-
+ arch/arm64/boot/dts/rockchip/rk3328-evb.dts        |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts     |  21 ++
+ arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi       |  34 +--
+ arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts    |   8 +-
+ .../arm64/boot/dts/rockchip/rk3368-lion-haikou.dts |  14 +-
+ arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi      |   8 +-
+ .../boot/dts/rockchip/rk3368-orion-r68-meta.dts    |  46 ++--
+ arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts    |   6 +-
+ arch/arm64/boot/dts/rockchip/rk3368-r88.dts        |  36 +--
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi           | 240 ++++++++--------
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts        |   6 +-
+ arch/arm64/boot/dts/rockchip/rk3399-ficus.dts      |  18 +-
+ arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts    |   2 +-
+ .../boot/dts/rockchip/rk3399-gru-chromebook.dtsi   |  14 +-
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  |   8 +-
+ .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi      |  68 ++---
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       |  56 ++--
+ arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts  |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts   |   2 +-
+ .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts |  12 +-
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      |  18 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi   |  32 +--
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts  |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi  |   4 +-
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 306 ++++++++++-----------
+ 26 files changed, 495 insertions(+), 474 deletions(-)
