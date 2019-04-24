@@ -1,7 +1,7 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 3/5] Rockchip driver updates for 5.2
-Date: Wed, 24 Apr 2019 19:58:37 +0200
-Message-ID: <1986142.cTRxNIxTfU@phil>
+Subject: [GIT PULL 4/5] Rockchip soc32 updates for 5.2
+Date: Wed, 24 Apr 2019 19:59:18 +0200
+Message-ID: <4142453.kQgcn4UVYa@phil>
 References: <3379363.gjmLGbHmEH@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -27,18 +27,22 @@ The following changes since commit 9e98c678c2d6ae3a17cb2de55d17f69dddaa231b:
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.2-rockchip-drivers-1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.2-rockchip-soc32-1
 
-for you to fetch changes up to bbdc00a7de24cc90315b1775fb74841373fe12f7:
+for you to fetch changes up to fbd7af041586a15f5dc15b9ec051d25aa5ebe00a:
 
-  soc: rockchip: Set the proper PWM for rk3288 (2019-04-11 13:40:32 +0200)
+  ARM: rockchip: add missing of_node_put in rockchip_smp_prepare_pmu (2019-04-23 19:52:37 +0200)
 
 ----------------------------------------------------------------
-Select correct pwm solution by default.
+Missing of_node_put and some added __init contants.
 
 ----------------------------------------------------------------
 Douglas Anderson (1):
-      soc: rockchip: Set the proper PWM for rk3288
+      ARM: rockchip: Mark pm-init functions __init
 
- drivers/soc/rockchip/grf.c | 2 ++
- 1 file changed, 2 insertions(+)
+Wen Yang (1):
+      ARM: rockchip: add missing of_node_put in rockchip_smp_prepare_pmu
+
+ arch/arm/mach-rockchip/platsmp.c | 1 +
+ arch/arm/mach-rockchip/pm.c      | 4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
