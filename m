@@ -1,89 +1,108 @@
-From: Jack Mitchell <ml@embed.me.uk>
-Subject: Re: [PATCH] Makefile.spl: Create u-boot-spl-rockchip.bin
- for rk3399
-Date: Thu, 25 Apr 2019 21:09:03 +0100
-Message-ID: <3fe502b6-a5b8-29f3-b079-34f7f8921749@embed.me.uk>
-References: <20190425175431.15370-1-jagan@amarulasolutions.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] mmc: dw_mmc: Disable SDIO interrupts while suspended to
+ fix suspend/resume
+Date: Thu, 25 Apr 2019 14:24:56 -0700
+Message-ID: <CAD=FV=UW6d2QHzxx-Vtr+WwC1dkpUfCjxCLnfaP5S2UQxRh1oQ@mail.gmail.com>
+References: <20190410221237.160856-1-dianders@chromium.org> <CANBLGcwmNowj9GSmE3bbo1t1o6EF8q-RiJftfdOQnJB9_8aSKg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20190425175431.15370-1-jagan@amarulasolutions.com>
-Content-Language: en-BW
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, Akash Gajjar <akash@openedev.com>
-Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CANBLGcwmNowj9GSmE3bbo1t1o6EF8q-RiJftfdOQnJB9_8aSKg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Emil Renner Berthing <emil.renner.berthing-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Linux MMC List <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ryan Case <ryandcase-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiAyNS8wNC8yMDE5IDE4OjU0LCBKYWdhbiBUZWtpIHdyb3RlOgo+IFJvY2tjaGlwIHBs
-YXRmb3JtIHdvdWxkIHJlcXVpcmUgYW4gZXhwbGljaXQgY2FsbCB0byBta2ltYWdlIGZvcgo+IGNy
-ZWF0aW5nIGJvb3RhYmxlIGltYWdlcyB3aGljaCBpbmRlZWQgc3BlY2lmaWMgdG8gU29DIGZhbWls
-eQo+IGFsb25nIHdpdGggYm9vdCBkZXZpY2VzLgo+IAo+IEV4YW1wbGUgb2YgY3JlYXRpbmcgYm9v
-dGFibGUgaW1hZ2UgZm9yIHJrMzM5OSBmYW1pbHkgd2l0aCBTRAo+IGJvb3QgZGV2aWNlIGFzCj4g
-Cj4g4oK5IG1raW1hZ2UgLW4gcmszMzk5IC1UIHJrc2QgLWQgLi9zcGwvdS1ib290LXNwbC1kdGIu
-YmluIHUtYm9vdC1zcGwtcm9ja2NoaXAuYmluCj4gCj4gVGhpcyBwYXRjaCB3b3VsZCBkbyB0aGUg
-c2FtZSB0aGluayB2aWEgTWFrZWZpbGUuc3BsIGZvciByazMzOTkuCj4gCj4gVGhpcyB3b3VsZCBi
-ZSBhbiBpbml0aWFsIHZlcnNpb24gYW5kIGl0IGNhbiBlYXNpbHkgZXhwYW5kIGZ1cnRoZXIgdG8g
-c3VwcG9ydAo+IG90aGVyIGZhbWlsaWVzIG9mIFNvQydzIHdpdGggdmFyaWV0eSBvZiBib290IHN0
-YWdlcyBsaWtlIFRQTCwgU1BMLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRla2kgPGphZ2Fu
-QGFtYXJ1bGFzb2x1dGlvbnMuY29tPgo+IC0tLQo+ICBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tj
-b25maWcgfCAgOCArKysrKysrKwo+ICBkb2MvUkVBRE1FLnJvY2tjaGlwICAgICAgICAgICAgfCAg
-MyArLS0KPiAgc2NyaXB0cy9NYWtlZmlsZS5zcGwgICAgICAgICAgIHwgMjEgKysrKysrKysrKysr
-KysrKysrKysrCj4gIDMgZmlsZXMgY2hhbmdlZCwgMzAgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlv
-bnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9LY29uZmlnIGIv
-YXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9LY29uZmlnCj4gaW5kZXggZGJlN2YxMWQzOS4uMjg2Yzg3
-MDEzNSAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcKPiArKysg
-Yi9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcKPiBAQCAtMjIyLDYgKzIyMiwxNCBAQCBj
-b25maWcgUk9DS0NISVBfU1BMX1JFU0VSVkVfSVJBTQo+ICBjb25maWcgUk9DS0NISVBfQlJPTV9I
-RUxQRVIKPiAgCWJvb2wKPiAgCj4gK2NvbmZpZyBTUExfUk9DS0NISVBfSU1HX05BTUUKPiArCXN0
-cmluZyAiU1BMIFJvY2tjaGlwIGltYWdlIG5hbWUiCj4gKwlkZWZhdWx0ICJyazMzOTkiIGlmIFJP
-Q0tDSElQX1JLMzM5OQo+ICsJaGVscAo+ICsJICBUbyBjcmVhdGUgU1BMIGltYWdlIGZvciByb2Nr
-Y2hpcCB0YXJnZXRzIHRoZSBpbWFnZSBuYW1lIHdvdWxkCj4gKwkgIGRlcGVuZHMgb24gdGhlIFNv
-QyBmYW1pbHkgdGhhdCB3b3VsZCBwYXNzIGFzIGFuIGFyZ3VtZW50IGFzCj4gKwkgICctbiByazMz
-OTknIHRvIG1raW1hZ2UgZm9yIGNyZWF0aW5nIFJvY2tjaGlwIFNQTCBib290IGltYWdlLgo+ICsK
-PiAgY29uZmlnIFNQTF9ST0NLQ0hJUF9FQVJMWVJFVFVSTl9UT19CUk9NCj4gICAgICAgICAgYm9v
-bCAiU1BMIHJlcXVpcmVzIGVhcmx5LXJldHVybiAoZm9yIFJLMzE4OC1zdHlsZSBCUk9NKSB0byBC
-Uk9NIgo+ICAJZGVwZW5kcyBvbiBTUEwgJiYgRU5BQkxFX0FSTV9TT0NfQk9PVDBfSE9PSwo+IGRp
-ZmYgLS1naXQgYS9kb2MvUkVBRE1FLnJvY2tjaGlwIGIvZG9jL1JFQURNRS5yb2NrY2hpcAo+IGlu
-ZGV4IGU4ZjZhMmRmYmEuLjYzNDFmNDdiMjEgMTAwNjQ0Cj4gLS0tIGEvZG9jL1JFQURNRS5yb2Nr
-Y2hpcAo+ICsrKyBiL2RvYy9SRUFETUUucm9ja2NoaXAKPiBAQCAtMzk5LDExICszOTksMTAgQEAg
-T3B0aW9uIDI6IFBhY2thZ2UgdGhlIGltYWdlIHdpdGggU1BMOgo+ICAgIC0gUHJlZml4IHJrMzM5
-OSBoZWFkZXIgdG8gU1BMIGltYWdlCj4gIAo+ICAgICAgPT4gY2QgL3BhdGgvdG8vdS1ib290Cj4g
-LSAgICA9PiAuL3Rvb2xzL21raW1hZ2UgLW4gcmszMzk5IC1UIHJrc2QgLWQgc3BsL3UtYm9vdC1z
-cGwtZHRiLmJpbiBvdXQKPiAgCj4gICAgLSBXcml0ZSBwcmVmaXhlZCBTUEwgYXQgNjR0aCBzZWN0
-b3IKPiAgCj4gLSAgICA9PiBzdWRvIGRkIGlmPW91dCBvZj0vZGV2L3NkYyBzZWVrPTY0Cj4gKyAg
-ICA9PiBzdWRvIGRkIGlmPXNwbC91LWJvb3Qtc3BsLXJvY2tjaGlwLmR0YiBvZj0vZGV2L3NkYyBz
-ZWVrPTY0Cgp1LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbj8KClJlZ2FyZHMsCkphY2suCgo+ICAKPiAg
-ICAtIFdyaXRlIFUtQm9vdCBwcm9wZXIgYXQgMTYzODQgc2VjdG9yCj4gIAo+IGRpZmYgLS1naXQg
-YS9zY3JpcHRzL01ha2VmaWxlLnNwbCBiL3NjcmlwdHMvTWFrZWZpbGUuc3BsCj4gaW5kZXggNTRi
-MTYwZDcyYi4uNDljMDY0MWFhMiAxMDA2NDQKPiAtLS0gYS9zY3JpcHRzL01ha2VmaWxlLnNwbAo+
-ICsrKyBiL3NjcmlwdHMvTWFrZWZpbGUuc3BsCj4gQEAgLTIzNSw2ICsyMzUsMTAgQEAgQUxMLSQo
-Q09ORklHX0FSQ0hfWllOUU1QKQkrPSAkKG9iaikvYm9vdC5iaW4KPiAgCj4gIEFMTC0kKENPTkZJ
-R19BUkNIX01FRElBVEVLKQkrPSAkKG9iaikvdS1ib290LXNwbC1tdGsuYmluCj4gIAo+ICtpZmRl
-ZiBDT05GSUdfUk9DS0NISVBfUkszMzk5Cj4gK0FMTC0kKENPTkZJR19BUkNIX1JPQ0tDSElQKQkr
-PSAkKG9iaikvdS1ib290LXNwbC1yb2NrY2hpcC5iaW4KPiArZW5kaWYKPiArCj4gIGFsbDoJJChB
-TEwteSkKPiAgCj4gIHF1aWV0X2NtZF9jYXQgPSBDQVQgICAgICRACj4gQEAgLTM2OSw2ICszNzMs
-MjMgQEAgTUtJTUFHRUZMQUdTX3UtYm9vdC1zcGwtbXRrLmJpbiA9IC1UIG10a19pbWFnZSBcCj4g
-ICQob2JqKS91LWJvb3Qtc3BsLW10ay5iaW46ICQob2JqKS91LWJvb3Qtc3BsLmJpbiBGT1JDRQo+
-ICAJJChjYWxsIGlmX2NoYW5nZWQsbWtpbWFnZSkKPiAgCj4gKyMgUm9ja2NoaXAgc3BlY2lmaWMg
-U1BMIGJ1aWxkCj4gK2lmZXEgKCQoQ09ORklHX1JPQ0tDSElQX1JLMzM5OSkseSkKPiArCj4gK2lm
-ZXEgKCQoQ09ORklHX1NQSV9GTEFTSF9TVVBQT1JUKSx5KQo+ICtST0NLQ0hJUF9JTUdfVFlQRSA6
-PSBya3NwaQo+ICtlbHNlCj4gK1JPQ0tDSElQX0lNR19UWVBFIDo9IHJrc2QKPiArZW5kaWYKPiAr
-Cj4gK01LSU1BR0VGTEFHU191LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbiA9IC1uICQoQ09ORklHX1NQ
-TF9ST0NLQ0hJUF9JTUdfTkFNRSkgXAo+ICsJLVQgJChST0NLQ0hJUF9JTUdfVFlQRSkgLWQgJChN
-S0lNQUdFT1VUUFVUKQo+ICsKPiArJChvYmopL3UtYm9vdC1zcGwtcm9ja2NoaXAuYmluOiAkKG9i
-aikvdS1ib290LXNwbC5iaW4gRk9SQ0UKPiArCSQoY2FsbCBpZl9jaGFuZ2VkLG1raW1hZ2UpCj4g
-Kwo+ICtlbmRpZiAjIENPTkZJR19ST0NLQ0hJUF9SSzMzOTkKPiArCj4gICMgUnVsZSB0byBsaW5r
-IHUtYm9vdC1zcGwKPiAgIyBNYXkgYmUgb3ZlcnJpZGRlbiBieSBhcmNoLyQoQVJDSCkvY29uZmln
-Lm1rCj4gIHF1aWV0X2NtZF91LWJvb3Qtc3BsID89IExEICAgICAgJEAKPiAKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApV
-LUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290
-Cg==
+Hi,
+
+On Wed, Apr 24, 2019 at 1:19 AM Emil Renner Berthing
+<emil.renner.berthing-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>
+> Hi Douglas,
+>
+> Unfortunately this seems to beak resume on my rk3399-gru-kevin. I have
+> a semi-complicated setup with my rootfs as a btrfs on dmcrypt on
+> mmcblk0 which is the dw_mmc, so I'm guessing something goes wrong when
+> waking up the dm_mmc which probably wasn't suspended before this
+> patch. It's not 100% consistent though. Sometimes I see it resume the
+> first time I try suspending, but then 2nd time I suspend it won't come
+> back.
+
+Thanks for testing!
+
+Can you give me more details about your kernel version?  Any local
+patches?  What config are you using?
+
+I tried booting up my rk3388-gru-kevin on the Chrome OS 4.19 kernel (I
+know, not quite fully upstream, but linuxnext just crashed upon boot
+for me when I tried it).  I have this patch in place and I booted from
+SD card.  I ran a Chrome OS tool which will test 20 cycles of
+suspend/resume (uses the RTC to schedule a wakeup):
+
+suspend_stress_test -c20 --suspend_min=15 --suspend_max=20
+
+...and I didn't see failures.
+
+...so I'm pretty baffled.  On rk3399-gru-kevin you should have no SDIO
+devices unless you've managed to cram an SDIO card into your micro SD
+slot.  Specifically WiFi is connected via PCIE.
+
+As I wrote Shawn, I'm pretty sure my patch is a effectively a no-op in
+these cases.  "client_sdio_enb" should always be 0 and thus runtime
+suspend and resume should just be:
+
+spin_lock_irqsave(&host->irq_lock, irqflags);
+int_mask = mci_readl(host, INTMASK);
+mci_writel(host, INTMASK, int_mask);
+spin_unlock_irqrestore(&host->irq_lock, irqflags);
+
+...other than changing the timing slightly that shouldn't do anything at all.
+
+
+My first guess is that this patch is your (un)lucky shirt, as in
+"every time I wear my lucky shirt I win at slots in Las Vegas".  Since
+the problem you're seeing doesn't happen every time I'm going to guess
+that you got lucky in that it seemed to go away when you reverted my
+patch.
+
+
+> Let me know if I can do something to help debug this.
+
+Assuming the failure and this patch aren't just correlated by luck...
+
+Logs would be a start.  If you don't have serial console then
+hopefully you've got console-ramoops working?  Then if it's wedged you
+can do the warmest reset you can (Alt-topRowVolUp-R) and hopefully the
+ramoops will give you some logs.
+
+Presumably you could also add some logs to double-check that all my
+assertions are true.  That is:
+
+1. host->client_sdio_enb should always be false in __dw_mci_enable_sdio_irq()
+
+2. In __dw_mci_enable_sdio_irq() confirm that the int_mask we are
+writing is the same as the one we're reading.  AKA the "if (enb) ...
+else ..." makes no change to the value of int_mask.
+
+
+Assuming my assertions are correct then pretty much everything is
+_supposed_ to be a no-op on your system, so you can start gutting
+things one at a time and see when the problem goes away:
+
+a) Delete the call from suspend.  Does it fix it?
+
+b) Delete the call from resume.  Does it fix it?
+
+c) Delete parts of __dw_mci_enable_sdio_irq().  Get rid of the
+mci_wirtel().  Does it fix it?  What about if you get rid of the read
+and the write and just have the spinlock?
+
+===
+
+If I can help with real-time debugging let me know.  I'm in California
+time zone and can be found as dianders in the #linux-rockchip channel
+on freenode.
+
+
+
+-Doug
