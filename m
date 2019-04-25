@@ -1,74 +1,68 @@
-From: Felipe Balbi <felipe.balbi@linux.intel.com>
-Subject: Re: [PATCH v2 4/5] USB: dwc2: Don't turn off the usbphy in suspend if wakeup is enabled
-Date: Thu, 25 Apr 2019 15:41:50 +0300
-Message-ID: <87mukes1dd.fsf@linux.intel.com>
-References: <20190418001356.124334-1-dianders@chromium.org> <20190418001356.124334-5-dianders@chromium.org>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] usb: dwc2: Fix phy_reset_work compile error for peripheral-only config
+Date: Thu, 25 Apr 2019 08:40:20 -0700
+Message-ID: <20190425154021.4465-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-        micalg=pgp-sha256; protocol="application/pgp-signature"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190418001356.124334-5-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Minas Harutyunyan <hminas@synopsys.com>, heiko@sntech.de
-Cc: Alan Stern <stern@rowland.harvard.edu>, Artur Petrosyan <Arthur.Petrosyan@synopsys.com>, amstan@chromium.org, linux-rockchip@lists.infradead.org, William Wu <william.wu@rock-chips.com>, linux-usb@vger.kernel.org, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, zyw@rock-chips.com, mka@chromium.org, ryandcase@chromium.org, Amelie Delaunay <amelie.delaunay@st.com>, jwerner@chromium.org, dinguyen@opensource.altera.com, Elaine Zhang <zhangqing@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org
+To: Minas Harutyunyan <hminas@synopsys.com>, Felipe Balbi <felipe.balbi@linux.intel.com>
+Cc: Artur Petrosyan <Arthur.Petrosyan@synopsys.com>, amstan@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, Randy Li <ayaka@soulik.info>, mka@chromium.org, ryandcase@chromium.org, jwerner@chromium.org, Elaine Zhang <zhangqing@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, kbuild test robot <lkp@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+In commit a0a493835f9a ("usb: dwc2: optionally assert phy reset when
+waking up") I added to code that is compiled in both the host and
+peripheral configs but it referenced a structure member that I added
+to a section that was only there for host or dual-mode configs.  That
+led to the compile error:
 
-Douglas Anderson <dianders@chromium.org> writes:
+>> drivers/usb/dwc2/core_intr.c:448:25: error: 'struct dwc2_hsotg' has no member named 'phy_reset_work'
 
-> If the 'snps,need-phy-for-wake' is set in the device tree then:
->
-> - We know that we can wakeup, so call device_set_wakeup_capable().
->   The USB core will use this knowledge to enable wakeup by default.
-> - We know that we should keep the PHY on during suspend if something
->   on our root hub needs remote wakeup.  This requires the patch (USB:
->   Export usb_wakeup_enabled_descendants()).  Note that we don't keep
->   the PHY on at suspend time if it's not needed because it would be a
->   power draw.
->
-> If we later find some users of dwc2 that can support wakeup without
-> keeping the PHY on we may want to add a way to call
-> device_set_wakeup_capable() without keeping the PHY on at suspend
-> time.
->
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+We'll add a little helper function to schedule the work and then we
+can have a dummy version of that helper in peripheral-only mode.
 
-checking file drivers/usb/dwc2/core.h
-Hunk #1 FAILED at 861.
-Hunk #2 FAILED at 1049.
-2 out of 2 hunks FAILED
-checking file drivers/usb/dwc2/platform.c
-Hunk #3 FAILED at 487.
-Hunk #4 succeeded at 513 (offset -9 lines).
-Hunk #5 succeeded at 543 (offset -9 lines).
-Hunk #6 succeeded at 556 (offset -9 lines).
-1 out of 6 hunks FAILED
+Fixes: a0a493835f9a ("usb: dwc2: optionally assert phy reset when waking up")
+Reported-by: kbuild test robot <lkp@intel.com>
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
 
+ drivers/usb/dwc2/core.h      | 3 +++
+ drivers/usb/dwc2/core_intr.c | 2 +-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
 
-=2D-=20
-balbi
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEElLzh7wn96CXwjh2IzL64meEamQYFAlzBqw4ACgkQzL64meEa
-mQbVCxAApSaX0S5csF9prSld7aWLI8sHAR7AKO7ORr1SGmtZrsW/68If6MgGPheM
-GRpQpq+UhyxqXnwUm3jcn+DXWaYC4p1K0r/SCksJRiUiF1CaxW46IH7fuCtYLqcD
-SQWTEg6Co8rpLXNe6YWAiGiT1Z1cFyL2CFZKiy6jn5yN3jd3nIpbGs4gFpc0GAzp
-mm1RJL1iSkuuDKm8+SlAcLAxxn/l2ARFMthzVvDSvwcFUmhpZyK15KkH5NFBZuEX
-m+aIz75H2Cd7hwhOvKiV+3UahD6VlOBV9Va8GaQv5MHsm3Cris7L2+PzUK6289BK
-slOQyh/X5xSPyixnbQ7ytEgC9+h4mgSwHJAdbTfkU1GHSvse/DhkKF9lLM7AcaRh
-EdF2MdIeeyqyHx0OrdMvoBGWHhy2m8C04dW2+YBKeIFEwhfZkPkw1SvIwpo7f8It
-ffTghKVOjYaK/TbR5ohAesqo+/yKmG+GgmfQZlcQ6sFALVBxmj+aaFSMo6R125j8
-CvH3zVfXYsgnz4iYcKkz1VXyddu0NDD0Ml6A1L7pq1dwxINaukkk68QyC9euMAF0
-SdsGIGIWl20/2tDKjtkTzIdRujTnDPbNqiiOyMviQvo30KxZcfNMPzMtV96MJ13U
-X5PjJyRNxe4yULEUuXrnGCvTwD/mIif/3OJfh6n0SW28cD2A/dA=
-=+55D
------END PGP SIGNATURE-----
---=-=-=--
+diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
+index 6698c7097499..152ac41dfb2d 100644
+--- a/drivers/usb/dwc2/core.h
++++ b/drivers/usb/dwc2/core.h
+@@ -1438,6 +1438,8 @@ int dwc2_restore_host_registers(struct dwc2_hsotg *hsotg);
+ int dwc2_host_enter_hibernation(struct dwc2_hsotg *hsotg);
+ int dwc2_host_exit_hibernation(struct dwc2_hsotg *hsotg,
+ 			       int rem_wakeup, int reset);
++static inline void dwc2_host_schedule_phy_reset(struct dwc2_hsotg *hsotg)
++{ schedule_work(&hsotg->phy_reset_work); }
+ #else
+ static inline int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
+ { return 0; }
+@@ -1461,6 +1463,7 @@ static inline int dwc2_host_enter_hibernation(struct dwc2_hsotg *hsotg)
+ static inline int dwc2_host_exit_hibernation(struct dwc2_hsotg *hsotg,
+ 					     int rem_wakeup, int reset)
+ { return 0; }
++static inline void dwc2_host_schedule_phy_reset(struct dwc2_hsotg *hsotg) {}
+ 
+ #endif
+ 
+diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
+index 16ff33574116..6af6add3d4c0 100644
+--- a/drivers/usb/dwc2/core_intr.c
++++ b/drivers/usb/dwc2/core_intr.c
+@@ -445,7 +445,7 @@ static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
+ 			 * schedule it for later.
+ 			 */
+ 			if (hsotg->reset_phy_on_wake)
+-				schedule_work(&hsotg->phy_reset_work);
++				dwc2_host_schedule_phy_reset(hsotg);
+ 
+ 			mod_timer(&hsotg->wkp_timer,
+ 				  jiffies + msecs_to_jiffies(71));
+-- 
+2.21.0.593.g511ec345e18-goog
