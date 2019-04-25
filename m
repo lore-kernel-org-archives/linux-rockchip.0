@@ -1,53 +1,84 @@
-From: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: Re: [PATCH] mwifiex: Make resume actually do something useful again
- on SDIO cards
-Date: Thu, 25 Apr 2019 11:05:51 +0000 (UTC)
-Message-ID: <20190425110551.6B4006074F@smtp.codeaurora.org>
-References: <20190404040106.40519-1-dianders@chromium.org>
+From: Felipe Balbi <felipe.balbi@linux.intel.com>
+Subject: Re: [PATCH v2 3/5] Documentation: dt-bindings: Add snps,need-phy-for-wake for dwc2 USB
+Date: Thu, 25 Apr 2019 15:40:18 +0300
+Message-ID: <87pnpas1fx.fsf@linux.intel.com>
+References: <20190418001356.124334-1-dianders@chromium.org> <20190418001356.124334-4-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190404040106.40519-1-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Ganapathi Bhat <gbhat-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Xinming Hu <huxinming820-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Amitkumar Karwar <amitkarwar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Nishant Sarmukadam <nishants-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, ryandcase-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
+Content-Type: multipart/signed; boundary="=-=-=";
+        micalg=pgp-sha256; protocol="application/pgp-signature"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190418001356.124334-4-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Minas Harutyunyan <hminas@synopsys.com>, heiko@sntech.de
+Cc: Alan Stern <stern@rowland.harvard.edu>, Artur Petrosyan <Arthur.Petrosyan@synopsys.com>, amstan@chromium.org, linux-rockchip@lists.infradead.org, William Wu <william.wu@rock-chips.com>, linux-usb@vger.kernel.org, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, zyw@rock-chips.com, mka@chromium.org, ryandcase@chromium.org, Amelie Delaunay <amelie.delaunay@st.com>, jwerner@chromium.org, dinguyen@opensource.altera.com, Elaine Zhang <zhangqing@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-> The commit fc3a2fcaa1ba ("mwifiex: use atomic bitops to represent
-> adapter status variables") had a fairly straightforward bug in it.  It
-> contained this bit of diff:
-> 
->  - if (!adapter->is_suspended) {
->  + if (test_bit(MWIFIEX_IS_SUSPENDED, &adapter->work_flags)) {
-> 
-> As you can see the patch missed the "!" when converting to the atomic
-> bitops.  This meant that the resume hasn't done anything at all since
-> that commit landed and suspend/resume for mwifiex SDIO cards has been
-> totally broken.
-> 
-> After fixing this mwifiex suspend/resume appears to work again, at
-> least with the simple testing I've done.
-> 
-> Fixes: fc3a2fcaa1ba ("mwifiex: use atomic bitops to represent adapter status variables")
-> Cc: <stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Douglas Anderson <dianders@chromium.org> writes:
 
-Patch applied to wireless-drivers.git, thanks.
+> Some SoCs with a dwc2 USB controller may need to keep the PHY on to
+> support remote wakeup.  Allow specifying this as a device tree
+> property.
+>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+> For relevant prior discussion on this patch, see:
+>
+> https://lkml.kernel.org/r/1435017144-2971-3-git-send-email-dianders@chrom=
+ium.org
+>
+> I didn't make any changes from the prior version since I never found
+> out what Rob thought of my previous arguments.  If folks want a
+> change, perhaps they could choose from these options:
+>
+> 1. Assume that all dwc2 hosts would like to keep their PHY on for
+>    suspend if there's a USB wakeup enabled, thus we totally drop this
+>    binding.  This doesn't seem super great to me since I'd bet that
+>    many devices that use dwc2 weren't designed for USB wakeup (they
+>    may not keep enough clocks or rails on) so we might be wasting
+>    power for nothing.
+> 2. Rename this property to "snps,wakeup-from-suspend-with-phy" to make
+>    it more obvious that this property is intended both to document
+>    that wakeup from suspend is possible and that we need the PHY for
+>    said wakeup.
+> 3. Rename this property to "snps,can-wakeup-from-suspend" and assume
+>    it's implicit that if we can wakeup from suspend that we need to
+>    keep the PHY on.  If/when someone shows that a device exists using
+>    dwc2 where we can wakeup from suspend without the PHY they can add
+>    a new property.
+>
+> Changes in v2: None
+>
+>  Documentation/devicetree/bindings/usb/dwc2.txt | 3 +++
+>  1 file changed, 3 insertions(+)
 
-b82d6c1f8f82 mwifiex: Make resume actually do something useful again on SDIO cards
+checking file Documentation/devicetree/bindings/usb/dwc2.txt
+Hunk #1 FAILED at 37.
+Hunk #2 succeeded at 52 (offset -1 lines).
+1 out of 2 hunks FAILED
+=2D-=20
+balbi
 
--- 
-https://patchwork.kernel.org/patch/10884883/
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEElLzh7wn96CXwjh2IzL64meEamQYFAlzBqrIACgkQzL64meEa
+mQYE0w//cCr/Wc2ZD2abiUr+FHaO2iz3BvODX3EHdzur4BMpo/KZK9JnKw4m4RUa
+L0qSu3RYrcbBW0h/zU+cy41VXKz+WBMJVgpl3TWUJ4AiTLrfQHzDNLvEXssyukkd
+t3xocK2DAbDh6IMBriCDFsogXcLAuEQmPiuXZmj7fEtdFqymdCuFDijqT7GNCHNq
+toCH4ajwUlvtjWbutwAUEl+o4Hq91nQqyZfKRhHu6Q43fLXyqQzHdDFKn041J7+f
+5bxgb3TGihobUYBNX2cGRgJBXl36fn1E+PlhFIBk7e8/09ZmF+oQaP6eU1n+jbkC
+S2BSNRO2+Cvnnylp7XTrj88QUyNv+hqiSC3lkmWoyE7IbP7LphW0K0J8h0t70P0t
+yg+7/HG1m/AhJxSSrBqUXtHdgJeCBoLjOZgRzdNccDS4vzJVId8hsZX17und9Xmg
+UCuHgLwrF+69vqD4HgVBWhFlh/BawSwgxOmih/VskGPoVIObtyxCqKqflPoEiAYT
+DtF0S6fWKk0Ko+BfCaPTg548QecBuu3uo4DO0XOu3GaYAraV9Sn2VkoJYXTDF+ny
+lv5+dRw+cY3c7UVgg41kd7Tq1Hbhuuv/IFmIg1yR1qY0gSGuLOjEYKjooa4cIblB
+AE63sGvm4y81n9AChloTq4x3NabubgLpcr8GCFuSUiDz+zwHiiY=
+=tY5t
+-----END PGP SIGNATURE-----
+--=-=-=--
