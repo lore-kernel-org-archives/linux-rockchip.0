@@ -1,7 +1,7 @@
 From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v4 01/21] rockchip/vpu: Use pixel format helpers
-Date: Thu, 25 Apr 2019 09:12:22 +0200
-Message-ID: <20190425071242.18315-2-boris.brezillon@collabora.com>
+Subject: [PATCH v4 03/21] rockchip/vpu: Cleanup macroblock alignment
+Date: Thu, 25 Apr 2019 09:12:24 +0200
+Message-ID: <20190425071242.18315-4-boris.brezillon@collabora.com>
 References: <20190425071242.18315-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -23,8 +23,8 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 
-Now that we've introduced the pixel format helpers, use them
-in vpu driver, and get rid of the internal helpers.
+We need to make the macrobock alignment generic, in order
+to support multiple codecs.
 
 Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
@@ -35,124 +35,60 @@ Changes from v3:
 Changes from v2:
 * None
 ---
- .../media/rockchip/vpu/rockchip_vpu_enc.c     | 91 +------------------
- 1 file changed, 2 insertions(+), 89 deletions(-)
+ .../media/rockchip/vpu/rockchip_vpu_enc.c     | 20 ++++++++-----------
+ 1 file changed, 8 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
-index fb5e36aedd8c..4451bb2dc3d7 100644
+index 4451bb2dc3d7..ae1ff3d9b9d2 100644
 --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
 +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
-@@ -30,93 +30,6 @@
- #include "rockchip_vpu_hw.h"
- #include "rockchip_vpu_common.h"
+@@ -203,8 +203,8 @@ vidioc_try_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ 			       fmt->frmsize.min_height,
+ 			       fmt->frmsize.max_height);
+ 	/* Round up to macroblocks. */
+-	pix_mp->width = round_up(pix_mp->width, JPEG_MB_DIM);
+-	pix_mp->height = round_up(pix_mp->height, JPEG_MB_DIM);
++	pix_mp->width = round_up(pix_mp->width, fmt->frmsize.step_width);
++	pix_mp->height = round_up(pix_mp->height, fmt->frmsize.step_height);
  
--/**
-- * struct v4l2_format_info - information about a V4L2 format
-- * @format: 4CC format identifier (V4L2_PIX_FMT_*)
-- * @header_size: Size of header, optional and used by compressed formats
-- * @num_planes: Number of planes (1 to 3)
-- * @cpp: Number of bytes per pixel (per plane)
-- * @hsub: Horizontal chroma subsampling factor
-- * @vsub: Vertical chroma subsampling factor
-- * @is_compressed: Is it a compressed format?
-- * @multiplanar: Is it a multiplanar variant format? (e.g. NV12M)
-- */
--struct rockchip_vpu_v4l2_format_info {
--	u32 format;
--	u32 header_size;
--	u8 num_planes;
--	u8 cpp[3];
--	u8 hsub;
--	u8 vsub;
--	u8 is_compressed;
--	u8 multiplanar;
--};
--
--static const struct rockchip_vpu_v4l2_format_info *
--rockchip_vpu_v4l2_format_info(u32 format)
--{
--	static const struct rockchip_vpu_v4l2_format_info formats[] = {
--		{ .format = V4L2_PIX_FMT_YUV420M,	.num_planes = 3, .cpp = { 1, 1, 1 }, .hsub = 2, .vsub = 2, .multiplanar = 1 },
--		{ .format = V4L2_PIX_FMT_NV12M,		.num_planes = 2, .cpp = { 1, 2, 0 }, .hsub = 2, .vsub = 2, .multiplanar = 1 },
--		{ .format = V4L2_PIX_FMT_YUYV,		.num_planes = 1, .cpp = { 2, 0, 0 }, .hsub = 2, .vsub = 1 },
--		{ .format = V4L2_PIX_FMT_UYVY,		.num_planes = 1, .cpp = { 2, 0, 0 }, .hsub = 2, .vsub = 1 },
--	};
--	unsigned int i;
--
--	for (i = 0; i < ARRAY_SIZE(formats); ++i) {
--		if (formats[i].format == format)
--			return &formats[i];
--	}
--
--	vpu_err("Unsupported V4L 4CC format (%08x)\n", format);
--	return NULL;
--}
--
--static void
--fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
--	       int pixelformat, int width, int height)
--{
--	const struct rockchip_vpu_v4l2_format_info *info;
--	struct v4l2_plane_pix_format *plane;
--	int i;
--
--	info = rockchip_vpu_v4l2_format_info(pixelformat);
--	if (!info)
--		return;
--
--	pixfmt->width = width;
--	pixfmt->height = height;
--	pixfmt->pixelformat = pixelformat;
--
--	if (!info->multiplanar) {
--		pixfmt->num_planes = 1;
--		plane = &pixfmt->plane_fmt[0];
--		plane->bytesperline = info->is_compressed ?
--					0 : width * info->cpp[0];
--		plane->sizeimage = info->header_size;
--		for (i = 0; i < info->num_planes; i++) {
--			unsigned int hsub = (i == 0) ? 1 : info->hsub;
--			unsigned int vsub = (i == 0) ? 1 : info->vsub;
--
--			plane->sizeimage += info->cpp[i] *
--				DIV_ROUND_UP(width, hsub) *
--				DIV_ROUND_UP(height, vsub);
--		}
--	} else {
--		pixfmt->num_planes = info->num_planes;
--		for (i = 0; i < info->num_planes; i++) {
--			unsigned int hsub = (i == 0) ? 1 : info->hsub;
--			unsigned int vsub = (i == 0) ? 1 : info->vsub;
--
--			plane = &pixfmt->plane_fmt[i];
--			plane->bytesperline =
--				info->cpp[i] * DIV_ROUND_UP(width, hsub);
--			plane->sizeimage =
--				plane->bytesperline * DIV_ROUND_UP(height, vsub);
--		}
--	}
--}
--
- static const struct rockchip_vpu_fmt *
- rockchip_vpu_find_format(struct rockchip_vpu_ctx *ctx, u32 fourcc)
- {
-@@ -339,7 +252,7 @@ vidioc_try_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
- 	height = round_up(height, JPEG_MB_DIM);
+ 	/*
+ 	 * For compressed formats the application can specify
+@@ -248,8 +248,8 @@ vidioc_try_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ 		       ctx->vpu_dst_fmt->frmsize.min_height,
+ 		       ctx->vpu_dst_fmt->frmsize.max_height);
+ 	/* Round up to macroblocks. */
+-	width = round_up(width, JPEG_MB_DIM);
+-	height = round_up(height, JPEG_MB_DIM);
++	width = round_up(width, ctx->vpu_dst_fmt->frmsize.step_width);
++	height = round_up(height, ctx->vpu_dst_fmt->frmsize.step_height);
  
  	/* Fill remaining fields */
--	fill_pixfmt_mp(pix_mp, fmt->fourcc, width, height);
-+	v4l2_fill_pixfmt_mp(pix_mp, fmt->fourcc, width, height);
+ 	v4l2_fill_pixfmt_mp(pix_mp, fmt->fourcc, width, height);
+@@ -338,10 +338,8 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ 	ctx->dst_fmt.height = pix_mp->height;
  
- 	for (i = 0; i < pix_mp->num_planes; i++) {
- 		memset(pix_mp->plane_fmt[i].reserved, 0,
-@@ -393,7 +306,7 @@ void rockchip_vpu_enc_reset_src_fmt(struct rockchip_vpu_dev *vpu,
- 	fmt->quantization = V4L2_QUANTIZATION_DEFAULT;
- 	fmt->xfer_func = V4L2_XFER_FUNC_DEFAULT;
- 
--	fill_pixfmt_mp(fmt, ctx->vpu_src_fmt->fourcc, width, height);
-+	v4l2_fill_pixfmt_mp(fmt, ctx->vpu_src_fmt->fourcc, width, height);
+ 	vpu_debug(0, "OUTPUT codec mode: %d\n", ctx->vpu_src_fmt->codec_mode);
+-	vpu_debug(0, "fmt - w: %d, h: %d, mb - w: %d, h: %d\n",
+-		  pix_mp->width, pix_mp->height,
+-		  JPEG_MB_WIDTH(pix_mp->width),
+-		  JPEG_MB_HEIGHT(pix_mp->height));
++	vpu_debug(0, "fmt - w: %d, h: %d\n",
++		  pix_mp->width, pix_mp->height);
+ 	return 0;
  }
  
- static int
+@@ -380,10 +378,8 @@ vidioc_s_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ 	ctx->dst_fmt = *pix_mp;
+ 
+ 	vpu_debug(0, "CAPTURE codec mode: %d\n", ctx->vpu_dst_fmt->codec_mode);
+-	vpu_debug(0, "fmt - w: %d, h: %d, mb - w: %d, h: %d\n",
+-		  pix_mp->width, pix_mp->height,
+-		  JPEG_MB_WIDTH(pix_mp->width),
+-		  JPEG_MB_HEIGHT(pix_mp->height));
++	vpu_debug(0, "fmt - w: %d, h: %d\n",
++		  pix_mp->width, pix_mp->height);
+ 
+ 	/*
+ 	 * Current raw format might have become invalid with newly
 -- 
 2.20.1
