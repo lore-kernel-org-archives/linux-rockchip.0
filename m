@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 09/13] rockchip: rk3399: Add Nanopi M4 board support
-Date: Thu, 25 Apr 2019 23:04:23 +0530
-Message-ID: <20190425173427.13445-10-jagan@amarulasolutions.com>
+Subject: [PATCH v3 10/13] rockchip: rk3399: Add Nanopi NEO4 board support
+Date: Thu, 25 Apr 2019 23:04:24 +0530
+Message-ID: <20190425173427.13445-11-jagan@amarulasolutions.com>
 References: <20190425173427.13445-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,89 +21,80 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add initial support for Nanopi M4 board.
+Add initial support for Nanopi NEO4 board.
 
 Specification
 - Rockchip RK3399
-- Dual-Channel 4GB LPDDR3-1866
+- 1GB DDR3-1866
 - SD card slot
-- eMMC socket
+- eMMC Socket
 - RTL8211E 1Gbps
-- AP6356S WiFI/BT
-- HDMI In/Out, DP, MIPI DSI/CSI
-- USB 3.0 x4
+- AP6212 WiFI/BT
+- HDMI In/Out, DP, MIPI CSI
+- USB 3.0, 2.0
 - USB Type C power and data
-- GPIO1, GPIO2 expansion ports
-- DC5V/3A
+- GPIO expansion ports
+- DC 5V/3A
 
-Commit details of rk3399-nanopi-m4.dts sync from Linux 5.1-rc2:
-"arm64: dts: rockchip: Refine nanopi4 differences"
-(sha1: c62ffaf5026d0b7633e62b2cea8450b5543c349a)
+Commit details of rk3399-nanopi-neo4.dts sync from Linux:
+"arm64: dts: rockchip: Add Nanopi NEO4 initial support"
+(sha1: 092470b537f19788d957aed12d835a179b606014)
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Reviewed-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 ---
- arch/arm/dts/Makefile                     |  1 +
- arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi |  7 +++
- arch/arm/dts/rk3399-nanopi-m4.dts         | 66 +++++++++++++++++++++++
- arch/arm/dts/rk3399-nanopi4-u-boot.dtsi   |  2 +
- board/rockchip/evb_rk3399/MAINTAINERS     |  6 +++
- configs/nanopi-m4-rk3399_defconfig        | 58 ++++++++++++++++++++
- 6 files changed, 140 insertions(+)
- create mode 100644 arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi
- create mode 100644 arch/arm/dts/rk3399-nanopi-m4.dts
- create mode 100644 configs/nanopi-m4-rk3399_defconfig
+ arch/arm/dts/Makefile                       |  1 +
+ arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi |  6 +++
+ arch/arm/dts/rk3399-nanopi-neo4.dts         | 50 ++++++++++++++++++
+ board/rockchip/evb_rk3399/MAINTAINERS       |  6 +++
+ configs/nanopi-neo4-rk3399_defconfig        | 58 +++++++++++++++++++++
+ 5 files changed, 121 insertions(+)
+ create mode 100644 arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-nanopi-neo4.dts
+ create mode 100644 configs/nanopi-neo4-rk3399_defconfig
 
 diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-index 6d55b0caf8..d2ac26b556 100644
+index d2ac26b556..e909cb8180 100644
 --- a/arch/arm/dts/Makefile
 +++ b/arch/arm/dts/Makefile
-@@ -87,6 +87,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
- 	rk3399-evb.dtb \
+@@ -88,6 +88,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
  	rk3399-firefly.dtb \
  	rk3399-gru-bob.dtb \
-+	rk3399-nanopi-m4.dtb \
+ 	rk3399-nanopi-m4.dtb \
++	rk3399-nanopi-neo4.dtb \
  	rk3399-orangepi.dtb \
  	rk3399-puma-ddr1333.dtb \
  	rk3399-puma-ddr1600.dtb \
-diff --git a/arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi b/arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi
+diff --git a/arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi b/arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi
 new file mode 100644
-index 0000000000..17201bcf41
+index 0000000000..7d22528f49
 --- /dev/null
-+++ b/arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi
-@@ -0,0 +1,7 @@
++++ b/arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi
+@@ -0,0 +1,6 @@
 +// SPDX-License-Identifier: GPL-2.0+
 +/*
 + * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 + */
 +
 +#include "rk3399-nanopi4-u-boot.dtsi"
-+#include "rk3399-sdram-lpddr3-samsung-4GB-1866.dtsi"
-diff --git a/arch/arm/dts/rk3399-nanopi-m4.dts b/arch/arm/dts/rk3399-nanopi-m4.dts
+diff --git a/arch/arm/dts/rk3399-nanopi-neo4.dts b/arch/arm/dts/rk3399-nanopi-neo4.dts
 new file mode 100644
-index 0000000000..60358ab8c7
+index 0000000000..195410b089
 --- /dev/null
-+++ b/arch/arm/dts/rk3399-nanopi-m4.dts
-@@ -0,0 +1,66 @@
++++ b/arch/arm/dts/rk3399-nanopi-neo4.dts
+@@ -0,0 +1,50 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
-+ * FriendlyElec NanoPi M4 board device tree source
-+ *
-+ * Copyright (c) 2018 FriendlyElec Computer Tech. Co., Ltd.
-+ * (http://www.friendlyarm.com)
-+ *
-+ * Copyright (c) 2018 Collabora Ltd.
-+ * Copyright (c) 2019 Arm Ltd.
++ * Copyright (C) 2019 Amarula Solutions B.V.
++ * Author: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 + */
 +
 +/dts-v1/;
++
 +#include "rk3399-nanopi4.dtsi"
 +
 +/ {
-+	model = "FriendlyElec NanoPi M4";
-+	compatible = "friendlyarm,nanopi-m4", "rockchip,rk3399";
++	model = "FriendlyARM NanoPi NEO4";
++	compatible = "friendlyarm,nanopi-neo4", "rockchip,rk3399";
 +
 +	vdd_5v: vdd-5v {
 +		compatible = "regulator-fixed";
@@ -127,14 +118,6 @@ index 0000000000..60358ab8c7
 +		regulator-boot-on;
 +		vin-supply = <&vcc5v0_sys>;
 +	};
-+
-+	vcc5v0_usb2: vcc5v0-usb2 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_usb2";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
 +};
 +
 +&vcc3v3_sys {
@@ -145,49 +128,32 @@ index 0000000000..60358ab8c7
 +	phy-supply = <&vcc5v0_usb1>;
 +};
 +
-+&u2phy1_host {
-+	phy-supply = <&vcc5v0_usb2>;
-+};
-+
 +&vbus_typec {
 +	regulator-always-on;
 +	vin-supply = <&vdd_5v>;
 +};
-diff --git a/arch/arm/dts/rk3399-nanopi4-u-boot.dtsi b/arch/arm/dts/rk3399-nanopi4-u-boot.dtsi
-index 20db99c0b8..05708b6f55 100644
---- a/arch/arm/dts/rk3399-nanopi4-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399-nanopi4-u-boot.dtsi
-@@ -3,6 +3,8 @@
-  * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-  */
- 
-+#include "rk3399-u-boot.dtsi"
-+
- &sdmmc {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sdmmc_bus4 &sdmmc_clk &sdmmc_cmd &sdmmc_cd>;
 diff --git a/board/rockchip/evb_rk3399/MAINTAINERS b/board/rockchip/evb_rk3399/MAINTAINERS
-index 07ee8ce92c..ae43805a6a 100644
+index ae43805a6a..004916ed1f 100644
 --- a/board/rockchip/evb_rk3399/MAINTAINERS
 +++ b/board/rockchip/evb_rk3399/MAINTAINERS
-@@ -6,6 +6,12 @@ F:      include/configs/evb_rk3399.h
- F:      configs/evb-rk3399_defconfig
- F:      configs/firefly-rk3399_defconfig
+@@ -12,6 +12,12 @@ S:	Maintained
+ F:	configs/nanopi-m4-rk3399_defconfig
+ F:	arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi
  
-+NANOPI-M4
++NANOPI-NEO4
 +M:	Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 +S:	Maintained
-+F:	configs/nanopi-m4-rk3399_defconfig
-+F:	arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi
++F:	configs/nanopi-neo4-rk3399_defconfig
++F:	arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi
 +
  ORANGEPI-RK3399
  M:	Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
  S:	Maintained
-diff --git a/configs/nanopi-m4-rk3399_defconfig b/configs/nanopi-m4-rk3399_defconfig
+diff --git a/configs/nanopi-neo4-rk3399_defconfig b/configs/nanopi-neo4-rk3399_defconfig
 new file mode 100644
-index 0000000000..be36a28315
+index 0000000000..eb9d81ae87
 --- /dev/null
-+++ b/configs/nanopi-m4-rk3399_defconfig
++++ b/configs/nanopi-neo4-rk3399_defconfig
 @@ -0,0 +1,58 @@
 +CONFIG_ARM=y
 +CONFIG_ARCH_ROCKCHIP=y
@@ -202,7 +168,7 @@ index 0000000000..be36a28315
 +CONFIG_SPL_STACK_R_ADDR=0x80000
 +CONFIG_DEBUG_UART=y
 +CONFIG_NR_DRAM_BANKS=1
-+CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-nanopi-m4.dtb"
++CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-nanopi-neo4.dtb"
 +# CONFIG_DISPLAY_CPUINFO is not set
 +CONFIG_DISPLAY_BOARDINFO_LATE=y
 +CONFIG_SPL_STACK_R=y
@@ -215,7 +181,7 @@ index 0000000000..be36a28315
 +# CONFIG_CMD_SETEXPR is not set
 +CONFIG_CMD_TIME=y
 +CONFIG_SPL_OF_CONTROL=y
-+CONFIG_DEFAULT_DEVICE_TREE="rk3399-nanopi-m4"
++CONFIG_DEFAULT_DEVICE_TREE="rk3399-nanopi-neo4"
 +CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
 +CONFIG_ENV_IS_IN_MMC=y
 +CONFIG_ROCKCHIP_GPIO=y
