@@ -1,81 +1,72 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH] Makefile.spl: Create u-boot-spl-rockchip.bin for
-	rk3399
-Date: Thu, 25 Apr 2019 23:24:31 +0530
-Message-ID: <20190425175431.15370-1-jagan@amarulasolutions.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 3/5] Documentation: dt-bindings: Add
+ snps,need-phy-for-wake for dwc2 USB
+Date: Thu, 25 Apr 2019 11:09:59 -0700
+Message-ID: <CAD=FV=V=6dUkXAsX0+XR2y=688VcyDa8aPvD8JkKHTFZrs=YDg@mail.gmail.com>
+References: <20190418001356.124334-1-dianders@chromium.org>
+ <20190418001356.124334-4-dianders@chromium.org> <87pnpas1fx.fsf@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, Akash Gajjar <akash@openedev.com>
-Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <87pnpas1fx.fsf@linux.intel.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Felipe Balbi <felipe.balbi@linux.intel.com>
+Cc: Minas Harutyunyan <hminas@synopsys.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Alan Stern <stern@rowland.harvard.edu>, Artur Petrosyan <Arthur.Petrosyan@synopsys.com>, Alexandru M Stan <amstan@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, William Wu <william.wu@rock-chips.com>, linux-usb@vger.kernel.org, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, Chris <zyw@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, Amelie Delaunay <amelie.delaunay@st.com>, Julius Werner <jwerner@chromium.org>, Dinh Nguyen <dinguyen@opensource.altera.com>, Elaine Zhang <zhangqing@rock-chips.com>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, Rob
 List-Id: linux-rockchip.vger.kernel.org
 
-Um9ja2NoaXAgcGxhdGZvcm0gd291bGQgcmVxdWlyZSBhbiBleHBsaWNpdCBjYWxsIHRvIG1raW1h
-Z2UgZm9yCmNyZWF0aW5nIGJvb3RhYmxlIGltYWdlcyB3aGljaCBpbmRlZWQgc3BlY2lmaWMgdG8g
-U29DIGZhbWlseQphbG9uZyB3aXRoIGJvb3QgZGV2aWNlcy4KCkV4YW1wbGUgb2YgY3JlYXRpbmcg
-Ym9vdGFibGUgaW1hZ2UgZm9yIHJrMzM5OSBmYW1pbHkgd2l0aCBTRApib290IGRldmljZSBhcwoK
-4oK5IG1raW1hZ2UgLW4gcmszMzk5IC1UIHJrc2QgLWQgLi9zcGwvdS1ib290LXNwbC1kdGIuYmlu
-IHUtYm9vdC1zcGwtcm9ja2NoaXAuYmluCgpUaGlzIHBhdGNoIHdvdWxkIGRvIHRoZSBzYW1lIHRo
-aW5rIHZpYSBNYWtlZmlsZS5zcGwgZm9yIHJrMzM5OS4KClRoaXMgd291bGQgYmUgYW4gaW5pdGlh
-bCB2ZXJzaW9uIGFuZCBpdCBjYW4gZWFzaWx5IGV4cGFuZCBmdXJ0aGVyIHRvIHN1cHBvcnQKb3Ro
-ZXIgZmFtaWxpZXMgb2YgU29DJ3Mgd2l0aCB2YXJpZXR5IG9mIGJvb3Qgc3RhZ2VzIGxpa2UgVFBM
-LCBTUEwuCgpTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25z
-LmNvbT4KLS0tCiBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcgfCAgOCArKysrKysrKwog
-ZG9jL1JFQURNRS5yb2NrY2hpcCAgICAgICAgICAgIHwgIDMgKy0tCiBzY3JpcHRzL01ha2VmaWxl
-LnNwbCAgICAgICAgICAgfCAyMSArKysrKysrKysrKysrKysrKysrKysKIDMgZmlsZXMgY2hhbmdl
-ZCwgMzAgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9hcmNoL2Fy
-bS9tYWNoLXJvY2tjaGlwL0tjb25maWcgYi9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcK
-aW5kZXggZGJlN2YxMWQzOS4uMjg2Yzg3MDEzNSAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vbWFjaC1y
-b2NrY2hpcC9LY29uZmlnCisrKyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZpZwpAQCAt
-MjIyLDYgKzIyMiwxNCBAQCBjb25maWcgUk9DS0NISVBfU1BMX1JFU0VSVkVfSVJBTQogY29uZmln
-IFJPQ0tDSElQX0JST01fSEVMUEVSCiAJYm9vbAogCitjb25maWcgU1BMX1JPQ0tDSElQX0lNR19O
-QU1FCisJc3RyaW5nICJTUEwgUm9ja2NoaXAgaW1hZ2UgbmFtZSIKKwlkZWZhdWx0ICJyazMzOTki
-IGlmIFJPQ0tDSElQX1JLMzM5OQorCWhlbHAKKwkgIFRvIGNyZWF0ZSBTUEwgaW1hZ2UgZm9yIHJv
-Y2tjaGlwIHRhcmdldHMgdGhlIGltYWdlIG5hbWUgd291bGQKKwkgIGRlcGVuZHMgb24gdGhlIFNv
-QyBmYW1pbHkgdGhhdCB3b3VsZCBwYXNzIGFzIGFuIGFyZ3VtZW50IGFzCisJICAnLW4gcmszMzk5
-JyB0byBta2ltYWdlIGZvciBjcmVhdGluZyBSb2NrY2hpcCBTUEwgYm9vdCBpbWFnZS4KKwogY29u
-ZmlnIFNQTF9ST0NLQ0hJUF9FQVJMWVJFVFVSTl9UT19CUk9NCiAgICAgICAgIGJvb2wgIlNQTCBy
-ZXF1aXJlcyBlYXJseS1yZXR1cm4gKGZvciBSSzMxODgtc3R5bGUgQlJPTSkgdG8gQlJPTSIKIAlk
-ZXBlbmRzIG9uIFNQTCAmJiBFTkFCTEVfQVJNX1NPQ19CT09UMF9IT09LCmRpZmYgLS1naXQgYS9k
-b2MvUkVBRE1FLnJvY2tjaGlwIGIvZG9jL1JFQURNRS5yb2NrY2hpcAppbmRleCBlOGY2YTJkZmJh
-Li42MzQxZjQ3YjIxIDEwMDY0NAotLS0gYS9kb2MvUkVBRE1FLnJvY2tjaGlwCisrKyBiL2RvYy9S
-RUFETUUucm9ja2NoaXAKQEAgLTM5OSwxMSArMzk5LDEwIEBAIE9wdGlvbiAyOiBQYWNrYWdlIHRo
-ZSBpbWFnZSB3aXRoIFNQTDoKICAgLSBQcmVmaXggcmszMzk5IGhlYWRlciB0byBTUEwgaW1hZ2UK
-IAogICAgID0+IGNkIC9wYXRoL3RvL3UtYm9vdAotICAgID0+IC4vdG9vbHMvbWtpbWFnZSAtbiBy
-azMzOTkgLVQgcmtzZCAtZCBzcGwvdS1ib290LXNwbC1kdGIuYmluIG91dAogCiAgIC0gV3JpdGUg
-cHJlZml4ZWQgU1BMIGF0IDY0dGggc2VjdG9yCiAKLSAgICA9PiBzdWRvIGRkIGlmPW91dCBvZj0v
-ZGV2L3NkYyBzZWVrPTY0CisgICAgPT4gc3VkbyBkZCBpZj1zcGwvdS1ib290LXNwbC1yb2NrY2hp
-cC5kdGIgb2Y9L2Rldi9zZGMgc2Vlaz02NAogCiAgIC0gV3JpdGUgVS1Cb290IHByb3BlciBhdCAx
-NjM4NCBzZWN0b3IKIApkaWZmIC0tZ2l0IGEvc2NyaXB0cy9NYWtlZmlsZS5zcGwgYi9zY3JpcHRz
-L01ha2VmaWxlLnNwbAppbmRleCA1NGIxNjBkNzJiLi40OWMwNjQxYWEyIDEwMDY0NAotLS0gYS9z
-Y3JpcHRzL01ha2VmaWxlLnNwbAorKysgYi9zY3JpcHRzL01ha2VmaWxlLnNwbApAQCAtMjM1LDYg
-KzIzNSwxMCBAQCBBTEwtJChDT05GSUdfQVJDSF9aWU5RTVApCSs9ICQob2JqKS9ib290LmJpbgog
-CiBBTEwtJChDT05GSUdfQVJDSF9NRURJQVRFSykJKz0gJChvYmopL3UtYm9vdC1zcGwtbXRrLmJp
-bgogCitpZmRlZiBDT05GSUdfUk9DS0NISVBfUkszMzk5CitBTEwtJChDT05GSUdfQVJDSF9ST0NL
-Q0hJUCkJKz0gJChvYmopL3UtYm9vdC1zcGwtcm9ja2NoaXAuYmluCitlbmRpZgorCiBhbGw6CSQo
-QUxMLXkpCiAKIHF1aWV0X2NtZF9jYXQgPSBDQVQgICAgICRACkBAIC0zNjksNiArMzczLDIzIEBA
-IE1LSU1BR0VGTEFHU191LWJvb3Qtc3BsLW10ay5iaW4gPSAtVCBtdGtfaW1hZ2UgXAogJChvYmop
-L3UtYm9vdC1zcGwtbXRrLmJpbjogJChvYmopL3UtYm9vdC1zcGwuYmluIEZPUkNFCiAJJChjYWxs
-IGlmX2NoYW5nZWQsbWtpbWFnZSkKIAorIyBSb2NrY2hpcCBzcGVjaWZpYyBTUEwgYnVpbGQKK2lm
-ZXEgKCQoQ09ORklHX1JPQ0tDSElQX1JLMzM5OSkseSkKKworaWZlcSAoJChDT05GSUdfU1BJX0ZM
-QVNIX1NVUFBPUlQpLHkpCitST0NLQ0hJUF9JTUdfVFlQRSA6PSBya3NwaQorZWxzZQorUk9DS0NI
-SVBfSU1HX1RZUEUgOj0gcmtzZAorZW5kaWYKKworTUtJTUFHRUZMQUdTX3UtYm9vdC1zcGwtcm9j
-a2NoaXAuYmluID0gLW4gJChDT05GSUdfU1BMX1JPQ0tDSElQX0lNR19OQU1FKSBcCisJLVQgJChS
-T0NLQ0hJUF9JTUdfVFlQRSkgLWQgJChNS0lNQUdFT1VUUFVUKQorCiskKG9iaikvdS1ib290LXNw
-bC1yb2NrY2hpcC5iaW46ICQob2JqKS91LWJvb3Qtc3BsLmJpbiBGT1JDRQorCSQoY2FsbCBpZl9j
-aGFuZ2VkLG1raW1hZ2UpCisKK2VuZGlmICMgQ09ORklHX1JPQ0tDSElQX1JLMzM5OQorCiAjIFJ1
-bGUgdG8gbGluayB1LWJvb3Qtc3BsCiAjIE1heSBiZSBvdmVycmlkZGVuIGJ5IGFyY2gvJChBUkNI
-KS9jb25maWcubWsKIHF1aWV0X2NtZF91LWJvb3Qtc3BsID89IExEICAgICAgJEAKLS0gCjIuMTgu
-MC4zMjEuZ2ZmYzZmYTBlMwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczov
-L2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cg==
+Hi,
+
+On Thu, Apr 25, 2019 at 5:40 AM Felipe Balbi
+<felipe.balbi@linux.intel.com> wrote:
+>
+> Douglas Anderson <dianders@chromium.org> writes:
+>
+> > Some SoCs with a dwc2 USB controller may need to keep the PHY on to
+> > support remote wakeup.  Allow specifying this as a device tree
+> > property.
+> >
+> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > ---
+> > For relevant prior discussion on this patch, see:
+> >
+> > https://lkml.kernel.org/r/1435017144-2971-3-git-send-email-dianders@chromium.org
+> >
+> > I didn't make any changes from the prior version since I never found
+> > out what Rob thought of my previous arguments.  If folks want a
+> > change, perhaps they could choose from these options:
+> >
+> > 1. Assume that all dwc2 hosts would like to keep their PHY on for
+> >    suspend if there's a USB wakeup enabled, thus we totally drop this
+> >    binding.  This doesn't seem super great to me since I'd bet that
+> >    many devices that use dwc2 weren't designed for USB wakeup (they
+> >    may not keep enough clocks or rails on) so we might be wasting
+> >    power for nothing.
+> > 2. Rename this property to "snps,wakeup-from-suspend-with-phy" to make
+> >    it more obvious that this property is intended both to document
+> >    that wakeup from suspend is possible and that we need the PHY for
+> >    said wakeup.
+> > 3. Rename this property to "snps,can-wakeup-from-suspend" and assume
+> >    it's implicit that if we can wakeup from suspend that we need to
+> >    keep the PHY on.  If/when someone shows that a device exists using
+> >    dwc2 where we can wakeup from suspend without the PHY they can add
+> >    a new property.
+> >
+> > Changes in v2: None
+> >
+> >  Documentation/devicetree/bindings/usb/dwc2.txt | 3 +++
+> >  1 file changed, 3 insertions(+)
+>
+> checking file Documentation/devicetree/bindings/usb/dwc2.txt
+> Hunk #1 FAILED at 37.
+> Hunk #2 succeeded at 52 (offset -1 lines).
+> 1 out of 2 hunks FAILED
+
+Yeah, as Minas pointed out in the cover letter [1] my series conflicts
+with Artur's.  I have it on my list to try out his series and see if,
+perhaps, it allows me to enable the partial power down and also just
+generally rebase.  It's fairly high on my list to do that--hopefully
+in the next week.
+
+[1] https://lkml.kernel.org/r/e4b3cd69-1c91-dfbe-bea7-bbca89ca1348@synopsys.com
+
+-Doug
