@@ -1,68 +1,124 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH] usb: dwc2: Fix phy_reset_work compile error for peripheral-only config
-Date: Thu, 25 Apr 2019 08:40:20 -0700
-Message-ID: <20190425154021.4465-1-dianders@chromium.org>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH v3 00/13] rockchip: Add new rk3399 boards
+Date: Thu, 25 Apr 2019 23:04:14 +0530
+Message-ID: <20190425173427.13445-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Minas Harutyunyan <hminas@synopsys.com>, Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: Artur Petrosyan <Arthur.Petrosyan@synopsys.com>, amstan@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, Randy Li <ayaka@soulik.info>, mka@chromium.org, ryandcase@chromium.org, jwerner@chromium.org, Elaine Zhang <zhangqing@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, kbuild test robot <lkp@intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In commit a0a493835f9a ("usb: dwc2: optionally assert phy reset when
-waking up") I added to code that is compiled in both the host and
-peripheral configs but it referenced a structure member that I added
-to a section that was only there for host or dual-mode configs.  That
-led to the compile error:
+This is v3 patchset for New rk3399 boards support wrt previous
+version[1]
 
->> drivers/usb/dwc2/core_intr.c:448:25: error: 'struct dwc2_hsotg' has no member named 'phy_reset_work'
+Overall this series add support below rk3399 boards
+- Orangepi RK3399
+- NanoPI M4
+- NanoPI NEO4
+- Orangepi RK3399
+- Rock PI 4
+- Rockpro64
 
-We'll add a little helper function to schedule the work and then we
-can have a dummy version of that helper in peripheral-only mode.
+All the respective dts(i) files are synced from Linux 5.1-rc2 and few
+dts(i) from linux-next.
 
-Fixes: a0a493835f9a ("usb: dwc2: optionally assert phy reset when waking up")
-Reported-by: kbuild test robot <lkp@intel.com>
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
+Out of all above boards Rockpor64, Rock-PI and Nanopi NEO4 would support
+booting via Rockchip miniloader as of now.
 
- drivers/usb/dwc2/core.h      | 3 +++
- drivers/usb/dwc2/core_intr.c | 2 +-
- 2 files changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
-index 6698c7097499..152ac41dfb2d 100644
---- a/drivers/usb/dwc2/core.h
-+++ b/drivers/usb/dwc2/core.h
-@@ -1438,6 +1438,8 @@ int dwc2_restore_host_registers(struct dwc2_hsotg *hsotg);
- int dwc2_host_enter_hibernation(struct dwc2_hsotg *hsotg);
- int dwc2_host_exit_hibernation(struct dwc2_hsotg *hsotg,
- 			       int rem_wakeup, int reset);
-+static inline void dwc2_host_schedule_phy_reset(struct dwc2_hsotg *hsotg)
-+{ schedule_work(&hsotg->phy_reset_work); }
- #else
- static inline int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
- { return 0; }
-@@ -1461,6 +1463,7 @@ static inline int dwc2_host_enter_hibernation(struct dwc2_hsotg *hsotg)
- static inline int dwc2_host_exit_hibernation(struct dwc2_hsotg *hsotg,
- 					     int rem_wakeup, int reset)
- { return 0; }
-+static inline void dwc2_host_schedule_phy_reset(struct dwc2_hsotg *hsotg) {}
+For booting the same with SPL NEO4 would require dynamic dram timing
+detection and rest require LPDDR4 code. There is WIP[2] for these
+dependencies and this would require big chunk of changes will effect
+all the rk3399 boards, so I'm planning to mark it for next MW. 
  
- #endif
- 
-diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
-index 16ff33574116..6af6add3d4c0 100644
---- a/drivers/usb/dwc2/core_intr.c
-+++ b/drivers/usb/dwc2/core_intr.c
-@@ -445,7 +445,7 @@ static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsotg)
- 			 * schedule it for later.
- 			 */
- 			if (hsotg->reset_phy_on_wake)
--				schedule_work(&hsotg->phy_reset_work);
-+				dwc2_host_schedule_phy_reset(hsotg);
- 
- 			mod_timer(&hsotg->wkp_timer,
- 				  jiffies + msecs_to_jiffies(71));
+Changes for v3:
+- drop NanoPC T4 for now, since board is yet to receive.
+- add Rock PI-4 board.
+- add separate -u-boot.dtsi file for nanopi4 sdram changes.
+- collect Paul, Philipp and Kever Reviewed-by tags
+
+[1] https://patchwork.ozlabs.org/cover/1086213/
+[2] https://github.com/amarula/u-boot-amarula/tree/rockdev-lpddr4
+
+Jagan Teki (13):
+  rockchip: dts: rk3399: Sync rk3399-opp from Linux
+  rockchip: dts: rk3399: Sync pwm2_pin_pull_down from Linux 5.1-rc2
+  rockchip: dts: rk3399: Create initial rk3399-u-boot.dtsi
+  Kconfig: Add default SPL_FIT_GENERATOR for rockchip
+  arm: rockchip: rk3399: Move common configs in Kconfig
+  rockchip: rk3399: Add Orangepi RK3399 support
+  rockchip: dts: rk3399: Sync rk3399-nanopi4.dtsi from Linux
+  rockchip: dts: rk3399: nanopi4: Use CD pin as RK_FUNC_1
+  rockchip: rk3399: Add Nanopi M4 board support
+  rockchip: rk3399: Add Nanopi NEO4 board support
+  rockchip: rk3399: Add Rockpro64 board support
+  rockchip: rk3399: Add Rock PI 4 support
+  doc: rockchip: Add global doc for rk3399 build/flash
+
+ Kconfig                                     |   1 +
+ arch/arm/dts/Makefile                       |   5 +
+ arch/arm/dts/rk3399-evb.dts                 |   1 -
+ arch/arm/dts/rk3399-firefly.dts             |   1 -
+ arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi   |   7 +
+ arch/arm/dts/rk3399-nanopi-m4.dts           |  66 ++
+ arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi |   6 +
+ arch/arm/dts/rk3399-nanopi-neo4.dts         |  50 ++
+ arch/arm/dts/rk3399-nanopi4-u-boot.dtsi     |  11 +
+ arch/arm/dts/rk3399-nanopi4.dtsi            | 703 ++++++++++++++++++
+ arch/arm/dts/rk3399-opp.dtsi                | 133 ++++
+ arch/arm/dts/rk3399-orangepi-u-boot.dtsi    |   7 +
+ arch/arm/dts/rk3399-orangepi.dts            | 771 ++++++++++++++++++++
+ arch/arm/dts/rk3399-puma.dtsi               |   1 -
+ arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi   |   6 +
+ arch/arm/dts/rk3399-rock-pi-4.dts           | 606 +++++++++++++++
+ arch/arm/dts/rk3399-rockpro64-u-boot.dtsi   |   6 +
+ arch/arm/dts/rk3399-rockpro64.dts           | 712 ++++++++++++++++++
+ arch/arm/dts/rk3399-u-boot.dtsi             |   8 +
+ arch/arm/dts/rk3399.dtsi                    |   6 +
+ arch/arm/mach-rockchip/Kconfig              |  16 +
+ board/rockchip/evb_rk3399/MAINTAINERS       |  33 +
+ configs/chromebook_bob_defconfig            |  17 -
+ configs/evb-rk3399_defconfig                |  17 -
+ configs/ficus-rk3399_defconfig              |  17 -
+ configs/firefly-rk3399_defconfig            |  17 -
+ configs/nanopi-m4-rk3399_defconfig          |  58 ++
+ configs/nanopi-neo4-rk3399_defconfig        |  58 ++
+ configs/orangepi-rk3399_defconfig           |  58 ++
+ configs/puma-rk3399_defconfig               |  16 -
+ configs/rock-pi-4-rk3399_defconfig          |  58 ++
+ configs/rock960-rk3399_defconfig            |  17 -
+ configs/rockpro64-rk3399_defconfig          |  58 ++
+ doc/README.rockchip                         | 209 +++++-
+ 34 files changed, 3651 insertions(+), 105 deletions(-)
+ create mode 100644 arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-nanopi-m4.dts
+ create mode 100644 arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-nanopi-neo4.dts
+ create mode 100644 arch/arm/dts/rk3399-nanopi4-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-nanopi4.dtsi
+ create mode 100644 arch/arm/dts/rk3399-opp.dtsi
+ create mode 100644 arch/arm/dts/rk3399-orangepi-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-orangepi.dts
+ create mode 100644 arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-rock-pi-4.dts
+ create mode 100644 arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-rockpro64.dts
+ create mode 100644 arch/arm/dts/rk3399-u-boot.dtsi
+ create mode 100644 configs/nanopi-m4-rk3399_defconfig
+ create mode 100644 configs/nanopi-neo4-rk3399_defconfig
+ create mode 100644 configs/orangepi-rk3399_defconfig
+ create mode 100644 configs/rock-pi-4-rk3399_defconfig
+ create mode 100644 configs/rockpro64-rk3399_defconfig
+
 -- 
-2.21.0.593.g511ec345e18-goog
+2.18.0.321.gffc6fa0e3
