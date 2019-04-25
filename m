@@ -1,55 +1,66 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Subject: Re: [PATCH v4 00/21] Add MPEG-2 decoding to Rockchip VPU
-Date: Thu, 25 Apr 2019 10:27:07 +0200
-Message-ID: <b6e8aaf5-caaa-e022-414e-e6715f168492@xs4all.nl>
-References: <20190425071242.18315-1-boris.brezillon@collabora.com>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH v7 2/6] mfd: rk808: Add RK817 and RK809 support
+Date: Thu, 25 Apr 2019 10:11:44 +0100
+Message-ID: <20190425091144.GH14758@dell>
+References: <20190102102002.29245-1-tony.xie@rock-chips.com>
+ <20190102102002.29245-3-tony.xie@rock-chips.com>
+ <20190402063305.GZ4187@dell>
+ <518340124.P20tlEWT52@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190425071242.18315-1-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <518340124.P20tlEWT52@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Tony Xie <tony.xie@rock-chips.com>, broonie@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Compile tested this series and I get the following sparse/smatch wanings:
+On Thu, 11 Apr 2019, Heiko Stuebner wrote:
 
+> Hi Lee,
+> 
+> Am Dienstag, 2. April 2019, 08:33:05 CEST schrieb Lee Jones:
+> > On Wed, 02 Jan 2019, Tony Xie wrote:
+> > 
+> > > The RK809 and RK817 are a Power Management IC (PMIC) for multimedia
+> > > and handheld devices. They contains the following components:
+> > >   - Regulators
+> > >   - RTC
+> > >   - Clocking
+> > > 
+> > > Both RK809 and RK817 chips are using a similar register map,
+> > > so we can reuse the RTC and Clocking functionality.
+> > > Most of regulators have a some implementation also.
+> > > 
+> > > Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
+> > > Acked-by: Stephen Boyd <sboyd@kernel.org>
+> > > ---
+> > >  drivers/mfd/Kconfig       |   6 +-
+> > >  drivers/mfd/rk808.c       | 192 +++++++++++++++++++++++++++++++++++++-
+> > >  include/linux/mfd/rk808.h | 172 ++++++++++++++++++++++++++++++++++
+> > >  3 files changed, 364 insertions(+), 6 deletions(-)
+> > 
+> > For my own reference:
+> >   Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
+> 
+> do you have some sort of merge plan for this or are you waiting for
+> specific Acks? I guess if we're waiting for an Ack from Mark Brown,
+> we'll need a resend of the patch.
+> 
+> All other patches have Acks from their subsystem maintainers (rtc, clk)
+> so you could pick up all patches except patch3 and I could just resend
+> this one, which in turn could also go through the regulator tree.
+> 
+> Otherwise we'll probably need a resend of the series, as Mark most of
+> the time doesn't keep old patch series around.
 
-sparse: WARNINGS
-SPARSE:/home/hans/work/build/media-git/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-/home/hans/work/build/media-git/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c:38:6:  warning: symbol 'rockchip_vpu_get_ctrl' was not
-declared. Should it be static?
-SPARSE:/home/hans/work/build/media-git/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-/home/hans/work/build/media-git/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c:46:12:  warning: symbol 'rockchip_vpu_get_ref' was not
-declared. Should it be static?
-/home/hans/work/build/media-git/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c:38:7: warning: no previous prototype for
-'rockchip_vpu_get_ctrl' [-Wmissing-prototypes]
-/home/hans/work/build/media-git/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c:46:12: warning: no previous prototype for
-'rockchip_vpu_get_ref' [-Wmissing-prototypes]
-/home/hans/work/build/media-git/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c:298:6: warning: variable 'j' set but not used
-[-Wunused-but-set-variable]
+Try resending it.  Hopefully he will review in the next week or so can
+I can collect it when I return back from Shared Parental Leave.
 
-
-smatch: WARNINGS
-/home/hans/work/build/media-git/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c:38:7: warning: no previous prototype for
-'rockchip_vpu_get_ctrl' [-Wmissing-prototypes]
-/home/hans/work/build/media-git/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c:46:12: warning: no previous prototype for
-'rockchip_vpu_get_ref' [-Wmissing-prototypes]
-/home/hans/work/build/media-git/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c:298:6: warning: variable 'j' set but not used
-[-Wunused-but-set-variable]
-
-Looks trivial to fix.
-
-Regards,
-
-	Hans
+-- 
+Lee Jones [李琼斯]
+Linaro Services Technical Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
