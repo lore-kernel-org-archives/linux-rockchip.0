@@ -1,7 +1,7 @@
 From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v4 16/21] rockchip/vpu: Prepare things to support decoders
-Date: Thu, 25 Apr 2019 09:12:37 +0200
-Message-ID: <20190425071242.18315-17-boris.brezillon@collabora.com>
+Subject: [PATCH v4 19/21] rockchip/vpu: Add infra to support MPEG-2 decoding
+Date: Thu, 25 Apr 2019 09:12:40 +0200
+Message-ID: <20190425071242.18315-20-boris.brezillon@collabora.com>
 References: <20190425071242.18315-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,746 +21,259 @@ To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Han
 Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The code in rockchip_vpu_v4l2 was hardcoded for encoder support.
-Modify it more generic to support the decoder case so that we can
-re-use the same vb2/v4l2 ops for both devices.
+From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
 
-Co-developed-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Only adds structs and helpers to allow supporting MPEG-2 decoding on
+rockchip SoCs. Support for RK3399 and RK3288 will be added in separate
+commits
+
+Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
 Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
+--
 Changes from v3:
-* None
+* Coding style improvements (Jonas)
+* Move RK3399 support in a separate commit
 
 Changes from v2:
-* New patch
+* Remove uneeded check from rockchip_vpu_get_ctrl.
+* Use user negotiated resolution when programming the hardware.
 ---
- .../staging/media/rockchip/vpu/rockchip_vpu.h |   6 +
- .../media/rockchip/vpu/rockchip_vpu_v4l2.c    | 501 ++++++++++--------
- 2 files changed, 290 insertions(+), 217 deletions(-)
+ drivers/staging/media/rockchip/vpu/Makefile   |  3 +-
+ .../staging/media/rockchip/vpu/rockchip_vpu.h |  9 +++
+ .../media/rockchip/vpu/rockchip_vpu_common.h  |  3 +
+ .../media/rockchip/vpu/rockchip_vpu_drv.c     | 30 +++++++++
+ .../media/rockchip/vpu/rockchip_vpu_hw.h      | 14 +++++
+ .../media/rockchip/vpu/rockchip_vpu_mpeg2.c   | 61 +++++++++++++++++++
+ 6 files changed, 119 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/staging/media/rockchip/vpu/rockchip_vpu_mpeg2.c
 
+diff --git a/drivers/staging/media/rockchip/vpu/Makefile b/drivers/staging/media/rockchip/vpu/Makefile
+index ae512173e7e4..dc963936b9f9 100644
+--- a/drivers/staging/media/rockchip/vpu/Makefile
++++ b/drivers/staging/media/rockchip/vpu/Makefile
+@@ -7,4 +7,5 @@ rockchip-vpu-y += \
+ 		rk3288_vpu_hw_jpeg_enc.o \
+ 		rk3399_vpu_hw.o \
+ 		rk3399_vpu_hw_jpeg_enc.o \
+-		rockchip_vpu_jpeg.o
++		rockchip_vpu_jpeg.o \
++		rockchip_vpu_mpeg2.o
 diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
-index aba257c663a7..0d24fd257a2b 100644
+index ec7557a98583..a5cf2c1bc75b 100644
 --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
 +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
-@@ -262,4 +262,10 @@ static inline u32 vepu_read(struct rockchip_vpu_dev *vpu, u32 reg)
- 	return val;
- }
+@@ -27,6 +27,10 @@
  
-+static inline bool
-+rockchip_vpu_is_encoder_ctx(const struct rockchip_vpu_ctx *ctx)
+ #define ROCKCHIP_VPU_MAX_CLOCKS		4
+ 
++#define MPEG2_MB_DIM			16
++#define MPEG2_MB_WIDTH(w)		DIV_ROUND_UP(w, MPEG2_MB_DIM)
++#define MPEG2_MB_HEIGHT(h)		DIV_ROUND_UP(h, MPEG2_MB_DIM)
++
+ #define JPEG_MB_DIM			16
+ #define JPEG_MB_WIDTH(w)		DIV_ROUND_UP(w, JPEG_MB_DIM)
+ #define JPEG_MB_HEIGHT(h)		DIV_ROUND_UP(h, JPEG_MB_DIM)
+@@ -37,6 +41,7 @@ struct rockchip_vpu_codec_ops;
+ #define RK_VPU_JPEG_ENCODER	BIT(0)
+ #define RK_VPU_ENCODERS		0x0000ffff
+ 
++#define RK_VPU_MPEG2_DECODER	BIT(16)
+ #define RK_VPU_DECODERS		0xffff0000
+ 
+ /**
+@@ -76,10 +81,12 @@ struct rockchip_vpu_variant {
+  * enum rockchip_vpu_codec_mode - codec operating mode.
+  * @RK_VPU_MODE_NONE:  No operating mode. Used for RAW video formats.
+  * @RK_VPU_MODE_JPEG_ENC: JPEG encoder.
++ * @RK_VPU_MODE_MPEG2_DEC: MPEG-2 decoder.
+  */
+ enum rockchip_vpu_codec_mode {
+ 	RK_VPU_MODE_NONE = -1,
+ 	RK_VPU_MODE_JPEG_ENC,
++	RK_VPU_MODE_MPEG2_DEC,
+ };
+ 
+ /*
+@@ -190,6 +197,7 @@ struct rockchip_vpu_dev {
+  *			calling v4l2_m2m_job_finish.
+  * @codec_ops:		Set of operations related to codec mode.
+  * @jpeg_enc:		JPEG-encoding context.
++ * @mpeg2_dec:		MPEG-2-decoding context.
+  */
+ struct rockchip_vpu_ctx {
+ 	struct rockchip_vpu_dev *dev;
+@@ -215,6 +223,7 @@ struct rockchip_vpu_ctx {
+ 	/* Specific for particular codec modes. */
+ 	union {
+ 		struct rockchip_vpu_jpeg_enc_hw_ctx jpeg_enc;
++		struct rockchip_vpu_mpeg2_dec_hw_ctx mpeg2_dec;
+ 	};
+ };
+ 
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_common.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu_common.h
+index 8688721fbcac..0b6a3fb1a48e 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_common.h
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_common.h
+@@ -43,4 +43,7 @@ int rockchip_vpu_dst_buf_prepare(struct vb2_buffer *vb);
+ int rockchip_vpu_start(struct vb2_queue *q, unsigned int count);
+ void rockchip_vpu_stop(struct vb2_queue *q);
+ 
++void *rockchip_vpu_get_ctrl(struct rockchip_vpu_ctx *ctx, u32 id);
++dma_addr_t rockchip_vpu_get_ref(struct vb2_queue *q, u64 ts);
++
+ #endif /* ROCKCHIP_VPU_COMMON_H_ */
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+index 4a8f8483e1e1..f68bd71c6821 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+@@ -35,6 +35,24 @@ module_param_named(debug, rockchip_vpu_debug, int, 0644);
+ MODULE_PARM_DESC(debug,
+ 		 "Debug level - higher value produces more verbose messages");
+ 
++void *rockchip_vpu_get_ctrl(struct rockchip_vpu_ctx *ctx, u32 id)
 +{
-+	return true;
++	struct v4l2_ctrl *ctrl;
++
++	ctrl = v4l2_ctrl_find(&ctx->ctrl_handler, id);
++	return ctrl ? ctrl->p_cur.p : NULL;
 +}
 +
- #endif /* ROCKCHIP_VPU_H_ */
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c
-index f14cd6fdbcba..66b79408dad3 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c
-@@ -31,14 +31,23 @@
- #include "rockchip_vpu_v4l2.h"
- 
- static const struct rockchip_vpu_fmt *
--rockchip_vpu_find_format(struct rockchip_vpu_ctx *ctx, u32 fourcc)
-+rockchip_vpu_get_formats(const struct rockchip_vpu_ctx *ctx,
-+			 unsigned int *num_fmts)
- {
--	struct rockchip_vpu_dev *dev = ctx->dev;
- 	const struct rockchip_vpu_fmt *formats;
--	unsigned int num_fmts, i;
- 
--	formats = dev->variant->enc_fmts;
--	num_fmts = dev->variant->num_enc_fmts;
-+	formats = ctx->dev->variant->enc_fmts;
-+	*num_fmts = ctx->dev->variant->num_enc_fmts;
-+
-+	return formats;
-+}
-+
-+static const struct rockchip_vpu_fmt *
-+rockchip_vpu_find_format(const struct rockchip_vpu_fmt *formats,
-+			 unsigned int num_fmts, u32 fourcc)
++dma_addr_t rockchip_vpu_get_ref(struct vb2_queue *q, u64 ts)
 +{
-+	unsigned int i;
++	int index;
 +
- 	for (i = 0; i < num_fmts; i++)
- 		if (formats[i].fourcc == fourcc)
- 			return &formats[i];
-@@ -46,14 +55,11 @@ rockchip_vpu_find_format(struct rockchip_vpu_ctx *ctx, u32 fourcc)
- }
- 
- static const struct rockchip_vpu_fmt *
--rockchip_vpu_get_default_fmt(struct rockchip_vpu_ctx *ctx, bool bitstream)
-+rockchip_vpu_get_default_fmt(const struct rockchip_vpu_fmt *formats,
-+			     unsigned int num_fmts, bool bitstream)
- {
--	struct rockchip_vpu_dev *dev = ctx->dev;
--	const struct rockchip_vpu_fmt *formats;
--	unsigned int num_fmts, i;
-+	unsigned int i;
- 
--	formats = dev->variant->enc_fmts;
--	num_fmts = dev->variant->num_enc_fmts;
- 	for (i = 0; i < num_fmts; i++) {
- 		if (bitstream == (formats[i].codec_mode != RK_VPU_MODE_NONE))
- 			return &formats[i];
-@@ -78,7 +84,8 @@ static int vidioc_enum_framesizes(struct file *file, void *priv,
- 				  struct v4l2_frmsizeenum *fsize)
- {
- 	struct rockchip_vpu_ctx *ctx = fh_to_ctx(priv);
--	const struct rockchip_vpu_fmt *fmt;
-+	const struct rockchip_vpu_fmt *formats, *fmt;
-+	unsigned int num_fmts;
- 
- 	if (fsize->index != 0) {
- 		vpu_debug(0, "invalid frame size index (expected 0, got %d)\n",
-@@ -86,7 +93,8 @@ static int vidioc_enum_framesizes(struct file *file, void *priv,
- 		return -EINVAL;
- 	}
- 
--	fmt = rockchip_vpu_find_format(ctx, fsize->pixel_format);
-+	formats = rockchip_vpu_get_formats(ctx, &num_fmts);
-+	fmt = rockchip_vpu_find_format(formats, num_fmts, fsize->pixel_format);
- 	if (!fmt) {
- 		vpu_debug(0, "unsupported bitstream format (%08x)\n",
- 			  fsize->pixel_format);
-@@ -103,19 +111,32 @@ static int vidioc_enum_framesizes(struct file *file, void *priv,
- 	return 0;
- }
- 
--static int vidioc_enum_fmt_vid_cap_mplane(struct file *file, void *priv,
--					  struct v4l2_fmtdesc *f)
--{
--	struct rockchip_vpu_dev *dev = video_drvdata(file);
--	const struct rockchip_vpu_fmt *fmt;
--	const struct rockchip_vpu_fmt *formats;
--	int num_fmts, i, j = 0;
-+static int vidioc_enum_fmt(struct file *file, void *priv,
-+			   struct v4l2_fmtdesc *f, bool capture)
- 
--	formats = dev->variant->enc_fmts;
--	num_fmts = dev->variant->num_enc_fmts;
-+{
-+	struct rockchip_vpu_ctx *ctx = fh_to_ctx(priv);
-+	const struct rockchip_vpu_fmt *fmt, *formats;
-+	unsigned int num_fmts, i, j = 0;
-+	bool skip_mode_none;
-+
-+	/*
-+	 * When dealing with an encoder:
-+	 *  - on the capture side we want to filter out all MODE_NONE formats.
-+	 *  - on the output side we want to filter out all formats that are
-+	 *    not MODE_NONE.
-+	 * When dealing with a decoder:
-+	 *  - on the capture side we want to filter out all formats that are
-+	 *    not MODE_NONE.
-+	 *  - on the output side we want to filter out all MODE_NONE formats.
-+	 */
-+	skip_mode_none = capture == rockchip_vpu_is_encoder_ctx(ctx);
-+
-+	formats = rockchip_vpu_get_formats(ctx, &num_fmts);
- 	for (i = 0; i < num_fmts; i++) {
--		/* Skip uncompressed formats */
--		if (formats[i].codec_mode == RK_VPU_MODE_NONE)
-+		bool mode_none = formats[i].codec_mode == RK_VPU_MODE_NONE;
-+
-+		if (skip_mode_none == mode_none)
- 			continue;
- 		if (j == f->index) {
- 			fmt = &formats[i];
-@@ -127,27 +148,16 @@ static int vidioc_enum_fmt_vid_cap_mplane(struct file *file, void *priv,
- 	return -EINVAL;
- }
- 
-+static int vidioc_enum_fmt_vid_cap_mplane(struct file *file, void *priv,
-+					  struct v4l2_fmtdesc *f)
-+{
-+	return vidioc_enum_fmt(file, priv, f, true);
-+}
-+
- static int vidioc_enum_fmt_vid_out_mplane(struct file *file, void *priv,
- 					  struct v4l2_fmtdesc *f)
- {
--	struct rockchip_vpu_dev *dev = video_drvdata(file);
--	const struct rockchip_vpu_fmt *formats;
--	const struct rockchip_vpu_fmt *fmt;
--	int num_fmts, i, j = 0;
--
--	formats = dev->variant->enc_fmts;
--	num_fmts = dev->variant->num_enc_fmts;
--	for (i = 0; i < num_fmts; i++) {
--		if (formats[i].codec_mode != RK_VPU_MODE_NONE)
--			continue;
--		if (j == f->index) {
--			fmt = &formats[i];
--			f->pixelformat = fmt->fourcc;
--			return 0;
--		}
--		++j;
--	}
--	return -EINVAL;
-+	return vidioc_enum_fmt(file, priv, f, false);
- }
- 
- static int vidioc_g_fmt_out_mplane(struct file *file, void *priv,
-@@ -176,144 +186,150 @@ static int vidioc_g_fmt_cap_mplane(struct file *file, void *priv,
- 	return 0;
- }
- 
--static int
--vidioc_try_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_format *f)
-+static int vidioc_try_fmt(struct file *file, void *priv, struct v4l2_format *f,
-+			  bool capture)
- {
- 	struct rockchip_vpu_ctx *ctx = fh_to_ctx(priv);
- 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
--	const struct rockchip_vpu_fmt *fmt;
-+	const struct rockchip_vpu_fmt *formats, *fmt, *vpu_fmt;
-+	unsigned int num_fmts;
-+	bool coded;
- 
--	vpu_debug(4, "%c%c%c%c\n",
-+	coded = capture == rockchip_vpu_is_encoder_ctx(ctx);
-+
-+	vpu_debug(4, "trying format %c%c%c%c\n",
- 		  (pix_mp->pixelformat & 0x7f),
- 		  (pix_mp->pixelformat >> 8) & 0x7f,
- 		  (pix_mp->pixelformat >> 16) & 0x7f,
- 		  (pix_mp->pixelformat >> 24) & 0x7f);
- 
--	fmt = rockchip_vpu_find_format(ctx, pix_mp->pixelformat);
-+	formats = rockchip_vpu_get_formats(ctx, &num_fmts);
-+	fmt = rockchip_vpu_find_format(formats, num_fmts, pix_mp->pixelformat);
- 	if (!fmt) {
--		fmt = rockchip_vpu_get_default_fmt(ctx, true);
-+		fmt = rockchip_vpu_get_default_fmt(formats, num_fmts, coded);
- 		f->fmt.pix.pixelformat = fmt->fourcc;
- 	}
- 
--	pix_mp->num_planes = 1;
-+	if (coded) {
-+		pix_mp->num_planes = 1;
-+		vpu_fmt = fmt;
-+	} else if (rockchip_vpu_is_encoder_ctx(ctx)) {
-+		vpu_fmt = ctx->vpu_dst_fmt;
-+	} else {
-+		vpu_fmt = ctx->vpu_src_fmt;
-+	}
-+
- 	pix_mp->field = V4L2_FIELD_NONE;
- 	pix_mp->width = clamp(pix_mp->width,
--			      fmt->frmsize.min_width,
--			      fmt->frmsize.max_width);
-+			      vpu_fmt->frmsize.min_width,
-+			      vpu_fmt->frmsize.max_width);
- 	pix_mp->height = clamp(pix_mp->height,
--			       fmt->frmsize.min_height,
--			       fmt->frmsize.max_height);
--	/* Round up to macroblocks. */
--	pix_mp->width = round_up(pix_mp->width, fmt->frmsize.step_width);
--	pix_mp->height = round_up(pix_mp->height, fmt->frmsize.step_height);
-+			       vpu_fmt->frmsize.min_height,
-+			       vpu_fmt->frmsize.max_height);
- 
--	/*
--	 * For compressed formats the application can specify
--	 * sizeimage. If the application passes a zero sizeimage,
--	 * let's default to the maximum frame size.
--	 */
--	if (!pix_mp->plane_fmt[0].sizeimage)
-+	/* Round up to macroblocks. */
-+	pix_mp->width = round_up(pix_mp->width, vpu_fmt->frmsize.step_width);
-+	pix_mp->height = round_up(pix_mp->height, vpu_fmt->frmsize.step_height);
-+
-+	if (!coded) {
-+		/* Fill remaining fields */
-+		v4l2_fill_pixfmt_mp(pix_mp, fmt->fourcc, pix_mp->width,
-+				    pix_mp->height);
-+	} else if (!pix_mp->plane_fmt[0].sizeimage) {
-+		/*
-+		 * For coded formats the application can specify
-+		 * sizeimage. If the application passes a zero sizeimage,
-+		 * let's default to the maximum frame size.
-+		 */
- 		pix_mp->plane_fmt[0].sizeimage = fmt->header_size +
- 			pix_mp->width * pix_mp->height * fmt->max_depth;
--	memset(pix_mp->plane_fmt[0].reserved, 0,
--	       sizeof(pix_mp->plane_fmt[0].reserved));
-+	}
-+
- 	return 0;
- }
- 
--static int
--vidioc_try_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
-+static int vidioc_try_fmt_cap_mplane(struct file *file, void *priv,
-+				     struct v4l2_format *f)
- {
--	struct rockchip_vpu_ctx *ctx = fh_to_ctx(priv);
--	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
--	const struct rockchip_vpu_fmt *fmt;
--	unsigned int width, height;
--	int i;
--
--	vpu_debug(4, "%c%c%c%c\n",
--		  (pix_mp->pixelformat & 0x7f),
--		  (pix_mp->pixelformat >> 8) & 0x7f,
--		  (pix_mp->pixelformat >> 16) & 0x7f,
--		  (pix_mp->pixelformat >> 24) & 0x7f);
--
--	fmt = rockchip_vpu_find_format(ctx, pix_mp->pixelformat);
--	if (!fmt) {
--		fmt = rockchip_vpu_get_default_fmt(ctx, false);
--		f->fmt.pix.pixelformat = fmt->fourcc;
--	}
--
--	pix_mp->field = V4L2_FIELD_NONE;
--	width = clamp(pix_mp->width,
--		      ctx->vpu_dst_fmt->frmsize.min_width,
--		      ctx->vpu_dst_fmt->frmsize.max_width);
--	height = clamp(pix_mp->height,
--		       ctx->vpu_dst_fmt->frmsize.min_height,
--		       ctx->vpu_dst_fmt->frmsize.max_height);
--	/* Round up to macroblocks. */
--	width = round_up(width, ctx->vpu_dst_fmt->frmsize.step_width);
--	height = round_up(height, ctx->vpu_dst_fmt->frmsize.step_height);
--
--	/* Fill remaining fields */
--	v4l2_fill_pixfmt_mp(pix_mp, fmt->fourcc, width, height);
--
--	for (i = 0; i < pix_mp->num_planes; i++) {
--		memset(pix_mp->plane_fmt[i].reserved, 0,
--		       sizeof(pix_mp->plane_fmt[i].reserved));
--	}
--	return 0;
-+	return vidioc_try_fmt(file, priv, f, true);
- }
- 
--static void rockchip_vpu_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
--				       struct rockchip_vpu_ctx *ctx)
-+static int vidioc_try_fmt_out_mplane(struct file *file, void *priv,
-+				     struct v4l2_format *f)
- {
--	struct v4l2_pix_format_mplane *fmt = &ctx->dst_fmt;
--
--	ctx->vpu_dst_fmt = rockchip_vpu_get_default_fmt(ctx, true);
-+	return vidioc_try_fmt(file, priv, f, false);
-+}
- 
-+static void
-+rockchip_vpu_reset_fmt(struct v4l2_pix_format_mplane *fmt,
-+		       const struct rockchip_vpu_fmt *vpu_fmt)
-+{
- 	memset(fmt, 0, sizeof(*fmt));
- 
-+	fmt->pixelformat = vpu_fmt->fourcc;
-+	fmt->field = V4L2_FIELD_NONE;
-+	fmt->colorspace = V4L2_COLORSPACE_JPEG,
-+	fmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
-+	fmt->quantization = V4L2_QUANTIZATION_DEFAULT;
-+	fmt->xfer_func = V4L2_XFER_FUNC_DEFAULT;
-+}
-+
-+static void
-+rockchip_vpu_reset_encoded_fmt(struct rockchip_vpu_ctx *ctx)
-+{
-+	const struct rockchip_vpu_fmt *vpu_fmt, *formats;
-+	struct v4l2_pix_format_mplane *fmt;
-+	unsigned int num_fmts;
-+
-+	formats = rockchip_vpu_get_formats(ctx, &num_fmts);
-+	vpu_fmt = rockchip_vpu_get_default_fmt(formats, num_fmts, true);
-+
-+	if (rockchip_vpu_is_encoder_ctx(ctx)) {
-+		ctx->vpu_dst_fmt = vpu_fmt;
-+		fmt = &ctx->dst_fmt;
-+	} else {
-+		ctx->vpu_src_fmt = vpu_fmt;
-+		fmt = &ctx->src_fmt;
-+	}
-+
-+	rockchip_vpu_reset_fmt(fmt, vpu_fmt);
- 	fmt->num_planes = 1;
--	fmt->width = clamp(fmt->width, ctx->vpu_dst_fmt->frmsize.min_width,
--			   ctx->vpu_dst_fmt->frmsize.max_width);
--	fmt->height = clamp(fmt->height, ctx->vpu_dst_fmt->frmsize.min_height,
--			    ctx->vpu_dst_fmt->frmsize.max_height);
--	fmt->pixelformat = ctx->vpu_dst_fmt->fourcc;
--	fmt->field = V4L2_FIELD_NONE;
--	fmt->colorspace = V4L2_COLORSPACE_JPEG,
--	fmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
--	fmt->quantization = V4L2_QUANTIZATION_DEFAULT;
--	fmt->xfer_func = V4L2_XFER_FUNC_DEFAULT;
--
--	fmt->plane_fmt[0].sizeimage = ctx->vpu_dst_fmt->header_size +
--		fmt->width * fmt->height * ctx->vpu_dst_fmt->max_depth;
-+	fmt->width = vpu_fmt->frmsize.min_width;
-+	fmt->height = vpu_fmt->frmsize.min_height;
-+	fmt->plane_fmt[0].sizeimage = vpu_fmt->header_size +
-+				fmt->width * fmt->height * vpu_fmt->max_depth;
- }
- 
--static void rockchip_vpu_reset_src_fmt(struct rockchip_vpu_dev *vpu,
--				       struct rockchip_vpu_ctx *ctx)
-+static void
-+rockchip_vpu_reset_raw_fmt(struct rockchip_vpu_ctx *ctx)
- {
--	struct v4l2_pix_format_mplane *fmt = &ctx->src_fmt;
--	unsigned int width, height;
-+	const struct rockchip_vpu_fmt *raw_vpu_fmt, *encoded_vpu_fmt, *formats;
-+	struct v4l2_pix_format_mplane *fmt;
-+	unsigned int num_fmts;
- 
--	ctx->vpu_src_fmt = rockchip_vpu_get_default_fmt(ctx, false);
-+	formats = rockchip_vpu_get_formats(ctx, &num_fmts);
-+	raw_vpu_fmt = rockchip_vpu_get_default_fmt(formats, num_fmts, false);
- 
--	memset(fmt, 0, sizeof(*fmt));
-+	if (rockchip_vpu_is_encoder_ctx(ctx)) {
-+		ctx->vpu_src_fmt = raw_vpu_fmt;
-+		fmt = &ctx->src_fmt;
-+		encoded_vpu_fmt = ctx->vpu_dst_fmt;
-+	} else {
-+		ctx->vpu_dst_fmt = raw_vpu_fmt;
-+		fmt = &ctx->dst_fmt;
-+		encoded_vpu_fmt = ctx->vpu_src_fmt;
-+	}
- 
--	width = clamp(fmt->width, ctx->vpu_dst_fmt->frmsize.min_width,
--		      ctx->vpu_dst_fmt->frmsize.max_width);
--	height = clamp(fmt->height, ctx->vpu_dst_fmt->frmsize.min_height,
--		       ctx->vpu_dst_fmt->frmsize.max_height);
--	fmt->field = V4L2_FIELD_NONE;
--	fmt->colorspace = V4L2_COLORSPACE_JPEG,
--	fmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
--	fmt->quantization = V4L2_QUANTIZATION_DEFAULT;
--	fmt->xfer_func = V4L2_XFER_FUNC_DEFAULT;
--
--	v4l2_fill_pixfmt_mp(fmt, ctx->vpu_src_fmt->fourcc, width, height);
-+	rockchip_vpu_reset_fmt(fmt, raw_vpu_fmt);
-+	v4l2_fill_pixfmt_mp(fmt, raw_vpu_fmt->fourcc,
-+			    encoded_vpu_fmt->frmsize.min_width,
-+			    encoded_vpu_fmt->frmsize.min_height);
- }
- 
- void rockchip_vpu_reset_fmts(struct rockchip_vpu_ctx *ctx)
- {
--	rockchip_vpu_reset_dst_fmt(ctx->dev, ctx);
--	rockchip_vpu_reset_src_fmt(ctx->dev, ctx);
-+	rockchip_vpu_reset_encoded_fmt(ctx);
-+	rockchip_vpu_reset_raw_fmt(ctx);
- }
- 
- static int
-@@ -321,6 +337,8 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
- {
- 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
- 	struct rockchip_vpu_ctx *ctx = fh_to_ctx(priv);
-+	const struct rockchip_vpu_fmt *formats;
-+	unsigned int num_fmts;
- 	struct vb2_queue *vq;
- 	int ret;
- 
-@@ -329,20 +347,40 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
- 	if (vb2_is_streaming(vq))
- 		return -EBUSY;
- 
-+	if (!rockchip_vpu_is_encoder_ctx(ctx)) {
-+		struct vb2_queue *peer_vq;
-+
-+		/*
-+		 * Since format change on the CAPTURE queue will reset
-+		 * the OUTPUT queue, we can't allow doing so
-+		 * when the OUTPUT queue has buffers allocated.
-+		 */
-+		peer_vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
-+					  V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
-+		if (vb2_is_busy(peer_vq))
-+			return -EBUSY;
-+	}
-+
- 	ret = vidioc_try_fmt_out_mplane(file, priv, f);
- 	if (ret)
- 		return ret;
- 
--	ctx->vpu_src_fmt = rockchip_vpu_find_format(ctx, pix_mp->pixelformat);
-+	formats = rockchip_vpu_get_formats(ctx, &num_fmts);
-+	ctx->vpu_src_fmt = rockchip_vpu_find_format(formats, num_fmts,
-+						    pix_mp->pixelformat);
- 	ctx->src_fmt = *pix_mp;
- 
--	/* Propagate to the CAPTURE format */
--	ctx->dst_fmt.colorspace = pix_mp->colorspace;
--	ctx->dst_fmt.ycbcr_enc = pix_mp->ycbcr_enc;
--	ctx->dst_fmt.xfer_func = pix_mp->xfer_func;
--	ctx->dst_fmt.quantization = pix_mp->quantization;
--	ctx->dst_fmt.width = pix_mp->width;
--	ctx->dst_fmt.height = pix_mp->height;
-+	if (rockchip_vpu_is_encoder_ctx(ctx)) {
-+		/* Propagate to the CAPTURE format */
-+		ctx->dst_fmt.colorspace = pix_mp->colorspace;
-+		ctx->dst_fmt.ycbcr_enc = pix_mp->ycbcr_enc;
-+		ctx->dst_fmt.xfer_func = pix_mp->xfer_func;
-+		ctx->dst_fmt.quantization = pix_mp->quantization;
-+		ctx->dst_fmt.width = pix_mp->width;
-+		ctx->dst_fmt.height = pix_mp->height;
-+	} else {
-+		rockchip_vpu_reset_raw_fmt(ctx);
-+	}
- 
- 	vpu_debug(0, "OUTPUT codec mode: %d\n", ctx->vpu_src_fmt->codec_mode);
- 	vpu_debug(0, "fmt - w: %d, h: %d\n",
-@@ -350,13 +388,14 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
- 	return 0;
- }
- 
--static int
--vidioc_s_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_format *f)
-+static int vidioc_s_fmt_cap_mplane(struct file *file, void *priv,
-+				   struct v4l2_format *f)
- {
- 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
- 	struct rockchip_vpu_ctx *ctx = fh_to_ctx(priv);
--	struct rockchip_vpu_dev *vpu = ctx->dev;
--	struct vb2_queue *vq, *peer_vq;
-+	const struct rockchip_vpu_fmt *formats;
-+	struct vb2_queue *vq;
-+	unsigned int num_fmts;
- 	int ret;
- 
- 	/* Change not allowed if queue is streaming. */
-@@ -364,24 +403,30 @@ vidioc_s_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_format *f)
- 	if (vb2_is_streaming(vq))
- 		return -EBUSY;
- 
--	/*
--	 * Since format change on the CAPTURE queue will reset
--	 * the OUTPUT queue, we can't allow doing so
--	 * when the OUTPUT queue has buffers allocated.
--	 */
--	peer_vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
--				  V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
--	if (vb2_is_busy(peer_vq) &&
--	    (pix_mp->pixelformat != ctx->dst_fmt.pixelformat ||
--	     pix_mp->height != ctx->dst_fmt.height ||
--	     pix_mp->width != ctx->dst_fmt.width))
--		return -EBUSY;
-+	if (rockchip_vpu_is_encoder_ctx(ctx)) {
-+		struct vb2_queue *peer_vq;
-+
-+		/*
-+		 * Since format change on the CAPTURE queue will reset
-+		 * the OUTPUT queue, we can't allow doing so
-+		 * when the OUTPUT queue has buffers allocated.
-+		 */
-+		peer_vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
-+					  V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
-+		if (vb2_is_busy(peer_vq) &&
-+		    (pix_mp->pixelformat != ctx->dst_fmt.pixelformat ||
-+		     pix_mp->height != ctx->dst_fmt.height ||
-+		     pix_mp->width != ctx->dst_fmt.width))
-+			return -EBUSY;
-+	}
- 
- 	ret = vidioc_try_fmt_cap_mplane(file, priv, f);
- 	if (ret)
- 		return ret;
- 
--	ctx->vpu_dst_fmt = rockchip_vpu_find_format(ctx, pix_mp->pixelformat);
-+	formats = rockchip_vpu_get_formats(ctx, &num_fmts);
-+	ctx->vpu_dst_fmt = rockchip_vpu_find_format(formats, num_fmts,
-+						    pix_mp->pixelformat);
- 	ctx->dst_fmt = *pix_mp;
- 
- 	vpu_debug(0, "CAPTURE codec mode: %d\n", ctx->vpu_dst_fmt->codec_mode);
-@@ -395,7 +440,18 @@ vidioc_s_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_format *f)
- 	 * the raw format again after we return, so we don't need
- 	 * anything smarter.
- 	 */
--	rockchip_vpu_reset_src_fmt(vpu, ctx);
-+	if (rockchip_vpu_is_encoder_ctx(ctx)) {
-+		rockchip_vpu_reset_raw_fmt(ctx);
-+	} else {
-+		/* Propagate to the OUTPUT format */
-+		ctx->src_fmt.colorspace = pix_mp->colorspace;
-+		ctx->src_fmt.ycbcr_enc = pix_mp->ycbcr_enc;
-+		ctx->src_fmt.xfer_func = pix_mp->xfer_func;
-+		ctx->src_fmt.quantization = pix_mp->quantization;
-+		ctx->src_fmt.width = pix_mp->width;
-+		ctx->src_fmt.height = pix_mp->height;
-+	}
-+
- 	return 0;
- }
- 
-@@ -465,48 +521,37 @@ rockchip_vpu_queue_setup(struct vb2_queue *vq,
- 	return 0;
- }
- 
--static int rockchip_vpu_buf_prepare(struct vb2_buffer *vb)
-+static int
-+rockchip_vpu_buf_plane_check(struct vb2_buffer *vb,
-+			     const struct rockchip_vpu_fmt *vpu_fmt,
-+			     struct v4l2_pix_format_mplane *pixfmt)
- {
--	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
--	struct vb2_queue *vq = vb->vb2_queue;
--	struct rockchip_vpu_ctx *ctx = vb2_get_drv_priv(vq);
--	struct v4l2_pix_format_mplane *pixfmt;
- 	unsigned int sz;
--	int ret = 0;
- 	int i;
- 
--	switch (vq->type) {
--	case V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE:
--		pixfmt = &ctx->dst_fmt;
--		break;
--	case V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE:
--		pixfmt = &ctx->src_fmt;
--
--		if (vbuf->field == V4L2_FIELD_ANY)
--			vbuf->field = V4L2_FIELD_NONE;
--		if (vbuf->field != V4L2_FIELD_NONE) {
--			vpu_debug(4, "field %d not supported\n",
--				  vbuf->field);
--			return -EINVAL;
--		}
--		break;
--	default:
--		vpu_err("invalid queue type: %d\n", vq->type);
--		return -EINVAL;
--	}
--
- 	for (i = 0; i < pixfmt->num_planes; ++i) {
- 		sz = pixfmt->plane_fmt[i].sizeimage;
- 		vpu_debug(4, "plane %d size: %ld, sizeimage: %u\n",
- 			  i, vb2_plane_size(vb, i), sz);
- 		if (vb2_plane_size(vb, i) < sz) {
--			vpu_err("plane %d is too small\n", i);
--			ret = -EINVAL;
--			break;
-+			vpu_err("plane %d is too small for output\n", i);
-+			return -EINVAL;
- 		}
- 	}
++	index = vb2_find_timestamp(q, ts, 0);
++	if (index >= 0)
++		return vb2_dma_contig_plane_dma_addr(q->bufs[index], 0);
 +	return 0;
 +}
++
+ static int
+ rockchip_vpu_enc_buf_finish(struct rockchip_vpu_ctx *ctx,
+ 			    struct vb2_buffer *buf,
+@@ -258,6 +276,18 @@ static struct rockchip_vpu_ctrl controls[] = {
+ 			.step = 1,
+ 			.def = 50,
+ 		},
++	}, {
++		.id = V4L2_CID_MPEG_VIDEO_MPEG2_SLICE_PARAMS,
++		.codec = RK_VPU_MPEG2_DECODER,
++		.cfg = {
++			.elem_size = sizeof(struct v4l2_ctrl_mpeg2_slice_params),
++		},
++	}, {
++		.id = V4L2_CID_MPEG_VIDEO_MPEG2_QUANTIZATION,
++		.codec = RK_VPU_MPEG2_DECODER,
++		.cfg = {
++			.elem_size = sizeof(struct v4l2_ctrl_mpeg2_quantization),
++		},
+ 	},
+ };
  
--	return ret;
-+static int rockchip_vpu_buf_prepare(struct vb2_buffer *vb)
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
+index 46716d121538..1bdc5ceb956f 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
+@@ -11,6 +11,7 @@
+ 
+ #include <linux/interrupt.h>
+ #include <linux/v4l2-controls.h>
++#include <media/mpeg2-ctrls.h>
+ #include <media/videobuf2-core.h>
+ 
+ struct rockchip_vpu_dev;
+@@ -38,6 +39,14 @@ struct rockchip_vpu_jpeg_enc_hw_ctx {
+ 	struct rockchip_vpu_aux_buf bounce_buffer;
+ };
+ 
++/**
++ * struct rockchip_vpu_mpeg2_dec_hw_ctx
++ * @qtable:		Quantization table
++ */
++struct rockchip_vpu_mpeg2_dec_hw_ctx {
++	struct rockchip_vpu_aux_buf qtable;
++};
++
+ /**
+  * struct rockchip_vpu_codec_ops - codec mode specific operations
+  *
+@@ -83,4 +92,9 @@ void rk3399_vpu_jpeg_enc_run(struct rockchip_vpu_ctx *ctx);
+ int rockchip_vpu_jpeg_enc_init(struct rockchip_vpu_ctx *ctx);
+ void rockchip_vpu_jpeg_enc_exit(struct rockchip_vpu_ctx *ctx);
+ 
++void rockchip_vpu_mpeg2_dec_copy_qtable(u8 *qtable,
++	const struct v4l2_ctrl_mpeg2_quantization *ctrl);
++int rockchip_vpu_mpeg2_dec_init(struct rockchip_vpu_ctx *ctx);
++void rockchip_vpu_mpeg2_dec_exit(struct rockchip_vpu_ctx *ctx);
++
+ #endif /* ROCKCHIP_VPU_HW_H_ */
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_mpeg2.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_mpeg2.c
+new file mode 100644
+index 000000000000..5a5b9ea1f6b5
+--- /dev/null
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_mpeg2.c
+@@ -0,0 +1,61 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Rockchip VPU codec driver
++ *
++ * Copyright (C) 2018 Rockchip Electronics Co., Ltd.
++ */
++
++#include "rockchip_vpu.h"
++
++static const u8 zigzag[64] = {
++	0,   1,  8, 16,  9,  2,  3, 10,
++	17, 24, 32, 25, 18, 11,  4,  5,
++	12, 19, 26, 33, 40, 48, 41, 34,
++	27, 20, 13,  6,  7, 14, 21, 28,
++	35, 42, 49, 56, 57, 50, 43, 36,
++	29, 22, 15, 23, 30, 37, 44, 51,
++	58, 59, 52, 45, 38, 31, 39, 46,
++	53, 60, 61, 54, 47, 55, 62, 63
++};
++
++void rockchip_vpu_mpeg2_dec_copy_qtable(u8 *qtable,
++	const struct v4l2_ctrl_mpeg2_quantization *ctrl)
 +{
-+	struct vb2_queue *vq = vb->vb2_queue;
-+	struct rockchip_vpu_ctx *ctx = vb2_get_drv_priv(vq);
++	int i, n;
 +
-+	if (V4L2_TYPE_IS_OUTPUT(vq->type))
-+		return rockchip_vpu_buf_plane_check(vb, ctx->vpu_src_fmt,
-+						    &ctx->src_fmt);
++	if (!qtable || !ctrl)
++		return;
 +
-+	return rockchip_vpu_buf_plane_check(vb, ctx->vpu_dst_fmt,
-+					    &ctx->dst_fmt);
- }
- 
- static void rockchip_vpu_buf_queue(struct vb2_buffer *vb)
-@@ -517,10 +562,17 @@ static void rockchip_vpu_buf_queue(struct vb2_buffer *vb)
- 	v4l2_m2m_buf_queue(ctx->fh.m2m_ctx, vbuf);
- }
- 
--static int rockchip_vpu_start_streaming(struct vb2_queue *q, unsigned int count)
-+static bool rockchip_vpu_vq_is_coded(struct vb2_queue *q)
-+{
-+	struct rockchip_vpu_ctx *ctx = vb2_get_drv_priv(q);
-+
-+	return rockchip_vpu_is_encoder_ctx(ctx) != V4L2_TYPE_IS_OUTPUT(q->type);
++	for (i = 0; i < ARRAY_SIZE(zigzag); i++) {
++		n = zigzag[i];
++		qtable[n + 0] = ctrl->intra_quantiser_matrix[i];
++		qtable[n + 64] = ctrl->non_intra_quantiser_matrix[i];
++		qtable[n + 128] = ctrl->chroma_intra_quantiser_matrix[i];
++		qtable[n + 192] = ctrl->chroma_non_intra_quantiser_matrix[i];
++	}
 +}
 +
-+static int rockchip_vpu_start_streaming(struct vb2_queue *q,
-+					unsigned int count)
- {
- 	struct rockchip_vpu_ctx *ctx = vb2_get_drv_priv(q);
--	enum rockchip_vpu_codec_mode codec_mode;
- 	int ret = 0;
- 
- 	if (V4L2_TYPE_IS_OUTPUT(q->type))
-@@ -528,38 +580,33 @@ static int rockchip_vpu_start_streaming(struct vb2_queue *q, unsigned int count)
- 	else
- 		ctx->sequence_cap = 0;
- 
--	/* Set codec_ops for the chosen destination format */
--	codec_mode = ctx->vpu_dst_fmt->codec_mode;
-+	if (rockchip_vpu_vq_is_coded(q)) {
-+		enum rockchip_vpu_codec_mode codec_mode;
- 
--	vpu_debug(4, "Codec mode = %d\n", codec_mode);
--	ctx->codec_ops = &ctx->dev->variant->codec_ops[codec_mode];
-+		if (V4L2_TYPE_IS_OUTPUT(q->type))
-+			codec_mode = ctx->vpu_src_fmt->codec_mode;
-+		else
-+			codec_mode = ctx->vpu_dst_fmt->codec_mode;
- 
--	if (!V4L2_TYPE_IS_OUTPUT(q->type))
-+		vpu_debug(4, "Codec mode = %d\n", codec_mode);
-+		ctx->codec_ops = &ctx->dev->variant->codec_ops[codec_mode];
- 		if (ctx->codec_ops && ctx->codec_ops->init)
- 			ret = ctx->codec_ops->init(ctx);
-+	}
-+
- 	return ret;
- }
- 
--static void rockchip_vpu_stop_streaming(struct vb2_queue *q)
-+static void
-+rockchip_vpu_return_bufs(struct vb2_queue *q,
-+			 struct vb2_v4l2_buffer *(*buf_remove)(struct v4l2_m2m_ctx *))
- {
- 	struct rockchip_vpu_ctx *ctx = vb2_get_drv_priv(q);
- 
--	if (!V4L2_TYPE_IS_OUTPUT(q->type))
--		if (ctx->codec_ops && ctx->codec_ops->exit)
--			ctx->codec_ops->exit(ctx);
--
--	/*
--	 * The mem2mem framework calls v4l2_m2m_cancel_job before
--	 * .stop_streaming, so there isn't any job running and
--	 * it is safe to return all the buffers.
--	 */
- 	for (;;) {
- 		struct vb2_v4l2_buffer *vbuf;
- 
--		if (V4L2_TYPE_IS_OUTPUT(q->type))
--			vbuf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
--		else
--			vbuf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
-+		vbuf = buf_remove(ctx->fh.m2m_ctx);
- 		if (!vbuf)
- 			break;
- 		v4l2_ctrl_request_complete(vbuf->vb2_buf.req_obj.req,
-@@ -568,6 +615,26 @@ static void rockchip_vpu_stop_streaming(struct vb2_queue *q)
- 	}
- }
- 
-+static void rockchip_vpu_stop_streaming(struct vb2_queue *q)
++int rockchip_vpu_mpeg2_dec_init(struct rockchip_vpu_ctx *ctx)
 +{
-+	struct rockchip_vpu_ctx *ctx = vb2_get_drv_priv(q);
++	struct rockchip_vpu_dev *vpu = ctx->dev;
 +
-+	if (rockchip_vpu_vq_is_coded(q)) {
-+		if (ctx->codec_ops && ctx->codec_ops->exit)
-+			ctx->codec_ops->exit(ctx);
-+	}
-+
-+	/*
-+	 * The mem2mem framework calls v4l2_m2m_cancel_job before
-+	 * .stop_streaming, so there isn't any job running and
-+	 * it is safe to return all the buffers.
-+	 */
-+	if (V4L2_TYPE_IS_OUTPUT(q->type))
-+		rockchip_vpu_return_bufs(q, v4l2_m2m_src_buf_remove);
-+	else
-+		rockchip_vpu_return_bufs(q, v4l2_m2m_dst_buf_remove);
++	ctx->mpeg2_dec.qtable.size = ARRAY_SIZE(zigzag) * 4;
++	ctx->mpeg2_dec.qtable.cpu =
++		dma_alloc_coherent(vpu->dev,
++				   ctx->mpeg2_dec.qtable.size,
++				   &ctx->mpeg2_dec.qtable.dma,
++				   GFP_KERNEL);
++	if (!ctx->mpeg2_dec.qtable.cpu)
++		return -ENOMEM;
++	return 0;
 +}
 +
- static void rockchip_vpu_buf_request_complete(struct vb2_buffer *vb)
- {
- 	struct rockchip_vpu_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
++void rockchip_vpu_mpeg2_dec_exit(struct rockchip_vpu_ctx *ctx)
++{
++	struct rockchip_vpu_dev *vpu = ctx->dev;
++
++	dma_free_coherent(vpu->dev,
++			  ctx->mpeg2_dec.qtable.size,
++			  ctx->mpeg2_dec.qtable.cpu,
++			  ctx->mpeg2_dec.qtable.dma);
++}
 -- 
 2.20.1
