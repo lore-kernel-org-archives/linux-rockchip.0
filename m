@@ -1,8 +1,8 @@
 From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v4 08/21] rockchip/vpu: Get vdev from the file arg in
- vidioc_querycap()
-Date: Thu, 25 Apr 2019 09:12:29 +0200
-Message-ID: <20190425071242.18315-9-boris.brezillon@collabora.com>
+Subject: [PATCH v4 06/21] rockchip/vpu: Do not request id 0 for our video
+ device
+Date: Thu, 25 Apr 2019 09:12:27 +0200
+Message-ID: <20190425071242.18315-7-boris.brezillon@collabora.com>
 References: <20190425071242.18315-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,32 +22,37 @@ To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Han
 Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This makes the function more generic so it can easily be re-used when
-adding support for the decoding functionality.
+From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
 
+Pass -1 to video_register_device() to let the core assign the first
+free id instead of trying to get id 0.
+In practice it doesn't make a difference since video_register_device()
+is not strict about id requests and will anyway pick the first free id
+starting at the id passed in argument, and passing -1 has the same
+effect as passing 0. But let's comply with the API doc and pass -1
+here.
+
+Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
 Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
 Changes from v3:
 * New patch
 ---
- drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
-index 0ace50746f2e..7c7c20ab2733 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
-@@ -65,9 +65,10 @@ static int vidioc_querycap(struct file *file, void *priv,
- 			   struct v4l2_capability *cap)
- {
- 	struct rockchip_vpu_dev *vpu = video_drvdata(file);
-+	struct video_device *vdev = video_devdata(file);
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+index b68c4fc2967c..baed9e205320 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+@@ -348,7 +348,7 @@ static int rockchip_vpu_video_device_register(struct rockchip_vpu_dev *vpu)
+ 	vpu->vfd_enc = vfd;
+ 	video_set_drvdata(vfd, vpu);
  
- 	strscpy(cap->driver, vpu->dev->driver->name, sizeof(cap->driver));
--	strscpy(cap->card, vpu->vfd_enc->name, sizeof(cap->card));
-+	strscpy(cap->card, vdev->name, sizeof(cap->card));
- 	snprintf(cap->bus_info, sizeof(cap->bus_info), "platform: %s",
- 		 vpu->dev->driver->name);
- 	return 0;
+-	ret = video_register_device(vfd, VFL_TYPE_GRABBER, 0);
++	ret = video_register_device(vfd, VFL_TYPE_GRABBER, -1);
+ 	if (ret) {
+ 		v4l2_err(&vpu->v4l2_dev, "Failed to register video device\n");
+ 		goto err_free_dev;
 -- 
 2.20.1
