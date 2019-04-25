@@ -1,54 +1,81 @@
-From: Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [GIT PULL RESEND] Rockchip clock updates for 5.2
-Date: Thu, 25 Apr 2019 10:39:13 -0700
-Message-ID: <155621395307.15276.12161393001768759522@swboyd.mtv.corp.google.com>
-References: <2075886.jWuYUtlPVG@phil>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH] Makefile.spl: Create u-boot-spl-rockchip.bin for
+	rk3399
+Date: Thu, 25 Apr 2019 23:24:31 +0530
+Message-ID: <20190425175431.15370-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2075886.jWuYUtlPVG@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, Akash Gajjar <akash@openedev.com>
+Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Heiko Stuebner (2019-04-24 10:36:37)
-> Hi Mike, Stephen,
-> 
-> please find below rockchip clock changes for 5.2
-> with quite a bit of attention for the rk3288.
-> 
-> Please pull
-> 
-> Thanks
-> Heiko
-> 
-> [RESEND because I used a wrong email address for Stephen]
-
-No worries, I still got it.
-
-> 
-> The following changes since commit 9e98c678c2d6ae3a17cb2de55d17f69dddaa231b:
-> 
->   Linux 5.1-rc1 (2019-03-17 14:22:26 -0700)
-> 
-> are available in the Git repository at:
-> 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.2-rockchip-clk-1
-> 
-> for you to fetch changes up to f4033db5b84ebe4b32c25ba2ed65ab20b628996a:
-> 
->   clk: rockchip: undo several noc and special clocks as critical on rk3288 (2019-04-23 12:17:11 +0200)
-> 
-> ----------------------------------------------------------------
-
-Pulled into clk-next
+Um9ja2NoaXAgcGxhdGZvcm0gd291bGQgcmVxdWlyZSBhbiBleHBsaWNpdCBjYWxsIHRvIG1raW1h
+Z2UgZm9yCmNyZWF0aW5nIGJvb3RhYmxlIGltYWdlcyB3aGljaCBpbmRlZWQgc3BlY2lmaWMgdG8g
+U29DIGZhbWlseQphbG9uZyB3aXRoIGJvb3QgZGV2aWNlcy4KCkV4YW1wbGUgb2YgY3JlYXRpbmcg
+Ym9vdGFibGUgaW1hZ2UgZm9yIHJrMzM5OSBmYW1pbHkgd2l0aCBTRApib290IGRldmljZSBhcwoK
+4oK5IG1raW1hZ2UgLW4gcmszMzk5IC1UIHJrc2QgLWQgLi9zcGwvdS1ib290LXNwbC1kdGIuYmlu
+IHUtYm9vdC1zcGwtcm9ja2NoaXAuYmluCgpUaGlzIHBhdGNoIHdvdWxkIGRvIHRoZSBzYW1lIHRo
+aW5rIHZpYSBNYWtlZmlsZS5zcGwgZm9yIHJrMzM5OS4KClRoaXMgd291bGQgYmUgYW4gaW5pdGlh
+bCB2ZXJzaW9uIGFuZCBpdCBjYW4gZWFzaWx5IGV4cGFuZCBmdXJ0aGVyIHRvIHN1cHBvcnQKb3Ro
+ZXIgZmFtaWxpZXMgb2YgU29DJ3Mgd2l0aCB2YXJpZXR5IG9mIGJvb3Qgc3RhZ2VzIGxpa2UgVFBM
+LCBTUEwuCgpTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25z
+LmNvbT4KLS0tCiBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcgfCAgOCArKysrKysrKwog
+ZG9jL1JFQURNRS5yb2NrY2hpcCAgICAgICAgICAgIHwgIDMgKy0tCiBzY3JpcHRzL01ha2VmaWxl
+LnNwbCAgICAgICAgICAgfCAyMSArKysrKysrKysrKysrKysrKysrKysKIDMgZmlsZXMgY2hhbmdl
+ZCwgMzAgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9hcmNoL2Fy
+bS9tYWNoLXJvY2tjaGlwL0tjb25maWcgYi9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcK
+aW5kZXggZGJlN2YxMWQzOS4uMjg2Yzg3MDEzNSAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vbWFjaC1y
+b2NrY2hpcC9LY29uZmlnCisrKyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZpZwpAQCAt
+MjIyLDYgKzIyMiwxNCBAQCBjb25maWcgUk9DS0NISVBfU1BMX1JFU0VSVkVfSVJBTQogY29uZmln
+IFJPQ0tDSElQX0JST01fSEVMUEVSCiAJYm9vbAogCitjb25maWcgU1BMX1JPQ0tDSElQX0lNR19O
+QU1FCisJc3RyaW5nICJTUEwgUm9ja2NoaXAgaW1hZ2UgbmFtZSIKKwlkZWZhdWx0ICJyazMzOTki
+IGlmIFJPQ0tDSElQX1JLMzM5OQorCWhlbHAKKwkgIFRvIGNyZWF0ZSBTUEwgaW1hZ2UgZm9yIHJv
+Y2tjaGlwIHRhcmdldHMgdGhlIGltYWdlIG5hbWUgd291bGQKKwkgIGRlcGVuZHMgb24gdGhlIFNv
+QyBmYW1pbHkgdGhhdCB3b3VsZCBwYXNzIGFzIGFuIGFyZ3VtZW50IGFzCisJICAnLW4gcmszMzk5
+JyB0byBta2ltYWdlIGZvciBjcmVhdGluZyBSb2NrY2hpcCBTUEwgYm9vdCBpbWFnZS4KKwogY29u
+ZmlnIFNQTF9ST0NLQ0hJUF9FQVJMWVJFVFVSTl9UT19CUk9NCiAgICAgICAgIGJvb2wgIlNQTCBy
+ZXF1aXJlcyBlYXJseS1yZXR1cm4gKGZvciBSSzMxODgtc3R5bGUgQlJPTSkgdG8gQlJPTSIKIAlk
+ZXBlbmRzIG9uIFNQTCAmJiBFTkFCTEVfQVJNX1NPQ19CT09UMF9IT09LCmRpZmYgLS1naXQgYS9k
+b2MvUkVBRE1FLnJvY2tjaGlwIGIvZG9jL1JFQURNRS5yb2NrY2hpcAppbmRleCBlOGY2YTJkZmJh
+Li42MzQxZjQ3YjIxIDEwMDY0NAotLS0gYS9kb2MvUkVBRE1FLnJvY2tjaGlwCisrKyBiL2RvYy9S
+RUFETUUucm9ja2NoaXAKQEAgLTM5OSwxMSArMzk5LDEwIEBAIE9wdGlvbiAyOiBQYWNrYWdlIHRo
+ZSBpbWFnZSB3aXRoIFNQTDoKICAgLSBQcmVmaXggcmszMzk5IGhlYWRlciB0byBTUEwgaW1hZ2UK
+IAogICAgID0+IGNkIC9wYXRoL3RvL3UtYm9vdAotICAgID0+IC4vdG9vbHMvbWtpbWFnZSAtbiBy
+azMzOTkgLVQgcmtzZCAtZCBzcGwvdS1ib290LXNwbC1kdGIuYmluIG91dAogCiAgIC0gV3JpdGUg
+cHJlZml4ZWQgU1BMIGF0IDY0dGggc2VjdG9yCiAKLSAgICA9PiBzdWRvIGRkIGlmPW91dCBvZj0v
+ZGV2L3NkYyBzZWVrPTY0CisgICAgPT4gc3VkbyBkZCBpZj1zcGwvdS1ib290LXNwbC1yb2NrY2hp
+cC5kdGIgb2Y9L2Rldi9zZGMgc2Vlaz02NAogCiAgIC0gV3JpdGUgVS1Cb290IHByb3BlciBhdCAx
+NjM4NCBzZWN0b3IKIApkaWZmIC0tZ2l0IGEvc2NyaXB0cy9NYWtlZmlsZS5zcGwgYi9zY3JpcHRz
+L01ha2VmaWxlLnNwbAppbmRleCA1NGIxNjBkNzJiLi40OWMwNjQxYWEyIDEwMDY0NAotLS0gYS9z
+Y3JpcHRzL01ha2VmaWxlLnNwbAorKysgYi9zY3JpcHRzL01ha2VmaWxlLnNwbApAQCAtMjM1LDYg
+KzIzNSwxMCBAQCBBTEwtJChDT05GSUdfQVJDSF9aWU5RTVApCSs9ICQob2JqKS9ib290LmJpbgog
+CiBBTEwtJChDT05GSUdfQVJDSF9NRURJQVRFSykJKz0gJChvYmopL3UtYm9vdC1zcGwtbXRrLmJp
+bgogCitpZmRlZiBDT05GSUdfUk9DS0NISVBfUkszMzk5CitBTEwtJChDT05GSUdfQVJDSF9ST0NL
+Q0hJUCkJKz0gJChvYmopL3UtYm9vdC1zcGwtcm9ja2NoaXAuYmluCitlbmRpZgorCiBhbGw6CSQo
+QUxMLXkpCiAKIHF1aWV0X2NtZF9jYXQgPSBDQVQgICAgICRACkBAIC0zNjksNiArMzczLDIzIEBA
+IE1LSU1BR0VGTEFHU191LWJvb3Qtc3BsLW10ay5iaW4gPSAtVCBtdGtfaW1hZ2UgXAogJChvYmop
+L3UtYm9vdC1zcGwtbXRrLmJpbjogJChvYmopL3UtYm9vdC1zcGwuYmluIEZPUkNFCiAJJChjYWxs
+IGlmX2NoYW5nZWQsbWtpbWFnZSkKIAorIyBSb2NrY2hpcCBzcGVjaWZpYyBTUEwgYnVpbGQKK2lm
+ZXEgKCQoQ09ORklHX1JPQ0tDSElQX1JLMzM5OSkseSkKKworaWZlcSAoJChDT05GSUdfU1BJX0ZM
+QVNIX1NVUFBPUlQpLHkpCitST0NLQ0hJUF9JTUdfVFlQRSA6PSBya3NwaQorZWxzZQorUk9DS0NI
+SVBfSU1HX1RZUEUgOj0gcmtzZAorZW5kaWYKKworTUtJTUFHRUZMQUdTX3UtYm9vdC1zcGwtcm9j
+a2NoaXAuYmluID0gLW4gJChDT05GSUdfU1BMX1JPQ0tDSElQX0lNR19OQU1FKSBcCisJLVQgJChS
+T0NLQ0hJUF9JTUdfVFlQRSkgLWQgJChNS0lNQUdFT1VUUFVUKQorCiskKG9iaikvdS1ib290LXNw
+bC1yb2NrY2hpcC5iaW46ICQob2JqKS91LWJvb3Qtc3BsLmJpbiBGT1JDRQorCSQoY2FsbCBpZl9j
+aGFuZ2VkLG1raW1hZ2UpCisKK2VuZGlmICMgQ09ORklHX1JPQ0tDSElQX1JLMzM5OQorCiAjIFJ1
+bGUgdG8gbGluayB1LWJvb3Qtc3BsCiAjIE1heSBiZSBvdmVycmlkZGVuIGJ5IGFyY2gvJChBUkNI
+KS9jb25maWcubWsKIHF1aWV0X2NtZF91LWJvb3Qtc3BsID89IExEICAgICAgJEAKLS0gCjIuMTgu
+MC4zMjEuZ2ZmYzZmYTBlMwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczov
+L2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cg==
