@@ -1,13 +1,15 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 5/5] rockchip: rk3399: Create single image using BINMAN
-Date: Fri, 26 Apr 2019 19:04:30 +0530
-Message-ID: <20190426133430.17802-6-jagan@amarulasolutions.com>
-References: <20190426133430.17802-1-jagan@amarulasolutions.com>
+Subject: Re: [PATCH v3.1 03/13] rockchip: dts: rk3399: Create initial
+ rk3399-u-boot.dtsi
+Date: Fri, 26 Apr 2019 19:07:49 +0530
+Message-ID: <CAMty3ZC5aN-=HKRNy9fYvnQ0wppvBu38WwaCiKWpcnMBTMb7vw@mail.gmail.com>
+References: <20190426131817.16776-1-jagan@amarulasolutions.com>
+ <accbbfc8d9d0ff50996f12b23b7588c453236864.camel@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190426133430.17802-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+In-Reply-To: <accbbfc8d9d0ff50996f12b23b7588c453236864.camel-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,81 +19,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+To: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-UkszMzk5IHBsYXRmb3JtIGhhcyB0d28gc3RhZ2UgYm9vdCBsb2FkZXJzIGxpa2UgU1BMIGFuZApV
-LUJvb3QgcHJvcGVyLiBGb3IgZWFjaCBzdGFnZSB3ZSBuZWVkIHRvIGJ1cm4gdGhlIGltYWdlCm9u
-IHRvIGZsYXNoIHdpdGggcmVzcGVjdGl2ZSBvZmZzZXRzLgoKVGhpcyBwYXRjaCBjcmVhdGUgYSBz
-aW5nbGUgaW1hZ2UgdXNpbmcgYmlubWFuLCBzbyB0aGF0CnVzZXIgY2FuIGdldCByaWQgb2YgYnVy
-bmluZyBkaWZmZXJlbnQgc3RhZ2UgYm9vdCBpbWFnZXMuCgp3aXRob3V0IHRoaXMgcGF0Y2g6Ci0t
-LS0tLS0tLS0tLS0tLS0tLQrigrkgc3VkbyBkZCBpZj1zcGwvdS1ib290LXNwbC1yb2NrY2hpcC5i
-aW4gb2Y9L2Rldi9zZGMgc2Vlaz02NArigrkgc3VkbyBkZCBpZj11LWJvb3QuaXRiIG9mPS9kZXYv
-c2RjIHNlZWs9MTYzODQKCndpdGggdGhpcyBwYXRjaDoKLS0tLS0tLS0tLS0tLS0tCuKCuSBzdWRv
-IGRkIGlmPXUtYm9vdC1yb2NrY2hpcC13aXRoLXNwbC5iaW4gb2Y9L2Rldi9zZGMgc2Vlaz02NAoK
-VGhpcyB3b3VsZCBlYXNpbHkgZXh0ZW5kIGlmIG90aGVyIHJvY2tjaGlwIGZhbWlseSBTb0MncyB3
-b3VsZAptYWtlIHVzZSBvZiBzaW5nbGUgaW1hZ2UgY3JlYXRpb24uCgpTaWduZWQtb2ZmLWJ5OiBK
-YWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KLS0tCiBNYWtlZmlsZSAgICAg
-ICAgICAgICAgICAgICAgICAgIHwgMTMgKysrKysrKysrKysrKwogYXJjaC9hcm0vZHRzL3JrMzM5
-OS11LWJvb3QuZHRzaSB8IDE3ICsrKysrKysrKysrKysrKysrCiBhcmNoL2FybS9tYWNoLXJvY2tj
-aGlwL0tjb25maWcgIHwgIDEgKwogZG9jL1JFQURNRS5yb2NrY2hpcCAgICAgICAgICAgICB8ICA4
-ICsrLS0tLS0tCiBpbmNsdWRlL2NvbmZpZ3MvcmszMzk5X2NvbW1vbi5oIHwgIDIgKysKIDUgZmls
-ZXMgY2hhbmdlZCwgMzUgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQg
-YS9NYWtlZmlsZSBiL01ha2VmaWxlCmluZGV4IDkyZTA0ZGQ2ODkuLmU3ZjY4ZDYzYzcgMTAwNjQ0
-Ci0tLSBhL01ha2VmaWxlCisrKyBiL01ha2VmaWxlCkBAIC04NTEsNiArODUxLDExIEBAIGlmZXEg
-KCQoQ09ORklHX0FSQ0hfU1VOWEkpJChDT05GSUdfU1BMKSx5eSkKIEFMTC15ICs9IHUtYm9vdC1z
-dW54aS13aXRoLXNwbC5iaW4KIGVuZGlmCiAKKyMgQnVpbGQgYSBjb21iaW5lZCBzcGwgKyB1LWJv
-b3QgaW1hZ2UgZm9yIHJvY2tjaGlwCitpZmRlZiBDT05GSUdfUk9DS0NISVBfUkszMzk5CitBTEwt
-JChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gdS1ib290LXJvY2tjaGlwLXdpdGgtc3BsLmJpbgor
-ZW5kaWYKKwogIyBlbmFibGUgY29tYmluZWQgU1BML3UtYm9vdC9kdGIgcnVsZXMgZm9yIHRlZ3Jh
-CiBpZmVxICgkKENPTkZJR19URUdSQSkkKENPTkZJR19TUEwpLHl5KQogQUxMLXkgKz0gdS1ib290
-LXRlZ3JhLmJpbiB1LWJvb3Qtbm9kdGItdGVncmEuYmluCkBAIC0xMzY2LDYgKzEzNzEsMTEgQEAg
-dS1ib290LXN1bnhpLXdpdGgtc3BsLmJpbjogc3BsL3N1bnhpLXNwbC5iaW4gdS1ib290Lml0YiBG
-T1JDRQogZW5kaWYKIGVuZGlmCiAKK2lmZXEgKCQoQ09ORklHX1JPQ0tDSElQX1JLMzM5OSkseSkK
-K3UtYm9vdC1yb2NrY2hpcC13aXRoLXNwbC5iaW46IHNwbC91LWJvb3Qtc3BsLXJvY2tjaGlwLmJp
-biB1LWJvb3QuaXRiIEZPUkNFCisJQCQoY2FsbCBpZl9jaGFuZ2VkLGJpbm1hbikKK2VuZGlmICMg
-Q09ORklHX1JPQ0tDSElQX1JLMzM5OQorCiBpZm5lcSAoJChDT05GSUdfVEVHUkEpLCkKIGlmbmVx
-ICgkKENPTkZJR19CSU5NQU4pLCkKICMgTWFrZXMgdS1ib290LWR0Yi10ZWdyYS5iaW4gdS1ib290
-LXRlZ3JhLmJpbiB1LWJvb3Qtbm9kdGItdGVncmEuYmluCkBAIC0xNjY0LDYgKzE2NzQsOSBAQCBz
-cGwvdS1ib290LXNwbDogdG9vbHMgcHJlcGFyZSBcCiBzcGwvc3VueGktc3BsLmJpbjogc3BsL3Ut
-Ym9vdC1zcGwKIAlAOgogCitzcGwvdS1ib290LXNwbC1yb2NrY2hpcC5iaW46IHNwbC91LWJvb3Qt
-c3BsCisJQDoKKwogc3BsL3N1bnhpLXNwbC13aXRoLWVjYy5iaW46IHNwbC9zdW54aS1zcGwuYmlu
-CiAJQDoKIApkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vZHRzL3JrMzM5OS11LWJvb3QuZHRzaSBiL2Fy
-Y2gvYXJtL2R0cy9yazMzOTktdS1ib290LmR0c2kKaW5kZXggMDc4NmMxMTkzYS4uYWJkMGIwOTFh
-YiAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vZHRzL3JrMzM5OS11LWJvb3QuZHRzaQorKysgYi9hcmNo
-L2FybS9kdHMvcmszMzk5LXUtYm9vdC5kdHNpCkBAIC0zLDYgKzMsMjMgQEAKICAqIENvcHlyaWdo
-dCAoQykgMjAxOSBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KICAqLwog
-CisjaW5jbHVkZSA8Y29uZmlnLmg+CisKKy8geworCWJpbm1hbiB7CisJCWZpbGVuYW1lID0gInUt
-Ym9vdC1yb2NrY2hpcC13aXRoLXNwbC5iaW4iOworCQlwYWQtYnl0ZSA9IDwweGZmPjsKKworCQli
-bG9iIHsKKwkJCWZpbGVuYW1lID0gInNwbC91LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbiI7CisJCX07
-CisKKwkJdS1ib290LWltZyB7CisJCQlvZmZzZXQgPSA8Q09ORklHX1NQTF9QQURfVE8+OworCQl9
-OworCX07Cit9OworCiAmc2RtbWMgewogCXUtYm9vdCxkbS1wcmUtcmVsb2M7CiB9OwpkaWZmIC0t
-Z2l0IGEvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9LY29uZmlnIGIvYXJjaC9hcm0vbWFjaC1yb2Nr
-Y2hpcC9LY29uZmlnCmluZGV4IDI4NmM4NzAxMzUuLjdhYzBlZTNjMmQgMTAwNjQ0Ci0tLSBhL2Fy
-Y2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZpZworKysgYi9hcmNoL2FybS9tYWNoLXJvY2tjaGlw
-L0tjb25maWcKQEAgLTEzMCw2ICsxMzAsNyBAQCBlbmRpZgogY29uZmlnIFJPQ0tDSElQX1JLMzM5
-OQogCWJvb2wgIlN1cHBvcnQgUm9ja2NoaXAgUkszMzk5IgogCXNlbGVjdCBBUk02NAorCXNlbGVj
-dCBCSU5NQU4KIAlzZWxlY3QgU1VQUE9SVF9TUEwKIAlzZWxlY3QgU1BMCiAJc2VsZWN0IFNQTF9B
-VEYKZGlmZiAtLWdpdCBhL2RvYy9SRUFETUUucm9ja2NoaXAgYi9kb2MvUkVBRE1FLnJvY2tjaGlw
-CmluZGV4IDczNTk0ZGM2MWQuLjc5MWU1MjgyNjIgMTAwNjQ0Ci0tLSBhL2RvYy9SRUFETUUucm9j
-a2NoaXAKKysrIGIvZG9jL1JFQURNRS5yb2NrY2hpcApAQCAtMzk4LDEzICszOTgsOSBAQCBPcHRp
-b24gMjogUGFja2FnZSB0aGUgaW1hZ2Ugd2l0aCBTUEw6CiAKICAgICA9PiBjZCAvcGF0aC90by91
-LWJvb3QKIAotICAtIFdyaXRlIHByZWZpeGVkIFNQTCBhdCA2NHRoIHNlY3RvcgorICAtIFdyaXRl
-IHNpbmdsZSBzcGwgKyB1LWJvb3QgYXQgNjR0aCBzZWN0b3IKIAotICAgID0+IHN1ZG8gZGQgaWY9
-c3BsL3UtYm9vdC1zcGwtcm9ja2NoaXAuYmluIG9mPS9kZXYvc2RjIHNlZWs9NjQKLQotICAtIFdy
-aXRlIFUtQm9vdCBwcm9wZXIgYXQgMTYzODQgc2VjdG9yCi0KLSAgICA9PiBzdWRvIGRkIGlmPXUt
-Ym9vdC5pdGIgb2Y9L2Rldi9zZGMgc2Vlaz0xNjM4NAorICAgID0+IHN1ZG8gZGQgaWY9dS1ib290
-LXJvY2tjaGlwLXdpdGgtc3BsLmJpbiBvZj0vZGV2L3NkYyBzZWVrPTY0CiAgICAgPT4gc3luYwog
-CiBQdXQgdGhpcyBTRCAob3IgbWljcm8tU0QpIGNhcmQgaW50byB5b3VyIGJvYXJkIGFuZCByZXNl
-dCBpdC4gWW91IHNob3VsZCBzZWUKZGlmZiAtLWdpdCBhL2luY2x1ZGUvY29uZmlncy9yazMzOTlf
-Y29tbW9uLmggYi9pbmNsdWRlL2NvbmZpZ3MvcmszMzk5X2NvbW1vbi5oCmluZGV4IGI0MTIwMTI1
-ODIuLmE2NThmMDNhZGUgMTAwNjQ0Ci0tLSBhL2luY2x1ZGUvY29uZmlncy9yazMzOTlfY29tbW9u
-LmgKKysrIGIvaW5jbHVkZS9jb25maWdzL3JrMzM5OV9jb21tb24uaApAQCAtMzgsNiArMzgsOCBA
-QAogI2RlZmluZSBDT05GSUdfU1lTX1NEUkFNX0JBU0UJCTAKICNkZWZpbmUgU0RSQU1fTUFYX1NJ
-WkUJCQkweGY4MDAwMDAwCiAKKyNkZWZpbmUgQ09ORklHX1NQTF9QQURfVE8JCTgzNTU4NDAKKwog
-I2lmbmRlZiBDT05GSUdfU1BMX0JVSUxECiAKICNkZWZpbmUgRU5WX01FTV9MQVlPVVRfU0VUVElO
-R1MgXAotLSAKMi4xOC4wLjMyMS5nZmZjNmZhMGUzCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Fri, Apr 26, 2019 at 7:04 PM Paul Kocialkowski
+<paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org> wrote:
+>
+> Hi,
+>
+> On Fri, 2019-04-26 at 18:48 +0530, Jagan Teki wrote:
+> > u-boot,dm-pre-reloc is required for SDMMC booted rk3399 boards and
+> > which is U-Boot specific devicetrees binding.
+> >
+> > Move it on global rk3399-u-boot.dtsi file and rest of the U-Boot
+> > bindings will move it future based on the requirement.
+> >
+> > This would help to sync the devicetrees from Linux whenever required
+> > instead of adding specific nodes.
+> >
+> > Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+> > Reviewed-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+>
+> Since your patch has changed significantly, you can no longer include a
+> Reviewed-by that was given on a previous iteration.
+>
+> It looks like we are still missing bits to have rk3399-u-boot.dtsi
+> included, so this patch does not get my Reviewed-by tag.
+
+It will include rockchip-u-boot.dtsi automatically and I made the
+receptive changes to include other files in this patch [1] and sure I
+will ask Philipp to remove the reviewed-by tag, thanks.
+
+[1] https://patchwork.ozlabs.org/patch/1091543/
