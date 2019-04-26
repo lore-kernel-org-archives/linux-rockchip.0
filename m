@@ -1,54 +1,58 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: Re: [PATCH v3.1 03/13] rockchip: dts: rk3399: Create initial
- rk3399-u-boot.dtsi
-Date: Fri, 26 Apr 2019 19:07:49 +0530
-Message-ID: <CAMty3ZC5aN-=HKRNy9fYvnQ0wppvBu38WwaCiKWpcnMBTMb7vw@mail.gmail.com>
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Subject: Re: [PATCH v3.1 03/13] rockchip: dts: rk3399: Create
+ initial rk3399-u-boot.dtsi
+Date: Fri, 26 Apr 2019 15:42:38 +0200
+Message-ID: <4dc7e2d0f4f0da508224e3ffa089f8780395493f.camel@bootlin.com>
 References: <20190426131817.16776-1-jagan@amarulasolutions.com>
  <accbbfc8d9d0ff50996f12b23b7588c453236864.camel@bootlin.com>
+ <CAMty3ZC5aN-=HKRNy9fYvnQ0wppvBu38WwaCiKWpcnMBTMb7vw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <accbbfc8d9d0ff50996f12b23b7588c453236864.camel-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <CAMty3ZC5aN-=HKRNy9fYvnQ0wppvBu38WwaCiKWpcnMBTMb7vw@mail.gmail.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, Akash Gajjar <akash@openedev.com>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Apr 26, 2019 at 7:04 PM Paul Kocialkowski
-<paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org> wrote:
->
-> Hi,
->
-> On Fri, 2019-04-26 at 18:48 +0530, Jagan Teki wrote:
-> > u-boot,dm-pre-reloc is required for SDMMC booted rk3399 boards and
-> > which is U-Boot specific devicetrees binding.
-> >
-> > Move it on global rk3399-u-boot.dtsi file and rest of the U-Boot
-> > bindings will move it future based on the requirement.
-> >
-> > This would help to sync the devicetrees from Linux whenever required
-> > instead of adding specific nodes.
-> >
-> > Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-> > Reviewed-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
->
-> Since your patch has changed significantly, you can no longer include a
-> Reviewed-by that was given on a previous iteration.
->
-> It looks like we are still missing bits to have rk3399-u-boot.dtsi
-> included, so this patch does not get my Reviewed-by tag.
-
-It will include rockchip-u-boot.dtsi automatically and I made the
-receptive changes to include other files in this patch [1] and sure I
-will ask Philipp to remove the reviewed-by tag, thanks.
-
-[1] https://patchwork.ozlabs.org/patch/1091543/
+SGksCgpPbiBGcmksIDIwMTktMDQtMjYgYXQgMTk6MDcgKzA1MzAsIEphZ2FuIFRla2kgd3JvdGU6
+Cj4gT24gRnJpLCBBcHIgMjYsIDIwMTkgYXQgNzowNCBQTSBQYXVsIEtvY2lhbGtvd3NraQo+IDxw
+YXVsLmtvY2lhbGtvd3NraUBib290bGluLmNvbT4gd3JvdGU6Cj4gPiBIaSwKPiA+IAo+ID4gT24g
+RnJpLCAyMDE5LTA0LTI2IGF0IDE4OjQ4ICswNTMwLCBKYWdhbiBUZWtpIHdyb3RlOgo+ID4gPiB1
+LWJvb3QsZG0tcHJlLXJlbG9jIGlzIHJlcXVpcmVkIGZvciBTRE1NQyBib290ZWQgcmszMzk5IGJv
+YXJkcyBhbmQKPiA+ID4gd2hpY2ggaXMgVS1Cb290IHNwZWNpZmljIGRldmljZXRyZWVzIGJpbmRp
+bmcuCj4gPiA+IAo+ID4gPiBNb3ZlIGl0IG9uIGdsb2JhbCByazMzOTktdS1ib290LmR0c2kgZmls
+ZSBhbmQgcmVzdCBvZiB0aGUgVS1Cb290Cj4gPiA+IGJpbmRpbmdzIHdpbGwgbW92ZSBpdCBmdXR1
+cmUgYmFzZWQgb24gdGhlIHJlcXVpcmVtZW50Lgo+ID4gPiAKPiA+ID4gVGhpcyB3b3VsZCBoZWxw
+IHRvIHN5bmMgdGhlIGRldmljZXRyZWVzIGZyb20gTGludXggd2hlbmV2ZXIgcmVxdWlyZWQKPiA+
+ID4gaW5zdGVhZCBvZiBhZGRpbmcgc3BlY2lmaWMgbm9kZXMuCj4gPiA+IAo+ID4gPiBTaWduZWQt
+b2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KPiA+ID4gUmV2
+aWV3ZWQtYnk6IFBhdWwgS29jaWFsa293c2tpIDxwYXVsLmtvY2lhbGtvd3NraUBib290bGluLmNv
+bT4KPiA+IAo+ID4gU2luY2UgeW91ciBwYXRjaCBoYXMgY2hhbmdlZCBzaWduaWZpY2FudGx5LCB5
+b3UgY2FuIG5vIGxvbmdlciBpbmNsdWRlIGEKPiA+IFJldmlld2VkLWJ5IHRoYXQgd2FzIGdpdmVu
+IG9uIGEgcHJldmlvdXMgaXRlcmF0aW9uLgo+ID4gCj4gPiBJdCBsb29rcyBsaWtlIHdlIGFyZSBz
+dGlsbCBtaXNzaW5nIGJpdHMgdG8gaGF2ZSByazMzOTktdS1ib290LmR0c2kKPiA+IGluY2x1ZGVk
+LCBzbyB0aGlzIHBhdGNoIGRvZXMgbm90IGdldCBteSBSZXZpZXdlZC1ieSB0YWcuCj4gCj4gSXQg
+d2lsbCBpbmNsdWRlIHJvY2tjaGlwLXUtYm9vdC5kdHNpIGF1dG9tYXRpY2FsbHkgYW5kIEkgbWFk
+ZSB0aGUKPiByZWNlcHRpdmUgY2hhbmdlcyB0byBpbmNsdWRlIG90aGVyIGZpbGVzIGluIHRoaXMg
+cGF0Y2ggWzFdIGFuZCBzdXJlIEkKPiB3aWxsIGFzayBQaGlsaXBwIHRvIHJlbW92ZSB0aGUgcmV2
+aWV3ZWQtYnkgdGFnLCB0aGFua3MuCgpNb3N0IGltcG9ydGFudGx5IChub3cgdGhhdCBJIHNlZSB0
+aGUgbmV3IHNlcmllcyksIHlvdSBzaG91bGQgY2VydGFpbmx5CmhhdmUgc2VudCB0aGF0IHBhdGNo
+IGFzIHBhcnQgb2YgeW91ciBuZXcgc2VyaWVzIGJlY2F1c2Ugd2Ugbm93IGhhdmUgYW4KaW50ZXIt
+ZGVwZW5kZW5jeSBiZXR3ZWVuIGJvdGggc2VyaWVzLgoKQ291bGQgeW91IGNsZWFuIHRoYXQgdXAg
+YW5kIG1ha2UgYSBwcm9wZXIgc3RhbmRhbG9uZSBzZXJpZXMgdGhhdApjcmVhdGVzIGFuZCBwb3B1
+bGF0ZXMgcmszMzk5LXUtYm9vdC5kdHNpPwoKQ2hlZXJzLAoKUGF1bAoKPiBbMV0gaHR0cHM6Ly9w
+YXRjaHdvcmsub3psYWJzLm9yZy9wYXRjaC8xMDkxNTQzLwotLSAKUGF1bCBLb2NpYWxrb3dza2ks
+IEJvb3RsaW4KRW1iZWRkZWQgTGludXggYW5kIGtlcm5lbCBlbmdpbmVlcmluZwpodHRwczovL2Jv
+b3RsaW4uY29tCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMu
+ZGVueC5kZS9saXN0aW5mby91LWJvb3QK
