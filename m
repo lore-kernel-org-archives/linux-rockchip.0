@@ -1,14 +1,13 @@
-From: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH v3.1 03/13] rockchip: dts: rk3399: Create initial
- rk3399-u-boot.dtsi
-Date: Fri, 26 Apr 2019 15:34:43 +0200
-Message-ID: <accbbfc8d9d0ff50996f12b23b7588c453236864.camel@bootlin.com>
-References: <20190426131817.16776-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH 1/5] arm64: rockchip: dts: rk3399: Create -u-boot.dtsi files
+Date: Fri, 26 Apr 2019 19:04:26 +0530
+Message-ID: <20190426133430.17802-2-jagan@amarulasolutions.com>
+References: <20190426133430.17802-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190426131817.16776-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+In-Reply-To: <20190426133430.17802-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,58 +17,249 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+We have a base rk3399-u-boot.dtsi which enabled sdmmc for SPL,
+extend the same with spi1 so-that the SPL spi boot boards can
+make use of the same.
 
-On Fri, 2019-04-26 at 18:48 +0530, Jagan Teki wrote:
-> u-boot,dm-pre-reloc is required for SDMMC booted rk3399 boards and
-> which is U-Boot specific devicetrees binding.
-> 
-> Move it on global rk3399-u-boot.dtsi file and rest of the U-Boot
-> bindings will move it future based on the requirement.
-> 
-> This would help to sync the devicetrees from Linux whenever required
-> instead of adding specific nodes.
-> 
-> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-> Reviewed-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+So, to make use of this common rk3399-u-boot.dtsi we have to
+include this in respective dts files.
 
-Since your patch has changed significantly, you can no longer include a
-Reviewed-by that was given on a previous iteration.
+So, this patch will create all preliminary infrastructure, like
+- create -u-boot.dtsi
+- include rk3399-u-boot.dtsi
+- move sdram dtsi into -u-boot.dtsi
+- drop sdmmc, u-boot,dm-pre-reloc
+- drop spi1, u-boot,dm-pre-reloc
 
-It looks like we are still missing bits to have rk3399-u-boot.dtsi
-included, so this patch does not get my Reviewed-by tag.
+This would help to
+- sync the dts(i) files from Linux whenever required instead of
+  adding specific nodes.
+- easy to add u-boot specific changes like binman node into common
+  -u-boot.dtsi file
 
-Cheers,
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ arch/arm/dts/rk3399-evb-u-boot.dtsi     | 7 +++++++
+ arch/arm/dts/rk3399-evb.dts             | 2 --
+ arch/arm/dts/rk3399-ficus-u-boot.dtsi   | 7 +++++++
+ arch/arm/dts/rk3399-ficus.dts           | 1 -
+ arch/arm/dts/rk3399-firefly-u-boot.dtsi | 7 +++++++
+ arch/arm/dts/rk3399-firefly.dts         | 2 --
+ arch/arm/dts/rk3399-gru-bob-u-boot.dtsi | 7 +++++++
+ arch/arm/dts/rk3399-gru-bob.dts         | 1 -
+ arch/arm/dts/rk3399-gru.dtsi            | 1 -
+ arch/arm/dts/rk3399-puma-ddr1600.dts    | 2 +-
+ arch/arm/dts/rk3399-puma.dtsi           | 3 ---
+ arch/arm/dts/rk3399-rock960-u-boot.dtsi | 7 +++++++
+ arch/arm/dts/rk3399-rock960.dts         | 1 -
+ arch/arm/dts/rk3399-u-boot.dtsi         | 4 ++++
+ 14 files changed, 40 insertions(+), 12 deletions(-)
+ create mode 100644 arch/arm/dts/rk3399-evb-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-ficus-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-firefly-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-gru-bob-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-rock960-u-boot.dtsi
 
-Paul
-
-> ---
-> Changes for v3.1:
-> - exclude changes for other dts files, since they handle separately.
-> 
->  arch/arm/dts/rk3399-u-boot.dtsi | 8 ++++++++
->  1 file changed, 8 insertions(+)
->  create mode 100644 arch/arm/dts/rk3399-u-boot.dtsi
-> 
-> diff --git a/arch/arm/dts/rk3399-u-boot.dtsi b/arch/arm/dts/rk3399-u-boot.dtsi
-> new file mode 100644
-> index 0000000000..f533ed95eb
-> --- /dev/null
-> +++ b/arch/arm/dts/rk3399-u-boot.dtsi
-> @@ -0,0 +1,8 @@
-> +// SPDX-License-Identifier: GPL-2.0+
-> +/*
-> + * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-> + */
-> +
-> +&sdmmc {
-> +	u-boot,dm-pre-reloc;
-> +};
+diff --git a/arch/arm/dts/rk3399-evb-u-boot.dtsi b/arch/arm/dts/rk3399-evb-u-boot.dtsi
+new file mode 100644
+index 0000000000..20910e744b
+--- /dev/null
++++ b/arch/arm/dts/rk3399-evb-u-boot.dtsi
+@@ -0,0 +1,7 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
++
++#include "rk3399-u-boot.dtsi"
++#include "rk3399-sdram-lpddr3-4GB-1600.dtsi"
+diff --git a/arch/arm/dts/rk3399-evb.dts b/arch/arm/dts/rk3399-evb.dts
+index ce004d0d18..a506e8da37 100644
+--- a/arch/arm/dts/rk3399-evb.dts
++++ b/arch/arm/dts/rk3399-evb.dts
+@@ -7,7 +7,6 @@
+ #include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include "rk3399.dtsi"
+-#include "rk3399-sdram-lpddr3-4GB-1600.dtsi"
+ 
+ / {
+ 	model = "Rockchip RK3399 Evaluation Board";
+@@ -155,7 +154,6 @@
+ };
+ 
+ &sdmmc {
+-	u-boot,dm-pre-reloc;
+ 	bus-width = <4>;
+ 	status = "okay";
+ };
+diff --git a/arch/arm/dts/rk3399-ficus-u-boot.dtsi b/arch/arm/dts/rk3399-ficus-u-boot.dtsi
+new file mode 100644
+index 0000000000..67b63a8352
+--- /dev/null
++++ b/arch/arm/dts/rk3399-ficus-u-boot.dtsi
+@@ -0,0 +1,7 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
++
++#include "rk3399-u-boot.dtsi"
++#include "rk3399-sdram-ddr3-1600.dtsi"
+diff --git a/arch/arm/dts/rk3399-ficus.dts b/arch/arm/dts/rk3399-ficus.dts
+index 4af0e4e383..4b2dd82b67 100644
+--- a/arch/arm/dts/rk3399-ficus.dts
++++ b/arch/arm/dts/rk3399-ficus.dts
+@@ -8,7 +8,6 @@
+ 
+ /dts-v1/;
+ #include "rk3399-rock960.dtsi"
+-#include "rk3399-sdram-ddr3-1600.dtsi"
+ 
+ / {
+ 	model = "96boards RK3399 Ficus";
+diff --git a/arch/arm/dts/rk3399-firefly-u-boot.dtsi b/arch/arm/dts/rk3399-firefly-u-boot.dtsi
+new file mode 100644
+index 0000000000..67b63a8352
+--- /dev/null
++++ b/arch/arm/dts/rk3399-firefly-u-boot.dtsi
+@@ -0,0 +1,7 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
++
++#include "rk3399-u-boot.dtsi"
++#include "rk3399-sdram-ddr3-1600.dtsi"
+diff --git a/arch/arm/dts/rk3399-firefly.dts b/arch/arm/dts/rk3399-firefly.dts
+index f90e7e88db..a4cb64f8bd 100644
+--- a/arch/arm/dts/rk3399-firefly.dts
++++ b/arch/arm/dts/rk3399-firefly.dts
+@@ -7,7 +7,6 @@
+ #include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include "rk3399.dtsi"
+-#include "rk3399-sdram-ddr3-1600.dtsi"
+ 
+ / {
+ 	model = "Firefly-RK3399 Board";
+@@ -592,7 +591,6 @@
+ };
+ 
+ &sdmmc {
+-	u-boot,dm-pre-reloc;
+ 	bus-width = <4>;
+ 	status = "okay";
+ };
+diff --git a/arch/arm/dts/rk3399-gru-bob-u-boot.dtsi b/arch/arm/dts/rk3399-gru-bob-u-boot.dtsi
+new file mode 100644
+index 0000000000..f0d31edefd
+--- /dev/null
++++ b/arch/arm/dts/rk3399-gru-bob-u-boot.dtsi
+@@ -0,0 +1,7 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
++
++#include "rk3399-u-boot.dtsi"
++#include "rk3399-sdram-lpddr3-samsung-4GB-1866.dtsi"
+diff --git a/arch/arm/dts/rk3399-gru-bob.dts b/arch/arm/dts/rk3399-gru-bob.dts
+index 0e3d91fc28..1ee0dc0d9f 100644
+--- a/arch/arm/dts/rk3399-gru-bob.dts
++++ b/arch/arm/dts/rk3399-gru-bob.dts
+@@ -7,7 +7,6 @@
+ 
+ /dts-v1/;
+ #include "rk3399-gru-chromebook.dtsi"
+-#include "rk3399-sdram-lpddr3-samsung-4GB-1866.dtsi"
+ 
+ / {
+ 	model = "Google Bob";
+diff --git a/arch/arm/dts/rk3399-gru.dtsi b/arch/arm/dts/rk3399-gru.dtsi
+index df19263acc..8b3d90fdc6 100644
+--- a/arch/arm/dts/rk3399-gru.dtsi
++++ b/arch/arm/dts/rk3399-gru.dtsi
+@@ -545,7 +545,6 @@ ap_i2c_audio: &i2c8 {
+ 
+ &spi1 {
+ 	status = "okay";
+-	u-boot,dm-pre-reloc;
+ 
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-1 = <&spi1_sleep>;
+diff --git a/arch/arm/dts/rk3399-puma-ddr1600.dts b/arch/arm/dts/rk3399-puma-ddr1600.dts
+index 337e0eabb4..b4fc2457f0 100644
+--- a/arch/arm/dts/rk3399-puma-ddr1600.dts
++++ b/arch/arm/dts/rk3399-puma-ddr1600.dts
+@@ -6,5 +6,5 @@
+ /dts-v1/;
+ 
+ #include "rk3399-puma.dtsi"
++#include "rk3399-u-boot.dtsi"
+ #include "rk3399-sdram-ddr3-1600.dtsi"
+-
+diff --git a/arch/arm/dts/rk3399-puma.dtsi b/arch/arm/dts/rk3399-puma.dtsi
+index 8304f67192..2712ab6826 100644
+--- a/arch/arm/dts/rk3399-puma.dtsi
++++ b/arch/arm/dts/rk3399-puma.dtsi
+@@ -492,7 +492,6 @@
+ };
+ 
+ &sdmmc {
+-	u-boot,dm-pre-reloc;
+ 	clock-frequency = <150000000>;
+ 	max-frequency = <40000000>;
+ 	supports-sd;
+@@ -648,8 +647,6 @@
+ 
+ 
+ &spi1 {
+-	u-boot,dm-pre-reloc;
+-
+ 	status = "okay";
+ 
+ 	#address-cells = <1>;
+diff --git a/arch/arm/dts/rk3399-rock960-u-boot.dtsi b/arch/arm/dts/rk3399-rock960-u-boot.dtsi
+new file mode 100644
+index 0000000000..7fb5072a9b
+--- /dev/null
++++ b/arch/arm/dts/rk3399-rock960-u-boot.dtsi
+@@ -0,0 +1,7 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
++
++#include "rk3399-u-boot.dtsi"
++#include "rk3399-sdram-lpddr3-2GB-1600.dtsi"
+diff --git a/arch/arm/dts/rk3399-rock960.dts b/arch/arm/dts/rk3399-rock960.dts
+index 25c58b4261..7e06bc97e5 100644
+--- a/arch/arm/dts/rk3399-rock960.dts
++++ b/arch/arm/dts/rk3399-rock960.dts
+@@ -5,7 +5,6 @@
+ 
+ /dts-v1/;
+ #include "rk3399-rock960.dtsi"
+-#include "rk3399-sdram-lpddr3-2GB-1600.dtsi"
+ 
+ / {
+ 	model = "96boards Rock960";
+diff --git a/arch/arm/dts/rk3399-u-boot.dtsi b/arch/arm/dts/rk3399-u-boot.dtsi
+index f533ed95eb..0786c1193a 100644
+--- a/arch/arm/dts/rk3399-u-boot.dtsi
++++ b/arch/arm/dts/rk3399-u-boot.dtsi
+@@ -6,3 +6,7 @@
+ &sdmmc {
+ 	u-boot,dm-pre-reloc;
+ };
++
++&spi1 {
++	u-boot,dm-pre-reloc;
++};
 -- 
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
+2.18.0.321.gffc6fa0e3
