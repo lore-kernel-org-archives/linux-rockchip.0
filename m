@@ -1,73 +1,74 @@
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: Re: [PATCH v3 03/13] rockchip: dts: rk3399: Create initial
- rk3399-u-boot.dtsi
-Date: Fri, 26 Apr 2019 15:33:10 +0200
-Message-ID: <74b318c7981129280a7ea5ce1bf9426360b8459b.camel@bootlin.com>
-References: <20190425173427.13445-1-jagan@amarulasolutions.com>
- <20190425173427.13445-4-jagan@amarulasolutions.com>
- <CAMty3ZAoTizHUXXAwKXov2SBVYFQfQj2rrSm1zK2i08O+wpdfQ@mail.gmail.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH 0/5] rk3399: make u-boot-rockchip-with-spl.bin
+Date: Fri, 26 Apr 2019 19:04:25 +0530
+Message-ID: <20190426133430.17802-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <CAMty3ZAoTizHUXXAwKXov2SBVYFQfQj2rrSm1zK2i08O+wpdfQ@mail.gmail.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, Akash Gajjar <akash@openedev.com>
-Cc: linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBGcmksIDIwMTktMDQtMjYgYXQgMTg6NTEgKzA1MzAsIEphZ2FuIFRla2kgd3JvdGU6
-Cj4gT24gVGh1LCBBcHIgMjUsIDIwMTkgYXQgMTE6MDQgUE0gSmFnYW4gVGVraSA8amFnYW5AYW1h
-cnVsYXNvbHV0aW9ucy5jb20+IHdyb3RlOgo+ID4gdS1ib290LGRtLXByZS1yZWxvYyBpcyByZXF1
-aXJlZCBmb3IgU0RNTUMgYm9vdGVkIHJrMzM5OSBib2FyZHMgYW5kCj4gPiB3aGljaCBpcyBVLUJv
-b3Qgc3BlY2lmaWMgZGV2aWNldHJlZXMgYmluZGluZy4KPiA+IAo+ID4gTW92ZSBpdCBvbiBnbG9i
-YWwgcmszMzk5LXUtYm9vdC5kdHNpIGZpbGUgYW5kIHJlc3Qgb2YgdGhlIFUtQm9vdAo+ID4gYmlu
-ZGluZ3Mgd2lsbCBtb3ZlIGl0IGZ1dHVyZSBiYXNlZCBvbiB0aGUgcmVxdWlyZW1lbnQuCj4gPiAK
-PiA+IFRoaXMgd291bGQgaGVscCB0byBzeW5jIHRoZSBkZXZpY2V0cmVlcyBmcm9tIExpbnV4IHdo
-ZW5ldmVyIHJlcXVpcmVkCj4gPiBpbnN0ZWFkIG9mIGFkZGluZyBzcGVjaWZpYyBub2Rlcy4KPiA+
-IAo+ID4gU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5j
-b20+Cj4gPiBSZXZpZXdlZC1ieTogUGF1bCBLb2NpYWxrb3dza2kgPHBhdWwua29jaWFsa293c2tp
-QGJvb3RsaW4uY29tPgo+ID4gLS0tCj4gPiAgYXJjaC9hcm0vZHRzL3JrMzM5OS1ldmIuZHRzICAg
-ICB8IDEgLQo+ID4gIGFyY2gvYXJtL2R0cy9yazMzOTktZmlyZWZseS5kdHMgfCAxIC0KPiA+ICBh
-cmNoL2FybS9kdHMvcmszMzk5LXB1bWEuZHRzaSAgIHwgMSAtCj4gPiAgYXJjaC9hcm0vZHRzL3Jr
-MzM5OS11LWJvb3QuZHRzaSB8IDggKysrKysrKysKPiA+ICA0IGZpbGVzIGNoYW5nZWQsIDggaW5z
-ZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKPiA+ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9h
-cm0vZHRzL3JrMzM5OS11LWJvb3QuZHRzaQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0v
-ZHRzL3JrMzM5OS1ldmIuZHRzIGIvYXJjaC9hcm0vZHRzL3JrMzM5OS1ldmIuZHRzCj4gPiBpbmRl
-eCBjZTAwNGQwZDE4Li45MTYyZjNkZDUwIDEwMDY0NAo+ID4gLS0tIGEvYXJjaC9hcm0vZHRzL3Jr
-MzM5OS1ldmIuZHRzCj4gPiArKysgYi9hcmNoL2FybS9kdHMvcmszMzk5LWV2Yi5kdHMKPiA+IEBA
-IC0xNTUsNyArMTU1LDYgQEAKPiA+ICB9Owo+ID4gCj4gPiAgJnNkbW1jIHsKPiA+IC0gICAgICAg
-dS1ib290LGRtLXByZS1yZWxvYzsKPiA+ICAgICAgICAgYnVzLXdpZHRoID0gPDQ+Owo+ID4gICAg
-ICAgICBzdGF0dXMgPSAib2theSI7Cj4gPiAgfTsKPiA+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9k
-dHMvcmszMzk5LWZpcmVmbHkuZHRzIGIvYXJjaC9hcm0vZHRzL3JrMzM5OS1maXJlZmx5LmR0cwo+
-ID4gaW5kZXggZjkwZTdlODhkYi4uNDZmMmZmYWY4ZCAxMDA2NDQKPiA+IC0tLSBhL2FyY2gvYXJt
-L2R0cy9yazMzOTktZmlyZWZseS5kdHMKPiA+ICsrKyBiL2FyY2gvYXJtL2R0cy9yazMzOTktZmly
-ZWZseS5kdHMKPiA+IEBAIC01OTIsNyArNTkyLDYgQEAKPiA+ICB9Owo+ID4gCj4gPiAgJnNkbW1j
-IHsKPiA+IC0gICAgICAgdS1ib290LGRtLXByZS1yZWxvYzsKPiA+ICAgICAgICAgYnVzLXdpZHRo
-ID0gPDQ+Owo+ID4gICAgICAgICBzdGF0dXMgPSAib2theSI7Cj4gPiAgfTsKPiA+IGRpZmYgLS1n
-aXQgYS9hcmNoL2FybS9kdHMvcmszMzk5LXB1bWEuZHRzaSBiL2FyY2gvYXJtL2R0cy9yazMzOTkt
-cHVtYS5kdHNpCj4gPiBpbmRleCA4MzA0ZjY3MTkyLi45MDQ5Njk0MjQzIDEwMDY0NAo+ID4gLS0t
-IGEvYXJjaC9hcm0vZHRzL3JrMzM5OS1wdW1hLmR0c2kKPiA+ICsrKyBiL2FyY2gvYXJtL2R0cy9y
-azMzOTktcHVtYS5kdHNpCj4gPiBAQCAtNDkyLDcgKzQ5Miw2IEBACj4gPiAgfTsKPiA+IAo+ID4g
-ICZzZG1tYyB7Cj4gPiAtICAgICAgIHUtYm9vdCxkbS1wcmUtcmVsb2M7Cj4gCj4gV2UgbmVlZCB0
-byBleHBsaWNpdGx5IGluY2x1ZGUgcmszMzk5LXUtYm9vdC5kdHNpIHRvIHRoZXNlIGZpbGVzIHNp
-bmNlCj4gdGhlIFNvQyBuYW1lIGlzIHJvY2tjaGlwLCBJJ20gc2VuZGluZyBvdGhlciBzZXJpZXMg
-Zm9yIHRoZXNlIGNoYW5nZXMuCj4gYW5kIEkgaGF2ZSBzZW5kIHYzLjEgcGF0Y2hlcyBmb3Igb25s
-eSB0aGlzIGNoYW5nZSBbMV0gYW5kIHJlc3QKPiB1bmNoYW5nZWQuCgpEb2VzIHRoaXMgbWVhbiB0
-aGF0IHRoZSByazMzOTktdS1ib290LmR0c2kgZmlsZSB3b24ndCBiZSBhdXRvLWluY2x1ZGVkCmZy
-b20gdGhlIGJvYXJkcyBkdHNpPyBJZiBzbywgd2Ugc2hvdWxkIHByb2JhYmx5IGNyZWF0ZSAtdS1i
-b290LmR0c2kKZmlsZXMgZm9yIGVhY2ggZGV2aWNlLCB0byBpbmNsdWRlIHJrMzM5OS11LWJvb3Qu
-ZHRzaS4KCkNoZWVycywKClBhdWwKCj4gU29ycnkgZm9yIG5vdCBub3RpY2luZyBiZWZvcmUuCj4g
-Cj4gWzFdIGh0dHBzOi8vcGF0Y2h3b3JrLm96bGFicy5vcmcvcGF0Y2gvMTA5MTUzNC8KLS0gClBh
-dWwgS29jaWFsa293c2tpLCBCb290bGluCkVtYmVkZGVkIExpbnV4IGFuZCBrZXJuZWwgZW5naW5l
-ZXJpbmcKaHR0cHM6Ly9ib290bGluLmNvbQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5k
-ZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cg==
+This series will create single bootable image 'u-boot-rockchip-with-spl.bin'
+for rk3399 platform with single make command instead of building u-boot 
+separately for u-boot.itb and burn them separately for SPL and U-Boot proper.
+
+This series has dependecy with[1]
+
+travis-ci issue:
+- need to include 'python-pyelftools' package, tried but can't succeed
+- right now build failed if BL31 is not exported, but this would manage to
+create dummy arm64 elf but any help on this would appreciate.
+
+[1] https://patchwork.ozlabs.org/cover/1091008/
+
+Any inputs?
+Jagan.
+
+Jagan Teki (5):
+  arm64: rockchip: dts: rk3399: Create -u-boot.dtsi files
+  rockchip: rk3399: Get bl31.elf via BL31 env
+  Kconfig: Add u-boot.itb BUILD_TARGET for Rockchip
+  Makefile.spl: Create u-boot-spl-rockchip.bin for rk3399
+  rockchip: rk3399: Create single image using BINMAN
+
+ Kconfig                                 |  2 +-
+ Makefile                                | 13 +++++++++++++
+ arch/arm/dts/rk3399-evb-u-boot.dtsi     |  7 +++++++
+ arch/arm/dts/rk3399-evb.dts             |  2 --
+ arch/arm/dts/rk3399-ficus-u-boot.dtsi   |  7 +++++++
+ arch/arm/dts/rk3399-ficus.dts           |  1 -
+ arch/arm/dts/rk3399-firefly-u-boot.dtsi |  7 +++++++
+ arch/arm/dts/rk3399-firefly.dts         |  2 --
+ arch/arm/dts/rk3399-gru-bob-u-boot.dtsi |  7 +++++++
+ arch/arm/dts/rk3399-gru-bob.dts         |  1 -
+ arch/arm/dts/rk3399-gru.dtsi            |  1 -
+ arch/arm/dts/rk3399-puma-ddr1600.dts    |  2 +-
+ arch/arm/dts/rk3399-puma.dtsi           |  3 ---
+ arch/arm/dts/rk3399-rock960-u-boot.dtsi |  7 +++++++
+ arch/arm/dts/rk3399-rock960.dts         |  1 -
+ arch/arm/dts/rk3399-u-boot.dtsi         | 21 +++++++++++++++++++++
+ arch/arm/mach-rockchip/Kconfig          |  9 +++++++++
+ arch/arm/mach-rockchip/make_fit_atf.py  |  5 ++++-
+ doc/README.rockchip                     | 15 ++++-----------
+ include/configs/rk3399_common.h         |  2 ++
+ scripts/Makefile.spl                    | 21 +++++++++++++++++++++
+ 21 files changed, 111 insertions(+), 25 deletions(-)
+ create mode 100644 arch/arm/dts/rk3399-evb-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-ficus-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-firefly-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-gru-bob-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-rock960-u-boot.dtsi
+
+-- 
+2.18.0.321.gffc6fa0e3
