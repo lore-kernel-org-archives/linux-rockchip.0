@@ -1,26 +1,50 @@
-From: Vinod Koul <vkoul@kernel.org>
-Subject: Re: [PATCH] dmaengine: pl330: _stop: clear interrupt status
-Date: Fri, 26 Apr 2019 16:51:51 +0530
-Message-ID: <20190426112151.GQ28103@vkoul-mobl>
-References: <1554289582-43695-1-git-send-email-sugar.zhang@rock-chips.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: Re: [PATCH] Makefile.spl: Create u-boot-spl-rockchip.bin for rk3399
+Date: Fri, 26 Apr 2019 17:26:13 +0530
+Message-ID: <CAMty3ZB05DExi0B5d8nTwEvAPpByP4riw3YrtcVHG9N4xpFDhQ@mail.gmail.com>
+References: <20190425175431.15370-1-jagan@amarulasolutions.com>
+ <CAPnjgZ0bVGMr-y8hct8XMjgiOLFFLp9monhXnx3cgVrn-pbitw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1554289582-43695-1-git-send-email-sugar.zhang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: heiko@sntech.de, broonie@kernel.org, linux-rockchip@lists.infradead.org, Dan Williams <dan.j.williams@intel.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAPnjgZ0bVGMr-y8hct8XMjgiOLFFLp9monhXnx3cgVrn-pbitw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 03-04-19, 19:06, Sugar Zhang wrote:
-> This patch kill instructs the DMAC to immediately terminate
-> execution of a thread. and then clear the interrupt status,
-> at last, stop generating interrupts for DMA_SEV. to guarantee
-> the next dma start is clean. otherwise, one interrupt maybe leave
-> to next start and make some mistake.
-
-Applied, thanks
-
--- 
-~Vinod
+SGkgU2ltb24sCgpPbiBGcmksIEFwciAyNiwgMjAxOSBhdCA5OjI5IEFNIFNpbW9uIEdsYXNzIDxz
+amdAY2hyb21pdW0ub3JnPiB3cm90ZToKPgo+IEhpIEphZ2FuLAo+Cj4gT24gVGh1LCAyNSBBcHIg
+MjAxOSBhdCAxMTo1NCwgSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+IHdy
+b3RlOgo+ID4KPiA+IFJvY2tjaGlwIHBsYXRmb3JtIHdvdWxkIHJlcXVpcmUgYW4gZXhwbGljaXQg
+Y2FsbCB0byBta2ltYWdlIGZvcgo+ID4gY3JlYXRpbmcgYm9vdGFibGUgaW1hZ2VzIHdoaWNoIGlu
+ZGVlZCBzcGVjaWZpYyB0byBTb0MgZmFtaWx5Cj4gPiBhbG9uZyB3aXRoIGJvb3QgZGV2aWNlcy4K
+PiA+Cj4gPiBFeGFtcGxlIG9mIGNyZWF0aW5nIGJvb3RhYmxlIGltYWdlIGZvciByazMzOTkgZmFt
+aWx5IHdpdGggU0QKPiA+IGJvb3QgZGV2aWNlIGFzCj4gPgo+ID4g4oK5IG1raW1hZ2UgLW4gcmsz
+Mzk5IC1UIHJrc2QgLWQgLi9zcGwvdS1ib290LXNwbC1kdGIuYmluIHUtYm9vdC1zcGwtcm9ja2No
+aXAuYmluCj4gPgo+ID4gVGhpcyBwYXRjaCB3b3VsZCBkbyB0aGUgc2FtZSB0aGluayB2aWEgTWFr
+ZWZpbGUuc3BsIGZvciByazMzOTkuCj4gPgo+ID4gVGhpcyB3b3VsZCBiZSBhbiBpbml0aWFsIHZl
+cnNpb24gYW5kIGl0IGNhbiBlYXNpbHkgZXhwYW5kIGZ1cnRoZXIgdG8gc3VwcG9ydAo+ID4gb3Ro
+ZXIgZmFtaWxpZXMgb2YgU29DJ3Mgd2l0aCB2YXJpZXR5IG9mIGJvb3Qgc3RhZ2VzIGxpa2UgVFBM
+LCBTUEwuCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNv
+bHV0aW9ucy5jb20+Cj4gPiAtLS0KPiA+ICBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcg
+fCAgOCArKysrKysrKwo+ID4gIGRvYy9SRUFETUUucm9ja2NoaXAgICAgICAgICAgICB8ICAzICst
+LQo+ID4gIHNjcmlwdHMvTWFrZWZpbGUuc3BsICAgICAgICAgICB8IDIxICsrKysrKysrKysrKysr
+KysrKysrKwo+ID4gIDMgZmlsZXMgY2hhbmdlZCwgMzAgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlv
+bnMoLSkKPgo+IENhbiB3ZSBzZXQgdGhpcyB1cCB0byB1c2UgYmlubWFuPyBUaGF0IHdvdWxkIGFs
+c28gYWxsb3cgdXMgdG8gcHJvZHVjZQo+IGFuIGltYWdlIHdpdGggcGFkZGluZyBzbyB0aGF0IHdl
+IGNhbiB1c2UgYSBzaW1wbGVyIGRkIGNvbW1hbmQuCgpZZXMsIGllIHdoYXQgdGhhdCBJIHBsYW5u
+ZWQgaW5pdGlhbGx5IGFuZCBmaXJlZCBzb21lIGlzc3VlLiB3aWxsIHRyeQphZ2FpbiBhbmQgcG9z
+dCBpZiBJIHN1Y2NlZWQuCgpKYWdhbi4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
+cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
