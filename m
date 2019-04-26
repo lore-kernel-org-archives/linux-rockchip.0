@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 2/5] rockchip: rk3399: Get bl31.elf via BL31 env
-Date: Fri, 26 Apr 2019 19:04:27 +0530
-Message-ID: <20190426133430.17802-3-jagan@amarulasolutions.com>
+Subject: [PATCH 3/5] Kconfig: Add u-boot.itb BUILD_TARGET for Rockchip
+Date: Fri, 26 Apr 2019 19:04:28 +0530
+Message-ID: <20190426133430.17802-4-jagan@amarulasolutions.com>
 References: <20190426133430.17802-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,49 +21,50 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Right now rockchip platform need to copy bl31.elf into u-boot
-source directory to make use of building u-boot.itb.
+Add u-boot.itb BUILD_TARGET for Rockchip platform when SPL_LOAD_FIT
+is being used.
 
-So, add environment variable BL31 like Allwinner SoC so-that the
-bl31.elf would available via BL31.
+This can get rid of building itb explicitly with 'make u-boot.itb' all
+required images will now build just by make.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- arch/arm/mach-rockchip/make_fit_atf.py | 5 ++++-
- doc/README.rockchip                    | 4 ++--
- 2 files changed, 6 insertions(+), 3 deletions(-)
+ Kconfig             | 2 +-
+ doc/README.rockchip | 2 --
+ 2 files changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/arch/arm/mach-rockchip/make_fit_atf.py b/arch/arm/mach-rockchip/make_fit_atf.py
-index d1faff1957..99cf6f43dc 100755
---- a/arch/arm/mach-rockchip/make_fit_atf.py
-+++ b/arch/arm/mach-rockchip/make_fit_atf.py
-@@ -194,8 +194,11 @@ def get_bl31_segments_info(bl31_file_name):
- 
- def main():
-     uboot_elf="./u-boot"
--    bl31_elf="./bl31.elf"
-     FIT_ITS=sys.stdout
-+    if "BL31" in os.environ:
-+        bl31_elf=os.getenv("BL31");
-+    else:
-+        sys.exit("ERROR: Please export BL31 file, check doc/README.rockchip")
- 
-     opts, args = getopt.getopt(sys.argv[1:], "o:u:b:h")
-     for opt, val in opts:
+diff --git a/Kconfig b/Kconfig
+index 5679a288ec..46f511123a 100644
+--- a/Kconfig
++++ b/Kconfig
+@@ -230,7 +230,7 @@ config BUILD_TARGET
+ 	default "u-boot-with-spl.sfp" if TARGET_SOCFPGA_GEN5
+ 	default "u-boot-spl.kwb" if ARCH_MVEBU && SPL
+ 	default "u-boot-elf.srec" if RCAR_GEN3
+-	default "u-boot.itb" if SPL_LOAD_FIT && ARCH_SUNXI
++	default "u-boot.itb" if SPL_LOAD_FIT && (ARCH_ROCKCHIP || ARCH_SUNXI)
+ 	default "u-boot.kwb" if KIRKWOOD
+ 	help
+ 	  Some SoCs need special image types (e.g. U-Boot binary
 diff --git a/doc/README.rockchip b/doc/README.rockchip
-index e8f6a2dfba..0db4771162 100644
+index 0db4771162..124efd65e4 100644
 --- a/doc/README.rockchip
 +++ b/doc/README.rockchip
-@@ -138,8 +138,8 @@ For example:
-      => make realclean
-      => make CROSS_COMPILE=aarch64-linux-gnu- PLAT=rk3399
+@@ -103,7 +103,6 @@ For example:
+      => cd /path/to/u-boot
+      => make nanopi-neo4-rk3399_defconfig
+      => make
+-     => make u-boot.itb
  
--     (copy bl31.elf U-Boot root dir)
--     => cp build/rk3399/release/bl31/bl31.elf /path/to/u-boot
-+     (export bl31.elf)
-+     => export BL31=/path/to/arm-trusted-firmware/build/rk3399/release/bl31/bl31.elf
+    - Get the rkbin
  
-    - Compile U-Boot
+@@ -146,7 +145,6 @@ For example:
+      => cd /path/to/u-boot
+      => make orangepi-rk3399_defconfig
+      => make
+-     => make u-boot.itb
  
+      (Get spl/u-boot-spl-dtb.bin, u-boot.itb images and some boards would get
+       spl/u-boot-spl.bin since it doesn't enable CONFIG_SPL_OF_CONTROL)
 -- 
 2.18.0.321.gffc6fa0e3
