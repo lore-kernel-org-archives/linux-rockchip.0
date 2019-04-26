@@ -1,49 +1,76 @@
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: Re: [PATCH v3 06/13] rockchip: rk3399: Add Orangepi RK3399
-	support
-Date: Fri, 26 Apr 2019 16:34:54 +0200
-Message-ID: <f89a6bbc7390db5f9ed6f7ad732b6451cdea15c4.camel@bootlin.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: Re: [PATCH v3 06/13] rockchip: rk3399: Add Orangepi RK3399 support
+Date: Fri, 26 Apr 2019 20:15:29 +0530
+Message-ID: <CAMty3ZCwN8bRopZugOeV=Ym4xZhncTFeEt8_Se7-wjSoA7Wu7Q@mail.gmail.com>
 References: <20190425173427.13445-1-jagan@amarulasolutions.com>
  <20190425173427.13445-7-jagan@amarulasolutions.com>
  <51dab1c2fea1ca16b892c9face5fd4c6b451d07d.camel@bootlin.com>
  <CAMty3ZADnLE14jh14qM7a9-oeKHsrSu1XHzPBfLhBtqEOgBviQ@mail.gmail.com>
+ <f89a6bbc7390db5f9ed6f7ad732b6451cdea15c4.camel@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <CAMty3ZADnLE14jh14qM7a9-oeKHsrSu1XHzPBfLhBtqEOgBviQ@mail.gmail.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, Akash Gajjar <akash@openedev.com>, linux-amarula <linux-amarula@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <f89a6bbc7390db5f9ed6f7ad732b6451cdea15c4.camel-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBGcmksIDIwMTktMDQtMjYgYXQgMTk6NTcgKzA1MzAsIEphZ2FuIFRla2kgd3JvdGU6
-Cj4gT24gRnJpLCBBcHIgMjYsIDIwMTkgYXQgNzo0NyBQTSBQYXVsIEtvY2lhbGtvd3NraQo+IDxw
-YXVsLmtvY2lhbGtvd3NraUBib290bGluLmNvbT4gd3JvdGU6Cj4gPiBIaSwKPiA+IAo+ID4gT24g
-VGh1LCAyMDE5LTA0LTI1IGF0IDIzOjA0ICswNTMwLCBKYWdhbiBUZWtpIHdyb3RlOgo+ID4gPiBB
-ZGQgaW5pdGlhbCBzdXBwb3J0IGZvciBPcmFuZ2VwaSBSSzMzOTkgYm9hcmQuCj4gPiA+IAo+ID4g
-PiBTcGVjaWZpY2F0aW9uCj4gPiA+IC0gUm9ja2NoaXAgUkszMzk5Cj4gPiA+IC0gMkdCLzRHQiBE
-RFIzCj4gPiA+IC0gMTZHQiBlTU1DCj4gPiA+IC0gU0QgY2FyZCBzbG90Cj4gPiAKPiA+IExvb2tz
-IGxpa2UgeW91J3JlIG1pc3NpbmcgdS1ib290LGRtLXByZS1yZWxvYyB0byBoYXZlIGl0IHdvcmtp
-bmcsIHdoaWNoCj4gPiB3aWxsIG5lZWQgdG8gYmUgaW50cm9kdWNlZCB3aGVuIG1vdmluZyB0byBy
-azMzOTktdS1ib290LmR0c2kuCj4gCj4gTG9vayBsaWtlIHlvdSBhcmUgY29uZnVzZWQgb3IgZG9l
-c24ndCBjaGVjayB0aGUgcGF0Y2guIFRoaXMgcGF0Y2ggaGF2ZQo+IHJrMzM5OS1vcmFuZ2VwaS11
-LWJvb3QuZHRzaSB3aGljaCBpbmNsdWRlZCByazMzOTktdS1ib290LmR0c2kgdGhhdCBoYXMKPiB1
-LWJvb3QsZG0tcHJlLXJlbG9jIGZvciBzZG1tYy4KCldlbGwgbm8sIGluIHlvdXIgdjMuMSBwYXRj
-aCwgeW91IG5vIGxvbmdlciBoYXZlIHUtYm9vdCxkbS1wcmUtcmVsb2MgaW4KcmszMzk5LXUtYm9v
-dC5kdHNpLCBzbyB5b3UgbmVlZCB0byBhZGQgaXQgaW4gdGhlIGRldmljZSBkdHMgYW5kIHJlbW92
-ZQppdCBpbiB5b3VyIHNlY29uZCBzZXJpZXMgd2hlbiB5b3UgYWRkIGl0IGJhY2sgdG8gcmszMzk5
-LXUtYm9vdC5kdHNpLgoKSXQncyBub3Qgb2theSB0byBzdWJtaXQgdGhlIGJvYXJkIHdpdGggYnJv
-a2VuIE1NQyBzdXBwb3J0IGFuZCBmaXggaXQgaW4KYSBzdWJzZXF1ZW50IHNlcmllcy4KCkNoZWVy
-cywKClBhdWwKCi0tIApQYXVsIEtvY2lhbGtvd3NraSwgQm9vdGxpbgpFbWJlZGRlZCBMaW51eCBh
-bmQga2VybmVsIGVuZ2luZWVyaW5nCmh0dHBzOi8vYm9vdGxpbi5jb20KCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1C
-b290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
+On Fri, Apr 26, 2019 at 8:04 PM Paul Kocialkowski
+<paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org> wrote:
+>
+> Hi,
+>
+> On Fri, 2019-04-26 at 19:57 +0530, Jagan Teki wrote:
+> > On Fri, Apr 26, 2019 at 7:47 PM Paul Kocialkowski
+> > <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org> wrote:
+> > > Hi,
+> > >
+> > > On Thu, 2019-04-25 at 23:04 +0530, Jagan Teki wrote:
+> > > > Add initial support for Orangepi RK3399 board.
+> > > >
+> > > > Specification
+> > > > - Rockchip RK3399
+> > > > - 2GB/4GB DDR3
+> > > > - 16GB eMMC
+> > > > - SD card slot
+> > >
+> > > Looks like you're missing u-boot,dm-pre-reloc to have it working, which
+> > > will need to be introduced when moving to rk3399-u-boot.dtsi.
+> >
+> > Look like you are confused or doesn't check the patch. This patch have
+> > rk3399-orangepi-u-boot.dtsi which included rk3399-u-boot.dtsi that has
+> > u-boot,dm-pre-reloc for sdmmc.
+>
+> Well no, in your v3.1 patch, you no longer have u-boot,dm-pre-reloc in
+> rk3399-u-boot.dtsi, so you need to add it in the device dts and remove
+> it in your second series when you add it back to rk3399-u-boot.dtsi.
+
+Which u-boot,dm-pre-reloc are you taking about?
+
+v3.1 has u-boot,dm-pre-reloc for sdmmc, please check it again [1]
+which were used by subsequent boards on the same series.
+
+The diff between v3 vs v3.1 is like v3 removed u-boot,dm-pre-reloc on
+existing board dts files thought that it will include
+rk3399-u-boot.dtsi will automatically, but not ie fixed in v3.1
+
+>
+> It's not okay to submit the board with broken MMC support and fix it in
+> a subsequent series.
+
+Again, nothing broken. existing boards or dts(i) files are untouched.
+Added only initial rk3399-u-boot.dtsi with sdmmc u-boot,dm-pre-reloc
+node to make use of new boards.  and the same reused by next series
+so-that I can add binman global to all rk3399 boards.
+
+[1] https://patchwork.ozlabs.org/patch/1091534/
