@@ -1,14 +1,12 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: Re: [PATCH] Makefile.spl: Create u-boot-spl-rockchip.bin for rk3399
-Date: Fri, 26 Apr 2019 17:26:13 +0530
-Message-ID: <CAMty3ZB05DExi0B5d8nTwEvAPpByP4riw3YrtcVHG9N4xpFDhQ@mail.gmail.com>
-References: <20190425175431.15370-1-jagan@amarulasolutions.com>
- <CAPnjgZ0bVGMr-y8hct8XMjgiOLFFLp9monhXnx3cgVrn-pbitw@mail.gmail.com>
+Subject: [PATCH v3.1 03/13] rockchip: dts: rk3399: Create initial
+ rk3399-u-boot.dtsi
+Date: Fri, 26 Apr 2019 18:48:17 +0530
+Message-ID: <20190426131817.16776-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAPnjgZ0bVGMr-y8hct8XMjgiOLFFLp9monhXnx3cgVrn-pbitw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,33 +16,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgU2ltb24sCgpPbiBGcmksIEFwciAyNiwgMjAxOSBhdCA5OjI5IEFNIFNpbW9uIEdsYXNzIDxz
-amdAY2hyb21pdW0ub3JnPiB3cm90ZToKPgo+IEhpIEphZ2FuLAo+Cj4gT24gVGh1LCAyNSBBcHIg
-MjAxOSBhdCAxMTo1NCwgSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+IHdy
-b3RlOgo+ID4KPiA+IFJvY2tjaGlwIHBsYXRmb3JtIHdvdWxkIHJlcXVpcmUgYW4gZXhwbGljaXQg
-Y2FsbCB0byBta2ltYWdlIGZvcgo+ID4gY3JlYXRpbmcgYm9vdGFibGUgaW1hZ2VzIHdoaWNoIGlu
-ZGVlZCBzcGVjaWZpYyB0byBTb0MgZmFtaWx5Cj4gPiBhbG9uZyB3aXRoIGJvb3QgZGV2aWNlcy4K
-PiA+Cj4gPiBFeGFtcGxlIG9mIGNyZWF0aW5nIGJvb3RhYmxlIGltYWdlIGZvciByazMzOTkgZmFt
-aWx5IHdpdGggU0QKPiA+IGJvb3QgZGV2aWNlIGFzCj4gPgo+ID4g4oK5IG1raW1hZ2UgLW4gcmsz
-Mzk5IC1UIHJrc2QgLWQgLi9zcGwvdS1ib290LXNwbC1kdGIuYmluIHUtYm9vdC1zcGwtcm9ja2No
-aXAuYmluCj4gPgo+ID4gVGhpcyBwYXRjaCB3b3VsZCBkbyB0aGUgc2FtZSB0aGluayB2aWEgTWFr
-ZWZpbGUuc3BsIGZvciByazMzOTkuCj4gPgo+ID4gVGhpcyB3b3VsZCBiZSBhbiBpbml0aWFsIHZl
-cnNpb24gYW5kIGl0IGNhbiBlYXNpbHkgZXhwYW5kIGZ1cnRoZXIgdG8gc3VwcG9ydAo+ID4gb3Ro
-ZXIgZmFtaWxpZXMgb2YgU29DJ3Mgd2l0aCB2YXJpZXR5IG9mIGJvb3Qgc3RhZ2VzIGxpa2UgVFBM
-LCBTUEwuCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNv
-bHV0aW9ucy5jb20+Cj4gPiAtLS0KPiA+ICBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcg
-fCAgOCArKysrKysrKwo+ID4gIGRvYy9SRUFETUUucm9ja2NoaXAgICAgICAgICAgICB8ICAzICst
-LQo+ID4gIHNjcmlwdHMvTWFrZWZpbGUuc3BsICAgICAgICAgICB8IDIxICsrKysrKysrKysrKysr
-KysrKysrKwo+ID4gIDMgZmlsZXMgY2hhbmdlZCwgMzAgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlv
-bnMoLSkKPgo+IENhbiB3ZSBzZXQgdGhpcyB1cCB0byB1c2UgYmlubWFuPyBUaGF0IHdvdWxkIGFs
-c28gYWxsb3cgdXMgdG8gcHJvZHVjZQo+IGFuIGltYWdlIHdpdGggcGFkZGluZyBzbyB0aGF0IHdl
-IGNhbiB1c2UgYSBzaW1wbGVyIGRkIGNvbW1hbmQuCgpZZXMsIGllIHdoYXQgdGhhdCBJIHBsYW5u
-ZWQgaW5pdGlhbGx5IGFuZCBmaXJlZCBzb21lIGlzc3VlLiB3aWxsIHRyeQphZ2FpbiBhbmQgcG9z
-dCBpZiBJIHN1Y2NlZWQuCgpKYWdhbi4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
-cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+u-boot,dm-pre-reloc is required for SDMMC booted rk3399 boards and
+which is U-Boot specific devicetrees binding.
+
+Move it on global rk3399-u-boot.dtsi file and rest of the U-Boot
+bindings will move it future based on the requirement.
+
+This would help to sync the devicetrees from Linux whenever required
+instead of adding specific nodes.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Reviewed-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+---
+Changes for v3.1:
+- exclude changes for other dts files, since they handle separately.
+
+ arch/arm/dts/rk3399-u-boot.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+ create mode 100644 arch/arm/dts/rk3399-u-boot.dtsi
+
+diff --git a/arch/arm/dts/rk3399-u-boot.dtsi b/arch/arm/dts/rk3399-u-boot.dtsi
+new file mode 100644
+index 0000000000..f533ed95eb
+--- /dev/null
++++ b/arch/arm/dts/rk3399-u-boot.dtsi
+@@ -0,0 +1,8 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
++
++&sdmmc {
++	u-boot,dm-pre-reloc;
++};
+-- 
+2.18.0.321.gffc6fa0e3
