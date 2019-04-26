@@ -1,57 +1,40 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH 0/5] rk3399: make u-boot-rockchip-with-spl.bin
-Date: Fri, 26 Apr 2019 23:33:44 +0530
-Message-ID: <CAMty3ZDzg3jMCH=JZbdaxSufmzMngjH9PSCJMN__5v21TgVicg@mail.gmail.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: Re: [PATCH 1/5] arm64: rockchip: dts: rk3399: Create -u-boot.dtsi
+ files
+Date: Fri, 26 Apr 2019 23:39:57 +0530
+Message-ID: <CAMty3ZCbBYu_B80ORG06pnCj2GQt0EYweky7BLB09Uaqw5yhew@mail.gmail.com>
 References: <20190426133430.17802-1-jagan@amarulasolutions.com>
- <CAMty3ZDqzeRsWvNnPMeAKuhwqfuJm8-Um9fcb+JE=jN3DV7KVw@mail.gmail.com>
- <90241d1e39fde80f674008878f136e121b5bc6a4.camel@bootlin.com>
+ <20190426133430.17802-2-jagan@amarulasolutions.com>
+ <ed9636781f6a0f2f648506a46bff6a656b93ceb2.camel@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <90241d1e39fde80f674008878f136e121b5bc6a4.camel@bootlin.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Cc: Tom Rini <trini@konsulko.com>, linux-rockchip@lists.infradead.org, U-Boot-Denx <u-boot@lists.denx.de>, Akash Gajjar <akash@openedev.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, linux-amarula <linux-amarula@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <ed9636781f6a0f2f648506a46bff6a656b93ceb2.camel-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Cc: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBBcHIgMjYsIDIwMTkgYXQgMTE6MjUgUE0gUGF1bCBLb2NpYWxrb3dza2kKPHBhdWwu
-a29jaWFsa293c2tpQGJvb3RsaW4uY29tPiB3cm90ZToKPgo+IExlIHZlbmRyZWRpIDI2IGF2cmls
-IDIwMTkgw6AgMjM6MjIgKzA1MzAsIEphZ2FuIFRla2kgYSDDqWNyaXQgOgo+ID4gSGkgVG9tIGFu
-ZCBTaW1vbiwKPiA+Cj4gPiBPbiBGcmksIEFwciAyNiwgMjAxOSBhdCA3OjA0IFBNIEphZ2FuIFRl
-a2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPiB3cm90ZToKPiA+ID4gVGhpcyBzZXJpZXMg
-d2lsbCBjcmVhdGUgc2luZ2xlIGJvb3RhYmxlIGltYWdlICd1LWJvb3Qtcm9ja2NoaXAtd2l0aC1z
-cGwuYmluJwo+ID4gPiBmb3IgcmszMzk5IHBsYXRmb3JtIHdpdGggc2luZ2xlIG1ha2UgY29tbWFu
-ZCBpbnN0ZWFkIG9mIGJ1aWxkaW5nIHUtYm9vdAo+ID4gPiBzZXBhcmF0ZWx5IGZvciB1LWJvb3Qu
-aXRiIGFuZCBidXJuIHRoZW0gc2VwYXJhdGVseSBmb3IgU1BMIGFuZCBVLUJvb3QgcHJvcGVyLgo+
-ID4gPgo+ID4gPiBUaGlzIHNlcmllcyBoYXMgZGVwZW5kZWN5IHdpdGhbMV0KPiA+ID4KPiA+ID4g
-dHJhdmlzLWNpIGlzc3VlOgo+ID4gPiAtIG5lZWQgdG8gaW5jbHVkZSAncHl0aG9uLXB5ZWxmdG9v
-bHMnIHBhY2thZ2UsIHRyaWVkIGJ1dCBjYW4ndCBzdWNjZWVkCj4gPiA+IC0gcmlnaHQgbm93IGJ1
-aWxkIGZhaWxlZCBpZiBCTDMxIGlzIG5vdCBleHBvcnRlZCwgYnV0IHRoaXMgd291bGQgbWFuYWdl
-IHRvCj4gPiA+IGNyZWF0ZSBkdW1teSBhcm02NCBlbGYgYnV0IGFueSBoZWxwIG9uIHRoaXMgd291
-bGQgYXBwcmVjaWF0ZS4KPiA+Cj4gPiBBbnkgaW5wdXRzIG9uIHRoaXM/Cj4KPiBJIHRoaW5rIHdl
-IGhhdmUgdGhlIHNhbWUgaXNzdWUgcmVnYXJkaW5nIEJMMzEgZm9yIEFSTTY0IHN1bnhpIGJvYXJk
-cwo+IGRvbid0IHdlPwo+Cj4gSXQgd291bGQgYmUgZ3JlYXQgdG8gaGF2ZSBhIHNvbHV0aW9uIHRv
-IHRoaXMsIGFuZCBldmVuIGJldHRlciBpZiBpdAo+IGNvdWxkIHNjYWxlIHRvIG1vc3QgQVJNNjQg
-cGxhdGZvcm1zIHRvbyEKCkkgdGhvdWdodCBpdCB3b3VsZCBiZSBzcGVjaWZpYyB3aXRoIHRvb2xz
-IGhlcmUsIEkgaGF2ZSBjcmVhdGVkIHNvbWUKZHVtbXkgYmwzMS5lbGYgaWYgQkwzMSBpcyBub3Qg
-c2V0IGJ1dCB0aGUKYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9tYWtlX2ZpdF9hdGYucHkgY2FuJ3Qg
-bWFrZSB0aGUgYnVpbGQuIG9uIHRoZQpvdGhlciBoYW5kIEkgaGF2ZSBjb21waWxlZCBtYWluKCl7
-fSBhbmQgY3JlYXRlZCBibDMxLmVsZiBpdCBpcwpzdWNjZWVkaW5nLgoKQnV0IGZvciBzdW54aSB0
-aGUgYnVpbGQgaXMgZ29pbmcgYXMgbm9ybWFsIGJ5IHNldHRpbmcgL2Rldi9udWxsIGlmIEJMMzEg
-dW5zZXQuCgpbIC16ICIkQkwzMSIgXSAmJiBCTDMxPSJibDMxLmJpbiIKCmlmIFsgISAtZiAkQkwz
-MSBdOyB0aGVuCiAgICAgICAgZWNobyAiV0FSTklORzogQkwzMSBmaWxlICRCTDMxIE5PVCBmb3Vu
-ZCwgcmVzdWx0aW5nIGJpbmFyeSBpcwpub24tZnVuY3Rpb25hbCIgPiYyCiAgICAgICAgZWNobyAi
-UGxlYXNlIHJlYWQgdGhlIHNlY3Rpb24gb24gQVJNIFRydXN0ZWQgRmlybXdhcmUgKEFURikgaW4K
-Ym9hcmQvc3VueGkvUkVBRE1FLnN1bnhpNjQiID4mMgogICAgICAgIEJMMzE9L2Rldi9udWxsCiAg
-ICAgICAgZWNobyAkQkwzMQpmaQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBz
-Oi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
+On Fri, Apr 26, 2019 at 11:30 PM Paul Kocialkowski
+<paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org> wrote:
+>
+> Hi,
+>
+> Please split off this two commits to another dedicated series, with the
+> patch introducing rk3399-u-boot.dtsi. You can then decide to introduce
+> rk3399 boards support (in a third series) before or after.
+
+Just moved thins into initial and make it single patch change[1] and
+send as part of that series since it has rk3399-u-boot.dtsi which can
+make use of new boards on that series.
+
+[1]  https://patchwork.ozlabs.org/patch/1091720/
