@@ -1,145 +1,148 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH v3 06/13] rockchip: rk3399: Add Orangepi RK3399
-	support
-Date: Fri, 26 Apr 2019 22:51:25 +0530
-Message-ID: <CAMty3ZDJV5LLY99oD9eEJ1P4+KWUwfOUzQ8n7zHWmAT2MywW8g@mail.gmail.com>
-References: <20190425173427.13445-1-jagan@amarulasolutions.com>
- <20190425173427.13445-7-jagan@amarulasolutions.com>
- <51dab1c2fea1ca16b892c9face5fd4c6b451d07d.camel@bootlin.com>
- <CAMty3ZADnLE14jh14qM7a9-oeKHsrSu1XHzPBfLhBtqEOgBviQ@mail.gmail.com>
- <f89a6bbc7390db5f9ed6f7ad732b6451cdea15c4.camel@bootlin.com>
- <CAMty3ZCwN8bRopZugOeV=Ym4xZhncTFeEt8_Se7-wjSoA7Wu7Q@mail.gmail.com>
- <5953e5f8b8d45cdc5c208c75b16e831391f3db08.camel@bootlin.com>
- <CAMty3ZCDsSUfF-v7kLQ-v4QNtmAQWhcf=257D1f3qcwFvd=apA@mail.gmail.com>
- <b418aa42f44fe4e8cad9ce02eb2a658df31f8bf4.camel@bootlin.com>
- <CAMty3ZBXNeeY9q8qs2FOKoh2MGmBmMD8whMNavp40_gTATm--Q@mail.gmail.com>
- <6d70dd5bdf82ae0ad6fbff671c0acc2e17639f8e.camel@bootlin.com>
- <CAMty3ZB1GSmtCpZ5JA1BD4udQYrTpHh9c99r_WNgUDFzdKZdPg@mail.gmail.com>
- <d5d26a75416da7249f21517e080cff2309393dfe.camel@bootlin.com>
- <CAMty3ZCBO4LL2FXDA6NkeAmMVzD=5s7mTamb3+Np8Gkqi5hDFA@mail.gmail.com>
- <d9721fd7d1017f8b72581a3be2b256e90dbc0511.camel@bootlin.com>
- <CAMty3ZBe_Y7u3cc6XYSiP2p+h0GhfpSTzWz988_7cPGVNhkcRg@mail.gmail.com>
- <3460bcce1dd9f816d73268968170579bbbd4a132.camel@bootlin.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH v5 00/13] rockchip: Add new rk3399 boards
+Date: Fri, 26 Apr 2019 22:56:44 +0530
+Message-ID: <20190426172653.2930-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <3460bcce1dd9f816d73268968170579bbbd4a132.camel@bootlin.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Cc: U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, Akash Gajjar <akash@openedev.com>, linux-amarula <linux-amarula@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBBcHIgMjYsIDIwMTkgYXQgMTA6MzggUE0gUGF1bCBLb2NpYWxrb3dza2kKPHBhdWwu
-a29jaWFsa293c2tpQGJvb3RsaW4uY29tPiB3cm90ZToKPgo+IEhpLAo+Cj4gTGUgdmVuZHJlZGkg
-MjYgYXZyaWwgMjAxOSDDoCAyMjoyMyArMDUzMCwgSmFnYW4gVGVraSBhIMOpY3JpdCA6Cj4gPiA+
-ID4gPiA+IEZpcnN0IHNlcmllcywgSSBnZXQgaW50cm9kdWNlZCByazMzOTktdS1ib290LmR0c2ks
-IGFuZCBvbmx5IHRoZSBuZXcKPiA+ID4gPiA+ID4gYm9hcmRzIGFyZSB1c2luZyB0aGlzIGZpbGUg
-YW5kIG5leHQgc2VyaWVzIHJlc3Qgb2YgdGhlIGJvYXJkcyBhcmUKPiA+ID4gPiA+ID4gdXNpbmcg
-d2hpY2ggaW5kZWVkIGEgdmFsaWQgc3RlcC4gd2hhdCBpcyBpbmNvbnNpc3RlbnQgaGVyZSwgSSBk
-b24ndAo+ID4gPiA+ID4gPiB1bmRlcnN0YW5kLgo+ID4gPiA+ID4KPiA+ID4gPiA+IFllcywgd2hh
-dCB5b3UgYXJlIGRlc2NyaWJpbmcgaXMgZXhhY3RseSB0aGUgaXNzdWUuIEl0IGRvZXMgbm90IG1h
-a2UKPiA+ID4gPiA+IHNlbnNlIHRvIGludHJvZHVjZSBhIG5ldyBjb21tb24gdS1ib290IGR0c2kg
-Zm9yIHJrMzM5OSBhbmQgYWRkIG5ldwo+ID4gPiA+ID4gZGV2aWNlcyB0aGF0IHVzZSB0aGlzIGZp
-bGUgKmJlZm9yZSogc3dpdGNoaW5nIGV4aXN0aW5nIGRldmljZXMgdG8gdGhlCj4gPiA+ID4gPiBu
-ZXcgY29tbW9uIHUtYm9vdCBkdHNpIGZvciByazMzOTkgaW4gdGhlIHNhbWUgc2VyaWVzLgo+ID4g
-PiA+Cj4gPiA+ID4gSG93IGNvbWU/IGV4aXN0aW5nIGJvYXJkcyBkb2Vzbid0IHVzZSByazMzOTkt
-dS1ib290LmR0c2kgYXQgYWxsPyBhcwo+ID4gPiA+IHBhdGNoIHNheXMgaXQgaXMgYW4gaW5pdGlh
-bCBvbmUgYW5kIGl0IGlzIGJpdCBoYXJkIHRvIGFkZCBhbGwgYXQgb25jZS4KPiA+ID4gPiBpZSB3
-aGF0IEkgZGlkIGZvciBpLk1YNi4gaGF2aW5nIHNhaWQgdGhhdCByazMzOTktdS1ib290LmR0c2kg
-aXMKPiA+ID4gPiB1bmFmZmVjdGVkIHRvIGFueSBvZiB0aGUgZXhpc3RpbmcgZHRzIGZpbGVzLgo+
-ID4gPgo+ID4gPiBBZ2FpbiwgaXQncyBub3QgYSB0ZWNobmljYWwgaXNzdWUuIFlvdXIgcHJvcG9z
-YWwgd29ya3MgYW5kIGhhcyBubwo+ID4gPiB0ZWNobmljYWwgaXNzdWUuIFRoZSBpc3N1ZSBpcyBp
-biBob3cgdGhlIGNvbW1pdHMgYXJlIGdyb3VwZWQgdG9nZXRoZXIuCj4gPiA+IFBhdGNoIHNlcmll
-cyBuZWVkIHRvIG1ha2UgbG9naWNhbCBzZW5zZS4gT25lIHBhdGNoIHNlcmllcyBzaG91bGQKPiA+
-ID4gYWNjb21wbGlzaCBvbmUgY2hhbmdlLCBhbmQgZWFjaCBwYXRjaCByZXByZXNlbnRzIGEgc3Rl
-cCBvZiB0aGF0IGNoYW5nZS4KPiA+Cj4gPiBJdCdzIGFib3V0IGhvdyB5b3UgdGhpbmsuIHNheSBp
-ZiBJIHdvdWxkbid0IHNlbmQgdGhlIGJpbm1hbiwgSSdtIHN1cmUKPiA+IHRoaXMga2luZCBvZiBk
-aXNjdXNzaW9uIG1heSBub3QgaGFwcGVuLiBJbiBmaXJzdCBtYWlsIHlvdSBzYWlkCj4gPiAic29t
-ZXRoaW5nIGJyb2tlbiBhbmQgaG93IGl0IGNhbiByZXBhaXIgbmV4dCIgdGhhdCBpbmRlZWQgZG9l
-c24ndCBtYWtlCj4gPiBhbnkgc2Vuc2Ugb2Ygd2l0aG91dCB1bmRlcnN0YW5kaW5nIHRoZSB3aG9s
-ZSBzZXJpZXMgb2YgY2hhbmdlcy4KPgo+IE9uZSBwYXJ0IHRvIHRoYXQgaXMgdGhhdCBJIGhhZCBt
-aXN1bmRlcnN0b29kIGEgZmV3IHRoaW5ncywgYnV0IEkgcmVhbGx5Cj4gc2hvdWxkIG5vdCBoYXZl
-IHRvIGxvb2sgYXQgZWFjaCBwYXRjaCBiZWZvcmUgSSBjYW4gaGF2ZSBhbiBpZGVhIG9mIHdoYXQK
-PiB0aGUgc2VyaWVzIGRvZXMuIFlvdXIgc2VyaWVzIGlzIGNhbGxlZCAicm9ja2NoaXA6IEFkZCBu
-ZXcgcmszMzk5Cj4gYm9hcmRzIiBhbmQgd2l0aCB0aGUgdjMuMSBjaGFuZ2UgeW91IG1hZGUsIHRo
-ZSB0aXRsZSBpcyBubyBsb25nZXIgdHJ1ZS4KPiBZb3UgYXJlIGRvaW5nIHRoYXQgKyBpbnRyb2R1
-Y2luZyBhIG5ldyByazMzOTkgdS1ib290IGR0c2kgd2l0aG91dAo+IHN3aXRjaGluZyBleGlzdGlu
-ZyBib2FyZHMgdG8gaXQgYmVmb3JlIGFkZGluZyBuZXcgb25lcy4KPgo+IEZyb20gdGhhdCBtb21l
-bnQsIHlvdSBuZWVkZWQgdG8gc3BsaXQgeW91ciBjaGFuZ2VzIGludG8gdHdvIHNlcmllcy4KPiBJ
-bnN0ZWFkIG9mIHRoYXQsIHlvdSBtYWRlIGFub3RoZXIgc2VyaWVzIHdpdGggbW9zdGx5IHVucmVs
-YXRlZCBjaGFuZ2VzCj4gd2hlcmUgeW91IGluY2x1ZGVkIGFuIHVucmVsYXRlZCBjb21taXQgYWRk
-aW5nIHRoZSBwcmUtcmVsb2MgZW50cmllcyB0bwo+IHRoZSBkdHNpIGNyZWF0ZWQgaW4gdGhlIHBy
-ZXZpb3VzIHNlcmllcy4KPgo+IFRoYXQncyBhbiBpc3N1ZSBmb3IgY29tbXVuaWNhdGlvbiB3aXRo
-IHRoZSBjb21tdW5pdHkuCj4KPiA+IEFueSBuZXcgY2hhbmdlcyB3b3VsZCBjb21lIHVwIHdpdGgg
-aW5pdGlhbCB2ZXJzaW9uLCB0aGF0IHdoYXQgd2UKPiA+IHVzdWFsbHkgc3VwcG9ydGVkLCBpZSB3
-aGF0IHdlIGRpZCAtdS1ib290LmR0c2kgY2hhbmdlcyB0byBpLk1YNiBhbmQKPiA+IGRldmVsb3Bl
-cnMgYXJlIHVzaW5nIHRoZSBzYW1lIGlzIGFkZGluZyBvbmUgYWZ0ZXIgYW5vdGhlci4KPgo+IEJ1
-dCB5b3UgYWxyZWFkeSBoYXZlIGJvYXJkcyBpbiB0aGUgdHJlZSB0aGF0IG5lZWRzIHRoZSB0cmVl
-LiBZb3UgY2FuCj4gbWFrZSBpbmRpdmlkdWFsIGNvbW1pdHMgZm9yIHN3aXRjaGluZyBib2FyZHMg
-dG8gdGhlIG5ldyBkdHNpLCBidXQgeW91Cj4gbmVlZCB0byBkbyB0aGF0IGluIHRoZSBzYW1lIHNl
-cmllcyBhcyBpbnRyb2R1Y2luZyB0aGUgZHRzaSBpZiB5b3UgYXJlCj4gc3VibWl0dGluZyBib3Ro
-IHRoaW5ncyBhdCB0aGUgc2FtZSB0aW1lLiBJZiB5b3Ugd2FudCB0byBoYXZlIHRoZW0KPiBtZXJn
-ZWQgc2VwYXJhdGVseSwgdGhlbiB5b3UgY2FuIHNlbmQgZGV2aWNlIGR0c2kgcGF0Y2hlcyBpbmRp
-dmlkdWFsbHkKPiBmb3IgdGhhdCwgYnV0IG5vdCBhcyBwYXJ0IG9mIGFub3RoZXIgdW5yZWxhdGVk
-IHNlcmllcy4KPgo+ID4gPiBUaGlzIGlzIGhvdyB1cHN0cmVhbSBjb250cmlidXRpb25zIHdvcmss
-IGFuZCBpdCdzIGEgcG93ZXJmdWwgd2F5IHRvCj4gPiA+IGFsbG93IGJvdGggZWZmaWNpZW50IGNv
-ZGUgcmV2aWV3IGFuZCBnb29kIGNvZGUgcXVhbGl0eS4gV2Ugd2FudCB0byBrZWVwCj4gPiA+IHRo
-aW5ncyBhcyBzaW1wbGUsIGV4cGxpY2l0IGFuZCB3ZWxsLWRlc2NyaWJlZCBhcyBwb3NzaWJsZSwg
-c28gdGhhdAo+ID4gPiB0aGluZ3MgYXJlIGVhc3kgZm9yIHJldmlld2VycyBhbmQgYXMgbWFueSBw
-ZW9wbGUgYXMgcG9zc2libGUgY2FuCj4gPiA+IHVuZGVyc3RhbmQgdGhlIGlzc3VlIGFuZCBzaGFy
-ZSB0aGVpciB0aG91Z2h0cyBhYm91dCBpdC4KPiA+Cj4gPiBZZXMsIHdlIGFkb3B0IHRoZXNlIHBy
-aW5jaXBsZXMgYW5kIHRoYXQgd2hhdCB3ZSBhcmUgcmVhbGx5IHdvcmtpbmcuCj4gPgo+ID4gPiBJ
-dCBpcyBhbGwgcGFydCBvZiBjb21tdW5pY2F0aW9uIHdpdGggb3RoZXJzIGFzIHBhcnQgb2YgYSBj
-b21tdW5pdHkuCj4gPiA+IEl0IGlzIGRlZmluaXRlbHkgYW4gaW1wbGljaXQgcnVsZSB0aGF0IGlz
-IG5vdCB3cml0dGVuIGRvd24gc29tZXdoZXJlCj4gPiA+IHByZWNpc2VseSwgYnV0IHRoYXQncyB0
-aGUgc29jaWFsIGNvbnRyYWN0IGJldHdlZW4gZGV2ZWxvcGVycyB0aGF0IHdvcmsKPiA+ID4gb24g
-YSBjb21tb24gc29mdHdhcmUgcHJvamVjdC4KPiA+ID4KPiA+ID4gSW4gdGhhdCwgY29udHJpYnV0
-aW5nIHRvIHVwc3RyZWFtIGlzIGRpZmZlcmVudCB0aGFuIGJhc2VsaW5lIHRlY2gKPiA+ID4gY29t
-cGFueSBzdGFuZGFyZHMsIGJlY2F1c2UgeW91IGhhdmUgdG8gdGFrZSBleHRyYSBzdGVwcyB0byBk
-ZXNjcmliZQo+ID4gPiB5b3VyIHdvcmsgYW5kIGV4cGxhaW4gaXQgdG8gb3RoZXJzLiBZb3UgbXVz
-dCBtYWtlIHN1cmUgeW91IGdpdmUgdGhlbQo+ID4gPiBhbGwgdGhlIGNvbWZvcnQgdGhleSBuZWVk
-IHRvIHBhaW5sZXNzbHkgdW5kZXJzdGFuZCB3aGF0IHlvdSBkaWQuCj4gPgo+ID4gSSBob3BlIGFs
-bCBteSBjb21tdW5pY2F0aW9uIHdhcyByZWxldmFudCB0byB0aGUgdG9waWNzLCBJIGNhbiBldmVu
-Cj4gPiBnaXZlbiB0aGUgZXhhbXBsZSBob3cgdGhpbmdzIHdlcmUgbW92ZWQuCj4KPiBDbGVhcmx5
-IHRoZXJlIHdhcyBhIG1ham9yIGNvbW11bmljYXRpb24gaXNzdWUgYmV0d2VlbiB1cy4gWW91IG9u
-bHkKPiBhbnN3ZXJlZCBvbiB0ZWNobmljYWwgdG9waWNzIGFuZCBuZXZlciBhYm91dCBob3cgeW91
-ciBwYXRjaCBzZXJpZXMgaXMKPiBvcmdhbml6ZWQgYW5kIHdoYXQgbG9naWNhbCBjaGFuZ2VzIHlv
-dSBhcmUgbWFraW5nLgo+Cj4gVG8gYmUgaG9uZXN0IHdpdGggeW91LCBJIGZlZWwgbGlrZSB3ZSBo
-YXZlIGEgZ2VuZXJhbCBjb21tdW5pY2F0aW9uCj4gaXNzdWUgd2hlcmUgeW91IG9ubHkgc2VlbSB0
-byBmb2N1cyBvbiB0ZWNobmljYWwgYXNwZWN0cywgd2hlbiB0aGUKPiBpc3N1ZXMgYXJlIGFib3V0
-IHRoZSBtZXRhLWRhdGEgb2YgdGhlIGNoYW5nZXMgc3VjaCBhcyBjb21taXQgbWVzc2FnZXMsCj4g
-Y29kZSBjb21tZW50cyBhbmQgaG93IGNoYW5nZXMgYXJlIG9yZ2FuaXplZCB0b2dldGhlci4KCk5v
-IG9uZSBpcyBiZXR0ZXIgaW4gYWxsIGFzcGVjdHMsIGFuZCB0aGluZ3Mgd2VyZSBpbXByb3Zpbmcg
-bm8gb25lIGNhbQptYWtlIGdsb2JhbCBzdGF0ZW1lbnRzIGxpa2UgdGhpcyB0aG91Z2ggaGUgY2Fu
-IGZpbmQgc29tZXRoaW5nIGdhcHMgb24Kb24gcHJldmlvdXMgb25lLiBZb3Ugd291bGQgYmV0dGVy
-IHN1Z2dlc3Qgb24gdGhlIGNvbW1pdCB3aGVyZSBpdApjb25mdXNlZCBjYW4gbWFrZSBtZSBiZXR0
-ZXIgdW5kZXJzdGFuZGluZy4KCj4KPiA+ID4gSXQgcGxheXMgYSBncmVhdCBkZWFsIGluIGhhdmlu
-ZyBzZXJpZXMgYWNjZXB0ZWQgd2l0aG91dCBnb2luZyB0aHJvdWdoCj4gPiA+IHZlcnkgbG9uZyBk
-aXNjdXNzaW9ucyBhbmQgbnVtZXJvdXMgaXRlcmF0aW9ucy4gVGhlIGxlc3MgcXVlc3Rpb25zCj4g
-PiA+IG1haW50YWluZXJzIHdpbGwgaGF2ZSBhYm91dCB5b3VyIHdvcmssIHRoZSBiZXR0ZXIuIFRo
-ZXkgbWF5IGRpc2FncmVlCj4gPiA+IHdpdGggdGhlIGRlY2lzaW9ucyB5b3UgdG9vaywgYnV0IHRo
-ZXNlIGRpc2N1c3Npb25zIGFyZSBwdXJlbHkgdGVjaG5pY2FsCj4gPiA+IGFuZCBjYW4gYmUgcmVz
-b2x2ZWQgcXVpY2tseS4KPiA+Cj4gPiBQdXJlIHRlY2huaWNhbCwgeWVzIGllIHdoYXQgSSB0aG91
-Z2h0IG9mZi4gbm8gcHJvYmxlbSBmb3IgbWUgZm9yIGxvbmcKPiA+IGRpc2N1c3Npb24gYXRsZWFz
-dCBwZW9wbGUgY2FuIHVuZGVyc3RhbmQgaG93IHRoaW5ncyB3ZW50Lgo+Cj4gQ29tbXVuaXR5IGRp
-c2N1c3Npb25zIGNhbiBub3QsIGFuZCBtdXN0IG5vdCBiZSBwdXJlbHkgdGVjaG5pY2FsLiBUaGlz
-Cj4gaXMgbm90IGEgcGVyc29uYWwgb3BpbmlvbiBvZiBtaW5lLCB0aGlzIGlzIGhvdyBhbGwgZnJl
-ZSBzb2Z0d2FyZQo+IGNvbW11bml0aWVzIHdvcmsuIFNvbWUgY2FyZSBtb3JlIHRoYW4gb3RoZXJz
-IGFib3V0IGl0LCBidXQgaW4gdmVyeQo+IHRlY2huaWNhbCBwcm9qZWN0cyBsaWtlIFUtQm9vdCBh
-bmQgTGludXgsIHBlb3BsZSBuZWVkIHRvIGNhcmUgYWJvdXQgaXQKPiBhIGxvdC4KPgo+IFRoZSBt
-b3JlIHRlY2huaWNhbCB0aGUgdGhpbmdzIHlvdSBhcmUgZGVhbGluZyB3aXRoIGFyZSwgdGhlIG1v
-cmUgeW91Cj4gbmVlZCB0byBkbyBvbiB0aGUgbm9uLXRlY2huaWNhbCBzaWRlIHRvIG1ha2Ugc3Vy
-ZSB3aGF0IHlvdSBhcmUgZG9pbmcgaXMKPiBjbGVhciwgdW5kZXJzdG9vZCBieSBldmVyeW9uZSBh
-bmQgbWFrZXMgc2Vuc2Ugb24gaXRzIG93bi4KClRydWUsIHRoaXMgaXMgd2hhdCBJJ20gdHJ5aW5n
-IHRvIHdvcmsgYWx3YXlzLCB0aGFua3MuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUK
-aHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
+This is v5 patchset for New rk3399 boards support wrt previous
+version[1]
+
+Overall this series add support below rk3399 boards
+- Orangepi RK3399
+- NanoPI M4
+- NanoPI NEO4
+- Orangepi RK3399
+- Rock PI 4
+- Rockpro64
+
+All the respective dts(i) files are synced from Linux 5.1-rc2 and few
+dts(i) from linux-next.
+
+Out of all above boards Rockpor64, Rock-PI and Nanopi NEO4 would support
+booting via Rockchip miniloader as of now.
+
+For booting the same with SPL NEO4 would require dynamic dram timing
+detection and rest require LPDDR4 code. There is WIP[2] for these
+dependencies and this would require big chunk of changes will effect
+all the rk3399 boards, so I'm planning to mark it for next MW. 
+
+Changes for v5:
+- Make all changes related to move sdmmc, spi1 u-boot,dm-pre-reloc
+  properties into all rk3399 dts(i) files.
+Changes for v4:
+- don't include existing dts(i) sdmmc, u-boot,dm-pre-reloc into
+  rk3399-u-boot.dtsi
+Changes for v3:
+- drop NanoPC T4 for now, since board is yet to receive.
+- add Rock PI-4 board.
+- add separate -u-boot.dtsi file for nanopi4 sdram changes.
+- collect Paul, Philipp and Kever Reviewed-by tags
+
+[1] https://patchwork.ozlabs.org/cover/1091580/
+[2] https://github.com/amarula/u-boot-amarula/tree/rockdev-lpddr4
+
+Any inputs?
+Jagan.
+
+Jagan Teki (13):
+  rockchip: dts: rk3399: Sync rk3399-opp from Linux
+  rockchip: dts: rk3399: Sync pwm2_pin_pull_down from Linux 5.1-rc2
+  arm64: rockchip: dts: Add rk3399-u-boot.dtsi files
+  Kconfig: Add default SPL_FIT_GENERATOR for rockchip
+  arm: rockchip: rk3399: Move common configs in Kconfig
+  rockchip: rk3399: Add Orangepi RK3399 support
+  rockchip: dts: rk3399: Sync rk3399-nanopi4.dtsi from Linux
+  rockchip: dts: rk3399: nanopi4: Use CD pin as RK_FUNC_1
+  rockchip: rk3399: Add Nanopi M4 board support
+  rockchip: rk3399: Add Nanopi NEO4 board support
+  rockchip: rk3399: Add Rockpro64 board support
+  rockchip: rk3399: Add Rock PI 4 support
+  doc: rockchip: Add global doc for rk3399 build/flash
+
+ Kconfig                                     |   1 +
+ arch/arm/dts/Makefile                       |   5 +
+ arch/arm/dts/rk3399-evb-u-boot.dtsi         |   7 +
+ arch/arm/dts/rk3399-evb.dts                 |   2 -
+ arch/arm/dts/rk3399-ficus-u-boot.dtsi       |   7 +
+ arch/arm/dts/rk3399-ficus.dts               |   1 -
+ arch/arm/dts/rk3399-firefly-u-boot.dtsi     |   7 +
+ arch/arm/dts/rk3399-firefly.dts             |   2 -
+ arch/arm/dts/rk3399-gru-bob-u-boot.dtsi     |   7 +
+ arch/arm/dts/rk3399-gru-bob.dts             |   1 -
+ arch/arm/dts/rk3399-gru.dtsi                |   1 -
+ arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi   |   7 +
+ arch/arm/dts/rk3399-nanopi-m4.dts           |  66 ++
+ arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi |   6 +
+ arch/arm/dts/rk3399-nanopi-neo4.dts         |  50 ++
+ arch/arm/dts/rk3399-nanopi4-u-boot.dtsi     |  11 +
+ arch/arm/dts/rk3399-nanopi4.dtsi            | 703 ++++++++++++++++++
+ arch/arm/dts/rk3399-opp.dtsi                | 133 ++++
+ arch/arm/dts/rk3399-orangepi-u-boot.dtsi    |   7 +
+ arch/arm/dts/rk3399-orangepi.dts            | 771 ++++++++++++++++++++
+ arch/arm/dts/rk3399-puma-ddr1600.dts        |   2 +-
+ arch/arm/dts/rk3399-puma.dtsi               |   3 -
+ arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi   |   6 +
+ arch/arm/dts/rk3399-rock-pi-4.dts           | 606 +++++++++++++++
+ arch/arm/dts/rk3399-rock960-u-boot.dtsi     |   7 +
+ arch/arm/dts/rk3399-rock960.dts             |   1 -
+ arch/arm/dts/rk3399-rockpro64-u-boot.dtsi   |   6 +
+ arch/arm/dts/rk3399-rockpro64.dts           | 712 ++++++++++++++++++
+ arch/arm/dts/rk3399-u-boot.dtsi             |  12 +
+ arch/arm/dts/rk3399.dtsi                    |   6 +
+ arch/arm/mach-rockchip/Kconfig              |  16 +
+ board/rockchip/evb_rk3399/MAINTAINERS       |  33 +
+ configs/chromebook_bob_defconfig            |  17 -
+ configs/evb-rk3399_defconfig                |  17 -
+ configs/ficus-rk3399_defconfig              |  17 -
+ configs/firefly-rk3399_defconfig            |  17 -
+ configs/nanopi-m4-rk3399_defconfig          |  58 ++
+ configs/nanopi-neo4-rk3399_defconfig        |  58 ++
+ configs/orangepi-rk3399_defconfig           |  58 ++
+ configs/puma-rk3399_defconfig               |  16 -
+ configs/rock-pi-4-rk3399_defconfig          |  58 ++
+ configs/rock960-rk3399_defconfig            |  17 -
+ configs/rockpro64-rk3399_defconfig          |  58 ++
+ doc/README.rockchip                         | 209 +++++-
+ 44 files changed, 3691 insertions(+), 114 deletions(-)
+ create mode 100644 arch/arm/dts/rk3399-evb-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-ficus-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-firefly-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-gru-bob-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-nanopi-m4.dts
+ create mode 100644 arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-nanopi-neo4.dts
+ create mode 100644 arch/arm/dts/rk3399-nanopi4-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-nanopi4.dtsi
+ create mode 100644 arch/arm/dts/rk3399-opp.dtsi
+ create mode 100644 arch/arm/dts/rk3399-orangepi-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-orangepi.dts
+ create mode 100644 arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-rock-pi-4.dts
+ create mode 100644 arch/arm/dts/rk3399-rock960-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-rockpro64.dts
+ create mode 100644 arch/arm/dts/rk3399-u-boot.dtsi
+ create mode 100644 configs/nanopi-m4-rk3399_defconfig
+ create mode 100644 configs/nanopi-neo4-rk3399_defconfig
+ create mode 100644 configs/orangepi-rk3399_defconfig
+ create mode 100644 configs/rock-pi-4-rk3399_defconfig
+ create mode 100644 configs/rockpro64-rk3399_defconfig
+
+-- 
+2.18.0.321.gffc6fa0e3
