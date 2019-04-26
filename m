@@ -1,84 +1,120 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH v3.1 03/13] rockchip: dts: rk3399: Create
-	initial rk3399-u-boot.dtsi
-Date: Fri, 26 Apr 2019 19:32:52 +0530
-Message-ID: <CAMty3ZC1200fH34qoOBTuokgmby-uLGp6ocCKtkFPQLo-8XLLA@mail.gmail.com>
+From: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [PATCH v3.1 03/13] rockchip: dts: rk3399: Create initial
+ rk3399-u-boot.dtsi
+Date: Fri, 26 Apr 2019 16:16:43 +0200
+Message-ID: <863a27628b5e563bb769accf4595575e91023ebe.camel@bootlin.com>
 References: <20190426131817.16776-1-jagan@amarulasolutions.com>
  <accbbfc8d9d0ff50996f12b23b7588c453236864.camel@bootlin.com>
  <CAMty3ZC5aN-=HKRNy9fYvnQ0wppvBu38WwaCiKWpcnMBTMb7vw@mail.gmail.com>
  <4dc7e2d0f4f0da508224e3ffa089f8780395493f.camel@bootlin.com>
  <CAMty3ZDpkyBP2M0i216Zn9OoebOK0nVtX6zuq5DqX+TJJufbFg@mail.gmail.com>
  <8221cbddf0a0e9e8645ef418a3dcbe4692223aea.camel@bootlin.com>
+ <CAMty3ZC1200fH34qoOBTuokgmby-uLGp6ocCKtkFPQLo-8XLLA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <8221cbddf0a0e9e8645ef418a3dcbe4692223aea.camel@bootlin.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Cc: U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, Akash Gajjar <akash@openedev.com>, linux-amarula <linux-amarula@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAMty3ZC1200fH34qoOBTuokgmby-uLGp6ocCKtkFPQLo-8XLLA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBBcHIgMjYsIDIwMTkgYXQgNzoyOCBQTSBQYXVsIEtvY2lhbGtvd3NraQo8cGF1bC5r
-b2NpYWxrb3dza2lAYm9vdGxpbi5jb20+IHdyb3RlOgo+Cj4gSGksCj4KPiBPbiBGcmksIDIwMTkt
-MDQtMjYgYXQgMTk6MjAgKzA1MzAsIEphZ2FuIFRla2kgd3JvdGU6Cj4gPiBPbiBGcmksIEFwciAy
-NiwgMjAxOSBhdCA3OjEyIFBNIFBhdWwgS29jaWFsa293c2tpCj4gPiA8cGF1bC5rb2NpYWxrb3dz
-a2lAYm9vdGxpbi5jb20+IHdyb3RlOgo+ID4gPiBIaSwKPiA+ID4KPiA+ID4gT24gRnJpLCAyMDE5
-LTA0LTI2IGF0IDE5OjA3ICswNTMwLCBKYWdhbiBUZWtpIHdyb3RlOgo+ID4gPiA+IE9uIEZyaSwg
-QXByIDI2LCAyMDE5IGF0IDc6MDQgUE0gUGF1bCBLb2NpYWxrb3dza2kKPiA+ID4gPiA8cGF1bC5r
-b2NpYWxrb3dza2lAYm9vdGxpbi5jb20+IHdyb3RlOgo+ID4gPiA+ID4gSGksCj4gPiA+ID4gPgo+
-ID4gPiA+ID4gT24gRnJpLCAyMDE5LTA0LTI2IGF0IDE4OjQ4ICswNTMwLCBKYWdhbiBUZWtpIHdy
-b3RlOgo+ID4gPiA+ID4gPiB1LWJvb3QsZG0tcHJlLXJlbG9jIGlzIHJlcXVpcmVkIGZvciBTRE1N
-QyBib290ZWQgcmszMzk5IGJvYXJkcyBhbmQKPiA+ID4gPiA+ID4gd2hpY2ggaXMgVS1Cb290IHNw
-ZWNpZmljIGRldmljZXRyZWVzIGJpbmRpbmcuCj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+IE1vdmUg
-aXQgb24gZ2xvYmFsIHJrMzM5OS11LWJvb3QuZHRzaSBmaWxlIGFuZCByZXN0IG9mIHRoZSBVLUJv
-b3QKPiA+ID4gPiA+ID4gYmluZGluZ3Mgd2lsbCBtb3ZlIGl0IGZ1dHVyZSBiYXNlZCBvbiB0aGUg
-cmVxdWlyZW1lbnQuCj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+IFRoaXMgd291bGQgaGVscCB0byBz
-eW5jIHRoZSBkZXZpY2V0cmVlcyBmcm9tIExpbnV4IHdoZW5ldmVyIHJlcXVpcmVkCj4gPiA+ID4g
-PiA+IGluc3RlYWQgb2YgYWRkaW5nIHNwZWNpZmljIG5vZGVzLgo+ID4gPiA+ID4gPgo+ID4gPiA+
-ID4gPiBTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNv
-bT4KPiA+ID4gPiA+ID4gUmV2aWV3ZWQtYnk6IFBhdWwgS29jaWFsa293c2tpIDxwYXVsLmtvY2lh
-bGtvd3NraUBib290bGluLmNvbT4KPiA+ID4gPiA+Cj4gPiA+ID4gPiBTaW5jZSB5b3VyIHBhdGNo
-IGhhcyBjaGFuZ2VkIHNpZ25pZmljYW50bHksIHlvdSBjYW4gbm8gbG9uZ2VyIGluY2x1ZGUgYQo+
-ID4gPiA+ID4gUmV2aWV3ZWQtYnkgdGhhdCB3YXMgZ2l2ZW4gb24gYSBwcmV2aW91cyBpdGVyYXRp
-b24uCj4gPiA+ID4gPgo+ID4gPiA+ID4gSXQgbG9va3MgbGlrZSB3ZSBhcmUgc3RpbGwgbWlzc2lu
-ZyBiaXRzIHRvIGhhdmUgcmszMzk5LXUtYm9vdC5kdHNpCj4gPiA+ID4gPiBpbmNsdWRlZCwgc28g
-dGhpcyBwYXRjaCBkb2VzIG5vdCBnZXQgbXkgUmV2aWV3ZWQtYnkgdGFnLgo+ID4gPiA+Cj4gPiA+
-ID4gSXQgd2lsbCBpbmNsdWRlIHJvY2tjaGlwLXUtYm9vdC5kdHNpIGF1dG9tYXRpY2FsbHkgYW5k
-IEkgbWFkZSB0aGUKPiA+ID4gPiByZWNlcHRpdmUgY2hhbmdlcyB0byBpbmNsdWRlIG90aGVyIGZp
-bGVzIGluIHRoaXMgcGF0Y2ggWzFdIGFuZCBzdXJlIEkKPiA+ID4gPiB3aWxsIGFzayBQaGlsaXBw
-IHRvIHJlbW92ZSB0aGUgcmV2aWV3ZWQtYnkgdGFnLCB0aGFua3MuCj4gPiA+Cj4gPiA+IE1vc3Qg
-aW1wb3J0YW50bHkgKG5vdyB0aGF0IEkgc2VlIHRoZSBuZXcgc2VyaWVzKSwgeW91IHNob3VsZCBj
-ZXJ0YWlubHkKPiA+ID4gaGF2ZSBzZW50IHRoYXQgcGF0Y2ggYXMgcGFydCBvZiB5b3VyIG5ldyBz
-ZXJpZXMgYmVjYXVzZSB3ZSBub3cgaGF2ZSBhbgo+ID4gPiBpbnRlci1kZXBlbmRlbmN5IGJldHdl
-ZW4gYm90aCBzZXJpZXMuCj4gPgo+ID4gSXQgaXMgbm90IGxpa2UgYW4gaW50ZXItZGVwZW5kZW5j
-eSB0aGUgcHJldmlvdXMgcmszMzk5LXUtYm9vdC5kdHNpIGlzCj4gPiBub3QgaW5jbHVkZWQgYnkg
-dGhlc2UgZmlsZXMgc28gdGhleSB3b3VsZCB3b3JrIGFzIGJlZm9yZS4gYW5kIG5vdyB0aGlzCj4g
-PiBzZXJpZXMgd291bGQgbmVlZCB0aGlzIGNoYW5nZSB0byBpbmNsdWRlIHJrMzM5OS11LWJvb3Qu
-ZHRzaSBzaW5jZSB0aGUKPiA+IGdvYWwgaGVyZSB0byBhZGQgYmlubWFuIG5vZGUgdG8gY29tbW9u
-IGZvciBhbGwgcmszMzk5IGR0cyBmaWxlcy4KPgo+IFdlbGwsIHdoYXQgSSBtZWFuIGlzIHRoYXQg
-dGhlIGxhdGVzdCBzZXJpZXMgeW91IHNlbnQgbWVudGlvbnMgYQo+IGRlcGVuZGVuY3kgb24gdGhl
-IGZpcnN0IG9uZSwgd2hlbiBpdCByZWFsbHkgc2hvdWxkIGJlIHRoZSBvdGhlciB3YXkKPiByb3Vu
-ZDogeW91IG5lZWQgdGhlIHJld29yayB0byBtYWtlIHRoaW5ncyBpbiB5b3VyIGZpcnN0IHNlcmll
-cyB3b3JrIGF0Cj4gYWxsLCBzaW5jZSB0aGF0IGRtLXByZS1yZWxvYyBpcyBuZWNlc3NhcnkuCj4K
-PiBXZSBkb24ndCB3YW50IHRvIG1lcmdlIG9uZSBicm9rZW4gc2VyaWVzIGFuZCB0aGVuIHRoZSBm
-aXggZm9yIGl0IGxhdGVyLAo+IGV2ZW4gaWYgaXQgd291bGQgc3RpbGwgYnVpbGQgaW4gYWxsIGNh
-c2VzLiBIZXJlIHRoZXJlIGlzIGEgY2xlYXIKPiBsb2dpY2FsIGRlcGVuZGVuY3ksIGluIHRoZSBy
-ZXZlcnNlIG9yZHJlIHRvIHRoZSBvbmUgeW91IGFyZSBkZXNjcmliaW5nLgoKSSBkb24ndCB1bmRl
-cnN0YW5kIHlvdXIgcG9pbnQsIHNvcnJ5LgoKVGhpcyBwYXRjaCBbMV0gd2lsbCBtYWtlIHVzZSBv
-ZiB0aGUgbmV3IGJvYXJkcyBhZGRlZCBvbiB0aGF0IHNlcmllcyBpdAp3aWxsIG5vdCBlZmZlY3Qg
-ZXhpc3Rpbmcgb3IgcHJldmlvdXMgcmszMzk5IGJvYXJkcy4gaW4gdGhhdCBjYXNlIHdoeQppdCBp
-cyBicm9rZW4gcGF0Y2ggb3Igc2VyaWVzIGNvdWxkIHlvdSBlbGFib3JhdGU/IHRoZSBleGlzdGlu
-ZyBib2FyZHMKYXJlIGFscmVhZHkgc3VwcG9ydGVkIGRtLXByZS1yZWxvYyBvbiB0aGVpciByZXNw
-ZWN0aXZlIGRldmljZXRyZWUKZmlsZXMuCgpbMV0gaHR0cHM6Ly9wYXRjaHdvcmsub3psYWJzLm9y
-Zy9wYXRjaC8xMDkxNTM0LwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8v
-bGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
+Hi,
+
+On Fri, 2019-04-26 at 19:32 +0530, Jagan Teki wrote:
+> On Fri, Apr 26, 2019 at 7:28 PM Paul Kocialkowski
+> <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org> wrote:
+> > Hi,
+> > 
+> > On Fri, 2019-04-26 at 19:20 +0530, Jagan Teki wrote:
+> > > On Fri, Apr 26, 2019 at 7:12 PM Paul Kocialkowski
+> > > <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org> wrote:
+> > > > Hi,
+> > > > 
+> > > > On Fri, 2019-04-26 at 19:07 +0530, Jagan Teki wrote:
+> > > > > On Fri, Apr 26, 2019 at 7:04 PM Paul Kocialkowski
+> > > > > <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org> wrote:
+> > > > > > Hi,
+> > > > > > 
+> > > > > > On Fri, 2019-04-26 at 18:48 +0530, Jagan Teki wrote:
+> > > > > > > u-boot,dm-pre-reloc is required for SDMMC booted rk3399 boards and
+> > > > > > > which is U-Boot specific devicetrees binding.
+> > > > > > > 
+> > > > > > > Move it on global rk3399-u-boot.dtsi file and rest of the U-Boot
+> > > > > > > bindings will move it future based on the requirement.
+> > > > > > > 
+> > > > > > > This would help to sync the devicetrees from Linux whenever required
+> > > > > > > instead of adding specific nodes.
+> > > > > > > 
+> > > > > > > Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+> > > > > > > Reviewed-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+> > > > > > 
+> > > > > > Since your patch has changed significantly, you can no longer include a
+> > > > > > Reviewed-by that was given on a previous iteration.
+> > > > > > 
+> > > > > > It looks like we are still missing bits to have rk3399-u-boot.dtsi
+> > > > > > included, so this patch does not get my Reviewed-by tag.
+> > > > > 
+> > > > > It will include rockchip-u-boot.dtsi automatically and I made the
+> > > > > receptive changes to include other files in this patch [1] and sure I
+> > > > > will ask Philipp to remove the reviewed-by tag, thanks.
+> > > > 
+> > > > Most importantly (now that I see the new series), you should certainly
+> > > > have sent that patch as part of your new series because we now have an
+> > > > inter-dependency between both series.
+> > > 
+> > > It is not like an inter-dependency the previous rk3399-u-boot.dtsi is
+> > > not included by these files so they would work as before. and now this
+> > > series would need this change to include rk3399-u-boot.dtsi since the
+> > > goal here to add binman node to common for all rk3399 dts files.
+> > 
+> > Well, what I mean is that the latest series you sent mentions a
+> > dependency on the first one, when it really should be the other way
+> > round: you need the rework to make things in your first series work at
+> > all, since that dm-pre-reloc is necessary.
+> > 
+> > We don't want to merge one broken series and then the fix for it later,
+> > even if it would still build in all cases. Here there is a clear
+> > logical dependency, in the reverse ordre to the one you are describing.
+> 
+> I don't understand your point, sorry.
+> 
+> This patch [1] will make use of the new boards added on that series it
+> will not effect existing or previous rk3399 boards. in that case why
+> it is broken patch or series could you elaborate? the existing boards
+> are already supported dm-pre-reloc on their respective devicetree
+> files.
+
+On looks like I still didn't really get what you are trying to do.
+Let's try and recap the situation:
+
+- Currently, we have rk3399 boards with u-boot,dm-pre-reloc in their
+shared dtsi;
+- Your v3.1 adds rk3399-u-boot.dtsi but keeps the u-boot,dm-pre-reloc
+in each device since rk3399-u-boot won't be included.
+- Your new series allows rk3399-u-boot.dtsi to be included
+automatically, so we can move the per-common-device-dts u-boot,dm-pre-
+reloc to rk3399-u-boot.dtsi
+
+If that's correct, then it indeed makes sense the way it is proposed.
+Your commit messages just lack a clear explanation of what is going on
+here, since it's not quite trivial for anyone but you.
+
+Cheers,
+
+Paul
+
+> [1] https://patchwork.ozlabs.org/patch/1091534/
+-- 
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
