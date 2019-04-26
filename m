@@ -1,58 +1,145 @@
-From: Emil Renner Berthing <emil.renner.berthing@gmail.com>
-Subject: Re: [PATCH] mmc: dw_mmc: Disable SDIO interrupts while suspended to
- fix suspend/resume
-Date: Fri, 26 Apr 2019 19:19:42 +0200
-Message-ID: <CANBLGcxpjDFKNdT7uk8uCS=C8Gjxc9wVqDs_ZGHqRpLFVsJxxQ@mail.gmail.com>
-References: <20190410221237.160856-1-dianders@chromium.org>
- <CANBLGcwmNowj9GSmE3bbo1t1o6EF8q-RiJftfdOQnJB9_8aSKg@mail.gmail.com> <CAD=FV=UW6d2QHzxx-Vtr+WwC1dkpUfCjxCLnfaP5S2UQxRh1oQ@mail.gmail.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH v3 06/13] rockchip: rk3399: Add Orangepi RK3399
+	support
+Date: Fri, 26 Apr 2019 22:51:25 +0530
+Message-ID: <CAMty3ZDJV5LLY99oD9eEJ1P4+KWUwfOUzQ8n7zHWmAT2MywW8g@mail.gmail.com>
+References: <20190425173427.13445-1-jagan@amarulasolutions.com>
+ <20190425173427.13445-7-jagan@amarulasolutions.com>
+ <51dab1c2fea1ca16b892c9face5fd4c6b451d07d.camel@bootlin.com>
+ <CAMty3ZADnLE14jh14qM7a9-oeKHsrSu1XHzPBfLhBtqEOgBviQ@mail.gmail.com>
+ <f89a6bbc7390db5f9ed6f7ad732b6451cdea15c4.camel@bootlin.com>
+ <CAMty3ZCwN8bRopZugOeV=Ym4xZhncTFeEt8_Se7-wjSoA7Wu7Q@mail.gmail.com>
+ <5953e5f8b8d45cdc5c208c75b16e831391f3db08.camel@bootlin.com>
+ <CAMty3ZCDsSUfF-v7kLQ-v4QNtmAQWhcf=257D1f3qcwFvd=apA@mail.gmail.com>
+ <b418aa42f44fe4e8cad9ce02eb2a658df31f8bf4.camel@bootlin.com>
+ <CAMty3ZBXNeeY9q8qs2FOKoh2MGmBmMD8whMNavp40_gTATm--Q@mail.gmail.com>
+ <6d70dd5bdf82ae0ad6fbff671c0acc2e17639f8e.camel@bootlin.com>
+ <CAMty3ZB1GSmtCpZ5JA1BD4udQYrTpHh9c99r_WNgUDFzdKZdPg@mail.gmail.com>
+ <d5d26a75416da7249f21517e080cff2309393dfe.camel@bootlin.com>
+ <CAMty3ZCBO4LL2FXDA6NkeAmMVzD=5s7mTamb3+Np8Gkqi5hDFA@mail.gmail.com>
+ <d9721fd7d1017f8b72581a3be2b256e90dbc0511.camel@bootlin.com>
+ <CAMty3ZBe_Y7u3cc6XYSiP2p+h0GhfpSTzWz988_7cPGVNhkcRg@mail.gmail.com>
+ <3460bcce1dd9f816d73268968170579bbbd4a132.camel@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=UW6d2QHzxx-Vtr+WwC1dkpUfCjxCLnfaP5S2UQxRh1oQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Linux MMC List <linux-mmc@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, stable@vger.kernel.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <3460bcce1dd9f816d73268968170579bbbd4a132.camel@bootlin.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Cc: U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, Akash Gajjar <akash@openedev.com>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
-
-TLDR: I'm no longer convinced this patch breaks suspend/resume more
-than it already is. Sorry about the noise.
-
-On Thu, 25 Apr 2019 at 23:25, Doug Anderson <dianders@chromium.org> wrote:
->
-> Hi,
->
-> On Wed, Apr 24, 2019 at 1:19 AM Emil Renner Berthing
-> <emil.renner.berthing@gmail.com> wrote:
-> >
-> > Hi Douglas,
-> >
-> > Unfortunately this seems to beak resume on my rk3399-gru-kevin. I have
-> > a semi-complicated setup with my rootfs as a btrfs on dmcrypt on
-> > mmcblk0 which is the dw_mmc, so I'm guessing something goes wrong when
-> > waking up the dm_mmc which probably wasn't suspended before this
-> > patch. It's not 100% consistent though. Sometimes I see it resume the
-> > first time I try suspending, but then 2nd time I suspend it won't come
-> > back.
->
-> Thanks for testing!
-
-Thanks for your detailed response. It made me want to make absolutely
-sure that this patch is the culprit.
-As a baseline I booted a vanilla 5.0.9 and suspend/resumed it about a
-dusin times without any errors.
-So I applied this patch and immediately it crashed on suspend, but in
-a way that I could still see the kernel log,
-and it was the mwifiex driver that crashed. I rebooted and tried
-supend/resume again and
-this time it seemed like it was the dwc3 or usb3-phy that crashed.
-I still have the kernel log if anyone is interested.
-However 3rd time booting 5.0.9 with this patch suspend/resume just works.
-At least the 2 dusin times I tried before giving up on making it crash.
-I went back to vanilla 5.0.9 and after a few tries I managed to make
-that one crash too.
-I guess that means this patch is off the hook. I'm sorry about the
-false report :/
-
-/Emil
+T24gRnJpLCBBcHIgMjYsIDIwMTkgYXQgMTA6MzggUE0gUGF1bCBLb2NpYWxrb3dza2kKPHBhdWwu
+a29jaWFsa293c2tpQGJvb3RsaW4uY29tPiB3cm90ZToKPgo+IEhpLAo+Cj4gTGUgdmVuZHJlZGkg
+MjYgYXZyaWwgMjAxOSDDoCAyMjoyMyArMDUzMCwgSmFnYW4gVGVraSBhIMOpY3JpdCA6Cj4gPiA+
+ID4gPiA+IEZpcnN0IHNlcmllcywgSSBnZXQgaW50cm9kdWNlZCByazMzOTktdS1ib290LmR0c2ks
+IGFuZCBvbmx5IHRoZSBuZXcKPiA+ID4gPiA+ID4gYm9hcmRzIGFyZSB1c2luZyB0aGlzIGZpbGUg
+YW5kIG5leHQgc2VyaWVzIHJlc3Qgb2YgdGhlIGJvYXJkcyBhcmUKPiA+ID4gPiA+ID4gdXNpbmcg
+d2hpY2ggaW5kZWVkIGEgdmFsaWQgc3RlcC4gd2hhdCBpcyBpbmNvbnNpc3RlbnQgaGVyZSwgSSBk
+b24ndAo+ID4gPiA+ID4gPiB1bmRlcnN0YW5kLgo+ID4gPiA+ID4KPiA+ID4gPiA+IFllcywgd2hh
+dCB5b3UgYXJlIGRlc2NyaWJpbmcgaXMgZXhhY3RseSB0aGUgaXNzdWUuIEl0IGRvZXMgbm90IG1h
+a2UKPiA+ID4gPiA+IHNlbnNlIHRvIGludHJvZHVjZSBhIG5ldyBjb21tb24gdS1ib290IGR0c2kg
+Zm9yIHJrMzM5OSBhbmQgYWRkIG5ldwo+ID4gPiA+ID4gZGV2aWNlcyB0aGF0IHVzZSB0aGlzIGZp
+bGUgKmJlZm9yZSogc3dpdGNoaW5nIGV4aXN0aW5nIGRldmljZXMgdG8gdGhlCj4gPiA+ID4gPiBu
+ZXcgY29tbW9uIHUtYm9vdCBkdHNpIGZvciByazMzOTkgaW4gdGhlIHNhbWUgc2VyaWVzLgo+ID4g
+PiA+Cj4gPiA+ID4gSG93IGNvbWU/IGV4aXN0aW5nIGJvYXJkcyBkb2Vzbid0IHVzZSByazMzOTkt
+dS1ib290LmR0c2kgYXQgYWxsPyBhcwo+ID4gPiA+IHBhdGNoIHNheXMgaXQgaXMgYW4gaW5pdGlh
+bCBvbmUgYW5kIGl0IGlzIGJpdCBoYXJkIHRvIGFkZCBhbGwgYXQgb25jZS4KPiA+ID4gPiBpZSB3
+aGF0IEkgZGlkIGZvciBpLk1YNi4gaGF2aW5nIHNhaWQgdGhhdCByazMzOTktdS1ib290LmR0c2kg
+aXMKPiA+ID4gPiB1bmFmZmVjdGVkIHRvIGFueSBvZiB0aGUgZXhpc3RpbmcgZHRzIGZpbGVzLgo+
+ID4gPgo+ID4gPiBBZ2FpbiwgaXQncyBub3QgYSB0ZWNobmljYWwgaXNzdWUuIFlvdXIgcHJvcG9z
+YWwgd29ya3MgYW5kIGhhcyBubwo+ID4gPiB0ZWNobmljYWwgaXNzdWUuIFRoZSBpc3N1ZSBpcyBp
+biBob3cgdGhlIGNvbW1pdHMgYXJlIGdyb3VwZWQgdG9nZXRoZXIuCj4gPiA+IFBhdGNoIHNlcmll
+cyBuZWVkIHRvIG1ha2UgbG9naWNhbCBzZW5zZS4gT25lIHBhdGNoIHNlcmllcyBzaG91bGQKPiA+
+ID4gYWNjb21wbGlzaCBvbmUgY2hhbmdlLCBhbmQgZWFjaCBwYXRjaCByZXByZXNlbnRzIGEgc3Rl
+cCBvZiB0aGF0IGNoYW5nZS4KPiA+Cj4gPiBJdCdzIGFib3V0IGhvdyB5b3UgdGhpbmsuIHNheSBp
+ZiBJIHdvdWxkbid0IHNlbmQgdGhlIGJpbm1hbiwgSSdtIHN1cmUKPiA+IHRoaXMga2luZCBvZiBk
+aXNjdXNzaW9uIG1heSBub3QgaGFwcGVuLiBJbiBmaXJzdCBtYWlsIHlvdSBzYWlkCj4gPiAic29t
+ZXRoaW5nIGJyb2tlbiBhbmQgaG93IGl0IGNhbiByZXBhaXIgbmV4dCIgdGhhdCBpbmRlZWQgZG9l
+c24ndCBtYWtlCj4gPiBhbnkgc2Vuc2Ugb2Ygd2l0aG91dCB1bmRlcnN0YW5kaW5nIHRoZSB3aG9s
+ZSBzZXJpZXMgb2YgY2hhbmdlcy4KPgo+IE9uZSBwYXJ0IHRvIHRoYXQgaXMgdGhhdCBJIGhhZCBt
+aXN1bmRlcnN0b29kIGEgZmV3IHRoaW5ncywgYnV0IEkgcmVhbGx5Cj4gc2hvdWxkIG5vdCBoYXZl
+IHRvIGxvb2sgYXQgZWFjaCBwYXRjaCBiZWZvcmUgSSBjYW4gaGF2ZSBhbiBpZGVhIG9mIHdoYXQK
+PiB0aGUgc2VyaWVzIGRvZXMuIFlvdXIgc2VyaWVzIGlzIGNhbGxlZCAicm9ja2NoaXA6IEFkZCBu
+ZXcgcmszMzk5Cj4gYm9hcmRzIiBhbmQgd2l0aCB0aGUgdjMuMSBjaGFuZ2UgeW91IG1hZGUsIHRo
+ZSB0aXRsZSBpcyBubyBsb25nZXIgdHJ1ZS4KPiBZb3UgYXJlIGRvaW5nIHRoYXQgKyBpbnRyb2R1
+Y2luZyBhIG5ldyByazMzOTkgdS1ib290IGR0c2kgd2l0aG91dAo+IHN3aXRjaGluZyBleGlzdGlu
+ZyBib2FyZHMgdG8gaXQgYmVmb3JlIGFkZGluZyBuZXcgb25lcy4KPgo+IEZyb20gdGhhdCBtb21l
+bnQsIHlvdSBuZWVkZWQgdG8gc3BsaXQgeW91ciBjaGFuZ2VzIGludG8gdHdvIHNlcmllcy4KPiBJ
+bnN0ZWFkIG9mIHRoYXQsIHlvdSBtYWRlIGFub3RoZXIgc2VyaWVzIHdpdGggbW9zdGx5IHVucmVs
+YXRlZCBjaGFuZ2VzCj4gd2hlcmUgeW91IGluY2x1ZGVkIGFuIHVucmVsYXRlZCBjb21taXQgYWRk
+aW5nIHRoZSBwcmUtcmVsb2MgZW50cmllcyB0bwo+IHRoZSBkdHNpIGNyZWF0ZWQgaW4gdGhlIHBy
+ZXZpb3VzIHNlcmllcy4KPgo+IFRoYXQncyBhbiBpc3N1ZSBmb3IgY29tbXVuaWNhdGlvbiB3aXRo
+IHRoZSBjb21tdW5pdHkuCj4KPiA+IEFueSBuZXcgY2hhbmdlcyB3b3VsZCBjb21lIHVwIHdpdGgg
+aW5pdGlhbCB2ZXJzaW9uLCB0aGF0IHdoYXQgd2UKPiA+IHVzdWFsbHkgc3VwcG9ydGVkLCBpZSB3
+aGF0IHdlIGRpZCAtdS1ib290LmR0c2kgY2hhbmdlcyB0byBpLk1YNiBhbmQKPiA+IGRldmVsb3Bl
+cnMgYXJlIHVzaW5nIHRoZSBzYW1lIGlzIGFkZGluZyBvbmUgYWZ0ZXIgYW5vdGhlci4KPgo+IEJ1
+dCB5b3UgYWxyZWFkeSBoYXZlIGJvYXJkcyBpbiB0aGUgdHJlZSB0aGF0IG5lZWRzIHRoZSB0cmVl
+LiBZb3UgY2FuCj4gbWFrZSBpbmRpdmlkdWFsIGNvbW1pdHMgZm9yIHN3aXRjaGluZyBib2FyZHMg
+dG8gdGhlIG5ldyBkdHNpLCBidXQgeW91Cj4gbmVlZCB0byBkbyB0aGF0IGluIHRoZSBzYW1lIHNl
+cmllcyBhcyBpbnRyb2R1Y2luZyB0aGUgZHRzaSBpZiB5b3UgYXJlCj4gc3VibWl0dGluZyBib3Ro
+IHRoaW5ncyBhdCB0aGUgc2FtZSB0aW1lLiBJZiB5b3Ugd2FudCB0byBoYXZlIHRoZW0KPiBtZXJn
+ZWQgc2VwYXJhdGVseSwgdGhlbiB5b3UgY2FuIHNlbmQgZGV2aWNlIGR0c2kgcGF0Y2hlcyBpbmRp
+dmlkdWFsbHkKPiBmb3IgdGhhdCwgYnV0IG5vdCBhcyBwYXJ0IG9mIGFub3RoZXIgdW5yZWxhdGVk
+IHNlcmllcy4KPgo+ID4gPiBUaGlzIGlzIGhvdyB1cHN0cmVhbSBjb250cmlidXRpb25zIHdvcmss
+IGFuZCBpdCdzIGEgcG93ZXJmdWwgd2F5IHRvCj4gPiA+IGFsbG93IGJvdGggZWZmaWNpZW50IGNv
+ZGUgcmV2aWV3IGFuZCBnb29kIGNvZGUgcXVhbGl0eS4gV2Ugd2FudCB0byBrZWVwCj4gPiA+IHRo
+aW5ncyBhcyBzaW1wbGUsIGV4cGxpY2l0IGFuZCB3ZWxsLWRlc2NyaWJlZCBhcyBwb3NzaWJsZSwg
+c28gdGhhdAo+ID4gPiB0aGluZ3MgYXJlIGVhc3kgZm9yIHJldmlld2VycyBhbmQgYXMgbWFueSBw
+ZW9wbGUgYXMgcG9zc2libGUgY2FuCj4gPiA+IHVuZGVyc3RhbmQgdGhlIGlzc3VlIGFuZCBzaGFy
+ZSB0aGVpciB0aG91Z2h0cyBhYm91dCBpdC4KPiA+Cj4gPiBZZXMsIHdlIGFkb3B0IHRoZXNlIHBy
+aW5jaXBsZXMgYW5kIHRoYXQgd2hhdCB3ZSBhcmUgcmVhbGx5IHdvcmtpbmcuCj4gPgo+ID4gPiBJ
+dCBpcyBhbGwgcGFydCBvZiBjb21tdW5pY2F0aW9uIHdpdGggb3RoZXJzIGFzIHBhcnQgb2YgYSBj
+b21tdW5pdHkuCj4gPiA+IEl0IGlzIGRlZmluaXRlbHkgYW4gaW1wbGljaXQgcnVsZSB0aGF0IGlz
+IG5vdCB3cml0dGVuIGRvd24gc29tZXdoZXJlCj4gPiA+IHByZWNpc2VseSwgYnV0IHRoYXQncyB0
+aGUgc29jaWFsIGNvbnRyYWN0IGJldHdlZW4gZGV2ZWxvcGVycyB0aGF0IHdvcmsKPiA+ID4gb24g
+YSBjb21tb24gc29mdHdhcmUgcHJvamVjdC4KPiA+ID4KPiA+ID4gSW4gdGhhdCwgY29udHJpYnV0
+aW5nIHRvIHVwc3RyZWFtIGlzIGRpZmZlcmVudCB0aGFuIGJhc2VsaW5lIHRlY2gKPiA+ID4gY29t
+cGFueSBzdGFuZGFyZHMsIGJlY2F1c2UgeW91IGhhdmUgdG8gdGFrZSBleHRyYSBzdGVwcyB0byBk
+ZXNjcmliZQo+ID4gPiB5b3VyIHdvcmsgYW5kIGV4cGxhaW4gaXQgdG8gb3RoZXJzLiBZb3UgbXVz
+dCBtYWtlIHN1cmUgeW91IGdpdmUgdGhlbQo+ID4gPiBhbGwgdGhlIGNvbWZvcnQgdGhleSBuZWVk
+IHRvIHBhaW5sZXNzbHkgdW5kZXJzdGFuZCB3aGF0IHlvdSBkaWQuCj4gPgo+ID4gSSBob3BlIGFs
+bCBteSBjb21tdW5pY2F0aW9uIHdhcyByZWxldmFudCB0byB0aGUgdG9waWNzLCBJIGNhbiBldmVu
+Cj4gPiBnaXZlbiB0aGUgZXhhbXBsZSBob3cgdGhpbmdzIHdlcmUgbW92ZWQuCj4KPiBDbGVhcmx5
+IHRoZXJlIHdhcyBhIG1ham9yIGNvbW11bmljYXRpb24gaXNzdWUgYmV0d2VlbiB1cy4gWW91IG9u
+bHkKPiBhbnN3ZXJlZCBvbiB0ZWNobmljYWwgdG9waWNzIGFuZCBuZXZlciBhYm91dCBob3cgeW91
+ciBwYXRjaCBzZXJpZXMgaXMKPiBvcmdhbml6ZWQgYW5kIHdoYXQgbG9naWNhbCBjaGFuZ2VzIHlv
+dSBhcmUgbWFraW5nLgo+Cj4gVG8gYmUgaG9uZXN0IHdpdGggeW91LCBJIGZlZWwgbGlrZSB3ZSBo
+YXZlIGEgZ2VuZXJhbCBjb21tdW5pY2F0aW9uCj4gaXNzdWUgd2hlcmUgeW91IG9ubHkgc2VlbSB0
+byBmb2N1cyBvbiB0ZWNobmljYWwgYXNwZWN0cywgd2hlbiB0aGUKPiBpc3N1ZXMgYXJlIGFib3V0
+IHRoZSBtZXRhLWRhdGEgb2YgdGhlIGNoYW5nZXMgc3VjaCBhcyBjb21taXQgbWVzc2FnZXMsCj4g
+Y29kZSBjb21tZW50cyBhbmQgaG93IGNoYW5nZXMgYXJlIG9yZ2FuaXplZCB0b2dldGhlci4KCk5v
+IG9uZSBpcyBiZXR0ZXIgaW4gYWxsIGFzcGVjdHMsIGFuZCB0aGluZ3Mgd2VyZSBpbXByb3Zpbmcg
+bm8gb25lIGNhbQptYWtlIGdsb2JhbCBzdGF0ZW1lbnRzIGxpa2UgdGhpcyB0aG91Z2ggaGUgY2Fu
+IGZpbmQgc29tZXRoaW5nIGdhcHMgb24Kb24gcHJldmlvdXMgb25lLiBZb3Ugd291bGQgYmV0dGVy
+IHN1Z2dlc3Qgb24gdGhlIGNvbW1pdCB3aGVyZSBpdApjb25mdXNlZCBjYW4gbWFrZSBtZSBiZXR0
+ZXIgdW5kZXJzdGFuZGluZy4KCj4KPiA+ID4gSXQgcGxheXMgYSBncmVhdCBkZWFsIGluIGhhdmlu
+ZyBzZXJpZXMgYWNjZXB0ZWQgd2l0aG91dCBnb2luZyB0aHJvdWdoCj4gPiA+IHZlcnkgbG9uZyBk
+aXNjdXNzaW9ucyBhbmQgbnVtZXJvdXMgaXRlcmF0aW9ucy4gVGhlIGxlc3MgcXVlc3Rpb25zCj4g
+PiA+IG1haW50YWluZXJzIHdpbGwgaGF2ZSBhYm91dCB5b3VyIHdvcmssIHRoZSBiZXR0ZXIuIFRo
+ZXkgbWF5IGRpc2FncmVlCj4gPiA+IHdpdGggdGhlIGRlY2lzaW9ucyB5b3UgdG9vaywgYnV0IHRo
+ZXNlIGRpc2N1c3Npb25zIGFyZSBwdXJlbHkgdGVjaG5pY2FsCj4gPiA+IGFuZCBjYW4gYmUgcmVz
+b2x2ZWQgcXVpY2tseS4KPiA+Cj4gPiBQdXJlIHRlY2huaWNhbCwgeWVzIGllIHdoYXQgSSB0aG91
+Z2h0IG9mZi4gbm8gcHJvYmxlbSBmb3IgbWUgZm9yIGxvbmcKPiA+IGRpc2N1c3Npb24gYXRsZWFz
+dCBwZW9wbGUgY2FuIHVuZGVyc3RhbmQgaG93IHRoaW5ncyB3ZW50Lgo+Cj4gQ29tbXVuaXR5IGRp
+c2N1c3Npb25zIGNhbiBub3QsIGFuZCBtdXN0IG5vdCBiZSBwdXJlbHkgdGVjaG5pY2FsLiBUaGlz
+Cj4gaXMgbm90IGEgcGVyc29uYWwgb3BpbmlvbiBvZiBtaW5lLCB0aGlzIGlzIGhvdyBhbGwgZnJl
+ZSBzb2Z0d2FyZQo+IGNvbW11bml0aWVzIHdvcmsuIFNvbWUgY2FyZSBtb3JlIHRoYW4gb3RoZXJz
+IGFib3V0IGl0LCBidXQgaW4gdmVyeQo+IHRlY2huaWNhbCBwcm9qZWN0cyBsaWtlIFUtQm9vdCBh
+bmQgTGludXgsIHBlb3BsZSBuZWVkIHRvIGNhcmUgYWJvdXQgaXQKPiBhIGxvdC4KPgo+IFRoZSBt
+b3JlIHRlY2huaWNhbCB0aGUgdGhpbmdzIHlvdSBhcmUgZGVhbGluZyB3aXRoIGFyZSwgdGhlIG1v
+cmUgeW91Cj4gbmVlZCB0byBkbyBvbiB0aGUgbm9uLXRlY2huaWNhbCBzaWRlIHRvIG1ha2Ugc3Vy
+ZSB3aGF0IHlvdSBhcmUgZG9pbmcgaXMKPiBjbGVhciwgdW5kZXJzdG9vZCBieSBldmVyeW9uZSBh
+bmQgbWFrZXMgc2Vuc2Ugb24gaXRzIG93bi4KClRydWUsIHRoaXMgaXMgd2hhdCBJJ20gdHJ5aW5n
+IHRvIHdvcmsgYWx3YXlzLCB0aGFua3MuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUK
+aHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
