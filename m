@@ -1,11 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 3/5] Kconfig: Add u-boot.itb BUILD_TARGET for Rockchip
-Date: Fri, 26 Apr 2019 19:04:28 +0530
-Message-ID: <20190426133430.17802-4-jagan@amarulasolutions.com>
+Subject: [PATCH 4/5] Makefile.spl: Create u-boot-spl-rockchip.bin for rk3399
+Date: Fri, 26 Apr 2019 19:04:29 +0530
+Message-ID: <20190426133430.17802-5-jagan@amarulasolutions.com>
 References: <20190426133430.17802-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20190426133430.17802-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -21,50 +21,63 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add u-boot.itb BUILD_TARGET for Rockchip platform when SPL_LOAD_FIT
-is being used.
-
-This can get rid of building itb explicitly with 'make u-boot.itb' all
-required images will now build just by make.
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- Kconfig             | 2 +-
- doc/README.rockchip | 2 --
- 2 files changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/Kconfig b/Kconfig
-index 5679a288ec..46f511123a 100644
---- a/Kconfig
-+++ b/Kconfig
-@@ -230,7 +230,7 @@ config BUILD_TARGET
- 	default "u-boot-with-spl.sfp" if TARGET_SOCFPGA_GEN5
- 	default "u-boot-spl.kwb" if ARCH_MVEBU && SPL
- 	default "u-boot-elf.srec" if RCAR_GEN3
--	default "u-boot.itb" if SPL_LOAD_FIT && ARCH_SUNXI
-+	default "u-boot.itb" if SPL_LOAD_FIT && (ARCH_ROCKCHIP || ARCH_SUNXI)
- 	default "u-boot.kwb" if KIRKWOOD
- 	help
- 	  Some SoCs need special image types (e.g. U-Boot binary
-diff --git a/doc/README.rockchip b/doc/README.rockchip
-index 0db4771162..124efd65e4 100644
---- a/doc/README.rockchip
-+++ b/doc/README.rockchip
-@@ -103,7 +103,6 @@ For example:
-      => cd /path/to/u-boot
-      => make nanopi-neo4-rk3399_defconfig
-      => make
--     => make u-boot.itb
- 
-    - Get the rkbin
- 
-@@ -146,7 +145,6 @@ For example:
-      => cd /path/to/u-boot
-      => make orangepi-rk3399_defconfig
-      => make
--     => make u-boot.itb
- 
-      (Get spl/u-boot-spl-dtb.bin, u-boot.itb images and some boards would get
-       spl/u-boot-spl.bin since it doesn't enable CONFIG_SPL_OF_CONTROL)
--- 
-2.18.0.321.gffc6fa0e3
+Um9ja2NoaXAgcGxhdGZvcm0gd291bGQgcmVxdWlyZSBhbiBleHBsaWNpdCBjYWxsIHRvIG1raW1h
+Z2UgZm9yCmNyZWF0aW5nIGJvb3RhYmxlIGltYWdlcyB3aGljaCBpbmRlZWQgc3BlY2lmaWMgdG8g
+U29DIGZhbWlseQphbG9uZyB3aXRoIGJvb3QgZGV2aWNlcy4KCkV4YW1wbGUgb2YgY3JlYXRpbmcg
+Ym9vdGFibGUgaW1hZ2UgZm9yIHJrMzM5OSBmYW1pbHkgd2l0aCBTRApib290IGRldmljZSBhcwoK
+4oK5IG1raW1hZ2UgLW4gcmszMzk5IC1UIHJrc2QgLWQgLi9zcGwvdS1ib290LXNwbC1kdGIuYmlu
+IHUtYm9vdC1zcGwtcm9ja2NoaXAuYmluCgpUaGlzIHBhdGNoIHdvdWxkIGRvIHRoZSBzYW1lIHRo
+aW5rIHZpYSBNYWtlZmlsZS5zcGwgZm9yIHJrMzM5OS4KClRoaXMgd291bGQgYmUgYW4gaW5pdGlh
+bCB2ZXJzaW9uIGFuZCBpdCBjYW4gZWFzaWx5IGV4cGFuZCBmdXJ0aGVyIHRvIHN1cHBvcnQKb3Ro
+ZXIgZmFtaWxpZXMgb2YgU29DJ3Mgd2l0aCB2YXJpZXR5IG9mIGJvb3Qgc3RhZ2VzIGxpa2UgVFBM
+LCBTUEwuCgpTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25z
+LmNvbT4KLS0tCiBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcgfCAgOCArKysrKysrKwog
+ZG9jL1JFQURNRS5yb2NrY2hpcCAgICAgICAgICAgIHwgIDMgKy0tCiBzY3JpcHRzL01ha2VmaWxl
+LnNwbCAgICAgICAgICAgfCAyMSArKysrKysrKysrKysrKysrKysrKysKIDMgZmlsZXMgY2hhbmdl
+ZCwgMzAgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9hcmNoL2Fy
+bS9tYWNoLXJvY2tjaGlwL0tjb25maWcgYi9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcK
+aW5kZXggZGJlN2YxMWQzOS4uMjg2Yzg3MDEzNSAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vbWFjaC1y
+b2NrY2hpcC9LY29uZmlnCisrKyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZpZwpAQCAt
+MjIyLDYgKzIyMiwxNCBAQCBjb25maWcgUk9DS0NISVBfU1BMX1JFU0VSVkVfSVJBTQogY29uZmln
+IFJPQ0tDSElQX0JST01fSEVMUEVSCiAJYm9vbAogCitjb25maWcgU1BMX1JPQ0tDSElQX0lNR19O
+QU1FCisJc3RyaW5nICJTUEwgUm9ja2NoaXAgaW1hZ2UgbmFtZSIKKwlkZWZhdWx0ICJyazMzOTki
+IGlmIFJPQ0tDSElQX1JLMzM5OQorCWhlbHAKKwkgIFRvIGNyZWF0ZSBTUEwgaW1hZ2UgZm9yIHJv
+Y2tjaGlwIHRhcmdldHMgdGhlIGltYWdlIG5hbWUgd291bGQKKwkgIGRlcGVuZHMgb24gdGhlIFNv
+QyBmYW1pbHkgdGhhdCB3b3VsZCBwYXNzIGFzIGFuIGFyZ3VtZW50IGFzCisJICAnLW4gcmszMzk5
+JyB0byBta2ltYWdlIGZvciBjcmVhdGluZyBSb2NrY2hpcCBTUEwgYm9vdCBpbWFnZS4KKwogY29u
+ZmlnIFNQTF9ST0NLQ0hJUF9FQVJMWVJFVFVSTl9UT19CUk9NCiAgICAgICAgIGJvb2wgIlNQTCBy
+ZXF1aXJlcyBlYXJseS1yZXR1cm4gKGZvciBSSzMxODgtc3R5bGUgQlJPTSkgdG8gQlJPTSIKIAlk
+ZXBlbmRzIG9uIFNQTCAmJiBFTkFCTEVfQVJNX1NPQ19CT09UMF9IT09LCmRpZmYgLS1naXQgYS9k
+b2MvUkVBRE1FLnJvY2tjaGlwIGIvZG9jL1JFQURNRS5yb2NrY2hpcAppbmRleCAxMjRlZmQ2NWU0
+Li43MzU5NGRjNjFkIDEwMDY0NAotLS0gYS9kb2MvUkVBRE1FLnJvY2tjaGlwCisrKyBiL2RvYy9S
+RUFETUUucm9ja2NoaXAKQEAgLTM5NywxMSArMzk3LDEwIEBAIE9wdGlvbiAyOiBQYWNrYWdlIHRo
+ZSBpbWFnZSB3aXRoIFNQTDoKICAgLSBQcmVmaXggcmszMzk5IGhlYWRlciB0byBTUEwgaW1hZ2UK
+IAogICAgID0+IGNkIC9wYXRoL3RvL3UtYm9vdAotICAgID0+IC4vdG9vbHMvbWtpbWFnZSAtbiBy
+azMzOTkgLVQgcmtzZCAtZCBzcGwvdS1ib290LXNwbC1kdGIuYmluIG91dAogCiAgIC0gV3JpdGUg
+cHJlZml4ZWQgU1BMIGF0IDY0dGggc2VjdG9yCiAKLSAgICA9PiBzdWRvIGRkIGlmPW91dCBvZj0v
+ZGV2L3NkYyBzZWVrPTY0CisgICAgPT4gc3VkbyBkZCBpZj1zcGwvdS1ib290LXNwbC1yb2NrY2hp
+cC5iaW4gb2Y9L2Rldi9zZGMgc2Vlaz02NAogCiAgIC0gV3JpdGUgVS1Cb290IHByb3BlciBhdCAx
+NjM4NCBzZWN0b3IKIApkaWZmIC0tZ2l0IGEvc2NyaXB0cy9NYWtlZmlsZS5zcGwgYi9zY3JpcHRz
+L01ha2VmaWxlLnNwbAppbmRleCA1NGIxNjBkNzJiLi40OWMwNjQxYWEyIDEwMDY0NAotLS0gYS9z
+Y3JpcHRzL01ha2VmaWxlLnNwbAorKysgYi9zY3JpcHRzL01ha2VmaWxlLnNwbApAQCAtMjM1LDYg
+KzIzNSwxMCBAQCBBTEwtJChDT05GSUdfQVJDSF9aWU5RTVApCSs9ICQob2JqKS9ib290LmJpbgog
+CiBBTEwtJChDT05GSUdfQVJDSF9NRURJQVRFSykJKz0gJChvYmopL3UtYm9vdC1zcGwtbXRrLmJp
+bgogCitpZmRlZiBDT05GSUdfUk9DS0NISVBfUkszMzk5CitBTEwtJChDT05GSUdfQVJDSF9ST0NL
+Q0hJUCkJKz0gJChvYmopL3UtYm9vdC1zcGwtcm9ja2NoaXAuYmluCitlbmRpZgorCiBhbGw6CSQo
+QUxMLXkpCiAKIHF1aWV0X2NtZF9jYXQgPSBDQVQgICAgICRACkBAIC0zNjksNiArMzczLDIzIEBA
+IE1LSU1BR0VGTEFHU191LWJvb3Qtc3BsLW10ay5iaW4gPSAtVCBtdGtfaW1hZ2UgXAogJChvYmop
+L3UtYm9vdC1zcGwtbXRrLmJpbjogJChvYmopL3UtYm9vdC1zcGwuYmluIEZPUkNFCiAJJChjYWxs
+IGlmX2NoYW5nZWQsbWtpbWFnZSkKIAorIyBSb2NrY2hpcCBzcGVjaWZpYyBTUEwgYnVpbGQKK2lm
+ZXEgKCQoQ09ORklHX1JPQ0tDSElQX1JLMzM5OSkseSkKKworaWZlcSAoJChDT05GSUdfU1BJX0ZM
+QVNIX1NVUFBPUlQpLHkpCitST0NLQ0hJUF9JTUdfVFlQRSA6PSBya3NwaQorZWxzZQorUk9DS0NI
+SVBfSU1HX1RZUEUgOj0gcmtzZAorZW5kaWYKKworTUtJTUFHRUZMQUdTX3UtYm9vdC1zcGwtcm9j
+a2NoaXAuYmluID0gLW4gJChDT05GSUdfU1BMX1JPQ0tDSElQX0lNR19OQU1FKSBcCisJLVQgJChS
+T0NLQ0hJUF9JTUdfVFlQRSkgLWQgJChNS0lNQUdFT1VUUFVUKQorCiskKG9iaikvdS1ib290LXNw
+bC1yb2NrY2hpcC5iaW46ICQob2JqKS91LWJvb3Qtc3BsLmJpbiBGT1JDRQorCSQoY2FsbCBpZl9j
+aGFuZ2VkLG1raW1hZ2UpCisKK2VuZGlmICMgQ09ORklHX1JPQ0tDSElQX1JLMzM5OQorCiAjIFJ1
+bGUgdG8gbGluayB1LWJvb3Qtc3BsCiAjIE1heSBiZSBvdmVycmlkZGVuIGJ5IGFyY2gvJChBUkNI
+KS9jb25maWcubWsKIHF1aWV0X2NtZF91LWJvb3Qtc3BsID89IExEICAgICAgJEAKLS0gCjIuMTgu
+MC4zMjEuZ2ZmYzZmYTBlMwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
