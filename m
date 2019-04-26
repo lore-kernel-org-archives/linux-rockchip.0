@@ -1,94 +1,93 @@
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-Subject: Re: [PATCH v6 01/17] media: videodev2.h, v4l2-ioctl: add rkisp1
- meta buffer format
-Date: Fri, 26 Apr 2019 16:34:10 -0400
-Message-ID: <2367b550d815bdf4c50aae692a5549f9be6a0802.camel@ndufresne.ca>
-References: <20180308094807.9443-1-jacob-chen@iotwrt.com>
-         <20180308094807.9443-2-jacob-chen@iotwrt.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] mmc: dw_mmc: Disable SDIO interrupts while suspended to
+ fix suspend/resume
+Date: Fri, 26 Apr 2019 15:08:41 -0700
+Message-ID: <CAD=FV=UzRbp0w_cN07kQ9dH1B3+v7fmA4_t46kP3cy1k_hn9Ug@mail.gmail.com>
+References: <20190410221237.160856-1-dianders@chromium.org>
+ <CANBLGcwmNowj9GSmE3bbo1t1o6EF8q-RiJftfdOQnJB9_8aSKg@mail.gmail.com>
+ <CAD=FV=UW6d2QHzxx-Vtr+WwC1dkpUfCjxCLnfaP5S2UQxRh1oQ@mail.gmail.com> <CANBLGcxpjDFKNdT7uk8uCS=C8Gjxc9wVqDs_ZGHqRpLFVsJxxQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-        boundary="=-mOui5ucgkVhFyJMZ5z0C"
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20180308094807.9443-2-jacob-chen@iotwrt.com>
+In-Reply-To: <CANBLGcxpjDFKNdT7uk8uCS=C8Gjxc9wVqDs_ZGHqRpLFVsJxxQ@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jacob Chen <jacob-chen@iotwrt.com>, linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, mchehab@kernel.org, linux-media@vger.kernel.org, sakari.ailus@linux.intel.com, hans.verkuil@cisco.com, tfiga@chromium.org, zhengsq@rock-chips.com, laurent.pinchart@ideasonboard.com, zyc@rock-chips.com, eddie.cai.linux@gmail.com, jeffy.chen@rock-chips.com, devicetree@vger.kernel.org, heiko@sntech.de, Jacob Chen <jacob2.chen@rock-chips.com>
+To: Emil Renner Berthing <emil.renner.berthing@gmail.com>
+Cc: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Linux MMC List <linux-mmc@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, stable@vger.kernel.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, Kalle Valo <kvalo@codeaurora.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi,
 
---=-mOui5ucgkVhFyJMZ5z0C
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Fri, Apr 26, 2019 at 10:19 AM Emil Renner Berthing
+<emil.renner.berthing@gmail.com> wrote:
+>
+> Hi Doug,
+>
+> TLDR: I'm no longer convinced this patch breaks suspend/resume more
+> than it already is. Sorry about the noise.
+>
+> On Thu, 25 Apr 2019 at 23:25, Doug Anderson <dianders@chromium.org> wrote:
+> >
+> > Hi,
+> >
+> > On Wed, Apr 24, 2019 at 1:19 AM Emil Renner Berthing
+> > <emil.renner.berthing@gmail.com> wrote:
+> > >
+> > > Hi Douglas,
+> > >
+> > > Unfortunately this seems to beak resume on my rk3399-gru-kevin. I have
+> > > a semi-complicated setup with my rootfs as a btrfs on dmcrypt on
+> > > mmcblk0 which is the dw_mmc, so I'm guessing something goes wrong when
+> > > waking up the dm_mmc which probably wasn't suspended before this
+> > > patch. It's not 100% consistent though. Sometimes I see it resume the
+> > > first time I try suspending, but then 2nd time I suspend it won't come
+> > > back.
+> >
+> > Thanks for testing!
+>
+> Thanks for your detailed response. It made me want to make absolutely
+> sure that this patch is the culprit.
+> As a baseline I booted a vanilla 5.0.9 and suspend/resumed it about a
+> dusin times without any errors.
+> So I applied this patch and immediately it crashed on suspend, but in
+> a way that I could still see the kernel log,
+> and it was the mwifiex driver that crashed. I rebooted and tried
+> supend/resume again and
+> this time it seemed like it was the dwc3 or usb3-phy that crashed.
+> I still have the kernel log if anyone is interested.
+> However 3rd time booting 5.0.9 with this patch suspend/resume just works.
+> At least the 2 dusin times I tried before giving up on making it crash.
+> I went back to vanilla 5.0.9 and after a few tries I managed to make
+> that one crash too.
+> I guess that means this patch is off the hook. I'm sorry about the
+> false report :/
 
-Le jeudi 08 mars 2018 =C3=A0 17:47 +0800, Jacob Chen a =C3=A9crit :
-> From: Shunqian Zheng <zhengsq@rock-chips.com>
->=20
-> Add the Rockchip ISP1 specific processing parameter format
-> V4L2_META_FMT_RK_ISP1_PARAMS and metadata format
-> V4L2_META_FMT_RK_ISP1_STAT_3A for 3A.
->=20
-> Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
-> Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
-> Acked-by: Hans Verkuil <hans.verkuil@cisco.com>
-> ---
->  drivers/media/v4l2-core/v4l2-ioctl.c | 2 ++
->  include/uapi/linux/videodev2.h       | 4 ++++
->  2 files changed, 6 insertions(+)
->=20
-> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-co=
-re/v4l2-ioctl.c
-> index 1be54429d601..bdd469290d66 100644
-> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
-> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-> @@ -1257,6 +1257,8 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *f=
-mt)
->  	case V4L2_META_FMT_VSP1_HGO:	descr =3D "R-Car VSP1 1-D Histogram"; brea=
-k;
->  	case V4L2_META_FMT_VSP1_HGT:	descr =3D "R-Car VSP1 2-D Histogram"; brea=
-k;
->  	case V4L2_META_FMT_UVC:		descr =3D "UVC payload header metadata"; break=
-;
-> +	case V4L2_META_FMT_RK_ISP1_PARAMS:	descr =3D "Rockchip ISP1 3A params";=
- break;
-> +	case V4L2_META_FMT_RK_ISP1_STAT_3A:	descr =3D "Rockchip ISP1 3A statist=
-ics"; break;
-> =20
->  	default:
->  		/* Compressed formats */
-> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev=
-2.h
-> index e20d10df75c1..359ad8bbf9bf 100644
-> --- a/include/uapi/linux/videodev2.h
-> +++ b/include/uapi/linux/videodev2.h
-> @@ -698,6 +698,10 @@ struct v4l2_pix_format {
->  #define V4L2_META_FMT_VSP1_HGT    v4l2_fourcc('V', 'S', 'P', 'T') /* R-C=
-ar VSP1 2-D Histogram */
->  #define V4L2_META_FMT_UVC         v4l2_fourcc('U', 'V', 'C', 'H') /* UVC=
- Payload Header metadata */
-> =20
-> +/* Vendor specific - used for IPU3 camera sub-system */
+No worries, I've certainly been there and I'm super happy to have
+people testing patches.  :-)
 
-Did you mean "RK_ISP1 camera sub-system" ?
+Odd that you're having suspend/resume patches.  My first guess for
+super randomness would be WiFi.  The PCIe bus on rk3399 causes the
+most impossible to debug problems if you try to access it at the wrong
+time.  If you disable WiFi do all your problems go away?  I tried
+putting v5.0.9 on the kevin sitting on my desk and it seems to
+suspend/resume OK (25 cycles), but:
 
-> +#define V4L2_META_FMT_RK_ISP1_PARAMS	v4l2_fourcc('R', 'K', '1', 'P') /* =
-Rockchip ISP1 params */
-> +#define V4L2_META_FMT_RK_ISP1_STAT_3A	v4l2_fourcc('R', 'K', '1', 'S') /*=
- Rockchip ISP1 3A statistics */
-> +
->  /* priv field value to indicates that subsequent fields are valid. */
->  #define V4L2_PIX_FMT_PRIV_MAGIC		0xfeedcafe
-> =20
+* I just jammed it straight onto a normal Chrome OS root filesystem.
+Since that filesystem expects the GPU to be there, I'm just booting to
+a serial prompt and the screen just displays the boot splash.
 
---=-mOui5ucgkVhFyJMZ5z0C
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+* I didn't try to configure WiFi or anything.
 
------BEGIN PGP SIGNATURE-----
+* I'm using the Chrome OS "fallback config" for the kernel (the config
+our build system picks if building an upstream kernel without the
+normal split config).  AKA:
+<https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/master/eclass/cros-kernel/rockchip64_defconfig>.
+I'm not 100% sure everything is enabled there...
 
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCXMNrQgAKCRBxUwItrAao
-HMr/AKCH5EVntTk1jT5u0f41G/tqfeI+CwCgwiiFz0hcOaFAjBEJIqWm5+mUPpM=
-=9X8/
------END PGP SIGNATURE-----
+* I'm booting w/ serial console enabled and doing my testing with "no
+console suspend" which can certainly affect suspend/resume timing.
 
---=-mOui5ucgkVhFyJMZ5z0C--
+
+Best of luck tracking your problems down!  I suppose if things used to
+work maybe a bisect would be possible?
+
+-Doug
