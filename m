@@ -1,14 +1,14 @@
 From: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: [PATCH AUTOSEL 4.19 28/53] ASoC: rockchip: pdm: fix regmap_ops hang
+Subject: [PATCH AUTOSEL 4.14 17/32] ASoC: rockchip: pdm: fix regmap_ops hang
  issue
-Date: Fri, 26 Apr 2019 21:40:25 -0400
-Message-ID: <20190427014051.7522-28-sashal@kernel.org>
-References: <20190427014051.7522-1-sashal@kernel.org>
+Date: Fri, 26 Apr 2019 21:42:08 -0400
+Message-ID: <20190427014224.8274-17-sashal@kernel.org>
+References: <20190427014224.8274-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190427014051.7522-1-sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+In-Reply-To: <20190427014224.8274-1-sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
