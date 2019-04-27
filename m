@@ -1,14 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v6 2/3] arm64: rockchip: dts: Add initial rk3399-u-boot.dtsi
- file
-Date: Sat, 27 Apr 2019 17:12:01 +0530
-Message-ID: <20190427114202.7358-3-jagan@amarulasolutions.com>
-References: <20190427114202.7358-1-jagan@amarulasolutions.com>
+Subject: [PATCH v6 0/3] arm64: rockchip: dts: Add rk3399 -u-boot.dtsi files
+Date: Sat, 27 Apr 2019 17:11:59 +0530
+Message-ID: <20190427114202.7358-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190427114202.7358-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -22,42 +19,51 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-U-Boot always managed to use Linux devicetree files with respective
-bindings, but on the other hand u-boot also has it's own u-boot
-specific nodes or properties example u-boot,dm-pre-reloc which
-is required for SPL_OF_CONTROL to allocate particular node.
+This series is a rework of v5 patch that send it in separate series[1]
 
-It is always better to maintain these u-boot specific nodes and
-properties into seperate dts files. This would help to sync the
-devicetrees directly from Linux.
+All these changes are creating an initial rk3399-u-boot.dtsi and rk3399
+board -u-boot.dtsi files and u-boot specific dts changes like
+- sdram dtsi
+- sdmmc, u-boot,dm-pre-reloc
+- spi1, u-boot,dm-pre-reloc
 
-This patch is adding initial rk3399-u-boot.dtsi and move sdmmc,
-spi1 u-boot,dm-pre-reloc properties into it so-that the subsequent
-rk3399 boards can include the same on their board dtsi files.
+Changes for v6:
+- spilt the existing patch[1] into multiple patches
+  and send as a separate series.
 
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- arch/arm/dts/rk3399-u-boot.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+[1] https://patchwork.ozlabs.org/patch/1091720/
+
+Any inputs?
+Jagan.
+
+Jagan Teki (3):
+  arm64: rockchip: dts: rk3399: Add board -u-boot.dtsi files
+  arm64: rockchip: dts: Add initial rk3399-u-boot.dtsi file
+  arm64: rockchip: dts: rk3399: Use rk3399-u-boot.dtsi
+
+ arch/arm/dts/rk3399-evb-u-boot.dtsi     |  7 +++++++
+ arch/arm/dts/rk3399-evb.dts             |  2 --
+ arch/arm/dts/rk3399-ficus-u-boot.dtsi   |  6 ++++++
+ arch/arm/dts/rk3399-ficus.dts           |  1 -
+ arch/arm/dts/rk3399-firefly-u-boot.dtsi |  7 +++++++
+ arch/arm/dts/rk3399-firefly.dts         |  2 --
+ arch/arm/dts/rk3399-gru-bob-u-boot.dtsi |  7 +++++++
+ arch/arm/dts/rk3399-gru-bob.dts         |  1 -
+ arch/arm/dts/rk3399-gru-u-boot.dtsi     |  6 ++++++
+ arch/arm/dts/rk3399-gru.dtsi            |  1 -
+ arch/arm/dts/rk3399-puma-ddr1600.dts    |  1 +
+ arch/arm/dts/rk3399-puma.dtsi           |  3 ---
+ arch/arm/dts/rk3399-rock960-u-boot.dtsi |  6 ++++++
+ arch/arm/dts/rk3399-rock960.dts         |  1 -
+ arch/arm/dts/rk3399-u-boot.dtsi         | 12 ++++++++++++
+ 15 files changed, 52 insertions(+), 11 deletions(-)
+ create mode 100644 arch/arm/dts/rk3399-evb-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-ficus-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-firefly-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-gru-bob-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-gru-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-rock960-u-boot.dtsi
  create mode 100644 arch/arm/dts/rk3399-u-boot.dtsi
 
-diff --git a/arch/arm/dts/rk3399-u-boot.dtsi b/arch/arm/dts/rk3399-u-boot.dtsi
-new file mode 100644
-index 0000000000..0786c1193a
---- /dev/null
-+++ b/arch/arm/dts/rk3399-u-boot.dtsi
-@@ -0,0 +1,12 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+/*
-+ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-+ */
-+
-+&sdmmc {
-+	u-boot,dm-pre-reloc;
-+};
-+
-+&spi1 {
-+	u-boot,dm-pre-reloc;
-+};
 -- 
 2.18.0.321.gffc6fa0e3
