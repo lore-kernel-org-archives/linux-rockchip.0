@@ -1,7 +1,8 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 4/9] rockchip: rk3399: Get bl31.elf via BL31
-Date: Sun, 28 Apr 2019 14:39:08 +0530
-Message-ID: <20190428090913.10568-5-jagan@amarulasolutions.com>
+Subject: [PATCH v2 5/9] board: puma: Get bl31.bin via BL31 and rk3399m0.bin
+ via PMUM0
+Date: Sun, 28 Apr 2019 14:39:09 +0530
+Message-ID: <20190428090913.10568-6-jagan@amarulasolutions.com>
 References: <20190428090913.10568-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -18,90 +19,168 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Emmanuel Vadot <manu-xXdDKFdH5B3kFDPD4ZthVA@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
+Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Right now rockchip platform need to copy bl31.elf into u-boot
-source directory to make use of building u-boot.itb.
+Right now puma rk3399 board need to copy bl31-rk3399.bin and
+rk3399m0.bin into u-boot source directory to make use of building
+u-boot.itb.
 
-So, add environment variable BL31 like Allwinner SoC so-that the
-bl31.elf would available via BL31.
+So, add environment variable
+- BL31 for bl31.bin (instead of bl31-rk3399.bin to compatible with other
+  platform BL31 env)
+- PMUM0 for rk3399m0.bin
 
-If the builds are not exporting BL31 env, the make_fit_atf.py
-explicitly create dummy bl31.elf in u-boot root directory to
-satisfy travis builds and it will show the warning on console as
+If the builds are not exporting BL31, PMUM0 env, the fit_spl_atf.sh will
+notify with warning about which document to refer for more information
+like this:
 
- WARNING: BL31 file bl31.elf NOT found, resulting binary is non-functional
- WARNING: Please read Building section in doc/README.rockchip
+ WARNING: BL31 file bl31.bin NOT found, resulting binary is non-functional
+ Please read Building section in doc/README.rockchip
+ WARNING: PMUM0 file rk3399m0.bin NOT found, resulting binary is non-functional
+ Please read Building section in doc/README.rockchip
 
-Note, that the dummy bl31 files were created during not exporting
-BL31 case would be removed via clean target in Makefile.
-
-Cc: Emmanuel Vadot <manu-xXdDKFdH5B3kFDPD4ZthVA@public.gmane.org> <manu-h+KGxgPPiopAfugRpC6u6w@public.gmane.org>
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- Makefile                               |  2 +-
- arch/arm/mach-rockchip/make_fit_atf.py | 11 ++++++++++-
- doc/README.rockchip                    |  4 ++--
- 3 files changed, 13 insertions(+), 4 deletions(-)
+ .../{fit_spl_atf.its => fit_spl_atf.sh}       | 46 ++++++++++++++++---
+ configs/puma-rk3399_defconfig                 |  2 +-
+ doc/README.rockchip                           |  8 ++--
+ 3 files changed, 45 insertions(+), 11 deletions(-)
+ rename board/theobroma-systems/puma_rk3399/{fit_spl_atf.its => fit_spl_atf.sh} (50%)
+ mode change 100644 => 100755
 
-diff --git a/Makefile b/Makefile
-index ba0cce9f33..2471340c71 100644
---- a/Makefile
-+++ b/Makefile
-@@ -1782,7 +1782,7 @@ clean: $(clean-dirs)
- 		-o -name 'dsdt.aml' -o -name 'dsdt.asl.tmp' -o -name 'dsdt.c' \
- 		-o -name '*.efi' -o -name '*.gcno' -o -name '*.so' \) \
- 		-type f -print | xargs rm -f \
--		bl31_*.bin image.map
-+		bl31.c bl31.elf bl31_*.bin image.map
+diff --git a/board/theobroma-systems/puma_rk3399/fit_spl_atf.its b/board/theobroma-systems/puma_rk3399/fit_spl_atf.sh
+old mode 100644
+new mode 100755
+similarity index 50%
+rename from board/theobroma-systems/puma_rk3399/fit_spl_atf.its
+rename to board/theobroma-systems/puma_rk3399/fit_spl_atf.sh
+index 530f059f3d..517fad40a1
+--- a/board/theobroma-systems/puma_rk3399/fit_spl_atf.its
++++ b/board/theobroma-systems/puma_rk3399/fit_spl_atf.sh
+@@ -1,3 +1,31 @@
++#!/bin/sh
++#
++# Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++#
++# Based on the board/sunxi/mksunxi_fit_atf.sh
++#
++# Script to generate FIT image source for 64-bit puma boards with
++# U-Boot proper, ATF, PMU firmware and devicetree.
++#
++# usage: $0 <dt_name> [<dt_name> [<dt_name] ...]
++
++[ -z "$BL31" ] && BL31="bl31.bin"
++
++if [ ! -f $BL31 ]; then
++	echo "WARNING: BL31 file $BL31 NOT found, resulting binary is non-functional" >&2
++	echo "Please read Building section in doc/README.rockchip" >&2
++	BL31=/dev/null
++fi
++
++[ -z "$PMUM0" ] && PMUM0="rk3399m0.bin"
++
++if [ ! -f $PMUM0 ]; then
++	echo "WARNING: PMUM0 file $PMUM0 NOT found, resulting binary is non-functional" >&2
++	echo "Please read Building section in doc/README.rockchip" >&2
++	PMUM0=/dev/null
++fi
++
++cat << __HEADER_EOF
+ /* SPDX-License-Identifier: GPL-2.0+ OR X11 */
+ /*
+  * Copyright (C) 2017 Theobroma Systems Design und Consulting GmbH
+@@ -14,16 +42,15 @@
+ 	images {
+ 		uboot {
+ 			description = "U-Boot (64-bit)";
+-			data = /incbin/("../../../u-boot-nodtb.bin");
++			data = /incbin/("u-boot-nodtb.bin");
+ 			type = "standalone";
+-			os = "U-Boot";
+ 			arch = "arm64";
+ 			compression = "none";
+-			load = <0x00200000>;
++			load = <0x4a000000>;
+ 		};
+ 		atf {
+ 			description = "ARM Trusted Firmware";
+-			data = /incbin/("../../../bl31-rk3399.bin");
++			data = /incbin/("$BL31");
+ 			type = "firmware";
+ 			arch = "arm64";
+ 			os = "arm-trusted-firmware";
+@@ -33,17 +60,20 @@
+ 		};
+ 		pmu {
+ 		        description = "Cortex-M0 firmware";
+-			data = /incbin/("../../../rk3399m0.bin");
++			data = /incbin/("$PMUM0");
+ 			type = "pmu-firmware";
+ 			compression = "none";
+ 			load = <0x180000>;
+                 };
+ 		fdt {
+ 			description = "RK3399-Q7 (Puma) flat device-tree";
+-			data = /incbin/("../../../u-boot.dtb");
++			data = /incbin/("u-boot.dtb");
+ 			type = "flat_dt";
+ 			compression = "none";
+ 		};
++__HEADER_EOF
++
++cat << __CONF_HEADER_EOF
+ 	};
  
- # mrproper - Delete all generated files, including .config
- #
-diff --git a/arch/arm/mach-rockchip/make_fit_atf.py b/arch/arm/mach-rockchip/make_fit_atf.py
-index d1faff1957..327875d87b 100755
---- a/arch/arm/mach-rockchip/make_fit_atf.py
-+++ b/arch/arm/mach-rockchip/make_fit_atf.py
-@@ -10,6 +10,7 @@ usage: $0 <dt_name> [<dt_name> [<dt_name] ...]
- import os
- import sys
- import getopt
-+import logging
- 
- # pip install pyelftools
- from elftools.elf.elffile import ELFFile
-@@ -194,8 +195,16 @@ def get_bl31_segments_info(bl31_file_name):
- 
- def main():
-     uboot_elf="./u-boot"
--    bl31_elf="./bl31.elf"
-     FIT_ITS=sys.stdout
-+    if "BL31" in os.environ:
-+        bl31_elf=os.getenv("BL31");
-+    else:
-+        os.system("echo 'int main(){}' > bl31.c")
-+        os.system("${CROSS_COMPILE}gcc -c bl31.c -o bl31.elf")
-+        bl31_elf="./bl31.elf"
-+        logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
-+        logging.warning(' BL31 file bl31.elf NOT found, resulting binary is non-functional')
-+        logging.warning(' Please read Building section in doc/README.rockchip')
- 
-     opts, args = getopt.getopt(sys.argv[1:], "o:u:b:h")
-     for opt, val in opts:
+ 	configurations {
+@@ -54,5 +84,9 @@
+ 			loadables = "uboot", "pmu";
+ 			fdt = "fdt";
+ 		};
++__CONF_HEADER_EOF
++
++cat << __ITS_EOF
+ 	};
+ };
++__ITS_EOF
+diff --git a/configs/puma-rk3399_defconfig b/configs/puma-rk3399_defconfig
+index e5ea2fe0b3..98b2dd6f02 100644
+--- a/configs/puma-rk3399_defconfig
++++ b/configs/puma-rk3399_defconfig
+@@ -15,7 +15,7 @@ CONFIG_SPL_SPI_FLASH_SUPPORT=y
+ CONFIG_SPL_SPI_SUPPORT=y
+ CONFIG_DEBUG_UART=y
+ CONFIG_NR_DRAM_BANKS=1
+-CONFIG_SPL_FIT_SOURCE="board/theobroma-systems/puma_rk3399/fit_spl_atf.its"
++CONFIG_SPL_FIT_GENERATOR="board/theobroma-systems/puma_rk3399/fit_spl_atf.sh"
+ CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-puma-haikou.dtb"
+ CONFIG_MISC_INIT_R=y
+ # CONFIG_DISPLAY_CPUINFO is not set
 diff --git a/doc/README.rockchip b/doc/README.rockchip
-index ca4d6473b0..98a3824e2c 100644
+index 98a3824e2c..88a4593392 100644
 --- a/doc/README.rockchip
 +++ b/doc/README.rockchip
-@@ -149,8 +149,8 @@ For example:
- 	=> make realclean
- 	=> make CROSS_COMPILE=aarch64-linux-gnu- PLAT=rk3399
+@@ -137,8 +137,8 @@ For example:
+ 	=> cd arm-trusted-firmware
+ 	=> make CROSS_COMPILE=aarch64-linux-gnu- PLAT=rk3399 bl31
  
--	(copy bl31.elf into U-Boot root dir)
--	=> cp build/rk3399/release/bl31/bl31.elf /path/to/u-boot
-+	(export bl31.elf)
-+	=> export BL31=/path/to/arm-trusted-firmware/build/rk3399/release/bl31/bl31.elf
+-	(copy bl31.bin into U-Boot root dir)
+-	=> cp build/rk3399/release/bl31/bl31.bin /path/to/u-boot/bl31-rk3399.bin
++	(export bl31.bin)
++	=> export BL31=/path/to/arm-trusted-firmware/build/rk3399/release/bl31/bl31.bin
  
-    - Compile PMU M0 firmware
+      For rest of rk3399 boards.
+ 
+@@ -162,8 +162,8 @@ For example:
+      (export cross compiler path for Cortex-M0 PMU)
+      => make CROSS_COMPILE=arm-cortex_m0-eabi-
+ 
+-     (copy rk3399m0.bin into U-Boot root dir)
+-     => cp rk3399m0.bin /path/to/u-boot
++     (export rk3399m0.bin)
++     => export PMUM0=/path/to/rk3399-cortex-m0/rk3399m0.bin
+ 
+    - Compile U-Boot
  
 -- 
 2.18.0.321.gffc6fa0e3
