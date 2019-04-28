@@ -1,31 +1,41 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [v3] ARM: rockchip: Fix a leaked reference by adding of_node_put() in two functions
-Date: Sun, 28 Apr 2019 12:40:08 +0200
-Message-ID: <2816348.laE8LpYbrI@phil>
-References: <1556262488-21072-1-git-send-email-wen.yang99@zte.com.cn> <cee2ab03-d0b7-c9c6-acc3-d5aa28979e2b@web.de>
+Subject: Re: [PATCH v3] ARM: rockchip: fix a leaked reference by adding missing of_node_put
+Date: Sun, 28 Apr 2019 12:46:13 +0200
+Message-ID: <5474132.bFrQNdgMoI@phil>
+References: <1556262488-21072-1-git-send-email-wen.yang99@zte.com.cn>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cee2ab03-d0b7-c9c6-acc3-d5aa28979e2b@web.de>
+In-Reply-To: <1556262488-21072-1-git-send-email-wen.yang99@zte.com.cn>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Markus Elfring <Markus.Elfring@web.de>
-Cc: Wen Yang <wen.yang99@zte.com.cn>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Florian Fainelli <f.fainelli@gmail.com>, linux-kernel@vger.kernel.org, Russell King <linux@armlinux.org.uk>, Yi Wang <wang.yi59@zte.com.cn>
+To: Wen Yang <wen.yang99@zte.com.cn>
+Cc: linux-kernel@vger.kernel.org, wang.yi59@zte.com.cn, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Sonntag, 28. April 2019, 08:27:05 CEST schrieb Markus Elfring:
-> >  arch/arm/mach-rockchip/platsmp.c | 12 ++++++++++--
-> >  arch/arm/mach-rockchip/pm.c      |  2 ++
+Am Freitag, 26. April 2019, 09:08:08 CEST schrieb Wen Yang:
+> The call to of_get_next_child returns a node pointer with refcount
+> incremented thus it must be explicitly decremented after the last
+> usage.
 > 
-> * Would a commit subject variant be nicer?
+> Detected by coccinelle with the following warnings:
+> ./arch/arm/mach-rockchip/pm.c:269:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 259, but without a corresponding object release within this function.
+> ./arch/arm/mach-rockchip/pm.c:275:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 259, but without a corresponding object release within this function
+> ./arch/arm/mach-rockchip/platsmp.c:281:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 272, but without a corresponding object release within this function.
+> ./arch/arm/mach-rockchip/platsmp.c:285:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 272, but without a corresponding object release within this function.
+> ./arch/arm/mach-rockchip/platsmp.c:289:3-9: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 272, but without a corresponding object release within this function.
+> ./arch/arm/mach-rockchip/platsmp.c:303:3-9: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 294, but without a corresponding object release within this function.
+> 
+> Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
+> Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+> Suggested-by: Heiko Stuebner <heiko@sntech.de>
+> Cc: Russell King <linux@armlinux.org.uk>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-kernel@vger.kernel.org
 
-yeah, but I'll simply adjust that when applying.
+queued for 5.3 (too late for 5.2)
 
-> * I dare to present a reminder for a recurring development topic.
->   How do you think about to adjust the exception handling in these function
->   implementations a bit more according to the Linux coding style
->   (so that the addition of duplicate function calls would be avoided)?
-
-I actually requested not doing wild gotos for of_node_put calls,
-as it makes the code harder to read, especially when the "node"
-gets reused for a different node-source.
+Thanks
+Heiko
