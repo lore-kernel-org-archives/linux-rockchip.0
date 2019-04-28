@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 2/9] Makefile: clean bl31_*.bin
-Date: Sun, 28 Apr 2019 14:39:06 +0530
-Message-ID: <20190428090913.10568-3-jagan@amarulasolutions.com>
+Subject: [PATCH v2 3/9] travis.yml: Add pyelftools install entry
+Date: Sun, 28 Apr 2019 14:39:07 +0530
+Message-ID: <20190428090913.10568-4-jagan@amarulasolutions.com>
 References: <20190428090913.10568-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,30 +21,32 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Rockchip platform has its python script that would generate various
-bl31_*bin for creating u-boot.itb file by taking bl31.elf as input.
+Currently rockchip platform is using explicit 'make u-boot.itb' for
+building u-boot.itb but if we enable CONFIG_BUILD_TARGET as 'u-boot.itb'
+then the resulting u-boot.itb directly will create by make.
 
-These bl31_*.bin files are generated in u-boot root directory and
-have no rule to clean it up. so add support for it by adding in
-command entry of clean target in Makefile.
+But, that indeed make travis build fail since it require python-pyelftools
+host package.
+
+So add pyelftools install entry as 'pip install pyelftools', this would
+create pyelftools on travis host which are required to build rk3399 itb.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .travis.yml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Makefile b/Makefile
-index 54e8fedff0..ba0cce9f33 100644
---- a/Makefile
-+++ b/Makefile
-@@ -1782,7 +1782,7 @@ clean: $(clean-dirs)
- 		-o -name 'dsdt.aml' -o -name 'dsdt.asl.tmp' -o -name 'dsdt.c' \
- 		-o -name '*.efi' -o -name '*.gcno' -o -name '*.so' \) \
- 		-type f -print | xargs rm -f \
--		image.map
-+		bl31_*.bin image.map
- 
- # mrproper - Delete all generated files, including .config
- #
+diff --git a/.travis.yml b/.travis.yml
+index eb531f1e5b..6dbbb5dd02 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -49,6 +49,7 @@ install:
+  - . /tmp/venv/bin/activate
+  - pip install pytest==2.8.7
+  - pip install python-subunit
++ - pip install pyelftools
+  - grub-mkimage -o ~/grub_x86.efi -O i386-efi normal  echo lsefimmap lsefi lsefisystab efinet tftp minicmd
+  - grub-mkimage -o ~/grub_x64.efi -O x86_64-efi normal  echo lsefimmap lsefi lsefisystab efinet tftp minicmd
+  - mkdir ~/grub2-arm
 -- 
 2.18.0.321.gffc6fa0e3
