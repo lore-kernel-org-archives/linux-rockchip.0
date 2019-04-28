@@ -1,11 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 7/9] Makefile.spl: Create u-boot-spl-rockchip.bin for rk3399
-Date: Sun, 28 Apr 2019 14:39:11 +0530
-Message-ID: <20190428090913.10568-8-jagan@amarulasolutions.com>
+Subject: [PATCH v2 8/9] dts: Makefile: Build rockchip dtbs based on SoC types
+Date: Sun, 28 Apr 2019 14:39:12 +0530
+Message-ID: <20190428090913.10568-9-jagan@amarulasolutions.com>
 References: <20190428090913.10568-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20190428090913.10568-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -21,63 +21,88 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Um9ja2NoaXAgcGxhdGZvcm0gd291bGQgcmVxdWlyZSBhbiBleHBsaWNpdCBjYWxsIHRvIG1raW1h
-Z2UgZm9yCmNyZWF0aW5nIGJvb3RhYmxlIGltYWdlcyB3aGljaCBpbmRlZWQgc3BlY2lmaWMgdG8g
-U29DIGZhbWlseQphbG9uZyB3aXRoIGJvb3QgZGV2aWNlcy4KCkV4YW1wbGUgb2YgY3JlYXRpbmcg
-Ym9vdGFibGUgaW1hZ2UgZm9yIHJrMzM5OSBmYW1pbHkgd2l0aCBTRApib290IGRldmljZSBhcwoK
-4oK5IG1raW1hZ2UgLW4gcmszMzk5IC1UIHJrc2QgLWQgLi9zcGwvdS1ib290LXNwbC1kdGIuYmlu
-IHUtYm9vdC1zcGwtcm9ja2NoaXAuYmluCgpUaGlzIHBhdGNoIHdvdWxkIGRvIHRoZSBzYW1lIHRo
-aW5rIHZpYSBNYWtlZmlsZS5zcGwgZm9yIHJrMzM5OS4KClRoaXMgd291bGQgYmUgYW4gaW5pdGlh
-bCB2ZXJzaW9uIGFuZCBpdCBjYW4gZWFzaWx5IGV4cGFuZCBmdXJ0aGVyIHRvIHN1cHBvcnQKb3Ro
-ZXIgZmFtaWxpZXMgb2YgU29DJ3Mgd2l0aCB2YXJpZXR5IG9mIGJvb3Qgc3RhZ2VzIGxpa2UgVFBM
-LCBTUEwuCgpTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25z
-LmNvbT4KLS0tCiBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcgfCAgOCArKysrKysrKwog
-ZG9jL1JFQURNRS5yb2NrY2hpcCAgICAgICAgICAgIHwgIDMgKy0tCiBzY3JpcHRzL01ha2VmaWxl
-LnNwbCAgICAgICAgICAgfCAyMSArKysrKysrKysrKysrKysrKysrKysKIDMgZmlsZXMgY2hhbmdl
-ZCwgMzAgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9hcmNoL2Fy
-bS9tYWNoLXJvY2tjaGlwL0tjb25maWcgYi9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcK
-aW5kZXggZGJlN2YxMWQzOS4uMjg2Yzg3MDEzNSAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vbWFjaC1y
-b2NrY2hpcC9LY29uZmlnCisrKyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZpZwpAQCAt
-MjIyLDYgKzIyMiwxNCBAQCBjb25maWcgUk9DS0NISVBfU1BMX1JFU0VSVkVfSVJBTQogY29uZmln
-IFJPQ0tDSElQX0JST01fSEVMUEVSCiAJYm9vbAogCitjb25maWcgU1BMX1JPQ0tDSElQX0lNR19O
-QU1FCisJc3RyaW5nICJTUEwgUm9ja2NoaXAgaW1hZ2UgbmFtZSIKKwlkZWZhdWx0ICJyazMzOTki
-IGlmIFJPQ0tDSElQX1JLMzM5OQorCWhlbHAKKwkgIFRvIGNyZWF0ZSBTUEwgaW1hZ2UgZm9yIHJv
-Y2tjaGlwIHRhcmdldHMgdGhlIGltYWdlIG5hbWUgd291bGQKKwkgIGRlcGVuZHMgb24gdGhlIFNv
-QyBmYW1pbHkgdGhhdCB3b3VsZCBwYXNzIGFzIGFuIGFyZ3VtZW50IGFzCisJICAnLW4gcmszMzk5
-JyB0byBta2ltYWdlIGZvciBjcmVhdGluZyBSb2NrY2hpcCBTUEwgYm9vdCBpbWFnZS4KKwogY29u
-ZmlnIFNQTF9ST0NLQ0hJUF9FQVJMWVJFVFVSTl9UT19CUk9NCiAgICAgICAgIGJvb2wgIlNQTCBy
-ZXF1aXJlcyBlYXJseS1yZXR1cm4gKGZvciBSSzMxODgtc3R5bGUgQlJPTSkgdG8gQlJPTSIKIAlk
-ZXBlbmRzIG9uIFNQTCAmJiBFTkFCTEVfQVJNX1NPQ19CT09UMF9IT09LCmRpZmYgLS1naXQgYS9k
-b2MvUkVBRE1FLnJvY2tjaGlwIGIvZG9jL1JFQURNRS5yb2NrY2hpcAppbmRleCBjNGU1ZjgzZGE3
-Li5jY2JhYWFhOWE3IDEwMDY0NAotLS0gYS9kb2MvUkVBRE1FLnJvY2tjaGlwCisrKyBiL2RvYy9S
-RUFETUUucm9ja2NoaXAKQEAgLTQyMSwxMSArNDIxLDEwIEBAIE9wdGlvbiAyOiBQYWNrYWdlIHRo
-ZSBpbWFnZSB3aXRoIFNQTDoKICAgLSBQcmVmaXggcmszMzk5IGhlYWRlciB0byBTUEwgaW1hZ2UK
-IAogICAgID0+IGNkIC9wYXRoL3RvL3UtYm9vdAotICAgID0+IC4vdG9vbHMvbWtpbWFnZSAtbiBy
-azMzOTkgLVQgcmtzZCAtZCBzcGwvdS1ib290LXNwbC1kdGIuYmluIG91dAogCiAgIC0gV3JpdGUg
-cHJlZml4ZWQgU1BMIGF0IDY0dGggc2VjdG9yCiAKLSAgICA9PiBzdWRvIGRkIGlmPW91dCBvZj0v
-ZGV2L3NkYyBzZWVrPTY0CisgICAgPT4gc3VkbyBkZCBpZj1zcGwvdS1ib290LXNwbC1yb2NrY2hp
-cC5iaW4gb2Y9L2Rldi9zZGMgc2Vlaz02NAogCiAgIC0gV3JpdGUgVS1Cb290IHByb3BlciBhdCAx
-NjM4NCBzZWN0b3IKIApkaWZmIC0tZ2l0IGEvc2NyaXB0cy9NYWtlZmlsZS5zcGwgYi9zY3JpcHRz
-L01ha2VmaWxlLnNwbAppbmRleCA1NGIxNjBkNzJiLi40OWMwNjQxYWEyIDEwMDY0NAotLS0gYS9z
-Y3JpcHRzL01ha2VmaWxlLnNwbAorKysgYi9zY3JpcHRzL01ha2VmaWxlLnNwbApAQCAtMjM1LDYg
-KzIzNSwxMCBAQCBBTEwtJChDT05GSUdfQVJDSF9aWU5RTVApCSs9ICQob2JqKS9ib290LmJpbgog
-CiBBTEwtJChDT05GSUdfQVJDSF9NRURJQVRFSykJKz0gJChvYmopL3UtYm9vdC1zcGwtbXRrLmJp
-bgogCitpZmRlZiBDT05GSUdfUk9DS0NISVBfUkszMzk5CitBTEwtJChDT05GSUdfQVJDSF9ST0NL
-Q0hJUCkJKz0gJChvYmopL3UtYm9vdC1zcGwtcm9ja2NoaXAuYmluCitlbmRpZgorCiBhbGw6CSQo
-QUxMLXkpCiAKIHF1aWV0X2NtZF9jYXQgPSBDQVQgICAgICRACkBAIC0zNjksNiArMzczLDIzIEBA
-IE1LSU1BR0VGTEFHU191LWJvb3Qtc3BsLW10ay5iaW4gPSAtVCBtdGtfaW1hZ2UgXAogJChvYmop
-L3UtYm9vdC1zcGwtbXRrLmJpbjogJChvYmopL3UtYm9vdC1zcGwuYmluIEZPUkNFCiAJJChjYWxs
-IGlmX2NoYW5nZWQsbWtpbWFnZSkKIAorIyBSb2NrY2hpcCBzcGVjaWZpYyBTUEwgYnVpbGQKK2lm
-ZXEgKCQoQ09ORklHX1JPQ0tDSElQX1JLMzM5OSkseSkKKworaWZlcSAoJChDT05GSUdfU1BJX0ZM
-QVNIX1NVUFBPUlQpLHkpCitST0NLQ0hJUF9JTUdfVFlQRSA6PSBya3NwaQorZWxzZQorUk9DS0NI
-SVBfSU1HX1RZUEUgOj0gcmtzZAorZW5kaWYKKworTUtJTUFHRUZMQUdTX3UtYm9vdC1zcGwtcm9j
-a2NoaXAuYmluID0gLW4gJChDT05GSUdfU1BMX1JPQ0tDSElQX0lNR19OQU1FKSBcCisJLVQgJChS
-T0NLQ0hJUF9JTUdfVFlQRSkgLWQgJChNS0lNQUdFT1VUUFVUKQorCiskKG9iaikvdS1ib290LXNw
-bC1yb2NrY2hpcC5iaW46ICQob2JqKS91LWJvb3Qtc3BsLmJpbiBGT1JDRQorCSQoY2FsbCBpZl9j
-aGFuZ2VkLG1raW1hZ2UpCisKK2VuZGlmICMgQ09ORklHX1JPQ0tDSElQX1JLMzM5OQorCiAjIFJ1
-bGUgdG8gbGluayB1LWJvb3Qtc3BsCiAjIE1heSBiZSBvdmVycmlkZGVuIGJ5IGFyY2gvJChBUkNI
-KS9jb25maWcubWsKIHF1aWV0X2NtZF91LWJvb3Qtc3BsID89IExEICAgICAgJEAKLS0gCjIuMTgu
-MC4zMjEuZ2ZmYzZmYTBlMwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+Sometimes u-boot specific dts nodes or properties can use
+from config macros from respective rockchip family include/configs
+files, example CONFIG_SPL_PAD_TO.
+
+So, it's better to compile the dtbs based on the respective
+rockchip family types rather than rockchip itself to avoid
+compilation issues.
+
+This patch organize the existing dtb's based on the rockchip
+family types.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ arch/arm/dts/Makefile | 35 ++++++++++++++++++++++++++---------
+ 1 file changed, 26 insertions(+), 9 deletions(-)
+
+diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
+index a2911fa2fd..0f9d6b7d0d 100644
+--- a/arch/arm/dts/Makefile
++++ b/arch/arm/dts/Makefile
+@@ -60,11 +60,19 @@ dtb-$(CONFIG_KIRKWOOD) += \
+ dtb-$(CONFIG_ARCH_OWL) += \
+ 	bubblegum_96.dtb
+ 
+-dtb-$(CONFIG_ARCH_ROCKCHIP) += \
+-	rk3036-sdk.dtb \
+-	rk3128-evb.dtb \
+-	rk3188-radxarock.dtb \
+-	rk3229-evb.dtb \
++dtb-$(CONFIG_ROCKCHIP_RK3036) += \
++	rk3036-sdk.dtb
++
++dtb-$(CONFIG_ROCKCHIP_RK3128) += \
++	rk3128-evb.dtb
++
++dtb-$(CONFIG_ROCKCHIP_RK3188) += \
++	rk3188-radxarock.dtb
++
++dtb-$(CONFIG_ROCKCHIP_RK322X) += \
++	rk3229-evb.dtb
++
++dtb-$(CONFIG_ROCKCHIP_RK3288) += \
+ 	rk3288-evb.dtb \
+ 	rk3288-fennec.dtb \
+ 	rk3288-firefly.dtb \
+@@ -77,14 +85,20 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
+ 	rk3288-veyron-mickey.dtb \
+ 	rk3288-veyron-minnie.dtb \
+ 	rk3288-veyron-speedy.dtb \
+-	rk3288-vyasa.dtb \
+-	rk3328-evb.dtb \
+-	rk3399-ficus.dtb \
++	rk3288-vyasa.dtb
++
++dtb-$(CONFIG_ROCKCHIP_RK3328) += \
++	rk3328-evb.dtb
++
++dtb-$(CONFIG_ROCKCHIP_RK3368) += \
+ 	rk3368-lion.dtb \
+ 	rk3368-sheep.dtb \
+ 	rk3368-geekbox.dtb \
+ 	rk3368-px5-evb.dtb \
++
++dtb-$(CONFIG_ROCKCHIP_RK3399) += \
+ 	rk3399-evb.dtb \
++	rk3399-ficus.dtb \
+ 	rk3399-firefly.dtb \
+ 	rk3399-gru-bob.dtb \
+ 	rk3399-nanopc-t4.dtb \
+@@ -96,9 +110,12 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
+ 	rk3399-puma-ddr1866.dtb \
+ 	rk3399-rock-pi-4.dtb \
+ 	rk3399-rock960.dtb \
+-	rk3399-rockpro64.dtb \
++	rk3399-rockpro64.dtb
++
++dtb-$(CONFIG_ROCKCHIP_RV1108) += \
+ 	rv1108-elgin-r1.dtb \
+ 	rv1108-evb.dtb
++
+ dtb-$(CONFIG_ARCH_MESON) += \
+ 	meson-gxbb-nanopi-k2.dtb \
+ 	meson-gxbb-odroidc2.dtb \
+-- 
+2.18.0.321.gffc6fa0e3
