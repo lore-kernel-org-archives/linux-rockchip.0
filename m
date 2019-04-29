@@ -1,156 +1,111 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 1/5] usb: dwc2: bus suspend/resume for hosts with DWC2_POWER_DOWN_PARAM_NONE
-Date: Mon, 29 Apr 2019 10:33:48 -0700
-Message-ID: <CAD=FV=UOmfNeuZPrDcZRdwAkF4yRifCpBGUuZTsmmz0UVEZ+yA@mail.gmail.com>
-References: <20190418001356.124334-1-dianders@chromium.org>
- <20190418001356.124334-2-dianders@chromium.org> <SN1PR12MB243108D1EF3239EC4F730ACDA7390@SN1PR12MB2431.namprd12.prod.outlook.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 1/3] pwm: rockchip: Don't update the state for the
+ caller of pwm_apply_state()
+Date: Mon, 29 Apr 2019 11:04:20 -0700
+Message-ID: <CAD=FV=U71u39ZHkBBfAXVAP=_hY-bAw3L7JdhC=36jkUVxPOmQ@mail.gmail.com>
+References: <20190312214605.10223-1-u.kleine-koenig@pengutronix.de>
+ <20190312214605.10223-2-u.kleine-koenig@pengutronix.de>
+ <1707507.TOMHpQGrZ7@phil>
+ <CAD=FV=WZHouhGcxOgNG3006XajJQaAp0uq9WjeKRikQx1ru4TA@mail.gmail.com>
+ <20190408143914.uucb5dwafq3cnsmk@pengutronix.de>
+ <CA+ASDXO=szekU97iTDK9vqWjT+JtAKeCNTyoY=8aSi5d+v4mkA@mail.gmail.com>
+ <20190429065613.n52uwgys5eugmssd@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <SN1PR12MB243108D1EF3239EC4F730ACDA7390@SN1PR12MB2431.namprd12.prod.outlook.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Artur Petrosyan <Arthur.Petrosyan@synopsys.com>
-Cc: Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, "heiko@sntech.de" <heiko@sntech.de>, Alan Stern <stern@rowland.harvard.edu>, "amstan@chromium.org" <amstan@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, William Wu <william.wu@rock-chips.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, "zyw@rock-chips.com" <zyw@rock-chips.com>, "mka@chromium.org" <mka@chromium.org>, "ryandcase@chromium.org" <ryandcase@chromium.org>, Amelie Delaunay <amelie.delaunay@st.com>, "jwerner@chromium.org" <jwerner@chromium.org>, "dinguyen@opensource.altera.com" <dinguyen@opensource.altera.com>, Elaine
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190429065613.n52uwgys5eugmssd-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Mon, Apr 29, 2019 at 1:43 AM Artur Petrosyan
-<Arthur.Petrosyan@synopsys.com> wrote:
->
-> Hi,
->
-> On 4/18/2019 04:15, Douglas Anderson wrote:
-> > This is an attempt to rehash commit 0cf884e819e0 ("usb: dwc2: add bus
-> > suspend/resume for dwc2") on ToT.  That commit was reverted in commit
-> > b0bb9bb6ce01 ("Revert "usb: dwc2: add bus suspend/resume for dwc2"")
-> > because apparently it broke the Altera SOCFPGA.
-> >
-> > With all the changes that have happened to dwc2 in the meantime, it's
-> > possible that the Altera SOCFPGA will just magically work with this
-> > change now.  ...and it would be good to get bus suspend/resume
-> > implemented.
-> >
-> > This change is a forward port of one that's been living in the Chrome
-> > OS 3.14 kernel tree.
-> >
-> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > ---
-> > This patch was last posted at:
-> >
-> > https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__lkml.kernel.org_=
-r_1446237173-2D15263-2D1-2Dgit-2Dsend-2Demail-2Ddianders-40chromium.org&d=
-=3DDwIDAg&c=3DDPL6_X_6JkXFx7AXWqB0tg&r=3D9hPBFKCJ_nBjJhGVrrlYOeOQjP_HlVzYqr=
-C_D7niMJI&m=3DMMfe-4lZePyty6F5zfQ54kiYGuJWNulyRat944LkOsc&s=3DnExFpAPP_0plZ=
-fO5LMG1B-mqt1vyCvE35elVcyVgs8Y&e=3D
-> >
-> > ...and appears to have died the death of silence.  Maybe it could get
-> > some bake time in linuxnext if we can't find any proactive testing?
-> >
-> > I will also freely admit that I don't know tons about the theory
-> > behind this patch.  I'm mostly just re-hashing the original commit
-> > from Kever that was reverted since:
-> > * Turning on partial power down on rk3288 doesn't "just work".  I
-> >    don't get hotplug events.  This is despite dwc2 auto-detecting that
-> >    we are power optimized.
-> What do you mean by doesn't "just work" ? It seem to me that even after
-> adding this patch you don't get issues fixed.
-> You mention that you don't get the hotplug events. Please provide dwc2
-> debug logs and register dumps on this issue.
-
-I mean that partial power down in the currently upstream driver
-doesn't work.  AKA: if I turn on partial power down in the upstream
-driver then hotplug events break.  I can try to provide some logs.  On
-what exact version of the code do you want logs?  Just your series?
-Just my series?  Mainline?  Some attempt at combining both series?  As
-I said things seem to sorta work with the combined series.  I can try
-to clarify if that's the series you want me to test with.  ...or I can
-wait for your next version?
-
-
-> > @@ -4506,21 +4507,35 @@ static int _dwc2_hcd_suspend(struct usb_hcd *hc=
-d)
-> >        */
-> >       if (!hsotg->bus_suspended) {
-> >               hprt0 =3D dwc2_read_hprt0(hsotg);
-> > -             hprt0 |=3D HPRT0_SUSP;
-> > -             hprt0 &=3D ~HPRT0_PWR;
-> > -             dwc2_writel(hsotg, hprt0, HPRT0);
-> > -             spin_unlock_irqrestore(&hsotg->lock, flags);
-> > -             dwc2_vbus_supply_exit(hsotg);
-> > -             spin_lock_irqsave(&hsotg->lock, flags);
-> > +             if (hprt0 & HPRT0_CONNSTS) { > +                        h=
-prt0 |=3D HPRT0_SUSP;
-> Here you set "HPRT0_SUSP" bit but what if core doesn't support both
-> hibernation and Partial Power down assuming that
-> hsotg->params.power_down" value us equal to "DWC2_POWER_DOWN_PARAM_NONE"
-> which is 0.
-
-I am by no means an expert on dwc2, but an assumption made in my patch
-is that even cores that can't support partial power down can still
-save some amount of power when hcd_suspend is called.
-
-Some evidence that this should be possible: looking at mainline Linux
-and at dwc2_port_suspend(), I see:
-
-* It is currently called even when we have DWC2_POWER_DOWN_PARAM_NONE
-
-* It currently sets HPRT0_SUSP
-
-* It currently sets PCGCTL_STOPPCLK specifically in the case where
-power down is DWC2_POWER_DOWN_PARAM_NONE.
-
-...I believe that the net effect of my patch ends up doing both those
-same two things in hcd_suspend.  That is: when power_down is
-DWC2_POWER_DOWN_PARAM_NONE I believe my patch is really just doing the
-same thing that dwc2_port_suspend() would do in the same case.  Is
-that not OK?
-
-
-
-> > +                     if (hsotg->params.power_down =3D=3D DWC2_POWER_DO=
-WN_PARAM_PARTIAL)
-> You make one checking of hsotg->params.power_down mode here.
-> > +                             hprt0 &=3D ~HPRT0_PWR;
-> > +                     dwc2_writel(hsotg, hprt0, HPRT0);
-> > +             }
-> > +             if (hsotg->params.power_down =3D=3D DWC2_POWER_DOWN_PARAM=
-_PARTIAL) {
-> another checking of power_down mode here.
-
-Yeah, we can debate about how to best share/split code.  I'm not in
-love with the current structure either.  When I rebased your patches
-atop mine I changed this to more fully split them and I agree that was
-better.
-
-
-> > @@ -4592,10 +4612,12 @@ static int _dwc2_hcd_resume(struct usb_hcd *hcd=
-)
-> >               spin_unlock_irqrestore(&hsotg->lock, flags);
-> >               dwc2_port_resume(hsotg);
-> >       } else {
-> > -             dwc2_vbus_supply_init(hsotg);
-> > +             if (hsotg->params.power_down =3D=3D DWC2_POWER_DOWN_PARAM=
-_PARTIAL) {
-> > +                     dwc2_vbus_supply_init(hsotg);
-> >
-> > -             /* Wait for controller to correctly update D+/D- level */
-> > -             usleep_range(3000, 5000);
-> > +                     /* Wait for controller to correctly update D+/D- =
-level */
-> > +                     usleep_range(3000, 5000);
-> > +             }
-> >
-> >               /*
-> >                * Clear Port Enable and Port Status changes.
-> >
->
-> I have tested the patch on HAPS-DX. With this patch or without it when I
-> have a device connected core  enters to partial power down and doesn't
-> exit from it. So I cannot use the device.
-
-Can you explain what HAPS-DX is?
-
-
--Doug
+SGksCgpPbiBTdW4sIEFwciAyOCwgMjAxOSBhdCAxMTo1NiBQTSBVd2UgS2xlaW5lLUvDtm5pZwo8
+dS5rbGVpbmUta29lbmlnQHBlbmd1dHJvbml4LmRlPiB3cm90ZToKPgo+IE9uIFRodSwgQXByIDE4
+LCAyMDE5IGF0IDA1OjI3OjA1UE0gLTA3MDAsIEJyaWFuIE5vcnJpcyB3cm90ZToKPiA+IEhpLAo+
+ID4KPiA+IEknbSBub3Qgc3VyZSBpZiBJJ20gbWlzcmVhZGluZyB5b3UsIGJ1dCBJIHRob3VnaHQg
+SSdkIGFkZCBoZXJlIGJlZm9yZQo+ID4gdGhpcyBleHBpcmVzIG91dCBvZiBteSBpbmJveDoKPiA+
+Cj4gPiBPbiBNb24sIEFwciA4LCAyMDE5IGF0IDc6MzkgQU0gVXdlIEtsZWluZS1Lw7ZuaWcKPiA+
+IDx1LmtsZWluZS1rb2VuaWdAcGVuZ3V0cm9uaXguZGU+IHdyb3RlOgo+ID4gPiBNeSBpbnRlbnRp
+b24gaGVyZSBpcyBtb3JlIHRvIG1ha2UgYWxsIGRyaXZlcnMgYmVoYXZlIHRoZSBzYW1lIHdheSBh
+bmQKPiA+ID4gYmVjYXVzZSBvbmx5IHR3byBkcml2ZXJzIHVwZGF0ZWQgdGhlIHB3bV9zdGF0ZSB0
+aGlzIHdhcyB0aGUgdmFyaWFudCBJCj4gPiA+IHJlbW92ZWQuCj4gPgo+ID4gVG8gYmUgY2xlYXIs
+IHRoaXMgcGF0Y2ggb24gaXRzIG93biBpcyBwcm9iYWJseSBicmVha2luZyB0aGluZ3MuIEp1c3QK
+PiA+IGJlY2F1c2UgdGhlIG90aGVyIGRyaXZlcnMgZG9uJ3QgaW1wbGVtZW50IHRoZSBkb2N1bWVu
+dGVkIGJlaGF2aW9yCj4gPiBkb2Vzbid0IG1lYW4geW91IHNob3VsZCBicmVhayB0aGlzIGRyaXZl
+ci4gTWF5YmUgdGhlIG90aGVycyBqdXN0Cj4gPiBhcmVuJ3QgdXNlZCBpbiBwcmVjaXNlIGVub3Vn
+aCBzY2VuYXJpb3Mgd2hlcmUgdGhpcyBtYXR0ZXJzLgo+ID4KPiA+ID4gV2hlbiB5b3Ugc2F5IHRo
+YXQgdGhlIGNhbGxlciBtaWdodCBhY3R1YWxseSBjYXJlIGFib3V0IHRoZSBleGFjdAo+ID4gPiBw
+YXJhbWV0ZXJzIEkgZnVsbHkgYWdyZWUuIEluIHRoaXMgY2FzZSBob3dldmVyIHRoZSBjb25zdW1l
+ciBzaG91bGQgYmUKPiA+ID4gYWJsZSB0byBrbm93IHRoZSByZXN1bHQgYmVmb3JlIGFjdHVhbGx5
+IGFwcGx5aW5nIGl0LiBTbyBpZiB5b3UgZG8KPiA+ID4KPiA+ID4gICAgICAgICBwd21fYXBwbHlf
+c3RhdGUocHdtLCB7IC5wZXJpb2QgPSAxNywgLmR1dHlfY3ljbGUgPSAxMiwgLi4ufSkKPiA+ID4K
+PiA+ID4gYW5kIHRoaXMgcmVzdWx0cyBpbiAucGVyaW9kID0gMTAwIGFuZCAuZHV0eV9jeWNsZSA9
+IDAgdGhlbiBwcm9iYWJseSB0aGUKPiA+ID4gYmFkIHRoaW5ncyB5b3Ugd2FudCB0byBrbm93IGFi
+b3V0IGFscmVhZHkgaGFwcGVuZC4gU28gbXkgaWRlYSBpcyBhIG5ldwo+ID4gPiBmdW5jdGlvbiBw
+d21fcm91bmRfc3RhdGUoKSB0aGF0IGRvZXMgdGhlIGFkYXB0aW9ucyB0byBwd21fc3RhdGUgd2l0
+aG91dAo+ID4gPiBhcHBseWluZyBpdCB0byB0aGUgaGFyZHdhcmUuIEFmdGVyIHRoYXQgcHdtX2Fw
+cGx5X3N0YXRlIGNvdWxkIGRvIHRoZQo+ID4gPiBmb2xsb3dpbmc6Cj4gPiA+Cj4gPiA+ICAgICAg
+ICAgcnN0YXRlID0gcHdtX3JvdW5kX3N0YXRlKHB3bSwgc3RhdGUpCj4gPiA+ICAgICAgICAgcHdt
+LmFwcGx5KHB3bSwgc3RhdGUpCj4gPiA+ICAgICAgICAgZ3N0YXRlID0gcHdtX2dldF9zdGF0ZShw
+d20pCj4gPiA+Cj4gPiA+ICAgICAgICAgaWYgcnN0YXRlICE9IGdzdGF0ZToKPiA+ID4gICAgICAg
+ICAgICAgICAgIHdhcm4gYWJvdXQgcHJvYmxlbXMKPiA+Cj4gPiBGb3Igb3VyIGNhc2UgKHdlJ3Jl
+IHVzaW5nIHRoaXMgd2l0aCBwd20tcmVndWxhdG9yKSwgSSBkb24ndCByZWNhbGwgWypdCj4gPiB3
+ZSBuZWVkIHRvIGJlIDEwMCUgcHJlY2lzZSBhYm91dCB0aGUgcGVyaW9kLCBidXQgd2UgZG8gbmVl
+ZCB0byBiZSBhcwo+ID4gcHJlY2lzZSBhcyBwb3NzaWJsZSB3aXRoIHRoZSBkdXR5OnBlcmlvZCBy
+YXRpbyAtLSBzbyBvbmNlIHdlIGdldCB0aGUKPiA+ICJmZWVkYmFjayIgZnJvbSB0aGUgdW5kZXJs
+eWluZyBQV00gZHJpdmVyIHdoYXQgdGhlIHJlYWwgcGVyaW9kIHdpbGwKPiA+IGJlLCB3ZSBhZGp1
+c3QgdGhlIGR1dHkgYXBwcm9wcmlhdGVseS4KPgo+IEkgYWRtaXQgdGhhdCBJIGRpZG4ndCB1bmRl
+cnN0b29kIHRoZSB3aG9sZSBzaXR1YXRpb24gYW5kIChzb21lKSB0aGluZ3MKPiBhcmUgd29yc2Ug
+d2l0aCBteSBwYXRjaGVzIGFwcGxpZWQuIEkgc3RpbGwgdGhpbmsgdGhhdCBjaGFuZ2luZyB0aGUK
+PiBjYWxsZXIncyBzdGF0ZSB2YXJpYWJsZSBpcyBiYWQgZGVzaWduLCBidXQgb2YgY291cnNlIHB3
+bV9nZXRfc3RhdGUKPiBzaG91bGQgcmV0dXJuIHRoZSBjdXJyZW50bHkgaW1wbGVtZW50ZWQgY29u
+ZmlndXJhdGlvbi4KClJlZ2FyZGxlc3Mgb2YgdGhlIHByb3MgYW5kIGNvbnMgb2YgdGhlIGN1cnJl
+bnQgc2l0dWF0aW9uLCBob3BlZnVsbHkKd2UncmUgaW4gYWdyZWVtZW50IHRoYXQgd2Ugc2hvdWxk
+bid0IGJyZWFrIGV4aXN0aW5nIHVzZXJzPyAgSW4gZ2VuZXJhbApJJ2xsIHByb2JhYmx5IHN0YXkg
+b3V0IG9mIHRoZSBkZWJhdGUgYXMgbG9uZyBhcyB3ZSBlbmQgc29tZXdoZXJlIHRoYXQKcHdtX3Jl
+Z3VsYXRvciBpcyBhYmxlIHRvIHNvbWVob3cga25vdyB0aGUgYWN0dWFsIHN0YXRlIHRoYXQgaXQK
+cHJvZ3JhbW1lZCBpbnRvIHRoZSBoYXJkd2FyZS4KCitCb3JpcyB0b28gaW4gY2FzZSBoZSBoYXMg
+YW55IGNvbW1lbnRzLgoKCj4gPiBTbyBJIGRvbid0IHNlZSB0aGF0ICJ3YXJuaW5nIiB3b3VsZCBy
+ZWFsbHkgaGVscCBmb3IgdGhpcyBwYXJ0aWN1bGFyIGNhc2UuCj4gPgo+ID4gPiBCdXQgYmVmb3Jl
+IGRvaW5nIHRoYXQgSSB0aGluayBpdCB3b3VsZCBiZSBzZW5zaWJsZSB0byBhbHNvIGZpeCB0aGUg
+cnVsZXMKPiA+ID4gaG93IHRoZSByb3VuZF9zdGF0ZSBjYWxsYmFjayBpcyBzdXBwb3NlZCB0byBy
+b3VuZC4KPiA+Cj4gPiBJJ20gbm90IHF1aXRlIHN1cmUgSSBncm9rIGV4YWN0bHkgd2hhdCB5b3Un
+cmUgcGxhbm5pbmcsIGJ1dCBJIHdvdWxkCj4gPiBtdWNoIGFwcHJlY2lhdGUgaWYgeW91IGRpZG4n
+dCBicmVhayB0aGluZ3Mgb24gdGhlIHdheSB0b3dhcmQgZml4aW5nCj4gPiB0aGVtIDspCj4KPiBU
+aGVyZSBhcmUgY3VycmVudGx5IG5vIHJ1bGVzIGhvdyB0aGUgZHJpdmVyIHNob3VsZCBiZWhhdmUg
+Zm9yIGV4YW1wbGUgaWYKPiB0aGUgY29uc3VtZXIgcmVxdWVzdHMKPgo+ICAgICAgICAgLmR1dHlf
+Y3ljbGUgPSAxMCwgLnBlcmlvZCA9IDUwCj4KPiBhbmQgdGhlIGhhcmR3YXJlIGNhbiBvbmx5IGlt
+cGxlbWVudCBtdWx0aXBsZXMgb2YgMyBmb3IgYm90aCB2YWx1ZXMuIFRoZQo+IG9idmlvdXMgY2Fu
+ZGlkYXRlcyBhcmU6Cj4KPiAgLSAuZHV0eV9jeWNsZSA9IDksIC5wZXJpb2QgPSA1MSAocm91bmQg
+bmVhcmVzdCBmb3IgYm90aCkKPiAgLSAuZHV0eV9jeWNsZSA9IDEyLCAucGVyaW9kID0gNTEgKHJv
+dW5kIHVwKQo+ICAtIC5kdXR5X2N5Y2xlID0gOSwgLnBlcmlvZCA9IDQ4IChyb3VuZCBkb3duKQo+
+ICAtIC5kdXR5X2N5Y2xlID0gOSwgLnBlcmlvZCA9IDQ1IChyb3VuZCBkdXR5X2N5Y2xlIGFuZCBr
+ZWVwIHByb3BvcnRpb24pCj4gIC0gcmV0dXJuIGVycm9yICh3aGljaCBjb2RlPykKPgo+IEFuZCB0
+aGVyZSBhcmUgc29tZSBvdGhlciB2YXJpYW50cyAoZS5nLiByb3VuZCBkdXR5X2N5Y2xlIHRvIG5l
+YXJlc3QgYW5kCj4gcGVyaW9kIGluIHRoZSBzYW1lIGRpcmVjdGlvbikgdGhhdCBtaWdodCBiZSBz
+ZW5zaWJsZS4KCkkgd2lsbCBub3RlIHRoYXQgSSBoYWQgdG8gZGVhbCB3aXRoIHNvbWUgb2YgdGhp
+cyByZWNlbnRseSB3aGVuIEkKd2FudGVkIHRvIHRyeSB0byByZXBsaWNhdGUgdGhlIGV4YWN0IHZv
+bHRhZ2UgbGV2ZWxzIGZvciAidmRkX2xvZyIgZnJvbQpkb3duc3RyZWFtIGluIHJrMzI4OC12ZXly
+b24gZGV2aWNlcy4gIFNlZSBjb21taXQgODY0YzJmZWU0ZWU5ICgiQVJNOgpkdHM6IHJvY2tjaGlw
+OiBBZGQgdmRkX2xvZ2ljIHRvIHJrMzI4OC12ZXlyb24iKSBpbiBIZWlrbydzIHRyZWUgKG9yCmp1
+c3QgbG9vayBpbiBsaW51eC1uZXh0KQoKCj4gQWxzbyBpdCBzaG91bGQgYmUgcG9zc2libGUgdG8g
+a25vdyB0aGUgcmVzdWx0IGJlZm9yZSBhY3R1YWxseQo+IGNvbmZpZ3VyaW5nIHRoZSBoYXJkd2Fy
+ZS4gT3RoZXJ3aXNlIHRoaW5ncyBtaWdodCBhbHJlYWR5IGdvIHdyb25nCj4gYmVjYXVzZSB0aGUg
+ZHJpdmVyIGltcGxlbWVudHMgYSBzZXR0aW5nIHRoYXQgaXMgdG9vIGZhciBmcm9tIHRoZQo+IHJl
+cXVlc3RlZCBjb25maWd1cmF0aW9uLgoKTGF0ZXIgaW4gdGhpcyB0aHJlYWQgVGhpZXJyeSBkaWRu
+J3QgbGlrZSB0aGUgInJvdW5kIHJhdGUiIGlkZWEgZHVlIHRvCnJhY2VzLiAgT25lIHdheSB0byBz
+b2x2ZSB0aGF0IGNvdWxkIGJlIHRvIGluZGljYXRlIHRvIHRoZSBQV00KZnJhbWV3b3JrIHdoaWNo
+IGRpcmVjdGlvbiB5b3UnZCBsaWtlIGl0IHRvIGVycm9yIGluOiBhIGhpZ2hlciBkdXR5CmN5Y2xl
+IG9yIGEgbG93ZXIgb25lLgoKCi1Eb3VnCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
