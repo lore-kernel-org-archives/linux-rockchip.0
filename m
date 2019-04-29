@@ -1,124 +1,169 @@
-From: "elaine.zhang" <zhangqing@rock-chips.com>
-Subject: Re: [PATCH v2 1/3] thermal: rockchip: fix up the tsadc pinctrl
- setting error
-Date: Mon, 29 Apr 2019 17:51:32 +0800
-Message-ID: <8d41ea98-e0e8-60c8-3237-ade5d0d169bf@rock-chips.com>
-References: <1556187154-22632-1-git-send-email-zhangqing@rock-chips.com>
- <1556187154-22632-2-git-send-email-zhangqing@rock-chips.com>
- <be0170d7-64dc-896d-b847-5be192304791@linaro.org>
+From: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 1/3] pwm: rockchip: Don't update the state for the
+ caller of pwm_apply_state()
+Date: Mon, 29 Apr 2019 12:49:02 +0200
+Message-ID: <20190429104902.GA7747@ulmo>
+References: <20190312214605.10223-1-u.kleine-koenig@pengutronix.de>
+ <20190312214605.10223-2-u.kleine-koenig@pengutronix.de>
+ <1707507.TOMHpQGrZ7@phil>
+ <CAD=FV=WZHouhGcxOgNG3006XajJQaAp0uq9WjeKRikQx1ru4TA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <be0170d7-64dc-896d-b847-5be192304791@linaro.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, heiko@sntech.de
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, huangtao@rock-chips.com, linux-pm@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, linux-kernel@vger.kernel.org, edubezval@gmail.com, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, rui.zhang@intel.com, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============1826548295145271282=="
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAD=FV=WZHouhGcxOgNG3006XajJQaAp0uq9WjeKRikQx1ru4TA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-aGksCgrlnKggMjAxOS80LzI4IOS4i+WNiDg6NDUsIERhbmllbCBMZXpjYW5vIOWGmemBkzoKPiBP
-biAyNS8wNC8yMDE5IDEyOjEyLCBFbGFpbmUgWmhhbmcgd3JvdGU6Cj4+IEV4cGxpY2l0bHkgdXNl
-IHRoZSBwaW5jdHJsIHRvIHNldC91bnNldCB0aGUgcmlnaHQgbW9kZQo+PiBpbnN0ZWFkIG9mIHJl
-bHlpbmcgb24gdGhlIHBpbmN0cmwgaW5pdCBtb2RlLgo+PiBBbmQgaXQgcmVxdWlyZXMgc2V0dGlu
-ZyB0aGUgdHNodXQgcG9sYXJpdHkgYmVmb3JlIHNlbGVjdCBwaW5jdHJsLgo+Pgo+PiBXaGVuIHRo
-ZSB0ZW1wZXJhdHVyZSBzZW5zb3IgbW9kZSBpcyBzZXQgdG8gMCwgaXQgd2lsbCBhdXRvbWF0aWNh
-bGx5Cj4+IHJlc2V0IHRoZSBib2FyZCB2aWEgdGhlIENsb2NrLVJlc2V0LVVuaXQgKENSVSkgaWYg
-dGhlIG92ZXIgdGVtcGVyYXR1cmUKPj4gdGhyZXNob2xkIGlzIHJlYWNoZWQuIEhvd2V2ZXIsIHdo
-ZW4gdGhlIHBpbmN0cmwgaW5pdGlhbGl6ZXMsIGl0IGRvZXMgYQo+PiB0cmFuc2l0aW9uIHRvICJv
-dHBfb3V0IiB3aGljaCBtYXkgbGVhZCB0aGUgU29DIHJlc3RhcnQgYWxsIHRoZSB0aW1lLgo+Pgo+
-PiAib3RwX291dCIgSU8gbWF5IGJlIGNvbm5lY3RlZCB0byB0aGUgUkVTRVQgY2lyY3VpdCBvbiB0
-aGUgaGFyZHdhcmUuCj4+IElmIHRoZSBJTyBpcyBpbiB0aGUgd3Jvbmcgc3RhdGUsIGl0IHdpbGwg
-dHJpZ2dlciBSRVNFVC4KPj4gKHNpbWlsYXIgdG8gdGhlIGVmZmVjdCBvZiBwcmVzc2luZyB0aGUg
-UkVTRVQgYnV0dG9uKQo+PiB3aGljaCB3aWxsIGNhdXNlIHRoZSBzb2MgdG8gcmVzdGFydCBhbGwg
-dGhlIHRpbWUuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IEVsYWluZSBaaGFuZyA8emhhbmdxaW5nQHJv
-Y2stY2hpcHMuY29tPgo+PiAtLS0KPj4gICBkcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1h
-bC5jIHwgMzcgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLQo+PiAgIDEgZmls
-ZSBjaGFuZ2VkLCAzNCBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy90aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYyBiL2RyaXZlcnMvdGhlcm1h
-bC9yb2NrY2hpcF90aGVybWFsLmMKPj4gaW5kZXggOWM3NjQzZDYyZWQ3Li4wM2ZmNDk0ZjI4NjQg
-MTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvdGhlcm1hbC9yb2NrY2hpcF90aGVybWFsLmMKPj4gKysr
-IGIvZHJpdmVycy90aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYwo+PiBAQCAtMTcyLDYgKzE3Miw5
-IEBAIHN0cnVjdCByb2NrY2hpcF90aGVybWFsX2RhdGEgewo+PiAgIAlpbnQgdHNodXRfdGVtcDsK
-Pj4gICAJZW51bSB0c2h1dF9tb2RlIHRzaHV0X21vZGU7Cj4+ICAgCWVudW0gdHNodXRfcG9sYXJp
-dHkgdHNodXRfcG9sYXJpdHk7Cj4+ICsJc3RydWN0IHBpbmN0cmwgKnBpbmN0cmw7Cj4+ICsJc3Ry
-dWN0IHBpbmN0cmxfc3RhdGUgKmdwaW9fc3RhdGU7Cj4+ICsJc3RydWN0IHBpbmN0cmxfc3RhdGUg
-Km90cF9zdGF0ZTsKPj4gICB9Owo+PiAgIAo+PiAgIC8qKgo+PiBAQCAtMTI0Miw2ICsxMjQ1LDgg
-QEAgc3RhdGljIGludCByb2NrY2hpcF90aGVybWFsX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZp
-Y2UgKnBkZXYpCj4+ICAgCQlyZXR1cm4gZXJyb3I7Cj4+ICAgCX0KPj4gICAKPj4gKwl0aGVybWFs
-LT5jaGlwLT5jb250cm9sKHRoZXJtYWwtPnJlZ3MsIGZhbHNlKTsKPj4gKwo+PiAgIAllcnJvciA9
-IGNsa19wcmVwYXJlX2VuYWJsZSh0aGVybWFsLT5jbGspOwo+PiAgIAlpZiAoZXJyb3IpIHsKPj4g
-ICAJCWRldl9lcnIoJnBkZXYtPmRldiwgImZhaWxlZCB0byBlbmFibGUgY29udmVydGVyIGNsb2Nr
-OiAlZFxuIiwKPj4gQEAgLTEyNjcsNiArMTI3MiwzMSBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3Ro
-ZXJtYWxfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4gICAJdGhlcm1hbC0+
-Y2hpcC0+aW5pdGlhbGl6ZSh0aGVybWFsLT5ncmYsIHRoZXJtYWwtPnJlZ3MsCj4+ICAgCQkJCSAg
-dGhlcm1hbC0+dHNodXRfcG9sYXJpdHkpOwo+PiAgIAo+PiArCWlmICh0aGVybWFsLT50c2h1dF9t
-b2RlID09IFRTSFVUX01PREVfR1BJTykgewo+PiArCQl0aGVybWFsLT5waW5jdHJsID0gZGV2bV9w
-aW5jdHJsX2dldCgmcGRldi0+ZGV2KTsKPj4gKwkJaWYgKElTX0VSUih0aGVybWFsLT5waW5jdHJs
-KSkgewo+PiArCQkJZGV2X2VycigmcGRldi0+ZGV2LCAiZmFpbGVkIHRvIGZpbmQgdGhlcm1hbCBw
-aW5jdHJsXG4iKTsKPj4gKwkJCXBhbmljKCJwYW5pY19vbl9maW5kIHRoZXJtYWwgcGluY3RybC4u
-LlxuIik7Cj4gSSByZWFsaXplIG15IGNvbW1lbnQgd2FzIGNvbmZ1c2luZy4gSSB3YXMgbm90IHNh
-eWluZyB0byBhZGQgYSBwYW5pYygpCj4gY2FsbCBoZXJlIGJ1dCB0aGF0IHRoZSBjb2RlIHdhcyBh
-Y2Nlc3NpbmcgYSBOVUxMIHBvaW50ZXIuIFBsZWFzZSByZW1vdmUKPiB0aGUgcGFuaWMuCk9LLCBJ
-J2xsIGZpeGVkIGl0Lgo+Cj4+ICsJCQlyZXR1cm4gUFRSX0VSUih0aGVybWFsLT5waW5jdHJsKTsK
-Pj4gKwkJfQo+PiArCj4+ICsJCXRoZXJtYWwtPmdwaW9fc3RhdGUgPSBwaW5jdHJsX2xvb2t1cF9z
-dGF0ZSh0aGVybWFsLT5waW5jdHJsLAo+PiArCQkJCQkJCSAgICJncGlvIik7Cj4+ICsJCWlmIChJ
-U19FUlJfT1JfTlVMTCh0aGVybWFsLT5ncGlvX3N0YXRlKSkgewo+PiArCQkJZGV2X2VycigmcGRl
-di0+ZGV2LCAiZmFpbGVkIHRvIGZpbmQgdGhlcm1hbCBncGlvIHN0YXRlXG4iKTsKPj4gKwkJCXJl
-dHVybiAtRUlOVkFMOwo+PiArCQl9Cj4+ICsKPj4gKwkJdGhlcm1hbC0+b3RwX3N0YXRlID0gcGlu
-Y3RybF9sb29rdXBfc3RhdGUodGhlcm1hbC0+cGluY3RybCwKPj4gKwkJCQkJCQkgICJvdHBvdXQi
-KTsKPj4gKwkJaWYgKElTX0VSUl9PUl9OVUxMKHRoZXJtYWwtPm90cF9zdGF0ZSkpIHsKPj4gKwkJ
-CWRldl9lcnIoJnBkZXYtPmRldiwgImZhaWxlZCB0byBmaW5kIHRoZXJtYWwgb3Rwb3V0IHN0YXRl
-XG4iKTsKPj4gKwkJCXJldHVybiAtRUlOVkFMOwo+PiArCQl9Cj4+ICsKPj4gKwkJcGluY3RybF9z
-ZWxlY3Rfc3RhdGUodGhlcm1hbC0+cGluY3RybCwgdGhlcm1hbC0+b3RwX3N0YXRlKTsKPiBJIGRv
-bid0IHVuZGVyc3RhbmQgdGhpcyBwb3J0aW9uIG9mIGNvZGUuIFRoZSB0ZXN0IGFib3ZlIHNheXMg
-dHNodXRfbW9kZQo+IGlzIFRTSFVUX01PREVfR1BJTy4gV2h5IGFjdGluZyBvbiB0aGVybWFsLT5v
-dHBfc3RhdGUgdGhlbiA/Cj4KPgo+IEluIG15IHByZXZpb3VzIGNvbW1lbnQsIEkgd2FzIHN1Z2dl
-c3RpbmcgdGhlIGZvbGxvd2luZzoKPgo+IFR3byBtb3JlIGZpZWxkcyBpbnN0ZWFkIG9mIHRocmVl
-Ogo+Cj4gCXN0cnVjdCByb2NrY2hpcF90aGVybWFsX2RhdGEgewo+ICAgIAkJaW50IHRzaHV0X3Rl
-bXA7Cj4gCSAgCWVudW0gdHNodXRfbW9kZSB0c2h1dF9tb2RlOwo+ICAgIAkJZW51bSB0c2h1dF9w
-b2xhcml0eSB0c2h1dF9wb2xhcml0eTsKPiAJIAlzdHJ1Y3QgcGluY3RybCAqcGluY3RybDsKPiAJ
-CXN0cnVjdCBwaW5jdHJsX3N0YXRlICpwaW5jdHJsX3N0YXRlOwo+IAl9Owo+Cj4gCVsgLi4uIF0K
-Pgo+IAl0aGVybWFsLT5waW5jdHJsID0gZGV2bV9waW5jdHJsX2dldCgmcGRldi0+ZGV2KTsKPiAJ
-aWYgKElTX0VSUih0aGVybWFsLT5waW5jdHJsKSkgewo+IAkJZGV2X2VycigiLi4uIik7Cj4gCQly
-ZXR1cm4gUFRSX0VSUih0aGVybWFsLT5waW5jdHJsKTsKPiAJfQo+Cj4gCXRoZXJtYWwtPnBpbmN0
-cmxfc3RhdGUgPSBwaW5jdHJsX2xvb2t1cF9zdGF0ZSh0aGVybWFsLT5waW5jdHJsLAo+IAkJdGhl
-cm1hbC0+dHNodXRfbW9kZSA9PSBUU0hVVF9NT0RFX0dQSU8gPyAiZ3BpbyIgOgo+IAkJCQkJCQki
-b3Rwb3V0IjsKPgo+IAlpZiAoSVNfRVJSX09SX05VTEwodGhlcm1hbC0+cGluY3RybF9zdGF0ZSkg
-ewo+IAkJZGV2X2VycigiLi4uIik7Cj4gCQlyZXR1cm4gUFRSX0VSUih0aGVybWFsLT5waW5jdHJs
-X3N0YXRlKTsKPiAJfQo+Cj4gICAJcGluY3RybF9zZWxlY3Rfc3RhdGUodGhlcm1hbC0+cGluY3Ry
-bCwgdGhlcm1hbC0+cGluY3RybF9zdGF0ZSk7Cj4KPgo+IAlbIC4uLiBdCj4KPiBJcyBpdCB3cm9u
-ZyA/Cj4KPgo+PiArCX0KPj4gKwo+PiAgIAlmb3IgKGkgPSAwOyBpIDwgdGhlcm1hbC0+Y2hpcC0+
-Y2huX251bTsgaSsrKSB7Cj4+ICAgCQllcnJvciA9IHJvY2tjaGlwX3RoZXJtYWxfcmVnaXN0ZXJf
-c2Vuc29yKHBkZXYsIHRoZXJtYWwsCj4+ICAgCQkJCQkJJnRoZXJtYWwtPnNlbnNvcnNbaV0sCj4+
-IEBAIC0xMzM3LDggKzEzNjcsOCBAQCBzdGF0aWMgaW50IF9fbWF5YmVfdW51c2VkIHJvY2tjaGlw
-X3RoZXJtYWxfc3VzcGVuZChzdHJ1Y3QgZGV2aWNlICpkZXYpCj4+ICAgCj4+ICAgCWNsa19kaXNh
-YmxlKHRoZXJtYWwtPnBjbGspOwo+PiAgIAljbGtfZGlzYWJsZSh0aGVybWFsLT5jbGspOwo+PiAt
-Cj4+IC0JcGluY3RybF9wbV9zZWxlY3Rfc2xlZXBfc3RhdGUoZGV2KTsKPj4gKwlpZiAodGhlcm1h
-bC0+dHNodXRfbW9kZSA9PSBUU0hVVF9NT0RFX0dQSU8pCj4+ICsJCXBpbmN0cmxfc2VsZWN0X3N0
-YXRlKHRoZXJtYWwtPnBpbmN0cmwsIHRoZXJtYWwtPmdwaW9fc3RhdGUpOwo+IEFuZCB0aGVuOgo+
-IAkgcGluY3RybF9zZWxlY3Rfc3RhdGUodGhlcm1hbC0+cGluY3RybCwgdGhlcm1hbC0+cGluY3Ry
-bF9zdGF0ZSk7CgpwaW5jdHJsIHNlbGVjdCB0byBncGlvIG1vZGUgd2hlbiB0c2FkYyBzdXNwZW5k
-IGFuZCBzaHV0ZG93bi4KCldoZW4gc3VzcGVuZCwgdHNhZGMgaXMgZGlzYWJsZWQsIHRoZSBvdHBf
-cGluIHNob3VsZCByZXZlcnQgdG8gdGhlIApkZWZhdWx0IGdwaW8gc3RhdGUuCgo+Cj4+ICAgCj4+
-ICAgCXJldHVybiAwOwo+PiAgIH0KPj4gQEAgLTEzODMsNyArMTQxMyw4IEBAIHN0YXRpYyBpbnQg
-X19tYXliZV91bnVzZWQgcm9ja2NoaXBfdGhlcm1hbF9yZXN1bWUoc3RydWN0IGRldmljZSAqZGV2
-KQo+PiAgIAlmb3IgKGkgPSAwOyBpIDwgdGhlcm1hbC0+Y2hpcC0+Y2huX251bTsgaSsrKQo+PiAg
-IAkJcm9ja2NoaXBfdGhlcm1hbF90b2dnbGVfc2Vuc29yKCZ0aGVybWFsLT5zZW5zb3JzW2ldLCB0
-cnVlKTsKPj4gICAKPj4gLQlwaW5jdHJsX3BtX3NlbGVjdF9kZWZhdWx0X3N0YXRlKGRldik7Cj4+
-ICsJaWYgKHRoZXJtYWwtPnRzaHV0X21vZGUgPT0gVFNIVVRfTU9ERV9HUElPKQo+PiArCQlwaW5j
-dHJsX3NlbGVjdF9zdGF0ZSh0aGVybWFsLT5waW5jdHJsLCB0aGVybWFsLT5vdHBfc3RhdGUpOwo+
-IEFuZCB0aGVuCj4gCXBpbmN0cmxfc2VsZWN0X3N0YXRlKHRoZXJtYWwtPnBpbmN0cmwsIHRoZXJt
-YWwtPnBpbmN0cmxfc3RhdGUpOwoKcGluY3RybCBzZWxlY3QgdG8gb3RwIG1vZGUgd2hlbiB0c2Fk
-YyByZXN1bWUuCgo+Cj4+ICAgCXJldHVybiAwOwo+PiAgIH0KPj4KPgoKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxp
-bmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
+
+--===============1826548295145271282==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="UugvWAfsgieZRqgk"
+Content-Disposition: inline
+
+
+--UugvWAfsgieZRqgk
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Apr 01, 2019 at 03:45:47PM -0700, Doug Anderson wrote:
+> Hi,
+>=20
+> On Sat, Mar 30, 2019 at 2:17 AM Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> >
+> > Hi,
+> >
+> > [adding two chromeos people, because veyron and gru are quite
+> > heavy users of the rockchip pwm for both backlight and regulators]
+> >
+> > Doug, Brian: patchwork patch is here:
+> > https://patchwork.kernel.org/patch/10851001/
+> >
+> > Am Dienstag, 12. M=C3=A4rz 2019, 22:46:03 CET schrieb Uwe Kleine-K=C3=
+=B6nig:
+> > > The pwm-rockchip driver is one of only two PWM drivers which updates =
+the
+> > > state for the caller of pwm_apply_state(). This might have surprising
+> > > results if the caller reuses the values expecting them to still
+> > > represent the same state.
+>=20
+> It may or may not be surprising, but it is well documented.  Specifically:
+>=20
+>  * pwm_apply_state() - atomically apply a new state to a PWM device
+>  * @pwm: PWM device
+>  * @state: new state to apply. This can be adjusted by the PWM driver
+>  *    if the requested config is not achievable, for example,
+>  *    ->duty_cycle and ->period might be approximated.
+>=20
+> I don't think your series updates that documentation, right?
+
+The documentation is arguably ambiguous here, but I don't think this was
+meant as you intepret here. I think the original intent was to give the
+drivers some leeway in how they apply a state. So a driver could for
+example adjust duty_cycle or period if it doesn't support exactly the
+combination requested. However, I don't think it was meant as a
+suggestion that it would report that back to the caller.
+
+This obviously implies that ->apply() is deterministic, so given a state
+it would program the same register values, irrespective of when, or how
+many times that state is applied.
+
+> > > Also note that this feedback was incomplete as
+> > > the matching struct pwm_device::state wasn't updated and so
+> > > pwm_get_state still returned the originally requested state.
+>=20
+> The framework handles that.  Take a look at pwm_apply_state()?  It does:
+>=20
+> ---
+>=20
+> err =3D pwm->chip->ops->apply(pwm->chip, pwm, state);
+> if (err)
+>     return err;
+>=20
+> pwm->state =3D *state;
+>=20
+> ---
+>=20
+> So I think it wasn't incomplete unless I misunderstood?
+>=20
+>=20
+> > > Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+> >
+> > I've tested this on both veyron and gru with backlight and pwm regulator
+> > and at least both still come up, so
+> > Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> >
+> > But hopefully Doug or Brian could also provide another test-point.
+>=20
+> I'd definitely be concerned by this change.  Specifically for the PWM
+> regulator little details about exactly what duty cycle / period you
+> got could be pretty important.
+>=20
+> I guess the problem here is that pwm_get_state() doesn't actually call
+> into the PWM drivers, it just returns the last state that was applied.
+> How does one get the state?  I guess you could change get_state() to
+> actually call into the PWM driver's get_state if it exists?  ...but
+> your patch set doesn't change that behavior...
+>=20
+> For instance, look at pwm_regulator_set_voltage().  The first line
+> there is  pwm_init_state().  That calls into pwm_get_state() which
+> just grabs the cached state.  If the last call to pwm_apply_state()
+> didn't update that then it seems like it'd be bad.
+
+The whole point of this atomic API is that the cached state would always
+match the hardware state. Given what I said above that doesn't
+necessarily mean that the cached state exactly matches the values that
+were written to hardware.
+
+But it does mean that the following is idempotent:
+
+	pwm_get_state(pwm, &state);
+	pwm_apply_state(pwm, &state);
+
+Thierry
+
+--UugvWAfsgieZRqgk
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAlzG1pkACgkQ3SOs138+
+s6HnJg//Z/zYy3o/pl5f9e9zd0C077CFTp3GxG4oEd2nGUq03avn1tVHcjI55vH5
+9iiOpnBHY+1d5y02FyBbGLB+NozT9WZZuNOss588970p8MTGKbSDbsPy3rS7D37/
+wrqiYCJ66/cwM0nuUZjPwJ8MPcvBf7ZMy9hLT8BbLkQUuLNiB/DYvloQ2szrfiNi
+EKqrGqJGyP2MhUmghedV2FOYSU2nIhjttcT9boTG0N9iezerudTle7yj41qjSnth
++KC/d+Iv8hijy7imo9vXrcK3KYIFuJKSiRU4/G2ompKrfwf4JrMBQ5atvKaJMRbU
+Rkif15K2UuyP8NmFj9/JXorwWY6z2KpmW97YUUpliEbnhPf1p8gQ3oKfXpLhTeDB
+v+0DmLwFtayerbvLNunUURJJ0jz/pWydm4UvnOyW5xn469MbWP1kri2+RVh8HTCb
++SBnYkAyDLgTiuqNcUzTrprLxlny71VdWkrPMkZZ3spAc9MTJ/uLez3P1GVBaZm6
+UzBQ9QHzgOD2kZvfxDMqF6bym2wczRIVgm1qv1CbyO2AF1XjdyxYRAixyuhn932K
+nm8bUUHOlRXBKOpn3kE630pXjbaRhT9SvZj9eHTUxktMdhBwLljl4keLZGtM51eS
+PzX81VFgjbk7R+aCuN5qYTbw11tHM1aoXTkvR2OhWwQiixPF6Ck=
+=iul9
+-----END PGP SIGNATURE-----
+
+--UugvWAfsgieZRqgk--
+
+
+--===============1826548295145271282==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1826548295145271282==--
