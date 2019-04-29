@@ -1,194 +1,371 @@
-From: Guenter Roeck <groeck@google.com>
-Subject: Re: [PATCH v2] mmc: dw_mmc: Disable SDIO interrupts while suspended
- to fix suspend/resume
-Date: Mon, 29 Apr 2019 13:46:59 -0700
-Message-ID: <CABXOdTexTjmmDjAeZZ2aBNDrn7=YwOrcPGRiFSMfS631wuBgRA@mail.gmail.com>
-References: <20190429204040.18725-1-dianders@chromium.org>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [PATCH v2 1/3] pwm: rockchip: Don't update the state for the
+ caller of pwm_apply_state()
+Date: Mon, 29 Apr 2019 23:08:10 +0200
+Message-ID: <20190429210810.fpb4qamaoihrcr66@pengutronix.de>
+References: <20190312214605.10223-1-u.kleine-koenig@pengutronix.de>
+ <20190312214605.10223-2-u.kleine-koenig@pengutronix.de>
+ <1707507.TOMHpQGrZ7@phil>
+ <CAD=FV=WZHouhGcxOgNG3006XajJQaAp0uq9WjeKRikQx1ru4TA@mail.gmail.com>
+ <20190408143914.uucb5dwafq3cnsmk@pengutronix.de>
+ <20190429110354.GB7747@ulmo>
+ <20190429123102.7wfcdqusn24g5rm7@pengutronix.de>
+ <20190429161749.GD7747@ulmo>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190429204040.18725-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Shawn Lin <shawn.lin@rock-chips.com>, Kalle Valo <kvalo@codeaurora.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, linux-wireless@vger.kernel.org, Sonny Rao <sonnyrao@chromium.org>, Emil Renner Berthing <emil.renner.berthing@gmail.com>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, "# v4 . 10+" <stable@vger.kernel.org>, linux-mmc@vger.kernel.org, linux-kernel <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20190429161749.GD7747@ulmo>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Apr 29, 2019 at 1:41 PM Douglas Anderson <dianders@chromium.org> wrote:
->
-> Processing SDIO interrupts while dw_mmc is suspended (or partly
-> suspended) seems like a bad idea.  We really don't want to be
-> processing them until we've gotten ourselves fully powered up.
->
-> You might be wondering how it's even possible to become suspended when
-> an SDIO interrupt is active.  As can be seen in
-> dw_mci_enable_sdio_irq(), we explicitly keep dw_mmc out of runtime
-> suspend when the SDIO interrupt is enabled.  ...but even though we
-> stop normal runtime suspend transitions when SDIO interrupts are
-> enabled, the dw_mci_runtime_suspend() can still get called for a full
-> system suspend.
->
-> Let's handle all this by explicitly masking SDIO interrupts in the
-> suspend call and unmasking them later in the resume call.  To do this
-> cleanly I'll keep track of whether the client requested that SDIO
-> interrupts be enabled so that we can reliably restore them regardless
-> of whether we're masking them for one reason or another.
->
-> It should be noted that if dw_mci_enable_sdio_irq() is never called
-> (for instance, if we don't have an SDIO card plugged in) that
-> "client_sdio_enb" will always be false.  In those cases this patch
-> adds a tiny bit of overhead to suspend/resume (a spinlock and a
-> read/write of INTMASK) but other than that is a no-op.  The
-> SDMMC_INT_SDIO bit should always be clear and clearing it again won't
-> hurt.
->
-> Without this fix it can be seen that rk3288-veyron Chromebooks with
-> Marvell WiFi would sometimes fail to resume WiFi even after picking my
-> recent mwifiex patch [1].  Specifically you'd see messages like this:
->   mwifiex_sdio mmc1:0001:1: Firmware wakeup failed
->   mwifiex_sdio mmc1:0001:1: PREP_CMD: FW in reset state
->
-> ...and tracing through the resume code in the failing cases showed
-> that we were processing a SDIO interrupt really early in the resume
-> call.
->
-> NOTE: downstream in Chrome OS 3.14 and 3.18 kernels (both of which
-> support the Marvell SDIO WiFi card) we had a patch ("CHROMIUM: sdio:
-> Defer SDIO interrupt handling until after resume") [2].  Presumably
-> this is the same problem that was solved by that patch.
->
-> [1] https://lkml.kernel.org/r/20190404040106.40519-1-dianders@chromium.org
-> [2] https://crrev.com/c/230765
->
-> Cc: <stable@vger.kernel.org> # 4.14.x
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Hello Thierry,
 
-Reviewed-by: Guenter Roeck <groeck@chromium.org>
+On Mon, Apr 29, 2019 at 06:17:49PM +0200, Thierry Reding wrote:
+> On Mon, Apr 29, 2019 at 02:31:02PM +0200, Uwe Kleine-K=F6nig wrote:
+> > On Mon, Apr 29, 2019 at 01:03:54PM +0200, Thierry Reding wrote:
+> > > On Mon, Apr 08, 2019 at 04:39:14PM +0200, Uwe Kleine-K=F6nig wrote:
+> > > > On Mon, Apr 01, 2019 at 03:45:47PM -0700, Doug Anderson wrote:
+> > > > > Hi,
+> > > > > =
 
-> ---
-> I didn't put any "Fixes" tag here, but presumably this could be
-> backported to whichever kernels folks found it useful for.  I have at
-> least confirmed that kernels v4.14 and v4.19 (as well as v5.1-rc2)
-> show the problem.  It is very easy to pick this to v4.19 and it
-> definitely fixes the problem there.
->
-> I haven't spent the time to pick this to 4.14 myself, but presumably
-> it wouldn't be too hard to backport this as far as v4.13 since that
-> contains commit 32dba73772f8 ("mmc: dw_mmc: Convert to use
-> MMC_CAP2_SDIO_IRQ_NOTHREAD for SDIO IRQs").  Prior to that it might
-> make sense for anyone experiencing this problem to just pick the old
-> CHROMIUM patch to fix them.
->
-> Changes in v2:
-> - Suggested 4.14+ in the stable tag (Sasha-bot)
-> - Extra note that this is a noop on non-SDIO (Shawn / Emil)
-> - Make boolean logic cleaner as per https://crrev.com/c/1586207/1
-> - Hopefully clear comments as per https://crrev.com/c/1586207/1
->
->  drivers/mmc/host/dw_mmc.c | 27 +++++++++++++++++++++++----
->  drivers/mmc/host/dw_mmc.h |  3 +++
->  2 files changed, 26 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-> index 80dc2fd6576c..480067b87a94 100644
-> --- a/drivers/mmc/host/dw_mmc.c
-> +++ b/drivers/mmc/host/dw_mmc.c
-> @@ -1664,7 +1664,8 @@ static void dw_mci_init_card(struct mmc_host *mmc, struct mmc_card *card)
->         }
->  }
->
-> -static void __dw_mci_enable_sdio_irq(struct dw_mci_slot *slot, int enb)
-> +static void __dw_mci_enable_sdio_irq(struct dw_mci_slot *slot, bool enb,
-> +                                    bool client_requested)
->  {
->         struct dw_mci *host = slot->host;
->         unsigned long irqflags;
-> @@ -1672,6 +1673,20 @@ static void __dw_mci_enable_sdio_irq(struct dw_mci_slot *slot, int enb)
->
->         spin_lock_irqsave(&host->irq_lock, irqflags);
->
-> +       /*
-> +        * If we're being called directly from dw_mci_enable_sdio_irq()
-> +        * (which means that the client driver actually wants to enable or
-> +        * disable interrupts) then save the request.  Otherwise this
-> +        * wasn't directly requested by the client and we should logically
-> +        * AND it with the client request since we want to disable if
-> +        * _either_ the client disabled OR we have some other reason to
-> +        * disable temporarily.
-> +        */
-> +       if (client_requested)
-> +               host->client_sdio_enb = enb;
-> +       else
-> +               enb &= host->client_sdio_enb;
-> +
->         /* Enable/disable Slot Specific SDIO interrupt */
->         int_mask = mci_readl(host, INTMASK);
->         if (enb)
-> @@ -1688,7 +1703,7 @@ static void dw_mci_enable_sdio_irq(struct mmc_host *mmc, int enb)
->         struct dw_mci_slot *slot = mmc_priv(mmc);
->         struct dw_mci *host = slot->host;
->
-> -       __dw_mci_enable_sdio_irq(slot, enb);
-> +       __dw_mci_enable_sdio_irq(slot, enb, true);
->
->         /* Avoid runtime suspending the device when SDIO IRQ is enabled */
->         if (enb)
-> @@ -1701,7 +1716,7 @@ static void dw_mci_ack_sdio_irq(struct mmc_host *mmc)
->  {
->         struct dw_mci_slot *slot = mmc_priv(mmc);
->
-> -       __dw_mci_enable_sdio_irq(slot, 1);
-> +       __dw_mci_enable_sdio_irq(slot, true, false);
->  }
->
->  static int dw_mci_execute_tuning(struct mmc_host *mmc, u32 opcode)
-> @@ -2734,7 +2749,7 @@ static irqreturn_t dw_mci_interrupt(int irq, void *dev_id)
->                 if (pending & SDMMC_INT_SDIO(slot->sdio_id)) {
->                         mci_writel(host, RINTSTS,
->                                    SDMMC_INT_SDIO(slot->sdio_id));
-> -                       __dw_mci_enable_sdio_irq(slot, 0);
-> +                       __dw_mci_enable_sdio_irq(slot, false, false);
->                         sdio_signal_irq(slot->mmc);
->                 }
->
-> @@ -3424,6 +3439,8 @@ int dw_mci_runtime_suspend(struct device *dev)
->  {
->         struct dw_mci *host = dev_get_drvdata(dev);
->
-> +       __dw_mci_enable_sdio_irq(host->slot, false, false);
-> +
->         if (host->use_dma && host->dma_ops->exit)
->                 host->dma_ops->exit(host);
->
-> @@ -3490,6 +3507,8 @@ int dw_mci_runtime_resume(struct device *dev)
->         /* Now that slots are all setup, we can enable card detect */
->         dw_mci_enable_cd(host);
->
-> +       __dw_mci_enable_sdio_irq(host->slot, true, false);
-> +
->         return 0;
->
->  err:
-> diff --git a/drivers/mmc/host/dw_mmc.h b/drivers/mmc/host/dw_mmc.h
-> index 46e9f8ec5398..dfbace0f5043 100644
-> --- a/drivers/mmc/host/dw_mmc.h
-> +++ b/drivers/mmc/host/dw_mmc.h
-> @@ -127,6 +127,7 @@ struct dw_mci_dma_slave {
->   * @cmd11_timer: Timer for SD3.0 voltage switch over scheme.
->   * @cto_timer: Timer for broken command transfer over scheme.
->   * @dto_timer: Timer for broken data transfer over scheme.
-> + * @client_sdio_enb: The value last passed to enable_sdio_irq.
->   *
->   * Locking
->   * =======
-> @@ -234,6 +235,8 @@ struct dw_mci {
->         struct timer_list       cmd11_timer;
->         struct timer_list       cto_timer;
->         struct timer_list       dto_timer;
-> +
-> +       bool                    client_sdio_enb;
->  };
->
->  /* DMA ops for Internal/External DMAC interface */
-> --
-> 2.21.0.593.g511ec345e18-goog
->
+> > > > > On Sat, Mar 30, 2019 at 2:17 AM Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> =
+wrote:
+> > > > > >
+> > > > > > Hi,
+> > > > > >
+> > > > > > [adding two chromeos people, because veyron and gru are quite
+> > > > > > heavy users of the rockchip pwm for both backlight and regulato=
+rs]
+> > > > > >
+> > > > > > Doug, Brian: patchwork patch is here:
+> > > > > > https://patchwork.kernel.org/patch/10851001/
+> > > > > >
+> > > > > > Am Dienstag, 12. M=E4rz 2019, 22:46:03 CET schrieb Uwe Kleine-K=
+=F6nig:
+> > > > > > > The pwm-rockchip driver is one of only two PWM drivers which =
+updates the
+> > > > > > > state for the caller of pwm_apply_state(). This might have su=
+rprising
+> > > > > > > results if the caller reuses the values expecting them to sti=
+ll
+> > > > > > > represent the same state.
+> > > > > =
+
+> > > > > It may or may not be surprising, but it is well documented.  Spec=
+ifically:
+> > > > > =
+
+> > > > >  * pwm_apply_state() - atomically apply a new state to a PWM devi=
+ce
+> > > > >  * @pwm: PWM device
+> > > > >  * @state: new state to apply. This can be adjusted by the PWM dr=
+iver
+> > > > >  *    if the requested config is not achievable, for example,
+> > > > >  *    ->duty_cycle and ->period might be approximated.
+> > > > > =
+
+> > > > > I don't think your series updates that documentation, right?
+> > > > > =
+
+> > > > > =
+
+> > > > > > > Also note that this feedback was incomplete as
+> > > > > > > the matching struct pwm_device::state wasn't updated and so
+> > > > > > > pwm_get_state still returned the originally requested state.
+> > > > > =
+
+> > > > > The framework handles that.  Take a look at pwm_apply_state()?  I=
+t does:
+> > > > > =
+
+> > > > > ---
+> > > > > =
+
+> > > > > err =3D pwm->chip->ops->apply(pwm->chip, pwm, state);
+> > > > > if (err)
+> > > > >     return err;
+> > > > > =
+
+> > > > > pwm->state =3D *state;
+> > > > =
+
+> > > > > =
+
+> > > > > ---
+> > > > > =
+
+> > > > > So I think it wasn't incomplete unless I misunderstood?
+> > > > =
+
+> > > > You're right, I missed that the updated state was saved.
+> > > > =
+
+> > > > > > > Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutroni=
+x.de>
+> > > > > >
+> > > > > > I've tested this on both veyron and gru with backlight and pwm =
+regulator
+> > > > > > and at least both still come up, so
+> > > > > > Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> > > > > >
+> > > > > > But hopefully Doug or Brian could also provide another test-poi=
+nt.
+> > > > > =
+
+> > > > > I'd definitely be concerned by this change.  Specifically for the=
+ PWM
+> > > > > regulator little details about exactly what duty cycle / period y=
+ou
+> > > > > got could be pretty important.
+> > > > > =
+
+> > > > > I guess the problem here is that pwm_get_state() doesn't actually=
+ call
+> > > > > into the PWM drivers, it just returns the last state that was app=
+lied.
+> > > > > How does one get the state?  I guess you could change get_state()=
+ to
+> > > > > actually call into the PWM driver's get_state if it exists?  ...b=
+ut
+> > > > > your patch set doesn't change that behavior...
+> > > > =
+
+> > > > My intention here is more to make all drivers behave the same way a=
+nd
+> > > > because only two drivers updated the pwm_state this was the variant=
+ I
+> > > > removed.
+> > > > =
+
+> > > > When you say that the caller might actually care about the exact
+> > > > parameters I fully agree. In this case however the consumer should =
+be
+> > > > able to know the result before actually applying it. So if you do
+> > > > =
+
+> > > > 	pwm_apply_state(pwm, { .period =3D 17, .duty_cycle =3D 12, ...})
+> > > > =
+
+> > > > and this results in .period =3D 100 and .duty_cycle =3D 0 then prob=
+ably the
+> > > > bad things you want to know about already happend. So my idea is a =
+new
+> > > > function pwm_round_state() that does the adaptions to pwm_state wit=
+hout
+> > > > applying it to the hardware. After that pwm_apply_state could do the
+> > > > following:
+> > > > =
+
+> > > > 	rstate =3D pwm_round_state(pwm, state)
+> > > > 	pwm.apply(pwm, state)
+> > > > 	gstate =3D pwm_get_state(pwm)
+> > > > =
+
+> > > > 	if rstate !=3D gstate:
+> > > > 		warn about problems
+> > > =
+
+> > > I'm not sure this is really useful. I would expect that in most cases
+> > > where it is necessary to have an exact match between the requested st=
+ate
+> > > and the actual state is important, you may not even get to warning ab=
+out
+> > > problems because the system may shut down (e.g. the regulator might n=
+ot
+> > > be outputting enough power to keep the system stable).
+> > > =
+
+> > > I think it'd be far more useful to give consumers a way to request th=
+at
+> > > the state be applied strictly. I'm not sure how realistic that is,
+> > > though. Most PWMs have some sort of restrictions, and in most cases t=
+his
+> > > might still be okay. Perhaps some sort of permissible relative deviat=
+ion
+> > > factor could be added to give more flexibility?
+> > =
+
+> > I think in practise this isn't going to work. Consider the case that
+> > Brian cares about: "we do need to be as precise as possible with the
+> > duty:period ratio". So if we want 1/5 duty we might request:
+> > =
+
+> > 	.duty_cycle =3D 100, .period =3D 500
+> > =
+
+> > an are using pwm_set_state_exact(). Now consider this fails. What is the
+> > next value you should try?
+> =
+
+> The idea is that if the driver fails to set the exact state if that's
+> what was requested, then we just fail. If we really need an exact set
+> of values, then it doesn't make sense to offer the user alternatives
+> using rounding helpers.
+
+I think in practise for most cases you don't need a completely exact
+duty_cycle/period setting. Some inaccuracy is fine, but how much and in
+which directions might differ. Also the consumer might not care if it
+gets 30% duty cycle with an inversed polarity or 70% with a normal one.
+Some consumer might care about duty-cycle/period ratio, another about
+the absolute value of period. Then yes, if you really need
+
+	.duty_cycle =3D 100, .period =3D 500
+
+it doesn't help you that the driver suggests 99/498 instead. But it also
+doesn't hurt.
+
+> On the other hand, if we introduce an error margin, we could make the
+> above work. Let's say the PWM regulator requires accuracy within 1%, we
+> could do something like this:
+> =
+
+> 	state.duty_cycle =3D 100;
+> 	state.period =3D 500;
+> 	state.accuracy =3D 1; /* there's a slew of ways to encode this */
+> 	pwm_apply_state(pwm, &state);
+> =
+
+> That way, the PWM driver can determine whether or not the ratio of
+> possible duty-cycle/period is accurate within that 1% requested by the
+> user:
+> =
+
+> 	ratio =3D duty-cycle / period
+> =
+
+> 	requested =3D 100 / 500
+> 	possible =3D 99 / 498
+> =
+
+> 	possible / requested ~=3D 0.993
+> =
+
+> In other words, possible is > 99% of requested and therefore within the
+> 1% accuracy that pwm-regulator requested. The PWM driver can therefore
+> go ahead and program the selected set of values.
+
+This is less powerful than my suggestion. With .accuracy implemented in
+the lowlevel drivers, how would you request 20 % duty cycle with period
+<=3D 1 ms? With my round_rate suggestion it would be:
+
+	mystate.duty_cycle =3D 200000;
+	mystate.period =3D 1000000;
+
+   retry:
+	pwm_round_rate(pwm, &mystate);
+
+	if mystate.period * 2 =3D=3D mystate.duty_cycle * 10:
+		pwm_apply_state(pwm, &mystate)
+		return 0
+	elif mystate.period =3D=3D 0:
+		return -ESOMETHING
+	elif mystate.period * 2 < mystate.duty_cycle * 10:
+		mystate.duty_cycle -=3D 1
+		goto retry
+	elif mystate.duty_cycle =3D=3D 0:
+		return -ESOMETHING
+	else
+		mystate.period -=3D 1
+		goto retry
+
+(if some derivation is ok, this can be implemented in the respective
+checks)
+
+Even if a deviation of 1 % is ok for me, with your proposal I would end
+with 99 / 498, while I could have 99 / 495 which better matches my needs.
+(And if I start with mystate.duty_cycle =3D 100 and mystate.period =3D 500
+above, I will hit that value-pair with the second call to
+pwm_round_rate().)
+
+With your suggestion requesting
+
+	.duty_cycle =3D 100, .period =3D 500, .accuracy =3D 1
+
+the driver is free to set
+
+	.duty_cycle =3D 100000000, .period =3D 500000000
+
+as possible / requested is 1. This for sure isn't ok for all consumers.
+
+Also with the above request I might prefer
+
+	.duty_cycle =3D 98, .period =3D 500
+
+over
+
+	.duty_cycle =3D 101, .period =3D 500
+
+even thought the latter is better according to your metric.
+
+I admit this is not free of complexity to use. But this is because the
+problem is not trivial. And it is powerful enough that a helper function
+that gets a state and a needed accuracy as you suggested above, can be
+implemented.
+
+> > It's hard to say without knowing why it failed. If however you could do
+> > =
+
+> > 	mystate.duty_cycle =3D 100
+> > 	mystate.period =3D 500
+> > 	pwm_round_state(pwm, &mystate);
+> > =
+
+> > and after that we have:
+> > =
+
+> > 	mystate.duty_cycle =3D 99;
+> > 	mystate.period =3D 498;
+> > =
+
+> > (because pwm_round_state is supposed to round down[1] and the hardware =
+can
+> > implement multiples of 3 only). Then it is easier to determine the next
+> > state to try.
+> =
+
+> No, it's really not any easier to determine the next state to try.
+
+See above suggestion. When there is only just pwm_set_state_exact() the
+only way to implement "20 % duty cycle with period <=3D 1 ms" by iterating
+over the whole set of allowed values until you find a hit. (Also if
+.accuracy is used, you have to go with the first hit unless you iterate
+over the good set of parameters several times with giving the driver
+more freedom to derivate in each loop.)
+
+> The problem is that the consumer doesn't know anything about the
+> restrictions of the driver, and it shouldn't need to know. Given the
+> above, how is it supposed to know that the restriction is "multiple of
+> 3".
+
+It doesn't. Still there are algorithms that allow to determine the best
+set of duty_cycle and period (whatever "best" currently means to you) in
+a more effective way than by a testing each good state.
+
+> Just because the two values happen to be multiples of 3 doesn't mean
+> that's the restriction. Also, we really don't want every consumer in the
+> kernel to implement factorization (and whatnot) to guess what possible
+> constraints there could be.
+
+Full ack. A consumer trying to guess what the exact restriction is, is
+bound to fail in at least some cases. But as this is not necessary (as
+shown above) this argument is irrelevant.
+
+Best regards
+Uwe
+
+-- =
+
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
