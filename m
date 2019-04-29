@@ -1,278 +1,124 @@
-From: Artur Petrosyan <Arthur.Petrosyan@synopsys.com>
-Subject: Re: [PATCH v2 1/5] usb: dwc2: bus suspend/resume for hosts with
- DWC2_POWER_DOWN_PARAM_NONE
-Date: Mon, 29 Apr 2019 08:43:34 +0000
-Message-ID: <SN1PR12MB243108D1EF3239EC4F730ACDA7390@SN1PR12MB2431.namprd12.prod.outlook.com>
-References: <20190418001356.124334-1-dianders@chromium.org>
- <20190418001356.124334-2-dianders@chromium.org>
+From: "elaine.zhang" <zhangqing@rock-chips.com>
+Subject: Re: [PATCH v2 1/3] thermal: rockchip: fix up the tsadc pinctrl
+ setting error
+Date: Mon, 29 Apr 2019 17:51:32 +0800
+Message-ID: <8d41ea98-e0e8-60c8-3237-ade5d0d169bf@rock-chips.com>
+References: <1556187154-22632-1-git-send-email-zhangqing@rock-chips.com>
+ <1556187154-22632-2-git-send-email-zhangqing@rock-chips.com>
+ <be0170d7-64dc-896d-b847-5be192304791@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <be0170d7-64dc-896d-b847-5be192304791@linaro.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>, Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, "heiko@sntech.de" <heiko@sntech.de>
-Cc: Alan Stern <stern@rowland.harvard.edu>, "amstan@chromium.org" <amstan@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, William Wu <william.wu@rock-chips.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, "zyw@rock-chips.com" <zyw@rock-chips.com>, "mka@chromium.org" <mka@chromium.org>, "ryandcase@chromium.org" <ryandcase@chromium.org>, Amelie Delaunay <amelie.delaunay@st.com>, "jwerner@chromium.org" <jwerner@chromium.org>, "dinguyen@opensource.altera.com" <dinguyen@opensource.altera.com>, Elaine Zhang <zhangqing@rock-chips.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.or>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, heiko@sntech.de
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, huangtao@rock-chips.com, linux-pm@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, linux-kernel@vger.kernel.org, edubezval@gmail.com, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, rui.zhang@intel.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,=0A=
-=0A=
-On 4/18/2019 04:15, Douglas Anderson wrote:=0A=
-> This is an attempt to rehash commit 0cf884e819e0 ("usb: dwc2: add bus=0A=
-> suspend/resume for dwc2") on ToT.  That commit was reverted in commit=0A=
-> b0bb9bb6ce01 ("Revert "usb: dwc2: add bus suspend/resume for dwc2"")=0A=
-> because apparently it broke the Altera SOCFPGA.=0A=
-> =0A=
-> With all the changes that have happened to dwc2 in the meantime, it's=0A=
-> possible that the Altera SOCFPGA will just magically work with this=0A=
-> change now.  ...and it would be good to get bus suspend/resume=0A=
-> implemented.=0A=
-> =0A=
-> This change is a forward port of one that's been living in the Chrome=0A=
-> OS 3.14 kernel tree.=0A=
-> =0A=
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>=0A=
-> ---=0A=
-> This patch was last posted at:=0A=
-> =0A=
-> https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__lkml.kernel.org_r_=
-1446237173-2D15263-2D1-2Dgit-2Dsend-2Demail-2Ddianders-40chromium.org&d=3DD=
-wIDAg&c=3DDPL6_X_6JkXFx7AXWqB0tg&r=3D9hPBFKCJ_nBjJhGVrrlYOeOQjP_HlVzYqrC_D7=
-niMJI&m=3DMMfe-4lZePyty6F5zfQ54kiYGuJWNulyRat944LkOsc&s=3DnExFpAPP_0plZfO5L=
-MG1B-mqt1vyCvE35elVcyVgs8Y&e=3D=0A=
-> =0A=
-> ...and appears to have died the death of silence.  Maybe it could get=0A=
-> some bake time in linuxnext if we can't find any proactive testing?=0A=
-> =0A=
-> I will also freely admit that I don't know tons about the theory=0A=
-> behind this patch.  I'm mostly just re-hashing the original commit=0A=
-> from Kever that was reverted since:=0A=
-> * Turning on partial power down on rk3288 doesn't "just work".  I=0A=
->    don't get hotplug events.  This is despite dwc2 auto-detecting that=0A=
->    we are power optimized.=0A=
-What do you mean by doesn't "just work" ? It seem to me that even after =0A=
-adding this patch you don't get issues fixed.=0A=
-You mention that you don't get the hotplug events. Please provide dwc2 =0A=
-debug logs and register dumps on this issue.=0A=
-=0A=
-> * If we don't do something like this commit we don't get into as low=0A=
->    of a power mode.=0A=
-> =0A=
-> Changes in v2: None=0A=
-> =0A=
->   drivers/usb/dwc2/hcd.c | 84 ++++++++++++++++++++++++++----------------=
-=0A=
->   1 file changed, 53 insertions(+), 31 deletions(-)=0A=
-> =0A=
-> diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c=0A=
-> index e272d020012e..978232a9e4a8 100644=0A=
-> --- a/drivers/usb/dwc2/hcd.c=0A=
-> +++ b/drivers/usb/dwc2/hcd.c=0A=
-> @@ -4482,6 +4482,7 @@ static int _dwc2_hcd_suspend(struct usb_hcd *hcd)=
-=0A=
->   	unsigned long flags;=0A=
->   	int ret =3D 0;=0A=
->   	u32 hprt0;=0A=
-> +	u32 pcgctl;=0A=
->   =0A=
->   	spin_lock_irqsave(&hsotg->lock, flags);=0A=
->   =0A=
-> @@ -4497,7 +4498,7 @@ static int _dwc2_hcd_suspend(struct usb_hcd *hcd)=
-=0A=
->   	if (hsotg->op_state =3D=3D OTG_STATE_B_PERIPHERAL)=0A=
->   		goto unlock;=0A=
->   =0A=
-> -	if (hsotg->params.power_down !=3D DWC2_POWER_DOWN_PARAM_PARTIAL)=0A=
-> +	if (hsotg->params.power_down > DWC2_POWER_DOWN_PARAM_PARTIAL)=0A=
- >   		goto skip_power_saving;=0A=
- >=0A=
-=0A=
-"hsotg->params.power_down" is assigned to "DWC2_POWER_DOWN_PARAM_NONE =3D =
-=0A=
-0" if there is no hibernation or partial power down supported by the =0A=
-core or power saving features are disabled by =0A=
-"hsotg->params.power_saving =3D false" , "DWC2_POWER_DOWN_PARAM_PARTIAL" =
-=0A=
-if core supports partial power down, "DWC2_POWER_DOWN_PARAM_HIBERNATION =0A=
-" if the core supports hibernation=0A=
-=0A=
-When you check "if (hsotg->params.power_down > =0A=
-DWC2_POWER_DOWN_PARAM_PARTIAL)" you are saying that "skip_power_saving" =0A=
-only in that case when core supports Hibernation. But what if core =0A=
-doesn't support both hibernation and partial power down and the =0A=
-"hsotg->params.power_down" value us equal to =0A=
-"DWC2_POWER_DOWN_PARAM_NONE" which is 0.=0A=
-=0A=
-With this implementation driver will program entering to suspend when =0A=
-core doesn't support both hibernation and partial power down.=0A=
-=0A=
->   	/*=0A=
-> @@ -4506,21 +4507,35 @@ static int _dwc2_hcd_suspend(struct usb_hcd *hcd)=
-=0A=
->   	 */=0A=
->   	if (!hsotg->bus_suspended) {=0A=
->   		hprt0 =3D dwc2_read_hprt0(hsotg);=0A=
-> -		hprt0 |=3D HPRT0_SUSP;=0A=
-> -		hprt0 &=3D ~HPRT0_PWR;=0A=
-> -		dwc2_writel(hsotg, hprt0, HPRT0);=0A=
-> -		spin_unlock_irqrestore(&hsotg->lock, flags);=0A=
-> -		dwc2_vbus_supply_exit(hsotg);=0A=
-> -		spin_lock_irqsave(&hsotg->lock, flags);=0A=
-> +		if (hprt0 & HPRT0_CONNSTS) { > +			hprt0 |=3D HPRT0_SUSP;=0A=
-Here you set "HPRT0_SUSP" bit but what if core doesn't support both =0A=
-hibernation and Partial Power down assuming that =0A=
-hsotg->params.power_down" value us equal to "DWC2_POWER_DOWN_PARAM_NONE" =
-=0A=
-which is 0.=0A=
-> +			if (hsotg->params.power_down =3D=3D DWC2_POWER_DOWN_PARAM_PARTIAL)=0A=
-You make one checking of hsotg->params.power_down mode here.=0A=
-> +				hprt0 &=3D ~HPRT0_PWR;=0A=
-> +			dwc2_writel(hsotg, hprt0, HPRT0);=0A=
-> +		}=0A=
-> +		if (hsotg->params.power_down =3D=3D DWC2_POWER_DOWN_PARAM_PARTIAL) {=
-=0A=
-another checking of power_down mode here.=0A=
-> +			spin_unlock_irqrestore(&hsotg->lock, flags);=0A=
-> +			dwc2_vbus_supply_exit(hsotg);=0A=
-> +			spin_lock_irqsave(&hsotg->lock, flags);=0A=
-> +		} else {=0A=
-> +			pcgctl =3D readl(hsotg->regs + PCGCTL);=0A=
-> +			pcgctl |=3D PCGCTL_STOPPCLK;=0A=
-> +			writel(pcgctl, hsotg->regs + PCGCTL);=0A=
-"PCGCTL_STOPPCLK" bit is set only when core enters to partial power =0A=
-down. So here if hsotg->params.power_down is not equal to =0A=
-DWC2_POWER_DOWN_PARAM_PARTIAL and is DWC2_POWER_DOWN_PARAM_NONE the the =0A=
-bit will be set.=0A=
-> +		}=0A=
->   	}=0A=
->   =0A=
-> -	/* Enter partial_power_down */=0A=
-> -	ret =3D dwc2_enter_partial_power_down(hsotg);=0A=
-> -	if (ret) {=0A=
-> -		if (ret !=3D -ENOTSUPP)=0A=
-> -			dev_err(hsotg->dev,=0A=
-> -				"enter partial_power_down failed\n");=0A=
-> -		goto skip_power_saving;=0A=
-> +	if (hsotg->params.power_down =3D=3D DWC2_POWER_DOWN_PARAM_PARTIAL) {=0A=
-one more power_down mode checking here.=0A=
-I understand that those checking are to make sure that we got partial =0A=
-power down mode enabled but before this patch it was done with one checking=
-.=0A=
-> +		/* Enter partial_power_down */=0A=
-> +		ret =3D dwc2_enter_partial_power_down(hsotg);=0A=
-> +		if (ret) {=0A=
-> +			if (ret !=3D -ENOTSUPP)=0A=
-> +				dev_err(hsotg->dev,=0A=
-> +					"enter partial_power_down failed\n");=0A=
-> +			goto skip_power_saving;=0A=
-> +		}=0A=
-> +=0A=
-> +		/* After entering partial_power_down, hardware is no more accessible *=
-/=0A=
-> +		clear_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);=0A=
->   	}=0A=
->   =0A=
->   	/* Ask phy to be suspended */=0A=
-> @@ -4530,9 +4545,6 @@ static int _dwc2_hcd_suspend(struct usb_hcd *hcd)=
-=0A=
->   		spin_lock_irqsave(&hsotg->lock, flags);=0A=
->   	}=0A=
->   =0A=
-> -	/* After entering partial_power_down, hardware is no more accessible */=
-=0A=
-> -	clear_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);=0A=
-> -=0A=
->   skip_power_saving:=0A=
->   	hsotg->lx_state =3D DWC2_L2;=0A=
->   unlock:=0A=
-> @@ -4545,6 +4557,7 @@ static int _dwc2_hcd_resume(struct usb_hcd *hcd)=0A=
->   {=0A=
->   	struct dwc2_hsotg *hsotg =3D dwc2_hcd_to_hsotg(hcd);=0A=
->   	unsigned long flags;=0A=
-> +	u32 pcgctl;=0A=
->   	int ret =3D 0;=0A=
->   =0A=
->   	spin_lock_irqsave(&hsotg->lock, flags);=0A=
-> @@ -4555,17 +4568,11 @@ static int _dwc2_hcd_resume(struct usb_hcd *hcd)=
-=0A=
->   	if (hsotg->lx_state !=3D DWC2_L2)=0A=
->   		goto unlock;=0A=
->   =0A=
-> -	if (hsotg->params.power_down !=3D DWC2_POWER_DOWN_PARAM_PARTIAL) {=0A=
-> +	if (hsotg->params.power_down > DWC2_POWER_DOWN_PARAM_PARTIAL) {=0A=
->   		hsotg->lx_state =3D DWC2_L0;=0A=
->   		goto unlock;=0A=
->   	}=0A=
->   =0A=
-> -	/*=0A=
-> -	 * Set HW accessible bit before powering on the controller=0A=
-> -	 * since an interrupt may rise.=0A=
-> -	 */=0A=
-> -	set_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);=0A=
-> -=0A=
->   	/*=0A=
->   	 * Enable power if not already done.=0A=
->   	 * This must not be spinlocked since duration=0A=
-> @@ -4577,10 +4584,23 @@ static int _dwc2_hcd_resume(struct usb_hcd *hcd)=
-=0A=
->   		spin_lock_irqsave(&hsotg->lock, flags);=0A=
->   	}=0A=
->   =0A=
-> -	/* Exit partial_power_down */=0A=
-> -	ret =3D dwc2_exit_partial_power_down(hsotg, true);=0A=
-> -	if (ret && (ret !=3D -ENOTSUPP))=0A=
-> -		dev_err(hsotg->dev, "exit partial_power_down failed\n");=0A=
-> +	if (hsotg->params.power_down =3D=3D DWC2_POWER_DOWN_PARAM_PARTIAL) {=0A=
-> +		/*=0A=
-> +		 * Set HW accessible bit before powering on the controller=0A=
-> +		 * since an interrupt may rise.=0A=
-> +		 */=0A=
-> +		set_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);=0A=
-> +=0A=
-> +=0A=
-you leave an odd blank line here.  Please delete it.=0A=
-> +		/* Exit partial_power_down */=0A=
-> +		ret =3D dwc2_exit_partial_power_down(hsotg, true);=0A=
-> +		if (ret && (ret !=3D -ENOTSUPP))=0A=
-> +			dev_err(hsotg->dev, "exit partial_power_down failed\n");=0A=
-> +	} else {=0A=
-> +		pcgctl =3D readl(hsotg->regs + PCGCTL);=0A=
-> +		pcgctl &=3D ~PCGCTL_STOPPCLK;=0A=
-> +		writel(pcgctl, hsotg->regs + PCGCTL);=0A=
-=0A=
-Here if core doesn't support both hibernation and partial power down =0A=
-and "hsotg->params.power_down" is equal to "DWC2_POWER_DOWN_PARAM_NONE" =0A=
-which is 0 then "PCGCTL_STOPPCLK" bit is unset.=0A=
-=0A=
-> +	}=0A=
->   =0A=
->   	hsotg->lx_state =3D DWC2_L0;=0A=
->   =0A=
-> @@ -4592,10 +4612,12 @@ static int _dwc2_hcd_resume(struct usb_hcd *hcd)=
-=0A=
->   		spin_unlock_irqrestore(&hsotg->lock, flags);=0A=
->   		dwc2_port_resume(hsotg);=0A=
->   	} else {=0A=
-> -		dwc2_vbus_supply_init(hsotg);=0A=
-> +		if (hsotg->params.power_down =3D=3D DWC2_POWER_DOWN_PARAM_PARTIAL) {=
-=0A=
-> +			dwc2_vbus_supply_init(hsotg);=0A=
->   =0A=
-> -		/* Wait for controller to correctly update D+/D- level */=0A=
-> -		usleep_range(3000, 5000);=0A=
-> +			/* Wait for controller to correctly update D+/D- level */=0A=
-> +			usleep_range(3000, 5000);=0A=
-> +		}=0A=
->   =0A=
->   		/*=0A=
->   		 * Clear Port Enable and Port Status changes.=0A=
-> =0A=
-=0A=
-I have tested the patch on HAPS-DX. With this patch or without it when I =
-=0A=
-have a device connected core  enters to partial power down and doesn't =0A=
-exit from it. So I cannot use the device.=0A=
-=0A=
--- =0A=
-Regards,=0A=
-Artur=0A=
+aGksCgrlnKggMjAxOS80LzI4IOS4i+WNiDg6NDUsIERhbmllbCBMZXpjYW5vIOWGmemBkzoKPiBP
+biAyNS8wNC8yMDE5IDEyOjEyLCBFbGFpbmUgWmhhbmcgd3JvdGU6Cj4+IEV4cGxpY2l0bHkgdXNl
+IHRoZSBwaW5jdHJsIHRvIHNldC91bnNldCB0aGUgcmlnaHQgbW9kZQo+PiBpbnN0ZWFkIG9mIHJl
+bHlpbmcgb24gdGhlIHBpbmN0cmwgaW5pdCBtb2RlLgo+PiBBbmQgaXQgcmVxdWlyZXMgc2V0dGlu
+ZyB0aGUgdHNodXQgcG9sYXJpdHkgYmVmb3JlIHNlbGVjdCBwaW5jdHJsLgo+Pgo+PiBXaGVuIHRo
+ZSB0ZW1wZXJhdHVyZSBzZW5zb3IgbW9kZSBpcyBzZXQgdG8gMCwgaXQgd2lsbCBhdXRvbWF0aWNh
+bGx5Cj4+IHJlc2V0IHRoZSBib2FyZCB2aWEgdGhlIENsb2NrLVJlc2V0LVVuaXQgKENSVSkgaWYg
+dGhlIG92ZXIgdGVtcGVyYXR1cmUKPj4gdGhyZXNob2xkIGlzIHJlYWNoZWQuIEhvd2V2ZXIsIHdo
+ZW4gdGhlIHBpbmN0cmwgaW5pdGlhbGl6ZXMsIGl0IGRvZXMgYQo+PiB0cmFuc2l0aW9uIHRvICJv
+dHBfb3V0IiB3aGljaCBtYXkgbGVhZCB0aGUgU29DIHJlc3RhcnQgYWxsIHRoZSB0aW1lLgo+Pgo+
+PiAib3RwX291dCIgSU8gbWF5IGJlIGNvbm5lY3RlZCB0byB0aGUgUkVTRVQgY2lyY3VpdCBvbiB0
+aGUgaGFyZHdhcmUuCj4+IElmIHRoZSBJTyBpcyBpbiB0aGUgd3Jvbmcgc3RhdGUsIGl0IHdpbGwg
+dHJpZ2dlciBSRVNFVC4KPj4gKHNpbWlsYXIgdG8gdGhlIGVmZmVjdCBvZiBwcmVzc2luZyB0aGUg
+UkVTRVQgYnV0dG9uKQo+PiB3aGljaCB3aWxsIGNhdXNlIHRoZSBzb2MgdG8gcmVzdGFydCBhbGwg
+dGhlIHRpbWUuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IEVsYWluZSBaaGFuZyA8emhhbmdxaW5nQHJv
+Y2stY2hpcHMuY29tPgo+PiAtLS0KPj4gICBkcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1h
+bC5jIHwgMzcgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLQo+PiAgIDEgZmls
+ZSBjaGFuZ2VkLCAzNCBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0t
+Z2l0IGEvZHJpdmVycy90aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYyBiL2RyaXZlcnMvdGhlcm1h
+bC9yb2NrY2hpcF90aGVybWFsLmMKPj4gaW5kZXggOWM3NjQzZDYyZWQ3Li4wM2ZmNDk0ZjI4NjQg
+MTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvdGhlcm1hbC9yb2NrY2hpcF90aGVybWFsLmMKPj4gKysr
+IGIvZHJpdmVycy90aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYwo+PiBAQCAtMTcyLDYgKzE3Miw5
+IEBAIHN0cnVjdCByb2NrY2hpcF90aGVybWFsX2RhdGEgewo+PiAgIAlpbnQgdHNodXRfdGVtcDsK
+Pj4gICAJZW51bSB0c2h1dF9tb2RlIHRzaHV0X21vZGU7Cj4+ICAgCWVudW0gdHNodXRfcG9sYXJp
+dHkgdHNodXRfcG9sYXJpdHk7Cj4+ICsJc3RydWN0IHBpbmN0cmwgKnBpbmN0cmw7Cj4+ICsJc3Ry
+dWN0IHBpbmN0cmxfc3RhdGUgKmdwaW9fc3RhdGU7Cj4+ICsJc3RydWN0IHBpbmN0cmxfc3RhdGUg
+Km90cF9zdGF0ZTsKPj4gICB9Owo+PiAgIAo+PiAgIC8qKgo+PiBAQCAtMTI0Miw2ICsxMjQ1LDgg
+QEAgc3RhdGljIGludCByb2NrY2hpcF90aGVybWFsX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZp
+Y2UgKnBkZXYpCj4+ICAgCQlyZXR1cm4gZXJyb3I7Cj4+ICAgCX0KPj4gICAKPj4gKwl0aGVybWFs
+LT5jaGlwLT5jb250cm9sKHRoZXJtYWwtPnJlZ3MsIGZhbHNlKTsKPj4gKwo+PiAgIAllcnJvciA9
+IGNsa19wcmVwYXJlX2VuYWJsZSh0aGVybWFsLT5jbGspOwo+PiAgIAlpZiAoZXJyb3IpIHsKPj4g
+ICAJCWRldl9lcnIoJnBkZXYtPmRldiwgImZhaWxlZCB0byBlbmFibGUgY29udmVydGVyIGNsb2Nr
+OiAlZFxuIiwKPj4gQEAgLTEyNjcsNiArMTI3MiwzMSBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3Ro
+ZXJtYWxfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4gICAJdGhlcm1hbC0+
+Y2hpcC0+aW5pdGlhbGl6ZSh0aGVybWFsLT5ncmYsIHRoZXJtYWwtPnJlZ3MsCj4+ICAgCQkJCSAg
+dGhlcm1hbC0+dHNodXRfcG9sYXJpdHkpOwo+PiAgIAo+PiArCWlmICh0aGVybWFsLT50c2h1dF9t
+b2RlID09IFRTSFVUX01PREVfR1BJTykgewo+PiArCQl0aGVybWFsLT5waW5jdHJsID0gZGV2bV9w
+aW5jdHJsX2dldCgmcGRldi0+ZGV2KTsKPj4gKwkJaWYgKElTX0VSUih0aGVybWFsLT5waW5jdHJs
+KSkgewo+PiArCQkJZGV2X2VycigmcGRldi0+ZGV2LCAiZmFpbGVkIHRvIGZpbmQgdGhlcm1hbCBw
+aW5jdHJsXG4iKTsKPj4gKwkJCXBhbmljKCJwYW5pY19vbl9maW5kIHRoZXJtYWwgcGluY3RybC4u
+LlxuIik7Cj4gSSByZWFsaXplIG15IGNvbW1lbnQgd2FzIGNvbmZ1c2luZy4gSSB3YXMgbm90IHNh
+eWluZyB0byBhZGQgYSBwYW5pYygpCj4gY2FsbCBoZXJlIGJ1dCB0aGF0IHRoZSBjb2RlIHdhcyBh
+Y2Nlc3NpbmcgYSBOVUxMIHBvaW50ZXIuIFBsZWFzZSByZW1vdmUKPiB0aGUgcGFuaWMuCk9LLCBJ
+J2xsIGZpeGVkIGl0Lgo+Cj4+ICsJCQlyZXR1cm4gUFRSX0VSUih0aGVybWFsLT5waW5jdHJsKTsK
+Pj4gKwkJfQo+PiArCj4+ICsJCXRoZXJtYWwtPmdwaW9fc3RhdGUgPSBwaW5jdHJsX2xvb2t1cF9z
+dGF0ZSh0aGVybWFsLT5waW5jdHJsLAo+PiArCQkJCQkJCSAgICJncGlvIik7Cj4+ICsJCWlmIChJ
+U19FUlJfT1JfTlVMTCh0aGVybWFsLT5ncGlvX3N0YXRlKSkgewo+PiArCQkJZGV2X2VycigmcGRl
+di0+ZGV2LCAiZmFpbGVkIHRvIGZpbmQgdGhlcm1hbCBncGlvIHN0YXRlXG4iKTsKPj4gKwkJCXJl
+dHVybiAtRUlOVkFMOwo+PiArCQl9Cj4+ICsKPj4gKwkJdGhlcm1hbC0+b3RwX3N0YXRlID0gcGlu
+Y3RybF9sb29rdXBfc3RhdGUodGhlcm1hbC0+cGluY3RybCwKPj4gKwkJCQkJCQkgICJvdHBvdXQi
+KTsKPj4gKwkJaWYgKElTX0VSUl9PUl9OVUxMKHRoZXJtYWwtPm90cF9zdGF0ZSkpIHsKPj4gKwkJ
+CWRldl9lcnIoJnBkZXYtPmRldiwgImZhaWxlZCB0byBmaW5kIHRoZXJtYWwgb3Rwb3V0IHN0YXRl
+XG4iKTsKPj4gKwkJCXJldHVybiAtRUlOVkFMOwo+PiArCQl9Cj4+ICsKPj4gKwkJcGluY3RybF9z
+ZWxlY3Rfc3RhdGUodGhlcm1hbC0+cGluY3RybCwgdGhlcm1hbC0+b3RwX3N0YXRlKTsKPiBJIGRv
+bid0IHVuZGVyc3RhbmQgdGhpcyBwb3J0aW9uIG9mIGNvZGUuIFRoZSB0ZXN0IGFib3ZlIHNheXMg
+dHNodXRfbW9kZQo+IGlzIFRTSFVUX01PREVfR1BJTy4gV2h5IGFjdGluZyBvbiB0aGVybWFsLT5v
+dHBfc3RhdGUgdGhlbiA/Cj4KPgo+IEluIG15IHByZXZpb3VzIGNvbW1lbnQsIEkgd2FzIHN1Z2dl
+c3RpbmcgdGhlIGZvbGxvd2luZzoKPgo+IFR3byBtb3JlIGZpZWxkcyBpbnN0ZWFkIG9mIHRocmVl
+Ogo+Cj4gCXN0cnVjdCByb2NrY2hpcF90aGVybWFsX2RhdGEgewo+ICAgIAkJaW50IHRzaHV0X3Rl
+bXA7Cj4gCSAgCWVudW0gdHNodXRfbW9kZSB0c2h1dF9tb2RlOwo+ICAgIAkJZW51bSB0c2h1dF9w
+b2xhcml0eSB0c2h1dF9wb2xhcml0eTsKPiAJIAlzdHJ1Y3QgcGluY3RybCAqcGluY3RybDsKPiAJ
+CXN0cnVjdCBwaW5jdHJsX3N0YXRlICpwaW5jdHJsX3N0YXRlOwo+IAl9Owo+Cj4gCVsgLi4uIF0K
+Pgo+IAl0aGVybWFsLT5waW5jdHJsID0gZGV2bV9waW5jdHJsX2dldCgmcGRldi0+ZGV2KTsKPiAJ
+aWYgKElTX0VSUih0aGVybWFsLT5waW5jdHJsKSkgewo+IAkJZGV2X2VycigiLi4uIik7Cj4gCQly
+ZXR1cm4gUFRSX0VSUih0aGVybWFsLT5waW5jdHJsKTsKPiAJfQo+Cj4gCXRoZXJtYWwtPnBpbmN0
+cmxfc3RhdGUgPSBwaW5jdHJsX2xvb2t1cF9zdGF0ZSh0aGVybWFsLT5waW5jdHJsLAo+IAkJdGhl
+cm1hbC0+dHNodXRfbW9kZSA9PSBUU0hVVF9NT0RFX0dQSU8gPyAiZ3BpbyIgOgo+IAkJCQkJCQki
+b3Rwb3V0IjsKPgo+IAlpZiAoSVNfRVJSX09SX05VTEwodGhlcm1hbC0+cGluY3RybF9zdGF0ZSkg
+ewo+IAkJZGV2X2VycigiLi4uIik7Cj4gCQlyZXR1cm4gUFRSX0VSUih0aGVybWFsLT5waW5jdHJs
+X3N0YXRlKTsKPiAJfQo+Cj4gICAJcGluY3RybF9zZWxlY3Rfc3RhdGUodGhlcm1hbC0+cGluY3Ry
+bCwgdGhlcm1hbC0+cGluY3RybF9zdGF0ZSk7Cj4KPgo+IAlbIC4uLiBdCj4KPiBJcyBpdCB3cm9u
+ZyA/Cj4KPgo+PiArCX0KPj4gKwo+PiAgIAlmb3IgKGkgPSAwOyBpIDwgdGhlcm1hbC0+Y2hpcC0+
+Y2huX251bTsgaSsrKSB7Cj4+ICAgCQllcnJvciA9IHJvY2tjaGlwX3RoZXJtYWxfcmVnaXN0ZXJf
+c2Vuc29yKHBkZXYsIHRoZXJtYWwsCj4+ICAgCQkJCQkJJnRoZXJtYWwtPnNlbnNvcnNbaV0sCj4+
+IEBAIC0xMzM3LDggKzEzNjcsOCBAQCBzdGF0aWMgaW50IF9fbWF5YmVfdW51c2VkIHJvY2tjaGlw
+X3RoZXJtYWxfc3VzcGVuZChzdHJ1Y3QgZGV2aWNlICpkZXYpCj4+ICAgCj4+ICAgCWNsa19kaXNh
+YmxlKHRoZXJtYWwtPnBjbGspOwo+PiAgIAljbGtfZGlzYWJsZSh0aGVybWFsLT5jbGspOwo+PiAt
+Cj4+IC0JcGluY3RybF9wbV9zZWxlY3Rfc2xlZXBfc3RhdGUoZGV2KTsKPj4gKwlpZiAodGhlcm1h
+bC0+dHNodXRfbW9kZSA9PSBUU0hVVF9NT0RFX0dQSU8pCj4+ICsJCXBpbmN0cmxfc2VsZWN0X3N0
+YXRlKHRoZXJtYWwtPnBpbmN0cmwsIHRoZXJtYWwtPmdwaW9fc3RhdGUpOwo+IEFuZCB0aGVuOgo+
+IAkgcGluY3RybF9zZWxlY3Rfc3RhdGUodGhlcm1hbC0+cGluY3RybCwgdGhlcm1hbC0+cGluY3Ry
+bF9zdGF0ZSk7CgpwaW5jdHJsIHNlbGVjdCB0byBncGlvIG1vZGUgd2hlbiB0c2FkYyBzdXNwZW5k
+IGFuZCBzaHV0ZG93bi4KCldoZW4gc3VzcGVuZCwgdHNhZGMgaXMgZGlzYWJsZWQsIHRoZSBvdHBf
+cGluIHNob3VsZCByZXZlcnQgdG8gdGhlIApkZWZhdWx0IGdwaW8gc3RhdGUuCgo+Cj4+ICAgCj4+
+ICAgCXJldHVybiAwOwo+PiAgIH0KPj4gQEAgLTEzODMsNyArMTQxMyw4IEBAIHN0YXRpYyBpbnQg
+X19tYXliZV91bnVzZWQgcm9ja2NoaXBfdGhlcm1hbF9yZXN1bWUoc3RydWN0IGRldmljZSAqZGV2
+KQo+PiAgIAlmb3IgKGkgPSAwOyBpIDwgdGhlcm1hbC0+Y2hpcC0+Y2huX251bTsgaSsrKQo+PiAg
+IAkJcm9ja2NoaXBfdGhlcm1hbF90b2dnbGVfc2Vuc29yKCZ0aGVybWFsLT5zZW5zb3JzW2ldLCB0
+cnVlKTsKPj4gICAKPj4gLQlwaW5jdHJsX3BtX3NlbGVjdF9kZWZhdWx0X3N0YXRlKGRldik7Cj4+
+ICsJaWYgKHRoZXJtYWwtPnRzaHV0X21vZGUgPT0gVFNIVVRfTU9ERV9HUElPKQo+PiArCQlwaW5j
+dHJsX3NlbGVjdF9zdGF0ZSh0aGVybWFsLT5waW5jdHJsLCB0aGVybWFsLT5vdHBfc3RhdGUpOwo+
+IEFuZCB0aGVuCj4gCXBpbmN0cmxfc2VsZWN0X3N0YXRlKHRoZXJtYWwtPnBpbmN0cmwsIHRoZXJt
+YWwtPnBpbmN0cmxfc3RhdGUpOwoKcGluY3RybCBzZWxlY3QgdG8gb3RwIG1vZGUgd2hlbiB0c2Fk
+YyByZXN1bWUuCgo+Cj4+ICAgCXJldHVybiAwOwo+PiAgIH0KPj4KPgoKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxp
+bmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
