@@ -1,82 +1,139 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [DO NOT MERGE] [PATCH 2/2] arm64: rockchip: rk3399: nanopc-t4: Enable FriendlyELEC HD702E eDP panel
-Date: Wed, 01 May 2019 17:09:46 +0200
-Message-ID: <59905981.qcSMt8CUfq@phil>
-References: <20190501121448.3812-1-jagan@amarulasolutions.com> <cc16498b-71f8-04ce-44d1-25417fd64757@arm.com> <CAMty3ZBdko3+p6SoKYH-Mwism-Qnp3F5u7JV8YQTHzNP8A5kEg@mail.gmail.com>
+From: Sam Ravnborg <sam@ravnborg.org>
+Subject: Re: [PATCH 1/2] drm/panel: simple: Add FriendlyELEC HD702E 800x1280
+ LCD panel
+Date: Wed, 1 May 2019 21:34:29 +0200
+Message-ID: <20190501193429.GA9075@ravnborg.org>
+References: <20190501121448.3812-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAMty3ZBdko3+p6SoKYH-Mwism-Qnp3F5u7JV8YQTHzNP8A5kEg@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20190501121448.3812-1-jagan@amarulasolutions.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-amarula@amarulasolutions.com, Thierry Reding <thierry.reding@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 1. Mai 2019, 16:09:46 CEST schrieb Jagan Teki:
-> On Wed, May 1, 2019 at 6:17 PM Robin Murphy <robin.murphy@arm.com> wrote:
-> >
-> > On 01/05/2019 13:14, Jagan Teki wrote:
-> > > FriendlyELEC HD702E is one of optional LCD panel for
-> > > NanoPC T4 eDP interface.
-> > >
-> > > It features 800x1280 resolutions, with built in GT9271 captive
-> > > touchscreen and adjustable backlight via PWM.
-> > >
-> > > eDP panel connections are:
-> > > - VCC3V3_SYS: 3.3V panel power supply
-> > > - GPIO4_C2: PWM0_BL pin
-> > > - GPIO4_D5_LCD_BL_EN: Backlight enable pin
-> > > - VCC12V0_SYS: 12V backlight power supply
-> > > - Touchscreen connected via I2C4
-> > > - GPIO1_C4_TP_INT: touchscreen interrupt pin
-> > > - GPIO1_B5_TP_RST: touchscreen reset pin
-> > >
-> > > Add support for it.
-> > >
-> > > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> > > ---
-> > > Note: we need to disable hdmi-cec pinctrl to work with
-> > > edp-hpd since both share same pin, otherwise we can
-> > > encounter below error during bootup
-> > > [    1.047726] rockchip-pinctrl pinctrl: pin gpio4-23 already requested by ff940000.hdmi; cannot claim for ff970000.edp
-> > > [    1.048655] rockchip-pinctrl pinctrl: pin-151 (ff970000.edp) status -22
-> > > [    1.049235] rockchip-pinctrl pinctrl: could not request pin 151 (gpio4-23) from group edp-hpd  on device rockchip-pinctrl
-> > > [    1.050191] rockchip-dp ff970000.edp: Error applying setting, reverse things back
-> > > [    1.050867] rockchip-dp: probe of ff970000.edp failed with error -22
-> >
-> > Hmm, AFAICS that pin is exclusively wired to the HDMI connector and not
-> > used for the eDP interface, so really it's the fault of rk3399.dtsi for
-> > trying to claim it unconditionally. Ideally we'd pull those pinctrl
-> > properties out into the board DTs which do actually need them, but the
-> > quick and easy approach would be to add some "/delete-property/ ..."
-> > workarounds to the &edp node here.
+Hi Jagan
+
+On Wed, May 01, 2019 at 05:44:47PM +0530, Jagan Teki wrote:
+> HD702E lcd is FriendlyELEC developed eDP LCD panel with 800x1280
+> resolution. It has built in Goodix, GT9271 captive touchscreen
+> with backlight adjustable via PWM.
 > 
-> Thought that initially, but the same pin shared between HDMI CEC and
-> eDP hotplug with different bit function to enable.
+> Add support for it.
 > 
-> gpio4c7_sel
-> GPIO4C[7] iomux select
-> 2'b00: gpio
-> 2'b01: hdmi_cecinout
-> 2'b10: edp_hotplug
-> 2'b11: reserved
+> Cc: Thierry Reding <thierry.reding@gmail.com>
+> Cc: Sam Ravnborg <sam@ravnborg.org>
+> Cc: David Airlie <airlied@linux.ie>
+> Cc: Daniel Vetter <daniel@ffwll.ch>
+> Cc: dri-devel@lists.freedesktop.org
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+
+Please submit the binding in a separate patch as per
+Documentation/devicetree/bindings/submitting-patches.txt
+
+The binding looks like it is compatible with common-panel and
+simple-panel - please say so in the bindings.
+See for example the last few binding documents added to the kernel tree.
+
+> ---
+>  .../display/panel/friendlyarm,hd702e.txt      | 29 +++++++++++++++++++
+>  drivers/gpu/drm/panel/panel-simple.c          | 26 +++++++++++++++++
+>  2 files changed, 55 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/panel/friendlyarm,hd702e.txt
 > 
-> GPIO4_C7/HDMI_CECINOUT/EDP_HOTPLUG is the shared pin, which is
-> available in any nanopc-t4 as well in rk3399 datasheet, look like it's
-> an SoC pin that driver hotplug to eDP and ie same reason is pinmux in
-> rk3399.dtsi.
+> diff --git a/Documentation/devicetree/bindings/display/panel/friendlyarm,hd702e.txt b/Documentation/devicetree/bindings/display/panel/friendlyarm,hd702e.txt
+> new file mode 100644
+> index 000000000000..67349d7f79be
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/panel/friendlyarm,hd702e.txt
+> @@ -0,0 +1,29 @@
+> +FriendlyELEC HD702E 800x1280 LCD panel
+> +
+> +HD702E lcd is FriendlyELEC developed eDP LCD panel with 800x1280
+> +resolution. It has built in Goodix, GT9271 captive touchscreen
+> +with backlight adjustable via PWM.
+> +
+> +Required properties:
+> +- compatible: should be "friendlyarm,hd702e"
+> +- power-supply: regulator to provide the supply voltage
+> +
+> +Optional properties:
+> +- backlight: phandle of the backlight device attached to the panel
+> +
+> +Optional nodes:
+> +- Video port for LCD panel input.
+> +
+> +Example:
+> +
+> +	panel {
+> +		compatible ="friendlyarm,hd702e";
+> +		backlight = <&backlight>;
+> +		power-supply = <&vcc3v3_sys>;
+> +
+> +		port {
+> +			panel_in_edp: endpoint {
+> +				remote-endpoint = <&edp_out_panel>;
+> +			};
+> +		};
+> +	};
+> diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
+> index 9e8218f6a3f2..9db3c0c65ef2 100644
+> --- a/drivers/gpu/drm/panel/panel-simple.c
+> +++ b/drivers/gpu/drm/panel/panel-simple.c
+> @@ -1184,6 +1184,29 @@ static const struct panel_desc foxlink_fl500wvr00_a0t = {
+>  	.bus_format = MEDIA_BUS_FMT_RGB888_1X24,
+>  };
+>  
+> +static const struct drm_display_mode friendlyarm_hd702e_mode = {
+> +	.clock		= 67185,
+> +	.hdisplay	= 800,
+> +	.hsync_start	= 800 + 20,
+> +	.hsync_end	= 800 + 20 + 24,
+> +	.htotal		= 800 + 20 + 24 + 20,
+> +	.vdisplay	= 1280,
+> +	.vsync_start	= 1280 + 4,
+> +	.vsync_end	= 1280 + 4 + 8,
+> +	.vtotal		= 1280 + 4 + 8 + 4,
+> +	.vrefresh	= 60,
+> +	.flags 		= DRM_MODE_FLAG_NVSYNC | DRM_MODE_FLAG_NHSYNC,
+> +};
+> +
+> +static const struct panel_desc friendlyarm_hd702e = {
+> +	.modes = &friendlyarm_hd702e_mode,
+> +	.num_modes = 1,
+> +	.size = {
+> +		.width	= 94,
+> +		.height	= 151,
+> +	},
+> +};
+As I read the datasheet then this panel needs at least a prepare delay
+of 10 ms (it says > 10 ms from VGH until Data).
+And then we also know that VGH shall be valid at least 10 ms after DVDD
+so prepare is likely 20 ms.
 
-Yes the pin of the soc is shared between those functions, so you'll
-have to check the schematics of your board where this pin is going
-to.
+Based on datasheet found here:
+https://pan.baidu.com/s/1geEfBLh/
 
-If you check the schematics [0] page 11, GPIO4_C7's signal is named HDMI_CEC
-and on page 18 you can see that it goes as expected to the cec-pin of the
-hdmi connector. 
+Please evaluate all delays.
 
-So the Nanopc-T4 should only select the cec signal.
+> +
+>  static const struct drm_display_mode giantplus_gpg482739qs5_mode = {
+>  	.clock = 9000,
+>  	.hdisplay = 480,
+> @@ -2634,6 +2657,9 @@ static const struct of_device_id platform_of_match[] = {
+>  	}, {
+>  		.compatible = "edt,etm0700g0edh6",
+>  		.data = &edt_etm0700g0bdh6,
+> +	}, {
+> +		.compatible = "friendlyarm,hd702e",
+> +		.data = &friendlyarm_hd702e,
+>  	}, {
+>  		.compatible = "foxlink,fl500wvr00-a0t",
+>  		.data = &foxlink_fl500wvr00_a0t,
 
+Add these in sorted order.
+"fox" is before "fri"
 
-Heiko
-[0] http://wiki.friendlyarm.com/wiki/images/f/f4/NanoPC-T4-1802-Schematic.pdf
+	Sam
