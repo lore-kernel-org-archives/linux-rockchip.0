@@ -1,283 +1,124 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v2 1/3] pwm: rockchip: Don't update the state for the
- caller of pwm_apply_state()
-Date: Thu, 2 May 2019 10:42:43 +0200
-Message-ID: <20190502084243.anz5myut63g4torn@pengutronix.de>
-References: <20190312214605.10223-2-u.kleine-koenig@pengutronix.de>
- <1707507.TOMHpQGrZ7@phil>
- <CAD=FV=WZHouhGcxOgNG3006XajJQaAp0uq9WjeKRikQx1ru4TA@mail.gmail.com>
- <20190408143914.uucb5dwafq3cnsmk@pengutronix.de>
- <CA+ASDXO=szekU97iTDK9vqWjT+JtAKeCNTyoY=8aSi5d+v4mkA@mail.gmail.com>
- <20190429065613.n52uwgys5eugmssd@pengutronix.de>
- <CAD=FV=U71u39ZHkBBfAXVAP=_hY-bAw3L7JdhC=36jkUVxPOmQ@mail.gmail.com>
- <20190502091638.0f5a40b0@collabora.com>
- <20190502073326.sgqgkiexjkipvi27@pengutronix.de>
- <20190502100951.23ef9ed1@collabora.com>
+From: =?UTF-8?q?Ga=C3=ABl=20PORTAY?= <gael.portay@collabora.com>
+Subject: [PATCH v5 0/5] Add support for drm/rockchip to dynamically control the DDR frequency.
+Date: Thu,  2 May 2019 13:58:14 -0400
+Message-ID: <20190502175820.25382-1-gael.portay@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20190502100951.23ef9ed1-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lin Huang <hl@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Derek Basehore <dbasehore@chromium.org>, Randy Li <ayaka@soulik.info>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, kernel@collabora.com, =?UTF-8?q?Ga=C3=ABl=20PORTAY?= <gael.portay@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Boris,
+Dear all,
 
-On Thu, May 02, 2019 at 10:09:51AM +0200, Boris Brezillon wrote:
-> On Thu, 2 May 2019 09:33:26 +0200
-> Uwe Kleine-K=F6nig <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
-> =
+The rk3399 platform has a DFI controller that can monitor DDR load and a
+DMC driver that talks with the TF-A (Trusted Firmware-A) to dynamically
+set the DDR frequency with following flow.
 
-> > Hello Boris,
-> > =
+             kernel                          Trusted Firmware-A
+                                                  (bl31)
+        monitor ddr load
+                |
+                |
+        get_target_rate
+                |
+                |           pass rate to TF-A
+        clk_set_rate(ddr) --------------------->run ddr dvs flow
+                                                    |
+                                                    |
+                 <------------------------------end ddr dvs flow
+                |
+                |
+              return
 
-> > On Thu, May 02, 2019 at 09:16:38AM +0200, Boris Brezillon wrote:
-> > > On Mon, 29 Apr 2019 11:04:20 -0700
-> > > Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> > >   =
+These patches add support for devfreq to dynamically control the DDR
+frequency for the gru chromebooks. By default it uses the
+'simple_ondemand' governor which can adjust the frequency based on the
+DDR load.
 
-> > > > Hi,
-> > > > =
+Waiting for your feedback.
 
-> > > > On Sun, Apr 28, 2019 at 11:56 PM Uwe Kleine-K=F6nig
-> > > > <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:  =
+Best regards,
+Gaël
 
-> > > > >
-> > > > > On Thu, Apr 18, 2019 at 05:27:05PM -0700, Brian Norris wrote:    =
+Note: The RFC and the first patchset contained three patches to sync the
+DDR frequency change within the vblank. These patches was submitted
+separatly in a dedicated RFC[1].
 
-> > > > > > Hi,
-> > > > > >
-> > > > > > I'm not sure if I'm misreading you, but I thought I'd add here =
-before
-> > > > > > this expires out of my inbox:
-> > > > > >
-> > > > > > On Mon, Apr 8, 2019 at 7:39 AM Uwe Kleine-K=F6nig
-> > > > > > <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:    =
+[1]: https://lkml.org/lkml/2019/4/30/1066
 
-> > > > > > > My intention here is more to make all drivers behave the same=
- way and
-> > > > > > > because only two drivers updated the pwm_state this was the v=
-ariant I
-> > > > > > > removed.    =
+Changes in v5:
+- [PATCH v4 5/5] Remove use of DRAM setting defines.
+		 Remove new DRAM setting header.
+- [PATCH v5 6/6] Remove references of unexistant defines in documentation (new
+                 patch).
 
-> > > > > >
-> > > > > > To be clear, this patch on its own is probably breaking things.=
- Just
-> > > > > > because the other drivers don't implement the documented behavi=
-or
-> > > > > > doesn't mean you should break this driver. Maybe the others just
-> > > > > > aren't used in precise enough scenarios where this matters.
-> > > > > >    =
+Changes in v4:
+- [PATCH v3 1/5] Add Acked-by: MyungJoo Ham <myungjoo.ham@samsung.com>.
+- [PATCH v3 2/5] Add Acked-by: MyungJoo Ham <myungjoo.ham@samsung.com>.
+- [PATCH v3 3/5] Add Acked-by: MyungJoo Ham <myungjoo.ham@samsung.com>.
+- [PATCH v3 4/5] Remove board related DDR settings (moved to 5/5).
+- [PATCH v3 5/5] Add board related DDR settings (moved from 5/5).
 
-> > > > > > > When you say that the caller might actually care about the ex=
-act
-> > > > > > > parameters I fully agree. In this case however the consumer s=
-hould be
-> > > > > > > able to know the result before actually applying it. So if yo=
-u do
-> > > > > > >
-> > > > > > >         pwm_apply_state(pwm, { .period =3D 17, .duty_cycle =
-=3D 12, ...})
-> > > > > > >
-> > > > > > > and this results in .period =3D 100 and .duty_cycle =3D 0 the=
-n probably the
-> > > > > > > bad things you want to know about already happend. So my idea=
- is a new
-> > > > > > > function pwm_round_state() that does the adaptions to pwm_sta=
-te without
-> > > > > > > applying it to the hardware. After that pwm_apply_state could=
- do the
-> > > > > > > following:
-> > > > > > >
-> > > > > > >         rstate =3D pwm_round_state(pwm, state)
-> > > > > > >         pwm.apply(pwm, state)
-> > > > > > >         gstate =3D pwm_get_state(pwm)
-> > > > > > >
-> > > > > > >         if rstate !=3D gstate:
-> > > > > > >                 warn about problems    =
+Changes in v3:
+- [PATCH v2 1/5] Add Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>.
+- [PATCH v2 2/5] Add Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>.
+- [PATCH v2 3/5] Add Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>.
+		 Remove comments.
+		 Move pmu dt parsing after dt-parsing of timings to fix
+		  data->odt_dis_freq value.
+- [PATCH v2 5/5] Remove display_subsystem nodes.
 
-> > > > > >
-> > > > > > For our case (we're using this with pwm-regulator), I don't rec=
-all [*]
-> > > > > > we need to be 100% precise about the period, but we do need to =
-be as
-> > > > > > precise as possible with the duty:period ratio -- so once we ge=
-t the
-> > > > > > "feedback" from the underlying PWM driver what the real period =
-will
-> > > > > > be, we adjust the duty appropriately.    =
+Changes in v2:
+- [PATCH 1/8] Really add Acked-by: Chanwoo Choi <cw00.choi@samsung.com>.
+- [PATCH 4/8] Removed from patchset.
+- [PATCH 5/8] Removed from patchset.
+- [PATCH 6/8] Removed from patchset.
+- [PATCH 7/8] Reword the commit message to reflect the removal of
+              rk3390-dram-default-timing.dts in v1.
+- [PATCH 8/8] Move center-supply attribute of dmc node in file
+              rk3399-gru-chromebook.dtsi (where ppvar_centerlogic is
+	      defined).
 
-> > > > >
-> > > > > I admit that I didn't understood the whole situation and (some) t=
-hings
-> > > > > are worse with my patches applied. I still think that changing the
-> > > > > caller's state variable is bad design, but of course pwm_get_state
-> > > > > should return the currently implemented configuration.    =
+Changes in v1:
+- [RFC 1/10] Add Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
+- [RFC 1/10] s/Generic/General/ (Robin Murphy)
+- [RFC 2/10] Add reviewed and acked tags from Chanwoo Choi and Rob Herring
+- [RFC 3/10] Add an explanation for platform SIP calls.
+- [RFC 3/10] Change if statement for a switch.
+- [RFC 3/10] Rename ddr_flag to odt_enable to be more clear.
+- [RFC 4/10] Removed from the series. I did not found a use case where not holding the mutex causes the issue.
+- [RFC 7/10] Removed from the series. I did not found a use case where this matters.
+- [RFC 8/10] Move rk3399-dram.h to dt-includes.
+- [RFC 8/10] Put sdram default values under the dmc node.
+- [RFC 8/10] Removed rk3399-dram-default-timing.dts
 
-> > > > =
+Enric Balletbo i Serra (3):
+  devfreq: rockchip-dfi: Move GRF definitions to a common place.
+  dt-bindings: devfreq: rk3399_dmc: Add rockchip,pmu phandle.
+  devfreq: rk3399_dmc: Pass ODT and auto power down parameters to TF-A.
 
-> > > > Regardless of the pros and cons of the current situation, hopefully
-> > > > we're in agreement that we shouldn't break existing users?  In gene=
-ral
-> > > > I'll probably stay out of the debate as long as we end somewhere th=
-at
-> > > > pwm_regulator is able to somehow know the actual state that it
-> > > > programmed into the hardware.
-> > > > =
+Gaël PORTAY (1):
+  dt-bindings: devfreq: rk3399_dmc: Remove references of unexistant
+    defines
 
-> > > > +Boris too in case he has any comments.  =
+Lin Huang (2):
+  arm64: dts: rk3399: Add dfi and dmc nodes.
+  arm64: dts: rockchip: Enable dmc and dfi nodes on gru.
 
-> > > =
+ .../bindings/devfreq/rk3399_dmc.txt           | 75 +++++++++----------
+ .../dts/rockchip/rk3399-gru-chromebook.dtsi   |  4 +
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  | 45 +++++++++++
+ .../boot/dts/rockchip/rk3399-op1-opp.dtsi     | 29 +++++++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi      | 19 +++++
+ drivers/devfreq/event/rockchip-dfi.c          | 23 ++----
+ drivers/devfreq/rk3399_dmc.c                  | 71 +++++++++++++++++-
+ include/soc/rockchip/rk3399_grf.h             | 21 ++++++
+ include/soc/rockchip/rockchip_sip.h           |  1 +
+ 9 files changed, 232 insertions(+), 56 deletions(-)
+ create mode 100644 include/soc/rockchip/rk3399_grf.h
 
-> > > Well, the pwm_round_state() approach sounds okay to me, though I don't
-> > > really see why it's wrong to adjust the state in pwm_apply_state()
-> > > (just like clk_set_rate() will round the rate for you by internally
-> > > calling clk_round_rate() before applying the config).  =
-
-> > =
-
-> > This are two orthogonal things. The "should pwm_apply_state change the
-> > state argument" isn't really comparable to the clk stuff, as there only
-> > the frequency is provided that is passed by value, not by reference as
-> > the PWM state.
-> > =
-
-> > The key argument for me to *not* change it is that it might yield
-> > surprises, still more as today most drivers don't adapt. An -- I admit
-> > constructed, not real-word -- case where adaption would go wrong is:
-> > =
-
-> > 	pwm_apply_state(pwm1, &mystate);
-> > 	pwm_apply_state(pwm2, &mystate);
-> =
-
-> I see, but it's also clearly documented that pwm_apply_state() might
-> adjust the period/duty params [1], and it's not like we have a lot of
-> PWM users converted to use pwm_apply_state(), so I'd expect them to be
-> aware of that and use a reference pwm_state if they need to apply it
-> to different devices.
-
-If we accept that pwm_apply_state should adapt its state argument that
-would be ok for me, too. Then however we should make this consistent and
-consider a deviation that is not reported there as a bug.
-
-Note there are also more subtile problems. For example something like:
-
-	def enable(self):
-		state =3D pwm_get_state(self.pwm)
-		state.duty_cycle *=3D 2
-		pwm_apply_state(self.pwm, state)
-
-	def disable(self):
-		state =3D pwm_get_state(self.pwm)
-		state.duty_cycle /=3D 2
-		pwm_apply_state(self.pwm, state)
-
-doesn't guarantee that the sequence enable(); disable(); is idempotent.
-So my favourite would be to not modfies the caller's copy of state for
-pwm_apply_state(). (Note, this doesn't necessarily have implications
-about the semantik of the lowlevel driver callbacks.) Still
-pwm_get_state() should work and yield the corrected settings.
-
-> > > Note that pwm_config() is doing exactly the same: it adjusts the
-> > > config to HW caps, excepts in that case you don't know it.  =
-
-> > =
-
-> > I don't see what you mean here. I don't see any adaption.
-> =
-
-> I mean that the config you end up is not necessarily what you asked
-> for, and pwm_apply_state() was making that explicit by returning the
-> actual PWM state instead of letting the user think its config has been
-> applied with no adjustment.
-
-Ah. Of course the lowlevel driver has to work with the capabilities of
-the hardware. That is something we cannot get rid of. It's just a
-question how we communicate this to the consumer.
-
-> > > I do understand that some users might want to check how the HW will
-> > > adjust the period/duty before applying the new setup, and in that
-> > > regard, having pwm_round_rate() is a good thing. But in any case, it's
-> > > hard for the user to decide how to adjust things to get what it wants
-> > > (should he increase/decrease the period/duty?).  =
-
-> > =
-
-> > It depends on the use case. For one of them I suggested an algorithm.
-> =
-
-> Yes, I was just trying to say that passing a PWM state to
-> pwm_round_state() is not enough, we need extra info if we want to make
-> it useful, like the rounding policy, the accepted deviation on period,
-> duty or the duty/period ratio, ....
-
-Ack. My suggestion is that round_rate should do:
-
-	if polarity is unsupported:
-		polarity =3D !polarity
-		duty_cycle =3D period - duty_cycle
-
-	period =3D biggest supportable period <=3D requested period, 0 if no
-		such period exists.
-
-	duty_cycle =3D biggest supportable duty cycle <=3D requested
-		duty_cycle, 0 if no such value exists
-
-This would allow to let the consumer (or framework helper function)
-decide which deviation is ok.
-
-> > > My impression is that most users care about the duty/period ratio with
-> > > little interest in accurate period settings (as long as it's close
-> > > enough to what they expect of course). For the round-up/down/closest
-> > > aspect, I guess that's also something we can pass to the new API. So,
-> > > rather than passing it a duty in ns, maybe we could pass it a ratio
-> > > (percent is probably not precise enough for some use cases, so we cou=
-ld
-> > > make it per-million).  =
-
-> > =
-
-> > Yeah, something like that would be good. Still for the device drivers I
-> > would use the callback I suggested because that is easier to implement.
-> =
-
-> Sorry, I just joined the discussion and couldn't find the email where
-> you suggested a new driver hook to deal with that. =
-
-
-https://www.spinics.net/lists/linux-pwm/msg09627.html
-
-> > This way the complexity is once in the framework instead of in each
-> > driver.
-> =
-
-> I think we want to make it possible for drivers to do complex
-> adjustments, and that implies passing all info  to the new driver
-> hook. The core can then provide generic helpers for simple use-cases
-> (approximation for static period/duty steps, where no reclocking is
-> involved).
-
-The problem is that it is hard to come up with a formalism to map "all
-info" because there are so many different ways to prefer one
-configuration over another. I believe we won't be able to design a sane
-callback prototype that allows to map all use cases.
-
-Best regards
-Uwe
-
--- =
-
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+-- 
+2.21.0
