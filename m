@@ -1,59 +1,36 @@
-From: Sean Paul <sean@poorly.run>
-Subject: [PATCH v3 10/10] drm/rockchip: Use drm_atomic_helper_commit_tail_rpm
-Date: Thu,  2 May 2019 15:49:52 -0400
-Message-ID: <20190502194956.218441-11-sean@poorly.run>
-References: <20190502194956.218441-1-sean@poorly.run>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/2] drm/panel: simple: Add FriendlyELEC HD702E 800x1280
+ LCD panel
+Date: Thu, 2 May 2019 16:36:05 -0500
+Message-ID: <20190502213605.GA20606@bogus>
+References: <20190501121448.3812-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190502194956.218441-1-sean@poorly.run>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org
-Cc: Zain Wang <wzz@rock-chips.com>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190501121448.3812-1-jagan@amarulasolutions.com>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>, Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+CgpOb3cgdGhhdCB3ZSB1c2Ug
-dGhlIGRybSBwc3IgaGVscGVycywgd2Ugbm8gbG9uZ2VyIG5lZWQgdG8gaGFuZC1yb2xsIG91cgph
-dG9taWNfY29tbWl0X3RhaWwgaW1wbGVtZW50YXRpb24uIFNvIHVzZSB0aGUgaGVscGVyCgpDaGFu
-Z2VzIGluIHYyOgotIE5vbmUKQ2hhbmdlcyBpbiB2MzoKLSBOb25lCgpMaW5rIHRvIHYxOiBodHRw
-czovL3BhdGNod29yay5mcmVlZGVza3RvcC5vcmcvcGF0Y2gvbXNnaWQvMjAxOTAyMjgyMTA5Mzku
-ODMzODYtNi1zZWFuQHBvb3JseS5ydW4KTGluayB0byB2MjogaHR0cHM6Ly9wYXRjaHdvcmsuZnJl
-ZWRlc2t0b3Aub3JnL3BhdGNoL21zZ2lkLzIwMTkwMzI2MjA0NTA5Ljk2NTE1LTUtc2VhbkBwb29y
-bHkucnVuCgpDYzogWmFpbiBXYW5nIDx3enpAcm9jay1jaGlwcy5jb20+CkNjOiBUb21hc3ogRmln
-YSA8dGZpZ2FAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBTZWFuIFBhdWwgPHNlYW5wYXVs
-QGNocm9taXVtLm9yZz4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X2ZiLmMgfCAyMSArLS0tLS0tLS0tLS0tLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2Vy
-dGlvbigrKSwgMjAgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV9mYi5jCmluZGV4IDIxNDA2NGQ1OTllZS4uMWM2M2Q5ZTgzM2JjIDEwMDY0NAotLS0g
-YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jCkBAIC0xMTcsMjcgKzExNyw4IEBA
-IHJvY2tjaGlwX3VzZXJfZmJfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsIHN0cnVjdCBk
-cm1fZmlsZSAqZmlsZV9wcml2LAogCXJldHVybiBFUlJfUFRSKHJldCk7CiB9CiAKLXN0YXRpYyB2
-b2lkCi1yb2NrY2hpcF9hdG9taWNfaGVscGVyX2NvbW1pdF90YWlsX3JwbShzdHJ1Y3QgZHJtX2F0
-b21pY19zdGF0ZSAqb2xkX3N0YXRlKQotewotCXN0cnVjdCBkcm1fZGV2aWNlICpkZXYgPSBvbGRf
-c3RhdGUtPmRldjsKLQotCWRybV9hdG9taWNfaGVscGVyX2NvbW1pdF9tb2Rlc2V0X2Rpc2FibGVz
-KGRldiwgb2xkX3N0YXRlKTsKLQotCWRybV9hdG9taWNfaGVscGVyX2NvbW1pdF9tb2Rlc2V0X2Vu
-YWJsZXMoZGV2LCBvbGRfc3RhdGUpOwotCi0JZHJtX2F0b21pY19oZWxwZXJfY29tbWl0X3BsYW5l
-cyhkZXYsIG9sZF9zdGF0ZSwKLQkJCQkJRFJNX1BMQU5FX0NPTU1JVF9BQ1RJVkVfT05MWSk7Ci0K
-LQlkcm1fYXRvbWljX2hlbHBlcl9jb21taXRfaHdfZG9uZShvbGRfc3RhdGUpOwotCi0JZHJtX2F0
-b21pY19oZWxwZXJfd2FpdF9mb3JfdmJsYW5rcyhkZXYsIG9sZF9zdGF0ZSk7Ci0KLQlkcm1fYXRv
-bWljX2hlbHBlcl9jbGVhbnVwX3BsYW5lcyhkZXYsIG9sZF9zdGF0ZSk7Ci19Ci0KIHN0YXRpYyBj
-b25zdCBzdHJ1Y3QgZHJtX21vZGVfY29uZmlnX2hlbHBlcl9mdW5jcyByb2NrY2hpcF9tb2RlX2Nv
-bmZpZ19oZWxwZXJzID0gewotCS5hdG9taWNfY29tbWl0X3RhaWwgPSByb2NrY2hpcF9hdG9taWNf
-aGVscGVyX2NvbW1pdF90YWlsX3JwbSwKKwkuYXRvbWljX2NvbW1pdF90YWlsID0gZHJtX2F0b21p
-Y19oZWxwZXJfY29tbWl0X3RhaWxfcnBtLAogfTsKIAogc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1f
-bW9kZV9jb25maWdfZnVuY3Mgcm9ja2NoaXBfZHJtX21vZGVfY29uZmlnX2Z1bmNzID0gewotLSAK
-U2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
-aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+On Wed,  1 May 2019 17:44:47 +0530, Jagan Teki wrote:
+> HD702E lcd is FriendlyELEC developed eDP LCD panel with 800x1280
+> resolution. It has built in Goodix, GT9271 captive touchscreen
+> with backlight adjustable via PWM.
+> 
+> Add support for it.
+> 
+> Cc: Thierry Reding <thierry.reding@gmail.com>
+> Cc: Sam Ravnborg <sam@ravnborg.org>
+> Cc: David Airlie <airlied@linux.ie>
+> Cc: Daniel Vetter <daniel@ffwll.ch>
+> Cc: dri-devel@lists.freedesktop.org
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> ---
+>  .../display/panel/friendlyarm,hd702e.txt      | 29 +++++++++++++++++++
+>  drivers/gpu/drm/panel/panel-simple.c          | 26 +++++++++++++++++
+>  2 files changed, 55 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/panel/friendlyarm,hd702e.txt
+> 
+
+Reviewed-by: Rob Herring <robh@kernel.org>
