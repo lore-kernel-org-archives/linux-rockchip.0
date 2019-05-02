@@ -1,199 +1,79 @@
-From: =?UTF-8?q?Ga=C3=ABl=20PORTAY?= <gael.portay@collabora.com>
-Subject: [PATCH v5 3/6] devfreq: rk3399_dmc: Pass ODT and auto power down parameters to TF-A.
-Date: Thu,  2 May 2019 13:58:17 -0400
-Message-ID: <20190502175820.25382-4-gael.portay@collabora.com>
-References: <20190502175820.25382-1-gael.portay@collabora.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 3/5] Documentation: dt-bindings: Add
+ snps,need-phy-for-wake for dwc2 USB
+Date: Thu, 2 May 2019 11:36:01 -0700
+Message-ID: <CAD=FV=XTBgKnnswhfoQH3qWjpbp831e1L1+j+QCjxx2h=aQoog@mail.gmail.com>
+References: <20190418001356.124334-1-dianders@chromium.org>
+ <20190418001356.124334-4-dianders@chromium.org>
+ <87pnpas1fx.fsf@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190502175820.25382-1-gael.portay@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lin Huang <hl@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Derek Basehore <dbasehore@chromium.org>, Randy Li <ayaka@soulik.info>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Mark Rutland <mark.rutland@arm.com>, kernel@collabora.com, =?UTF-8?q?Ga=C3=ABl=20PORTAY?= <gael.portay@collabora.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <87pnpas1fx.fsf-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Amelie Delaunay <amelie.delaunay-qxv4g6HH51o@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chris <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Artur Petrosyan <Arthur.Petrosyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Minas Harutyunyan <hminas-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ryan Case <ryandcase-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Hi,
 
-Trusted Firmware-A (TF-A) for rk3399 implements a SiP call to get the
-on-die termination (ODT) and auto power down parameters from kernel,
-this patch adds the functionality to do this. Also, if DDR clock
-frequency is lower than the on-die termination (ODT) disable frequency
-this driver should disable the DDR ODT.
+On Thu, Apr 25, 2019 at 5:40 AM Felipe Balbi
+<felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org> wrote:
+>
+> Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
+>
+> > Some SoCs with a dwc2 USB controller may need to keep the PHY on to
+> > support remote wakeup.  Allow specifying this as a device tree
+> > property.
+> >
+> > Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> > ---
+> > For relevant prior discussion on this patch, see:
+> >
+> > https://lkml.kernel.org/r/1435017144-2971-3-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+> >
+> > I didn't make any changes from the prior version since I never found
+> > out what Rob thought of my previous arguments.  If folks want a
+> > change, perhaps they could choose from these options:
+> >
+> > 1. Assume that all dwc2 hosts would like to keep their PHY on for
+> >    suspend if there's a USB wakeup enabled, thus we totally drop this
+> >    binding.  This doesn't seem super great to me since I'd bet that
+> >    many devices that use dwc2 weren't designed for USB wakeup (they
+> >    may not keep enough clocks or rails on) so we might be wasting
+> >    power for nothing.
+> > 2. Rename this property to "snps,wakeup-from-suspend-with-phy" to make
+> >    it more obvious that this property is intended both to document
+> >    that wakeup from suspend is possible and that we need the PHY for
+> >    said wakeup.
+> > 3. Rename this property to "snps,can-wakeup-from-suspend" and assume
+> >    it's implicit that if we can wakeup from suspend that we need to
+> >    keep the PHY on.  If/when someone shows that a device exists using
+> >    dwc2 where we can wakeup from suspend without the PHY they can add
+> >    a new property.
+> >
+> > Changes in v2: None
+> >
+> >  Documentation/devicetree/bindings/usb/dwc2.txt | 3 +++
+> >  1 file changed, 3 insertions(+)
+>
+> checking file Documentation/devicetree/bindings/usb/dwc2.txt
+> Hunk #1 FAILED at 37.
+> Hunk #2 succeeded at 52 (offset -1 lines).
+> 1 out of 2 hunks FAILED
 
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Reviewed-by: Chanwoo Choi <cw00.choi@samsung.com>
-Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>
-Acked-by: MyungJoo Ham <myungjoo.ham@samsung.com>
----
+Can you try applying this and the next two patches again?  ...or let
+me know that you'd like me to repost?
 
-Changes in v5: None
+Thanks!
 
-Changes in v4:
-- [PATCH v3 3/5] Add Acked-by: MyungJoo Ham <myungjoo.ham@samsung.com>.
-
-Changes in v3:
-- [PATCH v2 3/5] Add Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>.
-		 Remove comments.
-		 Move pmu dt parsing after dt-parsing of timings to fix
-		  data->odt_dis_freq value.
-
-Changes in v2: None
-
-Changes in v1:
-- [RFC 3/10] Add an explanation for platform SIP calls.
-- [RFC 3/10] Change if statement for a switch.
-- [RFC 3/10] Rename ddr_flag to odt_enable to be more clear.
-
- drivers/devfreq/rk3399_dmc.c        | 71 ++++++++++++++++++++++++++++-
- include/soc/rockchip/rockchip_sip.h |  1 +
- 2 files changed, 71 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
-index e795ad2b3f6b..daf19e121c99 100644
---- a/drivers/devfreq/rk3399_dmc.c
-+++ b/drivers/devfreq/rk3399_dmc.c
-@@ -18,14 +18,17 @@
- #include <linux/devfreq.h>
- #include <linux/devfreq-event.h>
- #include <linux/interrupt.h>
-+#include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/pm_opp.h>
-+#include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
- #include <linux/rwsem.h>
- #include <linux/suspend.h>
- 
-+#include <soc/rockchip/rk3399_grf.h>
- #include <soc/rockchip/rockchip_sip.h>
- 
- struct dram_timing {
-@@ -69,8 +72,11 @@ struct rk3399_dmcfreq {
- 	struct mutex lock;
- 	struct dram_timing timing;
- 	struct regulator *vdd_center;
-+	struct regmap *regmap_pmu;
- 	unsigned long rate, target_rate;
- 	unsigned long volt, target_volt;
-+	unsigned int odt_dis_freq;
-+	int odt_pd_arg0, odt_pd_arg1;
- };
- 
- static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
-@@ -80,6 +86,8 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
- 	struct dev_pm_opp *opp;
- 	unsigned long old_clk_rate = dmcfreq->rate;
- 	unsigned long target_volt, target_rate;
-+	struct arm_smccc_res res;
-+	bool odt_enable = false;
- 	int err;
- 
- 	opp = devfreq_recommended_opp(dev, freq, flags);
-@@ -95,6 +103,19 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
- 
- 	mutex_lock(&dmcfreq->lock);
- 
-+	if (target_rate >= dmcfreq->odt_dis_freq)
-+		odt_enable = true;
-+
-+	/*
-+	 * This makes a SMC call to the TF-A to set the DDR PD (power-down)
-+	 * timings and to enable or disable the ODT (on-die termination)
-+	 * resistors.
-+	 */
-+	arm_smccc_smc(ROCKCHIP_SIP_DRAM_FREQ, dmcfreq->odt_pd_arg0,
-+		      dmcfreq->odt_pd_arg1,
-+		      ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD,
-+		      odt_enable, 0, 0, 0, &res);
-+
- 	/*
- 	 * If frequency scaling from low to high, adjust voltage first.
- 	 * If frequency scaling from high to low, adjust frequency first.
-@@ -294,11 +315,13 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
- {
- 	struct arm_smccc_res res;
- 	struct device *dev = &pdev->dev;
--	struct device_node *np = pdev->dev.of_node;
-+	struct device_node *np = pdev->dev.of_node, *node;
- 	struct rk3399_dmcfreq *data;
- 	int ret, index, size;
- 	uint32_t *timing;
- 	struct dev_pm_opp *opp;
-+	u32 ddr_type;
-+	u32 val;
- 
- 	data = devm_kzalloc(dev, sizeof(struct rk3399_dmcfreq), GFP_KERNEL);
- 	if (!data)
-@@ -354,10 +377,56 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
- 		}
- 	}
- 
-+	node = of_parse_phandle(np, "rockchip,pmu", 0);
-+	if (node) {
-+		data->regmap_pmu = syscon_node_to_regmap(node);
-+		if (IS_ERR(data->regmap_pmu))
-+			return PTR_ERR(data->regmap_pmu);
-+	}
-+
-+	regmap_read(data->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
-+	ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
-+		    RK3399_PMUGRF_DDRTYPE_MASK;
-+
-+	switch (ddr_type) {
-+	case RK3399_PMUGRF_DDRTYPE_DDR3:
-+		data->odt_dis_freq = data->timing.ddr3_odt_dis_freq;
-+		break;
-+	case RK3399_PMUGRF_DDRTYPE_LPDDR3:
-+		data->odt_dis_freq = data->timing.lpddr3_odt_dis_freq;
-+		break;
-+	case RK3399_PMUGRF_DDRTYPE_LPDDR4:
-+		data->odt_dis_freq = data->timing.lpddr4_odt_dis_freq;
-+		break;
-+	default:
-+		return -EINVAL;
-+	};
-+
- 	arm_smccc_smc(ROCKCHIP_SIP_DRAM_FREQ, 0, 0,
- 		      ROCKCHIP_SIP_CONFIG_DRAM_INIT,
- 		      0, 0, 0, 0, &res);
- 
-+	/*
-+	 * In TF-A there is a platform SIP call to set the PD (power-down)
-+	 * timings and to enable or disable the ODT (on-die termination).
-+	 * This call needs three arguments as follows:
-+	 *
-+	 * arg0:
-+	 *     bit[0-7]   : sr_idle
-+	 *     bit[8-15]  : sr_mc_gate_idle
-+	 *     bit[16-31] : standby idle
-+	 * arg1:
-+	 *     bit[0-11]  : pd_idle
-+	 *     bit[16-27] : srpd_lite_idle
-+	 * arg2:
-+	 *     bit[0]     : odt enable
-+	 */
-+	data->odt_pd_arg0 = (data->timing.sr_idle & 0xff) |
-+			    ((data->timing.sr_mc_gate_idle & 0xff) << 8) |
-+			    ((data->timing.standby_idle & 0xffff) << 16);
-+	data->odt_pd_arg1 = (data->timing.pd_idle & 0xfff) |
-+			    ((data->timing.srpd_lite_idle & 0xfff) << 16);
-+
- 	/*
- 	 * We add a devfreq driver to our parent since it has a device tree node
- 	 * with operating points.
-diff --git a/include/soc/rockchip/rockchip_sip.h b/include/soc/rockchip/rockchip_sip.h
-index 7e28092c4d3d..ad9482c56797 100644
---- a/include/soc/rockchip/rockchip_sip.h
-+++ b/include/soc/rockchip/rockchip_sip.h
-@@ -23,5 +23,6 @@
- #define ROCKCHIP_SIP_CONFIG_DRAM_GET_RATE	0x05
- #define ROCKCHIP_SIP_CONFIG_DRAM_CLR_IRQ	0x06
- #define ROCKCHIP_SIP_CONFIG_DRAM_SET_PARAM	0x07
-+#define ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD	0x08
- 
- #endif
--- 
-2.21.0
+-Doug
