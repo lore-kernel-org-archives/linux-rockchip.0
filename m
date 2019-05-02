@@ -1,75 +1,99 @@
 From: Sean Paul <sean@poorly.run>
-Subject: [PATCH v3 06/10] drm/rockchip: Use dirtyfb helper
-Date: Thu,  2 May 2019 15:49:48 -0400
-Message-ID: <20190502194956.218441-7-sean@poorly.run>
+Subject: [PATCH v3 09/10] drm/rockchip: Don't fully disable vop on self refresh
+Date: Thu,  2 May 2019 15:49:51 -0400
+Message-ID: <20190502194956.218441-10-sean@poorly.run>
 References: <20190502194956.218441-1-sean@poorly.run>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20190502194956.218441-1-sean@poorly.run>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: dri-devel@lists.freedesktop.org
-Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, linux-arm-kernel@lists.infradead.org
+Cc: Zain Wang <wzz@rock-chips.com>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, "Kristian H . Kristensen" <hoegsberg@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Sean Paul <seanpaul@chromium.org>
-
-Instead of flushing all vops every time we get a dirtyfb call, use the
-damage helper to kick off an atomic commit. Even though we don't use
-damage clips, the helper commit will force us through the normal
-psr_inhibit_get/put sequence.
-
-Changes in v3:
-- Added to the set
-
-Suggested-by: Daniel Vetter <daniel@ffwll.ch>
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
----
- drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 13 ++-----------
- 1 file changed, 2 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-index 97438bbbe389..02e81ca2d933 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-@@ -16,6 +16,7 @@
- #include <drm/drm.h>
- #include <drm/drmP.h>
- #include <drm/drm_atomic.h>
-+#include <drm/drm_damage_helper.h>
- #include <drm/drm_fb_helper.h>
- #include <drm/drm_gem_framebuffer_helper.h>
- #include <drm/drm_probe_helper.h>
-@@ -25,20 +26,10 @@
- #include "rockchip_drm_gem.h"
- #include "rockchip_drm_psr.h"
- 
--static int rockchip_drm_fb_dirty(struct drm_framebuffer *fb,
--				 struct drm_file *file,
--				 unsigned int flags, unsigned int color,
--				 struct drm_clip_rect *clips,
--				 unsigned int num_clips)
--{
--	rockchip_drm_psr_flush_all(fb->dev);
--	return 0;
--}
--
- static const struct drm_framebuffer_funcs rockchip_drm_fb_funcs = {
- 	.destroy       = drm_gem_fb_destroy,
- 	.create_handle = drm_gem_fb_create_handle,
--	.dirty	       = rockchip_drm_fb_dirty,
-+	.dirty	       = drm_atomic_helper_dirtyfb,
- };
- 
- static struct drm_framebuffer *
--- 
-Sean Paul, Software Engineer, Google / Chromium OS
+RnJvbTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+CgpJbnN0ZWFkIG9mIGZ1bGx5
+IGRpc2FibGluZyBhbmQgcmUtZW5hYmxpbmcgdGhlIHZvcCBvbiBzZWxmIHJlZnJlc2gKdHJhbnNp
+dGlvbnMsIG9ubHkgZGlzYWJsZSB0aGUgYWN0aXZlIHdpbmRvd3MuIFRoaXMgd2lsbCBzcGVlZCB1
+cApzZWxmIHJlZnJlc2ggZXhpdHMgc3Vic3RhbnRpYWxseSBhbmQgaXMgc3RpbGwgYSBwb3dlci1z
+YXZpbmdzIHdpbi4KClRoaXMgcGF0Y2ggaW50ZWdyYXRlcyBwb3J0aW9ucyBvZiBaYWluJ3MgcGF0
+Y2ggZnJvbSBoZXJlOgpodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzk2MTUwNjMv
+CgpDaGFuZ2VzIGluIHYyOgotIE5vbmUKQ2hhbmdlcyBpbiB2MzoKLSBOb25lCgpMaW5rIHRvIHYx
+OiBodHRwczovL3BhdGNod29yay5mcmVlZGVza3RvcC5vcmcvcGF0Y2gvbXNnaWQvMjAxOTAyMjgy
+MTA5MzkuODMzODYtNS1zZWFuQHBvb3JseS5ydW4KTGluayB0byB2MjogaHR0cHM6Ly9wYXRjaHdv
+cmsuZnJlZWRlc2t0b3Aub3JnL3BhdGNoL21zZ2lkLzIwMTkwMzI2MjA0NTA5Ljk2NTE1LTQtc2Vh
+bkBwb29ybHkucnVuCgpDYzogWmFpbiBXYW5nIDx3enpAcm9jay1jaGlwcy5jb20+CkNjOiBUb21h
+c3ogRmlnYSA8dGZpZ2FAY2hyb21pdW0ub3JnPgpDYzogS3Jpc3RpYW4gSC4gS3Jpc3RlbnNlbiA8
+aG9lZ3NiZXJnQGNocm9taXVtLm9yZz4KU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxzZWFucGF1
+bEBjaHJvbWl1bS5vcmc+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
+bV92b3AuYyB8IDM4ICsrKysrKysrKysrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDM4IGlu
+c2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
+YwppbmRleCA0NWEzOGEzMzI4MjcuLmQxNzFkOTA0MThjOCAxMDA2NDQKLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYworKysgYi9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCkBAIC0xMzQsNiArMTM0LDcgQEAgc3RydWN0IHZv
+cCB7CiAJYm9vbCBpc19lbmFibGVkOwogCiAJc3RydWN0IGNvbXBsZXRpb24gZHNwX2hvbGRfY29t
+cGxldGlvbjsKKwl1bnNpZ25lZCBpbnQgd2luX2VuYWJsZWQ7CiAKIAkvKiBwcm90ZWN0ZWQgYnkg
+ZGV2LT5ldmVudF9sb2NrICovCiAJc3RydWN0IGRybV9wZW5kaW5nX3ZibGFua19ldmVudCAqZXZl
+bnQ7CkBAIC01OTQsNiArNTk1LDcgQEAgc3RhdGljIGludCB2b3BfZW5hYmxlKHN0cnVjdCBkcm1f
+Y3J0YyAqY3J0Yywgc3RydWN0IGRybV9jcnRjX3N0YXRlICpvbGRfc3RhdGUpCiAJCQljb25zdCBz
+dHJ1Y3Qgdm9wX3dpbl9kYXRhICp3aW4gPSB2b3Bfd2luLT5kYXRhOwogCiAJCQlWT1BfV0lOX1NF
+VCh2b3AsIHdpbiwgZW5hYmxlLCAwKTsKKwkJCXZvcC0+d2luX2VuYWJsZWQgJj0gfkJJVChpKTsK
+IAkJfQogCX0KIAlzcGluX3VubG9jaygmdm9wLT5yZWdfbG9jayk7CkBAIC02MjQsNiArNjI2LDI1
+IEBAIHN0YXRpYyBpbnQgdm9wX2VuYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMsIHN0cnVjdCBk
+cm1fY3J0Y19zdGF0ZSAqb2xkX3N0YXRlKQogCXJldHVybiByZXQ7CiB9CiAKK3N0YXRpYyB2b2lk
+IHJvY2tjaGlwX2RybV9zZXRfd2luX2VuYWJsZWQoc3RydWN0IGRybV9jcnRjICpjcnRjLCBib29s
+IGVuYWJsZWQpCit7CisgICAgICAgIHN0cnVjdCB2b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsKKyAg
+ICAgICAgaW50IGk7CisKKyAgICAgICAgc3Bpbl9sb2NrKCZ2b3AtPnJlZ19sb2NrKTsKKworICAg
+ICAgICBmb3IgKGkgPSAwOyBpIDwgdm9wLT5kYXRhLT53aW5fc2l6ZTsgaSsrKSB7CisgICAgICAg
+ICAgICAgICAgc3RydWN0IHZvcF93aW4gKnZvcF93aW4gPSAmdm9wLT53aW5baV07CisgICAgICAg
+ICAgICAgICAgY29uc3Qgc3RydWN0IHZvcF93aW5fZGF0YSAqd2luID0gdm9wX3dpbi0+ZGF0YTsK
+KworICAgICAgICAgICAgICAgIFZPUF9XSU5fU0VUKHZvcCwgd2luLCBlbmFibGUsCisgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgZW5hYmxlZCAmJiAodm9wLT53aW5fZW5hYmxlZCAmIEJJVChp
+KSkpOworICAgICAgICB9CisgICAgICAgIHZvcF9jZmdfZG9uZSh2b3ApOworCisgICAgICAgIHNw
+aW5fdW5sb2NrKCZ2b3AtPnJlZ19sb2NrKTsKK30KKwogc3RhdGljIHZvaWQgdm9wX2NydGNfYXRv
+bWljX2Rpc2FibGUoc3RydWN0IGRybV9jcnRjICpjcnRjLAogCQkJCSAgICBzdHJ1Y3QgZHJtX2Ny
+dGNfc3RhdGUgKm9sZF9zdGF0ZSkKIHsKQEAgLTYzMSw5ICs2NTIsMTUgQEAgc3RhdGljIHZvaWQg
+dm9wX2NydGNfYXRvbWljX2Rpc2FibGUoc3RydWN0IGRybV9jcnRjICpjcnRjLAogCiAJV0FSTl9P
+Tih2b3AtPmV2ZW50KTsKIAorCWlmIChjcnRjLT5zdGF0ZS0+c2VsZl9yZWZyZXNoX2FjdGl2ZSkK
+KwkJcm9ja2NoaXBfZHJtX3NldF93aW5fZW5hYmxlZChjcnRjLCBmYWxzZSk7CisKIAltdXRleF9s
+b2NrKCZ2b3AtPnZvcF9sb2NrKTsKIAlkcm1fY3J0Y192Ymxhbmtfb2ZmKGNydGMpOwogCisJaWYg
+KGNydGMtPnN0YXRlLT5zZWxmX3JlZnJlc2hfYWN0aXZlKQorCQlnb3RvIG91dDsKKwogCS8qCiAJ
+ICogVm9wIHN0YW5kYnkgd2lsbCB0YWtlIGVmZmVjdCBhdCBlbmQgb2YgY3VycmVudCBmcmFtZSwK
+IAkgKiBpZiBkc3AgaG9sZCB2YWxpZCBpcnEgaGFwcGVuLCBpdCBtZWFucyBzdGFuZGJ5IGNvbXBs
+ZXRlLgpAQCAtNjY0LDYgKzY5MSw4IEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRjX2F0b21pY19kaXNh
+YmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKIAljbGtfZGlzYWJsZSh2b3AtPmRjbGspOwogCXZv
+cF9jb3JlX2Nsa3NfZGlzYWJsZSh2b3ApOwogCXBtX3J1bnRpbWVfcHV0KHZvcC0+ZGV2KTsKKwor
+b3V0OgogCW11dGV4X3VubG9jaygmdm9wLT52b3BfbG9jayk7CiAKIAlpZiAoY3J0Yy0+c3RhdGUt
+PmV2ZW50ICYmICFjcnRjLT5zdGF0ZS0+YWN0aXZlKSB7CkBAIC03NDQsNiArNzczLDcgQEAgc3Rh
+dGljIHZvaWQgdm9wX3BsYW5lX2F0b21pY19kaXNhYmxlKHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5l
+LAogCXNwaW5fbG9jaygmdm9wLT5yZWdfbG9jayk7CiAKIAlWT1BfV0lOX1NFVCh2b3AsIHdpbiwg
+ZW5hYmxlLCAwKTsKKwl2b3AtPndpbl9lbmFibGVkICY9IH5CSVQoVk9QX1dJTl9UT19JTkRFWCh2
+b3Bfd2luKSk7CiAKIAlzcGluX3VubG9jaygmdm9wLT5yZWdfbG9jayk7CiB9CkBAIC04ODIsNiAr
+OTEyLDcgQEAgc3RhdGljIHZvaWQgdm9wX3BsYW5lX2F0b21pY191cGRhdGUoc3RydWN0IGRybV9w
+bGFuZSAqcGxhbmUsCiAJfQogCiAJVk9QX1dJTl9TRVQodm9wLCB3aW4sIGVuYWJsZSwgMSk7CisJ
+dm9wLT53aW5fZW5hYmxlZCB8PSBCSVQod2luX2luZGV4KTsKIAlzcGluX3VubG9jaygmdm9wLT5y
+ZWdfbG9jayk7CiB9CiAKQEAgLTEwMzgsNiArMTA2OSwxMiBAQCBzdGF0aWMgdm9pZCB2b3BfY3J0
+Y19hdG9taWNfZW5hYmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKIAlpbnQgZGl0aGVyX2JwYyA9
+IHMtPm91dHB1dF9icGMgPyBzLT5vdXRwdXRfYnBjIDogMTA7CiAJaW50IHJldDsKIAorCWlmIChv
+bGRfc3RhdGUgJiYgb2xkX3N0YXRlLT5zZWxmX3JlZnJlc2hfYWN0aXZlKSB7CisJCWRybV9jcnRj
+X3ZibGFua19vbihjcnRjKTsKKwkJcm9ja2NoaXBfZHJtX3NldF93aW5fZW5hYmxlZChjcnRjLCB0
+cnVlKTsKKwkJcmV0dXJuOworCX0KKwogCW11dGV4X2xvY2soJnZvcC0+dm9wX2xvY2spOwogCiAJ
+V0FSTl9PTih2b3AtPmV2ZW50KTsKQEAgLTE2NDgsNiArMTY4NSw3IEBAIHN0YXRpYyBpbnQgdm9w
+X2luaXRpYWwoc3RydWN0IHZvcCAqdm9wKQogCQlWT1BfV0lOX1NFVCh2b3AsIHdpbiwgY2hhbm5l
+bCwgKGNoYW5uZWwgKyAxKSA8PCA0IHwgY2hhbm5lbCk7CiAJCVZPUF9XSU5fU0VUKHZvcCwgd2lu
+LCBlbmFibGUsIDApOwogCQlWT1BfV0lOX1NFVCh2b3AsIHdpbiwgZ2F0ZSwgMSk7CisJCXZvcC0+
+d2luX2VuYWJsZWQgJj0gfkJJVChpKTsKIAl9CiAKIAl2b3BfY2ZnX2RvbmUodm9wKTsKLS0gClNl
+YW4gUGF1bCwgU29mdHdhcmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
+ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
+ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
