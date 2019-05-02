@@ -1,133 +1,80 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 1/5] usb: dwc2: bus suspend/resume for hosts with DWC2_POWER_DOWN_PARAM_NONE
-Date: Wed, 1 May 2019 16:58:21 -0700
-Message-ID: <CAD=FV=UGjQz9Di=NL_r_g1Hofqv-FWBywfSm9Vu6gGr22wzPrA@mail.gmail.com>
-References: <20190418001356.124334-1-dianders@chromium.org> <20190418001356.124334-2-dianders@chromium.org>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [PATCH v2 1/3] pwm: rockchip: Don't update the state for the
+ caller of pwm_apply_state()
+Date: Thu, 2 May 2019 08:48:11 +0200
+Message-ID: <20190502064811.p7hbsf5rxu2lrmmf@pengutronix.de>
+References: <20190312214605.10223-1-u.kleine-koenig@pengutronix.de>
+ <20190312214605.10223-2-u.kleine-koenig@pengutronix.de>
+ <1707507.TOMHpQGrZ7@phil>
+ <CAD=FV=WZHouhGcxOgNG3006XajJQaAp0uq9WjeKRikQx1ru4TA@mail.gmail.com>
+ <20190408143914.uucb5dwafq3cnsmk@pengutronix.de>
+ <CA+ASDXO=szekU97iTDK9vqWjT+JtAKeCNTyoY=8aSi5d+v4mkA@mail.gmail.com>
+ <20190429065613.n52uwgys5eugmssd@pengutronix.de>
+ <CAD=FV=U71u39ZHkBBfAXVAP=_hY-bAw3L7JdhC=36jkUVxPOmQ@mail.gmail.com>
+ <20190430092824.ijtq3gfh6mqujvnk@pengutronix.de>
+ <CAD=FV=WUi0NbsRDJA_4WeC62QYXjLNH2OygU1FOCx==W0SyqpQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190418001356.124334-2-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Minas Harutyunyan <hminas@synopsys.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Artur Petrosyan <Arthur.Petrosyan@synopsys.com>
-Cc: Alan Stern <stern@rowland.harvard.edu>, Alexandru M Stan <amstan@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, William Wu <william.wu@rock-chips.com>, linux-usb@vger.kernel.org, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, Chris <zyw@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, Amelie Delaunay <amelie.delaunay@st.com>, Julius Werner <jwerner@chromium.org>, Dinh Nguyen <dinguyen@opensource.altera.com>, Elaine Zhang <zhangqing@rock-chips.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=WUi0NbsRDJA_4WeC62QYXjLNH2OygU1FOCx==W0SyqpQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hello Doug,
 
+On Tue, Apr 30, 2019 at 07:38:09AM -0700, Doug Anderson wrote:
+> On Tue, Apr 30, 2019 at 2:28 AM Uwe Kleine-K=F6nig
+> <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
+> >
+> > > > Also it should be possible to know the result before actually
+> > > > configuring the hardware. Otherwise things might already go wrong
+> > > > because the driver implements a setting that is too far from the
+> > > > requested configuration.
+> > >
+> > > Later in this thread Thierry didn't like the "round rate" idea due to
+> > > races.  One way to solve that could be to indicate to the PWM
+> > > framework which direction you'd like it to error in: a higher duty
+> > > cycle or a lower one.
+> >
+> > I don't think this would result in settings as optimal as with my
+> > suggestion. If you don't agree and want to convince me: Show how your
+> > suggestion would work with a PWM that can implement only multiples of 3
+> > for duty_cycle and period and you want 20% duty cycle with period <=3D 1
+> > ms (without making use of the knowledge about the limitation of the
+> > PWM in the algorithm).
+> =
 
-On Wed, Apr 17, 2019 at 5:15 PM Douglas Anderson <dianders@chromium.org> wrote:
->
-> This is an attempt to rehash commit 0cf884e819e0 ("usb: dwc2: add bus
-> suspend/resume for dwc2") on ToT.  That commit was reverted in commit
-> b0bb9bb6ce01 ("Revert "usb: dwc2: add bus suspend/resume for dwc2"")
-> because apparently it broke the Altera SOCFPGA.
->
-> With all the changes that have happened to dwc2 in the meantime, it's
-> possible that the Altera SOCFPGA will just magically work with this
-> change now.  ...and it would be good to get bus suspend/resume
-> implemented.
->
-> This change is a forward port of one that's been living in the Chrome
-> OS 3.14 kernel tree.
->
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> This patch was last posted at:
->
-> https://lkml.kernel.org/r/1446237173-15263-1-git-send-email-dianders@chromium.org
->
-> ...and appears to have died the death of silence.  Maybe it could get
-> some bake time in linuxnext if we can't find any proactive testing?
->
-> I will also freely admit that I don't know tons about the theory
-> behind this patch.  I'm mostly just re-hashing the original commit
-> from Kever that was reverted since:
-> * Turning on partial power down on rk3288 doesn't "just work".  I
->   don't get hotplug events.  This is despite dwc2 auto-detecting that
->   we are power optimized.
-> * If we don't do something like this commit we don't get into as low
->   of a power mode.
+> I guess I was assuming that somehow this would percolate down into an
+> API call that the PWM driver would implement, so you could make use of
+> the PWM knowledge in the algorithm.
 
-OK, I spent the day digging more into this patch to confirm that it's
-really the right thing to do.  ...and it still seems to be.
+As there are so many different possibilities what could be "best" for a
+consumer use case, I believe that it would end in a maintenance
+mess if each lowlevel driver would need a callback to implement each
+rounding strategy.
+ =
 
-First off: I'm pretty sure the above sentence "If we don't do
-something like this commit we don't get into as low of a power mode."
-is totally wrong.  Luckily it's "after the cut" and not part of the
-commit message.  Specifically I did a bunch of power testing and I
-couldn't find any instance saving power after this patch.
+> ...but I don't have any real strong feelings about this API so I'll
+> leave it to you and Thierry to hash out what makes you both happy.
 
-...but, then I looked more carefully at all the history of this
-commit.  I ended up at:
+I look forward to us two agreeing on a best approach ... :-)
 
-https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/306265/
+Best regards
+Uwe
 
-...where I said that this fixes a resume speed regression.  More
-details could be found at the linked bug, AKA:
+-- =
 
-https://bugs.chromium.org/p/chromium/issues/detail?id=548336
-
-...but, sadly, I wasn't as verbose as I usually am and didn't describe
-my exact testing setup.  So I tried to reproduce.  ...and I was able
-to.  I tested on an rk3288-veyron-jerry with an empty USB hub plugged
-into the left port (the host port) and my "servo 2" debug board hooked
-up to the right port.  The "power_Resume" test in Chrome OS certainly
-showed a regression in 3.14 when doing a suspend/resume cycle.
-
-
-Digging into the logs in 3.14, before this patch I saw this in the logs:
-
-usb 3-1: reset high-speed USB device number 2 using dwc2
-usb 3-1.7: reset high-speed USB device number 3 using dwc2
-
-...after this patch:
-
-usb 3-1: USB disconnect, device number 2
-usb 3-1.7: USB disconnect, device number 3
-usb 3-1: new high-speed USB device number 4 using dwc2
-usb 3-1: New USB device found, idVendor=1a40, idProduct=0201, bcdDevice= 1.00
-usb 3-1: New USB device strings: Mfr=0, Product=1, SerialNumber=0
-usb 3-1: Product: USB 2.0 Hub [MTT]
-usb 3-1.7: new high-speed USB device number 5 using dwc2
-usb 3-1.7: New USB device found, idVendor=1a40, idProduct=0101, bcdDevice= 1.11
-usb 3-1.7: New USB device strings: Mfr=0, Product=1, SerialNumber=0
-usb 3-1.7: Product: USB 2.0 Hub
-
-...so basically my belief is that without this patch we're just sorta
-leaving the device hanging and it get confused on resume.  After this
-patch we behave slightly better.
-
-I tested on 4.19 and found much the same.  There:
-
-usb 2-1: reset high-speed USB device number 2 using dwc2
-usb 2-1.7: reset high-speed USB device number 3 using dwc2
-
-vs.
-
-usb 2-1.7: USB disconnect, device number 3
-usb 2-1: USB disconnect, device number 2
-usb 2-1: new high-speed USB device number 4 using dwc2
-usb 2-1: New USB device found, idVendor=1a40, idProduct=0201, bcdDevice= 1.00
-usb 2-1: New USB device strings: Mfr=0, Product=1, SerialNumber=0
-usb 2-1: Product: USB 2.0 Hub [MTT]
-usb 2-1.7: new high-speed USB device number 5 using dwc2
-usb 2-1.7: New USB device found, idVendor=1a40, idProduct=0101, bcdDevice= 1.11
-usb 2-1.7: New USB device strings: Mfr=0, Product=1, SerialNumber=0
-usb 2-1.7: Product: USB 2.0 Hub
-
-
-On 4.19 I didn't actually notice a the same resume time regression,
-presumably because things are happening more asynchronously there (I
-didn't confirm this).  ...but in any case it seems like the right
-thing to do to actually do the suspend.
-
-
-I'll also re-iterate once more that I'm not claiming that my patch
-helps with "partial power down".  It merely makes the "power savings
-disabled" case work more properly.
-
-
-I'll also note that my patch is already in Felipe's "testing/next"
-branch which I continue to believe is correct and good.
-
--Doug
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
