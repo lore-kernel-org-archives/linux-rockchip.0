@@ -1,11 +1,13 @@
 From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v5 00/15] Add MPEG-2 decoding to Rockchip VPU
-Date: Fri,  3 May 2019 13:47:04 +0200
-Message-ID: <20190503114719.28784-1-boris.brezillon@collabora.com>
+Subject: [PATCH v5 14/15] rockchip/vpu: Add MPEG2 decoding support to RK3399
+Date: Fri,  3 May 2019 13:47:18 +0200
+Message-ID: <20190503114719.28784-15-boris.brezillon@collabora.com>
+References: <20190503114719.28784-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190503114719.28784-1-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,110 +21,421 @@ To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Han
 Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhpcyBzZXJpZXMgaW50cm9kdWNlcyB0aGUgZGVjb2RpbmcgaW5mcmFzdHJ1Y3R1cmUgdGhhdCB3
-aWxsIGJlCnVzZWQgdG8gYWRkIHN1cHBvcnQgZm9yIG90aGVyIGNvZGVjcyBzdWNoIGFzIFZQOCwg
-VlA5IGFuZCBILjI2NC4KCkFzIGV4cGxhaW5lZCBpbiB0aGUgY292ZXIgbGV0dGVyIGZvciB0aGUg
-djEgcGF0Y2hzZXQsCnRoZSBkcml2ZXIgaXMgbm93IGV4cG9zaW5nIHR3byB2aWRlbyBkZXZpY2Ug
-bm9kZXMuClRoZSBWUFUgZW5jb2RlciBpcyBleHBvc2VkIG9uIC9kZXYvdmlkZW8wLCBhbmQgdGhl
-IFZQVSBkZWNvZGVyCmlzIGV4cG9zZWQgb24gL2Rldi92aWRlbzEuIEJvdGggZGV2aWNlcyBhcmUg
-dGllZCB0byB0aGUgc2FtZQptZW1vcnktdG8tbWVtb3J5IHF1ZXVlLCBhbmQgc2FtZSBtZWRpYSBk
-ZXZpY2UgL2Rldi9tZWRpYTAuCgpUaGVyZWZvcmUgdGhlcmUgYXJlIHR3byBtZWRpYSBncmFwaHM6
-CgrilIzilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
-lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJAK4pSCIHJvY2tj
-aGlwLHJrMzM5OS12cHUtZW5jLXNvdXJjZSDilIIK4pSCICAgICAgICAgIC9kZXYvdmlkZW8wICAg
-ICAgICAgICDilIIK4pSU4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
-4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSY
-CiAg4pSDCiAg4pSDCiAg4pa8CuKUjOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
-gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
-gOKUgOKUkArilIIgIHJvY2tjaGlwLHJrMzM5OS12cHUtZW5jLXByb2MgIOKUggrilJTilIDilIDi
-lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
-lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJgKICDilIMKICDilIMKICDilrwK4pSM
-4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
-4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSQCuKUgiAgcm9ja2NoaXAs
-cmszMzk5LXZwdS1lbmMtc2luayAg4pSCCuKUgiAgICAgICAgICAvZGV2L3ZpZGVvMCAgICAgICAg
-ICAg4pSCCuKUlOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
-gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUmAoK4pSM
-4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
-4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSQCuKUgiByb2NrY2hpcCxy
-azMzOTktdnB1LWRlYy1zb3VyY2Ug4pSCCuKUgiAgICAgICAgICAvZGV2L3ZpZGVvMSAgICAgICAg
-ICAg4pSCCuKUlOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
-gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUmAogIOKU
-gwogIOKUgwogIOKWvArilIzilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
-lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
-lJAK4pSCICByb2NrY2hpcCxyazMzOTktdnB1LWRlYy1wcm9jICDilIIK4pSU4pSA4pSA4pSA4pSA
-4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
-4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSYCiAg4pSDCiAg4pSDCiAg4pa8CuKUjOKUgOKU
-gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
-gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUkArilIIgIHJvY2tjaGlwLHJrMzM5
-OS12cHUtZGVjLXNpbmsgIOKUggrilIIgICAgICAgICAgL2Rldi92aWRlbzEgICAgICAgICAgIOKU
-ggrilJTilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
-lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJgKCk9mIGNvdXJz
-ZSwgdGhpcyB3b3JrIGhhcyBiZWVuIHBvc3NpYmxlIHRoYW5rcyB0byBKb25hcyBLYXJsbWFuLCB3
-aG8gZGlkCnRoZSBpbml0aWFsIE1QRUctMiBkZWNvZGluZyB3b3JrIGFuZCBhbHNvIGdvdCBtcHYr
-ZmZtcGVnIHdvcmtpbmcgdXNpbmcKdGhlIFJlcXVlc3QgQVBJLgoKUmVnYXJkcywKCkJvcmlzCgp2
-NToKICogQWRkIGhlbHBlciB0byBjbGFtcCBoZWlnaHQvd2lkdGggYmFzZWQgb24gZnJtc2l6ZQog
-KiBNb2RpZnkgZmlsbF9mbXQoKSBoZWxwZXJzIHRvIGtlZXAgdXNlci1kZWZpbmVkIHNpemVpbWFn
-ZS9ieXRlc3BlcmxpbmUKICAgd2hlbiB0aGV5J3JlIGJpZyBlbm91Z2gKICogRml4ZWQgYSBidW5j
-aCBvZiBwcm9ibGVtcyByZXBvcnRlZCBieSBIYW5zIChzZWUgcGVyLXBhdGNoIGNoYW5nZWxvZwog
-ICBmb3IgbW9yZSBkZXRhaWxzKQoKdjQ6CiAqIEZpeCBpc3N1ZXMgaW4gdGhlIHByb2JlL3JlbW92
-ZSBwYXRoIHByZXZlbnRpbmcgdGhlIGRyaXZlciBmcm9tIGJlaW5nCiAgIHVubG9hZGVkL3JlbG9h
-ZGVkIChKb25hcykKICogUmV3b3JrIHRoZSBtZWRpYSBjb250cm9sbGVyIHJlZ2lzdHJhdGlvbiBj
-b2RlIHRvIHNpbXBsaWZ5IHRoZQogICBlcnJvci9yZW1vdmUgcGF0aCAoQm9yaXMpCiAqIFNwbGl0
-IHRoZSBNUEVHMiBwYXRjaGVzIChvbmUgYWRkaW5nIHRoZSBnZW5lcmljIGNvZGUgYW5kIG9uZSBw
-YXRjaAogICBwZXIgcGxhdGZvcm0pCgp2MzoKICAqIFNoYXJlIG1vcmUgY29kZSBiZXR3ZWVuIHRo
-ZSBlbmNvZGVyL2RlY29kZXIgbG9naWMgKFZCMi9WNEwyCiAgICBpbnRlcmZhY2UgaW1wbGVtZW50
-YXRpb24pCiAgKiBBZGQgYSBwYXRjaCB0byBzdXBwb3J0IE1QRUcyIGRlY29kaW5nIG9uIFJLMzI4
-OCAoSm9uYXMpCiAgKiBTZXZlcmFsIGZpeGVzL2ltcHJvdmVtZW50cyBhbGwgb3ZlciB0aGUgcGxh
-Y2UgKHNlZSBjaGFuZ2Vsb2cKICAgIGluIGVhY2ggcGF0Y2ggZm9yIG1vcmUgZGV0YWlscykKCnYy
-OgogICogRml4ZWQgc29tZSBtaW5vciBpc3N1ZXMgYnJvdWdodCB1cCBieSB2NGwyLWNvbXBsaWFu
-Y2UuCiAgKiBGaXhlZCBieXRlc3VzZWQgd3JvbmdseSBhc3NpZ25lZCAwIG9uIHRoZSBNUEVHLTIg
-ZGVjb2Rlci4KICAqIEFkZHJlc3NlZCBjb21tZW50cyBmcm9tIEhhbnMgYW5kIFRvbWFzeiBvbiB0
-aGUgcGl4ZWwgZm9ybWF0CiAgICBoZWxwZXJzLgoKQm9yaXMgQnJlemlsbG9uICg4KToKICBtZWRp
-YTogdjRsMi1jb21tb246IEZpeCB2NGwyX2ZpbGxfcGl4Zm10W19tcF0oKSBwcm90b3R5cGVzCiAg
-bWVkaWE6IHY0bDItY29tbW9uOiBBZGQgYW4gaGVscGVyIHRvIGFwcGx5IGZybXNpemUgY29uc3Ry
-YWludHMKICBtZWRpYTogdjRsMi1jb21tb246IFN1cHBvcnQgY3VzdG9tIGltYWdlc2l6ZS9ieXRl
-c3BlcmxpbmUgaW4KICAgIGZpbGxfcGl4Zm10KCkKICByb2NrY2hpcC92cHU6IFVzZSB2NGwyX2Fw
-cGx5X2ZybXNpemVfY29uc3RyYWludHMoKSB3aGVyZSBhcHByb3ByaWF0ZQogIHJvY2tjaGlwL3Zw
-dTogUmVuYW1lIHJvY2tjaGlwX3ZwdV9jb21tb24uaCBpbnRvIHJvY2tjaGlwX3ZwdV92NGwyLmgK
-ICByb2NrY2hpcC92cHU6IE1vdmUgZW5jb2RlciBsb2dpYyB0byBhIGNvbW1vbiBwbGFjZQogIHJv
-Y2tjaGlwL3ZwdTogUHJvdmlkZSBhIGhlbHBlciB0byByZXNldCBib3RoIHNyYyBhbmQgZHN0IGZv
-cm1hdHMKICByb2NrY2hpcC92cHU6IFByZXBhcmUgdGhpbmdzIHRvIHN1cHBvcnQgZGVjb2RlcnMK
-CkV6ZXF1aWVsIEdhcmNpYSAoNCk6CiAgcm9ja2NoaXAvdnB1OiBPcGVuLWNvZGUgbWVkaWEgY29u
-dHJvbGxlciByZWdpc3RlcgogIHJvY2tjaGlwL3ZwdTogU3VwcG9ydCB0aGUgUmVxdWVzdCBBUEkK
-ICByb2NrY2hpcC92cHU6IEFkZCBkZWNvZGVyIGJvaWxlcnBsYXRlCiAgcm9ja2NoaXAvdnB1OiBB
-ZGQgc3VwcG9ydCBmb3Igbm9uLXN0YW5kYXJkIGNvbnRyb2xzCgpKb25hcyBLYXJsbWFuICgzKToK
-ICByb2NrY2hpcC92cHU6IEFkZCBpbmZyYSB0byBzdXBwb3J0IE1QRUctMiBkZWNvZGluZwogIHJv
-Y2tjaGlwL3ZwdTogQWRkIE1QRUcyIGRlY29kaW5nIHN1cHBvcnQgdG8gUkszMzk5CiAgcm9ja2No
-aXAvdnB1OiBBZGQgc3VwcG9ydCBmb3IgTVBFRy0yIGRlY29kaW5nIG9uIFJLMzI4OAoKIGRyaXZl
-cnMvbWVkaWEvdjRsMi1jb3JlL3Y0bDItY29tbW9uLmMgICAgICAgICB8ICA4NiArKy0KIGRyaXZl
-cnMvc3RhZ2luZy9tZWRpYS9yb2NrY2hpcC92cHUvS2NvbmZpZyAgICB8ICAgMSArCiBkcml2ZXJz
-L3N0YWdpbmcvbWVkaWEvcm9ja2NoaXAvdnB1L01ha2VmaWxlICAgfCAgIDcgKy0KIC4uLi9tZWRp
-YS9yb2NrY2hpcC92cHUvcmszMjg4X3ZwdV9ody5jICAgICAgICB8ICA1OSArLQogLi4uL3JvY2tj
-aGlwL3ZwdS9yazMyODhfdnB1X2h3X2pwZWdfZW5jLmMgICAgIHwgICAyICstCiAuLi4vcm9ja2No
-aXAvdnB1L3JrMzI4OF92cHVfaHdfbXBlZzJfZGVjLmMgICAgfCAyNjEgKysrKysrKwogLi4uL21l
-ZGlhL3JvY2tjaGlwL3ZwdS9yazMyODhfdnB1X3JlZ3MuaCAgICAgIHwgICAxICsKIC4uLi9tZWRp
-YS9yb2NrY2hpcC92cHUvcmszMzk5X3ZwdV9ody5jICAgICAgICB8ICA1OSArLQogLi4uL3JvY2tj
-aGlwL3ZwdS9yazMzOTlfdnB1X2h3X2pwZWdfZW5jLmMgICAgIHwgICA4ICstCiAuLi4vcm9ja2No
-aXAvdnB1L3JrMzM5OV92cHVfaHdfbXBlZzJfZGVjLmMgICAgfCAyNjcgKysrKysrKwogLi4uL3N0
-YWdpbmcvbWVkaWEvcm9ja2NoaXAvdnB1L3JvY2tjaGlwX3ZwdS5oIHwgMTEwICsrLQogLi4uL21l
-ZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfZHJ2LmMgICAgIHwgNDY3ICsrKysrKysrKyst
-LQogLi4uL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfZW5jLmMgICAgIHwgNTcxIC0t
-LS0tLS0tLS0tLS0tLQogLi4uL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfaHcuaCAg
-ICAgIHwgIDE2ICsKIC4uLi9tZWRpYS9yb2NrY2hpcC92cHUvcm9ja2NoaXBfdnB1X21wZWcyLmMg
-ICB8ICA2MSArKwogLi4uL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfdjRsMi5jICAg
-IHwgNjkyICsrKysrKysrKysrKysrKysrKwogLi4ua2NoaXBfdnB1X2NvbW1vbi5oID0+IHJvY2tj
-aGlwX3ZwdV92NGwyLmh9IHwgIDE1ICstCiBpbmNsdWRlL21lZGlhL3Y0bDItY29tbW9uLmggICAg
-ICAgICAgICAgICAgICAgfCAgMTAgKy0KIDE4IGZpbGVzIGNoYW5nZWQsIDIwMDkgaW5zZXJ0aW9u
-cygrKSwgNjg0IGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2lu
-Zy9tZWRpYS9yb2NrY2hpcC92cHUvcmszMjg4X3ZwdV9od19tcGVnMl9kZWMuYwogY3JlYXRlIG1v
-ZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9yb2NrY2hpcC92cHUvcmszMzk5X3ZwdV9o
-d19tcGVnMl9kZWMuYwogZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9y
-b2NrY2hpcC92cHUvcm9ja2NoaXBfdnB1X2VuYy5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
-cy9zdGFnaW5nL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfbXBlZzIuYwogY3JlYXRl
-IG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9yb2NrY2hpcC92cHUvcm9ja2NoaXBf
-dnB1X3Y0bDIuYwogcmVuYW1lIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9yb2NrY2hpcC92cHUve3Jv
-Y2tjaGlwX3ZwdV9jb21tb24uaCA9PiByb2NrY2hpcF92cHVfdjRsMi5ofSAoNTAlKQoKLS0gCjIu
-MjAuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+
+Add the necessary bits to support MPEG2 decoding on RK3399.
+
+Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+Changes from v4:
+* Stop including rockchip_vpu_common.h
+
+Changes from v3:
+* New patch (was part of another patch before)
+---
+ drivers/staging/media/rockchip/vpu/Makefile   |   1 +
+ .../media/rockchip/vpu/rk3399_vpu_hw.c        |  59 +++-
+ .../rockchip/vpu/rk3399_vpu_hw_mpeg2_dec.c    | 267 ++++++++++++++++++
+ .../media/rockchip/vpu/rockchip_vpu_hw.h      |   1 +
+ 4 files changed, 327 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_mpeg2_dec.c
+
+diff --git a/drivers/staging/media/rockchip/vpu/Makefile b/drivers/staging/media/rockchip/vpu/Makefile
+index dc963936b9f9..fdf25c5d4b7e 100644
+--- a/drivers/staging/media/rockchip/vpu/Makefile
++++ b/drivers/staging/media/rockchip/vpu/Makefile
+@@ -7,5 +7,6 @@ rockchip-vpu-y += \
+ 		rk3288_vpu_hw_jpeg_enc.o \
+ 		rk3399_vpu_hw.o \
+ 		rk3399_vpu_hw_jpeg_enc.o \
++		rk3399_vpu_hw_mpeg2_dec.o \
+ 		rockchip_vpu_jpeg.o \
+ 		rockchip_vpu_mpeg2.o
+diff --git a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
+index 5c6c1e8b36d6..2b3689968ef4 100644
+--- a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
++++ b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
+@@ -55,6 +55,26 @@ static const struct rockchip_vpu_fmt rk3399_vpu_enc_fmts[] = {
+ 	},
+ };
+ 
++static const struct rockchip_vpu_fmt rk3399_vpu_dec_fmts[] = {
++	{
++		.fourcc = V4L2_PIX_FMT_NV12,
++		.codec_mode = RK_VPU_MODE_NONE,
++	},
++	{
++		.fourcc = V4L2_PIX_FMT_MPEG2_SLICE,
++		.codec_mode = RK_VPU_MODE_MPEG2_DEC,
++		.max_depth = 2,
++		.frmsize = {
++			.min_width = 48,
++			.max_width = 1920,
++			.step_width = MPEG2_MB_DIM,
++			.min_height = 48,
++			.max_height = 1088,
++			.step_height = MPEG2_MB_DIM,
++		},
++	},
++};
++
+ static irqreturn_t rk3399_vepu_irq(int irq, void *dev_id)
+ {
+ 	struct rockchip_vpu_dev *vpu = dev_id;
+@@ -74,6 +94,24 @@ static irqreturn_t rk3399_vepu_irq(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
+ }
+ 
++static irqreturn_t rk3399_vdpu_irq(int irq, void *dev_id)
++{
++	struct rockchip_vpu_dev *vpu = dev_id;
++	enum vb2_buffer_state state;
++	u32 status;
++
++	status = vdpu_read(vpu, VDPU_REG_INTERRUPT);
++	state = (status & VDPU_REG_INTERRUPT_DEC_IRQ) ?
++		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
++
++	vdpu_write(vpu, 0, VDPU_REG_INTERRUPT);
++	vdpu_write(vpu, 0, VDPU_REG_AXI_CTRL);
++
++	rockchip_vpu_irq_done(vpu, 0, state);
++
++	return IRQ_HANDLED;
++}
++
+ static int rk3399_vpu_hw_init(struct rockchip_vpu_dev *vpu)
+ {
+ 	/* Bump ACLK to max. possible freq. to improve performance. */
+@@ -90,6 +128,15 @@ static void rk3399_vpu_enc_reset(struct rockchip_vpu_ctx *ctx)
+ 	vepu_write(vpu, 0, VEPU_REG_AXI_CTRL);
+ }
+ 
++static void rk3399_vpu_dec_reset(struct rockchip_vpu_ctx *ctx)
++{
++	struct rockchip_vpu_dev *vpu = ctx->dev;
++
++	vdpu_write(vpu, VDPU_REG_INTERRUPT_DEC_IRQ_DIS, VDPU_REG_INTERRUPT);
++	vdpu_write(vpu, 0, VDPU_REG_EN_FLAGS);
++	vdpu_write(vpu, 1, VDPU_REG_SOFT_RESET);
++}
++
+ /*
+  * Supported codec ops.
+  */
+@@ -101,6 +148,12 @@ static const struct rockchip_vpu_codec_ops rk3399_vpu_codec_ops[] = {
+ 		.init = rockchip_vpu_jpeg_enc_init,
+ 		.exit = rockchip_vpu_jpeg_enc_exit,
+ 	},
++	[RK_VPU_MODE_MPEG2_DEC] = {
++		.run = rk3399_vpu_mpeg2_dec_run,
++		.reset = rk3399_vpu_dec_reset,
++		.init = rockchip_vpu_mpeg2_dec_init,
++		.exit = rockchip_vpu_mpeg2_dec_exit,
++	},
+ };
+ 
+ /*
+@@ -111,9 +164,13 @@ const struct rockchip_vpu_variant rk3399_vpu_variant = {
+ 	.enc_offset = 0x0,
+ 	.enc_fmts = rk3399_vpu_enc_fmts,
+ 	.num_enc_fmts = ARRAY_SIZE(rk3399_vpu_enc_fmts),
+-	.codec = RK_VPU_JPEG_ENCODER,
++	.dec_offset = 0x400,
++	.dec_fmts = rk3399_vpu_dec_fmts,
++	.num_dec_fmts = ARRAY_SIZE(rk3399_vpu_dec_fmts),
++	.codec = RK_VPU_JPEG_ENCODER | RK_VPU_MPEG2_DECODER,
+ 	.codec_ops = rk3399_vpu_codec_ops,
+ 	.vepu_irq = rk3399_vepu_irq,
++	.vdpu_irq = rk3399_vdpu_irq,
+ 	.init = rk3399_vpu_hw_init,
+ 	.clk_names = {"aclk", "hclk"},
+ 	.num_clocks = 2
+diff --git a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_mpeg2_dec.c b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_mpeg2_dec.c
+new file mode 100644
+index 000000000000..c4c092c2004a
+--- /dev/null
++++ b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_mpeg2_dec.c
+@@ -0,0 +1,267 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Rockchip VPU codec driver
++ *
++ * Copyright (C) 2018 Rockchip Electronics Co., Ltd.
++ */
++
++#include <asm/unaligned.h>
++#include <linux/bitfield.h>
++#include <media/v4l2-mem2mem.h>
++#include "rockchip_vpu.h"
++#include "rockchip_vpu_hw.h"
++
++#define VDPU_SWREG(nr)			((nr) * 4)
++
++#define VDPU_REG_DEC_OUT_BASE		VDPU_SWREG(63)
++#define VDPU_REG_RLC_VLC_BASE		VDPU_SWREG(64)
++#define VDPU_REG_QTABLE_BASE		VDPU_SWREG(61)
++#define VDPU_REG_REFER0_BASE		VDPU_SWREG(131)
++#define VDPU_REG_REFER2_BASE		VDPU_SWREG(134)
++#define VDPU_REG_REFER3_BASE		VDPU_SWREG(135)
++#define VDPU_REG_REFER1_BASE		VDPU_SWREG(148)
++#define VDPU_REG_DEC_E(v)		((v) ? BIT(0) : 0)
++
++#define VDPU_REG_DEC_ADV_PRE_DIS(v)	((v) ? BIT(11) : 0)
++#define VDPU_REG_DEC_SCMD_DIS(v)	((v) ? BIT(10) : 0)
++#define VDPU_REG_FILTERING_DIS(v)	((v) ? BIT(8) : 0)
++#define VDPU_REG_DEC_LATENCY(v)		(((v) << 1) & GENMASK(6, 1))
++
++#define VDPU_REG_INIT_QP(v)		(((v) << 25) & GENMASK(30, 25))
++#define VDPU_REG_STREAM_LEN(v)		(((v) << 0) & GENMASK(23, 0))
++
++#define VDPU_REG_APF_THRESHOLD(v)	(((v) << 17) & GENMASK(30, 17))
++#define VDPU_REG_STARTMB_X(v)		(((v) << 8) & GENMASK(16, 8))
++#define VDPU_REG_STARTMB_Y(v)		(((v) << 0) & GENMASK(7, 0))
++
++#define VDPU_REG_DEC_MODE(v)		(((v) << 0) & GENMASK(3, 0))
++
++#define VDPU_REG_DEC_STRENDIAN_E(v)	((v) ? BIT(5) : 0)
++#define VDPU_REG_DEC_STRSWAP32_E(v)	((v) ? BIT(4) : 0)
++#define VDPU_REG_DEC_OUTSWAP32_E(v)	((v) ? BIT(3) : 0)
++#define VDPU_REG_DEC_INSWAP32_E(v)	((v) ? BIT(2) : 0)
++#define VDPU_REG_DEC_OUT_ENDIAN(v)	((v) ? BIT(1) : 0)
++#define VDPU_REG_DEC_IN_ENDIAN(v)	((v) ? BIT(0) : 0)
++
++#define VDPU_REG_DEC_DATA_DISC_E(v)	((v) ? BIT(22) : 0)
++#define VDPU_REG_DEC_MAX_BURST(v)	(((v) << 16) & GENMASK(20, 16))
++#define VDPU_REG_DEC_AXI_WR_ID(v)	(((v) << 8) & GENMASK(15, 8))
++#define VDPU_REG_DEC_AXI_RD_ID(v)	(((v) << 0) & GENMASK(7, 0))
++
++#define VDPU_REG_RLC_MODE_E(v)		((v) ? BIT(20) : 0)
++#define VDPU_REG_PIC_INTERLACE_E(v)	((v) ? BIT(17) : 0)
++#define VDPU_REG_PIC_FIELDMODE_E(v)	((v) ? BIT(16) : 0)
++#define VDPU_REG_PIC_B_E(v)		((v) ? BIT(15) : 0)
++#define VDPU_REG_PIC_INTER_E(v)		((v) ? BIT(14) : 0)
++#define VDPU_REG_PIC_TOPFIELD_E(v)	((v) ? BIT(13) : 0)
++#define VDPU_REG_FWD_INTERLACE_E(v)	((v) ? BIT(12) : 0)
++#define VDPU_REG_WRITE_MVS_E(v)		((v) ? BIT(10) : 0)
++#define VDPU_REG_DEC_TIMEOUT_E(v)	((v) ? BIT(5) : 0)
++#define VDPU_REG_DEC_CLK_GATE_E(v)	((v) ? BIT(4) : 0)
++
++#define VDPU_REG_PIC_MB_WIDTH(v)	(((v) << 23) & GENMASK(31, 23))
++#define VDPU_REG_PIC_MB_HEIGHT_P(v)	(((v) << 11) & GENMASK(18, 11))
++#define VDPU_REG_ALT_SCAN_E(v)		((v) ? BIT(6) : 0)
++#define VDPU_REG_TOPFIELDFIRST_E(v)	((v) ? BIT(5) : 0)
++
++#define VDPU_REG_STRM_START_BIT(v)	(((v) << 26) & GENMASK(31, 26))
++#define VDPU_REG_QSCALE_TYPE(v)		((v) ? BIT(24) : 0)
++#define VDPU_REG_CON_MV_E(v)		((v) ? BIT(4) : 0)
++#define VDPU_REG_INTRA_DC_PREC(v)	(((v) << 2) & GENMASK(3, 2))
++#define VDPU_REG_INTRA_VLC_TAB(v)	((v) ? BIT(1) : 0)
++#define VDPU_REG_FRAME_PRED_DCT(v)	((v) ? BIT(0) : 0)
++
++#define VDPU_REG_ALT_SCAN_FLAG_E(v)	((v) ? BIT(19) : 0)
++#define VDPU_REG_FCODE_FWD_HOR(v)	(((v) << 15) & GENMASK(18, 15))
++#define VDPU_REG_FCODE_FWD_VER(v)	(((v) << 11) & GENMASK(14, 11))
++#define VDPU_REG_FCODE_BWD_HOR(v)	(((v) << 7) & GENMASK(10, 7))
++#define VDPU_REG_FCODE_BWD_VER(v)	(((v) << 3) & GENMASK(6, 3))
++#define VDPU_REG_MV_ACCURACY_FWD(v)	((v) ? BIT(2) : 0)
++#define VDPU_REG_MV_ACCURACY_BWD(v)	((v) ? BIT(1) : 0)
++
++#define PICT_TOP_FIELD     1
++#define PICT_BOTTOM_FIELD  2
++#define PICT_FRAME         3
++
++static void
++rk3399_vpu_mpeg2_dec_set_quantization(struct rockchip_vpu_dev *vpu,
++				      struct rockchip_vpu_ctx *ctx)
++{
++	struct v4l2_ctrl_mpeg2_quantization *quantization;
++
++	quantization = rockchip_vpu_get_ctrl(ctx,
++				V4L2_CID_MPEG_VIDEO_MPEG2_QUANTIZATION);
++	rockchip_vpu_mpeg2_dec_copy_qtable(ctx->mpeg2_dec.qtable.cpu,
++					   quantization);
++	vdpu_write_relaxed(vpu, ctx->mpeg2_dec.qtable.dma,
++			   VDPU_REG_QTABLE_BASE);
++}
++
++static void
++rk3399_vpu_mpeg2_dec_set_buffers(struct rockchip_vpu_dev *vpu,
++				 struct rockchip_vpu_ctx *ctx,
++				 struct vb2_buffer *src_buf,
++				 struct vb2_buffer *dst_buf,
++				 const struct v4l2_mpeg2_sequence *sequence,
++				 const struct v4l2_mpeg2_picture *picture,
++				 const struct v4l2_ctrl_mpeg2_slice_params *slice_params)
++{
++	dma_addr_t forward_addr = 0, backward_addr = 0;
++	dma_addr_t current_addr, addr;
++	struct vb2_queue *vq;
++
++	vq = v4l2_m2m_get_dst_vq(ctx->fh.m2m_ctx);
++
++	switch (picture->picture_coding_type) {
++	case V4L2_MPEG2_PICTURE_CODING_TYPE_B:
++		backward_addr = rockchip_vpu_get_ref(vq,
++						slice_params->backward_ref_ts);
++		/* fall-through */
++	case V4L2_MPEG2_PICTURE_CODING_TYPE_P:
++		forward_addr = rockchip_vpu_get_ref(vq,
++						slice_params->forward_ref_ts);
++	}
++
++	/* Source bitstream buffer */
++	addr = vb2_dma_contig_plane_dma_addr(src_buf, 0);
++	vdpu_write_relaxed(vpu, addr, VDPU_REG_RLC_VLC_BASE);
++
++	/* Destination frame buffer */
++	addr = vb2_dma_contig_plane_dma_addr(dst_buf, 0);
++	current_addr = addr;
++
++	if (picture->picture_structure == PICT_BOTTOM_FIELD)
++		addr += ALIGN(ctx->dst_fmt.width, 16);
++	vdpu_write_relaxed(vpu, addr, VDPU_REG_DEC_OUT_BASE);
++
++	if (!forward_addr)
++		forward_addr = current_addr;
++	if (!backward_addr)
++		backward_addr = current_addr;
++
++	/* Set forward ref frame (top/bottom field) */
++	if (picture->picture_structure == PICT_FRAME ||
++	    picture->picture_coding_type == V4L2_MPEG2_PICTURE_CODING_TYPE_B ||
++	    (picture->picture_structure == PICT_TOP_FIELD &&
++	     picture->top_field_first) ||
++	    (picture->picture_structure == PICT_BOTTOM_FIELD &&
++	     !picture->top_field_first)) {
++		vdpu_write_relaxed(vpu, forward_addr, VDPU_REG_REFER0_BASE);
++		vdpu_write_relaxed(vpu, forward_addr, VDPU_REG_REFER1_BASE);
++	} else if (picture->picture_structure == PICT_TOP_FIELD) {
++		vdpu_write_relaxed(vpu, forward_addr, VDPU_REG_REFER0_BASE);
++		vdpu_write_relaxed(vpu, current_addr, VDPU_REG_REFER1_BASE);
++	} else if (picture->picture_structure == PICT_BOTTOM_FIELD) {
++		vdpu_write_relaxed(vpu, current_addr, VDPU_REG_REFER0_BASE);
++		vdpu_write_relaxed(vpu, forward_addr, VDPU_REG_REFER1_BASE);
++	}
++
++	/* Set backward ref frame (top/bottom field) */
++	vdpu_write_relaxed(vpu, backward_addr, VDPU_REG_REFER2_BASE);
++	vdpu_write_relaxed(vpu, backward_addr, VDPU_REG_REFER3_BASE);
++}
++
++void rk3399_vpu_mpeg2_dec_run(struct rockchip_vpu_ctx *ctx)
++{
++	struct rockchip_vpu_dev *vpu = ctx->dev;
++	struct vb2_v4l2_buffer *src_buf, *dst_buf;
++	const struct v4l2_ctrl_mpeg2_slice_params *slice_params;
++	const struct v4l2_mpeg2_sequence *sequence;
++	const struct v4l2_mpeg2_picture *picture;
++	u32 reg;
++
++	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
++	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
++
++	/* Apply request controls if any */
++	v4l2_ctrl_request_setup(src_buf->vb2_buf.req_obj.req,
++				&ctx->ctrl_handler);
++
++	slice_params = rockchip_vpu_get_ctrl(ctx,
++				V4L2_CID_MPEG_VIDEO_MPEG2_SLICE_PARAMS);
++	sequence = &slice_params->sequence;
++	picture = &slice_params->picture;
++
++	reg = VDPU_REG_DEC_ADV_PRE_DIS(0) |
++	      VDPU_REG_DEC_SCMD_DIS(0) |
++	      VDPU_REG_FILTERING_DIS(1) |
++	      VDPU_REG_DEC_LATENCY(0);
++	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(50));
++
++	reg = VDPU_REG_INIT_QP(1) |
++	      VDPU_REG_STREAM_LEN(slice_params->bit_size >> 3);
++	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(51));
++
++	reg = VDPU_REG_APF_THRESHOLD(8) |
++	      VDPU_REG_STARTMB_X(0) |
++	      VDPU_REG_STARTMB_Y(0);
++	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(52));
++
++	reg = VDPU_REG_DEC_MODE(5);
++	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(53));
++
++	reg = VDPU_REG_DEC_STRENDIAN_E(1) |
++	      VDPU_REG_DEC_STRSWAP32_E(1) |
++	      VDPU_REG_DEC_OUTSWAP32_E(1) |
++	      VDPU_REG_DEC_INSWAP32_E(1) |
++	      VDPU_REG_DEC_OUT_ENDIAN(1) |
++	      VDPU_REG_DEC_IN_ENDIAN(1);
++	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(54));
++
++	reg = VDPU_REG_DEC_DATA_DISC_E(0) |
++	      VDPU_REG_DEC_MAX_BURST(16) |
++	      VDPU_REG_DEC_AXI_WR_ID(0) |
++	      VDPU_REG_DEC_AXI_RD_ID(0);
++	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(56));
++
++	reg = VDPU_REG_RLC_MODE_E(0) |
++	      VDPU_REG_PIC_INTERLACE_E(!sequence->progressive_sequence) |
++	      VDPU_REG_PIC_FIELDMODE_E(picture->picture_structure != PICT_FRAME) |
++	      VDPU_REG_PIC_B_E(picture->picture_coding_type == V4L2_MPEG2_PICTURE_CODING_TYPE_B) |
++	      VDPU_REG_PIC_INTER_E(picture->picture_coding_type != V4L2_MPEG2_PICTURE_CODING_TYPE_I) |
++	      VDPU_REG_PIC_TOPFIELD_E(picture->picture_structure == PICT_TOP_FIELD) |
++	      VDPU_REG_FWD_INTERLACE_E(0) |
++	      VDPU_REG_WRITE_MVS_E(0) |
++	      VDPU_REG_DEC_TIMEOUT_E(1) |
++	      VDPU_REG_DEC_CLK_GATE_E(1);
++	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(57));
++
++	reg = VDPU_REG_PIC_MB_WIDTH(MPEG2_MB_WIDTH(ctx->dst_fmt.width)) |
++	      VDPU_REG_PIC_MB_HEIGHT_P(MPEG2_MB_HEIGHT(ctx->dst_fmt.height)) |
++	      VDPU_REG_ALT_SCAN_E(picture->alternate_scan) |
++	      VDPU_REG_TOPFIELDFIRST_E(picture->top_field_first);
++	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(120));
++
++	reg = VDPU_REG_STRM_START_BIT(slice_params->data_bit_offset) |
++	      VDPU_REG_QSCALE_TYPE(picture->q_scale_type) |
++	      VDPU_REG_CON_MV_E(picture->concealment_motion_vectors) |
++	      VDPU_REG_INTRA_DC_PREC(picture->intra_dc_precision) |
++	      VDPU_REG_INTRA_VLC_TAB(picture->intra_vlc_format) |
++	      VDPU_REG_FRAME_PRED_DCT(picture->frame_pred_frame_dct);
++	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(122));
++
++	reg = VDPU_REG_ALT_SCAN_FLAG_E(picture->alternate_scan) |
++	      VDPU_REG_FCODE_FWD_HOR(picture->f_code[0][0]) |
++	      VDPU_REG_FCODE_FWD_VER(picture->f_code[0][1]) |
++	      VDPU_REG_FCODE_BWD_HOR(picture->f_code[1][0]) |
++	      VDPU_REG_FCODE_BWD_VER(picture->f_code[1][1]) |
++	      VDPU_REG_MV_ACCURACY_FWD(1) |
++	      VDPU_REG_MV_ACCURACY_BWD(1);
++	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(136));
++
++	rk3399_vpu_mpeg2_dec_set_quantization(vpu, ctx);
++
++	rk3399_vpu_mpeg2_dec_set_buffers(vpu, ctx, &src_buf->vb2_buf,
++					 &dst_buf->vb2_buf,
++					 sequence, picture, slice_params);
++
++	/* Controls no longer in-use, we can complete them */
++	v4l2_ctrl_request_complete(src_buf->vb2_buf.req_obj.req,
++				   &ctx->ctrl_handler);
++
++	/* Kick the watchdog and start decoding */
++	schedule_delayed_work(&vpu->watchdog_work, msecs_to_jiffies(2000));
++
++	reg = vdpu_read(vpu, VDPU_SWREG(57)) | VDPU_REG_DEC_E(1);
++	vdpu_write(vpu, reg, VDPU_SWREG(57));
++}
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
+index 1bdc5ceb956f..4268c3a8b924 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
+@@ -92,6 +92,7 @@ void rk3399_vpu_jpeg_enc_run(struct rockchip_vpu_ctx *ctx);
+ int rockchip_vpu_jpeg_enc_init(struct rockchip_vpu_ctx *ctx);
+ void rockchip_vpu_jpeg_enc_exit(struct rockchip_vpu_ctx *ctx);
+ 
++void rk3399_vpu_mpeg2_dec_run(struct rockchip_vpu_ctx *ctx);
+ void rockchip_vpu_mpeg2_dec_copy_qtable(u8 *qtable,
+ 	const struct v4l2_ctrl_mpeg2_quantization *ctrl);
+ int rockchip_vpu_mpeg2_dec_init(struct rockchip_vpu_ctx *ctx);
+-- 
+2.20.1
