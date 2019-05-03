@@ -1,215 +1,240 @@
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: Re: [PATCH v5 3/6] devfreq: rk3399_dmc: Pass ODT and auto power
- down parameters to TF-A.
-Date: Fri, 3 May 2019 09:38:54 +0900
-Message-ID: <b7daf957-1dd3-3045-4752-fc6a01b9821b@samsung.com>
-References: <20190502175820.25382-1-gael.portay@collabora.com>
-        <CGME20190502175830epcas4p24538d3c364ce1dd1608b474fba133f22@epcas4p2.samsung.com>
-        <20190502175820.25382-4-gael.portay@collabora.com>
+From: Artur Petrosyan <Arthur.Petrosyan@synopsys.com>
+Subject: Re: [PATCH v2 1/5] usb: dwc2: bus suspend/resume for hosts with
+ DWC2_POWER_DOWN_PARAM_NONE
+Date: Fri, 3 May 2019 08:20:09 +0000
+Message-ID: <SN1PR12MB243156982D5BD74F11680597A7350@SN1PR12MB2431.namprd12.prod.outlook.com>
+References: <20190418001356.124334-1-dianders@chromium.org>
+ <20190418001356.124334-2-dianders@chromium.org>
+ <SN1PR12MB243108D1EF3239EC4F730ACDA7390@SN1PR12MB2431.namprd12.prod.outlook.com>
+ <CAD=FV=UOmfNeuZPrDcZRdwAkF4yRifCpBGUuZTsmmz0UVEZ+yA@mail.gmail.com>
+ <SN1PR12MB24317F315C5A4DFE70F9CB0DA73A0@SN1PR12MB2431.namprd12.prod.outlook.com>
+ <CAD=FV=UWGOWiCpy5qUY8oFHPyxdYJe7OsdWBDuCNcXBu5BJoGA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190502175820.25382-4-gael.portay@collabora.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Ga=c3=abl_PORTAY?= <gael.portay@collabora.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lin Huang <hl@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Derek Basehore <dbasehore@chromium.org>, Randy Li <ayaka@soulik.info>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Mark Rutland <mark.rutland@arm.com>, kernel@collabora.com
+To: Doug Anderson <dianders@chromium.org>
+Cc: Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, "heiko@sntech.de" <heiko@sntech.de>, Alan Stern <stern@rowland.harvard.edu>, "amstan@chromium.org" <amstan@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, William Wu <william.wu@rock-chips.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, "zyw@rock-chips.com" <zyw@rock-chips.com>, "mka@chromium.org" <mka@chromium.org>, "ryandcase@chromium.org" <ryandcase@chromium.org>, Amelie Delaunay <amelie.delaunay@st.com>, "jwerner@chromium.org" <jwerner@chromium.org>, "dinguyen@opensource.altera.com" <dinguyen@opensource.altera.com>, Elaine
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi 
-
-Also, this patch was applied to linux-pm.git for for v5.2-rc1.
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git/commit/?h=bleeding-edge&id=adfe3b76608ffe547af5a74415f15499b798f32a
-
-On 19. 5. 3. 오전 2:58, Gaël PORTAY wrote:
-> From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> 
-> Trusted Firmware-A (TF-A) for rk3399 implements a SiP call to get the
-> on-die termination (ODT) and auto power down parameters from kernel,
-> this patch adds the functionality to do this. Also, if DDR clock
-> frequency is lower than the on-die termination (ODT) disable frequency
-> this driver should disable the DDR ODT.
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> Reviewed-by: Chanwoo Choi <cw00.choi@samsung.com>
-> Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>
-> Acked-by: MyungJoo Ham <myungjoo.ham@samsung.com>
-> ---
-> 
-> Changes in v5: None
-> 
-> Changes in v4:
-> - [PATCH v3 3/5] Add Acked-by: MyungJoo Ham <myungjoo.ham@samsung.com>.
-> 
-> Changes in v3:
-> - [PATCH v2 3/5] Add Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>.
-> 		 Remove comments.
-> 		 Move pmu dt parsing after dt-parsing of timings to fix
-> 		  data->odt_dis_freq value.
-> 
-> Changes in v2: None
-> 
-> Changes in v1:
-> - [RFC 3/10] Add an explanation for platform SIP calls.
-> - [RFC 3/10] Change if statement for a switch.
-> - [RFC 3/10] Rename ddr_flag to odt_enable to be more clear.
-> 
->  drivers/devfreq/rk3399_dmc.c        | 71 ++++++++++++++++++++++++++++-
->  include/soc/rockchip/rockchip_sip.h |  1 +
->  2 files changed, 71 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
-> index e795ad2b3f6b..daf19e121c99 100644
-> --- a/drivers/devfreq/rk3399_dmc.c
-> +++ b/drivers/devfreq/rk3399_dmc.c
-> @@ -18,14 +18,17 @@
->  #include <linux/devfreq.h>
->  #include <linux/devfreq-event.h>
->  #include <linux/interrupt.h>
-> +#include <linux/mfd/syscon.h>
->  #include <linux/module.h>
->  #include <linux/of.h>
->  #include <linux/platform_device.h>
->  #include <linux/pm_opp.h>
-> +#include <linux/regmap.h>
->  #include <linux/regulator/consumer.h>
->  #include <linux/rwsem.h>
->  #include <linux/suspend.h>
->  
-> +#include <soc/rockchip/rk3399_grf.h>
->  #include <soc/rockchip/rockchip_sip.h>
->  
->  struct dram_timing {
-> @@ -69,8 +72,11 @@ struct rk3399_dmcfreq {
->  	struct mutex lock;
->  	struct dram_timing timing;
->  	struct regulator *vdd_center;
-> +	struct regmap *regmap_pmu;
->  	unsigned long rate, target_rate;
->  	unsigned long volt, target_volt;
-> +	unsigned int odt_dis_freq;
-> +	int odt_pd_arg0, odt_pd_arg1;
->  };
->  
->  static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
-> @@ -80,6 +86,8 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
->  	struct dev_pm_opp *opp;
->  	unsigned long old_clk_rate = dmcfreq->rate;
->  	unsigned long target_volt, target_rate;
-> +	struct arm_smccc_res res;
-> +	bool odt_enable = false;
->  	int err;
->  
->  	opp = devfreq_recommended_opp(dev, freq, flags);
-> @@ -95,6 +103,19 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
->  
->  	mutex_lock(&dmcfreq->lock);
->  
-> +	if (target_rate >= dmcfreq->odt_dis_freq)
-> +		odt_enable = true;
-> +
-> +	/*
-> +	 * This makes a SMC call to the TF-A to set the DDR PD (power-down)
-> +	 * timings and to enable or disable the ODT (on-die termination)
-> +	 * resistors.
-> +	 */
-> +	arm_smccc_smc(ROCKCHIP_SIP_DRAM_FREQ, dmcfreq->odt_pd_arg0,
-> +		      dmcfreq->odt_pd_arg1,
-> +		      ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD,
-> +		      odt_enable, 0, 0, 0, &res);
-> +
->  	/*
->  	 * If frequency scaling from low to high, adjust voltage first.
->  	 * If frequency scaling from high to low, adjust frequency first.
-> @@ -294,11 +315,13 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
->  {
->  	struct arm_smccc_res res;
->  	struct device *dev = &pdev->dev;
-> -	struct device_node *np = pdev->dev.of_node;
-> +	struct device_node *np = pdev->dev.of_node, *node;
->  	struct rk3399_dmcfreq *data;
->  	int ret, index, size;
->  	uint32_t *timing;
->  	struct dev_pm_opp *opp;
-> +	u32 ddr_type;
-> +	u32 val;
->  
->  	data = devm_kzalloc(dev, sizeof(struct rk3399_dmcfreq), GFP_KERNEL);
->  	if (!data)
-> @@ -354,10 +377,56 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
->  		}
->  	}
->  
-> +	node = of_parse_phandle(np, "rockchip,pmu", 0);
-> +	if (node) {
-> +		data->regmap_pmu = syscon_node_to_regmap(node);
-> +		if (IS_ERR(data->regmap_pmu))
-> +			return PTR_ERR(data->regmap_pmu);
-> +	}
-> +
-> +	regmap_read(data->regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
-> +	ddr_type = (val >> RK3399_PMUGRF_DDRTYPE_SHIFT) &
-> +		    RK3399_PMUGRF_DDRTYPE_MASK;
-> +
-> +	switch (ddr_type) {
-> +	case RK3399_PMUGRF_DDRTYPE_DDR3:
-> +		data->odt_dis_freq = data->timing.ddr3_odt_dis_freq;
-> +		break;
-> +	case RK3399_PMUGRF_DDRTYPE_LPDDR3:
-> +		data->odt_dis_freq = data->timing.lpddr3_odt_dis_freq;
-> +		break;
-> +	case RK3399_PMUGRF_DDRTYPE_LPDDR4:
-> +		data->odt_dis_freq = data->timing.lpddr4_odt_dis_freq;
-> +		break;
-> +	default:
-> +		return -EINVAL;
-> +	};
-> +
->  	arm_smccc_smc(ROCKCHIP_SIP_DRAM_FREQ, 0, 0,
->  		      ROCKCHIP_SIP_CONFIG_DRAM_INIT,
->  		      0, 0, 0, 0, &res);
->  
-> +	/*
-> +	 * In TF-A there is a platform SIP call to set the PD (power-down)
-> +	 * timings and to enable or disable the ODT (on-die termination).
-> +	 * This call needs three arguments as follows:
-> +	 *
-> +	 * arg0:
-> +	 *     bit[0-7]   : sr_idle
-> +	 *     bit[8-15]  : sr_mc_gate_idle
-> +	 *     bit[16-31] : standby idle
-> +	 * arg1:
-> +	 *     bit[0-11]  : pd_idle
-> +	 *     bit[16-27] : srpd_lite_idle
-> +	 * arg2:
-> +	 *     bit[0]     : odt enable
-> +	 */
-> +	data->odt_pd_arg0 = (data->timing.sr_idle & 0xff) |
-> +			    ((data->timing.sr_mc_gate_idle & 0xff) << 8) |
-> +			    ((data->timing.standby_idle & 0xffff) << 16);
-> +	data->odt_pd_arg1 = (data->timing.pd_idle & 0xfff) |
-> +			    ((data->timing.srpd_lite_idle & 0xfff) << 16);
-> +
->  	/*
->  	 * We add a devfreq driver to our parent since it has a device tree node
->  	 * with operating points.
-> diff --git a/include/soc/rockchip/rockchip_sip.h b/include/soc/rockchip/rockchip_sip.h
-> index 7e28092c4d3d..ad9482c56797 100644
-> --- a/include/soc/rockchip/rockchip_sip.h
-> +++ b/include/soc/rockchip/rockchip_sip.h
-> @@ -23,5 +23,6 @@
->  #define ROCKCHIP_SIP_CONFIG_DRAM_GET_RATE	0x05
->  #define ROCKCHIP_SIP_CONFIG_DRAM_CLR_IRQ	0x06
->  #define ROCKCHIP_SIP_CONFIG_DRAM_SET_PARAM	0x07
-> +#define ROCKCHIP_SIP_CONFIG_DRAM_SET_ODT_PD	0x08
->  
->  #endif
-> 
-
-
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+On 5/1/2019 05:57, Doug Anderson wrote:=0A=
+> Hi,=0A=
+> =0A=
+> On Mon, Apr 29, 2019 at 11:06 PM Artur Petrosyan=0A=
+> <Arthur.Petrosyan@synopsys.com> wrote:=0A=
+>>=0A=
+>> Hi,=0A=
+>>=0A=
+>> On 4/29/2019 21:34, Doug Anderson wrote:=0A=
+>>> Hi,=0A=
+>>>=0A=
+>>> On Mon, Apr 29, 2019 at 1:43 AM Artur Petrosyan=0A=
+>>> <Arthur.Petrosyan@synopsys.com> wrote:=0A=
+>>>>=0A=
+>>>> Hi,=0A=
+>>>>=0A=
+>>>> On 4/18/2019 04:15, Douglas Anderson wrote:=0A=
+>>>>> This is an attempt to rehash commit 0cf884e819e0 ("usb: dwc2: add bus=
+=0A=
+>>>>> suspend/resume for dwc2") on ToT.  That commit was reverted in commit=
+=0A=
+>>>>> b0bb9bb6ce01 ("Revert "usb: dwc2: add bus suspend/resume for dwc2"")=
+=0A=
+>>>>> because apparently it broke the Altera SOCFPGA.=0A=
+>>>>>=0A=
+>>>>> With all the changes that have happened to dwc2 in the meantime, it's=
+=0A=
+>>>>> possible that the Altera SOCFPGA will just magically work with this=
+=0A=
+>>>>> change now.  ...and it would be good to get bus suspend/resume=0A=
+>>>>> implemented.=0A=
+>>>>>=0A=
+>>>>> This change is a forward port of one that's been living in the Chrome=
+=0A=
+>>>>> OS 3.14 kernel tree.=0A=
+>>>>>=0A=
+>>>>> Signed-off-by: Douglas Anderson <dianders@chromium.org>=0A=
+>>>>> ---=0A=
+>>>>> This patch was last posted at:=0A=
+>>>>>=0A=
+>>>>> https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__lkml.kernel.or=
+g_r_1446237173-2D15263-2D1-2Dgit-2Dsend-2Demail-2Ddianders-40chromium.org&d=
+=3DDwIDAg&c=3DDPL6_X_6JkXFx7AXWqB0tg&r=3D9hPBFKCJ_nBjJhGVrrlYOeOQjP_HlVzYqr=
+C_D7niMJI&m=3DMMfe-4lZePyty6F5zfQ54kiYGuJWNulyRat944LkOsc&s=3DnExFpAPP_0plZ=
+fO5LMG1B-mqt1vyCvE35elVcyVgs8Y&e=3D=0A=
+>>>>>=0A=
+>>>>> ...and appears to have died the death of silence.  Maybe it could get=
+=0A=
+>>>>> some bake time in linuxnext if we can't find any proactive testing?=
+=0A=
+>>>>>=0A=
+>>>>> I will also freely admit that I don't know tons about the theory=0A=
+>>>>> behind this patch.  I'm mostly just re-hashing the original commit=0A=
+>>>>> from Kever that was reverted since:=0A=
+>>>>> * Turning on partial power down on rk3288 doesn't "just work".  I=0A=
+>>>>>      don't get hotplug events.  This is despite dwc2 auto-detecting t=
+hat=0A=
+>>>>>      we are power optimized.=0A=
+>>>> What do you mean by doesn't "just work" ? It seem to me that even afte=
+r=0A=
+>>>> adding this patch you don't get issues fixed.=0A=
+>>>> You mention that you don't get the hotplug events. Please provide dwc2=
+=0A=
+>>>> debug logs and register dumps on this issue.=0A=
+>>>=0A=
+>>> I mean that partial power down in the currently upstream driver=0A=
+>>> doesn't work.  AKA: if I turn on partial power down in the upstream=0A=
+>>> driver then hotplug events break.  I can try to provide some logs.  On=
+=0A=
+>>> what exact version of the code do you want logs?  Just your series?=0A=
+>>> Just my series?  Mainline?  Some attempt at combining both series?  As=
+=0A=
+>>> I said things seem to sorta work with the combined series.  I can try=
+=0A=
+>>> to clarify if that's the series you want me to test with.  ...or I can=
+=0A=
+>>> wait for your next version?=0A=
+>> As I said this patch doesn't fix the issue with hotplug. With this patch=
+=0A=
+>> or without the hotplug behaves as it was. I have tested it on our setup.=
+=0A=
+>>=0A=
+>> Have you debugged your patch? Does it make any difference on your setup=
+=0A=
+>> ? Does it fix the issue with hotplug?=0A=
+> =0A=
+> I think we're still not taking on the same page.=0A=
+> =0A=
+> My patch makes no attempt to make partial power down mode work.  My=0A=
+> patch attempts to make things work a little better when using=0A=
+> DWC2_POWER_DOWN_PARAM_NONE.  There is no use testing my patch with=0A=
+> partial power down as it shouldn't have any impact there.=0A=
+> =0A=
+> =0A=
+>>> I am by no means an expert on dwc2, but an assumption made in my patch=
+=0A=
+>>> is that even cores that can't support partial power down can still=0A=
+>>> save some amount of power when hcd_suspend is called.=0A=
+>> Have you tried to debug dwc2 with power_down =3D=3D DWC2_POWER_DOWN_PARA=
+M_NONE ?=0A=
+>>>=0A=
+>>> Some evidence that this should be possible: looking at mainline Linux=
+=0A=
+>>> and at dwc2_port_suspend(), I see:=0A=
+>>>=0A=
+>>> * It is currently called even when we have DWC2_POWER_DOWN_PARAM_NONE=
+=0A=
+>> Currently (without your and my patches) (looking at mainline Linux) the=
+=0A=
+>> function dwc2_port_suspend() is called anyway because its call is issued=
+=0A=
+>> by the system. But it performs entering to suspend only in case of=0A=
+>> DWC2_POWER_DOWN_PARAM_PARTIAL.=0A=
+>>=0A=
+>> This is not an assumption. What I am pointing out is based on debugging=
+=0A=
+>> and before making assumptions without debugging for me seems not ok.=0A=
+>>=0A=
+>> Currently without your patch and without my patches. In the=0A=
+>> dwc2_port_suspend() it will enter to suspend only in case that=0A=
+>> power_down =3D=3D DWC2_POWER_DOWN_PARAM_PARTIAL. Because if you look at =
+the=0A=
+>> code more carefully you will see=0A=
+>>=0A=
+>>          if (hsotg->params.power_down !=3D DWC2_POWER_DOWN_PARAM_PARTIAL=
+)=0A=
+>>                  goto skip_power_saving;=0A=
+>>=0A=
+>> This says if power_down is not DWC2_POWER_DOWN_PARAM_PARTIAL then skip=
+=0A=
+>> power saving.=0A=
+>>=0A=
+>> So but after your patch. If power_down is DWC2_POWER_DOWN_PARAM_NONE it=
+=0A=
+>> tries to suspend.=0A=
+> =0A=
+> We must be looking at different code.  I'm looking at Linux's tree, AKA:=
+=0A=
+> =0A=
+> https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__git.kernel.org_pub=
+_scm_linux_kernel_git_torvalds_linux.git_tree_drivers_usb_dwc2_hcd.c-23n348=
+8&d=3DDwIFaQ&c=3DDPL6_X_6JkXFx7AXWqB0tg&r=3D9hPBFKCJ_nBjJhGVrrlYOeOQjP_HlVz=
+YqrC_D7niMJI&m=3DIWkDOOGTr0q-H1piDv2KOZe_Hnrz18g6rXFx-DsTuv4&s=3DAHu2iOKkyb=
+liRGtIfN7cF5p070UdvUKTYJsyAKYojis&e=3D=0A=
+Here you are looking at the old code. After that there are several of =0A=
+changes related to suspend/resume functions.=0A=
+=0A=
+This is the link to the code with changes. Latest version of those =0A=
+functions.=0A=
+=0A=
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/dri=
+vers/usb/dwc2/hcd.c#n4489=0A=
+=0A=
+Your changes are sitting on that latest version of code. Not the old =0A=
+version of it.=0A=
+=0A=
+> =0A=
+> I took a mainline kernel ("v5.1-rc7-5-g83a50840e72a") and added=0A=
+> printouts in dwc2_port_suspend() next to where it set HPRT0_SUSP and=0A=
+> PCGCTL_STOPPCLK in dwc2_port_suspend().=0A=
+I think you did this tests on the old version of the code=0A=
+=0A=
+I have tested the flow myself with the mainline Kernel on =0A=
+"torvalds/master" and not HPRT0_SUSP nor PCGCTL_STOPPCLK are not being set.=
+=0A=
+=0A=
+So here you need to review those things again.=0A=
+=0A=
+> =0A=
+> [  454.906364] dwc2 ff540000.usb: I'm setting HPRT0_SUSP=0A=
+> [  454.906367] dwc2 ff540000.usb: I'm setting PCGCTL_STOPPCLK=0A=
+> =0A=
+> ...and just to confirm:=0A=
+> =0A=
+> # grep '^power' /sys/kernel/debug/*.usb/params=0A=
+> /sys/kernel/debug/ff540000.usb/params:power_down                    : 0=
+=0A=
+> /sys/kernel/debug/ff580000.usb/params:power_down                    : 0=
+=0A=
+> =0A=
+> So I'm really quite convinced that on mainline Linux with=0A=
+> DWC2_POWER_DOWN_PARAM_NONE that dwc2_port_suspend() sets HPRT0_SUSP=0A=
+> and PCGCTL_STOPPCLK.=0A=
+> =0A=
+> =0A=
+>>> ...I believe that the net effect of my patch ends up doing both those=
+=0A=
+>>> same two things in hcd_suspend.  That is: when power_down is=0A=
+>>> DWC2_POWER_DOWN_PARAM_NONE I believe my patch is really just doing the=
+=0A=
+>>> same thing that dwc2_port_suspend() would do in the same case.  Is=0A=
+>>> that not OK?=0A=
+>> No if your patch is doing the same thing as it was doing before what is=
+=0A=
+>> the purpose of the patch ?=0A=
+> =0A=
+> The purpose is to make _dwc2_hcd_suspend() work more correctly in the=0A=
+> case where power_down is DWC2_POWER_DOWN_PARAM_NONE >=0A=
+> =0A=
+>> My testes show that your patch doesn't fix the issue related partial=0A=
+>> power down.=0A=
+> =0A=
+> Right.  I have been trying to say that my patch doesn't do anything at=0A=
+> all for partial power down.  I am simply trying to make=0A=
+> DWC2_POWER_DOWN_PARAM_NONE work more correctly.=0A=
+> =0A=
+> I haven't run all the power consumption tests in quite a long time and=0A=
+> I'll try to get it hooked up tomorrow to confirm that my patch really=0A=
+> truly is still needed to help with power consumption.  I did confirm=0A=
+> that at least there are cases where _dwc2_hcd_suspend() is called and=0A=
+> my patch is what sets the important bits.=0A=
+> =0A=
+> -Doug=0A=
+> =0A=
+=0A=
+=0A=
+-- =0A=
+Regards,=0A=
+Artur=0A=
