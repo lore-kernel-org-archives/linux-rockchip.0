@@ -1,13 +1,24 @@
-From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v5 06/15] rockchip/vpu: Support the Request API
-Date: Fri,  3 May 2019 13:47:10 +0200
-Message-ID: <20190503114719.28784-7-boris.brezillon@collabora.com>
-References: <20190503114719.28784-1-boris.brezillon@collabora.com>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [PATCH v2 1/3] pwm: rockchip: Don't update the state for the
+ caller of pwm_apply_state()
+Date: Fri, 3 May 2019 21:59:05 +0200
+Message-ID: <20190503195904.zbqdfpowks6vwhv6@pengutronix.de>
+References: <CAD=FV=WZHouhGcxOgNG3006XajJQaAp0uq9WjeKRikQx1ru4TA@mail.gmail.com>
+ <20190408143914.uucb5dwafq3cnsmk@pengutronix.de>
+ <CA+ASDXO=szekU97iTDK9vqWjT+JtAKeCNTyoY=8aSi5d+v4mkA@mail.gmail.com>
+ <20190429065613.n52uwgys5eugmssd@pengutronix.de>
+ <CAD=FV=U71u39ZHkBBfAXVAP=_hY-bAw3L7JdhC=36jkUVxPOmQ@mail.gmail.com>
+ <20190502091638.0f5a40b0@collabora.com>
+ <20190502073326.sgqgkiexjkipvi27@pengutronix.de>
+ <20190502100951.23ef9ed1@collabora.com>
+ <20190502084243.anz5myut63g4torn@pengutronix.de>
+ <20190503105915.GA32400@ulmo>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190503114719.28784-1-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20190503105915.GA32400@ulmo>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,129 +28,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Hello Thierry,
 
-Introduce support for the Request API. Although the JPEG encoder
-does not mandate using the Request API, it's perfectly possible to
-use it, if the application wants to.
+On Fri, May 03, 2019 at 12:59:15PM +0200, Thierry Reding wrote:
+> On Thu, May 02, 2019 at 10:42:43AM +0200, Uwe Kleine-K=F6nig wrote:
+> > On Thu, May 02, 2019 at 10:09:51AM +0200, Boris Brezillon wrote:
+> > > On Thu, 2 May 2019 09:33:26 +0200
+> > > Uwe Kleine-K=F6nig <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
+> > > > On Thu, May 02, 2019 at 09:16:38AM +0200, Boris Brezillon wrote:
+> > > > > I do understand that some users might want to check how the HW wi=
+ll
+> > > > > adjust the period/duty before applying the new setup, and in that
+> > > > > regard, having pwm_round_rate() is a good thing. But in any case,=
+ it's
+> > > > > hard for the user to decide how to adjust things to get what it w=
+ants
+> > > > > (should he increase/decrease the period/duty?).  =
 
-Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
---
-Changes from v3:
-* None
 
-Changes from v2:
-* Drop unrelated mdev.bus_info changes.
-* Remove the get_ref and get_ctrl helpers as they are not used yet.
----
- .../rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c     |  6 ++++++
- .../media/rockchip/vpu/rockchip_vpu_drv.c     |  7 +++++++
- .../media/rockchip/vpu/rockchip_vpu_enc.c     | 19 +++++++++++++++++++
- 3 files changed, 32 insertions(+)
+Whenever I wrote pwm_round_rate I actually meant pwm_round_state.
 
-diff --git a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c
-index 6f9f5158d193..74823d25cd8d 100644
---- a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c
-+++ b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c
-@@ -113,11 +113,15 @@ void rk3399_vpu_jpeg_enc_run(struct rockchip_vpu_ctx *ctx)
- 	struct rockchip_vpu_dev *vpu = ctx->dev;
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
- 	struct rockchip_vpu_jpeg_ctx jpeg_ctx;
-+	struct media_request *src_req;
- 	u32 reg;
- 
- 	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
- 	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
- 
-+	src_req = src_buf->vb2_buf.req_obj.req;
-+	v4l2_ctrl_request_setup(src_req, &ctx->ctrl_handler);
-+
- 	memset(&jpeg_ctx, 0, sizeof(jpeg_ctx));
- 	jpeg_ctx.buffer = vb2_plane_vaddr(&dst_buf->vb2_buf, 0);
- 	jpeg_ctx.width = ctx->dst_fmt.width;
-@@ -153,6 +157,8 @@ void rk3399_vpu_jpeg_enc_run(struct rockchip_vpu_ctx *ctx)
- 		| VEPU_REG_ENCODE_FORMAT_JPEG
- 		| VEPU_REG_ENCODE_ENABLE;
- 
-+	v4l2_ctrl_request_complete(src_req, &ctx->ctrl_handler);
-+
- 	/* Kick the watchdog and start encoding */
- 	schedule_delayed_work(&vpu->watchdog_work, msecs_to_jiffies(2000));
- 	vepu_write(vpu, reg, VEPU_REG_ENCODE_START);
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-index fa02354a0f8a..f47fbd0f9545 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-@@ -162,6 +162,7 @@ enc_queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
- 	src_vq->lock = &ctx->dev->vpu_mutex;
- 	src_vq->dev = ctx->dev->v4l2_dev.dev;
-+	src_vq->supports_requests = true;
- 
- 	ret = vb2_queue_init(src_vq);
- 	if (ret)
-@@ -525,6 +526,11 @@ static void rockchip_vpu_remove_enc_func(struct rockchip_vpu_dev *vpu)
- 	video_unregister_device(&func->vdev);
- }
- 
-+static const struct media_device_ops rockchip_m2m_media_ops = {
-+	.req_validate = vb2_request_validate,
-+	.req_queue = v4l2_m2m_request_queue,
-+};
-+
- static int rockchip_vpu_probe(struct platform_device *pdev)
- {
- 	const struct of_device_id *match;
-@@ -617,6 +623,7 @@ static int rockchip_vpu_probe(struct platform_device *pdev)
- 	strscpy(vpu->mdev.bus_info, "platform: " DRIVER_NAME,
- 		sizeof(vpu->mdev.model));
- 	media_device_init(&vpu->mdev);
-+	vpu->mdev.ops = &rockchip_m2m_media_ops;
- 	vpu->v4l2_dev.mdev = &vpu->mdev;
- 
- 	ret = rockchip_vpu_add_enc_func(vpu);
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
-index aa00df9a7ecb..4512e94c3f32 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
-@@ -540,14 +540,33 @@ static void rockchip_vpu_stop_streaming(struct vb2_queue *q)
- 			vbuf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
- 		if (!vbuf)
- 			break;
-+		v4l2_ctrl_request_complete(vbuf->vb2_buf.req_obj.req,
-+					   &ctx->ctrl_handler);
- 		v4l2_m2m_buf_done(vbuf, VB2_BUF_STATE_ERROR);
- 	}
- }
- 
-+static void rockchip_vpu_buf_request_complete(struct vb2_buffer *vb)
-+{
-+	struct rockchip_vpu_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
-+
-+	v4l2_ctrl_request_complete(vb->req_obj.req, &ctx->ctrl_handler);
-+}
-+
-+static int rockchip_vpu_buf_out_validate(struct vb2_buffer *vb)
-+{
-+	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-+
-+	vbuf->field = V4L2_FIELD_NONE;
-+	return 0;
-+}
-+
- const struct vb2_ops rockchip_vpu_enc_queue_ops = {
- 	.queue_setup = rockchip_vpu_queue_setup,
- 	.buf_prepare = rockchip_vpu_buf_prepare,
- 	.buf_queue = rockchip_vpu_buf_queue,
-+	.buf_out_validate = rockchip_vpu_buf_out_validate,
-+	.buf_request_complete = rockchip_vpu_buf_request_complete,
- 	.start_streaming = rockchip_vpu_start_streaming,
- 	.stop_streaming = rockchip_vpu_stop_streaming,
- 	.wait_prepare = vb2_ops_wait_prepare,
--- 
-2.20.1
+> > > > It depends on the use case. For one of them I suggested an algorith=
+m.
+> > > =
+
+> > > Yes, I was just trying to say that passing a PWM state to
+> > > pwm_round_state() is not enough, we need extra info if we want to make
+> > > it useful, like the rounding policy, the accepted deviation on period,
+> > > duty or the duty/period ratio, ....
+> > =
+
+> > Ack. My suggestion is that round_rate should do:
+> > =
+
+> > 	if polarity is unsupported:
+> > 		polarity =3D !polarity
+> > 		duty_cycle =3D period - duty_cycle
+> =
+
+> This should really be up to the consumer. The PWM framework or driver
+> doesn't know whether or not the consumer cares about the polarity or
+> whether it only cares about the power output.
+
+You don't understand my idea. If the hardware cannot implement the
+requested state the round_state function has to return a best
+approximation according to some rules. After that the consumer can
+decide if they want that or not. As the hardware isn't touched nothing
+bad happens.
+
+(Well, apart from that I still cannot imagine a use case where with the
+current possibilities of the PWM API a consumer can really care about
+the polarity.)
+
+> > 	period =3D biggest supportable period <=3D requested period, 0 if no
+> > 		such period exists.
+> > =
+
+> > 	duty_cycle =3D biggest supportable duty cycle <=3D requested
+> > 		duty_cycle, 0 if no such value exists
+> =
+
+> This doesn't really work. We need some way to detect "value does not
+> exist" that is different from value =3D=3D 0, because value =3D=3D 0 is a
+> legitimate use-case.
+
+Same as above. If I asked for duty_cycle =3D 5 ns and get back duty_cycle
+=3D 0 ns this means the driver cannot implement a duty_cycle in the
+interval (0, 5] ns, nothing more. =
+
+
+> > This would allow to let the consumer (or framework helper function)
+> > decide which deviation is ok.
+> =
+
+> So what's the consumer supposed to do if it gets back these values?
+
+If the value is then known to be the best (or good enough if the
+consumer doesn't really care), it is used. Otherwise a different state
+is rounded or the consumer gives up if it becomes clear that the
+hardware cannot satisfy their needs.
+
+> How does it know how to scale them if the deviation is not okay?
+
+It depends on what the consumer considers optimal. I already gave one
+example code how I think pwm_round_state should be used. Another is:
+
+If the consumer wants a period as near as possible to a given target
+period the algorithm with the round_state function as suggested would
+look as follows (duty_cycle ignored here for the ease of discussion):
+
+		mystate.period =3D target_period
+		...
+		pwm_round_state(pwm, &mystate)
+
+		if (mystate.period =3D=3D target_period)
+			return mystate.period
+
+		mystate.period =3D 2 * target_period - mystate.period
+		pwm_round_state(pwm, &mystate)
+
+		if (mystate.period < target_period)
+			return mystate.period;
+
+		do {
+			best_bigger =3D mystate.period
+			mystate.period -=3D 1
+			pwm_round_state(pwm, &mystate)
+		} while (mystate.period > target_period)
+
+		return best_bigger
+
+> What in case the hardware can do achieve a good period that is
+> slightly bigger than the requested period and which would give a very
+> good result?
+
+The above algorithm answers this question.
+
+Theoretically the requirements for pwm_round_state could be changed such
+that it is supposed to yield the nearest hit instead of the next smaller
+one, but this only shifts the complexity to a different area. (I think
+my suggestion is the better one though because the math for the lowlevel
+drivers and also the helper functions is easier then. Also the search
+terminates earlier if the consumer wants something bigger than the
+driver can implement. Moreover "biggest value not bigger than requested"
+is (IMHO) easier to understand for the affected coders than "nearest
+value" because there are more ugly special cases. (Consider I ask for
+(duty_cycle, period) =3D (10, 20) and the driver can implement (9, 18) and
+(12, 21). Which of these is nearer?))
+
+Best regards
+Uwe
+
+-- =
+
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
