@@ -1,13 +1,22 @@
-From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v5 13/15] rockchip/vpu: Add infra to support MPEG-2 decoding
-Date: Fri,  3 May 2019 13:47:17 +0200
-Message-ID: <20190503114719.28784-14-boris.brezillon@collabora.com>
-References: <20190503114719.28784-1-boris.brezillon@collabora.com>
+From: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 1/3] pwm: rockchip: Don't update the state for the
+ caller of pwm_apply_state()
+Date: Fri, 3 May 2019 12:59:15 +0200
+Message-ID: <20190503105915.GA32400@ulmo>
+References: <1707507.TOMHpQGrZ7@phil>
+ <CAD=FV=WZHouhGcxOgNG3006XajJQaAp0uq9WjeKRikQx1ru4TA@mail.gmail.com>
+ <20190408143914.uucb5dwafq3cnsmk@pengutronix.de>
+ <CA+ASDXO=szekU97iTDK9vqWjT+JtAKeCNTyoY=8aSi5d+v4mkA@mail.gmail.com>
+ <20190429065613.n52uwgys5eugmssd@pengutronix.de>
+ <CAD=FV=U71u39ZHkBBfAXVAP=_hY-bAw3L7JdhC=36jkUVxPOmQ@mail.gmail.com>
+ <20190502091638.0f5a40b0@collabora.com>
+ <20190502073326.sgqgkiexjkipvi27@pengutronix.de>
+ <20190502100951.23ef9ed1@collabora.com>
+ <20190502084243.anz5myut63g4torn@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8179092735017131115=="
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190503114719.28784-1-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+In-Reply-To: <20190502084243.anz5myut63g4torn-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,262 +26,301 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
 
-Only adds structs and helpers to allow supporting MPEG-2 decoding on
-rockchip SoCs. Support for RK3399 and RK3288 will be added in separate
-commits
+--===============8179092735017131115==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="EeQfGwPcQSOJBaQU"
+Content-Disposition: inline
 
-Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
-Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
---
-Changes from v4:
-* Define rockchip_vpu_get_ctrl() and rockchip_vpu_get_ref() prototypes
-  in rockchip_vpu.h
 
-Changes from v3:
-* Coding style improvements (Jonas)
-* Move RK3399 support in a separate commit
+--EeQfGwPcQSOJBaQU
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Changes from v2:
-* Remove uneeded check from rockchip_vpu_get_ctrl.
-* Use user negotiated resolution when programming the hardware.
----
- drivers/staging/media/rockchip/vpu/Makefile   |  3 +-
- .../staging/media/rockchip/vpu/rockchip_vpu.h | 12 ++++
- .../media/rockchip/vpu/rockchip_vpu_drv.c     | 30 +++++++++
- .../media/rockchip/vpu/rockchip_vpu_hw.h      | 14 +++++
- .../media/rockchip/vpu/rockchip_vpu_mpeg2.c   | 61 +++++++++++++++++++
- 5 files changed, 119 insertions(+), 1 deletion(-)
- create mode 100644 drivers/staging/media/rockchip/vpu/rockchip_vpu_mpeg2.c
+On Thu, May 02, 2019 at 10:42:43AM +0200, Uwe Kleine-K=C3=B6nig wrote:
+> Hello Boris,
+>=20
+> On Thu, May 02, 2019 at 10:09:51AM +0200, Boris Brezillon wrote:
+> > On Thu, 2 May 2019 09:33:26 +0200
+> > Uwe Kleine-K=C3=B6nig <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
+> >=20
+> > > Hello Boris,
+> > >=20
+> > > On Thu, May 02, 2019 at 09:16:38AM +0200, Boris Brezillon wrote:
+> > > > On Mon, 29 Apr 2019 11:04:20 -0700
+> > > > Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> > > >  =20
+> > > > > Hi,
+> > > > >=20
+> > > > > On Sun, Apr 28, 2019 at 11:56 PM Uwe Kleine-K=C3=B6nig
+> > > > > <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote: =20
+> > > > > >
+> > > > > > On Thu, Apr 18, 2019 at 05:27:05PM -0700, Brian Norris wrote:  =
+ =20
+> > > > > > > Hi,
+> > > > > > >
+> > > > > > > I'm not sure if I'm misreading you, but I thought I'd add her=
+e before
+> > > > > > > this expires out of my inbox:
+> > > > > > >
+> > > > > > > On Mon, Apr 8, 2019 at 7:39 AM Uwe Kleine-K=C3=B6nig
+> > > > > > > <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:   =20
+> > > > > > > > My intention here is more to make all drivers behave the sa=
+me way and
+> > > > > > > > because only two drivers updated the pwm_state this was the=
+ variant I
+> > > > > > > > removed.   =20
+> > > > > > >
+> > > > > > > To be clear, this patch on its own is probably breaking thing=
+s. Just
+> > > > > > > because the other drivers don't implement the documented beha=
+vior
+> > > > > > > doesn't mean you should break this driver. Maybe the others j=
+ust
+> > > > > > > aren't used in precise enough scenarios where this matters.
+> > > > > > >   =20
+> > > > > > > > When you say that the caller might actually care about the =
+exact
+> > > > > > > > parameters I fully agree. In this case however the consumer=
+ should be
+> > > > > > > > able to know the result before actually applying it. So if =
+you do
+> > > > > > > >
+> > > > > > > >         pwm_apply_state(pwm, { .period =3D 17, .duty_cycle =
+=3D 12, ...})
+> > > > > > > >
+> > > > > > > > and this results in .period =3D 100 and .duty_cycle =3D 0 t=
+hen probably the
+> > > > > > > > bad things you want to know about already happend. So my id=
+ea is a new
+> > > > > > > > function pwm_round_state() that does the adaptions to pwm_s=
+tate without
+> > > > > > > > applying it to the hardware. After that pwm_apply_state cou=
+ld do the
+> > > > > > > > following:
+> > > > > > > >
+> > > > > > > >         rstate =3D pwm_round_state(pwm, state)
+> > > > > > > >         pwm.apply(pwm, state)
+> > > > > > > >         gstate =3D pwm_get_state(pwm)
+> > > > > > > >
+> > > > > > > >         if rstate !=3D gstate:
+> > > > > > > >                 warn about problems   =20
+> > > > > > >
+> > > > > > > For our case (we're using this with pwm-regulator), I don't r=
+ecall [*]
+> > > > > > > we need to be 100% precise about the period, but we do need t=
+o be as
+> > > > > > > precise as possible with the duty:period ratio -- so once we =
+get the
+> > > > > > > "feedback" from the underlying PWM driver what the real perio=
+d will
+> > > > > > > be, we adjust the duty appropriately.   =20
+> > > > > >
+> > > > > > I admit that I didn't understood the whole situation and (some)=
+ things
+> > > > > > are worse with my patches applied. I still think that changing =
+the
+> > > > > > caller's state variable is bad design, but of course pwm_get_st=
+ate
+> > > > > > should return the currently implemented configuration.   =20
+> > > > >=20
+> > > > > Regardless of the pros and cons of the current situation, hopeful=
+ly
+> > > > > we're in agreement that we shouldn't break existing users?  In ge=
+neral
+> > > > > I'll probably stay out of the debate as long as we end somewhere =
+that
+> > > > > pwm_regulator is able to somehow know the actual state that it
+> > > > > programmed into the hardware.
+> > > > >=20
+> > > > > +Boris too in case he has any comments. =20
+> > > >=20
+> > > > Well, the pwm_round_state() approach sounds okay to me, though I do=
+n't
+> > > > really see why it's wrong to adjust the state in pwm_apply_state()
+> > > > (just like clk_set_rate() will round the rate for you by internally
+> > > > calling clk_round_rate() before applying the config). =20
+> > >=20
+> > > This are two orthogonal things. The "should pwm_apply_state change the
+> > > state argument" isn't really comparable to the clk stuff, as there on=
+ly
+> > > the frequency is provided that is passed by value, not by reference as
+> > > the PWM state.
+> > >=20
+> > > The key argument for me to *not* change it is that it might yield
+> > > surprises, still more as today most drivers don't adapt. An -- I admit
+> > > constructed, not real-word -- case where adaption would go wrong is:
+> > >=20
+> > > 	pwm_apply_state(pwm1, &mystate);
+> > > 	pwm_apply_state(pwm2, &mystate);
+> >=20
+> > I see, but it's also clearly documented that pwm_apply_state() might
+> > adjust the period/duty params [1], and it's not like we have a lot of
+> > PWM users converted to use pwm_apply_state(), so I'd expect them to be
+> > aware of that and use a reference pwm_state if they need to apply it
+> > to different devices.
+>=20
+> If we accept that pwm_apply_state should adapt its state argument that
+> would be ok for me, too. Then however we should make this consistent and
+> consider a deviation that is not reported there as a bug.
+>=20
+> Note there are also more subtile problems. For example something like:
+>=20
+> 	def enable(self):
+> 		state =3D pwm_get_state(self.pwm)
+> 		state.duty_cycle *=3D 2
+> 		pwm_apply_state(self.pwm, state)
+>=20
+> 	def disable(self):
+> 		state =3D pwm_get_state(self.pwm)
+> 		state.duty_cycle /=3D 2
+> 		pwm_apply_state(self.pwm, state)
+>=20
+> doesn't guarantee that the sequence enable(); disable(); is idempotent.
+> So my favourite would be to not modfies the caller's copy of state for
+> pwm_apply_state(). (Note, this doesn't necessarily have implications
+> about the semantik of the lowlevel driver callbacks.) Still
+> pwm_get_state() should work and yield the corrected settings.
+>=20
+> > > > Note that pwm_config() is doing exactly the same: it adjusts the
+> > > > config to HW caps, excepts in that case you don't know it. =20
+> > >=20
+> > > I don't see what you mean here. I don't see any adaption.
+> >=20
+> > I mean that the config you end up is not necessarily what you asked
+> > for, and pwm_apply_state() was making that explicit by returning the
+> > actual PWM state instead of letting the user think its config has been
+> > applied with no adjustment.
+>=20
+> Ah. Of course the lowlevel driver has to work with the capabilities of
+> the hardware. That is something we cannot get rid of. It's just a
+> question how we communicate this to the consumer.
+>=20
+> > > > I do understand that some users might want to check how the HW will
+> > > > adjust the period/duty before applying the new setup, and in that
+> > > > regard, having pwm_round_rate() is a good thing. But in any case, i=
+t's
+> > > > hard for the user to decide how to adjust things to get what it wan=
+ts
+> > > > (should he increase/decrease the period/duty?). =20
+> > >=20
+> > > It depends on the use case. For one of them I suggested an algorithm.
+> >=20
+> > Yes, I was just trying to say that passing a PWM state to
+> > pwm_round_state() is not enough, we need extra info if we want to make
+> > it useful, like the rounding policy, the accepted deviation on period,
+> > duty or the duty/period ratio, ....
+>=20
+> Ack. My suggestion is that round_rate should do:
+>=20
+> 	if polarity is unsupported:
+> 		polarity =3D !polarity
+> 		duty_cycle =3D period - duty_cycle
 
-diff --git a/drivers/staging/media/rockchip/vpu/Makefile b/drivers/staging/media/rockchip/vpu/Makefile
-index ae512173e7e4..dc963936b9f9 100644
---- a/drivers/staging/media/rockchip/vpu/Makefile
-+++ b/drivers/staging/media/rockchip/vpu/Makefile
-@@ -7,4 +7,5 @@ rockchip-vpu-y += \
- 		rk3288_vpu_hw_jpeg_enc.o \
- 		rk3399_vpu_hw.o \
- 		rk3399_vpu_hw_jpeg_enc.o \
--		rockchip_vpu_jpeg.o
-+		rockchip_vpu_jpeg.o \
-+		rockchip_vpu_mpeg2.o
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
-index ec7557a98583..3093821440c0 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
-@@ -27,6 +27,10 @@
- 
- #define ROCKCHIP_VPU_MAX_CLOCKS		4
- 
-+#define MPEG2_MB_DIM			16
-+#define MPEG2_MB_WIDTH(w)		DIV_ROUND_UP(w, MPEG2_MB_DIM)
-+#define MPEG2_MB_HEIGHT(h)		DIV_ROUND_UP(h, MPEG2_MB_DIM)
-+
- #define JPEG_MB_DIM			16
- #define JPEG_MB_WIDTH(w)		DIV_ROUND_UP(w, JPEG_MB_DIM)
- #define JPEG_MB_HEIGHT(h)		DIV_ROUND_UP(h, JPEG_MB_DIM)
-@@ -37,6 +41,7 @@ struct rockchip_vpu_codec_ops;
- #define RK_VPU_JPEG_ENCODER	BIT(0)
- #define RK_VPU_ENCODERS		0x0000ffff
- 
-+#define RK_VPU_MPEG2_DECODER	BIT(16)
- #define RK_VPU_DECODERS		0xffff0000
- 
- /**
-@@ -76,10 +81,12 @@ struct rockchip_vpu_variant {
-  * enum rockchip_vpu_codec_mode - codec operating mode.
-  * @RK_VPU_MODE_NONE:  No operating mode. Used for RAW video formats.
-  * @RK_VPU_MODE_JPEG_ENC: JPEG encoder.
-+ * @RK_VPU_MODE_MPEG2_DEC: MPEG-2 decoder.
-  */
- enum rockchip_vpu_codec_mode {
- 	RK_VPU_MODE_NONE = -1,
- 	RK_VPU_MODE_JPEG_ENC,
-+	RK_VPU_MODE_MPEG2_DEC,
- };
- 
- /*
-@@ -190,6 +197,7 @@ struct rockchip_vpu_dev {
-  *			calling v4l2_m2m_job_finish.
-  * @codec_ops:		Set of operations related to codec mode.
-  * @jpeg_enc:		JPEG-encoding context.
-+ * @mpeg2_dec:		MPEG-2-decoding context.
-  */
- struct rockchip_vpu_ctx {
- 	struct rockchip_vpu_dev *dev;
-@@ -215,6 +223,7 @@ struct rockchip_vpu_ctx {
- 	/* Specific for particular codec modes. */
- 	union {
- 		struct rockchip_vpu_jpeg_enc_hw_ctx jpeg_enc;
-+		struct rockchip_vpu_mpeg2_dec_hw_ctx mpeg2_dec;
- 	};
- };
- 
-@@ -319,4 +328,7 @@ static inline u32 vdpu_read(struct rockchip_vpu_dev *vpu, u32 reg)
- 
- bool rockchip_vpu_is_encoder_ctx(const struct rockchip_vpu_ctx *ctx);
- 
-+void *rockchip_vpu_get_ctrl(struct rockchip_vpu_ctx *ctx, u32 id);
-+dma_addr_t rockchip_vpu_get_ref(struct vb2_queue *q, u64 ts);
-+
- #endif /* ROCKCHIP_VPU_H_ */
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-index 75104174640b..b94ff97451db 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-@@ -35,6 +35,24 @@ module_param_named(debug, rockchip_vpu_debug, int, 0644);
- MODULE_PARM_DESC(debug,
- 		 "Debug level - higher value produces more verbose messages");
- 
-+void *rockchip_vpu_get_ctrl(struct rockchip_vpu_ctx *ctx, u32 id)
-+{
-+	struct v4l2_ctrl *ctrl;
-+
-+	ctrl = v4l2_ctrl_find(&ctx->ctrl_handler, id);
-+	return ctrl ? ctrl->p_cur.p : NULL;
-+}
-+
-+dma_addr_t rockchip_vpu_get_ref(struct vb2_queue *q, u64 ts)
-+{
-+	int index;
-+
-+	index = vb2_find_timestamp(q, ts, 0);
-+	if (index >= 0)
-+		return vb2_dma_contig_plane_dma_addr(q->bufs[index], 0);
-+	return 0;
-+}
-+
- static int
- rockchip_vpu_enc_buf_finish(struct rockchip_vpu_ctx *ctx,
- 			    struct vb2_buffer *buf,
-@@ -255,6 +273,18 @@ static struct rockchip_vpu_ctrl controls[] = {
- 			.step = 1,
- 			.def = 50,
- 		},
-+	}, {
-+		.id = V4L2_CID_MPEG_VIDEO_MPEG2_SLICE_PARAMS,
-+		.codec = RK_VPU_MPEG2_DECODER,
-+		.cfg = {
-+			.elem_size = sizeof(struct v4l2_ctrl_mpeg2_slice_params),
-+		},
-+	}, {
-+		.id = V4L2_CID_MPEG_VIDEO_MPEG2_QUANTIZATION,
-+		.codec = RK_VPU_MPEG2_DECODER,
-+		.cfg = {
-+			.elem_size = sizeof(struct v4l2_ctrl_mpeg2_quantization),
-+		},
- 	},
- };
- 
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
-index 46716d121538..1bdc5ceb956f 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
-@@ -11,6 +11,7 @@
- 
- #include <linux/interrupt.h>
- #include <linux/v4l2-controls.h>
-+#include <media/mpeg2-ctrls.h>
- #include <media/videobuf2-core.h>
- 
- struct rockchip_vpu_dev;
-@@ -38,6 +39,14 @@ struct rockchip_vpu_jpeg_enc_hw_ctx {
- 	struct rockchip_vpu_aux_buf bounce_buffer;
- };
- 
-+/**
-+ * struct rockchip_vpu_mpeg2_dec_hw_ctx
-+ * @qtable:		Quantization table
-+ */
-+struct rockchip_vpu_mpeg2_dec_hw_ctx {
-+	struct rockchip_vpu_aux_buf qtable;
-+};
-+
- /**
-  * struct rockchip_vpu_codec_ops - codec mode specific operations
-  *
-@@ -83,4 +92,9 @@ void rk3399_vpu_jpeg_enc_run(struct rockchip_vpu_ctx *ctx);
- int rockchip_vpu_jpeg_enc_init(struct rockchip_vpu_ctx *ctx);
- void rockchip_vpu_jpeg_enc_exit(struct rockchip_vpu_ctx *ctx);
- 
-+void rockchip_vpu_mpeg2_dec_copy_qtable(u8 *qtable,
-+	const struct v4l2_ctrl_mpeg2_quantization *ctrl);
-+int rockchip_vpu_mpeg2_dec_init(struct rockchip_vpu_ctx *ctx);
-+void rockchip_vpu_mpeg2_dec_exit(struct rockchip_vpu_ctx *ctx);
-+
- #endif /* ROCKCHIP_VPU_HW_H_ */
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_mpeg2.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_mpeg2.c
-new file mode 100644
-index 000000000000..5a5b9ea1f6b5
---- /dev/null
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_mpeg2.c
-@@ -0,0 +1,61 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Rockchip VPU codec driver
-+ *
-+ * Copyright (C) 2018 Rockchip Electronics Co., Ltd.
-+ */
-+
-+#include "rockchip_vpu.h"
-+
-+static const u8 zigzag[64] = {
-+	0,   1,  8, 16,  9,  2,  3, 10,
-+	17, 24, 32, 25, 18, 11,  4,  5,
-+	12, 19, 26, 33, 40, 48, 41, 34,
-+	27, 20, 13,  6,  7, 14, 21, 28,
-+	35, 42, 49, 56, 57, 50, 43, 36,
-+	29, 22, 15, 23, 30, 37, 44, 51,
-+	58, 59, 52, 45, 38, 31, 39, 46,
-+	53, 60, 61, 54, 47, 55, 62, 63
-+};
-+
-+void rockchip_vpu_mpeg2_dec_copy_qtable(u8 *qtable,
-+	const struct v4l2_ctrl_mpeg2_quantization *ctrl)
-+{
-+	int i, n;
-+
-+	if (!qtable || !ctrl)
-+		return;
-+
-+	for (i = 0; i < ARRAY_SIZE(zigzag); i++) {
-+		n = zigzag[i];
-+		qtable[n + 0] = ctrl->intra_quantiser_matrix[i];
-+		qtable[n + 64] = ctrl->non_intra_quantiser_matrix[i];
-+		qtable[n + 128] = ctrl->chroma_intra_quantiser_matrix[i];
-+		qtable[n + 192] = ctrl->chroma_non_intra_quantiser_matrix[i];
-+	}
-+}
-+
-+int rockchip_vpu_mpeg2_dec_init(struct rockchip_vpu_ctx *ctx)
-+{
-+	struct rockchip_vpu_dev *vpu = ctx->dev;
-+
-+	ctx->mpeg2_dec.qtable.size = ARRAY_SIZE(zigzag) * 4;
-+	ctx->mpeg2_dec.qtable.cpu =
-+		dma_alloc_coherent(vpu->dev,
-+				   ctx->mpeg2_dec.qtable.size,
-+				   &ctx->mpeg2_dec.qtable.dma,
-+				   GFP_KERNEL);
-+	if (!ctx->mpeg2_dec.qtable.cpu)
-+		return -ENOMEM;
-+	return 0;
-+}
-+
-+void rockchip_vpu_mpeg2_dec_exit(struct rockchip_vpu_ctx *ctx)
-+{
-+	struct rockchip_vpu_dev *vpu = ctx->dev;
-+
-+	dma_free_coherent(vpu->dev,
-+			  ctx->mpeg2_dec.qtable.size,
-+			  ctx->mpeg2_dec.qtable.cpu,
-+			  ctx->mpeg2_dec.qtable.dma);
-+}
--- 
-2.20.1
+This should really be up to the consumer. The PWM framework or driver
+doesn't know whether or not the consumer cares about the polarity or
+whether it only cares about the power output.
+
+> 	period =3D biggest supportable period <=3D requested period, 0 if no
+> 		such period exists.
+>=20
+> 	duty_cycle =3D biggest supportable duty cycle <=3D requested
+> 		duty_cycle, 0 if no such value exists
+
+This doesn't really work. We need some way to detect "value does not
+exist" that is different from value =3D=3D 0, because value =3D=3D 0 is a
+legitimate use-case.
+
+> This would allow to let the consumer (or framework helper function)
+> decide which deviation is ok.
+
+So what's the consumer supposed to do if it gets back these values? How
+does it know how to scale them if the deviation is not okay? What in
+case the hardware can do achieve a good period that is slightly bigger
+than the requested period and which would give a very good result?
+
+Thierry
+
+> > > > My impression is that most users care about the duty/period ratio w=
+ith
+> > > > little interest in accurate period settings (as long as it's close
+> > > > enough to what they expect of course). For the round-up/down/closest
+> > > > aspect, I guess that's also something we can pass to the new API. S=
+o,
+> > > > rather than passing it a duty in ns, maybe we could pass it a ratio
+> > > > (percent is probably not precise enough for some use cases, so we c=
+ould
+> > > > make it per-million). =20
+> > >=20
+> > > Yeah, something like that would be good. Still for the device drivers=
+ I
+> > > would use the callback I suggested because that is easier to implemen=
+t.
+> >=20
+> > Sorry, I just joined the discussion and couldn't find the email where
+> > you suggested a new driver hook to deal with that.=20
+>=20
+> https://www.spinics.net/lists/linux-pwm/msg09627.html
+>=20
+> > > This way the complexity is once in the framework instead of in each
+> > > driver.
+> >=20
+> > I think we want to make it possible for drivers to do complex
+> > adjustments, and that implies passing all info  to the new driver
+> > hook. The core can then provide generic helpers for simple use-cases
+> > (approximation for static period/duty steps, where no reclocking is
+> > involved).
+>=20
+> The problem is that it is hard to come up with a formalism to map "all
+> info" because there are so many different ways to prefer one
+> configuration over another. I believe we won't be able to design a sane
+> callback prototype that allows to map all use cases.
+>=20
+> Best regards
+> Uwe
+>=20
+> --=20
+> Pengutronix e.K.                           | Uwe Kleine-K=C3=B6nig       =
+     |
+> Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+
+--EeQfGwPcQSOJBaQU
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAlzMHwAACgkQ3SOs138+
+s6GfjBAApfef9lLpp1SYPigLcrEu/buiFN3VqHx3Poeiz5FfS0ILUDf8NMuOKtsi
+LOQ0w6AydvW1OSO3r16czvW8ItqGIYX4Kss/ZMgGsKSfdQYdmR1QUyOwGw9Yh4UA
+bY2uS1G5jGpsshCNkCW9jh1AwZWE8xsBERav4P2fODEeIMjQaTI2kNxBkC93vMmM
+Uau6UqGpc6Etwk6mku3evnQUPjORoOBcLGvNEb+LeifoUYzBT9VRJqOSgAlwodr4
+r/DoWakD1KnoWVxzQBo5kSXqTci9KLeE2H87bcPvPx2agdbkVNvGLMjeMsZlY9uo
+B047bg0pbBPAjwDA6hEDB3/ycXlRT7LhTGG61r5fxgEfbrKkqYph/Ef9UFaq3DXv
+fMUAUf6JKktSUE+hCmlXdbC9M2lGiGcSvPoC+Ny06fBpm4Ns1Fxrhck89t5+BaZ9
+88nUFT0H7+KhHcY4sYP64W6SLVXh/Me3Xm+OEMdLGWCMa8kf+40IMaX2lrV7OI+0
+SJpdetL6wuMl4vmh9mI0F6Kw4mpHyvxyHzJGpW1A0FDfMadgqVjX6mvQixuyxamA
+b2HCG5/n83z7mibtIjh3rWz9ilC5Ohr9XRk75QwF9oQIJjQZrxFyqDJA7eu89vlF
+IA/KqYW7TH3SweYVhzPuREz+CvMyyjn8yQgNGxEcGC0ML5wZyVg=
+=M9mj
+-----END PGP SIGNATURE-----
+
+--EeQfGwPcQSOJBaQU--
+
+
+--===============8179092735017131115==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8179092735017131115==--
