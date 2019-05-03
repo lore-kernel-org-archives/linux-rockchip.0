@@ -1,92 +1,133 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 1/5] usb: dwc2: bus suspend/resume for hosts with DWC2_POWER_DOWN_PARAM_NONE
-Date: Fri, 3 May 2019 08:07:32 -0700
-Message-ID: <CAD=FV=V97+_cQ1aD=w_a3SifGOG3M5DPvcnvxYVUJMkX_WLTFg@mail.gmail.com>
-References: <20190418001356.124334-1-dianders@chromium.org>
- <20190418001356.124334-2-dianders@chromium.org> <CAD=FV=UGjQz9Di=NL_r_g1Hofqv-FWBywfSm9Vu6gGr22wzPrA@mail.gmail.com>
- <SN1PR12MB243136608514210F3E3E536EA7350@SN1PR12MB2431.namprd12.prod.outlook.com>
+From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v5 04/15] rockchip/vpu: Use v4l2_apply_frmsize_constraints()
+ where appropriate
+Date: Fri,  3 May 2019 13:47:08 +0200
+Message-ID: <20190503114719.28784-5-boris.brezillon@collabora.com>
+References: <20190503114719.28784-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <SN1PR12MB243136608514210F3E3E536EA7350@SN1PR12MB2431.namprd12.prod.outlook.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Artur Petrosyan <Arthur.Petrosyan@synopsys.com>
-Cc: Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Alan Stern <stern@rowland.harvard.edu>, Alexandru M Stan <amstan@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, William Wu <william.wu@rock-chips.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, Chris <zyw@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, Amelie Delaunay <amelie.delaunay@st.com>, Julius Werner <jwerner@chromium.org>, Elaine Zhang <zhangqing@rock-chips.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, LKML <linux-kernel@vger.kernel.o>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190503114719.28784-1-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Use the v4l2_apply_frmsize_constraints() helper instead of open-coding
+it.
 
-On Fri, May 3, 2019 at 1:25 AM Artur Petrosyan
-<Arthur.Petrosyan@synopsys.com> wrote:
->
-> On 5/2/2019 03:58, Doug Anderson wrote:
-> > Hi,
-> >
-> >
-> > On Wed, Apr 17, 2019 at 5:15 PM Douglas Anderson <dianders@chromium.org=
-> wrote:
-> >>
-> >> This is an attempt to rehash commit 0cf884e819e0 ("usb: dwc2: add bus
-> >> suspend/resume for dwc2") on ToT.  That commit was reverted in commit
-> >> b0bb9bb6ce01 ("Revert "usb: dwc2: add bus suspend/resume for dwc2"")
-> >> because apparently it broke the Altera SOCFPGA.
-> >>
-> >> With all the changes that have happened to dwc2 in the meantime, it's
-> >> possible that the Altera SOCFPGA will just magically work with this
-> >> change now.  ...and it would be good to get bus suspend/resume
-> >> implemented.
-> >>
-> >> This change is a forward port of one that's been living in the Chrome
-> >> OS 3.14 kernel tree.
-> >>
-> >> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> >> ---
-> >> This patch was last posted at:
-> >>
-> >> https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__lkml.kernel.org=
-_r_1446237173-2D15263-2D1-2Dgit-2Dsend-2Demail-2Ddianders-40chromium.org&d=
-=3DDwIBaQ&c=3DDPL6_X_6JkXFx7AXWqB0tg&r=3D9hPBFKCJ_nBjJhGVrrlYOeOQjP_HlVzYqr=
-C_D7niMJI&m=3D7rxT8EFX9mqUDtTL4P7iuzYNsYROe9rxHGCresSKPTg&s=3DlTaNUA2XIYPat=
-417fkd1A4Zpvb5eyYtTc1H_NIfW8Vw&e=3D
-> >>
-> >> ...and appears to have died the death of silence.  Maybe it could get
-> >> some bake time in linuxnext if we can't find any proactive testing?
-> >>
-> >> I will also freely admit that I don't know tons about the theory
-> >> behind this patch.  I'm mostly just re-hashing the original commit
-> >> from Kever that was reverted since:
-> >> * Turning on partial power down on rk3288 doesn't "just work".  I
-> >>    don't get hotplug events.  This is despite dwc2 auto-detecting that
-> >>    we are power optimized.
-> >> * If we don't do something like this commit we don't get into as low
-> >>    of a power mode.
-> >
-> > OK, I spent the day digging more into this patch to confirm that it's
-> > really the right thing to do.  ...and it still seems to be.
-> >
-> > First off: I'm pretty sure the above sentence "If we don't do
-> > something like this commit we don't get into as low of a power mode."
-> > is totally wrong.  Luckily it's "after the cut" and not part of the
-> > commit message.  Specifically I did a bunch of power testing and I
-> > couldn't find any instance saving power after this patch.
-> >
-> > ...but, then I looked more carefully at all the history of this
-> > commit.  I ended up at:
-> >
-> > https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__chromium-2Drevie=
-w.googlesource.com_c_chromiumos_third-5Fparty_kernel_-2B_306265_&d=3DDwIBaQ=
-&c=3DDPL6_X_6JkXFx7AXWqB0tg&r=3D9hPBFKCJ_nBjJhGVrrlYOeOQjP_HlVzYqrC_D7niMJI=
-&m=3D7rxT8EFX9mqUDtTL4P7iuzYNsYROe9rxHGCresSKPTg&s=3DLiyyIyaCPmr88nJeI7TCGt=
-oJBFLRWir_reikYtAHHDw&e=3D
-> Looking at this code review I see that this patch fixes whatever issues
-> you have on Chrome OS 3.14. But your patch has landed on the top of
-> latest Kernel version. With the latest version I think you would not
-> have the regression issue.
-> So you are fixing Chrome OS 3.14.
+Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+Changes in v5:
+* New patch
+---
+ .../media/rockchip/vpu/rockchip_vpu_enc.c     | 44 ++++++-------------
+ 1 file changed, 14 insertions(+), 30 deletions(-)
 
-I'm confused why you ignored the rest of my email where I said I also
-ported it to 4.19 (which, from a dwc2 host point of view, is pretty
-much mainline) and saw that the patch was still needed.
-
--Doug
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
+index 7c7c20ab2733..aa00df9a7ecb 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
+@@ -197,15 +197,9 @@ vidioc_try_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ 
+ 	pix_mp->num_planes = 1;
+ 	pix_mp->field = V4L2_FIELD_NONE;
+-	pix_mp->width = clamp(pix_mp->width,
+-			      fmt->frmsize.min_width,
+-			      fmt->frmsize.max_width);
+-	pix_mp->height = clamp(pix_mp->height,
+-			       fmt->frmsize.min_height,
+-			       fmt->frmsize.max_height);
+-	/* Round up to macroblocks. */
+-	pix_mp->width = round_up(pix_mp->width, fmt->frmsize.step_width);
+-	pix_mp->height = round_up(pix_mp->height, fmt->frmsize.step_height);
++
++	v4l2_apply_frmsize_constraints(&pix_mp->width, &pix_mp->height,
++				       &fmt->frmsize);
+ 
+ 	/*
+ 	 * For compressed formats the application can specify
+@@ -226,7 +220,6 @@ vidioc_try_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ 	struct rockchip_vpu_ctx *ctx = fh_to_ctx(priv);
+ 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+ 	const struct rockchip_vpu_fmt *fmt;
+-	unsigned int width, height;
+ 	int i;
+ 
+ 	vpu_debug(4, "%c%c%c%c\n",
+@@ -242,18 +235,13 @@ vidioc_try_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ 	}
+ 
+ 	pix_mp->field = V4L2_FIELD_NONE;
+-	width = clamp(pix_mp->width,
+-		      ctx->vpu_dst_fmt->frmsize.min_width,
+-		      ctx->vpu_dst_fmt->frmsize.max_width);
+-	height = clamp(pix_mp->height,
+-		       ctx->vpu_dst_fmt->frmsize.min_height,
+-		       ctx->vpu_dst_fmt->frmsize.max_height);
+-	/* Round up to macroblocks. */
+-	width = round_up(width, ctx->vpu_dst_fmt->frmsize.step_width);
+-	height = round_up(height, ctx->vpu_dst_fmt->frmsize.step_height);
++
++	v4l2_apply_frmsize_constraints(&pix_mp->width, &pix_mp->height,
++				       &ctx->vpu_dst_fmt->frmsize);
+ 
+ 	/* Fill remaining fields */
+-	v4l2_fill_pixfmt_mp(pix_mp, fmt->fourcc, width, height);
++	v4l2_fill_pixfmt_mp(pix_mp, fmt->fourcc, pix_mp->width,
++			    pix_mp->height);
+ 
+ 	for (i = 0; i < pix_mp->num_planes; i++) {
+ 		memset(pix_mp->plane_fmt[i].reserved, 0,
+@@ -272,10 +260,8 @@ void rockchip_vpu_enc_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
+ 	memset(fmt, 0, sizeof(*fmt));
+ 
+ 	fmt->num_planes = 1;
+-	fmt->width = clamp(fmt->width, ctx->vpu_dst_fmt->frmsize.min_width,
+-			   ctx->vpu_dst_fmt->frmsize.max_width);
+-	fmt->height = clamp(fmt->height, ctx->vpu_dst_fmt->frmsize.min_height,
+-			    ctx->vpu_dst_fmt->frmsize.max_height);
++	v4l2_apply_frmsize_constraints(&fmt->width, &fmt->height,
++				       &ctx->vpu_dst_fmt->frmsize);
+ 	fmt->pixelformat = ctx->vpu_dst_fmt->fourcc;
+ 	fmt->field = V4L2_FIELD_NONE;
+ 	fmt->colorspace = V4L2_COLORSPACE_JPEG,
+@@ -291,23 +277,21 @@ void rockchip_vpu_enc_reset_src_fmt(struct rockchip_vpu_dev *vpu,
+ 				    struct rockchip_vpu_ctx *ctx)
+ {
+ 	struct v4l2_pix_format_mplane *fmt = &ctx->src_fmt;
+-	unsigned int width, height;
+ 
+ 	ctx->vpu_src_fmt = rockchip_vpu_get_default_fmt(ctx, false);
+ 
+ 	memset(fmt, 0, sizeof(*fmt));
+ 
+-	width = clamp(fmt->width, ctx->vpu_dst_fmt->frmsize.min_width,
+-		      ctx->vpu_dst_fmt->frmsize.max_width);
+-	height = clamp(fmt->height, ctx->vpu_dst_fmt->frmsize.min_height,
+-		       ctx->vpu_dst_fmt->frmsize.max_height);
++	v4l2_apply_frmsize_constraints(&fmt->width, &fmt->height,
++				       &ctx->vpu_src_fmt->frmsize);
+ 	fmt->field = V4L2_FIELD_NONE;
+ 	fmt->colorspace = V4L2_COLORSPACE_JPEG,
+ 	fmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+ 	fmt->quantization = V4L2_QUANTIZATION_DEFAULT;
+ 	fmt->xfer_func = V4L2_XFER_FUNC_DEFAULT;
+ 
+-	v4l2_fill_pixfmt_mp(fmt, ctx->vpu_src_fmt->fourcc, width, height);
++	v4l2_fill_pixfmt_mp(fmt, ctx->vpu_src_fmt->fourcc, fmt->width,
++			    fmt->height);
+ }
+ 
+ static int
+-- 
+2.20.1
