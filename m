@@ -1,14 +1,14 @@
-From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v5 02/15] media: v4l2-common: Add an helper to apply frmsize
- constraints
-Date: Fri,  3 May 2019 13:47:06 +0200
-Message-ID: <20190503114719.28784-3-boris.brezillon@collabora.com>
-References: <20190503114719.28784-1-boris.brezillon@collabora.com>
+From: Guenter Roeck <groeck-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH] pstore/ram: Improve backward compatibility with older
+ Chromebooks
+Date: Fri, 3 May 2019 12:06:05 -0700
+Message-ID: <CABXOdTdPXPc8Uq=08xYv2YTF-fn_ZX4kjCwRjMA7qL+Epu7WcA@mail.gmail.com>
+References: <20190503174730.245762-1-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190503114719.28784-1-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+In-Reply-To: <20190503174730.245762-1-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,80 +18,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kees Cook <keescook-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tony Luck <tony.luck-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Anton Vorontsov <anton-9xeibp6oKSgdnm+yROfE0A@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Colin Cross <ccross-z5hGa2qSFaRBDgjK7y7TUQ@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The rockchip VPU driver is open-coding this logic which seems pretty
-generic. Let's provide an helper to apply the min/max and alignment
-constraints on width/height.
+On Fri, May 3, 2019 at 10:48 AM Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+>
+> When you try to run an upstream kernel on an old ARM-based Chromebook
+> you'll find that console-ramoops doesn't work.
+>
+> Old ARM-based Chromebooks, before <https://crrev.com/c/439792>
+> ("ramoops: support upstream {console,pmsg,ftrace}-size properties")
+> used to create a "ramoops" node at the top level that looked like:
+>
+> / {
+>   ramoops {
+>     compatible = "ramoops";
+>     reg = <...>;
+>     record-size = <...>;
+>     dump-oops;
+>   };
+> };
+>
+> ...and these Chromebooks assumed that the downstream kernel would make
+> console_size / pmsg_size match the record size.  The above ramoops
+> node was added by the firmware so it's not easy to make any changes.
+>
+> Let's match the expected behavior, but only for those using the old
+> backward-compatible way of working where ramoops is right under the
+> root node.
+>
+> NOTE: if there are some out-of-tree devices that had ramoops at the
+> top level, left everything but the record size as 0, and somehow
+> doesn't want this behavior, we can try to add more conditions here.
+>
+> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
-Changes in v5:
-* New patch
----
- drivers/media/v4l2-core/v4l2-common.c | 27 +++++++++++++++++++++++++++
- include/media/v4l2-common.h           |  2 ++
- 2 files changed, 29 insertions(+)
+Reviewed-by: Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-index 6ae84aa1f7a9..3c6f5c115fc5 100644
---- a/drivers/media/v4l2-core/v4l2-common.c
-+++ b/drivers/media/v4l2-core/v4l2-common.c
-@@ -331,6 +331,16 @@ static unsigned int clamp_align(unsigned int x, unsigned int min,
- 	return x;
- }
- 
-+static unsigned int clamp_roundup(unsigned int x, unsigned int min,
-+				   unsigned int max, unsigned int alignment)
-+{
-+	x = clamp(x, min, max);
-+	if (alignment)
-+		x = round_up(x, alignment);
-+
-+	return x;
-+}
-+
- void v4l_bound_align_image(u32 *w, unsigned int wmin, unsigned int wmax,
- 			   unsigned int walign,
- 			   u32 *h, unsigned int hmin, unsigned int hmax,
-@@ -519,6 +529,23 @@ static inline unsigned int v4l2_format_block_height(const struct v4l2_format_inf
- 	return info->block_h[plane];
- }
- 
-+void v4l2_apply_frmsize_constraints(u32 *width, u32 *height,
-+				    const struct v4l2_frmsize_stepwise *frmsize)
-+{
-+	if (!frmsize)
-+		return;
-+
-+	/*
-+	 * Clamp width/height to meet min/max constraints and round it up to
-+	 * macroblock alignment.
-+	 */
-+	*width = clamp_roundup(*width, frmsize->min_width, frmsize->max_width,
-+			       frmsize->step_width);
-+        *height = clamp_roundup(*height, frmsize->min_height, frmsize->max_height,
-+				frmsize->step_height);
-+}
-+EXPORT_SYMBOL_GPL(v4l2_apply_frmsize_constraints);
-+
- int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
- 			u32 pixelformat, u32 width, u32 height)
- {
-diff --git a/include/media/v4l2-common.h b/include/media/v4l2-common.h
-index 3226bc8107cc..e826b154bc35 100644
---- a/include/media/v4l2-common.h
-+++ b/include/media/v4l2-common.h
-@@ -420,6 +420,8 @@ struct v4l2_format_info {
- 
- const struct v4l2_format_info *v4l2_format_info(u32 format);
- 
-+void v4l2_apply_frmsize_constraints(u32 *width, u32 *height,
-+				    const struct v4l2_frmsize_stepwise *frmsize);
- int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
- 		     u32 width, u32 height);
- int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt, u32 pixelformat,
--- 
-2.20.1
+> ---
+>
+>  fs/pstore/ram.c | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+>
+> diff --git a/fs/pstore/ram.c b/fs/pstore/ram.c
+> index c5c685589e36..8df3bfa2837f 100644
+> --- a/fs/pstore/ram.c
+> +++ b/fs/pstore/ram.c
+> @@ -669,6 +669,7 @@ static int ramoops_parse_dt(struct platform_device *pdev,
+>                             struct ramoops_platform_data *pdata)
+>  {
+>         struct device_node *of_node = pdev->dev.of_node;
+> +       struct device_node *parent_node;
+>         struct resource *res;
+>         u32 value;
+>         int ret;
+> @@ -703,6 +704,23 @@ static int ramoops_parse_dt(struct platform_device *pdev,
+>
+>  #undef parse_size
+>
+> +       /*
+> +        * Some old Chromebooks relied on the kernel setting the console_size
+> +        * and pmsg_size to the record size since that's what the downstream
+> +        * kernel did.  These same Chromebooks had "ramoops" straight under
+> +        * the root node which isn't according to the upstream bindings.  Let's
+> +        * make those old Chromebooks work by detecting this and mimicing the
+> +        * expected behavior.
+> +        */
+> +       parent_node = of_get_parent(of_node);
+> +       if (of_node_is_root(parent_node) &&
+> +           !pdata->console_size && !pdata->ftrace_size &&
+> +           !pdata->pmsg_size && !pdata->ecc_info.ecc_size) {
+> +               pdata->console_size = pdata->record_size;
+> +               pdata->pmsg_size = pdata->record_size;
+> +       }
+> +       of_node_put(parent_node);
+> +
+>         return 0;
+>  }
+>
+> --
+> 2.21.0.1020.gf2820cf01a-goog
+>
