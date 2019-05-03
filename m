@@ -1,8 +1,8 @@
 From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v5 03/15] media: v4l2-common: Support custom
- imagesize/bytesperline in fill_pixfmt()
-Date: Fri,  3 May 2019 13:47:07 +0200
-Message-ID: <20190503114719.28784-4-boris.brezillon@collabora.com>
+Subject: [PATCH v5 09/15] rockchip/vpu: Provide a helper to reset both src and
+ dst formats
+Date: Fri,  3 May 2019 13:47:13 +0200
+Message-ID: <20190503114719.28784-10-boris.brezillon@collabora.com>
 References: <20190503114719.28784-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,139 +22,97 @@ To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Han
 Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Users can define custom sizeimage and bytesperline as long as they're
-big enough to store the amount of pixels required for a specific
-width/height under a specific format. Avoid overriding those fields in
-this case.
+When initializing a context, the core wants to reset both src and dst
+formats. Right now the order doesn't matter, but if we want to have a
+valid default width/height on the non-coded/raw format side (src in
+case of encoders, dst in case of decoders), we need to reset those
+formats in the right order: first the coded-format side, then the other,
+such that width and height on the raw format side can be taken from
+the coded format.
+
+Let's provide a helper that will reset both formats and make sure this
+is done in the right order.
 
 Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
-Hello Hans,
+Changes from v2:
+* None
 
-The sizeimage/bytesperline check on !MPLANE formats is still not 100%
-sure, as custom bytesperline might induce bigger sizeimage than what
-we calculate.
-
-I tried implementing something smarter taking the per-component plane
-bpp + hdiv param as we discussed the other day but decided to step
-back after realizing the per-component plane macro block might also
-differ at least in theory (not sure that's true in practice) and that
-has an impact on bytesperline too.
-
-Let me know how you want to handle that case.
-
-Regards,
-
-Boris
-
-Changes in v5:
+Changes from v2:
 * New patch
 ---
- drivers/media/v4l2-core/v4l2-common.c | 54 +++++++++++++++++++--------
- 1 file changed, 39 insertions(+), 15 deletions(-)
+ .../staging/media/rockchip/vpu/rockchip_vpu_drv.c  |  3 +--
+ .../staging/media/rockchip/vpu/rockchip_vpu_v4l2.c | 14 ++++++++++----
+ .../staging/media/rockchip/vpu/rockchip_vpu_v4l2.h |  5 +----
+ 3 files changed, 12 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-index 3c6f5c115fc5..37bfc984a8b5 100644
---- a/drivers/media/v4l2-core/v4l2-common.c
-+++ b/drivers/media/v4l2-core/v4l2-common.c
-@@ -563,9 +563,10 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
- 	pixfmt->num_planes = info->mem_planes;
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+index ec18578d55d7..d85b88067b03 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+@@ -273,8 +273,7 @@ static int rockchip_vpu_open(struct file *filp)
+ 	filp->private_data = &ctx->fh;
+ 	v4l2_fh_add(&ctx->fh);
  
- 	if (info->mem_planes == 1) {
-+		u32 bytesperline, sizeimage = 0;
-+
- 		plane = &pixfmt->plane_fmt[0];
--		plane->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
--		plane->sizeimage = 0;
-+		bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
+-	rockchip_vpu_reset_dst_fmt(vpu, ctx);
+-	rockchip_vpu_reset_src_fmt(vpu, ctx);
++	rockchip_vpu_reset_fmts(ctx);
  
- 		for (i = 0; i < info->comp_planes; i++) {
- 			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
-@@ -576,10 +577,17 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
- 			aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
- 			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
- 
--			plane->sizeimage += info->bpp[i] *
--				DIV_ROUND_UP(aligned_width, hdiv) *
--				DIV_ROUND_UP(aligned_height, vdiv);
-+			sizeimage += info->bpp[i] *
-+				     DIV_ROUND_UP(aligned_width, hdiv) *
-+				     DIV_ROUND_UP(aligned_height, vdiv);
- 		}
-+
-+		/*
-+		 * The user might have specified custom sizeimage/bytesperline,
-+		 * only override them if they're not big enough.
-+		 */
-+		plane->sizeimage = max(sizeimage, plane->sizeimage);
-+		plane->bytesperline = max(bytesperline, plane->bytesperline);
- 	} else {
- 		for (i = 0; i < info->comp_planes; i++) {
- 			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
-@@ -591,10 +599,20 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
- 			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
- 
- 			plane = &pixfmt->plane_fmt[i];
--			plane->bytesperline =
--				info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv);
--			plane->sizeimage =
--				plane->bytesperline * DIV_ROUND_UP(aligned_height, vdiv);
-+
-+			/*
-+			 * The user might have specified custom
-+			 * sizeimage/bytesperline, only override them if
-+			 * they're not big enough.
-+			 */
-+			plane->bytesperline = max_t(u32,
-+						    info->bpp[i] *
-+						    DIV_ROUND_UP(aligned_width, hdiv),
-+						    plane->bytesperline);
-+			plane->sizeimage = max_t(u32,
-+						 plane->bytesperline *
-+						 DIV_ROUND_UP(aligned_height, vdiv),
-+						 plane->sizeimage);
- 		}
- 	}
- 	return 0;
-@@ -605,6 +623,7 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
- 		     u32 width, u32 height)
- {
- 	const struct v4l2_format_info *info;
-+	u32 bytesperline, sizeimage = 0;
- 	int i;
- 
- 	info = v4l2_format_info(pixelformat);
-@@ -618,8 +637,7 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
- 	pixfmt->width = width;
- 	pixfmt->height = height;
- 	pixfmt->pixelformat = pixelformat;
--	pixfmt->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
--	pixfmt->sizeimage = 0;
-+	bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
- 
- 	for (i = 0; i < info->comp_planes; i++) {
- 		unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
-@@ -629,11 +647,17 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
- 
- 		aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
- 		aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
--
--		pixfmt->sizeimage += info->bpp[i] *
--			DIV_ROUND_UP(aligned_width, hdiv) *
--			DIV_ROUND_UP(aligned_height, vdiv);
-+		sizeimage += info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv) *
-+			     DIV_ROUND_UP(aligned_height, vdiv);
- 	}
-+
-+	/*
-+	 * The user might have specified its own sizeimage/bytesperline values,
-+	 * only override them if they're not big enough.
-+	 */
-+	pixfmt->sizeimage = max(sizeimage, pixfmt->sizeimage);
-+	pixfmt->bytesperline = max(bytesperline, pixfmt->bytesperline);
-+
+ 	ret = rockchip_vpu_ctrls_setup(vpu, ctx);
+ 	if (ret) {
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c
+index 3e8f6256e0ed..e30056dc6758 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c
+@@ -250,8 +250,8 @@ vidioc_try_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
  	return 0;
  }
- EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
+ 
+-void rockchip_vpu_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
+-				struct rockchip_vpu_ctx *ctx)
++static void rockchip_vpu_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
++				       struct rockchip_vpu_ctx *ctx)
+ {
+ 	struct v4l2_pix_format_mplane *fmt = &ctx->dst_fmt;
+ 
+@@ -273,8 +273,8 @@ void rockchip_vpu_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
+ 		fmt->width * fmt->height * ctx->vpu_dst_fmt->max_depth;
+ }
+ 
+-void rockchip_vpu_reset_src_fmt(struct rockchip_vpu_dev *vpu,
+-				struct rockchip_vpu_ctx *ctx)
++static void rockchip_vpu_reset_src_fmt(struct rockchip_vpu_dev *vpu,
++				       struct rockchip_vpu_ctx *ctx)
+ {
+ 	struct v4l2_pix_format_mplane *fmt = &ctx->src_fmt;
+ 
+@@ -294,6 +294,12 @@ void rockchip_vpu_reset_src_fmt(struct rockchip_vpu_dev *vpu,
+ 			    fmt->height);
+ }
+ 
++void rockchip_vpu_reset_fmts(struct rockchip_vpu_ctx *ctx)
++{
++	rockchip_vpu_reset_dst_fmt(ctx->dev, ctx);
++	rockchip_vpu_reset_src_fmt(ctx->dev, ctx);
++}
++
+ static int
+ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+ {
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.h
+index 816bd3988218..493e8751d22d 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.h
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.h
+@@ -21,9 +21,6 @@
+ extern const struct v4l2_ioctl_ops rockchip_vpu_ioctl_ops;
+ extern const struct vb2_ops rockchip_vpu_queue_ops;
+ 
+-void rockchip_vpu_reset_src_fmt(struct rockchip_vpu_dev *vpu,
+-				struct rockchip_vpu_ctx *ctx);
+-void rockchip_vpu_reset_dst_fmt(struct rockchip_vpu_dev *vpu,
+-				struct rockchip_vpu_ctx *ctx);
++void rockchip_vpu_reset_fmts(struct rockchip_vpu_ctx *ctx);
+ 
+ #endif /* ROCKCHIP_VPU_V4L2_H_ */
 -- 
 2.20.1
