@@ -1,13 +1,11 @@
 From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v5 05/15] rockchip/vpu: Open-code media controller register
-Date: Fri,  3 May 2019 13:47:09 +0200
-Message-ID: <20190503114719.28784-6-boris.brezillon@collabora.com>
-References: <20190503114719.28784-1-boris.brezillon@collabora.com>
+Subject: [PATCH v5 00/15] Add MPEG-2 decoding to Rockchip VPU
+Date: Fri,  3 May 2019 13:47:04 +0200
+Message-ID: <20190503114719.28784-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190503114719.28784-1-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -21,379 +19,110 @@ To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Han
 Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-
-In preparation to support decoders, using a single memory-to-memory
-device, we need to roll our own media controller entities registration.
-
-To do that, we define a rockchip_vpu_func object that embeds the
-video_device object plus all the elements that are needed to attach this
-vdev to the media device.
-
-Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
---
-Changes from v3:
-* Rework the media controller registration logic (Boris)
-* Fix media controller deregistration (Jonas)
-
-Changes from v2:
-* Use kvasprintf instead of kmalloc and snprintf.
-* Fix missing kfree in error paths.
-* Remove unneeded media_remove_intf_links on error paths.
----
- .../staging/media/rockchip/vpu/rockchip_vpu.h |  39 +++-
- .../media/rockchip/vpu/rockchip_vpu_drv.c     | 209 +++++++++++++++---
- 2 files changed, 216 insertions(+), 32 deletions(-)
-
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
-index b15c02333a70..aba257c663a7 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu.h
-@@ -71,12 +71,47 @@ enum rockchip_vpu_codec_mode {
- 	RK_VPU_MODE_JPEG_ENC,
- };
- 
-+/*
-+ * struct rockchip_vpu_func - rockchip VPU functionality
-+ *
-+ * @id:			processing functionality ID (can be
-+ *			%MEDIA_ENT_F_PROC_VIDEO_ENCODER or
-+ *			%MEDIA_ENT_F_PROC_VIDEO_DECODER)
-+ * @vdev:		&struct video_device that exposes the encoder or
-+ *			decoder functionality
-+ * @source_pad:		&struct media_pad with the source pad.
-+ * @sink:		&struct media_entity pointer with the sink entity
-+ * @sink_pad:		&struct media_pad with the sink pad.
-+ * @proc:		&struct media_entity pointer with the M2M device itself.
-+ * @proc_pads:		&struct media_pad with the @proc pads.
-+ * @intf_devnode:	&struct media_intf devnode pointer with the interface
-+ *			with controls the M2M device.
-+ *
-+ * Contains everything needed to attach the video device to the media device.
-+ */
-+struct rockchip_vpu_func {
-+	unsigned int id;
-+	struct video_device vdev;
-+	struct media_pad source_pad;
-+	struct media_entity sink;
-+	struct media_pad sink_pad;
-+	struct media_entity proc;
-+	struct media_pad proc_pads[2];
-+	struct media_intf_devnode *intf_devnode;
-+};
-+
-+static inline struct rockchip_vpu_func *
-+rockchip_vpu_vdev_to_func(struct video_device *vdev)
-+{
-+	return container_of(vdev, struct rockchip_vpu_func, vdev);
-+}
-+
- /**
-  * struct rockchip_vpu_dev - driver data
-  * @v4l2_dev:		V4L2 device to register video devices for.
-  * @m2m_dev:		mem2mem device associated to this device.
-  * @mdev:		media device associated to this device.
-- * @vfd_enc:		Video device for encoder.
-+ * @encoder:		encoder functionality.
-  * @pdev:		Pointer to VPU platform device.
-  * @dev:		Pointer to device for convenient logging using
-  *			dev_ macros.
-@@ -93,7 +128,7 @@ struct rockchip_vpu_dev {
- 	struct v4l2_device v4l2_dev;
- 	struct v4l2_m2m_dev *m2m_dev;
- 	struct media_device mdev;
--	struct video_device *vfd_enc;
-+	struct rockchip_vpu_func *encoder;
- 	struct platform_device *pdev;
- 	struct device *dev;
- 	struct clk_bulk_data clocks[ROCKCHIP_VPU_MAX_CLOCKS];
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-index 3c3ce3baeb6d..fa02354a0f8a 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-@@ -239,6 +239,7 @@ static int rockchip_vpu_open(struct file *filp)
- {
- 	struct rockchip_vpu_dev *vpu = video_drvdata(filp);
- 	struct video_device *vdev = video_devdata(filp);
-+	struct rockchip_vpu_func *func = rockchip_vpu_vdev_to_func(vdev);
- 	struct rockchip_vpu_ctx *ctx;
- 	int ret;
- 
-@@ -256,7 +257,7 @@ static int rockchip_vpu_open(struct file *filp)
- 		return -ENOMEM;
- 
- 	ctx->dev = vpu;
--	if (vdev == vpu->vfd_enc)
-+	if (func->id == MEDIA_ENT_F_PROC_VIDEO_ENCODER)
- 		ctx->fh.m2m_ctx = v4l2_m2m_ctx_init(vpu->m2m_dev, ctx,
- 						    &enc_queue_init);
- 	else
-@@ -324,52 +325,206 @@ static const struct of_device_id of_rockchip_vpu_match[] = {
- };
- MODULE_DEVICE_TABLE(of, of_rockchip_vpu_match);
- 
--static int rockchip_vpu_video_device_register(struct rockchip_vpu_dev *vpu)
-+static int rockchip_vpu_register_entity(struct media_device *mdev,
-+					struct media_entity *entity,
-+					const char *entity_name,
-+					struct media_pad *pads, int num_pads,
-+					int function,
-+					struct video_device *vdev)
-+{
-+	char *name;
-+	int ret;
-+
-+	entity->obj_type = MEDIA_ENTITY_TYPE_BASE;
-+	if (function == MEDIA_ENT_F_IO_V4L) {
-+		entity->info.dev.major = VIDEO_MAJOR;
-+		entity->info.dev.minor = vdev->minor;
-+	}
-+
-+	name = devm_kasprintf(mdev->dev, GFP_KERNEL, "%s-%s", vdev->name,
-+			      entity_name);
-+	if (!name)
-+		return -ENOMEM;
-+
-+	entity->name = name;
-+	entity->function = function;
-+
-+	ret = media_entity_pads_init(entity, num_pads, pads);
-+	if (ret)
-+		return ret;
-+
-+	ret = media_device_register_entity(mdev, entity);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static int rockchip_attach_func(struct rockchip_vpu_dev *vpu,
-+				struct rockchip_vpu_func *func)
-+{
-+	struct media_device *mdev = &vpu->mdev;
-+	struct media_link *link;
-+	int ret;
-+
-+	/* Create the three encoder entities with their pads */
-+	func->source_pad.flags = MEDIA_PAD_FL_SOURCE;
-+	ret = rockchip_vpu_register_entity(mdev, &func->vdev.entity,
-+					   "source", &func->source_pad, 1,
-+					   MEDIA_ENT_F_IO_V4L, &func->vdev);
-+	if (ret)
-+		return ret;
-+
-+	func->proc_pads[0].flags = MEDIA_PAD_FL_SINK;
-+	func->proc_pads[1].flags = MEDIA_PAD_FL_SOURCE;
-+	ret = rockchip_vpu_register_entity(mdev, &func->proc, "proc",
-+					   func->proc_pads, 2, func->id,
-+					   &func->vdev);
-+	if (ret)
-+		goto err_rel_entity0;
-+
-+	func->sink_pad.flags = MEDIA_PAD_FL_SINK;
-+	ret = rockchip_vpu_register_entity(mdev, &func->sink, "sink",
-+					   &func->sink_pad, 1,
-+					   MEDIA_ENT_F_IO_V4L, &func->vdev);
-+	if (ret)
-+		goto err_rel_entity1;
-+
-+	/* Connect the three entities */
-+	ret = media_create_pad_link(&func->vdev.entity, 0, &func->proc, 1,
-+				    MEDIA_LNK_FL_IMMUTABLE |
-+				    MEDIA_LNK_FL_ENABLED);
-+	if (ret)
-+		goto err_rel_entity2;
-+
-+	ret = media_create_pad_link(&func->proc, 0, &func->sink, 0,
-+				    MEDIA_LNK_FL_IMMUTABLE |
-+				    MEDIA_LNK_FL_ENABLED);
-+	if (ret)
-+		goto err_rm_links0;
-+
-+	/* Create video interface */
-+	func->intf_devnode = media_devnode_create(mdev, MEDIA_INTF_T_V4L_VIDEO,
-+						  0, VIDEO_MAJOR,
-+						  func->vdev.minor);
-+	if (!func->intf_devnode) {
-+		ret = -ENOMEM;
-+		goto err_rm_links1;
-+	}
-+
-+	/* Connect the two DMA engines to the interface */
-+	link = media_create_intf_link(&func->vdev.entity,
-+				      &func->intf_devnode->intf,
-+				      MEDIA_LNK_FL_IMMUTABLE |
-+				      MEDIA_LNK_FL_ENABLED);
-+	if (!link) {
-+		ret = -ENOMEM;
-+		goto err_rm_devnode;
-+	}
-+
-+	link = media_create_intf_link(&func->sink, &func->intf_devnode->intf,
-+				      MEDIA_LNK_FL_IMMUTABLE |
-+				      MEDIA_LNK_FL_ENABLED);
-+	if (!link) {
-+		ret = -ENOMEM;
-+		goto err_rm_devnode;
-+	}
-+	return 0;
-+
-+err_rm_devnode:
-+	media_devnode_remove(func->intf_devnode);
-+
-+err_rm_links1:
-+	media_entity_remove_links(&func->sink);
-+
-+err_rm_links0:
-+	media_entity_remove_links(&func->proc);
-+	media_entity_remove_links(&func->vdev.entity);
-+
-+err_rel_entity2:
-+	media_device_unregister_entity(&func->sink);
-+
-+err_rel_entity1:
-+	media_device_unregister_entity(&func->proc);
-+
-+err_rel_entity0:
-+	media_device_unregister_entity(&func->vdev.entity);
-+	return ret;
-+}
-+
-+static void rockchip_detach_func(struct rockchip_vpu_func *func)
-+{
-+	media_devnode_remove(func->intf_devnode);
-+	media_entity_remove_links(&func->sink);
-+	media_entity_remove_links(&func->proc);
-+	media_entity_remove_links(&func->vdev.entity);
-+	media_device_unregister_entity(&func->sink);
-+	media_device_unregister_entity(&func->proc);
-+	media_device_unregister_entity(&func->vdev.entity);
-+}
-+
-+static int rockchip_vpu_add_enc_func(struct rockchip_vpu_dev *vpu)
- {
- 	const struct of_device_id *match;
-+	struct rockchip_vpu_func *func;
- 	struct video_device *vfd;
--	int function, ret;
-+	int ret;
- 
- 	match = of_match_node(of_rockchip_vpu_match, vpu->dev->of_node);
--	vfd = video_device_alloc();
--	if (!vfd) {
-+	func = devm_kzalloc(vpu->dev, sizeof(*func), GFP_KERNEL);
-+	if (!func) {
- 		v4l2_err(&vpu->v4l2_dev, "Failed to allocate video device\n");
- 		return -ENOMEM;
- 	}
- 
-+	func->id = MEDIA_ENT_F_PROC_VIDEO_ENCODER;
-+
-+	vfd = &func->vdev;
- 	vfd->fops = &rockchip_vpu_fops;
--	vfd->release = video_device_release;
-+	vfd->release = video_device_release_empty;
- 	vfd->lock = &vpu->vpu_mutex;
- 	vfd->v4l2_dev = &vpu->v4l2_dev;
- 	vfd->vfl_dir = VFL_DIR_M2M;
- 	vfd->device_caps = V4L2_CAP_STREAMING | V4L2_CAP_VIDEO_M2M_MPLANE;
- 	vfd->ioctl_ops = &rockchip_vpu_enc_ioctl_ops;
- 	snprintf(vfd->name, sizeof(vfd->name), "%s-enc", match->compatible);
--	vpu->vfd_enc = vfd;
-+
-+	vpu->encoder = func;
- 	video_set_drvdata(vfd, vpu);
- 
- 	ret = video_register_device(vfd, VFL_TYPE_GRABBER, -1);
- 	if (ret) {
- 		v4l2_err(&vpu->v4l2_dev, "Failed to register video device\n");
--		goto err_free_dev;
-+		return ret;
- 	}
-+
-+	ret = rockchip_attach_func(vpu, func);
-+	if (ret) {
-+		v4l2_err(&vpu->v4l2_dev,
-+			 "Failed to attach functionality to the media device\n");
-+		goto err_unreg_dev;
-+	}
-+
- 	v4l2_info(&vpu->v4l2_dev, "registered as /dev/video%d\n", vfd->num);
- 
--	function = MEDIA_ENT_F_PROC_VIDEO_ENCODER;
--	ret = v4l2_m2m_register_media_controller(vpu->m2m_dev, vfd, function);
--	if (ret) {
--		v4l2_err(&vpu->v4l2_dev, "Failed to init mem2mem media controller\n");
--		goto err_unreg_video;
--	}
- 	return 0;
- 
--err_unreg_video:
-+err_unreg_dev:
- 	video_unregister_device(vfd);
--err_free_dev:
--	video_device_release(vfd);
- 	return ret;
- }
- 
-+static void rockchip_vpu_remove_enc_func(struct rockchip_vpu_dev *vpu)
-+{
-+	struct rockchip_vpu_func *func = vpu->encoder;
-+
-+	if (!func)
-+		return;
-+
-+	rockchip_detach_func(func);
-+	video_unregister_device(&func->vdev);
-+}
-+
- static int rockchip_vpu_probe(struct platform_device *pdev)
- {
- 	const struct of_device_id *match;
-@@ -464,7 +619,7 @@ static int rockchip_vpu_probe(struct platform_device *pdev)
- 	media_device_init(&vpu->mdev);
- 	vpu->v4l2_dev.mdev = &vpu->mdev;
- 
--	ret = rockchip_vpu_video_device_register(vpu);
-+	ret = rockchip_vpu_add_enc_func(vpu);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Failed to register encoder\n");
- 		goto err_m2m_rel;
-@@ -473,15 +628,13 @@ static int rockchip_vpu_probe(struct platform_device *pdev)
- 	ret = media_device_register(&vpu->mdev);
- 	if (ret) {
- 		v4l2_err(&vpu->v4l2_dev, "Failed to register mem2mem media device\n");
--		goto err_video_dev_unreg;
-+		goto err_rm_enc_func;
- 	}
-+
- 	return 0;
--err_video_dev_unreg:
--	if (vpu->vfd_enc) {
--		v4l2_m2m_unregister_media_controller(vpu->m2m_dev);
--		video_unregister_device(vpu->vfd_enc);
--		video_device_release(vpu->vfd_enc);
--	}
-+
-+err_rm_enc_func:
-+	rockchip_vpu_remove_enc_func(vpu);
- err_m2m_rel:
- 	media_device_cleanup(&vpu->mdev);
- 	v4l2_m2m_release(vpu->m2m_dev);
-@@ -501,11 +654,7 @@ static int rockchip_vpu_remove(struct platform_device *pdev)
- 	v4l2_info(&vpu->v4l2_dev, "Removing %s\n", pdev->name);
- 
- 	media_device_unregister(&vpu->mdev);
--	if (vpu->vfd_enc) {
--		v4l2_m2m_unregister_media_controller(vpu->m2m_dev);
--		video_unregister_device(vpu->vfd_enc);
--		video_device_release(vpu->vfd_enc);
--	}
-+	rockchip_vpu_remove_enc_func(vpu);
- 	media_device_cleanup(&vpu->mdev);
- 	v4l2_m2m_release(vpu->m2m_dev);
- 	v4l2_device_unregister(&vpu->v4l2_dev);
--- 
-2.20.1
+VGhpcyBzZXJpZXMgaW50cm9kdWNlcyB0aGUgZGVjb2RpbmcgaW5mcmFzdHJ1Y3R1cmUgdGhhdCB3
+aWxsIGJlCnVzZWQgdG8gYWRkIHN1cHBvcnQgZm9yIG90aGVyIGNvZGVjcyBzdWNoIGFzIFZQOCwg
+VlA5IGFuZCBILjI2NC4KCkFzIGV4cGxhaW5lZCBpbiB0aGUgY292ZXIgbGV0dGVyIGZvciB0aGUg
+djEgcGF0Y2hzZXQsCnRoZSBkcml2ZXIgaXMgbm93IGV4cG9zaW5nIHR3byB2aWRlbyBkZXZpY2Ug
+bm9kZXMuClRoZSBWUFUgZW5jb2RlciBpcyBleHBvc2VkIG9uIC9kZXYvdmlkZW8wLCBhbmQgdGhl
+IFZQVSBkZWNvZGVyCmlzIGV4cG9zZWQgb24gL2Rldi92aWRlbzEuIEJvdGggZGV2aWNlcyBhcmUg
+dGllZCB0byB0aGUgc2FtZQptZW1vcnktdG8tbWVtb3J5IHF1ZXVlLCBhbmQgc2FtZSBtZWRpYSBk
+ZXZpY2UgL2Rldi9tZWRpYTAuCgpUaGVyZWZvcmUgdGhlcmUgYXJlIHR3byBtZWRpYSBncmFwaHM6
+CgrilIzilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJAK4pSCIHJvY2tj
+aGlwLHJrMzM5OS12cHUtZW5jLXNvdXJjZSDilIIK4pSCICAgICAgICAgIC9kZXYvdmlkZW8wICAg
+ICAgICAgICDilIIK4pSU4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSY
+CiAg4pSDCiAg4pSDCiAg4pa8CuKUjOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUkArilIIgIHJvY2tjaGlwLHJrMzM5OS12cHUtZW5jLXByb2MgIOKUggrilJTilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJgKICDilIMKICDilIMKICDilrwK4pSM
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSQCuKUgiAgcm9ja2NoaXAs
+cmszMzk5LXZwdS1lbmMtc2luayAg4pSCCuKUgiAgICAgICAgICAvZGV2L3ZpZGVvMCAgICAgICAg
+ICAg4pSCCuKUlOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUmAoK4pSM
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSQCuKUgiByb2NrY2hpcCxy
+azMzOTktdnB1LWRlYy1zb3VyY2Ug4pSCCuKUgiAgICAgICAgICAvZGV2L3ZpZGVvMSAgICAgICAg
+ICAg4pSCCuKUlOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUmAogIOKU
+gwogIOKUgwogIOKWvArilIzilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lJAK4pSCICByb2NrY2hpcCxyazMzOTktdnB1LWRlYy1wcm9jICDilIIK4pSU4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA
+4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSYCiAg4pSDCiAg4pSDCiAg4pa8CuKUjOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKU
+gOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUkArilIIgIHJvY2tjaGlwLHJrMzM5
+OS12cHUtZGVjLXNpbmsgIOKUggrilIIgICAgICAgICAgL2Rldi92aWRlbzEgICAgICAgICAgIOKU
+ggrilJTilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDi
+lIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilJgKCk9mIGNvdXJz
+ZSwgdGhpcyB3b3JrIGhhcyBiZWVuIHBvc3NpYmxlIHRoYW5rcyB0byBKb25hcyBLYXJsbWFuLCB3
+aG8gZGlkCnRoZSBpbml0aWFsIE1QRUctMiBkZWNvZGluZyB3b3JrIGFuZCBhbHNvIGdvdCBtcHYr
+ZmZtcGVnIHdvcmtpbmcgdXNpbmcKdGhlIFJlcXVlc3QgQVBJLgoKUmVnYXJkcywKCkJvcmlzCgp2
+NToKICogQWRkIGhlbHBlciB0byBjbGFtcCBoZWlnaHQvd2lkdGggYmFzZWQgb24gZnJtc2l6ZQog
+KiBNb2RpZnkgZmlsbF9mbXQoKSBoZWxwZXJzIHRvIGtlZXAgdXNlci1kZWZpbmVkIHNpemVpbWFn
+ZS9ieXRlc3BlcmxpbmUKICAgd2hlbiB0aGV5J3JlIGJpZyBlbm91Z2gKICogRml4ZWQgYSBidW5j
+aCBvZiBwcm9ibGVtcyByZXBvcnRlZCBieSBIYW5zIChzZWUgcGVyLXBhdGNoIGNoYW5nZWxvZwog
+ICBmb3IgbW9yZSBkZXRhaWxzKQoKdjQ6CiAqIEZpeCBpc3N1ZXMgaW4gdGhlIHByb2JlL3JlbW92
+ZSBwYXRoIHByZXZlbnRpbmcgdGhlIGRyaXZlciBmcm9tIGJlaW5nCiAgIHVubG9hZGVkL3JlbG9h
+ZGVkIChKb25hcykKICogUmV3b3JrIHRoZSBtZWRpYSBjb250cm9sbGVyIHJlZ2lzdHJhdGlvbiBj
+b2RlIHRvIHNpbXBsaWZ5IHRoZQogICBlcnJvci9yZW1vdmUgcGF0aCAoQm9yaXMpCiAqIFNwbGl0
+IHRoZSBNUEVHMiBwYXRjaGVzIChvbmUgYWRkaW5nIHRoZSBnZW5lcmljIGNvZGUgYW5kIG9uZSBw
+YXRjaAogICBwZXIgcGxhdGZvcm0pCgp2MzoKICAqIFNoYXJlIG1vcmUgY29kZSBiZXR3ZWVuIHRo
+ZSBlbmNvZGVyL2RlY29kZXIgbG9naWMgKFZCMi9WNEwyCiAgICBpbnRlcmZhY2UgaW1wbGVtZW50
+YXRpb24pCiAgKiBBZGQgYSBwYXRjaCB0byBzdXBwb3J0IE1QRUcyIGRlY29kaW5nIG9uIFJLMzI4
+OCAoSm9uYXMpCiAgKiBTZXZlcmFsIGZpeGVzL2ltcHJvdmVtZW50cyBhbGwgb3ZlciB0aGUgcGxh
+Y2UgKHNlZSBjaGFuZ2Vsb2cKICAgIGluIGVhY2ggcGF0Y2ggZm9yIG1vcmUgZGV0YWlscykKCnYy
+OgogICogRml4ZWQgc29tZSBtaW5vciBpc3N1ZXMgYnJvdWdodCB1cCBieSB2NGwyLWNvbXBsaWFu
+Y2UuCiAgKiBGaXhlZCBieXRlc3VzZWQgd3JvbmdseSBhc3NpZ25lZCAwIG9uIHRoZSBNUEVHLTIg
+ZGVjb2Rlci4KICAqIEFkZHJlc3NlZCBjb21tZW50cyBmcm9tIEhhbnMgYW5kIFRvbWFzeiBvbiB0
+aGUgcGl4ZWwgZm9ybWF0CiAgICBoZWxwZXJzLgoKQm9yaXMgQnJlemlsbG9uICg4KToKICBtZWRp
+YTogdjRsMi1jb21tb246IEZpeCB2NGwyX2ZpbGxfcGl4Zm10W19tcF0oKSBwcm90b3R5cGVzCiAg
+bWVkaWE6IHY0bDItY29tbW9uOiBBZGQgYW4gaGVscGVyIHRvIGFwcGx5IGZybXNpemUgY29uc3Ry
+YWludHMKICBtZWRpYTogdjRsMi1jb21tb246IFN1cHBvcnQgY3VzdG9tIGltYWdlc2l6ZS9ieXRl
+c3BlcmxpbmUgaW4KICAgIGZpbGxfcGl4Zm10KCkKICByb2NrY2hpcC92cHU6IFVzZSB2NGwyX2Fw
+cGx5X2ZybXNpemVfY29uc3RyYWludHMoKSB3aGVyZSBhcHByb3ByaWF0ZQogIHJvY2tjaGlwL3Zw
+dTogUmVuYW1lIHJvY2tjaGlwX3ZwdV9jb21tb24uaCBpbnRvIHJvY2tjaGlwX3ZwdV92NGwyLmgK
+ICByb2NrY2hpcC92cHU6IE1vdmUgZW5jb2RlciBsb2dpYyB0byBhIGNvbW1vbiBwbGFjZQogIHJv
+Y2tjaGlwL3ZwdTogUHJvdmlkZSBhIGhlbHBlciB0byByZXNldCBib3RoIHNyYyBhbmQgZHN0IGZv
+cm1hdHMKICByb2NrY2hpcC92cHU6IFByZXBhcmUgdGhpbmdzIHRvIHN1cHBvcnQgZGVjb2RlcnMK
+CkV6ZXF1aWVsIEdhcmNpYSAoNCk6CiAgcm9ja2NoaXAvdnB1OiBPcGVuLWNvZGUgbWVkaWEgY29u
+dHJvbGxlciByZWdpc3RlcgogIHJvY2tjaGlwL3ZwdTogU3VwcG9ydCB0aGUgUmVxdWVzdCBBUEkK
+ICByb2NrY2hpcC92cHU6IEFkZCBkZWNvZGVyIGJvaWxlcnBsYXRlCiAgcm9ja2NoaXAvdnB1OiBB
+ZGQgc3VwcG9ydCBmb3Igbm9uLXN0YW5kYXJkIGNvbnRyb2xzCgpKb25hcyBLYXJsbWFuICgzKToK
+ICByb2NrY2hpcC92cHU6IEFkZCBpbmZyYSB0byBzdXBwb3J0IE1QRUctMiBkZWNvZGluZwogIHJv
+Y2tjaGlwL3ZwdTogQWRkIE1QRUcyIGRlY29kaW5nIHN1cHBvcnQgdG8gUkszMzk5CiAgcm9ja2No
+aXAvdnB1OiBBZGQgc3VwcG9ydCBmb3IgTVBFRy0yIGRlY29kaW5nIG9uIFJLMzI4OAoKIGRyaXZl
+cnMvbWVkaWEvdjRsMi1jb3JlL3Y0bDItY29tbW9uLmMgICAgICAgICB8ICA4NiArKy0KIGRyaXZl
+cnMvc3RhZ2luZy9tZWRpYS9yb2NrY2hpcC92cHUvS2NvbmZpZyAgICB8ICAgMSArCiBkcml2ZXJz
+L3N0YWdpbmcvbWVkaWEvcm9ja2NoaXAvdnB1L01ha2VmaWxlICAgfCAgIDcgKy0KIC4uLi9tZWRp
+YS9yb2NrY2hpcC92cHUvcmszMjg4X3ZwdV9ody5jICAgICAgICB8ICA1OSArLQogLi4uL3JvY2tj
+aGlwL3ZwdS9yazMyODhfdnB1X2h3X2pwZWdfZW5jLmMgICAgIHwgICAyICstCiAuLi4vcm9ja2No
+aXAvdnB1L3JrMzI4OF92cHVfaHdfbXBlZzJfZGVjLmMgICAgfCAyNjEgKysrKysrKwogLi4uL21l
+ZGlhL3JvY2tjaGlwL3ZwdS9yazMyODhfdnB1X3JlZ3MuaCAgICAgIHwgICAxICsKIC4uLi9tZWRp
+YS9yb2NrY2hpcC92cHUvcmszMzk5X3ZwdV9ody5jICAgICAgICB8ICA1OSArLQogLi4uL3JvY2tj
+aGlwL3ZwdS9yazMzOTlfdnB1X2h3X2pwZWdfZW5jLmMgICAgIHwgICA4ICstCiAuLi4vcm9ja2No
+aXAvdnB1L3JrMzM5OV92cHVfaHdfbXBlZzJfZGVjLmMgICAgfCAyNjcgKysrKysrKwogLi4uL3N0
+YWdpbmcvbWVkaWEvcm9ja2NoaXAvdnB1L3JvY2tjaGlwX3ZwdS5oIHwgMTEwICsrLQogLi4uL21l
+ZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfZHJ2LmMgICAgIHwgNDY3ICsrKysrKysrKyst
+LQogLi4uL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfZW5jLmMgICAgIHwgNTcxIC0t
+LS0tLS0tLS0tLS0tLQogLi4uL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfaHcuaCAg
+ICAgIHwgIDE2ICsKIC4uLi9tZWRpYS9yb2NrY2hpcC92cHUvcm9ja2NoaXBfdnB1X21wZWcyLmMg
+ICB8ICA2MSArKwogLi4uL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfdjRsMi5jICAg
+IHwgNjkyICsrKysrKysrKysrKysrKysrKwogLi4ua2NoaXBfdnB1X2NvbW1vbi5oID0+IHJvY2tj
+aGlwX3ZwdV92NGwyLmh9IHwgIDE1ICstCiBpbmNsdWRlL21lZGlhL3Y0bDItY29tbW9uLmggICAg
+ICAgICAgICAgICAgICAgfCAgMTAgKy0KIDE4IGZpbGVzIGNoYW5nZWQsIDIwMDkgaW5zZXJ0aW9u
+cygrKSwgNjg0IGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2lu
+Zy9tZWRpYS9yb2NrY2hpcC92cHUvcmszMjg4X3ZwdV9od19tcGVnMl9kZWMuYwogY3JlYXRlIG1v
+ZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9yb2NrY2hpcC92cHUvcmszMzk5X3ZwdV9o
+d19tcGVnMl9kZWMuYwogZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9y
+b2NrY2hpcC92cHUvcm9ja2NoaXBfdnB1X2VuYy5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
+cy9zdGFnaW5nL21lZGlhL3JvY2tjaGlwL3ZwdS9yb2NrY2hpcF92cHVfbXBlZzIuYwogY3JlYXRl
+IG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9yb2NrY2hpcC92cHUvcm9ja2NoaXBf
+dnB1X3Y0bDIuYwogcmVuYW1lIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9yb2NrY2hpcC92cHUve3Jv
+Y2tjaGlwX3ZwdV9jb21tb24uaCA9PiByb2NrY2hpcF92cHVfdjRsMi5ofSAoNTAlKQoKLS0gCjIu
+MjAuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
