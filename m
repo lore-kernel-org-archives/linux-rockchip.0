@@ -1,17 +1,22 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH] mmc: block: Fix memory leak in blk-mq when cleaning up
-Date: Fri,  3 May 2019 16:35:26 -0700
-Message-ID: <20190503233526.226272-1-dianders@chromium.org>
+Subject: [PATCH] ARM: dts: rockchip: Make rk3288-veyron-minnie run at hs200
+Date: Fri,  3 May 2019 16:41:42 -0700
+Message-ID: <20190503234142.228982-1-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>, Adrian Hunter <adrian.hunter@intel.com>, Linus Walleij <linus.walleij@linaro.org>
-Cc: linux-rockchip@lists.infradead.org, groeck@chromium.org, mka@chromium.org, drinkcat@chromium.org, Douglas Anderson <dianders@chromium.org>, Ming Lei <ming.lei@redhat.com>, linux-mmc@vger.kernel.org, Hannes Reinecke <hare@suse.com>, linux-kernel@vger.kernel.org, Jens Axboe <axboe@kernel.dk>, Omar Sandoval <osandov@fb.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, linux-rockchip@lists.infradead.org, briannorris@chromium.org, mka@chromium.org, amstan@chromium.org, Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-If I run the following on rk3288-veyron-minnie (a 2GB machine)
+As some point hs200 was failing on rk3288-veyron-minnie.  See commit
+984926781122 ("ARM: dts: rockchip: temporarily remove emmc hs200 speed
+from rk3288 minnie").  Although I didn't track down exactly when it
+started working, it seems to work OK now, so let's turn it back on.
 
+To test this, I booted from SD card and then used this script to
+stress the enumeration process after fixing a memory leak [1]:
   cd /sys/bus/platform/drivers/dwmmc_rockchip
   for i in $(seq 1 3000); do
     echo "========================" $i
@@ -26,44 +31,30 @@ If I run the following on rk3288-veyron-minnie (a 2GB machine)
     done
   done
 
-Then I start OOMing somewhere between iteration 200 and 250.  Using
-kmemleak, I see reports like:
+It worked fine.
 
-unreferenced object 0xe39c5580 (size 64):
-  comm "kworker/1:0", pid 17, jiffies 4294821091 (age 96.952s)
-  hex dump (first 32 bytes):
-    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
-    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
-  backtrace:
-    [<ad19d10a>] __kmalloc+0x1ec/0x2dc
-    [<a28614c3>] blk_mq_alloc_tag_set+0x27c/0x2bc
-    [<0955ae01>] mmc_init_queue+0xa8/0x2a8
-    [<5102b986>] mmc_blk_alloc_req+0xf8/0x2d4
-    [<f1c2214f>] mmc_blk_probe+0x4a8/0x6c0
-    [<0dfdd9d5>] mmc_bus_probe+0x24/0x28
+[1] https://lkml.kernel.org/r/20190503233526.226272-1-dianders@chromium.org
 
-It's pretty clear that we're missing a call to blk_mq_free_tag_set().
-Let's add it.
-
-Fixes: 81196976ed94 ("mmc: block: Add blk-mq support")
 Signed-off-by: Douglas Anderson <dianders@chromium.org>
 ---
 
- drivers/mmc/core/queue.c | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm/boot/dts/rk3288-veyron-minnie.dts | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/drivers/mmc/core/queue.c b/drivers/mmc/core/queue.c
-index 7c364a9c4eeb..09071e13282e 100644
---- a/drivers/mmc/core/queue.c
-+++ b/drivers/mmc/core/queue.c
-@@ -480,6 +480,8 @@ void mmc_cleanup_queue(struct mmc_queue *mq)
- 	 */
- 	flush_work(&mq->complete_work);
+diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+index 468a1818545d..ce57881625ec 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+@@ -90,10 +90,6 @@
+ 	pwm-off-delay-ms = <200>;
+ };
  
-+	blk_mq_free_tag_set(&mq->tag_set);
-+
- 	mq->card = NULL;
- }
+-&emmc {
+-	/delete-property/mmc-hs200-1_8v;
+-};
+-
+ &gpio_keys {
+ 	pinctrl-0 = <&pwr_key_l &ap_lid_int_l &volum_down_l &volum_up_l>;
  
 -- 
 2.21.0.1020.gf2820cf01a-goog
