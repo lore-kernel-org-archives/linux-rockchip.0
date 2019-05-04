@@ -1,68 +1,53 @@
-From: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] mmc: block: Fix memory leak in blk-mq when cleaning up
-Date: Sat, 4 May 2019 13:57:15 +0200
-Message-ID: <CACRpkdagZCpFJmZ7+-DAQBD7mg5Zs4+mrT3uByXKoGYTS5yERg@mail.gmail.com>
-References: <20190503233526.226272-1-dianders@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190503233526.226272-1-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Jens Axboe <axboe-tSWWG44O7X1aa/9Udqfwiw@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Ming Lei <ming.lei-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Hannes Reinecke <hare-IBi9RG/b67k@public.gmane.org>, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Omar Sandoval <osandov-b10kYP2dOMg@public.gmane.org>
+From: Tom Murphy <tmurphy@arista.com>
+Subject: [RFC 0/7] Convert the Intel iommu driver to the dma-ops api
+Date: Sat,  4 May 2019 14:23:16 +0100
+Message-ID: <20190504132327.27041-1-tmurphy@arista.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: iommu@lists.linux-foundation.org
+Cc: murphyt7@tcd.ie, Tom Murphy <tmurphy@arista.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Alex Williamson <alex.williamson@redhat.com>, Marc Zyngier <marc.zyngier@arm.com>, Thomas Gleixner <tglx@linutronix.de>li
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, May 4, 2019 at 1:35 AM Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+Convert the intel iommu driver to the dma-ops api so that we can remove a bunch of repeated code.
 
-> If I run the following on rk3288-veyron-minnie (a 2GB machine)
->
->   cd /sys/bus/platform/drivers/dwmmc_rockchip
->   for i in $(seq 1 3000); do
->     echo "========================" $i
->     echo ff0f0000.dwmmc > unbind
->     sleep .5
->     echo ff0f0000.dwmmc > bind
->     while true; do
->       if [ -e /dev/mmcblk2 ]; then
->         break;
->       fi
->       sleep .1
->     done
->   done
->
-> Then I start OOMing somewhere between iteration 200 and 250.  Using
-> kmemleak, I see reports like:
->
-> unreferenced object 0xe39c5580 (size 64):
->   comm "kworker/1:0", pid 17, jiffies 4294821091 (age 96.952s)
->   hex dump (first 32 bytes):
->     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
->     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
->   backtrace:
->     [<ad19d10a>] __kmalloc+0x1ec/0x2dc
->     [<a28614c3>] blk_mq_alloc_tag_set+0x27c/0x2bc
->     [<0955ae01>] mmc_init_queue+0xa8/0x2a8
->     [<5102b986>] mmc_blk_alloc_req+0xf8/0x2d4
->     [<f1c2214f>] mmc_blk_probe+0x4a8/0x6c0
->     [<0dfdd9d5>] mmc_bus_probe+0x24/0x28
->
-> It's pretty clear that we're missing a call to blk_mq_free_tag_set().
-> Let's add it.
->
-> Fixes: 81196976ed94 ("mmc: block: Add blk-mq support")
-> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+This patchset depends on the "iommu/vt-d: Delegate DMA domain to generic iommu" and
+"iommu/amd: Convert the AMD iommu driver to the dma-iommu api" patch sets which haven't
+yet merged so this is just a RFC to get some feedback before I do more testing.
 
-Looks correct to me:
-Reviewed-by: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Tom Murphy (7):
+  iommu/vt-d: Set the dma_ops per device so we can remove the
+    iommu_no_mapping code
+  iommu/vt-d: Remove iova handling code from non-dma ops path
+  iommu: improve iommu iotlb flushing
+  iommu/dma-iommu: Handle freelists in the dma-iommu api path
+  iommu/dma-iommu: add wrapper for iommu_dma_free_cpu_cached_iovas
+  iommu/vt-d: convert the intel iommu driver to the dma-iommu ops api
+  iommu/vt-d: Always set DMA_PTE_READ if the iommu doens't support zero
+    length reads
 
-Yours,
-Linus Walleij
+ drivers/iommu/Kconfig           |   1 +
+ drivers/iommu/amd_iommu.c       |  14 +-
+ drivers/iommu/arm-smmu-v3.c     |   3 +-
+ drivers/iommu/arm-smmu.c        |   2 +-
+ drivers/iommu/dma-iommu.c       |  48 ++-
+ drivers/iommu/exynos-iommu.c    |   3 +-
+ drivers/iommu/intel-iommu.c     | 605 +++++---------------------------
+ drivers/iommu/iommu.c           |  21 +-
+ drivers/iommu/ipmmu-vmsa.c      |   2 +-
+ drivers/iommu/msm_iommu.c       |   2 +-
+ drivers/iommu/mtk_iommu.c       |   3 +-
+ drivers/iommu/mtk_iommu_v1.c    |   3 +-
+ drivers/iommu/omap-iommu.c      |   2 +-
+ drivers/iommu/qcom_iommu.c      |   2 +-
+ drivers/iommu/rockchip-iommu.c  |   2 +-
+ drivers/iommu/s390-iommu.c      |   3 +-
+ drivers/iommu/tegra-gart.c      |   2 +-
+ drivers/iommu/tegra-smmu.c      |   2 +-
+ drivers/vfio/vfio_iommu_type1.c |   3 +-
+ include/linux/dma-iommu.h       |   3 +
+ include/linux/intel-iommu.h     |   1 -
+ include/linux/iommu.h           |  24 +-
+ 22 files changed, 175 insertions(+), 576 deletions(-)
+
+-- 
+2.17.1
