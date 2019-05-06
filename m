@@ -1,43 +1,49 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: [PATCH 2/2] arm64: dts: rockchip: Enable SPI1 on Ficus
-Date: Mon,  6 May 2019 17:34:58 +0530
-Message-ID: <20190506120458.25842-2-manivannan.sadhasivam@linaro.org>
-References: <20190506120458.25842-1-manivannan.sadhasivam@linaro.org>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH 1/2] drm/panel: simple: Add FriendlyELEC HD702E 800x1280
+ LCD panel
+Date: Mon, 6 May 2019 10:04:10 -0500
+Message-ID: <CAL_Jsq+mYy1JF_cM7sD82aLuUSnZnwsSD6-Q-W1uTp+_oSdRmg@mail.gmail.com>
+References: <20190501121448.3812-1-jagan@amarulasolutions.com>
+ <20190501193429.GA9075@ravnborg.org> <CAMty3ZAfwVyvmAmenhrQHJcy3eq-Yb61a4WLop_8jS-7vM940A@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190506120458.25842-1-manivannan.sadhasivam@linaro.org>
+In-Reply-To: <CAMty3ZAfwVyvmAmenhrQHJcy3eq-Yb61a4WLop_8jS-7vM940A@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, ezequiel@collabora.com, tom@vamrs.com, dev@vamrs.com, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: Sam Ravnborg <sam@ravnborg.org>, Heiko Stuebner <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>, linux-amarula <linux-amarula@amarulasolutions.com>, Thierry Reding <thierry.reding@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable SPI1 exposed on both Low and High speed expansion connectors
-of Ficus. SPI1 has 3 different chip selects wired as below:
+On Mon, May 6, 2019 at 4:56 AM Jagan Teki <jagan@amarulasolutions.com> wrote:
+>
+> Hi Sam,
+>
+> On Thu, May 2, 2019 at 1:04 AM Sam Ravnborg <sam@ravnborg.org> wrote:
+> >
+> > Hi Jagan
+> >
+> > On Wed, May 01, 2019 at 05:44:47PM +0530, Jagan Teki wrote:
+> > > HD702E lcd is FriendlyELEC developed eDP LCD panel with 800x1280
+> > > resolution. It has built in Goodix, GT9271 captive touchscreen
+> > > with backlight adjustable via PWM.
+> > >
+> > > Add support for it.
+> > >
+> > > Cc: Thierry Reding <thierry.reding@gmail.com>
+> > > Cc: Sam Ravnborg <sam@ravnborg.org>
+> > > Cc: David Airlie <airlied@linux.ie>
+> > > Cc: Daniel Vetter <daniel@ffwll.ch>
+> > > Cc: dri-devel@lists.freedesktop.org
+> > > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> >
+> > Please submit the binding in a separate patch as per
+> > Documentation/devicetree/bindings/submitting-patches.txt
+>
+> Hmm.. prepared like this initially but few of my patches were combined
+> earlier even-though I sent it separately. anyway let me separate it
+> again.
 
-CS0 - Serial Flash (unpopulated)
-CS1 - Low Speed expansion
-CS2 - High Speed expansion
+For what subsystem? All the maintainers that I was aware of doing that
+have stopped.
 
-Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
----
- arch/arm64/boot/dts/rockchip/rk3399-ficus.dts | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-index 027d428917b8..9baa378fc770 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-@@ -146,6 +146,12 @@
- 	};
- };
- 
-+&spi1 {
-+	/* On both Low speed and High speed expansion */
-+	cs-gpios = <0>, <&gpio4 6 0>, <&gpio4 7 0>;
-+	status = "okay";
-+};
-+
- &usbdrd_dwc3_0 {
- 	dr_mode = "host";
- };
--- 
-2.17.1
+Rob
