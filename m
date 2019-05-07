@@ -1,48 +1,127 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH v2 7/9] Makefile.spl: Create
-	u-boot-spl-rockchip.bin for rk3399
-Date: Tue, 7 May 2019 12:14:28 +0530
-Message-ID: <CAMty3ZBGp-b5rbHiMrFMWzu5Doen_h=2B3sxx_qZtL2SN8Vo8Q@mail.gmail.com>
-References: <20190428090913.10568-1-jagan@amarulasolutions.com>
- <20190428090913.10568-8-jagan@amarulasolutions.com>
- <52ca4f72-fa9c-487a-eb10-a509b5e72539@rock-chips.com>
+From: Artur Petrosyan <Arthur.Petrosyan@synopsys.com>
+Subject: Re: [PATCH v2 1/5] usb: dwc2: bus suspend/resume for hosts with
+ DWC2_POWER_DOWN_PARAM_NONE
+Date: Tue, 7 May 2019 07:05:45 +0000
+Message-ID: <SN1PR12MB243183AAC5636C23144634FBA7310@SN1PR12MB2431.namprd12.prod.outlook.com>
+References: <20190418001356.124334-1-dianders@chromium.org>
+ <20190418001356.124334-2-dianders@chromium.org>
+ <CAD=FV=UGjQz9Di=NL_r_g1Hofqv-FWBywfSm9Vu6gGr22wzPrA@mail.gmail.com>
+ <SN1PR12MB243136608514210F3E3E536EA7350@SN1PR12MB2431.namprd12.prod.outlook.com>
+ <CAD=FV=V97+_cQ1aD=w_a3SifGOG3M5DPvcnvxYVUJMkX_WLTFg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <52ca4f72-fa9c-487a-eb10-a509b5e72539@rock-chips.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: Tom Rini <trini@konsulko.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, Akash Gajjar <akash@openedev.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, linux-amarula <linux-amarula@amarulasolutions.com>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, =?iso-8859-1?Q?Heiko_St=FCbner?= <heiko@sntech.de>, Alan Stern <stern@rowland.harvard.edu>, Alexandru M Stan <amstan@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, William Wu <william.wu@rock-chips.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, Chris <zyw@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, Amelie Delaunay <amelie.delaunay@st.com>, Julius Werner <jwerner@chromium.org>, Elaine Zhang <zhangqing@rock-chips.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, LKML <linux-kernel@vger.kern>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBNYXkgNywgMjAxOSBhdCAxMjowNCBQTSBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJv
-Y2stY2hpcHMuY29tPiB3cm90ZToKPgo+IEhpIEphZ2FuLAo+Cj4gT24gMDQvMjgvMjAxOSAwNTow
-OSBQTSwgSmFnYW4gVGVraSB3cm90ZToKPiA+IFJvY2tjaGlwIHBsYXRmb3JtIHdvdWxkIHJlcXVp
-cmUgYW4gZXhwbGljaXQgY2FsbCB0byBta2ltYWdlIGZvcgo+ID4gY3JlYXRpbmcgYm9vdGFibGUg
-aW1hZ2VzIHdoaWNoIGluZGVlZCBzcGVjaWZpYyB0byBTb0MgZmFtaWx5Cj4gPiBhbG9uZyB3aXRo
-IGJvb3QgZGV2aWNlcy4KPiA+Cj4gPiBFeGFtcGxlIG9mIGNyZWF0aW5nIGJvb3RhYmxlIGltYWdl
-IGZvciByazMzOTkgZmFtaWx5IHdpdGggU0QKPiA+IGJvb3QgZGV2aWNlIGFzCj4gPgo+ID4g4oK5
-IG1raW1hZ2UgLW4gcmszMzk5IC1UIHJrc2QgLWQgLi9zcGwvdS1ib290LXNwbC1kdGIuYmluIHUt
-Ym9vdC1zcGwtcm9ja2NoaXAuYmluCj4gPgo+ID4gVGhpcyBwYXRjaCB3b3VsZCBkbyB0aGUgc2Ft
-ZSB0aGluayB2aWEgTWFrZWZpbGUuc3BsIGZvciByazMzOTkuCj4gPgo+ID4gVGhpcyB3b3VsZCBi
-ZSBhbiBpbml0aWFsIHZlcnNpb24gYW5kIGl0IGNhbiBlYXNpbHkgZXhwYW5kIGZ1cnRoZXIgdG8g
-c3VwcG9ydAo+ID4gb3RoZXIgZmFtaWxpZXMgb2YgU29DJ3Mgd2l0aCB2YXJpZXR5IG9mIGJvb3Qg
-c3RhZ2VzIGxpa2UgVFBMLCBTUEwuCj4KPiAgICAgcmszMzk5IG1heSBoYXZlIFRQTCBsaWtlIG90
-aGVyIFNvQ3MsIGZvciB0aGVyZSB3aWxsIGJlIGltYWdlIHR5cGVzOgo+Cj4gU1BMK3UtYm9vdC5i
-aW4KPgo+IFNQTCt1LWJvb3QuaXRiCj4KPiBUUEwrU1BMK3UtYm9vdC5pdGIKPgo+IFNlZW1zIHRo
-aXMgcGF0Y2ggYW5kIDkvOSBvZiB0aGlzIHBhdGNoIHNldCBvbmx5IGNvdmVyIFNQTCt1LWJvb3Qu
-aXRiPwo+Cj4gSXMgaXQgcG9zc2libGUgdG8gbWFrZSBpdCBtb3JlIGdlbmVyaWM/CgpZZXMsIEkg
-aGF2ZSB3YXRjaGVkIHlvdXIgVFBMIGNoYW5nZXMuIGFuZCB3ZSBjYW4gZXh0ZW5kIHRoaXMgdG8K
-c3VwcG9ydCBUUEwgdG8gbWFrZSBjb21iaW5hdGlvbiBvZiBhbGwgaW1hZ2VzLgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0
-ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJv
-b3QK
+Hi,=0A=
+=0A=
+On 5/3/2019 19:08, Doug Anderson wrote:=0A=
+> Hi,=0A=
+> =0A=
+> On Fri, May 3, 2019 at 1:25 AM Artur Petrosyan=0A=
+> <Arthur.Petrosyan@synopsys.com> wrote:=0A=
+>>=0A=
+>> On 5/2/2019 03:58, Doug Anderson wrote:=0A=
+>>> Hi,=0A=
+>>>=0A=
+>>>=0A=
+>>> On Wed, Apr 17, 2019 at 5:15 PM Douglas Anderson <dianders@chromium.org=
+> wrote:=0A=
+>>>>=0A=
+>>>> This is an attempt to rehash commit 0cf884e819e0 ("usb: dwc2: add bus=
+=0A=
+>>>> suspend/resume for dwc2") on ToT.  That commit was reverted in commit=
+=0A=
+>>>> b0bb9bb6ce01 ("Revert "usb: dwc2: add bus suspend/resume for dwc2"")=
+=0A=
+>>>> because apparently it broke the Altera SOCFPGA.=0A=
+>>>>=0A=
+>>>> With all the changes that have happened to dwc2 in the meantime, it's=
+=0A=
+>>>> possible that the Altera SOCFPGA will just magically work with this=0A=
+>>>> change now.  ...and it would be good to get bus suspend/resume=0A=
+>>>> implemented.=0A=
+>>>>=0A=
+>>>> This change is a forward port of one that's been living in the Chrome=
+=0A=
+>>>> OS 3.14 kernel tree.=0A=
+>>>>=0A=
+>>>> Signed-off-by: Douglas Anderson <dianders@chromium.org>=0A=
+>>>> ---=0A=
+>>>> This patch was last posted at:=0A=
+>>>>=0A=
+>>>> https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__lkml.kernel.org=
+_r_1446237173-2D15263-2D1-2Dgit-2Dsend-2Demail-2Ddianders-40chromium.org&d=
+=3DDwIBaQ&c=3DDPL6_X_6JkXFx7AXWqB0tg&r=3D9hPBFKCJ_nBjJhGVrrlYOeOQjP_HlVzYqr=
+C_D7niMJI&m=3D7rxT8EFX9mqUDtTL4P7iuzYNsYROe9rxHGCresSKPTg&s=3DlTaNUA2XIYPat=
+417fkd1A4Zpvb5eyYtTc1H_NIfW8Vw&e=3D=0A=
+>>>>=0A=
+>>>> ...and appears to have died the death of silence.  Maybe it could get=
+=0A=
+>>>> some bake time in linuxnext if we can't find any proactive testing?=0A=
+>>>>=0A=
+>>>> I will also freely admit that I don't know tons about the theory=0A=
+>>>> behind this patch.  I'm mostly just re-hashing the original commit=0A=
+>>>> from Kever that was reverted since:=0A=
+>>>> * Turning on partial power down on rk3288 doesn't "just work".  I=0A=
+>>>>     don't get hotplug events.  This is despite dwc2 auto-detecting tha=
+t=0A=
+>>>>     we are power optimized.=0A=
+>>>> * If we don't do something like this commit we don't get into as low=
+=0A=
+>>>>     of a power mode.=0A=
+>>>=0A=
+>>> OK, I spent the day digging more into this patch to confirm that it's=
+=0A=
+>>> really the right thing to do.  ...and it still seems to be.=0A=
+>>>=0A=
+>>> First off: I'm pretty sure the above sentence "If we don't do=0A=
+>>> something like this commit we don't get into as low of a power mode."=
+=0A=
+>>> is totally wrong.  Luckily it's "after the cut" and not part of the=0A=
+>>> commit message.  Specifically I did a bunch of power testing and I=0A=
+>>> couldn't find any instance saving power after this patch.=0A=
+>>>=0A=
+>>> ...but, then I looked more carefully at all the history of this=0A=
+>>> commit.  I ended up at:=0A=
+>>>=0A=
+>>> https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__chromium-2Drevie=
+w.googlesource.com_c_chromiumos_third-5Fparty_kernel_-2B_306265_&d=3DDwIBaQ=
+&c=3DDPL6_X_6JkXFx7AXWqB0tg&r=3D9hPBFKCJ_nBjJhGVrrlYOeOQjP_HlVzYqrC_D7niMJI=
+&m=3D7rxT8EFX9mqUDtTL4P7iuzYNsYROe9rxHGCresSKPTg&s=3DLiyyIyaCPmr88nJeI7TCGt=
+oJBFLRWir_reikYtAHHDw&e=3D=0A=
+>> Looking at this code review I see that this patch fixes whatever issues=
+=0A=
+>> you have on Chrome OS 3.14. But your patch has landed on the top of=0A=
+>> latest Kernel version. With the latest version I think you would not=0A=
+>> have the regression issue.=0A=
+>> So you are fixing Chrome OS 3.14.=0A=
+> =0A=
+> I'm confused why you ignored the rest of my email where I said I also=0A=
+> ported it to 4.19 (which, from a dwc2 host point of view, is pretty=0A=
+> much mainline) and saw that the patch was still needed.=0A=
+I didn't ignore it just I had to perform testes and reply to it with =0A=
+another email.=0A=
+> =0A=
+> -Doug=0A=
+> =0A=
+I spent yesterday debugging and performing testes with Linux Mainline. =0A=
+So when we don't have any of power saving modes supported and the =0A=
+power_down is DWC2_POWER_DOWN_PARAM_NONE. We can set "PCGCTL_STOPPCLK" =0A=
+bit whenever there is suspend ( Checked the programming guide and data =0A=
+book). I have not seen any case that this affects the flow. I have not =0A=
+been able to see if after setting "PCGCTL_STOPPCLK" bit there is any =0A=
+power saved or driver behaved differently. Maybe it is platform depended =
+=0A=
+. However, there is a possibility that this might save power.=0A=
+=0A=
+So as this is not breaking anything. I am ok with this patch.=0A=
+=0A=
+-- =0A=
+Regards,=0A=
+Artur=0A=
