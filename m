@@ -1,87 +1,35 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Enable SPI1 on Ficus
-Date: Tue, 07 May 2019 13:59:23 +0200
-Message-ID: <111262745.IyAHIOZrRb@phil>
-References: <20190506120458.25842-1-manivannan.sadhasivam@linaro.org> <2127870.SxaTtWf5LP@phil> <20190507113635.GB309@Mani-XPS-13-9360>
+Subject: Re: [PATCH] ARM: dts: rockchip: Remove bogus 'i2s_clk_out' from rk3288-veyron-mickey
+Date: Tue, 07 May 2019 14:01:01 +0200
+Message-ID: <2275852.0beATWnSof@phil>
+References: <20190503234814.230901-1-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190507113635.GB309@Mani-XPS-13-9360>
+In-Reply-To: <20190503234814.230901-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, ezequiel@collabora.com, tom@vamrs.com, dev@vamrs.com
+To: Douglas Anderson <dianders@chromium.org>
+Cc: linux-rockchip@lists.infradead.org, briannorris@chromium.org, mka@chromium.org, amstan@chromium.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 7. Mai 2019, 13:36:35 CEST schrieb Manivannan Sadhasivam:
-> On Tue, May 07, 2019 at 01:22:03PM +0200, Heiko Stuebner wrote:
-> > Am Montag, 6. Mai 2019, 14:04:58 CEST schrieb Manivannan Sadhasivam:
-> > > Enable SPI1 exposed on both Low and High speed expansion connectors
-> > > of Ficus. SPI1 has 3 different chip selects wired as below:
-> > > 
-> > > CS0 - Serial Flash (unpopulated)
-> > > CS1 - Low Speed expansion
-> > > CS2 - High Speed expansion
-> > > 
-> > > Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> > > ---
-> > >  arch/arm64/boot/dts/rockchip/rk3399-ficus.dts | 6 ++++++
-> > >  1 file changed, 6 insertions(+)
-> > > 
-> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-> > > index 027d428917b8..9baa378fc770 100644
-> > > --- a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-> > > +++ b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-> > > @@ -146,6 +146,12 @@
-> > >  	};
-> > >  };
-> > >  
-> > > +&spi1 {
-> > > +	/* On both Low speed and High speed expansion */
-> > > +	cs-gpios = <0>, <&gpio4 6 0>, <&gpio4 7 0>;
-> > 
-> > cs0 should still be part of the cs-gpios though (gpio1 RK_PB2).
-> > The flash is part of the schematics, so there might be board with
-> > it pre-populated or people might put a flash chip on it.
-> > 
+Am Samstag, 4. Mai 2019, 01:48:14 CEST schrieb Douglas Anderson:
+> The rk3288-veyron-mickey device tree overrides the default "i2s" clock
+> settings to add the clock for "i2s_clk_out".
 > 
-> Why? CS0 is owned by the SPI controller itself, so we can't use it as
-> a GPIO. Otherwise, we need to change the pinctrl definition of it, which
-> doesn't look good to me.
-
-Ok, but are you sure mixing both pinctrl-based chip-select with gpio-based
-chip-select will actually work when the spi-flash is populated?
-
-But it looks like you're right in that spi_set_cs() checks for a gpio-cs
-first and falls back to the controller-based chip-select.
-
-So I guess this can stay as it is.
-
+> That clock is only present in the bindings downstream Chrome OS 3.14
+> tree.  Upstream the i2s port bindings doesn't specify that as a
+> possible clock.
 > 
-> > Also please use the constants for pin specification (RK_PA6, RK_PA7 above)
-> > 
+> Let's remove it.
 > 
-> Sure.
+> NOTE: for other rk3288-veyron devices this clock is consumed by
+> 'maxim,max98090'.  Presumably if this clock is needed for mickey it'll
+> need to be consumed by something similar.
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+
+applied for 5.3 with Matthias' rb.
 
 Thanks
 Heiko
-
-> 
-> Thanks,
-> Mani
-> 
-> > 
-> > Heiko
-> > 
-> > > +	status = "okay";
-> > > +};
-> > > +
-> > >  &usbdrd_dwc3_0 {
-> > >  	dr_mode = "host";
-> > >  };
-> > > 
-> > 
-> > 
-> > 
-> > 
-> 
