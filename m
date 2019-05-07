@@ -1,195 +1,83 @@
-From: Artur Petrosyan <Arthur.Petrosyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 1/5] usb: dwc2: bus suspend/resume for hosts with
- DWC2_POWER_DOWN_PARAM_NONE
-Date: Tue, 7 May 2019 07:26:59 +0000
-Message-ID: <SN1PR12MB2431A37C761DA0BAAEF45F30A7310@SN1PR12MB2431.namprd12.prod.outlook.com>
-References: <20190418001356.124334-1-dianders@chromium.org>
- <20190418001356.124334-2-dianders@chromium.org>
- <SN1PR12MB243108D1EF3239EC4F730ACDA7390@SN1PR12MB2431.namprd12.prod.outlook.com>
- <CAD=FV=UOmfNeuZPrDcZRdwAkF4yRifCpBGUuZTsmmz0UVEZ+yA@mail.gmail.com>
- <SN1PR12MB24317F315C5A4DFE70F9CB0DA73A0@SN1PR12MB2431.namprd12.prod.outlook.com>
- <CAD=FV=UWGOWiCpy5qUY8oFHPyxdYJe7OsdWBDuCNcXBu5BJoGA@mail.gmail.com>
- <SN1PR12MB243156982D5BD74F11680597A7350@SN1PR12MB2431.namprd12.prod.outlook.com>
- <CAD=FV=XzsKe5n_ThcrByW79UznpkmHf0YNRNKH8G3eFtUSsYZQ@mail.gmail.com>
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Subject: Re: [PATCH v6 09/13] rockchip: rk3399: Add Nanopc T4 board
+	support
+Date: Tue, 07 May 2019 11:12:34 +0200
+Message-ID: <b250ecbc4cb638f36f25e9f14860cf5a99c31621.camel@bootlin.com>
+References: <20190427114852.7608-1-jagan@amarulasolutions.com>
+ <20190427114852.7608-10-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, Amelie Delaunay <amelie.delaunay-qxv4g6HH51o@public.gmane.org>, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, "amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "ryandcase-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <ryandcase-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org" <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>, heiko@sntec
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20190427114852.7608-10-jagan@amarulasolutions.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, Akash Gajjar <akash@openedev.com>, Tom Rini <trini@konsulko.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
 List-Id: linux-rockchip.vger.kernel.org
 
-On 5/3/2019 19:04, Doug Anderson wrote:
-> Hi,
-> 
-> On Fri, May 3, 2019 at 1:20 AM Artur Petrosyan
-> <Arthur.Petrosyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
->>
->> On 5/1/2019 05:57, Doug Anderson wrote:
->>> Hi,
->>>
->>> On Mon, Apr 29, 2019 at 11:06 PM Artur Petrosyan
->>> <Arthur.Petrosyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
->>>>
->>>> Hi,
->>>>
->>>> On 4/29/2019 21:34, Doug Anderson wrote:
->>>>> Hi,
->>>>>
->>>>> On Mon, Apr 29, 2019 at 1:43 AM Artur Petrosyan
->>>>> <Arthur.Petrosyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
->>>>>>
->>>>>> Hi,
->>>>>>
->>>>>> On 4/18/2019 04:15, Douglas Anderson wrote:
->>>>>>> This is an attempt to rehash commit 0cf884e819e0 ("usb: dwc2: add bus
->>>>>>> suspend/resume for dwc2") on ToT.  That commit was reverted in commit
->>>>>>> b0bb9bb6ce01 ("Revert "usb: dwc2: add bus suspend/resume for dwc2"")
->>>>>>> because apparently it broke the Altera SOCFPGA.
->>>>>>>
->>>>>>> With all the changes that have happened to dwc2 in the meantime, it's
->>>>>>> possible that the Altera SOCFPGA will just magically work with this
->>>>>>> change now.  ...and it would be good to get bus suspend/resume
->>>>>>> implemented.
->>>>>>>
->>>>>>> This change is a forward port of one that's been living in the Chrome
->>>>>>> OS 3.14 kernel tree.
->>>>>>>
->>>>>>> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->>>>>>> ---
->>>>>>> This patch was last posted at:
->>>>>>>
->>>>>>> https://urldefense.proofpoint.com/v2/url?u=https-3A__lkml.kernel.org_r_1446237173-2D15263-2D1-2Dgit-2Dsend-2Demail-2Ddianders-40chromium.org&d=DwIDAg&c=DPL6_X_6JkXFx7AXWqB0tg&r=9hPBFKCJ_nBjJhGVrrlYOeOQjP_HlVzYqrC_D7niMJI&m=MMfe-4lZePyty6F5zfQ54kiYGuJWNulyRat944LkOsc&s=nExFpAPP_0plZfO5LMG1B-mqt1vyCvE35elVcyVgs8Y&e=
->>>>>>>
->>>>>>> ...and appears to have died the death of silence.  Maybe it could get
->>>>>>> some bake time in linuxnext if we can't find any proactive testing?
->>>>>>>
->>>>>>> I will also freely admit that I don't know tons about the theory
->>>>>>> behind this patch.  I'm mostly just re-hashing the original commit
->>>>>>> from Kever that was reverted since:
->>>>>>> * Turning on partial power down on rk3288 doesn't "just work".  I
->>>>>>>       don't get hotplug events.  This is despite dwc2 auto-detecting that
->>>>>>>       we are power optimized.
->>>>>> What do you mean by doesn't "just work" ? It seem to me that even after
->>>>>> adding this patch you don't get issues fixed.
->>>>>> You mention that you don't get the hotplug events. Please provide dwc2
->>>>>> debug logs and register dumps on this issue.
->>>>>
->>>>> I mean that partial power down in the currently upstream driver
->>>>> doesn't work.  AKA: if I turn on partial power down in the upstream
->>>>> driver then hotplug events break.  I can try to provide some logs.  On
->>>>> what exact version of the code do you want logs?  Just your series?
->>>>> Just my series?  Mainline?  Some attempt at combining both series?  As
->>>>> I said things seem to sorta work with the combined series.  I can try
->>>>> to clarify if that's the series you want me to test with.  ...or I can
->>>>> wait for your next version?
->>>> As I said this patch doesn't fix the issue with hotplug. With this patch
->>>> or without the hotplug behaves as it was. I have tested it on our setup.
->>>>
->>>> Have you debugged your patch? Does it make any difference on your setup
->>>> ? Does it fix the issue with hotplug?
->>>
->>> I think we're still not taking on the same page.
->>>
->>> My patch makes no attempt to make partial power down mode work.  My
->>> patch attempts to make things work a little better when using
->>> DWC2_POWER_DOWN_PARAM_NONE.  There is no use testing my patch with
->>> partial power down as it shouldn't have any impact there.
->>>
->>>
->>>>> I am by no means an expert on dwc2, but an assumption made in my patch
->>>>> is that even cores that can't support partial power down can still
->>>>> save some amount of power when hcd_suspend is called.
->>>> Have you tried to debug dwc2 with power_down == DWC2_POWER_DOWN_PARAM_NONE ?
->>>>>
->>>>> Some evidence that this should be possible: looking at mainline Linux
->>>>> and at dwc2_port_suspend(), I see:
->>>>>
->>>>> * It is currently called even when we have DWC2_POWER_DOWN_PARAM_NONE
->>>> Currently (without your and my patches) (looking at mainline Linux) the
->>>> function dwc2_port_suspend() is called anyway because its call is issued
->>>> by the system. But it performs entering to suspend only in case of
->>>> DWC2_POWER_DOWN_PARAM_PARTIAL.
->>>>
->>>> This is not an assumption. What I am pointing out is based on debugging
->>>> and before making assumptions without debugging for me seems not ok.
->>>>
->>>> Currently without your patch and without my patches. In the
->>>> dwc2_port_suspend() it will enter to suspend only in case that
->>>> power_down == DWC2_POWER_DOWN_PARAM_PARTIAL. Because if you look at the
->>>> code more carefully you will see
->>>>
->>>>           if (hsotg->params.power_down != DWC2_POWER_DOWN_PARAM_PARTIAL)
->>>>                   goto skip_power_saving;
->>>>
->>>> This says if power_down is not DWC2_POWER_DOWN_PARAM_PARTIAL then skip
->>>> power saving.
->>>>
->>>> So but after your patch. If power_down is DWC2_POWER_DOWN_PARAM_NONE it
->>>> tries to suspend.
->>>
->>> We must be looking at different code.  I'm looking at Linux's tree, AKA:
->>>
->>> https://urldefense.proofpoint.com/v2/url?u=https-3A__git.kernel.org_pub_scm_linux_kernel_git_torvalds_linux.git_tree_drivers_usb_dwc2_hcd.c-23n3488&d=DwIFaQ&c=DPL6_X_6JkXFx7AXWqB0tg&r=9hPBFKCJ_nBjJhGVrrlYOeOQjP_HlVzYqrC_D7niMJI&m=IWkDOOGTr0q-H1piDv2KOZe_Hnrz18g6rXFx-DsTuv4&s=AHu2iOKkybliRGtIfN7cF5p070UdvUKTYJsyAKYojis&e=
->> Here you are looking at the old code. After that there are several of
->> changes related to suspend/resume functions.
-> 
-> In my email, see that I said I actually checked out mainline kernel
-> (and I gave you the exact version: "v5.1-rc7-5-g83a50840e72a") and
-> added printouts in dwc2_port_suspend() next to where it set HPRT0_SUSP
-> and PCGCTL_STOPPCLK in dwc2_port_suspend().
-I was talking about your patch which edits _dwc2_hcd_suspend() function.
-What dwc2_port_suspend() implements for the hibernation or partial power 
-down I have not tested. It is a different implementation.
-> 
-> [  454.906364] dwc2 ff540000.usb: I'm setting HPRT0_SUSP
-> [  454.906367] dwc2 ff540000.usb: I'm setting PCGCTL_STOPPCLK
-> 
-> The version "v5.1-rc7-5-g83a50840e72a" is not old code.
-> 
-> 
->> This is the link to the code with changes. Latest version of those
->> functions.
->>
->> https://urldefense.proofpoint.com/v2/url?u=https-3A__git.kernel.org_pub_scm_linux_kernel_git_torvalds_linux.git_tree_drivers_usb_dwc2_hcd.c-23n4489&d=DwIFaQ&c=DPL6_X_6JkXFx7AXWqB0tg&r=9hPBFKCJ_nBjJhGVrrlYOeOQjP_HlVzYqrC_D7niMJI&m=4lskGlSdN5lp0MXVy1SP0zxzFtbPMSUoQKQzLLmfoOg&s=A-ikUNQklzouItTOQB078WrOiMcfCqgw8sBgLFwtyTU&e=
->>
->> Your changes are sitting on that latest version of code. Not the old
->> version of it.
-> 
-> You are pointing me at _dwc2_hcd_suspend() whereas I pointed at
-> dwc2_port_suspend().  Why?
-Because your patch is editing _dwc2_hcd_suspend().
-> 
-> I am saying that dwc2_port_suspend() _does_ set "HPRT0_SUSP" and
-> "PCGCTL_STOPPCLK" even with DWC2_POWER_DOWN_PARAM_NONE.  Do you
-> disagree?
-Yes dwc2_port_suspend() does but that is a different implementation
-> 
-> I completely agree that on mainline _dwc2_hcd_suspend() _does not_ set
-> these bits with DWC2_POWER_DOWN_PARAM_NONE.  That is what my patch
-> fixes.
-Yes so I was pointing to that.
-> 
-> 
-> -Doug
-> 
-
-I have performed testes and made sure that the patch is ok. It is just 
-that I am not sure if it does really save power. I have not been able to 
-see if any power is saved.
-
-So I am ok with this patch.
-
--- 
-Regards,
-Artur
+SGksCgpPbiBTYXQsIDIwMTktMDQtMjcgYXQgMTc6MTggKzA1MzAsIEphZ2FuIFRla2kgd3JvdGU6
+Cj4gZGlmZiAtLWdpdCBhL2JvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvTUFJTlRBSU5FUlMgYi9i
+b2FyZC9yb2NrY2hpcC9ldmJfcmszMzk5L01BSU5UQUlORVJTCj4gaW5kZXggYWU0MzgwNWE2YS4u
+NTkxN2FiYjljMSAxMDA2NDQKPiAtLS0gYS9ib2FyZC9yb2NrY2hpcC9ldmJfcmszMzk5L01BSU5U
+QUlORVJTCj4gKysrIGIvYm9hcmQvcm9ja2NoaXAvZXZiX3JrMzM5OS9NQUlOVEFJTkVSUwo+IEBA
+IC02LDYgKzYsMTIgQEAgRjogICAgICBpbmNsdWRlL2NvbmZpZ3MvZXZiX3JrMzM5OS5oCj4gIEY6
+ICAgICAgY29uZmlncy9ldmItcmszMzk5X2RlZmNvbmZpZwo+ICBGOiAgICAgIGNvbmZpZ3MvZmly
+ZWZseS1yazMzOTlfZGVmY29uZmlnCj4gIAo+ICtOQU5PUEMtVDQKPiArTToJSmFnYW4gVGVraSA8
+amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gK1M6CU1haW50YWluZWQKPiArRjoJY29uZmln
+cy9uYW5vcGljLXQ0LXJrMzM5OV9kZWZjb25maWcKPiArRjoJYXJjaC9hcm0vZHRzL3JrMzM5OS1u
+YW5vcGljLXQ0LXUtYm9vdC5kdHNpCj4gKwoKTWhoLCBJIGZlZWwgbGlrZSBlYWNoIG5ldyBib2Fy
+ZCB0aGF0IHlvdSBhcmUgaW50cm9kdWNpbmcgc2hvdWxkIGhhdmUKaXRzIG93biBib2FyZCBkaXJl
+Y3RvcnkgLS0gdGhpcyBib2FyZCBpcyBkZWZpbml0ZWx5IG5vdCBhIHJrMzM5OSBldmIKbWFkZSBi
+eSByb2NrY2hpcCwgYnV0IGFub3RoZXIgYm9hcmQuCgpJIGhhdmUgYWxyZWFkeSBwYXRjaGVzIHRv
+IHNwbGl0IHRoYXQgZm9yIHRoZSBmaXJlZmx5LXJrMzM5OSwgYnV0IEkKY2Fubm90IHJlYWxseSB0
+ZXN0IHRoZW0gb3V0c2lkZSBvZiBidWlsZGluZy4KCj4gIE5BTk9QSS1NNAo+ICBNOglKYWdhbiBU
+ZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KPiAgUzoJTWFpbnRhaW5lZAo+IGRpZmYg
+LS1naXQgYS9jb25maWdzL25hbm9wYy10NC1yazMzOTlfZGVmY29uZmlnIGIvY29uZmlncy9uYW5v
+cGMtdDQtcmszMzk5X2RlZmNvbmZpZwo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAw
+MDAwMDAwMC4uN2JhNGY4NTQ4NQo+IC0tLSAvZGV2L251bGwKPiArKysgYi9jb25maWdzL25hbm9w
+Yy10NC1yazMzOTlfZGVmY29uZmlnCj4gQEAgLTAsMCArMSw1OCBAQAoKQWxzbyBJIGRvbid0IHNl
+ZSB3aGljaCBUQVJHRVQgaXMgc2VsZWN0ZWQgaGVyZSwgaXMgdGhlcmUgYSBmYWxsYmFjayBvbgp0
+aGUgUkszMzk5IEVWQiBmb3IgdGhlIHJrMzM5OSBwbGF0Zm9ybT8KCkNoZWVycywKClBhdWwKCj4g
+K0NPTkZJR19BUk09eQo+ICtDT05GSUdfQVJDSF9ST0NLQ0hJUD15Cj4gK0NPTkZJR19TWVNfVEVY
+VF9CQVNFPTB4MDAyMDAwMDAKPiArQ09ORklHX1NQTF9MSUJDT01NT05fU1VQUE9SVD15Cj4gK0NP
+TkZJR19TUExfTElCR0VORVJJQ19TVVBQT1JUPXkKPiArQ09ORklHX1NZU19NQUxMT0NfRl9MRU49
+MHg0MDAwCj4gK0NPTkZJR19ST0NLQ0hJUF9SSzMzOTk9eQo+ICtDT05GSUdfUk9DS0NISVBfU1BM
+X1JFU0VSVkVfSVJBTT0weDQwMDAKPiArQ09ORklHX0RFQlVHX1VBUlRfQkFTRT0weEZGMUEwMDAw
+Cj4gK0NPTkZJR19ERUJVR19VQVJUX0NMT0NLPTI0MDAwMDAwCj4gK0NPTkZJR19TUExfU1RBQ0tf
+Ul9BRERSPTB4ODAwMDAKPiArQ09ORklHX0RFQlVHX1VBUlQ9eQo+ICtDT05GSUdfTlJfRFJBTV9C
+QU5LUz0xCj4gK0NPTkZJR19ERUZBVUxUX0ZEVF9GSUxFPSJyb2NrY2hpcC9yazMzOTktbmFub3Bj
+LXQ0LmR0YiIKPiArIyBDT05GSUdfRElTUExBWV9DUFVJTkZPIGlzIG5vdCBzZXQKPiArQ09ORklH
+X0RJU1BMQVlfQk9BUkRJTkZPX0xBVEU9eQo+ICtDT05GSUdfU1BMX1NUQUNLX1I9eQo+ICtDT05G
+SUdfU1BMX1NUQUNLX1JfTUFMTE9DX1NJTVBMRV9MRU49MHg0MDAwCj4gK0NPTkZJR19DTURfQk9P
+VFo9eQo+ICtDT05GSUdfQ01EX0dQVD15Cj4gK0NPTkZJR19DTURfTU1DPXkKPiArQ09ORklHX0NN
+RF9TRj15Cj4gK0NPTkZJR19DTURfVVNCPXkKPiArIyBDT05GSUdfQ01EX1NFVEVYUFIgaXMgbm90
+IHNldAo+ICtDT05GSUdfQ01EX1RJTUU9eQo+ICtDT05GSUdfU1BMX09GX0NPTlRST0w9eQo+ICtD
+T05GSUdfREVGQVVMVF9ERVZJQ0VfVFJFRT0icmszMzk5LW5hbm9wYy10NCIKPiArQ09ORklHX09G
+X1NQTF9SRU1PVkVfUFJPUFM9InBpbmN0cmwtMCBwaW5jdHJsLW5hbWVzIGNsb2NrLW5hbWVzIGlu
+dGVycnVwdC1wYXJlbnQgYXNzaWduZWQtY2xvY2tzIGFzc2lnbmVkLWNsb2NrLXJhdGVzIGFzc2ln
+bmVkLWNsb2NrLXBhcmVudHMiCj4gK0NPTkZJR19FTlZfSVNfSU5fTU1DPXkKPiArQ09ORklHX1JP
+Q0tDSElQX0dQSU89eQo+ICtDT05GSUdfU1lTX0kyQ19ST0NLQ0hJUD15Cj4gK0NPTkZJR19NTUNf
+RFc9eQo+ICtDT05GSUdfTU1DX0RXX1JPQ0tDSElQPXkKPiArQ09ORklHX01NQ19TREhDST15Cj4g
+K0NPTkZJR19NTUNfU0RIQ0lfUk9DS0NISVA9eQo+ICtDT05GSUdfRE1fRVRIPXkKPiArQ09ORklH
+X0VUSF9ERVNJR05XQVJFPXkKPiArQ09ORklHX0dNQUNfUk9DS0NISVA9eQo+ICtDT05GSUdfUE1J
+Q19SSzhYWD15Cj4gK0NPTkZJR19SRUdVTEFUT1JfUFdNPXkKPiArQ09ORklHX1JFR1VMQVRPUl9S
+SzhYWD15Cj4gK0NPTkZJR19QV01fUk9DS0NISVA9eQo+ICtDT05GSUdfQkFVRFJBVEU9MTUwMDAw
+MAo+ICtDT05GSUdfREVCVUdfVUFSVF9TSElGVD0yCj4gK0NPTkZJR19TWVNSRVNFVD15Cj4gK0NP
+TkZJR19VU0I9eQo+ICtDT05GSUdfVVNCX1hIQ0lfSENEPXkKPiArQ09ORklHX1VTQl9YSENJX0RX
+QzM9eQo+ICtDT05GSUdfVVNCX0VIQ0lfSENEPXkKPiArQ09ORklHX1VTQl9FSENJX0dFTkVSSUM9
+eQo+ICtDT05GSUdfVVNCX0hPU1RfRVRIRVI9eQo+ICtDT05GSUdfVVNCX0VUSEVSX0FTSVg9eQo+
+ICtDT05GSUdfVVNCX0VUSEVSX0FTSVg4ODE3OT15Cj4gK0NPTkZJR19VU0JfRVRIRVJfTUNTNzgz
+MD15Cj4gK0NPTkZJR19VU0JfRVRIRVJfUlRMODE1Mj15Cj4gK0NPTkZJR19VU0JfRVRIRVJfU01T
+Qzk1WFg9eQo+ICtDT05GSUdfVVNFX1RJTllfUFJJTlRGPXkKPiArQ09ORklHX0VSUk5PX1NUUj15
+Ci0tIApQYXVsIEtvY2lhbGtvd3NraSwgQm9vdGxpbgpFbWJlZGRlZCBMaW51eCBhbmQga2VybmVs
+IGVuZ2luZWVyaW5nCmh0dHBzOi8vYm9vdGxpbi5jb20KCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3Rz
+LmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
