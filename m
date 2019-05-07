@@ -1,98 +1,84 @@
-From: Frank Rowand <frowand.list@gmail.com>
-Subject: Re: [PATCH] pstore/ram: Improve backward compatibility with older
- Chromebooks
-Date: Tue, 7 May 2019 15:23:38 -0700
-Message-ID: <90974ece-ab3a-7f5a-7d71-bd8a0d1d5aec@gmail.com>
-References: <20190503174730.245762-1-dianders@chromium.org>
- <CAGXu5jL9cJ+8scZ+Cg9yqdc9+rb563xs-qVjXXuPRJYjNa4Y8w@mail.gmail.com>
- <CAD=FV=WcjfUwH62bHVELOmzViv7d329r6+HfPqAyXMjKCO7LeQ@mail.gmail.com>
- <30361ae7-36a6-0858-77ec-40493ef44b98@gmail.com>
- <CAD=FV=U5heONCv=W5x6cL_JAmJaeDrjMa0CnQ=UVu+DTZZBNKQ@mail.gmail.com>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] phy: rockchip-dp: Avoid power leak by leaving the PHY power on
+Date: Tue,  7 May 2019 16:48:56 -0700
+Message-ID: <20190507234857.81414-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=U5heONCv=W5x6cL_JAmJaeDrjMa0CnQ=UVu+DTZZBNKQ@mail.gmail.com>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Kees Cook <keescook@chromium.org>, Rob Herring <robh@kernel.org>, Anton Vorontsov <anton@enomsg.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, Guenter Roeck <groeck@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Brian Norris <briannorris@chromium.org>, Colin Cross <ccross@android.com>, Tony Luck <tony.luck@intel.com>, LKML <linux-kernel@vger.kernel.org>
+To: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: hl@rock-chips.com, linux-rockchip@lists.infradead.org, dbasehore@chromium.org, mka@chromium.org, ryandcase@chromium.org, groeck@chromium.org, Elaine Zhang <zhangqing@rock-chips.com>, wxt@rock-chips.com, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
+While testing a newer kernel on rk3288-based Chromebooks I found that
+the power draw in suspend was higher on newer kernels compared to the
+downstream Chrome OS 3.14 kernel.  Specifically the power of an
+rk3288-veyron-jerry board that I tested (as measured by the smart
+battery) was ~16 mA on Chrome OS 3.14 and ~21 mA on a newer kernel.
 
-On 5/7/19 3:19 PM, Doug Anderson wrote:
-> Hi,
-> 
-> On Tue, May 7, 2019 at 3:17 PM Frank Rowand <frowand.list@gmail.com> wrote:
->>
->> On 5/6/19 4:58 PM, Doug Anderson wrote:
->>> Hi,
->>>
->>> On Mon, May 6, 2019 at 2:10 PM Kees Cook <keescook@chromium.org> wrote:
->>>>
->>>> From: Douglas Anderson <dianders@chromium.org>
->>>> Date: Fri, May 3, 2019 at 10:48 AM
->>>> To: Kees Cook, Anton Vorontsov
->>>> Cc: <linux-rockchip@lists.infradead.org>, <jwerner@chromium.org>,
->>>> <groeck@chromium.org>, <mka@chromium.org>, <briannorris@chromium.org>,
->>>> Douglas Anderson, Colin Cross, Tony Luck,
->>>> <linux-kernel@vger.kernel.org>
->>>>
->>>>> When you try to run an upstream kernel on an old ARM-based Chromebook
->>>>> you'll find that console-ramoops doesn't work.
->>>>>
->>>>> Old ARM-based Chromebooks, before <https://crrev.com/c/439792>
->>>>> ("ramoops: support upstream {console,pmsg,ftrace}-size properties")
->>>>> used to create a "ramoops" node at the top level that looked like:
->>>>>
->>>>> / {
->>>>>   ramoops {
->>>>>     compatible = "ramoops";
->>>>>     reg = <...>;
->>>>>     record-size = <...>;
->>>>>     dump-oops;
->>>>>   };
->>>>> };
->>>>>
->>>>> ...and these Chromebooks assumed that the downstream kernel would make
->>>>> console_size / pmsg_size match the record size.  The above ramoops
->>>>> node was added by the firmware so it's not easy to make any changes.
->>>>>
->>>>> Let's match the expected behavior, but only for those using the old
->>>>> backward-compatible way of working where ramoops is right under the
->>>>> root node.
->>>>>
->>>>> NOTE: if there are some out-of-tree devices that had ramoops at the
->>>>> top level, left everything but the record size as 0, and somehow
->>>>> doesn't want this behavior, we can try to add more conditions here.
->>>>>
->>>>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
->>>>
->>>> I like this; thanks! Rob is this okay by you? I just want to
->>>> double-check since it's part of the DT parsing logic.
->>>>
->>>> I'll pick it up and add a Cc: stable.
->>>
->>> Hold off a second--I may need to send out a v2 but out of time for the
->>> day.  I think I need a #include file to fix errors on x86:
->>>
->>>> implicit declaration of function 'of_node_is_root' [-Werror,-Wimplicit-function-declaration
->>
->> Instead of checking "of_node_is_root(parent_node)" the patch could check
->> for parent_node not "/reserved-memory".  Then the x86 error would not
->> occur.
->>
->> The check I am suggesting is not as precise, but it should be good enough
->> for this case, correct?
-> 
-> Sure, there are a million different ways to slice it.  If you prefer
-> that instead of adding a dummy of_node_is_root() I'm happy to do that.
+I tracked the regression down to the fact that the "DP PHY" driver
+didn't exist in our downstream 3.14.  We relied on the eDP driver to
+turn on the clock and relied on the fact that the power for the PHY
+was default turned on.
 
-Yes, I would prefer to avoid adding a dummy of_node_is_root() if the
-alternative is reasonable (and if I understand, you are saying the
-alternative is reasonable).
+Specifically the thing that caused the power regression was turning
+the eDP PHY _off_.  Presumably there is some sort of power leak in the
+system and when we turn the PHY off something is leaching power from
+something else and causing excessive power draw.
 
-Thanks,
+Doing a search through device trees shows that this PHY is only ever
+used on rk3288.  Presumably this power leak is present on all
+rk3288-SoCs running upstream Linux so let's just whack the driver to
+make sure we never turn off power.  We'll still leave the parts that
+turn _on_ the power and grab the clock, though.
 
-Frank
+NOTES:
+A) If someone can identify what this power leak is and fix it in some
+   other way we can revert this patch.
+B) If someone can show that their particular board doesn't have this
+   power leak (maybe they have rails hooked up differently?) we can
+   perhaps add a device tree property indicating that for some boards
+   it's OK to turn this rail off.  I don't want to add this property
+   until I know of a board that needs it.
+
+Fixes: fd968973de95 ("phy: Add driver for rockchip Display Port PHY")
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+As far as I know Yakir (the original author) is no longer at Rockchip.
+I've added a few other Rockchip people and hopefully one of them can
+help direct even if they're not directly responsible.
+
+ drivers/phy/rockchip/phy-rockchip-dp.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-dp.c b/drivers/phy/rockchip/phy-rockchip-dp.c
+index 8b267a746576..10bbcd69d6f5 100644
+--- a/drivers/phy/rockchip/phy-rockchip-dp.c
++++ b/drivers/phy/rockchip/phy-rockchip-dp.c
+@@ -35,7 +35,7 @@ struct rockchip_dp_phy {
+ static int rockchip_set_phy_state(struct phy *phy, bool enable)
+ {
+ 	struct rockchip_dp_phy *dp = phy_get_drvdata(phy);
+-	int ret;
++	int ret = 0;
+ 
+ 	if (enable) {
+ 		ret = regmap_write(dp->grf, GRF_SOC_CON12,
+@@ -50,9 +50,12 @@ static int rockchip_set_phy_state(struct phy *phy, bool enable)
+ 	} else {
+ 		clk_disable_unprepare(dp->phy_24m);
+ 
+-		ret = regmap_write(dp->grf, GRF_SOC_CON12,
+-				   GRF_EDP_PHY_SIDDQ_HIWORD_MASK |
+-				   GRF_EDP_PHY_SIDDQ_OFF);
++		/*
++		 * Intentionally don't turn SIDDQ off when disabling
++		 * the PHY.  There is a power leak on rk3288 and
++		 * suspend power _increases_ by 5 mA if you turn this
++		 * off.
++		 */
+ 	}
+ 
+ 	return ret;
+-- 
+2.21.0.1020.gf2820cf01a-goog
