@@ -1,69 +1,48 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: Re: [PATCH v6 03/13] Kconfig: Add default SPL_FIT_GENERATOR for
- rockchip
-Date: Tue, 7 May 2019 12:12:23 +0530
-Message-ID: <CAMty3ZCadSyo+DdYSjcOgeUVWBEZZgST5_cr4dXeMUZ8mZe=yw@mail.gmail.com>
-References: <20190427114852.7608-1-jagan@amarulasolutions.com>
- <20190427114852.7608-4-jagan@amarulasolutions.com>
- <7bd53b02-2a0f-d242-31bc-2baba0a69405@rock-chips.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH v2 7/9] Makefile.spl: Create
+	u-boot-spl-rockchip.bin for rk3399
+Date: Tue, 7 May 2019 12:14:28 +0530
+Message-ID: <CAMty3ZBGp-b5rbHiMrFMWzu5Doen_h=2B3sxx_qZtL2SN8Vo8Q@mail.gmail.com>
+References: <20190428090913.10568-1-jagan@amarulasolutions.com>
+ <20190428090913.10568-8-jagan@amarulasolutions.com>
+ <52ca4f72-fa9c-487a-eb10-a509b5e72539@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <7bd53b02-2a0f-d242-31bc-2baba0a69405-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <52ca4f72-fa9c-487a-eb10-a509b5e72539@rock-chips.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: Tom Rini <trini@konsulko.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, Akash Gajjar <akash@openedev.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kever,
-
-On Tue, May 7, 2019 at 9:36 AM Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->
-> Hi Jagan,
->
->
-> On 04/27/2019 07:48 PM, Jagan Teki wrote:
-> > Add default SPL_FIT_GENERATOR py script for rockchip platforms if
-> > specific target enabled SPL_LOAD_FIT.
-> >
-> > So, this would help get rid of explicitly mentioning the default
-> > SPL FIT generator in defconfigs. however some targets, like puma_rk3399
-> > still require their own FIT generator so in those cases the default will
-> > override with defconfig defined generator.
-> >
-> > Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-> > Reviewed-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-> > ---
-> >  Kconfig                          | 1 +
-> >  configs/chromebook_bob_defconfig | 1 -
-> >  configs/evb-rk3399_defconfig     | 1 -
-> >  configs/ficus-rk3399_defconfig   | 1 -
-> >  configs/firefly-rk3399_defconfig | 1 -
-> >  configs/rock960-rk3399_defconfig | 1 -
-> >  6 files changed, 1 insertion(+), 5 deletions(-)
-> >
-> > diff --git a/Kconfig b/Kconfig
-> > index 305b265ed7..5679a288ec 100644
-> > --- a/Kconfig
-> > +++ b/Kconfig
-> > @@ -424,6 +424,7 @@ config SPL_FIT_GENERATOR
-> >       string ".its file generator script for U-Boot FIT image"
-> >       depends on SPL_FIT
-> >       default "board/sunxi/mksunxi_fit_atf.sh" if SPL_LOAD_FIT && ARCH_SUNXI
-> > +     default "arch/arm/mach-rockchip/make_fit_atf.py" if SPL_LOAD_FIT && ARCH_ROCKCHIP
->
-> What happens to puma-rk3399 board with this patch? For it use dedicate
-> its file now.
-> configs/puma-rk3399_defconfig
-> CONFIG_SPL_FIT_SOURCE="board/theobroma-systems/puma_rk3399/fit_spl_atf.its"
-
-It replaced with defined .fit in puma, atleast I've tested the build.
+T24gVHVlLCBNYXkgNywgMjAxOSBhdCAxMjowNCBQTSBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJv
+Y2stY2hpcHMuY29tPiB3cm90ZToKPgo+IEhpIEphZ2FuLAo+Cj4gT24gMDQvMjgvMjAxOSAwNTow
+OSBQTSwgSmFnYW4gVGVraSB3cm90ZToKPiA+IFJvY2tjaGlwIHBsYXRmb3JtIHdvdWxkIHJlcXVp
+cmUgYW4gZXhwbGljaXQgY2FsbCB0byBta2ltYWdlIGZvcgo+ID4gY3JlYXRpbmcgYm9vdGFibGUg
+aW1hZ2VzIHdoaWNoIGluZGVlZCBzcGVjaWZpYyB0byBTb0MgZmFtaWx5Cj4gPiBhbG9uZyB3aXRo
+IGJvb3QgZGV2aWNlcy4KPiA+Cj4gPiBFeGFtcGxlIG9mIGNyZWF0aW5nIGJvb3RhYmxlIGltYWdl
+IGZvciByazMzOTkgZmFtaWx5IHdpdGggU0QKPiA+IGJvb3QgZGV2aWNlIGFzCj4gPgo+ID4g4oK5
+IG1raW1hZ2UgLW4gcmszMzk5IC1UIHJrc2QgLWQgLi9zcGwvdS1ib290LXNwbC1kdGIuYmluIHUt
+Ym9vdC1zcGwtcm9ja2NoaXAuYmluCj4gPgo+ID4gVGhpcyBwYXRjaCB3b3VsZCBkbyB0aGUgc2Ft
+ZSB0aGluayB2aWEgTWFrZWZpbGUuc3BsIGZvciByazMzOTkuCj4gPgo+ID4gVGhpcyB3b3VsZCBi
+ZSBhbiBpbml0aWFsIHZlcnNpb24gYW5kIGl0IGNhbiBlYXNpbHkgZXhwYW5kIGZ1cnRoZXIgdG8g
+c3VwcG9ydAo+ID4gb3RoZXIgZmFtaWxpZXMgb2YgU29DJ3Mgd2l0aCB2YXJpZXR5IG9mIGJvb3Qg
+c3RhZ2VzIGxpa2UgVFBMLCBTUEwuCj4KPiAgICAgcmszMzk5IG1heSBoYXZlIFRQTCBsaWtlIG90
+aGVyIFNvQ3MsIGZvciB0aGVyZSB3aWxsIGJlIGltYWdlIHR5cGVzOgo+Cj4gU1BMK3UtYm9vdC5i
+aW4KPgo+IFNQTCt1LWJvb3QuaXRiCj4KPiBUUEwrU1BMK3UtYm9vdC5pdGIKPgo+IFNlZW1zIHRo
+aXMgcGF0Y2ggYW5kIDkvOSBvZiB0aGlzIHBhdGNoIHNldCBvbmx5IGNvdmVyIFNQTCt1LWJvb3Qu
+aXRiPwo+Cj4gSXMgaXQgcG9zc2libGUgdG8gbWFrZSBpdCBtb3JlIGdlbmVyaWM/CgpZZXMsIEkg
+aGF2ZSB3YXRjaGVkIHlvdXIgVFBMIGNoYW5nZXMuIGFuZCB3ZSBjYW4gZXh0ZW5kIHRoaXMgdG8K
+c3VwcG9ydCBUUEwgdG8gbWFrZSBjb21iaW5hdGlvbiBvZiBhbGwgaW1hZ2VzLgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0
+ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJv
+b3QK
