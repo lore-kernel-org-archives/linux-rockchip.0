@@ -1,133 +1,45 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v7 4/4] arm64: rockchip: dts: rk3399: Use rk3399-u-boot.dtsi
-Date: Tue,  7 May 2019 23:51:52 +0530
-Message-ID: <20190507182152.4254-5-jagan@amarulasolutions.com>
-References: <20190507182152.4254-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH] rockchip: rk3399: orangepi: Add SPL_TEXT_BASE
+Date: Tue,  7 May 2019 23:54:40 +0530
+Message-ID: <20190507182440.4501-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190507182152.4254-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
-Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
 List-Id: linux-rockchip.vger.kernel.org
 
-Now we have
-- board specific -u-boot.dtsi files for board specific u-boot
-  dts changes.
-- soc specific rk3399-u-boot.dtsi for soc specific u-boot
-  dts changes.
-
-So, include the rk3399-u-boot-dtsi on respective board -u-boot.dtsi
-and drop the properties which are globally available in rk3399-u-boot.dtsi
-
-Right now rk3399-u-boot.dtsi has sdmmc, spi1 u-boot,dm-pre-reloc
-property and more properties and nodes can be move further based
-on the requirements.
-
-This would fix, the -u-boot.dtsi inclusion for evb, firefly, puma
-boards that was accidentally merged on below commit.
-"rockchip: dts: rk3399: Create initial rk3399-u-boot.dtsi"
-(sha1: e05b4a4fa84b65a0c8873e8f34721741fe2bc09d)
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- arch/arm/dts/rk3399-evb-u-boot.dtsi     | 1 +
- arch/arm/dts/rk3399-firefly-u-boot.dtsi | 1 +
- arch/arm/dts/rk3399-gru-bob-u-boot.dtsi | 1 +
- arch/arm/dts/rk3399-gru-u-boot.dtsi     | 6 ++++++
- arch/arm/dts/rk3399-gru.dtsi            | 1 -
- arch/arm/dts/rk3399-puma-ddr1600.dts    | 1 +
- arch/arm/dts/rk3399-puma.dtsi           | 2 --
- 7 files changed, 10 insertions(+), 3 deletions(-)
- create mode 100644 arch/arm/dts/rk3399-gru-u-boot.dtsi
-
-diff --git a/arch/arm/dts/rk3399-evb-u-boot.dtsi b/arch/arm/dts/rk3399-evb-u-boot.dtsi
-index 7e2c57af22..20910e744b 100644
---- a/arch/arm/dts/rk3399-evb-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399-evb-u-boot.dtsi
-@@ -3,4 +3,5 @@
-  * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-  */
- 
-+#include "rk3399-u-boot.dtsi"
- #include "rk3399-sdram-lpddr3-4GB-1600.dtsi"
-diff --git a/arch/arm/dts/rk3399-firefly-u-boot.dtsi b/arch/arm/dts/rk3399-firefly-u-boot.dtsi
-index eab86bdb30..67b63a8352 100644
---- a/arch/arm/dts/rk3399-firefly-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399-firefly-u-boot.dtsi
-@@ -3,4 +3,5 @@
-  * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-  */
- 
-+#include "rk3399-u-boot.dtsi"
- #include "rk3399-sdram-ddr3-1600.dtsi"
-diff --git a/arch/arm/dts/rk3399-gru-bob-u-boot.dtsi b/arch/arm/dts/rk3399-gru-bob-u-boot.dtsi
-index 9edb8cf841..726f396f32 100644
---- a/arch/arm/dts/rk3399-gru-bob-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399-gru-bob-u-boot.dtsi
-@@ -3,4 +3,5 @@
-  * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-  */
- 
-+#include "rk3399-gru-u-boot.dtsi"
- #include "rk3399-sdram-lpddr3-samsung-4GB-1866.dtsi"
-diff --git a/arch/arm/dts/rk3399-gru-u-boot.dtsi b/arch/arm/dts/rk3399-gru-u-boot.dtsi
-new file mode 100644
-index 0000000000..7bddc3acdb
---- /dev/null
-+++ b/arch/arm/dts/rk3399-gru-u-boot.dtsi
-@@ -0,0 +1,6 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+/*
-+ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-+ */
-+
-+#include "rk3399-u-boot.dtsi"
-diff --git a/arch/arm/dts/rk3399-gru.dtsi b/arch/arm/dts/rk3399-gru.dtsi
-index 4cdb4320b7..ca0fc391b2 100644
---- a/arch/arm/dts/rk3399-gru.dtsi
-+++ b/arch/arm/dts/rk3399-gru.dtsi
-@@ -545,7 +545,6 @@ ap_i2c_audio: &i2c8 {
- 
- &spi1 {
- 	status = "okay";
--	u-boot,dm-pre-reloc;
- 
- 	pinctrl-names = "default", "sleep";
- 	pinctrl-1 = <&spi1_sleep>;
-diff --git a/arch/arm/dts/rk3399-puma-ddr1600.dts b/arch/arm/dts/rk3399-puma-ddr1600.dts
-index 337e0eabb4..42763f82d0 100644
---- a/arch/arm/dts/rk3399-puma-ddr1600.dts
-+++ b/arch/arm/dts/rk3399-puma-ddr1600.dts
-@@ -6,5 +6,6 @@
- /dts-v1/;
- 
- #include "rk3399-puma.dtsi"
-+#include "rk3399-u-boot.dtsi"
- #include "rk3399-sdram-ddr3-1600.dtsi"
- 
-diff --git a/arch/arm/dts/rk3399-puma.dtsi b/arch/arm/dts/rk3399-puma.dtsi
-index 319a610022..897e0bda85 100644
---- a/arch/arm/dts/rk3399-puma.dtsi
-+++ b/arch/arm/dts/rk3399-puma.dtsi
-@@ -647,8 +647,6 @@
- 
- 
- &spi1 {
--	u-boot,dm-pre-reloc;
--
- 	status = "okay";
- 
- 	#address-cells = <1>;
--- 
-2.18.0.321.gffc6fa0e3
+Q09ORklHX1NQTF9URVhUX0JBU0Ugd2FzIGF2YWlsYWJsZSBpbiBjb25maWdzL3JrMzM5OV9jb21t
+b24uaAp3aGVuIHRoZSBPcmFuZ2VQSSByazMzOTkgYm9hcmQgc3VwcG9ydGVkIGR1cmluZyBmaXJz
+dAp2ZXJzaW9uIHBhdGNoLgoKQnV0LCBsYXRlciBiZWxvdyBjaGFuZ2Ugd2hpY2ggbW92ZSB0aGlz
+IGNvbmZpZyBpbnRvIEtjb25maWcgYW5kCnNhbWUgaGFzIGJlZW4gbWVyZ2VkIGluIG1haW5saW5l
+IHRyZWUuCiJjb25maWdzOiBtb3ZlIENPTkZJR19TUExfVEVYVF9CQVNFIHRvIEtjb25maWciCihz
+aGExOiBmODlkNjEzM2VlZjJlMDY4ZjljMzM4NTNiNjU4NGQ3ZmNiZmE5ZDJlKQoKVW5mb3J0dW5h
+dGVseSwgdGhlIG1haW50YWluZXIgYXBwbGllZCB0aGUgaW5pdGlhbCB2ZXJzaW9uIHBhdGNoLApp
+bnN0ZWFkIG9mIGxvb2tpbmcgZm9yIG5leHQgdmVyc2lvbiBjaGFuZ2VzLgoKRml4IGl0IGJ5IGFk
+ZGluZyBTUExfVEVYVF9CQVNFIGluIG9yYW5nZXBpLXJrMzM5OSBkZWZjb25maWcuCgpTaWduZWQt
+b2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KLS0tCiBjb25m
+aWdzL29yYW5nZXBpLXJrMzM5OV9kZWZjb25maWcgfCAxICsKIDEgZmlsZSBjaGFuZ2VkLCAxIGlu
+c2VydGlvbigrKQoKZGlmZiAtLWdpdCBhL2NvbmZpZ3Mvb3JhbmdlcGktcmszMzk5X2RlZmNvbmZp
+ZyBiL2NvbmZpZ3Mvb3JhbmdlcGktcmszMzk5X2RlZmNvbmZpZwppbmRleCBjZGNjZjIyMWI1Li5i
+YTEzOTc2Y2M2IDEwMDY0NAotLS0gYS9jb25maWdzL29yYW5nZXBpLXJrMzM5OV9kZWZjb25maWcK
+KysrIGIvY29uZmlncy9vcmFuZ2VwaS1yazMzOTlfZGVmY29uZmlnCkBAIC0xNyw2ICsxNyw3IEBA
+IENPTkZJR19TUExfRklUX0dFTkVSQVRPUj0iYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9tYWtlX2Zp
+dF9hdGYucHkiCiBDT05GSUdfREVGQVVMVF9GRFRfRklMRT0icm9ja2NoaXAvcmszMzk5LW9yYW5n
+ZXBpLmR0YiIKICMgQ09ORklHX0RJU1BMQVlfQ1BVSU5GTyBpcyBub3Qgc2V0CiBDT05GSUdfRElT
+UExBWV9CT0FSRElORk9fTEFURT15CitDT05GSUdfU1BMX1RFWFRfQkFTRT0weGZmOGMyMDAwCiBD
+T05GSUdfU1BMX1NUQUNLX1I9eQogQ09ORklHX1NQTF9TVEFDS19SX01BTExPQ19TSU1QTEVfTEVO
+PTB4NDAwMAogQ09ORklHX1NQTF9BVEY9eQotLSAKMi4xOC4wLjMyMS5nZmZjNmZhMGUzCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGlu
+ZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5m
+by91LWJvb3QK
