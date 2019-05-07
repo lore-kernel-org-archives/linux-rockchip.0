@@ -1,47 +1,64 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] ARM: dts: rockchip: Make rk3288-veyron-minnie run at hs200
-Date: Tue, 07 May 2019 14:03:39 +0200
-Message-ID: <4345663.CAMg3MOt9f@phil>
-References: <20190503234142.228982-1-dianders@chromium.org>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH v6 09/13] rockchip: rk3399: Add Nanopc T4 board
+	support
+Date: Tue, 7 May 2019 17:58:23 +0530
+Message-ID: <CAMty3ZA5n3K77pCYmQis=oKUtWqhnMYvkZZeii863_mFmwhLig@mail.gmail.com>
+References: <20190427114852.7608-1-jagan@amarulasolutions.com>
+ <20190427114852.7608-10-jagan@amarulasolutions.com>
+ <b250ecbc4cb638f36f25e9f14860cf5a99c31621.camel@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190503234142.228982-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, linux-rockchip@lists.infradead.org, briannorris@chromium.org, mka@chromium.org, amstan@chromium.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <b250ecbc4cb638f36f25e9f14860cf5a99c31621.camel@bootlin.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Cc: Tom Rini <trini@konsulko.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, Akash Gajjar <akash@openedev.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 4. Mai 2019, 01:41:42 CEST schrieb Douglas Anderson:
-> As some point hs200 was failing on rk3288-veyron-minnie.  See commit
-> 984926781122 ("ARM: dts: rockchip: temporarily remove emmc hs200 speed
-> from rk3288 minnie").  Although I didn't track down exactly when it
-> started working, it seems to work OK now, so let's turn it back on.
-> 
-> To test this, I booted from SD card and then used this script to
-> stress the enumeration process after fixing a memory leak [1]:
->   cd /sys/bus/platform/drivers/dwmmc_rockchip
->   for i in $(seq 1 3000); do
->     echo "========================" $i
->     echo ff0f0000.dwmmc > unbind
->     sleep .5
->     echo ff0f0000.dwmmc > bind
->     while true; do
->       if [ -e /dev/mmcblk2 ]; then
->         break;
->       fi
->       sleep .1
->     done
->   done
-> 
-> It worked fine.
-> 
-> [1] https://lkml.kernel.org/r/20190503233526.226272-1-dianders@chromium.org
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-
-applied for 5.3
-
-Thanks
-Heiko
+T24gVHVlLCBNYXkgNywgMjAxOSBhdCAyOjQyIFBNIFBhdWwgS29jaWFsa293c2tpCjxwYXVsLmtv
+Y2lhbGtvd3NraUBib290bGluLmNvbT4gd3JvdGU6Cj4KPiBIaSwKPgo+IE9uIFNhdCwgMjAxOS0w
+NC0yNyBhdCAxNzoxOCArMDUzMCwgSmFnYW4gVGVraSB3cm90ZToKPiA+IGRpZmYgLS1naXQgYS9i
+b2FyZC9yb2NrY2hpcC9ldmJfcmszMzk5L01BSU5UQUlORVJTIGIvYm9hcmQvcm9ja2NoaXAvZXZi
+X3JrMzM5OS9NQUlOVEFJTkVSUwo+ID4gaW5kZXggYWU0MzgwNWE2YS4uNTkxN2FiYjljMSAxMDA2
+NDQKPiA+IC0tLSBhL2JvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvTUFJTlRBSU5FUlMKPiA+ICsr
+KyBiL2JvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvTUFJTlRBSU5FUlMKPiA+IEBAIC02LDYgKzYs
+MTIgQEAgRjogICAgICBpbmNsdWRlL2NvbmZpZ3MvZXZiX3JrMzM5OS5oCj4gPiAgRjogICAgICBj
+b25maWdzL2V2Yi1yazMzOTlfZGVmY29uZmlnCj4gPiAgRjogICAgICBjb25maWdzL2ZpcmVmbHkt
+cmszMzk5X2RlZmNvbmZpZwo+ID4KPiA+ICtOQU5PUEMtVDQKPiA+ICtNOiAgIEphZ2FuIFRla2kg
+PGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgo+ID4gK1M6ICAgTWFpbnRhaW5lZAo+ID4gK0Y6
+ICAgY29uZmlncy9uYW5vcGljLXQ0LXJrMzM5OV9kZWZjb25maWcKPiA+ICtGOiAgIGFyY2gvYXJt
+L2R0cy9yazMzOTktbmFub3BpYy10NC11LWJvb3QuZHRzaQo+ID4gKwo+Cj4gTWhoLCBJIGZlZWwg
+bGlrZSBlYWNoIG5ldyBib2FyZCB0aGF0IHlvdSBhcmUgaW50cm9kdWNpbmcgc2hvdWxkIGhhdmUK
+PiBpdHMgb3duIGJvYXJkIGRpcmVjdG9yeSAtLSB0aGlzIGJvYXJkIGlzIGRlZmluaXRlbHkgbm90
+IGEgcmszMzk5IGV2Ygo+IG1hZGUgYnkgcm9ja2NoaXAsIGJ1dCBhbm90aGVyIGJvYXJkLgoKVGhl
+IGJlaGF2aW9yIG9mIGFsbCB0aGVzZSBhZGRlZCBib2FyZHMgcmVtYWlucyBzaW1pbGFyIGxpa2Ug
+ZXZiLCBzbwppbnN0ZWFkIG9mIGFkZGluZyBzZXBhcmF0ZSBib2FyZCBkaXJlY3Rvcnkgd2l0aCBy
+ZWR1bmRhbnQgY29kZSB0aGlzCnBhdGNoIHVzZXMgZXhpc3Rpbmcgc3R1ZmYuIElkZWEgaXMgdG8g
+bWFrZSBjb21tb24gYm9hcmQgZGlyZWN0b3J5IGFzCnJrMzM5OSwgdGhhdCBoYXZlIHNlcGFyYXRl
+IHJld29yayBwbGFuZWQuCgo+Cj4gSSBoYXZlIGFscmVhZHkgcGF0Y2hlcyB0byBzcGxpdCB0aGF0
+IGZvciB0aGUgZmlyZWZseS1yazMzOTksIGJ1dCBJCj4gY2Fubm90IHJlYWxseSB0ZXN0IHRoZW0g
+b3V0c2lkZSBvZiBidWlsZGluZy4KCkRvIHlvdSBoYXZlIGFueSBzcGVjaWZpYyBib2FyZCBjb2Rl
+IGZvciB0aGlzIGZpcmVmbHksIEkgd291bGQgc3VnZ2VzdAp0byBrZWVwIHVzZSBldmIgc2luY2Ug
+bW9zdCBvZiB0aGUgcGVyaXBoZXJhbCBoYW5kbGluZyBpbiByb2NrY2hpcCBkb25lCnZpYSBkdCBz
+byB3ZSBjYW4gZ28tYWhlYWQgdy9vIHNlcGFyYXRpbmcgdGhlIGJvYXJkIGNvZGUgYXRsZWFzdCBm
+b3IKdGhlc2UgYm9hcmRzLgoKPgo+ID4gIE5BTk9QSS1NNAo+ID4gIE06ICAgSmFnYW4gVGVraSA8
+amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gPiAgUzogICBNYWludGFpbmVkCj4gPiBkaWZm
+IC0tZ2l0IGEvY29uZmlncy9uYW5vcGMtdDQtcmszMzk5X2RlZmNvbmZpZyBiL2NvbmZpZ3MvbmFu
+b3BjLXQ0LXJrMzM5OV9kZWZjb25maWcKPiA+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gPiBpbmRl
+eCAwMDAwMDAwMDAwLi43YmE0Zjg1NDg1Cj4gPiAtLS0gL2Rldi9udWxsCj4gPiArKysgYi9jb25m
+aWdzL25hbm9wYy10NC1yazMzOTlfZGVmY29uZmlnCj4gPiBAQCAtMCwwICsxLDU4IEBACj4KPiBB
+bHNvIEkgZG9uJ3Qgc2VlIHdoaWNoIFRBUkdFVCBpcyBzZWxlY3RlZCBoZXJlLCBpcyB0aGVyZSBh
+IGZhbGxiYWNrIG9uCj4gdGhlIFJLMzM5OSBFVkIgZm9yIHRoZSByazMzOTkgcGxhdGZvcm0/CgpJ
+dCB3aWxsIHNlbGVjdCB0aGUgRVZCIGZyb20gbWFjaC1yb2NrY2hpcCBieSBkZWZhdWx0LCBpZSBy
+ZWFzb24gSQpkaWRuJ3QgbWVudGlvbmVkIGV4cGxpY2l0bHkuCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxp
+c3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
