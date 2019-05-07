@@ -1,64 +1,180 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v7 0/4] arm64: rockchip: dts: Add rk3399
-	-u-boot.dtsi files
-Date: Tue,  7 May 2019 23:51:48 +0530
-Message-ID: <20190507182152.4254-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH v7 2/4] arm64: rockchip: dts: rk3399: Add board -u-boot.dtsi
+ files
+Date: Tue,  7 May 2019 23:51:50 +0530
+Message-ID: <20190507182152.4254-3-jagan@amarulasolutions.com>
+References: <20190507182152.4254-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, Akash Gajjar <akash@openedev.com>
-Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190507182152.4254-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VW5mb3J0dW5hdGVseSBpbml0aWFsIHZlcnNpb24gb2YgY3JlYXRpbmcgcmszMzk5LXUtYm9vdC5k
-dHNpIApoYXMgYmVlbiBtZXJnZWQsIHNvIHRoaXMgc2VyaWVzIGlzIHJld29yayBvZiBwcmV2aW91
-cyB2NiBzZXRbMV0Kb24gdG9wIG9mIHUtYm9vdC1yb2NrY2hpcC9tYXN0ZXIKCkFsbCB0aGVzZSBj
-aGFuZ2VzIGFyZSB1cGRhdGluZyByazMzOTktdS1ib290LmR0c2kgYW5kIHJrMzM5OQpib2FyZCAt
-dS1ib290LmR0c2kgZmlsZXMgYW5kIHUtYm9vdCBzcGVjaWZpYyBkdHMgY2hhbmdlcyBsaWtlCi0g
-c2RyYW0gZHRzaQotIHNkbW1jLCB1LWJvb3QsZG0tcHJlLXJlbG9jCi0gc3BpMSwgdS1ib290LGRt
-LXByZS1yZWxvYwoKQ2hhbmdlcyBmb3Igdjc6Ci0gcmViYXNlIG9uIHUtYm9vdC1yb2NrY2hpcC9t
-YXN0ZXIKLSByZWNyZWF0ZSBwYXRjaGVzIGJhc2VkIG9uIHYxIHNlcmllcyBtZXJnZQotIGFkZCBw
-YXRjaCBmb3IgZHRiIGJ1aWxkIGJhc2VkIG9uIFNvQyB0eXBlIApDaGFuZ2VzIGZvciB2NjoKLSBz
-cGlsdCB0aGUgZXhpc3RpbmcgcGF0Y2hbMl0gaW50byBtdWx0aXBsZSBwYXRjaGVzCiAgYW5kIHNl
-bmQgYXMgYSBzZXBhcmF0ZSBzZXJpZXMuCgpbMl0gaHR0cHM6Ly9wYXRjaHdvcmsub3psYWJzLm9y
-Zy9wYXRjaC8xMDkxNzIwLwpbMV0gaHR0cHM6Ly9wYXRjaHdvcmsub3psYWJzLm9yZy9jb3Zlci8x
-MDkxOTA5LwoKQW55IGlucHV0cz8KSmFnYW4uCgpKYWdhbiBUZWtpICg0KToKICBkdHM6IE1ha2Vm
-aWxlOiBCdWlsZCByb2NrY2hpcCBkdGJzIGJhc2VkIG9uIFNvQyB0eXBlcwogIGFybTY0OiByb2Nr
-Y2hpcDogZHRzOiByazMzOTk6IEFkZCBib2FyZCAtdS1ib290LmR0c2kgZmlsZXMKICByb2NrY2hp
-cDogZHRzOiByazMzOTktdS1ib290OiBBZGQgdS1ib290LGRtLXByZS1yZWxvYyBmb3Igc3BpMQog
-IGFybTY0OiByb2NrY2hpcDogZHRzOiByazMzOTk6IFVzZSByazMzOTktdS1ib290LmR0c2kKCiBh
-cmNoL2FybS9kdHMvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgfCAzNSArKysrKysrKysrKysr
-KysrKystLS0tLS0tCiBhcmNoL2FybS9kdHMvcmszMzk5LWV2Yi11LWJvb3QuZHRzaSAgICAgfCAg
-NyArKysrKwogYXJjaC9hcm0vZHRzL3JrMzM5OS1ldmIuZHRzICAgICAgICAgICAgIHwgIDEgLQog
-YXJjaC9hcm0vZHRzL3JrMzM5OS1maWN1cy11LWJvb3QuZHRzaSAgIHwgIDYgKysrKysKIGFyY2gv
-YXJtL2R0cy9yazMzOTktZmljdXMuZHRzICAgICAgICAgICB8ICAxIC0KIGFyY2gvYXJtL2R0cy9y
-azMzOTktZmlyZWZseS11LWJvb3QuZHRzaSB8ICA3ICsrKysrCiBhcmNoL2FybS9kdHMvcmszMzk5
-LWZpcmVmbHkuZHRzICAgICAgICAgfCAgMSAtCiBhcmNoL2FybS9kdHMvcmszMzk5LWdydS1ib2It
-dS1ib290LmR0c2kgfCAgNyArKysrKwogYXJjaC9hcm0vZHRzL3JrMzM5OS1ncnUtYm9iLmR0cyAg
-ICAgICAgIHwgIDEgLQogYXJjaC9hcm0vZHRzL3JrMzM5OS1ncnUtdS1ib290LmR0c2kgICAgIHwg
-IDYgKysrKysKIGFyY2gvYXJtL2R0cy9yazMzOTktZ3J1LmR0c2kgICAgICAgICAgICB8ICAxIC0K
-IGFyY2gvYXJtL2R0cy9yazMzOTktcHVtYS1kZHIxNjAwLmR0cyAgICB8ICAxICsKIGFyY2gvYXJt
-L2R0cy9yazMzOTktcHVtYS5kdHNpICAgICAgICAgICB8ICAyIC0tCiBhcmNoL2FybS9kdHMvcmsz
-Mzk5LXJvY2s5NjAtdS1ib290LmR0c2kgfCAgNiArKysrKwogYXJjaC9hcm0vZHRzL3JrMzM5OS1y
-b2NrOTYwLmR0cyAgICAgICAgIHwgIDEgLQogYXJjaC9hcm0vZHRzL3JrMzM5OS11LWJvb3QuZHRz
-aSAgICAgICAgIHwgIDQgKysrCiAxNiBmaWxlcyBjaGFuZ2VkLCA3MCBpbnNlcnRpb25zKCspLCAx
-NyBkZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmszMzk5LWV2
-Yi11LWJvb3QuZHRzaQogY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtL2R0cy9yazMzOTktZmlj
-dXMtdS1ib290LmR0c2kKIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmszMzk5LWZp
-cmVmbHktdS1ib290LmR0c2kKIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmszMzk5
-LWdydS1ib2ItdS1ib290LmR0c2kKIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmsz
-Mzk5LWdydS11LWJvb3QuZHRzaQogY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtL2R0cy9yazMz
-OTktcm9jazk2MC11LWJvb3QuZHRzaQoKLS0gCjIuMTguMC4zMjEuZ2ZmYzZmYTBlMwoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcg
-bGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8v
-dS1ib290Cg==
+Devicetree files in RK3399 platform is synced from Linux, like other
+platforms does. Apart from these u-boot in rk3399 would also require
+some u-boot specific node like dmc.
+
+dmc node has big chunk of DDR timing parameters which are specific
+to specific board, and maintained with rk3399-sdram*.dtsi.
+
+So, create board specific -u-boot.dtsi files and move these sdram dtsi
+files accordingly. This would help of maintain u-boot specific changes
+separately without touching Linux dts(i) files which indeed easy for
+syncing from Linux between releases.
+
+These board specific -u-boot.dtsi can be extendible to add more u-boot
+specific nodes or properties in future.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ arch/arm/dts/rk3399-evb-u-boot.dtsi     | 6 ++++++
+ arch/arm/dts/rk3399-evb.dts             | 1 -
+ arch/arm/dts/rk3399-ficus-u-boot.dtsi   | 6 ++++++
+ arch/arm/dts/rk3399-ficus.dts           | 1 -
+ arch/arm/dts/rk3399-firefly-u-boot.dtsi | 6 ++++++
+ arch/arm/dts/rk3399-firefly.dts         | 1 -
+ arch/arm/dts/rk3399-gru-bob-u-boot.dtsi | 6 ++++++
+ arch/arm/dts/rk3399-gru-bob.dts         | 1 -
+ arch/arm/dts/rk3399-rock960-u-boot.dtsi | 6 ++++++
+ arch/arm/dts/rk3399-rock960.dts         | 1 -
+ 10 files changed, 30 insertions(+), 5 deletions(-)
+ create mode 100644 arch/arm/dts/rk3399-evb-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-ficus-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-firefly-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-gru-bob-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-rock960-u-boot.dtsi
+
+diff --git a/arch/arm/dts/rk3399-evb-u-boot.dtsi b/arch/arm/dts/rk3399-evb-u-boot.dtsi
+new file mode 100644
+index 0000000000..7e2c57af22
+--- /dev/null
++++ b/arch/arm/dts/rk3399-evb-u-boot.dtsi
+@@ -0,0 +1,6 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
++
++#include "rk3399-sdram-lpddr3-4GB-1600.dtsi"
+diff --git a/arch/arm/dts/rk3399-evb.dts b/arch/arm/dts/rk3399-evb.dts
+index 9162f3dd50..a506e8da37 100644
+--- a/arch/arm/dts/rk3399-evb.dts
++++ b/arch/arm/dts/rk3399-evb.dts
+@@ -7,7 +7,6 @@
+ #include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include "rk3399.dtsi"
+-#include "rk3399-sdram-lpddr3-4GB-1600.dtsi"
+ 
+ / {
+ 	model = "Rockchip RK3399 Evaluation Board";
+diff --git a/arch/arm/dts/rk3399-ficus-u-boot.dtsi b/arch/arm/dts/rk3399-ficus-u-boot.dtsi
+new file mode 100644
+index 0000000000..eab86bdb30
+--- /dev/null
++++ b/arch/arm/dts/rk3399-ficus-u-boot.dtsi
+@@ -0,0 +1,6 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
++
++#include "rk3399-sdram-ddr3-1600.dtsi"
+diff --git a/arch/arm/dts/rk3399-ficus.dts b/arch/arm/dts/rk3399-ficus.dts
+index 4af0e4e383..4b2dd82b67 100644
+--- a/arch/arm/dts/rk3399-ficus.dts
++++ b/arch/arm/dts/rk3399-ficus.dts
+@@ -8,7 +8,6 @@
+ 
+ /dts-v1/;
+ #include "rk3399-rock960.dtsi"
+-#include "rk3399-sdram-ddr3-1600.dtsi"
+ 
+ / {
+ 	model = "96boards RK3399 Ficus";
+diff --git a/arch/arm/dts/rk3399-firefly-u-boot.dtsi b/arch/arm/dts/rk3399-firefly-u-boot.dtsi
+new file mode 100644
+index 0000000000..eab86bdb30
+--- /dev/null
++++ b/arch/arm/dts/rk3399-firefly-u-boot.dtsi
+@@ -0,0 +1,6 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
++
++#include "rk3399-sdram-ddr3-1600.dtsi"
+diff --git a/arch/arm/dts/rk3399-firefly.dts b/arch/arm/dts/rk3399-firefly.dts
+index 46f2ffaf8d..a4cb64f8bd 100644
+--- a/arch/arm/dts/rk3399-firefly.dts
++++ b/arch/arm/dts/rk3399-firefly.dts
+@@ -7,7 +7,6 @@
+ #include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include "rk3399.dtsi"
+-#include "rk3399-sdram-ddr3-1600.dtsi"
+ 
+ / {
+ 	model = "Firefly-RK3399 Board";
+diff --git a/arch/arm/dts/rk3399-gru-bob-u-boot.dtsi b/arch/arm/dts/rk3399-gru-bob-u-boot.dtsi
+new file mode 100644
+index 0000000000..9edb8cf841
+--- /dev/null
++++ b/arch/arm/dts/rk3399-gru-bob-u-boot.dtsi
+@@ -0,0 +1,6 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
++
++#include "rk3399-sdram-lpddr3-samsung-4GB-1866.dtsi"
+diff --git a/arch/arm/dts/rk3399-gru-bob.dts b/arch/arm/dts/rk3399-gru-bob.dts
+index 0e3d91fc28..1ee0dc0d9f 100644
+--- a/arch/arm/dts/rk3399-gru-bob.dts
++++ b/arch/arm/dts/rk3399-gru-bob.dts
+@@ -7,7 +7,6 @@
+ 
+ /dts-v1/;
+ #include "rk3399-gru-chromebook.dtsi"
+-#include "rk3399-sdram-lpddr3-samsung-4GB-1866.dtsi"
+ 
+ / {
+ 	model = "Google Bob";
+diff --git a/arch/arm/dts/rk3399-rock960-u-boot.dtsi b/arch/arm/dts/rk3399-rock960-u-boot.dtsi
+new file mode 100644
+index 0000000000..5256f6d3f2
+--- /dev/null
++++ b/arch/arm/dts/rk3399-rock960-u-boot.dtsi
+@@ -0,0 +1,6 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
++
++#include "rk3399-sdram-lpddr3-2GB-1600.dtsi"
+diff --git a/arch/arm/dts/rk3399-rock960.dts b/arch/arm/dts/rk3399-rock960.dts
+index 25c58b4261..7e06bc97e5 100644
+--- a/arch/arm/dts/rk3399-rock960.dts
++++ b/arch/arm/dts/rk3399-rock960.dts
+@@ -5,7 +5,6 @@
+ 
+ /dts-v1/;
+ #include "rk3399-rock960.dtsi"
+-#include "rk3399-sdram-lpddr3-2GB-1600.dtsi"
+ 
+ / {
+ 	model = "96boards Rock960";
+-- 
+2.18.0.321.gffc6fa0e3
