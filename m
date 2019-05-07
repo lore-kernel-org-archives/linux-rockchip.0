@@ -1,70 +1,101 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] pstore/ram: Improve backward compatibility with older Chromebooks
-Date: Mon, 6 May 2019 16:58:29 -0700
-Message-ID: <CAD=FV=WcjfUwH62bHVELOmzViv7d329r6+HfPqAyXMjKCO7LeQ@mail.gmail.com>
-References: <20190503174730.245762-1-dianders@chromium.org> <CAGXu5jL9cJ+8scZ+Cg9yqdc9+rb563xs-qVjXXuPRJYjNa4Y8w@mail.gmail.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v6 03/13] Kconfig: Add default
+ SPL_FIT_GENERATOR for rockchip
+Date: Tue, 7 May 2019 12:05:44 +0800
+Message-ID: <7bd53b02-2a0f-d242-31bc-2baba0a69405@rock-chips.com>
+References: <20190427114852.7608-1-jagan@amarulasolutions.com>
+ <20190427114852.7608-4-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGXu5jL9cJ+8scZ+Cg9yqdc9+rb563xs-qVjXXuPRJYjNa4Y8w@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kees Cook <keescook@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Anton Vorontsov <anton@enomsg.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, Guenter Roeck <groeck@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Brian Norris <briannorris@chromium.org>, Colin Cross <ccross@android.com>, Tony Luck <tony.luck@intel.com>, LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20190427114852.7608-4-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Akash Gajjar <akash@openedev.com>, Tom Rini <trini@konsulko.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Mon, May 6, 2019 at 2:10 PM Kees Cook <keescook@chromium.org> wrote:
->
-> From: Douglas Anderson <dianders@chromium.org>
-> Date: Fri, May 3, 2019 at 10:48 AM
-> To: Kees Cook, Anton Vorontsov
-> Cc: <linux-rockchip@lists.infradead.org>, <jwerner@chromium.org>,
-> <groeck@chromium.org>, <mka@chromium.org>, <briannorris@chromium.org>,
-> Douglas Anderson, Colin Cross, Tony Luck,
-> <linux-kernel@vger.kernel.org>
->
-> > When you try to run an upstream kernel on an old ARM-based Chromebook
-> > you'll find that console-ramoops doesn't work.
-> >
-> > Old ARM-based Chromebooks, before <https://crrev.com/c/439792>
-> > ("ramoops: support upstream {console,pmsg,ftrace}-size properties")
-> > used to create a "ramoops" node at the top level that looked like:
-> >
-> > / {
-> >   ramoops {
-> >     compatible = "ramoops";
-> >     reg = <...>;
-> >     record-size = <...>;
-> >     dump-oops;
-> >   };
-> > };
-> >
-> > ...and these Chromebooks assumed that the downstream kernel would make
-> > console_size / pmsg_size match the record size.  The above ramoops
-> > node was added by the firmware so it's not easy to make any changes.
-> >
-> > Let's match the expected behavior, but only for those using the old
-> > backward-compatible way of working where ramoops is right under the
-> > root node.
-> >
-> > NOTE: if there are some out-of-tree devices that had ramoops at the
-> > top level, left everything but the record size as 0, and somehow
-> > doesn't want this behavior, we can try to add more conditions here.
-> >
-> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
->
-> I like this; thanks! Rob is this okay by you? I just want to
-> double-check since it's part of the DT parsing logic.
->
-> I'll pick it up and add a Cc: stable.
-
-Hold off a second--I may need to send out a v2 but out of time for the
-day.  I think I need a #include file to fix errors on x86:
-
-> implicit declaration of function 'of_node_is_root' [-Werror,-Wimplicit-function-declaration
-
-I'm unfortunately out of time for now, but I'll post a v2 within the next day.
-
-
--Doug
+SGkgSmFnYW4sCgoKT24gMDQvMjcvMjAxOSAwNzo0OCBQTSwgSmFnYW4gVGVraSB3cm90ZToKPiBB
+ZGQgZGVmYXVsdCBTUExfRklUX0dFTkVSQVRPUiBweSBzY3JpcHQgZm9yIHJvY2tjaGlwIHBsYXRm
+b3JtcyBpZgo+IHNwZWNpZmljIHRhcmdldCBlbmFibGVkIFNQTF9MT0FEX0ZJVC4KPgo+IFNvLCB0
+aGlzIHdvdWxkIGhlbHAgZ2V0IHJpZCBvZiBleHBsaWNpdGx5IG1lbnRpb25pbmcgdGhlIGRlZmF1
+bHQKPiBTUEwgRklUIGdlbmVyYXRvciBpbiBkZWZjb25maWdzLiBob3dldmVyIHNvbWUgdGFyZ2V0
+cywgbGlrZSBwdW1hX3JrMzM5OQo+IHN0aWxsIHJlcXVpcmUgdGhlaXIgb3duIEZJVCBnZW5lcmF0
+b3Igc28gaW4gdGhvc2UgY2FzZXMgdGhlIGRlZmF1bHQgd2lsbAo+IG92ZXJyaWRlIHdpdGggZGVm
+Y29uZmlnIGRlZmluZWQgZ2VuZXJhdG9yLgo+Cj4gU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVraSA8
+amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gUmV2aWV3ZWQtYnk6IFBhdWwgS29jaWFsa293
+c2tpIDxwYXVsLmtvY2lhbGtvd3NraUBib290bGluLmNvbT4KPiAtLS0KPiAgS2NvbmZpZyAgICAg
+ICAgICAgICAgICAgICAgICAgICAgfCAxICsKPiAgY29uZmlncy9jaHJvbWVib29rX2JvYl9kZWZj
+b25maWcgfCAxIC0KPiAgY29uZmlncy9ldmItcmszMzk5X2RlZmNvbmZpZyAgICAgfCAxIC0KPiAg
+Y29uZmlncy9maWN1cy1yazMzOTlfZGVmY29uZmlnICAgfCAxIC0KPiAgY29uZmlncy9maXJlZmx5
+LXJrMzM5OV9kZWZjb25maWcgfCAxIC0KPiAgY29uZmlncy9yb2NrOTYwLXJrMzM5OV9kZWZjb25m
+aWcgfCAxIC0KPiAgNiBmaWxlcyBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgNSBkZWxldGlvbnMo
+LSkKPgo+IGRpZmYgLS1naXQgYS9LY29uZmlnIGIvS2NvbmZpZwo+IGluZGV4IDMwNWIyNjVlZDcu
+LjU2NzlhMjg4ZWMgMTAwNjQ0Cj4gLS0tIGEvS2NvbmZpZwo+ICsrKyBiL0tjb25maWcKPiBAQCAt
+NDI0LDYgKzQyNCw3IEBAIGNvbmZpZyBTUExfRklUX0dFTkVSQVRPUgo+ICAJc3RyaW5nICIuaXRz
+IGZpbGUgZ2VuZXJhdG9yIHNjcmlwdCBmb3IgVS1Cb290IEZJVCBpbWFnZSIKPiAgCWRlcGVuZHMg
+b24gU1BMX0ZJVAo+ICAJZGVmYXVsdCAiYm9hcmQvc3VueGkvbWtzdW54aV9maXRfYXRmLnNoIiBp
+ZiBTUExfTE9BRF9GSVQgJiYgQVJDSF9TVU5YSQo+ICsJZGVmYXVsdCAiYXJjaC9hcm0vbWFjaC1y
+b2NrY2hpcC9tYWtlX2ZpdF9hdGYucHkiIGlmIFNQTF9MT0FEX0ZJVCAmJiBBUkNIX1JPQ0tDSElQ
+CgpXaGF0IGhhcHBlbnMgdG8gcHVtYS1yazMzOTkgYm9hcmQgd2l0aCB0aGlzIHBhdGNoPyBGb3Ig
+aXQgdXNlIGRlZGljYXRlCml0cyBmaWxlIG5vdy4KY29uZmlncy9wdW1hLXJrMzM5OV9kZWZjb25m
+aWcKQ09ORklHX1NQTF9GSVRfU09VUkNFPSJib2FyZC90aGVvYnJvbWEtc3lzdGVtcy9wdW1hX3Jr
+MzM5OS9maXRfc3BsX2F0Zi5pdHMiCgpUaGFua3MsCi0gS2V2ZXIKPiAgCWhlbHAKPiAgCSAgU3Bl
+Y2lmaWVzIGEgKHBsYXRmb3JtIHNwZWNpZmljKSBzY3JpcHQgZmlsZSB0byBnZW5lcmF0ZSB0aGUg
+RklUCj4gIAkgIHNvdXJjZSBmaWxlIHVzZWQgdG8gYnVpbGQgdGhlIFUtQm9vdCBGSVQgaW1hZ2Ug
+ZmlsZS4gVGhpcyBnZXRzCj4gZGlmZiAtLWdpdCBhL2NvbmZpZ3MvY2hyb21lYm9va19ib2JfZGVm
+Y29uZmlnIGIvY29uZmlncy9jaHJvbWVib29rX2JvYl9kZWZjb25maWcKPiBpbmRleCBjZTNkZWNj
+YjhhLi4wNGUyNWUxZDRmIDEwMDY0NAo+IC0tLSBhL2NvbmZpZ3MvY2hyb21lYm9va19ib2JfZGVm
+Y29uZmlnCj4gKysrIGIvY29uZmlncy9jaHJvbWVib29rX2JvYl9kZWZjb25maWcKPiBAQCAtMTks
+NyArMTksNiBAQCBDT05GSUdfREVCVUdfVUFSVD15Cj4gIENPTkZJR19OUl9EUkFNX0JBTktTPTEK
+PiAgQ09ORklHX0ZJVD15Cj4gIENPTkZJR19TUExfTE9BRF9GSVQ9eQo+IC1DT05GSUdfU1BMX0ZJ
+VF9HRU5FUkFUT1I9ImFyY2gvYXJtL21hY2gtcm9ja2NoaXAvbWFrZV9maXRfYXRmLnB5Igo+ICBD
+T05GSUdfREVGQVVMVF9GRFRfRklMRT0icm9ja2NoaXAvcmszMzk5LWdydS1ib2IuZHRiIgo+ICAj
+IENPTkZJR19ESVNQTEFZX0NQVUlORk8gaXMgbm90IHNldAo+ICBDT05GSUdfRElTUExBWV9CT0FS
+RElORk9fTEFURT15Cj4gZGlmZiAtLWdpdCBhL2NvbmZpZ3MvZXZiLXJrMzM5OV9kZWZjb25maWcg
+Yi9jb25maWdzL2V2Yi1yazMzOTlfZGVmY29uZmlnCj4gaW5kZXggZDk4NTM1MzU3YS4uNDliMmUy
+ZTA4OSAxMDA2NDQKPiAtLS0gYS9jb25maWdzL2V2Yi1yazMzOTlfZGVmY29uZmlnCj4gKysrIGIv
+Y29uZmlncy9ldmItcmszMzk5X2RlZmNvbmZpZwo+IEBAIC0xMyw3ICsxMyw2IEBAIENPTkZJR19E
+RUJVR19VQVJUPXkKPiAgQ09ORklHX05SX0RSQU1fQkFOS1M9MQo+ICBDT05GSUdfRklUPXkKPiAg
+Q09ORklHX1NQTF9MT0FEX0ZJVD15Cj4gLUNPTkZJR19TUExfRklUX0dFTkVSQVRPUj0iYXJjaC9h
+cm0vbWFjaC1yb2NrY2hpcC9tYWtlX2ZpdF9hdGYucHkiCj4gIENPTkZJR19ERUZBVUxUX0ZEVF9G
+SUxFPSJyb2NrY2hpcC9yazMzOTktZXZiLmR0YiIKPiAgIyBDT05GSUdfRElTUExBWV9DUFVJTkZP
+IGlzIG5vdCBzZXQKPiAgQ09ORklHX0RJU1BMQVlfQk9BUkRJTkZPX0xBVEU9eQo+IGRpZmYgLS1n
+aXQgYS9jb25maWdzL2ZpY3VzLXJrMzM5OV9kZWZjb25maWcgYi9jb25maWdzL2ZpY3VzLXJrMzM5
+OV9kZWZjb25maWcKPiBpbmRleCA5NGM1NjVlZmMyLi5mZTNiOTk2NGU4IDEwMDY0NAo+IC0tLSBh
+L2NvbmZpZ3MvZmljdXMtcmszMzk5X2RlZmNvbmZpZwo+ICsrKyBiL2NvbmZpZ3MvZmljdXMtcmsz
+Mzk5X2RlZmNvbmZpZwo+IEBAIC0xMyw3ICsxMyw2IEBAIENPTkZJR19TUExfU1RBQ0tfUl9BRERS
+PTB4ODAwMDAKPiAgQ09ORklHX0RFQlVHX1VBUlQ9eQo+ICBDT05GSUdfRklUPXkKPiAgQ09ORklH
+X1NQTF9MT0FEX0ZJVD15Cj4gLUNPTkZJR19TUExfRklUX0dFTkVSQVRPUj0iYXJjaC9hcm0vbWFj
+aC1yb2NrY2hpcC9tYWtlX2ZpdF9hdGYucHkiCj4gICMgQ09ORklHX0RJU1BMQVlfQ1BVSU5GTyBp
+cyBub3Qgc2V0Cj4gIENPTkZJR19ESVNQTEFZX0JPQVJESU5GT19MQVRFPXkKPiAgQ09ORklHX1NQ
+TF9TVEFDS19SPXkKPiBkaWZmIC0tZ2l0IGEvY29uZmlncy9maXJlZmx5LXJrMzM5OV9kZWZjb25m
+aWcgYi9jb25maWdzL2ZpcmVmbHktcmszMzk5X2RlZmNvbmZpZwo+IGluZGV4IDY3MjViNDg5NzAu
+LjkxNDMwNGJiNDMgMTAwNjQ0Cj4gLS0tIGEvY29uZmlncy9maXJlZmx5LXJrMzM5OV9kZWZjb25m
+aWcKPiArKysgYi9jb25maWdzL2ZpcmVmbHktcmszMzk5X2RlZmNvbmZpZwo+IEBAIC0xMyw3ICsx
+Myw2IEBAIENPTkZJR19ERUJVR19VQVJUPXkKPiAgQ09ORklHX05SX0RSQU1fQkFOS1M9MQo+ICBD
+T05GSUdfRklUPXkKPiAgQ09ORklHX1NQTF9MT0FEX0ZJVD15Cj4gLUNPTkZJR19TUExfRklUX0dF
+TkVSQVRPUj0iYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9tYWtlX2ZpdF9hdGYucHkiCj4gIENPTkZJ
+R19ERUZBVUxUX0ZEVF9GSUxFPSJyb2NrY2hpcC9yazMzOTktZmlyZWZseS5kdGIiCj4gICMgQ09O
+RklHX0RJU1BMQVlfQ1BVSU5GTyBpcyBub3Qgc2V0Cj4gIENPTkZJR19ESVNQTEFZX0JPQVJESU5G
+T19MQVRFPXkKPiBkaWZmIC0tZ2l0IGEvY29uZmlncy9yb2NrOTYwLXJrMzM5OV9kZWZjb25maWcg
+Yi9jb25maWdzL3JvY2s5NjAtcmszMzk5X2RlZmNvbmZpZwo+IGluZGV4IGNiNWEzNWY0ZjUuLjVl
+Njc3OGVhMjAgMTAwNjQ0Cj4gLS0tIGEvY29uZmlncy9yb2NrOTYwLXJrMzM5OV9kZWZjb25maWcK
+PiArKysgYi9jb25maWdzL3JvY2s5NjAtcmszMzk5X2RlZmNvbmZpZwo+IEBAIC0xMyw3ICsxMyw2
+IEBAIENPTkZJR19TUExfU1RBQ0tfUl9BRERSPTB4ODAwMDAKPiAgQ09ORklHX0RFQlVHX1VBUlQ9
+eQo+ICBDT05GSUdfRklUPXkKPiAgQ09ORklHX1NQTF9MT0FEX0ZJVD15Cj4gLUNPTkZJR19TUExf
+RklUX0dFTkVSQVRPUj0iYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9tYWtlX2ZpdF9hdGYucHkiCj4g
+IENPTkZJR19ERUZBVUxUX0ZEVF9GSUxFPSJyb2NrY2hpcC9yazMzOTktcm9jazk2MC5kdGIiCj4g
+ICMgQ09ORklHX0RJU1BMQVlfQ1BVSU5GTyBpcyBub3Qgc2V0Cj4gIENPTkZJR19ESVNQTEFZX0JP
+QVJESU5GT19MQVRFPXkKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczov
+L2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cg==
