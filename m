@@ -1,27 +1,94 @@
-From: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [PATCH v2 3/4] iommu/dma-iommu: Use the dev->coherent_dma_mask
-Date: Mon, 6 May 2019 23:35:15 -0700
-Message-ID: <20190507063515.GA5173@infradead.org>
-References: <20190430002952.18909-1-tmurphy@arista.com>
- <20190430002952.18909-4-tmurphy@arista.com>
- <20190430111222.GA3191@infradead.org>
- <da835ce2-f73e-3035-e1d7-d3028cc1a838@arm.com>
- <20190430113253.GA23210@infradead.org>
- <96ebb6fc-a889-fa94-09ba-65d505b85724@arm.com>
- <CAPL0++61WytVhs63tvt+hdpZKXGinrkYx=4nDtNx1UoNTRWWjw@mail.gmail.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 7/9] Makefile.spl: Create u-boot-spl-rockchip.bin for
+ rk3399
+Date: Tue, 7 May 2019 14:34:40 +0800
+Message-ID: <52ca4f72-fa9c-487a-eb10-a509b5e72539@rock-chips.com>
+References: <20190428090913.10568-1-jagan@amarulasolutions.com>
+ <20190428090913.10568-8-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAPL0++61WytVhs63tvt+hdpZKXGinrkYx=4nDtNx1UoNTRWWjw@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tom Murphy <tmurphy@arista.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@infradead.org>, iommu@lists.linux-foundation.org, Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, David Brown <david.brown@linaro.org>, Thierry Reding <thierry.reding@gmail.com>, linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Andy Gross <andy.gross@linaro.org>, linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Tom
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190428090913.10568-8-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, May 06, 2019 at 06:56:13PM +0100, Tom Murphy wrote:
-> Just to make this clear, I won't apply Christoph's patch (the one in
-> this email thread) and instead the only change I will make is to
-> rename dma_limit to dma_mask.
-
-Sounds good for now.
+SGkgSmFnYW4sCgpPbiAwNC8yOC8yMDE5IDA1OjA5IFBNLCBKYWdhbiBUZWtpIHdyb3RlOgo+IFJv
+Y2tjaGlwIHBsYXRmb3JtIHdvdWxkIHJlcXVpcmUgYW4gZXhwbGljaXQgY2FsbCB0byBta2ltYWdl
+IGZvcgo+IGNyZWF0aW5nIGJvb3RhYmxlIGltYWdlcyB3aGljaCBpbmRlZWQgc3BlY2lmaWMgdG8g
+U29DIGZhbWlseQo+IGFsb25nIHdpdGggYm9vdCBkZXZpY2VzLgo+Cj4gRXhhbXBsZSBvZiBjcmVh
+dGluZyBib290YWJsZSBpbWFnZSBmb3IgcmszMzk5IGZhbWlseSB3aXRoIFNECj4gYm9vdCBkZXZp
+Y2UgYXMKPgo+IOKCuSBta2ltYWdlIC1uIHJrMzM5OSAtVCBya3NkIC1kIC4vc3BsL3UtYm9vdC1z
+cGwtZHRiLmJpbiB1LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbgo+Cj4gVGhpcyBwYXRjaCB3b3VsZCBk
+byB0aGUgc2FtZSB0aGluayB2aWEgTWFrZWZpbGUuc3BsIGZvciByazMzOTkuCj4KPiBUaGlzIHdv
+dWxkIGJlIGFuIGluaXRpYWwgdmVyc2lvbiBhbmQgaXQgY2FuIGVhc2lseSBleHBhbmQgZnVydGhl
+ciB0byBzdXBwb3J0Cj4gb3RoZXIgZmFtaWxpZXMgb2YgU29DJ3Mgd2l0aCB2YXJpZXR5IG9mIGJv
+b3Qgc3RhZ2VzIGxpa2UgVFBMLCBTUEwuCgrCoMKgwqAgcmszMzk5IG1heSBoYXZlIFRQTCBsaWtl
+IG90aGVyIFNvQ3MsIGZvciB0aGVyZSB3aWxsIGJlIGltYWdlIHR5cGVzOgoKU1BMK3UtYm9vdC5i
+aW4KClNQTCt1LWJvb3QuaXRiCgpUUEwrU1BMK3UtYm9vdC5pdGIKClNlZW1zIHRoaXMgcGF0Y2gg
+YW5kIDkvOSBvZiB0aGlzIHBhdGNoIHNldCBvbmx5IGNvdmVyIFNQTCt1LWJvb3QuaXRiPwoKSXMg
+aXQgcG9zc2libGUgdG8gbWFrZSBpdCBtb3JlIGdlbmVyaWM/CgoKVGhhbmtzLAoKLSBLZXZlcgoK
+Pgo+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29t
+Pgo+IC0tLQo+ICBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcgfCAgOCArKysrKysrKwo+
+ICBkb2MvUkVBRE1FLnJvY2tjaGlwICAgICAgICAgICAgfCAgMyArLS0KPiAgc2NyaXB0cy9NYWtl
+ZmlsZS5zcGwgICAgICAgICAgIHwgMjEgKysrKysrKysrKysrKysrKysrKysrCj4gIDMgZmlsZXMg
+Y2hhbmdlZCwgMzAgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQg
+YS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcgYi9hcmNoL2FybS9tYWNoLXJvY2tjaGlw
+L0tjb25maWcKPiBpbmRleCBkYmU3ZjExZDM5Li4yODZjODcwMTM1IDEwMDY0NAo+IC0tLSBhL2Fy
+Y2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZpZwo+ICsrKyBiL2FyY2gvYXJtL21hY2gtcm9ja2No
+aXAvS2NvbmZpZwo+IEBAIC0yMjIsNiArMjIyLDE0IEBAIGNvbmZpZyBST0NLQ0hJUF9TUExfUkVT
+RVJWRV9JUkFNCj4gIGNvbmZpZyBST0NLQ0hJUF9CUk9NX0hFTFBFUgo+ICAJYm9vbAo+ICAKPiAr
+Y29uZmlnIFNQTF9ST0NLQ0hJUF9JTUdfTkFNRQo+ICsJc3RyaW5nICJTUEwgUm9ja2NoaXAgaW1h
+Z2UgbmFtZSIKPiArCWRlZmF1bHQgInJrMzM5OSIgaWYgUk9DS0NISVBfUkszMzk5Cj4gKwloZWxw
+Cj4gKwkgIFRvIGNyZWF0ZSBTUEwgaW1hZ2UgZm9yIHJvY2tjaGlwIHRhcmdldHMgdGhlIGltYWdl
+IG5hbWUgd291bGQKPiArCSAgZGVwZW5kcyBvbiB0aGUgU29DIGZhbWlseSB0aGF0IHdvdWxkIHBh
+c3MgYXMgYW4gYXJndW1lbnQgYXMKPiArCSAgJy1uIHJrMzM5OScgdG8gbWtpbWFnZSBmb3IgY3Jl
+YXRpbmcgUm9ja2NoaXAgU1BMIGJvb3QgaW1hZ2UuCj4gKwo+ICBjb25maWcgU1BMX1JPQ0tDSElQ
+X0VBUkxZUkVUVVJOX1RPX0JST00KPiAgICAgICAgICBib29sICJTUEwgcmVxdWlyZXMgZWFybHkt
+cmV0dXJuIChmb3IgUkszMTg4LXN0eWxlIEJST00pIHRvIEJST00iCj4gIAlkZXBlbmRzIG9uIFNQ
+TCAmJiBFTkFCTEVfQVJNX1NPQ19CT09UMF9IT09LCj4gZGlmZiAtLWdpdCBhL2RvYy9SRUFETUUu
+cm9ja2NoaXAgYi9kb2MvUkVBRE1FLnJvY2tjaGlwCj4gaW5kZXggYzRlNWY4M2RhNy4uY2NiYWFh
+YTlhNyAxMDA2NDQKPiAtLS0gYS9kb2MvUkVBRE1FLnJvY2tjaGlwCj4gKysrIGIvZG9jL1JFQURN
+RS5yb2NrY2hpcAo+IEBAIC00MjEsMTEgKzQyMSwxMCBAQCBPcHRpb24gMjogUGFja2FnZSB0aGUg
+aW1hZ2Ugd2l0aCBTUEw6Cj4gICAgLSBQcmVmaXggcmszMzk5IGhlYWRlciB0byBTUEwgaW1hZ2UK
+PiAgCj4gICAgICA9PiBjZCAvcGF0aC90by91LWJvb3QKPiAtICAgID0+IC4vdG9vbHMvbWtpbWFn
+ZSAtbiByazMzOTkgLVQgcmtzZCAtZCBzcGwvdS1ib290LXNwbC1kdGIuYmluIG91dAo+ICAKPiAg
+ICAtIFdyaXRlIHByZWZpeGVkIFNQTCBhdCA2NHRoIHNlY3Rvcgo+ICAKPiAtICAgID0+IHN1ZG8g
+ZGQgaWY9b3V0IG9mPS9kZXYvc2RjIHNlZWs9NjQKPiArICAgID0+IHN1ZG8gZGQgaWY9c3BsL3Ut
+Ym9vdC1zcGwtcm9ja2NoaXAuYmluIG9mPS9kZXYvc2RjIHNlZWs9NjQKPiAgCj4gICAgLSBXcml0
+ZSBVLUJvb3QgcHJvcGVyIGF0IDE2Mzg0IHNlY3Rvcgo+ICAKPiBkaWZmIC0tZ2l0IGEvc2NyaXB0
+cy9NYWtlZmlsZS5zcGwgYi9zY3JpcHRzL01ha2VmaWxlLnNwbAo+IGluZGV4IDU0YjE2MGQ3MmIu
+LjQ5YzA2NDFhYTIgMTAwNjQ0Cj4gLS0tIGEvc2NyaXB0cy9NYWtlZmlsZS5zcGwKPiArKysgYi9z
+Y3JpcHRzL01ha2VmaWxlLnNwbAo+IEBAIC0yMzUsNiArMjM1LDEwIEBAIEFMTC0kKENPTkZJR19B
+UkNIX1pZTlFNUCkJKz0gJChvYmopL2Jvb3QuYmluCj4gIAo+ICBBTEwtJChDT05GSUdfQVJDSF9N
+RURJQVRFSykJKz0gJChvYmopL3UtYm9vdC1zcGwtbXRrLmJpbgo+ICAKPiAraWZkZWYgQ09ORklH
+X1JPQ0tDSElQX1JLMzM5OQo+ICtBTEwtJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkJKz0gJChvYmop
+L3UtYm9vdC1zcGwtcm9ja2NoaXAuYmluCj4gK2VuZGlmCj4gKwo+ICBhbGw6CSQoQUxMLXkpCj4g
+IAo+ICBxdWlldF9jbWRfY2F0ID0gQ0FUICAgICAkQAo+IEBAIC0zNjksNiArMzczLDIzIEBAIE1L
+SU1BR0VGTEFHU191LWJvb3Qtc3BsLW10ay5iaW4gPSAtVCBtdGtfaW1hZ2UgXAo+ICAkKG9iaikv
+dS1ib290LXNwbC1tdGsuYmluOiAkKG9iaikvdS1ib290LXNwbC5iaW4gRk9SQ0UKPiAgCSQoY2Fs
+bCBpZl9jaGFuZ2VkLG1raW1hZ2UpCj4gIAo+ICsjIFJvY2tjaGlwIHNwZWNpZmljIFNQTCBidWls
+ZAo+ICtpZmVxICgkKENPTkZJR19ST0NLQ0hJUF9SSzMzOTkpLHkpCj4gKwo+ICtpZmVxICgkKENP
+TkZJR19TUElfRkxBU0hfU1VQUE9SVCkseSkKPiArUk9DS0NISVBfSU1HX1RZUEUgOj0gcmtzcGkK
+PiArZWxzZQo+ICtST0NLQ0hJUF9JTUdfVFlQRSA6PSBya3NkCj4gK2VuZGlmCj4gKwo+ICtNS0lN
+QUdFRkxBR1NfdS1ib290LXNwbC1yb2NrY2hpcC5iaW4gPSAtbiAkKENPTkZJR19TUExfUk9DS0NI
+SVBfSU1HX05BTUUpIFwKPiArCS1UICQoUk9DS0NISVBfSU1HX1RZUEUpIC1kICQoTUtJTUFHRU9V
+VFBVVCkKPiArCj4gKyQob2JqKS91LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbjogJChvYmopL3UtYm9v
+dC1zcGwuYmluIEZPUkNFCj4gKwkkKGNhbGwgaWZfY2hhbmdlZCxta2ltYWdlKQo+ICsKPiArZW5k
+aWYgIyBDT05GSUdfUk9DS0NISVBfUkszMzk5Cj4gKwo+ICAjIFJ1bGUgdG8gbGluayB1LWJvb3Qt
+c3BsCj4gICMgTWF5IGJlIG92ZXJyaWRkZW4gYnkgYXJjaC8kKEFSQ0gpL2NvbmZpZy5tawo+ICBx
+dWlldF9jbWRfdS1ib290LXNwbCA/PSBMRCAgICAgICRACgoKCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
