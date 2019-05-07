@@ -1,31 +1,51 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v5 6/6] dt-bindings: devfreq: rk3399_dmc: Remove
- references of unexistant defines
-Date: Tue, 7 May 2019 12:07:30 -0500
-Message-ID: <20190507170730.GA3315@bogus>
-References: <20190502175820.25382-1-gael.portay@collabora.com>
- <20190502175820.25382-7-gael.portay@collabora.com>
+From: Frank Rowand <frowand.list@gmail.com>
+Subject: Re: [PATCH] of: Add dummy for of_node_is_root if not CONFIG_OF
+Date: Tue, 7 May 2019 10:52:06 -0700
+Message-ID: <a3573253-e3de-0a82-8af3-6bacea20bd97@gmail.com>
+References: <20190507044801.250396-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190502175820.25382-7-gael.portay@collabora.com>
+In-Reply-To: <20190507044801.250396-1-dianders@chromium.org>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Lin Huang <hl@rock-chips.com>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Derek Basehore <dbasehore@chromium.org>, Randy Li <ayaka@soulik.info>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, kernel@collabora.com, =?iso-8859-1?Q?Ga=EBl?= PORTAY <gael.portay@collabora.com>
+To: Douglas Anderson <dianders@chromium.org>, Rob Herring <robh+dt@kernel.org>, Kees Cook <keescook@chromium.org>
+Cc: linux-rockchip@lists.infradead.org, jwerner@chromium.org, groeck@chromium.org, briannorris@chromium.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu,  2 May 2019 13:58:20 -0400, =?UTF-8?q?Ga=C3=ABl=20PORTAY?= wrote:
-> Those DDR related defines do not exist. Replace their references with
-> their numerical constant.
+On 5/6/19 9:48 PM, Douglas Anderson wrote:
+> We'll add a dummy to just return false.
+
+A more complete explanation of why this is needed please.
+
+My one guess would be compile testing of arch/sparc/kernel/prom_64.c
+fails???
+
+-Frank
+
+
 > 
-> Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 > ---
 > 
-> Changes in v5: New
+>  include/linux/of.h | 5 +++++
+>  1 file changed, 5 insertions(+)
 > 
->  .../bindings/devfreq/rk3399_dmc.txt           | 73 +++++++++----------
->  1 file changed, 34 insertions(+), 39 deletions(-)
+> diff --git a/include/linux/of.h b/include/linux/of.h
+> index 0cf857012f11..62ae5c1cafa5 100644
+> --- a/include/linux/of.h
+> +++ b/include/linux/of.h
+> @@ -653,6 +653,11 @@ static inline bool of_have_populated_dt(void)
+>  	return false;
+>  }
+>  
+> +static inline bool of_node_is_root(const struct device_node *node)
+> +{
+> +	return false;
+> +}
+> +
+>  static inline struct device_node *of_get_compatible_child(const struct device_node *parent,
+>  					const char *compatible)
+>  {
 > 
-
-Reviewed-by: Rob Herring <robh@kernel.org>
