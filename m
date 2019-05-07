@@ -1,115 +1,56 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v7 00/11] rockchip: Add new rk3399 boards
-Date: Wed,  8 May 2019 00:06:16 +0530
-Message-ID: <20190507183625.5983-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH v7 01/11] rockchip: dts: rk3399: Sync pwm2_pin_pull_down from
+ Linux 5.1-rc2
+Date: Wed,  8 May 2019 00:06:17 +0530
+Message-ID: <20190507183625.5983-2-jagan@amarulasolutions.com>
+References: <20190507183625.5983-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, Akash Gajjar <akash@openedev.com>
-Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190507183625.5983-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhpcyBpcyB2NyBwYXRjaHNldCBmb3IgTmV3IHJrMzM5OSBib2FyZHMgc3VwcG9ydCB3cnQgcHJl
-dmlvdXMKdmVyc2lvblsxXQoKVW5mb3J0dW5hdGVseSBpbml0aWFsIHZlcnNpb24gb2YgY3JlYXRp
-bmcgcmszMzk5LXUtYm9vdC5kdHNpIGFuZCAKb3JhbmdlcGkgcmszMzk5IGNoYW5nZXMgYXJlIG1l
-cmdlZCwgc28gdGhpcyBpcyByZXdvcmsgb24gdG9wIG9mIAp1LWJvb3Qtcm9ja2NoaXAvbWFzdGVy
-LgoKT3ZlcmFsbCB0aGlzIHNlcmllcyBhZGQgc3VwcG9ydCBiZWxvdyByazMzOTkgYm9hcmRzCi0g
-TmFub1BJIE00Ci0gTmFub1BDIFQ0Ci0gTmFub1BJIE5FTzQKLSBPcmFuZ2VwaSBSSzMzOTkKLSBS
-b2NrIFBJIDQKLSBSb2NrcHJvNjQKCkFsbCB0aGUgcmVzcGVjdGl2ZSBkdHMoaSkgZmlsZXMgYXJl
-IHN5bmNlZCBmcm9tIExpbnV4IDUuMS1yYzIgYW5kIGZldwpkdHMoaSkgZnJvbSBsaW51eC1uZXh0
-LgoKU29DIHUtYm9vdCBzcGVjaWZpYyBkdHNpIHJrMzM5OS11LWJvb3QuZHRzaSBjaGFuZ2VzIGFy
-ZSBwYXJ0IG9mIGFub3RoZXIKc2VyaWVzIFszXS4KCk91dCBvZiBhbGwgYWJvdmUgYm9hcmRzIFJv
-Y2twb3I2NCwgUm9jay1QSSBhbmQgTmFub3BpIE5FTzQgd291bGQgc3VwcG9ydApib290aW5nIHZp
-YSBSb2NrY2hpcCBtaW5pbG9hZGVyIGFzIG9mIG5vdy4KCkZvciBib290aW5nIHRoZSBzYW1lIHdp
-dGggU1BMIE5FTzQgd291bGQgcmVxdWlyZSBkeW5hbWljIGRyYW0gdGltaW5nCmRldGVjdGlvbiBh
-bmQgcmVzdCByZXF1aXJlIExQRERSNCBjb2RlLiBUaGVyZSBpcyBXSVBbMl0gZm9yIHRoZXNlCmRl
-cGVuZGVuY2llcyBhbmQgdGhpcyB3b3VsZCByZXF1aXJlIGJpZyBjaHVuayBvZiBjaGFuZ2VzIHdp
-bGwgZWZmZWN0CmFsbCB0aGUgcmszMzk5IGJvYXJkcywgc28gSSdtIHBsYW5uaW5nIHRvIG1hcmsg
-aXQgZm9yIG5leHQgTVcuIAoKQ2hhbmdlcyBmb3Igdjc6Ci0gcmViYXNlIG9uIHRvcCBvZiB1LWJv
-b3Qtcm9ja2NoaXAvbWFzdGVyCi0gYWRkIFNQTF9URVhUX0JBU0Ugb24gZWFjaCBib2FyZCBkZWZj
-b25maWcKLSByZWJhc2Ugb24gcmVxdWlyZWQgY2hhbmdlcwpDaGFuZ2VzIGZvciB2NjoKLSBJbmNs
-dWRlIE5hbm9wYyBUNCBzdXBwb3J0IHBhdGNoCi0gZHJvcCByazMzOTktdS1ib290LmR0c2kgcGF0
-Y2ggc2luY2UgaXQgaXMgc2VuZCBzZXBhcmF0ZWx5LgpDaGFuZ2VzIGZvciB2NToKLSBNYWtlIGFs
-bCBjaGFuZ2VzIHJlbGF0ZWQgdG8gbW92ZSBzZG1tYywgc3BpMSB1LWJvb3QsZG0tcHJlLXJlbG9j
-CiAgcHJvcGVydGllcyBpbnRvIGFsbCByazMzOTkgZHRzKGkpIGZpbGVzLgpDaGFuZ2VzIGZvciB2
-NDoKLSBkb24ndCBpbmNsdWRlIGV4aXN0aW5nIGR0cyhpKSBzZG1tYywgdS1ib290LGRtLXByZS1y
-ZWxvYyBpbnRvCiAgcmszMzk5LXUtYm9vdC5kdHNpCkNoYW5nZXMgZm9yIHYzOgotIGRyb3AgTmFu
-b1BDIFQ0IGZvciBub3csIHNpbmNlIGJvYXJkIGlzIHlldCB0byByZWNlaXZlLgotIGFkZCBSb2Nr
-IFBJLTQgYm9hcmQuCi0gYWRkIHNlcGFyYXRlIC11LWJvb3QuZHRzaSBmaWxlIGZvciBuYW5vcGk0
-IHNkcmFtIGNoYW5nZXMuCi0gY29sbGVjdCBQYXVsLCBQaGlsaXBwIGFuZCBLZXZlciBSZXZpZXdl
-ZC1ieSB0YWdzCgpUcmF2aXMtQ0k6Cmh0dHBzOi8vdHJhdmlzLWNpLm9yZy9vcGVuZWRldi91LWJv
-b3QtYW1hcnVsYS9idWlsZHMvNTI5Mjg0MjM2CgpbMV0gaHR0cHM6Ly9wYXRjaHdvcmsub3psYWJz
-Lm9yZy9jb3Zlci8xMDkxOTE0LwpbMl0gaHR0cHM6Ly9naXRodWIuY29tL2FtYXJ1bGEvdS1ib290
-LWFtYXJ1bGEvdHJlZS9yb2NrZGV2LWxwZGRyNApbM10gaHR0cHM6Ly9wYXRjaHdvcmsub3psYWJz
-Lm9yZy9jb3Zlci8xMDkxOTA5LwoKQW55IGlucHV0cz8KSmFnYW4uCgpKYWdhbiBUZWtpICgxMSk6
-CiAgcm9ja2NoaXA6IGR0czogcmszMzk5OiBTeW5jIHB3bTJfcGluX3B1bGxfZG93biBmcm9tIExp
-bnV4IDUuMS1yYzIKICBLY29uZmlnOiBBZGQgZGVmYXVsdCBTUExfRklUX0dFTkVSQVRPUiBmb3Ig
-cm9ja2NoaXAKICBhcm06IHJvY2tjaGlwOiByazMzOTk6IE1vdmUgY29tbW9uIGNvbmZpZ3MgaW4g
-S2NvbmZpZwogIHJvY2tjaGlwOiBkdHM6IHJrMzM5OTogU3luYyByazMzOTktbmFub3BpNC5kdHNp
-IGZyb20gTGludXgKICByb2NrY2hpcDogZHRzOiByazMzOTk6IG5hbm9waTQ6IFVzZSBDRCBwaW4g
-YXMgUktfRlVOQ18xCiAgcm9ja2NoaXA6IHJrMzM5OTogQWRkIE5hbm9waSBNNCBib2FyZCBzdXBw
-b3J0CiAgcm9ja2NoaXA6IHJrMzM5OTogQWRkIE5hbm9wYyBUNCBib2FyZCBzdXBwb3J0CiAgcm9j
-a2NoaXA6IHJrMzM5OTogQWRkIE5hbm9waSBORU80IGJvYXJkIHN1cHBvcnQKICByb2NrY2hpcDog
-cmszMzk5OiBBZGQgUm9ja3BybzY0IGJvYXJkIHN1cHBvcnQKICByb2NrY2hpcDogcmszMzk5OiBB
-ZGQgUm9jayBQSSA0IHN1cHBvcnQKICBkb2M6IHJvY2tjaGlwOiBBZGQgZ2xvYmFsIGRvYyBmb3Ig
-cmszMzk5IGJ1aWxkL2ZsYXNoCgogS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICB8ICAgMSArCiBhcmNoL2FybS9kdHMvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAg
-ICAgIHwgICA1ICsKIGFyY2gvYXJtL2R0cy9yazMzOTktbmFub3BjLXQ0LXUtYm9vdC5kdHNpICAg
-fCAgIDcgKwogYXJjaC9hcm0vZHRzL3JrMzM5OS1uYW5vcGMtdDQuZHRzICAgICAgICAgICB8ICA5
-MSArKysKIGFyY2gvYXJtL2R0cy9yazMzOTktbmFub3BpLW00LXUtYm9vdC5kdHNpICAgfCAgIDcg
-KwogYXJjaC9hcm0vZHRzL3JrMzM5OS1uYW5vcGktbTQuZHRzICAgICAgICAgICB8ICA2NiArKwog
-YXJjaC9hcm0vZHRzL3JrMzM5OS1uYW5vcGktbmVvNC11LWJvb3QuZHRzaSB8ICAgNiArCiBhcmNo
-L2FybS9kdHMvcmszMzk5LW5hbm9waS1uZW80LmR0cyAgICAgICAgIHwgIDUwICsrCiBhcmNoL2Fy
-bS9kdHMvcmszMzk5LW5hbm9waTQtdS1ib290LmR0c2kgICAgIHwgIDExICsKIGFyY2gvYXJtL2R0
-cy9yazMzOTktbmFub3BpNC5kdHNpICAgICAgICAgICAgfCA3MDMgKysrKysrKysrKysrKysrKysr
-KwogYXJjaC9hcm0vZHRzL3JrMzM5OS1yb2NrLXBpLTQtdS1ib290LmR0c2kgICB8ICAgNiArCiBh
-cmNoL2FybS9kdHMvcmszMzk5LXJvY2stcGktNC5kdHMgICAgICAgICAgIHwgNjA2ICsrKysrKysr
-KysrKysrKysrCiBhcmNoL2FybS9kdHMvcmszMzk5LXJvY2twcm82NC11LWJvb3QuZHRzaSAgIHwg
-ICA2ICsKIGFyY2gvYXJtL2R0cy9yazMzOTktcm9ja3BybzY0LmR0cyAgICAgICAgICAgfCA3MTIg
-KysrKysrKysrKysrKysrKysrKysKIGFyY2gvYXJtL2R0cy9yazMzOTkuZHRzaSAgICAgICAgICAg
-ICAgICAgICAgfCAgIDUgKwogYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9LY29uZmlnICAgICAgICAg
-ICAgICB8ICAxNiArCiBib2FyZC9yb2NrY2hpcC9ldmJfcmszMzk5L01BSU5UQUlORVJTICAgICAg
-IHwgIDMyICsKIGNvbmZpZ3MvY2hyb21lYm9va19ib2JfZGVmY29uZmlnICAgICAgICAgICAgfCAg
-MTcgLQogY29uZmlncy9ldmItcmszMzk5X2RlZmNvbmZpZyAgICAgICAgICAgICAgICB8ICAxNyAt
-CiBjb25maWdzL2ZpY3VzLXJrMzM5OV9kZWZjb25maWcgICAgICAgICAgICAgIHwgIDE3IC0KIGNv
-bmZpZ3MvZmlyZWZseS1yazMzOTlfZGVmY29uZmlnICAgICAgICAgICAgfCAgMTcgLQogY29uZmln
-cy9uYW5vcGMtdDQtcmszMzk5X2RlZmNvbmZpZyAgICAgICAgICB8ICA1OSArKwogY29uZmlncy9u
-YW5vcGktbTQtcmszMzk5X2RlZmNvbmZpZyAgICAgICAgICB8ICA1OSArKwogY29uZmlncy9uYW5v
-cGktbmVvNC1yazMzOTlfZGVmY29uZmlnICAgICAgICB8ICA1OSArKwogY29uZmlncy9vcmFuZ2Vw
-aS1yazMzOTlfZGVmY29uZmlnICAgICAgICAgICB8ICAxNyAtCiBjb25maWdzL3B1bWEtcmszMzk5
-X2RlZmNvbmZpZyAgICAgICAgICAgICAgIHwgIDE2IC0KIGNvbmZpZ3Mvcm9jay1waS00LXJrMzM5
-OV9kZWZjb25maWcgICAgICAgICAgfCAgNTkgKysKIGNvbmZpZ3Mvcm9jazk2MC1yazMzOTlfZGVm
-Y29uZmlnICAgICAgICAgICAgfCAgMTcgLQogY29uZmlncy9yb2NrcHJvNjQtcmszMzk5X2RlZmNv
-bmZpZyAgICAgICAgICB8ICA1OSArKwogZG9jL1JFQURNRS5yb2NrY2hpcCAgICAgICAgICAgICAg
-ICAgICAgICAgICB8IDIzMyArKysrKystCiAzMCBmaWxlcyBjaGFuZ2VkLCAyODU3IGluc2VydGlv
-bnMoKyksIDExOSBkZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMv
-cmszMzk5LW5hbm9wYy10NC11LWJvb3QuZHRzaQogY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJt
-L2R0cy9yazMzOTktbmFub3BjLXQ0LmR0cwogY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtL2R0
-cy9yazMzOTktbmFub3BpLW00LXUtYm9vdC5kdHNpCiBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9h
-cm0vZHRzL3JrMzM5OS1uYW5vcGktbTQuZHRzCiBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0v
-ZHRzL3JrMzM5OS1uYW5vcGktbmVvNC11LWJvb3QuZHRzaQogY3JlYXRlIG1vZGUgMTAwNjQ0IGFy
-Y2gvYXJtL2R0cy9yazMzOTktbmFub3BpLW5lbzQuZHRzCiBjcmVhdGUgbW9kZSAxMDA2NDQgYXJj
-aC9hcm0vZHRzL3JrMzM5OS1uYW5vcGk0LXUtYm9vdC5kdHNpCiBjcmVhdGUgbW9kZSAxMDA2NDQg
-YXJjaC9hcm0vZHRzL3JrMzM5OS1uYW5vcGk0LmR0c2kKIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNo
-L2FybS9kdHMvcmszMzk5LXJvY2stcGktNC11LWJvb3QuZHRzaQogY3JlYXRlIG1vZGUgMTAwNjQ0
-IGFyY2gvYXJtL2R0cy9yazMzOTktcm9jay1waS00LmR0cwogY3JlYXRlIG1vZGUgMTAwNjQ0IGFy
-Y2gvYXJtL2R0cy9yazMzOTktcm9ja3BybzY0LXUtYm9vdC5kdHNpCiBjcmVhdGUgbW9kZSAxMDA2
-NDQgYXJjaC9hcm0vZHRzL3JrMzM5OS1yb2NrcHJvNjQuZHRzCiBjcmVhdGUgbW9kZSAxMDA2NDQg
-Y29uZmlncy9uYW5vcGMtdDQtcmszMzk5X2RlZmNvbmZpZwogY3JlYXRlIG1vZGUgMTAwNjQ0IGNv
-bmZpZ3MvbmFub3BpLW00LXJrMzM5OV9kZWZjb25maWcKIGNyZWF0ZSBtb2RlIDEwMDY0NCBjb25m
-aWdzL25hbm9waS1uZW80LXJrMzM5OV9kZWZjb25maWcKIGNyZWF0ZSBtb2RlIDEwMDY0NCBjb25m
-aWdzL3JvY2stcGktNC1yazMzOTlfZGVmY29uZmlnCiBjcmVhdGUgbW9kZSAxMDA2NDQgY29uZmln
-cy9yb2NrcHJvNjQtcmszMzk5X2RlZmNvbmZpZwoKLS0gCjIuMTguMC4zMjEuZ2ZmYzZmYTBlMwoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1h
-aWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlz
-dGluZm8vdS1ib290Cg==
+To make successful build with dts(i) files syncing from Linux 5.1-rc2
+the rk3399.dtsi would require pwm2_pin_pull_down.
+
+So, sync the pwm2_pin_pull_down node from Linux 5.1-rc2.  Since this
+node is strictly not part of any commit alone, I have mentioned
+Linux 5.1-rc2 tag for future reference of where would this sync
+coming from.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Reviewed-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+---
+ arch/arm/dts/rk3399.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/arch/arm/dts/rk3399.dtsi b/arch/arm/dts/rk3399.dtsi
+index b53e41b4dc..b73442ee34 100644
+--- a/arch/arm/dts/rk3399.dtsi
++++ b/arch/arm/dts/rk3399.dtsi
+@@ -2495,6 +2495,11 @@
+ 				rockchip,pins =
+ 					<1 RK_PC3 RK_FUNC_1 &pcfg_pull_none>;
+ 			};
++
++			pwm2_pin_pull_down: pwm2-pin-pull-down {
++				rockchip,pins =
++					<1 RK_PC3 RK_FUNC_1 &pcfg_pull_down>;
++			};
+ 		};
+ 
+ 		pwm3a {
+-- 
+2.18.0.321.gffc6fa0e3
