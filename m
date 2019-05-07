@@ -1,55 +1,46 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH 1/2] drm/panel: simple: Add FriendlyELEC HD702E 800x1280
- LCD panel
-Date: Tue, 7 May 2019 18:40:36 +0530
-Message-ID: <CAMty3ZBpRABe4u26ZN91JRB+vVF4Z96k-LDoe37d6EdVDkfJsg@mail.gmail.com>
-References: <20190501121448.3812-1-jagan@amarulasolutions.com>
- <20190501193429.GA9075@ravnborg.org> <CAMty3ZAfwVyvmAmenhrQHJcy3eq-Yb61a4WLop_8jS-7vM940A@mail.gmail.com>
- <CAL_Jsq+mYy1JF_cM7sD82aLuUSnZnwsSD6-Q-W1uTp+_oSdRmg@mail.gmail.com>
+From: Guenter Roeck <groeck@google.com>
+Subject: Re: [PATCH] of: Add dummy for of_node_is_root if not CONFIG_OF
+Date: Tue, 7 May 2019 07:52:47 -0700
+Message-ID: <CABXOdTcsDU5dSAFWZBAvrOGRa+BokgKi9huGfs=fO4ObCOvnHQ@mail.gmail.com>
+References: <20190507044801.250396-1-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAL_Jsq+mYy1JF_cM7sD82aLuUSnZnwsSD6-Q-W1uTp+_oSdRmg@mail.gmail.com>
+In-Reply-To: <20190507044801.250396-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Sam Ravnborg <sam@ravnborg.org>, Heiko Stuebner <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>, linux-amarula <linux-amarula@amarulasolutions.com>, Thierry Reding <thierry.reding@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Kees Cook <keescook@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, Frank Rowand <frowand.list@gmail.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE" <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, May 6, 2019 at 8:34 PM Rob Herring <robh+dt@kernel.org> wrote:
+On Mon, May 6, 2019 at 9:48 PM Douglas Anderson <dianders@chromium.org> wrote:
 >
-> On Mon, May 6, 2019 at 4:56 AM Jagan Teki <jagan@amarulasolutions.com> wrote:
-> >
-> > Hi Sam,
-> >
-> > On Thu, May 2, 2019 at 1:04 AM Sam Ravnborg <sam@ravnborg.org> wrote:
-> > >
-> > > Hi Jagan
-> > >
-> > > On Wed, May 01, 2019 at 05:44:47PM +0530, Jagan Teki wrote:
-> > > > HD702E lcd is FriendlyELEC developed eDP LCD panel with 800x1280
-> > > > resolution. It has built in Goodix, GT9271 captive touchscreen
-> > > > with backlight adjustable via PWM.
-> > > >
-> > > > Add support for it.
-> > > >
-> > > > Cc: Thierry Reding <thierry.reding@gmail.com>
-> > > > Cc: Sam Ravnborg <sam@ravnborg.org>
-> > > > Cc: David Airlie <airlied@linux.ie>
-> > > > Cc: Daniel Vetter <daniel@ffwll.ch>
-> > > > Cc: dri-devel@lists.freedesktop.org
-> > > > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> > >
-> > > Please submit the binding in a separate patch as per
-> > > Documentation/devicetree/bindings/submitting-patches.txt
-> >
-> > Hmm.. prepared like this initially but few of my patches were combined
-> > earlier even-though I sent it separately. anyway let me separate it
-> > again.
+> We'll add a dummy to just return false.
 >
-> For what subsystem? All the maintainers that I was aware of doing that
-> have stopped.
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-May be it was recent, Dmitry combined by previous dt and driver changes.
+Reviewed-by: Guenter Roeck <groeck@chromium.org>
 
-https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/?id=ae97fb589648cd5558f1ceea317404a639307501
-https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/?id=a5f50c501321249d67611353dde6d68d48c5b959
+> ---
+>
+>  include/linux/of.h | 5 +++++
+>  1 file changed, 5 insertions(+)
+>
+> diff --git a/include/linux/of.h b/include/linux/of.h
+> index 0cf857012f11..62ae5c1cafa5 100644
+> --- a/include/linux/of.h
+> +++ b/include/linux/of.h
+> @@ -653,6 +653,11 @@ static inline bool of_have_populated_dt(void)
+>         return false;
+>  }
+>
+> +static inline bool of_node_is_root(const struct device_node *node)
+> +{
+> +       return false;
+> +}
+> +
+>  static inline struct device_node *of_get_compatible_child(const struct device_node *parent,
+>                                         const char *compatible)
+>  {
+> --
+> 2.21.0.1020.gf2820cf01a-goog
+>
