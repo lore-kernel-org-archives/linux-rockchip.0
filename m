@@ -1,83 +1,55 @@
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: Re: [PATCH v6 09/13] rockchip: rk3399: Add Nanopc T4 board
-	support
-Date: Tue, 07 May 2019 11:12:34 +0200
-Message-ID: <b250ecbc4cb638f36f25e9f14860cf5a99c31621.camel@bootlin.com>
-References: <20190427114852.7608-1-jagan@amarulasolutions.com>
- <20190427114852.7608-10-jagan@amarulasolutions.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Enable SPI0 and SPI4 on Rock960
+Date: Tue, 07 May 2019 13:17:10 +0200
+Message-ID: <3484838.jBNMtg6mRV@phil>
+References: <20190506120458.25842-1-manivannan.sadhasivam@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20190427114852.7608-10-jagan@amarulasolutions.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, Akash Gajjar <akash@openedev.com>, Tom Rini <trini@konsulko.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190506120458.25842-1-manivannan.sadhasivam@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, ezequiel@collabora.com, tom@vamrs.com, dev@vamrs.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBTYXQsIDIwMTktMDQtMjcgYXQgMTc6MTggKzA1MzAsIEphZ2FuIFRla2kgd3JvdGU6
-Cj4gZGlmZiAtLWdpdCBhL2JvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvTUFJTlRBSU5FUlMgYi9i
-b2FyZC9yb2NrY2hpcC9ldmJfcmszMzk5L01BSU5UQUlORVJTCj4gaW5kZXggYWU0MzgwNWE2YS4u
-NTkxN2FiYjljMSAxMDA2NDQKPiAtLS0gYS9ib2FyZC9yb2NrY2hpcC9ldmJfcmszMzk5L01BSU5U
-QUlORVJTCj4gKysrIGIvYm9hcmQvcm9ja2NoaXAvZXZiX3JrMzM5OS9NQUlOVEFJTkVSUwo+IEBA
-IC02LDYgKzYsMTIgQEAgRjogICAgICBpbmNsdWRlL2NvbmZpZ3MvZXZiX3JrMzM5OS5oCj4gIEY6
-ICAgICAgY29uZmlncy9ldmItcmszMzk5X2RlZmNvbmZpZwo+ICBGOiAgICAgIGNvbmZpZ3MvZmly
-ZWZseS1yazMzOTlfZGVmY29uZmlnCj4gIAo+ICtOQU5PUEMtVDQKPiArTToJSmFnYW4gVGVraSA8
-amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gK1M6CU1haW50YWluZWQKPiArRjoJY29uZmln
-cy9uYW5vcGljLXQ0LXJrMzM5OV9kZWZjb25maWcKPiArRjoJYXJjaC9hcm0vZHRzL3JrMzM5OS1u
-YW5vcGljLXQ0LXUtYm9vdC5kdHNpCj4gKwoKTWhoLCBJIGZlZWwgbGlrZSBlYWNoIG5ldyBib2Fy
-ZCB0aGF0IHlvdSBhcmUgaW50cm9kdWNpbmcgc2hvdWxkIGhhdmUKaXRzIG93biBib2FyZCBkaXJl
-Y3RvcnkgLS0gdGhpcyBib2FyZCBpcyBkZWZpbml0ZWx5IG5vdCBhIHJrMzM5OSBldmIKbWFkZSBi
-eSByb2NrY2hpcCwgYnV0IGFub3RoZXIgYm9hcmQuCgpJIGhhdmUgYWxyZWFkeSBwYXRjaGVzIHRv
-IHNwbGl0IHRoYXQgZm9yIHRoZSBmaXJlZmx5LXJrMzM5OSwgYnV0IEkKY2Fubm90IHJlYWxseSB0
-ZXN0IHRoZW0gb3V0c2lkZSBvZiBidWlsZGluZy4KCj4gIE5BTk9QSS1NNAo+ICBNOglKYWdhbiBU
-ZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KPiAgUzoJTWFpbnRhaW5lZAo+IGRpZmYg
-LS1naXQgYS9jb25maWdzL25hbm9wYy10NC1yazMzOTlfZGVmY29uZmlnIGIvY29uZmlncy9uYW5v
-cGMtdDQtcmszMzk5X2RlZmNvbmZpZwo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAw
-MDAwMDAwMC4uN2JhNGY4NTQ4NQo+IC0tLSAvZGV2L251bGwKPiArKysgYi9jb25maWdzL25hbm9w
-Yy10NC1yazMzOTlfZGVmY29uZmlnCj4gQEAgLTAsMCArMSw1OCBAQAoKQWxzbyBJIGRvbid0IHNl
-ZSB3aGljaCBUQVJHRVQgaXMgc2VsZWN0ZWQgaGVyZSwgaXMgdGhlcmUgYSBmYWxsYmFjayBvbgp0
-aGUgUkszMzk5IEVWQiBmb3IgdGhlIHJrMzM5OSBwbGF0Zm9ybT8KCkNoZWVycywKClBhdWwKCj4g
-K0NPTkZJR19BUk09eQo+ICtDT05GSUdfQVJDSF9ST0NLQ0hJUD15Cj4gK0NPTkZJR19TWVNfVEVY
-VF9CQVNFPTB4MDAyMDAwMDAKPiArQ09ORklHX1NQTF9MSUJDT01NT05fU1VQUE9SVD15Cj4gK0NP
-TkZJR19TUExfTElCR0VORVJJQ19TVVBQT1JUPXkKPiArQ09ORklHX1NZU19NQUxMT0NfRl9MRU49
-MHg0MDAwCj4gK0NPTkZJR19ST0NLQ0hJUF9SSzMzOTk9eQo+ICtDT05GSUdfUk9DS0NISVBfU1BM
-X1JFU0VSVkVfSVJBTT0weDQwMDAKPiArQ09ORklHX0RFQlVHX1VBUlRfQkFTRT0weEZGMUEwMDAw
-Cj4gK0NPTkZJR19ERUJVR19VQVJUX0NMT0NLPTI0MDAwMDAwCj4gK0NPTkZJR19TUExfU1RBQ0tf
-Ul9BRERSPTB4ODAwMDAKPiArQ09ORklHX0RFQlVHX1VBUlQ9eQo+ICtDT05GSUdfTlJfRFJBTV9C
-QU5LUz0xCj4gK0NPTkZJR19ERUZBVUxUX0ZEVF9GSUxFPSJyb2NrY2hpcC9yazMzOTktbmFub3Bj
-LXQ0LmR0YiIKPiArIyBDT05GSUdfRElTUExBWV9DUFVJTkZPIGlzIG5vdCBzZXQKPiArQ09ORklH
-X0RJU1BMQVlfQk9BUkRJTkZPX0xBVEU9eQo+ICtDT05GSUdfU1BMX1NUQUNLX1I9eQo+ICtDT05G
-SUdfU1BMX1NUQUNLX1JfTUFMTE9DX1NJTVBMRV9MRU49MHg0MDAwCj4gK0NPTkZJR19DTURfQk9P
-VFo9eQo+ICtDT05GSUdfQ01EX0dQVD15Cj4gK0NPTkZJR19DTURfTU1DPXkKPiArQ09ORklHX0NN
-RF9TRj15Cj4gK0NPTkZJR19DTURfVVNCPXkKPiArIyBDT05GSUdfQ01EX1NFVEVYUFIgaXMgbm90
-IHNldAo+ICtDT05GSUdfQ01EX1RJTUU9eQo+ICtDT05GSUdfU1BMX09GX0NPTlRST0w9eQo+ICtD
-T05GSUdfREVGQVVMVF9ERVZJQ0VfVFJFRT0icmszMzk5LW5hbm9wYy10NCIKPiArQ09ORklHX09G
-X1NQTF9SRU1PVkVfUFJPUFM9InBpbmN0cmwtMCBwaW5jdHJsLW5hbWVzIGNsb2NrLW5hbWVzIGlu
-dGVycnVwdC1wYXJlbnQgYXNzaWduZWQtY2xvY2tzIGFzc2lnbmVkLWNsb2NrLXJhdGVzIGFzc2ln
-bmVkLWNsb2NrLXBhcmVudHMiCj4gK0NPTkZJR19FTlZfSVNfSU5fTU1DPXkKPiArQ09ORklHX1JP
-Q0tDSElQX0dQSU89eQo+ICtDT05GSUdfU1lTX0kyQ19ST0NLQ0hJUD15Cj4gK0NPTkZJR19NTUNf
-RFc9eQo+ICtDT05GSUdfTU1DX0RXX1JPQ0tDSElQPXkKPiArQ09ORklHX01NQ19TREhDST15Cj4g
-K0NPTkZJR19NTUNfU0RIQ0lfUk9DS0NISVA9eQo+ICtDT05GSUdfRE1fRVRIPXkKPiArQ09ORklH
-X0VUSF9ERVNJR05XQVJFPXkKPiArQ09ORklHX0dNQUNfUk9DS0NISVA9eQo+ICtDT05GSUdfUE1J
-Q19SSzhYWD15Cj4gK0NPTkZJR19SRUdVTEFUT1JfUFdNPXkKPiArQ09ORklHX1JFR1VMQVRPUl9S
-SzhYWD15Cj4gK0NPTkZJR19QV01fUk9DS0NISVA9eQo+ICtDT05GSUdfQkFVRFJBVEU9MTUwMDAw
-MAo+ICtDT05GSUdfREVCVUdfVUFSVF9TSElGVD0yCj4gK0NPTkZJR19TWVNSRVNFVD15Cj4gK0NP
-TkZJR19VU0I9eQo+ICtDT05GSUdfVVNCX1hIQ0lfSENEPXkKPiArQ09ORklHX1VTQl9YSENJX0RX
-QzM9eQo+ICtDT05GSUdfVVNCX0VIQ0lfSENEPXkKPiArQ09ORklHX1VTQl9FSENJX0dFTkVSSUM9
-eQo+ICtDT05GSUdfVVNCX0hPU1RfRVRIRVI9eQo+ICtDT05GSUdfVVNCX0VUSEVSX0FTSVg9eQo+
-ICtDT05GSUdfVVNCX0VUSEVSX0FTSVg4ODE3OT15Cj4gK0NPTkZJR19VU0JfRVRIRVJfTUNTNzgz
-MD15Cj4gK0NPTkZJR19VU0JfRVRIRVJfUlRMODE1Mj15Cj4gK0NPTkZJR19VU0JfRVRIRVJfU01T
-Qzk1WFg9eQo+ICtDT05GSUdfVVNFX1RJTllfUFJJTlRGPXkKPiArQ09ORklHX0VSUk5PX1NUUj15
-Ci0tIApQYXVsIEtvY2lhbGtvd3NraSwgQm9vdGxpbgpFbWJlZGRlZCBMaW51eCBhbmQga2VybmVs
-IGVuZ2luZWVyaW5nCmh0dHBzOi8vYm9vdGxpbi5jb20KCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3Rz
-LmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
+Am Montag, 6. Mai 2019, 14:04:57 CEST schrieb Manivannan Sadhasivam:
+> Enable SPI0 and SPI4 exposed on the Low and High speed expansion
+> connectors of Rock960.
+> 
+> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399-rock960.dts | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
+> index 12285c51cceb..7498344d4a73 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
+> @@ -114,6 +114,18 @@
+>  	};
+>  };
+>  
+> +&spi0 {
+> +	/* On Low speed expansion */
+> +	label = "LS-SPI0";
+
+where does the label property come from and what does it do?
+It's not part of the rockchip-spi / general-spi binding.
+
+
+Heiko
+
+> +	status = "okay";
+> +};
+> +
+> +&spi4 {
+> +	/* On High speed expansion */
+> +	label = "HS-SPI1";
+> +	status = "okay";
+> +};
+> +
+>  &usbdrd_dwc3_0 {
+>  	dr_mode = "otg";
+>  };
+> 
