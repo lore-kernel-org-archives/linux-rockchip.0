@@ -1,35 +1,64 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH v2 2/3] drm/panel: simple: Add FriendlyELEC HD702E
- 800x1280 LCD panel
-Date: Tue, 7 May 2019 20:03:27 +0200
-Message-ID: <20190507180327.GB15122@ravnborg.org>
-References: <20190507130708.11255-1-jagan@amarulasolutions.com>
- <20190507130708.11255-2-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH v7 0/4] arm64: rockchip: dts: Add rk3399
+	-u-boot.dtsi files
+Date: Tue,  7 May 2019 23:51:48 +0530
+Message-ID: <20190507182152.4254-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190507130708.11255-2-jagan@amarulasolutions.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-amarula@amarulasolutions.com, Thierry Reding <thierry.reding@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, Akash Gajjar <akash@openedev.com>
+Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, May 07, 2019 at 06:37:07PM +0530, Jagan Teki wrote:
-> HD702E lcd is FriendlyELEC developed eDP LCD panel with 800x1280
-> resolution. It has built in Goodix, GT9271 captive touchscreen
-> with backlight adjustable via PWM.
-> 
-> Add support for it.
-> 
-> Cc: Thierry Reding <thierry.reding@gmail.com>
-> Cc: Sam Ravnborg <sam@ravnborg.org>
-> Cc: David Airlie <airlied@linux.ie>
-> Cc: Daniel Vetter <daniel@ffwll.ch>
-> Cc: dri-devel@lists.freedesktop.org
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-
-Patch applied to drm-misc-next
-
-	Sam
+VW5mb3J0dW5hdGVseSBpbml0aWFsIHZlcnNpb24gb2YgY3JlYXRpbmcgcmszMzk5LXUtYm9vdC5k
+dHNpIApoYXMgYmVlbiBtZXJnZWQsIHNvIHRoaXMgc2VyaWVzIGlzIHJld29yayBvZiBwcmV2aW91
+cyB2NiBzZXRbMV0Kb24gdG9wIG9mIHUtYm9vdC1yb2NrY2hpcC9tYXN0ZXIKCkFsbCB0aGVzZSBj
+aGFuZ2VzIGFyZSB1cGRhdGluZyByazMzOTktdS1ib290LmR0c2kgYW5kIHJrMzM5OQpib2FyZCAt
+dS1ib290LmR0c2kgZmlsZXMgYW5kIHUtYm9vdCBzcGVjaWZpYyBkdHMgY2hhbmdlcyBsaWtlCi0g
+c2RyYW0gZHRzaQotIHNkbW1jLCB1LWJvb3QsZG0tcHJlLXJlbG9jCi0gc3BpMSwgdS1ib290LGRt
+LXByZS1yZWxvYwoKQ2hhbmdlcyBmb3Igdjc6Ci0gcmViYXNlIG9uIHUtYm9vdC1yb2NrY2hpcC9t
+YXN0ZXIKLSByZWNyZWF0ZSBwYXRjaGVzIGJhc2VkIG9uIHYxIHNlcmllcyBtZXJnZQotIGFkZCBw
+YXRjaCBmb3IgZHRiIGJ1aWxkIGJhc2VkIG9uIFNvQyB0eXBlIApDaGFuZ2VzIGZvciB2NjoKLSBz
+cGlsdCB0aGUgZXhpc3RpbmcgcGF0Y2hbMl0gaW50byBtdWx0aXBsZSBwYXRjaGVzCiAgYW5kIHNl
+bmQgYXMgYSBzZXBhcmF0ZSBzZXJpZXMuCgpbMl0gaHR0cHM6Ly9wYXRjaHdvcmsub3psYWJzLm9y
+Zy9wYXRjaC8xMDkxNzIwLwpbMV0gaHR0cHM6Ly9wYXRjaHdvcmsub3psYWJzLm9yZy9jb3Zlci8x
+MDkxOTA5LwoKQW55IGlucHV0cz8KSmFnYW4uCgpKYWdhbiBUZWtpICg0KToKICBkdHM6IE1ha2Vm
+aWxlOiBCdWlsZCByb2NrY2hpcCBkdGJzIGJhc2VkIG9uIFNvQyB0eXBlcwogIGFybTY0OiByb2Nr
+Y2hpcDogZHRzOiByazMzOTk6IEFkZCBib2FyZCAtdS1ib290LmR0c2kgZmlsZXMKICByb2NrY2hp
+cDogZHRzOiByazMzOTktdS1ib290OiBBZGQgdS1ib290LGRtLXByZS1yZWxvYyBmb3Igc3BpMQog
+IGFybTY0OiByb2NrY2hpcDogZHRzOiByazMzOTk6IFVzZSByazMzOTktdS1ib290LmR0c2kKCiBh
+cmNoL2FybS9kdHMvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgfCAzNSArKysrKysrKysrKysr
+KysrKystLS0tLS0tCiBhcmNoL2FybS9kdHMvcmszMzk5LWV2Yi11LWJvb3QuZHRzaSAgICAgfCAg
+NyArKysrKwogYXJjaC9hcm0vZHRzL3JrMzM5OS1ldmIuZHRzICAgICAgICAgICAgIHwgIDEgLQog
+YXJjaC9hcm0vZHRzL3JrMzM5OS1maWN1cy11LWJvb3QuZHRzaSAgIHwgIDYgKysrKysKIGFyY2gv
+YXJtL2R0cy9yazMzOTktZmljdXMuZHRzICAgICAgICAgICB8ICAxIC0KIGFyY2gvYXJtL2R0cy9y
+azMzOTktZmlyZWZseS11LWJvb3QuZHRzaSB8ICA3ICsrKysrCiBhcmNoL2FybS9kdHMvcmszMzk5
+LWZpcmVmbHkuZHRzICAgICAgICAgfCAgMSAtCiBhcmNoL2FybS9kdHMvcmszMzk5LWdydS1ib2It
+dS1ib290LmR0c2kgfCAgNyArKysrKwogYXJjaC9hcm0vZHRzL3JrMzM5OS1ncnUtYm9iLmR0cyAg
+ICAgICAgIHwgIDEgLQogYXJjaC9hcm0vZHRzL3JrMzM5OS1ncnUtdS1ib290LmR0c2kgICAgIHwg
+IDYgKysrKysKIGFyY2gvYXJtL2R0cy9yazMzOTktZ3J1LmR0c2kgICAgICAgICAgICB8ICAxIC0K
+IGFyY2gvYXJtL2R0cy9yazMzOTktcHVtYS1kZHIxNjAwLmR0cyAgICB8ICAxICsKIGFyY2gvYXJt
+L2R0cy9yazMzOTktcHVtYS5kdHNpICAgICAgICAgICB8ICAyIC0tCiBhcmNoL2FybS9kdHMvcmsz
+Mzk5LXJvY2s5NjAtdS1ib290LmR0c2kgfCAgNiArKysrKwogYXJjaC9hcm0vZHRzL3JrMzM5OS1y
+b2NrOTYwLmR0cyAgICAgICAgIHwgIDEgLQogYXJjaC9hcm0vZHRzL3JrMzM5OS11LWJvb3QuZHRz
+aSAgICAgICAgIHwgIDQgKysrCiAxNiBmaWxlcyBjaGFuZ2VkLCA3MCBpbnNlcnRpb25zKCspLCAx
+NyBkZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmszMzk5LWV2
+Yi11LWJvb3QuZHRzaQogY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtL2R0cy9yazMzOTktZmlj
+dXMtdS1ib290LmR0c2kKIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmszMzk5LWZp
+cmVmbHktdS1ib290LmR0c2kKIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmszMzk5
+LWdydS1ib2ItdS1ib290LmR0c2kKIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmsz
+Mzk5LWdydS11LWJvb3QuZHRzaQogY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtL2R0cy9yazMz
+OTktcm9jazk2MC11LWJvb3QuZHRzaQoKLS0gCjIuMTguMC4zMjEuZ2ZmYzZmYTBlMwoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcg
+bGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8v
+dS1ib290Cg==
