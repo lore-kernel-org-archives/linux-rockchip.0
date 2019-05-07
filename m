@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 1/6] Makefile: clean image.map
-Date: Wed,  8 May 2019 00:22:10 +0530
-Message-ID: <20190507185215.15441-2-jagan@amarulasolutions.com>
+Subject: [PATCH v3 2/6] Makefile: clean bl31_*.bin
+Date: Wed,  8 May 2019 00:22:11 +0530
+Message-ID: <20190507185215.15441-3-jagan@amarulasolutions.com>
 References: <20190507185215.15441-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,28 +21,28 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-binman tools for creating single image build will create image.map
-at the end, which has information about binman image node details.
+Rockchip platform has its python script that would generate various
+bl31_*bin for creating u-boot.itb file by taking bl31.elf as input.
 
-current u-boot, is unable to clean this image.map so add a command
-entry in clean target in Makefile.
+These bl31_*.bin files are generated in u-boot root directory and
+have no rule to clean it up. so add support for it by adding in
+command entry of clean target in Makefile.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- Makefile | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index d6a6ef19ab..de11446ed3 100644
+index de11446ed3..64c7976f7e 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -1813,7 +1813,8 @@ clean: $(clean-dirs)
- 		-o -name modules.builtin -o -name '.tmp_*.o.*' \
+@@ -1814,7 +1814,7 @@ clean: $(clean-dirs)
  		-o -name 'dsdt.aml' -o -name 'dsdt.asl.tmp' -o -name 'dsdt.c' \
  		-o -name '*.efi' -o -name '*.gcno' -o -name '*.so' \) \
--		-type f -print | xargs rm -f
-+		-type f -print | xargs rm -f \
-+		image.map
+ 		-type f -print | xargs rm -f \
+-		image.map
++		bl31_*.bin image.map
  
  # mrproper - Delete all generated files, including .config
  #
