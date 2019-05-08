@@ -1,7 +1,8 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [RESEND PATCH v7 10/11] rockchip: rk3399: Add Rock PI 4 support
-Date: Wed,  8 May 2019 11:11:50 +0530
-Message-ID: <20190508054151.21762-11-jagan@amarulasolutions.com>
+Subject: [RESEND PATCH v7 11/11] doc: rockchip: Add global doc for rk3399
+ build/flash
+Date: Wed,  8 May 2019 11:11:51 +0530
+Message-ID: <20190508054151.21762-12-jagan@amarulasolutions.com>
 References: <20190508054151.21762-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,754 +22,284 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add initial support for Rock PI 4 board.
+Since rockchip have an individual doc/README.rockchip, it would
+be better to update the same instead of maintaining it separately
+in board files.
 
-Specification
-- Rockchip RK3399
-- LPDDR4
-- eMMC
-- SD card slot
-- RTL8211E 1Gbps
-- HDMI In/Out, DP, MIPI DSI/CSI
-- PCIe M.2
-- USB 2.0, USB-3.0
-- USB C Type
+So, add the documentation for rk3399
+- procedure to build for Rockchip miniloader and
+  U-Boot SPL options
+- procedure to boot from SD for Rockchip miniloader and
+  U-Boot SPL options
+- procedure to build ATF, PMU M0 firmware for puma boards
+- add boot logs of each option, so-that it would help for future
+  boards porting
 
-Commit details of rk3399-rock-pi-4.dts sync from Linux 5.1-rc2:
-"arm64: dts: rockchip: add ROCK Pi 4 DTS support"
-(sha1: 1b5715c602fda7b812af0e190eddcce2812e5417)
-
-Signed-off-by: Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Reviewed-by: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 ---
- arch/arm/dts/Makefile                     |   1 +
- arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi |   6 +
- arch/arm/dts/rk3399-rock-pi-4.dts         | 606 ++++++++++++++++++++++
- board/rockchip/evb_rk3399/MAINTAINERS     |   7 +
- configs/rock-pi-4-rk3399_defconfig        |  59 +++
- 5 files changed, 679 insertions(+)
- create mode 100644 arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
- create mode 100644 arch/arm/dts/rk3399-rock-pi-4.dts
- create mode 100644 configs/rock-pi-4-rk3399_defconfig
+ doc/README.rockchip | 233 +++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 232 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-index 8522f01aca..e8826219b6 100644
---- a/arch/arm/dts/Makefile
-+++ b/arch/arm/dts/Makefile
-@@ -113,6 +113,7 @@ dtb-$(CONFIG_ROCKCHIP_RK3399) += \
- 	rk3399-puma-ddr1333.dtb \
- 	rk3399-puma-ddr1600.dtb \
- 	rk3399-puma-ddr1866.dtb \
-+	rk3399-rock-pi-4.dtb \
- 	rk3399-rock960.dtb \
- 	rk3399-rockpro64.dtb
+diff --git a/doc/README.rockchip b/doc/README.rockchip
+index ec10ebbc26..ca4d6473b0 100644
+--- a/doc/README.rockchip
++++ b/doc/README.rockchip
+@@ -88,10 +88,92 @@ One RV3188 baord is supported:
  
-diff --git a/arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi b/arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
-new file mode 100644
-index 0000000000..7bddc3acdb
---- /dev/null
-+++ b/arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
-@@ -0,0 +1,6 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+/*
-+ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-+ */
-+
-+#include "rk3399-u-boot.dtsi"
-diff --git a/arch/arm/dts/rk3399-rock-pi-4.dts b/arch/arm/dts/rk3399-rock-pi-4.dts
-new file mode 100644
-index 0000000000..4a543f2117
---- /dev/null
-+++ b/arch/arm/dts/rk3399-rock-pi-4.dts
-@@ -0,0 +1,606 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2019 Akash Gajjar <Akash_Gajjar-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>
-+ * Copyright (c) 2019 Pragnesh Patel <Pragnesh_Patel-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>
-+ */
-+
-+/dts-v1/;
-+#include <dt-bindings/input/linux-event-codes.h>
-+#include <dt-bindings/pwm/pwm.h>
-+#include "rk3399.dtsi"
-+#include "rk3399-opp.dtsi"
-+
-+/ {
-+	model = "Radxa ROCK Pi 4";
-+	compatible = "radxa,rockpi4", "rockchip,rk3399";
-+
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	clkin_gmac: external-gmac-clock {
-+		compatible = "fixed-clock";
-+		clock-frequency = <125000000>;
-+		clock-output-names = "clkin_gmac";
-+		#clock-cells = <0>;
-+	};
-+
-+	vcc12v_dcin: dc-12v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc12v_dcin";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <12000000>;
-+		regulator-max-microvolt = <12000000>;
-+	};
-+
-+	vcc5v0_sys: vcc-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc12v_dcin>;
-+	};
-+
-+	vcc3v3_pcie: vcc3v3-pcie-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio2 RK_PD2 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pcie_pwr_en>;
-+		regulator-name = "vcc3v3_pcie";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc3v3_sys: vcc3v3-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc5v0_host: vcc5v0-host-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio4 RK_PD1 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc5v0_host_en>;
-+		regulator-name = "vcc5v0_host";
-+		regulator-always-on;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc5v0_typec: vcc5v0-typec-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio1 RK_PA3 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc5v0_typec_en>;
-+		regulator-name = "vcc5v0_typec";
-+		regulator-always-on;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc_lan: vcc3v3-phy-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_lan";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+
-+	vdd_log: vdd-log {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm2 0 25000 1>;
-+		regulator-name = "vdd_log";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <800000>;
-+		regulator-max-microvolt = <1400000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+};
-+
-+&cpu_l0 {
-+	cpu-supply = <&vdd_cpu_l>;
-+};
-+
-+&cpu_l1 {
-+	cpu-supply = <&vdd_cpu_l>;
-+};
-+
-+&cpu_l2 {
-+	cpu-supply = <&vdd_cpu_l>;
-+};
-+
-+&cpu_l3 {
-+	cpu-supply = <&vdd_cpu_l>;
-+};
-+
-+&cpu_b0 {
-+	cpu-supply = <&vdd_cpu_b>;
-+};
-+
-+&cpu_b1 {
-+	cpu-supply = <&vdd_cpu_b>;
-+};
-+
-+&emmc_phy {
-+	status = "okay";
-+};
-+
-+&gmac {
-+	assigned-clocks = <&cru SCLK_RMII_SRC>;
-+	assigned-clock-parents = <&clkin_gmac>;
-+	clock_in_out = "input";
-+	phy-supply = <&vcc_lan>;
-+	phy-mode = "rgmii";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&rgmii_pins>;
-+	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
-+	snps,reset-active-low;
-+	snps,reset-delays-us = <0 10000 50000>;
-+	tx_delay = <0x28>;
-+	rx_delay = <0x11>;
-+	status = "okay";
-+};
-+
-+&hdmi {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&hdmi_cec>;
-+	status = "okay";
-+};
-+
-+&i2c0 {
-+	clock-frequency = <400000>;
-+	i2c-scl-rising-time-ns = <168>;
-+	i2c-scl-falling-time-ns = <4>;
-+	status = "okay";
-+
-+	rk808: pmic@1b {
-+		compatible = "rockchip,rk808";
-+		reg = <0x1b>;
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <21 IRQ_TYPE_LEVEL_LOW>;
-+		#clock-cells = <1>;
-+		clock-output-names = "xin32k", "rk808-clkout2";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pmic_int_l>;
-+		rockchip,system-power-controller;
-+		wakeup-source;
-+
-+		vcc1-supply = <&vcc5v0_sys>;
-+		vcc2-supply = <&vcc5v0_sys>;
-+		vcc3-supply = <&vcc5v0_sys>;
-+		vcc4-supply = <&vcc5v0_sys>;
-+		vcc6-supply = <&vcc5v0_sys>;
-+		vcc7-supply = <&vcc5v0_sys>;
-+		vcc8-supply = <&vcc3v3_sys>;
-+		vcc9-supply = <&vcc5v0_sys>;
-+		vcc10-supply = <&vcc5v0_sys>;
-+		vcc11-supply = <&vcc5v0_sys>;
-+		vcc12-supply = <&vcc3v3_sys>;
-+		vddio-supply = <&vcc_1v8>;
-+
-+		regulators {
-+			vdd_center: DCDC_REG1 {
-+				regulator-name = "vdd_center";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_cpu_l: DCDC_REG2 {
-+				regulator-name = "vdd_cpu_l";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_ddr: DCDC_REG3 {
-+				regulator-name = "vcc_ddr";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vcc_1v8: DCDC_REG4 {
-+				regulator-name = "vcc_1v8";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vcc1v8_codec: LDO_REG1 {
-+				regulator-name = "vcc1v8_codec";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc1v8_hdmi: LDO_REG2 {
-+				regulator-name = "vcc1v8_hdmi";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcca_1v8: LDO_REG3 {
-+				regulator-name = "vcca_1v8";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vcc_sdio: LDO_REG4 {
-+				regulator-name = "vcc_sdio";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3000000>;
-+				regulator-max-microvolt = <3000000>;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3000000>;
-+				};
-+			};
-+
-+			vcca3v0_codec: LDO_REG5 {
-+				regulator-name = "vcca3v0_codec";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3000000>;
-+				regulator-max-microvolt = <3000000>;
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_1v5: LDO_REG6 {
-+				regulator-name = "vcc_1v5";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1500000>;
-+				regulator-max-microvolt = <1500000>;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1500000>;
-+				};
-+			};
-+
-+			vcc0v9_hdmi: LDO_REG7 {
-+				regulator-name = "vcc0v9_hdmi";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <900000>;
-+				regulator-max-microvolt = <900000>;
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_3v0: LDO_REG8 {
-+				regulator-name = "vcc_3v0";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3000000>;
-+				regulator-max-microvolt = <3000000>;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3000000>;
-+				};
-+			};
-+
-+			vcc_cam: SWITCH_REG1 {
-+				regulator-name = "vcc_cam";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_mipi: SWITCH_REG2 {
-+				regulator-name = "vcc_mipi";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+		};
-+	};
-+
-+	vdd_cpu_b: regulator@40 {
-+		compatible = "silergy,syr827";
-+		reg = <0x40>;
-+		fcs,suspend-voltage-selector = <1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vsel1_gpio>;
-+		regulator-name = "vdd_cpu_b";
-+		regulator-min-microvolt = <712500>;
-+		regulator-max-microvolt = <1500000>;
-+		regulator-ramp-delay = <1000>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vcc5v0_sys>;
-+
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+
-+	vdd_gpu: regulator@41 {
-+		compatible = "silergy,syr828";
-+		reg = <0x41>;
-+		fcs,suspend-voltage-selector = <1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vsel2_gpio>;
-+		regulator-name = "vdd_gpu";
-+		regulator-min-microvolt = <712500>;
-+		regulator-max-microvolt = <1500000>;
-+		regulator-ramp-delay = <1000>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vcc5v0_sys>;
-+
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+};
-+
-+&i2c1 {
-+	i2c-scl-rising-time-ns = <300>;
-+	i2c-scl-falling-time-ns = <15>;
-+	status = "okay";
-+};
-+
-+&i2c3 {
-+	i2c-scl-rising-time-ns = <450>;
-+	i2c-scl-falling-time-ns = <15>;
-+	status = "okay";
-+};
-+
-+&i2c4 {
-+	i2c-scl-rising-time-ns = <600>;
-+	i2c-scl-falling-time-ns = <20>;
-+	status = "okay";
-+};
-+
-+&i2s0 {
-+	rockchip,playback-channels = <8>;
-+	rockchip,capture-channels = <8>;
-+	status = "okay";
-+};
-+
-+&i2s1 {
-+	rockchip,playback-channels = <2>;
-+	rockchip,capture-channels = <2>;
-+	status = "okay";
-+};
-+
-+&i2s2 {
-+	status = "okay";
-+};
-+
-+&io_domains {
-+	status = "okay";
-+
-+	bt656-supply = <&vcc_3v0>;
-+	audio-supply = <&vcc_3v0>;
-+	sdmmc-supply = <&vcc_sdio>;
-+	gpio1830-supply = <&vcc_3v0>;
-+};
-+
-+&pmu_io_domains {
-+	status = "okay";
-+
-+	pmu1830-supply = <&vcc_3v0>;
-+};
-+
-+&pinctrl {
-+	pcie {
-+		pcie_pwr_en: pcie-pwr-en {
-+			rockchip,pins = <2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	pmic {
-+		pmic_int_l: pmic-int-l {
-+			rockchip,pins = <1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		vsel1_gpio: vsel1-gpio {
-+			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		vsel2_gpio: vsel2-gpio {
-+			rockchip,pins = <1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+
-+	usb-typec {
-+		vcc5v0_typec_en: vcc5v0-typec-en {
-+			rockchip,pins = <1 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	usb2 {
-+		vcc5v0_host_en: vcc5v0-host-en {
-+			rockchip,pins = <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&pwm2 {
-+	status = "okay";
-+};
-+
-+&saradc {
-+	status = "okay";
-+
-+	vref-supply = <&vcc_1v8>;
-+};
-+
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	cd-gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
-+	disable-wp;
-+	max-frequency = <150000000>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc_clk &sdmmc_cd &sdmmc_cmd &sdmmc_bus4>;
-+	status = "okay";
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	mmc-hs400-1_8v;
-+	mmc-hs400-enhanced-strobe;
-+	non-removable;
-+	status = "okay";
-+};
-+
-+&tcphy0 {
-+	status = "okay";
-+};
-+
-+&tcphy1 {
-+	status = "okay";
-+};
-+
-+&tsadc {
-+	status = "okay";
-+
-+	/* tshut mode 0:CRU 1:GPIO */
-+	rockchip,hw-tshut-mode = <1>;
-+	/* tshut polarity 0:LOW 1:HIGH */
-+	rockchip,hw-tshut-polarity = <1>;
-+};
-+
-+&u2phy0 {
-+	status = "okay";
-+
-+	u2phy0_otg: otg-port {
-+		status = "okay";
-+	};
-+
-+	u2phy0_host: host-port {
-+		phy-supply = <&vcc5v0_host>;
-+		status = "okay";
-+	};
-+};
-+
-+&u2phy1 {
-+	status = "okay";
-+
-+	u2phy1_otg: otg-port {
-+		status = "okay";
-+	};
-+
-+	u2phy1_host: host-port {
-+		phy-supply = <&vcc5v0_host>;
-+		status = "okay";
-+	};
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
-+
-+&usbdrd3_0 {
-+	status = "okay";
-+};
-+
-+&usbdrd_dwc3_0 {
-+	status = "okay";
-+	dr_mode = "otg";
-+};
-+
-+&usbdrd3_1 {
-+	status = "okay";
-+};
-+
-+&usbdrd_dwc3_1 {
-+	status = "okay";
-+	dr_mode = "host";
-+};
-+
-+&vopb {
-+	status = "okay";
-+};
-+
-+&vopb_mmu {
-+	status = "okay";
-+};
-+
-+&vopl {
-+	status = "okay";
-+};
-+
-+&vopl_mmu {
-+	status = "okay";
-+};
-diff --git a/board/rockchip/evb_rk3399/MAINTAINERS b/board/rockchip/evb_rk3399/MAINTAINERS
-index 295730c91b..3308b3595f 100644
---- a/board/rockchip/evb_rk3399/MAINTAINERS
-+++ b/board/rockchip/evb_rk3399/MAINTAINERS
-@@ -31,6 +31,13 @@ F:	configs/orangepi-rk3399_defconfig
- F:	arch/arm/dts/rk3399-u-boot.dtsi
- F:	arch/arm/dts/rk3399-orangepi-u-boot.dtsi
+ For example:
  
-+ROCK-PI-4
-+M:	Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
-+M:	Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-+S:	Maintained
-+F:	configs/rock-pi-4-rk3399_defconfig
-+F:	arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
++1. To build RK3288 board:
 +
- ROCKPRO64
- M:	Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
- M:	Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-diff --git a/configs/rock-pi-4-rk3399_defconfig b/configs/rock-pi-4-rk3399_defconfig
-new file mode 100644
-index 0000000000..1adfd038cd
---- /dev/null
-+++ b/configs/rock-pi-4-rk3399_defconfig
-@@ -0,0 +1,59 @@
-+CONFIG_ARM=y
-+CONFIG_ARCH_ROCKCHIP=y
-+CONFIG_SYS_TEXT_BASE=0x00200000
-+CONFIG_SPL_LIBCOMMON_SUPPORT=y
-+CONFIG_SPL_LIBGENERIC_SUPPORT=y
-+CONFIG_SYS_MALLOC_F_LEN=0x4000
-+CONFIG_ROCKCHIP_RK3399=y
-+CONFIG_ROCKCHIP_SPL_RESERVE_IRAM=0x4000
-+CONFIG_DEBUG_UART_BASE=0xFF1A0000
-+CONFIG_DEBUG_UART_CLOCK=24000000
-+CONFIG_SPL_STACK_R_ADDR=0x80000
-+CONFIG_DEBUG_UART=y
-+CONFIG_NR_DRAM_BANKS=1
-+CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock-pi-4.dtb"
-+# CONFIG_DISPLAY_CPUINFO is not set
-+CONFIG_DISPLAY_BOARDINFO_LATE=y
-+CONFIG_SPL_TEXT_BASE=0xff8c2000
-+CONFIG_SPL_STACK_R=y
-+CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x4000
-+CONFIG_CMD_BOOTZ=y
-+CONFIG_CMD_GPT=y
-+CONFIG_CMD_MMC=y
-+CONFIG_CMD_SF=y
-+CONFIG_CMD_USB=y
-+# CONFIG_CMD_SETEXPR is not set
-+CONFIG_CMD_TIME=y
-+CONFIG_SPL_OF_CONTROL=y
-+CONFIG_DEFAULT_DEVICE_TREE="rk3399-rock-pi-4"
-+CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
-+CONFIG_ENV_IS_IN_MMC=y
-+CONFIG_ROCKCHIP_GPIO=y
-+CONFIG_SYS_I2C_ROCKCHIP=y
-+CONFIG_MMC_DW=y
-+CONFIG_MMC_DW_ROCKCHIP=y
-+CONFIG_MMC_SDHCI=y
-+CONFIG_MMC_SDHCI_ROCKCHIP=y
-+CONFIG_DM_ETH=y
-+CONFIG_ETH_DESIGNWARE=y
-+CONFIG_GMAC_ROCKCHIP=y
-+CONFIG_PMIC_RK8XX=y
-+CONFIG_REGULATOR_PWM=y
-+CONFIG_REGULATOR_RK8XX=y
-+CONFIG_PWM_ROCKCHIP=y
-+CONFIG_BAUDRATE=1500000
-+CONFIG_DEBUG_UART_SHIFT=2
-+CONFIG_SYSRESET=y
-+CONFIG_USB=y
-+CONFIG_USB_XHCI_HCD=y
-+CONFIG_USB_XHCI_DWC3=y
-+CONFIG_USB_EHCI_HCD=y
-+CONFIG_USB_EHCI_GENERIC=y
-+CONFIG_USB_HOST_ETHER=y
-+CONFIG_USB_ETHER_ASIX=y
-+CONFIG_USB_ETHER_ASIX88179=y
-+CONFIG_USB_ETHER_MCS7830=y
-+CONFIG_USB_ETHER_RTL8152=y
-+CONFIG_USB_ETHER_SMSC95XX=y
-+CONFIG_USE_TINY_PRINTF=y
-+CONFIG_ERRNO_STR=y
+    CROSS_COMPILE=arm-linux-gnueabi- make O=firefly firefly-rk3288_defconfig all
+ 
+-(or you can use another cross compiler if you prefer)
++    (or you can use another cross compiler if you prefer)
++
++2. To build RK3399 board:
++
++   Option 1: Package the image with Rockchip miniloader:
++
++   - Compile U-Boot
++
++     => cd /path/to/u-boot
++     => make nanopi-neo4-rk3399_defconfig
++     => make
++     => make u-boot.itb
++
++   - Get the rkbin
++
++     => git clone https://github.com/rockchip-linux/rkbin.git
++
++   - Create trust.img
++
++     => cd /path/to/rkbin
++     => ./tools/trust_merger RKTRUST/RK3399TRUST.ini
++
++   - Create uboot.img
++
++     => cd /path/to/rkbin
++     => ./tools/loaderimage --pack --uboot /path/to/u-boot/u-boot-dtb.bin uboot.img
++
++     (Get trust.img and uboot.img)
++
++   Option 2: Package the image with SPL:
++
++   - We need the Python elftools.elf.elffile library for make_fit_atf.py to work
++
++     => sudo apt-get install python-pyelftools
++
++   - Export cross compiler path for aarch64
++
++   - Compile ATF
++
++     For Puma board.
++
++	=> git clone git://git.theobroma-systems.com/arm-trusted-firmware.git
++	=> cd arm-trusted-firmware
++	=> make CROSS_COMPILE=aarch64-linux-gnu- PLAT=rk3399 bl31
++
++	(copy bl31.bin into U-Boot root dir)
++	=> cp build/rk3399/release/bl31/bl31.bin /path/to/u-boot/bl31-rk3399.bin
++
++     For rest of rk3399 boards.
++
++	=> git clone https://github.com/ARM-software/arm-trusted-firmware.git
++	=> cd arm-trusted-firmware
++
++	(export cross compiler path for Cortex-M0 MCU likely arm-none-eabi-)
++	=> make realclean
++	=> make CROSS_COMPILE=aarch64-linux-gnu- PLAT=rk3399
++
++	(copy bl31.elf into U-Boot root dir)
++	=> cp build/rk3399/release/bl31/bl31.elf /path/to/u-boot
++
++   - Compile PMU M0 firmware
++
++     This is optional for most of the rk3399 boards and required only for Puma board.
++
++     => git clone git://git.theobroma-systems.com/rk3399-cortex-m0.git
++     => cd rk3399-cortex-m0
+ 
++     (export cross compiler path for Cortex-M0 PMU)
++     => make CROSS_COMPILE=arm-cortex_m0-eabi-
++
++     (copy rk3399m0.bin into U-Boot root dir)
++     => cp rk3399m0.bin /path/to/u-boot
++
++   - Compile U-Boot
++
++     => cd /path/to/u-boot
++     => make orangepi-rk3399_defconfig
++     => make
++     => make u-boot.itb
++
++     (Get spl/u-boot-spl-dtb.bin, u-boot.itb images and some boards would get
++      spl/u-boot-spl.bin since it doesn't enable CONFIG_SPL_OF_CONTROL)
+ 
+ Writing to the board with USB
+ =============================
+@@ -225,6 +307,153 @@ tools/mkimage -n rk3188 -T rksd -d spl/u-boot-spl.bin out
+ truncate -s %2048 u-boot.bin
+ cat u-boot.bin | split -b 512 --filter='openssl rc4 -K 7C4E0304550509072D2C7B38170D1711' >> out
+ 
++Booting from an SD card on RK3399
++=================================
++
++To write an image that boots from an SD card (assumed to be /dev/sdc):
++
++Option 1: Package the image with Rockchip miniloader:
++
++  - Create idbloader.img
++
++    => cd /path/to/u-boot
++    => ./tools/mkimage  -n rk3399 -T rksd -d /path/to/rkbin/bin/rk33/rk3399_ddr_800MHz_v1.20.bin idbloader.img
++    => cat /path/to/rkbin/bin/rk33/rk3399_miniloader_v1.19.bin >> idbloader.img
++
++  - Write idbloader.img at 64 sector
++
++    => sudo dd if=idbloader.img of=/dev/sdc seek=64
++
++  - Write trust.img at 24576
++
++    => sudo dd if=trust.img of=/dev/sdc seek=24576
++
++  - Write uboot.img at 16384 sector
++
++    => sudo dd if=uboot.img of=/dev/sdc seek=16384
++    => sync
++
++Put this SD (or micro-SD) card into your board and reset it. You should see
++something like:
++
++DDR Version 1.20 20190314
++In
++Channel 0: DDR3, 933MHz
++Bus Width=32 Col=10 Bank=8 Row=15 CS=1 Die Bus-Width=16 Size=1024MB
++no stride
++ch 0 ddrconfig = 0x101, ddrsize = 0x20
++pmugrf_os_reg[2] = 0x10006281, stride = 0x17
++OUT
++Boot1: 2019-03-14, version: 1.19
++CPUId = 0x0
++ChipType = 0x10, 239
++mmc: ERROR: SDHCI ERR:cmd:0x102,stat:0x18000
++mmc: ERROR: Card did not respond to voltage select!
++emmc reinit
++mmc: ERROR: SDHCI ERR:cmd:0x102,stat:0x18000
++mmc: ERROR: Card did not respond to voltage select!
++emmc reinit
++mmc: ERROR: SDHCI ERR:cmd:0x102,stat:0x18000
++mmc: ERROR: Card did not respond to voltage select!
++SdmmcInit=2 1
++mmc0:cmd5,20
++SdmmcInit=0 0
++BootCapSize=0
++UserCapSize=60543MB
++FwPartOffset=2000 , 0
++StorageInit ok = 45266
++SecureMode = 0
++SecureInit read PBA: 0x4
++SecureInit read PBA: 0x404
++SecureInit read PBA: 0x804
++SecureInit read PBA: 0xc04
++SecureInit read PBA: 0x1004
++SecureInit read PBA: 0x1404
++SecureInit read PBA: 0x1804
++SecureInit read PBA: 0x1c04
++SecureInit ret = 0, SecureMode = 0
++atags_set_bootdev: ret:(0)
++GPT 0x3380ec0 signature is wrong
++recovery gpt...
++GPT 0x3380ec0 signature is wrong
++recovery gpt fail!
++LoadTrust Addr:0x4000
++No find bl30.bin
++Load uboot, ReadLba = 2000
++hdr 0000000003380880 + 0x0:0x88,0x41,0x3e,0x97,0xe6,0x61,0x54,0x23,0xe9,0x5a,0xd1,0x2b,0xdc,0x2f,0xf9,0x35,
++
++Load OK, addr=0x200000, size=0x9c9c0
++RunBL31 0x10000
++NOTICE:  BL31: v1.3(debug):370ab80
++NOTICE:  BL31: Built : 09:23:41, Mar  4 2019
++NOTICE:  BL31: Rockchip release version: v1.1
++INFO:    GICv3 with legacy support detected. ARM GICV3 driver initialized in EL3
++INFO:    Using opteed sec cpu_context!
++INFO:    boot cpu mask: 0
++INFO:    plat_rockchip_pmu_init(1181): pd status 3e
++INFO:    BL31: Initializing runtime services
++INFO:    BL31: Initializing BL32
++INF [0x0] TEE-CORE:init_primary_helper:337: Initializing (1.1.0-195-g8f090d20 #6 Fri Dec  7 06:11:20 UTC 2018 aarch64)
++
++INF [0x0] TEE-CORE:init_primary_helper:338: Release version: 1.2
++
++INF [0x0] TEE-CORE:init_teecore:83: teecore inits done
++INFO:    BL31: Preparing for EL3 exit to normal world
++INFO:    Entry point address = 0x200000
++INFO:    SPSR = 0x3c9
++
++
++U-Boot 2019.04-rc4-00136-gfd121f9641-dirty (Apr 16 2019 - 14:02:47 +0530)
++
++Model: FriendlyARM NanoPi NEO4
++DRAM:  1022 MiB
++MMC:   dwmmc@fe310000: 2, dwmmc@fe320000: 1, sdhci@fe330000: 0
++Loading Environment from MMC... *** Warning - bad CRC, using default environment
++
++In:    serial@ff1a0000
++Out:   serial@ff1a0000
++Err:   serial@ff1a0000
++Model: FriendlyARM NanoPi NEO4
++Net:   eth0: ethernet@fe300000
++Hit any key to stop autoboot:  0
++=>
++
++Option 2: Package the image with SPL:
++
++  - Prefix rk3399 header to SPL image
++
++    => cd /path/to/u-boot
++    => ./tools/mkimage -n rk3399 -T rksd -d spl/u-boot-spl-dtb.bin out
++
++  - Write prefixed SPL at 64th sector
++
++    => sudo dd if=out of=/dev/sdc seek=64
++
++  - Write U-Boot proper at 16384 sector
++
++    => sudo dd if=u-boot.itb of=/dev/sdc seek=16384
++    => sync
++
++Put this SD (or micro-SD) card into your board and reset it. You should see
++something like:
++
++U-Boot SPL board init
++Trying to boot from MMC1
++
++
++U-Boot 2019.01-00004-g14db5ee998 (Mar 11 2019 - 13:18:41 +0530)
++
++Model: Orange Pi RK3399 Board
++DRAM:  2 GiB
++MMC:   dwmmc@fe310000: 2, dwmmc@fe320000: 1, sdhci@fe330000: 0
++Loading Environment from MMC... OK
++In:    serial@ff1a0000
++Out:   serial@ff1a0000
++Err:   serial@ff1a0000
++Model: Orange Pi RK3399 Board
++Net:   eth0: ethernet@fe300000
++Hit any key to stop autoboot:  0
++=>
+ 
+ Using fastboot on rk3288
+ ========================
+@@ -385,5 +614,7 @@ There are some documents about partitions in the links below.
+ http://rockchip.wikidot.com/partitions
+ 
+ --
++Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++27 Mar 2019
+ Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+ 24 June 2015
 -- 
 2.18.0.321.gffc6fa0e3
