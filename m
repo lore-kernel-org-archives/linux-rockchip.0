@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 6/8] rockchip: rk3399: tpl: Add spl_board_init
-Date: Wed,  8 May 2019 13:39:02 +0530
-Message-ID: <20190508080904.1567-7-jagan@amarulasolutions.com>
+Subject: [PATCH 8/8] rockchip: rk3399: Enable TPL_BOARD_INIT
+Date: Wed,  8 May 2019 13:39:04 +0530
+Message-ID: <20190508080904.1567-9-jagan@amarulasolutions.com>
 References: <20190508080904.1567-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,38 +21,25 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add spl_board_init for TPL, that have TPL banner will help
-to print tpl boot prints.
+Enable TPL_BOARD_INIT, this would help us to show
+TPL boot prints.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- arch/arm/mach-rockchip/rk3399-board-tpl.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ arch/arm/mach-rockchip/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/mach-rockchip/rk3399-board-tpl.c b/arch/arm/mach-rockchip/rk3399-board-tpl.c
-index 86d3ffe97c..72d0dd914e 100644
---- a/arch/arm/mach-rockchip/rk3399-board-tpl.c
-+++ b/arch/arm/mach-rockchip/rk3399-board-tpl.c
-@@ -8,6 +8,7 @@
- #include <dm.h>
- #include <ram.h>
- #include <spl.h>
-+#include <version.h>
- #include <asm/io.h>
- #include <asm/arch-rockchip/bootrom.h>
- 
-@@ -73,6 +74,12 @@ u32 spl_boot_device(void)
- 	return BOOT_DEVICE_BOOTROM;
- }
- 
-+void spl_board_init(void)
-+{
-+	puts("\nU-Boot TPL "  PLAIN_VERSION " (" U_BOOT_DATE " - "
-+	     U_BOOT_TIME " " U_BOOT_TZ ")\n");
-+}
-+
- #ifdef CONFIG_SPL_LOAD_FIT
- int board_fit_config_name_match(const char *name)
- {
+diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
+index ce039022df..1d483be8b9 100644
+--- a/arch/arm/mach-rockchip/Kconfig
++++ b/arch/arm/mach-rockchip/Kconfig
+@@ -184,6 +184,7 @@ config ROCKCHIP_RK3399
+ 	imply TPL_LIBCOMMON_SUPPORT
+ 	imply TPL_LIBGENERIC_SUPPORT
+ 	imply TPL_SYS_MALLOC_SIMPLE
++	imply TPL_BOARD_INIT
+ 	imply TPL_BOOTROM_SUPPORT
+ 	imply TPL_DRIVERS_MISC_SUPPORT
+ 	imply TPL_OF_CONTROL
 -- 
 2.18.0.321.gffc6fa0e3
