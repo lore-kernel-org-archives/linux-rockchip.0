@@ -1,58 +1,68 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v3 6/6] Kconfig: Add u-boot.itb BUILD_TARGET
-	for Rockchip
-Date: Wed, 8 May 2019 15:11:43 +0800
-Message-ID: <79d89674-3098-f784-bb83-2d98234b1501@rock-chips.com>
-References: <20190507185215.15441-1-jagan@amarulasolutions.com>
- <20190507185215.15441-7-jagan@amarulasolutions.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] rockchip: rk3399: spl: Don't init dram if TPL enabled
+Date: Wed, 8 May 2019 15:52:54 +0800
+Message-ID: <dca9d6a7-5018-2d46-4d70-c0543d405811@rock-chips.com>
+References: <20190508063956.26549-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20190507185215.15441-7-jagan@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190508063956.26549-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAwNS8wOC8yMDE5IDAyOjUyIEFNLCBKYWdhbiBUZWtpIHdyb3RlOgo+IEFkZCB1LWJvb3Qu
-aXRiIEJVSUxEX1RBUkdFVCBmb3IgUm9ja2NoaXAgcGxhdGZvcm0gd2hlbiBTUExfTE9BRF9GSVQK
-PiBpcyBiZWluZyB1c2VkLgo+Cj4gVGhpcyBjYW4gZ2V0IHJpZCBvZiBidWlsZGluZyBpdGIgZXhw
-bGljaXRseSB3aXRoICdtYWtlIHUtYm9vdC5pdGInCj4gc28sIGZyb20gbm93IGFsbCByZXF1aXJl
-ZCBpbWFnZXMgd2lsbCBidWlsZCBqdXN0IGJ5IG1ha2UuCj4KPiBTaWduZWQtb2ZmLWJ5OiBKYWdh
-biBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KClJldmlld2VkLWJ5OiBLZXZlciBZ
-YW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgoKVGhhbmtzLAotIEtldmVyCj4gLS0tCj4g
-IEtjb25maWcgICAgICAgICAgICAgfCAyICstCj4gIGRvYy9SRUFETUUucm9ja2NoaXAgfCAyIC0t
-Cj4gIDIgZmlsZXMgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDMgZGVsZXRpb25zKC0pCj4KPiBk
-aWZmIC0tZ2l0IGEvS2NvbmZpZyBiL0tjb25maWcKPiBpbmRleCA5MWMxMDgyYWNlLi42YmNmZjI5
-NjU5IDEwMDY0NAo+IC0tLSBhL0tjb25maWcKPiArKysgYi9LY29uZmlnCj4gQEAgLTI0MCw3ICsy
-NDAsNyBAQCBjb25maWcgQlVJTERfVEFSR0VUCj4gIAlkZWZhdWx0ICJ1LWJvb3Qtd2l0aC1zcGwu
-c2ZwIiBpZiBUQVJHRVRfU09DRlBHQV9HRU41Cj4gIAlkZWZhdWx0ICJ1LWJvb3Qtc3BsLmt3YiIg
-aWYgQVJDSF9NVkVCVSAmJiBTUEwKPiAgCWRlZmF1bHQgInUtYm9vdC1lbGYuc3JlYyIgaWYgUkNB
-Ul9HRU4zCj4gLQlkZWZhdWx0ICJ1LWJvb3QuaXRiIiBpZiBTUExfTE9BRF9GSVQgJiYgQVJDSF9T
-VU5YSQo+ICsJZGVmYXVsdCAidS1ib290Lml0YiIgaWYgU1BMX0xPQURfRklUICYmIChST0NLQ0hJ
-UF9SSzMzOTkgfHwgQVJDSF9TVU5YSSkKPiAgCWRlZmF1bHQgInUtYm9vdC5rd2IiIGlmIEtJUktX
-T09ECj4gIAlkZWZhdWx0ICJ1LWJvb3Qtd2l0aC1zcGwuYmluIiBpZiBBUkNIX0FUOTEgJiYgU1BM
-X05BTkRfU1VQUE9SVAo+ICAJaGVscAo+IGRpZmYgLS1naXQgYS9kb2MvUkVBRE1FLnJvY2tjaGlw
-IGIvZG9jL1JFQURNRS5yb2NrY2hpcAo+IGluZGV4IDg4YTQ1OTMzOTIuLmM0ZTVmODNkYTcgMTAw
-NjQ0Cj4gLS0tIGEvZG9jL1JFQURNRS5yb2NrY2hpcAo+ICsrKyBiL2RvYy9SRUFETUUucm9ja2No
-aXAKPiBAQCAtMTAzLDcgKzEwMyw2IEBAIEZvciBleGFtcGxlOgo+ICAgICAgID0+IGNkIC9wYXRo
-L3RvL3UtYm9vdAo+ICAgICAgID0+IG1ha2UgbmFub3BpLW5lbzQtcmszMzk5X2RlZmNvbmZpZwo+
-ICAgICAgID0+IG1ha2UKPiAtICAgICA9PiBtYWtlIHUtYm9vdC5pdGIKPiAgCj4gICAgIC0gR2V0
-IHRoZSBya2Jpbgo+ICAKPiBAQCAtMTcwLDcgKzE2OSw2IEBAIEZvciBleGFtcGxlOgo+ICAgICAg
-ID0+IGNkIC9wYXRoL3RvL3UtYm9vdAo+ICAgICAgID0+IG1ha2Ugb3JhbmdlcGktcmszMzk5X2Rl
-ZmNvbmZpZwo+ICAgICAgID0+IG1ha2UKPiAtICAgICA9PiBtYWtlIHUtYm9vdC5pdGIKPiAgCj4g
-ICAgICAgKEdldCBzcGwvdS1ib290LXNwbC1kdGIuYmluLCB1LWJvb3QuaXRiIGltYWdlcyBhbmQg
-c29tZSBib2FyZHMgd291bGQgZ2V0Cj4gICAgICAgIHNwbC91LWJvb3Qtc3BsLmJpbiBzaW5jZSBp
-dCBkb2Vzbid0IGVuYWJsZSBDT05GSUdfU1BMX09GX0NPTlRST0wpCgoKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1C
-b290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
+Hi Jagan,
+
+
+On 05/08/2019 02:39 PM, Jagan Teki wrote:
+> DRAM init would require in
+> - TPL stage if target support TPL and
+> - SPL stage if target support SPL alone
+>
+> So, don't initialize the dram in SPL if TPL defined and at
+> the same time enable it if TPL undefined which is SPL alone.
+>
+> Tested in TPL and SPL supported boards.
+>
+> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+> ---
+>  arch/arm/mach-rockchip/rk3399-board-spl.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/arch/arm/mach-rockchip/rk3399-board-spl.c b/arch/arm/mach-rockchip/rk3399-board-spl.c
+> index 3eea73ef33..a439e09b61 100644
+> --- a/arch/arm/mach-rockchip/rk3399-board-spl.c
+> +++ b/arch/arm/mach-rockchip/rk3399-board-spl.c
+> @@ -198,11 +198,13 @@ void board_init_f(ulong dummy)
+>  		return;
+>  	}
+>  
+> +#if !defined(SUPPORT_TPL)
+>  	ret = uclass_get_device(UCLASS_RAM, 0, &dev);
+>  	if (ret) {
+>  		pr_err("DRAM init failed: %d\n", ret);
+>  		return;
+>  	}
+> +#endif
+
+We still need to init DRAM driver in SPL so that we can get correct ram
+info,
+but we don't need to run the dram init program, which should have been
+handled in DRAM driver.
+
+Thanks,
+- Kever
+>  }
+>  
+>  #if defined(SPL_GPIO_SUPPORT)
