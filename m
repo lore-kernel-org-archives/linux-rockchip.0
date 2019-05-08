@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 7/8] rockchip: rk3399: tpl: Mark printascii into debug
-Date: Wed,  8 May 2019 13:39:03 +0530
-Message-ID: <20190508080904.1567-8-jagan@amarulasolutions.com>
+Subject: [PATCH 6/8] rockchip: rk3399: tpl: Add spl_board_init
+Date: Wed,  8 May 2019 13:39:02 +0530
+Message-ID: <20190508080904.1567-7-jagan@amarulasolutions.com>
 References: <20190508080904.1567-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,27 +21,38 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Now, we have spl_board_init which has TPL banner prints.
-
-So mark the 'U-Boot TPL board init' print into debug.
+Add spl_board_init for TPL, that have TPL banner will help
+to print tpl boot prints.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- arch/arm/mach-rockchip/rk3399-board-tpl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm/mach-rockchip/rk3399-board-tpl.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/arch/arm/mach-rockchip/rk3399-board-tpl.c b/arch/arm/mach-rockchip/rk3399-board-tpl.c
-index 72d0dd914e..4a301249b4 100644
+index 86d3ffe97c..72d0dd914e 100644
 --- a/arch/arm/mach-rockchip/rk3399-board-tpl.c
 +++ b/arch/arm/mach-rockchip/rk3399-board-tpl.c
-@@ -47,7 +47,7 @@ void board_init_f(ulong dummy)
- 	 * printhex8(0x1234);
- 	 * printascii("string");
- 	 */
--	printascii("U-Boot TPL board init\n");
-+	debug("U-Boot TPL board init\n");
- #endif
- 	ret = spl_early_init();
- 	if (ret) {
+@@ -8,6 +8,7 @@
+ #include <dm.h>
+ #include <ram.h>
+ #include <spl.h>
++#include <version.h>
+ #include <asm/io.h>
+ #include <asm/arch-rockchip/bootrom.h>
+ 
+@@ -73,6 +74,12 @@ u32 spl_boot_device(void)
+ 	return BOOT_DEVICE_BOOTROM;
+ }
+ 
++void spl_board_init(void)
++{
++	puts("\nU-Boot TPL "  PLAIN_VERSION " (" U_BOOT_DATE " - "
++	     U_BOOT_TIME " " U_BOOT_TZ ")\n");
++}
++
+ #ifdef CONFIG_SPL_LOAD_FIT
+ int board_fit_config_name_match(const char *name)
+ {
 -- 
 2.18.0.321.gffc6fa0e3
