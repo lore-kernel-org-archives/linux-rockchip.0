@@ -1,62 +1,72 @@
-From: Alexandru Ardelean <alexandru.ardelean@analog.com>
-Subject: [PATCH 10/16] pinctrl: armada-37xx: use new match_string() helper/macro
-Date: Wed, 8 May 2019 14:28:36 +0300
-Message-ID: <20190508112842.11654-12-alexandru.ardelean@analog.com>
+From: "Ardelean, Alexandru" <alexandru.Ardelean-OyLXuOCK7orQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH 01/16] lib: fix match_string() helper on -1 array size
+Date: Wed, 8 May 2019 11:31:15 +0000
+Message-ID: <c8cfa5dbdfc0b0665d1b48f37ba57c3ec1233197.camel__29211.3176825055$1557315348$gmane$org@analog.com>
 References: <20190508112842.11654-1-alexandru.ardelean@analog.com>
+ <20190508112842.11654-2-alexandru.ardelean@analog.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190508112842.11654-1-alexandru.ardelean@analog.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linuxppc-dev@lists.ozlabs.org, linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org, linux-clk@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, linux-gpio@vger.kernel.org, dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org, linux-omap@vger.kernel.org, linux-mmc@vger.kernel.org, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-pci@vger.kernel.org, linux-tegra@vger.kernel.org, devel@driverdev.osuosl.org, linux-usb@vger.kernel.org, kvm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-mtd@lists.infradead.org, cgroups@vger.kernel.org, linux-mm@kvack.org, linux-security-module@vger.kernel.org
-Cc: gregkh@linuxfoundation.org, andriy.shevchenko@linux.intel.com, Alexandru Ardelean <alexandru.ardelean@analog.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190508112842.11654-2-alexandru.ardelean-OyLXuOCK7orQT0dZR+AlfA@public.gmane.org>
+Content-Language: en-US
+Content-ID: <BE083E2328EDB84B98DBA67ED168014A-OyLXuOCK7orQT0dZR+AlfA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: "kvm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <kvm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-ide-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-ide-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linuxppc-dev-uLR06cmDAlY/bJ5BZ2RsiQ@public.gmane.org" <linuxppc-dev-uLR06cmDAlY/bJ5BZ2RsiQ@public.gmane.org>, "cgroups-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <cgroups-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org" <linux-mm-Bw31MaZKKs3YtjvyW6yDsg@public.gmane.org>, "linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-security-module-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-security-module-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org" <devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org>, "linux-integrity-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-integrity-u79uwXL29Tb/PtFMR13I2A@public.gmane.org>
+Cc: "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.org" <andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The change is mostly cosmetic.
+On Wed, 2019-05-08 at 14:28 +0300, Alexandru Ardelean wrote:
+> The documentation the `_match_string()` helper mentions that `n`
+> should be:
+>  * @n: number of strings in the array or -1 for NULL terminated arrays
+> 
+> The behavior of the function is different, in the sense that it exits on
+> the first NULL element in the array, regardless of whether `n` is -1 or a
+> positive number.
+> 
+> This patch changes the behavior, to exit the loop when a NULL element is
+> found and n == -1. Essentially, this aligns the behavior with the
+> doc-string.
+> 
+> There are currently many users of `match_string()`, and so, in order to
+> go
+> through them, the next patches in the series will focus on doing some
+> cosmetic changes, which are aimed at grouping the users of
+> `match_string()`.
+> 
 
-The `armada_37xx_pin_group` struct is defined as.
-struct armada_37xx_pin_group {
-        const char      *name;
-        unsigned int    start_pin;
-        unsigned int    npins;
-        u32             reg_mask;
-        u32             val[NB_FUNCS];
-        unsigned int    extra_pin;
-        unsigned int    extra_npins;
-        const char      *funcs[NB_FUNCS];
-        unsigned int    *pins;
-};
+This is the duplicate & should be dropped.
+Sorry for this.
 
-The `funcs` field is a static array of strings, so using the
-new `match_string()` helper (which does an implicit ARRAY_SIZE(gp->funcs))
-should be fine.
-
-Signed-off-by: Alexandru Ardelean <alexandru.ardelean@analog.com>
----
- drivers/pinctrl/mvebu/pinctrl-armada-37xx.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c b/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
-index 07a5bcaa0067..68b0db5ef5e9 100644
---- a/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
-+++ b/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
-@@ -348,7 +348,7 @@ static int armada_37xx_pmx_set_by_name(struct pinctrl_dev *pctldev,
- 	dev_dbg(info->dev, "enable function %s group %s\n",
- 		name, grp->name);
- 
--	func = __match_string(grp->funcs, NB_FUNCS, name);
-+	func = match_string(grp->funcs, name);
- 	if (func < 0)
- 		return -ENOTSUPP;
- 
-@@ -938,7 +938,7 @@ static int armada_37xx_fill_func(struct armada_37xx_pinctrl *info)
- 			struct armada_37xx_pin_group *gp = &info->groups[g];
- 			int f;
- 
--			f = __match_string(gp->funcs, NB_FUNCS, name);
-+			f = match_string(gp->funcs, name);
- 			if (f < 0)
- 				continue;
- 
--- 
-2.17.1
+> Signed-off-by: Alexandru Ardelean <alexandru.ardelean-OyLXuOCK7orQT0dZR+AlfA@public.gmane.org>
+> ---
+>  lib/string.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/lib/string.c b/lib/string.c
+> index 3ab861c1a857..76edb7bf76cb 100644
+> --- a/lib/string.c
+> +++ b/lib/string.c
+> @@ -648,8 +648,11 @@ int match_string(const char * const *array, size_t
+> n, const char *string)
+>  
+>  	for (index = 0; index < n; index++) {
+>  		item = array[index];
+> -		if (!item)
+> +		if (!item) {
+> +			if (n != (size_t)-1)
+> +				continue;
+>  			break;
+> +		}
+>  		if (!strcmp(item, string))
+>  			return index;
+>  	}
