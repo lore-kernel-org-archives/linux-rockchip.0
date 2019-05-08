@@ -1,8 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 4/8] rockchip: rk3399: Move u-boot, dm-pre-reloc of uart0,
- uart2
-Date: Wed,  8 May 2019 13:39:00 +0530
-Message-ID: <20190508080904.1567-5-jagan@amarulasolutions.com>
+Subject: [PATCH 5/8] rockchip: rk3399: Enable SPL_BOARD_INIT
+Date: Wed,  8 May 2019 13:39:01 +0530
+Message-ID: <20190508080904.1567-6-jagan@amarulasolutions.com>
 References: <20190508080904.1567-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,56 +21,38 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-u-boot,dm-pre-reloc for uart0, uart2 indeed u-boot specific
-properties. Move them into rk3399-u-boot.dtsi so the boards
-which enabled these node will available during SPL.
+Enable SPL_BOARD_INIT globally to rk3399, this would
+help to print the SPL banner during bootup.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- arch/arm/dts/rk3399-gru.dtsi    | 1 -
- arch/arm/dts/rk3399-puma.dtsi   | 1 -
- arch/arm/dts/rk3399-u-boot.dtsi | 8 ++++++++
- 3 files changed, 8 insertions(+), 2 deletions(-)
+ arch/arm/mach-rockchip/Kconfig | 1 +
+ configs/puma-rk3399_defconfig  | 1 -
+ 2 files changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm/dts/rk3399-gru.dtsi b/arch/arm/dts/rk3399-gru.dtsi
-index ca0fc391b2..0e2e047180 100644
---- a/arch/arm/dts/rk3399-gru.dtsi
-+++ b/arch/arm/dts/rk3399-gru.dtsi
-@@ -629,7 +629,6 @@ ap_i2c_audio: &i2c8 {
- 
- &uart2 {
- 	status = "okay";
--	u-boot,dm-pre-reloc;
- };
- 
- &usb_host0_ohci {
-diff --git a/arch/arm/dts/rk3399-puma.dtsi b/arch/arm/dts/rk3399-puma.dtsi
-index 897e0bda85..74368da550 100644
---- a/arch/arm/dts/rk3399-puma.dtsi
-+++ b/arch/arm/dts/rk3399-puma.dtsi
-@@ -639,7 +639,6 @@
- };
- 
- &uart0 {
--	u-boot,dm-pre-reloc;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&uart0_xfer &uart0_cts>;
- 	status = "okay";
-diff --git a/arch/arm/dts/rk3399-u-boot.dtsi b/arch/arm/dts/rk3399-u-boot.dtsi
-index 0786c1193a..fcfce9ae02 100644
---- a/arch/arm/dts/rk3399-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399-u-boot.dtsi
-@@ -10,3 +10,11 @@
- &spi1 {
- 	u-boot,dm-pre-reloc;
- };
-+
-+&uart0 {
-+	u-boot,dm-pre-reloc;
-+};
-+
-+&uart2 {
-+	u-boot,dm-pre-reloc;
-+};
+diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
+index c05e3c3f48..ce039022df 100644
+--- a/arch/arm/mach-rockchip/Kconfig
++++ b/arch/arm/mach-rockchip/Kconfig
+@@ -158,6 +158,7 @@ config ROCKCHIP_RK3399
+ 	select SPL
+ 	select SPL_ATF
+ 	select SPL_ATF_NO_PLATFORM_PARAM if SPL_ATF
++	select SPL_BOARD_INIT if SPL
+ 	select SPL_LOAD_FIT
+ 	select SPL_CLK if SPL
+ 	select SPL_PINCTRL if SPL
+diff --git a/configs/puma-rk3399_defconfig b/configs/puma-rk3399_defconfig
+index ebc78fb216..5cb2273a15 100644
+--- a/configs/puma-rk3399_defconfig
++++ b/configs/puma-rk3399_defconfig
+@@ -21,7 +21,6 @@ CONFIG_MISC_INIT_R=y
+ # CONFIG_DISPLAY_CPUINFO is not set
+ CONFIG_DISPLAY_BOARDINFO_LATE=y
+ CONFIG_SPL_TEXT_BASE=0xff8c2000
+-CONFIG_SPL_BOARD_INIT=y
+ # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+ # CONFIG_SPL_LEGACY_IMAGE_SUPPORT is not set
+ CONFIG_SPL_STACK_R=y
 -- 
 2.18.0.321.gffc6fa0e3
