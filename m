@@ -1,68 +1,71 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] rockchip: rk3399: spl: Don't init dram if TPL enabled
-Date: Wed, 8 May 2019 15:52:54 +0800
-Message-ID: <dca9d6a7-5018-2d46-4d70-c0543d405811@rock-chips.com>
-References: <20190508063956.26549-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH 0/8] rockchip: rk3399: Use spl_board_init in SPL,
+	TPL
+Date: Wed,  8 May 2019 13:38:56 +0530
+Message-ID: <20190508080904.1567-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190508063956.26549-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, Akash Gajjar <akash@openedev.com>
+Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jagan,
-
-
-On 05/08/2019 02:39 PM, Jagan Teki wrote:
-> DRAM init would require in
-> - TPL stage if target support TPL and
-> - SPL stage if target support SPL alone
->
-> So, don't initialize the dram in SPL if TPL defined and at
-> the same time enable it if TPL undefined which is SPL alone.
->
-> Tested in TPL and SPL supported boards.
->
-> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-> ---
->  arch/arm/mach-rockchip/rk3399-board-spl.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/arch/arm/mach-rockchip/rk3399-board-spl.c b/arch/arm/mach-rockchip/rk3399-board-spl.c
-> index 3eea73ef33..a439e09b61 100644
-> --- a/arch/arm/mach-rockchip/rk3399-board-spl.c
-> +++ b/arch/arm/mach-rockchip/rk3399-board-spl.c
-> @@ -198,11 +198,13 @@ void board_init_f(ulong dummy)
->  		return;
->  	}
->  
-> +#if !defined(SUPPORT_TPL)
->  	ret = uclass_get_device(UCLASS_RAM, 0, &dev);
->  	if (ret) {
->  		pr_err("DRAM init failed: %d\n", ret);
->  		return;
->  	}
-> +#endif
-
-We still need to init DRAM driver in SPL so that we can get correct ram
-info,
-but we don't need to run the dram init program, which should have been
-handled in DRAM driver.
-
-Thanks,
-- Kever
->  }
->  
->  #if defined(SPL_GPIO_SUPPORT)
+VXN1YWxseSBzcGxfYm9hcmRfaW5pdCBoYXMgcHJlbG9hZGVyX2NvbnNvbGVfaW5pdCB3aGljaAp3
+b3VsZCBoZWxwIHRvIHByaW50IGJvb3QgdXAgYmFubmVyIGR1cmluZyBTUEwgYW5kIFRQTC4KClRo
+ZSBjdXJyZW50IHJrMzM5OSBsYWNraW5nIHRoYXQgaW4gZmV3IG9mIHRoZSBib2FyZHMsIAp0aGlz
+IHNlcmllcyBtYWtlIHJldXNlIG9mIHNwbF9ib2FyZF9pbml0IGluIFNQTCBhbmQgVFBMIHN0YWdl
+cy4KCndpdGggdGhpcyBzZXJpZXM6Cj09PT09PT09PT09PT09PT0KClUtQm9vdCBUUEwgMjAxOS4w
+Ny1yYzEtMDAyNDMtZzNmMGNhZDZiZDIgKE1heSAwOCAyMDE5IC0gMTE6Mjk6MzIgKzA1MzApClRy
+eWluZyB0byBib290IGZyb20gQk9PVFJPTQpSZXR1cm5pbmcgdG8gYm9vdCBST00uLi4KClUtQm9v
+dCBTUEwgMjAxOS4wNy1yYzEtMDAyNDMtZzNmMGNhZDZiZDIgKE1heSAwOCAyMDE5IC0gMTE6Mjk6
+MzIgKzA1MzApClRyeWluZyB0byBib290IGZyb20gTU1DMQoKClUtQm9vdCAyMDE5LjA3LXJjMS0w
+MDI0My1nM2YwY2FkNmJkMiAoTWF5IDA4IDIwMTkgLSAxMToyOTozMiArMDUzMCkKCk1vZGVsOiBG
+cmllbmRseUVsZWMgTmFub1BDLVQ0CkRSQU06ICAzLjkgR2lCCk1NQzogICBkd21tY0BmZTMxMDAw
+MDogMiwgZHdtbWNAZmUzMjAwMDA6IDEsIHNkaGNpQGZlMzMwMDAwOiAwCkxvYWRpbmcgRW52aXJv
+bm1lbnQgZnJvbSBNTUMuLi4gKioqIFdhcm5pbmcgLSBiYWQgQ1JDLCB1c2luZyBkZWZhdWx0IGVu
+dmlyb25tZW50CgpJbjogICAgc2VyaWFsQGZmMWEwMDAwCk91dDogICBzZXJpYWxAZmYxYTAwMDAK
+RXJyOiAgIHNlcmlhbEBmZjFhMDAwMApNb2RlbDogRnJpZW5kbHlFbGVjIE5hbm9QQy1UNApOZXQ6
+ICAgZXRoMDogZXRoZXJuZXRAZmUzMDAwMDAKSGl0IGFueSBrZXkgdG8gc3RvcCBhdXRvYm9vdDog
+IDAgCj0+Cgp3aXRob3V0IHRoaXMgc2VyaWVzOgo9PT09PT09PT09PT09PT09PT09CgpVLUJvb3Qg
+VFBMIGJvYXJkIGluaXQKVHJ5aW5nIHRvIGJvb3QgZnJvbSBCT09UUk9NClJldHVybmluZyB0byBi
+b290IFJPTS4uLgpVLUJvb3QgU1BMIGJvYXJkIGluaXQKVHJ5aW5nIHRvIGJvb3QgZnJvbSBNTUMx
+CgpVLUJvb3QgMjAxOS4wNy1yYzEtMDAyNDMtZzNmMGNhZDZiZDIgKE1heSAwOCAyMDE5IC0gMTE6
+Mjk6MzIgKzA1MzApCgpNb2RlbDogRnJpZW5kbHlFbGVjIE5hbm9QQy1UNApEUkFNOiAgMy45IEdp
+QgpNTUM6ICAgZHdtbWNAZmUzMTAwMDA6IDIsIGR3bW1jQGZlMzIwMDAwOiAxLCBzZGhjaUBmZTMz
+MDAwMDogMApMb2FkaW5nIEVudmlyb25tZW50IGZyb20gTU1DLi4uICoqKiBXYXJuaW5nIC0gYmFk
+IENSQywgdXNpbmcgZGVmYXVsdCBlbnZpcm9ubWVudAoKSW46ICAgIHNlcmlhbEBmZjFhMDAwMApP
+dXQ6ICAgc2VyaWFsQGZmMWEwMDAwCkVycjogICBzZXJpYWxAZmYxYTAwMDAKTW9kZWw6IEZyaWVu
+ZGx5RWxlYyBOYW5vUEMtVDQKTmV0OiAgIGV0aDA6IGV0aGVybmV0QGZlMzAwMDAwCkhpdCBhbnkg
+a2V5IHRvIHN0b3AgYXV0b2Jvb3Q6ICAwIAo9PgoKQW55IGlucHV0cz8KSmFnYW4uCgpKYWdhbiBU
+ZWtpICg4KToKICBib2FyZDogcmszMzk5OiBEcm9wIGV4cGxpY2l0IHVhcnQgZW5hYmxlbWVudCBp
+biBzcGxfYm9hcmRfaW5pdAogIHJvY2tjaGlwOiByazMzOTk6IFN1cHBvcnQgY29tbW9uIHNwbF9i
+b2FyZF9pbml0CiAgcm9ja2NoaXA6IHJrMzM5OTogc3BsOiBNYXJrIHByaW50YXNjaWkgaW50byBk
+ZWJ1ZwogIHJvY2tjaGlwOiByazMzOTk6IE1vdmUgdS1ib290LGRtLXByZS1yZWxvYyBvZiB1YXJ0
+MCwgdWFydDIKICByb2NrY2hpcDogcmszMzk5OiBFbmFibGUgU1BMX0JPQVJEX0lOSVQKICByb2Nr
+Y2hpcDogcmszMzk5OiB0cGw6IEFkZCBzcGxfYm9hcmRfaW5pdAogIHJvY2tjaGlwOiByazMzOTk6
+IHRwbDogTWFyayBwcmludGFzY2lpIGludG8gZGVidWcKICByb2NrY2hpcDogcmszMzk5OiBFbmFi
+bGUgVFBMX0JPQVJEX0lOSVQKCiBhcmNoL2FybS9kdHMvcmszMzk5LWdydS5kdHNpICAgICAgICAg
+ICAgICAgICAgfCAgMSAtCiBhcmNoL2FybS9kdHMvcmszMzk5LXB1bWEuZHRzaSAgICAgICAgICAg
+ICAgICAgfCAgMSAtCiBhcmNoL2FybS9kdHMvcmszMzk5LXUtYm9vdC5kdHNpICAgICAgICAgICAg
+ICAgfCAgOCArKysKIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZpZyAgICAgICAgICAgICAg
+ICB8ICAyICsKIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMzk5LWJvYXJkLXNwbC5jICAgICB8
+IDY1ICsrKysrKysrKysrKysrKysrKy0KIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMzk5LWJv
+YXJkLXRwbC5jICAgICB8ICA5ICsrLQogYm9hcmQvcm9ja2NoaXAvZXZiX3JrMzM5OS9ldmItcmsz
+Mzk5LmMgICAgICAgIHwgMjkgLS0tLS0tLS0tCiAuLi4vcHVtYV9yazMzOTkvcHVtYS1yazMzOTku
+YyAgICAgICAgICAgICAgICAgfCA1OCAtLS0tLS0tLS0tLS0tLS0tLQogYm9hcmQvdmFtcnMvcm9j
+azk2MF9yazMzOTkvcm9jazk2MC1yazMzOTkuYyAgIHwgMzEgLS0tLS0tLS0tCiBjb25maWdzL3B1
+bWEtcmszMzk5X2RlZmNvbmZpZyAgICAgICAgICAgICAgICAgfCAgMSAtCiAxMCBmaWxlcyBjaGFu
+Z2VkLCA4MiBpbnNlcnRpb25zKCspLCAxMjMgZGVsZXRpb25zKC0pCgotLSAKMi4xOC4wLjMyMS5n
+ZmZjNmZhMGUzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMu
+ZGVueC5kZS9saXN0aW5mby91LWJvb3QK
