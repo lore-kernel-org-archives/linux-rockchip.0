@@ -1,109 +1,72 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v8 3/5] dt-bindings: mfd: rk808: Add binding information for RK809 and RK817.
-Date: Wed,  8 May 2019 16:37:11 +0200
-Message-ID: <20190508143713.27954-4-heiko@sntech.de>
-References: <20190508143713.27954-1-heiko@sntech.de>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [RESEND PATCH v7 05/11] rockchip: dts: rk3399:
+ nanopi4: Use CD pin as RK_FUNC_1
+Date: Wed, 8 May 2019 20:29:14 +0530
+Message-ID: <CAMty3ZC-XrcueoqwVyUfq3vHitJ5dniN1vU_SFLpaLc_n3jShg@mail.gmail.com>
+References: <20190508054151.21762-1-jagan@amarulasolutions.com>
+ <20190508054151.21762-6-jagan@amarulasolutions.com>
+ <649bcf2d-429e-cd6d-1ed6-f797604fb90c@arm.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190508143713.27954-1-heiko@sntech.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org, lee.jones@linaro.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, tony.xie@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com, Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <649bcf2d-429e-cd6d-1ed6-f797604fb90c@arm.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Akash Gajjar <akash@openedev.com>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Tony Xie <tony.xie@rock-chips.com>
-
-Add device tree bindings documentation for Rockchip's RK809 & RK817 PMIC.
-
-Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- .../devicetree/bindings/mfd/rk808.txt         | 44 +++++++++++++++++++
- 1 file changed, 44 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-index 1683ec3245bc..04df07f6f793 100644
---- a/Documentation/devicetree/bindings/mfd/rk808.txt
-+++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-@@ -3,11 +3,15 @@ RK8XX Power Management Integrated Circuit
- The rk8xx family current members:
- rk805
- rk808
-+rk809
-+rk817
- rk818
- 
- Required properties:
- - compatible: "rockchip,rk805"
- - compatible: "rockchip,rk808"
-+- compatible: "rockchip,rk809"
-+- compatible: "rockchip,rk817"
- - compatible: "rockchip,rk818"
- - reg: I2C slave address
- - interrupts: the interrupt outputs of the controller.
-@@ -45,6 +49,23 @@ Optional RK808 properties:
-   the gpio controller. If DVS GPIOs aren't present, voltage changes will happen
-   very quickly with no slow ramp time.
- 
-+Optional shared RK809 and RK817 properties:
-+- vcc1-supply:  The input supply for DCDC_REG1
-+- vcc2-supply:  The input supply for DCDC_REG2
-+- vcc3-supply:  The input supply for DCDC_REG3
-+- vcc4-supply:  The input supply for DCDC_REG4
-+- vcc5-supply:  The input supply for LDO_REG1, LDO_REG2, LDO_REG3
-+- vcc6-supply:  The input supply for LDO_REG4, LDO_REG5, LDO_REG6
-+- vcc7-supply:  The input supply for LDO_REG7, LDO_REG8, LDO_REG9
-+
-+Optional RK809 properties:
-+- vcc8-supply:  The input supply for SWITCH_REG1
-+- vcc9-supply:  The input supply for DCDC_REG5, SWITCH_REG2
-+
-+Optional RK817 properties:
-+- vcc8-supply:  The input supply for BOOST
-+- vcc9-supply:  The input supply for OTG_SWITCH
-+
- Optional RK818 properties:
- - vcc1-supply:  The input supply for DCDC_REG1
- - vcc2-supply:  The input supply for DCDC_REG2
-@@ -86,6 +107,21 @@ number as described in RK808 datasheet.
- 	- SWITCH_REGn
- 		- valid values for n are 1 to 2
- 
-+Following regulators of the RK809 and RK817 PMIC blocks are supported. Note that
-+the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
-+number as described in RK809 and RK817 datasheets.
-+
-+	- DCDC_REGn
-+		- valid values for n are 1 to 5 for RK809.
-+		- valid values for n are 1 to 4 for RK817.
-+	- LDO_REGn
-+		- valid values for n are 1 to 9 for RK809.
-+		- valid values for n are 1 to 9 for RK817.
-+	- SWITCH_REGn
-+		- valid values for n are 1 to 2 for RK809.
-+	- BOOST for RK817
-+	- OTG_SWITCH for RK817
-+
- Following regulators of the RK818 PMIC block are supported. Note that
- the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
- number as described in RK818 datasheet.
-@@ -98,6 +134,14 @@ number as described in RK818 datasheet.
- 	- HDMI_SWITCH
- 	- OTG_SWITCH
- 
-+It is necessary to configure three pins for both the RK809 and RK817, the three
-+pins are "gpio_ts" "gpio_gt" "gpio_slp".
-+	The gpio_gt and gpio_ts pins support the gpio function.
-+	The gpio_slp pin is for controlling the pmic states, as below:
-+		- reset
-+		- power down
-+		- sleep
-+
- Standard regulator bindings are used inside regulator subnodes. Check
-   Documentation/devicetree/bindings/regulator/regulator.txt
- for more details
--- 
-2.20.1
+T24gV2VkLCBNYXkgOCwgMjAxOSBhdCA3OjIyIFBNIFJvYmluIE11cnBoeSA8cm9iaW4ubXVycGh5
+QGFybS5jb20+IHdyb3RlOgo+Cj4gT24gMDgvMDUvMjAxOSAwNjo0MSwgSmFnYW4gVGVraSB3cm90
+ZToKPiA+IHNkbW1jIGNkIHBpbiBpcyBjb25maWd1cmVkIGFzIFJLX0ZVTkNfR1BJTyB3aGljaCBp
+cyB3cm9uZyBhbmQKPiA+IGluZGVlZCBmYWlsZWQgdG8gZGV0ZWN0IHRoZSBzZGNhcmQgb24gdGhl
+IGJvYXJkIHdpdGggYmVsb3cgZXJyb3IKPiA+Cj4gPiAgICBDYXJkIGRpZCBub3QgcmVzcG9uZCB0
+byB2b2x0YWdlIHNlbGVjdCEKPiA+Cj4gPiBTbywgZml4IGl0IGJ5IHJlcGxhY2luZyBSS19GVU5D
+X0dQSU8gd2l0aCBSS19GVU5DXzEgd2hpY2gKPiA+IGlzIGFscmVhZHkgZGVmaW5lZCBpbiByazMz
+OTkuZHRzIHNvIG1ha2UgdXNlIG9mIHNhbWUgbGlrZQo+ID4gb3RoZXIgYm9hcmRzLgo+Cj4gQUZB
+SUNTIHRoaXMgc2hvdWxkIGFsc28gYmUgdHJ1ZSBvZiBSb2NrUHJvNjQgYW5kIChhdCBsZWFzdCB3
+aXRoIHRoZQo+IExpbnV4IERUKSBGaXJlZmx5IC0gdGhvc2UgYXJlbid0IGdyYWJiaW5nICZzZG1t
+Y19jZCBieSBkZWZhdWx0IGVpdGhlci4gSQo+IGltYWdpbmUgdGhhdCBVLUJvb3QgbWlnaHQgYWxz
+byBzZWUgc2ltaWxhciBwcm9ibGVtcyBvbiBHcnUsIHdoZXJlIHRoZQo+IGNhcmQgZGV0ZWN0IHNp
+Z25hbCBpcyBvbiBhIGNvbXBsZXRlbHkgZGlmZmVyZW50IEdQSU8uCgpCdXQgUm9ja1BybzY0IGlz
+IG5vdCB1c2luZyBzZG1tY19jZCBhbmQgaXQgaXMgYWJsZSB0byBkZXRlY3QgdGhlIGNhcmQKdy9v
+IHBpbiBidXQgaXQgaGFzIGNkLWdwaW8uCgo+Cj4gSSdkIG5vdGUgdGhhdCBpbiBMaW51eCwgb25s
+eSByazMzOTktZXZiIGlzIGFjdHVhbGx5ICp1c2luZyogJnNkbW1jX2NkIC0KPiBkZXNwaXRlIHRo
+ZSBmYWN0IHRoYXQgdGhleSBjbGFpbSBpdCwgbmVhcmx5IGFsbCB0aGUgb3RoZXIgYm9hcmRzIGFs
+c28KPiBoYXZlICJjZC1ncGlvcyIgYW5kIHRodXMgZW5kIHVwIG92ZXJyaWRpbmcgdGhlIGRlZGlj
+YXRlZCBmdW5jdGlvbiB3aXRoCj4gYW4gaW1wbGljaXQgR1BJTyBjb25maWd1cmF0aW9uIGFueXdh
+eS4gU2FwcGhpcmUgaXMgdGhlIG9kZCBvbmUgb3V0IGluCj4gdXNpbmcgImJyb2tlbi1jZCIgYXMg
+dGhlIGxlc3MtZWZmaWNpZW50IHdheSBvZiBtaXRpZ2F0aW5nIHRoZSBydW50aW1lIFBNCj4gaXNz
+dWUuCj4KPiA+IEFkZCB0aGVzZSBjaGFuZ2VzIGluIC11LWJvb3QuZHRzaSB0byBtYWtlIExpbnV4
+IHN5bmMgZWFzeSBmb3IgZnV0dXJlCj4gPiBjaGFuZ2VzLgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6
+IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgo+ID4gUmV2aWV3ZWQtYnk6
+IEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+Cj4gPiAtLS0KPiA+ICAgYXJj
+aC9hcm0vZHRzL3JrMzM5OS1uYW5vcGk0LXUtYm9vdC5kdHNpIHwgOSArKysrKysrKysKPiA+ICAg
+MSBmaWxlIGNoYW5nZWQsIDkgaW5zZXJ0aW9ucygrKQo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQg
+YXJjaC9hcm0vZHRzL3JrMzM5OS1uYW5vcGk0LXUtYm9vdC5kdHNpCj4gPgo+ID4gZGlmZiAtLWdp
+dCBhL2FyY2gvYXJtL2R0cy9yazMzOTktbmFub3BpNC11LWJvb3QuZHRzaSBiL2FyY2gvYXJtL2R0
+cy9yazMzOTktbmFub3BpNC11LWJvb3QuZHRzaQo+ID4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiA+
+IGluZGV4IDAwMDAwMDAwMDAuLjIwZGI5OWMwYjgKPiA+IC0tLSAvZGV2L251bGwKPiA+ICsrKyBi
+L2FyY2gvYXJtL2R0cy9yazMzOTktbmFub3BpNC11LWJvb3QuZHRzaQo+ID4gQEAgLTAsMCArMSw5
+IEBACj4gPiArLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjArCj4gPiArLyoKPiA+
+ICsgKiBDb3B5cmlnaHQgKEMpIDIwMTkgSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9u
+cy5jb20+Cj4gPiArICovCj4gPiArCj4gPiArJnNkbW1jIHsKPiA+ICsgICAgIHBpbmN0cmwtbmFt
+ZXMgPSAiZGVmYXVsdCI7Cj4KPiBUaGF0J3MgYWxyZWFkeSBzZXQgaW4gdGhlIGJhc2UgRFRTSSwg
+c28gZG9lc24ndCByZWFsbHkgbmVlZCB0byBiZQo+IHNoYWRvd2VkIGhlcmUuCj4KPiA+ICsgICAg
+IHBpbmN0cmwtMCA9IDwmc2RtbWNfYnVzNCAmc2RtbWNfY2xrICZzZG1tY19jbWQgJnNkbW1jX2Nk
+PjsKPiA+ICt9Owo+ID4KPgo+IEkgc3VwcG9zZSB5b3UgY291bGQgYWxzbyBkZWxldGUgdGhlICJj
+ZC1ncGlvcyIgcHJvcGVydHkgdG8gbWFrZSBpdAo+IHJlYWxseSBjbGVhciB3aGF0IHRoaXMgb3Zl
+cnJpZGUgaXMgZm9yIChhbmQgc2F2ZSBhIGZldyBieXRlcyBpZiBpdCdzCj4gZ29pbmcgdG8gYmUg
+aWdub3JlZCBhbnl3YXkpLgoKV2h5IHNvPyBmZXcgYm9hcmRzIGxpa2UgT3JhbmdlUEkgZG8gdXNl
+IGJvdGggc2RtbWNfY2QgYWxvbmcgd2l0aCBjZC1ncGlvLgoKT24gdGhlIG90aGVyLWhhbmQsIGhv
+dyBhYm91dCBkb2luZyB0aGlzIGNoYW5nZSBpbiBMaW51eD8KX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApVLUJvb3RAbGlz
+dHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cg==
