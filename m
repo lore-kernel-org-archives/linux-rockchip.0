@@ -1,48 +1,58 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] of: Add dummy for of_node_is_root if not CONFIG_OF
-Date: Wed, 8 May 2019 08:51:08 -0700
-Message-ID: <CAD=FV=WFNjvm9Swe_jRO1X3yn-OV596_4yhA9m_yD4Coq1qTWw@mail.gmail.com>
-References: <20190507044801.250396-1-dianders@chromium.org>
- <a3573253-e3de-0a82-8af3-6bacea20bd97@gmail.com> <CAD=FV=UAFUH12DbA++HML75E55BCttpNBxe9t-VEQvGjGx0=Wg@mail.gmail.com>
- <18324244-cca8-a836-5c2e-c626ca8771aa@gmail.com>
+From: Sean Paul <sean@poorly.run>
+Subject: [PATCH v4 06/11] drm/rockchip: Use dirtyfb helper
+Date: Wed,  8 May 2019 12:09:11 -0400
+Message-ID: <20190508160920.144739-7-sean@poorly.run>
+References: <20190508160920.144739-1-sean@poorly.run>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <18324244-cca8-a836-5c2e-c626ca8771aa@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Frank Rowand <frowand.list@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Kees Cook <keescook@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190508160920.144739-1-sean@poorly.run>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Tue, May 7, 2019 at 3:17 PM Frank Rowand <frowand.list@gmail.com> wrote:
->
-> On 5/7/19 10:59 AM, Doug Anderson wrote:
-> > Hi,
-> >
-> >
-> > On Tue, May 7, 2019 at 10:52 AM Frank Rowand <frowand.list@gmail.com> wrote:
-> >>
-> >> On 5/6/19 9:48 PM, Douglas Anderson wrote:
-> >>> We'll add a dummy to just return false.
-> >>
-> >> A more complete explanation of why this is needed please.
-> >>
-> >> My one guess would be compile testing of arch/sparc/kernel/prom_64.c
-> >> fails???
-> >
-> > Ah, sorry.  Needed for:
-> >
-> > https://lkml.kernel.org/r/CAD=FV=Vxp-U7mZUNmAAOja5pt-8rZqPryEvwTg_Dv3ChuH_TrA@mail.gmail.com
->
-> Got it.  I went and looked at that.  I think a better approach would be to
-> check parent node not "/reserved-memory".  I am making this suggestion in
-> that email thread.
-
-OK.  Assuming that people are happy with that approach [1], we should
-consider this patch abandoned.  Thanks for your reviews!
-
-[1] https://lkml.kernel.org/r/20190508154832.241525-1-dianders@chromium.org
-
--Doug
+RnJvbTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+CgpJbnN0ZWFkIG9mIGZsdXNo
+aW5nIGFsbCB2b3BzIGV2ZXJ5IHRpbWUgd2UgZ2V0IGEgZGlydHlmYiBjYWxsLCB1c2UgdGhlCmRh
+bWFnZSBoZWxwZXIgdG8ga2ljayBvZmYgYW4gYXRvbWljIGNvbW1pdC4gRXZlbiB0aG91Z2ggd2Ug
+ZG9uJ3QgdXNlCmRhbWFnZSBjbGlwcywgdGhlIGhlbHBlciBjb21taXQgd2lsbCBmb3JjZSB1cyB0
+aHJvdWdoIHRoZSBub3JtYWwKcHNyX2luaGliaXRfZ2V0L3B1dCBzZXF1ZW5jZS4KCkNoYW5nZXMg
+aW4gdjM6Ci0gQWRkZWQgdG8gdGhlIHNldApDaGFuZ2VzIGluIHY0OgotIE5vbmUKCkxpbmsgdG8g
+djM6IGh0dHBzOi8vcGF0Y2h3b3JrLmZyZWVkZXNrdG9wLm9yZy9wYXRjaC9tc2dpZC8yMDE5MDUw
+MjE5NDk1Ni4yMTg0NDEtNy1zZWFuQHBvb3JseS5ydW4KClN1Z2dlc3RlZC1ieTogRGFuaWVsIFZl
+dHRlciA8ZGFuaWVsQGZmd2xsLmNoPgpTaWduZWQtb2ZmLWJ5OiBTZWFuIFBhdWwgPHNlYW5wYXVs
+QGNocm9taXVtLm9yZz4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X2ZiLmMgfCAxMyArKy0tLS0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCsp
+LCAxMSBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX2ZiLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X2ZiLmMKaW5kZXggOTc0MzhiYmJlMzg5Li4wMmU4MWNhMmQ5MzMgMTAwNjQ0Ci0tLSBhL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYworKysgYi9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKQEAgLTE2LDYgKzE2LDcgQEAKICNpbmNsdWRl
+IDxkcm0vZHJtLmg+CiAjaW5jbHVkZSA8ZHJtL2RybVAuaD4KICNpbmNsdWRlIDxkcm0vZHJtX2F0
+b21pYy5oPgorI2luY2x1ZGUgPGRybS9kcm1fZGFtYWdlX2hlbHBlci5oPgogI2luY2x1ZGUgPGRy
+bS9kcm1fZmJfaGVscGVyLmg+CiAjaW5jbHVkZSA8ZHJtL2RybV9nZW1fZnJhbWVidWZmZXJfaGVs
+cGVyLmg+CiAjaW5jbHVkZSA8ZHJtL2RybV9wcm9iZV9oZWxwZXIuaD4KQEAgLTI1LDIwICsyNiwx
+MCBAQAogI2luY2x1ZGUgInJvY2tjaGlwX2RybV9nZW0uaCIKICNpbmNsdWRlICJyb2NrY2hpcF9k
+cm1fcHNyLmgiCiAKLXN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2ZiX2RpcnR5KHN0cnVjdCBkcm1f
+ZnJhbWVidWZmZXIgKmZiLAotCQkJCSBzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGUsCi0JCQkJIHVuc2ln
+bmVkIGludCBmbGFncywgdW5zaWduZWQgaW50IGNvbG9yLAotCQkJCSBzdHJ1Y3QgZHJtX2NsaXBf
+cmVjdCAqY2xpcHMsCi0JCQkJIHVuc2lnbmVkIGludCBudW1fY2xpcHMpCi17Ci0Jcm9ja2NoaXBf
+ZHJtX3Bzcl9mbHVzaF9hbGwoZmItPmRldik7Ci0JcmV0dXJuIDA7Ci19Ci0KIHN0YXRpYyBjb25z
+dCBzdHJ1Y3QgZHJtX2ZyYW1lYnVmZmVyX2Z1bmNzIHJvY2tjaGlwX2RybV9mYl9mdW5jcyA9IHsK
+IAkuZGVzdHJveSAgICAgICA9IGRybV9nZW1fZmJfZGVzdHJveSwKIAkuY3JlYXRlX2hhbmRsZSA9
+IGRybV9nZW1fZmJfY3JlYXRlX2hhbmRsZSwKLQkuZGlydHkJICAgICAgID0gcm9ja2NoaXBfZHJt
+X2ZiX2RpcnR5LAorCS5kaXJ0eQkgICAgICAgPSBkcm1fYXRvbWljX2hlbHBlcl9kaXJ0eWZiLAog
+fTsKIAogc3RhdGljIHN0cnVjdCBkcm1fZnJhbWVidWZmZXIgKgotLSAKU2VhbiBQYXVsLCBTb2Z0
+d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
