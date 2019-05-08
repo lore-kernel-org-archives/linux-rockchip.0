@@ -1,14 +1,14 @@
 From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v7 07/11] rockchip: rk3399: Add Nanopc T4 board support
-Date: Wed, 8 May 2019 11:48:15 +0800
-Message-ID: <8c0c724c-48a2-e2ba-845b-3a7957960f22@rock-chips.com>
+Subject: Re: [PATCH v7 08/11] rockchip: rk3399: Add Nanopi NEO4 board support
+Date: Wed, 8 May 2019 11:48:34 +0800
+Message-ID: <2d44a65c-ce44-b1d2-2272-00c2a5f36ca2@rock-chips.com>
 References: <20190507183625.5983-1-jagan@amarulasolutions.com>
- <20190507183625.5983-8-jagan@amarulasolutions.com>
+ <20190507183625.5983-9-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190507183625.5983-8-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+In-Reply-To: <20190507183625.5983-9-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
@@ -23,129 +23,204 @@ To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon 
 Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAwNS8wOC8yMDE5IDAyOjM2IEFNLCBKYWdhbiBUZWtpIHdyb3RlOgo+IEFkZCBpbml0aWFs
-IHN1cHBvcnQgZm9yIE5hbm9wYyBUNCBib2FyZC4KPgo+IFNwZWNpZmljYXRpb24KPiAtIFJvY2tj
-aGlwIFJLMzM5OQo+IC0gRHVhbC1DaGFubmVsIDRHQiBMUEREUjMtMTg2Ngo+IC0gU0QgY2FyZCBz
-bG90Cj4gLSAxNkdCIGVNTUMKPiAtIFJUTDgyMTFFIDFHYnBzCj4gLSBBUDYzNTZTIFdpRkkvQlQK
-PiAtIEhETUkgSW4vT3V0LCBEUCwgTUlQSSBEU0kvQ1NJLCBlRFAKPiAtIFVTQiAzLjAsIDIuMAo+
-IC0gVVNCIFR5cGUgQyBwb3dlciBhbmQgZGF0YQo+IC0gR1BJTyBleHBhbnNpb24gcG9ydHMKPiAt
-IERDIDEyVi8yQQo+Cj4gQ29tbWl0IGRldGFpbHMgb2YgcmszMzk5LW5hbm9wYy10NC5kdHMgc3lu
-YyBmcm9tIExpbnV4IDUuMS1yYzI6Cj4gImFybTY0OiBkdHM6IHJvY2tjaGlwOiBBZGQgTmFub1BD
-LVQ0IElSIHJlY2VpdmVyIgo+IChzaGExOiA5NTY1OGUyMWIxNzA3YWQ3ODQ0Zjg3M2RiMmZkYWEy
-OTUxMDlhNWEzKQo+Cj4gVGVzdGVkLWJ5OiBEYW5pZWwgR3LDtmJlciA8ZHhsZEBkYXJrYm94ZWQu
-b3JnPgo+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMu
-Y29tPgoKUmV2aWV3ZWQtYnk6IEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+
-CgpUaGFua3MsCi0gS2V2ZXIKPiAtLS0KPiAgYXJjaC9hcm0vZHRzL01ha2VmaWxlICAgICAgICAg
-ICAgICAgICAgICAgfCAgMSArCj4gIGFyY2gvYXJtL2R0cy9yazMzOTktbmFub3BjLXQ0LXUtYm9v
-dC5kdHNpIHwgIDcgKysKPiAgYXJjaC9hcm0vZHRzL3JrMzM5OS1uYW5vcGMtdDQuZHRzICAgICAg
-ICAgfCA5MSArKysrKysrKysrKysrKysrKysrKysrKwo+ICBib2FyZC9yb2NrY2hpcC9ldmJfcmsz
-Mzk5L01BSU5UQUlORVJTICAgICB8ICA2ICsrCj4gIGNvbmZpZ3MvbmFub3BjLXQ0LXJrMzM5OV9k
-ZWZjb25maWcgICAgICAgIHwgNTkgKysrKysrKysrKysrKysrCj4gIDUgZmlsZXMgY2hhbmdlZCwg
-MTY0IGluc2VydGlvbnMoKykKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtL2R0cy9yazMz
-OTktbmFub3BjLXQ0LXUtYm9vdC5kdHNpCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9k
-dHMvcmszMzk5LW5hbm9wYy10NC5kdHMKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGNvbmZpZ3MvbmFu
-b3BjLXQ0LXJrMzM5OV9kZWZjb25maWcKPgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9kdHMvTWFr
-ZWZpbGUgYi9hcmNoL2FybS9kdHMvTWFrZWZpbGUKPiBpbmRleCAyYTViZmQzZmI1Li5hZGFjYTUy
-NGMzIDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtL2R0cy9NYWtlZmlsZQo+ICsrKyBiL2FyY2gvYXJt
-L2R0cy9NYWtlZmlsZQo+IEBAIC0xMDYsNiArMTA2LDcgQEAgZHRiLSQoQ09ORklHX1JPQ0tDSElQ
-X1JLMzM5OSkgKz0gXAo+ICAJcmszMzk5LWZpY3VzLmR0YiBcCj4gIAlyazMzOTktZmlyZWZseS5k
-dGIgXAo+ICAJcmszMzk5LWdydS1ib2IuZHRiIFwKPiArCXJrMzM5OS1uYW5vcGMtdDQuZHRiIFwK
-PiAgCXJrMzM5OS1uYW5vcGktbTQuZHRiIFwKPiAgCXJrMzM5OS1vcmFuZ2VwaS5kdGIgXAo+ICAJ
-cmszMzk5LXB1bWEtZGRyMTMzMy5kdGIgXAo+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9kdHMvcmsz
-Mzk5LW5hbm9wYy10NC11LWJvb3QuZHRzaSBiL2FyY2gvYXJtL2R0cy9yazMzOTktbmFub3BjLXQ0
-LXUtYm9vdC5kdHNpCj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAwMDAwMDAwLi4x
-NzIwMWJjZjQxCj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL2FyY2gvYXJtL2R0cy9yazMzOTktbmFu
-b3BjLXQ0LXUtYm9vdC5kdHNpCj4gQEAgLTAsMCArMSw3IEBACj4gKy8vIFNQRFgtTGljZW5zZS1J
-ZGVudGlmaWVyOiBHUEwtMi4wKwo+ICsvKgo+ICsgKiBDb3B5cmlnaHQgKEMpIDIwMTkgSmFnYW4g
-VGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gKyAqLwo+ICsKPiArI2luY2x1ZGUg
-InJrMzM5OS1uYW5vcGk0LXUtYm9vdC5kdHNpIgo+ICsjaW5jbHVkZSAicmszMzk5LXNkcmFtLWxw
-ZGRyMy1zYW1zdW5nLTRHQi0xODY2LmR0c2kiCj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2R0cy9y
-azMzOTktbmFub3BjLXQ0LmR0cyBiL2FyY2gvYXJtL2R0cy9yazMzOTktbmFub3BjLXQ0LmR0cwo+
-IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMDAwMC4uODQ0MzNjZjAyYgo+IC0t
-LSAvZGV2L251bGwKPiArKysgYi9hcmNoL2FybS9kdHMvcmszMzk5LW5hbm9wYy10NC5kdHMKPiBA
-QCAtMCwwICsxLDkxIEBACj4gKy8vIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiAoR1BMLTIuMCsg
-T1IgTUlUKQo+ICsvKgo+ICsgKiBGcmllbmRseUVsZWMgTmFub1BDLVQ0IGJvYXJkIGRldmljZSB0
-cmVlIHNvdXJjZQo+ICsgKgo+ICsgKiBDb3B5cmlnaHQgKGMpIDIwMTggRnJpZW5kbHlFbGVjIENv
-bXB1dGVyIFRlY2guIENvLiwgTHRkLgo+ICsgKiAoaHR0cDovL3d3dy5mcmllbmRseWFybS5jb20p
-Cj4gKyAqCj4gKyAqIENvcHlyaWdodCAoYykgMjAxOCBDb2xsYWJvcmEgTHRkLgo+ICsgKi8KPiAr
-Cj4gKy9kdHMtdjEvOwo+ICsjaW5jbHVkZSAicmszMzk5LW5hbm9waTQuZHRzaSIKPiArCj4gKy8g
-ewo+ICsJbW9kZWwgPSAiRnJpZW5kbHlFbGVjIE5hbm9QQy1UNCI7Cj4gKwljb21wYXRpYmxlID0g
-ImZyaWVuZGx5YXJtLG5hbm9wYy10NCIsICJyb2NrY2hpcCxyazMzOTkiOwo+ICsKPiArCXZjYzEy
-djBfc3lzOiB2Y2MxMnYwLXN5cyB7Cj4gKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQi
-Owo+ICsJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4gKwkJcmVndWxhdG9yLWJvb3Qtb247Cj4gKwkJ
-cmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MTIwMDAwMDA+Owo+ICsJCXJlZ3VsYXRvci1taW4t
-bWljcm92b2x0ID0gPDEyMDAwMDAwPjsKPiArCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2MxMnYwX3N5
-cyI7Cj4gKwl9Owo+ICsKPiArCXZjYzV2MF9ob3N0MDogdmNjNXYwLWhvc3QwIHsKPiArCQljb21w
-YXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4gKwkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPiAr
-CQlyZWd1bGF0b3ItYm9vdC1vbjsKPiArCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2M1djBfaG9zdDAi
-Owo+ICsJCXZpbi1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+Owo+ICsJfTsKPiArCj4gKwlhZGMta2V5
-cyB7Cj4gKwkJY29tcGF0aWJsZSA9ICJhZGMta2V5cyI7Cj4gKwkJaW8tY2hhbm5lbHMgPSA8JnNh
-cmFkYyAxPjsKPiArCQlpby1jaGFubmVsLW5hbWVzID0gImJ1dHRvbnMiOwo+ICsJCWtleXVwLXRo
-cmVzaG9sZC1taWNyb3ZvbHQgPSA8MTgwMDAwMD47Cj4gKwkJcG9sbC1pbnRlcnZhbCA9IDwxMDA+
-Owo+ICsKPiArCQlyZWNvdmVyeSB7Cj4gKwkJCWxhYmVsID0gIlJlY292ZXJ5IjsKPiArCQkJbGlu
-dXgsY29kZSA9IDxLRVlfVkVORE9SPjsKPiArCQkJcHJlc3MtdGhyZXNob2xkLW1pY3Jvdm9sdCA9
-IDwxODAwMD47Cj4gKwkJfTsKPiArCX07Cj4gKwo+ICsJaXItcmVjZWl2ZXIgewo+ICsJCWNvbXBh
-dGlibGUgPSAiZ3Bpby1pci1yZWNlaXZlciI7Cj4gKwkJZ3Bpb3MgPSA8JmdwaW8wIFJLX1BBNiBH
-UElPX0FDVElWRV9MT1c+Owo+ICsJCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gKwkJcGlu
-Y3RybC0wID0gPCZpcl9yeD47Cj4gKwl9Owo+ICt9Owo+ICsKPiArJnBpbmN0cmwgewo+ICsJaXIg
-ewo+ICsJCWlyX3J4OiBpci1yeCB7Cj4gKwkJCS8qIGV4dGVybmFsIHB1bGx1cCB0byBWQ0MzVjNf
-U1lTLCBkZXNwaXRlIGJlaW5nIDEuOFYgOi8gKi8KPiArCQkJcm9ja2NoaXAscGlucyA9IDwwIFJL
-X1BBNiBSS19GVU5DXzEgJnBjZmdfcHVsbF9ub25lPjsKPiArCQl9Owo+ICsJfTsKPiArfTsKPiAr
-Cj4gKyZzZGhjaSB7Cj4gKwltbWMtaHM0MDAtMV84djsKPiArCW1tYy1oczQwMC1lbmhhbmNlZC1z
-dHJvYmU7Cj4gK307Cj4gKwo+ICsmdTJwaHkwX2hvc3Qgewo+ICsJcGh5LXN1cHBseSA9IDwmdmNj
-NXYwX2hvc3QwPjsKPiArfTsKPiArCj4gKyZ1MnBoeTFfaG9zdCB7Cj4gKwlwaHktc3VwcGx5ID0g
-PCZ2Y2M1djBfaG9zdDA+Owo+ICt9Owo+ICsKPiArJnZjYzV2MF9zeXMgewo+ICsJdmluLXN1cHBs
-eSA9IDwmdmNjMTJ2MF9zeXM+Owo+ICt9Owo+ICsKPiArJnZjYzN2M19zeXMgewo+ICsJdmluLXN1
-cHBseSA9IDwmdmNjMTJ2MF9zeXM+Owo+ICt9Owo+ICsKPiArJnZidXNfdHlwZWMgewo+ICsJZW5h
-YmxlLWFjdGl2ZS1oaWdoOwo+ICsJZ3Bpb3MgPSA8JmdwaW80IFJLX1BEMiBHUElPX0FDVElWRV9I
-SUdIPjsKPiArCXZpbi1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+Owo+ICt9Owo+IGRpZmYgLS1naXQg
-YS9ib2FyZC9yb2NrY2hpcC9ldmJfcmszMzk5L01BSU5UQUlORVJTIGIvYm9hcmQvcm9ja2NoaXAv
-ZXZiX3JrMzM5OS9NQUlOVEFJTkVSUwo+IGluZGV4IGFlNDM4MDVhNmEuLmY1NWM5MmY4MGMgMTAw
-NjQ0Cj4gLS0tIGEvYm9hcmQvcm9ja2NoaXAvZXZiX3JrMzM5OS9NQUlOVEFJTkVSUwo+ICsrKyBi
-L2JvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvTUFJTlRBSU5FUlMKPiBAQCAtNiw2ICs2LDEyIEBA
-IEY6ICAgICAgaW5jbHVkZS9jb25maWdzL2V2Yl9yazMzOTkuaAo+ICBGOiAgICAgIGNvbmZpZ3Mv
-ZXZiLXJrMzM5OV9kZWZjb25maWcKPiAgRjogICAgICBjb25maWdzL2ZpcmVmbHktcmszMzk5X2Rl
-ZmNvbmZpZwo+ICAKPiArTkFOT1BDLVQ0Cj4gK006CUphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFz
-b2x1dGlvbnMuY29tPgo+ICtTOglNYWludGFpbmVkCj4gK0Y6CWNvbmZpZ3MvbmFub3BjLXQ0LXJr
-MzM5OV9kZWZjb25maWcKPiArRjoJYXJjaC9hcm0vZHRzL3JrMzM5OS1uYW5vcGMtdDQtdS1ib290
-LmR0c2kKPiArCj4gIE5BTk9QSS1NNAo+ICBNOglKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29s
-dXRpb25zLmNvbT4KPiAgUzoJTWFpbnRhaW5lZAo+IGRpZmYgLS1naXQgYS9jb25maWdzL25hbm9w
-Yy10NC1yazMzOTlfZGVmY29uZmlnIGIvY29uZmlncy9uYW5vcGMtdDQtcmszMzk5X2RlZmNvbmZp
-Zwo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMDAwMC4uZDlmMjEzN2I0Ywo+
-IC0tLSAvZGV2L251bGwKPiArKysgYi9jb25maWdzL25hbm9wYy10NC1yazMzOTlfZGVmY29uZmln
-Cj4gQEAgLTAsMCArMSw1OSBAQAo+ICtDT05GSUdfQVJNPXkKPiArQ09ORklHX0FSQ0hfUk9DS0NI
-SVA9eQo+ICtDT05GSUdfU1lTX1RFWFRfQkFTRT0weDAwMjAwMDAwCj4gK0NPTkZJR19TUExfTElC
-Q09NTU9OX1NVUFBPUlQ9eQo+ICtDT05GSUdfU1BMX0xJQkdFTkVSSUNfU1VQUE9SVD15Cj4gK0NP
-TkZJR19TWVNfTUFMTE9DX0ZfTEVOPTB4NDAwMAo+ICtDT05GSUdfUk9DS0NISVBfUkszMzk5PXkK
-PiArQ09ORklHX1JPQ0tDSElQX1NQTF9SRVNFUlZFX0lSQU09MHg0MDAwCj4gK0NPTkZJR19ERUJV
-R19VQVJUX0JBU0U9MHhGRjFBMDAwMAo+ICtDT05GSUdfREVCVUdfVUFSVF9DTE9DSz0yNDAwMDAw
-MAo+ICtDT05GSUdfU1BMX1NUQUNLX1JfQUREUj0weDgwMDAwCj4gK0NPTkZJR19ERUJVR19VQVJU
-PXkKPiArQ09ORklHX05SX0RSQU1fQkFOS1M9MQo+ICtDT05GSUdfREVGQVVMVF9GRFRfRklMRT0i
-cm9ja2NoaXAvcmszMzk5LW5hbm9wYy10NC5kdGIiCj4gKyMgQ09ORklHX0RJU1BMQVlfQ1BVSU5G
-TyBpcyBub3Qgc2V0Cj4gK0NPTkZJR19ESVNQTEFZX0JPQVJESU5GT19MQVRFPXkKPiArQ09ORklH
-X1NQTF9URVhUX0JBU0U9MHhmZjhjMjAwMAo+ICtDT05GSUdfU1BMX1NUQUNLX1I9eQo+ICtDT05G
-SUdfU1BMX1NUQUNLX1JfTUFMTE9DX1NJTVBMRV9MRU49MHg0MDAwCj4gK0NPTkZJR19DTURfQk9P
-VFo9eQo+ICtDT05GSUdfQ01EX0dQVD15Cj4gK0NPTkZJR19DTURfTU1DPXkKPiArQ09ORklHX0NN
-RF9TRj15Cj4gK0NPTkZJR19DTURfVVNCPXkKPiArIyBDT05GSUdfQ01EX1NFVEVYUFIgaXMgbm90
-IHNldAo+ICtDT05GSUdfQ01EX1RJTUU9eQo+ICtDT05GSUdfU1BMX09GX0NPTlRST0w9eQo+ICtD
-T05GSUdfREVGQVVMVF9ERVZJQ0VfVFJFRT0icmszMzk5LW5hbm9wYy10NCIKPiArQ09ORklHX09G
-X1NQTF9SRU1PVkVfUFJPUFM9InBpbmN0cmwtMCBwaW5jdHJsLW5hbWVzIGNsb2NrLW5hbWVzIGlu
-dGVycnVwdC1wYXJlbnQgYXNzaWduZWQtY2xvY2tzIGFzc2lnbmVkLWNsb2NrLXJhdGVzIGFzc2ln
-bmVkLWNsb2NrLXBhcmVudHMiCj4gK0NPTkZJR19FTlZfSVNfSU5fTU1DPXkKPiArQ09ORklHX1JP
-Q0tDSElQX0dQSU89eQo+ICtDT05GSUdfU1lTX0kyQ19ST0NLQ0hJUD15Cj4gK0NPTkZJR19NTUNf
-RFc9eQo+ICtDT05GSUdfTU1DX0RXX1JPQ0tDSElQPXkKPiArQ09ORklHX01NQ19TREhDST15Cj4g
-K0NPTkZJR19NTUNfU0RIQ0lfUk9DS0NISVA9eQo+ICtDT05GSUdfRE1fRVRIPXkKPiArQ09ORklH
-X0VUSF9ERVNJR05XQVJFPXkKPiArQ09ORklHX0dNQUNfUk9DS0NISVA9eQo+ICtDT05GSUdfUE1J
-Q19SSzhYWD15Cj4gK0NPTkZJR19SRUdVTEFUT1JfUFdNPXkKPiArQ09ORklHX1JFR1VMQVRPUl9S
-SzhYWD15Cj4gK0NPTkZJR19QV01fUk9DS0NISVA9eQo+ICtDT05GSUdfQkFVRFJBVEU9MTUwMDAw
-MAo+ICtDT05GSUdfREVCVUdfVUFSVF9TSElGVD0yCj4gK0NPTkZJR19TWVNSRVNFVD15Cj4gK0NP
-TkZJR19VU0I9eQo+ICtDT05GSUdfVVNCX1hIQ0lfSENEPXkKPiArQ09ORklHX1VTQl9YSENJX0RX
-QzM9eQo+ICtDT05GSUdfVVNCX0VIQ0lfSENEPXkKPiArQ09ORklHX1VTQl9FSENJX0dFTkVSSUM9
-eQo+ICtDT05GSUdfVVNCX0hPU1RfRVRIRVI9eQo+ICtDT05GSUdfVVNCX0VUSEVSX0FTSVg9eQo+
-ICtDT05GSUdfVVNCX0VUSEVSX0FTSVg4ODE3OT15Cj4gK0NPTkZJR19VU0JfRVRIRVJfTUNTNzgz
-MD15Cj4gK0NPTkZJR19VU0JfRVRIRVJfUlRMODE1Mj15Cj4gK0NPTkZJR19VU0JfRVRIRVJfU01T
-Qzk1WFg9eQo+ICtDT05GSUdfVVNFX1RJTllfUFJJTlRGPXkKPiArQ09ORklHX0VSUk5PX1NUUj15
-CgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+
+
+On 05/08/2019 02:36 AM, Jagan Teki wrote:
+> Add initial support for Nanopi NEO4 board.
+>
+> Specification
+> - Rockchip RK3399
+> - 1GB DDR3-1866
+> - SD card slot
+> - eMMC Socket
+> - RTL8211E 1Gbps
+> - AP6212 WiFI/BT
+> - HDMI In/Out, DP, MIPI CSI
+> - USB 3.0, 2.0
+> - USB Type C power and data
+> - GPIO expansion ports
+> - DC 5V/3A
+>
+> Commit details of rk3399-nanopi-neo4.dts sync from Linux:
+> "arm64: dts: rockchip: Add Nanopi NEO4 initial support"
+> (sha1: 092470b537f19788d957aed12d835a179b606014)
+>
+> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+
+Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+Thanks,
+- Kever
+> ---
+>  arch/arm/dts/Makefile                       |  1 +
+>  arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi |  6 +++
+>  arch/arm/dts/rk3399-nanopi-neo4.dts         | 50 +++++++++++++++++
+>  board/rockchip/evb_rk3399/MAINTAINERS       |  6 +++
+>  configs/nanopi-neo4-rk3399_defconfig        | 59 +++++++++++++++++++++
+>  5 files changed, 122 insertions(+)
+>  create mode 100644 arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi
+>  create mode 100644 arch/arm/dts/rk3399-nanopi-neo4.dts
+>  create mode 100644 configs/nanopi-neo4-rk3399_defconfig
+>
+> diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
+> index adaca524c3..529c506b4d 100644
+> --- a/arch/arm/dts/Makefile
+> +++ b/arch/arm/dts/Makefile
+> @@ -108,6 +108,7 @@ dtb-$(CONFIG_ROCKCHIP_RK3399) += \
+>  	rk3399-gru-bob.dtb \
+>  	rk3399-nanopc-t4.dtb \
+>  	rk3399-nanopi-m4.dtb \
+> +	rk3399-nanopi-neo4.dtb \
+>  	rk3399-orangepi.dtb \
+>  	rk3399-puma-ddr1333.dtb \
+>  	rk3399-puma-ddr1600.dtb \
+> diff --git a/arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi b/arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi
+> new file mode 100644
+> index 0000000000..7d22528f49
+> --- /dev/null
+> +++ b/arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi
+> @@ -0,0 +1,6 @@
+> +// SPDX-License-Identifier: GPL-2.0+
+> +/*
+> + * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+> + */
+> +
+> +#include "rk3399-nanopi4-u-boot.dtsi"
+> diff --git a/arch/arm/dts/rk3399-nanopi-neo4.dts b/arch/arm/dts/rk3399-nanopi-neo4.dts
+> new file mode 100644
+> index 0000000000..195410b089
+> --- /dev/null
+> +++ b/arch/arm/dts/rk3399-nanopi-neo4.dts
+> @@ -0,0 +1,50 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (C) 2019 Amarula Solutions B.V.
+> + * Author: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+> + */
+> +
+> +/dts-v1/;
+> +
+> +#include "rk3399-nanopi4.dtsi"
+> +
+> +/ {
+> +	model = "FriendlyARM NanoPi NEO4";
+> +	compatible = "friendlyarm,nanopi-neo4", "rockchip,rk3399";
+> +
+> +	vdd_5v: vdd-5v {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vdd_5v";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +	};
+> +
+> +	vcc5v0_core: vcc5v0-core {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc5v0_core";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		vin-supply = <&vdd_5v>;
+> +	};
+> +
+> +	vcc5v0_usb1: vcc5v0-usb1 {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc5v0_usb1";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		vin-supply = <&vcc5v0_sys>;
+> +	};
+> +};
+> +
+> +&vcc3v3_sys {
+> +	vin-supply = <&vcc5v0_core>;
+> +};
+> +
+> +&u2phy0_host {
+> +	phy-supply = <&vcc5v0_usb1>;
+> +};
+> +
+> +&vbus_typec {
+> +	regulator-always-on;
+> +	vin-supply = <&vdd_5v>;
+> +};
+> diff --git a/board/rockchip/evb_rk3399/MAINTAINERS b/board/rockchip/evb_rk3399/MAINTAINERS
+> index f55c92f80c..1f51f65160 100644
+> --- a/board/rockchip/evb_rk3399/MAINTAINERS
+> +++ b/board/rockchip/evb_rk3399/MAINTAINERS
+> @@ -18,6 +18,12 @@ S:	Maintained
+>  F:	configs/nanopi-m4-rk3399_defconfig
+>  F:	arch/arm/dts/rk3399-nanopi-m4-u-boot.dtsi
+>  
+> +NANOPI-NEO4
+> +M:	Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+> +S:	Maintained
+> +F:	configs/nanopi-neo4-rk3399_defconfig
+> +F:	arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi
+> +
+>  ORANGEPI-RK3399
+>  M:	Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+>  S:	Maintained
+> diff --git a/configs/nanopi-neo4-rk3399_defconfig b/configs/nanopi-neo4-rk3399_defconfig
+> new file mode 100644
+> index 0000000000..188656a2b4
+> --- /dev/null
+> +++ b/configs/nanopi-neo4-rk3399_defconfig
+> @@ -0,0 +1,59 @@
+> +CONFIG_ARM=y
+> +CONFIG_ARCH_ROCKCHIP=y
+> +CONFIG_SYS_TEXT_BASE=0x00200000
+> +CONFIG_SPL_LIBCOMMON_SUPPORT=y
+> +CONFIG_SPL_LIBGENERIC_SUPPORT=y
+> +CONFIG_SYS_MALLOC_F_LEN=0x4000
+> +CONFIG_ROCKCHIP_RK3399=y
+> +CONFIG_ROCKCHIP_SPL_RESERVE_IRAM=0x4000
+> +CONFIG_DEBUG_UART_BASE=0xFF1A0000
+> +CONFIG_DEBUG_UART_CLOCK=24000000
+> +CONFIG_SPL_STACK_R_ADDR=0x80000
+> +CONFIG_DEBUG_UART=y
+> +CONFIG_NR_DRAM_BANKS=1
+> +CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-nanopi-neo4.dtb"
+> +# CONFIG_DISPLAY_CPUINFO is not set
+> +CONFIG_DISPLAY_BOARDINFO_LATE=y
+> +CONFIG_SPL_TEXT_BASE=0xff8c2000
+> +CONFIG_SPL_STACK_R=y
+> +CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x4000
+> +CONFIG_CMD_BOOTZ=y
+> +CONFIG_CMD_GPT=y
+> +CONFIG_CMD_MMC=y
+> +CONFIG_CMD_SF=y
+> +CONFIG_CMD_USB=y
+> +# CONFIG_CMD_SETEXPR is not set
+> +CONFIG_CMD_TIME=y
+> +CONFIG_SPL_OF_CONTROL=y
+> +CONFIG_DEFAULT_DEVICE_TREE="rk3399-nanopi-neo4"
+> +CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
+> +CONFIG_ENV_IS_IN_MMC=y
+> +CONFIG_ROCKCHIP_GPIO=y
+> +CONFIG_SYS_I2C_ROCKCHIP=y
+> +CONFIG_MMC_DW=y
+> +CONFIG_MMC_DW_ROCKCHIP=y
+> +CONFIG_MMC_SDHCI=y
+> +CONFIG_MMC_SDHCI_ROCKCHIP=y
+> +CONFIG_DM_ETH=y
+> +CONFIG_ETH_DESIGNWARE=y
+> +CONFIG_GMAC_ROCKCHIP=y
+> +CONFIG_PMIC_RK8XX=y
+> +CONFIG_REGULATOR_PWM=y
+> +CONFIG_REGULATOR_RK8XX=y
+> +CONFIG_PWM_ROCKCHIP=y
+> +CONFIG_BAUDRATE=1500000
+> +CONFIG_DEBUG_UART_SHIFT=2
+> +CONFIG_SYSRESET=y
+> +CONFIG_USB=y
+> +CONFIG_USB_XHCI_HCD=y
+> +CONFIG_USB_XHCI_DWC3=y
+> +CONFIG_USB_EHCI_HCD=y
+> +CONFIG_USB_EHCI_GENERIC=y
+> +CONFIG_USB_HOST_ETHER=y
+> +CONFIG_USB_ETHER_ASIX=y
+> +CONFIG_USB_ETHER_ASIX88179=y
+> +CONFIG_USB_ETHER_MCS7830=y
+> +CONFIG_USB_ETHER_RTL8152=y
+> +CONFIG_USB_ETHER_SMSC95XX=y
+> +CONFIG_USE_TINY_PRINTF=y
+> +CONFIG_ERRNO_STR=y
