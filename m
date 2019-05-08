@@ -1,13 +1,15 @@
 From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] rockchip: rk3399: orangepi: Add SPL_TEXT_BASE
-Date: Wed, 8 May 2019 11:43:25 +0800
-Message-ID: <2b5903f5-547e-e459-986e-c4d48e616988@rock-chips.com>
-References: <20190507182440.4501-1-jagan@amarulasolutions.com>
+Subject: Re: [PATCH v7 01/11] rockchip: dts: rk3399: Sync pwm2_pin_pull_down
+ from Linux 5.1-rc2
+Date: Wed, 8 May 2019 11:46:24 +0800
+Message-ID: <825829c0-1a60-38c4-e8a7-9a59f086aad0@rock-chips.com>
+References: <20190507183625.5983-1-jagan@amarulasolutions.com>
+ <20190507183625.5983-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190507182440.4501-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+In-Reply-To: <20190507183625.5983-2-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
@@ -18,46 +20,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
 
-On 05/08/2019 02:24 AM, Jagan Teki wrote:
-> CONFIG_SPL_TEXT_BASE was available in configs/rk3399_common.h
-> when the OrangePI rk3399 board supported during first
-> version patch.
+On 05/08/2019 02:36 AM, Jagan Teki wrote:
+> To make successful build with dts(i) files syncing from Linux 5.1-rc2
+> the rk3399.dtsi would require pwm2_pin_pull_down.
 >
-> But, later below change which move this config into Kconfig and
-> same has been merged in mainline tree.
-> "configs: move CONFIG_SPL_TEXT_BASE to Kconfig"
-> (sha1: f89d6133eef2e068f9c33853b6584d7fcbfa9d2e)
->
-> Unfortunately, the maintainer applied the initial version patch,
-> instead of looking for next version changes.
->
-> Fix it by adding SPL_TEXT_BASE in orangepi-rk3399 defconfig.
+> So, sync the pwm2_pin_pull_down node from Linux 5.1-rc2.  Since this
+> node is strictly not part of any commit alone, I have mentioned
+> Linux 5.1-rc2 tag for future reference of where would this sync
+> coming from.
 >
 > Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+> Reviewed-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 
 Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
 Thanks,
 - Kever
 > ---
->  configs/orangepi-rk3399_defconfig | 1 +
->  1 file changed, 1 insertion(+)
+>  arch/arm/dts/rk3399.dtsi | 5 +++++
+>  1 file changed, 5 insertions(+)
 >
-> diff --git a/configs/orangepi-rk3399_defconfig b/configs/orangepi-rk3399_defconfig
-> index cdccf221b5..ba13976cc6 100644
-> --- a/configs/orangepi-rk3399_defconfig
-> +++ b/configs/orangepi-rk3399_defconfig
-> @@ -17,6 +17,7 @@ CONFIG_SPL_FIT_GENERATOR="arch/arm/mach-rockchip/make_fit_atf.py"
->  CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-orangepi.dtb"
->  # CONFIG_DISPLAY_CPUINFO is not set
->  CONFIG_DISPLAY_BOARDINFO_LATE=y
-> +CONFIG_SPL_TEXT_BASE=0xff8c2000
->  CONFIG_SPL_STACK_R=y
->  CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x4000
->  CONFIG_SPL_ATF=y
+> diff --git a/arch/arm/dts/rk3399.dtsi b/arch/arm/dts/rk3399.dtsi
+> index b53e41b4dc..b73442ee34 100644
+> --- a/arch/arm/dts/rk3399.dtsi
+> +++ b/arch/arm/dts/rk3399.dtsi
+> @@ -2495,6 +2495,11 @@
+>  				rockchip,pins =
+>  					<1 RK_PC3 RK_FUNC_1 &pcfg_pull_none>;
+>  			};
+> +
+> +			pwm2_pin_pull_down: pwm2-pin-pull-down {
+> +				rockchip,pins =
+> +					<1 RK_PC3 RK_FUNC_1 &pcfg_pull_down>;
+> +			};
+>  		};
+>  
+>  		pwm3a {
