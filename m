@@ -1,7 +1,8 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 3/8] rockchip: rk3399: spl: Mark printascii into debug
-Date: Wed,  8 May 2019 13:38:59 +0530
-Message-ID: <20190508080904.1567-4-jagan@amarulasolutions.com>
+Subject: [PATCH 4/8] rockchip: rk3399: Move u-boot, dm-pre-reloc of uart0,
+ uart2
+Date: Wed,  8 May 2019 13:39:00 +0530
+Message-ID: <20190508080904.1567-5-jagan@amarulasolutions.com>
 References: <20190508080904.1567-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,28 +22,56 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Now, we have spl_board_init with preloader_console_init that
-indeed show SPL banner.
-
-So mark the 'U-Boot SPL board init' print into debug.
+u-boot,dm-pre-reloc for uart0, uart2 indeed u-boot specific
+properties. Move them into rk3399-u-boot.dtsi so the boards
+which enabled these node will available during SPL.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- arch/arm/mach-rockchip/rk3399-board-spl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm/dts/rk3399-gru.dtsi    | 1 -
+ arch/arm/dts/rk3399-puma.dtsi   | 1 -
+ arch/arm/dts/rk3399-u-boot.dtsi | 8 ++++++++
+ 3 files changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm/mach-rockchip/rk3399-board-spl.c b/arch/arm/mach-rockchip/rk3399-board-spl.c
-index 058acdfe39..7a994b37c1 100644
---- a/arch/arm/mach-rockchip/rk3399-board-spl.c
-+++ b/arch/arm/mach-rockchip/rk3399-board-spl.c
-@@ -164,7 +164,7 @@ void board_init_f(ulong dummy)
- 	 * printhex8(0x1234);
- 	 * printascii("string");
- 	 */
--	printascii("U-Boot SPL board init\n");
-+	debug("U-Boot SPL board init\n");
- #endif
+diff --git a/arch/arm/dts/rk3399-gru.dtsi b/arch/arm/dts/rk3399-gru.dtsi
+index ca0fc391b2..0e2e047180 100644
+--- a/arch/arm/dts/rk3399-gru.dtsi
++++ b/arch/arm/dts/rk3399-gru.dtsi
+@@ -629,7 +629,6 @@ ap_i2c_audio: &i2c8 {
  
- 	ret = spl_early_init();
+ &uart2 {
+ 	status = "okay";
+-	u-boot,dm-pre-reloc;
+ };
+ 
+ &usb_host0_ohci {
+diff --git a/arch/arm/dts/rk3399-puma.dtsi b/arch/arm/dts/rk3399-puma.dtsi
+index 897e0bda85..74368da550 100644
+--- a/arch/arm/dts/rk3399-puma.dtsi
++++ b/arch/arm/dts/rk3399-puma.dtsi
+@@ -639,7 +639,6 @@
+ };
+ 
+ &uart0 {
+-	u-boot,dm-pre-reloc;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0_xfer &uart0_cts>;
+ 	status = "okay";
+diff --git a/arch/arm/dts/rk3399-u-boot.dtsi b/arch/arm/dts/rk3399-u-boot.dtsi
+index 0786c1193a..fcfce9ae02 100644
+--- a/arch/arm/dts/rk3399-u-boot.dtsi
++++ b/arch/arm/dts/rk3399-u-boot.dtsi
+@@ -10,3 +10,11 @@
+ &spi1 {
+ 	u-boot,dm-pre-reloc;
+ };
++
++&uart0 {
++	u-boot,dm-pre-reloc;
++};
++
++&uart2 {
++	u-boot,dm-pre-reloc;
++};
 -- 
 2.18.0.321.gffc6fa0e3
