@@ -1,102 +1,86 @@
-From: Kees Cook <keescook@chromium.org>
-Subject: Re: [PATCH v2] pstore/ram: Improve backward compatibility with older Chromebooks
-Date: Wed, 8 May 2019 11:10:03 -0700
-Message-ID: <CAGXu5jLhmvRbZOhNPkGr9=oSn-aA1CempctTyM3hfW3uOf8DpQ@mail.gmail.com>
-References: <20190508154832.241525-1-dianders@chromium.org>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re:
+ =?utf-8?q?=5BPATCH_v7_1/4=5D_dts=3A_Makefile=3A_Build_ro?=
+ =?utf-8?b?Y2tjaGlwIGR0YnMgYmFzZWQgb24gU29DIHR5cGVz44CQ6K+35rOo5oSP77yM?=
+ =?utf-8?b?6YKu5Lu255SxbGludXgtcm9ja2NoaXAtYm91bmNlcytrZXZlci55YW5nPXJv?=
+ =?utf-8?b?Y2stY2hpcHMuY29tQGxpc3RzLmluZnJhZGVhZC5vcmfku6Plj5HjgJE=?=
+Date: Thu, 9 May 2019 11:00:42 +0800
+Message-ID: <1fd7da71-b585-396f-6146-78a91bc7ae5e@rock-chips.com>
+References: <20190507182152.4254-1-jagan@amarulasolutions.com>
+ <20190507182152.4254-2-jagan@amarulasolutions.com>
+ <d9e9c4b0-64a6-2b2f-29a3-bd7d501def1b@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190508154832.241525-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Kees Cook <keescook@chromium.org>, Anton Vorontsov <anton@enomsg.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, Guenter Roeck <groeck@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Frank Rowand <frowand.list@gmail.com>, Julius Werner <jwerner@chromium.org>, Rob Herring <robh+dt@kernel.org>, Colin Cross <ccross@android.com>, Tony Luck <tony.luck@intel.com>, LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <d9e9c4b0-64a6-2b2f-29a3-bd7d501def1b@rock-chips.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Akash Gajjar <akash@openedev.com>
+Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, May 8, 2019 at 8:49 AM Douglas Anderson <dianders@chromium.org> wrote:
-> When you try to run an upstream kernel on an old ARM-based Chromebook
-> you'll find that console-ramoops doesn't work.
->
-> Old ARM-based Chromebooks, before <https://crrev.com/c/439792>
-> ("ramoops: support upstream {console,pmsg,ftrace}-size properties")
-> used to create a "ramoops" node at the top level that looked like:
->
-> / {
->   ramoops {
->     compatible = "ramoops";
->     reg = <...>;
->     record-size = <...>;
->     dump-oops;
->   };
-> };
->
-> ...and these Chromebooks assumed that the downstream kernel would make
-> console_size / pmsg_size match the record size.  The above ramoops
-> node was added by the firmware so it's not easy to make any changes.
->
-> Let's match the expected behavior, but only for those using the old
-> backward-compatible way of working where ramoops is right under the
-> root node.
->
-> NOTE: if there are some out-of-tree devices that had ramoops at the
-> top level, left everything but the record size as 0, and somehow
-> doesn't want this behavior, we can try to add more conditions here.
->
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-
-Thanks! I've applied this to my testing tree and I'll push to Linus in
-a couple days.
-
--Kees
-
-> ---
->
-> Changes in v2:
-> - s/mimicing/mimicking/ (Brian Norris)
-> - Slight rewording of the comment (Brian Norris)
-> - Check name rather than relying on of_node_is_root() (Frank Rowand)
->
->  fs/pstore/ram.c | 21 +++++++++++++++++++++
->  1 file changed, 21 insertions(+)
->
-> diff --git a/fs/pstore/ram.c b/fs/pstore/ram.c
-> index c5c685589e36..5195a3a3daec 100644
-> --- a/fs/pstore/ram.c
-> +++ b/fs/pstore/ram.c
-> @@ -669,6 +669,7 @@ static int ramoops_parse_dt(struct platform_device *pdev,
->                             struct ramoops_platform_data *pdata)
->  {
->         struct device_node *of_node = pdev->dev.of_node;
-> +       struct device_node *parent_node;
->         struct resource *res;
->         u32 value;
->         int ret;
-> @@ -703,6 +704,26 @@ static int ramoops_parse_dt(struct platform_device *pdev,
->
->  #undef parse_size
->
-> +       /*
-> +        * Some old Chromebooks relied on the kernel setting the
-> +        * console_size and pmsg_size to the record size since that's
-> +        * what the downstream kernel did.  These same Chromebooks had
-> +        * "ramoops" straight under the root node which isn't
-> +        * according to the current upstream bindings (though it was
-> +        * arguably acceptable under a prior version of the bindings).
-> +        * Let's make those old Chromebooks work by detecting that
-> +        * we're not a child of "reserved-memory" and mimicking the
-> +        * expected behavior.
-> +        */
-> +       parent_node = of_get_parent(of_node);
-> +       if (!of_node_name_eq(parent_node, "reserved-memory") &&
-> +           !pdata->console_size && !pdata->ftrace_size &&
-> +           !pdata->pmsg_size && !pdata->ecc_info.ecc_size) {
-> +               pdata->console_size = pdata->record_size;
-> +               pdata->pmsg_size = pdata->record_size;
-> +       }
-> +       of_node_put(parent_node);
-> +
->         return 0;
->  }
->
-> --
-> 2.21.0.1020.gf2820cf01a-goog
->
+CgpPbiAwNS8wOC8yMDE5IDExOjM4IEFNLCBLZXZlciBZYW5nIHdyb3RlOgo+Cj4gT24gMDUvMDgv
+MjAxOSAwMjoyMSBBTSwgSmFnYW4gVGVraSB3cm90ZToKPj4gLSBTb21ldGltZXMgdS1ib290IHNw
+ZWNpZmljIGR0c2kgZmlsZXMgYXJlIGluY2x1ZGVkCj4+ICAgYXV0b21hdGljYWxseSB3aGljaCB3
+b3VsZCBidWlsZCBmb3IgZW50aXJlIHJvY2tjaGlwIFNvQywKPj4gICBldmVuLXRob3VnaCB0aGUg
+cmVzcGVjdGl2ZSBkdHNpIHNob3VsZCB1c2VkIGl0IGZvciBzcGVjaWZpYwo+PiAgIGZhbWlseSBv
+ZiByb2NrY2hpcCBTb0MuCj4+IC0gU29tZXRpbWVzIHUtYm9vdCBzcGVjaWZpYyBkdHMgbm9kZXMg
+b3IgcHJvcGVydGllcyBjYW4gdXNlCj4+ICAgY29uZmlnIG1hY3JvcyBmcm9tIHJlc3BlY3RpdmUg
+cm9ja2NoaXAgZmFtaWx5IGluY2x1ZGUvY29uZmlncwo+PiAgIGZpbGVzLCBleGFtcGxlIENPTkZJ
+R19TUExfUEFEX1RPLgo+Pgo+PiBTbywgaXQncyBiZXR0ZXIgdG8gY29tcGlsZSB0aGUgZHRicyBi
+YXNlZCBvbiB0aGUgcmVzcGVjdGl2ZQo+PiByb2NrY2hpcCBmYW1pbHkgdHlwZXMgcmF0aGVyIHRo
+YW4gcm9ja2NoaXAgaXRzZWxmIHRvIGF2b2lkCj4+IGNvbXBpbGF0aW9uIGlzc3Vlcy4KPj4KPj4g
+VGhpcyBwYXRjaCBvcmdhbml6ZSB0aGUgZXhpc3RpbmcgZHRiJ3MgYmFzZWQgb24gdGhlIHJvY2tj
+aGlwCj4+IGZhbWlseSB0eXBlcy4KPj4KPj4gU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVraSA8amFn
+YW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gUmV2aWV3ZWQtYnk6IEtldmVyIFlhbmcgPGtldmVy
+LnlhbmdAcm9jay1jaGlwcy5jb20+CgpBcHBsaWVkIHRvIHUtYm9vdC1yb2NrY2hpcCwgdGhhbmtz
+IQoKPgo+IFRoYW5rcywKPiAtIEtldmVyCj4+IC0tLQo+PiAgYXJjaC9hcm0vZHRzL01ha2VmaWxl
+IHwgMzUgKysrKysrKysrKysrKysrKysrKysrKysrKystLS0tLS0tLS0KPj4gIDEgZmlsZSBjaGFu
+Z2VkLCAyNiBpbnNlcnRpb25zKCspLCA5IGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEv
+YXJjaC9hcm0vZHRzL01ha2VmaWxlIGIvYXJjaC9hcm0vZHRzL01ha2VmaWxlCj4+IGluZGV4IDhl
+MDgyZjI4NDAuLjM1Y2JiZmFiZDAgMTAwNjQ0Cj4+IC0tLSBhL2FyY2gvYXJtL2R0cy9NYWtlZmls
+ZQo+PiArKysgYi9hcmNoL2FybS9kdHMvTWFrZWZpbGUKPj4gQEAgLTY1LDE2ICs2NSwyMyBAQCBk
+dGItJChDT05GSUdfS0lSS1dPT0QpICs9IFwKPj4gIGR0Yi0kKENPTkZJR19BUkNIX09XTCkgKz0g
+XAo+PiAgCWJ1YmJsZWd1bV85Ni5kdGIKPj4gIAo+PiAtZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NI
+SVApICs9IFwKPj4gLQlyazMwMzYtc2RrLmR0YiBcCj4+IC0JcmszMTI4LWV2Yi5kdGIgXAo+PiAt
+CXJrMzE4OC1yYWR4YXJvY2suZHRiIFwKPj4gLQlyazMyMjktZXZiLmR0YiBcCj4+ICtkdGItJChD
+T05GSUdfUk9DS0NISVBfUkszMDM2KSArPSBcCj4+ICsJcmszMDM2LXNkay5kdGIKPj4gKwo+PiAr
+ZHRiLSQoQ09ORklHX1JPQ0tDSElQX1JLMzEyOCkgKz0gXAo+PiArCXJrMzEyOC1ldmIuZHRiCj4+
+ICsKPj4gK2R0Yi0kKENPTkZJR19ST0NLQ0hJUF9SSzMxODgpICs9IFwKPj4gKwlyazMxODgtcmFk
+eGFyb2NrLmR0Ygo+PiArCj4+ICtkdGItJChDT05GSUdfUk9DS0NISVBfUkszMjJYKSArPSBcCj4+
+ICsJcmszMjI5LWV2Yi5kdGIKPj4gKwo+PiArZHRiLSQoQ09ORklHX1JPQ0tDSElQX1JLMzI4OCkg
+Kz0gXAo+PiAgCXJrMzI4OC1ldmIuZHRiIFwKPj4gIAlyazMyODgtZmVubmVjLmR0YiBcCj4+ICAJ
+cmszMjg4LWZpcmVmbHkuZHRiIFwKPj4gIAlyazMyODgtbWlxaS5kdGIgXAo+PiAtCXJrMzM5OS1v
+cmFuZ2VwaS5kdGIgXAo+PiAgCXJrMzI4OC1waHljb3JlLXJkay5kdGIgXAo+PiAgCXJrMzI4OC1w
+b3BtZXRhbC5kdGIgXAo+PiAgCXJrMzI4OC1yb2NrMi1zcXVhcmUuZHRiIFwKPj4gQEAgLTgzLDIy
+ICs5MCwzMiBAQCBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gXAo+PiAgCXJrMzI4OC12
+ZXlyb24tbWlja2V5LmR0YiBcCj4+ICAJcmszMjg4LXZleXJvbi1taW5uaWUuZHRiIFwKPj4gIAly
+azMyODgtdmV5cm9uLXNwZWVkeS5kdGIgXAo+PiAtCXJrMzI4OC12eWFzYS5kdGIgXAo+PiAtCXJr
+MzMyOC1ldmIuZHRiIFwKPj4gLQlyazMzOTktZmljdXMuZHRiIFwKPj4gKwlyazMyODgtdnlhc2Eu
+ZHRiCj4+ICsKPj4gK2R0Yi0kKENPTkZJR19ST0NLQ0hJUF9SSzMzMjgpICs9IFwKPj4gKwlyazMz
+MjgtZXZiLmR0Ygo+PiArCj4+ICtkdGItJChDT05GSUdfUk9DS0NISVBfUkszMzY4KSArPSBcCj4+
+ICAJcmszMzY4LWxpb24uZHRiIFwKPj4gIAlyazMzNjgtc2hlZXAuZHRiIFwKPj4gIAlyazMzNjgt
+Z2Vla2JveC5kdGIgXAo+PiAgCXJrMzM2OC1weDUtZXZiLmR0YiBcCj4+ICsKPj4gK2R0Yi0kKENP
+TkZJR19ST0NLQ0hJUF9SSzMzOTkpICs9IFwKPj4gIAlyazMzOTktZXZiLmR0YiBcCj4+ICsJcmsz
+Mzk5LWZpY3VzLmR0YiBcCj4+ICAJcmszMzk5LWZpcmVmbHkuZHRiIFwKPj4gIAlyazMzOTktZ3J1
+LWJvYi5kdGIgXAo+PiArCXJrMzM5OS1vcmFuZ2VwaS5kdGIgXAo+PiAgCXJrMzM5OS1wdW1hLWRk
+cjEzMzMuZHRiIFwKPj4gIAlyazMzOTktcHVtYS1kZHIxNjAwLmR0YiBcCj4+ICAJcmszMzk5LXB1
+bWEtZGRyMTg2Ni5kdGIgXAo+PiAgCXJrMzM5OS1yb2NrOTYwLmR0YiBcCj4+ICsKPj4gK2R0Yi0k
+KENPTkZJR19ST0NLQ0hJUF9SVjExMDgpICs9IFwKPj4gIAlydjExMDgtZWxnaW4tcjEuZHRiIFwK
+Pj4gIAlydjExMDgtZXZiLmR0Ygo+PiArCj4+ICBkdGItJChDT05GSUdfQVJDSF9NRVNPTikgKz0g
+XAo+PiAgCW1lc29uLWd4YmItbmFub3BpLWsyLmR0YiBcCj4+ICAJbWVzb24tZ3hiYi1vZHJvaWRj
+Mi5kdGIgXAo+Cj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtcm9ja2NoaXAKPgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRl
+Cmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
