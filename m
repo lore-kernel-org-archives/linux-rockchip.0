@@ -1,130 +1,69 @@
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: Re: [RESEND PATCH v7 00/11] rockchip: Add new rk3399 boards
-Date: Thu, 09 May 2019 09:07:43 +0200
-Message-ID: <b3755da63208dffc5c0f7676ece0fe55d4dfd4f7.camel@bootlin.com>
-References: <20190508054151.21762-1-jagan@amarulasolutions.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] clk: rockchip: Slightly more accurate math in rockchip_mmc_get_phase()
+Date: Thu, 09 May 2019 10:45:56 +0200
+Message-ID: <1830378.zUSKOufHgj@phil>
+References: <20190507205742.50835-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20190508054151.21762-1-jagan@amarulasolutions.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, Akash Gajjar <akash@openedev.com>
-Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190507205742.50835-1-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Stephen Boyd <sboyd@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, hal@halemmerich.com, amstan@chromium.org, Michael Turquette <mturquette@baylibre.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBXZWQsIDIwMTktMDUtMDggYXQgMTE6MTEgKzA1MzAsIEphZ2FuIFRla2kgd3JvdGU6
-Cj4gKFNvcnJ5IGZvciB0aGUgbm9pY2UsIEkgaGF2ZSBtaXNzZWQgdG8gc2VuZCB0d28gcGF0Y2hl
-cyBmcm9tIHY3KQo+IAo+IFRoaXMgaXMgdjcgcmVzZW5kIHBhdGNoc2V0IGZvciBOZXcgcmszMzk5
-IGJvYXJkcyBzdXBwb3J0IHdydCBwcmV2aW91cwo+IHZlcnNpb25bMV0KPiAKPiBVbmZvcnR1bmF0
-ZWx5IGluaXRpYWwgdmVyc2lvbiBvZiBjcmVhdGluZyByazMzOTktdS1ib290LmR0c2kgYW5kIAo+
-IG9yYW5nZXBpIHJrMzM5OSBjaGFuZ2VzIGFyZSBtZXJnZWQsIHNvIHRoaXMgaXMgcmV3b3JrIG9u
-IHRvcCBvZiAKPiB1LWJvb3Qtcm9ja2NoaXAvbWFzdGVyLgo+IAo+IE92ZXJhbGwgdGhpcyBzZXJp
-ZXMgYWRkIHN1cHBvcnQgYmVsb3cgcmszMzk5IGJvYXJkcwo+IC0gTmFub1BJIE00Cj4gLSBOYW5v
-UEMgVDQKPiAtIE5hbm9QSSBORU80Cj4gLSBPcmFuZ2VwaSBSSzMzOTkKPiAtIFJvY2sgUEkgNAo+
-IC0gUm9ja3BybzY0Cj4gCj4gQWxsIHRoZSByZXNwZWN0aXZlIGR0cyhpKSBmaWxlcyBhcmUgc3lu
-Y2VkIGZyb20gTGludXggNS4xLXJjMiBhbmQgZmV3Cj4gZHRzKGkpIGZyb20gbGludXgtbmV4dC4K
-PiAKPiBTb0MgdS1ib290IHNwZWNpZmljIGR0c2kgcmszMzk5LXUtYm9vdC5kdHNpIGNoYW5nZXMg
-YXJlIHBhcnQgb2YgYW5vdGhlcgo+IHNlcmllcyBbM10uCj4gCj4gT3V0IG9mIGFsbCBhYm92ZSBi
-b2FyZHMgUm9ja3BvcjY0LCBSb2NrLVBJIGFuZCBOYW5vcGkgTkVPNCB3b3VsZCBzdXBwb3J0Cj4g
-Ym9vdGluZyB2aWEgUm9ja2NoaXAgbWluaWxvYWRlciBhcyBvZiBub3cuCgpDb3VsZCB5b3Ugc2Vu
-ZCB0aGVzZSB0d28gYm9hcmRzIGluIGEgc2VwYXJhdGUgc2VyaWVzIHNvIHRoYXQgd2UgYXZvaWQK
-bWVyZ2luZyB0aGVtIGZvciBub3cgKGJlY2F1c2UgU1BMIHN1cHBvcnQgaXMgYnJva2VuKSBhbmQg
-dGhlbiByZS0KaXRlcmF0ZSB0aGUgc2VyaWVzIGxhdGVyIHdpdGggdGhlIEREUiBicmluZ3VwPyBP
-ciBtYXliZSBmaW5kIGEgd2F5IHRvCmRpc2FibGUgU1BMIHN1cHBvcnQsIGJ1dCBpbiBhbnkgY2Fz
-ZSwgaXQncyBub3Qgb2sgdG8gbWVyZ2UgYSBib2FyZCB3aXRoClNQTCBlbmFibGVkIGFuZCBicm9r
-ZW4uCgpDaGVlcnMsCgpQYXVsCgo+IEZvciBib290aW5nIHRoZSBzYW1lIHdpdGggU1BMIE5FTzQg
-d291bGQgcmVxdWlyZSBkeW5hbWljIGRyYW0gdGltaW5nCj4gZGV0ZWN0aW9uIGFuZCByZXN0IHJl
-cXVpcmUgTFBERFI0IGNvZGUuIFRoZXJlIGlzIFdJUFsyXSBmb3IgdGhlc2UKPiBkZXBlbmRlbmNp
-ZXMgYW5kIHRoaXMgd291bGQgcmVxdWlyZSBiaWcgY2h1bmsgb2YgY2hhbmdlcyB3aWxsIGVmZmVj
-dAo+IGFsbCB0aGUgcmszMzk5IGJvYXJkcywgc28gSSdtIHBsYW5uaW5nIHRvIG1hcmsgaXQgZm9y
-IG5leHQgTVcuIAo+IAo+IENoYW5nZXMgZm9yIHY3Ogo+IC0gcmViYXNlIG9uIHRvcCBvZiB1LWJv
-b3Qtcm9ja2NoaXAvbWFzdGVyCj4gLSBhZGQgU1BMX1RFWFRfQkFTRSBvbiBlYWNoIGJvYXJkIGRl
-ZmNvbmZpZwo+IC0gcmViYXNlIG9uIHJlcXVpcmVkIGNoYW5nZXMKPiBDaGFuZ2VzIGZvciB2NjoK
-PiAtIEluY2x1ZGUgTmFub3BjIFQ0IHN1cHBvcnQgcGF0Y2gKPiAtIGRyb3AgcmszMzk5LXUtYm9v
-dC5kdHNpIHBhdGNoIHNpbmNlIGl0IGlzIHNlbmQgc2VwYXJhdGVseS4KPiBDaGFuZ2VzIGZvciB2
-NToKPiAtIE1ha2UgYWxsIGNoYW5nZXMgcmVsYXRlZCB0byBtb3ZlIHNkbW1jLCBzcGkxIHUtYm9v
-dCxkbS1wcmUtcmVsb2MKPiAgIHByb3BlcnRpZXMgaW50byBhbGwgcmszMzk5IGR0cyhpKSBmaWxl
-cy4KPiBDaGFuZ2VzIGZvciB2NDoKPiAtIGRvbid0IGluY2x1ZGUgZXhpc3RpbmcgZHRzKGkpIHNk
-bW1jLCB1LWJvb3QsZG0tcHJlLXJlbG9jIGludG8KPiAgIHJrMzM5OS11LWJvb3QuZHRzaQo+IENo
-YW5nZXMgZm9yIHYzOgo+IC0gZHJvcCBOYW5vUEMgVDQgZm9yIG5vdywgc2luY2UgYm9hcmQgaXMg
-eWV0IHRvIHJlY2VpdmUuCj4gLSBhZGQgUm9jayBQSS00IGJvYXJkLgo+IC0gYWRkIHNlcGFyYXRl
-IC11LWJvb3QuZHRzaSBmaWxlIGZvciBuYW5vcGk0IHNkcmFtIGNoYW5nZXMuCj4gLSBjb2xsZWN0
-IFBhdWwsIFBoaWxpcHAgYW5kIEtldmVyIFJldmlld2VkLWJ5IHRhZ3MKPiAKPiBUcmF2aXMtQ0k6
-Cj4gaHR0cHM6Ly90cmF2aXMtY2kub3JnL29wZW5lZGV2L3UtYm9vdC1hbWFydWxhL2J1aWxkcy81
-MjkyODQyMzYKPiAKPiBbMV0gaHR0cHM6Ly9wYXRjaHdvcmsub3psYWJzLm9yZy9jb3Zlci8xMDk2
-NDczLwo+IFsyXSBodHRwczovL2dpdGh1Yi5jb20vYW1hcnVsYS91LWJvb3QtYW1hcnVsYS90cmVl
-L3JvY2tkZXYtbHBkZHI0Cj4gWzNdIGh0dHBzOi8vcGF0Y2h3b3JrLm96bGFicy5vcmcvY292ZXIv
-MTA5MTkwOS8KPiAKPiBBbnkgaW5wdXRzPwo+IEphZ2FuLgo+IAo+IEphZ2FuIFRla2kgKDExKToK
-PiAgIHJvY2tjaGlwOiBkdHM6IHJrMzM5OTogU3luYyBwd20yX3Bpbl9wdWxsX2Rvd24gZnJvbSBM
-aW51eCA1LjEtcmMyCj4gICBLY29uZmlnOiBBZGQgZGVmYXVsdCBTUExfRklUX0dFTkVSQVRPUiBm
-b3Igcm9ja2NoaXAKPiAgIGFybTogcm9ja2NoaXA6IHJrMzM5OTogTW92ZSBjb21tb24gY29uZmln
-cyBpbiBLY29uZmlnCj4gICByb2NrY2hpcDogZHRzOiByazMzOTk6IFN5bmMgcmszMzk5LW5hbm9w
-aTQuZHRzaSBmcm9tIExpbnV4Cj4gICByb2NrY2hpcDogZHRzOiByazMzOTk6IG5hbm9waTQ6IFVz
-ZSBDRCBwaW4gYXMgUktfRlVOQ18xCj4gICByb2NrY2hpcDogcmszMzk5OiBBZGQgTmFub3BpIE00
-IGJvYXJkIHN1cHBvcnQKPiAgIHJvY2tjaGlwOiByazMzOTk6IEFkZCBOYW5vcGMgVDQgYm9hcmQg
-c3VwcG9ydAo+ICAgcm9ja2NoaXA6IHJrMzM5OTogQWRkIE5hbm9waSBORU80IGJvYXJkIHN1cHBv
-cnQKPiAgIHJvY2tjaGlwOiByazMzOTk6IEFkZCBSb2NrcHJvNjQgYm9hcmQgc3VwcG9ydAo+ICAg
-cm9ja2NoaXA6IHJrMzM5OTogQWRkIFJvY2sgUEkgNCBzdXBwb3J0Cj4gICBkb2M6IHJvY2tjaGlw
-OiBBZGQgZ2xvYmFsIGRvYyBmb3IgcmszMzk5IGJ1aWxkL2ZsYXNoCj4gCj4gIEtjb25maWcgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDEgKwo+ICBhcmNoL2FybS9kdHMv
-TWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICAgIHwgICA1ICsKPiAgYXJjaC9hcm0vZHRzL3Jr
-MzM5OS1uYW5vcGMtdDQtdS1ib290LmR0c2kgICB8ICAgNyArCj4gIGFyY2gvYXJtL2R0cy9yazMz
-OTktbmFub3BjLXQ0LmR0cyAgICAgICAgICAgfCAgOTEgKysrCj4gIGFyY2gvYXJtL2R0cy9yazMz
-OTktbmFub3BpLW00LXUtYm9vdC5kdHNpICAgfCAgIDcgKwo+ICBhcmNoL2FybS9kdHMvcmszMzk5
-LW5hbm9waS1tNC5kdHMgICAgICAgICAgIHwgIDY2ICsrCj4gIGFyY2gvYXJtL2R0cy9yazMzOTkt
-bmFub3BpLW5lbzQtdS1ib290LmR0c2kgfCAgIDYgKwo+ICBhcmNoL2FybS9kdHMvcmszMzk5LW5h
-bm9waS1uZW80LmR0cyAgICAgICAgIHwgIDUwICsrCj4gIGFyY2gvYXJtL2R0cy9yazMzOTktbmFu
-b3BpNC11LWJvb3QuZHRzaSAgICAgfCAgMTEgKwo+ICBhcmNoL2FybS9kdHMvcmszMzk5LW5hbm9w
-aTQuZHRzaSAgICAgICAgICAgIHwgNzAzICsrKysrKysrKysrKysrKysrKysKPiAgYXJjaC9hcm0v
-ZHRzL3JrMzM5OS1yb2NrLXBpLTQtdS1ib290LmR0c2kgICB8ICAgNiArCj4gIGFyY2gvYXJtL2R0
-cy9yazMzOTktcm9jay1waS00LmR0cyAgICAgICAgICAgfCA2MDYgKysrKysrKysrKysrKysrKysK
-PiAgYXJjaC9hcm0vZHRzL3JrMzM5OS1yb2NrcHJvNjQtdS1ib290LmR0c2kgICB8ICAgNiArCj4g
-IGFyY2gvYXJtL2R0cy9yazMzOTktcm9ja3BybzY0LmR0cyAgICAgICAgICAgfCA3MTIgKysrKysr
-KysrKysrKysrKysrKysKPiAgYXJjaC9hcm0vZHRzL3JrMzM5OS5kdHNpICAgICAgICAgICAgICAg
-ICAgICB8ICAgNSArCj4gIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZpZyAgICAgICAgICAg
-ICAgfCAgMTYgKwo+ICBib2FyZC9yb2NrY2hpcC9ldmJfcmszMzk5L01BSU5UQUlORVJTICAgICAg
-IHwgIDMyICsKPiAgY29uZmlncy9jaHJvbWVib29rX2JvYl9kZWZjb25maWcgICAgICAgICAgICB8
-ICAxNyAtCj4gIGNvbmZpZ3MvZXZiLXJrMzM5OV9kZWZjb25maWcgICAgICAgICAgICAgICAgfCAg
-MTcgLQo+ICBjb25maWdzL2ZpY3VzLXJrMzM5OV9kZWZjb25maWcgICAgICAgICAgICAgIHwgIDE3
-IC0KPiAgY29uZmlncy9maXJlZmx5LXJrMzM5OV9kZWZjb25maWcgICAgICAgICAgICB8ICAxNyAt
-Cj4gIGNvbmZpZ3MvbmFub3BjLXQ0LXJrMzM5OV9kZWZjb25maWcgICAgICAgICAgfCAgNTkgKysK
-PiAgY29uZmlncy9uYW5vcGktbTQtcmszMzk5X2RlZmNvbmZpZyAgICAgICAgICB8ICA1OSArKwo+
-ICBjb25maWdzL25hbm9waS1uZW80LXJrMzM5OV9kZWZjb25maWcgICAgICAgIHwgIDU5ICsrCj4g
-IGNvbmZpZ3Mvb3JhbmdlcGktcmszMzk5X2RlZmNvbmZpZyAgICAgICAgICAgfCAgMTcgLQo+ICBj
-b25maWdzL3B1bWEtcmszMzk5X2RlZmNvbmZpZyAgICAgICAgICAgICAgIHwgIDE2IC0KPiAgY29u
-Zmlncy9yb2NrLXBpLTQtcmszMzk5X2RlZmNvbmZpZyAgICAgICAgICB8ICA1OSArKwo+ICBjb25m
-aWdzL3JvY2s5NjAtcmszMzk5X2RlZmNvbmZpZyAgICAgICAgICAgIHwgIDE3IC0KPiAgY29uZmln
-cy9yb2NrcHJvNjQtcmszMzk5X2RlZmNvbmZpZyAgICAgICAgICB8ICA1OSArKwo+ICBkb2MvUkVB
-RE1FLnJvY2tjaGlwICAgICAgICAgICAgICAgICAgICAgICAgIHwgMjMzICsrKysrKy0KPiAgMzAg
-ZmlsZXMgY2hhbmdlZCwgMjg1NyBpbnNlcnRpb25zKCspLCAxMTkgZGVsZXRpb25zKC0pCj4gIGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmszMzk5LW5hbm9wYy10NC11LWJvb3QuZHRz
-aQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vZHRzL3JrMzM5OS1uYW5vcGMtdDQuZHRz
-Cj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmszMzk5LW5hbm9waS1tNC11LWJv
-b3QuZHRzaQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vZHRzL3JrMzM5OS1uYW5vcGkt
-bTQuZHRzCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmszMzk5LW5hbm9waS1u
-ZW80LXUtYm9vdC5kdHNpCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMvcmszMzk5
-LW5hbm9waS1uZW80LmR0cwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vZHRzL3JrMzM5
-OS1uYW5vcGk0LXUtYm9vdC5kdHNpCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMv
-cmszMzk5LW5hbm9waTQuZHRzaQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vZHRzL3Jr
-MzM5OS1yb2NrLXBpLTQtdS1ib290LmR0c2kKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJt
-L2R0cy9yazMzOTktcm9jay1waS00LmR0cwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0v
-ZHRzL3JrMzM5OS1yb2NrcHJvNjQtdS1ib290LmR0c2kKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFy
-Y2gvYXJtL2R0cy9yazMzOTktcm9ja3BybzY0LmR0cwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgY29u
-Zmlncy9uYW5vcGMtdDQtcmszMzk5X2RlZmNvbmZpZwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgY29u
-Zmlncy9uYW5vcGktbTQtcmszMzk5X2RlZmNvbmZpZwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgY29u
-Zmlncy9uYW5vcGktbmVvNC1yazMzOTlfZGVmY29uZmlnCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBj
-b25maWdzL3JvY2stcGktNC1yazMzOTlfZGVmY29uZmlnCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBj
-b25maWdzL3JvY2twcm82NC1yazMzOTlfZGVmY29uZmlnCj4gCi0tIApQYXVsIEtvY2lhbGtvd3Nr
-aSwgQm9vdGxpbgpFbWJlZGRlZCBMaW51eCBhbmQga2VybmVsIGVuZ2luZWVyaW5nCmh0dHBzOi8v
-Ym9vdGxpbi5jb20KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0
-cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
+Am Dienstag, 7. Mai 2019, 22:57:42 CEST schrieb Douglas Anderson:
+> There's a bit of math in rockchip_mmc_get_phase() to calculate the
+> "fine delay".  This math boils down to:
+> 
+>  PSECS_PER_SEC = 1000000000000.
+>  ROCKCHIP_MMC_DELAY_ELEMENT_PSEC = 60
+>  card_clk * ROCKCHIP_MMC_DELAY_ELEMENT_PSEC * 360 * x / PSECS_PER_SEC
+> 
+> ...but we do it in pieces to avoid overflowing 32-bits.  Right now we
+> overdo it a little bit, though, and end up getting less accurate math
+> than we could.  Right now we do:
+> 
+>  DIV_ROUND_CLOSEST((card_clk / 1000000) *
+>                    (ROCKCHIP_MMC_DELAY_ELEMENT_PSEC / 10) *
+>                    (360 / 10) *
+> 		   delay_num,
+> 		   PSECS_PER_SEC / 1000000 / 10 / 10)
+> 
+> This is non-ideal because:
+> A) The pins on Rockchip SoCs are rated to go at most 150 MHz, so the
+>    max card clock is 150 MHz.  Even ignoring this the maximum SD card
+>    clock (for SDR104) would be 208 MHz.  This means you can decrease
+>    your division by 100x and still not overflow:
+>      hex(208000000 / 10000 * 6 * 36 * 0xff) == 0x44497200
+> B) On many Rockchip SoCs we end up with a card clock that is actually
+>    148500000 because we parent off the 297 MHz PLL.  That means the
+>    math we're actually doing today is less than ideal.  Specifically:
+>    148500000 / 1000000 = 148
+> 
+> Let's fix the math to be slightly more accurate.
+> 
+> NOTE: no known problems are fixed by this.  It was found simply by
+> code inspection.  If you want to see the difference between the old
+> and the new on a 148.5 MHz clock, this python can help:
+> 
+>   old = [x for x in
+>          (int(round(148 * 6 * 36 * x / 10000.)) for x in range(256))
+> 	 if x < 90]
+>   new = [x for x in
+>          (int(round(1485 * 6 * 36 * x / 100000.)) for x in range(256))
+> 	 if x < 90]
+> 
+> The only differences are:
+>   delay_num=17 54=>55
+>   delay_num=22 70=>71
+>   delay_num=27 86=>87
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+
+gave this a spin on multiple socs and all of them still detected a hs200-
+card, so I've applied that for 5.3
+
+Thanks
+Heiko
