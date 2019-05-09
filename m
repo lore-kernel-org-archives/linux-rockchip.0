@@ -1,60 +1,68 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [RESEND PATCH v7 00/11] rockchip: Add new rk3399 boards
-Date: Thu, 9 May 2019 16:15:02 +0530
-Message-ID: <CAMty3ZBNGmO6Qjysih=4UROO4s6dyawWw8L13Ga7XFqBZyPdtA@mail.gmail.com>
-References: <20190508054151.21762-1-jagan@amarulasolutions.com>
- <b3755da63208dffc5c0f7676ece0fe55d4dfd4f7.camel@bootlin.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH 1/3] rk3399: orangepi: Enable TPL
+Date: Thu,  9 May 2019 16:27:44 +0530
+Message-ID: <20190509105746.24830-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <b3755da63208dffc5c0f7676ece0fe55d4dfd4f7.camel@bootlin.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Kever Yang <kever.yang@rock-chips.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUGF1bCwKCk9uIFRodSwgTWF5IDksIDIwMTkgYXQgMTI6MzggUE0gUGF1bCBLb2NpYWxrb3dz
-a2kKPHBhdWwua29jaWFsa293c2tpQGJvb3RsaW4uY29tPiB3cm90ZToKPgo+IEhpLAo+Cj4gT24g
-V2VkLCAyMDE5LTA1LTA4IGF0IDExOjExICswNTMwLCBKYWdhbiBUZWtpIHdyb3RlOgo+ID4gKFNv
-cnJ5IGZvciB0aGUgbm9pY2UsIEkgaGF2ZSBtaXNzZWQgdG8gc2VuZCB0d28gcGF0Y2hlcyBmcm9t
-IHY3KQo+ID4KPiA+IFRoaXMgaXMgdjcgcmVzZW5kIHBhdGNoc2V0IGZvciBOZXcgcmszMzk5IGJv
-YXJkcyBzdXBwb3J0IHdydCBwcmV2aW91cwo+ID4gdmVyc2lvblsxXQo+ID4KPiA+IFVuZm9ydHVu
-YXRlbHkgaW5pdGlhbCB2ZXJzaW9uIG9mIGNyZWF0aW5nIHJrMzM5OS11LWJvb3QuZHRzaSBhbmQK
-PiA+IG9yYW5nZXBpIHJrMzM5OSBjaGFuZ2VzIGFyZSBtZXJnZWQsIHNvIHRoaXMgaXMgcmV3b3Jr
-IG9uIHRvcCBvZgo+ID4gdS1ib290LXJvY2tjaGlwL21hc3Rlci4KPiA+Cj4gPiBPdmVyYWxsIHRo
-aXMgc2VyaWVzIGFkZCBzdXBwb3J0IGJlbG93IHJrMzM5OSBib2FyZHMKPiA+IC0gTmFub1BJIE00
-Cj4gPiAtIE5hbm9QQyBUNAo+ID4gLSBOYW5vUEkgTkVPNAo+ID4gLSBPcmFuZ2VwaSBSSzMzOTkK
-PiA+IC0gUm9jayBQSSA0Cj4gPiAtIFJvY2twcm82NAo+ID4KPiA+IEFsbCB0aGUgcmVzcGVjdGl2
-ZSBkdHMoaSkgZmlsZXMgYXJlIHN5bmNlZCBmcm9tIExpbnV4IDUuMS1yYzIgYW5kIGZldwo+ID4g
-ZHRzKGkpIGZyb20gbGludXgtbmV4dC4KPiA+Cj4gPiBTb0MgdS1ib290IHNwZWNpZmljIGR0c2kg
-cmszMzk5LXUtYm9vdC5kdHNpIGNoYW5nZXMgYXJlIHBhcnQgb2YgYW5vdGhlcgo+ID4gc2VyaWVz
-IFszXS4KPiA+Cj4gPiBPdXQgb2YgYWxsIGFib3ZlIGJvYXJkcyBSb2NrcG9yNjQsIFJvY2stUEkg
-YW5kIE5hbm9waSBORU80IHdvdWxkIHN1cHBvcnQKPiA+IGJvb3RpbmcgdmlhIFJvY2tjaGlwIG1p
-bmlsb2FkZXIgYXMgb2Ygbm93Lgo+Cj4gQ291bGQgeW91IHNlbmQgdGhlc2UgdHdvIGJvYXJkcyBp
-biBhIHNlcGFyYXRlIHNlcmllcyBzbyB0aGF0IHdlIGF2b2lkCj4gbWVyZ2luZyB0aGVtIGZvciBu
-b3cgKGJlY2F1c2UgU1BMIHN1cHBvcnQgaXMgYnJva2VuKSBhbmQgdGhlbiByZS0KPiBpdGVyYXRl
-IHRoZSBzZXJpZXMgbGF0ZXIgd2l0aCB0aGUgRERSIGJyaW5ndXA/IE9yIG1heWJlIGZpbmQgYSB3
-YXkgdG8KPiBkaXNhYmxlIFNQTCBzdXBwb3J0LCBidXQgaW4gYW55IGNhc2UsIGl0J3Mgbm90IG9r
-IHRvIG1lcmdlIGEgYm9hcmQgd2l0aAo+IFNQTCBlbmFibGVkIGFuZCBicm9rZW4uCgpJIGhhdmUg
-ZXhwbGFpbmVkIHRoZSBkZXRhaWxzIGFib3V0IHRoaXMgY29uY2VybiBvbiB2MiBbMV0sIHRob3Vn
-aHQgeW91CndvdWxkIGNvbWViYWNrIG9uIHRoZSBzYW1lIGxpbmUgaW5zdGVhZCBoZXJlLgoKQW55
-d2F5LCBtYWtpbmcgU1BMIGFzIGFuIG9wdGlvbmFsIGlzIG5vdCBhbiBpZGVhIHRvIGdvIHdpdGgg
-TWFpbmxpbmUKYXMgd2UgbWFrZSBtYW55IGRlY2lzaW9ucyB3aXRoIHJlZ2FyZHMgdG8gbWFrZSBT
-UEwgaXMgbWFuZGF0b3J5LgpTaW5jZSB0aGUgRERSIGlzIHNob3cgc3RvcHBlciBoZXJlIChhbmQg
-aXQgd291bGQgcmVhbGx5IG5lZWQgYSBnb29kCmFtb3VudCBvZiB0aW1lLCBzaW5jZSBpdCBlZmZl
-Y3QgdGhlIG90aGVyIGJvYXJkcyksIEkgY2FuIGdvIHdpdGggVFBMCmVuYWJsZWQgYm9vdC1jaGFp
-biB3aGVyZSBkZHIgYmluLCBTUEwgYW5kIFUtQm9vdCBwcm9wZXIgY2FuIGJlIHBhcnQgb2YKYm9v
-dGluZyBzdGFnZXMuIFRoaXMgd2F5IHdlIGNhbiBhdm9pZCBza2lwcGluZyBTUEwgdXNhZ2UsIGFu
-ZCBtYW55CmNvbmZpZyBjaGFuZ2VzIHRvIG1ha2UgU1BMIG9wdGlvbmFsLgoKWzFdIGh0dHBzOi8v
-cGF0Y2h3b3JrLm96bGFicy5vcmcvY292ZXIvMTA4NjIxMy8KX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApVLUJvb3RAbGlz
-dHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cg==
+Enable TPL for OrangePI rk3399 board.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ configs/orangepi-rk3399_defconfig | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/configs/orangepi-rk3399_defconfig b/configs/orangepi-rk3399_defconfig
+index 3f02c89983..90021bb695 100644
+--- a/configs/orangepi-rk3399_defconfig
++++ b/configs/orangepi-rk3399_defconfig
+@@ -5,7 +5,7 @@ CONFIG_SPL_LIBCOMMON_SUPPORT=y
+ CONFIG_SPL_LIBGENERIC_SUPPORT=y
+ CONFIG_SYS_MALLOC_F_LEN=0x4000
+ CONFIG_ROCKCHIP_RK3399=y
+-CONFIG_ROCKCHIP_SPL_RESERVE_IRAM=0x4000
++CONFIG_ROCKCHIP_SPL_RESERVE_IRAM=0x50000
+ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+ CONFIG_DEBUG_UART_CLOCK=24000000
+ CONFIG_SPL_STACK_R_ADDR=0x80000
+@@ -14,9 +14,8 @@ CONFIG_NR_DRAM_BANKS=1
+ CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-orangepi.dtb"
+ # CONFIG_DISPLAY_CPUINFO is not set
+ CONFIG_DISPLAY_BOARDINFO_LATE=y
+-CONFIG_SPL_TEXT_BASE=0xff8c2000
+ CONFIG_SPL_STACK_R=y
+-CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x4000
++CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
+ CONFIG_CMD_BOOTZ=y
+ CONFIG_CMD_GPT=y
+ CONFIG_CMD_MMC=y
+@@ -24,6 +23,7 @@ CONFIG_CMD_SF=y
+ CONFIG_CMD_USB=y
+ # CONFIG_CMD_SETEXPR is not set
+ CONFIG_CMD_TIME=y
++CONFIG_TPL=y
+ CONFIG_SPL_OF_CONTROL=y
+ CONFIG_DEFAULT_DEVICE_TREE="rk3399-orangepi"
+ CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
+@@ -56,4 +56,5 @@ CONFIG_USB_ETHER_MCS7830=y
+ CONFIG_USB_ETHER_RTL8152=y
+ CONFIG_USB_ETHER_SMSC95XX=y
+ CONFIG_USE_TINY_PRINTF=y
++CONFIG_SPL_TINY_MEMSET=y
+ CONFIG_ERRNO_STR=y
+-- 
+2.18.0.321.gffc6fa0e3
