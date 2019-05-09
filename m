@@ -1,39 +1,60 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] clk: rockchip: Don't yell about bad mmc phases when getting
-Date: Thu, 09 May 2019 10:46:49 +0200
-Message-ID: <3109854.2nZ1kdONIi@phil>
-References: <20190503212208.223232-1-dianders@chromium.org>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [RESEND PATCH v7 00/11] rockchip: Add new rk3399 boards
+Date: Thu, 9 May 2019 16:15:02 +0530
+Message-ID: <CAMty3ZBNGmO6Qjysih=4UROO4s6dyawWw8L13Ga7XFqBZyPdtA@mail.gmail.com>
+References: <20190508054151.21762-1-jagan@amarulasolutions.com>
+ <b3755da63208dffc5c0f7676ece0fe55d4dfd4f7.camel@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190503212208.223232-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, hal@halemmerich.com, linux-rockchip@lists.infradead.org, mka@chromium.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <b3755da63208dffc5c0f7676ece0fe55d4dfd4f7.camel@bootlin.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Kever Yang <kever.yang@rock-chips.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 3. Mai 2019, 23:22:08 CEST schrieb Douglas Anderson:
-> At boot time, my rk3288-veyron devices yell with 8 lines that look
-> like this:
->   [    0.000000] rockchip_mmc_get_phase: invalid clk rate
-> 
-> This is because the clock framework at clk_register() time tries to
-> get the phase but we don't have a parent yet.
-> 
-> While the errors appear to be harmless they are still ugly and, in
-> general, we don't want yells like this in the log unless they are
-> important.
-> 
-> There's no real reason to be yelling here.  We can still return
-> -EINVAL to indicate that the phase makes no sense without a parent.
-> If someone really tries to do tuning and the clock is reported as 0
-> then we'll see the yells in rockchip_mmc_set_phase().
-> 
-> Fixes: 4bf59902b500 ("clk: rockchip: Prevent calculating mmc phase if clock rate is zero")
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-
-applied for 5.3
-
-Thanks
-Heiko
+SGkgUGF1bCwKCk9uIFRodSwgTWF5IDksIDIwMTkgYXQgMTI6MzggUE0gUGF1bCBLb2NpYWxrb3dz
+a2kKPHBhdWwua29jaWFsa293c2tpQGJvb3RsaW4uY29tPiB3cm90ZToKPgo+IEhpLAo+Cj4gT24g
+V2VkLCAyMDE5LTA1LTA4IGF0IDExOjExICswNTMwLCBKYWdhbiBUZWtpIHdyb3RlOgo+ID4gKFNv
+cnJ5IGZvciB0aGUgbm9pY2UsIEkgaGF2ZSBtaXNzZWQgdG8gc2VuZCB0d28gcGF0Y2hlcyBmcm9t
+IHY3KQo+ID4KPiA+IFRoaXMgaXMgdjcgcmVzZW5kIHBhdGNoc2V0IGZvciBOZXcgcmszMzk5IGJv
+YXJkcyBzdXBwb3J0IHdydCBwcmV2aW91cwo+ID4gdmVyc2lvblsxXQo+ID4KPiA+IFVuZm9ydHVu
+YXRlbHkgaW5pdGlhbCB2ZXJzaW9uIG9mIGNyZWF0aW5nIHJrMzM5OS11LWJvb3QuZHRzaSBhbmQK
+PiA+IG9yYW5nZXBpIHJrMzM5OSBjaGFuZ2VzIGFyZSBtZXJnZWQsIHNvIHRoaXMgaXMgcmV3b3Jr
+IG9uIHRvcCBvZgo+ID4gdS1ib290LXJvY2tjaGlwL21hc3Rlci4KPiA+Cj4gPiBPdmVyYWxsIHRo
+aXMgc2VyaWVzIGFkZCBzdXBwb3J0IGJlbG93IHJrMzM5OSBib2FyZHMKPiA+IC0gTmFub1BJIE00
+Cj4gPiAtIE5hbm9QQyBUNAo+ID4gLSBOYW5vUEkgTkVPNAo+ID4gLSBPcmFuZ2VwaSBSSzMzOTkK
+PiA+IC0gUm9jayBQSSA0Cj4gPiAtIFJvY2twcm82NAo+ID4KPiA+IEFsbCB0aGUgcmVzcGVjdGl2
+ZSBkdHMoaSkgZmlsZXMgYXJlIHN5bmNlZCBmcm9tIExpbnV4IDUuMS1yYzIgYW5kIGZldwo+ID4g
+ZHRzKGkpIGZyb20gbGludXgtbmV4dC4KPiA+Cj4gPiBTb0MgdS1ib290IHNwZWNpZmljIGR0c2kg
+cmszMzk5LXUtYm9vdC5kdHNpIGNoYW5nZXMgYXJlIHBhcnQgb2YgYW5vdGhlcgo+ID4gc2VyaWVz
+IFszXS4KPiA+Cj4gPiBPdXQgb2YgYWxsIGFib3ZlIGJvYXJkcyBSb2NrcG9yNjQsIFJvY2stUEkg
+YW5kIE5hbm9waSBORU80IHdvdWxkIHN1cHBvcnQKPiA+IGJvb3RpbmcgdmlhIFJvY2tjaGlwIG1p
+bmlsb2FkZXIgYXMgb2Ygbm93Lgo+Cj4gQ291bGQgeW91IHNlbmQgdGhlc2UgdHdvIGJvYXJkcyBp
+biBhIHNlcGFyYXRlIHNlcmllcyBzbyB0aGF0IHdlIGF2b2lkCj4gbWVyZ2luZyB0aGVtIGZvciBu
+b3cgKGJlY2F1c2UgU1BMIHN1cHBvcnQgaXMgYnJva2VuKSBhbmQgdGhlbiByZS0KPiBpdGVyYXRl
+IHRoZSBzZXJpZXMgbGF0ZXIgd2l0aCB0aGUgRERSIGJyaW5ndXA/IE9yIG1heWJlIGZpbmQgYSB3
+YXkgdG8KPiBkaXNhYmxlIFNQTCBzdXBwb3J0LCBidXQgaW4gYW55IGNhc2UsIGl0J3Mgbm90IG9r
+IHRvIG1lcmdlIGEgYm9hcmQgd2l0aAo+IFNQTCBlbmFibGVkIGFuZCBicm9rZW4uCgpJIGhhdmUg
+ZXhwbGFpbmVkIHRoZSBkZXRhaWxzIGFib3V0IHRoaXMgY29uY2VybiBvbiB2MiBbMV0sIHRob3Vn
+aHQgeW91CndvdWxkIGNvbWViYWNrIG9uIHRoZSBzYW1lIGxpbmUgaW5zdGVhZCBoZXJlLgoKQW55
+d2F5LCBtYWtpbmcgU1BMIGFzIGFuIG9wdGlvbmFsIGlzIG5vdCBhbiBpZGVhIHRvIGdvIHdpdGgg
+TWFpbmxpbmUKYXMgd2UgbWFrZSBtYW55IGRlY2lzaW9ucyB3aXRoIHJlZ2FyZHMgdG8gbWFrZSBT
+UEwgaXMgbWFuZGF0b3J5LgpTaW5jZSB0aGUgRERSIGlzIHNob3cgc3RvcHBlciBoZXJlIChhbmQg
+aXQgd291bGQgcmVhbGx5IG5lZWQgYSBnb29kCmFtb3VudCBvZiB0aW1lLCBzaW5jZSBpdCBlZmZl
+Y3QgdGhlIG90aGVyIGJvYXJkcyksIEkgY2FuIGdvIHdpdGggVFBMCmVuYWJsZWQgYm9vdC1jaGFp
+biB3aGVyZSBkZHIgYmluLCBTUEwgYW5kIFUtQm9vdCBwcm9wZXIgY2FuIGJlIHBhcnQgb2YKYm9v
+dGluZyBzdGFnZXMuIFRoaXMgd2F5IHdlIGNhbiBhdm9pZCBza2lwcGluZyBTUEwgdXNhZ2UsIGFu
+ZCBtYW55CmNvbmZpZyBjaGFuZ2VzIHRvIG1ha2UgU1BMIG9wdGlvbmFsLgoKWzFdIGh0dHBzOi8v
+cGF0Y2h3b3JrLm96bGFicy5vcmcvY292ZXIvMTA4NjIxMy8KX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApVLUJvb3RAbGlz
+dHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cg==
