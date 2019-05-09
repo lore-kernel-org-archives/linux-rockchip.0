@@ -1,104 +1,77 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 3/3] doc: rockchip: Add doc for rk3399 TPL build/flash
-Date: Thu,  9 May 2019 16:27:46 +0530
-Message-ID: <20190509105746.24830-3-jagan@amarulasolutions.com>
-References: <20190509105746.24830-1-jagan@amarulasolutions.com>
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Subject: Re: [RESEND PATCH v7 00/11] rockchip: Add new rk3399 boards
+Date: Thu, 09 May 2019 14:30:50 +0200
+Message-ID: <2e7668d0bfd5d328c071730113fe8c63aaab62d0.camel@bootlin.com>
+References: <20190508054151.21762-1-jagan@amarulasolutions.com>
+ <b3755da63208dffc5c0f7676ece0fe55d4dfd4f7.camel@bootlin.com>
+ <CAMty3ZBNGmO6Qjysih=4UROO4s6dyawWw8L13Ga7XFqBZyPdtA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190509105746.24830-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <CAMty3ZBNGmO6Qjysih=4UROO4s6dyawWw8L13Ga7XFqBZyPdtA@mail.gmail.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Kever Yang <kever.yang@rock-chips.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch add documentation for TPL build and flashing steps
-for rk3399 boards.
-
-Add full boot log for future reference.
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- doc/README.rockchip | 51 ++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 50 insertions(+), 1 deletion(-)
-
-diff --git a/doc/README.rockchip b/doc/README.rockchip
-index ca4d6473b0..264f7e4994 100644
---- a/doc/README.rockchip
-+++ b/doc/README.rockchip
-@@ -173,7 +173,10 @@ For example:
-      => make u-boot.itb
- 
-      (Get spl/u-boot-spl-dtb.bin, u-boot.itb images and some boards would get
--      spl/u-boot-spl.bin since it doesn't enable CONFIG_SPL_OF_CONTROL)
-+      spl/u-boot-spl.bin since it doesn't enable CONFIG_SPL_OF_CONTROL
-+
-+      If TPL enabled on the target, get tpl/u-boot-tpl-dtb.bin or tpl/u-boot-tpl.bin
-+      if CONFIG_TPL_OF_CONTROL not enabled)
- 
- Writing to the board with USB
- =============================
-@@ -455,6 +458,52 @@ Net:   eth0: ethernet@fe300000
- Hit any key to stop autoboot:  0
- =>
- 
-+Option 3: Package the image with TPL:
-+
-+  - Prefix rk3399 header to TPL image
-+
-+    => cd /path/to/u-boot
-+    => ./tools/mkimage -n rk3399 -T rksd -d tpl/u-boot-tpl-dtb.bin out
-+
-+  - Concatinate tpl with spl
-+
-+    => cd /path/to/u-boot
-+    => cat ./spl/u-boot-spl-dtb.bin >> out
-+
-+  - Write tpl+spl at 64th sector
-+
-+    => sudo dd if=out of=/dev/sdc seek=64
-+
-+  - Write U-Boot proper at 16384 sector
-+
-+    => sudo dd if=u-boot.itb of=/dev/sdc seek=16384
-+    => sync
-+
-+Put this SD (or micro-SD) card into your board and reset it. You should see
-+something like:
-+
-+U-Boot TPL board init
-+Trying to boot from BOOTROM
-+Returning to boot ROM...
-+
-+U-Boot SPL board init
-+Trying to boot from MMC1
-+
-+
-+U-Boot 2019.07-rc1-00241-g5b3244767a (May 08 2019 - 10:51:06 +0530)
-+
-+Model: Orange Pi RK3399 Board
-+DRAM:  2 GiB
-+MMC:   dwmmc@fe310000: 2, dwmmc@fe320000: 1, sdhci@fe330000: 0
-+Loading Environment from MMC... OK
-+In:    serial@ff1a0000
-+Out:   serial@ff1a0000
-+Err:   serial@ff1a0000
-+Model: Orange Pi RK3399 Board
-+Net:   eth0: ethernet@fe300000
-+Hit any key to stop autoboot:  0
-+=>
-+
- Using fastboot on rk3288
- ========================
- - Write GPT partition layout to mmc device which fastboot want to use it to
--- 
-2.18.0.321.gffc6fa0e3
+SGksCgpPbiBUaHUsIDIwMTktMDUtMDkgYXQgMTY6MTUgKzA1MzAsIEphZ2FuIFRla2kgd3JvdGU6
+Cj4gSGkgUGF1bCwKPiAKPiBPbiBUaHUsIE1heSA5LCAyMDE5IGF0IDEyOjM4IFBNIFBhdWwgS29j
+aWFsa293c2tpCj4gPHBhdWwua29jaWFsa293c2tpQGJvb3RsaW4uY29tPiB3cm90ZToKPiA+IEhp
+LAo+ID4gCj4gPiBPbiBXZWQsIDIwMTktMDUtMDggYXQgMTE6MTEgKzA1MzAsIEphZ2FuIFRla2kg
+d3JvdGU6Cj4gPiA+IChTb3JyeSBmb3IgdGhlIG5vaWNlLCBJIGhhdmUgbWlzc2VkIHRvIHNlbmQg
+dHdvIHBhdGNoZXMgZnJvbSB2NykKPiA+ID4gCj4gPiA+IFRoaXMgaXMgdjcgcmVzZW5kIHBhdGNo
+c2V0IGZvciBOZXcgcmszMzk5IGJvYXJkcyBzdXBwb3J0IHdydCBwcmV2aW91cwo+ID4gPiB2ZXJz
+aW9uWzFdCj4gPiA+IAo+ID4gPiBVbmZvcnR1bmF0ZWx5IGluaXRpYWwgdmVyc2lvbiBvZiBjcmVh
+dGluZyByazMzOTktdS1ib290LmR0c2kgYW5kCj4gPiA+IG9yYW5nZXBpIHJrMzM5OSBjaGFuZ2Vz
+IGFyZSBtZXJnZWQsIHNvIHRoaXMgaXMgcmV3b3JrIG9uIHRvcCBvZgo+ID4gPiB1LWJvb3Qtcm9j
+a2NoaXAvbWFzdGVyLgo+ID4gPiAKPiA+ID4gT3ZlcmFsbCB0aGlzIHNlcmllcyBhZGQgc3VwcG9y
+dCBiZWxvdyByazMzOTkgYm9hcmRzCj4gPiA+IC0gTmFub1BJIE00Cj4gPiA+IC0gTmFub1BDIFQ0
+Cj4gPiA+IC0gTmFub1BJIE5FTzQKPiA+ID4gLSBPcmFuZ2VwaSBSSzMzOTkKPiA+ID4gLSBSb2Nr
+IFBJIDQKPiA+ID4gLSBSb2NrcHJvNjQKPiA+ID4gCj4gPiA+IEFsbCB0aGUgcmVzcGVjdGl2ZSBk
+dHMoaSkgZmlsZXMgYXJlIHN5bmNlZCBmcm9tIExpbnV4IDUuMS1yYzIgYW5kIGZldwo+ID4gPiBk
+dHMoaSkgZnJvbSBsaW51eC1uZXh0Lgo+ID4gPiAKPiA+ID4gU29DIHUtYm9vdCBzcGVjaWZpYyBk
+dHNpIHJrMzM5OS11LWJvb3QuZHRzaSBjaGFuZ2VzIGFyZSBwYXJ0IG9mIGFub3RoZXIKPiA+ID4g
+c2VyaWVzIFszXS4KPiA+ID4gCj4gPiA+IE91dCBvZiBhbGwgYWJvdmUgYm9hcmRzIFJvY2twb3I2
+NCwgUm9jay1QSSBhbmQgTmFub3BpIE5FTzQgd291bGQgc3VwcG9ydAo+ID4gPiBib290aW5nIHZp
+YSBSb2NrY2hpcCBtaW5pbG9hZGVyIGFzIG9mIG5vdy4KPiA+IAo+ID4gQ291bGQgeW91IHNlbmQg
+dGhlc2UgdHdvIGJvYXJkcyBpbiBhIHNlcGFyYXRlIHNlcmllcyBzbyB0aGF0IHdlIGF2b2lkCj4g
+PiBtZXJnaW5nIHRoZW0gZm9yIG5vdyAoYmVjYXVzZSBTUEwgc3VwcG9ydCBpcyBicm9rZW4pIGFu
+ZCB0aGVuIHJlLQo+ID4gaXRlcmF0ZSB0aGUgc2VyaWVzIGxhdGVyIHdpdGggdGhlIEREUiBicmlu
+Z3VwPyBPciBtYXliZSBmaW5kIGEgd2F5IHRvCj4gPiBkaXNhYmxlIFNQTCBzdXBwb3J0LCBidXQg
+aW4gYW55IGNhc2UsIGl0J3Mgbm90IG9rIHRvIG1lcmdlIGEgYm9hcmQgd2l0aAo+ID4gU1BMIGVu
+YWJsZWQgYW5kIGJyb2tlbi4KPiAKPiBJIGhhdmUgZXhwbGFpbmVkIHRoZSBkZXRhaWxzIGFib3V0
+IHRoaXMgY29uY2VybiBvbiB2MiBbMV0sIHRob3VnaHQgeW91Cj4gd291bGQgY29tZWJhY2sgb24g
+dGhlIHNhbWUgbGluZSBpbnN0ZWFkIGhlcmUuCgpZZXMsIHlvdSBoYXZlIGFscmVhZHkgZXhwbGFp
+bmVkIHRoZSBpc3N1ZSwgYnV0IEkgZG9uJ3QgdGhpbmsgaXQncwplbm91Z2ggYSBqdXN0aWZpY2F0
+aW9uIHRvIG1lcmdlIGJyb2tlbiBTUEwgc3VwcG9ydC4gSWYgaXQgd2FzIG9ubHkKcGFydGlhbCBv
+ciBsaW1pdGVkLCBpdCB3b3VsZCBiZSBmaW5lLCBidXQgaGVyZSBpdCdzIGp1c3QgYnJva2VuLgoK
+PiBBbnl3YXksIG1ha2luZyBTUEwgYXMgYW4gb3B0aW9uYWwgaXMgbm90IGFuIGlkZWEgdG8gZ28g
+d2l0aCBNYWlubGluZQo+IGFzIHdlIG1ha2UgbWFueSBkZWNpc2lvbnMgd2l0aCByZWdhcmRzIHRv
+IG1ha2UgU1BMIGlzIG1hbmRhdG9yeS4KClllcyBJIHRoaW5rIG1ha2luZyBTUEwgbWFuZGF0b3J5
+IGlzIGEgZ29vZCBpZGVhLCBzbyB0aGF0J3Mgd2h5IEknbQpzdWdnZXN0aW5nIHRoYXQgd2UgZG9u
+J3QgbWVyZ2UgdGhlIGJvYXJkcyB1bnRpbCB0aGV5IGhhdmUgU1BMIHN1cHBvcnQuCgo+IFNpbmNl
+IHRoZSBERFIgaXMgc2hvdyBzdG9wcGVyIGhlcmUgKGFuZCBpdCB3b3VsZCByZWFsbHkgbmVlZCBh
+IGdvb2QKPiBhbW91bnQgb2YgdGltZSwgc2luY2UgaXQgZWZmZWN0IHRoZSBvdGhlciBib2FyZHMp
+LCBJIGNhbiBnbyB3aXRoIFRQTAo+IGVuYWJsZWQgYm9vdC1jaGFpbiB3aGVyZSBkZHIgYmluLCBT
+UEwgYW5kIFUtQm9vdCBwcm9wZXIgY2FuIGJlIHBhcnQgb2YKPiBib290aW5nIHN0YWdlcy4gVGhp
+cyB3YXkgd2UgY2FuIGF2b2lkIHNraXBwaW5nIFNQTCB1c2FnZSwgYW5kIG1hbnkKPiBjb25maWcg
+Y2hhbmdlcyB0byBtYWtlIFNQTCBvcHRpb25hbC4KCkhvbmVzdGx5IEkgZG9uJ3QgcmVhbGx5IHNl
+ZSB0aGUgcG9pbnQgb2YgbWVyZ2luZyB0aGVzZSBib2FyZHMgYXQgYWxsIGlmCnRoZXkgZG9uJ3Qg
+aGF2ZSBTUEwgc3VwcG9ydC4gUGVvcGxlIHdobyByZWFsbHkgd2FudCB0byB1c2UgdGhlbSB3aXRo
+CnRoZSByb2NrY2hpcCBibG9iIGNhbiBjaGVycnktcGljayB0aGUgcGF0Y2hlcyBmcm9tIHRoZSBs
+aXN0IGluIHRoZQptZWFudGltZS4KCkl0IGFsc28gY3JlYXRlcyBpbmNlbnRpdmUgZm9yIHBlb3Bs
+ZSB0byBmcmVlIHRoZSBERFIgaW5pdCwgc2luY2UgdGhhdApiZWNvbWVzIGEgY29uZGl0aW9uIHRv
+IGhhdmUgdGhlIGJvYXJkIHVwc3RyZWFtLgoKV2hhdCBkbyB5b3UgdGhpbms/CgpDaGVlcnMsCgpQ
+YXVsCgotLSAKUGF1bCBLb2NpYWxrb3dza2ksIEJvb3RsaW4KRW1iZWRkZWQgTGludXggYW5kIGtl
+cm5lbCBlbmdpbmVlcmluZwpodHRwczovL2Jvb3RsaW4uY29tCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBs
+aXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
