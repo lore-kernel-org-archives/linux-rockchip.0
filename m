@@ -1,107 +1,138 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
+From: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 Subject: Re: [RESEND PATCH v7 00/11] rockchip: Add new rk3399 boards
-Date: Thu, 9 May 2019 18:17:02 +0530
-Message-ID: <CAMty3ZASYb_WxizOWZMa16GH8_CadcOFejstEZ5jEHsTkRC_aQ@mail.gmail.com>
+Date: Thu, 09 May 2019 14:51:48 +0200
+Message-ID: <7d9d888c0e949d5ae9d81e862d3e4922df009618.camel@bootlin.com>
 References: <20190508054151.21762-1-jagan@amarulasolutions.com>
  <b3755da63208dffc5c0f7676ece0fe55d4dfd4f7.camel@bootlin.com>
  <CAMty3ZBNGmO6Qjysih=4UROO4s6dyawWw8L13Ga7XFqBZyPdtA@mail.gmail.com>
  <2e7668d0bfd5d328c071730113fe8c63aaab62d0.camel@bootlin.com>
  <CAMty3ZCzY+UgHvA7gabt0vAbWR_zOGv3t=gFp9bJnmTOOU_aMg@mail.gmail.com>
- <a1561b748a379f0dfacee3adcad8955fcb90e103.camel@bootlin.com>
+ <4EB52AEE-006A-41E4-A2FC-1837DF76295B@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <a1561b748a379f0dfacee3adcad8955fcb90e103.camel@bootlin.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Cc: U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <4EB52AEE-006A-41E4-A2FC-1837DF76295B-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBNYXkgOSwgMjAxOSBhdCA2OjA5IFBNIFBhdWwgS29jaWFsa293c2tpCjxwYXVsLmtv
-Y2lhbGtvd3NraUBib290bGluLmNvbT4gd3JvdGU6Cj4KPiBPbiBUaHUsIDIwMTktMDUtMDkgYXQg
-MTg6MDYgKzA1MzAsIEphZ2FuIFRla2kgd3JvdGU6Cj4gPiBPbiBUaHUsIE1heSA5LCAyMDE5IGF0
-IDY6MDEgUE0gUGF1bCBLb2NpYWxrb3dza2kKPiA+IDxwYXVsLmtvY2lhbGtvd3NraUBib290bGlu
-LmNvbT4gd3JvdGU6Cj4gPiA+IEhpLAo+ID4gPgo+ID4gPiBPbiBUaHUsIDIwMTktMDUtMDkgYXQg
-MTY6MTUgKzA1MzAsIEphZ2FuIFRla2kgd3JvdGU6Cj4gPiA+ID4gSGkgUGF1bCwKPiA+ID4gPgo+
-ID4gPiA+IE9uIFRodSwgTWF5IDksIDIwMTkgYXQgMTI6MzggUE0gUGF1bCBLb2NpYWxrb3dza2kK
-PiA+ID4gPiA8cGF1bC5rb2NpYWxrb3dza2lAYm9vdGxpbi5jb20+IHdyb3RlOgo+ID4gPiA+ID4g
-SGksCj4gPiA+ID4gPgo+ID4gPiA+ID4gT24gV2VkLCAyMDE5LTA1LTA4IGF0IDExOjExICswNTMw
-LCBKYWdhbiBUZWtpIHdyb3RlOgo+ID4gPiA+ID4gPiAoU29ycnkgZm9yIHRoZSBub2ljZSwgSSBo
-YXZlIG1pc3NlZCB0byBzZW5kIHR3byBwYXRjaGVzIGZyb20gdjcpCj4gPiA+ID4gPiA+Cj4gPiA+
-ID4gPiA+IFRoaXMgaXMgdjcgcmVzZW5kIHBhdGNoc2V0IGZvciBOZXcgcmszMzk5IGJvYXJkcyBz
-dXBwb3J0IHdydCBwcmV2aW91cwo+ID4gPiA+ID4gPiB2ZXJzaW9uWzFdCj4gPiA+ID4gPiA+Cj4g
-PiA+ID4gPiA+IFVuZm9ydHVuYXRlbHkgaW5pdGlhbCB2ZXJzaW9uIG9mIGNyZWF0aW5nIHJrMzM5
-OS11LWJvb3QuZHRzaSBhbmQKPiA+ID4gPiA+ID4gb3JhbmdlcGkgcmszMzk5IGNoYW5nZXMgYXJl
-IG1lcmdlZCwgc28gdGhpcyBpcyByZXdvcmsgb24gdG9wIG9mCj4gPiA+ID4gPiA+IHUtYm9vdC1y
-b2NrY2hpcC9tYXN0ZXIuCj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+IE92ZXJhbGwgdGhpcyBzZXJp
-ZXMgYWRkIHN1cHBvcnQgYmVsb3cgcmszMzk5IGJvYXJkcwo+ID4gPiA+ID4gPiAtIE5hbm9QSSBN
-NAo+ID4gPiA+ID4gPiAtIE5hbm9QQyBUNAo+ID4gPiA+ID4gPiAtIE5hbm9QSSBORU80Cj4gPiA+
-ID4gPiA+IC0gT3JhbmdlcGkgUkszMzk5Cj4gPiA+ID4gPiA+IC0gUm9jayBQSSA0Cj4gPiA+ID4g
-PiA+IC0gUm9ja3BybzY0Cj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+IEFsbCB0aGUgcmVzcGVjdGl2
-ZSBkdHMoaSkgZmlsZXMgYXJlIHN5bmNlZCBmcm9tIExpbnV4IDUuMS1yYzIgYW5kIGZldwo+ID4g
-PiA+ID4gPiBkdHMoaSkgZnJvbSBsaW51eC1uZXh0Lgo+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiBT
-b0MgdS1ib290IHNwZWNpZmljIGR0c2kgcmszMzk5LXUtYm9vdC5kdHNpIGNoYW5nZXMgYXJlIHBh
-cnQgb2YgYW5vdGhlcgo+ID4gPiA+ID4gPiBzZXJpZXMgWzNdLgo+ID4gPiA+ID4gPgo+ID4gPiA+
-ID4gPiBPdXQgb2YgYWxsIGFib3ZlIGJvYXJkcyBSb2NrcG9yNjQsIFJvY2stUEkgYW5kIE5hbm9w
-aSBORU80IHdvdWxkIHN1cHBvcnQKPiA+ID4gPiA+ID4gYm9vdGluZyB2aWEgUm9ja2NoaXAgbWlu
-aWxvYWRlciBhcyBvZiBub3cuCj4gPiA+ID4gPgo+ID4gPiA+ID4gQ291bGQgeW91IHNlbmQgdGhl
-c2UgdHdvIGJvYXJkcyBpbiBhIHNlcGFyYXRlIHNlcmllcyBzbyB0aGF0IHdlIGF2b2lkCj4gPiA+
-ID4gPiBtZXJnaW5nIHRoZW0gZm9yIG5vdyAoYmVjYXVzZSBTUEwgc3VwcG9ydCBpcyBicm9rZW4p
-IGFuZCB0aGVuIHJlLQo+ID4gPiA+ID4gaXRlcmF0ZSB0aGUgc2VyaWVzIGxhdGVyIHdpdGggdGhl
-IEREUiBicmluZ3VwPyBPciBtYXliZSBmaW5kIGEgd2F5IHRvCj4gPiA+ID4gPiBkaXNhYmxlIFNQ
-TCBzdXBwb3J0LCBidXQgaW4gYW55IGNhc2UsIGl0J3Mgbm90IG9rIHRvIG1lcmdlIGEgYm9hcmQg
-d2l0aAo+ID4gPiA+ID4gU1BMIGVuYWJsZWQgYW5kIGJyb2tlbi4KPiA+ID4gPgo+ID4gPiA+IEkg
-aGF2ZSBleHBsYWluZWQgdGhlIGRldGFpbHMgYWJvdXQgdGhpcyBjb25jZXJuIG9uIHYyIFsxXSwg
-dGhvdWdodCB5b3UKPiA+ID4gPiB3b3VsZCBjb21lYmFjayBvbiB0aGUgc2FtZSBsaW5lIGluc3Rl
-YWQgaGVyZS4KPiA+ID4KPiA+ID4gWWVzLCB5b3UgaGF2ZSBhbHJlYWR5IGV4cGxhaW5lZCB0aGUg
-aXNzdWUsIGJ1dCBJIGRvbid0IHRoaW5rIGl0J3MKPiA+ID4gZW5vdWdoIGEganVzdGlmaWNhdGlv
-biB0byBtZXJnZSBicm9rZW4gU1BMIHN1cHBvcnQuIElmIGl0IHdhcyBvbmx5Cj4gPiA+IHBhcnRp
-YWwgb3IgbGltaXRlZCwgaXQgd291bGQgYmUgZmluZSwgYnV0IGhlcmUgaXQncyBqdXN0IGJyb2tl
-bi4KPiA+ID4KPiA+ID4gPiBBbnl3YXksIG1ha2luZyBTUEwgYXMgYW4gb3B0aW9uYWwgaXMgbm90
-IGFuIGlkZWEgdG8gZ28gd2l0aCBNYWlubGluZQo+ID4gPiA+IGFzIHdlIG1ha2UgbWFueSBkZWNp
-c2lvbnMgd2l0aCByZWdhcmRzIHRvIG1ha2UgU1BMIGlzIG1hbmRhdG9yeS4KPiA+ID4KPiA+ID4g
-WWVzIEkgdGhpbmsgbWFraW5nIFNQTCBtYW5kYXRvcnkgaXMgYSBnb29kIGlkZWEsIHNvIHRoYXQn
-cyB3aHkgSSdtCj4gPiA+IHN1Z2dlc3RpbmcgdGhhdCB3ZSBkb24ndCBtZXJnZSB0aGUgYm9hcmRz
-IHVudGlsIHRoZXkgaGF2ZSBTUEwgc3VwcG9ydC4KPiA+ID4KPiA+ID4gPiBTaW5jZSB0aGUgRERS
-IGlzIHNob3cgc3RvcHBlciBoZXJlIChhbmQgaXQgd291bGQgcmVhbGx5IG5lZWQgYSBnb29kCj4g
-PiA+ID4gYW1vdW50IG9mIHRpbWUsIHNpbmNlIGl0IGVmZmVjdCB0aGUgb3RoZXIgYm9hcmRzKSwg
-SSBjYW4gZ28gd2l0aCBUUEwKPiA+ID4gPiBlbmFibGVkIGJvb3QtY2hhaW4gd2hlcmUgZGRyIGJp
-biwgU1BMIGFuZCBVLUJvb3QgcHJvcGVyIGNhbiBiZSBwYXJ0IG9mCj4gPiA+ID4gYm9vdGluZyBz
-dGFnZXMuIFRoaXMgd2F5IHdlIGNhbiBhdm9pZCBza2lwcGluZyBTUEwgdXNhZ2UsIGFuZCBtYW55
-Cj4gPiA+ID4gY29uZmlnIGNoYW5nZXMgdG8gbWFrZSBTUEwgb3B0aW9uYWwuCj4gPiA+Cj4gPiA+
-IEhvbmVzdGx5IEkgZG9uJ3QgcmVhbGx5IHNlZSB0aGUgcG9pbnQgb2YgbWVyZ2luZyB0aGVzZSBi
-b2FyZHMgYXQgYWxsIGlmCj4gPiA+IHRoZXkgZG9uJ3QgaGF2ZSBTUEwgc3VwcG9ydC4gUGVvcGxl
-IHdobyByZWFsbHkgd2FudCB0byB1c2UgdGhlbSB3aXRoCj4gPiA+IHRoZSByb2NrY2hpcCBibG9i
-IGNhbiBjaGVycnktcGljayB0aGUgcGF0Y2hlcyBmcm9tIHRoZSBsaXN0IGluIHRoZQo+ID4gPiBt
-ZWFudGltZS4KPiA+ID4KPiA+ID4gSXQgYWxzbyBjcmVhdGVzIGluY2VudGl2ZSBmb3IgcGVvcGxl
-IHRvIGZyZWUgdGhlIEREUiBpbml0LCBzaW5jZSB0aGF0Cj4gPiA+IGJlY29tZXMgYSBjb25kaXRp
-b24gdG8gaGF2ZSB0aGUgYm9hcmQgdXBzdHJlYW0uCj4gPiA+Cj4gPiA+IFdoYXQgZG8geW91IHRo
-aW5rPwo+ID4KPiA+IEkgZG9uJ3Qga25vdyB3aGV0aGVyIHlvdSBnZXQgbXkgcG9pbnQgb3Igbm90
-PyB0aGVzZSBib2FyZHMgYXJlIG5vdAo+ID4gbWVyZ2VkIHlldC4gV2hhdCBJJ20gc2F5aW5nIGlz
-IHdlIGFyZSBnb2luZyB0byBzdXBwb3J0IHRoZW0gd2l0aAo+ID4gVFBMLWVuYWJsZWQsIHRoYXQg
-d2FzIFNQTCBjYW4gbWFrZSB1c2Ugb2YgdGhlc2UgYm9hcmRzIHdoaWNoIHN0aWxsIGEKPiA+IHZh
-bGlkIGJvb3QtY2hhaW4uIG1vcmVvdmVyIHRoaXMgd2F5IGNhbiBhdm9pZCB0b3VjaGluZyBjb3Jl
-IGZpbGVzIGFuZAo+ID4gbm8gc3BlY2lmaWMgY2hhbmdlIHJlcXVpcmUgd2hpbGUgc3VwcG9ydGlu
-ZyBkZHIgZHRzaS4KPgo+IEFoIG1heWJlIEkgbWlzc2VkIHRoZSBwb2ludCBpbmRlZWQuCj4KPiBT
-byB3aGF0IHlvdSBhcmUgc3VnZ2VzdGluZyBpczoKPiBya2Jvb3QgKGFjdHMgYXMgVFBMKSAtPiBT
-UEwgLT4gVS1Cb290PwoKRXhhY3RseSwgdG8gbWFrZSBpdCBjb25maXJtLgoKSGVyZSBpcyBib290
-LWNoYWluIG9uIE5FTzQ6Ci0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKRERS
-IFZlcnNpb24gMS4yMCAyMDE5MDMxNApJbgpDaGFubmVsIDA6IEREUjMsIDgwME1IegpCdXMgV2lk
-dGg9MzIgQ29sPTEwIEJhbms9OCBSb3c9MTUgQ1M9MSBEaWUgQnVzLVdpZHRoPTE2IFNpemU9MTAy
-NE1CCm5vIHN0cmlkZQpjaCAwIGRkcmNvbmZpZyA9IDB4MTAxLCBkZHJzaXplID0gMHgyMApwbXVn
-cmZfb3NfcmVnWzJdID0gMHgxMDAwNjI4MSwgc3RyaWRlID0gMHgxNwpPVVQKClUtQm9vdCBTUEwg
-MjAxOS4wNy1yYzEtMDAyNDMtZ2JkNTdjYzc0NDQgKE1heSAwOSAyMDE5IC0gMTg6MTA6MjUgKzA1
-MzApClRyeWluZyB0byBib290IGZyb20gTU1DMQoKClUtQm9vdCAyMDE5LjA3LXJjMS0wMDI0My1n
-YmQ1N2NjNzQ0NCAoTWF5IDA5IDIwMTkgLSAxODoxMjo1OSArMDUzMCkKCk1vZGVsOiBGcmllbmRs
-eUFSTSBOYW5vUGkgTkVPNApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8v
-bGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
+Hi,
+
+On Thu, 2019-05-09 at 14:40 +0200, Philipp Tomsich wrote:
+> Jagan,
+> 
+> > On 09.05.2019, at 14:36, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org> wrote:
+> > 
+> > On Thu, May 9, 2019 at 6:01 PM Paul Kocialkowski
+> > <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org> wrote:
+> > > Hi,
+> > > 
+> > > On Thu, 2019-05-09 at 16:15 +0530, Jagan Teki wrote:
+> > > > Hi Paul,
+> > > > 
+> > > > On Thu, May 9, 2019 at 12:38 PM Paul Kocialkowski
+> > > > <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org> wrote:
+> > > > > Hi,
+> > > > > 
+> > > > > On Wed, 2019-05-08 at 11:11 +0530, Jagan Teki wrote:
+> > > > > > (Sorry for the noice, I have missed to send two patches from v7)
+> > > > > > 
+> > > > > > This is v7 resend patchset for New rk3399 boards support wrt previous
+> > > > > > version[1]
+> > > > > > 
+> > > > > > Unfortunately initial version of creating rk3399-u-boot.dtsi and
+> > > > > > orangepi rk3399 changes are merged, so this is rework on top of
+> > > > > > u-boot-rockchip/master.
+> > > > > > 
+> > > > > > Overall this series add support below rk3399 boards
+> > > > > > - NanoPI M4
+> > > > > > - NanoPC T4
+> > > > > > - NanoPI NEO4
+> > > > > > - Orangepi RK3399
+> > > > > > - Rock PI 4
+> > > > > > - Rockpro64
+> > > > > > 
+> > > > > > All the respective dts(i) files are synced from Linux 5.1-rc2 and few
+> > > > > > dts(i) from linux-next.
+> > > > > > 
+> > > > > > SoC u-boot specific dtsi rk3399-u-boot.dtsi changes are part of another
+> > > > > > series [3].
+> > > > > > 
+> > > > > > Out of all above boards Rockpor64, Rock-PI and Nanopi NEO4 would support
+> > > > > > booting via Rockchip miniloader as of now.
+> > > > > 
+> > > > > Could you send these two boards in a separate series so that we avoid
+> > > > > merging them for now (because SPL support is broken) and then re-
+> > > > > iterate the series later with the DDR bringup? Or maybe find a way to
+> > > > > disable SPL support, but in any case, it's not ok to merge a board with
+> > > > > SPL enabled and broken.
+> > > > 
+> > > > I have explained the details about this concern on v2 [1], thought you
+> > > > would comeback on the same line instead here.
+> > > 
+> > > Yes, you have already explained the issue, but I don't think it's
+> > > enough a justification to merge broken SPL support. If it was only
+> > > partial or limited, it would be fine, but here it's just broken.
+> > > 
+> > > > Anyway, making SPL as an optional is not an idea to go with Mainline
+> > > > as we make many decisions with regards to make SPL is mandatory.
+> > > 
+> > > Yes I think making SPL mandatory is a good idea, so that's why I'm
+> > > suggesting that we don't merge the boards until they have SPL support.
+> > > 
+> > > > Since the DDR is show stopper here (and it would really need a good
+> > > > amount of time, since it effect the other boards), I can go with TPL
+> > > > enabled boot-chain where ddr bin, SPL and U-Boot proper can be part of
+> > > > booting stages. This way we can avoid skipping SPL usage, and many
+> > > > config changes to make SPL optional.
+> > > 
+> > > Honestly I don't really see the point of merging these boards at all if
+> > > they don't have SPL support. People who really want to use them with
+> > > the rockchip blob can cherry-pick the patches from the list in the
+> > > meantime.
+> > > 
+> > > It also creates incentive for people to free the DDR init, since that
+> > > becomes a condition to have the board upstream.
+> > > 
+> > > What do you think?
+> > 
+> > I don't know whether you get my point or not? these boards are not
+> > merged yet. What I'm saying is we are going to support them with
+> > TPL-enabled, that was SPL can make use of these boards which still a
+> > valid boot-chain. moreover this way can avoid touching core files and
+> > no specific change require while supporting ddr dtsi.
+> 
+> On some boards, there will be no TPL and only a SPL stage that will
+> initialise DRAM (as the move to having TPL on the RK3399 is optional).
+> 
+> I agree with Paul that the DRAM init should be part of U-Boot whenever
+> we add new boards and make an open DRAM init a prerequisite.
+
+Well, my initial point was to forbid merging broken SPL support, but I
+am totally in favor of requiring free DRAM init for merging new boards.
+
+Sadly it's hard to enforce this as a general rule in U-Boot since some
+platforms are plagued by non-free first-stage bootloaders because of
+signature checks, and that's where DRAM init happens.
+
+But for RK3399, we can totally have that rule, which directly creates
+incentive to free the blobs.
+
+Cheers,
+
+Paul
+
+-- 
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
