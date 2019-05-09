@@ -1,77 +1,107 @@
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Subject: Re: [RESEND PATCH v7 00/11] rockchip: Add new rk3399 boards
-Date: Thu, 09 May 2019 14:30:50 +0200
-Message-ID: <2e7668d0bfd5d328c071730113fe8c63aaab62d0.camel@bootlin.com>
+Date: Thu, 9 May 2019 18:06:57 +0530
+Message-ID: <CAMty3ZCzY+UgHvA7gabt0vAbWR_zOGv3t=gFp9bJnmTOOU_aMg@mail.gmail.com>
 References: <20190508054151.21762-1-jagan@amarulasolutions.com>
  <b3755da63208dffc5c0f7676ece0fe55d4dfd4f7.camel@bootlin.com>
  <CAMty3ZBNGmO6Qjysih=4UROO4s6dyawWw8L13Ga7XFqBZyPdtA@mail.gmail.com>
+ <2e7668d0bfd5d328c071730113fe8c63aaab62d0.camel@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <CAMty3ZBNGmO6Qjysih=4UROO4s6dyawWw8L13Ga7XFqBZyPdtA@mail.gmail.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Kever Yang <kever.yang@rock-chips.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2e7668d0bfd5d328c071730113fe8c63aaab62d0.camel-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBUaHUsIDIwMTktMDUtMDkgYXQgMTY6MTUgKzA1MzAsIEphZ2FuIFRla2kgd3JvdGU6
-Cj4gSGkgUGF1bCwKPiAKPiBPbiBUaHUsIE1heSA5LCAyMDE5IGF0IDEyOjM4IFBNIFBhdWwgS29j
-aWFsa293c2tpCj4gPHBhdWwua29jaWFsa293c2tpQGJvb3RsaW4uY29tPiB3cm90ZToKPiA+IEhp
-LAo+ID4gCj4gPiBPbiBXZWQsIDIwMTktMDUtMDggYXQgMTE6MTEgKzA1MzAsIEphZ2FuIFRla2kg
-d3JvdGU6Cj4gPiA+IChTb3JyeSBmb3IgdGhlIG5vaWNlLCBJIGhhdmUgbWlzc2VkIHRvIHNlbmQg
-dHdvIHBhdGNoZXMgZnJvbSB2NykKPiA+ID4gCj4gPiA+IFRoaXMgaXMgdjcgcmVzZW5kIHBhdGNo
-c2V0IGZvciBOZXcgcmszMzk5IGJvYXJkcyBzdXBwb3J0IHdydCBwcmV2aW91cwo+ID4gPiB2ZXJz
-aW9uWzFdCj4gPiA+IAo+ID4gPiBVbmZvcnR1bmF0ZWx5IGluaXRpYWwgdmVyc2lvbiBvZiBjcmVh
-dGluZyByazMzOTktdS1ib290LmR0c2kgYW5kCj4gPiA+IG9yYW5nZXBpIHJrMzM5OSBjaGFuZ2Vz
-IGFyZSBtZXJnZWQsIHNvIHRoaXMgaXMgcmV3b3JrIG9uIHRvcCBvZgo+ID4gPiB1LWJvb3Qtcm9j
-a2NoaXAvbWFzdGVyLgo+ID4gPiAKPiA+ID4gT3ZlcmFsbCB0aGlzIHNlcmllcyBhZGQgc3VwcG9y
-dCBiZWxvdyByazMzOTkgYm9hcmRzCj4gPiA+IC0gTmFub1BJIE00Cj4gPiA+IC0gTmFub1BDIFQ0
-Cj4gPiA+IC0gTmFub1BJIE5FTzQKPiA+ID4gLSBPcmFuZ2VwaSBSSzMzOTkKPiA+ID4gLSBSb2Nr
-IFBJIDQKPiA+ID4gLSBSb2NrcHJvNjQKPiA+ID4gCj4gPiA+IEFsbCB0aGUgcmVzcGVjdGl2ZSBk
-dHMoaSkgZmlsZXMgYXJlIHN5bmNlZCBmcm9tIExpbnV4IDUuMS1yYzIgYW5kIGZldwo+ID4gPiBk
-dHMoaSkgZnJvbSBsaW51eC1uZXh0Lgo+ID4gPiAKPiA+ID4gU29DIHUtYm9vdCBzcGVjaWZpYyBk
-dHNpIHJrMzM5OS11LWJvb3QuZHRzaSBjaGFuZ2VzIGFyZSBwYXJ0IG9mIGFub3RoZXIKPiA+ID4g
-c2VyaWVzIFszXS4KPiA+ID4gCj4gPiA+IE91dCBvZiBhbGwgYWJvdmUgYm9hcmRzIFJvY2twb3I2
-NCwgUm9jay1QSSBhbmQgTmFub3BpIE5FTzQgd291bGQgc3VwcG9ydAo+ID4gPiBib290aW5nIHZp
-YSBSb2NrY2hpcCBtaW5pbG9hZGVyIGFzIG9mIG5vdy4KPiA+IAo+ID4gQ291bGQgeW91IHNlbmQg
-dGhlc2UgdHdvIGJvYXJkcyBpbiBhIHNlcGFyYXRlIHNlcmllcyBzbyB0aGF0IHdlIGF2b2lkCj4g
-PiBtZXJnaW5nIHRoZW0gZm9yIG5vdyAoYmVjYXVzZSBTUEwgc3VwcG9ydCBpcyBicm9rZW4pIGFu
-ZCB0aGVuIHJlLQo+ID4gaXRlcmF0ZSB0aGUgc2VyaWVzIGxhdGVyIHdpdGggdGhlIEREUiBicmlu
-Z3VwPyBPciBtYXliZSBmaW5kIGEgd2F5IHRvCj4gPiBkaXNhYmxlIFNQTCBzdXBwb3J0LCBidXQg
-aW4gYW55IGNhc2UsIGl0J3Mgbm90IG9rIHRvIG1lcmdlIGEgYm9hcmQgd2l0aAo+ID4gU1BMIGVu
-YWJsZWQgYW5kIGJyb2tlbi4KPiAKPiBJIGhhdmUgZXhwbGFpbmVkIHRoZSBkZXRhaWxzIGFib3V0
-IHRoaXMgY29uY2VybiBvbiB2MiBbMV0sIHRob3VnaHQgeW91Cj4gd291bGQgY29tZWJhY2sgb24g
-dGhlIHNhbWUgbGluZSBpbnN0ZWFkIGhlcmUuCgpZZXMsIHlvdSBoYXZlIGFscmVhZHkgZXhwbGFp
-bmVkIHRoZSBpc3N1ZSwgYnV0IEkgZG9uJ3QgdGhpbmsgaXQncwplbm91Z2ggYSBqdXN0aWZpY2F0
-aW9uIHRvIG1lcmdlIGJyb2tlbiBTUEwgc3VwcG9ydC4gSWYgaXQgd2FzIG9ubHkKcGFydGlhbCBv
-ciBsaW1pdGVkLCBpdCB3b3VsZCBiZSBmaW5lLCBidXQgaGVyZSBpdCdzIGp1c3QgYnJva2VuLgoK
-PiBBbnl3YXksIG1ha2luZyBTUEwgYXMgYW4gb3B0aW9uYWwgaXMgbm90IGFuIGlkZWEgdG8gZ28g
-d2l0aCBNYWlubGluZQo+IGFzIHdlIG1ha2UgbWFueSBkZWNpc2lvbnMgd2l0aCByZWdhcmRzIHRv
-IG1ha2UgU1BMIGlzIG1hbmRhdG9yeS4KClllcyBJIHRoaW5rIG1ha2luZyBTUEwgbWFuZGF0b3J5
-IGlzIGEgZ29vZCBpZGVhLCBzbyB0aGF0J3Mgd2h5IEknbQpzdWdnZXN0aW5nIHRoYXQgd2UgZG9u
-J3QgbWVyZ2UgdGhlIGJvYXJkcyB1bnRpbCB0aGV5IGhhdmUgU1BMIHN1cHBvcnQuCgo+IFNpbmNl
-IHRoZSBERFIgaXMgc2hvdyBzdG9wcGVyIGhlcmUgKGFuZCBpdCB3b3VsZCByZWFsbHkgbmVlZCBh
-IGdvb2QKPiBhbW91bnQgb2YgdGltZSwgc2luY2UgaXQgZWZmZWN0IHRoZSBvdGhlciBib2FyZHMp
-LCBJIGNhbiBnbyB3aXRoIFRQTAo+IGVuYWJsZWQgYm9vdC1jaGFpbiB3aGVyZSBkZHIgYmluLCBT
-UEwgYW5kIFUtQm9vdCBwcm9wZXIgY2FuIGJlIHBhcnQgb2YKPiBib290aW5nIHN0YWdlcy4gVGhp
-cyB3YXkgd2UgY2FuIGF2b2lkIHNraXBwaW5nIFNQTCB1c2FnZSwgYW5kIG1hbnkKPiBjb25maWcg
-Y2hhbmdlcyB0byBtYWtlIFNQTCBvcHRpb25hbC4KCkhvbmVzdGx5IEkgZG9uJ3QgcmVhbGx5IHNl
-ZSB0aGUgcG9pbnQgb2YgbWVyZ2luZyB0aGVzZSBib2FyZHMgYXQgYWxsIGlmCnRoZXkgZG9uJ3Qg
-aGF2ZSBTUEwgc3VwcG9ydC4gUGVvcGxlIHdobyByZWFsbHkgd2FudCB0byB1c2UgdGhlbSB3aXRo
-CnRoZSByb2NrY2hpcCBibG9iIGNhbiBjaGVycnktcGljayB0aGUgcGF0Y2hlcyBmcm9tIHRoZSBs
-aXN0IGluIHRoZQptZWFudGltZS4KCkl0IGFsc28gY3JlYXRlcyBpbmNlbnRpdmUgZm9yIHBlb3Bs
-ZSB0byBmcmVlIHRoZSBERFIgaW5pdCwgc2luY2UgdGhhdApiZWNvbWVzIGEgY29uZGl0aW9uIHRv
-IGhhdmUgdGhlIGJvYXJkIHVwc3RyZWFtLgoKV2hhdCBkbyB5b3UgdGhpbms/CgpDaGVlcnMsCgpQ
-YXVsCgotLSAKUGF1bCBLb2NpYWxrb3dza2ksIEJvb3RsaW4KRW1iZWRkZWQgTGludXggYW5kIGtl
-cm5lbCBlbmdpbmVlcmluZwpodHRwczovL2Jvb3RsaW4uY29tCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBs
-aXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
+On Thu, May 9, 2019 at 6:01 PM Paul Kocialkowski
+<paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org> wrote:
+>
+> Hi,
+>
+> On Thu, 2019-05-09 at 16:15 +0530, Jagan Teki wrote:
+> > Hi Paul,
+> >
+> > On Thu, May 9, 2019 at 12:38 PM Paul Kocialkowski
+> > <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org> wrote:
+> > > Hi,
+> > >
+> > > On Wed, 2019-05-08 at 11:11 +0530, Jagan Teki wrote:
+> > > > (Sorry for the noice, I have missed to send two patches from v7)
+> > > >
+> > > > This is v7 resend patchset for New rk3399 boards support wrt previous
+> > > > version[1]
+> > > >
+> > > > Unfortunately initial version of creating rk3399-u-boot.dtsi and
+> > > > orangepi rk3399 changes are merged, so this is rework on top of
+> > > > u-boot-rockchip/master.
+> > > >
+> > > > Overall this series add support below rk3399 boards
+> > > > - NanoPI M4
+> > > > - NanoPC T4
+> > > > - NanoPI NEO4
+> > > > - Orangepi RK3399
+> > > > - Rock PI 4
+> > > > - Rockpro64
+> > > >
+> > > > All the respective dts(i) files are synced from Linux 5.1-rc2 and few
+> > > > dts(i) from linux-next.
+> > > >
+> > > > SoC u-boot specific dtsi rk3399-u-boot.dtsi changes are part of another
+> > > > series [3].
+> > > >
+> > > > Out of all above boards Rockpor64, Rock-PI and Nanopi NEO4 would support
+> > > > booting via Rockchip miniloader as of now.
+> > >
+> > > Could you send these two boards in a separate series so that we avoid
+> > > merging them for now (because SPL support is broken) and then re-
+> > > iterate the series later with the DDR bringup? Or maybe find a way to
+> > > disable SPL support, but in any case, it's not ok to merge a board with
+> > > SPL enabled and broken.
+> >
+> > I have explained the details about this concern on v2 [1], thought you
+> > would comeback on the same line instead here.
+>
+> Yes, you have already explained the issue, but I don't think it's
+> enough a justification to merge broken SPL support. If it was only
+> partial or limited, it would be fine, but here it's just broken.
+>
+> > Anyway, making SPL as an optional is not an idea to go with Mainline
+> > as we make many decisions with regards to make SPL is mandatory.
+>
+> Yes I think making SPL mandatory is a good idea, so that's why I'm
+> suggesting that we don't merge the boards until they have SPL support.
+>
+> > Since the DDR is show stopper here (and it would really need a good
+> > amount of time, since it effect the other boards), I can go with TPL
+> > enabled boot-chain where ddr bin, SPL and U-Boot proper can be part of
+> > booting stages. This way we can avoid skipping SPL usage, and many
+> > config changes to make SPL optional.
+>
+> Honestly I don't really see the point of merging these boards at all if
+> they don't have SPL support. People who really want to use them with
+> the rockchip blob can cherry-pick the patches from the list in the
+> meantime.
+>
+> It also creates incentive for people to free the DDR init, since that
+> becomes a condition to have the board upstream.
+>
+> What do you think?
+
+I don't know whether you get my point or not? these boards are not
+merged yet. What I'm saying is we are going to support them with
+TPL-enabled, that was SPL can make use of these boards which still a
+valid boot-chain. moreover this way can avoid touching core files and
+no specific change require while supporting ddr dtsi.
+
+Jagan.
