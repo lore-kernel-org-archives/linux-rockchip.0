@@ -1,173 +1,89 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Subject: Re: [PATCH v5 03/15] media: v4l2-common: Support custom
- imagesize/bytesperline in fill_pixfmt()
-Date: Fri, 10 May 2019 10:57:26 +0200
-Message-ID: <0c5a648c-27a8-8195-8ad9-8cefb4369837@xs4all.nl>
-References: <20190503114719.28784-1-boris.brezillon@collabora.com>
- <20190503114719.28784-4-boris.brezillon@collabora.com>
+From: "Ardelean, Alexandru" <alexandru.Ardelean@analog.com>
+Subject: Re: [PATCH 09/16] mmc: sdhci-xenon: use new match_string()
+ helper/macro
+Date: Fri, 10 May 2019 09:13:26 +0000
+Message-ID: <31be52eb1a1abbc99a24729f5c65619235cb201f.camel@analog.com>
+References: <20190508112842.11654-1-alexandru.ardelean@analog.com>
+ <20190508112842.11654-11-alexandru.ardelean@analog.com>
+ <20190508122010.GC21059@kadam>
+ <2ec6812d6bf2f33860c7c816c641167a31eb2ed6.camel@analog.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190503114719.28784-4-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <2ec6812d6bf2f33860c7c816c641167a31eb2ed6.camel@analog.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-ID: <BB59C46108248B4E9B7153CD2DF23B7C@analog.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: "dan.carpenter@oracle.com" <dan.carpenter@oracle.com>
+Cc: "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, "linux-fbdev@vger.kernel.org" <linux-fbdev@vger.kernel.org>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-mm@kvack.org" <linux-mm@kvack.org>, "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>, "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>, "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>, "andriy.shevchenko@linux.intel.com" <andriy.shevchenko@linux.intel.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>, linux-gpio@vger.kernel.or
 List-Id: linux-rockchip.vger.kernel.org
 
-On 5/3/19 1:47 PM, Boris Brezillon wrote:
-> Users can define custom sizeimage and bytesperline as long as they're
-> big enough to store the amount of pixels required for a specific
-> width/height under a specific format. Avoid overriding those fields in
-> this case.
+On Wed, 2019-05-08 at 16:26 +0300, Alexandru Ardelean wrote:
+> On Wed, 2019-05-08 at 15:20 +0300, Dan Carpenter wrote:
+> > 
+> > 
+> > On Wed, May 08, 2019 at 02:28:35PM +0300, Alexandru Ardelean wrote:
+> > > -static const char * const phy_types[] = {
+> > > -     "emmc 5.0 phy",
+> > > -     "emmc 5.1 phy"
+> > > -};
+> > > -
+> > >  enum xenon_phy_type_enum {
+> > >       EMMC_5_0_PHY,
+> > >       EMMC_5_1_PHY,
+> > >       NR_PHY_TYPES
+> > 
+> > There is no need for NR_PHY_TYPES now so you could remove that as well.
+> > 
 > 
-> Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> ---
-> Hello Hans,
+> I thought the same.
+> The only reason to keep NR_PHY_TYPES, is for potential future patches,
+> where it would be just 1 addition
 > 
-> The sizeimage/bytesperline check on !MPLANE formats is still not 100%
-> sure, as custom bytesperline might induce bigger sizeimage than what
-> we calculate.
+>  enum xenon_phy_type_enum {
+>       EMMC_5_0_PHY,
+>       EMMC_5_1_PHY,
+> +      EMMC_5_2_PHY,
+>       NR_PHY_TYPES
+>   }
 > 
-> I tried implementing something smarter taking the per-component plane
-> bpp + hdiv param as we discussed the other day but decided to step
-> back after realizing the per-component plane macro block might also
-> differ at least in theory (not sure that's true in practice) and that
-> has an impact on bytesperline too.
+> Depending on style/preference of how to do enums (allow comma on last
+> enum
+> or not allow comma on last enum value), adding new enum values woudl be 2
+> additions + 1 deletion lines.
 > 
-> Let me know how you want to handle that case.
-> 
-> Regards,
-> 
-> Boris
-> 
-> Changes in v5:
-> * New patch
-> ---
->  drivers/media/v4l2-core/v4l2-common.c | 54 +++++++++++++++++++--------
->  1 file changed, 39 insertions(+), 15 deletions(-)
-> 
-> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-> index 3c6f5c115fc5..37bfc984a8b5 100644
-> --- a/drivers/media/v4l2-core/v4l2-common.c
-> +++ b/drivers/media/v4l2-core/v4l2-common.c
-> @@ -563,9 +563,10 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
->  	pixfmt->num_planes = info->mem_planes;
->  
->  	if (info->mem_planes == 1) {
-> +		u32 bytesperline, sizeimage = 0;
-> +
->  		plane = &pixfmt->plane_fmt[0];
-> -		plane->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
-> -		plane->sizeimage = 0;
-> +		bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
->  
->  		for (i = 0; i < info->comp_planes; i++) {
->  			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
-> @@ -576,10 +577,17 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
->  			aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
->  			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
->  
-> -			plane->sizeimage += info->bpp[i] *
-> -				DIV_ROUND_UP(aligned_width, hdiv) *
-> -				DIV_ROUND_UP(aligned_height, vdiv);
-> +			sizeimage += info->bpp[i] *
-> +				     DIV_ROUND_UP(aligned_width, hdiv) *
-> +				     DIV_ROUND_UP(aligned_height, vdiv);
->  		}
-> +
-> +		/*
-> +		 * The user might have specified custom sizeimage/bytesperline,
-> +		 * only override them if they're not big enough.
-> +		 */
-> +		plane->sizeimage = max(sizeimage, plane->sizeimage);
-> +		plane->bytesperline = max(bytesperline, plane->bytesperline);
-
-Let's just set bytesperline, ignoring the value the user supplied. There are very
-few drivers that allow the user to set bytesperline anyway, so it's not a big deal
-to drop support for that for now. We can add it back later.
-
-Just add a comment that a user-defined bytesperline value isn't currently supported.
-
-Regards,
-
-	Hans
-
->  	} else {
->  		for (i = 0; i < info->comp_planes; i++) {
->  			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
-> @@ -591,10 +599,20 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
->  			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
->  
->  			plane = &pixfmt->plane_fmt[i];
-> -			plane->bytesperline =
-> -				info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv);
-> -			plane->sizeimage =
-> -				plane->bytesperline * DIV_ROUND_UP(aligned_height, vdiv);
-> +
-> +			/*
-> +			 * The user might have specified custom
-> +			 * sizeimage/bytesperline, only override them if
-> +			 * they're not big enough.
-> +			 */
-> +			plane->bytesperline = max_t(u32,
-> +						    info->bpp[i] *
-> +						    DIV_ROUND_UP(aligned_width, hdiv),
-> +						    plane->bytesperline);
-> +			plane->sizeimage = max_t(u32,
-> +						 plane->bytesperline *
-> +						 DIV_ROUND_UP(aligned_height, vdiv),
-> +						 plane->sizeimage);
->  		}
->  	}
->  	return 0;
-> @@ -605,6 +623,7 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
->  		     u32 width, u32 height)
->  {
->  	const struct v4l2_format_info *info;
-> +	u32 bytesperline, sizeimage = 0;
->  	int i;
->  
->  	info = v4l2_format_info(pixelformat);
-> @@ -618,8 +637,7 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
->  	pixfmt->width = width;
->  	pixfmt->height = height;
->  	pixfmt->pixelformat = pixelformat;
-> -	pixfmt->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
-> -	pixfmt->sizeimage = 0;
-> +	bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
->  
->  	for (i = 0; i < info->comp_planes; i++) {
->  		unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
-> @@ -629,11 +647,17 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
->  
->  		aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
->  		aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
-> -
-> -		pixfmt->sizeimage += info->bpp[i] *
-> -			DIV_ROUND_UP(aligned_width, hdiv) *
-> -			DIV_ROUND_UP(aligned_height, vdiv);
-> +		sizeimage += info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv) *
-> +			     DIV_ROUND_UP(aligned_height, vdiv);
->  	}
-> +
-> +	/*
-> +	 * The user might have specified its own sizeimage/bytesperline values,
-> +	 * only override them if they're not big enough.
-> +	 */
-> +	pixfmt->sizeimage = max(sizeimage, pixfmt->sizeimage);
-> +	pixfmt->bytesperline = max(bytesperline, pixfmt->bytesperline);
-> +
->  	return 0;
+>  enum xenon_phy_type_enum {
+>       EMMC_5_0_PHY,
+> -      EMMC_5_1_PHY
+> +      EMM
+> C_5_1_PHY,
+> +      EMMC_5_2_PHY
 >  }
->  EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
 > 
+> Either way (leave NR_PHY_TYPES or remove NR_PHY_TYPES) is fine from my
+> side.
+> 
+
+Preference on this ?
+If no objection [nobody insists] I would keep.
+
+I don't feel strongly about it [dropping NR_PHY_TYPES or not].
+
+Thanks
+Alex
+
+> Thanks
+> Alex
+> 
+> > regards,
+> > dan carpenter
+> > 
