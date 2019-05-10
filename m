@@ -1,20 +1,20 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+From: Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>
 Subject: Re: [PATCH v5 03/15] media: v4l2-common: Support custom
  imagesize/bytesperline in fill_pixfmt()
-Date: Fri, 10 May 2019 14:30:17 +0200
-Message-ID: <f9ffc9ae-2c27-2883-7f62-9931597c8e75@xs4all.nl>
+Date: Fri, 10 May 2019 09:51:17 -0400
+Message-ID: <106a6aa5fe62cf5b18652b667d15bc8677790cad.camel@ndufresne.ca>
 References: <20190503114719.28784-1-boris.brezillon@collabora.com>
  <20190503114719.28784-4-boris.brezillon@collabora.com>
  <0c5a648c-27a8-8195-8ad9-8cefb4369837@xs4all.nl>
  <20190510112847.GA4972@pendragon.ideasonboard.com>
  <c2d02ffb-5273-67a8-1a3a-c7268dc7bfb6@xs4all.nl>
  <20190510122411.GB4972@pendragon.ideasonboard.com>
+ <f9ffc9ae-2c27-2883-7f62-9931597c8e75@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190510122411.GB4972-N3hz7ZxfLydczECFQUw77jytWr6r+dGw0E9HWUfgJXw@public.gmane.org>
-Content-Language: en-US
+In-Reply-To: <f9ffc9ae-2c27-2883-7f62-9931597c8e75-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -24,187 +24,166 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
-Cc: Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Kieran Bingham <kieran.bingham-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+Cc: kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Kieran Bingham <kieran.bingham-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 5/10/19 2:24 PM, Laurent Pinchart wrote:
-> Hi Hans,
-> 
-> On Fri, May 10, 2019 at 02:17:32PM +0200, Hans Verkuil wrote:
->> On 5/10/19 1:28 PM, Laurent Pinchart wrote:
->>> On Fri, May 10, 2019 at 10:57:26AM +0200, Hans Verkuil wrote:
->>>> On 5/3/19 1:47 PM, Boris Brezillon wrote:
->>>>> Users can define custom sizeimage and bytesperline as long as they're
->>>>> big enough to store the amount of pixels required for a specific
->>>>> width/height under a specific format. Avoid overriding those fields in
->>>>> this case.
->>>>>
->>>>> Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
->>>>> ---
->>>>> Hello Hans,
->>>>>
->>>>> The sizeimage/bytesperline check on !MPLANE formats is still not 100%
->>>>> sure, as custom bytesperline might induce bigger sizeimage than what
->>>>> we calculate.
->>>>>
->>>>> I tried implementing something smarter taking the per-component plane
->>>>> bpp + hdiv param as we discussed the other day but decided to step
->>>>> back after realizing the per-component plane macro block might also
->>>>> differ at least in theory (not sure that's true in practice) and that
->>>>> has an impact on bytesperline too.
->>>>>
->>>>> Let me know how you want to handle that case.
->>>>>
->>>>> Regards,
->>>>>
->>>>> Boris
->>>>>
->>>>> Changes in v5:
->>>>> * New patch
->>>>> ---
->>>>>  drivers/media/v4l2-core/v4l2-common.c | 54 +++++++++++++++++++--------
->>>>>  1 file changed, 39 insertions(+), 15 deletions(-)
->>>>>
->>>>> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
->>>>> index 3c6f5c115fc5..37bfc984a8b5 100644
->>>>> --- a/drivers/media/v4l2-core/v4l2-common.c
->>>>> +++ b/drivers/media/v4l2-core/v4l2-common.c
->>>>> @@ -563,9 +563,10 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
->>>>>  	pixfmt->num_planes = info->mem_planes;
->>>>>  
->>>>>  	if (info->mem_planes == 1) {
->>>>> +		u32 bytesperline, sizeimage = 0;
->>>>> +
->>>>>  		plane = &pixfmt->plane_fmt[0];
->>>>> -		plane->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
->>>>> -		plane->sizeimage = 0;
->>>>> +		bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
->>>>>  
->>>>>  		for (i = 0; i < info->comp_planes; i++) {
->>>>>  			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
->>>>> @@ -576,10 +577,17 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
->>>>>  			aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
->>>>>  			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
->>>>>  
->>>>> -			plane->sizeimage += info->bpp[i] *
->>>>> -				DIV_ROUND_UP(aligned_width, hdiv) *
->>>>> -				DIV_ROUND_UP(aligned_height, vdiv);
->>>>> +			sizeimage += info->bpp[i] *
->>>>> +				     DIV_ROUND_UP(aligned_width, hdiv) *
->>>>> +				     DIV_ROUND_UP(aligned_height, vdiv);
->>>>>  		}
->>>>> +
->>>>> +		/*
->>>>> +		 * The user might have specified custom sizeimage/bytesperline,
->>>>> +		 * only override them if they're not big enough.
->>>>> +		 */
->>>>> +		plane->sizeimage = max(sizeimage, plane->sizeimage);
->>>>> +		plane->bytesperline = max(bytesperline, plane->bytesperline);
->>>>
->>>> Let's just set bytesperline, ignoring the value the user supplied. There are very
->>>> few drivers that allow the user to set bytesperline anyway, so it's not a big deal
->>>> to drop support for that for now. We can add it back later.
->>>>
->>>> Just add a comment that a user-defined bytesperline value isn't currently supported.
->>>
->>> Kieran recently ran into an issue related to this, when sharing buffers
->>> between a CSI-2 receiver and an ISP. The ISP has alignment constraints
->>> in both the horizontal and vertical directions on the line stride and
->>> total image size. Out software framework currently allocates buffers
->>> from the CSI-2 receiver which doesn't have those constraints, and not
->>> being able to specify sizeimage is thus a problem.
->>
->> Not being able to specify sizeimage where? From userspace? Sorry, I don't
->> quite understand the specific issue here.
-> 
-> Yes, from userspace.
-
-Ah, OK. But why not use CREATEBUFS? You can provide your own size when allocating
-the buffers.
-
-Also note this patch: https://patchwork.linuxtv.org/patch/55656/
-
-Although this is specific for compressed formats.
-
-Regards,
-
-	Hans
-
-> 
->>> We have worked around this by allocating buffers on the ISP side but
->>> that departed from the normal way of operation, and it may not be a good
->>> idea to carry that forward.
->>>
->>> I wonder how we should solve these issues long term. A central memory
->>> allocator is probably the way to go.
->>>
->>>>>  	} else {
->>>>>  		for (i = 0; i < info->comp_planes; i++) {
->>>>>  			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
->>>>> @@ -591,10 +599,20 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
->>>>>  			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
->>>>>  
->>>>>  			plane = &pixfmt->plane_fmt[i];
->>>>> -			plane->bytesperline =
->>>>> -				info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv);
->>>>> -			plane->sizeimage =
->>>>> -				plane->bytesperline * DIV_ROUND_UP(aligned_height, vdiv);
->>>>> +
->>>>> +			/*
->>>>> +			 * The user might have specified custom
->>>>> +			 * sizeimage/bytesperline, only override them if
->>>>> +			 * they're not big enough.
->>>>> +			 */
->>>>> +			plane->bytesperline = max_t(u32,
->>>>> +						    info->bpp[i] *
->>>>> +						    DIV_ROUND_UP(aligned_width, hdiv),
->>>>> +						    plane->bytesperline);
->>>>> +			plane->sizeimage = max_t(u32,
->>>>> +						 plane->bytesperline *
->>>>> +						 DIV_ROUND_UP(aligned_height, vdiv),
->>>>> +						 plane->sizeimage);
->>>>>  		}
->>>>>  	}
->>>>>  	return 0;
->>>>> @@ -605,6 +623,7 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
->>>>>  		     u32 width, u32 height)
->>>>>  {
->>>>>  	const struct v4l2_format_info *info;
->>>>> +	u32 bytesperline, sizeimage = 0;
->>>>>  	int i;
->>>>>  
->>>>>  	info = v4l2_format_info(pixelformat);
->>>>> @@ -618,8 +637,7 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
->>>>>  	pixfmt->width = width;
->>>>>  	pixfmt->height = height;
->>>>>  	pixfmt->pixelformat = pixelformat;
->>>>> -	pixfmt->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
->>>>> -	pixfmt->sizeimage = 0;
->>>>> +	bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
->>>>>  
->>>>>  	for (i = 0; i < info->comp_planes; i++) {
->>>>>  		unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
->>>>> @@ -629,11 +647,17 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
->>>>>  
->>>>>  		aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
->>>>>  		aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
->>>>> -
->>>>> -		pixfmt->sizeimage += info->bpp[i] *
->>>>> -			DIV_ROUND_UP(aligned_width, hdiv) *
->>>>> -			DIV_ROUND_UP(aligned_height, vdiv);
->>>>> +		sizeimage += info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv) *
->>>>> +			     DIV_ROUND_UP(aligned_height, vdiv);
->>>>>  	}
->>>>> +
->>>>> +	/*
->>>>> +	 * The user might have specified its own sizeimage/bytesperline values,
->>>>> +	 * only override them if they're not big enough.
->>>>> +	 */
->>>>> +	pixfmt->sizeimage = max(sizeimage, pixfmt->sizeimage);
->>>>> +	pixfmt->bytesperline = max(bytesperline, pixfmt->bytesperline);
->>>>> +
->>>>>  	return 0;
->>>>>  }
->>>>>  EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
-> 
+TGUgdmVuZHJlZGkgMTAgbWFpIDIwMTkgw6AgMTQ6MzAgKzAyMDAsIEhhbnMgVmVya3VpbCBhIMOp
+Y3JpdCA6Cj4gT24gNS8xMC8xOSAyOjI0IFBNLCBMYXVyZW50IFBpbmNoYXJ0IHdyb3RlOgo+ID4g
+SGkgSGFucywKPiA+IAo+ID4gT24gRnJpLCBNYXkgMTAsIDIwMTkgYXQgMDI6MTc6MzJQTSArMDIw
+MCwgSGFucyBWZXJrdWlsIHdyb3RlOgo+ID4gPiBPbiA1LzEwLzE5IDE6MjggUE0sIExhdXJlbnQg
+UGluY2hhcnQgd3JvdGU6Cj4gPiA+ID4gT24gRnJpLCBNYXkgMTAsIDIwMTkgYXQgMTA6NTc6MjZB
+TSArMDIwMCwgSGFucyBWZXJrdWlsIHdyb3RlOgo+ID4gPiA+ID4gT24gNS8zLzE5IDE6NDcgUE0s
+IEJvcmlzIEJyZXppbGxvbiB3cm90ZToKPiA+ID4gPiA+ID4gVXNlcnMgY2FuIGRlZmluZSBjdXN0
+b20gc2l6ZWltYWdlIGFuZCBieXRlc3BlcmxpbmUgYXMgbG9uZyBhcyB0aGV5J3JlCj4gPiA+ID4g
+PiA+IGJpZyBlbm91Z2ggdG8gc3RvcmUgdGhlIGFtb3VudCBvZiBwaXhlbHMgcmVxdWlyZWQgZm9y
+IGEgc3BlY2lmaWMKPiA+ID4gPiA+ID4gd2lkdGgvaGVpZ2h0IHVuZGVyIGEgc3BlY2lmaWMgZm9y
+bWF0LiBBdm9pZCBvdmVycmlkaW5nIHRob3NlIGZpZWxkcyBpbgo+ID4gPiA+ID4gPiB0aGlzIGNh
+c2UuCj4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBCb3JpcyBCcmV6aWxs
+b24gPGJvcmlzLmJyZXppbGxvbkBjb2xsYWJvcmEuY29tPgo+ID4gPiA+ID4gPiAtLS0KPiA+ID4g
+PiA+ID4gSGVsbG8gSGFucywKPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+IFRoZSBzaXplaW1hZ2Uv
+Ynl0ZXNwZXJsaW5lIGNoZWNrIG9uICFNUExBTkUgZm9ybWF0cyBpcyBzdGlsbCBub3QgMTAwJQo+
+ID4gPiA+ID4gPiBzdXJlLCBhcyBjdXN0b20gYnl0ZXNwZXJsaW5lIG1pZ2h0IGluZHVjZSBiaWdn
+ZXIgc2l6ZWltYWdlIHRoYW4gd2hhdAo+ID4gPiA+ID4gPiB3ZSBjYWxjdWxhdGUuCj4gPiA+ID4g
+PiA+IAo+ID4gPiA+ID4gPiBJIHRyaWVkIGltcGxlbWVudGluZyBzb21ldGhpbmcgc21hcnRlciB0
+YWtpbmcgdGhlIHBlci1jb21wb25lbnQgcGxhbmUKPiA+ID4gPiA+ID4gYnBwICsgaGRpdiBwYXJh
+bSBhcyB3ZSBkaXNjdXNzZWQgdGhlIG90aGVyIGRheSBidXQgZGVjaWRlZCB0byBzdGVwCj4gPiA+
+ID4gPiA+IGJhY2sgYWZ0ZXIgcmVhbGl6aW5nIHRoZSBwZXItY29tcG9uZW50IHBsYW5lIG1hY3Jv
+IGJsb2NrIG1pZ2h0IGFsc28KPiA+ID4gPiA+ID4gZGlmZmVyIGF0IGxlYXN0IGluIHRoZW9yeSAo
+bm90IHN1cmUgdGhhdCdzIHRydWUgaW4gcHJhY3RpY2UpIGFuZCB0aGF0Cj4gPiA+ID4gPiA+IGhh
+cyBhbiBpbXBhY3Qgb24gYnl0ZXNwZXJsaW5lIHRvby4KPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+
+IExldCBtZSBrbm93IGhvdyB5b3Ugd2FudCB0byBoYW5kbGUgdGhhdCBjYXNlLgo+ID4gPiA+ID4g
+PiAKPiA+ID4gPiA+ID4gUmVnYXJkcywKPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+IEJvcmlzCj4g
+PiA+ID4gPiA+IAo+ID4gPiA+ID4gPiBDaGFuZ2VzIGluIHY1Ogo+ID4gPiA+ID4gPiAqIE5ldyBw
+YXRjaAo+ID4gPiA+ID4gPiAtLS0KPiA+ID4gPiA+ID4gIGRyaXZlcnMvbWVkaWEvdjRsMi1jb3Jl
+L3Y0bDItY29tbW9uLmMgfCA1NCArKysrKysrKysrKysrKysrKysrLS0tLS0tLS0KPiA+ID4gPiA+
+ID4gIDEgZmlsZSBjaGFuZ2VkLCAzOSBpbnNlcnRpb25zKCspLCAxNSBkZWxldGlvbnMoLSkKPiA+
+ID4gPiA+ID4gCj4gPiA+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3Y0bDItY29y
+ZS92NGwyLWNvbW1vbi5jIGIvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jb21tb24uYwo+
+ID4gPiA+ID4gPiBpbmRleCAzYzZmNWMxMTVmYzUuLjM3YmZjOTg0YThiNSAxMDA2NDQKPiA+ID4g
+PiA+ID4gLS0tIGEvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jb21tb24uYwo+ID4gPiA+
+ID4gPiArKysgYi9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWNvbW1vbi5jCj4gPiA+ID4g
+PiA+IEBAIC01NjMsOSArNTYzLDEwIEBAIGludCB2NGwyX2ZpbGxfcGl4Zm10X21wKHN0cnVjdCB2
+NGwyX3BpeF9mb3JtYXRfbXBsYW5lICpwaXhmbXQsCj4gPiA+ID4gPiA+ICAJcGl4Zm10LT5udW1f
+cGxhbmVzID0gaW5mby0+bWVtX3BsYW5lczsKPiA+ID4gPiA+ID4gIAo+ID4gPiA+ID4gPiAgCWlm
+IChpbmZvLT5tZW1fcGxhbmVzID09IDEpIHsKPiA+ID4gPiA+ID4gKwkJdTMyIGJ5dGVzcGVybGlu
+ZSwgc2l6ZWltYWdlID0gMDsKPiA+ID4gPiA+ID4gKwo+ID4gPiA+ID4gPiAgCQlwbGFuZSA9ICZw
+aXhmbXQtPnBsYW5lX2ZtdFswXTsKPiA+ID4gPiA+ID4gLQkJcGxhbmUtPmJ5dGVzcGVybGluZSA9
+IEFMSUdOKHdpZHRoLCB2NGwyX2Zvcm1hdF9ibG9ja193aWR0aChpbmZvLCAwKSkgKiBpbmZvLT5i
+cHBbMF07Cj4gPiA+ID4gPiA+IC0JCXBsYW5lLT5zaXplaW1hZ2UgPSAwOwo+ID4gPiA+ID4gPiAr
+CQlieXRlc3BlcmxpbmUgPSBBTElHTih3aWR0aCwgdjRsMl9mb3JtYXRfYmxvY2tfd2lkdGgoaW5m
+bywgMCkpICogaW5mby0+YnBwWzBdOwo+ID4gPiA+ID4gPiAgCj4gPiA+ID4gPiA+ICAJCWZvciAo
+aSA9IDA7IGkgPCBpbmZvLT5jb21wX3BsYW5lczsgaSsrKSB7Cj4gPiA+ID4gPiA+ICAJCQl1bnNp
+Z25lZCBpbnQgaGRpdiA9IChpID09IDApID8gMSA6IGluZm8tPmhkaXY7Cj4gPiA+ID4gPiA+IEBA
+IC01NzYsMTAgKzU3NywxNyBAQCBpbnQgdjRsMl9maWxsX3BpeGZtdF9tcChzdHJ1Y3QgdjRsMl9w
+aXhfZm9ybWF0X21wbGFuZSAqcGl4Zm10LAo+ID4gPiA+ID4gPiAgCQkJYWxpZ25lZF93aWR0aCA9
+IEFMSUdOKHdpZHRoLCB2NGwyX2Zvcm1hdF9ibG9ja193aWR0aChpbmZvLCBpKSk7Cj4gPiA+ID4g
+PiA+ICAJCQlhbGlnbmVkX2hlaWdodCA9IEFMSUdOKGhlaWdodCwgdjRsMl9mb3JtYXRfYmxvY2tf
+aGVpZ2h0KGluZm8sIGkpKTsKPiA+ID4gPiA+ID4gIAo+ID4gPiA+ID4gPiAtCQkJcGxhbmUtPnNp
+emVpbWFnZSArPSBpbmZvLT5icHBbaV0gKgo+ID4gPiA+ID4gPiAtCQkJCURJVl9ST1VORF9VUChh
+bGlnbmVkX3dpZHRoLCBoZGl2KSAqCj4gPiA+ID4gPiA+IC0JCQkJRElWX1JPVU5EX1VQKGFsaWdu
+ZWRfaGVpZ2h0LCB2ZGl2KTsKPiA+ID4gPiA+ID4gKwkJCXNpemVpbWFnZSArPSBpbmZvLT5icHBb
+aV0gKgo+ID4gPiA+ID4gPiArCQkJCSAgICAgRElWX1JPVU5EX1VQKGFsaWduZWRfd2lkdGgsIGhk
+aXYpICoKPiA+ID4gPiA+ID4gKwkJCQkgICAgIERJVl9ST1VORF9VUChhbGlnbmVkX2hlaWdodCwg
+dmRpdik7Cj4gPiA+ID4gPiA+ICAJCX0KPiA+ID4gPiA+ID4gKwo+ID4gPiA+ID4gPiArCQkvKgo+
+ID4gPiA+ID4gPiArCQkgKiBUaGUgdXNlciBtaWdodCBoYXZlIHNwZWNpZmllZCBjdXN0b20gc2l6
+ZWltYWdlL2J5dGVzcGVybGluZSwKPiA+ID4gPiA+ID4gKwkJICogb25seSBvdmVycmlkZSB0aGVt
+IGlmIHRoZXkncmUgbm90IGJpZyBlbm91Z2guCj4gPiA+ID4gPiA+ICsJCSAqLwo+ID4gPiA+ID4g
+PiArCQlwbGFuZS0+c2l6ZWltYWdlID0gbWF4KHNpemVpbWFnZSwgcGxhbmUtPnNpemVpbWFnZSk7
+Cj4gPiA+ID4gPiA+ICsJCXBsYW5lLT5ieXRlc3BlcmxpbmUgPSBtYXgoYnl0ZXNwZXJsaW5lLCBw
+bGFuZS0+Ynl0ZXNwZXJsaW5lKTsKPiA+ID4gPiA+IAo+ID4gPiA+ID4gTGV0J3MganVzdCBzZXQg
+Ynl0ZXNwZXJsaW5lLCBpZ25vcmluZyB0aGUgdmFsdWUgdGhlIHVzZXIgc3VwcGxpZWQuIFRoZXJl
+IGFyZSB2ZXJ5Cj4gPiA+ID4gPiBmZXcgZHJpdmVycyB0aGF0IGFsbG93IHRoZSB1c2VyIHRvIHNl
+dCBieXRlc3BlcmxpbmUgYW55d2F5LCBzbyBpdCdzIG5vdCBhIGJpZyBkZWFsCj4gPiA+ID4gPiB0
+byBkcm9wIHN1cHBvcnQgZm9yIHRoYXQgZm9yIG5vdy4gV2UgY2FuIGFkZCBpdCBiYWNrIGxhdGVy
+Lgo+ID4gPiA+ID4gCj4gPiA+ID4gPiBKdXN0IGFkZCBhIGNvbW1lbnQgdGhhdCBhIHVzZXItZGVm
+aW5lZCBieXRlc3BlcmxpbmUgdmFsdWUgaXNuJ3QgY3VycmVudGx5IHN1cHBvcnRlZC4KPiA+ID4g
+PiAKPiA+ID4gPiBLaWVyYW4gcmVjZW50bHkgcmFuIGludG8gYW4gaXNzdWUgcmVsYXRlZCB0byB0
+aGlzLCB3aGVuIHNoYXJpbmcgYnVmZmVycwo+ID4gPiA+IGJldHdlZW4gYSBDU0ktMiByZWNlaXZl
+ciBhbmQgYW4gSVNQLiBUaGUgSVNQIGhhcyBhbGlnbm1lbnQgY29uc3RyYWludHMKPiA+ID4gPiBp
+biBib3RoIHRoZSBob3Jpem9udGFsIGFuZCB2ZXJ0aWNhbCBkaXJlY3Rpb25zIG9uIHRoZSBsaW5l
+IHN0cmlkZSBhbmQKPiA+ID4gPiB0b3RhbCBpbWFnZSBzaXplLiBPdXQgc29mdHdhcmUgZnJhbWV3
+b3JrIGN1cnJlbnRseSBhbGxvY2F0ZXMgYnVmZmVycwo+ID4gPiA+IGZyb20gdGhlIENTSS0yIHJl
+Y2VpdmVyIHdoaWNoIGRvZXNuJ3QgaGF2ZSB0aG9zZSBjb25zdHJhaW50cywgYW5kIG5vdAo+ID4g
+PiA+IGJlaW5nIGFibGUgdG8gc3BlY2lmeSBzaXplaW1hZ2UgaXMgdGh1cyBhIHByb2JsZW0uCj4g
+PiA+IAo+ID4gPiBOb3QgYmVpbmcgYWJsZSB0byBzcGVjaWZ5IHNpemVpbWFnZSB3aGVyZT8gRnJv
+bSB1c2Vyc3BhY2U/IFNvcnJ5LCBJIGRvbid0Cj4gPiA+IHF1aXRlIHVuZGVyc3RhbmQgdGhlIHNw
+ZWNpZmljIGlzc3VlIGhlcmUuCj4gPiAKPiA+IFllcywgZnJvbSB1c2Vyc3BhY2UuCj4gCj4gQWgs
+IE9LLiBCdXQgd2h5IG5vdCB1c2UgQ1JFQVRFQlVGUz8gWW91IGNhbiBwcm92aWRlIHlvdXIgb3du
+IHNpemUgd2hlbiBhbGxvY2F0aW5nCj4gdGhlIGJ1ZmZlcnMuCj4gCj4gQWxzbyBub3RlIHRoaXMg
+cGF0Y2g6IGh0dHBzOi8vcGF0Y2h3b3JrLmxpbnV4dHYub3JnL3BhdGNoLzU1NjU2Lwo+IAo+IEFs
+dGhvdWdoIHRoaXMgaXMgc3BlY2lmaWMgZm9yIGNvbXByZXNzZWQgZm9ybWF0cy4KCldoaWxlIHRo
+aXMgd29yayBmb3IgY29tcHJlc3NlZCBmb3JtYXRzLCBpdCBkb2VzIG5vdCBkbyBhbnl0aGluZyBm
+b3IgcmF3CmltYWdlIGhvcml6b250YWwgcGFkZGluZy4gVGhlIGltcG9ydGF0aW9uIGJpdCBvZiBW
+NEwyIGlzIHByZXR0eQpkaWZmaWN1bHQsIHNvIGlmIHdlIGFkZCBoZWxwZXJzLCB3ZSBzaG91bGQg
+bG9hZCB0aGUgd2F5IGFuZCBzaW1wbGlmeQp0aGluZ3MgZm9yIHVzZXJzcGFjZSByYXRoZXIgdGhl
+biBlbmZvcmNpbmcgdGhlIGV4aXN0aW5nIGRpZmZpY3VsdHkuCgpJIHRoaW5rIGZyb20gbm93IG93
+biB3ZSBzaG91bGQgZGVzaWduIHdpdGggdGhlIG1pbmRzZXQgdGhhdCBhIERNQUJ1Zgp0aGF0IGNh
+bm5vdCBiZSBpbXBvcnRlZCBiYWNrIGludG8gYW5vdGhlciBkcml2ZXIgZHVlIHRvIHNvZnR3YXJl
+CmxpbWl0YXRpb25zIGlzIGEgdXNlbGVzcyB3YXN0ZSBvZiBGRC4KCk5pY29sYXMKCj4gCj4gUmVn
+YXJkcywKPiAKPiAJSGFucwo+IAo+ID4gPiA+IFdlIGhhdmUgd29ya2VkIGFyb3VuZCB0aGlzIGJ5
+IGFsbG9jYXRpbmcgYnVmZmVycyBvbiB0aGUgSVNQIHNpZGUgYnV0Cj4gPiA+ID4gdGhhdCBkZXBh
+cnRlZCBmcm9tIHRoZSBub3JtYWwgd2F5IG9mIG9wZXJhdGlvbiwgYW5kIGl0IG1heSBub3QgYmUg
+YSBnb29kCj4gPiA+ID4gaWRlYSB0byBjYXJyeSB0aGF0IGZvcndhcmQuCj4gPiA+ID4gCj4gPiA+
+ID4gSSB3b25kZXIgaG93IHdlIHNob3VsZCBzb2x2ZSB0aGVzZSBpc3N1ZXMgbG9uZyB0ZXJtLiBB
+IGNlbnRyYWwgbWVtb3J5Cj4gPiA+ID4gYWxsb2NhdG9yIGlzIHByb2JhYmx5IHRoZSB3YXkgdG8g
+Z28uCj4gPiA+ID4gCj4gPiA+ID4gPiA+ICAJfSBlbHNlIHsKPiA+ID4gPiA+ID4gIAkJZm9yIChp
+ID0gMDsgaSA8IGluZm8tPmNvbXBfcGxhbmVzOyBpKyspIHsKPiA+ID4gPiA+ID4gIAkJCXVuc2ln
+bmVkIGludCBoZGl2ID0gKGkgPT0gMCkgPyAxIDogaW5mby0+aGRpdjsKPiA+ID4gPiA+ID4gQEAg
+LTU5MSwxMCArNTk5LDIwIEBAIGludCB2NGwyX2ZpbGxfcGl4Zm10X21wKHN0cnVjdCB2NGwyX3Bp
+eF9mb3JtYXRfbXBsYW5lICpwaXhmbXQsCj4gPiA+ID4gPiA+ICAJCQlhbGlnbmVkX2hlaWdodCA9
+IEFMSUdOKGhlaWdodCwgdjRsMl9mb3JtYXRfYmxvY2tfaGVpZ2h0KGluZm8sIGkpKTsKPiA+ID4g
+PiA+ID4gIAo+ID4gPiA+ID4gPiAgCQkJcGxhbmUgPSAmcGl4Zm10LT5wbGFuZV9mbXRbaV07Cj4g
+PiA+ID4gPiA+IC0JCQlwbGFuZS0+Ynl0ZXNwZXJsaW5lID0KPiA+ID4gPiA+ID4gLQkJCQlpbmZv
+LT5icHBbaV0gKiBESVZfUk9VTkRfVVAoYWxpZ25lZF93aWR0aCwgaGRpdik7Cj4gPiA+ID4gPiA+
+IC0JCQlwbGFuZS0+c2l6ZWltYWdlID0KPiA+ID4gPiA+ID4gLQkJCQlwbGFuZS0+Ynl0ZXNwZXJs
+aW5lICogRElWX1JPVU5EX1VQKGFsaWduZWRfaGVpZ2h0LCB2ZGl2KTsKPiA+ID4gPiA+ID4gKwo+
+ID4gPiA+ID4gPiArCQkJLyoKPiA+ID4gPiA+ID4gKwkJCSAqIFRoZSB1c2VyIG1pZ2h0IGhhdmUg
+c3BlY2lmaWVkIGN1c3RvbQo+ID4gPiA+ID4gPiArCQkJICogc2l6ZWltYWdlL2J5dGVzcGVybGlu
+ZSwgb25seSBvdmVycmlkZSB0aGVtIGlmCj4gPiA+ID4gPiA+ICsJCQkgKiB0aGV5J3JlIG5vdCBi
+aWcgZW5vdWdoLgo+ID4gPiA+ID4gPiArCQkJICovCj4gPiA+ID4gPiA+ICsJCQlwbGFuZS0+Ynl0
+ZXNwZXJsaW5lID0gbWF4X3QodTMyLAo+ID4gPiA+ID4gPiArCQkJCQkJICAgIGluZm8tPmJwcFtp
+XSAqCj4gPiA+ID4gPiA+ICsJCQkJCQkgICAgRElWX1JPVU5EX1VQKGFsaWduZWRfd2lkdGgsIGhk
+aXYpLAo+ID4gPiA+ID4gPiArCQkJCQkJICAgIHBsYW5lLT5ieXRlc3BlcmxpbmUpOwo+ID4gPiA+
+ID4gPiArCQkJcGxhbmUtPnNpemVpbWFnZSA9IG1heF90KHUzMiwKPiA+ID4gPiA+ID4gKwkJCQkJ
+CSBwbGFuZS0+Ynl0ZXNwZXJsaW5lICoKPiA+ID4gPiA+ID4gKwkJCQkJCSBESVZfUk9VTkRfVVAo
+YWxpZ25lZF9oZWlnaHQsIHZkaXYpLAo+ID4gPiA+ID4gPiArCQkJCQkJIHBsYW5lLT5zaXplaW1h
+Z2UpOwo+ID4gPiA+ID4gPiAgCQl9Cj4gPiA+ID4gPiA+ICAJfQo+ID4gPiA+ID4gPiAgCXJldHVy
+biAwOwo+ID4gPiA+ID4gPiBAQCAtNjA1LDYgKzYyMyw3IEBAIGludCB2NGwyX2ZpbGxfcGl4Zm10
+KHN0cnVjdCB2NGwyX3BpeF9mb3JtYXQgKnBpeGZtdCwgdTMyIHBpeGVsZm9ybWF0LAo+ID4gPiA+
+ID4gPiAgCQkgICAgIHUzMiB3aWR0aCwgdTMyIGhlaWdodCkKPiA+ID4gPiA+ID4gIHsKPiA+ID4g
+PiA+ID4gIAljb25zdCBzdHJ1Y3QgdjRsMl9mb3JtYXRfaW5mbyAqaW5mbzsKPiA+ID4gPiA+ID4g
+Kwl1MzIgYnl0ZXNwZXJsaW5lLCBzaXplaW1hZ2UgPSAwOwo+ID4gPiA+ID4gPiAgCWludCBpOwo+
+ID4gPiA+ID4gPiAgCj4gPiA+ID4gPiA+ICAJaW5mbyA9IHY0bDJfZm9ybWF0X2luZm8ocGl4ZWxm
+b3JtYXQpOwo+ID4gPiA+ID4gPiBAQCAtNjE4LDggKzYzNyw3IEBAIGludCB2NGwyX2ZpbGxfcGl4
+Zm10KHN0cnVjdCB2NGwyX3BpeF9mb3JtYXQgKnBpeGZtdCwgdTMyIHBpeGVsZm9ybWF0LAo+ID4g
+PiA+ID4gPiAgCXBpeGZtdC0+d2lkdGggPSB3aWR0aDsKPiA+ID4gPiA+ID4gIAlwaXhmbXQtPmhl
+aWdodCA9IGhlaWdodDsKPiA+ID4gPiA+ID4gIAlwaXhmbXQtPnBpeGVsZm9ybWF0ID0gcGl4ZWxm
+b3JtYXQ7Cj4gPiA+ID4gPiA+IC0JcGl4Zm10LT5ieXRlc3BlcmxpbmUgPSBBTElHTih3aWR0aCwg
+djRsMl9mb3JtYXRfYmxvY2tfd2lkdGgoaW5mbywgMCkpICogaW5mby0+YnBwWzBdOwo+ID4gPiA+
+ID4gPiAtCXBpeGZtdC0+c2l6ZWltYWdlID0gMDsKPiA+ID4gPiA+ID4gKwlieXRlc3BlcmxpbmUg
+PSBBTElHTih3aWR0aCwgdjRsMl9mb3JtYXRfYmxvY2tfd2lkdGgoaW5mbywgMCkpICogaW5mby0+
+YnBwWzBdOwo+ID4gPiA+ID4gPiAgCj4gPiA+ID4gPiA+ICAJZm9yIChpID0gMDsgaSA8IGluZm8t
+PmNvbXBfcGxhbmVzOyBpKyspIHsKPiA+ID4gPiA+ID4gIAkJdW5zaWduZWQgaW50IGhkaXYgPSAo
+aSA9PSAwKSA/IDEgOiBpbmZvLT5oZGl2Owo+ID4gPiA+ID4gPiBAQCAtNjI5LDExICs2NDcsMTcg
+QEAgaW50IHY0bDJfZmlsbF9waXhmbXQoc3RydWN0IHY0bDJfcGl4X2Zvcm1hdCAqcGl4Zm10LCB1
+MzIgcGl4ZWxmb3JtYXQsCj4gPiA+ID4gPiA+ICAKPiA+ID4gPiA+ID4gIAkJYWxpZ25lZF93aWR0
+aCA9IEFMSUdOKHdpZHRoLCB2NGwyX2Zvcm1hdF9ibG9ja193aWR0aChpbmZvLCBpKSk7Cj4gPiA+
+ID4gPiA+ICAJCWFsaWduZWRfaGVpZ2h0ID0gQUxJR04oaGVpZ2h0LCB2NGwyX2Zvcm1hdF9ibG9j
+a19oZWlnaHQoaW5mbywgaSkpOwo+ID4gPiA+ID4gPiAtCj4gPiA+ID4gPiA+IC0JCXBpeGZtdC0+
+c2l6ZWltYWdlICs9IGluZm8tPmJwcFtpXSAqCj4gPiA+ID4gPiA+IC0JCQlESVZfUk9VTkRfVVAo
+YWxpZ25lZF93aWR0aCwgaGRpdikgKgo+ID4gPiA+ID4gPiAtCQkJRElWX1JPVU5EX1VQKGFsaWdu
+ZWRfaGVpZ2h0LCB2ZGl2KTsKPiA+ID4gPiA+ID4gKwkJc2l6ZWltYWdlICs9IGluZm8tPmJwcFtp
+XSAqIERJVl9ST1VORF9VUChhbGlnbmVkX3dpZHRoLCBoZGl2KSAqCj4gPiA+ID4gPiA+ICsJCQkg
+ICAgIERJVl9ST1VORF9VUChhbGlnbmVkX2hlaWdodCwgdmRpdik7Cj4gPiA+ID4gPiA+ICAJfQo+
+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ICsJLyoKPiA+ID4gPiA+ID4gKwkgKiBUaGUgdXNlciBt
+aWdodCBoYXZlIHNwZWNpZmllZCBpdHMgb3duIHNpemVpbWFnZS9ieXRlc3BlcmxpbmUgdmFsdWVz
+LAo+ID4gPiA+ID4gPiArCSAqIG9ubHkgb3ZlcnJpZGUgdGhlbSBpZiB0aGV5J3JlIG5vdCBiaWcg
+ZW5vdWdoLgo+ID4gPiA+ID4gPiArCSAqLwo+ID4gPiA+ID4gPiArCXBpeGZtdC0+c2l6ZWltYWdl
+ID0gbWF4KHNpemVpbWFnZSwgcGl4Zm10LT5zaXplaW1hZ2UpOwo+ID4gPiA+ID4gPiArCXBpeGZt
+dC0+Ynl0ZXNwZXJsaW5lID0gbWF4KGJ5dGVzcGVybGluZSwgcGl4Zm10LT5ieXRlc3BlcmxpbmUp
+Owo+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ICAJcmV0dXJuIDA7Cj4gPiA+ID4gPiA+ICB9Cj4g
+PiA+ID4gPiA+ICBFWFBPUlRfU1lNQk9MX0dQTCh2NGwyX2ZpbGxfcGl4Zm10KTsKCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
