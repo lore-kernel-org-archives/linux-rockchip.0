@@ -1,11 +1,16 @@
-From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: add PCIe nodes on rk3399-rockpro64
-Date: Fri, 10 May 2019 02:03:14 +0900
-Message-ID: <20190509170314.12806-1-katsuhiro@katsuster.net>
+From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Subject: Re: [PATCH v5 03/15] media: v4l2-common: Support custom
+ imagesize/bytesperline in fill_pixfmt()
+Date: Fri, 10 May 2019 10:57:26 +0200
+Message-ID: <0c5a648c-27a8-8195-8ad9-8cefb4369837@xs4all.nl>
+References: <20190503114719.28784-1-boris.brezillon@collabora.com>
+ <20190503114719.28784-4-boris.brezillon@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190503114719.28784-4-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -15,53 +20,154 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds PCIe, PCIe phy and pinctrl (for PERST#) nodes for
-RockPro64 board.
+On 5/3/19 1:47 PM, Boris Brezillon wrote:
+> Users can define custom sizeimage and bytesperline as long as they're
+> big enough to store the amount of pixels required for a specific
+> width/height under a specific format. Avoid overriding those fields in
+> this case.
+> 
+> Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+> Hello Hans,
+> 
+> The sizeimage/bytesperline check on !MPLANE formats is still not 100%
+> sure, as custom bytesperline might induce bigger sizeimage than what
+> we calculate.
+> 
+> I tried implementing something smarter taking the per-component plane
+> bpp + hdiv param as we discussed the other day but decided to step
+> back after realizing the per-component plane macro block might also
+> differ at least in theory (not sure that's true in practice) and that
+> has an impact on bytesperline too.
+> 
+> Let me know how you want to handle that case.
+> 
+> Regards,
+> 
+> Boris
+> 
+> Changes in v5:
+> * New patch
+> ---
+>  drivers/media/v4l2-core/v4l2-common.c | 54 +++++++++++++++++++--------
+>  1 file changed, 39 insertions(+), 15 deletions(-)
+> 
+> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+> index 3c6f5c115fc5..37bfc984a8b5 100644
+> --- a/drivers/media/v4l2-core/v4l2-common.c
+> +++ b/drivers/media/v4l2-core/v4l2-common.c
+> @@ -563,9 +563,10 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
+>  	pixfmt->num_planes = info->mem_planes;
+>  
+>  	if (info->mem_planes == 1) {
+> +		u32 bytesperline, sizeimage = 0;
+> +
+>  		plane = &pixfmt->plane_fmt[0];
+> -		plane->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
+> -		plane->sizeimage = 0;
+> +		bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
+>  
+>  		for (i = 0; i < info->comp_planes; i++) {
+>  			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
+> @@ -576,10 +577,17 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
+>  			aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
+>  			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
+>  
+> -			plane->sizeimage += info->bpp[i] *
+> -				DIV_ROUND_UP(aligned_width, hdiv) *
+> -				DIV_ROUND_UP(aligned_height, vdiv);
+> +			sizeimage += info->bpp[i] *
+> +				     DIV_ROUND_UP(aligned_width, hdiv) *
+> +				     DIV_ROUND_UP(aligned_height, vdiv);
+>  		}
+> +
+> +		/*
+> +		 * The user might have specified custom sizeimage/bytesperline,
+> +		 * only override them if they're not big enough.
+> +		 */
+> +		plane->sizeimage = max(sizeimage, plane->sizeimage);
+> +		plane->bytesperline = max(bytesperline, plane->bytesperline);
 
-Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
----
- .../boot/dts/rockchip/rk3399-rockpro64.dts     | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+Let's just set bytesperline, ignoring the value the user supplied. There are very
+few drivers that allow the user to set bytesperline anyway, so it's not a big deal
+to drop support for that for now. We can add it back later.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-index 20ec7d1c25d7..56d7eeedf07c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-@@ -513,6 +513,20 @@
- 	gpio1830-supply = <&vcc_3v0>;
- };
- 
-+&pcie0 {
-+	ep-gpios = <&gpio2 RK_PD4 GPIO_ACTIVE_HIGH>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_perst>;
-+	vpcie12v-supply = <&vcc12v_dcin>;
-+	vpcie3v3-supply = <&vcc3v3_pcie>;
-+	num-lanes = <4>;
-+	status = "okay";
-+};
-+
-+&pcie_phy {
-+	status = "okay";
-+};
-+
- &pmu_io_domains {
- 	pmu1830-supply = <&vcc_3v0>;
- 	status = "okay";
-@@ -545,6 +559,10 @@
- 		pcie_pwr_en: pcie-pwr-en {
- 			rockchip,pins = <1 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
-+
-+		pcie_perst: pcie-perst {
-+			rockchip,pins = <2 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
- 	};
- 
- 	pmic {
--- 
-2.20.1
+Just add a comment that a user-defined bytesperline value isn't currently supported.
+
+Regards,
+
+	Hans
+
+>  	} else {
+>  		for (i = 0; i < info->comp_planes; i++) {
+>  			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
+> @@ -591,10 +599,20 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
+>  			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
+>  
+>  			plane = &pixfmt->plane_fmt[i];
+> -			plane->bytesperline =
+> -				info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv);
+> -			plane->sizeimage =
+> -				plane->bytesperline * DIV_ROUND_UP(aligned_height, vdiv);
+> +
+> +			/*
+> +			 * The user might have specified custom
+> +			 * sizeimage/bytesperline, only override them if
+> +			 * they're not big enough.
+> +			 */
+> +			plane->bytesperline = max_t(u32,
+> +						    info->bpp[i] *
+> +						    DIV_ROUND_UP(aligned_width, hdiv),
+> +						    plane->bytesperline);
+> +			plane->sizeimage = max_t(u32,
+> +						 plane->bytesperline *
+> +						 DIV_ROUND_UP(aligned_height, vdiv),
+> +						 plane->sizeimage);
+>  		}
+>  	}
+>  	return 0;
+> @@ -605,6 +623,7 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
+>  		     u32 width, u32 height)
+>  {
+>  	const struct v4l2_format_info *info;
+> +	u32 bytesperline, sizeimage = 0;
+>  	int i;
+>  
+>  	info = v4l2_format_info(pixelformat);
+> @@ -618,8 +637,7 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
+>  	pixfmt->width = width;
+>  	pixfmt->height = height;
+>  	pixfmt->pixelformat = pixelformat;
+> -	pixfmt->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
+> -	pixfmt->sizeimage = 0;
+> +	bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
+>  
+>  	for (i = 0; i < info->comp_planes; i++) {
+>  		unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
+> @@ -629,11 +647,17 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
+>  
+>  		aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
+>  		aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
+> -
+> -		pixfmt->sizeimage += info->bpp[i] *
+> -			DIV_ROUND_UP(aligned_width, hdiv) *
+> -			DIV_ROUND_UP(aligned_height, vdiv);
+> +		sizeimage += info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv) *
+> +			     DIV_ROUND_UP(aligned_height, vdiv);
+>  	}
+> +
+> +	/*
+> +	 * The user might have specified its own sizeimage/bytesperline values,
+> +	 * only override them if they're not big enough.
+> +	 */
+> +	pixfmt->sizeimage = max(sizeimage, pixfmt->sizeimage);
+> +	pixfmt->bytesperline = max(bytesperline, pixfmt->bytesperline);
+> +
+>  	return 0;
+>  }
+>  EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
+> 
