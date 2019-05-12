@@ -1,46 +1,76 @@
-From: Heiner Kallweit <hkallweit1@gmail.com>
-Subject: Re: [Regression] "net: phy: realtek: Add rtl8211e rx/tx delays
- config" breaks rk3328-roc-cc networking
-Date: Sun, 12 May 2019 09:34:24 +0200
-Message-ID: <4c6ef3f1-a2c7-f2da-3f2a-cd28624007f8@gmail.com>
-References: <066a0d38-2c64-7a1e-d176-04341f0cb6d7@gmail.com>
- <20190512023754.GK4889@lunn.ch>
- <ae62419b-53f1-395d-eb0e-66d138d294a8@gmail.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 4/4] Revert "platform/chrome: cros_ec_spi: Transfer
+ messages at high priority"
+Date: Sun, 12 May 2019 16:45:38 +0900
+Message-ID: <20190512074538.GE21483@sirena.org.uk>
+References: <20190510223437.84368-1-dianders@chromium.org>
+ <20190510223437.84368-5-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <ae62419b-53f1-395d-eb0e-66d138d294a8@gmail.com>
-Content-Language: en-US
-Sender: netdev-owner@vger.kernel.org
-To: Peter Geis <pgwipeout@gmail.com>, Andrew Lunn <andrew@lunn.ch>
-Cc: Serge Semin <fancer.lancer@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, "David S. Miller" <davem@davemloft.net>, Serge Semin <Sergey.Semin@t-platforms.ru>, netdev@vger.kernel.org, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+Content-Type: multipart/mixed; boundary="===============7844736516753287257=="
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190510223437.84368-5-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Benson Leung <bleung-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12.05.2019 04:50, Peter Geis wrote:
-> On 5/11/2019 10:37 PM, Andrew Lunn wrote:
->> On Sat, May 11, 2019 at 07:17:08PM -0400, Peter Geis wrote:
->>> Good Evening,
->>>
->>> Commit f81dadbcf7fd067baf184b63c179fc392bdb226e "net: phy: realtek: Add
->>> rtl8211e rx/tx delays config" breaks networking completely on the
->>> rk3328-roc-cc.
->>> Reverting the offending commit solves the problem.
->>
->> Hi Peter
->>
->> The fix should be in net, and will soon make its way upwards.
->>
->>      Andrew
->>
-> 
-> 
-> Good Evening,
-> 
-> Thanks, is there a link to the patch so I may test it?
-> 
-https://git.kernel.org/pub/scm/linux/kernel/git/davem/net.git/commit/?id=daf3ddbe11a2ff74c95bc814df8e5fe3201b4cb5
 
-> Peter
-> 
-Heiner
+--===============7844736516753287257==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Ns7jmDPpOpCD+GE/"
+Content-Disposition: inline
+
+
+--Ns7jmDPpOpCD+GE/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, May 10, 2019 at 03:34:37PM -0700, Douglas Anderson wrote:
+> This reverts commit 37a186225a0c020516bafad2727fdcdfc039a1e4.
+>=20
+> We have a better solution in the patch ("platform/chrome: cros_ec_spi:
+> Set ourselves as timing sensitive").  Let's revert the uglier and less
+> reliable solution.
+
+It isn't clear to me that it's a bad thing to have this even with the
+SPI thread at realime priority.
+
+--Ns7jmDPpOpCD+GE/
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlzXzyEACgkQJNaLcl1U
+h9CZ8Af/Zx78PRk1JAMVQgIM9tFEJxhIQNOf2mVis4Ku5Pv89nRp1solLrhwReKo
+osAxMTDdLUOKuZxBJxBdshhCdHB04UXpwDnaPeX8jXeN43azdvv0jz8/UuUmhl69
+9KqCSjyH2hQ+zSCMcsZK2iN+44J4Q+Sv4Gr2R95Cpvo1kRqxz/LOfhOa3xoStb7X
+eFgjYaSmEA7yS5vt2sLunTzeH7YH1o9j9tG/L0QRpeHeJIqtwcUWUctr1PUjrNdE
+AXYJpaV8wrQnzFkcmf+wQt4I477pALXbx9OlmFj1tP6YgklHvFc65Z/eNNUlYePs
+D0koY+RVt8j06SujCyTf+c9I/89Wng==
+=4tri
+-----END PGP SIGNATURE-----
+
+--Ns7jmDPpOpCD+GE/--
+
+
+--===============7844736516753287257==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7844736516753287257==--
