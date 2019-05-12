@@ -1,14 +1,14 @@
 From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 4/4] Revert "platform/chrome: cros_ec_spi: Transfer
- messages at high priority"
-Date: Sun, 12 May 2019 16:45:38 +0900
-Message-ID: <20190512074538.GE21483@sirena.org.uk>
+Subject: Re: [PATCH 1/4] spi: For controllers that need realtime always use
+ the pump thread
+Date: Sun, 12 May 2019 16:33:01 +0900
+Message-ID: <20190512073301.GC21483@sirena.org.uk>
 References: <20190510223437.84368-1-dianders@chromium.org>
- <20190510223437.84368-5-dianders@chromium.org>
+ <20190510223437.84368-2-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============7844736516753287257=="
+Content-Type: multipart/mixed; boundary="===============7376112348469151644=="
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190510223437.84368-5-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+In-Reply-To: <20190510223437.84368-2-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,50 +19,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Benson Leung <bleung-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Benson Leung <bleung-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 
---===============7844736516753287257==
+--===============7376112348469151644==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Ns7jmDPpOpCD+GE/"
+	protocol="application/pgp-signature"; boundary="/e2eDi0V/xtL+Mc8"
 Content-Disposition: inline
 
 
---Ns7jmDPpOpCD+GE/
+--/e2eDi0V/xtL+Mc8
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Fri, May 10, 2019 at 03:34:37PM -0700, Douglas Anderson wrote:
-> This reverts commit 37a186225a0c020516bafad2727fdcdfc039a1e4.
->=20
-> We have a better solution in the patch ("platform/chrome: cros_ec_spi:
-> Set ourselves as timing sensitive").  Let's revert the uglier and less
-> reliable solution.
+On Fri, May 10, 2019 at 03:34:34PM -0700, Douglas Anderson wrote:
+> If a controller specifies that it needs high priority for sending
+> messages we should always schedule our transfers on the thread.  If we
+> don't do this we'll do the transfer in the caller's context which
+> might not be very high priority.
 
-It isn't clear to me that it's a bad thing to have this even with the
-SPI thread at realime priority.
+If performance is important you probably also want to avoid the context
+thrashing - executing in the calling context is generally a substantial
+performance boost.  I can see this causing problems further down the
+line when someone else turns up with a different requirement, perhaps in
+an application where the caller does actually have a raised priority
+themselves and just wanted to make sure that the thread wasn't lower
+than they are.  I guess it'd be nice if we could check what priority the
+calling thread has and make a decision based on that but there don't
+seem to be any facilities for doing that which I can see right now.
 
---Ns7jmDPpOpCD+GE/
+--/e2eDi0V/xtL+Mc8
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlzXzyEACgkQJNaLcl1U
-h9CZ8Af/Zx78PRk1JAMVQgIM9tFEJxhIQNOf2mVis4Ku5Pv89nRp1solLrhwReKo
-osAxMTDdLUOKuZxBJxBdshhCdHB04UXpwDnaPeX8jXeN43azdvv0jz8/UuUmhl69
-9KqCSjyH2hQ+zSCMcsZK2iN+44J4Q+Sv4Gr2R95Cpvo1kRqxz/LOfhOa3xoStb7X
-eFgjYaSmEA7yS5vt2sLunTzeH7YH1o9j9tG/L0QRpeHeJIqtwcUWUctr1PUjrNdE
-AXYJpaV8wrQnzFkcmf+wQt4I477pALXbx9OlmFj1tP6YgklHvFc65Z/eNNUlYePs
-D0koY+RVt8j06SujCyTf+c9I/89Wng==
-=4tri
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlzXzCcACgkQJNaLcl1U
+h9AjOAf+MXPHyjoQyfbJn08k/H8FZGylRFAxKaq4gxN0q4GV4ErRQ4izUJ80gQ5U
+sCbdavMU+2u2yZ8yl/uthfJzXlmpViMGmi/nnHwRcPunHFz1nBmA9sZ4/ODkIj8N
+cCWjLrCRxeE9e23yjIInTgiMkgg2DgSeA+0kVbtg4S0gyIM+POpLXtN6thC9bi0N
++ZVukER12euMeuVoruZ9jAo52XBhVjj2tpFK18N+bbgIMKB1T2qrd1Fp2r3H6+ty
+GQsyEb/f1XN0NXaLDI5wunSFe0EiUe6P6rZuu4p9ZTyPhg663C+JsqU72Rj8EBXA
+qT+vCFKYWKPzapEj1LDuT9p+DyPnyg==
+=aJHR
 -----END PGP SIGNATURE-----
 
---Ns7jmDPpOpCD+GE/--
+--/e2eDi0V/xtL+Mc8--
 
 
---===============7844736516753287257==
+--===============7376112348469151644==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -73,4 +78,4 @@ Linux-rockchip mailing list
 Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7844736516753287257==--
+--===============7376112348469151644==--
