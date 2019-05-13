@@ -1,151 +1,48 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v2 3/3] Revert "platform/chrome: cros_ec_spi: Transfer messages at high priority"
-Date: Mon, 13 May 2019 13:18:25 -0700
-Message-ID: <20190513201825.166969-4-dianders@chromium.org>
-References: <20190513201825.166969-1-dianders@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 4/4] Revert "platform/chrome: cros_ec_spi: Transfer
+ messages at high priority"
+Date: Mon, 13 May 2019 13:21:23 -0700
+Message-ID: <CAD=FV=XkkKRJN+Vv6+nf8EjXoCuO-0MG923v-0HKPMYg=mdZww@mail.gmail.com>
+References: <20190510223437.84368-1-dianders@chromium.org> <20190510223437.84368-5-dianders@chromium.org>
+ <20190512074538.GE21483@sirena.org.uk> <CAD=FV=Xg96SGg-JDjEJRtC6jACcN9Xizcr-zV4rQwXYvuEvmRA@mail.gmail.com>
+ <20190513160153.GD5168@sirena.org.uk> <CAD=FV=Xm-2oxit7doVAYJr28c-xHqUdt9PQC=WYpYfsAyUxuaw@mail.gmail.com>
+ <20190513164738.GE5168@sirena.org.uk>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190513201825.166969-1-dianders@chromium.org>
+In-Reply-To: <20190513164738.GE5168@sirena.org.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>, Benson Leung <bleung@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: linux-rockchip@lists.infradead.org, drinkcat@chromium.org, Guenter Roeck <groeck@chromium.org>, briannorris@chromium.org, mka@chromium.org, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Benson Leung <bleung@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Nicolas Boichat <drinkcat@chromium.org>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This reverts commit 37a186225a0c020516bafad2727fdcdfc039a1e4.
+Hi,
 
-We have a better solution in the patch ("platform/chrome: cros_ec_spi:
-Force transfers to realtime priority").  Let's revert the uglier and
-less reliable solution.
+On Mon, May 13, 2019 at 9:47 AM, Mark Brown <broonie@kernel.org> wrote:
 
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Reviewed-by: Guenter Roeck <groeck@chromium.org>
----
+> On Mon, May 13, 2019 at 09:03:28AM -0700, Doug Anderson wrote:
+> > On Mon, May 13, 2019 at 9:02 AM Mark Brown <broonie@kernel.org> wrote:
+>
+> > > I'm not saying the other changes aren't helping, I'm saying that it's
+> > > not clear that this revert is improving things.
+>
+> > If I add a call to force the pumping to happen on the SPI thread then
+> > the commit I'm reverting here is useless though, isn't it?
+>
+> Well, I'm not convinced that that change is ideal anyway and it does
+> leave you vulnerable to further changes in the SPI core pushing things
+> out to calling context which feels like it isn't going to be helping
+> robustness.
 
-Changes in v2: None
+OK.  Here's my plan: in v2 I've still included this revert and you can
+see how things look.  If you hate it as much as you think you will
+then let me know and I'll send a v3 that avoids to forcing and re-adds
+the realtime thread to cros_ec.
 
- drivers/platform/chrome/cros_ec_spi.c | 80 ++-------------------------
- 1 file changed, 6 insertions(+), 74 deletions(-)
+One note just so you're aware: For my particular device I'm not nearly
+as concerned with latency / throughput as I am concerned with
+transfers not getting interrupted once started.  I've added this
+explicitly in the commit message now, too.  :-)
 
-diff --git a/drivers/platform/chrome/cros_ec_spi.c b/drivers/platform/chrome/cros_ec_spi.c
-index a2959365a870..7adaf534eb8b 100644
---- a/drivers/platform/chrome/cros_ec_spi.c
-+++ b/drivers/platform/chrome/cros_ec_spi.c
-@@ -75,27 +75,6 @@ struct cros_ec_spi {
- 	unsigned int end_of_msg_delay;
- };
- 
--typedef int (*cros_ec_xfer_fn_t) (struct cros_ec_device *ec_dev,
--				  struct cros_ec_command *ec_msg);
--
--/**
-- * struct cros_ec_xfer_work_params - params for our high priority workers
-- *
-- * @work: The work_struct needed to queue work
-- * @fn: The function to use to transfer
-- * @ec_dev: ChromeOS EC device
-- * @ec_msg: Message to transfer
-- * @ret: The return value of the function
-- */
--
--struct cros_ec_xfer_work_params {
--	struct work_struct work;
--	cros_ec_xfer_fn_t fn;
--	struct cros_ec_device *ec_dev;
--	struct cros_ec_command *ec_msg;
--	int ret;
--};
--
- static void debug_packet(struct device *dev, const char *name, u8 *ptr,
- 			 int len)
- {
-@@ -371,13 +350,13 @@ static int cros_ec_spi_receive_response(struct cros_ec_device *ec_dev,
- }
- 
- /**
-- * do_cros_ec_pkt_xfer_spi - Transfer a packet over SPI and receive the reply
-+ * cros_ec_pkt_xfer_spi - Transfer a packet over SPI and receive the reply
-  *
-  * @ec_dev: ChromeOS EC device
-  * @ec_msg: Message to transfer
-  */
--static int do_cros_ec_pkt_xfer_spi(struct cros_ec_device *ec_dev,
--				   struct cros_ec_command *ec_msg)
-+static int cros_ec_pkt_xfer_spi(struct cros_ec_device *ec_dev,
-+				struct cros_ec_command *ec_msg)
- {
- 	struct ec_host_response *response;
- 	struct cros_ec_spi *ec_spi = ec_dev->priv;
-@@ -514,13 +493,13 @@ static int do_cros_ec_pkt_xfer_spi(struct cros_ec_device *ec_dev,
- }
- 
- /**
-- * do_cros_ec_cmd_xfer_spi - Transfer a message over SPI and receive the reply
-+ * cros_ec_cmd_xfer_spi - Transfer a message over SPI and receive the reply
-  *
-  * @ec_dev: ChromeOS EC device
-  * @ec_msg: Message to transfer
-  */
--static int do_cros_ec_cmd_xfer_spi(struct cros_ec_device *ec_dev,
--				   struct cros_ec_command *ec_msg)
-+static int cros_ec_cmd_xfer_spi(struct cros_ec_device *ec_dev,
-+				struct cros_ec_command *ec_msg)
- {
- 	struct cros_ec_spi *ec_spi = ec_dev->priv;
- 	struct spi_transfer trans;
-@@ -632,53 +611,6 @@ static int do_cros_ec_cmd_xfer_spi(struct cros_ec_device *ec_dev,
- 	return ret;
- }
- 
--static void cros_ec_xfer_high_pri_work(struct work_struct *work)
--{
--	struct cros_ec_xfer_work_params *params;
--
--	params = container_of(work, struct cros_ec_xfer_work_params, work);
--	params->ret = params->fn(params->ec_dev, params->ec_msg);
--}
--
--static int cros_ec_xfer_high_pri(struct cros_ec_device *ec_dev,
--				 struct cros_ec_command *ec_msg,
--				 cros_ec_xfer_fn_t fn)
--{
--	struct cros_ec_xfer_work_params params;
--
--	INIT_WORK_ONSTACK(&params.work, cros_ec_xfer_high_pri_work);
--	params.ec_dev = ec_dev;
--	params.ec_msg = ec_msg;
--	params.fn = fn;
--
--	/*
--	 * This looks a bit ridiculous.  Why do the work on a
--	 * different thread if we're just going to block waiting for
--	 * the thread to finish?  The key here is that the thread is
--	 * running at high priority but the calling context might not
--	 * be.  We need to be at high priority to avoid getting
--	 * context switched out for too long and the EC giving up on
--	 * the transfer.
--	 */
--	queue_work(system_highpri_wq, &params.work);
--	flush_work(&params.work);
--	destroy_work_on_stack(&params.work);
--
--	return params.ret;
--}
--
--static int cros_ec_pkt_xfer_spi(struct cros_ec_device *ec_dev,
--				struct cros_ec_command *ec_msg)
--{
--	return cros_ec_xfer_high_pri(ec_dev, ec_msg, do_cros_ec_pkt_xfer_spi);
--}
--
--static int cros_ec_cmd_xfer_spi(struct cros_ec_device *ec_dev,
--				struct cros_ec_command *ec_msg)
--{
--	return cros_ec_xfer_high_pri(ec_dev, ec_msg, do_cros_ec_cmd_xfer_spi);
--}
--
- static void cros_ec_spi_dt_probe(struct cros_ec_spi *ec_spi, struct device *dev)
- {
- 	struct device_node *np = dev->of_node;
--- 
-2.21.0.1020.gf2820cf01a-goog
+
+-Doug
