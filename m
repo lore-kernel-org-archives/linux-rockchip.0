@@ -1,81 +1,69 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v2 0/3] spi: A better solution for cros_ec_spi reliability
-Date: Mon, 13 May 2019 13:18:22 -0700
-Message-ID: <20190513201825.166969-1-dianders@chromium.org>
+From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH v2 2/3] platform/chrome: cros_ec_spi: Force transfers to
+ realtime priority
+Date: Mon, 13 May 2019 13:18:24 -0700
+Message-ID: <20190513201825.166969-3-dianders@chromium.org>
+References: <20190513201825.166969-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>, Benson Leung <bleung@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: linux-rockchip@lists.infradead.org, drinkcat@chromium.org, Guenter Roeck <groeck@chromium.org>, briannorris@chromium.org, mka@chromium.org, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190513201825.166969-1-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Benson Leung <bleung-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This series is a much better solution for getting the Chrome OS EC to
-talk reliably and replaces commit 37a186225a0c ("platform/chrome:
-cros_ec_spi: Transfer messages at high priority").
+All currently known ECs in the wild are very sensitive to timing.
+Specifically the ECs are known to drop a transfer if more than 8 ms
+passes from the assertion of the chip select until the transfer
+finishes.
 
-Specifically note that even though the above commit made things
-better, we still saw some failures.
+Let's use the new feature introduced in the patch ("spi: Allow SPI
+devices to force transfers on a realtime thread") to specify this and
+increase the success rate of our transfers.
 
-The majority of these failures were because we were competing for time
-with dm-crypt which also scheduled work on HIGHPRI workqueues.  While
-we can consider reverting the change that made dm-crypt run its work
-at HIGHPRI, the argument in commit a1b89132dc4f ("dm crypt: use
-WQ_HIGHPRI for the IO and crypt workqueues") is somewhat compelling.
-It does make sense for IO to be scheduled at a priority that's higher
-than the default user priority.
+NOTE: if future Chrome OS ECs ever fix themselves to be less sensitive
+then we could consider adding a property (or compatible string) to not
+set this property.  For now we need it across the board.
 
-It turns out that we could also see problems because loop devices also
-run at high priority.  See the set_user_nice() in
-loop_prepare_queue().
+With this change we can revert the commit 37a186225a0c
+("platform/chrome: cros_ec_spi: Transfer messages at high priority").
+...and, in fact, transfers are _even more_ reliable than they were
+with that commit since the SPI framework will use a higher priority
+(realtime) and we no longer lose our priority when we get shunted over
+to the message pumping thread (because we now always get shunted and
+the thread is high priority).
 
-Looking in more detail, it can be seen that the high priority
-workqueue isn't actually that high of a priority.  It runs at MIN_NICE
-which is _fairly_ high priority but still below all real time
-priority.  We can do better by using realtime priority.  That makes
-sense because cros_ec_spi actually needs to run quickly for
-correctness.  As I understand this is exactly what real time priority
-is for.  Note that there is a discussion going on about the dm-crypt
-priority [1].
-
-We also had other problems with the previous patch because sometimes
-we'd end up on the SPI pumping thread and had our priority downgraded.
-
-Both the competition with other high priority things and the priority
-downgrading are fixed by this new series.
-
-After this series I can run the following test on Chrome OS (which
-mounts /var as stateful encrypted) with no errors:
-  dd if=/dev/zero of=/var/log/foo.txt bs=4M count=512&
-  while true; do
-    ectool version > /dev/null;
-  done
-
-Special thanks to Guenter Roeck for pointing out the "realtime"
-feature of the SPI framework so I didn't re-invent the wheel.  I have
-no idea how I missed it.  :-/
-
-Also note: if you want some history on investigation done here, feel
-free to peruse the Chrome OS bug [2].
-
-[1] https://lkml.kernel.org/r/CAD=FV=VOAjgdrvkK8YKPP-8zqwPpo39rA43JH2BCeYLB0UkgAQ@mail.gmail.com
-[2] https://crbug.com/948742
+Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Reviewed-by: Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+---
 
 Changes in v2:
-- Now only force transfers to the thread for devices that want it.
-- Squashed patch #1 and #2 together.
 - Renamed variable to "force_rt_transfers".
 
-Douglas Anderson (3):
-  spi: Allow SPI devices to force transfers on a realtime thread
-  platform/chrome: cros_ec_spi: Force transfers to realtime priority
-  Revert "platform/chrome: cros_ec_spi: Transfer messages at high
-    priority"
+ drivers/platform/chrome/cros_ec_spi.c | 1 +
+ 1 file changed, 1 insertion(+)
 
- drivers/platform/chrome/cros_ec_spi.c | 81 +++------------------------
- drivers/spi/spi.c                     | 49 +++++++++++++---
- include/linux/spi/spi.h               |  5 ++
- 3 files changed, 52 insertions(+), 83 deletions(-)
-
+diff --git a/drivers/platform/chrome/cros_ec_spi.c b/drivers/platform/chrome/cros_ec_spi.c
+index 8e9451720e73..a2959365a870 100644
+--- a/drivers/platform/chrome/cros_ec_spi.c
++++ b/drivers/platform/chrome/cros_ec_spi.c
+@@ -703,6 +703,7 @@ static int cros_ec_spi_probe(struct spi_device *spi)
+ 
+ 	spi->bits_per_word = 8;
+ 	spi->mode = SPI_MODE_0;
++	spi->force_rt_transfers = true;
+ 	err = spi_setup(spi);
+ 	if (err < 0)
+ 		return err;
 -- 
 2.21.0.1020.gf2820cf01a-goog
