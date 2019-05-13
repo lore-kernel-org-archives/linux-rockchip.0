@@ -1,48 +1,45 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 4/4] Revert "platform/chrome: cros_ec_spi: Transfer
- messages at high priority"
-Date: Mon, 13 May 2019 13:21:23 -0700
-Message-ID: <CAD=FV=XkkKRJN+Vv6+nf8EjXoCuO-0MG923v-0HKPMYg=mdZww@mail.gmail.com>
-References: <20190510223437.84368-1-dianders@chromium.org> <20190510223437.84368-5-dianders@chromium.org>
- <20190512074538.GE21483@sirena.org.uk> <CAD=FV=Xg96SGg-JDjEJRtC6jACcN9Xizcr-zV4rQwXYvuEvmRA@mail.gmail.com>
- <20190513160153.GD5168@sirena.org.uk> <CAD=FV=Xm-2oxit7doVAYJr28c-xHqUdt9PQC=WYpYfsAyUxuaw@mail.gmail.com>
- <20190513164738.GE5168@sirena.org.uk>
+Subject: Re: [PATCH 1/4] spi: For controllers that need realtime always use
+ the pump thread
+Date: Mon, 13 May 2019 13:24:57 -0700
+Message-ID: <CAD=FV=UBic4qywgYQFGEXx_frD9ZoRJX7XGgDbQCvb2CbkBa9w@mail.gmail.com>
+References: <20190510223437.84368-1-dianders@chromium.org> <20190510223437.84368-2-dianders@chromium.org>
+ <20190512073301.GC21483@sirena.org.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190513164738.GE5168@sirena.org.uk>
+In-Reply-To: <20190512073301.GC21483@sirena.org.uk>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Mark Brown <broonie@kernel.org>
-Cc: Benson Leung <bleung@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Nicolas Boichat <drinkcat@chromium.org>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, LKML <linux-kernel@vger.kernel.org>
+Cc: Benson Leung <bleung@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Nicolas Boichat <drinkcat@chromium.org>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, LKML <linux-kernel@vger.kernel.org>, linux-spi <linux-spi@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Mon, May 13, 2019 at 9:47 AM, Mark Brown <broonie@kernel.org> wrote:
+On Sun, May 12, 2019 at 10:05 AM Mark Brown <broonie@kernel.org> wrote:
 
-> On Mon, May 13, 2019 at 09:03:28AM -0700, Doug Anderson wrote:
-> > On Mon, May 13, 2019 at 9:02 AM Mark Brown <broonie@kernel.org> wrote:
+> On Fri, May 10, 2019 at 03:34:34PM -0700, Douglas Anderson wrote:
+> > If a controller specifies that it needs high priority for sending
+> > messages we should always schedule our transfers on the thread.  If we
+> > don't do this we'll do the transfer in the caller's context which
+> > might not be very high priority.
 >
-> > > I'm not saying the other changes aren't helping, I'm saying that it's
-> > > not clear that this revert is improving things.
->
-> > If I add a call to force the pumping to happen on the SPI thread then
-> > the commit I'm reverting here is useless though, isn't it?
->
-> Well, I'm not convinced that that change is ideal anyway and it does
-> leave you vulnerable to further changes in the SPI core pushing things
-> out to calling context which feels like it isn't going to be helping
-> robustness.
+> If performance is important you probably also want to avoid the context
+> thrashing - executing in the calling context is generally a substantial
+> performance boost.  I can see this causing problems further down the
+> line when someone else turns up with a different requirement, perhaps in
+> an application where the caller does actually have a raised priority
+> themselves and just wanted to make sure that the thread wasn't lower
+> than they are.  I guess it'd be nice if we could check what priority the
+> calling thread has and make a decision based on that but there don't
+> seem to be any facilities for doing that which I can see right now.
 
-OK.  Here's my plan: in v2 I've still included this revert and you can
-see how things look.  If you hate it as much as you think you will
-then let me know and I'll send a v3 that avoids to forcing and re-adds
-the realtime thread to cros_ec.
-
-One note just so you're aware: For my particular device I'm not nearly
-as concerned with latency / throughput as I am concerned with
-transfers not getting interrupted once started.  I've added this
-explicitly in the commit message now, too.  :-)
-
+In my case performance is 2nd place to a transfer not getting
+interrupted once started (so we don't break the 8ms rule of the EC).
+My solution in v2 of my series is to take out the forcing in the case
+that the controller wanted "rt" priority and then to add "force" to
+the parameter name.  If someone wants rt priority for the thread but
+doesn't want to force all transfers to the thread we can later add a
+different parameter for that?
 
 -Doug
