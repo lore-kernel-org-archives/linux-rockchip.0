@@ -1,61 +1,67 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v4 3/3] platform/chrome: cros_ec_spi: Request the SPI thread be realtime
-Date: Wed, 15 May 2019 09:48:13 -0700
-Message-ID: <20190515164814.258898-4-dianders@chromium.org>
-References: <20190515164814.258898-1-dianders@chromium.org>
+From: Guenter Roeck <groeck@google.com>
+Subject: Re: [PATCH v4 1/3] platform/chrome: cros_ec_spi: Move to real time
+ priority for transfers
+Date: Wed, 15 May 2019 10:02:12 -0700
+Message-ID: <CABXOdTeCtwFSOvHbBTaSqjv0+rzfbc2mVm=PjtZgid_xRAwwtA@mail.gmail.com>
+References: <20190515164814.258898-1-dianders@chromium.org> <20190515164814.258898-2-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190515164814.258898-1-dianders@chromium.org>
+In-Reply-To: <20190515164814.258898-2-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>, Benson Leung <bleung@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: linux-rockchip@lists.infradead.org, drinkcat@chromium.org, Guenter Roeck <groeck@chromium.org>, briannorris@chromium.org, mka@chromium.org, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Mark Brown <broonie@kernel.org>, Benson Leung <bleung@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Nicolas Boichat <drinkcat@chromium.org>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, linux-kernel <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-All currently known ECs in the wild are very sensitive to timing.
-Specifically the ECs are known to drop a transfer if more than 8 ms
-passes from the assertion of the chip select until the transfer
-finishes.
+On Wed, May 15, 2019 at 9:48 AM Douglas Anderson <dianders@chromium.org> wrote:
+>
+> In commit 37a186225a0c ("platform/chrome: cros_ec_spi: Transfer
+> messages at high priority") we moved transfers to a high priority
+> workqueue.  This helped make them much more reliable.
+>
+> ...but, we still saw failures.
+>
+> We were actually finding ourselves competing for time with dm-crypt
+> which also scheduled work on HIGHPRI workqueues.  While we can
+> consider reverting the change that made dm-crypt run its work at
+> HIGHPRI, the argument in commit a1b89132dc4f ("dm crypt: use
+> WQ_HIGHPRI for the IO and crypt workqueues") is somewhat compelling.
+> It does make sense for IO to be scheduled at a priority that's higher
+> than the default user priority.  It also turns out that dm-crypt isn't
+> alone in using high priority like this.  loop_prepare_queue() does
+> something similar for loopback devices.
+>
+> Looking in more detail, it can be seen that the high priority
+> workqueue isn't actually that high of a priority.  It runs at MIN_NICE
+> which is _fairly_ high priority but still below all real time
+> priority.
+>
+> Should we move cros_ec_spi to real time priority to fix our problems,
+> or is this just escalating a priority war?  I'll argue here that
+> cros_ec_spi _does_ belong at real time priority.  Specifically
+> cros_ec_spi actually needs to run quickly for correctness.  As I
+> understand this is exactly what real time priority is for.
+>
+> There currently doesn't appear to be any way to use the standard
+> workqueue APIs with a real time priority, so we'll switch over to
+> using using a kthread worker.  We'll match the priority that the SPI
+> core uses when it wants to do things on a realtime thread and just use
+> "MAX_RT_PRIO - 1".
+>
+> This commit plus the patch ("platform/chrome: cros_ec_spi: Request the
+> SPI thread be realtime") are enough to get communications very close
+> to 100% reliable (the only known problem left is when serial console
+> is turned on, which isn't something that happens in shipping devices).
+> Specifically this test case now passes (tested on rk3288-veyron-jerry):
+>
+>   dd if=/dev/zero of=/var/log/foo.txt bs=4M count=512&
+>   while true; do
+>     ectool version > /dev/null;
+>   done
+>
+> It should be noted that "/var/log" is encrypted (and goes through
+> dm-crypt) and also passes through a loopback device.
+>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-Let's use the new feature introduced in the patch (spi: Allow SPI
-devices to request the pumping thread be realtime") to request the SPI
-pumping thread be realtime.  This means that if we get shunted off to
-the SPI thread for whatever reason we won't get downgraded to low
-priority.
-
-NOTES:
-- We still need to keep ourselves as high priority since the SPI core
-  doesn't guarantee that all transfers end up on the pumping thread
-  (in fact, it tries pretty hard to do them in the calling context).
-- If future Chrome OS ECs ever fix themselves to be less sensitive
-  then we could consider adding a property (or compatible string) to
-  not set this property.  For now we need it across the board.
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
 Reviewed-by: Guenter Roeck <groeck@chromium.org>
----
-
-Changes in v4: None
-Changes in v3:
-- Updated description and variable name since we no longer force.
-
-Changes in v2:
-- Renamed variable to "force_rt_transfers".
-
- drivers/platform/chrome/cros_ec_spi.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/platform/chrome/cros_ec_spi.c b/drivers/platform/chrome/cros_ec_spi.c
-index 1e38a885c539..daf3119191c8 100644
---- a/drivers/platform/chrome/cros_ec_spi.c
-+++ b/drivers/platform/chrome/cros_ec_spi.c
-@@ -740,6 +740,7 @@ static int cros_ec_spi_probe(struct spi_device *spi)
- 
- 	spi->bits_per_word = 8;
- 	spi->mode = SPI_MODE_0;
-+	spi->rt = true;
- 	err = spi_setup(spi);
- 	if (err < 0)
- 		return err;
--- 
-2.21.0.1020.gf2820cf01a-goog
