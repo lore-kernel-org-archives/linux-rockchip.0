@@ -1,28 +1,66 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v4 0/3] spi: A better solution for cros_ec_spi reliability
-Date: Wed, 15 May 2019 09:48:10 -0700
-Message-ID: <20190515164814.258898-1-dianders@chromium.org>
+Subject: [PATCH v4 1/3] platform/chrome: cros_ec_spi: Move to real time priority for transfers
+Date: Wed, 15 May 2019 09:48:11 -0700
+Message-ID: <20190515164814.258898-2-dianders@chromium.org>
+References: <20190515164814.258898-1-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190515164814.258898-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Mark Brown <broonie@kernel.org>, Benson Leung <bleung@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: linux-rockchip@lists.infradead.org, drinkcat@chromium.org, Guenter Roeck <groeck@chromium.org>, briannorris@chromium.org, mka@chromium.org, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, drinkcat@chromium.org, Guenter Roeck <groeck@chromium.org>, briannorris@chromium.org, mka@chromium.org, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This series is a much better solution for getting the Chrome OS EC to
-talk reliably.
+In commit 37a186225a0c ("platform/chrome: cros_ec_spi: Transfer
+messages at high priority") we moved transfers to a high priority
+workqueue.  This helped make them much more reliable.
 
-Patch #1 in this series is the most important.  It can land any time.
+...but, we still saw failures.
 
-Patch #2 in this series (a SPI framework patch) needs to land before
-patch #3.  Note that patches #2 and #3 really just fix a corner case
-and just having patch #1 is the most important.  We don't end up on
-the pumping thread very often.
+We were actually finding ourselves competing for time with dm-crypt
+which also scheduled work on HIGHPRI workqueues.  While we can
+consider reverting the change that made dm-crypt run its work at
+HIGHPRI, the argument in commit a1b89132dc4f ("dm crypt: use
+WQ_HIGHPRI for the IO and crypt workqueues") is somewhat compelling.
+It does make sense for IO to be scheduled at a priority that's higher
+than the default user priority.  It also turns out that dm-crypt isn't
+alone in using high priority like this.  loop_prepare_queue() does
+something similar for loopback devices.
 
-Note:
-- If you want some history on investigation done here, feel free to
-  peruse the Chrome OS bug: <https://crbug.com/948742>.
+Looking in more detail, it can be seen that the high priority
+workqueue isn't actually that high of a priority.  It runs at MIN_NICE
+which is _fairly_ high priority but still below all real time
+priority.
+
+Should we move cros_ec_spi to real time priority to fix our problems,
+or is this just escalating a priority war?  I'll argue here that
+cros_ec_spi _does_ belong at real time priority.  Specifically
+cros_ec_spi actually needs to run quickly for correctness.  As I
+understand this is exactly what real time priority is for.
+
+There currently doesn't appear to be any way to use the standard
+workqueue APIs with a real time priority, so we'll switch over to
+using using a kthread worker.  We'll match the priority that the SPI
+core uses when it wants to do things on a realtime thread and just use
+"MAX_RT_PRIO - 1".
+
+This commit plus the patch ("platform/chrome: cros_ec_spi: Request the
+SPI thread be realtime") are enough to get communications very close
+to 100% reliable (the only known problem left is when serial console
+is turned on, which isn't something that happens in shipping devices).
+Specifically this test case now passes (tested on rk3288-veyron-jerry):
+
+  dd if=/dev/zero of=/var/log/foo.txt bs=4M count=512&
+  while true; do
+    ectool version > /dev/null;
+  done
+
+It should be noted that "/var/log" is encrypted (and goes through
+dm-crypt) and also passes through a loopback device.
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
 
 Changes in v4:
 - No needless init of err in cros_ec_spi_devm_high_pri_alloc (Guenter).
@@ -32,24 +70,142 @@ Changes in v4:
 
 Changes in v3:
 - cros_ec realtime patch replaces revert; now patch #1
-- SPI core change now like patch v1 patch #2 (with name "rt").
-- Updated description and variable name since we no longer force.
 
-Changes in v2:
-- Now only force transfers to the thread for devices that want it.
-- Squashed patch #1 and #2 together.
-- Renamed variable to "force_rt_transfers".
-- Renamed variable to "force_rt_transfers".
+Changes in v2: None
 
-Douglas Anderson (3):
-  platform/chrome: cros_ec_spi: Move to real time priority for transfers
-  spi: Allow SPI devices to request the pumping thread be realtime
-  platform/chrome: cros_ec_spi: Request the SPI thread be realtime
+ drivers/platform/chrome/cros_ec_spi.c | 65 ++++++++++++++++++++++-----
+ 1 file changed, 53 insertions(+), 12 deletions(-)
 
- drivers/platform/chrome/cros_ec_spi.c | 66 ++++++++++++++++++++++-----
- drivers/spi/spi.c                     | 36 ++++++++++++---
- include/linux/spi/spi.h               |  2 +
- 3 files changed, 86 insertions(+), 18 deletions(-)
-
+diff --git a/drivers/platform/chrome/cros_ec_spi.c b/drivers/platform/chrome/cros_ec_spi.c
+index 8e9451720e73..1e38a885c539 100644
+--- a/drivers/platform/chrome/cros_ec_spi.c
++++ b/drivers/platform/chrome/cros_ec_spi.c
+@@ -12,7 +12,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/slab.h>
+ #include <linux/spi/spi.h>
+-
++#include <uapi/linux/sched/types.h>
+ 
+ /* The header byte, which follows the preamble */
+ #define EC_MSG_HEADER			0xec
+@@ -67,12 +67,14 @@
+  *      is sent when we want to turn on CS at the start of a transaction.
+  * @end_of_msg_delay: used to set the delay_usecs on the spi_transfer that
+  *      is sent when we want to turn off CS at the end of a transaction.
++ * @high_pri_worker: Used to schedule high priority work.
+  */
+ struct cros_ec_spi {
+ 	struct spi_device *spi;
+ 	s64 last_transfer_ns;
+ 	unsigned int start_of_msg_delay;
+ 	unsigned int end_of_msg_delay;
++	struct kthread_worker *high_pri_worker;
+ };
+ 
+ typedef int (*cros_ec_xfer_fn_t) (struct cros_ec_device *ec_dev,
+@@ -89,7 +91,7 @@ typedef int (*cros_ec_xfer_fn_t) (struct cros_ec_device *ec_dev,
+  */
+ 
+ struct cros_ec_xfer_work_params {
+-	struct work_struct work;
++	struct kthread_work work;
+ 	cros_ec_xfer_fn_t fn;
+ 	struct cros_ec_device *ec_dev;
+ 	struct cros_ec_command *ec_msg;
+@@ -632,7 +634,7 @@ static int do_cros_ec_cmd_xfer_spi(struct cros_ec_device *ec_dev,
+ 	return ret;
+ }
+ 
+-static void cros_ec_xfer_high_pri_work(struct work_struct *work)
++static void cros_ec_xfer_high_pri_work(struct kthread_work *work)
+ {
+ 	struct cros_ec_xfer_work_params *params;
+ 
+@@ -644,12 +646,14 @@ static int cros_ec_xfer_high_pri(struct cros_ec_device *ec_dev,
+ 				 struct cros_ec_command *ec_msg,
+ 				 cros_ec_xfer_fn_t fn)
+ {
+-	struct cros_ec_xfer_work_params params;
+-
+-	INIT_WORK_ONSTACK(&params.work, cros_ec_xfer_high_pri_work);
+-	params.ec_dev = ec_dev;
+-	params.ec_msg = ec_msg;
+-	params.fn = fn;
++	struct cros_ec_spi *ec_spi = ec_dev->priv;
++	struct cros_ec_xfer_work_params params = {
++		.work = KTHREAD_WORK_INIT(params.work,
++					  cros_ec_xfer_high_pri_work),
++		.ec_dev = ec_dev,
++		.ec_msg = ec_msg,
++		.fn = fn,
++	};
+ 
+ 	/*
+ 	 * This looks a bit ridiculous.  Why do the work on a
+@@ -660,9 +664,8 @@ static int cros_ec_xfer_high_pri(struct cros_ec_device *ec_dev,
+ 	 * context switched out for too long and the EC giving up on
+ 	 * the transfer.
+ 	 */
+-	queue_work(system_highpri_wq, &params.work);
+-	flush_work(&params.work);
+-	destroy_work_on_stack(&params.work);
++	kthread_queue_work(ec_spi->high_pri_worker, &params.work);
++	kthread_flush_work(&params.work);
+ 
+ 	return params.ret;
+ }
+@@ -694,6 +697,40 @@ static void cros_ec_spi_dt_probe(struct cros_ec_spi *ec_spi, struct device *dev)
+ 		ec_spi->end_of_msg_delay = val;
+ }
+ 
++static void cros_ec_spi_high_pri_release(void *worker)
++{
++	kthread_destroy_worker(worker);
++}
++
++static int cros_ec_spi_devm_high_pri_alloc(struct device *dev,
++					   struct cros_ec_spi *ec_spi)
++{
++	struct sched_param sched_priority = {
++		.sched_priority = MAX_RT_PRIO - 1,
++	};
++	int err;
++
++	ec_spi->high_pri_worker =
++		kthread_create_worker(0, "cros_ec_spi_high_pri");
++
++	if (IS_ERR(ec_spi->high_pri_worker)) {
++		err = PTR_ERR(ec_spi->high_pri_worker);
++		dev_err(dev, "Can't create cros_ec high pri worker: %d\n", err);
++		return err;
++	}
++
++	err = devm_add_action_or_reset(dev, cros_ec_spi_high_pri_release,
++				       ec_spi->high_pri_worker);
++	if (err)
++		return err;
++
++	err = sched_setscheduler_nocheck(ec_spi->high_pri_worker->task,
++					 SCHED_FIFO, &sched_priority);
++	if (err)
++		dev_err(dev, "Can't set cros_ec high pri priority: %d\n", err);
++	return err;
++}
++
+ static int cros_ec_spi_probe(struct spi_device *spi)
+ {
+ 	struct device *dev = &spi->dev;
+@@ -732,6 +769,10 @@ static int cros_ec_spi_probe(struct spi_device *spi)
+ 
+ 	ec_spi->last_transfer_ns = ktime_get_ns();
+ 
++	err = cros_ec_spi_devm_high_pri_alloc(dev, ec_spi);
++	if (err)
++		return err;
++
+ 	err = cros_ec_register(ec_dev);
+ 	if (err) {
+ 		dev_err(dev, "cannot register EC\n");
 -- 
 2.21.0.1020.gf2820cf01a-goog
