@@ -1,65 +1,39 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 1/2] dts: rockchip: raise GPU trip point temperature for
- veyron to 72.5 degC
-Date: Wed, 15 May 2019 11:30:24 -0700
-Message-ID: <CAD=FV=U19uAGkwTqg-N6_m5WYQ7yMwjQir3TYUsb3SWWOihTOg@mail.gmail.com>
-References: <20190515153127.24626-1-mka@chromium.org>
+Subject: Re: [PATCH 2/5] drm/bridge/synopsys: dw-hdmi: Add "unwedge" for ddc bus
+Date: Wed, 15 May 2019 11:36:33 -0700
+Message-ID: <CAD=FV=WP-rFDAR28oZg+9DcrXbaYPjFCAD-dV1VR3-3_XDs-3A@mail.gmail.com>
+References: <20190502225336.206885-1-dianders@chromium.org>
+ <20190502225336.206885-2-dianders@chromium.org> <20190515182038.GV17077@art_vandelay>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190515153127.24626-1-mka@chromium.org>
+In-Reply-To: <20190515182038.GV17077@art_vandelay>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Kaehlcke <mka@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
+To: Sean Paul <sean@poorly.run>
+Cc: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, dri-devel <dri-devel@lists.freedesktop.org>, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>, Sean Paul <seanpaul@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Wed, May 15, 2019 at 8:31 AM Matthias Kaehlcke <mka@chromium.org> wrote:
+On Wed, May 15, 2019 at 11:20 AM Sean Paul <sean@poorly.run> wrote:
 
-> This value matches what is used by the downstream Chrome OS 3.14
-> kernel, the 'official' kernel for veyron devices.
+> > +                     if (IS_ERR(hdmi->default_state) &&
+> > +                         !IS_ERR(hdmi->unwedge_state)) {
+> > +                             dev_warn(dev,
+> > +                                      "Unwedge requires default pinctrl\n");
 >
-> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
-> ---
->  arch/arm/boot/dts/rk3288-veyron.dtsi | 8 ++++++++
->  1 file changed, 8 insertions(+)
->
-> diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
-> index 1252522392c7..169da06e1c09 100644
-> --- a/arch/arm/boot/dts/rk3288-veyron.dtsi
-> +++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
-> @@ -446,6 +446,14 @@
->         status = "okay";
->  };
->
-> +&gpu_thermal {
-> +       trips {
-> +               gpu_alert0: gpu_alert0 {
-> +                       temperature = <72500>; /* millicelsius */
-> +               };
-> +       };
-> +};
-> +
+> Can you downgrade this message to info or dbg? Given how rare this issue is, we
+> probably don't want to spam everyone who is happily using dw-hdmi.
 
-This should be sorted alphabetically.  Thus this should sort right
-after this in rk3288-veyron.dtsi
+I don't think it will spam anyone, will it?  It will only spam if you
+_do_ specify an unwedge state and you _don't_ specify a default state.
+This seems like something you'd want a pretty serious warning about
+because it meant that you wanted to use unwedge but you didn't specify
+it properly.
 
-&gpu {
-  mali-supply = <&vdd_gpu>;
-  status = "okay";
-};
 
-Also you don't need to replicate the whole structure?  I think the
-above should just be:
+> Reviewed-by: Sean Paul <sean@poorly.run>
 
-&gpu_alert0 {
-  temperature = <72500>; /* millicelsius */
-};
-
-NOTE also that that gpu and cpu critical is 100 C downstream.  Should
-we do that too?  Ah, but before we do that I guess we'd need to also
-override the "rockchip,hw-tshut-temp" to 125000 to match downstream.
-I guess that could be a separate series?
+Thanks!
 
 -Doug
