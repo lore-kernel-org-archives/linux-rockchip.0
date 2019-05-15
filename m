@@ -1,50 +1,62 @@
-From: Sean Paul <sean@poorly.run>
-Subject: Re: [PATCH 2/5] drm/bridge/synopsys: dw-hdmi: Add "unwedge" for ddc
- bus
-Date: Wed, 15 May 2019 14:42:49 -0400
-Message-ID: <20190515184249.GA17077@art_vandelay>
-References: <20190502225336.206885-1-dianders@chromium.org>
- <20190502225336.206885-2-dianders@chromium.org>
- <20190515182038.GV17077@art_vandelay>
- <CAD=FV=WP-rFDAR28oZg+9DcrXbaYPjFCAD-dV1VR3-3_XDs-3A@mail.gmail.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: Add #cooling-cells entry for rk3288 GPU
+Date: Wed, 15 May 2019 11:43:28 -0700
+Message-ID: <CAD=FV=WQ-yAeB_xU5UVHGWgsC=a9t_CtN9bHvZnoxkfuA9=zGw@mail.gmail.com>
+References: <20190424162827.5297-1-mka@chromium.org> <CAD=FV=W+QGLmhEaqGc-=wNFzmaCr_f4rb5e8KQ4ZmeRaNi_xCw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAD=FV=WP-rFDAR28oZg+9DcrXbaYPjFCAD-dV1VR3-3_XDs-3A@mail.gmail.com>
+In-Reply-To: <CAD=FV=W+QGLmhEaqGc-=wNFzmaCr_f4rb5e8KQ4ZmeRaNi_xCw@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Sean Paul <sean@poorly.run>, Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, dri-devel <dri-devel@lists.freedesktop.org>, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>, Sean Paul <seanpaul@chromium.org>
+To: Matthias Kaehlcke <mka@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, May 15, 2019 at 11:36:33AM -0700, Doug Anderson wrote:
+Hi,
+
+On Wed, May 15, 2019 at 10:59 AM Doug Anderson <dianders@chromium.org> wrote:
+
 > Hi,
-> 
-> On Wed, May 15, 2019 at 11:20 AM Sean Paul <sean@poorly.run> wrote:
-> 
-> > > +                     if (IS_ERR(hdmi->default_state) &&
-> > > +                         !IS_ERR(hdmi->unwedge_state)) {
-> > > +                             dev_warn(dev,
-> > > +                                      "Unwedge requires default pinctrl\n");
+>
+> On Wed, Apr 24, 2019 at 9:28 AM Matthias Kaehlcke <mka@chromium.org> wrote:
+>
+> > The Mali GPU of the rk3288 can be used as cooling device, add
+> > a #cooling-cells entry for it.
 > >
-> > Can you downgrade this message to info or dbg? Given how rare this issue is, we
-> > probably don't want to spam everyone who is happily using dw-hdmi.
-> 
-> I don't think it will spam anyone, will it?  It will only spam if you
-> _do_ specify an unwedge state and you _don't_ specify a default state.
-> This seems like something you'd want a pretty serious warning about
-> because it meant that you wanted to use unwedge but you didn't specify
-> it properly.
-> 
+> > Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+> > ---
+> >  arch/arm/boot/dts/rk3288.dtsi | 1 +
+> >  1 file changed, 1 insertion(+)
+> >
+> > diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+> > index ca7d52daa8fb..767e62908a6e 100644
+> > --- a/arch/arm/boot/dts/rk3288.dtsi
+> > +++ b/arch/arm/boot/dts/rk3288.dtsi
+> > @@ -1275,6 +1275,7 @@
+> >                 interrupt-names = "job", "mmu", "gpu";
+> >                 clocks = <&cru ACLK_GPU>;
+> >                 operating-points-v2 = <&gpu_opp_table>;
+> > +               #cooling-cells = <2>; /* min followed by max */
+> >                 power-domains = <&power RK3288_PD_GPU>;
+> >                 status = "disabled";
+> >         };
+>
+> Seems like a good idea to me.  Presumably we should also add this to
+> the bindings?
+>
+> Reviewed-by: Douglas Anderson <dianders@chromium.org>
 
-That'll teach me for skimming, you're right on, thanks for the correction!
+I guess we could now also do a follow-up CL that starts using the GPU
+as a cooling device.  Presumably it's still OK to specify this and it
+will just be ignored if there's no GPU driver?  It's a little funny
+because the upstream device tree uses the CPU to cool things down if
+the GPU temperature sensor trips.  Downstream uses the GPU to cool
+down the GPU.  ...though, of course, it's not really all that simple
+since everything is packed in so tightly.
 
-> 
-> > Reviewed-by: Sean Paul <sean@poorly.run>
-> 
-> Thanks!
-> 
-> -Doug
+The other case that sticks as a sore thumb is the upstream
+"rk3288-veyron-mickey" where all the comments still talk about the GPU
+cooling but we have only the CPU cooling actually in the device tree.
+:-)
 
--- 
-Sean Paul, Software Engineer, Google / Chromium OS
+-Doug
