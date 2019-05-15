@@ -1,107 +1,137 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v3 1/3] platform/chrome: cros_ec_spi: Move to real time
- priority for transfers
-Date: Tue, 14 May 2019 14:23:13 -0700
-Message-ID: <CAD=FV=WrxeKGNH6jsuvdDaENQDnqjW2f2VO25-VReYKfP7L3Lw@mail.gmail.com>
-References: <20190514183935.143463-1-dianders@chromium.org>
- <20190514183935.143463-2-dianders@chromium.org> <CABXOdTc36r7XV-3o8MJiaUTkaALtfQAQpi1gV2xvsDSX+S3s2A@mail.gmail.com>
+From: Tom Murphy <tmurphy@arista.com>
+Subject: Re: [PATCH v3 2/4] iommu/dma-iommu: Handle deferred devices
+Date: Wed, 15 May 2019 13:46:43 +0100
+Message-ID: <CAPL0++5AUyVHexpsE86PfXxmQgDHfxjSSoAAGXM5c7Mdix=OZQ@mail.gmail.com>
+References: <20190506185207.31069-1-tmurphy@arista.com> <20190506185207.31069-3-tmurphy@arista.com>
+ <20190507064000.GB5173@infradead.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CABXOdTc36r7XV-3o8MJiaUTkaALtfQAQpi1gV2xvsDSX+S3s2A@mail.gmail.com>
+In-Reply-To: <20190507064000.GB5173@infradead.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Guenter Roeck <groeck@google.com>
-Cc: Mark Brown <broonie@kernel.org>, Benson Leung <bleung@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Nicolas Boichat <drinkcat@chromium.org>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, linux-kernel <linux-kernel@vger.kernel.org>
+To: Christoph Hellwig <hch@infradead.org>
+Cc: iommu@lists.linux-foundation.org, Tom Murphy <murphyt7@tcd.ie>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.ker
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+like this?
 
-On Tue, May 14, 2019 at 12:34 PM Guenter Roeck <groeck@google.com> wrote:
+In that case we need to add a call to iommu_dma_alloc_remap.
 
-> On Tue, May 14, 2019 at 11:40 AM Douglas Anderson <dianders@chromium.org> wrote:
-> > +static void cros_ec_spi_high_pri_release(struct device *dev, void *res)
+From 862aeebb601008cf863e3aff4ff8ed7cefebeefa Mon Sep 17 00:00:00 2001
+From: Tom Murphy <tmurphy@tmurphy-419tom-0.sjc.aristanetworks.com>
+Date: Wed, 15 May 2019 05:43:25 -0700
+Subject: [PATCH] iommu/dma-iommu: Handle deferred devices
+
+Handle devices which defer their attach to the iommu in the dma-iommu api
+
+Signed-off-by: Tom Murphy <tmurphy@arista.com>
+---
+ drivers/iommu/dma-iommu.c | 27 ++++++++++++++++++++++++++-
+ 1 file changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
+index 7f313cfa9..a48ae906d 100644
+--- a/drivers/iommu/dma-iommu.c
++++ b/drivers/iommu/dma-iommu.c
+@@ -22,6 +22,7 @@
+ #include <linux/pci.h>
+ #include <linux/scatterlist.h>
+ #include <linux/vmalloc.h>
++#include <linux/crash_dump.h>
+
+ struct iommu_dma_msi_page {
+     struct list_head    list;
+@@ -323,6 +324,21 @@ static int iommu_dma_init_domain(struct
+iommu_domain *domain, dma_addr_t base,
+     return iova_reserve_iommu_regions(dev, domain);
+ }
+
++static int handle_deferred_device(struct device *dev,
++        struct iommu_domain *domain)
++{
++    const struct iommu_ops *ops = domain->ops;
++
++    if (!is_kdump_kernel())
++        return 0;
++
++    if (unlikely(ops->is_attach_deferred &&
++            ops->is_attach_deferred(domain, dev)))
++        return iommu_attach_device(domain, dev);
++
++    return 0;
++}
++
+ /**
+  * dma_info_to_prot - Translate DMA API directions and attributes to IOMMU API
+  *                    page flags.
+@@ -432,6 +448,9 @@ static dma_addr_t __iommu_dma_map(struct device
+*dev, phys_addr_t phys,
+     size_t iova_off = 0;
+     dma_addr_t iova;
+
++    if (unlikely(handle_deferred_device(dev, domain)))
++        return DMA_MAPPING_ERROR;
++
+     if (cookie->type == IOMMU_DMA_IOVA_COOKIE) {
+         iova_off = iova_offset(&cookie->iovad, phys);
+         size = iova_align(&cookie->iovad, size + iova_off);
+@@ -609,6 +628,9 @@ static void *iommu_dma_alloc_remap(struct device
+*dev, size_t size,
+     dma_addr_t iova;
+     void *vaddr;
+
++    if (unlikely(handle_deferred_device(dev, domain)))
++        return DMA_MAPPING_ERROR;
++
+     *dma_handle = DMA_MAPPING_ERROR;
+
+     min_size = alloc_sizes & -alloc_sizes;
+@@ -836,7 +858,7 @@ static dma_addr_t iommu_dma_map_page(struct device
+*dev, struct page *page,
+     bool coherent = dev_is_dma_coherent(dev);
+     dma_addr_t dma_handle;
+
+-    dma_handle =__iommu_dma_map(dev, phys, size,
++    dma_handle = __iommu_dma_map(dev, phys, size,
+             dma_info_to_prot(dir, coherent, attrs),
+             iommu_get_dma_domain(dev));
+     if (!coherent && !(attrs & DMA_ATTR_SKIP_CPU_SYNC) &&
+@@ -954,6 +976,9 @@ static int iommu_dma_map_sg(struct device *dev,
+struct scatterlist *sg,
+     unsigned long mask = dma_get_seg_boundary(dev);
+     int i;
+
++    if (unlikely(handle_deferred_device(dev, domain)))
++        return 0;
++
+     if (!(attrs & DMA_ATTR_SKIP_CPU_SYNC))
+         iommu_dma_sync_sg_for_device(dev, sg, nents, dir);
+
+-- 
+2.20.0
+
+On Tue, May 7, 2019 at 7:40 AM Christoph Hellwig <hch@infradead.org> wrote:
+>
+> On Mon, May 06, 2019 at 07:52:04PM +0100, Tom Murphy wrote:
+> > +static int handle_deferred_device(struct device *dev)
 > > +{
-> > +       struct cros_ec_spi *ec_spi = *(struct cros_ec_spi **)res;
+> > +     struct iommu_domain *domain;
+> > +     const struct iommu_ops *ops;
 > > +
-> > +       kthread_stop(ec_spi->high_pri_thread);
+> > +     if (!is_kdump_kernel())
+> > +             return 0;
+> > +
+> > +     domain = iommu_get_domain_for_dev(dev);
 >
-> Is that needed ? kthread_destroy_worker() does it for you.
-
-Thanks for catching.  Removed.
-
-
-> > +static int cros_ec_spi_devm_high_pri_alloc(struct device *dev,
-> > +                                          struct cros_ec_spi *ec_spi)
-> > +{
-> > +       struct sched_param sched_priority = {
-> > +               .sched_priority = MAX_RT_PRIO - 1,
-> > +       };
-> > +       struct cros_ec_spi **ptr;
-> > +       int err = 0;
+> > -     dma_handle =__iommu_dma_map(dev, phys, size,
+> > +     if (unlikely(handle_deferred_device(dev)))
+> > +             return DMA_MAPPING_ERROR;
 > > +
-> > +       ptr = devres_alloc(cros_ec_spi_high_pri_release, sizeof(*ptr),
-> > +                          GFP_KERNEL);
-> > +       if (!ptr)
-> > +               return -ENOMEM;
-> > +       *ptr = ec_spi;
-> > +
-> > +       kthread_init_worker(&ec_spi->high_pri_worker);
-> > +       ec_spi->high_pri_thread = kthread_create(kthread_worker_fn,
-> > +                                                &ec_spi->high_pri_worker,
-> > +                                                "cros_ec_spi_high_pri");
-> > +       if (IS_ERR(ec_spi->high_pri_thread)) {
-> > +               err = PTR_ERR(ec_spi->high_pri_thread);
-> > +               dev_err(dev, "Can't create cros_ec high pri thread: %d\n", err);
-> > +               goto err_worker_initted;
-> > +       }
-> > +
-> > +       err = sched_setscheduler_nocheck(ec_spi->high_pri_thread,
-> > +                                        SCHED_FIFO, &sched_priority);
-> > +       if (err) {
-> > +               dev_err(dev, "Can't set cros_ec high pri priority: %d\n", err);
-> > +               goto err_thread_created;
-> > +       }
-> > +
-> > +       wake_up_process(ec_spi->high_pri_thread);
-> > +
-> > +       devres_add(dev, ptr);
-> > +
+> > +     dma_handle = __iommu_dma_map(dev, phys, size,
 >
-> If you move that ahead of sched_setscheduler_nocheck(), you would not
-> need the err_thread_created: label.
-
-Done
-
-
-> > +       return 0;
-> > +
-> > +err_thread_created:
-> > +       kthread_stop(ec_spi->high_pri_thread);
-> > +
-> > +err_worker_initted:
-> > +       kthread_destroy_worker(&ec_spi->high_pri_worker);
+> __iommu_dma_map already looks up the domain, and as far as I can
+> tell all callers need the handle_deferred_device call.  Should we
+> just move it to there and pass the domain from the caller?
 >
-> Are you sure about this ? The worker isn't started here, but
-> kthread_destroy_worker() tries to stop it.
-
-Right.  I was naively thinking that kthread_destroy_worker() was the
-inverse of kthread_init_worker(), but clearly it's not.  :(
-
-...and, in fact, looking closer at kthread_destroy_worker() it looks
-like it's inherently slightly racy with regards to kthread_create().
-Ick.  Specifically it will give a "WARN_ON" if worker->task hasn't
-been set, but that doesn't get set until kthread_worker_fn runs the
-first time.  Oh, but everyone's supposed to use
-kthread_create_worker() to get around that!  :-)  Switching to that.
-...and then of course everything looks so much cleaner!
-
-...so after that I'm effectively implementing
-devm_kthread_create_worker(), but I guess for now I'll just do that
-unless someone thinks that I should try to get that landed...
-
-
-I'll wait to send out a v4 till tomorrow morning to avoid spamming
-with too many versions.  If anyone wants a preview feel free to look
-at <https://crrev.com/c/1612165>
-
--Doug
+> Also shouldn't the iommu_attach_device call inside
+> handle_deferred_device also get an unlikely marker?
