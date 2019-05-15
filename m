@@ -1,42 +1,81 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 2/2] drm/rockchip: dw_hdmi: Handle suspend/resume
-Date: Wed, 15 May 2019 22:04:34 +0200
-Message-ID: <16767939.RRcxLiLXmc@diego>
-References: <20190502223808.185180-1-dianders@chromium.org>
- <20190502223808.185180-2-dianders@chromium.org>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: Re: [PATCH 1/2] dts: rockchip: raise GPU trip point temperature for
+ veyron to 72.5 degC
+Date: Wed, 15 May 2019 14:37:03 -0700
+Message-ID: <20190515213703.GE40515@google.com>
+References: <20190515153127.24626-1-mka@chromium.org>
+ <CAD=FV=U19uAGkwTqg-N6_m5WYQ7yMwjQir3TYUsb3SWWOihTOg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190502223808.185180-2-dianders@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Douglas Anderson <dianders@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, mka@chromium.org, Sean Paul <seanpaul@chromium.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=U19uAGkwTqg-N6_m5WYQ7yMwjQir3TYUsb3SWWOihTOg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRnJlaXRhZywgMy4gTWFpIDIwMTksIDAwOjM4OjA4IENFU1Qgc2NocmllYiBEb3VnbGFzIEFu
-ZGVyc29uOgo+IE9uIFJvY2tjaGlwIHJrMzI4OC1iYXNlZCBDaHJvbWVib29rcyB3aGVuIHlvdSBk
-byBhIHN1c3BlbmQvcmVzdW1lCj4gY3ljbGU6Cj4gCj4gMS4gWW91IGxvc2UgdGhlIGFiaWxpdHkg
-dG8gZGV0ZWN0IGFuIEhETUkgZGV2aWNlIGJlaW5nIHBsdWdnZWQgaW4uCj4gCj4gMi4gSWYgeW91
-J3JlIHVzaW5nIHRoZSBpMmMgYnVzIGJ1aWx0IGluIHRvIGR3X2hkbWkgdGhlbiBpdCBzdG9wcwo+
-IHdvcmtpbmcuCj4gCj4gTGV0J3MgY2FsbCB0aGUgY29yZSBkdy1oZG1pJ3Mgc3VzcGVuZC9yZXN1
-bWUgZnVuY3Rpb25zIHRvIHJlc3RvcmUKPiB0aGluZ3MuCj4gCj4gTk9URTogaW4gZG93bnN0cmVh
-bSBDaHJvbWUgT1MgKGJhc2VkIG9uIGtlcm5lbCAzLjE0KSB3ZSB1c2VkIHRoZQo+ICJsYXRlL2Vh
-cmx5IiB2ZXJzaW9ucyBvZiBzdXNwZW5kL3Jlc3VtZSBiZWNhdXNlIHdlIGZvdW5kIHRoYXQgdGhl
-IFZPUAo+IHdhcyBzb21ldGltZXMgcmVzdW1pbmcgYmVmb3JlIGR3X2hkbWkgYW5kIHRoZW4gY2Fs
-bGluZyBpbnRvIHVzIGJlZm9yZQo+IHdlIHdlcmUgZnVsbHkgcmVzdW1lZC4gIEZvciBub3cgSSBo
-YXZlIGdvbmUgYmFjayB0byB0aGUgbm9ybWFsCj4gc3VzcGVuZC9yZXN1bWUgYmVjYXVzZSBJIGNh
-bid0IHJlcHJvZHVjZSB0aGUgcHJvYmxlbXMuCj4gCj4gU2lnbmVkLW9mZi1ieTogRG91Z2xhcyBB
-bmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPgoKUmV2aWV3ZWQtYnk6IEhlaWtvIFN0dWVi
-bmVyIDxoZWlrb0BzbnRlY2guZGU+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaS1kZXZlbA==
+Hi Doug,
+
+thanks for the review!
+
+On Wed, May 15, 2019 at 11:30:24AM -0700, Doug Anderson wrote:
+> Hi,
+> 
+> On Wed, May 15, 2019 at 8:31 AM Matthias Kaehlcke <mka@chromium.org> wrote:
+> 
+> > This value matches what is used by the downstream Chrome OS 3.14
+> > kernel, the 'official' kernel for veyron devices.
+> >
+> > Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+> > ---
+> >  arch/arm/boot/dts/rk3288-veyron.dtsi | 8 ++++++++
+> >  1 file changed, 8 insertions(+)
+> >
+> > diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
+> > index 1252522392c7..169da06e1c09 100644
+> > --- a/arch/arm/boot/dts/rk3288-veyron.dtsi
+> > +++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
+> > @@ -446,6 +446,14 @@
+> >         status = "okay";
+> >  };
+> >
+> > +&gpu_thermal {
+> > +       trips {
+> > +               gpu_alert0: gpu_alert0 {
+> > +                       temperature = <72500>; /* millicelsius */
+> > +               };
+> > +       };
+> > +};
+> > +
+> 
+> This should be sorted alphabetically.  Thus this should sort right
+> after this in rk3288-veyron.dtsi
+> 
+> &gpu {
+>   mali-supply = <&vdd_gpu>;
+>   status = "okay";
+> };
+
+will do in the next revision.
+
+> Also you don't need to replicate the whole structure?  I think the
+> above should just be:
+> 
+> &gpu_alert0 {
+>   temperature = <72500>; /* millicelsius */
+> };
+
+ack
+
+> NOTE also that that gpu and cpu critical is 100 C downstream.  Should
+> we do that too?
+
+I missed this delta, yes let's do this too in this series.
+
+> Ah, but before we do that I guess we'd need to also  override the
+> "rockchip,hw-tshut-temp" to 125000 to match downstream. I guess that
+> could be a separate series?
+
+Yes, the value should at least be higher than the critical trip point,
+matching downstream seems to make sense.
