@@ -1,40 +1,50 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] drivers/clk/rockchip/clk-rk3228.c: add 1.464GHz clock rate
-Date: Fri, 17 May 2019 00:23:42 +0200
-Message-ID: <5025740.0R6fdBNFxo@phil>
-References: <20190516124437.4906-1-justin.swartz@risingedge.co.za>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 2/2] drm/rockchip: dw_hdmi: Handle suspend/resume
+Date: Thu, 16 May 2019 15:44:51 -0700
+Message-ID: <CAD=FV=V3U=5KttaqjUvvF=vpKwFNMd6q0=J1ZKUrJ1b-Stz5bQ@mail.gmail.com>
+References: <20190516214022.65220-1-dianders@chromium.org> <20190516214022.65220-2-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190516124437.4906-1-justin.swartz@risingedge.co.za>
+In-Reply-To: <20190516214022.65220-2-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Justin Swartz <justin.swartz@risingedge.co.za>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Neil Armstrong <narmstrong@baylibre.com>, Matthias Kaehlcke <mka@chromium.org>, Sean Paul <seanpaul@chromium.org>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Justin,
+Hi,
 
-Am Donnerstag, 16. Mai 2019, 14:44:36 CEST schrieb Justin Swartz:
-> Add missing 1.464GHz clock rate to rk3228_cpuclk_rates[]
-> 
-> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+On Thu, May 16, 2019 at 2:40 PM Douglas Anderson <dianders@chromium.org> wrote:
+>
+> On Rockchip rk3288-based Chromebooks when you do a suspend/resume
+> cycle:
+>
+> 1. You lose the ability to detect an HDMI device being plugged in.
+>
+> 2. If you're using the i2c bus built in to dw_hdmi then it stops
+> working.
+>
+> Let's call the core dw-hdmi's suspend/resume functions to restore
+> things.
+>
+> NOTE: in downstream Chrome OS (based on kernel 3.14) we used the
+> "late/early" versions of suspend/resume because we found that the VOP
+> was sometimes resuming before dw_hdmi and then calling into us before
+> we were fully resumed.  For now I have gone back to the normal
+> suspend/resume because I can't reproduce the problems.
+>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+>
+> Changes in v2:
+> - Add forgotten static (Laurent)
+> - No empty stub for suspend (Laurent)
+>
+>  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
 
-I've applied the patch for kernel 5.3 and adapted the subject
-plus commit message a bit to:
+Whoops, forgot that I should have carried forward:
 
-"clk: rockchip: add 1.464GHz cpu-clock rate to rk3228
-    
-Add missing 1.464GHz clock rate to rk3228_cpuclk_rates[], which gets
-referenced in the operating points but wasn't defined till now."
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-So just for you next submissions:
-The patch subject should match the subsystem prefix which you can see with
-something like "git log --oneline drivers/clk/rockchip" and the commit
-message can be as verbose as you like.
-
-So just to clarify, no need to change anything for this patch, just to
-keep in mind for future patches :-) .
-
-Thanks
-Heiko
+-Doug
