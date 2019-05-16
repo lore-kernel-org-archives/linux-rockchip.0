@@ -1,42 +1,70 @@
-From: Justin Swartz <justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org>
-Subject: [PATCH] drivers/clk/rockchip/clk-rk3228.c: add 1.464GHz clock rate
-Date: Thu, 16 May 2019 12:44:36 +0000
-Message-ID: <20190516124437.4906-1-justin.swartz@risingedge.co.za>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: [PATCH v2 1/3] ARM: dts: rockchip: raise CPU trip point temperature for veyron to 100 degC
+Date: Thu, 16 May 2019 09:29:40 -0700
+Message-ID: <20190516162942.154823-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Justin Swartz <justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add missing 1.464GHz clock rate to rk3228_cpuclk_rates[]
+This value matches what is used by the downstream Chrome OS 3.14
+kernel, the 'official' kernel for veyron devices. Keep the temperature
+for 'speedy' at 90°C, as in the downstream kernel.
 
-Signed-off-by: Justin Swartz <justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org>
+Increase the temperature for a hardware shutdown to 125°C, which
+matches the downstream configuration and gives the system a chance
+to shut down orderly at the criticial trip point.
+
+Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
 ---
- drivers/clk/rockchip/clk-rk3228.c | 1 +
- 1 file changed, 1 insertion(+)
+Changes in v2:
+- patch added to the series
+---
+ arch/arm/boot/dts/rk3288-veyron-speedy.dts | 4 ++++
+ arch/arm/boot/dts/rk3288-veyron.dtsi       | 5 +++++
+ 2 files changed, 9 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
-index 7af48184b..b85730565 100644
---- a/drivers/clk/rockchip/clk-rk3228.c
-+++ b/drivers/clk/rockchip/clk-rk3228.c
-@@ -109,6 +109,7 @@ static struct rockchip_cpuclk_rate_table rk3228_cpuclk_rates[] __initdata = {
- 	RK3228_CPUCLK_RATE(1608000000, 1, 7),
- 	RK3228_CPUCLK_RATE(1512000000, 1, 7),
- 	RK3228_CPUCLK_RATE(1488000000, 1, 5),
-+	RK3228_CPUCLK_RATE(1464000000, 1, 5),
- 	RK3228_CPUCLK_RATE(1416000000, 1, 5),
- 	RK3228_CPUCLK_RATE(1392000000, 1, 5),
- 	RK3228_CPUCLK_RATE(1296000000, 1, 5),
+diff --git a/arch/arm/boot/dts/rk3288-veyron-speedy.dts b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
+index e16421d80d22..ab2a66aa337e 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-speedy.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
+@@ -64,6 +64,10 @@
+ 	temperature = <70000>;
+ };
+ 
++&cpu_crit {
++	temperature = <90000>;
++};
++
+ &edp {
+ 	/delete-property/pinctrl-names;
+ 	/delete-property/pinctrl-0;
+diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
+index 192dbc089ade..58dc538b5df3 100644
+--- a/arch/arm/boot/dts/rk3288-veyron.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
+@@ -99,6 +99,10 @@
+ 	cpu0-supply = <&vdd_cpu>;
+ };
+ 
++&cpu_crit {
++	temperature = <100000>;
++};
++
+ /* rk3288-c used in Veyron Chrome-devices has slightly changed OPPs */
+ &cpu_opp_table {
+ 	/delete-node/ opp-312000000;
+@@ -371,6 +375,7 @@
+ 
+ 	rockchip,hw-tshut-mode = <1>; /* tshut mode 0:CRU 1:GPIO */
+ 	rockchip,hw-tshut-polarity = <1>; /* tshut polarity 0:LOW 1:HIGH */
++	rockchip,hw-tshut-temp = <125000>;
+ };
+ 
+ &uart0 {
 -- 
-2.11.0
+2.21.0.1020.gf2820cf01a-goog
