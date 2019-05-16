@@ -1,47 +1,42 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: [PATCH v2 3/3] ARM: dts: rockchip: Use GPU as cooling device for the
- GPU thermal zone of the rk3288
-Date: Thu, 16 May 2019 10:25:10 -0700
-Message-ID: <20190516172510.181473-3-mka@chromium.org>
-References: <20190516172510.181473-1-mka@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 3/3] ARM: dts: rockchip: Use GPU as cooling device for
+ the GPU thermal zone of the rk3288
+Date: Thu, 16 May 2019 10:39:17 -0700
+Message-ID: <CAD=FV=Wk0EFO2+c=KAfemo0_w+QEA8==KzOdN-niD0mA_myh=Q@mail.gmail.com>
+References: <20190516172510.181473-1-mka@chromium.org> <20190516172510.181473-3-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190516172510.181473-1-mka@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: devicetree@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190516172510.181473-3-mka@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Kaehlcke <mka@chromium.org>
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree@vger.kernel.org, dri-devel <dri-devel@lists.freedesktop.org>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Q3VycmVudGx5IHRoZSBDUFVzIGFyZSB1c2VkIGFzIGNvb2xpbmcgZGV2aWNlcyBvZiB0aGUgcmsz
-Mjg4IEdQVQp0aGVybWFsIHpvbmUuIFRoZSBDUFVzIGFyZSBhbHNvIGNvbmZpZ3VyZWQgYXMgY29v
-bGluZyBkZXZpY2VzIGluIHRoZQpDUFUgdGhlcm1hbCB6b25lLCB3aGljaCBpbmRpcmVjdGx5IGhl
-bHBzIHdpdGggY29vbGluZyB0aGUgR1BVIHRoZXJtYWwKem9uZSwgc2luY2UgdGhlIENQVSBhbmQg
-R1BVIHRlbXBlcmF0dXJlcyBhcmUgY29ycmVsYXRlZCBvbiB0aGUgcmszMjg4LgoKQ29uZmlndXJl
-IHRoZSBBUk0gTWFsaSBNaWRnYXJkIEdQVSBhcyBjb29saW5nIGRldmljZSBmb3IgdGhlIEdQVQp0
-aGVybWFsIHpvbmUgaW5zdGVhZCBvZiB0aGUgQ1BVcy4KClNpZ25lZC1vZmYtYnk6IE1hdHRoaWFz
-IEthZWhsY2tlIDxta2FAY2hyb21pdW0ub3JnPgotLS0KQ2hhbmdlcyBpbiB2MjoKLSBwYXRjaCBh
-ZGRlZCB0byB0aGUgc2VyaWVzCi0tLQogYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LmR0c2kgfCA1
-ICstLS0tCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDQgZGVsZXRpb25zKC0pCgpk
-aWZmIC0tZ2l0IGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LmR0c2kgYi9hcmNoL2FybS9ib290
-L2R0cy9yazMyODguZHRzaQppbmRleCAxNGQ5NjA5ZjBiMTUuLjk4ODU1NWM1MTE4ZCAxMDA2NDQK
-LS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LmR0c2kKKysrIGIvYXJjaC9hcm0vYm9vdC9k
-dHMvcmszMjg4LmR0c2kKQEAgLTU0NywxMCArNTQ3LDcgQEAKIAkJCQltYXAwIHsKIAkJCQkJdHJp
-cCA9IDwmZ3B1X2FsZXJ0MD47CiAJCQkJCWNvb2xpbmctZGV2aWNlID0KLQkJCQkJCTwmY3B1MCBU
-SEVSTUFMX05PX0xJTUlUIFRIRVJNQUxfTk9fTElNSVQ+LAotCQkJCQkJPCZjcHUxIFRIRVJNQUxf
-Tk9fTElNSVQgVEhFUk1BTF9OT19MSU1JVD4sCi0JCQkJCQk8JmNwdTIgVEhFUk1BTF9OT19MSU1J
-VCBUSEVSTUFMX05PX0xJTUlUPiwKLQkJCQkJCTwmY3B1MyBUSEVSTUFMX05PX0xJTUlUIFRIRVJN
-QUxfTk9fTElNSVQ+OworCQkJCQkJPCZncHUgVEhFUk1BTF9OT19MSU1JVCBUSEVSTUFMX05PX0xJ
-TUlUPjsKIAkJCQl9OwogCQkJfTsKIAkJfTsKLS0gCjIuMjEuMC4xMDIwLmdmMjgyMGNmMDFhLWdv
-b2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+Hi,
+
+On Thu, May 16, 2019 at 10:25 AM Matthias Kaehlcke <mka@chromium.org> wrote:
+
+> Currently the CPUs are used as cooling devices of the rk3288 GPU
+> thermal zone. The CPUs are also configured as cooling devices in the
+> CPU thermal zone, which indirectly helps with cooling the GPU thermal
+> zone, since the CPU and GPU temperatures are correlated on the rk3288.
+>
+> Configure the ARM Mali Midgard GPU as cooling device for the GPU
+> thermal zone instead of the CPUs.
+>
+> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+> ---
+> Changes in v2:
+> - patch added to the series
+> ---
+>  arch/arm/boot/dts/rk3288.dtsi | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
+
+This makes sense to me unless there is some better way to model the
+intertwined nature of the CPU and GPU temperature.  It's my
+understanding that the original device tree snippet was there because
+it was added before the gpu node existed in the device tree so the
+best we could do is to suggest that the cpu could cool things down.
+
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
