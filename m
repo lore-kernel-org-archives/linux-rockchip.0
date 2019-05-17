@@ -1,31 +1,30 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 1/3] ARM: dts: rockchip: raise CPU trip point temperature for veyron to 100 degC
-Date: Fri, 17 May 2019 12:44:15 +0200
-Message-ID: <2157639.ILuVUxfVHr@phil>
-References: <20190516162942.154823-1-mka@chromium.org>
+From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [regression] thermal: rockchip: temperature not reported
+Date: Fri, 17 May 2019 20:59:51 +0200
+Message-ID: <6d8575be-7531-43b8-b6f5-9d233f3138c5@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190516162942.154823-1-mka@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Kaehlcke <mka@chromium.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 16. Mai 2019, 18:29:40 CEST schrieb Matthias Kaehlcke:
-> This value matches what is used by the downstream Chrome OS 3.14
-> kernel, the 'official' kernel for veyron devices. Keep the temperature
-> for 'speedy' at 90°C, as in the downstream kernel.
-> 
-> Increase the temperature for a hardware shutdown to 125°C, which
-> matches the downstream configuration and gives the system a chance
-> to shut down orderly at the criticial trip point.
-> 
-> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
-
-applied all 3 for 5.3 with Doug's RB and did a small fix to the commit
-message of patch2 ("thorse").
-
-Thanks
-Heiko
+SGVsbG8sCgpjb21taXQgMjg2OTRlMDA5ZTUxMjQ1MWVhZDU1MTlkZDgwMWY5ODY5YWNiMWY2MAp0
+aGVybWFsOiByb2NrY2hpcDogZml4IHVwIHRoZSB0c2FkYyBwaW5jdHJsIHNldHRpbmcgZXJyb3IK
+CmJyb2tlIHRlbXBlcmF0dXJlIHJlYWRpbmdzLgpTaW5jZSB0aGlzIGNvbW1pdCB0aGUgdGVtcGVy
+YXR1cmVzIGFyZSByZWFkIGFzIDAgYW5kIHRoZSBmYW4gaXMgYWx3YXlzIG9uLgpUZXN0ZWQgb24g
+dGhlIFNhcHBoaXJlIGJvYXJkLCBhIFJLMzM5OSBwbGF0Zm9ybS4KClJlZ2FyZHMsCiAgVmljZW7D
+py4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
