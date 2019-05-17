@@ -1,48 +1,118 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: Enable SPI1 on Ficus
-Date: Fri, 17 May 2019 09:36:25 +0530
-Message-ID: <20190517040625.14607-2-manivannan.sadhasivam@linaro.org>
-References: <20190517040625.14607-1-manivannan.sadhasivam@linaro.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190517040625.14607-1-manivannan.sadhasivam@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, ezequiel@collabora.com, tom@vamrs.com, dev@vamrs.com, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+From: Jack Mitchell <ml@embed.me.uk>
+Subject: Re: next/master boot bisection: next-20190514 on rk3288-veyron-jaq
+Date: Fri, 17 May 2019 10:17:02 +0100
+Message-ID: <a9767b82-9b3c-fc05-5f33-fb79c8fc8507@embed.me.uk>
+References: <5cdae78b.1c69fb81.a32a9.870f@mx.google.com>
+ <CAD=FV=WDjUBvwoAaWNOmXPaLpZCccpAgRWDzRSnvsQ62TFwVmQ@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CAD=FV=WDjUBvwoAaWNOmXPaLpZCccpAgRWDzRSnvsQ62TFwVmQ@mail.gmail.com>
+Content-Language: en-BW
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Doug Anderson <dianders@chromium.org>, "kernelci.org bot" <bot@kernelci.org>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Linux PM <linux-pm@vger.kernel.org>, Guillaume Tucker <guillaume.tucker@collabora.com>, Matthias Kaehlcke <mka@chromium.org>, Elaine Zhang <zhangqing@rock-chips.com>, LKML <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Brown <broonie@kernel.org>, matthew.hart@linaro.org, mgalka@collabora.com, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Zhang Rui <rui.zhang@intel.com>, Kevin Hilman <khilman@baylibre.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable SPI1 exposed on both Low and High speed expansion connectors
-of Ficus. SPI1 has 3 different chip selects wired as below:
+On 16/05/2019 22:38, Doug Anderson wrote:
+> Hi,
+> 
+> From: kernelci.org bot <bot@kernelci.org>
+> Date: Tue, May 14, 2019 at 9:06 AM
+> To: <tomeu.vizoso@collabora.com>, <guillaume.tucker@collabora.com>,
+> <mgalka@collabora.com>, <broonie@kernel.org>,
+> <matthew.hart@linaro.org>, <khilman@baylibre.com>,
+> <enric.balletbo@collabora.com>, Elaine Zhang, Eduardo Valentin, Daniel
+> Lezcano
+> Cc: Heiko Stuebner, <linux-pm@vger.kernel.org>,
+> <linux-kernel@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+> Zhang Rui, <linux-arm-kernel@lists.infradead.org>
+> 
+>> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+>> * This automated bisection report was sent to you on the basis  *
+>> * that you may be involved with the breaking commit it has      *
+>> * found.  No manual investigation has been done to verify it,   *
+>> * and the root cause of the problem may be somewhere else.      *
+>> * Hope this helps!                                              *
+>> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+>>
+>> next/master boot bisection: next-20190514 on rk3288-veyron-jaq
+>>
+>> Summary:
+>>   Start:      0a13f187b16a Add linux-next specific files for 20190514
+>>   Details:    https://kernelci.org/boot/id/5cda7f2259b514876d7a3628
+>>   Plain log:  https://storage.kernelci.org//next/master/next-20190514/arm/multi_v7_defconfig+CONFIG_EFI=y+CONFIG_ARM_LPAE=y/gcc-8/lab-collabora/boot-rk3288-veyron-jaq.txt
+>>   HTML log:   https://storage.kernelci.org//next/master/next-20190514/arm/multi_v7_defconfig+CONFIG_EFI=y+CONFIG_ARM_LPAE=y/gcc-8/lab-collabora/boot-rk3288-veyron-jaq.html
+>>   Result:     691d4947face thermal: rockchip: fix up the tsadc pinctrl setting error
+>>
+>> Checks:
+>>   revert:     PASS
+>>   verify:     PASS
+>>
+>> Parameters:
+>>   Tree:       next
+>>   URL:        git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
+>>   Branch:     master
+>>   Target:     rk3288-veyron-jaq
+>>   CPU arch:   arm
+>>   Lab:        lab-collabora
+>>   Compiler:   gcc-8
+>>   Config:     multi_v7_defconfig+CONFIG_EFI=y+CONFIG_ARM_LPAE=y
+>>   Test suite: boot
+>>
+>> Breaking commit found:
+>>
+>> -------------------------------------------------------------------------------
+>> commit 691d4947faceb8bd841900049e07c81c95ca4b0d
+>> Author: Elaine Zhang <zhangqing@rock-chips.com>
+>> Date:   Tue Apr 30 18:09:44 2019 +0800
+>>
+>>     thermal: rockchip: fix up the tsadc pinctrl setting error
+>>
+>>     Explicitly use the pinctrl to set/unset the right mode
+>>     instead of relying on the pinctrl init mode.
+>>     And it requires setting the tshut polarity before select pinctrl.
+>>
+>>     When the temperature sensor mode is set to 0, it will automatically
+>>     reset the board via the Clock-Reset-Unit (CRU) if the over temperature
+>>     threshold is reached. However, when the pinctrl initializes, it does a
+>>     transition to "otp_out" which may lead the SoC restart all the time.
+>>
+>>     "otp_out" IO may be connected to the RESET circuit on the hardware.
+>>     If the IO is in the wrong state, it will trigger RESET.
+>>     (similar to the effect of pressing the RESET button)
+>>     which will cause the soc to restart all the time.
+>>
+>>     Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+>>     Reviewed-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+>>     Signed-off-by: Eduardo Valentin <edubezval@gmail.com>
+> 
+> I can confirm that the above commit breaks my jerry, though I haven't
+> dug into the details.  :(  Is anyone fixing?  For now I'm just booting
+> with the revert.
+> 
+> 
+> -Doug
 
-CS0 - Serial Flash (unpopulated)
-CS1 - Low Speed expansion
-CS2 - High Speed expansion
+I can also confirm that this breaks boot on our custom board which is
+very similar to the rk3288-Firefly. In my scenario the processor just
+seems to "hang", no reset occurs if that helps debug matters.
 
-Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
----
+Regards,
+Jack.
 
-Changes in v2:
-
-* Used pin constants instead of hardcoding cs-gpios
-
- arch/arm64/boot/dts/rockchip/rk3399-ficus.dts | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-index 027d428917b8..9af02d859dcd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-@@ -146,6 +146,12 @@
- 	};
- };
- 
-+&spi1 {
-+	/* On both Low speed and High speed expansion */
-+	cs-gpios = <0>, <&gpio4 RK_PA6 0>, <&gpio4 RK_PA7 0>;
-+	status = "okay";
-+};
-+
- &usbdrd_dwc3_0 {
- 	dr_mode = "host";
- };
--- 
-2.17.1
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> 
