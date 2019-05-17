@@ -1,58 +1,49 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH 1/3] brcmfmac: re-enable command decode in sdio_aos for BRCM 4354
-Date: Fri, 17 May 2019 15:54:18 -0700
-Message-ID: <20190517225420.176893-2-dianders@chromium.org>
-References: <20190517225420.176893-1-dianders@chromium.org>
+Subject: [PATCH 0/3] brcmfmac: sdio: Deal better w/ transmission errors waking from sleep
+Date: Fri, 17 May 2019 15:54:17 -0700
+Message-ID: <20190517225420.176893-1-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190517225420.176893-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Arend van Spriel <arend.vanspriel@broadcom.com>
-Cc: linux-rockchip@lists.infradead.org, Double Lo <double.lo@cypress.com>, briannorris@chromium.org, Madhan Mohan R <madhanmohan.r@cypress.com>, mka@chromium.org, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Douglas Anderson <dianders@chromium.org>, brcm80211-dev-list.pdl@broadcom.com, Franky Lin <franky.lin@broadcom.com>, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, Madhan Mohan R <MadhanMohan.R@cypress.com>, Hante Meuleman <hante.meuleman@broadcom.com>, Naveen Gupta <naveen.gupta@cypress.com>, brcm80211-dev-list@cypress.com, YueHaibing <yuehaibing@huawei.com>, "David S. Miller" <davem@davemloft.net>
+Cc: linux-rockchip@lists.infradead.org, Double Lo <double.lo@cypress.com>, briannorris@chromium.org, Madhan Mohan R <madhanmohan.r@cypress.com>, mka@chromium.org, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Douglas Anderson <dianders@chromium.org>, linux-mmc@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, brcm80211-dev-list@cypress.com, YueHaibing <yuehaibing@huawei.com>, Hante Meuleman <hante.meuleman@broadcom.com>, Martin Hicks <mort@bork.org>, Ritesh Harjani <riteshh@codeaurora.org>, Michael Trimarchi <michael@amarulasolutions.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Franky Lin <franky.lin@broadcom.com>, Jiong Wu <lohengrin1024@gmail.com>, brcm80211-dev-list.pdl@broadcom.com, "David S. Miller" <davem@>
 List-Id: linux-rockchip.vger.kernel.org
 
-In commit 29f6589140a1 ("brcmfmac: disable command decode in
-sdio_aos") we disabled something called "command decode in sdio_aos"
-for a whole bunch of Broadcom SDIO WiFi parts.
+This series attempts to deal better with the expected transmission
+errors that we get when waking up the SDIO-based WiFi on
+rk3288-veyron-minnie, rk3288-veyron-speedy, and rk3288-veyron-mickey.
 
-After that patch landed I find that my kernel log on
-rk3288-veyron-minnie and rk3288-veyron-speedy is filled with:
-  brcmfmac: brcmf_sdio_bus_sleep: error while changing bus sleep state -110
+Some details about those errors can be found in
+<https://crbug.com/960222>, but to summarize it here: if we try to
+send the wakeup command to the WiFi card at the same time it has
+decided to wake up itself then it will behave badly on the SDIO bus.
+This can cause timeouts or CRC errors.
 
-This seems to happen every time the Broadcom WiFi transitions out of
-sleep mode.  Reverting the part of the commit that affects the WiFi on
-my boards fixes the problem for me, so that's what this patch does.
+When I tested on 4.19 and 4.20 these CRC errors can be seen to cause
+re-tuning.  Since I am currently developing on 4.19 this was the
+original problem I attempted to solve.
 
-Note that, in general, the justification in the original commit seemed
-a little weak.  It looked like someone was testing on a SD card
-controller that would sometimes die if there were CRC errors on the
-bus.  This used to happen back in early days of dw_mmc (the controller
-on my boards), but we fixed it.  Disabling a feature on all boards
-just because one SD card controller is broken seems bad.  ...so
-instead of just this patch possibly the right thing to do is to fully
-revert the original commit.
+On mainline it turns out that you don't see the retuning errors but
+you see tons of spam about timeouts trying to wakeup from sleep.  I
+tracked down the commit that was causing that and have partially
+reverted it here.  I have no real knowledge about Broadcom WiFi, but
+the commit that was causing problems sounds (from the descriptioin) to
+be a hack commit penalizing all Broadcom WiFi users because of a bug
+in a Cypress SD controller.  I will let others comment if this is
+truly the case and, if so, what the right solution should be.
 
-Fixes: 29f6589140a1 ("brcmfmac: disable command decode in sdio_aos")
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
 
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Douglas Anderson (3):
+  brcmfmac: re-enable command decode in sdio_aos for BRCM 4354
+  mmc: core: API for temporarily disabling auto-retuning due to errors
+  brcmfmac: sdio: Disable auto-tuning around commands expected to fail
 
-diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-index 22b73da42822..3fd2d58a3c88 100644
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-@@ -3378,8 +3378,7 @@ static bool brcmf_sdio_aos_no_decode(struct brcmf_sdio *bus)
- 	if (bus->ci->chip == CY_CC_43012_CHIP_ID ||
- 	    bus->ci->chip == CY_CC_4373_CHIP_ID ||
- 	    bus->ci->chip == BRCM_CC_4339_CHIP_ID ||
--	    bus->ci->chip == BRCM_CC_4345_CHIP_ID ||
--	    bus->ci->chip == BRCM_CC_4354_CHIP_ID)
-+	    bus->ci->chip == BRCM_CC_4345_CHIP_ID)
- 		return true;
- 	else
- 		return false;
+ drivers/mmc/core/core.c                       | 27 +++++++++++++++++--
+ .../broadcom/brcm80211/brcmfmac/sdio.c        |  6 +++--
+ include/linux/mmc/core.h                      |  2 ++
+ include/linux/mmc/host.h                      |  1 +
+ 4 files changed, 32 insertions(+), 4 deletions(-)
+
 -- 
 2.21.0.1020.gf2820cf01a-goog
