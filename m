@@ -1,30 +1,58 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [regression] thermal: rockchip: temperature not reported
-Date: Fri, 17 May 2019 20:59:51 +0200
-Message-ID: <6d8575be-7531-43b8-b6f5-9d233f3138c5@gmail.com>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH 1/3] brcmfmac: re-enable command decode in sdio_aos for BRCM 4354
+Date: Fri, 17 May 2019 15:54:18 -0700
+Message-ID: <20190517225420.176893-2-dianders@chromium.org>
+References: <20190517225420.176893-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190517225420.176893-1-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Arend van Spriel <arend.vanspriel@broadcom.com>
+Cc: linux-rockchip@lists.infradead.org, Double Lo <double.lo@cypress.com>, briannorris@chromium.org, Madhan Mohan R <madhanmohan.r@cypress.com>, mka@chromium.org, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Douglas Anderson <dianders@chromium.org>, brcm80211-dev-list.pdl@broadcom.com, Franky Lin <franky.lin@broadcom.com>, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, Madhan Mohan R <MadhanMohan.R@cypress.com>, Hante Meuleman <hante.meuleman@broadcom.com>, Naveen Gupta <naveen.gupta@cypress.com>, brcm80211-dev-list@cypress.com, YueHaibing <yuehaibing@huawei.com>, "David S. Miller" <davem@davemloft.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8sCgpjb21taXQgMjg2OTRlMDA5ZTUxMjQ1MWVhZDU1MTlkZDgwMWY5ODY5YWNiMWY2MAp0
-aGVybWFsOiByb2NrY2hpcDogZml4IHVwIHRoZSB0c2FkYyBwaW5jdHJsIHNldHRpbmcgZXJyb3IK
-CmJyb2tlIHRlbXBlcmF0dXJlIHJlYWRpbmdzLgpTaW5jZSB0aGlzIGNvbW1pdCB0aGUgdGVtcGVy
-YXR1cmVzIGFyZSByZWFkIGFzIDAgYW5kIHRoZSBmYW4gaXMgYWx3YXlzIG9uLgpUZXN0ZWQgb24g
-dGhlIFNhcHBoaXJlIGJvYXJkLCBhIFJLMzM5OSBwbGF0Zm9ybS4KClJlZ2FyZHMsCiAgVmljZW7D
-py4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+In commit 29f6589140a1 ("brcmfmac: disable command decode in
+sdio_aos") we disabled something called "command decode in sdio_aos"
+for a whole bunch of Broadcom SDIO WiFi parts.
+
+After that patch landed I find that my kernel log on
+rk3288-veyron-minnie and rk3288-veyron-speedy is filled with:
+  brcmfmac: brcmf_sdio_bus_sleep: error while changing bus sleep state -110
+
+This seems to happen every time the Broadcom WiFi transitions out of
+sleep mode.  Reverting the part of the commit that affects the WiFi on
+my boards fixes the problem for me, so that's what this patch does.
+
+Note that, in general, the justification in the original commit seemed
+a little weak.  It looked like someone was testing on a SD card
+controller that would sometimes die if there were CRC errors on the
+bus.  This used to happen back in early days of dw_mmc (the controller
+on my boards), but we fixed it.  Disabling a feature on all boards
+just because one SD card controller is broken seems bad.  ...so
+instead of just this patch possibly the right thing to do is to fully
+revert the original commit.
+
+Fixes: 29f6589140a1 ("brcmfmac: disable command decode in sdio_aos")
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+
+ drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+index 22b73da42822..3fd2d58a3c88 100644
+--- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
++++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+@@ -3378,8 +3378,7 @@ static bool brcmf_sdio_aos_no_decode(struct brcmf_sdio *bus)
+ 	if (bus->ci->chip == CY_CC_43012_CHIP_ID ||
+ 	    bus->ci->chip == CY_CC_4373_CHIP_ID ||
+ 	    bus->ci->chip == BRCM_CC_4339_CHIP_ID ||
+-	    bus->ci->chip == BRCM_CC_4345_CHIP_ID ||
+-	    bus->ci->chip == BRCM_CC_4354_CHIP_ID)
++	    bus->ci->chip == BRCM_CC_4345_CHIP_ID)
+ 		return true;
+ 	else
+ 		return false;
+-- 
+2.21.0.1020.gf2820cf01a-goog
