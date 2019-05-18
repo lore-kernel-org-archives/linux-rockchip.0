@@ -1,79 +1,85 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Fix Type-C port supply in
- =?iso-8859-1?Q?Sapphire_board?=
-Date: Sat, 18 May 2019 14:29:41 +0200
-Message-ID: <574f2bae-0121-4cc7-ad9a-5ba32315d71b@gmail.com>
-References: <3744467.8gaGBgj8zp@phil>
- <20180910161029.1948-1-vicencb@gmail.com> <4199457.qejmJXf6nG@phil>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] phy: rockchip-dp: Avoid power leak by leaving the PHY
+ power on
+Date: Sat, 18 May 2019 06:42:14 -0700
+Message-ID: <CAD=FV=XhQtsPkvFuQ4cP5769XmbvkT7csFrcVkHT6ktySSYOdw@mail.gmail.com>
+References: <20190507234857.81414-1-dianders@chromium.org> <CAD=FV=VcF688tSArf5gu0sV5oKVgFEvPBxXm7j-5GXXMP_CYRw@mail.gmail.com>
+ <1862323.vETM5zrFmV@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <4199457.qejmJXf6nG@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1862323.vETM5zrFmV@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Guenter Roeck <groeck@chromium.org>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Kishon Vijay Abraham I <kishon@ti.com>, Elaine Zhang <zhangqing@rock-chips.com>, Caesar <wxt@rock-chips.com>, Lin Huang <hl@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Derek Basehore <dbasehore@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uZGF5LCBTZXB0ZW1iZXIgMTAsIDIwMTggNzoxOToyMCBQTSBDRVNULCBIZWlrbyBTdHVl
-Ym5lciB3cm90ZToKPiBBbSBNb250YWcsIDEwLiBTZXB0ZW1iZXIgMjAxOCwgMTg6MTA6MjkgQ0VT
-VCBzY2hyaWViIFZpY2VudGUgQmVyZ2FzOgo+PiBUaGUgcmVmZXJlbmNlIGlzIHRoZSBzY2hlbWF0
-aWMsIHBhZ2UgMTE6Cj4+IGh0dHBzOi8vZGwudmFtcnMuY29tL3Byb2R1Y3RzL3NhcHBoaXJlX2V4
-Y2F2YXRvci9SS19TQVBQSElSRV9TT0NCT0FSRF9SSzMzOTlfTFBERFIzRDE3OFAyMzJTRDhfVjEy
-XzIwMTYxMTA5SFhTLnBkZgo+PiAoYWx0ZXJuYXRlIGxpbmspCj4+IGh0dHA6Ly9vcGVuc291cmNl
-LnJvY2stY2hpcHMuY29tL2ltYWdlcy9mL2YwL1JLX1NhcHBoaXJlX1JLMzM5OS5yYXIKPj4gCj4+
-IENoYW5nZXMgaW4gdjI6Cj4+ICBUaGUgcG93ZXIgc3VwcGx5IGlzIGFwcGxpZWQgdG8gdGhlIE9U
-RyBwb3J0Lgo+PiAKPj4gU2lnbmVkLW9mZi1ieTogVmljZW50ZSBCZXJnYXMgPHZpY2VuY2JAZ21h
-aWwuY29tPgo+Cj4gYXBwbGllZCBmb3IgNC4yMAo+Cj4KPj4gSGkgSGVpa28sCj4+IHlvdXIgYXBw
-cm9hY2ggbWFrZXMgc2Vuc2UsIGkganVzdCB0cmllZCBpdCBhbmQgdGhlIFR5cGUtQyBwb3J0IGlz
-Cj4+IHN0aWxsIHBvd2VyZWQtb24sIGxpa2Ugd2l0aCB0aGUgcHJldmlvdXMgcGF0Y2guCj4+IEJ1
-dCBzYWRseSBzdGlsbCBubyBkYXRhIGZsb3cuCj4+IAo+PiBJIGhhdmUgZ290IGEgZ3J1L2tldmlu
-IGFuZCBhbHNvIGJvdWdodCBhIFVTQi1DIHRvIFNBVEEgYnJpZGdlCj4+IGZvciBpdC4gVGhlIGJy
-aWRnZSB3b3JrcyBmaW5lIG9uIGtldmluIHdpdGgga2VybmVsIDQuNCwgc3RpbGwgbm90Cj4+IHRl
-c3RlZCB3aXRoIG1haW5saW5lLgo+PiAKPj4gQnV0IHdoZW4gcGx1Z2dlZCBpbnRvIHRoZSBTYXBw
-aGlyZSB0aGVyZSBpcyBhbiBMRUQgdGhhdCBzaG93cyBpdAo+PiBpcyBwb3dlcmVkLW9uIGFuZCBu
-b3RoaW5nIGVsc2UuIE9uIHRoZSBsaW51eCBzaWRlLCBkbWVzZyBzaG93cyBubwo+PiBtZXNzYWdl
-cy4KPj4gCj4+IENvbXBhcmluZyB0aGUgVVNCIHBvcnRpb24gb2YgdGhlIERUUyB3cnQgRmlyZWZs
-eSBpIHNlZSBubwo+PiBzaWduaWZpY2FudCBkaWZmZXJlbmNlcy4KPj4gCj4+IEFyZSB0aGVyZSBv
-dGhlciBTYXBwaGlyZSBib2FyZCB1c2VycyB0aGF0IGNhbiBjb25maXJtIGlmIHRoZQo+PiBUeXBl
-LUMgcG9ydCB3b3JrcyBvciBub3Q/IFRoYXQgd291bGQgaGVscCB0byBkaXNjYXJkIGEgSFcgaXNz
-dWUuCj4KPiBFbnJpYyB3YXMgd29ya2luZyBvbiBhIHNpbWlsYXIgYm9hcmQsIG1heWJlIGhlIHJl
-bWVtYmVyIHNvbWUKPiBwZWN1bGlhcml0aWVzLgoKSGksCmkgaGF2ZSB0YWtlbiBhbm90aGVyIGxv
-b2sgYXQgdGhlIFVTQjMgVHlwZS1DIHBvcnQgb2YgdGhlIFNhcHBoaXJlIGJvYXJkCmFuZCBtYWRl
-IGEgbGl0dGxlIGJpdCBvZiBwcm9ncmVzcy4gTm93IHRoZXJlIGlzIHNvbWUgZGF0YSB0cmFuc2Zl
-ciwgYnV0CnN0aWxsIG5vdCB3b3JraW5nLgoKQXBwbHlpbmcgdGhpcyBwYXRjaDoKLS0tIGEvYXJj
-aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaQorKysgYi9hcmNo
-L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1zYXBwaGlyZS5kdHNpCkBAIC0xMTIsNiAr
-MTExLDcgQEAKIAkJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKIAkJcGluY3RybC0wID0gPCZ2
-Y2M1djBfdHlwZWMwX2VuPjsKIAkJcmVndWxhdG9yLW5hbWUgPSAidmNjNXYwX3R5cGVjMCI7CisJ
-CXJlZ3VsYXRvci1hbHdheXMtb247CiAJCXZpbi1zdXBwbHkgPSA8JnZjY19zeXM+OwogCX07CiAK
-YW5kIGhhdmluZyBhIG1lbW9yeSBzdGljayBwbHVnZ2VkIGludG8gdGhlIHBvcnQgZnJvbSBwb3dl
-ci11cCwgdGhlIApmb2xsb3dpbmcgaGFwcGVuczoKMS4tIFRoZSBtZW1vcnkgc3RpY2sgTEVEIGxp
-Z2h0cyBvbiBhbmQga2VybmVsIHJlcG9ydHM6ClsgICAgNC43ODI5OTldIHNjc2kgMDowOjA6MDog
-RGlyZWN0LUFjY2VzcyAgICAgVVNCICAgICAgRElTSyAgICAgICAgICAgICAKUE1BUCBQUTogMCBB
-TlNJOiA0ClsgICAgNS45MDQ1ODBdIHNkIDA6MDowOjA6IFtzZGJdIDM5MTMzNDQgNTEyLWJ5dGUg
-bG9naWNhbCBibG9ja3M6ICgyLjAwIApHQi8xLjg3IEdpQikKWyAgICA1LjkwNjg2MF0gc2QgMDow
-OjA6MDogW3NkYl0gV3JpdGUgUHJvdGVjdCBpcyBvZmYKWyAgICA1LjkwODk3M10gc2QgMDowOjA6
-MDogW3NkYl0gTW9kZSBTZW5zZTogMjMgMDAgMDAgMDAKWyAgICA1LjkwOTEyMl0gc2QgMDowOjA6
-MDogW3NkYl0gTm8gQ2FjaGluZyBtb2RlIHBhZ2UgZm91bmQKWyAgICA1LjkxMTIxNF0gc2QgMDow
-OjA6MDogW3NkYl0gQXNzdW1pbmcgZHJpdmUgY2FjaGU6IHdyaXRlIHRocm91Z2gKWyAgICA1Ljk1
-MTU4NV0gIHNkYjogc2RiMQpbICAgIDUuOTU0ODE2XSBzZCAwOjA6MDowOiBbc2RiXSBBdHRhY2hl
-ZCBTQ1NJIHJlbW92YWJsZSBkaXNrCjIuLSA0IHNlY29uZHMgbGF0ZXIgdGhlIG1lbW9yeSBzdGlj
-ayBMRUQgbGlnaHRzIG9mZiBhbmQga2VybmVsIHJlcG9ydHM6ClsgICAgOS4wODI4MjJdIHBoeSBw
-aHktZmY3NzAwMDAuc3lzY29uOnVzYjItcGh5QGU0NTAuMjogY2hhcmdlciA9IApVU0JfRENQX0NI
-QVJHRVIKMy4tIEFmdGVyIGEgbWludXRlIHRoZSBrZXJuZWwgcmVwb3J0czoKWyAgIDcxLjY2Njc2
-MV0gdXNiIDUtMTogVVNCIGRpc2Nvbm5lY3QsIGRldmljZSBudW1iZXIgMgoKVGhlIHVzYiB2YnVz
-IGlzIHByZXNlbnQgYWxsIHRoZSB0aW1lLCBzbywgaXQgZG9lcyBub3QgbG9vawpsaWtlIGFuIGlz
-c3VlIG9mIHRoZSB2Y2M1djBfdHlwZWMwIHJlZ3VsYXRvci4KClBsZWFzZSwgY2FuIHlvdSBoZWxw
-IG1lIGRlYnVnZ2luZyB0aGlzIGlzc3VlPwoKUmVnYXJkcywKICBWaWNlbsOnLgoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi,
+
+On Sat, May 18, 2019 at 12:51 AM Heiko Stuebner <heiko@sntech.de> wrote:
+>
+> Hi,
+>
+> Am Samstag, 18. Mai 2019, 01:57:47 CEST schrieb Doug Anderson:
+> > Elaine and Caesar,
+> >
+> > On Tue, May 7, 2019 at 4:50 PM Douglas Anderson <dianders@chromium.org> wrote:
+> > >
+> > > While testing a newer kernel on rk3288-based Chromebooks I found that
+> > > the power draw in suspend was higher on newer kernels compared to the
+> > > downstream Chrome OS 3.14 kernel.  Specifically the power of an
+> > > rk3288-veyron-jerry board that I tested (as measured by the smart
+> > > battery) was ~16 mA on Chrome OS 3.14 and ~21 mA on a newer kernel.
+> > >
+> > > I tracked the regression down to the fact that the "DP PHY" driver
+> > > didn't exist in our downstream 3.14.  We relied on the eDP driver to
+> > > turn on the clock and relied on the fact that the power for the PHY
+> > > was default turned on.
+> > >
+> > > Specifically the thing that caused the power regression was turning
+> > > the eDP PHY _off_.  Presumably there is some sort of power leak in the
+> > > system and when we turn the PHY off something is leaching power from
+> > > something else and causing excessive power draw.
+> > >
+> > > Doing a search through device trees shows that this PHY is only ever
+> > > used on rk3288.  Presumably this power leak is present on all
+> > > rk3288-SoCs running upstream Linux so let's just whack the driver to
+> > > make sure we never turn off power.  We'll still leave the parts that
+> > > turn _on_ the power and grab the clock, though.
+> > >
+> > > NOTES:
+> > > A) If someone can identify what this power leak is and fix it in some
+> > >    other way we can revert this patch.
+> > > B) If someone can show that their particular board doesn't have this
+> > >    power leak (maybe they have rails hooked up differently?) we can
+> > >    perhaps add a device tree property indicating that for some boards
+> > >    it's OK to turn this rail off.  I don't want to add this property
+> > >    until I know of a board that needs it.
+> > >
+> > > Fixes: fd968973de95 ("phy: Add driver for rockchip Display Port PHY")
+> > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > > ---
+> > > As far as I know Yakir (the original author) is no longer at Rockchip.
+> > > I've added a few other Rockchip people and hopefully one of them can
+> > > help direct even if they're not directly responsible.
+> > >
+> > >  drivers/phy/rockchip/phy-rockchip-dp.c | 11 +++++++----
+> > >  1 file changed, 7 insertions(+), 4 deletions(-)
+> >
+> > Can you help direct this to the right person?  ...or should we just
+> > land it and assume it's fine?
+>
+> I tink Kishon as phy-maintainer is the correct person to take on this
+> patch, but maybe he's waiting for the merge-window to be over.
+
+Yeah, definitely Kishon should be the one to land.  I was kinda hoping
+to get confirmation from the Rockchip guys that this was a good idea
+across the board for rk3288 since I can only really test
+rk3288-veyron.  They'd have access to the SoC design and could tell
+more about what this bit actually does in the SoC.
+
+...in any case, if they don't respond then presumably we'd be good to
+land once the merge window is over and Kishon is landing patches
+again.
+
+-Doug
