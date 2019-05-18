@@ -1,85 +1,32 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] phy: rockchip-dp: Avoid power leak by leaving the PHY
- power on
-Date: Sat, 18 May 2019 06:42:14 -0700
-Message-ID: <CAD=FV=XhQtsPkvFuQ4cP5769XmbvkT7csFrcVkHT6ktySSYOdw@mail.gmail.com>
-References: <20190507234857.81414-1-dianders@chromium.org> <CAD=FV=VcF688tSArf5gu0sV5oKVgFEvPBxXm7j-5GXXMP_CYRw@mail.gmail.com>
- <1862323.vETM5zrFmV@phil>
+From: Avri Altman <Avri.Altman@wdc.com>
+Subject: RE: [PATCH 0/3] brcmfmac: sdio: Deal better w/ transmission errors
+ waking from sleep
+Date: Sat, 18 May 2019 15:09:44 +0000
+Message-ID: <SN6PR04MB49258D4FBE0B4D739E8BAF7EFC040@SN6PR04MB4925.namprd04.prod.outlook.com>
+References: <20190517225420.176893-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1862323.vETM5zrFmV@phil>
+In-Reply-To: <20190517225420.176893-1-dianders@chromium.org>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Guenter Roeck <groeck@chromium.org>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Kishon Vijay Abraham I <kishon@ti.com>, Elaine Zhang <zhangqing@rock-chips.com>, Caesar <wxt@rock-chips.com>, Lin Huang <hl@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Derek Basehore <dbasehore@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>
+To: Douglas Anderson <dianders@chromium.org>, Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Arend van Spriel <arend.vanspriel@broadcom.com>
+Cc: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Double Lo <double.lo@cypress.com>, "briannorris@chromium.org" <briannorris@chromium.org>, Madhan Mohan R <madhanmohan.r@cypress.com>, "mka@chromium.org" <mka@chromium.org>, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, "brcm80211-dev-list@cypress.com" <brcm80211-dev-list@cypress.com>, YueHaibing <yuehaibing@huawei.com>, Hante Meuleman <hante.meuleman@broadcom.com>, Martin Hicks <mort@bork.org>, Ritesh Harjani <riteshh@codeaurora.org>, Michael Trimarchi <michael@amarulasolutions.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>Franky Lin <fra>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+>=20
+> This series attempts to deal better with the expected transmission
+> errors that we get when waking up the SDIO-based WiFi on
+> rk3288-veyron-minnie, rk3288-veyron-speedy, and rk3288-veyron-mickey.
+>=20
+> Some details about those errors can be found in
+> <https://crbug.com/960222>, but to summarize it here: if we try to
+> send the wakeup command to the WiFi card at the same time it has
+> decided to wake up itself then it will behave badly on the SDIO bus.
+> This can cause timeouts or CRC errors.
+Wake-up itself: as part of a WoWlan, or d0i3?
+Looks like this calls for a wifi driver fix, and not WA in the mmc driver.
 
-On Sat, May 18, 2019 at 12:51 AM Heiko Stuebner <heiko@sntech.de> wrote:
->
-> Hi,
->
-> Am Samstag, 18. Mai 2019, 01:57:47 CEST schrieb Doug Anderson:
-> > Elaine and Caesar,
-> >
-> > On Tue, May 7, 2019 at 4:50 PM Douglas Anderson <dianders@chromium.org> wrote:
-> > >
-> > > While testing a newer kernel on rk3288-based Chromebooks I found that
-> > > the power draw in suspend was higher on newer kernels compared to the
-> > > downstream Chrome OS 3.14 kernel.  Specifically the power of an
-> > > rk3288-veyron-jerry board that I tested (as measured by the smart
-> > > battery) was ~16 mA on Chrome OS 3.14 and ~21 mA on a newer kernel.
-> > >
-> > > I tracked the regression down to the fact that the "DP PHY" driver
-> > > didn't exist in our downstream 3.14.  We relied on the eDP driver to
-> > > turn on the clock and relied on the fact that the power for the PHY
-> > > was default turned on.
-> > >
-> > > Specifically the thing that caused the power regression was turning
-> > > the eDP PHY _off_.  Presumably there is some sort of power leak in the
-> > > system and when we turn the PHY off something is leaching power from
-> > > something else and causing excessive power draw.
-> > >
-> > > Doing a search through device trees shows that this PHY is only ever
-> > > used on rk3288.  Presumably this power leak is present on all
-> > > rk3288-SoCs running upstream Linux so let's just whack the driver to
-> > > make sure we never turn off power.  We'll still leave the parts that
-> > > turn _on_ the power and grab the clock, though.
-> > >
-> > > NOTES:
-> > > A) If someone can identify what this power leak is and fix it in some
-> > >    other way we can revert this patch.
-> > > B) If someone can show that their particular board doesn't have this
-> > >    power leak (maybe they have rails hooked up differently?) we can
-> > >    perhaps add a device tree property indicating that for some boards
-> > >    it's OK to turn this rail off.  I don't want to add this property
-> > >    until I know of a board that needs it.
-> > >
-> > > Fixes: fd968973de95 ("phy: Add driver for rockchip Display Port PHY")
-> > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > > ---
-> > > As far as I know Yakir (the original author) is no longer at Rockchip.
-> > > I've added a few other Rockchip people and hopefully one of them can
-> > > help direct even if they're not directly responsible.
-> > >
-> > >  drivers/phy/rockchip/phy-rockchip-dp.c | 11 +++++++----
-> > >  1 file changed, 7 insertions(+), 4 deletions(-)
-> >
-> > Can you help direct this to the right person?  ...or should we just
-> > land it and assume it's fine?
->
-> I tink Kishon as phy-maintainer is the correct person to take on this
-> patch, but maybe he's waiting for the merge-window to be over.
-
-Yeah, definitely Kishon should be the one to land.  I was kinda hoping
-to get confirmation from the Rockchip guys that this was a good idea
-across the board for rk3288 since I can only really test
-rk3288-veyron.  They'd have access to the SoC design and could tell
-more about what this bit actually does in the SoC.
-
-...in any case, if they don't respond then presumably we'd be good to
-land once the merge window is over and Kishon is landing patches
-again.
-
--Doug
+Thanks,
+Avri
