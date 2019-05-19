@@ -1,14 +1,11 @@
-From: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>
-Subject: Re: [PATCH 2/3] mmc: core: API for temporarily disabling
- auto-retuning due to errors
-Date: Sun, 19 May 2019 11:06:42 +0200
-Message-ID: <20190519090642.GA2279@kunai>
-References: <20190517225420.176893-1-dianders@chromium.org>
- <20190517225420.176893-3-dianders@chromium.org>
+From: "Eric Auer, EMW-MT" <auere-OIIjM32accxuPis3aSs6BxvVK+yQ3ZXh@public.gmane.org>
+Subject: tuning spi-rockchip on rk3288
+Date: Sun, 19 May 2019 21:48:35 +0200
+Message-ID: <20190519194649.M28435@hochschule-trier.de>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============4212091236098525067=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190517225420.176893-3-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,63 +15,137 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Madhan Mohan R <madhanmohan.r-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Martin Hicks <mort-THxEKynEWHc@public.gmane.org>, Wolfram Sang <wsa+renesas-jBu1N2QxHDJrcw3mvpCnnVaTQe2KTcn/@public.gmane.org>, Double Lo <double.lo-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chi-Hsien Lin <chi-hsien.lin-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Arend van Spriel <arend.vanspriel-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Avri Altman <avri.altman-Sjgp3cTcYWE@public.gmane.org>, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Ritesh Harjani <riteshh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Wright Feng <wright.feng-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Jiong Wu <lohengrin1024-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
---===============4212091236098525067==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="envbJBWh7q8WU6mo"
-Content-Disposition: inline
+Dear linux-rockchip experts,
 
+please bear with me for a somewhat long mail about the creation of
+some significant optimizations and extensions of the spi-rockchip
+drivers, for which I would hope to find future usages, in part or
+otherwise, thanks to the modern times of open source code licenses:
 
---envbJBWh7q8WU6mo
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+As part of a university project in the second half of 2018, I have
+created extensive specialized patches for in particular the RK3288
+spi-rockchip Linux driver, as well as a few related spots. Goal of
+the project was fetching a high speed stream of A/D data via SPI,
+ultimately sending the processed data over the GbE LAN network of
+an Asus Tinker Board. While doing so, I also improved normal mode.
 
+The modified driver features an autonomous A/D interaction mode
+with a kernel thread to ask the A/D chip for data and fetch the
+data when ready, then buffering it on the kernel side. This mode
+is configurable for various A/D chips from the user space API.
 
-> Let's add an API that the SDIO card drivers can call that will
-> temporarily disable the auto-tuning functionality.  Then we can add a
-> call to this in the Broadcom WiFi driver and any other driver that
-> might have similar needs.
+Samples get time-stamped using the high resolution ARM counter,
+using specialized code to keep the CPU overhead at a minimum.
 
-Can't you fix the WiFi driver to return something else than -EILSEQ
-before calling mmc_request_done() to skip the retuning?
+Configurable rest times for the A/D chips are ensured by software,
+to avoid the overhead of having to interact with "ready" or "busy"
+flags by GPIO. Taking away control of some GPIO line or interrupt
+linked to that, to reduce the driver overhead, seemed a bad idea.
 
+There also is a matching user space tool to configure the mode,
+read the data stream, process it and send it over a TCP/IP link.
 
---envbJBWh7q8WU6mo
-Content-Type: application/pgp-signature; name="signature.asc"
+In the less specialized parts of the SPI driver, I have reduced
+I/O overhead where possible, while at the same time introducing
+dynamic fast timeout detection of "stuck" SPI engine states. The
+patched driver lacks energy saving mode support as part of trade
+offs between speed and flexibility.
 
------BEGIN PGP SIGNATURE-----
+The driver can of course be used without the kernel thread just
+like the classic spi-rockchip. Some additions for tuned A/D I/O
+support can be enabled by "magic" flags while staying within the
+normal context. In other words, they can work without said thread.
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlzhHJ4ACgkQFA3kzBSg
-KbbeARAAjRwuYMVRg9/KiLaxQrOgOKoCgflbt6sCKz+IWQYwpHqy/NMeXxogeaZp
-y/kpClhWulThbXbH5kiV59qh55aSNFsNM0yA+IZFwbye0fKtXEtkJIjBVAOfQDdz
-PY2Jx2nNSJWWJeUzcfbW1LwvygH2a3Hon2p1/UubaqYvLPoZPCZmwVC/1LFdJPPN
-fv2uN5ukpVcfmNBSbQUUaoMPZp6oeuAxHa1+58aQzpCMo3h329ERrcgkDDcw4WP9
-K20azhSC961CnA7Syj84BsmlMnARaCyZ9S8atXXCtX6R5hbgUXLkBIcqtbfB+npd
-j0sTjbHGDh7eaQ0l14Xh3FVSeHZiepGlupQ1wW6HuHkR1Be1mL6nEdCvSqT0mNHf
-TsHkuq9Loh/95/eInWqtpGVM2XOpwDkN8czDOwwiO4ejRHaIEaoZX6FWeV80lDnX
-emtFSLifF0VaH5GqM4HwOu3iXFBxpuj6zwnADaxYZqwnFNyi0+nvhp9W2tHyaLey
-fcB6sw/i+2Knu5k2JnaSHZutc2hqY6lhoLaJyjQKMfk2fxRBmdimnt3u6bNV9U+N
-Qo4IQM5w5wgRGUbUAcfo9/aLXnEdVbEuSy6QJdLgp7pZUBaIj4c5U7XROP6RQRFJ
-6XB4ckAS0xBjDQ/mFNM/W2+Keu+9dcqNtDrAEn3vchAKecUJdO0=
-=k7qP
------END PGP SIGNATURE-----
+The idea was to change as few files as possible, hence the use of
+magic flags instead of adding a whole API extension at all levels.
 
---envbJBWh7q8WU6mo--
+In the course of doing so, I also detected some issues with the
+original driver, such as unsupported but reported as supported
+features, or features that were easy to add. Also, I have patched
+the device tree data to add the "high drive strength for higher
+SPI clocks" values already expected by the SPI rockchip driver.
 
+Long story short, I now have my grade and the permission to make
+all my programming work related to it public, so I would like to
+offer the sources to the SPI enthousiasts on this mailing list!
 
---===============4212091236098525067==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+As said, the project is rather specialized, but there are plenty
+of cherries to be picked for general use and maybe even somebody
+from the realm of the ADC kernel drivers would be interested to
+"lift" the pump thread part into that part of the kernel source.
+Some bug fixes are useful for the drivers for all general uses,
+not just my A/D goals. Others might enjoy the device tree fixes
+or the trick to get high resolution timestamps with very low CPU
+overhead.
 
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Unfortunately I am not experienced with the linux-rockchip work
+flow and community as a whole, although I have been keeping an
+eye on the intense flow of patches sent to and discussed on this
+list since July 2018.
 
---===============4212091236098525067==--
+So I would be glad to hear from some of you experienced kernel
+experts who would have the time to receive my code, structure
+the changes and put the interesting parts in the kernel or at
+other places where the other Rockchip users can enjoy them.
+
+That would be very nice of you! Thank you in advance.
+
+My tests are based on the specs of the LTC2335, ADS8330,
+ADAS3023 and LTC2357 A/D converter chips. Usually one, but
+for some experiments two SPI interfaces of the Asus Tinker
+Board with Rockchip RK3288 SoC / CPU with Linux 4.4.103 were
+used. I am aware that this is not the newest kernel, but it
+was the Tinker OS 2.0.7 Linux kernel back at the time, see
+https://github.com/TinkerBoard/debian_kernel/tree/release
+
+Using a newer compiler revealed indentation errors in some
+wireless LAN drivers, so I also have patches for those:
+
+drivers/net/wireless/rockchip_wlan/rtl8723bs/hal/btc/halbtc8723b1ant.c
+drivers/net/wireless/rockchip_wlan/rtl8723bs/hal/btc/halbtc8723b2ant.c
+drivers/net/wireless/rockchip_wlan/rtl8814au/hal/rtl8814a/usb/rtl8814au_xmit.c
+drivers/net/wireless/rockchip_wlan/rtl8814au/core/rtw_mlme_ext.c
+drivers/net/wireless/rockchip_wlan/rtl8814au/core/rtw_security.c
+
+I have made big changes to drivers/spi/spi-rockchip.c while
+keeping the include/linux/platform_data/spi-rockchip.h and
+the Documentation/devicetree/bindings/spi/spi-rockchip.txt
+unchanged. The other drivers/spi/spi-rockchip-... files
+turned out to be abandoned parts of older Linux drivers
+and include/linux/spi/spi.h stayed unchanged as well, so
+at the moment, my custom user space tool is the only part
+which uses new /dev/spidev... features. Otherwise, things
+behaves in the classic way, plus bugfixes, minus suspend.
+
+In experiments, while the code believed that 50 MHz SPI
+clock would be feasible, the transmission was more stable
+at 48 MHz. Also, as said, the "high drive strength" for
+clocks above 24 MHz had to be activated via Device Tree,
+in the file arch/arm/boot/dts/rk3288.dtsi as well as in
+the arch/arm/boot/dts/rk3288-miniarm.dts sources.
+
+For all changed files, I have archived original files
+as reference and my patched file and unified diffs. As
+said, the kernel space changes are limited to those
+files mentioned in this mail. Of course I kept .config
+and boot/hw_intf.conf used for my project as reference,
+as well as my user space "data pump" (SPI to GbE LAN).
+
+Of course there is a verbose paper about all activities,
+but THAT is written in German. Yet of course I am happy
+to answer all questions about my code by mail in English.
+
+I would be very happy if my research and coding in 2018
+would bring some insights, amusement and improvements to
+the Linux Rockchip world in some way. Please contact me
+to get a copy of all code, including "before", "after"
+and "diff" of all changed files. As it is about 350 kB
+zipped, I hesitate to send it to the whole mailing list.
+
+Thank you for reading! I hope some of you became curious.
+
+Regards, Eric
