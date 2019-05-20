@@ -1,25 +1,28 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] ARM: dts: rockchip: Limit GPU frequency on veyron mickey to 300 MHz when the CPU gets very hot
-Date: Mon, 20 May 2019 22:28:00 +0200
-Message-ID: <1695268.0xytyHHoPs@diego>
-References: <20190520170132.91571-1-mka@chromium.org> <CAD=FV=VGA_i=vM4_OrqXnv0WC__Fcdced3oOZjzcPO=i8Q+SdA@mail.gmail.com>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: Re: [PATCH 1/2] ARM: dts: rockchip: Limit GPU frequency on veyron
+ mickey to 300 MHz when the CPU gets very hot
+Date: Mon, 20 May 2019 14:12:15 -0700
+Message-ID: <20190520211215.GG40515@google.com>
+References: <20190520170132.91571-1-mka@chromium.org>
+ <CAD=FV=VGA_i=vM4_OrqXnv0WC__Fcdced3oOZjzcPO=i8Q+SdA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
 In-Reply-To: <CAD=FV=VGA_i=vM4_OrqXnv0WC__Fcdced3oOZjzcPO=i8Q+SdA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Doug Anderson <dianders@chromium.org>
-Cc: Matthias Kaehlcke <mka@chromium.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 20. Mai 2019, 22:16:46 CEST schrieb Doug Anderson:
+On Mon, May 20, 2019 at 01:16:46PM -0700, Doug Anderson wrote:
 > Hi,
 > 
 > On Mon, May 20, 2019 at 10:01 AM Matthias Kaehlcke <mka@chromium.org> wrote:
 > >
 > > On rk3288 the CPU and GPU temperatures are correlated. Limit the GPU
-> > frequency on veyron mickey to 300 MHz for CPU temperatures >= 85°C.
+> > frequency on veyron mickey to 300 MHz for CPU temperatures >= 85Â°C.
 > >
 > > This matches the configuration of the downstream Chrome OS 3.14 kernel,
 > > the 'official' kernel for mickey.
@@ -68,7 +71,9 @@ Am Montag, 20. Mai 2019, 22:16:46 CEST schrieb Doug Anderson:
 > 2: 300 MHz
 > 3: 200 MHz
 > 4: 100 MHz
-> 
+
+Thanks spotting this!
+
 > Thinking about it more, I bet Heiko would actually be OK deleting the
 > 500 MHz GPU operating point for veyron.  Technically it's not needed
 > upstream because upstream doesn't have our hacks to allow re-purposing
@@ -77,13 +82,8 @@ Am Montag, 20. Mai 2019, 22:16:46 CEST schrieb Doug Anderson:
 > MHz operating point removed and also that eventually someonje will
 > probably figure out a way to re-purpose NPLL for HDMI even upstream...
 
-Yeah. Dropping the opp sounds sensible ... for the npll-related thing
-and also if you're really running into thermal constraints it might be
-good to give the system a bit more breathing room?
-
-
-Heiko
-
+Looks like Heiko is indeed ok with it, so let's remove the OPP and be
+in sync with downstream on this.
 
 > B) It seems like in the same patch you'd want to introduce
 > "cpu_warm_limit_gpu", AKA:
@@ -93,6 +93,5 @@ Heiko
 >   cooling-device =
 >   <&gpu 1 1>;
 > };
-> 
-> 
-> -Doug
+
+Makes sense to do it in the same patch, will add it in v2.
