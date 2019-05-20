@@ -1,103 +1,49 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [PATCH] phy: rockchip-dp: Avoid power leak by leaving the PHY
- power on
-Date: Mon, 20 May 2019 16:04:11 +0800
-Message-ID: <79ca5499-6b7d-fe55-2030-283f5cfb1d27@rock-chips.com>
-References: <20190507234857.81414-1-dianders@chromium.org>
+From: Arend Van Spriel <arend.vanspriel@broadcom.com>
+Subject: Re: [PATCH 1/3] brcmfmac: re-enable command decode in sdio_aos for
+ BRCM 4354
+Date: Mon, 20 May 2019 10:09:39 +0200
+Message-ID: <e3f54bcb-8d10-1336-1458-2bd11cfc1010@broadcom.com>
+References: <20190517225420.176893-1-dianders@chromium.org>
+ <20190517225420.176893-2-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190507234857.81414-1-dianders@chromium.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20190517225420.176893-2-dianders@chromium.org>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Douglas Anderson <dianders@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Elaine Zhang <zhangqing@rock-chips.com>, hl@rock-chips.com, dbasehore@chromium.org, linux-kernel@vger.kernel.org, Huang Jiachai <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, "nickey.yang (nickey.yang@rock-chips.com)" <nickey.yang@rock-chips.com>, mka@chromium.org, ryandcase@chromium.org, groeck@chromium.org, wzz <wzz@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Sender: netdev-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>, Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>
+Cc: linux-rockchip@lists.infradead.org, Double Lo <double.lo@cypress.com>, briannorris@chromium.org, Madhan Mohan R <madhanmohan.r@cypress.com>, mka@chromium.org, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, brcm80211-dev-list.pdl@broadcom.com, Franky Lin <franky.lin@broadcom.com>, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, Hante Meuleman <hante.meuleman@broadcom.com>, Naveen Gupta <naveen.gupta@cypress.com>, brcm80211-dev-list@cypress.com, YueHaibing <yuehaibing@huawei.com>, "David S. Miller" <davem@davemloft.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRG91ZywKCkZvciBub3cswqAgbm9ib2R5IG9mIHJvY2tjaGlwIGlzIHJlc3BvbnNpYmxlIGZv
-ciB0aGlzIGRyaXZlci4KQ2M6IE5pY2tleSwgWmFpbiwgSGpjCgoKT24gNS84LzE5IDc6NDggQU0s
-IERvdWdsYXMgQW5kZXJzb24gd3JvdGU6Cj4gV2hpbGUgdGVzdGluZyBhIG5ld2VyIGtlcm5lbCBv
-biByazMyODgtYmFzZWQgQ2hyb21lYm9va3MgSSBmb3VuZCB0aGF0Cj4gdGhlIHBvd2VyIGRyYXcg
-aW4gc3VzcGVuZCB3YXMgaGlnaGVyIG9uIG5ld2VyIGtlcm5lbHMgY29tcGFyZWQgdG8gdGhlCj4g
-ZG93bnN0cmVhbSBDaHJvbWUgT1MgMy4xNCBrZXJuZWwuICBTcGVjaWZpY2FsbHkgdGhlIHBvd2Vy
-IG9mIGFuCj4gcmszMjg4LXZleXJvbi1qZXJyeSBib2FyZCB0aGF0IEkgdGVzdGVkIChhcyBtZWFz
-dXJlZCBieSB0aGUgc21hcnQKPiBiYXR0ZXJ5KSB3YXMgfjE2IG1BIG9uIENocm9tZSBPUyAzLjE0
-IGFuZCB+MjEgbUEgb24gYSBuZXdlciBrZXJuZWwuCj4KPiBJIHRyYWNrZWQgdGhlIHJlZ3Jlc3Np
-b24gZG93biB0byB0aGUgZmFjdCB0aGF0IHRoZSAiRFAgUEhZIiBkcml2ZXIKPiBkaWRuJ3QgZXhp
-c3QgaW4gb3VyIGRvd25zdHJlYW0gMy4xNC4gIFdlIHJlbGllZCBvbiB0aGUgZURQIGRyaXZlciB0
-bwo+IHR1cm4gb24gdGhlIGNsb2NrIGFuZCByZWxpZWQgb24gdGhlIGZhY3QgdGhhdCB0aGUgcG93
-ZXIgZm9yIHRoZSBQSFkKPiB3YXMgZGVmYXVsdCB0dXJuZWQgb24uCj4KPiBTcGVjaWZpY2FsbHkg
-dGhlIHRoaW5nIHRoYXQgY2F1c2VkIHRoZSBwb3dlciByZWdyZXNzaW9uIHdhcyB0dXJuaW5nCj4g
-dGhlIGVEUCBQSFkgX29mZl8uICBQcmVzdW1hYmx5IHRoZXJlIGlzIHNvbWUgc29ydCBvZiBwb3dl
-ciBsZWFrIGluIHRoZQo+IHN5c3RlbSBhbmQgd2hlbiB3ZSB0dXJuIHRoZSBQSFkgb2ZmIHNvbWV0
-aGluZyBpcyBsZWFjaGluZyBwb3dlciBmcm9tCj4gc29tZXRoaW5nIGVsc2UgYW5kIGNhdXNpbmcg
-ZXhjZXNzaXZlIHBvd2VyIGRyYXcuCj4KPiBEb2luZyBhIHNlYXJjaCB0aHJvdWdoIGRldmljZSB0
-cmVlcyBzaG93cyB0aGF0IHRoaXMgUEhZIGlzIG9ubHkgZXZlcgo+IHVzZWQgb24gcmszMjg4LiAg
-UHJlc3VtYWJseSB0aGlzIHBvd2VyIGxlYWsgaXMgcHJlc2VudCBvbiBhbGwKPiByazMyODgtU29D
-cyBydW5uaW5nIHVwc3RyZWFtIExpbnV4IHNvIGxldCdzIGp1c3Qgd2hhY2sgdGhlIGRyaXZlciB0
-bwo+IG1ha2Ugc3VyZSB3ZSBuZXZlciB0dXJuIG9mZiBwb3dlci4gIFdlJ2xsIHN0aWxsIGxlYXZl
-IHRoZSBwYXJ0cyB0aGF0Cj4gdHVybiBfb25fIHRoZSBwb3dlciBhbmQgZ3JhYiB0aGUgY2xvY2ss
-IHRob3VnaC4KPgo+IE5PVEVTOgo+IEEpIElmIHNvbWVvbmUgY2FuIGlkZW50aWZ5IHdoYXQgdGhp
-cyBwb3dlciBsZWFrIGlzIGFuZCBmaXggaXQgaW4gc29tZQo+ICAgICBvdGhlciB3YXkgd2UgY2Fu
-IHJldmVydCB0aGlzIHBhdGNoLgo+IEIpIElmIHNvbWVvbmUgY2FuIHNob3cgdGhhdCB0aGVpciBw
-YXJ0aWN1bGFyIGJvYXJkIGRvZXNuJ3QgaGF2ZSB0aGlzCj4gICAgIHBvd2VyIGxlYWsgKG1heWJl
-IHRoZXkgaGF2ZSByYWlscyBob29rZWQgdXAgZGlmZmVyZW50bHk/KSB3ZSBjYW4KPiAgICAgcGVy
-aGFwcyBhZGQgYSBkZXZpY2UgdHJlZSBwcm9wZXJ0eSBpbmRpY2F0aW5nIHRoYXQgZm9yIHNvbWUg
-Ym9hcmRzCj4gICAgIGl0J3MgT0sgdG8gdHVybiB0aGlzIHJhaWwgb2ZmLiAgSSBkb24ndCB3YW50
-IHRvIGFkZCB0aGlzIHByb3BlcnR5Cj4gICAgIHVudGlsIEkga25vdyBvZiBhIGJvYXJkIHRoYXQg
-bmVlZHMgaXQuCj4KPiBGaXhlczogZmQ5Njg5NzNkZTk1ICgicGh5OiBBZGQgZHJpdmVyIGZvciBy
-b2NrY2hpcCBEaXNwbGF5IFBvcnQgUEhZIikKPiBTaWduZWQtb2ZmLWJ5OiBEb3VnbGFzIEFuZGVy
-c29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+CgoKUmV2aWV3ZWQtYnk6IENhZXNhciBXYW5nIDx3
-eHRAcm9jay1jaGlwcy5jb20+Cgo+IC0tLQo+IEFzIGZhciBhcyBJIGtub3cgWWFraXIgKHRoZSBv
-cmlnaW5hbCBhdXRob3IpIGlzIG5vIGxvbmdlciBhdCBSb2NrY2hpcC4KPiBJJ3ZlIGFkZGVkIGEg
-ZmV3IG90aGVyIFJvY2tjaGlwIHBlb3BsZSBhbmQgaG9wZWZ1bGx5IG9uZSBvZiB0aGVtIGNhbgo+
-IGhlbHAgZGlyZWN0IGV2ZW4gaWYgdGhleSdyZSBub3QgZGlyZWN0bHkgcmVzcG9uc2libGUuCj4K
-PiAgIGRyaXZlcnMvcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1kcC5jIHwgMTEgKysrKysrKy0t
-LS0KPiAgIDEgZmlsZSBjaGFuZ2VkLCA3IGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pCj4K
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLWRwLmMgYi9k
-cml2ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtZHAuYwo+IGluZGV4IDhiMjY3YTc0NjU3
-Ni4uMTBiYmNkNjlkNmY1IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvcGh5L3JvY2tjaGlwL3BoeS1y
-b2NrY2hpcC1kcC5jCj4gKysrIGIvZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLWRw
-LmMKPiBAQCAtMzUsNyArMzUsNyBAQCBzdHJ1Y3Qgcm9ja2NoaXBfZHBfcGh5IHsKPiAgIHN0YXRp
-YyBpbnQgcm9ja2NoaXBfc2V0X3BoeV9zdGF0ZShzdHJ1Y3QgcGh5ICpwaHksIGJvb2wgZW5hYmxl
-KQo+ICAgewo+ICAgCXN0cnVjdCByb2NrY2hpcF9kcF9waHkgKmRwID0gcGh5X2dldF9kcnZkYXRh
-KHBoeSk7Cj4gLQlpbnQgcmV0Owo+ICsJaW50IHJldCA9IDA7Cj4gICAKPiAgIAlpZiAoZW5hYmxl
-KSB7Cj4gICAJCXJldCA9IHJlZ21hcF93cml0ZShkcC0+Z3JmLCBHUkZfU09DX0NPTjEyLAo+IEBA
-IC01MCw5ICs1MCwxMiBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3NldF9waHlfc3RhdGUoc3RydWN0
-IHBoeSAqcGh5LCBib29sIGVuYWJsZSkKPiAgIAl9IGVsc2Ugewo+ICAgCQljbGtfZGlzYWJsZV91
-bnByZXBhcmUoZHAtPnBoeV8yNG0pOwo+ICAgCj4gLQkJcmV0ID0gcmVnbWFwX3dyaXRlKGRwLT5n
-cmYsIEdSRl9TT0NfQ09OMTIsCj4gLQkJCQkgICBHUkZfRURQX1BIWV9TSUREUV9ISVdPUkRfTUFT
-SyB8Cj4gLQkJCQkgICBHUkZfRURQX1BIWV9TSUREUV9PRkYpOwo+ICsJCS8qCj4gKwkJICogSW50
-ZW50aW9uYWxseSBkb24ndCB0dXJuIFNJRERRIG9mZiB3aGVuIGRpc2FibGluZwo+ICsJCSAqIHRo
-ZSBQSFkuICBUaGVyZSBpcyBhIHBvd2VyIGxlYWsgb24gcmszMjg4IGFuZAo+ICsJCSAqIHN1c3Bl
-bmQgcG93ZXIgX2luY3JlYXNlc18gYnkgNSBtQSBpZiB5b3UgdHVybiB0aGlzCj4gKwkJICogb2Zm
-Lgo+ICsJCSAqLwoKCkFzIGRlc2NyaWJlZCBieSBUUk0sIFRoZSDigJxHUkZfRURQX1BIWV9TSURE
-UV9PRkbigJ0gdGhhdCBhbGwgY2lyY3VpdHMgYXJlIApwb3dlciBkb3duLCBhbGwKSU8gYXJlIGhp
-Z2gtWi4gVGhhdCBzaG91bGQgbWFrZSBzdXJlIHRoZSBQRF9WSU9bMF0gd2FzIGRpc2FibGVkIGZp
-cnN0LCAKbm8gYWN0aXZlLgpCdXQgdGhlIHJrMzI4OCBjYW4ndCB0dXJuIHBkX3ZpbyBvZmYgYXQg
-dGhlIG1vbWVudC4KClswXQpQRF9WSU8gV2hpY2ggY2xvY2sgYXJlIGRldmljZSBjbG9ja3M6CiDC
-oMKgwqAgwqDCoMKgIMKgwqDCoCDCoCrCoMKgwqAgY2xvY2tzwqDCoMKgIMKgwqDCoCBkZXZpY2Vz
-CiDCoMKgwqAgwqDCoMKgIMKgwqDCoCDCoCrCoMKgwqAgKl9JRVDCoMKgwqAgwqDCoMKgIElFUDpJ
-bWFnZSBFbmhhbmNlbWVudCBQcm9jZXNzb3IKIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgKsKgwqDC
-oCAqX0lTUMKgwqDCoCDCoMKgwqAgSVNQOkltYWdlIFNpZ25hbCBQcm9jZXNzaW5nCiDCoMKgwqAg
-wqDCoMKgIMKgwqDCoCDCoCrCoMKgwqAgKl9WSVDCoMKgwqAgwqDCoMKgIFZJUDpWaWRlbyBJbnB1
-dCBQcm9jZXNzb3IKIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgKsKgwqDCoCAqX1ZPUCrCoMKgwqAg
-wqDCoMKgIFZPUDpWaXN1YWwgT3V0cHV0IFByb2Nlc3NvcgogwqDCoMKgIMKgwqDCoCDCoMKgwqAg
-wqAqwqDCoMKgICpfUkdBwqDCoMKgIMKgwqDCoCBSR0EKIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKg
-KsKgwqDCoCAqX0VEUCrCoMKgwqAgwqDCoMKgIEVEUAogwqDCoMKgIMKgwqDCoCDCoMKgwqAgwqAq
-wqDCoMKgICpfTFZEU18qwqDCoMKgIExWRFMKIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgKsKgwqDC
-oCAqX0hETUnCoMKgwqAgwqDCoMKgIEhETUkKIMKgwqDCoCDCoMKgwqAgwqDCoMKgIMKgKsKgwqDC
-oCAqX01JUElfKsKgwqDCoCBNSVBJCgoKVGhhbmtzLAotQ2Flc2FyCgoKPiAgIAl9Cj4gICAKPiAg
-IAlyZXR1cm4gcmV0OwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1hcm0ta2VybmVsCg==
+
+
+On 5/18/2019 12:54 AM, Douglas Anderson wrote:
+> In commit 29f6589140a1 ("brcmfmac: disable command decode in
+> sdio_aos") we disabled something called "command decode in sdio_aos"
+> for a whole bunch of Broadcom SDIO WiFi parts.
+> 
+> After that patch landed I find that my kernel log on
+> rk3288-veyron-minnie and rk3288-veyron-speedy is filled with:
+>    brcmfmac: brcmf_sdio_bus_sleep: error while changing bus sleep state -110
+> 
+> This seems to happen every time the Broadcom WiFi transitions out of
+> sleep mode.  Reverting the part of the commit that affects the WiFi on
+> my boards fixes the problem for me, so that's what this patch does.
+
+This sounds very similar to the issue we had during integration of wifi 
+on rk3288 chromebooks years ago.
+
+> Note that, in general, the justification in the original commit seemed
+> a little weak.  It looked like someone was testing on a SD card
+> controller that would sometimes die if there were CRC errors on the
+> bus.  This used to happen back in early days of dw_mmc (the controller
+> on my boards), but we fixed it.  Disabling a feature on all boards
+> just because one SD card controller is broken seems bad.  ...so
+> instead of just this patch possibly the right thing to do is to fully
+> revert the original commit.
+
+I am leaning towards a full revert, but let's wait for more background info.
+
+Regards,
+Arend
