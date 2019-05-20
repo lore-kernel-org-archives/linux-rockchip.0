@@ -1,106 +1,110 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v5 1/7] dt-bindings: Add panel-timing subnode to simple-panel
-Date: Mon, 20 May 2019 11:35:43 -0700
-Message-ID: <CAD=FV=WKkfhS8q2Wnx6PfHyq8m6oGhu=RideOykdTQ4dJrwfUg@mail.gmail.com>
-References: <20190401171724.215780-1-dianders@chromium.org>
- <20190401171724.215780-2-dianders@chromium.org> <20190408103240.GF6644@ulmo> <CAD=FV=UJXLeEDPRAHY5-f2D4qJ4rq0LmKUDf4MANrb5KOm_x=g@mail.gmail.com>
+Subject: Re: [PATCH v2] mmc: dw_mmc: Disable SDIO interrupts while suspended
+ to fix suspend/resume
+Date: Mon, 20 May 2019 11:41:19 -0700
+Message-ID: <CAD=FV=WEDkufoEUYv9U+c+Y_bm8MYEWS25n63vUeNG0LLCFnuw@mail.gmail.com>
+References: <20190429204040.18725-1-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=UJXLeEDPRAHY5-f2D4qJ4rq0LmKUDf4MANrb5KOm_x=g@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dri-devel <dri-devel@lists.freedesktop.org>, Boris Brezillon <boris.brezillon@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, =?UTF-8?Q?Enric_Balletb=C3=B2?= <enric.balletbo@collabora.com>, Rob Herring <robh+dt@kernel.org>, Matthias Kaehlcke <mka@chromium.org>, Eric Anholt <eric@anholt.net>, Jeffy Chen <jeffy.chen@rock-chips.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, David Airlie <airlied@linux.ie>, Mark Rutland <mark.rutland@arm.com>, Daniel Vetter <daniel@ffwll.ch>
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20190429204040.18725-1-dianders@chromium.org>
+Sender: stable-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Kalle Valo <kvalo@codeaurora.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, Sonny Rao <sonnyrao@chromium.org>, Emil Renner Berthing <emil.renner.berthing@gmail.com>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, stable@vger.kernel.org, Linux MMC List <linux-mmc@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, Jaehoon Chung <jh80.chung@samsung.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Thierry,
+Hi,
 
-On Mon, Apr 8, 2019 at 7:39 AM Doug Anderson <dianders@chromium.org> wrote:
+On Mon, Apr 29, 2019 at 1:41 PM Douglas Anderson <dianders@chromium.org> wrote:
 >
-> Thierry,
+> Processing SDIO interrupts while dw_mmc is suspended (or partly
+> suspended) seems like a bad idea.  We really don't want to be
+> processing them until we've gotten ourselves fully powered up.
 >
-> On Mon, Apr 8, 2019 at 3:32 AM Thierry Reding <thierry.reding@gmail.com> =
-wrote:
-> >
-> > On Mon, Apr 01, 2019 at 10:17:18AM -0700, Douglas Anderson wrote:
-> > > From: Sean Paul <seanpaul@chromium.org>
-> > >
-> > > This patch adds a new subnode to simple-panel allowing us to override
-> > > the typical timing expressed in the panel's display_timing.
-> > >
-> > > Changes in v2:
-> > >  - Split out the binding into a new patch (Rob)
-> > >  - display-timings is a new section (Rob)
-> > >  - Use the full display-timings subnode instead of picking the timing
-> > >    out (Rob/Thierry)
-> > > Changes in v3:
-> > >  - Go back to using the timing subnode directly, but rename to
-> > >    panel-timing (Rob)
-> > > Changes in v4:
-> > >  - Simplify desc. for when override should be used (Thierry/Laurent)
-> > >  - Removed Rob H review since it's been a year and wording changed
-> > > Changes in v5:
-> > >  - Removed bit about OS may ignore (Rob/Ezequiel)
-> > >
-> > > Cc: Doug Anderson <dianders@chromium.org>
-> > > Cc: Eric Anholt <eric@anholt.net>
-> > > Cc: Heiko Stuebner <heiko@sntech.de>
-> > > Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
-> > > Cc: Rob Herring <robh+dt@kernel.org>
-> > > Cc: St=C3=A9phane Marchesin <marcheu@chromium.org>
-> > > Cc: Thierry Reding <thierry.reding@gmail.com>
-> > > Cc: devicetree@vger.kernel.org
-> > > Cc: dri-devel@lists.freedesktop.org
-> > > Cc: linux-rockchip@lists.infradead.org
-> > > Signed-off-by: Sean Paul <seanpaul@chromium.org>
-> > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > > ---
-> > >
-> > >  .../bindings/display/panel/simple-panel.txt   | 22 +++++++++++++++++=
-++
-> > >  1 file changed, 22 insertions(+)
-> > >
-> > > diff --git a/Documentation/devicetree/bindings/display/panel/simple-p=
-anel.txt b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
-> > > index b2b872c710f2..93882268c0b9 100644
-> > > --- a/Documentation/devicetree/bindings/display/panel/simple-panel.tx=
-t
-> > > +++ b/Documentation/devicetree/bindings/display/panel/simple-panel.tx=
-t
-> > > @@ -15,6 +15,16 @@ Optional properties:
-> > >    (hot plug detect) signal, but the signal isn't hooked up so we sho=
-uld
-> > >    hardcode the max delay from the panel spec when powering up the pa=
-nel.
-> > >
-> > > +panel-timing subnode
-> >
-> > Is there any reason why we need the panel- prefix? This is already part
-> > of a panel definition, so it's completely redundant. Why not just name
-> > the subnode "timing"?
+> You might be wondering how it's even possible to become suspended when
+> an SDIO interrupt is active.  As can be seen in
+> dw_mci_enable_sdio_irq(), we explicitly keep dw_mmc out of runtime
+> suspend when the SDIO interrupt is enabled.  ...but even though we
+> stop normal runtime suspend transitions when SDIO interrupts are
+> enabled, the dw_mci_runtime_suspend() can still get called for a full
+> system suspend.
 >
-> It was a really long time ago since this patch series was idle for a
-> while, but you previous had similar feedback in v3 but ended up OK
-> with it.  See:
+> Let's handle all this by explicitly masking SDIO interrupts in the
+> suspend call and unmasking them later in the resume call.  To do this
+> cleanly I'll keep track of whether the client requested that SDIO
+> interrupts be enabled so that we can reliably restore them regardless
+> of whether we're masking them for one reason or another.
 >
-> https://patchwork.kernel.org/patch/10207583/
+> It should be noted that if dw_mci_enable_sdio_irq() is never called
+> (for instance, if we don't have an SDIO card plugged in) that
+> "client_sdio_enb" will always be false.  In those cases this patch
+> adds a tiny bit of overhead to suspend/resume (a spinlock and a
+> read/write of INTMASK) but other than that is a no-op.  The
+> SDMMC_INT_SDIO bit should always be clear and clearing it again won't
+> hurt.
 >
-> I believe the original node name came out of some back and forth
-> between Rob and Sean.  As far as I can tell, the context is back in
-> <https://patchwork.kernel.org/patch/10203483/>.  I think Rob wanted it
-> to follow other similar node names.
+> Without this fix it can be seen that rk3288-veyron Chromebooks with
+> Marvell WiFi would sometimes fail to resume WiFi even after picking my
+> recent mwifiex patch [1].  Specifically you'd see messages like this:
+>   mwifiex_sdio mmc1:0001:1: Firmware wakeup failed
+>   mwifiex_sdio mmc1:0001:1: PREP_CMD: FW in reset state
 >
+> ...and tracing through the resume code in the failing cases showed
+> that we were processing a SDIO interrupt really early in the resume
+> call.
 >
-> That all being said, if you feel strongly about it being called
-> "timing" and Rob's OK w/ that too then I'll re-spin the series.
+> NOTE: downstream in Chrome OS 3.14 and 3.18 kernels (both of which
+> support the Marvell SDIO WiFi card) we had a patch ("CHROMIUM: sdio:
+> Defer SDIO interrupt handling until after resume") [2].  Presumably
+> this is the same problem that was solved by that patch.
+>
+> [1] https://lkml.kernel.org/r/20190404040106.40519-1-dianders@chromium.org
+> [2] https://crrev.com/c/230765
+>
+> Cc: <stable@vger.kernel.org> # 4.14.x
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+> I didn't put any "Fixes" tag here, but presumably this could be
+> backported to whichever kernels folks found it useful for.  I have at
+> least confirmed that kernels v4.14 and v4.19 (as well as v5.1-rc2)
+> show the problem.  It is very easy to pick this to v4.19 and it
+> definitely fixes the problem there.
+>
+> I haven't spent the time to pick this to 4.14 myself, but presumably
+> it wouldn't be too hard to backport this as far as v4.13 since that
+> contains commit 32dba73772f8 ("mmc: dw_mmc: Convert to use
+> MMC_CAP2_SDIO_IRQ_NOTHREAD for SDIO IRQs").  Prior to that it might
+> make sense for anyone experiencing this problem to just pick the old
+> CHROMIUM patch to fix them.
+>
+> Changes in v2:
+> - Suggested 4.14+ in the stable tag (Sasha-bot)
+> - Extra note that this is a noop on non-SDIO (Shawn / Emil)
+> - Make boolean logic cleaner as per https://crrev.com/c/1586207/1
+> - Hopefully clear comments as per https://crrev.com/c/1586207/1
+>
+>  drivers/mmc/host/dw_mmc.c | 27 +++++++++++++++++++++++----
+>  drivers/mmc/host/dw_mmc.h |  3 +++
+>  2 files changed, 26 insertions(+), 4 deletions(-)
 
-With 5.2-rc1 out, maybe this series is ready to land?  If you'd like
-me to change things as per above I can.  ...but it feels like keeping
-the already-agreed-upon name might be easiest / best?  Presumably
-you'd land patches 1, 2, 4, and 5 and then Heiko could land the dts
-patches?
+Ulf: are you the right person to land this?  With 5.2-rc1 out it might
+be a good time for it?  To refresh your memory about this patch:
 
-Thanks!
+* Patch v1 was posted back on April 10th [1] so we're at about 1.5
+months of time for people to comment about it now.  Should be more
+than enough.
+
+* Shawn Lin saw it and didn't hate it.  He had some confusion about
+how it worked and I've hopefully alleviated via extra comments / text.
+
+* Emil Renner Berthing thought it caused a regression for him but then
+tested further and was convinced that it didn't.  This is extra
+confirmation that someone other than me did try the patch and found it
+to not break things.  ;-)
+
+* It has been reviewed by Guenter Roeck (in v2)
+
+[1] https://lkml.kernel.org/r/20190410221237.160856-1-dianders@chromium.org
+
 
 -Doug
