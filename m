@@ -1,54 +1,191 @@
-From: Arend Van Spriel <arend.vanspriel@broadcom.com>
-Subject: Re: [PATCH 0/3] brcmfmac: sdio: Deal better w/ transmission errors
- waking from sleep
-Date: Mon, 20 May 2019 10:55:12 +0200
-Message-ID: <8c3fa57a-3843-947c-ec6b-a6144ccde1e9@broadcom.com>
-References: <20190517225420.176893-1-dianders@chromium.org>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Subject: Re: [PATCH v3 1/3] thermal: rockchip: fix up the tsadc pinctrl
+ setting error
+Date: Mon, 20 May 2019 15:38:32 +0200
+Message-ID: <CAFqH_53nbiwzQKctNa7MBzgCcsRFn1p8g31Xgvo3E9k6eA8AKw@mail.gmail.com>
+References: <1556618986-18923-1-git-send-email-zhangqing@rock-chips.com>
+ <1556618986-18923-2-git-send-email-zhangqing@rock-chips.com> <785392a0-282a-1e51-a4d6-a6d5ca478949@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190517225420.176893-1-dianders@chromium.org>
-Content-Language: en-US
+In-Reply-To: <785392a0-282a-1e51-a4d6-a6d5ca478949@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>, Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>
-Cc: linux-rockchip@lists.infradead.org, Double Lo <double.lo@cypress.com>, briannorris@chromium.org, Madhan Mohan R <madhanmohan.r@cypress.com>, mka@chromium.org, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, linux-mmc@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, brcm80211-dev-list@cypress.com, YueHaibing <yuehaibing@huawei.com>, Hante Meuleman <hante.meuleman@broadcom.com>, Martin Hicks <mort@bork.org>, Ritesh Harjani <riteshh@codeaurora.org>, Michael Trimarchi <michael@amarulasolutions.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Franky Lin <franky.lin@broadcom.com>, Jiong Wu <lohengrin1024@gmail.com>, brcm80211-dev-list.pdl@broadcom.com, "David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.orgli
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Elaine Zhang <zhangqing@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, huangtao@rock-chips.com, Linux PM list <linux-pm@vger.kernel.org>, xxx@rock-chips.com, xf@rock-chips.com, linux-kernel <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Doug Anderson <dianders@chromium.org>, vicencb@gmail.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On 5/18/2019 12:54 AM, Douglas Anderson wrote:
-> This series attempts to deal better with the expected transmission
-> errors that we get when waking up the SDIO-based WiFi on
-> rk3288-veyron-minnie, rk3288-veyron-speedy, and rk3288-veyron-mickey.
-> 
-> Some details about those errors can be found in
-> <https://crbug.com/960222>, but to summarize it here: if we try to
-> send the wakeup command to the WiFi card at the same time it has
-> decided to wake up itself then it will behave badly on the SDIO bus.
-> This can cause timeouts or CRC errors.
-> 
-> When I tested on 4.19 and 4.20 these CRC errors can be seen to cause
-> re-tuning.  Since I am currently developing on 4.19 this was the
-> original problem I attempted to solve.
-> 
-> On mainline it turns out that you don't see the retuning errors but
-> you see tons of spam about timeouts trying to wakeup from sleep.  I
-> tracked down the commit that was causing that and have partially
-> reverted it here.  I have no real knowledge about Broadcom WiFi, but
-> the commit that was causing problems sounds (from the descriptioin) to
-> be a hack commit penalizing all Broadcom WiFi users because of a bug
-> in a Cypress SD controller.  I will let others comment if this is
-> truly the case and, if so, what the right solution should be.
+Hi all,
 
-Let me give a bit of background. The brcmfmac driver implements its own 
-runtime-pm like functionality, ie. if the driver is idle for some time 
-it will put the device in a low-power state. When it does that it powers 
-down several cores in the chip among which the SDIO core. However, the 
-SDIO bus used be very bad at handling devices that do that so instead it 
-has the Always-On-Station (AOS) block take over the SDIO core in 
-handling the bus. Default is will send a R1 response, but only for CMD52 
-(and CMD14 but no host is using that cruft). In noCmdDecode it does not 
-respond and simply wakes up the SDIO core, which takes over again. 
-Because it does not respond timeouts (-110) are kinda expected in this mode.
+As pointed by [1] and [2] this commit, that now is upstream, breaks
+veyron (rk3288) and kevin (rk3399) boards. The problem is especially
+critical for veyron boards because they don't boot anymore.
 
-Regards,
-Arend
+I didn't look deep at the problem but I have some concerns about this
+patch, see below.
+
+[1] https://www.spinics.net/lists/linux-rockchip/msg24657.html
+[2] https://www.spinics.net/lists/linux-rockchip/msg24735.html
+
+Missatge de Daniel Lezcano <daniel.lezcano@linaro.org> del dia dt., 30
+d=E2=80=99abr. 2019 a les 15:39:
+>
+> On 30/04/2019 12:09, Elaine Zhang wrote:
+> > Explicitly use the pinctrl to set/unset the right mode
+> > instead of relying on the pinctrl init mode.
+> > And it requires setting the tshut polarity before select pinctrl.
+> >
+> > When the temperature sensor mode is set to 0, it will automatically
+> > reset the board via the Clock-Reset-Unit (CRU) if the over temperature
+> > threshold is reached. However, when the pinctrl initializes, it does a
+> > transition to "otp_out" which may lead the SoC restart all the time.
+> >
+> > "otp_out" IO may be connected to the RESET circuit on the hardware.
+> > If the IO is in the wrong state, it will trigger RESET.
+> > (similar to the effect of pressing the RESET button)
+> > which will cause the soc to restart all the time.
+> >
+> > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+>
+> Reviewed-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+>
+>
+>
+> > ---
+> >  drivers/thermal/rockchip_thermal.c | 36 ++++++++++++++++++++++++++++++=
++++---
+> >  1 file changed, 33 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockc=
+hip_thermal.c
+> > index 9c7643d62ed7..6dc7fc516abf 100644
+> > --- a/drivers/thermal/rockchip_thermal.c
+> > +++ b/drivers/thermal/rockchip_thermal.c
+> > @@ -172,6 +172,9 @@ struct rockchip_thermal_data {
+> >       int tshut_temp;
+> >       enum tshut_mode tshut_mode;
+> >       enum tshut_polarity tshut_polarity;
+> > +     struct pinctrl *pinctrl;
+> > +     struct pinctrl_state *gpio_state;
+> > +     struct pinctrl_state *otp_state;
+> >  };
+> >
+> >  /**
+> > @@ -1242,6 +1245,8 @@ static int rockchip_thermal_probe(struct platform=
+_device *pdev)
+> >               return error;
+> >       }
+> >
+> > +     thermal->chip->control(thermal->regs, false);
+> > +
+
+That's the line that causes the hang. Commenting this makes the veyron
+boot again. Probably this needs to go after chip->initialize?
+
+> >       error =3D clk_prepare_enable(thermal->clk);
+> >       if (error) {
+> >               dev_err(&pdev->dev, "failed to enable converter clock: %d=
+\n",
+> > @@ -1267,6 +1272,30 @@ static int rockchip_thermal_probe(struct platfor=
+m_device *pdev)
+> >       thermal->chip->initialize(thermal->grf, thermal->regs,
+> >                                 thermal->tshut_polarity);
+> >
+> > +     if (thermal->tshut_mode =3D=3D TSHUT_MODE_GPIO) {
+> > +             thermal->pinctrl =3D devm_pinctrl_get(&pdev->dev);
+> > +             if (IS_ERR(thermal->pinctrl)) {
+> > +                     dev_err(&pdev->dev, "failed to find thermal pinct=
+rl\n");
+> > +                     return PTR_ERR(thermal->pinctrl);
+> > +             }
+> > +
+> > +             thermal->gpio_state =3D pinctrl_lookup_state(thermal->pin=
+ctrl,
+> > +                                                        "gpio");
+
+Shouldn't this mode be documented properly in the binding first?
+
+The binding [3] talks about init, default and sleep states but *not*
+gpio and otpout. The patch series looks incomplete to me or not using
+the proper names.
+
+[3] https://elixir.bootlin.com/linux/v5.2-rc1/source/Documentation/devicetr=
+ee/bindings/thermal/rockchip-thermal.txt
+
+> > +             if (IS_ERR_OR_NULL(thermal->gpio_state)) {
+> > +                     dev_err(&pdev->dev, "failed to find thermal gpio =
+state\n");
+> > +                     return -EINVAL;
+> > +             }
+> > +
+> > +             thermal->otp_state =3D pinctrl_lookup_state(thermal->pinc=
+trl,
+> > +                                                       "otpout");
+> > +             if (IS_ERR_OR_NULL(thermal->otp_state)) {
+> > +                     dev_err(&pdev->dev, "failed to find thermal otpou=
+t state\n");
+> > +                     return -EINVAL;
+> > +             }
+> > +
+
+Same here otpout is not a documented.
+
+As this change is now in mainline and is causing veyron to hang I'd
+suggest reverting this change for now. Even fixing the root cause
+(maybe the one I pointed above) after this patch we will have the
+thermal driver to fail because "gpio" and "otpout" states are not
+defined nor documented (a change on this will need some reviews and
+acks and time I guess).
+
+Cheers,
+ Enric
+
+> > +             pinctrl_select_state(thermal->pinctrl, thermal->otp_state=
+);
+> > +     }
+> > +
+> >       for (i =3D 0; i < thermal->chip->chn_num; i++) {
+> >               error =3D rockchip_thermal_register_sensor(pdev, thermal,
+> >                                               &thermal->sensors[i],
+> > @@ -1337,8 +1366,8 @@ static int __maybe_unused rockchip_thermal_suspen=
+d(struct device *dev)
+> >
+> >       clk_disable(thermal->pclk);
+> >       clk_disable(thermal->clk);
+> > -
+> > -     pinctrl_pm_select_sleep_state(dev);
+> > +     if (thermal->tshut_mode =3D=3D TSHUT_MODE_GPIO)
+> > +             pinctrl_select_state(thermal->pinctrl, thermal->gpio_stat=
+e);
+> >
+> >       return 0;
+> >  }
+> > @@ -1383,7 +1412,8 @@ static int __maybe_unused rockchip_thermal_resume=
+(struct device *dev)
+> >       for (i =3D 0; i < thermal->chip->chn_num; i++)
+> >               rockchip_thermal_toggle_sensor(&thermal->sensors[i], true=
+);
+> >
+> > -     pinctrl_pm_select_default_state(dev);
+> > +     if (thermal->tshut_mode =3D=3D TSHUT_MODE_GPIO)
+> > +             pinctrl_select_state(thermal->pinctrl, thermal->otp_state=
+);
+> >
+> >       return 0;
+> >  }
+> >
+>
+>
+> --
+>  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software for A=
+RM SoCs
+>
+> Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+> <http://twitter.com/#!/linaroorg> Twitter |
+> <http://www.linaro.org/linaro-blog/> Blog
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
