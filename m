@@ -1,64 +1,106 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 1/3] brcmfmac: re-enable command decode in sdio_aos for
- BRCM 4354
-Date: Mon, 20 May 2019 11:20:22 -0700
-Message-ID: <CAD=FV=Uvc1wUQe-W1Jvm_gQ722pFm2a4OWvJDNVtkyQynFe4Gw@mail.gmail.com>
-References: <20190517225420.176893-1-dianders@chromium.org>
- <20190517225420.176893-2-dianders@chromium.org> <e3f54bcb-8d10-1336-1458-2bd11cfc1010@broadcom.com>
+Subject: Re: [PATCH v5 1/7] dt-bindings: Add panel-timing subnode to simple-panel
+Date: Mon, 20 May 2019 11:35:43 -0700
+Message-ID: <CAD=FV=WKkfhS8q2Wnx6PfHyq8m6oGhu=RideOykdTQ4dJrwfUg@mail.gmail.com>
+References: <20190401171724.215780-1-dianders@chromium.org>
+ <20190401171724.215780-2-dianders@chromium.org> <20190408103240.GF6644@ulmo> <CAD=FV=UJXLeEDPRAHY5-f2D4qJ4rq0LmKUDf4MANrb5KOm_x=g@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <e3f54bcb-8d10-1336-1458-2bd11cfc1010@broadcom.com>
-Sender: netdev-owner@vger.kernel.org
-To: Arend Van Spriel <arend.vanspriel@broadcom.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Double Lo <double.lo@cypress.com>, Brian Norris <briannorris@chromium.org>, Madhan Mohan R <madhanmohan.r@cypress.com>, Matthias Kaehlcke <mka@chromium.org>, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, brcm80211-dev-list.pdl@broadcom.com, Franky Lin <franky.lin@broadcom.com>, netdev <netdev@vger.kernel.org>, linux-wireless <linux-wireless@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, Hante Meuleman <hante.meuleman@broadcom.com>, Naveen Gupta <naveen.gupta@cypress.com>, brcm80211-dev-list@cypress.com, YueHaibing <yuehaibing@>
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=UJXLeEDPRAHY5-f2D4qJ4rq0LmKUDf4MANrb5KOm_x=g@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dri-devel <dri-devel@lists.freedesktop.org>, Boris Brezillon <boris.brezillon@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, =?UTF-8?Q?Enric_Balletb=C3=B2?= <enric.balletbo@collabora.com>, Rob Herring <robh+dt@kernel.org>, Matthias Kaehlcke <mka@chromium.org>, Eric Anholt <eric@anholt.net>, Jeffy Chen <jeffy.chen@rock-chips.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, David Airlie <airlied@linux.ie>, Mark Rutland <mark.rutland@arm.com>, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Thierry,
 
-On Mon, May 20, 2019 at 1:09 AM Arend Van Spriel
-<arend.vanspriel@broadcom.com> wrote:
+On Mon, Apr 8, 2019 at 7:39 AM Doug Anderson <dianders@chromium.org> wrote:
 >
-> On 5/18/2019 12:54 AM, Douglas Anderson wrote:
-> > In commit 29f6589140a1 ("brcmfmac: disable command decode in
-> > sdio_aos") we disabled something called "command decode in sdio_aos"
-> > for a whole bunch of Broadcom SDIO WiFi parts.
+> Thierry,
+>
+> On Mon, Apr 8, 2019 at 3:32 AM Thierry Reding <thierry.reding@gmail.com> =
+wrote:
 > >
-> > After that patch landed I find that my kernel log on
-> > rk3288-veyron-minnie and rk3288-veyron-speedy is filled with:
-> >    brcmfmac: brcmf_sdio_bus_sleep: error while changing bus sleep state -110
+> > On Mon, Apr 01, 2019 at 10:17:18AM -0700, Douglas Anderson wrote:
+> > > From: Sean Paul <seanpaul@chromium.org>
+> > >
+> > > This patch adds a new subnode to simple-panel allowing us to override
+> > > the typical timing expressed in the panel's display_timing.
+> > >
+> > > Changes in v2:
+> > >  - Split out the binding into a new patch (Rob)
+> > >  - display-timings is a new section (Rob)
+> > >  - Use the full display-timings subnode instead of picking the timing
+> > >    out (Rob/Thierry)
+> > > Changes in v3:
+> > >  - Go back to using the timing subnode directly, but rename to
+> > >    panel-timing (Rob)
+> > > Changes in v4:
+> > >  - Simplify desc. for when override should be used (Thierry/Laurent)
+> > >  - Removed Rob H review since it's been a year and wording changed
+> > > Changes in v5:
+> > >  - Removed bit about OS may ignore (Rob/Ezequiel)
+> > >
+> > > Cc: Doug Anderson <dianders@chromium.org>
+> > > Cc: Eric Anholt <eric@anholt.net>
+> > > Cc: Heiko Stuebner <heiko@sntech.de>
+> > > Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+> > > Cc: Rob Herring <robh+dt@kernel.org>
+> > > Cc: St=C3=A9phane Marchesin <marcheu@chromium.org>
+> > > Cc: Thierry Reding <thierry.reding@gmail.com>
+> > > Cc: devicetree@vger.kernel.org
+> > > Cc: dri-devel@lists.freedesktop.org
+> > > Cc: linux-rockchip@lists.infradead.org
+> > > Signed-off-by: Sean Paul <seanpaul@chromium.org>
+> > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > > ---
+> > >
+> > >  .../bindings/display/panel/simple-panel.txt   | 22 +++++++++++++++++=
+++
+> > >  1 file changed, 22 insertions(+)
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/display/panel/simple-p=
+anel.txt b/Documentation/devicetree/bindings/display/panel/simple-panel.txt
+> > > index b2b872c710f2..93882268c0b9 100644
+> > > --- a/Documentation/devicetree/bindings/display/panel/simple-panel.tx=
+t
+> > > +++ b/Documentation/devicetree/bindings/display/panel/simple-panel.tx=
+t
+> > > @@ -15,6 +15,16 @@ Optional properties:
+> > >    (hot plug detect) signal, but the signal isn't hooked up so we sho=
+uld
+> > >    hardcode the max delay from the panel spec when powering up the pa=
+nel.
+> > >
+> > > +panel-timing subnode
 > >
-> > This seems to happen every time the Broadcom WiFi transitions out of
-> > sleep mode.  Reverting the part of the commit that affects the WiFi on
-> > my boards fixes the problem for me, so that's what this patch does.
+> > Is there any reason why we need the panel- prefix? This is already part
+> > of a panel definition, so it's completely redundant. Why not just name
+> > the subnode "timing"?
 >
-> This sounds very similar to the issue we had during integration of wifi
-> on rk3288 chromebooks years ago.
-
-I'm working on those same Chromebooks.  ;-)  I'm working on trying to
-make them well on newer kernels.
-
-...but I guess you're saying that the problem faced by the people who
-wanted commit 29f6589140a1 ("brcmfmac: disable command decode in
-sdio_aos") are similar to the problems we saw in the past on those
-Chromebooks.  I'd tend to agree.  In general it's difficult to get a
-SD Host Controller to be fully robust in the fact of any/all errors on
-the bus.  While dw_mmc is pretty robust these days I'm assuming that
-some other host controllers aren't.
-
-
-> > Note that, in general, the justification in the original commit seemed
-> > a little weak.  It looked like someone was testing on a SD card
-> > controller that would sometimes die if there were CRC errors on the
-> > bus.  This used to happen back in early days of dw_mmc (the controller
-> > on my boards), but we fixed it.  Disabling a feature on all boards
-> > just because one SD card controller is broken seems bad.  ...so
-> > instead of just this patch possibly the right thing to do is to fully
-> > revert the original commit.
+> It was a really long time ago since this patch series was idle for a
+> while, but you previous had similar feedback in v3 but ended up OK
+> with it.  See:
 >
-> I am leaning towards a full revert, but let's wait for more background info.
+> https://patchwork.kernel.org/patch/10207583/
+>
+> I believe the original node name came out of some back and forth
+> between Rob and Sean.  As far as I can tell, the context is back in
+> <https://patchwork.kernel.org/patch/10203483/>.  I think Rob wanted it
+> to follow other similar node names.
+>
+>
+> That all being said, if you feel strongly about it being called
+> "timing" and Rob's OK w/ that too then I'll re-spin the series.
 
-I'd be fine with a full revert too.  Presumably that will break
-someone but maybe they need to come up with a better solution?
+With 5.2-rc1 out, maybe this series is ready to land?  If you'd like
+me to change things as per above I can.  ...but it feels like keeping
+the already-agreed-upon name might be easiest / best?  Presumably
+you'd land patches 1, 2, 4, and 5 and then Heiko could land the dts
+patches?
+
+Thanks!
 
 -Doug
