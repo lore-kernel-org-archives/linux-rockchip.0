@@ -1,80 +1,48 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v3 1/3] Documentation: dt-bindings: Add snps,need-phy-for-wake for dwc2 USB
-Date: Mon, 20 May 2019 10:56:03 -0700
-Message-ID: <20190520175605.2405-2-dianders@chromium.org>
-References: <20190520175605.2405-1-dianders@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [REPOST PATCH v2 2/3] USB: dwc2: Don't turn off the usbphy in
+ suspend if wakeup is enabled
+Date: Mon, 20 May 2019 10:57:37 -0700
+Message-ID: <CAD=FV=VOPAufL=u5iRCpO=Rdg--goZJ3jxM1znzyEXMTVBTFJg@mail.gmail.com>
+References: <20190516225941.170355-3-dianders@chromium.org> <201905201037.p3rNy0yX%lkp@intel.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190520175605.2405-1-dianders@chromium.org>
+In-Reply-To: <201905201037.p3rNy0yX%lkp@intel.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Minas Harutyunyan <hminas@synopsys.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, heiko@sntech.de
-Cc: Alan Stern <stern@rowland.harvard.edu>, Artur Petrosyan <Arthur.Petrosyan@synopsys.com>, amstan@chromium.org, linux-rockchip@lists.infradead.org, William Wu <william.wu@rock-chips.com>, linux-usb@vger.kernel.org, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, zyw@rock-chips.com, mka@chromium.org, ryandcase@chromium.org, Amelie Delaunay <amelie.delaunay@st.com>, jwerner@chromium.org, Elaine Zhang <zhangqing@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mark Rutland <mark.rutland@arm.com>
+To: kbuild test robot <lkp@intel.com>
+Cc: kbuild-all@01.org, Minas Harutyunyan <hminas@synopsys.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Alan Stern <stern@rowland.harvard.edu>, Artur Petrosyan <Arthur.Petrosyan@synopsys.com>, Alexandru M Stan <amstan@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, William Wu <william.wu@rock-chips.com>, linux-usb@vger.kernel.org, Stefan Wahren <stefan.wahren@i2se.com>, Randy Li <ayaka@soulik.info>, Chris <zyw@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, Amelie Delaunay <amelie.delaunay@st.com>, Julius Werner <jwerner@chromium.org>, Dinh Nguyen <dinguyen@opensource.altera.com>, Elaine Zhang <zhangqing@rock-chips.com>, Greg
 List-Id: linux-rockchip.vger.kernel.org
 
-Some SoCs with a dwc2 USB controller may need to keep the PHY on to
-support remote wakeup.  Allow specifying this as a device tree
-property.
+Hi,
 
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
-For relevant prior discussion on this patch, see:
+On Sun, May 19, 2019 at 7:08 PM kbuild test robot <lkp@intel.com> wrote:
+>
+> Hi Douglas,
+>
+> Thank you for the patch! Yet something to improve:
+>
+> [auto build test ERROR on balbi-usb/next]
+> [also build test ERROR on v5.2-rc1 next-20190517]
+> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
+>
+> url:    https://github.com/0day-ci/linux/commits/Douglas-Anderson/Documentation-dt-bindings-Add-snps-need-phy-for-wake-for-dwc2-USB/20190520-033119
+> base:   https://git.kernel.org/pub/scm/linux/kernel/git/balbi/usb.git next
+> config: x86_64-randconfig-h0-05191510 (attached as .config)
+> compiler: gcc-7 (Debian 7.3.0-1) 7.3.0
+> reproduce:
+>         # save the attached .config to linux build tree
+>         make ARCH=x86_64
+>
+> If you fix the issue, kindly add following tag
+> Reported-by: kbuild test robot <lkp@intel.com>
+>
+> All errors (new ones prefixed by >>):
+>
+>    ld: drivers/usb/dwc2/platform.o: in function `dwc2_can_poweroff_phy':
+> >> drivers/usb/dwc2/platform.c:545: undefined reference to `usb_wakeup_enabled_descendants'
 
-https://lkml.kernel.org/r/1435017144-2971-3-git-send-email-dianders@chromium.org
+Thank you.  Fixed in v3:
 
-I didn't make any changes from the prior version since I never found
-out what Rob thought of my previous arguments.  If folks want a
-change, perhaps they could choose from these options:
+https://lkml.kernel.org/r/20190520175605.2405-1-dianders@chromium.org
 
-1. Assume that all dwc2 hosts would like to keep their PHY on for
-   suspend if there's a USB wakeup enabled, thus we totally drop this
-   binding.  This doesn't seem super great to me since I'd bet that
-   many devices that use dwc2 weren't designed for USB wakeup (they
-   may not keep enough clocks or rails on) so we might be wasting
-   power for nothing.
-2. Rename this property to "snps,wakeup-from-suspend-with-phy" to make
-   it more obvious that this property is intended both to document
-   that wakeup from suspend is possible and that we need the PHY for
-   said wakeup.
-3. Rename this property to "snps,can-wakeup-from-suspend" and assume
-   it's implicit that if we can wakeup from suspend that we need to
-   keep the PHY on.  If/when someone shows that a device exists using
-   dwc2 where we can wakeup from suspend without the PHY they can add
-   a new property.
-
-NOTE FOR REPOST:
-- In v2 Rob said [1] he'd prefer something based on the SoC
-  compatibility string, but that doesn't work because not all boards
-  will have the regulator setup / board design / suspend logic
-  necessary to make this work.
-
-[1] https://lkml.kernel.org/r/20190430012328.GA25660@bogus
-
-
-Changes in v3: None
-Changes in v2: None
-
- Documentation/devicetree/bindings/usb/dwc2.txt | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/usb/dwc2.txt b/Documentation/devicetree/bindings/usb/dwc2.txt
-index 49eac0dc86b0..aafff3a6904d 100644
---- a/Documentation/devicetree/bindings/usb/dwc2.txt
-+++ b/Documentation/devicetree/bindings/usb/dwc2.txt
-@@ -42,6 +42,8 @@ Refer to phy/phy-bindings.txt for generic phy consumer properties
- - g-rx-fifo-size: size of rx fifo size in gadget mode.
- - g-np-tx-fifo-size: size of non-periodic tx fifo size in gadget mode.
- - g-tx-fifo-size: size of periodic tx fifo per endpoint (except ep0) in gadget mode.
-+- snps,need-phy-for-wake: If present indicates that the phy needs to be left
-+                          on for remote wakeup during suspend.
- - snps,reset-phy-on-wake: If present indicates that we need to reset the PHY when
-                           we detect a wakeup.  This is due to a hardware errata.
- 
-@@ -58,4 +60,5 @@ Example:
- 		clock-names = "otg";
- 		phys = <&usbphy>;
- 		phy-names = "usb2-phy";
-+		snps,need-phy-for-wake;
-         };
--- 
-2.21.0.1020.gf2820cf01a-goog
+-Doug
