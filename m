@@ -1,43 +1,144 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH 0/3] brcmfmac: sdio: Deal better w/ transmission errors
- waking from sleep
-Date: Mon, 20 May 2019 17:23:14 -0700
-Message-ID: <20190521002312.GA89786@google.com>
-References: <20190517225420.176893-1-dianders@chromium.org>
- <SN6PR04MB49258D4FBE0B4D739E8BAF7EFC040@SN6PR04MB4925.namprd04.prod.outlook.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: Re: [PATCH v4 2/3] spi: Allow SPI devices to request the pumping
+ thread be realtime
+Date: Tue, 21 May 2019 09:49:39 +0200
+Message-ID: <21d93d23-40c4-0db5-934e-77329b4dc93c@collabora.com>
+References: <20190515164814.258898-1-dianders@chromium.org>
+ <20190515164814.258898-3-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <SN6PR04MB49258D4FBE0B4D739E8BAF7EFC040@SN6PR04MB4925.namprd04.prod.outlook.com>
+In-Reply-To: <20190515164814.258898-3-dianders@chromium.org>
+Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
-To: Avri Altman <Avri.Altman@wdc.com>
-Cc: Douglas Anderson <dianders@chromium.org>, Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Arend van Spriel <arend.vanspriel@broadcom.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Double Lo <double.lo@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, "mka@chromium.org" <mka@chromium.org>, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, "brcm80211-dev-list@cypress.com" <brcm80211-dev-list@cypress.com>, YueHaibing <yuehaibing@huawei.com>, Hante Meuleman <hante.meuleman@broadcom.com>, Martin Hicks <mort@bork.org>
+To: Douglas Anderson <dianders@chromium.org>, Mark Brown <broonie@kernel.org>, Benson Leung <bleung@chromium.org>
+Cc: linux-rockchip@lists.infradead.org, drinkcat@chromium.org, Guenter Roeck <groeck@chromium.org>, briannorris@chromium.org, mka@chromium.org, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, May 18, 2019 at 03:09:44PM +0000, Avri Altman wrote:
-> > 
-> > This series attempts to deal better with the expected transmission
-> > errors that we get when waking up the SDIO-based WiFi on
-> > rk3288-veyron-minnie, rk3288-veyron-speedy, and rk3288-veyron-mickey.
-> > 
-> > Some details about those errors can be found in
-> > <https://crbug.com/960222>, but to summarize it here: if we try to
-> > send the wakeup command to the WiFi card at the same time it has
-> > decided to wake up itself then it will behave badly on the SDIO bus.
-> > This can cause timeouts or CRC errors.
-> Wake-up itself: as part of a WoWlan, or d0i3?
+Hi,
 
-Neither, IIUC. (It's definitely not WoWLAN, and D0i3 sounds like an
-Intel thing.)
+On 15/5/19 18:48, Douglas Anderson wrote:
+> Right now the only way to get the SPI pumping thread bumped up to
+> realtime priority is for the controller to request it.  However it may
+> be that the controller works fine with the normal priority but
+> communication to a particular SPI device on the bus needs realtime
+> priority.
+> 
+> Let's add a way for devices to request realtime priority when they set
+> themselves up.
+> 
+> NOTE: this will just affect the priority of transfers that end up on
+> the SPI core's pumping thread.  In many cases transfers happen in the
+> context of the caller so if you need realtime priority for all
+> transfers you should ensure the calling context is also realtime
+> priority.
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> Reviewed-by: Guenter Roeck <groeck@chromium.org>
 
-I believe it's a Broadcom-specific mode. See also Arend's response to
-this thread:
+Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 
-http://lkml.kernel.org/linux-wireless/8c3fa57a-3843-947c-ec6b-a6144ccde1e9@broadcom.com
+Thanks,
+ Enric
 
-> Looks like this calls for a wifi driver fix, and not WA in the mmc driver.
-
-Basically asked and answered in patch 2's thread:
-
-https://lkml.kernel.org/lkml/20190520085201.GA1021@kunai/
+> ---
+> 
+> Changes in v4: None
+> Changes in v3:
+> - SPI core change now like patch v1 patch #2 (with name "rt").
+> 
+> Changes in v2:
+> - Now only force transfers to the thread for devices that want it.
+> - Squashed patch #1 and #2 together.
+> - Renamed variable to "force_rt_transfers".
+> 
+>  drivers/spi/spi.c       | 36 ++++++++++++++++++++++++++++++------
+>  include/linux/spi/spi.h |  2 ++
+>  2 files changed, 32 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
+> index 8eb7460dd744..466984796dd9 100644
+> --- a/drivers/spi/spi.c
+> +++ b/drivers/spi/spi.c
+> @@ -1364,10 +1364,32 @@ static void spi_pump_messages(struct kthread_work *work)
+>  	__spi_pump_messages(ctlr, true);
+>  }
+>  
+> -static int spi_init_queue(struct spi_controller *ctlr)
+> +/**
+> + * spi_set_thread_rt - set the controller to pump at realtime priority
+> + * @ctlr: controller to boost priority of
+> + *
+> + * This can be called because the controller requested realtime priority
+> + * (by setting the ->rt value before calling spi_register_controller()) or
+> + * because a device on the bus said that its transfers needed realtime
+> + * priority.
+> + *
+> + * NOTE: at the moment if any device on a bus says it needs realtime then
+> + * the thread will be at realtime priority for all transfers on that
+> + * controller.  If this eventually becomes a problem we may see if we can
+> + * find a way to boost the priority only temporarily during relevant
+> + * transfers.
+> + */
+> +static void spi_set_thread_rt(struct spi_controller *ctlr)
+>  {
+>  	struct sched_param param = { .sched_priority = MAX_RT_PRIO - 1 };
+>  
+> +	dev_info(&ctlr->dev,
+> +		"will run message pump with realtime priority\n");
+> +	sched_setscheduler(ctlr->kworker_task, SCHED_FIFO, &param);
+> +}
+> +
+> +static int spi_init_queue(struct spi_controller *ctlr)
+> +{
+>  	ctlr->running = false;
+>  	ctlr->busy = false;
+>  
+> @@ -1387,11 +1409,8 @@ static int spi_init_queue(struct spi_controller *ctlr)
+>  	 * request and the scheduling of the message pump thread. Without this
+>  	 * setting the message pump thread will remain at default priority.
+>  	 */
+> -	if (ctlr->rt) {
+> -		dev_info(&ctlr->dev,
+> -			"will run message pump with realtime priority\n");
+> -		sched_setscheduler(ctlr->kworker_task, SCHED_FIFO, &param);
+> -	}
+> +	if (ctlr->rt)
+> +		spi_set_thread_rt(ctlr);
+>  
+>  	return 0;
+>  }
+> @@ -2982,6 +3001,11 @@ int spi_setup(struct spi_device *spi)
+>  
+>  	spi_set_cs(spi, false);
+>  
+> +	if (spi->rt && !spi->controller->rt) {
+> +		spi->controller->rt = true;
+> +		spi_set_thread_rt(spi->controller);
+> +	}
+> +
+>  	dev_dbg(&spi->dev, "setup mode %d, %s%s%s%s%u bits/w, %u Hz max --> %d\n",
+>  			(int) (spi->mode & (SPI_CPOL | SPI_CPHA)),
+>  			(spi->mode & SPI_CS_HIGH) ? "cs_high, " : "",
+> diff --git a/include/linux/spi/spi.h b/include/linux/spi/spi.h
+> index 053abd22ad31..15505c2485d6 100644
+> --- a/include/linux/spi/spi.h
+> +++ b/include/linux/spi/spi.h
+> @@ -109,6 +109,7 @@ void spi_statistics_add_transfer_stats(struct spi_statistics *stats,
+>   *	This may be changed by the device's driver, or left at the
+>   *	default (0) indicating protocol words are eight bit bytes.
+>   *	The spi_transfer.bits_per_word can override this for each transfer.
+> + * @rt: Make the pump thread real time priority.
+>   * @irq: Negative, or the number passed to request_irq() to receive
+>   *	interrupts from this device.
+>   * @controller_state: Controller's runtime state
+> @@ -143,6 +144,7 @@ struct spi_device {
+>  	u32			max_speed_hz;
+>  	u8			chip_select;
+>  	u8			bits_per_word;
+> +	bool			rt;
+>  	u32			mode;
+>  #define	SPI_CPHA	0x01			/* clock phase */
+>  #define	SPI_CPOL	0x02			/* clock polarity */
+> 
