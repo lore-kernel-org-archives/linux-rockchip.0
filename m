@@ -1,44 +1,43 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 3/3] ARM: dts: rockchip: Configure the GPU thermal zone
- for mickey
-Date: Mon, 20 May 2019 16:29:14 -0700
-Message-ID: <CAD=FV=WOpBWapjiz7zq-X7JUG3AaZOcN3Q-Z5XG9md4ZvMCtBw@mail.gmail.com>
-References: <20190520220051.54847-1-mka@chromium.org> <20190520220051.54847-3-mka@chromium.org>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 0/3] brcmfmac: sdio: Deal better w/ transmission errors
+ waking from sleep
+Date: Mon, 20 May 2019 17:23:14 -0700
+Message-ID: <20190521002312.GA89786@google.com>
+References: <20190517225420.176893-1-dianders@chromium.org>
+ <SN6PR04MB49258D4FBE0B4D739E8BAF7EFC040@SN6PR04MB4925.namprd04.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190520220051.54847-3-mka@chromium.org>
+Content-Disposition: inline
+In-Reply-To: <SN6PR04MB49258D4FBE0B4D739E8BAF7EFC040@SN6PR04MB4925.namprd04.prod.outlook.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Kaehlcke <mka@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
+To: Avri Altman <Avri.Altman@wdc.com>
+Cc: Douglas Anderson <dianders@chromium.org>, Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Arend van Spriel <arend.vanspriel@broadcom.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Double Lo <double.lo@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, "mka@chromium.org" <mka@chromium.org>, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, "brcm80211-dev-list@cypress.com" <brcm80211-dev-list@cypress.com>, YueHaibing <yuehaibing@huawei.com>, Hante Meuleman <hante.meuleman@broadcom.com>, Martin Hicks <mort@bork.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Sat, May 18, 2019 at 03:09:44PM +0000, Avri Altman wrote:
+> > 
+> > This series attempts to deal better with the expected transmission
+> > errors that we get when waking up the SDIO-based WiFi on
+> > rk3288-veyron-minnie, rk3288-veyron-speedy, and rk3288-veyron-mickey.
+> > 
+> > Some details about those errors can be found in
+> > <https://crbug.com/960222>, but to summarize it here: if we try to
+> > send the wakeup command to the WiFi card at the same time it has
+> > decided to wake up itself then it will behave badly on the SDIO bus.
+> > This can cause timeouts or CRC errors.
+> Wake-up itself: as part of a WoWlan, or d0i3?
 
-On Mon, May 20, 2019 at 3:01 PM Matthias Kaehlcke <mka@chromium.org> wrote:
->
-> mickey crams a lot of hardware into a tiny package, which requires
-> more aggressive thermal throttling than for devices with a larger
-> footprint. Configure the GPU thermal zone to throttle the GPU
-> progressively at temperatures >=3D 60=C2=B0C. Heat dissipated by the
-> CPUs also affects the GPU temperature, hence we cap the CPU
-> frequency to 1.4 GHz for temperatures above 65=C2=B0C. Further throttling
-> of the CPUs may be performed by the CPU thermal zone.
->
-> The configuration matches that of the downstream Chrome OS 3.14
-> kernel, the 'official' kernel for mickey.
->
-> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
-> ---
-> Changes in v2:
-> - specify all CPUs as cooling devices
-> - s/downstram/downstream/ in commit message
->
-> Note: this patch depends on "ARM: dts: rockchip: Add #cooling-cells
-> entry for rk3288 GPU" (https://lore.kernel.org/patchwork/patch/1075005/)
-> ---
->  arch/arm/boot/dts/rk3288-veyron-mickey.dts | 67 ++++++++++++++++++++++
->  1 file changed, 67 insertions(+)
+Neither, IIUC. (It's definitely not WoWLAN, and D0i3 sounds like an
+Intel thing.)
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+I believe it's a Broadcom-specific mode. See also Arend's response to
+this thread:
+
+http://lkml.kernel.org/linux-wireless/8c3fa57a-3843-947c-ec6b-a6144ccde1e9@broadcom.com
+
+> Looks like this calls for a wifi driver fix, and not WA in the mmc driver.
+
+Basically asked and answered in patch 2's thread:
+
+https://lkml.kernel.org/lkml/20190520085201.GA1021@kunai/
