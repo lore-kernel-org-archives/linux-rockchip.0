@@ -1,227 +1,129 @@
-From: "kernelci.org bot" <bot@kernelci.org>
-Subject: mainline/master boot bisection: v5.2-rc1-129-g9c7db5004280 on
- rk3288-veyron-jaq
-Date: Wed, 22 May 2019 05:18:56 -0700 (PDT)
-Message-ID: <5ce53e30.1c69fb81.887a7.b77c@mx.google.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v3 1/3] thermal: rockchip: fix up the tsadc pinctrl
+ setting error
+Date: Wed, 22 May 2019 14:20:50 +0200
+Message-ID: <1d1063a5-3ec8-f430-febe-7e1471cd1812@linaro.org>
+References: <1556618986-18923-1-git-send-email-zhangqing@rock-chips.com>
+ <1556618986-18923-2-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1556618986-18923-2-git-send-email-zhangqing@rock-chips.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: tomeu.vizoso@collabora.com, guillaume.tucker@collabora.com, mgalka@collabora.com, broonie@kernel.org, matthew.hart@linaro.org, khilman@baylibre.com, enric.balletbo@collabora.com, Elaine Zhang <zhangqing@rock-chips.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
+To: Elaine Zhang <zhangqing@rock-chips.com>, heiko@sntech.de
+Cc: rui.zhang@intel.com, edubezval@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-* This automated bisection report was sent to you on the basis  *
-* that you may be involved with the breaking commit it has      *
-* found.  No manual investigation has been done to verify it,   *
-* and the root cause of the problem may be somewhere else.      *
-* Hope this helps!                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-mainline/master boot bisection: v5.2-rc1-129-g9c7db5004280 on rk3288-veyron=
--jaq
+Elaine,
 
-Summary:
-  Start:      9c7db5004280 Merge tag 'selinux-pr-20190521' of git://git.ker=
-nel.org/pub/scm/linux/kernel/git/pcmoore/selinux
-  Details:    https://kernelci.org/boot/id/5ce4966759b5141df07a362c
-  Plain log:  https://storage.kernelci.org//mainline/master/v5.2-rc1-129-g9=
-c7db5004280/arm/multi_v7_defconfig/gcc-8/lab-collabora/boot-rk3288-veyron-j=
-aq.txt
-  HTML log:   https://storage.kernelci.org//mainline/master/v5.2-rc1-129-g9=
-c7db5004280/arm/multi_v7_defconfig/gcc-8/lab-collabora/boot-rk3288-veyron-j=
-aq.html
-  Result:     28694e009e51 thermal: rockchip: fix up the tsadc pinctrl sett=
-ing error
-
-Checks:
-  revert:     PASS
-  verify:     PASS
-
-Parameters:
-  Tree:       mainline
-  URL:        git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.=
-git
-  Branch:     master
-  Target:     rk3288-veyron-jaq
-  CPU arch:   arm
-  Lab:        lab-collabora
-  Compiler:   gcc-8
-  Config:     multi_v7_defconfig
-  Test suite: boot
-
-Breaking commit found:
-
----------------------------------------------------------------------------=
-----
-commit 28694e009e512451ead5519dd801f9869acb1f60
-Author: Elaine Zhang <zhangqing@rock-chips.com>
-Date:   Tue Apr 30 18:09:44 2019 +0800
-
-    thermal: rockchip: fix up the tsadc pinctrl setting error
-    =
-
-    Explicitly use the pinctrl to set/unset the right mode
-    instead of relying on the pinctrl init mode.
-    And it requires setting the tshut polarity before select pinctrl.
-    =
-
-    When the temperature sensor mode is set to 0, it will automatically
-    reset the board via the Clock-Reset-Unit (CRU) if the over temperature
-    threshold is reached. However, when the pinctrl initializes, it does a
-    transition to "otp_out" which may lead the SoC restart all the time.
-    =
-
-    "otp_out" IO may be connected to the RESET circuit on the hardware.
-    If the IO is in the wrong state, it will trigger RESET.
-    (similar to the effect of pressing the RESET button)
-    which will cause the soc to restart all the time.
-    =
-
-    Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-    Reviewed-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-    Signed-off-by: Eduardo Valentin <edubezval@gmail.com>
-
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_=
-thermal.c
-index 9c7643d62ed7..6dc7fc516abf 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -172,6 +172,9 @@ struct rockchip_thermal_data {
- 	int tshut_temp;
- 	enum tshut_mode tshut_mode;
- 	enum tshut_polarity tshut_polarity;
-+	struct pinctrl *pinctrl;
-+	struct pinctrl_state *gpio_state;
-+	struct pinctrl_state *otp_state;
- };
- =
-
- /**
-@@ -1242,6 +1245,8 @@ static int rockchip_thermal_probe(struct platform_dev=
-ice *pdev)
- 		return error;
- 	}
- =
-
-+	thermal->chip->control(thermal->regs, false);
-+
- 	error =3D clk_prepare_enable(thermal->clk);
- 	if (error) {
- 		dev_err(&pdev->dev, "failed to enable converter clock: %d\n",
-@@ -1267,6 +1272,30 @@ static int rockchip_thermal_probe(struct platform_de=
-vice *pdev)
- 	thermal->chip->initialize(thermal->grf, thermal->regs,
- 				  thermal->tshut_polarity);
- =
-
-+	if (thermal->tshut_mode =3D=3D TSHUT_MODE_GPIO) {
-+		thermal->pinctrl =3D devm_pinctrl_get(&pdev->dev);
-+		if (IS_ERR(thermal->pinctrl)) {
-+			dev_err(&pdev->dev, "failed to find thermal pinctrl\n");
-+			return PTR_ERR(thermal->pinctrl);
-+		}
-+
-+		thermal->gpio_state =3D pinctrl_lookup_state(thermal->pinctrl,
-+							   "gpio");
-+		if (IS_ERR_OR_NULL(thermal->gpio_state)) {
-+			dev_err(&pdev->dev, "failed to find thermal gpio state\n");
-+			return -EINVAL;
-+		}
-+
-+		thermal->otp_state =3D pinctrl_lookup_state(thermal->pinctrl,
-+							  "otpout");
-+		if (IS_ERR_OR_NULL(thermal->otp_state)) {
-+			dev_err(&pdev->dev, "failed to find thermal otpout state\n");
-+			return -EINVAL;
-+		}
-+
-+		pinctrl_select_state(thermal->pinctrl, thermal->otp_state);
-+	}
-+
- 	for (i =3D 0; i < thermal->chip->chn_num; i++) {
- 		error =3D rockchip_thermal_register_sensor(pdev, thermal,
- 						&thermal->sensors[i],
-@@ -1337,8 +1366,8 @@ static int __maybe_unused rockchip_thermal_suspend(st=
-ruct device *dev)
- =
-
- 	clk_disable(thermal->pclk);
- 	clk_disable(thermal->clk);
--
--	pinctrl_pm_select_sleep_state(dev);
-+	if (thermal->tshut_mode =3D=3D TSHUT_MODE_GPIO)
-+		pinctrl_select_state(thermal->pinctrl, thermal->gpio_state);
- =
-
- 	return 0;
- }
-@@ -1383,7 +1412,8 @@ static int __maybe_unused rockchip_thermal_resume(str=
-uct device *dev)
- 	for (i =3D 0; i < thermal->chip->chn_num; i++)
- 		rockchip_thermal_toggle_sensor(&thermal->sensors[i], true);
- =
-
--	pinctrl_pm_select_default_state(dev);
-+	if (thermal->tshut_mode =3D=3D TSHUT_MODE_GPIO)
-+		pinctrl_select_state(thermal->pinctrl, thermal->otp_state);
- =
-
- 	return 0;
- }
----------------------------------------------------------------------------=
-----
+are you taking care of the issue related to this patch. If not fixed, it
+will be reverted.
 
 
-Git bisection log:
+On 30/04/2019 12:09, Elaine Zhang wrote:
+> Explicitly use the pinctrl to set/unset the right mode
+> instead of relying on the pinctrl init mode.
+> And it requires setting the tshut polarity before select pinctrl.
+> 
+> When the temperature sensor mode is set to 0, it will automatically
+> reset the board via the Clock-Reset-Unit (CRU) if the over temperature
+> threshold is reached. However, when the pinctrl initializes, it does a
+> transition to "otp_out" which may lead the SoC restart all the time.
+> 
+> "otp_out" IO may be connected to the RESET circuit on the hardware.
+> If the IO is in the wrong state, it will trigger RESET.
+> (similar to the effect of pressing the RESET button)
+> which will cause the soc to restart all the time.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> ---
+>  drivers/thermal/rockchip_thermal.c | 36 +++++++++++++++++++++++++++++++++---
+>  1 file changed, 33 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+> index 9c7643d62ed7..6dc7fc516abf 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -172,6 +172,9 @@ struct rockchip_thermal_data {
+>  	int tshut_temp;
+>  	enum tshut_mode tshut_mode;
+>  	enum tshut_polarity tshut_polarity;
+> +	struct pinctrl *pinctrl;
+> +	struct pinctrl_state *gpio_state;
+> +	struct pinctrl_state *otp_state;
+>  };
+>  
+>  /**
+> @@ -1242,6 +1245,8 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+>  		return error;
+>  	}
+>  
+> +	thermal->chip->control(thermal->regs, false);
+> +
+>  	error = clk_prepare_enable(thermal->clk);
+>  	if (error) {
+>  		dev_err(&pdev->dev, "failed to enable converter clock: %d\n",
+> @@ -1267,6 +1272,30 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+>  	thermal->chip->initialize(thermal->grf, thermal->regs,
+>  				  thermal->tshut_polarity);
+>  
+> +	if (thermal->tshut_mode == TSHUT_MODE_GPIO) {
+> +		thermal->pinctrl = devm_pinctrl_get(&pdev->dev);
+> +		if (IS_ERR(thermal->pinctrl)) {
+> +			dev_err(&pdev->dev, "failed to find thermal pinctrl\n");
+> +			return PTR_ERR(thermal->pinctrl);
+> +		}
+> +
+> +		thermal->gpio_state = pinctrl_lookup_state(thermal->pinctrl,
+> +							   "gpio");
+> +		if (IS_ERR_OR_NULL(thermal->gpio_state)) {
+> +			dev_err(&pdev->dev, "failed to find thermal gpio state\n");
+> +			return -EINVAL;
+> +		}
+> +
+> +		thermal->otp_state = pinctrl_lookup_state(thermal->pinctrl,
+> +							  "otpout");
+> +		if (IS_ERR_OR_NULL(thermal->otp_state)) {
+> +			dev_err(&pdev->dev, "failed to find thermal otpout state\n");
+> +			return -EINVAL;
+> +		}
+> +
+> +		pinctrl_select_state(thermal->pinctrl, thermal->otp_state);
+> +	}
+> +
+>  	for (i = 0; i < thermal->chip->chn_num; i++) {
+>  		error = rockchip_thermal_register_sensor(pdev, thermal,
+>  						&thermal->sensors[i],
+> @@ -1337,8 +1366,8 @@ static int __maybe_unused rockchip_thermal_suspend(struct device *dev)
+>  
+>  	clk_disable(thermal->pclk);
+>  	clk_disable(thermal->clk);
+> -
+> -	pinctrl_pm_select_sleep_state(dev);
+> +	if (thermal->tshut_mode == TSHUT_MODE_GPIO)
+> +		pinctrl_select_state(thermal->pinctrl, thermal->gpio_state);
+>  
+>  	return 0;
+>  }
+> @@ -1383,7 +1412,8 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
+>  	for (i = 0; i < thermal->chip->chn_num; i++)
+>  		rockchip_thermal_toggle_sensor(&thermal->sensors[i], true);
+>  
+> -	pinctrl_pm_select_default_state(dev);
+> +	if (thermal->tshut_mode == TSHUT_MODE_GPIO)
+> +		pinctrl_select_state(thermal->pinctrl, thermal->otp_state);
+>  
+>  	return 0;
+>  }
+> 
 
----------------------------------------------------------------------------=
-----
-git bisect start
-# good: [83f3ef3de625a5766de2382f9e077d4daafd5bac] Merge tag 'libnvdimm-fix=
-es-5.2-rc1' of git://git.kernel.org/pub/scm/linux/kernel/git/nvdimm/nvdimm
-git bisect good 83f3ef3de625a5766de2382f9e077d4daafd5bac
-# bad: [9c7db5004280767566e91a33445bf93aa479ef02] Merge tag 'selinux-pr-201=
-90521' of git://git.kernel.org/pub/scm/linux/kernel/git/pcmoore/selinux
-git bisect bad 9c7db5004280767566e91a33445bf93aa479ef02
-# bad: [dc413a90edbe715bebebe859dc072ef73d490d70] Merge tag 'armsoc-drivers=
-' of git://git.kernel.org/pub/scm/linux/kernel/git/soc/soc
-git bisect bad dc413a90edbe715bebebe859dc072ef73d490d70
-# good: [b45da609a02460c6a34c395f03f891f1fb2a021a] Merge tag 'imx-bindings-=
-5.2' of git://git.kernel.org/pub/scm/linux/kernel/git/shawnguo/linux into a=
-rm/dt
-git bisect good b45da609a02460c6a34c395f03f891f1fb2a021a
-# good: [6cbc4d88ad208d6f5b9567bac2fff038e1bbfa77] Merge tag 'bitmain-soc-5=
-.2' of git://git.kernel.org/pub/scm/linux/kernel/git/mani/linux-bitmain int=
-o arm/dt
-git bisect good 6cbc4d88ad208d6f5b9567bac2fff038e1bbfa77
-# bad: [a455eda33faafcaac1effb31d682765b14ef868c] Merge branch 'linus' of g=
-it://git.kernel.org/pub/scm/linux/kernel/git/evalenti/linux-soc-thermal
-git bisect bad a455eda33faafcaac1effb31d682765b14ef868c
-# bad: [ffd1b122d3a17783b68cfd03b0479dffedf0d960] thermal: rockchip: Suppor=
-t the PX30 SoC in thermal driver
-git bisect bad ffd1b122d3a17783b68cfd03b0479dffedf0d960
-# good: [3e6a8fb3308419129c7a52de6eb42feef5a919a0] drivers: thermal: tsens:=
- Add new operation to check if a sensor is enabled
-git bisect good 3e6a8fb3308419129c7a52de6eb42feef5a919a0
-# good: [d36e2fa025387567710df740fd4dce1d5001b226] thermal: generic-adc: ma=
-ke lookup table optional
-git bisect good d36e2fa025387567710df740fd4dce1d5001b226
-# good: [42cd9b049829d7facbd45ab503d763a86251e81b] thermal/drivers/cpu_cool=
-ing: Fixup the header and copyright
-git bisect good 42cd9b049829d7facbd45ab503d763a86251e81b
-# good: [6ec8070b9d48294fbe865535c167a79527eaf357] thermal: Fix build error=
- of missing devm_ioremap_resource on UM
-git bisect good 6ec8070b9d48294fbe865535c167a79527eaf357
-# bad: [28694e009e512451ead5519dd801f9869acb1f60] thermal: rockchip: fix up=
- the tsadc pinctrl setting error
-git bisect bad 28694e009e512451ead5519dd801f9869acb1f60
-# good: [fcc6d4cadadcc977911c6bfcdd95d379f4082c74] thermal: broadcom: Remov=
-e ACPI support
-git bisect good fcc6d4cadadcc977911c6bfcdd95d379f4082c74
-# first bad commit: [28694e009e512451ead5519dd801f9869acb1f60] thermal: roc=
-kchip: fix up the tsadc pinctrl setting error
----------------------------------------------------------------------------=
-----
+
+-- 
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
