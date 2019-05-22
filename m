@@ -1,130 +1,133 @@
-From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 4.14 057/167] clk: rockchip: undo several noc and special clocks as critical on rk3288
-Date: Wed, 22 May 2019 15:26:52 -0400
-Message-ID: <20190522192842.25858-57-sashal@kernel.org>
-References: <20190522192842.25858-1-sashal@kernel.org>
+From: Justin Swartz <justin.swartz@risingedge.co.za>
+Subject: [PATCH] drm/rockchip: dw_hdmi: add basic rk3228 support
+Date: Wed, 22 May 2019 22:46:29 +0000
+Message-ID: <20190522224631.25164-1-justin.swartz@risingedge.co.za>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190522192842.25858-1-sashal@kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Douglas Anderson <dianders@chromium.org>, Elaine Zhang <zhangqing@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Sasha Levin <sashal@kernel.org>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: devicetree@vger.kernel.org, Justin Swartz <justin.swartz@risingedge.co.za>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Douglas Anderson <dianders@chromium.org>
+Like the RK3328, RK322x SoCs offer a Synopsis DesignWare HDMI transmitter
+and an Innosilicon HDMI PHY.
 
-[ Upstream commit f4033db5b84ebe4b32c25ba2ed65ab20b628996a ]
+Add a new dw_hdmi_plat_data struct, rk3228_hdmi_drv_data.
+Assign a set of mostly generic rk3228_hdmi_phy_ops functions.
+Add dw_hdmi_rk3228_setup_hpd() to enable the HDMI HPD and DDC lines.
 
-This is mostly a revert of commit 55bb6a633c33 ("clk: rockchip: mark
-noc and some special clk as critical on rk3288") except that we're
-keeping "pmu_hclk_otg0" as critical still.
-
-NOTE: turning these clocks off doesn't seem to do a whole lot in terms
-of power savings (checking the power on the logic rail).  It appears
-to save maybe 1-2mW.  ...but still it seems like we should turn the
-clocks off if they aren't needed.
-
-About "pmu_hclk_otg0" (the one clock from the original commit we're
-still keeping critical) from an email thread:
-
-> pmu ahb clock
->
-> Function: Clock to pmu module when hibernation and/or ADP is
-> enabled. Must be greater than or equal to 30 MHz.
->
-> If the SOC design does not support hibernation/ADP function, only have
-> hclk_otg, this clk can be switched according to the usage of otg.
-> If the SOC design support hibernation/ADP, has two clocks, hclk_otg and
-> pmu_hclk_otg0.
-> Hclk_otg belongs to the closed part of otg logic, which can be switched
-> according to the use of otg.
->
-> pmu_hclk_otg0 belongs to the always on part.
->
-> As for whether pmu_hclk_otg0 can be turned off when otg is not in use,
-> we have not tested. IC suggest make pmu_hclk_otg0 always on.
-
-For the rest of the clocks:
-
-atclk: No documentation about this clock other than that it goes to
-the CPU.  CPU functions fine without it on.  Maybe needed for JTAG?
-
-jtag: Presumably this clock is only needed if you're debugging with
-JTAG.  It doesn't seem like it makes sense to waste power for every
-rk3288 user.  In any case to do JTAG you'd need private patches to
-adjust the pinctrl the mux the JTAG out anyway.
-
-pclk_dbg, pclk_core_niu: On veyron Chromebooks we turn these two
-clocks on only during kernel panics in order to access some coresight
-registers.  Since nothing in the upstream kernel does this we should
-be able to leave them off safely.  Maybe also needed for JTAG?
-
-hsicphy12m_xin12m: There is no indication of why this clock would need
-to be turned on for boards that don't use HSIC.
-
-pclk_ddrupctl[0-1], pclk_publ0[0-1]: On veyron Chromebooks we turn
-these 4 clocks on only when doing DDR transitions and they are off
-otherwise.  I see no reason why they'd need to be on in the upstream
-kernel which doesn't support DDRFreq.
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Reviewed-by: Elaine Zhang <zhangqing@rock-chips.com>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
 ---
- drivers/clk/rockchip/clk-rk3288.c | 13 ++++---------
- 1 file changed, 4 insertions(+), 9 deletions(-)
+ .../bindings/display/rockchip/dw_hdmi-rockchip.txt |  1 +
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c        | 53 ++++++++++++++++++++++
+ 2 files changed, 54 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 450de24a1b422..45cd2897e586b 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -292,13 +292,13 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	COMPOSITE_NOMUX(0, "aclk_core_mp", "armclk", CLK_IGNORE_UNUSED,
- 			RK3288_CLKSEL_CON(0), 4, 4, DFLAGS | CLK_DIVIDER_READ_ONLY,
- 			RK3288_CLKGATE_CON(12), 6, GFLAGS),
--	COMPOSITE_NOMUX(0, "atclk", "armclk", CLK_IGNORE_UNUSED,
-+	COMPOSITE_NOMUX(0, "atclk", "armclk", 0,
- 			RK3288_CLKSEL_CON(37), 4, 5, DFLAGS | CLK_DIVIDER_READ_ONLY,
- 			RK3288_CLKGATE_CON(12), 7, GFLAGS),
- 	COMPOSITE_NOMUX(0, "pclk_dbg_pre", "armclk", CLK_IGNORE_UNUSED,
- 			RK3288_CLKSEL_CON(37), 9, 5, DFLAGS | CLK_DIVIDER_READ_ONLY,
- 			RK3288_CLKGATE_CON(12), 8, GFLAGS),
--	GATE(0, "pclk_dbg", "pclk_dbg_pre", CLK_IGNORE_UNUSED,
-+	GATE(0, "pclk_dbg", "pclk_dbg_pre", 0,
- 			RK3288_CLKGATE_CON(12), 9, GFLAGS),
- 	GATE(0, "cs_dbg", "pclk_dbg_pre", CLK_IGNORE_UNUSED,
- 			RK3288_CLKGATE_CON(12), 10, GFLAGS),
-@@ -626,7 +626,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	INVERTER(SCLK_HSADC, "sclk_hsadc", "sclk_hsadc_out",
- 			RK3288_CLKSEL_CON(22), 7, IFLAGS),
+diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt
+index 39143424a..703503103 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt
++++ b/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt
+@@ -12,6 +12,7 @@ following device-specific properties.
+ Required properties:
  
--	GATE(0, "jtag", "ext_jtag", CLK_IGNORE_UNUSED,
-+	GATE(0, "jtag", "ext_jtag", 0,
- 			RK3288_CLKGATE_CON(4), 14, GFLAGS),
+ - compatible: should be one of the following:
++		"rockchip,rk3228-dw-hdmi"
+ 		"rockchip,rk3288-dw-hdmi"
+ 		"rockchip,rk3328-dw-hdmi"
+ 		"rockchip,rk3399-dw-hdmi"
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 4cdc9f86c..182a852af 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -23,6 +23,14 @@
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_drm_vop.h"
  
- 	COMPOSITE_NODIV(SCLK_USBPHY480M_SRC, "usbphy480m_src", mux_usbphy480m_p, 0,
-@@ -635,7 +635,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	COMPOSITE_NODIV(SCLK_HSICPHY480M, "sclk_hsicphy480m", mux_hsicphy480m_p, 0,
- 			RK3288_CLKSEL_CON(29), 0, 2, MFLAGS,
- 			RK3288_CLKGATE_CON(3), 6, GFLAGS),
--	GATE(0, "hsicphy12m_xin12m", "xin12m", CLK_IGNORE_UNUSED,
-+	GATE(0, "hsicphy12m_xin12m", "xin12m", 0,
- 			RK3288_CLKGATE_CON(13), 9, GFLAGS),
- 	DIV(0, "hsicphy12m_usbphy", "sclk_hsicphy480m", 0,
- 			RK3288_CLKSEL_CON(11), 8, 6, DFLAGS),
-@@ -816,11 +816,6 @@ static const char *const rk3288_critical_clocks[] __initconst = {
- 	"pclk_alive_niu",
- 	"pclk_pd_pmu",
- 	"pclk_pmu_niu",
--	"pclk_core_niu",
--	"pclk_ddrupctl0",
--	"pclk_publ0",
--	"pclk_ddrupctl1",
--	"pclk_publ1",
- 	"pmu_hclk_otg0",
++#define RK3228_GRF_SOC_CON2		0x0408
++#define RK3228_HDMI_SDAIN_MSK		BIT(14)
++#define RK3228_HDMI_SCLIN_MSK		BIT(13)
++#define RK3228_GRF_SOC_CON6		0x0418
++#define RK3228_HDMI_HPD_VSEL		BIT(6)
++#define RK3228_HDMI_SDA_VSEL		BIT(5)
++#define RK3228_HDMI_SCL_VSEL		BIT(4)
++
+ #define RK3288_GRF_SOC_CON6		0x025C
+ #define RK3288_HDMI_LCDC_SEL		BIT(4)
+ #define RK3328_GRF_SOC_CON2		0x0408
+@@ -325,6 +333,25 @@ static void dw_hdmi_rockchip_genphy_disable(struct dw_hdmi *dw_hdmi, void *data)
+ 	phy_power_off(hdmi->phy);
+ }
+ 
++static void dw_hdmi_rk3228_setup_hpd(struct dw_hdmi *dw_hdmi, void *data)
++{
++	struct rockchip_hdmi *hdmi = (struct rockchip_hdmi *)data;
++
++	dw_hdmi_phy_setup_hpd(dw_hdmi, data);
++
++	regmap_write(hdmi->regmap,
++		RK3228_GRF_SOC_CON6,
++		HIWORD_UPDATE(RK3228_HDMI_HPD_VSEL | RK3228_HDMI_SDA_VSEL |
++			      RK3228_HDMI_SCL_VSEL,
++			      RK3228_HDMI_HPD_VSEL | RK3228_HDMI_SDA_VSEL |
++			      RK3228_HDMI_SCL_VSEL));
++
++	regmap_write(hdmi->regmap,
++		RK3228_GRF_SOC_CON2,
++		HIWORD_UPDATE(RK3228_HDMI_SDAIN_MSK | RK3228_HDMI_SCLIN_MSK,
++			      RK3228_HDMI_SDAIN_MSK | RK3228_HDMI_SCLIN_MSK));
++}
++
+ static enum drm_connector_status
+ dw_hdmi_rk3328_read_hpd(struct dw_hdmi *dw_hdmi, void *data)
+ {
+@@ -370,6 +397,29 @@ static void dw_hdmi_rk3328_setup_hpd(struct dw_hdmi *dw_hdmi, void *data)
+ 			      RK3328_HDMI_HPD_IOE));
+ }
+ 
++static const struct dw_hdmi_phy_ops rk3228_hdmi_phy_ops = {
++	.init		= dw_hdmi_rockchip_genphy_init,
++	.disable	= dw_hdmi_rockchip_genphy_disable,
++	.read_hpd	= dw_hdmi_phy_read_hpd,
++	.update_hpd	= dw_hdmi_phy_update_hpd,
++	.setup_hpd	= dw_hdmi_rk3228_setup_hpd,
++};
++
++static struct rockchip_hdmi_chip_data rk3228_chip_data = {
++	.lcdsel_grf_reg = -1,
++};
++
++static const struct dw_hdmi_plat_data rk3228_hdmi_drv_data = {
++	.mode_valid = dw_hdmi_rockchip_mode_valid,
++	.mpll_cfg = rockchip_mpll_cfg,
++	.cur_ctr = rockchip_cur_ctr,
++	.phy_config = rockchip_phy_config,
++	.phy_data = &rk3228_chip_data,
++	.phy_ops = &rk3228_hdmi_phy_ops,
++	.phy_name = "inno_dw_hdmi_phy2",
++	.phy_force_vendor = true,
++};
++
+ static struct rockchip_hdmi_chip_data rk3288_chip_data = {
+ 	.lcdsel_grf_reg = RK3288_GRF_SOC_CON6,
+ 	.lcdsel_big = HIWORD_UPDATE(0, RK3288_HDMI_LCDC_SEL),
+@@ -422,6 +472,9 @@ static const struct dw_hdmi_plat_data rk3399_hdmi_drv_data = {
  };
  
+ static const struct of_device_id dw_hdmi_rockchip_dt_ids[] = {
++	{ .compatible = "rockchip,rk3228-dw-hdmi",
++	  .data = &rk3228_hdmi_drv_data
++	},
+ 	{ .compatible = "rockchip,rk3288-dw-hdmi",
+ 	  .data = &rk3288_hdmi_drv_data
+ 	},
 -- 
-2.20.1
+2.11.0
