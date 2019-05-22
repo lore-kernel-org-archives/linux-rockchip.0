@@ -1,38 +1,32 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] ARM: dts: rockchip: Mark that the rk3288 timer might stop in suspend
-Date: Wed, 22 May 2019 10:04:20 +0200
-Message-ID: <1654629.mRIXxtDvp3@phil>
-References: <20190521234933.153953-1-dianders@chromium.org>
+Subject: Re: [PATCH v2 1/3] dt-bindings: gpu: add #cooling-cells property to
+ the ARM Mali Midgard GPU binding
+Date: Wed, 22 May 2019 10:56:41 +0200
+Message-ID: <2879152.HiopfVTTri@phil>
+References: <20190516172510.181473-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190521234933.153953-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: briannorris@chromium.org, ryandcase@chromium.org, mka@chromium.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190516172510.181473-1-mka@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Matthias Kaehlcke <mka@chromium.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 22. Mai 2019, 01:49:33 CEST schrieb Douglas Anderson:
-> This is similar to commit e6186820a745 ("arm64: dts: rockchip: Arch
-> counter doesn't tick in system suspend").  Specifically on the rk3288
-> it can be seen that the timer stops ticking in suspend if we end up
-> running through the "osc_disable" path in rk3288_slp_mode_set().  In
-> that path the 24 MHz clock will turn off and the timer stops.
-> 
-> To test this, I ran this on a Chrome OS filesystem:
->   before=$(date); \
->   suspend_stress_test -c1 --suspend_min=30 --suspend_max=31; \
->   echo ${before}; date
-> 
-> ...and I found that unless I plug in a device that requests USB wakeup
-> to be active that the two calls to "date" would show that fewer than
-> 30 seconds passed.
-> 
-> NOTE: deep suspend (where the 24 MHz clock gets disabled) isn't
-> supported yet on upstream Linux so this was tested on a downstream
-> kernel.
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-
-applied for 5.3
+QW0gRG9ubmVyc3RhZywgMTYuIE1haSAyMDE5LCAxOToyNTowOCBDRVNUIHNjaHJpZWIgTWF0dGhp
+YXMgS2FlaGxja2U6Cj4gVGhlIEdQVSBjYW4gYmUgdXNlZCBhcyBhIHRoZXJtYWwgY29vbGluZyBk
+ZXZpY2UsIGFkZCBhbiBvcHRpb25hbAo+ICcjY29vbGluZy1jZWxscycgcHJvcGVydHkuCj4gCj4g
+U2lnbmVkLW9mZi1ieTogTWF0dGhpYXMgS2FlaGxja2UgPG1rYUBjaHJvbWl1bS5vcmc+CgphcHBs
+aWVkIHRvIGRybS1taXNjLW5leHQgZm9yIDUuMwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
+c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2RyaS1kZXZlbA==
