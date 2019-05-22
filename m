@@ -1,48 +1,37 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] Revert "thermal: rockchip: fix up the tsadc pinctrl
- setting error"
-Date: Wed, 22 May 2019 08:34:34 -0700
-Message-ID: <CAD=FV=UxwqkHpsxXhEHrQDY6MtymeT3Gn_G4Q5xSh6pZVWTRHA@mail.gmail.com>
-References: <20190522141236.26987-1-heiko@sntech.de>
+Subject: Re: [PATCH v2 1/3] ARM: dts: rockchip: disable GPU 500 MHz OPP for veyron
+Date: Wed, 22 May 2019 11:13:45 -0700
+Message-ID: <CAD=FV=Ww5pYOdknESUC4S06FvPzZ03Z-tW098r2N+9tbHNx7Vw@mail.gmail.com>
+References: <20190520220051.54847-1-mka@chromium.org> <3108277.JP5bvJISVS@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190522141236.26987-1-heiko@sntech.de>
+In-Reply-To: <3108277.JP5bvJISVS@phil>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: Eduardo Valentin <edubezval@gmail.com>, Zhang Rui <rui.zhang@intel.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Linux PM <linux-pm@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, zhangqing <zhangqing@rock-chips.com>, Enric Balletbo Serra <eballetbo@gmail.com>, Brian Norris <briannorris@chromium.org>, Matthias Kaehlcke <mka@chromium.org>
+Cc: Matthias Kaehlcke <mka@chromium.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Wed, May 22, 2019 at 7:12 AM Heiko Stuebner <heiko@sntech.de> wrote:
+On Wed, May 22, 2019 at 2:14 AM Heiko Stuebner <heiko@sntech.de> wrote:
 >
-> This reverts commit 28694e009e512451ead5519dd801f9869acb1f60.
+> Am Dienstag, 21. Mai 2019, 00:00:49 CEST schrieb Matthias Kaehlcke:
+> > The NPLL is the only safe way to generate 500 MHz for the GPU. The
+> > downstream Chrome OS 3.14 kernel ('official' kernel for veyron
+> > devices) re-purposes NPLL to HDMI and hence disables the OPP for
+> > the GPU (see https://crrev.com/c/1574579). Disable it here as well
+> > to keep in sync and avoid problems in case someone decides to
+> > re-purpose NPLL.
+> >
+> > Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
 >
-> The commit causes multiple issues in that:
-> - the added call to ->control does potentially run unclocked
->   causing a hang of the machine
-> - the added pinctrl-states are undocumented in the binding
-> - the added pinctrl-states are not backwards compatible, breaking
->   old devicetrees.
+> I was actually expecting to just drop the 500MHz opp from all
+> of rk3288 ;-) .
 >
-> Fixes: 28694e009e51 ("thermal: rockchip: fix up the tsadc pinctrl setting error")
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->  drivers/thermal/rockchip_thermal.c | 36 +++---------------------------
->  1 file changed, 3 insertions(+), 33 deletions(-)
+> To not have to respin, I just modified your patch accordingly,
+> see [0] and please holler if you disagree :-D .
 
-In case it helps with the urgency, there are lots of people who have
-all independently needed to identify which commit stopped their boards
-from booting mainline or broke temperature reading.  I'm aware of at
-least these reports:
+Seems fine to me, thanks!
 
-Reported-by: kernelci.org bot <bot@kernelci.org>
-Reported-by: Enric Balletbo Serra <eballetbo@gmail.com>
-Reported-by: Vicente Bergas <vicencb@gmail.com>
-Reported-by: Jack Mitchell <ml@embed.me.uk>
-Reported-by: Douglas Anderson <dianders@chromium.org>
-
-I can confirm that my board boots again after this revert, thus:
-
-Tested-by: Douglas Anderson <dianders@chromium.org>
+-Doug
