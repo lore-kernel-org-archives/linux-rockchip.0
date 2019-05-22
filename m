@@ -1,104 +1,88 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH] Revert "thermal: rockchip: fix up the tsadc pinctrl setting error"
-Date: Wed, 22 May 2019 16:12:36 +0200
-Message-ID: <20190522141236.26987-1-heiko@sntech.de>
+From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH] arm64: rockchip: dts: sapphire: Fix USB3 Type-C.
+Date: Wed, 22 May 2019 17:07:17 +0200
+Message-ID: <20190522150717.1748-1-vicencb@gmail.com>
+References: <574f2bae-0121-4cc7-ad9a-5ba32315d71b@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: edubezval@gmail.com, rui.zhang@intel.com
-Cc: daniel.lezcano@linaro.org, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, zhangqing@rock-chips.com, eballetbo@gmail.com, Heiko Stuebner <heiko@sntech.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <574f2bae-0121-4cc7-ad9a-5ba32315d71b-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This reverts commit 28694e009e512451ead5519dd801f9869acb1f60.
+Before this patch, the Type-C port on the Sapphire board is dead.
 
-The commit causes multiple issues in that:
-- the added call to ->control does potentially run unclocked
-  causing a hang of the machine
-- the added pinctrl-states are undocumented in the binding
-- the added pinctrl-states are not backwards compatible, breaking
-  old devicetrees.
+Applying only the power supply part of this patch, makes the port work
+for about 4 seconds at start-up. This is a sample trace with a memory
+stick plugged in:
+1.- The memory stick LED lights on and kernel reports:
+[    4.782999] scsi 0:0:0:0: Direct-Access USB DISK PMAP PQ: 0 ANSI: 4
+[    5.904580] sd 0:0:0:0: [sdb] 3913344 512-byte logical blocks: (2.00 GB/1.87 GiB)
+[    5.906860] sd 0:0:0:0: [sdb] Write Protect is off
+[    5.908973] sd 0:0:0:0: [sdb] Mode Sense: 23 00 00 00
+[    5.909122] sd 0:0:0:0: [sdb] No Caching mode page found
+[    5.911214] sd 0:0:0:0: [sdb] Assuming drive cache: write through
+[    5.951585]  sdb: sdb1
+[    5.954816] sd 0:0:0:0: [sdb] Attached SCSI removable disk
+2.- 4 seconds later the memory stick LED lights off and kernel reports:
+[    9.082822] phy phy-ff770000.syscon:usb2-phy@e450.2: charger = USB_DCP_CHARGER
+3.- After a minute the kernel reports:
+[   71.666761] usb 5-1: USB disconnect, device number 2
+It has been checked that, although the LED is off, VBUS is present.
 
-Fixes: 28694e009e51 ("thermal: rockchip: fix up the tsadc pinctrl setting error")
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Applying the full patch makes it work.
+It has only been tested in host mode.
+
+Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- drivers/thermal/rockchip_thermal.c | 36 +++---------------------------
- 1 file changed, 3 insertions(+), 33 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index bda1ca199abd..7ef9c7efe950 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -172,9 +172,6 @@ struct rockchip_thermal_data {
- 	int tshut_temp;
- 	enum tshut_mode tshut_mode;
- 	enum tshut_polarity tshut_polarity;
--	struct pinctrl *pinctrl;
--	struct pinctrl_state *gpio_state;
--	struct pinctrl_state *otp_state;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+index 04623e52ac5d..72000a7b666f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+@@ -112,6 +112,7 @@
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&vcc5v0_typec0_en>;
+ 		regulator-name = "vcc5v0_typec0";
++		regulator-always-on;
+ 		vin-supply = <&vcc_sys>;
+ 	};
+ 
+@@ -565,12 +566,11 @@
+ 	status = "okay";
+ 
+ 	u2phy0_otg: otg-port {
+-		phy-supply = <&vcc5v0_typec0>;
+ 		status = "okay";
+ 	};
+ 
+ 	u2phy0_host: host-port {
+-		phy-supply = <&vcc5v0_host>;
++		phy-supply = <&vcc5v0_typec0>;
+ 		status = "okay";
+ 	};
+ };
+@@ -620,7 +620,7 @@
+ 
+ &usbdrd_dwc3_0 {
+ 	status = "okay";
+-	dr_mode = "otg";
++	dr_mode = "host";
  };
  
- /**
-@@ -1283,8 +1280,6 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
- 		return error;
- 	}
- 
--	thermal->chip->control(thermal->regs, false);
--
- 	error = clk_prepare_enable(thermal->clk);
- 	if (error) {
- 		dev_err(&pdev->dev, "failed to enable converter clock: %d\n",
-@@ -1310,30 +1305,6 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
- 	thermal->chip->initialize(thermal->grf, thermal->regs,
- 				  thermal->tshut_polarity);
- 
--	if (thermal->tshut_mode == TSHUT_MODE_GPIO) {
--		thermal->pinctrl = devm_pinctrl_get(&pdev->dev);
--		if (IS_ERR(thermal->pinctrl)) {
--			dev_err(&pdev->dev, "failed to find thermal pinctrl\n");
--			return PTR_ERR(thermal->pinctrl);
--		}
--
--		thermal->gpio_state = pinctrl_lookup_state(thermal->pinctrl,
--							   "gpio");
--		if (IS_ERR_OR_NULL(thermal->gpio_state)) {
--			dev_err(&pdev->dev, "failed to find thermal gpio state\n");
--			return -EINVAL;
--		}
--
--		thermal->otp_state = pinctrl_lookup_state(thermal->pinctrl,
--							  "otpout");
--		if (IS_ERR_OR_NULL(thermal->otp_state)) {
--			dev_err(&pdev->dev, "failed to find thermal otpout state\n");
--			return -EINVAL;
--		}
--
--		pinctrl_select_state(thermal->pinctrl, thermal->otp_state);
--	}
--
- 	for (i = 0; i < thermal->chip->chn_num; i++) {
- 		error = rockchip_thermal_register_sensor(pdev, thermal,
- 						&thermal->sensors[i],
-@@ -1404,8 +1375,8 @@ static int __maybe_unused rockchip_thermal_suspend(struct device *dev)
- 
- 	clk_disable(thermal->pclk);
- 	clk_disable(thermal->clk);
--	if (thermal->tshut_mode == TSHUT_MODE_GPIO)
--		pinctrl_select_state(thermal->pinctrl, thermal->gpio_state);
-+
-+	pinctrl_pm_select_sleep_state(dev);
- 
- 	return 0;
- }
-@@ -1450,8 +1421,7 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
- 	for (i = 0; i < thermal->chip->chn_num; i++)
- 		rockchip_thermal_toggle_sensor(&thermal->sensors[i], true);
- 
--	if (thermal->tshut_mode == TSHUT_MODE_GPIO)
--		pinctrl_select_state(thermal->pinctrl, thermal->otp_state);
-+	pinctrl_pm_select_default_state(dev);
- 
- 	return 0;
- }
+ &usbdrd3_1 {
 -- 
-2.20.1
+2.21.0
