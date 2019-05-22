@@ -1,14 +1,15 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 1/3] dt-bindings: gpu: add #cooling-cells property to
- the ARM Mali Midgard GPU binding
-Date: Wed, 22 May 2019 10:56:41 +0200
-Message-ID: <2879152.HiopfVTTri@phil>
+Subject: Re: [PATCH v2 2/3] ARM: dts: rockchip: Add #cooling-cells entry for
+ rk3288 GPU
+Date: Wed, 22 May 2019 11:02:14 +0200
+Message-ID: <23265091.NWmblD6evz@phil>
 References: <20190516172510.181473-1-mka@chromium.org>
+ <20190516172510.181473-2-mka@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190516172510.181473-1-mka@chromium.org>
+In-Reply-To: <20190516172510.181473-2-mka@chromium.org>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -22,11 +23,12 @@ To: Matthias Kaehlcke <mka@chromium.org>
 Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRG9ubmVyc3RhZywgMTYuIE1haSAyMDE5LCAxOToyNTowOCBDRVNUIHNjaHJpZWIgTWF0dGhp
-YXMgS2FlaGxja2U6Cj4gVGhlIEdQVSBjYW4gYmUgdXNlZCBhcyBhIHRoZXJtYWwgY29vbGluZyBk
-ZXZpY2UsIGFkZCBhbiBvcHRpb25hbAo+ICcjY29vbGluZy1jZWxscycgcHJvcGVydHkuCj4gCj4g
-U2lnbmVkLW9mZi1ieTogTWF0dGhpYXMgS2FlaGxja2UgPG1rYUBjaHJvbWl1bS5vcmc+CgphcHBs
-aWVkIHRvIGRybS1taXNjLW5leHQgZm9yIDUuMwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
-c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaS1kZXZlbA==
+QW0gRG9ubmVyc3RhZywgMTYuIE1haSAyMDE5LCAxOToyNTowOSBDRVNUIHNjaHJpZWIgTWF0dGhp
+YXMgS2FlaGxja2U6Cj4gVGhlIE1hbGkgR1BVIG9mIHRoZSByazMyODggY2FuIGJlIHVzZWQgYXMg
+Y29vbGluZyBkZXZpY2UsIGFkZAo+IGEgI2Nvb2xpbmctY2VsbHMgZW50cnkgZm9yIGl0Lgo+IAo+
+IFNpZ25lZC1vZmYtYnk6IE1hdHRoaWFzIEthZWhsY2tlIDxta2FAY2hyb21pdW0ub3JnPgo+IFJl
+dmlld2VkLWJ5OiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+CgphcHBs
+aWVkIHBhdGNoZXMgMiszIGZvciA1LjMKClRoYW5rcwpIZWlrbwoKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
+LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
