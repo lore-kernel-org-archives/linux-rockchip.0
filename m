@@ -1,155 +1,74 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "spi: Allow SPI devices to request the pumping thread be realtime" to the spi tree
-Date: Thu, 23 May 2019 14:49:06 +0100 (BST)
-Message-ID: <20190523134906.74DD41126D24@debutante.sirena.org.uk>
-References: <20190515164814.258898-3-dianders@chromium.org>
+From: "Zhang, Rui" <rui.zhang@intel.com>
+Subject: RE: mainline/master boot bisection: v5.2-rc1-165-g54dee406374c on
+ rk3288-veyron-jaq
+Date: Thu, 23 May 2019 14:02:11 +0000
+Message-ID: <744357E9AAD1214791ACBA4B0B9092637757AD75@SHSMSX108.ccr.corp.intel.com>
+References: <5ce6040d.1c69fb81.60b3b.29fb@mx.google.com>
+ <20190523131207.GC17245@sirena.org.uk>
+ <ac2f06ac-2bf5-7af6-06c3-37b865c43738@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190515164814.258898-3-dianders@chromium.org>
+In-Reply-To: <ac2f06ac-2bf5-7af6-06c3-37b865c43738@collabora.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Benson Leung <bleung@chromium.org>, briannorris@chromium.org, drinkcat@chromium.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Guenter Roeck <groeck@chromium.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>, mka@chromium.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Mark Brown <broonie@kernel.org>, Eduardo Valentin <edubezval@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>
+Cc: "tomeu.vizoso@collabora.com" <tomeu.vizoso@collabora.com>, "guillaume.tucker@collabora.com" <guillaume.tucker@collabora.com>, "mgalka@collabora.com" <mgalka@collabora.com>, "matthew.hart@linaro.org" <matthew.hart@linaro.org>, "khilman@baylibre.com" <khilman@baylibre.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Heiko Stuebner <heiko@sntech.de>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
 
-   spi: Allow SPI devices to request the pumping thread be realtime
 
-has been applied to the spi tree at
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-5.3
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+> -----Original Message-----
+> From: Enric Balletbo i Serra [mailto:enric.balletbo@collabora.com]
+> Sent: Thursday, May 23, 2019 9:19 PM
+> To: Mark Brown <broonie@kernel.org>; Eduardo Valentin
+> <edubezval@gmail.com>; Elaine Zhang <zhangqing@rock-chips.com>
+> Cc: tomeu.vizoso@collabora.com; guillaume.tucker@collabora.com;
+> mgalka@collabora.com; matthew.hart@linaro.org; khilman@baylibre.com;
+> Daniel Lezcano <daniel.lezcano@linaro.org>; Heiko Stuebner
+> <heiko@sntech.de>; linux-pm@vger.kernel.org; linux-
+> kernel@vger.kernel.org; linux-rockchip@lists.infradead.org; Zhang, Rui
+> <rui.zhang@intel.com>; linux-arm-kernel@lists.infradead.org
+> Subject: Re: mainline/master boot bisection: v5.2-rc1-165-g54dee406374c on
+> rk3288-veyron-jaq
+> Importance: High
+> 
+> Hi Mark,
+> 
+> On 23/5/19 15:12, Mark Brown wrote:
+> > On Wed, May 22, 2019 at 07:23:09PM -0700, kernelci.org bot wrote:
+> >
+> >>   Details:    https://kernelci.org/boot/id/5ce5984c59b514e6a47a364c
+> >>   Plain log:  https://storage.kernelci.org//mainline/master/v5.2-rc1-165-
+> g54dee406374c/arm/multi_v7_defconfig+CONFIG_EFI=y+CONFIG_ARM_LPAE
+> =y/gcc-8/lab-collabora/boot-rk3288-veyron-jaq.txt
+> >>   HTML log:   https://storage.kernelci.org//mainline/master/v5.2-rc1-165-
+> g54dee406374c/arm/multi_v7_defconfig+CONFIG_EFI=y+CONFIG_ARM_LPAE
+> =y/gcc-8/lab-collabora/boot-rk3288-veyron-jaq.html
+> >>   Result:     28694e009e51 thermal: rockchip: fix up the tsadc pinctrl setting
+> error
+> >
+> > It looks like this issue has persisted for a while without any kind of
+> > fix happening - given that the bisection has identified this commit as
+> > causing the regression and confirmed that reverting it fixes shouldn't
+> > we just revert?  My guess would be that there's some error with the
+> > pinctrl settings in the DT for the board.
+> >
+> 
+> After some discussion Heiko sent a patch that reverts the offending commit
+> one day ago [1] and it's waiting for maintainer to pick-up the patch.
+> 
+I thought Eduardo will take the patch.
+But I will apply it and queue it for -rc2 anyway.
 
 Thanks,
-Mark
+Rui
 
-From 924b5867e7bd6a6a98014f0517b747465b108011 Mon Sep 17 00:00:00 2001
-From: Douglas Anderson <dianders@chromium.org>
-Date: Wed, 15 May 2019 09:48:12 -0700
-Subject: [PATCH] spi: Allow SPI devices to request the pumping thread be
- realtime
-
-Right now the only way to get the SPI pumping thread bumped up to
-realtime priority is for the controller to request it.  However it may
-be that the controller works fine with the normal priority but
-communication to a particular SPI device on the bus needs realtime
-priority.
-
-Let's add a way for devices to request realtime priority when they set
-themselves up.
-
-NOTE: this will just affect the priority of transfers that end up on
-the SPI core's pumping thread.  In many cases transfers happen in the
-context of the caller so if you need realtime priority for all
-transfers you should ensure the calling context is also realtime
-priority.
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Reviewed-by: Guenter Roeck <groeck@chromium.org>
-Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- drivers/spi/spi.c       | 36 ++++++++++++++++++++++++++++++------
- include/linux/spi/spi.h |  2 ++
- 2 files changed, 32 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-index 5e75944ad5d1..18f70e4bbb31 100644
---- a/drivers/spi/spi.c
-+++ b/drivers/spi/spi.c
-@@ -1364,10 +1364,32 @@ static void spi_pump_messages(struct kthread_work *work)
- 	__spi_pump_messages(ctlr, true);
- }
- 
--static int spi_init_queue(struct spi_controller *ctlr)
-+/**
-+ * spi_set_thread_rt - set the controller to pump at realtime priority
-+ * @ctlr: controller to boost priority of
-+ *
-+ * This can be called because the controller requested realtime priority
-+ * (by setting the ->rt value before calling spi_register_controller()) or
-+ * because a device on the bus said that its transfers needed realtime
-+ * priority.
-+ *
-+ * NOTE: at the moment if any device on a bus says it needs realtime then
-+ * the thread will be at realtime priority for all transfers on that
-+ * controller.  If this eventually becomes a problem we may see if we can
-+ * find a way to boost the priority only temporarily during relevant
-+ * transfers.
-+ */
-+static void spi_set_thread_rt(struct spi_controller *ctlr)
- {
- 	struct sched_param param = { .sched_priority = MAX_RT_PRIO - 1 };
- 
-+	dev_info(&ctlr->dev,
-+		"will run message pump with realtime priority\n");
-+	sched_setscheduler(ctlr->kworker_task, SCHED_FIFO, &param);
-+}
-+
-+static int spi_init_queue(struct spi_controller *ctlr)
-+{
- 	ctlr->running = false;
- 	ctlr->busy = false;
- 
-@@ -1387,11 +1409,8 @@ static int spi_init_queue(struct spi_controller *ctlr)
- 	 * request and the scheduling of the message pump thread. Without this
- 	 * setting the message pump thread will remain at default priority.
- 	 */
--	if (ctlr->rt) {
--		dev_info(&ctlr->dev,
--			"will run message pump with realtime priority\n");
--		sched_setscheduler(ctlr->kworker_task, SCHED_FIFO, &param);
--	}
-+	if (ctlr->rt)
-+		spi_set_thread_rt(ctlr);
- 
- 	return 0;
- }
-@@ -2982,6 +3001,11 @@ int spi_setup(struct spi_device *spi)
- 
- 	spi_set_cs(spi, false);
- 
-+	if (spi->rt && !spi->controller->rt) {
-+		spi->controller->rt = true;
-+		spi_set_thread_rt(spi->controller);
-+	}
-+
- 	dev_dbg(&spi->dev, "setup mode %d, %s%s%s%s%u bits/w, %u Hz max --> %d\n",
- 			(int) (spi->mode & (SPI_CPOL | SPI_CPHA)),
- 			(spi->mode & SPI_CS_HIGH) ? "cs_high, " : "",
-diff --git a/include/linux/spi/spi.h b/include/linux/spi/spi.h
-index 053abd22ad31..15505c2485d6 100644
---- a/include/linux/spi/spi.h
-+++ b/include/linux/spi/spi.h
-@@ -109,6 +109,7 @@ void spi_statistics_add_transfer_stats(struct spi_statistics *stats,
-  *	This may be changed by the device's driver, or left at the
-  *	default (0) indicating protocol words are eight bit bytes.
-  *	The spi_transfer.bits_per_word can override this for each transfer.
-+ * @rt: Make the pump thread real time priority.
-  * @irq: Negative, or the number passed to request_irq() to receive
-  *	interrupts from this device.
-  * @controller_state: Controller's runtime state
-@@ -143,6 +144,7 @@ struct spi_device {
- 	u32			max_speed_hz;
- 	u8			chip_select;
- 	u8			bits_per_word;
-+	bool			rt;
- 	u32			mode;
- #define	SPI_CPHA	0x01			/* clock phase */
- #define	SPI_CPOL	0x02			/* clock polarity */
--- 
-2.20.1
+> The reason why we think is best reverting that fix it is explained here [2]
+> 
+> [1] https://lkml.org/lkml/2019/5/22/467
+> [2] https://lkml.org/lkml/2019/4/30/270
+> 
+> Thanks,
+>  Enric
