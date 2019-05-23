@@ -1,95 +1,155 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4 2/3] spi: Allow SPI devices to request the pumping
- thread be realtime
-Date: Thu, 23 May 2019 14:46:25 +0100
-Message-ID: <20190523134625.GG17245@sirena.org.uk>
-References: <20190515164814.258898-1-dianders@chromium.org>
- <20190515164814.258898-3-dianders@chromium.org>
-Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============3101645039599833252=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190515164814.258898-3-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Benson Leung <bleung-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "spi: Allow SPI devices to request the pumping thread be realtime" to the spi tree
+Date: Thu, 23 May 2019 14:49:06 +0100 (BST)
+Message-ID: <20190523134906.74DD41126D24@debutante.sirena.org.uk>
+References: <20190515164814.258898-3-dianders@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190515164814.258898-3-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Benson Leung <bleung@chromium.org>, briannorris@chromium.org, drinkcat@chromium.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Guenter Roeck <groeck@chromium.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>, mka@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
+The patch
 
---===============3101645039599833252==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="bO4vSxwwZtUjUWHo"
-Content-Disposition: inline
+   spi: Allow SPI devices to request the pumping thread be realtime
 
+has been applied to the spi tree at
 
---bO4vSxwwZtUjUWHo
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-5.3
 
-On Wed, May 15, 2019 at 09:48:12AM -0700, Douglas Anderson wrote:
-> Right now the only way to get the SPI pumping thread bumped up to
-> realtime priority is for the controller to request it.  However it may
-> be that the controller works fine with the normal priority but
-> communication to a particular SPI device on the bus needs realtime
-> priority.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
-The following changes since commit a188339ca5a396acc588e5851ed7e19f66b0ebd9:
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-  Linux 5.2-rc1 (2019-05-19 15:47:09 -0700)
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-are available in the Git repository at:
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git tags/spi-rt-pump
+Thanks,
+Mark
 
-for you to fetch changes up to 924b5867e7bd6a6a98014f0517b747465b108011:
+From 924b5867e7bd6a6a98014f0517b747465b108011 Mon Sep 17 00:00:00 2001
+From: Douglas Anderson <dianders@chromium.org>
+Date: Wed, 15 May 2019 09:48:12 -0700
+Subject: [PATCH] spi: Allow SPI devices to request the pumping thread be
+ realtime
 
-  spi: Allow SPI devices to request the pumping thread be realtime (2019-05-23 14:44:02 +0100)
+Right now the only way to get the SPI pumping thread bumped up to
+realtime priority is for the controller to request it.  However it may
+be that the controller works fine with the normal priority but
+communication to a particular SPI device on the bus needs realtime
+priority.
 
-----------------------------------------------------------------
-spi: Allow setting pump to RT priority
+Let's add a way for devices to request realtime priority when they set
+themselves up.
 
-----------------------------------------------------------------
-Douglas Anderson (1):
-      spi: Allow SPI devices to request the pumping thread be realtime
+NOTE: this will just affect the priority of transfers that end up on
+the SPI core's pumping thread.  In many cases transfers happen in the
+context of the caller so if you need realtime priority for all
+transfers you should ensure the calling context is also realtime
+priority.
 
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Reviewed-by: Guenter Roeck <groeck@chromium.org>
+Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
  drivers/spi/spi.c       | 36 ++++++++++++++++++++++++++++++------
  include/linux/spi/spi.h |  2 ++
  2 files changed, 32 insertions(+), 6 deletions(-)
 
---bO4vSxwwZtUjUWHo
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlzmpDEACgkQJNaLcl1U
-h9AT8wf9HCQwiI9ChQBim3VkHh1VA8vwPgC20zoPo4PUGPcvvaWX5I3lrUoeCp1Q
-vpMaUDp9J8OQ57wbmNFjqYYwLAK66XMUPQmqyH6q+1m1JSp5FP41aVGkJD32UOnk
-wqsDdznTOvdDrgnVtJWtqjSWiK18M4OQJhIJGwe0wBRIfk+bpQDa+s+R34wgHCt8
-xGJZcdJagggMsco0HvSgLuIRcIVuLbsCiu9Vxh1GR3ko3x7xLUVhkoKzxJ81qVu1
-99KmShuE/rXn2IKU0lfC6WjItvey3r1RWyKFsSd7xKI6Izz45lNFrUlgrSOyLW4R
-NqMXjQUeC/nEluG0IIC4X0mbopIIsw==
-=Xgy/
------END PGP SIGNATURE-----
-
---bO4vSxwwZtUjUWHo--
-
-
---===============3101645039599833252==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3101645039599833252==--
+diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
+index 5e75944ad5d1..18f70e4bbb31 100644
+--- a/drivers/spi/spi.c
++++ b/drivers/spi/spi.c
+@@ -1364,10 +1364,32 @@ static void spi_pump_messages(struct kthread_work *work)
+ 	__spi_pump_messages(ctlr, true);
+ }
+ 
+-static int spi_init_queue(struct spi_controller *ctlr)
++/**
++ * spi_set_thread_rt - set the controller to pump at realtime priority
++ * @ctlr: controller to boost priority of
++ *
++ * This can be called because the controller requested realtime priority
++ * (by setting the ->rt value before calling spi_register_controller()) or
++ * because a device on the bus said that its transfers needed realtime
++ * priority.
++ *
++ * NOTE: at the moment if any device on a bus says it needs realtime then
++ * the thread will be at realtime priority for all transfers on that
++ * controller.  If this eventually becomes a problem we may see if we can
++ * find a way to boost the priority only temporarily during relevant
++ * transfers.
++ */
++static void spi_set_thread_rt(struct spi_controller *ctlr)
+ {
+ 	struct sched_param param = { .sched_priority = MAX_RT_PRIO - 1 };
+ 
++	dev_info(&ctlr->dev,
++		"will run message pump with realtime priority\n");
++	sched_setscheduler(ctlr->kworker_task, SCHED_FIFO, &param);
++}
++
++static int spi_init_queue(struct spi_controller *ctlr)
++{
+ 	ctlr->running = false;
+ 	ctlr->busy = false;
+ 
+@@ -1387,11 +1409,8 @@ static int spi_init_queue(struct spi_controller *ctlr)
+ 	 * request and the scheduling of the message pump thread. Without this
+ 	 * setting the message pump thread will remain at default priority.
+ 	 */
+-	if (ctlr->rt) {
+-		dev_info(&ctlr->dev,
+-			"will run message pump with realtime priority\n");
+-		sched_setscheduler(ctlr->kworker_task, SCHED_FIFO, &param);
+-	}
++	if (ctlr->rt)
++		spi_set_thread_rt(ctlr);
+ 
+ 	return 0;
+ }
+@@ -2982,6 +3001,11 @@ int spi_setup(struct spi_device *spi)
+ 
+ 	spi_set_cs(spi, false);
+ 
++	if (spi->rt && !spi->controller->rt) {
++		spi->controller->rt = true;
++		spi_set_thread_rt(spi->controller);
++	}
++
+ 	dev_dbg(&spi->dev, "setup mode %d, %s%s%s%s%u bits/w, %u Hz max --> %d\n",
+ 			(int) (spi->mode & (SPI_CPOL | SPI_CPHA)),
+ 			(spi->mode & SPI_CS_HIGH) ? "cs_high, " : "",
+diff --git a/include/linux/spi/spi.h b/include/linux/spi/spi.h
+index 053abd22ad31..15505c2485d6 100644
+--- a/include/linux/spi/spi.h
++++ b/include/linux/spi/spi.h
+@@ -109,6 +109,7 @@ void spi_statistics_add_transfer_stats(struct spi_statistics *stats,
+  *	This may be changed by the device's driver, or left at the
+  *	default (0) indicating protocol words are eight bit bytes.
+  *	The spi_transfer.bits_per_word can override this for each transfer.
++ * @rt: Make the pump thread real time priority.
+  * @irq: Negative, or the number passed to request_irq() to receive
+  *	interrupts from this device.
+  * @controller_state: Controller's runtime state
+@@ -143,6 +144,7 @@ struct spi_device {
+ 	u32			max_speed_hz;
+ 	u8			chip_select;
+ 	u8			bits_per_word;
++	bool			rt;
+ 	u32			mode;
+ #define	SPI_CPHA	0x01			/* clock phase */
+ #define	SPI_CPOL	0x02			/* clock polarity */
+-- 
+2.20.1
