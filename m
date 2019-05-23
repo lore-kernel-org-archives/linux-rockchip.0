@@ -1,45 +1,95 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: Re: mainline/master boot bisection: v5.2-rc1-165-g54dee406374c on
- rk3288-veyron-jaq
-Date: Thu, 23 May 2019 15:18:56 +0200
-Message-ID: <ac2f06ac-2bf5-7af6-06c3-37b865c43738@collabora.com>
-References: <5ce6040d.1c69fb81.60b3b.29fb@mx.google.com>
- <20190523131207.GC17245@sirena.org.uk>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 2/3] spi: Allow SPI devices to request the pumping
+ thread be realtime
+Date: Thu, 23 May 2019 14:46:25 +0100
+Message-ID: <20190523134625.GG17245@sirena.org.uk>
+References: <20190515164814.258898-1-dianders@chromium.org>
+ <20190515164814.258898-3-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190523131207.GC17245@sirena.org.uk>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>, Eduardo Valentin <edubezval@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>
-Cc: tomeu.vizoso@collabora.com, guillaume.tucker@collabora.com, mgalka@collabora.com, matthew.hart@linaro.org, khilman@baylibre.com, Daniel Lezcano <daniel.lezcano@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============3101645039599833252=="
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190515164814.258898-3-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Benson Leung <bleung-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mark,
 
-On 23/5/19 15:12, Mark Brown wrote:
-> On Wed, May 22, 2019 at 07:23:09PM -0700, kernelci.org bot wrote:
-> 
->>   Details:    https://kernelci.org/boot/id/5ce5984c59b514e6a47a364c
->>   Plain log:  https://storage.kernelci.org//mainline/master/v5.2-rc1-165-g54dee406374c/arm/multi_v7_defconfig+CONFIG_EFI=y+CONFIG_ARM_LPAE=y/gcc-8/lab-collabora/boot-rk3288-veyron-jaq.txt
->>   HTML log:   https://storage.kernelci.org//mainline/master/v5.2-rc1-165-g54dee406374c/arm/multi_v7_defconfig+CONFIG_EFI=y+CONFIG_ARM_LPAE=y/gcc-8/lab-collabora/boot-rk3288-veyron-jaq.html
->>   Result:     28694e009e51 thermal: rockchip: fix up the tsadc pinctrl setting error
-> 
-> It looks like this issue has persisted for a while without any kind of
-> fix happening - given that the bisection has identified this commit as
-> causing the regression and confirmed that reverting it fixes shouldn't
-> we just revert?  My guess would be that there's some error with the
-> pinctrl settings in the DT for the board.
-> 
+--===============3101645039599833252==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="bO4vSxwwZtUjUWHo"
+Content-Disposition: inline
 
-After some discussion Heiko sent a patch that reverts the offending commit one
-day ago [1] and it's waiting for maintainer to pick-up the patch.
 
-The reason why we think is best reverting that fix it is explained here [2]
+--bO4vSxwwZtUjUWHo
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-[1] https://lkml.org/lkml/2019/5/22/467
-[2] https://lkml.org/lkml/2019/4/30/270
+On Wed, May 15, 2019 at 09:48:12AM -0700, Douglas Anderson wrote:
+> Right now the only way to get the SPI pumping thread bumped up to
+> realtime priority is for the controller to request it.  However it may
+> be that the controller works fine with the normal priority but
+> communication to a particular SPI device on the bus needs realtime
+> priority.
 
-Thanks,
- Enric
+The following changes since commit a188339ca5a396acc588e5851ed7e19f66b0ebd9:
+
+  Linux 5.2-rc1 (2019-05-19 15:47:09 -0700)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git tags/spi-rt-pump
+
+for you to fetch changes up to 924b5867e7bd6a6a98014f0517b747465b108011:
+
+  spi: Allow SPI devices to request the pumping thread be realtime (2019-05-23 14:44:02 +0100)
+
+----------------------------------------------------------------
+spi: Allow setting pump to RT priority
+
+----------------------------------------------------------------
+Douglas Anderson (1):
+      spi: Allow SPI devices to request the pumping thread be realtime
+
+ drivers/spi/spi.c       | 36 ++++++++++++++++++++++++++++++------
+ include/linux/spi/spi.h |  2 ++
+ 2 files changed, 32 insertions(+), 6 deletions(-)
+
+--bO4vSxwwZtUjUWHo
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlzmpDEACgkQJNaLcl1U
+h9AT8wf9HCQwiI9ChQBim3VkHh1VA8vwPgC20zoPo4PUGPcvvaWX5I3lrUoeCp1Q
+vpMaUDp9J8OQ57wbmNFjqYYwLAK66XMUPQmqyH6q+1m1JSp5FP41aVGkJD32UOnk
+wqsDdznTOvdDrgnVtJWtqjSWiK18M4OQJhIJGwe0wBRIfk+bpQDa+s+R34wgHCt8
+xGJZcdJagggMsco0HvSgLuIRcIVuLbsCiu9Vxh1GR3ko3x7xLUVhkoKzxJ81qVu1
+99KmShuE/rXn2IKU0lfC6WjItvey3r1RWyKFsSd7xKI6Izz45lNFrUlgrSOyLW4R
+NqMXjQUeC/nEluG0IIC4X0mbopIIsw==
+=Xgy/
+-----END PGP SIGNATURE-----
+
+--bO4vSxwwZtUjUWHo--
+
+
+--===============3101645039599833252==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3101645039599833252==--
