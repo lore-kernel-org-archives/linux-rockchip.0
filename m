@@ -1,73 +1,54 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: Re: [PATCH v4 3/3] platform/chrome: cros_ec_spi: Request the SPI
- thread be realtime
-Date: Fri, 24 May 2019 12:26:07 +0200
-Message-ID: <1150bf3c-2c95-170e-f45a-0e0117910dd1@collabora.com>
-References: <20190515164814.258898-1-dianders@chromium.org>
- <20190515164814.258898-4-dianders@chromium.org>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: Re: [PATCH v8 3/3] rockchip: rk3399: Add Rock PI 4 support
+Date: Fri, 24 May 2019 23:58:05 +0530
+Message-ID: <CAMty3ZBmwk-j3c4ST30CthhY4cvEfdeNA-0gbg3zfSeieNPP7g@mail.gmail.com>
+References: <20190517102941.29145-1-jagan@amarulasolutions.com>
+ <20190517102941.29145-3-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190515164814.258898-4-dianders@chromium.org>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>, Mark Brown <broonie@kernel.org>, Benson Leung <bleung@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, drinkcat@chromium.org, Guenter Roeck <groeck@chromium.org>, briannorris@chromium.org, mka@chromium.org, linux-kernel@vger.kernel.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190517102941.29145-3-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>
+Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On 15/5/19 18:48, Douglas Anderson wrote:
-> All currently known ECs in the wild are very sensitive to timing.
-> Specifically the ECs are known to drop a transfer if more than 8 ms
-> passes from the assertion of the chip select until the transfer
-> finishes.
-> 
-> Let's use the new feature introduced in the patch (spi: Allow SPI
-> devices to request the pumping thread be realtime") to request the SPI
-> pumping thread be realtime.  This means that if we get shunted off to
-> the SPI thread for whatever reason we won't get downgraded to low
-> priority.
-> 
-> NOTES:
-> - We still need to keep ourselves as high priority since the SPI core
->   doesn't guarantee that all transfers end up on the pumping thread
->   (in fact, it tries pretty hard to do them in the calling context).
-> - If future Chrome OS ECs ever fix themselves to be less sensitive
->   then we could consider adding a property (or compatible string) to
->   not set this property.  For now we need it across the board.
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> Reviewed-by: Guenter Roeck <groeck@chromium.org>
+On Fri, May 17, 2019 at 4:00 PM Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org> wrote:
+>
+> Add initial support for Rock PI 4 board.
+>
+> Specification
+> - Rockchip RK3399
+> - LPDDR4
+> - eMMC
+> - SD card slot
+> - RTL8211E 1Gbps
+> - HDMI In/Out, DP, MIPI DSI/CSI
+> - PCIe M.2
+> - USB 2.0, USB-3.0
+> - USB C Type
+>
+> Commit details of rk3399-rock-pi-4.dts sync from Linux 5.1-rc2:
+> "arm64: dts: rockchip: add ROCK Pi 4 DTS support"
+> (sha1: 1b5715c602fda7b812af0e190eddcce2812e5417)
+>
+> Signed-off-by: Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 > ---
+> Changes for v8:
+> - Add TPL support
+> - Now the bootchain is
+>   rkbin (TPL) -> SPL -> U-Boot proper
 
-queued for 5.3
-
-Thanks,
- Enric
-
-> 
-> Changes in v4: None
-> Changes in v3:
-> - Updated description and variable name since we no longer force.
-> 
-> Changes in v2:
-> - Renamed variable to "force_rt_transfers".
-> 
->  drivers/platform/chrome/cros_ec_spi.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/platform/chrome/cros_ec_spi.c b/drivers/platform/chrome/cros_ec_spi.c
-> index 1e38a885c539..daf3119191c8 100644
-> --- a/drivers/platform/chrome/cros_ec_spi.c
-> +++ b/drivers/platform/chrome/cros_ec_spi.c
-> @@ -740,6 +740,7 @@ static int cros_ec_spi_probe(struct spi_device *spi)
->  
->  	spi->bits_per_word = 8;
->  	spi->mode = SPI_MODE_0;
-> +	spi->rt = true;
->  	err = spi_setup(spi);
->  	if (err < 0)
->  		return err;
-> 
+Seems like Kever is busy or off (I ping him privately) and these
+patches are supposed to merge during RC's. I'm planning merge in
+tomorrow or day after, let me know if any concerns?
