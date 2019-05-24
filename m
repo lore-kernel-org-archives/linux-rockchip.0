@@ -1,74 +1,56 @@
-From: "Zhang, Rui" <rui.zhang@intel.com>
-Subject: RE: mainline/master boot bisection: v5.2-rc1-165-g54dee406374c on
- rk3288-veyron-jaq
-Date: Thu, 23 May 2019 14:02:11 +0000
-Message-ID: <744357E9AAD1214791ACBA4B0B9092637757AD75@SHSMSX108.ccr.corp.intel.com>
-References: <5ce6040d.1c69fb81.60b3b.29fb@mx.google.com>
- <20190523131207.GC17245@sirena.org.uk>
- <ac2f06ac-2bf5-7af6-06c3-37b865c43738@collabora.com>
+From: Eduardo Valentin <edubezval@gmail.com>
+Subject: Re: [PATCH] Revert "thermal: rockchip: fix up the tsadc pinctrl
+ setting error"
+Date: Thu, 23 May 2019 19:20:43 -0700
+Message-ID: <20190524022042.GA1936@localhost.localdomain>
+References: <20190522141236.26987-1-heiko@sntech.de>
+ <CAD=FV=UxwqkHpsxXhEHrQDY6MtymeT3Gn_G4Q5xSh6pZVWTRHA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <ac2f06ac-2bf5-7af6-06c3-37b865c43738@collabora.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=UxwqkHpsxXhEHrQDY6MtymeT3Gn_G4Q5xSh6pZVWTRHA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Mark Brown <broonie@kernel.org>, Eduardo Valentin <edubezval@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>
-Cc: "tomeu.vizoso@collabora.com" <tomeu.vizoso@collabora.com>, "guillaume.tucker@collabora.com" <guillaume.tucker@collabora.com>, "mgalka@collabora.com" <mgalka@collabora.com>, "matthew.hart@linaro.org" <matthew.hart@linaro.org>, "khilman@baylibre.com" <khilman@baylibre.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Heiko Stuebner <heiko@sntech.de>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Doug Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Zhang Rui <rui.zhang@intel.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Linux PM <linux-pm@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, zhangqing <zhangqing@rock-chips.com>, Enric Balletbo Serra <eballetbo@gmail.com>, Brian Norris <briannorris@chromium.org>, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-> -----Original Message-----
-> From: Enric Balletbo i Serra [mailto:enric.balletbo@collabora.com]
-> Sent: Thursday, May 23, 2019 9:19 PM
-> To: Mark Brown <broonie@kernel.org>; Eduardo Valentin
-> <edubezval@gmail.com>; Elaine Zhang <zhangqing@rock-chips.com>
-> Cc: tomeu.vizoso@collabora.com; guillaume.tucker@collabora.com;
-> mgalka@collabora.com; matthew.hart@linaro.org; khilman@baylibre.com;
-> Daniel Lezcano <daniel.lezcano@linaro.org>; Heiko Stuebner
-> <heiko@sntech.de>; linux-pm@vger.kernel.org; linux-
-> kernel@vger.kernel.org; linux-rockchip@lists.infradead.org; Zhang, Rui
-> <rui.zhang@intel.com>; linux-arm-kernel@lists.infradead.org
-> Subject: Re: mainline/master boot bisection: v5.2-rc1-165-g54dee406374c on
-> rk3288-veyron-jaq
-> Importance: High
+On Wed, May 22, 2019 at 08:34:34AM -0700, Doug Anderson wrote:
+> Hi,
 > 
-> Hi Mark,
-> 
-> On 23/5/19 15:12, Mark Brown wrote:
-> > On Wed, May 22, 2019 at 07:23:09PM -0700, kernelci.org bot wrote:
+> On Wed, May 22, 2019 at 7:12 AM Heiko Stuebner <heiko@sntech.de> wrote:
 > >
-> >>   Details:    https://kernelci.org/boot/id/5ce5984c59b514e6a47a364c
-> >>   Plain log:  https://storage.kernelci.org//mainline/master/v5.2-rc1-165-
-> g54dee406374c/arm/multi_v7_defconfig+CONFIG_EFI=y+CONFIG_ARM_LPAE
-> =y/gcc-8/lab-collabora/boot-rk3288-veyron-jaq.txt
-> >>   HTML log:   https://storage.kernelci.org//mainline/master/v5.2-rc1-165-
-> g54dee406374c/arm/multi_v7_defconfig+CONFIG_EFI=y+CONFIG_ARM_LPAE
-> =y/gcc-8/lab-collabora/boot-rk3288-veyron-jaq.html
-> >>   Result:     28694e009e51 thermal: rockchip: fix up the tsadc pinctrl setting
-> error
+> > This reverts commit 28694e009e512451ead5519dd801f9869acb1f60.
 > >
-> > It looks like this issue has persisted for a while without any kind of
-> > fix happening - given that the bisection has identified this commit as
-> > causing the regression and confirmed that reverting it fixes shouldn't
-> > we just revert?  My guess would be that there's some error with the
-> > pinctrl settings in the DT for the board.
+> > The commit causes multiple issues in that:
+> > - the added call to ->control does potentially run unclocked
+> >   causing a hang of the machine
+> > - the added pinctrl-states are undocumented in the binding
+> > - the added pinctrl-states are not backwards compatible, breaking
+> >   old devicetrees.
 > >
+> > Fixes: 28694e009e51 ("thermal: rockchip: fix up the tsadc pinctrl setting error")
+> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> > ---
+> >  drivers/thermal/rockchip_thermal.c | 36 +++---------------------------
+> >  1 file changed, 3 insertions(+), 33 deletions(-)
 > 
-> After some discussion Heiko sent a patch that reverts the offending commit
-> one day ago [1] and it's waiting for maintainer to pick-up the patch.
+> In case it helps with the urgency, there are lots of people who have
+> all independently needed to identify which commit stopped their boards
+> from booting mainline or broke temperature reading.  I'm aware of at
+> least these reports:
 > 
-I thought Eduardo will take the patch.
-But I will apply it and queue it for -rc2 anyway.
+> Reported-by: kernelci.org bot <bot@kernelci.org>
+> Reported-by: Enric Balletbo Serra <eballetbo@gmail.com>
+> Reported-by: Vicente Bergas <vicencb@gmail.com>
+> Reported-by: Jack Mitchell <ml@embed.me.uk>
+> Reported-by: Douglas Anderson <dianders@chromium.org>
+> 
+> I can confirm that my board boots again after this revert, thus:
+> 
+> Tested-by: Douglas Anderson <dianders@chromium.org>
 
-Thanks,
-Rui
+I see. I can collect this revert if that is what unblocks you guys.
 
-> The reason why we think is best reverting that fix it is explained here [2]
-> 
-> [1] https://lkml.org/lkml/2019/5/22/467
-> [2] https://lkml.org/lkml/2019/4/30/270
-> 
-> Thanks,
->  Enric
+Elaine, do you mind checking why these pinctrl changes are causing
+boot issues?
