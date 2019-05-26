@@ -1,231 +1,37 @@
-From: "kernelci.org bot" <bot@kernelci.org>
-Subject: linusw/fixes boot bisection: v5.2-rc1-1-ge9646f0f5bb6 on
- rk3288-veyron-jaq
-Date: Fri, 24 May 2019 20:39:57 -0700 (PDT)
-Message-ID: <5ce8b90d.1c69fb81.a6b86.0471@mx.google.com>
+From: Arend Van Spriel <arend.vanspriel-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/3] mmc: core: API for temporarily disabling
+ auto-retuning due to errors
+Date: Sun, 26 May 2019 20:42:04 +0200
+Message-ID: <05af228c-139b-2b7f-f626-36fb34634be5@broadcom.com>
+References: <20190517225420.176893-1-dianders@chromium.org>
+ <20190517225420.176893-3-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: tomeu.vizoso@collabora.com, guillaume.tucker@collabora.com, mgalka@collabora.com, broonie@kernel.org, matthew.hart@linaro.org, khilman@baylibre.com, enric.balletbo@collabora.com, Elaine Zhang <zhangqing@rock-chips.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190517225420.176893-3-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Madhan Mohan R <madhanmohan.r-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Ritesh Harjani <riteshh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Martin Hicks <mort-THxEKynEWHc@public.gmane.org>, Wolfram Sang <wsa+renesas-jBu1N2QxHDJrcw3mvpCnnVaTQe2KTcn/@public.gmane.org>, Chi-Hsien Lin <chi-hsien.lin-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Double Lo <double.lo-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Avri Altman <avri.altman-Sjgp3cTcYWE@public.gmane.org>, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Wright Feng <wright.feng-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Jiong Wu <lohengrin1024-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-* This automated bisection report was sent to you on the basis  *
-* that you may be involved with the breaking commit it has      *
-* found.  No manual investigation has been done to verify it,   *
-* and the root cause of the problem may be somewhere else.      *
-* Hope this helps!                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+On 5/18/2019 12:54 AM, Douglas Anderson wrote:
+> Normally when the MMC core sees an "-EILSEQ" error returned by a host
+> controller then it will trigger a retuning of the card.  This is
+> generally a good idea.
 
-linusw/fixes boot bisection: v5.2-rc1-1-ge9646f0f5bb6 on rk3288-veyron-jaq
+Probably a question for Adrian, but how is this retuning scheduled. I 
+recall seeing something in mmc_request_done. How about deferring the 
+retuning upon a release host or is that too sdio specific.
 
-Summary:
-  Start:      e9646f0f5bb6 gpio: fix gpio-adp5588 build errors
-  Details:    https://kernelci.org/boot/id/5ce82d9f59b514bb857a3642
-  Plain log:  https://storage.kernelci.org//linusw/fixes/v5.2-rc1-1-ge9646f=
-0f5bb6/arm/multi_v7_defconfig+CONFIG_EFI=3Dy+CONFIG_ARM_LPAE=3Dy/gcc-8/lab-=
-collabora/boot-rk3288-veyron-jaq.txt
-  HTML log:   https://storage.kernelci.org//linusw/fixes/v5.2-rc1-1-ge9646f=
-0f5bb6/arm/multi_v7_defconfig+CONFIG_EFI=3Dy+CONFIG_ARM_LPAE=3Dy/gcc-8/lab-=
-collabora/boot-rk3288-veyron-jaq.html
-  Result:     28694e009e51 thermal: rockchip: fix up the tsadc pinctrl sett=
-ing error
-
-Checks:
-  revert:     PASS
-  verify:     PASS
-
-Parameters:
-  Tree:       linusw
-  URL:        https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-=
-gpio.git/
-  Branch:     fixes
-  Target:     rk3288-veyron-jaq
-  CPU arch:   arm
-  Lab:        lab-collabora
-  Compiler:   gcc-8
-  Config:     multi_v7_defconfig+CONFIG_EFI=3Dy+CONFIG_ARM_LPAE=3Dy
-  Test suite: boot
-
-Breaking commit found:
-
----------------------------------------------------------------------------=
-----
-commit 28694e009e512451ead5519dd801f9869acb1f60
-Author: Elaine Zhang <zhangqing@rock-chips.com>
-Date:   Tue Apr 30 18:09:44 2019 +0800
-
-    thermal: rockchip: fix up the tsadc pinctrl setting error
-    =
-
-    Explicitly use the pinctrl to set/unset the right mode
-    instead of relying on the pinctrl init mode.
-    And it requires setting the tshut polarity before select pinctrl.
-    =
-
-    When the temperature sensor mode is set to 0, it will automatically
-    reset the board via the Clock-Reset-Unit (CRU) if the over temperature
-    threshold is reached. However, when the pinctrl initializes, it does a
-    transition to "otp_out" which may lead the SoC restart all the time.
-    =
-
-    "otp_out" IO may be connected to the RESET circuit on the hardware.
-    If the IO is in the wrong state, it will trigger RESET.
-    (similar to the effect of pressing the RESET button)
-    which will cause the soc to restart all the time.
-    =
-
-    Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-    Reviewed-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-    Signed-off-by: Eduardo Valentin <edubezval@gmail.com>
-
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_=
-thermal.c
-index 9c7643d62ed7..6dc7fc516abf 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -172,6 +172,9 @@ struct rockchip_thermal_data {
- 	int tshut_temp;
- 	enum tshut_mode tshut_mode;
- 	enum tshut_polarity tshut_polarity;
-+	struct pinctrl *pinctrl;
-+	struct pinctrl_state *gpio_state;
-+	struct pinctrl_state *otp_state;
- };
- =
-
- /**
-@@ -1242,6 +1245,8 @@ static int rockchip_thermal_probe(struct platform_dev=
-ice *pdev)
- 		return error;
- 	}
- =
-
-+	thermal->chip->control(thermal->regs, false);
-+
- 	error =3D clk_prepare_enable(thermal->clk);
- 	if (error) {
- 		dev_err(&pdev->dev, "failed to enable converter clock: %d\n",
-@@ -1267,6 +1272,30 @@ static int rockchip_thermal_probe(struct platform_de=
-vice *pdev)
- 	thermal->chip->initialize(thermal->grf, thermal->regs,
- 				  thermal->tshut_polarity);
- =
-
-+	if (thermal->tshut_mode =3D=3D TSHUT_MODE_GPIO) {
-+		thermal->pinctrl =3D devm_pinctrl_get(&pdev->dev);
-+		if (IS_ERR(thermal->pinctrl)) {
-+			dev_err(&pdev->dev, "failed to find thermal pinctrl\n");
-+			return PTR_ERR(thermal->pinctrl);
-+		}
-+
-+		thermal->gpio_state =3D pinctrl_lookup_state(thermal->pinctrl,
-+							   "gpio");
-+		if (IS_ERR_OR_NULL(thermal->gpio_state)) {
-+			dev_err(&pdev->dev, "failed to find thermal gpio state\n");
-+			return -EINVAL;
-+		}
-+
-+		thermal->otp_state =3D pinctrl_lookup_state(thermal->pinctrl,
-+							  "otpout");
-+		if (IS_ERR_OR_NULL(thermal->otp_state)) {
-+			dev_err(&pdev->dev, "failed to find thermal otpout state\n");
-+			return -EINVAL;
-+		}
-+
-+		pinctrl_select_state(thermal->pinctrl, thermal->otp_state);
-+	}
-+
- 	for (i =3D 0; i < thermal->chip->chn_num; i++) {
- 		error =3D rockchip_thermal_register_sensor(pdev, thermal,
- 						&thermal->sensors[i],
-@@ -1337,8 +1366,8 @@ static int __maybe_unused rockchip_thermal_suspend(st=
-ruct device *dev)
- =
-
- 	clk_disable(thermal->pclk);
- 	clk_disable(thermal->clk);
--
--	pinctrl_pm_select_sleep_state(dev);
-+	if (thermal->tshut_mode =3D=3D TSHUT_MODE_GPIO)
-+		pinctrl_select_state(thermal->pinctrl, thermal->gpio_state);
- =
-
- 	return 0;
- }
-@@ -1383,7 +1412,8 @@ static int __maybe_unused rockchip_thermal_resume(str=
-uct device *dev)
- 	for (i =3D 0; i < thermal->chip->chn_num; i++)
- 		rockchip_thermal_toggle_sensor(&thermal->sensors[i], true);
- =
-
--	pinctrl_pm_select_default_state(dev);
-+	if (thermal->tshut_mode =3D=3D TSHUT_MODE_GPIO)
-+		pinctrl_select_state(thermal->pinctrl, thermal->otp_state);
- =
-
- 	return 0;
- }
----------------------------------------------------------------------------=
-----
-
-
-Git bisection log:
-
----------------------------------------------------------------------------=
-----
-git bisect start
-# good: [37624b58542fb9f2d9a70e6ea006ef8a5f66c30b] Linux 5.1-rc7
-git bisect good 37624b58542fb9f2d9a70e6ea006ef8a5f66c30b
-# bad: [e9646f0f5bb62b7d43f0968f39d536cfe7123b53] gpio: fix gpio-adp5588 bu=
-ild errors
-git bisect bad e9646f0f5bb62b7d43f0968f39d536cfe7123b53
-# good: [e7a1414f9dc3498c4c35b9ca266d539e8bccab53] Merge tag 'media/v5.1-2'=
- of git://git.kernel.org/pub/scm/linux/kernel/git/mchehab/linux-media
-git bisect good e7a1414f9dc3498c4c35b9ca266d539e8bccab53
-# good: [b970afcfcabd63cd3832e95db096439c177c3592] Merge tag 'powerpc-5.2-1=
-' of ssh://gitolite.kernel.org/pub/scm/linux/kernel/git/powerpc/linux
-git bisect good b970afcfcabd63cd3832e95db096439c177c3592
-# bad: [a455eda33faafcaac1effb31d682765b14ef868c] Merge branch 'linus' of g=
-it://git.kernel.org/pub/scm/linux/kernel/git/evalenti/linux-soc-thermal
-git bisect bad a455eda33faafcaac1effb31d682765b14ef868c
-# good: [7e9890a3500d95c01511a4c45b7e7192dfa47ae2] Merge tag 'ovl-update-5.=
-2' of git://git.kernel.org/pub/scm/linux/kernel/git/mszeredi/vfs
-git bisect good 7e9890a3500d95c01511a4c45b7e7192dfa47ae2
-# good: [cdc90a1871d6e64080f4506e900c6ef88e6fb39f] lib/bitmap.c: guard exot=
-ic bitmap functions by CONFIG_NUMA
-git bisect good cdc90a1871d6e64080f4506e900c6ef88e6fb39f
-# good: [d2d8b146043ae7e250aef1fb312971f6f479d487] Merge tag 'trace-v5.2' o=
-f git://git.kernel.org/pub/scm/linux/kernel/git/rostedt/linux-trace
-git bisect good d2d8b146043ae7e250aef1fb312971f6f479d487
-# good: [83f3ef3de625a5766de2382f9e077d4daafd5bac] Merge tag 'libnvdimm-fix=
-es-5.2-rc1' of git://git.kernel.org/pub/scm/linux/kernel/git/nvdimm/nvdimm
-git bisect good 83f3ef3de625a5766de2382f9e077d4daafd5bac
-# bad: [ffd1b122d3a17783b68cfd03b0479dffedf0d960] thermal: rockchip: Suppor=
-t the PX30 SoC in thermal driver
-git bisect bad ffd1b122d3a17783b68cfd03b0479dffedf0d960
-# good: [3e6a8fb3308419129c7a52de6eb42feef5a919a0] drivers: thermal: tsens:=
- Add new operation to check if a sensor is enabled
-git bisect good 3e6a8fb3308419129c7a52de6eb42feef5a919a0
-# good: [d36e2fa025387567710df740fd4dce1d5001b226] thermal: generic-adc: ma=
-ke lookup table optional
-git bisect good d36e2fa025387567710df740fd4dce1d5001b226
-# good: [42cd9b049829d7facbd45ab503d763a86251e81b] thermal/drivers/cpu_cool=
-ing: Fixup the header and copyright
-git bisect good 42cd9b049829d7facbd45ab503d763a86251e81b
-# good: [6ec8070b9d48294fbe865535c167a79527eaf357] thermal: Fix build error=
- of missing devm_ioremap_resource on UM
-git bisect good 6ec8070b9d48294fbe865535c167a79527eaf357
-# bad: [28694e009e512451ead5519dd801f9869acb1f60] thermal: rockchip: fix up=
- the tsadc pinctrl setting error
-git bisect bad 28694e009e512451ead5519dd801f9869acb1f60
-# good: [fcc6d4cadadcc977911c6bfcdd95d379f4082c74] thermal: broadcom: Remov=
-e ACPI support
-git bisect good fcc6d4cadadcc977911c6bfcdd95d379f4082c74
-# first bad commit: [28694e009e512451ead5519dd801f9869acb1f60] thermal: roc=
-kchip: fix up the tsadc pinctrl setting error
----------------------------------------------------------------------------=
-----
+Regards,
+Arend
