@@ -1,153 +1,72 @@
-From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 1/1] arm64: dts: rockchip: add core dtsi file for RK3399Pro
- SoCs
-Date: Tue, 28 May 2019 12:48:50 +0800
-Message-ID: <20190528044850.23703-1-jay.xu@rock-chips.com>
+From: Guillaume Tucker <guillaume.tucker@collabora.com>
+Subject: Re: linusw/for-next boot bisection: v5.2-rc1-8-g73a790c68d7e on
+ rk3288-veyron-jaq
+Date: Tue, 28 May 2019 08:13:25 +0100
+Message-ID: <0edab48f-06e5-9ed8-09be-7c9976ae1afb@collabora.com>
+References: <5cec74e8.1c69fb81.37335.9d7b@mx.google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, zhangzj-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5cec74e8.1c69fb81.37335.9d7b@mx.google.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linus.walleij@linaro.org>
+Cc: tomeu.vizoso@collabora.com, mgalka@collabora.com, broonie@kernel.org, matthew.hart@linaro.org, khilman@baylibre.com, enric.balletbo@collabora.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds core dtsi file for Rockchip RK3399Pro SoCs,
-include rk3399.dtsi. Also enable these nodes:
-- dfi/dmc for ddr devfreq
-- pcie/pcie_phy
-- sdhci/sdio/emmc/sdmmc
+Hi Linus,
 
-Signed-off-by: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3399pro.dtsi | 111 ++++++++++++++++++++
- 1 file changed, 111 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399pro.dtsi
+On 28/05/2019 00:38, kernelci.org bot wrote:
+> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+> * This automated bisection report was sent to you on the basis  *
+> * that you may be involved with the breaking commit it has      *
+> * found.  No manual investigation has been done to verify it,   *
+> * and the root cause of the problem may be somewhere else.      *
+> * Hope this helps!                                              *
+> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+> 
+> linusw/for-next boot bisection: v5.2-rc1-8-g73a790c68d7e on rk3288-veyron-jaq
+> 
+> Summary:
+>   Start:      73a790c68d7e Merge branch 'devel' into for-next
+>   Details:    https://kernelci.org/boot/id/5cebf03d59b514dd627a3629
+>   Plain log:  https://storage.kernelci.org//linusw/for-next/v5.2-rc1-8-g73a790c68d7e/arm/multi_v7_defconfig/gcc-8/lab-collabora/boot-rk3288-veyron-jaq.txt
+>   HTML log:   https://storage.kernelci.org//linusw/for-next/v5.2-rc1-8-g73a790c68d7e/arm/multi_v7_defconfig/gcc-8/lab-collabora/boot-rk3288-veyron-jaq.html
+>   Result:     28694e009e51 thermal: rockchip: fix up the tsadc pinctrl setting error
+> 
+> Checks:
+>   revert:     PASS
+>   verify:     PASS
+> 
+> Parameters:
+>   Tree:       linusw
+>   URL:        https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-gpio.git/
+>   Branch:     for-next
+>   Target:     rk3288-veyron-jaq
+>   CPU arch:   arm
+>   Lab:        lab-collabora
+>   Compiler:   gcc-8
+>   Config:     multi_v7_defconfig
+>   Test suite: boot
+> 
+> Breaking commit found:
+> 
+> -------------------------------------------------------------------------------
+> commit 28694e009e512451ead5519dd801f9869acb1f60
+> Author: Elaine Zhang <zhangqing@rock-chips.com>
+> Date:   Tue Apr 30 18:09:44 2019 +0800
+> 
+>     thermal: rockchip: fix up the tsadc pinctrl setting error
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro.dtsi b/arch/arm64/boot/dts/rockchip/rk3399pro.dtsi
-new file mode 100644
-index 000000000000..62f67f857c45
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3399pro.dtsi
-@@ -0,0 +1,111 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+// Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd.
-+
-+#include "rk3399.dtsi"
-+
-+/ {
-+	compatible = "rockchip,rk3399pro";
-+
-+	xin32k: xin32k {
-+		compatible = "fixed-clock";
-+		clock-frequency = <32768>;
-+		clock-output-names = "xin32k";
-+		#clock-cells = <0>;
-+	};
-+};
-+
-+&dfi {
-+	status = "okay";
-+};
-+
-+&dmc {
-+	status = "okay";
-+	center-supply = <&vdd_log>;
-+	upthreshold = <40>;
-+	downdifferential = <20>;
-+	system-status-freq = <
-+		/*system status         freq(KHz)*/
-+		SYS_STATUS_NORMAL       800000
-+		SYS_STATUS_REBOOT       528000
-+		SYS_STATUS_SUSPEND      200000
-+		SYS_STATUS_VIDEO_1080P  200000
-+		SYS_STATUS_VIDEO_4K     600000
-+		SYS_STATUS_VIDEO_4K_10B 800000
-+		SYS_STATUS_PERFORMANCE  800000
-+		SYS_STATUS_BOOST        400000
-+		SYS_STATUS_DUALVIEW     600000
-+		SYS_STATUS_ISP          600000
-+	>;
-+	vop-pn-msch-readlatency = <
-+	/* plane_number  readlatency */
-+		0	0
-+		4	0x20
-+	>;
-+	vop-bw-dmc-freq = <
-+	/* min_bw(MB/s) max_bw(MB/s) freq(KHz) */
-+		0       762      200000
-+		763     1893     400000
-+		1894    3012     528000
-+		3013    99999    800000
-+	>;
-+	auto-min-freq = <200000>;
-+};
-+
-+&emmc_phy {
-+	status = "okay";
-+};
-+
-+&pcie_phy {
-+	status = "okay";
-+};
-+
-+&pcie0 {
-+	ep-gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
-+	num-lanes = <4>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_clkreqn_cpm>;
-+	status = "okay";
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	mmc-hs400-1_8v;
-+	supports-emmc;
-+	non-removable;
-+	keep-power-in-suspend;
-+	mmc-hs400-enhanced-strobe;
-+	status = "okay";
-+};
-+
-+&sdio0 {
-+	clock-frequency = <150000000>;
-+	clock-freq-min-max = <200000 150000000>;
-+	supports-sdio;
-+	bus-width = <4>;
-+	disable-wp;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	keep-power-in-suspend;
-+	mmc-pwrseq = <&sdio_pwrseq>;
-+	non-removable;
-+	num-slots = <1>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
-+	sd-uhs-sdr104;
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	clock-frequency = <150000000>;
-+	clock-freq-min-max = <400000 150000000>;
-+	supports-sd;
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	num-slots = <1>;
-+	vqmmc-supply = <&vccio_sd>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
-+	status = "okay";
-+};
--- 
-2.17.1
+This commit has now been reverted in mainline.  Would it be OK
+for you to rebase your for-next branch on v5.2-rc2 or cherry-pick
+the revert to avoid recurring bisections?
+
+Ideally this should have been fixed or reverted in mainline
+before v5.2-rc1 was released, or even earlier when this was first
+found in -next on 13th May.  Unfortunately it was overlooked and
+then spread to other branches like yours.
+
+Thanks,
+Guillaume
