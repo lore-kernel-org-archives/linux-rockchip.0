@@ -1,80 +1,130 @@
-From: Arend Van Spriel <arend.vanspriel@broadcom.com>
-Subject: Re: [PATCH 1/3] brcmfmac: re-enable command decode in sdio_aos for BRCM 4354
-Date: Tue, 28 May 2019 18:11:00 +0200
-Message-ID: <16aff358a20.2764.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
-References: <20190517225420.176893-2-dianders@chromium.org>
- <20190528121833.7D3A460A00@smtp.codeaurora.org>
- <CAD=FV=VtxdEeFQsdF=U7-_7R+TXfVmA2_JMB_-WYidGHTLDgLw@mail.gmail.com>
- <16aff33f3e0.2764.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v6 00/16] Add MPEG-2 decoding to Rockchip VPU
+Date: Tue, 28 May 2019 14:02:16 -0300
+Message-ID: <20190528170232.2091-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; format=flowed; charset="us-ascii"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <16aff33f3e0.2764.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>, Kalle Valo <kvalo@codeaurora.org>
-Cc: Madhan Mohan R <MadhanMohan.R@cypress.com>, Ulf Hansson <ulf.hansson@linaro.org>, LKML <linux-kernel@vger.kernel.org>, Hante Meuleman <hante.meuleman@broadcom.com>, "David S. Miller" <davem@davemloft.net>, netdev <netdev@vger.kernel.org>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, YueHaibing <yuehaibing@huawei.com>, Adrian Hunter <adrian.hunter@intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, brcm80211-dev-list.pdl@broadcom.com, Matthias Kaehlcke <mka@chromium.org>, Naveen Gupta <naveen.gupta@cypress.com>, Wright Feng <wright.feng@cypress.com>, brcm80211-dev-list@cypress.com, Double Lo <double.lo@cypress.com>, Fra
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
+Cc: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On May 28, 2019 6:09:21 PM Arend Van Spriel <arend.vanspriel@broadcom.com> 
-wrote:
+This series introduces the decoding infrastructure that will be
+used to add support for other codecs such as VP8, VP9 and H.264.
 
-> On May 28, 2019 5:52:10 PM Doug Anderson <dianders@chromium.org> wrote:
->
->> Hi,
->>
->> On Tue, May 28, 2019 at 5:18 AM Kalle Valo <kvalo@codeaurora.org> wrote:
->>>
->>> Douglas Anderson <dianders@chromium.org> wrote:
->>>
->>> > In commit 29f6589140a1 ("brcmfmac: disable command decode in
->>> > sdio_aos") we disabled something called "command decode in sdio_aos"
->>> > for a whole bunch of Broadcom SDIO WiFi parts.
->>> >
->>> > After that patch landed I find that my kernel log on
->>> > rk3288-veyron-minnie and rk3288-veyron-speedy is filled with:
->>> >   brcmfmac: brcmf_sdio_bus_sleep: error while changing bus sleep state -110
->>> >
->>> > This seems to happen every time the Broadcom WiFi transitions out of
->>> > sleep mode.  Reverting the part of the commit that affects the WiFi on
->>> > my boards fixes the problem for me, so that's what this patch does.
->>> >
->>> > Note that, in general, the justification in the original commit seemed
->>> > a little weak.  It looked like someone was testing on a SD card
->>> > controller that would sometimes die if there were CRC errors on the
->>> > bus.  This used to happen back in early days of dw_mmc (the controller
->>> > on my boards), but we fixed it.  Disabling a feature on all boards
->>> > just because one SD card controller is broken seems bad.  ...so
->>> > instead of just this patch possibly the right thing to do is to fully
->>> > revert the original commit.
->>> >
->>> > Fixes: 29f6589140a1 ("brcmfmac: disable command decode in sdio_aos")
->>> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
->>>
->>> I don't see patch 2 in patchwork and I assume discussion continues.
->>
->> Apologies.  I made sure to CC you individually on all the patches but
->> didn't think about the fact that you use patchwork to manage and so
->> didn't ensure all patches made it to all lists (by default each patch
->> gets recipients individually from get_maintainer).  I'll make sure to
->> fix for patch set #2.  If you want to see all the patches, you can at
->> least find them on lore.kernel.org linked from the cover:
->>
->> https://lore.kernel.org/patchwork/cover/1075373/
->>
->>
->>> Please resend if/when I need to apply something.
->>>
->>> 2 patches set to Changes Requested.
->>>
->>> 10948785 [1/3] brcmfmac: re-enable command decode in sdio_aos for BRCM 4354
->>
->> As per Arend I'll change patch #1 to a full revert instead of a
->> partial revert.  Arend: please yell if you want otherwise.
->
-> No yelling here. If any it is expected from Cypress. Maybe good to add them
-> specifically in Cc:
+The driver is exposes two video device nodes, the encoder being
+/dev/video0, and decoder /dev/video1. Both devices are associated
+to a single memory-to-memory queue, and same media device /dev/media0.
 
-Of the revert patch that is.
+This work has been possible thanks to Jonas Karlman, who did
+the initial MPEG-2 decoding work and also got mpv+ffmpeg working using
+the Request API.
 
-Gr. AvS
+Patchset applies cleanly on top of:
+
+git://linuxtv.org/hverkuil/media_tree.git tags/br-v5.3c
+
+For those wanting to test, please find a branch here:
+
+http://git.infradead.org/users/ezequielg/linux/shortlog/refs/heads/vpu-mpeg2-v6
+
+Future plans
+------------
+
+Once this series is merged the plan is to rename the driver to Hantro
+VPU, and add support to i.MX8, and then add VP8 and H264 decoding
+support.
+
+v6:
+ * Change fill_fmt() helpers to accept only user-defined sizeimage,
+   but not bytesperline.
+ * Add RK3328 support, contributed by Jonas Karlman.
+
+v5:
+ * Add helper to clamp height/width based on frmsize
+ * Modify fill_fmt() helpers to keep user-defined sizeimage/bytesperline
+   when they're big enough
+ * Fixed a bunch of problems reported by Hans (see per-patch changelog
+   for more details)
+
+v4:
+ * Fix issues in the probe/remove path preventing the driver from being
+   unloaded/reloaded (Jonas)
+ * Rework the media controller registration code to simplify the
+   error/remove path (Boris)
+ * Split the MPEG2 patches (one adding the generic code and one patch
+   per platform)
+
+v3:
+  * Share more code between the encoder/decoder logic (VB2/V4L2
+    interface implementation)
+  * Add a patch to support MPEG2 decoding on RK3288 (Jonas)
+  * Several fixes/improvements all over the place (see changelog
+    in each patch for more details)
+
+v2:
+  * Fixed some minor issues brought up by v4l2-compliance.
+  * Fixed bytesused wrongly assigned 0 on the MPEG-2 decoder.
+  * Addressed comments from Hans and Tomasz on the pixel format
+    helpers.
+
+Boris Brezillon (8):
+  media: v4l2-common: Fix v4l2_fill_pixfmt[_mp]() prototypes
+  media: v4l2-common: Add an helper to apply frmsize constraints
+  media: v4l2-common: Support custom imagesize in fill_pixfmt()
+  rockchip/vpu: Use v4l2_apply_frmsize_constraints() where appropriate
+  rockchip/vpu: Rename rockchip_vpu_common.h into rockchip_vpu_v4l2.h
+  rockchip/vpu: Move encoder logic to a common place
+  rockchip/vpu: Provide a helper to reset both src and dst formats
+  rockchip/vpu: Prepare things to support decoders
+
+Ezequiel Garcia (4):
+  rockchip/vpu: Open-code media controller register
+  rockchip/vpu: Support the Request API
+  rockchip/vpu: Add decoder boilerplate
+  rockchip/vpu: Add support for non-standard controls
+
+Jonas Karlman (4):
+  rockchip/vpu: Add infra to support MPEG-2 decoding
+  rockchip/vpu: Add MPEG2 decoding support to RK3399
+  rockchip/vpu: Add support for MPEG-2 decoding on RK3288
+  rockchip/vpu: Add support for MPEG-2 decoding on RK3328
+
+ drivers/media/v4l2-core/v4l2-common.c         |  90 ++-
+ drivers/staging/media/rockchip/vpu/Kconfig    |   1 +
+ drivers/staging/media/rockchip/vpu/Makefile   |   7 +-
+ .../media/rockchip/vpu/rk3288_vpu_hw.c        |  59 +-
+ .../rockchip/vpu/rk3288_vpu_hw_jpeg_enc.c     |   2 +-
+ .../rockchip/vpu/rk3288_vpu_hw_mpeg2_dec.c    | 261 +++++++
+ .../media/rockchip/vpu/rk3288_vpu_regs.h      |   1 +
+ .../media/rockchip/vpu/rk3399_vpu_hw.c        |  71 +-
+ .../rockchip/vpu/rk3399_vpu_hw_jpeg_enc.c     |   8 +-
+ .../rockchip/vpu/rk3399_vpu_hw_mpeg2_dec.c    | 267 +++++++
+ .../staging/media/rockchip/vpu/rockchip_vpu.h | 110 ++-
+ .../media/rockchip/vpu/rockchip_vpu_drv.c     | 466 ++++++++++--
+ .../media/rockchip/vpu/rockchip_vpu_enc.c     | 571 ---------------
+ .../media/rockchip/vpu/rockchip_vpu_hw.h      |  17 +
+ .../media/rockchip/vpu/rockchip_vpu_mpeg2.c   |  61 ++
+ .../media/rockchip/vpu/rockchip_vpu_v4l2.c    | 692 ++++++++++++++++++
+ ...kchip_vpu_common.h => rockchip_vpu_v4l2.h} |  15 +-
+ include/media/v4l2-common.h                   |  10 +-
+ 18 files changed, 2026 insertions(+), 683 deletions(-)
+ create mode 100644 drivers/staging/media/rockchip/vpu/rk3288_vpu_hw_mpeg2_dec.c
+ create mode 100644 drivers/staging/media/rockchip/vpu/rk3399_vpu_hw_mpeg2_dec.c
+ delete mode 100644 drivers/staging/media/rockchip/vpu/rockchip_vpu_enc.c
+ create mode 100644 drivers/staging/media/rockchip/vpu/rockchip_vpu_mpeg2.c
+ create mode 100644 drivers/staging/media/rockchip/vpu/rockchip_vpu_v4l2.c
+ rename drivers/staging/media/rockchip/vpu/{rockchip_vpu_common.h => rockchip_vpu_v4l2.h} (50%)
+
+-- 
+2.20.1
