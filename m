@@ -1,45 +1,53 @@
-From: Adrian Hunter <adrian.hunter@intel.com>
-Subject: Re: [PATCH 2/3] mmc: core: API for temporarily disabling
- auto-retuning due to errors
-Date: Tue, 28 May 2019 14:45:16 +0300
-Message-ID: <2d6fa51d-27af-4f90-2bd6-144112ce75ad@intel.com>
-References: <20190517225420.176893-1-dianders@chromium.org>
- <20190517225420.176893-3-dianders@chromium.org>
- <05af228c-139b-2b7f-f626-36fb34634be5@broadcom.com>
- <4f39e152-04ba-a64e-985a-df93e6d15ff8@intel.com>
- <aa8e526f-b382-f3b7-74a5-e0fee09ae096@broadcom.com>
+From: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: [PATCH 1/3] brcmfmac: re-enable command decode in sdio_aos for
+ BRCM 4354
+Date: Tue, 28 May 2019 12:18:33 +0000 (UTC)
+Message-ID: <20190528121833.B45F06087F@smtp.codeaurora.org>
+References: <20190517225420.176893-2-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <aa8e526f-b382-f3b7-74a5-e0fee09ae096@broadcom.com>
-Content-Language: en-US
+In-Reply-To: <20190517225420.176893-2-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Arend Van Spriel <arend.vanspriel@broadcom.com>, Douglas Anderson <dianders@chromium.org>, Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>
-Cc: linux-rockchip@lists.infradead.org, Double Lo <double.lo@cypress.com>, briannorris@chromium.org, Madhan Mohan R <madhanmohan.r@cypress.com>, mka@chromium.org, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Jiong Wu <lohengrin1024@gmail.com>, Ritesh Harjani <riteshh@codeaurora.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Avri Altman <avri.altman@wdc.com>, Martin Hicks <mort@bork.org>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Adrian Hunter <adrian.hunter@intel.com>, Arend van Spriel <arend.vanspriel@broadcom.com>, linux-rockchip@lists.infradead.org, Double Lo <double.lo@cypress.com>, briannorris@chromium.org, Madhan Mohan R <madhanmohan.r@cypress.com>, mka@chromium.org, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Douglas Anderson <dianders@chromium.org>, brcm80211-dev-list.pdl@broadcom.com, Franky Lin <franky.lin@broadcom.com>, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, Madhan Mohan R <MadhanMohan.R@cypress.com>, Hante Meuleman <hante.meuleman@broadcom.com>, Naveen Gupta <naveen.gupta@cypress.com>, brcm80211-dev-list@cypress.com, YueHaibing <yuehaibing@huawei.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 28/05/19 2:21 PM, Arend Van Spriel wrote:
-> 
-> 
-> On 5/28/2019 12:04 PM, Adrian Hunter wrote:
->> On 26/05/19 9:42 PM, Arend Van Spriel wrote:
->>> On 5/18/2019 12:54 AM, Douglas Anderson wrote:
->>>> Normally when the MMC core sees an "-EILSEQ" error returned by a host
->>>> controller then it will trigger a retuning of the card.  This is
->>>> generally a good idea.
->>>
->>> Probably a question for Adrian, but how is this retuning scheduled. I recall
->>> seeing something in mmc_request_done. How about deferring the retuning upon
->>> a release host or is that too sdio specific.
->>
->> Below is what I have been carrying the last 4 years.  But according to
->> Douglas'
->> patch, the release would need to be further down.  See 2nd diff below.
->> Would that work?
-> 
-> That makes sense. The loop is needed because the device can be a bit bone
-> headed. So indeed after the loop the device should be awake and able to
-> handle CMD19.
+Douglas Anderson <dianders@chromium.org> wrote:
 
-What if tuning is needed to read SBSDIO_FUNC1_SLEEPCSR successfully?
+> In commit 29f6589140a1 ("brcmfmac: disable command decode in
+> sdio_aos") we disabled something called "command decode in sdio_aos"
+> for a whole bunch of Broadcom SDIO WiFi parts.
+> 
+> After that patch landed I find that my kernel log on
+> rk3288-veyron-minnie and rk3288-veyron-speedy is filled with:
+>   brcmfmac: brcmf_sdio_bus_sleep: error while changing bus sleep state -110
+> 
+> This seems to happen every time the Broadcom WiFi transitions out of
+> sleep mode.  Reverting the part of the commit that affects the WiFi on
+> my boards fixes the problem for me, so that's what this patch does.
+> 
+> Note that, in general, the justification in the original commit seemed
+> a little weak.  It looked like someone was testing on a SD card
+> controller that would sometimes die if there were CRC errors on the
+> bus.  This used to happen back in early days of dw_mmc (the controller
+> on my boards), but we fixed it.  Disabling a feature on all boards
+> just because one SD card controller is broken seems bad.  ...so
+> instead of just this patch possibly the right thing to do is to fully
+> revert the original commit.
+> 
+> Fixes: 29f6589140a1 ("brcmfmac: disable command decode in sdio_aos")
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+
+I don't see patch 2 in patchwork and I assume discussion continues.
+Please resend if/when I need to apply something.
+
+2 patches set to Changes Requested.
+
+10948785 [1/3] brcmfmac: re-enable command decode in sdio_aos for BRCM 4354
+10948777 [3/3] brcmfmac: sdio: Disable auto-tuning around commands expected to fail
+
+-- 
+https://patchwork.kernel.org/patch/10948785/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
