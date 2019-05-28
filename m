@@ -1,8 +1,8 @@
 From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v6 01/16] media: v4l2-common: Fix v4l2_fill_pixfmt[_mp]()
- prototypes
-Date: Tue, 28 May 2019 14:02:17 -0300
-Message-ID: <20190528170232.2091-2-ezequiel@collabora.com>
+Subject: [PATCH v6 02/16] media: v4l2-common: Add an helper to apply frmsize
+ constraints
+Date: Tue, 28 May 2019 14:02:18 -0300
+Message-ID: <20190528170232.2091-3-ezequiel@collabora.com>
 References: <20190528170232.2091-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -24,8 +24,9 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 
-Width/height and 4CC formats are expressed using u32 types everywhere,
-let's fix the v4l2_fill_pixfmt[_mp]() prototypes to do the same.
+The rockchip VPU driver is open-coding this logic which seems pretty
+generic. Let's provide an helper to apply the min/max and alignment
+constraints on width/height.
 
 Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
@@ -35,50 +36,67 @@ Changes from v5:
 Changes from v4:
 * New patch
 
- drivers/media/v4l2-core/v4l2-common.c | 5 +++--
- include/media/v4l2-common.h           | 8 ++++----
- 2 files changed, 7 insertions(+), 6 deletions(-)
+ drivers/media/v4l2-core/v4l2-common.c | 27 +++++++++++++++++++++++++++
+ include/media/v4l2-common.h           |  2 ++
+ 2 files changed, 29 insertions(+)
 
 diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-index b5778b2ffa27..9417a883ebe3 100644
+index 9417a883ebe3..b2d1e55d9561 100644
 --- a/drivers/media/v4l2-core/v4l2-common.c
 +++ b/drivers/media/v4l2-core/v4l2-common.c
-@@ -542,7 +542,7 @@ static inline unsigned int v4l2_format_block_height(const struct v4l2_format_inf
+@@ -331,6 +331,16 @@ static unsigned int clamp_align(unsigned int x, unsigned int min,
+ 	return x;
  }
  
++static unsigned int clamp_roundup(unsigned int x, unsigned int min,
++				   unsigned int max, unsigned int alignment)
++{
++	x = clamp(x, min, max);
++	if (alignment)
++		x = round_up(x, alignment);
++
++	return x;
++}
++
+ void v4l_bound_align_image(u32 *w, unsigned int wmin, unsigned int wmax,
+ 			   unsigned int walign,
+ 			   u32 *h, unsigned int hmin, unsigned int hmax,
+@@ -541,6 +551,23 @@ static inline unsigned int v4l2_format_block_height(const struct v4l2_format_inf
+ 	return info->block_h[plane];
+ }
+ 
++void v4l2_apply_frmsize_constraints(u32 *width, u32 *height,
++				    const struct v4l2_frmsize_stepwise *frmsize)
++{
++	if (!frmsize)
++		return;
++
++	/*
++	 * Clamp width/height to meet min/max constraints and round it up to
++	 * macroblock alignment.
++	 */
++	*width = clamp_roundup(*width, frmsize->min_width, frmsize->max_width,
++			       frmsize->step_width);
++        *height = clamp_roundup(*height, frmsize->min_height, frmsize->max_height,
++				frmsize->step_height);
++}
++EXPORT_SYMBOL_GPL(v4l2_apply_frmsize_constraints);
++
  int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
--			 int pixelformat, int width, int height)
-+			u32 pixelformat, u32 width, u32 height)
+ 			u32 pixelformat, u32 width, u32 height)
  {
- 	const struct v4l2_format_info *info;
- 	struct v4l2_plane_pix_format *plane;
-@@ -596,7 +596,8 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
- }
- EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt_mp);
- 
--int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, int pixelformat, int width, int height)
-+int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
-+		     u32 width, u32 height)
- {
- 	const struct v4l2_format_info *info;
- 	int i;
 diff --git a/include/media/v4l2-common.h b/include/media/v4l2-common.h
-index 0a41bbecf3d3..3226bc8107cc 100644
+index 3226bc8107cc..e826b154bc35 100644
 --- a/include/media/v4l2-common.h
 +++ b/include/media/v4l2-common.h
-@@ -420,9 +420,9 @@ struct v4l2_format_info {
+@@ -420,6 +420,8 @@ struct v4l2_format_info {
  
  const struct v4l2_format_info *v4l2_format_info(u32 format);
  
--int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, int pixelformat,
--		     int width, int height);
--int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt, int pixelformat,
--			int width, int height);
-+int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
-+		     u32 width, u32 height);
-+int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt, u32 pixelformat,
-+			u32 width, u32 height);
- 
- #endif /* V4L2_COMMON_H_ */
++void v4l2_apply_frmsize_constraints(u32 *width, u32 *height,
++				    const struct v4l2_frmsize_stepwise *frmsize);
+ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
+ 		     u32 width, u32 height);
+ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt, u32 pixelformat,
 -- 
 2.20.1
