@@ -1,59 +1,141 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: linusw/for-next boot bisection: v5.2-rc1-8-g73a790c68d7e on
- rk3288-veyron-jaq
-Date: Tue, 28 May 2019 14:15:04 +0100
-Message-ID: <20190528131504.GI2456@sirena.org.uk>
-References: <5cec74e8.1c69fb81.37335.9d7b@mx.google.com>
- <0edab48f-06e5-9ed8-09be-7c9976ae1afb@collabora.com>
- <CAMuHMdUF1Csi1ZMccOj=kurijMLcA6G+TP_spsE+fnMvZR71Vw@mail.gmail.com>
- <de92e3bd-70e8-fcba-3c88-c04170704e7b@collabora.com>
- <CACRpkdb-Dv614V7STLRMpiLkmb_7NVyKnh2oUi=7Rx366tmZ-A@mail.gmail.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2] mmc: dw_mmc: Disable SDIO interrupts while suspended
+ to fix suspend/resume
+Date: Tue, 28 May 2019 07:38:14 -0700
+Message-ID: <CAD=FV=VqqDK6SLC_1_cFUjjEdTNUU09GJi4ZEMNwt_mgjnVRdg@mail.gmail.com>
+References: <20190429204040.18725-1-dianders@chromium.org> <CAD=FV=WEDkufoEUYv9U+c+Y_bm8MYEWS25n63vUeNG0LLCFnuw@mail.gmail.com>
+ <CAPDyKFoKN2zUNvDkgciO6r_ohdh2Vaj5qQaAPwMq21y02XAK8A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="G3juXO9GfR42w+sw"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CACRpkdb-Dv614V7STLRMpiLkmb_7NVyKnh2oUi=7Rx366tmZ-A@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Guillaume Tucker <guillaume.tucker@collabora.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Elaine Zhang <zhangqing@rock-chips.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Linux PM list <linux-pm@vger.kernel.org>, Kevin Hilman <khilman@baylibre.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matt Hart <matthew.hart@linaro.org>, mgalka@collabora.com, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Zhang Rui <rui.zhang@intel.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFoKN2zUNvDkgciO6r_ohdh2Vaj5qQaAPwMq21y02XAK8A@mail.gmail.com>
+Sender: stable-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Kalle Valo <kvalo@codeaurora.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, Sonny Rao <sonnyrao@chromium.org>, Emil Renner Berthing <emil.renner.berthing@gmail.com>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, "# 4.0+" <stable@vger.kernel.org>, Linux MMC List <linux-mmc@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, Jaehoon Chung <jh80.chung@samsung.com>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi,
 
---G3juXO9GfR42w+sw
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On Tue, May 28, 2019 at 6:12 AM Ulf Hansson <ulf.hansson@linaro.org> wrote:
+>
+> On Mon, 20 May 2019 at 20:41, Doug Anderson <dianders@chromium.org> wrote:
+> >
+> > Hi,
+> >
+> > On Mon, Apr 29, 2019 at 1:41 PM Douglas Anderson <dianders@chromium.org> wrote:
+> > >
+> > > Processing SDIO interrupts while dw_mmc is suspended (or partly
+> > > suspended) seems like a bad idea.  We really don't want to be
+> > > processing them until we've gotten ourselves fully powered up.
+> > >
+> > > You might be wondering how it's even possible to become suspended when
+> > > an SDIO interrupt is active.  As can be seen in
+> > > dw_mci_enable_sdio_irq(), we explicitly keep dw_mmc out of runtime
+> > > suspend when the SDIO interrupt is enabled.  ...but even though we
+> > > stop normal runtime suspend transitions when SDIO interrupts are
+> > > enabled, the dw_mci_runtime_suspend() can still get called for a full
+> > > system suspend.
+> > >
+> > > Let's handle all this by explicitly masking SDIO interrupts in the
+> > > suspend call and unmasking them later in the resume call.  To do this
+> > > cleanly I'll keep track of whether the client requested that SDIO
+> > > interrupts be enabled so that we can reliably restore them regardless
+> > > of whether we're masking them for one reason or another.
+> > >
+> > > It should be noted that if dw_mci_enable_sdio_irq() is never called
+> > > (for instance, if we don't have an SDIO card plugged in) that
+> > > "client_sdio_enb" will always be false.  In those cases this patch
+> > > adds a tiny bit of overhead to suspend/resume (a spinlock and a
+> > > read/write of INTMASK) but other than that is a no-op.  The
+> > > SDMMC_INT_SDIO bit should always be clear and clearing it again won't
+> > > hurt.
+> > >
+> > > Without this fix it can be seen that rk3288-veyron Chromebooks with
+> > > Marvell WiFi would sometimes fail to resume WiFi even after picking my
+> > > recent mwifiex patch [1].  Specifically you'd see messages like this:
+> > >   mwifiex_sdio mmc1:0001:1: Firmware wakeup failed
+> > >   mwifiex_sdio mmc1:0001:1: PREP_CMD: FW in reset state
+> > >
+> > > ...and tracing through the resume code in the failing cases showed
+> > > that we were processing a SDIO interrupt really early in the resume
+> > > call.
+> > >
+> > > NOTE: downstream in Chrome OS 3.14 and 3.18 kernels (both of which
+> > > support the Marvell SDIO WiFi card) we had a patch ("CHROMIUM: sdio:
+> > > Defer SDIO interrupt handling until after resume") [2].  Presumably
+> > > this is the same problem that was solved by that patch.
+> > >
+> > > [1] https://lkml.kernel.org/r/20190404040106.40519-1-dianders@chromium.org
+> > > [2] https://crrev.com/c/230765
+> > >
+> > > Cc: <stable@vger.kernel.org> # 4.14.x
+> > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > > ---
+> > > I didn't put any "Fixes" tag here, but presumably this could be
+> > > backported to whichever kernels folks found it useful for.  I have at
+> > > least confirmed that kernels v4.14 and v4.19 (as well as v5.1-rc2)
+> > > show the problem.  It is very easy to pick this to v4.19 and it
+> > > definitely fixes the problem there.
+> > >
+> > > I haven't spent the time to pick this to 4.14 myself, but presumably
+> > > it wouldn't be too hard to backport this as far as v4.13 since that
+> > > contains commit 32dba73772f8 ("mmc: dw_mmc: Convert to use
+> > > MMC_CAP2_SDIO_IRQ_NOTHREAD for SDIO IRQs").  Prior to that it might
+> > > make sense for anyone experiencing this problem to just pick the old
+> > > CHROMIUM patch to fix them.
+> > >
+> > > Changes in v2:
+> > > - Suggested 4.14+ in the stable tag (Sasha-bot)
+> > > - Extra note that this is a noop on non-SDIO (Shawn / Emil)
+> > > - Make boolean logic cleaner as per https://crrev.com/c/1586207/1
+> > > - Hopefully clear comments as per https://crrev.com/c/1586207/1
+> > >
+> > >  drivers/mmc/host/dw_mmc.c | 27 +++++++++++++++++++++++----
+> > >  drivers/mmc/host/dw_mmc.h |  3 +++
+> > >  2 files changed, 26 insertions(+), 4 deletions(-)
+> >
+> > Ulf: are you the right person to land this?  With 5.2-rc1 out it might
+> > be a good time for it?  To refresh your memory about this patch:
+> >
+> > * Patch v1 was posted back on April 10th [1] so we're at about 1.5
+> > months of time for people to comment about it now.  Should be more
+> > than enough.
+>
+> Apologize for the delay, not sure why this has slipped through my
+> filters. Anyway, let me have a look at it now.
 
-On Tue, May 28, 2019 at 10:45:13AM +0200, Linus Walleij wrote:
-> On Tue, May 28, 2019 at 10:36 AM Guillaume Tucker
+No worries.  If there's something better I can do in the future to
+avoid problems, please let me know.
 
-> > Not really, so I've disabled bisections in the linux-gpio tree
-> > and a few other maintainers' trees for now.  I'll see if we can
-> > come up with a more systematic way of suppressing bisections in
-> > similar cases (i.e. the issue has been fixed in mainline later
-> > than the base commit for the branch being tested).
 
-> I think this is what the zeroday autobuilder does because
-> they never seem to show this problem. Thanks for looking
-> into it!
+> > * Shawn Lin saw it and didn't hate it.  He had some confusion about
+> > how it worked and I've hopefully alleviated via extra comments / text.
+> >
+> > * Emil Renner Berthing thought it caused a regression for him but then
+> > tested further and was convinced that it didn't.  This is extra
+> > confirmation that someone other than me did try the patch and found it
+> > to not break things.  ;-)
+> >
+> > * It has been reviewed by Guenter Roeck (in v2)
+>
+> One question, I am guessing you are considering
+> https://lkml.org/lkml/2019/5/17/761 as the long term solution, and
+> thus $subject patch should go as fix+stable? No?
 
-I've got a feeling they do this by deduping after doing the bisection;
-they also used to have a system where they'd merge a bunch of trees
-together and do the bisect on that to save repeating bisects.
+No, the two problems are completely separate.  ${SUBJECT} patch deals
+with full system suspend/resume.  I originally reproduced the problems
+on a device with Marvell WiFi, though it could possibly affect
+Broadcom parts on dw_mmc too.  ${SUBJECT} patch is ready to land on
+mainline Linux at your leisure.  Also: in case you didn't notice
+(since it didn't thread properly for me), Shawn Lin gave it a reviewed
+by [1].
 
---G3juXO9GfR42w+sw
-Content-Type: application/pgp-signature; name="signature.asc"
+The patch you refer to [2] is related to something akin to an idle
+state (more like Runtime PM) and only affects Broadcom parts.  Also
+the Broadcom issue ought to happen across all host controllers (AKA
+not just dw_mmc).
 
------BEGIN PGP SIGNATURE-----
+[1] https://lkml.kernel.org/r/982ffba1-c599-e73d-e5e0-b1be5668851c@rock-chips.com
+[2] https://lkml.org/lkml/2019/5/17/761
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlztNFQACgkQJNaLcl1U
-h9CnRwf/ee3CvNVsnpAeOOZn7++IRM1ltd0gFGJR8JS1aeptgeYX4Iy+LiyjV8CO
-ocs2H9W1CPO8oNd45rV709U1T5MzUpy8dPN306+3dPtB+etG8MXvBGSfoSx3oX0t
-wCZJaDgS/eakIS3nyhwsm4kYrFbOmG8hEjN22pcXugB6++1JPKXDQEC6bVxdJUVo
-meiYp9AR6PrYDDALwLSw+Hr5PJxOchP/x0azRWqDQ8xqICHaNkhYo2kV1uTF2nBg
-Y83I4nrNv4JOj+BSH+52Bys+uA8lT2daypGmuX3LVB/mILWA22w9R4uogPNk5uEg
-hcNuHlAgis5PMVLlC8S8D6U3j4wUIw==
-=/CjW
------END PGP SIGNATURE-----
-
---G3juXO9GfR42w+sw--
+-Doug
