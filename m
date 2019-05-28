@@ -1,85 +1,162 @@
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v6 16/16] rockchip/vpu: Add support for MPEG-2 decoding on
- RK3328
-Date: Tue, 28 May 2019 14:02:32 -0300
-Message-ID: <20190528170232.2091-17-ezequiel@collabora.com>
-References: <20190528170232.2091-1-ezequiel@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190528170232.2091-1-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
-Cc: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+From: Akash Gajjar <akash@openedev.com>
+Subject: [PATCH] arm64: dts: rockchip: add WiFi+BT support on ROCK Pi4 board
+Date: Wed, 29 May 2019 00:16:58 +0530
+Message-ID: <20190528184705.5240-1-akash@openedev.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: Akash Gajjar <akash@openedev.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Vicente Bergas <vicencb@gmail.com>, Ezequiel Garcia <ezequiel@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Rock Pi 4 has a on board AP6256 WiFi/BT Module. enable wifi and bluetooth
+support on Rock Pi 4 board.
 
-Add necessary bits to support MPEG2 decoding on RK3328.
+Signed-off-by: Akash Gajjar <akash@openedev.com>
+---
+ .../boot/dts/rockchip/rk3399-rock-pi-4.dts    | 97 +++++++++++++++++++
+ 1 file changed, 97 insertions(+)
 
-Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
-Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
---
-Changes from v5:
-* New patch.
-
- drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c   | 12 ++++++++++++
- .../staging/media/rockchip/vpu/rockchip_vpu_drv.c    |  1 +
- drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h |  1 +
- 3 files changed, 14 insertions(+)
-
-diff --git a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
-index 2b3689968ef4..341f8d69c33d 100644
---- a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
-+++ b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
-@@ -175,3 +175,15 @@ const struct rockchip_vpu_variant rk3399_vpu_variant = {
- 	.clk_names = {"aclk", "hclk"},
- 	.num_clocks = 2
- };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
+index e030627159c6..55e74f4d5cd0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
+@@ -25,6 +25,15 @@
+ 		#clock-cells = <0>;
+ 	};
+ 
++	sdio_pwrseq: sdio-pwrseq {
++		compatible = "mmc-pwrseq-simple";
++		clocks = <&rk808 1>;
++		clock-names = "ext_clock";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_enable_h>;
++		reset-gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
++	};
 +
-+const struct rockchip_vpu_variant rk3328_vpu_variant = {
-+	.dec_offset = 0x400,
-+	.dec_fmts = rk3399_vpu_dec_fmts,
-+	.num_dec_fmts = ARRAY_SIZE(rk3399_vpu_dec_fmts),
-+	.codec = RK_VPU_MPEG2_DECODER,
-+	.codec_ops = rk3399_vpu_codec_ops,
-+	.vdpu_irq = rk3399_vdpu_irq,
-+	.init = rk3399_vpu_hw_init,
-+	.clk_names = {"aclk", "hclk"},
-+	.num_clocks = 2
+ 	vcc12v_dcin: dc-12v {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc12v_dcin";
+@@ -451,12 +460,46 @@
+ };
+ 
+ &pinctrl {
++	bt {
++		bt_enable_h: bt-enable-h {
++			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		bt_host_wake_l: bt-host-wake-l {
++			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		bt_wake_l: bt-wake-l {
++			rockchip,pins = <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	pcie {
+ 		pcie_pwr_en: pcie-pwr-en {
+ 			rockchip,pins = <2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
++	sdio0 {
++		sdio0_bus4: sdio0-bus4 {
++			rockchip,pins =
++				<2 20 RK_FUNC_1 &pcfg_pull_up_20ma>,
++				<2 21 RK_FUNC_1 &pcfg_pull_up_20ma>,
++				<2 22 RK_FUNC_1 &pcfg_pull_up_20ma>,
++				<2 23 RK_FUNC_1 &pcfg_pull_up_20ma>;
++		};
++
++		sdio0_cmd: sdio0-cmd {
++			rockchip,pins =
++				<2 24 RK_FUNC_1 &pcfg_pull_up_20ma>;
++		};
++
++		sdio0_clk: sdio0-clk {
++			rockchip,pins =
++				<2 25 RK_FUNC_1 &pcfg_pull_none_20ma>;
++		};
++	};
++
+ 	pmic {
+ 		pmic_int_l: pmic-int-l {
+ 			rockchip,pins = <1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
+@@ -482,6 +525,17 @@
+ 			rockchip,pins = <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
++
++	wifi {
++		wifi_enable_h: wifi-enable-h {
++			rockchip,pins =
++				<0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		wifi_host_wake_l: wifi-host-wake-l {
++			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
+ };
+ 
+ &pwm2 {
+@@ -494,6 +548,32 @@
+ 	vref-supply = <&vcc_1v8>;
+ };
+ 
++&sdio0 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	bus-width = <4>;
++	clock-frequency = <50000000>;
++	cap-sdio-irq;
++	cap-sd-highspeed;
++	keep-power-in-suspend;
++	mmc-pwrseq = <&sdio_pwrseq>;
++	non-removable;
++	pinctrl-names = "default";
++	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
++	sd-uhs-sdr104;
++	status = "okay";
++
++	brcmf: wifi@1 {
++		compatible = "brcm,bcm4329-fmac";
++		reg = <1>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
++		interrupt-names = "host-wake";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_host_wake_l>;
++	};
 +};
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-index b94ff97451db..2e22009b6583 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
-@@ -419,6 +419,7 @@ static const struct v4l2_file_operations rockchip_vpu_fops = {
- 
- static const struct of_device_id of_rockchip_vpu_match[] = {
- 	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
-+	{ .compatible = "rockchip,rk3328-vpu", .data = &rk3328_vpu_variant, },
- 	{ .compatible = "rockchip,rk3288-vpu", .data = &rk3288_vpu_variant, },
- 	{ /* sentinel */ }
- };
-diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
-index 6cecb528f994..3d6b97af90fb 100644
---- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
-+++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
-@@ -79,6 +79,7 @@ enum rockchip_vpu_enc_fmt {
++
+ &sdmmc {
+ 	bus-width = <4>;
+ 	cap-mmc-highspeed;
+@@ -557,6 +637,23 @@
+ 	};
  };
  
- extern const struct rockchip_vpu_variant rk3399_vpu_variant;
-+extern const struct rockchip_vpu_variant rk3328_vpu_variant;
- extern const struct rockchip_vpu_variant rk3288_vpu_variant;
- 
- void rockchip_vpu_watchdog(struct work_struct *work);
++&uart0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
++	status = "okay";
++
++	bluetooth {
++		compatible = "brcm,bcm43438-bt";
++		clocks = <&rk808 1>;
++		clock-names = "ext_clock";
++		device-wakeup-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
++		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
++		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
++	};
++};
++
+ &uart2 {
+ 	status = "okay";
+ };
 -- 
-2.20.1
+2.17.1
