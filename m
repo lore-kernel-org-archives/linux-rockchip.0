@@ -1,67 +1,92 @@
-From: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: [PATCH 1/3] brcmfmac: re-enable command decode in sdio_aos for BRCM 4354
-Date: Wed, 29 May 2019 17:51:47 +0300
-Message-ID: <87h89d2u0s.fsf@kamboji.qca.qualcomm.com>
-References: <20190517225420.176893-2-dianders@chromium.org>
-        <20190528121833.7D3A460A00@smtp.codeaurora.org>
-        <CAD=FV=VtxdEeFQsdF=U7-_7R+TXfVmA2_JMB_-WYidGHTLDgLw@mail.gmail.com>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v6 16/16] rockchip/vpu: Add support for MPEG-2 decoding
+ on RK3328
+Date: Wed, 29 May 2019 11:59:41 -0300
+Message-ID: <34015a49654464b072efd401d2b55d26379bc85c.camel@collabora.com>
+References: <20190528170232.2091-1-ezequiel@collabora.com>
+ <20190528170232.2091-17-ezequiel@collabora.com>
+ <2ef056a2-e9dc-52b1-855b-2bef759af9b6@xs4all.nl>
+ <VI1PR03MB42066B8C9F364ACF7CFFF241AC1F0@VI1PR03MB4206.eurprd03.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=VtxdEeFQsdF=U7-_7R+TXfVmA2_JMB_-WYidGHTLDgLw@mail.gmail.com>
-        (Doug Anderson's message of "Tue, 28 May 2019 08:51:53 -0700")
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Arend van Spriel <arend.vanspriel@broadcom.com>, Madhan Mohan R <MadhanMohan.R@cypress.com>, Ulf Hansson <ulf.hansson@linaro.org>, LKML <linux-kernel@vger.kernel.org>, Hante Meuleman <hante.meuleman@broadcom.com>, "David S. Miller" <davem@davemloft.net>, netdev <netdev@vger.kernel.org>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, YueHaibing <yuehaibing@huawei.com>, Adrian Hunter <adrian.hunter@intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, brcm80211-dev-list.pdl@broadcom.com, Matthias Kaehlcke <mka@chromium.org>, Naveen Gupta <naveen.gupta@cypress.com>, Wright Feng <wright.feng@cypress.com>, brcm80211-dev-list@cypress
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <VI1PR03MB42066B8C9F364ACF7CFFF241AC1F0-269e4kb9IIlWSsgAM8bhN8eAHadYHfrlvxpqHgZTriW3zl9H0oFU5g@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, "linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
+Cc: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org" <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Doug Anderson <dianders@chromium.org> writes:
+On Wed, 2019-05-29 at 08:50 +0000, Jonas Karlman wrote:
+> On 2019-05-29 10:11, Hans Verkuil wrote:
+> > On 5/28/19 7:02 PM, Ezequiel Garcia wrote:
+> > > From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+> > > 
+> > > Add necessary bits to support MPEG2 decoding on RK3328.
+> > > 
+> > > Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+> > > Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> > > --
+> > > Changes from v5:
+> > > * New patch.
+> > > 
+> > >  drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c   | 12 ++++++++++++
+> > >  .../staging/media/rockchip/vpu/rockchip_vpu_drv.c    |  1 +
+> > >  drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h |  1 +
+> > >  3 files changed, 14 insertions(+)
+> > > 
+> > > diff --git a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
+> > > index 2b3689968ef4..341f8d69c33d 100644
+> > > --- a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
+> > > +++ b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
+> > > @@ -175,3 +175,15 @@ const struct rockchip_vpu_variant rk3399_vpu_variant = {
+> > >  	.clk_names = {"aclk", "hclk"},
+> > >  	.num_clocks = 2
+> > >  };
+> > > +
+> > > +const struct rockchip_vpu_variant rk3328_vpu_variant = {
+> > > +	.dec_offset = 0x400,
+> > > +	.dec_fmts = rk3399_vpu_dec_fmts,
+> > > +	.num_dec_fmts = ARRAY_SIZE(rk3399_vpu_dec_fmts),
+> > > +	.codec = RK_VPU_MPEG2_DECODER,
+> > > +	.codec_ops = rk3399_vpu_codec_ops,
+> > > +	.vdpu_irq = rk3399_vdpu_irq,
+> > > +	.init = rk3399_vpu_hw_init,
+> > > +	.clk_names = {"aclk", "hclk"},
+> > > +	.num_clocks = 2
+> > > +};
+> > > diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+> > > index b94ff97451db..2e22009b6583 100644
+> > > --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+> > > +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+> > > @@ -419,6 +419,7 @@ static const struct v4l2_file_operations rockchip_vpu_fops = {
+> > >  
+> > >  static const struct of_device_id of_rockchip_vpu_match[] = {
+> > >  	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
+> > > +	{ .compatible = "rockchip,rk3328-vpu", .data = &rk3328_vpu_variant, },
+> > This new compatible string should be documented in
+> > Documentation/devicetree/bindings/media/rockchip-vpu.txt as well.
+> > 
+> > I'll take patches 1-15 and drop this one. This patch can be merged once
+> > the bindings file is updated as well.
+> 
+> Looks like the bindings patch did not get picked for v6 :-)
+> 
 
-> Hi,
->
-> On Tue, May 28, 2019 at 5:18 AM Kalle Valo <kvalo@codeaurora.org> wrote:
->>
->> Douglas Anderson <dianders@chromium.org> wrote:
->>
->> > In commit 29f6589140a1 ("brcmfmac: disable command decode in
->> > sdio_aos") we disabled something called "command decode in sdio_aos"
->> > for a whole bunch of Broadcom SDIO WiFi parts.
->> >
->> > After that patch landed I find that my kernel log on
->> > rk3288-veyron-minnie and rk3288-veyron-speedy is filled with:
->> >   brcmfmac: brcmf_sdio_bus_sleep: error while changing bus sleep state -110
->> >
->> > This seems to happen every time the Broadcom WiFi transitions out of
->> > sleep mode.  Reverting the part of the commit that affects the WiFi on
->> > my boards fixes the problem for me, so that's what this patch does.
->> >
->> > Note that, in general, the justification in the original commit seemed
->> > a little weak.  It looked like someone was testing on a SD card
->> > controller that would sometimes die if there were CRC errors on the
->> > bus.  This used to happen back in early days of dw_mmc (the controller
->> > on my boards), but we fixed it.  Disabling a feature on all boards
->> > just because one SD card controller is broken seems bad.  ...so
->> > instead of just this patch possibly the right thing to do is to fully
->> > revert the original commit.
->> >
->> > Fixes: 29f6589140a1 ("brcmfmac: disable command decode in sdio_aos")
->> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
->>
->> I don't see patch 2 in patchwork and I assume discussion continues.
->
-> Apologies.  I made sure to CC you individually on all the patches but
-> didn't think about the fact that you use patchwork to manage and so
-> didn't ensure all patches made it to all lists (by default each patch
-> gets recipients individually from get_maintainer).  I'll make sure to
-> fix for patch set #2.  If you want to see all the patches, you can at
-> least find them on lore.kernel.org linked from the cover:
->
-> https://lore.kernel.org/patchwork/cover/1075373/
+Oh, that's my bad. I picked the support and left the binding out.
 
-No worries, I had the thread on my email but was just too busy to check.
-So I instead wrote down my thought process so that somebode can correct
-me in case I have misunderstood. I usually do that when it's not clear
-what the next action should be.
+> I am a bit unclear on how to handle patch submission that covers multiple subtrees.
+> Should I send a single series including three patches: bindings update, this patch and device tree update?
+> Or is a series with only bindings update and this patch preferred?
+> 
 
--- 
-Kalle Valo
+Thanks both for sorting this one out,
+Ezequiel
