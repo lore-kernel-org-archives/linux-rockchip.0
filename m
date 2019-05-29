@@ -1,20 +1,16 @@
-From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+From: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Subject: Re: [PATCH v6 03/16] media: v4l2-common: Support custom imagesize
  in fill_pixfmt()
-Date: Wed, 29 May 2019 14:39:53 +0200
-Message-ID: <20190529143953.50018efa@collabora.com>
+Date: Wed, 29 May 2019 09:54:09 -0400
+Message-ID: <4ef64e22f4035fccf09fbb7f0be04a9778b1230d.camel@collabora.com>
 References: <20190528170232.2091-1-ezequiel@collabora.com>
  <20190528170232.2091-4-ezequiel@collabora.com>
  <20190529082809.0b9f3553@coco.lan>
- <cc51be76-81c3-1c54-2005-1b99d00a8ac1@xs4all.nl>
- <20190529085854.6c689f8d@coco.lan>
- <20190529141633.19c5079b@collabora.com>
- <223a757d-f008-398c-64ce-18b0aaf390c5@xs4all.nl>
+Reply-To: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3641331550862895832=="
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <223a757d-f008-398c-64ce-18b0aaf390c5-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+In-Reply-To: <20190529082809.0b9f3553-qA1ZUp+OV9c@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -24,126 +20,239 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Cc: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab+samsung-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mauro Carvalho Chehab <mchehab+samsung-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 29 May 2019 14:31:03 +0200
-Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org> wrote:
 
-> On 5/29/19 2:16 PM, Boris Brezillon wrote:
-> > On Wed, 29 May 2019 08:58:54 -0300
-> > Mauro Carvalho Chehab <mchehab+samsung-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
-> >   
-> >> Em Wed, 29 May 2019 13:43:20 +0200
-> >> Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org> escreveu:
-> >>  
-> >>> On 5/29/19 1:28 PM, Mauro Carvalho Chehab wrote:    
-> >>>> Em Tue, 28 May 2019 14:02:19 -0300
-> >>>> Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> escreveu:
-> >>>>       
-> >>>>> From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> >>>>>
-> >>>>> Users can define custom sizeimage as long as they're big enough to
-> >>>>> store the amount of pixels required for a specific width/height under a
-> >>>>> specific format. Avoid overriding those fields in this case.
-> >>>>>
-> >>>>> We could possibly do the same for bytesperline, but it gets tricky when
-> >>>>> dealing with !MPLANE definitions, so this case is omitted for now and      
-> >>>>> ->bytesperline is always overwritten with the value calculated in      
-> >>>>> fill_pixfmt().
-> >>>>>
-> >>>>> Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> >>>>> ---
-> >>>>> Changes from v5:
-> >>>>> * Overwrite bytesperline with the value calculated in fill_pixfmt()
-> >>>>>
-> >>>>> Changes from v4:
-> >>>>> * New patch
-> >>>>>
-> >>>>>  drivers/media/v4l2-core/v4l2-common.c | 58 ++++++++++++++++++++-------
-> >>>>>  1 file changed, 43 insertions(+), 15 deletions(-)
-> >>>>>
-> >>>>> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-> >>>>> index b2d1e55d9561..fd286f6e17d7 100644
-> >>>>> --- a/drivers/media/v4l2-core/v4l2-common.c
-> >>>>> +++ b/drivers/media/v4l2-core/v4l2-common.c
-> >>>>> @@ -585,9 +585,9 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
-> >>>>>  	pixfmt->num_planes = info->mem_planes;
-> >>>>>  
-> >>>>>  	if (info->mem_planes == 1) {
-> >>>>> +		u32 sizeimage = 0;
-> >>>>> +
-> >>>>>  		plane = &pixfmt->plane_fmt[0];
-> >>>>> -		plane->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
-> >>>>> -		plane->sizeimage = 0;
-> >>>>>  
-> >>>>>  		for (i = 0; i < info->comp_planes; i++) {
-> >>>>>  			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
-> >>>>> @@ -598,10 +598,21 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
-> >>>>>  			aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
-> >>>>>  			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
-> >>>>>  
-> >>>>> -			plane->sizeimage += info->bpp[i] *
-> >>>>> -				DIV_ROUND_UP(aligned_width, hdiv) *
-> >>>>> -				DIV_ROUND_UP(aligned_height, vdiv);
-> >>>>> +			sizeimage += info->bpp[i] *
-> >>>>> +				     DIV_ROUND_UP(aligned_width, hdiv) *
-> >>>>> +				     DIV_ROUND_UP(aligned_height, vdiv);
-> >>>>>  		}
-> >>>>> +
-> >>>>> +		/* Custom bytesperline value is not supported yet. */
-> >>>>> +		plane->bytesperline = ALIGN(width,
-> >>>>> +					    v4l2_format_block_width(info, 0)) *
-> >>>>> +				      info->bpp[0];
-> >>>>> +
-> >>>>> +		/*
-> >>>>> +		 * The user might have specified a custom sizeimage, only
-> >>>>> +		 * override it if it's not big enough.
-> >>>>> +		 */
-> >>>>> +		plane->sizeimage = max(sizeimage, plane->sizeimage);      
-> >>>>
-> >>>> No upper limit? That doesn't sound a good idea to me, specially since some
-> >>>> (broken) app might not be memset the format to zero before filling the ioctl
-> >>>> structure.
-> >>>>
-> >>>> Perhaps we could do something like:
-> >>>>
-> >>>> 		sizeimage = min (sizeimage, 2 * plane->sizeimage)
-> >>>>
-> >>>> or something similar that would be reasonable.      
-> >>>
-> >>> I've no idea what's sane.
-> >>>
-> >>> Buffers can be really large. The largest video resolution defined by CTA-861-G
-> >>> is 10240x4320, so at 4 bytes per pixel that's 0x0a8c0000. So perhaps we can
-> >>> use min(sizeimage, 0x10000000)? Although we should probably use the clamp function
-> >>> instead of min/max.    
-> >>
-> >> Well, the max is driver-specific. 
-> >>
-> >> For example, for a camera with a max resolution of 640x480 with 2 bytes
-> >> per pixel as the max format can only be
-> >>
-> >> 	max_size = 640*480*2 (plus some alignment value if pertinent)
-> >>
-> >> It sounds to me that the best would be to have a callback function
-> >> or value filled by the drivers that would support custom sizeimage.
-> >>
-> >> The core could actually calculate during init (by asking the driver
-> >> to a very big resolution and getting the returned value), but
-> >> it sounds better to let the drivers to explicitly calculate it.  
-> > 
-> > If we want max_sizeimage to be driver specific I can add it as an extra
-> > arg to the fill_pixfmt() funcs.  
-> 
-> Looking more closely, only compressed formats can accept a user-specified
-> sizeimage value, and this function is only called for uncompressed formats.
-> 
-> So doesn't that mean that this sizeimage override code can be dropped?
+--===============3641331550862895832==
+Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
+	boundary="=-E3Gex8edDT193EfQlRr+"
 
-Hehe, IIRC, you were the one asking for this  :P (or maybe I
-misunderstood what you suggested). I don't think we need to preserve
-user-defined ->sizeimage for uncompressed fmt in the VPU driver, so I'm
-perfectly fine implementing a version that overrides ->sizeimage
-unconditionally.
+
+--=-E3Gex8edDT193EfQlRr+
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Mauro,
+
+Le mercredi 29 mai 2019 =C3=A0 08:28 -0300, Mauro Carvalho Chehab a =C3=A9c=
+rit :
+> Em Tue, 28 May 2019 14:02:19 -0300
+> Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> escreveu:
+>=20
+> > From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> >=20
+> > Users can define custom sizeimage as long as they're big enough to
+> > store the amount of pixels required for a specific width/height under a
+> > specific format. Avoid overriding those fields in this case.
+> >=20
+> > We could possibly do the same for bytesperline, but it gets tricky when
+> > dealing with !MPLANE definitions, so this case is omitted for now and
+> > ->bytesperline is always overwritten with the value calculated in
+> > fill_pixfmt().
+> >=20
+> > Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> > ---
+> > Changes from v5:
+> > * Overwrite bytesperline with the value calculated in fill_pixfmt()
+> >=20
+> > Changes from v4:
+> > * New patch
+> >=20
+> >  drivers/media/v4l2-core/v4l2-common.c | 58 ++++++++++++++++++++-------
+> >  1 file changed, 43 insertions(+), 15 deletions(-)
+> >=20
+> > diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2=
+-core/v4l2-common.c
+> > index b2d1e55d9561..fd286f6e17d7 100644
+> > --- a/drivers/media/v4l2-core/v4l2-common.c
+> > +++ b/drivers/media/v4l2-core/v4l2-common.c
+> > @@ -585,9 +585,9 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mpla=
+ne *pixfmt,
+> >  	pixfmt->num_planes =3D info->mem_planes;
+> > =20
+> >  	if (info->mem_planes =3D=3D 1) {
+> > +		u32 sizeimage =3D 0;
+> > +
+> >  		plane =3D &pixfmt->plane_fmt[0];
+> > -		plane->bytesperline =3D ALIGN(width, v4l2_format_block_width(info, 0=
+)) * info->bpp[0];
+> > -		plane->sizeimage =3D 0;
+> > =20
+> >  		for (i =3D 0; i < info->comp_planes; i++) {
+> >  			unsigned int hdiv =3D (i =3D=3D 0) ? 1 : info->hdiv;
+> > @@ -598,10 +598,21 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mp=
+lane *pixfmt,
+> >  			aligned_width =3D ALIGN(width, v4l2_format_block_width(info, i));
+> >  			aligned_height =3D ALIGN(height, v4l2_format_block_height(info, i))=
+;
+> > =20
+> > -			plane->sizeimage +=3D info->bpp[i] *
+> > -				DIV_ROUND_UP(aligned_width, hdiv) *
+> > -				DIV_ROUND_UP(aligned_height, vdiv);
+> > +			sizeimage +=3D info->bpp[i] *
+> > +				     DIV_ROUND_UP(aligned_width, hdiv) *
+> > +				     DIV_ROUND_UP(aligned_height, vdiv);
+> >  		}
+> > +
+> > +		/* Custom bytesperline value is not supported yet. */
+> > +		plane->bytesperline =3D ALIGN(width,
+> > +					    v4l2_format_block_width(info, 0)) *
+> > +				      info->bpp[0];
+> > +
+> > +		/*
+> > +		 * The user might have specified a custom sizeimage, only
+> > +		 * override it if it's not big enough.
+> > +		 */
+> > +		plane->sizeimage =3D max(sizeimage, plane->sizeimage);
+>=20
+> No upper limit? That doesn't sound a good idea to me, specially since som=
+e
+> (broken) app might not be memset the format to zero before filling the io=
+ctl
+> structure.
+>=20
+> Perhaps we could do something like:
+>=20
+> 		sizeimage =3D min (sizeimage, 2 * plane->sizeimage)
+>=20
+> or something similar that would be reasonable.
+>=20
+> >  	} else {
+> >  		for (i =3D 0; i < info->comp_planes; i++) {
+> >  			unsigned int hdiv =3D (i =3D=3D 0) ? 1 : info->hdiv;
+> > @@ -613,10 +624,19 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mp=
+lane *pixfmt,
+> >  			aligned_height =3D ALIGN(height, v4l2_format_block_height(info, i))=
+;
+> > =20
+> >  			plane =3D &pixfmt->plane_fmt[i];
+> > -			plane->bytesperline =3D
+> > -				info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv);
+> > -			plane->sizeimage =3D
+> > -				plane->bytesperline * DIV_ROUND_UP(aligned_height, vdiv);
+> > +
+> > +			/* Custom bytesperline value is not supported yet. */
+>=20
+> Supporting custom bytesperline seems too risky of breaking apps.=20
+> So, I would drop this comment.
+
+We will really need this in the long run in many drivers in order to
+allow import/export of DMABuf. Without such adaptive feature, we have a
+software limitation that forces bouncing memory. I have already
+discussed about adding this feature notably in vivid and uvcvideo on
+IRC and in conference, which both have no restriction the memory
+alignment, so should allow importing any kind of video layout.
+
+We already have a partial userspace implementation for this in
+GStreamer and upstream driver submission should come when the IP is
+considered stable enough.
+
+Why I think it won't break userspace is that the correct way to use
+these read-only members of V4L2 struct is to set these to 0, which is
+also documented.
+
+Adding upper bound seems like a good idea though.
+
+>=20
+>=20
+> > +			plane->bytesperline =3D info->bpp[i] *
+> > +					      DIV_ROUND_UP(aligned_width, hdiv);
+> > +
+> > +			/*
+> > +			 * The user might have specified a custom sizeimage,
+> > +			 * only override it if it's not big enough.
+> > +			 */
+> > +			plane->sizeimage =3D max_t(u32,
+> > +						 plane->bytesperline *
+> > +						 DIV_ROUND_UP(aligned_height, vdiv),
+> > +						 plane->sizeimage);
+> >  		}
+> >  	}
+> >  	return 0;
+> > @@ -627,6 +647,7 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt=
+, u32 pixelformat,
+> >  		     u32 width, u32 height)
+> >  {
+> >  	const struct v4l2_format_info *info;
+> > +	u32 sizeimage =3D 0;
+> >  	int i;
+> > =20
+> >  	info =3D v4l2_format_info(pixelformat);
+> > @@ -640,8 +661,6 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt=
+, u32 pixelformat,
+> >  	pixfmt->width =3D width;
+> >  	pixfmt->height =3D height;
+> >  	pixfmt->pixelformat =3D pixelformat;
+> > -	pixfmt->bytesperline =3D ALIGN(width, v4l2_format_block_width(info, 0=
+)) * info->bpp[0];
+> > -	pixfmt->sizeimage =3D 0;
+> > =20
+> >  	for (i =3D 0; i < info->comp_planes; i++) {
+> >  		unsigned int hdiv =3D (i =3D=3D 0) ? 1 : info->hdiv;
+> > @@ -651,11 +670,20 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixf=
+mt, u32 pixelformat,
+> > =20
+> >  		aligned_width =3D ALIGN(width, v4l2_format_block_width(info, i));
+> >  		aligned_height =3D ALIGN(height, v4l2_format_block_height(info, i));
+> > -
+> > -		pixfmt->sizeimage +=3D info->bpp[i] *
+> > -			DIV_ROUND_UP(aligned_width, hdiv) *
+> > -			DIV_ROUND_UP(aligned_height, vdiv);
+> > +		sizeimage +=3D info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv) *
+> > +			     DIV_ROUND_UP(aligned_height, vdiv);
+> >  	}
+> > +
+> > +	/* Custom bytesperline value is not supported yet. */
+> > +	pixfmt->bytesperline =3D ALIGN(width, v4l2_format_block_width(info, 0=
+)) *
+> > +			       info->bpp[0];
+> > +
+> > +	/*
+> > +	 * The user might have specified its own sizeimage value, only overri=
+de
+> > +	 * it if it's not big enough.
+> > +	 */
+> > +	pixfmt->sizeimage =3D max(sizeimage, pixfmt->sizeimage);
+> > +
+>=20
+> Same comment applies here: We need to sanitize it from too big sizeimages=
+.
+>=20
+> >  	return 0;
+> >  }
+> >  EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
+>=20
+>=20
+> Thanks,
+> Mauro
+
+--=-E3Gex8edDT193EfQlRr+
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCXO6PAgAKCRBxUwItrAao
+HGtVAJ0UVWNP/Lu2BV7o9LxtE4ppAOpZNgCgh5CfgIkF8yo5UMyINC3vVycN1CE=
+=gfX9
+-----END PGP SIGNATURE-----
+
+--=-E3Gex8edDT193EfQlRr+--
+
+
+
+--===============3641331550862895832==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3641331550862895832==--
