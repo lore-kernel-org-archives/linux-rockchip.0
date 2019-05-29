@@ -1,174 +1,67 @@
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH v6 03/16] media: v4l2-common: Support custom imagesize
- in fill_pixfmt()
-Date: Wed, 29 May 2019 11:47:54 -0300
-Message-ID: <56a1b17618b1e30c719eb3f96e952997e307e7cb.camel@collabora.com>
-References: <20190528170232.2091-1-ezequiel@collabora.com>
- <20190528170232.2091-4-ezequiel@collabora.com>
- <20190529082809.0b9f3553@coco.lan>
- <cc51be76-81c3-1c54-2005-1b99d00a8ac1@xs4all.nl>
- <20190529085854.6c689f8d@coco.lan> <20190529141633.19c5079b@collabora.com>
- <223a757d-f008-398c-64ce-18b0aaf390c5@xs4all.nl>
- <04cb574b530c987a04b098962c93940c49e944d8.camel@collabora.com>
- <20190529160610.169c6e00@collabora.com>
- <20190529161753.7ffa5276@collabora.com>
+From: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: [PATCH 1/3] brcmfmac: re-enable command decode in sdio_aos for BRCM 4354
+Date: Wed, 29 May 2019 17:51:47 +0300
+Message-ID: <87h89d2u0s.fsf@kamboji.qca.qualcomm.com>
+References: <20190517225420.176893-2-dianders@chromium.org>
+        <20190528121833.7D3A460A00@smtp.codeaurora.org>
+        <CAD=FV=VtxdEeFQsdF=U7-_7R+TXfVmA2_JMB_-WYidGHTLDgLw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190529161753.7ffa5276-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab+samsung-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=VtxdEeFQsdF=U7-_7R+TXfVmA2_JMB_-WYidGHTLDgLw@mail.gmail.com>
+        (Doug Anderson's message of "Tue, 28 May 2019 08:51:53 -0700")
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Arend van Spriel <arend.vanspriel@broadcom.com>, Madhan Mohan R <MadhanMohan.R@cypress.com>, Ulf Hansson <ulf.hansson@linaro.org>, LKML <linux-kernel@vger.kernel.org>, Hante Meuleman <hante.meuleman@broadcom.com>, "David S. Miller" <davem@davemloft.net>, netdev <netdev@vger.kernel.org>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, YueHaibing <yuehaibing@huawei.com>, Adrian Hunter <adrian.hunter@intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, brcm80211-dev-list.pdl@broadcom.com, Matthias Kaehlcke <mka@chromium.org>, Naveen Gupta <naveen.gupta@cypress.com>, Wright Feng <wright.feng@cypress.com>, brcm80211-dev-list@cypress
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 2019-05-29 at 16:17 +0200, Boris Brezillon wrote:
-> On Wed, 29 May 2019 16:06:10 +0200
-> Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
-> 
-> > On Wed, 29 May 2019 11:04:35 -0300
-> > Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
-> > 
-> > > On Wed, 2019-05-29 at 14:31 +0200, Hans Verkuil wrote:  
-> > > > On 5/29/19 2:16 PM, Boris Brezillon wrote:    
-> > > > > On Wed, 29 May 2019 08:58:54 -0300
-> > > > > Mauro Carvalho Chehab <mchehab+samsung-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
-> > > > >     
-> > > > > > Em Wed, 29 May 2019 13:43:20 +0200
-> > > > > > Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org> escreveu:
-> > > > > >     
-> > > > > > > On 5/29/19 1:28 PM, Mauro Carvalho Chehab wrote:      
-> > > > > > > > Em Tue, 28 May 2019 14:02:19 -0300
-> > > > > > > > Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> escreveu:
-> > > > > > > >         
-> > > > > > > > > From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > > > > > > > > 
-> > > > > > > > > Users can define custom sizeimage as long as they're big enough to
-> > > > > > > > > store the amount of pixels required for a specific width/height under a
-> > > > > > > > > specific format. Avoid overriding those fields in this case.
-> > > > > > > > > 
-> > > > > > > > > We could possibly do the same for bytesperline, but it gets tricky when
-> > > > > > > > > dealing with !MPLANE definitions, so this case is omitted for now and        
-> > > > > > > > > ->bytesperline is always overwritten with the value calculated in        
-> > > > > > > > > fill_pixfmt().
-> > > > > > > > > 
-> > > > > > > > > Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > > > > > > > > ---
-> > > > > > > > > Changes from v5:
-> > > > > > > > > * Overwrite bytesperline with the value calculated in fill_pixfmt()
-> > > > > > > > > 
-> > > > > > > > > Changes from v4:
-> > > > > > > > > * New patch
-> > > > > > > > > 
-> > > > > > > > >  drivers/media/v4l2-core/v4l2-common.c | 58 ++++++++++++++++++++-------
-> > > > > > > > >  1 file changed, 43 insertions(+), 15 deletions(-)
-> > > > > > > > > 
-> > > > > > > > > diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-> > > > > > > > > index b2d1e55d9561..fd286f6e17d7 100644
-> > > > > > > > > --- a/drivers/media/v4l2-core/v4l2-common.c
-> > > > > > > > > +++ b/drivers/media/v4l2-core/v4l2-common.c
-> > > > > > > > > @@ -585,9 +585,9 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
-> > > > > > > > >  	pixfmt->num_planes = info->mem_planes;
-> > > > > > > > >  
-> > > > > > > > >  	if (info->mem_planes == 1) {
-> > > > > > > > > +		u32 sizeimage = 0;
-> > > > > > > > > +
-> > > > > > > > >  		plane = &pixfmt->plane_fmt[0];
-> > > > > > > > > -		plane->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
-> > > > > > > > > -		plane->sizeimage = 0;
-> > > > > > > > >  
-> > > > > > > > >  		for (i = 0; i < info->comp_planes; i++) {
-> > > > > > > > >  			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
-> > > > > > > > > @@ -598,10 +598,21 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
-> > > > > > > > >  			aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
-> > > > > > > > >  			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
-> > > > > > > > >  
-> > > > > > > > > -			plane->sizeimage += info->bpp[i] *
-> > > > > > > > > -				DIV_ROUND_UP(aligned_width, hdiv) *
-> > > > > > > > > -				DIV_ROUND_UP(aligned_height, vdiv);
-> > > > > > > > > +			sizeimage += info->bpp[i] *
-> > > > > > > > > +				     DIV_ROUND_UP(aligned_width, hdiv) *
-> > > > > > > > > +				     DIV_ROUND_UP(aligned_height, vdiv);
-> > > > > > > > >  		}
-> > > > > > > > > +
-> > > > > > > > > +		/* Custom bytesperline value is not supported yet. */
-> > > > > > > > > +		plane->bytesperline = ALIGN(width,
-> > > > > > > > > +					    v4l2_format_block_width(info, 0)) *
-> > > > > > > > > +				      info->bpp[0];
-> > > > > > > > > +
-> > > > > > > > > +		/*
-> > > > > > > > > +		 * The user might have specified a custom sizeimage, only
-> > > > > > > > > +		 * override it if it's not big enough.
-> > > > > > > > > +		 */
-> > > > > > > > > +		plane->sizeimage = max(sizeimage, plane->sizeimage);        
-> > > > > > > > 
-> > > > > > > > No upper limit? That doesn't sound a good idea to me, specially since some
-> > > > > > > > (broken) app might not be memset the format to zero before filling the ioctl
-> > > > > > > > structure.
-> > > > > > > > 
-> > > > > > > > Perhaps we could do something like:
-> > > > > > > > 
-> > > > > > > > 		sizeimage = min (sizeimage, 2 * plane->sizeimage)
-> > > > > > > > 
-> > > > > > > > or something similar that would be reasonable.        
-> > > > > > > 
-> > > > > > > I've no idea what's sane.
-> > > > > > > 
-> > > > > > > Buffers can be really large. The largest video resolution defined by CTA-861-G
-> > > > > > > is 10240x4320, so at 4 bytes per pixel that's 0x0a8c0000. So perhaps we can
-> > > > > > > use min(sizeimage, 0x10000000)? Although we should probably use the clamp function
-> > > > > > > instead of min/max.      
-> > > > > > 
-> > > > > > Well, the max is driver-specific. 
-> > > > > > 
-> > > > > > For example, for a camera with a max resolution of 640x480 with 2 bytes
-> > > > > > per pixel as the max format can only be
-> > > > > > 
-> > > > > > 	max_size = 640*480*2 (plus some alignment value if pertinent)
-> > > > > > 
-> > > > > > It sounds to me that the best would be to have a callback function
-> > > > > > or value filled by the drivers that would support custom sizeimage.
-> > > > > > 
-> > > > > > The core could actually calculate during init (by asking the driver
-> > > > > > to a very big resolution and getting the returned value), but
-> > > > > > it sounds better to let the drivers to explicitly calculate it.    
-> > > > > 
-> > > > > If we want max_sizeimage to be driver specific I can add it as an extra
-> > > > > arg to the fill_pixfmt() funcs.    
-> > > > 
-> > > > Looking more closely, only compressed formats can accept a user-specified
-> > > > sizeimage value, and this function is only called for uncompressed formats.
-> > > > 
-> > > > So doesn't that mean that this sizeimage override code can be dropped?
-> > > >     
-> > > 
-> > > I think this is a good idea, which means just picking all patches except this one
-> > > (and the RK3328 one).
-> > > 
-> > > So it would be patches: 1,2 and 4 to 15.
-> > > 
-> > > Boris, Hans: are you OK with this?  
-> > 
-> > I doesn't work => the prototype of the fill_pixfmt() changed.
-> 
-> Forget what I said, dropping patch 3 should work just fine.
+Doug Anderson <dianders@chromium.org> writes:
 
-Yeah, I have reviewed the code and it seems OK. The prototype is not changed,
-and the driver is not relying on the sizeimage override feature.
+> Hi,
+>
+> On Tue, May 28, 2019 at 5:18 AM Kalle Valo <kvalo@codeaurora.org> wrote:
+>>
+>> Douglas Anderson <dianders@chromium.org> wrote:
+>>
+>> > In commit 29f6589140a1 ("brcmfmac: disable command decode in
+>> > sdio_aos") we disabled something called "command decode in sdio_aos"
+>> > for a whole bunch of Broadcom SDIO WiFi parts.
+>> >
+>> > After that patch landed I find that my kernel log on
+>> > rk3288-veyron-minnie and rk3288-veyron-speedy is filled with:
+>> >   brcmfmac: brcmf_sdio_bus_sleep: error while changing bus sleep state -110
+>> >
+>> > This seems to happen every time the Broadcom WiFi transitions out of
+>> > sleep mode.  Reverting the part of the commit that affects the WiFi on
+>> > my boards fixes the problem for me, so that's what this patch does.
+>> >
+>> > Note that, in general, the justification in the original commit seemed
+>> > a little weak.  It looked like someone was testing on a SD card
+>> > controller that would sometimes die if there were CRC errors on the
+>> > bus.  This used to happen back in early days of dw_mmc (the controller
+>> > on my boards), but we fixed it.  Disabling a feature on all boards
+>> > just because one SD card controller is broken seems bad.  ...so
+>> > instead of just this patch possibly the right thing to do is to fully
+>> > revert the original commit.
+>> >
+>> > Fixes: 29f6589140a1 ("brcmfmac: disable command decode in sdio_aos")
+>> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+>>
+>> I don't see patch 2 in patchwork and I assume discussion continues.
+>
+> Apologies.  I made sure to CC you individually on all the patches but
+> didn't think about the fact that you use patchwork to manage and so
+> didn't ensure all patches made it to all lists (by default each patch
+> gets recipients individually from get_maintainer).  I'll make sure to
+> fix for patch set #2.  If you want to see all the patches, you can at
+> least find them on lore.kernel.org linked from the cover:
+>
+> https://lore.kernel.org/patchwork/cover/1075373/
 
-Also, tested on my RK3399 Rockpi board, and MPEG-2 decoding works fine.
+No worries, I had the thread on my email but was just too busy to check.
+So I instead wrote down my thought process so that somebode can correct
+me in case I have misunderstood. I usually do that when it's not clear
+what the next action should be.
 
-v4l2-compliance also passes with no failures.
-
-Seems OK to just drop patch 3.
-
-Thanks,
-Ezequiel
+-- 
+Kalle Valo
