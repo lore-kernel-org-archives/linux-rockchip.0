@@ -1,18 +1,15 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Subject: Re: [PATCH v6 16/16] rockchip/vpu: Add support for MPEG-2 decoding on
- RK3328
-Date: Wed, 29 May 2019 11:00:17 +0200
-Message-ID: <e5e06b74-95b6-fcfb-dd75-b9c5b5e5278b@xs4all.nl>
+From: Mauro Carvalho Chehab <mchehab+samsung-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v6 03/16] media: v4l2-common: Support custom imagesize
+ in fill_pixfmt()
+Date: Wed, 29 May 2019 08:28:09 -0300
+Message-ID: <20190529082809.0b9f3553@coco.lan>
 References: <20190528170232.2091-1-ezequiel@collabora.com>
- <20190528170232.2091-17-ezequiel@collabora.com>
- <2ef056a2-e9dc-52b1-855b-2bef759af9b6@xs4all.nl>
- <VI1PR03MB42066B8C9F364ACF7CFFF241AC1F0@VI1PR03MB4206.eurprd03.prod.outlook.com>
+ <20190528170232.2091-4-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <VI1PR03MB42066B8C9F364ACF7CFFF241AC1F0-269e4kb9IIlWSsgAM8bhN8eAHadYHfrlvxpqHgZTriW3zl9H0oFU5g@public.gmane.org>
-Content-Language: en-US
+In-Reply-To: <20190528170232.2091-4-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -22,103 +19,165 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, "linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
-Cc: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org" <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 5/29/19 10:50 AM, Jonas Karlman wrote:
-> On 2019-05-29 10:11, Hans Verkuil wrote:
->> On 5/28/19 7:02 PM, Ezequiel Garcia wrote:
->>> From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
->>>
->>> Add necessary bits to support MPEG2 decoding on RK3328.
->>>
->>> Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
->>> Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
->>> --
->>> Changes from v5:
->>> * New patch.
->>>
->>>  drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c   | 12 ++++++++++++
->>>  .../staging/media/rockchip/vpu/rockchip_vpu_drv.c    |  1 +
->>>  drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h |  1 +
->>>  3 files changed, 14 insertions(+)
->>>
->>> diff --git a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
->>> index 2b3689968ef4..341f8d69c33d 100644
->>> --- a/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
->>> +++ b/drivers/staging/media/rockchip/vpu/rk3399_vpu_hw.c
->>> @@ -175,3 +175,15 @@ const struct rockchip_vpu_variant rk3399_vpu_variant = {
->>>  	.clk_names = {"aclk", "hclk"},
->>>  	.num_clocks = 2
->>>  };
->>> +
->>> +const struct rockchip_vpu_variant rk3328_vpu_variant = {
->>> +	.dec_offset = 0x400,
->>> +	.dec_fmts = rk3399_vpu_dec_fmts,
->>> +	.num_dec_fmts = ARRAY_SIZE(rk3399_vpu_dec_fmts),
->>> +	.codec = RK_VPU_MPEG2_DECODER,
->>> +	.codec_ops = rk3399_vpu_codec_ops,
->>> +	.vdpu_irq = rk3399_vdpu_irq,
->>> +	.init = rk3399_vpu_hw_init,
->>> +	.clk_names = {"aclk", "hclk"},
->>> +	.num_clocks = 2
->>> +};
->>> diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
->>> index b94ff97451db..2e22009b6583 100644
->>> --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
->>> +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
->>> @@ -419,6 +419,7 @@ static const struct v4l2_file_operations rockchip_vpu_fops = {
->>>  
->>>  static const struct of_device_id of_rockchip_vpu_match[] = {
->>>  	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
->>> +	{ .compatible = "rockchip,rk3328-vpu", .data = &rk3328_vpu_variant, },
->> This new compatible string should be documented in
->> Documentation/devicetree/bindings/media/rockchip-vpu.txt as well.
->>
->> I'll take patches 1-15 and drop this one. This patch can be merged once
->> the bindings file is updated as well.
-> 
-> Looks like the bindings patch did not get picked for v6 :-)
-> 
-> I am a bit unclear on how to handle patch submission that covers multiple subtrees.
-> Should I send a single series including three patches: bindings update, this patch and device tree update?
-> Or is a series with only bindings update and this patch preferred?
+Em Tue, 28 May 2019 14:02:19 -0300
+Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> escreveu:
 
-In this case just post a patch updating rockchip-vpu.txt, CC-ing devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org and
-Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>.
-
-Rob will Ack it, and then I can make a pull request for that bindings patch and this
-16/16 patch. There is nothing wrong with this patch, so no need to repost. I just
-need to have an updated rockchip-vpu.txt patch as well.
-
-Regards,
-
-	Hans
-
+> From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 > 
-> Regards,
-> Jonas
+> Users can define custom sizeimage as long as they're big enough to
+> store the amount of pixels required for a specific width/height under a
+> specific format. Avoid overriding those fields in this case.
 > 
->>
->> Regards,
->>
->> 	Hans
->>
->>>  	{ .compatible = "rockchip,rk3288-vpu", .data = &rk3288_vpu_variant, },
->>>  	{ /* sentinel */ }
->>>  };
->>> diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h b/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
->>> index 6cecb528f994..3d6b97af90fb 100644
->>> --- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
->>> +++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_hw.h
->>> @@ -79,6 +79,7 @@ enum rockchip_vpu_enc_fmt {
->>>  };
->>>  
->>>  extern const struct rockchip_vpu_variant rk3399_vpu_variant;
->>> +extern const struct rockchip_vpu_variant rk3328_vpu_variant;
->>>  extern const struct rockchip_vpu_variant rk3288_vpu_variant;
->>>  
->>>  void rockchip_vpu_watchdog(struct work_struct *work);
->>>
+> We could possibly do the same for bytesperline, but it gets tricky when
+> dealing with !MPLANE definitions, so this case is omitted for now and
+> ->bytesperline is always overwritten with the value calculated in
+> fill_pixfmt().
 > 
+> Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+> Changes from v5:
+> * Overwrite bytesperline with the value calculated in fill_pixfmt()
+> 
+> Changes from v4:
+> * New patch
+> 
+>  drivers/media/v4l2-core/v4l2-common.c | 58 ++++++++++++++++++++-------
+>  1 file changed, 43 insertions(+), 15 deletions(-)
+> 
+> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+> index b2d1e55d9561..fd286f6e17d7 100644
+> --- a/drivers/media/v4l2-core/v4l2-common.c
+> +++ b/drivers/media/v4l2-core/v4l2-common.c
+> @@ -585,9 +585,9 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
+>  	pixfmt->num_planes = info->mem_planes;
+>  
+>  	if (info->mem_planes == 1) {
+> +		u32 sizeimage = 0;
+> +
+>  		plane = &pixfmt->plane_fmt[0];
+> -		plane->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
+> -		plane->sizeimage = 0;
+>  
+>  		for (i = 0; i < info->comp_planes; i++) {
+>  			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
+> @@ -598,10 +598,21 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
+>  			aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
+>  			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
+>  
+> -			plane->sizeimage += info->bpp[i] *
+> -				DIV_ROUND_UP(aligned_width, hdiv) *
+> -				DIV_ROUND_UP(aligned_height, vdiv);
+> +			sizeimage += info->bpp[i] *
+> +				     DIV_ROUND_UP(aligned_width, hdiv) *
+> +				     DIV_ROUND_UP(aligned_height, vdiv);
+>  		}
+> +
+> +		/* Custom bytesperline value is not supported yet. */
+> +		plane->bytesperline = ALIGN(width,
+> +					    v4l2_format_block_width(info, 0)) *
+> +				      info->bpp[0];
+> +
+> +		/*
+> +		 * The user might have specified a custom sizeimage, only
+> +		 * override it if it's not big enough.
+> +		 */
+> +		plane->sizeimage = max(sizeimage, plane->sizeimage);
+
+No upper limit? That doesn't sound a good idea to me, specially since some
+(broken) app might not be memset the format to zero before filling the ioctl
+structure.
+
+Perhaps we could do something like:
+
+		sizeimage = min (sizeimage, 2 * plane->sizeimage)
+
+or something similar that would be reasonable.
+
+>  	} else {
+>  		for (i = 0; i < info->comp_planes; i++) {
+>  			unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
+> @@ -613,10 +624,19 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt,
+>  			aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
+>  
+>  			plane = &pixfmt->plane_fmt[i];
+> -			plane->bytesperline =
+> -				info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv);
+> -			plane->sizeimage =
+> -				plane->bytesperline * DIV_ROUND_UP(aligned_height, vdiv);
+
+> +
+> +			/* Custom bytesperline value is not supported yet. */
+
+Supporting custom bytesperline seems too risky of breaking apps. 
+So, I would drop this comment.
+
+
+> +			plane->bytesperline = info->bpp[i] *
+> +					      DIV_ROUND_UP(aligned_width, hdiv);
+
+> +
+> +			/*
+> +			 * The user might have specified a custom sizeimage,
+> +			 * only override it if it's not big enough.
+> +			 */
+> +			plane->sizeimage = max_t(u32,
+> +						 plane->bytesperline *
+> +						 DIV_ROUND_UP(aligned_height, vdiv),
+> +						 plane->sizeimage);
+>  		}
+>  	}
+>  	return 0;
+> @@ -627,6 +647,7 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
+>  		     u32 width, u32 height)
+>  {
+>  	const struct v4l2_format_info *info;
+> +	u32 sizeimage = 0;
+>  	int i;
+>  
+>  	info = v4l2_format_info(pixelformat);
+> @@ -640,8 +661,6 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
+>  	pixfmt->width = width;
+>  	pixfmt->height = height;
+>  	pixfmt->pixelformat = pixelformat;
+> -	pixfmt->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) * info->bpp[0];
+> -	pixfmt->sizeimage = 0;
+>  
+>  	for (i = 0; i < info->comp_planes; i++) {
+>  		unsigned int hdiv = (i == 0) ? 1 : info->hdiv;
+> @@ -651,11 +670,20 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
+>  
+>  		aligned_width = ALIGN(width, v4l2_format_block_width(info, i));
+>  		aligned_height = ALIGN(height, v4l2_format_block_height(info, i));
+> -
+> -		pixfmt->sizeimage += info->bpp[i] *
+> -			DIV_ROUND_UP(aligned_width, hdiv) *
+> -			DIV_ROUND_UP(aligned_height, vdiv);
+> +		sizeimage += info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv) *
+> +			     DIV_ROUND_UP(aligned_height, vdiv);
+>  	}
+> +
+> +	/* Custom bytesperline value is not supported yet. */
+> +	pixfmt->bytesperline = ALIGN(width, v4l2_format_block_width(info, 0)) *
+> +			       info->bpp[0];
+> +
+> +	/*
+> +	 * The user might have specified its own sizeimage value, only override
+> +	 * it if it's not big enough.
+> +	 */
+> +	pixfmt->sizeimage = max(sizeimage, pixfmt->sizeimage);
+> +
+
+Same comment applies here: We need to sanitize it from too big sizeimages.
+
+>  	return 0;
+>  }
+>  EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
+
+
+
+Thanks,
+Mauro
