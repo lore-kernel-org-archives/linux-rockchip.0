@@ -1,108 +1,58 @@
-From: Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH v2 1/1] arm64: dts: rockchip: add core dtsi file for RK3399Pro SoCs
-Date: Wed, 29 May 2019 15:47:52 +0800
-Message-ID: <20190529074752.19388-1-jay.xu@rock-chips.com>
-References: <20190528044850.23703-1-jay.xu@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190528044850.23703-1-jay.xu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: jay.xu@rock-chips.com, heiko@sntech.de, mark.rutland@arm.com, robh+dt@kernel.org
-Cc: zhangzj@rock-chips.com, manivannan.sadhasivam@linaro.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH 1/3] rk3399: orangepi: Enable TPL
+Date: Wed, 29 May 2019 16:01:52 +0800
+Message-ID: <3d1513a8-202a-9906-ddb0-2ed1000696f3@rock-chips.com>
+References: <20190509105746.24830-1-jagan@amarulasolutions.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20190509105746.24830-1-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds core dtsi file for Rockchip RK3399Pro SoCs,
-include rk3399.dtsi. Also enable these nodes:
-- pcie/pcie_phy
-- sdhci/sdio/emmc/sdmmc
-
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
----
-changes since v1:
-- remove dfi and dmc
-
- arch/arm64/boot/dts/rockchip/rk3399pro.dtsi | 74 +++++++++++++++++++++
- 1 file changed, 74 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399pro.dtsi
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro.dtsi b/arch/arm64/boot/dts/rockchip/rk3399pro.dtsi
-new file mode 100644
-index 000000000000..b6d433ffa67d
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3399pro.dtsi
-@@ -0,0 +1,74 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+// Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd.
-+
-+#include "rk3399.dtsi"
-+
-+/ {
-+	compatible = "rockchip,rk3399pro";
-+
-+	xin32k: xin32k {
-+		compatible = "fixed-clock";
-+		clock-frequency = <32768>;
-+		clock-output-names = "xin32k";
-+		#clock-cells = <0>;
-+	};
-+};
-+
-+&emmc_phy {
-+	status = "okay";
-+};
-+
-+&pcie_phy {
-+	status = "okay";
-+};
-+
-+&pcie0 {
-+	ep-gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
-+	num-lanes = <4>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_clkreqn_cpm>;
-+	status = "okay";
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	mmc-hs400-1_8v;
-+	supports-emmc;
-+	non-removable;
-+	keep-power-in-suspend;
-+	mmc-hs400-enhanced-strobe;
-+	status = "okay";
-+};
-+
-+&sdio0 {
-+	clock-frequency = <150000000>;
-+	clock-freq-min-max = <200000 150000000>;
-+	supports-sdio;
-+	bus-width = <4>;
-+	disable-wp;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	keep-power-in-suspend;
-+	mmc-pwrseq = <&sdio_pwrseq>;
-+	non-removable;
-+	num-slots = <1>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
-+	sd-uhs-sdr104;
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	clock-frequency = <150000000>;
-+	clock-freq-min-max = <400000 150000000>;
-+	supports-sd;
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	num-slots = <1>;
-+	vqmmc-supply = <&vccio_sd>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
-+	status = "okay";
-+};
--- 
-2.17.1
+SGkgSmFnYW4sCgoKT24gMDUvMDkvMjAxOSAwNjo1NyBQTSwgSmFnYW4gVGVraSB3cm90ZToKPiBF
+bmFibGUgVFBMIGZvciBPcmFuZ2VQSSByazMzOTkgYm9hcmQuCj4KPiBTaWduZWQtb2ZmLWJ5OiBK
+YWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KClJldmlld2VkLWJ5OiBLZXZl
+ciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgoKVGhhbmtzLAotIEtldmVyCj4gLS0t
+Cj4gIGNvbmZpZ3Mvb3JhbmdlcGktcmszMzk5X2RlZmNvbmZpZyB8IDcgKysrKy0tLQo+ICAxIGZp
+bGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdp
+dCBhL2NvbmZpZ3Mvb3JhbmdlcGktcmszMzk5X2RlZmNvbmZpZyBiL2NvbmZpZ3Mvb3JhbmdlcGkt
+cmszMzk5X2RlZmNvbmZpZwo+IGluZGV4IDNmMDJjODk5ODMuLjkwMDIxYmI2OTUgMTAwNjQ0Cj4g
+LS0tIGEvY29uZmlncy9vcmFuZ2VwaS1yazMzOTlfZGVmY29uZmlnCj4gKysrIGIvY29uZmlncy9v
+cmFuZ2VwaS1yazMzOTlfZGVmY29uZmlnCj4gQEAgLTUsNyArNSw3IEBAIENPTkZJR19TUExfTElC
+Q09NTU9OX1NVUFBPUlQ9eQo+ICBDT05GSUdfU1BMX0xJQkdFTkVSSUNfU1VQUE9SVD15Cj4gIENP
+TkZJR19TWVNfTUFMTE9DX0ZfTEVOPTB4NDAwMAo+ICBDT05GSUdfUk9DS0NISVBfUkszMzk5PXkK
+PiAtQ09ORklHX1JPQ0tDSElQX1NQTF9SRVNFUlZFX0lSQU09MHg0MDAwCj4gK0NPTkZJR19ST0NL
+Q0hJUF9TUExfUkVTRVJWRV9JUkFNPTB4NTAwMDAKPiAgQ09ORklHX0RFQlVHX1VBUlRfQkFTRT0w
+eEZGMUEwMDAwCj4gIENPTkZJR19ERUJVR19VQVJUX0NMT0NLPTI0MDAwMDAwCj4gIENPTkZJR19T
+UExfU1RBQ0tfUl9BRERSPTB4ODAwMDAKPiBAQCAtMTQsOSArMTQsOCBAQCBDT05GSUdfTlJfRFJB
+TV9CQU5LUz0xCj4gIENPTkZJR19ERUZBVUxUX0ZEVF9GSUxFPSJyb2NrY2hpcC9yazMzOTktb3Jh
+bmdlcGkuZHRiIgo+ICAjIENPTkZJR19ESVNQTEFZX0NQVUlORk8gaXMgbm90IHNldAo+ICBDT05G
+SUdfRElTUExBWV9CT0FSRElORk9fTEFURT15Cj4gLUNPTkZJR19TUExfVEVYVF9CQVNFPTB4ZmY4
+YzIwMDAKPiAgQ09ORklHX1NQTF9TVEFDS19SPXkKPiAtQ09ORklHX1NQTF9TVEFDS19SX01BTExP
+Q19TSU1QTEVfTEVOPTB4NDAwMAo+ICtDT05GSUdfU1BMX1NUQUNLX1JfTUFMTE9DX1NJTVBMRV9M
+RU49MHgxMDAwMAo+ICBDT05GSUdfQ01EX0JPT1RaPXkKPiAgQ09ORklHX0NNRF9HUFQ9eQo+ICBD
+T05GSUdfQ01EX01NQz15Cj4gQEAgLTI0LDYgKzIzLDcgQEAgQ09ORklHX0NNRF9TRj15Cj4gIENP
+TkZJR19DTURfVVNCPXkKPiAgIyBDT05GSUdfQ01EX1NFVEVYUFIgaXMgbm90IHNldAo+ICBDT05G
+SUdfQ01EX1RJTUU9eQo+ICtDT05GSUdfVFBMPXkKPiAgQ09ORklHX1NQTF9PRl9DT05UUk9MPXkK
+PiAgQ09ORklHX0RFRkFVTFRfREVWSUNFX1RSRUU9InJrMzM5OS1vcmFuZ2VwaSIKPiAgQ09ORklH
+X09GX1NQTF9SRU1PVkVfUFJPUFM9InBpbmN0cmwtMCBwaW5jdHJsLW5hbWVzIGNsb2NrLW5hbWVz
+IGludGVycnVwdC1wYXJlbnQgYXNzaWduZWQtY2xvY2tzIGFzc2lnbmVkLWNsb2NrLXJhdGVzIGFz
+c2lnbmVkLWNsb2NrLXBhcmVudHMiCj4gQEAgLTU2LDQgKzU2LDUgQEAgQ09ORklHX1VTQl9FVEhF
+Ul9NQ1M3ODMwPXkKPiAgQ09ORklHX1VTQl9FVEhFUl9SVEw4MTUyPXkKPiAgQ09ORklHX1VTQl9F
+VEhFUl9TTVNDOTVYWD15Cj4gIENPTkZJR19VU0VfVElOWV9QUklOVEY9eQo+ICtDT05GSUdfU1BM
+X1RJTllfTUVNU0VUPXkKPiAgQ09ORklHX0VSUk5PX1NUUj15CgoKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290
+QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
