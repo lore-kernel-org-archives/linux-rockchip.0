@@ -1,16 +1,17 @@
-From: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+From: Mauro Carvalho Chehab <mchehab+samsung-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 Subject: Re: [PATCH v6 03/16] media: v4l2-common: Support custom imagesize
  in fill_pixfmt()
-Date: Wed, 29 May 2019 09:54:09 -0400
-Message-ID: <4ef64e22f4035fccf09fbb7f0be04a9778b1230d.camel@collabora.com>
+Date: Wed, 29 May 2019 11:02:33 -0300
+Message-ID: <20190529110233.0ff81aff@coco.lan>
 References: <20190528170232.2091-1-ezequiel@collabora.com>
  <20190528170232.2091-4-ezequiel@collabora.com>
  <20190529082809.0b9f3553@coco.lan>
-Reply-To: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+ <4ef64e22f4035fccf09fbb7f0be04a9778b1230d.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============3641331550862895832=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190529082809.0b9f3553-qA1ZUp+OV9c@public.gmane.org>
+In-Reply-To: <4ef64e22f4035fccf09fbb7f0be04a9778b1230d.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,239 +21,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mauro Carvalho Chehab <mchehab+samsung-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
---===============3641331550862895832==
-Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-	boundary="=-E3Gex8edDT193EfQlRr+"
-
-
---=-E3Gex8edDT193EfQlRr+
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi Mauro,
-
-Le mercredi 29 mai 2019 =C3=A0 08:28 -0300, Mauro Carvalho Chehab a =C3=A9c=
-rit :
-> Em Tue, 28 May 2019 14:02:19 -0300
-> Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> escreveu:
->=20
-> > From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> >=20
-> > Users can define custom sizeimage as long as they're big enough to
-> > store the amount of pixels required for a specific width/height under a
-> > specific format. Avoid overriding those fields in this case.
-> >=20
-> > We could possibly do the same for bytesperline, but it gets tricky when
-> > dealing with !MPLANE definitions, so this case is omitted for now and
-> > ->bytesperline is always overwritten with the value calculated in
-> > fill_pixfmt().
-> >=20
-> > Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > ---
-> > Changes from v5:
-> > * Overwrite bytesperline with the value calculated in fill_pixfmt()
-> >=20
-> > Changes from v4:
-> > * New patch
-> >=20
-> >  drivers/media/v4l2-core/v4l2-common.c | 58 ++++++++++++++++++++-------
-> >  1 file changed, 43 insertions(+), 15 deletions(-)
-> >=20
-> > diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2=
--core/v4l2-common.c
-> > index b2d1e55d9561..fd286f6e17d7 100644
-> > --- a/drivers/media/v4l2-core/v4l2-common.c
-> > +++ b/drivers/media/v4l2-core/v4l2-common.c
-> > @@ -585,9 +585,9 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mpla=
-ne *pixfmt,
-> >  	pixfmt->num_planes =3D info->mem_planes;
-> > =20
-> >  	if (info->mem_planes =3D=3D 1) {
-> > +		u32 sizeimage =3D 0;
-> > +
-> >  		plane =3D &pixfmt->plane_fmt[0];
-> > -		plane->bytesperline =3D ALIGN(width, v4l2_format_block_width(info, 0=
-)) * info->bpp[0];
-> > -		plane->sizeimage =3D 0;
-> > =20
-> >  		for (i =3D 0; i < info->comp_planes; i++) {
-> >  			unsigned int hdiv =3D (i =3D=3D 0) ? 1 : info->hdiv;
-> > @@ -598,10 +598,21 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mp=
-lane *pixfmt,
-> >  			aligned_width =3D ALIGN(width, v4l2_format_block_width(info, i));
-> >  			aligned_height =3D ALIGN(height, v4l2_format_block_height(info, i))=
-;
-> > =20
-> > -			plane->sizeimage +=3D info->bpp[i] *
-> > -				DIV_ROUND_UP(aligned_width, hdiv) *
-> > -				DIV_ROUND_UP(aligned_height, vdiv);
-> > +			sizeimage +=3D info->bpp[i] *
-> > +				     DIV_ROUND_UP(aligned_width, hdiv) *
-> > +				     DIV_ROUND_UP(aligned_height, vdiv);
-> >  		}
-> > +
-> > +		/* Custom bytesperline value is not supported yet. */
-> > +		plane->bytesperline =3D ALIGN(width,
-> > +					    v4l2_format_block_width(info, 0)) *
-> > +				      info->bpp[0];
-> > +
-> > +		/*
-> > +		 * The user might have specified a custom sizeimage, only
-> > +		 * override it if it's not big enough.
-> > +		 */
-> > +		plane->sizeimage =3D max(sizeimage, plane->sizeimage);
->=20
-> No upper limit? That doesn't sound a good idea to me, specially since som=
-e
-> (broken) app might not be memset the format to zero before filling the io=
-ctl
-> structure.
->=20
-> Perhaps we could do something like:
->=20
-> 		sizeimage =3D min (sizeimage, 2 * plane->sizeimage)
->=20
-> or something similar that would be reasonable.
->=20
-> >  	} else {
-> >  		for (i =3D 0; i < info->comp_planes; i++) {
-> >  			unsigned int hdiv =3D (i =3D=3D 0) ? 1 : info->hdiv;
-> > @@ -613,10 +624,19 @@ int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mp=
-lane *pixfmt,
-> >  			aligned_height =3D ALIGN(height, v4l2_format_block_height(info, i))=
-;
-> > =20
-> >  			plane =3D &pixfmt->plane_fmt[i];
-> > -			plane->bytesperline =3D
-> > -				info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv);
-> > -			plane->sizeimage =3D
-> > -				plane->bytesperline * DIV_ROUND_UP(aligned_height, vdiv);
-> > +
-> > +			/* Custom bytesperline value is not supported yet. */
->=20
-> Supporting custom bytesperline seems too risky of breaking apps.=20
-> So, I would drop this comment.
-
-We will really need this in the long run in many drivers in order to
-allow import/export of DMABuf. Without such adaptive feature, we have a
-software limitation that forces bouncing memory. I have already
-discussed about adding this feature notably in vivid and uvcvideo on
-IRC and in conference, which both have no restriction the memory
-alignment, so should allow importing any kind of video layout.
-
-We already have a partial userspace implementation for this in
-GStreamer and upstream driver submission should come when the IP is
-considered stable enough.
-
-Why I think it won't break userspace is that the correct way to use
-these read-only members of V4L2 struct is to set these to 0, which is
-also documented.
-
-Adding upper bound seems like a good idea though.
-
->=20
->=20
-> > +			plane->bytesperline =3D info->bpp[i] *
-> > +					      DIV_ROUND_UP(aligned_width, hdiv);
-> > +
-> > +			/*
-> > +			 * The user might have specified a custom sizeimage,
-> > +			 * only override it if it's not big enough.
-> > +			 */
-> > +			plane->sizeimage =3D max_t(u32,
-> > +						 plane->bytesperline *
-> > +						 DIV_ROUND_UP(aligned_height, vdiv),
-> > +						 plane->sizeimage);
-> >  		}
-> >  	}
-> >  	return 0;
-> > @@ -627,6 +647,7 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt=
-, u32 pixelformat,
-> >  		     u32 width, u32 height)
-> >  {
-> >  	const struct v4l2_format_info *info;
-> > +	u32 sizeimage =3D 0;
-> >  	int i;
-> > =20
-> >  	info =3D v4l2_format_info(pixelformat);
-> > @@ -640,8 +661,6 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt=
-, u32 pixelformat,
-> >  	pixfmt->width =3D width;
-> >  	pixfmt->height =3D height;
-> >  	pixfmt->pixelformat =3D pixelformat;
-> > -	pixfmt->bytesperline =3D ALIGN(width, v4l2_format_block_width(info, 0=
-)) * info->bpp[0];
-> > -	pixfmt->sizeimage =3D 0;
-> > =20
-> >  	for (i =3D 0; i < info->comp_planes; i++) {
-> >  		unsigned int hdiv =3D (i =3D=3D 0) ? 1 : info->hdiv;
-> > @@ -651,11 +670,20 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixf=
-mt, u32 pixelformat,
-> > =20
-> >  		aligned_width =3D ALIGN(width, v4l2_format_block_width(info, i));
-> >  		aligned_height =3D ALIGN(height, v4l2_format_block_height(info, i));
-> > -
-> > -		pixfmt->sizeimage +=3D info->bpp[i] *
-> > -			DIV_ROUND_UP(aligned_width, hdiv) *
-> > -			DIV_ROUND_UP(aligned_height, vdiv);
-> > +		sizeimage +=3D info->bpp[i] * DIV_ROUND_UP(aligned_width, hdiv) *
-> > +			     DIV_ROUND_UP(aligned_height, vdiv);
-> >  	}
-> > +
-> > +	/* Custom bytesperline value is not supported yet. */
-> > +	pixfmt->bytesperline =3D ALIGN(width, v4l2_format_block_width(info, 0=
-)) *
-> > +			       info->bpp[0];
-> > +
-> > +	/*
-> > +	 * The user might have specified its own sizeimage value, only overri=
-de
-> > +	 * it if it's not big enough.
-> > +	 */
-> > +	pixfmt->sizeimage =3D max(sizeimage, pixfmt->sizeimage);
-> > +
->=20
-> Same comment applies here: We need to sanitize it from too big sizeimages=
-.
->=20
-> >  	return 0;
-> >  }
-> >  EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
->=20
->=20
-> Thanks,
-> Mauro
-
---=-E3Gex8edDT193EfQlRr+
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCXO6PAgAKCRBxUwItrAao
-HGtVAJ0UVWNP/Lu2BV7o9LxtE4ppAOpZNgCgh5CfgIkF8yo5UMyINC3vVycN1CE=
-=gfX9
------END PGP SIGNATURE-----
-
---=-E3Gex8edDT193EfQlRr+--
-
-
-
---===============3641331550862895832==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3641331550862895832==--
+RW0gV2VkLCAyOSBNYXkgMjAxOSAwOTo1NDowOSAtMDQwMApOaWNvbGFzIER1ZnJlc25lIDxuaWNv
+bGFzLmR1ZnJlc25lQGNvbGxhYm9yYS5jb20+IGVzY3JldmV1OgoKPiBIaSBNYXVybywKPiAKPiBM
+ZSBtZXJjcmVkaSAyOSBtYWkgMjAxOSDDoCAwODoyOCAtMDMwMCwgTWF1cm8gQ2FydmFsaG8gQ2hl
+aGFiIGEgw6ljcml0IDoKPiA+IEVtIFR1ZSwgMjggTWF5IDIwMTkgMTQ6MDI6MTkgLTAzMDAKPiA+
+IEV6ZXF1aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4gZXNjcmV2ZXU6Cj4gPiAK
+PiA+ID4gRnJvbTogQm9yaXMgQnJlemlsbG9uIDxib3Jpcy5icmV6aWxsb25AY29sbGFib3JhLmNv
+bT4KPiA+ID4gCj4gPiA+IFVzZXJzIGNhbiBkZWZpbmUgY3VzdG9tIHNpemVpbWFnZSBhcyBsb25n
+IGFzIHRoZXkncmUgYmlnIGVub3VnaCB0bwo+ID4gPiBzdG9yZSB0aGUgYW1vdW50IG9mIHBpeGVs
+cyByZXF1aXJlZCBmb3IgYSBzcGVjaWZpYyB3aWR0aC9oZWlnaHQgdW5kZXIgYQo+ID4gPiBzcGVj
+aWZpYyBmb3JtYXQuIEF2b2lkIG92ZXJyaWRpbmcgdGhvc2UgZmllbGRzIGluIHRoaXMgY2FzZS4K
+PiA+ID4gCj4gPiA+IFdlIGNvdWxkIHBvc3NpYmx5IGRvIHRoZSBzYW1lIGZvciBieXRlc3Blcmxp
+bmUsIGJ1dCBpdCBnZXRzIHRyaWNreSB3aGVuCj4gPiA+IGRlYWxpbmcgd2l0aCAhTVBMQU5FIGRl
+ZmluaXRpb25zLCBzbyB0aGlzIGNhc2UgaXMgb21pdHRlZCBmb3Igbm93IGFuZAo+ID4gPiAtPmJ5
+dGVzcGVybGluZSBpcyBhbHdheXMgb3ZlcndyaXR0ZW4gd2l0aCB0aGUgdmFsdWUgY2FsY3VsYXRl
+ZCBpbgo+ID4gPiBmaWxsX3BpeGZtdCgpLgo+ID4gPiAKPiA+ID4gU2lnbmVkLW9mZi1ieTogQm9y
+aXMgQnJlemlsbG9uIDxib3Jpcy5icmV6aWxsb25AY29sbGFib3JhLmNvbT4KPiA+ID4gLS0tCj4g
+PiA+IENoYW5nZXMgZnJvbSB2NToKPiA+ID4gKiBPdmVyd3JpdGUgYnl0ZXNwZXJsaW5lIHdpdGgg
+dGhlIHZhbHVlIGNhbGN1bGF0ZWQgaW4gZmlsbF9waXhmbXQoKQo+ID4gPiAKPiA+ID4gQ2hhbmdl
+cyBmcm9tIHY0Ogo+ID4gPiAqIE5ldyBwYXRjaAo+ID4gPiAKPiA+ID4gIGRyaXZlcnMvbWVkaWEv
+djRsMi1jb3JlL3Y0bDItY29tbW9uLmMgfCA1OCArKysrKysrKysrKysrKysrKysrKy0tLS0tLS0K
+PiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCA0MyBpbnNlcnRpb25zKCspLCAxNSBkZWxldGlvbnMoLSkK
+PiA+ID4gCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWNv
+bW1vbi5jIGIvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jb21tb24uYwo+ID4gPiBpbmRl
+eCBiMmQxZTU1ZDk1NjEuLmZkMjg2ZjZlMTdkNyAxMDA2NDQKPiA+ID4gLS0tIGEvZHJpdmVycy9t
+ZWRpYS92NGwyLWNvcmUvdjRsMi1jb21tb24uYwo+ID4gPiArKysgYi9kcml2ZXJzL21lZGlhL3Y0
+bDItY29yZS92NGwyLWNvbW1vbi5jCj4gPiA+IEBAIC01ODUsOSArNTg1LDkgQEAgaW50IHY0bDJf
+ZmlsbF9waXhmbXRfbXAoc3RydWN0IHY0bDJfcGl4X2Zvcm1hdF9tcGxhbmUgKnBpeGZtdCwKPiA+
+ID4gIAlwaXhmbXQtPm51bV9wbGFuZXMgPSBpbmZvLT5tZW1fcGxhbmVzOwo+ID4gPiAgCj4gPiA+
+ICAJaWYgKGluZm8tPm1lbV9wbGFuZXMgPT0gMSkgewo+ID4gPiArCQl1MzIgc2l6ZWltYWdlID0g
+MDsKPiA+ID4gKwo+ID4gPiAgCQlwbGFuZSA9ICZwaXhmbXQtPnBsYW5lX2ZtdFswXTsKPiA+ID4g
+LQkJcGxhbmUtPmJ5dGVzcGVybGluZSA9IEFMSUdOKHdpZHRoLCB2NGwyX2Zvcm1hdF9ibG9ja193
+aWR0aChpbmZvLCAwKSkgKiBpbmZvLT5icHBbMF07Cj4gPiA+IC0JCXBsYW5lLT5zaXplaW1hZ2Ug
+PSAwOwo+ID4gPiAgCj4gPiA+ICAJCWZvciAoaSA9IDA7IGkgPCBpbmZvLT5jb21wX3BsYW5lczsg
+aSsrKSB7Cj4gPiA+ICAJCQl1bnNpZ25lZCBpbnQgaGRpdiA9IChpID09IDApID8gMSA6IGluZm8t
+PmhkaXY7Cj4gPiA+IEBAIC01OTgsMTAgKzU5OCwyMSBAQCBpbnQgdjRsMl9maWxsX3BpeGZtdF9t
+cChzdHJ1Y3QgdjRsMl9waXhfZm9ybWF0X21wbGFuZSAqcGl4Zm10LAo+ID4gPiAgCQkJYWxpZ25l
+ZF93aWR0aCA9IEFMSUdOKHdpZHRoLCB2NGwyX2Zvcm1hdF9ibG9ja193aWR0aChpbmZvLCBpKSk7
+Cj4gPiA+ICAJCQlhbGlnbmVkX2hlaWdodCA9IEFMSUdOKGhlaWdodCwgdjRsMl9mb3JtYXRfYmxv
+Y2tfaGVpZ2h0KGluZm8sIGkpKTsKPiA+ID4gIAo+ID4gPiAtCQkJcGxhbmUtPnNpemVpbWFnZSAr
+PSBpbmZvLT5icHBbaV0gKgo+ID4gPiAtCQkJCURJVl9ST1VORF9VUChhbGlnbmVkX3dpZHRoLCBo
+ZGl2KSAqCj4gPiA+IC0JCQkJRElWX1JPVU5EX1VQKGFsaWduZWRfaGVpZ2h0LCB2ZGl2KTsKPiA+
+ID4gKwkJCXNpemVpbWFnZSArPSBpbmZvLT5icHBbaV0gKgo+ID4gPiArCQkJCSAgICAgRElWX1JP
+VU5EX1VQKGFsaWduZWRfd2lkdGgsIGhkaXYpICoKPiA+ID4gKwkJCQkgICAgIERJVl9ST1VORF9V
+UChhbGlnbmVkX2hlaWdodCwgdmRpdik7Cj4gPiA+ICAJCX0KPiA+ID4gKwo+ID4gPiArCQkvKiBD
+dXN0b20gYnl0ZXNwZXJsaW5lIHZhbHVlIGlzIG5vdCBzdXBwb3J0ZWQgeWV0LiAqLwo+ID4gPiAr
+CQlwbGFuZS0+Ynl0ZXNwZXJsaW5lID0gQUxJR04od2lkdGgsCj4gPiA+ICsJCQkJCSAgICB2NGwy
+X2Zvcm1hdF9ibG9ja193aWR0aChpbmZvLCAwKSkgKgo+ID4gPiArCQkJCSAgICAgIGluZm8tPmJw
+cFswXTsKPiA+ID4gKwo+ID4gPiArCQkvKgo+ID4gPiArCQkgKiBUaGUgdXNlciBtaWdodCBoYXZl
+IHNwZWNpZmllZCBhIGN1c3RvbSBzaXplaW1hZ2UsIG9ubHkKPiA+ID4gKwkJICogb3ZlcnJpZGUg
+aXQgaWYgaXQncyBub3QgYmlnIGVub3VnaC4KPiA+ID4gKwkJICovCj4gPiA+ICsJCXBsYW5lLT5z
+aXplaW1hZ2UgPSBtYXgoc2l6ZWltYWdlLCBwbGFuZS0+c2l6ZWltYWdlKTsKPiA+IAo+ID4gTm8g
+dXBwZXIgbGltaXQ/IFRoYXQgZG9lc24ndCBzb3VuZCBhIGdvb2QgaWRlYSB0byBtZSwgc3BlY2lh
+bGx5IHNpbmNlIHNvbWUKPiA+IChicm9rZW4pIGFwcCBtaWdodCBub3QgYmUgbWVtc2V0IHRoZSBm
+b3JtYXQgdG8gemVybyBiZWZvcmUgZmlsbGluZyB0aGUgaW9jdGwKPiA+IHN0cnVjdHVyZS4KPiA+
+IAo+ID4gUGVyaGFwcyB3ZSBjb3VsZCBkbyBzb21ldGhpbmcgbGlrZToKPiA+IAo+ID4gCQlzaXpl
+aW1hZ2UgPSBtaW4gKHNpemVpbWFnZSwgMiAqIHBsYW5lLT5zaXplaW1hZ2UpCj4gPiAKPiA+IG9y
+IHNvbWV0aGluZyBzaW1pbGFyIHRoYXQgd291bGQgYmUgcmVhc29uYWJsZS4KPiA+IAo+ID4gPiAg
+CX0gZWxzZSB7Cj4gPiA+ICAJCWZvciAoaSA9IDA7IGkgPCBpbmZvLT5jb21wX3BsYW5lczsgaSsr
+KSB7Cj4gPiA+ICAJCQl1bnNpZ25lZCBpbnQgaGRpdiA9IChpID09IDApID8gMSA6IGluZm8tPmhk
+aXY7Cj4gPiA+IEBAIC02MTMsMTAgKzYyNCwxOSBAQCBpbnQgdjRsMl9maWxsX3BpeGZtdF9tcChz
+dHJ1Y3QgdjRsMl9waXhfZm9ybWF0X21wbGFuZSAqcGl4Zm10LAo+ID4gPiAgCQkJYWxpZ25lZF9o
+ZWlnaHQgPSBBTElHTihoZWlnaHQsIHY0bDJfZm9ybWF0X2Jsb2NrX2hlaWdodChpbmZvLCBpKSk7
+Cj4gPiA+ICAKPiA+ID4gIAkJCXBsYW5lID0gJnBpeGZtdC0+cGxhbmVfZm10W2ldOwo+ID4gPiAt
+CQkJcGxhbmUtPmJ5dGVzcGVybGluZSA9Cj4gPiA+IC0JCQkJaW5mby0+YnBwW2ldICogRElWX1JP
+VU5EX1VQKGFsaWduZWRfd2lkdGgsIGhkaXYpOwo+ID4gPiAtCQkJcGxhbmUtPnNpemVpbWFnZSA9
+Cj4gPiA+IC0JCQkJcGxhbmUtPmJ5dGVzcGVybGluZSAqIERJVl9ST1VORF9VUChhbGlnbmVkX2hl
+aWdodCwgdmRpdik7Cj4gPiA+ICsKPiA+ID4gKwkJCS8qIEN1c3RvbSBieXRlc3BlcmxpbmUgdmFs
+dWUgaXMgbm90IHN1cHBvcnRlZCB5ZXQuICovCj4gPiAKPiA+IFN1cHBvcnRpbmcgY3VzdG9tIGJ5
+dGVzcGVybGluZSBzZWVtcyB0b28gcmlza3kgb2YgYnJlYWtpbmcgYXBwcy4gCj4gPiBTbywgSSB3
+b3VsZCBkcm9wIHRoaXMgY29tbWVudC4KPiAKPiBXZSB3aWxsIHJlYWxseSBuZWVkIHRoaXMgaW4g
+dGhlIGxvbmcgcnVuIGluIG1hbnkgZHJpdmVycyBpbiBvcmRlciB0bwo+IGFsbG93IGltcG9ydC9l
+eHBvcnQgb2YgRE1BQnVmLiBXaXRob3V0IHN1Y2ggYWRhcHRpdmUgZmVhdHVyZSwgd2UgaGF2ZSBh
+Cj4gc29mdHdhcmUgbGltaXRhdGlvbiB0aGF0IGZvcmNlcyBib3VuY2luZyBtZW1vcnkuIEkgaGF2
+ZSBhbHJlYWR5Cj4gZGlzY3Vzc2VkIGFib3V0IGFkZGluZyB0aGlzIGZlYXR1cmUgbm90YWJseSBp
+biB2aXZpZCBhbmQgdXZjdmlkZW8gb24KPiBJUkMgYW5kIGluIGNvbmZlcmVuY2UsIHdoaWNoIGJv
+dGggaGF2ZSBubyByZXN0cmljdGlvbiB0aGUgbWVtb3J5Cj4gYWxpZ25tZW50LCBzbyBzaG91bGQg
+YWxsb3cgaW1wb3J0aW5nIGFueSBraW5kIG9mIHZpZGVvIGxheW91dC4KPiAKPiBXZSBhbHJlYWR5
+IGhhdmUgYSBwYXJ0aWFsIHVzZXJzcGFjZSBpbXBsZW1lbnRhdGlvbiBmb3IgdGhpcyBpbgo+IEdT
+dHJlYW1lciBhbmQgdXBzdHJlYW0gZHJpdmVyIHN1Ym1pc3Npb24gc2hvdWxkIGNvbWUgd2hlbiB0
+aGUgSVAgaXMKPiBjb25zaWRlcmVkIHN0YWJsZSBlbm91Z2guCgpJIHVuZGVyc3RhbmQgdGhlIG5l
+ZWQuIEknbSBub3QgYWdhaW5zdCBhbiBpbXBsZW1lbnRhdGlvbiBmb3Igc3VjaApmZWF0dXJlLCBw
+cm92aWRlZCB0aGF0IGl0IHdvbid0IGJyZWFrIGFueXRoaW5nLgoKSSBndWVzcyBvbmUgb2YgdGhl
+IHRoaW5ncyB3ZSBtaXNzIGF0IFY0TDIgQVBJIGlzIGFuIGluZGljYXRpb24gZnJvbQp1c2Vyc3Bh
+Y2UgYWJvdXQgd2hhdCBpdCBzdXBwb3J0cy4gSSBtZWFuLCBqdXN0IGxpa2Ugd2UgaGF2ZSB0aGUK
+Y2FwcyBmbGFncyB3aGVyZSB0aGUgS2VybmVsIHJlcG9ydHMgd2hhdCBpdCBzdXBwb3J0cywgd2Ug
+Y291bGQgaGF2ZQphIHNpbWlsYXIgInVzZXJzcGFjZSBjYXBzIiAgZmllbGQuCgo+IFdoeSBJIHRo
+aW5rIGl0IHdvbid0IGJyZWFrIHVzZXJzcGFjZSBpcyB0aGF0IHRoZSBjb3JyZWN0IHdheSB0byB1
+c2UKPiB0aGVzZSByZWFkLW9ubHkgbWVtYmVycyBvZiBWNEwyIHN0cnVjdCBpcyB0byBzZXQgdGhl
+c2UgdG8gMCwgd2hpY2ggaXMKPiBhbHNvIGRvY3VtZW50ZWQuCgpZZWFoLCB0aGUgYXBwcyBJJ20g
+YXdhcmUgb2YgdXN1YWxseSBjYWxsIG1lbXNldCgpIGJlZm9yZSBmaWxsaW5nClY0TDIgc3RydWN0
+cy4gT24gdGhvc2UsIGFkZGluZyB0aGlzIGJlaGF2aW9yIHdvdWxkIGJlIG9rLiBZZXQsCkknbSBu
+b3Qgc3VyZSBpZiAxMDAlIG9mIChvcGVuIHNvdXJjZSkgYXBwcyBkbyB0aGF0LgoKPiBBZGRpbmcg
+dXBwZXIgYm91bmQgc2VlbXMgbGlrZSBhIGdvb2QgaWRlYSB0aG91Z2guCgpBZ3JlZWQuCgo+IAo+
+ClRoYW5rcywKTWF1cm8KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
