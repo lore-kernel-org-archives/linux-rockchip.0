@@ -1,58 +1,119 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 1/3] rk3399: orangepi: Enable TPL
-Date: Wed, 29 May 2019 16:01:52 +0800
-Message-ID: <3d1513a8-202a-9906-ddb0-2ed1000696f3@rock-chips.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 2/3] rk3399: nanopi4: Enable TPL
+Date: Wed, 29 May 2019 16:02:16 +0800
+Message-ID: <a7a1c1ce-c7c4-dca3-36c3-336785a13b8f@rock-chips.com>
 References: <20190509105746.24830-1-jagan@amarulasolutions.com>
+ <20190509105746.24830-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20190509105746.24830-1-jagan@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190509105746.24830-2-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSmFnYW4sCgoKT24gMDUvMDkvMjAxOSAwNjo1NyBQTSwgSmFnYW4gVGVraSB3cm90ZToKPiBF
-bmFibGUgVFBMIGZvciBPcmFuZ2VQSSByazMzOTkgYm9hcmQuCj4KPiBTaWduZWQtb2ZmLWJ5OiBK
-YWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KClJldmlld2VkLWJ5OiBLZXZl
-ciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgoKVGhhbmtzLAotIEtldmVyCj4gLS0t
-Cj4gIGNvbmZpZ3Mvb3JhbmdlcGktcmszMzk5X2RlZmNvbmZpZyB8IDcgKysrKy0tLQo+ICAxIGZp
-bGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdp
-dCBhL2NvbmZpZ3Mvb3JhbmdlcGktcmszMzk5X2RlZmNvbmZpZyBiL2NvbmZpZ3Mvb3JhbmdlcGkt
-cmszMzk5X2RlZmNvbmZpZwo+IGluZGV4IDNmMDJjODk5ODMuLjkwMDIxYmI2OTUgMTAwNjQ0Cj4g
-LS0tIGEvY29uZmlncy9vcmFuZ2VwaS1yazMzOTlfZGVmY29uZmlnCj4gKysrIGIvY29uZmlncy9v
-cmFuZ2VwaS1yazMzOTlfZGVmY29uZmlnCj4gQEAgLTUsNyArNSw3IEBAIENPTkZJR19TUExfTElC
-Q09NTU9OX1NVUFBPUlQ9eQo+ICBDT05GSUdfU1BMX0xJQkdFTkVSSUNfU1VQUE9SVD15Cj4gIENP
-TkZJR19TWVNfTUFMTE9DX0ZfTEVOPTB4NDAwMAo+ICBDT05GSUdfUk9DS0NISVBfUkszMzk5PXkK
-PiAtQ09ORklHX1JPQ0tDSElQX1NQTF9SRVNFUlZFX0lSQU09MHg0MDAwCj4gK0NPTkZJR19ST0NL
-Q0hJUF9TUExfUkVTRVJWRV9JUkFNPTB4NTAwMDAKPiAgQ09ORklHX0RFQlVHX1VBUlRfQkFTRT0w
-eEZGMUEwMDAwCj4gIENPTkZJR19ERUJVR19VQVJUX0NMT0NLPTI0MDAwMDAwCj4gIENPTkZJR19T
-UExfU1RBQ0tfUl9BRERSPTB4ODAwMDAKPiBAQCAtMTQsOSArMTQsOCBAQCBDT05GSUdfTlJfRFJB
-TV9CQU5LUz0xCj4gIENPTkZJR19ERUZBVUxUX0ZEVF9GSUxFPSJyb2NrY2hpcC9yazMzOTktb3Jh
-bmdlcGkuZHRiIgo+ICAjIENPTkZJR19ESVNQTEFZX0NQVUlORk8gaXMgbm90IHNldAo+ICBDT05G
-SUdfRElTUExBWV9CT0FSRElORk9fTEFURT15Cj4gLUNPTkZJR19TUExfVEVYVF9CQVNFPTB4ZmY4
-YzIwMDAKPiAgQ09ORklHX1NQTF9TVEFDS19SPXkKPiAtQ09ORklHX1NQTF9TVEFDS19SX01BTExP
-Q19TSU1QTEVfTEVOPTB4NDAwMAo+ICtDT05GSUdfU1BMX1NUQUNLX1JfTUFMTE9DX1NJTVBMRV9M
-RU49MHgxMDAwMAo+ICBDT05GSUdfQ01EX0JPT1RaPXkKPiAgQ09ORklHX0NNRF9HUFQ9eQo+ICBD
-T05GSUdfQ01EX01NQz15Cj4gQEAgLTI0LDYgKzIzLDcgQEAgQ09ORklHX0NNRF9TRj15Cj4gIENP
-TkZJR19DTURfVVNCPXkKPiAgIyBDT05GSUdfQ01EX1NFVEVYUFIgaXMgbm90IHNldAo+ICBDT05G
-SUdfQ01EX1RJTUU9eQo+ICtDT05GSUdfVFBMPXkKPiAgQ09ORklHX1NQTF9PRl9DT05UUk9MPXkK
-PiAgQ09ORklHX0RFRkFVTFRfREVWSUNFX1RSRUU9InJrMzM5OS1vcmFuZ2VwaSIKPiAgQ09ORklH
-X09GX1NQTF9SRU1PVkVfUFJPUFM9InBpbmN0cmwtMCBwaW5jdHJsLW5hbWVzIGNsb2NrLW5hbWVz
-IGludGVycnVwdC1wYXJlbnQgYXNzaWduZWQtY2xvY2tzIGFzc2lnbmVkLWNsb2NrLXJhdGVzIGFz
-c2lnbmVkLWNsb2NrLXBhcmVudHMiCj4gQEAgLTU2LDQgKzU2LDUgQEAgQ09ORklHX1VTQl9FVEhF
-Ul9NQ1M3ODMwPXkKPiAgQ09ORklHX1VTQl9FVEhFUl9SVEw4MTUyPXkKPiAgQ09ORklHX1VTQl9F
-VEhFUl9TTVNDOTVYWD15Cj4gIENPTkZJR19VU0VfVElOWV9QUklOVEY9eQo+ICtDT05GSUdfU1BM
-X1RJTllfTUVNU0VUPXkKPiAgQ09ORklHX0VSUk5PX1NUUj15CgoKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290
-QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
+Hi Jagan,
+
+
+On 05/09/2019 06:57 PM, Jagan Teki wrote:
+> Enable TPL for NanoPC T4, NanoPI M4 boards.
+>
+> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+
+
+Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+Thanks,
+- Kever
+> ---
+>  configs/nanopc-t4-rk3399_defconfig | 7 ++++---
+>  configs/nanopi-m4-rk3399_defconfig | 7 ++++---
+>  2 files changed, 8 insertions(+), 6 deletions(-)
+>
+> diff --git a/configs/nanopc-t4-rk3399_defconfig b/configs/nanopc-t4-rk3399_defconfig
+> index d9f2137b4c..9b7e15d63a 100644
+> --- a/configs/nanopc-t4-rk3399_defconfig
+> +++ b/configs/nanopc-t4-rk3399_defconfig
+> @@ -5,7 +5,7 @@ CONFIG_SPL_LIBCOMMON_SUPPORT=y
+>  CONFIG_SPL_LIBGENERIC_SUPPORT=y
+>  CONFIG_SYS_MALLOC_F_LEN=0x4000
+>  CONFIG_ROCKCHIP_RK3399=y
+> -CONFIG_ROCKCHIP_SPL_RESERVE_IRAM=0x4000
+> +CONFIG_ROCKCHIP_SPL_RESERVE_IRAM=0x50000
+>  CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>  CONFIG_DEBUG_UART_CLOCK=24000000
+>  CONFIG_SPL_STACK_R_ADDR=0x80000
+> @@ -14,9 +14,8 @@ CONFIG_NR_DRAM_BANKS=1
+>  CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-nanopc-t4.dtb"
+>  # CONFIG_DISPLAY_CPUINFO is not set
+>  CONFIG_DISPLAY_BOARDINFO_LATE=y
+> -CONFIG_SPL_TEXT_BASE=0xff8c2000
+>  CONFIG_SPL_STACK_R=y
+> -CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x4000
+> +CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
+>  CONFIG_CMD_BOOTZ=y
+>  CONFIG_CMD_GPT=y
+>  CONFIG_CMD_MMC=y
+> @@ -24,6 +23,7 @@ CONFIG_CMD_SF=y
+>  CONFIG_CMD_USB=y
+>  # CONFIG_CMD_SETEXPR is not set
+>  CONFIG_CMD_TIME=y
+> +CONFIG_TPL=y
+>  CONFIG_SPL_OF_CONTROL=y
+>  CONFIG_DEFAULT_DEVICE_TREE="rk3399-nanopc-t4"
+>  CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
+> @@ -56,4 +56,5 @@ CONFIG_USB_ETHER_MCS7830=y
+>  CONFIG_USB_ETHER_RTL8152=y
+>  CONFIG_USB_ETHER_SMSC95XX=y
+>  CONFIG_USE_TINY_PRINTF=y
+> +CONFIG_SPL_TINY_MEMSET=y
+>  CONFIG_ERRNO_STR=y
+> diff --git a/configs/nanopi-m4-rk3399_defconfig b/configs/nanopi-m4-rk3399_defconfig
+> index c2832788f0..92e70dd939 100644
+> --- a/configs/nanopi-m4-rk3399_defconfig
+> +++ b/configs/nanopi-m4-rk3399_defconfig
+> @@ -5,7 +5,7 @@ CONFIG_SPL_LIBCOMMON_SUPPORT=y
+>  CONFIG_SPL_LIBGENERIC_SUPPORT=y
+>  CONFIG_SYS_MALLOC_F_LEN=0x4000
+>  CONFIG_ROCKCHIP_RK3399=y
+> -CONFIG_ROCKCHIP_SPL_RESERVE_IRAM=0x4000
+> +CONFIG_ROCKCHIP_SPL_RESERVE_IRAM=0x50000
+>  CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>  CONFIG_DEBUG_UART_CLOCK=24000000
+>  CONFIG_SPL_STACK_R_ADDR=0x80000
+> @@ -14,9 +14,8 @@ CONFIG_NR_DRAM_BANKS=1
+>  CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-nanopi-m4.dtb"
+>  # CONFIG_DISPLAY_CPUINFO is not set
+>  CONFIG_DISPLAY_BOARDINFO_LATE=y
+> -CONFIG_SPL_TEXT_BASE=0xff8c2000
+>  CONFIG_SPL_STACK_R=y
+> -CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x4000
+> +CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
+>  CONFIG_CMD_BOOTZ=y
+>  CONFIG_CMD_GPT=y
+>  CONFIG_CMD_MMC=y
+> @@ -24,6 +23,7 @@ CONFIG_CMD_SF=y
+>  CONFIG_CMD_USB=y
+>  # CONFIG_CMD_SETEXPR is not set
+>  CONFIG_CMD_TIME=y
+> +CONFIG_TPL=y
+>  CONFIG_SPL_OF_CONTROL=y
+>  CONFIG_DEFAULT_DEVICE_TREE="rk3399-nanopi-m4"
+>  CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
+> @@ -56,4 +56,5 @@ CONFIG_USB_ETHER_MCS7830=y
+>  CONFIG_USB_ETHER_RTL8152=y
+>  CONFIG_USB_ETHER_SMSC95XX=y
+>  CONFIG_USE_TINY_PRINTF=y
+> +CONFIG_SPL_TINY_MEMSET=y
+>  CONFIG_ERRNO_STR=y
