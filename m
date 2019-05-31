@@ -1,114 +1,62 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add missing PCIe pwr amd rst
- configuration
-Date: Fri, 31 May 2019 11:38:34 +0530
-Message-ID: <20190531060834.GA23771@Mani-XPS-13-9360>
-References: <20190530125837.730-1-linux.amoon@gmail.com>
- <20190531040222.GB9641@Mani-XPS-13-9360>
- <CANAwSgQ13PizDuNEVF5JMM=byt-HELCmZFhLAa3RS6kvxmXuhw@mail.gmail.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH] drm/panfrost: make devfreq optional again
+Date: Fri, 31 May 2019 10:34:59 -0300
+Message-ID: <58407c4af8e08aa756c245ac571f12a80ede5f35.camel@collabora.com>
+References: <20190531123746.613-1-narmstrong@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CANAwSgQ13PizDuNEVF5JMM=byt-HELCmZFhLAa3RS6kvxmXuhw@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Ezequiel Garcia <ezequiel@collabora.com>, Jagan Teki <jagan@amarulasolutions.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, devicetree <devicetree@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, Linux Kernel <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190531123746.613-1-narmstrong@baylibre.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Neil Armstrong <narmstrong@baylibre.com>, robh@kernel.org, tomeu.vizoso@collabora.com
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, May 31, 2019 at 10:27:22AM +0530, Anand Moon wrote:
-> Hi Manivannan,
-> 
-> On Fri, 31 May 2019 at 09:32, Manivannan Sadhasivam
-> <manivannan.sadhasivam@linaro.org> wrote:
-> >
-> > Hi,
-> >
-> > On Thu, May 30, 2019 at 12:58:37PM +0000, Anand Moon wrote:
-> > > This patch add missing PCIe gpio and pinctrl for power (#PCIE_PWR)
-> > > also add PCIe gpio and pinctrl for reset (#PCIE_PERST_L).
-> > >
-> > > Signed-off-by: Anand Moon <linux.amoon@gmail.com>
-> > > ---
-> > > Tested on Rock960 Model A
-> > > ---
-> > >  arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi | 16 ++++++++++++++--
-> > >  1 file changed, 14 insertions(+), 2 deletions(-)
-> > >
-> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> > > index c7d48d41e184..f5bef6b0fe89 100644
-> > > --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> > > +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> > > @@ -55,9 +55,10 @@
-> > >
-> > >       vcc3v3_pcie: vcc3v3-pcie-regulator {
-> > >               compatible = "regulator-fixed";
-> > > +             gpio = <&gpio2 RK_PA2 GPIO_ACTIVE_HIGH>;
-> > >               enable-active-high;
-> > >               pinctrl-names = "default";
-> > > -             pinctrl-0 = <&pcie_drv>;
-> > > +             pinctrl-0 = <&pcie_drv &pcie_pwr>;
-> > >               regulator-boot-on;
-> > >               regulator-name = "vcc3v3_pcie";
-> > >               regulator-min-microvolt = <3300000>;
-> > > @@ -381,9 +382,10 @@
-> > >  };
-> > >
-> > >  &pcie0 {
-> > > +     ep-gpio = <&gpio2 RK_PD4 GPIO_ACTIVE_HIGH>;
-> > >       num-lanes = <4>;
-> > >       pinctrl-names = "default";
-> > > -     pinctrl-0 = <&pcie_clkreqn_cpm>;
-> > > +     pinctrl-0 = <&pcie_clkreqn_cpm &pcie_perst_l>;
-> > >       vpcie3v3-supply = <&vcc3v3_pcie>;
-> > >       status = "okay";
-> > >  };
-> > > @@ -408,6 +410,16 @@
-> > >               };
-> > >       };
-> > >
-> > > +     pcie {
-> > > +             pcie_pwr: pcie-pwr {
-> > > +                     rockchip,pins = <2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-> > > +             };
-> > > +
-> > > +             pcie_perst_l:pcie-perst-l {
-> > > +                     rockchip,pins = <2 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
-> > > +             };
-> >
-> > Which schematics did you refer? According to Rock960 v2.1 schematics [1], below
-> > is the pin mapping for PCI-E PWR and PERST:
-> >
-> > PCIE_PERST - GPIO2_A2
-> > PCIE_PWR - GPIO2_A5
-> >
-> 
-> Opps, I have referred the wrong schematics *RK3399_Rock960_V1.0.pdf*
-> may be old version.
-> Thanks for pointing out the correct schematics.
-> 
-> > Above mapping holds true for Rock960 version 1.1, 1.2 and 1.3. Also,
-> > rk3399-rock960.dtsi is common for both Rock960 and Ficus boards, so the board
-> > specific parts should go to rk3399-rock960.dts and rk3399-ficus.dts.
-> >
-> > Thanks,
-> > Mani
-> 
-> I have ROCK960-V 1.2 (Model A) for testing so. I will be sending patch
-> v2 the relevant
-> node update in rk3399-rock960.dts and rk3399-ficus.dts if below common
-> for both the boards.
-
-Both boards are different in terms of pin mapping!
-
--Mani
-
-> 
-> PCIE_PERST - GPIO2_A2
-> PCIE_PWR - GPIO2_A5
-> 
-> >
-> > [1] https://dl.vamrs.com/products/rock960/docs/hw/rock960_sch_v12_20180314.pdf
-> 
-> Best Regards
-> -Anand
+T24gRnJpLCAyMDE5LTA1LTMxIGF0IDE0OjM3ICswMjAwLCBOZWlsIEFybXN0cm9uZyB3cm90ZToK
+PiBEZXZmcmVxIHJ1bnRpbWUgdXNhZ2Ugd2FzIG1hZGUgbWFuZGF0b3J5LCB0aHVzIG1ha2luZyBw
+YW5mcm9zdCBmYWlsIHRvIHByb2JlCj4gb24gQW1sb2dpYyBTOTEyIFNvQ3MgbWlzc2luIHRoZSAi
+b3BlcmF0aW5nLXBvaW50cy12MiIgcHJvcGVydHkuCj4gTWFrZSBpdCBvcHRpb25hbCBhZ2Fpbiwg
+bGVhdmluZyBQTV9ERVZGUkVRIGlzIHNlbGVjdGVkIGJ5IGRlZmF1bHQuCj4gCj4gRml4ZXM6IGYz
+NjE3YjQ0OWQgKCJkcm0vcGFuZnJvc3Q6IFNlbGVjdCBkZXZmcmVxIikKPiBTaWduZWQtb2ZmLWJ5
+OiBOZWlsIEFybXN0cm9uZyA8bmFybXN0cm9uZ0BiYXlsaWJyZS5jb20+Cj4gLS0tCj4gIGRyaXZl
+cnMvZ3B1L2RybS9wYW5mcm9zdC9wYW5mcm9zdF9kZXZmcmVxLmMgfCAxMyArKysrKysrKysrKyst
+Cj4gIDEgZmlsZSBjaGFuZ2VkLCAxMiBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4gCj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9wYW5mcm9zdC9wYW5mcm9zdF9kZXZmcmVxLmMg
+Yi9kcml2ZXJzL2dwdS9kcm0vcGFuZnJvc3QvcGFuZnJvc3RfZGV2ZnJlcS5jCj4gaW5kZXggMjlm
+Y2ZmZGYyZDU3Li5kYzc1Zjk5YWQ1M2IgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Bh
+bmZyb3N0L3BhbmZyb3N0X2RldmZyZXEuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9wYW5mcm9z
+dC9wYW5mcm9zdF9kZXZmcmVxLmMKPiBAQCAtMTQwLDcgKzE0MCw5IEBAIGludCBwYW5mcm9zdF9k
+ZXZmcmVxX2luaXQoc3RydWN0IHBhbmZyb3N0X2RldmljZSAqcGZkZXYpCj4gIAkJcmV0dXJuIDA7
+Cj4gIAo+ICAJcmV0ID0gZGV2X3BtX29wcF9vZl9hZGRfdGFibGUoJnBmZGV2LT5wZGV2LT5kZXYp
+Owo+IC0JaWYgKHJldCkKPiArCWlmIChyZXQgPT0gLUVOT0RFVikgLyogT3B0aW9uYWwsIGNvbnRp
+bnVlIHdpdGhvdXQgZGV2ZnJlcSAqLwo+ICsJCXJldHVybiAwOwo+ICsJZWxzZQo+ICAJCXJldHVy
+biByZXQ7Cj4gIAo+ICAJcGFuZnJvc3RfZGV2ZnJlcV9yZXNldChwZmRldik7Cj4gQEAgLTE3MCw2
+ICsxNzIsOSBAQCB2b2lkIHBhbmZyb3N0X2RldmZyZXFfcmVzdW1lKHN0cnVjdCBwYW5mcm9zdF9k
+ZXZpY2UgKnBmZGV2KQo+ICB7Cj4gIAlpbnQgaTsKPiAgCj4gKwlpZiAoIXBmZGV2LT5kZXZmcmVx
+LmRldmZyZXEpCj4gKwkJcmV0dXJuOwo+ICsKPiAgCXBhbmZyb3N0X2RldmZyZXFfcmVzZXQocGZk
+ZXYpOwo+ICAJZm9yIChpID0gMDsgaSA8IE5VTV9KT0JfU0xPVFM7IGkrKykKPiAgCQlwZmRldi0+
+ZGV2ZnJlcS5zbG90W2ldLmJ1c3kgPSBmYWxzZTsKPiBAQCAtMTc5LDYgKzE4NCw5IEBAIHZvaWQg
+cGFuZnJvc3RfZGV2ZnJlcV9yZXN1bWUoc3RydWN0IHBhbmZyb3N0X2RldmljZSAqcGZkZXYpCj4g
+IAo+ICB2b2lkIHBhbmZyb3N0X2RldmZyZXFfc3VzcGVuZChzdHJ1Y3QgcGFuZnJvc3RfZGV2aWNl
+ICpwZmRldikKPiAgewo+ICsJaWYgKCFwZmRldi0+ZGV2ZnJlcS5kZXZmcmVxKQo+ICsJCXJldHVy
+bjsKPiArCj4gIAlkZXZmcmVxX3N1c3BlbmRfZGV2aWNlKHBmZGV2LT5kZXZmcmVxLmRldmZyZXEp
+Owo+ICB9Cj4gIAo+IEBAIC0xODgsNiArMTk2LDkgQEAgc3RhdGljIHZvaWQgcGFuZnJvc3RfZGV2
+ZnJlcV91cGRhdGVfdXRpbGl6YXRpb24oc3RydWN0IHBhbmZyb3N0X2RldmljZSAqcGZkZXYsIGkK
+PiAgCWt0aW1lX3Qgbm93Owo+ICAJa3RpbWVfdCBsYXN0Owo+ICAKPiArCWlmICghcGZkZXYtPmRl
+dmZyZXEuZGV2ZnJlcSkKPiArCQlyZXR1cm47Cj4gKwo+ICAJbm93ID0ga3RpbWVfZ2V0KCk7Cj4g
+IAlsYXN0ID0gcGZkZXYtPmRldmZyZXEuc2xvdFtzbG90XS50aW1lX2xhc3RfdXBkYXRlOwo+ICAK
+ClRoaXMgcGF0Y2ggc2hvdWxkIGFsc28gZml4IFJLMzI4OCBwbGF0Zm9ybXMsIHdoaWNoIGF0IHRo
+ZSBtb21lbnQgYXJlIGJyb2tlbgphcyB3ZWxsIGJ5IG15IHBhdGNoLgoKSSB3aWxsIHRlc3QgYW5k
+IGNvbmZpcm0gbmV4dCB3ZWVrLgoKVGhhbmtzIGZvciB0aGUgZml4LApFemVxdWllbCAKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
+aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
+ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
