@@ -1,62 +1,259 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH] drm/panfrost: make devfreq optional again
-Date: Fri, 31 May 2019 10:34:59 -0300
-Message-ID: <58407c4af8e08aa756c245ac571f12a80ede5f35.camel@collabora.com>
-References: <20190531123746.613-1-narmstrong@baylibre.com>
+From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH] usb: dwc2: host: Fix wMaxPacketSize handling (fix webcam
+ regression)
+Date: Fri, 31 May 2019 13:04:12 -0700
+Message-ID: <20190531200412.129429-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190531123746.613-1-narmstrong@baylibre.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Neil Armstrong <narmstrong@baylibre.com>, robh@kernel.org, tomeu.vizoso@collabora.com
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Minas Harutyunyan <hminas-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, Martin Schiller <ms-W9Oo8bkYgz6ELgA04lAiVw@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCAyMDE5LTA1LTMxIGF0IDE0OjM3ICswMjAwLCBOZWlsIEFybXN0cm9uZyB3cm90ZToK
-PiBEZXZmcmVxIHJ1bnRpbWUgdXNhZ2Ugd2FzIG1hZGUgbWFuZGF0b3J5LCB0aHVzIG1ha2luZyBw
-YW5mcm9zdCBmYWlsIHRvIHByb2JlCj4gb24gQW1sb2dpYyBTOTEyIFNvQ3MgbWlzc2luIHRoZSAi
-b3BlcmF0aW5nLXBvaW50cy12MiIgcHJvcGVydHkuCj4gTWFrZSBpdCBvcHRpb25hbCBhZ2Fpbiwg
-bGVhdmluZyBQTV9ERVZGUkVRIGlzIHNlbGVjdGVkIGJ5IGRlZmF1bHQuCj4gCj4gRml4ZXM6IGYz
-NjE3YjQ0OWQgKCJkcm0vcGFuZnJvc3Q6IFNlbGVjdCBkZXZmcmVxIikKPiBTaWduZWQtb2ZmLWJ5
-OiBOZWlsIEFybXN0cm9uZyA8bmFybXN0cm9uZ0BiYXlsaWJyZS5jb20+Cj4gLS0tCj4gIGRyaXZl
-cnMvZ3B1L2RybS9wYW5mcm9zdC9wYW5mcm9zdF9kZXZmcmVxLmMgfCAxMyArKysrKysrKysrKyst
-Cj4gIDEgZmlsZSBjaGFuZ2VkLCAxMiBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4gCj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9wYW5mcm9zdC9wYW5mcm9zdF9kZXZmcmVxLmMg
-Yi9kcml2ZXJzL2dwdS9kcm0vcGFuZnJvc3QvcGFuZnJvc3RfZGV2ZnJlcS5jCj4gaW5kZXggMjlm
-Y2ZmZGYyZDU3Li5kYzc1Zjk5YWQ1M2IgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Bh
-bmZyb3N0L3BhbmZyb3N0X2RldmZyZXEuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9wYW5mcm9z
-dC9wYW5mcm9zdF9kZXZmcmVxLmMKPiBAQCAtMTQwLDcgKzE0MCw5IEBAIGludCBwYW5mcm9zdF9k
-ZXZmcmVxX2luaXQoc3RydWN0IHBhbmZyb3N0X2RldmljZSAqcGZkZXYpCj4gIAkJcmV0dXJuIDA7
-Cj4gIAo+ICAJcmV0ID0gZGV2X3BtX29wcF9vZl9hZGRfdGFibGUoJnBmZGV2LT5wZGV2LT5kZXYp
-Owo+IC0JaWYgKHJldCkKPiArCWlmIChyZXQgPT0gLUVOT0RFVikgLyogT3B0aW9uYWwsIGNvbnRp
-bnVlIHdpdGhvdXQgZGV2ZnJlcSAqLwo+ICsJCXJldHVybiAwOwo+ICsJZWxzZQo+ICAJCXJldHVy
-biByZXQ7Cj4gIAo+ICAJcGFuZnJvc3RfZGV2ZnJlcV9yZXNldChwZmRldik7Cj4gQEAgLTE3MCw2
-ICsxNzIsOSBAQCB2b2lkIHBhbmZyb3N0X2RldmZyZXFfcmVzdW1lKHN0cnVjdCBwYW5mcm9zdF9k
-ZXZpY2UgKnBmZGV2KQo+ICB7Cj4gIAlpbnQgaTsKPiAgCj4gKwlpZiAoIXBmZGV2LT5kZXZmcmVx
-LmRldmZyZXEpCj4gKwkJcmV0dXJuOwo+ICsKPiAgCXBhbmZyb3N0X2RldmZyZXFfcmVzZXQocGZk
-ZXYpOwo+ICAJZm9yIChpID0gMDsgaSA8IE5VTV9KT0JfU0xPVFM7IGkrKykKPiAgCQlwZmRldi0+
-ZGV2ZnJlcS5zbG90W2ldLmJ1c3kgPSBmYWxzZTsKPiBAQCAtMTc5LDYgKzE4NCw5IEBAIHZvaWQg
-cGFuZnJvc3RfZGV2ZnJlcV9yZXN1bWUoc3RydWN0IHBhbmZyb3N0X2RldmljZSAqcGZkZXYpCj4g
-IAo+ICB2b2lkIHBhbmZyb3N0X2RldmZyZXFfc3VzcGVuZChzdHJ1Y3QgcGFuZnJvc3RfZGV2aWNl
-ICpwZmRldikKPiAgewo+ICsJaWYgKCFwZmRldi0+ZGV2ZnJlcS5kZXZmcmVxKQo+ICsJCXJldHVy
-bjsKPiArCj4gIAlkZXZmcmVxX3N1c3BlbmRfZGV2aWNlKHBmZGV2LT5kZXZmcmVxLmRldmZyZXEp
-Owo+ICB9Cj4gIAo+IEBAIC0xODgsNiArMTk2LDkgQEAgc3RhdGljIHZvaWQgcGFuZnJvc3RfZGV2
-ZnJlcV91cGRhdGVfdXRpbGl6YXRpb24oc3RydWN0IHBhbmZyb3N0X2RldmljZSAqcGZkZXYsIGkK
-PiAgCWt0aW1lX3Qgbm93Owo+ICAJa3RpbWVfdCBsYXN0Owo+ICAKPiArCWlmICghcGZkZXYtPmRl
-dmZyZXEuZGV2ZnJlcSkKPiArCQlyZXR1cm47Cj4gKwo+ICAJbm93ID0ga3RpbWVfZ2V0KCk7Cj4g
-IAlsYXN0ID0gcGZkZXYtPmRldmZyZXEuc2xvdFtzbG90XS50aW1lX2xhc3RfdXBkYXRlOwo+ICAK
-ClRoaXMgcGF0Y2ggc2hvdWxkIGFsc28gZml4IFJLMzI4OCBwbGF0Zm9ybXMsIHdoaWNoIGF0IHRo
-ZSBtb21lbnQgYXJlIGJyb2tlbgphcyB3ZWxsIGJ5IG15IHBhdGNoLgoKSSB3aWxsIHRlc3QgYW5k
-IGNvbmZpcm0gbmV4dCB3ZWVrLgoKVGhhbmtzIGZvciB0aGUgZml4LApFemVxdWllbCAKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
-aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+In commit abb621844f6a ("usb: ch9: make usb_endpoint_maxp() return
+only packet size") the API to usb_endpoint_maxp() changed.  It used to
+just return wMaxPacketSize but after that commit it returned
+wMaxPacketSize with the high bits (the multiplier) masked off.  If you
+wanted to get the multiplier it was now up to your code to call the
+new usb_endpoint_maxp_mult() which was introduced in
+commit 541b6fe63023 ("usb: add helper to extract bits 12:11 of
+wMaxPacketSize").
+
+Prior to the API change most host drivers were updated, but no update
+was made to dwc2.  Presumably it was assumed that dwc2 was too
+simplistic to use the multiplier and thus just didn't support a
+certain class of USB devices.  However, it turns out that dwc2 did use
+the multiplier and many devices using it were working quite nicely.
+That means that many USB devices have been broken since the API
+change.  One such device is a Logitech HD Pro Webcam C920.
+
+Specifically, though dwc2 didn't directly call usb_endpoint_maxp(), it
+did call usb_maxpacket() which in turn called usb_endpoint_maxp().
+
+Let's update dwc2 to work properly with the new API.
+
+Fixes: abb621844f6a ("usb: ch9: make usb_endpoint_maxp() return only packet size")
+Cc: stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+---
+
+ drivers/usb/dwc2/hcd.c       | 29 +++++++++++++++++------------
+ drivers/usb/dwc2/hcd.h       | 20 +++++++++++---------
+ drivers/usb/dwc2/hcd_intr.c  |  5 +++--
+ drivers/usb/dwc2/hcd_queue.c | 10 ++++++----
+ 4 files changed, 37 insertions(+), 27 deletions(-)
+
+diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+index b50ec3714fd8..5c51bf5506d1 100644
+--- a/drivers/usb/dwc2/hcd.c
++++ b/drivers/usb/dwc2/hcd.c
+@@ -2608,7 +2608,7 @@ static int dwc2_assign_and_init_hc(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+ 	chan->dev_addr = dwc2_hcd_get_dev_addr(&urb->pipe_info);
+ 	chan->ep_num = dwc2_hcd_get_ep_num(&urb->pipe_info);
+ 	chan->speed = qh->dev_speed;
+-	chan->max_packet = dwc2_max_packet(qh->maxp);
++	chan->max_packet = qh->maxp;
+ 
+ 	chan->xfer_started = 0;
+ 	chan->halt_status = DWC2_HC_XFER_NO_HALT_STATUS;
+@@ -2686,7 +2686,7 @@ static int dwc2_assign_and_init_hc(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+ 		 * This value may be modified when the transfer is started
+ 		 * to reflect the actual transfer length
+ 		 */
+-		chan->multi_count = dwc2_hb_mult(qh->maxp);
++		chan->multi_count = qh->maxp_mult;
+ 
+ 	if (hsotg->params.dma_desc_enable) {
+ 		chan->desc_list_addr = qh->desc_list_dma;
+@@ -3806,19 +3806,21 @@ static struct dwc2_hcd_urb *dwc2_hcd_urb_alloc(struct dwc2_hsotg *hsotg,
+ 
+ static void dwc2_hcd_urb_set_pipeinfo(struct dwc2_hsotg *hsotg,
+ 				      struct dwc2_hcd_urb *urb, u8 dev_addr,
+-				      u8 ep_num, u8 ep_type, u8 ep_dir, u16 mps)
++				      u8 ep_num, u8 ep_type, u8 ep_dir,
++				      u16 maxp, u16 maxp_mult)
+ {
+ 	if (dbg_perio() ||
+ 	    ep_type == USB_ENDPOINT_XFER_BULK ||
+ 	    ep_type == USB_ENDPOINT_XFER_CONTROL)
+ 		dev_vdbg(hsotg->dev,
+-			 "addr=%d, ep_num=%d, ep_dir=%1x, ep_type=%1x, mps=%d\n",
+-			 dev_addr, ep_num, ep_dir, ep_type, mps);
++			 "addr=%d, ep_num=%d, ep_dir=%1x, ep_type=%1x, maxp=%d (%d mult)\n",
++			 dev_addr, ep_num, ep_dir, ep_type, maxp, maxp_mult);
+ 	urb->pipe_info.dev_addr = dev_addr;
+ 	urb->pipe_info.ep_num = ep_num;
+ 	urb->pipe_info.pipe_type = ep_type;
+ 	urb->pipe_info.pipe_dir = ep_dir;
+-	urb->pipe_info.mps = mps;
++	urb->pipe_info.maxp = maxp;
++	urb->pipe_info.maxp_mult = maxp_mult;
+ }
+ 
+ /*
+@@ -3909,8 +3911,9 @@ void dwc2_hcd_dump_state(struct dwc2_hsotg *hsotg)
+ 					dwc2_hcd_is_pipe_in(&urb->pipe_info) ?
+ 					"IN" : "OUT");
+ 				dev_dbg(hsotg->dev,
+-					"      Max packet size: %d\n",
+-					dwc2_hcd_get_mps(&urb->pipe_info));
++					"      Max packet size: %d (%d mult)\n",
++					dwc2_hcd_get_maxp(&urb->pipe_info),
++					dwc2_hcd_get_maxp_mult(&urb->pipe_info));
+ 				dev_dbg(hsotg->dev,
+ 					"      transfer_buffer: %p\n",
+ 					urb->buf);
+@@ -4510,8 +4513,10 @@ static void dwc2_dump_urb_info(struct usb_hcd *hcd, struct urb *urb,
+ 	}
+ 
+ 	dev_vdbg(hsotg->dev, "  Speed: %s\n", speed);
+-	dev_vdbg(hsotg->dev, "  Max packet size: %d\n",
+-		 usb_maxpacket(urb->dev, urb->pipe, usb_pipeout(urb->pipe)));
++	dev_vdbg(hsotg->dev, "  Max packet size: %d (%d mult)\n",
++		 usb_endpoint_maxp(&urb->ep->desc),
++		 usb_endpoint_maxp_mult(&urb->ep->desc));
++
+ 	dev_vdbg(hsotg->dev, "  Data buffer length: %d\n",
+ 		 urb->transfer_buffer_length);
+ 	dev_vdbg(hsotg->dev, "  Transfer buffer: %p, Transfer DMA: %08lx\n",
+@@ -4594,8 +4599,8 @@ static int _dwc2_hcd_urb_enqueue(struct usb_hcd *hcd, struct urb *urb,
+ 	dwc2_hcd_urb_set_pipeinfo(hsotg, dwc2_urb, usb_pipedevice(urb->pipe),
+ 				  usb_pipeendpoint(urb->pipe), ep_type,
+ 				  usb_pipein(urb->pipe),
+-				  usb_maxpacket(urb->dev, urb->pipe,
+-						!(usb_pipein(urb->pipe))));
++				  usb_endpoint_maxp(&ep->desc),
++				  usb_endpoint_maxp_mult(&ep->desc));
+ 
+ 	buf = urb->transfer_buffer;
+ 
+diff --git a/drivers/usb/dwc2/hcd.h b/drivers/usb/dwc2/hcd.h
+index c089ffa1f0a8..ce6445a06588 100644
+--- a/drivers/usb/dwc2/hcd.h
++++ b/drivers/usb/dwc2/hcd.h
+@@ -171,7 +171,8 @@ struct dwc2_hcd_pipe_info {
+ 	u8 ep_num;
+ 	u8 pipe_type;
+ 	u8 pipe_dir;
+-	u16 mps;
++	u16 maxp;
++	u16 maxp_mult;
+ };
+ 
+ struct dwc2_hcd_iso_packet_desc {
+@@ -264,6 +265,7 @@ struct dwc2_hs_transfer_time {
+  *                       - USB_ENDPOINT_XFER_ISOC
+  * @ep_is_in:           Endpoint direction
+  * @maxp:               Value from wMaxPacketSize field of Endpoint Descriptor
++ * @maxp_mult:          Multiplier for maxp
+  * @dev_speed:          Device speed. One of the following values:
+  *                       - USB_SPEED_LOW
+  *                       - USB_SPEED_FULL
+@@ -340,6 +342,7 @@ struct dwc2_qh {
+ 	u8 ep_type;
+ 	u8 ep_is_in;
+ 	u16 maxp;
++	u16 maxp_mult;
+ 	u8 dev_speed;
+ 	u8 data_toggle;
+ 	u8 ping_state;
+@@ -503,9 +506,14 @@ static inline u8 dwc2_hcd_get_pipe_type(struct dwc2_hcd_pipe_info *pipe)
+ 	return pipe->pipe_type;
+ }
+ 
+-static inline u16 dwc2_hcd_get_mps(struct dwc2_hcd_pipe_info *pipe)
++static inline u16 dwc2_hcd_get_maxp(struct dwc2_hcd_pipe_info *pipe)
++{
++	return pipe->maxp;
++}
++
++static inline u16 dwc2_hcd_get_maxp_mult(struct dwc2_hcd_pipe_info *pipe)
+ {
+-	return pipe->mps;
++	return pipe->maxp_mult;
+ }
+ 
+ static inline u8 dwc2_hcd_get_dev_addr(struct dwc2_hcd_pipe_info *pipe)
+@@ -620,12 +628,6 @@ static inline bool dbg_urb(struct urb *urb)
+ static inline bool dbg_perio(void) { return false; }
+ #endif
+ 
+-/* High bandwidth multiplier as encoded in highspeed endpoint descriptors */
+-#define dwc2_hb_mult(wmaxpacketsize) (1 + (((wmaxpacketsize) >> 11) & 0x03))
+-
+-/* Packet size for any kind of endpoint descriptor */
+-#define dwc2_max_packet(wmaxpacketsize) ((wmaxpacketsize) & 0x07ff)
+-
+ /*
+  * Returns true if frame1 index is greater than frame2 index. The comparison
+  * is done modulo FRLISTEN_64_SIZE. This accounts for the rollover of the
+diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
+index 88b5dcf3aefc..a052d39b4375 100644
+--- a/drivers/usb/dwc2/hcd_intr.c
++++ b/drivers/usb/dwc2/hcd_intr.c
+@@ -1617,8 +1617,9 @@ static void dwc2_hc_ahberr_intr(struct dwc2_hsotg *hsotg,
+ 
+ 	dev_err(hsotg->dev, "  Speed: %s\n", speed);
+ 
+-	dev_err(hsotg->dev, "  Max packet size: %d\n",
+-		dwc2_hcd_get_mps(&urb->pipe_info));
++	dev_err(hsotg->dev, "  Max packet size: %d (mult %d)\n",
++		dwc2_hcd_get_maxp(&urb->pipe_info),
++		dwc2_hcd_get_maxp_mult(&urb->pipe_info));
+ 	dev_err(hsotg->dev, "  Data buffer length: %d\n", urb->length);
+ 	dev_err(hsotg->dev, "  Transfer buffer: %p, Transfer DMA: %08lx\n",
+ 		urb->buf, (unsigned long)urb->dma);
+diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
+index ea3aa640c15c..68bbac64b753 100644
+--- a/drivers/usb/dwc2/hcd_queue.c
++++ b/drivers/usb/dwc2/hcd_queue.c
+@@ -708,7 +708,7 @@ static void dwc2_hs_pmap_unschedule(struct dwc2_hsotg *hsotg,
+ static int dwc2_uframe_schedule_split(struct dwc2_hsotg *hsotg,
+ 				      struct dwc2_qh *qh)
+ {
+-	int bytecount = dwc2_hb_mult(qh->maxp) * dwc2_max_packet(qh->maxp);
++	int bytecount = qh->maxp_mult * qh->maxp;
+ 	int ls_search_slice;
+ 	int err = 0;
+ 	int host_interval_in_sched;
+@@ -1332,7 +1332,7 @@ static int dwc2_check_max_xfer_size(struct dwc2_hsotg *hsotg,
+ 	u32 max_channel_xfer_size;
+ 	int status = 0;
+ 
+-	max_xfer_size = dwc2_max_packet(qh->maxp) * dwc2_hb_mult(qh->maxp);
++	max_xfer_size = qh->maxp * qh->maxp_mult;
+ 	max_channel_xfer_size = hsotg->params.max_transfer_size;
+ 
+ 	if (max_xfer_size > max_channel_xfer_size) {
+@@ -1517,8 +1517,9 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+ 	u32 prtspd = (hprt & HPRT0_SPD_MASK) >> HPRT0_SPD_SHIFT;
+ 	bool do_split = (prtspd == HPRT0_SPD_HIGH_SPEED &&
+ 			 dev_speed != USB_SPEED_HIGH);
+-	int maxp = dwc2_hcd_get_mps(&urb->pipe_info);
+-	int bytecount = dwc2_hb_mult(maxp) * dwc2_max_packet(maxp);
++	int maxp = dwc2_hcd_get_maxp(&urb->pipe_info);
++	int maxp_mult = dwc2_hcd_get_maxp_mult(&urb->pipe_info);
++	int bytecount = maxp_mult * maxp;
+ 	char *speed, *type;
+ 
+ 	/* Initialize QH */
+@@ -1531,6 +1532,7 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+ 
+ 	qh->data_toggle = DWC2_HC_PID_DATA0;
+ 	qh->maxp = maxp;
++	qh->maxp_mult = maxp_mult;
+ 	INIT_LIST_HEAD(&qh->qtd_list);
+ 	INIT_LIST_HEAD(&qh->qh_list_entry);
+ 
+-- 
+2.22.0.rc1.311.g5d7573a151-goog
