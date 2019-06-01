@@ -1,78 +1,128 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [U-Boot] [PATCH v8 3/3] rockchip: rk3399: Add Rock PI 4 support
-Date: Sat, 1 Jun 2019 10:41:22 +0800
-Message-ID: <aebcc149-86b7-d30c-9f45-4c32d6c5c6d8@rock-chips.com>
-References: <20190517102941.29145-1-jagan@amarulasolutions.com>
- <20190517102941.29145-3-jagan@amarulasolutions.com>
- <CAMty3ZBmwk-j3c4ST30CthhY4cvEfdeNA-0gbg3zfSeieNPP7g@mail.gmail.com>
- <06a24c7e-6617-4a10-8ad9-2e7f8041253c@rock-chips.com>
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Add missing configuration pwr
+ amd rst for PCIe
+Date: Sat, 1 Jun 2019 15:21:06 +0530
+Message-ID: <20190601095106.GA2213@Mani-XPS-13-9360>
+References: <20190531201913.1122-1-linux.amoon@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <06a24c7e-6617-4a10-8ad9-2e7f8041253c-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190531201913.1122-1-linux.amoon@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Anand Moon <linux.amoon@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Ezequiel Garcia <ezequiel@collabora.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Vicente Bergas <vicencb@gmail.com>, Jagan Teki <jagan@amarulasolutions.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi,
 
+On Fri, May 31, 2019 at 08:19:13PM +0000, Anand Moon wrote:
+> This patch add missing PCIe gpio pin (#PCIE_PWR) for vcc3v3_pcie power
+> regulator node also add missing reset pinctrl (#PCIE_PERST_L) for PCIe node.
+> 
+> Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+> ---
+> using schematics: thanks for suggested by Manivannan
+> [1] https://dl.vamrs.com/products/rock960/docs/hw/rock960_sch_v12_20180314.pdf
+> 
+> Changes from prevoius patch:
+> [2] https://patchwork.kernel.org/patch/10968695/
+> 
+> Fix the suject and commit message and corrected the PWR and PERST configuration
+> as per shematics and dts nodes.
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399-ficus.dts    | 7 +++++++
+>  arch/arm64/boot/dts/rockchip/rk3399-rock960.dts  | 7 +++++++
+>  arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi | 3 +--
+>  3 files changed, 15 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
+> index 6b059bd7a04f..94e2a59bc1c7 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
+> @@ -89,6 +89,8 @@
+>  
+>  &pcie0 {
+>  	ep-gpios = <&gpio4 RK_PD4 GPIO_ACTIVE_HIGH>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&pcie_clkreqn_cpm &pcie_perst_l>;
 
-On 05/27/2019 02:39 PM, Kever Yang wrote:
-> Hi Jagan,
->
->
-> On 05/25/2019 02:28 AM, Jagan Teki wrote:
->> On Fri, May 17, 2019 at 4:00 PM Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org> wrote:
->>> Add initial support for Rock PI 4 board.
->>>
->>> Specification
->>> - Rockchip RK3399
->>> - LPDDR4
->>> - eMMC
->>> - SD card slot
->>> - RTL8211E 1Gbps
->>> - HDMI In/Out, DP, MIPI DSI/CSI
->>> - PCIe M.2
->>> - USB 2.0, USB-3.0
->>> - USB C Type
->>>
->>> Commit details of rk3399-rock-pi-4.dts sync from Linux 5.1-rc2:
->>> "arm64: dts: rockchip: add ROCK Pi 4 DTS support"
->>> (sha1: 1b5715c602fda7b812af0e190eddcce2812e5417)
->>>
->>> Signed-off-by: Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
->>> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
->>> ---
->>> Changes for v8:
->>> - Add TPL support
->>> - Now the bootchain is
->>>   rkbin (TPL) -> SPL -> U-Boot proper
->> Seems like Kever is busy or off (I ping him privately) and these
->> patches are supposed to merge during RC's. I'm planning merge in
->> tomorrow or day after, let me know if any concerns?
->>
-> Sorry, I'm on business trip for the last whole week, and I'm back now.
->
-> Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Looks like ep-gpio is wrong here :/ I probably referred old schematics
+at that time. Correct pin mapping is,
 
-Applied to u-boot-rockchip/master, thanks!
+ep-gpios = <&gpio2 RK_PD4 GPIO_ACTIVE_HIGH>;
 
->
-> Thanks,
-> - Kever
->
->
-> _______________________________________________
-> U-Boot mailing list
-> U-Boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-> https://lists.denx.de/listinfo/u-boot
+And this should be fixed in a separate patch with "Fixes" tag!
+
+>  };
+>  
+>  &pinctrl {
+> @@ -104,6 +106,11 @@
+>  			rockchip,pins =
+>  				<1 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
+>  			};
+> +
+> +		pcie_perst_l: pcie-perst-l {
+> +			rockchip,pins =
+> +				<4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+>  	};
+>  
+>  	usb2 {
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
+> index 12285c51cceb..665fe09c7c74 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
+> @@ -64,6 +64,8 @@
+>  
+>  &pcie0 {
+>  	ep-gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_HIGH>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&pcie_clkreqn_cpm &pcie_perst_l>;
+>  };
+>  
+>  &pinctrl {
+> @@ -104,6 +106,11 @@
+>  			rockchip,pins =
+>  				<2 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
+>  			};
+> +
+> +		pcie_perst_l: pcie-perst-l {
+> +			rockchip,pins =
+> +				<2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+>  	};
+>  
+>  	usb2 {
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+> index c7d48d41e184..3df0cd67b4b2 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+> @@ -55,6 +55,7 @@
+>  
+>  	vcc3v3_pcie: vcc3v3-pcie-regulator {
+>  		compatible = "regulator-fixed";
+> +		gpio = <&gpio2 RK_PA5 GPIO_ACTIVE_HIGH>;
+
+Actually the PWR pin mapping is defined in a separate node for both Rock960
+and Ficus in respective dts. So defining it here would be wrong as the PWR
+pin mapping is different for both boards.
+
+Thanks,
+Mani
+
+>  		enable-active-high;
+>  		pinctrl-names = "default";
+>  		pinctrl-0 = <&pcie_drv>;
+> @@ -382,8 +383,6 @@
+>  
+>  &pcie0 {
+>  	num-lanes = <4>;
+> -	pinctrl-names = "default";
+> -	pinctrl-0 = <&pcie_clkreqn_cpm>;
+>  	vpcie3v3-supply = <&vcc3v3_pcie>;
+>  	status = "okay";
+>  };
+> -- 
+> 2.21.0
+> 
