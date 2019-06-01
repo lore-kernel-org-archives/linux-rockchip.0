@@ -1,94 +1,92 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 2/3] rk3399: nanopi4: Enable TPL
-Date: Sat, 1 Jun 2019 10:39:14 +0800
-Message-ID: <3b0aa147-8a63-302a-b102-b6e4fd72d04d@rock-chips.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 1/3] rk3399: orangepi: Enable TPL
+Date: Sat, 1 Jun 2019 10:39:32 +0800
+Message-ID: <e27cae3b-50ef-af58-0e56-d6c3a826f161@rock-chips.com>
 References: <20190509105746.24830-1-jagan@amarulasolutions.com>
- <20190509105746.24830-2-jagan@amarulasolutions.com>
- <a7a1c1ce-c7c4-dca3-36c3-336785a13b8f@rock-chips.com>
+ <3d1513a8-202a-9906-ddb0-2ed1000696f3@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <a7a1c1ce-c7c4-dca3-36c3-336785a13b8f@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <3d1513a8-202a-9906-ddb0-2ed1000696f3-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAwNS8yOS8yMDE5IDA0OjAyIFBNLCBLZXZlciBZYW5nIHdyb3RlOgo+IEhpIEphZ2FuLAo+
-Cj4KPiBPbiAwNS8wOS8yMDE5IDA2OjU3IFBNLCBKYWdhbiBUZWtpIHdyb3RlOgo+PiBFbmFibGUg
-VFBMIGZvciBOYW5vUEMgVDQsIE5hbm9QSSBNNCBib2FyZHMuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6
-IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgo+Cj4gUmV2aWV3ZWQtYnk6
-IEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+CgpBcHBsaWVkIHRvIHUtYm9v
-dC1yb2NrY2hpcC9tYXN0ZXIsIHRoYW5rcyEKCj4KPiBUaGFua3MsCj4gLSBLZXZlcgo+PiAtLS0K
-Pj4gIGNvbmZpZ3MvbmFub3BjLXQ0LXJrMzM5OV9kZWZjb25maWcgfCA3ICsrKystLS0KPj4gIGNv
-bmZpZ3MvbmFub3BpLW00LXJrMzM5OV9kZWZjb25maWcgfCA3ICsrKystLS0KPj4gIDIgZmlsZXMg
-Y2hhbmdlZCwgOCBpbnNlcnRpb25zKCspLCA2IGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0
-IGEvY29uZmlncy9uYW5vcGMtdDQtcmszMzk5X2RlZmNvbmZpZyBiL2NvbmZpZ3MvbmFub3BjLXQ0
-LXJrMzM5OV9kZWZjb25maWcKPj4gaW5kZXggZDlmMjEzN2I0Yy4uOWI3ZTE1ZDYzYSAxMDA2NDQK
-Pj4gLS0tIGEvY29uZmlncy9uYW5vcGMtdDQtcmszMzk5X2RlZmNvbmZpZwo+PiArKysgYi9jb25m
-aWdzL25hbm9wYy10NC1yazMzOTlfZGVmY29uZmlnCj4+IEBAIC01LDcgKzUsNyBAQCBDT05GSUdf
-U1BMX0xJQkNPTU1PTl9TVVBQT1JUPXkKPj4gIENPTkZJR19TUExfTElCR0VORVJJQ19TVVBQT1JU
-PXkKPj4gIENPTkZJR19TWVNfTUFMTE9DX0ZfTEVOPTB4NDAwMAo+PiAgQ09ORklHX1JPQ0tDSElQ
-X1JLMzM5OT15Cj4+IC1DT05GSUdfUk9DS0NISVBfU1BMX1JFU0VSVkVfSVJBTT0weDQwMDAKPj4g
-K0NPTkZJR19ST0NLQ0hJUF9TUExfUkVTRVJWRV9JUkFNPTB4NTAwMDAKPj4gIENPTkZJR19ERUJV
-R19VQVJUX0JBU0U9MHhGRjFBMDAwMAo+PiAgQ09ORklHX0RFQlVHX1VBUlRfQ0xPQ0s9MjQwMDAw
-MDAKPj4gIENPTkZJR19TUExfU1RBQ0tfUl9BRERSPTB4ODAwMDAKPj4gQEAgLTE0LDkgKzE0LDgg
-QEAgQ09ORklHX05SX0RSQU1fQkFOS1M9MQo+PiAgQ09ORklHX0RFRkFVTFRfRkRUX0ZJTEU9InJv
-Y2tjaGlwL3JrMzM5OS1uYW5vcGMtdDQuZHRiIgo+PiAgIyBDT05GSUdfRElTUExBWV9DUFVJTkZP
-IGlzIG5vdCBzZXQKPj4gIENPTkZJR19ESVNQTEFZX0JPQVJESU5GT19MQVRFPXkKPj4gLUNPTkZJ
-R19TUExfVEVYVF9CQVNFPTB4ZmY4YzIwMDAKPj4gIENPTkZJR19TUExfU1RBQ0tfUj15Cj4+IC1D
-T05GSUdfU1BMX1NUQUNLX1JfTUFMTE9DX1NJTVBMRV9MRU49MHg0MDAwCj4+ICtDT05GSUdfU1BM
-X1NUQUNLX1JfTUFMTE9DX1NJTVBMRV9MRU49MHgxMDAwMAo+PiAgQ09ORklHX0NNRF9CT09UWj15
-Cj4+ICBDT05GSUdfQ01EX0dQVD15Cj4+ICBDT05GSUdfQ01EX01NQz15Cj4+IEBAIC0yNCw2ICsy
-Myw3IEBAIENPTkZJR19DTURfU0Y9eQo+PiAgQ09ORklHX0NNRF9VU0I9eQo+PiAgIyBDT05GSUdf
-Q01EX1NFVEVYUFIgaXMgbm90IHNldAo+PiAgQ09ORklHX0NNRF9USU1FPXkKPj4gK0NPTkZJR19U
-UEw9eQo+PiAgQ09ORklHX1NQTF9PRl9DT05UUk9MPXkKPj4gIENPTkZJR19ERUZBVUxUX0RFVklD
-RV9UUkVFPSJyazMzOTktbmFub3BjLXQ0Igo+PiAgQ09ORklHX09GX1NQTF9SRU1PVkVfUFJPUFM9
-InBpbmN0cmwtMCBwaW5jdHJsLW5hbWVzIGNsb2NrLW5hbWVzIGludGVycnVwdC1wYXJlbnQgYXNz
-aWduZWQtY2xvY2tzIGFzc2lnbmVkLWNsb2NrLXJhdGVzIGFzc2lnbmVkLWNsb2NrLXBhcmVudHMi
-Cj4+IEBAIC01Niw0ICs1Niw1IEBAIENPTkZJR19VU0JfRVRIRVJfTUNTNzgzMD15Cj4+ICBDT05G
-SUdfVVNCX0VUSEVSX1JUTDgxNTI9eQo+PiAgQ09ORklHX1VTQl9FVEhFUl9TTVNDOTVYWD15Cj4+
-ICBDT05GSUdfVVNFX1RJTllfUFJJTlRGPXkKPj4gK0NPTkZJR19TUExfVElOWV9NRU1TRVQ9eQo+
-PiAgQ09ORklHX0VSUk5PX1NUUj15Cj4+IGRpZmYgLS1naXQgYS9jb25maWdzL25hbm9waS1tNC1y
-azMzOTlfZGVmY29uZmlnIGIvY29uZmlncy9uYW5vcGktbTQtcmszMzk5X2RlZmNvbmZpZwo+PiBp
-bmRleCBjMjgzMjc4OGYwLi45MmU3MGRkOTM5IDEwMDY0NAo+PiAtLS0gYS9jb25maWdzL25hbm9w
-aS1tNC1yazMzOTlfZGVmY29uZmlnCj4+ICsrKyBiL2NvbmZpZ3MvbmFub3BpLW00LXJrMzM5OV9k
-ZWZjb25maWcKPj4gQEAgLTUsNyArNSw3IEBAIENPTkZJR19TUExfTElCQ09NTU9OX1NVUFBPUlQ9
-eQo+PiAgQ09ORklHX1NQTF9MSUJHRU5FUklDX1NVUFBPUlQ9eQo+PiAgQ09ORklHX1NZU19NQUxM
-T0NfRl9MRU49MHg0MDAwCj4+ICBDT05GSUdfUk9DS0NISVBfUkszMzk5PXkKPj4gLUNPTkZJR19S
-T0NLQ0hJUF9TUExfUkVTRVJWRV9JUkFNPTB4NDAwMAo+PiArQ09ORklHX1JPQ0tDSElQX1NQTF9S
-RVNFUlZFX0lSQU09MHg1MDAwMAo+PiAgQ09ORklHX0RFQlVHX1VBUlRfQkFTRT0weEZGMUEwMDAw
-Cj4+ICBDT05GSUdfREVCVUdfVUFSVF9DTE9DSz0yNDAwMDAwMAo+PiAgQ09ORklHX1NQTF9TVEFD
-S19SX0FERFI9MHg4MDAwMAo+PiBAQCAtMTQsOSArMTQsOCBAQCBDT05GSUdfTlJfRFJBTV9CQU5L
-Uz0xCj4+ICBDT05GSUdfREVGQVVMVF9GRFRfRklMRT0icm9ja2NoaXAvcmszMzk5LW5hbm9waS1t
-NC5kdGIiCj4+ICAjIENPTkZJR19ESVNQTEFZX0NQVUlORk8gaXMgbm90IHNldAo+PiAgQ09ORklH
-X0RJU1BMQVlfQk9BUkRJTkZPX0xBVEU9eQo+PiAtQ09ORklHX1NQTF9URVhUX0JBU0U9MHhmZjhj
-MjAwMAo+PiAgQ09ORklHX1NQTF9TVEFDS19SPXkKPj4gLUNPTkZJR19TUExfU1RBQ0tfUl9NQUxM
-T0NfU0lNUExFX0xFTj0weDQwMDAKPj4gK0NPTkZJR19TUExfU1RBQ0tfUl9NQUxMT0NfU0lNUExF
-X0xFTj0weDEwMDAwCj4+ICBDT05GSUdfQ01EX0JPT1RaPXkKPj4gIENPTkZJR19DTURfR1BUPXkK
-Pj4gIENPTkZJR19DTURfTU1DPXkKPj4gQEAgLTI0LDYgKzIzLDcgQEAgQ09ORklHX0NNRF9TRj15
-Cj4+ICBDT05GSUdfQ01EX1VTQj15Cj4+ICAjIENPTkZJR19DTURfU0VURVhQUiBpcyBub3Qgc2V0
-Cj4+ICBDT05GSUdfQ01EX1RJTUU9eQo+PiArQ09ORklHX1RQTD15Cj4+ICBDT05GSUdfU1BMX09G
-X0NPTlRST0w9eQo+PiAgQ09ORklHX0RFRkFVTFRfREVWSUNFX1RSRUU9InJrMzM5OS1uYW5vcGkt
-bTQiCj4+ICBDT05GSUdfT0ZfU1BMX1JFTU9WRV9QUk9QUz0icGluY3RybC0wIHBpbmN0cmwtbmFt
-ZXMgY2xvY2stbmFtZXMgaW50ZXJydXB0LXBhcmVudCBhc3NpZ25lZC1jbG9ja3MgYXNzaWduZWQt
-Y2xvY2stcmF0ZXMgYXNzaWduZWQtY2xvY2stcGFyZW50cyIKPj4gQEAgLTU2LDQgKzU2LDUgQEAg
-Q09ORklHX1VTQl9FVEhFUl9NQ1M3ODMwPXkKPj4gIENPTkZJR19VU0JfRVRIRVJfUlRMODE1Mj15
-Cj4+ICBDT05GSUdfVVNCX0VUSEVSX1NNU0M5NVhYPXkKPj4gIENPTkZJR19VU0VfVElOWV9QUklO
-VEY9eQo+PiArQ09ORklHX1NQTF9USU5ZX01FTVNFVD15Cj4+ICBDT05GSUdfRVJSTk9fU1RSPXkK
-Pgo+Cj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+
-IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCj4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczov
-L2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cg==
+
+
+On 05/29/2019 04:01 PM, Kever Yang wrote:
+> Hi Jagan,
+>
+>
+> On 05/09/2019 06:57 PM, Jagan Teki wrote:
+>> Enable TPL for OrangePI rk3399 board.
+>>
+>> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+> Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+Applied to u-boot-rockchip/master, thanks!
+
+>
+> Thanks,
+> - Kever
+>> ---
+>>  configs/orangepi-rk3399_defconfig | 7 ++++---
+>>  1 file changed, 4 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/configs/orangepi-rk3399_defconfig b/configs/orangepi-rk3399_defconfig
+>> index 3f02c89983..90021bb695 100644
+>> --- a/configs/orangepi-rk3399_defconfig
+>> +++ b/configs/orangepi-rk3399_defconfig
+>> @@ -5,7 +5,7 @@ CONFIG_SPL_LIBCOMMON_SUPPORT=y
+>>  CONFIG_SPL_LIBGENERIC_SUPPORT=y
+>>  CONFIG_SYS_MALLOC_F_LEN=0x4000
+>>  CONFIG_ROCKCHIP_RK3399=y
+>> -CONFIG_ROCKCHIP_SPL_RESERVE_IRAM=0x4000
+>> +CONFIG_ROCKCHIP_SPL_RESERVE_IRAM=0x50000
+>>  CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>>  CONFIG_DEBUG_UART_CLOCK=24000000
+>>  CONFIG_SPL_STACK_R_ADDR=0x80000
+>> @@ -14,9 +14,8 @@ CONFIG_NR_DRAM_BANKS=1
+>>  CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-orangepi.dtb"
+>>  # CONFIG_DISPLAY_CPUINFO is not set
+>>  CONFIG_DISPLAY_BOARDINFO_LATE=y
+>> -CONFIG_SPL_TEXT_BASE=0xff8c2000
+>>  CONFIG_SPL_STACK_R=y
+>> -CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x4000
+>> +CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
+>>  CONFIG_CMD_BOOTZ=y
+>>  CONFIG_CMD_GPT=y
+>>  CONFIG_CMD_MMC=y
+>> @@ -24,6 +23,7 @@ CONFIG_CMD_SF=y
+>>  CONFIG_CMD_USB=y
+>>  # CONFIG_CMD_SETEXPR is not set
+>>  CONFIG_CMD_TIME=y
+>> +CONFIG_TPL=y
+>>  CONFIG_SPL_OF_CONTROL=y
+>>  CONFIG_DEFAULT_DEVICE_TREE="rk3399-orangepi"
+>>  CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
+>> @@ -56,4 +56,5 @@ CONFIG_USB_ETHER_MCS7830=y
+>>  CONFIG_USB_ETHER_RTL8152=y
+>>  CONFIG_USB_ETHER_SMSC95XX=y
+>>  CONFIG_USE_TINY_PRINTF=y
+>> +CONFIG_SPL_TINY_MEMSET=y
+>>  CONFIG_ERRNO_STR=y
+>
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
