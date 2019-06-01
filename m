@@ -1,128 +1,76 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Add missing configuration pwr
- amd rst for PCIe
-Date: Sat, 1 Jun 2019 15:21:06 +0530
-Message-ID: <20190601095106.GA2213@Mani-XPS-13-9360>
-References: <20190531201913.1122-1-linux.amoon@gmail.com>
+From: Sasha Levin <sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.1 001/186] media: rockchip/vpu: Fix/re-order
+ probe-error/remove path
+Date: Sat,  1 Jun 2019 09:13:37 -0400
+Message-ID: <20190601131653.24205-1-sashal@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190531201913.1122-1-linux.amoon@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Ezequiel Garcia <ezequiel@collabora.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Vicente Bergas <vicencb@gmail.com>, Jagan Teki <jagan@amarulasolutions.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Cc: Sasha Levin <sashal@kernel.org>, devel@driverdev.osuosl.org, Jonas Karlman <jonas@kwiboo.se>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Boris Brezillon <boris.brezillon@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+From: Jonas Karlman <jonas@kwiboo.se>
 
-On Fri, May 31, 2019 at 08:19:13PM +0000, Anand Moon wrote:
-> This patch add missing PCIe gpio pin (#PCIE_PWR) for vcc3v3_pcie power
-> regulator node also add missing reset pinctrl (#PCIE_PERST_L) for PCIe node.
-> 
-> Signed-off-by: Anand Moon <linux.amoon@gmail.com>
-> ---
-> using schematics: thanks for suggested by Manivannan
-> [1] https://dl.vamrs.com/products/rock960/docs/hw/rock960_sch_v12_20180314.pdf
-> 
-> Changes from prevoius patch:
-> [2] https://patchwork.kernel.org/patch/10968695/
-> 
-> Fix the suject and commit message and corrected the PWR and PERST configuration
-> as per shematics and dts nodes.
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-ficus.dts    | 7 +++++++
->  arch/arm64/boot/dts/rockchip/rk3399-rock960.dts  | 7 +++++++
->  arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi | 3 +--
->  3 files changed, 15 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-> index 6b059bd7a04f..94e2a59bc1c7 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-> @@ -89,6 +89,8 @@
->  
->  &pcie0 {
->  	ep-gpios = <&gpio4 RK_PD4 GPIO_ACTIVE_HIGH>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&pcie_clkreqn_cpm &pcie_perst_l>;
+[ Upstream commit fc8670d1f72b746ff3a5fe441f1fca4c4dba0e6f ]
 
-Looks like ep-gpio is wrong here :/ I probably referred old schematics
-at that time. Correct pin mapping is,
+media_device_cleanup() and v4l2_m2m_unregister_media_controller() were
+missing in the probe error path.
+While at it, re-order calls in the remove path to unregister/cleanup
+things in the reverse order they were initialized/registered.
 
-ep-gpios = <&gpio2 RK_PD4 GPIO_ACTIVE_HIGH>;
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-And this should be fixed in a separate patch with "Fixes" tag!
-
->  };
->  
->  &pinctrl {
-> @@ -104,6 +106,11 @@
->  			rockchip,pins =
->  				<1 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
->  			};
-> +
-> +		pcie_perst_l: pcie-perst-l {
-> +			rockchip,pins =
-> +				<4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
->  	};
->  
->  	usb2 {
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
-> index 12285c51cceb..665fe09c7c74 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
-> @@ -64,6 +64,8 @@
->  
->  &pcie0 {
->  	ep-gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_HIGH>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&pcie_clkreqn_cpm &pcie_perst_l>;
->  };
->  
->  &pinctrl {
-> @@ -104,6 +106,11 @@
->  			rockchip,pins =
->  				<2 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
->  			};
-> +
-> +		pcie_perst_l: pcie-perst-l {
-> +			rockchip,pins =
-> +				<2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
->  	};
->  
->  	usb2 {
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> index c7d48d41e184..3df0cd67b4b2 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> @@ -55,6 +55,7 @@
->  
->  	vcc3v3_pcie: vcc3v3-pcie-regulator {
->  		compatible = "regulator-fixed";
-> +		gpio = <&gpio2 RK_PA5 GPIO_ACTIVE_HIGH>;
-
-Actually the PWR pin mapping is defined in a separate node for both Rock960
-and Ficus in respective dts. So defining it here would be wrong as the PWR
-pin mapping is different for both boards.
-
-Thanks,
-Mani
-
->  		enable-active-high;
->  		pinctrl-names = "default";
->  		pinctrl-0 = <&pcie_drv>;
-> @@ -382,8 +383,6 @@
->  
->  &pcie0 {
->  	num-lanes = <4>;
-> -	pinctrl-names = "default";
-> -	pinctrl-0 = <&pcie_clkreqn_cpm>;
->  	vpcie3v3-supply = <&vcc3v3_pcie>;
->  	status = "okay";
->  };
-> -- 
-> 2.21.0
-> 
+diff --git a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+index 962412c79b917..33b556b3f0df8 100644
+--- a/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
++++ b/drivers/staging/media/rockchip/vpu/rockchip_vpu_drv.c
+@@ -481,10 +481,12 @@ static int rockchip_vpu_probe(struct platform_device *pdev)
+ 	return 0;
+ err_video_dev_unreg:
+ 	if (vpu->vfd_enc) {
++		v4l2_m2m_unregister_media_controller(vpu->m2m_dev);
+ 		video_unregister_device(vpu->vfd_enc);
+ 		video_device_release(vpu->vfd_enc);
+ 	}
+ err_m2m_rel:
++	media_device_cleanup(&vpu->mdev);
+ 	v4l2_m2m_release(vpu->m2m_dev);
+ err_v4l2_unreg:
+ 	v4l2_device_unregister(&vpu->v4l2_dev);
+@@ -501,13 +503,13 @@ static int rockchip_vpu_remove(struct platform_device *pdev)
+ 	v4l2_info(&vpu->v4l2_dev, "Removing %s\n", pdev->name);
+ 
+ 	media_device_unregister(&vpu->mdev);
+-	v4l2_m2m_unregister_media_controller(vpu->m2m_dev);
+-	v4l2_m2m_release(vpu->m2m_dev);
+-	media_device_cleanup(&vpu->mdev);
+ 	if (vpu->vfd_enc) {
++		v4l2_m2m_unregister_media_controller(vpu->m2m_dev);
+ 		video_unregister_device(vpu->vfd_enc);
+ 		video_device_release(vpu->vfd_enc);
+ 	}
++	media_device_cleanup(&vpu->mdev);
++	v4l2_m2m_release(vpu->m2m_dev);
+ 	v4l2_device_unregister(&vpu->v4l2_dev);
+ 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
+ 	pm_runtime_disable(vpu->dev);
+-- 
+2.20.1
