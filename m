@@ -1,147 +1,68 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v4 1/5] drm/rockchip: fix fb references in async update
-Date: Mon, 3 Jun 2019 17:13:34 -0300
-Message-ID: <aecadca2-f67b-5d9d-550e-f90cbca5fd3f@collabora.com>
-References: <20190603165610.24614-1-helen.koike@collabora.com>
- <20190603165610.24614-2-helen.koike@collabora.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] drm: bridge: dw-hdmi: Add hook for resume
+Date: Mon, 3 Jun 2019 14:37:07 -0700
+Message-ID: <CAD=FV=Ukt+Y=CNDR2uRLx5JhwyBK36UH4fCaY00a3FoMm-0VCA@mail.gmail.com>
+References: <20190516214022.65220-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190603165610.24614-2-helen.koike@collabora.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: dri-devel@lists.freedesktop.org, nicholas.kazlauskas@amd.com
-Cc: andrey.grodzovsky@amd.com, daniel.vetter@ffwll.ch, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, boris.brezillon@collabora.com, David Airlie <airlied@linux.ie>, Sean Paul <seanpaul@google.com>, kernel@collabora.com, harry.wentland@amd.com, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@google.com>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190516214022.65220-1-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>, =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Laurent,
 
-
-On 6/3/19 1:56 PM, Helen Koike wrote:
-> In the case of async update, modifications are done in place, i.e. in the
-> current plane state, so the new_state is prepared and the new_state is
-> cleaned up (instead of the old_state, unlike what happens in a
-> normal sync update).
-> To cleanup the old_fb properly, it needs to be placed in the new_state
-> in the end of async_update, so cleanup call will unreference the old_fb
-> correctly.
-> 
-> Also, the previous code had a:
-> 
-> 	plane_state = plane->funcs->atomic_duplicate_state(plane);
-> 	...
-> 	swap(plane_state, plane->state);
-> 
-> 	if (plane->state->fb && plane->state->fb != new_state->fb) {
-> 	...
-> 	}
-> 
-> Which was wrong, as the fb were just assigned to be equal, so this if
-> statement nevers evaluates to true.
-> 
-> Another details is that the function drm_crtc_vblank_get() can only be
-> called when vop->is_enabled is true, otherwise it has no effect and
-> trows a WARN_ON().
-> 
-> Calling drm_atomic_set_fb_for_plane() (which get a referent of the new
-> fb and pus the old fb) is not required, as it is taken care by
-> drm_mode_cursor_universal() when calling
-> drm_atomic_helper_update_plane().
-> 
-> Signed-off-by: Helen Koike <helen.koike@collabora.com>
-
-Cc: <stable@vger.kernel.org> # v4.20+
-Fixes: 15609559a834 ("drm/rockchip: update cursors asynchronously
-through atomic.")
-
-> 
+On Thu, May 16, 2019 at 2:40 PM Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+>
+> On Rockchip rk3288-based Chromebooks when you do a suspend/resume
+> cycle:
+>
+> 1. You lose the ability to detect an HDMI device being plugged in.
+>
+> 2. If you're using the i2c bus built in to dw_hdmi then it stops
+> working.
+>
+> Let's add a hook to the core dw-hdmi driver so that we can call it in
+> dw_hdmi-rockchip in the next commit.
+>
+> NOTE: the exact set of steps I've done here in resume come from
+> looking at the normal dw_hdmi init sequence in upstream Linux plus the
+> sequence that we did in downstream Chrome OS 3.14.  Testing show that
+> it seems to work, but if an extra step is needed or something here is
+> not needed we could improve it.
+>
+> As part of this change we'll refactor the hardware init bits of
+> dw-hdmi to happen all in one function and all at the same time.  Since
+> we need to init the interrupt mutes before we request the IRQ, this
+> means moving the hardware init earlier in the function, but there
+> should be no problems with that.  Also as part of this we now
+> unconditionally init the "i2c" parts of dw-hdmi, but again that ought
+> to be fine.
+>
+> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 > ---
-> Hello,
-> 
-> I tested on the rockchip ficus v1.1 using igt plane_cursor_legacy and
-> kms_cursor_legacy and I didn't see any regressions.
-> 
-> Changes in v4: None
-> Changes in v3:
-> - use swap() to swap old and new framebuffers in async_update
-> - get the reference to old_fb and set the worker after vop_plane_atomic_update()
-> - add a FIXME tag for when we have multiple fbs to be released when
-> vblank happens.
-> - update commit message
-> 
-> Changes in v2: None
-> 
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 51 +++++++++++----------
->  1 file changed, 26 insertions(+), 25 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> index 4189ca17f381..b7c47d1153c6 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> @@ -919,29 +919,17 @@ static void vop_plane_atomic_async_update(struct drm_plane *plane,
->  					  struct drm_plane_state *new_state)
->  {
->  	struct vop *vop = to_vop(plane->state->crtc);
-> -	struct drm_plane_state *plane_state;
-> -
-> -	plane_state = plane->funcs->atomic_duplicate_state(plane);
-> -	plane_state->crtc_x = new_state->crtc_x;
-> -	plane_state->crtc_y = new_state->crtc_y;
-> -	plane_state->crtc_h = new_state->crtc_h;
-> -	plane_state->crtc_w = new_state->crtc_w;
-> -	plane_state->src_x = new_state->src_x;
-> -	plane_state->src_y = new_state->src_y;
-> -	plane_state->src_h = new_state->src_h;
-> -	plane_state->src_w = new_state->src_w;
-> -
-> -	if (plane_state->fb != new_state->fb)
-> -		drm_atomic_set_fb_for_plane(plane_state, new_state->fb);
-> -
-> -	swap(plane_state, plane->state);
-> -
-> -	if (plane->state->fb && plane->state->fb != new_state->fb) {
-> -		drm_framebuffer_get(plane->state->fb);
-> -		WARN_ON(drm_crtc_vblank_get(plane->state->crtc) != 0);
-> -		drm_flip_work_queue(&vop->fb_unref_work, plane->state->fb);
-> -		set_bit(VOP_PENDING_FB_UNREF, &vop->pending);
-> -	}
-> +	struct drm_framebuffer *old_fb = plane->state->fb;
-> +
-> +	plane->state->crtc_x = new_state->crtc_x;
-> +	plane->state->crtc_y = new_state->crtc_y;
-> +	plane->state->crtc_h = new_state->crtc_h;
-> +	plane->state->crtc_w = new_state->crtc_w;
-> +	plane->state->src_x = new_state->src_x;
-> +	plane->state->src_y = new_state->src_y;
-> +	plane->state->src_h = new_state->src_h;
-> +	plane->state->src_w = new_state->src_w;
-> +	swap(plane->state->fb, new_state->fb);
->  
->  	if (vop->is_enabled) {
->  		rockchip_drm_psr_inhibit_get_state(new_state->state);
-> @@ -950,9 +938,22 @@ static void vop_plane_atomic_async_update(struct drm_plane *plane,
->  		vop_cfg_done(vop);
->  		spin_unlock(&vop->reg_lock);
->  		rockchip_drm_psr_inhibit_put_state(new_state->state);
-> -	}
->  
-> -	plane->funcs->atomic_destroy_state(plane, plane_state);
-> +		/*
-> +		 * A scanout can still be occurring, so we can't drop the
-> +		 * reference to the old framebuffer. To solve this we get a
-> +		 * reference to old_fb and set a worker to release it later.
-> +		 * FIXME: if we perform 500 async_update calls before the
-> +		 * vblank, then we can have 500 different framebuffers waiting
-> +		 * to be released.
-> +		 */
-> +		if (old_fb && plane->state->fb != old_fb) {
-> +			drm_framebuffer_get(old_fb);
-> +			WARN_ON(drm_crtc_vblank_get(plane->state->crtc) != 0);
-> +			drm_flip_work_queue(&vop->fb_unref_work, old_fb);
-> +			set_bit(VOP_PENDING_FB_UNREF, &vop->pending);
-> +		}
-> +	}
->  }
->  
->  static const struct drm_plane_helper_funcs plane_helper_funcs = {
-> 
+>
+> Changes in v2:
+> - No empty stub for suspend (Laurent)
+> - Refactor to use the same code in probe and resume (Laurent)
+> - Unconditionally init i2c (seems OK + needed before hdmi->i2c init)
+> - Combine "init" of i2c and "setup" of i2c (no reason to split)
+
+Are you happy with this now?  Even if you feel like you don't want to
+give it a full Reviewed-by, it'd good if you could confirm that I
+handled your suggestions properly.
+
+Thanks!  :-)
+
+-Doug
