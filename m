@@ -1,73 +1,56 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v8 RESEND 2/5] regulator: rk808: add RK809 and RK817
- support.
-Date: Mon, 3 Jun 2019 19:22:21 +0100
-Message-ID: <20190603182221.GA2456@sirena.org.uk>
-References: <20190603170900.5195-1-heiko@sntech.de>
- <20190603170900.5195-3-heiko@sntech.de>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v2 0/3] brcmfmac: sdio: Deal better w/ transmission errors waking from idle
+Date: Mon,  3 Jun 2019 11:37:37 -0700
+Message-ID: <20190603183740.239031-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="XiX5sJQOWZsNRXst"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190603170900.5195-3-heiko@sntech.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: lee.jones@linaro.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, tony.xie@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com
+To: Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Arend van Spriel <arend.vanspriel@broadcom.com>
+Cc: brcm80211-dev-list.pdl@broadcom.com, linux-rockchip@lists.infradead.org, Double Lo <double.lo@cypress.com>, briannorris@chromium.org, linux-wireless@vger.kernel.org, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, mka@chromium.org, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, netdev@vger.kernel.org, brcm80211-dev-list@cypress.com, Douglas Anderson <dianders@chromium.org>, linux-mmc@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, YueHaibing <yuehaibing@huawei.com>, Hans de Goede <hdegoede@redhat.com>, Hante Meuleman <hante.meuleman@broadcom.com>, Michael Trimarchi <michael@amarulasolutions.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Franky Lin <franky.lin@broadcom.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+This series attempts to deal better with the expected transmission
+errors that we get when waking up (from idle) the SDIO-based WiFi on
+rk3288-veyron-minnie, rk3288-veyron-speedy, and rk3288-veyron-mickey.
 
---XiX5sJQOWZsNRXst
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Some details about those errors can be found in
+<https://crbug.com/960222>, but to summarize it here: if we try to
+send the wakeup command to the WiFi card at the same time it has
+decided to wake up itself then it will behave badly on the SDIO bus.
+This can cause timeouts or CRC errors.
 
-On Mon, Jun 03, 2019 at 07:08:57PM +0200, Heiko Stuebner wrote:
+When I tested on 4.19 and 4.20 these CRC errors can be seen to cause
+re-tuning.  Since I am currently developing on 4.19 this was the
+original problem I attempted to solve.
 
->         default:
-> -               pr_warn("%s ramp_delay: %d not supported, setting 10000\n",
-> -                       rdev->desc->name, ramp_delay);
-> +               dev_warn(&rdev->dev,
-> +                        "%s ramp_delay: %d not supported, setting 10000\n",
-> +                        rdev->desc->name, ramp_delay);
+On mainline it turns out that you don't see the retuning errors but
+you see tons of spam about timeouts trying to wakeup from sleep.  I
+tracked down the commit that was causing that and have partially
+reverted it here.  I have no real knowledge about Broadcom WiFi, but
+the commit that was causing problems sounds (from the descriptioin) to
+be a hack commit penalizing all Broadcom WiFi users because of a bug
+in a Cypress SD controller.  I will let others comment if this is
+truly the case and, if so, what the right solution should be.
 
-This appears to be unrelated and should've been a separate patch.
+There wasn't a good resolution on v1 and it's been a while, so I'm
+sending out a v2.  Other than changing patch #1 to a full revert, the
+only other changes here are just to the patch descriptions.
 
-> +static int rk817_check_suspend_voltage(int id)
-> +{
-> +	if (id >= RK817_ID_DCDC1 && id <= RK817_ID_LDO9)
-> +		return 0;
-> +	return -1;
-> +}
+Changes in v2:
+- A full revert, not just a partial one (Arend).  ...with explicit Cc.
+- Updated commit message to clarify based on discussion of v1.
 
-Rather than have these checks in the implementation you should just not
-define these operations for regulators that don't have the
-functionality.
+Douglas Anderson (3):
+  Revert "brcmfmac: disable command decode in sdio_aos"
+  mmc: core: API for temporarily disabling auto-retuning due to errors
+  brcmfmac: sdio: Disable auto-tuning around commands expected to fail
 
-> +static unsigned int rk8xx_regulator_of_map_mode(unsigned int mode)
-> +{
-> +	if (mode == 1)
-> +		return REGULATOR_MODE_FAST;
-> +	if (mode == 2)
-> +		return REGULATOR_MODE_NORMAL;
-> +
-> +	return -EINVAL;
-> +}
+ drivers/mmc/core/core.c                       | 27 +++++++++++++++++--
+ .../broadcom/brcm80211/brcmfmac/sdio.c        |  9 +++----
+ include/linux/mmc/core.h                      |  2 ++
+ include/linux/mmc/host.h                      |  1 +
+ 4 files changed, 32 insertions(+), 7 deletions(-)
 
-This should be written as a switch statement for clarity.
-
---XiX5sJQOWZsNRXst
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlz1ZVsACgkQJNaLcl1U
-h9A1LAf+IawRfBxIBUR2HWNgjqoJMnLF0GaliOyoJBELCf9chqPQk1+aTKdnn4l0
-MLYTCsLJA77ur0D8ncMYsPvvBRUasG5U0T5XEyJzXWYNIx7togwumtv/w3JAnBSh
-RRMSKYhaS/wNrVHdYcVt8SzVVrVkB5OsYKXzPDbRRFTmeHXrxO2YKjLY9AQK93Sg
-cruWOCSi6HuzhAxlr5uf9TcaEM6VsN4+0HXsKT68T9iJ87q5/lhsL6REBsayhaGF
-/hlyx7ZqehspqO23eFUX1g4wTSTdatd1UXZ8RoqzrFuOX44+hsw0snF9GeCCwVUH
-KWc4k3Qa6PrxyYA9/f9G316d63x0YQ==
-=QMyH
------END PGP SIGNATURE-----
-
---XiX5sJQOWZsNRXst--
+-- 
+2.22.0.rc1.311.g5d7573a151-goog
