@@ -1,52 +1,138 @@
-From: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v4 0/5] drm: Fix fb changes for async updates
-Date: Mon,  3 Jun 2019 13:56:05 -0300
-Message-ID: <20190603165610.24614-1-helen.koike@collabora.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: [PATCH v4 1/5] drm/rockchip: fix fb references in async update
+Date: Mon,  3 Jun 2019 13:56:06 -0300
+Message-ID: <20190603165610.24614-2-helen.koike@collabora.com>
+References: <20190603165610.24614-1-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/amd-gfx>
-List-Post: <mailto:amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "amd-gfx" <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, nicholas.kazlauskas-5C7GfCeVMHo@public.gmane.org
-Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sean Paul <seanpaul-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, daniel.vetter-/w4YWyX8dFk@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org, Mamta Shukla <mamtashukla555-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Anthony Koo <Anthony.Koo-5C7GfCeVMHo@public.gmane.org>, =?UTF-8?q?Ville=20Syrj=C3=A4l=C3=A4?= <ville.syrjala-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "David (ChunMing) Zhou" <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, Mario Kleiner <mario.kleiner.de-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bhawanpreet Lakha <Bhawanpreet.Lakha-5C7GfCeVMHo@public.gmane.org>, David Francis <David.Francis-5C7GfCeVMHo@public.gmane.org>, amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, harry.wentland-5C7GfCeVMHo@public.gmane.org, andrey.grodzovsky-5C7GfCeVMHo@public.gmane.org, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, Leo Li <sunpeng.li-5C7GfCeVMHo@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Maxime Ripard <maxime.ripard@bootlin.>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190603165610.24614-1-helen.koike@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: dri-devel@lists.freedesktop.org, nicholas.kazlauskas@amd.com
+Cc: andrey.grodzovsky@amd.com, daniel.vetter@ffwll.ch, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, boris.brezillon@collabora.com, David Airlie <airlied@linux.ie>, Sean Paul <seanpaul@google.com>, kernel@collabora.com, harry.wentland@amd.com, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu@google.com>, Helen Koike <helen.koike@collabora.com>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8sCgpJJ20gcmUtc2VuZGluZyB0aGlzIHNlcmllcyB3aXRoIHRoZSBhY2tlZCBieSBpbiB0
-aGUgbXNtIHBhdGNoIGFuZAp1cGRhdGluZyB0aGUgZG9jcyBpbiB0aGUgbGFzdCBwYXRjaCwgdGhl
-IHJlc3QgaXMgdGhlIHNhbWUuCgp2MyBsaW5rOiBodHRwczovL3BhdGNod29yay5rZXJuZWwub3Jn
-L3Byb2plY3QvZHJpLWRldmVsL2xpc3QvP3Nlcmllcz05MTM1MwoKVGhhbmtzIQpIZWxlbgoKQ2hh
-bmdlcyBpbiB2NDoKLSBhZGQgYWNrZWQgYnkgdGFnCi0gdXBkYXRlIGRvY3MgaW4gYXRvbWljX2Fz
-eW5jX3VwZGF0ZSBjYWxsYmFjawoKQ2hhbmdlcyBpbiB2MzoKLSB1c2Ugc3dhcCgpIHRvIHN3YXAg
-b2xkIGFuZCBuZXcgZnJhbWVidWZmZXJzIGluIGFzeW5jX3VwZGF0ZQotIGdldCB0aGUgcmVmZXJl
-bmNlIHRvIG9sZF9mYiBhbmQgc2V0IHRoZSB3b3JrZXIgYWZ0ZXIgdm9wX3BsYW5lX2F0b21pY191
-cGRhdGUoKQotIGFkZCBhIEZJWE1FIHRhZyBmb3Igd2hlbiB3ZSBoYXZlIG11bHRpcGxlIGZicyB0
-byBiZSByZWxlYXNlZCB3aGVuCnZibGFuayBoYXBwZW5zLgotIHVwZGF0ZSBjb21taXQgbWVzc2Fn
-ZQotIEFkZCBSZXZpZXdlZC1ieSB0YWdzCi0gQWRkIFRPRE8gaW4gZHJtX2F0b21pY19oZWxwZXJf
-YXN5bmNfY29tbWl0KCkKCkNoYW5nZXMgaW4gdjI6Ci0gYWRkZWQgcmV2aWV3ZWQtYnkgdGFnCi0g
-dXBkYXRlIENDIHN0YWJsZSBhbmQgRml4ZXMgdGFnCi0gQWRkZWQgcmV2aWV3ZWQtYnkgdGFnCi0g
-dXBkYXRlZCBDQyBzdGFibGUgYW5kIEZpeGVzIHRhZwotIENoYW5nZSB0aGUgb3JkZXIgb2YgdGhl
-IHBhdGNoIGluIHRoZSBzZXJpZXMsIGFkZCB0aGlzIGFzIHRoZSBsYXN0IG9uZS4KLSBBZGQgZG9j
-dW1lbnRhdGlvbgotIHMvYmFsbGFuY2VkL2JhbGFuY2VkCgpIZWxlbiBLb2lrZSAoNSk6CiAgZHJt
-L3JvY2tjaGlwOiBmaXggZmIgcmVmZXJlbmNlcyBpbiBhc3luYyB1cGRhdGUKICBkcm0vYW1kOiBm
-aXggZmIgcmVmZXJlbmNlcyBpbiBhc3luYyB1cGRhdGUKICBkcm0vbXNtOiBmaXggZmIgcmVmZXJl
-bmNlcyBpbiBhc3luYyB1cGRhdGUKICBkcm0vdmM0OiBmaXggZmIgcmVmZXJlbmNlcyBpbiBhc3lu
-YyB1cGRhdGUKICBkcm06IGRvbid0IGJsb2NrIGZiIGNoYW5nZXMgZm9yIGFzeW5jIHBsYW5lIHVw
-ZGF0ZXMKCiAuLi4vZ3B1L2RybS9hbWQvZGlzcGxheS9hbWRncHVfZG0vYW1kZ3B1X2RtLmMgfCAg
-MyArLQogZHJpdmVycy9ncHUvZHJtL2RybV9hdG9taWNfaGVscGVyLmMgICAgICAgICAgIHwgMjIg
-KysrKy0tLS0KIGRyaXZlcnMvZ3B1L2RybS9tc20vZGlzcC9tZHA1L21kcDVfcGxhbmUuYyAgICB8
-ICA0ICsrCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgfCA1
-MSArKysrKysrKysrLS0tLS0tLS0tCiBkcml2ZXJzL2dwdS9kcm0vdmM0L3ZjNF9wbGFuZS5jICAg
-ICAgICAgICAgICAgfCAgMiArLQogaW5jbHVkZS9kcm0vZHJtX21vZGVzZXRfaGVscGVyX3Z0YWJs
-ZXMuaCAgICAgIHwgIDggKysrCiA2IGZpbGVzIGNoYW5nZWQsIDUyIGluc2VydGlvbnMoKyksIDM4
-IGRlbGV0aW9ucygtKQoKLS0gCjIuMjAuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KYW1kLWdmeCBtYWlsaW5nIGxpc3QKYW1kLWdmeEBsaXN0cy5mcmVl
-ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9hbWQtZ2Z4
+In the case of async update, modifications are done in place, i.e. in the
+current plane state, so the new_state is prepared and the new_state is
+cleaned up (instead of the old_state, unlike what happens in a
+normal sync update).
+To cleanup the old_fb properly, it needs to be placed in the new_state
+in the end of async_update, so cleanup call will unreference the old_fb
+correctly.
+
+Also, the previous code had a:
+
+	plane_state = plane->funcs->atomic_duplicate_state(plane);
+	...
+	swap(plane_state, plane->state);
+
+	if (plane->state->fb && plane->state->fb != new_state->fb) {
+	...
+	}
+
+Which was wrong, as the fb were just assigned to be equal, so this if
+statement nevers evaluates to true.
+
+Another details is that the function drm_crtc_vblank_get() can only be
+called when vop->is_enabled is true, otherwise it has no effect and
+trows a WARN_ON().
+
+Calling drm_atomic_set_fb_for_plane() (which get a referent of the new
+fb and pus the old fb) is not required, as it is taken care by
+drm_mode_cursor_universal() when calling
+drm_atomic_helper_update_plane().
+
+Signed-off-by: Helen Koike <helen.koike@collabora.com>
+
+---
+Hello,
+
+I tested on the rockchip ficus v1.1 using igt plane_cursor_legacy and
+kms_cursor_legacy and I didn't see any regressions.
+
+Changes in v4: None
+Changes in v3:
+- use swap() to swap old and new framebuffers in async_update
+- get the reference to old_fb and set the worker after vop_plane_atomic_update()
+- add a FIXME tag for when we have multiple fbs to be released when
+vblank happens.
+- update commit message
+
+Changes in v2: None
+
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 51 +++++++++++----------
+ 1 file changed, 26 insertions(+), 25 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 4189ca17f381..b7c47d1153c6 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -919,29 +919,17 @@ static void vop_plane_atomic_async_update(struct drm_plane *plane,
+ 					  struct drm_plane_state *new_state)
+ {
+ 	struct vop *vop = to_vop(plane->state->crtc);
+-	struct drm_plane_state *plane_state;
+-
+-	plane_state = plane->funcs->atomic_duplicate_state(plane);
+-	plane_state->crtc_x = new_state->crtc_x;
+-	plane_state->crtc_y = new_state->crtc_y;
+-	plane_state->crtc_h = new_state->crtc_h;
+-	plane_state->crtc_w = new_state->crtc_w;
+-	plane_state->src_x = new_state->src_x;
+-	plane_state->src_y = new_state->src_y;
+-	plane_state->src_h = new_state->src_h;
+-	plane_state->src_w = new_state->src_w;
+-
+-	if (plane_state->fb != new_state->fb)
+-		drm_atomic_set_fb_for_plane(plane_state, new_state->fb);
+-
+-	swap(plane_state, plane->state);
+-
+-	if (plane->state->fb && plane->state->fb != new_state->fb) {
+-		drm_framebuffer_get(plane->state->fb);
+-		WARN_ON(drm_crtc_vblank_get(plane->state->crtc) != 0);
+-		drm_flip_work_queue(&vop->fb_unref_work, plane->state->fb);
+-		set_bit(VOP_PENDING_FB_UNREF, &vop->pending);
+-	}
++	struct drm_framebuffer *old_fb = plane->state->fb;
++
++	plane->state->crtc_x = new_state->crtc_x;
++	plane->state->crtc_y = new_state->crtc_y;
++	plane->state->crtc_h = new_state->crtc_h;
++	plane->state->crtc_w = new_state->crtc_w;
++	plane->state->src_x = new_state->src_x;
++	plane->state->src_y = new_state->src_y;
++	plane->state->src_h = new_state->src_h;
++	plane->state->src_w = new_state->src_w;
++	swap(plane->state->fb, new_state->fb);
+ 
+ 	if (vop->is_enabled) {
+ 		rockchip_drm_psr_inhibit_get_state(new_state->state);
+@@ -950,9 +938,22 @@ static void vop_plane_atomic_async_update(struct drm_plane *plane,
+ 		vop_cfg_done(vop);
+ 		spin_unlock(&vop->reg_lock);
+ 		rockchip_drm_psr_inhibit_put_state(new_state->state);
+-	}
+ 
+-	plane->funcs->atomic_destroy_state(plane, plane_state);
++		/*
++		 * A scanout can still be occurring, so we can't drop the
++		 * reference to the old framebuffer. To solve this we get a
++		 * reference to old_fb and set a worker to release it later.
++		 * FIXME: if we perform 500 async_update calls before the
++		 * vblank, then we can have 500 different framebuffers waiting
++		 * to be released.
++		 */
++		if (old_fb && plane->state->fb != old_fb) {
++			drm_framebuffer_get(old_fb);
++			WARN_ON(drm_crtc_vblank_get(plane->state->crtc) != 0);
++			drm_flip_work_queue(&vop->fb_unref_work, old_fb);
++			set_bit(VOP_PENDING_FB_UNREF, &vop->pending);
++		}
++	}
+ }
+ 
+ static const struct drm_plane_helper_funcs plane_helper_funcs = {
+-- 
+2.20.1
