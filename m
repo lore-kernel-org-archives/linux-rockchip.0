@@ -1,109 +1,73 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v8 RESEND 3/5] dt-bindings: mfd: rk808: Add binding information for RK809 and RK817.
-Date: Mon,  3 Jun 2019 19:08:58 +0200
-Message-ID: <20190603170900.5195-4-heiko@sntech.de>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v8 RESEND 2/5] regulator: rk808: add RK809 and RK817
+ support.
+Date: Mon, 3 Jun 2019 19:22:21 +0100
+Message-ID: <20190603182221.GA2456@sirena.org.uk>
 References: <20190603170900.5195-1-heiko@sntech.de>
+ <20190603170900.5195-3-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="XiX5sJQOWZsNRXst"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190603170900.5195-1-heiko@sntech.de>
+Content-Disposition: inline
+In-Reply-To: <20190603170900.5195-3-heiko@sntech.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org, lee.jones@linaro.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, tony.xie@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com, Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: lee.jones@linaro.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, tony.xie@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Tony Xie <tony.xie@rock-chips.com>
 
-Add device tree bindings documentation for Rockchip's RK809 & RK817 PMIC.
+--XiX5sJQOWZsNRXst
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- .../devicetree/bindings/mfd/rk808.txt         | 44 +++++++++++++++++++
- 1 file changed, 44 insertions(+)
+On Mon, Jun 03, 2019 at 07:08:57PM +0200, Heiko Stuebner wrote:
 
-diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-index 1683ec3245bc..04df07f6f793 100644
---- a/Documentation/devicetree/bindings/mfd/rk808.txt
-+++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-@@ -3,11 +3,15 @@ RK8XX Power Management Integrated Circuit
- The rk8xx family current members:
- rk805
- rk808
-+rk809
-+rk817
- rk818
- 
- Required properties:
- - compatible: "rockchip,rk805"
- - compatible: "rockchip,rk808"
-+- compatible: "rockchip,rk809"
-+- compatible: "rockchip,rk817"
- - compatible: "rockchip,rk818"
- - reg: I2C slave address
- - interrupts: the interrupt outputs of the controller.
-@@ -45,6 +49,23 @@ Optional RK808 properties:
-   the gpio controller. If DVS GPIOs aren't present, voltage changes will happen
-   very quickly with no slow ramp time.
- 
-+Optional shared RK809 and RK817 properties:
-+- vcc1-supply:  The input supply for DCDC_REG1
-+- vcc2-supply:  The input supply for DCDC_REG2
-+- vcc3-supply:  The input supply for DCDC_REG3
-+- vcc4-supply:  The input supply for DCDC_REG4
-+- vcc5-supply:  The input supply for LDO_REG1, LDO_REG2, LDO_REG3
-+- vcc6-supply:  The input supply for LDO_REG4, LDO_REG5, LDO_REG6
-+- vcc7-supply:  The input supply for LDO_REG7, LDO_REG8, LDO_REG9
-+
-+Optional RK809 properties:
-+- vcc8-supply:  The input supply for SWITCH_REG1
-+- vcc9-supply:  The input supply for DCDC_REG5, SWITCH_REG2
-+
-+Optional RK817 properties:
-+- vcc8-supply:  The input supply for BOOST
-+- vcc9-supply:  The input supply for OTG_SWITCH
-+
- Optional RK818 properties:
- - vcc1-supply:  The input supply for DCDC_REG1
- - vcc2-supply:  The input supply for DCDC_REG2
-@@ -86,6 +107,21 @@ number as described in RK808 datasheet.
- 	- SWITCH_REGn
- 		- valid values for n are 1 to 2
- 
-+Following regulators of the RK809 and RK817 PMIC blocks are supported. Note that
-+the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
-+number as described in RK809 and RK817 datasheets.
-+
-+	- DCDC_REGn
-+		- valid values for n are 1 to 5 for RK809.
-+		- valid values for n are 1 to 4 for RK817.
-+	- LDO_REGn
-+		- valid values for n are 1 to 9 for RK809.
-+		- valid values for n are 1 to 9 for RK817.
-+	- SWITCH_REGn
-+		- valid values for n are 1 to 2 for RK809.
-+	- BOOST for RK817
-+	- OTG_SWITCH for RK817
-+
- Following regulators of the RK818 PMIC block are supported. Note that
- the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
- number as described in RK818 datasheet.
-@@ -98,6 +134,14 @@ number as described in RK818 datasheet.
- 	- HDMI_SWITCH
- 	- OTG_SWITCH
- 
-+It is necessary to configure three pins for both the RK809 and RK817, the three
-+pins are "gpio_ts" "gpio_gt" "gpio_slp".
-+	The gpio_gt and gpio_ts pins support the gpio function.
-+	The gpio_slp pin is for controlling the pmic states, as below:
-+		- reset
-+		- power down
-+		- sleep
-+
- Standard regulator bindings are used inside regulator subnodes. Check
-   Documentation/devicetree/bindings/regulator/regulator.txt
- for more details
--- 
-2.20.1
+>         default:
+> -               pr_warn("%s ramp_delay: %d not supported, setting 10000\n",
+> -                       rdev->desc->name, ramp_delay);
+> +               dev_warn(&rdev->dev,
+> +                        "%s ramp_delay: %d not supported, setting 10000\n",
+> +                        rdev->desc->name, ramp_delay);
+
+This appears to be unrelated and should've been a separate patch.
+
+> +static int rk817_check_suspend_voltage(int id)
+> +{
+> +	if (id >= RK817_ID_DCDC1 && id <= RK817_ID_LDO9)
+> +		return 0;
+> +	return -1;
+> +}
+
+Rather than have these checks in the implementation you should just not
+define these operations for regulators that don't have the
+functionality.
+
+> +static unsigned int rk8xx_regulator_of_map_mode(unsigned int mode)
+> +{
+> +	if (mode == 1)
+> +		return REGULATOR_MODE_FAST;
+> +	if (mode == 2)
+> +		return REGULATOR_MODE_NORMAL;
+> +
+> +	return -EINVAL;
+> +}
+
+This should be written as a switch statement for clarity.
+
+--XiX5sJQOWZsNRXst
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlz1ZVsACgkQJNaLcl1U
+h9A1LAf+IawRfBxIBUR2HWNgjqoJMnLF0GaliOyoJBELCf9chqPQk1+aTKdnn4l0
+MLYTCsLJA77ur0D8ncMYsPvvBRUasG5U0T5XEyJzXWYNIx7togwumtv/w3JAnBSh
+RRMSKYhaS/wNrVHdYcVt8SzVVrVkB5OsYKXzPDbRRFTmeHXrxO2YKjLY9AQK93Sg
+cruWOCSi6HuzhAxlr5uf9TcaEM6VsN4+0HXsKT68T9iJ87q5/lhsL6REBsayhaGF
+/hlyx7ZqehspqO23eFUX1g4wTSTdatd1UXZ8RoqzrFuOX44+hsw0snF9GeCCwVUH
+KWc4k3Qa6PrxyYA9/f9G316d63x0YQ==
+=QMyH
+-----END PGP SIGNATURE-----
+
+--XiX5sJQOWZsNRXst--
