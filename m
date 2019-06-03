@@ -1,28 +1,65 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] phy: rockchip-dp: Avoid power leak by leaving the PHY
- power on
-Date: Mon, 3 Jun 2019 08:23:35 -0700
-Message-ID: <CAD=FV=XfxT+GB=WvuGm68SaUWhSg7vS5AjQ-sv9e5wdKN7sFjQ@mail.gmail.com>
-References: <20190507234857.81414-1-dianders@chromium.org> <79ca5499-6b7d-fe55-2030-283f5cfb1d27@rock-chips.com>
- <82480aa5-ab2e-11c5-8dd5-c395f72fc6e7@ti.com> <CAD=FV=Us1WyEqYDqVSuA+QPCDU7ceMEwwaWKtLz9ZNBFD0E7NQ@mail.gmail.com>
+From: Suzuki K Poulose <suzuki.poulose-5wv7dgnIgG8@public.gmane.org>
+Subject: [RFC PATCH 09/57] drivers: sound: rockchip: rk3399: Use
+ bus_find_device_by_of_node helper
+Date: Mon,  3 Jun 2019 16:49:35 +0100
+Message-ID: <1559577023-558-10-git-send-email-suzuki.poulose@arm.com>
+References: <1559577023-558-1-git-send-email-suzuki.poulose@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=Us1WyEqYDqVSuA+QPCDU7ceMEwwaWKtLz9ZNBFD0E7NQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Lin Huang <hl@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Derek Basehore <dbasehore@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, Guenter Roeck <groeck@chromium.org>, Elaine Zhang <zhangqing@rock-chips.com>, LKML <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "nickey.yang (nickey.yang@rock-chips.com)" <nickey.yang@rock-chips.com>, wzz <wzz@rock-chips.com>, Huang Jiachai <hjc@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1559577023-558-1-git-send-email-suzuki.poulose-5wv7dgnIgG8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, suzuki.poulose-5wv7dgnIgG8@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, rafael-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Switch to using the bus_find_device_by_of_node helper
 
-On Mon, Jun 3, 2019 at 8:22 AM Doug Anderson <dianders@chromium.org> wrote:
-> > Can someone in Rockchip try to find the root-cause of the issue? Keeping the
-> > PHY off shouldn't increase power draw.
->
-> It sounded like Chris already answered this, though?  Basically things
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Signed-off-by: Suzuki K Poulose <suzuki.poulose-5wv7dgnIgG8@public.gmane.org>
+---
+ sound/soc/rockchip/rk3399_gru_sound.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
-Doh!  Don't know why I said Chris when it was clearly Caesar that
-answered.  Sorry Caesar!
-
--Doug
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index 3d0cc6e..677c92c 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -405,11 +405,6 @@ static const struct dailink_match_data dailink_match[] = {
+ 	},
+ };
+ 
+-static int of_dev_node_match(struct device *dev, void *data)
+-{
+-	return dev->of_node == data;
+-}
+-
+ static int rockchip_sound_codec_node_match(struct device_node *np_codec)
+ {
+ 	struct device *dev;
+@@ -421,8 +416,8 @@ static int rockchip_sound_codec_node_match(struct device_node *np_codec)
+ 			continue;
+ 
+ 		if (dailink_match[i].bus_type) {
+-			dev = bus_find_device(dailink_match[i].bus_type, NULL,
+-					      np_codec, of_dev_node_match);
++			dev = bus_find_device_by_of_node(dailink_match[i].bus_type,
++							 NULL, np_codec);
+ 			if (!dev)
+ 				continue;
+ 			put_device(dev);
+-- 
+2.7.4
