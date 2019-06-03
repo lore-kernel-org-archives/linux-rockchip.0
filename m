@@ -1,58 +1,73 @@
-From: Tom Murphy <tmurphy@arista.com>
-Subject: Re: [PATCH v3 0/4] iommu/amd: Convert the AMD iommu driver to the
- dma-iommu api
-Date: Mon, 3 Jun 2019 12:27:37 +0100
-Message-ID: <CAPL0++72dekt=re1=sTWpCJtMX=mUOc3Jcq=9d1sr1QO25_zFA@mail.gmail.com>
-References: <20190506185207.31069-1-tmurphy@arista.com> <20190603105158.GL12745@8bytes.org>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: [PATCH] arm64: dts: rockchip: fix isp iommu clocks and power domain
+Date: Mon,  3 Jun 2019 11:22:15 -0300
+Message-ID: <20190603142214.24686-1-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190603105158.GL12745@8bytes.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Joerg Roedel <joro@8bytes.org>
-Cc: iommu@lists.linux-foundation.org, Tom Murphy <murphyt7@tcd.ie>, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.in
+To: linux-rockchip@lists.infradead.org
+Cc: kernel@collabora.com, ezequiel@collabora.com, laurent.pinchart@ideasonboard.com, manivannan.sadhasivam@linaro.org, Helen Koike <helen.koike@collabora.com>, linux-arm-kernel@lists.infradead.org, Vicente Bergas <vicencb@gmail.com>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-kernel@vger.kernel.org, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Randy Li <ayaka@soulik.info>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Rob Herring <robh+dt@kernel.org>, Tony Xie <tony.xie@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, Viresh Kumar <viresh.kumar@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jun 3, 2019 at 11:52 AM Joerg Roedel <joro@8bytes.org> wrote:
->
-> Hi Tom,
->
-> On Mon, May 06, 2019 at 07:52:02PM +0100, Tom Murphy wrote:
-> > Convert the AMD iommu driver to the dma-iommu api. Remove the iova
-> > handling and reserve region code from the AMD iommu driver.
->
-> Thank you for your work on this! I appreciate that much, but I am not
-> sure we are ready to make that move for the AMD and Intel IOMMU drivers
-> yet.
->
-> My main concern right now is that these changes will add a per-page
-> table lock into the fast-path for dma-mapping operations. There has been
-> much work in the past to remove all locking from these code-paths and
-> make it scalable on x86.
+isp iommu requires wrapper variants of the clocks.
+noc variants are always on and using the wrapper variants will activate
+{A,H}CLK_ISP{0,1} due to the hierarchy.
 
-Where is the locking introduced? intel doesn't use a lock in it's
-iommu_map function:
-https://github.com/torvalds/linux/blob/f2c7c76c5d0a443053e94adb9f0918fa2fb85c3a/drivers/iommu/intel-iommu.c#L5302
-because it cleverly uses cmpxchg64 to avoid using locks:
-https://github.com/torvalds/linux/blob/f2c7c76c5d0a443053e94adb9f0918fa2fb85c3a/drivers/iommu/intel-iommu.c#L900
-And the locking in AMD's iommu_map function can be removed (and i have
-removed it in my patch set) because it does that same thing as intel:
-https://github.com/torvalds/linux/blob/f2c7c76c5d0a443053e94adb9f0918fa2fb85c3a/drivers/iommu/amd_iommu.c#L1486
+Also add the respective power domain.
 
-Is there something I'm missing?
+Refer:
+ RK3399 TRM v1.4 Fig. 2-4 RK3399 Clock Architecture Diagram
+ RK3399 TRM v1.4 Fig. 8-1 RK3399 Power Domain Partition
 
->
-> The dma-ops implementations in the x86 IOMMU drivers have the benefit
-> that they can call their page-table manipulation functions directly and
-> without locks, because they can make the necessary assumptions. The
-> IOMMU-API mapping/unmapping path can't make these assumptions because it
-> is also used for non-DMA-API use-cases.
->
-> So before we can move the AMD and Intel drivers to the generic DMA-API
-> implementation we need to solve this problem to not introduce new
-> scalability regressions.
->
-> Regards,
->
->         Joerg
->
+Signed-off-by: Helen Koike <helen.koike@collabora.com>
+
+---
+Hello,
+
+I tested this using the isp patch set (which is not upstream
+yet). Without this patch, streaming from the isp stalls.
+
+I'm also enabling the power domain and removing the disable status,
+please let me know if this should be done in a separated patch.
+
+Thanks
+Helen
+
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 196ac9b78076..89594a7276f4 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1706,11 +1706,11 @@
+ 		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
+ 		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		interrupt-names = "isp0_mmu";
+-		clocks = <&cru ACLK_ISP0_NOC>, <&cru HCLK_ISP0_NOC>;
++		clocks = <&cru ACLK_ISP0_WRAPPER>, <&cru HCLK_ISP0_WRAPPER>;
+ 		clock-names = "aclk", "iface";
+ 		#iommu-cells = <0>;
++		power-domains = <&power RK3399_PD_ISP0>;
+ 		rockchip,disable-mmu-reset;
+-		status = "disabled";
+ 	};
+ 
+ 	isp1_mmu: iommu@ff924000 {
+@@ -1718,11 +1718,11 @@
+ 		reg = <0x0 0xff924000 0x0 0x100>, <0x0 0xff925000 0x0 0x100>;
+ 		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		interrupt-names = "isp1_mmu";
+-		clocks = <&cru ACLK_ISP1_NOC>, <&cru HCLK_ISP1_NOC>;
++		clocks = <&cru ACLK_ISP1_WRAPPER>, <&cru HCLK_ISP1_WRAPPER>;
+ 		clock-names = "aclk", "iface";
+ 		#iommu-cells = <0>;
++		power-domains = <&power RK3399_PD_ISP1>;
+ 		rockchip,disable-mmu-reset;
+-		status = "disabled";
+ 	};
+ 
+ 	hdmi_sound: hdmi-sound {
+-- 
+2.20.1
