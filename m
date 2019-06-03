@@ -1,126 +1,134 @@
-From: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v4 5/5] drm: don't block fb changes for async plane updates
-Date: Mon,  3 Jun 2019 13:56:10 -0300
-Message-ID: <20190603165610.24614-6-helen.koike@collabora.com>
-References: <20190603165610.24614-1-helen.koike@collabora.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v8 RESEND 5/5] clk: RK808: add RK809 and RK817 support.
+Date: Mon,  3 Jun 2019 19:09:00 +0200
+Message-ID: <20190603170900.5195-6-heiko@sntech.de>
+References: <20190603170900.5195-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-In-Reply-To: <20190603165610.24614-1-helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/amd-gfx>
-List-Post: <mailto:amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "amd-gfx" <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, nicholas.kazlauskas-5C7GfCeVMHo@public.gmane.org
-Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sean Paul <seanpaul-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, daniel.vetter-/w4YWyX8dFk@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, harry.wentland-5C7GfCeVMHo@public.gmane.org, andrey.grodzovsky-5C7GfCeVMHo@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sean Paul <sean-p7yTbzM4H96eqtR555YLDQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =?UTF-8?q?St=C3=A9phane=20Marchesin?= <marcheu-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190603170900.5195-1-heiko@sntech.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: broonie@kernel.org, lee.jones@linaro.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, tony.xie@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com, Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-SW4gdGhlIGNhc2Ugb2YgYSBub3JtYWwgc3luYyB1cGRhdGUsIHRoZSBwcmVwYXJhdGlvbiBvZiBm
-cmFtZWJ1ZmZlcnMgKGJlCml0IGNhbGxpbmcgZHJtX2F0b21pY19oZWxwZXJfcHJlcGFyZV9wbGFu
-ZXMoKSBvciBkb2luZyBzZXR1cHMgd2l0aApkcm1fZnJhbWVidWZmZXJfZ2V0KCkpIGFyZSBwZXJm
-b3JtZWQgaW4gdGhlIG5ld19zdGF0ZSBhbmQgdGhlIHJlc3BlY3RpdmUKY2xlYW51cHMgYXJlIHBl
-cmZvcm1lZCBpbiB0aGUgb2xkX3N0YXRlLgoKSW4gdGhlIGNhc2Ugb2YgYXN5bmMgdXBkYXRlcywg
-dGhlIHByZXBhcmF0aW9uIGlzIGFsc28gZG9uZSBpbiB0aGUKbmV3X3N0YXRlIGJ1dCB0aGUgY2xl
-YW51cHMgYXJlIGRvbmUgaW4gdGhlIG5ld19zdGF0ZSAoYmVjYXVzZSB1cGRhdGVzCmFyZSBwZXJm
-b3JtZWQgaW4gcGxhY2UsIGkuZS4gaW4gdGhlIGN1cnJlbnQgc3RhdGUpLgoKVGhlIGN1cnJlbnQg
-Y29kZSBibG9ja3MgYXN5bmMgdWRwYXRlcyB3aGVuIHRoZSBmYiBpcyBjaGFuZ2VkLCB0dXJuaW5n
-CmFzeW5jIHVwZGF0ZXMgaW50byBzeW5jIHVwZGF0ZXMsIHNsb3dpbmcgZG93biBjdXJzb3IgdXBk
-YXRlcyBhbmQKaW50cm9kdWNpbmcgcmVncmVzc2lvbnMgaW4gaWd0IHRlc3RzIHdpdGggZXJyb3Jz
-IG9mIHR5cGU6CgoiQ1JJVElDQUw6IGNvbXBsZXRlZCA5NyBjdXJzb3IgdXBkYXRlZCBpbiBhIHBl
-cmlvZCBvZiAzMCBmbGlwcywgd2UKZXhwZWN0IHRvIGNvbXBsZXRlIGFwcHJveGltYXRlbHkgMTUz
-NjAgdXBkYXRlcywgd2l0aCB0aGUgdGhyZXNob2xkIHNldAphdCA3NjgwIgoKRmIgY2hhbmdlcyBp
-biBhc3luYyB1cGRhdGVzIHdlcmUgcHJldmVudGVkIHRvIGF2b2lkIHRoZSBmb2xsb3dpbmcgc2Nl
-bmFyaW86CgotIEFzeW5jIHVwZGF0ZSwgb2xkZmIgPSBOVUxMLCBuZXdmYiA9IGZiMSwgcHJlcGFy
-ZSBmYjEsIGNsZWFudXAgZmIxCi0gQXN5bmMgdXBkYXRlLCBvbGRmYiA9IGZiMSwgbmV3ZmIgPSBm
-YjIsIHByZXBhcmUgZmIyLCBjbGVhbnVwIGZiMgotIE5vbi1hc3luYyBjb21taXQsIG9sZGZiID0g
-ZmIyLCBuZXdmYiA9IGZiMSwgcHJlcGFyZSBmYjEsIGNsZWFudXAgZmIyICh3cm9uZykKV2hlcmUg
-d2UgaGF2ZSBhIHNpbmdsZSBjYWxsIHRvIHByZXBhcmUgZmIyIGJ1dCBkb3VibGUgY2xlYW51cCBj
-YWxsIHRvIGZiMi4KClRvIHNvbHZlIHRoZSBhYm92ZSBwcm9ibGVtcywgaW5zdGVhZCBvZiBibG9j
-a2luZyBhc3luYyBmYiBjaGFuZ2VzLCB3ZQpwbGFjZSB0aGUgb2xkIGZyYW1lYnVmZmVyIGluIHRo
-ZSBuZXdfc3RhdGUgb2JqZWN0LCBzbyB3aGVuIHRoZSBjb2RlCnBlcmZvcm1zIGNsZWFudXBzIGlu
-IHRoZSBuZXdfc3RhdGUgaXQgd2lsbCBjbGVhbnVwIHRoZSBvbGRfZmIgYW5kIHdlCndpbGwgaGF2
-ZSB0aGUgZm9sbG93aW5nIHNjZW5hcmlvIGluc3RlYWQ6CgotIEFzeW5jIHVwZGF0ZSwgb2xkZmIg
-PSBOVUxMLCBuZXdmYiA9IGZiMSwgcHJlcGFyZSBmYjEsIG5vIGNsZWFudXAKLSBBc3luYyB1cGRh
-dGUsIG9sZGZiID0gZmIxLCBuZXdmYiA9IGZiMiwgcHJlcGFyZSBmYjIsIGNsZWFudXAgZmIxCi0g
-Tm9uLWFzeW5jIGNvbW1pdCwgb2xkZmIgPSBmYjIsIG5ld2ZiID0gZmIxLCBwcmVwYXJlIGZiMSwg
-Y2xlYW51cCBmYjIKCldoZXJlIGNhbGxzIHRvIHByZXBhcmUvY2xlYW51cCBhcmUgYmFsYW5jZWQu
-CgpDYzogPHN0YWJsZUB2Z2VyLmtlcm5lbC5vcmc+ICMgdjQuMTQrCkZpeGVzOiAyNWRjMTk0YjM0
-ZGQgKCJkcm06IEJsb2NrIGZiIGNoYW5nZXMgZm9yIGFzeW5jIHBsYW5lIHVwZGF0ZXMiKQpTdWdn
-ZXN0ZWQtYnk6IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMuYnJlemlsbG9uQGNvbGxhYm9yYS5jb20+
-ClNpZ25lZC1vZmYtYnk6IEhlbGVuIEtvaWtlIDxoZWxlbi5rb2lrZUBjb2xsYWJvcmEuY29tPgpS
-ZXZpZXdlZC1ieTogQm9yaXMgQnJlemlsbG9uIDxib3Jpcy5icmV6aWxsb25AY29sbGFib3JhLmNv
-bT4KUmV2aWV3ZWQtYnk6IE5pY2hvbGFzIEthemxhdXNrYXMgPG5pY2hvbGFzLmthemxhdXNrYXNA
-YW1kLmNvbT4KCi0tLQoKQ2hhbmdlcyBpbiB2NDoKLSB1cGRhdGUgZG9jcyBpbiBhdG9taWNfYXN5
-bmNfdXBkYXRlIGNhbGxiYWNrCgpDaGFuZ2VzIGluIHYzOgotIEFkZCBSZXZpZXdlZC1ieSB0YWdz
-Ci0gQWRkIFRPRE8gaW4gZHJtX2F0b21pY19oZWxwZXJfYXN5bmNfY29tbWl0KCkKCkNoYW5nZXMg
-aW4gdjI6Ci0gQ2hhbmdlIHRoZSBvcmRlciBvZiB0aGUgcGF0Y2ggaW4gdGhlIHNlcmllcywgYWRk
-IHRoaXMgYXMgdGhlIGxhc3Qgb25lLgotIEFkZCBkb2N1bWVudGF0aW9uCi0gcy9iYWxsYW5jZWQv
-YmFsYW5jZWQKCiBkcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21pY19oZWxwZXIuYyAgICAgIHwgMjIg
-KysrKysrKysrKysrLS0tLS0tLS0tLQogaW5jbHVkZS9kcm0vZHJtX21vZGVzZXRfaGVscGVyX3Z0
-YWJsZXMuaCB8ICA4ICsrKysrKysrCiAyIGZpbGVzIGNoYW5nZWQsIDIwIGluc2VydGlvbnMoKyks
-IDEwIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fYXRvbWlj
-X2hlbHBlci5jIGIvZHJpdmVycy9ncHUvZHJtL2RybV9hdG9taWNfaGVscGVyLmMKaW5kZXggYWNm
-OTkzY2I4ZTUyLi5hYzgxZDg0NDBiNDAgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9kcm1f
-YXRvbWljX2hlbHBlci5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fYXRvbWljX2hlbHBlci5j
-CkBAIC0xNjEwLDE1ICsxNjEwLDYgQEAgaW50IGRybV9hdG9taWNfaGVscGVyX2FzeW5jX2NoZWNr
-KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCiAJICAgIG9sZF9wbGFuZV9zdGF0ZS0+Y3J0YyAhPSBu
-ZXdfcGxhbmVfc3RhdGUtPmNydGMpCiAJCXJldHVybiAtRUlOVkFMOwogCi0JLyoKLQkgKiBGSVhN
-RTogU2luY2UgcHJlcGFyZV9mYiBhbmQgY2xlYW51cF9mYiBhcmUgYWx3YXlzIGNhbGxlZCBvbgot
-CSAqIHRoZSBuZXdfcGxhbmVfc3RhdGUgZm9yIGFzeW5jIHVwZGF0ZXMgd2UgbmVlZCB0byBibG9j
-ayBmcmFtZWJ1ZmZlcgotCSAqIGNoYW5nZXMuIFRoaXMgcHJldmVudHMgdXNlIG9mIGEgZmIgdGhh
-dCdzIGJlZW4gY2xlYW5lZCB1cCBhbmQKLQkgKiBkb3VibGUgY2xlYW51cHMgZnJvbSBvY2N1cmlu
-Zy4KLQkgKi8KLQlpZiAob2xkX3BsYW5lX3N0YXRlLT5mYiAhPSBuZXdfcGxhbmVfc3RhdGUtPmZi
-KQotCQlyZXR1cm4gLUVJTlZBTDsKLQogCWZ1bmNzID0gcGxhbmUtPmhlbHBlcl9wcml2YXRlOwog
-CWlmICghZnVuY3MtPmF0b21pY19hc3luY191cGRhdGUpCiAJCXJldHVybiAtRUlOVkFMOwpAQCAt
-MTY0OSw2ICsxNjQwLDggQEAgRVhQT1JUX1NZTUJPTChkcm1fYXRvbWljX2hlbHBlcl9hc3luY19j
-aGVjayk7CiAgKiBkcm1fYXRvbWljX2FzeW5jX2NoZWNrKCkgc3VjY2VlZHMuIEFzeW5jIGNvbW1p
-dHMgYXJlIG5vdCBzdXBwb3NlZCB0byBzd2FwCiAgKiB0aGUgc3RhdGVzIGxpa2Ugbm9ybWFsIHN5
-bmMgY29tbWl0cywgYnV0IGp1c3QgZG8gaW4tcGxhY2UgY2hhbmdlcyBvbiB0aGUKICAqIGN1cnJl
-bnQgc3RhdGUuCisgKgorICogVE9ETzogSW1wbGVtZW50IGZ1bGwgc3dhcCBpbnN0ZWFkIG9mIGRv
-aW5nIGluLXBsYWNlIGNoYW5nZXMuCiAgKi8KIHZvaWQgZHJtX2F0b21pY19oZWxwZXJfYXN5bmNf
-Y29tbWl0KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCiAJCQkJICAgIHN0cnVjdCBkcm1fYXRvbWlj
-X3N0YXRlICpzdGF0ZSkKQEAgLTE2NTksNiArMTY1Miw5IEBAIHZvaWQgZHJtX2F0b21pY19oZWxw
-ZXJfYXN5bmNfY29tbWl0KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCiAJaW50IGk7CiAKIAlmb3Jf
-ZWFjaF9uZXdfcGxhbmVfaW5fc3RhdGUoc3RhdGUsIHBsYW5lLCBwbGFuZV9zdGF0ZSwgaSkgewor
-CQlzdHJ1Y3QgZHJtX2ZyYW1lYnVmZmVyICpuZXdfZmIgPSBwbGFuZV9zdGF0ZS0+ZmI7CisJCXN0
-cnVjdCBkcm1fZnJhbWVidWZmZXIgKm9sZF9mYiA9IHBsYW5lLT5zdGF0ZS0+ZmI7CisKIAkJZnVu
-Y3MgPSBwbGFuZS0+aGVscGVyX3ByaXZhdGU7CiAJCWZ1bmNzLT5hdG9taWNfYXN5bmNfdXBkYXRl
-KHBsYW5lLCBwbGFuZV9zdGF0ZSk7CiAKQEAgLTE2NjcsMTEgKzE2NjMsMTcgQEAgdm9pZCBkcm1f
-YXRvbWljX2hlbHBlcl9hc3luY19jb21taXQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKIAkJICog
-cGxhbmUtPnN0YXRlIGluLXBsYWNlLCBtYWtlIHN1cmUgYXQgbGVhc3QgY29tbW9uCiAJCSAqIHBy
-b3BlcnRpZXMgaGF2ZSBiZWVuIHByb3Blcmx5IHVwZGF0ZWQuCiAJCSAqLwotCQlXQVJOX09OX09O
-Q0UocGxhbmUtPnN0YXRlLT5mYiAhPSBwbGFuZV9zdGF0ZS0+ZmIpOworCQlXQVJOX09OX09OQ0Uo
-cGxhbmUtPnN0YXRlLT5mYiAhPSBuZXdfZmIpOwogCQlXQVJOX09OX09OQ0UocGxhbmUtPnN0YXRl
-LT5jcnRjX3ggIT0gcGxhbmVfc3RhdGUtPmNydGNfeCk7CiAJCVdBUk5fT05fT05DRShwbGFuZS0+
-c3RhdGUtPmNydGNfeSAhPSBwbGFuZV9zdGF0ZS0+Y3J0Y195KTsKIAkJV0FSTl9PTl9PTkNFKHBs
-YW5lLT5zdGF0ZS0+c3JjX3ggIT0gcGxhbmVfc3RhdGUtPnNyY194KTsKIAkJV0FSTl9PTl9PTkNF
-KHBsYW5lLT5zdGF0ZS0+c3JjX3kgIT0gcGxhbmVfc3RhdGUtPnNyY195KTsKKworCQkvKgorCQkg
-KiBNYWtlIHN1cmUgdGhlIEZCcyBoYXZlIGJlZW4gc3dhcHBlZCBzbyB0aGF0IGNsZWFudXBzIGlu
-IHRoZQorCQkgKiBuZXdfc3RhdGUgcGVyZm9ybXMgYSBjbGVhbnVwIGluIHRoZSBvbGQgRkIuCisJ
-CSAqLworCQlXQVJOX09OX09OQ0UocGxhbmVfc3RhdGUtPmZiICE9IG9sZF9mYik7CiAJfQogfQog
-RVhQT1JUX1NZTUJPTChkcm1fYXRvbWljX2hlbHBlcl9hc3luY19jb21taXQpOwpkaWZmIC0tZ2l0
-IGEvaW5jbHVkZS9kcm0vZHJtX21vZGVzZXRfaGVscGVyX3Z0YWJsZXMuaCBiL2luY2x1ZGUvZHJt
-L2RybV9tb2Rlc2V0X2hlbHBlcl92dGFibGVzLmgKaW5kZXggZjljOTRjMmExMzY0Li5mN2JiZDBi
-MGVjZDEgMTAwNjQ0Ci0tLSBhL2luY2x1ZGUvZHJtL2RybV9tb2Rlc2V0X2hlbHBlcl92dGFibGVz
-LmgKKysrIGIvaW5jbHVkZS9kcm0vZHJtX21vZGVzZXRfaGVscGVyX3Z0YWJsZXMuaApAQCAtMTE4
-NSw2ICsxMTg1LDE0IEBAIHN0cnVjdCBkcm1fcGxhbmVfaGVscGVyX2Z1bmNzIHsKIAkgKiBjdXJy
-ZW50IG9uZSB3aXRoIHRoZSBuZXcgcGxhbmUgY29uZmlndXJhdGlvbnMgaW4gdGhlIG5ldwogCSAq
-IHBsYW5lX3N0YXRlLgogCSAqCisJICogRHJpdmVycyBzaG91bGQgYWxzbyBzd2FwIHRoZSBmcmFt
-ZWJ1ZmZlcnMgYmV0d2VlbiBjdXJyZW50IHBsYW5lCisJICogc3RhdGUgKCZkcm1fcGxhbmUuc3Rh
-dGUpIGFuZCBuZXdfc3RhdGUuCisJICogVGhpcyBpcyByZXF1aXJlZCBzaW5jZSBjbGVhbnVwIGZv
-ciBhc3luYyBjb21taXRzIGlzIHBlcmZvcm1lZCBvbgorCSAqIHRoZSBuZXcgc3RhdGUsIHJhdGhl
-ciB0aGFuIG9sZCBzdGF0ZSBsaWtlIGZvciB0cmFkaXRpb25hbCBjb21taXRzLgorCSAqIFNpbmNl
-IHdlIHdhbnQgdG8gZ2l2ZSB1cCB0aGUgcmVmZXJlbmNlIG9uIHRoZSBjdXJyZW50IChvbGQpIGZi
-CisJICogaW5zdGVhZCBvZiBvdXIgYnJhbmQgbmV3IG9uZSwgc3dhcCB0aGVtIGluIHRoZSBkcml2
-ZXIgZHVyaW5nIHRoZQorCSAqIGFzeW5jIGNvbW1pdC4KKwkgKgogCSAqIEZJWE1FOgogCSAqICAt
-IEl0IG9ubHkgd29ya3MgZm9yIHNpbmdsZSBwbGFuZSB1cGRhdGVzCiAJICogIC0gQXN5bmMgUGFn
-ZWZsaXBzIGFyZSBub3Qgc3VwcG9ydGVkIHlldAotLSAKMi4yMC4xCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwphbWQtZ2Z4IG1haWxpbmcgbGlzdAphbWQt
-Z2Z4QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2FtZC1nZng=
+From: Tony Xie <tony.xie@rock-chips.com>
+
+RK809 and RK817 are power management IC chips for multimedia products.
+most of their functions and registers are same, including the clkout
+funciton.
+
+Signed-off-by: Tony Xie <tony.xie@rock-chips.com>
+Acked-by: Stephen Boyd <sboyd@kernel.org>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ drivers/clk/Kconfig     |  9 +++---
+ drivers/clk/clk-rk808.c | 64 ++++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 67 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
+index e705aab9e38b..3d3899ee64a0 100644
+--- a/drivers/clk/Kconfig
++++ b/drivers/clk/Kconfig
+@@ -52,13 +52,12 @@ config COMMON_CLK_MAX9485
+ 	  This driver supports Maxim 9485 Programmable Audio Clock Generator
+ 
+ config COMMON_CLK_RK808
+-	tristate "Clock driver for RK805/RK808/RK818"
++	tristate "Clock driver for RK805/RK808/RK809/RK817/RK818"
+ 	depends on MFD_RK808
+ 	---help---
+-	  This driver supports RK805, RK808 and RK818 crystal oscillator clock. These
+-	  multi-function devices have two fixed-rate oscillators,
+-	  clocked at 32KHz each. Clkout1 is always on, Clkout2 can off
+-	  by control register.
++	  This driver supports RK805, RK809 and RK817, RK808 and RK818 crystal oscillator clock.
++	  These multi-function devices have two fixed-rate oscillators, clocked at 32KHz each.
++	  Clkout1 is always on, Clkout2 can off by control register.
+ 
+ config COMMON_CLK_HI655X
+ 	tristate "Clock driver for Hi655x" if EXPERT
+diff --git a/drivers/clk/clk-rk808.c b/drivers/clk/clk-rk808.c
+index 8d90bdf5b946..75f2cf0dfc9f 100644
+--- a/drivers/clk/clk-rk808.c
++++ b/drivers/clk/clk-rk808.c
+@@ -96,6 +96,68 @@ of_clk_rk808_get(struct of_phandle_args *clkspec, void *data)
+ 	return idx ? &rk808_clkout->clkout2_hw : &rk808_clkout->clkout1_hw;
+ }
+ 
++static int rk817_clkout2_enable(struct clk_hw *hw, bool enable)
++{
++	struct rk808_clkout *rk808_clkout = container_of(hw,
++							 struct rk808_clkout,
++							 clkout2_hw);
++	struct rk808 *rk808 = rk808_clkout->rk808;
++
++	return regmap_update_bits(rk808->regmap, RK817_SYS_CFG(1),
++				  RK817_CLK32KOUT2_EN,
++				  enable ? RK817_CLK32KOUT2_EN : 0);
++}
++
++static int rk817_clkout2_prepare(struct clk_hw *hw)
++{
++	return rk817_clkout2_enable(hw, true);
++}
++
++static void rk817_clkout2_unprepare(struct clk_hw *hw)
++{
++	rk817_clkout2_enable(hw, false);
++}
++
++static int rk817_clkout2_is_prepared(struct clk_hw *hw)
++{
++	struct rk808_clkout *rk808_clkout = container_of(hw,
++							 struct rk808_clkout,
++							 clkout2_hw);
++	struct rk808 *rk808 = rk808_clkout->rk808;
++	unsigned int val;
++
++	int ret = regmap_read(rk808->regmap, RK817_SYS_CFG(1), &val);
++
++	if (ret < 0)
++		return 0;
++
++	return (val & RK817_CLK32KOUT2_EN) ? 1 : 0;
++}
++
++static const struct clk_ops rk817_clkout2_ops = {
++	.prepare = rk817_clkout2_prepare,
++	.unprepare = rk817_clkout2_unprepare,
++	.is_prepared = rk817_clkout2_is_prepared,
++	.recalc_rate = rk808_clkout_recalc_rate,
++};
++
++static const struct clk_ops *rkpmic_get_ops(long variant)
++{
++	switch (variant) {
++	case RK809_ID:
++	case RK817_ID:
++		return &rk817_clkout2_ops;
++	/*
++	 * For the default case, it match the following PMIC type.
++	 * RK805_ID
++	 * RK808_ID
++	 * RK818_ID
++	 */
++	default:
++		return &rk808_clkout2_ops;
++	}
++}
++
+ static int rk808_clkout_probe(struct platform_device *pdev)
+ {
+ 	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
+@@ -127,7 +189,7 @@ static int rk808_clkout_probe(struct platform_device *pdev)
+ 		return ret;
+ 
+ 	init.name = "rk808-clkout2";
+-	init.ops = &rk808_clkout2_ops;
++	init.ops = rkpmic_get_ops(rk808->variant);
+ 	rk808_clkout->clkout2_hw.init = &init;
+ 
+ 	/* optional override of the clockname */
+-- 
+2.20.1
