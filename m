@@ -1,43 +1,83 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH] ARM: dts: rockchip: fix pwm-cells for rk3288's pwm3
-Date: Mon,  3 Jun 2019 15:34:35 +0100
-Message-ID: <20190603143435.23352-1-john@metanate.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: fix isp iommu clocks and power
+ domain
+Date: Mon, 03 Jun 2019 11:44:43 -0300
+Message-ID: <435028daafebcf23425dd5b9338dc3126fac8b89.camel@collabora.com>
+References: <20190603142214.24686-1-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, John Keeping <john@metanate.com>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190603142214.24686-1-helen.koike@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Helen Koike <helen.koike@collabora.com>, linux-rockchip@lists.infradead.org
+Cc: kernel@collabora.com, laurent.pinchart@ideasonboard.com, manivannan.sadhasivam@linaro.org, linux-arm-kernel@lists.infradead.org, Vicente Bergas <vicencb@gmail.com>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-kernel@vger.kernel.org, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Randy Li <ayaka@soulik.info>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Rob Herring <robh+dt@kernel.org>, Tony Xie <tony.xie@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, Viresh Kumar <viresh.kumar@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This is the same as the other PWMs on this SoC and uses 3 cells.
+On Mon, 2019-06-03 at 11:22 -0300, Helen Koike wrote:
+> isp iommu requires wrapper variants of the clocks.
+> noc variants are always on and using the wrapper variants will activate
+> {A,H}CLK_ISP{0,1} due to the hierarchy.
+> 
+> Also add the respective power domain.
+> 
+> Refer:
+>  RK3399 TRM v1.4 Fig. 2-4 RK3399 Clock Architecture Diagram
+>  RK3399 TRM v1.4 Fig. 8-1 RK3399 Power Domain Partition
+> 
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> 
+> ---
+> Hello,
+> 
+> I tested this using the isp patch set (which is not upstream
+> yet). Without this patch, streaming from the isp stalls.
+> 
+> I'm also enabling the power domain and removing the disable status,
+> please let me know if this should be done in a separated patch.
+> 
 
-Signed-off-by: John Keeping <john@metanate.com>
----
- arch/arm/boot/dts/rk3288.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I think you might want to put the comments about enabling power domain
+and removing disable status on the commit log. It's useful information :-)
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 159d91180cee..766d1cf51a5b 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -710,7 +710,7 @@
- 	pwm3: pwm@ff680030 {
- 		compatible = "rockchip,rk3288-pwm";
- 		reg = <0x0 0xff680030 0x0 0x10>;
--		#pwm-cells = <2>;
-+		#pwm-cells = <3>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwm3_pin>;
- 		clocks = <&cru PCLK_RKPWM>;
--- 
-2.21.0
+Thanks,
+Eze
+
+> Thanks
+> Helen
+> 
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 196ac9b78076..89594a7276f4 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -1706,11 +1706,11 @@
+>  		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
+>  		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
+>  		interrupt-names = "isp0_mmu";
+> -		clocks = <&cru ACLK_ISP0_NOC>, <&cru HCLK_ISP0_NOC>;
+> +		clocks = <&cru ACLK_ISP0_WRAPPER>, <&cru HCLK_ISP0_WRAPPER>;
+>  		clock-names = "aclk", "iface";
+>  		#iommu-cells = <0>;
+> +		power-domains = <&power RK3399_PD_ISP0>;
+>  		rockchip,disable-mmu-reset;
+> -		status = "disabled";
+>  	};
+>  
+>  	isp1_mmu: iommu@ff924000 {
+> @@ -1718,11 +1718,11 @@
+>  		reg = <0x0 0xff924000 0x0 0x100>, <0x0 0xff925000 0x0 0x100>;
+>  		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH 0>;
+>  		interrupt-names = "isp1_mmu";
+> -		clocks = <&cru ACLK_ISP1_NOC>, <&cru HCLK_ISP1_NOC>;
+> +		clocks = <&cru ACLK_ISP1_WRAPPER>, <&cru HCLK_ISP1_WRAPPER>;
+>  		clock-names = "aclk", "iface";
+>  		#iommu-cells = <0>;
+> +		power-domains = <&power RK3399_PD_ISP1>;
+>  		rockchip,disable-mmu-reset;
+> -		status = "disabled";
+>  	};
+>  
+>  	hdmi_sound: hdmi-sound {
