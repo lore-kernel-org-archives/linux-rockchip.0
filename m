@@ -1,53 +1,147 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2] mmc: dw_mmc: Disable SDIO interrupts while suspended
- to fix suspend/resume
-Date: Mon, 3 Jun 2019 11:41:42 -0700
-Message-ID: <CAD=FV=U7_ek_z7UfaDn9My8UfZfpNom04OJHowoH-sNsGZQnxA@mail.gmail.com>
-References: <20190429204040.18725-1-dianders@chromium.org> <CAPDyKFp0fQ+3CS-DadE9rO-9Npzve-nztY9hRaMdX7Pw9sUZMw@mail.gmail.com>
- <CAD=FV=XMph_CE3pFZGP+5d0K2FgbPbheF1oX72TfZn_dpf8SQA@mail.gmail.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: Re: [PATCH v4 1/5] drm/rockchip: fix fb references in async update
+Date: Mon, 3 Jun 2019 17:13:34 -0300
+Message-ID: <aecadca2-f67b-5d9d-550e-f90cbca5fd3f@collabora.com>
+References: <20190603165610.24614-1-helen.koike@collabora.com>
+ <20190603165610.24614-2-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=XMph_CE3pFZGP+5d0K2FgbPbheF1oX72TfZn_dpf8SQA@mail.gmail.com>
+In-Reply-To: <20190603165610.24614-2-helen.koike@collabora.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Jaehoon Chung <jh80.chung@samsung.com>, Shawn Lin <shawn.lin@rock-chips.com>, Kalle Valo <kvalo@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Guenter Roeck <groeck@chromium.org>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, Sonny Rao <sonnyrao@chromium.org>, Emil Renner Berthing <emil.renner.berthing@gmail.com>, Matthias Kaehlcke <mka@chromium.org>, Ryan Case <ryandcase@chromium.org>, "# 4.0+" <stable@vger.kernel.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+To: dri-devel@lists.freedesktop.org, nicholas.kazlauskas@amd.com
+Cc: andrey.grodzovsky@amd.com, daniel.vetter@ffwll.ch, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, boris.brezillon@collabora.com, David Airlie <airlied@linux.ie>, Sean Paul <seanpaul@google.com>, kernel@collabora.com, harry.wentland@amd.com, =?UTF-8?Q?St=c3=a9phane_Marchesin?= <marcheu@google.com>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-Ulf,
 
-On Tue, May 28, 2019 at 3:49 PM Doug Anderson <dianders@chromium.org> wrote:
->
-> > 1) As kind of stated above, did you consider a solution where the core
-> > simply disables the SDIO IRQ in case it isn't enabled for system
-> > wakeup? In this way all host drivers would benefit.
->
-> I can give it a shot if you can give me a bunch of specific advice,
-> but I only have access to a few devices doing anything with SDIO and
-> they are all using Marvell or Broadcom on dw_mmc.
->
-> In general I have no idea how SDIO wakeup (plumbed through the SD
-> controller) would work.  As per below the only way I've seen it done
-> is totally out-of-band.  ...and actually, I'm not sure I've actually
-> ever seen even the out of band stuff truly work on a system myself.
-> It's always been one of those "we should support wake on WiFi" but
-> never made it all the way to implementation.  In any case, if there
-> are examples of people plumbing wakeup through the SD controller I'd
-> need to figure out how to not break them.  Just doing a solution for
-> dw_mmc means I don't have to worry about this since dw_mmc definitely
-> doesn't support SDIO wakeup.
->
-> Maybe one way to get a more generic solution is if you had an idea for
-> a patch that would work for many host controllers then you could post
-> it and I could test to confirm that it's happy on dw_mmc?  ...similar
-> to when you switched dw_mmc away from the old kthread-based SDIO
-> stuff?
 
-Unless you have time to help dig into all the possibilities here to
-help understand how this should behave across all the different host
-controllers / wakeup setups, maybe we could just land ${SUBJECT} patch
-for now and when there is more clarity we can revisit?
+On 6/3/19 1:56 PM, Helen Koike wrote:
+> In the case of async update, modifications are done in place, i.e. in the
+> current plane state, so the new_state is prepared and the new_state is
+> cleaned up (instead of the old_state, unlike what happens in a
+> normal sync update).
+> To cleanup the old_fb properly, it needs to be placed in the new_state
+> in the end of async_update, so cleanup call will unreference the old_fb
+> correctly.
+> 
+> Also, the previous code had a:
+> 
+> 	plane_state = plane->funcs->atomic_duplicate_state(plane);
+> 	...
+> 	swap(plane_state, plane->state);
+> 
+> 	if (plane->state->fb && plane->state->fb != new_state->fb) {
+> 	...
+> 	}
+> 
+> Which was wrong, as the fb were just assigned to be equal, so this if
+> statement nevers evaluates to true.
+> 
+> Another details is that the function drm_crtc_vblank_get() can only be
+> called when vop->is_enabled is true, otherwise it has no effect and
+> trows a WARN_ON().
+> 
+> Calling drm_atomic_set_fb_for_plane() (which get a referent of the new
+> fb and pus the old fb) is not required, as it is taken care by
+> drm_mode_cursor_universal() when calling
+> drm_atomic_helper_update_plane().
+> 
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
 
-Thanks!
+Cc: <stable@vger.kernel.org> # v4.20+
+Fixes: 15609559a834 ("drm/rockchip: update cursors asynchronously
+through atomic.")
 
--Doug
+> 
+> ---
+> Hello,
+> 
+> I tested on the rockchip ficus v1.1 using igt plane_cursor_legacy and
+> kms_cursor_legacy and I didn't see any regressions.
+> 
+> Changes in v4: None
+> Changes in v3:
+> - use swap() to swap old and new framebuffers in async_update
+> - get the reference to old_fb and set the worker after vop_plane_atomic_update()
+> - add a FIXME tag for when we have multiple fbs to be released when
+> vblank happens.
+> - update commit message
+> 
+> Changes in v2: None
+> 
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 51 +++++++++++----------
+>  1 file changed, 26 insertions(+), 25 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> index 4189ca17f381..b7c47d1153c6 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> @@ -919,29 +919,17 @@ static void vop_plane_atomic_async_update(struct drm_plane *plane,
+>  					  struct drm_plane_state *new_state)
+>  {
+>  	struct vop *vop = to_vop(plane->state->crtc);
+> -	struct drm_plane_state *plane_state;
+> -
+> -	plane_state = plane->funcs->atomic_duplicate_state(plane);
+> -	plane_state->crtc_x = new_state->crtc_x;
+> -	plane_state->crtc_y = new_state->crtc_y;
+> -	plane_state->crtc_h = new_state->crtc_h;
+> -	plane_state->crtc_w = new_state->crtc_w;
+> -	plane_state->src_x = new_state->src_x;
+> -	plane_state->src_y = new_state->src_y;
+> -	plane_state->src_h = new_state->src_h;
+> -	plane_state->src_w = new_state->src_w;
+> -
+> -	if (plane_state->fb != new_state->fb)
+> -		drm_atomic_set_fb_for_plane(plane_state, new_state->fb);
+> -
+> -	swap(plane_state, plane->state);
+> -
+> -	if (plane->state->fb && plane->state->fb != new_state->fb) {
+> -		drm_framebuffer_get(plane->state->fb);
+> -		WARN_ON(drm_crtc_vblank_get(plane->state->crtc) != 0);
+> -		drm_flip_work_queue(&vop->fb_unref_work, plane->state->fb);
+> -		set_bit(VOP_PENDING_FB_UNREF, &vop->pending);
+> -	}
+> +	struct drm_framebuffer *old_fb = plane->state->fb;
+> +
+> +	plane->state->crtc_x = new_state->crtc_x;
+> +	plane->state->crtc_y = new_state->crtc_y;
+> +	plane->state->crtc_h = new_state->crtc_h;
+> +	plane->state->crtc_w = new_state->crtc_w;
+> +	plane->state->src_x = new_state->src_x;
+> +	plane->state->src_y = new_state->src_y;
+> +	plane->state->src_h = new_state->src_h;
+> +	plane->state->src_w = new_state->src_w;
+> +	swap(plane->state->fb, new_state->fb);
+>  
+>  	if (vop->is_enabled) {
+>  		rockchip_drm_psr_inhibit_get_state(new_state->state);
+> @@ -950,9 +938,22 @@ static void vop_plane_atomic_async_update(struct drm_plane *plane,
+>  		vop_cfg_done(vop);
+>  		spin_unlock(&vop->reg_lock);
+>  		rockchip_drm_psr_inhibit_put_state(new_state->state);
+> -	}
+>  
+> -	plane->funcs->atomic_destroy_state(plane, plane_state);
+> +		/*
+> +		 * A scanout can still be occurring, so we can't drop the
+> +		 * reference to the old framebuffer. To solve this we get a
+> +		 * reference to old_fb and set a worker to release it later.
+> +		 * FIXME: if we perform 500 async_update calls before the
+> +		 * vblank, then we can have 500 different framebuffers waiting
+> +		 * to be released.
+> +		 */
+> +		if (old_fb && plane->state->fb != old_fb) {
+> +			drm_framebuffer_get(old_fb);
+> +			WARN_ON(drm_crtc_vblank_get(plane->state->crtc) != 0);
+> +			drm_flip_work_queue(&vop->fb_unref_work, old_fb);
+> +			set_bit(VOP_PENDING_FB_UNREF, &vop->pending);
+> +		}
+> +	}
+>  }
+>  
+>  static const struct drm_plane_helper_funcs plane_helper_funcs = {
+> 
