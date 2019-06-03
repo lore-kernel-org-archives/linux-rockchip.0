@@ -1,96 +1,58 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH] phy: rockchip-dp: Avoid power leak by leaving the PHY
- power on
-Date: Mon, 3 Jun 2019 16:50:33 +0530
-Message-ID: <82480aa5-ab2e-11c5-8dd5-c395f72fc6e7@ti.com>
-References: <20190507234857.81414-1-dianders@chromium.org>
- <79ca5499-6b7d-fe55-2030-283f5cfb1d27@rock-chips.com>
+From: Tom Murphy <tmurphy@arista.com>
+Subject: Re: [PATCH v3 0/4] iommu/amd: Convert the AMD iommu driver to the
+ dma-iommu api
+Date: Mon, 3 Jun 2019 12:27:37 +0100
+Message-ID: <CAPL0++72dekt=re1=sTWpCJtMX=mUOc3Jcq=9d1sr1QO25_zFA@mail.gmail.com>
+References: <20190506185207.31069-1-tmurphy@arista.com> <20190603105158.GL12745@8bytes.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <79ca5499-6b7d-fe55-2030-283f5cfb1d27-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dbasehore-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Huang Jiachai <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "nickey.yang (nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org)" <nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, ryandcase-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, wzz <wzz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190603105158.GL12745@8bytes.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Joerg Roedel <joro@8bytes.org>
+Cc: iommu@lists.linux-foundation.org, Tom Murphy <murphyt7@tcd.ie>, Will Deacon <will.deacon@arm.com>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <andy.gross@linaro.org>, David Brown <david.brown@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.in
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiAyMC8wNS8xOSAxOjM0IFBNLCBDYWVzYXIgV2FuZyB3cm90ZToKPiBIaSBEb3VnLAo+
-IAo+IEZvciBub3cswqAgbm9ib2R5IG9mIHJvY2tjaGlwIGlzIHJlc3BvbnNpYmxlIGZvciB0aGlz
-IGRyaXZlci4KPiBDYzogTmlja2V5LCBaYWluLCBIamMKPiAKPiAKPiBPbiA1LzgvMTkgNzo0OCBB
-TSwgRG91Z2xhcyBBbmRlcnNvbiB3cm90ZToKPj4gV2hpbGUgdGVzdGluZyBhIG5ld2VyIGtlcm5l
-bCBvbiByazMyODgtYmFzZWQgQ2hyb21lYm9va3MgSSBmb3VuZCB0aGF0Cj4+IHRoZSBwb3dlciBk
-cmF3IGluIHN1c3BlbmQgd2FzIGhpZ2hlciBvbiBuZXdlciBrZXJuZWxzIGNvbXBhcmVkIHRvIHRo
-ZQo+PiBkb3duc3RyZWFtIENocm9tZSBPUyAzLjE0IGtlcm5lbC7CoCBTcGVjaWZpY2FsbHkgdGhl
-IHBvd2VyIG9mIGFuCj4+IHJrMzI4OC12ZXlyb24tamVycnkgYm9hcmQgdGhhdCBJIHRlc3RlZCAo
-YXMgbWVhc3VyZWQgYnkgdGhlIHNtYXJ0Cj4+IGJhdHRlcnkpIHdhcyB+MTYgbUEgb24gQ2hyb21l
-IE9TIDMuMTQgYW5kIH4yMSBtQSBvbiBhIG5ld2VyIGtlcm5lbC4KPj4KPj4gSSB0cmFja2VkIHRo
-ZSByZWdyZXNzaW9uIGRvd24gdG8gdGhlIGZhY3QgdGhhdCB0aGUgIkRQIFBIWSIgZHJpdmVyCj4+
-IGRpZG4ndCBleGlzdCBpbiBvdXIgZG93bnN0cmVhbSAzLjE0LsKgIFdlIHJlbGllZCBvbiB0aGUg
-ZURQIGRyaXZlciB0bwo+PiB0dXJuIG9uIHRoZSBjbG9jayBhbmQgcmVsaWVkIG9uIHRoZSBmYWN0
-IHRoYXQgdGhlIHBvd2VyIGZvciB0aGUgUEhZCj4+IHdhcyBkZWZhdWx0IHR1cm5lZCBvbi4KPj4K
-Pj4gU3BlY2lmaWNhbGx5IHRoZSB0aGluZyB0aGF0IGNhdXNlZCB0aGUgcG93ZXIgcmVncmVzc2lv
-biB3YXMgdHVybmluZwo+PiB0aGUgZURQIFBIWSBfb2ZmXy7CoCBQcmVzdW1hYmx5IHRoZXJlIGlz
-IHNvbWUgc29ydCBvZiBwb3dlciBsZWFrIGluIHRoZQo+PiBzeXN0ZW0gYW5kIHdoZW4gd2UgdHVy
-biB0aGUgUEhZIG9mZiBzb21ldGhpbmcgaXMgbGVhY2hpbmcgcG93ZXIgZnJvbQo+PiBzb21ldGhp
-bmcgZWxzZSBhbmQgY2F1c2luZyBleGNlc3NpdmUgcG93ZXIgZHJhdy4KPj4KPj4gRG9pbmcgYSBz
-ZWFyY2ggdGhyb3VnaCBkZXZpY2UgdHJlZXMgc2hvd3MgdGhhdCB0aGlzIFBIWSBpcyBvbmx5IGV2
-ZXIKPj4gdXNlZCBvbiByazMyODguwqAgUHJlc3VtYWJseSB0aGlzIHBvd2VyIGxlYWsgaXMgcHJl
-c2VudCBvbiBhbGwKPj4gcmszMjg4LVNvQ3MgcnVubmluZyB1cHN0cmVhbSBMaW51eCBzbyBsZXQn
-cyBqdXN0IHdoYWNrIHRoZSBkcml2ZXIgdG8KPj4gbWFrZSBzdXJlIHdlIG5ldmVyIHR1cm4gb2Zm
-IHBvd2VyLsKgIFdlJ2xsIHN0aWxsIGxlYXZlIHRoZSBwYXJ0cyB0aGF0Cj4+IHR1cm4gX29uXyB0
-aGUgcG93ZXIgYW5kIGdyYWIgdGhlIGNsb2NrLCB0aG91Z2guCj4+Cj4+IE5PVEVTOgo+PiBBKSBJ
-ZiBzb21lb25lIGNhbiBpZGVudGlmeSB3aGF0IHRoaXMgcG93ZXIgbGVhayBpcyBhbmQgZml4IGl0
-IGluIHNvbWUKPj4gwqDCoMKgIG90aGVyIHdheSB3ZSBjYW4gcmV2ZXJ0IHRoaXMgcGF0Y2guCj4+
-IEIpIElmIHNvbWVvbmUgY2FuIHNob3cgdGhhdCB0aGVpciBwYXJ0aWN1bGFyIGJvYXJkIGRvZXNu
-J3QgaGF2ZSB0aGlzCj4+IMKgwqDCoCBwb3dlciBsZWFrIChtYXliZSB0aGV5IGhhdmUgcmFpbHMg
-aG9va2VkIHVwIGRpZmZlcmVudGx5Pykgd2UgY2FuCj4+IMKgwqDCoCBwZXJoYXBzIGFkZCBhIGRl
-dmljZSB0cmVlIHByb3BlcnR5IGluZGljYXRpbmcgdGhhdCBmb3Igc29tZSBib2FyZHMKPj4gwqDC
-oMKgIGl0J3MgT0sgdG8gdHVybiB0aGlzIHJhaWwgb2ZmLsKgIEkgZG9uJ3Qgd2FudCB0byBhZGQg
-dGhpcyBwcm9wZXJ0eQo+PiDCoMKgwqAgdW50aWwgSSBrbm93IG9mIGEgYm9hcmQgdGhhdCBuZWVk
-cyBpdC4KPj4KPj4gRml4ZXM6IGZkOTY4OTczZGU5NSAoInBoeTogQWRkIGRyaXZlciBmb3Igcm9j
-a2NoaXAgRGlzcGxheSBQb3J0IFBIWSIpCj4+IFNpZ25lZC1vZmYtYnk6IERvdWdsYXMgQW5kZXJz
-b24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KPiAKPiAKPiBSZXZpZXdlZC1ieTogQ2Flc2FyIFdh
-bmcgPHd4dEByb2NrLWNoaXBzLmNvbT4KPiAKPj4gLS0tCj4+IEFzIGZhciBhcyBJIGtub3cgWWFr
-aXIgKHRoZSBvcmlnaW5hbCBhdXRob3IpIGlzIG5vIGxvbmdlciBhdCBSb2NrY2hpcC4KPj4gSSd2
-ZSBhZGRlZCBhIGZldyBvdGhlciBSb2NrY2hpcCBwZW9wbGUgYW5kIGhvcGVmdWxseSBvbmUgb2Yg
-dGhlbSBjYW4KPj4gaGVscCBkaXJlY3QgZXZlbiBpZiB0aGV5J3JlIG5vdCBkaXJlY3RseSByZXNw
-b25zaWJsZS4KPj4KPj4gwqAgZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLWRwLmMg
-fCAxMSArKysrKysrLS0tLQo+PiDCoCAxIGZpbGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspLCA0
-IGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5
-LXJvY2tjaGlwLWRwLmMKPj4gYi9kcml2ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtZHAu
-Ywo+PiBpbmRleCA4YjI2N2E3NDY1NzYuLjEwYmJjZDY5ZDZmNSAxMDA2NDQKPj4gLS0tIGEvZHJp
-dmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLWRwLmMKPj4gKysrIGIvZHJpdmVycy9waHkv
-cm9ja2NoaXAvcGh5LXJvY2tjaGlwLWRwLmMKPj4gQEAgLTM1LDcgKzM1LDcgQEAgc3RydWN0IHJv
-Y2tjaGlwX2RwX3BoeSB7Cj4+IMKgIHN0YXRpYyBpbnQgcm9ja2NoaXBfc2V0X3BoeV9zdGF0ZShz
-dHJ1Y3QgcGh5ICpwaHksIGJvb2wgZW5hYmxlKQo+PiDCoCB7Cj4+IMKgwqDCoMKgwqAgc3RydWN0
-IHJvY2tjaGlwX2RwX3BoeSAqZHAgPSBwaHlfZ2V0X2RydmRhdGEocGh5KTsKPj4gLcKgwqDCoCBp
-bnQgcmV0Owo+PiArwqDCoMKgIGludCByZXQgPSAwOwo+PiDCoCDCoMKgwqDCoMKgIGlmIChlbmFi
-bGUpIHsKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIHJldCA9IHJlZ21hcF93cml0ZShkcC0+Z3JmLCBH
-UkZfU09DX0NPTjEyLAo+PiBAQCAtNTAsOSArNTAsMTIgQEAgc3RhdGljIGludCByb2NrY2hpcF9z
-ZXRfcGh5X3N0YXRlKHN0cnVjdCBwaHkgKnBoeSwgYm9vbAo+PiBlbmFibGUpCj4+IMKgwqDCoMKg
-wqAgfSBlbHNlIHsKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIGNsa19kaXNhYmxlX3VucHJlcGFyZShk
-cC0+cGh5XzI0bSk7Cj4+IMKgIC3CoMKgwqDCoMKgwqDCoCByZXQgPSByZWdtYXBfd3JpdGUoZHAt
-PmdyZiwgR1JGX1NPQ19DT04xMiwKPj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoCBHUkZfRURQX1BIWV9TSUREUV9ISVdPUkRfTUFTSyB8Cj4+IC3CoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgR1JGX0VEUF9QSFlfU0lERFFfT0ZGKTsKPj4gK8KgwqDCoMKg
-wqDCoMKgIC8qCj4+ICvCoMKgwqDCoMKgwqDCoMKgICogSW50ZW50aW9uYWxseSBkb24ndCB0dXJu
-IFNJRERRIG9mZiB3aGVuIGRpc2FibGluZwo+PiArwqDCoMKgwqDCoMKgwqDCoCAqIHRoZSBQSFku
-wqAgVGhlcmUgaXMgYSBwb3dlciBsZWFrIG9uIHJrMzI4OCBhbmQKPj4gK8KgwqDCoMKgwqDCoMKg
-wqAgKiBzdXNwZW5kIHBvd2VyIF9pbmNyZWFzZXNfIGJ5IDUgbUEgaWYgeW91IHR1cm4gdGhpcwo+
-PiArwqDCoMKgwqDCoMKgwqDCoCAqIG9mZi4KPj4gK8KgwqDCoMKgwqDCoMKgwqAgKi8KCkNhbiBz
-b21lb25lIGluIFJvY2tjaGlwIHRyeSB0byBmaW5kIHRoZSByb290LWNhdXNlIG9mIHRoZSBpc3N1
-ZT8gS2VlcGluZyB0aGUKUEhZIG9mZiBzaG91bGRuJ3QgaW5jcmVhc2UgcG93ZXIgZHJhdy4KClRo
-YW5rcwpLaXNob24KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+On Mon, Jun 3, 2019 at 11:52 AM Joerg Roedel <joro@8bytes.org> wrote:
+>
+> Hi Tom,
+>
+> On Mon, May 06, 2019 at 07:52:02PM +0100, Tom Murphy wrote:
+> > Convert the AMD iommu driver to the dma-iommu api. Remove the iova
+> > handling and reserve region code from the AMD iommu driver.
+>
+> Thank you for your work on this! I appreciate that much, but I am not
+> sure we are ready to make that move for the AMD and Intel IOMMU drivers
+> yet.
+>
+> My main concern right now is that these changes will add a per-page
+> table lock into the fast-path for dma-mapping operations. There has been
+> much work in the past to remove all locking from these code-paths and
+> make it scalable on x86.
+
+Where is the locking introduced? intel doesn't use a lock in it's
+iommu_map function:
+https://github.com/torvalds/linux/blob/f2c7c76c5d0a443053e94adb9f0918fa2fb85c3a/drivers/iommu/intel-iommu.c#L5302
+because it cleverly uses cmpxchg64 to avoid using locks:
+https://github.com/torvalds/linux/blob/f2c7c76c5d0a443053e94adb9f0918fa2fb85c3a/drivers/iommu/intel-iommu.c#L900
+And the locking in AMD's iommu_map function can be removed (and i have
+removed it in my patch set) because it does that same thing as intel:
+https://github.com/torvalds/linux/blob/f2c7c76c5d0a443053e94adb9f0918fa2fb85c3a/drivers/iommu/amd_iommu.c#L1486
+
+Is there something I'm missing?
+
+>
+> The dma-ops implementations in the x86 IOMMU drivers have the benefit
+> that they can call their page-table manipulation functions directly and
+> without locks, because they can make the necessary assumptions. The
+> IOMMU-API mapping/unmapping path can't make these assumptions because it
+> is also used for non-DMA-API use-cases.
+>
+> So before we can move the AMD and Intel drivers to the generic DMA-API
+> implementation we need to solve this problem to not introduce new
+> scalability regressions.
+>
+> Regards,
+>
+>         Joerg
+>
