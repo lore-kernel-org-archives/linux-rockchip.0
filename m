@@ -1,134 +1,71 @@
-From: Anand Moon <linux.amoon@gmail.com>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Add missing configuration pwr
- amd rst for PCIe
-Date: Sun, 2 Jun 2019 10:05:06 +0530
-Message-ID: <CANAwSgQXrp5+UOdBEjq9PvBHw9KmgxpkVsENc05MoBMDBOoczg@mail.gmail.com>
-References: <20190531201913.1122-1-linux.amoon@gmail.com> <20190601095106.GA2213@Mani-XPS-13-9360>
+From: Cheng-Yi Chiang <cychiang@chromium.org>
+Subject: [PATCH 0/7] Add HDMI audio support on RK3288 veyron board
+Date: Mon,  3 Jun 2019 12:32:44 +0800
+Message-ID: <20190603043251.226549-1-cychiang@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190601095106.GA2213@Mani-XPS-13-9360>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Ezequiel Garcia <ezequiel@collabora.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Vicente Bergas <vicencb@gmail.com>, Jagan Teki <jagan@amarulasolutions.com>, devicetree <devicetree@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, Linux Kernel <linux-kernel@vger.kernel.org>
+To: linux-kernel@vger.kernel.org
+Cc: Hans Verkuil <hverkuil@xs4all.nl>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Philipp Zabel <p.zabel@pengutronix.de>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, dgreid@chromium.org, tzungbi@chromium.org, linux-media@vger.kernel.org, alsa-devel@alsa-project.org, dri-devel@lists.freedesktop.org, linux-arm-kern
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Manivannan,
+This patch series is to support HDMI audio on RK3288 veyron board.
 
-Thanks for your review comment.
+To support jack reporting, there are two old patches:
 
-On Sat, 1 Jun 2019 at 15:21, Manivannan Sadhasivam
-<manivannan.sadhasivam@linaro.org> wrote:
->
-> Hi,
->
-> On Fri, May 31, 2019 at 08:19:13PM +0000, Anand Moon wrote:
-> > This patch add missing PCIe gpio pin (#PCIE_PWR) for vcc3v3_pcie power
-> > regulator node also add missing reset pinctrl (#PCIE_PERST_L) for PCIe node.
-> >
-> > Signed-off-by: Anand Moon <linux.amoon@gmail.com>
-> > ---
-> > using schematics: thanks for suggested by Manivannan
-> > [1] https://dl.vamrs.com/products/rock960/docs/hw/rock960_sch_v12_20180314.pdf
-> >
-> > Changes from prevoius patch:
-> > [2] https://patchwork.kernel.org/patch/10968695/
-> >
-> > Fix the suject and commit message and corrected the PWR and PERST configuration
-> > as per shematics and dts nodes.
-> > ---
-> >  arch/arm64/boot/dts/rockchip/rk3399-ficus.dts    | 7 +++++++
-> >  arch/arm64/boot/dts/rockchip/rk3399-rock960.dts  | 7 +++++++
-> >  arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi | 3 +--
-> >  3 files changed, 15 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-> > index 6b059bd7a04f..94e2a59bc1c7 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-> > @@ -89,6 +89,8 @@
-> >
-> >  &pcie0 {
-> >       ep-gpios = <&gpio4 RK_PD4 GPIO_ACTIVE_HIGH>;
-> > +     pinctrl-names = "default";
-> > +     pinctrl-0 = <&pcie_clkreqn_cpm &pcie_perst_l>;
->
-> Looks like ep-gpio is wrong here :/ I probably referred old schematics
-> at that time. Correct pin mapping is,
->
-> ep-gpios = <&gpio2 RK_PD4 GPIO_ACTIVE_HIGH>;
->
-> And this should be fixed in a separate patch with "Fixes" tag!
->
+video: add HDMI state notifier support
 
-Ok I will changes per the above. I have also check this with the
-u-boot changes .
+<https://lore.kernel.org/linux-media/20161213150813.37966-2-hverkuil@xs4all.nl/>
 
-> >  };
-> >
-> >  &pinctrl {
-> > @@ -104,6 +106,11 @@
-> >                       rockchip,pins =
-> >                               <1 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
-> >                       };
-> > +
-> > +             pcie_perst_l: pcie-perst-l {
-> > +                     rockchip,pins =
-> > +                             <4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
-> > +             };
-> >       };
-> >
-> >       usb2 {
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
-> > index 12285c51cceb..665fe09c7c74 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
-> > @@ -64,6 +64,8 @@
-> >
-> >  &pcie0 {
-> >       ep-gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_HIGH>;
-> > +     pinctrl-names = "default";
-> > +     pinctrl-0 = <&pcie_clkreqn_cpm &pcie_perst_l>;
-> >  };
-> >
-> >  &pinctrl {
-> > @@ -104,6 +106,11 @@
-> >                       rockchip,pins =
-> >                               <2 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-> >                       };
-> > +
-> > +             pcie_perst_l: pcie-perst-l {
-> > +                     rockchip,pins =
-> > +                             <2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-> > +             };
-> >       };
-> >
-> >       usb2 {
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> > index c7d48d41e184..3df0cd67b4b2 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-> > @@ -55,6 +55,7 @@
-> >
-> >       vcc3v3_pcie: vcc3v3-pcie-regulator {
-> >               compatible = "regulator-fixed";
-> > +             gpio = <&gpio2 RK_PA5 GPIO_ACTIVE_HIGH>;
->
-> Actually the PWR pin mapping is defined in a separate node for both Rock960
-> and Ficus in respective dts. So defining it here would be wrong as the PWR
-> pin mapping is different for both boards.
->
+ASoC: hdmi-codec: use HDMI state notifier to add jack support
 
-Ok Thanks, so I will move the PWR pin nodes the respective dts files.
+<https://patchwork.kernel.org/patch/9430355/>
 
-                  PCIE_PERST     PCIE_PWR
-Rock960     GPIO2_A2          GPIO2_A5
-Ficus          GPIO2_D4          GPIO1_D0   /* reference u-boot */
+They are modified to pass checkpatch checking based on latest ASoC tree
 
-Pls confirm this is correct.
+https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git
 
-Best Regards
--Anand
+for-next branch.
 
-> Thanks,
-> Mani
+With these two patches at hand, hdmi-notifier support is then added to dw-hdmi
+driver so the plug/unplug event can be passed to codec driver.
+
+The rest patches are about machine driver rockchip_max98090.
+A HDMI DAI link is added for HDMI playback so there will be two devices on
+this sound card. One for max98090 and one for HDMI.
+The HDMI node is passed from DTS so machine driver can set the correct
+hdmi-notifier on codec driver.
+
+Cheng-Yi Chiang (5):
+  drm/bridge/synopsys: dw-hdmi: Add HDMI notifier support
+  ASoC: rockchip_max98090: Add dai_link for HDMI
+  ASoC: rockchip: rockchip-max98090: Add node for HDMI
+  ASoC: rockchip_max98090: Add HDMI jack support
+  ARM: dts: rockchip: Specify HDMI node to sound card node
+
+Hans Verkuil (1):
+  video: add HDMI state notifier support
+
+Philipp Zabel (1):
+  ASoC: hdmi-codec: use HDMI state notifier to add jack support
+
+ .../bindings/sound/rockchip-max98090.txt      |   2 +
+ MAINTAINERS                                   |   6 +
+ .../boot/dts/rk3288-veyron-analog-audio.dtsi  |   1 +
+ drivers/gpu/drm/bridge/synopsys/Kconfig       |   1 +
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c     |  28 +++-
+ drivers/video/Kconfig                         |   3 +
+ drivers/video/Makefile                        |   1 +
+ drivers/video/hdmi-notifier.c                 | 145 ++++++++++++++++++
+ include/linux/hdmi-notifier.h                 | 112 ++++++++++++++
+ include/sound/hdmi-codec.h                    |   7 +
+ sound/soc/codecs/Kconfig                      |   1 +
+ sound/soc/codecs/hdmi-codec.c                 | 104 ++++++++++++-
+ sound/soc/rockchip/rockchip_max98090.c        | 123 ++++++++++++---
+ 13 files changed, 508 insertions(+), 26 deletions(-)
+ create mode 100644 drivers/video/hdmi-notifier.c
+ create mode 100644 include/linux/hdmi-notifier.h
+
+-- 
+2.22.0.rc1.257.g3120a18244-goog
