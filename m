@@ -1,57 +1,60 @@
 From: Boris Brezillon <boris.brezillon@collabora.com>
-Subject: Re: [PATCH v4 0/5] drm: Fix fb changes for async updates
-Date: Tue, 4 Jun 2019 10:32:11 +0200
-Message-ID: <20190604103211.7a42be9b@collabora.com>
+Subject: Re: [PATCH v4 1/5] drm/rockchip: fix fb references in async update
+Date: Tue, 4 Jun 2019 10:34:22 +0200
+Message-ID: <20190604103422.63a61f46@collabora.com>
 References: <20190603165610.24614-1-helen.koike@collabora.com>
+        <20190603165610.24614-2-helen.koike@collabora.com>
+        <aecadca2-f67b-5d9d-550e-f90cbca5fd3f@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190603165610.24614-1-helen.koike@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <aecadca2-f67b-5d9d-550e-f90cbca5fd3f@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Helen Koike <helen.koike@collabora.com>
-Cc: Sean Paul <seanpaul@google.com>, Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>, David Airlie <airlied@linux.ie>, daniel.vetter@ffwll.ch, dri-devel@lists.freedesktop.org, Mamta Shukla <mamtashukla555@gmail.com>, kernel@collabora.com, Anthony Koo <Anthony.Koo@amd.com>, Bhawanpreet Lakha <Bhawanpreet.Lakha@amd.com>, David Francis <David.Francis@amd.com>, amd-gfx@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Leo Li <sunpeng.li@amd.com>, linux-arm-msm@vger.kernel.org, Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, =?UTF-8?B?U3TDqXBoYW5l?= Marchesin <marcheu@google.com>, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, Thomas Zimmermann <tzimmermann@suse.de>, Alex Deucher <alexander.deucher@amd.com>, freedreno@lists.freedesktop.org, nicholas.kazlauskas@amd.com
+Cc: dri-devel@lists.freedesktop.org, nicholas.kazlauskas@amd.com, andrey.grodzovsky@amd.com, daniel.vetter@ffwll.ch, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, David Airlie <airlied@linux.ie>, Sean Paul <seanpaul@google.com>, kernel@collabora.com, harry.wentland@amd.com, =?UTF-8?B?U3TDqXBoYW5l?= Marchesin <marcheu@google.com>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCAgMyBKdW4gMjAxOSAxMzo1NjowNSAtMDMwMApIZWxlbiBLb2lrZSA8aGVsZW4ua29p
-a2VAY29sbGFib3JhLmNvbT4gd3JvdGU6Cgo+IEhlbGxvLAo+IAo+IEknbSByZS1zZW5kaW5nIHRo
-aXMgc2VyaWVzIHdpdGggdGhlIGFja2VkIGJ5IGluIHRoZSBtc20gcGF0Y2ggYW5kCj4gdXBkYXRp
-bmcgdGhlIGRvY3MgaW4gdGhlIGxhc3QgcGF0Y2gsIHRoZSByZXN0IGlzIHRoZSBzYW1lLgo+IAo+
-IHYzIGxpbms6IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9kcmktZGV2ZWwv
-bGlzdC8/c2VyaWVzPTkxMzUzCgpTZXJpZXMgcXVldWVkIHRvIGRybS1taXNjLWZpeGVzLgoKPiAK
-PiBUaGFua3MhCj4gSGVsZW4KPiAKPiBDaGFuZ2VzIGluIHY0Ogo+IC0gYWRkIGFja2VkIGJ5IHRh
-Zwo+IC0gdXBkYXRlIGRvY3MgaW4gYXRvbWljX2FzeW5jX3VwZGF0ZSBjYWxsYmFjawo+IAo+IENo
-YW5nZXMgaW4gdjM6Cj4gLSB1c2Ugc3dhcCgpIHRvIHN3YXAgb2xkIGFuZCBuZXcgZnJhbWVidWZm
-ZXJzIGluIGFzeW5jX3VwZGF0ZQo+IC0gZ2V0IHRoZSByZWZlcmVuY2UgdG8gb2xkX2ZiIGFuZCBz
-ZXQgdGhlIHdvcmtlciBhZnRlciB2b3BfcGxhbmVfYXRvbWljX3VwZGF0ZSgpCj4gLSBhZGQgYSBG
-SVhNRSB0YWcgZm9yIHdoZW4gd2UgaGF2ZSBtdWx0aXBsZSBmYnMgdG8gYmUgcmVsZWFzZWQgd2hl
-bgo+IHZibGFuayBoYXBwZW5zLgo+IC0gdXBkYXRlIGNvbW1pdCBtZXNzYWdlCj4gLSBBZGQgUmV2
-aWV3ZWQtYnkgdGFncwo+IC0gQWRkIFRPRE8gaW4gZHJtX2F0b21pY19oZWxwZXJfYXN5bmNfY29t
-bWl0KCkKPiAKPiBDaGFuZ2VzIGluIHYyOgo+IC0gYWRkZWQgcmV2aWV3ZWQtYnkgdGFnCj4gLSB1
-cGRhdGUgQ0Mgc3RhYmxlIGFuZCBGaXhlcyB0YWcKPiAtIEFkZGVkIHJldmlld2VkLWJ5IHRhZwo+
-IC0gdXBkYXRlZCBDQyBzdGFibGUgYW5kIEZpeGVzIHRhZwo+IC0gQ2hhbmdlIHRoZSBvcmRlciBv
-ZiB0aGUgcGF0Y2ggaW4gdGhlIHNlcmllcywgYWRkIHRoaXMgYXMgdGhlIGxhc3Qgb25lLgo+IC0g
-QWRkIGRvY3VtZW50YXRpb24KPiAtIHMvYmFsbGFuY2VkL2JhbGFuY2VkCj4gCj4gSGVsZW4gS29p
-a2UgKDUpOgo+ICAgZHJtL3JvY2tjaGlwOiBmaXggZmIgcmVmZXJlbmNlcyBpbiBhc3luYyB1cGRh
-dGUKPiAgIGRybS9hbWQ6IGZpeCBmYiByZWZlcmVuY2VzIGluIGFzeW5jIHVwZGF0ZQo+ICAgZHJt
-L21zbTogZml4IGZiIHJlZmVyZW5jZXMgaW4gYXN5bmMgdXBkYXRlCj4gICBkcm0vdmM0OiBmaXgg
-ZmIgcmVmZXJlbmNlcyBpbiBhc3luYyB1cGRhdGUKPiAgIGRybTogZG9uJ3QgYmxvY2sgZmIgY2hh
-bmdlcyBmb3IgYXN5bmMgcGxhbmUgdXBkYXRlcwo+IAo+ICAuLi4vZ3B1L2RybS9hbWQvZGlzcGxh
-eS9hbWRncHVfZG0vYW1kZ3B1X2RtLmMgfCAgMyArLQo+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX2F0
-b21pY19oZWxwZXIuYyAgICAgICAgICAgfCAyMiArKysrLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0v
-bXNtL2Rpc3AvbWRwNS9tZHA1X3BsYW5lLmMgICAgfCAgNCArKwo+ICBkcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgfCA1MSArKysrKysrKysrLS0tLS0tLS0tCj4g
-IGRyaXZlcnMvZ3B1L2RybS92YzQvdmM0X3BsYW5lLmMgICAgICAgICAgICAgICB8ICAyICstCj4g
-IGluY2x1ZGUvZHJtL2RybV9tb2Rlc2V0X2hlbHBlcl92dGFibGVzLmggICAgICB8ICA4ICsrKwo+
-ICA2IGZpbGVzIGNoYW5nZWQsIDUyIGluc2VydGlvbnMoKyksIDM4IGRlbGV0aW9ucygtKQo+IAoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+On Mon, 3 Jun 2019 17:13:34 -0300
+Helen Koike <helen.koike@collabora.com> wrote:
+
+> On 6/3/19 1:56 PM, Helen Koike wrote:
+> > In the case of async update, modifications are done in place, i.e. in the
+> > current plane state, so the new_state is prepared and the new_state is
+> > cleaned up (instead of the old_state, unlike what happens in a
+> > normal sync update).
+> > To cleanup the old_fb properly, it needs to be placed in the new_state
+> > in the end of async_update, so cleanup call will unreference the old_fb
+> > correctly.
+> > 
+> > Also, the previous code had a:
+> > 
+> > 	plane_state = plane->funcs->atomic_duplicate_state(plane);
+> > 	...
+> > 	swap(plane_state, plane->state);
+> > 
+> > 	if (plane->state->fb && plane->state->fb != new_state->fb) {
+> > 	...
+> > 	}
+> > 
+> > Which was wrong, as the fb were just assigned to be equal, so this if
+> > statement nevers evaluates to true.
+> > 
+> > Another details is that the function drm_crtc_vblank_get() can only be
+> > called when vop->is_enabled is true, otherwise it has no effect and
+> > trows a WARN_ON().
+> > 
+> > Calling drm_atomic_set_fb_for_plane() (which get a referent of the new
+> > fb and pus the old fb) is not required, as it is taken care by
+> > drm_mode_cursor_universal() when calling
+> > drm_atomic_helper_update_plane().
+> > 
+> > Signed-off-by: Helen Koike <helen.koike@collabora.com>  
+> 
+> Cc: <stable@vger.kernel.org> # v4.20+
+> Fixes: 15609559a834 ("drm/rockchip: update cursors asynchronously
+> through atomic.")
+
+One comment for next time you have to add such tags after the fact:
+please try to keep lines unwrapped, otherwise patchwork only gets what's
+on the first line.
