@@ -1,62 +1,50 @@
-From: Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v3 1/4] iommu: Add gfp parameter to iommu_ops::map
-Date: Tue, 4 Jun 2019 14:24:42 -0700
-Message-ID: <CAF6AEGuk8GkbZ_XZJg6Gbpng+BaKjVHQ9M-6nGW0pi+h_Nh3Hw@mail.gmail.com>
-References: <20190506185207.31069-1-tmurphy@arista.com>
-	<20190506185207.31069-2-tmurphy@arista.com>
-	<33a1e3c1-1906-9e45-d060-e7998424973b@arm.com>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] clk: rockchip: Remove 48 MHz PLL rate from rk3288
+Date: Tue,  4 Jun 2019 15:31:59 -0700
+Message-ID: <20190604223200.345-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <33a1e3c1-1906-9e45-d060-e7998424973b-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "moderated list:ARM/S5P EXYNOS AR..." <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Gerald Schaefer <gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, Andy Gross <andy.gross-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-msm <linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Tom Murphy <tmurphy-nzgTgzXrdUbQT0dZR+AlfA@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, murphyt7-/Zw1syy4LHg@public.gmane.orglis
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Stephen Boyd <sboyd@kernel.org>, mka@chromium.org, seanpaul@chromium.org, Urja Rannikko <urjaman@gmail.com>, Douglas Anderson <dianders@chromium.org>, Michael Turquette <mturquette@baylibre.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jun 4, 2019 at 11:11 AM Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org> wrote:
->
-> On 06/05/2019 19:52, Tom Murphy wrote:
-> > Add a gfp_t parameter to the iommu_ops::map function.
-> > Remove the needless locking in the AMD iommu driver.
-> >
-> > The iommu_ops::map function (or the iommu_map function which calls it)
-> > was always supposed to be sleepable (according to Joerg's comment in
-> > this thread: https://lore.kernel.org/patchwork/patch/977520/ ) and so
-> > should probably have had a "might_sleep()" since it was written. However
-> > currently the dma-iommu api can call iommu_map in an atomic context,
-> > which it shouldn't do. This doesn't cause any problems because any iommu
-> > driver which uses the dma-iommu api uses gfp_atomic in it's
-> > iommu_ops::map function. But doing this wastes the memory allocators
-> > atomic pools.
->
-> Hmm, in some cases iommu_ops::unmap may need to allocate as well,
-> primarily if it needs to split a hugepage mapping. Should we pass flags
-> through there as well, or are we prepared to assume that that case will
-> happen rarely enough that it's fair to just assume GFP_ATOMIC? It won't
-> happen for DMA ops, but it's conceivable that other users such as GPU
-> drivers might make partial unmaps, and I doubt we could totally rule out
-> the wackiest ones doing so from non-sleeping contexts.
->
+The 48 MHz PLL rate is not present in the downstream chromeos-3.14
+tree.  Looking at history, it was originally removed in
+<https://crrev.com/c/265810> ("CHROMIUM: clk: rockchip: expand more
+clocks support") with no explanation.  Much of that patch was later
+reverted in <https://crrev.com/c/284595> ("CHROMIUM: clk: rockchip:
+Revert more questionable PLL rates"), but that patch left in the
+removal of 48 MHz.  What I wrote in that patch:
 
-jfyi, today we (well, drm/msm) only unmap entire buffers, so assuming
-there isn't any coelescense of adjacent buffers that happen to form a
-hugepage on ::map(), we are probably ok on ::unmap()..
+> Note that the original change also removed the rate (48000000, 1,
+> 64, 32) from the table.  I have no idea why that was squashed in
+> there, but that rate was invalid anyway (it appears to have an out
+> of bounds NO).  I'm not putting that rate in.
 
-we do always only call ::map or ::unmap under sleepable conditions.
+Reading the TRM I see that NO is defined as
+- NO: 1, 2-16 (even only)
+...and furthermore only 4 bits are assigned for NO-1, which means that
+the highest NO we could even represent is 16.
 
-btw, would it be simpler to just make gfp_t a domain a attribute?
-That seems like it would be less churn, but maybe I'm overlooking
-something.
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
 
-BR,
--R
+ drivers/clk/rockchip/clk-rk3288.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 152a22a69b04..51a26ff600a1 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -101,7 +101,6 @@ static struct rockchip_pll_rate_table rk3288_pll_rates[] = {
+ 	RK3066_PLL_RATE( 216000000, 1, 72, 8),
+ 	RK3066_PLL_RATE( 148500000, 2, 99, 8),
+ 	RK3066_PLL_RATE( 126000000, 1, 84, 16),
+-	RK3066_PLL_RATE(  48000000, 1, 64, 32),
+ 	{ /* sentinel */ },
+ };
+ 
+-- 
+2.22.0.rc1.311.g5d7573a151-goog
