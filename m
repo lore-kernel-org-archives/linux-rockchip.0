@@ -1,60 +1,184 @@
-From: Boris Brezillon <boris.brezillon@collabora.com>
-Subject: Re: [PATCH v4 1/5] drm/rockchip: fix fb references in async update
-Date: Tue, 4 Jun 2019 10:34:22 +0200
-Message-ID: <20190604103422.63a61f46@collabora.com>
-References: <20190603165610.24614-1-helen.koike@collabora.com>
-        <20190603165610.24614-2-helen.koike@collabora.com>
-        <aecadca2-f67b-5d9d-550e-f90cbca5fd3f@collabora.com>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH v2 1/2] drm: bridge: dw-hdmi: Add hook for resume
+Date: Tue, 4 Jun 2019 15:49:48 +0300
+Message-ID: <20190604124948.GF7812@pendragon.ideasonboard.com>
+References: <20190516214022.65220-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <aecadca2-f67b-5d9d-550e-f90cbca5fd3f@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20190516214022.65220-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Helen Koike <helen.koike@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, nicholas.kazlauskas@amd.com, andrey.grodzovsky@amd.com, daniel.vetter@ffwll.ch, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, David Airlie <airlied@linux.ie>, Sean Paul <seanpaul@google.com>, kernel@collabora.com, harry.wentland@amd.com, =?UTF-8?B?U3TDqXBoYW5l?= Marchesin <marcheu@google.com>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, mka@chromium.org, Sean Paul <seanpaul@chromium.org>, Sam Ravnborg <sam@ravnborg.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 3 Jun 2019 17:13:34 -0300
-Helen Koike <helen.koike@collabora.com> wrote:
+Hi Douglas,
 
-> On 6/3/19 1:56 PM, Helen Koike wrote:
-> > In the case of async update, modifications are done in place, i.e. in the
-> > current plane state, so the new_state is prepared and the new_state is
-> > cleaned up (instead of the old_state, unlike what happens in a
-> > normal sync update).
-> > To cleanup the old_fb properly, it needs to be placed in the new_state
-> > in the end of async_update, so cleanup call will unreference the old_fb
-> > correctly.
-> > 
-> > Also, the previous code had a:
-> > 
-> > 	plane_state = plane->funcs->atomic_duplicate_state(plane);
-> > 	...
-> > 	swap(plane_state, plane->state);
-> > 
-> > 	if (plane->state->fb && plane->state->fb != new_state->fb) {
-> > 	...
-> > 	}
-> > 
-> > Which was wrong, as the fb were just assigned to be equal, so this if
-> > statement nevers evaluates to true.
-> > 
-> > Another details is that the function drm_crtc_vblank_get() can only be
-> > called when vop->is_enabled is true, otherwise it has no effect and
-> > trows a WARN_ON().
-> > 
-> > Calling drm_atomic_set_fb_for_plane() (which get a referent of the new
-> > fb and pus the old fb) is not required, as it is taken care by
-> > drm_mode_cursor_universal() when calling
-> > drm_atomic_helper_update_plane().
-> > 
-> > Signed-off-by: Helen Koike <helen.koike@collabora.com>  
+Thank you for the patch.
+
+On Thu, May 16, 2019 at 02:40:21PM -0700, Douglas Anderson wrote:
+> On Rockchip rk3288-based Chromebooks when you do a suspend/resume
+> cycle:
 > 
-> Cc: <stable@vger.kernel.org> # v4.20+
-> Fixes: 15609559a834 ("drm/rockchip: update cursors asynchronously
-> through atomic.")
+> 1. You lose the ability to detect an HDMI device being plugged in.
+> 
+> 2. If you're using the i2c bus built in to dw_hdmi then it stops
+> working.
+> 
+> Let's add a hook to the core dw-hdmi driver so that we can call it in
+> dw_hdmi-rockchip in the next commit.
+> 
+> NOTE: the exact set of steps I've done here in resume come from
+> looking at the normal dw_hdmi init sequence in upstream Linux plus the
+> sequence that we did in downstream Chrome OS 3.14.  Testing show that
+> it seems to work, but if an extra step is needed or something here is
+> not needed we could improve it.
+> 
+> As part of this change we'll refactor the hardware init bits of
+> dw-hdmi to happen all in one function and all at the same time.  Since
+> we need to init the interrupt mutes before we request the IRQ, this
+> means moving the hardware init earlier in the function, but there
+> should be no problems with that.  Also as part of this we now
+> unconditionally init the "i2c" parts of dw-hdmi, but again that ought
+> to be fine.
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+> 
+> Changes in v2:
+> - No empty stub for suspend (Laurent)
+> - Refactor to use the same code in probe and resume (Laurent)
+> - Unconditionally init i2c (seems OK + needed before hdmi->i2c init)
+> - Combine "init" of i2c and "setup" of i2c (no reason to split)
+> 
+>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 50 ++++++++++++++---------
+>  include/drm/bridge/dw_hdmi.h              |  2 +
+>  2 files changed, 33 insertions(+), 19 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> index ab7968c8f6a2..636d55d1398c 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> @@ -227,6 +227,13 @@ static void hdmi_mask_writeb(struct dw_hdmi *hdmi, u8 data, unsigned int reg,
+>  
+>  static void dw_hdmi_i2c_init(struct dw_hdmi *hdmi)
+>  {
+> +	hdmi_writeb(hdmi, HDMI_PHY_I2CM_INT_ADDR_DONE_POL,
+> +		    HDMI_PHY_I2CM_INT_ADDR);
+> +
+> +	hdmi_writeb(hdmi, HDMI_PHY_I2CM_CTLINT_ADDR_NAC_POL |
+> +		    HDMI_PHY_I2CM_CTLINT_ADDR_ARBITRATION_POL,
+> +		    HDMI_PHY_I2CM_CTLINT_ADDR);
+> +
+>  	/* Software reset */
+>  	hdmi_writeb(hdmi, 0x00, HDMI_I2CM_SOFTRSTZ);
+>  
+> @@ -1925,16 +1932,6 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
+>  	return 0;
+>  }
+>  
+> -static void dw_hdmi_setup_i2c(struct dw_hdmi *hdmi)
+> -{
+> -	hdmi_writeb(hdmi, HDMI_PHY_I2CM_INT_ADDR_DONE_POL,
+> -		    HDMI_PHY_I2CM_INT_ADDR);
+> -
+> -	hdmi_writeb(hdmi, HDMI_PHY_I2CM_CTLINT_ADDR_NAC_POL |
+> -		    HDMI_PHY_I2CM_CTLINT_ADDR_ARBITRATION_POL,
+> -		    HDMI_PHY_I2CM_CTLINT_ADDR);
+> -}
+> -
+>  static void initialize_hdmi_ih_mutes(struct dw_hdmi *hdmi)
+>  {
+>  	u8 ih_mute;
+> @@ -2435,6 +2432,21 @@ static const struct regmap_config hdmi_regmap_32bit_config = {
+>  	.max_register	= HDMI_I2CM_FS_SCL_LCNT_0_ADDR << 2,
+>  };
+>  
+> +static void dw_hdmi_init_hw(struct dw_hdmi *hdmi)
+> +{
+> +	initialize_hdmi_ih_mutes(hdmi);
+> +
+> +	/*
+> +	 * Reset HDMI DDC I2C master controller and mute I2CM interrupts.
+> +	 * Even if we are using a separate i2c adapter doing this doesn't
+> +	 * hurt.
+> +	 */
+> +	dw_hdmi_i2c_init(hdmi);
+> +
+> +	if (hdmi->phy.ops->setup_hpd)
+> +		hdmi->phy.ops->setup_hpd(hdmi, hdmi->phy.data);
+> +}
+> +
+>  static struct dw_hdmi *
+>  __dw_hdmi_probe(struct platform_device *pdev,
+>  		const struct dw_hdmi_plat_data *plat_data)
+> @@ -2586,7 +2598,7 @@ __dw_hdmi_probe(struct platform_device *pdev,
+>  		 prod_id1 & HDMI_PRODUCT_ID1_HDCP ? "with" : "without",
+>  		 hdmi->phy.name);
+>  
+> -	initialize_hdmi_ih_mutes(hdmi);
+> +	dw_hdmi_init_hw(hdmi);
+>  
+>  	irq = platform_get_irq(pdev, 0);
+>  	if (irq < 0) {
+> @@ -2625,10 +2637,6 @@ __dw_hdmi_probe(struct platform_device *pdev,
+>  	hdmi->bridge.of_node = pdev->dev.of_node;
+>  #endif
+>  
+> -	dw_hdmi_setup_i2c(hdmi);
+> -	if (hdmi->phy.ops->setup_hpd)
+> -		hdmi->phy.ops->setup_hpd(hdmi, hdmi->phy.data);
+> -
+>  	memset(&pdevinfo, 0, sizeof(pdevinfo));
+>  	pdevinfo.parent = dev;
+>  	pdevinfo.id = PLATFORM_DEVID_AUTO;
+> @@ -2681,10 +2689,6 @@ __dw_hdmi_probe(struct platform_device *pdev,
+>  		hdmi->cec = platform_device_register_full(&pdevinfo);
+>  	}
+>  
+> -	/* Reset HDMI DDC I2C master controller and mute I2CM interrupts */
+> -	if (hdmi->i2c)
+> -		dw_hdmi_i2c_init(hdmi);
+> -
+>  	return hdmi;
+>  
+>  err_iahb:
+> @@ -2788,6 +2792,14 @@ void dw_hdmi_unbind(struct dw_hdmi *hdmi)
+>  }
+>  EXPORT_SYMBOL_GPL(dw_hdmi_unbind);
+>  
+> +int dw_hdmi_resume(struct dw_hdmi *hdmi)
+> +{
+> +	dw_hdmi_init_hw(hdmi);
+> +
+> +	return 0;
+> +}
 
-One comment for next time you have to add such tags after the fact:
-please try to keep lines unwrapped, otherwise patchwork only gets what's
-on the first line.
+If the function always returns 0 I would make it void. Apart from that,
+
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+> +EXPORT_SYMBOL_GPL(dw_hdmi_resume);
+> +
+>  MODULE_AUTHOR("Sascha Hauer <s.hauer@pengutronix.de>");
+>  MODULE_AUTHOR("Andy Yan <andy.yan@rock-chips.com>");
+>  MODULE_AUTHOR("Yakir Yang <ykk@rock-chips.com>");
+> diff --git a/include/drm/bridge/dw_hdmi.h b/include/drm/bridge/dw_hdmi.h
+> index 66e70770cce5..1626731e1681 100644
+> --- a/include/drm/bridge/dw_hdmi.h
+> +++ b/include/drm/bridge/dw_hdmi.h
+> @@ -154,6 +154,8 @@ struct dw_hdmi *dw_hdmi_bind(struct platform_device *pdev,
+>  			     struct drm_encoder *encoder,
+>  			     const struct dw_hdmi_plat_data *plat_data);
+>  
+> +int dw_hdmi_resume(struct dw_hdmi *hdmi);
+> +
+>  void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense);
+>  
+>  void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate);
+
+-- 
+Regards,
+
+Laurent Pinchart
