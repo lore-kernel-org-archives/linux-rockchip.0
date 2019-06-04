@@ -1,36 +1,46 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: [RFC PATCH 29/30] misc: pci_endpoint_test: Populate sriov_configure ops to configure SRIOV device
-Date: Tue, 4 Jun 2019 18:45:15 +0530
-Message-ID: <20190604131516.13596-30-kishon@ti.com>
-References: <20190604131516.13596-1-kishon@ti.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: fix isp iommu clocks and power domain
+Date: Tue, 04 Jun 2019 15:37:12 +0200
+Message-ID: <5083973.35ftUdt9Su@phil>
+References: <20190603142214.24686-1-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190604131516.13596-1-kishon@ti.com>
+In-Reply-To: <20190603142214.24686-1-helen.koike@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Tom Joseph <tjoseph@cadence.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Frank Rowand <frowand.list@gmail.com>, Jingoo Han <jingoohan1@gmail.com>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>
+To: Helen Koike <helen.koike@collabora.com>
+Cc: linux-rockchip@lists.infradead.org, kernel@collabora.com, ezequiel@collabora.com, laurent.pinchart@ideasonboard.com, manivannan.sadhasivam@linaro.org, linux-arm-kernel@lists.infradead.org, Vicente Bergas <vicencb@gmail.com>, devicetree@vger.kernel.org, Klaus Goger <klaus.goger@theobroma-systems.com>, linux-kernel@vger.kernel.org, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Randy Li <ayaka@soulik.info>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Rob Herring <robh+dt@kernel.org>, Tony Xie <tony.xie@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, Viresh Kumar <viresh.kumar@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Populate sriov_configure ops with pci_sriov_configure_simple to
-configure SRIOV device.
+Am Montag, 3. Juni 2019, 16:22:15 CEST schrieb Helen Koike:
+> isp iommu requires wrapper variants of the clocks.
+> noc variants are always on and using the wrapper variants will activate
+> {A,H}CLK_ISP{0,1} due to the hierarchy.
+> 
+> Also add the respective power domain.
+> 
+> Refer:
+>  RK3399 TRM v1.4 Fig. 2-4 RK3399 Clock Architecture Diagram
+>  RK3399 TRM v1.4 Fig. 8-1 RK3399 Power Domain Partition
+> 
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
 
-Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
----
- drivers/misc/pci_endpoint_test.c | 1 +
- 1 file changed, 1 insertion(+)
+applied for 5.3 with the received Tested-tag and I also moved
+parts of the comment into the commit message making it:
 
-diff --git a/drivers/misc/pci_endpoint_test.c b/drivers/misc/pci_endpoint_test.c
-index 632c76e33e4e..2a6cd9e65e67 100644
---- a/drivers/misc/pci_endpoint_test.c
-+++ b/drivers/misc/pci_endpoint_test.c
-@@ -831,6 +831,7 @@ static struct pci_driver pci_endpoint_test_driver = {
- 	.id_table	= pci_endpoint_test_tbl,
- 	.probe		= pci_endpoint_test_probe,
- 	.remove		= pci_endpoint_test_remove,
-+	.sriov_configure = pci_sriov_configure_simple,
- };
- module_pci_driver(pci_endpoint_test_driver);
- 
--- 
-2.17.1
+"isp iommu requires wrapper variants of the clocks.
+noc variants are always on and using the wrapper variants will activate
+{A,H}CLK_ISP{0,1} due to the hierarchy.
+
+Tested using the pending isp patch set (which is not upstream
+yet). Without this patch, streaming from the isp stalls.
+    
+Also add the respective power domain and remove the "disabled" status.
+    
+Refer:
+ RK3399 TRM v1.4 Fig. 2-4 RK3399 Clock Architecture Diagram
+ RK3399 TRM v1.4 Fig. 8-1 RK3399 Power Domain Partition"
+
+Thanks
+Heiko
