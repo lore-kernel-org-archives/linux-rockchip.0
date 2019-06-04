@@ -1,184 +1,46 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH v2 1/2] drm: bridge: dw-hdmi: Add hook for resume
-Date: Tue, 4 Jun 2019 15:49:48 +0300
-Message-ID: <20190604124948.GF7812@pendragon.ideasonboard.com>
-References: <20190516214022.65220-1-dianders@chromium.org>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: [RFC PATCH 01/30] dt-bindings: PCI: cadence: Add DT binding to use
+ PCIe with IOMMU
+Date: Tue, 4 Jun 2019 18:44:47 +0530
+Message-ID: <20190604131516.13596-2-kishon@ti.com>
+References: <20190604131516.13596-1-kishon@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190516214022.65220-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, mka@chromium.org, Sean Paul <seanpaul@chromium.org>, Sam Ravnborg <sam@ravnborg.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190604131516.13596-1-kishon-l0cyMroinI0@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Tom Joseph <tjoseph-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Gustavo Pimentel <gustavo.pimentel-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Frank Rowand <frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Douglas,
+Add DT binding to map a Requester ID to an IOMMU and associated IOMMU
+specifier.
 
-Thank you for the patch.
+Signed-off-by: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+---
+ Documentation/devicetree/bindings/pci/cdns,cdns-pcie-host.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-On Thu, May 16, 2019 at 02:40:21PM -0700, Douglas Anderson wrote:
-> On Rockchip rk3288-based Chromebooks when you do a suspend/resume
-> cycle:
-> 
-> 1. You lose the ability to detect an HDMI device being plugged in.
-> 
-> 2. If you're using the i2c bus built in to dw_hdmi then it stops
-> working.
-> 
-> Let's add a hook to the core dw-hdmi driver so that we can call it in
-> dw_hdmi-rockchip in the next commit.
-> 
-> NOTE: the exact set of steps I've done here in resume come from
-> looking at the normal dw_hdmi init sequence in upstream Linux plus the
-> sequence that we did in downstream Chrome OS 3.14.  Testing show that
-> it seems to work, but if an extra step is needed or something here is
-> not needed we could improve it.
-> 
-> As part of this change we'll refactor the hardware init bits of
-> dw-hdmi to happen all in one function and all at the same time.  Since
-> we need to init the interrupt mutes before we request the IRQ, this
-> means moving the hardware init earlier in the function, but there
-> should be no problems with that.  Also as part of this we now
-> unconditionally init the "i2c" parts of dw-hdmi, but again that ought
-> to be fine.
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> 
-> Changes in v2:
-> - No empty stub for suspend (Laurent)
-> - Refactor to use the same code in probe and resume (Laurent)
-> - Unconditionally init i2c (seems OK + needed before hdmi->i2c init)
-> - Combine "init" of i2c and "setup" of i2c (no reason to split)
-> 
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 50 ++++++++++++++---------
->  include/drm/bridge/dw_hdmi.h              |  2 +
->  2 files changed, 33 insertions(+), 19 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> index ab7968c8f6a2..636d55d1398c 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> @@ -227,6 +227,13 @@ static void hdmi_mask_writeb(struct dw_hdmi *hdmi, u8 data, unsigned int reg,
->  
->  static void dw_hdmi_i2c_init(struct dw_hdmi *hdmi)
->  {
-> +	hdmi_writeb(hdmi, HDMI_PHY_I2CM_INT_ADDR_DONE_POL,
-> +		    HDMI_PHY_I2CM_INT_ADDR);
-> +
-> +	hdmi_writeb(hdmi, HDMI_PHY_I2CM_CTLINT_ADDR_NAC_POL |
-> +		    HDMI_PHY_I2CM_CTLINT_ADDR_ARBITRATION_POL,
-> +		    HDMI_PHY_I2CM_CTLINT_ADDR);
-> +
->  	/* Software reset */
->  	hdmi_writeb(hdmi, 0x00, HDMI_I2CM_SOFTRSTZ);
->  
-> @@ -1925,16 +1932,6 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
->  	return 0;
->  }
->  
-> -static void dw_hdmi_setup_i2c(struct dw_hdmi *hdmi)
-> -{
-> -	hdmi_writeb(hdmi, HDMI_PHY_I2CM_INT_ADDR_DONE_POL,
-> -		    HDMI_PHY_I2CM_INT_ADDR);
-> -
-> -	hdmi_writeb(hdmi, HDMI_PHY_I2CM_CTLINT_ADDR_NAC_POL |
-> -		    HDMI_PHY_I2CM_CTLINT_ADDR_ARBITRATION_POL,
-> -		    HDMI_PHY_I2CM_CTLINT_ADDR);
-> -}
-> -
->  static void initialize_hdmi_ih_mutes(struct dw_hdmi *hdmi)
->  {
->  	u8 ih_mute;
-> @@ -2435,6 +2432,21 @@ static const struct regmap_config hdmi_regmap_32bit_config = {
->  	.max_register	= HDMI_I2CM_FS_SCL_LCNT_0_ADDR << 2,
->  };
->  
-> +static void dw_hdmi_init_hw(struct dw_hdmi *hdmi)
-> +{
-> +	initialize_hdmi_ih_mutes(hdmi);
-> +
-> +	/*
-> +	 * Reset HDMI DDC I2C master controller and mute I2CM interrupts.
-> +	 * Even if we are using a separate i2c adapter doing this doesn't
-> +	 * hurt.
-> +	 */
-> +	dw_hdmi_i2c_init(hdmi);
-> +
-> +	if (hdmi->phy.ops->setup_hpd)
-> +		hdmi->phy.ops->setup_hpd(hdmi, hdmi->phy.data);
-> +}
-> +
->  static struct dw_hdmi *
->  __dw_hdmi_probe(struct platform_device *pdev,
->  		const struct dw_hdmi_plat_data *plat_data)
-> @@ -2586,7 +2598,7 @@ __dw_hdmi_probe(struct platform_device *pdev,
->  		 prod_id1 & HDMI_PRODUCT_ID1_HDCP ? "with" : "without",
->  		 hdmi->phy.name);
->  
-> -	initialize_hdmi_ih_mutes(hdmi);
-> +	dw_hdmi_init_hw(hdmi);
->  
->  	irq = platform_get_irq(pdev, 0);
->  	if (irq < 0) {
-> @@ -2625,10 +2637,6 @@ __dw_hdmi_probe(struct platform_device *pdev,
->  	hdmi->bridge.of_node = pdev->dev.of_node;
->  #endif
->  
-> -	dw_hdmi_setup_i2c(hdmi);
-> -	if (hdmi->phy.ops->setup_hpd)
-> -		hdmi->phy.ops->setup_hpd(hdmi, hdmi->phy.data);
-> -
->  	memset(&pdevinfo, 0, sizeof(pdevinfo));
->  	pdevinfo.parent = dev;
->  	pdevinfo.id = PLATFORM_DEVID_AUTO;
-> @@ -2681,10 +2689,6 @@ __dw_hdmi_probe(struct platform_device *pdev,
->  		hdmi->cec = platform_device_register_full(&pdevinfo);
->  	}
->  
-> -	/* Reset HDMI DDC I2C master controller and mute I2CM interrupts */
-> -	if (hdmi->i2c)
-> -		dw_hdmi_i2c_init(hdmi);
-> -
->  	return hdmi;
->  
->  err_iahb:
-> @@ -2788,6 +2792,14 @@ void dw_hdmi_unbind(struct dw_hdmi *hdmi)
->  }
->  EXPORT_SYMBOL_GPL(dw_hdmi_unbind);
->  
-> +int dw_hdmi_resume(struct dw_hdmi *hdmi)
-> +{
-> +	dw_hdmi_init_hw(hdmi);
-> +
-> +	return 0;
-> +}
-
-If the function always returns 0 I would make it void. Apart from that,
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-
-> +EXPORT_SYMBOL_GPL(dw_hdmi_resume);
-> +
->  MODULE_AUTHOR("Sascha Hauer <s.hauer@pengutronix.de>");
->  MODULE_AUTHOR("Andy Yan <andy.yan@rock-chips.com>");
->  MODULE_AUTHOR("Yakir Yang <ykk@rock-chips.com>");
-> diff --git a/include/drm/bridge/dw_hdmi.h b/include/drm/bridge/dw_hdmi.h
-> index 66e70770cce5..1626731e1681 100644
-> --- a/include/drm/bridge/dw_hdmi.h
-> +++ b/include/drm/bridge/dw_hdmi.h
-> @@ -154,6 +154,8 @@ struct dw_hdmi *dw_hdmi_bind(struct platform_device *pdev,
->  			     struct drm_encoder *encoder,
->  			     const struct dw_hdmi_plat_data *plat_data);
->  
-> +int dw_hdmi_resume(struct dw_hdmi *hdmi);
-> +
->  void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense);
->  
->  void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate);
-
+diff --git a/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-host.txt b/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-host.txt
+index 91de69c713a9..f02cccd1e0c5 100644
+--- a/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-host.txt
++++ b/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-host.txt
+@@ -27,6 +27,7 @@ Optional properties:
+ - phys: From PHY bindings: List of Generic PHY phandles. One per lane if more
+   than one in the list.  If only one PHY listed it must manage all lanes. 
+ - phy-names:  List of names to identify the PHY.
++- iommu-map: As specified in Documentation/devicetree/bindings/pci/pci-iommu.txt
+ 
+ Example:
+ 
 -- 
-Regards,
-
-Laurent Pinchart
+2.17.1
