@@ -1,13 +1,15 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v3 1/2] drm: bridge: dw-hdmi: Add hook for resume
-Date: Tue,  4 Jun 2019 13:42:06 -0700
-Message-ID: <20190604204207.168085-1-dianders@chromium.org>
+Subject: [PATCH v3 2/2] drm/rockchip: dw_hdmi: Handle suspend/resume
+Date: Tue,  4 Jun 2019 13:42:07 -0700
+Message-ID: <20190604204207.168085-2-dianders@chromium.org>
+References: <20190604204207.168085-1-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190604204207.168085-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Sean Paul <seanpaul@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Cc: linux-rockchip@lists.infradead.org, Neil Armstrong <narmstrong@baylibre.com>, mka@chromium.org, Douglas Anderson <dianders@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, Zheng Yang <zhengyang@rock-chips.com>, Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, =?UTF-8?q?Ville=20Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
+Cc: linux-rockchip@lists.infradead.org, Neil Armstrong <narmstrong@baylibre.com>, mka@chromium.org, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
 On Rockchip rk3288-based Chromebooks when you do a suspend/resume
@@ -18,153 +20,57 @@ cycle:
 2. If you're using the i2c bus built in to dw_hdmi then it stops
 working.
 
-Let's add a hook to the core dw-hdmi driver so that we can call it in
-dw_hdmi-rockchip in the next commit.
+Let's call the core dw-hdmi's suspend/resume functions to restore
+things.
 
-NOTE: the exact set of steps I've done here in resume come from
-looking at the normal dw_hdmi init sequence in upstream Linux plus the
-sequence that we did in downstream Chrome OS 3.14.  Testing show that
-it seems to work, but if an extra step is needed or something here is
-not needed we could improve it.
-
-As part of this change we'll refactor the hardware init bits of
-dw-hdmi to happen all in one function and all at the same time.  Since
-we need to init the interrupt mutes before we request the IRQ, this
-means moving the hardware init earlier in the function, but there
-should be no problems with that.  Also as part of this we now
-unconditionally init the "i2c" parts of dw-hdmi, but again that ought
-to be fine.
+NOTE: in downstream Chrome OS (based on kernel 3.14) we used the
+"late/early" versions of suspend/resume because we found that the VOP
+was sometimes resuming before dw_hdmi and then calling into us before
+we were fully resumed.  For now I have gone back to the normal
+suspend/resume because I can't reproduce the problems.
 
 Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 ---
 
 Changes in v3:
-- Change resume to void function (Laurent)
+- dw_hdmi_resume() is now a void function (Laurent)
 
 Changes in v2:
+- Add forgotten static (Laurent)
 - No empty stub for suspend (Laurent)
-- Refactor to use the same code in probe and resume (Laurent)
-- Unconditionally init i2c (seems OK + needed before hdmi->i2c init)
-- Combine "init" of i2c and "setup" of i2c (no reason to split)
 
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 48 ++++++++++++++---------
- include/drm/bridge/dw_hdmi.h              |  2 +
- 2 files changed, 31 insertions(+), 19 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index 66bd66bad44c..a00ccf123877 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -228,6 +228,13 @@ static void hdmi_mask_writeb(struct dw_hdmi *hdmi, u8 data, unsigned int reg,
- 
- static void dw_hdmi_i2c_init(struct dw_hdmi *hdmi)
- {
-+	hdmi_writeb(hdmi, HDMI_PHY_I2CM_INT_ADDR_DONE_POL,
-+		    HDMI_PHY_I2CM_INT_ADDR);
-+
-+	hdmi_writeb(hdmi, HDMI_PHY_I2CM_CTLINT_ADDR_NAC_POL |
-+		    HDMI_PHY_I2CM_CTLINT_ADDR_ARBITRATION_POL,
-+		    HDMI_PHY_I2CM_CTLINT_ADDR);
-+
- 	/* Software reset */
- 	hdmi_writeb(hdmi, 0x00, HDMI_I2CM_SOFTRSTZ);
- 
-@@ -1926,16 +1933,6 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 4cdc9f86c2e5..7bb0f922b303 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -542,11 +542,25 @@ static int dw_hdmi_rockchip_remove(struct platform_device *pdev)
  	return 0;
  }
  
--static void dw_hdmi_setup_i2c(struct dw_hdmi *hdmi)
--{
--	hdmi_writeb(hdmi, HDMI_PHY_I2CM_INT_ADDR_DONE_POL,
--		    HDMI_PHY_I2CM_INT_ADDR);
--
--	hdmi_writeb(hdmi, HDMI_PHY_I2CM_CTLINT_ADDR_NAC_POL |
--		    HDMI_PHY_I2CM_CTLINT_ADDR_ARBITRATION_POL,
--		    HDMI_PHY_I2CM_CTLINT_ADDR);
--}
--
- static void initialize_hdmi_ih_mutes(struct dw_hdmi *hdmi)
- {
- 	u8 ih_mute;
-@@ -2436,6 +2433,21 @@ static const struct regmap_config hdmi_regmap_32bit_config = {
- 	.max_register	= HDMI_I2CM_FS_SCL_LCNT_0_ADDR << 2,
++static int __maybe_unused dw_hdmi_rockchip_resume(struct device *dev)
++{
++	struct rockchip_hdmi *hdmi = dev_get_drvdata(dev);
++
++	dw_hdmi_resume(hdmi->hdmi);
++
++	return 0;
++}
++
++static const struct dev_pm_ops dw_hdmi_rockchip_pm = {
++	SET_SYSTEM_SLEEP_PM_OPS(NULL, dw_hdmi_rockchip_resume)
++};
++
+ struct platform_driver dw_hdmi_rockchip_pltfm_driver = {
+ 	.probe  = dw_hdmi_rockchip_probe,
+ 	.remove = dw_hdmi_rockchip_remove,
+ 	.driver = {
+ 		.name = "dwhdmi-rockchip",
++		.pm = &dw_hdmi_rockchip_pm,
+ 		.of_match_table = dw_hdmi_rockchip_dt_ids,
+ 	},
  };
- 
-+static void dw_hdmi_init_hw(struct dw_hdmi *hdmi)
-+{
-+	initialize_hdmi_ih_mutes(hdmi);
-+
-+	/*
-+	 * Reset HDMI DDC I2C master controller and mute I2CM interrupts.
-+	 * Even if we are using a separate i2c adapter doing this doesn't
-+	 * hurt.
-+	 */
-+	dw_hdmi_i2c_init(hdmi);
-+
-+	if (hdmi->phy.ops->setup_hpd)
-+		hdmi->phy.ops->setup_hpd(hdmi, hdmi->phy.data);
-+}
-+
- static struct dw_hdmi *
- __dw_hdmi_probe(struct platform_device *pdev,
- 		const struct dw_hdmi_plat_data *plat_data)
-@@ -2587,7 +2599,7 @@ __dw_hdmi_probe(struct platform_device *pdev,
- 		 prod_id1 & HDMI_PRODUCT_ID1_HDCP ? "with" : "without",
- 		 hdmi->phy.name);
- 
--	initialize_hdmi_ih_mutes(hdmi);
-+	dw_hdmi_init_hw(hdmi);
- 
- 	irq = platform_get_irq(pdev, 0);
- 	if (irq < 0) {
-@@ -2626,10 +2638,6 @@ __dw_hdmi_probe(struct platform_device *pdev,
- 	hdmi->bridge.of_node = pdev->dev.of_node;
- #endif
- 
--	dw_hdmi_setup_i2c(hdmi);
--	if (hdmi->phy.ops->setup_hpd)
--		hdmi->phy.ops->setup_hpd(hdmi, hdmi->phy.data);
--
- 	memset(&pdevinfo, 0, sizeof(pdevinfo));
- 	pdevinfo.parent = dev;
- 	pdevinfo.id = PLATFORM_DEVID_AUTO;
-@@ -2682,10 +2690,6 @@ __dw_hdmi_probe(struct platform_device *pdev,
- 		hdmi->cec = platform_device_register_full(&pdevinfo);
- 	}
- 
--	/* Reset HDMI DDC I2C master controller and mute I2CM interrupts */
--	if (hdmi->i2c)
--		dw_hdmi_i2c_init(hdmi);
--
- 	return hdmi;
- 
- err_iahb:
-@@ -2789,6 +2793,12 @@ void dw_hdmi_unbind(struct dw_hdmi *hdmi)
- }
- EXPORT_SYMBOL_GPL(dw_hdmi_unbind);
- 
-+void dw_hdmi_resume(struct dw_hdmi *hdmi)
-+{
-+	dw_hdmi_init_hw(hdmi);
-+}
-+EXPORT_SYMBOL_GPL(dw_hdmi_resume);
-+
- MODULE_AUTHOR("Sascha Hauer <s.hauer@pengutronix.de>");
- MODULE_AUTHOR("Andy Yan <andy.yan@rock-chips.com>");
- MODULE_AUTHOR("Yakir Yang <ykk@rock-chips.com>");
-diff --git a/include/drm/bridge/dw_hdmi.h b/include/drm/bridge/dw_hdmi.h
-index 66e70770cce5..601243b56b69 100644
---- a/include/drm/bridge/dw_hdmi.h
-+++ b/include/drm/bridge/dw_hdmi.h
-@@ -154,6 +154,8 @@ struct dw_hdmi *dw_hdmi_bind(struct platform_device *pdev,
- 			     struct drm_encoder *encoder,
- 			     const struct dw_hdmi_plat_data *plat_data);
- 
-+void dw_hdmi_resume(struct dw_hdmi *hdmi);
-+
- void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense);
- 
- void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate);
 -- 
 2.22.0.rc1.311.g5d7573a151-goog
