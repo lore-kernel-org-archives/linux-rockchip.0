@@ -1,54 +1,170 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [RFC PATCH 26/30] MAINTAINERS: Add MAINTAINER entry for PCIe on
- TI's J721E SoC
-Date: Tue, 4 Jun 2019 14:45:57 -0500
-Message-ID: <20190604194557.GB84290@google.com>
-References: <20190604131516.13596-1-kishon@ti.com>
- <20190604131516.13596-27-kishon@ti.com>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v3 1/2] drm: bridge: dw-hdmi: Add hook for resume
+Date: Tue,  4 Jun 2019 13:42:06 -0700
+Message-ID: <20190604204207.168085-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190604131516.13596-27-kishon@ti.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Tom Joseph <tjoseph@cadence.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Frank Rowand <frowand.list@gmail.com>, Jingoo Han <jingoohan1@gmail.com>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Sean Paul <seanpaul@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+Cc: linux-rockchip@lists.infradead.org, Neil Armstrong <narmstrong@baylibre.com>, mka@chromium.org, Douglas Anderson <dianders@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, Zheng Yang <zhengyang@rock-chips.com>, Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, =?UTF-8?q?Ville=20Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-Nit: the subject wastes a lot of space in the most valuable part (the
-beginning).  Something like this would make "git log --oneline" more
-useful:
+On Rockchip rk3288-based Chromebooks when you do a suspend/resume
+cycle:
 
-  MAINTAINERS: Add Kishon Vijay Abraham I for TI J721E SoC PCIe
+1. You lose the ability to detect an HDMI device being plugged in.
 
-On Tue, Jun 04, 2019 at 06:45:12PM +0530, Kishon Vijay Abraham I wrote:
-> Add MAINTAINER entry for PCIe on TI's J721E SoC.
-> 
-> Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
-> ---
->  MAINTAINERS | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index a6954776a37e..8a421949f335 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -12122,13 +12122,14 @@ S:	Maintained
->  F:	Documentation/devicetree/bindings/pci/designware-pcie.txt
->  F:	drivers/pci/controller/dwc/*designware*
->  
-> -PCI DRIVER FOR TI DRA7XX
-> +PCI DRIVER FOR TI DRA7XX/J721E
->  M:	Kishon Vijay Abraham I <kishon@ti.com>
->  L:	linux-omap@vger.kernel.org
->  L:	linux-pci@vger.kernel.org
->  S:	Supported
->  F:	Documentation/devicetree/bindings/pci/ti-pci.txt
->  F:	drivers/pci/controller/dwc/pci-dra7xx.c
-> +F:	drivers/pci/controller/pci-j721e.c
->  
->  PCI DRIVER FOR TI KEYSTONE
->  M:	Murali Karicheri <m-karicheri2@ti.com>
-> -- 
-> 2.17.1
-> 
+2. If you're using the i2c bus built in to dw_hdmi then it stops
+working.
+
+Let's add a hook to the core dw-hdmi driver so that we can call it in
+dw_hdmi-rockchip in the next commit.
+
+NOTE: the exact set of steps I've done here in resume come from
+looking at the normal dw_hdmi init sequence in upstream Linux plus the
+sequence that we did in downstream Chrome OS 3.14.  Testing show that
+it seems to work, but if an extra step is needed or something here is
+not needed we could improve it.
+
+As part of this change we'll refactor the hardware init bits of
+dw-hdmi to happen all in one function and all at the same time.  Since
+we need to init the interrupt mutes before we request the IRQ, this
+means moving the hardware init earlier in the function, but there
+should be no problems with that.  Also as part of this we now
+unconditionally init the "i2c" parts of dw-hdmi, but again that ought
+to be fine.
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+---
+
+Changes in v3:
+- Change resume to void function (Laurent)
+
+Changes in v2:
+- No empty stub for suspend (Laurent)
+- Refactor to use the same code in probe and resume (Laurent)
+- Unconditionally init i2c (seems OK + needed before hdmi->i2c init)
+- Combine "init" of i2c and "setup" of i2c (no reason to split)
+
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 48 ++++++++++++++---------
+ include/drm/bridge/dw_hdmi.h              |  2 +
+ 2 files changed, 31 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index 66bd66bad44c..a00ccf123877 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -228,6 +228,13 @@ static void hdmi_mask_writeb(struct dw_hdmi *hdmi, u8 data, unsigned int reg,
+ 
+ static void dw_hdmi_i2c_init(struct dw_hdmi *hdmi)
+ {
++	hdmi_writeb(hdmi, HDMI_PHY_I2CM_INT_ADDR_DONE_POL,
++		    HDMI_PHY_I2CM_INT_ADDR);
++
++	hdmi_writeb(hdmi, HDMI_PHY_I2CM_CTLINT_ADDR_NAC_POL |
++		    HDMI_PHY_I2CM_CTLINT_ADDR_ARBITRATION_POL,
++		    HDMI_PHY_I2CM_CTLINT_ADDR);
++
+ 	/* Software reset */
+ 	hdmi_writeb(hdmi, 0x00, HDMI_I2CM_SOFTRSTZ);
+ 
+@@ -1926,16 +1933,6 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
+ 	return 0;
+ }
+ 
+-static void dw_hdmi_setup_i2c(struct dw_hdmi *hdmi)
+-{
+-	hdmi_writeb(hdmi, HDMI_PHY_I2CM_INT_ADDR_DONE_POL,
+-		    HDMI_PHY_I2CM_INT_ADDR);
+-
+-	hdmi_writeb(hdmi, HDMI_PHY_I2CM_CTLINT_ADDR_NAC_POL |
+-		    HDMI_PHY_I2CM_CTLINT_ADDR_ARBITRATION_POL,
+-		    HDMI_PHY_I2CM_CTLINT_ADDR);
+-}
+-
+ static void initialize_hdmi_ih_mutes(struct dw_hdmi *hdmi)
+ {
+ 	u8 ih_mute;
+@@ -2436,6 +2433,21 @@ static const struct regmap_config hdmi_regmap_32bit_config = {
+ 	.max_register	= HDMI_I2CM_FS_SCL_LCNT_0_ADDR << 2,
+ };
+ 
++static void dw_hdmi_init_hw(struct dw_hdmi *hdmi)
++{
++	initialize_hdmi_ih_mutes(hdmi);
++
++	/*
++	 * Reset HDMI DDC I2C master controller and mute I2CM interrupts.
++	 * Even if we are using a separate i2c adapter doing this doesn't
++	 * hurt.
++	 */
++	dw_hdmi_i2c_init(hdmi);
++
++	if (hdmi->phy.ops->setup_hpd)
++		hdmi->phy.ops->setup_hpd(hdmi, hdmi->phy.data);
++}
++
+ static struct dw_hdmi *
+ __dw_hdmi_probe(struct platform_device *pdev,
+ 		const struct dw_hdmi_plat_data *plat_data)
+@@ -2587,7 +2599,7 @@ __dw_hdmi_probe(struct platform_device *pdev,
+ 		 prod_id1 & HDMI_PRODUCT_ID1_HDCP ? "with" : "without",
+ 		 hdmi->phy.name);
+ 
+-	initialize_hdmi_ih_mutes(hdmi);
++	dw_hdmi_init_hw(hdmi);
+ 
+ 	irq = platform_get_irq(pdev, 0);
+ 	if (irq < 0) {
+@@ -2626,10 +2638,6 @@ __dw_hdmi_probe(struct platform_device *pdev,
+ 	hdmi->bridge.of_node = pdev->dev.of_node;
+ #endif
+ 
+-	dw_hdmi_setup_i2c(hdmi);
+-	if (hdmi->phy.ops->setup_hpd)
+-		hdmi->phy.ops->setup_hpd(hdmi, hdmi->phy.data);
+-
+ 	memset(&pdevinfo, 0, sizeof(pdevinfo));
+ 	pdevinfo.parent = dev;
+ 	pdevinfo.id = PLATFORM_DEVID_AUTO;
+@@ -2682,10 +2690,6 @@ __dw_hdmi_probe(struct platform_device *pdev,
+ 		hdmi->cec = platform_device_register_full(&pdevinfo);
+ 	}
+ 
+-	/* Reset HDMI DDC I2C master controller and mute I2CM interrupts */
+-	if (hdmi->i2c)
+-		dw_hdmi_i2c_init(hdmi);
+-
+ 	return hdmi;
+ 
+ err_iahb:
+@@ -2789,6 +2793,12 @@ void dw_hdmi_unbind(struct dw_hdmi *hdmi)
+ }
+ EXPORT_SYMBOL_GPL(dw_hdmi_unbind);
+ 
++void dw_hdmi_resume(struct dw_hdmi *hdmi)
++{
++	dw_hdmi_init_hw(hdmi);
++}
++EXPORT_SYMBOL_GPL(dw_hdmi_resume);
++
+ MODULE_AUTHOR("Sascha Hauer <s.hauer@pengutronix.de>");
+ MODULE_AUTHOR("Andy Yan <andy.yan@rock-chips.com>");
+ MODULE_AUTHOR("Yakir Yang <ykk@rock-chips.com>");
+diff --git a/include/drm/bridge/dw_hdmi.h b/include/drm/bridge/dw_hdmi.h
+index 66e70770cce5..601243b56b69 100644
+--- a/include/drm/bridge/dw_hdmi.h
++++ b/include/drm/bridge/dw_hdmi.h
+@@ -154,6 +154,8 @@ struct dw_hdmi *dw_hdmi_bind(struct platform_device *pdev,
+ 			     struct drm_encoder *encoder,
+ 			     const struct dw_hdmi_plat_data *plat_data);
+ 
++void dw_hdmi_resume(struct dw_hdmi *hdmi);
++
+ void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense);
+ 
+ void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate);
+-- 
+2.22.0.rc1.311.g5d7573a151-goog
