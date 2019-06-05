@@ -1,35 +1,92 @@
-From: Christoph Hellwig <hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-Subject: Re: [PATCH v3 1/4] iommu: Add gfp parameter to iommu_ops::map
-Date: Tue, 4 Jun 2019 22:50:21 -0700
-Message-ID: <20190605055021.GA15036@infradead.org>
-References: <20190506185207.31069-1-tmurphy@arista.com>
- <20190506185207.31069-2-tmurphy@arista.com>
+From: Arend Van Spriel <arend.vanspriel@broadcom.com>
+Subject: Re: [PATCH v2 2/3] mmc: core: API for temporarily disabling
+ auto-retuning due to errors
+Date: Wed, 5 Jun 2019 09:54:48 +0200
+Message-ID: <25fe1725-76fa-2739-1427-b0e8823ea4ae@broadcom.com>
+References: <20190603183740.239031-1-dianders@chromium.org>
+ <20190603183740.239031-3-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20190506185207.31069-2-tmurphy-nzgTgzXrdUbQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Tom Murphy <tmurphy-nzgTgzXrdUbQT0dZR+AlfA@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Gerald Schaefer <gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, Andy Gross <andy.gross-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, murphyt7-/Zw1syy4LHg@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190603183740.239031-3-dianders@chromium.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>, Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>
+Cc: brcm80211-dev-list.pdl@broadcom.com, linux-rockchip@lists.infradead.org, Double Lo <double.lo@cypress.com>, briannorris@chromium.org, linux-wireless@vger.kernel.org, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, mka@chromium.org, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, netdev@vger.kernel.org, brcm80211-dev-list@cypress.com, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Avri Altman <avri.altman@wdc.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCBNYXkgMDYsIDIwMTkgYXQgMDc6NTI6MDNQTSArMDEwMCwgVG9tIE11cnBoeSB2aWEg
-aW9tbXUgd3JvdGU6Cj4gV2UgY2FuIHJlbW92ZSB0aGUgbXV0ZXggbG9jayBmcm9tIGFtZF9pb21t
-dV9tYXAgYW5kIGFtZF9pb21tdV91bm1hcC4KPiBpb21tdV9tYXAgZG9lc27igJl0IGxvY2sgd2hp
-bGUgbWFwcGluZyBhbmQgc28gbm8gdHdvIGNhbGxzIHNob3VsZCB0b3VjaAo+IHRoZSBzYW1lIGlv
-dmEgcmFuZ2UuIFRoZSBBTUQgZHJpdmVyIGFscmVhZHkgaGFuZGxlcyB0aGUgcGFnZSB0YWJsZSBw
-YWdlCj4gYWxsb2NhdGlvbnMgd2l0aG91dCBsb2NrcyBzbyB3ZSBjYW4gc2FmZWx5IHJlbW92ZSB0
-aGUgbG9ja3MuCgpCdHcsIHRoaXMgcmVhbGx5IHNob3VsZCBiZSBhIHNlcGFyYXRlIHBhdGNoLgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
-a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On 6/3/2019 8:37 PM, Douglas Anderson wrote:
+> Normally when the MMC core sees an "-EILSEQ" error returned by a host
+> controller then it will trigger a retuning of the card.  This is
+> generally a good idea.
+> 
+> However, if a command is expected to sometimes cause transfer errors
+> then these transfer errors shouldn't cause a re-tuning.  This
+> re-tuning will be a needless waste of time.  One example case where a
+> transfer is expected to cause errors is when transitioning between
+> idle (sometimes referred to as "sleep" in Broadcom code) and active
+> state on certain Broadcom WiFi cards.  Specifically if the card was
+> already transitioning between states when the command was sent it
+> could cause an error on the SDIO bus.
+> 
+> Let's add an API that the SDIO card drivers can call that will
+> temporarily disable the auto-tuning functionality.  Then we can add a
+> call to this in the Broadcom WiFi driver and any other driver that
+> might have similar needs.
+> 
+> NOTE: this makes the assumption that the card is already tuned well
+> enough that it's OK to disable the auto-retuning during one of these
+> error-prone situations.  Presumably the driver code performing the
+> error-prone transfer knows how to recover / retry from errors.  ...and
+> after we can get back to a state where transfers are no longer
+> error-prone then we can enable the auto-retuning again.  If we truly
+> find ourselves in a case where the card needs to be retuned sometimes
+> to handle one of these error-prone transfers then we can always try a
+> few transfers first without auto-retuning and then re-try with
+> auto-retuning if the first few fail.
+> 
+> Without this change on rk3288-veyron-minnie I periodically see this in
+> the logs of a machine just sitting there idle:
+>    dwmmc_rockchip ff0d0000.dwmmc: Successfully tuned phase to XYZ
+> 
+> Fixes: bd11e8bd03ca ("mmc: core: Flag re-tuning is needed on CRC errors")
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+> Note that are are a whole boatload of different ways that we could
+> provide an API for the Broadcom WiFi SDIO driver.  This patch
+> illustrates one way but if maintainers feel strongly that this is too
+> ugly and have a better idea then I can give it a shot too.  From a
+> purist point of view I kinda felt that the "expect errors" really
+> belonged as part of the mmc_request structure, but getting it into
+> there meant changing a whole pile of core SD/MMC APIs.  Simply adding
+> it to the host seemed to match the current style better and was a less
+> intrusive change.
+
+Hi Doug,
+
+Sorry for bringing this up, but there used to be an issue with retuning 
+in general, ie. the device handled tuning command 19 only once after 
+startup. I guess that is no longer an issue given your results. I guess 
+the problem goes away when you disable device sleep functionality. No 
+what you want in terms of power consumption, but would be good to know. 
+You can disable it with below patch.
+
+Regards,
+Arend
+---
+diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c 
+b/drivers
+index 15a40fd..18e90bd 100644
+--- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
++++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+@@ -307,7 +307,7 @@ struct rte_console {
+  #define BRCMF_IDLE_ACTIVE      0       /* Do not request any SD clock 
+change
+                                          * when idle
+                                          */
+-#define BRCMF_IDLE_INTERVAL    1
++#define BRCMF_IDLE_INTERVAL    0
+
+  #define KSO_WAIT_US 50
+  #define MAX_KSO_ATTEMPTS (PMU_MAX_TRANSITION_DLY/KSO_WAIT_US)
