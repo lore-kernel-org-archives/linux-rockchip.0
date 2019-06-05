@@ -1,37 +1,64 @@
-From: Emil Renner Berthing <kernel@esmil.dk>
-Subject: Re: Applied "spi: rockchip: turn down tx dma bursts" to the spi tree
-Date: Wed, 5 Jun 2019 22:14:59 +0200
-Message-ID: <CANBLGcwE_KfwJ=-FKNJ9RzrH58FVcmyxAR9niWQRubjM0pZgWA@mail.gmail.com>
-References: <20190412105320.2924-1-kernel@esmil.dk> <20190508103358.5C7EB440010@finisterre.sirena.org.uk>
- <CANBLGcxiXR7KqKn4U-2PgefuxpBFX=yR06cw6A5GEALuqa54FA@mail.gmail.com> <20190605195511.GX2456@sirena.org.uk>
+From: Sean Paul <sean@poorly.run>
+Subject: Re: [PATCH 1/5] dt-bindings: drm/bridge/synopsys: dw-hdmi: Add
+ "unwedge" for ddc bus
+Date: Wed, 5 Jun 2019 16:21:01 -0400
+Message-ID: <20190605202101.GG17077@art_vandelay>
+References: <20190502225336.206885-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190605195511.GX2456@sirena.org.uk>
+Content-Disposition: inline
+In-Reply-To: <20190502225336.206885-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-spi@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>, Vicente Bergas <vicencb@gmail.com>
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org, Neil Armstrong <narmstrong@baylibre.com>, Mark Rutland <mark.rutland@arm.com>, mka@chromium.org, Sean Paul <seanpaul@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 5 Jun 2019 at 21:55, Mark Brown <broonie@kernel.org> wrote:
->
-> On Wed, Jun 05, 2019 at 09:36:44PM +0200, Emil Renner Berthing wrote:
-> > On Wed, 8 May 2019 at 12:34, Mark Brown <broonie@kernel.org> wrote:
->
-> > >    spi: rockchip: turn down tx dma bursts
->
-> > I've tried looking in the for-next and for-5.x branches here, and I
-> > can't seem to find this patch.
-> > Am I missing something?
->
-> > It fixes a problem introduced in 4.19, so it'd be nice if it could
-> > make it to stable trees eventually.
->
-> 47300728fb213486a830565d2af49da967c9d16a is in my tree.  When it reaches
-> Linus' tree send a request to Greg for it to be backported if none of
-> the stable automation picks it up.
+On Thu, May 02, 2019 at 03:53:32PM -0700, Douglas Anderson wrote:
+> In certain situations it was seen that we could wedge up the DDC bus
+> on the HDMI adapter on rk3288.  The only way to unwedge was to mux one
+> of the pins over to GPIO output-driven-low temporarily and then
+> quickly mux back.  Full details can be found in the patch
+> ("drm/bridge/synopsys: dw-hdmi: Add "unwedge" for ddc bus").
+> 
+> Since unwedge requires remuxing the pins, we first need to add to the
+> bindings so that we can specify what state the pins should be in for
+> unwedging.
 
-You're absolutely right, sorry about the noise.
+Pushed to drm-misc-next along with patch 2. I'll let Heiko land the dts patches.
 
-Thanks.
-/Emil
+Thanks!
+
+Sean
+
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+> 
+>  .../bindings/display/rockchip/dw_hdmi-rockchip.txt         | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt
+> index 39143424a474..8346bac81f1c 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt
+> +++ b/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt
+> @@ -38,6 +38,13 @@ Optional properties
+>  - phys: from general PHY binding: the phandle for the PHY device.
+>  - phy-names: Should be "hdmi" if phys references an external phy.
+>  
+> +Optional pinctrl entry:
+> +- If you have both a "unwedge" and "default" pinctrl entry, dw_hdmi
+> +  will switch to the unwedge pinctrl state for 10ms if it ever gets an
+> +  i2c timeout.  It's intended that this unwedge pinctrl entry will
+> +  cause the SDA line to be driven low to work around a hardware
+> +  errata.
+> +
+>  Example:
+>  
+>  hdmi: hdmi@ff980000 {
+> -- 
+> 2.21.0.1020.gf2820cf01a-goog
+> 
+
+-- 
+Sean Paul, Software Engineer, Google / Chromium OS
