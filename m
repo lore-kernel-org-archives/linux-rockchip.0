@@ -1,64 +1,157 @@
-From: Sean Paul <sean@poorly.run>
-Subject: Re: [PATCH 1/5] dt-bindings: drm/bridge/synopsys: dw-hdmi: Add
- "unwedge" for ddc bus
-Date: Wed, 5 Jun 2019 16:21:01 -0400
-Message-ID: <20190605202101.GG17077@art_vandelay>
-References: <20190502225336.206885-1-dianders@chromium.org>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: [PATCH 1/2] ARM: dts: rockchip: Split GPIO keys for veyron into multiple devices
+Date: Wed,  5 Jun 2019 13:43:19 -0700
+Message-ID: <20190605204320.22343-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190502225336.206885-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org, Neil Armstrong <narmstrong@baylibre.com>, Mark Rutland <mark.rutland@arm.com>, mka@chromium.org, Sean Paul <seanpaul@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, May 02, 2019 at 03:53:32PM -0700, Douglas Anderson wrote:
-> In certain situations it was seen that we could wedge up the DDC bus
-> on the HDMI adapter on rk3288.  The only way to unwedge was to mux one
-> of the pins over to GPIO output-driven-low temporarily and then
-> quickly mux back.  Full details can be found in the patch
-> ("drm/bridge/synopsys: dw-hdmi: Add "unwedge" for ddc bus").
-> 
-> Since unwedge requires remuxing the pins, we first need to add to the
-> bindings so that we can specify what state the pins should be in for
-> unwedging.
+With a single device DT overrides can become messy, especially when
+keys are added or removed. Multiple devices also allow to
+enable/disable wakeup per key/group.
 
-Pushed to drm-misc-next along with patch 2. I'll let Heiko land the dts patches.
+Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+---
+ .../boot/dts/rk3288-veyron-chromebook.dtsi    | 26 +++++++------
+ arch/arm/boot/dts/rk3288-veyron-minnie.dts    | 38 ++++++++++---------
+ arch/arm/boot/dts/rk3288-veyron-pinky.dts     |  2 +-
+ arch/arm/boot/dts/rk3288-veyron.dtsi          |  4 +-
+ 4 files changed, 37 insertions(+), 33 deletions(-)
 
-Thanks!
-
-Sean
-
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> 
->  .../bindings/display/rockchip/dw_hdmi-rockchip.txt         | 7 +++++++
->  1 file changed, 7 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt
-> index 39143424a474..8346bac81f1c 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt
-> +++ b/Documentation/devicetree/bindings/display/rockchip/dw_hdmi-rockchip.txt
-> @@ -38,6 +38,13 @@ Optional properties
->  - phys: from general PHY binding: the phandle for the PHY device.
->  - phy-names: Should be "hdmi" if phys references an external phy.
->  
-> +Optional pinctrl entry:
-> +- If you have both a "unwedge" and "default" pinctrl entry, dw_hdmi
-> +  will switch to the unwedge pinctrl state for 10ms if it ever gets an
-> +  i2c timeout.  It's intended that this unwedge pinctrl entry will
-> +  cause the SDA line to be driven low to work around a hardware
-> +  errata.
-> +
->  Example:
->  
->  hdmi: hdmi@ff980000 {
-> -- 
-> 2.21.0.1020.gf2820cf01a-goog
-> 
-
+diff --git a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
+index fbef34578100..c5f71af84a40 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
+@@ -70,6 +70,20 @@
+ 		pinctrl-0 = <&ac_present_ap>;
+ 	};
+ 
++	lid_switch: lid-switch {
++		compatible = "gpio-keys";
++		pinctrl-names = "default";
++		pinctrl-0 = <&ap_lid_int_l>;
++		lid {
++			label = "Lid";
++			gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_LOW>;
++			wakeup-source;
++			linux,code = <0>; /* SW_LID */
++			linux,input-type = <5>; /* EV_SW */
++			debounce-interval = <1>;
++		};
++	};
++
+ 	panel: panel {
+ 		compatible ="innolux,n116bge", "simple-panel";
+ 		status = "okay";
+@@ -149,18 +163,6 @@
+ 	status = "okay";
+ };
+ 
+-&gpio_keys {
+-	pinctrl-0 = <&pwr_key_l &ap_lid_int_l>;
+-	lid {
+-		label = "Lid";
+-		gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_LOW>;
+-		wakeup-source;
+-		linux,code = <0>; /* SW_LID */
+-		linux,input-type = <5>; /* EV_SW */
+-		debounce-interval = <1>;
+-	};
+-};
+-
+ &pwm0 {
+ 	status = "okay";
+ };
+diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+index a65099b4aef1..b2cc70a08554 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+@@ -48,6 +48,26 @@
+ 		regulator-boot-on;
+ 		vin-supply = <&vcc18_wl>;
+ 	};
++
++	volume_buttons: volume-buttons {
++		compatible = "gpio-keys";
++		pinctrl-names = "default";
++		pinctrl-0 = <&volum_down_l &volum_up_l>;
++
++		volum_down {
++			label = "Volum_down";
++			gpios = <&gpio5 RK_PB3 GPIO_ACTIVE_LOW>;
++			linux,code = <KEY_VOLUMEDOWN>;
++			debounce-interval = <100>;
++		};
++
++		volum_up {
++			label = "Volum_up";
++			gpios = <&gpio5 RK_PB2 GPIO_ACTIVE_LOW>;
++			linux,code = <KEY_VOLUMEUP>;
++			debounce-interval = <100>;
++		};
++	};
+ };
+ 
+ &backlight {
+@@ -90,24 +110,6 @@
+ 	pwm-off-delay-ms = <200>;
+ };
+ 
+-&gpio_keys {
+-	pinctrl-0 = <&pwr_key_l &ap_lid_int_l &volum_down_l &volum_up_l>;
+-
+-	volum_down {
+-		label = "Volum_down";
+-		gpios = <&gpio5 RK_PB3 GPIO_ACTIVE_LOW>;
+-		linux,code = <KEY_VOLUMEDOWN>;
+-		debounce-interval = <100>;
+-	};
+-
+-	volum_up {
+-		label = "Volum_up";
+-		gpios = <&gpio5 RK_PB2 GPIO_ACTIVE_LOW>;
+-		linux,code = <KEY_VOLUMEUP>;
+-		debounce-interval = <100>;
+-	};
+-};
+-
+ &i2c_tunnel {
+ 	battery: bq27500@55 {
+ 		compatible = "ti,bq27500";
+diff --git a/arch/arm/boot/dts/rk3288-veyron-pinky.dts b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
+index 9645be7b3d8c..9b6f4d9b03b6 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-pinky.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
+@@ -35,7 +35,7 @@
+ 	force-hpd;
+ };
+ 
+-&gpio_keys {
++&lid_switch {
+ 	pinctrl-0 = <&pwr_key_h &ap_lid_int_l>;
+ 
+ 	power {
+diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
+index 90c8312d01ff..cc4c3595f145 100644
+--- a/arch/arm/boot/dts/rk3288-veyron.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
+@@ -23,11 +23,11 @@
+ 		reg = <0x0 0x0 0x0 0x80000000>;
+ 	};
+ 
+-	gpio_keys: gpio-keys {
++	power_button: power-button {
+ 		compatible = "gpio-keys";
+-
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pwr_key_l>;
++
+ 		power {
+ 			label = "Power";
+ 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
 -- 
-Sean Paul, Software Engineer, Google / Chromium OS
+2.22.0.rc2.383.gf4fbbf30c2-goog
