@@ -1,129 +1,94 @@
 From: Sean Paul <sean@poorly.run>
-Subject: Re: [PATCH v3 1/2] drm: bridge: dw-hdmi: Add hook for resume
-Date: Thu, 6 Jun 2019 12:36:33 -0400
-Message-ID: <20190606163633.GH17077@art_vandelay>
+Subject: Re: [PATCH v3 2/2] drm/rockchip: dw_hdmi: Handle suspend/resume
+Date: Thu, 6 Jun 2019 12:42:21 -0400
+Message-ID: <20190606164221.GI17077@art_vandelay>
 References: <20190604204207.168085-1-dianders@chromium.org>
+ <20190604204207.168085-2-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190604204207.168085-1-dianders@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190604204207.168085-2-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Douglas Anderson <dianders@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>, mka@chromium.org, Sean Paul <seanpaul@chromium.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Sam Ravnborg <sam@ravnborg.org>, Zheng Yang <zhengyang@rock-chips.com>
+Cc: Sean Paul <seanpaul@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-rockchip@lists.infradead.org, Neil Armstrong <narmstrong@baylibre.com>, mka@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKdW4gMDQsIDIwMTkgYXQgMDE6NDI6MDZQTSAtMDcwMCwgRG91Z2xhcyBBbmRlcnNv
-biB3cm90ZToKPiBPbiBSb2NrY2hpcCByazMyODgtYmFzZWQgQ2hyb21lYm9va3Mgd2hlbiB5b3Ug
-ZG8gYSBzdXNwZW5kL3Jlc3VtZQo+IGN5Y2xlOgo+IAo+IDEuIFlvdSBsb3NlIHRoZSBhYmlsaXR5
-IHRvIGRldGVjdCBhbiBIRE1JIGRldmljZSBiZWluZyBwbHVnZ2VkIGluLgo+IAo+IDIuIElmIHlv
-dSdyZSB1c2luZyB0aGUgaTJjIGJ1cyBidWlsdCBpbiB0byBkd19oZG1pIHRoZW4gaXQgc3RvcHMK
-PiB3b3JraW5nLgo+IAo+IExldCdzIGFkZCBhIGhvb2sgdG8gdGhlIGNvcmUgZHctaGRtaSBkcml2
-ZXIgc28gdGhhdCB3ZSBjYW4gY2FsbCBpdCBpbgo+IGR3X2hkbWktcm9ja2NoaXAgaW4gdGhlIG5l
-eHQgY29tbWl0Lgo+IAo+IE5PVEU6IHRoZSBleGFjdCBzZXQgb2Ygc3RlcHMgSSd2ZSBkb25lIGhl
-cmUgaW4gcmVzdW1lIGNvbWUgZnJvbQo+IGxvb2tpbmcgYXQgdGhlIG5vcm1hbCBkd19oZG1pIGlu
-aXQgc2VxdWVuY2UgaW4gdXBzdHJlYW0gTGludXggcGx1cyB0aGUKPiBzZXF1ZW5jZSB0aGF0IHdl
-IGRpZCBpbiBkb3duc3RyZWFtIENocm9tZSBPUyAzLjE0LiAgVGVzdGluZyBzaG93IHRoYXQKPiBp
-dCBzZWVtcyB0byB3b3JrLCBidXQgaWYgYW4gZXh0cmEgc3RlcCBpcyBuZWVkZWQgb3Igc29tZXRo
-aW5nIGhlcmUgaXMKPiBub3QgbmVlZGVkIHdlIGNvdWxkIGltcHJvdmUgaXQuCj4gCj4gQXMgcGFy
-dCBvZiB0aGlzIGNoYW5nZSB3ZSdsbCByZWZhY3RvciB0aGUgaGFyZHdhcmUgaW5pdCBiaXRzIG9m
-Cj4gZHctaGRtaSB0byBoYXBwZW4gYWxsIGluIG9uZSBmdW5jdGlvbiBhbmQgYWxsIGF0IHRoZSBz
-YW1lIHRpbWUuICBTaW5jZQo+IHdlIG5lZWQgdG8gaW5pdCB0aGUgaW50ZXJydXB0IG11dGVzIGJl
-Zm9yZSB3ZSByZXF1ZXN0IHRoZSBJUlEsIHRoaXMKPiBtZWFucyBtb3ZpbmcgdGhlIGhhcmR3YXJl
-IGluaXQgZWFybGllciBpbiB0aGUgZnVuY3Rpb24sIGJ1dCB0aGVyZQo+IHNob3VsZCBiZSBubyBw
-cm9ibGVtcyB3aXRoIHRoYXQuICBBbHNvIGFzIHBhcnQgb2YgdGhpcyB3ZSBub3cKPiB1bmNvbmRp
-dGlvbmFsbHkgaW5pdCB0aGUgImkyYyIgcGFydHMgb2YgZHctaGRtaSwgYnV0IGFnYWluIHRoYXQg
-b3VnaHQKPiB0byBiZSBmaW5lLgo+IAoKUmV2aWV3ZWQtYnk6IFNlYW4gUGF1bCA8c2VhbkBwb29y
-bHkucnVuPgoKPiBTaWduZWQtb2ZmLWJ5OiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJv
-bWl1bS5vcmc+Cj4gUmV2aWV3ZWQtYnk6IExhdXJlbnQgUGluY2hhcnQgPGxhdXJlbnQucGluY2hh
-cnRAaWRlYXNvbmJvYXJkLmNvbT4KPiAtLS0KPiAKPiBDaGFuZ2VzIGluIHYzOgo+IC0gQ2hhbmdl
-IHJlc3VtZSB0byB2b2lkIGZ1bmN0aW9uIChMYXVyZW50KQo+IAo+IENoYW5nZXMgaW4gdjI6Cj4g
-LSBObyBlbXB0eSBzdHViIGZvciBzdXNwZW5kIChMYXVyZW50KQo+IC0gUmVmYWN0b3IgdG8gdXNl
-IHRoZSBzYW1lIGNvZGUgaW4gcHJvYmUgYW5kIHJlc3VtZSAoTGF1cmVudCkKPiAtIFVuY29uZGl0
-aW9uYWxseSBpbml0IGkyYyAoc2VlbXMgT0sgKyBuZWVkZWQgYmVmb3JlIGhkbWktPmkyYyBpbml0
-KQo+IC0gQ29tYmluZSAiaW5pdCIgb2YgaTJjIGFuZCAic2V0dXAiIG9mIGkyYyAobm8gcmVhc29u
-IHRvIHNwbGl0KQo+IAo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWku
-YyB8IDQ4ICsrKysrKysrKysrKysrLS0tLS0tLS0tCj4gIGluY2x1ZGUvZHJtL2JyaWRnZS9kd19o
-ZG1pLmggICAgICAgICAgICAgIHwgIDIgKwo+ICAyIGZpbGVzIGNoYW5nZWQsIDMxIGluc2VydGlv
-bnMoKyksIDE5IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-YnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3Bz
-eXMvZHctaGRtaS5jCj4gaW5kZXggNjZiZDY2YmFkNDRjLi5hMDBjY2YxMjM4NzcgMTAwNjQ0Cj4g
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPiArKysgYi9k
-cml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYwo+IEBAIC0yMjgsNiArMjI4
-LDEzIEBAIHN0YXRpYyB2b2lkIGhkbWlfbWFza193cml0ZWIoc3RydWN0IGR3X2hkbWkgKmhkbWks
-IHU4IGRhdGEsIHVuc2lnbmVkIGludCByZWcsCj4gIAo+ICBzdGF0aWMgdm9pZCBkd19oZG1pX2ky
-Y19pbml0KHN0cnVjdCBkd19oZG1pICpoZG1pKQo+ICB7Cj4gKwloZG1pX3dyaXRlYihoZG1pLCBI
-RE1JX1BIWV9JMkNNX0lOVF9BRERSX0RPTkVfUE9MLAo+ICsJCSAgICBIRE1JX1BIWV9JMkNNX0lO
-VF9BRERSKTsKPiArCj4gKwloZG1pX3dyaXRlYihoZG1pLCBIRE1JX1BIWV9JMkNNX0NUTElOVF9B
-RERSX05BQ19QT0wgfAo+ICsJCSAgICBIRE1JX1BIWV9JMkNNX0NUTElOVF9BRERSX0FSQklUUkFU
-SU9OX1BPTCwKPiArCQkgICAgSERNSV9QSFlfSTJDTV9DVExJTlRfQUREUik7Cj4gKwo+ICAJLyog
-U29mdHdhcmUgcmVzZXQgKi8KPiAgCWhkbWlfd3JpdGViKGhkbWksIDB4MDAsIEhETUlfSTJDTV9T
-T0ZUUlNUWik7Cj4gIAo+IEBAIC0xOTI2LDE2ICsxOTMzLDYgQEAgc3RhdGljIGludCBkd19oZG1p
-X3NldHVwKHN0cnVjdCBkd19oZG1pICpoZG1pLCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9k
-ZSkKPiAgCXJldHVybiAwOwo+ICB9Cj4gIAo+IC1zdGF0aWMgdm9pZCBkd19oZG1pX3NldHVwX2ky
-YyhzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPiAtewo+IC0JaGRtaV93cml0ZWIoaGRtaSwgSERNSV9Q
-SFlfSTJDTV9JTlRfQUREUl9ET05FX1BPTCwKPiAtCQkgICAgSERNSV9QSFlfSTJDTV9JTlRfQURE
-Uik7Cj4gLQo+IC0JaGRtaV93cml0ZWIoaGRtaSwgSERNSV9QSFlfSTJDTV9DVExJTlRfQUREUl9O
-QUNfUE9MIHwKPiAtCQkgICAgSERNSV9QSFlfSTJDTV9DVExJTlRfQUREUl9BUkJJVFJBVElPTl9Q
-T0wsCj4gLQkJICAgIEhETUlfUEhZX0kyQ01fQ1RMSU5UX0FERFIpOwo+IC19Cj4gLQo+ICBzdGF0
-aWMgdm9pZCBpbml0aWFsaXplX2hkbWlfaWhfbXV0ZXMoc3RydWN0IGR3X2hkbWkgKmhkbWkpCj4g
-IHsKPiAgCXU4IGloX211dGU7Cj4gQEAgLTI0MzYsNiArMjQzMywyMSBAQCBzdGF0aWMgY29uc3Qg
-c3RydWN0IHJlZ21hcF9jb25maWcgaGRtaV9yZWdtYXBfMzJiaXRfY29uZmlnID0gewo+ICAJLm1h
-eF9yZWdpc3Rlcgk9IEhETUlfSTJDTV9GU19TQ0xfTENOVF8wX0FERFIgPDwgMiwKPiAgfTsKPiAg
-Cj4gK3N0YXRpYyB2b2lkIGR3X2hkbWlfaW5pdF9odyhzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPiAr
-ewo+ICsJaW5pdGlhbGl6ZV9oZG1pX2loX211dGVzKGhkbWkpOwo+ICsKPiArCS8qCj4gKwkgKiBS
-ZXNldCBIRE1JIEREQyBJMkMgbWFzdGVyIGNvbnRyb2xsZXIgYW5kIG11dGUgSTJDTSBpbnRlcnJ1
-cHRzLgo+ICsJICogRXZlbiBpZiB3ZSBhcmUgdXNpbmcgYSBzZXBhcmF0ZSBpMmMgYWRhcHRlciBk
-b2luZyB0aGlzIGRvZXNuJ3QKPiArCSAqIGh1cnQuCj4gKwkgKi8KPiArCWR3X2hkbWlfaTJjX2lu
-aXQoaGRtaSk7Cj4gKwo+ICsJaWYgKGhkbWktPnBoeS5vcHMtPnNldHVwX2hwZCkKPiArCQloZG1p
-LT5waHkub3BzLT5zZXR1cF9ocGQoaGRtaSwgaGRtaS0+cGh5LmRhdGEpOwo+ICt9Cj4gKwo+ICBz
-dGF0aWMgc3RydWN0IGR3X2hkbWkgKgo+ICBfX2R3X2hkbWlfcHJvYmUoc3RydWN0IHBsYXRmb3Jt
-X2RldmljZSAqcGRldiwKPiAgCQljb25zdCBzdHJ1Y3QgZHdfaGRtaV9wbGF0X2RhdGEgKnBsYXRf
-ZGF0YSkKPiBAQCAtMjU4Nyw3ICsyNTk5LDcgQEAgX19kd19oZG1pX3Byb2JlKHN0cnVjdCBwbGF0
-Zm9ybV9kZXZpY2UgKnBkZXYsCj4gIAkJIHByb2RfaWQxICYgSERNSV9QUk9EVUNUX0lEMV9IRENQ
-ID8gIndpdGgiIDogIndpdGhvdXQiLAo+ICAJCSBoZG1pLT5waHkubmFtZSk7Cj4gIAo+IC0JaW5p
-dGlhbGl6ZV9oZG1pX2loX211dGVzKGhkbWkpOwo+ICsJZHdfaGRtaV9pbml0X2h3KGhkbWkpOwo+
-ICAKPiAgCWlycSA9IHBsYXRmb3JtX2dldF9pcnEocGRldiwgMCk7Cj4gIAlpZiAoaXJxIDwgMCkg
-ewo+IEBAIC0yNjI2LDEwICsyNjM4LDYgQEAgX19kd19oZG1pX3Byb2JlKHN0cnVjdCBwbGF0Zm9y
-bV9kZXZpY2UgKnBkZXYsCj4gIAloZG1pLT5icmlkZ2Uub2Zfbm9kZSA9IHBkZXYtPmRldi5vZl9u
-b2RlOwo+ICAjZW5kaWYKPiAgCj4gLQlkd19oZG1pX3NldHVwX2kyYyhoZG1pKTsKPiAtCWlmICho
-ZG1pLT5waHkub3BzLT5zZXR1cF9ocGQpCj4gLQkJaGRtaS0+cGh5Lm9wcy0+c2V0dXBfaHBkKGhk
-bWksIGhkbWktPnBoeS5kYXRhKTsKPiAtCj4gIAltZW1zZXQoJnBkZXZpbmZvLCAwLCBzaXplb2Yo
-cGRldmluZm8pKTsKPiAgCXBkZXZpbmZvLnBhcmVudCA9IGRldjsKPiAgCXBkZXZpbmZvLmlkID0g
-UExBVEZPUk1fREVWSURfQVVUTzsKPiBAQCAtMjY4MiwxMCArMjY5MCw2IEBAIF9fZHdfaGRtaV9w
-cm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAo+ICAJCWhkbWktPmNlYyA9IHBsYXRm
-b3JtX2RldmljZV9yZWdpc3Rlcl9mdWxsKCZwZGV2aW5mbyk7Cj4gIAl9Cj4gIAo+IC0JLyogUmVz
-ZXQgSERNSSBEREMgSTJDIG1hc3RlciBjb250cm9sbGVyIGFuZCBtdXRlIEkyQ00gaW50ZXJydXB0
-cyAqLwo+IC0JaWYgKGhkbWktPmkyYykKPiAtCQlkd19oZG1pX2kyY19pbml0KGhkbWkpOwo+IC0K
-PiAgCXJldHVybiBoZG1pOwo+ICAKPiAgZXJyX2lhaGI6Cj4gQEAgLTI3ODksNiArMjc5MywxMiBA
-QCB2b2lkIGR3X2hkbWlfdW5iaW5kKHN0cnVjdCBkd19oZG1pICpoZG1pKQo+ICB9Cj4gIEVYUE9S
-VF9TWU1CT0xfR1BMKGR3X2hkbWlfdW5iaW5kKTsKPiAgCj4gK3ZvaWQgZHdfaGRtaV9yZXN1bWUo
-c3RydWN0IGR3X2hkbWkgKmhkbWkpCj4gK3sKPiArCWR3X2hkbWlfaW5pdF9odyhoZG1pKTsKPiAr
-fQo+ICtFWFBPUlRfU1lNQk9MX0dQTChkd19oZG1pX3Jlc3VtZSk7Cj4gKwo+ICBNT0RVTEVfQVVU
-SE9SKCJTYXNjaGEgSGF1ZXIgPHMuaGF1ZXJAcGVuZ3V0cm9uaXguZGU+Iik7Cj4gIE1PRFVMRV9B
-VVRIT1IoIkFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4iKTsKPiAgTU9EVUxFX0FV
-VEhPUigiWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPiIpOwo+IGRpZmYgLS1naXQgYS9p
-bmNsdWRlL2RybS9icmlkZ2UvZHdfaGRtaS5oIGIvaW5jbHVkZS9kcm0vYnJpZGdlL2R3X2hkbWku
-aAo+IGluZGV4IDY2ZTcwNzcwY2NlNS4uNjAxMjQzYjU2YjY5IDEwMDY0NAo+IC0tLSBhL2luY2x1
-ZGUvZHJtL2JyaWRnZS9kd19oZG1pLmgKPiArKysgYi9pbmNsdWRlL2RybS9icmlkZ2UvZHdfaGRt
-aS5oCj4gQEAgLTE1NCw2ICsxNTQsOCBAQCBzdHJ1Y3QgZHdfaGRtaSAqZHdfaGRtaV9iaW5kKHN0
-cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4gIAkJCSAgICAgc3RydWN0IGRybV9lbmNvZGVy
-ICplbmNvZGVyLAo+ICAJCQkgICAgIGNvbnN0IHN0cnVjdCBkd19oZG1pX3BsYXRfZGF0YSAqcGxh
-dF9kYXRhKTsKPiAgCj4gK3ZvaWQgZHdfaGRtaV9yZXN1bWUoc3RydWN0IGR3X2hkbWkgKmhkbWkp
-Owo+ICsKPiAgdm9pZCBkd19oZG1pX3NldHVwX3J4X3NlbnNlKHN0cnVjdCBkd19oZG1pICpoZG1p
-LCBib29sIGhwZCwgYm9vbCByeF9zZW5zZSk7Cj4gIAo+ICB2b2lkIGR3X2hkbWlfc2V0X3NhbXBs
-ZV9yYXRlKHN0cnVjdCBkd19oZG1pICpoZG1pLCB1bnNpZ25lZCBpbnQgcmF0ZSk7Cj4gLS0gCj4g
-Mi4yMi4wLnJjMS4zMTEuZzVkNzU3M2ExNTEtZ29vZwo+IAoKLS0gClNlYW4gUGF1bCwgU29mdHdh
-cmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+On Tue, Jun 04, 2019 at 01:42:07PM -0700, Douglas Anderson wrote:
+> On Rockchip rk3288-based Chromebooks when you do a suspend/resume
+> cycle:
+> 
+> 1. You lose the ability to detect an HDMI device being plugged in.
+> 
+> 2. If you're using the i2c bus built in to dw_hdmi then it stops
+> working.
+> 
+> Let's call the core dw-hdmi's suspend/resume functions to restore
+> things.
+> 
+> NOTE: in downstream Chrome OS (based on kernel 3.14) we used the
+> "late/early" versions of suspend/resume because we found that the VOP
+> was sometimes resuming before dw_hdmi and then calling into us before
+> we were fully resumed.  For now I have gone back to the normal
+> suspend/resume because I can't reproduce the problems.
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+> 
+> Changes in v3:
+> - dw_hdmi_resume() is now a void function (Laurent)
+> 
+> Changes in v2:
+> - Add forgotten static (Laurent)
+> - No empty stub for suspend (Laurent)
+> 
+>  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> index 4cdc9f86c2e5..7bb0f922b303 100644
+> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> @@ -542,11 +542,25 @@ static int dw_hdmi_rockchip_remove(struct platform_device *pdev)
+>  	return 0;
+>  }
+>  
+> +static int __maybe_unused dw_hdmi_rockchip_resume(struct device *dev)
+> +{
+> +	struct rockchip_hdmi *hdmi = dev_get_drvdata(dev);
+> +
+> +	dw_hdmi_resume(hdmi->hdmi);
+
+The rockchip driver is already using the atomic suspend/resume helpers (via the
+modeset helpers). Would you be able to accomplish the same thing by just moving
+this call into the encoder enable callback? 
+
+.enable is called on resume via the atomic commit framework, so everything is
+ordered properly. Of course, this would reset the dw_hdmi bridge on each enable,
+but I don't think that would be a problem?
+
+Sean
+
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct dev_pm_ops dw_hdmi_rockchip_pm = {
+> +	SET_SYSTEM_SLEEP_PM_OPS(NULL, dw_hdmi_rockchip_resume)
+> +};
+> +
+>  struct platform_driver dw_hdmi_rockchip_pltfm_driver = {
+>  	.probe  = dw_hdmi_rockchip_probe,
+>  	.remove = dw_hdmi_rockchip_remove,
+>  	.driver = {
+>  		.name = "dwhdmi-rockchip",
+> +		.pm = &dw_hdmi_rockchip_pm,
+>  		.of_match_table = dw_hdmi_rockchip_dt_ids,
+>  	},
+>  };
+> -- 
+> 2.22.0.rc1.311.g5d7573a151-goog
+> 
+
+-- 
+Sean Paul, Software Engineer, Google / Chromium OS
