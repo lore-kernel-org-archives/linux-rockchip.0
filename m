@@ -1,206 +1,142 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 3/3] brcmfmac: sdio: Disable auto-tuning around
- commands expected to fail
-Date: Thu, 6 Jun 2019 14:37:03 -0700
-Message-ID: <CAD=FV=UPfCOr-syAbVZ-FjHQy7bgQf5BS5pdV-Bwd3hquRqEGg@mail.gmail.com>
-References: <20190603183740.239031-1-dianders@chromium.org>
- <20190603183740.239031-4-dianders@chromium.org> <42fc30b1-adab-7fa8-104c-cbb7855f2032@intel.com>
+Subject: Re: [PATCH v3 2/2] drm/rockchip: dw_hdmi: Handle suspend/resume
+Date: Thu, 6 Jun 2019 15:58:21 -0700
+Message-ID: <CAD=FV=Xt6Oad9yQHZz+nwANV1MCvGc6XCgOf8HawimVQtwWsEg@mail.gmail.com>
+References: <20190604204207.168085-1-dianders@chromium.org>
+ <20190604204207.168085-2-dianders@chromium.org> <20190606164221.GI17077@art_vandelay>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <42fc30b1-adab-7fa8-104c-cbb7855f2032@intel.com>
+In-Reply-To: <20190606164221.GI17077@art_vandelay>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Adrian Hunter <adrian.hunter@intel.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Arend van Spriel <arend.vanspriel@broadcom.com>, brcm80211-dev-list.pdl@broadcom.com, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Double Lo <double.lo@cypress.com>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, Matthias Kaehlcke <mka@chromium.org>, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, netdev <netdev@vger.kernel.org>, brcm80211-dev-list <brcm80211-dev-list@cypress.com>, "David S. Miller" <davem@davemloft.net>, Franky Lin <franky.lin@broadcom.com>, LKML <linux-kernel@vger.kernel.org>
+To: Sean Paul <sean@poorly.run>
+Cc: Sean Paul <seanpaul@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Neil Armstrong <narmstrong@baylibre.com>, Matthias Kaehlcke <mka@chromium.org>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Thu, Jun 6, 2019 at 7:00 AM Adrian Hunter <adrian.hunter@intel.com> wrote:
+On Thu, Jun 6, 2019 at 9:42 AM Sean Paul <sean@poorly.run> wrote:
 >
-> On 3/06/19 9:37 PM, Douglas Anderson wrote:
-> > There are certain cases, notably when transitioning between sleep and
-> > active state, when Broadcom SDIO WiFi cards will produce errors on the
-> > SDIO bus.  This is evident from the source code where you can see that
-> > we try commands in a loop until we either get success or we've tried
-> > too many times.  The comment in the code reinforces this by saying
-> > "just one write attempt may fail"
+> On Tue, Jun 04, 2019 at 01:42:07PM -0700, Douglas Anderson wrote:
+> > On Rockchip rk3288-based Chromebooks when you do a suspend/resume
+> > cycle:
 > >
-> > Unfortunately these failures sometimes end up causing an "-EILSEQ"
-> > back to the core which triggers a retuning of the SDIO card and that
-> > blocks all traffic to the card until it's done.
+> > 1. You lose the ability to detect an HDMI device being plugged in.
 > >
-> > Let's disable retuning around the commands we expect might fail.
+> > 2. If you're using the i2c bus built in to dw_hdmi then it stops
+> > working.
+> >
+> > Let's call the core dw-hdmi's suspend/resume functions to restore
+> > things.
+> >
+> > NOTE: in downstream Chrome OS (based on kernel 3.14) we used the
+> > "late/early" versions of suspend/resume because we found that the VOP
+> > was sometimes resuming before dw_hdmi and then calling into us before
+> > we were fully resumed.  For now I have gone back to the normal
+> > suspend/resume because I can't reproduce the problems.
+> >
+> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > ---
+> >
+> > Changes in v3:
+> > - dw_hdmi_resume() is now a void function (Laurent)
+> >
+> > Changes in v2:
+> > - Add forgotten static (Laurent)
+> > - No empty stub for suspend (Laurent)
+> >
+> >  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 14 ++++++++++++++
+> >  1 file changed, 14 insertions(+)
+> >
+> > diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> > index 4cdc9f86c2e5..7bb0f922b303 100644
+> > --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> > +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> > @@ -542,11 +542,25 @@ static int dw_hdmi_rockchip_remove(struct platform_device *pdev)
+> >       return 0;
+> >  }
+> >
+> > +static int __maybe_unused dw_hdmi_rockchip_resume(struct device *dev)
+> > +{
+> > +     struct rockchip_hdmi *hdmi = dev_get_drvdata(dev);
+> > +
+> > +     dw_hdmi_resume(hdmi->hdmi);
 >
-> It seems to me that re-tuning needs to be prevented before the
-> first access otherwise it might be attempted there,
-
-By this I think you mean I wasn't starting my section early enough to
-catch the "1st KSO write".  Oops.  Thanks!
-
-
-> and it needs
-> to continue to be prevented during the transition when it might
-> reasonably be expected to fail.
+> The rockchip driver is already using the atomic suspend/resume helpers (via the
+> modeset helpers). Would you be able to accomplish the same thing by just moving
+> this call into the encoder enable callback?
 >
-> What about something along these lines:
->
-> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-> index 4e15ea57d4f5..d932780ef56e 100644
-> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-> @@ -664,9 +664,18 @@ brcmf_sdio_kso_control(struct brcmf_sdio *bus, bool on)
->         int err = 0;
->         int err_cnt = 0;
->         int try_cnt = 0;
-> +       int need_retune = 0;
-> +       bool retune_release = false;
->
->         brcmf_dbg(TRACE, "Enter: on=%d\n", on);
->
-> +       /* Cannot re-tune if device is asleep */
-> +       if (on) {
-> +               need_retune = sdio_retune_get_needed(bus->sdiodev->func1); // TODO: host->can_retune ? host->need_retune : 0
-> +               sdio_retune_hold_now(bus->sdiodev->func1); // TODO: add sdio_retune_hold_now()
-> +               retune_release = true;
-> +       }
+> .enable is called on resume via the atomic commit framework, so everything is
+> ordered properly. Of course, this would reset the dw_hdmi bridge on each enable,
+> but I don't think that would be a problem?
 
-The code below still has retries even for the "!on" case.  That
-implies that you could still get CRC errors from the card in the "!on"
-direction too.  Any reason why we shouldn't just hold retuning even
-for the !on case?
+I tried and it sorta kinda half worked, but...
 
+1. One of the problems solved by this patch is making "hot plug
+detect" work after suspend / resume.  AKA: if you have nothing plugged
+in to the HDMI port and then suspend/resume you need to be able to
+detect when something is plugged in.  When nothing is plugged in then
+the ".enable" isn't called at resume time.
 
-> +
->         wr_val = (on << SBSDIO_FUNC1_SLEEPCSR_KSO_SHIFT);
->         /* 1st KSO write goes to AOS wake up core if device is asleep  */
->         brcmf_sdiod_writeb(bus->sdiodev, SBSDIO_FUNC1_SLEEPCSR, wr_val, &err);
-> @@ -711,8 +720,16 @@ brcmf_sdio_kso_control(struct brcmf_sdio *bus, bool on)
->                         err_cnt = 0;
->                 }
->                 /* bail out upon subsequent access errors */
-> -               if (err && (err_cnt++ > BRCMF_SDIO_MAX_ACCESS_ERRORS))
-> -                       break;
-> +               if (err && (err_cnt++ > BRCMF_SDIO_MAX_ACCESS_ERRORS)) {
-> +                       if (!retune_release)
-> +                               break;
-> +                       /*
-> +                        * Allow one more retry with re-tuning released in case
-> +                        * it helps.
-> +                        */
-> +                       sdio_retune_release(bus->sdiodev->func1);
-> +                       retune_release = false;
+2. I'm not so convinced about the whole ordering being correct.
+Unfortunately on my system (Chrome OS running the chromeos-4.19
+kernel) we end up getting an i2c transfer before the ".enable" is
+called.  I put a dump_stack() in the i2c transfer:
 
-I would be tempted to wait before adding this logic until we actually
-see that it's needed.  Sure, doing one more transfer probably won't
-really hurt, but until we know that it actually helps it seems like
-we're just adding extra complexity?
+[   42.212516] CPU: 0 PID: 1479 Comm: DrmThread Tainted: G         C
+     4.19.47 #60
+[   42.221182] Hardware name: Rockchip (Device Tree)
+[   42.226449] [<c0211a64>] (unwind_backtrace) from [<c020cf0c>]
+(show_stack+0x20/0x24)
+[   42.235114] [<c020cf0c>] (show_stack) from [<c0a1b8d4>]
+(dump_stack+0x84/0xa4)
+[   42.243195] [<c0a1b8d4>] (dump_stack) from [<c067d7c4>]
+(dw_hdmi_i2c_wait+0x6c/0xa8)
+[   42.251858] [<c067d7c4>] (dw_hdmi_i2c_wait) from [<c067d9a8>]
+(dw_hdmi_i2c_xfer+0x1a8/0x30c)
+[   42.261298] [<c067d9a8>] (dw_hdmi_i2c_xfer) from [<c0798704>]
+(__i2c_transfer+0x3a8/0x5d8)
+[   42.270543] [<c0798704>] (__i2c_transfer) from [<c07989c8>]
+(i2c_transfer+0x94/0xc4)
+[   42.279204] [<c07989c8>] (i2c_transfer) from [<c064e6b0>]
+(drm_do_probe_ddc_edid+0xbc/0x11c)
+[   42.288642] [<c064e6b0>] (drm_do_probe_ddc_edid) from [<c064e744>]
+(drm_probe_ddc+0x34/0x5c)
+[   42.298081] [<c064e744>] (drm_probe_ddc) from [<c0651b98>]
+(drm_get_edid+0x60/0x2e0)
+[   42.306743] [<c0651b98>] (drm_get_edid) from [<c067d710>]
+(dw_hdmi_connector_get_modes+0x30/0x78)
+[   42.316669] [<c067d710>] (dw_hdmi_connector_get_modes) from
+[<c0634f38>] (drm_helper_probe_single_connector_modes+0x218/0x5c0)
+[   42.329413] [<c0634f38>] (drm_helper_probe_single_connector_modes)
+from [<c065b38c>] (drm_mode_getconnector+0x144/0x418)
+[   42.341573] [<c065b38c>] (drm_mode_getconnector) from [<c0646844>]
+(drm_ioctl_kernel+0xa0/0xf0)
+[   42.351303] [<c0646844>] (drm_ioctl_kernel) from [<c0646d34>]
+(drm_ioctl+0x32c/0x3c0)
+[   42.360063] [<c0646d34>] (drm_ioctl) from [<c03ed0cc>] (vfs_ioctl+0x28/0x44)
+[   42.367946] [<c03ed0cc>] (vfs_ioctl) from [<c03edee8>]
+(do_vfs_ioctl+0x718/0x8b0)
+[   42.376315] [<c03edee8>] (do_vfs_ioctl) from [<c03ee0dc>]
+(ksys_ioctl+0x5c/0x84)
+[   42.384587] [<c03ee0dc>] (ksys_ioctl) from [<c03ee11c>] (sys_ioctl+0x18/0x1c)
+[   42.392570] [<c03ee11c>] (sys_ioctl) from [<c02011d4>]
+(__sys_trace_return+0x0/0x10)
 
+...I see several transfers fail and then finally a few seconds later
+finally see the .enable call:
 
-> +               }
->
->                 udelay(KSO_WAIT_US);
->                 brcmf_sdiod_writeb(bus->sdiodev, SBSDIO_FUNC1_SLEEPCSR, wr_val,
-> @@ -727,6 +744,18 @@ brcmf_sdio_kso_control(struct brcmf_sdio *bus, bool on)
->         if (try_cnt > MAX_KSO_ATTEMPTS)
->                 brcmf_err("max tries: rd_val=0x%x err=%d\n", rd_val, err);
->
-> +       if (retune_release) {
-> +               /*
-> +                * CRC errors are not unexpected during the transition but they
-> +                * also trigger re-tuning. Clear that here to avoid an
-> +                * unnecessary re-tune if it wasn't already triggered to start
-> +                * with.
-> +                */
-> +               if (!need_retune)
-> +                       sdio_retune_clear_needed(bus->sdiodev->func1); // TODO: host->need_retune = 0
-> +               sdio_retune_release(bus->sdiodev->func1); // TODO: add sdio_retune_release()
-> +       }
+[   44.021501] DOUG: dw_hdmi_rockchip_encoder_enable start
+[   44.027792] DOUG: dw_hdmi_rockchip_encoder_enable end
 
-Every time I re-look at this I have to re-figure out all the subtle
-differences between the variables and functions involved here.  Let me
-see if I got everything right:
+I can gather more info if it's useful.
 
-* need_retune: set to 1 if we can retune and some event happened that
-makes us truly believe that we need to be retuned, like we got a CRC
-error or a timer expired or our host controller told us to retune.
+===
 
-* retune_now: set to 1 it's an OK time to be retuning.  Specifically
-if retune_now is false we won't send any retuning commands but we'll
-still keep track of the need to retune.
-
-* hold_retune: If this gets set to 1 by mmc_retune_hold_now() then a
-future call to mmc_retune_hold() will _not_ schedule a retune by
-setting retune_now (because mmc_retune_hold() will see that
-hold_retune was already 1).  ...and a future call to
-mmc_retune_recheck() between mmc_hold() and mmc_release() will also
-not schedule a retune because hold_retune will be 2 (or generally >
-1).
-
----
-
-So overall trying to summarize what I think are the differences
-between your patch and my patch.
-
-1. If we needed to re-tune _before_ calling brcmf_sdio_kso_control(),
-with your patch we'll make sure that we don't actually attempt to
-retune until brcmf_sdio_kso_control() finishes.
-
-2. If we needed to retune during brcmf_sdio_kso_control() (because a
-timer expired?) then we wouldn't trigger that retune while
-brcmf_sdio_kso_control() is running.
-
-In the case of dw_mmc, which I'm most familiar with, we don't have any
-sort of automated or timed-based retuning.  ...so we'll only re-tune
-when we see the CRC error.  If I'm understanding things correctly then
-that for dw_mmc my solution and yours behave the same.  That means the
-difference is how we deal with other retuning requests, either ones
-that come about because of an interrupt that the host controller
-provided or because of a timer.  Did I get that right?
-
-...and I guess the reason we have to deal specially with these cases
-is because any time that SDIO card is "sleeping" we don't want to
-retune because it won't work.  Right?  NOTE: the solution that would
-come to my mind first to solve this would be to hold the retuning for
-the whole time that the card was sleeping and then release it once the
-card was awake again.  ...but I guess we don't truly need to do that
-because tuning only happens as a side effect of sending a command to
-the card and the only command we send to the card is the "wake up"
-command.  That's why your solution to hold tuning while sending the
-"wake up" command works, right?
-
----
-
-OK, so assuming all the above is correct, I feel like we're actually
-solving two problems and in fact I believe we actually need both our
-approaches to solve everything correctly.  With just your patch in
-place there's a problem because we will clobber any external retuning
-requests that happened while we were waking up the card.  AKA, imagine
-this:
-
-A) brcmf_sdio_kso_control(on=True) gets called; need_retune starts as 0
-
-B) We call sdio_retune_hold_now()
-
-C) A retuning timer goes off or the SD Host controller tells us to retune
-
-D) We get to the end of brcmf_sdio_kso_control() and clear the "retune
-needed" since need_retune was 0 at the start.
-
-...so we dropped the retuning request from C), right?
+...any chance we can keep the patch as-is, or do you have ideas of how
+to solve the above problems?
 
 
-What we truly need is:
-
-1. CRC errors shouldn't trigger a retuning request when we're in
-brcmf_sdio_kso_control()
-
-2. A separate patch that holds any retuning requests while the SDIO
-card is off.  This patch _shouldn't_ do any clearing of retuning
-requests, just defer them.
-
-
-Does that make sense to you?  If so, I can try to code it up...
-
+Thanks!
 
 -Doug
