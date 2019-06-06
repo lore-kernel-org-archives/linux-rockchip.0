@@ -1,94 +1,67 @@
-From: Sean Paul <sean@poorly.run>
-Subject: Re: [PATCH v3 2/2] drm/rockchip: dw_hdmi: Handle suspend/resume
-Date: Thu, 6 Jun 2019 12:42:21 -0400
-Message-ID: <20190606164221.GI17077@art_vandelay>
-References: <20190604204207.168085-1-dianders@chromium.org>
- <20190604204207.168085-2-dianders@chromium.org>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: Re: [PATCH 2/2] ARM: dts: rockchip: Configure BT_HOST_WAKE as
+ wake-up signal on veyron
+Date: Thu, 6 Jun 2019 10:56:54 -0700
+Message-ID: <20190606175654.GQ40515@google.com>
+References: <20190605204320.22343-1-mka@chromium.org>
+ <20190605212427.GP40515@google.com>
+ <2828678.vPWIEPrON5@diego>
+ <3394571.WlNFeu2Orz@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190604204207.168085-2-dianders@chromium.org>
+In-Reply-To: <3394571.WlNFeu2Orz@phil>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Sean Paul <seanpaul@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-rockchip@lists.infradead.org, Neil Armstrong <narmstrong@baylibre.com>, mka@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jun 04, 2019 at 01:42:07PM -0700, Douglas Anderson wrote:
-> On Rockchip rk3288-based Chromebooks when you do a suspend/resume
-> cycle:
+On Thu, Jun 06, 2019 at 12:46:03PM +0200, Heiko Stuebner wrote:
+> Am Mittwoch, 5. Juni 2019, 23:52:00 CEST schrieb Heiko Stübner:
+> > Am Mittwoch, 5. Juni 2019, 23:24:27 CEST schrieb Matthias Kaehlcke:
+> > > On Wed, Jun 05, 2019 at 11:11:12PM +0200, Heiko Stübner wrote:
+> > > > Am Mittwoch, 5. Juni 2019, 22:43:20 CEST schrieb Matthias Kaehlcke:
+> > > > > This enables wake up on Bluetooth activity when the device is
+> > > > > suspended. The BT_HOST_WAKE signal is only connected on devices
+> > > > > with BT module that are connected through UART.
+> > > > > 
+> > > > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > > > > Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+> > > > 
+> > > > Housekeeping question, with the two Signed-off-by lines, is Doug the
+> > > > original author, or was this Co-developer-by?
+> > > 
+> > > Good question, it's derived from Doug's patch for CrOS 3.14 and
+> > > https://crrev.com/c/1575556 also from Doug. Let's say I did the
+> > > porting to upstream, but I'm pretty sure Doug spent more time on it.
+> > > 
+> > > Maybe I should resend it with Doug as author and include the original
+> > > commit message, which has more information.
+> > 
+> > It's just that the first Signed-off should be from the original author.
+> > (And the sender the second)
+> > In the co-developed-by case (see Kernel documentation) the order
+> > doesn't matter.
 > 
-> 1. You lose the ability to detect an HDMI device being plugged in.
-> 
-> 2. If you're using the i2c bus built in to dw_hdmi then it stops
-> working.
-> 
-> Let's call the core dw-hdmi's suspend/resume functions to restore
-> things.
-> 
-> NOTE: in downstream Chrome OS (based on kernel 3.14) we used the
-> "late/early" versions of suspend/resume because we found that the VOP
-> was sometimes resuming before dw_hdmi and then calling into us before
-> we were fully resumed.  For now I have gone back to the normal
-> suspend/resume because I can't reproduce the problems.
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> 
-> Changes in v3:
-> - dw_hdmi_resume() is now a void function (Laurent)
-> 
-> Changes in v2:
-> - Add forgotten static (Laurent)
-> - No empty stub for suspend (Laurent)
-> 
->  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> index 4cdc9f86c2e5..7bb0f922b303 100644
-> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> @@ -542,11 +542,25 @@ static int dw_hdmi_rockchip_remove(struct platform_device *pdev)
->  	return 0;
->  }
->  
-> +static int __maybe_unused dw_hdmi_rockchip_resume(struct device *dev)
-> +{
-> +	struct rockchip_hdmi *hdmi = dev_get_drvdata(dev);
-> +
-> +	dw_hdmi_resume(hdmi->hdmi);
+> Holding off on this patch till we could clarify the authorship.
 
-The rockchip driver is already using the atomic suspend/resume helpers (via the
-modeset helpers). Would you be able to accomplish the same thing by just moving
-this call into the encoder enable callback? 
+I'd say let's attribute the authorship to Doug. FTR, the original
+downstream Chrome OS patch is https://crrev.com/c/278190.
 
-.enable is called on resume via the atomic commit framework, so everything is
-ordered properly. Of course, this would reset the dw_hdmi bridge on each enable,
-but I don't think that would be a problem?
+Not sure if the information in the commit message of the original
+patch is relevant for the upstream version, in the end it seems LPM
+was never implemented, so it should be sufficient to say what is
+actually done today.
 
-Sean
+In summary, I propose to take the patch with the current commit
+message, with Doug as the author. Heiko, can you change the authorship
+or should I send a new version?
 
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct dev_pm_ops dw_hdmi_rockchip_pm = {
-> +	SET_SYSTEM_SLEEP_PM_OPS(NULL, dw_hdmi_rockchip_resume)
-> +};
-> +
->  struct platform_driver dw_hdmi_rockchip_pltfm_driver = {
->  	.probe  = dw_hdmi_rockchip_probe,
->  	.remove = dw_hdmi_rockchip_remove,
->  	.driver = {
->  		.name = "dwhdmi-rockchip",
-> +		.pm = &dw_hdmi_rockchip_pm,
->  		.of_match_table = dw_hdmi_rockchip_dt_ids,
->  	},
->  };
-> -- 
-> 2.22.0.rc1.311.g5d7573a151-goog
-> 
+Doug if you have objections or want updates in the commit message
+(yours tend to be more verbose ;-), holler.
 
--- 
-Sean Paul, Software Engineer, Google / Chromium OS
+Thanks
+
+Matthias
