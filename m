@@ -1,199 +1,257 @@
-From: Suzuki K Poulose <suzuki.poulose@arm.com>
-Subject: [PATCH 00/13] drivers: Introduce generic device lookup helpers
-Date: Wed,  5 Jun 2019 16:13:37 +0100
-Message-ID: <1559747630-28065-1-git-send-email-suzuki.poulose@arm.com>
+From: Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>
+Subject: Re: [PATCH] usb: dwc2: host: Fix wMaxPacketSize handling (fix webcam
+ regression)
+Date: Thu, 6 Jun 2019 12:06:55 +0400
+Message-ID: <90cfd1f9-42c5-fdf8-864a-1c9cb48502db@synopsys.com>
+References: <20190531200412.129429-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-kernel@vger.kernel.org
-Cc: Andrew Lunn <andrew@lunn.ch>, Shyam Sundar S K <shyam-sundar.s-k@amd.com>, rafael@kernel.org, Will Deacon <will.deacon@arm.com>, Ulf Hansson <ulf.hansson@linaro.org>, dri-devel@lists.freedesktop.org, Pavel Machek <pavel@ucw.cz>, Stefan Schmidt <stefan@datenfreihafen.org>, Wolfram Sang <wsa@the-dreams.de>, linux-acpi@vger.kernel.org, Doug Ledford <dledford@redhat.com>, Jiri Slaby <jslaby@suse.com>, Tomas Winkler <tomas.winkler@intel.com>, Dan Murphy <dmurphy@ti.com>, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-spi@vger.kernel.org, Joe Perches <joe@perches.com>, linux-wpan@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, David Airlie <airlied@linux.ie>, "Rafael J . Wysocki " <rjw@rjwysocki.net>, Thierry Reding <thierry.reding@gmail.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>linux-
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190531200412.129429-1-dianders@chromium.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>, Felipe Balbi <felipe.balbi@linux.intel.com>
+Cc: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Stefan Wahren <stefan.wahren@i2se.com>, "tfiga@chromium.org" <tfiga@chromium.org>, "mka@chromium.org" <mka@chromium.org>, "groeck@chromium.org" <groeck@chromium.org>, Martin Schiller <ms@dev.tdt.de>, "stable@vger.kernel.org" <stable@vger.kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-V2UgaGF2ZSBkZXZpY2UgaXRlcmF0b3JzIHRvIGZpbmQgYSBwYXJ0aWN1bGFyIGRldmljZSBtYXRj
-aGluZyBhIGNyaXRlcmlhCmZvciBhIGdpdmVuIGJ1cy9jbGFzcy9kcml2ZXIuIGkuZSwge2J1cyxj
-bGFzcyxkcml2ZXJ9X2ZpbmRfZGV2aWNlKCkgQVBJcy4KVGhlIG1hdGNoaW5nIGNyaXRlcmlhIGlz
-IGEgZnVuY3Rpb24gcG9pbnRlciBmb3IgdGhlIEFQSXMuIE9mdGVuIHRoZSBsb29rdXAKaXMgYmFz
-ZWQgb24gYSBnZW5lcmljIHByb3BlcnR5IG9mIGEgZGV2aWNlIChlLmcsIG5hbWUsIGZ3bm9kZSwg
-b2Ygbm9kZSBwb2ludGVyCm9yIGRldmljZSB0eXBlKSByYXRoZXIgdGhhbiBhIGRyaXZlciBzcGVj
-aWZpYyBpbmZvcm1hdGlvbi4gSG93ZXZlciwgZWFjaCBkcml2ZXIKd3JpdGVzIHVwIGl0cyBvd24g
-Im1hdGNoIiBmdW5jdGlvbiwgc3BpbGxpbmcgdGhlIHNpbWlsYXIgbWF0Y2ggZnVuY3Rpb25zIGFs
-bApvdmVyIHRoZSBkcml2ZXIgc3Vic3lzdGVtcy4KCkFkZGl0aW9uYWxseSB0aGUgcHJvdG90eXBl
-IGZvciB0aGUgIm1hdGNoIiBmdW5jdGlvbnMgYWNjZXB0ZWQgYnkgdGhlIGFib3ZlIEFQSXMKaGF2
-ZSBhIG1pbnV0ZSBkaWZmZXJlbmNlIHdoaWNoIHByZXZlbnRzIHVzIG90aGVyd2lzZSBzaGFyaW5n
-IHRoZSBtYXRjaCBmdW5jdGlvbnMuCmkuZSwKCWludCAoKm1hdGNoKShzdHJ1Y3QgZGV2aWNlICpk
-ZXYsIHZvaWQgKmRhdGEpIGZvciB7YnVzL2RyaXZlcn1fZmluZF9kZXZpY2UoKQoJICB2cwoJaW50
-ICgqbWF0Y2gpKHN0cnVjdCBkZXZpY2UgKmRldiwgY29uc3Qgdm9pZCAqKSBmb3IgY2xhc3NfZmlu
-ZF9kZXZpY2UoKQoKSWYgd2UgcHJvbW90ZSB0aGUgZm9ybWVyIHRvIGFjY2VwdCBhICJjb25zdCB2
-b2lkKiIgcGFyYW1ldGVyLCB3ZSBjb3VsZCBzaGFyZSBvbmUKc2luZ2xlIG1hdGNoIGZ1bmN0aW9u
-IGZvciBhbGwgdGhlIGhlbHBlcnMuIFRoaXMgc2VyaWVzIGFjaGlldmVzIHRoZSBmb2xsb3dpbmc6
-CgogMSkgVW5pZnkgdGhlIHByb3RvdHlwZSBmb3IgIm1hdGNoIiBmdW5jdGlvbnMgYWNjZXB0ZWQg
-YnkgdGhlIGRldmljZSBsb29rdXAgQVBJcy4KIDIpIEludHJvZHVjZSBnZW5lcmljIG1hdGNoIGZ1
-bmN0aW9ucyB0byBtYXRjaCBkZXZpY2VzIGJ5IHRoZSBnZW5lcmljIGF0dHJpYnV0ZXMKICAgIG9m
-IGEgZGV2aWNlIChlLmcsIG5hbWUsIGZ3bm9kZSwgb2Zfbm9kZSBhbmQgZGV2dCkuCgpBbHNvLCBp
-biBvcmRlciB0byBwcmV2ZW50IGNyZWF0aW9uIG9mIHN1Y2ggbWF0Y2ggZnVuY3Rpb25zIGluIHRo
-ZSBmdXR1cmUsCndlIGludHJvZHVjZSB3cmFwcGVyIGZ1bmN0aW9ucyBmb3IgdGhlIGxvb2sgdXAg
-QVBJcywgd2hpY2ggYXV0b21hdGljYWxseQp1c2VzIHRoZSBhcHByb3ByaWF0ZSBtYXRjaCBmdW5j
-dGlvbnMuCgppLmUsCgl7YnVzL2NsYXNzL2RyaXZlcn1fZmluZF9kZXZpY2VfYnlfbmFtZQoJe2J1
-cy9jbGFzcy9kcml2ZXJ9X2ZpbmRfZGV2aWNlX2J5X29mX25vZGUKCXtidXMvY2xhc3MvZHJpdmVy
-fV9maW5kX2RldmljZV9ieV9md25vZGUKCXtidXMvY2xhc3MvZHJpdmVyfV9maW5kX2RldmljZV9i
-eV9kZXZ0CgpBZGRpdGlvbmFsbHksIHRoaXMgc2VyaWVzIGFsc28gYWRkcyB3cmFwcGVyIGZvciBm
-aW5kaW5nIGEgZGV2aWNlIGJ5IG1hdGNoaW5nCmEgZGV2aWNlIGRyaXZlciBmb3IgcGxhdGZvcm0g
-YnVzIGRldmljZXMgLSBwbGF0Zm9ybV9maW5kX2RldmljZV9ieV9kcml2ZXIoKSB0bwphdm9pZCBh
-IGZldyBkcml2ZXJzIGhhcmQgY29kaW5nIHRoZSBwbGF0Zm9ybSBidXMgc3BlY2lmaWMgZGV0YWls
-cy4KClRoaXMgaXMgcGFydCAxIG9mIHJldmlzZWQgdmVyc2lvbiBvZiB0aGUgc2VyaWVzIHBvc3Rl
-ZCBoZXJlIFswXSwgdG8gYWxsb3cgZm9yIGJldHRlcgptYW5hZ2VtZW50IG9mIHRoZSBtZXJnaW5n
-LiBQYXJ0IDIgb2YgdGhlIHNlcmllcywgd2hlcmUgdGhlc2UgbmV3IGhlbHBlcnMgYXJlIGNvbnN1
-bWVkCmJ5IHRoZSBpbmRpdmlkdWFsIGRyaXZlciBzdWJzeXN0ZW1zIHdpbGwgYmUgcG9zdGVkIG9u
-Y2UgdGhpcyBpcyBzZXJpZXMgaXMgbWVyZ2VkLgpUaGUgZW50aXJlIHRyZWUgd2l0aCBib3RoIHRo
-ZSBwYXJ0cyBpbiBpcyBhdmFpbGFibGUgYXQgWzFdCgpbMF0gaHR0cHM6Ly9tYXJjLmluZm8vP2k9
-MTU1OTU3NzAyMy01NTgtMS1naXQtc2VuZC1lbWFpbC1zdXp1a2kucG91bG9zZUBhcm0uY29tClsx
-XSBnaXQ6Ly9saW51eC1hcm0ub3JnL2xpbnV4LXNrcC5naXQgZHJpdmVyLWNsZWFudXAvdjEKCkNj
-OiBBbGFuIFR1bGwgPGF0dWxsQGtlcm5lbC5vcmc+CkNjOiBBbGVzc2FuZHJvIFp1bW1vIDxhLnp1
-bW1vQHRvd2VydGVjaC5pdD4KQ2M6IEFsZXhhbmRlciBBcmluZyA8YWxleC5hcmluZ0BnbWFpbC5j
-b20+CkNjOiBBbGV4YW5kZXIgU2hpc2hraW4gPGFsZXhhbmRlci5zaGlzaGtpbkBsaW51eC5pbnRl
-bC5jb20+CkNjOiBBbGV4YW5kcmUgQmVsbG9uaSA8YWxleGFuZHJlLmJlbGxvbmlAYm9vdGxpbi5j
-b20+CkNjOiBBbmRyZWFzIE5vZXZlciA8YW5kcmVhcy5ub2V2ZXJAZ21haWwuY29tPgpDYzogQW5k
-cmV3IEx1bm4gPGFuZHJld0BsdW5uLmNoPgpDYzogQXJuZCBCZXJnbWFubiA8YXJuZEBhcm5kYi5k
-ZT4KQ2M6IEJqb3JuIEhlbGdhYXMgPGJoZWxnYWFzQGdvb2dsZS5jb20+CkNjOiBDb3JleSBNaW55
-YXJkIDxtaW55YXJkQGFjbS5vcmc+CkNjOiBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3bGwuY2g+
-CkNjOiBEYW4gTXVycGh5IDxkbXVycGh5QHRpLmNvbT4KQ2M6IERhdmlkIEFpcmxpZSA8YWlybGll
-ZEBsaW51eC5pZT4KQ2M6IERhdmlkIEtlcnNobmVyIDxkYXZpZC5rZXJzaG5lckB1bmlzeXMuY29t
-PgpDYzogIkRhdmlkIFMuIE1pbGxlciIgPGRhdmVtQGRhdmVtbG9mdC5uZXQ+CkNjOiBEb3VnIExl
-ZGZvcmQgPGRsZWRmb3JkQHJlZGhhdC5jb20+CkNjOiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCkNjOiBFbGllIE1vcmlzc2UgPHN5bml1cmdlQGdtYWlsLmNvbT4KQ2M6IEVyaWMgQW5o
-b2x0IDxlcmljQGFuaG9sdC5uZXQ+CkNjOiBGZWxpcGUgQmFsYmkgPGJhbGJpQGtlcm5lbC5vcmc+
-CkNjOiBGbG9yaWFuIEZhaW5lbGxpIDxmLmZhaW5lbGxpQGdtYWlsLmNvbT4KQ2M6IEZyYW5rIFJv
-d2FuZCA8ZnJvd2FuZC5saXN0QGdtYWlsLmNvbT4KQ2M6IEdyYW50IExpa2VseSA8Z3JhbnQubGlr
-ZWx5QGFybS5jb20+CkNjOiBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBsaW51eGZvdW5kYXRp
-b24ub3JnPgpDYzogR3J5Z29yaWkgU3RyYXNoa28gPGdyeWdvcmlpLnN0cmFzaGtvQHRpLmNvbT4K
-Q2M6IEhhcmFsZCBGcmV1ZGVuYmVyZ2VyIDxmcmV1ZGVAbGludXguaWJtLmNvbT4KQ2M6IEhhcnRt
-dXQgS25hYWNrIDxrbmFhY2suaEBnbXguZGU+CkNjOiBIZWlra2kgS3JvZ2VydXMgPGhlaWtraS5r
-cm9nZXJ1c0BsaW51eC5pbnRlbC5jb20+CkNjOiBIZWlrbyBDYXJzdGVucyA8aGVpa28uY2Fyc3Rl
-bnNAZGUuaWJtLmNvbT4KQ2M6ICJIZWlrbyBTdMO8Ym5lciIgPGhlaWtvQHNudGVjaC5kZT4KQ2M6
-IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CkNjOiBIZWluZXIgS2FsbHdlaXQgPGhr
-YWxsd2VpdDFAZ21haWwuY29tPgpDYzogSW5raSBEYWUgPGlua2kuZGFlQHNhbXN1bmcuY29tPgpD
-YzogSmFjZWsgQW5hc3pld3NraSA8amFjZWsuYW5hc3pld3NraUBnbWFpbC5jb20+CkNjOiAiSmFt
-ZXMgRS5KLiBCb3R0b21sZXkiIDxqZWpiQGxpbnV4LmlibS5jb20+CkNjOiBKYXNvbiBHdW50aG9y
-cGUgPGpnZ0B6aWVwZS5jYT4KQ2M6IEppcmkgU2xhYnkgPGpzbGFieUBzdXNlLmNvbT4KQ2M6IEpv
-ZSBQZXJjaGVzIDxqb2VAcGVyY2hlcy5jb20+CkNjOiBKb2VyZyBSb2VkZWwgPGpvcm9AOGJ5dGVz
-Lm9yZz4KQ2M6IEpvbmF0aGFuIENhbWVyb24gPGppYzIzQGtlcm5lbC5vcmc+CkNjOiBKb25hdGhh
-biBIdW50ZXIgPGpvbmF0aGFuaEBudmlkaWEuY29tPgpDYzogTGVlIEpvbmVzIDxsZWUuam9uZXNA
-bGluYXJvLm9yZz4KQ2M6IExlbiBCcm93biA8bGVuYkBrZXJuZWwub3JnCkNjOiBMaWFtIEdpcmR3
-b29kIDxsZ2lyZHdvb2RAZ21haWwuY29tPgpDYzogTWFhcnRlbiBMYW5raG9yc3QgPG1hYXJ0ZW4u
-bGFua2hvcnN0QGxpbnV4LmludGVsLmNvbT4KQ2M6IE1hcmsgQnJvd24gPGJyb29uaWVAa2VybmVs
-Lm9yZz4KQ2M6ICJNYXJ0aW4gSy4gUGV0ZXJzZW4iIDxtYXJ0aW4ucGV0ZXJzZW5Ab3JhY2xlLmNv
-bT4KQ2M6IE1hdGhpZXUgUG9pcmllciA8bWF0aGlldS5wb2lyaWVyQGxpbmFyby5vcmc+CkNjOiBN
-YXhpbWUgQ29xdWVsaW4gPG1jb3F1ZWxpbi5zdG0zMkBnbWFpbC5jb20+CkNjOiBNYXhpbWUgUmlw
-YXJkIDxtYXhpbWUucmlwYXJkQGJvb3RsaW4uY29tPgpDYzogTWljaGFlbCBKYW1ldCA8bWljaGFl
-bC5qYW1ldEBpbnRlbC5jb20+CkNjOiBNaWthIFdlc3RlcmJlcmcgPG1pa2Eud2VzdGVyYmVyZ0Bs
-aW51eC5pbnRlbC5jb20+CkNjOiBNb3JpdHogRmlzY2hlciA8bWRmQGtlcm5lbC5vcmc+CkNjOiBO
-ZWhhbCBTaGFoIDxuZWhhbC1iYWt1bGNoYW5kcmEuc2hhaEBhbWQuY29tPgpDYzogT2xpdmVyIE5l
-dWt1bSA8b25ldWt1bUBzdXNlLmNvbT4KQ2M6IFBhdmVsIE1hY2hlayA8cGF2ZWxAdWN3LmN6PgpD
-YzogUGV0ZXIgT2JlcnBhcmxlaXRlciA8b2JlcnBhckBsaW51eC5pYm0uY29tPgpDYzogUGV0ZXIg
-Um9zaW4gPHBlZGFAYXhlbnRpYS5zZT4KQ2M6ICJSYWZhZWwgSi4gV3lzb2NraSIgPHJhZmFlbC5q
-Lnd5c29ja2lAaW50ZWwuY29tPgpDYzogIlJhZmFlbCBKLiBXeXNvY2tpIiA8cmFmYWVsQGtlcm5l
-bC5vcmc+CkNjOiBSYWZhZWwgSi4gV3lzb2NraSIgPHJqd0Byand5c29ja2kubmV0PgpDYzogUm9i
-IEhlcnJpbmcgPHJvYmgrZHRAa2VybmVsLm9yZz4KQ2M6IFJvYmluIE11cnBoeSA8cm9iaW4ubXVy
-cGh5QGFybS5jb20+CkNjOiBSdXNzZWxsIEtpbmcgPGxpbnV4QGFybWxpbnV4Lm9yZy51az4KQ2M6
-IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+CkNjOiBTZWJhc3RpYW4gQW5kcnplaiBT
-aWV3aW9yIDxiaWdlYXN5QGxpbnV0cm9uaXguZGU+CkNjOiBTZWJhc3RpYW4gT3R0IDxzZWJvdHRA
-bGludXguaWJtLmNvbT4KQ2M6IFNldW5nLVdvbyBLaW0gPHN3MDMxMi5raW1Ac2Ftc3VuZy5jb20+
-CkNjOiBTaHlhbSBTdW5kYXIgUyBLIDxzaHlhbS1zdW5kYXIucy1rQGFtZC5jb20+CkNjOiBTcmlu
-aXZhcyBLYW5kYWdhdGxhIDxzcmluaXZhcy5rYW5kYWdhdGxhQGxpbmFyby5vcmc+CkNjOiBTdGVm
-YW4gU2NobWlkdCA8c3RlZmFuQGRhdGVuZnJlaWhhZmVuLm9yZz4KQ2M6IFRha2FzaGkgSXdhaSA8
-dGl3YWlAc3VzZS5jb20+CkNjOiBUaGllcnJ5IFJlZGluZyA8dGhpZXJyeS5yZWRpbmdAZ21haWwu
-Y29tPgpDYzogVGhvciBUaGF5ZXIgPHRob3IudGhheWVyQGxpbnV4LmludGVsLmNvbT4KQ2M6IFRv
-bWFzIFdpbmtsZXIgPHRvbWFzLndpbmtsZXJAaW50ZWwuY29tPgpDYzogVWxmIEhhbnNzb24gPHVs
-Zi5oYW5zc29uQGxpbmFyby5vcmc+CkNjOiBXaWxsIERlYWNvbiA8d2lsbC5kZWFjb25AYXJtLmNv
-bT4KQ2M6IFdvbGZyYW0gU2FuZyA8d3NhQHRoZS1kcmVhbXMuZGU+CkNjOiBkZXZpY2V0cmVlQHZn
-ZXIua2VybmVsLm9yZwpDYzogbGludXgtYWNwaUB2Z2VyLmtlcm5lbC5vcmcKQ2M6IGxpbnV4LWZw
-Z2FAdmdlci5rZXJuZWwub3JnCkNjOiBsaW51eC1pMmNAdmdlci5rZXJuZWwub3JnCkNjOiBsaW51
-eC1sZWRzQHZnZXIua2VybmVsLm9yZwpDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpDYzogbGludXgtcnRjQHZnZXIua2VybmVsLm9yZwpDYzogbGludXgtc3BpQHZnZXIua2Vy
-bmVsLm9yZwpDYzogbGludXgtdXNiQHZnZXIua2VybmVsLm9yZwpDYzogbGludXgtd3BhbkB2Z2Vy
-Lmtlcm5lbC5vcmcKClN1enVraSBLIFBvdWxvc2UgKDEzKToKICBhY3BpOiB1dGlsczogQ2xlYW51
-cCBhY3BpX2Rldl9tYXRjaF9jYgogIGJ1c19maW5kX2RldmljZTogVW5pZnkgdGhlIG1hdGNoIGNh
-bGxiYWNrIHdpdGggY2xhc3NfZmluZF9kZXZpY2UKICBkcml2ZXJfZmluZF9kZXZpY2U6IFVuaWZ5
-IHRoZSBtYXRjaCBmdW5jdGlvbiB3aXRoIGNsYXNzX2ZpbmRfZGV2aWNlKCkKICBkcml2ZXJzOiBB
-ZGQgZ2VuZXJpYyBoZWxwZXIgdG8gbWF0Y2ggYnkgb2Zfbm9kZQogIGRyaXZlcnM6IEFkZCBnZW5l
-cmljIGhlbHBlciB0byBtYXRjaCBieSBmd25vZGUKICBkcml2ZXJzOiBBZGQgZ2VuZXJpYyBoZWxw
-ZXIgdG8gbWF0Y2ggYnkgZGV2dAogIGRyaXZlcnM6IEFkZCBnZW5lcmljIG1hdGNoIGhlbHBlciBi
-eSBBQ1BJX0NPTVBBTklPTiBkZXZpY2UKICBkcml2ZXJzOiBBZGQgZ2VuZXJpYyBoZWxwZXIgdG8g
-bWF0Y2ggYnkgbmFtZQogIGRyaXZlcnM6IEFkZCBnZW5lcmljIGhlbHBlciB0byBtYXRjaCBhbnkg
-ZGV2aWNlCiAgZHJpdmVyczogSW50cm9kdWNlIHZhcmlhbnRzIG9mIGNsYXNzX2ZpbmRfZGV2aWNl
-KCkKICBkcml2ZXJzOiBJbnRyb2R1Y2UgdmFyaWFudHMgZm9yIGJ1c19maW5kX2RldmljZSgpCiAg
-ZHJpdmVyczogSW50cm9kdWNlIHZhcmlhbnRzIG9mIGRyaXZlcl9maW5kX2RldmljZSgpCiAgcGxh
-dGZvcm06IEFkZCBwbGF0Zm9ybV9maW5kX2RldmljZV9ieV9kcml2ZXIoKSBoZWxwZXIKCiBhcmNo
-L3Bvd2VycGMvcGxhdGZvcm1zL3BzZXJpZXMvaWJtZWJ1cy5jICAgICAgICAgICB8ICAgNCArLQog
-ZHJpdmVycy9hY3BpL2FjcGlfbHBzcy5jICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDQg
-Ky0KIGRyaXZlcnMvYWNwaS9zbGVlcC5jICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwg
-ICAyICstCiBkcml2ZXJzL2FjcGkvdXRpbHMuYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICB8ICAxMSArLQogZHJpdmVycy9hbWJhL3RlZ3JhLWFoYi5jICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgfCAgIDQgKy0KIGRyaXZlcnMvYmFzZS9idXMuYyAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIHwgIDI4ICstLQogZHJpdmVycy9iYXNlL2NvcmUuYyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgfCAgMzYgKysrKwogZHJpdmVycy9iYXNlL2RldmNvbi5jICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgfCAgIDIgKy0KIGRyaXZlcnMvYmFzZS9kcml2ZXIuYyAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA0ICstCiBkcml2ZXJzL2Jhc2UvcGxhdGZvcm0u
-YyAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAxNCArKwogZHJpdmVycy9jaGFyL2lwbWkv
-aXBtaV9tc2doYW5kbGVyLmMgICAgICAgICAgICAgICAgfCAgIDggKy0KIGRyaXZlcnMvY2hhci9p
-cG1pL2lwbWlfc2lfcGxhdGZvcm0uYyAgICAgICAgICAgICAgIHwgICAyICstCiBkcml2ZXJzL2Zp
-cm13YXJlL2VmaS9kZXYtcGF0aC1wYXJzZXIuYyAgICAgICAgICAgICB8ICAgNCArLQogZHJpdmVy
-cy9ncHUvZHJtL2RybV9taXBpX2RzaS5jICAgICAgICAgICAgICAgICAgICAgfCAgIDIgKy0KIGRy
-aXZlcnMvZ3B1L2RybS90ZWdyYS9kYy5jICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA0ICst
-CiBkcml2ZXJzL2h3dHJhY2luZy9jb3Jlc2lnaHQvY29yZXNpZ2h0LmMgICAgICAgICAgICB8ICAg
-NiArLQogZHJpdmVycy9od3RyYWNpbmcvY29yZXNpZ2h0L29mX2NvcmVzaWdodC5jICAgICAgICAg
-fCAgIDIgKy0KIGRyaXZlcnMvaHd0cmFjaW5nL2ludGVsX3RoL2NvcmUuYyAgICAgICAgICAgICAg
-ICAgIHwgICA1ICstCiBkcml2ZXJzL2kyYy9idXNzZXMvaTJjLWFtZC1tcDItcGNpLmMgICAgICAg
-ICAgICAgICB8ICAgMiArLQogZHJpdmVycy9pMmMvaTJjLWNvcmUtYWNwaS5jICAgICAgICAgICAg
-ICAgICAgICAgICAgfCAgIDQgKy0KIGRyaXZlcnMvaTJjL2kyYy1jb3JlLW9mLmMgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHwgICA0ICstCiBkcml2ZXJzL2lpby9pbmtlcm4uYyAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICB8ICAgMiArLQogZHJpdmVycy9pbmZpbmliYW5kL2h3L2hucy9o
-bnNfcm9jZV9od192MS5jICAgICAgICAgfCAgIDIgKy0KIGRyaXZlcnMvaW9tbXUvYXJtLXNtbXUt
-djMuYyAgICAgICAgICAgICAgICAgICAgICAgIHwgICAyICstCiBkcml2ZXJzL2lvbW11L2FybS1z
-bW11LmMgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMiArLQogZHJpdmVycy9tZmQvYWx0
-ZXJhLXN5c21nci5jICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDQgKy0KIGRyaXZlcnMvbWZk
-L3N5c2Nvbi5jICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAyICstCiBkcml2ZXJz
-L25ldC9ldGhlcm5ldC9oaXNpbGljb24vaG5zL2huc19kc2FmX21pc2MuYyB8ICAgMiArLQogZHJp
-dmVycy9uZXQvZXRoZXJuZXQvdGkvY3Bzdy1waHktc2VsLmMgICAgICAgICAgICAgfCAgIDQgKy0K
-IGRyaXZlcnMvbmV0L2V0aGVybmV0L3RpL2RhdmluY2lfZW1hYy5jICAgICAgICAgICAgIHwgICAy
-ICstCiBkcml2ZXJzL25ldC9ldGhlcm5ldC90b3NoaWJhL3RjMzU4MTUuYyAgICAgICAgICAgICB8
-ICAgNCArLQogZHJpdmVycy9udm1lbS9jb3JlLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgfCAgIDIgKy0KIGRyaXZlcnMvb2Yvb2ZfbWRpby5jICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIHwgICAyICstCiBkcml2ZXJzL29mL3BsYXRmb3JtLmMgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICB8ICAgMiArLQogZHJpdmVycy9wY2kvcHJvYmUuYyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgfCAgIDIgKy0KIGRyaXZlcnMvcGNpL3NlYXJjaC5jICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIHwgICA0ICstCiBkcml2ZXJzL3MzOTAvY2lvL2Njd2dyb3VwLmMg
-ICAgICAgICAgICAgICAgICAgICAgICB8ICAgMiArLQogZHJpdmVycy9zMzkwL2Npby9jaHNjX3Nj
-aC5jICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDIgKy0KIGRyaXZlcnMvczM5MC9jaW8vY3Nz
-LmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA0ICstCiBkcml2ZXJzL3MzOTAvY2lv
-L2RldmljZS5jICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgNiArLQogZHJpdmVycy9zMzkw
-L2Npby9zY20uYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDQgKy0KIGRyaXZlcnMv
-czM5MC9jcnlwdG8vYXBfYnVzLmMgICAgICAgICAgICAgICAgICAgICAgIHwgICA4ICstCiBkcml2
-ZXJzL3Njc2kvc2NzaV9wcm9jLmMgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMiArLQog
-ZHJpdmVycy9zcGkvc3BpLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDQg
-Ky0KIGRyaXZlcnMvc3RhZ2luZy9tb3N0L2NvcmUuYyAgICAgICAgICAgICAgICAgICAgICAgIHwg
-ICA0ICstCiBkcml2ZXJzL3RodW5kZXJib2x0L3N3aXRjaC5jICAgICAgICAgICAgICAgICAgICAg
-ICB8ICAgNCArLQogZHJpdmVycy91c2IvY29yZS9kZXZpby5jICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgfCAgIDQgKy0KIGRyaXZlcnMvdXNiL2NvcmUvdXNiLmMgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIHwgICA0ICstCiBkcml2ZXJzL3VzYi9waHkvcGh5LWFtMzM1eC1jb250cm9sLmMg
-ICAgICAgICAgICAgICB8ICAgNCArLQogZHJpdmVycy91c2IvcGh5L3BoeS1pc3AxMzAxLmMgICAg
-ICAgICAgICAgICAgICAgICAgfCAgIDQgKy0KIGRyaXZlcnMvdmlzb3JidXMvdmlzb3JidXNfbWFp
-bi5jICAgICAgICAgICAgICAgICAgIHwgICA0ICstCiBpbmNsdWRlL2xpbnV4L2RldmljZS5oICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICB8IDE4OCArKysrKysrKysrKysrKysrKysrKy0KIGlu
-Y2x1ZGUvbGludXgvcGxhdGZvcm1fZGV2aWNlLmggICAgICAgICAgICAgICAgICAgIHwgICAzICsK
-IHNvdW5kL3NvYy9yb2NrY2hpcC9yazMzOTlfZ3J1X3NvdW5kLmMgICAgICAgICAgICAgIHwgICAy
-ICstCiA1NCBmaWxlcyBjaGFuZ2VkLCAzMjAgaW5zZXJ0aW9ucygrKSwgMTIzIGRlbGV0aW9ucygt
-KQoKLS0gCjIuNy40CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWw=
+On 6/1/2019 12:05 AM, Douglas Anderson wrote:
+> In commit abb621844f6a ("usb: ch9: make usb_endpoint_maxp() return
+> only packet size") the API to usb_endpoint_maxp() changed.  It used to
+> just return wMaxPacketSize but after that commit it returned
+> wMaxPacketSize with the high bits (the multiplier) masked off.  If you
+> wanted to get the multiplier it was now up to your code to call the
+> new usb_endpoint_maxp_mult() which was introduced in
+> commit 541b6fe63023 ("usb: add helper to extract bits 12:11 of
+> wMaxPacketSize").
+> 
+> Prior to the API change most host drivers were updated, but no update
+> was made to dwc2.  Presumably it was assumed that dwc2 was too
+> simplistic to use the multiplier and thus just didn't support a
+> certain class of USB devices.  However, it turns out that dwc2 did use
+> the multiplier and many devices using it were working quite nicely.
+> That means that many USB devices have been broken since the API
+> change.  One such device is a Logitech HD Pro Webcam C920.
+> 
+> Specifically, though dwc2 didn't directly call usb_endpoint_maxp(), it
+> did call usb_maxpacket() which in turn called usb_endpoint_maxp().
+> 
+> Let's update dwc2 to work properly with the new API.
+> 
+> Fixes: abb621844f6a ("usb: ch9: make usb_endpoint_maxp() return only packet size")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+
+Acked-by: Minas Harutyunyan <hminas@synopsys.com>
+
+> 
+>   drivers/usb/dwc2/hcd.c       | 29 +++++++++++++++++------------
+>   drivers/usb/dwc2/hcd.h       | 20 +++++++++++---------
+>   drivers/usb/dwc2/hcd_intr.c  |  5 +++--
+>   drivers/usb/dwc2/hcd_queue.c | 10 ++++++----
+>   4 files changed, 37 insertions(+), 27 deletions(-)
+> 
+> diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+> index b50ec3714fd8..5c51bf5506d1 100644
+> --- a/drivers/usb/dwc2/hcd.c
+> +++ b/drivers/usb/dwc2/hcd.c
+> @@ -2608,7 +2608,7 @@ static int dwc2_assign_and_init_hc(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+>   	chan->dev_addr = dwc2_hcd_get_dev_addr(&urb->pipe_info);
+>   	chan->ep_num = dwc2_hcd_get_ep_num(&urb->pipe_info);
+>   	chan->speed = qh->dev_speed;
+> -	chan->max_packet = dwc2_max_packet(qh->maxp);
+> +	chan->max_packet = qh->maxp;
+>   
+>   	chan->xfer_started = 0;
+>   	chan->halt_status = DWC2_HC_XFER_NO_HALT_STATUS;
+> @@ -2686,7 +2686,7 @@ static int dwc2_assign_and_init_hc(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+>   		 * This value may be modified when the transfer is started
+>   		 * to reflect the actual transfer length
+>   		 */
+> -		chan->multi_count = dwc2_hb_mult(qh->maxp);
+> +		chan->multi_count = qh->maxp_mult;
+>   
+>   	if (hsotg->params.dma_desc_enable) {
+>   		chan->desc_list_addr = qh->desc_list_dma;
+> @@ -3806,19 +3806,21 @@ static struct dwc2_hcd_urb *dwc2_hcd_urb_alloc(struct dwc2_hsotg *hsotg,
+>   
+>   static void dwc2_hcd_urb_set_pipeinfo(struct dwc2_hsotg *hsotg,
+>   				      struct dwc2_hcd_urb *urb, u8 dev_addr,
+> -				      u8 ep_num, u8 ep_type, u8 ep_dir, u16 mps)
+> +				      u8 ep_num, u8 ep_type, u8 ep_dir,
+> +				      u16 maxp, u16 maxp_mult)
+>   {
+>   	if (dbg_perio() ||
+>   	    ep_type == USB_ENDPOINT_XFER_BULK ||
+>   	    ep_type == USB_ENDPOINT_XFER_CONTROL)
+>   		dev_vdbg(hsotg->dev,
+> -			 "addr=%d, ep_num=%d, ep_dir=%1x, ep_type=%1x, mps=%d\n",
+> -			 dev_addr, ep_num, ep_dir, ep_type, mps);
+> +			 "addr=%d, ep_num=%d, ep_dir=%1x, ep_type=%1x, maxp=%d (%d mult)\n",
+> +			 dev_addr, ep_num, ep_dir, ep_type, maxp, maxp_mult);
+>   	urb->pipe_info.dev_addr = dev_addr;
+>   	urb->pipe_info.ep_num = ep_num;
+>   	urb->pipe_info.pipe_type = ep_type;
+>   	urb->pipe_info.pipe_dir = ep_dir;
+> -	urb->pipe_info.mps = mps;
+> +	urb->pipe_info.maxp = maxp;
+> +	urb->pipe_info.maxp_mult = maxp_mult;
+>   }
+>   
+>   /*
+> @@ -3909,8 +3911,9 @@ void dwc2_hcd_dump_state(struct dwc2_hsotg *hsotg)
+>   					dwc2_hcd_is_pipe_in(&urb->pipe_info) ?
+>   					"IN" : "OUT");
+>   				dev_dbg(hsotg->dev,
+> -					"      Max packet size: %d\n",
+> -					dwc2_hcd_get_mps(&urb->pipe_info));
+> +					"      Max packet size: %d (%d mult)\n",
+> +					dwc2_hcd_get_maxp(&urb->pipe_info),
+> +					dwc2_hcd_get_maxp_mult(&urb->pipe_info));
+>   				dev_dbg(hsotg->dev,
+>   					"      transfer_buffer: %p\n",
+>   					urb->buf);
+> @@ -4510,8 +4513,10 @@ static void dwc2_dump_urb_info(struct usb_hcd *hcd, struct urb *urb,
+>   	}
+>   
+>   	dev_vdbg(hsotg->dev, "  Speed: %s\n", speed);
+> -	dev_vdbg(hsotg->dev, "  Max packet size: %d\n",
+> -		 usb_maxpacket(urb->dev, urb->pipe, usb_pipeout(urb->pipe)));
+> +	dev_vdbg(hsotg->dev, "  Max packet size: %d (%d mult)\n",
+> +		 usb_endpoint_maxp(&urb->ep->desc),
+> +		 usb_endpoint_maxp_mult(&urb->ep->desc));
+> +
+>   	dev_vdbg(hsotg->dev, "  Data buffer length: %d\n",
+>   		 urb->transfer_buffer_length);
+>   	dev_vdbg(hsotg->dev, "  Transfer buffer: %p, Transfer DMA: %08lx\n",
+> @@ -4594,8 +4599,8 @@ static int _dwc2_hcd_urb_enqueue(struct usb_hcd *hcd, struct urb *urb,
+>   	dwc2_hcd_urb_set_pipeinfo(hsotg, dwc2_urb, usb_pipedevice(urb->pipe),
+>   				  usb_pipeendpoint(urb->pipe), ep_type,
+>   				  usb_pipein(urb->pipe),
+> -				  usb_maxpacket(urb->dev, urb->pipe,
+> -						!(usb_pipein(urb->pipe))));
+> +				  usb_endpoint_maxp(&ep->desc),
+> +				  usb_endpoint_maxp_mult(&ep->desc));
+>   
+>   	buf = urb->transfer_buffer;
+>   
+> diff --git a/drivers/usb/dwc2/hcd.h b/drivers/usb/dwc2/hcd.h
+> index c089ffa1f0a8..ce6445a06588 100644
+> --- a/drivers/usb/dwc2/hcd.h
+> +++ b/drivers/usb/dwc2/hcd.h
+> @@ -171,7 +171,8 @@ struct dwc2_hcd_pipe_info {
+>   	u8 ep_num;
+>   	u8 pipe_type;
+>   	u8 pipe_dir;
+> -	u16 mps;
+> +	u16 maxp;
+> +	u16 maxp_mult;
+>   };
+>   
+>   struct dwc2_hcd_iso_packet_desc {
+> @@ -264,6 +265,7 @@ struct dwc2_hs_transfer_time {
+>    *                       - USB_ENDPOINT_XFER_ISOC
+>    * @ep_is_in:           Endpoint direction
+>    * @maxp:               Value from wMaxPacketSize field of Endpoint Descriptor
+> + * @maxp_mult:          Multiplier for maxp
+>    * @dev_speed:          Device speed. One of the following values:
+>    *                       - USB_SPEED_LOW
+>    *                       - USB_SPEED_FULL
+> @@ -340,6 +342,7 @@ struct dwc2_qh {
+>   	u8 ep_type;
+>   	u8 ep_is_in;
+>   	u16 maxp;
+> +	u16 maxp_mult;
+>   	u8 dev_speed;
+>   	u8 data_toggle;
+>   	u8 ping_state;
+> @@ -503,9 +506,14 @@ static inline u8 dwc2_hcd_get_pipe_type(struct dwc2_hcd_pipe_info *pipe)
+>   	return pipe->pipe_type;
+>   }
+>   
+> -static inline u16 dwc2_hcd_get_mps(struct dwc2_hcd_pipe_info *pipe)
+> +static inline u16 dwc2_hcd_get_maxp(struct dwc2_hcd_pipe_info *pipe)
+> +{
+> +	return pipe->maxp;
+> +}
+> +
+> +static inline u16 dwc2_hcd_get_maxp_mult(struct dwc2_hcd_pipe_info *pipe)
+>   {
+> -	return pipe->mps;
+> +	return pipe->maxp_mult;
+>   }
+>   
+>   static inline u8 dwc2_hcd_get_dev_addr(struct dwc2_hcd_pipe_info *pipe)
+> @@ -620,12 +628,6 @@ static inline bool dbg_urb(struct urb *urb)
+>   static inline bool dbg_perio(void) { return false; }
+>   #endif
+>   
+> -/* High bandwidth multiplier as encoded in highspeed endpoint descriptors */
+> -#define dwc2_hb_mult(wmaxpacketsize) (1 + (((wmaxpacketsize) >> 11) & 0x03))
+> -
+> -/* Packet size for any kind of endpoint descriptor */
+> -#define dwc2_max_packet(wmaxpacketsize) ((wmaxpacketsize) & 0x07ff)
+> -
+>   /*
+>    * Returns true if frame1 index is greater than frame2 index. The comparison
+>    * is done modulo FRLISTEN_64_SIZE. This accounts for the rollover of the
+> diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
+> index 88b5dcf3aefc..a052d39b4375 100644
+> --- a/drivers/usb/dwc2/hcd_intr.c
+> +++ b/drivers/usb/dwc2/hcd_intr.c
+> @@ -1617,8 +1617,9 @@ static void dwc2_hc_ahberr_intr(struct dwc2_hsotg *hsotg,
+>   
+>   	dev_err(hsotg->dev, "  Speed: %s\n", speed);
+>   
+> -	dev_err(hsotg->dev, "  Max packet size: %d\n",
+> -		dwc2_hcd_get_mps(&urb->pipe_info));
+> +	dev_err(hsotg->dev, "  Max packet size: %d (mult %d)\n",
+> +		dwc2_hcd_get_maxp(&urb->pipe_info),
+> +		dwc2_hcd_get_maxp_mult(&urb->pipe_info));
+>   	dev_err(hsotg->dev, "  Data buffer length: %d\n", urb->length);
+>   	dev_err(hsotg->dev, "  Transfer buffer: %p, Transfer DMA: %08lx\n",
+>   		urb->buf, (unsigned long)urb->dma);
+> diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
+> index ea3aa640c15c..68bbac64b753 100644
+> --- a/drivers/usb/dwc2/hcd_queue.c
+> +++ b/drivers/usb/dwc2/hcd_queue.c
+> @@ -708,7 +708,7 @@ static void dwc2_hs_pmap_unschedule(struct dwc2_hsotg *hsotg,
+>   static int dwc2_uframe_schedule_split(struct dwc2_hsotg *hsotg,
+>   				      struct dwc2_qh *qh)
+>   {
+> -	int bytecount = dwc2_hb_mult(qh->maxp) * dwc2_max_packet(qh->maxp);
+> +	int bytecount = qh->maxp_mult * qh->maxp;
+>   	int ls_search_slice;
+>   	int err = 0;
+>   	int host_interval_in_sched;
+> @@ -1332,7 +1332,7 @@ static int dwc2_check_max_xfer_size(struct dwc2_hsotg *hsotg,
+>   	u32 max_channel_xfer_size;
+>   	int status = 0;
+>   
+> -	max_xfer_size = dwc2_max_packet(qh->maxp) * dwc2_hb_mult(qh->maxp);
+> +	max_xfer_size = qh->maxp * qh->maxp_mult;
+>   	max_channel_xfer_size = hsotg->params.max_transfer_size;
+>   
+>   	if (max_xfer_size > max_channel_xfer_size) {
+> @@ -1517,8 +1517,9 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+>   	u32 prtspd = (hprt & HPRT0_SPD_MASK) >> HPRT0_SPD_SHIFT;
+>   	bool do_split = (prtspd == HPRT0_SPD_HIGH_SPEED &&
+>   			 dev_speed != USB_SPEED_HIGH);
+> -	int maxp = dwc2_hcd_get_mps(&urb->pipe_info);
+> -	int bytecount = dwc2_hb_mult(maxp) * dwc2_max_packet(maxp);
+> +	int maxp = dwc2_hcd_get_maxp(&urb->pipe_info);
+> +	int maxp_mult = dwc2_hcd_get_maxp_mult(&urb->pipe_info);
+> +	int bytecount = maxp_mult * maxp;
+>   	char *speed, *type;
+>   
+>   	/* Initialize QH */
+> @@ -1531,6 +1532,7 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+>   
+>   	qh->data_toggle = DWC2_HC_PID_DATA0;
+>   	qh->maxp = maxp;
+> +	qh->maxp_mult = maxp_mult;
+>   	INIT_LIST_HEAD(&qh->qtd_list);
+>   	INIT_LIST_HEAD(&qh->qh_list_entry);
+>   
+> 
