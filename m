@@ -1,100 +1,129 @@
-From: Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 3/3] brcmfmac: sdio: Disable auto-tuning around
- commands expected to fail
-Date: Thu, 6 Jun 2019 16:59:17 +0300
-Message-ID: <42fc30b1-adab-7fa8-104c-cbb7855f2032@intel.com>
-References: <20190603183740.239031-1-dianders@chromium.org>
- <20190603183740.239031-4-dianders@chromium.org>
+From: Sean Paul <sean@poorly.run>
+Subject: Re: [PATCH v3 1/2] drm: bridge: dw-hdmi: Add hook for resume
+Date: Thu, 6 Jun 2019 12:36:33 -0400
+Message-ID: <20190606163633.GH17077@art_vandelay>
+References: <20190604204207.168085-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20190603183740.239031-4-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Content-Language: en-US
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Arend van Spriel <arend.vanspriel-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
-Cc: brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Double Lo <double.lo-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Naveen Gupta <naveen.gupta-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Madhan Mohan R <madhanmohan.r-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Wright Feng <wright.feng-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Chi-Hsien Lin <chi-hsien.lin-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, brcm80211-dev-list-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Franky Lin <franky.lin-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hante Meuleman <hante.meuleman-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, YueHaibing <yuehaibing-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20190604204207.168085-1-dianders@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Douglas Anderson <dianders@chromium.org>
+Cc: linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>, mka@chromium.org, Sean Paul <seanpaul@chromium.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Sam Ravnborg <sam@ravnborg.org>, Zheng Yang <zhengyang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 3/06/19 9:37 PM, Douglas Anderson wrote:
-> There are certain cases, notably when transitioning between sleep and
-> active state, when Broadcom SDIO WiFi cards will produce errors on the
-> SDIO bus.  This is evident from the source code where you can see that
-> we try commands in a loop until we either get success or we've tried
-> too many times.  The comment in the code reinforces this by saying
-> "just one write attempt may fail"
-> 
-> Unfortunately these failures sometimes end up causing an "-EILSEQ"
-> back to the core which triggers a retuning of the SDIO card and that
-> blocks all traffic to the card until it's done.
-> 
-> Let's disable retuning around the commands we expect might fail.
-
-It seems to me that re-tuning needs to be prevented before the
-first access otherwise it might be attempted there, and it needs
-to continue to be prevented during the transition when it might
-reasonably be expected to fail.
-
-What about something along these lines:
-
-diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-index 4e15ea57d4f5..d932780ef56e 100644
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-@@ -664,9 +664,18 @@ brcmf_sdio_kso_control(struct brcmf_sdio *bus, bool on)
- 	int err = 0;
- 	int err_cnt = 0;
- 	int try_cnt = 0;
-+	int need_retune = 0;
-+	bool retune_release = false;
- 
- 	brcmf_dbg(TRACE, "Enter: on=%d\n", on);
- 
-+	/* Cannot re-tune if device is asleep */
-+	if (on) {
-+		need_retune = sdio_retune_get_needed(bus->sdiodev->func1); // TODO: host->can_retune ? host->need_retune : 0
-+		sdio_retune_hold_now(bus->sdiodev->func1); // TODO: add sdio_retune_hold_now()
-+		retune_release = true;
-+	}
-+
- 	wr_val = (on << SBSDIO_FUNC1_SLEEPCSR_KSO_SHIFT);
- 	/* 1st KSO write goes to AOS wake up core if device is asleep  */
- 	brcmf_sdiod_writeb(bus->sdiodev, SBSDIO_FUNC1_SLEEPCSR, wr_val, &err);
-@@ -711,8 +720,16 @@ brcmf_sdio_kso_control(struct brcmf_sdio *bus, bool on)
- 			err_cnt = 0;
- 		}
- 		/* bail out upon subsequent access errors */
--		if (err && (err_cnt++ > BRCMF_SDIO_MAX_ACCESS_ERRORS))
--			break;
-+		if (err && (err_cnt++ > BRCMF_SDIO_MAX_ACCESS_ERRORS)) {
-+			if (!retune_release)
-+				break;
-+			/*
-+			 * Allow one more retry with re-tuning released in case
-+			 * it helps.
-+			 */
-+			sdio_retune_release(bus->sdiodev->func1);
-+			retune_release = false;
-+		}
- 
- 		udelay(KSO_WAIT_US);
- 		brcmf_sdiod_writeb(bus->sdiodev, SBSDIO_FUNC1_SLEEPCSR, wr_val,
-@@ -727,6 +744,18 @@ brcmf_sdio_kso_control(struct brcmf_sdio *bus, bool on)
- 	if (try_cnt > MAX_KSO_ATTEMPTS)
- 		brcmf_err("max tries: rd_val=0x%x err=%d\n", rd_val, err);
- 
-+	if (retune_release) {
-+		/*
-+		 * CRC errors are not unexpected during the transition but they
-+		 * also trigger re-tuning. Clear that here to avoid an
-+		 * unnecessary re-tune if it wasn't already triggered to start
-+		 * with.
-+		 */
-+		if (!need_retune)
-+			sdio_retune_clear_needed(bus->sdiodev->func1); // TODO: host->need_retune = 0
-+		sdio_retune_release(bus->sdiodev->func1); // TODO: add sdio_retune_release()
-+	}
-+
- 	return err;
- }
- 
+T24gVHVlLCBKdW4gMDQsIDIwMTkgYXQgMDE6NDI6MDZQTSAtMDcwMCwgRG91Z2xhcyBBbmRlcnNv
+biB3cm90ZToKPiBPbiBSb2NrY2hpcCByazMyODgtYmFzZWQgQ2hyb21lYm9va3Mgd2hlbiB5b3Ug
+ZG8gYSBzdXNwZW5kL3Jlc3VtZQo+IGN5Y2xlOgo+IAo+IDEuIFlvdSBsb3NlIHRoZSBhYmlsaXR5
+IHRvIGRldGVjdCBhbiBIRE1JIGRldmljZSBiZWluZyBwbHVnZ2VkIGluLgo+IAo+IDIuIElmIHlv
+dSdyZSB1c2luZyB0aGUgaTJjIGJ1cyBidWlsdCBpbiB0byBkd19oZG1pIHRoZW4gaXQgc3RvcHMK
+PiB3b3JraW5nLgo+IAo+IExldCdzIGFkZCBhIGhvb2sgdG8gdGhlIGNvcmUgZHctaGRtaSBkcml2
+ZXIgc28gdGhhdCB3ZSBjYW4gY2FsbCBpdCBpbgo+IGR3X2hkbWktcm9ja2NoaXAgaW4gdGhlIG5l
+eHQgY29tbWl0Lgo+IAo+IE5PVEU6IHRoZSBleGFjdCBzZXQgb2Ygc3RlcHMgSSd2ZSBkb25lIGhl
+cmUgaW4gcmVzdW1lIGNvbWUgZnJvbQo+IGxvb2tpbmcgYXQgdGhlIG5vcm1hbCBkd19oZG1pIGlu
+aXQgc2VxdWVuY2UgaW4gdXBzdHJlYW0gTGludXggcGx1cyB0aGUKPiBzZXF1ZW5jZSB0aGF0IHdl
+IGRpZCBpbiBkb3duc3RyZWFtIENocm9tZSBPUyAzLjE0LiAgVGVzdGluZyBzaG93IHRoYXQKPiBp
+dCBzZWVtcyB0byB3b3JrLCBidXQgaWYgYW4gZXh0cmEgc3RlcCBpcyBuZWVkZWQgb3Igc29tZXRo
+aW5nIGhlcmUgaXMKPiBub3QgbmVlZGVkIHdlIGNvdWxkIGltcHJvdmUgaXQuCj4gCj4gQXMgcGFy
+dCBvZiB0aGlzIGNoYW5nZSB3ZSdsbCByZWZhY3RvciB0aGUgaGFyZHdhcmUgaW5pdCBiaXRzIG9m
+Cj4gZHctaGRtaSB0byBoYXBwZW4gYWxsIGluIG9uZSBmdW5jdGlvbiBhbmQgYWxsIGF0IHRoZSBz
+YW1lIHRpbWUuICBTaW5jZQo+IHdlIG5lZWQgdG8gaW5pdCB0aGUgaW50ZXJydXB0IG11dGVzIGJl
+Zm9yZSB3ZSByZXF1ZXN0IHRoZSBJUlEsIHRoaXMKPiBtZWFucyBtb3ZpbmcgdGhlIGhhcmR3YXJl
+IGluaXQgZWFybGllciBpbiB0aGUgZnVuY3Rpb24sIGJ1dCB0aGVyZQo+IHNob3VsZCBiZSBubyBw
+cm9ibGVtcyB3aXRoIHRoYXQuICBBbHNvIGFzIHBhcnQgb2YgdGhpcyB3ZSBub3cKPiB1bmNvbmRp
+dGlvbmFsbHkgaW5pdCB0aGUgImkyYyIgcGFydHMgb2YgZHctaGRtaSwgYnV0IGFnYWluIHRoYXQg
+b3VnaHQKPiB0byBiZSBmaW5lLgo+IAoKUmV2aWV3ZWQtYnk6IFNlYW4gUGF1bCA8c2VhbkBwb29y
+bHkucnVuPgoKPiBTaWduZWQtb2ZmLWJ5OiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJv
+bWl1bS5vcmc+Cj4gUmV2aWV3ZWQtYnk6IExhdXJlbnQgUGluY2hhcnQgPGxhdXJlbnQucGluY2hh
+cnRAaWRlYXNvbmJvYXJkLmNvbT4KPiAtLS0KPiAKPiBDaGFuZ2VzIGluIHYzOgo+IC0gQ2hhbmdl
+IHJlc3VtZSB0byB2b2lkIGZ1bmN0aW9uIChMYXVyZW50KQo+IAo+IENoYW5nZXMgaW4gdjI6Cj4g
+LSBObyBlbXB0eSBzdHViIGZvciBzdXNwZW5kIChMYXVyZW50KQo+IC0gUmVmYWN0b3IgdG8gdXNl
+IHRoZSBzYW1lIGNvZGUgaW4gcHJvYmUgYW5kIHJlc3VtZSAoTGF1cmVudCkKPiAtIFVuY29uZGl0
+aW9uYWxseSBpbml0IGkyYyAoc2VlbXMgT0sgKyBuZWVkZWQgYmVmb3JlIGhkbWktPmkyYyBpbml0
+KQo+IC0gQ29tYmluZSAiaW5pdCIgb2YgaTJjIGFuZCAic2V0dXAiIG9mIGkyYyAobm8gcmVhc29u
+IHRvIHNwbGl0KQo+IAo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWku
+YyB8IDQ4ICsrKysrKysrKysrKysrLS0tLS0tLS0tCj4gIGluY2x1ZGUvZHJtL2JyaWRnZS9kd19o
+ZG1pLmggICAgICAgICAgICAgIHwgIDIgKwo+ICAyIGZpbGVzIGNoYW5nZWQsIDMxIGluc2VydGlv
+bnMoKyksIDE5IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3Bz
+eXMvZHctaGRtaS5jCj4gaW5kZXggNjZiZDY2YmFkNDRjLi5hMDBjY2YxMjM4NzcgMTAwNjQ0Cj4g
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPiArKysgYi9k
+cml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYwo+IEBAIC0yMjgsNiArMjI4
+LDEzIEBAIHN0YXRpYyB2b2lkIGhkbWlfbWFza193cml0ZWIoc3RydWN0IGR3X2hkbWkgKmhkbWks
+IHU4IGRhdGEsIHVuc2lnbmVkIGludCByZWcsCj4gIAo+ICBzdGF0aWMgdm9pZCBkd19oZG1pX2ky
+Y19pbml0KHN0cnVjdCBkd19oZG1pICpoZG1pKQo+ICB7Cj4gKwloZG1pX3dyaXRlYihoZG1pLCBI
+RE1JX1BIWV9JMkNNX0lOVF9BRERSX0RPTkVfUE9MLAo+ICsJCSAgICBIRE1JX1BIWV9JMkNNX0lO
+VF9BRERSKTsKPiArCj4gKwloZG1pX3dyaXRlYihoZG1pLCBIRE1JX1BIWV9JMkNNX0NUTElOVF9B
+RERSX05BQ19QT0wgfAo+ICsJCSAgICBIRE1JX1BIWV9JMkNNX0NUTElOVF9BRERSX0FSQklUUkFU
+SU9OX1BPTCwKPiArCQkgICAgSERNSV9QSFlfSTJDTV9DVExJTlRfQUREUik7Cj4gKwo+ICAJLyog
+U29mdHdhcmUgcmVzZXQgKi8KPiAgCWhkbWlfd3JpdGViKGhkbWksIDB4MDAsIEhETUlfSTJDTV9T
+T0ZUUlNUWik7Cj4gIAo+IEBAIC0xOTI2LDE2ICsxOTMzLDYgQEAgc3RhdGljIGludCBkd19oZG1p
+X3NldHVwKHN0cnVjdCBkd19oZG1pICpoZG1pLCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9k
+ZSkKPiAgCXJldHVybiAwOwo+ICB9Cj4gIAo+IC1zdGF0aWMgdm9pZCBkd19oZG1pX3NldHVwX2ky
+YyhzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPiAtewo+IC0JaGRtaV93cml0ZWIoaGRtaSwgSERNSV9Q
+SFlfSTJDTV9JTlRfQUREUl9ET05FX1BPTCwKPiAtCQkgICAgSERNSV9QSFlfSTJDTV9JTlRfQURE
+Uik7Cj4gLQo+IC0JaGRtaV93cml0ZWIoaGRtaSwgSERNSV9QSFlfSTJDTV9DVExJTlRfQUREUl9O
+QUNfUE9MIHwKPiAtCQkgICAgSERNSV9QSFlfSTJDTV9DVExJTlRfQUREUl9BUkJJVFJBVElPTl9Q
+T0wsCj4gLQkJICAgIEhETUlfUEhZX0kyQ01fQ1RMSU5UX0FERFIpOwo+IC19Cj4gLQo+ICBzdGF0
+aWMgdm9pZCBpbml0aWFsaXplX2hkbWlfaWhfbXV0ZXMoc3RydWN0IGR3X2hkbWkgKmhkbWkpCj4g
+IHsKPiAgCXU4IGloX211dGU7Cj4gQEAgLTI0MzYsNiArMjQzMywyMSBAQCBzdGF0aWMgY29uc3Qg
+c3RydWN0IHJlZ21hcF9jb25maWcgaGRtaV9yZWdtYXBfMzJiaXRfY29uZmlnID0gewo+ICAJLm1h
+eF9yZWdpc3Rlcgk9IEhETUlfSTJDTV9GU19TQ0xfTENOVF8wX0FERFIgPDwgMiwKPiAgfTsKPiAg
+Cj4gK3N0YXRpYyB2b2lkIGR3X2hkbWlfaW5pdF9odyhzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPiAr
+ewo+ICsJaW5pdGlhbGl6ZV9oZG1pX2loX211dGVzKGhkbWkpOwo+ICsKPiArCS8qCj4gKwkgKiBS
+ZXNldCBIRE1JIEREQyBJMkMgbWFzdGVyIGNvbnRyb2xsZXIgYW5kIG11dGUgSTJDTSBpbnRlcnJ1
+cHRzLgo+ICsJICogRXZlbiBpZiB3ZSBhcmUgdXNpbmcgYSBzZXBhcmF0ZSBpMmMgYWRhcHRlciBk
+b2luZyB0aGlzIGRvZXNuJ3QKPiArCSAqIGh1cnQuCj4gKwkgKi8KPiArCWR3X2hkbWlfaTJjX2lu
+aXQoaGRtaSk7Cj4gKwo+ICsJaWYgKGhkbWktPnBoeS5vcHMtPnNldHVwX2hwZCkKPiArCQloZG1p
+LT5waHkub3BzLT5zZXR1cF9ocGQoaGRtaSwgaGRtaS0+cGh5LmRhdGEpOwo+ICt9Cj4gKwo+ICBz
+dGF0aWMgc3RydWN0IGR3X2hkbWkgKgo+ICBfX2R3X2hkbWlfcHJvYmUoc3RydWN0IHBsYXRmb3Jt
+X2RldmljZSAqcGRldiwKPiAgCQljb25zdCBzdHJ1Y3QgZHdfaGRtaV9wbGF0X2RhdGEgKnBsYXRf
+ZGF0YSkKPiBAQCAtMjU4Nyw3ICsyNTk5LDcgQEAgX19kd19oZG1pX3Byb2JlKHN0cnVjdCBwbGF0
+Zm9ybV9kZXZpY2UgKnBkZXYsCj4gIAkJIHByb2RfaWQxICYgSERNSV9QUk9EVUNUX0lEMV9IRENQ
+ID8gIndpdGgiIDogIndpdGhvdXQiLAo+ICAJCSBoZG1pLT5waHkubmFtZSk7Cj4gIAo+IC0JaW5p
+dGlhbGl6ZV9oZG1pX2loX211dGVzKGhkbWkpOwo+ICsJZHdfaGRtaV9pbml0X2h3KGhkbWkpOwo+
+ICAKPiAgCWlycSA9IHBsYXRmb3JtX2dldF9pcnEocGRldiwgMCk7Cj4gIAlpZiAoaXJxIDwgMCkg
+ewo+IEBAIC0yNjI2LDEwICsyNjM4LDYgQEAgX19kd19oZG1pX3Byb2JlKHN0cnVjdCBwbGF0Zm9y
+bV9kZXZpY2UgKnBkZXYsCj4gIAloZG1pLT5icmlkZ2Uub2Zfbm9kZSA9IHBkZXYtPmRldi5vZl9u
+b2RlOwo+ICAjZW5kaWYKPiAgCj4gLQlkd19oZG1pX3NldHVwX2kyYyhoZG1pKTsKPiAtCWlmICho
+ZG1pLT5waHkub3BzLT5zZXR1cF9ocGQpCj4gLQkJaGRtaS0+cGh5Lm9wcy0+c2V0dXBfaHBkKGhk
+bWksIGhkbWktPnBoeS5kYXRhKTsKPiAtCj4gIAltZW1zZXQoJnBkZXZpbmZvLCAwLCBzaXplb2Yo
+cGRldmluZm8pKTsKPiAgCXBkZXZpbmZvLnBhcmVudCA9IGRldjsKPiAgCXBkZXZpbmZvLmlkID0g
+UExBVEZPUk1fREVWSURfQVVUTzsKPiBAQCAtMjY4MiwxMCArMjY5MCw2IEBAIF9fZHdfaGRtaV9w
+cm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAo+ICAJCWhkbWktPmNlYyA9IHBsYXRm
+b3JtX2RldmljZV9yZWdpc3Rlcl9mdWxsKCZwZGV2aW5mbyk7Cj4gIAl9Cj4gIAo+IC0JLyogUmVz
+ZXQgSERNSSBEREMgSTJDIG1hc3RlciBjb250cm9sbGVyIGFuZCBtdXRlIEkyQ00gaW50ZXJydXB0
+cyAqLwo+IC0JaWYgKGhkbWktPmkyYykKPiAtCQlkd19oZG1pX2kyY19pbml0KGhkbWkpOwo+IC0K
+PiAgCXJldHVybiBoZG1pOwo+ICAKPiAgZXJyX2lhaGI6Cj4gQEAgLTI3ODksNiArMjc5MywxMiBA
+QCB2b2lkIGR3X2hkbWlfdW5iaW5kKHN0cnVjdCBkd19oZG1pICpoZG1pKQo+ICB9Cj4gIEVYUE9S
+VF9TWU1CT0xfR1BMKGR3X2hkbWlfdW5iaW5kKTsKPiAgCj4gK3ZvaWQgZHdfaGRtaV9yZXN1bWUo
+c3RydWN0IGR3X2hkbWkgKmhkbWkpCj4gK3sKPiArCWR3X2hkbWlfaW5pdF9odyhoZG1pKTsKPiAr
+fQo+ICtFWFBPUlRfU1lNQk9MX0dQTChkd19oZG1pX3Jlc3VtZSk7Cj4gKwo+ICBNT0RVTEVfQVVU
+SE9SKCJTYXNjaGEgSGF1ZXIgPHMuaGF1ZXJAcGVuZ3V0cm9uaXguZGU+Iik7Cj4gIE1PRFVMRV9B
+VVRIT1IoIkFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4iKTsKPiAgTU9EVUxFX0FV
+VEhPUigiWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPiIpOwo+IGRpZmYgLS1naXQgYS9p
+bmNsdWRlL2RybS9icmlkZ2UvZHdfaGRtaS5oIGIvaW5jbHVkZS9kcm0vYnJpZGdlL2R3X2hkbWku
+aAo+IGluZGV4IDY2ZTcwNzcwY2NlNS4uNjAxMjQzYjU2YjY5IDEwMDY0NAo+IC0tLSBhL2luY2x1
+ZGUvZHJtL2JyaWRnZS9kd19oZG1pLmgKPiArKysgYi9pbmNsdWRlL2RybS9icmlkZ2UvZHdfaGRt
+aS5oCj4gQEAgLTE1NCw2ICsxNTQsOCBAQCBzdHJ1Y3QgZHdfaGRtaSAqZHdfaGRtaV9iaW5kKHN0
+cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4gIAkJCSAgICAgc3RydWN0IGRybV9lbmNvZGVy
+ICplbmNvZGVyLAo+ICAJCQkgICAgIGNvbnN0IHN0cnVjdCBkd19oZG1pX3BsYXRfZGF0YSAqcGxh
+dF9kYXRhKTsKPiAgCj4gK3ZvaWQgZHdfaGRtaV9yZXN1bWUoc3RydWN0IGR3X2hkbWkgKmhkbWkp
+Owo+ICsKPiAgdm9pZCBkd19oZG1pX3NldHVwX3J4X3NlbnNlKHN0cnVjdCBkd19oZG1pICpoZG1p
+LCBib29sIGhwZCwgYm9vbCByeF9zZW5zZSk7Cj4gIAo+ICB2b2lkIGR3X2hkbWlfc2V0X3NhbXBs
+ZV9yYXRlKHN0cnVjdCBkd19oZG1pICpoZG1pLCB1bnNpZ25lZCBpbnQgcmF0ZSk7Cj4gLS0gCj4g
+Mi4yMi4wLnJjMS4zMTEuZzVkNzU3M2ExNTEtZ29vZwo+IAoKLS0gClNlYW4gUGF1bCwgU29mdHdh
+cmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVtIE9TCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
+QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
