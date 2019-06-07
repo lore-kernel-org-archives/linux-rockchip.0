@@ -1,145 +1,88 @@
-From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v3 2/5] mmc: core: API for temporarily disabling auto-retuning
- due to errors
-Date: Fri,  7 Jun 2019 15:37:13 -0700
-Message-ID: <20190607223716.119277-3-dianders@chromium.org>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v3 5/5] brcmfmac: sdio: Don't tune while the card is off
+Date: Fri,  7 Jun 2019 15:37:16 -0700
+Message-ID: <20190607223716.119277-6-dianders@chromium.org>
 References: <20190607223716.119277-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190607223716.119277-1-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Arend van Spriel <arend.vanspriel-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
-Cc: Madhan Mohan R <madhanmohan.r-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wolfram Sang <wsa+renesas-jBu1N2QxHDJrcw3mvpCnnVaTQe2KTcn/@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chi-Hsien Lin <chi-hsien.lin-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Double Lo <double.lo-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Avri Altman <avri.altman-Sjgp3cTcYWE@public.gmane.org>, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Ritesh Harjani <riteshh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Wright Feng <wright.feng-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Jiong Wu <lohengrin1024-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, brcm80211-dev-list-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org, Naveen Gupta <naveen.gupta-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190607223716.119277-1-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Arend van Spriel <arend.vanspriel@broadcom.com>
+Cc: brcm80211-dev-list.pdl@broadcom.com, linux-rockchip@lists.infradead.org, Double Lo <double.lo@cypress.com>, briannorris@chromium.org, linux-wireless@vger.kernel.org, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, mka@chromium.org, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, netdev@vger.kernel.org, brcm80211-dev-list@cypress.com, Douglas Anderson <dianders@chromium.org>, Franky Lin <franky.lin@broadcom.com>, linux-kernel@vger.kernel.org, Hante Meuleman <hante.meuleman@broadcom.com>, Ondrej Jirman <megous@megous.com>, YueHaibing <yuehaibing@huawei.com>, "David S. Miller" <davem@davemloft.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-Normally when the MMC core sees an "-EILSEQ" error returned by a host
-controller then it will trigger a retuning of the card.  This is
-generally a good idea.
+When Broadcom SDIO cards are idled they go to sleep and a whole
+separate subsystem takes over their SDIO communication.  This is the
+Always-On-Subsystem (AOS) and it can't handle tuning requests.
 
-However, if a command is expected to sometimes cause transfer errors
-then these transfer errors shouldn't cause a re-tuning.  This
-re-tuning will be a needless waste of time.  One example case where a
-transfer is expected to cause errors is when transitioning between
-idle (sometimes referred to as "sleep" in Broadcom code) and active
-state on certain Broadcom WiFi cards.  Specifically if the card was
-already transitioning between states when the command was sent it
-could cause an error on the SDIO bus.
+Specifically, as tested on rk3288-veyron-minnie (which reports having
+BCM4354/1 in dmesg), if I force a retune in brcmf_sdio_kso_control()
+when "on = 1" (aka we're transition from sleep to wake) by whacking:
+  bus->sdiodev->func1->card->host->need_retune = 1
+...then I can often see tuning fail.  In this case dw_mmc reports "All
+phases bad!").  Note that I don't get 100% failure, presumably because
+sometimes the card itself has already transitioned away from the AOS
+itself by the time we try to wake it up.  If I force retuning when "on
+= 0" (AKA force retuning right before sending the command to go to
+sleep) then retuning is always OK.
 
-Let's add an API that the SDIO card drivers can call that will
-temporarily disable the auto-tuning functionality.  Then we can add a
-call to this in the Broadcom WiFi driver and any other driver that
-might have similar needs.
+NOTE: we need _both_ this patch and the patch to avoid triggering
+tuning due to CRC errors in the sleep/wake transition, AKA ("brcmfmac:
+sdio: Disable auto-tuning around commands expected to fail").  Though
+both patches handle issues with Broadcom's AOS, the problems are
+distinct:
+1. We want to defer (but not ignore) asynchronous (like
+   timer-requested) tuning requests till the card is awake.  However,
+   we want to ignore CRC errors during the transition, we don't want
+   to queue deferred tuning request.
+2. You could imagine that the AOS could implement retuning but we
+   could still get errors while transitioning in and out of the AOS.
+   Similarly you could imagine a seamless transition into and out of
+   the AOS (with no CRC errors) even if the AOS couldn't handle
+   tuning.
 
-NOTE: this makes the assumption that the card is already tuned well
-enough that it's OK to disable the auto-retuning during one of these
-error-prone situations.  Presumably the driver code performing the
-error-prone transfer knows how to recover / retry from errors.  ...and
-after we can get back to a state where transfers are no longer
-error-prone then we can enable the auto-retuning again.  If we truly
-find ourselves in a case where the card needs to be retuned sometimes
-to handle one of these error-prone transfers then we can always try a
-few transfers first without auto-retuning and then re-try with
-auto-retuning if the first few fail.
+ALSO NOTE: presumably there is never a desperate need to retune in
+order to wake up the card, since doing so is impossible.  Luckily the
+only way the card can get into sleep state is if we had a good enough
+tuning to send it a sleep command, so presumably that "good enough"
+tuning is enough to wake us up, at least with a few retries.
 
-Without this change on rk3288-veyron-minnie I periodically see this in
-the logs of a machine just sitting there idle:
-  dwmmc_rockchip ff0d0000.dwmmc: Successfully tuned phase to XYZ
-
-Fixes: bd11e8bd03ca ("mmc: core: Flag re-tuning is needed on CRC errors")
-Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
 ---
-Note that are are a whole boatload of different ways that we could
-provide an API for the Broadcom WiFi SDIO driver.  This patch
-illustrates one way but if maintainers feel strongly that this is too
-ugly and have a better idea then I can give it a shot too.  From a
-purist point of view I kinda felt that the "expect errors" really
-belonged as part of the mmc_request structure, but getting it into
-there meant changing a whole pile of core SD/MMC APIs.  Simply adding
-it to the host seemed to match the current style better and was a less
-intrusive change.
 
 Changes in v3:
-- Took out the spinlock since I believe this is all in one context.
+- ("brcmfmac: sdio: Don't tune while the card is off") new for v3.
 
-Changes in v2:
-- Updated commit message to clarify based on discussion of v1.
+Changes in v2: None
 
- drivers/mmc/core/core.c  | 19 +++++++++++++++++--
- include/linux/mmc/core.h |  2 ++
- include/linux/mmc/host.h |  1 +
- 3 files changed, 20 insertions(+), 2 deletions(-)
+ drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
-index 6db36dc870b5..bc109ec49406 100644
---- a/drivers/mmc/core/core.c
-+++ b/drivers/mmc/core/core.c
-@@ -144,8 +144,9 @@ void mmc_request_done(struct mmc_host *host, struct mmc_request *mrq)
- 	int err = cmd->error;
+diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+index 4040aae1f9ed..98ffb4e90e15 100644
+--- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
++++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+@@ -670,6 +670,10 @@ brcmf_sdio_kso_control(struct brcmf_sdio *bus, bool on)
  
- 	/* Flag re-tuning needed on CRC errors */
--	if ((cmd->opcode != MMC_SEND_TUNING_BLOCK &&
--	    cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200) &&
-+	if (cmd->opcode != MMC_SEND_TUNING_BLOCK &&
-+	    cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200 &&
-+	    !host->expect_errors &&
- 	    (err == -EILSEQ || (mrq->sbc && mrq->sbc->error == -EILSEQ) ||
- 	    (mrq->data && mrq->data->error == -EILSEQ) ||
- 	    (mrq->stop && mrq->stop->error == -EILSEQ)))
-@@ -2163,6 +2164,20 @@ int mmc_sw_reset(struct mmc_host *host)
- }
- EXPORT_SYMBOL(mmc_sw_reset);
+ 	mmc_expect_errors_begin(bus->sdiodev->func1->card->host);
  
-+void mmc_expect_errors_begin(struct mmc_host *host)
-+{
-+	WARN_ON(host->expect_errors);
-+	host->expect_errors = true;
-+}
-+EXPORT_SYMBOL_GPL(mmc_expect_errors_begin);
++	/* Cannot re-tune if device is asleep; defer till we're awake */
++	if (on)
++		mmc_retune_hold_now(bus->sdiodev->func1->card->host);
 +
-+void mmc_expect_errors_end(struct mmc_host *host)
-+{
-+	WARN_ON(!host->expect_errors);
-+	host->expect_errors = false;
-+}
-+EXPORT_SYMBOL_GPL(mmc_expect_errors_end);
+ 	wr_val = (on << SBSDIO_FUNC1_SLEEPCSR_KSO_SHIFT);
+ 	/* 1st KSO write goes to AOS wake up core if device is asleep  */
+ 	brcmf_sdiod_writeb(bus->sdiodev, SBSDIO_FUNC1_SLEEPCSR, wr_val, &err);
+@@ -730,6 +734,9 @@ brcmf_sdio_kso_control(struct brcmf_sdio *bus, bool on)
+ 	if (try_cnt > MAX_KSO_ATTEMPTS)
+ 		brcmf_err("max tries: rd_val=0x%x err=%d\n", rd_val, err);
+ 
++	if (on)
++		mmc_retune_release(bus->sdiodev->func1->card->host);
 +
- static int mmc_rescan_try_freq(struct mmc_host *host, unsigned freq)
- {
- 	host->f_init = freq;
-diff --git a/include/linux/mmc/core.h b/include/linux/mmc/core.h
-index 134a6483347a..02a13abf0cda 100644
---- a/include/linux/mmc/core.h
-+++ b/include/linux/mmc/core.h
-@@ -178,6 +178,8 @@ int mmc_wait_for_cmd(struct mmc_host *host, struct mmc_command *cmd,
+ 	mmc_expect_errors_end(bus->sdiodev->func1->card->host);
  
- int mmc_hw_reset(struct mmc_host *host);
- int mmc_sw_reset(struct mmc_host *host);
-+void mmc_expect_errors_begin(struct mmc_host *host);
-+void mmc_expect_errors_end(struct mmc_host *host);
- void mmc_set_data_timeout(struct mmc_data *data, const struct mmc_card *card);
- 
- #endif /* LINUX_MMC_CORE_H */
-diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
-index 43d0f0c496f6..8d553fb8c834 100644
---- a/include/linux/mmc/host.h
-+++ b/include/linux/mmc/host.h
-@@ -398,6 +398,7 @@ struct mmc_host {
- 	unsigned int		retune_now:1;	/* do re-tuning at next req */
- 	unsigned int		retune_paused:1; /* re-tuning is temporarily disabled */
- 	unsigned int		use_blk_mq:1;	/* use blk-mq */
-+	unsigned int		expect_errors:1; /* don't trigger retune upon errors */
- 
- 	int			rescan_disable;	/* disable card detection */
- 	int			rescan_entered;	/* used with nonremovable devices */
+ 	return err;
 -- 
 2.22.0.rc2.383.gf4fbbf30c2-goog
