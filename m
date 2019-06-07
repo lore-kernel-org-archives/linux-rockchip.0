@@ -1,114 +1,201 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 3/3] brcmfmac: sdio: Disable auto-tuning around
- commands expected to fail
-Date: Fri, 7 Jun 2019 11:06:16 -0700
-Message-ID: <CAD=FV=XVmCYWe9rtTFakq8yu67R-97EPyAHWck+o3dRXzHCchQ@mail.gmail.com>
-References: <20190603183740.239031-1-dianders@chromium.org>
- <20190603183740.239031-4-dianders@chromium.org> <42fc30b1-adab-7fa8-104c-cbb7855f2032@intel.com>
- <CAD=FV=UPfCOr-syAbVZ-FjHQy7bgQf5BS5pdV-Bwd3hquRqEGg@mail.gmail.com>
- <16b305a7110.2764.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
- <ff0e7b7a-6a58-8bec-b182-944a8b64236d@intel.com> <16b3223dea0.2764.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+From: Sean Paul <sean@poorly.run>
+Subject: Re: [PATCH v3 2/2] drm/rockchip: dw_hdmi: Handle suspend/resume
+Date: Fri, 7 Jun 2019 14:06:03 -0400
+Message-ID: <CAMavQKLgBBceO3m8-ff0-79Ks_tD_xDY=N1kOuJya2USthTARg@mail.gmail.com>
+References: <20190604204207.168085-1-dianders@chromium.org>
+ <20190604204207.168085-2-dianders@chromium.org> <20190606164221.GI17077@art_vandelay>
+ <CAD=FV=Xt6Oad9yQHZz+nwANV1MCvGc6XCgOf8HawimVQtwWsEg@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <16b3223dea0.2764.9b12b7fc0a3841636cfb5e919b41b954-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Arend Van Spriel <arend.vanspriel-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
-Cc: Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Double Lo <double.lo-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Naveen Gupta <naveen.gupta-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Madhan Mohan R <madhanmohan.r-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Wright Feng <wright.feng-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Chi-Hsien Lin <chi-hsien.lin-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, netdev <netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, brcm80211-dev-list <brcm80211-dev-list-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Franky Lin <franky.lin-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=Xt6Oad9yQHZz+nwANV1MCvGc6XCgOf8HawimVQtwWsEg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Sean Paul <seanpaul@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Neil Armstrong <narmstrong@baylibre.com>, Matthias Kaehlcke <mka@chromium.org>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Fri, Jun 7, 2019 at 6:32 AM Arend Van Spriel
-<arend.vanspriel-dY08KVG/lbpWk0Htik3J/w@public.gmane.org> wrote:
+On Thu, Jun 06, 2019 at 03:58:21PM -0700, Doug Anderson wrote:
+> Hi,
 >
-> On June 7, 2019 2:40:04 PM Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org> wrote:
->
-> > On 7/06/19 8:12 AM, Arend Van Spriel wrote:
-> >> On June 6, 2019 11:37:22 PM Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> >>>
-> >>> In the case of dw_mmc, which I'm most familiar with, we don't have any
-> >>> sort of automated or timed-based retuning.  ...so we'll only re-tune
-> >>> when we see the CRC error.  If I'm understanding things correctly then
-> >>> that for dw_mmc my solution and yours behave the same.  That means the
-> >>> difference is how we deal with other retuning requests, either ones
-> >>> that come about because of an interrupt that the host controller
-> >>> provided or because of a timer.  Did I get that right?
-> >>
-> >> Right.
-> >>
-> >>> ...and I guess the reason we have to deal specially with these cases
-> >>> is because any time that SDIO card is "sleeping" we don't want to
-> >>> retune because it won't work.  Right?  NOTE: the solution that would
-> >>> come to my mind first to solve this would be to hold the retuning for
-> >>> the whole time that the card was sleeping and then release it once the
-> >>> card was awake again.  ...but I guess we don't truly need to do that
-> >>> because tuning only happens as a side effect of sending a command to
-> >>> the card and the only command we send to the card is the "wake up"
-> >>> command.  That's why your solution to hold tuning while sending the
-> >>> "wake up" command works, right?
-> >>
-> >> Yup.
-> >>
-> >>> ---
-> >>>
-> >>> OK, so assuming all the above is correct, I feel like we're actually
-> >>> solving two problems and in fact I believe we actually need both our
-> >>> approaches to solve everything correctly.  With just your patch in
-> >>> place there's a problem because we will clobber any external retuning
-> >>> requests that happened while we were waking up the card.  AKA, imagine
-> >>> this:
-> >>>
-> >>> A) brcmf_sdio_kso_control(on=True) gets called; need_retune starts as 0
-> >>>
-> >>> B) We call sdio_retune_hold_now()
-> >>>
-> >>> C) A retuning timer goes off or the SD Host controller tells us to retune
-> >>>
-> >>> D) We get to the end of brcmf_sdio_kso_control() and clear the "retune
-> >>> needed" since need_retune was 0 at the start.
-> >>>
-> >>> ...so we dropped the retuning request from C), right?
-> >>>
-> >>>
-> >>> What we truly need is:
-> >>>
-> >>> 1. CRC errors shouldn't trigger a retuning request when we're in
-> >>> brcmf_sdio_kso_control()
-> >>>
-> >>> 2. A separate patch that holds any retuning requests while the SDIO
-> >>> card is off.  This patch _shouldn't_ do any clearing of retuning
-> >>> requests, just defer them.
-> >>>
-> >>>
-> >>> Does that make sense to you?  If so, I can try to code it up...
-> >>
-> >> FWIW it does make sense to me. However, I am still not sure if our sdio
-> >> hardware supports retuning. Have to track down an asic designer who can tell
-> >> or dive into vhdl myself.
+> On Thu, Jun 6, 2019 at 9:42 AM Sean Paul <sean@poorly.run> wrote:
 > >
-> > The card supports re-tuning if is handles CMD19, which it does.  It is not
-> > the card that does any tuning, only the host.  The card just helps by
-> > providing a known data pattern in response to CMD19.  It can be that a card
-> > provides good enough signals that the host should not need to re-tune.  I
-> > don't know if that can be affected by the board design though.
+> > On Tue, Jun 04, 2019 at 01:42:07PM -0700, Douglas Anderson wrote:
+> > > On Rockchip rk3288-based Chromebooks when you do a suspend/resume
+> > > cycle:
+> > >
+> > > 1. You lose the ability to detect an HDMI device being plugged in.
+> > >
+> > > 2. If you're using the i2c bus built in to dw_hdmi then it stops
+> > > working.
+> > >
+> > > Let's call the core dw-hdmi's suspend/resume functions to restore
+> > > things.
+> > >
+> > > NOTE: in downstream Chrome OS (based on kernel 3.14) we used the
+> > > "late/early" versions of suspend/resume because we found that the VOP
+> > > was sometimes resuming before dw_hdmi and then calling into us before
+> > > we were fully resumed.  For now I have gone back to the normal
+> > > suspend/resume because I can't reproduce the problems.
+> > >
+> > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > > ---
+> > >
+> > > Changes in v3:
+> > > - dw_hdmi_resume() is now a void function (Laurent)
+> > >
+> > > Changes in v2:
+> > > - Add forgotten static (Laurent)
+> > > - No empty stub for suspend (Laurent)
+> > >
+> > >  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 14 ++++++++++++++
+> > >  1 file changed, 14 insertions(+)
+> > >
+> > > diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> > > index 4cdc9f86c2e5..7bb0f922b303 100644
+> > > --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> > > +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> > > @@ -542,11 +542,25 @@ static int dw_hdmi_rockchip_remove(struct platform_device *pdev)
+> > >       return 0;
+> > >  }
+> > >
+> > > +static int __maybe_unused dw_hdmi_rockchip_resume(struct device *dev)
+> > > +{
+> > > +     struct rockchip_hdmi *hdmi = dev_get_drvdata(dev);
+> > > +
+> > > +     dw_hdmi_resume(hdmi->hdmi);
+> >
+> > The rockchip driver is already using the atomic suspend/resume helpers (via the
+> > modeset helpers). Would you be able to accomplish the same thing by just moving
+> > this call into the encoder enable callback?
+> >
+> > .enable is called on resume via the atomic commit framework, so everything is
+> > ordered properly. Of course, this would reset the dw_hdmi bridge on each enable,
+> > but I don't think that would be a problem?
 >
-> Right. I know it supports initial tuning, but I'm not sure about subsequent
-> retuning initiated by the host controller.
+> I tried and it sorta kinda half worked, but...
+>
+> 1. One of the problems solved by this patch is making "hot plug
+> detect" work after suspend / resume.  AKA: if you have nothing plugged
+> in to the HDMI port and then suspend/resume you need to be able to
+> detect when something is plugged in.  When nothing is plugged in then
+> the ".enable" isn't called at resume time.
+>
 
-My evidence says that it supports subsequent tuning.  In fact, without
-this series my logs would be filled with:
+Ahh, ok. So we've hit this with other bridges/dongles as well, and yeah the
+solution is to keep the bridge powered up enough to detect hotplug, so you would
+need to do some work in .resume
 
-  dwmmc_rockchip ff0d0000.dwmmc: Successfully tuned phase to XYZ
+Usually there's a second stage of enable where you power things on more fully
+and that is done in .enable
 
-...where the phase varied by a few degrees each time.  AKA: it was
-retuning over and over again and getting sane results which implies
-that the tuning was working just fine.
+> 2. I'm not so convinced about the whole ordering being correct.
+> Unfortunately on my system (Chrome OS running the chromeos-4.19
+> kernel) we end up getting an i2c transfer before the ".enable" is
+> called.  I put a dump_stack() in the i2c transfer:
+>
+> [   42.212516] CPU: 0 PID: 1479 Comm: DrmThread Tainted: G         C
+>      4.19.47 #60
+> [   42.221182] Hardware name: Rockchip (Device Tree)
+> [   42.226449] [<c0211a64>] (unwind_backtrace) from [<c020cf0c>]
+> (show_stack+0x20/0x24)
+> [   42.235114] [<c020cf0c>] (show_stack) from [<c0a1b8d4>]
+> (dump_stack+0x84/0xa4)
+> [   42.243195] [<c0a1b8d4>] (dump_stack) from [<c067d7c4>]
+> (dw_hdmi_i2c_wait+0x6c/0xa8)
+> [   42.251858] [<c067d7c4>] (dw_hdmi_i2c_wait) from [<c067d9a8>]
+> (dw_hdmi_i2c_xfer+0x1a8/0x30c)
+> [   42.261298] [<c067d9a8>] (dw_hdmi_i2c_xfer) from [<c0798704>]
+> (__i2c_transfer+0x3a8/0x5d8)
+> [   42.270543] [<c0798704>] (__i2c_transfer) from [<c07989c8>]
+> (i2c_transfer+0x94/0xc4)
+> [   42.279204] [<c07989c8>] (i2c_transfer) from [<c064e6b0>]
+> (drm_do_probe_ddc_edid+0xbc/0x11c)
+> [   42.288642] [<c064e6b0>] (drm_do_probe_ddc_edid) from [<c064e744>]
+> (drm_probe_ddc+0x34/0x5c)
+> [   42.298081] [<c064e744>] (drm_probe_ddc) from [<c0651b98>]
+> (drm_get_edid+0x60/0x2e0)
+> [   42.306743] [<c0651b98>] (drm_get_edid) from [<c067d710>]
+> (dw_hdmi_connector_get_modes+0x30/0x78)
+> [   42.316669] [<c067d710>] (dw_hdmi_connector_get_modes) from
+> [<c0634f38>] (drm_helper_probe_single_connector_modes+0x218/0x5c0)
+> [   42.329413] [<c0634f38>] (drm_helper_probe_single_connector_modes)
+> from [<c065b38c>] (drm_mode_getconnector+0x144/0x418)
+> [   42.341573] [<c065b38c>] (drm_mode_getconnector) from [<c0646844>]
+> (drm_ioctl_kernel+0xa0/0xf0)
+> [   42.351303] [<c0646844>] (drm_ioctl_kernel) from [<c0646d34>]
+> (drm_ioctl+0x32c/0x3c0)
+> [   42.360063] [<c0646d34>] (drm_ioctl) from [<c03ed0cc>] (vfs_ioctl+0x28/0x44)
+> [   42.367946] [<c03ed0cc>] (vfs_ioctl) from [<c03edee8>]
+> (do_vfs_ioctl+0x718/0x8b0)
+> [   42.376315] [<c03edee8>] (do_vfs_ioctl) from [<c03ee0dc>]
+> (ksys_ioctl+0x5c/0x84)
+> [   42.384587] [<c03ee0dc>] (ksys_ioctl) from [<c03ee11c>] (sys_ioctl+0x18/0x1c)
+> [   42.392570] [<c03ee11c>] (sys_ioctl) from [<c02011d4>]
+> (__sys_trace_return+0x0/0x10)
+>
+> ...I see several transfers fail and then finally a few seconds later
+> finally see the .enable call:
 
-The whole point of this series is not that the retuning was actually
-broken or anything it was just pointless and blocking the bus while it
-happened.  On rk3288 dw_mmc ports we also currently do pretty
-extensive tuning, trying _lots_ of phases.  Thus the re-tuning was
-blocking the bus for a significant amount of time.
+This is usually solved by wrapping the code in detect() with an enable/disable
+pair to turn on enough circuitry to do the i2c writes for edid read.
 
--Doug
+>
+> [   44.021501] DOUG: dw_hdmi_rockchip_encoder_enable start
+> [   44.027792] DOUG: dw_hdmi_rockchip_encoder_enable end
+>
+> I can gather more info if it's useful.
+>
+> ===
+>
+> ...any chance we can keep the patch as-is, or do you have ideas of how
+> to solve the above problems?
+
+Yeah, given the context I think this is Ok to apply as-is. Maybe we could
+shave out some of the work done in resume and move it to a helper called in
+enable/detect, but I don't think it's necessary to hold up getting things
+working.
+
+Thanks for the detailed explanation (as always :)
+
+Reviewed-by: Sean Paul <sean@poorly.run>
+
+
+>
+>
+> Thanks!
+>
+> -Doug
+
+-- 
+Sean Paul, Software Engineer, Google / Chromium OS
+> [   42.351303] [<c0646844>] (drm_ioctl_kernel) from [<c0646d34>]
+> (drm_ioctl+0x32c/0x3c0)
+> [   42.360063] [<c0646d34>] (drm_ioctl) from [<c03ed0cc>] (vfs_ioctl+0x28/0x44)
+> [   42.367946] [<c03ed0cc>] (vfs_ioctl) from [<c03edee8>]
+> (do_vfs_ioctl+0x718/0x8b0)
+> [   42.376315] [<c03edee8>] (do_vfs_ioctl) from [<c03ee0dc>]
+> (ksys_ioctl+0x5c/0x84)
+> [   42.384587] [<c03ee0dc>] (ksys_ioctl) from [<c03ee11c>] (sys_ioctl+0x18/0x1c)
+> [   42.392570] [<c03ee11c>] (sys_ioctl) from [<c02011d4>]
+> (__sys_trace_return+0x0/0x10)
+>
+> ...I see several transfers fail and then finally a few seconds later
+> finally see the .enable call:
+>
+> [   44.021501] DOUG: dw_hdmi_rockchip_encoder_enable start
+> [   44.027792] DOUG: dw_hdmi_rockchip_encoder_enable end
+>
+> I can gather more info if it's useful.
+>
+> ===
+>
+> ...any chance we can keep the patch as-is, or do you have ideas of how
+> to solve the above problems?
+>
+>
+> Thanks!
+>
+> -Doug
+
+-- 
+Sean Paul, Software Engineer, Google / Chromium OS
