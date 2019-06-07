@@ -1,7 +1,7 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v3 5/5] brcmfmac: sdio: Don't tune while the card is off
-Date: Fri,  7 Jun 2019 15:37:16 -0700
-Message-ID: <20190607223716.119277-6-dianders@chromium.org>
+Subject: [PATCH v3 4/5] mmc: core: Export mmc_retune_hold_now() mmc_retune_release()
+Date: Fri,  7 Jun 2019 15:37:15 -0700
+Message-ID: <20190607223716.119277-5-dianders@chromium.org>
 References: <20190607223716.119277-1-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -9,80 +9,82 @@ Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20190607223716.119277-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Arend van Spriel <arend.vanspriel@broadcom.com>
-Cc: brcm80211-dev-list.pdl@broadcom.com, linux-rockchip@lists.infradead.org, Double Lo <double.lo@cypress.com>, briannorris@chromium.org, linux-wireless@vger.kernel.org, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, mka@chromium.org, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, netdev@vger.kernel.org, brcm80211-dev-list@cypress.com, Douglas Anderson <dianders@chromium.org>, Franky Lin <franky.lin@broadcom.com>, linux-kernel@vger.kernel.org, Hante Meuleman <hante.meuleman@broadcom.com>, Ondrej Jirman <megous@megous.com>, YueHaibing <yuehaibing@huawei.com>, "David S. Miller" <davem@davemloft.net>
+Cc: brcm80211-dev-list.pdl@broadcom.com, linux-rockchip@lists.infradead.org, Double Lo <double.lo@cypress.com>, briannorris@chromium.org, linux-wireless@vger.kernel.org, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, mka@chromium.org, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, netdev@vger.kernel.org, brcm80211-dev-list@cypress.com, Douglas Anderson <dianders@chromium.org>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Pan Bian <bianpan2016@163.com>, Linus Walleij <linus.walleij@linaro.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Tony Lindgren <tony@atomide.com>, Mathieu Malaterre <malat@debian.org>, Pavel Machek <pavel@ucw.cz>
 List-Id: linux-rockchip.vger.kernel.org
 
-When Broadcom SDIO cards are idled they go to sleep and a whole
-separate subsystem takes over their SDIO communication.  This is the
-Always-On-Subsystem (AOS) and it can't handle tuning requests.
+We want SDIO drivers to be able to temporarily stop retuning when the
+driver knows that the SDIO card is not in a state where retuning will
+work (maybe because the card is asleep).  We'll move the relevant
+functions to a place where drivers can call them.
 
-Specifically, as tested on rk3288-veyron-minnie (which reports having
-BCM4354/1 in dmesg), if I force a retune in brcmf_sdio_kso_control()
-when "on = 1" (aka we're transition from sleep to wake) by whacking:
-  bus->sdiodev->func1->card->host->need_retune = 1
-...then I can often see tuning fail.  In this case dw_mmc reports "All
-phases bad!").  Note that I don't get 100% failure, presumably because
-sometimes the card itself has already transitioned away from the AOS
-itself by the time we try to wake it up.  If I force retuning when "on
-= 0" (AKA force retuning right before sending the command to go to
-sleep) then retuning is always OK.
-
-NOTE: we need _both_ this patch and the patch to avoid triggering
-tuning due to CRC errors in the sleep/wake transition, AKA ("brcmfmac:
-sdio: Disable auto-tuning around commands expected to fail").  Though
-both patches handle issues with Broadcom's AOS, the problems are
-distinct:
-1. We want to defer (but not ignore) asynchronous (like
-   timer-requested) tuning requests till the card is awake.  However,
-   we want to ignore CRC errors during the transition, we don't want
-   to queue deferred tuning request.
-2. You could imagine that the AOS could implement retuning but we
-   could still get errors while transitioning in and out of the AOS.
-   Similarly you could imagine a seamless transition into and out of
-   the AOS (with no CRC errors) even if the AOS couldn't handle
-   tuning.
-
-ALSO NOTE: presumably there is never a desperate need to retune in
-order to wake up the card, since doing so is impossible.  Luckily the
-only way the card can get into sleep state is if we had a good enough
-tuning to send it a sleep command, so presumably that "good enough"
-tuning is enough to wake us up, at least with a few retries.
+NOTE: We'll leave the calls with a mmc_ prefix following the lead of
+the API call mmc_hw_reset(), which is also expected to be called
+directly by SDIO cards.
 
 Signed-off-by: Douglas Anderson <dianders@chromium.org>
 ---
 
 Changes in v3:
-- ("brcmfmac: sdio: Don't tune while the card is off") new for v3.
+- ("mmc: core: Export mmc_retune_hold_now() mmc_retune_release()") new for v3.
 
 Changes in v2: None
 
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/mmc/core/host.c  | 7 +++++++
+ drivers/mmc/core/host.h  | 7 -------
+ include/linux/mmc/core.h | 2 ++
+ 3 files changed, 9 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-index 4040aae1f9ed..98ffb4e90e15 100644
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-@@ -670,6 +670,10 @@ brcmf_sdio_kso_control(struct brcmf_sdio *bus, bool on)
+diff --git a/drivers/mmc/core/host.c b/drivers/mmc/core/host.c
+index 6a51f7a06ce7..361f4d151d20 100644
+--- a/drivers/mmc/core/host.c
++++ b/drivers/mmc/core/host.c
+@@ -111,6 +111,13 @@ void mmc_retune_hold(struct mmc_host *host)
+ 	host->hold_retune += 1;
+ }
  
- 	mmc_expect_errors_begin(bus->sdiodev->func1->card->host);
- 
-+	/* Cannot re-tune if device is asleep; defer till we're awake */
-+	if (on)
-+		mmc_retune_hold_now(bus->sdiodev->func1->card->host);
++void mmc_retune_hold_now(struct mmc_host *host)
++{
++	host->retune_now = 0;
++	host->hold_retune += 1;
++}
++EXPORT_SYMBOL(mmc_retune_hold_now);
 +
- 	wr_val = (on << SBSDIO_FUNC1_SLEEPCSR_KSO_SHIFT);
- 	/* 1st KSO write goes to AOS wake up core if device is asleep  */
- 	brcmf_sdiod_writeb(bus->sdiodev, SBSDIO_FUNC1_SLEEPCSR, wr_val, &err);
-@@ -730,6 +734,9 @@ brcmf_sdio_kso_control(struct brcmf_sdio *bus, bool on)
- 	if (try_cnt > MAX_KSO_ATTEMPTS)
- 		brcmf_err("max tries: rd_val=0x%x err=%d\n", rd_val, err);
+ void mmc_retune_release(struct mmc_host *host)
+ {
+ 	if (host->hold_retune)
+diff --git a/drivers/mmc/core/host.h b/drivers/mmc/core/host.h
+index 4805438c02ff..3212afc6c9fe 100644
+--- a/drivers/mmc/core/host.h
++++ b/drivers/mmc/core/host.h
+@@ -19,17 +19,10 @@ void mmc_unregister_host_class(void);
+ void mmc_retune_enable(struct mmc_host *host);
+ void mmc_retune_disable(struct mmc_host *host);
+ void mmc_retune_hold(struct mmc_host *host);
+-void mmc_retune_release(struct mmc_host *host);
+ int mmc_retune(struct mmc_host *host);
+ void mmc_retune_pause(struct mmc_host *host);
+ void mmc_retune_unpause(struct mmc_host *host);
  
-+	if (on)
-+		mmc_retune_release(bus->sdiodev->func1->card->host);
-+
- 	mmc_expect_errors_end(bus->sdiodev->func1->card->host);
+-static inline void mmc_retune_hold_now(struct mmc_host *host)
+-{
+-	host->retune_now = 0;
+-	host->hold_retune += 1;
+-}
+-
+ static inline void mmc_retune_recheck(struct mmc_host *host)
+ {
+ 	if (host->hold_retune <= 1)
+diff --git a/include/linux/mmc/core.h b/include/linux/mmc/core.h
+index 02a13abf0cda..53085245383c 100644
+--- a/include/linux/mmc/core.h
++++ b/include/linux/mmc/core.h
+@@ -181,5 +181,7 @@ int mmc_sw_reset(struct mmc_host *host);
+ void mmc_expect_errors_begin(struct mmc_host *host);
+ void mmc_expect_errors_end(struct mmc_host *host);
+ void mmc_set_data_timeout(struct mmc_data *data, const struct mmc_card *card);
++void mmc_retune_release(struct mmc_host *host);
++void mmc_retune_hold_now(struct mmc_host *host);
  
- 	return err;
+ #endif /* LINUX_MMC_CORE_H */
 -- 
 2.22.0.rc2.383.gf4fbbf30c2-goog
