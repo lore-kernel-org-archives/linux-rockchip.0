@@ -1,73 +1,85 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 2/2] ARM: dts: rockchip: Configure BT_HOST_WAKE as wake-up
- signal on veyron
-Date: Thu, 6 Jun 2019 16:34:32 -0700
-Message-ID: <CAD=FV=U-BOF79yJOW7S1CRudTqDN0BA8Ur3mJfg3C-+8P6fCew@mail.gmail.com>
-References: <20190605204320.22343-1-mka@chromium.org> <20190605212427.GP40515@google.com>
- <2828678.vPWIEPrON5@diego> <3394571.WlNFeu2Orz@phil> <20190606175654.GQ40515@google.com>
+From: Arend Van Spriel <arend.vanspriel@broadcom.com>
+Subject: Re: [PATCH v2 3/3] brcmfmac: sdio: Disable auto-tuning around commands expected to fail
+Date: Fri, 07 Jun 2019 07:12:42 +0200
+Message-ID: <16b305a7110.2764.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+References: <20190603183740.239031-1-dianders@chromium.org>
+ <20190603183740.239031-4-dianders@chromium.org>
+ <42fc30b1-adab-7fa8-104c-cbb7855f2032@intel.com>
+ <CAD=FV=UPfCOr-syAbVZ-FjHQy7bgQf5BS5pdV-Bwd3hquRqEGg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; format=flowed; charset="us-ascii"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190606175654.GQ40515@google.com>
+In-Reply-To: <CAD=FV=UPfCOr-syAbVZ-FjHQy7bgQf5BS5pdV-Bwd3hquRqEGg@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Kaehlcke <mka@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, Brian Norris <briannorris@chromium.org>
+To: Doug Anderson <dianders@chromium.org>, Adrian Hunter <adrian.hunter@intel.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, brcm80211-dev-list.pdl@broadcom.com, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Double Lo <double.lo@cypress.com>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, Matthias Kaehlcke <mka@chromium.org>, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, netdev <netdev@vger.kernel.org>, brcm80211-dev-list <brcm80211-dev-list@cypress.com>, "David S. Miller" <davem@davemloft.net>, Franky Lin <franky.lin@broadcom.com>, LKML <linux-kernel@vger.kernel.org>, Hante Meuleman <hante.meuleman@broadcom.>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On June 6, 2019 11:37:22 PM Doug Anderson <dianders@chromium.org> wrote:
+>
+> In the case of dw_mmc, which I'm most familiar with, we don't have any
+> sort of automated or timed-based retuning.  ...so we'll only re-tune
+> when we see the CRC error.  If I'm understanding things correctly then
+> that for dw_mmc my solution and yours behave the same.  That means the
+> difference is how we deal with other retuning requests, either ones
+> that come about because of an interrupt that the host controller
+> provided or because of a timer.  Did I get that right?
 
-On Thu, Jun 6, 2019 at 10:56 AM Matthias Kaehlcke <mka@chromium.org> wrote:
->
-> On Thu, Jun 06, 2019 at 12:46:03PM +0200, Heiko Stuebner wrote:
-> > Am Mittwoch, 5. Juni 2019, 23:52:00 CEST schrieb Heiko St=C3=BCbner:
-> > > Am Mittwoch, 5. Juni 2019, 23:24:27 CEST schrieb Matthias Kaehlcke:
-> > > > On Wed, Jun 05, 2019 at 11:11:12PM +0200, Heiko St=C3=BCbner wrote:
-> > > > > Am Mittwoch, 5. Juni 2019, 22:43:20 CEST schrieb Matthias Kaehlck=
-e:
-> > > > > > This enables wake up on Bluetooth activity when the device is
-> > > > > > suspended. The BT_HOST_WAKE signal is only connected on devices
-> > > > > > with BT module that are connected through UART.
-> > > > > >
-> > > > > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > > > > > Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
-> > > > >
-> > > > > Housekeeping question, with the two Signed-off-by lines, is Doug =
-the
-> > > > > original author, or was this Co-developer-by?
-> > > >
-> > > > Good question, it's derived from Doug's patch for CrOS 3.14 and
-> > > > https://crrev.com/c/1575556 also from Doug. Let's say I did the
-> > > > porting to upstream, but I'm pretty sure Doug spent more time on it=
-.
-> > > >
-> > > > Maybe I should resend it with Doug as author and include the origin=
-al
-> > > > commit message, which has more information.
-> > >
-> > > It's just that the first Signed-off should be from the original autho=
-r.
-> > > (And the sender the second)
-> > > In the co-developed-by case (see Kernel documentation) the order
-> > > doesn't matter.
-> >
-> > Holding off on this patch till we could clarify the authorship.
->
-> I'd say let's attribute the authorship to Doug. FTR, the original
-> downstream Chrome OS patch is https://crrev.com/c/278190.
->
-> Not sure if the information in the commit message of the original
-> patch is relevant for the upstream version, in the end it seems LPM
-> was never implemented, so it should be sufficient to say what is
-> actually done today.
->
-> In summary, I propose to take the patch with the current commit
-> message, with Doug as the author. Heiko, can you change the authorship
-> or should I send a new version?
->
-> Doug if you have objections or want updates in the commit message
-> (yours tend to be more verbose ;-), holler.
+Right.
 
-It's fine with me.
+> ...and I guess the reason we have to deal specially with these cases
+> is because any time that SDIO card is "sleeping" we don't want to
+> retune because it won't work.  Right?  NOTE: the solution that would
+> come to my mind first to solve this would be to hold the retuning for
+> the whole time that the card was sleeping and then release it once the
+> card was awake again.  ...but I guess we don't truly need to do that
+> because tuning only happens as a side effect of sending a command to
+> the card and the only command we send to the card is the "wake up"
+> command.  That's why your solution to hold tuning while sending the
+> "wake up" command works, right?
 
--Doug
+Yup.
+
+> ---
+>
+> OK, so assuming all the above is correct, I feel like we're actually
+> solving two problems and in fact I believe we actually need both our
+> approaches to solve everything correctly.  With just your patch in
+> place there's a problem because we will clobber any external retuning
+> requests that happened while we were waking up the card.  AKA, imagine
+> this:
+>
+> A) brcmf_sdio_kso_control(on=True) gets called; need_retune starts as 0
+>
+> B) We call sdio_retune_hold_now()
+>
+> C) A retuning timer goes off or the SD Host controller tells us to retune
+>
+> D) We get to the end of brcmf_sdio_kso_control() and clear the "retune
+> needed" since need_retune was 0 at the start.
+>
+> ...so we dropped the retuning request from C), right?
+>
+>
+> What we truly need is:
+>
+> 1. CRC errors shouldn't trigger a retuning request when we're in
+> brcmf_sdio_kso_control()
+>
+> 2. A separate patch that holds any retuning requests while the SDIO
+> card is off.  This patch _shouldn't_ do any clearing of retuning
+> requests, just defer them.
+>
+>
+> Does that make sense to you?  If so, I can try to code it up...
+
+FWIW it does make sense to me. However, I am still not sure if our sdio 
+hardware supports retuning. Have to track down an asic designer who can 
+tell or dive into vhdl myself.
+
+So I want to disable device sleep and trigger retuning through debugfs or 
+some other hack.
+
+Regards,
+Arend
