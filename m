@@ -1,90 +1,81 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v3 4/5] mmc: core: Export mmc_retune_hold_now() mmc_retune_release()
-Date: Fri,  7 Jun 2019 15:37:15 -0700
-Message-ID: <20190607223716.119277-5-dianders@chromium.org>
+From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH v3 3/5] brcmfmac: sdio: Disable auto-tuning around commands
+ expected to fail
+Date: Fri,  7 Jun 2019 15:37:14 -0700
+Message-ID: <20190607223716.119277-4-dianders@chromium.org>
 References: <20190607223716.119277-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190607223716.119277-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Arend van Spriel <arend.vanspriel@broadcom.com>
-Cc: brcm80211-dev-list.pdl@broadcom.com, linux-rockchip@lists.infradead.org, Double Lo <double.lo@cypress.com>, briannorris@chromium.org, linux-wireless@vger.kernel.org, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, mka@chromium.org, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, netdev@vger.kernel.org, brcm80211-dev-list@cypress.com, Douglas Anderson <dianders@chromium.org>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Pan Bian <bianpan2016@163.com>, Linus Walleij <linus.walleij@linaro.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Tony Lindgren <tony@atomide.com>, Mathieu Malaterre <malat@debian.org>, Pavel Machek <pavel@ucw.cz>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190607223716.119277-1-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Arend van Spriel <arend.vanspriel-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
+Cc: Madhan Mohan R <MadhanMohan.R-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, YueHaibing <yuehaibing-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hante Meuleman <hante.meuleman-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chi-Hsien Lin <chi-hsien.lin-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Double Lo <double.lo-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Wright Feng <wright.feng-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, brcm80211-dev-list-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org, Naveen Gupta <naveen.gupta-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Franky Lin <franky.lin-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-We want SDIO drivers to be able to temporarily stop retuning when the
-driver knows that the SDIO card is not in a state where retuning will
-work (maybe because the card is asleep).  We'll move the relevant
-functions to a place where drivers can call them.
+There are certain cases, notably when transitioning between sleep and
+active state, when Broadcom SDIO WiFi cards will produce errors on the
+SDIO bus.  This is evident from the source code where you can see that
+we try commands in a loop until we either get success or we've tried
+too many times.  The comment in the code reinforces this by saying
+"just one write attempt may fail"
 
-NOTE: We'll leave the calls with a mmc_ prefix following the lead of
-the API call mmc_hw_reset(), which is also expected to be called
-directly by SDIO cards.
+Unfortunately these failures sometimes end up causing an "-EILSEQ"
+back to the core which triggers a retuning of the SDIO card and that
+blocks all traffic to the card until it's done.
 
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Let's disable retuning around the commands we expect might fail.
+
+Fixes: bd11e8bd03ca ("mmc: core: Flag re-tuning is needed on CRC errors")
+Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
 
 Changes in v3:
-- ("mmc: core: Export mmc_retune_hold_now() mmc_retune_release()") new for v3.
+- Expect errors for all of brcmf_sdio_kso_control() (Adrian).
 
 Changes in v2: None
 
- drivers/mmc/core/host.c  | 7 +++++++
- drivers/mmc/core/host.h  | 7 -------
- include/linux/mmc/core.h | 2 ++
- 3 files changed, 9 insertions(+), 7 deletions(-)
+ drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/mmc/core/host.c b/drivers/mmc/core/host.c
-index 6a51f7a06ce7..361f4d151d20 100644
---- a/drivers/mmc/core/host.c
-+++ b/drivers/mmc/core/host.c
-@@ -111,6 +111,13 @@ void mmc_retune_hold(struct mmc_host *host)
- 	host->hold_retune += 1;
+diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+index 4a750838d8cd..4040aae1f9ed 100644
+--- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
++++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+@@ -16,6 +16,7 @@
+ #include <linux/mmc/sdio_ids.h>
+ #include <linux/mmc/sdio_func.h>
+ #include <linux/mmc/card.h>
++#include <linux/mmc/core.h>
+ #include <linux/semaphore.h>
+ #include <linux/firmware.h>
+ #include <linux/module.h>
+@@ -667,6 +668,8 @@ brcmf_sdio_kso_control(struct brcmf_sdio *bus, bool on)
+ 
+ 	brcmf_dbg(TRACE, "Enter: on=%d\n", on);
+ 
++	mmc_expect_errors_begin(bus->sdiodev->func1->card->host);
++
+ 	wr_val = (on << SBSDIO_FUNC1_SLEEPCSR_KSO_SHIFT);
+ 	/* 1st KSO write goes to AOS wake up core if device is asleep  */
+ 	brcmf_sdiod_writeb(bus->sdiodev, SBSDIO_FUNC1_SLEEPCSR, wr_val, &err);
+@@ -727,6 +730,8 @@ brcmf_sdio_kso_control(struct brcmf_sdio *bus, bool on)
+ 	if (try_cnt > MAX_KSO_ATTEMPTS)
+ 		brcmf_err("max tries: rd_val=0x%x err=%d\n", rd_val, err);
+ 
++	mmc_expect_errors_end(bus->sdiodev->func1->card->host);
++
+ 	return err;
  }
  
-+void mmc_retune_hold_now(struct mmc_host *host)
-+{
-+	host->retune_now = 0;
-+	host->hold_retune += 1;
-+}
-+EXPORT_SYMBOL(mmc_retune_hold_now);
-+
- void mmc_retune_release(struct mmc_host *host)
- {
- 	if (host->hold_retune)
-diff --git a/drivers/mmc/core/host.h b/drivers/mmc/core/host.h
-index 4805438c02ff..3212afc6c9fe 100644
---- a/drivers/mmc/core/host.h
-+++ b/drivers/mmc/core/host.h
-@@ -19,17 +19,10 @@ void mmc_unregister_host_class(void);
- void mmc_retune_enable(struct mmc_host *host);
- void mmc_retune_disable(struct mmc_host *host);
- void mmc_retune_hold(struct mmc_host *host);
--void mmc_retune_release(struct mmc_host *host);
- int mmc_retune(struct mmc_host *host);
- void mmc_retune_pause(struct mmc_host *host);
- void mmc_retune_unpause(struct mmc_host *host);
- 
--static inline void mmc_retune_hold_now(struct mmc_host *host)
--{
--	host->retune_now = 0;
--	host->hold_retune += 1;
--}
--
- static inline void mmc_retune_recheck(struct mmc_host *host)
- {
- 	if (host->hold_retune <= 1)
-diff --git a/include/linux/mmc/core.h b/include/linux/mmc/core.h
-index 02a13abf0cda..53085245383c 100644
---- a/include/linux/mmc/core.h
-+++ b/include/linux/mmc/core.h
-@@ -181,5 +181,7 @@ int mmc_sw_reset(struct mmc_host *host);
- void mmc_expect_errors_begin(struct mmc_host *host);
- void mmc_expect_errors_end(struct mmc_host *host);
- void mmc_set_data_timeout(struct mmc_data *data, const struct mmc_card *card);
-+void mmc_retune_release(struct mmc_host *host);
-+void mmc_retune_hold_now(struct mmc_host *host);
- 
- #endif /* LINUX_MMC_CORE_H */
 -- 
 2.22.0.rc2.383.gf4fbbf30c2-goog
