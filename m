@@ -1,30 +1,61 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [RFC PATCH 23/30] of/platform: Export of_platform_device_create_pdata()
-Date: Mon, 10 Jun 2019 11:43:44 -0600
-Message-ID: <CAL_JsqJ5gsctd7L3VOhTO1JdUqmMmSJRpos1XQyfxzmGO7wauw@mail.gmail.com>
-References: <20190604131516.13596-1-kishon@ti.com> <20190604131516.13596-24-kishon@ti.com>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] drm/bridge/synopsys: dw-hdmi: Fix unwedge crash when no pinctrl entries
+Date: Mon, 10 Jun 2019 10:52:34 -0700
+Message-ID: <20190610175234.196844-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190604131516.13596-24-kishon@ti.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Tom Joseph <tjoseph@cadence.com>, Bjorn Helgaas <bhelgaas@google.com>, Mark Rutland <mark.rutland@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Frank Rowand <frowand.list@gmail.com>, Jingoo Han <jingoohan1@gmail.com>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-omap <linux-omap@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
+To: Sean Paul <seanpaul@chromium.org>
+Cc: linux-rockchip@lists.infradead.org, Erico Nunes <nunes.erico@gmail.com>, heiko@sntech.de, Douglas Anderson <dianders@chromium.org>, David Airlie <airlied@linux.ie>, Andrzej Hajda <a.hajda@samsung.com>, Jonas Karlman <jonas@kwiboo.se>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sam Ravnborg <sam@ravnborg.org>, Neil Armstrong <narmstrong@baylibre.com>, =?UTF-8?q?Ville=20Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>, Thomas Gleixner <tglx@linutronix.de>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jun 4, 2019 at 7:19 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
->
-> Export of_platform_device_create_pdata() to be used by drivers to
-> create child devices with the given platform data. This can be used
-> by platform specific driver to send platform data core driver. For e.g.,
-> this will be used by TI's J721E SoC specific PCIe driver to send
-> ->start_link() ops and ->is_link_up() ops to Cadence core PCIe driver.
+In commit 50f9495efe30 ("drm/bridge/synopsys: dw-hdmi: Add "unwedge"
+for ddc bus") I stupidly used IS_ERR() to check for whether we have an
+"unwedge" pinctrl state even though on most flows through the driver
+the unwedge state will just be NULL.
 
-NAK
+Fix it so that we consistently use NULL for no unwedge state.
 
-of_platform_device_create_pdata() is purely for legacy handling of
-auxdata which is something I hope to get rid of someday. Or to put it
-another way, auxdata use is a sign of platforms not fully converted to
-DT.
+Fixes: 50f9495efe30 ("drm/bridge/synopsys: dw-hdmi: Add "unwedge" for ddc bus")
+Reported-by: Erico Nunes <nunes.erico@gmail.com>
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
 
-Rob
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index f25e091b93c5..5e4e9408d00f 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -251,7 +251,7 @@ static void dw_hdmi_i2c_init(struct dw_hdmi *hdmi)
+ static bool dw_hdmi_i2c_unwedge(struct dw_hdmi *hdmi)
+ {
+ 	/* If no unwedge state then give up */
+-	if (IS_ERR(hdmi->unwedge_state))
++	if (!hdmi->unwedge_state)
+ 		return false;
+ 
+ 	dev_info(hdmi->dev, "Attempting to unwedge stuck i2c bus\n");
+@@ -2686,11 +2686,13 @@ __dw_hdmi_probe(struct platform_device *pdev,
+ 			hdmi->default_state =
+ 				pinctrl_lookup_state(hdmi->pinctrl, "default");
+ 
+-			if (IS_ERR(hdmi->default_state) &&
+-			    !IS_ERR(hdmi->unwedge_state)) {
+-				dev_warn(dev,
+-					 "Unwedge requires default pinctrl\n");
+-				hdmi->unwedge_state = ERR_PTR(-ENODEV);
++			if (IS_ERR(hdmi->default_state) ||
++			    IS_ERR(hdmi->unwedge_state)) {
++				if (!IS_ERR(hdmi->unwedge_state))
++					dev_warn(dev,
++						 "Unwedge requires default pinctrl\n");
++				hdmi->default_state = NULL;
++				hdmi->unwedge_state = NULL;
+ 			}
+ 		}
+ 
+-- 
+2.22.0.rc2.383.gf4fbbf30c2-goog
