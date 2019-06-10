@@ -1,73 +1,77 @@
-From: Sean Paul <sean@poorly.run>
-Subject: Re: [PATCH] drm/bridge/synopsys: dw-hdmi: Fix unwedge crash when no
- pinctrl entries
-Date: Mon, 10 Jun 2019 16:50:50 -0400
-Message-ID: <CAMavQKLRm8uYu3O=co5Ui7YjkK0hKHAd=+TA0oExfqnLc+TLFA@mail.gmail.com>
-References: <20190610175234.196844-1-dianders@chromium.org>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: [PATCH v2] ARM: dts: rockchip: Configure BT_HOST_WAKE as wake-up signal on veyron
+Date: Mon, 10 Jun 2019 16:51:44 -0700
+Message-ID: <20190610235144.34261-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190610175234.196844-1-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Sean Paul <seanpaul@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Erico Nunes <nunes.erico@gmail.com>, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Andrzej Hajda <a.hajda@samsung.com>, Jonas Karlman <jonas@kwiboo.se>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Sam Ravnborg <sam@ravnborg.org>, Neil Armstrong <narmstrong@baylibre.com>, =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, Thomas Gleixner <tglx@linutronix.de>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel@ffwll.ch>
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jun 10, 2019 at 1:52 PM Douglas Anderson <dianders@chromium.org> wrote:
->
-> In commit 50f9495efe30 ("drm/bridge/synopsys: dw-hdmi: Add "unwedge"
-> for ddc bus") I stupidly used IS_ERR() to check for whether we have an
-> "unwedge" pinctrl state even though on most flows through the driver
-> the unwedge state will just be NULL.
->
-> Fix it so that we consistently use NULL for no unwedge state.
->
-> Fixes: 50f9495efe30 ("drm/bridge/synopsys: dw-hdmi: Add "unwedge" for ddc bus")
-> Reported-by: Erico Nunes <nunes.erico@gmail.com>
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
 
-Thanks Erico for the report, and Doug for fixing this up quickly, I've applied
-the patch to drm-misc-next
+This enables wake up on Bluetooth activity when the device is
+suspended. The BT_HOST_WAKE signal is only connected on devices
+with BT module that are connected through UART.
 
-Sean
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+---
+Changes in v2:
+- attributed authorship to Doug
+- use constant instead of literal for pin number
+---
+ arch/arm/boot/dts/rk3288-veyron.dtsi | 29 ++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-> ---
->
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 14 ++++++++------
->  1 file changed, 8 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> index f25e091b93c5..5e4e9408d00f 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> @@ -251,7 +251,7 @@ static void dw_hdmi_i2c_init(struct dw_hdmi *hdmi)
->  static bool dw_hdmi_i2c_unwedge(struct dw_hdmi *hdmi)
->  {
->         /* If no unwedge state then give up */
-> -       if (IS_ERR(hdmi->unwedge_state))
-> +       if (!hdmi->unwedge_state)
->                 return false;
->
->         dev_info(hdmi->dev, "Attempting to unwedge stuck i2c bus\n");
-> @@ -2686,11 +2686,13 @@ __dw_hdmi_probe(struct platform_device *pdev,
->                         hdmi->default_state =
->                                 pinctrl_lookup_state(hdmi->pinctrl, "default");
->
-> -                       if (IS_ERR(hdmi->default_state) &&
-> -                           !IS_ERR(hdmi->unwedge_state)) {
-> -                               dev_warn(dev,
-> -                                        "Unwedge requires default pinctrl\n");
-> -                               hdmi->unwedge_state = ERR_PTR(-ENODEV);
-> +                       if (IS_ERR(hdmi->default_state) ||
-> +                           IS_ERR(hdmi->unwedge_state)) {
-> +                               if (!IS_ERR(hdmi->unwedge_state))
-> +                                       dev_warn(dev,
-> +                                                "Unwedge requires default pinctrl\n");
-> +                               hdmi->default_state = NULL;
-> +                               hdmi->unwedge_state = NULL;
->                         }
->                 }
->
-> --
-> 2.22.0.rc2.383.gf4fbbf30c2-goog
->
+diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
+index 3257ca90f0e8..e2635ad574e7 100644
+--- a/arch/arm/boot/dts/rk3288-veyron.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
+@@ -23,6 +23,31 @@
+ 		reg = <0x0 0x0 0x0 0x80000000>;
+ 	};
+ 
++	bt_activity: bt-activity {
++		compatible = "gpio-keys";
++		pinctrl-names = "default";
++		pinctrl-0 = <&bt_host_wake>;
++
++		/*
++		 * HACK: until we have an LPM driver, we'll use an
++		 * ugly GPIO key to allow Bluetooth to wake from S3.
++		 * This is expected to only be used by BT modules that
++		 * use UART for comms.  For BT modules that talk over
++		 * SDIO we should use a wakeup mechanism related to SDIO.
++		 *
++		 * Use KEY_RESERVED here since that will work as a wakeup but
++		 * doesn't get reported to higher levels (so doesn't confuse
++		 * Chrome).
++		 */
++		bt-wake {
++			label = "BT Wakeup";
++			gpios = <&gpio4 RK_PD7 GPIO_ACTIVE_HIGH>;
++			linux,code = <KEY_RESERVED>;
++			wakeup-source;
++		};
++
++	};
++
+ 	power_button: power-button {
+ 		compatible = "gpio-keys";
+ 		pinctrl-names = "default";
+@@ -549,6 +574,10 @@
+ 			rockchip,pins = <4 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
++		bt_host_wake: bt-host-wake {
++			rockchip,pins = <4 RK_PD7 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++
+ 		/*
+ 		 * We run sdio0 at max speed; bump up drive strength.
+ 		 * We also have external pulls, so disable the internal ones.
+-- 
+2.22.0.rc2.383.gf4fbbf30c2-goog
