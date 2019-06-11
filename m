@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 54/92] clk: rockchip: rk3399: Set 50MHz ddr clock
-Date: Tue, 11 Jun 2019 20:20:57 +0530
-Message-ID: <20190611145135.21399-55-jagan@amarulasolutions.com>
+Subject: [PATCH 58/92] ram: rk3399: Add lpddr4 rank mask for cs training
+Date: Tue, 11 Jun 2019 20:21:01 +0530
+Message-ID: <20190611145135.21399-59-jagan@amarulasolutions.com>
 References: <20190611145135.21399-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,28 +21,32 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add support for setting 50MHz ddr clock.
+Add rank_mask based on the rank number for lpddr4.
+
+This would keep the ca data training loop based on the
+desired rank mask value instead of looping for all values.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/clk/rockchip/clk_rk3399.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/ram/rockchip/sdram_rk3399.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/rockchip/clk_rk3399.c b/drivers/clk/rockchip/clk_rk3399.c
-index 5d1ad94e85..1de21c9f3e 100644
---- a/drivers/clk/rockchip/clk_rk3399.c
-+++ b/drivers/clk/rockchip/clk_rk3399.c
-@@ -827,6 +827,10 @@ static ulong rk3399_ddr_set_clk(struct rk3399_cru *cru,
+diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
+index a5fa41e498..004a4819ff 100644
+--- a/drivers/ram/rockchip/sdram_rk3399.c
++++ b/drivers/ram/rockchip/sdram_rk3399.c
+@@ -692,7 +692,10 @@ static int data_training_ca(const struct chan_info *chan, u32 channel,
+ 	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
+ 	writel(0x00003f7c, (&denali_pi[175]));
  
- 	/*  clk_ddrc == DPLL = 24MHz / refdiv * fbdiv / postdiv1 / postdiv2 */
- 	switch (set_rate) {
-+	case 50 * MHz:
-+		dpll_cfg = (struct pll_div)
-+		{.refdiv = 1, .fbdiv = 12, .postdiv1 = 3, .postdiv2 = 2};
-+		break;
- 	case 200 * MHz:
- 		dpll_cfg = (struct pll_div)
- 		{.refdiv = 1, .fbdiv = 50, .postdiv1 = 6, .postdiv2 = 1};
+-	rank_mask = (rank == 1) ? 0x1 : 0x3;
++	if (sdram_params->base.dramtype == LPDDR4)
++		rank_mask = (rank == 1) ? 0x5 : 0xf;
++	else
++		rank_mask = (rank == 1) ? 0x1 : 0x3;
+ 
+ 	for (i = 0; i < 4; i++) {
+ 		if (!(rank_mask & (1 << i)))
 -- 
 2.18.0.321.gffc6fa0e3
