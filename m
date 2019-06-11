@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 82/92] ram: rk3399: Add LPPDDR4-400 timings inc
-Date: Tue, 11 Jun 2019 20:21:25 +0530
-Message-ID: <20190611145135.21399-83-jagan@amarulasolutions.com>
+Subject: [PATCH 83/92] ram: rk3399: Add LPPDDR4-800 timings inc
+Date: Tue, 11 Jun 2019 20:21:26 +0530
+Message-ID: <20190611145135.21399-84-jagan@amarulasolutions.com>
 References: <20190611145135.21399-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -26,21 +26,21 @@ and then it switches into 400MHz and 800MHz simultaneously to
 make the proper sequence work on each channel with associated
 training.
 
-So, add LPDDR4-400 timings inc file in driver area so-that
+So, add LPDDR4-800 timings inc file in driver area so-that
 these timings will take during LPDDR4 initialization phase.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- .../ram/rockchip/sdram-rk3399-lpddr4-400.inc  | 1570 +++++++++++++++++
+ .../ram/rockchip/sdram-rk3399-lpddr4-800.inc  | 1570 +++++++++++++++++
  1 file changed, 1570 insertions(+)
- create mode 100644 drivers/ram/rockchip/sdram-rk3399-lpddr4-400.inc
+ create mode 100644 drivers/ram/rockchip/sdram-rk3399-lpddr4-800.inc
 
-diff --git a/drivers/ram/rockchip/sdram-rk3399-lpddr4-400.inc b/drivers/ram/rockchip/sdram-rk3399-lpddr4-400.inc
+diff --git a/drivers/ram/rockchip/sdram-rk3399-lpddr4-800.inc b/drivers/ram/rockchip/sdram-rk3399-lpddr4-800.inc
 new file mode 100644
-index 0000000000..c50a03d9dd
+index 0000000000..d8ae3359a3
 --- /dev/null
-+++ b/drivers/ram/rockchip/sdram-rk3399-lpddr4-400.inc
++++ b/drivers/ram/rockchip/sdram-rk3399-lpddr4-800.inc
 @@ -0,0 +1,1570 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
@@ -102,7 +102,7 @@ index 0000000000..c50a03d9dd
 +		}
 +	},
 +	{
-+		.ddr_freq = 400 * MHz,
++		.ddr_freq = 800 * MHz,
 +		.dramtype = LPDDR4,
 +		.num_channels = 2,
 +		.stride = 13,
@@ -659,8 +659,8 @@ index 0000000000..c50a03d9dd
 +			0x01665555,	/* DENALI_PHY_06_DATA */
 +			0x03665555,	/* DENALI_PHY_07_DATA */
 +			0x00010f00,	/* DENALI_PHY_08_DATA */
-+			0x04000100,	/* DENALI_PHY_09_DATA */
-+			0x00000001,	/* DENALI_PHY_10_DATA */
++			0x05010200,	/* DENALI_PHY_09_DATA */
++			0x00000002,	/* DENALI_PHY_10_DATA */
 +			0x00170180,	/* DENALI_PHY_11_DATA */
 +			0x00cc0201,	/* DENALI_PHY_12_DATA */
 +			0x00030066,	/* DENALI_PHY_13_DATA */
@@ -728,16 +728,16 @@ index 0000000000..c50a03d9dd
 +			0x00800080,	/* DENALI_PHY_75_DATA */
 +			0x00800080,	/* DENALI_PHY_76_DATA */
 +			0x01190080,	/* DENALI_PHY_77_DATA */
-+			0x00000001,	/* DENALI_PHY_78_DATA */
++			0x00000002,	/* DENALI_PHY_78_DATA */
 +			0x00000000,	/* DENALI_PHY_79_DATA */
 +			0x00000000,	/* DENALI_PHY_80_DATA */
 +			0x00000200,	/* DENALI_PHY_81_DATA */
 +			0x00000000,	/* DENALI_PHY_82_DATA */
 +			0x51315152,	/* DENALI_PHY_83_DATA */
-+			0xc0003150,	/* DENALI_PHY_84_DATA */
-+			0x010000c0,	/* DENALI_PHY_85_DATA */
-+			0x00100000,	/* DENALI_PHY_86_DATA */
-+			0x07044204,	/* DENALI_PHY_87_DATA */
++			0xc0013150,	/* DENALI_PHY_84_DATA */
++			0x020000c0,	/* DENALI_PHY_85_DATA */
++			0x00100001,	/* DENALI_PHY_86_DATA */
++			0x07054204,	/* DENALI_PHY_87_DATA */
 +			0x000f0c18,	/* DENALI_PHY_88_DATA */
 +			0x01000140,	/* DENALI_PHY_89_DATA */
 +			0x00000c10,	/* DENALI_PHY_90_DATA */
@@ -787,8 +787,8 @@ index 0000000000..c50a03d9dd
 +			0x01665555,	/* DENALI_PHY_134_DATA */
 +			0x03665555,	/* DENALI_PHY_135_DATA */
 +			0x00010f00,	/* DENALI_PHY_136_DATA */
-+			0x04000100,	/* DENALI_PHY_137_DATA */
-+			0x00000001,	/* DENALI_PHY_138_DATA */
++			0x05010200,	/* DENALI_PHY_137_DATA */
++			0x00000002,	/* DENALI_PHY_138_DATA */
 +			0x00170180,	/* DENALI_PHY_139_DATA */
 +			0x00cc0201,	/* DENALI_PHY_140_DATA */
 +			0x00030066,	/* DENALI_PHY_141_DATA */
@@ -856,16 +856,16 @@ index 0000000000..c50a03d9dd
 +			0x00800080,	/* DENALI_PHY_203_DATA */
 +			0x00800080,	/* DENALI_PHY_204_DATA */
 +			0x01190080,	/* DENALI_PHY_205_DATA */
-+			0x00000001,	/* DENALI_PHY_206_DATA */
++			0x00000002,	/* DENALI_PHY_206_DATA */
 +			0x00000000,	/* DENALI_PHY_207_DATA */
 +			0x00000000,	/* DENALI_PHY_208_DATA */
 +			0x00000200,	/* DENALI_PHY_209_DATA */
 +			0x00000000,	/* DENALI_PHY_210_DATA */
 +			0x51315152,	/* DENALI_PHY_211_DATA */
-+			0xc0003150,	/* DENALI_PHY_212_DATA */
-+			0x010000c0,	/* DENALI_PHY_213_DATA */
-+			0x00100000,	/* DENALI_PHY_214_DATA */
-+			0x07044204,	/* DENALI_PHY_215_DATA */
++			0xc0013150,	/* DENALI_PHY_212_DATA */
++			0x020000c0,	/* DENALI_PHY_213_DATA */
++			0x00100001,	/* DENALI_PHY_214_DATA */
++			0x07054204,	/* DENALI_PHY_215_DATA */
 +			0x000f0c18,	/* DENALI_PHY_216_DATA */
 +			0x01000140,	/* DENALI_PHY_217_DATA */
 +			0x00000c10,	/* DENALI_PHY_218_DATA */
@@ -915,8 +915,8 @@ index 0000000000..c50a03d9dd
 +			0x01665555,	/* DENALI_PHY_262_DATA */
 +			0x03665555,	/* DENALI_PHY_263_DATA */
 +			0x00010f00,	/* DENALI_PHY_264_DATA */
-+			0x04000100,	/* DENALI_PHY_265_DATA */
-+			0x00000001,	/* DENALI_PHY_266_DATA */
++			0x05010200,	/* DENALI_PHY_265_DATA */
++			0x00000002,	/* DENALI_PHY_266_DATA */
 +			0x00170180,	/* DENALI_PHY_267_DATA */
 +			0x00cc0201,	/* DENALI_PHY_268_DATA */
 +			0x00030066,	/* DENALI_PHY_269_DATA */
@@ -984,16 +984,16 @@ index 0000000000..c50a03d9dd
 +			0x00800080,	/* DENALI_PHY_331_DATA */
 +			0x00800080,	/* DENALI_PHY_332_DATA */
 +			0x01190080,	/* DENALI_PHY_333_DATA */
-+			0x00000001,	/* DENALI_PHY_334_DATA */
++			0x00000002,	/* DENALI_PHY_334_DATA */
 +			0x00000000,	/* DENALI_PHY_335_DATA */
 +			0x00000000,	/* DENALI_PHY_336_DATA */
 +			0x00000200,	/* DENALI_PHY_337_DATA */
 +			0x00000000,	/* DENALI_PHY_338_DATA */
 +			0x51315152,	/* DENALI_PHY_339_DATA */
-+			0xc0003150,	/* DENALI_PHY_340_DATA */
-+			0x010000c0,	/* DENALI_PHY_341_DATA */
-+			0x00100000,	/* DENALI_PHY_342_DATA */
-+			0x07044204,	/* DENALI_PHY_343_DATA */
++			0xc0013150,	/* DENALI_PHY_340_DATA */
++			0x020000c0,	/* DENALI_PHY_341_DATA */
++			0x00100001,	/* DENALI_PHY_342_DATA */
++			0x07054204,	/* DENALI_PHY_343_DATA */
 +			0x000f0c18,	/* DENALI_PHY_344_DATA */
 +			0x01000140,	/* DENALI_PHY_345_DATA */
 +			0x00000c10,	/* DENALI_PHY_346_DATA */
@@ -1043,8 +1043,8 @@ index 0000000000..c50a03d9dd
 +			0x01665555,	/* DENALI_PHY_390_DATA */
 +			0x03665555,	/* DENALI_PHY_391_DATA */
 +			0x00010f00,	/* DENALI_PHY_392_DATA */
-+			0x04000100,	/* DENALI_PHY_393_DATA */
-+			0x00000001,	/* DENALI_PHY_394_DATA */
++			0x05010200,	/* DENALI_PHY_393_DATA */
++			0x00000002,	/* DENALI_PHY_394_DATA */
 +			0x00170180,	/* DENALI_PHY_395_DATA */
 +			0x00cc0201,	/* DENALI_PHY_396_DATA */
 +			0x00030066,	/* DENALI_PHY_397_DATA */
@@ -1112,16 +1112,16 @@ index 0000000000..c50a03d9dd
 +			0x00800080,	/* DENALI_PHY_459_DATA */
 +			0x00800080,	/* DENALI_PHY_460_DATA */
 +			0x01190080,	/* DENALI_PHY_461_DATA */
-+			0x00000001,	/* DENALI_PHY_462_DATA */
++			0x00000002,	/* DENALI_PHY_462_DATA */
 +			0x00000000,	/* DENALI_PHY_463_DATA */
 +			0x00000000,	/* DENALI_PHY_464_DATA */
 +			0x00000200,	/* DENALI_PHY_465_DATA */
 +			0x00000000,	/* DENALI_PHY_466_DATA */
 +			0x51315152,	/* DENALI_PHY_467_DATA */
-+			0xc0003150,	/* DENALI_PHY_468_DATA */
-+			0x010000c0,	/* DENALI_PHY_469_DATA */
-+			0x00100000,	/* DENALI_PHY_470_DATA */
-+			0x07044204,	/* DENALI_PHY_471_DATA */
++			0xc0013150,	/* DENALI_PHY_468_DATA */
++			0x020000c0,	/* DENALI_PHY_469_DATA */
++			0x00100001,	/* DENALI_PHY_470_DATA */
++			0x07054204,	/* DENALI_PHY_471_DATA */
 +			0x000f0c18,	/* DENALI_PHY_472_DATA */
 +			0x01000140,	/* DENALI_PHY_473_DATA */
 +			0x00000c10,	/* DENALI_PHY_474_DATA */
@@ -1561,18 +1561,18 @@ index 0000000000..c50a03d9dd
 +			0x00000600,	/* DENALI_PHY_908_DATA */
 +			0x00000000,	/* DENALI_PHY_909_DATA */
 +			0x00006400,	/* DENALI_PHY_910_DATA */
-+			0x03221302,	/* DENALI_PHY_911_DATA */
++			0x01221102,	/* DENALI_PHY_911_DATA */
 +			0x00000000,	/* DENALI_PHY_912_DATA */
-+			0x000d1f01,	/* DENALI_PHY_913_DATA */
++			0x000d1f00,	/* DENALI_PHY_913_DATA */
 +			0x0d1f0d1f,	/* DENALI_PHY_914_DATA */
 +			0x0d1f0d1f,	/* DENALI_PHY_915_DATA */
 +			0x00030003,	/* DENALI_PHY_916_DATA */
 +			0x03000300,	/* DENALI_PHY_917_DATA */
 +			0x00000300,	/* DENALI_PHY_918_DATA */
-+			0x03221302,	/* DENALI_PHY_919_DATA */
++			0x01221102,	/* DENALI_PHY_919_DATA */
 +			0x00000000,	/* DENALI_PHY_920_DATA */
 +			0x00000000,	/* DENALI_PHY_921_DATA */
-+			0x01020000,	/* DENALI_PHY_922_DATA */
++			0x03020000,	/* DENALI_PHY_922_DATA */
 +			0x00000001,	/* DENALI_PHY_923_DATA */
 +			0x00000411,	/* DENALI_PHY_924_DATA */
 +			0x00000411,	/* DENALI_PHY_925_DATA */
@@ -1597,7 +1597,7 @@ index 0000000000..c50a03d9dd
 +			0x64000000,	/* DENALI_PHY_944_DATA */
 +			0x00000000,	/* DENALI_PHY_945_DATA */
 +			0x00000000,	/* DENALI_PHY_946_DATA */
-+			0x00000408,	/* DENALI_PHY_947_DATA */
++			0x00000508,	/* DENALI_PHY_947_DATA */
 +			0x00000000,	/* DENALI_PHY_948_DATA */
 +			0x00000000,	/* DENALI_PHY_949_DATA */
 +			0x00000000,	/* DENALI_PHY_950_DATA */
