@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 91/92] rockchip: dts: rk3399: rockpro64: Use LPDDR4-100 dtsi
-Date: Tue, 11 Jun 2019 20:21:34 +0530
-Message-ID: <20190611145135.21399-92-jagan@amarulasolutions.com>
+Subject: [PATCH 92/92] rockchip: dts: rk3399: rock-pi-4: Use LPDDR4-100 dtsi
+Date: Tue, 11 Jun 2019 20:21:35 +0530
+Message-ID: <20190611145135.21399-93-jagan@amarulasolutions.com>
 References: <20190611145135.21399-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,9 +21,9 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Use LPDDR4-100 sdram timings dtsi for Rockpro64 board.
+Use LPDDR4-100 sdram timings dtsi for RockPI-4 board.
 
-All these timings are processed during TPL stage of rockpro64 board,
+All these timings are processed during TPL stage of rock-pi-4 board,
 bootchain. This make TPL would replace rockchip in house rkbin in
 current bootchain.
 
@@ -35,13 +35,13 @@ Bootchain after and before this change:
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- arch/arm/dts/rk3399-rockpro64-u-boot.dtsi | 1 +
+ arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi b/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
+diff --git a/arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi b/arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
 index 7bddc3acdb..dbfa4ba9f8 100644
---- a/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
+--- a/arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
++++ b/arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
 @@ -4,3 +4,4 @@
   */
  
