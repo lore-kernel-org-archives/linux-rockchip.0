@@ -1,61 +1,72 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [RFC PATCH 23/30] of/platform: Export
- of_platform_device_create_pdata()
-Date: Tue, 11 Jun 2019 10:08:24 +0530
-Message-ID: <a80c7c33-7091-70d9-cd86-a19fe43d3bc6@ti.com>
-References: <20190604131516.13596-1-kishon@ti.com>
- <20190604131516.13596-24-kishon@ti.com>
- <CAL_JsqJ5gsctd7L3VOhTO1JdUqmMmSJRpos1XQyfxzmGO7wauw@mail.gmail.com>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Subject: Re: [PATCH v3 3/5] brcmfmac: sdio: Disable auto-tuning around
+ commands expected to fail
+Date: Tue, 11 Jun 2019 10:17:57 +0300
+Message-ID: <ccdc4c80-2fcf-6938-c68e-dc2b21a57d92@intel.com>
+References: <20190607223716.119277-1-dianders@chromium.org>
+ <20190607223716.119277-4-dianders@chromium.org>
+ <363DA0ED52042842948283D2FC38E4649C52F8A0@IRSMSX106.ger.corp.intel.com>
+ <CAD=FV=U8eo78Ee9xjhGXJMv=8YF9o89KLX024GH3iBRnRjCRvQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAL_JsqJ5gsctd7L3VOhTO1JdUqmMmSJRpos1XQyfxzmGO7wauw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=U8eo78Ee9xjhGXJMv=8YF9o89KLX024GH3iBRnRjCRvQ@mail.gmail.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Tom Joseph <tjoseph-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Gustavo Pimentel <gustavo.pimentel-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-omap <linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Frank Rowand <frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Arend van Spriel <arend.vanspriel@broadcom.com>, "brcm80211-dev-list.pdl@broadcom.com" <brcm80211-dev-list.pdl@broadcom.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Double Lo <double.lo@cypress.com>, "briannorris@chromium.org" <briannorris@chromium.org>, "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, "mka@chromium.org" <mka@chromium.org>, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "brcm80211-dev-list@cypress.com" <brcm80211-dev-list@cypress.com>, Fra
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob,
-
-On 10/06/19 11:13 PM, Rob Herring wrote:
-> On Tue, Jun 4, 2019 at 7:19 AM Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org> wrote:
+On 10/06/19 7:50 PM, Doug Anderson wrote:
+> Hi,
+> 
+> On Mon, Jun 10, 2019 at 1:56 AM Hunter, Adrian <adrian.hunter@intel.com> wrote:
 >>
->> Export of_platform_device_create_pdata() to be used by drivers to
->> create child devices with the given platform data. This can be used
->> by platform specific driver to send platform data core driver. For e.g.,
->> this will be used by TI's J721E SoC specific PCIe driver to send
->> ->start_link() ops and ->is_link_up() ops to Cadence core PCIe driver.
+>>> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+>>> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+>>> @@ -16,6 +16,7 @@
+>>>  #include <linux/mmc/sdio_ids.h>
+>>>  #include <linux/mmc/sdio_func.h>
+>>>  #include <linux/mmc/card.h>
+>>> +#include <linux/mmc/core.h>
+>>
+>> SDIO function drivers should not really include linux/mmc/core.h
+>> (Also don't know why linux/mmc/card.h is included)
 > 
-> NAK
+> OK, so I guess you're requesting an extra level of "sdio_" wrappers
+> for all the functions I need to call.  I don't think the wrappers buy
+> us a ton other than to abstract things a little bit and make it look
+> prettier.  :-)  ...but certainly I can code that up if that's what
+> everyone wants.
+
+I guess it is really up to Ulf.
+
 > 
-> of_platform_device_create_pdata() is purely for legacy handling of
-> auxdata which is something I hope to get rid of someday. Or to put it
-> another way, auxdata use is a sign of platforms not fully converted to
-> DT.
-
-All right. Thanks for letting me know your thoughts.
-
-Lorenzo,
-
-We've modeled Cadence PCIe core as a separate driver and for some of the
-functionalities (for example starting LTSSM or checking link status) it has to
-invoke the wrapper driver functions (The registers for these are present in
-wrapper and not in Cadence Core). In the case of Designware, we modeled DWC
-core as a library which provided APIs to be used by wrapper driver. Now that
-Rob is not inclined for passing platform data from one driver to another (in
-this case TI specific J721E driver to Cadence PCIe driver), should we model
-Cadence core also as a library? If you agree, I can prepare patches for making
-Cadence PCIe core as a library. Please let me know your thoughts.
-
-Thanks
-Kishon
+> Just to make sure, I looked in "drivers/net/wireless/" and I do see
+> quite a few instances of "mmc_" functions being used.  That doesn't
+> mean all these instances are correct but it does appear to be
+> commonplace.  Selected examples:
+> 
+> drivers/net/wireless/ath/ath10k/sdio.c:
+>   ret = mmc_hw_reset(ar_sdio->func->card->host);
+> 
+> drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c:
+>   mmc_set_data_timeout(md, func->card);
+>   mmc_wait_for_req(func->card->host, mr);
+> 
+> drivers/net/wireless/marvell/mwifiex/sdio.c:
+>   mmc_hw_reset(func->card->host);
+> 
+> drivers/net/wireless/rsi/rsi_91x_sdio.c:
+>   err = mmc_wait_for_cmd(host, &cmd, 3);
+> 
+> 
+> ...anyway, I'll give it a few days and if nobody else chimes in then
+> I'll assume you indeed want "sdio_" wrappers for things and I'll post
+> a v4.  If patch #1 happens to land in the meantime then I won't
+> object.  ;-)
+> 
+> 
+> -Doug
+> 
