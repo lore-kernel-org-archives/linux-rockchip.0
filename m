@@ -1,45 +1,36 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 3/3] Rockchip soc32 updates for 5.3 round 1
-Date: Tue, 11 Jun 2019 10:55:28 +0200
-Message-ID: <6757963.JBp9oB5bj2@phil>
-References: <3004130.oi6ZuZy1Zf@phil>
+From: Erico Nunes <nunes.erico@gmail.com>
+Subject: Re: [PATCH] drm/bridge/synopsys: dw-hdmi: Fix unwedge crash when no
+ pinctrl entries
+Date: Tue, 11 Jun 2019 14:05:55 +0200
+Message-ID: <CAK4VdL0jph-LzkRai=6nLahgrvG0cFNt5N3GNGjKAE-G0jc38A@mail.gmail.com>
+References: <20190610175234.196844-1-dianders@chromium.org> <CAMavQKLRm8uYu3O=co5Ui7YjkK0hKHAd=+TA0oExfqnLc+TLFA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <3004130.oi6ZuZy1Zf@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAMavQKLRm8uYu3O=co5Ui7YjkK0hKHAd=+TA0oExfqnLc+TLFA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Paul <sean@poorly.run>
+Cc: Douglas Anderson <dianders@chromium.org>, Sean Paul <seanpaul@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Andrzej Hajda <a.hajda@samsung.com>, Jonas Karlman <jonas@kwiboo.se>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Sam Ravnborg <sam@ravnborg.org>, Neil Armstrong <narmstrong@baylibre.com>, =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, Thomas Gleixner <tglx@linutronix.de>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit a188339ca5a396acc588e5851ed7e19f66b0ebd9:
+On Mon, Jun 10, 2019 at 10:51 PM Sean Paul <sean@poorly.run> wrote:
+>
+> On Mon, Jun 10, 2019 at 1:52 PM Douglas Anderson <dianders@chromium.org> wrote:
+> >
+> > In commit 50f9495efe30 ("drm/bridge/synopsys: dw-hdmi: Add "unwedge"
+> > for ddc bus") I stupidly used IS_ERR() to check for whether we have an
+> > "unwedge" pinctrl state even though on most flows through the driver
+> > the unwedge state will just be NULL.
+> >
+> > Fix it so that we consistently use NULL for no unwedge state.
+> >
+> > Fixes: 50f9495efe30 ("drm/bridge/synopsys: dw-hdmi: Add "unwedge" for ddc bus")
+> > Reported-by: Erico Nunes <nunes.erico@gmail.com>
+> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+>
+> Thanks Erico for the report, and Doug for fixing this up quickly, I've applied
+> the patch to drm-misc-next
 
-  Linux 5.2-rc1 (2019-05-19 15:47:09 -0700)
+It does fix the issue. Thank you for the quick fix.
 
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.3-rockchip-soc32-1
-
-for you to fetch changes up to c2af88f1a0cdf4cbe94b51fd93e52a3f55606a13:
-
-  ARM: rockchip: fix missing of_node_put calls in smp code (2019-05-20 01:00:41 +0200)
-
-----------------------------------------------------------------
-Another missing of_node_put
-
-----------------------------------------------------------------
-Wen Yang (1):
-      ARM: rockchip: fix missing of_node_put calls in smp code
-
- arch/arm/mach-rockchip/platsmp.c | 12 ++++++++++--
- arch/arm/mach-rockchip/pm.c      |  2 ++
- 2 files changed, 12 insertions(+), 2 deletions(-)
+Erico
