@@ -1,11 +1,11 @@
-From: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Subject: Re: [PATCH 00/92] ram: rk3399: Add LPDDR4 support
-Date: Tue, 11 Jun 2019 16:53:33 +0200
-Message-ID: <349AB0AF-4DEE-4BC8-8FEF-B3DBD34564E4@theobroma-systems.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH 30/92] ram: rk3399: s/tsel_wr_select_p/tsel_wr_select_dq_p
+Date: Tue, 11 Jun 2019 20:20:33 +0530
+Message-ID: <20190611145135.21399-31-jagan@amarulasolutions.com>
 References: <20190611145135.21399-1-jagan@amarulasolutions.com>
-Mime-Version: 1.0 (Mac OS X Mail 11.5 \(3445.9.1\))
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20190611145135.21399-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -17,138 +17,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Cc: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
+To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Cgo+IE9uIDExLjA2LjIwMTksIGF0IDE2OjUwLCBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29s
-dXRpb25zLmNvbT4gd3JvdGU6Cj4gCj4gWWVzLCBpdCBjYW4gYmUgcG9zc2libGUgdG8gYnJlYWsg
-dGhpcyBzZXJpZXMgaW50byBtdWx0aXBsZSBzdWIgc2VyaWVzCj4gYnV0IGlkZWEgaGVyZSBpcyB0
-byBtYXJrIGFsbCB0aGUgcmVxdWlyZWQgY2hhbmdlcyB0byBzdXBwb3J0IExQRERSNCAKPiBpbiBy
-azMzOTkgaW4gb25lIHNldC4gaWYgcmVxdWlyZWQgd2UgY2FuIGJyZWFrIGl0IGZyb20gbmV4dCB2
-ZXJzaW9ucy4KPiAKPiBUaGlzIGlzIHRoZSBpbml0aWFsIHNldCBmb3Igc3VwcG9ydGluZyBMUERE
-UjQgd2l0aCBhc3NvY2lhdGVkCj4gZmVhdHVyZXMuCj4gCj4gVGhhbmtzIHRvCj4gLSBZb3VNaW4g
-Q2hlbgo+IC0gQWthc2ggR2FqamFyCj4gLSBLZXZlciBZYW5nCj4gZm9yIHN1cHBvcnRpbmcgYWxs
-IHRoZSBoZWxwIG9uIHRoaXMgd29yay4KPiAKPiBPbiBzdW1tYXJ5IHRoaXMgc2VyaWVzIHN1cHBv
-cnQKPiAtIENvZGUgd2FybmluZyBhbmQgZml4ZXMKPiAtIHJhbmsgZGV0ZWN0aW9uLCB0aGlzIHdv
-dWxkIHJlcXVpcmVkIHRvIHByb2JlIHNpbmdsZSBjaGFubmVsIAo+ICBzZHJhbSBjb25maWd1cmVk
-IGluIE5hbm9QSS1ORU80Cj4gLSBMUEREUjQgc3VwcG9ydCwgdGVzdGVkIGluIFJvY2twcm82NCBh
-bmQgUm9jay1QSS00Cj4gCj4gcGF0Y2ggMDAwMSAtIDAwMzM6IGZpeCBjb2RlIHdhcm5pbmdzLCBw
-cmludHMsIG5ldyBtYWNyb3MKPiAKPiBwYXRjaCAwMDM0IC0gMDA1MTogcmFuayBkZXRlY3Rpb24s
-IHNkcmFtIGRlYnVnIGNvZGUKPiAKPiBwYXRjaCAwMDUyOiBVc2UgRERSMy0xODAwIG9uIE5hbm9Q
-SS1ORU80Cj4gCj4gcGF0Y2ggMDA1MyAtIDAwODk6IGxwZGRyNCBzdXBwb3J0Cj4gCj4gcGF0Y2gg
-MDA5MDogTFBERFI0LTEwMCB0aW1pbmdzCj4gCj4gcGF0Y2ggMDA5MTogVXNlIExQRERSNC0xMDAg
-b24gUm9ja3BybzY0Cj4gCj4gcGF0Y2ggMDA5MjogVXNlIExQRERSNC0xMDAgb24gUm9jay1QSSA0
-Cj4gCj4gTm90ZTogUHVtYSByazMzOTkgaGFzIFNQTCBzaXplIG92ZXJmbG93LCBiZXR0ZXIgdG8g
-ZW5hYmxlIFRQTAo+IGZvciB0aGlzIGJvYXJkLgoKV2UgbmVlZCB0byBrZWVwIFB1bWEgb24gYSBT
-UEwtb25seSBjb25maWd1cmF0aW9uIGZvciB0aGUgdGltZSBiZWluZy4KUGxlYXNlIG1ha2Ugc3Vy
-ZSB0aGF0IHRoZSBMUEREUjQgY29kZSBpcyBhbiBvcHRpb25hbCBmZWF0dXJlIHRoYXQgZG9lcyBu
-b3QKaW5jcmVhc2UgdGhlIERSQU0tZHJpdmVyIHNpemUgZm9yIGJvYXJkcyB0aGF0IGRvbuKAmXQg
-bmVlZC93YW50IGl0LgoKVGhhbmtzLApQaGlsaXBwLgoKPiAKPiBBbnkgaW5wdXRzPwo+IEphZ2Fu
-Lgo+IAo+IEphZ2FuIFRla2kgKDkyKToKPiAgcmFtOiByazMzOTk6IEZpeCBjb2RlIHdhcm5pbmdz
-Cj4gIHJhbTogcmszMzk5OiBBZGQgc3BhY2UgYmV0d2VlbiBzdHJpbmcgd2l0aCBmb3JtYXQgc3Bl
-Y2lmaWVyCj4gIHJhbTogcmszMzk5OiBBZGQgcHJvcGVyIHNwYWNlcyBpbiBkYXRhIHRyYWluaW5n
-Cj4gIHJhbTogcmszMzk5OiBIYW5kbGUgZGF0YSB0cmFpbmluZyByZXR1cm4gdHlwZXMKPiAgcmFt
-OiByazMzOTk6IE9yZGVyIGluY2x1ZGUgZmlsZXMKPiAgcmFtOiByazMzOTk6IE1vdmUgbWFjcm8g
-YWZ0ZXIgaW5jbHVkZSBmaWxlcwo+ICByYW06IHJrMzM5OTogQ2xlYXIgUElfMTc1IGludGVycnVw
-dHMgaW4gZGF0YSB0cmFpbmluZwo+ICByYW06IHJrMzM5OTogVXNlIHJhbmsgbWFzayBpbiBjYSBk
-YXRhIHRyYWluaW5nCj4gIHJhbTogcmszMzk5OiBVc2UgcmFuayBtYXNrIGluIHdkcWwgZGF0YSB0
-cmFpbmluZwo+ICByYW06IHJrMzM5OTogQWRkIGRkcnR5cGUgZW5jIG1hY3JvCj4gIHJhbTogcmsz
-Mzk5OiBBZGQgY2hhbm5lbCBudW1iZXIgZW5jb2RlciBtYWNybwo+ICByYW06IHJrMzM5OTogQWRk
-IHJvd18zXzQgZW5jIG1hY3JvCj4gIHJhbTogcmszMzk5OiBBZGQgY2hpcGluZm8gbWFjcm8KPiAg
-cmFtOiByazMzOTk6IEFkZCByYW5rIGVuYyBtYWNybwo+ICByYW06IHJrMzM5OTogQWRkIGNvbHVt
-biBlbmMgbWFjcm8KPiAgcmFtOiByazMzOTk6IEFkZCBiayBlbmMgbWFjcm8KPiAgcmFtOiByazMz
-OTk6IEFkZCBkYncgZW5jIG1hY3JvCj4gIHJhbTogcmszMzk5OiBBZGQgY3MwX3J3IG1hY3JvCj4g
-IHJhbTogcmszMzk5OiBBZGQgY3MxX3J3IG1hY3JvCj4gIHJhbTogcmszMzk5OiBBZGQgYncgZW5j
-IG1hY3JvCj4gIHJhbTogcmszMzk5OiBSZW5hbWUgc3lzX3JlZyB3aXRoIHN5c19yZWcyCj4gIHJh
-bTogcmszMzk5OiBVcGRhdGUgY3MwX3JvdyB0byB1c2Ugc3lzX3JlZzMKPiAgcmFtOiByazMzOTk6
-IFVwZGF0ZSBjczFfcm93IHRvIHVzZSBzeXNfcmVnMwo+ICByYW06IHJrMzM5OTogQWRkIGNzMV9j
-b2wgZW5jIG1hY3JvCj4gIHJhbTogcmszMzk5OiBBZGQgZGRyIHZlcnNpb24gZW5jIG1hY3JvCj4g
-IHJhbTogcmszMzk5OiBBZGQgZGRydGltaW5nQzAKPiAgcmFtOiByazMzOTk6IEFkZCBEZHJNb2Rl
-Cj4gIHJhbTogcmszMzk5OiBIYW5kbGUgcGN0bF9jZmcgcmV0dXJuIHR5cGUKPiAgcmFtOiByazMz
-OTk6IHMvdHNlbF93cl9zZWxlY3Rfbi90c2VsX3dyX3NlbGVjdF9kcV9uCj4gIHJhbTogcmszMzk5
-OiBzL3RzZWxfd3Jfc2VsZWN0X3AvdHNlbF93cl9zZWxlY3RfZHFfcAo+ICByYW06IHJrMzM5OTog
-cy9jYV90c2VsX3dyX3NlbGVjdF9uL3RzZWxfd3Jfc2VsZWN0X2NhX24KPiAgcmFtOiByazMzOTk6
-IHMvY2FfdHNlbF93cl9zZWxlY3RfcC90c2VsX3dyX3NlbGVjdF9jYV9wCj4gIHJhbTogcmszMzk5
-OiBPcmRlciB0c2VsIHZhcmlhYmxlcwo+ICByYW06IHJrMzM5OTogQWRkIHBoeSBwY3RybCByZXNl
-dCBzdXBwb3J0Cj4gIHJhbTogcmszMzk5OiBNb3ZlIHB3cnVwX3NyZWZyZXNoX2V4aXQgdG8gZHJh
-bV9pbmZvCj4gIHJhbTogcmszMzk5OiBBZGQgcGN0bCBzdGFydCBzdXBwb3J0Cj4gIHJhbTogcm9j
-a2NoaXA6IHJrMzM5OTogQWRkIGNhcF9pbmZvIHN0cnVjdHVyZQo+ICByYW06IHJrMzM5OTogcy9y
-azMzOTlfYmFzZV9wYXJhbXMvc2RyYW1fYmFzZV9wYXJhbXMKPiAgcmFtOiByazMzOTk6IE1vdmUg
-Y29tbW9uIHNkcmFtIHN0cnVjdHVyZXMgaW4gY29tbW9uIGhlYWRlcgo+ICBhcm06IGluY2x1ZGU6
-IHJvY2tjaGlwOiBNb3ZlIGRyYW10eXBlcyB0byBjb21tb24gaGVhZGVyCj4gIGFybTogaW5jbHVk
-ZTogcm9ja2NoaXA6IEFkZCBERFI0IGVudW0KPiAgcmFtOiByb2NrY2hpcDogQWRkIGluaXRpYWwg
-S2NvbmZpZwo+ICBkZWJ1Z191YXJ0OiBBZGQgcHJpbnRkZWMKPiAgcmFtOiByb2NrY2hpcDogQWRk
-IGRlYnVnIHNkcmFtIGRyaXZlcgo+ICByYW06IHJvY2tjaGlwOiBkZWJ1ZzogQWRkIHNkcmFtX3By
-aW50X2Rkcl9pbmZvCj4gIHJhbTogcm9ja2NoaXA6IGRlYnVnOiBHZXQgdGhlIGNzIGNhcGFjaXR5
-Cj4gIHJhbTogcmszMzk5OiBkZWJ1ZzogQWRkIHNkcmFtX3ByaW50X3N0cmlkZQo+ICByYW06IHJr
-MzM5OTogQ29tcHV0ZSBzdHJpZGUgZm9yIDIgY2hhbm5lbHMKPiAgcmFtOiByazMzOTk6IENvbXB1
-dGUgc3RyaWRlIGZvciAxIGNoYW5uZWwgYQo+ICByYW06IHJrMzM5OTogQWRkIHJhbmsgZGV0ZWN0
-aW9uIHN1cHBvcnQKPiAgcmFtOiByazMzOTk6IEVuYWJsZSBzZHJhbSBkZWJ1ZyBmdW5jdGlvbnMK
-PiAgcm9ja2NoaXA6IGR0czogcmszMzk5OiBuYW5vcGktbmVvNDogVXNlIEREUjMtMTg2NiBkdHNp
-Cj4gIGNsazogcm9ja2NoaXA6IHJrMzM5OTogRml4IGNoZWNrIHBhdGNoIHdhcm5pbmdzIGFuZCBj
-aGVja3MKPiAgY2xrOiByb2NrY2hpcDogcmszMzk5OiBTZXQgNTBNSHogZGRyIGNsb2NrCj4gIGNs
-azogcm9ja2NoaXA6IHJrMzM5OTogU2V0IDQwME1IeiBkZHIgY2xvY2sKPiAgcmFtOiByazMzOTk6
-IEFkZCBzcGFjZXMgaW4gcGN0bF9jZmcKPiAgcmFtOiByazMzOTk6IENvbmZpZ3VyZSBwaHkgSU8g
-aW4gZHMgb2R0Cj4gIHJhbTogcmszMzk5OiBBZGQgbHBkZHI0IHJhbmsgbWFzayBmb3IgY3MgdHJh
-aW5pbmcKPiAgcmFtOiByazMzOTk6IEFkZCBscGRkcjQgcmFuayBtYXNrIGZvciB3ZHFsIHRyYWlu
-aW5nCj4gIHJhbTogcmszMzk5OiBNb3ZlIG1vZGVfc2VsIGFzc2lnbm1lbnQKPiAgcmFtOiByazMz
-OTk6IERvbid0IHdhaXQgZm9yIFBMTCBsb2NrIGluIGxwZGRyNAo+ICByYW06IHJrMzM5OTogQXZv
-aWQgdHdvIGNoYW5uZWwgWlEgQ2FsIFN0YXJ0IGF0IHRoZSBzYW1lIHRpbWUKPiAgcmFtOiByazMz
-OTk6IENvbmZpZ3VyZSBQSFlfODk4LCBQSFlfOTE5IGZvciBscGRkcjQKPiAgcmFtOiByazMzOTk6
-IENvbmZpZ3VyZSBCT09TVFBfRU4sIEJPT1NUTl9FTiBmb3IgbHBkZHI0Cj4gIHJhbTogcmszMzk5
-OiBDb25maWd1cmUgU0xFV1BfRU4sIFNMRVdOX0VOIGZvciBscGRkcjQKPiAgcmFtOiByazMzOTk6
-IENvbmZpZ3VyZSBQSFkgUlhfQ01fSU5QVVQgZm9yIGxwZGRyNAo+ICByYW06IHJrMzM5OTogTWFw
-IGNoaXBzZWxlY3QgZm9yIGxwZGRyNAo+ICByYW06IHJrMzM5OTogQ29uZmlndXJlIHRzZWwgd3Jp
-dGUgY2EgZm9yIGxwZGRyNAo+ICByYW06IHJrMzM5OTogRG9uJ3QgZGlzYWJsZSBkZmkgZHJhbSBj
-bGsgZm9yIGxwZGRyNCwgcmFuayAxCj4gIHJhbTogcmszMzk5OiBBZGQgSU8gc2V0dGluZ3MKPiAg
-cmFtOiBzZHJhbTogQ29uZmlndXJlIGxwZGRyNCB0c2VsIHJkLCB3ciBiYXNlZCBvbiBJTyBzZXR0
-aW5ncwo+ICByYW06IHJrMzM5OTogQWRkIHRzZWwgY29udHJvbCBjbG9jayBkcml2ZQo+ICByYW06
-IHJrMzM5OTogQ29uZmlndXJlIHNvYyBvZHQgc3VwcG9ydAo+ICByYW06IHJrMzM5OTogR2V0IGxw
-ZGRyNCB0c2VsX3JkX2VuIGZyb20gaW8gc2V0dGluZ3MKPiAgcmFtOiByazMzOTk6IFVwZGF0ZSBs
-cGRkcjQgdnJlZiBiYXNlZCBvbiBpbyBzZXR0aW5ncwo+ICByYW06IHJrMzM5OTogVXBkYXRlIGxw
-ZGRyNCBtb2RlX3NlbCBiYXNlZCBvbiBpbyBzZXR0aW5ncwo+ICByYW06IHJrMzM5OTogVXBkYXRl
-IGxwZGRyNCB2cmVmX21vZGVfYWMKPiAgcmFtOiByazMzOTk6IEFkZCBMUFBEUjQgbXIgZGV0ZWN0
-aW9uCj4gIGFybTogaW5jbHVkZTogcm9ja2NoaXA6IEFkZCByazMzOTkgcG11IGZpbGUKPiAgcm9j
-a2NoaXA6IHJrMzM5OTogc3lzY29uOiBBZGQgcG11IHN1cHBvcnQKPiAgcm9ja2NoaXA6IGR0czog
-cmszMzk5OiBBZGQgdS1ib290LGRtLXByZS1yZWxvYyBmb3IgcG11Cj4gIHJhbTogcmszMzk5OiBB
-ZGQgTFBQRERSNC00MDAgdGltaW5ncyBpbmMKPiAgcmFtOiByazMzOTk6IEFkZCBMUFBERFI0LTgw
-MCB0aW1pbmdzIGluYwo+ICByYW06IHJrMzM5OTogQWRkIGxwZGRyNCBzZXQgcmF0ZSBzdXBwb3J0
-Cj4gIHJhbTogcmszMzk5OiBTZXQgbHBkZHI0IGRxIG9kdAo+ICByYW06IHJrMzM5OTogU2V0IGxw
-ZGRyNCBjYSBvZHQKPiAgcmFtOiByazMzOTk6IFNldCBscGRkcjQgTVIzCj4gIHJhbTogcmszMzk5
-OiBTZXQgbHBkZHI0IE1SMTIKPiAgcmFtOiByazMzOTk6IFNldCBscGRkcjQgTVIxNAo+ICByb2Nr
-Y2hpcDogZHRzOiByazMzOTk6IEFkZCBMUEREUjQtMTAwIHRpbWluZ3MKPiAgcm9ja2NoaXA6IGR0
-czogcmszMzk5OiByb2NrcHJvNjQ6IFVzZSBMUEREUjQtMTAwIGR0c2kKPiAgcm9ja2NoaXA6IGR0
-czogcmszMzk5OiByb2NrLXBpLTQ6IFVzZSBMUEREUjQtMTAwIGR0c2kKPiAKPiBhcmNoL2FybS9k
-dHMvcmszMzk5LW5hbm9waS1uZW80LXUtYm9vdC5kdHNpICAgfCAgICAxICsKPiBhcmNoL2FybS9k
-dHMvcmszMzk5LXJvY2stcGktNC11LWJvb3QuZHRzaSAgICAgfCAgICAxICsKPiBhcmNoL2FybS9k
-dHMvcmszMzk5LXJvY2twcm82NC11LWJvb3QuZHRzaSAgICAgfCAgICAxICsKPiBhcmNoL2FybS9k
-dHMvcmszMzk5LXNkcmFtLWxwZGRyNC0xMDAuZHRzaSAgICAgfCAxNTM3ICsrKysrKysrKysrKwo+
-IGFyY2gvYXJtL2R0cy9yazMzOTktdS1ib290LmR0c2kgICAgICAgICAgICAgICB8ICAgIDQgKwo+
-IC4uLi9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3BtdV9yazMzOTkuaCAgICB8ICAgNzIgKwo+
-IGFyY2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAvc2RyYW0uaCAgICB8ICAgIDYgLQo+
-IC4uLi9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5oICB8ICAgODkgKwo+
-IC4uLi9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX3JrMzIyeC5oICB8ICAgIDcgLQo+
-IC4uLi9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX3JrMzM5OS5oICB8ICAgNjUgKy0K
-PiBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzM5OS9zeXNjb25fcmszMzk5LmMgfCAgICA4ICsK
-PiBkcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGtfcmszMzk5LmMgICAgICAgICAgICAgfCAgIDc2ICst
-Cj4gZHJpdmVycy9yYW0vS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgMSAr
-Cj4gZHJpdmVycy9yYW0vcm9ja2NoaXAvS2NvbmZpZyAgICAgICAgICAgICAgICAgIHwgICAyNiAr
-Cj4gZHJpdmVycy9yYW0vcm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAgICAgICAgIHwgICAgMyAr
-LQo+IC4uLi9yYW0vcm9ja2NoaXAvc2RyYW0tcmszMzk5LWxwZGRyNC00MDAuaW5jICB8IDE1NzAg
-KysrKysrKysrKysrCj4gLi4uL3JhbS9yb2NrY2hpcC9zZHJhbS1yazMzOTktbHBkZHI0LTgwMC5p
-bmMgIHwgMTU3MCArKysrKysrKysrKysKPiBkcml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbV9kZWJ1
-Zy5jICAgICAgICAgICAgfCAgMTQ3ICsrCj4gZHJpdmVycy9yYW0vcm9ja2NoaXAvc2RyYW1fcmsz
-Mzk5LmMgICAgICAgICAgIHwgMjE3NiArKysrKysrKysrKysrKy0tLQo+IGluY2x1ZGUvZGVidWdf
-dWFydC5oICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMTkgKwo+IDIwIGZpbGVzIGNoYW5n
-ZWQsIDY5NjQgaW5zZXJ0aW9ucygrKSwgNDE1IGRlbGV0aW9ucygtKQo+IGNyZWF0ZSBtb2RlIDEw
-MDY0NCBhcmNoL2FybS9kdHMvcmszMzk5LXNkcmFtLWxwZGRyNC0xMDAuZHRzaQo+IGNyZWF0ZSBt
-b2RlIDEwMDY0NCBhcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3BtdV9yazMzOTku
-aAo+IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3JhbS9yb2NrY2hpcC9LY29uZmlnCj4gY3Jl
-YXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtLXJrMzM5OS1scGRkcjQt
-NDAwLmluYwo+IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbS1y
-azMzOTktbHBkZHI0LTgwMC5pbmMKPiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9yYW0vcm9j
-a2NoaXAvc2RyYW1fZGVidWcuYwo+IAo+IC0tIAo+IDIuMTguMC4zMjEuZ2ZmYzZmYTBlMwo+IAoK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Rename tsel_wr_select_p to tsel_wr_select_dq_p based
+on the bsp code and associated datasheet.
+
+No functionality change.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ drivers/ram/rockchip/sdram_rk3399.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
+index 7c05814f19..780b18fa17 100644
+--- a/drivers/ram/rockchip/sdram_rk3399.c
++++ b/drivers/ram/rockchip/sdram_rk3399.c
+@@ -160,14 +160,14 @@ static void set_ds_odt(const struct chan_info *chan,
+ 	u32 *denali_phy = chan->publ->denali_phy;
+ 
+ 	u32 tsel_idle_en, tsel_wr_en, tsel_rd_en;
+-	u32 tsel_idle_select_p, tsel_wr_select_p, tsel_rd_select_p;
++	u32 tsel_idle_select_p, tsel_wr_select_dq_p, tsel_rd_select_p;
+ 	u32 ca_tsel_wr_select_p, ca_tsel_wr_select_n;
+ 	u32 tsel_idle_select_n, tsel_wr_select_dq_n, tsel_rd_select_n;
+ 	u32 reg_value;
+ 
+ 	if (sdram_params->base.dramtype == LPDDR4) {
+ 		tsel_rd_select_p = PHY_DRV_ODT_HI_Z;
+-		tsel_wr_select_p = PHY_DRV_ODT_40;
++		tsel_wr_select_dq_p = PHY_DRV_ODT_40;
+ 		ca_tsel_wr_select_p = PHY_DRV_ODT_40;
+ 		tsel_idle_select_p = PHY_DRV_ODT_HI_Z;
+ 
+@@ -177,7 +177,7 @@ static void set_ds_odt(const struct chan_info *chan,
+ 		tsel_idle_select_n = PHY_DRV_ODT_240;
+ 	} else if (sdram_params->base.dramtype == LPDDR3) {
+ 		tsel_rd_select_p = PHY_DRV_ODT_240;
+-		tsel_wr_select_p = PHY_DRV_ODT_34_3;
++		tsel_wr_select_dq_p = PHY_DRV_ODT_34_3;
+ 		ca_tsel_wr_select_p = PHY_DRV_ODT_48;
+ 		tsel_idle_select_p = PHY_DRV_ODT_240;
+ 
+@@ -187,7 +187,7 @@ static void set_ds_odt(const struct chan_info *chan,
+ 		tsel_idle_select_n = PHY_DRV_ODT_HI_Z;
+ 	} else {
+ 		tsel_rd_select_p = PHY_DRV_ODT_240;
+-		tsel_wr_select_p = PHY_DRV_ODT_34_3;
++		tsel_wr_select_dq_p = PHY_DRV_ODT_34_3;
+ 		ca_tsel_wr_select_p = PHY_DRV_ODT_34_3;
+ 		tsel_idle_select_p = PHY_DRV_ODT_240;
+ 
+@@ -211,7 +211,7 @@ static void set_ds_odt(const struct chan_info *chan,
+ 	 * for write cycles for DQ/DM
+ 	 */
+ 	reg_value = tsel_rd_select_n | (tsel_rd_select_p << 0x4) |
+-		    (tsel_wr_select_dq_n << 8) | (tsel_wr_select_p << 12) |
++		    (tsel_wr_select_dq_n << 8) | (tsel_wr_select_dq_p << 12) |
+ 		    (tsel_idle_select_n << 16) | (tsel_idle_select_p << 20);
+ 	clrsetbits_le32(&denali_phy[6], 0xffffff, reg_value);
+ 	clrsetbits_le32(&denali_phy[134], 0xffffff, reg_value);
+@@ -251,7 +251,7 @@ static void set_ds_odt(const struct chan_info *chan,
+ 
+ 	/* phy_pad_fdbk_drive 23bit DENALI_PHY_924/925 */
+ 	clrsetbits_le32(&denali_phy[924], 0xff,
+-			tsel_wr_select_dq_n | (tsel_wr_select_p << 4));
++			tsel_wr_select_dq_n | (tsel_wr_select_dq_p << 4));
+ 	clrsetbits_le32(&denali_phy[925], 0xff,
+ 			tsel_rd_select_n | (tsel_rd_select_p << 4));
+ 
+-- 
+2.18.0.321.gffc6fa0e3
