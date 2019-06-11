@@ -1,72 +1,89 @@
-From: Adrian Hunter <adrian.hunter@intel.com>
-Subject: Re: [PATCH v3 3/5] brcmfmac: sdio: Disable auto-tuning around
- commands expected to fail
-Date: Tue, 11 Jun 2019 10:17:57 +0300
-Message-ID: <ccdc4c80-2fcf-6938-c68e-dc2b21a57d92@intel.com>
-References: <20190607223716.119277-1-dianders@chromium.org>
- <20190607223716.119277-4-dianders@chromium.org>
- <363DA0ED52042842948283D2FC38E4649C52F8A0@IRSMSX106.ger.corp.intel.com>
- <CAD=FV=U8eo78Ee9xjhGXJMv=8YF9o89KLX024GH3iBRnRjCRvQ@mail.gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL 1/3] Rockchip dts32 updates for 5.3 round 1
+Date: Tue, 11 Jun 2019 10:53:57 +0200
+Message-ID: <3004130.oi6ZuZy1Zf@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=U8eo78Ee9xjhGXJMv=8YF9o89KLX024GH3iBRnRjCRvQ@mail.gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Arend van Spriel <arend.vanspriel@broadcom.com>, "brcm80211-dev-list.pdl@broadcom.com" <brcm80211-dev-list.pdl@broadcom.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Double Lo <double.lo@cypress.com>, "briannorris@chromium.org" <briannorris@chromium.org>, "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, "mka@chromium.org" <mka@chromium.org>, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "brcm80211-dev-list@cypress.com" <brcm80211-dev-list@cypress.com>, Fra
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 10/06/19 7:50 PM, Doug Anderson wrote:
-> Hi,
-> 
-> On Mon, Jun 10, 2019 at 1:56 AM Hunter, Adrian <adrian.hunter@intel.com> wrote:
->>
->>> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
->>> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
->>> @@ -16,6 +16,7 @@
->>>  #include <linux/mmc/sdio_ids.h>
->>>  #include <linux/mmc/sdio_func.h>
->>>  #include <linux/mmc/card.h>
->>> +#include <linux/mmc/core.h>
->>
->> SDIO function drivers should not really include linux/mmc/core.h
->> (Also don't know why linux/mmc/card.h is included)
-> 
-> OK, so I guess you're requesting an extra level of "sdio_" wrappers
-> for all the functions I need to call.  I don't think the wrappers buy
-> us a ton other than to abstract things a little bit and make it look
-> prettier.  :-)  ...but certainly I can code that up if that's what
-> everyone wants.
+Hi Arnd, Kevin, Olof,
 
-I guess it is really up to Ulf.
+please find below and in the replies round1 of Rockchip updates for armsoc.
 
-> 
-> Just to make sure, I looked in "drivers/net/wireless/" and I do see
-> quite a few instances of "mmc_" functions being used.  That doesn't
-> mean all these instances are correct but it does appear to be
-> commonplace.  Selected examples:
-> 
-> drivers/net/wireless/ath/ath10k/sdio.c:
->   ret = mmc_hw_reset(ar_sdio->func->card->host);
-> 
-> drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c:
->   mmc_set_data_timeout(md, func->card);
->   mmc_wait_for_req(func->card->host, mr);
-> 
-> drivers/net/wireless/marvell/mwifiex/sdio.c:
->   mmc_hw_reset(func->card->host);
-> 
-> drivers/net/wireless/rsi/rsi_91x_sdio.c:
->   err = mmc_wait_for_cmd(host, &cmd, 3);
-> 
-> 
-> ...anyway, I'll give it a few days and if nobody else chimes in then
-> I'll assume you indeed want "sdio_" wrappers for things and I'll post
-> a v4.  If patch #1 happens to land in the meantime then I won't
-> object.  ;-)
-> 
-> 
-> -Doug
-> 
+As the tag implies this includes a lot of attention to the older rk3288-
+based Veyron line of ChromeOS devices.
+
+Please pull.
+
+Thanks
+Heiko
+
+The following changes since commit a188339ca5a396acc588e5851ed7e19f66b0ebd9:
+
+  Linux 5.2-rc1 (2019-05-19 15:47:09 -0700)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.3-rockchip-dts32-1
+
+for you to fetch changes up to b8925b7c2f867df6ce3e20deb4b3e2b9b32b20ff:
+
+  ARM: dts: rockchip: Split GPIO keys for veyron into multiple devices (2019-06-06 12:41:04 +0200)
+
+----------------------------------------------------------------
+A lot more love for rk3288 in general and veyron specially with changes
+all over the place.
+
+----------------------------------------------------------------
+Caesar Wang (1):
+      ARM: dts: rockchip: fix PWM clock found on RK3288 Socs
+
+Douglas Anderson (10):
+      ARM: dts: rockchip: Remove bogus 'i2s_clk_out' from rk3288-veyron-mickey
+      ARM: dts: rockchip: Make rk3288-veyron-mickey's emmc work again
+      ARM: dts: rockchip: Make rk3288-veyron-minnie run at hs200
+      ARM: dts: rockchip: Add pin names for rk3288-veyron-minnie
+      ARM: dts: rockchip: Add pin names for rk3288-veyron-jerry
+      ARM: dts: rockchip: Mark that the rk3288 timer might stop in suspend
+      ARM: dts: rockchip: Add pin names for rk3288-veyron jaq, mickey, speedy
+      ARM: dts: rockchip: Switch to builtin HDMI DDC bus on rk3288-veyron
+      ARM: dts: rockchip: Add unwedge pinctrl entries for dw_hdmi on rk3288
+      ARM: dts: rockchip: Add HDMI i2c unwedging for rk3288-veyron
+
+John Keeping (1):
+      ARM: dts: rockchip: fix pwm-cells for rk3288's pwm3
+
+Matthias Kaehlcke (9):
+      ARM: dts: rockchip: raise CPU trip point temperature for veyron to 100 degC
+      ARM: dts: rockchip: raise GPU trip point temperatures for veyron
+      ARM: dts: raise GPU trip point temperature for speedy to 80 degC
+      ARM: dts: rockchip: Add #cooling-cells entry for rk3288 GPU
+      ARM: dts: rockchip: Use GPU as cooling device for the GPU thermal zone of the rk3288
+      ARM: dts: rockchip: remove GPU 500 MHz OPP on rk3288
+      ARM: dts: rockchip: Use the GPU to cool CPU thermal zone of veyron mickey
+      ARM: dts: rockchip: Configure the GPU thermal zone for mickey
+      ARM: dts: rockchip: Split GPIO keys for veyron into multiple devices
+
+ arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi |  27 +--
+ arch/arm/boot/dts/rk3288-veyron-jaq.dts         | 207 +++++++++++++++++++
+ arch/arm/boot/dts/rk3288-veyron-jerry.dts       | 207 +++++++++++++++++++
+ arch/arm/boot/dts/rk3288-veyron-mickey.dts      | 234 +++++++++++++++++++++-
+ arch/arm/boot/dts/rk3288-veyron-minnie.dts      | 254 ++++++++++++++++++++++--
+ arch/arm/boot/dts/rk3288-veyron-pinky.dts       |   2 +-
+ arch/arm/boot/dts/rk3288-veyron-speedy.dts      | 219 ++++++++++++++++++++
+ arch/arm/boot/dts/rk3288-veyron.dtsi            |  29 ++-
+ arch/arm/boot/dts/rk3288.dtsi                   |  30 +--
+ 9 files changed, 1143 insertions(+), 66 deletions(-)
