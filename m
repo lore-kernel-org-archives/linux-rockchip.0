@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 03/92] ram: rk3399: Add proper spaces in data training
-Date: Tue, 11 Jun 2019 20:20:06 +0530
-Message-ID: <20190611145135.21399-4-jagan@amarulasolutions.com>
+Subject: [PATCH 04/92] ram: rk3399: Handle data training return types
+Date: Tue, 11 Jun 2019 20:20:07 +0530
+Message-ID: <20190611145135.21399-5-jagan@amarulasolutions.com>
 References: <20190611145135.21399-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,135 +21,112 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add proper spaces in the code of data training functions.
+data trainings calls like ca, wl, rg, rl, wdql have proper
+return types with -EIO and the return type missed to handle
+in data_training function.
 
-No functionality change.
+This patch, add proper return type checks along with useful
+debug statement on each data training calls.
+
+Incidentally this would help to prevent the sdram initialization
+hang for single channel dram and when the code is trying to
+initialize second channel with proper return type of relevant
+data training call might failed.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ drivers/ram/rockchip/sdram_rk3399.c | 50 ++++++++++++++++++++++-------
+ 1 file changed, 38 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 8191ab6176..b0850a88a0 100644
+index b0850a88a0..73732e0767 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -620,8 +620,10 @@ static int data_training_ca(const struct chan_info *chan, u32 channel,
+@@ -878,6 +878,7 @@ static int data_training(const struct chan_info *chan, u32 channel,
+ 			 u32 training_flag)
+ {
+ 	u32 *denali_phy = chan->publ->denali_phy;
++	int ret;
  
- 	for (i = 0; i < rank; i++) {
- 		select_per_cs_training_index(chan, i);
-+
- 		/* PI_100 PI_CALVL_EN:RW:8:2 */
- 		clrsetbits_le32(&denali_pi[100], 0x3 << 8, 0x2 << 8);
-+
- 		/* PI_92 PI_CALVL_REQ:WR:16:1,PI_CALVL_CS:RW:24:2 */
- 		clrsetbits_le32(&denali_pi[92],
- 				(0x1 << 16) | (0x3 << 24),
-@@ -651,9 +653,11 @@ static int data_training_ca(const struct chan_info *chan, u32 channel,
- 				 (obs_err == 1))
- 				return -EIO;
- 		}
-+
- 		/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
- 		writel(0x00003f7c, (&denali_pi[175]));
+ 	/* PHY_927 PHY_PAD_DQS_DRIVE  RPULL offset_22 */
+ 	setbits_le32(&denali_phy[927], (1 << 22));
+@@ -898,24 +899,49 @@ static int data_training(const struct chan_info *chan, u32 channel,
  	}
-+
- 	clrbits_le32(&denali_pi[100], 0x3 << 8);
  
- 	return 0;
-@@ -670,8 +674,10 @@ static int data_training_wl(const struct chan_info *chan, u32 channel,
+ 	/* ca training(LPDDR4,LPDDR3 support) */
+-	if ((training_flag & PI_CA_TRAINING) == PI_CA_TRAINING)
+-		data_training_ca(chan, channel, sdram_params);
++	if ((training_flag & PI_CA_TRAINING) == PI_CA_TRAINING) {
++		ret = data_training_ca(chan, channel, sdram_params);
++		if (ret < 0) {
++			debug("%s: data training ca failed\n", __func__);
++			return ret;
++		}
++	}
  
- 	for (i = 0; i < rank; i++) {
- 		select_per_cs_training_index(chan, i);
-+
- 		/* PI_60 PI_WRLVL_EN:RW:8:2 */
- 		clrsetbits_le32(&denali_pi[60], 0x3 << 8, 0x2 << 8);
-+
- 		/* PI_59 PI_WRLVL_REQ:WR:8:1,PI_WRLVL_CS:RW:16:2 */
- 		clrsetbits_le32(&denali_pi[59],
- 				(0x1 << 8) | (0x3 << 16),
-@@ -705,6 +711,7 @@ static int data_training_wl(const struct chan_info *chan, u32 channel,
- 				 (obs_err == 1))
- 				return -EIO;
+ 	/* write leveling(LPDDR4,LPDDR3,DDR3 support) */
+-	if ((training_flag & PI_WRITE_LEVELING) == PI_WRITE_LEVELING)
+-		data_training_wl(chan, channel, sdram_params);
++	if ((training_flag & PI_WRITE_LEVELING) == PI_WRITE_LEVELING) {
++		ret = data_training_wl(chan, channel, sdram_params);
++		if (ret < 0) {
++			debug("%s: data training wl failed\n", __func__);
++			return ret;
++		}
++	}
+ 
+ 	/* read gate training(LPDDR4,LPDDR3,DDR3 support) */
+-	if ((training_flag & PI_READ_GATE_TRAINING) == PI_READ_GATE_TRAINING)
+-		data_training_rg(chan, channel, sdram_params);
++	if ((training_flag & PI_READ_GATE_TRAINING) == PI_READ_GATE_TRAINING) {
++		ret = data_training_rg(chan, channel, sdram_params);
++		if (ret < 0) {
++			debug("%s: data training rg failed\n", __func__);
++			return ret;
++		}
++	}
+ 
+ 	/* read leveling(LPDDR4,LPDDR3,DDR3 support) */
+-	if ((training_flag & PI_READ_LEVELING) == PI_READ_LEVELING)
+-		data_training_rl(chan, channel, sdram_params);
++	if ((training_flag & PI_READ_LEVELING) == PI_READ_LEVELING) {
++		ret = data_training_rl(chan, channel, sdram_params);
++		if (ret < 0) {
++			debug("%s: data training rl failed\n", __func__);
++			return ret;
++		}
++	}
+ 
+ 	/* wdq leveling(LPDDR4 support) */
+-	if ((training_flag & PI_WDQ_LEVELING) == PI_WDQ_LEVELING)
+-		data_training_wdql(chan, channel, sdram_params);
++	if ((training_flag & PI_WDQ_LEVELING) == PI_WDQ_LEVELING) {
++		ret = data_training_wdql(chan, channel, sdram_params);
++		if (ret < 0) {
++			debug("%s: data training wdql failed\n", __func__);
++			return ret;
++		}
++	}
+ 
+ 	/* PHY_927 PHY_PAD_DQS_DRIVE  RPULL offset_22 */
+ 	clrbits_le32(&denali_phy[927], (1 << 22));
+@@ -1048,7 +1074,7 @@ static int switch_to_phy_index1(struct dram_info *dram,
+ 		clrsetbits_le32(&denali_phy[896], (0x3 << 8) | 1, 1 << 8);
+ 		ret = data_training(&dram->chan[channel], channel,
+ 				    sdram_params, PI_FULL_TRAINING);
+-		if (ret) {
++		if (ret < 0) {
+ 			debug("index1 training failed\n");
+ 			return ret;
  		}
-+
- 		/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
- 		writel(0x00003f7c, (&denali_pi[175]));
- 	}
-@@ -726,8 +733,10 @@ static int data_training_rg(const struct chan_info *chan, u32 channel,
+@@ -1093,7 +1119,7 @@ static int sdram_init(struct dram_info *dram,
  
- 	for (i = 0; i < rank; i++) {
- 		select_per_cs_training_index(chan, i);
-+
- 		/* PI_80 PI_RDLVL_GATE_EN:RW:24:2 */
- 		clrsetbits_le32(&denali_pi[80], 0x3 << 24, 0x2 << 24);
-+
- 		/*
- 		 * PI_74 PI_RDLVL_GATE_REQ:WR:16:1
- 		 * PI_RDLVL_CS:RW:24:2
-@@ -764,9 +773,11 @@ static int data_training_rg(const struct chan_info *chan, u32 channel,
- 				 (obs_err == 1))
- 				return -EIO;
+ 		if (data_training(chan, channel,
+ 				  sdram_params, PI_FULL_TRAINING)) {
+-			printf("SDRAM initialization failed, reset\n");
++			printf("%s: data training failed\n", __func__);
+ 			return -EIO;
  		}
-+
- 		/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
- 		writel(0x00003f7c, (&denali_pi[175]));
- 	}
-+
- 	clrbits_le32(&denali_pi[80], 0x3 << 24);
  
- 	return 0;
-@@ -781,8 +792,10 @@ static int data_training_rl(const struct chan_info *chan, u32 channel,
- 
- 	for (i = 0; i < rank; i++) {
- 		select_per_cs_training_index(chan, i);
-+
- 		/* PI_80 PI_RDLVL_EN:RW:16:2 */
- 		clrsetbits_le32(&denali_pi[80], 0x3 << 16, 0x2 << 16);
-+
- 		/* PI_74 PI_RDLVL_REQ:WR:8:1,PI_RDLVL_CS:RW:24:2 */
- 		clrsetbits_le32(&denali_pi[74],
- 				(0x1 << 8) | (0x3 << 24),
-@@ -805,9 +818,11 @@ static int data_training_rl(const struct chan_info *chan, u32 channel,
- 			else if (((tmp >> 2) & 0x1) == 0x1)
- 				return -EIO;
- 		}
-+
- 		/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
- 		writel(0x00003f7c, (&denali_pi[175]));
- 	}
-+
- 	clrbits_le32(&denali_pi[80], 0x3 << 16);
- 
- 	return 0;
-@@ -822,13 +837,16 @@ static int data_training_wdql(const struct chan_info *chan, u32 channel,
- 
- 	for (i = 0; i < rank; i++) {
- 		select_per_cs_training_index(chan, i);
-+
- 		/*
- 		 * disable PI_WDQLVL_VREF_EN before wdq leveling?
- 		 * PI_181 PI_WDQLVL_VREF_EN:RW:8:1
- 		 */
- 		clrbits_le32(&denali_pi[181], 0x1 << 8);
-+
- 		/* PI_124 PI_WDQLVL_EN:RW:16:2 */
- 		clrsetbits_le32(&denali_pi[124], 0x3 << 16, 0x2 << 16);
-+
- 		/* PI_121 PI_WDQLVL_REQ:WR:8:1,PI_WDQLVL_CS:RW:16:2 */
- 		clrsetbits_le32(&denali_pi[121],
- 				(0x1 << 8) | (0x3 << 16),
-@@ -845,9 +863,11 @@ static int data_training_wdql(const struct chan_info *chan, u32 channel,
- 			else if (((tmp >> 6) & 0x1) == 0x1)
- 				return -EIO;
- 		}
-+
- 		/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
- 		writel(0x00003f7c, (&denali_pi[175]));
- 	}
-+
- 	clrbits_le32(&denali_pi[124], 0x3 << 16);
- 
- 	return 0;
 -- 
 2.18.0.321.gffc6fa0e3
