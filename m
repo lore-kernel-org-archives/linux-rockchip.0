@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 47/92] ram: rk3399: debug: Add sdram_print_stride
-Date: Tue, 11 Jun 2019 20:20:50 +0530
-Message-ID: <20190611145135.21399-48-jagan@amarulasolutions.com>
+Subject: [PATCH 46/92] ram: rockchip: debug: Get the cs capacity
+Date: Tue, 11 Jun 2019 20:20:49 +0530
+Message-ID: <20190611145135.21399-47-jagan@amarulasolutions.com>
 References: <20190611145135.21399-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,75 +21,82 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add code to print the channel stride, this would help to
-print the stride of associated channel.
+Add code to get the channel capacity, this would help to
+print the capacity of specific channel.
 
-Here is sample print on LPDDR4, 50MHz.
-256B stride
+Here is sample print on LPDDR4, 50MHz channel 0
+BW=32 Col=10 Bk=8 CS0 Row=15 CS1 Row=15 CS=2 Die BW=16 Size=2048MB
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- .../include/asm/arch-rockchip/sdram_common.h  |  5 ++++
- drivers/ram/rockchip/sdram_debug.c            | 29 +++++++++++++++++++
- 2 files changed, 34 insertions(+)
+ drivers/ram/rockchip/sdram_debug.c | 46 +++++++++++++++++++++++++++++-
+ 1 file changed, 45 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm/include/asm/arch-rockchip/sdram_common.h b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-index 3935733871..69cafda904 100644
---- a/arch/arm/include/asm/arch-rockchip/sdram_common.h
-+++ b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-@@ -132,10 +132,15 @@ inline void sdram_print_ddr_info(struct sdram_cap_info *cap_info,
- 				 struct sdram_base_params *base)
- {
- }
-+
-+inline void sdram_print_stride(unsigned int stride)
-+{
-+}
- #else
- void sdram_print_dram_type(unsigned char dramtype);
- void sdram_print_ddr_info(struct sdram_cap_info *cap_info,
- 			  struct sdram_base_params *base);
-+void sdram_print_stride(unsigned int stride);
- #endif /* CONFIG_RAM_ROCKCHIP_DEBUG */
- 
- #endif
 diff --git a/drivers/ram/rockchip/sdram_debug.c b/drivers/ram/rockchip/sdram_debug.c
-index 19e9225c12..9cf662675b 100644
+index 69a6f94a73..19e9225c12 100644
 --- a/drivers/ram/rockchip/sdram_debug.c
 +++ b/drivers/ram/rockchip/sdram_debug.c
-@@ -116,3 +116,32 @@ void sdram_print_ddr_info(struct sdram_cap_info *cap_info,
- 	printdec(cap >> 20);
- 	printascii("MB\n");
+@@ -33,10 +33,46 @@ void sdram_print_dram_type(unsigned char dramtype)
+ 	}
  }
-+
-+void sdram_print_stride(unsigned int stride)
+ 
++/**
++ * cs  = 0, cs0
++ * cs  = 1, cs1
++ * cs => 2, cs0+cs1
++ * note: it didn't consider about row_3_4
++ */
++u64 sdram_get_cs_cap(struct sdram_cap_info *cap_info, u32 cs, u32 dram_type)
 +{
-+	switch (stride) {
-+	case 0xc:
-+		printf("128B stride\n");
-+		break;
-+	case 5:
-+	case 9:
-+	case 0xd:
-+	case 0x11:
-+	case 0x19:
-+		printf("256B stride\n");
-+		break;
-+	case 0xa:
-+	case 0xe:
-+	case 0x12:
-+		printf("512B stride\n");
-+		break;
-+	case 0xf:
-+		printf("4K stride\n");
-+		break;
-+	case 0x1f:
-+		printf("32MB + 256B stride\n");
-+		break;
-+	default:
-+		printf("no stride\n");
-+	}
++	u32 bg;
++	u64 cap[2];
++
++	if (dram_type == DDR4)
++		/* DDR4 8bit dram BG = 2(4bank groups),
++		 * 16bit dram BG = 1 (2 bank groups)
++		 */
++		bg = (cap_info->dbw == 0) ? 2 : 1;
++	else
++		bg = 0;
++
++	cap[0] = 1llu << (cap_info->bw + cap_info->col +
++		 bg + cap_info->bk + cap_info->cs0_row);
++
++	if (cap_info->rank == 2)
++		cap[1] = 1llu << (cap_info->bw + cap_info->col +
++			 bg + cap_info->bk + cap_info->cs1_row);
++	else
++		cap[1] = 0;
++
++	if (cs == 0)
++		return cap[0];
++	else if (cs == 1)
++		return cap[1];
++	else
++		return (cap[0] + cap[1]);
 +}
++
+ void sdram_print_ddr_info(struct sdram_cap_info *cap_info,
+ 			  struct sdram_base_params *base)
+ {
+-	u32 bg;
++	u32 bg, cap;
+ 
+ 	bg = (cap_info->dbw == 0) ? 2 : 1;
+ 
+@@ -71,4 +107,12 @@ void sdram_print_ddr_info(struct sdram_cap_info *cap_info,
+ 
+ 	printascii(" Die BW=");
+ 	printdec(8 << cap_info->dbw);
++
++	cap = sdram_get_cs_cap(cap_info, 3, base->dramtype);
++	if (cap_info->row_3_4)
++		cap = cap * 3 / 4;
++
++	printascii(" Size=");
++	printdec(cap >> 20);
++	printascii("MB\n");
+ }
 -- 
 2.18.0.321.gffc6fa0e3
