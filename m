@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 06/92] ram: rk3399: Move macro after include files
-Date: Tue, 11 Jun 2019 20:20:09 +0530
-Message-ID: <20190611145135.21399-7-jagan@amarulasolutions.com>
+Subject: [PATCH 08/92] ram: rk3399: Use rank mask in ca data training
+Date: Tue, 11 Jun 2019 20:20:11 +0530
+Message-ID: <20190611145135.21399-9-jagan@amarulasolutions.com>
 References: <20190611145135.21399-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,57 +21,38 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Move the macro definitions after include files for better
-code readability and to satisfy coding style.
+Add rank_mask based on the rank number, this would keep
+the ca data training loop based on the desired rank mask
+value instead of looping for all values.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+ drivers/ram/rockchip/sdram_rk3399.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index da04b11922..52633166c1 100644
+index 74392076f0..312d19f95f 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -22,6 +22,19 @@
- #include <linux/err.h>
- #include <time.h>
+@@ -617,11 +617,17 @@ static int data_training_ca(const struct chan_info *chan, u32 channel,
+ 	u32 i, tmp;
+ 	u32 obs_0, obs_1, obs_2, obs_err = 0;
+ 	u32 rank = sdram_params->ch[channel].rank;
++	u32 rank_mask;
  
-+#define PRESET_SGRF_HOLD(n)	((0x1 << (6 + 16)) | ((n) << 6))
-+#define PRESET_GPIO0_HOLD(n)	((0x1 << (7 + 16)) | ((n) << 7))
-+#define PRESET_GPIO1_HOLD(n)	((0x1 << (8 + 16)) | ((n) << 8))
+ 	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
+ 	writel(0x00003f7c, (&denali_pi[175]));
+ 
+-	for (i = 0; i < rank; i++) {
++	rank_mask = (rank == 1) ? 0x1 : 0x3;
 +
-+#define PHY_DRV_ODT_HI_Z	0x0
-+#define PHY_DRV_ODT_240		0x1
-+#define PHY_DRV_ODT_120		0x8
-+#define PHY_DRV_ODT_80		0x9
-+#define PHY_DRV_ODT_60		0xc
-+#define PHY_DRV_ODT_48		0xd
-+#define PHY_DRV_ODT_40		0xe
-+#define PHY_DRV_ODT_34_3	0xf
++	for (i = 0; i < 4; i++) {
++		if (!(rank_mask & (1 << i)))
++			continue;
 +
- struct chan_info {
- 	struct rk3399_ddr_pctl_regs *pctl;
- 	struct rk3399_ddr_pi_regs *pi;
-@@ -43,19 +56,6 @@ struct dram_info {
- 	struct rk3399_pmugrf_regs *pmugrf;
- };
+ 		select_per_cs_training_index(chan, i);
  
--#define PRESET_SGRF_HOLD(n)	((0x1 << (6 + 16)) | ((n) << 6))
--#define PRESET_GPIO0_HOLD(n)	((0x1 << (7 + 16)) | ((n) << 7))
--#define PRESET_GPIO1_HOLD(n)	((0x1 << (8 + 16)) | ((n) << 8))
--
--#define PHY_DRV_ODT_HI_Z	0x0
--#define PHY_DRV_ODT_240		0x1
--#define PHY_DRV_ODT_120		0x8
--#define PHY_DRV_ODT_80		0x9
--#define PHY_DRV_ODT_60		0xc
--#define PHY_DRV_ODT_48		0xd
--#define PHY_DRV_ODT_40		0xe
--#define PHY_DRV_ODT_34_3	0xf
--
- #if defined(CONFIG_TPL_BUILD) || \
- 	(!defined(CONFIG_TPL) && defined(CONFIG_SPL_BUILD))
- 
+ 		/* PI_100 PI_CALVL_EN:RW:8:2 */
 -- 
 2.18.0.321.gffc6fa0e3
