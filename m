@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 28/92] ram: rk3399: Handle pctl_cfg return type
-Date: Tue, 11 Jun 2019 20:20:31 +0530
-Message-ID: <20190611145135.21399-29-jagan@amarulasolutions.com>
+Subject: [PATCH 29/92] ram: rk3399: s/tsel_wr_select_n/tsel_wr_select_dq_n
+Date: Tue, 11 Jun 2019 20:20:32 +0530
+Message-ID: <20190611145135.21399-30-jagan@amarulasolutions.com>
 References: <20190611145135.21399-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,39 +21,74 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add proper return type handling of pctl_cfg with
-meaningful print statement.
+Rename tsel_wr_select_n to tsel_wr_select_dq_n based
+on the bsp code and associated datasheet.
+
+No functionality change.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ drivers/ram/rockchip/sdram_rk3399.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 6bf8dce6e0..fab7515b2d 100644
+index fab7515b2d..7c05814f19 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -1120,6 +1120,7 @@ static int sdram_init(struct dram_info *dram,
- 	unsigned char dramtype = sdram_params->base.dramtype;
- 	unsigned int ddr_freq = sdram_params->base.ddr_freq;
- 	int channel;
-+	int ret;
+@@ -162,7 +162,7 @@ static void set_ds_odt(const struct chan_info *chan,
+ 	u32 tsel_idle_en, tsel_wr_en, tsel_rd_en;
+ 	u32 tsel_idle_select_p, tsel_wr_select_p, tsel_rd_select_p;
+ 	u32 ca_tsel_wr_select_p, ca_tsel_wr_select_n;
+-	u32 tsel_idle_select_n, tsel_wr_select_n, tsel_rd_select_n;
++	u32 tsel_idle_select_n, tsel_wr_select_dq_n, tsel_rd_select_n;
+ 	u32 reg_value;
  
- 	debug("Starting SDRAM initialization...\n");
+ 	if (sdram_params->base.dramtype == LPDDR4) {
+@@ -172,7 +172,7 @@ static void set_ds_odt(const struct chan_info *chan,
+ 		tsel_idle_select_p = PHY_DRV_ODT_HI_Z;
  
-@@ -1139,9 +1140,10 @@ static int sdram_init(struct dram_info *dram,
- 		if (channel >= sdram_params->base.num_channels)
- 			continue;
+ 		tsel_rd_select_n = PHY_DRV_ODT_240;
+-		tsel_wr_select_n = PHY_DRV_ODT_40;
++		tsel_wr_select_dq_n = PHY_DRV_ODT_40;
+ 		ca_tsel_wr_select_n = PHY_DRV_ODT_40;
+ 		tsel_idle_select_n = PHY_DRV_ODT_240;
+ 	} else if (sdram_params->base.dramtype == LPDDR3) {
+@@ -182,7 +182,7 @@ static void set_ds_odt(const struct chan_info *chan,
+ 		tsel_idle_select_p = PHY_DRV_ODT_240;
  
--		if (pctl_cfg(chan, channel, sdram_params) != 0) {
--			printf("pctl_cfg fail, reset\n");
--			return -EIO;
-+		ret = pctl_cfg(chan, channel, sdram_params);
-+		if (ret < 0) {
-+			printf("%s: pctl config failed\n", __func__);
-+			return ret;
- 		}
+ 		tsel_rd_select_n = PHY_DRV_ODT_HI_Z;
+-		tsel_wr_select_n = PHY_DRV_ODT_34_3;
++		tsel_wr_select_dq_n = PHY_DRV_ODT_34_3;
+ 		ca_tsel_wr_select_n = PHY_DRV_ODT_48;
+ 		tsel_idle_select_n = PHY_DRV_ODT_HI_Z;
+ 	} else {
+@@ -192,7 +192,7 @@ static void set_ds_odt(const struct chan_info *chan,
+ 		tsel_idle_select_p = PHY_DRV_ODT_240;
  
- 		/* LPDDR2/LPDDR3 need to wait DAI complete, max 10us */
+ 		tsel_rd_select_n = PHY_DRV_ODT_240;
+-		tsel_wr_select_n = PHY_DRV_ODT_34_3;
++		tsel_wr_select_dq_n = PHY_DRV_ODT_34_3;
+ 		ca_tsel_wr_select_n = PHY_DRV_ODT_34_3;
+ 		tsel_idle_select_n = PHY_DRV_ODT_240;
+ 	}
+@@ -211,7 +211,7 @@ static void set_ds_odt(const struct chan_info *chan,
+ 	 * for write cycles for DQ/DM
+ 	 */
+ 	reg_value = tsel_rd_select_n | (tsel_rd_select_p << 0x4) |
+-		    (tsel_wr_select_n << 8) | (tsel_wr_select_p << 12) |
++		    (tsel_wr_select_dq_n << 8) | (tsel_wr_select_p << 12) |
+ 		    (tsel_idle_select_n << 16) | (tsel_idle_select_p << 20);
+ 	clrsetbits_le32(&denali_phy[6], 0xffffff, reg_value);
+ 	clrsetbits_le32(&denali_phy[134], 0xffffff, reg_value);
+@@ -251,7 +251,7 @@ static void set_ds_odt(const struct chan_info *chan,
+ 
+ 	/* phy_pad_fdbk_drive 23bit DENALI_PHY_924/925 */
+ 	clrsetbits_le32(&denali_phy[924], 0xff,
+-			tsel_wr_select_n | (tsel_wr_select_p << 4));
++			tsel_wr_select_dq_n | (tsel_wr_select_p << 4));
+ 	clrsetbits_le32(&denali_phy[925], 0xff,
+ 			tsel_rd_select_n | (tsel_rd_select_p << 4));
+ 
 -- 
 2.18.0.321.gffc6fa0e3
