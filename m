@@ -1,7 +1,7 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 2/3] Rockchip dts64 updates for 5.3 round 1
-Date: Tue, 11 Jun 2019 10:54:49 +0200
-Message-ID: <12386546.HbqOaVNIXM@phil>
+Subject: [GIT PULL 3/3] Rockchip soc32 updates for 5.3 round 1
+Date: Tue, 11 Jun 2019 10:55:28 +0200
+Message-ID: <6757963.JBp9oB5bj2@phil>
 References: <3004130.oi6ZuZy1Zf@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -27,33 +27,19 @@ The following changes since commit a188339ca5a396acc588e5851ed7e19f66b0ebd9:
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.3-rockchip-dts64-1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.3-rockchip-soc32-1
 
-for you to fetch changes up to 45fa7c3838715b34ccea661e4b7b261d91668b17:
+for you to fetch changes up to c2af88f1a0cdf4cbe94b51fd93e52a3f55606a13:
 
-  arm64: dts: rockchip: add WiFi+BT support on ROCK Pi4 board (2019-06-04 15:38:54 +0200)
-
-----------------------------------------------------------------
-PCIe for rockpro64, wifi+bt for Rock-PI4, spi for Rock960 family
-and a fix for the yet unused isp-iommus.
+  ARM: rockchip: fix missing of_node_put calls in smp code (2019-05-20 01:00:41 +0200)
 
 ----------------------------------------------------------------
-Akash Gajjar (1):
-      arm64: dts: rockchip: add WiFi+BT support on ROCK Pi4 board
+Another missing of_node_put
 
-Helen Koike (1):
-      arm64: dts: rockchip: fix isp iommu clocks and power domain
+----------------------------------------------------------------
+Wen Yang (1):
+      ARM: rockchip: fix missing of_node_put calls in smp code
 
-Katsuhiro Suzuki (1):
-      arm64: dts: rockchip: add PCIe nodes on rk3399-rockpro64
-
-Manivannan Sadhasivam (2):
-      arm64: dts: rockchip: Enable SPI0 and SPI4 on Rock960
-      arm64: dts: rockchip: Enable SPI1 on Ficus
-
- arch/arm64/boot/dts/rockchip/rk3399-ficus.dts     |  6 ++
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts | 97 +++++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3399-rock960.dts   | 10 +++
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts | 18 +++++
- arch/arm64/boot/dts/rockchip/rk3399.dtsi          |  8 +-
- 5 files changed, 135 insertions(+), 4 deletions(-)
+ arch/arm/mach-rockchip/platsmp.c | 12 ++++++++++--
+ arch/arm/mach-rockchip/pm.c      |  2 ++
+ 2 files changed, 12 insertions(+), 2 deletions(-)
