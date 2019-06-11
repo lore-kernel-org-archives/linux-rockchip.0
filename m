@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 19/92] ram: rk3399: Add cs1_rw macro
-Date: Tue, 11 Jun 2019 20:20:22 +0530
-Message-ID: <20190611145135.21399-20-jagan@amarulasolutions.com>
+Subject: [PATCH 20/92] ram: rk3399: Add bw enc macro
+Date: Tue, 11 Jun 2019 20:20:23 +0530
+Message-ID: <20190611145135.21399-21-jagan@amarulasolutions.com>
 References: <20190611145135.21399-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,41 +21,39 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add simplified and meaningful macro for cs1_rw.
+Add simplified and meaningful macro for bw.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- arch/arm/include/asm/arch-rockchip/sdram_common.h | 2 ++
- drivers/ram/rockchip/sdram_rk3399.c               | 3 +--
- 2 files changed, 3 insertions(+), 2 deletions(-)
+ arch/arm/include/asm/arch-rockchip/sdram_common.h | 1 +
+ drivers/ram/rockchip/sdram_rk3399.c               | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm/include/asm/arch-rockchip/sdram_common.h b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-index 5c94dba39e..a4b1742438 100644
+index a4b1742438..7e0b491859 100644
 --- a/arch/arm/include/asm/arch-rockchip/sdram_common.h
 +++ b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-@@ -55,6 +55,8 @@
- 					SYS_REG_CS0_ROW_SHIFT(ch))
- #define SYS_REG_CS1_ROW_SHIFT(ch)	(4 + (ch) * 16)
- #define SYS_REG_CS1_ROW_MASK		3
-+#define SYS_REG_ENC_CS1_ROW(n, ch)	(((n) - 13) << \
-+					SYS_REG_CS1_ROW_SHIFT(ch))
+@@ -59,6 +59,7 @@
+ 					SYS_REG_CS1_ROW_SHIFT(ch))
  #define SYS_REG_BW_SHIFT(ch)		(2 + (ch) * 16)
  #define SYS_REG_BW_MASK			3
++#define SYS_REG_ENC_BW(n, ch)		((2 >> (n)) << SYS_REG_BW_SHIFT(ch))
  #define SYS_REG_DBW_SHIFT(ch)		((ch) * 16)
+ #define SYS_REG_DBW_MASK		3
+ #define SYS_REG_ENC_DBW(n, ch)		((2 >> (n)) << SYS_REG_DBW_SHIFT(ch))
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index e3555504b0..f69194f29b 100644
+index f69194f29b..3241bc285e 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -1027,8 +1027,7 @@ static void dram_all_config(struct dram_info *dram,
- 		sys_reg |= SYS_REG_ENC_COL(info->col, channel);
+@@ -1028,7 +1028,7 @@ static void dram_all_config(struct dram_info *dram,
  		sys_reg |= SYS_REG_ENC_BK(info->bk, channel);
  		sys_reg |= SYS_REG_ENC_CS0_ROW(info->cs0_row, channel);
--		sys_reg |= (info->cs1_row - 13) <<
--			    SYS_REG_CS1_ROW_SHIFT(channel);
-+		sys_reg |= SYS_REG_ENC_CS1_ROW(info->cs1_row, channel);
- 		sys_reg |= (2 >> info->bw) << SYS_REG_BW_SHIFT(channel);
+ 		sys_reg |= SYS_REG_ENC_CS1_ROW(info->cs1_row, channel);
+-		sys_reg |= (2 >> info->bw) << SYS_REG_BW_SHIFT(channel);
++		sys_reg |= SYS_REG_ENC_BW(info->bw, channel);
  		sys_reg |= SYS_REG_ENC_DBW(info->dbw, channel);
  
+ 		ddr_msch_regs = dram->chan[channel].msch;
 -- 
 2.18.0.321.gffc6fa0e3
