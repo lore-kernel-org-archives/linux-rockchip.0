@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 60/92] ram: rk3399: Move mode_sel assignment
-Date: Tue, 11 Jun 2019 20:21:03 +0530
-Message-ID: <20190611145135.21399-61-jagan@amarulasolutions.com>
+Subject: [PATCH 61/92] ram: rk3399: Don't wait for PLL lock in lpddr4
+Date: Tue, 11 Jun 2019 20:21:04 +0530
+Message-ID: <20190611145135.21399-62-jagan@amarulasolutions.com>
 References: <20190611145135.21399-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,61 +21,53 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-mode_sel assignment is based on dram type.
+lpddr4 has PLL bypass mode during phy initialization phase,
+which does all pll configurations.
 
-In phy_io_config, already have vref setting based
-on the dram type, so move this mode_sel assignment
-on vref setting area.
-
-No functionality change.
+So need to wait explicitly during pctl config.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 12 +++---------
- 1 file changed, 3 insertions(+), 9 deletions(-)
+ drivers/ram/rockchip/sdram_rk3399.c | 26 ++++++++++++++++----------
+ 1 file changed, 16 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index f80c8a424c..d399ec8e38 100644
+index d399ec8e38..3d26cede77 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -206,6 +206,7 @@ static int phy_io_config(const struct chan_info *chan,
- 		vref_value_dq = 0x1f;
- 		vref_mode_ac = 0x6;
- 		vref_value_ac = 0x1f;
-+		mode_sel = 0x6;
- 	} else if (sdram_params->base.dramtype == LPDDR3) {
- 		if (sdram_params->base.odt == 1) {
- 			vref_mode_dq = 0x5;  /* LPDDR3 ODT */
-@@ -266,12 +267,14 @@ static int phy_io_config(const struct chan_info *chan,
- 		}
- 		vref_mode_ac = 0x2;
- 		vref_value_ac = 0x1f;
-+		mode_sel = 0x0;
- 	} else if (sdram_params->base.dramtype == DDR3) {
- 		/* DDR3L */
- 		vref_mode_dq = 0x1;
- 		vref_value_dq = 0x1f;
- 		vref_mode_ac = 0x1;
- 		vref_value_ac = 0x1f;
-+		mode_sel = 0x1;
- 	} else {
- 		debug("Unknown DRAM type.\n");
- 		return -EINVAL;
-@@ -293,15 +296,6 @@ static int phy_io_config(const struct chan_info *chan,
- 	/* PHY_915 PHY_PAD_VREF_CTRL_AC 12bits offset_16 */
- 	clrsetbits_le32(&denali_phy[915], 0xfff << 16, reg_value << 16);
+@@ -575,16 +575,22 @@ static int pctl_cfg(struct dram_info *dram, const struct chan_info *chan,
+ 	setbits_le32(&denali_pi[0], START);
+ 	setbits_le32(&denali_ctl[0], START);
  
--	if (sdram_params->base.dramtype == LPDDR4)
--		mode_sel = 0x6;
--	else if (sdram_params->base.dramtype == LPDDR3)
--		mode_sel = 0x0;
--	else if (sdram_params->base.dramtype == DDR3)
--		mode_sel = 0x1;
--	else
--		return -EINVAL;
--
- 	/* PHY_924 PHY_PAD_FDBK_DRIVE */
- 	clrsetbits_le32(&denali_phy[924], 0x7 << 15, mode_sel << 15);
- 	/* PHY_926 PHY_PAD_DATA_DRIVE */
+-	/* Waiting for phy DLL lock */
+-	while (1) {
+-		tmp = readl(&denali_phy[920]);
+-		tmp1 = readl(&denali_phy[921]);
+-		tmp2 = readl(&denali_phy[922]);
+-		if ((((tmp >> 16) & 0x1) == 0x1) &&
+-		    (((tmp1 >> 16) & 0x1) == 0x1) &&
+-		    (((tmp1 >> 0) & 0x1) == 0x1) &&
+-		    (((tmp2 >> 0) & 0x1) == 0x1))
+-			break;
++	/**
++	 * LPDDR4 use PLL bypass mode for init
++	 * not need to wait for the PLL to lock
++	 */
++	if (sdram_params->base.dramtype != LPDDR4) {
++		/* Waiting for phy DLL lock */
++		while (1) {
++			tmp = readl(&denali_phy[920]);
++			tmp1 = readl(&denali_phy[921]);
++			tmp2 = readl(&denali_phy[922]);
++			if ((((tmp >> 16) & 0x1) == 0x1) &&
++			    (((tmp1 >> 16) & 0x1) == 0x1) &&
++			    (((tmp1 >> 0) & 0x1) == 0x1) &&
++			    (((tmp2 >> 0) & 0x1) == 0x1))
++				break;
++		}
+ 	}
+ 
+ 	copy_to_reg(&denali_phy[896], &params_phy[896], (958 - 895) * 4);
 -- 
 2.18.0.321.gffc6fa0e3
