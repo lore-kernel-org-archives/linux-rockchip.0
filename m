@@ -1,83 +1,213 @@
 From: Sean Paul <sean@poorly.run>
-Subject: Re: [PATCH v5 06/11] drm/rockchip: Use dirtyfb helper
-Date: Tue, 11 Jun 2019 14:09:59 -0400
-Message-ID: <20190611180719.GB179831@art_vandelay>
-References: <20190611160844.257498-1-sean@poorly.run>
- <20190611160844.257498-7-sean@poorly.run>
- <20190611173912.GL2458@phenom.ffwll.local>
+Subject: Re: [PATCH v3 2/2] drm/rockchip: dw_hdmi: Handle suspend/resume
+Date: Tue, 11 Jun 2019 16:06:14 -0400
+Message-ID: <20190611200614.GC179831@art_vandelay>
+References: <20190604204207.168085-1-dianders@chromium.org>
+ <20190604204207.168085-2-dianders@chromium.org>
+ <20190606164221.GI17077@art_vandelay>
+ <CAD=FV=Xt6Oad9yQHZz+nwANV1MCvGc6XCgOf8HawimVQtwWsEg@mail.gmail.com>
+ <CAMavQKLgBBceO3m8-ff0-79Ks_tD_xDY=N1kOuJya2USthTARg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190611173912.GL2458@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <CAMavQKLgBBceO3m8-ff0-79Ks_tD_xDY=N1kOuJya2USthTARg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Sean Paul <seanpaul@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Neil Armstrong <narmstrong@baylibre.com>, Matthias Kaehlcke <mka@chromium.org>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKdW4gMTEsIDIwMTkgYXQgMDc6Mzk6MTJQTSArMDIwMCwgRGFuaWVsIFZldHRlciB3
-cm90ZToKPiBPbiBUdWUsIEp1biAxMSwgMjAxOSBhdCAxMjowODoyMFBNIC0wNDAwLCBTZWFuIFBh
-dWwgd3JvdGU6Cj4gPiBGcm9tOiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KPiA+
-IAo+ID4gSW5zdGVhZCBvZiBmbHVzaGluZyBhbGwgdm9wcyBldmVyeSB0aW1lIHdlIGdldCBhIGRp
-cnR5ZmIgY2FsbCwgdXNlIHRoZQo+ID4gZGFtYWdlIGhlbHBlciB0byBraWNrIG9mZiBhbiBhdG9t
-aWMgY29tbWl0LiBFdmVuIHRob3VnaCB3ZSBkb24ndCB1c2UKPiA+IGRhbWFnZSBjbGlwcywgdGhl
-IGhlbHBlciBjb21taXQgd2lsbCBmb3JjZSB1cyB0aHJvdWdoIHRoZSBub3JtYWwKPiA+IHBzcl9p
-bmhpYml0X2dldC9wdXQgc2VxdWVuY2UuCj4gPiAKPiA+IENoYW5nZXMgaW4gdjM6Cj4gPiAtIEFk
-ZGVkIHRvIHRoZSBzZXQKPiA+IENoYW5nZXMgaW4gdjQ6Cj4gPiAtIE5vbmUKPiA+IENoYW5nZXMg
-aW4gdjU6Cj4gPiAtIE5vbmUKPiA+IAo+ID4gTGluayB0byB2MzogaHR0cHM6Ly9wYXRjaHdvcmsu
-ZnJlZWRlc2t0b3Aub3JnL3BhdGNoL21zZ2lkLzIwMTkwNTAyMTk0OTU2LjIxODQ0MS03LXNlYW5A
-cG9vcmx5LnJ1bgo+ID4gTGluayB0byB2NDogaHR0cHM6Ly9wYXRjaHdvcmsuZnJlZWRlc2t0b3Au
-b3JnL3BhdGNoL21zZ2lkLzIwMTkwNTA4MTYwOTIwLjE0NDczOS03LXNlYW5AcG9vcmx5LnJ1bgo+
-ID4gCj4gPiBTdWdnZXN0ZWQtYnk6IERhbmllbCBWZXR0ZXIgPGRhbmllbEBmZndsbC5jaD4KPiA+
-IFRlc3RlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiA+IFNpZ25lZC1v
-ZmYtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxAY2hyb21pdW0ub3JnPgo+IAo+IFJldmlld2VkLWJ5
-OiBEYW5pZWwgVmV0dGVyIDxkYW5pZWwudmV0dGVyQGZmd2xsLmNoPgoKVGhhbmtzIQoKPiAKPiBi
-dHcgc29tZXdoYXQgYmlnZ2VyIGZpc2ggdG8gZnJ5LCBidXQgaW1vIGFsc28gdmVyeSBtdWNoIHdv
-cnRoIGl0Ogo+IFN3aXRjaGluZyBvdmVyIHRvIHRoZSBnZW5lcmljIGZiZGV2IGVtdWxhdGlvbi4K
-CkFncmVlZCwgdGhpcyB0ZW5kcyB0byBnZXQgc3dlcHQgdW5kZXIgdGhlIHJ1ZyBvbiBDck9TIGRl
-dmljZXMgc2luY2Ugd2UgZG9uJ3QgdXNlCmZiZGV2IDovCgo+IAo+IEFsc28sIHNpbmNlIGV2ZXJ5
-dGhpbmcgdXAgdG8gdGhpcyBvbmUgaXMgcmV2aWV3ZWQgSSB0aGluayB3b3VsZCBiZSBnb29kIHRv
-Cj4gbGFuZCB0aGF0IHBhcnQgYWxyZWFkeS4gU28gSSBjYW4gZ28gYXJvdW5kIGFuZCBoYWdnbGUg
-dGhpcyB0byBvdGhlcgo+IGRyaXZlcnMgOi0pCgpTb3VuZHMgZ29vZCB0byBtZSwgaXQnbGwgYmUg
-bmljZSB0byBvZmZsb2FkIHNvbWUgb2YgdGhlIHBhdGNoZXMgSSd2ZSBiZWVuCmNhcnJ5aW5nLgoK
-VGhhbmtzIGFnYWluIGZvciB0aGUgcmV2aWV3cywKClNlYW4KCj4gLURhbmllbAo+IAo+ID4gLS0t
-Cj4gPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jIHwgMTMgKyst
-LS0tLS0tLS0tLQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDExIGRlbGV0
-aW9ucygtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV9mYi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9m
-Yi5jCj4gPiBpbmRleCAzMTAzMGNmODFiYzk3Li5hODg4ZTMxYWE1NDVhIDEwMDY0NAo+ID4gLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jCj4gPiArKysgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPiA+IEBAIC0xNiw2ICsx
-Niw3IEBACj4gPiAgI2luY2x1ZGUgPGRybS9kcm0uaD4KPiA+ICAjaW5jbHVkZSA8ZHJtL2RybVAu
-aD4KPiA+ICAjaW5jbHVkZSA8ZHJtL2RybV9hdG9taWMuaD4KPiA+ICsjaW5jbHVkZSA8ZHJtL2Ry
-bV9kYW1hZ2VfaGVscGVyLmg+Cj4gPiAgI2luY2x1ZGUgPGRybS9kcm1fZmJfaGVscGVyLmg+Cj4g
-PiAgI2luY2x1ZGUgPGRybS9kcm1fZ2VtX2ZyYW1lYnVmZmVyX2hlbHBlci5oPgo+ID4gICNpbmNs
-dWRlIDxkcm0vZHJtX3Byb2JlX2hlbHBlci5oPgo+ID4gQEAgLTI1LDIwICsyNiwxMCBAQAo+ID4g
-ICNpbmNsdWRlICJyb2NrY2hpcF9kcm1fZ2VtLmgiCj4gPiAgI2luY2x1ZGUgInJvY2tjaGlwX2Ry
-bV9wc3IuaCIKPiA+ICAKPiA+IC1zdGF0aWMgaW50IHJvY2tjaGlwX2RybV9mYl9kaXJ0eShzdHJ1
-Y3QgZHJtX2ZyYW1lYnVmZmVyICpmYiwKPiA+IC0JCQkJIHN0cnVjdCBkcm1fZmlsZSAqZmlsZSwK
-PiA+IC0JCQkJIHVuc2lnbmVkIGludCBmbGFncywgdW5zaWduZWQgaW50IGNvbG9yLAo+ID4gLQkJ
-CQkgc3RydWN0IGRybV9jbGlwX3JlY3QgKmNsaXBzLAo+ID4gLQkJCQkgdW5zaWduZWQgaW50IG51
-bV9jbGlwcykKPiA+IC17Cj4gPiAtCXJvY2tjaGlwX2RybV9wc3JfZmx1c2hfYWxsKGZiLT5kZXYp
-Owo+ID4gLQlyZXR1cm4gMDsKPiA+IC19Cj4gPiAtCj4gPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBk
-cm1fZnJhbWVidWZmZXJfZnVuY3Mgcm9ja2NoaXBfZHJtX2ZiX2Z1bmNzID0gewo+ID4gIAkuZGVz
-dHJveSAgICAgICA9IGRybV9nZW1fZmJfZGVzdHJveSwKPiA+ICAJLmNyZWF0ZV9oYW5kbGUgPSBk
-cm1fZ2VtX2ZiX2NyZWF0ZV9oYW5kbGUsCj4gPiAtCS5kaXJ0eQkgICAgICAgPSByb2NrY2hpcF9k
-cm1fZmJfZGlydHksCj4gPiArCS5kaXJ0eQkgICAgICAgPSBkcm1fYXRvbWljX2hlbHBlcl9kaXJ0
-eWZiLAo+ID4gIH07Cj4gPiAgCj4gPiAgc3RhdGljIHN0cnVjdCBkcm1fZnJhbWVidWZmZXIgKgo+
-ID4gLS0gCj4gPiBTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJvbWl1
-bSBPUwo+ID4gCj4gCj4gLS0gCj4gRGFuaWVsIFZldHRlcgo+IFNvZnR3YXJlIEVuZ2luZWVyLCBJ
-bnRlbCBDb3Jwb3JhdGlvbgo+IGh0dHA6Ly9ibG9nLmZmd2xsLmNoCgotLSAKU2VhbiBQYXVsLCBT
-b2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+On Fri, Jun 07, 2019 at 02:06:03PM -0400, Sean Paul wrote:
+> On Thu, Jun 06, 2019 at 03:58:21PM -0700, Doug Anderson wrote:
+> > Hi,
+> >
+> > On Thu, Jun 6, 2019 at 9:42 AM Sean Paul <sean@poorly.run> wrote:
+> > >
+> > > On Tue, Jun 04, 2019 at 01:42:07PM -0700, Douglas Anderson wrote:
+> > > > On Rockchip rk3288-based Chromebooks when you do a suspend/resume
+> > > > cycle:
+> > > >
+> > > > 1. You lose the ability to detect an HDMI device being plugged in.
+> > > >
+> > > > 2. If you're using the i2c bus built in to dw_hdmi then it stops
+> > > > working.
+> > > >
+> > > > Let's call the core dw-hdmi's suspend/resume functions to restore
+> > > > things.
+> > > >
+> > > > NOTE: in downstream Chrome OS (based on kernel 3.14) we used the
+> > > > "late/early" versions of suspend/resume because we found that the VOP
+> > > > was sometimes resuming before dw_hdmi and then calling into us before
+> > > > we were fully resumed.  For now I have gone back to the normal
+> > > > suspend/resume because I can't reproduce the problems.
+> > > >
+> > > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > > > ---
+> > > >
+> > > > Changes in v3:
+> > > > - dw_hdmi_resume() is now a void function (Laurent)
+> > > >
+> > > > Changes in v2:
+> > > > - Add forgotten static (Laurent)
+> > > > - No empty stub for suspend (Laurent)
+> > > >
+> > > >  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 14 ++++++++++++++
+> > > >  1 file changed, 14 insertions(+)
+> > > >
+> > > > diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> > > > index 4cdc9f86c2e5..7bb0f922b303 100644
+> > > > --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> > > > +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> > > > @@ -542,11 +542,25 @@ static int dw_hdmi_rockchip_remove(struct platform_device *pdev)
+> > > >       return 0;
+> > > >  }
+> > > >
+> > > > +static int __maybe_unused dw_hdmi_rockchip_resume(struct device *dev)
+> > > > +{
+> > > > +     struct rockchip_hdmi *hdmi = dev_get_drvdata(dev);
+> > > > +
+> > > > +     dw_hdmi_resume(hdmi->hdmi);
+> > >
+> > > The rockchip driver is already using the atomic suspend/resume helpers (via the
+> > > modeset helpers). Would you be able to accomplish the same thing by just moving
+> > > this call into the encoder enable callback?
+> > >
+> > > .enable is called on resume via the atomic commit framework, so everything is
+> > > ordered properly. Of course, this would reset the dw_hdmi bridge on each enable,
+> > > but I don't think that would be a problem?
+> >
+> > I tried and it sorta kinda half worked, but...
+> >
+> > 1. One of the problems solved by this patch is making "hot plug
+> > detect" work after suspend / resume.  AKA: if you have nothing plugged
+> > in to the HDMI port and then suspend/resume you need to be able to
+> > detect when something is plugged in.  When nothing is plugged in then
+> > the ".enable" isn't called at resume time.
+> >
+> 
+> Ahh, ok. So we've hit this with other bridges/dongles as well, and yeah the
+> solution is to keep the bridge powered up enough to detect hotplug, so you would
+> need to do some work in .resume
+> 
+> Usually there's a second stage of enable where you power things on more fully
+> and that is done in .enable
+> 
+> > 2. I'm not so convinced about the whole ordering being correct.
+> > Unfortunately on my system (Chrome OS running the chromeos-4.19
+> > kernel) we end up getting an i2c transfer before the ".enable" is
+> > called.  I put a dump_stack() in the i2c transfer:
+> >
+> > [   42.212516] CPU: 0 PID: 1479 Comm: DrmThread Tainted: G         C
+> >      4.19.47 #60
+> > [   42.221182] Hardware name: Rockchip (Device Tree)
+> > [   42.226449] [<c0211a64>] (unwind_backtrace) from [<c020cf0c>]
+> > (show_stack+0x20/0x24)
+> > [   42.235114] [<c020cf0c>] (show_stack) from [<c0a1b8d4>]
+> > (dump_stack+0x84/0xa4)
+> > [   42.243195] [<c0a1b8d4>] (dump_stack) from [<c067d7c4>]
+> > (dw_hdmi_i2c_wait+0x6c/0xa8)
+> > [   42.251858] [<c067d7c4>] (dw_hdmi_i2c_wait) from [<c067d9a8>]
+> > (dw_hdmi_i2c_xfer+0x1a8/0x30c)
+> > [   42.261298] [<c067d9a8>] (dw_hdmi_i2c_xfer) from [<c0798704>]
+> > (__i2c_transfer+0x3a8/0x5d8)
+> > [   42.270543] [<c0798704>] (__i2c_transfer) from [<c07989c8>]
+> > (i2c_transfer+0x94/0xc4)
+> > [   42.279204] [<c07989c8>] (i2c_transfer) from [<c064e6b0>]
+> > (drm_do_probe_ddc_edid+0xbc/0x11c)
+> > [   42.288642] [<c064e6b0>] (drm_do_probe_ddc_edid) from [<c064e744>]
+> > (drm_probe_ddc+0x34/0x5c)
+> > [   42.298081] [<c064e744>] (drm_probe_ddc) from [<c0651b98>]
+> > (drm_get_edid+0x60/0x2e0)
+> > [   42.306743] [<c0651b98>] (drm_get_edid) from [<c067d710>]
+> > (dw_hdmi_connector_get_modes+0x30/0x78)
+> > [   42.316669] [<c067d710>] (dw_hdmi_connector_get_modes) from
+> > [<c0634f38>] (drm_helper_probe_single_connector_modes+0x218/0x5c0)
+> > [   42.329413] [<c0634f38>] (drm_helper_probe_single_connector_modes)
+> > from [<c065b38c>] (drm_mode_getconnector+0x144/0x418)
+> > [   42.341573] [<c065b38c>] (drm_mode_getconnector) from [<c0646844>]
+> > (drm_ioctl_kernel+0xa0/0xf0)
+> > [   42.351303] [<c0646844>] (drm_ioctl_kernel) from [<c0646d34>]
+> > (drm_ioctl+0x32c/0x3c0)
+> > [   42.360063] [<c0646d34>] (drm_ioctl) from [<c03ed0cc>] (vfs_ioctl+0x28/0x44)
+> > [   42.367946] [<c03ed0cc>] (vfs_ioctl) from [<c03edee8>]
+> > (do_vfs_ioctl+0x718/0x8b0)
+> > [   42.376315] [<c03edee8>] (do_vfs_ioctl) from [<c03ee0dc>]
+> > (ksys_ioctl+0x5c/0x84)
+> > [   42.384587] [<c03ee0dc>] (ksys_ioctl) from [<c03ee11c>] (sys_ioctl+0x18/0x1c)
+> > [   42.392570] [<c03ee11c>] (sys_ioctl) from [<c02011d4>]
+> > (__sys_trace_return+0x0/0x10)
+> >
+> > ...I see several transfers fail and then finally a few seconds later
+> > finally see the .enable call:
+> 
+> This is usually solved by wrapping the code in detect() with an enable/disable
+> pair to turn on enough circuitry to do the i2c writes for edid read.
+> 
+> >
+> > [   44.021501] DOUG: dw_hdmi_rockchip_encoder_enable start
+> > [   44.027792] DOUG: dw_hdmi_rockchip_encoder_enable end
+> >
+> > I can gather more info if it's useful.
+> >
+> > ===
+> >
+> > ...any chance we can keep the patch as-is, or do you have ideas of how
+> > to solve the above problems?
+> 
+> Yeah, given the context I think this is Ok to apply as-is. Maybe we could
+> shave out some of the work done in resume and move it to a helper called in
+> enable/detect, but I don't think it's necessary to hold up getting things
+> working.
+> 
+> Thanks for the detailed explanation (as always :)
+> 
+> Reviewed-by: Sean Paul <sean@poorly.run>
+
+Applied both patches to drm-misc-next, thank you!
+
+Sean
+
+> 
+> 
+> >
+> >
+> > Thanks!
+> >
+> > -Doug
+> 
+> -- 
+> Sean Paul, Software Engineer, Google / Chromium OS
+> > [   42.351303] [<c0646844>] (drm_ioctl_kernel) from [<c0646d34>]
+> > (drm_ioctl+0x32c/0x3c0)
+> > [   42.360063] [<c0646d34>] (drm_ioctl) from [<c03ed0cc>] (vfs_ioctl+0x28/0x44)
+> > [   42.367946] [<c03ed0cc>] (vfs_ioctl) from [<c03edee8>]
+> > (do_vfs_ioctl+0x718/0x8b0)
+> > [   42.376315] [<c03edee8>] (do_vfs_ioctl) from [<c03ee0dc>]
+> > (ksys_ioctl+0x5c/0x84)
+> > [   42.384587] [<c03ee0dc>] (ksys_ioctl) from [<c03ee11c>] (sys_ioctl+0x18/0x1c)
+> > [   42.392570] [<c03ee11c>] (sys_ioctl) from [<c02011d4>]
+> > (__sys_trace_return+0x0/0x10)
+> >
+> > ...I see several transfers fail and then finally a few seconds later
+> > finally see the .enable call:
+> >
+> > [   44.021501] DOUG: dw_hdmi_rockchip_encoder_enable start
+> > [   44.027792] DOUG: dw_hdmi_rockchip_encoder_enable end
+> >
+> > I can gather more info if it's useful.
+> >
+> > ===
+> >
+> > ...any chance we can keep the patch as-is, or do you have ideas of how
+> > to solve the above problems?
+> >
+> >
+> > Thanks!
+> >
+> > -Doug
+> 
+> -- 
+> Sean Paul, Software Engineer, Google / Chromium OS
+
+-- 
+Sean Paul, Software Engineer, Google / Chromium OS
