@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 34/92] ram: rk3399: Add phy pctrl reset support
-Date: Tue, 11 Jun 2019 20:20:37 +0530
-Message-ID: <20190611145135.21399-35-jagan@amarulasolutions.com>
+Subject: [PATCH 35/92] ram: rk3399: Move pwrup_srefresh_exit to dram_info
+Date: Tue, 11 Jun 2019 20:20:38 +0530
+Message-ID: <20190611145135.21399-36-jagan@amarulasolutions.com>
 References: <20190611145135.21399-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,74 +21,75 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add support for phy pctrl reset support for both channel 0, 1.
+Add pwrup_srefresh_exit to be part of dram_info so-that
+the it can help to support pwrup_srefresh_exit in individual
+channels while starting pctl in future.
+
+No functionality change.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 29 +++++++++++++++++++++++++++++
- 1 file changed, 29 insertions(+)
+ drivers/ram/rockchip/sdram_rk3399.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index e3945feca3..bbf56f29ae 100644
+index bbf56f29ae..7ca76d304f 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -35,6 +35,10 @@
- #define PHY_DRV_ODT_40		0xe
- #define PHY_DRV_ODT_34_3	0xf
- 
-+#define CRU_SFTRST_DDR_CTRL(ch, n)	((0x1 << (8 + 16 + (ch) * 4)) | \
-+					((n) << (8 + (ch) * 4)))
-+#define CRU_SFTRST_DDR_PHY(ch, n)	((0x1 << (9 + 16 + (ch) * 4)) | \
-+					((n) << (9 + (ch) * 4)))
- struct chan_info {
- 	struct rk3399_ddr_pctl_regs *pctl;
- 	struct rk3399_ddr_pi_regs *pi;
-@@ -79,6 +83,29 @@ static void copy_to_reg(u32 *dest, const u32 *src, u32 n)
- 	}
+@@ -49,6 +49,7 @@ struct chan_info {
+ struct dram_info {
+ #if defined(CONFIG_TPL_BUILD) || \
+ 	(!defined(CONFIG_TPL) && defined(CONFIG_SPL_BUILD))
++	u32 pwrup_srefresh_exit;
+ 	struct chan_info chan[2];
+ 	struct clk ddr_clk;
+ 	struct rk3399_cru *cru;
+@@ -487,8 +488,8 @@ static int phy_io_config(const struct chan_info *chan,
+ 	return 0;
  }
  
-+static void rkclk_ddr_reset(struct rk3399_cru *cru, u32 channel, u32 ctl,
-+			    u32 phy)
-+{
-+	channel &= 0x1;
-+	ctl &= 0x1;
-+	phy &= 0x1;
-+	writel(CRU_SFTRST_DDR_CTRL(channel, ctl) |
-+				   CRU_SFTRST_DDR_PHY(channel, phy),
-+				   &cru->softrst_con[4]);
-+}
-+
-+static void phy_pctrl_reset(struct rk3399_cru *cru,  u32 channel)
-+{
-+	rkclk_ddr_reset(cru, channel, 1, 1);
-+	udelay(10);
-+
-+	rkclk_ddr_reset(cru, channel, 1, 0);
-+	udelay(10);
-+
-+	rkclk_ddr_reset(cru, channel, 0, 0);
-+	udelay(10);
-+}
-+
- static void phy_dll_bypass_set(struct rk3399_ddr_publ_regs *ddr_publ_regs,
- 			       u32 freq)
+-static int pctl_cfg(const struct chan_info *chan, u32 channel,
+-		    const struct rk3399_sdram_params *sdram_params)
++static int pctl_cfg(struct dram_info *dram, const struct chan_info *chan,
++		    u32 channel, const struct rk3399_sdram_params *sdram_params)
  {
-@@ -1126,6 +1153,7 @@ static int sdram_init(struct dram_info *dram,
- {
- 	unsigned char dramtype = sdram_params->base.dramtype;
- 	unsigned int ddr_freq = sdram_params->base.ddr_freq;
-+	struct rk3399_cru *cru = dram->cru;
- 	int channel;
+ 	u32 *denali_ctl = chan->pctl->denali_ctl;
+ 	u32 *denali_pi = chan->pi->denali_pi;
+@@ -496,7 +497,6 @@ static int pctl_cfg(const struct chan_info *chan, u32 channel,
+ 	const u32 *params_ctl = sdram_params->pctl_regs.denali_ctl;
+ 	const u32 *params_phy = sdram_params->phy_regs.denali_phy;
+ 	u32 tmp, tmp1, tmp2;
+-	u32 pwrup_srefresh_exit;
  	int ret;
+ 	const ulong timeout_ms = 200;
  
-@@ -1142,6 +1170,7 @@ static int sdram_init(struct dram_info *dram,
- 		const struct chan_info *chan = &dram->chan[channel];
- 		struct rk3399_ddr_publ_regs *publ = chan->publ;
+@@ -516,7 +516,8 @@ static int pctl_cfg(const struct chan_info *chan, u32 channel,
+ 	writel(sdram_params->phy_regs.denali_phy[911], &denali_phy[911]);
+ 	writel(sdram_params->phy_regs.denali_phy[912], &denali_phy[912]);
  
-+		phy_pctrl_reset(cru, channel);
- 		phy_dll_bypass_set(publ, ddr_freq);
+-	pwrup_srefresh_exit = readl(&denali_ctl[68]) & PWRUP_SREFRESH_EXIT;
++	dram->pwrup_srefresh_exit = readl(&denali_ctl[68]) &
++				    PWRUP_SREFRESH_EXIT;
+ 	clrbits_le32(&denali_ctl[68], PWRUP_SREFRESH_EXIT);
  
+ 	/* PHY_DLL_RST_EN */
+@@ -592,7 +593,7 @@ static int pctl_cfg(const struct chan_info *chan, u32 channel,
+ 	debug("DRAM (%s): phy locked after %ld ms\n", __func__, get_timer(tmp));
+ 
+ 	clrsetbits_le32(&denali_ctl[68], PWRUP_SREFRESH_EXIT,
+-			pwrup_srefresh_exit);
++			dram->pwrup_srefresh_exit);
+ 	return 0;
+ }
+ 
+@@ -1176,7 +1177,7 @@ static int sdram_init(struct dram_info *dram,
  		if (channel >= sdram_params->base.num_channels)
+ 			continue;
+ 
+-		ret = pctl_cfg(chan, channel, sdram_params);
++		ret = pctl_cfg(dram, chan, channel, sdram_params);
+ 		if (ret < 0) {
+ 			printf("%s: pctl config failed\n", __func__);
+ 			return ret;
 -- 
 2.18.0.321.gffc6fa0e3
