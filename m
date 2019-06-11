@@ -1,7 +1,8 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 63/92] ram: rk3399: Configure PHY_898, PHY_919 for lpddr4
-Date: Tue, 11 Jun 2019 20:21:06 +0530
-Message-ID: <20190611145135.21399-64-jagan@amarulasolutions.com>
+Subject: [PATCH 62/92] ram: rk3399: Avoid two channel ZQ Cal Start at the same
+ time
+Date: Tue, 11 Jun 2019 20:21:05 +0530
+Message-ID: <20190611145135.21399-63-jagan@amarulasolutions.com>
 References: <20190611145135.21399-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,34 +22,53 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-PHY_898, PHY_919 would require to configure PHY LP4 boot
-pll control and ca for lpddr4.
+It is possible in lpddr4 dram, where both the channels would
+start at same time with ZQ Cal Start. If it uses ZQ Call start
+then it will use RZQ.
 
-So, configure the same in pctl_cfg for LPDDR4.
+For example LPDDR4 366 Dual-Die, Quad-Channel Package, RZQ maybe
+connect to both channel. If ZQ Cal Start at the same time,
+it will use the same RZQ.
+
+It is not a problem of using RZQ in both the channels, but can not
+use at the same time.
+
+So, to avoid this, we have an option of dram tINIT3 value for
+increasing the frequency for channel 1.
+
+This patch increase the available tINIT3 with existing running
+dram frequency.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/ram/rockchip/sdram_rk3399.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 1abeee7198..7d2359740c 100644
+index 3d26cede77..1abeee7198 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -579,6 +579,13 @@ static int pctl_cfg(struct dram_info *dram, const struct chan_info *chan,
- 	writel(sdram_params->phy_regs.denali_phy[911], &denali_phy[911]);
- 	writel(sdram_params->phy_regs.denali_phy[912], &denali_phy[912]);
+@@ -555,6 +555,20 @@ static int pctl_cfg(struct dram_info *dram, const struct chan_info *chan,
+ 		    sizeof(struct rk3399_ddr_pctl_regs) - 4);
+ 	writel(params_ctl[0], &denali_ctl[0]);
  
-+	if (sdram_params->base.dramtype == LPDDR4) {
-+		writel(sdram_params->phy_regs.denali_phy[898],
-+		       &denali_phy[898]);
-+		writel(sdram_params->phy_regs.denali_phy[919],
-+		       &denali_phy[919]);
++	/*
++	 * two channel init at the same time, then ZQ Cal Start
++	 * at the same time, it will use the same RZQ, but cannot
++	 * start at the same time.
++	 *
++	 * So, increase tINIT3 for channel 1, will avoid two
++	 * channel ZQ Cal Start at the same time
++	 */
++	if (sdram_params->base.dramtype == LPDDR4 && channel == 1) {
++		tmp = ((sdram_params->base.ddr_freq * MHz + 999) / 1000);
++		tmp1 = readl(&denali_ctl[14]);
++		writel(tmp + tmp1, &denali_ctl[14]);
 +	}
 +
- 	dram->pwrup_srefresh_exit[channel] = readl(&denali_ctl[68]) &
- 					     PWRUP_SREFRESH_EXIT;
- 	clrbits_le32(&denali_ctl[68], PWRUP_SREFRESH_EXIT);
+ 	copy_to_reg(denali_pi, &sdram_params->pi_regs.denali_pi[0],
+ 		    sizeof(struct rk3399_ddr_pi_regs));
+ 
 -- 
 2.18.0.321.gffc6fa0e3
