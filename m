@@ -1,174 +1,36 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v3 2/5] mmc: core: API for temporarily disabling
- auto-retuning due to errors
-Date: Wed, 12 Jun 2019 15:25:31 +0200
-Message-ID: <CAPDyKFpdkkzkbSy-uWL8TwdNFjJi10au7ZDOYjoWuDzftpoNsQ@mail.gmail.com>
-References: <20190607223716.119277-1-dianders@chromium.org> <20190607223716.119277-3-dianders@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+From: Justin Swartz <justin.swartz@risingedge.co.za>
+Subject: [PATCH] clk: rockchip: select hdmiphy clock source for rk3228
+Date: Wed, 12 Jun 2019 13:33:43 +0000
+Message-ID: <20190612133343.28309-1-justin.swartz@risingedge.co.za>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190607223716.119277-3-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Arend van Spriel <arend.vanspriel@broadcom.com>, brcm80211-dev-list.pdl@broadcom.com, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Double Lo <double.lo@cypress.com>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, Matthias Kaehlcke <mka@chromium.org>, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, netdev@vger.kernel.org, brcm80211-dev-list@cypress.com, Jiong Wu <lohengrin1024@gmail.com>, Ritesh Harjani <riteshh@codeaurora.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Justin Swartz <justin.swartz@risingedge.co.za>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, 8 Jun 2019 at 00:37, Douglas Anderson <dianders@chromium.org> wrote:
->
-> Normally when the MMC core sees an "-EILSEQ" error returned by a host
-> controller then it will trigger a retuning of the card.  This is
-> generally a good idea.
->
-> However, if a command is expected to sometimes cause transfer errors
-> then these transfer errors shouldn't cause a re-tuning.  This
-> re-tuning will be a needless waste of time.  One example case where a
-> transfer is expected to cause errors is when transitioning between
-> idle (sometimes referred to as "sleep" in Broadcom code) and active
-> state on certain Broadcom WiFi cards.  Specifically if the card was
-> already transitioning between states when the command was sent it
-> could cause an error on the SDIO bus.
->
-> Let's add an API that the SDIO card drivers can call that will
-> temporarily disable the auto-tuning functionality.  Then we can add a
-> call to this in the Broadcom WiFi driver and any other driver that
-> might have similar needs.
->
-> NOTE: this makes the assumption that the card is already tuned well
-> enough that it's OK to disable the auto-retuning during one of these
-> error-prone situations.  Presumably the driver code performing the
-> error-prone transfer knows how to recover / retry from errors.  ...and
-> after we can get back to a state where transfers are no longer
-> error-prone then we can enable the auto-retuning again.  If we truly
-> find ourselves in a case where the card needs to be retuned sometimes
-> to handle one of these error-prone transfers then we can always try a
-> few transfers first without auto-retuning and then re-try with
-> auto-retuning if the first few fail.
->
-> Without this change on rk3288-veyron-minnie I periodically see this in
-> the logs of a machine just sitting there idle:
->   dwmmc_rockchip ff0d0000.dwmmc: Successfully tuned phase to XYZ
->
-> Fixes: bd11e8bd03ca ("mmc: core: Flag re-tuning is needed on CRC errors")
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> Note that are are a whole boatload of different ways that we could
-> provide an API for the Broadcom WiFi SDIO driver.  This patch
-> illustrates one way but if maintainers feel strongly that this is too
-> ugly and have a better idea then I can give it a shot too.  From a
-> purist point of view I kinda felt that the "expect errors" really
-> belonged as part of the mmc_request structure, but getting it into
-> there meant changing a whole pile of core SD/MMC APIs.  Simply adding
-> it to the host seemed to match the current style better and was a less
-> intrusive change.
->
-> Changes in v3:
-> - Took out the spinlock since I believe this is all in one context.
+Unless explictly configured by a bootloader, the hdmiphy clock parent
+defaults to the xin24m clock source. This configuration does not yield
+any HDMI video output, so let hdmiphy_phy (the HDMI PHY output clock)
+be the parent instead.
 
-This needs to be clarified, preferable also in a function header.
+Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+---
+ drivers/clk/rockchip/clk-rk3228.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-If I understand correctly, the SDIO func driver needs the host to be
-claimed when it calls mmc_expect_errors_begin(). More importantly, it
-also needs to be keep it claimed until after it had called
-mmc_expect_errors_end(). Correct?
-
->
-> Changes in v2:
-> - Updated commit message to clarify based on discussion of v1.
->
->  drivers/mmc/core/core.c  | 19 +++++++++++++++++--
->  include/linux/mmc/core.h |  2 ++
->  include/linux/mmc/host.h |  1 +
->  3 files changed, 20 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
-> index 6db36dc870b5..bc109ec49406 100644
-> --- a/drivers/mmc/core/core.c
-> +++ b/drivers/mmc/core/core.c
-> @@ -144,8 +144,9 @@ void mmc_request_done(struct mmc_host *host, struct mmc_request *mrq)
->         int err = cmd->error;
->
->         /* Flag re-tuning needed on CRC errors */
-> -       if ((cmd->opcode != MMC_SEND_TUNING_BLOCK &&
-> -           cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200) &&
-> +       if (cmd->opcode != MMC_SEND_TUNING_BLOCK &&
-> +           cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200 &&
-> +           !host->expect_errors &&
->             (err == -EILSEQ || (mrq->sbc && mrq->sbc->error == -EILSEQ) ||
->             (mrq->data && mrq->data->error == -EILSEQ) ||
->             (mrq->stop && mrq->stop->error == -EILSEQ)))
-> @@ -2163,6 +2164,20 @@ int mmc_sw_reset(struct mmc_host *host)
->  }
->  EXPORT_SYMBOL(mmc_sw_reset);
->
-> +void mmc_expect_errors_begin(struct mmc_host *host)
-> +{
-> +       WARN_ON(host->expect_errors);
-
-Please remove the WARN_ON. If you believe there is a need for
-reference counting, then please add that instead (but likely not in
-the phase?).
-
-> +       host->expect_errors = true;
-> +}
-> +EXPORT_SYMBOL_GPL(mmc_expect_errors_begin);
-> +
-> +void mmc_expect_errors_end(struct mmc_host *host)
-> +{
-> +       WARN_ON(!host->expect_errors);
-
-Ditto.
-
-> +       host->expect_errors = false;
-> +}
-> +EXPORT_SYMBOL_GPL(mmc_expect_errors_end);
-
-These new APIs seems to be useful solely for SDIO. Even if it turns
-out later that they can be made generic, I suggest to start with a
-SDIO func API instead.
-
-However, using a new host variable (->expect_errors) is fine by me.
-
-> +
->  static int mmc_rescan_try_freq(struct mmc_host *host, unsigned freq)
->  {
->         host->f_init = freq;
-> diff --git a/include/linux/mmc/core.h b/include/linux/mmc/core.h
-> index 134a6483347a..02a13abf0cda 100644
-> --- a/include/linux/mmc/core.h
-> +++ b/include/linux/mmc/core.h
-> @@ -178,6 +178,8 @@ int mmc_wait_for_cmd(struct mmc_host *host, struct mmc_command *cmd,
->
->  int mmc_hw_reset(struct mmc_host *host);
->  int mmc_sw_reset(struct mmc_host *host);
-> +void mmc_expect_errors_begin(struct mmc_host *host);
-> +void mmc_expect_errors_end(struct mmc_host *host);
-
-The API prevents a new re-tune to be "scheduled" in case requests are
-failing with -EILSEQ.
-
-To better reflect that, may I suggest to rename this to
-sdio_retune_crc_disable() and sdio_retune_crc_enable(). Or something
-along those lines.
-
-
->  void mmc_set_data_timeout(struct mmc_data *data, const struct mmc_card *card);
->
->  #endif /* LINUX_MMC_CORE_H */
-> diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
-> index 43d0f0c496f6..8d553fb8c834 100644
-> --- a/include/linux/mmc/host.h
-> +++ b/include/linux/mmc/host.h
-> @@ -398,6 +398,7 @@ struct mmc_host {
->         unsigned int            retune_now:1;   /* do re-tuning at next req */
->         unsigned int            retune_paused:1; /* re-tuning is temporarily disabled */
->         unsigned int            use_blk_mq:1;   /* use blk-mq */
-> +       unsigned int            expect_errors:1; /* don't trigger retune upon errors */
->
->         int                     rescan_disable; /* disable card detection */
->         int                     rescan_entered; /* used with nonremovable devices */
-> --
-> 2.22.0.rc2.383.gf4fbbf30c2-goog
->
-
-Kind regards
-Uffe
+diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
+index 1c5267d134ee..00a195e6c014 100644
+--- a/drivers/clk/rockchip/clk-rk3228.c
++++ b/drivers/clk/rockchip/clk-rk3228.c
+@@ -699,6 +699,9 @@ static void __init rk3228_clk_init(struct device_node *np)
+ 		return;
+ 	}
+ 
++	/* Let hdmiphy_phy be the parent of the hdmiphy clock. */
++	writel_relaxed(HIWORD_UPDATE(0, 1, 13), reg_base + RK2928_MISC_CON);
++
+ 	ctx = rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
+ 	if (IS_ERR(ctx)) {
+ 		pr_err("%s: rockchip clk init failed\n", __func__);
+-- 
+2.11.0
