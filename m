@@ -1,70 +1,69 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Fix multiple thermal zones
- conflict in rk3399.dtsi
-Date: Wed, 12 Jun 2019 16:55:28 +0200
-Message-ID: <5423af35-9ba0-cf41-88a0-cf3f01777aac@linaro.org>
-References: <20190604165802.7338-1-daniel.lezcano@linaro.org>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH 00/92] ram: rk3399: Add LPDDR4 support
+Date: Wed, 12 Jun 2019 21:00:44 +0530
+Message-ID: <CAMty3ZAmpsF-3hoDLe0SYsO3Ug7=htxmt1QLUrdya0jBYWOR9w@mail.gmail.com>
+References: <20190611145135.21399-1-jagan@amarulasolutions.com>
+ <349AB0AF-4DEE-4BC8-8FEF-B3DBD34564E4@theobroma-systems.com>
+ <CAMty3ZDxop1nKHOxGYC0O7b8HL_ybmBSZr1P8gbDpz7eKyOyDw@mail.gmail.com>
+ <FBD392EE-BC7F-462D-89BF-4B97A70CAD9A@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190604165802.7338-1-daniel.lezcano@linaro.org>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linux-kernel@vger.kernel.org, edubezval@gmail.com, manivannan.sadhasivam@linaro.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Viresh Kumar <viresh.kumar@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Emil Renner Berthing <kernel@esmil.dk>, Randy Li <ayaka@soulik.info>, Tony Xie <tony.xie@rock-chips.com>, Vicente Bergas <vicencb@gmail.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infr>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <FBD392EE-BC7F-462D-89BF-4B97A70CAD9A@theobroma-systems.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: YouMin Chen <cym@rock-chips.com>, U-Boot-Denx <u-boot@lists.denx.de>, Akash Gajjar <gajjar04akash@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-Hi all,
-
-is there any comment on these two patches?
-
-
-On 04/06/2019 18:57, Daniel Lezcano wrote:
-> Currently the common thermal zones definitions for the rk3399 assumes
-> multiple thermal zones are supported by the governors. This is not the
-> case and each thermal zone has its own governor instance acting
-> individually without collaboration with other governors.
-> 
-> As the cooling device for the CPU and the GPU thermal zones is the
-> same, each governors take different decisions for the same cooling
-> device leading to conflicting instructions and an erratic behavior.
-> 
-> As the cooling-maps is about to become an optional property, let's
-> remove the cpu cooling device map from the GPU thermal zone.
-> 
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 9 ---------
->  1 file changed, 9 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 196ac9b78076..e1357e0f60f7 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -821,15 +821,6 @@
->  					type = "critical";
->  				};
->  			};
-> -
-> -			cooling-maps {
-> -				map0 {
-> -					trip = <&gpu_alert0>;
-> -					cooling-device =
-> -						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-> -						<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-> -				};
-> -			};
->  		};
->  	};
->  
-> 
-
-
--- 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+T24gVHVlLCBKdW4gMTEsIDIwMTkgYXQgODozNiBQTSBQaGlsaXBwIFRvbXNpY2gKPHBoaWxpcHAu
+dG9tc2ljaEB0aGVvYnJvbWEtc3lzdGVtcy5jb20+IHdyb3RlOgo+Cj4KPgo+ID4gT24gMTEuMDYu
+MjAxOSwgYXQgMTc6MDMsIEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPiB3
+cm90ZToKPiA+Cj4gPiBPbiBUdWUsIEp1biAxMSwgMjAxOSBhdCA4OjIzIFBNIFBoaWxpcHAgVG9t
+c2ljaAo+ID4gPHBoaWxpcHAudG9tc2ljaEB0aGVvYnJvbWEtc3lzdGVtcy5jb20+IHdyb3RlOgo+
+ID4+Cj4gPj4KPiA+Pgo+ID4+PiBPbiAxMS4wNi4yMDE5LCBhdCAxNjo1MCwgSmFnYW4gVGVraSA8
+amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+IHdyb3RlOgo+ID4+Pgo+ID4+PiBZZXMsIGl0IGNh
+biBiZSBwb3NzaWJsZSB0byBicmVhayB0aGlzIHNlcmllcyBpbnRvIG11bHRpcGxlIHN1YiBzZXJp
+ZXMKPiA+Pj4gYnV0IGlkZWEgaGVyZSBpcyB0byBtYXJrIGFsbCB0aGUgcmVxdWlyZWQgY2hhbmdl
+cyB0byBzdXBwb3J0IExQRERSNAo+ID4+PiBpbiByazMzOTkgaW4gb25lIHNldC4gaWYgcmVxdWly
+ZWQgd2UgY2FuIGJyZWFrIGl0IGZyb20gbmV4dCB2ZXJzaW9ucy4KPiA+Pj4KPiA+Pj4gVGhpcyBp
+cyB0aGUgaW5pdGlhbCBzZXQgZm9yIHN1cHBvcnRpbmcgTFBERFI0IHdpdGggYXNzb2NpYXRlZAo+
+ID4+PiBmZWF0dXJlcy4KPiA+Pj4KPiA+Pj4gVGhhbmtzIHRvCj4gPj4+IC0gWW91TWluIENoZW4K
+PiA+Pj4gLSBBa2FzaCBHYWpqYXIKPiA+Pj4gLSBLZXZlciBZYW5nCj4gPj4+IGZvciBzdXBwb3J0
+aW5nIGFsbCB0aGUgaGVscCBvbiB0aGlzIHdvcmsuCj4gPj4+Cj4gPj4+IE9uIHN1bW1hcnkgdGhp
+cyBzZXJpZXMgc3VwcG9ydAo+ID4+PiAtIENvZGUgd2FybmluZyBhbmQgZml4ZXMKPiA+Pj4gLSBy
+YW5rIGRldGVjdGlvbiwgdGhpcyB3b3VsZCByZXF1aXJlZCB0byBwcm9iZSBzaW5nbGUgY2hhbm5l
+bAo+ID4+PiBzZHJhbSBjb25maWd1cmVkIGluIE5hbm9QSS1ORU80Cj4gPj4+IC0gTFBERFI0IHN1
+cHBvcnQsIHRlc3RlZCBpbiBSb2NrcHJvNjQgYW5kIFJvY2stUEktNAo+ID4+Pgo+ID4+PiBwYXRj
+aCAwMDAxIC0gMDAzMzogZml4IGNvZGUgd2FybmluZ3MsIHByaW50cywgbmV3IG1hY3Jvcwo+ID4+
+Pgo+ID4+PiBwYXRjaCAwMDM0IC0gMDA1MTogcmFuayBkZXRlY3Rpb24sIHNkcmFtIGRlYnVnIGNv
+ZGUKPiA+Pj4KPiA+Pj4gcGF0Y2ggMDA1MjogVXNlIEREUjMtMTgwMCBvbiBOYW5vUEktTkVPNAo+
+ID4+Pgo+ID4+PiBwYXRjaCAwMDUzIC0gMDA4OTogbHBkZHI0IHN1cHBvcnQKPiA+Pj4KPiA+Pj4g
+cGF0Y2ggMDA5MDogTFBERFI0LTEwMCB0aW1pbmdzCj4gPj4+Cj4gPj4+IHBhdGNoIDAwOTE6IFVz
+ZSBMUEREUjQtMTAwIG9uIFJvY2twcm82NAo+ID4+Pgo+ID4+PiBwYXRjaCAwMDkyOiBVc2UgTFBE
+RFI0LTEwMCBvbiBSb2NrLVBJIDQKPiA+Pj4KPiA+Pj4gTm90ZTogUHVtYSByazMzOTkgaGFzIFNQ
+TCBzaXplIG92ZXJmbG93LCBiZXR0ZXIgdG8gZW5hYmxlIFRQTAo+ID4+PiBmb3IgdGhpcyBib2Fy
+ZC4KPiA+Pgo+ID4+IFdlIG5lZWQgdG8ga2VlcCBQdW1hIG9uIGEgU1BMLW9ubHkgY29uZmlndXJh
+dGlvbiBmb3IgdGhlIHRpbWUgYmVpbmcuCj4gPj4gUGxlYXNlIG1ha2Ugc3VyZSB0aGF0IHRoZSBM
+UEREUjQgY29kZSBpcyBhbiBvcHRpb25hbCBmZWF0dXJlIHRoYXQgZG9lcyBub3QKPiA+PiBpbmNy
+ZWFzZSB0aGUgRFJBTS1kcml2ZXIgc2l6ZSBmb3IgYm9hcmRzIHRoYXQgZG9u4oCZdCBuZWVkL3dh
+bnQgaXQuCj4gPgo+ID4gV2UgaGF2ZSBmZXcgYm9hcmRzIGRvIGhhdmUgVFBMLXJ1bm5hYmxlLCB3
+b3VsZCBiZSBhbnkgdGVjaG5pY2FsIGlzc3VlCj4gPiB0byBzd2l0Y2ggcHVtYSB0byBUUEw/IGJl
+Y2F1c2Ugd2UgaGF2ZSBscGRkcjQgY29kZSBwYXJ0IG9mIGV4aXN0aW5nCj4gPiBkcml2ZXIgaXRz
+ZWxmIGFuZCBpdCByZXF1aXJlIGV4dHJhIGlmZGVmIHRvIGNvbnNpZGVyIHdoaWNoIGluZGVlZCBs
+b29rCj4gPiBhd2Z1bCBmcm9tIGNvZGUgcG9pbnQtb2Ytdmlldy4KPgo+IE91ciBzZWN1cmUgYm9v
+dCBwcm9jZXNzIChpLmUuIHNpZ25pbmcgdG9vbHMpIGN1cnJlbnRseSBkZXBlbmRzIG9uIHRoaXMg
+YW5kCj4gdGhlIGNoYW5nZW92ZXIgd29u4oCZdCBiZSBxdWlja+KApgoKTm90IHNvIHF1aWNrLCB3
+ZSBoYXZlIHRpbWUgdGlsbCBNVy4gaXNuJ3QgaXQgcG9zc2libGU/IGVuYWJsaW5nIHNlY3VyZQp0
+b29scyBpbiBib3RoIFRQTCBhbmQgU1BMIG9yIFRQTC1hbG9uZSB3b3VsZCBiZSBtZWFuaW5nZnVs
+IHRyYWlsLiB3aGF0CmRvIHlvdSB0aGluaz8KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5k
+ZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cg==
