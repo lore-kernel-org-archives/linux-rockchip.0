@@ -1,7 +1,7 @@
-From: Justin Swartz <justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org>
-Subject: [PATCH] ARM: dts: rockchip: add display nodes for rk322x
-Date: Thu, 13 Jun 2019 10:13:04 +0000
-Message-ID: <20190613101305.30491-1-justin.swartz@risingedge.co.za>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH 0/2] RK3288 VP8 decoding support
+Date: Thu, 13 Jun 2019 12:10:38 -0300
+Message-ID: <20190613151040.8971-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -15,146 +15,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Justin Swartz <justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
+Cc: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add display_subsystem, hdmi_phy, vop, and hdmi device nodes plus
-a few hdmi pinctrl entries to allow for HDMI output.
+This patchset adds support for Hantro G1 VP8 stateless decoding,
+as available on RK3288 SoC.
 
-Signed-off-by: Justin Swartz <justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org>
----
- arch/arm/boot/dts/rk322x.dtsi | 83 ++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 82 insertions(+), 1 deletion(-)
+In order to support VP8 stateless decoding, a new pixel format
+is introduced V4L2_PIX_FMT_VP8_FRAME, to be used with a new control
+V4L2_CID_MPEG_VIDEO_VP8_FRAME_HDR.
 
-diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index da102fff96a2..7eb883eec126 100644
---- a/arch/arm/boot/dts/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -143,6 +143,11 @@
- 		#clock-cells = <0>;
- 	};
- 
-+	display_subsystem: display-subsystem {
-+		compatible = "rockchip,display-subsystem";
-+		ports = <&vop_out>;
-+	};
-+
- 	i2s1: i2s1@100b0000 {
- 		compatible = "rockchip,rk3228-i2s", "rockchip,rk3066-i2s";
- 		reg = <0x100b0000 0x4000>;
-@@ -529,6 +534,17 @@
- 		status = "disabled";
- 	};
- 
-+	hdmi_phy: hdmi-phy@12030000 {
-+		compatible = "rockchip,rk3228-hdmi-phy";
-+		reg = <0x12030000 0x10000>;
-+		clocks = <&cru PCLK_HDMI_PHY>, <&xin24m>, <&cru DCLK_HDMI_PHY>;
-+		clock-names = "sysclk", "refoclk", "refpclk";
-+		#clock-cells = <0>;
-+		clock-output-names = "hdmiphy_phy";
-+		#phy-cells = <0>;
-+		status = "disabled";
-+	};
-+
- 	gpu: gpu@20000000 {
- 		compatible = "rockchip,rk3228-mali", "arm,mali-400";
- 		reg = <0x20000000 0x10000>;
-@@ -572,6 +588,28 @@
- 		status = "disabled";
- 	};
- 
-+	vop: vop@20050000 {
-+		compatible = "rockchip,rk3228-vop";
-+		reg = <0x20050000 0x1ffc>;
-+		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru ACLK_VOP>, <&cru DCLK_VOP>, <&cru HCLK_VOP>;
-+		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
-+		resets = <&cru SRST_VOP_A>, <&cru SRST_VOP_H>, <&cru SRST_VOP_D>;
-+		reset-names = "axi", "ahb", "dclk";
-+		iommus = <&vop_mmu>;
-+		status = "disabled";
-+
-+		vop_out: port {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			vop_out_hdmi: endpoint@0 {
-+				reg = <0>;
-+				remote-endpoint = <&hdmi_in_vop>;
-+			};
-+		};
-+	};
-+
- 	vop_mmu: iommu@20053f00 {
- 		compatible = "rockchip,iommu";
- 		reg = <0x20053f00 0x100>;
-@@ -579,7 +617,7 @@
- 		interrupt-names = "vop_mmu";
- 		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
- 		clock-names = "aclk", "iface";
--		iommu-cells = <0>;
-+		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
- 
-@@ -594,6 +632,34 @@
- 		status = "disabled";
- 	};
- 
-+	hdmi: hdmi@200a0000 {
-+		compatible = "rockchip,rk3228-dw-hdmi";
-+		reg = <0x200a0000 0x20000>;
-+		reg-io-width = <4>;
-+		interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_HDMI_HDCP>, <&cru PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_CEC>;
-+		clock-names = "isfr", "iahb", "cec";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hdmii2c_xfer &hdmi_hpd &hdmi_cec>;
-+		resets = <&cru SRST_HDMI_P>;
-+		reset-names = "hdmi";
-+		phys = <&hdmi_phy>;
-+		phy-names = "hdmi";
-+		rockchip,grf = <&grf>;
-+		status = "disabled";
-+
-+		ports {
-+			hdmi_in: port {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+				hdmi_in_vop: endpoint@0 {
-+					reg = <0>;
-+					remote-endpoint = <&vop_out_hdmi>;
-+				};
-+			};
-+		};
-+	};
-+
- 	sdmmc: dwmmc@30000000 {
- 		compatible = "rockchip,rk3228-dw-mshc", "rockchip,rk3288-dw-mshc";
- 		reg = <0x30000000 0x4000>;
-@@ -922,6 +988,21 @@
- 			};
- 		};
- 
-+		hdmi {
-+			hdmi_hpd: hdmi-hpd {
-+				rockchip,pins = <0 RK_PB7 1 &pcfg_pull_down>;
-+			};
-+
-+			hdmii2c_xfer: hdmii2c-xfer {
-+				rockchip,pins = <0 RK_PA6 2 &pcfg_pull_none>,
-+						<0 RK_PA7 2 &pcfg_pull_none>;
-+			};
-+
-+			hdmi_cec: hdmi-cec {
-+				rockchip,pins = <0 RK_PC4 1 &pcfg_pull_none>;
-+			};
-+		};
-+
- 		i2c0 {
- 			i2c0_xfer: i2c0-xfer {
- 				rockchip,pins = <0 RK_PA0 1 &pcfg_pull_none>,
+The VP8 stateless uAPI was submitted as an RFC. The changes
+in this v1 are:
+
+Changes from RFC:
+* Verify the various ABIs.
+* Move entropy coder state fields to a struct.
+* Move key_frame field to the flags.
+* Remove unneeded first_part_offset field.
+* Add documentation.
+
+The ABI has been verified with Maxime Ripard's tools:
+
+https://gitlab.collabora.com/ezequiel/v4l2-ctrl-abi-check
+
+Pawel Osciak (1):
+  media: uapi: Add VP8 stateless decoder API
+
+ZhiChao Yu (1):
+  media: hantro: Add support for VP8 decoding on rk3288
+
+ Documentation/media/uapi/v4l/biblio.rst       |  10 +
+ .../media/uapi/v4l/ext-ctrls-codec.rst        | 311 ++++++++++
+ .../media/uapi/v4l/pixfmt-compressed.rst      |  20 +
+ drivers/media/v4l2-core/v4l2-ctrls.c          |   8 +
+ drivers/media/v4l2-core/v4l2-ioctl.c          |   1 +
+ drivers/staging/media/hantro/Makefile         |   4 +-
+ drivers/staging/media/hantro/hantro.h         |   5 +
+ drivers/staging/media/hantro/hantro_drv.c     |   6 +
+ .../staging/media/hantro/hantro_g1_vp8_dec.c  | 548 ++++++++++++++++++
+ drivers/staging/media/hantro/hantro_hw.h      |  17 +
+ drivers/staging/media/hantro/hantro_v4l2.c    |   1 +
+ drivers/staging/media/hantro/hantro_vp8.c     | 188 ++++++
+ drivers/staging/media/hantro/rk3288_vpu_hw.c  |  22 +-
+ include/media/v4l2-ctrls.h                    |   3 +
+ include/media/vp8-ctrls.h                     | 110 ++++
+ 15 files changed, 1252 insertions(+), 2 deletions(-)
+ create mode 100644 drivers/staging/media/hantro/hantro_g1_vp8_dec.c
+ create mode 100644 drivers/staging/media/hantro/hantro_vp8.c
+ create mode 100644 include/media/vp8-ctrls.h
+
 -- 
-2.11.0
+2.20.1
