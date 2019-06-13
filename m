@@ -1,11 +1,13 @@
 From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH 0/2] RK3288 VP8 decoding support
-Date: Thu, 13 Jun 2019 12:10:38 -0300
-Message-ID: <20190613151040.8971-1-ezequiel@collabora.com>
+Subject: [PATCH 1/2] media: uapi: Add VP8 stateless decoder API
+Date: Thu, 13 Jun 2019 12:10:39 -0300
+Message-ID: <20190613151040.8971-2-ezequiel@collabora.com>
+References: <20190613151040.8971-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190613151040.8971-1-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -16,55 +18,601 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
-Cc: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patchset adds support for Hantro G1 VP8 stateless decoding,
-as available on RK3288 SoC.
+From: Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-In order to support VP8 stateless decoding, a new pixel format
-is introduced V4L2_PIX_FMT_VP8_FRAME, to be used with a new control
-V4L2_CID_MPEG_VIDEO_VP8_FRAME_HDR.
+Add the parsed VP8 frame pixel format and controls, to be used
+with the new stateless decoder API for VP8 to provide parameters
+for accelerator (aka stateless) codecs.
 
-The VP8 stateless uAPI was submitted as an RFC. The changes
-in this v1 are:
-
+Signed-off-by: Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+--
 Changes from RFC:
-* Verify the various ABIs.
+* Make sure the uAPI has the same size on x86, x86_64, arm and arm64.
 * Move entropy coder state fields to a struct.
 * Move key_frame field to the flags.
 * Remove unneeded first_part_offset field.
 * Add documentation.
-
-The ABI has been verified with Maxime Ripard's tools:
-
-https://gitlab.collabora.com/ezequiel/v4l2-ctrl-abi-check
-
-Pawel Osciak (1):
-  media: uapi: Add VP8 stateless decoder API
-
-ZhiChao Yu (1):
-  media: hantro: Add support for VP8 decoding on rk3288
-
+---
  Documentation/media/uapi/v4l/biblio.rst       |  10 +
- .../media/uapi/v4l/ext-ctrls-codec.rst        | 311 ++++++++++
- .../media/uapi/v4l/pixfmt-compressed.rst      |  20 +
+ .../media/uapi/v4l/ext-ctrls-codec.rst        | 311 ++++++++++++++++++
+ .../media/uapi/v4l/pixfmt-compressed.rst      |  20 ++
  drivers/media/v4l2-core/v4l2-ctrls.c          |   8 +
  drivers/media/v4l2-core/v4l2-ioctl.c          |   1 +
- drivers/staging/media/hantro/Makefile         |   4 +-
- drivers/staging/media/hantro/hantro.h         |   5 +
- drivers/staging/media/hantro/hantro_drv.c     |   6 +
- .../staging/media/hantro/hantro_g1_vp8_dec.c  | 548 ++++++++++++++++++
- drivers/staging/media/hantro/hantro_hw.h      |  17 +
- drivers/staging/media/hantro/hantro_v4l2.c    |   1 +
- drivers/staging/media/hantro/hantro_vp8.c     | 188 ++++++
- drivers/staging/media/hantro/rk3288_vpu_hw.c  |  22 +-
  include/media/v4l2-ctrls.h                    |   3 +
- include/media/vp8-ctrls.h                     | 110 ++++
- 15 files changed, 1252 insertions(+), 2 deletions(-)
- create mode 100644 drivers/staging/media/hantro/hantro_g1_vp8_dec.c
- create mode 100644 drivers/staging/media/hantro/hantro_vp8.c
+ include/media/vp8-ctrls.h                     | 110 +++++++
+ 7 files changed, 463 insertions(+)
  create mode 100644 include/media/vp8-ctrls.h
 
+diff --git a/Documentation/media/uapi/v4l/biblio.rst b/Documentation/media/uapi/v4l/biblio.rst
+index 8f4eb8823d82..ad2ff258afa8 100644
+--- a/Documentation/media/uapi/v4l/biblio.rst
++++ b/Documentation/media/uapi/v4l/biblio.rst
+@@ -395,3 +395,13 @@ colimg
+ :title:     Color Imaging: Fundamentals and Applications
+ 
+ :author:    Erik Reinhard et al.
++
++.. _vp8:
++
++VP8
++===
++
++
++:title:     RFC 6386: "VP8 Data Format and Decoding Guide"
++
++:author:    J. Bankoski et al.
+diff --git a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+index d6ea2ffd65c5..7a1947f5be96 100644
+--- a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
++++ b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+@@ -2234,6 +2234,317 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
+     Quantization parameter for a P frame for FWHT. Valid range: from 1
+     to 31.
+ 
++.. _v4l2-mpeg-vp8:
++
++``V4L2_CID_MPEG_VIDEO_VP8_FRAME_HDR (struct)``
++    Specifies the frame parameters for the associated VP8 parsed frame data.
++    This includes the necessary parameters for
++    configuring a stateless hardware decoding pipeline for VP8.
++    The bitstream parameters are defined according to :ref:`vp8`.
++
++    .. note::
++
++       This compound control is not yet part of the public kernel API and
++       it is expected to change.
++
++.. c:type:: v4l2_ctrl_vp8_frame_header
++
++.. cssclass:: longtable
++
++.. tabularcolumns:: |p{5.8cm}|p{4.8cm}|p{6.6cm}|
++
++.. flat-table:: struct v4l2_ctrl_vp8_frame_header
++    :header-rows:  0
++    :stub-columns: 0
++    :widths:       1 1 2
++
++    * - __u8
++      - ``version``
++      - Bitstream version.
++    * - __u16
++      - ``width``
++      - The width of the frame
++    * - __u16
++      - ``height``
++      - The height of the frame
++    * - __u8
++      - ``horizontal_scale``
++      - Horizontal scale.
++    * - __u8
++      - ``vertical_scale``
++      - Vertical scale.
++    * - struct :c:type:`v4l2_vp8_segment_header`
++      - ``segment_header``
++      - Structure with segment-based adjustments metadata.
++    * - struct :c:type:`v4l2_vp8_loopfilter_header`
++      - ``loopfilter_header``
++      - Structure with loop filter level adjustments metadata.
++    * - struct :c:type:`v4l2_vp8_quantization_header`
++      - ``quant_header``
++      - Structure with VP8 dequantization indices metadata.
++    * - struct :c:type:`v4l2_vp8_entropy_header`
++      - ``entropy_header``
++      - Structure with VP8 entropy coder probabilities metadata.
++    * - __u16
++      - ``sign_bias_golden``
++      - Sign bias flag for golden reference frame.
++    * - __u16
++      - ``sign_bias_alternate``
++      - Sign bias flag for alternate reference frame.
++    * - __u8
++      - ``prob_skip_false``
++      -
++    * - __u8
++      - ``prob_intra``
++      -
++    * - __u8
++      - ``prob_last``
++      -
++    * - __u8
++      - ``prob_gf``
++      -
++    * - __u32
++      - ``first_part_size``
++      -
++    * - __u32
++      - ``macroblock_bit_offset``
++      - Offset in bits of macroblock data in first partition.
++    * - __u32
++      - ``dct_part_sizes[8]``
++      - DCT coefficients sizes.
++    * - __u8
++      - ``num_dct_parts``
++      - Number of DCT coefficients partitions.
++    * - struct :c:type:`v4l2_vp8_entropy_coder_state`
++      - ``coder_state``
++      - Structure with VP8 entropy coder state.
++    * - __u64
++      - ``last_frame_ts``
++      - Timestamp for the V4L2 capture buffer to use as last reference frame, used
++        with inter-coded frames. The timestamp refers to the ``timestamp`` field in
++	struct :c:type:`v4l2_buffer`. Use the :c:func:`v4l2_timeval_to_ns()`
++	function to convert the struct :c:type:`timeval` in struct
++	:c:type:`v4l2_buffer` to a __u64.
++    * - __u64
++      - ``golden_frame_ts``
++      - Timestamp for the V4L2 capture buffer to use as last reference frame, used
++        with inter-coded frames. The timestamp refers to the ``timestamp`` field in
++	struct :c:type:`v4l2_buffer`. Use the :c:func:`v4l2_timeval_to_ns()`
++	function to convert the struct :c:type:`timeval` in struct
++	:c:type:`v4l2_buffer` to a __u64.
++    * - __u64
++      - ``alt_frame_ts``
++      - Timestamp for the V4L2 capture buffer to use as alternate reference frame, used
++        with inter-coded frames. The timestamp refers to the ``timestamp`` field in
++	struct :c:type:`v4l2_buffer`. Use the :c:func:`v4l2_timeval_to_ns()`
++	function to convert the struct :c:type:`timeval` in struct
++	:c:type:`v4l2_buffer` to a __u64.
++    * - __u64
++      - ``flags``
++      - flags
++    * - __u64
++      - ``flags``
++      - See :ref:`Frame Header Flags <vp8_frame_header_flags>`
++
++.. _vp8_frame_header_flags:
++
++``Frame Header Flags``
++
++.. cssclass:: longtable
++
++.. flat-table::
++    :header-rows:  0
++    :stub-columns: 0
++    :widths:       1 1 2
++
++    * - ``V4L2_VP8_FRAME_HDR_FLAG_KEY_FRAME``
++      - 0x01
++      - Inidicates if the frame is a key frame.
++    * - ``V4L2_VP8_FRAME_HDR_FLAG_EXPERIMENTAL``
++      - 0x02
++      - Experimental bitstream.
++    * - ``V4L2_VP8_FRAME_HDR_FLAG_SHOW_FRAME``
++      - 0x04
++      - Show frame flag, indicates if the frame is for display.
++    * - ``V4L2_VP8_FRAME_HDR_FLAG_MB_NO_SKIP_COEFF``
++      - 0x08
++      - Enable/disable skipping of macroblocks with no non-zero coefficients.
++
++.. c:type:: v4l2_vp8_entropy_coder_state
++
++.. cssclass:: longtable
++
++.. tabularcolumns:: |p{1.5cm}|p{6.3cm}|p{9.4cm}|
++
++.. flat-table:: struct v4l2_vp8_entropy_coder_state
++    :header-rows:  0
++    :stub-columns: 0
++    :widths:       1 1 2
++
++    * - __u8
++      - ``range``
++      -
++    * - __u8
++      - ``value``
++      -
++    * - __u8
++      - ``bit_count``
++      -
++
++.. c:type:: v4l2_vp8_segment_header
++
++.. cssclass:: longtable
++
++.. tabularcolumns:: |p{1.5cm}|p{6.3cm}|p{9.4cm}|
++
++.. flat-table:: struct v4l2_vp8_segment_header
++    :header-rows:  0
++    :stub-columns: 0
++    :widths:       1 1 2
++
++    * - __u8
++      - ``segment_feature_mode``
++      - Indicates the mode of segment feature data. 1 for absolute value
++        mode, 0 for delta value mode.
++    * - __s8
++      - ``quant_update[4]``
++      - Signed quantizer value update.
++    * - __s8
++      - ``lf_update[4]``
++      - Signed loop filter level value update.
++    * - __u8
++      - ``segment_probs[3]``
++      - Segment probabilities.
++    * - __u32
++      - ``flags``
++      - See :ref:`Segment Header Flags <vp8_segment_header_flags>`
++
++.. _vp8_segment_header_flags:
++
++``Segment Header Flags``
++
++.. cssclass:: longtable
++
++.. flat-table::
++    :header-rows:  0
++    :stub-columns: 0
++    :widths:       1 1 2
++
++    * - ``V4L2_VP8_SEGMNT_HDR_FLAG_ENABLED``
++      - 0x01
++      - Enable/disable segment-based adjustments.
++    * - ``V4L2_VP8_SEGMNT_HDR_FLAG_UPDATE_MAP``
++      - 0x02
++      - Indicates if the macroblock segmentation map is updated in this frame.
++    * - ``V4L2_VP8_SEGMNT_HDR_FLAG_UPDATE_FEATURE_DATA``
++      - 0x04
++      - Indicates if the segment feature data is updated in this frame.
++
++.. c:type:: v4l2_vp8_loopfilter_header
++
++.. cssclass:: longtable
++
++.. tabularcolumns:: |p{1.5cm}|p{6.3cm}|p{9.4cm}|
++
++.. flat-table:: struct v4l2_vp8_loopfilter_header
++    :header-rows:  0
++    :stub-columns: 0
++    :widths:       1 1 2
++
++    * - __u16
++      - ``type``
++      - Filter type.
++    * - __u8
++      - ``level``
++      - Filter level
++    * - __u8
++      - ``sharpness_level``
++      - Sharpness level
++    * - __s8
++      - ``ref_frm_delta_magnitude[4]``
++      -
++    * - __s8
++      - ``mb_mode_delta_magnitude[4]``
++      -
++    * - __u16
++      - ``flags``
++      - See :ref:`Loopfilter Header Flags <vp8_loopfilter_header_flags>`
++
++.. _vp8_loopfilter_header_flags:
++
++``Loopfilter Header Flags``
++
++.. cssclass:: longtable
++
++.. flat-table::
++    :header-rows:  0
++    :stub-columns: 0
++    :widths:       1 1 2
++
++    * - ``V4L2_VP8_LF_HDR_ADJ_ENABLE``
++      - 0x01
++      - Enable/disable macroblock-level loop filter adjustment.
++    * - ``V4L2_VP8_LF_HDR_DELTA_UPDATE``
++      - 0x02
++      - Indicates if the delta values used in an adjustment are updated.
++
++.. c:type:: v4l2_vp8_quantization_header
++
++.. cssclass:: longtable
++
++.. tabularcolumns:: |p{1.5cm}|p{6.3cm}|p{9.4cm}|
++
++.. flat-table:: struct v4l2_vp8_quantization_header
++    :header-rows:  0
++    :stub-columns: 0
++    :widths:       1 1 2
++
++    * - __u8
++      - ``y_ac_qi``
++      -
++    * - __s8
++      - ``y_dc_delta``
++      -
++    * - __s8
++      - ``y2_dc_delta``
++      -
++    * - __s8
++      - ``y2_ac_delta``
++      -
++    * - __s8
++      - ``uv_dc_delta``
++      -
++    * - __s8
++      - ``uv_ac_delta``
++      -
++    * - __u16
++      - ``dequant_factors[4][3][2]``
++      -
++
++.. c:type:: v4l2_vp8_entropy_header
++
++.. cssclass:: longtable
++
++.. tabularcolumns:: |p{1.5cm}|p{6.3cm}|p{9.4cm}|
++
++.. flat-table:: struct v4l2_vp8_entropy_header
++    :header-rows:  0
++    :stub-columns: 0
++    :widths:       1 1 2
++
++    * - __u8
++      - ``coeff_probs[4][8][3][11]``
++      -
++    * - __u8
++      - ``y_mode_probs[4]``
++      -
++    * - __u8
++      - ``uv_mode_probs[3]``
++      -
++    * - __u8
++      - ``mv_probs[2][19]``
++      -
++
+ .. raw:: latex
+ 
+     \normalsize
+diff --git a/Documentation/media/uapi/v4l/pixfmt-compressed.rst b/Documentation/media/uapi/v4l/pixfmt-compressed.rst
+index 4b701fc7653e..f349ad7c20cf 100644
+--- a/Documentation/media/uapi/v4l/pixfmt-compressed.rst
++++ b/Documentation/media/uapi/v4l/pixfmt-compressed.rst
+@@ -133,6 +133,26 @@ Compressed Formats
+       - ``V4L2_PIX_FMT_VP8``
+       - 'VP80'
+       - VP8 video elementary stream.
++    * .. _V4L2-PIX-FMT-VP8-FRAME:
++
++      - ``V4L2_PIX_FMT_VP8_FRAME``
++      - 'VP8F'
++      - VP8 parsed frame, as extracted from the container.
++	This format is adapted for stateless video decoders that implement a
++	VP8 pipeline (using the :ref:`mem2mem` and :ref:`media-request-api`).
++	Metadata associated with the frame to decode is required to be passed
++	through the ``V4L2_CID_MPEG_VIDEO_VP8_FRAME_HDR`` control.
++	See the :ref:`associated Codec Control IDs <v4l2-mpeg-vp8>`.
++	Exactly one output and one capture buffer must be provided for use with
++	this pixel format. The output buffer must contain the appropriate number
++	of macroblocks to decode a full corresponding frame to the matching
++	capture buffer.
++
++	.. note::
++
++	   This format is not yet part of the public kernel API and it
++	   is expected to change.
++
+     * .. _V4L2-PIX-FMT-VP9:
+ 
+       - ``V4L2_PIX_FMT_VP9``
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls.c b/drivers/media/v4l2-core/v4l2-ctrls.c
+index f2b9bdedbf8c..bb623a972b9e 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls.c
+@@ -885,6 +885,7 @@ const char *v4l2_ctrl_get_name(u32 id)
+ 	case V4L2_CID_MPEG_VIDEO_VPX_P_FRAME_QP:		return "VPX P-Frame QP Value";
+ 	case V4L2_CID_MPEG_VIDEO_VP8_PROFILE:			return "VP8 Profile";
+ 	case V4L2_CID_MPEG_VIDEO_VP9_PROFILE:			return "VP9 Profile";
++	case V4L2_CID_MPEG_VIDEO_VP8_FRAME_HDR:			return "VP8 Frame Header";
+ 
+ 	/* HEVC controls */
+ 	case V4L2_CID_MPEG_VIDEO_HEVC_I_FRAME_QP:		return "HEVC I-Frame QP Value";
+@@ -1345,6 +1346,9 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
+ 	case V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS:
+ 		*type = V4L2_CTRL_TYPE_H264_DECODE_PARAMS;
+ 		break;
++	case V4L2_CID_MPEG_VIDEO_VP8_FRAME_HDR:
++		*type = V4L2_CTRL_TYPE_VP8_FRAME_HDR;
++		break;
+ 	default:
+ 		*type = V4L2_CTRL_TYPE_INTEGER;
+ 		break;
+@@ -1737,6 +1741,7 @@ static int std_validate(const struct v4l2_ctrl *ctrl, u32 idx,
+ 	case V4L2_CTRL_TYPE_H264_SCALING_MATRIX:
+ 	case V4L2_CTRL_TYPE_H264_SLICE_PARAMS:
+ 	case V4L2_CTRL_TYPE_H264_DECODE_PARAMS:
++	case V4L2_CTRL_TYPE_VP8_FRAME_HDR:
+ 		return 0;
+ 
+ 	default:
+@@ -2337,6 +2342,9 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
+ 	case V4L2_CTRL_TYPE_H264_DECODE_PARAMS:
+ 		elem_size = sizeof(struct v4l2_ctrl_h264_decode_params);
+ 		break;
++	case V4L2_CTRL_TYPE_VP8_FRAME_HDR:
++		elem_size = sizeof(struct v4l2_ctrl_vp8_frame_header);
++		break;
+ 	default:
+ 		if (type < V4L2_CTRL_COMPOUND_TYPES)
+ 			elem_size = sizeof(s32);
+diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+index b1f4b991dba6..436a13204921 100644
+--- a/drivers/media/v4l2-core/v4l2-ioctl.c
++++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+@@ -1331,6 +1331,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+ 		case V4L2_PIX_FMT_VC1_ANNEX_G:	descr = "VC-1 (SMPTE 412M Annex G)"; break;
+ 		case V4L2_PIX_FMT_VC1_ANNEX_L:	descr = "VC-1 (SMPTE 412M Annex L)"; break;
+ 		case V4L2_PIX_FMT_VP8:		descr = "VP8"; break;
++		case V4L2_PIX_FMT_VP8_FRAME:    descr = "VP8 FRAME"; break;
+ 		case V4L2_PIX_FMT_VP9:		descr = "VP9"; break;
+ 		case V4L2_PIX_FMT_HEVC:		descr = "HEVC"; break; /* aka H.265 */
+ 		case V4L2_PIX_FMT_FWHT:		descr = "FWHT"; break; /* used in vicodec */
+diff --git a/include/media/v4l2-ctrls.h b/include/media/v4l2-ctrls.h
+index b4433483af23..6e9dc9c44bb1 100644
+--- a/include/media/v4l2-ctrls.h
++++ b/include/media/v4l2-ctrls.h
+@@ -20,6 +20,7 @@
+ #include <media/mpeg2-ctrls.h>
+ #include <media/fwht-ctrls.h>
+ #include <media/h264-ctrls.h>
++#include <media/vp8-ctrls.h>
+ 
+ /* forward references */
+ struct file;
+@@ -48,6 +49,7 @@ struct poll_table_struct;
+  * @p_h264_scaling_matrix:	Pointer to a struct v4l2_ctrl_h264_scaling_matrix.
+  * @p_h264_slice_params:	Pointer to a struct v4l2_ctrl_h264_slice_params.
+  * @p_h264_decode_params:	Pointer to a struct v4l2_ctrl_h264_decode_params.
++ * @p_vp8_frame_header:		Pointer to a VP8 frame header structure.
+  * @p:				Pointer to a compound value.
+  */
+ union v4l2_ctrl_ptr {
+@@ -65,6 +67,7 @@ union v4l2_ctrl_ptr {
+ 	struct v4l2_ctrl_h264_scaling_matrix *p_h264_scaling_matrix;
+ 	struct v4l2_ctrl_h264_slice_params *p_h264_slice_params;
+ 	struct v4l2_ctrl_h264_decode_params *p_h264_decode_params;
++	struct v4l2_ctrl_vp8_frame_header *p_vp8_frame_header;
+ 	void *p;
+ };
+ 
+diff --git a/include/media/vp8-ctrls.h b/include/media/vp8-ctrls.h
+new file mode 100644
+index 000000000000..3b0dcc125e25
+--- /dev/null
++++ b/include/media/vp8-ctrls.h
+@@ -0,0 +1,110 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * These are the VP8 state controls for use with stateless VP8
++ * codec drivers.
++ *
++ * It turns out that these structs are not stable yet and will undergo
++ * more changes. So keep them private until they are stable and ready to
++ * become part of the official public API.
++ */
++
++#ifndef _VP8_CTRLS_H_
++#define _VP8_CTRLS_H_
++
++#include <linux/v4l2-controls.h>
++
++#define V4L2_PIX_FMT_VP8_FRAME v4l2_fourcc('V', 'P', '8', 'F') /* VP8 parsed frames */
++
++#define V4L2_CID_MPEG_VIDEO_VP8_FRAME_HDR (V4L2_CID_MPEG_BASE + 2000)
++#define V4L2_CTRL_TYPE_VP8_FRAME_HDR 0x301
++
++#define V4L2_VP8_SEGMNT_HDR_FLAG_ENABLED              0x01
++#define V4L2_VP8_SEGMNT_HDR_FLAG_UPDATE_MAP           0x02
++#define V4L2_VP8_SEGMNT_HDR_FLAG_UPDATE_FEATURE_DATA  0x04
++
++struct v4l2_vp8_segment_header {
++	__u8 segment_feature_mode;
++	__s8 quant_update[4];
++	__s8 lf_update[4];
++	__u8 segment_probs[3];
++	__u32 flags;
++};
++
++#define V4L2_VP8_LF_HDR_ADJ_ENABLE	0x01
++#define V4L2_VP8_LF_HDR_DELTA_UPDATE	0x02
++struct v4l2_vp8_loopfilter_header {
++	__u16 type;
++	__u8 level;
++	__u8 sharpness_level;
++	__s8 ref_frm_delta_magnitude[4];
++	__s8 mb_mode_delta_magnitude[4];
++	__u16 flags;
++};
++
++struct v4l2_vp8_quantization_header {
++	__u8 y_ac_qi;
++	__s8 y_dc_delta;
++	__s8 y2_dc_delta;
++	__s8 y2_ac_delta;
++	__s8 uv_dc_delta;
++	__s8 uv_ac_delta;
++	__u16 dequant_factors[4][3][2];
++};
++
++struct v4l2_vp8_entropy_header {
++	__u8 coeff_probs[4][8][3][11];
++	__u8 y_mode_probs[4];
++	__u8 uv_mode_probs[3];
++	__u8 mv_probs[2][19];
++};
++
++struct v4l2_vp8_entropy_coder_state {
++	__u8 range;
++	__u8 value;
++	__u8 bit_count;
++};
++
++#define V4L2_VP8_FRAME_HDR_FLAG_KEY_FRAME		0x01
++#define V4L2_VP8_FRAME_HDR_FLAG_EXPERIMENTAL		0x02
++#define V4L2_VP8_FRAME_HDR_FLAG_SHOW_FRAME		0x04
++#define V4L2_VP8_FRAME_HDR_FLAG_MB_NO_SKIP_COEFF	0x08
++
++#define VP8_FRAME_IS_KEY_FRAME(hdr) (!!(hdr->flags & V4L2_VP8_FRAME_HDR_FLAG_KEY_FRAME))
++
++struct v4l2_ctrl_vp8_frame_header {
++	__u8 version;
++
++	/* Populated also if not a key frame */
++	__u16 width;
++	__u16 height;
++	__u8 horizontal_scale;
++	__u8 vertical_scale;
++
++	struct v4l2_vp8_segment_header segment_header;
++	struct v4l2_vp8_loopfilter_header lf_header;
++	struct v4l2_vp8_quantization_header quant_header;
++	struct v4l2_vp8_entropy_header entropy_header;
++
++	__u16 sign_bias_golden;
++	__u16 sign_bias_alternate;
++
++	__u8 prob_skip_false;
++	__u8 prob_intra;
++	__u8 prob_last;
++	__u8 prob_gf;
++
++	__u32 first_part_size;
++	__u32 macroblock_bit_offset;
++	__u32 dct_part_sizes[8];
++	__u8 num_dct_parts;
++
++	struct v4l2_vp8_entropy_coder_state coder_state;
++
++	__u64 last_frame_ts;
++	__u64 golden_frame_ts;
++	__u64 alt_frame_ts;
++
++	__u64 flags;
++};
++
++#endif
 -- 
 2.20.1
