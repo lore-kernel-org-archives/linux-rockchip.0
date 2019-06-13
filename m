@@ -1,126 +1,90 @@
-From: Frank Lee <tiny.windzz@gmail.com>
-Subject: Re: [PATCH 03/10] iommu/omap: convert to SPDX license tags
-Date: Fri, 14 Jun 2019 00:55:02 +0800
-Message-ID: <CAEExFWuM+oMUKf440myr0GHAnatdzaxr=0ibFDGVXDHs6J1bzA@mail.gmail.com>
-References: <20190613162703.986-1-tiny.windzz@gmail.com> <20190613162703.986-3-tiny.windzz@gmail.com>
- <ac67e363-70cf-af64-d634-c3b0b6d408fa@ti.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Update DWC3 modules on RK3399 SoCs
+Date: Thu, 13 Jun 2019 17:56:48 +0100
+Message-ID: <40d2260f-3925-acdc-eb02-8abb972f1056@arm.com>
+References: <20190613162745.12195-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <ac67e363-70cf-af64-d634-c3b0b6d408fa@ti.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Suman Anna <s-anna@ti.com>
-Cc: "joro@8bytes.org" <joro@8bytes.org>, "m.szyprowski@samsung.com" <m.szyprowski@samsung.com>, "kgene@kernel.org" <kgene@kernel.org>, "krzk@kernel.org" <krzk@kernel.org>, "will.deacon@arm.com" <will.deacon@arm.com>, "robin.murphy@arm.com" <robin.murphy@arm.com>, "agross@kernel.org" <agross@kernel.org>, "david.brown@linaro.org" <david.brown@linaro.org>, "robdclark@gmail.com" <robdclark@gmail.com>, "heiko@sntech.de" <heiko@sntech.de>, "thierry.reding@gmail.com" <thierry.reding@gmail.com>, "jonathanh@nvidia.com" <jonathanh@nvidia.com>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradea
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190613162745.12195-1-enric.balletbo@collabora.com>
+Content-Language: en-GB
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, devicetree@vger.kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Felipe Balbi <felipe.balbi@linux.intel.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Viresh Kumar <viresh.kumar@linaro.org>, Randy Li <ayaka@soulik.info>, linux-kernel@vger.kernel.org, Vicente Bergas <vicencb@gmail.com>, linux-rockchip@lists.infradead.org, Tony Xie <tony.xie@rock-chips.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Rob Herring <robh+dt@kernel.org>, Collabora Kernel ML <kernel@collabora.com>, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jun 14, 2019 at 12:39 AM Suman Anna <s-anna@ti.com> wrote:
->
-> Hi Yangtao,
->
-> On 6/13/19 11:26 AM, Yangtao Li wrote:
-> > Updates license to use SPDX-License-Identifier.
-> >
-> > Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
->
-> Thanks for the patch. Can you also update another related file
-> while at this. Will leave it to Joerg if he prefers it as a separate
-> patch, or folded into this patch.
->
-> include/linux/platform_data/iommu-omap.h
->
+On 13/06/2019 17:27, Enric Balletbo i Serra wrote:
+> As per binding documentation [1], the DWC3 core should have the "ref",
+> "bus_early" and "suspend" clocks. As explained in the binding, those
+> clocks are required for new platforms but not for existing platforms
+> before commit fe8abf332b8f ("usb: dwc3: support clocks and resets for
+> DWC3 core").
+> 
+> However, as those clocks are really treated as required, this ends with
+> having some annoying messages when the "rockchip,rk3399-dwc3" is used:
+> 
+> [    1.724107] dwc3 fe800000.dwc3: Failed to get clk 'ref': -2
+> [    1.731893] dwc3 fe900000.dwc3: Failed to get clk 'ref': -2
+> [    2.495937] dwc3 fe800000.dwc3: Failed to get clk 'ref': -2
+> [    2.647239] dwc3 fe900000.dwc3: Failed to get clk 'ref': -2
+> 
+> In order to remove those annoying messages, update the DWC3 hardware
+> module node and add all the required clocks. With this change, both, the
+> glue node and the DWC3 core node, have the clocks defined, but that's
+> not really a problem and there isn't a side effect on do this. So, we
+> can get rid of the annoying get clk error messages.
 
-Done.
+Can we not just move these clocks entirely from the glue layer to the 
+core layer? That didn't seem to break when I tried it, although I'll 
+admit my 'testing' was no more than booting and mounting a USB 3.0 flash 
+drive, no suspend or anything fancy.
 
-Yangtao
+My own attempt to shut up these errors got sidetracked into c0c61471ef86 
+("usb: dwc3: of-simple: Convert to bulk clk API"), then apparently 
+stalled :)
 
-> Acked-by: Suman Anna <s-anna@ti.com>
->
-> regards
-> Suman
->
-> > ---
-> >  drivers/iommu/omap-iommu-debug.c | 5 +----
-> >  drivers/iommu/omap-iommu.c       | 5 +----
-> >  drivers/iommu/omap-iommu.h       | 5 +----
-> >  drivers/iommu/omap-iopgtable.h   | 5 +----
-> >  4 files changed, 4 insertions(+), 16 deletions(-)
-> >
-> > diff --git a/drivers/iommu/omap-iommu-debug.c b/drivers/iommu/omap-iommu-debug.c
-> > index 4abc0ef522a8..55ec67a45101 100644
-> > --- a/drivers/iommu/omap-iommu-debug.c
-> > +++ b/drivers/iommu/omap-iommu-debug.c
-> > @@ -1,13 +1,10 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> >  /*
-> >   * omap iommu: debugfs interface
-> >   *
-> >   * Copyright (C) 2008-2009 Nokia Corporation
-> >   *
-> >   * Written by Hiroshi DOYU <Hiroshi.DOYU@nokia.com>
-> > - *
-> > - * This program is free software; you can redistribute it and/or modify
-> > - * it under the terms of the GNU General Public License version 2 as
-> > - * published by the Free Software Foundation.
-> >   */
-> >
-> >  #include <linux/err.h>
-> > diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
-> > index d2fb347aa4ff..e6442876913f 100644
-> > --- a/drivers/iommu/omap-iommu.c
-> > +++ b/drivers/iommu/omap-iommu.c
-> > @@ -1,3 +1,4 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> >  /*
-> >   * omap iommu: tlb and pagetable primitives
-> >   *
-> > @@ -6,10 +7,6 @@
-> >   *
-> >   * Written by Hiroshi DOYU <Hiroshi.DOYU@nokia.com>,
-> >   *           Paul Mundt and Toshihiro Kobayashi
-> > - *
-> > - * This program is free software; you can redistribute it and/or modify
-> > - * it under the terms of the GNU General Public License version 2 as
-> > - * published by the Free Software Foundation.
-> >   */
-> >
-> >  #include <linux/dma-mapping.h>
-> > diff --git a/drivers/iommu/omap-iommu.h b/drivers/iommu/omap-iommu.h
-> > index 1703159ef5af..5256e17d86a7 100644
-> > --- a/drivers/iommu/omap-iommu.h
-> > +++ b/drivers/iommu/omap-iommu.h
-> > @@ -1,13 +1,10 @@
-> > +/* SPDX-License-Identifier: GPL-2.0 */
-> >  /*
-> >   * omap iommu: main structures
-> >   *
-> >   * Copyright (C) 2008-2009 Nokia Corporation
-> >   *
-> >   * Written by Hiroshi DOYU <Hiroshi.DOYU@nokia.com>
-> > - *
-> > - * This program is free software; you can redistribute it and/or modify
-> > - * it under the terms of the GNU General Public License version 2 as
-> > - * published by the Free Software Foundation.
-> >   */
-> >
-> >  #ifndef _OMAP_IOMMU_H
-> > diff --git a/drivers/iommu/omap-iopgtable.h b/drivers/iommu/omap-iopgtable.h
-> > index 01a315227bf0..871c2a38f453 100644
-> > --- a/drivers/iommu/omap-iopgtable.h
-> > +++ b/drivers/iommu/omap-iopgtable.h
-> > @@ -1,13 +1,10 @@
-> > +/* SPDX-License-Identifier: GPL-2.0 */
-> >  /*
-> >   * omap iommu: pagetable definitions
-> >   *
-> >   * Copyright (C) 2008-2010 Nokia Corporation
-> >   *
-> >   * Written by Hiroshi DOYU <Hiroshi.DOYU@nokia.com>
-> > - *
-> > - * This program is free software; you can redistribute it and/or modify
-> > - * it under the terms of the GNU General Public License version 2 as
-> > - * published by the Free Software Foundation.
-> >   */
-> >
-> >  #ifndef _OMAP_IOPGTABLE_H
-> >
->
+Robin.
+
+> 
+> [1] Documentation/devicetree/bindings/usb/dwc3.txt
+> 
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> ---
+> 
+>   arch/arm64/boot/dts/rockchip/rk3399.dtsi | 6 ++++++
+>   1 file changed, 6 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 196ac9b78076..a15348d185ce 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -414,6 +414,9 @@
+>   			compatible = "snps,dwc3";
+>   			reg = <0x0 0xfe800000 0x0 0x100000>;
+>   			interrupts = <GIC_SPI 105 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			clocks = <&cru SCLK_USB3OTG0_REF>, <&cru ACLK_USB3OTG0>,
+> +				 <&cru SCLK_USB3OTG0_SUSPEND>;
+> +			clock-names = "ref", "bus_early", "suspend";
+>   			dr_mode = "otg";
+>   			phys = <&u2phy0_otg>, <&tcphy0_usb3>;
+>   			phy-names = "usb2-phy", "usb3-phy";
+> @@ -447,6 +450,9 @@
+>   			compatible = "snps,dwc3";
+>   			reg = <0x0 0xfe900000 0x0 0x100000>;
+>   			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			clocks = <&cru SCLK_USB3OTG1_REF>, <&cru ACLK_USB3OTG1>,
+> +				 <&cru SCLK_USB3OTG1_SUSPEND>;
+> +			clock-names = "ref", "bus_early", "suspend";
+>   			dr_mode = "otg";
+>   			phys = <&u2phy1_otg>, <&tcphy1_usb3>;
+>   			phy-names = "usb2-phy", "usb3-phy";
+> 
