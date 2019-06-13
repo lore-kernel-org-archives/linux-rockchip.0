@@ -1,93 +1,120 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+From: Robin Murphy <robin.murphy@arm.com>
 Subject: Re: [PATCH] arm64: dts: rockchip: Update DWC3 modules on RK3399 SoCs
-Date: Thu, 13 Jun 2019 19:20:46 +0200
-Message-ID: <a685fef9-8f45-700c-17d6-59d792fca092@collabora.com>
+Date: Thu, 13 Jun 2019 18:44:43 +0100
+Message-ID: <a3050da7-9b99-c6fd-ee06-f65503f1ae87@arm.com>
 References: <20190613162745.12195-1-enric.balletbo@collabora.com>
  <40d2260f-3925-acdc-eb02-8abb972f1056@arm.com>
+ <a685fef9-8f45-700c-17d6-59d792fca092@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <40d2260f-3925-acdc-eb02-8abb972f1056@arm.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <a685fef9-8f45-700c-17d6-59d792fca092@collabora.com>
 Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Robin Murphy <robin.murphy@arm.com>, devicetree@vger.kernel.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, devicetree@vger.kernel.org
 Cc: Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Felipe Balbi <felipe.balbi@linux.intel.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Viresh Kumar <viresh.kumar@linaro.org>, Randy Li <ayaka@soulik.info>, linux-kernel@vger.kernel.org, Vicente Bergas <vicencb@gmail.com>, linux-rockchip@lists.infradead.org, Tony Xie <tony.xie@rock-chips.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Rob Herring <robh+dt@kernel.org>, Collabora Kernel ML <kernel@collabora.com>, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUm9iaW4sCgpPbiAxMy82LzE5IDE4OjU2LCBSb2JpbiBNdXJwaHkgd3JvdGU6Cj4gT24gMTMv
-MDYvMjAxOSAxNzoyNywgRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSB3cm90ZToKPj4gQXMgcGVyIGJp
-bmRpbmcgZG9jdW1lbnRhdGlvbiBbMV0sIHRoZSBEV0MzIGNvcmUgc2hvdWxkIGhhdmUgdGhlICJy
-ZWYiLAo+PiAiYnVzX2Vhcmx5IiBhbmQgInN1c3BlbmQiIGNsb2Nrcy4gQXMgZXhwbGFpbmVkIGlu
-IHRoZSBiaW5kaW5nLCB0aG9zZQo+PiBjbG9ja3MgYXJlIHJlcXVpcmVkIGZvciBuZXcgcGxhdGZv
-cm1zIGJ1dCBub3QgZm9yIGV4aXN0aW5nIHBsYXRmb3Jtcwo+PiBiZWZvcmUgY29tbWl0IGZlOGFi
-ZjMzMmI4ZiAoInVzYjogZHdjMzogc3VwcG9ydCBjbG9ja3MgYW5kIHJlc2V0cyBmb3IKPj4gRFdD
-MyBjb3JlIikuCj4+Cj4+IEhvd2V2ZXIsIGFzIHRob3NlIGNsb2NrcyBhcmUgcmVhbGx5IHRyZWF0
-ZWQgYXMgcmVxdWlyZWQsIHRoaXMgZW5kcyB3aXRoCj4+IGhhdmluZyBzb21lIGFubm95aW5nIG1l
-c3NhZ2VzIHdoZW4gdGhlICJyb2NrY2hpcCxyazMzOTktZHdjMyIgaXMgdXNlZDoKPj4KPj4gW8Kg
-wqDCoCAxLjcyNDEwN10gZHdjMyBmZTgwMDAwMC5kd2MzOiBGYWlsZWQgdG8gZ2V0IGNsayAncmVm
-JzogLTIKPj4gW8KgwqDCoCAxLjczMTg5M10gZHdjMyBmZTkwMDAwMC5kd2MzOiBGYWlsZWQgdG8g
-Z2V0IGNsayAncmVmJzogLTIKPj4gW8KgwqDCoCAyLjQ5NTkzN10gZHdjMyBmZTgwMDAwMC5kd2Mz
-OiBGYWlsZWQgdG8gZ2V0IGNsayAncmVmJzogLTIKPj4gW8KgwqDCoCAyLjY0NzIzOV0gZHdjMyBm
-ZTkwMDAwMC5kd2MzOiBGYWlsZWQgdG8gZ2V0IGNsayAncmVmJzogLTIKPj4KPj4gSW4gb3JkZXIg
-dG8gcmVtb3ZlIHRob3NlIGFubm95aW5nIG1lc3NhZ2VzLCB1cGRhdGUgdGhlIERXQzMgaGFyZHdh
-cmUKPj4gbW9kdWxlIG5vZGUgYW5kIGFkZCBhbGwgdGhlIHJlcXVpcmVkIGNsb2Nrcy4gV2l0aCB0
-aGlzIGNoYW5nZSwgYm90aCwgdGhlCj4+IGdsdWUgbm9kZSBhbmQgdGhlIERXQzMgY29yZSBub2Rl
-LCBoYXZlIHRoZSBjbG9ja3MgZGVmaW5lZCwgYnV0IHRoYXQncwo+PiBub3QgcmVhbGx5IGEgcHJv
-YmxlbSBhbmQgdGhlcmUgaXNuJ3QgYSBzaWRlIGVmZmVjdCBvbiBkbyB0aGlzLiBTbywgd2UKPj4g
-Y2FuIGdldCByaWQgb2YgdGhlIGFubm95aW5nIGdldCBjbGsgZXJyb3IgbWVzc2FnZXMuCj4gCj4g
-Q2FuIHdlIG5vdCBqdXN0IG1vdmUgdGhlc2UgY2xvY2tzIGVudGlyZWx5IGZyb20gdGhlIGdsdWUg
-bGF5ZXIgdG8gdGhlIGNvcmUKPiBsYXllcj8gVGhhdCBkaWRuJ3Qgc2VlbSB0byBicmVhayB3aGVu
-IEkgdHJpZWQgaXQsIGFsdGhvdWdoIEknbGwgYWRtaXQgbXkKPiAndGVzdGluZycgd2FzIG5vIG1v
-cmUgdGhhbiBib290aW5nIGFuZCBtb3VudGluZyBhIFVTQiAzLjAgZmxhc2ggZHJpdmUsIG5vCj4g
-c3VzcGVuZCBvciBhbnl0aGluZyBmYW5jeS4KPiAKCkFGQUlDVCB1c2IgZG9lc24ndCBicmVhaywg
-YnV0IHdlIHdvbid0IGJyZWFrIGJhY2t3YXJkIGNvbXBhYmlsaXR5IHRoZW4/ICgvbWUKc3RpbGwg
-ZG9lc24ndCBrbm93IHdoZW4gYmFja3dhcmQgY29tcGFiaWxpdHkgaXMgcmVhbGx5IGltcG9ydGFu
-dCBvciBub3QpCgo+IE15IG93biBhdHRlbXB0IHRvIHNodXQgdXAgdGhlc2UgZXJyb3JzIGdvdCBz
-aWRldHJhY2tlZCBpbnRvIGMwYzYxNDcxZWY4NiAoInVzYjoKPiBkd2MzOiBvZi1zaW1wbGU6IENv
-bnZlcnQgdG8gYnVsayBjbGsgQVBJIiksIHRoZW4gYXBwYXJlbnRseSBzdGFsbGVkIDopCj4gCgpU
-aGVyZSB3YXMgYW55IG9mZiB0aGUgcmVjb3JkIGRpc2N1c3Npb24gYW5kIHN0YWxsZWQgb3Igc2lt
-cGx5IHlvdSBkaWRuJ3QgZ2V0CmZlZWRiYWNrPwoKSSdsbCB0YWtlIGEgbG9vay4KClRoYW5rcywK
-fiBFbnJpYwoKPiBSb2Jpbi4KPiAKPj4KPj4gWzFdIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
-aW5kaW5ncy91c2IvZHdjMy50eHQKPj4KPj4gU2lnbmVkLW9mZi1ieTogRW5yaWMgQmFsbGV0Ym8g
-aSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4KPj4gLS0tCj4+Cj4+IMKgIGFy
-Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kgfCA2ICsrKysrKwo+PiDCoCAx
-IGZpbGUgY2hhbmdlZCwgNiBpbnNlcnRpb25zKCspCj4+Cj4+IGRpZmYgLS1naXQgYS9hcmNoL2Fy
-bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpCj4+IGIvYXJjaC9hcm02NC9ib290L2R0
-cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+PiBpbmRleCAxOTZhYzliNzgwNzYuLmExNTM0OGQxODVj
-ZSAxMDA2NDQKPj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRz
-aQo+PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpCj4+IEBA
-IC00MTQsNiArNDE0LDkgQEAKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY29tcGF0aWJs
-ZSA9ICJzbnBzLGR3YzMiOwo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZWcgPSA8MHgw
-IDB4ZmU4MDAwMDAgMHgwIDB4MTAwMDAwPjsKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
-aW50ZXJydXB0cyA9IDxHSUNfU1BJIDEwNSBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+Owo+PiArwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCBjbG9ja3MgPSA8JmNydSBTQ0xLX1VTQjNPVEcwX1JFRj4sIDwm
-Y3J1IEFDTEtfVVNCM09URzA+LAo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
-PCZjcnUgU0NMS19VU0IzT1RHMF9TVVNQRU5EPjsKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
-Y2xvY2stbmFtZXMgPSAicmVmIiwgImJ1c19lYXJseSIsICJzdXNwZW5kIjsKPj4gwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgZHJfbW9kZSA9ICJvdGciOwo+PiDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCBwaHlzID0gPCZ1MnBoeTBfb3RnPiwgPCZ0Y3BoeTBfdXNiMz47Cj4+IMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIHBoeS1uYW1lcyA9ICJ1c2IyLXBoeSIsICJ1c2IzLXBoeSI7Cj4+
-IEBAIC00NDcsNiArNDUwLDkgQEAKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY29tcGF0
-aWJsZSA9ICJzbnBzLGR3YzMiOwo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZWcgPSA8
-MHgwIDB4ZmU5MDAwMDAgMHgwIDB4MTAwMDAwPjsKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgaW50ZXJydXB0cyA9IDxHSUNfU1BJIDExMCBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+Owo+PiAr
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjbG9ja3MgPSA8JmNydSBTQ0xLX1VTQjNPVEcxX1JFRj4s
-IDwmY3J1IEFDTEtfVVNCM09URzE+LAo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgPCZjcnUgU0NMS19VU0IzT1RHMV9TVVNQRU5EPjsKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgY2xvY2stbmFtZXMgPSAicmVmIiwgImJ1c19lYXJseSIsICJzdXNwZW5kIjsKPj4gwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgZHJfbW9kZSA9ICJvdGciOwo+PiDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCBwaHlzID0gPCZ1MnBoeTFfb3RnPiwgPCZ0Y3BoeTFfdXNiMz47Cj4+IMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgIHBoeS1uYW1lcyA9ICJ1c2IyLXBoeSIsICJ1c2IzLXBoeSI7
-Cj4+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51
-eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1h
-cm0ta2VybmVsCg==
+On 13/06/2019 18:20, Enric Balletbo i Serra wrote:
+> Hi Robin,
+> 
+> On 13/6/19 18:56, Robin Murphy wrote:
+>> On 13/06/2019 17:27, Enric Balletbo i Serra wrote:
+>>> As per binding documentation [1], the DWC3 core should have the "ref",
+>>> "bus_early" and "suspend" clocks. As explained in the binding, those
+>>> clocks are required for new platforms but not for existing platforms
+>>> before commit fe8abf332b8f ("usb: dwc3: support clocks and resets for
+>>> DWC3 core").
+>>>
+>>> However, as those clocks are really treated as required, this ends with
+>>> having some annoying messages when the "rockchip,rk3399-dwc3" is used:
+>>>
+>>> [    1.724107] dwc3 fe800000.dwc3: Failed to get clk 'ref': -2
+>>> [    1.731893] dwc3 fe900000.dwc3: Failed to get clk 'ref': -2
+>>> [    2.495937] dwc3 fe800000.dwc3: Failed to get clk 'ref': -2
+>>> [    2.647239] dwc3 fe900000.dwc3: Failed to get clk 'ref': -2
+>>>
+>>> In order to remove those annoying messages, update the DWC3 hardware
+>>> module node and add all the required clocks. With this change, both, the
+>>> glue node and the DWC3 core node, have the clocks defined, but that's
+>>> not really a problem and there isn't a side effect on do this. So, we
+>>> can get rid of the annoying get clk error messages.
+>>
+>> Can we not just move these clocks entirely from the glue layer to the core
+>> layer? That didn't seem to break when I tried it, although I'll admit my
+>> 'testing' was no more than booting and mounting a USB 3.0 flash drive, no
+>> suspend or anything fancy.
+>>
+> 
+> AFAICT usb doesn't break, but we won't break backward compability then? (/me
+> still doesn't know when backward compability is really important or not)
+
+Ah, fair point - I was imagining the glue layer's heavy-handed "turn 
+everything on" approach potentially interfering with the core layer's 
+ability to exert finer-grained control of the clocks it knows more 
+about, but the "old kernel, new DT" situation might indeed be a problem. 
+I guess that's Heiko's call in the end. Plus I'm no CCF expert so my 
+concern might be unfounded anyway.
+
+>> My own attempt to shut up these errors got sidetracked into c0c61471ef86 ("usb:
+>> dwc3: of-simple: Convert to bulk clk API"), then apparently stalled :)
+>>
+> 
+> There was any off the record discussion and stalled or simply you didn't get
+> feedback?
+
+More that the 3399 board got put away in a freak "tidying the kitchen" 
+incident, and I've just had too many other things on the go since :)
+
+Robin.
+
+> 
+> I'll take a look.
+> 
+> Thanks,
+> ~ Enric
+> 
+>> Robin.
+>>
+>>>
+>>> [1] Documentation/devicetree/bindings/usb/dwc3.txt
+>>>
+>>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>>> ---
+>>>
+>>>    arch/arm64/boot/dts/rockchip/rk3399.dtsi | 6 ++++++
+>>>    1 file changed, 6 insertions(+)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>>> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>>> index 196ac9b78076..a15348d185ce 100644
+>>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>>> @@ -414,6 +414,9 @@
+>>>                compatible = "snps,dwc3";
+>>>                reg = <0x0 0xfe800000 0x0 0x100000>;
+>>>                interrupts = <GIC_SPI 105 IRQ_TYPE_LEVEL_HIGH 0>;
+>>> +            clocks = <&cru SCLK_USB3OTG0_REF>, <&cru ACLK_USB3OTG0>,
+>>> +                 <&cru SCLK_USB3OTG0_SUSPEND>;
+>>> +            clock-names = "ref", "bus_early", "suspend";
+>>>                dr_mode = "otg";
+>>>                phys = <&u2phy0_otg>, <&tcphy0_usb3>;
+>>>                phy-names = "usb2-phy", "usb3-phy";
+>>> @@ -447,6 +450,9 @@
+>>>                compatible = "snps,dwc3";
+>>>                reg = <0x0 0xfe900000 0x0 0x100000>;
+>>>                interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>;
+>>> +            clocks = <&cru SCLK_USB3OTG1_REF>, <&cru ACLK_USB3OTG1>,
+>>> +                 <&cru SCLK_USB3OTG1_SUSPEND>;
+>>> +            clock-names = "ref", "bus_early", "suspend";
+>>>                dr_mode = "otg";
+>>>                phys = <&u2phy1_otg>, <&tcphy1_usb3>;
+>>>                phy-names = "usb2-phy", "usb3-phy";
+>>>
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+> 
