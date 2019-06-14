@@ -1,96 +1,54 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Fix multiple thermal zones
- conflict in rk3399.dtsi
-Date: Fri, 14 Jun 2019 16:30:13 +0200
-Message-ID: <9bf85c22-f1ba-3dbc-0b67-17e124484fa1@linaro.org>
-References: <20190604165802.7338-1-daniel.lezcano@linaro.org>
- <5188064.YWmxIpmbGp@phil> <55b9018e-672e-522b-d0a0-c5655be0f353@linaro.org>
- <e5a4f850-27e0-cad3-04bd-6c004fca2b81@arm.com>
+From: Justin Swartz <justin.swartz@risingedge.co.za>
+Subject: Re: [PATCH] ARM: dts: rockchip: add display nodes for rk322x
+Date: Fri, 14 Jun 2019 18:22:55 +0200
+Message-ID: <9e2b1e26bedfd30e9295d64865819c99@risingedge.co.za>
+References: <20190613101305.30491-1-justin.swartz@risingedge.co.za>
+ <1854794.0zkvb3x0FP@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <e5a4f850-27e0-cad3-04bd-6c004fca2b81@arm.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Emil Renner Berthing <kernel@esmil.dk>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, Tony Xie <tony.xie@rock-chips.com>, Viresh Kumar <viresh.kumar@linaro.org>, Randy Li <ayaka@soulik.info>, linux-kernel@vger.kernel.org, Vicente Bergas <vicencb@gmail.com>, dianders@chromium.org, edubezval@gmail.com, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Rob Herring <robh+dt@kernel.org>, Klaus Goger <klaus.goger@theobroma-systems.com>, Kukjin Kim <kgene@kernel.org>, manivannan.sadhasivam@linaro.org, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1854794.0zkvb3x0FP@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTQvMDYvMjAxOSAxNjowMiwgUm9iaW4gTXVycGh5IHdyb3RlOgo+IE9uIDE0LzA2LzIwMTkg
-MTQ6MDMsIERhbmllbCBMZXpjYW5vIHdyb3RlOgo+PiBPbiAxNC8wNi8yMDE5IDExOjM1LCBIZWlr
-byBTdHVlYm5lciB3cm90ZToKPj4+IEhpIERhbmllbCwKPj4+Cj4+PiBBbSBEaWVuc3RhZywgNC4g
-SnVuaSAyMDE5LCAxODo1Nzo1NyBDRVNUIHNjaHJpZWIgRGFuaWVsIExlemNhbm86Cj4+Pj4gQ3Vy
-cmVudGx5IHRoZSBjb21tb24gdGhlcm1hbCB6b25lcyBkZWZpbml0aW9ucyBmb3IgdGhlIHJrMzM5
-OSBhc3N1bWVzCj4+Pj4gbXVsdGlwbGUgdGhlcm1hbCB6b25lcyBhcmUgc3VwcG9ydGVkIGJ5IHRo
-ZSBnb3Zlcm5vcnMuIFRoaXMgaXMgbm90IHRoZQo+Pj4+IGNhc2UgYW5kIGVhY2ggdGhlcm1hbCB6
-b25lIGhhcyBpdHMgb3duIGdvdmVybm9yIGluc3RhbmNlIGFjdGluZwo+Pj4+IGluZGl2aWR1YWxs
-eSB3aXRob3V0IGNvbGxhYm9yYXRpb24gd2l0aCBvdGhlciBnb3Zlcm5vcnMuCj4+Pj4KPj4+PiBB
-cyB0aGUgY29vbGluZyBkZXZpY2UgZm9yIHRoZSBDUFUgYW5kIHRoZSBHUFUgdGhlcm1hbCB6b25l
-cyBpcyB0aGUKPj4+PiBzYW1lLCBlYWNoIGdvdmVybm9ycyB0YWtlIGRpZmZlcmVudCBkZWNpc2lv
-bnMgZm9yIHRoZSBzYW1lIGNvb2xpbmcKPj4+PiBkZXZpY2UgbGVhZGluZyB0byBjb25mbGljdGlu
-ZyBpbnN0cnVjdGlvbnMgYW5kIGFuIGVycmF0aWMgYmVoYXZpb3IuCj4+Pj4KPj4+PiBBcyB0aGUg
-Y29vbGluZy1tYXBzIGlzIGFib3V0IHRvIGJlY29tZSBhbiBvcHRpb25hbCBwcm9wZXJ0eSwgbGV0
-J3MKPj4+PiByZW1vdmUgdGhlIGNwdSBjb29saW5nIGRldmljZSBtYXAgZnJvbSB0aGUgR1BVIHRo
-ZXJtYWwgem9uZS4KPj4+Pgo+Pj4+IFNpZ25lZC1vZmYtYnk6IERhbmllbCBMZXpjYW5vIDxkYW5p
-ZWwubGV6Y2Fub0BsaW5hcm8ub3JnPgo+Pj4+IC0tLQo+Pj4+IMKgIGFyY2gvYXJtNjQvYm9vdC9k
-dHMvcm9ja2NoaXAvcmszMzk5LmR0c2kgfCA5IC0tLS0tLS0tLQo+Pj4+IMKgIDEgZmlsZSBjaGFu
-Z2VkLCA5IGRlbGV0aW9ucygtKQo+Pj4+Cj4+Pj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kKPj4+PiBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
-a2NoaXAvcmszMzk5LmR0c2kKPj4+PiBpbmRleCAxOTZhYzliNzgwNzYuLmUxMzU3ZTBmNjBmNyAx
-MDA2NDQKPj4+PiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNp
-Cj4+Pj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+Pj4+
-IEBAIC04MjEsMTUgKzgyMSw2IEBACj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIHR5cGUgPSAiY3JpdGljYWwiOwo+Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgfTsKPj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB9Owo+Pj4+
-IC0KPj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjb29saW5nLW1hcHMgewo+Pj4+IC3CoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbWFwMCB7Cj4+Pj4gLcKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgIHRyaXAgPSA8JmdwdV9hbGVydDA+Owo+Pj4+IC3CoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjb29saW5nLWRldmljZSA9Cj4+Pj4gLcKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPCZjcHVfYjAgVEhF
-Uk1BTF9OT19MSU1JVCBUSEVSTUFMX05PX0xJTUlUPiwKPj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8JmNwdV9iMSBUSEVSTUFMX05PX0xJTUlUIFRI
-RVJNQUxfTk9fTElNSVQ+Owo+Pj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfTsK
-Pj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB9Owo+Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoCB9
-Owo+Pj4+IMKgwqDCoMKgwqAgfTsKPj4+Cj4+PiBteSBrbm93bGVkZ2Ugb2YgdGhlIHRoZXJtYWwg
-ZnJhbWV3b3JrIGlzIG5vdCB0aGF0IGJpZywgYnV0IHdoYXQgYWJvdXQKPj4+IHRoZQo+Pj4gcmsz
-Mzk5LWRldmljZXMgd2hpY2ggZnVydGhlciBkZXRhaWwgdGhlIGNvb2xpbmctbWFwcyBsaWtlCj4+
-PiByazMzOTktZ3J1LWtldmluCj4+PiBhbmQgdGhlIHJrMzM5OS1uYW5vcGMtdDQgd2l0aCBpdHMg
-ZmFuLWhhbmRsaW5nIGluIHRoZSBjb29saW5nLW1hcHM/Cj4+Cj4+IFRoZSByazMzOTktZ3J1LWtl
-dmluIGlzIGNvcnJlY3QuCj4+Cj4+IFRoZSByazMzOTktbmFub3BjLXQ0IGlzIG5vdCBjb3JyZWN0
-IGJlY2F1c2UgdGhlIGNwdSBhbmQgdGhlIGdwdSBhcmUKPj4gc2hhcmluZyB0aGUgc2FtZSBjb29s
-aW5nIGRldmljZSAodGhlIGZhbikuIFRoZXJlIGFyZSBkaWZmZXJlbnQKPj4gY29uZmlndXJhdGlv
-bnM6Cj4+Cj4+IDEuIFRoZSBjcHUgY29vbGluZyBkZXZpY2UgZm9yIHRoZSBDUFUgYW5kIHRoZSBm
-YW4gZm9yIHRoZSBHUFUKPj4KPj4gMi4gRGlmZmVyZW50IHRyaXAgcG9pbnRzIG9uIHRoZSBDUFUg
-dGhlcm1hbCB6b25lLCBlZy4gb25lIHRvIGZvciB0aGUgQ1BVCj4+IGNvb2xpbmcgZGV2aWNlIGFu
-ZCBhbm90aGVyIG9uZSBmb3IgdGhlIGZhbi4KPj4KPj4gVGhlcmUgYXJlIHNvbWUgdmFyaWFudCBm
-b3IgdGhlIGFib3ZlLiBJZiB0aGlzIGJvYXJkIGlzIG5vdCBvbiBiYXR0ZXJ5LAo+PiB5b3UgbWF5
-IHdhbnQgdG8gZ2l2ZSBwcmlvcml0eSB0byB0aGUgdGhyb3VnaHB1dCwgc28gYWN0aXZhdGUgdGhl
-IGZhbgo+PiBmaXJzdCBhbmQgdGhlbiBjb29sIGRvd24gdGhlIENQVS4gT3IgaWYgeW91IGFyZSBv
-biBiYXR0ZXJ5LCB5b3UgbWF5IHdhbnQKPj4gdG8gaW52ZXJ0IHRoZSB0cmlwIHBvaW50cy4KPj4K
-Pj4gSW4gYW55IGNhc2UsIGl0IGlzIG5vdCBwb3NzaWJsZSB0byBzaGFyZSB0aGUgc2FtZSBjb29s
-aW5nIGRldmljZSBmb3IKPj4gZGlmZmVyZW50IHRoZXJtYWwgem9uZXMuCj4gCj4gT0ssIHRoYW5r
-cyBmb3IgdGhlIGNsYXJpZmljYXRpb24uIEknbGwgZ2V0IG15IGJvYXJkIHNldCB1cCBhZ2FpbiB0
-bwo+IGZpZ3VyZSBvdXQgdGhlIGJlc3QgZml4IGZvciByazMzOTktbmFub3BjLXQ0IChGV0lXIG1v
-c3QgdXNlcnMgYXJlCj4gcHJvYmFibHkganVzdCB1c2luZyBwYXNzaXZlIGNvb2xpbmcgb3IgYSBw
-bGFpbiBEQyBmYW4gYW55d2F5KS4gWW91IG1pZ2h0Cj4gd2FudCB0byByYWlzZSB0aGlzIGlzc3Vl
-IHdpdGggdGhlIG1haW50YWluZXJzIG9mCj4gYXJjaC9hcm0vYm9vdC9kdHMvZXh5bm9zNTQyMi1v
-ZHJvaWR4dTMtY29tbW9uLmR0c2ksIHNpbmNlIHRoZQo+IGV2ZXJ5dGhpbmctc2hhcmVkLWJ5LWV2
-ZXJ5dGhpbmcgYXBwcm9hY2ggaW4gdGhlcmUgd2FzIHdoYXQgSSB1c2VkIGFzIGEKPiByZWZlcmVu
-Y2UuCgpDYydlZDogS3VramluIEtpbSBhbmQgS3J6eXN6dG9mIEtvemxvd3NraQoKRWFzeSA6KQoK
-Ci0tIAogPGh0dHA6Ly93d3cubGluYXJvLm9yZy8+IExpbmFyby5vcmcg4pSCIE9wZW4gc291cmNl
-IHNvZnR3YXJlIGZvciBBUk0gU29DcwoKRm9sbG93IExpbmFybzogIDxodHRwOi8vd3d3LmZhY2Vi
-b29rLmNvbS9wYWdlcy9MaW5hcm8+IEZhY2Vib29rIHwKPGh0dHA6Ly90d2l0dGVyLmNvbS8jIS9s
-aW5hcm9vcmc+IFR3aXR0ZXIgfAo8aHR0cDovL3d3dy5saW5hcm8ub3JnL2xpbmFyby1ibG9nLz4g
-QmxvZwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxp
-bnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LWFybS1rZXJuZWwK
+Hi Heiko,
+
+On 2019-06-14 11:15, Heiko Stuebner wrote:
+
+> Hi Justin,
+> 
+> Am Donnerstag, 13. Juni 2019, 12:13:04 CEST schrieb Justin Swartz:
+> 
+>> Add display_subsystem, hdmi_phy, vop, and hdmi device nodes plus
+>> a few hdmi pinctrl entries to allow for HDMI output.
+>> 
+>> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+> 
+> Overall looks good, but in combination with the clock-patch you posted,
+> I'd really prefer if we could try a slightly different approach.
+> 
+> Hard register-level settings in the clock driver look bad and tend to
+> cause problems later on, so I've adapted things a bit in [0] (untested)
+> and would be glad if you could give it a try on actual hardware.
+
+I can confirm that your approach works properly here.
+
+> The hdmiphy itself is a clock-provider for its pll and therefore the
+> assigned-clock* properties into the hdmi controller, as the phy needs
+> to probe before trying to set clocks.
+> But in theory this should achieve the same result of reparenting the
+> system's hdmiphy clock to the actual output of the phy-pll.
+> 
+> I've also moved the iommu-cells fix to a separate commit.
+> 
+> Please test, thanks
+> Heiko
+> 
+> [0] https://github.com/mmind/linux-rockchip/commits/wip/rk3229-hdmi
+
+Thanks
+Justin
