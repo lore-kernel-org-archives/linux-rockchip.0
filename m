@@ -1,102 +1,137 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: rockchip: dts: sapphire: Fix USB3 Type-C.
-Date: Fri, 14 Jun 2019 11:47:21 +0200
-Message-ID: <12195113.EL5Iorepzr@phil>
-References: <574f2bae-0121-4cc7-ad9a-5ba32315d71b@gmail.com>
- <20190522150717.1748-1-vicencb@gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/2] clk: rockchip: add clock for the watchdog pclk on
+ rk3328
+Date: Fri, 14 Jun 2019 11:50:24 +0200
+Message-ID: <5657669.4RvfzeBcXs@phil>
+References: <20190605235714.22432-1-papadakospan@gmail.com>
+ <3485393.4UdOu2YNQE@phil> <1559821340.1384.0@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190522150717.1748-1-vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1559821340.1384.0@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: "Leonidas P. Papadakos" <papadakospan@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, itdaniher@gmail.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Vicente,
+Hi,
 
-Am Mittwoch, 22. Mai 2019, 17:07:17 CEST schrieb Vicente Bergas:
-> Before this patch, the Type-C port on the Sapphire board is dead.
+Am Donnerstag, 6. Juni 2019, 13:42:20 CEST schrieb Leonidas P. Papadakos:
 > 
-> Applying only the power supply part of this patch, makes the port work
-> for about 4 seconds at start-up. This is a sample trace with a memory
-> stick plugged in:
-> 1.- The memory stick LED lights on and kernel reports:
-> [    4.782999] scsi 0:0:0:0: Direct-Access USB DISK PMAP PQ: 0 ANSI: 4
-> [    5.904580] sd 0:0:0:0: [sdb] 3913344 512-byte logical blocks: (2.00 GB/1.87 GiB)
-> [    5.906860] sd 0:0:0:0: [sdb] Write Protect is off
-> [    5.908973] sd 0:0:0:0: [sdb] Mode Sense: 23 00 00 00
-> [    5.909122] sd 0:0:0:0: [sdb] No Caching mode page found
-> [    5.911214] sd 0:0:0:0: [sdb] Assuming drive cache: write through
-> [    5.951585]  sdb: sdb1
-> [    5.954816] sd 0:0:0:0: [sdb] Attached SCSI removable disk
-> 2.- 4 seconds later the memory stick LED lights off and kernel reports:
-> [    9.082822] phy phy-ff770000.syscon:usb2-phy@e450.2: charger = USB_DCP_CHARGER
-> 3.- After a minute the kernel reports:
-> [   71.666761] usb 5-1: USB disconnect, device number 2
-> It has been checked that, although the LED is off, VBUS is present.
+> Hi,
+> > 
+> > Am Donnerstag, 6. Juni 2019, 01:57:13 CEST schrieb Leonidas P. 
+> > Papadakos:
+> >>  From: <itdaniher@gmail.com>
+> > 
+> > Why is the From different from the Signed-off-by? Would also need a 
+> > full name.
+> > If the patch is from you, please just use the same From as for the 
+> > Signed-off-by.
+> > 
 > 
-> Applying the full patch makes it work.
-> It has only been tested in host mode.
-> 
-> Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> I mistakenly though this was the way to credit someone for a patch, but 
+> it seems to be different.
+> I'll Cc: the author of this patch
 
-having to set the regulator to always-on indicates more an issue
-with the phy? Because in theory the phy-driver should just enable the
-supplying regulator on power-on.
+Were you able yet to take a look at the clock-patches I Cc'ed you on
+and look at reworking your patch accrodingly?
 
-Like would it work to just add the regulator to the host-port of the
-phy without enabling it all the time?
 
 Thanks
 Heiko
 
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-> index 04623e52ac5d..72000a7b666f 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-> @@ -112,6 +112,7 @@
->  		pinctrl-names = "default";
->  		pinctrl-0 = <&vcc5v0_typec0_en>;
->  		regulator-name = "vcc5v0_typec0";
-> +		regulator-always-on;
->  		vin-supply = <&vcc_sys>;
->  	};
->  
-> @@ -565,12 +566,11 @@
->  	status = "okay";
->  
->  	u2phy0_otg: otg-port {
-> -		phy-supply = <&vcc5v0_typec0>;
->  		status = "okay";
->  	};
->  
->  	u2phy0_host: host-port {
-> -		phy-supply = <&vcc5v0_host>;
-> +		phy-supply = <&vcc5v0_typec0>;
->  		status = "okay";
->  	};
->  };
-> @@ -620,7 +620,7 @@
->  
->  &usbdrd_dwc3_0 {
->  	status = "okay";
-> -	dr_mode = "otg";
-> +	dr_mode = "host";
->  };
->  
->  &usbdrd3_1 {
+> >> 
+> >>  Following the discussion here:
+> >>  https://github.com/rockchip-linux/kernel/issues/123
+> >> 
+> >>  it can be seen that these are the changes needed to enable the use 
+> >> of the hardware watchdog in the rk3328 SoC.
+> >> 
+> >>  This is in line with past changes for the rk3288:
+> >>  
+> >> http://lists.infradead.org/pipermail/linux-rockchip/2015-January/002314.html
+> >> 
+> >>  Signed-off-by: Leonidas P. Papadakos <papadakospan@gmail.com>
+> >>  ---
+> >>   drivers/clk/rockchip/clk-rk3328.c      | 9 +++++++++
+> >>   include/dt-bindings/clock/rk3328-cru.h | 1 +
+> >>   2 files changed, 10 insertions(+)
+> >> 
+> >>  diff --git a/drivers/clk/rockchip/clk-rk3328.c 
+> >> b/drivers/clk/rockchip/clk-rk3328.c
+> >>  index 076b9777a..546ee0ab7 100644
+> >>  --- a/drivers/clk/rockchip/clk-rk3328.c
+> >>  +++ b/drivers/clk/rockchip/clk-rk3328.c
+> >>  @@ -876,6 +876,8 @@ static const char *const 
+> >> rk3328_critical_clocks[] __initconst = {
+> >> 
+> >>   static void __init rk3328_clk_init(struct device_node *np)
+> >>   {
+> >>  +	struct clk *clk;
+> >>  +
+> >>   	struct rockchip_clk_provider *ctx;
+> >>   	void __iomem *reg_base;
+> >> 
+> >>  @@ -892,6 +894,13 @@ static void __init rk3328_clk_init(struct 
+> >> device_node *np)
+> >>   		return;
+> >>   	}
+> >> 
+> >>  +	clk = clk_register_fixed_factor(NULL, "pclk_wdt", "pclk_bus", 0, 
+> >> 1, 1);
+> >>  +	if (IS_ERR(clk))
+> >>  +		pr_warn("%s: could not register clock pclk_wdt: %ld\n",
+> >>  +			__func__, PTR_ERR(clk));
+> >>  +	else
+> >>  +		rockchip_clk_add_lookup(ctx, clk, PCLK_WDT);
+> >>  +
+> > 
+> > I've just Cc'ed you on 2 patches adding a SGRF_GATE clock-type. Please
+> > use that as base for you rk3328-wdt-clock, so that we don't introduce 
+> > more
+> > boilderplate code.
+> > 
+> > 
+> >>   	rockchip_clk_register_plls(ctx, rk3328_pll_clks,
+> >>   				   ARRAY_SIZE(rk3328_pll_clks),
+> >>   				   RK3328_GRF_SOC_STATUS0);
+> > 
+> >>  diff --git a/include/dt-bindings/clock/rk3328-cru.h 
+> >> b/include/dt-bindings/clock/rk3328-cru.h
+> >>  index afb811340..555b4ff66 100644
+> >>  --- a/include/dt-bindings/clock/rk3328-cru.h
+> >>  +++ b/include/dt-bindings/clock/rk3328-cru.h
+> >>  @@ -164,6 +164,7 @@
+> >>   #define PCLK_DCF		233
+> >>   #define PCLK_SARADC		234
+> >>   #define PCLK_ACODECPHY		235
+> >>  +#define PCLK_WDT		236
+> >> 
+> >>   /* hclk gates */
+> >>   #define HCLK_PERI		308
+> > 
+> > please split the addition of the clock-id into a separate patch only 
+> > adding
+> > said id.
+> > 
+> > 
+> > Thanks
+> > Heiko
+> > 
+> 
+> I know less than him on this, but I want the feedback to be visible in 
+> the Cc:
+> 
+> 
 > 
