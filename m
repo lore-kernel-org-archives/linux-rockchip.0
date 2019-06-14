@@ -1,13 +1,14 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [RFC/WIP] drm/rockchip: Support CRTC gamma LUT
-Date: Fri, 14 Jun 2019 13:05:33 -0700
-Message-ID: <CAD=FV=U84U0TaC=VUXeggCDJJNkPOJYmOL0JNT1Lf7Gecv-5Aw@mail.gmail.com>
-References: <20190613192244.5447-1-ezequiel@collabora.com>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH v2 17/28] drivers: Introduce bus_find_device_by_of_node()
+ helper
+Date: Fri, 14 Jun 2019 22:32:43 +0200
+Message-ID: <20190614203243.GC7991@kunai>
+References: <1560534863-15115-1-git-send-email-suzuki.poulose@arm.com>
+ <1560534863-15115-18-git-send-email-suzuki.poulose@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0248850129=="
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190613192244.5447-1-ezequiel@collabora.com>
+In-Reply-To: <1560534863-15115-18-git-send-email-suzuki.poulose@arm.com>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -17,57 +18,82 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Boris Brezillon <boris.brezillon@collabora.com>, Sean Paul <seanpaul@chromium.org>, kernel@collabora.com
+To: Suzuki K Poulose <suzuki.poulose@arm.com>
+Cc: devicetree@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>, Mathieu Poirier <mathieu.poirier@linaro.org>, rafael@kernel.org, Maxime Ripard <maxime.ripard@bootlin.com>, gregkh@linuxfoundation.org, Takashi Iwai <tiwai@suse.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Liam Girdwood <lgirdwood@gmail.com>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, linux-i2c@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-spi@vger.kernel.org, Frank Rowand <frowand.list@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBUaHUsIEp1biAxMywgMjAxOSBhdCAxMjoyMyBQTSBFemVxdWllbCBHYXJjaWEgPGV6
-ZXF1aWVsQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+Cj4gQEAgLTE3NDQsNiArMTc5Myw0MSBAQCBp
-bnQgcm9ja2NoaXBfZHJtX3dhaXRfdmFjdF9lbmQoc3RydWN0IGRybV9jcnRjICpjcnRjLCB1bnNp
-Z25lZCBpbnQgbXN0aW1lb3V0KQo+ICB9Cj4gIEVYUE9SVF9TWU1CT0wocm9ja2NoaXBfZHJtX3dh
-aXRfdmFjdF9lbmQpOwo+Cj4gK3N0YXRpYyBpbnQgdm9wX2dhbW1hX2x1dF9yZXF1ZXN0KHN0cnVj
-dCBkZXZpY2UgKmRldiwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3Qg
-cmVzb3VyY2UgKnJlcywgc3RydWN0IHZvcCAqdm9wKQo+ICt7Cj4gKyAgICAgICByZXNvdXJjZV9z
-aXplX3Qgb2Zmc2V0ID0gdm9wLT5kYXRhLT5nYW1tYV9sdXRfYWRkcl9vZmY7Cj4gKyAgICAgICBy
-ZXNvdXJjZV9zaXplX3Qgc2l6ZSA9IFZPUF9HQU1NQV9MVVRfU0laRSAqIDQ7Cj4gKwo+ICsgICAg
-ICAgLyoKPiArICAgICAgICAqIFNvbWUgU29DcyAoZS5nLiBSSzMyODgpIGhhdmUgdGhlIGdhbW1h
-IExVVCBhZGRyZXNzIGFmdGVyCj4gKyAgICAgICAgKiB0aGUgTU1VIHJlZ2lzdGVycywgd2hpY2gg
-bWVhbnMgd2UgY2FuJ3QgcmVxdWVzdCBhbmQgaW9yZW1hcAo+ICsgICAgICAgICogdGhlIGVudGly
-ZSByZWdpc3RlciBzZXQuIE90aGVyIChlLmcuIFJLMzM5OSkgaGF2ZSBnYW1tYSBMVVQKPiArICAg
-ICAgICAqIGFkZHJlc3MgYmVmb3JlIE1NVS4KPiArICAgICAgICAqCj4gKyAgICAgICAgKiBUaGVy
-ZWZvcmUsIHdlIG5lZWQgdG8gcmVxdWVzdCBhbmQgaW9yZW1hcCB0aG9zZSB0aGF0IGhhdmVuJ3QK
-PiArICAgICAgICAqIGJlZW4gYWxyZWFkeS4KPiArICAgICAgICAqLwo+ICsgICAgICAgaWYgKHZv
-cC0+bGVuID49IChvZmZzZXQgKyBzaXplKSkgewo+ICsgICAgICAgICAgICAgICB2b3AtPmx1dF9y
-ZWdzID0gdm9wLT5yZWdzICsgb2Zmc2V0Owo+ICsgICAgICAgICAgICAgICByZXR1cm4gMDsKPiAr
-ICAgICAgIH0KPiArCj4gKyAgICAgICBpZiAoIWRldm1fcmVxdWVzdF9tZW1fcmVnaW9uKGRldiwg
-cmVzLT5zdGFydCArIG9mZnNldCwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgc2l6ZSwgZGV2X25hbWUoZGV2KSkpIHsKPiArICAgICAgICAgICAgICAgZGV2X3dhcm4oZGV2
-LCAiY2FuJ3QgcmVxdWVzdCBnYW1tYSBsdXQgcmVnaW9uXG4iKTsKPiArICAgICAgICAgICAgICAg
-cmV0dXJuIC1FQlVTWTsKPiArICAgICAgIH0KPiArCj4gKyAgICAgICB2b3AtPmx1dF9yZWdzID0g
-ZGV2bV9pb3JlbWFwKGRldiwgcmVzLT5zdGFydCArIG9mZnNldCwgc2l6ZSk7Cj4gKyAgICAgICBp
-ZiAoIXZvcC0+bHV0X3JlZ3MpIHsKPiArICAgICAgICAgICAgICAgZGV2X2VycihkZXYsICJjYW4n
-dCBpb3JlbWFwIGdhbW1hIGx1dCBhZGRyZXNzXG4iKTsKPiArICAgICAgICAgICAgICAgZGV2bV9y
-ZWxlYXNlX21lbV9yZWdpb24oZGV2LCByZXMtPnN0YXJ0ICsgb2Zmc2V0LCBzaXplKTsKPiArICAg
-ICAgICAgICAgICAgcmV0dXJuIC1FTk9NRU07Cj4gKyAgICAgICB9CgpJJ20gY3VyaW91cyBoZXJl
-LiAgSSB3YXMgYWx3YXlzIHVuZGVyIHRoZSBpbXByZXNzaW9uIHRoYXQgeW91IHdlcmUKc3VwcG9z
-ZWQgdG8gc3BlY2lmeSBhbGwgb2YgeW91ciBtZW1vcnkgcmVnaW9ucyBpbiB0aGUgZGV2aWNlIHRy
-ZWUuCi4uLmJ1dCBoZXJlIHRoZSBkZXZpY2UgdHJlZSBvbiByazMyODggc2F5czoKCnZvcGI6IHZv
-cEBmZjkzMDAwMCB7CiAgICBjb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzI4OC12b3AiOwogICAg
-cmVnID0gPDB4MCAweGZmOTMwMDAwIDB4MCAweDE5Yz47CiAgICAuLi4KfTsKCi4uLmFuZCB3ZSdy
-ZSBub3cgbWFwcGluZyA0MDk2IGJ5dGVzIHN0YXJ0aW5nIGF0IDB4ZmY5MzEwMDAuICBJcyB0aGF0
-CnJlYWxseSBsZWdpdD8gIFdvdWxkbid0IGl0IGJlIGJldHRlciB0byBwdXQgdGhpcyBleHRyYSBt
-ZW1vcnkgcmFuZ2UgaW4KdGhlIGR0cz8KCkhybSwgYnV0IHRoZW4gSSBndWVzcyB5b3UgbmVlZCB0
-byBmaWd1cmUgb3V0IHdoYXQgdG8gZG8gYWJvdXQgb2xkZXIKZGV2aWNlIHRyZWVzLiAgRG8geW91
-IGRpc2FibGUgdGhlIGdhbW1hIExVVCBmZWF0dXJlPyAgLi4ub3IgZG8geW91IGRvCmV4YWN0bHkg
-d2hhdCB0aGUgY29kZSBoZXJlIGlzIGRvaW5nIGFuZCBqdXN0IG1hcCBpdCBhbnl3YXk/ICBJIGd1
-ZXNzCnlvdSBjb3VsZCBqdXN0IGtlZXAgdGhlIGNvZGUgaGVyZSAoYW5kIGl0J2xsIHdvcmsgZmlu
-ZSksIGJ1dCBtYXliZSBpbgpwYXJhbGxlbCB3ZSBzaG91bGQgYWRkIGl0IHRvIHRoZSAuZHRzIGZp
-bGUgYW5kIGJpbmRpbmdzPwoKLS0tCgpJIHdpbGwgc2F5IHRoYXQsIHRob3VnaCBJIGRvbid0IGtu
-b3cgbXVjaCAoYW55dGhpbmc/KSBhYm91dCBnYW1tYQpMVVRzLCBJIHJhbiB0aGUgQ2hyb21lIE9T
-ICJnYW1tYV90ZXN0IiBwcm9ncmFtIGFuZCBzYXcgYSBwcmV0dHkgUkdCCmdyYWRpZW50IG9uIHRo
-ZSBib3RoIHRoZSBpbnRlcm5hbCBzY3JlZW4gYW5kIEhETUkgbW9uaXRvciBvbiBteQpyazMyODgt
-dmV5cm9uLWplcnJ5LiAgVGh1czoKClRlc3RlZC1ieTogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRl
-cnNAY2hyb21pdW0ub3JnPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
-cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWw=
+
+--===============0248850129==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="8NvZYKFJsRX2Djef"
+Content-Disposition: inline
+
+
+--8NvZYKFJsRX2Djef
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Jun 14, 2019 at 06:54:12PM +0100, Suzuki K Poulose wrote:
+> Add a wrapper to bus_find_device() to search for a device
+> by the of_node pointer, reusing the generic match function.
+> Also convert the existing users to make use of the new helper.
+>=20
+> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+> Cc: Maxime Ripard <maxime.ripard@bootlin.com>
+> Cc: dri-devel@lists.freedesktop.org
+> Cc: David Airlie <airlied@linux.ie>
+> Cc: Daniel Vetter <daniel@ffwll.ch>
+> Cc: devicetree@vger.kernel.org
+> Cc: Florian Fainelli <f.fainelli@gmail.com>
+> Cc: Frank Rowand <frowand.list@gmail.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Liam Girdwood <lgirdwood@gmail.com>
+> Cc: linux-i2c@vger.kernel.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-spi@vger.kernel.org
+> Cc: Mathieu Poirier <mathieu.poirier@linaro.org>
+> Cc: Rob Herring <robh+dt@kernel.org>
+> Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+> Cc: Takashi Iwai <tiwai@suse.com>
+> Cc: Wolfram Sang <wsa@the-dreams.de>
+> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> Cc: "Rafael J. Wysocki" <rafael@kernel.org>
+> Signed-off-by: Suzuki K Poulose <suzuki.poulose@arm.com>
+
+Acked-by: Wolfram Sang <wsa@the-dreams.de> # for the I2C parts
+
+
+--8NvZYKFJsRX2Djef
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl0EBGsACgkQFA3kzBSg
+KbZ+QhAAhP0RWmmLpy5mMKDwba8oyF5FX1jQZTj4zTukyeAJ5dFtxhQ8mANYEYOf
+2rnnAm42pcb0kyDIvP6xMF+yg+UK2lyd12Ud6k5TD3y+7Ochwlkcyu1JJessZZir
+YbDlY/eFeIyOzINxAx8yLLfYWncpANpAguyo321TmSXyoCFW1JbRlffuTxGKcXFt
+qYFrLQdwosCtFQV33gLalIQ69zBhN5c7Jgf0pVhiUjH8NF73yF0hgOkl9ptdzROX
+4Bzkw5RdlXV9N5yqy3lRa1iNzQ1BJlvFfOxphlHmUEvjXNlvvvHjKyInyFtsbpBR
+tKeUTjeWeVEfwOidPkEmiB8G3+k1LuGX9yOXZmnvVcSqy0xel3CyzjhZWDn6sGdB
+XgbvqJtd78g/Eaqr+y1WhaP5r8N8G/PzJODTtUkeisF06tocDxtLHLLhUjOhenDB
+6eCpKAP3dL7wxniDPMG0xzckpCWeIlCMlM/2BN+OyX16P1jy10HreRmCiIug7/5V
+6AFQji0dWbEwTtnTC6kYQsHXE3XRVILTHKJmWDE1R/Sosp08HOv128fw4G3a/5GK
+Rx6tVLYgs75/X6kc20Cyy51wgJiteoV3CvSXmq8mGhdA4XP5v8TLtKVKWMj+UMOx
+s+Q5PgkjDnvMXp7+HAGpHTlLe0tifUY2nZYtttsZKHraj4bgHoY=
+=val9
+-----END PGP SIGNATURE-----
+
+--8NvZYKFJsRX2Djef--
+
+--===============0248850129==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+
+--===============0248850129==--
