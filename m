@@ -1,52 +1,52 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH 1/2] drm/rockchip: Properly adjust to a true clock in
- adjusted_mode
-Date: Fri, 14 Jun 2019 15:47:29 -0700
-Message-ID: <20190614224730.98622-1-dianders@chromium.org>
+Subject: [PATCH 2/2] drm/rockchip: Base adjustments of the mode based on prev adjustments
+Date: Fri, 14 Jun 2019 15:47:30 -0700
+Message-ID: <20190614224730.98622-2-dianders@chromium.org>
+References: <20190614224730.98622-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190614224730.98622-1-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Sandy Huang <hjc@rock-chips.com>, heiko@sntech.de, seanpaul@chromium.org
-Cc: David Airlie <airlied@linux.ie>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, urjaman@gmail.com, linux-rockchip@lists.infradead.org, Yakir Yang <ykk@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org, urjaman@gmail.com, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-V2hlbiBmaXhpbmcgdXAgdGhlIGNsb2NrIGluIHZvcF9jcnRjX21vZGVfZml4dXAoKSB3ZSdyZSBu
-b3QgZG9pbmcgaXQKcXVpdGUgY29ycmVjdGx5LiAgU3BlY2lmaWNhbGx5IGlmIHdlJ3ZlIGdvdCB0
-aGUgdHJ1ZSBjbG9jayAyNjY2NjY2NjcgSHosCndlJ2xsIHBlcmZvcm0gdGhpcyBjYWxjdWxhdGlv
-bjoKICAgMjY2NjY2NjY3IC8gMTAwMCA9PiAyNjY2NjYKCkxhdGVyIHdoZW4gd2UgdHJ5IHRvIHNl
-dCB0aGUgY2xvY2sgd2UnbGwgZG8gY2xrX3NldF9yYXRlKDI2NjY2NiAqCjEwMDApLiAgVGhlIGNv
-bW1vbiBjbG9jayBmcmFtZXdvcmsgd29uJ3QgYWN0dWFsbHkgcGljayB0aGUgcHJvcGVyIGNsb2Nr
-CmluIHRoaXMgY2FzZSBzaW5jZSBpdCBhbHdheXMgd2FudHMgY2xvY2tzIDw9IHRoZSBzcGVjaWZp
-ZWQgb25lLgoKTGV0J3Mgc29sdmUgdGhpcyBieSB1c2luZyBESVZfUk9VTkRfVVAuCgpGaXhlczog
-YjU5YjhkZTMxNDk3ICgiZHJtL3JvY2tjaGlwOiByZXR1cm4gYSB0cnVlIGNsb2NrIHJhdGUgdG8g
-YWRqdXN0ZWRfbW9kZSIpClNpZ25lZC1vZmYtYnk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJz
-QGNocm9taXVtLm9yZz4KU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1
-bS5vcmc+ClJldmlld2VkLWJ5OiBZYWtpciBZYW5nIDx5a2tAcm9jay1jaGlwcy5jb20+Ci0tLQpC
-YWNrIGluIDIwMTYgTWFyayBZYW8gc2FpZCBoZSBhcHBsaWVkIHRoaXMgdG8gaGlzIGRybSBmaXhl
-cyBbMV0sIGJ1dCBpdCdzCjIwMTkgYW5kIGl0J3Mgc3RpbGwgbWlzc2luZyBzbyBJJ20gcG9zdGlu
-ZyBhZ2Fpbi4KClsxXSBodHRwczovL3BhdGNod29yay5mcmVlZGVza3RvcC5vcmcvcGF0Y2gvMTAz
-ODcyLwoKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAzICsr
-LQogMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCmluZGV4IGU0NTgwZDhmMjFl
-MS4uZDEyNGYzNGFiOWZjIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfZHJtX3ZvcC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fdm9wLmMKQEAgLTEwMDYsNyArMTAwNiw4IEBAIHN0YXRpYyBib29sIHZvcF9jcnRjX21vZGVf
-Zml4dXAoc3RydWN0IGRybV9jcnRjICpjcnRjLAogCXN0cnVjdCB2b3AgKnZvcCA9IHRvX3ZvcChj
-cnRjKTsKIAogCWFkanVzdGVkX21vZGUtPmNsb2NrID0KLQkJY2xrX3JvdW5kX3JhdGUodm9wLT5k
-Y2xrLCBtb2RlLT5jbG9jayAqIDEwMDApIC8gMTAwMDsKKwkJRElWX1JPVU5EX1VQKGNsa19yb3Vu
-ZF9yYXRlKHZvcC0+ZGNsaywgbW9kZS0+Y2xvY2sgKiAxMDAwKSwKKwkJCSAgICAgMTAwMCk7CiAK
-IAlyZXR1cm4gdHJ1ZTsKIH0KLS0gCjIuMjIuMC40MTAuZ2Q4ZmRiZTIxYjUtZ29vZwoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
-bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+In vop_crtc_mode_fixup() we fixup the mode to show what we actually
+will be able to achieve.  However we should base our adjustments on
+any previous adjustments that were made.
+
+As an example, the dw_hdmi driver may wish to make some small
+adjustments to clock rates in its atomic_check() function.  If it
+does, it will update the adjusted_mode.  We shouldn't throw away those
+adjustments.
+
+NOTE: the version of the dw_hdmi driver upstream doesn't _actually_
+make such adjustments, but downstream in Chrome OS it does.  It is
+plausible that one day we'll figure out how to cleanly make that
+happen in an upstream-friendly way, so we should prepare by using the
+right mode.
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index d124f34ab9fc..09a790c2f3a1 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1006,8 +1006,8 @@ static bool vop_crtc_mode_fixup(struct drm_crtc *crtc,
+ 	struct vop *vop = to_vop(crtc);
+ 
+ 	adjusted_mode->clock =
+-		DIV_ROUND_UP(clk_round_rate(vop->dclk, mode->clock * 1000),
+-			     1000);
++		DIV_ROUND_UP(clk_round_rate(vop->dclk,
++					    adjusted_mode->clock * 1000), 1000);
+ 
+ 	return true;
+ }
+-- 
+2.22.0.410.gd8fdbe21b5-goog
