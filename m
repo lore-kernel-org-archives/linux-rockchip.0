@@ -1,18 +1,44 @@
-From: Frank Lee <tiny.windzz@gmail.com>
-Subject: Re: [PATCH 01/10] iommu/exynos: convert to SPDX license tags
-Date: Sat, 15 Jun 2019 01:39:40 +0800
-Message-ID: <CAEExFWupzjErW1E0z3tcR2xyGgpWXwgLZOTqvru4=hk98EfGhQ@mail.gmail.com>
-References: <20190613162703.986-1-tiny.windzz@gmail.com> <20190614071245.GA2950@infradead.org>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH 3/4] ARM: dts: rockchip: add display nodes for rk322x
+Date: Fri, 14 Jun 2019 10:45:25 -0700
+Message-ID: <20190614174526.6F805217D6@mail.kernel.org>
+References: <20190614165454.13743-1-heiko@sntech.de> <20190614165454.13743-4-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190614071245.GA2950@infradead.org>
+In-Reply-To: <20190614165454.13743-4-heiko@sntech.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: tglx@linutronix.de
-Cc: joro@8bytes.org, m.szyprowski@samsung.com, kgene@kernel.org, krzk@kernel.org, will.deacon@arm.com, robin.murphy@arm.com, agross@kernel.org, David Brown <david.brown@linaro.org>, Rob Clark <robdclark@gmail.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, jonathanh@nvidia.com, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org, linux-tegra@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>, Christoph Hellwig <hch@infradead.org>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, justin.swartz@risingedge.co.za, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, mturquette@baylibre.com, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Need me to make them a patch?
+Quoting Heiko Stuebner (2019-06-14 09:54:53)
+> From: Justin Swartz <justin.swartz@risingedge.co.za>
+>=20
+> Add display_subsystem, hdmi_phy, vop, and hdmi device nodes plus
+> a few hdmi pinctrl entries to allow for HDMI output.
+>=20
+> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+> [added assigned-clock settings for hdmiphy output]
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  arch/arm/boot/dts/rk322x.dtsi | 83 +++++++++++++++++++++++++++++++++++
+>  1 file changed, 83 insertions(+)
+>=20
+> diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
+> index da102fff96a2..148f9b5157ea 100644
+> --- a/arch/arm/boot/dts/rk322x.dtsi
+> +++ b/arch/arm/boot/dts/rk322x.dtsi
+> @@ -143,6 +143,11 @@
+>                 #clock-cells =3D <0>;
+>         };
+> =20
+> +       display_subsystem: display-subsystem {
+> +               compatible =3D "rockchip,display-subsystem";
+> +               ports =3D <&vop_out>;
+> +       };
+> +
 
-MBR,
-Yangtao
+What is this? It doesn't have a reg property so it looks like a virtual
+device. Why is it in DT?
