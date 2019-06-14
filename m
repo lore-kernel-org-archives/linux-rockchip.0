@@ -1,43 +1,38 @@
-From: Justin Swartz <justin.swartz@risingedge.co.za>
-Subject: Re: [PATCH 2/4] clk: rockchip: export HDMIPHY clock
-Date: Fri, 14 Jun 2019 22:38:55 +0200
-Message-ID: <a0847a77f60e93374e0473b95d973eef@risingedge.co.za>
-References: <20190614165454.13743-1-heiko@sntech.de>
- <20190614165454.13743-3-heiko@sntech.de>
+From: "Leonidas P. Papadakos" <papadakospan@gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: improve rk3328-roc-cc rgmii
+ performance.
+Date: Sat, 15 Jun 2019 00:27:11 +0300
+Message-ID: <1560547631.1367.4@gmail.com>
+References: <20190607123731.8737-1-pgwipeout@gmail.com>
+ <1559912295.22520.0@gmail.com>
+ <CAMdYzYorvWr1YhmFKaMQUCditjop5AZp4d1tO79XsVr7m7HrMw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190614165454.13743-3-heiko@sntech.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, mturquette@baylibre.com, sboyd@kernel.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CAMdYzYorvWr1YhmFKaMQUCditjop5AZp4d1tO79XsVr7m7HrMw@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: Jose Abreu <jose.abreu@synopsys.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2019-06-14 18:54, Heiko Stuebner wrote:
 
-> Export the hdmiphy clock mux via the newly added clock-id.
-> 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
-> drivers/clk/rockchip/clk-rk3228.c | 2 +-
-> 1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3228.c 
-> b/drivers/clk/rockchip/clk-rk3228.c
-> index 1c5267d134ee..d17cfb7a3ff4 100644
-> --- a/drivers/clk/rockchip/clk-rk3228.c
-> +++ b/drivers/clk/rockchip/clk-rk3228.c
-> @@ -247,7 +247,7 @@ static struct rockchip_clk_branch 
-> rk3228_clk_branches[] __initdata = {
-> RK2928_CLKGATE_CON(4), 0, GFLAGS),
-> 
-> /* PD_MISC */
-> -    MUX(0, "hdmiphy", mux_hdmiphy_p, CLK_SET_RATE_PARENT,
-> +    MUX(SCLK_HDMI_PHY, "hdmiphy", mux_hdmiphy_p, CLK_SET_RATE_PARENT,
-> RK2928_MISC_CON, 13, 1, MFLAGS),
-> MUX(0, "usb480m_phy", mux_usb480m_phy_p, CLK_SET_RATE_PARENT,
-> RK2928_MISC_CON, 14, 1, MFLAGS),
 
-Tested-by: Justin Swartz <justin.swartz@risingedge.co.za>
+> The big change was actually snps,aal.
+> As per the TRM, DMA channels not address aligned have severe
+> limitations, if they work at all.
+> 
+> Setting the DMA ops as address aligned fixed my 30mbps TX issue when
+> combined with your snps,txpbl = <0x4>.
+
+Honestly, I don't notice any difference either way with aal. So what 
+happens without it? If You only use the 0x4 txpbl and having removed 
+thresh dma mode, (2 things then) do you get bad tx?
