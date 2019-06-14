@@ -1,69 +1,37 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3 1/1] arm64: dts: rockchip: add core dtsi file for RK3399Pro SoCs
-Date: Fri, 14 Jun 2019 11:52:25 +0200
-Message-ID: <3309819.J5kelTtX6q@phil>
-References: <20190529074752.19388-1-jay.xu@rock-chips.com> <20190530000848.28106-1-jay.xu@rock-chips.com>
+From: "Leonidas P. Papadakos" <papadakospan@gmail.com>
+Subject: Re: [PATCH 1/2] clk: rockchip: add clock for the watchdog pclk on
+ rk3328
+Date: Fri, 14 Jun 2019 12:54:14 +0300
+Message-ID: <1560506054.1367.0@gmail.com>
+References: <20190605235714.22432-1-papadakospan@gmail.com>
+ <3485393.4UdOu2YNQE@phil> <1559821340.1384.0@gmail.com>
+ <5657669.4RvfzeBcXs@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190530000848.28106-1-jay.xu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: mark.rutland@arm.com, robh+dt@kernel.org, zhangzj@rock-chips.com, manivannan.sadhasivam@linaro.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <5657669.4RvfzeBcXs@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, itdaniher@gmail.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jianqun,
 
-Am Donnerstag, 30. Mai 2019, 02:08:48 CEST schrieb Jianqun Xu:
-> This patch adds core dtsi file for Rockchip RK3399Pro SoCs,
-> include rk3399.dtsi. Also enable pciei0/pcie_phy for AP to
-> talk to NPU part inside SoC.
+> Were you able yet to take a look at the clock-patches I Cc'ed you on
+> and look at reworking your patch accrodingly?
 > 
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-
-could you add the necessary pinctrl entry, as suggested by Manivannan?
-
-Thanks
-Heiko
-
-> ---
-> changes since v2:
-> - only enable pcie0 and pcie_phy nodes, thanks for Heiko and manivannan
 > 
-> changes since v1:
-> - remove dfi and dmc
+> Thanks
+> Heiko
 > 
->  arch/arm64/boot/dts/rockchip/rk3399pro.dtsi | 22 +++++++++++++++++++++
->  1 file changed, 22 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399pro.dtsi
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro.dtsi b/arch/arm64/boot/dts/rockchip/rk3399pro.dtsi
-> new file mode 100644
-> index 000000000000..bb5ebf6608b9
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399pro.dtsi
-> @@ -0,0 +1,22 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +// Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd.
-> +
-> +#include "rk3399.dtsi"
-> +
-> +/ {
-> +	compatible = "rockchip,rk3399pro";
-> +};
-> +
-> +/* Default to enabled since AP talk to NPU part over pcie */
-> +&pcie_phy {
-> +	status = "okay";
-> +};
-> +
-> +/* Default to enabled since AP talk to NPU part over pcie */
-> +&pcie0 {
-> +	ep-gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
-> +	num-lanes = <4>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&pcie_clkreqn_cpm>;
-> +	status = "okay";
-> +};
-> 
+My time is limited due to exams, and I have no knowledge on how the clk 
+stuff works, but I'll read up when I have the time. The patched you 
+CCed me on is certainly helpful in this regard
