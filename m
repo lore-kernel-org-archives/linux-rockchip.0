@@ -1,54 +1,48 @@
-From: Justin Swartz <justin.swartz@risingedge.co.za>
-Subject: Re: [PATCH] ARM: dts: rockchip: add display nodes for rk322x
-Date: Fri, 14 Jun 2019 18:22:55 +0200
-Message-ID: <9e2b1e26bedfd30e9295d64865819c99@risingedge.co.za>
-References: <20190613101305.30491-1-justin.swartz@risingedge.co.za>
- <1854794.0zkvb3x0FP@phil>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v4 4/5] mmc: core: Add sdio_retune_hold_now() and sdio_retune_release()
+Date: Fri, 14 Jun 2019 09:38:26 -0700
+Message-ID: <CAD=FV=Wuj=gANR2im_o4ZnoLEB+U6FqzKe4noLdQyi1vw+K2xw@mail.gmail.com>
+References: <20190613234153.59309-1-dianders@chromium.org> <20190613234153.59309-5-dianders@chromium.org>
+ <CAPDyKFrJ4+zn7Ak0tYHkBfXUtH3N7erb5R7Q+hgugchZmCRGrw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1854794.0zkvb3x0FP@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFrJ4+zn7Ak0tYHkBfXUtH3N7erb5R7Q+hgugchZmCRGrw@mail.gmail.com>
+Sender: netdev-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>, Arend van Spriel <arend.vanspriel@broadcom.com>, Adrian Hunter <adrian.hunter@intel.com>
+Cc: Kalle Valo <kvalo@codeaurora.org>, brcm80211-dev-list.pdl@broadcom.com, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Double Lo <double.lo@cypress.com>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, Matthias Kaehlcke <mka@chromium.org>, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, netdev <netdev@vger.kernel.org>, brcm80211-dev-list <brcm80211-dev-list@cypress.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Thomas Gleixner <tglx@linutronix.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Hi,
 
-On 2019-06-14 11:15, Heiko Stuebner wrote:
+On Fri, Jun 14, 2019 at 5:10 AM Ulf Hansson <ulf.hansson@linaro.org> wrote:
+>
+> On Fri, 14 Jun 2019 at 01:42, Douglas Anderson <dianders@chromium.org> wrote:
+> >
+> > We want SDIO drivers to be able to temporarily stop retuning when the
+> > driver knows that the SDIO card is not in a state where retuning will
+> > work (maybe because the card is asleep).  We'll move the relevant
+> > functions to a place where drivers can call them.
+> >
+> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+>
+> This looks good to me.
+>
+> BTW, seems like this series is best funneled via my mmc tree, no? In
+> such case, I need acks for the brcmfmac driver patches.
 
-> Hi Justin,
-> 
-> Am Donnerstag, 13. Juni 2019, 12:13:04 CEST schrieb Justin Swartz:
-> 
->> Add display_subsystem, hdmi_phy, vop, and hdmi device nodes plus
->> a few hdmi pinctrl entries to allow for HDMI output.
->> 
->> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
-> 
-> Overall looks good, but in combination with the clock-patch you posted,
-> I'd really prefer if we could try a slightly different approach.
-> 
-> Hard register-level settings in the clock driver look bad and tend to
-> cause problems later on, so I've adapted things a bit in [0] (untested)
-> and would be glad if you could give it a try on actual hardware.
+For patch #1 I think it could just go in directly to the wireless
+tree.  It should be fine to land the rest of the patches separately.
 
-I can confirm that your approach works properly here.
+For patch #2 - #5 then what you say makes sense to me.  I suppose
+you'd want at least a Reviewed-by from Arend and an Ack from Kalle on
+the Broadcom patches?
 
-> The hdmiphy itself is a clock-provider for its pll and therefore the
-> assigned-clock* properties into the hdmi controller, as the phy needs
-> to probe before trying to set clocks.
-> But in theory this should achieve the same result of reparenting the
-> system's hdmiphy clock to the actual output of the phy-pll.
-> 
-> I've also moved the iommu-cells fix to a separate commit.
-> 
-> Please test, thanks
-> Heiko
-> 
-> [0] https://github.com/mmind/linux-rockchip/commits/wip/rk3229-hdmi
+I'd also suggest that we Cc stable explicitly when applying.  That's
+easy for #2 and #3 since they have a Fixes tag.  For #4 and #5 I guess
+the question is how far back to go.  Maybe Adrian has an opinion here
+since I think he's the one who experienced these problems.
 
-Thanks
-Justin
+
+Thanks!
+-Doug
