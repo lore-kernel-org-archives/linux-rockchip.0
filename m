@@ -1,52 +1,83 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH 2/2] drm/rockchip: Base adjustments of the mode based on prev adjustments
-Date: Fri, 14 Jun 2019 15:47:30 -0700
-Message-ID: <20190614224730.98622-2-dianders@chromium.org>
-References: <20190614224730.98622-1-dianders@chromium.org>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 3/4] ARM: dts: rockchip: add display nodes for rk322x
+Date: Sat, 15 Jun 2019 01:05:27 +0200
+Message-ID: <5617164.NpQ99z5SQI@phil>
+References: <20190614165454.13743-1-heiko@sntech.de>
+ <13456600.FWPkgmLa5g@phil> <20190614203610.959DA217F9@mail.kernel.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190614224730.98622-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sandy Huang <hjc@rock-chips.com>, heiko@sntech.de, seanpaul@chromium.org
-Cc: linux-rockchip@lists.infradead.org, urjaman@gmail.com, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190614203610.959DA217F9@mail.kernel.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: Justin Swartz <justin.swartz@risingedge.co.za>, mturquette@baylibre.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In vop_crtc_mode_fixup() we fixup the mode to show what we actually
-will be able to achieve.  However we should base our adjustments on
-any previous adjustments that were made.
+Stephen,
 
-As an example, the dw_hdmi driver may wish to make some small
-adjustments to clock rates in its atomic_check() function.  If it
-does, it will update the adjusted_mode.  We shouldn't throw away those
-adjustments.
+Am Freitag, 14. Juni 2019, 22:36:09 CEST schrieb Stephen Boyd:
+> Quoting Heiko Stuebner (2019-06-14 12:33:12)
+> > Am Freitag, 14. Juni 2019, 20:32:35 CEST schrieb Justin Swartz:
+> > > On 2019-06-14 19:45, Stephen Boyd wrote:
+> > > >> diff --git a/arch/arm/boot/dts/rk322x.dtsi 
+> > > >> b/arch/arm/boot/dts/rk322x.dtsi
+> > > >> index da102fff96a2..148f9b5157ea 100644
+> > > >> --- a/arch/arm/boot/dts/rk322x.dtsi
+> > > >> +++ b/arch/arm/boot/dts/rk322x.dtsi
+> > > >> @@ -143,6 +143,11 @@
+> > > >> #clock-cells = <0>;
+> > > >> };
+> > > >> 
+> > > >> +       display_subsystem: display-subsystem {
+> > > >> +               compatible = "rockchip,display-subsystem";
+> > > >> +               ports = <&vop_out>;
+> > > >> +       };
+> > > >> +
+> > > > 
+> > > > What is this? It doesn't have a reg property so it looks like a virtual
+> > > > device. Why is it in DT?
+> > > 
+> > > This is a virtual device.
+> > > 
+> > > I assumed it would be acceptable to it find in a device tree due to 
+> > > binding documentation, 
+> > > "Documentation/devicetree/bindings/display/rockchip/rockchip-drm.txt, 
+> > > which states:
+> > > 
+> > > <quote>
+> > > The Rockchip DRM master device is a virtual device needed to list all
+> > > vop devices or other display interface nodes that comprise the
+> > > graphics subsystem.
+> > > </quote>
+> > > 
+> > > Without the "display_subsystem" device node, the HDMI PHY and 
+> > > rockchipdrmfb frame buffer device are not initialized.
+> > > 
+> > > Perhaps I should have included this in my commit message? :)
+> > 
+> > As Justin said, that is very much common as the root of the components
+> > that make up the drm device and pretty much common in a lot of devicetrees
+> > for the last 5 years and longer ;-) .
+> > 
+> > Also gpio-keys also don't have a reg property ;-) .
+> > 
+> 
+> Do you have a SoC node? If so, this virtual device should live in the
+> root, away from the nodes that have reg properties and are thus in the
+> SoC node.
 
-NOTE: the version of the dw_hdmi driver upstream doesn't _actually_
-make such adjustments, but downstream in Chrome OS it does.  It is
-plausible that one day we'll figure out how to cleanly make that
-happen in an upstream-friendly way, so we should prepare by using the
-right mode.
+no we don't have any soc node and that display-subsystem is really the
+same on _all_ currently supported Rockchip socs ... has gone through
+dt-reviews numerous times for multiple socs, so I'm somewhat
+confident that we're not doing something terrible wrong.
 
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index d124f34ab9fc..09a790c2f3a1 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1006,8 +1006,8 @@ static bool vop_crtc_mode_fixup(struct drm_crtc *crtc,
- 	struct vop *vop = to_vop(crtc);
- 
- 	adjusted_mode->clock =
--		DIV_ROUND_UP(clk_round_rate(vop->dclk, mode->clock * 1000),
--			     1000);
-+		DIV_ROUND_UP(clk_round_rate(vop->dclk,
-+					    adjusted_mode->clock * 1000), 1000);
- 
- 	return true;
- }
--- 
-2.22.0.410.gd8fdbe21b5-goog
+Heiko
