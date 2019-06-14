@@ -1,186 +1,53 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] ARM: dts: rockchip: add display nodes for rk322x
-Date: Fri, 14 Jun 2019 11:15:29 +0200
-Message-ID: <1854794.0zkvb3x0FP@phil>
-References: <20190613101305.30491-1-justin.swartz@risingedge.co.za>
+Subject: Re: [PATCH] clk: rockchip: select hdmiphy clock source for rk3228
+Date: Fri, 14 Jun 2019 11:18:07 +0200
+Message-ID: <4689860.tqrvb1PrOO@phil>
+References: <20190612133343.28309-1-justin.swartz@risingedge.co.za>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190613101305.30491-1-justin.swartz@risingedge.co.za>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190612133343.28309-1-justin.swartz@risingedge.co.za>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Justin Swartz <justin.swartz@risingedge.co.za>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Justin,
+Hi,
 
-Am Donnerstag, 13. Juni 2019, 12:13:04 CEST schrieb Justin Swartz:
-> Add display_subsystem, hdmi_phy, vop, and hdmi device nodes plus
-> a few hdmi pinctrl entries to allow for HDMI output.
+Am Mittwoch, 12. Juni 2019, 15:33:43 CEST schrieb Justin Swartz:
+> Unless explictly configured by a bootloader, the hdmiphy clock parent
+> defaults to the xin24m clock source. This configuration does not yield
+> any HDMI video output, so let hdmiphy_phy (the HDMI PHY output clock)
+> be the parent instead.
 > 
 > Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
 
-Overall looks good, but in combination with the clock-patch you posted,
-I'd really prefer if we could try a slightly different approach.
+Mainly for having breadcrumbs for people skimming the lists,
+I've adapted this to use assigned-clocks instead of hardcoding.
 
-Hard register-level settings in the clock driver look bad and tend to
-cause problems later on, so I've adapted things a bit in [0] (untested)
-and would be glad if you could give it a try on actual hardware.
+See the dts-thread for further infos:
+https://lore.kernel.org/linux-arm-kernel/1854794.0zkvb3x0FP@phil/T/#mf86ab45e07442ab2b25c67f423ebc4130259f6b0
 
-The hdmiphy itself is a clock-provider for its pll and therefore the
-assigned-clock* properties into the hdmi controller, as the phy needs
-to probe before trying to set clocks.
-But in theory this should achieve the same result of reparenting the
-system's hdmiphy clock to the actual output of the phy-pll.
-
-I've also moved the iommu-cells fix to a separate commit.
-
-Please test, thanks
 Heiko
 
 
-[0] https://github.com/mmind/linux-rockchip/commits/wip/rk3229-hdmi
-
 > ---
->  arch/arm/boot/dts/rk322x.dtsi | 83 ++++++++++++++++++++++++++++++++++++++++++-
->  1 file changed, 82 insertions(+), 1 deletion(-)
+>  drivers/clk/rockchip/clk-rk3228.c | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
-> diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-> index da102fff96a2..7eb883eec126 100644
-> --- a/arch/arm/boot/dts/rk322x.dtsi
-> +++ b/arch/arm/boot/dts/rk322x.dtsi
-> @@ -143,6 +143,11 @@
->  		#clock-cells = <0>;
->  	};
+> diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
+> index 1c5267d134ee..00a195e6c014 100644
+> --- a/drivers/clk/rockchip/clk-rk3228.c
+> +++ b/drivers/clk/rockchip/clk-rk3228.c
+> @@ -699,6 +699,9 @@ static void __init rk3228_clk_init(struct device_node *np)
+>  		return;
+>  	}
 >  
-> +	display_subsystem: display-subsystem {
-> +		compatible = "rockchip,display-subsystem";
-> +		ports = <&vop_out>;
-> +	};
+> +	/* Let hdmiphy_phy be the parent of the hdmiphy clock. */
+> +	writel_relaxed(HIWORD_UPDATE(0, 1, 13), reg_base + RK2928_MISC_CON);
 > +
->  	i2s1: i2s1@100b0000 {
->  		compatible = "rockchip,rk3228-i2s", "rockchip,rk3066-i2s";
->  		reg = <0x100b0000 0x4000>;
-> @@ -529,6 +534,17 @@
->  		status = "disabled";
->  	};
->  
-> +	hdmi_phy: hdmi-phy@12030000 {
-> +		compatible = "rockchip,rk3228-hdmi-phy";
-> +		reg = <0x12030000 0x10000>;
-> +		clocks = <&cru PCLK_HDMI_PHY>, <&xin24m>, <&cru DCLK_HDMI_PHY>;
-> +		clock-names = "sysclk", "refoclk", "refpclk";
-> +		#clock-cells = <0>;
-> +		clock-output-names = "hdmiphy_phy";
-> +		#phy-cells = <0>;
-> +		status = "disabled";
-> +	};
-> +
->  	gpu: gpu@20000000 {
->  		compatible = "rockchip,rk3228-mali", "arm,mali-400";
->  		reg = <0x20000000 0x10000>;
-> @@ -572,6 +588,28 @@
->  		status = "disabled";
->  	};
->  
-> +	vop: vop@20050000 {
-> +		compatible = "rockchip,rk3228-vop";
-> +		reg = <0x20050000 0x1ffc>;
-> +		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&cru ACLK_VOP>, <&cru DCLK_VOP>, <&cru HCLK_VOP>;
-> +		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
-> +		resets = <&cru SRST_VOP_A>, <&cru SRST_VOP_H>, <&cru SRST_VOP_D>;
-> +		reset-names = "axi", "ahb", "dclk";
-> +		iommus = <&vop_mmu>;
-> +		status = "disabled";
-> +
-> +		vop_out: port {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			vop_out_hdmi: endpoint@0 {
-> +				reg = <0>;
-> +				remote-endpoint = <&hdmi_in_vop>;
-> +			};
-> +		};
-> +	};
-> +
->  	vop_mmu: iommu@20053f00 {
->  		compatible = "rockchip,iommu";
->  		reg = <0x20053f00 0x100>;
-> @@ -579,7 +617,7 @@
->  		interrupt-names = "vop_mmu";
->  		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
->  		clock-names = "aclk", "iface";
-> -		iommu-cells = <0>;
-> +		#iommu-cells = <0>;
->  		status = "disabled";
->  	};
->  
-> @@ -594,6 +632,34 @@
->  		status = "disabled";
->  	};
->  
-> +	hdmi: hdmi@200a0000 {
-> +		compatible = "rockchip,rk3228-dw-hdmi";
-> +		reg = <0x200a0000 0x20000>;
-> +		reg-io-width = <4>;
-> +		interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&cru SCLK_HDMI_HDCP>, <&cru PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_CEC>;
-> +		clock-names = "isfr", "iahb", "cec";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&hdmii2c_xfer &hdmi_hpd &hdmi_cec>;
-> +		resets = <&cru SRST_HDMI_P>;
-> +		reset-names = "hdmi";
-> +		phys = <&hdmi_phy>;
-> +		phy-names = "hdmi";
-> +		rockchip,grf = <&grf>;
-> +		status = "disabled";
-> +
-> +		ports {
-> +			hdmi_in: port {
-> +				#address-cells = <1>;
-> +				#size-cells = <0>;
-> +				hdmi_in_vop: endpoint@0 {
-> +					reg = <0>;
-> +					remote-endpoint = <&vop_out_hdmi>;
-> +				};
-> +			};
-> +		};
-> +	};
-> +
->  	sdmmc: dwmmc@30000000 {
->  		compatible = "rockchip,rk3228-dw-mshc", "rockchip,rk3288-dw-mshc";
->  		reg = <0x30000000 0x4000>;
-> @@ -922,6 +988,21 @@
->  			};
->  		};
->  
-> +		hdmi {
-> +			hdmi_hpd: hdmi-hpd {
-> +				rockchip,pins = <0 RK_PB7 1 &pcfg_pull_down>;
-> +			};
-> +
-> +			hdmii2c_xfer: hdmii2c-xfer {
-> +				rockchip,pins = <0 RK_PA6 2 &pcfg_pull_none>,
-> +						<0 RK_PA7 2 &pcfg_pull_none>;
-> +			};
-> +
-> +			hdmi_cec: hdmi-cec {
-> +				rockchip,pins = <0 RK_PC4 1 &pcfg_pull_none>;
-> +			};
-> +		};
-> +
->  		i2c0 {
->  			i2c0_xfer: i2c0-xfer {
->  				rockchip,pins = <0 RK_PA0 1 &pcfg_pull_none>,
+>  	ctx = rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
+>  	if (IS_ERR(ctx)) {
+>  		pr_err("%s: rockchip clk init failed\n", __func__);
 > 
