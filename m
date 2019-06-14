@@ -1,52 +1,67 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v9 3/6] regulator: rk808: add RK809 and RK817 support.
-Date: Fri, 14 Jun 2019 19:24:21 +0100
-Message-ID: <20190614182421.GI5316@sirena.org.uk>
-References: <20190614031425.15741-1-tony.xie@rock-chips.com>
- <20190614031425.15741-4-tony.xie@rock-chips.com>
+From: Justin Swartz <justin.swartz@risingedge.co.za>
+Subject: Re: [PATCH 3/4] ARM: dts: rockchip: add display nodes for rk322x
+Date: Fri, 14 Jun 2019 20:32:35 +0200
+Message-ID: <19cea8f7c279ef6efb12d1ec0822767d@risingedge.co.za>
+References: <20190614165454.13743-1-heiko@sntech.de>
+ <20190614165454.13743-4-heiko@sntech.de>
+ <20190614174526.6F805217D6@mail.kernel.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="je2i5r69C8+2chMc"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190614031425.15741-4-tony.xie@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tony Xie <tony.xie@rock-chips.com>
-Cc: heiko@sntech.de, lee.jones@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190614174526.6F805217D6@mail.kernel.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Stephen,
 
---je2i5r69C8+2chMc
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 2019-06-14 19:45, Stephen Boyd wrote:
 
-On Thu, Jun 13, 2019 at 11:14:22PM -0400, Tony Xie wrote:
->     Add support for the rk809 and rk817 regulator driver.
->     Their specifications are as follows=EF=BC=9A
->     1. The RK809 and RK809 consist of 5 DCDCs, 9 LDOs
->        and have the same registers for these components except dcdc5.
->     2. The dcdc5 is a boost dcdc for RK817 and is a buck for RK809.
->     3. The RK817 has one switch but The Rk809 has two.
->=20
->     The output voltages are configurable and are meant to supply power
->     to the main processor and other components.
+>> diff --git a/arch/arm/boot/dts/rk322x.dtsi 
+>> b/arch/arm/boot/dts/rk322x.dtsi
+>> index da102fff96a2..148f9b5157ea 100644
+>> --- a/arch/arm/boot/dts/rk322x.dtsi
+>> +++ b/arch/arm/boot/dts/rk322x.dtsi
+>> @@ -143,6 +143,11 @@
+>> #clock-cells = <0>;
+>> };
+>> 
+>> +       display_subsystem: display-subsystem {
+>> +               compatible = "rockchip,display-subsystem";
+>> +               ports = <&vop_out>;
+>> +       };
+>> +
+> 
+> What is this? It doesn't have a reg property so it looks like a virtual
+> device. Why is it in DT?
 
-Acked-by: Mark Brown <broonie@kernel.org>
+This is a virtual device.
 
---je2i5r69C8+2chMc
-Content-Type: application/pgp-signature; name="signature.asc"
+I assumed it would be acceptable to it find in a device tree due to 
+binding documentation, 
+"Documentation/devicetree/bindings/display/rockchip/rockchip-drm.txt, 
+which states:
 
------BEGIN PGP SIGNATURE-----
+<quote>
+The Rockchip DRM master device is a virtual device needed to list all
+vop devices or other display interface nodes that comprise the
+graphics subsystem.
+</quote>
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl0D5lQACgkQJNaLcl1U
-h9Cg3gf+PI+oNUSN6SISGiEj0NLwGYqM6Zuaotd0ItoKH0gSxFrTbuNhIGdsI/mN
-fjDHx3QiGEsRBgKLaae3GP35+L2B7d4sUs7+ZpVC0DrldSFUQ3G6xbsez1CKm5wB
-o3u5dBWZSKGHHxjJV/VH27wu6BonLndiAbFuwA/vjB2tTr7003bRMYeVDoI3uPik
-o7vU+ZwFhCGUuh4TmPusYRWepB5cyGCuo9j/IX+HfWnLeVvcOlz0qtIVcr0DARzF
-ZPAxMHqtm2lvyldzgU456YAA1wTVihRwRvhSyz3hAKgZLzlngjGxPrrgszbJJ05I
-SUAgVqBJ/phpgaL6BBLqlGNDtUXPmg==
-=Qfnw
------END PGP SIGNATURE-----
+Without the "display_subsystem" device node, the HDMI PHY and 
+rockchipdrmfb frame buffer device are not initialized.
 
---je2i5r69C8+2chMc--
+Perhaps I should have included this in my commit message? :)
+
+Regards
+Justin
