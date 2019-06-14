@@ -1,42 +1,73 @@
-From: "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: improve rk3328-roc-cc rgmii
- performance.
-Date: Fri, 14 Jun 2019 22:49:43 +0300
-Message-ID: <1560541783.1367.3@gmail.com>
-References: <20190607123731.8737-1-pgwipeout@gmail.com>
- <1559912295.22520.0@gmail.com>
- <CAMdYzYorvWr1YhmFKaMQUCditjop5AZp4d1tO79XsVr7m7HrMw@mail.gmail.com>
- <4025583.lUYsg5j2zl@phil>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [RFC/WIP] drm/rockchip: Support CRTC gamma LUT
+Date: Fri, 14 Jun 2019 13:05:33 -0700
+Message-ID: <CAD=FV=U84U0TaC=VUXeggCDJJNkPOJYmOL0JNT1Lf7Gecv-5Aw@mail.gmail.com>
+References: <20190613192244.5447-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <4025583.lUYsg5j2zl@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Jose Abreu <jose.abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190613192244.5447-1-ezequiel@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Boris Brezillon <boris.brezillon@collabora.com>, Sean Paul <seanpaul@chromium.org>, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-
-> 
-> same as with the other patch: I've lost track of what matters,
-> so please resend the ones that matter with appropriate
-> Tested-by, Reviewed-by tags by involved people.
-> 
-> Thanks
-> Heiko
-> 
-> 
-
-Understandable, really. haha!
-The conversation is ongoing. I'll test this now that that loaded week 
-has passed and see if we can reach something better than dropping tx 
-offload. This might be it, if it works for more than one device
+SGksCgpPbiBUaHUsIEp1biAxMywgMjAxOSBhdCAxMjoyMyBQTSBFemVxdWllbCBHYXJjaWEgPGV6
+ZXF1aWVsQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+Cj4gQEAgLTE3NDQsNiArMTc5Myw0MSBAQCBp
+bnQgcm9ja2NoaXBfZHJtX3dhaXRfdmFjdF9lbmQoc3RydWN0IGRybV9jcnRjICpjcnRjLCB1bnNp
+Z25lZCBpbnQgbXN0aW1lb3V0KQo+ICB9Cj4gIEVYUE9SVF9TWU1CT0wocm9ja2NoaXBfZHJtX3dh
+aXRfdmFjdF9lbmQpOwo+Cj4gK3N0YXRpYyBpbnQgdm9wX2dhbW1hX2x1dF9yZXF1ZXN0KHN0cnVj
+dCBkZXZpY2UgKmRldiwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3Qg
+cmVzb3VyY2UgKnJlcywgc3RydWN0IHZvcCAqdm9wKQo+ICt7Cj4gKyAgICAgICByZXNvdXJjZV9z
+aXplX3Qgb2Zmc2V0ID0gdm9wLT5kYXRhLT5nYW1tYV9sdXRfYWRkcl9vZmY7Cj4gKyAgICAgICBy
+ZXNvdXJjZV9zaXplX3Qgc2l6ZSA9IFZPUF9HQU1NQV9MVVRfU0laRSAqIDQ7Cj4gKwo+ICsgICAg
+ICAgLyoKPiArICAgICAgICAqIFNvbWUgU29DcyAoZS5nLiBSSzMyODgpIGhhdmUgdGhlIGdhbW1h
+IExVVCBhZGRyZXNzIGFmdGVyCj4gKyAgICAgICAgKiB0aGUgTU1VIHJlZ2lzdGVycywgd2hpY2gg
+bWVhbnMgd2UgY2FuJ3QgcmVxdWVzdCBhbmQgaW9yZW1hcAo+ICsgICAgICAgICogdGhlIGVudGly
+ZSByZWdpc3RlciBzZXQuIE90aGVyIChlLmcuIFJLMzM5OSkgaGF2ZSBnYW1tYSBMVVQKPiArICAg
+ICAgICAqIGFkZHJlc3MgYmVmb3JlIE1NVS4KPiArICAgICAgICAqCj4gKyAgICAgICAgKiBUaGVy
+ZWZvcmUsIHdlIG5lZWQgdG8gcmVxdWVzdCBhbmQgaW9yZW1hcCB0aG9zZSB0aGF0IGhhdmVuJ3QK
+PiArICAgICAgICAqIGJlZW4gYWxyZWFkeS4KPiArICAgICAgICAqLwo+ICsgICAgICAgaWYgKHZv
+cC0+bGVuID49IChvZmZzZXQgKyBzaXplKSkgewo+ICsgICAgICAgICAgICAgICB2b3AtPmx1dF9y
+ZWdzID0gdm9wLT5yZWdzICsgb2Zmc2V0Owo+ICsgICAgICAgICAgICAgICByZXR1cm4gMDsKPiAr
+ICAgICAgIH0KPiArCj4gKyAgICAgICBpZiAoIWRldm1fcmVxdWVzdF9tZW1fcmVnaW9uKGRldiwg
+cmVzLT5zdGFydCArIG9mZnNldCwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgc2l6ZSwgZGV2X25hbWUoZGV2KSkpIHsKPiArICAgICAgICAgICAgICAgZGV2X3dhcm4oZGV2
+LCAiY2FuJ3QgcmVxdWVzdCBnYW1tYSBsdXQgcmVnaW9uXG4iKTsKPiArICAgICAgICAgICAgICAg
+cmV0dXJuIC1FQlVTWTsKPiArICAgICAgIH0KPiArCj4gKyAgICAgICB2b3AtPmx1dF9yZWdzID0g
+ZGV2bV9pb3JlbWFwKGRldiwgcmVzLT5zdGFydCArIG9mZnNldCwgc2l6ZSk7Cj4gKyAgICAgICBp
+ZiAoIXZvcC0+bHV0X3JlZ3MpIHsKPiArICAgICAgICAgICAgICAgZGV2X2VycihkZXYsICJjYW4n
+dCBpb3JlbWFwIGdhbW1hIGx1dCBhZGRyZXNzXG4iKTsKPiArICAgICAgICAgICAgICAgZGV2bV9y
+ZWxlYXNlX21lbV9yZWdpb24oZGV2LCByZXMtPnN0YXJ0ICsgb2Zmc2V0LCBzaXplKTsKPiArICAg
+ICAgICAgICAgICAgcmV0dXJuIC1FTk9NRU07Cj4gKyAgICAgICB9CgpJJ20gY3VyaW91cyBoZXJl
+LiAgSSB3YXMgYWx3YXlzIHVuZGVyIHRoZSBpbXByZXNzaW9uIHRoYXQgeW91IHdlcmUKc3VwcG9z
+ZWQgdG8gc3BlY2lmeSBhbGwgb2YgeW91ciBtZW1vcnkgcmVnaW9ucyBpbiB0aGUgZGV2aWNlIHRy
+ZWUuCi4uLmJ1dCBoZXJlIHRoZSBkZXZpY2UgdHJlZSBvbiByazMyODggc2F5czoKCnZvcGI6IHZv
+cEBmZjkzMDAwMCB7CiAgICBjb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzI4OC12b3AiOwogICAg
+cmVnID0gPDB4MCAweGZmOTMwMDAwIDB4MCAweDE5Yz47CiAgICAuLi4KfTsKCi4uLmFuZCB3ZSdy
+ZSBub3cgbWFwcGluZyA0MDk2IGJ5dGVzIHN0YXJ0aW5nIGF0IDB4ZmY5MzEwMDAuICBJcyB0aGF0
+CnJlYWxseSBsZWdpdD8gIFdvdWxkbid0IGl0IGJlIGJldHRlciB0byBwdXQgdGhpcyBleHRyYSBt
+ZW1vcnkgcmFuZ2UgaW4KdGhlIGR0cz8KCkhybSwgYnV0IHRoZW4gSSBndWVzcyB5b3UgbmVlZCB0
+byBmaWd1cmUgb3V0IHdoYXQgdG8gZG8gYWJvdXQgb2xkZXIKZGV2aWNlIHRyZWVzLiAgRG8geW91
+IGRpc2FibGUgdGhlIGdhbW1hIExVVCBmZWF0dXJlPyAgLi4ub3IgZG8geW91IGRvCmV4YWN0bHkg
+d2hhdCB0aGUgY29kZSBoZXJlIGlzIGRvaW5nIGFuZCBqdXN0IG1hcCBpdCBhbnl3YXk/ICBJIGd1
+ZXNzCnlvdSBjb3VsZCBqdXN0IGtlZXAgdGhlIGNvZGUgaGVyZSAoYW5kIGl0J2xsIHdvcmsgZmlu
+ZSksIGJ1dCBtYXliZSBpbgpwYXJhbGxlbCB3ZSBzaG91bGQgYWRkIGl0IHRvIHRoZSAuZHRzIGZp
+bGUgYW5kIGJpbmRpbmdzPwoKLS0tCgpJIHdpbGwgc2F5IHRoYXQsIHRob3VnaCBJIGRvbid0IGtu
+b3cgbXVjaCAoYW55dGhpbmc/KSBhYm91dCBnYW1tYQpMVVRzLCBJIHJhbiB0aGUgQ2hyb21lIE9T
+ICJnYW1tYV90ZXN0IiBwcm9ncmFtIGFuZCBzYXcgYSBwcmV0dHkgUkdCCmdyYWRpZW50IG9uIHRo
+ZSBib3RoIHRoZSBpbnRlcm5hbCBzY3JlZW4gYW5kIEhETUkgbW9uaXRvciBvbiBteQpyazMyODgt
+dmV5cm9uLWplcnJ5LiAgVGh1czoKClRlc3RlZC1ieTogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRl
+cnNAY2hyb21pdW0ub3JnPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWw=
