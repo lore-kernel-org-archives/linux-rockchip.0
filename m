@@ -1,71 +1,102 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 2/2] ARM: dts: rockchip: Configure BT_HOST_WAKE as wake-up signal on veyron
-Date: Fri, 14 Jun 2019 11:41:52 +0200
-Message-ID: <1649765.SGRQ98Vtau@phil>
-References: <20190605204320.22343-1-mka@chromium.org> <20190606175654.GQ40515@google.com> <CAD=FV=U-BOF79yJOW7S1CRudTqDN0BA8Ur3mJfg3C-+8P6fCew@mail.gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: rockchip: dts: sapphire: Fix USB3 Type-C.
+Date: Fri, 14 Jun 2019 11:47:21 +0200
+Message-ID: <12195113.EL5Iorepzr@phil>
+References: <574f2bae-0121-4cc7-ad9a-5ba32315d71b@gmail.com>
+ <20190522150717.1748-1-vicencb@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=U-BOF79yJOW7S1CRudTqDN0BA8Ur3mJfg3C-+8P6fCew@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Matthias Kaehlcke <mka@chromium.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, Brian Norris <briannorris@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190522150717.1748-1-vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 7. Juni 2019, 01:34:32 CEST schrieb Doug Anderson:
-> Hi,
-> 
-> On Thu, Jun 6, 2019 at 10:56 AM Matthias Kaehlcke <mka@chromium.org> wrote:
-> >
-> > On Thu, Jun 06, 2019 at 12:46:03PM +0200, Heiko Stuebner wrote:
-> > > Am Mittwoch, 5. Juni 2019, 23:52:00 CEST schrieb Heiko Stübner:
-> > > > Am Mittwoch, 5. Juni 2019, 23:24:27 CEST schrieb Matthias Kaehlcke:
-> > > > > On Wed, Jun 05, 2019 at 11:11:12PM +0200, Heiko Stübner wrote:
-> > > > > > Am Mittwoch, 5. Juni 2019, 22:43:20 CEST schrieb Matthias Kaehlcke:
-> > > > > > > This enables wake up on Bluetooth activity when the device is
-> > > > > > > suspended. The BT_HOST_WAKE signal is only connected on devices
-> > > > > > > with BT module that are connected through UART.
-> > > > > > >
-> > > > > > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > > > > > > Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
-> > > > > >
-> > > > > > Housekeeping question, with the two Signed-off-by lines, is Doug the
-> > > > > > original author, or was this Co-developer-by?
-> > > > >
-> > > > > Good question, it's derived from Doug's patch for CrOS 3.14 and
-> > > > > https://crrev.com/c/1575556 also from Doug. Let's say I did the
-> > > > > porting to upstream, but I'm pretty sure Doug spent more time on it.
-> > > > >
-> > > > > Maybe I should resend it with Doug as author and include the original
-> > > > > commit message, which has more information.
-> > > >
-> > > > It's just that the first Signed-off should be from the original author.
-> > > > (And the sender the second)
-> > > > In the co-developed-by case (see Kernel documentation) the order
-> > > > doesn't matter.
-> > >
-> > > Holding off on this patch till we could clarify the authorship.
-> >
-> > I'd say let's attribute the authorship to Doug. FTR, the original
-> > downstream Chrome OS patch is https://crrev.com/c/278190.
-> >
-> > Not sure if the information in the commit message of the original
-> > patch is relevant for the upstream version, in the end it seems LPM
-> > was never implemented, so it should be sufficient to say what is
-> > actually done today.
-> >
-> > In summary, I propose to take the patch with the current commit
-> > message, with Doug as the author. Heiko, can you change the authorship
-> > or should I send a new version?
-> >
-> > Doug if you have objections or want updates in the commit message
-> > (yours tend to be more verbose ;-), holler.
-> 
-> It's fine with me.
+Hi Vicente,
 
-while I did just want to apply this one with the relevant adaptions,
-I didn't get to it early enough and Matthias was faster with his v2
-fixed patch, so I've applied that one instead ;-)
+Am Mittwoch, 22. Mai 2019, 17:07:17 CEST schrieb Vicente Bergas:
+> Before this patch, the Type-C port on the Sapphire board is dead.
+> 
+> Applying only the power supply part of this patch, makes the port work
+> for about 4 seconds at start-up. This is a sample trace with a memory
+> stick plugged in:
+> 1.- The memory stick LED lights on and kernel reports:
+> [    4.782999] scsi 0:0:0:0: Direct-Access USB DISK PMAP PQ: 0 ANSI: 4
+> [    5.904580] sd 0:0:0:0: [sdb] 3913344 512-byte logical blocks: (2.00 GB/1.87 GiB)
+> [    5.906860] sd 0:0:0:0: [sdb] Write Protect is off
+> [    5.908973] sd 0:0:0:0: [sdb] Mode Sense: 23 00 00 00
+> [    5.909122] sd 0:0:0:0: [sdb] No Caching mode page found
+> [    5.911214] sd 0:0:0:0: [sdb] Assuming drive cache: write through
+> [    5.951585]  sdb: sdb1
+> [    5.954816] sd 0:0:0:0: [sdb] Attached SCSI removable disk
+> 2.- 4 seconds later the memory stick LED lights off and kernel reports:
+> [    9.082822] phy phy-ff770000.syscon:usb2-phy@e450.2: charger = USB_DCP_CHARGER
+> 3.- After a minute the kernel reports:
+> [   71.666761] usb 5-1: USB disconnect, device number 2
+> It has been checked that, although the LED is off, VBUS is present.
+> 
+> Applying the full patch makes it work.
+> It has only been tested in host mode.
+> 
+> Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
+having to set the regulator to always-on indicates more an issue
+with the phy? Because in theory the phy-driver should just enable the
+supplying regulator on power-on.
+
+Like would it work to just add the regulator to the host-port of the
+phy without enabling it all the time?
+
+Thanks
 Heiko
+
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> index 04623e52ac5d..72000a7b666f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> @@ -112,6 +112,7 @@
+>  		pinctrl-names = "default";
+>  		pinctrl-0 = <&vcc5v0_typec0_en>;
+>  		regulator-name = "vcc5v0_typec0";
+> +		regulator-always-on;
+>  		vin-supply = <&vcc_sys>;
+>  	};
+>  
+> @@ -565,12 +566,11 @@
+>  	status = "okay";
+>  
+>  	u2phy0_otg: otg-port {
+> -		phy-supply = <&vcc5v0_typec0>;
+>  		status = "okay";
+>  	};
+>  
+>  	u2phy0_host: host-port {
+> -		phy-supply = <&vcc5v0_host>;
+> +		phy-supply = <&vcc5v0_typec0>;
+>  		status = "okay";
+>  	};
+>  };
+> @@ -620,7 +620,7 @@
+>  
+>  &usbdrd_dwc3_0 {
+>  	status = "okay";
+> -	dr_mode = "otg";
+> +	dr_mode = "host";
+>  };
+>  
+>  &usbdrd3_1 {
+> 
