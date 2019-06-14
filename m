@@ -1,48 +1,30 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v4 4/5] mmc: core: Add sdio_retune_hold_now() and sdio_retune_release()
-Date: Fri, 14 Jun 2019 09:38:26 -0700
-Message-ID: <CAD=FV=Wuj=gANR2im_o4ZnoLEB+U6FqzKe4noLdQyi1vw+K2xw@mail.gmail.com>
-References: <20190613234153.59309-1-dianders@chromium.org> <20190613234153.59309-5-dianders@chromium.org>
- <CAPDyKFrJ4+zn7Ak0tYHkBfXUtH3N7erb5R7Q+hgugchZmCRGrw@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH] drm/rockchip: dw_hdmi: add basic rk3228 support
+Date: Fri, 14 Jun 2019 10:47:02 -0600
+Message-ID: <20190614164702.GA20322@bogus>
+References: <20190522224631.25164-1-justin.swartz@risingedge.co.za>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFrJ4+zn7Ak0tYHkBfXUtH3N7erb5R7Q+hgugchZmCRGrw@mail.gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>, Arend van Spriel <arend.vanspriel@broadcom.com>, Adrian Hunter <adrian.hunter@intel.com>
-Cc: Kalle Valo <kvalo@codeaurora.org>, brcm80211-dev-list.pdl@broadcom.com, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Double Lo <double.lo@cypress.com>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, Matthias Kaehlcke <mka@chromium.org>, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, netdev <netdev@vger.kernel.org>, brcm80211-dev-list <brcm80211-dev-list@cypress.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Thomas Gleixner <tglx@linutronix.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190522224631.25164-1-justin.swartz@risingedge.co.za>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: Sandy Huang <hjc@rock-chips.com>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>, Justin Swartz <justin.swartz@risingedge.co.za>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Wed, 22 May 2019 22:46:29 +0000, Justin Swartz wrote:
+> Like the RK3328, RK322x SoCs offer a Synopsis DesignWare HDMI transmitter
+> and an Innosilicon HDMI PHY.
+> 
+> Add a new dw_hdmi_plat_data struct, rk3228_hdmi_drv_data.
+> Assign a set of mostly generic rk3228_hdmi_phy_ops functions.
+> Add dw_hdmi_rk3228_setup_hpd() to enable the HDMI HPD and DDC lines.
+> 
+> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+> ---
+>  .../bindings/display/rockchip/dw_hdmi-rockchip.txt |  1 +
+>  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c        | 53 ++++++++++++++++++++++
+>  2 files changed, 54 insertions(+)
+> 
 
-On Fri, Jun 14, 2019 at 5:10 AM Ulf Hansson <ulf.hansson@linaro.org> wrote:
->
-> On Fri, 14 Jun 2019 at 01:42, Douglas Anderson <dianders@chromium.org> wrote:
-> >
-> > We want SDIO drivers to be able to temporarily stop retuning when the
-> > driver knows that the SDIO card is not in a state where retuning will
-> > work (maybe because the card is asleep).  We'll move the relevant
-> > functions to a place where drivers can call them.
-> >
-> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
->
-> This looks good to me.
->
-> BTW, seems like this series is best funneled via my mmc tree, no? In
-> such case, I need acks for the brcmfmac driver patches.
-
-For patch #1 I think it could just go in directly to the wireless
-tree.  It should be fine to land the rest of the patches separately.
-
-For patch #2 - #5 then what you say makes sense to me.  I suppose
-you'd want at least a Reviewed-by from Arend and an Ack from Kalle on
-the Broadcom patches?
-
-I'd also suggest that we Cc stable explicitly when applying.  That's
-easy for #2 and #3 since they have a Fixes tag.  For #4 and #5 I guess
-the question is how far back to go.  Maybe Adrian has an opinion here
-since I think he's the one who experienced these problems.
-
-
-Thanks!
--Doug
+Reviewed-by: Rob Herring <robh@kernel.org>
