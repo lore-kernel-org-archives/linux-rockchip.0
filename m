@@ -1,64 +1,61 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: set TX PBL for rk3328-roc-cc gmac
-Date: Fri, 14 Jun 2019 11:26:17 +0200
-Message-ID: <1619091.6MGD9gV0do@phil>
-References: <20190417210059.26262-1-papadakospan@gmail.com>
- <1555938803.1241.1@gmail.com>
- <8ded737d-1fd5-3609-ca2e-cfeba63b2d95@gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Fix multiple thermal zones conflict in rk3399.dtsi
+Date: Fri, 14 Jun 2019 11:35:25 +0200
+Message-ID: <5188064.YWmxIpmbGp@phil>
+References: <20190604165802.7338-1-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <8ded737d-1fd5-3609-ca2e-cfeba63b2d95-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Jose Abreu <jose.abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190604165802.7338-1-daniel.lezcano@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: linux-kernel@vger.kernel.org, edubezval@gmail.com, manivannan.sadhasivam@linaro.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Viresh Kumar <viresh.kumar@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Emil Renner Berthing <kernel@esmil.dk>, Randy Li <ayaka@soulik.info>, Tony Xie <tony.xie@rock-chips.com>, Vicente Bergas <vicencb@gmail.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infr>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Daniel,
 
-Am Donnerstag, 23. Mai 2019, 02:00:27 CEST schrieb Peter Geis:
+Am Dienstag, 4. Juni 2019, 18:57:57 CEST schrieb Daniel Lezcano:
+> Currently the common thermal zones definitions for the rk3399 assumes
+> multiple thermal zones are supported by the governors. This is not the
+> case and each thermal zone has its own governor instance acting
+> individually without collaboration with other governors.
 > 
-> On 4/22/2019 9:13 AM, Leonidas P. Papadakos wrote:
-> > 
-> > Indeed, at least with that first patch users won't have a crappy 
-> > experience by default (ssh lags and the like)
-> > 
-> > 
+> As the cooling device for the CPU and the GPU thermal zones is the
+> same, each governors take different decisions for the same cooling
+> device leading to conflicting instructions and an erratic behavior.
 > 
-> I apologize for taking so long at this, but I wanted to make sure I had 
-> it right.
+> As the cooling-maps is about to become an optional property, let's
+> remove the cpu cooling device map from the GPU thermal zone.
 > 
-> So far I've found a few things that seem to help, and would like y'all 
-> to test them when you get the chance.
+> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 9 ---------
+>  1 file changed, 9 deletions(-)
 > 
-> Adding snps,aal (configures DMA for address alignment) appears to make a 
-> massive improvement to stability, although the the snps,txpbl = <0x4> is 
-> still necessary for this to work.
-> 
-> Second, I added snps,rxpbl = <0x4> as well, which seems to help with my 
-> RX issues a bit.
-> The biggest improvement with these two settings is more stable transmit 
-> and receive.
-> Currently I'm getting about 800mbps on tx and 400 mbps on rx.
-> 
-> Please test when you get the chance and provide feedback.
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 196ac9b78076..e1357e0f60f7 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -821,15 +821,6 @@
+>  					type = "critical";
+>  				};
+>  			};
+> -
+> -			cooling-maps {
+> -				map0 {
+> -					trip = <&gpu_alert0>;
+> -					cooling-device =
+> -						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+> -						<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> -				};
+> -			};
+>  		};
+>  	};
 
-I have to confess I lost track of the multitude of patches touching
-the gmac on rk3328 and their long mail threads in terms of which
-to pick up and which are considered superseeded.
+my knowledge of the thermal framework is not that big, but what about the
+rk3399-devices which further detail the cooling-maps like rk3399-gru-kevin
+and the rk3399-nanopc-t4 with its fan-handling in the cooling-maps?
 
-So I'd really appreciate if you could resend the patches that matter
-and provide relevant Tested-by, Reviewed-by, etc tags from involved
-people that actually were able to test patches
 
-Thanks
 Heiko
