@@ -1,137 +1,69 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] clk: rockchip: add clock for the watchdog pclk on
- rk3328
-Date: Fri, 14 Jun 2019 11:50:24 +0200
-Message-ID: <5657669.4RvfzeBcXs@phil>
-References: <20190605235714.22432-1-papadakospan@gmail.com>
- <3485393.4UdOu2YNQE@phil> <1559821340.1384.0@gmail.com>
+Subject: Re: [PATCH v3 1/1] arm64: dts: rockchip: add core dtsi file for RK3399Pro SoCs
+Date: Fri, 14 Jun 2019 11:52:25 +0200
+Message-ID: <3309819.J5kelTtX6q@phil>
+References: <20190529074752.19388-1-jay.xu@rock-chips.com> <20190530000848.28106-1-jay.xu@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1559821340.1384.0@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: "Leonidas P. Papadakos" <papadakospan@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, itdaniher@gmail.com
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190530000848.28106-1-jay.xu@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jianqun Xu <jay.xu@rock-chips.com>
+Cc: mark.rutland@arm.com, robh+dt@kernel.org, zhangzj@rock-chips.com, manivannan.sadhasivam@linaro.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Jianqun,
 
-Am Donnerstag, 6. Juni 2019, 13:42:20 CEST schrieb Leonidas P. Papadakos:
+Am Donnerstag, 30. Mai 2019, 02:08:48 CEST schrieb Jianqun Xu:
+> This patch adds core dtsi file for Rockchip RK3399Pro SoCs,
+> include rk3399.dtsi. Also enable pciei0/pcie_phy for AP to
+> talk to NPU part inside SoC.
 > 
-> Hi,
-> > 
-> > Am Donnerstag, 6. Juni 2019, 01:57:13 CEST schrieb Leonidas P. 
-> > Papadakos:
-> >>  From: <itdaniher@gmail.com>
-> > 
-> > Why is the From different from the Signed-off-by? Would also need a 
-> > full name.
-> > If the patch is from you, please just use the same From as for the 
-> > Signed-off-by.
-> > 
-> 
-> I mistakenly though this was the way to credit someone for a patch, but 
-> it seems to be different.
-> I'll Cc: the author of this patch
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
 
-Were you able yet to take a look at the clock-patches I Cc'ed you on
-and look at reworking your patch accrodingly?
-
+could you add the necessary pinctrl entry, as suggested by Manivannan?
 
 Thanks
 Heiko
 
+> ---
+> changes since v2:
+> - only enable pcie0 and pcie_phy nodes, thanks for Heiko and manivannan
 > 
-> >> 
-> >>  Following the discussion here:
-> >>  https://github.com/rockchip-linux/kernel/issues/123
-> >> 
-> >>  it can be seen that these are the changes needed to enable the use 
-> >> of the hardware watchdog in the rk3328 SoC.
-> >> 
-> >>  This is in line with past changes for the rk3288:
-> >>  
-> >> http://lists.infradead.org/pipermail/linux-rockchip/2015-January/002314.html
-> >> 
-> >>  Signed-off-by: Leonidas P. Papadakos <papadakospan@gmail.com>
-> >>  ---
-> >>   drivers/clk/rockchip/clk-rk3328.c      | 9 +++++++++
-> >>   include/dt-bindings/clock/rk3328-cru.h | 1 +
-> >>   2 files changed, 10 insertions(+)
-> >> 
-> >>  diff --git a/drivers/clk/rockchip/clk-rk3328.c 
-> >> b/drivers/clk/rockchip/clk-rk3328.c
-> >>  index 076b9777a..546ee0ab7 100644
-> >>  --- a/drivers/clk/rockchip/clk-rk3328.c
-> >>  +++ b/drivers/clk/rockchip/clk-rk3328.c
-> >>  @@ -876,6 +876,8 @@ static const char *const 
-> >> rk3328_critical_clocks[] __initconst = {
-> >> 
-> >>   static void __init rk3328_clk_init(struct device_node *np)
-> >>   {
-> >>  +	struct clk *clk;
-> >>  +
-> >>   	struct rockchip_clk_provider *ctx;
-> >>   	void __iomem *reg_base;
-> >> 
-> >>  @@ -892,6 +894,13 @@ static void __init rk3328_clk_init(struct 
-> >> device_node *np)
-> >>   		return;
-> >>   	}
-> >> 
-> >>  +	clk = clk_register_fixed_factor(NULL, "pclk_wdt", "pclk_bus", 0, 
-> >> 1, 1);
-> >>  +	if (IS_ERR(clk))
-> >>  +		pr_warn("%s: could not register clock pclk_wdt: %ld\n",
-> >>  +			__func__, PTR_ERR(clk));
-> >>  +	else
-> >>  +		rockchip_clk_add_lookup(ctx, clk, PCLK_WDT);
-> >>  +
-> > 
-> > I've just Cc'ed you on 2 patches adding a SGRF_GATE clock-type. Please
-> > use that as base for you rk3328-wdt-clock, so that we don't introduce 
-> > more
-> > boilderplate code.
-> > 
-> > 
-> >>   	rockchip_clk_register_plls(ctx, rk3328_pll_clks,
-> >>   				   ARRAY_SIZE(rk3328_pll_clks),
-> >>   				   RK3328_GRF_SOC_STATUS0);
-> > 
-> >>  diff --git a/include/dt-bindings/clock/rk3328-cru.h 
-> >> b/include/dt-bindings/clock/rk3328-cru.h
-> >>  index afb811340..555b4ff66 100644
-> >>  --- a/include/dt-bindings/clock/rk3328-cru.h
-> >>  +++ b/include/dt-bindings/clock/rk3328-cru.h
-> >>  @@ -164,6 +164,7 @@
-> >>   #define PCLK_DCF		233
-> >>   #define PCLK_SARADC		234
-> >>   #define PCLK_ACODECPHY		235
-> >>  +#define PCLK_WDT		236
-> >> 
-> >>   /* hclk gates */
-> >>   #define HCLK_PERI		308
-> > 
-> > please split the addition of the clock-id into a separate patch only 
-> > adding
-> > said id.
-> > 
-> > 
-> > Thanks
-> > Heiko
-> > 
+> changes since v1:
+> - remove dfi and dmc
 > 
-> I know less than him on this, but I want the feedback to be visible in 
-> the Cc:
+>  arch/arm64/boot/dts/rockchip/rk3399pro.dtsi | 22 +++++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399pro.dtsi
 > 
-> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro.dtsi b/arch/arm64/boot/dts/rockchip/rk3399pro.dtsi
+> new file mode 100644
+> index 000000000000..bb5ebf6608b9
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399pro.dtsi
+> @@ -0,0 +1,22 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +// Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd.
+> +
+> +#include "rk3399.dtsi"
+> +
+> +/ {
+> +	compatible = "rockchip,rk3399pro";
+> +};
+> +
+> +/* Default to enabled since AP talk to NPU part over pcie */
+> +&pcie_phy {
+> +	status = "okay";
+> +};
+> +
+> +/* Default to enabled since AP talk to NPU part over pcie */
+> +&pcie0 {
+> +	ep-gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
+> +	num-lanes = <4>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&pcie_clkreqn_cpm>;
+> +	status = "okay";
+> +};
 > 
