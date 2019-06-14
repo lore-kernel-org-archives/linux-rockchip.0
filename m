@@ -1,89 +1,51 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Fix multiple thermal zones
- conflict in rk3399.dtsi
-Date: Fri, 14 Jun 2019 15:03:52 +0200
-Message-ID: <55b9018e-672e-522b-d0a0-c5655be0f353@linaro.org>
-References: <20190604165802.7338-1-daniel.lezcano@linaro.org>
- <5188064.YWmxIpmbGp@phil>
+From: Boris Brezillon <boris.brezillon@collabora.com>
+Subject: Re: [RFC/WIP] drm/rockchip: Support CRTC gamma LUT
+Date: Fri, 14 Jun 2019 15:53:20 +0200
+Message-ID: <20190614155320.348d42af@collabora.com>
+References: <20190613192244.5447-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5188064.YWmxIpmbGp@phil>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-kernel@vger.kernel.org, edubezval@gmail.com, manivannan.sadhasivam@linaro.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Viresh Kumar <viresh.kumar@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Emil Renner Berthing <kernel@esmil.dk>, Randy Li <ayaka@soulik.info>, Tony Xie <tony.xie@rock-chips.com>, Vicente Bergas <vicencb@gmail.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infr>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190613192244.5447-1-ezequiel@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On 14/06/2019 11:35, Heiko Stuebner wrote:
-> Hi Daniel,
-> 
-> Am Dienstag, 4. Juni 2019, 18:57:57 CEST schrieb Daniel Lezcano:
->> Currently the common thermal zones definitions for the rk3399 assumes
->> multiple thermal zones are supported by the governors. This is not the
->> case and each thermal zone has its own governor instance acting
->> individually without collaboration with other governors.
->>
->> As the cooling device for the CPU and the GPU thermal zones is the
->> same, each governors take different decisions for the same cooling
->> device leading to conflicting instructions and an erratic behavior.
->>
->> As the cooling-maps is about to become an optional property, let's
->> remove the cpu cooling device map from the GPU thermal zone.
->>
->> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
->> ---
->>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 9 ---------
->>  1 file changed, 9 deletions(-)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->> index 196ac9b78076..e1357e0f60f7 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->> @@ -821,15 +821,6 @@
->>  					type = "critical";
->>  				};
->>  			};
->> -
->> -			cooling-maps {
->> -				map0 {
->> -					trip = <&gpu_alert0>;
->> -					cooling-device =
->> -						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
->> -						<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
->> -				};
->> -			};
->>  		};
->>  	};
-> 
-> my knowledge of the thermal framework is not that big, but what about the
-> rk3399-devices which further detail the cooling-maps like rk3399-gru-kevin
-> and the rk3399-nanopc-t4 with its fan-handling in the cooling-maps?
-
-The rk3399-gru-kevin is correct.
-
-The rk3399-nanopc-t4 is not correct because the cpu and the gpu are
-sharing the same cooling device (the fan). There are different
-configurations:
-
-1. The cpu cooling device for the CPU and the fan for the GPU
-
-2. Different trip points on the CPU thermal zone, eg. one to for the CPU
-cooling device and another one for the fan.
-
-There are some variant for the above. If this board is not on battery,
-you may want to give priority to the throughput, so activate the fan
-first and then cool down the CPU. Or if you are on battery, you may want
-to invert the trip points.
-
-In any case, it is not possible to share the same cooling device for
-different thermal zones.
-
-
--- 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+T24gVGh1LCAxMyBKdW4gMjAxOSAxNjoyMjo0NCAtMDMwMApFemVxdWllbCBHYXJjaWEgPGV6ZXF1
+aWVsQGNvbGxhYm9yYS5jb20+IHdyb3RlOgoKCj4gK3N0YXRpYyBpbnQgdm9wX2dhbW1hX2x1dF9y
+ZXF1ZXN0KHN0cnVjdCBkZXZpY2UgKmRldiwKPiArCQkJCSBzdHJ1Y3QgcmVzb3VyY2UgKnJlcywg
+c3RydWN0IHZvcCAqdm9wKQo+ICt7Cj4gKwlyZXNvdXJjZV9zaXplX3Qgb2Zmc2V0ID0gdm9wLT5k
+YXRhLT5nYW1tYV9sdXRfYWRkcl9vZmY7Cj4gKwlyZXNvdXJjZV9zaXplX3Qgc2l6ZSA9IFZPUF9H
+QU1NQV9MVVRfU0laRSAqIDQ7Cj4gKwo+ICsJLyoKPiArCSAqIFNvbWUgU29DcyAoZS5nLiBSSzMy
+ODgpIGhhdmUgdGhlIGdhbW1hIExVVCBhZGRyZXNzIGFmdGVyCj4gKwkgKiB0aGUgTU1VIHJlZ2lz
+dGVycywgd2hpY2ggbWVhbnMgd2UgY2FuJ3QgcmVxdWVzdCBhbmQgaW9yZW1hcAo+ICsJICogdGhl
+IGVudGlyZSByZWdpc3RlciBzZXQuIE90aGVyIChlLmcuIFJLMzM5OSkgaGF2ZSBnYW1tYSBMVVQK
+PiArCSAqIGFkZHJlc3MgYmVmb3JlIE1NVS4KPiArCSAqCj4gKwkgKiBUaGVyZWZvcmUsIHdlIG5l
+ZWQgdG8gcmVxdWVzdCBhbmQgaW9yZW1hcCB0aG9zZSB0aGF0IGhhdmVuJ3QKPiArCSAqIGJlZW4g
+YWxyZWFkeS4KPiArCSAqLwo+ICsJaWYgKHZvcC0+bGVuID49IChvZmZzZXQgKyBzaXplKSkgewo+
+ICsJCXZvcC0+bHV0X3JlZ3MgPSB2b3AtPnJlZ3MgKyBvZmZzZXQ7Cj4gKwkJcmV0dXJuIDA7Cj4g
+Kwl9Cj4gKwo+ICsJaWYgKCFkZXZtX3JlcXVlc3RfbWVtX3JlZ2lvbihkZXYsIHJlcy0+c3RhcnQg
+KyBvZmZzZXQsCj4gKwkJCQkgICAgIHNpemUsIGRldl9uYW1lKGRldikpKSB7Cj4gKwkJZGV2X3dh
+cm4oZGV2LCAiY2FuJ3QgcmVxdWVzdCBnYW1tYSBsdXQgcmVnaW9uXG4iKTsKPiArCQlyZXR1cm4g
+LUVCVVNZOwo+ICsJfQo+ICsKPiArCXZvcC0+bHV0X3JlZ3MgPSBkZXZtX2lvcmVtYXAoZGV2LCBy
+ZXMtPnN0YXJ0ICsgb2Zmc2V0LCBzaXplKTsKPiArCWlmICghdm9wLT5sdXRfcmVncykgewo+ICsJ
+CWRldl9lcnIoZGV2LCAiY2FuJ3QgaW9yZW1hcCBnYW1tYSBsdXQgYWRkcmVzc1xuIik7Cj4gKwkJ
+ZGV2bV9yZWxlYXNlX21lbV9yZWdpb24oZGV2LCByZXMtPnN0YXJ0ICsgb2Zmc2V0LCBzaXplKTsK
+PiArCQlyZXR1cm4gLUVOT01FTTsKPiArCX0KCkNhbid0IHdlIHBhdGNoIHRoZSByZXNvdXJjZSBq
+dXN0IGFmdGVyIGNhbGxpbmcgcGxhZm9ybV9nZXRfcmVzb3VyY2UoKQooYW5kIGJlZm9yZSBjYWxs
+aW5nIGRldm1faW9yZW1hcF9yZXNvdXJjZSgpKSBzbyB3ZSBkb24ndCBoYXZlIHRvIGFkZAp0aGVz
+ZSBkZXZtX3JlcXVlc3RfbWVtX3JlZ2lvbigpK2Rldm1faW9yZW1hcCgpIGNhbGxzIGhlcmU/Cgo+
+ICsJcmV0dXJuIDA7Cj4gK30KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
+LWRldmVs
