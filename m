@@ -1,118 +1,89 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v4 4/5] mmc: core: Add sdio_retune_hold_now() and sdio_retune_release()
-Date: Fri, 14 Jun 2019 14:09:45 +0200
-Message-ID: <CAPDyKFrJ4+zn7Ak0tYHkBfXUtH3N7erb5R7Q+hgugchZmCRGrw@mail.gmail.com>
-References: <20190613234153.59309-1-dianders@chromium.org> <20190613234153.59309-5-dianders@chromium.org>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Fix multiple thermal zones
+ conflict in rk3399.dtsi
+Date: Fri, 14 Jun 2019 15:03:52 +0200
+Message-ID: <55b9018e-672e-522b-d0a0-c5655be0f353@linaro.org>
+References: <20190604165802.7338-1-daniel.lezcano@linaro.org>
+ <5188064.YWmxIpmbGp@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190613234153.59309-5-dianders@chromium.org>
+In-Reply-To: <5188064.YWmxIpmbGp@phil>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Arend van Spriel <arend.vanspriel@broadcom.com>, brcm80211-dev-list.pdl@broadcom.com, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Double Lo <double.lo@cypress.com>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, Matthias Kaehlcke <mka@chromium.org>, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, netdev@vger.kernel.org, brcm80211-dev-list@cypress.com, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Thomas Gleixner <tglx@linutronix.de>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-kernel@vger.kernel.org, edubezval@gmail.com, manivannan.sadhasivam@linaro.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Viresh Kumar <viresh.kumar@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Emil Renner Berthing <kernel@esmil.dk>, Randy Li <ayaka@soulik.info>, Tony Xie <tony.xie@rock-chips.com>, Vicente Bergas <vicencb@gmail.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infr>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 14 Jun 2019 at 01:42, Douglas Anderson <dianders@chromium.org> wrote:
->
-> We want SDIO drivers to be able to temporarily stop retuning when the
-> driver knows that the SDIO card is not in a state where retuning will
-> work (maybe because the card is asleep).  We'll move the relevant
-> functions to a place where drivers can call them.
->
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+On 14/06/2019 11:35, Heiko Stuebner wrote:
+> Hi Daniel,
+> 
+> Am Dienstag, 4. Juni 2019, 18:57:57 CEST schrieb Daniel Lezcano:
+>> Currently the common thermal zones definitions for the rk3399 assumes
+>> multiple thermal zones are supported by the governors. This is not the
+>> case and each thermal zone has its own governor instance acting
+>> individually without collaboration with other governors.
+>>
+>> As the cooling device for the CPU and the GPU thermal zones is the
+>> same, each governors take different decisions for the same cooling
+>> device leading to conflicting instructions and an erratic behavior.
+>>
+>> As the cooling-maps is about to become an optional property, let's
+>> remove the cpu cooling device map from the GPU thermal zone.
+>>
+>> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+>> ---
+>>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 9 ---------
+>>  1 file changed, 9 deletions(-)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> index 196ac9b78076..e1357e0f60f7 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> @@ -821,15 +821,6 @@
+>>  					type = "critical";
+>>  				};
+>>  			};
+>> -
+>> -			cooling-maps {
+>> -				map0 {
+>> -					trip = <&gpu_alert0>;
+>> -					cooling-device =
+>> -						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+>> -						<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+>> -				};
+>> -			};
+>>  		};
+>>  	};
+> 
+> my knowledge of the thermal framework is not that big, but what about the
+> rk3399-devices which further detail the cooling-maps like rk3399-gru-kevin
+> and the rk3399-nanopc-t4 with its fan-handling in the cooling-maps?
 
-This looks good to me.
+The rk3399-gru-kevin is correct.
 
-BTW, seems like this series is best funneled via my mmc tree, no? In
-such case, I need acks for the brcmfmac driver patches.
+The rk3399-nanopc-t4 is not correct because the cpu and the gpu are
+sharing the same cooling device (the fan). There are different
+configurations:
 
-Kind regards
-Uffe
+1. The cpu cooling device for the CPU and the fan for the GPU
+
+2. Different trip points on the CPU thermal zone, eg. one to for the CPU
+cooling device and another one for the fan.
+
+There are some variant for the above. If this board is not on battery,
+you may want to give priority to the throughput, so activate the fan
+first and then cool down the CPU. Or if you are on battery, you may want
+to invert the trip points.
+
+In any case, it is not possible to share the same cooling device for
+different thermal zones.
 
 
+-- 
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
 
-
-> ---
->
-> Changes in v4:
-> - Moved retune hold/release to SDIO API (Adrian).
->
-> Changes in v3:
-> - ("mmc: core: Export mmc_retune_hold_now() mmc_retune_release()") new for v3.
->
-> Changes in v2: None
->
->  drivers/mmc/core/sdio_io.c    | 40 +++++++++++++++++++++++++++++++++++
->  include/linux/mmc/sdio_func.h |  3 +++
->  2 files changed, 43 insertions(+)
->
-> diff --git a/drivers/mmc/core/sdio_io.c b/drivers/mmc/core/sdio_io.c
-> index f822a9630b0e..1b6fe737bd72 100644
-> --- a/drivers/mmc/core/sdio_io.c
-> +++ b/drivers/mmc/core/sdio_io.c
-> @@ -15,6 +15,7 @@
->  #include "sdio_ops.h"
->  #include "core.h"
->  #include "card.h"
-> +#include "host.h"
->
->  /**
->   *     sdio_claim_host - exclusively claim a bus for a certain SDIO function
-> @@ -770,3 +771,42 @@ void sdio_retune_crc_enable(struct sdio_func *func)
->         func->card->host->retune_crc_disable = false;
->  }
->  EXPORT_SYMBOL_GPL(sdio_retune_crc_enable);
-> +
-> +/**
-> + *     sdio_retune_hold_now - start deferring retuning requests till release
-> + *     @func: SDIO function attached to host
-> + *
-> + *     This function can be called if it's currently a bad time to do
-> + *     a retune of the SDIO card.  Retune requests made during this time
-> + *     will be held and we'll actually do the retune sometime after the
-> + *     release.
-> + *
-> + *     This function could be useful if an SDIO card is in a power state
-> + *     where it can respond to a small subset of commands that doesn't
-> + *     include the retuning command.  Care should be taken when using
-> + *     this function since (presumably) the retuning request we might be
-> + *     deferring was made for a good reason.
-> + *
-> + *     This function should be called while the host is claimed.
-> + */
-> +void sdio_retune_hold_now(struct sdio_func *func)
-> +{
-> +       mmc_retune_hold_now(func->card->host);
-> +}
-> +EXPORT_SYMBOL_GPL(sdio_retune_hold_now);
-> +
-> +/**
-> + *     sdio_retune_release - signal that it's OK to retune now
-> + *     @func: SDIO function attached to host
-> + *
-> + *     This is the complement to sdio_retune_hold_now().  Calling this
-> + *     function won't make a retune happen right away but will allow
-> + *     them to be scheduled normally.
-> + *
-> + *     This function should be called while the host is claimed.
-> + */
-> +void sdio_retune_release(struct sdio_func *func)
-> +{
-> +       mmc_retune_release(func->card->host);
-> +}
-> +EXPORT_SYMBOL_GPL(sdio_retune_release);
-> diff --git a/include/linux/mmc/sdio_func.h b/include/linux/mmc/sdio_func.h
-> index 4820e6d09dac..5a177f7a83c3 100644
-> --- a/include/linux/mmc/sdio_func.h
-> +++ b/include/linux/mmc/sdio_func.h
-> @@ -170,4 +170,7 @@ extern int sdio_set_host_pm_flags(struct sdio_func *func, mmc_pm_flag_t flags);
->  extern void sdio_retune_crc_disable(struct sdio_func *func);
->  extern void sdio_retune_crc_enable(struct sdio_func *func);
->
-> +extern void sdio_retune_hold_now(struct sdio_func *func);
-> +extern void sdio_retune_release(struct sdio_func *func);
-> +
->  #endif /* LINUX_MMC_SDIO_FUNC_H */
-> --
-> 2.22.0.rc2.383.gf4fbbf30c2-goog
->
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
