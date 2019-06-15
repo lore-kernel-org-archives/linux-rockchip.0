@@ -1,83 +1,64 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 3/4] ARM: dts: rockchip: add display nodes for rk322x
-Date: Sat, 15 Jun 2019 01:05:27 +0200
-Message-ID: <5617164.NpQ99z5SQI@phil>
-References: <20190614165454.13743-1-heiko@sntech.de>
- <13456600.FWPkgmLa5g@phil> <20190614203610.959DA217F9@mail.kernel.org>
+From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v2] arm64: rockchip: dts: sapphire: Fix USB3 Type-C.
+Date: Sat, 15 Jun 2019 02:31:01 +0200
+Message-ID: <4b759fa0-8fe9-4686-b5a7-b7a4e4564419@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190614203610.959DA217F9@mail.kernel.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: Justin Swartz <justin.swartz@risingedge.co.za>, mturquette@baylibre.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Stephen,
-
-Am Freitag, 14. Juni 2019, 22:36:09 CEST schrieb Stephen Boyd:
-> Quoting Heiko Stuebner (2019-06-14 12:33:12)
-> > Am Freitag, 14. Juni 2019, 20:32:35 CEST schrieb Justin Swartz:
-> > > On 2019-06-14 19:45, Stephen Boyd wrote:
-> > > >> diff --git a/arch/arm/boot/dts/rk322x.dtsi 
-> > > >> b/arch/arm/boot/dts/rk322x.dtsi
-> > > >> index da102fff96a2..148f9b5157ea 100644
-> > > >> --- a/arch/arm/boot/dts/rk322x.dtsi
-> > > >> +++ b/arch/arm/boot/dts/rk322x.dtsi
-> > > >> @@ -143,6 +143,11 @@
-> > > >> #clock-cells = <0>;
-> > > >> };
-> > > >> 
-> > > >> +       display_subsystem: display-subsystem {
-> > > >> +               compatible = "rockchip,display-subsystem";
-> > > >> +               ports = <&vop_out>;
-> > > >> +       };
-> > > >> +
-> > > > 
-> > > > What is this? It doesn't have a reg property so it looks like a virtual
-> > > > device. Why is it in DT?
-> > > 
-> > > This is a virtual device.
-> > > 
-> > > I assumed it would be acceptable to it find in a device tree due to 
-> > > binding documentation, 
-> > > "Documentation/devicetree/bindings/display/rockchip/rockchip-drm.txt, 
-> > > which states:
-> > > 
-> > > <quote>
-> > > The Rockchip DRM master device is a virtual device needed to list all
-> > > vop devices or other display interface nodes that comprise the
-> > > graphics subsystem.
-> > > </quote>
-> > > 
-> > > Without the "display_subsystem" device node, the HDMI PHY and 
-> > > rockchipdrmfb frame buffer device are not initialized.
-> > > 
-> > > Perhaps I should have included this in my commit message? :)
-> > 
-> > As Justin said, that is very much common as the root of the components
-> > that make up the drm device and pretty much common in a lot of devicetrees
-> > for the last 5 years and longer ;-) .
-> > 
-> > Also gpio-keys also don't have a reg property ;-) .
-> > 
-> 
-> Do you have a SoC node? If so, this virtual device should live in the
-> root, away from the nodes that have reg properties and are thus in the
-> SoC node.
-
-no we don't have any soc node and that display-subsystem is really the
-same on _all_ currently supported Rockchip socs ... has gone through
-dt-reviews numerous times for multiple socs, so I'm somewhat
-confident that we're not doing something terrible wrong.
-
-Heiko
+QmVmb3JlIHRoaXMgcGF0Y2gsIHRoZSBUeXBlLUMgcG9ydCBvbiB0aGUgU2FwcGhpcmUgYm9hcmQg
+aXMgZGVhZC4KSWYgc2V0dGluZyB0aGUgJ3JlZ3VsYXRvci1hbHdheXMtb24nIHByb3BlcnR5IHRv
+ICd2Y2M1djBfdHlwZWMwJwp0aGVuIHRoZSBwb3J0IHdvcmtzIGZvciBhYm91dCA0IHNlY29uZHMg
+YXQgc3RhcnQtdXAuIFRoaXMgaXMgYQpzYW1wbGUgdHJhY2Ugd2l0aCBhIG1lbW9yeSBzdGljayBw
+bHVnZ2VkIGluOgoxLi0gVGhlIG1lbW9yeSBzdGljayBMRUQgbGlnaHRzIG9uIGFuZCBrZXJuZWwg
+cmVwb3J0czoKWyAgICA0Ljc4Mjk5OV0gc2NzaSAwOjA6MDowOiBEaXJlY3QtQWNjZXNzIFVTQiBE
+SVNLIFBNQVAgUFE6IDAgQU5TSTogNApbICAgIDUuOTA0NTgwXSBzZCAwOjA6MDowOiBbc2RiXSAz
+OTEzMzQ0IDUxMi1ieXRlIGxvZ2ljYWwgYmxvY2tzOiAoMi4wMCAKR0IvMS44NyBHaUIpClsgICAg
+NS45MDY4NjBdIHNkIDA6MDowOjA6IFtzZGJdIFdyaXRlIFByb3RlY3QgaXMgb2ZmClsgICAgNS45
+MDg5NzNdIHNkIDA6MDowOjA6IFtzZGJdIE1vZGUgU2Vuc2U6IDIzIDAwIDAwIDAwClsgICAgNS45
+MDkxMjJdIHNkIDA6MDowOjA6IFtzZGJdIE5vIENhY2hpbmcgbW9kZSBwYWdlIGZvdW5kClsgICAg
+NS45MTEyMTRdIHNkIDA6MDowOjA6IFtzZGJdIEFzc3VtaW5nIGRyaXZlIGNhY2hlOiB3cml0ZSB0
+aHJvdWdoClsgICAgNS45NTE1ODVdICBzZGI6IHNkYjEKWyAgICA1Ljk1NDgxNl0gc2QgMDowOjA6
+MDogW3NkYl0gQXR0YWNoZWQgU0NTSSByZW1vdmFibGUgZGlzawoyLi0gNCBzZWNvbmRzIGxhdGVy
+IHRoZSBtZW1vcnkgc3RpY2sgTEVEIGxpZ2h0cyBvZmYgYW5kIGtlcm5lbCByZXBvcnRzOgpbICAg
+IDkuMDgyODIyXSBwaHkgcGh5LWZmNzcwMDAwLnN5c2Nvbjp1c2IyLXBoeUBlNDUwLjI6IGNoYXJn
+ZXIgPSAKVVNCX0RDUF9DSEFSR0VSCjMuLSBBZnRlciBhIG1pbnV0ZSB0aGUga2VybmVsIHJlcG9y
+dHM6ClsgICA3MS42NjY3NjFdIHVzYiA1LTE6IFVTQiBkaXNjb25uZWN0LCBkZXZpY2UgbnVtYmVy
+IDIKSXQgaGFzIGJlZW4gY2hlY2tlZCB0aGF0LCBhbHRob3VnaCB0aGUgTEVEIGlzIG9mZiwgVkJV
+UyBpcyBwcmVzZW50LgoKSWYsIGluc3RlYWQsIHRoZSBkcl9tb2RlIGlzIGNoYW5nZWQgdG8gaG9z
+dCBhbmQgdGhlIHBoeS1zdXBwbHkgY2hhbmdlZAphY2NvcmRpbmdseSwgdGhlbiBpdCB3b3Jrcy4g
+SXQgaGFzIG9ubHkgYmVlbiB0ZXN0ZWQgaW4gaG9zdCBtb2RlLgoKU2lnbmVkLW9mZi1ieTogVmlj
+ZW50ZSBCZXJnYXMgPHZpY2VuY2JAZ21haWwuY29tPgotLS0KCkhpIEhlaWtvLApiZWZvcmUgaSBk
+aWQgdGVzdDoKIGEuLSBhcHBseWluZyBvbmx5IHRoZSBmaXJzdCBwYXJ0IG9mIHRoZSBwYXRjaDog
+cmVnLWFsd2F5cy1vbgogYi4tIGFwcGx5aW5nIHRoZSBmdWxsIHBhdGNoCmJ1dCBkaWQgbm90IHRl
+c3Q6CiBjLi0gYXBwbHlpbmcgb25seSB0aGUgbGFzdCBwYXJ0IG9mIHRoZSBwYXRjaCwgYXMgeW91
+IHN1Z2dlc3QKTm93IGkgaGF2ZSB0ZXN0ZWQgKGMpIGFuZCBpdCBhbHNvIHdvcmtzLCBzbywgaGVy
+ZSBpcyB2Mi4KClRoYW5rcyBmb3IgcmV2aWV3aW5nIQoKUmVnYXJkcywKICBWaWNlbsOnLgoKZGlm
+ZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNhcHBoaXJlLmR0
+c2kgCmIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaQpp
+bmRleCAwNDYyM2U1MmFjNWQuLjcyMDAwYTdiNjY2ZiAxMDA2NDQKLS0tIGEvYXJjaC9hcm02NC9i
+b290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaQorKysgYi9hcmNoL2FybTY0L2Jv
+b3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1zYXBwaGlyZS5kdHNpCkBAIC01NjUsMTIgKzU2NiwxMSBA
+QAogCXN0YXR1cyA9ICJva2F5IjsKIAogCXUycGh5MF9vdGc6IG90Zy1wb3J0IHsKLQkJcGh5LXN1
+cHBseSA9IDwmdmNjNXYwX3R5cGVjMD47CiAJCXN0YXR1cyA9ICJva2F5IjsKIAl9OwogCiAJdTJw
+aHkwX2hvc3Q6IGhvc3QtcG9ydCB7Ci0JCXBoeS1zdXBwbHkgPSA8JnZjYzV2MF9ob3N0PjsKKwkJ
+cGh5LXN1cHBseSA9IDwmdmNjNXYwX3R5cGVjMD47CiAJCXN0YXR1cyA9ICJva2F5IjsKIAl9Owog
+fTsKQEAgLTYyMCw3ICs2MjAsNyBAQAogCiAmdXNiZHJkX2R3YzNfMCB7CiAJc3RhdHVzID0gIm9r
+YXkiOwotCWRyX21vZGUgPSAib3RnIjsKKwlkcl9tb2RlID0gImhvc3QiOwogfTsKIAogJnVzYmRy
+ZDNfMSB7Ci0tIAoyLjIxLjAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
