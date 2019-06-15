@@ -1,64 +1,68 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v2] arm64: rockchip: dts: sapphire: Fix USB3 Type-C.
-Date: Sat, 15 Jun 2019 02:31:01 +0200
-Message-ID: <4b759fa0-8fe9-4686-b5a7-b7a4e4564419@gmail.com>
+From: Peter Geis <pgwipeout@gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: improve rk3328-roc-cc rgmii
+ performance.
+Date: Sat, 15 Jun 2019 08:12:36 -0400
+Message-ID: <71dc10a5-1024-d849-336e-476d183e5f46@gmail.com>
+References: <20190607123731.8737-1-pgwipeout@gmail.com>
+ <1559912295.22520.0@gmail.com>
+ <CAMdYzYorvWr1YhmFKaMQUCditjop5AZp4d1tO79XsVr7m7HrMw@mail.gmail.com>
+ <1560547631.1367.4@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1560547631.1367.4@gmail.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: "Leonidas P. Papadakos" <papadakospan@gmail.com>
+Cc: Jose Abreu <jose.abreu@synopsys.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QmVmb3JlIHRoaXMgcGF0Y2gsIHRoZSBUeXBlLUMgcG9ydCBvbiB0aGUgU2FwcGhpcmUgYm9hcmQg
-aXMgZGVhZC4KSWYgc2V0dGluZyB0aGUgJ3JlZ3VsYXRvci1hbHdheXMtb24nIHByb3BlcnR5IHRv
-ICd2Y2M1djBfdHlwZWMwJwp0aGVuIHRoZSBwb3J0IHdvcmtzIGZvciBhYm91dCA0IHNlY29uZHMg
-YXQgc3RhcnQtdXAuIFRoaXMgaXMgYQpzYW1wbGUgdHJhY2Ugd2l0aCBhIG1lbW9yeSBzdGljayBw
-bHVnZ2VkIGluOgoxLi0gVGhlIG1lbW9yeSBzdGljayBMRUQgbGlnaHRzIG9uIGFuZCBrZXJuZWwg
-cmVwb3J0czoKWyAgICA0Ljc4Mjk5OV0gc2NzaSAwOjA6MDowOiBEaXJlY3QtQWNjZXNzIFVTQiBE
-SVNLIFBNQVAgUFE6IDAgQU5TSTogNApbICAgIDUuOTA0NTgwXSBzZCAwOjA6MDowOiBbc2RiXSAz
-OTEzMzQ0IDUxMi1ieXRlIGxvZ2ljYWwgYmxvY2tzOiAoMi4wMCAKR0IvMS44NyBHaUIpClsgICAg
-NS45MDY4NjBdIHNkIDA6MDowOjA6IFtzZGJdIFdyaXRlIFByb3RlY3QgaXMgb2ZmClsgICAgNS45
-MDg5NzNdIHNkIDA6MDowOjA6IFtzZGJdIE1vZGUgU2Vuc2U6IDIzIDAwIDAwIDAwClsgICAgNS45
-MDkxMjJdIHNkIDA6MDowOjA6IFtzZGJdIE5vIENhY2hpbmcgbW9kZSBwYWdlIGZvdW5kClsgICAg
-NS45MTEyMTRdIHNkIDA6MDowOjA6IFtzZGJdIEFzc3VtaW5nIGRyaXZlIGNhY2hlOiB3cml0ZSB0
-aHJvdWdoClsgICAgNS45NTE1ODVdICBzZGI6IHNkYjEKWyAgICA1Ljk1NDgxNl0gc2QgMDowOjA6
-MDogW3NkYl0gQXR0YWNoZWQgU0NTSSByZW1vdmFibGUgZGlzawoyLi0gNCBzZWNvbmRzIGxhdGVy
-IHRoZSBtZW1vcnkgc3RpY2sgTEVEIGxpZ2h0cyBvZmYgYW5kIGtlcm5lbCByZXBvcnRzOgpbICAg
-IDkuMDgyODIyXSBwaHkgcGh5LWZmNzcwMDAwLnN5c2Nvbjp1c2IyLXBoeUBlNDUwLjI6IGNoYXJn
-ZXIgPSAKVVNCX0RDUF9DSEFSR0VSCjMuLSBBZnRlciBhIG1pbnV0ZSB0aGUga2VybmVsIHJlcG9y
-dHM6ClsgICA3MS42NjY3NjFdIHVzYiA1LTE6IFVTQiBkaXNjb25uZWN0LCBkZXZpY2UgbnVtYmVy
-IDIKSXQgaGFzIGJlZW4gY2hlY2tlZCB0aGF0LCBhbHRob3VnaCB0aGUgTEVEIGlzIG9mZiwgVkJV
-UyBpcyBwcmVzZW50LgoKSWYsIGluc3RlYWQsIHRoZSBkcl9tb2RlIGlzIGNoYW5nZWQgdG8gaG9z
-dCBhbmQgdGhlIHBoeS1zdXBwbHkgY2hhbmdlZAphY2NvcmRpbmdseSwgdGhlbiBpdCB3b3Jrcy4g
-SXQgaGFzIG9ubHkgYmVlbiB0ZXN0ZWQgaW4gaG9zdCBtb2RlLgoKU2lnbmVkLW9mZi1ieTogVmlj
-ZW50ZSBCZXJnYXMgPHZpY2VuY2JAZ21haWwuY29tPgotLS0KCkhpIEhlaWtvLApiZWZvcmUgaSBk
-aWQgdGVzdDoKIGEuLSBhcHBseWluZyBvbmx5IHRoZSBmaXJzdCBwYXJ0IG9mIHRoZSBwYXRjaDog
-cmVnLWFsd2F5cy1vbgogYi4tIGFwcGx5aW5nIHRoZSBmdWxsIHBhdGNoCmJ1dCBkaWQgbm90IHRl
-c3Q6CiBjLi0gYXBwbHlpbmcgb25seSB0aGUgbGFzdCBwYXJ0IG9mIHRoZSBwYXRjaCwgYXMgeW91
-IHN1Z2dlc3QKTm93IGkgaGF2ZSB0ZXN0ZWQgKGMpIGFuZCBpdCBhbHNvIHdvcmtzLCBzbywgaGVy
-ZSBpcyB2Mi4KClRoYW5rcyBmb3IgcmV2aWV3aW5nIQoKUmVnYXJkcywKICBWaWNlbsOnLgoKZGlm
-ZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNhcHBoaXJlLmR0
-c2kgCmIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaQpp
-bmRleCAwNDYyM2U1MmFjNWQuLjcyMDAwYTdiNjY2ZiAxMDA2NDQKLS0tIGEvYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9yazMzOTktc2FwcGhpcmUuZHRzaQorKysgYi9hcmNoL2FybTY0L2Jv
-b3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1zYXBwaGlyZS5kdHNpCkBAIC01NjUsMTIgKzU2NiwxMSBA
-QAogCXN0YXR1cyA9ICJva2F5IjsKIAogCXUycGh5MF9vdGc6IG90Zy1wb3J0IHsKLQkJcGh5LXN1
-cHBseSA9IDwmdmNjNXYwX3R5cGVjMD47CiAJCXN0YXR1cyA9ICJva2F5IjsKIAl9OwogCiAJdTJw
-aHkwX2hvc3Q6IGhvc3QtcG9ydCB7Ci0JCXBoeS1zdXBwbHkgPSA8JnZjYzV2MF9ob3N0PjsKKwkJ
-cGh5LXN1cHBseSA9IDwmdmNjNXYwX3R5cGVjMD47CiAJCXN0YXR1cyA9ICJva2F5IjsKIAl9Owog
-fTsKQEAgLTYyMCw3ICs2MjAsNyBAQAogCiAmdXNiZHJkX2R3YzNfMCB7CiAJc3RhdHVzID0gIm9r
-YXkiOwotCWRyX21vZGUgPSAib3RnIjsKKwlkcl9tb2RlID0gImhvc3QiOwogfTsKIAogJnVzYmRy
-ZDNfMSB7Ci0tIAoyLjIxLjAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+
+On 6/14/2019 5:27 PM, Leonidas P. Papadakos wrote:
+> 
+> 
+>> The big change was actually snps,aal.
+>> As per the TRM, DMA channels not address aligned have severe
+>> limitations, if they work at all.
+>>
+>> Setting the DMA ops as address aligned fixed my 30mbps TX issue when
+>> combined with your snps,txpbl = <0x4>.
+> 
+> Honestly, I don't notice any difference either way with aal. So what 
+> happens without it? If You only use the 0x4 txpbl and having removed 
+> thresh dma mode, (2 things then) do you get bad tx?
+> 
+> 
+
+I'm unsure why, but I think there might be small variations in the 
+different boards (Firefly, Libre).
+On my board (Libre) with just 0x4 txpbl and thresh dma removed I get a 
+whopping 30mbps.
+
+Adding aal brought it up to 900 mbps.
+
+I also had stability issues on rx, where it would bounce between 200 and 
+400 mbps, which adding 0x4 rxpbl helped.
+I still haven't been able to get rx above 400mpbs though.
+
+It's definitely the MTU issue, since setting the max mtu to 1496 fixes 
+most problems.
+
+I have to wonder if the pl330 in the rk3328 is bugged, since all of the 
+hardware that misbehaves (usb3, mmc, rgmii) require the dma engine.
+
+If this works as a valid replacement for thresh dma mode, then I can 
+submit it for merging.
+I would like a few more people to test it first.
+
+Anyone else with a rk3328-roc-cc board that can test this patch?
