@@ -1,40 +1,52 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 2/3] clk: rockchip: add watchdog pclk on rk3328
-Date: Sat, 15 Jun 2019 17:30:31 +0200
-Message-ID: <20190615153032.27772-2-heiko@sntech.de>
-References: <20190615153032.27772-1-heiko@sntech.de>
+Subject: Re: [PATCH 27/59] drm/rockchip: Drop drm_gem_prime_export/import
+Date: Sun, 16 Jun 2019 00:36:21 +0200
+Message-ID: <3418626.3hxrPx6y9t@phil>
+References: <20190614203615.12639-1-daniel.vetter@ffwll.ch>
+ <20190614203615.12639-28-daniel.vetter@ffwll.ch>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190615153032.27772-1-heiko@sntech.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, papadakospan@gmail.com, sboyd@kernel.org, mturquette@baylibre.com, Heiko Stuebner <heiko@sntech.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190614203615.12639-28-daniel.vetter@ffwll.ch>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel.vetter@ffwll.ch>
+Cc: Intel Graphics Development <intel-gfx@lists.freedesktop.org>, DRI Development <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The watchdog pclk is controlled from the secure GRF but we still
-want to mention it explicitly to not use arbitary parent clocks
-in the devicetree wdt node, so add a SGRF_GATE for it.
-
-Suggested-by: Leonidas P. Papadakos <papadakospan@gmail.com>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/clk/rockchip/clk-rk3328.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/clk/rockchip/clk-rk3328.c b/drivers/clk/rockchip/clk-rk3328.c
-index 076b9777a955..c186a1985bf4 100644
---- a/drivers/clk/rockchip/clk-rk3328.c
-+++ b/drivers/clk/rockchip/clk-rk3328.c
-@@ -791,6 +791,9 @@ static struct rockchip_clk_branch rk3328_clk_branches[] __initdata = {
- 	GATE(PCLK_SARADC, "pclk_saradc", "pclk_bus", 0, RK3328_CLKGATE_CON(17), 15, GFLAGS),
- 	GATE(0, "pclk_pmu", "pclk_bus", CLK_IGNORE_UNUSED, RK3328_CLKGATE_CON(28), 3, GFLAGS),
- 
-+	/* Watchdog pclk is controlled from the secure GRF */
-+	SGRF_GATE(PCLK_WDT, "pclk_wdt", "pclk_bus"),
-+
- 	GATE(PCLK_USB3PHY_OTG, "pclk_usb3phy_otg", "pclk_phy_pre", 0, RK3328_CLKGATE_CON(28), 1, GFLAGS),
- 	GATE(PCLK_USB3PHY_PIPE, "pclk_usb3phy_pipe", "pclk_phy_pre", 0, RK3328_CLKGATE_CON(28), 2, GFLAGS),
- 	GATE(PCLK_USB3_GRF, "pclk_usb3_grf", "pclk_phy_pre", CLK_IGNORE_UNUSED, RK3328_CLKGATE_CON(17), 2, GFLAGS),
--- 
-2.20.1
+QW0gRnJlaXRhZywgMTQuIEp1bmkgMjAxOSwgMjI6MzU6NDMgQ0VTVCBzY2hyaWViIERhbmllbCBW
+ZXR0ZXI6Cj4gVGhleSdyZSB0aGUgZGVmYXVsdC4KPiAKPiBBc2lkZTogV291bGQgYmUgcmVhbGx5
+IG5pY2UgdG8gc3dpdGNoIHRoZSBvdGhlcnMgb3ZlciB0bwo+IGRybV9nZW1fb2JqZWN0X2Z1bmNz
+Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJAaW50ZWwu
+Y29tPgo+IENjOiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgo+IENjOiAiSGVpa28g
+U3TDvGJuZXIiIDxoZWlrb0BzbnRlY2guZGU+Cj4gQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMu
+aW5mcmFkZWFkLm9yZwo+IENjOiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCgpP
+biByazMzOTkgd2l0aCBwYW5mcm9zdCB2aWEgcHJpbWUKVGVzdGVkLWJ5OiBIZWlrbyBTdHVlYm5l
+ciA8aGVpa29Ac250ZWNoLmRlPgoKYW5kIGl0IG9idmlvdXNseSBsb29rcyBjb3JyZWN0LCBzbwpS
+ZXZpZXdlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KCgo+IC0tLQo+ICBk
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwgMiAtLQo+ICAxIGZp
+bGUgY2hhbmdlZCwgMiBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiBpbmRleCA1OTA5MWI2MjQxZWMuLjc4Mjk3OWYxYjU1YSAx
+MDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5j
+Cj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+IEBA
+IC0yMTksOCArMjE5LDYgQEAgc3RhdGljIHN0cnVjdCBkcm1fZHJpdmVyIHJvY2tjaGlwX2RybV9k
+cml2ZXIgPSB7Cj4gIAkuZHVtYl9jcmVhdGUJCT0gcm9ja2NoaXBfZ2VtX2R1bWJfY3JlYXRlLAo+
+ICAJLnByaW1lX2hhbmRsZV90b19mZAk9IGRybV9nZW1fcHJpbWVfaGFuZGxlX3RvX2ZkLAo+ICAJ
+LnByaW1lX2ZkX3RvX2hhbmRsZQk9IGRybV9nZW1fcHJpbWVfZmRfdG9faGFuZGxlLAo+IC0JLmdl
+bV9wcmltZV9pbXBvcnQJPSBkcm1fZ2VtX3ByaW1lX2ltcG9ydCwKPiAtCS5nZW1fcHJpbWVfZXhw
+b3J0CT0gZHJtX2dlbV9wcmltZV9leHBvcnQsCj4gIAkuZ2VtX3ByaW1lX2dldF9zZ190YWJsZQk9
+IHJvY2tjaGlwX2dlbV9wcmltZV9nZXRfc2dfdGFibGUsCj4gIAkuZ2VtX3ByaW1lX2ltcG9ydF9z
+Z190YWJsZQk9IHJvY2tjaGlwX2dlbV9wcmltZV9pbXBvcnRfc2dfdGFibGUsCj4gIAkuZ2VtX3By
+aW1lX3ZtYXAJCT0gcm9ja2NoaXBfZ2VtX3ByaW1lX3ZtYXAsCj4gCgoKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
