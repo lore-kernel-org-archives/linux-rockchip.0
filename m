@@ -1,52 +1,111 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 27/59] drm/rockchip: Drop drm_gem_prime_export/import
-Date: Sun, 16 Jun 2019 00:36:21 +0200
-Message-ID: <3418626.3hxrPx6y9t@phil>
-References: <20190614203615.12639-1-daniel.vetter@ffwll.ch>
- <20190614203615.12639-28-daniel.vetter@ffwll.ch>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Fix multiple thermal zones
+ conflict in rk3399.dtsi
+Date: Sun, 16 Jun 2019 11:31:27 +0200
+Message-ID: <20190616093127.GC3826@kozik-lap>
+References: <20190604165802.7338-1-daniel.lezcano@linaro.org>
+ <5188064.YWmxIpmbGp@phil>
+ <55b9018e-672e-522b-d0a0-c5655be0f353@linaro.org>
+ <e5a4f850-27e0-cad3-04bd-6c004fca2b81@arm.com>
+ <9bf85c22-f1ba-3dbc-0b67-17e124484fa1@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190614203615.12639-28-daniel.vetter@ffwll.ch>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel.vetter@ffwll.ch>
-Cc: Intel Graphics Development <intel-gfx@lists.freedesktop.org>, DRI Development <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <9bf85c22-f1ba-3dbc-0b67-17e124484fa1@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, edubezval@gmail.com, manivannan.sadhasivam@linaro.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Viresh Kumar <viresh.kumar@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Emil Renner Berthing <kernel@esmil.dk>, Randy Li <ayaka@soulik.info>, Tony Xie <tony.xie@rock-chips.com>, Vicente Bergas <vicencb@gmail.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRnJlaXRhZywgMTQuIEp1bmkgMjAxOSwgMjI6MzU6NDMgQ0VTVCBzY2hyaWViIERhbmllbCBW
-ZXR0ZXI6Cj4gVGhleSdyZSB0aGUgZGVmYXVsdC4KPiAKPiBBc2lkZTogV291bGQgYmUgcmVhbGx5
-IG5pY2UgdG8gc3dpdGNoIHRoZSBvdGhlcnMgb3ZlciB0bwo+IGRybV9nZW1fb2JqZWN0X2Z1bmNz
-Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJAaW50ZWwu
-Y29tPgo+IENjOiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgo+IENjOiAiSGVpa28g
-U3TDvGJuZXIiIDxoZWlrb0BzbnRlY2guZGU+Cj4gQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMu
-aW5mcmFkZWFkLm9yZwo+IENjOiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCgpP
-biByazMzOTkgd2l0aCBwYW5mcm9zdCB2aWEgcHJpbWUKVGVzdGVkLWJ5OiBIZWlrbyBTdHVlYm5l
-ciA8aGVpa29Ac250ZWNoLmRlPgoKYW5kIGl0IG9idmlvdXNseSBsb29rcyBjb3JyZWN0LCBzbwpS
-ZXZpZXdlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KCgo+IC0tLQo+ICBk
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwgMiAtLQo+ICAxIGZp
-bGUgY2hhbmdlZCwgMiBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiBpbmRleCA1OTA5MWI2MjQxZWMuLjc4Mjk3OWYxYjU1YSAx
-MDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5j
-Cj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+IEBA
-IC0yMTksOCArMjE5LDYgQEAgc3RhdGljIHN0cnVjdCBkcm1fZHJpdmVyIHJvY2tjaGlwX2RybV9k
-cml2ZXIgPSB7Cj4gIAkuZHVtYl9jcmVhdGUJCT0gcm9ja2NoaXBfZ2VtX2R1bWJfY3JlYXRlLAo+
-ICAJLnByaW1lX2hhbmRsZV90b19mZAk9IGRybV9nZW1fcHJpbWVfaGFuZGxlX3RvX2ZkLAo+ICAJ
-LnByaW1lX2ZkX3RvX2hhbmRsZQk9IGRybV9nZW1fcHJpbWVfZmRfdG9faGFuZGxlLAo+IC0JLmdl
-bV9wcmltZV9pbXBvcnQJPSBkcm1fZ2VtX3ByaW1lX2ltcG9ydCwKPiAtCS5nZW1fcHJpbWVfZXhw
-b3J0CT0gZHJtX2dlbV9wcmltZV9leHBvcnQsCj4gIAkuZ2VtX3ByaW1lX2dldF9zZ190YWJsZQk9
-IHJvY2tjaGlwX2dlbV9wcmltZV9nZXRfc2dfdGFibGUsCj4gIAkuZ2VtX3ByaW1lX2ltcG9ydF9z
-Z190YWJsZQk9IHJvY2tjaGlwX2dlbV9wcmltZV9pbXBvcnRfc2dfdGFibGUsCj4gIAkuZ2VtX3By
-aW1lX3ZtYXAJCT0gcm9ja2NoaXBfZ2VtX3ByaW1lX3ZtYXAsCj4gCgoKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
+On Fri, Jun 14, 2019 at 04:30:13PM +0200, Daniel Lezcano wrote:
+> On 14/06/2019 16:02, Robin Murphy wrote:
+> > On 14/06/2019 14:03, Daniel Lezcano wrote:
+> >> On 14/06/2019 11:35, Heiko Stuebner wrote:
+> >>> Hi Daniel,
+> >>>
+> >>> Am Dienstag, 4. Juni 2019, 18:57:57 CEST schrieb Daniel Lezcano:
+> >>>> Currently the common thermal zones definitions for the rk3399 assumes
+> >>>> multiple thermal zones are supported by the governors. This is not the
+> >>>> case and each thermal zone has its own governor instance acting
+> >>>> individually without collaboration with other governors.
+> >>>>
+> >>>> As the cooling device for the CPU and the GPU thermal zones is the
+> >>>> same, each governors take different decisions for the same cooling
+> >>>> device leading to conflicting instructions and an erratic behavior.
+> >>>>
+> >>>> As the cooling-maps is about to become an optional property, let's
+> >>>> remove the cpu cooling device map from the GPU thermal zone.
+> >>>>
+> >>>> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> >>>> ---
+> >>>>   arch/arm64/boot/dts/rockchip/rk3399.dtsi | 9 ---------
+> >>>>   1 file changed, 9 deletions(-)
+> >>>>
+> >>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> >>>> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> >>>> index 196ac9b78076..e1357e0f60f7 100644
+> >>>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> >>>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> >>>> @@ -821,15 +821,6 @@
+> >>>>                       type = "critical";
+> >>>>                   };
+> >>>>               };
+> >>>> -
+> >>>> -            cooling-maps {
+> >>>> -                map0 {
+> >>>> -                    trip = <&gpu_alert0>;
+> >>>> -                    cooling-device =
+> >>>> -                        <&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+> >>>> -                        <&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> >>>> -                };
+> >>>> -            };
+> >>>>           };
+> >>>>       };
+> >>>
+> >>> my knowledge of the thermal framework is not that big, but what about
+> >>> the
+> >>> rk3399-devices which further detail the cooling-maps like
+> >>> rk3399-gru-kevin
+> >>> and the rk3399-nanopc-t4 with its fan-handling in the cooling-maps?
+> >>
+> >> The rk3399-gru-kevin is correct.
+> >>
+> >> The rk3399-nanopc-t4 is not correct because the cpu and the gpu are
+> >> sharing the same cooling device (the fan). There are different
+> >> configurations:
+> >>
+> >> 1. The cpu cooling device for the CPU and the fan for the GPU
+> >>
+> >> 2. Different trip points on the CPU thermal zone, eg. one to for the CPU
+> >> cooling device and another one for the fan.
+> >>
+> >> There are some variant for the above. If this board is not on battery,
+> >> you may want to give priority to the throughput, so activate the fan
+> >> first and then cool down the CPU. Or if you are on battery, you may want
+> >> to invert the trip points.
+> >>
+> >> In any case, it is not possible to share the same cooling device for
+> >> different thermal zones.
+> > 
+> > OK, thanks for the clarification. I'll get my board set up again to
+> > figure out the best fix for rk3399-nanopc-t4 (FWIW most users are
+> > probably just using passive cooling or a plain DC fan anyway). You might
+> > want to raise this issue with the maintainers of
+> > arch/arm/boot/dts/exynos5422-odroidxu3-common.dtsi, since the
+> > everything-shared-by-everything approach in there was what I used as a
+> > reference.
+> 
+> Cc'ed: Kukjin Kim and Krzysztof Kozlowski
+> 
+> Easy :)
+>
+
+Assuming that all trip-points are the same between thermal zones, I
+understand that solution could be to have one thermal zone with thermal
+multiple sensors (some time ago bindings did not support it) and all
+cooling devices? Then only one governor would be assigned?
+
+Best regards,
+Krzysztof
