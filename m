@@ -1,222 +1,328 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Fix multiple thermal zones
- conflict in rk3399.dtsi
-Date: Sun, 16 Jun 2019 19:47:38 +0200
-Message-ID: <55da0654-ce67-b843-5ca4-37f63577b102@linaro.org>
-References: <20190604165802.7338-1-daniel.lezcano@linaro.org>
- <5188064.YWmxIpmbGp@phil> <55b9018e-672e-522b-d0a0-c5655be0f353@linaro.org>
- <e5a4f850-27e0-cad3-04bd-6c004fca2b81@arm.com>
- <9bf85c22-f1ba-3dbc-0b67-17e124484fa1@linaro.org>
- <20190616093127.GC3826@kozik-lap>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+From: Justin Swartz <justin.swartz@risingedge.co.za>
+Subject: [PATCH] ARM: dts: add device tree for Mecer Xtreme Mini S6
+Date: Sun, 16 Jun 2019 20:47:45 +0000
+Message-ID: <20190616204746.21001-1-justin.swartz@risingedge.co.za>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190616093127.GC3826@kozik-lap>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, edubezval@gmail.com, manivannan.sadhasivam@linaro.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Viresh Kumar <viresh.kumar@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Emil Renner Berthing <kernel@esmil.dk>, Randy Li <ayaka@soulik.info>, Tony Xie <tony.xie@rock-chips.com>, Vicente Bergas <vicencb@gmail.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Justin Swartz <justin.swartz@risingedge.co.za>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 16/06/2019 11:31, Krzysztof Kozlowski wrote:
-> On Fri, Jun 14, 2019 at 04:30:13PM +0200, Daniel Lezcano wrote:
->> On 14/06/2019 16:02, Robin Murphy wrote:
->>> On 14/06/2019 14:03, Daniel Lezcano wrote:
->>>> On 14/06/2019 11:35, Heiko Stuebner wrote:
->>>>> Hi Daniel,
->>>>>
->>>>> Am Dienstag, 4. Juni 2019, 18:57:57 CEST schrieb Daniel Lezcano:
->>>>>> Currently the common thermal zones definitions for the rk3399 assumes
->>>>>> multiple thermal zones are supported by the governors. This is not the
->>>>>> case and each thermal zone has its own governor instance acting
->>>>>> individually without collaboration with other governors.
->>>>>>
->>>>>> As the cooling device for the CPU and the GPU thermal zones is the
->>>>>> same, each governors take different decisions for the same cooling
->>>>>> device leading to conflicting instructions and an erratic behavior.
->>>>>>
->>>>>> As the cooling-maps is about to become an optional property, let's
->>>>>> remove the cpu cooling device map from the GPU thermal zone.
->>>>>>
->>>>>> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
->>>>>> ---
->>>>>>   arch/arm64/boot/dts/rockchip/rk3399.dtsi | 9 ---------
->>>>>>   1 file changed, 9 deletions(-)
->>>>>>
->>>>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->>>>>> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->>>>>> index 196ac9b78076..e1357e0f60f7 100644
->>>>>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->>>>>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->>>>>> @@ -821,15 +821,6 @@
->>>>>>                       type = "critical";
->>>>>>                   };
->>>>>>               };
->>>>>> -
->>>>>> -            cooling-maps {
->>>>>> -                map0 {
->>>>>> -                    trip = <&gpu_alert0>;
->>>>>> -                    cooling-device =
->>>>>> -                        <&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
->>>>>> -                        <&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
->>>>>> -                };
->>>>>> -            };
->>>>>>           };
->>>>>>       };
->>>>>
->>>>> my knowledge of the thermal framework is not that big, but what about
->>>>> the
->>>>> rk3399-devices which further detail the cooling-maps like
->>>>> rk3399-gru-kevin
->>>>> and the rk3399-nanopc-t4 with its fan-handling in the cooling-maps?
->>>>
->>>> The rk3399-gru-kevin is correct.
->>>>
->>>> The rk3399-nanopc-t4 is not correct because the cpu and the gpu are
->>>> sharing the same cooling device (the fan). There are different
->>>> configurations:
->>>>
->>>> 1. The cpu cooling device for the CPU and the fan for the GPU
->>>>
->>>> 2. Different trip points on the CPU thermal zone, eg. one to for the CPU
->>>> cooling device and another one for the fan.
->>>>
->>>> There are some variant for the above. If this board is not on battery,
->>>> you may want to give priority to the throughput, so activate the fan
->>>> first and then cool down the CPU. Or if you are on battery, you may want
->>>> to invert the trip points.
->>>>
->>>> In any case, it is not possible to share the same cooling device for
->>>> different thermal zones.
->>>
->>> OK, thanks for the clarification. I'll get my board set up again to
->>> figure out the best fix for rk3399-nanopc-t4 (FWIW most users are
->>> probably just using passive cooling or a plain DC fan anyway). You might
->>> want to raise this issue with the maintainers of
->>> arch/arm/boot/dts/exynos5422-odroidxu3-common.dtsi, since the
->>> everything-shared-by-everything approach in there was what I used as a
->>> reference.
->>
->> Cc'ed: Kukjin Kim and Krzysztof Kozlowski
->>
->> Easy :)
->>
-> 
-> Assuming that all trip-points are the same between thermal zones, I
-> understand that solution could be to have one thermal zone with thermal
-> multiple sensors (some time ago bindings did not support it) and all
-> cooling devices? Then only one governor would be assigned?
+The Mecer Xtreme Mini S6 features a Rockchip RK3229 SoC,
+1GB DDR3 RAM, 8GB eMMC, MicroSD port, 10/100Mbps Ethernet,
+Realtek 8723BS WLAN module, 2 x USB 2.0 ports, HDMI output,
+and S/PDIF output.
 
-The multiple sensors, multiple thermal zones and governors dealing with
-different group of them is not implemented [yet]. Basically, you can
-consider there is a 1:1 relationship between each of them.
+Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+---
+ arch/arm/boot/dts/Makefile        |   1 +
+ arch/arm/boot/dts/rk3229-xms6.dts | 286 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 287 insertions(+)
+ create mode 100644 arch/arm/boot/dts/rk3229-xms6.dts
 
- one thermal zone = one sensor = one cooling device
-
-Given the configuration and the hardware, it would make sense to create
-one thermal zone per cluster.
-
-There is one clock line per cluster. It is possible to create two CPU
-cooling devices, one for each cluster.
-
-IMO, the fan definition is correct except it should be assigned to one
-thermal zone only.
-
-One configuration could be:
-
-thermal-zones {
-	little-thermal-zone: little-thermal-zone {
-		thermal-sensors = <&tmu_cpu0 0>;
-                polling-delay-passive = <250>;
-                polling-delay = <0>;
-
-		trips {
-			ltz_alert0: ltz-alert-0 {
-				temperature = <50000>;
-				hysteresis = <5000>;
-                        	type = "active";
-			};
-
-			ltz_alert1: cpu-alert-1 {
-				temperature = <60000>;
-				hysteresis = <5000>;
-				type = "active";
-			};
-
-			ltz_alert2: ltz-alert-2 {
-				temperature = <70000>;
-				hysteresis = <5000>;
-				type = "active";
-			};
-
-			ltz_alert3: ltz-alert-3 {
-				temperature = <75000>;
-				hysteresis = <10000>;
-				type = "passive";
-			};
-
-			ltz_crit0: ltz-crit-0 {
-				temperature = <120000>;
-				hysteresis = <0>;
-				type = "critical";
-			};
-		};
-
-		cooling-maps {
-			map0 {
-				trip = <&ltz_alert0>;
-				cooling-device = <&fan0 0 1>;
-			};
-
-			map1 {
-				trip = <&ltz_alert1>;
-				cooling-device = <&fan0 1 2>;
-			};
-
-			map2 {
-				trip = <&ltz_alert2>;
-				cooling-device = <&fan0 2 3>;
-			};
-
-			map3 {
-				trip = <&ltz_alert3>;
-				cooling-device = <&cpu0
-						THERMAL_NO_LIMIT
-						THERMAL_NO_LIMIT>,
-
-						 <&cpu1
-						THERMAL_NO_LIMIT
-						THERMAL_NO_LIMIT>,
-
-						 <&cpu2
-						THERMAL_NO_LIMIT
-						THERMAL_NO_LIMIT>,
-
-						 <&cpu3
-						THERMAL_NO_LIMIT
-						THERMAL_NO_LIMIT>,
-			};
-		};
-	};
-
-	big-thermal-zone: big-thermal-zone {
-
-		/* The same as little, except the sensor and the cpu
-		  cooling &cpu4, &cpu5, &cpu6, &cpu7 */
-
-	};
-};
-
-
-That said, the idle injection cooling device is for the moment being
-developed and that would be a good opportunity to test a real per cpu
-cooling device as the exynos5422 has a per core sensor.
-
-
+diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
+index dab2914fa293..6fbd7c304f62 100644
+--- a/arch/arm/boot/dts/Makefile
++++ b/arch/arm/boot/dts/Makefile
+@@ -902,6 +902,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
+ 	rk3188-radxarock.dtb \
+ 	rk3228-evb.dtb \
+ 	rk3229-evb.dtb \
++	rk3229-xms6.dtb \
+ 	rk3288-evb-act8846.dtb \
+ 	rk3288-evb-rk808.dtb \
+ 	rk3288-fennec.dtb \
+diff --git a/arch/arm/boot/dts/rk3229-xms6.dts b/arch/arm/boot/dts/rk3229-xms6.dts
+new file mode 100644
+index 000000000000..9b666fa66292
+--- /dev/null
++++ b/arch/arm/boot/dts/rk3229-xms6.dts
+@@ -0,0 +1,286 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++
++/dts-v1/;
++
++#include <dt-bindings/input/input.h>
++#include "rk3229.dtsi"
++
++/ {
++	model = "Rockchip RK3229 (Mecer Xtreme Mini S6)";
++	compatible = "rockchip,rk3229-xms6", "rockchip,rk3229";
++
++	memory@60000000 {
++		device_type = "memory";
++		reg = <0x60000000 0x40000000>;
++	};
++
++	dc_12v: dc-12v-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "dc_12v";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <12000000>;
++		regulator-max-microvolt = <12000000>;
++	};
++
++	ext_gmac: ext_gmac {
++		compatible = "fixed-clock";
++		clock-frequency = <125000000>;
++		clock-output-names = "ext_gmac";
++		#clock-cells = <0>;
++	};
++
++	vcc_host: vcc-host-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio3 RK_PC4 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&host_vbus_drv>;
++		regulator-name = "vcc_host";
++		regulator-always-on;
++		regulator-boot-on;
++		vin-supply = <&vcc_sys>;
++	};
++
++	vcc_phy: vcc-phy-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		regulator-name = "vcc_phy";
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		regulator-always-on;
++		regulator-boot-on;
++		vin-supply = <&vccio_1v8>;
++	};
++
++	vcc_sys: vcc-sys-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&dc_12v>;
++	};
++
++	vccio_1v8: vccio-1v8-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vccio_1v8";
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		regulator-always-on;
++		vin-supply = <&vcc_sys>;
++	};
++
++	vccio_3v3: vccio-3v3-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vccio_3v3";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		regulator-always-on;
++		vin-supply = <&vcc_sys>;
++	};
++
++	vdd_arm: vdd-arm-regulator {
++		compatible = "pwm-regulator";
++		pwms = <&pwm1 0 25000 1>;
++		pwm-supply = <&vcc_sys>;
++		regulator-name = "vdd_arm";
++		regulator-min-microvolt = <950000>;
++		regulator-max-microvolt = <1400000>;
++		regulator-always-on;
++		regulator-boot-on;
++	};
++
++	vdd_log: vdd-log-regulator {
++		compatible = "pwm-regulator";
++		pwms = <&pwm2 0 25000 1>;
++		pwm-supply = <&vcc_sys>;
++		regulator-name = "vdd_log";
++		regulator-min-microvolt = <1000000>;
++		regulator-max-microvolt = <1300000>;
++		regulator-always-on;
++		regulator-boot-on;
++	};
++
++	power-led {
++		compatible = "gpio-leds";
++
++		blue {
++			gpios = <&gpio3 21 GPIO_ACTIVE_HIGH>;
++			default-state = "on";
++		};
++	};
++};
++
++&cpu0 {
++	clock-frequency = <1464000000>;
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu1 {
++	clock-frequency = <1464000000>;
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu2 {
++	clock-frequency = <1464000000>;
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu3 {
++	clock-frequency = <1464000000>;
++	cpu-supply = <&vdd_arm>;
++};
++
++&vop {
++	status = "okay";
++};
++
++&vop_mmu {
++	status = "okay";
++};
++
++&iep_mmu {
++	status = "okay";
++};
++
++&hdmi {
++	status = "okay";
++};
++
++&hdmi_phy {
++	status = "okay";
++};
++
++&emmc {
++	cap-mmc-highspeed;
++	disable-wp;
++	non-removable;
++	status = "okay";
++};
++
++&sdmmc {
++	cap-mmc-highspeed;
++	disable-wp;
++	status = "okay";
++};
++
++&gmac {
++	assigned-clocks = <&cru SCLK_MAC_SRC>;
++	assigned-clock-rates = <50000000>;
++	clock_in_out = "output";
++	phy-supply = <&vcc_phy>;
++	phy-mode = "rmii";
++	phy-handle = <&phy>;
++	status = "okay";
++
++	mdio {
++		compatible = "snps,dwmac-mdio";
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		phy: phy@0 {
++			compatible = "ethernet-phy-id1234.d400", "ethernet-phy-ieee802.3-c22";
++			reg = <0>;
++			clocks = <&cru SCLK_MAC_PHY>;
++			resets = <&cru SRST_MACPHY>;
++			phy-is-integrated;
++		};
++	};
++};
++
++&gpu {
++	mali-supply = <&vdd_log>;
++	status = "okay";
++};
++
++&io_domains {
++	status = "okay";
++
++	vccio1-supply = <&vccio_3v3>;
++	vccio2-supply = <&vccio_1v8>;
++	vccio4-supply = <&vccio_3v3>;
++};
++
++&pinctrl {
++	usb {
++		host_vbus_drv: host-vbus-drv {
++			rockchip,pins = <3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&pwm1 {
++	status = "okay";
++};
++
++&pwm2 {
++	status = "okay";
++};
++
++&tsadc {
++	rockchip,hw-tshut-mode = <0>;
++	status = "okay";
++};
++
++&uart2 {
++	pinctrl-0 = <&uart21_xfer>;
++	status = "okay";
++};
++
++&u2phy0 {
++	status = "okay";
++
++	u2phy0_otg: otg-port {
++		phy-supply = <&vcc_host>;
++		status = "okay";
++	};
++
++	u2phy0_host: host-port {
++		phy-supply = <&vcc_host>;
++		status = "okay";
++	};
++};
++
++&u2phy1 {
++	status = "okay";
++
++	u2phy1_otg: otg-port {
++		phy-supply = <&vcc_host>;
++		status = "okay";
++	};
++
++	u2phy1_host: host-port {
++		phy-supply = <&vcc_host>;
++		status = "okay";
++	};
++};
++
++&usb_host0_ehci {
++	status = "okay";
++};
++
++&usb_host0_ohci {
++	status = "okay";
++};
++
++&usb_host1_ehci {
++	status = "okay";
++};
++
++&usb_host1_ohci {
++	status = "okay";
++};
++
++&usb_host2_ehci {
++	status = "okay";
++};
++
++&usb_host2_ohci {
++	status = "okay";
++};
++
++&usb_otg {
++	status = "okay";
++};
 -- 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+2.11.0
