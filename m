@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 95/99] configs: rockpro64: Enable LPDDR4 support
-Date: Mon, 17 Jun 2019 13:02:48 +0530
-Message-ID: <20190617073252.27810-96-jagan@amarulasolutions.com>
+Subject: [PATCH v2 96/99] configs: rock-pi-4: Enable LPDDR4 support
+Date: Mon, 17 Jun 2019 13:02:49 +0530
+Message-ID: <20190617073252.27810-97-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -24,18 +24,18 @@ List-Id: linux-rockchip.vger.kernel.org
 Due to foot-print issues, we have LPDDR4 code can be
 marked as CONFIG_RAM_RK3399_LPDDR4.
 
-So, enable it for Rockpro64 board.
+So, enable it for Rock-PI-4 board.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- configs/rockpro64-rk3399_defconfig | 1 +
+ configs/rock-pi-4-rk3399_defconfig | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/configs/rockpro64-rk3399_defconfig b/configs/rockpro64-rk3399_defconfig
-index 90bcaedbd2..cb09df6fb7 100644
---- a/configs/rockpro64-rk3399_defconfig
-+++ b/configs/rockpro64-rk3399_defconfig
-@@ -28,6 +28,7 @@ CONFIG_DEFAULT_DEVICE_TREE="rk3399-rockpro64"
+diff --git a/configs/rock-pi-4-rk3399_defconfig b/configs/rock-pi-4-rk3399_defconfig
+index 32da77aa39..d667cf2124 100644
+--- a/configs/rock-pi-4-rk3399_defconfig
++++ b/configs/rock-pi-4-rk3399_defconfig
+@@ -28,6 +28,7 @@ CONFIG_DEFAULT_DEVICE_TREE="rk3399-rock-pi-4"
  CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
  CONFIG_TPL=y
  CONFIG_ENV_IS_IN_MMC=y
