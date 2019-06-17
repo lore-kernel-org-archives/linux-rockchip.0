@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 57/99] ram: rk3399: Add spaces in pctl_cfg
-Date: Mon, 17 Jun 2019 13:02:10 +0530
-Message-ID: <20190617073252.27810-58-jagan@amarulasolutions.com>
+Subject: [PATCH v2 59/99] ram: rockchip: Kconfig: Add RK3399 LPDDR4 entry
+Date: Mon, 17 Jun 2019 13:02:12 +0530
+Message-ID: <20190617073252.27810-60-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,27 +21,32 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Trivial patch, add proper spaces in pctl_cfg.
+Supporting LPDDR4 code support in RK3399 would increases
+the size of SPL/TPL.
+
+So add kconfig entry for RK3399 LPDDR4 code so-that
+the boards have LPDDR4 can enable them via defconfig.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/ram/rockchip/Kconfig | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index ae9ba625bd..d5ff17ad4f 100644
---- a/drivers/ram/rockchip/sdram_rk3399.c
-+++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -554,8 +554,10 @@ static int pctl_cfg(struct dram_info *dram, const struct chan_info *chan,
- 	copy_to_reg(&denali_ctl[1], &params_ctl[1],
- 		    sizeof(struct rk3399_ddr_pctl_regs) - 4);
- 	writel(params_ctl[0], &denali_ctl[0]);
-+
- 	copy_to_reg(denali_pi, &params->pi_regs.denali_pi[0],
- 		    sizeof(struct rk3399_ddr_pi_regs));
-+
- 	/* rank count need to set for init */
- 	set_memory_map(chan, channel, params);
+diff --git a/drivers/ram/rockchip/Kconfig b/drivers/ram/rockchip/Kconfig
+index 151ffb684d..4f274e01b3 100644
+--- a/drivers/ram/rockchip/Kconfig
++++ b/drivers/ram/rockchip/Kconfig
+@@ -23,4 +23,11 @@ config RAM_RK3399
+ 	  This enables ram drivers support for the platforms based on
+ 	  Rockchip RK3399 SoC.
  
++config RAM_RK3399_LPDDR4
++	bool "LPDDR4 support for Rockchip RK3399"
++	depends on RAM_RK3399
++	help
++	  This enables LPDDR4 sdram code support for the platforms based
++	  on Rockchip RK3399 SoC.
++
+ endif # RAM_ROCKCHIP
 -- 
 2.18.0.321.gffc6fa0e3
