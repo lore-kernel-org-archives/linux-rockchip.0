@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 24/99] ram: rk3399: Update cs1_row to use sys_reg3
-Date: Mon, 17 Jun 2019 13:01:37 +0530
-Message-ID: <20190617073252.27810-25-jagan@amarulasolutions.com>
+Subject: [PATCH v2 25/99] ram: rk3399: Add cs1_col enc macro
+Date: Mon, 17 Jun 2019 13:01:38 +0530
+Message-ID: <20190617073252.27810-26-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,62 +21,38 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-cs1_row can handle the pmu via sys_reg2 and sys_reg3 while
-configuring the dram instead of just sys_reg2.
-
-So, update cs1_row macro to make use of both sys_reg2,
-sys_reg3.
+Add dram config macro for handling cs1 column.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- arch/arm/include/asm/arch-rockchip/sdram_common.h | 10 ++++++++--
- drivers/ram/rockchip/sdram_rk3399.c               |  4 +++-
- 2 files changed, 11 insertions(+), 3 deletions(-)
+ arch/arm/include/asm/arch-rockchip/sdram_common.h | 3 +++
+ drivers/ram/rockchip/sdram_rk3399.c               | 1 +
+ 2 files changed, 4 insertions(+)
 
 diff --git a/arch/arm/include/asm/arch-rockchip/sdram_common.h b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-index 4fe7d60daf..7062cb57d9 100644
+index 7062cb57d9..e5145422cc 100644
 --- a/arch/arm/include/asm/arch-rockchip/sdram_common.h
 +++ b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-@@ -54,8 +54,6 @@
- #define SYS_REG_CS0_ROW_MASK		3
- #define SYS_REG_CS1_ROW_SHIFT(ch)	(4 + (ch) * 16)
- #define SYS_REG_CS1_ROW_MASK		3
--#define SYS_REG_ENC_CS1_ROW(n, ch)	(((n) - 13) << \
--					SYS_REG_CS1_ROW_SHIFT(ch))
- #define SYS_REG_BW_SHIFT(ch)		(2 + (ch) * 16)
- #define SYS_REG_BW_MASK			3
- #define SYS_REG_ENC_BW(n, ch)		((2 >> (n)) << SYS_REG_BW_SHIFT(ch))
-@@ -69,6 +67,14 @@
- 				     (5 + 2 * (ch)); \
+@@ -75,6 +75,9 @@
+ 				     (4 + 2 * (ch)); \
  		} while (0)
  
-+#define SYS_REG_ENC_CS1_ROW(n, os_reg2, os_reg3, ch) do { \
-+			(os_reg2) &= (~(0x3 << (4 + 16 * (ch)))); \
-+			(os_reg3) &= (~(0x1 << (4 + 2 * (ch)))); \
-+			(os_reg2) |= (((n) - 13) & 0x3) << (4 + 16 * (ch)); \
-+			(os_reg3) |= ((((n) - 13) & 0x4) >> 2) << \
-+				     (4 + 2 * (ch)); \
-+		} while (0)
++#define SYS_REG_CS1_COL_SHIFT(ch)	(0 + 2 * (ch))
++#define SYS_REG_ENC_CS1_COL(n, ch)      (((n) - 9) << SYS_REG_CS1_COL_SHIFT(ch))
 +
  /* Get sdram size decode from reg */
  size_t rockchip_sdram_size(phys_addr_t reg);
  
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 40cc31601c..21c1c6566a 100644
+index 21c1c6566a..14e2afcbc4 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -1026,10 +1026,12 @@ static void dram_all_config(struct dram_info *dram,
- 		sys_reg2 |= SYS_REG_ENC_RANK(info->rank, channel);
- 		sys_reg2 |= SYS_REG_ENC_COL(info->col, channel);
- 		sys_reg2 |= SYS_REG_ENC_BK(info->bk, channel);
--		sys_reg2 |= SYS_REG_ENC_CS1_ROW(info->cs1_row, channel);
- 		sys_reg2 |= SYS_REG_ENC_BW(info->bw, channel);
- 		sys_reg2 |= SYS_REG_ENC_DBW(info->dbw, channel);
- 		SYS_REG_ENC_CS0_ROW(info->cs0_row, sys_reg2, sys_reg3, channel);
-+		if (info->cs1_row)
-+			SYS_REG_ENC_CS1_ROW(info->cs1_row, sys_reg2,
-+					    sys_reg3, channel);
+@@ -1032,6 +1032,7 @@ static void dram_all_config(struct dram_info *dram,
+ 		if (info->cs1_row)
+ 			SYS_REG_ENC_CS1_ROW(info->cs1_row, sys_reg2,
+ 					    sys_reg3, channel);
++		sys_reg3 |= SYS_REG_ENC_CS1_COL(info->col, channel);
  
  		ddr_msch_regs = dram->chan[channel].msch;
  		noc_timing = &params->ch[channel].noc_timings;
