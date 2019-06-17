@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 49/99] ram: rk3399: Compute stride for 2 channels
-Date: Mon, 17 Jun 2019 13:02:02 +0530
-Message-ID: <20190617073252.27810-50-jagan@amarulasolutions.com>
+Subject: [PATCH v2 51/99] ram: rk3399: Add rank detection support
+Date: Mon, 17 Jun 2019 13:02:04 +0530
+Message-ID: <20190617073252.27810-52-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,119 +21,176 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-stride value from sdram timings can be computed dynamically
-based on the determined capacity for the given channel.
+Right now the rk3399 sdram driver assume that the board
+has configured with 2 channels, so any possibility to
+enable single channel on the same driver will encounter
+channel #1 data training failure.
 
-Right now these stride values are taken as part of sdram timings
-via dtsi, but it possible to use same timings dtsi for given
-frequency even though the configured board sdram do support
-single channel with different size by dynamically detect the
-stride value.
+Log:
+U-Boot TPL board init
+sdram_init: data training failed
+rk3399_dmc_init DRAM init failed -5
 
-Example, NanoPi NEO4 do have DDR3-1866, but with single channel
-and 1GB size with dynamic stride detection it is possible to
-use existing rk3399-sdram-ddr3-1866.dtsi whose stride,
-number of channels and capacity it support is d efferent.
+So, add an algorithm that can capable to compute the active
+or configured rank with associated channel like
+a) do rank loop to compute the active rank, with associated
+   channel numbers
+b) then, succeed the data training only for configured channel
+c) preserve the rank for given channel
+d) do channel loop for setting the active channel
+e) if given rank is zero or inactive on the specific channel,
+   clear the timings for the associated channel
+f) finally, return error if number of channels is zero
 
-So, add initial support to calculate the stride value for
-2 channels sdram, which is available by default on existing
-boards.
+Tested in NanoPI-NEO4 since it support single channel sdram
+configuration.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 71 ++++++++++++++++++++++++++++-
- 1 file changed, 70 insertions(+), 1 deletion(-)
+ drivers/ram/rockchip/sdram_rk3399.c | 110 ++++++++++++++++++++++------
+ 1 file changed, 86 insertions(+), 24 deletions(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 231f69b173..75df469952 100644
+index 87eda06055..a3acb75dba 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -1180,8 +1180,75 @@ static int switch_to_phy_index1(struct dram_info *dram,
- 	return 0;
+@@ -1251,13 +1251,52 @@ static unsigned char calculate_stride(struct rk3399_sdram_params *params)
+ 	return stride;
  }
  
-+static unsigned char calculate_stride(struct rk3399_sdram_params *params)
++static void clear_channel_params(struct rk3399_sdram_params *params, u8 channel)
 +{
-+	unsigned int stride = params->base.stride;
-+	unsigned int channel, chinfo = 0;
-+	unsigned int ch_cap[2] = {0, 0};
-+	u64 cap;
++	params->ch[channel].cap_info.rank = 0;
++	params->ch[channel].cap_info.col = 0;
++	params->ch[channel].cap_info.bk = 0;
++	params->ch[channel].cap_info.bw = 32;
++	params->ch[channel].cap_info.dbw = 32;
++	params->ch[channel].cap_info.row_3_4 = 0;
++	params->ch[channel].cap_info.cs0_row = 0;
++	params->ch[channel].cap_info.cs1_row = 0;
++	params->ch[channel].cap_info.ddrconfig = 0;
++}
++
++static int pctl_init(struct dram_info *dram, struct rk3399_sdram_params *params)
++{
++	int channel;
++	int ret;
 +
 +	for (channel = 0; channel < 2; channel++) {
-+		unsigned int cs0_cap = 0;
-+		unsigned int cs1_cap = 0;
-+		struct sdram_cap_info *cap_info = &params->ch[channel].cap_info;
++		const struct chan_info *chan = &dram->chan[channel];
++		struct rk3399_cru *cru = dram->cru;
++		struct rk3399_ddr_publ_regs *publ = chan->publ;
 +
-+		if (cap_info->col == 0)
-+			continue;
++		phy_pctrl_reset(cru, channel);
++		phy_dll_bypass_set(publ, params->base.ddr_freq);
 +
-+		cs0_cap = (1 << (cap_info->cs0_row + cap_info->col +
-+				 cap_info->bk + cap_info->bw - 20));
-+		if (cap_info->rank > 1)
-+			cs1_cap = cs0_cap >> (cap_info->cs0_row
-+					      - cap_info->cs1_row);
-+		if (cap_info->row_3_4) {
-+			cs0_cap = cs0_cap * 3 / 4;
-+			cs1_cap = cs1_cap * 3 / 4;
++		ret = pctl_cfg(dram, chan, channel, params);
++		if (ret < 0) {
++			printf("%s: pctl config failed\n", __func__);
++			return ret;
 +		}
-+		ch_cap[channel] = cs0_cap + cs1_cap;
-+		chinfo |= 1 << channel;
++
++		/* start to trigger initialization */
++		pctl_start(dram, channel);
 +	}
 +
-+	/* stride calculation for 2 channels, default gstride type is 256B */
-+	if (ch_cap[0] == ch_cap[1]) {
-+		cap = ch_cap[0] + ch_cap[1];
-+		switch (cap) {
-+		/* 512MB */
-+		case 512:
-+			stride = 0;
-+			break;
-+		/* 1GB */
-+		case 1024:
-+			stride = 0x5;
-+			break;
-+		/*
-+		 * 768MB + 768MB same as total 2GB memory
-+		 * useful space: 0-768MB 1GB-1792MB
-+		 */
-+		case 1536:
-+		/* 2GB */
-+		case 2048:
-+			stride = 0x9;
-+			break;
-+		/* 1536MB + 1536MB */
-+		case 3072:
-+			stride = 0x11;
-+			break;
-+		/* 4GB */
-+		case 4096:
-+			stride = 0xD;
-+			break;
-+		default:
-+			printf("%s: Unable to calculate stride for ", __func__);
-+			print_size((cap * (1 << 20)), " capacity\n");
-+			break;
-+		}
-+	}
-+
-+	return stride;
++	return 0;
 +}
 +
  static int sdram_init(struct dram_info *dram,
--		      const struct rk3399_sdram_params *params)
-+		      struct rk3399_sdram_params *params)
+ 		      struct rk3399_sdram_params *params)
  {
  	unsigned char dramtype = params->base.dramtype;
  	unsigned int ddr_freq = params->base.ddr_freq;
-@@ -1229,6 +1296,8 @@ static int sdram_init(struct dram_info *dram,
- 		set_ddrconfig(chan, params, channel,
- 			      params->ch[channel].cap_info.ddrconfig);
- 	}
-+
-+	params->base.stride = calculate_stride(params);
- 	dram_all_config(dram, params);
- 	switch_to_phy_index1(dram, params);
+-	struct rk3399_cru *cru = dram->cru;
+-	int channel;
++	u32 training_flag = PI_READ_GATE_TRAINING;
++	int channel, ch, rank;
+ 	int ret;
  
+ 	debug("Starting SDRAM initialization...\n");
+@@ -1269,36 +1308,59 @@ static int sdram_init(struct dram_info *dram,
+ 		return -E2BIG;
+ 	}
+ 
+-	for (channel = 0; channel < 2; channel++) {
+-		const struct chan_info *chan = &dram->chan[channel];
+-		struct rk3399_ddr_publ_regs *publ = chan->publ;
++	for (ch = 0; ch < 2; ch++) {
++		params->ch[ch].cap_info.rank = 2;
++		for (rank = 2; rank != 0; rank--) {
++			ret = pctl_init(dram, params);
++			if (ret < 0) {
++				printf("%s: pctl init failed\n", __func__);
++				return ret;
++			}
+ 
+-		phy_pctrl_reset(cru, channel);
+-		phy_dll_bypass_set(publ, ddr_freq);
++			/* LPDDR2/LPDDR3 need to wait DAI complete, max 10us */
++			if (dramtype == LPDDR3)
++				udelay(10);
+ 
+-		if (channel >= params->base.num_channels)
+-			continue;
++			params->ch[ch].cap_info.rank = rank;
+ 
+-		ret = pctl_cfg(dram, chan, channel, params);
+-		if (ret < 0) {
+-			printf("%s: pctl config failed\n", __func__);
+-			return ret;
+-		}
++			/*
++			 * LPDDR3 CA training msut be trigger before
++			 * other training.
++			 * DDR3 is not have CA training.
++			 */
++			if (params->base.dramtype == LPDDR3)
++				training_flag |= PI_CA_TRAINING;
+ 
+-		/* start to trigger initialization */
+-		pctl_start(dram, channel);
++			if (!(data_training(&dram->chan[ch], ch,
++					    params, training_flag)))
++				break;
++		}
++		/* Computed rank with associated channel number */
++		params->ch[ch].cap_info.rank = rank;
++	}
+ 
+-		/* LPDDR2/LPDDR3 need to wait DAI complete, max 10us */
+-		if (dramtype == LPDDR3)
+-			udelay(10);
++	params->base.num_channels = 0;
++	for (channel = 0; channel < 2; channel++) {
++		const struct chan_info *chan = &dram->chan[channel];
++		struct sdram_cap_info *cap_info = &params->ch[channel].cap_info;
+ 
+-		if (data_training(chan, channel, params, PI_FULL_TRAINING)) {
+-			printf("%s: data training failed\n", __func__);
+-			return -EIO;
++		if (cap_info->rank == 0) {
++			clear_channel_params(params, channel);
++			continue;
++		} else {
++			params->base.num_channels++;
+ 		}
+ 
+-		set_ddrconfig(chan, params, channel,
+-			      params->ch[channel].cap_info.ddrconfig);
++		debug("Channel ");
++		debug(channel ? "1: " : "0: ");
++
++		set_ddrconfig(chan, params, channel, cap_info->ddrconfig);
++	}
++
++	if (params->base.num_channels == 0) {
++		printf("%s: ", __func__);
++		printf(" - %dMHz failed!\n", params->base.ddr_freq);
++		return -EINVAL;
+ 	}
+ 
+ 	params->base.stride = calculate_stride(params);
 -- 
 2.18.0.321.gffc6fa0e3
