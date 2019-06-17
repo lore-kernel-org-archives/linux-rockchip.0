@@ -1,71 +1,81 @@
-From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH 2/2] media: hantro: Add support for VP8 decoding on rk3288
-Date: Mon, 17 Jun 2019 15:40:24 +0200
-Message-ID: <20190617154024.1fdb5d3c@collabora.com>
-References: <20190613151040.8971-1-ezequiel@collabora.com>
- <20190613151040.8971-3-ezequiel@collabora.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: rockchip: pdm: select CONFIG_RATIONAL" to the asoc tree
+Date: Mon, 17 Jun 2019 16:24:30 +0100 (BST)
+Message-ID: <20190617152430.93BA7440046@finisterre.sirena.org.uk>
+References: <20190617110415.2084205-1-arnd@arndb.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190613151040.8971-3-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, ZhiChao Yu <zhichao.yu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190617110415.2084205-1-arnd@arndb.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 13 Jun 2019 12:10:40 -0300
-Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+The patch
 
+   ASoC: rockchip: pdm: select CONFIG_RATIONAL
 
-> +static void cfg_parts(struct hantro_ctx *ctx,
-> +		      const struct v4l2_ctrl_vp8_frame_header *hdr)
-> +{
-> +	struct hantro_dev *vpu = ctx->dev;
-> +	struct vb2_v4l2_buffer *vb2_src;
-> +	u32 first_part_offset = VP8_FRAME_IS_KEY_FRAME(hdr) ? 10 : 3;
-> +	u32 dct_part_total_len = 0;
-> +	u32 dct_size_part_size = 0;
-> +	u32 dct_part_offset = 0;
-> +	u32 mb_offset_bytes = 0;
-> +	u32 mb_offset_bits = 0;
-> +	u32 mb_start_bits = 0;
-> +	struct vp8_dec_reg reg;
-> +	dma_addr_t src_dma;
-> +	u32 mb_size = 0;
-> +	u32 count = 0;
-> +	u32 i;
-> +
-> +	vb2_src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
-> +	src_dma = vb2_dma_contig_plane_dma_addr(&vb2_src->vb2_buf, 0);
-> +
-> +	/*
-> +	 * Calculate control partition mb data info
-> +	 * @macroblock_bit_offset:	bits offset of mb data from first
-> +	 *				part start pos
-> +	 * @mb_offset_bits:		bits offset of mb data from src_dma
-> +	 *				base addr
-> +	 * @mb_offset_byte:		bytes offset of mb data from src_dma
-> +	 *				base addr
-> +	 * @mb_start_bits:		bits offset of mb data from mb data
-> +	 *				64bits alignment addr
-> +	 */
-> +	mb_offset_bits = first_part_offset * 8
-> +		+ hdr->macroblock_bit_offset + 8;
-> +	mb_offset_bytes = mb_offset_bits / 8;
-> +	mb_start_bits = mb_offset_bits
-> +		- (mb_offset_bytes & (~DEC_8190_ALIGN_MASK)) * 8;
-> +	mb_size = hdr->first_part_size
-> +		- (mb_offset_bytes - first_part_offset)
-> +		+ (mb_offset_bytes & DEC_8190_ALIGN_MASK);
+has been applied to the asoc tree at
 
-Nit: can we have operators placed at the end of a line instead of
-the beginning of the following line?
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.3
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+From 41d92e0c835bff7dec343bf41e79d24b326d94c1 Mon Sep 17 00:00:00 2001
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Mon, 17 Jun 2019 13:03:51 +0200
+Subject: [PATCH] ASoC: rockchip: pdm: select CONFIG_RATIONAL
+
+Without this, we get a link error:
+
+sound/soc/rockchip/rockchip_pdm.o: In function `rockchip_pdm_hw_params':
+rockchip_pdm.c:(.text+0x754): undefined reference to `rational_best_approximation'
+
+Fixes: 624e8e00acaf ("ASoC: rockchip: pdm: fixup pdm fractional div")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/rockchip/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sound/soc/rockchip/Kconfig b/sound/soc/rockchip/Kconfig
+index 957046ac6c8c..d88555e0c389 100644
+--- a/sound/soc/rockchip/Kconfig
++++ b/sound/soc/rockchip/Kconfig
+@@ -19,6 +19,7 @@ config SND_SOC_ROCKCHIP_PDM
+ 	tristate "Rockchip PDM Controller Driver"
+ 	depends on CLKDEV_LOOKUP && SND_SOC_ROCKCHIP
+ 	select SND_SOC_GENERIC_DMAENGINE_PCM
++	select RATIONAL
+ 	help
+ 	  Say Y or M if you want to add support for PDM driver for
+ 	  Rockchip PDM Controller. The Controller supports up to maximum of
+-- 
+2.20.1
