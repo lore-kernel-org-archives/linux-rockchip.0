@@ -1,7 +1,8 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 84/99] rockchip: rk3399: syscon: Add pmu support
-Date: Mon, 17 Jun 2019 13:02:37 +0530
-Message-ID: <20190617073252.27810-85-jagan@amarulasolutions.com>
+Subject: [PATCH v2 85/99] rockchip: dts: rk3399: Add u-boot,
+ dm-pre-reloc for pmu
+Date: Mon, 17 Jun 2019 13:02:38 +0530
+Message-ID: <20190617073252.27810-86-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,38 +22,29 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add pmu compatible with relevant U_BOOT_DRIVER for rk3399
-via syscon rk3399 driver.
+Add u-boot,dm-pre-reloc property for pmu in rk3399-u-boot.dtsi
+so-that SPL can access pmu.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- arch/arm/mach-rockchip/rk3399/syscon_rk3399.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ arch/arm/dts/rk3399-u-boot.dtsi | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/arch/arm/mach-rockchip/rk3399/syscon_rk3399.c b/arch/arm/mach-rockchip/rk3399/syscon_rk3399.c
-index a8bb5b11e5..259ca44d68 100644
---- a/arch/arm/mach-rockchip/rk3399/syscon_rk3399.c
-+++ b/arch/arm/mach-rockchip/rk3399/syscon_rk3399.c
-@@ -13,6 +13,7 @@ static const struct udevice_id rk3399_syscon_ids[] = {
- 	{ .compatible = "rockchip,rk3399-pmugrf", .data = ROCKCHIP_SYSCON_PMUGRF },
- 	{ .compatible = "rockchip,rk3399-pmusgrf", .data = ROCKCHIP_SYSCON_PMUSGRF },
- 	{ .compatible = "rockchip,rk3399-cic", .data = ROCKCHIP_SYSCON_CIC },
-+	{ .compatible = "rockchip,rk3399-pmu", .data = ROCKCHIP_SYSCON_PMU },
- 	{ }
- };
+diff --git a/arch/arm/dts/rk3399-u-boot.dtsi b/arch/arm/dts/rk3399-u-boot.dtsi
+index 0786c1193a..31942899f6 100644
+--- a/arch/arm/dts/rk3399-u-boot.dtsi
++++ b/arch/arm/dts/rk3399-u-boot.dtsi
+@@ -3,6 +3,10 @@
+  * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+  */
  
-@@ -58,4 +59,11 @@ U_BOOT_DRIVER(rockchip_rk3399_cic) = {
- 	.of_match = rk3399_syscon_ids + 3,
- 	.bind = rk3399_syscon_bind_of_platdata,
- };
-+
-+U_BOOT_DRIVER(rockchip_rk3399_pmu) = {
-+	.name = "rockchip_rk3399_pmu",
-+	.id = UCLASS_SYSCON,
-+	.of_match = rk3399_syscon_ids + 4,
-+	.bind = rk3399_syscon_bind_of_platdata,
++&pmu {
++	u-boot,dm-pre-reloc;
 +};
- #endif
++
+ &sdmmc {
+ 	u-boot,dm-pre-reloc;
+ };
 -- 
 2.18.0.321.gffc6fa0e3
