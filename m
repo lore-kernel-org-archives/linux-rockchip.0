@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 09/99] ram: rk3399: Use rank mask in ca data training
-Date: Mon, 17 Jun 2019 13:01:22 +0530
-Message-ID: <20190617073252.27810-10-jagan@amarulasolutions.com>
+Subject: [PATCH v2 10/99] ram: rk3399: Use rank mask in wdql data training
+Date: Mon, 17 Jun 2019 13:01:23 +0530
+Message-ID: <20190617073252.27810-11-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,7 +22,7 @@ Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04ak
 List-Id: linux-rockchip.vger.kernel.org
 
 Add rank_mask based on the rank number, this would keep
-the ca data training loop based on the desired rank mask
+the wdql data training loop based on the desired rank mask
 value instead of looping for all values.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
@@ -32,12 +32,12 @@ Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
  1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 1898466b4c..76d6440f9a 100644
+index 76d6440f9a..32fc7771b3 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -616,11 +616,17 @@ static int data_training_ca(const struct chan_info *chan, u32 channel,
+@@ -851,11 +851,17 @@ static int data_training_wdql(const struct chan_info *chan, u32 channel,
+ 	u32 *denali_pi = chan->pi->denali_pi;
  	u32 i, tmp;
- 	u32 obs_0, obs_1, obs_2, obs_err = 0;
  	u32 rank = params->ch[channel].rank;
 +	u32 rank_mask;
  
@@ -53,6 +53,6 @@ index 1898466b4c..76d6440f9a 100644
 +
  		select_per_cs_training_index(chan, i);
  
- 		/* PI_100 PI_CALVL_EN:RW:8:2 */
+ 		/*
 -- 
 2.18.0.321.gffc6fa0e3
