@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 79/99] ram: rk3399: Update lpddr4 vref_mode_ac
-Date: Mon, 17 Jun 2019 13:02:32 +0530
-Message-ID: <20190617073252.27810-80-jagan@amarulasolutions.com>
+Subject: [PATCH v2 80/99] ram: rk3399: Simplify data training first argument
+Date: Mon, 17 Jun 2019 13:02:33 +0530
+Message-ID: <20190617073252.27810-81-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,27 +21,56 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Update vref_mode_ac for lpddr4 based on VDDQ/3/2=16.8%
+data training is using chan_info as first argument with
+channel number as second argument instead of that use
+dram_info as first argument so-that we can get the
+chan_info at data training definition.
+
+This was the argument handling is meaningful, readable
+and it would help to add similar data training for
+lpddr4 in future.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/ram/rockchip/sdram_rk3399.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 0e98079468..e3180d0ef2 100644
+index e3180d0ef2..927c7cced3 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -366,7 +366,8 @@ static int phy_io_config(const struct chan_info *chan,
- 			vref_value_dq = (rd_vref - 15300) / 521;
+@@ -1286,10 +1286,11 @@ static int data_training_wdql(const struct chan_info *chan, u32 channel,
+ 	return 0;
+ }
+ 
+-static int data_training(const struct chan_info *chan, u32 channel,
++static int data_training(struct dram_info *dram, u32 channel,
+ 			 const struct rk3399_sdram_params *params,
+ 			 u32 training_flag)
+ {
++	struct chan_info *chan = &dram->chan[channel];
+ 	u32 *denali_phy = chan->publ->denali_phy;
+ 	int ret;
+ 
+@@ -1499,8 +1500,7 @@ static int switch_to_phy_index1(struct dram_info *dram,
+ 	for (channel = 0; channel < ch_count; channel++) {
+ 		denali_phy = dram->chan[channel].publ->denali_phy;
+ 		clrsetbits_le32(&denali_phy[896], (0x3 << 8) | 1, 1 << 8);
+-		ret = data_training(&dram->chan[channel], channel,
+-				    params, PI_FULL_TRAINING);
++		ret = data_training(dram, channel, params, PI_FULL_TRAINING);
+ 		if (ret < 0) {
+ 			debug("index1 training failed\n");
+ 			return ret;
+@@ -1663,8 +1663,7 @@ static int sdram_init(struct dram_info *dram,
+ 			if (params->base.dramtype == LPDDR3)
+ 				training_flag |= PI_CA_TRAINING;
+ 
+-			if (!(data_training(&dram->chan[ch], ch,
+-					    params, training_flag)))
++			if (!(data_training(dram, ch, params, training_flag)))
+ 				break;
  		}
- 		vref_mode_ac = 0x6;
--		vref_value_ac = 0x1f;
-+		/* VDDQ/3/2=16.8% */
-+		vref_value_ac = 0x3;
- 	} else if (params->base.dramtype == LPDDR3) {
- 		if (params->base.odt == 1) {
- 			vref_mode_dq = 0x5;  /* LPDDR3 ODT */
+ 		/* Computed rank with associated channel number */
 -- 
 2.18.0.321.gffc6fa0e3
