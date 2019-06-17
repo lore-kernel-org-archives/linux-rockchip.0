@@ -1,13 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 01/99] ram: rk3399: Fix code warnings
-Date: Mon, 17 Jun 2019 13:01:14 +0530
-Message-ID: <20190617073252.27810-2-jagan@amarulasolutions.com>
-References: <20190617073252.27810-1-jagan@amarulasolutions.com>
+Subject: [PATCH v2 00/99] ram: rk3399: Add LPDDR4 support
+Date: Mon, 17 Jun 2019 13:01:13 +0530
+Message-ID: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190617073252.27810-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -21,204 +19,193 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Fix checkpatch warninigs on sdram_rk3399.c like
-- Avoid CamelCase
-- Unnecessary parentheses
-- Alignment should match open parenthesis
-- multiple blank lines
-- misspelled
-- spaces preferred around that '>>'
+This is the v2 set for supporting LPDDR4 with associated
+features, wrt to previous series[1].
 
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- drivers/ram/rockchip/sdram_rk3399.c | 48 ++++++++++++++---------------
- 1 file changed, 24 insertions(+), 24 deletions(-)
+Thanks to
+- YouMin Chen
+- Akash Gajjar
+- Kever Yang
+for supporting all the help on this work.
 
-diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 52518656c4..541e4a4b1e 100644
---- a/drivers/ram/rockchip/sdram_rk3399.c
-+++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -47,7 +47,7 @@ struct dram_info {
- #define PRESET_GPIO0_HOLD(n)	((0x1 << (7 + 16)) | ((n) << 7))
- #define PRESET_GPIO1_HOLD(n)	((0x1 << (8 + 16)) | ((n) << 8))
- 
--#define PHY_DRV_ODT_Hi_Z	0x0
-+#define PHY_DRV_ODT_HI_Z	0x0
- #define PHY_DRV_ODT_240		0x1
- #define PHY_DRV_ODT_120		0x8
- #define PHY_DRV_ODT_80		0x9
-@@ -150,7 +150,7 @@ static void set_memory_map(const struct chan_info *chan, u32 channel,
- 			((16 - row) << 24));
- 	/* PI_41 PI_CS_MAP:RW:24:4 */
- 	clrsetbits_le32(&denali_pi[41], 0xf << 24, cs_map << 24);
--	if ((sdram_ch->rank == 1) && (sdram_params->base.dramtype == DDR3))
-+	if (sdram_ch->rank == 1 && sdram_params->base.dramtype == DDR3)
- 		writel(0x2EC7FFFF, &denali_pi[34]);
- }
- 
-@@ -166,10 +166,10 @@ static void set_ds_odt(const struct chan_info *chan,
- 	u32 reg_value;
- 
- 	if (sdram_params->base.dramtype == LPDDR4) {
--		tsel_rd_select_p = PHY_DRV_ODT_Hi_Z;
-+		tsel_rd_select_p = PHY_DRV_ODT_HI_Z;
- 		tsel_wr_select_p = PHY_DRV_ODT_40;
- 		ca_tsel_wr_select_p = PHY_DRV_ODT_40;
--		tsel_idle_select_p = PHY_DRV_ODT_Hi_Z;
-+		tsel_idle_select_p = PHY_DRV_ODT_HI_Z;
- 
- 		tsel_rd_select_n = PHY_DRV_ODT_240;
- 		tsel_wr_select_n = PHY_DRV_ODT_40;
-@@ -181,10 +181,10 @@ static void set_ds_odt(const struct chan_info *chan,
- 		ca_tsel_wr_select_p = PHY_DRV_ODT_48;
- 		tsel_idle_select_p = PHY_DRV_ODT_240;
- 
--		tsel_rd_select_n = PHY_DRV_ODT_Hi_Z;
-+		tsel_rd_select_n = PHY_DRV_ODT_HI_Z;
- 		tsel_wr_select_n = PHY_DRV_ODT_34_3;
- 		ca_tsel_wr_select_n = PHY_DRV_ODT_48;
--		tsel_idle_select_n = PHY_DRV_ODT_Hi_Z;
-+		tsel_idle_select_n = PHY_DRV_ODT_HI_Z;
- 	} else {
- 		tsel_rd_select_p = PHY_DRV_ODT_240;
- 		tsel_wr_select_p = PHY_DRV_ODT_34_3;
-@@ -294,7 +294,7 @@ static void set_ds_odt(const struct chan_info *chan,
- }
- 
- static int phy_io_config(const struct chan_info *chan,
--			  const struct rk3399_sdram_params *sdram_params)
-+			 const struct rk3399_sdram_params *sdram_params)
- {
- 	u32 *denali_phy = chan->publ->denali_phy;
- 	u32 vref_mode_dq, vref_value_dq, vref_mode_ac, vref_value_ac;
-@@ -423,7 +423,6 @@ static int phy_io_config(const struct chan_info *chan,
- 	/* PHY_939 PHY_PAD_CS_DRIVE */
- 	clrsetbits_le32(&denali_phy[939], 0x7 << 14, mode_sel << 14);
- 
--
- 	/* speed setting */
- 	if (sdram_params->base.ddr_freq < 400)
- 		speed = 0x0;
-@@ -492,7 +491,7 @@ static int pctl_cfg(const struct chan_info *chan, u32 channel,
- 	setbits_le32(&denali_pi[0], START);
- 	setbits_le32(&denali_ctl[0], START);
- 
--	/* Wating for phy DLL lock */
-+	/* Waiting for phy DLL lock */
- 	while (1) {
- 		tmp = readl(&denali_phy[920]);
- 		tmp1 = readl(&denali_phy[921]);
-@@ -547,12 +546,12 @@ static int pctl_cfg(const struct chan_info *chan, u32 channel,
- 	/* PHY_DLL_RST_EN */
- 	clrsetbits_le32(&denali_phy[957], 0x3 << 24, 0x2 << 24);
- 
--	/* Wating for PHY and DRAM init complete */
-+	/* Waiting for PHY and DRAM init complete */
- 	tmp = get_timer(0);
- 	do {
- 		if (get_timer(tmp) > timeout_ms) {
- 			pr_err("DRAM (%s): phy failed to lock within  %ld ms\n",
--			      __func__, timeout_ms);
-+			       __func__, timeout_ms);
- 			return -ETIME;
- 		}
- 	} while (!(readl(&denali_ctl[203]) & (1 << 3)));
-@@ -569,7 +568,7 @@ static void select_per_cs_training_index(const struct chan_info *chan,
- 	u32 *denali_phy = chan->publ->denali_phy;
- 
- 	/* PHY_84 PHY_PER_CS_TRAINING_EN_0 1bit offset_16 */
--	if ((readl(&denali_phy[84])>>16) & 1) {
-+	if ((readl(&denali_phy[84]) >> 16) & 1) {
- 		/*
- 		 * PHY_8/136/264/392
- 		 * phy_per_cs_training_index_X 1bit offset_24
-@@ -646,7 +645,7 @@ static int data_training_ca(const struct chan_info *chan, u32 channel,
- 			if ((((tmp >> 11) & 0x1) == 0x1) &&
- 			    (((tmp >> 13) & 0x1) == 0x1) &&
- 			    (((tmp >> 5) & 0x1) == 0x0) &&
--			    (obs_err == 0))
-+			    obs_err == 0)
- 				break;
- 			else if ((((tmp >> 5) & 0x1) == 0x1) ||
- 				 (obs_err == 1))
-@@ -700,7 +699,7 @@ static int data_training_wl(const struct chan_info *chan, u32 channel,
- 			if ((((tmp >> 10) & 0x1) == 0x1) &&
- 			    (((tmp >> 13) & 0x1) == 0x1) &&
- 			    (((tmp >> 4) & 0x1) == 0x0) &&
--			    (obs_err == 0))
-+			    obs_err == 0)
- 				break;
- 			else if ((((tmp >> 4) & 0x1) == 0x1) ||
- 				 (obs_err == 1))
-@@ -759,7 +758,7 @@ static int data_training_rg(const struct chan_info *chan, u32 channel,
- 			if ((((tmp >> 9) & 0x1) == 0x1) &&
- 			    (((tmp >> 13) & 0x1) == 0x1) &&
- 			    (((tmp >> 3) & 0x1) == 0x0) &&
--			    (obs_err == 0))
-+			    obs_err == 0)
- 				break;
- 			else if ((((tmp >> 3) & 0x1) == 0x1) ||
- 				 (obs_err == 1))
-@@ -955,8 +954,10 @@ static void dram_all_config(struct dram_info *dram,
- 		sys_reg |= (info->rank - 1) << SYS_REG_RANK_SHIFT(channel);
- 		sys_reg |= (info->col - 9) << SYS_REG_COL_SHIFT(channel);
- 		sys_reg |= info->bk == 3 ? 0 : 1 << SYS_REG_BK_SHIFT(channel);
--		sys_reg |= (info->cs0_row - 13) << SYS_REG_CS0_ROW_SHIFT(channel);
--		sys_reg |= (info->cs1_row - 13) << SYS_REG_CS1_ROW_SHIFT(channel);
-+		sys_reg |= (info->cs0_row - 13) <<
-+			    SYS_REG_CS0_ROW_SHIFT(channel);
-+		sys_reg |= (info->cs1_row - 13) <<
-+			    SYS_REG_CS1_ROW_SHIFT(channel);
- 		sys_reg |= (2 >> info->bw) << SYS_REG_BW_SHIFT(channel);
- 		sys_reg |= (2 >> info->dbw) << SYS_REG_DBW_SHIFT(channel);
- 
-@@ -991,7 +992,7 @@ static void dram_all_config(struct dram_info *dram,
- }
- 
- static int switch_to_phy_index1(struct dram_info *dram,
--				 const struct rk3399_sdram_params *sdram_params)
-+				const struct rk3399_sdram_params *sdram_params)
- {
- 	u32 channel;
- 	u32 *denali_phy;
-@@ -1026,7 +1027,7 @@ static int switch_to_phy_index1(struct dram_info *dram,
- 		denali_phy = dram->chan[channel].publ->denali_phy;
- 		clrsetbits_le32(&denali_phy[896], (0x3 << 8) | 1, 1 << 8);
- 		ret = data_training(&dram->chan[channel], channel,
--				  sdram_params, PI_FULL_TRAINING);
-+				    sdram_params, PI_FULL_TRAINING);
- 		if (ret) {
- 			debug("index1 training failed\n");
- 			return ret;
-@@ -1116,8 +1117,8 @@ static int conv_of_platdata(struct udevice *dev)
- 	int ret;
- 
- 	ret = regmap_init_mem_platdata(dev, dtplat->reg,
--			ARRAY_SIZE(dtplat->reg) / 2,
--			&plat->map);
-+				       ARRAY_SIZE(dtplat->reg) / 2,
-+				       &plat->map);
- 	if (ret)
- 		return ret;
- 
-@@ -1199,8 +1200,8 @@ static int rk3399_dmc_probe(struct udevice *dev)
- 	priv->pmugrf = syscon_get_first_range(ROCKCHIP_SYSCON_PMUGRF);
- 	debug("%s: pmugrf=%p\n", __func__, priv->pmugrf);
- 	priv->info.base = CONFIG_SYS_SDRAM_BASE;
--	priv->info.size = rockchip_sdram_size(
--			(phys_addr_t)&priv->pmugrf->os_reg2);
-+	priv->info.size =
-+		rockchip_sdram_size((phys_addr_t)&priv->pmugrf->os_reg2);
- #endif
- 	return 0;
- }
-@@ -1218,7 +1219,6 @@ static struct ram_ops rk3399_dmc_ops = {
- 	.get_info = rk3399_dmc_get_info,
- };
- 
--
- static const struct udevice_id rk3399_dmc_ids[] = {
- 	{ .compatible = "rockchip,rk3399-dmc" },
- 	{ }
+On summary this series support
+- Code warning and fixes
+- rank detection, this would required to probe single channel 
+  sdram configured in NanoPI-NEO4
+- LPDDR4 support, tested in Rockpro64 and Rock-PI-4
+
+Changes for v2:
+- handle LPDDR4 code as part of CONFIG_RAM_RK3399_LPDDR4
+- support data_training and set_rate via sdram_rk3399_ops
+- add proper sys_reg_enc macros
+- add new patch to rename variable sdram_params with params
+- fix few commit messages
+
+patch 0001 - 0034: fix code warnings, prints, new macros
+
+patch 0035 - 0052: rank detection, sdram debug code
+
+patch 0053: use DDR3-1800 on NanoPI-NEO4
+
+patch 0054 - 0094: lpddr4 support
+
+patch 0095: enable lpddr4 in Rockpro64
+
+patch 0096: enable lpddr4 in Rock-PI-4
+
+patch 0097: LPDDR4-100 timings
+
+patch 0098: Use LPDDR4-100 on Rockpro64
+
+patch 0099: Use LPDDR4-100 on Rock-PI 4
+
+Size (increased to ~3KiB ):
+- Puma RK3399 (u-boot-spl-dtb.bin):
+  before: 115644 after: 118744
+- NanoPI M4 (u-boot-tpl-dtb.bin)
+  before: 41873 after: 44909
+
+Travis-CI:
+https://travis-ci.org/openedev/u-boot-amarula/builds/546597944
+
+Repo:
+https://github.com/openedev/u-boot-amarula/tree/rk3399-lpddr4
+
+[1] https://patchwork.ozlabs.org/cover/1113893/
+
+Any inputs?
+Jagan.
+
+Jagan Teki (99):
+  ram: rk3399: Fix code warnings
+  ram: rk3399: Add space between string with format specifier
+  ram: rk3399: Add proper spaces in code
+  ram: rk3399: s/sdram_params/params
+  ram: rk3399: Handle data training return types
+  ram: rk3399: Order include files
+  ram: rk3399: Move macro after include files
+  ram: rk3399: Clear PI_175 interrupts in data training
+  ram: rk3399: Use rank mask in ca data training
+  ram: rk3399: Use rank mask in wdql data training
+  ram: rk3399: Add ddrtype enc macro
+  ram: rk3399: Add channel number encoder macro
+  ram: rk3399: Add row_3_4 enc macro
+  ram: rk3399: Add chipinfo macro
+  ram: rk3399: Add rank enc macro
+  ram: rk3399: Add column enc macro
+  ram: rk3399: Add bk enc macro
+  ram: rk3399: Add dbw enc macro
+  ram: rk3399: Add cs0_rw macro
+  ram: rk3399: Add cs1_rw macro
+  ram: rk3399: Add bw enc macro
+  ram: rk3399: Rename sys_reg with sys_reg2
+  ram: rk3399: Update cs0_row to use sys_reg3
+  ram: rk3399: Update cs1_row to use sys_reg3
+  ram: rk3399: Add cs1_col enc macro
+  ram: rk3399: Add ddr version enc macro
+  ram: rk3399: Add ddrtimingC0
+  ram: rk3399: Add DdrMode
+  ram: rk3399: Handle pctl_cfg return type
+  ram: rk3399: s/tsel_wr_select_n/tsel_wr_select_dq_n
+  ram: rk3399: s/tsel_wr_select_p/tsel_wr_select_dq_p
+  ram: rk3399: s/ca_tsel_wr_select_n/tsel_wr_select_ca_n
+  ram: rk3399: s/ca_tsel_wr_select_p/tsel_wr_select_ca_p
+  ram: rk3399: Order tsel variables
+  ram: rk3399: Add phy pctrl reset support
+  ram: rk3399: Move pwrup_srefresh_exit to dram_info
+  ram: rk3399: Add pctl start support
+  ram: rockchip: rk3399: Add cap_info structure
+  ram: rk3399: s/rk3399_base_params/sdram_base_params
+  ram: rk3399: Move common sdram structures in common header
+  arm: include: rockchip: Move dramtypes to common header
+  arm: include: rockchip: Add DDR4 enum
+  ram: rockchip: Add initial Kconfig
+  debug_uart: Add printdec
+  ram: rockchip: Add debug sdram driver
+  ram: rockchip: debug: Add sdram_print_ddr_info
+  ram: rockchip: debug: Get the cs capacity
+  ram: rk3399: debug: Add sdram_print_stride
+  ram: rk3399: Compute stride for 2 channels
+  ram: rk3399: Compute stride for 1 channel a
+  ram: rk3399: Add rank detection support
+  ram: rk3399: Enable sdram debug functions
+  rockchip: dts: rk3399: nanopi-neo4: Use DDR3-1866 dtsi
+  clk: rockchip: rk3399: Fix check patch warnings and checks
+  clk: rockchip: rk3399: Set 50MHz ddr clock
+  clk: rockchip: rk3399: Set 400MHz ddr clock
+  ram: rk3399: Add spaces in pctl_cfg
+  ram: rk3399: Configure phy IO in ds odt
+  ram: rockchip: Kconfig: Add RK3399 LPDDR4 entry
+  ram: rk3399: Add lpddr4 rank mask for ca training
+  ram: rk3399: Add lpddr4 rank mask for wdql training
+  ram: rk3399: Move mode_sel assignment
+  ram: rk3399: Don't wait for PLL lock in lpddr4
+  ram: rk3399: Avoid two channel ZQ Cal Start at the same time
+  ram: rk3399: Configure PHY_898, PHY_919 for lpddr4
+  ram: rk3399: Configure BOOSTP_EN, BOOSTN_EN for lpddr4
+  ram: rk3399: Configure SLEWP_EN, SLEWN_EN for lpddr4
+  ram: rk3399: Configure PHY RX_CM_INPUT for lpddr4
+  ram: rk3399: Map chipselect for lpddr4
+  ram: rk3399: Configure tsel write ca for lpddr4
+  ram: rk3399: Don't disable dfi dram clk for lpddr4, rank 1
+  ram: rk3399: Add IO settings
+  ram: sdram: Configure lpddr4 tsel rd, wr based on IO settings
+  ram: rk3399: Add tsel control clock drive
+  ram: rk3399: Configure soc odt support
+  ram: rk3399: Get lpddr4 tsel_rd_en from io settings
+  ram: rk3399: Update lpddr4 vref based on io settings
+  ram: rk3399: Update lpddr4 mode_sel based on io settings
+  ram: rk3399: Update lpddr4 vref_mode_ac
+  ram: rk3399: Simplify data training first argument
+  ram: rk3399: Handle data training via ops
+  ram: rk3399: Add LPPDR4 mr detection
+  arm: include: rockchip: Add rk3399 pmu file
+  rockchip: rk3399: syscon: Add pmu support
+  rockchip: dts: rk3399: Add u-boot,dm-pre-reloc for pmu
+  ram: rk3399: Add LPPDDR4-400 timings inc
+  ram: rk3399: Add LPPDDR4-800 timings inc
+  ram: rk3399: Add set_rate sdram rk3399 ops
+  ram: rk3399: Add lpddr4 set rate support
+  ram: rk3399: Set lpddr4 dq odt
+  ram: rk3399: Set lpddr4 ca odt
+  ram: rk3399: Set lpddr4 MR3
+  ram: rk3399: Set lpddr4 MR12
+  ram: rk3399: Set lpddr4 MR14
+  configs: rockpro64: Enable LPDDR4 support
+  configs: rock-pi-4: Enable LPDDR4 support
+  rockchip: dts: rk3399: Add LPDDR4-100 timings
+  rockchip: dts: rk3399: rockpro64: Use LPDDR4-100 dtsi
+  rockchip: dts: rk3399: rock-pi-4: Use LPDDR4-100 dtsi
+
+ arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi   |    1 +
+ arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi     |    1 +
+ arch/arm/dts/rk3399-rockpro64-u-boot.dtsi     |    1 +
+ arch/arm/dts/rk3399-sdram-lpddr4-100.dtsi     | 1537 +++++++++++
+ arch/arm/dts/rk3399-u-boot.dtsi               |    4 +
+ .../include/asm/arch-rockchip/pmu_rk3399.h    |   72 +
+ arch/arm/include/asm/arch-rockchip/sdram.h    |    6 -
+ .../include/asm/arch-rockchip/sdram_common.h  |   90 +
+ .../include/asm/arch-rockchip/sdram_rk322x.h  |    7 -
+ .../include/asm/arch-rockchip/sdram_rk3399.h  |   65 +-
+ arch/arm/mach-rockchip/rk3399/syscon_rk3399.c |    8 +
+ configs/rock-pi-4-rk3399_defconfig            |    1 +
+ configs/rockpro64-rk3399_defconfig            |    1 +
+ drivers/clk/rockchip/clk_rk3399.c             |   76 +-
+ drivers/ram/Kconfig                           |    1 +
+ drivers/ram/rockchip/Kconfig                  |   33 +
+ drivers/ram/rockchip/Makefile                 |    3 +-
+ .../ram/rockchip/sdram-rk3399-lpddr4-400.inc  | 1570 +++++++++++
+ .../ram/rockchip/sdram-rk3399-lpddr4-800.inc  | 1570 +++++++++++
+ drivers/ram/rockchip/sdram_debug.c            |  147 ++
+ drivers/ram/rockchip/sdram_rk3399.c           | 2289 ++++++++++++++---
+ include/debug_uart.h                          |   19 +
+ 22 files changed, 7035 insertions(+), 467 deletions(-)
+ create mode 100644 arch/arm/dts/rk3399-sdram-lpddr4-100.dtsi
+ create mode 100644 arch/arm/include/asm/arch-rockchip/pmu_rk3399.h
+ create mode 100644 drivers/ram/rockchip/Kconfig
+ create mode 100644 drivers/ram/rockchip/sdram-rk3399-lpddr4-400.inc
+ create mode 100644 drivers/ram/rockchip/sdram-rk3399-lpddr4-800.inc
+ create mode 100644 drivers/ram/rockchip/sdram_debug.c
+
 -- 
 2.18.0.321.gffc6fa0e3
