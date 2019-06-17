@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 43/99] ram: rockchip: Add initial Kconfig
-Date: Mon, 17 Jun 2019 13:01:56 +0530
-Message-ID: <20190617073252.27810-44-jagan@amarulasolutions.com>
+Subject: [PATCH v2 45/99] ram: rockchip: Add debug sdram driver
+Date: Mon, 17 Jun 2019 13:01:58 +0530
+Message-ID: <20190617073252.27810-46-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,62 +21,112 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Right now sdram drivers in rockchip SoC are built based
-on the SoC configs which may not be an adequate solutions
-while adding common or debug driver.
+Add sdram driver to handle debug across rockchip SoCs.
 
-So, add meaningful Kconfig options start with rk3399.
+This would help to improve code debugging feature for
+sdram drivers in rockchip family, whoever wants to
+debug the driver should call these core debug code on
+their respective platform sdram drivers.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/Kconfig           |  1 +
- drivers/ram/rockchip/Kconfig  | 17 +++++++++++++++++
- drivers/ram/rockchip/Makefile |  2 +-
- 3 files changed, 19 insertions(+), 1 deletion(-)
- create mode 100644 drivers/ram/rockchip/Kconfig
+ .../include/asm/arch-rockchip/sdram_common.h  |  9 +++++
+ drivers/ram/rockchip/Kconfig                  |  9 +++++
+ drivers/ram/rockchip/Makefile                 |  1 +
+ drivers/ram/rockchip/sdram_debug.c            | 34 +++++++++++++++++++
+ 4 files changed, 53 insertions(+)
+ create mode 100644 drivers/ram/rockchip/sdram_debug.c
 
-diff --git a/drivers/ram/Kconfig b/drivers/ram/Kconfig
-index fbf7d7b20f..568d8f2c6a 100644
---- a/drivers/ram/Kconfig
-+++ b/drivers/ram/Kconfig
-@@ -54,4 +54,5 @@ config K3_AM654_DDRSS
- 	  config add support for the initialization of the external
- 	  SDRAM devices connected to DDR subsystem.
+diff --git a/arch/arm/include/asm/arch-rockchip/sdram_common.h b/arch/arm/include/asm/arch-rockchip/sdram_common.h
+index c290fd89c9..0cb737d665 100644
+--- a/arch/arm/include/asm/arch-rockchip/sdram_common.h
++++ b/arch/arm/include/asm/arch-rockchip/sdram_common.h
+@@ -123,4 +123,13 @@ size_t rockchip_sdram_size(phys_addr_t reg);
  
-+source "drivers/ram/rockchip/Kconfig"
- source "drivers/ram/stm32mp1/Kconfig"
+ /* Called by U-Boot board_init_r for Rockchip SoCs */
+ int dram_init(void);
++
++#if !defined(CONFIG_RAM_ROCKCHIP_DEBUG)
++inline void sdram_print_dram_type(unsigned char dramtype)
++{
++}
++#else
++void sdram_print_dram_type(unsigned char dramtype);
++#endif /* CONFIG_RAM_ROCKCHIP_DEBUG */
++
+ #endif
 diff --git a/drivers/ram/rockchip/Kconfig b/drivers/ram/rockchip/Kconfig
-new file mode 100644
-index 0000000000..995cb487b8
---- /dev/null
+index 995cb487b8..151ffb684d 100644
+--- a/drivers/ram/rockchip/Kconfig
 +++ b/drivers/ram/rockchip/Kconfig
-@@ -0,0 +1,17 @@
-+config RAM_ROCKCHIP
-+	bool "Ram drivers support for Rockchip SoCs"
-+	depends on RAM && ARCH_ROCKCHIP
-+	default y
+@@ -7,6 +7,15 @@ config RAM_ROCKCHIP
+ 
+ if RAM_ROCKCHIP
+ 
++config RAM_ROCKCHIP_DEBUG
++	bool "Rockchip ram drivers debugging"
 +	help
-+	  This enables support for ram drivers Rockchip SoCs.
++	  This enables debugging ram driver API's for the platforms
++	  based on Rockchip SoCs.
 +
-+if RAM_ROCKCHIP
++	  This is an option for developers to understand the ram drivers
++	  initialization, configurations and etc.
 +
-+config RAM_RK3399
-+	bool "Ram driver for Rockchip RK3399"
-+	default ROCKCHIP_RK3399
-+	help
-+	  This enables ram drivers support for the platforms based on
-+	  Rockchip RK3399 SoC.
-+
-+endif # RAM_ROCKCHIP
+ config RAM_RK3399
+ 	bool "Ram driver for Rockchip RK3399"
+ 	default ROCKCHIP_RK3399
 diff --git a/drivers/ram/rockchip/Makefile b/drivers/ram/rockchip/Makefile
-index 5df196066d..07d4b62a9d 100644
+index 07d4b62a9d..feb1f82d00 100644
 --- a/drivers/ram/rockchip/Makefile
 +++ b/drivers/ram/rockchip/Makefile
-@@ -9,4 +9,4 @@ obj-$(CONFIG_ROCKCHIP_RK3188) = sdram_rk3188.o
- obj-$(CONFIG_ROCKCHIP_RK322X) = sdram_rk322x.o
- obj-$(CONFIG_ROCKCHIP_RK3288) = sdram_rk3288.o
- obj-$(CONFIG_ROCKCHIP_RK3328) = sdram_rk3328.o
--obj-$(CONFIG_ROCKCHIP_RK3399) = sdram_rk3399.o
-+obj-$(CONFIG_RAM_RK3399) += sdram_rk3399.o
+@@ -3,6 +3,7 @@
+ # Copyright (c) 2017 Theobroma Systems Design und Consulting GmbH
+ #
+ 
++obj-$(CONFIG_RAM_ROCKCHIP_DEBUG) += sdram_debug.o
+ obj-$(CONFIG_ROCKCHIP_RK3368) = dmc-rk3368.o
+ obj-$(CONFIG_ROCKCHIP_RK3128) = sdram_rk3128.o
+ obj-$(CONFIG_ROCKCHIP_RK3188) = sdram_rk3188.o
+diff --git a/drivers/ram/rockchip/sdram_debug.c b/drivers/ram/rockchip/sdram_debug.c
+new file mode 100644
+index 0000000000..c13e140fa5
+--- /dev/null
++++ b/drivers/ram/rockchip/sdram_debug.c
+@@ -0,0 +1,34 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * (C) Copyright 2019 Rockchip Electronics Co., Ltd
++ * (C) Copyright 2019 Amarula Solutions.
++ * Author: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
++
++#include <common.h>
++#include <debug_uart.h>
++#include <asm/arch-rockchip/sdram_common.h>
++
++void sdram_print_dram_type(unsigned char dramtype)
++{
++	switch (dramtype) {
++	case DDR3:
++		printascii("DDR3");
++		break;
++	case DDR4:
++		printascii("DDR4");
++		break;
++	case LPDDR2:
++		printascii("LPDDR2");
++		break;
++	case LPDDR3:
++		printascii("LPDDR3");
++		break;
++	case LPDDR4:
++		printascii("LPDDR4");
++		break;
++	default:
++		printascii("Unknown Device");
++		break;
++	}
++}
 -- 
 2.18.0.321.gffc6fa0e3
