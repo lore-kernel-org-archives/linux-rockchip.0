@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 34/99] ram: rk3399: Order tsel variables
-Date: Mon, 17 Jun 2019 13:01:47 +0530
-Message-ID: <20190617073252.27810-35-jagan@amarulasolutions.com>
+Subject: [PATCH v2 36/99] ram: rk3399: Move pwrup_srefresh_exit to dram_info
+Date: Mon, 17 Jun 2019 13:01:49 +0530
+Message-ID: <20190617073252.27810-37-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,84 +21,75 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Order tsel* variable declarations and assignment in proper
-and meaningful way.
+Add pwrup_srefresh_exit to be part of dram_info so-that
+the it can help to support pwrup_srefresh_exit in individual
+channels while starting pctl in future.
 
 No functionality change.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 37 +++++++++++++++++------------
- 1 file changed, 22 insertions(+), 15 deletions(-)
+ drivers/ram/rockchip/sdram_rk3399.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 78010c707f..f81ea1bdbf 100644
+index 313a177417..1362a5bf2d 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -159,41 +159,48 @@ static void set_ds_odt(const struct chan_info *chan,
- 	u32 *denali_phy = chan->publ->denali_phy;
+@@ -49,6 +49,7 @@ struct chan_info {
+ struct dram_info {
+ #if defined(CONFIG_TPL_BUILD) || \
+ 	(!defined(CONFIG_TPL) && defined(CONFIG_SPL_BUILD))
++	u32 pwrup_srefresh_exit;
+ 	struct chan_info chan[2];
+ 	struct clk ddr_clk;
+ 	struct rk3399_cru *cru;
+@@ -486,8 +487,8 @@ static int phy_io_config(const struct chan_info *chan,
+ 	return 0;
+ }
  
- 	u32 tsel_idle_en, tsel_wr_en, tsel_rd_en;
--	u32 tsel_idle_select_p, tsel_wr_select_dq_p, tsel_rd_select_p;
--	u32 tsel_wr_select_ca_p, tsel_wr_select_ca_n;
--	u32 tsel_idle_select_n, tsel_wr_select_dq_n, tsel_rd_select_n;
-+	u32 tsel_idle_select_p, tsel_rd_select_p;
-+	u32 tsel_idle_select_n, tsel_rd_select_n;
-+	u32 tsel_wr_select_dq_p, tsel_wr_select_ca_p;
-+	u32 tsel_wr_select_dq_n, tsel_wr_select_ca_n;
- 	u32 reg_value;
+-static int pctl_cfg(const struct chan_info *chan, u32 channel,
+-		    const struct rk3399_sdram_params *params)
++static int pctl_cfg(struct dram_info *dram, const struct chan_info *chan,
++		    u32 channel, const struct rk3399_sdram_params *params)
+ {
+ 	u32 *denali_ctl = chan->pctl->denali_ctl;
+ 	u32 *denali_pi = chan->pi->denali_pi;
+@@ -495,7 +496,6 @@ static int pctl_cfg(const struct chan_info *chan, u32 channel,
+ 	const u32 *params_ctl = params->pctl_regs.denali_ctl;
+ 	const u32 *params_phy = params->phy_regs.denali_phy;
+ 	u32 tmp, tmp1, tmp2;
+-	u32 pwrup_srefresh_exit;
+ 	int ret;
+ 	const ulong timeout_ms = 200;
  
- 	if (params->base.dramtype == LPDDR4) {
- 		tsel_rd_select_p = PHY_DRV_ODT_HI_Z;
--		tsel_wr_select_dq_p = PHY_DRV_ODT_40;
--		tsel_wr_select_ca_p = PHY_DRV_ODT_40;
-+		tsel_rd_select_n = PHY_DRV_ODT_240;
-+
- 		tsel_idle_select_p = PHY_DRV_ODT_HI_Z;
-+		tsel_idle_select_n = PHY_DRV_ODT_240;
+@@ -515,7 +515,8 @@ static int pctl_cfg(const struct chan_info *chan, u32 channel,
+ 	writel(params->phy_regs.denali_phy[911], &denali_phy[911]);
+ 	writel(params->phy_regs.denali_phy[912], &denali_phy[912]);
  
--		tsel_rd_select_n = PHY_DRV_ODT_240;
-+		tsel_wr_select_dq_p = PHY_DRV_ODT_40;
- 		tsel_wr_select_dq_n = PHY_DRV_ODT_40;
-+
-+		tsel_wr_select_ca_p = PHY_DRV_ODT_40;
- 		tsel_wr_select_ca_n = PHY_DRV_ODT_40;
--		tsel_idle_select_n = PHY_DRV_ODT_240;
- 	} else if (params->base.dramtype == LPDDR3) {
- 		tsel_rd_select_p = PHY_DRV_ODT_240;
--		tsel_wr_select_dq_p = PHY_DRV_ODT_34_3;
--		tsel_wr_select_ca_p = PHY_DRV_ODT_48;
-+		tsel_rd_select_n = PHY_DRV_ODT_HI_Z;
-+
- 		tsel_idle_select_p = PHY_DRV_ODT_240;
-+		tsel_idle_select_n = PHY_DRV_ODT_HI_Z;
+-	pwrup_srefresh_exit = readl(&denali_ctl[68]) & PWRUP_SREFRESH_EXIT;
++	dram->pwrup_srefresh_exit = readl(&denali_ctl[68]) &
++				    PWRUP_SREFRESH_EXIT;
+ 	clrbits_le32(&denali_ctl[68], PWRUP_SREFRESH_EXIT);
  
--		tsel_rd_select_n = PHY_DRV_ODT_HI_Z;
-+		tsel_wr_select_dq_p = PHY_DRV_ODT_34_3;
- 		tsel_wr_select_dq_n = PHY_DRV_ODT_34_3;
-+
-+		tsel_wr_select_ca_p = PHY_DRV_ODT_48;
- 		tsel_wr_select_ca_n = PHY_DRV_ODT_48;
--		tsel_idle_select_n = PHY_DRV_ODT_HI_Z;
- 	} else {
- 		tsel_rd_select_p = PHY_DRV_ODT_240;
--		tsel_wr_select_dq_p = PHY_DRV_ODT_34_3;
--		tsel_wr_select_ca_p = PHY_DRV_ODT_34_3;
-+		tsel_rd_select_n = PHY_DRV_ODT_240;
-+
- 		tsel_idle_select_p = PHY_DRV_ODT_240;
-+		tsel_idle_select_n = PHY_DRV_ODT_240;
+ 	/* PHY_DLL_RST_EN */
+@@ -591,7 +592,7 @@ static int pctl_cfg(const struct chan_info *chan, u32 channel,
+ 	debug("DRAM (%s): phy locked after %ld ms\n", __func__, get_timer(tmp));
  
--		tsel_rd_select_n = PHY_DRV_ODT_240;
-+		tsel_wr_select_dq_p = PHY_DRV_ODT_34_3;
- 		tsel_wr_select_dq_n = PHY_DRV_ODT_34_3;
-+
-+		tsel_wr_select_ca_p = PHY_DRV_ODT_34_3;
- 		tsel_wr_select_ca_n = PHY_DRV_ODT_34_3;
--		tsel_idle_select_n = PHY_DRV_ODT_240;
- 	}
+ 	clrsetbits_le32(&denali_ctl[68], PWRUP_SREFRESH_EXIT,
+-			pwrup_srefresh_exit);
++			dram->pwrup_srefresh_exit);
+ 	return 0;
+ }
  
- 	if (params->base.odt == 1)
+@@ -1175,7 +1176,7 @@ static int sdram_init(struct dram_info *dram,
+ 		if (channel >= params->base.num_channels)
+ 			continue;
+ 
+-		ret = pctl_cfg(chan, channel, params);
++		ret = pctl_cfg(dram, chan, channel, params);
+ 		if (ret < 0) {
+ 			printf("%s: pctl config failed\n", __func__);
+ 			return ret;
 -- 
 2.18.0.321.gffc6fa0e3
