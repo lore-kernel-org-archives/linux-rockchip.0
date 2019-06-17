@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 61/99] ram: rk3399: Add lpddr4 rank mask for wdql training
-Date: Mon, 17 Jun 2019 13:02:14 +0530
-Message-ID: <20190617073252.27810-62-jagan@amarulasolutions.com>
+Subject: [PATCH v2 60/99] ram: rk3399: Add lpddr4 rank mask for ca training
+Date: Mon, 17 Jun 2019 13:02:13 +0530
+Message-ID: <20190617073252.27810-61-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -23,7 +23,7 @@ List-Id: linux-rockchip.vger.kernel.org
 
 Add rank_mask based on the rank number for lpddr4.
 
-This would keep the wdql data training loop based on the
+This would keep the ca data training loop based on the
 desired rank mask value instead of looping for all values.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
@@ -33,10 +33,10 @@ Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index d967a602bc..935e3c495e 100644
+index 7f01681a01..d967a602bc 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -925,7 +925,10 @@ static int data_training_wdql(const struct chan_info *chan, u32 channel,
+@@ -687,7 +687,10 @@ static int data_training_ca(const struct chan_info *chan, u32 channel,
  	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
  	writel(0x00003f7c, (&denali_pi[175]));
  
