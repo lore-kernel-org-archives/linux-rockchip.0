@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 26/99] ram: rk3399: Add ddr version enc macro
-Date: Mon, 17 Jun 2019 13:01:39 +0530
-Message-ID: <20190617073252.27810-27-jagan@amarulasolutions.com>
+Subject: [PATCH v2 27/99] ram: rk3399: Add ddrtimingC0
+Date: Mon, 17 Jun 2019 13:01:40 +0530
+Message-ID: <20190617073252.27810-28-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,48 +21,59 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add dram config macro for handling ddr version number.
+Add DdrTimingC0 structure with associated bit fields.
+
+These would help to reconfigure sdram capabilities during
+lpddr4 setup related configs.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- arch/arm/include/asm/arch-rockchip/sdram_common.h | 2 ++
- drivers/ram/rockchip/sdram_rk3399.c               | 2 ++
- 2 files changed, 4 insertions(+)
+ arch/arm/include/asm/arch-rockchip/sdram_rk3399.h | 12 +++++++++++-
+ drivers/ram/rockchip/sdram_rk3399.c               |  2 +-
+ 2 files changed, 12 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm/include/asm/arch-rockchip/sdram_common.h b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-index e5145422cc..0eb068dcc0 100644
---- a/arch/arm/include/asm/arch-rockchip/sdram_common.h
-+++ b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-@@ -28,6 +28,7 @@
-  * [1:0]	dbw_ch0
- */
- #define SYS_REG_DDRTYPE_SHIFT		13
-+#define DDR_SYS_REG_VERSION		2
- #define SYS_REG_DDRTYPE_MASK		7
- #define SYS_REG_NUM_CH_SHIFT		12
- #define SYS_REG_NUM_CH_MASK		1
-@@ -61,6 +62,7 @@
- #define SYS_REG_DBW_MASK		3
- #define SYS_REG_ENC_DBW(n, ch)		((2 >> (n)) << SYS_REG_DBW_SHIFT(ch))
+diff --git a/arch/arm/include/asm/arch-rockchip/sdram_rk3399.h b/arch/arm/include/asm/arch-rockchip/sdram_rk3399.h
+index c6a260bad8..924eeb3bac 100644
+--- a/arch/arm/include/asm/arch-rockchip/sdram_rk3399.h
++++ b/arch/arm/include/asm/arch-rockchip/sdram_rk3399.h
+@@ -26,6 +26,16 @@ struct rk3399_ddr_pi_regs {
+ 	u32 denali_pi[200];
+ };
  
-+#define SYS_REG_ENC_VERSION(n)		((n) << 28)
- #define SYS_REG_ENC_CS0_ROW(n, os_reg2, os_reg3, ch) do { \
- 			(os_reg2) |= (((n) - 13) & 0x3) << (6 + 16 * (ch)); \
- 			(os_reg3) |= ((((n) - 13) & 0x4) >> 2) << \
++union noc_ddrtimingc0 {
++	u32 d32;
++	struct {
++		unsigned burstpenalty : 4;
++		unsigned reserved0 : 4;
++		unsigned wrtomwr : 6;
++		unsigned reserved1 : 18;
++	} b;
++};
++
+ struct rk3399_msch_regs {
+ 	u32 coreid;
+ 	u32 revisionid;
+@@ -44,7 +54,7 @@ struct rk3399_msch_regs {
+ struct rk3399_msch_timings {
+ 	u32 ddrtiminga0;
+ 	u32 ddrtimingb0;
+-	u32 ddrtimingc0;
++	union noc_ddrtimingc0 ddrtimingc0;
+ 	u32 devtodev0;
+ 	u32 ddrmode;
+ 	u32 agingx0;
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 14e2afcbc4..a8100749b0 100644
+index a8100749b0..787cdc6b52 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -1032,7 +1032,9 @@ static void dram_all_config(struct dram_info *dram,
- 		if (info->cs1_row)
- 			SYS_REG_ENC_CS1_ROW(info->cs1_row, sys_reg2,
- 					    sys_reg3, channel);
-+
- 		sys_reg3 |= SYS_REG_ENC_CS1_COL(info->col, channel);
-+		sys_reg3 |= SYS_REG_ENC_VERSION(DDR_SYS_REG_VERSION);
- 
- 		ddr_msch_regs = dram->chan[channel].msch;
- 		noc_timing = &params->ch[channel].noc_timings;
+@@ -1042,7 +1042,7 @@ static void dram_all_config(struct dram_info *dram,
+ 		       &ddr_msch_regs->ddrtiminga0);
+ 		writel(noc_timing->ddrtimingb0,
+ 		       &ddr_msch_regs->ddrtimingb0);
+-		writel(noc_timing->ddrtimingc0,
++		writel(noc_timing->ddrtimingc0.d32,
+ 		       &ddr_msch_regs->ddrtimingc0);
+ 		writel(noc_timing->devtodev0,
+ 		       &ddr_msch_regs->devtodev0);
 -- 
 2.18.0.321.gffc6fa0e3
