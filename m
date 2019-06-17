@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 07/99] ram: rk3399: Move macro after include files
-Date: Mon, 17 Jun 2019 13:01:20 +0530
-Message-ID: <20190617073252.27810-8-jagan@amarulasolutions.com>
+Subject: [PATCH v2 08/99] ram: rk3399: Clear PI_175 interrupts in data training
+Date: Mon, 17 Jun 2019 13:01:21 +0530
+Message-ID: <20190617073252.27810-9-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,57 +21,70 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Move the macro definitions after include files for better
-code readability and to satisfy coding style.
+Clear the PI_175 interrupts before processing actual
+data training in all relevant calls.
+
+This would help to clear interrupt from previous training.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+ drivers/ram/rockchip/sdram_rk3399.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index e6f52c9f59..20a3e89c17 100644
+index 20a3e89c17..1898466b4c 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -22,6 +22,19 @@
- #include <linux/err.h>
- #include <time.h>
+@@ -617,6 +617,9 @@ static int data_training_ca(const struct chan_info *chan, u32 channel,
+ 	u32 obs_0, obs_1, obs_2, obs_err = 0;
+ 	u32 rank = params->ch[channel].rank;
  
-+#define PRESET_SGRF_HOLD(n)	((0x1 << (6 + 16)) | ((n) << 6))
-+#define PRESET_GPIO0_HOLD(n)	((0x1 << (7 + 16)) | ((n) << 7))
-+#define PRESET_GPIO1_HOLD(n)	((0x1 << (8 + 16)) | ((n) << 8))
++	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
++	writel(0x00003f7c, (&denali_pi[175]));
 +
-+#define PHY_DRV_ODT_HI_Z	0x0
-+#define PHY_DRV_ODT_240		0x1
-+#define PHY_DRV_ODT_120		0x8
-+#define PHY_DRV_ODT_80		0x9
-+#define PHY_DRV_ODT_60		0xc
-+#define PHY_DRV_ODT_48		0xd
-+#define PHY_DRV_ODT_40		0xe
-+#define PHY_DRV_ODT_34_3	0xf
-+
- struct chan_info {
- 	struct rk3399_ddr_pctl_regs *pctl;
- 	struct rk3399_ddr_pi_regs *pi;
-@@ -43,19 +56,6 @@ struct dram_info {
- 	struct rk3399_pmugrf_regs *pmugrf;
- };
+ 	for (i = 0; i < rank; i++) {
+ 		select_per_cs_training_index(chan, i);
  
--#define PRESET_SGRF_HOLD(n)	((0x1 << (6 + 16)) | ((n) << 6))
--#define PRESET_GPIO0_HOLD(n)	((0x1 << (7 + 16)) | ((n) << 7))
--#define PRESET_GPIO1_HOLD(n)	((0x1 << (8 + 16)) | ((n) << 8))
--
--#define PHY_DRV_ODT_HI_Z	0x0
--#define PHY_DRV_ODT_240		0x1
--#define PHY_DRV_ODT_120		0x8
--#define PHY_DRV_ODT_80		0x9
--#define PHY_DRV_ODT_60		0xc
--#define PHY_DRV_ODT_48		0xd
--#define PHY_DRV_ODT_40		0xe
--#define PHY_DRV_ODT_34_3	0xf
--
- #if defined(CONFIG_TPL_BUILD) || \
- 	(!defined(CONFIG_TPL) && defined(CONFIG_SPL_BUILD))
+@@ -671,6 +674,9 @@ static int data_training_wl(const struct chan_info *chan, u32 channel,
+ 	u32 obs_0, obs_1, obs_2, obs_3, obs_err = 0;
+ 	u32 rank = params->ch[channel].rank;
+ 
++	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
++	writel(0x00003f7c, (&denali_pi[175]));
++
+ 	for (i = 0; i < rank; i++) {
+ 		select_per_cs_training_index(chan, i);
+ 
+@@ -730,6 +736,9 @@ static int data_training_rg(const struct chan_info *chan, u32 channel,
+ 	u32 obs_0, obs_1, obs_2, obs_3, obs_err = 0;
+ 	u32 rank = params->ch[channel].rank;
+ 
++	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
++	writel(0x00003f7c, (&denali_pi[175]));
++
+ 	for (i = 0; i < rank; i++) {
+ 		select_per_cs_training_index(chan, i);
+ 
+@@ -789,6 +798,9 @@ static int data_training_rl(const struct chan_info *chan, u32 channel,
+ 	u32 i, tmp;
+ 	u32 rank = params->ch[channel].rank;
+ 
++	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
++	writel(0x00003f7c, (&denali_pi[175]));
++
+ 	for (i = 0; i < rank; i++) {
+ 		select_per_cs_training_index(chan, i);
+ 
+@@ -834,6 +846,9 @@ static int data_training_wdql(const struct chan_info *chan, u32 channel,
+ 	u32 i, tmp;
+ 	u32 rank = params->ch[channel].rank;
+ 
++	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
++	writel(0x00003f7c, (&denali_pi[175]));
++
+ 	for (i = 0; i < rank; i++) {
+ 		select_per_cs_training_index(chan, i);
  
 -- 
 2.18.0.321.gffc6fa0e3
