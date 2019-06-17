@@ -1,51 +1,48 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 99/99] rockchip: dts: rk3399: rock-pi-4: Use LPDDR4-100 dtsi
-Date: Mon, 17 Jun 2019 13:02:52 +0530
-Message-ID: <20190617073252.27810-100-jagan@amarulasolutions.com>
-References: <20190617073252.27810-1-jagan@amarulasolutions.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v4 2/5] mmc: core: API to temporarily disable retuning for
+ SDIO CRC errors
+Date: Mon, 17 Jun 2019 09:53:20 +0200
+Message-ID: <CAPDyKFqNUJospyV05ZC7Y894QB6a9LQ8cjdT+zrD9EQvm_OWRg@mail.gmail.com>
+References: <20190613234153.59309-1-dianders@chromium.org> <20190613234153.59309-3-dianders@chromium.org>
+ <CAPDyKFrgXGf_9=H7G40fiUQj=da5WWRys_oim2azgL4FEOeUVA@mail.gmail.com> <CAD=FV=UA9i1eEi3Mx0WF-DnCnr4O4-MfOxa=axZOJtXzxbV7Tw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190617073252.27810-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=UA9i1eEi3Mx0WF-DnCnr4O4-MfOxa=axZOJtXzxbV7Tw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Arend van Spriel <arend.vanspriel@broadcom.com>, brcm80211-dev-list.pdl@broadcom.com, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Double Lo <double.lo@cypress.com>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, Matthias Kaehlcke <mka@chromium.org>, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, netdev <netdev@vger.kernel.org>, brcm80211-dev-list <brcm80211-dev-list@cypress.com>, Jiong Wu <lohengrin1024@gmail.com>, Ritesh Harjani <riteshh@codeaurora.org>, Allison Randal <allison@lohutok.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-Use LPDDR4-100 sdram timings dtsi for RockPI-4 board.
+[...]
 
-All these timings are processed during TPL stage of rock-pi-4 board,
-bootchain. This make TPL would replace rockchip in house rkbin in
-current bootchain.
+> > > --- a/include/linux/mmc/sdio_func.h
+> > > +++ b/include/linux/mmc/sdio_func.h
+> > > @@ -167,4 +167,7 @@ extern void sdio_f0_writeb(struct sdio_func *func, unsigned char b,
+> > >  extern mmc_pm_flag_t sdio_get_host_pm_caps(struct sdio_func *func);
+> > >  extern int sdio_set_host_pm_flags(struct sdio_func *func, mmc_pm_flag_t flags);
+> > >
+> > > +extern void sdio_retune_crc_disable(struct sdio_func *func);
+> > > +extern void sdio_retune_crc_enable(struct sdio_func *func);
+> > > +
+> > >  #endif /* LINUX_MMC_SDIO_FUNC_H */
+> > > --
+> > > 2.22.0.rc2.383.gf4fbbf30c2-goog
+> > >
+> >
+> > Besides the minor comments, this looks good to me.
+>
+> Thank you for the reviews!
+>
+> I'll plan to send a v5 on my Monday with the fixes assuming no new
+> heated discussion starts up.  If it's less work for you, I'm also
+> happy if you just want to make the trivial fixes yourself when
+> applying.
 
-Bootchain after and before this change:
+It really doesn't matter to me, feel free to pick the option you
+prefer. At this point I am just awaiting acks for the broadcom patces
+and some clarity of what stable releases we should target for
+non-tagged patches.
 
-   TPL -> SPL -> U-Boot proper
-
- rkbin -> SPL -> U-Boot proper
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi b/arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
-index 7bddc3acdb..dbfa4ba9f8 100644
---- a/arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
-@@ -4,3 +4,4 @@
-  */
- 
- #include "rk3399-u-boot.dtsi"
-+#include "rk3399-sdram-lpddr4-100.dtsi"
--- 
-2.18.0.321.gffc6fa0e3
+Kind regards
+Uffe
