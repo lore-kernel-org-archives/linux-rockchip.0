@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 25/99] ram: rk3399: Add cs1_col enc macro
-Date: Mon, 17 Jun 2019 13:01:38 +0530
-Message-ID: <20190617073252.27810-26-jagan@amarulasolutions.com>
+Subject: [PATCH v2 26/99] ram: rk3399: Add ddr version enc macro
+Date: Mon, 17 Jun 2019 13:01:39 +0530
+Message-ID: <20190617073252.27810-27-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,38 +21,46 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add dram config macro for handling cs1 column.
+Add dram config macro for handling ddr version number.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- arch/arm/include/asm/arch-rockchip/sdram_common.h | 3 +++
- drivers/ram/rockchip/sdram_rk3399.c               | 1 +
+ arch/arm/include/asm/arch-rockchip/sdram_common.h | 2 ++
+ drivers/ram/rockchip/sdram_rk3399.c               | 2 ++
  2 files changed, 4 insertions(+)
 
 diff --git a/arch/arm/include/asm/arch-rockchip/sdram_common.h b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-index 7062cb57d9..e5145422cc 100644
+index e5145422cc..0eb068dcc0 100644
 --- a/arch/arm/include/asm/arch-rockchip/sdram_common.h
 +++ b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-@@ -75,6 +75,9 @@
- 				     (4 + 2 * (ch)); \
- 		} while (0)
+@@ -28,6 +28,7 @@
+  * [1:0]	dbw_ch0
+ */
+ #define SYS_REG_DDRTYPE_SHIFT		13
++#define DDR_SYS_REG_VERSION		2
+ #define SYS_REG_DDRTYPE_MASK		7
+ #define SYS_REG_NUM_CH_SHIFT		12
+ #define SYS_REG_NUM_CH_MASK		1
+@@ -61,6 +62,7 @@
+ #define SYS_REG_DBW_MASK		3
+ #define SYS_REG_ENC_DBW(n, ch)		((2 >> (n)) << SYS_REG_DBW_SHIFT(ch))
  
-+#define SYS_REG_CS1_COL_SHIFT(ch)	(0 + 2 * (ch))
-+#define SYS_REG_ENC_CS1_COL(n, ch)      (((n) - 9) << SYS_REG_CS1_COL_SHIFT(ch))
-+
- /* Get sdram size decode from reg */
- size_t rockchip_sdram_size(phys_addr_t reg);
- 
++#define SYS_REG_ENC_VERSION(n)		((n) << 28)
+ #define SYS_REG_ENC_CS0_ROW(n, os_reg2, os_reg3, ch) do { \
+ 			(os_reg2) |= (((n) - 13) & 0x3) << (6 + 16 * (ch)); \
+ 			(os_reg3) |= ((((n) - 13) & 0x4) >> 2) << \
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 21c1c6566a..14e2afcbc4 100644
+index 14e2afcbc4..a8100749b0 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -1032,6 +1032,7 @@ static void dram_all_config(struct dram_info *dram,
+@@ -1032,7 +1032,9 @@ static void dram_all_config(struct dram_info *dram,
  		if (info->cs1_row)
  			SYS_REG_ENC_CS1_ROW(info->cs1_row, sys_reg2,
  					    sys_reg3, channel);
-+		sys_reg3 |= SYS_REG_ENC_CS1_COL(info->col, channel);
++
+ 		sys_reg3 |= SYS_REG_ENC_CS1_COL(info->col, channel);
++		sys_reg3 |= SYS_REG_ENC_VERSION(DDR_SYS_REG_VERSION);
  
  		ddr_msch_regs = dram->chan[channel].msch;
  		noc_timing = &params->ch[channel].noc_timings;
