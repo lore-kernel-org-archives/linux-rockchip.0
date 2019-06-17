@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 14/99] ram: rk3399: Add chipinfo macro
-Date: Mon, 17 Jun 2019 13:01:27 +0530
-Message-ID: <20190617073252.27810-15-jagan@amarulasolutions.com>
+Subject: [PATCH v2 15/99] ram: rk3399: Add rank enc macro
+Date: Mon, 17 Jun 2019 13:01:28 +0530
+Message-ID: <20190617073252.27810-16-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,39 +21,40 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add simplified and meaningful macro for chip info.
+Add simplified and meaningful macro for rank.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- arch/arm/include/asm/arch-rockchip/sdram_common.h | 1 +
+ arch/arm/include/asm/arch-rockchip/sdram_common.h | 2 ++
  drivers/ram/rockchip/sdram_rk3399.c               | 2 +-
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm/include/asm/arch-rockchip/sdram_common.h b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-index edb2ee50f4..d7d44749de 100644
+index d7d44749de..e2173aeeea 100644
 --- a/arch/arm/include/asm/arch-rockchip/sdram_common.h
 +++ b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-@@ -35,6 +35,7 @@
- #define SYS_REG_ROW_3_4_MASK		1
- #define SYS_REG_ENC_ROW_3_4(n, ch)	((n) << (30 + (ch)))
- #define SYS_REG_CHINFO_SHIFT(ch)	(28 + (ch))
-+#define SYS_REG_ENC_CHINFO(ch)		(1 << SYS_REG_CHINFO_SHIFT(ch))
- #define SYS_REG_ENC_DDRTYPE(n)		((n) << SYS_REG_DDRTYPE_SHIFT)
- #define SYS_REG_ENC_NUM_CH(n)		(((n) - SYS_REG_NUM_CH_MASK) << \
+@@ -41,6 +41,8 @@
  					SYS_REG_NUM_CH_SHIFT)
+ #define SYS_REG_RANK_SHIFT(ch)		(11 + (ch) * 16)
+ #define SYS_REG_RANK_MASK		1
++#define SYS_REG_ENC_RANK(n, ch)		(((n) - SYS_REG_RANK_MASK) << \
++					 SYS_REG_RANK_SHIFT(ch))
+ #define SYS_REG_COL_SHIFT(ch)		(9 + (ch) * 16)
+ #define SYS_REG_COL_MASK		3
+ #define SYS_REG_BK_SHIFT(ch)		(8 + (ch) * 16)
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 26bbb4208a..7d071f998b 100644
+index 7d071f998b..acc8f17491 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -1021,7 +1021,7 @@ static void dram_all_config(struct dram_info *dram,
- 			continue;
+@@ -1022,7 +1022,7 @@ static void dram_all_config(struct dram_info *dram,
  		idx++;
  		sys_reg |= SYS_REG_ENC_ROW_3_4(info->row_3_4, channel);
--		sys_reg |= 1 << SYS_REG_CHINFO_SHIFT(channel);
-+		sys_reg |= SYS_REG_ENC_CHINFO(channel);
- 		sys_reg |= (info->rank - 1) << SYS_REG_RANK_SHIFT(channel);
+ 		sys_reg |= SYS_REG_ENC_CHINFO(channel);
+-		sys_reg |= (info->rank - 1) << SYS_REG_RANK_SHIFT(channel);
++		sys_reg |= SYS_REG_ENC_RANK(info->rank, channel);
  		sys_reg |= (info->col - 9) << SYS_REG_COL_SHIFT(channel);
  		sys_reg |= info->bk == 3 ? 0 : 1 << SYS_REG_BK_SHIFT(channel);
+ 		sys_reg |= (info->cs0_row - 13) <<
 -- 
 2.18.0.321.gffc6fa0e3
