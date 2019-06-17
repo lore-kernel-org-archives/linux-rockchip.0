@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 80/99] ram: rk3399: Simplify data training first argument
-Date: Mon, 17 Jun 2019 13:02:33 +0530
-Message-ID: <20190617073252.27810-81-jagan@amarulasolutions.com>
+Subject: [PATCH v2 81/99] ram: rk3399: Handle data training via ops
+Date: Mon, 17 Jun 2019 13:02:34 +0530
+Message-ID: <20190617073252.27810-82-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,56 +21,113 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-data training is using chan_info as first argument with
-channel number as second argument instead of that use
-dram_info as first argument so-that we can get the
-chan_info at data training definition.
+data training can be even required for lpddr4 and we
+need to keep the lpddr4 code to compile only for relevant
+boards which do support lpddr4.
 
-This was the argument handling is meaningful, readable
-and it would help to add similar data training for
-lpddr4 in future.
+For this requirement, and for code readability handle
+data training via sdram_rk3399_ops and same will update
+in future while supporting lpddr4 code.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+ drivers/ram/rockchip/sdram_rk3399.c | 43 ++++++++++++++++++++++-------
+ 1 file changed, 33 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index e3180d0ef2..927c7cced3 100644
+index 927c7cced3..e2b311193d 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -1286,10 +1286,11 @@ static int data_training_wdql(const struct chan_info *chan, u32 channel,
- 	return 0;
+@@ -65,11 +65,17 @@ struct dram_info {
+ 	struct rk3399_pmucru *pmucru;
+ 	struct rk3399_pmusgrf_regs *pmusgrf;
+ 	struct rk3399_ddr_cic_regs *cic;
++	const struct sdram_rk3399_ops *ops;
+ #endif
+ 	struct ram_info info;
+ 	struct rk3399_pmugrf_regs *pmugrf;
+ };
+ 
++struct sdram_rk3399_ops {
++	int (*data_training)(struct dram_info *dram, u32 channel, u8 rank,
++			     struct rk3399_sdram_params *sdram);
++};
++
+ #if defined(CONFIG_TPL_BUILD) || \
+ 	(!defined(CONFIG_TPL) && defined(CONFIG_SPL_BUILD))
+ 
+@@ -1465,6 +1471,23 @@ static void dram_all_config(struct dram_info *dram,
+ 	clrsetbits_le32(&dram->cru->glb_rst_con, 0x3, 0x3);
  }
  
--static int data_training(const struct chan_info *chan, u32 channel,
-+static int data_training(struct dram_info *dram, u32 channel,
- 			 const struct rk3399_sdram_params *params,
- 			 u32 training_flag)
++static int default_data_training(struct dram_info *dram, u32 channel, u8 rank,
++				 struct rk3399_sdram_params *params)
++{
++	u8 training_flag = PI_READ_GATE_TRAINING;
++
++	/*
++	 * LPDDR3 CA training msut be trigger before
++	 * other training.
++	 * DDR3 is not have CA training.
++	 */
++
++	if (params->base.dramtype == LPDDR3)
++		training_flag |= PI_CA_TRAINING;
++
++	return data_training(dram, channel, params, training_flag);
++}
++
+ static int switch_to_phy_index1(struct dram_info *dram,
+ 				const struct rk3399_sdram_params *params)
  {
-+	struct chan_info *chan = &dram->chan[channel];
- 	u32 *denali_phy = chan->publ->denali_phy;
+@@ -1627,7 +1650,6 @@ static int sdram_init(struct dram_info *dram,
+ {
+ 	unsigned char dramtype = params->base.dramtype;
+ 	unsigned int ddr_freq = params->base.ddr_freq;
+-	u32 training_flag = PI_READ_GATE_TRAINING;
+ 	int channel, ch, rank;
  	int ret;
  
-@@ -1499,8 +1500,7 @@ static int switch_to_phy_index1(struct dram_info *dram,
- 	for (channel = 0; channel < ch_count; channel++) {
- 		denali_phy = dram->chan[channel].publ->denali_phy;
- 		clrsetbits_le32(&denali_phy[896], (0x3 << 8) | 1, 1 << 8);
--		ret = data_training(&dram->chan[channel], channel,
--				    params, PI_FULL_TRAINING);
-+		ret = data_training(dram, channel, params, PI_FULL_TRAINING);
- 		if (ret < 0) {
- 			debug("index1 training failed\n");
- 			return ret;
-@@ -1663,8 +1663,7 @@ static int sdram_init(struct dram_info *dram,
- 			if (params->base.dramtype == LPDDR3)
- 				training_flag |= PI_CA_TRAINING;
+@@ -1655,16 +1677,12 @@ static int sdram_init(struct dram_info *dram,
  
--			if (!(data_training(&dram->chan[ch], ch,
--					    params, training_flag)))
-+			if (!(data_training(dram, ch, params, training_flag)))
+ 			params->ch[ch].cap_info.rank = rank;
+ 
+-			/*
+-			 * LPDDR3 CA training msut be trigger before
+-			 * other training.
+-			 * DDR3 is not have CA training.
+-			 */
+-			if (params->base.dramtype == LPDDR3)
+-				training_flag |= PI_CA_TRAINING;
+-
+-			if (!(data_training(dram, ch, params, training_flag)))
++			ret = dram->ops->data_training(dram, ch, rank, params);
++			if (!ret) {
++				debug("%s: data trained for rank %d, ch %d\n",
++				      __func__, rank, ch);
  				break;
++			}
  		}
  		/* Computed rank with associated channel number */
+ 		params->ch[ch].cap_info.rank = rank;
+@@ -1744,6 +1762,10 @@ static int conv_of_platdata(struct udevice *dev)
+ }
+ #endif
+ 
++static const struct sdram_rk3399_ops rk3399_ops = {
++	.data_training = default_data_training,
++};
++
+ static int rk3399_dmc_init(struct udevice *dev)
+ {
+ 	struct dram_info *priv = dev_get_priv(dev);
+@@ -1761,6 +1783,7 @@ static int rk3399_dmc_init(struct udevice *dev)
+ 		return ret;
+ #endif
+ 
++	priv->ops = &rk3399_ops;
+ 	priv->cic = syscon_get_first_range(ROCKCHIP_SYSCON_CIC);
+ 	priv->grf = syscon_get_first_range(ROCKCHIP_SYSCON_GRF);
+ 	priv->pmugrf = syscon_get_first_range(ROCKCHIP_SYSCON_PMUGRF);
 -- 
 2.18.0.321.gffc6fa0e3
