@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 22/99] ram: rk3399: Rename sys_reg with sys_reg2
-Date: Mon, 17 Jun 2019 13:01:35 +0530
-Message-ID: <20190617073252.27810-23-jagan@amarulasolutions.com>
+Subject: [PATCH v2 23/99] ram: rk3399: Update cs0_row to use sys_reg3
+Date: Mon, 17 Jun 2019 13:01:36 +0530
+Message-ID: <20190617073252.27810-24-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,70 +21,74 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Use dram config variable name as sys_reg2 instead of sys_reg
-since the final variable value is to written into a pmugrf
-register named as sys_reg2.
+cs0_row can handle the pmu via sys_reg2 and sys_reg3 while
+configuring the dram instead of just sys_reg2.
 
-This reflect the both variable and associated register
-names are same and also help to add next sys_reg's to
-add it in future.
+So, update cs0_row macro to make use of both sys_reg2,
+sys_reg3.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+ arch/arm/include/asm/arch-rockchip/sdram_common.h | 8 ++++++--
+ drivers/ram/rockchip/sdram_rk3399.c               | 4 +++-
+ 2 files changed, 9 insertions(+), 3 deletions(-)
 
+diff --git a/arch/arm/include/asm/arch-rockchip/sdram_common.h b/arch/arm/include/asm/arch-rockchip/sdram_common.h
+index c2374c0f83..4fe7d60daf 100644
+--- a/arch/arm/include/asm/arch-rockchip/sdram_common.h
++++ b/arch/arm/include/asm/arch-rockchip/sdram_common.h
+@@ -52,8 +52,6 @@
+ 					SYS_REG_BK_SHIFT(ch))
+ #define SYS_REG_CS0_ROW_SHIFT(ch)	(6 + (ch) * 16)
+ #define SYS_REG_CS0_ROW_MASK		3
+-#define SYS_REG_ENC_CS0_ROW(n, ch)	(((n) - 13) << \
+-					SYS_REG_CS0_ROW_SHIFT(ch))
+ #define SYS_REG_CS1_ROW_SHIFT(ch)	(4 + (ch) * 16)
+ #define SYS_REG_CS1_ROW_MASK		3
+ #define SYS_REG_ENC_CS1_ROW(n, ch)	(((n) - 13) << \
+@@ -65,6 +63,12 @@
+ #define SYS_REG_DBW_MASK		3
+ #define SYS_REG_ENC_DBW(n, ch)		((2 >> (n)) << SYS_REG_DBW_SHIFT(ch))
+ 
++#define SYS_REG_ENC_CS0_ROW(n, os_reg2, os_reg3, ch) do { \
++			(os_reg2) |= (((n) - 13) & 0x3) << (6 + 16 * (ch)); \
++			(os_reg3) |= ((((n) - 13) & 0x4) >> 2) << \
++				     (5 + 2 * (ch)); \
++		} while (0)
++
+ /* Get sdram size decode from reg */
+ size_t rockchip_sdram_size(phys_addr_t reg);
+ 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index e8203e4c32..bb673a862e 100644
+index bb673a862e..40cc31601c 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -1004,11 +1004,11 @@ static void set_ddrconfig(const struct chan_info *chan,
- static void dram_all_config(struct dram_info *dram,
+@@ -1005,6 +1005,7 @@ static void dram_all_config(struct dram_info *dram,
  			    const struct rk3399_sdram_params *params)
  {
--	u32 sys_reg = 0;
-+	u32 sys_reg2 = 0;
+ 	u32 sys_reg2 = 0;
++	u32 sys_reg3 = 0;
  	unsigned int channel, idx;
  
--	sys_reg |= SYS_REG_ENC_DDRTYPE(params->base.dramtype);
--	sys_reg |= SYS_REG_ENC_NUM_CH(params->base.num_channels);
-+	sys_reg2 |= SYS_REG_ENC_DDRTYPE(params->base.dramtype);
-+	sys_reg2 |= SYS_REG_ENC_NUM_CH(params->base.num_channels);
- 
- 	for (channel = 0, idx = 0;
- 	     (idx < params->base.num_channels) && (channel < 2);
-@@ -1020,15 +1020,15 @@ static void dram_all_config(struct dram_info *dram,
- 		if (params->ch[channel].col == 0)
- 			continue;
- 		idx++;
--		sys_reg |= SYS_REG_ENC_ROW_3_4(info->row_3_4, channel);
--		sys_reg |= SYS_REG_ENC_CHINFO(channel);
--		sys_reg |= SYS_REG_ENC_RANK(info->rank, channel);
--		sys_reg |= SYS_REG_ENC_COL(info->col, channel);
--		sys_reg |= SYS_REG_ENC_BK(info->bk, channel);
--		sys_reg |= SYS_REG_ENC_CS0_ROW(info->cs0_row, channel);
--		sys_reg |= SYS_REG_ENC_CS1_ROW(info->cs1_row, channel);
--		sys_reg |= SYS_REG_ENC_BW(info->bw, channel);
--		sys_reg |= SYS_REG_ENC_DBW(info->dbw, channel);
-+		sys_reg2 |= SYS_REG_ENC_ROW_3_4(info->row_3_4, channel);
-+		sys_reg2 |= SYS_REG_ENC_CHINFO(channel);
-+		sys_reg2 |= SYS_REG_ENC_RANK(info->rank, channel);
-+		sys_reg2 |= SYS_REG_ENC_COL(info->col, channel);
-+		sys_reg2 |= SYS_REG_ENC_BK(info->bk, channel);
-+		sys_reg2 |= SYS_REG_ENC_CS0_ROW(info->cs0_row, channel);
-+		sys_reg2 |= SYS_REG_ENC_CS1_ROW(info->cs1_row, channel);
-+		sys_reg2 |= SYS_REG_ENC_BW(info->bw, channel);
-+		sys_reg2 |= SYS_REG_ENC_DBW(info->dbw, channel);
+ 	sys_reg2 |= SYS_REG_ENC_DDRTYPE(params->base.dramtype);
+@@ -1025,10 +1026,10 @@ static void dram_all_config(struct dram_info *dram,
+ 		sys_reg2 |= SYS_REG_ENC_RANK(info->rank, channel);
+ 		sys_reg2 |= SYS_REG_ENC_COL(info->col, channel);
+ 		sys_reg2 |= SYS_REG_ENC_BK(info->bk, channel);
+-		sys_reg2 |= SYS_REG_ENC_CS0_ROW(info->cs0_row, channel);
+ 		sys_reg2 |= SYS_REG_ENC_CS1_ROW(info->cs1_row, channel);
+ 		sys_reg2 |= SYS_REG_ENC_BW(info->bw, channel);
+ 		sys_reg2 |= SYS_REG_ENC_DBW(info->dbw, channel);
++		SYS_REG_ENC_CS0_ROW(info->cs0_row, sys_reg2, sys_reg3, channel);
  
  		ddr_msch_regs = dram->chan[channel].msch;
  		noc_timing = &params->ch[channel].noc_timings;
-@@ -1049,7 +1049,7 @@ static void dram_all_config(struct dram_info *dram,
- 				     1 << 17);
+@@ -1050,6 +1051,7 @@ static void dram_all_config(struct dram_info *dram,
  	}
  
--	writel(sys_reg, &dram->pmugrf->os_reg2);
-+	writel(sys_reg2, &dram->pmugrf->os_reg2);
+ 	writel(sys_reg2, &dram->pmugrf->os_reg2);
++	writel(sys_reg3, &dram->pmugrf->os_reg3);
  	rk_clrsetreg(&dram->pmusgrf->soc_con4, 0x1f << 10,
  		     params->base.stride << 10);
  
