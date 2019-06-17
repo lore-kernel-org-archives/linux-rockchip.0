@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 48/99] ram: rk3399: debug: Add sdram_print_stride
-Date: Mon, 17 Jun 2019 13:02:01 +0530
-Message-ID: <20190617073252.27810-49-jagan@amarulasolutions.com>
+Subject: [PATCH v2 50/99] ram: rk3399: Compute stride for 1 channel a
+Date: Mon, 17 Jun 2019 13:02:03 +0530
+Message-ID: <20190617073252.27810-51-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,75 +21,32 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add code to print the channel stride, this would help to
-print the stride of associated channel.
+Add stride computation for the sdram which support
+single channel a
 
-Here is sample print on LPDDR4, 50MHz.
-256B stride
+This configuration available in NanoPi NEO4 and the
+same can work with existing rk3399-sdram-ddr3-1866.dtsi
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- .../include/asm/arch-rockchip/sdram_common.h  |  5 ++++
- drivers/ram/rockchip/sdram_debug.c            | 29 +++++++++++++++++++
- 2 files changed, 34 insertions(+)
+ drivers/ram/rockchip/sdram_rk3399.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/arch/arm/include/asm/arch-rockchip/sdram_common.h b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-index 7d1372f033..8027b53636 100644
---- a/arch/arm/include/asm/arch-rockchip/sdram_common.h
-+++ b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-@@ -133,10 +133,15 @@ inline void sdram_print_ddr_info(struct sdram_cap_info *cap_info,
- 				 struct sdram_base_params *base)
- {
- }
-+
-+inline void sdram_print_stride(unsigned int stride)
-+{
-+}
- #else
- void sdram_print_dram_type(unsigned char dramtype);
- void sdram_print_ddr_info(struct sdram_cap_info *cap_info,
- 			  struct sdram_base_params *base);
-+void sdram_print_stride(unsigned int stride);
- #endif /* CONFIG_RAM_ROCKCHIP_DEBUG */
+diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
+index 75df469952..87eda06055 100644
+--- a/drivers/ram/rockchip/sdram_rk3399.c
++++ b/drivers/ram/rockchip/sdram_rk3399.c
+@@ -1208,6 +1208,10 @@ static unsigned char calculate_stride(struct rk3399_sdram_params *params)
+ 		chinfo |= 1 << channel;
+ 	}
  
- #endif
-diff --git a/drivers/ram/rockchip/sdram_debug.c b/drivers/ram/rockchip/sdram_debug.c
-index 19e9225c12..9cf662675b 100644
---- a/drivers/ram/rockchip/sdram_debug.c
-+++ b/drivers/ram/rockchip/sdram_debug.c
-@@ -116,3 +116,32 @@ void sdram_print_ddr_info(struct sdram_cap_info *cap_info,
- 	printdec(cap >> 20);
- 	printascii("MB\n");
- }
++	/* stride calculation for 1 channel */
++	if (params->base.num_channels == 1 && chinfo & 1)
++		return 0x17;	/* channel a */
 +
-+void sdram_print_stride(unsigned int stride)
-+{
-+	switch (stride) {
-+	case 0xc:
-+		printf("128B stride\n");
-+		break;
-+	case 5:
-+	case 9:
-+	case 0xd:
-+	case 0x11:
-+	case 0x19:
-+		printf("256B stride\n");
-+		break;
-+	case 0xa:
-+	case 0xe:
-+	case 0x12:
-+		printf("512B stride\n");
-+		break;
-+	case 0xf:
-+		printf("4K stride\n");
-+		break;
-+	case 0x1f:
-+		printf("32MB + 256B stride\n");
-+		break;
-+	default:
-+		printf("no stride\n");
-+	}
-+}
+ 	/* stride calculation for 2 channels, default gstride type is 256B */
+ 	if (ch_cap[0] == ch_cap[1]) {
+ 		cap = ch_cap[0] + ch_cap[1];
 -- 
 2.18.0.321.gffc6fa0e3
