@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 87/99] ram: rk3399: Add LPPDDR4-800 timings inc
-Date: Mon, 17 Jun 2019 13:02:40 +0530
-Message-ID: <20190617073252.27810-88-jagan@amarulasolutions.com>
+Subject: [PATCH v2 89/99] ram: rk3399: Add lpddr4 set rate support
+Date: Mon, 17 Jun 2019 13:02:42 +0530
+Message-ID: <20190617073252.27810-90-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,1596 +21,554 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-LPDDR4 initialization start with at board selected frequency
-and then it switches into 400MHz and 800MHz simultaneously to
-make the proper sequence work on each channel with associated
-training.
+Unlike rest of dram type chips, LPDDR4 initialization start
+with at board selected frequency (say 50MHz) and then it
+switches into 400MHz and 800MHz simultaneously to make the
+proper sequence work on each channel with associated training.
 
-So, add LPDDR4-800 timings inc file in driver area so-that
-these timings will take during LPDDR4 initialization phase.
+Here is sameple log about LPDDR4-100 init sequence in Rockpro64:
+
+Channel 0: LPDDR4, 50MHz
+BW=32 Col=10 Bk=8 CS0 Row=15 CS1 Row=15 CS=2 Die BW=16 Size=2048MB
+Channel 1: LPDDR4, 50MHz
+BW=32 Col=10 Bk=8 CS0 Row=15 CS1 Row=15 CS=2 Die BW=16 Size=2048MB
+256B stride
+channel 0 training pass
+channel 1 training pass
+change freq to 400 MHz 0, 1
+channel 0 training pass
+channel 1 training pass
+change freq to 800 MHz 1, 0
+
+This patch add support to this init sequence via lpddr4 set rate
+by taking sdram timing parameters from 400, 800 .inc files.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- .../ram/rockchip/sdram-rk3399-lpddr4-800.inc  | 1570 +++++++++++++++++
- 1 file changed, 1570 insertions(+)
- create mode 100644 drivers/ram/rockchip/sdram-rk3399-lpddr4-800.inc
+ drivers/ram/rockchip/sdram_rk3399.c | 404 +++++++++++++++++++++++++++-
+ 1 file changed, 392 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/ram/rockchip/sdram-rk3399-lpddr4-800.inc b/drivers/ram/rockchip/sdram-rk3399-lpddr4-800.inc
-new file mode 100644
-index 0000000000..d8ae3359a3
---- /dev/null
-+++ b/drivers/ram/rockchip/sdram-rk3399-lpddr4-800.inc
-@@ -0,0 +1,1570 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * (C) Copyright 2019 Rockchip Electronics Co., Ltd.
-+ * (C) Copyright 2019 Amarula Solutions
-+ */
-+
+diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
+index 9f5438a0bc..07759e8956 100644
+--- a/drivers/ram/rockchip/sdram_rk3399.c
++++ b/drivers/ram/rockchip/sdram_rk3399.c
+@@ -16,6 +16,7 @@
+ #include <asm/arch-rockchip/clock.h>
+ #include <asm/arch-rockchip/cru_rk3399.h>
+ #include <asm/arch-rockchip/grf_rk3399.h>
++#include <asm/arch-rockchip/pmu_rk3399.h>
+ #include <asm/arch-rockchip/hardware.h>
+ #include <asm/arch-rockchip/sdram_common.h>
+ #include <asm/arch-rockchip/sdram_rk3399.h>
+@@ -62,6 +63,7 @@ struct dram_info {
+ 	struct clk ddr_clk;
+ 	struct rk3399_cru *cru;
+ 	struct rk3399_grf_regs *grf;
++	struct rk3399_pmu_regs *pmu;
+ 	struct rk3399_pmucru *pmucru;
+ 	struct rk3399_pmusgrf_regs *pmusgrf;
+ 	struct rk3399_ddr_cic_regs *cic;
+@@ -75,7 +77,7 @@ struct sdram_rk3399_ops {
+ 	int (*data_training)(struct dram_info *dram, u32 channel, u8 rank,
+ 			     struct rk3399_sdram_params *sdram);
+ 	int (*set_rate)(struct dram_info *dram,
+-			const struct rk3399_sdram_params *params);
++			struct rk3399_sdram_params *params);
+ };
+ 
+ #if defined(CONFIG_TPL_BUILD) || \
+@@ -221,6 +223,18 @@ lpddr4_get_io_settings(const struct rk3399_sdram_params *params, u32 mr5)
+ 	return io;
+ }
+ 
++static void *get_denali_phy(const struct chan_info *chan,
++			    struct rk3399_sdram_params *params, bool reg)
 +{
-+	{
-+		{
-+			{
-+				.rank = 0x2,
-+				.col = 0xA,
-+				.bk = 0x3,
-+				.bw = 0x2,
-+				.dbw = 0x1,
-+				.row_3_4 = 0x0,
-+				.cs0_row = 0xF,
-+				.cs1_row = 0xF,
-+				.ddrconfig = 1,
-+			},
-+			{
-+				.ddrtiminga0 = 0x80241d22,
-+				.ddrtimingb0 = 0x15050f08,
-+				.ddrtimingc0 = {
-+					0x00000602,
-+				},
-+				.devtodev0 = 0x00002122,
-+				.ddrmode = {
-+					0x0000004c,
-+				},
-+				.agingx0 = 0x00000000,
-+			}
-+		},
-+		{
-+			{
-+				.rank = 0x2,
-+				.col = 0xA,
-+				.bk = 0x3,
-+				.bw = 0x2,
-+				.dbw = 0x1,
-+				.row_3_4 = 0x0,
-+				.cs0_row = 0xF,
-+				.cs1_row = 0xF,
-+				.ddrconfig = 1,
-+			},
-+			{
-+				.ddrtiminga0 = 0x80241d22,
-+				.ddrtimingb0 = 0x15050f08,
-+				.ddrtimingc0 = {
-+					0x00000602,
-+				},
-+				.devtodev0 = 0x00002122,
-+				.ddrmode = {
-+					0x0000004c,
-+				},
-+				.agingx0 = 0x00000000,
-+			}
++	return reg ? &chan->publ->denali_phy : &params->phy_regs.denali_phy;
++}
++
++static void *get_denali_ctl(const struct chan_info *chan,
++			    struct rk3399_sdram_params *params, bool reg)
++{
++	return reg ? &chan->pctl->denali_ctl : &params->pctl_regs.denali_ctl;
++}
++
+ static void *get_ddrc0_con(struct dram_info *dram, u8 channel)
+ {
+ 	return (channel == 0) ? &dram->grf->ddrc0_con0 : &dram->grf->ddrc0_con1;
+@@ -574,10 +588,11 @@ static int phy_io_config(const struct chan_info *chan,
+ }
+ 
+ static void set_ds_odt(const struct chan_info *chan,
+-		       const struct rk3399_sdram_params *params, u32 mr5)
++		       struct rk3399_sdram_params *params,
++		       bool ctl_phy_reg, u32 mr5)
+ {
+-	u32 *denali_phy = chan->publ->denali_phy;
+-	u32 *denali_ctl = chan->pctl->denali_ctl;
++	u32 *denali_phy = get_denali_phy(chan, params, ctl_phy_reg);
++	u32 *denali_ctl = get_denali_ctl(chan, params, ctl_phy_reg);
+ 	u32 tsel_idle_en, tsel_wr_en, tsel_rd_en;
+ 	u32 tsel_idle_select_p, tsel_rd_select_p;
+ 	u32 tsel_idle_select_n, tsel_rd_select_n;
+@@ -735,7 +750,8 @@ static void set_ds_odt(const struct chan_info *chan,
+ 	clrsetbits_le32(&denali_phy[928], 0xff, reg_value);
+ 
+ 	/* phy_pad_rst_drive 8bits DENALI_PHY_937 offset_0 */
+-	clrsetbits_le32(&denali_phy[937], 0xff, reg_value);
++	if (!ctl_phy_reg)
++		clrsetbits_le32(&denali_phy[937], 0xff, reg_value);
+ 
+ 	/* phy_pad_cke_drive 8bits DENALI_PHY_935 offset_0 */
+ 	clrsetbits_le32(&denali_phy[935], 0xff, reg_value);
+@@ -919,7 +935,7 @@ static int pctl_cfg(struct dram_info *dram, const struct chan_info *chan,
+ 	copy_to_reg(&denali_phy[512], &params_phy[512], (549 - 512 + 1) * 4);
+ 	copy_to_reg(&denali_phy[640], &params_phy[640], (677 - 640 + 1) * 4);
+ 	copy_to_reg(&denali_phy[768], &params_phy[768], (805 - 768 + 1) * 4);
+-	set_ds_odt(chan, params, 0);
++	set_ds_odt(chan, params, true, 0);
+ 
+ 	/*
+ 	 * phy_dqs_tsel_wr_timing_X 8bits DENALI_PHY_84/212/340/468 offset_8
+@@ -950,7 +966,6 @@ static int pctl_cfg(struct dram_info *dram, const struct chan_info *chan,
+ 	return 0;
+ }
+ 
+-#if !defined(CONFIG_RAM_RK3399_LPDDR4)
+ static void select_per_cs_training_index(const struct chan_info *chan,
+ 					 u32 rank)
+ {
+@@ -1308,7 +1323,7 @@ static int data_training(struct dram_info *dram, u32 channel,
+ 
+ 	if (training_flag == PI_FULL_TRAINING) {
+ 		if (params->base.dramtype == LPDDR4) {
+-			training_flag = PI_CA_TRAINING | PI_WRITE_LEVELING |
++			training_flag = PI_WRITE_LEVELING |
+ 					PI_READ_GATE_TRAINING |
+ 					PI_READ_LEVELING | PI_WDQ_LEVELING;
+ 		} else if (params->base.dramtype == LPDDR3) {
+@@ -1371,7 +1386,6 @@ static int data_training(struct dram_info *dram, u32 channel,
+ 
+ 	return 0;
+ }
+-#endif
+ 
+ static void set_ddrconfig(const struct chan_info *chan,
+ 			  const struct rk3399_sdram_params *params,
+@@ -1494,7 +1508,7 @@ static int default_data_training(struct dram_info *dram, u32 channel, u8 rank,
+ }
+ 
+ static int switch_to_phy_index1(struct dram_info *dram,
+-				const struct rk3399_sdram_params *params)
++				struct rk3399_sdram_params *params)
+ {
+ 	u32 channel;
+ 	u32 *denali_phy;
+@@ -1540,6 +1554,18 @@ static int switch_to_phy_index1(struct dram_info *dram,
+ 
+ #else
+ 
++struct rk3399_sdram_params lpddr4_timings[] = {
++	#include "sdram-rk3399-lpddr4-400.inc"
++	#include "sdram-rk3399-lpddr4-800.inc"
++};
++
++static u32 lpddr4_get_phy(const struct rk3399_sdram_params *params, u32 ctl)
++{
++	u32 lpddr4_phy[] = {1, 0, 0xb};
++
++	return lpddr4_phy[ctl];
++}
++
+ static u32 get_ddr_stride(struct rk3399_pmusgrf_regs *pmusgrf)
+ {
+ 	return ((readl(&pmusgrf->soc_con4) >> 10) & 0x1F);
+@@ -1757,6 +1783,358 @@ end:
+ 
+ 	return ret;
+ }
++
++static void lpddr4_copy_phy(struct dram_info *dram,
++			    struct rk3399_sdram_params *params, u32 phy,
++			    struct rk3399_sdram_params *timings,
++			    u32 channel)
++{
++	u32 *denali_phy;
++	u32 *denali_phy_params;
++	u32 speed = 0;
++	u32 mr5;
++
++	denali_phy = dram->chan[channel].publ->denali_phy;
++	denali_phy_params = timings->phy_regs.denali_phy;
++
++	/* switch index */
++	clrsetbits_le32(&denali_phy_params[896], 0x3 << 8, phy << 8);
++	writel(denali_phy_params[896], &denali_phy[896]);
++
++	/* phy_pll_ctrl_ca, phy_pll_ctrl */
++	writel(denali_phy_params[911], &denali_phy[911]);
++
++	/* phy_low_freq_sel */
++	clrsetbits_le32(&denali_phy[913], 0x1,
++			denali_phy_params[913] & 0x1);
++
++	/* phy_grp_slave_delay_x, phy_cslvl_dly_step */
++	writel(denali_phy_params[916], &denali_phy[916]);
++	writel(denali_phy_params[917], &denali_phy[917]);
++	writel(denali_phy_params[918], &denali_phy[918]);
++
++	/* phy_adrz_sw_wraddr_shift_x  */
++	writel(denali_phy_params[512], &denali_phy[512]);
++	clrsetbits_le32(&denali_phy[513], 0xffff,
++			denali_phy_params[513] & 0xffff);
++	writel(denali_phy_params[640], &denali_phy[640]);
++	clrsetbits_le32(&denali_phy[641], 0xffff,
++			denali_phy_params[641] & 0xffff);
++	writel(denali_phy_params[768], &denali_phy[768]);
++	clrsetbits_le32(&denali_phy[769], 0xffff,
++			denali_phy_params[769] & 0xffff);
++
++	writel(denali_phy_params[544], &denali_phy[544]);
++	writel(denali_phy_params[545], &denali_phy[545]);
++	writel(denali_phy_params[546], &denali_phy[546]);
++	writel(denali_phy_params[547], &denali_phy[547]);
++
++	writel(denali_phy_params[672], &denali_phy[672]);
++	writel(denali_phy_params[673], &denali_phy[673]);
++	writel(denali_phy_params[674], &denali_phy[674]);
++	writel(denali_phy_params[675], &denali_phy[675]);
++
++	writel(denali_phy_params[800], &denali_phy[800]);
++	writel(denali_phy_params[801], &denali_phy[801]);
++	writel(denali_phy_params[802], &denali_phy[802]);
++	writel(denali_phy_params[803], &denali_phy[803]);
++
++	/*
++	 * phy_adr_master_delay_start_x
++	 * phy_adr_master_delay_step_x
++	 * phy_adr_master_delay_wait_x
++	 */
++	writel(denali_phy_params[548], &denali_phy[548]);
++	writel(denali_phy_params[676], &denali_phy[676]);
++	writel(denali_phy_params[804], &denali_phy[804]);
++
++	/* phy_adr_calvl_dly_step_x */
++	writel(denali_phy_params[549], &denali_phy[549]);
++	writel(denali_phy_params[677], &denali_phy[677]);
++	writel(denali_phy_params[805], &denali_phy[805]);
++
++	/*
++	 * phy_clk_wrdm_slave_delay_x
++	 * phy_clk_wrdqz_slave_delay_x
++	 * phy_clk_wrdqs_slave_delay_x
++	 */
++	copy_to_reg((u32 *)&denali_phy[59], (u32 *)&denali_phy_params[59],
++		    (63 - 58) * 4);
++	copy_to_reg((u32 *)&denali_phy[187], (u32 *)&denali_phy_params[187],
++		    (191 - 186) * 4);
++	copy_to_reg((u32 *)&denali_phy[315], (u32 *)&denali_phy_params[315],
++		    (319 - 314) * 4);
++	copy_to_reg((u32 *)&denali_phy[443], (u32 *)&denali_phy_params[443],
++		    (447 - 442) * 4);
++
++	/*
++	 * phy_dqs_tsel_wr_timing_x 8bits denali_phy_84/212/340/468 offset_8
++	 * dqs_tsel_wr_end[7:4] add half cycle
++	 * phy_dq_tsel_wr_timing_x 8bits denali_phy_83/211/339/467 offset_8
++	 * dq_tsel_wr_end[7:4] add half cycle
++	 */
++	writel(denali_phy_params[83] + (0x10 << 16), &denali_phy[83]);
++	writel(denali_phy_params[84] + (0x10 << 8), &denali_phy[84]);
++	writel(denali_phy_params[85], &denali_phy[85]);
++
++	writel(denali_phy_params[211] + (0x10 << 16), &denali_phy[211]);
++	writel(denali_phy_params[212] + (0x10 << 8), &denali_phy[212]);
++	writel(denali_phy_params[213], &denali_phy[213]);
++
++	writel(denali_phy_params[339] + (0x10 << 16), &denali_phy[339]);
++	writel(denali_phy_params[340] + (0x10 << 8), &denali_phy[340]);
++	writel(denali_phy_params[341], &denali_phy[341]);
++
++	writel(denali_phy_params[467] + (0x10 << 16), &denali_phy[467]);
++	writel(denali_phy_params[468] + (0x10 << 8), &denali_phy[468]);
++	writel(denali_phy_params[469], &denali_phy[469]);
++
++	/*
++	 * phy_gtlvl_resp_wait_cnt_x
++	 * phy_gtlvl_dly_step_x
++	 * phy_wrlvl_resp_wait_cnt_x
++	 * phy_gtlvl_final_step_x
++	 * phy_gtlvl_back_step_x
++	 * phy_rdlvl_dly_step_x
++	 *
++	 * phy_master_delay_step_x
++	 * phy_master_delay_wait_x
++	 * phy_wrlvl_dly_step_x
++	 * phy_rptr_update_x
++	 * phy_wdqlvl_dly_step_x
++	 */
++	writel(denali_phy_params[87], &denali_phy[87]);
++	writel(denali_phy_params[88], &denali_phy[88]);
++	writel(denali_phy_params[89], &denali_phy[89]);
++	writel(denali_phy_params[90], &denali_phy[90]);
++
++	writel(denali_phy_params[215], &denali_phy[215]);
++	writel(denali_phy_params[216], &denali_phy[216]);
++	writel(denali_phy_params[217], &denali_phy[217]);
++	writel(denali_phy_params[218], &denali_phy[218]);
++
++	writel(denali_phy_params[343], &denali_phy[343]);
++	writel(denali_phy_params[344], &denali_phy[344]);
++	writel(denali_phy_params[345], &denali_phy[345]);
++	writel(denali_phy_params[346], &denali_phy[346]);
++
++	writel(denali_phy_params[471], &denali_phy[471]);
++	writel(denali_phy_params[472], &denali_phy[472]);
++	writel(denali_phy_params[473], &denali_phy[473]);
++	writel(denali_phy_params[474], &denali_phy[474]);
++
++	/*
++	 * phy_gtlvl_lat_adj_start_x
++	 * phy_gtlvl_rddqs_slv_dly_start_x
++	 * phy_rdlvl_rddqs_dq_slv_dly_start_x
++	 * phy_wdqlvl_dqdm_slv_dly_start_x
++	 */
++	writel(denali_phy_params[80], &denali_phy[80]);
++	writel(denali_phy_params[81], &denali_phy[81]);
++
++	writel(denali_phy_params[208], &denali_phy[208]);
++	writel(denali_phy_params[209], &denali_phy[209]);
++
++	writel(denali_phy_params[336], &denali_phy[336]);
++	writel(denali_phy_params[337], &denali_phy[337]);
++
++	writel(denali_phy_params[464], &denali_phy[464]);
++	writel(denali_phy_params[465], &denali_phy[465]);
++
++	/*
++	 * phy_master_delay_start_x
++	 * phy_sw_master_mode_x
++	 * phy_rddata_en_tsel_dly_x
++	 */
++	writel(denali_phy_params[86], &denali_phy[86]);
++	writel(denali_phy_params[214], &denali_phy[214]);
++	writel(denali_phy_params[342], &denali_phy[342]);
++	writel(denali_phy_params[470], &denali_phy[470]);
++
++	/*
++	 * phy_rddqz_slave_delay_x
++	 * phy_rddqs_dqz_fall_slave_delay_x
++	 * phy_rddqs_dqz_rise_slave_delay_x
++	 * phy_rddqs_dm_fall_slave_delay_x
++	 * phy_rddqs_dm_rise_slave_delay_x
++	 * phy_rddqs_gate_slave_delay_x
++	 * phy_wrlvl_delay_early_threshold_x
++	 * phy_write_path_lat_add_x
++	 * phy_rddqs_latency_adjust_x
++	 * phy_wrlvl_delay_period_threshold_x
++	 * phy_wrlvl_early_force_zero_x
++	 */
++	copy_to_reg((u32 *)&denali_phy[64], (u32 *)&denali_phy_params[64],
++		    (67 - 63) * 4);
++	clrsetbits_le32(&denali_phy[68], 0xfffffc00,
++			denali_phy_params[68] & 0xfffffc00);
++	copy_to_reg((u32 *)&denali_phy[69], (u32 *)&denali_phy_params[69],
++		    (79 - 68) * 4);
++	copy_to_reg((u32 *)&denali_phy[192], (u32 *)&denali_phy_params[192],
++		    (195 - 191) * 4);
++	clrsetbits_le32(&denali_phy[196], 0xfffffc00,
++			denali_phy_params[196] & 0xfffffc00);
++	copy_to_reg((u32 *)&denali_phy[197], (u32 *)&denali_phy_params[197],
++		    (207 - 196) * 4);
++	copy_to_reg((u32 *)&denali_phy[320], (u32 *)&denali_phy_params[320],
++		    (323 - 319) * 4);
++	clrsetbits_le32(&denali_phy[324], 0xfffffc00,
++			denali_phy_params[324] & 0xfffffc00);
++	copy_to_reg((u32 *)&denali_phy[325], (u32 *)&denali_phy_params[325],
++		    (335 - 324) * 4);
++
++	copy_to_reg((u32 *)&denali_phy[448], (u32 *)&denali_phy_params[448],
++		    (451 - 447) * 4);
++	clrsetbits_le32(&denali_phy[452], 0xfffffc00,
++			denali_phy_params[452] & 0xfffffc00);
++	copy_to_reg((u32 *)&denali_phy[453], (u32 *)&denali_phy_params[453],
++		    (463 - 452) * 4);
++
++	/* phy_two_cyc_preamble_x */
++	clrsetbits_le32(&denali_phy[7], 0x3 << 24,
++			denali_phy_params[7] & (0x3 << 24));
++	clrsetbits_le32(&denali_phy[135], 0x3 << 24,
++			denali_phy_params[135] & (0x3 << 24));
++	clrsetbits_le32(&denali_phy[263], 0x3 << 24,
++			denali_phy_params[263] & (0x3 << 24));
++	clrsetbits_le32(&denali_phy[391], 0x3 << 24,
++			denali_phy_params[391] & (0x3 << 24));
++
++	/* speed */
++	if (timings->base.ddr_freq < 400 * MHz)
++		speed = 0x0;
++	else if (timings->base.ddr_freq < 800 * MHz)
++		speed = 0x1;
++	else if (timings->base.ddr_freq < 1200 * MHz)
++		speed = 0x2;
++
++	/* phy_924 phy_pad_fdbk_drive */
++	clrsetbits_le32(&denali_phy[924], 0x3 << 21, speed << 21);
++	/* phy_926 phy_pad_data_drive */
++	clrsetbits_le32(&denali_phy[926], 0x3 << 9, speed << 9);
++	/* phy_927 phy_pad_dqs_drive */
++	clrsetbits_le32(&denali_phy[927], 0x3 << 9, speed << 9);
++	/* phy_928 phy_pad_addr_drive */
++	clrsetbits_le32(&denali_phy[928], 0x3 << 17, speed << 17);
++	/* phy_929 phy_pad_clk_drive */
++	clrsetbits_le32(&denali_phy[929], 0x3 << 17, speed << 17);
++	/* phy_935 phy_pad_cke_drive */
++	clrsetbits_le32(&denali_phy[935], 0x3 << 17, speed << 17);
++	/* phy_937 phy_pad_rst_drive */
++	clrsetbits_le32(&denali_phy[937], 0x3 << 17, speed << 17);
++	/* phy_939 phy_pad_cs_drive */
++	clrsetbits_le32(&denali_phy[939], 0x3 << 17, speed << 17);
++
++	read_mr(dram->chan[channel].pctl, 1, 5, &mr5);
++	set_ds_odt(&dram->chan[channel], timings, true, mr5);
++
++	/*
++	 * if phy_sw_master_mode_x not bypass mode,
++	 * clear phy_slice_pwr_rdc_disable.
++	 * note: need use timings, not ddr_publ_regs
++	 */
++	if (!((denali_phy_params[86] >> 8) & (1 << 2))) {
++		clrbits_le32(&denali_phy[10], 1 << 16);
++		clrbits_le32(&denali_phy[138], 1 << 16);
++		clrbits_le32(&denali_phy[266], 1 << 16);
++		clrbits_le32(&denali_phy[394], 1 << 16);
++	}
++}
++
++static void lpddr4_set_phy(struct dram_info *dram,
++			   struct rk3399_sdram_params *params, u32 phy,
++			   struct rk3399_sdram_params *timings)
++{
++	u32 channel;
++
++	for (channel = 0; channel < 2; channel++)
++		lpddr4_copy_phy(dram, params, phy, timings, channel);
++}
++
++static int lpddr4_set_ctl(struct dram_info *dram,
++			  struct rk3399_sdram_params *params, u32 ctl, u32 hz)
++{
++	u32 channel;
++	int ret_clk, ret[2];
++
++	/* cci idle req stall */
++	writel(0x70007, &dram->grf->soc_con0);
++
++	/* enable all clk */
++	setbits_le32(&dram->pmu->pmu_noc_auto_ena, (0x3 << 7));
++
++	/* idle */
++	setbits_le32(&dram->pmu->pmu_bus_idle_req, (0x3 << 18));
++	while ((readl(&dram->pmu->pmu_bus_idle_st) & (0x3 << 18))
++	       != (0x3 << 18))
++		;
++
++	/* change freq */
++	writel((((0x3 << 4) | (1 << 2) | 1) << 16) |
++		(ctl << 4) | (1 << 2) | 1, &dram->cic->cic_ctrl0);
++	while (!(readl(&dram->cic->cic_status0) & (1 << 2)))
++		;
++
++	ret_clk = clk_set_rate(&dram->ddr_clk, hz);
++	if (ret_clk < 0) {
++		printf("%s clk set failed %d\n", __func__, ret_clk);
++		return ret_clk;
++	}
++
++	writel(0x20002, &dram->cic->cic_ctrl0);
++	while (!(readl(&dram->cic->cic_status0) & (1 << 0)))
++		;
++
++	/* deidle */
++	clrbits_le32(&dram->pmu->pmu_bus_idle_req, (0x3 << 18));
++	while (readl(&dram->pmu->pmu_bus_idle_st) & (0x3 << 18))
++		;
++
++	/* clear enable all clk */
++	clrbits_le32(&dram->pmu->pmu_noc_auto_ena, (0x3 << 7));
++
++	/* lpddr4 ctl2 can not do training, all training will fail */
++	if (!(params->base.dramtype == LPDDR4 && ctl == 2)) {
++		for (channel = 0; channel < 2; channel++) {
++			if (!(params->ch[channel].cap_info.col))
++				continue;
++			ret[channel] = data_training(dram, channel, params,
++						     PI_FULL_TRAINING);
 +		}
-+	},
-+	{
-+		.ddr_freq = 800 * MHz,
-+		.dramtype = LPDDR4,
-+		.num_channels = 2,
-+		.stride = 13,
-+		.odt = 1,
-+	},
-+	{
-+		{
-+			0x00000b00,	/* DENALI_CTL_00_DATA */
-+			0x00000000,	/* DENALI_CTL_01_DATA */
-+			0x00000000,	/* DENALI_CTL_02_DATA */
-+			0x00000000,	/* DENALI_CTL_03_DATA */
-+			0x00000000,	/* DENALI_CTL_04_DATA */
-+			0x00013880,	/* DENALI_CTL_05_DATA */
-+			0x000c3500,	/* DENALI_CTL_06_DATA */
-+			0x00000005,	/* DENALI_CTL_07_DATA */
-+			0x00000320,	/* DENALI_CTL_08_DATA */
-+			0x00027100,	/* DENALI_CTL_09_DATA */
-+			0x00186a00,	/* DENALI_CTL_10_DATA */
-+			0x00000005,	/* DENALI_CTL_11_DATA */
-+			0x00000640,	/* DENALI_CTL_12_DATA */
-+			0x00002710,	/* DENALI_CTL_13_DATA */
-+			0x000186a0,	/* DENALI_CTL_14_DATA */
-+			0x00000005,	/* DENALI_CTL_15_DATA */
-+			0x01000064,	/* DENALI_CTL_16_DATA */
-+			0x00000000,	/* DENALI_CTL_17_DATA */
-+			0x02020101,	/* DENALI_CTL_18_DATA */
-+			0x00000102,	/* DENALI_CTL_19_DATA */
-+			0x00000050,	/* DENALI_CTL_20_DATA */
-+			0x000000c8,	/* DENALI_CTL_21_DATA */
-+			0x00000000,	/* DENALI_CTL_22_DATA */
-+			0x06140000,	/* DENALI_CTL_23_DATA */
-+			0x00081c00,	/* DENALI_CTL_24_DATA */
-+			0x0400040c,	/* DENALI_CTL_25_DATA */
-+			0x19042008,	/* DENALI_CTL_26_DATA */
-+			0x10080a11,	/* DENALI_CTL_27_DATA */
-+			0x22310800,	/* DENALI_CTL_28_DATA */
-+			0x00200f0a,	/* DENALI_CTL_29_DATA */
-+			0x0a030704,	/* DENALI_CTL_30_DATA */
-+			0x08000204,	/* DENALI_CTL_31_DATA */
-+			0x00000a0a,	/* DENALI_CTL_32_DATA */
-+			0x04006db0,	/* DENALI_CTL_33_DATA */
-+			0x0a0a0804,	/* DENALI_CTL_34_DATA */
-+			0x0600db60,	/* DENALI_CTL_35_DATA */
-+			0x0a0a0806,	/* DENALI_CTL_36_DATA */
-+			0x04000db6,	/* DENALI_CTL_37_DATA */
-+			0x02030404,	/* DENALI_CTL_38_DATA */
-+			0x0f0a0800,	/* DENALI_CTL_39_DATA */
-+			0x08040411,	/* DENALI_CTL_40_DATA */
-+			0x1400640a,	/* DENALI_CTL_41_DATA */
-+			0x02010a0a,	/* DENALI_CTL_42_DATA */
-+			0x00010001,	/* DENALI_CTL_43_DATA */
-+			0x04082012,	/* DENALI_CTL_44_DATA */
-+			0x00041109,	/* DENALI_CTL_45_DATA */
-+			0x00000000,	/* DENALI_CTL_46_DATA */
-+			0x03010000,	/* DENALI_CTL_47_DATA */
-+			0x06100034,	/* DENALI_CTL_48_DATA */
-+			0x0c280068,	/* DENALI_CTL_49_DATA */
-+			0x00bb0007,	/* DENALI_CTL_50_DATA */
-+			0x00000000,	/* DENALI_CTL_51_DATA */
-+			0x00060003,	/* DENALI_CTL_52_DATA */
-+			0x000a0003,	/* DENALI_CTL_53_DATA */
-+			0x000a0014,	/* DENALI_CTL_54_DATA */
-+			0x01000000,	/* DENALI_CTL_55_DATA */
-+			0x030a0000,	/* DENALI_CTL_56_DATA */
-+			0x0c000002,	/* DENALI_CTL_57_DATA */
-+			0x00000103,	/* DENALI_CTL_58_DATA */
-+			0x0003030a,	/* DENALI_CTL_59_DATA */
-+			0x00060037,	/* DENALI_CTL_60_DATA */
-+			0x0003006e,	/* DENALI_CTL_61_DATA */
-+			0x05050007,	/* DENALI_CTL_62_DATA */
-+			0x03020605,	/* DENALI_CTL_63_DATA */
-+			0x06050301,	/* DENALI_CTL_64_DATA */
-+			0x06020c05,	/* DENALI_CTL_65_DATA */
-+			0x05050302,	/* DENALI_CTL_66_DATA */
-+			0x03020305,	/* DENALI_CTL_67_DATA */
-+			0x00000301,	/* DENALI_CTL_68_DATA */
-+			0x00000301,	/* DENALI_CTL_69_DATA */
-+			0x00000001,	/* DENALI_CTL_70_DATA */
-+			0x00000000,	/* DENALI_CTL_71_DATA */
-+			0x00000000,	/* DENALI_CTL_72_DATA */
-+			0x01000000,	/* DENALI_CTL_73_DATA */
-+			0x80104002,	/* DENALI_CTL_74_DATA */
-+			0x00040003,	/* DENALI_CTL_75_DATA */
-+			0x00040005,	/* DENALI_CTL_76_DATA */
-+			0x00030000,	/* DENALI_CTL_77_DATA */
-+			0x00050004,	/* DENALI_CTL_78_DATA */
-+			0x00000004,	/* DENALI_CTL_79_DATA */
-+			0x00040003,	/* DENALI_CTL_80_DATA */
-+			0x00040005,	/* DENALI_CTL_81_DATA */
-+			0x18400000,	/* DENALI_CTL_82_DATA */
-+			0x00000c20,	/* DENALI_CTL_83_DATA */
-+			0x185030a0,	/* DENALI_CTL_84_DATA */
-+			0x02ec0000,	/* DENALI_CTL_85_DATA */
-+			0x00000176,	/* DENALI_CTL_86_DATA */
-+			0x00000000,	/* DENALI_CTL_87_DATA */
-+			0x00000000,	/* DENALI_CTL_88_DATA */
-+			0x00000000,	/* DENALI_CTL_89_DATA */
-+			0x00000000,	/* DENALI_CTL_90_DATA */
-+			0x00000000,	/* DENALI_CTL_91_DATA */
-+			0x06030300,	/* DENALI_CTL_92_DATA */
-+			0x00030303,	/* DENALI_CTL_93_DATA */
-+			0x02030200,	/* DENALI_CTL_94_DATA */
-+			0x00040703,	/* DENALI_CTL_95_DATA */
-+			0x03020302,	/* DENALI_CTL_96_DATA */
-+			0x02000407,	/* DENALI_CTL_97_DATA */
-+			0x07030203,	/* DENALI_CTL_98_DATA */
-+			0x00030f04,	/* DENALI_CTL_99_DATA */
-+			0x00070004,	/* DENALI_CTL_100_DATA */
-+			0x00000000,	/* DENALI_CTL_101_DATA */
-+			0x00000000,	/* DENALI_CTL_102_DATA */
-+			0x00000000,	/* DENALI_CTL_103_DATA */
-+			0x00000000,	/* DENALI_CTL_104_DATA */
-+			0x00000000,	/* DENALI_CTL_105_DATA */
-+			0x00000000,	/* DENALI_CTL_106_DATA */
-+			0x00000000,	/* DENALI_CTL_107_DATA */
-+			0x00010000,	/* DENALI_CTL_108_DATA */
-+			0x20040020,	/* DENALI_CTL_109_DATA */
-+			0x00200400,	/* DENALI_CTL_110_DATA */
-+			0x01000400,	/* DENALI_CTL_111_DATA */
-+			0x00000b80,	/* DENALI_CTL_112_DATA */
-+			0x00000000,	/* DENALI_CTL_113_DATA */
-+			0x00000001,	/* DENALI_CTL_114_DATA */
-+			0x00000002,	/* DENALI_CTL_115_DATA */
-+			0x0000000e,	/* DENALI_CTL_116_DATA */
-+			0x00000000,	/* DENALI_CTL_117_DATA */
-+			0x00000000,	/* DENALI_CTL_118_DATA */
-+			0x00000000,	/* DENALI_CTL_119_DATA */
-+			0x00000000,	/* DENALI_CTL_120_DATA */
-+			0x00000000,	/* DENALI_CTL_121_DATA */
-+			0x00500000,	/* DENALI_CTL_122_DATA */
-+			0x00640028,	/* DENALI_CTL_123_DATA */
-+			0x00640404,	/* DENALI_CTL_124_DATA */
-+			0x005000a0,	/* DENALI_CTL_125_DATA */
-+			0x060600c8,	/* DENALI_CTL_126_DATA */
-+			0x000a00c8,	/* DENALI_CTL_127_DATA */
-+			0x000d0005,	/* DENALI_CTL_128_DATA */
-+			0x000d0404,	/* DENALI_CTL_129_DATA */
-+			0x00000000,	/* DENALI_CTL_130_DATA */
-+			0x00000000,	/* DENALI_CTL_131_DATA */
-+			0x00000000,	/* DENALI_CTL_132_DATA */
-+			0x001400a3,	/* DENALI_CTL_133_DATA */
-+			0x00e30009,	/* DENALI_CTL_134_DATA */
-+			0x00120024,	/* DENALI_CTL_135_DATA */
-+			0x00040063,	/* DENALI_CTL_136_DATA */
-+			0x00000000,	/* DENALI_CTL_137_DATA */
-+			0x00310031,	/* DENALI_CTL_138_DATA */
-+			0x00000031,	/* DENALI_CTL_139_DATA */
-+			0x004d0000,	/* DENALI_CTL_140_DATA */
-+			0x004d004d,	/* DENALI_CTL_141_DATA */
-+			0x004d0000,	/* DENALI_CTL_142_DATA */
-+			0x004d004d,	/* DENALI_CTL_143_DATA */
-+			0x00010101,	/* DENALI_CTL_144_DATA */
-+			0x00000000,	/* DENALI_CTL_145_DATA */
-+			0x00000000,	/* DENALI_CTL_146_DATA */
-+			0x001400a3,	/* DENALI_CTL_147_DATA */
-+			0x00e30009,	/* DENALI_CTL_148_DATA */
-+			0x00120024,	/* DENALI_CTL_149_DATA */
-+			0x00040063,	/* DENALI_CTL_150_DATA */
-+			0x00000000,	/* DENALI_CTL_151_DATA */
-+			0x00310031,	/* DENALI_CTL_152_DATA */
-+			0x00000031,	/* DENALI_CTL_153_DATA */
-+			0x004d0000,	/* DENALI_CTL_154_DATA */
-+			0x004d004d,	/* DENALI_CTL_155_DATA */
-+			0x004d0000,	/* DENALI_CTL_156_DATA */
-+			0x004d004d,	/* DENALI_CTL_157_DATA */
-+			0x00010101,	/* DENALI_CTL_158_DATA */
-+			0x00000000,	/* DENALI_CTL_159_DATA */
-+			0x00000000,	/* DENALI_CTL_160_DATA */
-+			0x00000000,	/* DENALI_CTL_161_DATA */
-+			0x00000001,	/* DENALI_CTL_162_DATA */
-+			0x00000000,	/* DENALI_CTL_163_DATA */
-+			0x18151100,	/* DENALI_CTL_164_DATA */
-+			0x0000000c,	/* DENALI_CTL_165_DATA */
-+			0x00000000,	/* DENALI_CTL_166_DATA */
-+			0x00000000,	/* DENALI_CTL_167_DATA */
-+			0x00000000,	/* DENALI_CTL_168_DATA */
-+			0x00000000,	/* DENALI_CTL_169_DATA */
-+			0x00000000,	/* DENALI_CTL_170_DATA */
-+			0x00000000,	/* DENALI_CTL_171_DATA */
-+			0x00000000,	/* DENALI_CTL_172_DATA */
-+			0x00000000,	/* DENALI_CTL_173_DATA */
-+			0x00000000,	/* DENALI_CTL_174_DATA */
-+			0x00000000,	/* DENALI_CTL_175_DATA */
-+			0x00000000,	/* DENALI_CTL_176_DATA */
-+			0x00000000,	/* DENALI_CTL_177_DATA */
-+			0x00000000,	/* DENALI_CTL_178_DATA */
-+			0x00020003,	/* DENALI_CTL_179_DATA */
-+			0x00400100,	/* DENALI_CTL_180_DATA */
-+			0x000c0190,	/* DENALI_CTL_181_DATA */
-+			0x01000200,	/* DENALI_CTL_182_DATA */
-+			0x03200040,	/* DENALI_CTL_183_DATA */
-+			0x00020018,	/* DENALI_CTL_184_DATA */
-+			0x00400100,	/* DENALI_CTL_185_DATA */
-+			0x00080032,	/* DENALI_CTL_186_DATA */
-+			0x00140000,	/* DENALI_CTL_187_DATA */
-+			0x00030028,	/* DENALI_CTL_188_DATA */
-+			0x01010100,	/* DENALI_CTL_189_DATA */
-+			0x02000202,	/* DENALI_CTL_190_DATA */
-+			0x0b000002,	/* DENALI_CTL_191_DATA */
-+			0x01000f0f,	/* DENALI_CTL_192_DATA */
-+			0x00000000,	/* DENALI_CTL_193_DATA */
-+			0x00000000,	/* DENALI_CTL_194_DATA */
-+			0x00010003,	/* DENALI_CTL_195_DATA */
-+			0x00000c03,	/* DENALI_CTL_196_DATA */
-+			0x00040101,	/* DENALI_CTL_197_DATA */
-+			0x04010100,	/* DENALI_CTL_198_DATA */
-+			0x01000000,	/* DENALI_CTL_199_DATA */
-+			0x02010000,	/* DENALI_CTL_200_DATA */
-+			0x00000001,	/* DENALI_CTL_201_DATA */
-+			0x00000000,	/* DENALI_CTL_202_DATA */
-+			0x00000000,	/* DENALI_CTL_203_DATA */
-+			0x00000000,	/* DENALI_CTL_204_DATA */
-+			0x00000000,	/* DENALI_CTL_205_DATA */
-+			0x00000000,	/* DENALI_CTL_206_DATA */
-+			0x00000000,	/* DENALI_CTL_207_DATA */
-+			0x00000000,	/* DENALI_CTL_208_DATA */
-+			0x00000000,	/* DENALI_CTL_209_DATA */
-+			0x00000000,	/* DENALI_CTL_210_DATA */
-+			0x00010000,	/* DENALI_CTL_211_DATA */
-+			0x00000001,	/* DENALI_CTL_212_DATA */
-+			0x01010001,	/* DENALI_CTL_213_DATA */
-+			0x05040001,	/* DENALI_CTL_214_DATA */
-+			0x040a0703,	/* DENALI_CTL_215_DATA */
-+			0x02080808,	/* DENALI_CTL_216_DATA */
-+			0x020e000a,	/* DENALI_CTL_217_DATA */
-+			0x020f010b,	/* DENALI_CTL_218_DATA */
-+			0x000d0008,	/* DENALI_CTL_219_DATA */
-+			0x00080b0a,	/* DENALI_CTL_220_DATA */
-+			0x03000200,	/* DENALI_CTL_221_DATA */
-+			0x00000100,	/* DENALI_CTL_222_DATA */
-+			0x00000000,	/* DENALI_CTL_223_DATA */
-+			0x00000000,	/* DENALI_CTL_224_DATA */
-+			0x0d000001,	/* DENALI_CTL_225_DATA */
-+			0x00000028,	/* DENALI_CTL_226_DATA */
-+			0x00010000,	/* DENALI_CTL_227_DATA */
-+			0x00000003,	/* DENALI_CTL_228_DATA */
-+			0x00000000,	/* DENALI_CTL_229_DATA */
-+			0x00000000,	/* DENALI_CTL_230_DATA */
-+			0x00000000,	/* DENALI_CTL_231_DATA */
-+			0x00000000,	/* DENALI_CTL_232_DATA */
-+			0x00000000,	/* DENALI_CTL_233_DATA */
-+			0x00000000,	/* DENALI_CTL_234_DATA */
-+			0x00000000,	/* DENALI_CTL_235_DATA */
-+			0x00000000,	/* DENALI_CTL_236_DATA */
-+			0x00010100,	/* DENALI_CTL_237_DATA */
-+			0x01000000,	/* DENALI_CTL_238_DATA */
-+			0x00000001,	/* DENALI_CTL_239_DATA */
-+			0x00000303,	/* DENALI_CTL_240_DATA */
-+			0x00000000,	/* DENALI_CTL_241_DATA */
-+			0x00000000,	/* DENALI_CTL_242_DATA */
-+			0x00000000,	/* DENALI_CTL_243_DATA */
-+			0x00000000,	/* DENALI_CTL_244_DATA */
-+			0x00000000,	/* DENALI_CTL_245_DATA */
-+			0x00000000,	/* DENALI_CTL_246_DATA */
-+			0x00000000,	/* DENALI_CTL_247_DATA */
-+			0x00000000,	/* DENALI_CTL_248_DATA */
-+			0x00000000,	/* DENALI_CTL_249_DATA */
-+			0x00000000,	/* DENALI_CTL_250_DATA */
-+			0x00000000,	/* DENALI_CTL_251_DATA */
-+			0x00000000,	/* DENALI_CTL_252_DATA */
-+			0x00000000,	/* DENALI_CTL_253_DATA */
-+			0x00000000,	/* DENALI_CTL_254_DATA */
-+			0x00000000,	/* DENALI_CTL_255_DATA */
-+			0x000556aa,	/* DENALI_CTL_256_DATA */
-+			0x000aaaaa,	/* DENALI_CTL_257_DATA */
-+			0x000aa955,	/* DENALI_CTL_258_DATA */
-+			0x00055555,	/* DENALI_CTL_259_DATA */
-+			0x000b3133,	/* DENALI_CTL_260_DATA */
-+			0x0004cd33,	/* DENALI_CTL_261_DATA */
-+			0x0004cecc,	/* DENALI_CTL_262_DATA */
-+			0x000b32cc,	/* DENALI_CTL_263_DATA */
-+			0x00010300,	/* DENALI_CTL_264_DATA */
-+			0x03000100,	/* DENALI_CTL_265_DATA */
-+			0x00000000,	/* DENALI_CTL_266_DATA */
-+			0x00000000,	/* DENALI_CTL_267_DATA */
-+			0x00000000,	/* DENALI_CTL_268_DATA */
-+			0x00000000,	/* DENALI_CTL_269_DATA */
-+			0x00000000,	/* DENALI_CTL_270_DATA */
-+			0x00000000,	/* DENALI_CTL_271_DATA */
-+			0x00000000,	/* DENALI_CTL_272_DATA */
-+			0x00000000,	/* DENALI_CTL_273_DATA */
-+			0x00ffff00,	/* DENALI_CTL_274_DATA */
-+			0x1a160000,	/* DENALI_CTL_275_DATA */
-+			0x08000012,	/* DENALI_CTL_276_DATA */
-+			0x00000c20,	/* DENALI_CTL_277_DATA */
-+			0x00000200,	/* DENALI_CTL_278_DATA */
-+			0x00000200,	/* DENALI_CTL_279_DATA */
-+			0x00000200,	/* DENALI_CTL_280_DATA */
-+			0x00000200,	/* DENALI_CTL_281_DATA */
-+			0x00000c20,	/* DENALI_CTL_282_DATA */
-+			0x00007940,	/* DENALI_CTL_283_DATA */
-+			0x18500409,	/* DENALI_CTL_284_DATA */
-+			0x00000200,	/* DENALI_CTL_285_DATA */
-+			0x00000200,	/* DENALI_CTL_286_DATA */
-+			0x00000200,	/* DENALI_CTL_287_DATA */
-+			0x00000200,	/* DENALI_CTL_288_DATA */
-+			0x00001850,	/* DENALI_CTL_289_DATA */
-+			0x0000f320,	/* DENALI_CTL_290_DATA */
-+			0x0176060c,	/* DENALI_CTL_291_DATA */
-+			0x00000200,	/* DENALI_CTL_292_DATA */
-+			0x00000200,	/* DENALI_CTL_293_DATA */
-+			0x00000200,	/* DENALI_CTL_294_DATA */
-+			0x00000200,	/* DENALI_CTL_295_DATA */
-+			0x00000176,	/* DENALI_CTL_296_DATA */
-+			0x00000e9c,	/* DENALI_CTL_297_DATA */
-+			0x02020205,	/* DENALI_CTL_298_DATA */
-+			0x03030202,	/* DENALI_CTL_299_DATA */
-+			0x00000018,	/* DENALI_CTL_300_DATA */
-+			0x00000000,	/* DENALI_CTL_301_DATA */
-+			0x00000000,	/* DENALI_CTL_302_DATA */
-+			0x00001403,	/* DENALI_CTL_303_DATA */
-+			0x00000000,	/* DENALI_CTL_304_DATA */
-+			0x00000000,	/* DENALI_CTL_305_DATA */
-+			0x00000000,	/* DENALI_CTL_306_DATA */
-+			0x00030000,	/* DENALI_CTL_307_DATA */
-+			0x000a001c,	/* DENALI_CTL_308_DATA */
-+			0x000e0020,	/* DENALI_CTL_309_DATA */
-+			0x00060018,	/* DENALI_CTL_310_DATA */
-+			0x00000000,	/* DENALI_CTL_311_DATA */
-+			0x00000000,	/* DENALI_CTL_312_DATA */
-+			0x02000000,	/* DENALI_CTL_313_DATA */
-+			0x00090305,	/* DENALI_CTL_314_DATA */
-+			0x00050101,	/* DENALI_CTL_315_DATA */
-+			0x00000000,	/* DENALI_CTL_316_DATA */
-+			0x00000000,	/* DENALI_CTL_317_DATA */
-+			0x00000000,	/* DENALI_CTL_318_DATA */
-+			0x00000000,	/* DENALI_CTL_319_DATA */
-+			0x00000000,	/* DENALI_CTL_320_DATA */
-+			0x00000000,	/* DENALI_CTL_321_DATA */
-+			0x00000000,	/* DENALI_CTL_322_DATA */
-+			0x00000000,	/* DENALI_CTL_323_DATA */
-+			0x01000001,	/* DENALI_CTL_324_DATA */
-+			0x01010101,	/* DENALI_CTL_325_DATA */
-+			0x01000101,	/* DENALI_CTL_326_DATA */
-+			0x01000100,	/* DENALI_CTL_327_DATA */
-+			0x00010001,	/* DENALI_CTL_328_DATA */
-+			0x00010002,	/* DENALI_CTL_329_DATA */
-+			0x00020100,	/* DENALI_CTL_330_DATA */
-+			0x00000002	/* DENALI_CTL_331_DATA */
++		for (channel = 0; channel < 2; channel++) {
++			if (!(params->ch[channel].cap_info.col))
++				continue;
++			if (ret[channel])
++				printf("%s: channel %d training failed!\n",
++				       __func__, channel);
++			else
++				debug("%s: channel %d training pass\n",
++				      __func__, channel);
 +		}
-+	},
-+	{
-+		{
-+			0x00000b00,	/* DENALI_PI_00_DATA */
-+			0x00000000,	/* DENALI_PI_01_DATA */
-+			0x000002ec,	/* DENALI_PI_02_DATA */
-+			0x00000176,	/* DENALI_PI_03_DATA */
-+			0x000030a0,	/* DENALI_PI_04_DATA */
-+			0x00001850,	/* DENALI_PI_05_DATA */
-+			0x00001840,	/* DENALI_PI_06_DATA */
-+			0x01760c20,	/* DENALI_PI_07_DATA */
-+			0x00000200,	/* DENALI_PI_08_DATA */
-+			0x00000200,	/* DENALI_PI_09_DATA */
-+			0x00000200,	/* DENALI_PI_10_DATA */
-+			0x00000200,	/* DENALI_PI_11_DATA */
-+			0x00001850,	/* DENALI_PI_12_DATA */
-+			0x00000200,	/* DENALI_PI_13_DATA */
-+			0x00000200,	/* DENALI_PI_14_DATA */
-+			0x00000200,	/* DENALI_PI_15_DATA */
-+			0x00000200,	/* DENALI_PI_16_DATA */
-+			0x00000c20,	/* DENALI_PI_17_DATA */
-+			0x00000200,	/* DENALI_PI_18_DATA */
-+			0x00000200,	/* DENALI_PI_19_DATA */
-+			0x00000200,	/* DENALI_PI_20_DATA */
-+			0x00000200,	/* DENALI_PI_21_DATA */
-+			0x00010000,	/* DENALI_PI_22_DATA */
-+			0x00000007,	/* DENALI_PI_23_DATA */
-+			0x01000001,	/* DENALI_PI_24_DATA */
-+			0x00000000,	/* DENALI_PI_25_DATA */
-+			0x3fffffff,	/* DENALI_PI_26_DATA */
-+			0x00000000,	/* DENALI_PI_27_DATA */
-+			0x00000000,	/* DENALI_PI_28_DATA */
-+			0x00000000,	/* DENALI_PI_29_DATA */
-+			0x00000000,	/* DENALI_PI_30_DATA */
-+			0x00000000,	/* DENALI_PI_31_DATA */
-+			0x00000000,	/* DENALI_PI_32_DATA */
-+			0x00000000,	/* DENALI_PI_33_DATA */
-+			0x00000000,	/* DENALI_PI_34_DATA */
-+			0x00000000,	/* DENALI_PI_35_DATA */
-+			0x00000000,	/* DENALI_PI_36_DATA */
-+			0x00000000,	/* DENALI_PI_37_DATA */
-+			0x00000000,	/* DENALI_PI_38_DATA */
-+			0x00000000,	/* DENALI_PI_39_DATA */
-+			0x00000000,	/* DENALI_PI_40_DATA */
-+			0x0f000101,	/* DENALI_PI_41_DATA */
-+			0x082b3223,	/* DENALI_PI_42_DATA */
-+			0x080c0004,	/* DENALI_PI_43_DATA */
-+			0x00061c00,	/* DENALI_PI_44_DATA */
-+			0x00000214,	/* DENALI_PI_45_DATA */
-+			0x00bb0007,	/* DENALI_PI_46_DATA */
-+			0x0c280068,	/* DENALI_PI_47_DATA */
-+			0x06100034,	/* DENALI_PI_48_DATA */
-+			0x00000500,	/* DENALI_PI_49_DATA */
-+			0x00000000,	/* DENALI_PI_50_DATA */
-+			0x00000000,	/* DENALI_PI_51_DATA */
-+			0x00000000,	/* DENALI_PI_52_DATA */
-+			0x00000000,	/* DENALI_PI_53_DATA */
-+			0x00000000,	/* DENALI_PI_54_DATA */
-+			0x00000000,	/* DENALI_PI_55_DATA */
-+			0x00000000,	/* DENALI_PI_56_DATA */
-+			0x00000000,	/* DENALI_PI_57_DATA */
-+			0x04040100,	/* DENALI_PI_58_DATA */
-+			0x0a000004,	/* DENALI_PI_59_DATA */
-+			0x00000128,	/* DENALI_PI_60_DATA */
-+			0x00000000,	/* DENALI_PI_61_DATA */
-+			0x0003000f,	/* DENALI_PI_62_DATA */
-+			0x00000018,	/* DENALI_PI_63_DATA */
-+			0x00000000,	/* DENALI_PI_64_DATA */
-+			0x00000000,	/* DENALI_PI_65_DATA */
-+			0x00060002,	/* DENALI_PI_66_DATA */
-+			0x00010001,	/* DENALI_PI_67_DATA */
-+			0x00000101,	/* DENALI_PI_68_DATA */
-+			0x00020001,	/* DENALI_PI_69_DATA */
-+			0x00080004,	/* DENALI_PI_70_DATA */
-+			0x00000000,	/* DENALI_PI_71_DATA */
-+			0x05030000,	/* DENALI_PI_72_DATA */
-+			0x070a0404,	/* DENALI_PI_73_DATA */
-+			0x00000000,	/* DENALI_PI_74_DATA */
-+			0x00000000,	/* DENALI_PI_75_DATA */
-+			0x00000000,	/* DENALI_PI_76_DATA */
-+			0x000f0f00,	/* DENALI_PI_77_DATA */
-+			0x0000001e,	/* DENALI_PI_78_DATA */
-+			0x00000000,	/* DENALI_PI_79_DATA */
-+			0x01010300,	/* DENALI_PI_80_DATA */
-+			0x00000000,	/* DENALI_PI_81_DATA */
-+			0x00000000,	/* DENALI_PI_82_DATA */
-+			0x01000000,	/* DENALI_PI_83_DATA */
-+			0x00000101,	/* DENALI_PI_84_DATA */
-+			0x55555a5a,	/* DENALI_PI_85_DATA */
-+			0x55555a5a,	/* DENALI_PI_86_DATA */
-+			0x55555a5a,	/* DENALI_PI_87_DATA */
-+			0x55555a5a,	/* DENALI_PI_88_DATA */
-+			0x0c050001,	/* DENALI_PI_89_DATA */
-+			0x06020009,	/* DENALI_PI_90_DATA */
-+			0x00010004,	/* DENALI_PI_91_DATA */
-+			0x00000203,	/* DENALI_PI_92_DATA */
-+			0x00030000,	/* DENALI_PI_93_DATA */
-+			0x170f0000,	/* DENALI_PI_94_DATA */
-+			0x00060018,	/* DENALI_PI_95_DATA */
-+			0x000e0020,	/* DENALI_PI_96_DATA */
-+			0x000a001c,	/* DENALI_PI_97_DATA */
-+			0x00000000,	/* DENALI_PI_98_DATA */
-+			0x00000000,	/* DENALI_PI_99_DATA */
-+			0x00000100,	/* DENALI_PI_100_DATA */
-+			0x140a0000,	/* DENALI_PI_101_DATA */
-+			0x000d010a,	/* DENALI_PI_102_DATA */
-+			0x0100c802,	/* DENALI_PI_103_DATA */
-+			0x010a0064,	/* DENALI_PI_104_DATA */
-+			0x000e0100,	/* DENALI_PI_105_DATA */
-+			0x0100000e,	/* DENALI_PI_106_DATA */
-+			0x00c900c9,	/* DENALI_PI_107_DATA */
-+			0x00650100,	/* DENALI_PI_108_DATA */
-+			0x1e1a0065,	/* DENALI_PI_109_DATA */
-+			0x10010204,	/* DENALI_PI_110_DATA */
-+			0x06070605,	/* DENALI_PI_111_DATA */
-+			0x20000202,	/* DENALI_PI_112_DATA */
-+			0x00201000,	/* DENALI_PI_113_DATA */
-+			0x00201000,	/* DENALI_PI_114_DATA */
-+			0x04041000,	/* DENALI_PI_115_DATA */
-+			0x10020100,	/* DENALI_PI_116_DATA */
-+			0x0003010c,	/* DENALI_PI_117_DATA */
-+			0x004b004a,	/* DENALI_PI_118_DATA */
-+			0x1a0f0000,	/* DENALI_PI_119_DATA */
-+			0x0102041e,	/* DENALI_PI_120_DATA */
-+			0x34000000,	/* DENALI_PI_121_DATA */
-+			0x00000000,	/* DENALI_PI_122_DATA */
-+			0x00000000,	/* DENALI_PI_123_DATA */
-+			0x00010000,	/* DENALI_PI_124_DATA */
-+			0x00000400,	/* DENALI_PI_125_DATA */
-+			0x00310000,	/* DENALI_PI_126_DATA */
-+			0x004d4d00,	/* DENALI_PI_127_DATA */
-+			0x00120024,	/* DENALI_PI_128_DATA */
-+			0x4d000031,	/* DENALI_PI_129_DATA */
-+			0x0000144d,	/* DENALI_PI_130_DATA */
-+			0x00310009,	/* DENALI_PI_131_DATA */
-+			0x004d4d00,	/* DENALI_PI_132_DATA */
-+			0x00000004,	/* DENALI_PI_133_DATA */
-+			0x4d000031,	/* DENALI_PI_134_DATA */
-+			0x0000244d,	/* DENALI_PI_135_DATA */
-+			0x00310012,	/* DENALI_PI_136_DATA */
-+			0x004d4d00,	/* DENALI_PI_137_DATA */
-+			0x00090014,	/* DENALI_PI_138_DATA */
-+			0x4d000031,	/* DENALI_PI_139_DATA */
-+			0x0004004d,	/* DENALI_PI_140_DATA */
-+			0x00310000,	/* DENALI_PI_141_DATA */
-+			0x004d4d00,	/* DENALI_PI_142_DATA */
-+			0x00120024,	/* DENALI_PI_143_DATA */
-+			0x4d000031,	/* DENALI_PI_144_DATA */
-+			0x0000144d,	/* DENALI_PI_145_DATA */
-+			0x00310009,	/* DENALI_PI_146_DATA */
-+			0x004d4d00,	/* DENALI_PI_147_DATA */
-+			0x00000004,	/* DENALI_PI_148_DATA */
-+			0x4d000031,	/* DENALI_PI_149_DATA */
-+			0x0000244d,	/* DENALI_PI_150_DATA */
-+			0x00310012,	/* DENALI_PI_151_DATA */
-+			0x004d4d00,	/* DENALI_PI_152_DATA */
-+			0x00090014,	/* DENALI_PI_153_DATA */
-+			0x4d000031,	/* DENALI_PI_154_DATA */
-+			0x0200004d,	/* DENALI_PI_155_DATA */
-+			0x00c8000d,	/* DENALI_PI_156_DATA */
-+			0x08080064,	/* DENALI_PI_157_DATA */
-+			0x040a0404,	/* DENALI_PI_158_DATA */
-+			0x03000d92,	/* DENALI_PI_159_DATA */
-+			0x010a2001,	/* DENALI_PI_160_DATA */
-+			0x0f11080a,	/* DENALI_PI_161_DATA */
-+			0x0000110a,	/* DENALI_PI_162_DATA */
-+			0x2200d92e,	/* DENALI_PI_163_DATA */
-+			0x080c2003,	/* DENALI_PI_164_DATA */
-+			0x0809080a,	/* DENALI_PI_165_DATA */
-+			0x00000a0a,	/* DENALI_PI_166_DATA */
-+			0x11006c97,	/* DENALI_PI_167_DATA */
-+			0x040a2002,	/* DENALI_PI_168_DATA */
-+			0x0200020a,	/* DENALI_PI_169_DATA */
-+			0x02000200,	/* DENALI_PI_170_DATA */
-+			0x02000200,	/* DENALI_PI_171_DATA */
-+			0x02000200,	/* DENALI_PI_172_DATA */
-+			0x02000200,	/* DENALI_PI_173_DATA */
-+			0x00000000,	/* DENALI_PI_174_DATA */
-+			0x00000000,	/* DENALI_PI_175_DATA */
-+			0x00000000,	/* DENALI_PI_176_DATA */
-+			0x00000000,	/* DENALI_PI_177_DATA */
-+			0x00000000,	/* DENALI_PI_178_DATA */
-+			0x00000000,	/* DENALI_PI_179_DATA */
-+			0x00000000,	/* DENALI_PI_180_DATA */
-+			0x00000000,	/* DENALI_PI_181_DATA */
-+			0x00000000,	/* DENALI_PI_182_DATA */
-+			0x00000000,	/* DENALI_PI_183_DATA */
-+			0x00000000,	/* DENALI_PI_184_DATA */
-+			0x00000000,	/* DENALI_PI_185_DATA */
-+			0x01000400,	/* DENALI_PI_186_DATA */
-+			0x00017600,	/* DENALI_PI_187_DATA */
-+			0x00000e9c,	/* DENALI_PI_188_DATA */
-+			0x00001850,	/* DENALI_PI_189_DATA */
-+			0x0000f320,	/* DENALI_PI_190_DATA */
-+			0x00000c20,	/* DENALI_PI_191_DATA */
-+			0x00007940,	/* DENALI_PI_192_DATA */
-+			0x08000000,	/* DENALI_PI_193_DATA */
-+			0x00000100,	/* DENALI_PI_194_DATA */
-+			0x00000000,	/* DENALI_PI_195_DATA */
-+			0x00000000,	/* DENALI_PI_196_DATA */
-+			0x00000000,	/* DENALI_PI_197_DATA */
-+			0x00000000,	/* DENALI_PI_198_DATA */
-+			0x00000002	/* DENALI_PI_199_DATA */
-+		}
-+	},
-+	{
-+		{
-+			0x76543210,	/* DENALI_PHY_00_DATA */
-+			0x0004f008,	/* DENALI_PHY_01_DATA */
-+			0x00020119,	/* DENALI_PHY_02_DATA */
-+			0x00000000,	/* DENALI_PHY_03_DATA */
-+			0x00000000,	/* DENALI_PHY_04_DATA */
-+			0x00010000,	/* DENALI_PHY_05_DATA */
-+			0x01665555,	/* DENALI_PHY_06_DATA */
-+			0x03665555,	/* DENALI_PHY_07_DATA */
-+			0x00010f00,	/* DENALI_PHY_08_DATA */
-+			0x05010200,	/* DENALI_PHY_09_DATA */
-+			0x00000002,	/* DENALI_PHY_10_DATA */
-+			0x00170180,	/* DENALI_PHY_11_DATA */
-+			0x00cc0201,	/* DENALI_PHY_12_DATA */
-+			0x00030066,	/* DENALI_PHY_13_DATA */
-+			0x00000000,	/* DENALI_PHY_14_DATA */
-+			0x00000000,	/* DENALI_PHY_15_DATA */
-+			0x00000000,	/* DENALI_PHY_16_DATA */
-+			0x00000000,	/* DENALI_PHY_17_DATA */
-+			0x00000000,	/* DENALI_PHY_18_DATA */
-+			0x00000000,	/* DENALI_PHY_19_DATA */
-+			0x00000000,	/* DENALI_PHY_20_DATA */
-+			0x00000000,	/* DENALI_PHY_21_DATA */
-+			0x04080000,	/* DENALI_PHY_22_DATA */
-+			0x04080400,	/* DENALI_PHY_23_DATA */
-+			0x30000000,	/* DENALI_PHY_24_DATA */
-+			0x0c00c007,	/* DENALI_PHY_25_DATA */
-+			0x00000100,	/* DENALI_PHY_26_DATA */
-+			0x00000000,	/* DENALI_PHY_27_DATA */
-+			0xfd02fe01,	/* DENALI_PHY_28_DATA */
-+			0xf708fb04,	/* DENALI_PHY_29_DATA */
-+			0xdf20ef10,	/* DENALI_PHY_30_DATA */
-+			0x7f80bf40,	/* DENALI_PHY_31_DATA */
-+			0x0001aaaa,	/* DENALI_PHY_32_DATA */
-+			0x00000000,	/* DENALI_PHY_33_DATA */
-+			0x00000000,	/* DENALI_PHY_34_DATA */
-+			0x00000000,	/* DENALI_PHY_35_DATA */
-+			0x00000000,	/* DENALI_PHY_36_DATA */
-+			0x00000000,	/* DENALI_PHY_37_DATA */
-+			0x00000000,	/* DENALI_PHY_38_DATA */
-+			0x00000000,	/* DENALI_PHY_39_DATA */
-+			0x00000000,	/* DENALI_PHY_40_DATA */
-+			0x00000000,	/* DENALI_PHY_41_DATA */
-+			0x00000000,	/* DENALI_PHY_42_DATA */
-+			0x00000000,	/* DENALI_PHY_43_DATA */
-+			0x00000000,	/* DENALI_PHY_44_DATA */
-+			0x00000000,	/* DENALI_PHY_45_DATA */
-+			0x00000000,	/* DENALI_PHY_46_DATA */
-+			0x00000000,	/* DENALI_PHY_47_DATA */
-+			0x00000000,	/* DENALI_PHY_48_DATA */
-+			0x00000000,	/* DENALI_PHY_49_DATA */
-+			0x00000000,	/* DENALI_PHY_50_DATA */
-+			0x00000000,	/* DENALI_PHY_51_DATA */
-+			0x00200000,	/* DENALI_PHY_52_DATA */
-+			0x00000000,	/* DENALI_PHY_53_DATA */
-+			0x00000000,	/* DENALI_PHY_54_DATA */
-+			0x00000000,	/* DENALI_PHY_55_DATA */
-+			0x00000000,	/* DENALI_PHY_56_DATA */
-+			0x00000000,	/* DENALI_PHY_57_DATA */
-+			0x00000000,	/* DENALI_PHY_58_DATA */
-+			0x02800280,	/* DENALI_PHY_59_DATA */
-+			0x02800280,	/* DENALI_PHY_60_DATA */
-+			0x02800280,	/* DENALI_PHY_61_DATA */
-+			0x02800280,	/* DENALI_PHY_62_DATA */
-+			0x00000280,	/* DENALI_PHY_63_DATA */
-+			0x00000000,	/* DENALI_PHY_64_DATA */
-+			0x00000000,	/* DENALI_PHY_65_DATA */
-+			0x00000000,	/* DENALI_PHY_66_DATA */
-+			0x00000000,	/* DENALI_PHY_67_DATA */
-+			0x00800000,	/* DENALI_PHY_68_DATA */
-+			0x00800080,	/* DENALI_PHY_69_DATA */
-+			0x00800080,	/* DENALI_PHY_70_DATA */
-+			0x00800080,	/* DENALI_PHY_71_DATA */
-+			0x00800080,	/* DENALI_PHY_72_DATA */
-+			0x00800080,	/* DENALI_PHY_73_DATA */
-+			0x00800080,	/* DENALI_PHY_74_DATA */
-+			0x00800080,	/* DENALI_PHY_75_DATA */
-+			0x00800080,	/* DENALI_PHY_76_DATA */
-+			0x01190080,	/* DENALI_PHY_77_DATA */
-+			0x00000002,	/* DENALI_PHY_78_DATA */
-+			0x00000000,	/* DENALI_PHY_79_DATA */
-+			0x00000000,	/* DENALI_PHY_80_DATA */
-+			0x00000200,	/* DENALI_PHY_81_DATA */
-+			0x00000000,	/* DENALI_PHY_82_DATA */
-+			0x51315152,	/* DENALI_PHY_83_DATA */
-+			0xc0013150,	/* DENALI_PHY_84_DATA */
-+			0x020000c0,	/* DENALI_PHY_85_DATA */
-+			0x00100001,	/* DENALI_PHY_86_DATA */
-+			0x07054204,	/* DENALI_PHY_87_DATA */
-+			0x000f0c18,	/* DENALI_PHY_88_DATA */
-+			0x01000140,	/* DENALI_PHY_89_DATA */
-+			0x00000c10,	/* DENALI_PHY_90_DATA */
-+			0x00000000,	/* DENALI_PHY_91_DATA */
-+			0x00000000,	/* DENALI_PHY_92_DATA */
-+			0x00000000,	/* DENALI_PHY_93_DATA */
-+			0x00000000,	/* DENALI_PHY_94_DATA */
-+			0x00000000,	/* DENALI_PHY_95_DATA */
-+			0x00000000,	/* DENALI_PHY_96_DATA */
-+			0x00000000,	/* DENALI_PHY_97_DATA */
-+			0x00000000,	/* DENALI_PHY_98_DATA */
-+			0x00000000,	/* DENALI_PHY_99_DATA */
-+			0x00000000,	/* DENALI_PHY_100_DATA */
-+			0x00000000,	/* DENALI_PHY_101_DATA */
-+			0x00000000,	/* DENALI_PHY_102_DATA */
-+			0x00000000,	/* DENALI_PHY_103_DATA */
-+			0x00000000,	/* DENALI_PHY_104_DATA */
-+			0x00000000,	/* DENALI_PHY_105_DATA */
-+			0x00000000,	/* DENALI_PHY_106_DATA */
-+			0x00000000,	/* DENALI_PHY_107_DATA */
-+			0x00000000,	/* DENALI_PHY_108_DATA */
-+			0x00000000,	/* DENALI_PHY_109_DATA */
-+			0x00000000,	/* DENALI_PHY_110_DATA */
-+			0x00000000,	/* DENALI_PHY_111_DATA */
-+			0x00000000,	/* DENALI_PHY_112_DATA */
-+			0x00000000,	/* DENALI_PHY_113_DATA */
-+			0x00000000,	/* DENALI_PHY_114_DATA */
-+			0x00000000,	/* DENALI_PHY_115_DATA */
-+			0x00000000,	/* DENALI_PHY_116_DATA */
-+			0x00000000,	/* DENALI_PHY_117_DATA */
-+			0x00000000,	/* DENALI_PHY_118_DATA */
-+			0x00000000,	/* DENALI_PHY_119_DATA */
-+			0x00000000,	/* DENALI_PHY_120_DATA */
-+			0x00000000,	/* DENALI_PHY_121_DATA */
-+			0x00000000,	/* DENALI_PHY_122_DATA */
-+			0x00000000,	/* DENALI_PHY_123_DATA */
-+			0x00000000,	/* DENALI_PHY_124_DATA */
-+			0x00000000,	/* DENALI_PHY_125_DATA */
-+			0x00000000,	/* DENALI_PHY_126_DATA */
-+			0x00000000,	/* DENALI_PHY_127_DATA */
-+			0x76543210,	/* DENALI_PHY_128_DATA */
-+			0x0004f008,	/* DENALI_PHY_129_DATA */
-+			0x00020119,	/* DENALI_PHY_130_DATA */
-+			0x00000000,	/* DENALI_PHY_131_DATA */
-+			0x00000000,	/* DENALI_PHY_132_DATA */
-+			0x00010000,	/* DENALI_PHY_133_DATA */
-+			0x01665555,	/* DENALI_PHY_134_DATA */
-+			0x03665555,	/* DENALI_PHY_135_DATA */
-+			0x00010f00,	/* DENALI_PHY_136_DATA */
-+			0x05010200,	/* DENALI_PHY_137_DATA */
-+			0x00000002,	/* DENALI_PHY_138_DATA */
-+			0x00170180,	/* DENALI_PHY_139_DATA */
-+			0x00cc0201,	/* DENALI_PHY_140_DATA */
-+			0x00030066,	/* DENALI_PHY_141_DATA */
-+			0x00000000,	/* DENALI_PHY_142_DATA */
-+			0x00000000,	/* DENALI_PHY_143_DATA */
-+			0x00000000,	/* DENALI_PHY_144_DATA */
-+			0x00000000,	/* DENALI_PHY_145_DATA */
-+			0x00000000,	/* DENALI_PHY_146_DATA */
-+			0x00000000,	/* DENALI_PHY_147_DATA */
-+			0x00000000,	/* DENALI_PHY_148_DATA */
-+			0x00000000,	/* DENALI_PHY_149_DATA */
-+			0x04080000,	/* DENALI_PHY_150_DATA */
-+			0x04080400,	/* DENALI_PHY_151_DATA */
-+			0x30000000,	/* DENALI_PHY_152_DATA */
-+			0x0c00c007,	/* DENALI_PHY_153_DATA */
-+			0x00000100,	/* DENALI_PHY_154_DATA */
-+			0x00000000,	/* DENALI_PHY_155_DATA */
-+			0xfd02fe01,	/* DENALI_PHY_156_DATA */
-+			0xf708fb04,	/* DENALI_PHY_157_DATA */
-+			0xdf20ef10,	/* DENALI_PHY_158_DATA */
-+			0x7f80bf40,	/* DENALI_PHY_159_DATA */
-+			0x0000aaaa,	/* DENALI_PHY_160_DATA */
-+			0x00000000,	/* DENALI_PHY_161_DATA */
-+			0x00000000,	/* DENALI_PHY_162_DATA */
-+			0x00000000,	/* DENALI_PHY_163_DATA */
-+			0x00000000,	/* DENALI_PHY_164_DATA */
-+			0x00000000,	/* DENALI_PHY_165_DATA */
-+			0x00000000,	/* DENALI_PHY_166_DATA */
-+			0x00000000,	/* DENALI_PHY_167_DATA */
-+			0x00000000,	/* DENALI_PHY_168_DATA */
-+			0x00000000,	/* DENALI_PHY_169_DATA */
-+			0x00000000,	/* DENALI_PHY_170_DATA */
-+			0x00000000,	/* DENALI_PHY_171_DATA */
-+			0x00000000,	/* DENALI_PHY_172_DATA */
-+			0x00000000,	/* DENALI_PHY_173_DATA */
-+			0x00000000,	/* DENALI_PHY_174_DATA */
-+			0x00000000,	/* DENALI_PHY_175_DATA */
-+			0x00000000,	/* DENALI_PHY_176_DATA */
-+			0x00000000,	/* DENALI_PHY_177_DATA */
-+			0x00000000,	/* DENALI_PHY_178_DATA */
-+			0x00000000,	/* DENALI_PHY_179_DATA */
-+			0x00200000,	/* DENALI_PHY_180_DATA */
-+			0x00000000,	/* DENALI_PHY_181_DATA */
-+			0x00000000,	/* DENALI_PHY_182_DATA */
-+			0x00000000,	/* DENALI_PHY_183_DATA */
-+			0x00000000,	/* DENALI_PHY_184_DATA */
-+			0x00000000,	/* DENALI_PHY_185_DATA */
-+			0x00000000,	/* DENALI_PHY_186_DATA */
-+			0x02800280,	/* DENALI_PHY_187_DATA */
-+			0x02800280,	/* DENALI_PHY_188_DATA */
-+			0x02800280,	/* DENALI_PHY_189_DATA */
-+			0x02800280,	/* DENALI_PHY_190_DATA */
-+			0x00000280,	/* DENALI_PHY_191_DATA */
-+			0x00000000,	/* DENALI_PHY_192_DATA */
-+			0x00000000,	/* DENALI_PHY_193_DATA */
-+			0x00000000,	/* DENALI_PHY_194_DATA */
-+			0x00000000,	/* DENALI_PHY_195_DATA */
-+			0x00800000,	/* DENALI_PHY_196_DATA */
-+			0x00800080,	/* DENALI_PHY_197_DATA */
-+			0x00800080,	/* DENALI_PHY_198_DATA */
-+			0x00800080,	/* DENALI_PHY_199_DATA */
-+			0x00800080,	/* DENALI_PHY_200_DATA */
-+			0x00800080,	/* DENALI_PHY_201_DATA */
-+			0x00800080,	/* DENALI_PHY_202_DATA */
-+			0x00800080,	/* DENALI_PHY_203_DATA */
-+			0x00800080,	/* DENALI_PHY_204_DATA */
-+			0x01190080,	/* DENALI_PHY_205_DATA */
-+			0x00000002,	/* DENALI_PHY_206_DATA */
-+			0x00000000,	/* DENALI_PHY_207_DATA */
-+			0x00000000,	/* DENALI_PHY_208_DATA */
-+			0x00000200,	/* DENALI_PHY_209_DATA */
-+			0x00000000,	/* DENALI_PHY_210_DATA */
-+			0x51315152,	/* DENALI_PHY_211_DATA */
-+			0xc0013150,	/* DENALI_PHY_212_DATA */
-+			0x020000c0,	/* DENALI_PHY_213_DATA */
-+			0x00100001,	/* DENALI_PHY_214_DATA */
-+			0x07054204,	/* DENALI_PHY_215_DATA */
-+			0x000f0c18,	/* DENALI_PHY_216_DATA */
-+			0x01000140,	/* DENALI_PHY_217_DATA */
-+			0x00000c10,	/* DENALI_PHY_218_DATA */
-+			0x00000000,	/* DENALI_PHY_219_DATA */
-+			0x00000000,	/* DENALI_PHY_220_DATA */
-+			0x00000000,	/* DENALI_PHY_221_DATA */
-+			0x00000000,	/* DENALI_PHY_222_DATA */
-+			0x00000000,	/* DENALI_PHY_223_DATA */
-+			0x00000000,	/* DENALI_PHY_224_DATA */
-+			0x00000000,	/* DENALI_PHY_225_DATA */
-+			0x00000000,	/* DENALI_PHY_226_DATA */
-+			0x00000000,	/* DENALI_PHY_227_DATA */
-+			0x00000000,	/* DENALI_PHY_228_DATA */
-+			0x00000000,	/* DENALI_PHY_229_DATA */
-+			0x00000000,	/* DENALI_PHY_230_DATA */
-+			0x00000000,	/* DENALI_PHY_231_DATA */
-+			0x00000000,	/* DENALI_PHY_232_DATA */
-+			0x00000000,	/* DENALI_PHY_233_DATA */
-+			0x00000000,	/* DENALI_PHY_234_DATA */
-+			0x00000000,	/* DENALI_PHY_235_DATA */
-+			0x00000000,	/* DENALI_PHY_236_DATA */
-+			0x00000000,	/* DENALI_PHY_237_DATA */
-+			0x00000000,	/* DENALI_PHY_238_DATA */
-+			0x00000000,	/* DENALI_PHY_239_DATA */
-+			0x00000000,	/* DENALI_PHY_240_DATA */
-+			0x00000000,	/* DENALI_PHY_241_DATA */
-+			0x00000000,	/* DENALI_PHY_242_DATA */
-+			0x00000000,	/* DENALI_PHY_243_DATA */
-+			0x00000000,	/* DENALI_PHY_244_DATA */
-+			0x00000000,	/* DENALI_PHY_245_DATA */
-+			0x00000000,	/* DENALI_PHY_246_DATA */
-+			0x00000000,	/* DENALI_PHY_247_DATA */
-+			0x00000000,	/* DENALI_PHY_248_DATA */
-+			0x00000000,	/* DENALI_PHY_249_DATA */
-+			0x00000000,	/* DENALI_PHY_250_DATA */
-+			0x00000000,	/* DENALI_PHY_251_DATA */
-+			0x00000000,	/* DENALI_PHY_252_DATA */
-+			0x00000000,	/* DENALI_PHY_253_DATA */
-+			0x00000000,	/* DENALI_PHY_254_DATA */
-+			0x00000000,	/* DENALI_PHY_255_DATA */
-+			0x76543210,	/* DENALI_PHY_256_DATA */
-+			0x0004f008,	/* DENALI_PHY_257_DATA */
-+			0x00020119,	/* DENALI_PHY_258_DATA */
-+			0x00000000,	/* DENALI_PHY_259_DATA */
-+			0x00000000,	/* DENALI_PHY_260_DATA */
-+			0x00010000,	/* DENALI_PHY_261_DATA */
-+			0x01665555,	/* DENALI_PHY_262_DATA */
-+			0x03665555,	/* DENALI_PHY_263_DATA */
-+			0x00010f00,	/* DENALI_PHY_264_DATA */
-+			0x05010200,	/* DENALI_PHY_265_DATA */
-+			0x00000002,	/* DENALI_PHY_266_DATA */
-+			0x00170180,	/* DENALI_PHY_267_DATA */
-+			0x00cc0201,	/* DENALI_PHY_268_DATA */
-+			0x00030066,	/* DENALI_PHY_269_DATA */
-+			0x00000000,	/* DENALI_PHY_270_DATA */
-+			0x00000000,	/* DENALI_PHY_271_DATA */
-+			0x00000000,	/* DENALI_PHY_272_DATA */
-+			0x00000000,	/* DENALI_PHY_273_DATA */
-+			0x00000000,	/* DENALI_PHY_274_DATA */
-+			0x00000000,	/* DENALI_PHY_275_DATA */
-+			0x00000000,	/* DENALI_PHY_276_DATA */
-+			0x00000000,	/* DENALI_PHY_277_DATA */
-+			0x04080000,	/* DENALI_PHY_278_DATA */
-+			0x04080400,	/* DENALI_PHY_279_DATA */
-+			0x30000000,	/* DENALI_PHY_280_DATA */
-+			0x0c00c007,	/* DENALI_PHY_281_DATA */
-+			0x00000100,	/* DENALI_PHY_282_DATA */
-+			0x00000000,	/* DENALI_PHY_283_DATA */
-+			0xfd02fe01,	/* DENALI_PHY_284_DATA */
-+			0xf708fb04,	/* DENALI_PHY_285_DATA */
-+			0xdf20ef10,	/* DENALI_PHY_286_DATA */
-+			0x7f80bf40,	/* DENALI_PHY_287_DATA */
-+			0x0001aaaa,	/* DENALI_PHY_288_DATA */
-+			0x00000000,	/* DENALI_PHY_289_DATA */
-+			0x00000000,	/* DENALI_PHY_290_DATA */
-+			0x00000000,	/* DENALI_PHY_291_DATA */
-+			0x00000000,	/* DENALI_PHY_292_DATA */
-+			0x00000000,	/* DENALI_PHY_293_DATA */
-+			0x00000000,	/* DENALI_PHY_294_DATA */
-+			0x00000000,	/* DENALI_PHY_295_DATA */
-+			0x00000000,	/* DENALI_PHY_296_DATA */
-+			0x00000000,	/* DENALI_PHY_297_DATA */
-+			0x00000000,	/* DENALI_PHY_298_DATA */
-+			0x00000000,	/* DENALI_PHY_299_DATA */
-+			0x00000000,	/* DENALI_PHY_300_DATA */
-+			0x00000000,	/* DENALI_PHY_301_DATA */
-+			0x00000000,	/* DENALI_PHY_302_DATA */
-+			0x00000000,	/* DENALI_PHY_303_DATA */
-+			0x00000000,	/* DENALI_PHY_304_DATA */
-+			0x00000000,	/* DENALI_PHY_305_DATA */
-+			0x00000000,	/* DENALI_PHY_306_DATA */
-+			0x00000000,	/* DENALI_PHY_307_DATA */
-+			0x00200000,	/* DENALI_PHY_308_DATA */
-+			0x00000000,	/* DENALI_PHY_309_DATA */
-+			0x00000000,	/* DENALI_PHY_310_DATA */
-+			0x00000000,	/* DENALI_PHY_311_DATA */
-+			0x00000000,	/* DENALI_PHY_312_DATA */
-+			0x00000000,	/* DENALI_PHY_313_DATA */
-+			0x00000000,	/* DENALI_PHY_314_DATA */
-+			0x02800280,	/* DENALI_PHY_315_DATA */
-+			0x02800280,	/* DENALI_PHY_316_DATA */
-+			0x02800280,	/* DENALI_PHY_317_DATA */
-+			0x02800280,	/* DENALI_PHY_318_DATA */
-+			0x00000280,	/* DENALI_PHY_319_DATA */
-+			0x00000000,	/* DENALI_PHY_320_DATA */
-+			0x00000000,	/* DENALI_PHY_321_DATA */
-+			0x00000000,	/* DENALI_PHY_322_DATA */
-+			0x00000000,	/* DENALI_PHY_323_DATA */
-+			0x00800000,	/* DENALI_PHY_324_DATA */
-+			0x00800080,	/* DENALI_PHY_325_DATA */
-+			0x00800080,	/* DENALI_PHY_326_DATA */
-+			0x00800080,	/* DENALI_PHY_327_DATA */
-+			0x00800080,	/* DENALI_PHY_328_DATA */
-+			0x00800080,	/* DENALI_PHY_329_DATA */
-+			0x00800080,	/* DENALI_PHY_330_DATA */
-+			0x00800080,	/* DENALI_PHY_331_DATA */
-+			0x00800080,	/* DENALI_PHY_332_DATA */
-+			0x01190080,	/* DENALI_PHY_333_DATA */
-+			0x00000002,	/* DENALI_PHY_334_DATA */
-+			0x00000000,	/* DENALI_PHY_335_DATA */
-+			0x00000000,	/* DENALI_PHY_336_DATA */
-+			0x00000200,	/* DENALI_PHY_337_DATA */
-+			0x00000000,	/* DENALI_PHY_338_DATA */
-+			0x51315152,	/* DENALI_PHY_339_DATA */
-+			0xc0013150,	/* DENALI_PHY_340_DATA */
-+			0x020000c0,	/* DENALI_PHY_341_DATA */
-+			0x00100001,	/* DENALI_PHY_342_DATA */
-+			0x07054204,	/* DENALI_PHY_343_DATA */
-+			0x000f0c18,	/* DENALI_PHY_344_DATA */
-+			0x01000140,	/* DENALI_PHY_345_DATA */
-+			0x00000c10,	/* DENALI_PHY_346_DATA */
-+			0x00000000,	/* DENALI_PHY_347_DATA */
-+			0x00000000,	/* DENALI_PHY_348_DATA */
-+			0x00000000,	/* DENALI_PHY_349_DATA */
-+			0x00000000,	/* DENALI_PHY_350_DATA */
-+			0x00000000,	/* DENALI_PHY_351_DATA */
-+			0x00000000,	/* DENALI_PHY_352_DATA */
-+			0x00000000,	/* DENALI_PHY_353_DATA */
-+			0x00000000,	/* DENALI_PHY_354_DATA */
-+			0x00000000,	/* DENALI_PHY_355_DATA */
-+			0x00000000,	/* DENALI_PHY_356_DATA */
-+			0x00000000,	/* DENALI_PHY_357_DATA */
-+			0x00000000,	/* DENALI_PHY_358_DATA */
-+			0x00000000,	/* DENALI_PHY_359_DATA */
-+			0x00000000,	/* DENALI_PHY_360_DATA */
-+			0x00000000,	/* DENALI_PHY_361_DATA */
-+			0x00000000,	/* DENALI_PHY_362_DATA */
-+			0x00000000,	/* DENALI_PHY_363_DATA */
-+			0x00000000,	/* DENALI_PHY_364_DATA */
-+			0x00000000,	/* DENALI_PHY_365_DATA */
-+			0x00000000,	/* DENALI_PHY_366_DATA */
-+			0x00000000,	/* DENALI_PHY_367_DATA */
-+			0x00000000,	/* DENALI_PHY_368_DATA */
-+			0x00000000,	/* DENALI_PHY_369_DATA */
-+			0x00000000,	/* DENALI_PHY_370_DATA */
-+			0x00000000,	/* DENALI_PHY_371_DATA */
-+			0x00000000,	/* DENALI_PHY_372_DATA */
-+			0x00000000,	/* DENALI_PHY_373_DATA */
-+			0x00000000,	/* DENALI_PHY_374_DATA */
-+			0x00000000,	/* DENALI_PHY_375_DATA */
-+			0x00000000,	/* DENALI_PHY_376_DATA */
-+			0x00000000,	/* DENALI_PHY_377_DATA */
-+			0x00000000,	/* DENALI_PHY_378_DATA */
-+			0x00000000,	/* DENALI_PHY_379_DATA */
-+			0x00000000,	/* DENALI_PHY_380_DATA */
-+			0x00000000,	/* DENALI_PHY_381_DATA */
-+			0x00000000,	/* DENALI_PHY_382_DATA */
-+			0x00000000,	/* DENALI_PHY_383_DATA */
-+			0x76543210,	/* DENALI_PHY_384_DATA */
-+			0x0004f008,	/* DENALI_PHY_385_DATA */
-+			0x00020119,	/* DENALI_PHY_386_DATA */
-+			0x00000000,	/* DENALI_PHY_387_DATA */
-+			0x00000000,	/* DENALI_PHY_388_DATA */
-+			0x00010000,	/* DENALI_PHY_389_DATA */
-+			0x01665555,	/* DENALI_PHY_390_DATA */
-+			0x03665555,	/* DENALI_PHY_391_DATA */
-+			0x00010f00,	/* DENALI_PHY_392_DATA */
-+			0x05010200,	/* DENALI_PHY_393_DATA */
-+			0x00000002,	/* DENALI_PHY_394_DATA */
-+			0x00170180,	/* DENALI_PHY_395_DATA */
-+			0x00cc0201,	/* DENALI_PHY_396_DATA */
-+			0x00030066,	/* DENALI_PHY_397_DATA */
-+			0x00000000,	/* DENALI_PHY_398_DATA */
-+			0x00000000,	/* DENALI_PHY_399_DATA */
-+			0x00000000,	/* DENALI_PHY_400_DATA */
-+			0x00000000,	/* DENALI_PHY_401_DATA */
-+			0x00000000,	/* DENALI_PHY_402_DATA */
-+			0x00000000,	/* DENALI_PHY_403_DATA */
-+			0x00000000,	/* DENALI_PHY_404_DATA */
-+			0x00000000,	/* DENALI_PHY_405_DATA */
-+			0x04080000,	/* DENALI_PHY_406_DATA */
-+			0x04080400,	/* DENALI_PHY_407_DATA */
-+			0x30000000,	/* DENALI_PHY_408_DATA */
-+			0x0c00c007,	/* DENALI_PHY_409_DATA */
-+			0x00000100,	/* DENALI_PHY_410_DATA */
-+			0x00000000,	/* DENALI_PHY_411_DATA */
-+			0xfd02fe01,	/* DENALI_PHY_412_DATA */
-+			0xf708fb04,	/* DENALI_PHY_413_DATA */
-+			0xdf20ef10,	/* DENALI_PHY_414_DATA */
-+			0x7f80bf40,	/* DENALI_PHY_415_DATA */
-+			0x0000aaaa,	/* DENALI_PHY_416_DATA */
-+			0x00000000,	/* DENALI_PHY_417_DATA */
-+			0x00000000,	/* DENALI_PHY_418_DATA */
-+			0x00000000,	/* DENALI_PHY_419_DATA */
-+			0x00000000,	/* DENALI_PHY_420_DATA */
-+			0x00000000,	/* DENALI_PHY_421_DATA */
-+			0x00000000,	/* DENALI_PHY_422_DATA */
-+			0x00000000,	/* DENALI_PHY_423_DATA */
-+			0x00000000,	/* DENALI_PHY_424_DATA */
-+			0x00000000,	/* DENALI_PHY_425_DATA */
-+			0x00000000,	/* DENALI_PHY_426_DATA */
-+			0x00000000,	/* DENALI_PHY_427_DATA */
-+			0x00000000,	/* DENALI_PHY_428_DATA */
-+			0x00000000,	/* DENALI_PHY_429_DATA */
-+			0x00000000,	/* DENALI_PHY_430_DATA */
-+			0x00000000,	/* DENALI_PHY_431_DATA */
-+			0x00000000,	/* DENALI_PHY_432_DATA */
-+			0x00000000,	/* DENALI_PHY_433_DATA */
-+			0x00000000,	/* DENALI_PHY_434_DATA */
-+			0x00000000,	/* DENALI_PHY_435_DATA */
-+			0x00200000,	/* DENALI_PHY_436_DATA */
-+			0x00000000,	/* DENALI_PHY_437_DATA */
-+			0x00000000,	/* DENALI_PHY_438_DATA */
-+			0x00000000,	/* DENALI_PHY_439_DATA */
-+			0x00000000,	/* DENALI_PHY_440_DATA */
-+			0x00000000,	/* DENALI_PHY_441_DATA */
-+			0x00000000,	/* DENALI_PHY_442_DATA */
-+			0x02800280,	/* DENALI_PHY_443_DATA */
-+			0x02800280,	/* DENALI_PHY_444_DATA */
-+			0x02800280,	/* DENALI_PHY_445_DATA */
-+			0x02800280,	/* DENALI_PHY_446_DATA */
-+			0x00000280,	/* DENALI_PHY_447_DATA */
-+			0x00000000,	/* DENALI_PHY_448_DATA */
-+			0x00000000,	/* DENALI_PHY_449_DATA */
-+			0x00000000,	/* DENALI_PHY_450_DATA */
-+			0x00000000,	/* DENALI_PHY_451_DATA */
-+			0x00800000,	/* DENALI_PHY_452_DATA */
-+			0x00800080,	/* DENALI_PHY_453_DATA */
-+			0x00800080,	/* DENALI_PHY_454_DATA */
-+			0x00800080,	/* DENALI_PHY_455_DATA */
-+			0x00800080,	/* DENALI_PHY_456_DATA */
-+			0x00800080,	/* DENALI_PHY_457_DATA */
-+			0x00800080,	/* DENALI_PHY_458_DATA */
-+			0x00800080,	/* DENALI_PHY_459_DATA */
-+			0x00800080,	/* DENALI_PHY_460_DATA */
-+			0x01190080,	/* DENALI_PHY_461_DATA */
-+			0x00000002,	/* DENALI_PHY_462_DATA */
-+			0x00000000,	/* DENALI_PHY_463_DATA */
-+			0x00000000,	/* DENALI_PHY_464_DATA */
-+			0x00000200,	/* DENALI_PHY_465_DATA */
-+			0x00000000,	/* DENALI_PHY_466_DATA */
-+			0x51315152,	/* DENALI_PHY_467_DATA */
-+			0xc0013150,	/* DENALI_PHY_468_DATA */
-+			0x020000c0,	/* DENALI_PHY_469_DATA */
-+			0x00100001,	/* DENALI_PHY_470_DATA */
-+			0x07054204,	/* DENALI_PHY_471_DATA */
-+			0x000f0c18,	/* DENALI_PHY_472_DATA */
-+			0x01000140,	/* DENALI_PHY_473_DATA */
-+			0x00000c10,	/* DENALI_PHY_474_DATA */
-+			0x00000000,	/* DENALI_PHY_475_DATA */
-+			0x00000000,	/* DENALI_PHY_476_DATA */
-+			0x00000000,	/* DENALI_PHY_477_DATA */
-+			0x00000000,	/* DENALI_PHY_478_DATA */
-+			0x00000000,	/* DENALI_PHY_479_DATA */
-+			0x00000000,	/* DENALI_PHY_480_DATA */
-+			0x00000000,	/* DENALI_PHY_481_DATA */
-+			0x00000000,	/* DENALI_PHY_482_DATA */
-+			0x00000000,	/* DENALI_PHY_483_DATA */
-+			0x00000000,	/* DENALI_PHY_484_DATA */
-+			0x00000000,	/* DENALI_PHY_485_DATA */
-+			0x00000000,	/* DENALI_PHY_486_DATA */
-+			0x00000000,	/* DENALI_PHY_487_DATA */
-+			0x00000000,	/* DENALI_PHY_488_DATA */
-+			0x00000000,	/* DENALI_PHY_489_DATA */
-+			0x00000000,	/* DENALI_PHY_490_DATA */
-+			0x00000000,	/* DENALI_PHY_491_DATA */
-+			0x00000000,	/* DENALI_PHY_492_DATA */
-+			0x00000000,	/* DENALI_PHY_493_DATA */
-+			0x00000000,	/* DENALI_PHY_494_DATA */
-+			0x00000000,	/* DENALI_PHY_495_DATA */
-+			0x00000000,	/* DENALI_PHY_496_DATA */
-+			0x00000000,	/* DENALI_PHY_497_DATA */
-+			0x00000000,	/* DENALI_PHY_498_DATA */
-+			0x00000000,	/* DENALI_PHY_499_DATA */
-+			0x00000000,	/* DENALI_PHY_500_DATA */
-+			0x00000000,	/* DENALI_PHY_501_DATA */
-+			0x00000000,	/* DENALI_PHY_502_DATA */
-+			0x00000000,	/* DENALI_PHY_503_DATA */
-+			0x00000000,	/* DENALI_PHY_504_DATA */
-+			0x00000000,	/* DENALI_PHY_505_DATA */
-+			0x00000000,	/* DENALI_PHY_506_DATA */
-+			0x00000000,	/* DENALI_PHY_507_DATA */
-+			0x00000000,	/* DENALI_PHY_508_DATA */
-+			0x00000000,	/* DENALI_PHY_509_DATA */
-+			0x00000000,	/* DENALI_PHY_510_DATA */
-+			0x00000000,	/* DENALI_PHY_511_DATA */
-+			0x00000000,	/* DENALI_PHY_512_DATA */
-+			0x00000000,	/* DENALI_PHY_513_DATA */
-+			0x00000000,	/* DENALI_PHY_514_DATA */
-+			0x00000000,	/* DENALI_PHY_515_DATA */
-+			0x00000000,	/* DENALI_PHY_516_DATA */
-+			0x00000000,	/* DENALI_PHY_517_DATA */
-+			0x00000000,	/* DENALI_PHY_518_DATA */
-+			0x00000002,	/* DENALI_PHY_519_DATA */
-+			0x00000000,	/* DENALI_PHY_520_DATA */
-+			0x00000000,	/* DENALI_PHY_521_DATA */
-+			0x00000000,	/* DENALI_PHY_522_DATA */
-+			0x00400320,	/* DENALI_PHY_523_DATA */
-+			0x00000040,	/* DENALI_PHY_524_DATA */
-+			0x00dcba98,	/* DENALI_PHY_525_DATA */
-+			0x00000000,	/* DENALI_PHY_526_DATA */
-+			0x00dcba98,	/* DENALI_PHY_527_DATA */
-+			0x01000000,	/* DENALI_PHY_528_DATA */
-+			0x00020003,	/* DENALI_PHY_529_DATA */
-+			0x00000000,	/* DENALI_PHY_530_DATA */
-+			0x00000000,	/* DENALI_PHY_531_DATA */
-+			0x00000000,	/* DENALI_PHY_532_DATA */
-+			0x0000002a,	/* DENALI_PHY_533_DATA */
-+			0x00000015,	/* DENALI_PHY_534_DATA */
-+			0x00000015,	/* DENALI_PHY_535_DATA */
-+			0x0000002a,	/* DENALI_PHY_536_DATA */
-+			0x00000033,	/* DENALI_PHY_537_DATA */
-+			0x0000000c,	/* DENALI_PHY_538_DATA */
-+			0x0000000c,	/* DENALI_PHY_539_DATA */
-+			0x00000033,	/* DENALI_PHY_540_DATA */
-+			0x0a418820,	/* DENALI_PHY_541_DATA */
-+			0x003f0000,	/* DENALI_PHY_542_DATA */
-+			0x0000003f,	/* DENALI_PHY_543_DATA */
-+			0x00030055,	/* DENALI_PHY_544_DATA */
-+			0x03000300,	/* DENALI_PHY_545_DATA */
-+			0x03000300,	/* DENALI_PHY_546_DATA */
-+			0x00000300,	/* DENALI_PHY_547_DATA */
-+			0x42080010,	/* DENALI_PHY_548_DATA */
-+			0x00000003,	/* DENALI_PHY_549_DATA */
-+			0x00000000,	/* DENALI_PHY_550_DATA */
-+			0x00000000,	/* DENALI_PHY_551_DATA */
-+			0x00000000,	/* DENALI_PHY_552_DATA */
-+			0x00000000,	/* DENALI_PHY_553_DATA */
-+			0x00000000,	/* DENALI_PHY_554_DATA */
-+			0x00000000,	/* DENALI_PHY_555_DATA */
-+			0x00000000,	/* DENALI_PHY_556_DATA */
-+			0x00000000,	/* DENALI_PHY_557_DATA */
-+			0x00000000,	/* DENALI_PHY_558_DATA */
-+			0x00000000,	/* DENALI_PHY_559_DATA */
-+			0x00000000,	/* DENALI_PHY_560_DATA */
-+			0x00000000,	/* DENALI_PHY_561_DATA */
-+			0x00000000,	/* DENALI_PHY_562_DATA */
-+			0x00000000,	/* DENALI_PHY_563_DATA */
-+			0x00000000,	/* DENALI_PHY_564_DATA */
-+			0x00000000,	/* DENALI_PHY_565_DATA */
-+			0x00000000,	/* DENALI_PHY_566_DATA */
-+			0x00000000,	/* DENALI_PHY_567_DATA */
-+			0x00000000,	/* DENALI_PHY_568_DATA */
-+			0x00000000,	/* DENALI_PHY_569_DATA */
-+			0x00000000,	/* DENALI_PHY_570_DATA */
-+			0x00000000,	/* DENALI_PHY_571_DATA */
-+			0x00000000,	/* DENALI_PHY_572_DATA */
-+			0x00000000,	/* DENALI_PHY_573_DATA */
-+			0x00000000,	/* DENALI_PHY_574_DATA */
-+			0x00000000,	/* DENALI_PHY_575_DATA */
-+			0x00000000,	/* DENALI_PHY_576_DATA */
-+			0x00000000,	/* DENALI_PHY_577_DATA */
-+			0x00000000,	/* DENALI_PHY_578_DATA */
-+			0x00000000,	/* DENALI_PHY_579_DATA */
-+			0x00000000,	/* DENALI_PHY_580_DATA */
-+			0x00000000,	/* DENALI_PHY_581_DATA */
-+			0x00000000,	/* DENALI_PHY_582_DATA */
-+			0x00000000,	/* DENALI_PHY_583_DATA */
-+			0x00000000,	/* DENALI_PHY_584_DATA */
-+			0x00000000,	/* DENALI_PHY_585_DATA */
-+			0x00000000,	/* DENALI_PHY_586_DATA */
-+			0x00000000,	/* DENALI_PHY_587_DATA */
-+			0x00000000,	/* DENALI_PHY_588_DATA */
-+			0x00000000,	/* DENALI_PHY_589_DATA */
-+			0x00000000,	/* DENALI_PHY_590_DATA */
-+			0x00000000,	/* DENALI_PHY_591_DATA */
-+			0x00000000,	/* DENALI_PHY_592_DATA */
-+			0x00000000,	/* DENALI_PHY_593_DATA */
-+			0x00000000,	/* DENALI_PHY_594_DATA */
-+			0x00000000,	/* DENALI_PHY_595_DATA */
-+			0x00000000,	/* DENALI_PHY_596_DATA */
-+			0x00000000,	/* DENALI_PHY_597_DATA */
-+			0x00000000,	/* DENALI_PHY_598_DATA */
-+			0x00000000,	/* DENALI_PHY_599_DATA */
-+			0x00000000,	/* DENALI_PHY_600_DATA */
-+			0x00000000,	/* DENALI_PHY_601_DATA */
-+			0x00000000,	/* DENALI_PHY_602_DATA */
-+			0x00000000,	/* DENALI_PHY_603_DATA */
-+			0x00000000,	/* DENALI_PHY_604_DATA */
-+			0x00000000,	/* DENALI_PHY_605_DATA */
-+			0x00000000,	/* DENALI_PHY_606_DATA */
-+			0x00000000,	/* DENALI_PHY_607_DATA */
-+			0x00000000,	/* DENALI_PHY_608_DATA */
-+			0x00000000,	/* DENALI_PHY_609_DATA */
-+			0x00000000,	/* DENALI_PHY_610_DATA */
-+			0x00000000,	/* DENALI_PHY_611_DATA */
-+			0x00000000,	/* DENALI_PHY_612_DATA */
-+			0x00000000,	/* DENALI_PHY_613_DATA */
-+			0x00000000,	/* DENALI_PHY_614_DATA */
-+			0x00000000,	/* DENALI_PHY_615_DATA */
-+			0x00000000,	/* DENALI_PHY_616_DATA */
-+			0x00000000,	/* DENALI_PHY_617_DATA */
-+			0x00000000,	/* DENALI_PHY_618_DATA */
-+			0x00000000,	/* DENALI_PHY_619_DATA */
-+			0x00000000,	/* DENALI_PHY_620_DATA */
-+			0x00000000,	/* DENALI_PHY_621_DATA */
-+			0x00000000,	/* DENALI_PHY_622_DATA */
-+			0x00000000,	/* DENALI_PHY_623_DATA */
-+			0x00000000,	/* DENALI_PHY_624_DATA */
-+			0x00000000,	/* DENALI_PHY_625_DATA */
-+			0x00000000,	/* DENALI_PHY_626_DATA */
-+			0x00000000,	/* DENALI_PHY_627_DATA */
-+			0x00000000,	/* DENALI_PHY_628_DATA */
-+			0x00000000,	/* DENALI_PHY_629_DATA */
-+			0x00000000,	/* DENALI_PHY_630_DATA */
-+			0x00000000,	/* DENALI_PHY_631_DATA */
-+			0x00000000,	/* DENALI_PHY_632_DATA */
-+			0x00000000,	/* DENALI_PHY_633_DATA */
-+			0x00000000,	/* DENALI_PHY_634_DATA */
-+			0x00000000,	/* DENALI_PHY_635_DATA */
-+			0x00000000,	/* DENALI_PHY_636_DATA */
-+			0x00000000,	/* DENALI_PHY_637_DATA */
-+			0x00000000,	/* DENALI_PHY_638_DATA */
-+			0x00000000,	/* DENALI_PHY_639_DATA */
-+			0x00000000,	/* DENALI_PHY_640_DATA */
-+			0x00000000,	/* DENALI_PHY_641_DATA */
-+			0x00000000,	/* DENALI_PHY_642_DATA */
-+			0x00000000,	/* DENALI_PHY_643_DATA */
-+			0x00000000,	/* DENALI_PHY_644_DATA */
-+			0x00000000,	/* DENALI_PHY_645_DATA */
-+			0x00000000,	/* DENALI_PHY_646_DATA */
-+			0x00000002,	/* DENALI_PHY_647_DATA */
-+			0x00000000,	/* DENALI_PHY_648_DATA */
-+			0x00000000,	/* DENALI_PHY_649_DATA */
-+			0x00000000,	/* DENALI_PHY_650_DATA */
-+			0x00400320,	/* DENALI_PHY_651_DATA */
-+			0x00000040,	/* DENALI_PHY_652_DATA */
-+			0x00000000,	/* DENALI_PHY_653_DATA */
-+			0x00000000,	/* DENALI_PHY_654_DATA */
-+			0x00000000,	/* DENALI_PHY_655_DATA */
-+			0x01000000,	/* DENALI_PHY_656_DATA */
-+			0x00020003,	/* DENALI_PHY_657_DATA */
-+			0x00000000,	/* DENALI_PHY_658_DATA */
-+			0x00000000,	/* DENALI_PHY_659_DATA */
-+			0x00000000,	/* DENALI_PHY_660_DATA */
-+			0x0000002a,	/* DENALI_PHY_661_DATA */
-+			0x00000015,	/* DENALI_PHY_662_DATA */
-+			0x00000015,	/* DENALI_PHY_663_DATA */
-+			0x0000002a,	/* DENALI_PHY_664_DATA */
-+			0x00000033,	/* DENALI_PHY_665_DATA */
-+			0x0000000c,	/* DENALI_PHY_666_DATA */
-+			0x0000000c,	/* DENALI_PHY_667_DATA */
-+			0x00000033,	/* DENALI_PHY_668_DATA */
-+			0x00000000,	/* DENALI_PHY_669_DATA */
-+			0x00000000,	/* DENALI_PHY_670_DATA */
-+			0x00000000,	/* DENALI_PHY_671_DATA */
-+			0x00030055,	/* DENALI_PHY_672_DATA */
-+			0x03000300,	/* DENALI_PHY_673_DATA */
-+			0x03000300,	/* DENALI_PHY_674_DATA */
-+			0x00000300,	/* DENALI_PHY_675_DATA */
-+			0x42080010,	/* DENALI_PHY_676_DATA */
-+			0x00000003,	/* DENALI_PHY_677_DATA */
-+			0x00000000,	/* DENALI_PHY_678_DATA */
-+			0x00000000,	/* DENALI_PHY_679_DATA */
-+			0x00000000,	/* DENALI_PHY_680_DATA */
-+			0x00000000,	/* DENALI_PHY_681_DATA */
-+			0x00000000,	/* DENALI_PHY_682_DATA */
-+			0x00000000,	/* DENALI_PHY_683_DATA */
-+			0x00000000,	/* DENALI_PHY_684_DATA */
-+			0x00000000,	/* DENALI_PHY_685_DATA */
-+			0x00000000,	/* DENALI_PHY_686_DATA */
-+			0x00000000,	/* DENALI_PHY_687_DATA */
-+			0x00000000,	/* DENALI_PHY_688_DATA */
-+			0x00000000,	/* DENALI_PHY_689_DATA */
-+			0x00000000,	/* DENALI_PHY_690_DATA */
-+			0x00000000,	/* DENALI_PHY_691_DATA */
-+			0x00000000,	/* DENALI_PHY_692_DATA */
-+			0x00000000,	/* DENALI_PHY_693_DATA */
-+			0x00000000,	/* DENALI_PHY_694_DATA */
-+			0x00000000,	/* DENALI_PHY_695_DATA */
-+			0x00000000,	/* DENALI_PHY_696_DATA */
-+			0x00000000,	/* DENALI_PHY_697_DATA */
-+			0x00000000,	/* DENALI_PHY_698_DATA */
-+			0x00000000,	/* DENALI_PHY_699_DATA */
-+			0x00000000,	/* DENALI_PHY_700_DATA */
-+			0x00000000,	/* DENALI_PHY_701_DATA */
-+			0x00000000,	/* DENALI_PHY_702_DATA */
-+			0x00000000,	/* DENALI_PHY_703_DATA */
-+			0x00000000,	/* DENALI_PHY_704_DATA */
-+			0x00000000,	/* DENALI_PHY_705_DATA */
-+			0x00000000,	/* DENALI_PHY_706_DATA */
-+			0x00000000,	/* DENALI_PHY_707_DATA */
-+			0x00000000,	/* DENALI_PHY_708_DATA */
-+			0x00000000,	/* DENALI_PHY_709_DATA */
-+			0x00000000,	/* DENALI_PHY_710_DATA */
-+			0x00000000,	/* DENALI_PHY_711_DATA */
-+			0x00000000,	/* DENALI_PHY_712_DATA */
-+			0x00000000,	/* DENALI_PHY_713_DATA */
-+			0x00000000,	/* DENALI_PHY_714_DATA */
-+			0x00000000,	/* DENALI_PHY_715_DATA */
-+			0x00000000,	/* DENALI_PHY_716_DATA */
-+			0x00000000,	/* DENALI_PHY_717_DATA */
-+			0x00000000,	/* DENALI_PHY_718_DATA */
-+			0x00000000,	/* DENALI_PHY_719_DATA */
-+			0x00000000,	/* DENALI_PHY_720_DATA */
-+			0x00000000,	/* DENALI_PHY_721_DATA */
-+			0x00000000,	/* DENALI_PHY_722_DATA */
-+			0x00000000,	/* DENALI_PHY_723_DATA */
-+			0x00000000,	/* DENALI_PHY_724_DATA */
-+			0x00000000,	/* DENALI_PHY_725_DATA */
-+			0x00000000,	/* DENALI_PHY_726_DATA */
-+			0x00000000,	/* DENALI_PHY_727_DATA */
-+			0x00000000,	/* DENALI_PHY_728_DATA */
-+			0x00000000,	/* DENALI_PHY_729_DATA */
-+			0x00000000,	/* DENALI_PHY_730_DATA */
-+			0x00000000,	/* DENALI_PHY_731_DATA */
-+			0x00000000,	/* DENALI_PHY_732_DATA */
-+			0x00000000,	/* DENALI_PHY_733_DATA */
-+			0x00000000,	/* DENALI_PHY_734_DATA */
-+			0x00000000,	/* DENALI_PHY_735_DATA */
-+			0x00000000,	/* DENALI_PHY_736_DATA */
-+			0x00000000,	/* DENALI_PHY_737_DATA */
-+			0x00000000,	/* DENALI_PHY_738_DATA */
-+			0x00000000,	/* DENALI_PHY_739_DATA */
-+			0x00000000,	/* DENALI_PHY_740_DATA */
-+			0x00000000,	/* DENALI_PHY_741_DATA */
-+			0x00000000,	/* DENALI_PHY_742_DATA */
-+			0x00000000,	/* DENALI_PHY_743_DATA */
-+			0x00000000,	/* DENALI_PHY_744_DATA */
-+			0x00000000,	/* DENALI_PHY_745_DATA */
-+			0x00000000,	/* DENALI_PHY_746_DATA */
-+			0x00000000,	/* DENALI_PHY_747_DATA */
-+			0x00000000,	/* DENALI_PHY_748_DATA */
-+			0x00000000,	/* DENALI_PHY_749_DATA */
-+			0x00000000,	/* DENALI_PHY_750_DATA */
-+			0x00000000,	/* DENALI_PHY_751_DATA */
-+			0x00000000,	/* DENALI_PHY_752_DATA */
-+			0x00000000,	/* DENALI_PHY_753_DATA */
-+			0x00000000,	/* DENALI_PHY_754_DATA */
-+			0x00000000,	/* DENALI_PHY_755_DATA */
-+			0x00000000,	/* DENALI_PHY_756_DATA */
-+			0x00000000,	/* DENALI_PHY_757_DATA */
-+			0x00000000,	/* DENALI_PHY_758_DATA */
-+			0x00000000,	/* DENALI_PHY_759_DATA */
-+			0x00000000,	/* DENALI_PHY_760_DATA */
-+			0x00000000,	/* DENALI_PHY_761_DATA */
-+			0x00000000,	/* DENALI_PHY_762_DATA */
-+			0x00000000,	/* DENALI_PHY_763_DATA */
-+			0x00000000,	/* DENALI_PHY_764_DATA */
-+			0x00000000,	/* DENALI_PHY_765_DATA */
-+			0x00000000,	/* DENALI_PHY_766_DATA */
-+			0x00000000,	/* DENALI_PHY_767_DATA */
-+			0x00000000,	/* DENALI_PHY_768_DATA */
-+			0x00000000,	/* DENALI_PHY_769_DATA */
-+			0x00000000,	/* DENALI_PHY_770_DATA */
-+			0x00000000,	/* DENALI_PHY_771_DATA */
-+			0x00000000,	/* DENALI_PHY_772_DATA */
-+			0x00000000,	/* DENALI_PHY_773_DATA */
-+			0x00000000,	/* DENALI_PHY_774_DATA */
-+			0x00000002,	/* DENALI_PHY_775_DATA */
-+			0x00000000,	/* DENALI_PHY_776_DATA */
-+			0x00000000,	/* DENALI_PHY_777_DATA */
-+			0x00000000,	/* DENALI_PHY_778_DATA */
-+			0x00400320,	/* DENALI_PHY_779_DATA */
-+			0x00000040,	/* DENALI_PHY_780_DATA */
-+			0x00000000,	/* DENALI_PHY_781_DATA */
-+			0x00000000,	/* DENALI_PHY_782_DATA */
-+			0x00000000,	/* DENALI_PHY_783_DATA */
-+			0x01000000,	/* DENALI_PHY_784_DATA */
-+			0x00020003,	/* DENALI_PHY_785_DATA */
-+			0x00000000,	/* DENALI_PHY_786_DATA */
-+			0x00000000,	/* DENALI_PHY_787_DATA */
-+			0x00000000,	/* DENALI_PHY_788_DATA */
-+			0x0000002a,	/* DENALI_PHY_789_DATA */
-+			0x00000015,	/* DENALI_PHY_790_DATA */
-+			0x00000015,	/* DENALI_PHY_791_DATA */
-+			0x0000002a,	/* DENALI_PHY_792_DATA */
-+			0x00000033,	/* DENALI_PHY_793_DATA */
-+			0x0000000c,	/* DENALI_PHY_794_DATA */
-+			0x0000000c,	/* DENALI_PHY_795_DATA */
-+			0x00000033,	/* DENALI_PHY_796_DATA */
-+			0x1ee6b16a,	/* DENALI_PHY_797_DATA */
-+			0x10000000,	/* DENALI_PHY_798_DATA */
-+			0x00000000,	/* DENALI_PHY_799_DATA */
-+			0x00030055,	/* DENALI_PHY_800_DATA */
-+			0x03000300,	/* DENALI_PHY_801_DATA */
-+			0x03000300,	/* DENALI_PHY_802_DATA */
-+			0x00000300,	/* DENALI_PHY_803_DATA */
-+			0x42080010,	/* DENALI_PHY_804_DATA */
-+			0x00000003,	/* DENALI_PHY_805_DATA */
-+			0x00000000,	/* DENALI_PHY_806_DATA */
-+			0x00000000,	/* DENALI_PHY_807_DATA */
-+			0x00000000,	/* DENALI_PHY_808_DATA */
-+			0x00000000,	/* DENALI_PHY_809_DATA */
-+			0x00000000,	/* DENALI_PHY_810_DATA */
-+			0x00000000,	/* DENALI_PHY_811_DATA */
-+			0x00000000,	/* DENALI_PHY_812_DATA */
-+			0x00000000,	/* DENALI_PHY_813_DATA */
-+			0x00000000,	/* DENALI_PHY_814_DATA */
-+			0x00000000,	/* DENALI_PHY_815_DATA */
-+			0x00000000,	/* DENALI_PHY_816_DATA */
-+			0x00000000,	/* DENALI_PHY_817_DATA */
-+			0x00000000,	/* DENALI_PHY_818_DATA */
-+			0x00000000,	/* DENALI_PHY_819_DATA */
-+			0x00000000,	/* DENALI_PHY_820_DATA */
-+			0x00000000,	/* DENALI_PHY_821_DATA */
-+			0x00000000,	/* DENALI_PHY_822_DATA */
-+			0x00000000,	/* DENALI_PHY_823_DATA */
-+			0x00000000,	/* DENALI_PHY_824_DATA */
-+			0x00000000,	/* DENALI_PHY_825_DATA */
-+			0x00000000,	/* DENALI_PHY_826_DATA */
-+			0x00000000,	/* DENALI_PHY_827_DATA */
-+			0x00000000,	/* DENALI_PHY_828_DATA */
-+			0x00000000,	/* DENALI_PHY_829_DATA */
-+			0x00000000,	/* DENALI_PHY_830_DATA */
-+			0x00000000,	/* DENALI_PHY_831_DATA */
-+			0x00000000,	/* DENALI_PHY_832_DATA */
-+			0x00000000,	/* DENALI_PHY_833_DATA */
-+			0x00000000,	/* DENALI_PHY_834_DATA */
-+			0x00000000,	/* DENALI_PHY_835_DATA */
-+			0x00000000,	/* DENALI_PHY_836_DATA */
-+			0x00000000,	/* DENALI_PHY_837_DATA */
-+			0x00000000,	/* DENALI_PHY_838_DATA */
-+			0x00000000,	/* DENALI_PHY_839_DATA */
-+			0x00000000,	/* DENALI_PHY_840_DATA */
-+			0x00000000,	/* DENALI_PHY_841_DATA */
-+			0x00000000,	/* DENALI_PHY_842_DATA */
-+			0x00000000,	/* DENALI_PHY_843_DATA */
-+			0x00000000,	/* DENALI_PHY_844_DATA */
-+			0x00000000,	/* DENALI_PHY_845_DATA */
-+			0x00000000,	/* DENALI_PHY_846_DATA */
-+			0x00000000,	/* DENALI_PHY_847_DATA */
-+			0x00000000,	/* DENALI_PHY_848_DATA */
-+			0x00000000,	/* DENALI_PHY_849_DATA */
-+			0x00000000,	/* DENALI_PHY_850_DATA */
-+			0x00000000,	/* DENALI_PHY_851_DATA */
-+			0x00000000,	/* DENALI_PHY_852_DATA */
-+			0x00000000,	/* DENALI_PHY_853_DATA */
-+			0x00000000,	/* DENALI_PHY_854_DATA */
-+			0x00000000,	/* DENALI_PHY_855_DATA */
-+			0x00000000,	/* DENALI_PHY_856_DATA */
-+			0x00000000,	/* DENALI_PHY_857_DATA */
-+			0x00000000,	/* DENALI_PHY_858_DATA */
-+			0x00000000,	/* DENALI_PHY_859_DATA */
-+			0x00000000,	/* DENALI_PHY_860_DATA */
-+			0x00000000,	/* DENALI_PHY_861_DATA */
-+			0x00000000,	/* DENALI_PHY_862_DATA */
-+			0x00000000,	/* DENALI_PHY_863_DATA */
-+			0x00000000,	/* DENALI_PHY_864_DATA */
-+			0x00000000,	/* DENALI_PHY_865_DATA */
-+			0x00000000,	/* DENALI_PHY_866_DATA */
-+			0x00000000,	/* DENALI_PHY_867_DATA */
-+			0x00000000,	/* DENALI_PHY_868_DATA */
-+			0x00000000,	/* DENALI_PHY_869_DATA */
-+			0x00000000,	/* DENALI_PHY_870_DATA */
-+			0x00000000,	/* DENALI_PHY_871_DATA */
-+			0x00000000,	/* DENALI_PHY_872_DATA */
-+			0x00000000,	/* DENALI_PHY_873_DATA */
-+			0x00000000,	/* DENALI_PHY_874_DATA */
-+			0x00000000,	/* DENALI_PHY_875_DATA */
-+			0x00000000,	/* DENALI_PHY_876_DATA */
-+			0x00000000,	/* DENALI_PHY_877_DATA */
-+			0x00000000,	/* DENALI_PHY_878_DATA */
-+			0x00000000,	/* DENALI_PHY_879_DATA */
-+			0x00000000,	/* DENALI_PHY_880_DATA */
-+			0x00000000,	/* DENALI_PHY_881_DATA */
-+			0x00000000,	/* DENALI_PHY_882_DATA */
-+			0x00000000,	/* DENALI_PHY_883_DATA */
-+			0x00000000,	/* DENALI_PHY_884_DATA */
-+			0x00000000,	/* DENALI_PHY_885_DATA */
-+			0x00000000,	/* DENALI_PHY_886_DATA */
-+			0x00000000,	/* DENALI_PHY_887_DATA */
-+			0x00000000,	/* DENALI_PHY_888_DATA */
-+			0x00000000,	/* DENALI_PHY_889_DATA */
-+			0x00000000,	/* DENALI_PHY_890_DATA */
-+			0x00000000,	/* DENALI_PHY_891_DATA */
-+			0x00000000,	/* DENALI_PHY_892_DATA */
-+			0x00000000,	/* DENALI_PHY_893_DATA */
-+			0x00000000,	/* DENALI_PHY_894_DATA */
-+			0x00000000,	/* DENALI_PHY_895_DATA */
-+			0x00000000,	/* DENALI_PHY_896_DATA */
-+			0x00000000,	/* DENALI_PHY_897_DATA */
-+			0x00000005,	/* DENALI_PHY_898_DATA */
-+			0x04000f01,	/* DENALI_PHY_899_DATA */
-+			0x00020040,	/* DENALI_PHY_900_DATA */
-+			0x00020055,	/* DENALI_PHY_901_DATA */
-+			0x00000000,	/* DENALI_PHY_902_DATA */
-+			0x00000000,	/* DENALI_PHY_903_DATA */
-+			0x00000000,	/* DENALI_PHY_904_DATA */
-+			0x00000050,	/* DENALI_PHY_905_DATA */
-+			0x00000000,	/* DENALI_PHY_906_DATA */
-+			0x01010100,	/* DENALI_PHY_907_DATA */
-+			0x00000600,	/* DENALI_PHY_908_DATA */
-+			0x00000000,	/* DENALI_PHY_909_DATA */
-+			0x00006400,	/* DENALI_PHY_910_DATA */
-+			0x01221102,	/* DENALI_PHY_911_DATA */
-+			0x00000000,	/* DENALI_PHY_912_DATA */
-+			0x000d1f00,	/* DENALI_PHY_913_DATA */
-+			0x0d1f0d1f,	/* DENALI_PHY_914_DATA */
-+			0x0d1f0d1f,	/* DENALI_PHY_915_DATA */
-+			0x00030003,	/* DENALI_PHY_916_DATA */
-+			0x03000300,	/* DENALI_PHY_917_DATA */
-+			0x00000300,	/* DENALI_PHY_918_DATA */
-+			0x01221102,	/* DENALI_PHY_919_DATA */
-+			0x00000000,	/* DENALI_PHY_920_DATA */
-+			0x00000000,	/* DENALI_PHY_921_DATA */
-+			0x03020000,	/* DENALI_PHY_922_DATA */
-+			0x00000001,	/* DENALI_PHY_923_DATA */
-+			0x00000411,	/* DENALI_PHY_924_DATA */
-+			0x00000411,	/* DENALI_PHY_925_DATA */
-+			0x00000040,	/* DENALI_PHY_926_DATA */
-+			0x00000040,	/* DENALI_PHY_927_DATA */
-+			0x00000411,	/* DENALI_PHY_928_DATA */
-+			0x00000411,	/* DENALI_PHY_929_DATA */
-+			0x00004410,	/* DENALI_PHY_930_DATA */
-+			0x00004410,	/* DENALI_PHY_931_DATA */
-+			0x00004410,	/* DENALI_PHY_932_DATA */
-+			0x00004410,	/* DENALI_PHY_933_DATA */
-+			0x00004410,	/* DENALI_PHY_934_DATA */
-+			0x00000411,	/* DENALI_PHY_935_DATA */
-+			0x00004410,	/* DENALI_PHY_936_DATA */
-+			0x00000411,	/* DENALI_PHY_937_DATA */
-+			0x00004410,	/* DENALI_PHY_938_DATA */
-+			0x00000411,	/* DENALI_PHY_939_DATA */
-+			0x00004410,	/* DENALI_PHY_940_DATA */
-+			0x00000000,	/* DENALI_PHY_941_DATA */
-+			0x00000000,	/* DENALI_PHY_942_DATA */
-+			0x00000000,	/* DENALI_PHY_943_DATA */
-+			0x64000000,	/* DENALI_PHY_944_DATA */
-+			0x00000000,	/* DENALI_PHY_945_DATA */
-+			0x00000000,	/* DENALI_PHY_946_DATA */
-+			0x00000508,	/* DENALI_PHY_947_DATA */
-+			0x00000000,	/* DENALI_PHY_948_DATA */
-+			0x00000000,	/* DENALI_PHY_949_DATA */
-+			0x00000000,	/* DENALI_PHY_950_DATA */
-+			0x00000000,	/* DENALI_PHY_951_DATA */
-+			0x00000000,	/* DENALI_PHY_952_DATA */
-+			0x00000000,	/* DENALI_PHY_953_DATA */
-+			0xe4000000,	/* DENALI_PHY_954_DATA */
-+			0x00000000,	/* DENALI_PHY_955_DATA */
-+			0x00000000,	/* DENALI_PHY_956_DATA */
-+			0x01010000,	/* DENALI_PHY_957_DATA */
-+			0x00000000	/* DENALI_PHY_958_DATA */
-+		}
-+	},
-+},
++	}
++
++	return 0;
++}
++
++static int lpddr4_set_rate(struct dram_info *dram,
++			   struct rk3399_sdram_params *params)
++{
++	u32 ctl;
++	u32 phy;
++
++	for (ctl = 0; ctl < 2; ctl++) {
++		phy = lpddr4_get_phy(params, ctl);
++
++		lpddr4_set_phy(dram, params, phy, &lpddr4_timings[ctl]);
++		lpddr4_set_ctl(dram, params, ctl,
++			       lpddr4_timings[ctl].base.ddr_freq);
++
++		debug("%s: change freq to %d mhz %d, %d\n", __func__,
++		      lpddr4_timings[ctl].base.ddr_freq / MHz, ctl, phy);
++	}
++
++	return 0;
++}
+ #endif /* CONFIG_RAM_RK3399_LPDDR4 */
+ 
+ static unsigned char calculate_stride(struct rk3399_sdram_params *params)
+@@ -1994,6 +2372,7 @@ static const struct sdram_rk3399_ops rk3399_ops = {
+ 	.set_rate = switch_to_phy_index1,
+ #else
+ 	.data_training = lpddr4_mr_detect,
++	.set_rate = lpddr4_set_rate,
+ #endif
+ };
+ 
+@@ -2017,6 +2396,7 @@ static int rk3399_dmc_init(struct udevice *dev)
+ 	priv->ops = &rk3399_ops;
+ 	priv->cic = syscon_get_first_range(ROCKCHIP_SYSCON_CIC);
+ 	priv->grf = syscon_get_first_range(ROCKCHIP_SYSCON_GRF);
++	priv->pmu = syscon_get_first_range(ROCKCHIP_SYSCON_PMU);
+ 	priv->pmugrf = syscon_get_first_range(ROCKCHIP_SYSCON_PMUGRF);
+ 	priv->pmusgrf = syscon_get_first_range(ROCKCHIP_SYSCON_PMUSGRF);
+ 	priv->pmucru = rockchip_get_pmucru();
+@@ -2035,8 +2415,8 @@ static int rk3399_dmc_init(struct udevice *dev)
+ 	      priv->chan[0].publ, priv->chan[0].msch,
+ 	      priv->chan[1].pctl, priv->chan[1].pi,
+ 	      priv->chan[1].publ, priv->chan[1].msch);
+-	debug("cru %p, cic %p, grf %p, sgrf %p, pmucru %p\n", priv->cru,
+-	      priv->cic, priv->pmugrf, priv->pmusgrf, priv->pmucru);
++	debug("cru %p, cic %p, grf %p, sgrf %p, pmucru %p, pmu %p\n", priv->cru,
++	      priv->cic, priv->pmugrf, priv->pmusgrf, priv->pmucru, priv->pmu);
+ 
+ #if CONFIG_IS_ENABLED(OF_PLATDATA)
+ 	ret = clk_get_by_index_platdata(dev, 0, dtplat->clocks, &priv->ddr_clk);
 -- 
 2.18.0.321.gffc6fa0e3
