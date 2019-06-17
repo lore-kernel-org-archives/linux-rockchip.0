@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 59/99] ram: rockchip: Kconfig: Add RK3399 LPDDR4 entry
-Date: Mon, 17 Jun 2019 13:02:12 +0530
-Message-ID: <20190617073252.27810-60-jagan@amarulasolutions.com>
+Subject: [PATCH v2 58/99] ram: rk3399: Configure phy IO in ds odt
+Date: Mon, 17 Jun 2019 13:02:11 +0530
+Message-ID: <20190617073252.27810-59-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,32 +21,384 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Supporting LPDDR4 code support in RK3399 would increases
-the size of SPL/TPL.
+Some dramtypes like lpddr4 initialization would required to
+configure phy IO even after pctl_cfg and after set_ds_odt.
 
-So add kconfig entry for RK3399 LPDDR4 code so-that
-the boards have LPDDR4 can enable them via defconfig.
+For those cases the set_ds_odt would be an initial call to
+setup the phy.
+
+To satisfy all the cases, trigger phy IO from set_ds_odt.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/ram/rockchip/Kconfig | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/ram/rockchip/sdram_rk3399.c | 327 ++++++++++++++--------------
+ 1 file changed, 162 insertions(+), 165 deletions(-)
 
-diff --git a/drivers/ram/rockchip/Kconfig b/drivers/ram/rockchip/Kconfig
-index 151ffb684d..4f274e01b3 100644
---- a/drivers/ram/rockchip/Kconfig
-+++ b/drivers/ram/rockchip/Kconfig
-@@ -23,4 +23,11 @@ config RAM_RK3399
- 	  This enables ram drivers support for the platforms based on
- 	  Rockchip RK3399 SoC.
+diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
+index d5ff17ad4f..7f01681a01 100644
+--- a/drivers/ram/rockchip/sdram_rk3399.c
++++ b/drivers/ram/rockchip/sdram_rk3399.c
+@@ -188,6 +188,166 @@ static void set_memory_map(const struct chan_info *chan, u32 channel,
+ 		writel(0x2EC7FFFF, &denali_pi[34]);
+ }
  
-+config RAM_RK3399_LPDDR4
-+	bool "LPDDR4 support for Rockchip RK3399"
-+	depends on RAM_RK3399
-+	help
-+	  This enables LPDDR4 sdram code support for the platforms based
-+	  on Rockchip RK3399 SoC.
++static int phy_io_config(const struct chan_info *chan,
++			 const struct rk3399_sdram_params *params)
++{
++	u32 *denali_phy = chan->publ->denali_phy;
++	u32 vref_mode_dq, vref_value_dq, vref_mode_ac, vref_value_ac;
++	u32 mode_sel;
++	u32 reg_value;
++	u32 drv_value, odt_value;
++	u32 speed;
 +
- endif # RAM_ROCKCHIP
++	/* vref setting */
++	if (params->base.dramtype == LPDDR4) {
++		/* LPDDR4 */
++		vref_mode_dq = 0x6;
++		vref_value_dq = 0x1f;
++		vref_mode_ac = 0x6;
++		vref_value_ac = 0x1f;
++	} else if (params->base.dramtype == LPDDR3) {
++		if (params->base.odt == 1) {
++			vref_mode_dq = 0x5;  /* LPDDR3 ODT */
++			drv_value = (readl(&denali_phy[6]) >> 12) & 0xf;
++			odt_value = (readl(&denali_phy[6]) >> 4) & 0xf;
++			if (drv_value == PHY_DRV_ODT_48) {
++				switch (odt_value) {
++				case PHY_DRV_ODT_240:
++					vref_value_dq = 0x16;
++					break;
++				case PHY_DRV_ODT_120:
++					vref_value_dq = 0x26;
++					break;
++				case PHY_DRV_ODT_60:
++					vref_value_dq = 0x36;
++					break;
++				default:
++					debug("Invalid ODT value.\n");
++					return -EINVAL;
++				}
++			} else if (drv_value == PHY_DRV_ODT_40) {
++				switch (odt_value) {
++				case PHY_DRV_ODT_240:
++					vref_value_dq = 0x19;
++					break;
++				case PHY_DRV_ODT_120:
++					vref_value_dq = 0x23;
++					break;
++				case PHY_DRV_ODT_60:
++					vref_value_dq = 0x31;
++					break;
++				default:
++					debug("Invalid ODT value.\n");
++					return -EINVAL;
++				}
++			} else if (drv_value == PHY_DRV_ODT_34_3) {
++				switch (odt_value) {
++				case PHY_DRV_ODT_240:
++					vref_value_dq = 0x17;
++					break;
++				case PHY_DRV_ODT_120:
++					vref_value_dq = 0x20;
++					break;
++				case PHY_DRV_ODT_60:
++					vref_value_dq = 0x2e;
++					break;
++				default:
++					debug("Invalid ODT value.\n");
++					return -EINVAL;
++				}
++			} else {
++				debug("Invalid DRV value.\n");
++				return -EINVAL;
++			}
++		} else {
++			vref_mode_dq = 0x2;  /* LPDDR3 */
++			vref_value_dq = 0x1f;
++		}
++		vref_mode_ac = 0x2;
++		vref_value_ac = 0x1f;
++	} else if (params->base.dramtype == DDR3) {
++		/* DDR3L */
++		vref_mode_dq = 0x1;
++		vref_value_dq = 0x1f;
++		vref_mode_ac = 0x1;
++		vref_value_ac = 0x1f;
++	} else {
++		debug("Unknown DRAM type.\n");
++		return -EINVAL;
++	}
++
++	reg_value = (vref_mode_dq << 9) | (0x1 << 8) | vref_value_dq;
++
++	/* PHY_913 PHY_PAD_VREF_CTRL_DQ_0 12bits offset_8 */
++	clrsetbits_le32(&denali_phy[913], 0xfff << 8, reg_value << 8);
++	/* PHY_914 PHY_PAD_VREF_CTRL_DQ_1 12bits offset_0 */
++	clrsetbits_le32(&denali_phy[914], 0xfff, reg_value);
++	/* PHY_914 PHY_PAD_VREF_CTRL_DQ_2 12bits offset_16 */
++	clrsetbits_le32(&denali_phy[914], 0xfff << 16, reg_value << 16);
++	/* PHY_915 PHY_PAD_VREF_CTRL_DQ_3 12bits offset_0 */
++	clrsetbits_le32(&denali_phy[915], 0xfff, reg_value);
++
++	reg_value = (vref_mode_ac << 9) | (0x1 << 8) | vref_value_ac;
++
++	/* PHY_915 PHY_PAD_VREF_CTRL_AC 12bits offset_16 */
++	clrsetbits_le32(&denali_phy[915], 0xfff << 16, reg_value << 16);
++
++	if (params->base.dramtype == LPDDR4)
++		mode_sel = 0x6;
++	else if (params->base.dramtype == LPDDR3)
++		mode_sel = 0x0;
++	else if (params->base.dramtype == DDR3)
++		mode_sel = 0x1;
++	else
++		return -EINVAL;
++
++	/* PHY_924 PHY_PAD_FDBK_DRIVE */
++	clrsetbits_le32(&denali_phy[924], 0x7 << 15, mode_sel << 15);
++	/* PHY_926 PHY_PAD_DATA_DRIVE */
++	clrsetbits_le32(&denali_phy[926], 0x7 << 6, mode_sel << 6);
++	/* PHY_927 PHY_PAD_DQS_DRIVE */
++	clrsetbits_le32(&denali_phy[927], 0x7 << 6, mode_sel << 6);
++	/* PHY_928 PHY_PAD_ADDR_DRIVE */
++	clrsetbits_le32(&denali_phy[928], 0x7 << 14, mode_sel << 14);
++	/* PHY_929 PHY_PAD_CLK_DRIVE */
++	clrsetbits_le32(&denali_phy[929], 0x7 << 14, mode_sel << 14);
++	/* PHY_935 PHY_PAD_CKE_DRIVE */
++	clrsetbits_le32(&denali_phy[935], 0x7 << 14, mode_sel << 14);
++	/* PHY_937 PHY_PAD_RST_DRIVE */
++	clrsetbits_le32(&denali_phy[937], 0x7 << 14, mode_sel << 14);
++	/* PHY_939 PHY_PAD_CS_DRIVE */
++	clrsetbits_le32(&denali_phy[939], 0x7 << 14, mode_sel << 14);
++
++	/* speed setting */
++	if (params->base.ddr_freq < 400)
++		speed = 0x0;
++	else if (params->base.ddr_freq < 800)
++		speed = 0x1;
++	else if (params->base.ddr_freq < 1200)
++		speed = 0x2;
++	else
++		speed = 0x3;
++
++	/* PHY_924 PHY_PAD_FDBK_DRIVE */
++	clrsetbits_le32(&denali_phy[924], 0x3 << 21, speed << 21);
++	/* PHY_926 PHY_PAD_DATA_DRIVE */
++	clrsetbits_le32(&denali_phy[926], 0x3 << 9, speed << 9);
++	/* PHY_927 PHY_PAD_DQS_DRIVE */
++	clrsetbits_le32(&denali_phy[927], 0x3 << 9, speed << 9);
++	/* PHY_928 PHY_PAD_ADDR_DRIVE */
++	clrsetbits_le32(&denali_phy[928], 0x3 << 17, speed << 17);
++	/* PHY_929 PHY_PAD_CLK_DRIVE */
++	clrsetbits_le32(&denali_phy[929], 0x3 << 17, speed << 17);
++	/* PHY_935 PHY_PAD_CKE_DRIVE */
++	clrsetbits_le32(&denali_phy[935], 0x3 << 17, speed << 17);
++	/* PHY_937 PHY_PAD_RST_DRIVE */
++	clrsetbits_le32(&denali_phy[937], 0x3 << 17, speed << 17);
++	/* PHY_939 PHY_PAD_CS_DRIVE */
++	clrsetbits_le32(&denali_phy[939], 0x3 << 17, speed << 17);
++
++	return 0;
++}
++
+ static void set_ds_odt(const struct chan_info *chan,
+ 		       const struct rk3399_sdram_params *params)
+ {
+@@ -332,6 +492,8 @@ static void set_ds_odt(const struct chan_info *chan,
+ 
+ 	/* phy_pad_fdbk_term 1bit DENALI_PHY_930 offset_17 */
+ 	clrsetbits_le32(&denali_phy[930], 0x1 << 17, reg_value);
++
++	phy_io_config(chan, params);
+ }
+ 
+ static void pctl_start(struct dram_info *dram, u8 channel)
+@@ -376,166 +538,6 @@ static void pctl_start(struct dram_info *dram, u8 channel)
+ 			dram->pwrup_srefresh_exit[channel]);
+ }
+ 
+-static int phy_io_config(const struct chan_info *chan,
+-			 const struct rk3399_sdram_params *params)
+-{
+-	u32 *denali_phy = chan->publ->denali_phy;
+-	u32 vref_mode_dq, vref_value_dq, vref_mode_ac, vref_value_ac;
+-	u32 mode_sel;
+-	u32 reg_value;
+-	u32 drv_value, odt_value;
+-	u32 speed;
+-
+-	/* vref setting */
+-	if (params->base.dramtype == LPDDR4) {
+-		/* LPDDR4 */
+-		vref_mode_dq = 0x6;
+-		vref_value_dq = 0x1f;
+-		vref_mode_ac = 0x6;
+-		vref_value_ac = 0x1f;
+-	} else if (params->base.dramtype == LPDDR3) {
+-		if (params->base.odt == 1) {
+-			vref_mode_dq = 0x5;  /* LPDDR3 ODT */
+-			drv_value = (readl(&denali_phy[6]) >> 12) & 0xf;
+-			odt_value = (readl(&denali_phy[6]) >> 4) & 0xf;
+-			if (drv_value == PHY_DRV_ODT_48) {
+-				switch (odt_value) {
+-				case PHY_DRV_ODT_240:
+-					vref_value_dq = 0x16;
+-					break;
+-				case PHY_DRV_ODT_120:
+-					vref_value_dq = 0x26;
+-					break;
+-				case PHY_DRV_ODT_60:
+-					vref_value_dq = 0x36;
+-					break;
+-				default:
+-					debug("Invalid ODT value.\n");
+-					return -EINVAL;
+-				}
+-			} else if (drv_value == PHY_DRV_ODT_40) {
+-				switch (odt_value) {
+-				case PHY_DRV_ODT_240:
+-					vref_value_dq = 0x19;
+-					break;
+-				case PHY_DRV_ODT_120:
+-					vref_value_dq = 0x23;
+-					break;
+-				case PHY_DRV_ODT_60:
+-					vref_value_dq = 0x31;
+-					break;
+-				default:
+-					debug("Invalid ODT value.\n");
+-					return -EINVAL;
+-				}
+-			} else if (drv_value == PHY_DRV_ODT_34_3) {
+-				switch (odt_value) {
+-				case PHY_DRV_ODT_240:
+-					vref_value_dq = 0x17;
+-					break;
+-				case PHY_DRV_ODT_120:
+-					vref_value_dq = 0x20;
+-					break;
+-				case PHY_DRV_ODT_60:
+-					vref_value_dq = 0x2e;
+-					break;
+-				default:
+-					debug("Invalid ODT value.\n");
+-					return -EINVAL;
+-				}
+-			} else {
+-				debug("Invalid DRV value.\n");
+-				return -EINVAL;
+-			}
+-		} else {
+-			vref_mode_dq = 0x2;  /* LPDDR3 */
+-			vref_value_dq = 0x1f;
+-		}
+-		vref_mode_ac = 0x2;
+-		vref_value_ac = 0x1f;
+-	} else if (params->base.dramtype == DDR3) {
+-		/* DDR3L */
+-		vref_mode_dq = 0x1;
+-		vref_value_dq = 0x1f;
+-		vref_mode_ac = 0x1;
+-		vref_value_ac = 0x1f;
+-	} else {
+-		debug("Unknown DRAM type.\n");
+-		return -EINVAL;
+-	}
+-
+-	reg_value = (vref_mode_dq << 9) | (0x1 << 8) | vref_value_dq;
+-
+-	/* PHY_913 PHY_PAD_VREF_CTRL_DQ_0 12bits offset_8 */
+-	clrsetbits_le32(&denali_phy[913], 0xfff << 8, reg_value << 8);
+-	/* PHY_914 PHY_PAD_VREF_CTRL_DQ_1 12bits offset_0 */
+-	clrsetbits_le32(&denali_phy[914], 0xfff, reg_value);
+-	/* PHY_914 PHY_PAD_VREF_CTRL_DQ_2 12bits offset_16 */
+-	clrsetbits_le32(&denali_phy[914], 0xfff << 16, reg_value << 16);
+-	/* PHY_915 PHY_PAD_VREF_CTRL_DQ_3 12bits offset_0 */
+-	clrsetbits_le32(&denali_phy[915], 0xfff, reg_value);
+-
+-	reg_value = (vref_mode_ac << 9) | (0x1 << 8) | vref_value_ac;
+-
+-	/* PHY_915 PHY_PAD_VREF_CTRL_AC 12bits offset_16 */
+-	clrsetbits_le32(&denali_phy[915], 0xfff << 16, reg_value << 16);
+-
+-	if (params->base.dramtype == LPDDR4)
+-		mode_sel = 0x6;
+-	else if (params->base.dramtype == LPDDR3)
+-		mode_sel = 0x0;
+-	else if (params->base.dramtype == DDR3)
+-		mode_sel = 0x1;
+-	else
+-		return -EINVAL;
+-
+-	/* PHY_924 PHY_PAD_FDBK_DRIVE */
+-	clrsetbits_le32(&denali_phy[924], 0x7 << 15, mode_sel << 15);
+-	/* PHY_926 PHY_PAD_DATA_DRIVE */
+-	clrsetbits_le32(&denali_phy[926], 0x7 << 6, mode_sel << 6);
+-	/* PHY_927 PHY_PAD_DQS_DRIVE */
+-	clrsetbits_le32(&denali_phy[927], 0x7 << 6, mode_sel << 6);
+-	/* PHY_928 PHY_PAD_ADDR_DRIVE */
+-	clrsetbits_le32(&denali_phy[928], 0x7 << 14, mode_sel << 14);
+-	/* PHY_929 PHY_PAD_CLK_DRIVE */
+-	clrsetbits_le32(&denali_phy[929], 0x7 << 14, mode_sel << 14);
+-	/* PHY_935 PHY_PAD_CKE_DRIVE */
+-	clrsetbits_le32(&denali_phy[935], 0x7 << 14, mode_sel << 14);
+-	/* PHY_937 PHY_PAD_RST_DRIVE */
+-	clrsetbits_le32(&denali_phy[937], 0x7 << 14, mode_sel << 14);
+-	/* PHY_939 PHY_PAD_CS_DRIVE */
+-	clrsetbits_le32(&denali_phy[939], 0x7 << 14, mode_sel << 14);
+-
+-	/* speed setting */
+-	if (params->base.ddr_freq < 400)
+-		speed = 0x0;
+-	else if (params->base.ddr_freq < 800)
+-		speed = 0x1;
+-	else if (params->base.ddr_freq < 1200)
+-		speed = 0x2;
+-	else
+-		speed = 0x3;
+-
+-	/* PHY_924 PHY_PAD_FDBK_DRIVE */
+-	clrsetbits_le32(&denali_phy[924], 0x3 << 21, speed << 21);
+-	/* PHY_926 PHY_PAD_DATA_DRIVE */
+-	clrsetbits_le32(&denali_phy[926], 0x3 << 9, speed << 9);
+-	/* PHY_927 PHY_PAD_DQS_DRIVE */
+-	clrsetbits_le32(&denali_phy[927], 0x3 << 9, speed << 9);
+-	/* PHY_928 PHY_PAD_ADDR_DRIVE */
+-	clrsetbits_le32(&denali_phy[928], 0x3 << 17, speed << 17);
+-	/* PHY_929 PHY_PAD_CLK_DRIVE */
+-	clrsetbits_le32(&denali_phy[929], 0x3 << 17, speed << 17);
+-	/* PHY_935 PHY_PAD_CKE_DRIVE */
+-	clrsetbits_le32(&denali_phy[935], 0x3 << 17, speed << 17);
+-	/* PHY_937 PHY_PAD_RST_DRIVE */
+-	clrsetbits_le32(&denali_phy[937], 0x3 << 17, speed << 17);
+-	/* PHY_939 PHY_PAD_CS_DRIVE */
+-	clrsetbits_le32(&denali_phy[939], 0x3 << 17, speed << 17);
+-
+-	return 0;
+-}
+-
+ static int pctl_cfg(struct dram_info *dram, const struct chan_info *chan,
+ 		    u32 channel, const struct rk3399_sdram_params *params)
+ {
+@@ -545,7 +547,6 @@ static int pctl_cfg(struct dram_info *dram, const struct chan_info *chan,
+ 	const u32 *params_ctl = params->pctl_regs.denali_ctl;
+ 	const u32 *params_phy = params->phy_regs.denali_phy;
+ 	u32 tmp, tmp1, tmp2;
+-	int ret;
+ 
+ 	/*
+ 	 * work around controller bug:
+@@ -623,10 +624,6 @@ static int pctl_cfg(struct dram_info *dram, const struct chan_info *chan,
+ 	tmp = (readl(&denali_phy[467]) >> 16) & 0xff;
+ 	clrsetbits_le32(&denali_phy[467], 0xff << 16, (tmp + 0x10) << 16);
+ 
+-	ret = phy_io_config(chan, params);
+-	if (ret)
+-		return ret;
+-
+ 	return 0;
+ }
+ 
 -- 
 2.18.0.321.gffc6fa0e3
