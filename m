@@ -1,8 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 78/99] ram: rk3399: Update lpddr4 mode_sel based on io
- settings
-Date: Mon, 17 Jun 2019 13:02:31 +0530
-Message-ID: <20190617073252.27810-79-jagan@amarulasolutions.com>
+Subject: [PATCH v2 79/99] ram: rk3399: Update lpddr4 vref_mode_ac
+Date: Mon, 17 Jun 2019 13:02:32 +0530
+Message-ID: <20190617073252.27810-80-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,47 +21,25 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The mode_sel on lpddr4 value is depending on IO settings
-of rd_vref.
-
-Add support for it.
+Update vref_mode_ac for lpddr4 based on VDDQ/3/2=16.8%
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ drivers/ram/rockchip/sdram_rk3399.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 24db601072..0e98079468 100644
+index 0e98079468..e3180d0ef2 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -347,7 +347,7 @@ static int phy_io_config(const struct chan_info *chan,
- 	u32 drv_value, odt_value;
- 	u32 speed;
- 
--	/* vref setting */
-+	/* vref setting & mode setting */
- 	if (params->base.dramtype == LPDDR4) {
- 		struct io_setting *io = lpddr4_get_io_settings(params, mr5);
- 		u32 rd_vref = io->rd_vref * 1000;
-@@ -355,15 +355,18 @@ static int phy_io_config(const struct chan_info *chan,
- 		if (rd_vref < 36700) {
- 			/* MODE_LV[2:0] = LPDDR4 (Range 2)*/
- 			vref_mode_dq = 0x7;
-+			/* MODE[2:0]= LPDDR4 Range 2(0.4*VDDQ) */
-+			mode_sel = 0x5;
- 			vref_value_dq = (rd_vref - 3300) / 521;
- 		} else {
- 			/* MODE_LV[2:0] = LPDDR4 (Range 1)*/
- 			vref_mode_dq = 0x6;
-+			/* MODE[2:0]= LPDDR4 Range 1(0.33*VDDQ) */
-+			mode_sel = 0x4;
+@@ -366,7 +366,8 @@ static int phy_io_config(const struct chan_info *chan,
  			vref_value_dq = (rd_vref - 15300) / 521;
  		}
  		vref_mode_ac = 0x6;
- 		vref_value_ac = 0x1f;
--		mode_sel = 0x6;
+-		vref_value_ac = 0x1f;
++		/* VDDQ/3/2=16.8% */
++		vref_value_ac = 0x3;
  	} else if (params->base.dramtype == LPDDR3) {
  		if (params->base.odt == 1) {
  			vref_mode_dq = 0x5;  /* LPDDR3 ODT */
