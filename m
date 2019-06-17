@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 08/99] ram: rk3399: Clear PI_175 interrupts in data training
-Date: Mon, 17 Jun 2019 13:01:21 +0530
-Message-ID: <20190617073252.27810-9-jagan@amarulasolutions.com>
+Subject: [PATCH v2 09/99] ram: rk3399: Use rank mask in ca data training
+Date: Mon, 17 Jun 2019 13:01:22 +0530
+Message-ID: <20190617073252.27810-10-jagan@amarulasolutions.com>
 References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,70 +21,38 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Clear the PI_175 interrupts before processing actual
-data training in all relevant calls.
-
-This would help to clear interrupt from previous training.
+Add rank_mask based on the rank number, this would keep
+the ca data training loop based on the desired rank mask
+value instead of looping for all values.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ drivers/ram/rockchip/sdram_rk3399.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 20a3e89c17..1898466b4c 100644
+index 1898466b4c..76d6440f9a 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -617,6 +617,9 @@ static int data_training_ca(const struct chan_info *chan, u32 channel,
+@@ -616,11 +616,17 @@ static int data_training_ca(const struct chan_info *chan, u32 channel,
+ 	u32 i, tmp;
  	u32 obs_0, obs_1, obs_2, obs_err = 0;
  	u32 rank = params->ch[channel].rank;
++	u32 rank_mask;
  
-+	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
-+	writel(0x00003f7c, (&denali_pi[175]));
+ 	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
+ 	writel(0x00003f7c, (&denali_pi[175]));
+ 
+-	for (i = 0; i < rank; i++) {
++	rank_mask = (rank == 1) ? 0x1 : 0x3;
 +
- 	for (i = 0; i < rank; i++) {
++	for (i = 0; i < 4; i++) {
++		if (!(rank_mask & (1 << i)))
++			continue;
++
  		select_per_cs_training_index(chan, i);
  
-@@ -671,6 +674,9 @@ static int data_training_wl(const struct chan_info *chan, u32 channel,
- 	u32 obs_0, obs_1, obs_2, obs_3, obs_err = 0;
- 	u32 rank = params->ch[channel].rank;
- 
-+	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
-+	writel(0x00003f7c, (&denali_pi[175]));
-+
- 	for (i = 0; i < rank; i++) {
- 		select_per_cs_training_index(chan, i);
- 
-@@ -730,6 +736,9 @@ static int data_training_rg(const struct chan_info *chan, u32 channel,
- 	u32 obs_0, obs_1, obs_2, obs_3, obs_err = 0;
- 	u32 rank = params->ch[channel].rank;
- 
-+	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
-+	writel(0x00003f7c, (&denali_pi[175]));
-+
- 	for (i = 0; i < rank; i++) {
- 		select_per_cs_training_index(chan, i);
- 
-@@ -789,6 +798,9 @@ static int data_training_rl(const struct chan_info *chan, u32 channel,
- 	u32 i, tmp;
- 	u32 rank = params->ch[channel].rank;
- 
-+	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
-+	writel(0x00003f7c, (&denali_pi[175]));
-+
- 	for (i = 0; i < rank; i++) {
- 		select_per_cs_training_index(chan, i);
- 
-@@ -834,6 +846,9 @@ static int data_training_wdql(const struct chan_info *chan, u32 channel,
- 	u32 i, tmp;
- 	u32 rank = params->ch[channel].rank;
- 
-+	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
-+	writel(0x00003f7c, (&denali_pi[175]));
-+
- 	for (i = 0; i < rank; i++) {
- 		select_per_cs_training_index(chan, i);
- 
+ 		/* PI_100 PI_CALVL_EN:RW:8:2 */
 -- 
 2.18.0.321.gffc6fa0e3
