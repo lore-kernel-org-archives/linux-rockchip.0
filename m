@@ -1,110 +1,110 @@
-From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v5 5/5] brcmfmac: sdio: Don't tune while the card is off
-Date: Mon, 17 Jun 2019 10:56:53 -0700
-Message-ID: <20190617175653.21756-6-dianders@chromium.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v5 0/5] brcmfmac: sdio: Deal better w/ transmission errors
+ related to idle
+Date: Mon, 17 Jun 2019 20:38:49 +0200
+Message-ID: <CAPDyKFpaX6DSM_BjtghAHUf7qYCyEG+wMagXPUdgz3Eutovqfw@mail.gmail.com>
 References: <20190617175653.21756-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20190617175653.21756-1-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Arend van Spriel <arend.vanspriel-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
-Cc: brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Double Lo <double.lo-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Naveen Gupta <naveen.gupta-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Madhan Mohan R <madhanmohan.r-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Wright Feng <wright.feng-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, Chi-Hsien Lin <chi-hsien.lin-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, brcm80211-dev-list-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Franky Lin <franky.lin-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hante Meuleman <hante.meuleman-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Ondrej Jirman <megous-5qf/QAjKc83QT0dZR+AlfA@public.gmane.org>, YueHaibing <yuehaibing-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190617175653.21756-1-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>, Kalle Valo <kvalo@codeaurora.org>
+Cc: Adrian Hunter <adrian.hunter@intel.com>, Arend van Spriel <arend.vanspriel@broadcom.com>, brcm80211-dev-list.pdl@broadcom.com, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Double Lo <double.lo@cypress.com>, Brian Norris <briannorris@chromium.org>, linux-wireless <linux-wireless@vger.kernel.org>, Naveen Gupta <naveen.gupta@cypress.com>, Madhan Mohan R <madhanmohan.r@cypress.com>, Matthias Kaehlcke <mka@chromium.org>, Wright Feng <wright.feng@cypress.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, netdev <netdev@vger.kernel.org>, brcm80211-dev-list <brcm80211-dev-list@cypress.com>, YueHaibing <yuehaibing@huawei.com>, Allison Randal <allison@lohutok.net>, Thomas Gleixner <tglx@linutronix.de>, Hante Meuleman <hante.meuleman@broa>
 List-Id: linux-rockchip.vger.kernel.org
 
-When Broadcom SDIO cards are idled they go to sleep and a whole
-separate subsystem takes over their SDIO communication.  This is the
-Always-On-Subsystem (AOS) and it can't handle tuning requests.
+On Mon, 17 Jun 2019 at 19:57, Douglas Anderson <dianders@chromium.org> wrote:
+>
+> This series attempts to deal better with the expected transmission
+> errors related to the idle states (handled by the Always-On-Subsystem
+> or AOS) on the SDIO-based WiFi on rk3288-veyron-minnie,
+> rk3288-veyron-speedy, and rk3288-veyron-mickey.
+>
+> Some details about those errors can be found in
+> <https://crbug.com/960222>, but to summarize it here: if we try to
+> send the wakeup command to the WiFi card at the same time it has
+> decided to wake up itself then it will behave badly on the SDIO bus.
+> This can cause timeouts or CRC errors.
+>
+> When I tested on 4.19 and 4.20 these CRC errors can be seen to cause
+> re-tuning.  Since I am currently developing on 4.19 this was the
+> original problem I attempted to solve.
+>
+> On mainline it turns out that you don't see the retuning errors but
+> you see tons of spam about timeouts trying to wakeup from sleep.  I
+> tracked down the commit that was causing that and have partially
+> reverted it here.  I have no real knowledge about Broadcom WiFi, but
+> the commit that was causing problems sounds (from the descriptioin) to
+> be a hack commit penalizing all Broadcom WiFi users because of a bug
+> in a Cypress SD controller.  I will let others comment if this is
+> truly the case and, if so, what the right solution should be.
+>
+> For v3 of this series I have added 2 patches to the end of the series
+> to address errors that would show up on systems with these same SDIO
+> WiFi cards when used on controllers that do periodic retuning.  These
+> systems need an extra fix to prevent the retuning from happening when
+> the card is asleep.
+>
+> I believe v5 of this series is all ready to go assuming Kalle Valo is
+> good with it.  I've added after-the-cut notes to patches awaiting his
+> Ack and have added other tags collected so far.
+>
+> Changes in v5:
+> - Add missing sdio_retune_crc_enable() in comments (Ulf).
+> - /s/reneable/re-enable (Ulf).
+> - Remove leftover prototypes: mmc_expect_errors_begin() / end() (Ulf).
+> - Rewording of "sleep command" in commit message (Arend).
+>
+> Changes in v4:
+> - Moved to SDIO API only (Adrian, Ulf).
+> - Renamed to make it less generic, now retune_crc_disable (Ulf).
+> - Function header makes it clear host must be claimed (Ulf).
+> - No more WARN_ON (Ulf).
+> - Adjust to API rename (Adrian, Ulf).
+> - Moved retune hold/release to SDIO API (Adrian).
+> - Adjust to API rename (Adrian).
+>
+> Changes in v3:
+> - Took out the spinlock since I believe this is all in one context.
+> - Expect errors for all of brcmf_sdio_kso_control() (Adrian).
+> - ("mmc: core: Export mmc_retune_hold_now() mmc_retune_release()") new for v3.
+> - ("brcmfmac: sdio: Don't tune while the card is off") new for v3.
+>
+> Changes in v2:
+> - A full revert, not just a partial one (Arend).  ...with explicit Cc.
+> - Updated commit message to clarify based on discussion of v1.
+>
+> Douglas Anderson (5):
+>   Revert "brcmfmac: disable command decode in sdio_aos"
+>   mmc: core: API to temporarily disable retuning for SDIO CRC errors
+>   brcmfmac: sdio: Disable auto-tuning around commands expected to fail
+>   mmc: core: Add sdio_retune_hold_now() and sdio_retune_release()
+>   brcmfmac: sdio: Don't tune while the card is off
+>
+>  drivers/mmc/core/core.c                       |  5 +-
+>  drivers/mmc/core/sdio_io.c                    | 77 +++++++++++++++++++
+>  .../broadcom/brcm80211/brcmfmac/sdio.c        | 17 ++--
+>  include/linux/mmc/host.h                      |  1 +
+>  include/linux/mmc/sdio_func.h                 |  6 ++
+>  5 files changed, 99 insertions(+), 7 deletions(-)
+>
+> --
+> 2.22.0.410.gd8fdbe21b5-goog
+>
 
-Specifically, as tested on rk3288-veyron-minnie (which reports having
-BCM4354/1 in dmesg), if I force a retune in brcmf_sdio_kso_control()
-when "on = 1" (aka we're transition from sleep to wake) by whacking:
-  bus->sdiodev->func1->card->host->need_retune = 1
-...then I can often see tuning fail.  In this case dw_mmc reports "All
-phases bad!").  Note that I don't get 100% failure, presumably because
-sometimes the card itself has already transitioned away from the AOS
-itself by the time we try to wake it up.  If I force retuning when "on
-= 0" (AKA force retuning right before sending the command to go to
-sleep) then retuning is always OK.
+Applied for fixes, thanks!
 
-NOTE: we need _both_ this patch and the patch to avoid triggering
-tuning due to CRC errors in the sleep/wake transition, AKA ("brcmfmac:
-sdio: Disable auto-tuning around commands expected to fail").  Though
-both patches handle issues with Broadcom's AOS, the problems are
-distinct:
-1. We want to defer (but not ignore) asynchronous (like
-   timer-requested) tuning requests till the card is awake.  However,
-   we want to ignore CRC errors during the transition, we don't want
-   to queue deferred tuning request.
-2. You could imagine that the AOS could implement retuning but we
-   could still get errors while transitioning in and out of the AOS.
-   Similarly you could imagine a seamless transition into and out of
-   the AOS (with no CRC errors) even if the AOS couldn't handle
-   tuning.
+Some minor changes:
+1) Dropped the a few "commit notes", that was more related to version
+and practical information about the series.
+2) Dropped fixes tags for patch 2->5, but instead put a stable tag
+targeted for v4.18+.
 
-ALSO NOTE: presumably there is never a desperate need to retune in
-order to wake up the card, since doing so is impossible.  Luckily the
-only way the card can get into sleep state is if we had a good enough
-tuning to send it the command to put it into sleep, so presumably that
-"good enough" tuning is enough to wake us up, at least with a few
-retries.
+Awaiting an ack from Kalle before sending the PR to Linus.
 
-Cc: stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Acked-by: Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Reviewed-by: Arend van Spriel <arend.vanspriel-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
----
-Patches #2 - #5 will go through Ulf's tree.
+Kalle, perhaps you prefer to pick patch 1, as it could go separate.
+Then please tell - and/or if there is anything else you want me to
+change.
 
-This patch is still lacking Kalle Valo's Ack, which should probably be
-received before landing in Ulf's tree.
-
-I've CCed stable@ here without a version tag.  As per Adrian Hunter
-this patch applies cleanly to 4.18+ so that would be an easy first
-target.  However, if someone were so inclined they could provide
-further backports.  As per Adrian [1] the root problem has existed for
-~4 years.
-
-[1] https://lkml.kernel.org/r/4f39e152-04ba-a64e-985a-df93e6d15ff8-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org
-
-Changes in v5:
-- Rewording of "sleep command" in commit message (Arend).
-
-Changes in v4:
-- Adjust to API rename (Adrian).
-
-Changes in v3:
-- ("brcmfmac: sdio: Don't tune while the card is off") new for v3.
-
-Changes in v2: None
-
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-index ee76593259a7..629140b6d7e2 100644
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-@@ -669,6 +669,10 @@ brcmf_sdio_kso_control(struct brcmf_sdio *bus, bool on)
- 
- 	sdio_retune_crc_disable(bus->sdiodev->func1);
- 
-+	/* Cannot re-tune if device is asleep; defer till we're awake */
-+	if (on)
-+		sdio_retune_hold_now(bus->sdiodev->func1);
-+
- 	wr_val = (on << SBSDIO_FUNC1_SLEEPCSR_KSO_SHIFT);
- 	/* 1st KSO write goes to AOS wake up core if device is asleep  */
- 	brcmf_sdiod_writeb(bus->sdiodev, SBSDIO_FUNC1_SLEEPCSR, wr_val, &err);
-@@ -729,6 +733,9 @@ brcmf_sdio_kso_control(struct brcmf_sdio *bus, bool on)
- 	if (try_cnt > MAX_KSO_ATTEMPTS)
- 		brcmf_err("max tries: rd_val=0x%x err=%d\n", rd_val, err);
- 
-+	if (on)
-+		sdio_retune_release(bus->sdiodev->func1);
-+
- 	sdio_retune_crc_enable(bus->sdiodev->func1);
- 
- 	return err;
--- 
-2.22.0.410.gd8fdbe21b5-goog
+Kind regards
+Uffe
