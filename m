@@ -1,59 +1,47 @@
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
-Subject: Re: [PATCH] drm/bridge/synopsys: dw-hdmi: Handle audio for more clock rates
-Date: Tue, 18 Jun 2019 19:23:18 +0200
-Message-ID: <6219398.I55JWXAmVF@jernej-laptop>
-References: <20190617235558.64571-1-dianders@chromium.org>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: Re: [PATCH] Revert "ARM: dts: rockchip: set PWM delay backlight
+ settings for Minnie"
+Date: Tue, 18 Jun 2019 11:34:55 -0700
+Message-ID: <20190618183455.GU137143@google.com>
+References: <20190614224533.169881-1-mka@chromium.org>
+ <45f94c6a-5bd7-92b0-d23f-ae7e0481935f@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=utf-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190617235558.64571-1-dianders@chromium.org>
+Content-Disposition: inline
+In-Reply-To: <45f94c6a-5bd7-92b0-d23f-ae7e0481935f@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, seanpaul@chromium.org, heiko@sntech.de, jonas@kwiboo.se, linux-rockchip@lists.infradead.org, narmstrong@baylibre.com, dgreid@chromium.org, cychiang@chromium.org, David Airlie <airlied@linux.ie>, Zheng Yang <zhengyang@rock-chips.com>, Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>, Daniel Vetter <daniel@ffwll.ch>
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Pavel Machek <pavel@ucw.cz>, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi!
+Hi Enric,
 
-Dne torek, 18. junij 2019 ob 01:55:58 CEST je Douglas Anderson napisal(a):
-> Let's add some better support for HDMI audio to dw_hdmi.
-> Specifically:
+On Tue, Jun 18, 2019 at 10:21:52AM +0200, Enric Balletbo i Serra wrote:
+> Hi Matthias,
 > 
-> 1. For 44.1 kHz audio the old code made the assumption that an N of
-> 6272 was right most of the time.  That wasn't true and the new table
-> should give better 44.1 kHz audio for many more rates.
+> On 15/6/19 0:45, Matthias Kaehlcke wrote:
+> > This reverts commit 288ceb85b505c19abe1895df068dda5ed20cf482.
+> > 
+> > According to the commit message the AUO B101EAN01 panel on minnie
+> > requires a PWM delay of 200 ms, however this is not what the
+> > datasheet says. The datasheet mentions a *max* delay of 200 ms
+> > for T2 ("delay from LCDVDD to black video generation") and T3
+> > ("delay from LCDVDD to HPD high"), which aren't related to the
+> > PWM. The backlight power sequence does not specify min/max
+> > constraints for T15 (time from PWM on to BL enable) or T16
+> > (time from BL disable to PWM off).
+> > 
 > 
-> 2. The new table has values from the HDMI spec for 297 MHz and 594
-> MHz.
-> 
-> 3. There is now code to try to come up with a more idea N/CTS for
-> clock rates that aren't in the table.  This code is a bit slow because
-> it iterates over every possible value of N and picks the best one, but
-> it should make a good fallback.
-> 
-> 4. The new code allows for platforms that know they make a clock rate
-> slightly differently to pick different N/CTS values.  For instance on
-> rk3288 we can make 25,176,471 Hz instead of 25,174,825.1748... Hz
-> (25.2 MHz / 1.001).  A future patch to the rk3288 platform code could
-> enable support for this clock rate and specify the N/CTS that would be
-> ideal.
-> 
-> NOTE: the oddest part of this patch comes about because computing the
-> ideal N/CTS means knowing the _exact_ clock rate, not a rounded
-> version of it.  The drm framework makes this harder by rounding rates
-> to kHz, but even if it didn't there might be cases where the ideal
-> rate could only be calculated if we knew the real (non-integral) rate.
-> This means that in cases where we know (or believe) that the true rate
-> is something other than the rate we are told by drm.
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> Could you point from where the confusion comes from? I think will be helpful for
+> the record. B101EAN01.8 vs B101EAN01.1
 
-Which bus is used for audio transfer on your device? If it is I2S, which is 
-commonly used, then please be aware of this patch:
-https://lists.freedesktop.org/archives/dri-devel/2019-June/221539.html
+sounds good
 
-It avoids exact N/CTS calculation by enabling auto detection. It is well 
-tested on multiple SoCs from Allwinner, Amlogic and Rockchip.
+> > Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+> 
+> With the above added:
+> 
+> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 
-Best regards,
-Jernej
+Thanks!
