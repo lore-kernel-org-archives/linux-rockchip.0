@@ -1,46 +1,59 @@
-From: Ilia Mirkin <imirkin@alum.mit.edu>
-Subject: Re: [RFC/WIP] drm/rockchip: Support CRTC gamma LUT
-Date: Tue, 18 Jun 2019 12:57:24 -0400
-Message-ID: <CAKb7Uvg1gfHdVv69sXFs8rgOP-bGkDuMXvikDMYdJO8EC1zxiQ@mail.gmail.com>
-References: <20190613192244.5447-1-ezequiel@collabora.com>
- <CAKb7UvhxnysEPrw2javE=OK8qop=3LPuRphbu_WQKvgCJYU6Kg@mail.gmail.com>
- <6b0519240580229d1cc4ce6d2c98326f2ef7f97c.camel@collabora.com>
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
+Subject: Re: [PATCH] drm/bridge/synopsys: dw-hdmi: Handle audio for more clock rates
+Date: Tue, 18 Jun 2019 19:23:18 +0200
+Message-ID: <6219398.I55JWXAmVF@jernej-laptop>
+References: <20190617235558.64571-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <6b0519240580229d1cc4ce6d2c98326f2ef7f97c.camel@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Douglas Anderson <dianders@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Boris Brezillon <boris.brezillon@collabora.com>, Sean Paul <seanpaul@chromium.org>, kernel@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190617235558.64571-1-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, seanpaul@chromium.org, heiko@sntech.de, jonas@kwiboo.se, linux-rockchip@lists.infradead.org, narmstrong@baylibre.com, dgreid@chromium.org, cychiang@chromium.org, David Airlie <airlied@linux.ie>, Zheng Yang <zhengyang@rock-chips.com>, Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKdW4gMTgsIDIwMTkgYXQgOTozNiBBTSBFemVxdWllbCBHYXJjaWEgPGV6ZXF1aWVs
-QGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+Cj4gT24gVGh1LCAyMDE5LTA2LTEzIGF0IDE1OjM2IC0w
-NDAwLCBJbGlhIE1pcmtpbiB3cm90ZToKPiA+IE5vdGUgdGhhdCB1c2Vyc3BhY2UgbWF5IHByb3Zp
-ZGUgYW55IHNpemUgb2YgZ2FtbWEgbHV0LiBIYXZlIGEgbG9vayBhdAo+ID4gaTkxNS9pbnRlbF9j
-b2xvci5jOmludGVsX2NvbG9yX2NoZWNrIHdoaWNoIGZpbHRlcnMgb3V0IG9ubHkgdGhlCj4gPiBh
-bGxvd2VkIHNpemVzLiBDb25zaWRlciBoYXZpbmcgYSBzcGVjaWFsIGFsbG93YW5jZSBmb3IgMjU2
-LXNpemVkIExVVHMKPiA+IHNpbmNlIHRoYXQncyB3aGF0IG1vc3QgbGVnYWN5IHVzZXJzcGFjZSB3
-aWxsIHNldCwgYW5kIGl0IHNlZW1zIGxpa2UgYQo+ID4gd2FzdGUgdG8gY3JlYXRlIGEgMTAtYml0
-IExVVCBmb3IgUkdCQTggY29sb3IuCj4gPgo+Cj4gUmlnaHQuIEkgd2lsbCBhZGQgYSBjaGVjayBm
-b3IgdGhlIGdhbW1hIGx1dCBzaXplLgo+Cj4gVW5mb3J0dW5hdGVseSwgdGhpcyBoYXJkd2FyZSBz
-ZWVtcyB0byBvbmx5IHN1cHBvcnQgMTAtYml0LCAxMDI0LXNpemVkIExVVHMuCj4KPiBUaGUgc3Bl
-YyBkb2VzIG1lbnRpb24gYSBzdXBwb3J0IDgtYml0LCAyNTYtZW50cmllcywgYnV0IGl0J3Mgbm90
-IGF0IGFsbAo+IGNsZWFyIGhvdyBjb25maWd1cmUgdGhhdC4KCkl0J3MgdXAgdG8geW91LCBhbmQg
-dGhlIG1vcmUgZXhwZXJpZW5jZWQgZHJtIHJldmlld2VycywgYnV0IGV2ZW4gaWYKeW91IGNhbid0
-IGZpZ3VyZSBvdXQgaG93IHRvIGJlbmQgdGhlIGhhcmR3YXJlIHRvIHlvdXIgd2lsbCAod2hpY2gg
-aXMKd29ydGggYSBiaXQgb2YgZXhwbG9yYXRpb24pLCB5b3UgY2FuIHN0aWxsIGVtdWxhdGUgaXQg
-YnkganVzdApyZXBlYXRpbmcgYWxsIHRoZSB2YWx1ZXMgNHguIElNSE8gMjU2LXNpemVkIExVVHMg
-YXJlIHdvcnRoIHN1cHBvcnRpbmcKd2hlbiBwb3NzaWJsZS4KCkNoZWVycywKCiAgLWlsaWEKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
-aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Hi!
+
+Dne torek, 18. junij 2019 ob 01:55:58 CEST je Douglas Anderson napisal(a):
+> Let's add some better support for HDMI audio to dw_hdmi.
+> Specifically:
+> 
+> 1. For 44.1 kHz audio the old code made the assumption that an N of
+> 6272 was right most of the time.  That wasn't true and the new table
+> should give better 44.1 kHz audio for many more rates.
+> 
+> 2. The new table has values from the HDMI spec for 297 MHz and 594
+> MHz.
+> 
+> 3. There is now code to try to come up with a more idea N/CTS for
+> clock rates that aren't in the table.  This code is a bit slow because
+> it iterates over every possible value of N and picks the best one, but
+> it should make a good fallback.
+> 
+> 4. The new code allows for platforms that know they make a clock rate
+> slightly differently to pick different N/CTS values.  For instance on
+> rk3288 we can make 25,176,471 Hz instead of 25,174,825.1748... Hz
+> (25.2 MHz / 1.001).  A future patch to the rk3288 platform code could
+> enable support for this clock rate and specify the N/CTS that would be
+> ideal.
+> 
+> NOTE: the oddest part of this patch comes about because computing the
+> ideal N/CTS means knowing the _exact_ clock rate, not a rounded
+> version of it.  The drm framework makes this harder by rounding rates
+> to kHz, but even if it didn't there might be cases where the ideal
+> rate could only be calculated if we knew the real (non-integral) rate.
+> This means that in cases where we know (or believe) that the true rate
+> is something other than the rate we are told by drm.
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+
+Which bus is used for audio transfer on your device? If it is I2S, which is 
+commonly used, then please be aware of this patch:
+https://lists.freedesktop.org/archives/dri-devel/2019-June/221539.html
+
+It avoids exact N/CTS calculation by enabling auto detection. It is well 
+tested on multiple SoCs from Allwinner, Amlogic and Rockchip.
+
+Best regards,
+Jernej
