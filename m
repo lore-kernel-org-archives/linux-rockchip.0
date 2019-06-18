@@ -1,57 +1,64 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH v3 0/6] rockchip: rk3399: Make u-boot.itb as
-	BUILD_TARGET
-Date: Tue, 18 Jun 2019 12:46:43 +0530
-Message-ID: <CAMty3ZA7W5eqx08NPgaJwq32vDWuafcqtKWg59XZEzi77QYSmA@mail.gmail.com>
-References: <20190507185215.15441-1-jagan@amarulasolutions.com>
- <CAMty3ZB4KBKnrhxSG2EsQDg1fAaEDQ_T1swVnZiaKcbtkKc=OA@mail.gmail.com>
- <853f6ec1-a818-ae69-35b5-ef36fadc9ca1@rock-chips.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: Re: [PATCH] Revert "ARM: dts: rockchip: set PWM delay backlight
+ settings for Minnie"
+Date: Tue, 18 Jun 2019 10:21:52 +0200
+Message-ID: <45f94c6a-5bd7-92b0-d23f-ae7e0481935f@collabora.com>
+References: <20190614224533.169881-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <853f6ec1-a818-ae69-35b5-ef36fadc9ca1@rock-chips.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190614224533.169881-1-mka@chromium.org>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Kaehlcke <mka@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Pavel Machek <pavel@ucw.cz>, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKdW4gMTgsIDIwMTkgYXQgMTI6NDAgUE0gS2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0By
-b2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4KPiBIaSBKYWdhbiwKPgo+Cj4gT24gMDYvMTMvMjAxOSAw
-Mjo1MyBQTSwgSmFnYW4gVGVraSB3cm90ZToKPiA+IEhpIEtldmVyLAo+ID4KPiA+IE9uIFdlZCwg
-TWF5IDgsIDIwMTkgYXQgMTI6MjMgQU0gSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9u
-cy5jb20+IHdyb3RlOgo+ID4+IFJLMzM5OSBUUEwgY2hhbmdlcyBhcmUgbWVyZ2VkIHJlY2VudGx5
-IHdoaWNoIEkgd2FzIHRoaW5raW5nCj4gPj4gb2Ygd2FpdGluZyBmb3IgbmV4dCBNVy4gc28gdGhp
-cyBzZXJpZXMgc2tpcCBiaW5tYW4gY2hhbmdlcwo+ID4+IGZyb20gcHJldmlvdXMgdmVyc2lvblsx
-XSBhbmQgaGF2ZSBvbmx5IEJVSUxEX1RBUkdFVCBjaGFuZ2VzLgo+ID4+Cj4gPj4gQklOTUFOIGNo
-YW5nZXMgd291bGQgbmVlZCBhbm90aGVyIHJld29yaywgd2hlcmUgd2UgbmVlZCB0byBjb25zaWRl
-cgo+ID4+IHRoZSBUUEwgaW1hZ2UgYXMgd2VsbCBhbmQgdGhhdCB3b3VsZCBzZW5kIHNlcGFyYXRl
-bHkuCj4gPj4KPiA+PiBDSGFuZ2VzIGZvciB2MzoKPiA+PiAtIHNraXAgYmlubWFuIGNoYW5nZXMK
-PiA+PiAtIHJlYmFzZSBvbiB1LWJvb3Qtcm9ja2NoaXAvbWFzdGVyCj4gPj4KPiA+PiBbMV0gaHR0
-cHM6Ly9wYXRjaHdvcmsub3psYWJzLm9yZy9jb3Zlci8xMDkyMTk4Lwo+ID4+Cj4gPj4gSmFnYW4g
-VGVraSAoNik6Cj4gPj4gICBNYWtlZmlsZTogY2xlYW4gaW1hZ2UubWFwCj4gPj4gICBNYWtlZmls
-ZTogY2xlYW4gYmwzMV8qLmJpbgo+ID4+ICAgdHJhdmlzLnltbDogQWRkIHB5ZWxmdG9vbHMgaW5z
-dGFsbCBlbnRyeQo+ID4+ICAgcm9ja2NoaXA6IHJrMzM5OTogR2V0IGJsMzEuZWxmIHZpYSBCTDMx
-Cj4gPj4gICBib2FyZDogcHVtYTogR2V0IGJsMzEuYmluIHZpYSBCTDMxIGFuZCByazMzOTltMC5i
-aW4gdmlhIFBNVU0wCj4gPj4gICBLY29uZmlnOiBBZGQgdS1ib290Lml0YiBCVUlMRF9UQVJHRVQg
-Zm9yIFJvY2tjaGlwCj4gPiBJIHRoaW5rIHlvdSBob2xkIGZvciB0aGlzIHdpdGggcHVtYSBjaGFu
-Z2VzPyBhbnkgZnVydGhlciBjb21tZW50cwo+ID4gcGxlYXNlIGxldCBtZSBrbm93Lgo+ID4KPgo+
-IFllcywgb25lIHJlYXNvbiBpcyBub3QgZ2V0IHJlc3BvbnNlIGZyb20gcHVtYSBib2FyZC4KPiBB
-bmQgSSB0aGluayB0aGlzIGRvZXMgbm90IGJyZWFrIHRoZSBib2FyZCBzdXBwb3J0IGJ1dCBtYXli
-ZQo+IGJyZWFrIHRoZSBidWlsZCBwcm9jZXNzIGlmIG5vdCBhbGwgdGhlIGVudmlyb25tZW50IGhh
-cyBleHBvcnQgYXMgZXhwZWN0ZWQ/CgpJdCBjYW4ndCBicmVhayB0aGUgYnVpbGQsIGZvciBub3Qg
-ZXhwb3J0aW5nIGNhc2VzIHRoZSBzY3JpcHQgd2lsbApjcmVhdGUgZHVtbXkgYmwzMSBlbGYgYW5k
-IHRoZSBibDMxIHZhcmlhYmxlIGFzc2lnbiBpdCBhbmQgZmluYWxseQp0cmlnZ2VyIHdhcm5pbmcu
-IGZ5aSwgdGhlIGVsc2Ugc3RhdGVtZW50IG9uIHRoaXMgcGF0Y2ggWzFdIGRvZXMgd2hhdCBJCm1l
-bnRpb25lZC4KClsxXSBodHRwczovL3BhdGNod29yay5vemxhYnMub3JnL3BhdGNoLzEwOTY1MDUv
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBt
-YWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xp
-c3RpbmZvL3UtYm9vdAo=
+Hi Matthias,
+
+On 15/6/19 0:45, Matthias Kaehlcke wrote:
+> This reverts commit 288ceb85b505c19abe1895df068dda5ed20cf482.
+> 
+> According to the commit message the AUO B101EAN01 panel on minnie
+> requires a PWM delay of 200 ms, however this is not what the
+> datasheet says. The datasheet mentions a *max* delay of 200 ms
+> for T2 ("delay from LCDVDD to black video generation") and T3
+> ("delay from LCDVDD to HPD high"), which aren't related to the
+> PWM. The backlight power sequence does not specify min/max
+> constraints for T15 (time from PWM on to BL enable) or T16
+> (time from BL disable to PWM off).
+> 
+
+Could you point from where the confusion comes from? I think will be helpful for
+the record. B101EAN01.8 vs B101EAN01.1
+
+> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+
+With the above added:
+
+Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+
+Thanks,
+~ Enric
+
+> ---
+> Enric, if you think I misinterpreted the datasheet please holler!
+> ---
+>  arch/arm/boot/dts/rk3288-veyron-minnie.dts | 2 --
+>  1 file changed, 2 deletions(-)
+> 
+> diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+> index 468a1818545d..28cbe07f96ec 100644
+> --- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+> +++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+> @@ -86,8 +86,6 @@
+>  			240 241 242 243 244 245 246 247
+>  			248 249 250 251 252 253 254 255>;
+>  	power-supply = <&backlight_regulator>;
+> -	post-pwm-on-delay-ms = <200>;
+> -	pwm-off-delay-ms = <200>;
+>  };
+>  
+>  &emmc {
+> 
