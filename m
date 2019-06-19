@@ -1,100 +1,297 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH] ARM: dts: rockchip: Configure BT_DEV_WAKE in on rk3288-veyron
-Date: Wed, 19 Jun 2019 11:34:25 -0700
-Message-ID: <20190619183425.149470-1-dianders@chromium.org>
+Subject: [PATCH v2 1/2] drm/bridge/synopsys: dw-hdmi: Handle audio for more clock rates
+Date: Wed, 19 Jun 2019 14:07:17 -0700
+Message-ID: <20190619210718.134951-1-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, mka@chromium.org, Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+To: Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, seanpaul@chromium.org
+Cc: jernej.skrabec@siol.net, heiko@sntech.de, jonas@kwiboo.se, maxime.ripard@bootlin.com, narmstrong@baylibre.com, linux-rockchip@lists.infradead.org, dgreid@chromium.org, cychiang@chromium.org, jbrunet@baylibre.com, Douglas Anderson <dianders@chromium.org>, Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-This is the other half of the hacky solution from commit f497ab6b4bb8
-("ARM: dts: rockchip: Configure BT_HOST_WAKE as wake-up signal on
-veyron").  Specifically the LPM driver that the Broadcom Bluetooth
-expects to have (but is missing in mainline) has two halves of the
-equation: BT_HOST_WAKE and BT_DEV_WAKE.  The BT_HOST_WAKE (which was
-handled in the previous commit) is the one that lets the Bluetooth
-wake the system up.  The BT_DEV_WAKE (this patch) tells the Bluetooth
-that it's OK to go into a low power mode.  That means we were burning
-a bit of extra power in S3 without this patch.  Measurements are a bit
-noisy, but it appears to be a few mA worth of difference.
+Let's add some better support for HDMI audio to dw_hdmi.
+Specifically:
 
-NOTE: Though these pins don't do much on systems with Marvell
-Bluetooth, downstream kernels set it on all veyron boards so we'll do
-the same.
+1. For 44.1 kHz audio the old code made the assumption that an N of
+6272 was right most of the time.  That wasn't true and the new table
+should pick a more ideal value.
+
+2. The new table has values from the HDMI spec for 297 MHz and 594
+MHz.
+
+3. There is now code to try to come up with a more idea N/CTS for
+clock rates that aren't in the table.  This code is a bit slow because
+it iterates over every possible value of N and picks the best one, but
+it should make a good fallback.
+
+NOTES:
+- The oddest part of this patch comes about because computing the
+  ideal N/CTS means knowing the _exact_ clock rate, not a rounded
+  version of it.  The drm framework makes this harder by rounding
+  rates to kHz, but even if it didn't there might be cases where the
+  ideal rate could only be calculated if we knew the real
+  (non-integral) rate.  This means that in cases where we know (or
+  believe) that the true rate is something other than the rate we are
+  told by drm.
+- This patch makes much less of a difference after the patch
+  ("drm/bridge: dw-hdmi: Use automatic CTS generation mode when using
+  non-AHB audio"), at least if you're using I2S audio.  The main goal
+  of picking a good N is to make it possible to get a nice integral
+  CTS value, but if CTS is automatic then that's much less critical.
 
 Signed-off-by: Douglas Anderson <dianders@chromium.org>
 ---
 
- .../boot/dts/rk3288-veyron-chromebook.dtsi    |  2 ++
- arch/arm/boot/dts/rk3288-veyron.dtsi          | 20 +++++++++++++++++++
- 2 files changed, 22 insertions(+)
+Changes in v2:
+- Atop ("drm/bridge: dw-hdmi: Use automatic CTS generation mode when
+  using non-AHB audio").
+- Split out the ability of a platform to provide custom tables.
 
-diff --git a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-index 5727017f34b2..1cadb522fd0d 100644
---- a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-@@ -237,6 +237,7 @@
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 203 +++++++++++++++++-----
+ 1 file changed, 162 insertions(+), 41 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index de4c3669c83f..7cdffebcc7cb 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -60,6 +60,82 @@ enum hdmi_datamap {
+ 	YCbCr422_12B = 0x12,
+ };
  
- 		/* Wake only */
- 		&suspend_l_wake
-+		&bt_dev_wake_awake
- 	>;
- 	pinctrl-1 = <
- 		/* Common for sleep and wake, but no owners */
-@@ -246,6 +247,7 @@
- 
- 		/* Sleep only */
- 		&suspend_l_sleep
-+		&bt_dev_wake_sleep
- 	>;
- 
- 	backlight {
-diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
-index e2635ad574e7..53d2f2452868 100644
---- a/arch/arm/boot/dts/rk3288-veyron.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
-@@ -485,12 +485,18 @@
- 		&ddr0_retention
- 		&ddrio_pwroff
- 		&global_pwroff
++struct dw_hdmi_audio_tmds_n {
++	unsigned long tmds;
++	unsigned int n_32k;
++	unsigned int n_44k1;
++	unsigned int n_48k;
++};
 +
-+		/* Wake only */
-+		&bt_dev_wake_awake
- 	>;
- 	pinctrl-1 = <
- 		/* Common for sleep and wake, but no owners */
- 		&ddr0_retention
- 		&ddrio_pwroff
- 		&global_pwroff
++/*
++ * Unless otherwise noted, entries in this table are 100% optimization.
++ * Values can be obtained from hdmi_compute_n() but that function is
++ * slow so we pre-compute values we expect to see.
++ *
++ * All 32k and 48k values are expected to be the same (due to the way
++ * the math works) for any rate that's an exact kHz.
++ *
++ * If a particular platform knows that it makes a rate slightly
++ * differently then it should add a platform-specific match.
++ */
++static const struct dw_hdmi_audio_tmds_n common_tmds_n_table[] = {
++	/* Doesn't match computations, assumes real clock = 25.2 MHz / 1.001 */
++	{ .tmds = 25175000, .n_32k = 4576, .n_44k1 = 7007, .n_48k = 6864, },
 +
-+		/* Sleep only */
-+		&bt_dev_wake_sleep
- 	>;
++	{ .tmds = 25200000, .n_32k = 4096, .n_44k1 = 5656, .n_48k = 6144, },
++	{ .tmds = 27000000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
++	{ .tmds = 27027000, .n_32k = 4096, .n_44k1 = 6272, .n_48k = 6144, },
++	{ .tmds = 28320000, .n_32k = 4096, .n_44k1 = 5586, .n_48k = 6144, },
++	{ .tmds = 30240000, .n_32k = 4096, .n_44k1 = 5642, .n_48k = 6144, },
++	{ .tmds = 31500000, .n_32k = 4096, .n_44k1 = 5600, .n_48k = 6144, },
++	{ .tmds = 32000000, .n_32k = 4096, .n_44k1 = 5733, .n_48k = 6144, },
++	{ .tmds = 33750000, .n_32k = 4096, .n_44k1 = 6272, .n_48k = 6144, },
++	{ .tmds = 36000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, },
++	{ .tmds = 40000000, .n_32k = 4096, .n_44k1 = 5733, .n_48k = 6144, },
++	{ .tmds = 49500000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
++	{ .tmds = 50000000, .n_32k = 4096, .n_44k1 = 5292, .n_48k = 6144, },
++	{ .tmds = 54000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, },
++	{ .tmds = 65000000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, },
++	{ .tmds = 68250000, .n_32k = 4096, .n_44k1 = 5376, .n_48k = 6144, },
++	{ .tmds = 71000000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, },
++	{ .tmds = 72000000, .n_32k = 4096, .n_44k1 = 5635, .n_48k = 6144, },
++	{ .tmds = 73250000, .n_32k = 4096, .n_44k1 = 14112, .n_48k = 6144, },
++
++	/* Doesn't match computations, assumes real clock = 74.25 MHz / 1.001 */
++	{ .tmds = 74176000, .n_32k = 11648, .n_44k1 = 17836, .n_48k = 11648, },
++
++	{ .tmds = 74250000, .n_32k = 4096, .n_44k1 = 6272, .n_48k = 6144, },
++	{ .tmds = 75000000, .n_32k = 4096, .n_44k1 = 5880, .n_48k = 6144, },
++	{ .tmds = 78750000, .n_32k = 4096, .n_44k1 = 5600, .n_48k = 6144, },
++	{ .tmds = 78800000, .n_32k = 4096, .n_44k1 = 5292, .n_48k = 6144, },
++	{ .tmds = 79500000, .n_32k = 4096, .n_44k1 = 4704, .n_48k = 6144, },
++	{ .tmds = 83500000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, },
++	{ .tmds = 85500000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
++	{ .tmds = 88750000, .n_32k = 4096, .n_44k1 = 14112, .n_48k = 6144, },
++	{ .tmds = 97750000, .n_32k = 4096, .n_44k1 = 14112, .n_48k = 6144, },
++	{ .tmds = 101000000, .n_32k = 4096, .n_44k1 = 7056, .n_48k = 6144, },
++	{ .tmds = 106500000, .n_32k = 4096, .n_44k1 = 4704, .n_48k = 6144, },
++	{ .tmds = 108000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, },
++	{ .tmds = 115500000, .n_32k = 4096, .n_44k1 = 5712, .n_48k = 6144, },
++	{ .tmds = 119000000, .n_32k = 4096, .n_44k1 = 5544, .n_48k = 6144, },
++	{ .tmds = 135000000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
++	{ .tmds = 146250000, .n_32k = 4096, .n_44k1 = 6272, .n_48k = 6144, },
++
++	/* Doesn't match computations, assumes real clock = 148.5 MHz / 1.001 */
++	{ .tmds = 148352000, .n_32k = 11648, .n_44k1 = 8918, .n_48k = 5824, },
++
++	{ .tmds = 148500000, .n_32k = 4096, .n_44k1 = 5488, .n_48k = 6144, },
++	{ .tmds = 154000000, .n_32k = 4096, .n_44k1 = 5544, .n_48k = 6144, },
++	{ .tmds = 162000000, .n_32k = 4096, .n_44k1 = 5684, .n_48k = 6144, },
++
++	/* For 297 MHz+ HDMI spec has some other rule for setting N */
++	{ .tmds = 297000000, .n_32k = 3073, .n_44k1 = 4704, .n_48k = 5120, },
++	{ .tmds = 594000000, .n_32k = 3073, .n_44k1 = 9408, .n_48k = 10240, },
++
++	/* End of table */
++	{ .tmds = 0,         .n_32k = 0,    .n_44k1 = 0,    .n_48k = 0, },
++};
++
+ static const u16 csc_coeff_default[3][4] = {
+ 	{ 0x2000, 0x0000, 0x0000, 0x0000 },
+ 	{ 0x0000, 0x2000, 0x0000, 0x0000 },
+@@ -524,60 +600,105 @@ static void hdmi_set_cts_n(struct dw_hdmi *hdmi, unsigned int cts,
+ 	hdmi_writeb(hdmi, n & 0xff, HDMI_AUD_N1);
+ }
  
- 	pcfg_pull_none_drv_8ma: pcfg-pull-none-drv-8ma {
-@@ -596,6 +602,20 @@
- 		sdio0_clk: sdio0-clk {
- 			rockchip,pins = <4 RK_PD1 1 &pcfg_pull_none_drv_8ma>;
- 		};
+-static unsigned int hdmi_compute_n(unsigned int freq, unsigned long pixel_clk)
++static int hdmi_match_tmds_n_table(struct dw_hdmi *hdmi, unsigned int freq,
++				   unsigned long pixel_clk)
+ {
+-	unsigned int n = (128 * freq) / 1000;
+-	unsigned int mult = 1;
++	const struct dw_hdmi_audio_tmds_n *tmds_n = NULL;
++	int mult = 1;
++	int i;
+ 
+ 	while (freq > 48000) {
+ 		mult *= 2;
+ 		freq /= 2;
+ 	}
+ 
++	for (i = 0; common_tmds_n_table[i].tmds != 0; i++) {
++		if (pixel_clk == common_tmds_n_table[i].tmds) {
++			tmds_n = &common_tmds_n_table[i];
++			break;
++		}
++	}
++
++	if (tmds_n == NULL)
++		return -ENOENT;
++
+ 	switch (freq) {
+ 	case 32000:
+-		if (pixel_clk == 25175000)
+-			n = 4576;
+-		else if (pixel_clk == 27027000)
+-			n = 4096;
+-		else if (pixel_clk == 74176000 || pixel_clk == 148352000)
+-			n = 11648;
+-		else
+-			n = 4096;
+-		n *= mult;
+-		break;
+-
++		return tmds_n->n_32k * mult;
+ 	case 44100:
+-		if (pixel_clk == 25175000)
+-			n = 7007;
+-		else if (pixel_clk == 74176000)
+-			n = 17836;
+-		else if (pixel_clk == 148352000)
+-			n = 8918;
+-		else
+-			n = 6272;
+-		n *= mult;
+-		break;
+-
++		return tmds_n->n_44k1 * mult;
+ 	case 48000:
+-		if (pixel_clk == 25175000)
+-			n = 6864;
+-		else if (pixel_clk == 27027000)
+-			n = 6144;
+-		else if (pixel_clk == 74176000)
+-			n = 11648;
+-		else if (pixel_clk == 148352000)
+-			n = 5824;
+-		else
+-			n = 6144;
+-		n *= mult;
+-		break;
+-
++		return tmds_n->n_48k * mult;
+ 	default:
+-		break;
++		return -ENOENT;
++	}
++}
++
++static u64 hdmi_audio_math_diff(unsigned int freq, unsigned int n,
++				unsigned int pixel_clk)
++{
++	u64 final, diff;
++	u64 cts;
++
++	final = (u64)pixel_clk * n;
++
++	cts = final;
++	do_div(cts, 128 * freq);
++
++	diff = final - (u64)cts * (128 * freq);
++
++	return diff;
++}
++
++static unsigned int hdmi_compute_n(struct dw_hdmi *hdmi, unsigned int freq,
++				   unsigned long pixel_clk)
++{
++	unsigned int min_n = DIV_ROUND_UP((128 * freq), 1500);
++	unsigned int max_n = (128 * freq) / 300;
++	unsigned int ideal_n = (128 * freq) / 1000;
++	unsigned int best_n_distance = ideal_n;
++	unsigned int best_n = 0;
++	u64 best_diff = U64_MAX;
++	int n;
++
++	/* If the ideal N could satisfy the audio math, then just take it */
++	if (hdmi_audio_math_diff(freq, ideal_n, pixel_clk) == 0)
++		return ideal_n;
++
++	for (n = min_n; n <= max_n; n++) {
++		u64 diff = hdmi_audio_math_diff(freq, n, pixel_clk);
++
++		if (diff < best_diff || (diff == best_diff &&
++		    abs(n - ideal_n) < best_n_distance)) {
++			best_n = n;
++			best_diff = diff;
++			best_n_distance = abs(best_n - ideal_n);
++		}
 +
 +		/*
-+		 * These pins are only present on very new veyron boards; on
-+		 * older boards bt_dev_wake is simply always high.  Note that
-+		 * gpio4_D2 is a NC on old veyron boards, so it doesn't hurt
-+		 * to map this pin everywhere
++		 * The best N already satisfy the audio math, and also be
++		 * the closest value to ideal N, so just cut the loop.
 +		 */
-+		bt_dev_wake_sleep: bt-dev-wake-sleep {
-+			rockchip,pins = <4 RK_PD2 RK_FUNC_GPIO &pcfg_output_low>;
-+		};
-+
-+		bt_dev_wake_awake: bt-dev-wake-awake {
-+			rockchip,pins = <4 RK_PD2 RK_FUNC_GPIO &pcfg_output_high>;
-+		};
- 	};
++		if ((best_diff == 0) && (abs(n - ideal_n) > best_n_distance))
++			break;
+ 	}
  
- 	tpm {
+-	return n;
++	return best_n;
++}
++
++static unsigned int hdmi_find_n(struct dw_hdmi *hdmi, unsigned int freq,
++				unsigned long pixel_clk)
++{
++	int n;
++
++	n = hdmi_match_tmds_n_table(hdmi, freq, pixel_clk);
++	if (n > 0)
++		return n;
++
++	dev_warn(hdmi->dev, "Rate %lu missing; compute N dynamically\n",
++		 pixel_clk);
++
++	return hdmi_compute_n(hdmi, freq, pixel_clk);
+ }
+ 
+ static void hdmi_set_clk_regenerator(struct dw_hdmi *hdmi,
+@@ -588,7 +709,7 @@ static void hdmi_set_clk_regenerator(struct dw_hdmi *hdmi,
+ 	u8 config3;
+ 	u64 tmp;
+ 
+-	n = hdmi_compute_n(sample_rate, pixel_clk);
++	n = hdmi_find_n(hdmi, sample_rate, pixel_clk);
+ 
+ 	config3 = hdmi_readb(hdmi, HDMI_CONFIG3_ID);
+ 
 -- 
 2.22.0.410.gd8fdbe21b5-goog
