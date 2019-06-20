@@ -1,45 +1,53 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 8/8] rockchip: rk3399: Enable TPL_BOARD_INIT
-Date: Fri, 21 Jun 2019 00:25:06 +0530
-Message-ID: <20190620185506.11449-9-jagan@amarulasolutions.com>
-References: <20190620185506.11449-1-jagan@amarulasolutions.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] Revert "ARM: dts: rockchip: add startup delay to
+ rk3288-veyron panel-regulators"
+Date: Thu, 20 Jun 2019 13:31:09 -0700
+Message-ID: <CAD=FV=Wi21Emjg7CpCJfSRiKr_EisR20UO1tbPjAeJzdJNbSVw@mail.gmail.com>
+References: <20190620182056.61552-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190620185506.11449-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190620182056.61552-1-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable TPL_BOARD_INIT, this would help us to show
-TPL boot prints.
+Hi,
 
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- arch/arm/mach-rockchip/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+On Thu, Jun 20, 2019 at 11:21 AM Douglas Anderson <dianders@chromium.org> wrote:
+>
+> This reverts commit 1f45e8c6d0161f044d679f242fe7514e2625af4a.
+>
+> This 100 ms mystery delay is not on downstream kernels and no longer
+> seems needed on upstream kernels either [1].  Presumably something in the
+> meantime has made things better.  A few possibilities for patches that
+> have landed in the meantime that could have made this better are
+> commit 3157694d8c7f ("pwm-backlight: Add support for PWM delays
+> proprieties."), commit 5fb5caee92ba ("pwm-backlight: Enable/disable
+> the PWM before/after LCD enable toggle."), and commit 6d5922dd0d60
+> ("ARM: dts: rockchip: set PWM delay backlight settings for Veyron")
+>
+> Let's revert and get our 100 ms back.
+>
+> [1] https://lkml.kernel.org/r/2226970.BAPq4liE1j@diego
+>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+>
+>  arch/arm/boot/dts/rk3288-veyron-jaq.dts    | 1 -
+>  arch/arm/boot/dts/rk3288-veyron-jerry.dts  | 1 -
+>  arch/arm/boot/dts/rk3288-veyron-minnie.dts | 1 -
+>  arch/arm/boot/dts/rk3288-veyron-speedy.dts | 1 -
+>  4 files changed, 4 deletions(-)
 
-diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
-index ce039022df..1d483be8b9 100644
---- a/arch/arm/mach-rockchip/Kconfig
-+++ b/arch/arm/mach-rockchip/Kconfig
-@@ -184,6 +184,7 @@ config ROCKCHIP_RK3399
- 	imply TPL_LIBCOMMON_SUPPORT
- 	imply TPL_LIBGENERIC_SUPPORT
- 	imply TPL_SYS_MALLOC_SIMPLE
-+	imply TPL_BOARD_INIT
- 	imply TPL_BOOTROM_SUPPORT
- 	imply TPL_DRIVERS_MISC_SUPPORT
- 	imply TPL_OF_CONTROL
--- 
-2.18.0.321.gffc6fa0e3
+Maybe wait before applying.  I've been running reboot tests now with
+this patch applied (among others) and with enough reboots I managed to
+see:
+
+[    5.682418] rockchip-dp ff970000.dp: eDP link training failed (-5)
+
+I'll see if I can confirm that it's this patch and why things are
+different compared to downstream.
+
+-Doug
