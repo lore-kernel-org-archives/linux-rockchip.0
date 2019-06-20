@@ -1,85 +1,43 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] drm/bridge/synopsys: dw-hdmi: Handle audio for more clock
- rates
-Date: Wed, 19 Jun 2019 14:11:41 -0700
-Message-ID: <CAD=FV=V_xg3VfWDMfjJp158ELUQm5xJQCRn85H4mx_-YfjfWTg@mail.gmail.com>
-References: <20190617235558.64571-1-dianders@chromium.org>
- <6219398.I55JWXAmVF@jernej-laptop>
- <9bba43cb-7070-8b2a-cfc6-f601fd22a315@baylibre.com>
+Subject: Re: [PATCH 04/10] ARM: dts: rockchip: add startup delay to
+ rk3288-veyron panel-regulators
+Date: Wed, 19 Jun 2019 18:27:55 -0700
+Message-ID: <CAD=FV=U23+5pcze=6zDTx0dAYF8HTmbR8s8zem93VhgYgaZeGQ@mail.gmail.com>
+References: <1458265206-15733-1-git-send-email-heiko@sntech.de> <1458265206-15733-5-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <9bba43cb-7070-8b2a-cfc6-f601fd22a315@baylibre.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Neil Armstrong <narmstrong@baylibre.com>
-Cc: =?UTF-8?Q?Jernej_=C5=A0krabec?= <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Sean Paul <seanpaul@chromium.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Dylan Reid <dgreid@chromium.org>, Zheng Yang <zhengyang@rock-chips.com>, Sam Ravnborg <sam@ravnborg.org>, Thomas Gleixner <tglx@linutronix.de>, Cheng-Yi Chiang <cychiang@chromium.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1458265206-15733-5-git-send-email-heiko@sntech.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Yakir Yang <ykk@rock-chips.com>, Matthias Kaehlcke <mka@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBXZWQsIEp1biAxOSwgMjAxOSBhdCA4OjIzIEFNIE5laWwgQXJtc3Ryb25nIDxuYXJt
-c3Ryb25nQGJheWxpYnJlLmNvbT4gd3JvdGU6Cj4KPiBPbiAxOC8wNi8yMDE5IDE5OjIzLCBKZXJu
-ZWogxaBrcmFiZWMgd3JvdGU6Cj4gPiBIaSEKPiA+Cj4gPiBEbmUgdG9yZWssIDE4LiBqdW5paiAy
-MDE5IG9iIDAxOjU1OjU4IENFU1QgamUgRG91Z2xhcyBBbmRlcnNvbiBuYXBpc2FsKGEpOgo+ID4+
-IExldCdzIGFkZCBzb21lIGJldHRlciBzdXBwb3J0IGZvciBIRE1JIGF1ZGlvIHRvIGR3X2hkbWku
-Cj4gPj4gU3BlY2lmaWNhbGx5Ogo+ID4+Cj4gPj4gMS4gRm9yIDQ0LjEga0h6IGF1ZGlvIHRoZSBv
-bGQgY29kZSBtYWRlIHRoZSBhc3N1bXB0aW9uIHRoYXQgYW4gTiBvZgo+ID4+IDYyNzIgd2FzIHJp
-Z2h0IG1vc3Qgb2YgdGhlIHRpbWUuICBUaGF0IHdhc24ndCB0cnVlIGFuZCB0aGUgbmV3IHRhYmxl
-Cj4gPj4gc2hvdWxkIGdpdmUgYmV0dGVyIDQ0LjEga0h6IGF1ZGlvIGZvciBtYW55IG1vcmUgcmF0
-ZXMuCj4gPj4KPiA+PiAyLiBUaGUgbmV3IHRhYmxlIGhhcyB2YWx1ZXMgZnJvbSB0aGUgSERNSSBz
-cGVjIGZvciAyOTcgTUh6IGFuZCA1OTQKPiA+PiBNSHouCj4gPj4KPiA+PiAzLiBUaGVyZSBpcyBu
-b3cgY29kZSB0byB0cnkgdG8gY29tZSB1cCB3aXRoIGEgbW9yZSBpZGVhIE4vQ1RTIGZvcgo+ID4+
-IGNsb2NrIHJhdGVzIHRoYXQgYXJlbid0IGluIHRoZSB0YWJsZS4gIFRoaXMgY29kZSBpcyBhIGJp
-dCBzbG93IGJlY2F1c2UKPiA+PiBpdCBpdGVyYXRlcyBvdmVyIGV2ZXJ5IHBvc3NpYmxlIHZhbHVl
-IG9mIE4gYW5kIHBpY2tzIHRoZSBiZXN0IG9uZSwgYnV0Cj4gPj4gaXQgc2hvdWxkIG1ha2UgYSBn
-b29kIGZhbGxiYWNrLgo+ID4+Cj4gPj4gNC4gVGhlIG5ldyBjb2RlIGFsbG93cyBmb3IgcGxhdGZv
-cm1zIHRoYXQga25vdyB0aGV5IG1ha2UgYSBjbG9jayByYXRlCj4gPj4gc2xpZ2h0bHkgZGlmZmVy
-ZW50bHkgdG8gcGljayBkaWZmZXJlbnQgTi9DVFMgdmFsdWVzLiAgRm9yIGluc3RhbmNlIG9uCj4g
-Pj4gcmszMjg4IHdlIGNhbiBtYWtlIDI1LDE3Niw0NzEgSHogaW5zdGVhZCBvZiAyNSwxNzQsODI1
-LjE3NDguLi4gSHoKPiA+PiAoMjUuMiBNSHogLyAxLjAwMSkuICBBIGZ1dHVyZSBwYXRjaCB0byB0
-aGUgcmszMjg4IHBsYXRmb3JtIGNvZGUgY291bGQKPiA+PiBlbmFibGUgc3VwcG9ydCBmb3IgdGhp
-cyBjbG9jayByYXRlIGFuZCBzcGVjaWZ5IHRoZSBOL0NUUyB0aGF0IHdvdWxkIGJlCj4gPj4gaWRl
-YWwuCj4gPj4KPiA+PiBOT1RFOiB0aGUgb2RkZXN0IHBhcnQgb2YgdGhpcyBwYXRjaCBjb21lcyBh
-Ym91dCBiZWNhdXNlIGNvbXB1dGluZyB0aGUKPiA+PiBpZGVhbCBOL0NUUyBtZWFucyBrbm93aW5n
-IHRoZSBfZXhhY3RfIGNsb2NrIHJhdGUsIG5vdCBhIHJvdW5kZWQKPiA+PiB2ZXJzaW9uIG9mIGl0
-LiAgVGhlIGRybSBmcmFtZXdvcmsgbWFrZXMgdGhpcyBoYXJkZXIgYnkgcm91bmRpbmcgcmF0ZXMK
-PiA+PiB0byBrSHosIGJ1dCBldmVuIGlmIGl0IGRpZG4ndCB0aGVyZSBtaWdodCBiZSBjYXNlcyB3
-aGVyZSB0aGUgaWRlYWwKPiA+PiByYXRlIGNvdWxkIG9ubHkgYmUgY2FsY3VsYXRlZCBpZiB3ZSBr
-bmV3IHRoZSByZWFsIChub24taW50ZWdyYWwpIHJhdGUuCj4gPj4gVGhpcyBtZWFucyB0aGF0IGlu
-IGNhc2VzIHdoZXJlIHdlIGtub3cgKG9yIGJlbGlldmUpIHRoYXQgdGhlIHRydWUgcmF0ZQo+ID4+
-IGlzIHNvbWV0aGluZyBvdGhlciB0aGFuIHRoZSByYXRlIHdlIGFyZSB0b2xkIGJ5IGRybS4KPiA+
-Pgo+ID4+IFNpZ25lZC1vZmYtYnk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVt
-Lm9yZz4KPiA+Cj4gPiBXaGljaCBidXMgaXMgdXNlZCBmb3IgYXVkaW8gdHJhbnNmZXIgb24geW91
-ciBkZXZpY2U/IElmIGl0IGlzIEkyUywgd2hpY2ggaXMKPiA+IGNvbW1vbmx5IHVzZWQsIHRoZW4g
-cGxlYXNlIGJlIGF3YXJlIG9mIHRoaXMgcGF0Y2g6Cj4gPiBodHRwczovL2xpc3RzLmZyZWVkZXNr
-dG9wLm9yZy9hcmNoaXZlcy9kcmktZGV2ZWwvMjAxOS1KdW5lLzIyMTUzOS5odG1sCj4gPgo+ID4g
-SXQgYXZvaWRzIGV4YWN0IE4vQ1RTIGNhbGN1bGF0aW9uIGJ5IGVuYWJsaW5nIGF1dG8gZGV0ZWN0
-aW9uLiBJdCBpcyB3ZWxsCj4gPiB0ZXN0ZWQgb24gbXVsdGlwbGUgU29DcyBmcm9tIEFsbHdpbm5l
-ciwgQW1sb2dpYyBhbmQgUm9ja2NoaXAuCj4gPgo+ID4gQmVzdCByZWdhcmRzLAo+ID4gSmVybmVq
-Cj4gPgo+ID4KPiBIaSBEb3VnbGFzLAo+Cj4gVGhhbmtzIGZvciB5b3VyIHdvcmsgIQo+Cj4gSWYg
-eW91IGNvdWxkIHJlYmFzZSBvbiB0b3Agb2YgaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-YXJjaGl2ZXMvZHJpLWRldmVsLzIwMTktSnVuZS8yMjE1MzkuaHRtbAo+IHNvIHdlIGNhbiBtYWtl
-IHVzZSBvZiB5b3VyIGV4dGVuZGVkIE4gdGFibGUgd2l0aCBhdXRvbWF0aWMgQ1RTIEhXIGNhbGN1
-bGF0aW9uLCBpdCB3b3VsZCBiZSBncmVhdCAhCgpUaGFua3MgdG8geW91IGFuZCBKZXJuZWogZm9y
-IHBvaW50aW5nIG1lIGF0IHRoaXMuICBJdCBzZWVtcyBsaWtlbHkKdGhhdCBwYXRjaCBieSBpdHNl
-bGYgd291bGQgc29sdmUgcHJvYmxlbXMgd2UgZm91bmQgYW5kIEknbGwgcGljayB0aGF0CmludG8g
-bXkgdHJlZS4KClByb2JhYmx5IG15IHBhdGNoIGlzIG5vIGxvbmdlciBxdWl0ZSBhcyB1c2VmdWwg
-YXRvcCB5b3VycywgYnV0IEknbGwKc3RpbGwgcG9zdCBhIHYyIHNpbmNlIChpbiB0aGVvcnkpIGZv
-bGtzIHRoYXQgYXJlbid0IHVzaW5nIEkyUyBtaWdodApmaW5kIGl0IHVzZWZ1bC4gIEkgZ3Vlc3Mg
-aXQncyBhbHNvIHBvc3NpYmxlICg/KSB0aGF0IHBpY2tpbmcgYW4gTgp3aGVyZSBDVFMgd291bGQg
-YmUgYWJsZSB0byBiZSBpbnRlZ3JhbCBoYXMgc29tZSB0eXBlIG9mIGFkdmFudGFnZSwKZXZlbiB3
-aXRoIGF1dG8gQ1RTPwoKCj4gRmluYWxseSBjb3VsZCB5b3UgYWRkIHRoZSBwbGF0X2RhdGEgdG1k
-cyB0YWJsZSBhcyBhIHNlcGFyYXRlIHBhdGNoIHRvIHNpbXBsaWZ5IHJldmlldyA/CgpTdXJlLiAg
-SSdtIHByb2JhYmx5IG5vdCBnb2luZyB0byBiZSBhYmxlIHRvIHBvc3QgdGhlIHBhdGNoIHRvIGFj
-dHVhbGx5CnVzZSBpdCwgc28gSSBndWVzcyB3ZSBjb3VsZCBqdXN0IG5vdCBib3RoZXIgYXBwbHlp
-bmcgdGhlIDJuZCBwYXRjaAp1bmxlc3Mgc29tZW9uZSBldmVyIG5lZWRzIGl0LgoKLURvdWcKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
-aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Hi,
+
+On Wed, Fri, 18 Mar 2016 Heiko Stuebner <heiko@sntech.de> wrote:
+>
+> The panels need a bit of time to actually turn on. If this isn't
+> observed, this results in problems when trying talk to the panels
+> and thus produces detection errors. 100ms seem to be a safe value
+> for the time being.
+>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  arch/arm/boot/dts/rk3288-veyron-jaq.dts    | 1 +
+>  arch/arm/boot/dts/rk3288-veyron-jerry.dts  | 1 +
+>  arch/arm/boot/dts/rk3288-veyron-minnie.dts | 1 +
+>  arch/arm/boot/dts/rk3288-veyron-speedy.dts | 1 +
+>  4 files changed, 4 insertions(+)
+
+I know it was 3 years ago, but any idea how to reproduce the problems
+you were seeing without this patch?  I believe the downstream kernel
+never had any delay like this and I'm not aware of any issues.
+
+I wonder if the need for this extra 100 ms delay is no longer there
+now that we have:
+
+3157694d8c7f pwm-backlight: Add support for PWM delays proprieties.
+5fb5caee92ba pwm-backlight: Enable/disable the PWM before/after LCD
+enable toggle.
+6d5922dd0d60 ARM: dts: rockchip: set PWM delay backlight settings for Veyron
