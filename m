@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 7/8] rockchip: rk3399: tpl: Mark printascii into debug
-Date: Fri, 21 Jun 2019 00:25:05 +0530
-Message-ID: <20190620185506.11449-8-jagan@amarulasolutions.com>
+Subject: [PATCH v2 8/8] rockchip: rk3399: Enable TPL_BOARD_INIT
+Date: Fri, 21 Jun 2019 00:25:06 +0530
+Message-ID: <20190620185506.11449-9-jagan@amarulasolutions.com>
 References: <20190620185506.11449-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,27 +21,25 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Now, we have spl_board_init which has TPL banner prints.
-
-So mark the 'U-Boot TPL board init' print into debug.
+Enable TPL_BOARD_INIT, this would help us to show
+TPL boot prints.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- arch/arm/mach-rockchip/rk3399-board-tpl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm/mach-rockchip/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/mach-rockchip/rk3399-board-tpl.c b/arch/arm/mach-rockchip/rk3399-board-tpl.c
-index 72d0dd914e..4a301249b4 100644
---- a/arch/arm/mach-rockchip/rk3399-board-tpl.c
-+++ b/arch/arm/mach-rockchip/rk3399-board-tpl.c
-@@ -47,7 +47,7 @@ void board_init_f(ulong dummy)
- 	 * printhex8(0x1234);
- 	 * printascii("string");
- 	 */
--	printascii("U-Boot TPL board init\n");
-+	debug("U-Boot TPL board init\n");
- #endif
- 	ret = spl_early_init();
- 	if (ret) {
+diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
+index ce039022df..1d483be8b9 100644
+--- a/arch/arm/mach-rockchip/Kconfig
++++ b/arch/arm/mach-rockchip/Kconfig
+@@ -184,6 +184,7 @@ config ROCKCHIP_RK3399
+ 	imply TPL_LIBCOMMON_SUPPORT
+ 	imply TPL_LIBGENERIC_SUPPORT
+ 	imply TPL_SYS_MALLOC_SIMPLE
++	imply TPL_BOARD_INIT
+ 	imply TPL_BOOTROM_SUPPORT
+ 	imply TPL_DRIVERS_MISC_SUPPORT
+ 	imply TPL_OF_CONTROL
 -- 
 2.18.0.321.gffc6fa0e3
