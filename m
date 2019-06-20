@@ -1,42 +1,49 @@
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Subject: Re: [PATCH] ASoC: rk3399_gru_sound: Support 32, 44.1 and 88.2 kHz
- sample rates
-Date: Thu, 20 Jun 2019 18:08:14 +0200
-Message-ID: <CAFqH_50RN0xXfzMDNRjQpk8egCEcxH7NEXr8KVYsh04mSLQEiQ@mail.gmail.com>
-References: <20190620134708.28311-1-enric.balletbo@collabora.com> <20190620154150.GE5316@sirena.org.uk>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 1/3] dt-bindings: display: rockchip: document VOP gamma
+ LUT address
+Date: Thu, 20 Jun 2019 09:43:33 -0700
+Message-ID: <CAD=FV=UpZAjrWkQ7qj5Wo2tf2wkg5Q-34Sun0MOtYLBAwY731Q@mail.gmail.com>
+References: <20190618213406.7667-1-ezequiel@collabora.com> <20190618213406.7667-2-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190620154150.GE5316@sirena.org.uk>
+In-Reply-To: <20190618213406.7667-2-ezequiel@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Xing Zheng <zhengxing@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, linux-kernel <linux-kernel@vger.kernel.org>, Jaroslav Kysela <perex@perex.cz>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Collabora Kernel ML <kernel@collabora.com>, Benson Leung <bleung@chromium.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>, Jacopo Mondi <jacopo@jmondi.org>, Ilia Mirkin <imirkin@alum.mit.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mark,
+Hi,
 
-Missatge de Mark Brown <broonie@kernel.org> del dia dj., 20 de juny
-2019 a les 17:42:
+On Tue, Jun 18, 2019 at 2:43 PM Ezequiel Garcia <ezequiel@collabora.com> wrote:
 >
-> On Thu, Jun 20, 2019 at 03:47:08PM +0200, Enric Balletbo i Serra wrote:
-> > According to the datasheet the max98357a also supports 32, 44.1 and
-> > 88.2 kHz sample rate. This support was also introduced recently by
-> > commit fdf34366d324 ("ASoC: max98357a: add missing supported rates").
-> > This patch adds support for these rates also for the machine driver so
-> > we get rid of the errors like the below and we are able to play files
-> > using these sample rates.
+> Add the register specifier description for an
+> optional gamma LUT address.
 >
-> Does the machine actually need to validate this at all?  The component
-> drivers can all apply whatever constraints are needed and do their own
-> validation, the machine driver is just getting in the way here.
+> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> ---
+>  .../bindings/display/rockchip/rockchip-vop.txt         | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
+>
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
+> index 4f58c5a2d195..97ad78cc7e03 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
+> @@ -20,6 +20,13 @@ Required properties:
+>                 "rockchip,rk3228-vop";
+>                 "rockchip,rk3328-vop";
+>
+> +- reg: Must contain one entry corresponding to the base address and length
+> +       of the register space. Can optionally contain a second entry
+> +       corresponding to the CRTC gamma LUT address.
+> +
+> +- reg-names: "base" for the base register space. If present, the CRTC
+> +       gamma LUT name should be "lut".
 
-I think you have reason, I'll test by removing these validation and
-respin the patch.
+As per Rob Herring, current suggestion is to avoid reg-names when
+possible.  The code should just look for the presence of a 2nd entry
+and assume that if it's there that it's the lut range.  Full context:
 
-Thanks,
-~ Enric
+https://lore.kernel.org/lkml/CAL_Jsq+MMunmVWqeW9v2RyzsMKP+=kMzeTHNMG4JDHM7Fy0HBg@mail.gmail.com/
 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+-Doug
