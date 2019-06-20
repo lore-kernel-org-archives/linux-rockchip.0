@@ -1,72 +1,130 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v2 0/8] rockchip: rk3399: Use spl_board_init in SPL,
-	TPL
-Date: Fri, 21 Jun 2019 00:24:58 +0530
-Message-ID: <20190620185506.11449-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH v2 1/8] board: rk3399: Drop explicit uart enablement in
+ spl_board_init
+Date: Fri, 21 Jun 2019 00:24:59 +0530
+Message-ID: <20190620185506.11449-2-jagan@amarulasolutions.com>
+References: <20190620185506.11449-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, u-boot@lists.denx.de
-Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190620185506.11449-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhpcyBpcyB2MiBzZXQgZm9yIHByZXZpb3VzIHYxLiBObyBtdWNoIGRpZmYsIGV4Y2VwdCB0aGUK
-bGF0ZXN0IHJlYmFzZS4KClVzdWFsbHkgc3BsX2JvYXJkX2luaXQgaGFzIHByZWxvYWRlcl9jb25z
-b2xlX2luaXQgd2hpY2gKd291bGQgaGVscCB0byBwcmludCBib290IHVwIGJhbm5lciBkdXJpbmcg
-U1BMIGFuZCBUUEwuCgpUaGUgY3VycmVudCByazMzOTkgbGFja2luZyB0aGF0IGluIGZldyBvZiB0
-aGUgYm9hcmRzLCAKdGhpcyBzZXJpZXMgbWFrZSByZXVzZSBvZiBzcGxfYm9hcmRfaW5pdCBpbiBT
-UEwgYW5kIFRQTCBzdGFnZXMuCgp3aXRoIHRoaXMgc2VyaWVzOgo9PT09PT09PT09PT09PT09CgpV
-LUJvb3QgVFBMIDIwMTkuMDctcmMxLTAwMjQzLWczZjBjYWQ2YmQyIChNYXkgMDggMjAxOSAtIDEx
-OjI5OjMyICswNTMwKQpUcnlpbmcgdG8gYm9vdCBmcm9tIEJPT1RST00KUmV0dXJuaW5nIHRvIGJv
-b3QgUk9NLi4uCgpVLUJvb3QgU1BMIDIwMTkuMDctcmMxLTAwMjQzLWczZjBjYWQ2YmQyIChNYXkg
-MDggMjAxOSAtIDExOjI5OjMyICswNTMwKQpUcnlpbmcgdG8gYm9vdCBmcm9tIE1NQzEKCgpVLUJv
-b3QgMjAxOS4wNy1yYzEtMDAyNDMtZzNmMGNhZDZiZDIgKE1heSAwOCAyMDE5IC0gMTE6Mjk6MzIg
-KzA1MzApCgpNb2RlbDogRnJpZW5kbHlFbGVjIE5hbm9QQy1UNApEUkFNOiAgMy45IEdpQgpNTUM6
-ICAgZHdtbWNAZmUzMTAwMDA6IDIsIGR3bW1jQGZlMzIwMDAwOiAxLCBzZGhjaUBmZTMzMDAwMDog
-MApMb2FkaW5nIEVudmlyb25tZW50IGZyb20gTU1DLi4uICoqKiBXYXJuaW5nIC0gYmFkIENSQywg
-dXNpbmcgZGVmYXVsdCBlbnZpcm9ubWVudAoKSW46ICAgIHNlcmlhbEBmZjFhMDAwMApPdXQ6ICAg
-c2VyaWFsQGZmMWEwMDAwCkVycjogICBzZXJpYWxAZmYxYTAwMDAKTW9kZWw6IEZyaWVuZGx5RWxl
-YyBOYW5vUEMtVDQKTmV0OiAgIGV0aDA6IGV0aGVybmV0QGZlMzAwMDAwCkhpdCBhbnkga2V5IHRv
-IHN0b3AgYXV0b2Jvb3Q6ICAwIAo9PgoKd2l0aG91dCB0aGlzIHNlcmllczoKPT09PT09PT09PT09
-PT09PT09PQoKVS1Cb290IFRQTCBib2FyZCBpbml0ClRyeWluZyB0byBib290IGZyb20gQk9PVFJP
-TQpSZXR1cm5pbmcgdG8gYm9vdCBST00uLi4KVS1Cb290IFNQTCBib2FyZCBpbml0ClRyeWluZyB0
-byBib290IGZyb20gTU1DMQoKVS1Cb290IDIwMTkuMDctcmMxLTAwMjQzLWczZjBjYWQ2YmQyIChN
-YXkgMDggMjAxOSAtIDExOjI5OjMyICswNTMwKQoKTW9kZWw6IEZyaWVuZGx5RWxlYyBOYW5vUEMt
-VDQKRFJBTTogIDMuOSBHaUIKTU1DOiAgIGR3bW1jQGZlMzEwMDAwOiAyLCBkd21tY0BmZTMyMDAw
-MDogMSwgc2RoY2lAZmUzMzAwMDA6IDAKTG9hZGluZyBFbnZpcm9ubWVudCBmcm9tIE1NQy4uLiAq
-KiogV2FybmluZyAtIGJhZCBDUkMsIHVzaW5nIGRlZmF1bHQgZW52aXJvbm1lbnQKCkluOiAgICBz
-ZXJpYWxAZmYxYTAwMDAKT3V0OiAgIHNlcmlhbEBmZjFhMDAwMApFcnI6ICAgc2VyaWFsQGZmMWEw
-MDAwCk1vZGVsOiBGcmllbmRseUVsZWMgTmFub1BDLVQ0Ck5ldDogICBldGgwOiBldGhlcm5ldEBm
-ZTMwMDAwMApIaXQgYW55IGtleSB0byBzdG9wIGF1dG9ib290OiAgMCAKPT4KCkFueSBpbnB1dHM/
-CkphZ2FuLgoKSmFnYW4gVGVraSAoOCk6CiAgYm9hcmQ6IHJrMzM5OTogRHJvcCBleHBsaWNpdCB1
-YXJ0IGVuYWJsZW1lbnQgaW4gc3BsX2JvYXJkX2luaXQKICByb2NrY2hpcDogcmszMzk5OiBTdXBw
-b3J0IGNvbW1vbiBzcGxfYm9hcmRfaW5pdAogIHJvY2tjaGlwOiByazMzOTk6IHNwbDogTWFyayBw
-cmludGFzY2lpIGludG8gZGVidWcKICByb2NrY2hpcDogcmszMzk5OiBNb3ZlIHUtYm9vdCwgZG0t
-cHJlLXJlbG9jIG9mIHVhcnQwLCB1YXJ0MgogIHJvY2tjaGlwOiByazMzOTk6IEVuYWJsZSBTUExf
-Qk9BUkRfSU5JVAogIHJvY2tjaGlwOiByazMzOTk6IHRwbDogQWRkIHNwbF9ib2FyZF9pbml0CiAg
-cm9ja2NoaXA6IHJrMzM5OTogdHBsOiBNYXJrIHByaW50YXNjaWkgaW50byBkZWJ1ZwogIHJvY2tj
-aGlwOiByazMzOTk6IEVuYWJsZSBUUExfQk9BUkRfSU5JVAoKIGFyY2gvYXJtL2R0cy9yazMzOTkt
-Z3J1LmR0c2kgICAgICAgICAgICAgICAgICB8ICAxIC0KIGFyY2gvYXJtL2R0cy9yazMzOTktcHVt
-YS5kdHNpICAgICAgICAgICAgICAgICB8ICAxIC0KIGFyY2gvYXJtL2R0cy9yazMzOTktdS1ib290
-LmR0c2kgICAgICAgICAgICAgICB8ICA4ICsrKwogYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9LY29u
-ZmlnICAgICAgICAgICAgICAgIHwgIDIgKwogYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMzOTkt
-Ym9hcmQtc3BsLmMgICAgIHwgNjUgKysrKysrKysrKysrKysrKysrLQogYXJjaC9hcm0vbWFjaC1y
-b2NrY2hpcC9yazMzOTktYm9hcmQtdHBsLmMgICAgIHwgIDkgKystCiBib2FyZC9yb2NrY2hpcC9l
-dmJfcmszMzk5L2V2Yi1yazMzOTkuYyAgICAgICAgfCAyOSAtLS0tLS0tLS0KIC4uLi9wdW1hX3Jr
-MzM5OS9wdW1hLXJrMzM5OS5jICAgICAgICAgICAgICAgICB8IDU4IC0tLS0tLS0tLS0tLS0tLS0t
-CiBib2FyZC92YW1ycy9yb2NrOTYwX3JrMzM5OS9yb2NrOTYwLXJrMzM5OS5jICAgfCAzMSAtLS0t
-LS0tLS0KIGNvbmZpZ3MvcHVtYS1yazMzOTlfZGVmY29uZmlnICAgICAgICAgICAgICAgICB8ICAx
-IC0KIDEwIGZpbGVzIGNoYW5nZWQsIDgyIGluc2VydGlvbnMoKyksIDEyMyBkZWxldGlvbnMoLSkK
-Ci0tIAoyLjE4LjAuMzIxLmdmZmM2ZmEwZTMKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbngu
-ZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
+preloader_console_init is used for printing SPL boot banner that
+usually called from spl_board_init.
+
+The current spl_board_init in evb and rock960 is enabling explicit
+pinctrl, debug uart prior to calling preloader_console_init which
+eventually not required since board_init_f is already enabled
+debug uart.
+
+So, drop those explicit enablement calls from  spl_board_init of
+evb, rock960.
+
+Tested this by enabling CONFIG_SPL_BOARD_INIT and adding
+u-boot,dm-pre-reloc property for uart node.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ board/rockchip/evb_rk3399/evb-rk3399.c      | 23 +------------------
+ board/vamrs/rock960_rk3399/rock960-rk3399.c | 25 +--------------------
+ 2 files changed, 2 insertions(+), 46 deletions(-)
+
+diff --git a/board/rockchip/evb_rk3399/evb-rk3399.c b/board/rockchip/evb_rk3399/evb-rk3399.c
+index bf2ad98c47..769b5d146f 100644
+--- a/board/rockchip/evb_rk3399/evb-rk3399.c
++++ b/board/rockchip/evb_rk3399/evb-rk3399.c
+@@ -6,7 +6,6 @@
+ #include <common.h>
+ #include <dm.h>
+ #include <dm/pinctrl.h>
+-#include <dm/uclass-internal.h>
+ #include <asm/arch-rockchip/periph.h>
+ #include <power/regulator.h>
+ #include <spl.h>
+@@ -68,27 +67,7 @@ out:
+ 
+ void spl_board_init(void)
+ {
+-	struct udevice *pinctrl;
+-	int ret;
+-
+-	ret = uclass_get_device(UCLASS_PINCTRL, 0, &pinctrl);
+-	if (ret) {
+-		debug("%s: Cannot find pinctrl device\n", __func__);
+-		goto err;
+-	}
+-
+-	/* Enable debug UART */
+-	ret = pinctrl_request_noflags(pinctrl, PERIPH_ID_UART_DBG);
+-	if (ret) {
+-		debug("%s: Failed to set up console UART\n", __func__);
+-		goto err;
+-	}
+-
+ 	preloader_console_init();
+-	return;
+-err:
+-	printf("%s: Error %d\n", __func__, ret);
+ 
+-	/* No way to report error here */
+-	hang();
++	return;
+ }
+diff --git a/board/vamrs/rock960_rk3399/rock960-rk3399.c b/board/vamrs/rock960_rk3399/rock960-rk3399.c
+index 0f5ef3a09a..018e4b55b8 100644
+--- a/board/vamrs/rock960_rk3399/rock960-rk3399.c
++++ b/board/vamrs/rock960_rk3399/rock960-rk3399.c
+@@ -5,9 +5,6 @@
+ 
+ #include <common.h>
+ #include <dm.h>
+-#include <dm/pinctrl.h>
+-#include <dm/uclass-internal.h>
+-#include <asm/arch-rockchip/periph.h>
+ #include <power/regulator.h>
+ #include <spl.h>
+ 
+@@ -24,27 +21,7 @@ int board_init(void)
+ 
+ void spl_board_init(void)
+ {
+-	struct udevice *pinctrl;
+-	int ret;
+-
+-	ret = uclass_get_device(UCLASS_PINCTRL, 0, &pinctrl);
+-	if (ret) {
+-		debug("%s: Cannot find pinctrl device\n", __func__);
+-		goto err;
+-	}
+-
+-	/* Enable debug UART */
+-	ret = pinctrl_request_noflags(pinctrl, PERIPH_ID_UART_DBG);
+-	if (ret) {
+-		debug("%s: Failed to set up console UART\n", __func__);
+-		goto err;
+-	}
+-
+ 	preloader_console_init();
+-	return;
+-err:
+-	printf("%s: Error %d\n", __func__, ret);
+ 
+-	/* No way to report error here */
+-	hang();
++	return;
+ }
+-- 
+2.18.0.321.gffc6fa0e3
