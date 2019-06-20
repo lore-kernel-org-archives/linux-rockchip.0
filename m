@@ -1,96 +1,72 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH] Revert "ARM: dts: rockchip: add startup delay to
- rk3288-veyron panel-regulators"
-Date: Thu, 20 Jun 2019 11:20:56 -0700
-Message-ID: <20190620182056.61552-1-dianders@chromium.org>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH v2 0/8] rockchip: rk3399: Use spl_board_init in SPL,
+	TPL
+Date: Fri, 21 Jun 2019 00:24:58 +0530
+Message-ID: <20190620185506.11449-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: heiko@sntech.de
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, mka@chromium.org, enric.balletbo@collabora.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, u-boot@lists.denx.de
+Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com
 List-Id: linux-rockchip.vger.kernel.org
 
-This reverts commit 1f45e8c6d0161f044d679f242fe7514e2625af4a.
-
-This 100 ms mystery delay is not on downstream kernels and no longer
-seems needed on upstream kernels either [1].  Presumably something in the
-meantime has made things better.  A few possibilities for patches that
-have landed in the meantime that could have made this better are
-commit 3157694d8c7f ("pwm-backlight: Add support for PWM delays
-proprieties."), commit 5fb5caee92ba ("pwm-backlight: Enable/disable
-the PWM before/after LCD enable toggle."), and commit 6d5922dd0d60
-("ARM: dts: rockchip: set PWM delay backlight settings for Veyron")
-
-Let's revert and get our 100 ms back.
-
-[1] https://lkml.kernel.org/r/2226970.BAPq4liE1j@diego
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
-
- arch/arm/boot/dts/rk3288-veyron-jaq.dts    | 1 -
- arch/arm/boot/dts/rk3288-veyron-jerry.dts  | 1 -
- arch/arm/boot/dts/rk3288-veyron-minnie.dts | 1 -
- arch/arm/boot/dts/rk3288-veyron-speedy.dts | 1 -
- 4 files changed, 4 deletions(-)
-
-diff --git a/arch/arm/boot/dts/rk3288-veyron-jaq.dts b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
-index fcd119168cb6..5411ce148890 100644
---- a/arch/arm/boot/dts/rk3288-veyron-jaq.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
-@@ -24,7 +24,6 @@
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&lcd_enable_h>;
- 		regulator-name = "panel_regulator";
--		startup-delay-us = <100000>;
- 		vin-supply = <&vcc33_sys>;
- 	};
- 
-diff --git a/arch/arm/boot/dts/rk3288-veyron-jerry.dts b/arch/arm/boot/dts/rk3288-veyron-jerry.dts
-index 164561f04c1d..82ac9d23480e 100644
---- a/arch/arm/boot/dts/rk3288-veyron-jerry.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-jerry.dts
-@@ -26,7 +26,6 @@
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&lcd_enable_h>;
- 		regulator-name = "panel_regulator";
--		startup-delay-us = <100000>;
- 		vin-supply = <&vcc33_sys>;
- 	};
- 
-diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-index b2cc70a08554..f29501d8ff07 100644
---- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-@@ -33,7 +33,6 @@
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&lcd_enable_h>;
- 		regulator-name = "panel_regulator";
--		startup-delay-us = <100000>;
- 		vin-supply = <&vcc33_sys>;
- 	};
- 
-diff --git a/arch/arm/boot/dts/rk3288-veyron-speedy.dts b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-index 9b140db04456..a0f6fefc95f1 100644
---- a/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-@@ -24,7 +24,6 @@
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&lcd_enable_h>;
- 		regulator-name = "panel_regulator";
--		startup-delay-us = <100000>;
- 		vin-supply = <&vcc33_sys>;
- 	};
- 
--- 
-2.22.0.410.gd8fdbe21b5-goog
+VGhpcyBpcyB2MiBzZXQgZm9yIHByZXZpb3VzIHYxLiBObyBtdWNoIGRpZmYsIGV4Y2VwdCB0aGUK
+bGF0ZXN0IHJlYmFzZS4KClVzdWFsbHkgc3BsX2JvYXJkX2luaXQgaGFzIHByZWxvYWRlcl9jb25z
+b2xlX2luaXQgd2hpY2gKd291bGQgaGVscCB0byBwcmludCBib290IHVwIGJhbm5lciBkdXJpbmcg
+U1BMIGFuZCBUUEwuCgpUaGUgY3VycmVudCByazMzOTkgbGFja2luZyB0aGF0IGluIGZldyBvZiB0
+aGUgYm9hcmRzLCAKdGhpcyBzZXJpZXMgbWFrZSByZXVzZSBvZiBzcGxfYm9hcmRfaW5pdCBpbiBT
+UEwgYW5kIFRQTCBzdGFnZXMuCgp3aXRoIHRoaXMgc2VyaWVzOgo9PT09PT09PT09PT09PT09CgpV
+LUJvb3QgVFBMIDIwMTkuMDctcmMxLTAwMjQzLWczZjBjYWQ2YmQyIChNYXkgMDggMjAxOSAtIDEx
+OjI5OjMyICswNTMwKQpUcnlpbmcgdG8gYm9vdCBmcm9tIEJPT1RST00KUmV0dXJuaW5nIHRvIGJv
+b3QgUk9NLi4uCgpVLUJvb3QgU1BMIDIwMTkuMDctcmMxLTAwMjQzLWczZjBjYWQ2YmQyIChNYXkg
+MDggMjAxOSAtIDExOjI5OjMyICswNTMwKQpUcnlpbmcgdG8gYm9vdCBmcm9tIE1NQzEKCgpVLUJv
+b3QgMjAxOS4wNy1yYzEtMDAyNDMtZzNmMGNhZDZiZDIgKE1heSAwOCAyMDE5IC0gMTE6Mjk6MzIg
+KzA1MzApCgpNb2RlbDogRnJpZW5kbHlFbGVjIE5hbm9QQy1UNApEUkFNOiAgMy45IEdpQgpNTUM6
+ICAgZHdtbWNAZmUzMTAwMDA6IDIsIGR3bW1jQGZlMzIwMDAwOiAxLCBzZGhjaUBmZTMzMDAwMDog
+MApMb2FkaW5nIEVudmlyb25tZW50IGZyb20gTU1DLi4uICoqKiBXYXJuaW5nIC0gYmFkIENSQywg
+dXNpbmcgZGVmYXVsdCBlbnZpcm9ubWVudAoKSW46ICAgIHNlcmlhbEBmZjFhMDAwMApPdXQ6ICAg
+c2VyaWFsQGZmMWEwMDAwCkVycjogICBzZXJpYWxAZmYxYTAwMDAKTW9kZWw6IEZyaWVuZGx5RWxl
+YyBOYW5vUEMtVDQKTmV0OiAgIGV0aDA6IGV0aGVybmV0QGZlMzAwMDAwCkhpdCBhbnkga2V5IHRv
+IHN0b3AgYXV0b2Jvb3Q6ICAwIAo9PgoKd2l0aG91dCB0aGlzIHNlcmllczoKPT09PT09PT09PT09
+PT09PT09PQoKVS1Cb290IFRQTCBib2FyZCBpbml0ClRyeWluZyB0byBib290IGZyb20gQk9PVFJP
+TQpSZXR1cm5pbmcgdG8gYm9vdCBST00uLi4KVS1Cb290IFNQTCBib2FyZCBpbml0ClRyeWluZyB0
+byBib290IGZyb20gTU1DMQoKVS1Cb290IDIwMTkuMDctcmMxLTAwMjQzLWczZjBjYWQ2YmQyIChN
+YXkgMDggMjAxOSAtIDExOjI5OjMyICswNTMwKQoKTW9kZWw6IEZyaWVuZGx5RWxlYyBOYW5vUEMt
+VDQKRFJBTTogIDMuOSBHaUIKTU1DOiAgIGR3bW1jQGZlMzEwMDAwOiAyLCBkd21tY0BmZTMyMDAw
+MDogMSwgc2RoY2lAZmUzMzAwMDA6IDAKTG9hZGluZyBFbnZpcm9ubWVudCBmcm9tIE1NQy4uLiAq
+KiogV2FybmluZyAtIGJhZCBDUkMsIHVzaW5nIGRlZmF1bHQgZW52aXJvbm1lbnQKCkluOiAgICBz
+ZXJpYWxAZmYxYTAwMDAKT3V0OiAgIHNlcmlhbEBmZjFhMDAwMApFcnI6ICAgc2VyaWFsQGZmMWEw
+MDAwCk1vZGVsOiBGcmllbmRseUVsZWMgTmFub1BDLVQ0Ck5ldDogICBldGgwOiBldGhlcm5ldEBm
+ZTMwMDAwMApIaXQgYW55IGtleSB0byBzdG9wIGF1dG9ib290OiAgMCAKPT4KCkFueSBpbnB1dHM/
+CkphZ2FuLgoKSmFnYW4gVGVraSAoOCk6CiAgYm9hcmQ6IHJrMzM5OTogRHJvcCBleHBsaWNpdCB1
+YXJ0IGVuYWJsZW1lbnQgaW4gc3BsX2JvYXJkX2luaXQKICByb2NrY2hpcDogcmszMzk5OiBTdXBw
+b3J0IGNvbW1vbiBzcGxfYm9hcmRfaW5pdAogIHJvY2tjaGlwOiByazMzOTk6IHNwbDogTWFyayBw
+cmludGFzY2lpIGludG8gZGVidWcKICByb2NrY2hpcDogcmszMzk5OiBNb3ZlIHUtYm9vdCwgZG0t
+cHJlLXJlbG9jIG9mIHVhcnQwLCB1YXJ0MgogIHJvY2tjaGlwOiByazMzOTk6IEVuYWJsZSBTUExf
+Qk9BUkRfSU5JVAogIHJvY2tjaGlwOiByazMzOTk6IHRwbDogQWRkIHNwbF9ib2FyZF9pbml0CiAg
+cm9ja2NoaXA6IHJrMzM5OTogdHBsOiBNYXJrIHByaW50YXNjaWkgaW50byBkZWJ1ZwogIHJvY2tj
+aGlwOiByazMzOTk6IEVuYWJsZSBUUExfQk9BUkRfSU5JVAoKIGFyY2gvYXJtL2R0cy9yazMzOTkt
+Z3J1LmR0c2kgICAgICAgICAgICAgICAgICB8ICAxIC0KIGFyY2gvYXJtL2R0cy9yazMzOTktcHVt
+YS5kdHNpICAgICAgICAgICAgICAgICB8ICAxIC0KIGFyY2gvYXJtL2R0cy9yazMzOTktdS1ib290
+LmR0c2kgICAgICAgICAgICAgICB8ICA4ICsrKwogYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9LY29u
+ZmlnICAgICAgICAgICAgICAgIHwgIDIgKwogYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMzOTkt
+Ym9hcmQtc3BsLmMgICAgIHwgNjUgKysrKysrKysrKysrKysrKysrLQogYXJjaC9hcm0vbWFjaC1y
+b2NrY2hpcC9yazMzOTktYm9hcmQtdHBsLmMgICAgIHwgIDkgKystCiBib2FyZC9yb2NrY2hpcC9l
+dmJfcmszMzk5L2V2Yi1yazMzOTkuYyAgICAgICAgfCAyOSAtLS0tLS0tLS0KIC4uLi9wdW1hX3Jr
+MzM5OS9wdW1hLXJrMzM5OS5jICAgICAgICAgICAgICAgICB8IDU4IC0tLS0tLS0tLS0tLS0tLS0t
+CiBib2FyZC92YW1ycy9yb2NrOTYwX3JrMzM5OS9yb2NrOTYwLXJrMzM5OS5jICAgfCAzMSAtLS0t
+LS0tLS0KIGNvbmZpZ3MvcHVtYS1yazMzOTlfZGVmY29uZmlnICAgICAgICAgICAgICAgICB8ICAx
+IC0KIDEwIGZpbGVzIGNoYW5nZWQsIDgyIGluc2VydGlvbnMoKyksIDEyMyBkZWxldGlvbnMoLSkK
+Ci0tIAoyLjE4LjAuMzIxLmdmZmM2ZmEwZTMKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbngu
+ZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
