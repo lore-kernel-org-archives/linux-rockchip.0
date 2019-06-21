@@ -1,368 +1,335 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [U-Boot] [PATCH v2] arm64: dts: rockchip: Add support for Khadas
- Edge/Edge-V/Captain boards
-Date: Fri, 21 Jun 2019 13:34:16 +0200
-Message-ID: <5485782.mvTjYBxPra@phil>
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Add support for
+ Khadas Edge/Edge-V/Captain boards
+Date: Fri, 21 Jun 2019 13:58:18 +0200
+Message-ID: <60c720f0b23c5855cabb6ad2de466a1398b98f46.camel@bootlin.com>
 References: <1558696796-10745-1-git-send-email-xieqinick@gmail.com>
  <df4fe202b5d59e37ef28af1e1106d0a92d6c5038.camel@bootlin.com>
  <88b913b4-5bb7-58fb-650b-b3e4e74ff66a@rock-chips.com>
+ <5485782.mvTjYBxPra@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <88b913b4-5bb7-58fb-650b-b3e4e74ff66a-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-Cc: Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, nick-XW3xCAIBE2TQT0dZR+AlfA@public.gmane.org, philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, xieqinick-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Mark Kettenis <mark.kettenis-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <5485782.mvTjYBxPra@phil>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Heiko Stuebner <heiko@sntech.de>, u-boot@lists.denx.de
+Cc: Maxime Ripard <maxime.ripard@bootlin.com>, linux-rockchip@lists.infradead.org, nick@khadas.com, linux-amarula@amarulasolutions.com, xieqinick@gmail.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Am Donnerstag, 20. Juni 2019, 05:24:32 CEST schrieb Kever Yang:
-> On 06/20/2019 12:54 AM, Paul Kocialkowski wrote:
-> > Le mercredi 19 juin 2019 =E0 09:42 +0800, Kever Yang a =E9crit :
-> >> On 06/19/2019 12:12 AM, Mark Kettenis wrote:
-> >>>> From: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-> >>>> Date: Tue, 18 Jun 2019 14:47:33 +0200
-> >>>> On Tue, 2019-06-18 at 18:08 +0800, Kever Yang wrote:
-> >>>>> On 06/18/2019 05:03 PM, Paul Kocialkowski wrote:
-> >>>>>> On Tue, 2019-06-18 at 14:27 +0530, Jagan Teki wrote:
-> >>>>>>> On Tue, Jun 18, 2019 at 1:55 PM Paul Kocialkowski
-> >>>>>>> <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org> wrote:
-> >>>>>>>> On Mon, 2019-06-17 at 15:24 +0800, xieqinick-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org wrote:
-> >>>>>>>>> From: Nick Xie <nick-XW3xCAIBE2TQT0dZR+AlfA@public.gmane.org>
-> >>>>>>>> Was this tested with SPL support? I don't see DRAM configuration=
- here
-> >>>>>>>> so it seems that it relies on the non-free rockchip loader.
-> >>>>>>>>
-> >>>>>>>> If that is the case, could you please indicate that in the commit
-> >>>>>>>> message?
-> >>>>>>>>
-> >>>>>>>> To maintainers: please do not merge this series before DRAM init=
- and
-> >>>>>>>> SPL support is available for these boards.
-> >>>>>>>>
-> >>>>>>>> It seems that other RK3399 boards were merged without SPL suppor=
-t and
-> >>>>>>>> sofar, I have the feeling that nobody cared to explain how we go=
-t into
-> >>>>>>>> this broken situation. Please don't merge any more such board.
-> >>>>>>> fyi: no rk3399 boards were merged w/o SPL. lpddr4 boards were mer=
-ged
-> >>>>>>> with TPL-enabled (which was discussed on the threads, if you reme=
-mber)
-> >>>>>>> with below boot chain.
-> >>>>>>>
-> >>>>>>> rkbin (TPL) -> SPL -> U-Boot proper
-> >>>>>>>
-> >>>>>>> Same case for this board as well.
-> >>>>>> Here is a quote from Philipp Tomsich on the thread we discussed th=
-is:
-> >>>>>>
-> >>>>>> " On some boards, there will be no TPL and only a SPL stage that w=
-ill
-> >>>>>> initialise DRAM (as the move to having TPL on the RK3399 is option=
-al).
-> >>>>>>
-> >>>>>> I agree with Paul that the DRAM init should be part of U-Boot when=
-ever
-> >>>>>> we add new boards and make an open DRAM init a prerequisite. "
-> >>>>>>
-> >>>>>> So even if I frequently confuse SPL and TPL, it doesn't change the=
- fact
-> >>>>>> that no board should be merged without proper DRAM init.
-> >>>>>>
-> >>>>>> Please stop pushing for merging these boards. I'm not sure what we
-> >>>>>> should do about the boards that were merged already without DRAM i=
-nit,
-> >>>>>> but maybe they should be reverted.
-
-> >>>>> I don't think we have to have full DRAM init source code for each
-> >>>>> board before we can merge it, I believe most of the board on U-Boot
-> >>>>> mainline need to removed due to this rule. There are so many boards
-> >>>>> from different vendor need a binary loader before U-Boot, and I can
-> >>>>> see only very few drivers for dram at driver/ram/, and I believe ro=
-ckchip
-> >>>>> is already the most open vendor on this area.
-
-> >>>> Well, I am not talking about full DRAM init source code as in dynamic
-> >>>> link training. I am talking about having at least static DRAM regist=
-er
-> >>>> configuration values, =
-
-
-> >> I can tell you that this is no work for all the boards, you can see how
-> >> rockchip lpddr4(WIP, send by Jagan) driver works.
-
-> > I thought that LPDDR4 works the same as other types of DRAM where we
-> > have a dtsi array with timings configuration. Of course, some more
-> > registers need to be set up, but we already have support for that or
-> > it's quite close (for LPDDR4).
->
-> >>>> which is present for a good number of rockchip
-> >>>> boards.
-> >> No, there is no rockchip board only have static DRAM register
-> >> configuration values, that maybe happens in other vendor.
->
-> > I was implying that, as far as I know, it is the case for DRAM timings
-> > on Rockchip as well as most of the platforms that I know of. In the
-> > end, any code handling DRAM will end up writing timings to the
-> > controller's registers. If the DRAM is part of the PCB and doesn't
-> > change/move, then the timings don't change in particular.
-> >
-> > Is there something specific about Rockchip that makes it require
-> > different DRAM timings at each boot?
->
-> >>>> Of course, it would be best if Rockchip would consider releasing this
-> >>>> source code, =
-
-> >> Rockchip already release all the DRAM init source code, including DDR3=
- ,
-> >> LPDDR3,
-> >> and LPDDR4(wip). You can see the driver at driver/ram/rockchip/ for
-> >> everything,
-> >> which is not only static register configuration.
-> >> As I have said, rockchip is already the most open vendor in this area
-> >> till now, I don't know
-> >> if you have working on rockchip SoC based boards.
-> > You are quite right about that, but I was thinking about the code to
-> > calculate DRAM timings (with link-training and such) which is often not
-> > available as free software, and I am not aware of Rockchip having
-> > released that code (but feel free to correct me if I'm wrong).
-> >
-> >>>> which would be the easiest and friendliest solution
-> >>>> towards the community here. Are there internal discussions ongoing
-> >>>> about this? If not, it would be greatly appreciated to start such
-> >>>> discussions and clearly identify what the blocking points are.
-> >>>>
-> >>>>> I won't use this rule to stop developers contribute there source co=
-de,
-> >>>> This is really sad and I think that Philipp was, like me, inclined to
-> >>>> go towards the other direction.
-> >>>>
-> >>>>> for a board support, we only need the board to have the full docume=
-ntation
-> >>>>> about how to setup and boot with upstream U-Boot. and I think the
-> >>>>> most of people cares more about features in U-Boot proper. Everythi=
-ng
-> >>>>> before U-Boot proper, you can use TPL/SPL or alternative to use bin=
-ary
-> >>>>> from vendor, as you can see all over the U-Boot mainline now, altho=
-ugh
-> >>>>> we encourage people to use full open source TPL/SPL.
-> >>>>> Specifically for U-Boot Rockchip platform, I would like people to
-> >>>>> support not only U-Boot
-> >>>>> proper, but also for full SPL(ATF, OP-TEE support, itb image and ot=
-her
-> >>>>> features)
-> >>>>> support. And for DRAM init,
-> >>>>> - if this belongs to SPL for this board, you must implement it or e=
-lse
-> >>>>> SPL won't work;
-> >>>>> - if this does not belong to SPL for this board, you need implement=
- full
-> >>>>> function SPL;
-> >>>>>     and you can either to have full function TPL with DRAM init(whi=
-ch is
-> >>>>> prefered)
-> >>>>>     or alternatively use binary loader from vendor.
-> >>>> This is not really a technical argument here, more of a policy argum=
-ent
-> >>>> that ensures we have full free software support for the boards we
-> >>>> support, and not only half-cooked support (that will most likely nev=
-er
-> >>>> be completed as soon as something that works gets merged). So it is a
-> >>>> strategical decision, not a strictly pragmatic one.
-
-> >>> While having full open source software support for boards is a noble
-> >>> goal, I think there should be some room for pragmatism here.  A
-> >>> significant number of u_boot targets rely on closed source components.
-> >>> In the particular case of RK3399 the situation is better than for
-> >>> other boards since you can combine the binary loader from the vendor
-> >>> with mainline U-Boot and mainline ATF to create a firmware where (as
-> >>> far as we can tell) no closed soure component remains active after
-> >>> U-Boot and ATF take over control.
-> >>>
-> >>>> I think reverting patches adding support for boards with no DRAM
-> >>>> configuration at all would send a message in the right direction her=
-e.
-> >> As a developer, I agree on this, but as a maintainer, I know too many
-> >> developers not able to do it and what most of developers need is other
-> >> features in U-Boot or SPL, and I would like the U-Boot mainline is more
-> >> active with more and more developers. So I'm afraid I agree with Mark
-> >> at this time for the policy.
-> > Maybe we need to provide tools ot make that process easier for everyone
-> > if it is really that hard. I don't really see what is so special about
-> > DRAM timings that would imply that a regular developer doing a U-Boot
-> > bringup couldn't figure things out, aside from the ability to dump said
-> > timings.
-> >
-> >> If all the other SoC platforms can have the same rule for DRAM init dr=
-iver
-> >> is a mandatory instead of option, eg. brcom, qcom, mtk, omap, tegra, s=
-tm,
-> >> imx, aml, and all others, then I would very happy to follow the rule.
-> >> Rockchip is open for open source the DRAM driver, you have to know this
-> >> is the decision by the vendor, but not any of developers.
-> >> On rockchip platform, developers no need to concern about the DRAM
-> >> driver(which is pretty hard for most developers) because rockchip
-> >> already contribute it.
-> > Rockchip is indeed in a better position than other vendors where DRAM
-> > init may not be available (or when it's impossible to run U-Boot right
-> > after the bootrom and do the DRAM init itself because of e.g. abusive
-> > signature verification or lack of documentation).
-> >
-> > Since there is good DRAM support for Rockchip in place, we have an
-> > opportunity to push developers to do the right thing and contribute
-> > full support for the board. To me it is simply a matter of
-> > acknowledging that bootloader support for a board without DRAM init is
-> > not useful bootloader support. Since we have the code in place to
-> > support that, we can take the extra step and require that each board
-> > contribution be useful in that aspect.
-> >
-> >> For the time now, I know there will be full DRAM driver for rockchip S=
-oC,
-> >> so the SoC/board support could be step by step:
-> >> U-Boot proper -> U-Boot + SPL(no DRAM init) ->U-Boot + SPL + TPL.
-
-Keeping allowing a step-by-step approach could be beneficial I think,
-in the kernel we also don't require full support for all peripherals on
-initial submission ;-) .
-
-And also for people starting out on a specific board having at least partial
-support is way easier than trying to figure out for example the vendor
-u-boot. =
-
-
-Maybe we could give this some sort of time limitation like
-"binary ddr-init allowed till 2019-10-31" in Kconfig or somewhere
-to give people the chance to do things piece by piece but still force them
-to actually work on improving the situation.
-
-As driver-side changes will generally benefit more socs/boards potential
-removal after the time limit would only affect the board+dts itself.
-
-So somewhat similar to what the kernel does with "staging", if you
-keep working on improving it, it is allowed to stay.
-
-This could be also applied to already included boards, like
-"give it a working ddr-init till 2019-12-31 or it gets removed", similarly
-to how Tom handles devicemanager conversions currently
-
-
-> >> As you can see the rockchip LPDDR4 driver send by Jagan, has 99 patches
-> >> in V2, you can't use static register configuration to do this, and may=
-be you
-> >> can't have a workable version if rockchip don't release it, but I don't
-> >> think it's
-> >> correct to make all those boards with lpddr4 float outside the mainline
-> >> support
-> >> because many developers are using the boards, they can only use vendor
-> >> branch
-> >> if the board not support by mainline.
-> > If mainline U-Boot can't support basic bootloader features such as DRAM
-> > initialization for these boards, I don't see the point in accepting
-> > support for them.
-
-Hmm, actually I see ddr-init as one of the more difficult parts to achieve
-at least if you're not the soc-vendor, due to unavailable documentation
-or sources.
-
-> > It would be like submitting support for a board in Linux with a new CPU
-> > that is not supported and asking to boot Linux via a non-free shim
-> > before Linux to put the CPU in a legacy state that Linux can support.
-> > This would definitely not be okay and I don't see why the same
-> > shouldn't apply to U-Boot.
-
-A less drastic example would be, submitting a basic devicetree to the
-linux kernel without clocks and pinctrl and relying on the things the
-bootloader set up for things like uart.
-
-
-Heiko
-
-> Linux build target is Image/zImage, if this Image not work with the board,
-> eg. hang somewhere during boot, then we say the board support is broken
-> and result in non-functional boot. And there always some kernel features
-> depends on bootloader setting, including security setting, some clock ini=
-t,
-> some power supply and etc.
-> =
-
-> >
-> >> So I think merge those patches already make board work on mainline U-B=
-oot
-> >> is pretty important for open source community.
-> > I don't think the patches make the boards work on mainline U-Boot since
-> > building and installing the resulting U-Boot binaries will result in a
-> > non-functional boot chain and brick the device. I don't think this is a
-> > good or safe idea.
-> =
-
-> In U-Boot, there are 2 or 3 standalone subsystem: U-Boot proper,
-> SPL, and TPL, and build target is u-boot.bin, u-boot-spl.bin, and
-> u-boot-tpl.bin.
-> If the standalone u-boot.bin or u-boot-spl.bin works good with a board and
-> able to boot into next stage correctly, I don't think these patches can
-> be consider
-> as "non-functional boot chain and brick the device". And for example for
-> armv8,
-> U-Boot is always as part of the boot chain.
-> =
-
-> Thanks,
-> - Kever
-> >
-> > Cheers,
-> >
-> > Paul
-> >
-> >> Thanks,
-> >> - Kever
-> >>> Frankly, I don't think that would help.  It would just drive more
-> >>> people to the vendor U-Boot that has more bugs and includes a vendor
-> >>> supplied ATF binary.
-> >>>
-> >>>>> I'm not sure if you have write a new dram driver for a board, but I=
- know
-> >>>>> even the board vendor may not have the capability to write the DRAM
-> >>>>> driver, so this should not stop developers contribute to all other =
-99%
-> >>>>> features on U-Boot.
-> >>>> What they can do is run the non-free blob, dump the registers
-> >>>> afterwards and then use that in the DRAM configuration dtsi. Perhaps
-> >>>> one could write up a tool to ease the process if they think the proc=
-ess
-> >>>> is too much for a regular bringup.
-> >>>>
-> >>>> Most of the time, the DRAM chips are soldered so the calibrated valu=
-es
-> >>>> have about no reason to change over time and can just be kept as-is.
-> >>>>
-> >>>> What do you think?
-> >>> Hopefully the pending diff to add support for other DRAM types beyond
-> >>> those that are already supported would make bring us a long way in
-> >>> that direction.  Maybe one of the existing timings will already work
-> >>> for the boards that are being discussed here.
-> >>>
-> >>
-> >
-> =
-
-> =
-
-> =
-
-> _______________________________________________
-> U-Boot mailing list
-> U-Boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-> https://lists.denx.de/listinfo/u-boot
-> =
+SGksCgpPbiBGcmksIDIwMTktMDYtMjEgYXQgMTM6MzQgKzAyMDAsIEhlaWtvIFN0dWVibmVyIHdy
+b3RlOgo+IEhpLAo+IAo+IEFtIERvbm5lcnN0YWcsIDIwLiBKdW5pIDIwMTksIDA1OjI0OjMyIENF
+U1Qgc2NocmllYiBLZXZlciBZYW5nOgo+ID4gT24gMDYvMjAvMjAxOSAxMjo1NCBBTSwgUGF1bCBL
+b2NpYWxrb3dza2kgd3JvdGU6Cj4gPiA+IExlIG1lcmNyZWRpIDE5IGp1aW4gMjAxOSDDoCAwOTo0
+MiArMDgwMCwgS2V2ZXIgWWFuZyBhIMOpY3JpdCA6Cj4gPiA+ID4gT24gMDYvMTkvMjAxOSAxMjox
+MiBBTSwgTWFyayBLZXR0ZW5pcyB3cm90ZToKPiA+ID4gPiA+ID4gRnJvbTogUGF1bCBLb2NpYWxr
+b3dza2kgPHBhdWwua29jaWFsa293c2tpQGJvb3RsaW4uY29tPgo+ID4gPiA+ID4gPiBEYXRlOiBU
+dWUsIDE4IEp1biAyMDE5IDE0OjQ3OjMzICswMjAwCj4gPiA+ID4gPiA+IE9uIFR1ZSwgMjAxOS0w
+Ni0xOCBhdCAxODowOCArMDgwMCwgS2V2ZXIgWWFuZyB3cm90ZToKPiA+ID4gPiA+ID4gPiBPbiAw
+Ni8xOC8yMDE5IDA1OjAzIFBNLCBQYXVsIEtvY2lhbGtvd3NraSB3cm90ZToKPiA+ID4gPiA+ID4g
+PiA+IE9uIFR1ZSwgMjAxOS0wNi0xOCBhdCAxNDoyNyArMDUzMCwgSmFnYW4gVGVraSB3cm90ZToK
+PiA+ID4gPiA+ID4gPiA+ID4gT24gVHVlLCBKdW4gMTgsIDIwMTkgYXQgMTo1NSBQTSBQYXVsIEtv
+Y2lhbGtvd3NraQo+ID4gPiA+ID4gPiA+ID4gPiA8cGF1bC5rb2NpYWxrb3dza2lAYm9vdGxpbi5j
+b20+IHdyb3RlOgo+ID4gPiA+ID4gPiA+ID4gPiA+IE9uIE1vbiwgMjAxOS0wNi0xNyBhdCAxNToy
+NCArMDgwMCwgeGllcWluaWNrQGdtYWlsLmNvbSB3cm90ZToKPiA+ID4gPiA+ID4gPiA+ID4gPiA+
+IEZyb206IE5pY2sgWGllIDxuaWNrQGtoYWRhcy5jb20+Cj4gPiA+ID4gPiA+ID4gPiA+ID4gV2Fz
+IHRoaXMgdGVzdGVkIHdpdGggU1BMIHN1cHBvcnQ/IEkgZG9uJ3Qgc2VlIERSQU0gY29uZmlndXJh
+dGlvbiBoZXJlCj4gPiA+ID4gPiA+ID4gPiA+ID4gc28gaXQgc2VlbXMgdGhhdCBpdCByZWxpZXMg
+b24gdGhlIG5vbi1mcmVlIHJvY2tjaGlwIGxvYWRlci4KPiA+ID4gPiA+ID4gPiA+ID4gPiAKPiA+
+ID4gPiA+ID4gPiA+ID4gPiBJZiB0aGF0IGlzIHRoZSBjYXNlLCBjb3VsZCB5b3UgcGxlYXNlIGlu
+ZGljYXRlIHRoYXQgaW4gdGhlIGNvbW1pdAo+ID4gPiA+ID4gPiA+ID4gPiA+IG1lc3NhZ2U/Cj4g
+PiA+ID4gPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+ID4gPiA+ID4gVG8gbWFpbnRhaW5lcnM6IHBs
+ZWFzZSBkbyBub3QgbWVyZ2UgdGhpcyBzZXJpZXMgYmVmb3JlIERSQU0gaW5pdCBhbmQKPiA+ID4g
+PiA+ID4gPiA+ID4gPiBTUEwgc3VwcG9ydCBpcyBhdmFpbGFibGUgZm9yIHRoZXNlIGJvYXJkcy4K
+PiA+ID4gPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiA+ID4gPiBJdCBzZWVtcyB0aGF0IG90
+aGVyIFJLMzM5OSBib2FyZHMgd2VyZSBtZXJnZWQgd2l0aG91dCBTUEwgc3VwcG9ydCBhbmQKPiA+
+ID4gPiA+ID4gPiA+ID4gPiBzb2ZhciwgSSBoYXZlIHRoZSBmZWVsaW5nIHRoYXQgbm9ib2R5IGNh
+cmVkIHRvIGV4cGxhaW4gaG93IHdlIGdvdCBpbnRvCj4gPiA+ID4gPiA+ID4gPiA+ID4gdGhpcyBi
+cm9rZW4gc2l0dWF0aW9uLiBQbGVhc2UgZG9uJ3QgbWVyZ2UgYW55IG1vcmUgc3VjaCBib2FyZC4K
+PiA+ID4gPiA+ID4gPiA+ID4gZnlpOiBubyByazMzOTkgYm9hcmRzIHdlcmUgbWVyZ2VkIHcvbyBT
+UEwuIGxwZGRyNCBib2FyZHMgd2VyZSBtZXJnZWQKPiA+ID4gPiA+ID4gPiA+ID4gd2l0aCBUUEwt
+ZW5hYmxlZCAod2hpY2ggd2FzIGRpc2N1c3NlZCBvbiB0aGUgdGhyZWFkcywgaWYgeW91IHJlbWVt
+YmVyKQo+ID4gPiA+ID4gPiA+ID4gPiB3aXRoIGJlbG93IGJvb3QgY2hhaW4uCj4gPiA+ID4gPiA+
+ID4gPiA+IAo+ID4gPiA+ID4gPiA+ID4gPiBya2JpbiAoVFBMKSAtPiBTUEwgLT4gVS1Cb290IHBy
+b3Blcgo+ID4gPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiA+ID4gU2FtZSBjYXNlIGZvciB0
+aGlzIGJvYXJkIGFzIHdlbGwuCj4gPiA+ID4gPiA+ID4gPiBIZXJlIGlzIGEgcXVvdGUgZnJvbSBQ
+aGlsaXBwIFRvbXNpY2ggb24gdGhlIHRocmVhZCB3ZSBkaXNjdXNzZWQgdGhpczoKPiA+ID4gPiA+
+ID4gPiA+IAo+ID4gPiA+ID4gPiA+ID4gIiBPbiBzb21lIGJvYXJkcywgdGhlcmUgd2lsbCBiZSBu
+byBUUEwgYW5kIG9ubHkgYSBTUEwgc3RhZ2UgdGhhdCB3aWxsCj4gPiA+ID4gPiA+ID4gPiBpbml0
+aWFsaXNlIERSQU0gKGFzIHRoZSBtb3ZlIHRvIGhhdmluZyBUUEwgb24gdGhlIFJLMzM5OSBpcyBv
+cHRpb25hbCkuCj4gPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiA+IEkgYWdyZWUgd2l0aCBQ
+YXVsIHRoYXQgdGhlIERSQU0gaW5pdCBzaG91bGQgYmUgcGFydCBvZiBVLUJvb3Qgd2hlbmV2ZXIK
+PiA+ID4gPiA+ID4gPiA+IHdlIGFkZCBuZXcgYm9hcmRzIGFuZCBtYWtlIGFuIG9wZW4gRFJBTSBp
+bml0IGEgcHJlcmVxdWlzaXRlLiAiCj4gPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiA+IFNv
+IGV2ZW4gaWYgSSBmcmVxdWVudGx5IGNvbmZ1c2UgU1BMIGFuZCBUUEwsIGl0IGRvZXNuJ3QgY2hh
+bmdlIHRoZSBmYWN0Cj4gPiA+ID4gPiA+ID4gPiB0aGF0IG5vIGJvYXJkIHNob3VsZCBiZSBtZXJn
+ZWQgd2l0aG91dCBwcm9wZXIgRFJBTSBpbml0Lgo+ID4gPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+
+ID4gPiBQbGVhc2Ugc3RvcCBwdXNoaW5nIGZvciBtZXJnaW5nIHRoZXNlIGJvYXJkcy4gSSdtIG5v
+dCBzdXJlIHdoYXQgd2UKPiA+ID4gPiA+ID4gPiA+IHNob3VsZCBkbyBhYm91dCB0aGUgYm9hcmRz
+IHRoYXQgd2VyZSBtZXJnZWQgYWxyZWFkeSB3aXRob3V0IERSQU0gaW5pdCwKPiA+ID4gPiA+ID4g
+PiA+IGJ1dCBtYXliZSB0aGV5IHNob3VsZCBiZSByZXZlcnRlZC4KPiA+ID4gPiA+ID4gPiBJIGRv
+bid0IHRoaW5rIHdlIGhhdmUgdG8gaGF2ZSBmdWxsIERSQU0gaW5pdCBzb3VyY2UgY29kZSBmb3Ig
+ZWFjaAo+ID4gPiA+ID4gPiA+IGJvYXJkIGJlZm9yZSB3ZSBjYW4gbWVyZ2UgaXQsIEkgYmVsaWV2
+ZSBtb3N0IG9mIHRoZSBib2FyZCBvbiBVLUJvb3QKPiA+ID4gPiA+ID4gPiBtYWlubGluZSBuZWVk
+IHRvIHJlbW92ZWQgZHVlIHRvIHRoaXMgcnVsZS4gVGhlcmUgYXJlIHNvIG1hbnkgYm9hcmRzCj4g
+PiA+ID4gPiA+ID4gZnJvbSBkaWZmZXJlbnQgdmVuZG9yIG5lZWQgYSBiaW5hcnkgbG9hZGVyIGJl
+Zm9yZSBVLUJvb3QsIGFuZCBJIGNhbgo+ID4gPiA+ID4gPiA+IHNlZSBvbmx5IHZlcnkgZmV3IGRy
+aXZlcnMgZm9yIGRyYW0gYXQgZHJpdmVyL3JhbS8sIGFuZCBJIGJlbGlldmUgcm9ja2NoaXAKPiA+
+ID4gPiA+ID4gPiBpcyBhbHJlYWR5IHRoZSBtb3N0IG9wZW4gdmVuZG9yIG9uIHRoaXMgYXJlYS4K
+PiA+ID4gPiA+ID4gV2VsbCwgSSBhbSBub3QgdGFsa2luZyBhYm91dCBmdWxsIERSQU0gaW5pdCBz
+b3VyY2UgY29kZSBhcyBpbiBkeW5hbWljCj4gPiA+ID4gPiA+IGxpbmsgdHJhaW5pbmcuIEkgYW0g
+dGFsa2luZyBhYm91dCBoYXZpbmcgYXQgbGVhc3Qgc3RhdGljIERSQU0gcmVnaXN0ZXIKPiA+ID4g
+PiA+ID4gY29uZmlndXJhdGlvbiB2YWx1ZXMsIAo+ID4gPiA+IEkgY2FuIHRlbGwgeW91IHRoYXQg
+dGhpcyBpcyBubyB3b3JrIGZvciBhbGwgdGhlIGJvYXJkcywgeW91IGNhbiBzZWUgaG93Cj4gPiA+
+ID4gcm9ja2NoaXAgbHBkZHI0KFdJUCwgc2VuZCBieSBKYWdhbikgZHJpdmVyIHdvcmtzLgo+ID4g
+PiBJIHRob3VnaHQgdGhhdCBMUEREUjQgd29ya3MgdGhlIHNhbWUgYXMgb3RoZXIgdHlwZXMgb2Yg
+RFJBTSB3aGVyZSB3ZQo+ID4gPiBoYXZlIGEgZHRzaSBhcnJheSB3aXRoIHRpbWluZ3MgY29uZmln
+dXJhdGlvbi4gT2YgY291cnNlLCBzb21lIG1vcmUKPiA+ID4gcmVnaXN0ZXJzIG5lZWQgdG8gYmUg
+c2V0IHVwLCBidXQgd2UgYWxyZWFkeSBoYXZlIHN1cHBvcnQgZm9yIHRoYXQgb3IKPiA+ID4gaXQn
+cyBxdWl0ZSBjbG9zZSAoZm9yIExQRERSNCkuCj4gPiA+ID4gPiA+IHdoaWNoIGlzIHByZXNlbnQg
+Zm9yIGEgZ29vZCBudW1iZXIgb2Ygcm9ja2NoaXAKPiA+ID4gPiA+ID4gYm9hcmRzLgo+ID4gPiA+
+IE5vLCB0aGVyZSBpcyBubyByb2NrY2hpcCBib2FyZCBvbmx5IGhhdmUgc3RhdGljIERSQU0gcmVn
+aXN0ZXIKPiA+ID4gPiBjb25maWd1cmF0aW9uIHZhbHVlcywgdGhhdCBtYXliZSBoYXBwZW5zIGlu
+IG90aGVyIHZlbmRvci4KPiA+ID4gSSB3YXMgaW1wbHlpbmcgdGhhdCwgYXMgZmFyIGFzIEkga25v
+dywgaXQgaXMgdGhlIGNhc2UgZm9yIERSQU0gdGltaW5ncwo+ID4gPiBvbiBSb2NrY2hpcCBhcyB3
+ZWxsIGFzIG1vc3Qgb2YgdGhlIHBsYXRmb3JtcyB0aGF0IEkga25vdyBvZi4gSW4gdGhlCj4gPiA+
+IGVuZCwgYW55IGNvZGUgaGFuZGxpbmcgRFJBTSB3aWxsIGVuZCB1cCB3cml0aW5nIHRpbWluZ3Mg
+dG8gdGhlCj4gPiA+IGNvbnRyb2xsZXIncyByZWdpc3RlcnMuIElmIHRoZSBEUkFNIGlzIHBhcnQg
+b2YgdGhlIFBDQiBhbmQgZG9lc24ndAo+ID4gPiBjaGFuZ2UvbW92ZSwgdGhlbiB0aGUgdGltaW5n
+cyBkb24ndCBjaGFuZ2UgaW4gcGFydGljdWxhci4KPiA+ID4gCj4gPiA+IElzIHRoZXJlIHNvbWV0
+aGluZyBzcGVjaWZpYyBhYm91dCBSb2NrY2hpcCB0aGF0IG1ha2VzIGl0IHJlcXVpcmUKPiA+ID4g
+ZGlmZmVyZW50IERSQU0gdGltaW5ncyBhdCBlYWNoIGJvb3Q/Cj4gPiA+ID4gPiA+IE9mIGNvdXJz
+ZSwgaXQgd291bGQgYmUgYmVzdCBpZiBSb2NrY2hpcCB3b3VsZCBjb25zaWRlciByZWxlYXNpbmcg
+dGhpcwo+ID4gPiA+ID4gPiBzb3VyY2UgY29kZSwgCj4gPiA+ID4gUm9ja2NoaXAgYWxyZWFkeSBy
+ZWxlYXNlIGFsbCB0aGUgRFJBTSBpbml0IHNvdXJjZSBjb2RlLCBpbmNsdWRpbmcgRERSMyAsCj4g
+PiA+ID4gTFBERFIzLAo+ID4gPiA+IGFuZCBMUEREUjQod2lwKS4gWW91IGNhbiBzZWUgdGhlIGRy
+aXZlciBhdCBkcml2ZXIvcmFtL3JvY2tjaGlwLyBmb3IKPiA+ID4gPiBldmVyeXRoaW5nLAo+ID4g
+PiA+IHdoaWNoIGlzIG5vdCBvbmx5IHN0YXRpYyByZWdpc3RlciBjb25maWd1cmF0aW9uLgo+ID4g
+PiA+IEFzIEkgaGF2ZSBzYWlkLCByb2NrY2hpcCBpcyBhbHJlYWR5IHRoZSBtb3N0IG9wZW4gdmVu
+ZG9yIGluIHRoaXMgYXJlYQo+ID4gPiA+IHRpbGwgbm93LCBJIGRvbid0IGtub3cKPiA+ID4gPiBp
+ZiB5b3UgaGF2ZSB3b3JraW5nIG9uIHJvY2tjaGlwIFNvQyBiYXNlZCBib2FyZHMuCj4gPiA+IFlv
+dSBhcmUgcXVpdGUgcmlnaHQgYWJvdXQgdGhhdCwgYnV0IEkgd2FzIHRoaW5raW5nIGFib3V0IHRo
+ZSBjb2RlIHRvCj4gPiA+IGNhbGN1bGF0ZSBEUkFNIHRpbWluZ3MgKHdpdGggbGluay10cmFpbmlu
+ZyBhbmQgc3VjaCkgd2hpY2ggaXMgb2Z0ZW4gbm90Cj4gPiA+IGF2YWlsYWJsZSBhcyBmcmVlIHNv
+ZnR3YXJlLCBhbmQgSSBhbSBub3QgYXdhcmUgb2YgUm9ja2NoaXAgaGF2aW5nCj4gPiA+IHJlbGVh
+c2VkIHRoYXQgY29kZSAoYnV0IGZlZWwgZnJlZSB0byBjb3JyZWN0IG1lIGlmIEknbSB3cm9uZyku
+Cj4gPiA+IAo+ID4gPiA+ID4gPiB3aGljaCB3b3VsZCBiZSB0aGUgZWFzaWVzdCBhbmQgZnJpZW5k
+bGllc3Qgc29sdXRpb24KPiA+ID4gPiA+ID4gdG93YXJkcyB0aGUgY29tbXVuaXR5IGhlcmUuIEFy
+ZSB0aGVyZSBpbnRlcm5hbCBkaXNjdXNzaW9ucyBvbmdvaW5nCj4gPiA+ID4gPiA+IGFib3V0IHRo
+aXM/IElmIG5vdCwgaXQgd291bGQgYmUgZ3JlYXRseSBhcHByZWNpYXRlZCB0byBzdGFydCBzdWNo
+Cj4gPiA+ID4gPiA+IGRpc2N1c3Npb25zIGFuZCBjbGVhcmx5IGlkZW50aWZ5IHdoYXQgdGhlIGJs
+b2NraW5nIHBvaW50cyBhcmUuCj4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+IEkgd29uJ3QgdXNl
+IHRoaXMgcnVsZSB0byBzdG9wIGRldmVsb3BlcnMgY29udHJpYnV0ZSB0aGVyZSBzb3VyY2UgY29k
+ZSwKPiA+ID4gPiA+ID4gVGhpcyBpcyByZWFsbHkgc2FkIGFuZCBJIHRoaW5rIHRoYXQgUGhpbGlw
+cCB3YXMsIGxpa2UgbWUsIGluY2xpbmVkIHRvCj4gPiA+ID4gPiA+IGdvIHRvd2FyZHMgdGhlIG90
+aGVyIGRpcmVjdGlvbi4KPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+ID4gZm9yIGEgYm9hcmQgc3Vw
+cG9ydCwgd2Ugb25seSBuZWVkIHRoZSBib2FyZCB0byBoYXZlIHRoZSBmdWxsIGRvY3VtZW50YXRp
+b24KPiA+ID4gPiA+ID4gPiBhYm91dCBob3cgdG8gc2V0dXAgYW5kIGJvb3Qgd2l0aCB1cHN0cmVh
+bSBVLUJvb3QuIGFuZCBJIHRoaW5rIHRoZQo+ID4gPiA+ID4gPiA+IG1vc3Qgb2YgcGVvcGxlIGNh
+cmVzIG1vcmUgYWJvdXQgZmVhdHVyZXMgaW4gVS1Cb290IHByb3Blci4gRXZlcnl0aGluZwo+ID4g
+PiA+ID4gPiA+IGJlZm9yZSBVLUJvb3QgcHJvcGVyLCB5b3UgY2FuIHVzZSBUUEwvU1BMIG9yIGFs
+dGVybmF0aXZlIHRvIHVzZSBiaW5hcnkKPiA+ID4gPiA+ID4gPiBmcm9tIHZlbmRvciwgYXMgeW91
+IGNhbiBzZWUgYWxsIG92ZXIgdGhlIFUtQm9vdCBtYWlubGluZSBub3csIGFsdGhvdWdoCj4gPiA+
+ID4gPiA+ID4gd2UgZW5jb3VyYWdlIHBlb3BsZSB0byB1c2UgZnVsbCBvcGVuIHNvdXJjZSBUUEwv
+U1BMLgo+ID4gPiA+ID4gPiA+IFNwZWNpZmljYWxseSBmb3IgVS1Cb290IFJvY2tjaGlwIHBsYXRm
+b3JtLCBJIHdvdWxkIGxpa2UgcGVvcGxlIHRvCj4gPiA+ID4gPiA+ID4gc3VwcG9ydCBub3Qgb25s
+eSBVLUJvb3QKPiA+ID4gPiA+ID4gPiBwcm9wZXIsIGJ1dCBhbHNvIGZvciBmdWxsIFNQTChBVEYs
+IE9QLVRFRSBzdXBwb3J0LCBpdGIgaW1hZ2UgYW5kIG90aGVyCj4gPiA+ID4gPiA+ID4gZmVhdHVy
+ZXMpCj4gPiA+ID4gPiA+ID4gc3VwcG9ydC4gQW5kIGZvciBEUkFNIGluaXQsCj4gPiA+ID4gPiA+
+ID4gLSBpZiB0aGlzIGJlbG9uZ3MgdG8gU1BMIGZvciB0aGlzIGJvYXJkLCB5b3UgbXVzdCBpbXBs
+ZW1lbnQgaXQgb3IgZWxzZQo+ID4gPiA+ID4gPiA+IFNQTCB3b24ndCB3b3JrOwo+ID4gPiA+ID4g
+PiA+IC0gaWYgdGhpcyBkb2VzIG5vdCBiZWxvbmcgdG8gU1BMIGZvciB0aGlzIGJvYXJkLCB5b3Ug
+bmVlZCBpbXBsZW1lbnQgZnVsbAo+ID4gPiA+ID4gPiA+IGZ1bmN0aW9uIFNQTDsKPiA+ID4gPiA+
+ID4gPiAgICAgYW5kIHlvdSBjYW4gZWl0aGVyIHRvIGhhdmUgZnVsbCBmdW5jdGlvbiBUUEwgd2l0
+aCBEUkFNIGluaXQod2hpY2ggaXMKPiA+ID4gPiA+ID4gPiBwcmVmZXJlZCkKPiA+ID4gPiA+ID4g
+PiAgICAgb3IgYWx0ZXJuYXRpdmVseSB1c2UgYmluYXJ5IGxvYWRlciBmcm9tIHZlbmRvci4KPiA+
+ID4gPiA+ID4gVGhpcyBpcyBub3QgcmVhbGx5IGEgdGVjaG5pY2FsIGFyZ3VtZW50IGhlcmUsIG1v
+cmUgb2YgYSBwb2xpY3kgYXJndW1lbnQKPiA+ID4gPiA+ID4gdGhhdCBlbnN1cmVzIHdlIGhhdmUg
+ZnVsbCBmcmVlIHNvZnR3YXJlIHN1cHBvcnQgZm9yIHRoZSBib2FyZHMgd2UKPiA+ID4gPiA+ID4g
+c3VwcG9ydCwgYW5kIG5vdCBvbmx5IGhhbGYtY29va2VkIHN1cHBvcnQgKHRoYXQgd2lsbCBtb3N0
+IGxpa2VseSBuZXZlcgo+ID4gPiA+ID4gPiBiZSBjb21wbGV0ZWQgYXMgc29vbiBhcyBzb21ldGhp
+bmcgdGhhdCB3b3JrcyBnZXRzIG1lcmdlZCkuIFNvIGl0IGlzIGEKPiA+ID4gPiA+ID4gc3RyYXRl
+Z2ljYWwgZGVjaXNpb24sIG5vdCBhIHN0cmljdGx5IHByYWdtYXRpYyBvbmUuCj4gPiA+ID4gPiBX
+aGlsZSBoYXZpbmcgZnVsbCBvcGVuIHNvdXJjZSBzb2Z0d2FyZSBzdXBwb3J0IGZvciBib2FyZHMg
+aXMgYSBub2JsZQo+ID4gPiA+ID4gZ29hbCwgSSB0aGluayB0aGVyZSBzaG91bGQgYmUgc29tZSBy
+b29tIGZvciBwcmFnbWF0aXNtIGhlcmUuICBBCj4gPiA+ID4gPiBzaWduaWZpY2FudCBudW1iZXIg
+b2YgdV9ib290IHRhcmdldHMgcmVseSBvbiBjbG9zZWQgc291cmNlIGNvbXBvbmVudHMuCj4gPiA+
+ID4gPiBJbiB0aGUgcGFydGljdWxhciBjYXNlIG9mIFJLMzM5OSB0aGUgc2l0dWF0aW9uIGlzIGJl
+dHRlciB0aGFuIGZvcgo+ID4gPiA+ID4gb3RoZXIgYm9hcmRzIHNpbmNlIHlvdSBjYW4gY29tYmlu
+ZSB0aGUgYmluYXJ5IGxvYWRlciBmcm9tIHRoZSB2ZW5kb3IKPiA+ID4gPiA+IHdpdGggbWFpbmxp
+bmUgVS1Cb290IGFuZCBtYWlubGluZSBBVEYgdG8gY3JlYXRlIGEgZmlybXdhcmUgd2hlcmUgKGFz
+Cj4gPiA+ID4gPiBmYXIgYXMgd2UgY2FuIHRlbGwpIG5vIGNsb3NlZCBzb3VyZSBjb21wb25lbnQg
+cmVtYWlucyBhY3RpdmUgYWZ0ZXIKPiA+ID4gPiA+IFUtQm9vdCBhbmQgQVRGIHRha2Ugb3ZlciBj
+b250cm9sLgo+ID4gPiA+ID4gCj4gPiA+ID4gPiA+IEkgdGhpbmsgcmV2ZXJ0aW5nIHBhdGNoZXMg
+YWRkaW5nIHN1cHBvcnQgZm9yIGJvYXJkcyB3aXRoIG5vIERSQU0KPiA+ID4gPiA+ID4gY29uZmln
+dXJhdGlvbiBhdCBhbGwgd291bGQgc2VuZCBhIG1lc3NhZ2UgaW4gdGhlIHJpZ2h0IGRpcmVjdGlv
+biBoZXJlLgo+ID4gPiA+IEFzIGEgZGV2ZWxvcGVyLCBJIGFncmVlIG9uIHRoaXMsIGJ1dCBhcyBh
+IG1haW50YWluZXIsIEkga25vdyB0b28gbWFueQo+ID4gPiA+IGRldmVsb3BlcnMgbm90IGFibGUg
+dG8gZG8gaXQgYW5kIHdoYXQgbW9zdCBvZiBkZXZlbG9wZXJzIG5lZWQgaXMgb3RoZXIKPiA+ID4g
+PiBmZWF0dXJlcyBpbiBVLUJvb3Qgb3IgU1BMLCBhbmQgSSB3b3VsZCBsaWtlIHRoZSBVLUJvb3Qg
+bWFpbmxpbmUgaXMgbW9yZQo+ID4gPiA+IGFjdGl2ZSB3aXRoIG1vcmUgYW5kIG1vcmUgZGV2ZWxv
+cGVycy4gU28gSSdtIGFmcmFpZCBJIGFncmVlIHdpdGggTWFyawo+ID4gPiA+IGF0IHRoaXMgdGlt
+ZSBmb3IgdGhlIHBvbGljeS4KPiA+ID4gTWF5YmUgd2UgbmVlZCB0byBwcm92aWRlIHRvb2xzIG90
+IG1ha2UgdGhhdCBwcm9jZXNzIGVhc2llciBmb3IgZXZlcnlvbmUKPiA+ID4gaWYgaXQgaXMgcmVh
+bGx5IHRoYXQgaGFyZC4gSSBkb24ndCByZWFsbHkgc2VlIHdoYXQgaXMgc28gc3BlY2lhbCBhYm91
+dAo+ID4gPiBEUkFNIHRpbWluZ3MgdGhhdCB3b3VsZCBpbXBseSB0aGF0IGEgcmVndWxhciBkZXZl
+bG9wZXIgZG9pbmcgYSBVLUJvb3QKPiA+ID4gYnJpbmd1cCBjb3VsZG4ndCBmaWd1cmUgdGhpbmdz
+IG91dCwgYXNpZGUgZnJvbSB0aGUgYWJpbGl0eSB0byBkdW1wIHNhaWQKPiA+ID4gdGltaW5ncy4K
+PiA+ID4gCj4gPiA+ID4gSWYgYWxsIHRoZSBvdGhlciBTb0MgcGxhdGZvcm1zIGNhbiBoYXZlIHRo
+ZSBzYW1lIHJ1bGUgZm9yIERSQU0gaW5pdCBkcml2ZXIKPiA+ID4gPiBpcyBhIG1hbmRhdG9yeSBp
+bnN0ZWFkIG9mIG9wdGlvbiwgZWcuIGJyY29tLCBxY29tLCBtdGssIG9tYXAsIHRlZ3JhLCBzdG0s
+Cj4gPiA+ID4gaW14LCBhbWwsIGFuZCBhbGwgb3RoZXJzLCB0aGVuIEkgd291bGQgdmVyeSBoYXBw
+eSB0byBmb2xsb3cgdGhlIHJ1bGUuCj4gPiA+ID4gUm9ja2NoaXAgaXMgb3BlbiBmb3Igb3BlbiBz
+b3VyY2UgdGhlIERSQU0gZHJpdmVyLCB5b3UgaGF2ZSB0byBrbm93IHRoaXMKPiA+ID4gPiBpcyB0
+aGUgZGVjaXNpb24gYnkgdGhlIHZlbmRvciwgYnV0IG5vdCBhbnkgb2YgZGV2ZWxvcGVycy4KPiA+
+ID4gPiBPbiByb2NrY2hpcCBwbGF0Zm9ybSwgZGV2ZWxvcGVycyBubyBuZWVkIHRvIGNvbmNlcm4g
+YWJvdXQgdGhlIERSQU0KPiA+ID4gPiBkcml2ZXIod2hpY2ggaXMgcHJldHR5IGhhcmQgZm9yIG1v
+c3QgZGV2ZWxvcGVycykgYmVjYXVzZSByb2NrY2hpcAo+ID4gPiA+IGFscmVhZHkgY29udHJpYnV0
+ZSBpdC4KPiA+ID4gUm9ja2NoaXAgaXMgaW5kZWVkIGluIGEgYmV0dGVyIHBvc2l0aW9uIHRoYW4g
+b3RoZXIgdmVuZG9ycyB3aGVyZSBEUkFNCj4gPiA+IGluaXQgbWF5IG5vdCBiZSBhdmFpbGFibGUg
+KG9yIHdoZW4gaXQncyBpbXBvc3NpYmxlIHRvIHJ1biBVLUJvb3QgcmlnaHQKPiA+ID4gYWZ0ZXIg
+dGhlIGJvb3Ryb20gYW5kIGRvIHRoZSBEUkFNIGluaXQgaXRzZWxmIGJlY2F1c2Ugb2YgZS5nLiBh
+YnVzaXZlCj4gPiA+IHNpZ25hdHVyZSB2ZXJpZmljYXRpb24gb3IgbGFjayBvZiBkb2N1bWVudGF0
+aW9uKS4KPiA+ID4gCj4gPiA+IFNpbmNlIHRoZXJlIGlzIGdvb2QgRFJBTSBzdXBwb3J0IGZvciBS
+b2NrY2hpcCBpbiBwbGFjZSwgd2UgaGF2ZSBhbgo+ID4gPiBvcHBvcnR1bml0eSB0byBwdXNoIGRl
+dmVsb3BlcnMgdG8gZG8gdGhlIHJpZ2h0IHRoaW5nIGFuZCBjb250cmlidXRlCj4gPiA+IGZ1bGwg
+c3VwcG9ydCBmb3IgdGhlIGJvYXJkLiBUbyBtZSBpdCBpcyBzaW1wbHkgYSBtYXR0ZXIgb2YKPiA+
+ID4gYWNrbm93bGVkZ2luZyB0aGF0IGJvb3Rsb2FkZXIgc3VwcG9ydCBmb3IgYSBib2FyZCB3aXRo
+b3V0IERSQU0gaW5pdCBpcwo+ID4gPiBub3QgdXNlZnVsIGJvb3Rsb2FkZXIgc3VwcG9ydC4gU2lu
+Y2Ugd2UgaGF2ZSB0aGUgY29kZSBpbiBwbGFjZSB0bwo+ID4gPiBzdXBwb3J0IHRoYXQsIHdlIGNh
+biB0YWtlIHRoZSBleHRyYSBzdGVwIGFuZCByZXF1aXJlIHRoYXQgZWFjaCBib2FyZAo+ID4gPiBj
+b250cmlidXRpb24gYmUgdXNlZnVsIGluIHRoYXQgYXNwZWN0Lgo+ID4gPiAKPiA+ID4gPiBGb3Ig
+dGhlIHRpbWUgbm93LCBJIGtub3cgdGhlcmUgd2lsbCBiZSBmdWxsIERSQU0gZHJpdmVyIGZvciBy
+b2NrY2hpcCBTb0MsCj4gPiA+ID4gc28gdGhlIFNvQy9ib2FyZCBzdXBwb3J0IGNvdWxkIGJlIHN0
+ZXAgYnkgc3RlcDoKPiA+ID4gPiBVLUJvb3QgcHJvcGVyIC0+IFUtQm9vdCArIFNQTChubyBEUkFN
+IGluaXQpIC0+VS1Cb290ICsgU1BMICsgVFBMLgo+IAo+IEtlZXBpbmcgYWxsb3dpbmcgYSBzdGVw
+LWJ5LXN0ZXAgYXBwcm9hY2ggY291bGQgYmUgYmVuZWZpY2lhbCBJIHRoaW5rLAo+IGluIHRoZSBr
+ZXJuZWwgd2UgYWxzbyBkb24ndCByZXF1aXJlIGZ1bGwgc3VwcG9ydCBmb3IgYWxsIHBlcmlwaGVy
+YWxzIG9uCj4gaW5pdGlhbCBzdWJtaXNzaW9uIDstKSAuCgpUbyBiZSBmYWlyLCBJJ20gbm90IHN1
+Z2dlc3RpbmcgdGhhdCBlaXRoZXIsIEknbSBvbmx5IGNvbmNlcm5lZCBhYm91dApEUkFNIGluaXQg
+d2hpY2ggSSB3b3VsZG4ndCBwdXQgdW5kZXIgImFueSBmZWF0dXJlL2NvbnRyb2xsZXIiIGJ1dCBv
+bmUKb2YgdGhlIGJhc2ljIHRoaW5ncyB0aGF0IGFyZSByZXF1aXJlZCB0byBtYWtlIGJvb3Rsb2Fk
+ZXIgc3VwcG9ydAp1c2VmdWwuCgo+IEFuZCBhbHNvIGZvciBwZW9wbGUgc3RhcnRpbmcgb3V0IG9u
+IGEgc3BlY2lmaWMgYm9hcmQgaGF2aW5nIGF0IGxlYXN0IHBhcnRpYWwKPiBzdXBwb3J0IGlzIHdh
+eSBlYXNpZXIgdGhhbiB0cnlpbmcgdG8gZmlndXJlIG91dCBmb3IgZXhhbXBsZSB0aGUgdmVuZG9y
+Cj4gdS1ib290LiAKCkZhaXIgZW5vdWdoLCBidXQgaXQgY2FuIGFsc28gYnJpbmcgc29tZSBjb25m
+dXNpb24gaWYgc3VwcG9ydCBpcyBub3QKY2xlYXJseSBpZGVudGlmaWVkIGFzIGJlaW5nIHBhcnRp
+YWwuIEhlbmNlIG15IHBvaW50IGFib3V0IGluYWR2ZXJ0ZW50bHkKYnJpY2tpbmcgZGV2aWNlcyBp
+ZiBVLUJvb3QgYWxvbmUgaXMgc3VmZmljaWVudCB0byBib290IG9uIHNvbWUgcmszMzk5CmRldmlj
+ZXMgYnV0IGlmIGl0J3Mgbm90IG9uIHNvbWUgb3RoZXIgb25lcy4KCj4gTWF5YmUgd2UgY291bGQg
+Z2l2ZSB0aGlzIHNvbWUgc29ydCBvZiB0aW1lIGxpbWl0YXRpb24gbGlrZQo+ICJiaW5hcnkgZGRy
+LWluaXQgYWxsb3dlZCB0aWxsIDIwMTktMTAtMzEiIGluIEtjb25maWcgb3Igc29tZXdoZXJlCj4g
+dG8gZ2l2ZSBwZW9wbGUgdGhlIGNoYW5jZSB0byBkbyB0aGluZ3MgcGllY2UgYnkgcGllY2UgYnV0
+IHN0aWxsIGZvcmNlIHRoZW0KPiB0byBhY3R1YWxseSB3b3JrIG9uIGltcHJvdmluZyB0aGUgc2l0
+dWF0aW9uLgoKVGhpcyBzb3VuZHMgbGlrZSBhIHByZWZlY3RseSByZWFzb25hYmxlIGNvbXByb21p
+c2UgdG8gbWUgOikKCj4gQXMgZHJpdmVyLXNpZGUgY2hhbmdlcyB3aWxsIGdlbmVyYWxseSBiZW5l
+Zml0IG1vcmUgc29jcy9ib2FyZHMgcG90ZW50aWFsCj4gcmVtb3ZhbCBhZnRlciB0aGUgdGltZSBs
+aW1pdCB3b3VsZCBvbmx5IGFmZmVjdCB0aGUgYm9hcmQrZHRzIGl0c2VsZi4KCkFuZCBpdCdzIGFs
+c28gYSBnb29kIHRoaW5nIHRvIGtlZXAgdGhhdCBzdXBwb3J0IGFyb3VuZCBpbiB0aGUgaGlzdG9y
+eS4KCj4gU28gc29tZXdoYXQgc2ltaWxhciB0byB3aGF0IHRoZSBrZXJuZWwgZG9lcyB3aXRoICJz
+dGFnaW5nIiwgaWYgeW91Cj4ga2VlcCB3b3JraW5nIG9uIGltcHJvdmluZyBpdCwgaXQgaXMgYWxs
+b3dlZCB0byBzdGF5Lgo+IAo+IFRoaXMgY291bGQgYmUgYWxzbyBhcHBsaWVkIHRvIGFscmVhZHkg
+aW5jbHVkZWQgYm9hcmRzLCBsaWtlCj4gImdpdmUgaXQgYSB3b3JraW5nIGRkci1pbml0IHRpbGwg
+MjAxOS0xMi0zMSBvciBpdCBnZXRzIHJlbW92ZWQiLCBzaW1pbGFybHkKPiB0byBob3cgVG9tIGhh
+bmRsZXMgZGV2aWNlbWFuYWdlciBjb252ZXJzaW9ucyBjdXJyZW50bHkKCkFncmVlZCBhbmQgSSB3
+b3VsZCBsaWtlIHRvIHN1Z2dlc3Qgc29tZSBjbGVhciB3YXkgb2YgbWFya2luZyB0aGUgYm9hcmRz
+CmFzIHBhcnRpYWxseSBzdXBwb3J0ZWQsIGZvciBpbnN0YW5jZSBhIHdhcm5pbmcgbWVzc2FnZSAo
+bGlrZSB3ZSBzaG93IG9uCm51bWVyb3VzIG90aGVyIHRvcGljcykgdGhhdCB3YXJuIHRoZSB1c2Vy
+IHRoYXQgdGhlIHJlc3VsdGluZyBiaW5hcmllcwphcmUgdW51c2FibGUgYXMtaXMuCgo+ID4gPiA+
+IEFzIHlvdSBjYW4gc2VlIHRoZSByb2NrY2hpcCBMUEREUjQgZHJpdmVyIHNlbmQgYnkgSmFnYW4s
+IGhhcyA5OSBwYXRjaGVzCj4gPiA+ID4gaW4gVjIsIHlvdSBjYW4ndCB1c2Ugc3RhdGljIHJlZ2lz
+dGVyIGNvbmZpZ3VyYXRpb24gdG8gZG8gdGhpcywgYW5kIG1heWJlIHlvdQo+ID4gPiA+IGNhbid0
+IGhhdmUgYSB3b3JrYWJsZSB2ZXJzaW9uIGlmIHJvY2tjaGlwIGRvbid0IHJlbGVhc2UgaXQsIGJ1
+dCBJIGRvbid0Cj4gPiA+ID4gdGhpbmsgaXQncwo+ID4gPiA+IGNvcnJlY3QgdG8gbWFrZSBhbGwg
+dGhvc2UgYm9hcmRzIHdpdGggbHBkZHI0IGZsb2F0IG91dHNpZGUgdGhlIG1haW5saW5lCj4gPiA+
+ID4gc3VwcG9ydAo+ID4gPiA+IGJlY2F1c2UgbWFueSBkZXZlbG9wZXJzIGFyZSB1c2luZyB0aGUg
+Ym9hcmRzLCB0aGV5IGNhbiBvbmx5IHVzZSB2ZW5kb3IKPiA+ID4gPiBicmFuY2gKPiA+ID4gPiBp
+ZiB0aGUgYm9hcmQgbm90IHN1cHBvcnQgYnkgbWFpbmxpbmUuCj4gPiA+IElmIG1haW5saW5lIFUt
+Qm9vdCBjYW4ndCBzdXBwb3J0IGJhc2ljIGJvb3Rsb2FkZXIgZmVhdHVyZXMgc3VjaCBhcyBEUkFN
+Cj4gPiA+IGluaXRpYWxpemF0aW9uIGZvciB0aGVzZSBib2FyZHMsIEkgZG9uJ3Qgc2VlIHRoZSBw
+b2ludCBpbiBhY2NlcHRpbmcKPiA+ID4gc3VwcG9ydCBmb3IgdGhlbS4KPiAKPiBIbW0sIGFjdHVh
+bGx5IEkgc2VlIGRkci1pbml0IGFzIG9uZSBvZiB0aGUgbW9yZSBkaWZmaWN1bHQgcGFydHMgdG8g
+YWNoaWV2ZQo+IGF0IGxlYXN0IGlmIHlvdSdyZSBub3QgdGhlIHNvYy12ZW5kb3IsIGR1ZSB0byB1
+bmF2YWlsYWJsZSBkb2N1bWVudGF0aW9uCj4gb3Igc291cmNlcy4KClRoYXQgaXMgdHJ1ZSwgYnV0
+IEkgZG9uJ3Qgc2VlIHRoaXMgYXMgYSBnb29kIHJlYXNvbiB0byBsb3dlciBvdXIKc3RhbmRhcmRz
+LiBJbnN0ZWFkLCBJIGJlbGlldmUgd2Ugc2hvdWxkIHB1c2ggZm9yIHZlbmRvcnMgdG8gcmVsZWFz
+ZQpzYWlkIHNvdXJjZSBjb2RlIGFuZCBkb2N1bWVudGF0aW9uLCBvciBmb3IgdGhlIGNvbW11bml0
+eSB0byByZXZlcnNlLQplbmdpbmVlciBERFIgaW5pdC4KCkFnYWluLCB0aGlzIGlzIGEgbGVzcyBw
+cmFnbWF0aWMgYXBwcm9hY2ggYnV0IGEgbW9yZSBzdHJhdGVnaWMgYW5kCnBvbGl0aWNhbCBvbmUu
+IFRvIG1lIGl0J3MgYWxsIGFib3V0IHdoZXRoZXIgVS1Cb290IGFzIGEgcHJvamVjdCB3YW50cwp0
+byBmb2N1cyBvbiB0ZWNobmljYWwgYXNwZWN0cyBvbmx5IGFuZCBmb2xsb3cgYWxvbmcgb24gdGhl
+IHBvbGl0aWNhbApzaWRlICh3aGljaCBpcyBub3QgdG8gc2F5IHRoYXQgaXQgaXMgcG9saXRpY2Fs
+bHkgbmV1dHJhbCwgdGhlIHN0YXR1cwpxdW8gaXMgdmVyeSBtdWNoIGEgcG9saXRpY2FsIHN0YW5j
+ZSkgb3IgaWYgVS1Cb290IHdhbnRzIHRvIHRha2UgYSBzdGFuZApoZXJlIGFuZCB1c2UgdGhlIHBv
+d2VyIGl0IGhhcyBhY2N1bXVsYXRlZCBvdmVyIHRoZSB5ZWFycyB0byBkbyB0aGluZ3MKcmlnaHQg
+YW5kIHB1c2ggaW4gdGhlIHJpZ2h0IGRpcmVjdGlvbi4KCj4gPiA+IEl0IHdvdWxkIGJlIGxpa2Ug
+c3VibWl0dGluZyBzdXBwb3J0IGZvciBhIGJvYXJkIGluIExpbnV4IHdpdGggYSBuZXcgQ1BVCj4g
+PiA+IHRoYXQgaXMgbm90IHN1cHBvcnRlZCBhbmQgYXNraW5nIHRvIGJvb3QgTGludXggdmlhIGEg
+bm9uLWZyZWUgc2hpbQo+ID4gPiBiZWZvcmUgTGludXggdG8gcHV0IHRoZSBDUFUgaW4gYSBsZWdh
+Y3kgc3RhdGUgdGhhdCBMaW51eCBjYW4gc3VwcG9ydC4KPiA+ID4gVGhpcyB3b3VsZCBkZWZpbml0
+ZWx5IG5vdCBiZSBva2F5IGFuZCBJIGRvbid0IHNlZSB3aHkgdGhlIHNhbWUKPiA+ID4gc2hvdWxk
+bid0IGFwcGx5IHRvIFUtQm9vdC4KPiAKPiBBIGxlc3MgZHJhc3RpYyBleGFtcGxlIHdvdWxkIGJl
+LCBzdWJtaXR0aW5nIGEgYmFzaWMgZGV2aWNldHJlZSB0byB0aGUKPiBsaW51eCBrZXJuZWwgd2l0
+aG91dCBjbG9ja3MgYW5kIHBpbmN0cmwgYW5kIHJlbHlpbmcgb24gdGhlIHRoaW5ncyB0aGUKPiBi
+b290bG9hZGVyIHNldCB1cCBmb3IgdGhpbmdzIGxpa2UgdWFydC4KCkFncmVlZC4KCkNoZWVycywK
+ClBhdWwKCj4gCj4gSGVpa28KPiAKPiA+IExpbnV4IGJ1aWxkIHRhcmdldCBpcyBJbWFnZS96SW1h
+Z2UsIGlmIHRoaXMgSW1hZ2Ugbm90IHdvcmsgd2l0aCB0aGUgYm9hcmQsCj4gPiBlZy4gaGFuZyBz
+b21ld2hlcmUgZHVyaW5nIGJvb3QsIHRoZW4gd2Ugc2F5IHRoZSBib2FyZCBzdXBwb3J0IGlzIGJy
+b2tlbgo+ID4gYW5kIHJlc3VsdCBpbiBub24tZnVuY3Rpb25hbCBib290LiBBbmQgdGhlcmUgYWx3
+YXlzIHNvbWUga2VybmVsIGZlYXR1cmVzCj4gPiBkZXBlbmRzIG9uIGJvb3Rsb2FkZXIgc2V0dGlu
+ZywgaW5jbHVkaW5nIHNlY3VyaXR5IHNldHRpbmcsIHNvbWUgY2xvY2sgaW5pdCwKPiA+IHNvbWUg
+cG93ZXIgc3VwcGx5IGFuZCBldGMuCj4gPiAKPiA+ID4gPiBTbyBJIHRoaW5rIG1lcmdlIHRob3Nl
+IHBhdGNoZXMgYWxyZWFkeSBtYWtlIGJvYXJkIHdvcmsgb24gbWFpbmxpbmUgVS1Cb290Cj4gPiA+
+ID4gaXMgcHJldHR5IGltcG9ydGFudCBmb3Igb3BlbiBzb3VyY2UgY29tbXVuaXR5Lgo+ID4gPiBJ
+IGRvbid0IHRoaW5rIHRoZSBwYXRjaGVzIG1ha2UgdGhlIGJvYXJkcyB3b3JrIG9uIG1haW5saW5l
+IFUtQm9vdCBzaW5jZQo+ID4gPiBidWlsZGluZyBhbmQgaW5zdGFsbGluZyB0aGUgcmVzdWx0aW5n
+IFUtQm9vdCBiaW5hcmllcyB3aWxsIHJlc3VsdCBpbiBhCj4gPiA+IG5vbi1mdW5jdGlvbmFsIGJv
+b3QgY2hhaW4gYW5kIGJyaWNrIHRoZSBkZXZpY2UuIEkgZG9uJ3QgdGhpbmsgdGhpcyBpcyBhCj4g
+PiA+IGdvb2Qgb3Igc2FmZSBpZGVhLgo+ID4gCj4gPiBJbiBVLUJvb3QsIHRoZXJlIGFyZSAyIG9y
+IDMgc3RhbmRhbG9uZSBzdWJzeXN0ZW06IFUtQm9vdCBwcm9wZXIsCj4gPiBTUEwsIGFuZCBUUEws
+IGFuZCBidWlsZCB0YXJnZXQgaXMgdS1ib290LmJpbiwgdS1ib290LXNwbC5iaW4sIGFuZAo+ID4g
+dS1ib290LXRwbC5iaW4uCj4gPiBJZiB0aGUgc3RhbmRhbG9uZSB1LWJvb3QuYmluIG9yIHUtYm9v
+dC1zcGwuYmluIHdvcmtzIGdvb2Qgd2l0aCBhIGJvYXJkIGFuZAo+ID4gYWJsZSB0byBib290IGlu
+dG8gbmV4dCBzdGFnZSBjb3JyZWN0bHksIEkgZG9uJ3QgdGhpbmsgdGhlc2UgcGF0Y2hlcyBjYW4K
+PiA+IGJlIGNvbnNpZGVyCj4gPiBhcyAibm9uLWZ1bmN0aW9uYWwgYm9vdCBjaGFpbiBhbmQgYnJp
+Y2sgdGhlIGRldmljZSIuIEFuZCBmb3IgZXhhbXBsZSBmb3IKPiA+IGFybXY4LAo+ID4gVS1Cb290
+IGlzIGFsd2F5cyBhcyBwYXJ0IG9mIHRoZSBib290IGNoYWluLgo+ID4gCj4gPiBUaGFua3MsCj4g
+PiAtIEtldmVyCj4gPiA+IENoZWVycywKPiA+ID4gCj4gPiA+IFBhdWwKPiA+ID4gCj4gPiA+ID4g
+VGhhbmtzLAo+ID4gPiA+IC0gS2V2ZXIKPiA+ID4gPiA+IEZyYW5rbHksIEkgZG9uJ3QgdGhpbmsg
+dGhhdCB3b3VsZCBoZWxwLiAgSXQgd291bGQganVzdCBkcml2ZSBtb3JlCj4gPiA+ID4gPiBwZW9w
+bGUgdG8gdGhlIHZlbmRvciBVLUJvb3QgdGhhdCBoYXMgbW9yZSBidWdzIGFuZCBpbmNsdWRlcyBh
+IHZlbmRvcgo+ID4gPiA+ID4gc3VwcGxpZWQgQVRGIGJpbmFyeS4KPiA+ID4gPiA+IAo+ID4gPiA+
+ID4gPiA+IEknbSBub3Qgc3VyZSBpZiB5b3UgaGF2ZSB3cml0ZSBhIG5ldyBkcmFtIGRyaXZlciBm
+b3IgYSBib2FyZCwgYnV0IEkga25vdwo+ID4gPiA+ID4gPiA+IGV2ZW4gdGhlIGJvYXJkIHZlbmRv
+ciBtYXkgbm90IGhhdmUgdGhlIGNhcGFiaWxpdHkgdG8gd3JpdGUgdGhlIERSQU0KPiA+ID4gPiA+
+ID4gPiBkcml2ZXIsIHNvIHRoaXMgc2hvdWxkIG5vdCBzdG9wIGRldmVsb3BlcnMgY29udHJpYnV0
+ZSB0byBhbGwgb3RoZXIgOTklCj4gPiA+ID4gPiA+ID4gZmVhdHVyZXMgb24gVS1Cb290Lgo+ID4g
+PiA+ID4gPiBXaGF0IHRoZXkgY2FuIGRvIGlzIHJ1biB0aGUgbm9uLWZyZWUgYmxvYiwgZHVtcCB0
+aGUgcmVnaXN0ZXJzCj4gPiA+ID4gPiA+IGFmdGVyd2FyZHMgYW5kIHRoZW4gdXNlIHRoYXQgaW4g
+dGhlIERSQU0gY29uZmlndXJhdGlvbiBkdHNpLiBQZXJoYXBzCj4gPiA+ID4gPiA+IG9uZSBjb3Vs
+ZCB3cml0ZSB1cCBhIHRvb2wgdG8gZWFzZSB0aGUgcHJvY2VzcyBpZiB0aGV5IHRoaW5rIHRoZSBw
+cm9jZXNzCj4gPiA+ID4gPiA+IGlzIHRvbyBtdWNoIGZvciBhIHJlZ3VsYXIgYnJpbmd1cC4KPiA+
+ID4gPiA+ID4gCj4gPiA+ID4gPiA+IE1vc3Qgb2YgdGhlIHRpbWUsIHRoZSBEUkFNIGNoaXBzIGFy
+ZSBzb2xkZXJlZCBzbyB0aGUgY2FsaWJyYXRlZCB2YWx1ZXMKPiA+ID4gPiA+ID4gaGF2ZSBhYm91
+dCBubyByZWFzb24gdG8gY2hhbmdlIG92ZXIgdGltZSBhbmQgY2FuIGp1c3QgYmUga2VwdCBhcy1p
+cy4KPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+IFdoYXQgZG8geW91IHRoaW5rPwo+ID4gPiA+ID4g
+SG9wZWZ1bGx5IHRoZSBwZW5kaW5nIGRpZmYgdG8gYWRkIHN1cHBvcnQgZm9yIG90aGVyIERSQU0g
+dHlwZXMgYmV5b25kCj4gPiA+ID4gPiB0aG9zZSB0aGF0IGFyZSBhbHJlYWR5IHN1cHBvcnRlZCB3
+b3VsZCBtYWtlIGJyaW5nIHVzIGEgbG9uZyB3YXkgaW4KPiA+ID4gPiA+IHRoYXQgZGlyZWN0aW9u
+LiAgTWF5YmUgb25lIG9mIHRoZSBleGlzdGluZyB0aW1pbmdzIHdpbGwgYWxyZWFkeSB3b3JrCj4g
+PiA+ID4gPiBmb3IgdGhlIGJvYXJkcyB0aGF0IGFyZSBiZWluZyBkaXNjdXNzZWQgaGVyZS4KPiA+
+ID4gPiA+IAo+ID4gCj4gPiAKPiA+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCj4gPiBVLUJvb3QgbWFpbGluZyBsaXN0Cj4gPiBVLUJvb3RAbGlzdHMuZGVu
+eC5kZQo+ID4gaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo+ID4gCj4gCj4g
+Cj4gCi0tIApQYXVsIEtvY2lhbGtvd3NraSwgQm9vdGxpbgpFbWJlZGRlZCBMaW51eCBhbmQga2Vy
+bmVsIGVuZ2luZWVyaW5nCmh0dHBzOi8vYm9vdGxpbi5jb20KCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxp
+c3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
