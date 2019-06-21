@@ -1,157 +1,120 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v4 5/6] board: puma: Get bl31.bin via BL31 and
- rk3399m0.bin via PMUM0
-Date: Fri, 21 Jun 2019 17:39:48 +0800
-Message-ID: <ae1f2bbc-efbd-34a5-3cca-172f5f1d2e37@rock-chips.com>
-References: <20190620100740.6560-1-jagan@amarulasolutions.com>
- <20190620100740.6560-6-jagan@amarulasolutions.com>
+From: Cheng-yi Chiang <cychiang@chromium.org>
+Subject: Re: [PATCH 1/7] video: add HDMI state notifier support
+Date: Fri, 21 Jun 2019 17:39:43 +0800
+Message-ID: <CAFv8Nw+m-+pshD_cxKe4Nc_4wP3ttpAfDU7EFb-e+ZBcYNA51Q__16872.3097698361$1561110076$gmane$org@mail.gmail.com>
+References: <20190603080931.GG21222@phenom.ffwll.local>
+ <CAFv8Nw+1sB8i1d87vLeKxRricZOi4gnXFSgOzW9k0sa_Tzybjg@mail.gmail.com>
+ <20190604072411.GP21222@phenom.ffwll.local>
+ <CAFv8NwKL9ZL=gNpDmdRV+R9eq22+Da_1kzuYBv8kMMyV3Hq14g@mail.gmail.com>
+ <20190611123455.GD2458@phenom.ffwll.local>
+ <CAFv8NwJxs-R=ehgeqyx=e+T5OmUBsk3uWnUb2t0cC-LDPS7G5w@mail.gmail.com>
+ <20190618121220.GU12905@phenom.ffwll.local>
+ <CAFv8NwLci2ALi3V-e=8jjatciHWOoOj-FeajwNLWRpWRtqgBdg@mail.gmail.com>
+ <20190620092506.GP12905@phenom.ffwll.local>
+ <CAFv8NwLbS_f4cfeorzqtmRzQSY0u1tgM7fitAokg_QfViPvq=Q@mail.gmail.com>
+ <20190620211204.GW12905@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20190620100740.6560-6-jagan@amarulasolutions.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, u-boot@lists.denx.de
-Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20190620211204.GW12905@phenom.ffwll.local>
+List-Unsubscribe: <https://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <https://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: "Alsa-devel" <alsa-devel-bounces@alsa-project.org>
+To: Cheng-yi Chiang <cychiang@chromium.org>, Hans Verkuil <hverkuil@xs4all.nl>, linux-kernel <linux-kernel@vger.kernel.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Philipp Zabel <p.zabel@pengutronix.de>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, linux-media@vger.kernel.org, "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..." <alsa-devel@alsa-project.org>, dri-devel@lists.fr
+Cc: Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAwNi8yMC8yMDE5IDA2OjA3IFBNLCBKYWdhbiBUZWtpIHdyb3RlOgo+IFJpZ2h0IG5vdyBw
-dW1hIHJrMzM5OSBib2FyZCBuZWVkIHRvIGNvcHkgYmwzMS1yazMzOTkuYmluIGFuZAo+IHJrMzM5
-OW0wLmJpbiBpbnRvIHUtYm9vdCBzb3VyY2UgZGlyZWN0b3J5IHRvIG1ha2UgdXNlIG9mIGJ1aWxk
-aW5nCj4gdS1ib290Lml0Yi4KPgo+IFNvLCBhZGQgZW52aXJvbm1lbnQgdmFyaWFibGUKPiAtIEJM
-MzEgZm9yIGJsMzEuYmluIChpbnN0ZWFkIG9mIGJsMzEtcmszMzk5LmJpbiB0byBjb21wYXRpYmxl
-IHdpdGggb3RoZXIKPiAgIHBsYXRmb3JtIEJMMzEgZW52KQo+IC0gUE1VTTAgZm9yIHJrMzM5OW0w
-LmJpbgo+Cj4gSWYgdGhlIGJ1aWxkcyBhcmUgbm90IGV4cG9ydGluZyBCTDMxLCBQTVVNMCBlbnYs
-IHRoZSBmaXRfc3BsX2F0Zi5zaCB3aWxsCj4gbm90aWZ5IHdpdGggd2FybmluZyBhYm91dCB3aGlj
-aCBkb2N1bWVudCB0byByZWZlciBmb3IgbW9yZSBpbmZvcm1hdGlvbgo+IGxpa2UgdGhpczoKPgo+
-ICBXQVJOSU5HOiBCTDMxIGZpbGUgYmwzMS5iaW4gTk9UIGZvdW5kLCByZXN1bHRpbmcgYmluYXJ5
-IGlzIG5vbi1mdW5jdGlvbmFsCj4gIFBsZWFzZSByZWFkIEJ1aWxkaW5nIHNlY3Rpb24gaW4gZG9j
-L1JFQURNRS5yb2NrY2hpcAo+ICBXQVJOSU5HOiBQTVVNMCBmaWxlIHJrMzM5OW0wLmJpbiBOT1Qg
-Zm91bmQsIHJlc3VsdGluZyBiaW5hcnkgaXMgbm9uLWZ1bmN0aW9uYWwKPiAgUGxlYXNlIHJlYWQg
-QnVpbGRpbmcgc2VjdGlvbiBpbiBkb2MvUkVBRE1FLnJvY2tjaGlwCj4KPiBTaWduZWQtb2ZmLWJ5
-OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KClJldmlld2VkLWJ5OiBL
-ZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgoKVGhhbmtzLAotIEtldmVyCj4g
-LS0tCj4gIC4uLi9wdW1hX3JrMzM5OS9maXRfc3BsX2F0Zi5pdHMgICAgICAgICAgICAgICB8IDU4
-IC0tLS0tLS0tLS0tLQo+ICAuLi4vcHVtYV9yazMzOTkvZml0X3NwbF9hdGYuc2ggICAgICAgICAg
-ICAgICAgfCA5NCArKysrKysrKysrKysrKysrKysrCj4gIGNvbmZpZ3MvcHVtYS1yazMzOTlfZGVm
-Y29uZmlnICAgICAgICAgICAgICAgICB8ICAyICstCj4gIGRvYy9SRUFETUUucm9ja2NoaXAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICB8ICA4ICstCj4gIDQgZmlsZXMgY2hhbmdlZCwgOTkgaW5z
-ZXJ0aW9ucygrKSwgNjMgZGVsZXRpb25zKC0pCj4gIGRlbGV0ZSBtb2RlIDEwMDY0NCBib2FyZC90
-aGVvYnJvbWEtc3lzdGVtcy9wdW1hX3JrMzM5OS9maXRfc3BsX2F0Zi5pdHMKPiAgY3JlYXRlIG1v
-ZGUgMTAwNzU1IGJvYXJkL3RoZW9icm9tYS1zeXN0ZW1zL3B1bWFfcmszMzk5L2ZpdF9zcGxfYXRm
-LnNoCj4KPiBkaWZmIC0tZ2l0IGEvYm9hcmQvdGhlb2Jyb21hLXN5c3RlbXMvcHVtYV9yazMzOTkv
-Zml0X3NwbF9hdGYuaXRzIGIvYm9hcmQvdGhlb2Jyb21hLXN5c3RlbXMvcHVtYV9yazMzOTkvZml0
-X3NwbF9hdGYuaXRzCj4gZGVsZXRlZCBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggNTMwZjA1OWYz
-ZC4uMDAwMDAwMDAwMAo+IC0tLSBhL2JvYXJkL3RoZW9icm9tYS1zeXN0ZW1zL3B1bWFfcmszMzk5
-L2ZpdF9zcGxfYXRmLml0cwo+ICsrKyAvZGV2L251bGwKPiBAQCAtMSw1OCArMCwwIEBACj4gLS8q
-IFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wKyBPUiBYMTEgKi8KPiAtLyoKPiAtICog
-Q29weXJpZ2h0IChDKSAyMDE3IFRoZW9icm9tYSBTeXN0ZW1zIERlc2lnbiB1bmQgQ29uc3VsdGlu
-ZyBHbWJICj4gLSAqCj4gLSAqIE1pbmltYWwgZHRzIGZvciBhIFNQTCBGSVQgaW1hZ2UgcGF5bG9h
-ZC4KPiAtICovCj4gLQo+IC0vZHRzLXYxLzsKPiAtCj4gLS8gewo+IC0JZGVzY3JpcHRpb24gPSAi
-RklUIGltYWdlIHdpdGggVS1Cb290IHByb3BlciwgQVRGIGJsMzEsIE0wIEZpcm13YXJlLCBEVEIi
-Owo+IC0JI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4gLQo+IC0JaW1hZ2VzIHsKPiAtCQl1Ym9vdCB7
-Cj4gLQkJCWRlc2NyaXB0aW9uID0gIlUtQm9vdCAoNjQtYml0KSI7Cj4gLQkJCWRhdGEgPSAvaW5j
-YmluLygiLi4vLi4vLi4vdS1ib290LW5vZHRiLmJpbiIpOwo+IC0JCQl0eXBlID0gInN0YW5kYWxv
-bmUiOwo+IC0JCQlvcyA9ICJVLUJvb3QiOwo+IC0JCQlhcmNoID0gImFybTY0IjsKPiAtCQkJY29t
-cHJlc3Npb24gPSAibm9uZSI7Cj4gLQkJCWxvYWQgPSA8MHgwMDIwMDAwMD47Cj4gLQkJfTsKPiAt
-CQlhdGYgewo+IC0JCQlkZXNjcmlwdGlvbiA9ICJBUk0gVHJ1c3RlZCBGaXJtd2FyZSI7Cj4gLQkJ
-CWRhdGEgPSAvaW5jYmluLygiLi4vLi4vLi4vYmwzMS1yazMzOTkuYmluIik7Cj4gLQkJCXR5cGUg
-PSAiZmlybXdhcmUiOwo+IC0JCQlhcmNoID0gImFybTY0IjsKPiAtCQkJb3MgPSAiYXJtLXRydXN0
-ZWQtZmlybXdhcmUiOwo+IC0JCQljb21wcmVzc2lvbiA9ICJub25lIjsKPiAtCQkJbG9hZCA9IDww
-eDEwMDA+Owo+IC0JCQllbnRyeSA9IDwweDEwMDA+Owo+IC0JCX07Cj4gLQkJcG11IHsKPiAtCQkg
-ICAgICAgIGRlc2NyaXB0aW9uID0gIkNvcnRleC1NMCBmaXJtd2FyZSI7Cj4gLQkJCWRhdGEgPSAv
-aW5jYmluLygiLi4vLi4vLi4vcmszMzk5bTAuYmluIik7Cj4gLQkJCXR5cGUgPSAicG11LWZpcm13
-YXJlIjsKPiAtCQkJY29tcHJlc3Npb24gPSAibm9uZSI7Cj4gLQkJCWxvYWQgPSA8MHgxODAwMDA+
-Owo+IC0gICAgICAgICAgICAgICAgfTsKPiAtCQlmZHQgewo+IC0JCQlkZXNjcmlwdGlvbiA9ICJS
-SzMzOTktUTcgKFB1bWEpIGZsYXQgZGV2aWNlLXRyZWUiOwo+IC0JCQlkYXRhID0gL2luY2Jpbi8o
-Ii4uLy4uLy4uL3UtYm9vdC5kdGIiKTsKPiAtCQkJdHlwZSA9ICJmbGF0X2R0IjsKPiAtCQkJY29t
-cHJlc3Npb24gPSAibm9uZSI7Cj4gLQkJfTsKPiAtCX07Cj4gLQo+IC0JY29uZmlndXJhdGlvbnMg
-ewo+IC0JCWRlZmF1bHQgPSAiY29uZiI7Cj4gLQkJY29uZiB7Cj4gLQkJCWRlc2NyaXB0aW9uID0g
-IlRoZW9icm9tYSBTeXN0ZW1zIFJLMzM5OS1RNyAoUHVtYSkgU29NIjsKPiAtCQkJZmlybXdhcmUg
-PSAiYXRmIjsKPiAtCQkJbG9hZGFibGVzID0gInVib290IiwgInBtdSI7Cj4gLQkJCWZkdCA9ICJm
-ZHQiOwo+IC0JCX07Cj4gLQl9Owo+IC19Owo+IGRpZmYgLS1naXQgYS9ib2FyZC90aGVvYnJvbWEt
-c3lzdGVtcy9wdW1hX3JrMzM5OS9maXRfc3BsX2F0Zi5zaCBiL2JvYXJkL3RoZW9icm9tYS1zeXN0
-ZW1zL3B1bWFfcmszMzk5L2ZpdF9zcGxfYXRmLnNoCj4gbmV3IGZpbGUgbW9kZSAxMDA3NTUKPiBp
-bmRleCAwMDAwMDAwMDAwLi40MjBlN2RhZjRjCj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL2JvYXJk
-L3RoZW9icm9tYS1zeXN0ZW1zL3B1bWFfcmszMzk5L2ZpdF9zcGxfYXRmLnNoCj4gQEAgLTAsMCAr
-MSw5NCBAQAo+ICsjIS9iaW4vc2gKPiArIwo+ICsjIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiAg
-ICAgIEdQTC0yLjArCj4gKyMKPiArIyBDb3B5cmlnaHQgKEMpIDIwMTkgSmFnYW4gVGVraSA8amFn
-YW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gKyMKPiArIyBCYXNlZCBvbiB0aGUgYm9hcmQvc3Vu
-eGkvbWtzdW54aV9maXRfYXRmLnNoCj4gKyMKPiArIyBTY3JpcHQgdG8gZ2VuZXJhdGUgRklUIGlt
-YWdlIHNvdXJjZSBmb3IgNjQtYml0IHB1bWEgYm9hcmRzIHdpdGgKPiArIyBVLUJvb3QgcHJvcGVy
-LCBBVEYsIFBNVSBmaXJtd2FyZSBhbmQgZGV2aWNldHJlZS4KPiArIwo+ICsjIHVzYWdlOiAkMCA8
-ZHRfbmFtZT4gWzxkdF9uYW1lPiBbPGR0X25hbWVdIC4uLl0KPiArCj4gK1sgLXogIiRCTDMxIiBd
-ICYmIEJMMzE9ImJsMzEuYmluIgo+ICsKPiAraWYgWyAhIC1mICRCTDMxIF07IHRoZW4KPiArCWVj
-aG8gIldBUk5JTkc6IEJMMzEgZmlsZSAkQkwzMSBOT1QgZm91bmQsIHJlc3VsdGluZyBiaW5hcnkg
-aXMgbm9uLWZ1bmN0aW9uYWwiID4mMgo+ICsJZWNobyAiUGxlYXNlIHJlYWQgQnVpbGRpbmcgc2Vj
-dGlvbiBpbiBkb2MvUkVBRE1FLnJvY2tjaGlwIiA+JjIKPiArCUJMMzE9L2Rldi9udWxsCj4gK2Zp
-Cj4gKwo+ICtbIC16ICIkUE1VTTAiIF0gJiYgUE1VTTA9InJrMzM5OW0wLmJpbiIKPiArCj4gK2lm
-IFsgISAtZiAkUE1VTTAgXTsgdGhlbgo+ICsJZWNobyAiV0FSTklORzogUE1VTTAgZmlsZSAkUE1V
-TTAgTk9UIGZvdW5kLCByZXN1bHRpbmcgYmluYXJ5IGlzIG5vbi1mdW5jdGlvbmFsIiA+JjIKPiAr
-CWVjaG8gIlBsZWFzZSByZWFkIEJ1aWxkaW5nIHNlY3Rpb24gaW4gZG9jL1JFQURNRS5yb2NrY2hp
-cCIgPiYyCj4gKwlQTVVNMD0vZGV2L251bGwKPiArZmkKPiArCj4gK2NhdCA8PCBfX0hFQURFUl9F
-T0YKPiArLyogU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjArIE9SIFgxMSAqLwo+ICsv
-Kgo+ICsgKiBDb3B5cmlnaHQgKEMpIDIwMTcgVGhlb2Jyb21hIFN5c3RlbXMgRGVzaWduIHVuZCBD
-b25zdWx0aW5nIEdtYkgKPiArICoKPiArICogTWluaW1hbCBkdHMgZm9yIGEgU1BMIEZJVCBpbWFn
-ZSBwYXlsb2FkLgo+ICsgKi8KPiArCj4gKy9kdHMtdjEvOwo+ICsKPiArLyB7Cj4gKwlkZXNjcmlw
-dGlvbiA9ICJGSVQgaW1hZ2Ugd2l0aCBVLUJvb3QgcHJvcGVyLCBBVEYgYmwzMSwgTTAgRmlybXdh
-cmUsIERUQiI7Cj4gKwkjYWRkcmVzcy1jZWxscyA9IDwxPjsKPiArCj4gKwlpbWFnZXMgewo+ICsJ
-CXVib290IHsKPiArCQkJZGVzY3JpcHRpb24gPSAiVS1Cb290ICg2NC1iaXQpIjsKPiArCQkJZGF0
-YSA9IC9pbmNiaW4vKCJ1LWJvb3Qtbm9kdGIuYmluIik7Cj4gKwkJCXR5cGUgPSAic3RhbmRhbG9u
-ZSI7Cj4gKwkJCWFyY2ggPSAiYXJtNjQiOwo+ICsJCQljb21wcmVzc2lvbiA9ICJub25lIjsKPiAr
-CQkJbG9hZCA9IDwweDRhMDAwMDAwPjsKPiArCQl9Owo+ICsJCWF0ZiB7Cj4gKwkJCWRlc2NyaXB0
-aW9uID0gIkFSTSBUcnVzdGVkIEZpcm13YXJlIjsKPiArCQkJZGF0YSA9IC9pbmNiaW4vKCIkQkwz
-MSIpOwo+ICsJCQl0eXBlID0gImZpcm13YXJlIjsKPiArCQkJYXJjaCA9ICJhcm02NCI7Cj4gKwkJ
-CW9zID0gImFybS10cnVzdGVkLWZpcm13YXJlIjsKPiArCQkJY29tcHJlc3Npb24gPSAibm9uZSI7
-Cj4gKwkJCWxvYWQgPSA8MHgxMDAwPjsKPiArCQkJZW50cnkgPSA8MHgxMDAwPjsKPiArCQl9Owo+
-ICsJCXBtdSB7Cj4gKwkJICAgICAgICBkZXNjcmlwdGlvbiA9ICJDb3J0ZXgtTTAgZmlybXdhcmUi
-Owo+ICsJCQlkYXRhID0gL2luY2Jpbi8oIiRQTVVNMCIpOwo+ICsJCQl0eXBlID0gInBtdS1maXJt
-d2FyZSI7Cj4gKwkJCWNvbXByZXNzaW9uID0gIm5vbmUiOwo+ICsJCQlsb2FkID0gPDB4MTgwMDAw
-PjsKPiArICAgICAgICAgICAgICAgIH07Cj4gKwkJZmR0IHsKPiArCQkJZGVzY3JpcHRpb24gPSAi
-UkszMzk5LVE3IChQdW1hKSBmbGF0IGRldmljZS10cmVlIjsKPiArCQkJZGF0YSA9IC9pbmNiaW4v
-KCJ1LWJvb3QuZHRiIik7Cj4gKwkJCXR5cGUgPSAiZmxhdF9kdCI7Cj4gKwkJCWNvbXByZXNzaW9u
-ID0gIm5vbmUiOwo+ICsJCX07Cj4gK19fSEVBREVSX0VPRgo+ICsKPiArY2F0IDw8IF9fQ09ORl9I
-RUFERVJfRU9GCj4gKwl9Owo+ICsKPiArCWNvbmZpZ3VyYXRpb25zIHsKPiArCQlkZWZhdWx0ID0g
-ImNvbmYiOwo+ICsJCWNvbmYgewo+ICsJCQlkZXNjcmlwdGlvbiA9ICJUaGVvYnJvbWEgU3lzdGVt
-cyBSSzMzOTktUTcgKFB1bWEpIFNvTSI7Cj4gKwkJCWZpcm13YXJlID0gImF0ZiI7Cj4gKwkJCWxv
-YWRhYmxlcyA9ICJ1Ym9vdCIsICJwbXUiOwo+ICsJCQlmZHQgPSAiZmR0IjsKPiArCQl9Owo+ICtf
-X0NPTkZfSEVBREVSX0VPRgo+ICsKPiArY2F0IDw8IF9fSVRTX0VPRgo+ICsJfTsKPiArfTsKPiAr
-X19JVFNfRU9GCj4gZGlmZiAtLWdpdCBhL2NvbmZpZ3MvcHVtYS1yazMzOTlfZGVmY29uZmlnIGIv
-Y29uZmlncy9wdW1hLXJrMzM5OV9kZWZjb25maWcKPiBpbmRleCAwM2YwYmZkYjU5Li5lYmM3OGZi
-MjE2IDEwMDY0NAo+IC0tLSBhL2NvbmZpZ3MvcHVtYS1yazMzOTlfZGVmY29uZmlnCj4gKysrIGIv
-Y29uZmlncy9wdW1hLXJrMzM5OV9kZWZjb25maWcKPiBAQCAtMTUsNyArMTUsNyBAQCBDT05GSUdf
-REVCVUdfVUFSVF9DTE9DSz0yNDAwMDAwMAo+ICBDT05GSUdfU1BMX1NQSV9GTEFTSF9TVVBQT1JU
-PXkKPiAgQ09ORklHX1NQTF9TUElfU1VQUE9SVD15Cj4gIENPTkZJR19ERUJVR19VQVJUPXkKPiAt
-Q09ORklHX1NQTF9GSVRfU09VUkNFPSJib2FyZC90aGVvYnJvbWEtc3lzdGVtcy9wdW1hX3JrMzM5
-OS9maXRfc3BsX2F0Zi5pdHMiCj4gK0NPTkZJR19TUExfRklUX0dFTkVSQVRPUj0iYm9hcmQvdGhl
-b2Jyb21hLXN5c3RlbXMvcHVtYV9yazMzOTkvZml0X3NwbF9hdGYuc2giCj4gIENPTkZJR19ERUZB
-VUxUX0ZEVF9GSUxFPSJyb2NrY2hpcC9yazMzOTktcHVtYS1oYWlrb3UuZHRiIgo+ICBDT05GSUdf
-TUlTQ19JTklUX1I9eQo+ICAjIENPTkZJR19ESVNQTEFZX0NQVUlORk8gaXMgbm90IHNldAo+IGRp
-ZmYgLS1naXQgYS9kb2MvUkVBRE1FLnJvY2tjaGlwIGIvZG9jL1JFQURNRS5yb2NrY2hpcAo+IGlu
-ZGV4IDU2ODBjMDc1ZmEuLjBlZTU0Y2QwMGUgMTAwNjQ0Cj4gLS0tIGEvZG9jL1JFQURNRS5yb2Nr
-Y2hpcAo+ICsrKyBiL2RvYy9SRUFETUUucm9ja2NoaXAKPiBAQCAtMTM3LDggKzEzNyw4IEBAIEZv
-ciBleGFtcGxlOgo+ICAJPT4gY2QgYXJtLXRydXN0ZWQtZmlybXdhcmUKPiAgCT0+IG1ha2UgQ1JP
-U1NfQ09NUElMRT1hYXJjaDY0LWxpbnV4LWdudS0gUExBVD1yazMzOTkgYmwzMQo+ICAKPiAtCShj
-b3B5IGJsMzEuYmluIGludG8gVS1Cb290IHJvb3QgZGlyKQo+IC0JPT4gY3AgYnVpbGQvcmszMzk5
-L3JlbGVhc2UvYmwzMS9ibDMxLmJpbiAvcGF0aC90by91LWJvb3QvYmwzMS1yazMzOTkuYmluCj4g
-KwkoZXhwb3J0IGJsMzEuYmluKQo+ICsJPT4gZXhwb3J0IEJMMzE9L3BhdGgvdG8vYXJtLXRydXN0
-ZWQtZmlybXdhcmUvYnVpbGQvcmszMzk5L3JlbGVhc2UvYmwzMS9ibDMxLmJpbgo+ICAKPiAgICAg
-ICBGb3IgcmVzdCBvZiByazMzOTkgYm9hcmRzLgo+ICAKPiBAQCAtMTYyLDggKzE2Miw4IEBAIEZv
-ciBleGFtcGxlOgo+ICAgICAgIChleHBvcnQgY3Jvc3MgY29tcGlsZXIgcGF0aCBmb3IgQ29ydGV4
-LU0wIFBNVSkKPiAgICAgICA9PiBtYWtlIENST1NTX0NPTVBJTEU9YXJtLWNvcnRleF9tMC1lYWJp
-LQo+ICAKPiAtICAgICAoY29weSByazMzOTltMC5iaW4gaW50byBVLUJvb3Qgcm9vdCBkaXIpCj4g
-LSAgICAgPT4gY3AgcmszMzk5bTAuYmluIC9wYXRoL3RvL3UtYm9vdAo+ICsgICAgIChleHBvcnQg
-cmszMzk5bTAuYmluKQo+ICsgICAgID0+IGV4cG9ydCBQTVVNMD0vcGF0aC90by9yazMzOTktY29y
-dGV4LW0wL3JrMzM5OW0wLmJpbgo+ICAKPiAgICAgLSBDb21waWxlIFUtQm9vdAo+ICAKCgoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxp
-bmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGlu
-Zm8vdS1ib290Cg==
+On Fri, Jun 21, 2019 at 5:12 AM Daniel Vetter <daniel@ffwll.ch> wrote:
+>
+> Massively cutting this thread, since halfway through in my previous reply
+> I realized that maybe hdmi_codec is a much better starting point.
+>
+ACK
+> On Thu, Jun 20, 2019 at 09:23:23PM +0800, Cheng-yi Chiang wrote:
+> > On Thu, Jun 20, 2019 at 5:25 PM Daniel Vetter <daniel@ffwll.ch> wrote:
+> > > Yeah fully agreeing that hdmi_audio_code is probably a better starting
+> > > point. Problem is that becuase hdmi_codec is built on top of platform
+> > > device it's quite a bit harder to extend with callbacks and things like
+> > > that, without breaking the driver model.
+> > >
+> > > I need to think about this more, but if all we need to look at is
+> > > hdmi_codec, then I think this becomes a lot easier. And we can ignore
+> > > drm_audio_component.h completely.
+> >
+> >
+> > It is surprising that you think this way.
+> > Maybe the original patch before hdmi-notifier was introduced is the
+> > better way to solve this issue, if we only need to look at hdmi_codec.
+> >
+> > The history of hdmi_codec driver is in this patch series:
+> >
+> > https://lore.kernel.org/patchwork/patch/539656/
+>
+> Hm, this doesn't seem to be the hdmi_codec driver I meant, but another,
+> new one. I was talking about SND_SOC_HDMI_CODEC.
+>
+Yes you are right. They are different codec drivers.
+Sorry for the confusion. What I meant was that my use case on RK3288
+was using dw-hdmi-audio.c codec driver,
+which was later replaced by a more general version hdmi-codec.c.
+
+> > There was a callback mechanism implemented between dw-hdmi and hdmi
+> > codec driver.
+> > It was later consolidated by Doug in this patch for better jack status
+> > reporting:
+> >
+> > https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/303573/
+>
+> Hm that still seems entirely separate hdmi-codec specific to dw-hdmi only
+> ...
+>
+Again you are right. Sorry for the confusion. What I meant is that
+this callback mechanism should work on hdmi-codec.c driver as well.
+
+> > I am not sure why the original patch series did not get fully accepted
+> > in the upstream.
+> > It was quite long time ago.
+> >
+> > But if you think this might be the right way to do, then it is even
+> > better for us because the patch series and Doug's patch had been quite
+> > stable
+> > on our RK3288 products for about four years with plenty of users, so
+> > we have much higher confidence in them.
+> > I can rebase and clean up them and post another patch for review.
+> >
+> > Please let me know what approach you feel is better.
+> > Thanks again!
+>
+> Not sure we're talking about the same. What I had in mind is to add jack
+> status to the hdmi-codec.c stuff, which is used by multiple soc drm
+> display drivers already. Looking at git grep output, there seems to be
+> already some support for dw-hdmi synopsys drm_bridge driver. I thought of
+> extending that. Does that not work for you?
+>
+I think extending current interface will work.
+There is a struct hdmi_codec_pdata to let ALSA codec driver access
+some ops through platform data.
+And after this patch
+
+https://lore.kernel.org/patchwork/patch/692324/
+
+ALSA codec driver can get access to the struct on DRM side.
+Based on this I can add a new ops to register callback function for jack status.
+It will be similar to Doug's chromium patch above.
+I think that is quite a feasible way, and can benefit all boards using
+hdmi-codec.c.
+
+Thanks a lot!!
+
+> Thanks, Daniel
+> --
+> Daniel Vetter
+> Software Engineer, Intel Corporation
+> http://blog.ffwll.ch
