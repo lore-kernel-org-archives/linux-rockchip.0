@@ -1,71 +1,133 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: Re: [PATCH] ARM: dts: rockchip: add display nodes for rk322x
-Date: Fri, 21 Jun 2019 17:51:08 +0200
-Message-ID: <1066dc84-f438-78a7-59fb-1ff0c44e3432@gmail.com>
-References: <1854794.0zkvb3x0FP@phil>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH 2/3] drm/rockchip: Add optional support for CRTC gamma
+ LUT
+Date: Fri, 21 Jun 2019 12:52:51 -0300
+Message-ID: <33068f355edfaabb1c60d5e16a219a058a489531.camel@collabora.com>
+References: <20190618213406.7667-1-ezequiel@collabora.com>
+         <20190618213406.7667-3-ezequiel@collabora.com>
+         <CAD=FV=XoKNA4aW2LT7g8K2t+ABwgt=QJGAyiet1-Gyz3CgWmvg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1854794.0zkvb3x0FP@phil>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=XoKNA4aW2LT7g8K2t+ABwgt=QJGAyiet1-Gyz3CgWmvg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>, Jacopo Mondi <jacopo@jmondi.org>, Ilia Mirkin <imirkin@alum.mit.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Justin, Heiko,
+On Thu, 2019-06-20 at 10:25 -0700, Doug Anderson wrote:
+> Hi,
+> 
+> On Tue, Jun 18, 2019 at 2:43 PM Ezequiel Garcia <ezequiel@collabora.com> wrote:
+> > +static void vop_crtc_gamma_set(struct vop *vop, struct drm_crtc *crtc,
+> > +                              struct drm_crtc_state *old_state)
+> > +{
+> > +       int idle, ret, i;
+> > +
+> > +       spin_lock(&vop->reg_lock);
+> > +       VOP_REG_SET(vop, common, dsp_lut_en, 0);
+> > +       vop_cfg_done(vop);
+> > +       spin_unlock(&vop->reg_lock);
+> > +
+> > +       ret = readx_poll_timeout(vop_dsp_lut_is_enable, vop,
+> > +                          idle, !idle, 5, 30 * 1000);
+> > +       if (ret)
+> 
+> Worth an error message?
+> 
 
-How about hdmi_out?
-See rk3066a.dtsi rk3066a-mk808.dts
+Sure.
 
-> +	hdmi: hdmi at 200a0000 {
-> +		compatible = "rockchip,rk3228-dw-hdmi";
-> +		reg = <0x200a0000 0x20000>;
-> +		reg-io-width = <4>;
-> +		interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&cru SCLK_HDMI_HDCP>, <&cru PCLK_HDMI_CTRL>, <&cru
-SCLK_HDMI_CEC>;
-> +		clock-names = "isfr", "iahb", "cec";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&hdmii2c_xfer &hdmi_hpd &hdmi_cec>;
-> +		resets = <&cru SRST_HDMI_P>;
-> +		reset-names = "hdmi";
-> +		phys = <&hdmi_phy>;
-> +		phy-names = "hdmi";
-> +		rockchip,grf = <&grf>;
-> +		status = "disabled";
-> +
-> +		ports {
+> 
+> > @@ -1205,6 +1294,7 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
+> > 
+> >  static const struct drm_crtc_helper_funcs vop_crtc_helper_funcs = {
+> >         .mode_fixup = vop_crtc_mode_fixup,
+> > +       .atomic_check = vop_crtc_atomic_check,
+> 
+> At first I was worried that there was a bug here since in the context
+> of dw_hdmi (an encoder) adding ".atomic_check" caused ".mode_fixup" to
+> stop getting called as per mode_fixup() in
+> "drivers/gpu/drm/drm_atomic_helper.c".
+> 
+> ...but it seems like it's OK for CRTCs, so I think we're fine.
+> 
+> 
+> > @@ -1323,6 +1413,7 @@ static const struct drm_crtc_funcs vop_crtc_funcs = {
+> >         .disable_vblank = vop_crtc_disable_vblank,
+> >         .set_crc_source = vop_crtc_set_crc_source,
+> >         .verify_crc_source = vop_crtc_verify_crc_source,
+> > +       .gamma_set = drm_atomic_helper_legacy_gamma_set,
+> 
+> Are there any issues in adding this ".gamma_set" property even though
+> we may or may not actually have the ability to set the gamma
+> (depending on whether or not the LUT register range was provided in
+> the device tree)?  I am a DRM noob but
+> drm_atomic_helper_legacy_gamma_set() is not a trivial little function
+> and now we'll be running it in some cases where we don't actually have
+> gamma.
+> 
+> I also notice that there's at least one bit of code that seems to
+> check if ".gamma_set" is NULL.  ...and if it is, it'll return -ENOSYS
+> right away.  Do we still properly return -ENOSYS on devices that don't
+> have the register range?
+> 
+> It seems like the absolute safest would be to have two copies of this
+> struct: one used for VOPs that have the range and one for VOPs that
+> don't.
+> 
+> ...but possibly I'm just paranoid and as I've said I'm a clueless
+> noob.  If someone says it's fine to always provide the .gamma_set
+> property that's fine too.
+> 
 
-			#address-cells = <1>;
-			#size-cells = <0>;
+Provided we do the suggestion below (setting gamma_size and enabling
+color management) when lut_regs is set, then I think we are fine.
 
-> +			hdmi_in: port {
+Before this change:
 
-			hdmi_in: port@0 {
-				reg = <0>;
+* GAMMA_LUT property doesn't exist, and so can't be set.
+* DRM_IOCTL_MODE_SETGAMMA (legacy) return ENOSYS.
 
-> +				#address-cells = <1>;
-> +				#size-cells = <0>;
-> +				hdmi_in_vop: endpoint at 0 {
-> +					reg = <0>;
-> +					remote-endpoint = <&vop_out_hdmi>;
-> +				};
-> +			};
+After this change, on platforms that doesn't support this:
 
-			hdmi_out: port@1 {
-				reg = <1>;
-			};
+* GAMMA_LUT property doesn't exist, and so can't be set.
+* DRM_IOCTL_MODE_SETGAMMA (legacy) return EINVAL.
 
+The only difference is the ENOSYS/EINVAL errno, which I doubt
+will regress anything.
 
-> +		};
-> +	};
-> +
+I don't think this difference deserves assigning (the legacy)
+.gamma_set hook conditionally, which would make the
+implementation too ugly.
+
+> 
+> >  static void vop_fb_unref_worker(struct drm_flip_work *work, void *val)
+> > @@ -1480,6 +1571,10 @@ static int vop_create_crtc(struct vop *vop)
+> >                 goto err_cleanup_planes;
+> > 
+> >         drm_crtc_helper_add(crtc, &vop_crtc_helper_funcs);
+> > +       if (vop_data->lut_size) {
+> > +               drm_mode_crtc_set_gamma_size(crtc, vop_data->lut_size);
+> > +               drm_crtc_enable_color_mgmt(crtc, 0, false, vop_data->lut_size);
+> 
+> Should we only do the above calls if we successfully mapped the resources?
+> 
+
+Yes, totally. See above.
+
+> 
+> > @@ -1776,6 +1871,17 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
+> >         if (IS_ERR(vop->regs))
+> >                 return PTR_ERR(vop->regs);
+> > 
+> > +       res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "lut");
+> 
+> As per comments in the bindings, shouldn't use the name "lut" but
+> should just pick resource #1.
+
+Yes.
+
+Thanks a lot for the review,
+Ezequiel
