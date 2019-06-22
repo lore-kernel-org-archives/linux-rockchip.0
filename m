@@ -1,48 +1,56 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v2 6/8] rockchip: rk3399: tpl: Add
-	spl_board_init
-Date: Sat, 22 Jun 2019 21:50:20 +0800
-Message-ID: <177b2648-19e0-ff66-ba66-70a60c773903@rock-chips.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 7/8] rockchip: rk3399: tpl: Mark printascii into debug
+Date: Sat, 22 Jun 2019 21:50:48 +0800
+Message-ID: <fe95b621-ad16-7e41-0daf-c497d671a254@rock-chips.com>
 References: <20190620185506.11449-1-jagan@amarulasolutions.com>
- <20190620185506.11449-7-jagan@amarulasolutions.com>
+ <20190620185506.11449-8-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20190620185506.11449-7-jagan@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190620185506.11449-8-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, u-boot@lists.denx.de
-Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSmFnYW4sCgoKT24gMDYvMjEvMjAxOSAwMjo1NSBBTSwgSmFnYW4gVGVraSB3cm90ZToKPiBB
-ZGQgc3BsX2JvYXJkX2luaXQgZm9yIFRQTCwgdGhhdCBoYXZlIFRQTCBiYW5uZXIgd2lsbCBoZWxw
-Cj4gdG8gcHJpbnQgdHBsIGJvb3QgcHJpbnRzLgo+Cj4gU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVr
-aSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+CgpSZXZpZXdlZC1ieTogS2V2ZXIgWWFuZyA8
-a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KClRoYW5rcywKLSBLZXZlcgo+IC0tLQo+ICBhcmNo
-L2FybS9tYWNoLXJvY2tjaGlwL3JrMzM5OS1ib2FyZC10cGwuYyB8IDcgKysrKysrKwo+ICAxIGZp
-bGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vbWFj
-aC1yb2NrY2hpcC9yazMzOTktYm9hcmQtdHBsLmMgYi9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3Jr
-MzM5OS1ib2FyZC10cGwuYwo+IGluZGV4IDg2ZDNmZmU5N2MuLjcyZDBkZDkxNGUgMTAwNjQ0Cj4g
-LS0tIGEvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMzOTktYm9hcmQtdHBsLmMKPiArKysgYi9h
-cmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzM5OS1ib2FyZC10cGwuYwo+IEBAIC04LDYgKzgsNyBA
-QAo+ICAjaW5jbHVkZSA8ZG0uaD4KPiAgI2luY2x1ZGUgPHJhbS5oPgo+ICAjaW5jbHVkZSA8c3Bs
-Lmg+Cj4gKyNpbmNsdWRlIDx2ZXJzaW9uLmg+Cj4gICNpbmNsdWRlIDxhc20vaW8uaD4KPiAgI2lu
-Y2x1ZGUgPGFzbS9hcmNoLXJvY2tjaGlwL2Jvb3Ryb20uaD4KPiAgCj4gQEAgLTczLDYgKzc0LDEy
-IEBAIHUzMiBzcGxfYm9vdF9kZXZpY2Uodm9pZCkKPiAgCXJldHVybiBCT09UX0RFVklDRV9CT09U
-Uk9NOwo+ICB9Cj4gIAo+ICt2b2lkIHNwbF9ib2FyZF9pbml0KHZvaWQpCj4gK3sKPiArCXB1dHMo
-IlxuVS1Cb290IFRQTCAiICBQTEFJTl9WRVJTSU9OICIgKCIgVV9CT09UX0RBVEUgIiAtICIKPiAr
-CSAgICAgVV9CT09UX1RJTUUgIiAiIFVfQk9PVF9UWiAiKVxuIik7Cj4gK30KPiArCj4gICNpZmRl
-ZiBDT05GSUdfU1BMX0xPQURfRklUCj4gIGludCBib2FyZF9maXRfY29uZmlnX25hbWVfbWF0Y2go
-Y29uc3QgY2hhciAqbmFtZSkKPiAgewoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRl
-Cmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
+Hi Jagan,
+
+
+On 06/21/2019 02:55 AM, Jagan Teki wrote:
+> Now, we have spl_board_init which has TPL banner prints.
+>
+> So mark the 'U-Boot TPL board init' print into debug.
+>
+> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+
+Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+Thanks,
+- Kever
+> ---
+>  arch/arm/mach-rockchip/rk3399-board-tpl.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/arch/arm/mach-rockchip/rk3399-board-tpl.c b/arch/arm/mach-rockchip/rk3399-board-tpl.c
+> index 72d0dd914e..4a301249b4 100644
+> --- a/arch/arm/mach-rockchip/rk3399-board-tpl.c
+> +++ b/arch/arm/mach-rockchip/rk3399-board-tpl.c
+> @@ -47,7 +47,7 @@ void board_init_f(ulong dummy)
+>  	 * printhex8(0x1234);
+>  	 * printascii("string");
+>  	 */
+> -	printascii("U-Boot TPL board init\n");
+> +	debug("U-Boot TPL board init\n");
+>  #endif
+>  	ret = spl_early_init();
+>  	if (ret) {
