@@ -1,77 +1,83 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] ARM: dts: rockchip: add ethernet phy node for tinker board
-Date: Sat, 22 Jun 2019 10:33:57 +0200
-Message-ID: <1871177.hjLhdHVgcu@phil>
-References: <20190621180017.29646-1-katsuhiro@katsuster.net>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v2 1/8] board: rk3399: Drop explicit uart
+ enablement in spl_board_init
+Date: Sat, 22 Jun 2019 21:45:43 +0800
+Message-ID: <fc1a0515-5baa-e212-1028-66a7dacdd952@rock-chips.com>
+References: <20190620185506.11449-1-jagan@amarulasolutions.com>
+ <20190620185506.11449-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190621180017.29646-1-katsuhiro@katsuster.net>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20190620185506.11449-2-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, u-boot@lists.denx.de
+Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Am Freitag, 21. Juni 2019, 20:00:17 CEST schrieb Katsuhiro Suzuki:
-> This patch adds missing mdio and ethernet PHY nodes for rk3328 ASUS
-> tinker board.
-> 
-> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-
-just for my understanding, which problem does this solve?
-Normally the gmac can establish connections just fine on
-the rk3288 by probing the phy in the automatic way.
-
-And I also don't see any additional properties like phy
-interrupt line below.
-
-
-Thanks
-Heiko
-
-> ---
->  arch/arm/boot/dts/rk3288-tinker.dtsi | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
-> 
-> diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
-> index 293576869546..3190817e8d5d 100644
-> --- a/arch/arm/boot/dts/rk3288-tinker.dtsi
-> +++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
-> @@ -117,6 +117,7 @@
->  	assigned-clocks = <&cru SCLK_MAC>;
->  	assigned-clock-parents = <&ext_gmac>;
->  	clock_in_out = "input";
-> +	phy-handle = <&phy0>;
->  	phy-mode = "rgmii";
->  	phy-supply = <&vcc33_lan>;
->  	pinctrl-names = "default";
-> @@ -127,6 +128,17 @@
->  	tx_delay = <0x30>;
->  	rx_delay = <0x10>;
->  	status = "ok";
-> +
-> +	mdio0 {
-> +		compatible = "snps,dwmac-mdio";
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		phy0: ethernet-phy@0 {
-> +			compatible = "ethernet-phy-ieee802.3-c22";
-> +			reg = <0>;
-> +		};
-> +	};
->  };
->  
->  &gpu {
-> 
+SGkgSmFnYW4sCgoKT24gMDYvMjEvMjAxOSAwMjo1NCBBTSwgSmFnYW4gVGVraSB3cm90ZToKPiBw
+cmVsb2FkZXJfY29uc29sZV9pbml0IGlzIHVzZWQgZm9yIHByaW50aW5nIFNQTCBib290IGJhbm5l
+ciB0aGF0Cj4gdXN1YWxseSBjYWxsZWQgZnJvbSBzcGxfYm9hcmRfaW5pdC4KPgo+IFRoZSBjdXJy
+ZW50IHNwbF9ib2FyZF9pbml0IGluIGV2YiBhbmQgcm9jazk2MCBpcyBlbmFibGluZyBleHBsaWNp
+dAo+IHBpbmN0cmwsIGRlYnVnIHVhcnQgcHJpb3IgdG8gY2FsbGluZyBwcmVsb2FkZXJfY29uc29s
+ZV9pbml0IHdoaWNoCj4gZXZlbnR1YWxseSBub3QgcmVxdWlyZWQgc2luY2UgYm9hcmRfaW5pdF9m
+IGlzIGFscmVhZHkgZW5hYmxlZAo+IGRlYnVnIHVhcnQuCj4KPiBTbywgZHJvcCB0aG9zZSBleHBs
+aWNpdCBlbmFibGVtZW50IGNhbGxzIGZyb20gIHNwbF9ib2FyZF9pbml0IG9mCj4gZXZiLCByb2Nr
+OTYwLgo+Cj4gVGVzdGVkIHRoaXMgYnkgZW5hYmxpbmcgQ09ORklHX1NQTF9CT0FSRF9JTklUIGFu
+ZCBhZGRpbmcKPiB1LWJvb3QsZG0tcHJlLXJlbG9jIHByb3BlcnR5IGZvciB1YXJ0IG5vZGUuCj4K
+PiBTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4K
+ClJldmlld2VkLWJ5OiBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgoKVGhh
+bmtzLAotIEtldmVyCj4gLS0tCj4gIGJvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvZXZiLXJrMzM5
+OS5jICAgICAgfCAyMyArLS0tLS0tLS0tLS0tLS0tLS0tCj4gIGJvYXJkL3ZhbXJzL3JvY2s5NjBf
+cmszMzk5L3JvY2s5NjAtcmszMzk5LmMgfCAyNSArLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAgMiBm
+aWxlcyBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDQ2IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAt
+LWdpdCBhL2JvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvZXZiLXJrMzM5OS5jIGIvYm9hcmQvcm9j
+a2NoaXAvZXZiX3JrMzM5OS9ldmItcmszMzk5LmMKPiBpbmRleCBiZjJhZDk4YzQ3Li43NjliNWQx
+NDZmIDEwMDY0NAo+IC0tLSBhL2JvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvZXZiLXJrMzM5OS5j
+Cj4gKysrIGIvYm9hcmQvcm9ja2NoaXAvZXZiX3JrMzM5OS9ldmItcmszMzk5LmMKPiBAQCAtNiw3
+ICs2LDYgQEAKPiAgI2luY2x1ZGUgPGNvbW1vbi5oPgo+ICAjaW5jbHVkZSA8ZG0uaD4KPiAgI2lu
+Y2x1ZGUgPGRtL3BpbmN0cmwuaD4KPiAtI2luY2x1ZGUgPGRtL3VjbGFzcy1pbnRlcm5hbC5oPgo+
+ICAjaW5jbHVkZSA8YXNtL2FyY2gtcm9ja2NoaXAvcGVyaXBoLmg+Cj4gICNpbmNsdWRlIDxwb3dl
+ci9yZWd1bGF0b3IuaD4KPiAgI2luY2x1ZGUgPHNwbC5oPgo+IEBAIC02OCwyNyArNjcsNyBAQCBv
+dXQ6Cj4gIAo+ICB2b2lkIHNwbF9ib2FyZF9pbml0KHZvaWQpCj4gIHsKPiAtCXN0cnVjdCB1ZGV2
+aWNlICpwaW5jdHJsOwo+IC0JaW50IHJldDsKPiAtCj4gLQlyZXQgPSB1Y2xhc3NfZ2V0X2Rldmlj
+ZShVQ0xBU1NfUElOQ1RSTCwgMCwgJnBpbmN0cmwpOwo+IC0JaWYgKHJldCkgewo+IC0JCWRlYnVn
+KCIlczogQ2Fubm90IGZpbmQgcGluY3RybCBkZXZpY2VcbiIsIF9fZnVuY19fKTsKPiAtCQlnb3Rv
+IGVycjsKPiAtCX0KPiAtCj4gLQkvKiBFbmFibGUgZGVidWcgVUFSVCAqLwo+IC0JcmV0ID0gcGlu
+Y3RybF9yZXF1ZXN0X25vZmxhZ3MocGluY3RybCwgUEVSSVBIX0lEX1VBUlRfREJHKTsKPiAtCWlm
+IChyZXQpIHsKPiAtCQlkZWJ1ZygiJXM6IEZhaWxlZCB0byBzZXQgdXAgY29uc29sZSBVQVJUXG4i
+LCBfX2Z1bmNfXyk7Cj4gLQkJZ290byBlcnI7Cj4gLQl9Cj4gLQo+ICAJcHJlbG9hZGVyX2NvbnNv
+bGVfaW5pdCgpOwo+IC0JcmV0dXJuOwo+IC1lcnI6Cj4gLQlwcmludGYoIiVzOiBFcnJvciAlZFxu
+IiwgX19mdW5jX18sIHJldCk7Cj4gIAo+IC0JLyogTm8gd2F5IHRvIHJlcG9ydCBlcnJvciBoZXJl
+ICovCj4gLQloYW5nKCk7Cj4gKwlyZXR1cm47Cj4gIH0KPiBkaWZmIC0tZ2l0IGEvYm9hcmQvdmFt
+cnMvcm9jazk2MF9yazMzOTkvcm9jazk2MC1yazMzOTkuYyBiL2JvYXJkL3ZhbXJzL3JvY2s5NjBf
+cmszMzk5L3JvY2s5NjAtcmszMzk5LmMKPiBpbmRleCAwZjVlZjNhMDlhLi4wMThlNGI1NWI4IDEw
+MDY0NAo+IC0tLSBhL2JvYXJkL3ZhbXJzL3JvY2s5NjBfcmszMzk5L3JvY2s5NjAtcmszMzk5LmMK
+PiArKysgYi9ib2FyZC92YW1ycy9yb2NrOTYwX3JrMzM5OS9yb2NrOTYwLXJrMzM5OS5jCj4gQEAg
+LTUsOSArNSw2IEBACj4gIAo+ICAjaW5jbHVkZSA8Y29tbW9uLmg+Cj4gICNpbmNsdWRlIDxkbS5o
+Pgo+IC0jaW5jbHVkZSA8ZG0vcGluY3RybC5oPgo+IC0jaW5jbHVkZSA8ZG0vdWNsYXNzLWludGVy
+bmFsLmg+Cj4gLSNpbmNsdWRlIDxhc20vYXJjaC1yb2NrY2hpcC9wZXJpcGguaD4KPiAgI2luY2x1
+ZGUgPHBvd2VyL3JlZ3VsYXRvci5oPgo+ICAjaW5jbHVkZSA8c3BsLmg+Cj4gIAo+IEBAIC0yNCwy
+NyArMjEsNyBAQCBpbnQgYm9hcmRfaW5pdCh2b2lkKQo+ICAKPiAgdm9pZCBzcGxfYm9hcmRfaW5p
+dCh2b2lkKQo+ICB7Cj4gLQlzdHJ1Y3QgdWRldmljZSAqcGluY3RybDsKPiAtCWludCByZXQ7Cj4g
+LQo+IC0JcmV0ID0gdWNsYXNzX2dldF9kZXZpY2UoVUNMQVNTX1BJTkNUUkwsIDAsICZwaW5jdHJs
+KTsKPiAtCWlmIChyZXQpIHsKPiAtCQlkZWJ1ZygiJXM6IENhbm5vdCBmaW5kIHBpbmN0cmwgZGV2
+aWNlXG4iLCBfX2Z1bmNfXyk7Cj4gLQkJZ290byBlcnI7Cj4gLQl9Cj4gLQo+IC0JLyogRW5hYmxl
+IGRlYnVnIFVBUlQgKi8KPiAtCXJldCA9IHBpbmN0cmxfcmVxdWVzdF9ub2ZsYWdzKHBpbmN0cmws
+IFBFUklQSF9JRF9VQVJUX0RCRyk7Cj4gLQlpZiAocmV0KSB7Cj4gLQkJZGVidWcoIiVzOiBGYWls
+ZWQgdG8gc2V0IHVwIGNvbnNvbGUgVUFSVFxuIiwgX19mdW5jX18pOwo+IC0JCWdvdG8gZXJyOwo+
+IC0JfQo+IC0KPiAgCXByZWxvYWRlcl9jb25zb2xlX2luaXQoKTsKPiAtCXJldHVybjsKPiAtZXJy
+Ogo+IC0JcHJpbnRmKCIlczogRXJyb3IgJWRcbiIsIF9fZnVuY19fLCByZXQpOwo+ICAKPiAtCS8q
+IE5vIHdheSB0byByZXBvcnQgZXJyb3IgaGVyZSAqLwo+IC0JaGFuZygpOwo+ICsJcmV0dXJuOwo+
+ICB9CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fClUt
+Qm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54
+LmRlL2xpc3RpbmZvL3UtYm9vdAo=
