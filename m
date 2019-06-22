@@ -1,117 +1,46 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] ARM: dts: rockchip: add ethernet phy node for tinker board
-Date: Sat, 22 Jun 2019 17:15:20 +0200
-Message-ID: <1891431.W4duSCi9rW@phil>
-References: <20190621180017.29646-1-katsuhiro@katsuster.net> <1871177.hjLhdHVgcu@phil> <ccf5ad2c-bd56-2d77-4728-d7906045e302@katsuster.net>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH] ARM: dts: rockchip: add ethernet phy node for tinker
+ board
+Date: Sat, 22 Jun 2019 19:55:08 +0200
+Message-ID: <20190622175508.GE8497@lunn.ch>
+References: <20190621180017.29646-1-katsuhiro@katsuster.net>
+ <1871177.hjLhdHVgcu@phil>
+ <ccf5ad2c-bd56-2d77-4728-d7906045e302@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
 In-Reply-To: <ccf5ad2c-bd56-2d77-4728-d7906045e302@katsuster.net>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+To: Katsuhiro Suzuki <katsuhiro@katsuster.net>, Jose Abreu <joabreu@synopsys.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Katsuhiro,
+On Sat, Jun 22, 2019 at 11:50:10PM +0900, Katsuhiro Suzuki wrote:
+> Hello,
 
-Am Samstag, 22. Juni 2019, 16:50:10 CEST schrieb Katsuhiro Suzuki:
-> Current linux-next on my environment, 'ifconfig eth0 up' does not
-> work correctly with following message...
-> 
-> -----
-> root@linaro-alip:~# ifconfig eth0 up
-> [  105.028916] rk_gmac-dwmac ff290000.ethernet eth0: stmmac_open: Cannot 
-> attach to PHY (error: -19)
-> SIOCSIFFLAGS: No such device
-> -----
-> 
-> I checked drivers/net/ethernet/stmicro/stmmac/stmmac_main.c and found
-> stmmac_init_phy() is going to fail if ethernet device node does not
-> have following property:
->    - phy-handle
->    - phy
->    - phy-device
-> 
-> I salvaged old version of linux-next kernel (5.2.0-rc1-20190523),
-> network device of my Tinker Board worked correctly if use it.
->
+Hi Katsuhiro
+
+Please also report this to netdev, and the stmmac maintainers.
+
+./scripts/get_maintainer.pl -f drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+Giuseppe Cavallaro <peppe.cavallaro@st.com> (supporter:STMMAC ETHERNET DRIVER)
+Alexandre Torgue <alexandre.torgue@st.com> (supporter:STMMAC ETHERNET DRIVER)
+Jose Abreu <joabreu@synopsys.com> (supporter:STMMAC ETHERNET DRIVER)
+"David S. Miller" <davem@davemloft.net> (odd fixer:NETWORKING DRIVERS)
+Maxime Coquelin <mcoquelin.stm32@gmail.com> (maintainer:ARM/STM32 ARCHITECTURE)
+netdev@vger.kernel.org (open list:STMMAC ETHERNET DRIVER)
+linux-stm32@st-md-mailman.stormreply.com (moderated list:ARM/STM32 ARCHITECTURE)
+linux-arm-kernel@lists.infradead.org (moderated list:ARM/STM32 ARCHITECTURE)
+linux-kernel@vger.kernel.org (open list)
+
 > I have not bisect commit of root cause yet... Is it better to bisect
 > and find problem instead of sending this patch?
 
-That is clearly a regression (even recent) a newer kernel should
-not break old devicetrees and the mdio subnode creating a
-mdio bus is already marked as optional.
+My guess is that it is one of these three which broken it:
 
-So this will likely affect a lot more boards than the tinker board.
+74371272f97f net: stmmac: Convert to phylink and remove phylib logic
+eeef2f6b9f6e net: stmmac: Start adding phylink support
+9ad372fc5aaf net: stmmac: Prepare to convert to phylink
 
-So if you can find the time you could try to find the offending
-commit first, so that ideally the network maintainers can fix that
-up.
-
-
-Thanks
-Heiko
-
-> On 2019/06/22 17:33, Heiko Stuebner wrote:
-> > Hi,
-> > 
-> > Am Freitag, 21. Juni 2019, 20:00:17 CEST schrieb Katsuhiro Suzuki:
-> >> This patch adds missing mdio and ethernet PHY nodes for rk3328 ASUS
-> >> tinker board.
-> >>
-> >> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-> > 
-> > just for my understanding, which problem does this solve?
-> > Normally the gmac can establish connections just fine on
-> > the rk3288 by probing the phy in the automatic way.
-> > 
-> > And I also don't see any additional properties like phy
-> > interrupt line below.
-> > 
-> > 
-> > Thanks
-> > Heiko
-> > 
-> >> ---
-> >>   arch/arm/boot/dts/rk3288-tinker.dtsi | 12 ++++++++++++
-> >>   1 file changed, 12 insertions(+)
-> >>
-> >> diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
-> >> index 293576869546..3190817e8d5d 100644
-> >> --- a/arch/arm/boot/dts/rk3288-tinker.dtsi
-> >> +++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
-> >> @@ -117,6 +117,7 @@
-> >>   	assigned-clocks = <&cru SCLK_MAC>;
-> >>   	assigned-clock-parents = <&ext_gmac>;
-> >>   	clock_in_out = "input";
-> >> +	phy-handle = <&phy0>;
-> >>   	phy-mode = "rgmii";
-> >>   	phy-supply = <&vcc33_lan>;
-> >>   	pinctrl-names = "default";
-> >> @@ -127,6 +128,17 @@
-> >>   	tx_delay = <0x30>;
-> >>   	rx_delay = <0x10>;
-> >>   	status = "ok";
-> >> +
-> >> +	mdio0 {
-> >> +		compatible = "snps,dwmac-mdio";
-> >> +		#address-cells = <1>;
-> >> +		#size-cells = <0>;
-> >> +
-> >> +		phy0: ethernet-phy@0 {
-> >> +			compatible = "ethernet-phy-ieee802.3-c22";
-> >> +			reg = <0>;
-> >> +		};
-> >> +	};
-> >>   };
-> >>   
-> >>   &gpu {
-> >>
-> > 
-> > 
-> > 
-> > 
-> > 
-> 
-> 
+	     Andrew
