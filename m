@@ -1,14 +1,14 @@
 From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 7/8] rockchip: rk3399: tpl: Mark printascii into debug
-Date: Sat, 22 Jun 2019 21:50:48 +0800
-Message-ID: <fe95b621-ad16-7e41-0daf-c497d671a254@rock-chips.com>
+Subject: Re: [PATCH v2 8/8] rockchip: rk3399: Enable TPL_BOARD_INIT
+Date: Sat, 22 Jun 2019 21:51:13 +0800
+Message-ID: <3abd1246-3921-b403-3caf-7539be54b5e2@rock-chips.com>
 References: <20190620185506.11449-1-jagan@amarulasolutions.com>
- <20190620185506.11449-8-jagan@amarulasolutions.com>
+ <20190620185506.11449-9-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190620185506.11449-8-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+In-Reply-To: <20190620185506.11449-9-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
@@ -27,9 +27,8 @@ Hi Jagan,
 
 
 On 06/21/2019 02:55 AM, Jagan Teki wrote:
-> Now, we have spl_board_init which has TPL banner prints.
->
-> So mark the 'U-Boot TPL board init' print into debug.
+> Enable TPL_BOARD_INIT, this would help us to show
+> TPL boot prints.
 >
 > Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 
@@ -38,19 +37,18 @@ Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Thanks,
 - Kever
 > ---
->  arch/arm/mach-rockchip/rk3399-board-tpl.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  arch/arm/mach-rockchip/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
 >
-> diff --git a/arch/arm/mach-rockchip/rk3399-board-tpl.c b/arch/arm/mach-rockchip/rk3399-board-tpl.c
-> index 72d0dd914e..4a301249b4 100644
-> --- a/arch/arm/mach-rockchip/rk3399-board-tpl.c
-> +++ b/arch/arm/mach-rockchip/rk3399-board-tpl.c
-> @@ -47,7 +47,7 @@ void board_init_f(ulong dummy)
->  	 * printhex8(0x1234);
->  	 * printascii("string");
->  	 */
-> -	printascii("U-Boot TPL board init\n");
-> +	debug("U-Boot TPL board init\n");
->  #endif
->  	ret = spl_early_init();
->  	if (ret) {
+> diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
+> index ce039022df..1d483be8b9 100644
+> --- a/arch/arm/mach-rockchip/Kconfig
+> +++ b/arch/arm/mach-rockchip/Kconfig
+> @@ -184,6 +184,7 @@ config ROCKCHIP_RK3399
+>  	imply TPL_LIBCOMMON_SUPPORT
+>  	imply TPL_LIBGENERIC_SUPPORT
+>  	imply TPL_SYS_MALLOC_SIMPLE
+> +	imply TPL_BOARD_INIT
+>  	imply TPL_BOOTROM_SUPPORT
+>  	imply TPL_DRIVERS_MISC_SUPPORT
+>  	imply TPL_OF_CONTROL
