@@ -1,51 +1,68 @@
-From: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v2 00/28] drivers: Consolidate device lookup helpers
-Date: Mon, 24 Jun 2019 05:23:48 +0200
-Message-ID: <20190624032348.GA28919@kroah.com>
-References: <1560534863-15115-1-git-send-email-suzuki.poulose@arm.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Fix multiple thermal zones
+ conflict in rk3399.dtsi
+Date: Mon, 24 Jun 2019 09:31:34 +0200
+Message-ID: <a993a5a1-29a0-9ebd-9368-c6b08393cdee@linaro.org>
+References: <20190604165802.7338-1-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1560534863-15115-1-git-send-email-suzuki.poulose@arm.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Suzuki K Poulose <suzuki.poulose@arm.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Shyam Sundar S K <shyam-sundar.s-k@amd.com>, rafael@kernel.org, Will Deacon <will.deacon@arm.com>, Ulf Hansson <ulf.hansson@linaro.org>, dri-devel@lists.freedesktop.org, Pavel Machek <pavel@ucw.cz>, Stefan Schmidt <stefan@datenfreihafen.org>, Wolfram Sang <wsa@the-dreams.de>, linux-acpi@vger.kernel.org, Doug Ledford <dledford@redhat.com>, Jiri Slaby <jslaby@suse.com>, Tomas Winkler <tomas.winkler@intel.com>, Dan Murphy <dmurphy@ti.com>, linux-usb@vger.kernel.org, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, Joe Perches <joe@perches.com>, linux-wpan@vger.kernel.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, David Airlie <airlied@linux.ie>, "Rafael J . Wysocki " <rjw@rjwysocki.net>, Thierry Reding <thierry.reding@gmail.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>linu
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190604165802.7338-1-daniel.lezcano@linaro.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: linux-kernel@vger.kernel.org, edubezval@gmail.com, manivannan.sadhasivam@linaro.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Viresh Kumar <viresh.kumar@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Emil Renner Berthing <kernel@esmil.dk>, Randy Li <ayaka@soulik.info>, Tony Xie <tony.xie@rock-chips.com>, Vicente Bergas <vicencb@gmail.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infr>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBKdW4gMTQsIDIwMTkgYXQgMDY6NTM6NTVQTSArMDEwMCwgU3V6dWtpIEsgUG91bG9z
-ZSB3cm90ZToKPiBXZSBoYXZlIGRldmljZSBpdGVyYXRvcnMgdG8gZmluZCBhIHBhcnRpY3VsYXIg
-ZGV2aWNlIG1hdGNoaW5nIGEgY3JpdGVyaWEKPiBmb3IgYSBnaXZlbiBidXMvY2xhc3MvZHJpdmVy
-LiBpLmUsIHtidXMsY2xhc3MsZHJpdmVyfV9maW5kX2RldmljZSgpIEFQSXMuCj4gVGhlIG1hdGNo
-aW5nIGNyaXRlcmlhIGlzIGEgZnVuY3Rpb24gcG9pbnRlciBmb3IgdGhlIEFQSXMuIE9mdGVuIHRo
-ZSBsb29rdXAKPiBpcyBiYXNlZCBvbiBhIGdlbmVyaWMgcHJvcGVydHkgb2YgYSBkZXZpY2UgKGUu
-ZywgbmFtZSwgZndub2RlLCBvZiBub2RlIHBvaW50ZXIKPiBvciBkZXZpY2UgdHlwZSkgcmF0aGVy
-IHRoYW4gYSBkcml2ZXIgc3BlY2lmaWMgaW5mb3JtYXRpb24uIEhvd2V2ZXIsIGVhY2ggZHJpdmVy
-Cj4gd3JpdGVzIHVwIGl0cyBvd24gIm1hdGNoIiBmdW5jdGlvbiwgc3BpbGxpbmcgdGhlIHNpbWls
-YXIgbWF0Y2ggZnVuY3Rpb25zIGFsbAo+IG92ZXIgdGhlIGRyaXZlciBzdWJzeXN0ZW1zLgo+IAo+
-IEFkZGl0aW9uYWxseSB0aGUgcHJvdG90eXBlIGZvciB0aGUgIm1hdGNoIiBmdW5jdGlvbnMgYWNj
-ZXB0ZWQgYnkgdGhlIGFib3ZlIEFQSXMKPiBoYXZlIGEgbWludXRlIGRpZmZlcmVuY2Ugd2hpY2gg
-cHJldmVudHMgdXMgb3RoZXJ3aXNlIHNoYXJpbmcgdGhlIG1hdGNoIGZ1bmN0aW9ucy4KPiBpLmUs
-Cj4gCWludCAoKm1hdGNoKShzdHJ1Y3QgZGV2aWNlICpkZXYsIHZvaWQgKmRhdGEpIGZvciB7YnVz
-L2RyaXZlcn1fZmluZF9kZXZpY2UoKQo+IAkgIHZzCj4gCWludCAoKm1hdGNoKShzdHJ1Y3QgZGV2
-aWNlICpkZXYsIGNvbnN0IHZvaWQgKikgZm9yIGNsYXNzX2ZpbmRfZGV2aWNlKCkKPiAKPiBJZiB3
-ZSBwcm9tb3RlIHRoZSBmb3JtZXIgdG8gYWNjZXB0IGEgImNvbnN0IHZvaWQqIiBwYXJhbWV0ZXIs
-IHdlIGNvdWxkIHNoYXJlIG9uZQo+IHNpbmdsZSBtYXRjaCBmdW5jdGlvbiBmb3IgYWxsIHRoZSBo
-ZWxwZXJzLiBUaGlzIHNlcmllcyBhY2hpZXZlcyB0aGUgZm9sbG93aW5nOgo+IAo+ICBhKSBbUGF0
-Y2hlcyAwMy0wNV0gVW5pZnkgdGhlIHByb3RvdHlwZSBmb3IgIm1hdGNoIiBmdW5jdGlvbnMgYWNj
-ZXB0ZWQgYnkgdGhlCj4gICAgICBkZXZpY2UgbG9va3VwIEFQSXMuCgpJJ3ZlIGFwcGxpZWQgdGhl
-IGZpcnN0IDYgcGF0Y2hlcyBvZiB0aGlzIHNlcmllcyB0byBteSB0cmVlIG5vdy4gIExldCdzCnNl
-ZSBob3cgdGhhdCBnb2VzLCBhbmQgdGhpcyBzaG91bGQgZ2l2ZSB5b3UgYSBtb3JlIHNvbGlkIGJh
-c2UgdG8gcmVkbwp0aGUgcmVzdCBvZiB0aGUgc2VyaWVzIG9mZiBvZi4KCnRoYW5rcywKCmdyZWcg
-ay1oCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+
+Gentle ping ...
+
+
+On 04/06/2019 18:57, Daniel Lezcano wrote:
+> Currently the common thermal zones definitions for the rk3399 assumes
+> multiple thermal zones are supported by the governors. This is not the
+> case and each thermal zone has its own governor instance acting
+> individually without collaboration with other governors.
+> 
+> As the cooling device for the CPU and the GPU thermal zones is the
+> same, each governors take different decisions for the same cooling
+> device leading to conflicting instructions and an erratic behavior.
+> 
+> As the cooling-maps is about to become an optional property, let's
+> remove the cpu cooling device map from the GPU thermal zone.
+> 
+> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 9 ---------
+>  1 file changed, 9 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 196ac9b78076..e1357e0f60f7 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -821,15 +821,6 @@
+>  					type = "critical";
+>  				};
+>  			};
+> -
+> -			cooling-maps {
+> -				map0 {
+> -					trip = <&gpu_alert0>;
+> -					cooling-device =
+> -						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+> -						<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> -				};
+> -			};
+>  		};
+>  	};
+>  
+> 
+
+
+-- 
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
