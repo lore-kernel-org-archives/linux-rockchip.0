@@ -1,97 +1,33 @@
-From: Cheng-yi Chiang <cychiang@chromium.org>
-Subject: Re: [PATCH 1/7] video: add HDMI state notifier support
-Date: Fri, 21 Jun 2019 17:39:43 +0800
-Message-ID: <CAFv8Nw+m-+pshD_cxKe4Nc_4wP3ttpAfDU7EFb-e+ZBcYNA51Q__33656.8982967705$1561314762$gmane$org@mail.gmail.com>
-References: <20190603080931.GG21222@phenom.ffwll.local>
- <CAFv8Nw+1sB8i1d87vLeKxRricZOi4gnXFSgOzW9k0sa_Tzybjg@mail.gmail.com>
- <20190604072411.GP21222@phenom.ffwll.local>
- <CAFv8NwKL9ZL=gNpDmdRV+R9eq22+Da_1kzuYBv8kMMyV3Hq14g@mail.gmail.com>
- <20190611123455.GD2458@phenom.ffwll.local>
- <CAFv8NwJxs-R=ehgeqyx=e+T5OmUBsk3uWnUb2t0cC-LDPS7G5w@mail.gmail.com>
- <20190618121220.GU12905@phenom.ffwll.local>
- <CAFv8NwLci2ALi3V-e=8jjatciHWOoOj-FeajwNLWRpWRtqgBdg@mail.gmail.com>
- <20190620092506.GP12905@phenom.ffwll.local>
- <CAFv8NwLbS_f4cfeorzqtmRzQSY0u1tgM7fitAokg_QfViPvq=Q@mail.gmail.com>
- <20190620211204.GW12905@phenom.ffwll.local>
+From: Christoph Hellwig <hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
+Subject: Re: [PATCH v4 0/5] iommu/amd: Convert the AMD iommu driver to the
+ dma-iommu api
+Date: Sun, 23 Jun 2019 23:19:45 -0700
+Message-ID: <20190624061945.GA4912@infradead.org>
+References: <20190613223901.9523-1-murphyt7@tcd.ie>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190620211204.GW12905@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Cheng-yi Chiang <cychiang@chromium.org>, Hans Verkuil <hverkuil@xs4all.nl>, linux-kernel <linux-kernel@vger.kernel.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Philipp Zabel <p.zabel@pengutronix.de>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, linux-media@vger.kernel.org, "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..." <alsa-devel@alsa-project.org>, dri-devel@lists.fr
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20190613223901.9523-1-murphyt7-/Zw1syy4LHg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Tom Murphy <murphyt7-/Zw1syy4LHg@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jean-Philippe Brucker <jean-philippe.brucker-5wv7dgnIgG8@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Andy Gross <agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Gerald Schaefer <gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBKdW4gMjEsIDIwMTkgYXQgNToxMiBBTSBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3
-bGwuY2g+IHdyb3RlOgo+Cj4gTWFzc2l2ZWx5IGN1dHRpbmcgdGhpcyB0aHJlYWQsIHNpbmNlIGhh
-bGZ3YXkgdGhyb3VnaCBpbiBteSBwcmV2aW91cyByZXBseQo+IEkgcmVhbGl6ZWQgdGhhdCBtYXli
-ZSBoZG1pX2NvZGVjIGlzIGEgbXVjaCBiZXR0ZXIgc3RhcnRpbmcgcG9pbnQuCj4KQUNLCj4gT24g
-VGh1LCBKdW4gMjAsIDIwMTkgYXQgMDk6MjM6MjNQTSArMDgwMCwgQ2hlbmcteWkgQ2hpYW5nIHdy
-b3RlOgo+ID4gT24gVGh1LCBKdW4gMjAsIDIwMTkgYXQgNToyNSBQTSBEYW5pZWwgVmV0dGVyIDxk
-YW5pZWxAZmZ3bGwuY2g+IHdyb3RlOgo+ID4gPiBZZWFoIGZ1bGx5IGFncmVlaW5nIHRoYXQgaGRt
-aV9hdWRpb19jb2RlIGlzIHByb2JhYmx5IGEgYmV0dGVyIHN0YXJ0aW5nCj4gPiA+IHBvaW50LiBQ
-cm9ibGVtIGlzIHRoYXQgYmVjdWFzZSBoZG1pX2NvZGVjIGlzIGJ1aWx0IG9uIHRvcCBvZiBwbGF0
-Zm9ybQo+ID4gPiBkZXZpY2UgaXQncyBxdWl0ZSBhIGJpdCBoYXJkZXIgdG8gZXh0ZW5kIHdpdGgg
-Y2FsbGJhY2tzIGFuZCB0aGluZ3MgbGlrZQo+ID4gPiB0aGF0LCB3aXRob3V0IGJyZWFraW5nIHRo
-ZSBkcml2ZXIgbW9kZWwuCj4gPiA+Cj4gPiA+IEkgbmVlZCB0byB0aGluayBhYm91dCB0aGlzIG1v
-cmUsIGJ1dCBpZiBhbGwgd2UgbmVlZCB0byBsb29rIGF0IGlzCj4gPiA+IGhkbWlfY29kZWMsIHRo
-ZW4gSSB0aGluayB0aGlzIGJlY29tZXMgYSBsb3QgZWFzaWVyLiBBbmQgd2UgY2FuIGlnbm9yZQo+
-ID4gPiBkcm1fYXVkaW9fY29tcG9uZW50LmggY29tcGxldGVseS4KPiA+Cj4gPgo+ID4gSXQgaXMg
-c3VycHJpc2luZyB0aGF0IHlvdSB0aGluayB0aGlzIHdheS4KPiA+IE1heWJlIHRoZSBvcmlnaW5h
-bCBwYXRjaCBiZWZvcmUgaGRtaS1ub3RpZmllciB3YXMgaW50cm9kdWNlZCBpcyB0aGUKPiA+IGJl
-dHRlciB3YXkgdG8gc29sdmUgdGhpcyBpc3N1ZSwgaWYgd2Ugb25seSBuZWVkIHRvIGxvb2sgYXQg
-aGRtaV9jb2RlYy4KPiA+Cj4gPiBUaGUgaGlzdG9yeSBvZiBoZG1pX2NvZGVjIGRyaXZlciBpcyBp
-biB0aGlzIHBhdGNoIHNlcmllczoKPiA+Cj4gPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9wYXRj
-aHdvcmsvcGF0Y2gvNTM5NjU2Lwo+Cj4gSG0sIHRoaXMgZG9lc24ndCBzZWVtIHRvIGJlIHRoZSBo
-ZG1pX2NvZGVjIGRyaXZlciBJIG1lYW50LCBidXQgYW5vdGhlciwKPiBuZXcgb25lLiBJIHdhcyB0
-YWxraW5nIGFib3V0IFNORF9TT0NfSERNSV9DT0RFQy4KPgpZZXMgeW91IGFyZSByaWdodC4gVGhl
-eSBhcmUgZGlmZmVyZW50IGNvZGVjIGRyaXZlcnMuClNvcnJ5IGZvciB0aGUgY29uZnVzaW9uLiBX
-aGF0IEkgbWVhbnQgd2FzIHRoYXQgbXkgdXNlIGNhc2Ugb24gUkszMjg4CndhcyB1c2luZyBkdy1o
-ZG1pLWF1ZGlvLmMgY29kZWMgZHJpdmVyLAp3aGljaCB3YXMgbGF0ZXIgcmVwbGFjZWQgYnkgYSBt
-b3JlIGdlbmVyYWwgdmVyc2lvbiBoZG1pLWNvZGVjLmMuCgo+ID4gVGhlcmUgd2FzIGEgY2FsbGJh
-Y2sgbWVjaGFuaXNtIGltcGxlbWVudGVkIGJldHdlZW4gZHctaGRtaSBhbmQgaGRtaQo+ID4gY29k
-ZWMgZHJpdmVyLgo+ID4gSXQgd2FzIGxhdGVyIGNvbnNvbGlkYXRlZCBieSBEb3VnIGluIHRoaXMg
-cGF0Y2ggZm9yIGJldHRlciBqYWNrIHN0YXR1cwo+ID4gcmVwb3J0aW5nOgo+ID4KPiA+IGh0dHBz
-Oi8vY2hyb21pdW0tcmV2aWV3Lmdvb2dsZXNvdXJjZS5jb20vYy9jaHJvbWl1bW9zL3RoaXJkX3Bh
-cnR5L2tlcm5lbC8rLzMwMzU3My8KPgo+IEhtIHRoYXQgc3RpbGwgc2VlbXMgZW50aXJlbHkgc2Vw
-YXJhdGUgaGRtaS1jb2RlYyBzcGVjaWZpYyB0byBkdy1oZG1pIG9ubHkKPiAuLi4KPgpBZ2FpbiB5
-b3UgYXJlIHJpZ2h0LiBTb3JyeSBmb3IgdGhlIGNvbmZ1c2lvbi4gV2hhdCBJIG1lYW50IGlzIHRo
-YXQKdGhpcyBjYWxsYmFjayBtZWNoYW5pc20gc2hvdWxkIHdvcmsgb24gaGRtaS1jb2RlYy5jIGRy
-aXZlciBhcyB3ZWxsLgoKPiA+IEkgYW0gbm90IHN1cmUgd2h5IHRoZSBvcmlnaW5hbCBwYXRjaCBz
-ZXJpZXMgZGlkIG5vdCBnZXQgZnVsbHkgYWNjZXB0ZWQKPiA+IGluIHRoZSB1cHN0cmVhbS4KPiA+
-IEl0IHdhcyBxdWl0ZSBsb25nIHRpbWUgYWdvLgo+ID4KPiA+IEJ1dCBpZiB5b3UgdGhpbmsgdGhp
-cyBtaWdodCBiZSB0aGUgcmlnaHQgd2F5IHRvIGRvLCB0aGVuIGl0IGlzIGV2ZW4KPiA+IGJldHRl
-ciBmb3IgdXMgYmVjYXVzZSB0aGUgcGF0Y2ggc2VyaWVzIGFuZCBEb3VnJ3MgcGF0Y2ggaGFkIGJl
-ZW4gcXVpdGUKPiA+IHN0YWJsZQo+ID4gb24gb3VyIFJLMzI4OCBwcm9kdWN0cyBmb3IgYWJvdXQg
-Zm91ciB5ZWFycyB3aXRoIHBsZW50eSBvZiB1c2Vycywgc28KPiA+IHdlIGhhdmUgbXVjaCBoaWdo
-ZXIgY29uZmlkZW5jZSBpbiB0aGVtLgo+ID4gSSBjYW4gcmViYXNlIGFuZCBjbGVhbiB1cCB0aGVt
-IGFuZCBwb3N0IGFub3RoZXIgcGF0Y2ggZm9yIHJldmlldy4KPiA+Cj4gPiBQbGVhc2UgbGV0IG1l
-IGtub3cgd2hhdCBhcHByb2FjaCB5b3UgZmVlbCBpcyBiZXR0ZXIuCj4gPiBUaGFua3MgYWdhaW4h
-Cj4KPiBOb3Qgc3VyZSB3ZSdyZSB0YWxraW5nIGFib3V0IHRoZSBzYW1lLiBXaGF0IEkgaGFkIGlu
-IG1pbmQgaXMgdG8gYWRkIGphY2sKPiBzdGF0dXMgdG8gdGhlIGhkbWktY29kZWMuYyBzdHVmZiwg
-d2hpY2ggaXMgdXNlZCBieSBtdWx0aXBsZSBzb2MgZHJtCj4gZGlzcGxheSBkcml2ZXJzIGFscmVh
-ZHkuIExvb2tpbmcgYXQgZ2l0IGdyZXAgb3V0cHV0LCB0aGVyZSBzZWVtcyB0byBiZQo+IGFscmVh
-ZHkgc29tZSBzdXBwb3J0IGZvciBkdy1oZG1pIHN5bm9wc3lzIGRybV9icmlkZ2UgZHJpdmVyLiBJ
-IHRob3VnaHQgb2YKPiBleHRlbmRpbmcgdGhhdC4gRG9lcyB0aGF0IG5vdCB3b3JrIGZvciB5b3U/
-Cj4KSSB0aGluayBleHRlbmRpbmcgY3VycmVudCBpbnRlcmZhY2Ugd2lsbCB3b3JrLgpUaGVyZSBp
-cyBhIHN0cnVjdCBoZG1pX2NvZGVjX3BkYXRhIHRvIGxldCBBTFNBIGNvZGVjIGRyaXZlciBhY2Nl
-c3MKc29tZSBvcHMgdGhyb3VnaCBwbGF0Zm9ybSBkYXRhLgpBbmQgYWZ0ZXIgdGhpcyBwYXRjaAoK
-aHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcGF0Y2h3b3JrL3BhdGNoLzY5MjMyNC8KCkFMU0EgY29k
-ZWMgZHJpdmVyIGNhbiBnZXQgYWNjZXNzIHRvIHRoZSBzdHJ1Y3Qgb24gRFJNIHNpZGUuCkJhc2Vk
-IG9uIHRoaXMgSSBjYW4gYWRkIGEgbmV3IG9wcyB0byByZWdpc3RlciBjYWxsYmFjayBmdW5jdGlv
-biBmb3IgamFjayBzdGF0dXMuCkl0IHdpbGwgYmUgc2ltaWxhciB0byBEb3VnJ3MgY2hyb21pdW0g
-cGF0Y2ggYWJvdmUuCkkgdGhpbmsgdGhhdCBpcyBxdWl0ZSBhIGZlYXNpYmxlIHdheSwgYW5kIGNh
-biBiZW5lZml0IGFsbCBib2FyZHMgdXNpbmcKaGRtaS1jb2RlYy5jLgoKVGhhbmtzIGEgbG90ISEK
-Cj4gVGhhbmtzLCBEYW5pZWwKPiAtLQo+IERhbmllbCBWZXR0ZXIKPiBTb2Z0d2FyZSBFbmdpbmVl
-ciwgSW50ZWwgQ29ycG9yYXRpb24KPiBodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
+Tom,
+
+next time please cc Jerg as the AMD IOMMU maintainer.
+
+Joerg, any chance you could review this?  Toms patches to convert the
+AMD and Intel IOMMU drivers to the dma-iommu code are going to make my
+life in DMA land significantly easier, so I have a vested interest
+in this series moving forward :)
