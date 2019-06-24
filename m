@@ -1,68 +1,37 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Fix multiple thermal zones
- conflict in rk3399.dtsi
-Date: Mon, 24 Jun 2019 09:31:34 +0200
-Message-ID: <a993a5a1-29a0-9ebd-9368-c6b08393cdee@linaro.org>
-References: <20190604165802.7338-1-daniel.lezcano@linaro.org>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 1/3] dt-bindings: display: rockchip: document VOP gamma
+ LUT address
+Date: Mon, 24 Jun 2019 12:25:29 -0700
+Message-ID: <CAD=FV=UO8S_MHPKvpu-Uc1pTAv2NN_hf+U6_HCntRU0hzGQtWw@mail.gmail.com>
+References: <20190621211346.1324-1-ezequiel@collabora.com>
+ <20190621211346.1324-2-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190604165802.7338-1-daniel.lezcano@linaro.org>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linux-kernel@vger.kernel.org, edubezval@gmail.com, manivannan.sadhasivam@linaro.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Viresh Kumar <viresh.kumar@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Emil Renner Berthing <kernel@esmil.dk>, Randy Li <ayaka@soulik.info>, Tony Xie <tony.xie@rock-chips.com>, Vicente Bergas <vicencb@gmail.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infr>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190621211346.1324-2-ezequiel@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Jacopo Mondi <jacopo@jmondi.org>, dri-devel <dri-devel@lists.freedesktop.org>, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Boris Brezillon <boris.brezillon@collabora.com>, Sean Paul <seanpaul@chromium.org>, Rob Herring <robh+dt@kernel.org>, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-
-Gentle ping ...
-
-
-On 04/06/2019 18:57, Daniel Lezcano wrote:
-> Currently the common thermal zones definitions for the rk3399 assumes
-> multiple thermal zones are supported by the governors. This is not the
-> case and each thermal zone has its own governor instance acting
-> individually without collaboration with other governors.
-> 
-> As the cooling device for the CPU and the GPU thermal zones is the
-> same, each governors take different decisions for the same cooling
-> device leading to conflicting instructions and an erratic behavior.
-> 
-> As the cooling-maps is about to become an optional property, let's
-> remove the cpu cooling device map from the GPU thermal zone.
-> 
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 9 ---------
->  1 file changed, 9 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 196ac9b78076..e1357e0f60f7 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -821,15 +821,6 @@
->  					type = "critical";
->  				};
->  			};
-> -
-> -			cooling-maps {
-> -				map0 {
-> -					trip = <&gpu_alert0>;
-> -					cooling-device =
-> -						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-> -						<&cpu_b1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-> -				};
-> -			};
->  		};
->  	};
->  
-> 
-
-
--- 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+SGksCgpPbiBGcmksIEp1biAyMSwgMjAxOSBhdCAyOjE0IFBNIEV6ZXF1aWVsIEdhcmNpYSA8ZXpl
+cXVpZWxAY29sbGFib3JhLmNvbT4gd3JvdGU6Cj4KPiBBZGQgdGhlIHJlZ2lzdGVyIHNwZWNpZmll
+ciBkZXNjcmlwdGlvbiBmb3IgYW4KPiBvcHRpb25hbCBnYW1tYSBMVVQgYWRkcmVzcy4KPgo+IFNp
+Z25lZC1vZmYtYnk6IEV6ZXF1aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4KPiAt
+LS0KPiBDaGFuZ2VzIGZyb20gdjE6Cj4gKiBEcm9wIHJlZy1uYW1lcywgc3VnZ2VzdGVkIGJ5IERv
+dWcuCj4gLS0tCj4gIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvcm9j
+a2NoaXAtdm9wLnR4dCAgIHwgNiArKysrKy0KPiAgMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9u
+cygrKSwgMSBkZWxldGlvbigtKQoKUmV2aWV3ZWQtYnk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5k
+ZXJzQGNocm9taXVtLm9yZz4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
+LWRldmVs
