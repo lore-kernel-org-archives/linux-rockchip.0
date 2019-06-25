@@ -1,92 +1,69 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: rk3399_gru_sound: Support 32, 44.1 and 88.2 kHz sample rates" to the asoc tree
-Date: Mon, 24 Jun 2019 17:32:13 +0100 (BST)
-Message-ID: <20190624163213.96F5D440046@finisterre.sirena.org.uk>
-References: <20190621155808.17182-1-enric.balletbo@collabora.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190621155808.17182-1-enric.balletbo@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: alsa-devel@alsa-project.org, Benson Leung <bleung@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Jaroslav Kysela <perex@perex.cz>, kernel@collabora.com, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>, Xing Zheng <zhengxing@rock-chips.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH v2 00/99] ram: rk3399: Add LPDDR4 support
+Date: Tue, 25 Jun 2019 21:16:04 +0530
+Message-ID: <CAMty3ZBr3oy1PxQ3C6fLQZAfPR3Dio7pX0m+y7LApAMQr5gbkA@mail.gmail.com>
+References: <20190617073252.27810-1-jagan@amarulasolutions.com>
+ <CA+E=qVfuy-UYUWujYC8fG+Os4tefPdYzFECkZZdoctvmiSMzcA@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <CA+E=qVfuy-UYUWujYC8fG+Os4tefPdYzFECkZZdoctvmiSMzcA@mail.gmail.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Vasily Khoruzhick <anarsoul@gmail.com>
+Cc: YouMin Chen <cym@rock-chips.com>, U-Boot Mailing List <u-boot@lists.denx.de>, Akash Gajjar <gajjar04akash@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
-
-   ASoC: rk3399_gru_sound: Support 32, 44.1 and 88.2 kHz sample rates
-
-has been applied to the asoc tree at
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.3
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From 30b233b1cb4291d39ca08a95566721e8a52e5ee3 Mon Sep 17 00:00:00 2001
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Date: Fri, 21 Jun 2019 17:58:08 +0200
-Subject: [PATCH] ASoC: rk3399_gru_sound: Support 32, 44.1 and 88.2 kHz sample
- rates
-
-According to the datasheet the max98357a also supports 32, 44.1 and
-88.2 kHz sample rate. This support was also introduced recently by
-commit fdf34366d324 ("ASoC: max98357a: add missing supported rates").
-
-Actually the machine driver validates the supported sample rates but
-this is not really needed because the component driver can all apply
-whatever constraints are needed and do their own validation. So, remove
-the checks from the machine driver as are not needed at all. This way,
-we also support 32, 44.1 and 88.2 kHz sample rates and we get rid of the
-errors like the below.
-
-  rk3399-gru-sound sound: rockchip_sound_max98357a_hw_params() doesn't support this sample rate: 44100
-  rk3399-gru-sound sound: ASoC: machine hw_params failed: -22
-
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/rockchip/rk3399_gru_sound.c | 14 +-------------
- 1 file changed, 1 insertion(+), 13 deletions(-)
-
-diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
-index 879069fc0b94..769d5795919c 100644
---- a/sound/soc/rockchip/rk3399_gru_sound.c
-+++ b/sound/soc/rockchip/rk3399_gru_sound.c
-@@ -66,19 +66,7 @@ static int rockchip_sound_max98357a_hw_params(struct snd_pcm_substream *substrea
- 	unsigned int mclk;
- 	int ret;
- 
--	/* max98357a supports these sample rates */
--	switch (params_rate(params)) {
--	case 8000:
--	case 16000:
--	case 48000:
--	case 96000:
--		mclk = params_rate(params) * SOUND_FS;
--		break;
--	default:
--		dev_err(rtd->card->dev, "%s() doesn't support this sample rate: %d\n",
--				__func__, params_rate(params));
--		return -EINVAL;
--	}
-+	mclk = params_rate(params) * SOUND_FS;
- 
- 	ret = snd_soc_dai_set_sysclk(rtd->cpu_dai, 0, mclk, 0);
- 	if (ret) {
--- 
-2.20.1
+SGkgVmFzaWx5LAoKT24gRnJpLCBKdW4gMjEsIDIwMTkgYXQgNTo1OCBBTSBWYXNpbHkgS2hvcnV6
+aGljayA8YW5hcnNvdWxAZ21haWwuY29tPiB3cm90ZToKPgo+IE9uIE1vbiwgSnVuIDE3LCAyMDE5
+IGF0IDEyOjM3IEFNIEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPiB3cm90
+ZToKPiA+Cj4gPiBUaGlzIGlzIHRoZSB2MiBzZXQgZm9yIHN1cHBvcnRpbmcgTFBERFI0IHdpdGgg
+YXNzb2NpYXRlZAo+ID4gZmVhdHVyZXMsIHdydCB0byBwcmV2aW91cyBzZXJpZXNbMV0uCj4gPgo+
+ID4gVGhhbmtzIHRvCj4gPiAtIFlvdU1pbiBDaGVuCj4gPiAtIEFrYXNoIEdhamphcgo+ID4gLSBL
+ZXZlciBZYW5nCj4gPiBmb3Igc3VwcG9ydGluZyBhbGwgdGhlIGhlbHAgb24gdGhpcyB3b3JrLgo+
+ID4KPiA+IE9uIHN1bW1hcnkgdGhpcyBzZXJpZXMgc3VwcG9ydAo+ID4gLSBDb2RlIHdhcm5pbmcg
+YW5kIGZpeGVzCj4gPiAtIHJhbmsgZGV0ZWN0aW9uLCB0aGlzIHdvdWxkIHJlcXVpcmVkIHRvIHBy
+b2JlIHNpbmdsZSBjaGFubmVsCj4gPiAgIHNkcmFtIGNvbmZpZ3VyZWQgaW4gTmFub1BJLU5FTzQK
+PiA+IC0gTFBERFI0IHN1cHBvcnQsIHRlc3RlZCBpbiBSb2NrcHJvNjQgYW5kIFJvY2stUEktNAo+
+ID4KPiA+IENoYW5nZXMgZm9yIHYyOgo+ID4gLSBoYW5kbGUgTFBERFI0IGNvZGUgYXMgcGFydCBv
+ZiBDT05GSUdfUkFNX1JLMzM5OV9MUEREUjQKPiA+IC0gc3VwcG9ydCBkYXRhX3RyYWluaW5nIGFu
+ZCBzZXRfcmF0ZSB2aWEgc2RyYW1fcmszMzk5X29wcwo+ID4gLSBhZGQgcHJvcGVyIHN5c19yZWdf
+ZW5jIG1hY3Jvcwo+ID4gLSBhZGQgbmV3IHBhdGNoIHRvIHJlbmFtZSB2YXJpYWJsZSBzZHJhbV9w
+YXJhbXMgd2l0aCBwYXJhbXMKPiA+IC0gZml4IGZldyBjb21taXQgbWVzc2FnZXMKPiA+Cj4gPiBw
+YXRjaCAwMDAxIC0gMDAzNDogZml4IGNvZGUgd2FybmluZ3MsIHByaW50cywgbmV3IG1hY3Jvcwo+
+ID4KPiA+IHBhdGNoIDAwMzUgLSAwMDUyOiByYW5rIGRldGVjdGlvbiwgc2RyYW0gZGVidWcgY29k
+ZQo+ID4KPiA+IHBhdGNoIDAwNTM6IHVzZSBERFIzLTE4MDAgb24gTmFub1BJLU5FTzQKPiA+Cj4g
+PiBwYXRjaCAwMDU0IC0gMDA5NDogbHBkZHI0IHN1cHBvcnQKPiA+Cj4gPiBwYXRjaCAwMDk1OiBl
+bmFibGUgbHBkZHI0IGluIFJvY2twcm82NAo+ID4KPiA+IHBhdGNoIDAwOTY6IGVuYWJsZSBscGRk
+cjQgaW4gUm9jay1QSS00Cj4gPgo+ID4gcGF0Y2ggMDA5NzogTFBERFI0LTEwMCB0aW1pbmdzCj4g
+Pgo+ID4gcGF0Y2ggMDA5ODogVXNlIExQRERSNC0xMDAgb24gUm9ja3BybzY0Cj4gPgo+ID4gcGF0
+Y2ggMDA5OTogVXNlIExQRERSNC0xMDAgb24gUm9jay1QSSA0Cj4gPgo+ID4gU2l6ZSAoaW5jcmVh
+c2VkIHRvIH4zS2lCICk6Cj4gPiAtIFB1bWEgUkszMzk5ICh1LWJvb3Qtc3BsLWR0Yi5iaW4pOgo+
+ID4gICBiZWZvcmU6IDExNTY0NCBhZnRlcjogMTE4NzQ0Cj4gPiAtIE5hbm9QSSBNNCAodS1ib290
+LXRwbC1kdGIuYmluKQo+ID4gICBiZWZvcmU6IDQxODczIGFmdGVyOiA0NDkwOQo+ID4KPiA+IFRy
+YXZpcy1DSToKPiA+IGh0dHBzOi8vdHJhdmlzLWNpLm9yZy9vcGVuZWRldi91LWJvb3QtYW1hcnVs
+YS9idWlsZHMvNTQ2NTk3OTQ0Cj4gPgo+ID4gUmVwbzoKPiA+IGh0dHBzOi8vZ2l0aHViLmNvbS9v
+cGVuZWRldi91LWJvb3QtYW1hcnVsYS90cmVlL3JrMzM5OS1scGRkcjQKPiA+Cj4gPiBbMV0gaHR0
+cHM6Ly9wYXRjaHdvcmsub3psYWJzLm9yZy9jb3Zlci8xMTEzODkzLwo+ID4KPiA+IEFueSBpbnB1
+dHM/Cj4KPiBXYXMgaXQgYWJzb2x1dGVseSBuZWNlc3NhcnkgdG8gc3BsaXQgdGhlc2UgY2hhbmdl
+cyBpbnRvIDk5IGNvbW1pdHM/IEkKPiBiZWxpZXZlIGF0IGxlYXN0IHNvbWUgb2YgdGhlbSBjYW4g
+YmUgc3F1YXNoZWQuIFJldmlld2luZyA5OSBwYXRjaGVzCj4gaXNuJ3QgZmVhc2libGUuCgpTcXVh
+c2hlZCwgSSdtIG5vdCBzdXJlIGJlY2F1c2UgdGhlIHBhdGNoZXMgd2VyZSBjcmVhdGVkIHRvIHNh
+dGlzZnkgdGhlCmJpc2VjdGFiaWxpdHkgYW5kIHRyYXZpcy1jaSwgaWYgeW91IGZpbmQgYW55IHBs
+ZWFzZSBmZWVsIHRvIGNvbW1lbnQuCkFib3V0IHRoZSBjb21taXQgY291bnQsIEkgaGF2ZSBtZW50
+aW9uZWQgaW4gdjEsIHRoZSBpZGVhIG9mIGhhdmluZwptYW55IGNvbW1pdHMgaW4gb25lIHNlcmll
+cyB0byBoYXZlIGFsbCBscGRkcjQoLXJlbGF0ZWQpIGNoYW5nZXMgaW4gb25lCnBsYWNlIGFuZCBh
+bHNvIGFsbCB0aGUgY29tbWl0IGhhcyBpbmNyZW1lbnRhbCBhcHByb2FjaCBvZiBzdXBwb3J0aW5n
+CnJhbmsgZGV0ZWN0aW9uIGFuZCBscGRkcjQuIElmIHJlcXVpcmUgSSdtIG9wZW4gdG8gc2VudCBu
+ZXh0IHZlcnNpb25zCmFzIG11bHRpcGxlIHNlcmllcywgbm8gcHJvYmxlbSBvbiB0aGF0LgoKSmFn
+YW4uCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9v
+dCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRl
+L2xpc3RpbmZvL3UtYm9vdAo=
