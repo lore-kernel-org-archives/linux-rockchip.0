@@ -1,88 +1,55 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 1/2] drm/bridge/synopsys: dw-hdmi: Handle audio for
- more clock rates
-Date: Tue, 25 Jun 2019 09:26:28 -0700
-Message-ID: <CAD=FV=WJBkYfRznh6aAyvgKgHb8-AG0hMORdKA0BXCL89wG_7w@mail.gmail.com>
-References: <CGME20190619211151epcas3p4dbb163c034afa4063869c761b93e24b1@epcas3p4.samsung.com>
- <20190619210718.134951-1-dianders@chromium.org> <bec87373-48cc-0c55-9662-a74a7d2a47a0@samsung.com>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Subject: Re: [PATCH v2 00/99] ram: rk3399: Add LPDDR4 support
+Date: Tue, 25 Jun 2019 15:42:23 -0300
+Message-ID: <CAAEAJfAxgF2JqOUhjXLmn5RVGMLbM2-7JqsyZgXvfU6Q9ScK+A@mail.gmail.com>
+References: <20190617073252.27810-1-jagan@amarulasolutions.com>
+ <CA+E=qVfuy-UYUWujYC8fG+Os4tefPdYzFECkZZdoctvmiSMzcA@mail.gmail.com>
+ <CAMty3ZBr3oy1PxQ3C6fLQZAfPR3Dio7pX0m+y7LApAMQr5gbkA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <bec87373-48cc-0c55-9662-a74a7d2a47a0@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andrzej Hajda <a.hajda@samsung.com>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Sean Paul <seanpaul@chromium.org>, Jernej Skrabec <jernej.skrabec@siol.net>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Maxime Ripard <maxime.ripard@bootlin.com>, Neil Armstrong <narmstrong@baylibre.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Dylan Reid <dgreid@chromium.org>, Cheng-Yi Chiang <cychiang@chromium.org>, Jerome Brunet <jbrunet@baylibre.com>, Sam Ravnborg <sam@ravnborg.org>, dri-devel <dri-devel@lists.freedesktop.org>, LKML <linux-kernel@vger.kernel.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <CAMty3ZBr3oy1PxQ3C6fLQZAfPR3Dio7pX0m+y7LApAMQr5gbkA@mail.gmail.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: YouMin Chen <cym@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Akash Gajjar <gajjar04akash@gmail.com>, U-Boot Mailing List <u-boot@lists.denx.de>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-
-On Tue, Jun 25, 2019 at 9:07 AM Andrzej Hajda <a.hajda@samsung.com> wrote:
->
-> On 19.06.2019 23:07, Douglas Anderson wrote:
-> > Let's add some better support for HDMI audio to dw_hdmi.
-> > Specifically:
-> >
-> > 1. For 44.1 kHz audio the old code made the assumption that an N of
-> > 6272 was right most of the time.  That wasn't true and the new table
-> > should pick a more ideal value.
->
->
-> Why? I ask because it is against recommendation from HDMI specs.
-
-The place where it does matter (and why I originally did this work) is
-when you don't have auto-CTS.  In such a case you really need "N" and
-"CTS" to make the math work and both be integral.  This makes sure
-that you don't slowly accumulate offsets.  I'm hoping that this point
-should be non-controversial so I won't argue it more.
-
-I am an admitted non-expert, but I have a feeling that with Auto-CTS
-either the old number or the new numbers would produce pretty much the
-same experience.  AKA: anyone using auto-CTS won't notice any change
-at all.  I guess the question is: with Auto-CTS should you pick the
-"ideal" 6272 or a value that allows CTS to be the closest to integral
-as possible.  By reading between the lines of the spec, I decided that
-it was slightly more important to allow for an integral CTS.  If
-achieving an integral CTS wasn't a goal then the spec wouldn't even
-have listed special cases for any of the clock rates.  We would just
-be using the ideal N and Auto-CTS and be done with it.  The whole
-point of the tables they list is to make CTS integral.
-
-
-> > 2. The new table has values from the HDMI spec for 297 MHz and 594
-> > MHz.
-> >
-> > 3. There is now code to try to come up with a more idea N/CTS for
-> > clock rates that aren't in the table.  This code is a bit slow because
-> > it iterates over every possible value of N and picks the best one, but
-> > it should make a good fallback.
-> >
-> > NOTES:
-> > - The oddest part of this patch comes about because computing the
-> >   ideal N/CTS means knowing the _exact_ clock rate, not a rounded
-> >   version of it.  The drm framework makes this harder by rounding
-> >   rates to kHz, but even if it didn't there might be cases where the
-> >   ideal rate could only be calculated if we knew the real
-> >   (non-integral) rate.  This means that in cases where we know (or
-> >   believe) that the true rate is something other than the rate we are
-> >   told by drm.
-> > - This patch makes much less of a difference after the patch
-> >   ("drm/bridge: dw-hdmi: Use automatic CTS generation mode when using
-> >   non-AHB audio"), at least if you're using I2S audio.  The main goal
-> >   of picking a good N is to make it possible to get a nice integral
-> >   CTS value, but if CTS is automatic then that's much less critical.
->
->
-> As I said above HDMI recommendations are different from those from your
-> patch. Please elaborate why?
->
-> Btw I've seen your old patches introducing recommended N/CTS calculation
-> helpers in HDMI framework, unfortunately abandoned due to lack of interest.
->
-> Maybe resurrecting them would be a good idea, with assumption there will
-> be users :)
-
-I have old patches introducing this into the HDMI framework?  I don't
-remember them / can't find them.  Can you provide a pointer?
-
--Doug
+SGkgSmFnYW4sCgpUaGFua3MgZm9yIHlvdXIgaGFyZCB3b3JrLiBJJ20gc3VyZSBldmVyeW9uZSBp
+biB0aGUgUm9ja2NoaXAgY29tbXVuaXR5CmlzIGV4Y2l0ZWQgYWJvdXQgZmluYWxseSBoYXZpbmcg
+dGhpcyBzdXBwb3J0IGluIFUtQm9vdC4KCk9uIFR1ZSwgMjUgSnVuIDIwMTkgYXQgMTI6NDYsIEph
+Z2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPiB3cm90ZToKWy4uXQo+ID4KPiA+
+IFdhcyBpdCBhYnNvbHV0ZWx5IG5lY2Vzc2FyeSB0byBzcGxpdCB0aGVzZSBjaGFuZ2VzIGludG8g
+OTkgY29tbWl0cz8gSQo+ID4gYmVsaWV2ZSBhdCBsZWFzdCBzb21lIG9mIHRoZW0gY2FuIGJlIHNx
+dWFzaGVkLiBSZXZpZXdpbmcgOTkgcGF0Y2hlcwo+ID4gaXNuJ3QgZmVhc2libGUuCj4KPiBTcXVh
+c2hlZCwgSSdtIG5vdCBzdXJlIGJlY2F1c2UgdGhlIHBhdGNoZXMgd2VyZSBjcmVhdGVkIHRvIHNh
+dGlzZnkgdGhlCj4gYmlzZWN0YWJpbGl0eSBhbmQgdHJhdmlzLWNpLCBpZiB5b3UgZmluZCBhbnkg
+cGxlYXNlIGZlZWwgdG8gY29tbWVudC4KPiBBYm91dCB0aGUgY29tbWl0IGNvdW50LCBJIGhhdmUg
+bWVudGlvbmVkIGluIHYxLCB0aGUgaWRlYSBvZiBoYXZpbmcKPiBtYW55IGNvbW1pdHMgaW4gb25l
+IHNlcmllcyB0byBoYXZlIGFsbCBscGRkcjQoLXJlbGF0ZWQpIGNoYW5nZXMgaW4gb25lCj4gcGxh
+Y2UgYW5kIGFsc28gYWxsIHRoZSBjb21taXQgaGFzIGluY3JlbWVudGFsIGFwcHJvYWNoIG9mIHN1
+cHBvcnRpbmcKPiByYW5rIGRldGVjdGlvbiBhbmQgbHBkZHI0LiBJZiByZXF1aXJlIEknbSBvcGVu
+IHRvIHNlbnQgbmV4dCB2ZXJzaW9ucwo+IGFzIG11bHRpcGxlIHNlcmllcywgbm8gcHJvYmxlbSBv
+biB0aGF0Lgo+CgpJIHN0cm9uZ2x5IGFncmVlIHdpdGggVmFzaWx5LCBhbmQgSSBkb24ndCB0aGlu
+ayBtdWx0aXBsZSBzZXJpZXMgbWFrZXMgaXQgYW55CmJldHRlci4KCldoYXQncyB0aGUgcmVhc29u
+IGZvciBoYXZpbmcgdHdvIGNvbW1pdHMgZm9yOgoKInJhbTogcmszMzk5OiBTZXQgbHBkZHI0IE1S
+MyIgYW5kICJyYW06IHJrMzM5OTogU2V0IGxwZGRyNCBNUjEyIiA/CgpPciBzcGxpdHRpbmcgYWxs
+IHRoZSAicmFtOiByazMzOTk6IEFkZCAuLi4gbWFjcm8iID8KCldoYXQgZG8geW91IGxvb3NlIGlm
+IHlvdSBtZXJnZSB0aGUgcGF0Y2hlcyBpbnRvIG9uZT8KCkkgbXVzdCBjb25mZXNzIEkgYW0gdmVy
+eSBzdXJwcmlzZWQsIGFuZCBkb24ndCByZWFsbHkgdW5kZXJzdGFuZCB3aGF0IGRvIHlvdQpnYWlu
+IHdpdGggdGhpcyBleGNlc3NpdmUgc3BsaXQuIE5vcm1hbGx5LCB3aGVuIHdlIGFyZSBhZGRpbmcg
+YSBuZXcgZmVhdHVyZSwKd2Ugbm9ybWFsbHkgZG9uJ3QgbmVlZCBtYW55IHBhdGNoZXMsIHNvIGl0
+J3MgdGhlIG90aGVyIHdheSBhcm91bmQsIHJlYWxseS4KCkJpc2VjdGFiaWxpdHkgaXMgYWJvdXQg
+bm90IGJyZWFraW5nIGV4aXN0aW5nIHN1cHBvcnQsIGJ1dCBiZWNhdXNlIHRoZSBmZWF0dXJlCmlz
+IG5ldywgbm9ybWFsbHkgdGhpcyBpcyBlYXN5LgoKVGhhbmtzIGFnYWluIQpFemUKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcgbGlz
+dApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1i
+b290Cg==
