@@ -1,364 +1,174 @@
-From: Jacopo Mondi <jacopo@jmondi.org>
-Subject: Re: [PATCH v2 2/3] drm/rockchip: Add optional support for CRTC gamma
- LUT
-Date: Tue, 25 Jun 2019 10:05:26 +0200
-Message-ID: <20190625080526.osfzjb32pt6f5pxu@uno.localdomain>
-References: <20190621211346.1324-1-ezequiel@collabora.com>
- <20190621211346.1324-3-ezequiel@collabora.com>
+From: Mark Kettenis <mark.kettenis@xs4all.nl>
+Subject: Re: [PATCH v2 00/99] ram: rk3399: Add LPDDR4 support
+Date: Tue, 25 Jun 2019 10:43:52 +0200 (CEST)
+Message-ID: <543887db700d6b36@bloch.sibelius.xs4all.nl>
+References: <20190617073252.27810-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1826616607=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190621211346.1324-3-ezequiel@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Boris Brezillon <boris.brezillon@collabora.com>, Sean Paul <seanpaul@chromium.org>, Rob Herring <robh+dt@kernel.org>, kernel@collabora.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-reply-to: <20190617073252.27810-1-jagan@amarulasolutions.com> (message from
+ Jagan Teki on Mon, 17 Jun 2019 13:01:13 +0530)
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: cym@rock-chips.com, u-boot@lists.denx.de, gajjar04akash@gmail.com, linux-rockchip@lists.infradead.org, manivannan.sadhasivam@linaro.org, linux-amarula@amarulasolutions.com
 List-Id: linux-rockchip.vger.kernel.org
 
-
---===============1826616607==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="rltoquubbfop2tn7"
-Content-Disposition: inline
-
-
---rltoquubbfop2tn7
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-
-Hi Ezequiel,
-
-On Fri, Jun 21, 2019 at 06:13:45PM -0300, Ezequiel Garcia wrote:
-> Add an optional CRTC gamma LUT support, and enable it on RK3288.
-> This is currently enabled via a separate address resource,
-> which needs to be specified in the devicetree.
->
-> The address resource is required because on some SoCs, such as
-> RK3288, the LUT address is after the MMU address, and the latter
-> is supported by a different driver. This prevents the DRM driver
-> from requesting an entire register space.
->
-> The current implementation works for RGB 10-bit tables, as that
-> is what seems to work on RK3288.
->
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> ---
-> Changes from v1:
-> * drop explicit linear LUT after finding a proper
->   way to disable gamma correction.
-> * avoid setting gamma is the CRTC is not active.
-> * s/int/unsigned int as suggested by Jacopo.
-> * only enable color management and set gamma size
->   if gamma LUT is supported, suggested by Doug.
-> * drop the reg-names usage, and instead just use indexed reg
->   specifiers, suggested by Doug.
->
-> Changes from RFC:
-> * Request (an optional) address resource for the LUT.
-> * Drop support for RK3399, which doesn't seem to work
->   out of the box and needs more research.
-> * Support pass-thru setting when GAMMA_LUT is NULL.
-> * Add a check for the gamma size, as suggested by Ilia.
-> * Move gamma setting to atomic_commit_tail, as pointed
->   out by Jacopo/Laurent, is the correct way.
-> ---
->  drivers/gpu/drm/rockchip/rockchip_drm_fb.c  |   3 +
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 114 ++++++++++++++++++++
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.h |   7 ++
->  drivers/gpu/drm/rockchip/rockchip_vop_reg.c |   2 +
->  4 files changed, 126 insertions(+)
->
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-> index 1c69066b6894..bf9ad6240971 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-> @@ -16,6 +16,7 @@
->  #include "rockchip_drm_fb.h"
->  #include "rockchip_drm_gem.h"
->  #include "rockchip_drm_psr.h"
-> +#include "rockchip_drm_vop.h"
->
->  static int rockchip_drm_fb_dirty(struct drm_framebuffer *fb,
->  				 struct drm_file *file,
-> @@ -128,6 +129,8 @@ rockchip_atomic_helper_commit_tail_rpm(struct drm_atomic_state *old_state)
->
->  	drm_atomic_helper_commit_modeset_disables(dev, old_state);
->
-> +	rockchip_drm_vop_gamma_set(old_state);
-> +
->  	drm_atomic_helper_commit_modeset_enables(dev, old_state);
->
->  	drm_atomic_helper_commit_planes(dev, old_state,
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> index 12ed5265a90b..cfa70773a9bc 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> @@ -137,6 +137,7 @@ struct vop {
->
->  	uint32_t *regsbak;
->  	void __iomem *regs;
-> +	void __iomem *lut_regs;
->
->  	/* physical map length of vop register */
->  	uint32_t len;
-> @@ -1153,6 +1154,102 @@ static void vop_wait_for_irq_handler(struct vop *vop)
->  	synchronize_irq(vop->irq);
->  }
->
-> +static bool vop_dsp_lut_is_enable(struct vop *vop)
-> +{
-> +	return vop_read_reg(vop, 0, &vop->data->common->dsp_lut_en);
-> +}
-> +
-> +static void vop_crtc_write_gamma_lut(struct vop *vop, struct drm_crtc *crtc)
-> +{
-> +	struct drm_color_lut *lut = crtc->state->gamma_lut->data;
-> +	unsigned int i;
-> +
-> +	for (i = 0; i < crtc->gamma_size; i++) {
-> +		u32 word;
-> +
-> +		word = (drm_color_lut_extract(lut[i].red, 10) << 20) |
-> +		       (drm_color_lut_extract(lut[i].green, 10) << 10) |
-> +			drm_color_lut_extract(lut[i].blue, 10);
-> +		writel(word, vop->lut_regs + i * 4);
-> +	}
-> +}
-> +
-> +static void vop_crtc_gamma_set(struct vop *vop, struct drm_crtc *crtc,
-> +			       struct drm_crtc_state *old_state)
-> +{
-> +	unsigned int idle;
-> +	int ret;
-> +
-> +	/*
-> +	 * In order to write the LUT to the internal RAM memory,
-> +	 * we need to first make sure the dsp_lut_en bit is cleared.
-> +	 */
-> +	spin_lock(&vop->reg_lock);
-> +	VOP_REG_SET(vop, common, dsp_lut_en, 0);
-> +	vop_cfg_done(vop);
-> +	spin_unlock(&vop->reg_lock);
-> +
-> +	/*
-> +	 * If the CRTC is not active, dsp_lut_en will not get cleared.
-
-Did you mean "dsp_lut_en will not get enabled" ?
-
-Beacuse I see dsp_lut_en being set to 0, and not activated if
-!crtc->state->active. Am I confused?
-
-Apart from that:
-Reviewed-by: Jacopo Mondi <jacopo+renesas@jmondi.org>
-
-Thanks
-   j
-
-> +	 * Apparently we still need to do the above step to for
-> +	 * gamma correction to be disabled.
-> +	 */
-> +	if (!crtc->state->active)
-> +		return;
-> +
-> +	ret = readx_poll_timeout(vop_dsp_lut_is_enable, vop,
-> +			   idle, !idle, 5, 30 * 1000);
-> +	if (ret) {
-> +		DRM_DEV_ERROR(vop->dev, "display LUT RAM enable timeout!\n");
-> +		return;
-> +	}
-> +
-> +	spin_lock(&vop->reg_lock);
-> +
-> +	if (crtc->state->gamma_lut &&
-> +	   (!old_state->gamma_lut || (crtc->state->gamma_lut->base.id !=
-> +				      old_state->gamma_lut->base.id)))
-> +		vop_crtc_write_gamma_lut(vop, crtc);
-> +
-> +	VOP_REG_SET(vop, common, dsp_lut_en, 1);
-> +	vop_cfg_done(vop);
-> +	spin_unlock(&vop->reg_lock);
-> +}
-> +
-> +static int vop_crtc_atomic_check(struct drm_crtc *crtc,
-> +				   struct drm_crtc_state *crtc_state)
-> +{
-> +	struct vop *vop = to_vop(crtc);
-> +
-> +	if (vop->lut_regs && crtc_state->color_mgmt_changed &&
-> +	    crtc_state->gamma_lut) {
-> +		unsigned int len;
-> +
-> +		len = drm_color_lut_size(crtc_state->gamma_lut);
-> +		if (len != crtc->gamma_size) {
-> +			DRM_DEBUG_KMS("Invalid LUT size; got %d, expected %d\n",
-> +				      len, crtc->gamma_size);
-> +			return -EINVAL;
-> +		}
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +void rockchip_drm_vop_gamma_set(struct drm_atomic_state *state)
-> +{
-> +	struct drm_crtc_state *old_crtc_state;
-> +	struct drm_crtc *crtc;
-> +	unsigned int i;
-> +
-> +	for_each_old_crtc_in_state(state, crtc, old_crtc_state, i) {
-> +		struct vop *vop = to_vop(crtc);
-> +
-> +		if (vop->lut_regs && crtc->state->color_mgmt_changed)
-> +			vop_crtc_gamma_set(vop, crtc, old_crtc_state);
-> +	}
-> +}
-> +
->  static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
->  				  struct drm_crtc_state *old_crtc_state)
->  {
-> @@ -1205,6 +1302,7 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
->
->  static const struct drm_crtc_helper_funcs vop_crtc_helper_funcs = {
->  	.mode_fixup = vop_crtc_mode_fixup,
-> +	.atomic_check = vop_crtc_atomic_check,
->  	.atomic_flush = vop_crtc_atomic_flush,
->  	.atomic_enable = vop_crtc_atomic_enable,
->  	.atomic_disable = vop_crtc_atomic_disable,
-> @@ -1323,6 +1421,7 @@ static const struct drm_crtc_funcs vop_crtc_funcs = {
->  	.disable_vblank = vop_crtc_disable_vblank,
->  	.set_crc_source = vop_crtc_set_crc_source,
->  	.verify_crc_source = vop_crtc_verify_crc_source,
-> +	.gamma_set = drm_atomic_helper_legacy_gamma_set,
->  };
->
->  static void vop_fb_unref_worker(struct drm_flip_work *work, void *val)
-> @@ -1480,6 +1579,10 @@ static int vop_create_crtc(struct vop *vop)
->  		goto err_cleanup_planes;
->
->  	drm_crtc_helper_add(crtc, &vop_crtc_helper_funcs);
-> +	if (vop->lut_regs) {
-> +		drm_mode_crtc_set_gamma_size(crtc, vop_data->lut_size);
-> +		drm_crtc_enable_color_mgmt(crtc, 0, false, vop_data->lut_size);
-> +	}
->
->  	/*
->  	 * Create drm_planes for overlay windows with possible_crtcs restricted
-> @@ -1776,6 +1879,17 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
->  	if (IS_ERR(vop->regs))
->  		return PTR_ERR(vop->regs);
->
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
-> +	if (res) {
-> +		if (!vop_data->lut_size) {
-> +			DRM_DEV_ERROR(dev, "no gamma LUT size defined\n");
-> +			return -EINVAL;
-> +		}
-> +		vop->lut_regs = devm_ioremap_resource(dev, res);
-> +		if (IS_ERR(vop->lut_regs))
-> +			return PTR_ERR(vop->lut_regs);
-> +	}
-> +
->  	vop->regsbak = devm_kzalloc(dev, vop->len, GFP_KERNEL);
->  	if (!vop->regsbak)
->  		return -ENOMEM;
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-> index 2149a889c29d..bd1bcd5a14e9 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-> @@ -7,6 +7,8 @@
->  #ifndef _ROCKCHIP_DRM_VOP_H
->  #define _ROCKCHIP_DRM_VOP_H
->
-> +#include <drm/drm_atomic.h>
-> +
->  /*
->   * major: IP major version, used for IP structure
->   * minor: big feature change under same structure
-> @@ -67,6 +69,7 @@ struct vop_common {
->  	struct vop_reg dither_down_mode;
->  	struct vop_reg dither_down_en;
->  	struct vop_reg dither_up;
-> +	struct vop_reg dsp_lut_en;
->  	struct vop_reg gate_en;
->  	struct vop_reg mmu_en;
->  	struct vop_reg out_mode;
-> @@ -170,6 +173,7 @@ struct vop_data {
->  	const struct vop_win_yuv2yuv_data *win_yuv2yuv;
->  	const struct vop_win_data *win;
->  	unsigned int win_size;
-> +	unsigned int lut_size;
->
->  #define VOP_FEATURE_OUTPUT_RGB10	BIT(0)
->  #define VOP_FEATURE_INTERNAL_RGB	BIT(1)
-> @@ -373,4 +377,7 @@ static inline int scl_vop_cal_lb_mode(int width, bool is_yuv)
->  }
->
->  extern const struct component_ops vop_component_ops;
-> +
-> +void rockchip_drm_vop_gamma_set(struct drm_atomic_state *state);
-> +
->  #endif /* _ROCKCHIP_DRM_VOP_H */
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-> index 7b9c74750f6d..30d49eff3670 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-> @@ -593,6 +593,7 @@ static const struct vop_common rk3288_common = {
->  	.dither_down_en = VOP_REG(RK3288_DSP_CTRL1, 0x1, 2),
->  	.pre_dither_down = VOP_REG(RK3288_DSP_CTRL1, 0x1, 1),
->  	.dither_up = VOP_REG(RK3288_DSP_CTRL1, 0x1, 6),
-> +	.dsp_lut_en = VOP_REG(RK3288_DSP_CTRL1, 0x1, 0),
->  	.data_blank = VOP_REG(RK3288_DSP_CTRL0, 0x1, 19),
->  	.dsp_blank = VOP_REG(RK3288_DSP_CTRL0, 0x3, 18),
->  	.out_mode = VOP_REG(RK3288_DSP_CTRL0, 0xf, 0),
-> @@ -641,6 +642,7 @@ static const struct vop_data rk3288_vop = {
->  	.output = &rk3288_output,
->  	.win = rk3288_vop_win_data,
->  	.win_size = ARRAY_SIZE(rk3288_vop_win_data),
-> +	.lut_size = 1024,
->  };
->
->  static const int rk3368_vop_intrs[] = {
-> --
-> 2.20.1
->
-
---rltoquubbfop2tn7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEtcQ9SICaIIqPWDjAcjQGjxahVjwFAl0R1cUACgkQcjQGjxah
-VjxEsA//WWN38GEWFA1feOeQTUdnz0REX2tU9aaBlaSs4roaEUz8mnbHhQfYsnLI
-g7P5e5NHlHAXIiKNEP5RudE+ffw21x1fWfZLrdj6wJphjiFL1GnNnERpqvp3LpN3
-57u5h37fZL9kEBfXr0jGaSKS5j6UZsfvC2nai2fOeEtUZ4UrrAZTGcSvVXMFOuMI
-p+vYastQLxgNr2GWkFxtXBQZ1petIIBkAlJYi8nhdKBxNTVbTK2F434iThrvZqsM
-40DhFFulWBJqsADrLUpQvF5v2GdBNXIoaGb5qiWkJvii3a2L3xdbtpF6QIJMe/Tt
-HxmpG4fKwQ/ZQ8vUYTgmOJ+Pw+rE9KWMy+3lErcT4FDIQkxzTQWeO/dOp/g7N7I5
-NaORLP/CLCiq66ijmhFk64iV28CHcJbcP1mLTV1Zes0pr5aW9hf9OG1HjrBkRwuc
-xXydPt6dOCUYTrzF21o/8Lv5KgXY72/EnFMs2H5cxEJarFqHtsX1L7ZfHHVJ+tnN
-Cn/UuXmaF+m9/I7httvbHegMBRekW2pWq0Ei5C8oKDyAP2dcuEQDKsfEZzzvwZom
-wqJwC3R3fbaPYDnIXyLQgncjRrakoI643lFWSHoJqRw8I/CS/nGNqyZz9/vsYN83
-VJTe816NCO2Crgvw5SYygsUotCMMg6fWojiUPfLIMjJQHr4MCQQ=
-=QmDy
------END PGP SIGNATURE-----
-
---rltoquubbfop2tn7--
-
---===============1826616607==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-
---===============1826616607==--
+PiBGcm9tOiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KPiBEYXRlOiBN
+b24sIDE3IEp1biAyMDE5IDEzOjAxOjEzICswNTMwCj4gCj4gVGhpcyBpcyB0aGUgdjIgc2V0IGZv
+ciBzdXBwb3J0aW5nIExQRERSNCB3aXRoIGFzc29jaWF0ZWQKPiBmZWF0dXJlcywgd3J0IHRvIHBy
+ZXZpb3VzIHNlcmllc1sxXS4KPiAKPiBUaGFua3MgdG8KPiAtIFlvdU1pbiBDaGVuCj4gLSBBa2Fz
+aCBHYWpqYXIKPiAtIEtldmVyIFlhbmcKPiBmb3Igc3VwcG9ydGluZyBhbGwgdGhlIGhlbHAgb24g
+dGhpcyB3b3JrLgo+IAo+IE9uIHN1bW1hcnkgdGhpcyBzZXJpZXMgc3VwcG9ydAo+IC0gQ29kZSB3
+YXJuaW5nIGFuZCBmaXhlcwo+IC0gcmFuayBkZXRlY3Rpb24sIHRoaXMgd291bGQgcmVxdWlyZWQg
+dG8gcHJvYmUgc2luZ2xlIGNoYW5uZWwgCj4gICBzZHJhbSBjb25maWd1cmVkIGluIE5hbm9QSS1O
+RU80Cj4gLSBMUEREUjQgc3VwcG9ydCwgdGVzdGVkIGluIFJvY2twcm82NCBhbmQgUm9jay1QSS00
+Cj4gCj4gQ2hhbmdlcyBmb3IgdjI6Cj4gLSBoYW5kbGUgTFBERFI0IGNvZGUgYXMgcGFydCBvZiBD
+T05GSUdfUkFNX1JLMzM5OV9MUEREUjQKPiAtIHN1cHBvcnQgZGF0YV90cmFpbmluZyBhbmQgc2V0
+X3JhdGUgdmlhIHNkcmFtX3JrMzM5OV9vcHMKPiAtIGFkZCBwcm9wZXIgc3lzX3JlZ19lbmMgbWFj
+cm9zCj4gLSBhZGQgbmV3IHBhdGNoIHRvIHJlbmFtZSB2YXJpYWJsZSBzZHJhbV9wYXJhbXMgd2l0
+aCBwYXJhbXMKPiAtIGZpeCBmZXcgY29tbWl0IG1lc3NhZ2VzCj4gCj4gcGF0Y2ggMDAwMSAtIDAw
+MzQ6IGZpeCBjb2RlIHdhcm5pbmdzLCBwcmludHMsIG5ldyBtYWNyb3MKPiAKPiBwYXRjaCAwMDM1
+IC0gMDA1MjogcmFuayBkZXRlY3Rpb24sIHNkcmFtIGRlYnVnIGNvZGUKPiAKPiBwYXRjaCAwMDUz
+OiB1c2UgRERSMy0xODAwIG9uIE5hbm9QSS1ORU80Cj4gCj4gcGF0Y2ggMDA1NCAtIDAwOTQ6IGxw
+ZGRyNCBzdXBwb3J0Cj4gCj4gcGF0Y2ggMDA5NTogZW5hYmxlIGxwZGRyNCBpbiBSb2NrcHJvNjQK
+PiAKPiBwYXRjaCAwMDk2OiBlbmFibGUgbHBkZHI0IGluIFJvY2stUEktNAo+IAo+IHBhdGNoIDAw
+OTc6IExQRERSNC0xMDAgdGltaW5ncwo+IAo+IHBhdGNoIDAwOTg6IFVzZSBMUEREUjQtMTAwIG9u
+IFJvY2twcm82NAo+IAo+IHBhdGNoIDAwOTk6IFVzZSBMUEREUjQtMTAwIG9uIFJvY2stUEkgNAo+
+IAo+IFNpemUgKGluY3JlYXNlZCB0byB+M0tpQiApOgo+IC0gUHVtYSBSSzMzOTkgKHUtYm9vdC1z
+cGwtZHRiLmJpbik6Cj4gICBiZWZvcmU6IDExNTY0NCBhZnRlcjogMTE4NzQ0Cj4gLSBOYW5vUEkg
+TTQgKHUtYm9vdC10cGwtZHRiLmJpbikKPiAgIGJlZm9yZTogNDE4NzMgYWZ0ZXI6IDQ0OTA5Cj4g
+Cj4gVHJhdmlzLUNJOgo+IGh0dHBzOi8vdHJhdmlzLWNpLm9yZy9vcGVuZWRldi91LWJvb3QtYW1h
+cnVsYS9idWlsZHMvNTQ2NTk3OTQ0Cj4gCj4gUmVwbzoKPiBodHRwczovL2dpdGh1Yi5jb20vb3Bl
+bmVkZXYvdS1ib290LWFtYXJ1bGEvdHJlZS9yazMzOTktbHBkZHI0Cj4gCj4gWzFdIGh0dHBzOi8v
+cGF0Y2h3b3JrLm96bGFicy5vcmcvY292ZXIvMTExMzg5My8KPiAKPiBBbnkgaW5wdXRzPwo+IEph
+Z2FuLgo+IAo+IEphZ2FuIFRla2kgKDk5KToKPiAgIHJhbTogcmszMzk5OiBGaXggY29kZSB3YXJu
+aW5ncwo+ICAgcmFtOiByazMzOTk6IEFkZCBzcGFjZSBiZXR3ZWVuIHN0cmluZyB3aXRoIGZvcm1h
+dCBzcGVjaWZpZXIKPiAgIHJhbTogcmszMzk5OiBBZGQgcHJvcGVyIHNwYWNlcyBpbiBjb2RlCj4g
+ICByYW06IHJrMzM5OTogcy9zZHJhbV9wYXJhbXMvcGFyYW1zCj4gICByYW06IHJrMzM5OTogSGFu
+ZGxlIGRhdGEgdHJhaW5pbmcgcmV0dXJuIHR5cGVzCj4gICByYW06IHJrMzM5OTogT3JkZXIgaW5j
+bHVkZSBmaWxlcwo+ICAgcmFtOiByazMzOTk6IE1vdmUgbWFjcm8gYWZ0ZXIgaW5jbHVkZSBmaWxl
+cwo+ICAgcmFtOiByazMzOTk6IENsZWFyIFBJXzE3NSBpbnRlcnJ1cHRzIGluIGRhdGEgdHJhaW5p
+bmcKPiAgIHJhbTogcmszMzk5OiBVc2UgcmFuayBtYXNrIGluIGNhIGRhdGEgdHJhaW5pbmcKPiAg
+IHJhbTogcmszMzk5OiBVc2UgcmFuayBtYXNrIGluIHdkcWwgZGF0YSB0cmFpbmluZwo+ICAgcmFt
+OiByazMzOTk6IEFkZCBkZHJ0eXBlIGVuYyBtYWNybwo+ICAgcmFtOiByazMzOTk6IEFkZCBjaGFu
+bmVsIG51bWJlciBlbmNvZGVyIG1hY3JvCj4gICByYW06IHJrMzM5OTogQWRkIHJvd18zXzQgZW5j
+IG1hY3JvCj4gICByYW06IHJrMzM5OTogQWRkIGNoaXBpbmZvIG1hY3JvCj4gICByYW06IHJrMzM5
+OTogQWRkIHJhbmsgZW5jIG1hY3JvCj4gICByYW06IHJrMzM5OTogQWRkIGNvbHVtbiBlbmMgbWFj
+cm8KPiAgIHJhbTogcmszMzk5OiBBZGQgYmsgZW5jIG1hY3JvCj4gICByYW06IHJrMzM5OTogQWRk
+IGRidyBlbmMgbWFjcm8KPiAgIHJhbTogcmszMzk5OiBBZGQgY3MwX3J3IG1hY3JvCj4gICByYW06
+IHJrMzM5OTogQWRkIGNzMV9ydyBtYWNybwo+ICAgcmFtOiByazMzOTk6IEFkZCBidyBlbmMgbWFj
+cm8KPiAgIHJhbTogcmszMzk5OiBSZW5hbWUgc3lzX3JlZyB3aXRoIHN5c19yZWcyCj4gICByYW06
+IHJrMzM5OTogVXBkYXRlIGNzMF9yb3cgdG8gdXNlIHN5c19yZWczCj4gICByYW06IHJrMzM5OTog
+VXBkYXRlIGNzMV9yb3cgdG8gdXNlIHN5c19yZWczCj4gICByYW06IHJrMzM5OTogQWRkIGNzMV9j
+b2wgZW5jIG1hY3JvCj4gICByYW06IHJrMzM5OTogQWRkIGRkciB2ZXJzaW9uIGVuYyBtYWNybwo+
+ICAgcmFtOiByazMzOTk6IEFkZCBkZHJ0aW1pbmdDMAo+ICAgcmFtOiByazMzOTk6IEFkZCBEZHJN
+b2RlCj4gICByYW06IHJrMzM5OTogSGFuZGxlIHBjdGxfY2ZnIHJldHVybiB0eXBlCj4gICByYW06
+IHJrMzM5OTogcy90c2VsX3dyX3NlbGVjdF9uL3RzZWxfd3Jfc2VsZWN0X2RxX24KPiAgIHJhbTog
+cmszMzk5OiBzL3RzZWxfd3Jfc2VsZWN0X3AvdHNlbF93cl9zZWxlY3RfZHFfcAo+ICAgcmFtOiBy
+azMzOTk6IHMvY2FfdHNlbF93cl9zZWxlY3Rfbi90c2VsX3dyX3NlbGVjdF9jYV9uCj4gICByYW06
+IHJrMzM5OTogcy9jYV90c2VsX3dyX3NlbGVjdF9wL3RzZWxfd3Jfc2VsZWN0X2NhX3AKPiAgIHJh
+bTogcmszMzk5OiBPcmRlciB0c2VsIHZhcmlhYmxlcwo+ICAgcmFtOiByazMzOTk6IEFkZCBwaHkg
+cGN0cmwgcmVzZXQgc3VwcG9ydAo+ICAgcmFtOiByazMzOTk6IE1vdmUgcHdydXBfc3JlZnJlc2hf
+ZXhpdCB0byBkcmFtX2luZm8KPiAgIHJhbTogcmszMzk5OiBBZGQgcGN0bCBzdGFydCBzdXBwb3J0
+Cj4gICByYW06IHJvY2tjaGlwOiByazMzOTk6IEFkZCBjYXBfaW5mbyBzdHJ1Y3R1cmUKPiAgIHJh
+bTogcmszMzk5OiBzL3JrMzM5OV9iYXNlX3BhcmFtcy9zZHJhbV9iYXNlX3BhcmFtcwo+ICAgcmFt
+OiByazMzOTk6IE1vdmUgY29tbW9uIHNkcmFtIHN0cnVjdHVyZXMgaW4gY29tbW9uIGhlYWRlcgo+
+ICAgYXJtOiBpbmNsdWRlOiByb2NrY2hpcDogTW92ZSBkcmFtdHlwZXMgdG8gY29tbW9uIGhlYWRl
+cgo+ICAgYXJtOiBpbmNsdWRlOiByb2NrY2hpcDogQWRkIEREUjQgZW51bQo+ICAgcmFtOiByb2Nr
+Y2hpcDogQWRkIGluaXRpYWwgS2NvbmZpZwo+ICAgZGVidWdfdWFydDogQWRkIHByaW50ZGVjCj4g
+ICByYW06IHJvY2tjaGlwOiBBZGQgZGVidWcgc2RyYW0gZHJpdmVyCj4gICByYW06IHJvY2tjaGlw
+OiBkZWJ1ZzogQWRkIHNkcmFtX3ByaW50X2Rkcl9pbmZvCj4gICByYW06IHJvY2tjaGlwOiBkZWJ1
+ZzogR2V0IHRoZSBjcyBjYXBhY2l0eQo+ICAgcmFtOiByazMzOTk6IGRlYnVnOiBBZGQgc2RyYW1f
+cHJpbnRfc3RyaWRlCj4gICByYW06IHJrMzM5OTogQ29tcHV0ZSBzdHJpZGUgZm9yIDIgY2hhbm5l
+bHMKPiAgIHJhbTogcmszMzk5OiBDb21wdXRlIHN0cmlkZSBmb3IgMSBjaGFubmVsIGEKPiAgIHJh
+bTogcmszMzk5OiBBZGQgcmFuayBkZXRlY3Rpb24gc3VwcG9ydAo+ICAgcmFtOiByazMzOTk6IEVu
+YWJsZSBzZHJhbSBkZWJ1ZyBmdW5jdGlvbnMKPiAgIHJvY2tjaGlwOiBkdHM6IHJrMzM5OTogbmFu
+b3BpLW5lbzQ6IFVzZSBERFIzLTE4NjYgZHRzaQo+ICAgY2xrOiByb2NrY2hpcDogcmszMzk5OiBG
+aXggY2hlY2sgcGF0Y2ggd2FybmluZ3MgYW5kIGNoZWNrcwo+ICAgY2xrOiByb2NrY2hpcDogcmsz
+Mzk5OiBTZXQgNTBNSHogZGRyIGNsb2NrCj4gICBjbGs6IHJvY2tjaGlwOiByazMzOTk6IFNldCA0
+MDBNSHogZGRyIGNsb2NrCj4gICByYW06IHJrMzM5OTogQWRkIHNwYWNlcyBpbiBwY3RsX2NmZwo+
+ICAgcmFtOiByazMzOTk6IENvbmZpZ3VyZSBwaHkgSU8gaW4gZHMgb2R0Cj4gICByYW06IHJvY2tj
+aGlwOiBLY29uZmlnOiBBZGQgUkszMzk5IExQRERSNCBlbnRyeQo+ICAgcmFtOiByazMzOTk6IEFk
+ZCBscGRkcjQgcmFuayBtYXNrIGZvciBjYSB0cmFpbmluZwo+ICAgcmFtOiByazMzOTk6IEFkZCBs
+cGRkcjQgcmFuayBtYXNrIGZvciB3ZHFsIHRyYWluaW5nCj4gICByYW06IHJrMzM5OTogTW92ZSBt
+b2RlX3NlbCBhc3NpZ25tZW50Cj4gICByYW06IHJrMzM5OTogRG9uJ3Qgd2FpdCBmb3IgUExMIGxv
+Y2sgaW4gbHBkZHI0Cj4gICByYW06IHJrMzM5OTogQXZvaWQgdHdvIGNoYW5uZWwgWlEgQ2FsIFN0
+YXJ0IGF0IHRoZSBzYW1lIHRpbWUKPiAgIHJhbTogcmszMzk5OiBDb25maWd1cmUgUEhZXzg5OCwg
+UEhZXzkxOSBmb3IgbHBkZHI0Cj4gICByYW06IHJrMzM5OTogQ29uZmlndXJlIEJPT1NUUF9FTiwg
+Qk9PU1ROX0VOIGZvciBscGRkcjQKPiAgIHJhbTogcmszMzk5OiBDb25maWd1cmUgU0xFV1BfRU4s
+IFNMRVdOX0VOIGZvciBscGRkcjQKPiAgIHJhbTogcmszMzk5OiBDb25maWd1cmUgUEhZIFJYX0NN
+X0lOUFVUIGZvciBscGRkcjQKPiAgIHJhbTogcmszMzk5OiBNYXAgY2hpcHNlbGVjdCBmb3IgbHBk
+ZHI0Cj4gICByYW06IHJrMzM5OTogQ29uZmlndXJlIHRzZWwgd3JpdGUgY2EgZm9yIGxwZGRyNAo+
+ICAgcmFtOiByazMzOTk6IERvbid0IGRpc2FibGUgZGZpIGRyYW0gY2xrIGZvciBscGRkcjQsIHJh
+bmsgMQo+ICAgcmFtOiByazMzOTk6IEFkZCBJTyBzZXR0aW5ncwo+ICAgcmFtOiBzZHJhbTogQ29u
+ZmlndXJlIGxwZGRyNCB0c2VsIHJkLCB3ciBiYXNlZCBvbiBJTyBzZXR0aW5ncwo+ICAgcmFtOiBy
+azMzOTk6IEFkZCB0c2VsIGNvbnRyb2wgY2xvY2sgZHJpdmUKPiAgIHJhbTogcmszMzk5OiBDb25m
+aWd1cmUgc29jIG9kdCBzdXBwb3J0Cj4gICByYW06IHJrMzM5OTogR2V0IGxwZGRyNCB0c2VsX3Jk
+X2VuIGZyb20gaW8gc2V0dGluZ3MKPiAgIHJhbTogcmszMzk5OiBVcGRhdGUgbHBkZHI0IHZyZWYg
+YmFzZWQgb24gaW8gc2V0dGluZ3MKPiAgIHJhbTogcmszMzk5OiBVcGRhdGUgbHBkZHI0IG1vZGVf
+c2VsIGJhc2VkIG9uIGlvIHNldHRpbmdzCj4gICByYW06IHJrMzM5OTogVXBkYXRlIGxwZGRyNCB2
+cmVmX21vZGVfYWMKPiAgIHJhbTogcmszMzk5OiBTaW1wbGlmeSBkYXRhIHRyYWluaW5nIGZpcnN0
+IGFyZ3VtZW50Cj4gICByYW06IHJrMzM5OTogSGFuZGxlIGRhdGEgdHJhaW5pbmcgdmlhIG9wcwo+
+ICAgcmFtOiByazMzOTk6IEFkZCBMUFBEUjQgbXIgZGV0ZWN0aW9uCj4gICBhcm06IGluY2x1ZGU6
+IHJvY2tjaGlwOiBBZGQgcmszMzk5IHBtdSBmaWxlCj4gICByb2NrY2hpcDogcmszMzk5OiBzeXNj
+b246IEFkZCBwbXUgc3VwcG9ydAo+ICAgcm9ja2NoaXA6IGR0czogcmszMzk5OiBBZGQgdS1ib290
+LGRtLXByZS1yZWxvYyBmb3IgcG11Cj4gICByYW06IHJrMzM5OTogQWRkIExQUEREUjQtNDAwIHRp
+bWluZ3MgaW5jCj4gICByYW06IHJrMzM5OTogQWRkIExQUEREUjQtODAwIHRpbWluZ3MgaW5jCj4g
+ICByYW06IHJrMzM5OTogQWRkIHNldF9yYXRlIHNkcmFtIHJrMzM5OSBvcHMKPiAgIHJhbTogcmsz
+Mzk5OiBBZGQgbHBkZHI0IHNldCByYXRlIHN1cHBvcnQKPiAgIHJhbTogcmszMzk5OiBTZXQgbHBk
+ZHI0IGRxIG9kdAo+ICAgcmFtOiByazMzOTk6IFNldCBscGRkcjQgY2Egb2R0Cj4gICByYW06IHJr
+MzM5OTogU2V0IGxwZGRyNCBNUjMKPiAgIHJhbTogcmszMzk5OiBTZXQgbHBkZHI0IE1SMTIKPiAg
+IHJhbTogcmszMzk5OiBTZXQgbHBkZHI0IE1SMTQKPiAgIGNvbmZpZ3M6IHJvY2twcm82NDogRW5h
+YmxlIExQRERSNCBzdXBwb3J0Cj4gICBjb25maWdzOiByb2NrLXBpLTQ6IEVuYWJsZSBMUEREUjQg
+c3VwcG9ydAo+ICAgcm9ja2NoaXA6IGR0czogcmszMzk5OiBBZGQgTFBERFI0LTEwMCB0aW1pbmdz
+Cj4gICByb2NrY2hpcDogZHRzOiByazMzOTk6IHJvY2twcm82NDogVXNlIExQRERSNC0xMDAgZHRz
+aQo+ICAgcm9ja2NoaXA6IGR0czogcmszMzk5OiByb2NrLXBpLTQ6IFVzZSBMUEREUjQtMTAwIGR0
+c2kKPiAKPiAgYXJjaC9hcm0vZHRzL3JrMzM5OS1uYW5vcGktbmVvNC11LWJvb3QuZHRzaSAgIHwg
+ICAgMSArCj4gIGFyY2gvYXJtL2R0cy9yazMzOTktcm9jay1waS00LXUtYm9vdC5kdHNpICAgICB8
+ICAgIDEgKwo+ICBhcmNoL2FybS9kdHMvcmszMzk5LXJvY2twcm82NC11LWJvb3QuZHRzaSAgICAg
+fCAgICAxICsKPiAgYXJjaC9hcm0vZHRzL3JrMzM5OS1zZHJhbS1scGRkcjQtMTAwLmR0c2kgICAg
+IHwgMTUzNyArKysrKysrKysrKwo+ICBhcmNoL2FybS9kdHMvcmszMzk5LXUtYm9vdC5kdHNpICAg
+ICAgICAgICAgICAgfCAgICA0ICsKPiAgLi4uL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAvcG11
+X3JrMzM5OS5oICAgIHwgICA3MiArCj4gIGFyY2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2No
+aXAvc2RyYW0uaCAgICB8ICAgIDYgLQo+ICAuLi4vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9z
+ZHJhbV9jb21tb24uaCAgfCAgIDkwICsKPiAgLi4uL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAv
+c2RyYW1fcmszMjJ4LmggIHwgICAgNyAtCj4gIC4uLi9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlw
+L3NkcmFtX3JrMzM5OS5oICB8ICAgNjUgKy0KPiAgYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMz
+OTkvc3lzY29uX3JrMzM5OS5jIHwgICAgOCArCj4gIGNvbmZpZ3Mvcm9jay1waS00LXJrMzM5OV9k
+ZWZjb25maWcgICAgICAgICAgICB8ICAgIDEgKwo+ICBjb25maWdzL3JvY2twcm82NC1yazMzOTlf
+ZGVmY29uZmlnICAgICAgICAgICAgfCAgICAxICsKPiAgZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xr
+X3JrMzM5OS5jICAgICAgICAgICAgIHwgICA3NiArLQo+ICBkcml2ZXJzL3JhbS9LY29uZmlnICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgfCAgICAxICsKPiAgZHJpdmVycy9yYW0vcm9ja2NoaXAv
+S2NvbmZpZyAgICAgICAgICAgICAgICAgIHwgICAzMyArCj4gIGRyaXZlcnMvcmFtL3JvY2tjaGlw
+L01ha2VmaWxlICAgICAgICAgICAgICAgICB8ICAgIDMgKy0KPiAgLi4uL3JhbS9yb2NrY2hpcC9z
+ZHJhbS1yazMzOTktbHBkZHI0LTQwMC5pbmMgIHwgMTU3MCArKysrKysrKysrKwo+ICAuLi4vcmFt
+L3JvY2tjaGlwL3NkcmFtLXJrMzM5OS1scGRkcjQtODAwLmluYyAgfCAxNTcwICsrKysrKysrKysr
+Cj4gIGRyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX2RlYnVnLmMgICAgICAgICAgICB8ICAxNDcg
+KysKPiAgZHJpdmVycy9yYW0vcm9ja2NoaXAvc2RyYW1fcmszMzk5LmMgICAgICAgICAgIHwgMjI4
+OSArKysrKysrKysrKysrKy0tLQo+ICBpbmNsdWRlL2RlYnVnX3VhcnQuaCAgICAgICAgICAgICAg
+ICAgICAgICAgICAgfCAgIDE5ICsKPiAgMjIgZmlsZXMgY2hhbmdlZCwgNzAzNSBpbnNlcnRpb25z
+KCspLCA0NjcgZGVsZXRpb25zKC0pCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9kdHMv
+cmszMzk5LXNkcmFtLWxwZGRyNC0xMDAuZHRzaQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9h
+cm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9wbXVfcmszMzk5LmgKPiAgY3JlYXRlIG1vZGUg
+MTAwNjQ0IGRyaXZlcnMvcmFtL3JvY2tjaGlwL0tjb25maWcKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0
+IGRyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtLXJrMzM5OS1scGRkcjQtNDAwLmluYwo+ICBjcmVh
+dGUgbW9kZSAxMDA2NDQgZHJpdmVycy9yYW0vcm9ja2NoaXAvc2RyYW0tcmszMzk5LWxwZGRyNC04
+MDAuaW5jCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbV9k
+ZWJ1Zy5jCj4gCj4gLS0gCj4gMi4xOC4wLjMyMS5nZmZjNmZhMGUzCgpUZXN0ZWQgb24gcm9ja3By
+bzY0IGFuZCBmaXJlZmx5LXJrMzM5OS4gIEJvdGggYm9hcmRzIHdvcmsgd2l0aCB0aGlzCmRpZmYg
+cHJvdmlkZWQgSSBhcHBseSB0aGUgdHdvICJib290LW9uIiByZWd1bGF0b3IgZGlmZnMgdGhhdCBJ
+IHBvc3RlZAphIGNvdXBsZSBvZiBkYXlzIGFnby4gIEEgc2lnbmlmaWNhbnQgaW1wcm92ZW1lbnQg
+Zm9yIHJvY2twcm82NCBhbmQgbm8KcmVncmVzc2lvbiBmb3IgZmlyZWZseS1yazMzOTkuICBTbzoK
+ClRlc3RlZC1ieTogTWFyayBLZXR0ZW5pcyA8a2V0dGVuaXNAb3BlbmJzZC5vcmc+Cl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxp
+c3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3Ut
+Ym9vdAo=
