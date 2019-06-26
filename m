@@ -1,200 +1,157 @@
 From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH v2] phy: rockchip-inno-usb2: allow to force the B-Device
- Session Valid bit.
-Date: Wed, 26 Jun 2019 12:32:55 -0300
-Message-ID: <7a205885f0599f04da067a7f41a14ee0b0d759f5.camel@collabora.com>
-References: <20190515222050.15075-1-gael.portay@collabora.com>
+Subject: Re: [PATCH v2 2/3] drm/rockchip: Add optional support for CRTC
+ gamma LUT
+Date: Wed, 26 Jun 2019 15:49:59 -0300
+Message-ID: <29e4c3538a5f19bdc663aa671ecb917d6160011e.camel@collabora.com>
+References: <20190621211346.1324-1-ezequiel@collabora.com>
+         <20190621211346.1324-3-ezequiel@collabora.com>
+         <20190625080526.osfzjb32pt6f5pxu@uno.localdomain>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190515222050.15075-1-gael.portay@collabora.com>
+In-Reply-To: <20190625080526.osfzjb32pt6f5pxu@uno.localdomain>
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?ISO-8859-1?Q?Ga=EBl?= PORTAY <gael.portay@collabora.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, kernel@collabora.com
+To: Jacopo Mondi <jacopo@jmondi.org>
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>, Douglas Anderson <dianders@chromium.org>, Ilia Mirkin <imirkin@alum.mit.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 2019-05-15 at 18:20 -0400, Gaël PORTAY wrote:
-> From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+On Tue, 2019-06-25 at 10:05 +0200, Jacopo Mondi wrote:
+> Hi Ezequiel,
 > 
-> The OTG disconnection event is generated after the presence/absence of
-> an ID connection, but some platforms don't have the ID pin connected, so
-> the event is not generated. In such case, for detecting the
-> disconnection event, we can get the cable state from an extcon driver.
-> We need, though, to force to set the B-Device Session Valid bit on the
-> PHY to have the device respond to the setup address. Otherwise, the
-> following error is shown:
+> On Fri, Jun 21, 2019 at 06:13:45PM -0300, Ezequiel Garcia wrote:
+> > Add an optional CRTC gamma LUT support, and enable it on RK3288.
+> > This is currently enabled via a separate address resource,
+> > which needs to be specified in the devicetree.
+> > 
+> > The address resource is required because on some SoCs, such as
+> > RK3288, the LUT address is after the MMU address, and the latter
+> > is supported by a different driver. This prevents the DRM driver
+> > from requesting an entire register space.
+> > 
+> > The current implementation works for RGB 10-bit tables, as that
+> > is what seems to work on RK3288.
+> > 
+> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > ---
+> > Changes from v1:
+> > * drop explicit linear LUT after finding a proper
+> >   way to disable gamma correction.
+> > * avoid setting gamma is the CRTC is not active.
+> > * s/int/unsigned int as suggested by Jacopo.
+> > * only enable color management and set gamma size
+> >   if gamma LUT is supported, suggested by Doug.
+> > * drop the reg-names usage, and instead just use indexed reg
+> >   specifiers, suggested by Doug.
+> > 
+> > Changes from RFC:
+> > * Request (an optional) address resource for the LUT.
+> > * Drop support for RK3399, which doesn't seem to work
+> >   out of the box and needs more research.
+> > * Support pass-thru setting when GAMMA_LUT is NULL.
+> > * Add a check for the gamma size, as suggested by Ilia.
+> > * Move gamma setting to atomic_commit_tail, as pointed
+> >   out by Jacopo/Laurent, is the correct way.
+> > ---
+> >  drivers/gpu/drm/rockchip/rockchip_drm_fb.c  |   3 +
+> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 114 ++++++++++++++++++++
+> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.h |   7 ++
+> >  drivers/gpu/drm/rockchip/rockchip_vop_reg.c |   2 +
+> >  4 files changed, 126 insertions(+)
+> > 
+> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> > index 1c69066b6894..bf9ad6240971 100644
+> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> > @@ -16,6 +16,7 @@
+> >  #include "rockchip_drm_fb.h"
+> >  #include "rockchip_drm_gem.h"
+> >  #include "rockchip_drm_psr.h"
+> > +#include "rockchip_drm_vop.h"
+> > 
+> >  static int rockchip_drm_fb_dirty(struct drm_framebuffer *fb,
+> >  				 struct drm_file *file,
+> > @@ -128,6 +129,8 @@ rockchip_atomic_helper_commit_tail_rpm(struct drm_atomic_state *old_state)
+> > 
+> >  	drm_atomic_helper_commit_modeset_disables(dev, old_state);
+> > 
+> > +	rockchip_drm_vop_gamma_set(old_state);
+> > +
+> >  	drm_atomic_helper_commit_modeset_enables(dev, old_state);
+> > 
+> >  	drm_atomic_helper_commit_planes(dev, old_state,
+> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> > index 12ed5265a90b..cfa70773a9bc 100644
+> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> > @@ -137,6 +137,7 @@ struct vop {
+> > 
+> >  	uint32_t *regsbak;
+> >  	void __iomem *regs;
+> > +	void __iomem *lut_regs;
+> > 
+> >  	/* physical map length of vop register */
+> >  	uint32_t len;
+> > @@ -1153,6 +1154,102 @@ static void vop_wait_for_irq_handler(struct vop *vop)
+> >  	synchronize_irq(vop->irq);
+> >  }
+> > 
+> > +static bool vop_dsp_lut_is_enable(struct vop *vop)
+> > +{
+> > +	return vop_read_reg(vop, 0, &vop->data->common->dsp_lut_en);
+> > +}
+> > +
+> > +static void vop_crtc_write_gamma_lut(struct vop *vop, struct drm_crtc *crtc)
+> > +{
+> > +	struct drm_color_lut *lut = crtc->state->gamma_lut->data;
+> > +	unsigned int i;
+> > +
+> > +	for (i = 0; i < crtc->gamma_size; i++) {
+> > +		u32 word;
+> > +
+> > +		word = (drm_color_lut_extract(lut[i].red, 10) << 20) |
+> > +		       (drm_color_lut_extract(lut[i].green, 10) << 10) |
+> > +			drm_color_lut_extract(lut[i].blue, 10);
+> > +		writel(word, vop->lut_regs + i * 4);
+> > +	}
+> > +}
+> > +
+> > +static void vop_crtc_gamma_set(struct vop *vop, struct drm_crtc *crtc,
+> > +			       struct drm_crtc_state *old_state)
+> > +{
+> > +	unsigned int idle;
+> > +	int ret;
+> > +
+> > +	/*
+> > +	 * In order to write the LUT to the internal RAM memory,
+> > +	 * we need to first make sure the dsp_lut_en bit is cleared.
+> > +	 */
+
+[1] 
+
+> > +	spin_lock(&vop->reg_lock);
+> > +	VOP_REG_SET(vop, common, dsp_lut_en, 0);
+> > +	vop_cfg_done(vop);
+> > +	spin_unlock(&vop->reg_lock);
+> > +
+> > +	/*
+> > +	 * If the CRTC is not active, dsp_lut_en will not get cleared.
 > 
->     usb 2-2: Device not responding to setup address.
->     usb 2-2: device not accepting address 14, error -71
->     usb usb2-port2: unable to enumerate USB device
+> Did you mean "dsp_lut_en will not get enabled" ?
 > 
-> The patch tells the PHY to force the B-Device Session Valid bit when the
-> OTG role is device and clear that bit if the OTG role is host, when an
-> extcon is available.
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>
-> ---
-> 
-> Hi all,
-> 
-> The main purpose of this patch is have the Type-C port on the Samsung
-> Chromebook Plus work as a device or in OTG mode.
-> 
-> That patch was originally a part of that patchset[1]; all other patches
-> was merged recently in master.
-> 
-> The patch was tested on a Samsung Chromebook Plus by configuring one
-> port to work as device, configure a cdc ethernet gadget and communicate
-> via ethernet gadget my workstation with the chromebook through a usb-a
-> to type-c cable.
-> 
-> Best regards,
-> Gaël
-> 
-> [1]: https://lkml.org/lkml/2018/8/15/141
-> 
-> Changes since v1:
->  - [PATCH 3/4] Remove introduction of dt property "rockchip,force-bvalid"
->                and replace cable state using extcon instead (if set).
-> 
->  drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 51 +++++++++++++++++++
->  1 file changed, 51 insertions(+)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> index ba07121c3eff..5e9d50b5ae16 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> @@ -125,6 +125,7 @@ struct rockchip_chg_det_reg {
->   * @bvalid_det_en: vbus valid rise detection enable register.
->   * @bvalid_det_st: vbus valid rise detection status register.
->   * @bvalid_det_clr: vbus valid rise detection clear register.
-> + * @bvalid_session: force B-device session valid register.
->   * @ls_det_en: linestate detection enable register.
->   * @ls_det_st: linestate detection state register.
->   * @ls_det_clr: linestate detection clear register.
-> @@ -138,6 +139,7 @@ struct rockchip_usb2phy_port_cfg {
->  	struct usb2phy_reg	bvalid_det_en;
->  	struct usb2phy_reg	bvalid_det_st;
->  	struct usb2phy_reg	bvalid_det_clr;
-> +	struct usb2phy_reg	bvalid_session;
->  	struct usb2phy_reg	ls_det_en;
->  	struct usb2phy_reg	ls_det_st;
->  	struct usb2phy_reg	ls_det_clr;
-> @@ -169,6 +171,7 @@ struct rockchip_usb2phy_cfg {
->   * @port_id: flag for otg port or host port.
->   * @suspended: phy suspended flag.
->   * @vbus_attached: otg device vbus status.
-> + * @force_bvalid: force the control of the B-device session valid bit.
->   * @bvalid_irq: IRQ number assigned for vbus valid rise detection.
->   * @ls_irq: IRQ number assigned for linestate detection.
->   * @otg_mux_irq: IRQ number which multiplex otg-id/otg-bvalid/linestate
-> @@ -187,6 +190,7 @@ struct rockchip_usb2phy_port {
->  	unsigned int	port_id;
->  	bool		suspended;
->  	bool		vbus_attached;
-> +	bool		force_bvalid;
->  	int		bvalid_irq;
->  	int		ls_irq;
->  	int		otg_mux_irq;
-> @@ -553,6 +557,13 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
->  	switch (rport->state) {
->  	case OTG_STATE_UNDEFINED:
->  		rport->state = OTG_STATE_B_IDLE;
-> +		if (rport->force_bvalid) {
-> +			property_enable(rphy->grf,
-> +					&rport->port_cfg->bvalid_session,
-> +					true);
-> +			dev_dbg(&rport->phy->dev,
-> +				"set the B-Device Session Valid\n");
-> +		}
->  		if (!vbus_attach)
->  			rockchip_usb2phy_power_off(rport->phy);
->  		/* fall through */
-> @@ -560,6 +571,14 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
->  		if (extcon_get_state(rphy->edev, EXTCON_USB_HOST) > 0) {
->  			dev_dbg(&rport->phy->dev, "usb otg host connect\n");
->  			rport->state = OTG_STATE_A_HOST;
-> +			/* When leaving device mode force end the session */
-> +			if (rport->force_bvalid) {
-> +				property_enable(rphy->grf,
-> +					&rport->port_cfg->bvalid_session,
-> +					false);
-> +				dev_dbg(&rport->phy->dev,
-> +					"clear the B-Device Session Valid\n");
-> +			}
->  			rockchip_usb2phy_power_on(rport->phy);
->  			return;
->  		} else if (vbus_attach) {
-> @@ -634,6 +653,14 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
->  		if (extcon_get_state(rphy->edev, EXTCON_USB_HOST) == 0) {
->  			dev_dbg(&rport->phy->dev, "usb otg host disconnect\n");
->  			rport->state = OTG_STATE_B_IDLE;
-> +			/* When leaving host mode force start the session */
-> +			if (rport->force_bvalid) {
-> +				property_enable(rphy->grf,
-> +					&rport->port_cfg->bvalid_session,
-> +					true);
-> +				dev_dbg(&rport->phy->dev,
-> +					"set the B-Device Session Valid\n");
-> +			}
->  			rockchip_usb2phy_power_off(rport->phy);
->  		}
->  		break;
-> @@ -1016,6 +1043,28 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
->  	INIT_DELAYED_WORK(&rport->chg_work, rockchip_chg_detect_work);
->  	INIT_DELAYED_WORK(&rport->otg_sm_work, rockchip_usb2phy_otg_sm_work);
->  
-> +	/*
-> +	 * Some platforms doesn't have the ID pin connected to the phy, hence
-> +	 * the OTD ID event is not generated, but in some cases we can get the
-> +	 * cable state from an extcon driver. In such case we can force to set
-> +	 * the B-Device Session Valid bit on the PHY to have the device working
-> +	 * as a OTG.
-> +	 */
-> +	if (rphy->edev) {
-> +		/*
-> +		 * Check if bvalid_session register is set in the structure
-> +		 * rockchip_usb2phy_cfg for this SoC.
-> +		 */
-> +		if (rport->port_cfg->bvalid_session.offset == 0x0) {
-> +			rport->force_bvalid = false;
-> +			dev_err(rphy->dev,
-> +				"cannot force B-device session, the register is not set for that SoC\n");
-> +		} else {
-> +			rport->force_bvalid = true;
-> +			dev_info(rphy->dev, "force B-device session enabled\n");
-> +		}
-> +	}
-> +
->  	/*
->  	 * Some SoCs use one interrupt with otg-id/otg-bvalid/linestate
->  	 * interrupts muxed together, so probe the otg-mux interrupt first,
-> @@ -1338,6 +1387,7 @@ static const struct rockchip_usb2phy_cfg rk3399_phy_cfgs[] = {
->  				.bvalid_det_en	= { 0xe3c0, 3, 3, 0, 1 },
->  				.bvalid_det_st	= { 0xe3e0, 3, 3, 0, 1 },
->  				.bvalid_det_clr	= { 0xe3d0, 3, 3, 0, 1 },
-> +				.bvalid_session = { 0x4498, 4, 4, 0, 1 },
->  				.utmi_avalid	= { 0xe2ac, 7, 7, 0, 1 },
->  				.utmi_bvalid	= { 0xe2ac, 12, 12, 0, 1 },
->  			},
-> @@ -1373,6 +1423,7 @@ static const struct rockchip_usb2phy_cfg rk3399_phy_cfgs[] = {
->  				.bvalid_det_en  = { 0xe3c0, 8, 8, 0, 1 },
->  				.bvalid_det_st  = { 0xe3e0, 8, 8, 0, 1 },
->  				.bvalid_det_clr = { 0xe3d0, 8, 8, 0, 1 },
-> +				.bvalid_session = { 0x4518, 4, 4, 0, 1 },
->  				.utmi_avalid	= { 0xe2ac, 10, 10, 0, 1 },
->  				.utmi_bvalid    = { 0xe2ac, 16, 16, 0, 1 },
->  			},
-> -- 
-> 2.21.0
-> 
+> Beacuse I see dsp_lut_en being set to 0, and not activated if
+> !crtc->state->active. Am I confused?
 > 
 
-It's been more than a month without any activity here.
+This bit should be 0 when the CPU updates the LUT,
+that's why the driver is clears it and then actually
+waits on it to be cleared.
 
-Any news?
+Maybe the comment [1] above are not clear enough?
 
-Thanks,
+> Apart from that:
+> Reviewed-by: Jacopo Mondi <jacopo+renesas@jmondi.org>
+> 
+
+Thanks for reviewing!
 Ezequiel
