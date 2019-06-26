@@ -1,157 +1,64 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH v2 2/3] drm/rockchip: Add optional support for CRTC
- gamma LUT
-Date: Wed, 26 Jun 2019 15:49:59 -0300
-Message-ID: <29e4c3538a5f19bdc663aa671ecb917d6160011e.camel@collabora.com>
-References: <20190621211346.1324-1-ezequiel@collabora.com>
-         <20190621211346.1324-3-ezequiel@collabora.com>
-         <20190625080526.osfzjb32pt6f5pxu@uno.localdomain>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] drm/bridge/synopsys: dw-hdmi: Handle audio for
+ more clock rates
+Date: Wed, 26 Jun 2019 12:24:32 -0700
+Message-ID: <CAD=FV=VNR1z_WL7rrfv-O5cXFjDowq3qZe-3tg9o9YHjQgyCAA@mail.gmail.com>
+References: <CGME20190619211151epcas3p4dbb163c034afa4063869c761b93e24b1@epcas3p4.samsung.com>
+ <20190619210718.134951-1-dianders@chromium.org>
+ <bec87373-48cc-0c55-9662-a74a7d2a47a0@samsung.com>
+ <CAD=FV=WJBkYfRznh6aAyvgKgHb8-AG0hMORdKA0BXCL89wG_7w@mail.gmail.com>
+ <a94d9554-fc93-a2d0-9a30-9604db8c123e@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190625080526.osfzjb32pt6f5pxu@uno.localdomain>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jacopo Mondi <jacopo@jmondi.org>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>, Douglas Anderson <dianders@chromium.org>, Ilia Mirkin <imirkin@alum.mit.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <a94d9554-fc93-a2d0-9a30-9604db8c123e-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Cc: Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, Dylan Reid <dgreid-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jerome Brunet <jbrunet-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>, Cheng-Yi Chiang <cychiang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 2019-06-25 at 10:05 +0200, Jacopo Mondi wrote:
-> Hi Ezequiel,
-> 
-> On Fri, Jun 21, 2019 at 06:13:45PM -0300, Ezequiel Garcia wrote:
-> > Add an optional CRTC gamma LUT support, and enable it on RK3288.
-> > This is currently enabled via a separate address resource,
-> > which needs to be specified in the devicetree.
-> > 
-> > The address resource is required because on some SoCs, such as
-> > RK3288, the LUT address is after the MMU address, and the latter
-> > is supported by a different driver. This prevents the DRM driver
-> > from requesting an entire register space.
-> > 
-> > The current implementation works for RGB 10-bit tables, as that
-> > is what seems to work on RK3288.
-> > 
-> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> > ---
-> > Changes from v1:
-> > * drop explicit linear LUT after finding a proper
-> >   way to disable gamma correction.
-> > * avoid setting gamma is the CRTC is not active.
-> > * s/int/unsigned int as suggested by Jacopo.
-> > * only enable color management and set gamma size
-> >   if gamma LUT is supported, suggested by Doug.
-> > * drop the reg-names usage, and instead just use indexed reg
-> >   specifiers, suggested by Doug.
-> > 
-> > Changes from RFC:
-> > * Request (an optional) address resource for the LUT.
-> > * Drop support for RK3399, which doesn't seem to work
-> >   out of the box and needs more research.
-> > * Support pass-thru setting when GAMMA_LUT is NULL.
-> > * Add a check for the gamma size, as suggested by Ilia.
-> > * Move gamma setting to atomic_commit_tail, as pointed
-> >   out by Jacopo/Laurent, is the correct way.
-> > ---
-> >  drivers/gpu/drm/rockchip/rockchip_drm_fb.c  |   3 +
-> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 114 ++++++++++++++++++++
-> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.h |   7 ++
-> >  drivers/gpu/drm/rockchip/rockchip_vop_reg.c |   2 +
-> >  4 files changed, 126 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-> > index 1c69066b6894..bf9ad6240971 100644
-> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-> > @@ -16,6 +16,7 @@
-> >  #include "rockchip_drm_fb.h"
-> >  #include "rockchip_drm_gem.h"
-> >  #include "rockchip_drm_psr.h"
-> > +#include "rockchip_drm_vop.h"
-> > 
-> >  static int rockchip_drm_fb_dirty(struct drm_framebuffer *fb,
-> >  				 struct drm_file *file,
-> > @@ -128,6 +129,8 @@ rockchip_atomic_helper_commit_tail_rpm(struct drm_atomic_state *old_state)
-> > 
-> >  	drm_atomic_helper_commit_modeset_disables(dev, old_state);
-> > 
-> > +	rockchip_drm_vop_gamma_set(old_state);
-> > +
-> >  	drm_atomic_helper_commit_modeset_enables(dev, old_state);
-> > 
-> >  	drm_atomic_helper_commit_planes(dev, old_state,
-> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > index 12ed5265a90b..cfa70773a9bc 100644
-> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > @@ -137,6 +137,7 @@ struct vop {
-> > 
-> >  	uint32_t *regsbak;
-> >  	void __iomem *regs;
-> > +	void __iomem *lut_regs;
-> > 
-> >  	/* physical map length of vop register */
-> >  	uint32_t len;
-> > @@ -1153,6 +1154,102 @@ static void vop_wait_for_irq_handler(struct vop *vop)
-> >  	synchronize_irq(vop->irq);
-> >  }
-> > 
-> > +static bool vop_dsp_lut_is_enable(struct vop *vop)
-> > +{
-> > +	return vop_read_reg(vop, 0, &vop->data->common->dsp_lut_en);
-> > +}
-> > +
-> > +static void vop_crtc_write_gamma_lut(struct vop *vop, struct drm_crtc *crtc)
-> > +{
-> > +	struct drm_color_lut *lut = crtc->state->gamma_lut->data;
-> > +	unsigned int i;
-> > +
-> > +	for (i = 0; i < crtc->gamma_size; i++) {
-> > +		u32 word;
-> > +
-> > +		word = (drm_color_lut_extract(lut[i].red, 10) << 20) |
-> > +		       (drm_color_lut_extract(lut[i].green, 10) << 10) |
-> > +			drm_color_lut_extract(lut[i].blue, 10);
-> > +		writel(word, vop->lut_regs + i * 4);
-> > +	}
-> > +}
-> > +
-> > +static void vop_crtc_gamma_set(struct vop *vop, struct drm_crtc *crtc,
-> > +			       struct drm_crtc_state *old_state)
-> > +{
-> > +	unsigned int idle;
-> > +	int ret;
-> > +
-> > +	/*
-> > +	 * In order to write the LUT to the internal RAM memory,
-> > +	 * we need to first make sure the dsp_lut_en bit is cleared.
-> > +	 */
+Hi,
 
-[1] 
+On Wed, Jun 26, 2019 at 2:56 AM Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org> wrote:
+>
+> >   AKA: anyone using auto-CTS won't notice any change
+> > at all.  I guess the question is: with Auto-CTS should you pick the
+> > "ideal" 6272 or a value that allows CTS to be the closest to integral
+> > as possible.  By reading between the lines of the spec, I decided that
+> > it was slightly more important to allow for an integral CTS.  If
+> > achieving an integral CTS wasn't a goal then the spec wouldn't even
+> > have listed special cases for any of the clock rates.  We would just
+> > be using the ideal N and Auto-CTS and be done with it.  The whole
+> > point of the tables they list is to make CTS integral.
+>
+>
+> Specification recommends many contradictory things without explicit
+> prioritization, at least I have not found it.
+>
+> So we should relay on our intuition.
+>
+> I guess that with auto-cts N we should follow recommendation - I guess
+> most sinks have been better tested with recommended values.
+>
+> So what with non-auto-cts case:
+>
+> 1. How many devices do not have auto-cts? how many alternative TMDS
+> clocks we have? Maybe it is theoretical problem.
+>
+> 2. Alternating CTS in software is possible, but quite
+> complicated/annoying, but at least it will follow recommendation :)
 
-> > +	spin_lock(&vop->reg_lock);
-> > +	VOP_REG_SET(vop, common, dsp_lut_en, 0);
-> > +	vop_cfg_done(vop);
-> > +	spin_unlock(&vop->reg_lock);
-> > +
-> > +	/*
-> > +	 * If the CRTC is not active, dsp_lut_en will not get cleared.
-> 
-> Did you mean "dsp_lut_en will not get enabled" ?
-> 
-> Beacuse I see dsp_lut_en being set to 0, and not activated if
-> !crtc->state->active. Am I confused?
-> 
+It is OK w/ me if we want to drop my patch.  With the auto-CTS patch
+it shouldn't matter anymore.  ...but I still wanted to post it to the
+list for posterity in case it is ever useful for someone else.
 
-This bit should be 0 when the CPU updates the LUT,
-that's why the driver is clears it and then actually
-waits on it to be cleared.
-
-Maybe the comment [1] above are not clear enough?
-
-> Apart from that:
-> Reviewed-by: Jacopo Mondi <jacopo+renesas@jmondi.org>
-> 
-
-Thanks for reviewing!
-Ezequiel
+-Doug
