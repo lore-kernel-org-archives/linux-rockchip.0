@@ -1,35 +1,27 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] ARM: dts: rockchip: Configure BT_DEV_WAKE in on rk3288-veyron
-Date: Wed, 26 Jun 2019 23:59:58 +0200
-Message-ID: <1962605.yMxvVRIssp@phil>
-References: <20190619183425.149470-1-dianders@chromium.org>
+Subject: Re: [PATCH v2] Revert "ARM: dts: rockchip: set PWM delay backlight settings for Minnie"
+Date: Thu, 27 Jun 2019 00:02:59 +0200
+Message-ID: <2109910.Z3vxzrnhVQ@phil>
+References: <20190618184531.1137-1-mka@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190619183425.149470-1-dianders@chromium.org>
+In-Reply-To: <20190618184531.1137-1-mka@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: linux-rockchip@lists.infradead.org, mka@chromium.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+To: Matthias Kaehlcke <mka@chromium.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Pavel Machek <pavel@ucw.cz>, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 19. Juni 2019, 20:34:25 CEST schrieb Douglas Anderson:
-> This is the other half of the hacky solution from commit f497ab6b4bb8
-> ("ARM: dts: rockchip: Configure BT_HOST_WAKE as wake-up signal on
-> veyron").  Specifically the LPM driver that the Broadcom Bluetooth
-> expects to have (but is missing in mainline) has two halves of the
-> equation: BT_HOST_WAKE and BT_DEV_WAKE.  The BT_HOST_WAKE (which was
-> handled in the previous commit) is the one that lets the Bluetooth
-> wake the system up.  The BT_DEV_WAKE (this patch) tells the Bluetooth
-> that it's OK to go into a low power mode.  That means we were burning
-> a bit of extra power in S3 without this patch.  Measurements are a bit
-> noisy, but it appears to be a few mA worth of difference.
+Am Dienstag, 18. Juni 2019, 20:45:31 CEST schrieb Matthias Kaehlcke:
+> This reverts commit 288ceb85b505c19abe1895df068dda5ed20cf482.
 > 
-> NOTE: Though these pins don't do much on systems with Marvell
-> Bluetooth, downstream kernels set it on all veyron boards so we'll do
-> the same.
+> The commit assumes that the minnie panel is a AUO B101EAN01.1 (LVDS
+> interface), however it is a AUO B101EAN01.8 (eDP interface). The eDP
+> panel doesn't need the 200 ms delay.
 > 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 
 applied for 5.3
 
