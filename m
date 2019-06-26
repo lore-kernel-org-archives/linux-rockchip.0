@@ -1,137 +1,83 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH v2 1/2] drm/bridge/synopsys: dw-hdmi: Handle audio for
- more clock rates
-Date: Wed, 26 Jun 2019 12:00:22 +0200
-Message-ID: <fe8bb0f7-5ef1-4750-8b1a-f05c0f3469e0@samsung.com>
-References: <CGME20190619211151epcas3p4dbb163c034afa4063869c761b93e24b1@epcas3p4.samsung.com>
-        <20190619210718.134951-1-dianders@chromium.org>
-        <bec87373-48cc-0c55-9662-a74a7d2a47a0@samsung.com>
-        <CAD=FV=WJBkYfRznh6aAyvgKgHb8-AG0hMORdKA0BXCL89wG_7w@mail.gmail.com>
-        <a94d9554-fc93-a2d0-9a30-9604db8c123e@samsung.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: Re: [U-Boot] [PATCH v2 00/99] ram: rk3399: Add LPDDR4 support
+Date: Wed, 26 Jun 2019 15:52:44 +0530
+Message-ID: <CAMty3ZA9HRYx4tYDWAFoG5geQeyB1VPkofdU-4jSDNHY0ZEHdA@mail.gmail.com>
+References: <20190617073252.27810-1-jagan@amarulasolutions.com>
+ <CA+E=qVfuy-UYUWujYC8fG+Os4tefPdYzFECkZZdoctvmiSMzcA@mail.gmail.com>
+ <CAMty3ZBr3oy1PxQ3C6fLQZAfPR3Dio7pX0m+y7LApAMQr5gbkA@mail.gmail.com>
+ <CAAEAJfAxgF2JqOUhjXLmn5RVGMLbM2-7JqsyZgXvfU6Q9ScK+A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <a94d9554-fc93-a2d0-9a30-9604db8c123e@samsung.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>, Maxime Ripard <maxime.ripard@bootlin.com>, David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Sean Paul <seanpaul@chromium.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Dylan Reid <dgreid@chromium.org>, Jerome Brunet <jbrunet@baylibre.com>, Sam Ravnborg <sam@ravnborg.org>, Cheng-Yi Chiang <cychiang@chromium.org>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAAEAJfAxgF2JqOUhjXLmn5RVGMLbM2-7JqsyZgXvfU6Q9ScK+A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ezequiel Garcia <ezequiel-30ULvvUtt6G51wMPkGsGjgyUoB5FGQPZ@public.gmane.org>
+Cc: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Akash Gajjar <gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Vasily Khoruzhick <anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 26.06.2019 11:56, Andrzej Hajda wrote:
-> On 25.06.2019 18:26, Doug Anderson wrote:
->> Hi,
->>
->>
->> On Tue, Jun 25, 2019 at 9:07 AM Andrzej Hajda <a.hajda@samsung.com> wrote:
->>> On 19.06.2019 23:07, Douglas Anderson wrote:
->>>> Let's add some better support for HDMI audio to dw_hdmi.
->>>> Specifically:
->>>>
->>>> 1. For 44.1 kHz audio the old code made the assumption that an N of
->>>> 6272 was right most of the time.  That wasn't true and the new table
->>>> should pick a more ideal value.
->>> Why? I ask because it is against recommendation from HDMI specs.
->> The place where it does matter (and why I originally did this work) is
->> when you don't have auto-CTS.  In such a case you really need "N" and
->> "CTS" to make the math work and both be integral.  This makes sure
->> that you don't slowly accumulate offsets.  I'm hoping that this point
->> should be non-controversial so I won't argue it more.
->>
->> I am an admitted non-expert, but I have a feeling that with Auto-CTS
->> either the old number or the new numbers would produce pretty much the
->> same experience.
+On Wed, Jun 26, 2019 at 12:12 AM Ezequiel Garcia
+<ezequiel-30ULvvUtt6G51wMPkGsGjgyUoB5FGQPZ@public.gmane.org> wrote:
 >
-> Because Auto-CTS mechanism will alternate between two or more CTS values
-> every frame, thus it will compensate non-rational clock relationship.
+> Hi Jagan,
 >
+> Thanks for your hard work. I'm sure everyone in the Rockchip community
+> is excited about finally having this support in U-Boot.
 >
->>   AKA: anyone using auto-CTS won't notice any change
->> at all.  I guess the question is: with Auto-CTS should you pick the
->> "ideal" 6272 or a value that allows CTS to be the closest to integral
->> as possible.  By reading between the lines of the spec, I decided that
->> it was slightly more important to allow for an integral CTS.  If
->> achieving an integral CTS wasn't a goal then the spec wouldn't even
->> have listed special cases for any of the clock rates.  We would just
->> be using the ideal N and Auto-CTS and be done with it.  The whole
->> point of the tables they list is to make CTS integral.
+> On Tue, 25 Jun 2019 at 12:46, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org> wrote:
+> [..]
+> > >
+> > > Was it absolutely necessary to split these changes into 99 commits? I
+> > > believe at least some of them can be squashed. Reviewing 99 patches
+> > > isn't feasible.
+> >
+> > Squashed, I'm not sure because the patches were created to satisfy the
+> > bisectability and travis-ci, if you find any please feel to comment.
+> > About the commit count, I have mentioned in v1, the idea of having
+> > many commits in one series to have all lpddr4(-related) changes in one
+> > place and also all the commit has incremental approach of supporting
+> > rank detection and lpddr4. If require I'm open to sent next versions
+> > as multiple series, no problem on that.
+> >
 >
-> Specification recommends many contradictory things without explicit
-> prioritization, at least I have not found it.
+> I strongly agree with Vasily, and I don't think multiple series makes it any
+> better.
 >
-> So we should relay on our intuition.
+> What's the reason for having two commits for:
 >
-> I guess that with auto-cts N we should follow recommendation - I guess
-> most sinks have been better tested with recommended values.
->
-> So what with non-auto-cts case:
->
-> 1. How many devices do not have auto-cts? how many alternative TMDS
-> clocks we have? Maybe it is theoretical problem.
->
-> 2. Alternating CTS in software is possible, but quite
-> complicated/annoying, but at least it will follow recommendation :)
->
->
-> Regards
->
-> Andrzej
->
->
->>
->>>> 2. The new table has values from the HDMI spec for 297 MHz and 594
->>>> MHz.
->>>>
->>>> 3. There is now code to try to come up with a more idea N/CTS for
->>>> clock rates that aren't in the table.  This code is a bit slow because
->>>> it iterates over every possible value of N and picks the best one, but
->>>> it should make a good fallback.
->>>>
->>>> NOTES:
->>>> - The oddest part of this patch comes about because computing the
->>>>   ideal N/CTS means knowing the _exact_ clock rate, not a rounded
->>>>   version of it.  The drm framework makes this harder by rounding
->>>>   rates to kHz, but even if it didn't there might be cases where the
->>>>   ideal rate could only be calculated if we knew the real
->>>>   (non-integral) rate.  This means that in cases where we know (or
->>>>   believe) that the true rate is something other than the rate we are
->>>>   told by drm.
->>>> - This patch makes much less of a difference after the patch
->>>>   ("drm/bridge: dw-hdmi: Use automatic CTS generation mode when using
->>>>   non-AHB audio"), at least if you're using I2S audio.  The main goal
->>>>   of picking a good N is to make it possible to get a nice integral
->>>>   CTS value, but if CTS is automatic then that's much less critical.
->>> As I said above HDMI recommendations are different from those from your
->>> patch. Please elaborate why?
->>>
->>> Btw I've seen your old patches introducing recommended N/CTS calculation
->>> helpers in HDMI framework, unfortunately abandoned due to lack of interest.
->>>
->>> Maybe resurrecting them would be a good idea, with assumption there will
->>> be users :)
->> I have old patches introducing this into the HDMI framework?  I don't
->> remember them / can't find them.  Can you provide a pointer?
+> "ram: rk3399: Set lpddr4 MR3" and "ram: rk3399: Set lpddr4 MR12" ?
 
+These are individual lpddr4 set rate registers to support, each one is
+independent on it' own initialization and more over on the whole, it
+is critical to review.
 
-And forgot answer this:
+>
+> Or splitting all the "ram: rk3399: Add ... macro" ?
 
-My mistake the patches were by Arnaud Pouliquen[1].
+You mean the patches 13 to 20 same like above each one has it's own
+meaning. It is not meaningful to squash them all.
 
-[1]: https://patchwork.kernel.org/patch/8906791/
+>
+> What do you loose if you merge the patches into one?
+>
+> I must confess I am very surprised, and don't really understand what do you
+> gain with this excessive split. Normally, when we are adding a new feature,
+> we normally don't need many patches, so it's the other way around, really.
+>
+> Bisectability is about not breaking existing support, but because the feature
+> is new, normally this is easy.
 
+Look, like the whole confusion seems to be because of more patches in
+one series and the cover-letter states that it support lpddr4. I
+understand it now, will send the relevant changes in next version
+accordingly, if require I will squash if any.
 
-Regards
-
-Andrzej
-
-
-
->>
->> -Doug
->>
->>
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+Jagan.
