@@ -1,57 +1,61 @@
-From: Vivek Unune <npcomplete13-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Add support for Hugsun X99 TV Box
-Date: Thu, 27 Jun 2019 09:45:55 -0400
-Message-ID: <20190627134555.GA25086@ubuntu>
-References: <2273961.GTPgWWlV5T@phil>
- <20190621205308.5177-1-npcomplete13@gmail.com>
- <3247989.aGYRIomCNH@phil>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: [GIT PULL] Immutable branch between MFD, Clk, Regulator and RTC due
+ for the v5.3 merge window
+Date: Thu, 27 Jun 2019 14:59:46 +0100
+Message-ID: <20190627135946.GI2000@dell>
+References: <20190621103258.8154-1-tony.xie@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <3247989.aGYRIomCNH@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+In-Reply-To: <20190621103258.8154-1-tony.xie@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tony Xie <tony.xie@rock-chips.com>
+Cc: heiko@sntech.de, broonie@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, a.zummo@towertech.it, alexandre.belloni@bootlin.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, chenjh@rock-chips.com, xsf@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jun 27, 2019 at 12:38:25AM +0200, Heiko Stuebner wrote:
-> Am Freitag, 21. Juni 2019, 22:53:08 CEST schrieb Vivek Unune:
-> > Add devicetree support for Hugsun X99 TV Box based on RK3399 SoC
-> > 
-> > Tested with LibreElec running kernel v5.1.2.
-> > Following peripherals tested and work:
-> > 
-> > Peripheral works:
-> > - UART2 debug
-> > - eMMC
-> > - USB 3.0 port
-> > - USB 2.0 port
-> > - sdio, sd-card
-> > - HDMI
-> > - Ethernet
-> > - WiFi/BT
-> > 
-> > Not tested:
-> > - Type-C port
-> > - OPTICAL
-> > - IR
-> > 
-> > Signed-off-by: Vivek Unune <npcomplete13-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> 
-> applied for 5.3 after doing some reordering to make things
-> alphabetical.
-> 
-> Heiko
-> 
-> 
-Thanks Heiko!
+Enjoy!
+
+The following changes since commit a188339ca5a396acc588e5851ed7e19f66b0ebd9:
+
+  Linux 5.2-rc1 (2019-05-19 15:47:09 -0700)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git ib-mfd-clk-regulator-rtc-v5.3
+
+for you to fetch changes up to 8ed14401974830f316a419b073e58ef75a473a63:
+
+  clk: RK808: Add RK809 and RK817 support. (2019-06-27 14:57:59 +0100)
+
+----------------------------------------------------------------
+Immutable branch between MFD, Clk, Regulator and RTC due for the v5.3 merge window
+
+----------------------------------------------------------------
+Heiko Stuebner (1):
+      regulator: rk808: Add RK809 and RK817 support.
+
+Tony Xie (4):
+      mfd: rk808: Add RK817 and RK809 support
+      dt-bindings: mfd: rk808: Add binding information for RK809 and RK817.
+      rtc: rk808: Add RK809 and RK817 support.
+      clk: RK808: Add RK809 and RK817 support.
+
+ Documentation/devicetree/bindings/mfd/rk808.txt |  44 ++
+ drivers/clk/Kconfig                             |   9 +-
+ drivers/clk/clk-rk808.c                         |  64 ++-
+ drivers/mfd/Kconfig                             |   6 +-
+ drivers/mfd/rk808.c                             | 192 ++++++-
+ drivers/regulator/Kconfig                       |   4 +-
+ drivers/regulator/rk808-regulator.c             | 646 +++++++++++++++++++++++-
+ drivers/rtc/Kconfig                             |   4 +-
+ drivers/rtc/rtc-rk808.c                         |  68 ++-
+ include/linux/mfd/rk808.h                       | 175 +++++++
+ 10 files changed, 1156 insertions(+), 56 deletions(-)
+
+-- 
+Lee Jones [李琼斯]
+Linaro Services Technical Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
