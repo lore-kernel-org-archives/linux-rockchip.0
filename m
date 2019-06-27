@@ -1,52 +1,42 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2] arm64: rockchip: dts: sapphire: Fix USB3 Type-C.
-Date: Thu, 27 Jun 2019 16:43:14 +0200
-Message-ID: <1797006.pDfq8pCYFf@phil>
-References: <9087476.qcbMaj4rIx@phil> <20190627131228.5223-1-vicencb@gmail.com>
+From: Nathan Huckleberry <nhuck@google.com>
+Subject: [PATCH] clk: rockchip: Fix -Wunused-const-variable
+Date: Thu, 27 Jun 2019 15:22:20 -0700
+Message-ID: <20190627222220.89175-1-nhuck@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190627131228.5223-1-vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, William wu <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: mturquette@baylibre.com, sboyd@kernel.org, heiko@sntech.de, andy.yan@rock-chips.com, zhangqing@rock-chips.com
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Nathan Huckleberry <nhuck@google.com>, clang-built-linux@googlegroups.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 27. Juni 2019, 15:12:28 CEST schrieb Vicente Bergas:
-> Before this patch, the Type-C port on the Sapphire board is dead.
-> If setting the 'regulator-always-on' property to 'vcc5v0_typec0'
-> then the port works for about 4 seconds at start-up. This is a
-> sample trace with a memory stick plugged in:
-> 1.- The memory stick LED lights on and kernel reports:
-> [    4.782999] scsi 0:0:0:0: Direct-Access USB DISK PMAP PQ: 0 ANSI: 4
-> [    5.904580] sd 0:0:0:0: [sdb] 3913344 512-byte logical blocks: (2.00 GB/1.87 GiB)
-> [    5.906860] sd 0:0:0:0: [sdb] Write Protect is off
-> [    5.908973] sd 0:0:0:0: [sdb] Mode Sense: 23 00 00 00
-> [    5.909122] sd 0:0:0:0: [sdb] No Caching mode page found
-> [    5.911214] sd 0:0:0:0: [sdb] Assuming drive cache: write through
-> [    5.951585]  sdb: sdb1
-> [    5.954816] sd 0:0:0:0: [sdb] Attached SCSI removable disk
-> 2.- 4 seconds later the memory stick LED lights off and kernel reports:
-> [    9.082822] phy phy-ff770000.syscon:usb2-phy@e450.2: charger = USB_DCP_CHARGER
-> 3.- After a minute the kernel reports:
-> [   71.666761] usb 5-1: USB disconnect, device number 2
-> It has been checked that, although the LED is off, VBUS is present.
-> 
-> If, instead, the dr_mode is changed to host and the phy-supply changed
-> accordingly, then it works. It has only been tested in host mode.
-> 
-> Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Clang produces the following warning
 
-applied for 5.3
+drivers/clk/rockchip/clk-rv1108.c:125:7: warning: unused variable
+'mux_pll_src_3plls_p' [-Wunused-const-variable]
+PNAME(mux_pll_src_3plls_p)      = { "apll", "gpll", "dpll" };
 
-Thanks
-Heiko
+Looks like this variable was never used. Deleting it to remove the
+warning.
+
+Cc: clang-built-linux@googlegroups.com
+Link: https://github.com/ClangBuiltLinux/linux/issues/524
+Signed-off-by: Nathan Huckleberry <nhuck@google.com>
+---
+ drivers/clk/rockchip/clk-rv1108.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/clk/rockchip/clk-rv1108.c b/drivers/clk/rockchip/clk-rv1108.c
+index 96cc6af5632c..5947d3192866 100644
+--- a/drivers/clk/rockchip/clk-rv1108.c
++++ b/drivers/clk/rockchip/clk-rv1108.c
+@@ -122,7 +122,6 @@ PNAME(mux_usb480m_pre_p)	= { "usbphy", "xin24m" };
+ PNAME(mux_hdmiphy_phy_p)	= { "hdmiphy", "xin24m" };
+ PNAME(mux_dclk_hdmiphy_pre_p)	= { "dclk_hdmiphy_src_gpll", "dclk_hdmiphy_src_dpll" };
+ PNAME(mux_pll_src_4plls_p)	= { "dpll", "gpll", "hdmiphy", "usb480m" };
+-PNAME(mux_pll_src_3plls_p)	= { "apll", "gpll", "dpll" };
+ PNAME(mux_pll_src_2plls_p)	= { "dpll", "gpll" };
+ PNAME(mux_pll_src_apll_gpll_p)	= { "apll", "gpll" };
+ PNAME(mux_aclk_peri_src_p)	= { "aclk_peri_src_gpll", "aclk_peri_src_dpll" };
+-- 
+2.22.0.410.gd8fdbe21b5-goog
