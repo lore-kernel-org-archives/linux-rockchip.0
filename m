@@ -1,38 +1,35 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 01/15] dt-bindings: display: rockchip-lvds: Remove
- panel references
-Date: Thu, 27 Jun 2019 10:37:03 +0200
-Message-ID: <2294598.EvZ579e8H0@phil>
-References: <20190624215649.8939-1-robh@kernel.org>
- <20190624215649.8939-2-robh@kernel.org>
+Subject: Re: [PATCH 0/4] hdmi on rk3229
+Date: Thu, 27 Jun 2019 12:40:31 +0200
+Message-ID: <1889663.L4fA2jsj6U@phil>
+References: <20190614165454.13743-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190624215649.8939-2-robh@kernel.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Rob Herring <robh@kernel.org>
-Cc: devicetree@vger.kernel.org, Maxime Ripard <maxime.ripard@bootlin.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sam Ravnborg <sam@ravnborg.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190614165454.13743-1-heiko@sntech.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, justin.swartz@risingedge.co.za, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, mturquette@baylibre.com, sboyd@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTW9udGFnLCAyNC4gSnVuaSAyMDE5LCAyMzo1NjozNSBDRVNUIHNjaHJpZWIgUm9iIEhlcnJp
-bmc6Cj4gVGhlIHBhbmVsIGJpbmRpbmdzIGFyZSBvdXRzaWRlIHRoZSBzY29wZSBvZiB0aGUgUm9j
-a2NoaXAgTFZEUyBpbnRlcmZhY2UKPiBiaW5kaW5nLiBUaGUgcmVmZXJlbmNlcyBhcmUgYWJvdXQg
-dG8gY2hhbmdlIHRvbywgc28gcmF0aGVyIHRoYW4gdXBkYXRlCj4gdGhlbSBqdXN0IGRyb3AgdGhl
-IHNlY3Rpb24gb24gdGhlIHBhbmVsIGJpbmRpbmdzLgo+IAo+IENjOiBTYW5keSBIdWFuZyA8aGpj
-QHJvY2stY2hpcHMuY29tPgo+IENjOiAiSGVpa28gU3TDvGJuZXIiIDxoZWlrb0BzbnRlY2guZGU+
-Cj4gQ2M6IE1heGltZSBSaXBhcmQgPG1heGltZS5yaXBhcmRAYm9vdGxpbi5jb20+Cj4gQ2M6IGRy
-aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBDYzogbGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwo+IFNpZ25lZC1vZmYtYnk6IFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5v
-cmc+CgphcHBsaWVkIHRvIGRybS1taXNjLW5leHQKClRoYW5rcwpIZWlrbwoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
-c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNr
-dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+Am Freitag, 14. Juni 2019, 18:54:50 CEST schrieb Heiko Stuebner:
+> The hdmiphy needs its clock reparented to the actual hdmiphy-pll
+> that gets generated in the hdmiphy itself.
+> 
+> This incorporates adapted versions of Justin's original patches
+> and also the needed clock adaptions to make it possible to
+> reparent the hdmiphy clock.
+> 
+> Heiko Stuebner (2):
+>   clk: rockchip: add clock id for hdmi_phy special clock
+>   clk: rockchip: export HDMIPHY clock
+> 
+> Justin Swartz (2):
+>   ARM: dts: rockchip: add display nodes for rk322x
+>   ARM: dts: rockchip: fix vop iommu-cells on rk322x
+
+applied all 4 to relevant branches for 5.3
+
+Cheers
+Heiko
