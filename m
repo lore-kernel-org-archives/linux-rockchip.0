@@ -1,217 +1,81 @@
-From: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 22/22] drm/radeon: Provide ddc symlink in connector sysfs
- directory
-Date: Fri, 28 Jun 2019 18:01:36 +0200
-Message-ID: <dd1312ee84adef0161ebeaaf3c0448b1a1371919.1561735433.git.andrzej.p@collabora.com>
-References: <3fb19371-db7d-f9dc-31a7-1ccd126f6784@collabora.com>
- <cover.1561735433.git.andrzej.p@collabora.com>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v5 0/7] drm/panel: simple: Add mode support to devicetree
+Date: Fri, 28 Jun 2019 10:10:09 -0600
+Message-ID: <CAL_JsqJGtUTpJL+SDEKi09aDT4yDzY4x9KwYmz08NaZcn=nHfA@mail.gmail.com>
+References: <20190401171724.215780-1-dianders@chromium.org>
+ <20190626130007.GE23428@ravnborg.org>
+ <CAD=FV=U4UU8q+CS76uuuGUP=EVnE6+BTUf8U=j7uwfczNgkrZw@mail.gmail.com>
+ <CAD=FV=Vi2C7s2oWBDD0n+HK=_SuBYhRM9saMK-y6Qa0+k-g17w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <cover.1561735433.git.andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-In-Reply-To: <cover.1561735433.git.andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-References: <cover.1561735433.git.andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Cc: "Y.C. Chen" <yc_chen-SAlXDmAnmOAqDJ6do+/SaQ@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?q?Ville=20Syrj=C3=A4l=C3=A4?= <ville.syrjala-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "David (ChunMing) Zhou" <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>David
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAD=FV=Vi2C7s2oWBDD0n+HK=_SuBYhRM9saMK-y6Qa0+k-g17w@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Doug Anderson <dianders@chromium.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Brian Norris <briannorris@chromium.org>, David Airlie <airlied@linux.ie>, Viresh Kumar <viresh.kumar@linaro.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Ezequiel Garcia <ezequiel@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thierry Reding <thierry.reding@gmail.com>, Sean Paul <seanpaul@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Boris Brezillon <boris.brezillon@collabora.com>, =?UTF-8?Q?Enric_Balletb=C3=B2?= <enric.balletbo@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Sam Ravnborg <sam@ravnborg.org>, Matthias Kaehlcke <mka@chromium.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Use the ddc pointer provided by the generic connector.
-
-Signed-off-by: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
- drivers/gpu/drm/radeon/radeon_connectors.c | 82 +++++++++++++++++-----
- 1 file changed, 63 insertions(+), 19 deletions(-)
-
-diff --git a/drivers/gpu/drm/radeon/radeon_connectors.c b/drivers/gpu/drm/radeon/radeon_connectors.c
-index c60d1a44d22a..a876e51d275a 100644
---- a/drivers/gpu/drm/radeon/radeon_connectors.c
-+++ b/drivers/gpu/drm/radeon/radeon_connectors.c
-@@ -1946,11 +1946,15 @@ radeon_add_atom_connector(struct drm_device *dev,
- 		radeon_dig_connector->igp_lane_info = igp_lane_info;
- 		radeon_connector->con_priv = radeon_dig_connector;
- 		if (i2c_bus->valid) {
--			radeon_connector->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
--			if (radeon_connector->ddc_bus)
-+			struct radeon_connector *rcn = radeon_connector;
-+
-+			rcn->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
-+			if (rcn->ddc_bus) {
- 				has_aux = true;
--			else
-+				connector->ddc = &rcn->ddc_bus->adapter;
-+			} else {
- 				DRM_ERROR("DP: Failed to assign ddc bus! Check dmesg for i2c errors.\n");
-+			}
- 		}
- 		switch (connector_type) {
- 		case DRM_MODE_CONNECTOR_VGA:
-@@ -2045,9 +2049,13 @@ radeon_add_atom_connector(struct drm_device *dev,
- 			drm_connector_init(dev, &radeon_connector->base, &radeon_vga_connector_funcs, connector_type);
- 			drm_connector_helper_add(&radeon_connector->base, &radeon_vga_connector_helper_funcs);
- 			if (i2c_bus->valid) {
--				radeon_connector->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
--				if (!radeon_connector->ddc_bus)
-+				struct radeon_connector *rcn = radeon_connector;
-+
-+				rcn->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
-+				if (!rcn->ddc_bus)
- 					DRM_ERROR("VGA: Failed to assign ddc bus! Check dmesg for i2c errors.\n");
-+				else
-+					connector->ddc = &rcn->ddc_bus->adapter;
- 			}
- 			radeon_connector->dac_load_detect = true;
- 			drm_object_attach_property(&radeon_connector->base.base,
-@@ -2070,9 +2078,13 @@ radeon_add_atom_connector(struct drm_device *dev,
- 			drm_connector_init(dev, &radeon_connector->base, &radeon_vga_connector_funcs, connector_type);
- 			drm_connector_helper_add(&radeon_connector->base, &radeon_vga_connector_helper_funcs);
- 			if (i2c_bus->valid) {
--				radeon_connector->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
--				if (!radeon_connector->ddc_bus)
-+				struct radeon_connector *rcn = radeon_connector;
-+
-+				rcn->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
-+				if (!rcn->ddc_bus)
- 					DRM_ERROR("DVIA: Failed to assign ddc bus! Check dmesg for i2c errors.\n");
-+				else
-+					connector->ddc = &rcn->ddc_bus->adapter;
- 			}
- 			radeon_connector->dac_load_detect = true;
- 			drm_object_attach_property(&radeon_connector->base.base,
-@@ -2101,9 +2113,13 @@ radeon_add_atom_connector(struct drm_device *dev,
- 			drm_connector_init(dev, &radeon_connector->base, &radeon_dvi_connector_funcs, connector_type);
- 			drm_connector_helper_add(&radeon_connector->base, &radeon_dvi_connector_helper_funcs);
- 			if (i2c_bus->valid) {
--				radeon_connector->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
--				if (!radeon_connector->ddc_bus)
-+				struct radeon_connector *rcn = radeon_connector;
-+
-+				rcn->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
-+				if (!rcn->ddc_bus)
- 					DRM_ERROR("DVI: Failed to assign ddc bus! Check dmesg for i2c errors.\n");
-+				else
-+					connector->ddc = &rcn->ddc_bus->adapter;
- 			}
- 			subpixel_order = SubPixelHorizontalRGB;
- 			drm_object_attach_property(&radeon_connector->base.base,
-@@ -2158,9 +2174,13 @@ radeon_add_atom_connector(struct drm_device *dev,
- 			drm_connector_init(dev, &radeon_connector->base, &radeon_dvi_connector_funcs, connector_type);
- 			drm_connector_helper_add(&radeon_connector->base, &radeon_dvi_connector_helper_funcs);
- 			if (i2c_bus->valid) {
--				radeon_connector->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
--				if (!radeon_connector->ddc_bus)
-+				struct radeon_connector *rcn = radeon_connector;
-+
-+				rcn->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
-+				if (!rcn->ddc_bus)
- 					DRM_ERROR("HDMI: Failed to assign ddc bus! Check dmesg for i2c errors.\n");
-+				else
-+					connector->ddc = &rcn->ddc_bus->adapter;
- 			}
- 			drm_object_attach_property(&radeon_connector->base.base,
- 						      rdev->mode_info.coherent_mode_property,
-@@ -2208,11 +2228,15 @@ radeon_add_atom_connector(struct drm_device *dev,
- 			drm_connector_init(dev, &radeon_connector->base, &radeon_dp_connector_funcs, connector_type);
- 			drm_connector_helper_add(&radeon_connector->base, &radeon_dp_connector_helper_funcs);
- 			if (i2c_bus->valid) {
--				radeon_connector->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
--				if (radeon_connector->ddc_bus)
-+				struct radeon_connector *rcn = radeon_connector;
-+
-+				rcn->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
-+				if (rcn->ddc_bus) {
- 					has_aux = true;
--				else
-+					connector->ddc = &rcn->ddc_bus->adapter;
-+				} else {
- 					DRM_ERROR("DP: Failed to assign ddc bus! Check dmesg for i2c errors.\n");
-+				}
- 			}
- 			subpixel_order = SubPixelHorizontalRGB;
- 			drm_object_attach_property(&radeon_connector->base.base,
-@@ -2258,11 +2282,15 @@ radeon_add_atom_connector(struct drm_device *dev,
- 			drm_connector_init(dev, &radeon_connector->base, &radeon_edp_connector_funcs, connector_type);
- 			drm_connector_helper_add(&radeon_connector->base, &radeon_dp_connector_helper_funcs);
- 			if (i2c_bus->valid) {
--				radeon_connector->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
--				if (radeon_connector->ddc_bus)
-+				struct radeon_connector *rcn = radeon_connector;
-+
-+				rcn->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
-+				if (rcn->ddc_bus) {
- 					has_aux = true;
--				else
-+					connector->ddc = &rcn->ddc_bus->adapter;
-+				} else {
- 					DRM_ERROR("DP: Failed to assign ddc bus! Check dmesg for i2c errors.\n");
-+				}
- 			}
- 			drm_object_attach_property(&radeon_connector->base.base,
- 						      dev->mode_config.scaling_mode_property,
-@@ -2297,9 +2325,13 @@ radeon_add_atom_connector(struct drm_device *dev,
- 			drm_connector_init(dev, &radeon_connector->base, &radeon_lvds_connector_funcs, connector_type);
- 			drm_connector_helper_add(&radeon_connector->base, &radeon_lvds_connector_helper_funcs);
- 			if (i2c_bus->valid) {
--				radeon_connector->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
--				if (!radeon_connector->ddc_bus)
-+				struct radeon_connector *rcn = radeon_connector;
-+
-+				rcn->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
-+				if (!rcn->ddc_bus)
- 					DRM_ERROR("LVDS: Failed to assign ddc bus! Check dmesg for i2c errors.\n");
-+				else
-+					connector->ddc = &rcn->ddc_bus->adapter;
- 			}
- 			drm_object_attach_property(&radeon_connector->base.base,
- 						      dev->mode_config.scaling_mode_property,
-@@ -2384,6 +2416,9 @@ radeon_add_legacy_connector(struct drm_device *dev,
- 			radeon_connector->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
- 			if (!radeon_connector->ddc_bus)
- 				DRM_ERROR("VGA: Failed to assign ddc bus! Check dmesg for i2c errors.\n");
-+			else
-+				connector->ddc =
-+					&radeon_connector->ddc_bus->adapter;
- 		}
- 		radeon_connector->dac_load_detect = true;
- 		drm_object_attach_property(&radeon_connector->base.base,
-@@ -2401,6 +2436,9 @@ radeon_add_legacy_connector(struct drm_device *dev,
- 			radeon_connector->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
- 			if (!radeon_connector->ddc_bus)
- 				DRM_ERROR("DVIA: Failed to assign ddc bus! Check dmesg for i2c errors.\n");
-+			else
-+				connector->ddc =
-+					&radeon_connector->ddc_bus->adapter;
- 		}
- 		radeon_connector->dac_load_detect = true;
- 		drm_object_attach_property(&radeon_connector->base.base,
-@@ -2419,6 +2457,9 @@ radeon_add_legacy_connector(struct drm_device *dev,
- 			radeon_connector->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
- 			if (!radeon_connector->ddc_bus)
- 				DRM_ERROR("DVI: Failed to assign ddc bus! Check dmesg for i2c errors.\n");
-+			else
-+				connector->ddc =
-+					&radeon_connector->ddc_bus->adapter;
- 		}
- 		if (connector_type == DRM_MODE_CONNECTOR_DVII) {
- 			radeon_connector->dac_load_detect = true;
-@@ -2464,6 +2505,9 @@ radeon_add_legacy_connector(struct drm_device *dev,
- 			radeon_connector->ddc_bus = radeon_i2c_lookup(rdev, i2c_bus);
- 			if (!radeon_connector->ddc_bus)
- 				DRM_ERROR("LVDS: Failed to assign ddc bus! Check dmesg for i2c errors.\n");
-+			else
-+				connector->ddc =
-+					&radeon_connector->ddc_bus->adapter;
- 		}
- 		drm_object_attach_property(&radeon_connector->base.base,
- 					      dev->mode_config.scaling_mode_property,
--- 
-2.17.1
+T24gRnJpLCBKdW4gMjgsIDIwMTkgYXQgOTo1NSBBTSBEb3VnIEFuZGVyc29uIDxkaWFuZGVyc0Bj
+aHJvbWl1bS5vcmc+IHdyb3RlOgo+Cj4gSGksCj4KPiBPbiBXZWQsIEp1biAyNiwgMjAxOSBhdCA3
+OjQxIEFNIERvdWcgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4gd3JvdGU6Cj4gPgo+
+ID4gSGksCj4gPgo+ID4gT24gV2VkLCBKdW4gMjYsIDIwMTkgYXQgNjowMCBBTSBTYW0gUmF2bmJv
+cmcgPHNhbUByYXZuYm9yZy5vcmc+IHdyb3RlOgo+ID4gPgo+ID4gPiBIaSBEb3VnbGFzLgo+ID4g
+Pgo+ID4gPiBPbiBNb24sIEFwciAwMSwgMjAxOSBhdCAxMDoxNzoxN0FNIC0wNzAwLCBEb3VnbGFz
+IEFuZGVyc29uIHdyb3RlOgo+ID4gPiA+IEknbSByZXZpdmluZyBTZWFuIFBhdWwncyBvbGQgcGF0
+Y2hzZXQgdG8gZ2V0IG1vZGUgc3VwcG9ydCBpbiBkZXZpY2UKPiA+ID4gPiB0cmVlLiAgVGhlIGNv
+dmVyIGxldHRlciBmb3IgaGlzIHYzIGlzIGF0Ogo+ID4gPiA+IGh0dHBzOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL2FyY2hpdmVzL2RyaS1kZXZlbC8yMDE4LUZlYnJ1YXJ5LzE2NTE2Mi5odG1sCj4g
+PiA+ID4KPiA+ID4gPiBObyBjb2RlIGlzIGRpZmZlcmVudCBiZXR3ZWVuIHY0IGFuZCB2NSwganVz
+dCBjb21taXQgbWVzc2FnZXMgYW5kIHRleHQKPiA+ID4gPiBpbiB0aGUgYmluZGluZ3MuCj4gPiA+
+ID4KPiA+ID4gPiBJJ3ZlIHB1bGxlZCB0b2dldGhlciB0aGUgcGF0Y2hlcyB0aGF0IGRpZG4ndCBs
+YW5kIGluIHYzLCBhZGRyZXNzZWQKPiA+ID4gPiBvdXRzdGFuZGluZyBmZWVkYmFjaywgYW5kIHJl
+cG9zdGVkLiAgQXRvcCB0aGVtIEkndmUgYWRkZWQgcGF0Y2hlcyBmb3IKPiA+ID4gPiByazMyODgt
+dmV5cm9uLWNocm9tZWJvb2sgKHVzZWQgZm9yIGphcSwgamVycnksIG1pZ2h0eSwgc3BlZWR5KSBh
+bmQKPiA+ID4gPiByazMyODgtdmVyeW9uLW1pbm5pZS4KPiA+ID4gPgo+ID4gPiA+IFBsZWFzZSBs
+ZXQgbWUga25vdyBob3cgdGhleSBsb29rLgo+ID4gPiA+Cj4gPiA+ID4gSW4gZ2VuZXJhbCBJIGhh
+dmUgYWRkZWQgcGVvcGxlIHRvIHRoZSB3aG9sZSBzZXJpZXMgd2hvIEkgdGhpbmsgd291bGQKPiA+
+ID4gPiBsaWtlIHRoZSB3aG9sZSBzZXJpZXMgYW5kIHRoZW4gbGV0IGdldF9tYWludGFpbmVyIHBp
+Y2sgZXh0cmEgcGVvcGxlIGl0Cj4gPiA+ID4gdGhpbmtzIGFyZSByZWxldmFudCB0byBlYWNoIGlu
+ZGl2aWR1YWwgcGF0Y2guICBJZiBJIHNlZSB5b3UgcmVzcG9uZCB0bwo+ID4gPiA+IGFueSBvZiB0
+aGUgcGF0Y2hlcyBpbiB0aGUgc2VyaWVzLCB0aG91Z2gsIEknbGwgYWRkIHlvdSB0byB0aGUgd2hv
+bGUKPiA+ID4gPiBzZXJpZXMgQ2MgbGlzdCBuZXh0IHRpbWUuCj4gPiA+ID4KPiA+ID4gPiBDaGFu
+Z2VzIGluIHY1Ogo+ID4gPiA+IC0gUmVtb3ZlZCBiaXQgYWJvdXQgT1MgbWF5IGlnbm9yZSAoUm9i
+L0V6ZXF1aWVsKQo+ID4gPiA+IC0gQWRkZWQgSGVpa28ncyBUZXN0ZWQtYnkKPiA+ID4gPiAtIEl0
+J3Mgbm90IGp1c3QgamVycnksIGl0J3MgbW9zdCByazMyODggQ2hyb21lYm9va3MgKEhlaWtvKQo+
+ID4gPgo+ID4gPiBXaGF0IGFyZSB0aGUgcGxhbnMgdG8gbW92ZSBmb3J3YXJkIHdpdGggdGhpcz8K
+PiA+ID4gT3IgZGlkIHlvdSBkcm9wIHRoZSB3aG9sZSBpZGVhIGFnYWluPwo+ID4KPiA+IEF0IHRo
+ZSBtb21lbnQgSSdtIGJsb2NrZWQgb24gVGhpZXJyeSByZXNwb25kaW5nLCBlaXRoZXIgdGFraW5n
+IHRoZQo+ID4gcGF0Y2ggb3IgdGVsbGluZyBtZSB3aGF0IEkgbmVlZCB0byBkbyB0byBmaXggaXQu
+ICBJIHNhdyBTZWFuIFBhdWwgcGluZwo+ID4gVGhpZXJyeSBvbiBJUkMgb24gSnVuZSAzcmQgYW5k
+IGFzIGZhciBhcyBJIGNvdWxkIHRlbGwgdGhlcmUgd2FzIG5vCj4gPiByZXNwb25zZS4KPiA+Cj4g
+PiBodHRwczovL3Blb3BsZS5mcmVlZGVza3RvcC5vcmcvfmNicmlsbC9kcmktbG9nLz9jaGFubmVs
+PWRyaS1kZXZlbCZoaWdobGlnaHRfbmFtZXM9JmRhdGU9MjAxOS0wNi0wMyZzaG93X2h0bWw9dHJ1
+ZQo+ID4KPiA+IC4uLmFuZCBhcyB5b3UgY2FuIHNlZSBIZWlrbyBwaW5nZWQgdGhpcyB0aHJlYWQg
+b24gSnVuZSAxNHRoLgo+ID4KPiA+IFRoaWVycnk6IGNhbiB5b3UgaGVscCBnaXZlIHVzIHNvbWUg
+ZGlyZWN0aW9uPyAgQXJlIHlvdSB1bmludGVyZXN0ZWQgaW4KPiA+IHJldmlld2luZyB0aGVtIGFu
+ZCB3b3VsZCBwcmVmZXIgdGhhdCBJIGZpbmQgc29tZW9uZSB0byBsYW5kIHRoZW0gaW4KPiA+IGRy
+bS1taXNjIGRpcmVjdGx5Pwo+Cj4gU2FtOiBPaCEgIEkgaGFkbid0IG5vdGljZWQgdGhhdCB5b3Un
+dmUgYmVlbiBhZGRlZCBhcyBhIHBhbmVsCj4gbWFpbnRhaW5lciBpbiBjb21taXQgZWYwZGI5NGY5
+NGEwICgiTUFJTlRBSU5FUlM6IEFkZCBTYW0gYXMgcmV2aWV3ZXIKPiBmb3IgZHJtL3BhbmVsIiku
+ICBEb2VzIHRoYXQgbWVhbiB5b3UgYXJlIGFibGUgdG8gcHJvdmlkZSBzb21lIGFkdmljZQo+IGZv
+ciBob3cgdG8gbGFuZCB0aGlzIHNlcmllcz8gIEFzIGZhciBhcyBJIGtub3cgZXZlcnl0aGluZyBp
+cyBpbiBvcmRlcgo+IGZvciBpdCB0byBsYW5kLCBidXQgaWYgeW91IGFyZSBhd2FyZSBvZiBzb21l
+dGhpbmcgSSBuZWVkIHRvIGRvIHRvIHNwaW4KPiBpdCB0aGVuIHBsZWFzZSBsZXQgbWUga25vdyEK
+CkJUVywgYXQgbGVhc3QgZm9yIHRoZSBiaW5kaW5nLCB0aGlzIHdpbGwgZ2V0IGltcGxpY2l0bHkg
+c3VwcG9ydGVkIGluCnRoZSBzY2hlbWEgY29udmVyc2lvblsxXSBhcyBzaW1wbGUtcGFuZWwgYXMg
+YSBiaW5kaW5nIGlzIGdvbmUgYW5kCnBhbmVsLWNvbW1vbiBhbHJlYWR5IGhhZCB0aW1pbmcgbm9k
+ZSBkZWZpbmVkLiBBIHNjaGVtYSBmb3IgdGhlIHRpbWluZwpub2RlIGlzIHN0aWxsIG5lZWRlZCB0
+aG91Z2ggKGhpbnQgOikgKS4KClJvYgoKWzFdIGh0dHBzOi8vcGF0Y2h3b3JrLm96bGFicy5vcmcv
+cGF0Y2gvMTEyMTUzOC8KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVs
