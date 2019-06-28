@@ -1,36 +1,110 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH v5 0/7] drm/panel: simple: Add mode support to devicetree
-Date: Fri, 28 Jun 2019 19:13:42 +0200
-Message-ID: <20190628171342.GA2238@ravnborg.org>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH v5 1/7] dt-bindings: Add panel-timing subnode to
+ simple-panel
+Date: Sat, 29 Jun 2019 01:47:47 +0200
+Message-ID: <20190628234747.GA1189@mithrandir>
 References: <20190401171724.215780-1-dianders@chromium.org>
- <20190626130007.GE23428@ravnborg.org>
- <CAD=FV=U4UU8q+CS76uuuGUP=EVnE6+BTUf8U=j7uwfczNgkrZw@mail.gmail.com>
- <CAD=FV=Vi2C7s2oWBDD0n+HK=_SuBYhRM9saMK-y6Qa0+k-g17w@mail.gmail.com>
+ <20190401171724.215780-2-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAD=FV=Vi2C7s2oWBDD0n+HK=_SuBYhRM9saMK-y6Qa0+k-g17w@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, David Airlie <airlied@linux.ie>, Viresh Kumar <viresh.kumar@linaro.org>, Brian Norris <briannorris@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Boris Brezillon <boris.brezillon@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Enric =?iso-8859-1?Q?Balletb=F2?= <enric.balletbo@collabora.com>, Ezequiel Garcia <eze>
+Content-Type: multipart/mixed; boundary="===============0352765055=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190401171724.215780-2-dianders@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Boris Brezillon <boris.brezillon@collabora.com>, Sean Paul <seanpaul@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?utf-8?B?U3TDqXBoYW5l?= Marchesin <marcheu@chromium.org>, Enric =?utf-8?B?QmFsbGV0YsOy?= <enric.balletbo@collabora.com>, Rob Herring <robh+dt@kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>, mka@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug.
 
-> Sam: Oh!  I hadn't noticed that you've been added as a panel
-> maintainer in commit ef0db94f94a0 ("MAINTAINERS: Add Sam as reviewer
-> for drm/panel").  Does that mean you are able to provide some advice
-> for how to land this series?
-Reviewer only, not maintainer....
+--===============0352765055==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="4Ckj6UjgE2iN1+kY"
+Content-Disposition: inline
 
-It is on my TODO list for the weekend to go through the patch set in
-details and provide feedback. I have read them before, but I miss to do
-a more detailed read through.
 
-But I cannot apply this unless Thierry or one of the DRM maintainers
-ack it.
-We simply need someone with a better general knowledge of DRM to ack it
-than I have.
+--4Ckj6UjgE2iN1+kY
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-	Sam
+On Mon, Apr 01, 2019 at 10:17:18AM -0700, Douglas Anderson wrote:
+> From: Sean Paul <seanpaul@chromium.org>
+>=20
+> This patch adds a new subnode to simple-panel allowing us to override
+> the typical timing expressed in the panel's display_timing.
+>=20
+> Changes in v2:
+>  - Split out the binding into a new patch (Rob)
+>  - display-timings is a new section (Rob)
+>  - Use the full display-timings subnode instead of picking the timing
+>    out (Rob/Thierry)
+> Changes in v3:
+>  - Go back to using the timing subnode directly, but rename to
+>    panel-timing (Rob)
+> Changes in v4:
+>  - Simplify desc. for when override should be used (Thierry/Laurent)
+>  - Removed Rob H review since it's been a year and wording changed
+> Changes in v5:
+>  - Removed bit about OS may ignore (Rob/Ezequiel)
+>=20
+> Cc: Doug Anderson <dianders@chromium.org>
+> Cc: Eric Anholt <eric@anholt.net>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Cc: Rob Herring <robh+dt@kernel.org>
+> Cc: St=C3=A9phane Marchesin <marcheu@chromium.org>
+> Cc: Thierry Reding <thierry.reding@gmail.com>
+> Cc: devicetree@vger.kernel.org
+> Cc: dri-devel@lists.freedesktop.org
+> Cc: linux-rockchip@lists.infradead.org
+> Signed-off-by: Sean Paul <seanpaul@chromium.org>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+>=20
+>  .../bindings/display/panel/simple-panel.txt   | 22 +++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+
+Sorry for taking so long to get back to this, sounds good to me:
+
+Acked-by: Thierry Reding <thierry.reding@gmail.com>
+
+--4Ckj6UjgE2iN1+kY
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl0Wpx0ACgkQ3SOs138+
+s6FkAA//dq1vkl6yNj7/hlMzdjFe9maoEW7fwyt9MG/kUuV2+7K/iB2hj9M9DaKS
+36rSIataHUoMbKAZprhPFKpa4Ux0KVuFcld+pU/GfvX1ux+omwfYZioEtkacrlFa
+FVpTSbqsQm/A1a6jTK/44si7bTgnG3AiJ7Nz+7+VBEn0Fsf+Hua9GUbwMHCPz1lb
+fRuJXIEGj6s9ZnCd/2YevxcrAscypxSeU5kAePyZF2i7bdeta2TR7655vYQkdqOb
+nNFz+2R53UC5P4K9ekNZPue3QivyLjyN9M+OCmf+uSkdCK2RLF/lGKDtzcxtbMJF
+FK4bsJRqF0icbG7bQucnIIIf5zgUFWuURWyzciqEa0TjnkqIy4Ugdw7iUY6MERlE
+fn2u1wJAjWuztuyl9FSOgBs86zFvlnW79FkX7q4Db4BZSU1c7Vld08Cw0/scsuuW
+fwJMzZSf/vSshfuJrXRo8wB+YsU7WgY0Y6v7IYx+5r3gvxKAGy02i/rjvPRb+e9c
+0kvQKZqBYPxZDv3xkWZHLD4fZo5vkluDnxxTU/6omXTRCsqIAS26XZ8jlXE5fcHk
+0hfy2HaCXhG7ckpQusum9uasjhcpQg3QKxul3oqM2iD1XvJIwcBwJq15pMvUm5w3
+Qqm5DatatB3t0U+G84KTeIEzFIBNjeLY0kNjTOa0Ke9GRDyGoEU=
+=lrYn
+-----END PGP SIGNATURE-----
+
+--4Ckj6UjgE2iN1+kY--
+
+--===============0352765055==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+
+--===============0352765055==--
