@@ -1,196 +1,119 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v5 2/7] drm/panel: simple: Add ability to override typical timing
-Date: Mon, 1 Jul 2019 09:39:24 -0700
-Message-ID: <CAD=FV=V_wTD1xpkXRe-z2HsZ8QXKq7jmq8CsfhMnFxi-5XDJjw@mail.gmail.com>
+Subject: Re: [PATCH v5 1/7] dt-bindings: Add panel-timing subnode to
+ simple-panel
+Date: Mon, 1 Jul 2019 09:59:46 -0700
+Message-ID: <CAD=FV=V3eiBXP4Z5KMxD=-csV5EAD9cY4MzuAOtMyphpDmW+_A@mail.gmail.com>
 References: <20190401171724.215780-1-dianders@chromium.org>
- <20190401171724.215780-3-dianders@chromium.org> <20190630202246.GB15102@ravnborg.org>
+ <20190401171724.215780-2-dianders@chromium.org>
+ <20190630200259.GA15102@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190630202246.GB15102@ravnborg.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190630200259.GA15102@ravnborg.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Sam Ravnborg <sam@ravnborg.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, David Airlie <airlied@linux.ie>, Jeffy Chen <jeffy.chen@rock-chips.com>, dri-devel <dri-devel@lists.freedesktop.org>, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Boris Brezillon <boris.brezillon@collabora.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?UTF-8?Q?Enric_Balletb=C3=B2?= <enric.balletbo@collabora.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Ezequiel Garcia <ezequiel@collabora.com>, Matthias Kaehlcke <mka@chromium.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, Jeffy Chen <jeffy.chen@rock-chips.com>, LKML <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thierry Reding <thierry.reding@gmail.com>, Sean Paul <seanpaul@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, Boris Brezillon <boris.brezillon@collabora.com>, =?UTF-8?Q?Enric_Balletb=C3=B2?= <enric.balletbo@collabora.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Ezequiel Garcia <ezequiel@collabora.com>, Matthias Kaehlcke <mka@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Sun, Jun 30, 2019 at 1:22 PM Sam Ravnborg <sam@ravnborg.org> wrote:
->
-> > @@ -91,6 +92,8 @@ struct panel_simple {
-> >       struct i2c_adapter *ddc;
-> >
-> >       struct gpio_desc *enable_gpio;
-> > +
-> > +     struct drm_display_mode override_mode;
-> I fail to see where this poiter is assigned.
-
-In panel_simple_parse_override_mode().  Specifically:
-
-drm_display_mode_from_videomode(&vm, &panel->override_mode);
-
-
-> @@ -152,6 +162,44 @@ static int panel_simple_get_fixed_modes(struct panel_simple *panel)
-> >               num++;
-> >       }
-> >
-> > +     return num;
-> > +}
-> > +
-> > +static int panel_simple_get_non_edid_modes(struct panel_simple *panel)
-> > +{
-> > +     struct drm_connector *connector = panel->base.connector;
-> > +     struct drm_device *drm = panel->base.drm;
-> > +     struct drm_display_mode *mode;
-> > +     bool has_override = panel->override_mode.type;
-> This looks suspicious.
-> panel->override_mode.type is an unsigned int that may have a number of
-> bits set.
-> So the above code implicitly convert a .type != 0 to a true.
-> This can be expressed in a much more reader friendly way.
-
-You would suggest that I add a boolean field to a structure to
-indicate whether an override mode is present?  I will certainly do
-that if you're sure that's what you want, but my understanding of the
-convention for much of the kernel is that you generally rely on
-structures being zero-initialized and then (assuming that zero isn't a
-valid value) it's safe to confirm they've been initialized by seeing
-that they're non-zero.
-
-In this case panel_simple_parse_override_mode() will _definitely_ set
-a non-zero value for this field in the case that it ran to completion.
-...and, even further, the end of that function has a WARN_ON() if it
-doesn't.
-
-Any chance you missed reading panel_simple_parse_override_mode() in
-the original patch?
-
-
-> And on top of this, I cannot see that panel->override_mode points to a
-> valid instance of display_mode, at least not always.
-
-override_mode isn't a pointer, right?  It's a structure straight in
-the panel.  So all its fields will be initted to 0 by the kzalloc in
-panel_simple_probe().  If the type is non-zero then we know
-panel_simple_parse_override_mode() finished to completion.
-
-
-> > @@ -268,7 +316,7 @@ static int panel_simple_get_modes(struct drm_panel *panel)
-> >       }
-> >
-> >       /* add hard-coded panel modes */
-> > -     num += panel_simple_get_fixed_modes(p);
-> > +     num += panel_simple_get_non_edid_modes(p);
-> >
-> >       return num;
-> >  }
-> > @@ -299,10 +347,58 @@ static const struct drm_panel_funcs panel_simple_funcs = {
-> >       .get_timings = panel_simple_get_timings,
-> >  };
-> >
-> > +#define PANEL_SIMPLE_BOUNDS_CHECK(to_check, bounds, field) \
-> > +     (to_check->field.typ >= bounds->field.min && \
-> > +      to_check->field.typ <= bounds->field.max)
-> > +static void panel_simple_parse_override_mode(struct device *dev,
-> > +                                          struct panel_simple *panel,
-> > +                                          const struct display_timing *ot)
-> > +{
-> > +     const struct panel_desc *desc = panel->desc;
-> > +     struct videomode vm;
-> > +     unsigned int i;
-> > +
-> > +     if (WARN_ON(desc->num_modes)) {
-> > +             dev_err(dev, "Reject override mode: panel has a fixed mode\n");
-> > +             return;
-> > +     }
-> > +     if (WARN_ON(!desc->num_timings)) {
-> > +             dev_err(dev, "Reject override mode: no timings specified\n");
-> > +             return;
-> > +     }
-> > +
-> > +     for (i = 0; i < panel->desc->num_timings; i++) {
-> > +             const struct display_timing *dt = &panel->desc->timings[i];
-> > +
-> > +             if (!PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, hactive) ||
-> > +                 !PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, hfront_porch) ||
-> > +                 !PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, hback_porch) ||
-> > +                 !PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, hsync_len) ||
-> > +                 !PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, vactive) ||
-> > +                 !PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, vfront_porch) ||
-> > +                 !PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, vback_porch) ||
-> > +                 !PANEL_SIMPLE_BOUNDS_CHECK(ot, dt, vsync_len))
-> > +                     continue;
-> > +
-> > +             if (ot->flags != dt->flags)
-> > +                     continue;
-> The binding do not say anything about flags. Is this check really
-> needed?
-
-Flags here is an implementation detail of the Linux driver and the
-bindings are supposed to be Linux-agnostic.  The bindings started out
-talking about lots of stuff that happened in the driver and I was told
-to take all those out.  ;-)
-
-Specifically note that flags here holds whether we have specified a
-positive or negative for hsync or vsync.  These are the "hsync-active"
-and "vsync-active" properties of the panel bindings.  Take a look at
-of_parse_display_timing().
-
-...so to summarize the flags here is just a different set of
-properties to check like the checks above.
-
-
-> > +
-> > +             videomode_from_timing(ot, &vm);
-> > +             drm_display_mode_from_videomode(&vm, &panel->override_mode);
->
-> > +             panel->override_mode.type |= DRM_MODE_TYPE_DRIVER |
-> > +                                          DRM_MODE_TYPE_PREFERRED;
-> > +             break;
-> > +     }
-> > +
-> > +     if (WARN_ON(!panel->override_mode.type))
-> > +             dev_err(dev, "Reject override mode: No display_timing found\n");
-> > +}
-> > +
-> >  static int panel_simple_probe(struct device *dev, const struct panel_desc *desc)
-> >  {
-> >       struct device_node *backlight, *ddc;
-> >       struct panel_simple *panel;
-> > +     struct display_timing dt;
-> >       int err;
-> >
-> >       panel = devm_kzalloc(dev, sizeof(*panel), GFP_KERNEL);
-> > @@ -348,6 +444,9 @@ static int panel_simple_probe(struct device *dev, const struct panel_desc *desc)
-> >               }
-> >       }
-> >
-> > +     if (!of_get_display_timing(dev->of_node, "panel-timing", &dt))
-> > +             panel_simple_parse_override_mode(dev, panel, &dt);
-> > +
-> Naming bike-shedding.
-> With the new node name, the function name
-> panel_simple_parse_override_mode() could use an update.
-> Maybe: panel_simple_parse_panel_timing_node()
-
-Happy to change the name to panel_simple_parse_panel_timing_node().
-
----
-
-Summary of the above:
-
-* Unless you say otherwise, I will leave the check of "type != 0" and
-not introduce a new boolean.
-
-* Only action request is rename of panel_simple_parse_override_mode()
-to panel_simple_parse_panel_timing_node()
-
-NOTE: Since this feedback is minor and this patch has been outstanding
-for a while (and is blocking other work), I am assuming that the best
-path forward is for Heiko to land this patch with Thierry's Ack and
-I'll send a follow-up.  Please yell if you disagree.  I'll respond to
-each of your emails separately and then wait for your response before
-sending the follow-up series.
-
-
--Doug
+SGksCgpPbiBTdW4sIEp1biAzMCwgMjAxOSBhdCAxOjAzIFBNIFNhbSBSYXZuYm9yZyA8c2FtQHJh
+dm5ib3JnLm9yZz4gd3JvdGU6Cj4KPiBIaSBEb3VnbGFzLgo+Cj4gU29tZSBsb25nIG92ZXJkdWUg
+cmV2aWV3IGZlZWRiYWNrLgo+Cj4gT24gTW9uLCBBcHIgMDEsIDIwMTkgYXQgMTA6MTc6MThBTSAt
+MDcwMCwgRG91Z2xhcyBBbmRlcnNvbiB3cm90ZToKPiA+IEZyb206IFNlYW4gUGF1bCA8c2VhbnBh
+dWxAY2hyb21pdW0ub3JnPgo+ID4KPiA+IFRoaXMgcGF0Y2ggYWRkcyBhIG5ldyBzdWJub2RlIHRv
+IHNpbXBsZS1wYW5lbCBhbGxvd2luZyB1cyB0byBvdmVycmlkZQo+ID4gdGhlIHR5cGljYWwgdGlt
+aW5nIGV4cHJlc3NlZCBpbiB0aGUgcGFuZWwncyBkaXNwbGF5X3RpbWluZy4KPiA+Cj4gPiBDaGFu
+Z2VzIGluIHYyOgo+ID4gIC0gU3BsaXQgb3V0IHRoZSBiaW5kaW5nIGludG8gYSBuZXcgcGF0Y2gg
+KFJvYikKPiA+ICAtIGRpc3BsYXktdGltaW5ncyBpcyBhIG5ldyBzZWN0aW9uIChSb2IpCj4gPiAg
+LSBVc2UgdGhlIGZ1bGwgZGlzcGxheS10aW1pbmdzIHN1Ym5vZGUgaW5zdGVhZCBvZiBwaWNraW5n
+IHRoZSB0aW1pbmcKPiA+ICAgIG91dCAoUm9iL1RoaWVycnkpCj4gPiBDaGFuZ2VzIGluIHYzOgo+
+ID4gIC0gR28gYmFjayB0byB1c2luZyB0aGUgdGltaW5nIHN1Ym5vZGUgZGlyZWN0bHksIGJ1dCBy
+ZW5hbWUgdG8KPiA+ICAgIHBhbmVsLXRpbWluZyAoUm9iKQo+ID4gQ2hhbmdlcyBpbiB2NDoKPiA+
+ICAtIFNpbXBsaWZ5IGRlc2MuIGZvciB3aGVuIG92ZXJyaWRlIHNob3VsZCBiZSB1c2VkIChUaGll
+cnJ5L0xhdXJlbnQpCj4gPiAgLSBSZW1vdmVkIFJvYiBIIHJldmlldyBzaW5jZSBpdCdzIGJlZW4g
+YSB5ZWFyIGFuZCB3b3JkaW5nIGNoYW5nZWQKPiA+IENoYW5nZXMgaW4gdjU6Cj4gPiAgLSBSZW1v
+dmVkIGJpdCBhYm91dCBPUyBtYXkgaWdub3JlIChSb2IvRXplcXVpZWwpCj4gPgo+ID4gQ2M6IERv
+dWcgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KPiA+IENjOiBFcmljIEFuaG9sdCA8
+ZXJpY0BhbmhvbHQubmV0Pgo+ID4gQ2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+
+Cj4gPiBDYzogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkByb2NrLWNoaXBzLmNvbT4KPiA+IENjOiBS
+b2IgSGVycmluZyA8cm9iaCtkdEBrZXJuZWwub3JnPgo+ID4gQ2M6IFN0w6lwaGFuZSBNYXJjaGVz
+aW4gPG1hcmNoZXVAY2hyb21pdW0ub3JnPgo+ID4gQ2M6IFRoaWVycnkgUmVkaW5nIDx0aGllcnJ5
+LnJlZGluZ0BnbWFpbC5jb20+Cj4gPiBDYzogZGV2aWNldHJlZUB2Z2VyLmtlcm5lbC5vcmcKPiA+
+IENjOiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gPiBDYzogbGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+ID4gU2lnbmVkLW9mZi1ieTogU2VhbiBQYXVsIDxzZWFu
+cGF1bEBjaHJvbWl1bS5vcmc+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBEb3VnbGFzIEFuZGVyc29uIDxk
+aWFuZGVyc0BjaHJvbWl1bS5vcmc+Cj4gPiAtLS0KPiA+Cj4gPiAgLi4uL2JpbmRpbmdzL2Rpc3Bs
+YXkvcGFuZWwvc2ltcGxlLXBhbmVsLnR4dCAgIHwgMjIgKysrKysrKysrKysrKysrKysrKwo+ID4g
+IDEgZmlsZSBjaGFuZ2VkLCAyMiBpbnNlcnRpb25zKCspCj4gPgo+ID4gZGlmZiAtLWdpdCBhL0Rv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3BhbmVsL3NpbXBsZS1wYW5l
+bC50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9wYW5lbC9z
+aW1wbGUtcGFuZWwudHh0Cj4gPiBpbmRleCBiMmI4NzJjNzEwZjIuLjkzODgyMjY4YzBiOSAxMDA2
+NDQKPiA+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3Bh
+bmVsL3NpbXBsZS1wYW5lbC50eHQKPiA+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9kaXNwbGF5L3BhbmVsL3NpbXBsZS1wYW5lbC50eHQKPiA+IEBAIC0xNSw2ICsxNSwx
+NiBAQCBPcHRpb25hbCBwcm9wZXJ0aWVzOgo+ID4gICAgKGhvdCBwbHVnIGRldGVjdCkgc2lnbmFs
+LCBidXQgdGhlIHNpZ25hbCBpc24ndCBob29rZWQgdXAgc28gd2Ugc2hvdWxkCj4gPiAgICBoYXJk
+Y29kZSB0aGUgbWF4IGRlbGF5IGZyb20gdGhlIHBhbmVsIHNwZWMgd2hlbiBwb3dlcmluZyB1cCB0
+aGUgcGFuZWwuCj4gPgo+ID4gK3BhbmVsLXRpbWluZyBzdWJub2RlCj4gPiArLS0tLS0tLS0tLS0t
+LS0tLS0tLS0KPiA+ICsKPiA+ICtUaGlzIG9wdGlvbmFsIHN1Ym5vZGUgaXMgZm9yIGRldmljZXMg
+d2hpY2ggcmVxdWlyZSBhIG1vZGUgZGlmZmVyaW5nCj4gPiArZnJvbSB0aGUgcGFuZWwncyAidHlw
+aWNhbCIgZGlzcGxheSB0aW1pbmcuCj4gTWV5YmUgYWRkIGhlcmUgdGhhdCBpdCBpcyBleHBlY3Rl
+ZCB0aGF0IHRoZSBwYW5lbCBoYXMgaW5jbHVkZWQgdGltaW5nCj4gaW4gdGhlIGRyaXZlciBpdHNl
+bGYsIGFuZCBub3QgYXMgcGFydCBvZiBEVC4KPiBTbyB3aGF0IGlzIHNwZWNpZmllZCBoZXJlIGlz
+IGEgbW9yZSBwcmVjaXNlIHZhcmlhbnQsIHdpdGhpbiB0aGUgbGltaXRzCj4gb2Ygd2hhdCBpcyBz
+cGVjaWZpZWQgZm9yIHRoZSBwYW5lbC4KClNlZSBkaXNjdXNzaW9ucyBwcmV2aW91cyB2ZXJzaW9u
+cyBvZiB0aGlzIHBhdGNoLiAgU3BlY2lmaWNhbGx5IHlvdSBjYW4Kc2VlIHY0IGF0IDxodHRwczov
+L3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEwODc1NTA1Lz4gYW5kIHYzCihwb3N0ZWQgYnkg
+U2VhbikgYXQgPGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTAyMDc1OTEvPi4K
+ClNwZWNpZmljYWxseTogQWNjb3JkaW5nIHRvIFJvYiBIIGl0IGlzIGdlbmVyYWxseSBub3QgcmVx
+dWlyZWQgdG8KdmFsaWRhdGUgd2hhdCdzIGluIGRldmljZSB0cmVlLS1pdCBjYW4gYmUganVzdCBi
+bGluZGx5IGFwcGxpZWQuICBUaHVzCnRoZSBiaW5kaW5ncyBzaG91bGRuJ3QgcmVhbGx5IHNheSBh
+bnl0aGluZyBhYm91dCB0cnlpbmcgdG8gcmVjb25jaWxlCndpdGggdGhlIGRyaXZlciAoZXNwZWNp
+YWxseSBzaW5jZSB0aGF0J3MgaGVhdmlseSByZWx5aW5nIG9uIHRoZQpjdXJyZW50IGRyaXZlciBp
+bXBsZW1lbnRhdGlvbikuCgpBdCB0aGUgbW9tZW50IHRoZSBkcml2ZXIgc3RpbGwgZG9lcyB2YWxp
+ZGF0ZSB0aGluZ3MgYW5kIHdlIGNvdWxkCmRpc2N1c3MgcmVtb3ZpbmcgdGhhdCBpbiBhIGZ1dHVy
+ZSBwYXRjaHNldCBpZiBpdCB3YXMgZGVlbWVkIGltcG9ydGFudAovIGRlc2lyYWJsZS4KCgo+ID4g
+K0Zvcm1hdCBpbmZvcm1hdGlvbiBvbiB0aGUgcGFuZWwtdGltaW5nIHN1Ym5vZGUgY2FuIGJlIGZv
+dW5kIGluCj4gPiArZGlzcGxheS10aW1pbmcudHh0Lgo+IGRpc3BsYXktdGltaW5nIGRlZmluZXMg
+b3Rpb25hbCBwcm9wZXJ0aWVzOgo+IGhzeW5jLWFjdGl2ZSwgcGl4ZWxjbGstYWN0aXZlLCBkb3Vi
+bGVzY2FuIGV0Yy4KPiBJdCBpcyBub3QgZnJvbSB0aGUgYWJvdmUgb2J2aW91cyB3aGljaCBwcm9w
+ZXJ0aWVzIGZyb20gZGlzcGxheS10aW1pbmdzCj4gdGhhdCBjYW4gYmUgc3BlY2lmaWVkIGZvciBh
+IHBhbmVsLXRpbWluZyBzdWItbm9kZS4KPiBNYXliZSBiZWNhdXNlIHRoZXkgY2FuIGFsbCBiZSBz
+cGVjaWZpZWQ/Cj4KPiBEaXNwbGF5LXRpbWluZyBhbGxvd3MgdGltaW5ncyB0byBiZSBzcGVjaWZp
+ZWQgYXMgYSByYW5nZS4KPiBJZiBpdCBpcyBhbHNvIE9LIHRvIHNwZWNpZnkgYSByYW5nZSBmb3Ig
+cGFubGUtdGltaW5nIHRoZW4gZXZlcnl0aGlnbiBpcwo+IGZpbmUuIEJ1dCBpZiB0aGUgcGFuZWwt
+dGltaWduIHN1Ym5vZGUgZG8gbm90IGFsbG93IHJhbmdlcyB0aGlzIG5lZWRzIHRvCj4gYmUgc3Bl
+Y2lmaWVkLgoKT25lIHRoaW5nIHRvIHRoaW5rIGFib3V0IGhlcmUgaXMgdGhhdCB0aGUgYmluZGlu
+Z3MgYXJlIGEgYml0IGRpdm9yY2VkCmZyb20gdGhlIHJlYWwgd29ybGQuICBTcGVjaWZpY2FsbHkg
+dGhlIGJpbmRpbmdzIHNob3VsZCBkZXNjcmliZQpoYXJkd2FyZSAvIHdoYXQncyBwb3NzaWJsZSBh
+bmQgaXQncyBPSyBmb3IgYmluZGluZ3MgdG8gZGVzY3JpYmUgdGhpbmdzCnRoYXQgYXJlbid0IHll
+dCBzdXBwb3J0ZWQgaW4gY29kZS4gIFlvdSd2ZSBnb3R0YSBiZSByZWFsbHkgY2FyZWZ1bApoZXJl
+LCBvZiBjb3Vyc2UsIGJlY2F1c2UgaXQncyBlYXN5IHRvIHdyaXRlIHJpZGljdWxvdXMgYmluZGlu
+Z3MgaWYKdGhlcmUgaXMgbm8gaW1wbGVtZW50YXRpb24gYmFja2luZyB0aGVtIHVwLCBidXQgaW4g
+Z2VuZXJhbCB0aGF0J3MKc3VwcG9zZWQgdG8gYmUgdGhlIGlkZWEuCgpIZXJlIGl0IHNlZW1zIGxp
+a2UgaXQgc2hvdWxkIGJlIHBvc3NpYmxlIHRvIHNwZWNpZnkgdGltaW5ncyBhcyBhIHJhbmdlCmFu
+ZCB0aGF0IHdvdWxkIGJlIGEgc2Vuc2libGUgdGhpbmcgdG8gZG8uICAuLi5hbmQgd2UncmUgYWxy
+ZWFkeSB1c2luZwpleGlzdGluZyBjb2RlIHRvIHBhcnNlIHRoaXMgbm9kZSwgc3BlY2lmaWNhbGx5
+Cm9mX2dldF9kaXNwbGF5X3RpbWluZygpLiAgSWYgc2ltcGxlLXBhbmVsIGNhbid0ICh5ZXQpIGhh
+bmRsZQpyZWNvbmNpbGluZyByYW5nZXMgc3BlY2lmaWVkIGluIERUIHRoZW4gcHJlc3VtYWJseSB3
+ZSBzaG91bGRuJ3QgcmVseQpvbiB0aGF0IHlldC4gIC4uLmJ1dCBpZiBpdCBiZWNvbWVzIHVzZWZ1
+bCB0aGVuIHdlIGNhbiBhZGQgaXQgbGF0ZXIuCi4uLmJ1dCBpdCdzIE9LIHRvIGFscmVhZHkgaGF2
+ZSBpdCBpbiB0aGUgYmluZGluZ3MuCgpEaWQgdGhhdCBtYWtlIHNlbnNlPyAgSWYgSSdtIG1pc3Vu
+ZGVyc3RhbmRpbmcgc29tZXRoaW5nIGFib3V0IHRoZQpzaXR1YXRpb24gdGhlbiBwbGVhc2UgeWVs
+bCEgIDotKQoKSSB3aWxsIGFsc28gbm90ZSB0aGF0IHBlcmhhcHMgd2Ugc2hvdWxkbid0IG5pdC1w
+aWNrIHRvbyBtdWNoIGFzIHBlcgpSb2IncyBjb21tZW50IGluIHRoZSBjb3ZlciBsZXR0ZXIgWzFd
+IG9mIHY1IG9mIHRoZSBzZXJpZXMuClNwZWNpZmljYWxseSBoZSBzYWlkIHRoaXMgYmluZGluZyBp
+cyBnb2luZyBhd2F5IGFueXdheS4KClN1bW1hcnk6IEkgdGhpbmsgSSBoYXZlIG5vIGFjdGlvbnMg
+aGVyZSBhbmQgdGhpcyBjb3VsZCBnbyB0byBkcm0tbWlzYwp3aXRoIFRoZWlycnkncyBBY2sgcGx1
+cyBvdGhlciB0YWdzLgoKClsxXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9wYXRjaHdvcmsvY292
+ZXIvMTA1NzAzOC8KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
