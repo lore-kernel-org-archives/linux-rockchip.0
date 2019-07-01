@@ -1,56 +1,70 @@
-From: Manish Narani <manish.narani@xilinx.com>
-Subject: [PATCH v2 05/11] dt-bindings: mmc: arasan: Update Documentation for the input clock
-Date: Mon,  1 Jul 2019 10:59:45 +0530
-Message-ID: <1561958991-21935-6-git-send-email-manish.narani@xilinx.com>
-References: <1561958991-21935-1-git-send-email-manish.narani@xilinx.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL 1/2] Rockchip dts32 updates for 5.3 round 2
+Date: Mon, 01 Jul 2019 11:33:34 +0200
+Message-ID: <1883297.MJ2kjSRBWT@phil>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1561958991-21935-1-git-send-email-manish.narani@xilinx.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: ulf.hansson@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, michal.simek@xilinx.com, adrian.hunter@intel.com, christoph.muellner@theobroma-systems.com, philipp.tomsich@theobroma-systems.com, viresh.kumar@linaro.org, scott.branden@broadcom.com, ayaka@soulik.info, kernel@esmil.dk, tony.xie@rock-chips.com, rajan.vaja@xilinx.com, jolly.shah@xilinx.com, nava.manne@xilinx.com, mdf@kernel.org, manish.narani@xilinx.com, olof@lixom.net
-Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add documentation for an optional input clock which is essentially used
-in sampling the input data coming from the card.
+Hi Arnd, Kevin, Olof,
 
-Signed-off-by: Manish Narani <manish.narani@xilinx.com>
----
- Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+please find below and in the reply round2 of Rockchip updates for armsoc.
 
-diff --git a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-index 15c6397..7c79496 100644
---- a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-+++ b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-@@ -23,10 +23,10 @@ Required Properties:
-   - reg: From mmc bindings: Register location and length.
-   - clocks: From clock bindings: Handles to clock inputs.
-   - clock-names: From clock bindings: Tuple including "clk_xin" and "clk_ahb"
--		 Apart from these two there is one more optional clock which
--		 is "clk_sdcard". This clock represents output clock from
--		 controller and card. This must be specified when #clock-cells
--		 is specified.
-+		 Apart from these two there are two more optional clocks which
-+		 are "clk_sdcard" and "clk_sample". These two clocks represent
-+		 output and input clocks between controller and card. These
-+		 must be specified when #clock-cells is specified.
-   - interrupts: Interrupt specifier
- 
- Required Properties for "arasan,sdhci-5.1":
-@@ -40,9 +40,9 @@ Optional Properties:
-   - clock-output-names: If specified, this will be the name of the card clock
-     which will be exposed by this device.  Required if #clock-cells is
-     specified.
--  - #clock-cells: If specified this should be the value <0>. With this
--    property in place we will export one clock representing the Card
--    Clock. This clock is expected to be consumed by our PHY. You must also
-+  - #clock-cells: If specified this should be the value <0> or <1>. With this
-+    property in place we will export one or two clocks representing the Card
-+    Clock. These clocks are expected to be consumed by our PHY. You must also
-     specify
-   - xlnx,fails-without-test-cd: when present, the controller doesn't work when
-     the CD line is not connected properly, and the line is not connected
--- 
-2.1.1
+Please pull!
+
+Thanks
+Heiko
+
+The following changes since commit b8925b7c2f867df6ce3e20deb4b3e2b9b32b20ff:
+
+  ARM: dts: rockchip: Split GPIO keys for veyron into multiple devices (2019-06-06 12:41:04 +0200)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.3-rockchip-dts32-2
+
+for you to fetch changes up to 519574e3259c8d7e5d78366ef513cfaaf650784f:
+
+  ARM: dts: rockchip: add display nodes for rk322x (2019-06-27 11:57:20 +0200)
+
+----------------------------------------------------------------
+Display support for rk3228/rk3229 (up to hdmi output) and more love
+for rk3288-veyron boards.
+
+----------------------------------------------------------------
+Douglas Anderson (2):
+      ARM: dts: rockchip: Configure BT_HOST_WAKE as wake-up signal on veyron
+      ARM: dts: rockchip: Configure BT_DEV_WAKE in on rk3288-veyron
+
+Heiko Stuebner (3):
+      clk: rockchip: add clock id for watchdog pclk on rk3328
+      clk: rockchip: add clock id for hdmi_phy special clock on rk3228
+      Merge branch 'v5.3-shared/clk-ids' into v5.3-armsoc/dts32
+
+Justin Swartz (2):
+      ARM: dts: rockchip: fix vop iommu-cells on rk322x
+      ARM: dts: rockchip: add display nodes for rk322x
+
+Matthias Kaehlcke (1):
+      Revert "ARM: dts: rockchip: set PWM delay backlight settings for Minnie"
+
+ arch/arm/boot/dts/rk322x.dtsi                   | 85 ++++++++++++++++++++++++-
+ arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi |  2 +
+ arch/arm/boot/dts/rk3288-veyron-minnie.dts      |  2 -
+ arch/arm/boot/dts/rk3288-veyron.dtsi            | 49 ++++++++++++++
+ include/dt-bindings/clock/rk3228-cru.h          |  1 +
+ include/dt-bindings/clock/rk3328-cru.h          |  1 +
+ 6 files changed, 137 insertions(+), 3 deletions(-)
