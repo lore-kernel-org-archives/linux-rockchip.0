@@ -1,78 +1,236 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL] Rockchip clock updates for 5.3
-Date: Mon, 01 Jul 2019 11:36:17 +0200
-Message-ID: <3855405.N158XnxgeL@phil>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: Re: [PATCH v2] phy: rockchip-inno-usb2: allow to force the B-Device
+ Session Valid bit.
+Date: Mon, 1 Jul 2019 12:11:12 +0200
+Message-ID: <f32877d0-6d36-73ec-599d-740ed98b27dc@collabora.com>
+References: <20190515222050.15075-1-gael.portay@collabora.com>
+ <7a205885f0599f04da067a7f41a14ee0b0d759f5.camel@collabora.com>
+ <f8f3565c18cc0c1ede107311dbe41df1a07da07b.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <f8f3565c18cc0c1ede107311dbe41df1a07da07b.camel@collabora.com>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: kernel@collabora.com, =?UTF-8?Q?Ga=c3=abl_PORTAY?= <gael.portay@collabora.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
+Hi Ezequiel,
 
-please find below rockchip clock changes for 5.3
+Thanks for reviewing these patches.
 
-Please pull
+On 29/6/19 2:38, Ezequiel Garcia wrote:
+> Hi Heiko, Kishon,
+> 
+> I'll try to pick up this patch.
+> Some comments below, just for self-reference.
+> 
+> On Wed, 2019-06-26 at 12:32 -0300, Ezequiel Garcia wrote:
+>> On Wed, 2019-05-15 at 18:20 -0400, Gaël PORTAY wrote:
+>>> From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>>>
+>>> The OTG disconnection event is generated after the presence/absence of
+>>> an ID connection, but some platforms don't have the ID pin connected, so
+>>> the event is not generated. In such case, for detecting the
+>>> disconnection event, we can get the cable state from an extcon driver.
+>>> We need, though, to force to set the B-Device Session Valid bit on the
+>>> PHY to have the device respond to the setup address. Otherwise, the
+>>> following error is shown:
+>>>
+>>>     usb 2-2: Device not responding to setup address.
+>>>     usb 2-2: device not accepting address 14, error -71
+>>>     usb usb2-port2: unable to enumerate USB device
+>>>
+>>> The patch tells the PHY to force the B-Device Session Valid bit when the
+>>> OTG role is device and clear that bit if the OTG role is host, when an
+>>> extcon is available.
+>>>
+>>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>>> Signed-off-by: Gaël PORTAY <gael.portay@collabora.com>
+>>> ---
+>>>
+>>> Hi all,
+>>>
+>>> The main purpose of this patch is have the Type-C port on the Samsung
+>>> Chromebook Plus work as a device or in OTG mode.
+>>>
+>>> That patch was originally a part of that patchset[1]; all other patches
+>>> was merged recently in master.
+>>>
+>>> The patch was tested on a Samsung Chromebook Plus by configuring one
+>>> port to work as device, configure a cdc ethernet gadget and communicate
+>>> via ethernet gadget my workstation with the chromebook through a usb-a
+>>> to type-c cable.
+>>>
+>>> Best regards,
+>>> Gaël
+>>>
+>>> [1]: https://lkml.org/lkml/2018/8/15/141
+>>>
+> 
+> We still need the above devicetree changes.
+> 
+>>> Changes since v1:
+>>>  - [PATCH 3/4] Remove introduction of dt property "rockchip,force-bvalid"
+>>>                and replace cable state using extcon instead (if set).
+>>>
+>>>  drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 51 +++++++++++++++++++
+>>>  1 file changed, 51 insertions(+)
+>>>
+>>> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+>>> index ba07121c3eff..5e9d50b5ae16 100644
+>>> --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+>>> +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+>>> @@ -125,6 +125,7 @@ struct rockchip_chg_det_reg {
+>>>   * @bvalid_det_en: vbus valid rise detection enable register.
+>>>   * @bvalid_det_st: vbus valid rise detection status register.
+>>>   * @bvalid_det_clr: vbus valid rise detection clear register.
+>>> + * @bvalid_session: force B-device session valid register.
+>>>   * @ls_det_en: linestate detection enable register.
+>>>   * @ls_det_st: linestate detection state register.
+>>>   * @ls_det_clr: linestate detection clear register.
+>>> @@ -138,6 +139,7 @@ struct rockchip_usb2phy_port_cfg {
+>>>  	struct usb2phy_reg	bvalid_det_en;
+>>>  	struct usb2phy_reg	bvalid_det_st;
+>>>  	struct usb2phy_reg	bvalid_det_clr;
+>>> +	struct usb2phy_reg	bvalid_session;
+>>>  	struct usb2phy_reg	ls_det_en;
+>>>  	struct usb2phy_reg	ls_det_st;
+>>>  	struct usb2phy_reg	ls_det_clr;
+>>> @@ -169,6 +171,7 @@ struct rockchip_usb2phy_cfg {
+>>>   * @port_id: flag for otg port or host port.
+>>>   * @suspended: phy suspended flag.
+>>>   * @vbus_attached: otg device vbus status.
+>>> + * @force_bvalid: force the control of the B-device session valid bit.
+>>>   * @bvalid_irq: IRQ number assigned for vbus valid rise detection.
+>>>   * @ls_irq: IRQ number assigned for linestate detection.
+>>>   * @otg_mux_irq: IRQ number which multiplex otg-id/otg-bvalid/linestate
+>>> @@ -187,6 +190,7 @@ struct rockchip_usb2phy_port {
+>>>  	unsigned int	port_id;
+>>>  	bool		suspended;
+>>>  	bool		vbus_attached;
+>>> +	bool		force_bvalid;
+>>>  	int		bvalid_irq;
+>>>  	int		ls_irq;
+>>>  	int		otg_mux_irq;
+>>> @@ -553,6 +557,13 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
+>>>  	switch (rport->state) {
+>>>  	case OTG_STATE_UNDEFINED:
+>>>  		rport->state = OTG_STATE_B_IDLE;
+>>> +		if (rport->force_bvalid) {
+>>> +			property_enable(rphy->grf,
+>>> +					&rport->port_cfg->bvalid_session,
+>>> +					true);
+>>> +			dev_dbg(&rport->phy->dev,
+>>> +				"set the B-Device Session Valid\n");
+>>> +		}
+>>>  		if (!vbus_attach)
+>>>  			rockchip_usb2phy_power_off(rport->phy);
+>>>  		/* fall through */
+>>> @@ -560,6 +571,14 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
+>>>  		if (extcon_get_state(rphy->edev, EXTCON_USB_HOST) > 0) {
+>>>  			dev_dbg(&rport->phy->dev, "usb otg host connect\n");
+>>>  			rport->state = OTG_STATE_A_HOST;
+>>> +			/* When leaving device mode force end the session */
+>>> +			if (rport->force_bvalid) {
+>>> +				property_enable(rphy->grf,
+>>> +					&rport->port_cfg->bvalid_session,
+>>> +					false);
+>>> +				dev_dbg(&rport->phy->dev,
+>>> +					"clear the B-Device Session Valid\n");
+>>> +			}
+>>>  			rockchip_usb2phy_power_on(rport->phy);
+>>>  			return;
+>>>  		} else if (vbus_attach) {
+>>> @@ -634,6 +653,14 @@ static void rockchip_usb2phy_otg_sm_work(struct work_struct *work)
+>>>  		if (extcon_get_state(rphy->edev, EXTCON_USB_HOST) == 0) {
+>>>  			dev_dbg(&rport->phy->dev, "usb otg host disconnect\n");
+>>>  			rport->state = OTG_STATE_B_IDLE;
+>>> +			/* When leaving host mode force start the session */
+>>> +			if (rport->force_bvalid) {
+>>> +				property_enable(rphy->grf,
+>>> +					&rport->port_cfg->bvalid_session,
+>>> +					true);
+>>> +				dev_dbg(&rport->phy->dev,
+>>> +					"set the B-Device Session Valid\n");
+>>> +			}
+>>>  			rockchip_usb2phy_power_off(rport->phy);
+>>>  		}
+>>>  		break;
+>>> @@ -1016,6 +1043,28 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
+>>>  	INIT_DELAYED_WORK(&rport->chg_work, rockchip_chg_detect_work);
+>>>  	INIT_DELAYED_WORK(&rport->otg_sm_work, rockchip_usb2phy_otg_sm_work);
+>>>  
+>>> +	/*
+>>> +	 * Some platforms doesn't have the ID pin connected to the phy, hence
+>>> +	 * the OTD ID event is not generated, but in some cases we can get the
+>>> +	 * cable state from an extcon driver. In such case we can force to set
+>>> +	 * the B-Device Session Valid bit on the PHY to have the device working
+>>> +	 * as a OTG.
+>>> +	 */
+>>> +	if (rphy->edev) {
+> 
+> I might be missing something, but this check seems bogus.
+> 
+> edev can't be NULL as the driver creates an extcon if
+> there is none assigned in the devicetree.
+> 
 
-Thanks
-Heiko
+Right, I also don't see why this is needed.
 
-The following changes since commit a188339ca5a396acc588e5851ed7e19f66b0ebd9:
+For extra points, there is another place ;-)
 
-  Linux 5.2-rc1 (2019-05-19 15:47:09 -0700)
+drivers/phy/rockchip/phy-rockchip-inno-usb2.c:1049:     if (!IS_ERR(rphy->edev))
 
-are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.3-rockchip-clk1
+>>> +		/*
+>>> +		 * Check if bvalid_session register is set in the structure
+>>> +		 * rockchip_usb2phy_cfg for this SoC.
+>>> +		 */
+>>> +		if (rport->port_cfg->bvalid_session.offset == 0x0) {
+>>> +			rport->force_bvalid = false;
+>>> +			dev_err(rphy->dev,
+>>> +				"cannot force B-device session, the register is not set for that SoC\n");
+>>> +		} else {
+>>> +			rport->force_bvalid = true;
+>>> +			dev_info(rphy->dev, "force B-device session enabled\n");
+>>> +		}
+> 
+> I think we should be doing something more like:
+> 
+> if (HAS_REG(rport->port_cfg->bvalid_session)) {
+> 	rport->force_bvalid = true;
+> 	dev_info(rphy->dev, "force B-device session enabled\n");
+> }
+> 
+> And not error verbosely on platforms that don't
+> care about this.
 
-for you to fetch changes up to 794e94ca83450c436313df18291e139cf5f9121f:
+I tried to do some memory exercice about this and seemed that all platforms care
+about it. But a second check would be nice.
 
-  clk: rockchip: export HDMIPHY clock on rk3228 (2019-06-27 11:02:28 +0200)
+>  
 
-----------------------------------------------------------------
-New clock-ids+exports for two clocks, cleanup for some boilerplate code
-for clocks we cannot really control from the kernel, but want to define
-separately to match the hardware-description (watchdog in secure-grf).
-Improvement in mmc phase calculation and cleanup of some rate defintions.
+The rockchip_usb2phy_otg_sm_work is only called on those that the port is
+configured as OTG. It makes sense trigger an error on those platforms that try
+to configure the port as OTG but doesn't have an bvalid_session register
+defined, otherwise will not work.
 
-----------------------------------------------------------------
-Douglas Anderson (4):
-      clk: rockchip: Use clk_hw_get_rate() in MMC phase calculation
-      clk: rockchip: Don't yell about bad mmc phases when getting
-      clk: rockchip: Slightly more accurate math in rockchip_mmc_get_phase()
-      clk: rockchip: Remove 48 MHz PLL rate from rk3288
+Said that, the question is, if all the supported SoCs have left unused the OTG
+Port ID. I'm pretty sure that is the case for the RK3399 and I remember check
+other SoCs, but not all, because I didn't find the datasheet or were really vague.
 
-Heiko Stuebner (7):
-      clk: rockchip: add a type from SGRF-controlled gate clocks
-      clk: rockchip: convert pclk_wdt boilerplat to new SGRF_GATE macro
-      clk: rockchip: add clock id for watchdog pclk on rk3328
-      clk: rockchip: add clock id for hdmi_phy special clock on rk3228
-      Merge branch 'v5.3-shared/clk-ids' into v5.3-clk/next
-      clk: rockchip: add watchdog pclk on rk3328
-      clk: rockchip: export HDMIPHY clock on rk3228
+Maybe you can do a second round to double check?
 
-Justin Swartz (1):
-      clk: rockchip: add 1.464GHz cpu-clock rate to rk3228
+If we discover that this is not SoC specific maybe we should go back to the
+first proposal and use a DT property instead.
 
- drivers/clk/rockchip/clk-mmc-phase.c   | 14 ++++++--------
- drivers/clk/rockchip/clk-px30.c        | 12 +++---------
- drivers/clk/rockchip/clk-rk3228.c      |  3 ++-
- drivers/clk/rockchip/clk-rk3288.c      | 13 +++----------
- drivers/clk/rockchip/clk-rk3328.c      |  3 +++
- drivers/clk/rockchip/clk-rk3368.c      | 12 +++---------
- drivers/clk/rockchip/clk-rk3399.c      | 12 +++---------
- drivers/clk/rockchip/clk.h             |  4 ++++
- include/dt-bindings/clock/rk3228-cru.h |  1 +
- include/dt-bindings/clock/rk3328-cru.h |  1 +
- 10 files changed, 29 insertions(+), 46 deletions(-)
+Thanks,
+~ Enric
+
+
+> Thanks,
+> Ezequiel
+> 
