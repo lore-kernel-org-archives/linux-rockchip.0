@@ -1,43 +1,70 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH v5 2/7] drm/panel: simple: Add ability to override
- typical timing
-Date: Sun, 30 Jun 2019 22:55:14 +0200
-Message-ID: <20190630205514.GA17046@ravnborg.org>
-References: <20190401171724.215780-1-dianders@chromium.org>
- <20190401171724.215780-3-dianders@chromium.org>
- <20190630202246.GB15102@ravnborg.org>
+From: Manish Narani <manish.narani@xilinx.com>
+Subject: [PATCH v2 03/11] mmc: sdhci-of-arasan: Replace deprecated clk API
+ calls
+Date: Mon,  1 Jul 2019 10:59:43 +0530
+Message-ID: <1561958991-21935-4-git-send-email-manish.narani@xilinx.com>
+References: <1561958991-21935-1-git-send-email-manish.narani@xilinx.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20190630202246.GB15102@ravnborg.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Douglas Anderson <dianders@chromium.org>
-Cc: devicetree@vger.kernel.org, =?iso-8859-1?Q?St=E9phane?= Marchesin <marcheu@chromium.org>, David Airlie <airlied@linux.ie>, Jeffy Chen <jeffy.chen@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Boris Brezillon <boris.brezillon@collabora.com>, Enric =?iso-8859-1?Q?Balletb=F2?= <enric.balletbo@collabora.com>, Sean Paul <seanpaul@chromium.org>, Ezequiel Garcia <ezequiel@collabora.com>, mka@chromium.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1561958991-21935-1-git-send-email-manish.narani@xilinx.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: ulf.hansson@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, michal.simek@xilinx.com, adrian.hunter@intel.com, christoph.muellner@theobroma-systems.com, philipp.tomsich@theobroma-systems.com, viresh.kumar@linaro.org, scott.branden@broadcom.com, ayaka@soulik.info, kernel@esmil.dk, tony.xie@rock-chips.com, rajan.vaja@xilinx.com, jolly.shah@xilinx.com, nava.manne@xilinx.com, mdf@kernel.org, manish.narani@xilinx.com, olof@lixom.net
+Cc: devicetree@vger.kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRG91Z2xhcy4KCj4gPiArCj4gPiArCS8qIE9ubHkgYWRkIHRpbWluZ3MgaWYgb3ZlcnJpZGUg
-d2FzIG5vdCB0aGVyZSBvciBmYWlsZWQgdG8gdmFsaWRhdGUgKi8KPiA+ICsJaWYgKG51bSA9PSAw
-ICYmIHBhbmVsLT5kZXNjLT5udW1fdGltaW5ncykKPiA+ICsJCW51bSA9IHBhbmVsX3NpbXBsZV9n
-ZXRfdGltaW5nc19tb2RlcyhwYW5lbCk7Cj4gPiArCj4gPiArCS8qCj4gPiArCSAqIE9ubHkgYWRk
-IGZpeGVkIG1vZGVzIGlmIHRpbWluZ3Mvb3ZlcnJpZGUgYWRkZWQgbm8gbW9kZS4KPiAKPiBUaGlz
-IHBhcnQgSSBmYWlsIHRvIHVuZGVyc3RhbmQuCj4gSWYgd2UgaGF2ZSBhIHBhbmVsIHdoZXJlIHdl
-IGluIHBhbmVsLXNpbXBsZSBoYXZlIHNwZWNpZmllZCB0aGUgdGltaW5ncywKPiBhbmQgZG9uZSBz
-byB1c2luZyBkaXNwbGF5X3RpbWluZyBzbyB3aXRoIHByb3BlciB7bWluLCB0eXAsIG1heH0gdGhl
-biBpdAo+IHNob3VsZCBiZSBwZXJmZWN0bHkgbGVnYWwgdG8gc3BlY2lmeSBhIG1vcmUgcHJlY2lz
-ZSB2YXJpYW50IGluIHRoZSBEVAo+IGZpbGUuCj4gT3Igd2hhdCBkaWQgSSBtaXNzIGhlcmU/CgpH
-b3QgaXQgbm93LgpJZiBkaXNwbGF5X21vZGUgaXMgdXNlZCBmb3IgdGltaW5ncyB0aGlzIGlzIHdo
-YXQgeW91IGNhbGwgImZpeGVkIG1vZGUiLgpIbW0sIGlmIEkgZ290IGNvbmZ1c2VkIHNvbWVvbmUg
-ZWxzZSBtYXkgYWxzbyBiZSBjb25mdXNlZCBieSB0aGlzIG5hbWluZy4KCglTYW0KX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+The clk framework APIs devm_clk_register and of_clk_add_provider, which
+are used here, are deprecated. Replace the calls with the new API calls.
+Also add an API call devm_clk_get() to get the clock from DT.
+
+Signed-off-by: Manish Narani <manish.narani@xilinx.com>
+---
+ drivers/mmc/host/sdhci-of-arasan.c | 21 ++++++++++++++++-----
+ 1 file changed, 16 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
+index b12abf9..d60a2e8 100644
+--- a/drivers/mmc/host/sdhci-of-arasan.c
++++ b/drivers/mmc/host/sdhci-of-arasan.c
+@@ -641,14 +641,25 @@ static int sdhci_arasan_register_sdclk(struct sdhci_arasan_data *sdhci_arasan,
+ 	sdcardclk_init.ops = &arasan_sdcardclk_ops;
+ 
+ 	sdhci_arasan->sdcardclk_hw.init = &sdcardclk_init;
+-	sdhci_arasan->sdcardclk =
+-		devm_clk_register(dev, &sdhci_arasan->sdcardclk_hw);
++	ret = devm_clk_hw_register(dev, &sdhci_arasan->sdcardclk_hw);
++	if (ret) {
++		dev_err(dev, "Failed to register SD clk_hw\n");
++		return ret;
++	}
+ 	sdhci_arasan->sdcardclk_hw.init = NULL;
+ 
+-	ret = of_clk_add_provider(np, of_clk_src_simple_get,
+-				  sdhci_arasan->sdcardclk);
+-	if (ret)
++	ret = of_clk_add_hw_provider(np, of_clk_hw_simple_get,
++				     &sdhci_arasan->sdcardclk_hw);
++	if (ret) {
+ 		dev_err(dev, "Failed to add clock provider\n");
++		return ret;
++	}
++
++	sdhci_arasan->sdcardclk = devm_clk_get(dev, "clk_sdcard");
++	if (IS_ERR(sdhci_arasan->sdcardclk)) {
++		dev_err(dev, "sdcardclk clock not found.\n");
++		ret = PTR_ERR(sdhci_arasan->sdcardclk);
++	}
+ 
+ 	return ret;
+ }
+-- 
+2.1.1
