@@ -1,142 +1,76 @@
-From: Manish Narani <MNARANI@xilinx.com>
-Subject: RE: [PATCH v2 09/11] firmware: xilinx: Add SDIO Tap Delay APIs
-Date: Tue, 2 Jul 2019 05:03:35 +0000
-Message-ID: <MN2PR02MB6029CA4163882081D7B8C255C1F80@MN2PR02MB6029.namprd02.prod.outlook.com>
-References: <1561958991-21935-1-git-send-email-manish.narani@xilinx.com>
- <1561958991-21935-10-git-send-email-manish.narani@xilinx.com>
- <BYAPR02MB599224BA6280EDF56870E1D8B8F90@BYAPR02MB5992.namprd02.prod.outlook.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v2 0/3] RK3288 Gamma LUT
+Date: Tue, 02 Jul 2019 08:26:22 -0300
+Message-ID: <3c68bf286d8b75ac339df0eab43d276667e073c2.camel@collabora.com>
+References: <20190621211346.1324-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <BYAPR02MB599224BA6280EDF56870E1D8B8F90@BYAPR02MB5992.namprd02.prod.outlook.com>
-Content-Language: en-US
+In-Reply-To: <20190621211346.1324-1-ezequiel@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jolly Shah <JOLLYS@xilinx.com>, "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>, "robh+dt@kernel.org" <robh+dt@kernel.org>, "mark.rutland@arm.com" <mark.rutland@arm.com>, "heiko@sntech.de" <heiko@sntech.de>, Michal Simek <michals@xilinx.com>, "adrian.hunter@intel.com" <adrian.hunter@intel.com>, "christoph.muellner@theobroma-systems.com" <christoph.muellner@theobroma-systems.com>, "philipp.tomsich@theobroma-systems.com" <philipp.tomsich@theobroma-systems.com>, "viresh.kumar@linaro.org" <viresh.kumar@linaro.org>, "scott.branden@broadcom.com" <scott.branden@broadcom.com>, "ayaka@soulik.info" <ayaka@soulik.info>, "kernel@esmil.dk" <kernel@esmil.dk>, "tony.xie@rock-chips.com" <tony.xie@rock-chips.com>, Rajan Vaja <RAJANV@xilinx.com>, Nava
-Cc: "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+To: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Sandy Huang <hjc@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>, Douglas Anderson <dianders@chromium.org>, Jacopo Mondi <jacopo@jmondi.org>, Ilia Mirkin <imirkin@alum.mit.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jolly,
+Hi Heiko,
 
+On Fri, 2019-06-21 at 18:13 -0300, Ezequiel Garcia wrote:
+> Let's support Gamma LUT configuration on RK3288 SoCs.
+> 
+> In order to do so, this series adds a new and optional
+> address resource.
+>     
+> A separate address resource is required because on this RK3288,
+> the LUT address is after the MMU address, which is requested
+> by the iommu driver. This prevents the DRM driver
+> from requesting an entire register space.
+> 
+> The current implementation works for RGB 10-bit tables, as that
+> is what seems to work on RK3288.
+> 
+> This has been tested on a Rock2 Square board, using
+> a hacked 'modetest' tool, with legacy and atomic APIs. 
+> 
+> Thanks,
+> Eze
+> 
+> Changes from v1:
+> * drop explicit linear LUT after finding a proper
+>   way to disable gamma correction.
+> * avoid setting gamma is the CRTC is not active.
+> * s/int/unsigned int as suggested by Jacopo.
+> * only enable color management and set gamma size
+>   if gamma LUT is supported, suggested by Doug.
+> * drop the reg-names usage, and instead just use indexed reg
+>   specifiers, suggested by Doug.
+> 
+> Changes from RFC:
+> * Request (an optional) address resource for the LUT.
+> * Add devicetree changes.
+> * Drop support for RK3399, which doesn't seem to work
+>   out of the box and needs more research.
+> * Support pass-thru setting when GAMMA_LUT is NULL.
+> * Add a check for the gamma size, as suggested by Ilia.
+> * Move gamma setting to atomic_commit_tail, as pointed
+>   out by Jacopo/Laurent, is the correct way.
+> 
+> Ezequiel Garcia (3):
+>   dt-bindings: display: rockchip: document VOP gamma LUT address
+>   drm/rockchip: Add optional support for CRTC gamma LUT
+>   ARM: dts: rockchip: Add RK3288 VOP gamma LUT address
+> 
+>  .../display/rockchip/rockchip-vop.txt         |   6 +-
+>  arch/arm/boot/dts/rk3288.dtsi                 |   4 +-
+>  drivers/gpu/drm/rockchip/rockchip_drm_fb.c    |   3 +
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.c   | 114 ++++++++++++++++++
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.h   |   7 ++
+>  drivers/gpu/drm/rockchip/rockchip_vop_reg.c   |   2 +
+>  6 files changed, 133 insertions(+), 3 deletions(-)
+> 
 
-> -----Original Message-----
-> From: Jolly Shah
-> Sent: Monday, July 1, 2019 11:36 PM
-> To: Manish Narani <MNARANI@xilinx.com>; ulf.hansson@linaro.org;
-> robh+dt@kernel.org; mark.rutland@arm.com; heiko@sntech.de; Michal Simek
-> <michals@xilinx.com>; adrian.hunter@intel.com;
-> christoph.muellner@theobroma-systems.com; philipp.tomsich@theobroma-
-> systems.com; viresh.kumar@linaro.org; scott.branden@broadcom.com;
-> ayaka@soulik.info; kernel@esmil.dk; tony.xie@rock-chips.com; Rajan Vaja
-> <RAJANV@xilinx.com>; Nava kishore Manne <navam@xilinx.com>;
-> mdf@kernel.org; Manish Narani <MNARANI@xilinx.com>; olof@lixom.net
-> Cc: linux-mmc@vger.kernel.org; devicetree@vger.kernel.org; linux-
-> kernel@vger.kernel.org; linux-arm-kernel@lists.infradead.org; linux-
-> rockchip@lists.infradead.org
-> Subject: RE: [PATCH v2 09/11] firmware: xilinx: Add SDIO Tap Delay APIs
->=20
-> Hi Manish,
->=20
-> > -----Original Message-----
-> > From: Manish Narani <manish.narani@xilinx.com>
-> > Sent: Sunday, June 30, 2019 10:30 PM
-> > To: ulf.hansson@linaro.org; robh+dt@kernel.org; mark.rutland@arm.com;
-> > heiko@sntech.de; Michal Simek <michals@xilinx.com>;
-> > adrian.hunter@intel.com; christoph.muellner@theobroma-systems.com;
-> > philipp.tomsich@theobroma-systems.com; viresh.kumar@linaro.org;
-> > scott.branden@broadcom.com; ayaka@soulik.info; kernel@esmil.dk;
-> > tony.xie@rock-chips.com; Rajan Vaja <RAJANV@xilinx.com>; Jolly Shah
-> > <JOLLYS@xilinx.com>; Nava kishore Manne <navam@xilinx.com>;
-> > mdf@kernel.org; Manish Narani <MNARANI@xilinx.com>; olof@lixom.net
-> > Cc: linux-mmc@vger.kernel.org; devicetree@vger.kernel.org; linux-
-> > kernel@vger.kernel.org; linux-arm-kernel@lists.infradead.org; linux-
-> > rockchip@lists.infradead.org
-> > Subject: [PATCH v2 09/11] firmware: xilinx: Add SDIO Tap Delay APIs
-> >
-> > Add APIs for setting SDIO Tap Delays on ZynqMP platform.
-> >
-> > Signed-off-by: Manish Narani <manish.narani@xilinx.com>
-> > ---
-> >  drivers/firmware/xilinx/zynqmp.c     | 48
-> > ++++++++++++++++++++++++++++++++++++
-> >  include/linux/firmware/xlnx-zynqmp.h | 15 ++++++++++-
-> >  2 files changed, 62 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/firmware/xilinx/zynqmp.c
-> b/drivers/firmware/xilinx/zynqmp.c
-> > index fd3d837..b81f1be 100644
-> > --- a/drivers/firmware/xilinx/zynqmp.c
-> > +++ b/drivers/firmware/xilinx/zynqmp.c
-> > @@ -664,6 +664,52 @@ static int zynqmp_pm_set_requirement(const u32
-> > node, const u32 capabilities,
-> >  				   qos, ack, NULL);
-> >  }
-> >
-> > +/**
-> > + * zynqmp_pm_sdio_out_setphase() - PM call to set clock output delays =
-for
-> SD
-> > + * @device_id:		Device ID of the SD controller
-> > + * @tap_delay:		Tap Delay value for output clock
-> > + *
-> > + * This API function is to be used for setting the clock output delays=
- for SD
-> > + * clock.
-> > + *
-> > + * Return: Returns status, either success or error+reason
-> > + */
-> > +static int zynqmp_pm_sdio_out_setphase(u32 device_id, u8 tap_delay)
-> > +{
-> > +	u32 node_id =3D (!device_id) ? NODE_SD_0 : NODE_SD_1;
-> > +	int ret;
-> > +
-> > +	ret =3D zynqmp_pm_ioctl(node_id, IOCTL_SET_SD_TAPDELAY,
-> > +			      PM_TAPDELAY_OUTPUT, tap_delay, NULL);
-> > +	if (ret)
-> > +		pr_err("Error setting Output Tap Delay\n");
-> > +
-> > +	return ret;
-> > +}
-> > +
-> > +/**
-> > + * zynqmp_pm_sdio_in_setphase() - PM call to set clock input delays fo=
-r SD
-> > + * @device_id:		Device ID of the SD controller
-> > + * @tap_delay:		Tap Delay value for input clock
-> > + *
-> > + * This API function is to be used for setting the clock input delays =
-for SD
-> > + * clock.
-> > + *
-> > + * Return: Returns status, either success or error+reason
-> > + */
-> > +static int zynqmp_pm_sdio_in_setphase(u32 device_id, u8 tap_delay)
-> > +{
-> > +	u32 node_id =3D (!device_id) ? NODE_SD_0 : NODE_SD_1;
-> > +	int ret;
-> > +
-> > +	ret =3D zynqmp_pm_ioctl(node_id, IOCTL_SET_SD_TAPDELAY,
-> > +			      PM_TAPDELAY_INPUT, tap_delay, NULL);
-> > +	if (ret)
-> > +		pr_err("Error setting Input Tap Delay\n");
-> > +
-> > +	return ret;
-> > +}
-> > +
-> >  static const struct zynqmp_eemi_ops eemi_ops =3D {
-> >  	.get_api_version =3D zynqmp_pm_get_api_version,
-> >  	.get_chipid =3D zynqmp_pm_get_chipid,
-> > @@ -687,6 +733,8 @@ static const struct zynqmp_eemi_ops eemi_ops =3D {
-> >  	.set_requirement =3D zynqmp_pm_set_requirement,
-> >  	.fpga_load =3D zynqmp_pm_fpga_load,
-> >  	.fpga_get_status =3D zynqmp_pm_fpga_get_status,
-> > +	.sdio_out_setphase =3D zynqmp_pm_sdio_out_setphase,
-> > +	.sdio_in_setphase =3D zynqmp_pm_sdio_in_setphase,
->=20
-> Are these eemi APIs? You are using ioctl eemi api to set the delay.
-
-Yes, I am making these eemi APIs and calling ioctl API from these. This is =
-to make the SD driver code more readable.
+Any other feedback on this series? If you are happy with the approach now,
+I am wondering if you can take it or if it's way too late.
 
 Thanks,
-Manish
+Eze
