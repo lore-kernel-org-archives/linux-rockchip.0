@@ -1,76 +1,73 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH v2 0/3] RK3288 Gamma LUT
-Date: Tue, 02 Jul 2019 08:26:22 -0300
-Message-ID: <3c68bf286d8b75ac339df0eab43d276667e073c2.camel@collabora.com>
-References: <20190621211346.1324-1-ezequiel@collabora.com>
+From: Emil Velikov <emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v3 00/22] Associate ddc adapters with connectors
+Date: Tue, 2 Jul 2019 16:08:30 +0100
+Message-ID: <CACvgo502Yt90z9Tf+a8f_n3pgFa_NxFQ1LnEGmukT_jB2XaFzA__23012.326871843$1562080120$gmane$org@mail.gmail.com>
+References: <3fb19371-db7d-f9dc-31a7-1ccd126f6784@collabora.com>
+ <cover.1561735433.git.andrzej.p@collabora.com>
+ <20190628164514.GS12905@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190621211346.1324-1-ezequiel@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Sandy Huang <hjc@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>, Douglas Anderson <dianders@chromium.org>, Jacopo Mondi <jacopo@jmondi.org>, Ilia Mirkin <imirkin@alum.mit.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190628164514.GS12905-dv86pmgwkMBes7Z6vYuT8azUEOm+Xw19@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, ML dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Alex Deucher <alexander.deucher-5C7GfCeVMHo@public.gmane.org>, =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig-5C7GfCeVMHo@public.gmane.org>, "David (ChunMing) Zhou" <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Dave Airlie <airlied-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Sean Paul <sean-p7yTbzM4H96eqtR555YLDQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <s.h>
+Cc: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+On Fri, 28 Jun 2019 at 17:45, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org> wrote:
+>
+> On Fri, Jun 28, 2019 at 06:01:14PM +0200, Andrzej Pietrasiewicz wrote:
+> > It is difficult for a user to know which of the i2c adapters is for which
+> > drm connector. This series addresses this problem.
+> >
+> > The idea is to have a symbolic link in connector's sysfs directory, e.g.:
+> >
+> > ls -l /sys/class/drm/card0-HDMI-A-1/ddc
+> > lrwxrwxrwx 1 root root 0 Jun 24 10:42 /sys/class/drm/card0-HDMI-A-1/ddc \
+> >       -> ../../../../soc/13880000.i2c/i2c-2
+> >
+> > The user then knows that their card0-HDMI-A-1 uses i2c-2 and can e.g. run
+> > ddcutil:
+> >
+> > ddcutil -b 2 getvcp 0x10
+> > VCP code 0x10 (Brightness                    ): current value =    90, max value =   100
+> >
+> > The first patch in the series adds struct i2c_adapter pointer to struct
+> > drm_connector. If the field is used by a particular driver, then an
+> > appropriate symbolic link is created by the generic code, which is also added
+> > by this patch.
+> >
+> > The second patch is an example of how to convert a driver to this new scheme.
+> >
+> > v1..v2:
+> >
+> > - used fixed name "ddc" for the symbolic link in order to make it easy for
+> > userspace to find the i2c adapter
+> >
+> > v2..v3:
+> >
+> > - converted as many drivers as possible.
+> >
+> > PATCHES 3/22-22/22 SHOULD BE CONSIDERED RFC!
+>
+> There's a lot more drivers than this I think (i915 is absent as an
+> example, but there should be tons more). Why are those not possible?
 
-On Fri, 2019-06-21 at 18:13 -0300, Ezequiel Garcia wrote:
-> Let's support Gamma LUT configuration on RK3288 SoCs.
-> 
-> In order to do so, this series adds a new and optional
-> address resource.
->     
-> A separate address resource is required because on this RK3288,
-> the LUT address is after the MMU address, which is requested
-> by the iommu driver. This prevents the DRM driver
-> from requesting an entire register space.
-> 
-> The current implementation works for RGB 10-bit tables, as that
-> is what seems to work on RK3288.
-> 
-> This has been tested on a Rock2 Square board, using
-> a hacked 'modetest' tool, with legacy and atomic APIs. 
-> 
-> Thanks,
-> Eze
-> 
-> Changes from v1:
-> * drop explicit linear LUT after finding a proper
->   way to disable gamma correction.
-> * avoid setting gamma is the CRTC is not active.
-> * s/int/unsigned int as suggested by Jacopo.
-> * only enable color management and set gamma size
->   if gamma LUT is supported, suggested by Doug.
-> * drop the reg-names usage, and instead just use indexed reg
->   specifiers, suggested by Doug.
-> 
-> Changes from RFC:
-> * Request (an optional) address resource for the LUT.
-> * Add devicetree changes.
-> * Drop support for RK3399, which doesn't seem to work
->   out of the box and needs more research.
-> * Support pass-thru setting when GAMMA_LUT is NULL.
-> * Add a check for the gamma size, as suggested by Ilia.
-> * Move gamma setting to atomic_commit_tail, as pointed
->   out by Jacopo/Laurent, is the correct way.
-> 
-> Ezequiel Garcia (3):
->   dt-bindings: display: rockchip: document VOP gamma LUT address
->   drm/rockchip: Add optional support for CRTC gamma LUT
->   ARM: dts: rockchip: Add RK3288 VOP gamma LUT address
-> 
->  .../display/rockchip/rockchip-vop.txt         |   6 +-
->  arch/arm/boot/dts/rk3288.dtsi                 |   4 +-
->  drivers/gpu/drm/rockchip/rockchip_drm_fb.c    |   3 +
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.c   | 114 ++++++++++++++++++
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.h   |   7 ++
->  drivers/gpu/drm/rockchip/rockchip_vop_reg.c   |   2 +
->  6 files changed, 133 insertions(+), 3 deletions(-)
-> 
+While I fully agree there are more drivers, at the same time I wonder.
+Is it a good idea to expect all of those to be fixed in one go and
+block patches addressing 15+ drivers?
 
-Any other feedback on this series? If you are happy with the approach now,
-I am wondering if you can take it or if it's way too late.
+Personally I think it's reasonable to have this, alongside a TODO
+entry for other drivers.
 
-Thanks,
-Eze
+HTH
+Emil
