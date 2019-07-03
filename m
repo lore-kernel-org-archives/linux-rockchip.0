@@ -1,37 +1,49 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v2 1/2] media: uapi: Add VP8 stateless decoder API
-Date: Wed, 3 Jul 2019 18:19:32 +0900
-Message-ID: <CAAFQd5CG3LuT3tq40USFw4D7gkN_zP1j-YY+9JTqxoBjrGOwJg@mail.gmail.com>
-References: <20190702170016.5210-1-ezequiel@collabora.com> <20190702170016.5210-2-ezequiel@collabora.com>
+From: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] drm/rockchip: fix VOP_WIN_GET macro
+Date: Wed,  3 Jul 2019 10:51:11 +0100
+Message-ID: <20190703095111.29117-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190702170016.5210-2-ezequiel@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Linux Media Mailing List <linux-media@vger.kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>, kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Pawel Osciak <posciak@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Ezequiel,
+Commit 9a61c54b9bff ("drm/rockchip: vop: group vop registers") seems to
+have unintentionally changed the defintion of this macro.  Since it is
+unused, this was not spotted but any attempt to use it results in
+compilation errors.
 
-On Wed, Jul 3, 2019 at 2:00 AM Ezequiel Garcia <ezequiel@collabora.com> wrote:
->
-> From: Pawel Osciak <posciak@chromium.org>
->
-> Add the parsed VP8 frame pixel format and controls, to be used
-> with the new stateless decoder API for VP8 to provide parameters
-> for accelerator (aka stateless) codecs.
->
-> Signed-off-by: Pawel Osciak <posciak@chromium.org>
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> --
-> Changes from v1:
-> * Move 1-bit fields to flags in the respective structures.
-> * Add padding fields to make all structures 8-byte aligned.
-> * Reorder fields where needed to avoid padding as much as possible.
-> * Fix documentation as needed.
+Revert to the previous definition.
 
-Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+Fixes: 9a61c54b9bff ("drm/rockchip: vop: group vop registers")
+Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Best regards,
-Tomasz
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 09a790c2f3a1..a3430da3c008 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -79,7 +79,7 @@
+ 		vop_get_intr_type(vop, &vop->data->intr->name, type)
+ 
+ #define VOP_WIN_GET(vop, win, name) \
+-		vop_read_reg(vop, win->offset, win->phy->name)
++		vop_read_reg(vop, win->base, &win->phy->name)
+ 
+ #define VOP_WIN_HAS_REG(win, name) \
+ 	(!!(win->phy->name.mask))
+-- 
+2.22.0
