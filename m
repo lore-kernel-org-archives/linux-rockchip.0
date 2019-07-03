@@ -1,125 +1,152 @@
-From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] media: hantro: Add support for VP8 decoding on
- rk3288
-Date: Wed, 03 Jul 2019 16:26:46 +0200
-Message-ID: <1562164006.4604.7.camel@pengutronix.de>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH v2 1/2] media: uapi: Add VP8 stateless decoder API
+Date: Wed, 03 Jul 2019 16:29:09 +0200
+Message-ID: <1562164149.4604.9.camel@pengutronix.de>
 References: <20190702170016.5210-1-ezequiel@collabora.com>
- <20190702170016.5210-3-ezequiel@collabora.com>
+         <20190702170016.5210-2-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190702170016.5210-3-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
-Cc: fbuergisser-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, ZhiChao Yu <zhichao.yu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190702170016.5210-2-ezequiel@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, Hans Verkuil <hans.verkuil@cisco.com>
+Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org, Pawel Osciak <posciak@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRXplcXVpZWwKCk9uIFR1ZSwgMjAxOS0wNy0wMiBhdCAxNDowMCAtMDMwMCwgRXplcXVpZWwg
-R2FyY2lhIHdyb3RlOgo+IEZyb206IFpoaUNoYW8gWXUgPHpoaWNoYW8ueXVAcm9jay1jaGlwcy5j
-b20+Cj4gCj4gSW50cm9kdWNlIFZQOCBkZWNvZGluZyBzdXBwb3J0IGluIFJLMzI4OC4KPiAKPiBT
-aWduZWQtb2ZmLWJ5OiBaaGlDaGFvIFl1IDx6aGljaGFvLnl1QHJvY2stY2hpcHMuY29tPgo+IFNp
-Z25lZC1vZmYtYnk6IFRvbWFzeiBGaWdhIDx0ZmlnYUBjaHJvbWl1bS5vcmc+Cj4gU2lnbmVkLW9m
-Zi1ieTogQm9yaXMgQnJlemlsbG9uIDxib3Jpcy5icmV6aWxsb25AY29sbGFib3JhLmNvbT4KPiBT
-aWduZWQtb2ZmLWJ5OiBFemVxdWllbCBHYXJjaWEgPGV6ZXF1aWVsQGNvbGxhYm9yYS5jb20+CgpJ
-IGhhdmUganVzdCB0cmllZCB0aGlzICh3aXRoIGJyb2tlbiB1c2Vyc3BhY2UpIGFuZCBnb3QgYSBj
-cmFzaCBpbgpjZmdfcGFydHMsIHNlZSBiZWxvdyBmb3IgZGV0YWlsczoKClvCoMKgMTE0LjMwODc1
-N10gVW5hYmxlIHRvIGhhbmRsZSBrZXJuZWwgcGFnaW5nIHJlcXVlc3QgYXQgdmlydHVhbCBhZGRy
-ZXNzIGZmZmYwMDAwMTEyYjAwMDIKW8KgwqAxMTQuMzE2NjkxXSBNZW0gYWJvcnQgaW5mbzoKW8Kg
-wqAxMTQuMzE5NTAzXcKgwqDCoEVTUiA9IDB4OTYwMDAwMjEKW8KgwqAxMTQuMzIyNTc2XcKgwqDC
-oEV4Y2VwdGlvbiBjbGFzcyA9IERBQlQgKGN1cnJlbnQgRUwpLCBJTCA9IDMyIGJpdHMKW8KgwqAx
-MTQuMzI4NTEzXcKgwqDCoFNFVCA9IDAsIEZuViA9IDAKW8KgwqAxMTQuMzMxNTg2XcKgwqDCoEVB
-ID0gMCwgUzFQVFcgPSAwClvCoMKgMTE0LjMzNDc0NF0gRGF0YSBhYm9ydCBpbmZvOgpbwqDCoDEx
-NC4zMzc2MjZdwqDCoMKgSVNWID0gMCwgSVNTID0gMHgwMDAwMDAyMQpbwqDCoDExNC4zNDE0Nzld
-wqDCoMKgQ00gPSAwLCBXblIgPSAwClvCoMKgMTE0LjM0NDQ2Nl0gc3dhcHBlciBwZ3RhYmxlOiA0
-ayBwYWdlcywgNDgtYml0IFZBcywgcGdkcD0wMDAwMDAwMDQwZDYxMDAwClvCoMKgMTE0LjM1MTE4
-NV0gW2ZmZmYwMDAwMTEyYjAwMDJdIHBnZD0wMDAwMDAwMGRmZmZmMDAzLCBwdWQ9MDAwMDAwMDBk
-ZmZmZTAwMywgcG1kPTAwMDAwMDAwZGJmMzYwMDMsIHB0ZT0wMGU4MDAwMDM4MzAwNzA3ClvCoMKg
-MTE0LjM2MTgyMl0gSW50ZXJuYWwgZXJyb3I6IE9vcHM6IDk2MDAwMDIxIFsjMV0gUFJFRU1QVCBT
-TVAKW8KgwqAxMTQuMzY3Mzk0XSBNb2R1bGVzIGxpbmtlZCBpbjogY3JjdDEwZGlmX2NlIGhhbnRy
-b192cHUoQykgdmlkZW9idWYyX2RtYV9jb250aWcgdjRsMl9tZW0ybWVtClvCoMKgMTE0LjM3NTc0
-OV0gUHJvY2VzcyBmZm1wZWcgKHBpZDogMTg3MSwgc3RhY2sgbGltaXQgPSAweDAwMDAwMDAwNTlk
-ODQ2ZTQpClvCoMKgMTE0LjM4MjQ1MF0gQ1BVOiAxIFBJRDogMTg3MSBDb21tOiBmZm1wZWcgVGFp
-bnRlZDogR8KgwqDCoMKgwqDCoMKgwqDCoEPCoMKgwqDCoMKgwqDCoMKgNS4xLjE2LTIwMTkwNzAz
-LTEgIzIKW8KgwqAxMTQuMzkwNzEwXSBIYXJkd2FyZSBuYW1lOiBOWFAgaS5NWDhNUSBFVksgKERU
-KQpbwqDCoDExNC4zOTUyNDBdIHBzdGF0ZTogNDAwMDAwMDUgKG5aY3YgZGFpZiAtUEFOIC1VQU8p
-ClvCoMKgMTE0LjQwMDA0Ml0gcGMgOiBoYW50cm9fZzFfdnA4X2RlY19ydW4rMHgxMTc4LzB4MThh
-MCBbaGFudHJvX3ZwdV0KW8KgwqAxMTQuNDA2MTM5XSBsciA6IGhhbnRyb19nMV92cDhfZGVjX3J1
-bisweDExNjAvMHgxOGEwIFtoYW50cm9fdnB1XQpbwqDCoDExNC40MTIyMjldIHNwIDogZmZmZjAw
-MDAxMWFlM2MxMApbwqDCoDExNC40MTU1NDFdIHgyOTogZmZmZjAwMDAxMWFlM2MxMCB4Mjg6IGZm
-ZmYwMDAwMDhhMTU0YzjCoApbwqDCoDExNC40MjA4NTNdIHgyNzogMDAwMDAwMDA3MDMzYjAzOSB4
-MjY6IGZmZmYwMDAwMDhhMTMwZjDCoApbwqDCoDExNC40MjYxNjRdIHgyNTogMDAwMDAwMDAwMDAw
-MDAwYyB4MjQ6IGZmZmYwMDAwMDhhMTUzZjDCoApbwqDCoDExNC40MzE0NzRdIHgyMzogZmZmZjgw
-MDA5OWEwZDg4MCB4MjI6IGZmZmYwMDAwMDhhMTMxNTDCoApbwqDCoDExNC40MzY3ODVdIHgyMTog
-MDAwMDAwMDAwYzViODhkMCB4MjA6IGZmZmY4MDAwOWI3ZDY1YTDCoApbwqDCoDExNC40NDIwOTZd
-IHgxOTogZmZmZjgwMDA5OWJkMzgwMCB4MTg6IDAwMDAwMDAwMDAwMDAwMTDCoApbwqDCoDExNC40
-NDc0MDddIHgxNzogMDAwMDAwMDAwMDAwMDAwMSB4MTY6IDAwMDAwMDAwMDAwMDAwMDfCoApbwqDC
-oDExNC40NTI3MTddIHgxNTogZmZmZmZmZmZmZmZmZmZmZiB4MTQ6IGZmZmYwMDAwMTBlOGM1YzjC
-oApbwqDCoDExNC40NTgwMjhdIHgxMzogZmZmZjAwMDA5MWFlMzk4NyB4MTI6IGZmZmYwMDAwMTEy
-YjAwMDLCoApbwqDCoDExNC40NjMzMzldIHgxMTogZmZmZjAwMDAxMGVhNDAwMCB4MTA6IGZmZmYw
-MDAwMTFhZTM5MTDCoApbwqDCoDExNC40Njg2NDldIHg5IDogMDAwMDAwMDBmZmZmZmZkMCB4OCA6
-IDAwMDAwMDAwZWRjYjg4ZDDCoApbwqDCoDExNC40NzM5NjBdIHg3IDogMDAwMDAwMDAwMDAwMDEy
-NSB4NiA6IGZmZmYwMDAwMTBlOGNkNjDCoApbwqDCoDExNC40NzkyNzBdIHg1IDogZmZmZjAwMDAx
-MGU4YzAwMCB4NCA6IDAwMDAwMDAwMDAwMDAwMDDCoApbwqDCoDExNC40ODQ1ODBdIHgzIDogMDAw
-MDAwMDAwMDAwMDAwMiB4MiA6IDgxMjdkMTQwYTMxOTZkMDDCoApbwqDCoDExNC40ODk4OTFdIHgx
-IDogMDAwMDAwMDAwMDAwMDAwMCB4MCA6IDAwMDAwMDAwZTE3MDAwMDDCoApbwqDCoDExNC40OTUy
-MDFdIENhbGwgdHJhY2U6ClvCoMKgMTE0LjQ5NzY1Ml3CoMKgaGFudHJvX2cxX3ZwOF9kZWNfcnVu
-KzB4MTE3OC8weDE4YTAgW2hhbnRyb192cHVdClvCoMKgMTE0LjUwMzQwMV3CoMKgZGV2aWNlX3J1
-bisweGFjLzB4YzAgW2hhbnRyb192cHVdClvCoMKgMTE0LjUwNzg0OV3CoMKgdjRsMl9tMm1fdHJ5
-X3J1bisweDljLzB4MTEwIFt2NGwyX21lbTJtZW1dClvCoMKgMTE0LjUxMzA3N13CoMKgdjRsMl9t
-Mm1fcmVxdWVzdF9xdWV1ZSsweGQ0LzB4MTMwIFt2NGwyX21lbTJtZW1dClvCoMKgMTE0LjUxODgy
-Nl3CoMKgbWVkaWFfcmVxdWVzdF9pb2N0bCsweDFlOC8weDJkMApbwqDCoDExNC41MjMwOTddwqDC
-oGRvX3Zmc19pb2N0bCsweGM0LzB4ODcwClvCoMKgMTE0LjUyNjY3MV3CoMKga3N5c19pb2N0bCsw
-eDg0LzB4YzAKW8KgwqAxMTQuNTI5OTg1XcKgwqBfX2FybTY0X3N5c19pb2N0bCsweDI4LzB4NDAK
-W8KgwqAxMTQuNTMzOTA4XcKgwqBlbDBfc3ZjX2NvbW1vbi5jb25zdHByb3AuMCsweDk4LzB4MTcw
-ClvCoMKgMTE0LjUzODY5OF3CoMKgZWwwX3N2Y19oYW5kbGVyKzB4MmMvMHg0MApbwqDCoDExNC41
-NDI0NDddwqDCoGVsMF9zdmMrMHg4LzB4YwpbwqDCoDExNC41NDUzMjhdIENvZGU6IDBiMTUwMDA4
-IGI5NDAwMmMzIDEyMWQ3MTA4IDhiMjM0MThjIChiOTQwMDE4YynCoApbwqDCoDExNC41NTE0MjFd
-IC0tLVsgZW5kIHRyYWNlIGI5YWQ2YjBmNzI5MDJiYTUgXS0tLQoKPiAtLS0KPiBDaGFuZ2VzIGZy
-b20gdjE6Cj4gKiBQbGFjZSBvcGVyYXRvcnMgYXQgdGhlIGVuZCBvZiBlYWNoIGxpbmUuCj4gKiBV
-cGRhdGUgdG8gdUFQSSBjaGFuZ2VzLgo+IC0tLQo+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFu
-dHJvL01ha2VmaWxlICAgICAgICAgfCAgIDQgKy0KPiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hh
-bnRyby9oYW50cm8uaCAgICAgICAgIHwgICA1ICsKPiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hh
-bnRyby9oYW50cm9fZHJ2LmMgICAgIHwgICA2ICsKPiAgLi4uL3N0YWdpbmcvbWVkaWEvaGFudHJv
-L2hhbnRyb19nMV92cDhfZGVjLmMgIHwgNTUyICsrKysrKysrKysrKysrKysrKwo+ICBkcml2ZXJz
-L3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19ody5oICAgICAgfCAgMTcgKwo+ICBkcml2ZXJz
-L3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb192NGwyLmMgICAgfCAgIDEgKwo+ICBkcml2ZXJz
-L3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb192cDguYyAgICAgfCAxODggKysrKysrCj4gIGRy
-aXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vcmszMjg4X3ZwdV9ody5jICB8ICAyMiArLQo+ICA4
-IGZpbGVzIGNoYW5nZWQsIDc5MyBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+ICBjcmVh
-dGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzFfdnA4
-X2RlYy5jCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJv
-L2hhbnRyb192cDguYwo+IApbLi4uXQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVk
-aWEvaGFudHJvL2hhbnRyb19nMV92cDhfZGVjLmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFu
-dHJvL2hhbnRyb19nMV92cDhfZGVjLmMKPiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+IGluZGV4IDAw
-MDAwMDAwMDAwMC4uMzFkMzFmYWFlNGFhCj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL2RyaXZlcnMv
-c3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cxX3ZwOF9kZWMuYwo+IEBAIC0wLDAgKzEsNTUy
-IEBAClsuLi5dCj4gKy8qIGRjdCBwYXJ0aXRpb24gYmFzZSBhZGRyZXNzIHJlZ3MgKi8KPiArc3Rh
-dGljIGNvbnN0IHN0cnVjdCB2cDhfZGVjX3JlZyB2cDhfZGVjX2RjdF9iYXNlWzhdID0gewpbLi4u
-XQo+ICsvKiBkY3QgcGFydGl0aW9uIHN0YXJ0IGJpdHMgcmVncyAqLwo+ICtzdGF0aWMgY29uc3Qg
-c3RydWN0IHZwOF9kZWNfcmVnIHZwOF9kZWNfZGN0X3N0YXJ0X2JpdHNbOF0gPSB7CgpTbyB0aGVz
-ZSBhcnJheXMgY2FuIGJlIGRpcmVjdGx5IGluZGV4ZWQgd2l0aCB2YWx1ZXMgc21hbGxlciB0aGFu
-IDggLi4uCgpbLi4uXQo+ICtzdGF0aWMgdm9pZCBjZmdfcGFydHMoc3RydWN0IGhhbnRyb19jdHgg
-KmN0eCwKPiArCQkgICAgICBjb25zdCBzdHJ1Y3QgdjRsMl9jdHJsX3ZwOF9mcmFtZV9oZWFkZXIg
-KmhkcikKPiArewpbLi4uXQo+ICsJLyogZGN0IHBhcnRpdGlvbnMgYmFzZSBhZGRyZXNzICovCj4g
-Kwlmb3IgKGkgPSAwOyBpIDwgaGRyLT5udW1fZGN0X3BhcnRzOyBpKyspIHsKPiArCQl1MzIgYnl0
-ZV9vZmZzZXQgPSBkY3RfcGFydF9vZmZzZXQgKyBkY3Rfc2l6ZV9wYXJ0X3NpemUgKyBjb3VudDsK
-PiArCQl1MzIgYmFzZV9hZGRyID0gYnl0ZV9vZmZzZXQgKyBzcmNfZG1hOwo+ICsKPiArCQl2cDhf
-ZGVjX3JlZ193cml0ZSh2cHUsICZ2cDhfZGVjX2RjdF9iYXNlW2ldLAo+ICsJCQkJICBiYXNlX2Fk
-ZHIgJiAofkRFQ184MTkwX0FMSUdOX01BU0spKTsKPiArCj4gKwkJdnA4X2RlY19yZWdfd3JpdGUo
-dnB1LCAmdnA4X2RlY19kY3Rfc3RhcnRfYml0c1tpXSwKPiArCQkJCSAgKGJ5dGVfb2Zmc2V0ICYg
-REVDXzgxOTBfQUxJR05fTUFTSykgKiA4KTsKCi4uLiBhbmQgaGVyZSB0aGV5IGFyZSBpbmRleGVk
-IHdpdGggaSwgd2hpY2ggaXMgb25seSBndWFyYW50ZWVkIHRvIGJlCnNtYWxsZXIgdGhhbiBoZHIt
-Pm51bV9kY3RfcGFydHMuIG51bV9kY3RfcGFydHMgaXMgcGFzc2VkIGZyb20gdXNlcnNwYWNlCnZp
-YSB2NGwyLWN0cmwsIGl0IGNhbiBiZSBhcyBsYXJnZSBhcyAyNTUuCgpyZWdhcmRzClBoaWxpcHAK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Tue, 2019-07-02 at 14:00 -0300, Ezequiel Garcia wrote:
+> From: Pawel Osciak <posciak@chromium.org>
+> 
+> Add the parsed VP8 frame pixel format and controls, to be used
+> with the new stateless decoder API for VP8 to provide parameters
+> for accelerator (aka stateless) codecs.
+> 
+> Signed-off-by: Pawel Osciak <posciak@chromium.org>
+> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> --
+> Changes from v1:
+> * Move 1-bit fields to flags in the respective structures.
+> * Add padding fields to make all structures 8-byte aligned.
+> * Reorder fields where needed to avoid padding as much as possible.
+> * Fix documentation as needed.
+> 
+> Changes from RFC:
+> * Make sure the uAPI has the same size on x86, x86_64, arm and arm64.
+> * Move entropy coder state fields to a struct.
+> * Move key_frame field to the flags.
+> * Remove unneeded first_part_offset field.
+> * Add documentation.
+> ---
+>  Documentation/media/uapi/v4l/biblio.rst       |  10 +
+>  .../media/uapi/v4l/ext-ctrls-codec.rst        | 323 ++++++++++++++++++
+>  .../media/uapi/v4l/pixfmt-compressed.rst      |  20 ++
+>  drivers/media/v4l2-core/v4l2-ctrls.c          |   8 +
+>  drivers/media/v4l2-core/v4l2-ioctl.c          |   1 +
+>  include/media/v4l2-ctrls.h                    |   3 +
+>  include/media/vp8-ctrls.h                     | 110 ++++++
+>  7 files changed, 475 insertions(+)
+>  create mode 100644 include/media/vp8-ctrls.h
+> 
+> diff --git a/Documentation/media/uapi/v4l/biblio.rst b/Documentation/media/uapi/v4l/biblio.rst
+> index 8f4eb8823d82..ad2ff258afa8 100644
+> --- a/Documentation/media/uapi/v4l/biblio.rst
+> +++ b/Documentation/media/uapi/v4l/biblio.rst
+> @@ -395,3 +395,13 @@ colimg
+>  :title:     Color Imaging: Fundamentals and Applications
+>  
+>  :author:    Erik Reinhard et al.
+> +
+> +.. _vp8:
+> +
+> +VP8
+> +===
+> +
+> +
+> +:title:     RFC 6386: "VP8 Data Format and Decoding Guide"
+> +
+> +:author:    J. Bankoski et al.
+> diff --git a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> index d6ea2ffd65c5..aef335f175cd 100644
+> --- a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> +++ b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> @@ -2234,6 +2234,329 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
+>      Quantization parameter for a P frame for FWHT. Valid range: from 1
+>      to 31.
+>  
+> +.. _v4l2-mpeg-vp8:
+> +
+> +``V4L2_CID_MPEG_VIDEO_VP8_FRAME_HEADER (struct)``
+> +    Specifies the frame parameters for the associated VP8 parsed frame data.
+> +    This includes the necessary parameters for
+> +    configuring a stateless hardware decoding pipeline for VP8.
+> +    The bitstream parameters are defined according to :ref:`vp8`.
+> +
+> +    .. note::
+> +
+> +       This compound control is not yet part of the public kernel API and
+> +       it is expected to change.
+> +
+> +.. c:type:: v4l2_ctrl_vp8_frame_header
+> +
+> +.. cssclass:: longtable
+> +
+> +.. tabularcolumns:: |p{5.8cm}|p{4.8cm}|p{6.6cm}|
+> +
+> +.. flat-table:: struct v4l2_ctrl_vp8_frame_header
+> +    :header-rows:  0
+> +    :stub-columns: 0
+> +    :widths:       1 1 2
+> +
+> +    * - struct :c:type:`v4l2_vp8_segment_header`
+> +      - ``segment_header``
+> +      - Structure with segment-based adjustments metadata.
+> +    * - struct :c:type:`v4l2_vp8_loopfilter_header`
+> +      - ``loopfilter_header``
+> +      - Structure with loop filter level adjustments metadata.
+> +    * - struct :c:type:`v4l2_vp8_quantization_header`
+> +      - ``quant_header``
+> +      - Structure with VP8 dequantization indices metadata.
+> +    * - struct :c:type:`v4l2_vp8_entropy_header`
+> +      - ``entropy_header``
+> +      - Structure with VP8 entropy coder probabilities metadata.
+> +    * - struct :c:type:`v4l2_vp8_entropy_coder_state`
+> +      - ``coder_state``
+> +      - Structure with VP8 entropy coder state.
+> +    * - __u16
+> +      - ``width``
+> +      - The width of the frame. Must be set for all frames.
+> +    * - __u16
+> +      - ``height``
+> +      - The height of the frame. Must be set for all frames.
+> +    * - __u8
+> +      - ``horizontal_scale``
+> +      - Horizontal scaling factor.
+> +    * - __u8
+> +      - ``vertical_scaling factor``
+> +      - Vertical scale.
+> +    * - __u8
+> +      - ``version``
+> +      - Bitstream version.
+> +    * - __u8
+> +      - ``prob_skip_false``
+> +      - Indicates the probability that the macroblock is not skipped.
+> +    * - __u8
+> +      - ``prob_intra``
+> +      - Indicates the probability that a macroblock is intra-predicted.
+> +    * - __u8
+> +      - ``prob_last``
+> +      - Indicates the probability that the last reference frame is used
+> +        for inter-prediction
+> +    * - __u8
+> +      - ``prob_gf``
+> +      - Indicates the probability that the golden reference frame is used
+> +        for inter-prediction
+> +    * - __u8
+> +      - ``num_dct_parts``
+> +      - Number of DCT coefficients partitions.
+
+I assume this must be no larger than 8. Is this mandated by the spec? If
+so, should it be documented here and checked by v4l2-core?
+
+regards
+Philipp
