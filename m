@@ -1,60 +1,65 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH] soc: rockchip: work around clang warning
-Date: Wed, 3 Jul 2019 19:58:08 +0200
-Message-ID: <CAK8P3a098AZfkz0bxfgN_XXk7QSQYi1V-EEmqLjQPjzR7986aA@mail.gmail.com>
-References: <20190703153112.2767411-1-arnd@arndb.de> <20190703165919.GC118075@archlinux-epyc>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: [PATCH v7 01/14] media: videodev2.h, v4l2-ioctl: add rkisp1 meta buffer format
+Date: Wed,  3 Jul 2019 16:08:57 -0300
+Message-ID: <20190703190910.32633-2-helen.koike@collabora.com>
+References: <20190703190910.32633-1-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190703165919.GC118075@archlinux-epyc>
+In-Reply-To: <20190703190910.32633-1-helen.koike@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nathan Chancellor <natechancellor@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, arm-soc <arm@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, clang-built-linux <clang-built-linux@googlegroups.com>, Nick Desaulniers <ndesaulniers@google.com>, Nathan Huckleberry <nhuck@google.com>
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, jacob2.chen@rock-chips.com, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, zhengsq@rock-chips.com, Helen Koike <helen.koike@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Boris Brezillon <boris.brezillon@collabora.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Hans Verkuil <hverkuil@xs4all.nl>, =?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jul 3, 2019 at 6:59 PM Nathan Chancellor
-<natechancellor@gmail.com> wrote:
-> On Wed, Jul 03, 2019 at 05:30:59PM +0200, Arnd Bergmann wrote:
-> > clang emits a warning about a negative shift count for an
-> > unused part of a conditional constant expression:
-> >
-> > drivers/soc/rockchip/pm_domains.c:795:21: error: shift count is negative [-Werror,-Wshift-count-negative]
-> >         [RK3328_PD_VIO]         = DOMAIN_RK3328(-1, 8, 8, false),
-> >                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> > drivers/soc/rockchip/pm_domains.c:129:2: note: expanded from macro 'DOMAIN_RK3328'
-> >         DOMAIN_M(pwr, pwr, req, (req) + 10, req, wakeup)
-> >         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> > drivers/soc/rockchip/pm_domains.c:105:33: note: expanded from macro 'DOMAIN_M'
-> >         .status_mask = (status >= 0) ? BIT(status) : 0, \
-> >                                        ^~~~~~~~~~~
-> > include/linux/bits.h:6:24: note: expanded from macro 'BIT'
-> >
-> > This is a bug in clang that will be fixed in the future, but in order
-> > to build cleanly with clang-8, it would be helpful to shut up this
-> > warning. This file is the only instance reported by kernelci at the
-> > moment.
-> >
-> > The best solution I could come up with is to move the BIT() usage
-> > out of the macro into the instantiation, so we can avoid using
-> > BIT(-1).
-> >
-> > Link: https://bugs.llvm.org/show_bug.cgi?id=38789
-> > Signed-off-by: Arnd Bergmann <arnd@arndb.de>
->
-> Nick recently mentioned that Nathan was working on a fix on the clang
-> side. It might be worth holding off on this to see if it can make it
-> into LLVM 9, which will branch in about two weeks and be released at
-> the end of August (according to llvm.org).
+From: Shunqian Zheng <zhengsq@rock-chips.com>
 
-I think fixing it in llvm is a good idea regardless of the workaround.
-My main goal for the workaround is to get a clean kernelci build
-again, and it will probably take a little while to move that to a fixed
-clang-9 build (release or prerelease).
+Add the Rockchip ISP1 specific processing parameter format
+V4L2_META_FMT_RK_ISP1_PARAMS and metadata format
+V4L2_META_FMT_RK_ISP1_STAT_3A for 3A.
 
-> I don't feel strongly about it though so if this is going in:
->
-> Reviewed-by: Nathan Chancellor <natechancellor@gmail.com>
+Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
+Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
+Acked-by: Hans Verkuil <hans.verkuil@cisco.com>
+[update for upstream]
+Signed-off-by: Helen Koike <helen.koike@collabora.com>
 
-Thanks!
+---
 
-      Arnd
+Changes in v7:
+- s/IPU3/RK_ISP1
+
+ drivers/media/v4l2-core/v4l2-ioctl.c | 2 ++
+ include/uapi/linux/videodev2.h       | 4 ++++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+index b1f4b991dba6..248eb9d3bf42 100644
+--- a/drivers/media/v4l2-core/v4l2-ioctl.c
++++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+@@ -1308,6 +1308,8 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+ 	case V4L2_META_FMT_VSP1_HGO:	descr = "R-Car VSP1 1-D Histogram"; break;
+ 	case V4L2_META_FMT_VSP1_HGT:	descr = "R-Car VSP1 2-D Histogram"; break;
+ 	case V4L2_META_FMT_UVC:		descr = "UVC payload header metadata"; break;
++	case V4L2_META_FMT_RK_ISP1_PARAMS:	descr = "Rockchip ISP1 3A params"; break;
++	case V4L2_META_FMT_RK_ISP1_STAT_3A:	descr = "Rockchip ISP1 3A statistics"; break;
+ 
+ 	default:
+ 		/* Compressed formats */
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index 9d9705ceda76..e1fa8e3089f8 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -750,6 +750,10 @@ struct v4l2_pix_format {
+ #define V4L2_META_FMT_UVC         v4l2_fourcc('U', 'V', 'C', 'H') /* UVC Payload Header metadata */
+ #define V4L2_META_FMT_D4XX        v4l2_fourcc('D', '4', 'X', 'X') /* D4XX Payload Header metadata */
+ 
++/* Vendor specific - used for RK_ISP1 camera sub-system */
++#define V4L2_META_FMT_RK_ISP1_PARAMS	v4l2_fourcc('R', 'K', '1', 'P') /* Rockchip ISP1 params */
++#define V4L2_META_FMT_RK_ISP1_STAT_3A	v4l2_fourcc('R', 'K', '1', 'S') /* Rockchip ISP1 3A statistics */
++
+ /* priv field value to indicates that subsequent fields are valid. */
+ #define V4L2_PIX_FMT_PRIV_MAGIC		0xfeedcafe
+ 
+-- 
+2.20.1
