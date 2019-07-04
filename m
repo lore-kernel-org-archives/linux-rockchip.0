@@ -1,55 +1,46 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v7 04/14] media: rkisp1: add Rockchip MIPI Synopsys DPHY
- driver
-Date: Wed, 3 Jul 2019 17:16:10 -0300
-Message-ID: <91943d24-62e0-01a6-5589-0245b1f07b20@collabora.com>
-References: <20190703190910.32633-1-helen.koike@collabora.com>
- <20190703190910.32633-5-helen.koike@collabora.com>
- <alpine.DEB.2.21.1907032153410.1802@nanos.tec.linutronix.de>
+From: Olof Johansson <olof@lixom.net>
+Subject: Re: [PATCH] soc: rockchip: work around clang warning
+Date: Wed, 3 Jul 2019 19:20:43 -0700
+Message-ID: <20190704022043.gwcwasi6jni2qctm@localhost>
+References: <20190703153112.2767411-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <alpine.DEB.2.21.1907032153410.1802@nanos.tec.linutronix.de>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20190703153112.2767411-1-arnd@arndb.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Thomas Gleixner <tglx@linutronix.de>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, jacob2.chen@rock-chips.com, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, zhengsq@rock-chips.com, Zheng Yang <zhengyang@rock-chips.com>, Kishon Vijay Abraham I <kishon@ti.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Heiko Stuebner <heiko@sntech.de>, arm@kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, clang-built-linux@googlegroups.com
 List-Id: linux-rockchip.vger.kernel.org
 
+On Wed, Jul 03, 2019 at 05:30:59PM +0200, Arnd Bergmann wrote:
+> clang emits a warning about a negative shift count for an
+> unused part of a conditional constant expression:
+> 
+> drivers/soc/rockchip/pm_domains.c:795:21: error: shift count is negative [-Werror,-Wshift-count-negative]
+>         [RK3328_PD_VIO]         = DOMAIN_RK3328(-1, 8, 8, false),
+>                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> drivers/soc/rockchip/pm_domains.c:129:2: note: expanded from macro 'DOMAIN_RK3328'
+>         DOMAIN_M(pwr, pwr, req, (req) + 10, req, wakeup)
+>         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> drivers/soc/rockchip/pm_domains.c:105:33: note: expanded from macro 'DOMAIN_M'
+>         .status_mask = (status >= 0) ? BIT(status) : 0, \
+>                                        ^~~~~~~~~~~
+> include/linux/bits.h:6:24: note: expanded from macro 'BIT'
+> 
+> This is a bug in clang that will be fixed in the future, but in order
+> to build cleanly with clang-8, it would be helpful to shut up this
+> warning. This file is the only instance reported by kernelci at the
+> moment.
+> 
+> The best solution I could come up with is to move the BIT() usage
+> out of the macro into the instantiation, so we can avoid using
+> BIT(-1).
+> 
+> Link: https://bugs.llvm.org/show_bug.cgi?id=38789
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+
+Thanks, queued under arm/drivers now.
 
 
-On 7/3/19 4:59 PM, Thomas Gleixner wrote:
-> Helen,
-> 
-> On Wed, 3 Jul 2019, Helen Koike wrote:
-> 
->> @@ -0,0 +1,412 @@
->> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
->> +/*
->> + * Rockchip MIPI Synopsys DPHY driver
->> + *
->> + * Based on:
->> + *
->> + * Copyright (C) 2016 FuZhou Rockchip Co., Ltd.
->> + * Author: Yakir Yang <ykk@@rock-chips.com>
->> + *
->> + * This program is free software; you can redistribute it and/or modify
->> + * it under the terms of the GNU General Public License as published by
->> + * the Free Software Foundation; either version 2 of the License.
-> 
-> So the SPDX-Identifiers says: GPL-2.0+ and here someone copied a broken
-> boiler plate text which could be interpreted as GPLv2 only because the 'or
-> at your option any later version' part was removed.
-> 
-> Can you please remove that boiler plate language? It's redundant
-> information. The SPDX license identifier is unambiguous, machine readable
-> and legally binding license information.
-> 
-> Thanks,
-> 
-> 	tglx
-> 
-
-Sure, thanks, I'll update it for the next version.
-Helen
+-Olof
