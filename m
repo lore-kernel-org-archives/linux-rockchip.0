@@ -1,80 +1,62 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [alsa-devel] [PATCH 2/4] drm: bridge: dw-hdmi: Report connector
- status using callback
-Date: Fri, 5 Jul 2019 18:16:18 +0100
-Message-ID: <20190705171618.GA35842@sirena.org.uk>
-References: <20190705042623.129541-1-cychiang@chromium.org>
- <20190705042623.129541-3-cychiang@chromium.org>
- <VI1PR06MB41425D1F24AC653F08AFA463ACF50@VI1PR06MB4142.eurprd06.prod.outlook.com>
- <CAFv8NwJXbJo=z_NDj+JQHD9LOmnbfM8v_N1uHn4sdBzF-FZQfA@mail.gmail.com>
+From: Boris Brezillon <boris.brezillon@collabora.com>
+Subject: Re: [PATCH 3/9] media: hantro: Constify the control array
+Date: Fri, 5 Jul 2019 19:17:16 +0200
+Message-ID: <20190705191716.41ea819e@collabora.com>
+References: <20190619121540.29320-1-boris.brezillon@collabora.com>
+        <20190619121540.29320-4-boris.brezillon@collabora.com>
+        <1fdb3115e6f5903b55a915c45bbfdec484842e83.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1723428820=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAFv8NwJXbJo=z_NDj+JQHD9LOmnbfM8v_N1uHn4sdBzF-FZQfA@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Cheng-yi Chiang <cychiang@chromium.org>
-Cc: "dianders@chromium.org" <dianders@chromium.org>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, "tzungbi@chromium.org" <tzungbi@chromium.org>, Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Takashi Iwai <tiwai@suse.com>, Hans Verkuil <hverkuil@xs4all.nl>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Russell King <rmk+kernel@armlinux.org.uk>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, "dgreid@chromium.org" <dgreid@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1fdb3115e6f5903b55a915c45bbfdec484842e83.camel@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@iki.fi>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, kernel@collabora.com, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Jonas Karlman <jonas@kwiboo.se>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Andrew Morton <akpm@linux-foundation.org>, Rasmus Villemoes <linux@rasmusvillemoes.dk>, Philipp Zabel <p.zabel@pengutronix.de>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Fri, 05 Jul 2019 13:05:10 -0300
+Ezequiel Garcia <ezequiel@collabora.com> wrote:
 
---===============1723428820==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="AhhlLboLdkugWU4S"
-Content-Disposition: inline
+> On Wed, 2019-06-19 at 14:15 +0200, Boris Brezillon wrote:
+> > controls[] is not supposed to be modified at runtime, let's make it
+> > explicit by adding a const specifier.
+> > 
+> > Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
+> > ---
+> >  drivers/staging/media/hantro/hantro_drv.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+> > index 28b0fed89dcb..db49d643ddb7 100644
+> > --- a/drivers/staging/media/hantro/hantro_drv.c
+> > +++ b/drivers/staging/media/hantro/hantro_drv.c
+> > @@ -264,7 +264,7 @@ static const struct v4l2_ctrl_ops hantro_ctrl_ops = {
+> >  	.s_ctrl = hantro_s_ctrl,
+> >  };
+> >  
+> > -static struct hantro_ctrl controls[] = {
+> > +static const struct hantro_ctrl controls[] = {
+> >  	{
+> >  		.id = V4L2_CID_JPEG_COMPRESSION_QUALITY,
+> >  		.codec = HANTRO_JPEG_ENCODER,  
+> 
+> This patch here breaks the build:
+> 
+>   CC [M]  drivers/staging/media/hantro/hantro_drv.o
+> /home/zeta/repos/linux/media_tree/drivers/staging/media/hantro/hantro_drv.c: In function ‘hantro_ctrls_setup’:
+> /home/zeta/repos/linux/media_tree/drivers/staging/media/hantro/hantro_drv.c:319:23: error: assignment of member ‘id’ in read-only object
+>     controls[i].cfg.id = controls[i].id;
+>                        ^
 
+Oops, didn't check bisectability.
 
---AhhlLboLdkugWU4S
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> You can fix it by simply moving it after:
+> 
+> [PATCH 4/9] media: hantro: Simplify the controls creation logic
 
-On Fri, Jul 05, 2019 at 03:31:24PM +0800, Cheng-yi Chiang wrote:
+Yep, I'll do that.
 
-> It was a long discussion.
-> I think the conclusion was that if we are only talking about
-> hdmi-codec, then we just need to extend the ops exposed in hdmi-codec
-> and don't need to use
-> hdmi-notifier or drm_audio_component.
+Thanks,
 
-What I'd picked up from the bits of that discussion that I
-followed was that there was some desire to come up with a unified
-approach to ELD notification rather than having to go through
-this discussion repeatedly?  That would certianly seem more
-sensible.  Admittedly it was a long thread with lots of enormous
-mails so I didn't follow the whole thing.
-
---AhhlLboLdkugWU4S
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl0fheEACgkQJNaLcl1U
-h9BXfgf8Djh9t+tRCpOZtbD0eqLrC0mbgK6xvHKXz2Asdi73S29NTI0EsIjf8oZ3
-Pz6/6L7lp75cOGU0EoQEzBtCuMIBCEXPI0gewu+FMjVlL3vhvV8svBfRuUZztzn9
-12ImYdI/oGK5DDKw7UkhuSxjjoEdnStnEA7qmB/XjH5eH05C2P4xQBYLATEo52oh
-jGMW1fSAh+dnQ8A3N9kAJLl9AF+f/eXzWfw3jfoelzQJPikX16xa5UE/U+ukQZ7F
-B79Nr4Lp2n9ORhA+GXIk6HVSsoBDqUTOpjH4+zjgDXe9nYK+BBSJ5AX8aZlxBY7C
-AP6VWjYU5x92p6hdgtNtqK0pmZ2SZA==
-=5Rc/
------END PGP SIGNATURE-----
-
---AhhlLboLdkugWU4S--
-
---===============1723428820==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-
---===============1723428820==--
+Boris
