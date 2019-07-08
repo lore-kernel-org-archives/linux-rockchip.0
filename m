@@ -1,62 +1,65 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v5 0/7] drm/panel: simple: Add mode support to devicetree
-Date: Mon, 8 Jul 2019 08:58:41 -0700
-Message-ID: <CAD=FV=U3Wj8vaZcQLmkfX6zgjVFEra+GrHMH3OCs5QQ_-tM4hw@mail.gmail.com>
+From: Sam Ravnborg <sam@ravnborg.org>
+Subject: Re: [PATCH v5 2/7] drm/panel: simple: Add ability to override
+ typical timing
+Date: Mon, 8 Jul 2019 19:50:08 +0200
+Message-ID: <20190708175007.GA3511@ravnborg.org>
 References: <20190401171724.215780-1-dianders@chromium.org>
- <CAD=FV=Vi2C7s2oWBDD0n+HK=_SuBYhRM9saMK-y6Qa0+k-g17w@mail.gmail.com>
- <20190628171342.GA2238@ravnborg.org> <2169143.hEFa8b2HQR@diego>
+ <20190401171724.215780-3-dianders@chromium.org>
+ <20190630202246.GB15102@ravnborg.org>
+ <CAD=FV=V_wTD1xpkXRe-z2HsZ8QXKq7jmq8CsfhMnFxi-5XDJjw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2169143.hEFa8b2HQR@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Sam Ravnborg <sam@ravnborg.org>, Thierry Reding <thierry.reding@gmail.com>, Sean Paul <seanpaul@chromium.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, David Airlie <airlied@linux.ie>, Viresh Kumar <viresh.kumar@linaro.org>, Brian Norris <briannorris@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Boris Brezillon <boris.brezillon@collabora.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, =?UTF-8?Q?Enric_Balletb=C3=B2?= <enric.balletbo@collabora.com>, Ezequiel Garcia <ezequi>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=V_wTD1xpkXRe-z2HsZ8QXKq7jmq8CsfhMnFxi-5XDJjw@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Doug Anderson <dianders@chromium.org>
+Cc: devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, Jeffy Chen <jeffy.chen@rock-chips.com>, LKML <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thierry Reding <thierry.reding@gmail.com>, Sean Paul <seanpaul@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, Boris Brezillon <boris.brezillon@collabora.com>, Enric =?iso-8859-1?Q?Balletb=F2?= <enric.balletbo@collabora.com>, =?iso-8859-1?Q?St=E9phane?= Marchesin <marcheu@chromium.org>, Ezequiel Garcia <ezequiel@collabora.com>, Matthias Kaehlcke <mka@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Sam,
-
-On Sat, Jun 29, 2019 at 7:09 AM Heiko St=C3=BCbner <heiko@sntech.de> wrote:
->
-> Hi Sam,
->
-> Am Freitag, 28. Juni 2019, 19:13:42 CEST schrieb Sam Ravnborg:
-> > Hi Doug.
-> >
-> > > Sam: Oh!  I hadn't noticed that you've been added as a panel
-> > > maintainer in commit ef0db94f94a0 ("MAINTAINERS: Add Sam as reviewer
-> > > for drm/panel").  Does that mean you are able to provide some advice
-> > > for how to land this series?
-> > Reviewer only, not maintainer....
-> >
-> > It is on my TODO list for the weekend to go through the patch set in
-> > details and provide feedback. I have read them before, but I miss to do
-> > a more detailed read through.
-> >
-> > But I cannot apply this unless Thierry or one of the DRM maintainers
-> > ack it.
-> > We simply need someone with a better general knowledge of DRM to ack it
-> > than I have.
->
-> So Thierry was able to look at the patches yesterday it seems and has Ack=
-ed
-> all the relevant ones. As a drm-misc-contributor I could also apply them
-> myself, but now don't want to preempt any additional comments you might
-> have ;-) . So I guess my question would be if you still want to do a revi=
-ew
-> or if I should apply them.
-
-Hopefully you saw, but I responded to all of your review feedback.  In
-the end, I thought it'd be OK to land the series as-is and I can fix
-up nits in a follow-up series, though I'm waiting for your responses
-to a couple questions first.
-
-It would be ideal if you could confirm that you're OK with this plan
-even if you don't have time to respond in detail to my emails yet.  I
-think Heiko can land them all through the appropriate channels since
-the patches have all the proper Acks.
-
-Thanks!
-
--Doug
+SGkgRG91Z2guCgpPbiBNb24sIEp1bCAwMSwgMjAxOSBhdCAwOTozOToyNEFNIC0wNzAwLCBEb3Vn
+IEFuZGVyc29uIHdyb3RlOgo+IEhpLAo+IAo+IE9uIFN1biwgSnVuIDMwLCAyMDE5IGF0IDE6MjIg
+UE0gU2FtIFJhdm5ib3JnIDxzYW1AcmF2bmJvcmcub3JnPiB3cm90ZToKPiA+Cj4gPiA+IEBAIC05
+MSw2ICs5Miw4IEBAIHN0cnVjdCBwYW5lbF9zaW1wbGUgewo+ID4gPiAgICAgICBzdHJ1Y3QgaTJj
+X2FkYXB0ZXIgKmRkYzsKPiA+ID4KPiA+ID4gICAgICAgc3RydWN0IGdwaW9fZGVzYyAqZW5hYmxl
+X2dwaW87Cj4gPiA+ICsKPiA+ID4gKyAgICAgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgb3ZlcnJp
+ZGVfbW9kZTsKPiA+IEkgZmFpbCB0byBzZWUgd2hlcmUgdGhpcyBwb2l0ZXIgaXMgYXNzaWduZWQu
+Cj4gCj4gSW4gcGFuZWxfc2ltcGxlX3BhcnNlX292ZXJyaWRlX21vZGUoKS4gIFNwZWNpZmljYWxs
+eToKPiAKPiBkcm1fZGlzcGxheV9tb2RlX2Zyb21fdmlkZW9tb2RlKCZ2bSwgJnBhbmVsLT5vdmVy
+cmlkZV9tb2RlKTsKClRoZSBhYm92ZSBjb2RlLXNuaXBwZXQgaXMgb25seSBjYWxsZWQgaW4gdGhl
+IHBhbmVsIGhhcyBzcGVjaWZpZWQgZGlzcGxheQp0aW1pbmdzIHVzaW5nIGRpc3BsYXlfdGltaW5n
+cyAtIGl0IGlzIG5vdCBjYWxsZWQgd2hlbiBkaXNwbGF5X21vZGUgaXMKdXNlZC4KU28gb3ZlcnJp
+ZGVfbW9kZSBpcyBvbmx5IGFzc2lnbmVkIGluIHNvbWUgY2FzZXMgYW5kIG5vdCBhbGwgY2FzZXMu
+ClRoaXMgbmVlZHMgdG8gYmUgZml4ZWQgc28gd2UgZG8gbm90IHJlZmVyZW5jZSBvdmVycmlkZV9t
+b2RlIHVubGVzcwppdCBpcyBzZXQuCgo+IAo+IAo+ID4gQEAgLTE1Miw2ICsxNjIsNDQgQEAgc3Rh
+dGljIGludCBwYW5lbF9zaW1wbGVfZ2V0X2ZpeGVkX21vZGVzKHN0cnVjdCBwYW5lbF9zaW1wbGUg
+KnBhbmVsKQo+ID4gPiAgICAgICAgICAgICAgIG51bSsrOwo+ID4gPiAgICAgICB9Cj4gPiA+Cj4g
+PiA+ICsgICAgIHJldHVybiBudW07Cj4gPiA+ICt9Cj4gPiA+ICsKPiA+ID4gK3N0YXRpYyBpbnQg
+cGFuZWxfc2ltcGxlX2dldF9ub25fZWRpZF9tb2RlcyhzdHJ1Y3QgcGFuZWxfc2ltcGxlICpwYW5l
+bCkKPiA+ID4gK3sKPiA+ID4gKyAgICAgc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciA9
+IHBhbmVsLT5iYXNlLmNvbm5lY3RvcjsKPiA+ID4gKyAgICAgc3RydWN0IGRybV9kZXZpY2UgKmRy
+bSA9IHBhbmVsLT5iYXNlLmRybTsKPiA+ID4gKyAgICAgc3RydWN0IGRybV9kaXNwbGF5X21vZGUg
+Km1vZGU7Cj4gPiA+ICsgICAgIGJvb2wgaGFzX292ZXJyaWRlID0gcGFuZWwtPm92ZXJyaWRlX21v
+ZGUudHlwZTsKPiA+IFRoaXMgbG9va3Mgc3VzcGljaW91cy4KPiA+IHBhbmVsLT5vdmVycmlkZV9t
+b2RlLnR5cGUgaXMgYW4gdW5zaWduZWQgaW50IHRoYXQgbWF5IGhhdmUgYSBudW1iZXIgb2YKPiA+
+IGJpdHMgc2V0Lgo+ID4gU28gdGhlIGFib3ZlIGNvZGUgaW1wbGljaXRseSBjb252ZXJ0IGEgLnR5
+cGUgIT0gMCB0byBhIHRydWUuCj4gPiBUaGlzIGNhbiBiZSBleHByZXNzZWQgaW4gYSBtdWNoIG1v
+cmUgcmVhZGVyIGZyaWVuZGx5IHdheS4KPiAKPiBZb3Ugd291bGQgc3VnZ2VzdCB0aGF0IEkgYWRk
+IGEgYm9vbGVhbiBmaWVsZCB0byBhIHN0cnVjdHVyZSB0bwo+IGluZGljYXRlIHdoZXRoZXIgYW4g
+b3ZlcnJpZGUgbW9kZSBpcyBwcmVzZW50PwpBIHNpbXBsZSAgYm9vbCBoYXNfb3ZlcnJpZGUgPSBw
+YW5lbC0+b3ZlcnJpZGVfbW9kZS50eXBlICE9IDA7CndvdWxkIGRvIHRoZSB0cmljayBoZXJlLgpU
+aGVuIHRoZXJlIGlzIG5vIGhpZGRlbiBjb252ZXJzaW9uIGZyb20gaW50IHRvIGEgYm9vbC4KCkJ1
+dCBhcyBvdmVycmlkZV9tb2RlIGNhbiBiZSBOVUxMIHNvbWV0aGluZyBtb3JlIG5lZWRzIHRvIGJl
+IGRvbmUuCgoJU2FtCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
+ZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZl
+bA==
