@@ -1,56 +1,80 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 17/28] drivers: Introduce bus_find_device_by_of_node()
- helper
-Date: Tue, 9 Jul 2019 10:19:22 -0600
-Message-ID: <20190709161922.GA1609@bogus>
-References: <1560534863-15115-1-git-send-email-suzuki.poulose@arm.com>
- <1560534863-15115-18-git-send-email-suzuki.poulose@arm.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] mmc: dw_mmc: Fix occasional hang after tuning on eMMC
+Date: Tue, 9 Jul 2019 09:38:07 -0700
+Message-ID: <CAD=FV=WquwqKjUKh5=M6tbTrD3svVTGWLU3iSTzD-uXBX73YWA@mail.gmail.com>
+References: <20190708195613.205729-1-dianders@chromium.org> <CAJKOXPf9OTPaheUdiZtaDGU0sE2vsdRiLx5nptMt_EVKU7GObA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1560534863-15115-18-git-send-email-suzuki.poulose@arm.com>
+In-Reply-To: <CAJKOXPf9OTPaheUdiZtaDGU0sE2vsdRiLx5nptMt_EVKU7GObA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org, rafael@kernel.org, suzuki.poulose@arm.com, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, devicetree@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>, Frank Rowand <frowand.list@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, linux-i2c@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-spi@vger.kernel.org, Mathieu Poirier <mathieu.poirier@linaro.org>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Takashi Iwai <tiwai@suse.com>, Wolfram Sang <wsa@the-dreams.de>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Guenter Roeck <groeck@chromium.org>, Sonny Rao <sonnyrao@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Alim Akhtar <alim.akhtar@gmail.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Linux MMC List <linux-mmc@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 14 Jun 2019 18:54:12 +0100, Suzuki K Poulose wrote:
-> Add a wrapper to bus_find_device() to search for a device
-> by the of_node pointer, reusing the generic match function.
-> Also convert the existing users to make use of the new helper.
-> 
-> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-> Cc: Maxime Ripard <maxime.ripard@bootlin.com>
-> Cc: dri-devel@lists.freedesktop.org
-> Cc: David Airlie <airlied@linux.ie>
-> Cc: Daniel Vetter <daniel@ffwll.ch>
-> Cc: devicetree@vger.kernel.org
-> Cc: Florian Fainelli <f.fainelli@gmail.com>
-> Cc: Frank Rowand <frowand.list@gmail.com>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Liam Girdwood <lgirdwood@gmail.com>
-> Cc: linux-i2c@vger.kernel.org
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-spi@vger.kernel.org
-> Cc: Mathieu Poirier <mathieu.poirier@linaro.org>
-> Cc: Rob Herring <robh+dt@kernel.org>
-> Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-> Cc: Takashi Iwai <tiwai@suse.com>
-> Cc: Wolfram Sang <wsa@the-dreams.de>
-> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> Cc: "Rafael J. Wysocki" <rafael@kernel.org>
-> Signed-off-by: Suzuki K Poulose <suzuki.poulose@arm.com>
-> ---
->  drivers/gpu/drm/drm_mipi_dsi.c             |  7 +------
->  drivers/hwtracing/coresight/of_coresight.c | 11 ++---------
->  drivers/i2c/i2c-core-of.c                  |  7 +------
->  drivers/nvmem/core.c                       |  7 +------
->  drivers/of/of_mdio.c                       |  8 +-------
->  drivers/of/platform.c                      |  7 +------
->  drivers/spi/spi.c                          |  9 ++-------
->  include/linux/device.h                     | 12 ++++++++++++
->  sound/soc/rockchip/rk3399_gru_sound.c      |  9 ++-------
->  9 files changed, 23 insertions(+), 54 deletions(-)
-> 
+Hi,
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+On Tue, Jul 9, 2019 at 2:07 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
+>
+> On Tue, 9 Jul 2019 at 00:48, Douglas Anderson <dianders@chromium.org> wrote:
+> >
+> > In commit 46d179525a1f ("mmc: dw_mmc: Wait for data transfer after
+> > response errors.") we fixed a tuning-induced hang that I saw when
+> > stress testing tuning on certain SD cards.  I won't re-hash that whole
+> > commit, but the summary is that as a normal part of tuning you need to
+> > deal with transfer errors and there were cases where these transfer
+> > errors was putting my system into a bad state causing all future
+> > transfers to fail.  That commit fixed handling of the transfer errors
+> > for me.
+> >
+> > In downstream Chrome OS my fix landed and had the same behavior for
+> > all SD/MMC commands.  However, it looks like when the commit landed
+> > upstream we limited it to only SD tuning commands.  Presumably this
+> > was to try to get around problems that Alim Akhtar reported on exynos
+> > [1].
+> >
+> > Unfortunately while stress testing reboots (and suspend/resume) on
+> > some rk3288-based Chromebooks I found the same problem on the eMMC on
+> > some of my Chromebooks (the ones with Hynix eMMC).  Since the eMMC
+> > tuning command is different (MMC_SEND_TUNING_BLOCK_HS200
+> > vs. MMC_SEND_TUNING_BLOCK) we were basically getting back into the
+> > same situation.
+> >
+> > I'm hoping that whatever problems exynos was having in the past are
+> > somehow magically fixed now and we can make the behavior the same for
+> > all commands.
+> >
+> > [1] https://lkml.kernel.org/r/CAGOxZ53WfNbaMe0_AM0qBqU47kAfgmPBVZC8K8Y-_J3mDMqW4A@mail.gmail.com
+> >
+> > Fixes: 46d179525a1f ("mmc: dw_mmc: Wait for data transfer after response errors.")
+> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > Cc: Marek Szyprowski <m.szyprowski@samsung.com>
+> > Cc: Alim Akhtar <alim.akhtar@gmail.com>
+> > Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> > ---
+> > Marek (or anyone else using exynos): is it easy for you to test this
+> > and check if things are still broken when we land this patch?  If so,
+> > I guess we could have a quirk to have different behavior for just
+> > Rockchip SoCs but I'd rather avoid that if possible.
+> >
+> > NOTE: I'm not hoping totally in vain here.  It is possible that some
+> > of the CTO/DTO timers that landed could be the magic that would get
+> > exynos unstuck.
+>
+> I have eMMC module attached to Odroid U3 (Exynos4412,
+> samsung,exynos4412-dw-mshc). What is the testing procedure? With your
+> patch it boots fine:
+> [    3.698637] mmc_host mmc1: Bus speed (slot 0) = 50000000Hz (slot
+> req 52000000Hz, actual 50000000HZ div = 0)
+> [    3.703900] mmc1: new DDR MMC card at address 0001
+> [    3.728458] mmcblk1: mmc1:0001 008G92 7.28 GiB
+
+To really test it, it'd be nice to see some HS200 eMMC cards enumerate
+OK.  Specifically the patch adjusts the error handling and the place
+where that happens mostly is during tuning.
+
+I'll also try to find some time today to check a peach_pit or a
+peach_pi.  I think I saw one in the pile near my desk so if it isn't
+in too bad of a shape I can give mainline a shot on it.
+
+-Doug
