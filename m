@@ -1,69 +1,77 @@
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH] mmc: dw_mmc: Fix occasional hang after tuning on eMMC
-Date: Tue, 9 Jul 2019 11:06:48 +0200
-Message-ID: <CAJKOXPf9OTPaheUdiZtaDGU0sE2vsdRiLx5nptMt_EVKU7GObA@mail.gmail.com>
-References: <20190708195613.205729-1-dianders@chromium.org>
+From: Cezary Rojewski <cezary.rojewski-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 1/4] ASoC: hdmi-codec: Add an op to set callback function
+ for plug event
+Date: Tue, 9 Jul 2019 13:47:10 +0200
+Message-ID: <3d5755cf-34e9-44f7-3b03-6bdfca84ff95@intel.com>
+References: <20190705042623.129541-1-cychiang@chromium.org>
+ <20190705042623.129541-2-cychiang@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190708195613.205729-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, linux-rockchip@lists.infradead.org, briannorris@chromium.org, mka@chromium.org, groeck@chromium.org, sonnyrao@chromium.org, Marek Szyprowski <m.szyprowski@samsung.com>, Alim Akhtar <alim.akhtar@gmail.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190705042623.129541-2-cychiang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Cheng-Yi Chiang <cychiang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, tzungbi-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Russell King <rmk+kernel-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dgreid-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 9 Jul 2019 at 00:48, Douglas Anderson <dianders@chromium.org> wrote:
->
-> In commit 46d179525a1f ("mmc: dw_mmc: Wait for data transfer after
-> response errors.") we fixed a tuning-induced hang that I saw when
-> stress testing tuning on certain SD cards.  I won't re-hash that whole
-> commit, but the summary is that as a normal part of tuning you need to
-> deal with transfer errors and there were cases where these transfer
-> errors was putting my system into a bad state causing all future
-> transfers to fail.  That commit fixed handling of the transfer errors
-> for me.
->
-> In downstream Chrome OS my fix landed and had the same behavior for
-> all SD/MMC commands.  However, it looks like when the commit landed
-> upstream we limited it to only SD tuning commands.  Presumably this
-> was to try to get around problems that Alim Akhtar reported on exynos
-> [1].
->
-> Unfortunately while stress testing reboots (and suspend/resume) on
-> some rk3288-based Chromebooks I found the same problem on the eMMC on
-> some of my Chromebooks (the ones with Hynix eMMC).  Since the eMMC
-> tuning command is different (MMC_SEND_TUNING_BLOCK_HS200
-> vs. MMC_SEND_TUNING_BLOCK) we were basically getting back into the
-> same situation.
->
-> I'm hoping that whatever problems exynos was having in the past are
-> somehow magically fixed now and we can make the behavior the same for
-> all commands.
->
-> [1] https://lkml.kernel.org/r/CAGOxZ53WfNbaMe0_AM0qBqU47kAfgmPBVZC8K8Y-_J3mDMqW4A@mail.gmail.com
->
-> Fixes: 46d179525a1f ("mmc: dw_mmc: Wait for data transfer after response errors.")
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> Cc: Marek Szyprowski <m.szyprowski@samsung.com>
-> Cc: Alim Akhtar <alim.akhtar@gmail.com>
-> Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> ---
-> Marek (or anyone else using exynos): is it easy for you to test this
-> and check if things are still broken when we land this patch?  If so,
-> I guess we could have a quirk to have different behavior for just
-> Rockchip SoCs but I'd rather avoid that if possible.
->
-> NOTE: I'm not hoping totally in vain here.  It is possible that some
-> of the CTO/DTO timers that landed could be the magic that would get
-> exynos unstuck.
+On 2019-07-05 06:26, Cheng-Yi Chiang wrote:
+> +static void hdmi_codec_jack_report(struct hdmi_codec_priv *hcp,
+> +				   unsigned int jack_status)
+> +{
+> +	if (!hcp->jack)
+> +		return;
+> +
+> +	if (jack_status != hcp->jack_status) {
+> +		snd_soc_jack_report(hcp->jack, jack_status, SND_JACK_LINEOUT);
+> +		hcp->jack_status = jack_status;
+> +	}
+> +}
 
-I have eMMC module attached to Odroid U3 (Exynos4412,
-samsung,exynos4412-dw-mshc). What is the testing procedure? With your
-patch it boots fine:
-[    3.698637] mmc_host mmc1: Bus speed (slot 0) = 50000000Hz (slot
-req 52000000Hz, actual 50000000HZ div = 0)
-[    3.703900] mmc1: new DDR MMC card at address 0001
-[    3.728458] mmcblk1: mmc1:0001 008G92 7.28 GiB
+Single "if" statement instead? The first "if" does not even cover all 
+cases - if the secondary check fails, you'll "return;" too.
 
-Best regards,
-Krzysztof
+> +/**
+> + * hdmi_codec_set_jack_detect - register HDMI plugged callback
+> + * @component: the hdmi-codec instance
+> + * @jack: ASoC jack to report (dis)connection events on
+> + */
+> +int hdmi_codec_set_jack_detect(struct snd_soc_component *component,
+> +			       struct snd_soc_jack *jack)
+> +{
+> +	struct hdmi_codec_priv *hcp = snd_soc_component_get_drvdata(component);
+> +	int ret;
+> +
+> +	if (hcp->hcd.ops->hook_plugged_cb) {
+> +		hcp->jack = jack;
+> +		ret = hcp->hcd.ops->hook_plugged_cb(component->dev->parent,
+> +						    hcp->hcd.data,
+> +						    plugged_cb);
+> +		if (ret) {
+> +			hcp->jack = NULL;
+> +			return ret;
+> +		}
+> +		return 0;
+> +	}
+> +	return -EOPNOTSUPP;
+> +}
+> +EXPORT_SYMBOL_GPL(hdmi_codec_set_jack_detect);
+
+int ret = -EOPNOTSUPP;
+(...)
+
+return ret;
+
+In consequence, you can reduce the number of "return(s)" and also remove 
+the redundant parenthesis for the if-statement used to set jack to NULL.
+
+Czarek
