@@ -1,57 +1,56 @@
-From: Cheng-yi Chiang <cychiang@chromium.org>
-Subject: Re: [PATCH 1/4] ASoC: hdmi-codec: Add an op to set callback function
- for plug event
-Date: Tue, 9 Jul 2019 19:58:56 +0800
-Message-ID: <CAFv8NwJHpY+ptc+WbeRhsKB8wGnt08r38GG7WUYTrt=wZaGqqA@mail.gmail.com>
-References: <20190705042623.129541-1-cychiang@chromium.org>
- <20190705042623.129541-2-cychiang@chromium.org> <CA+Px+wXtmf9dQQP7ywPLp7Qbbvqau=WnO3qhZ8+qmbJD1gjx+A@mail.gmail.com>
- <20190705121240.GA20625@sirena.org.uk> <CAFv8NwLP-hUBW8FZW5kooaggeNRG7LAEd2pd_-70YBrVMY-+CQ@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 17/28] drivers: Introduce bus_find_device_by_of_node()
+ helper
+Date: Tue, 9 Jul 2019 10:19:22 -0600
+Message-ID: <20190709161922.GA1609@bogus>
+References: <1560534863-15115-1-git-send-email-suzuki.poulose@arm.com>
+ <1560534863-15115-18-git-send-email-suzuki.poulose@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFv8NwLP-hUBW8FZW5kooaggeNRG7LAEd2pd_-70YBrVMY-+CQ@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <1560534863-15115-18-git-send-email-suzuki.poulose@arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Tzung-Bi Shih <tzungbi@google.com>, linux-kernel <linux-kernel@vger.kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, ALSA development <alsa-devel@alsa-project.org>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org, rafael@kernel.org, suzuki.poulose@arm.com, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, devicetree@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>, Frank Rowand <frowand.list@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, linux-i2c@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-spi@vger.kernel.org, Mathieu Poirier <mathieu.poirier@linaro.org>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Takashi Iwai <tiwai@suse.com>, Wolfram Sang <wsa@the-dreams.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jul 8, 2019 at 1:03 PM Cheng-yi Chiang <cychiang@chromium.org> wrote:
->
-> On Fri, Jul 5, 2019 at 8:12 PM Mark Brown <broonie@kernel.org> wrote:
-> >
-> > On Fri, Jul 05, 2019 at 03:08:37PM +0800, Tzung-Bi Shih wrote:
-> > > On Fri, Jul 5, 2019 at 12:26 PM Cheng-Yi Chiang <cychiang@chromium.org> wrote:
-> >
-> > > > +typedef void (*hdmi_codec_plugged_cb)(struct platform_device *dev,
-> > > > +                                     bool plugged);
-> > > > +
-> >
-> > > The callback prototype is "weird" by struct platform_device.  Is it
-> > > possible to having snd_soc_component instead of platform_device?
-> >
-> > Or if it's got to be a device why not just a generic device so
-> > we're not tied to a particular bus here?
->
-> My intention was to invoke the call in dw-hdmi.c like this:
->
->     hdmi->plugged_cb(hdmi->audio,
->                                    result == connector_status_connected);
->
-> Here hdmi->audio is a platform_device.
-> I think dw-hdmi can not get  snd_soc_component easily.
-> I can use a generic device here so the ops is more general.
-> The calling will be like
->     hdmi->plugged_cb(&hdmi->audio->dev,
->                                    result == connector_status_connected);
-> I will update this in v2.
-> Thanks!
+On Fri, 14 Jun 2019 18:54:12 +0100, Suzuki K Poulose wrote:
+> Add a wrapper to bus_find_device() to search for a device
+> by the of_node pointer, reusing the generic match function.
+> Also convert the existing users to make use of the new helper.
+> 
+> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+> Cc: Maxime Ripard <maxime.ripard@bootlin.com>
+> Cc: dri-devel@lists.freedesktop.org
+> Cc: David Airlie <airlied@linux.ie>
+> Cc: Daniel Vetter <daniel@ffwll.ch>
+> Cc: devicetree@vger.kernel.org
+> Cc: Florian Fainelli <f.fainelli@gmail.com>
+> Cc: Frank Rowand <frowand.list@gmail.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Liam Girdwood <lgirdwood@gmail.com>
+> Cc: linux-i2c@vger.kernel.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-spi@vger.kernel.org
+> Cc: Mathieu Poirier <mathieu.poirier@linaro.org>
+> Cc: Rob Herring <robh+dt@kernel.org>
+> Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+> Cc: Takashi Iwai <tiwai@suse.com>
+> Cc: Wolfram Sang <wsa@the-dreams.de>
+> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> Cc: "Rafael J. Wysocki" <rafael@kernel.org>
+> Signed-off-by: Suzuki K Poulose <suzuki.poulose@arm.com>
+> ---
+>  drivers/gpu/drm/drm_mipi_dsi.c             |  7 +------
+>  drivers/hwtracing/coresight/of_coresight.c | 11 ++---------
+>  drivers/i2c/i2c-core-of.c                  |  7 +------
+>  drivers/nvmem/core.c                       |  7 +------
+>  drivers/of/of_mdio.c                       |  8 +-------
+>  drivers/of/platform.c                      |  7 +------
+>  drivers/spi/spi.c                          |  9 ++-------
+>  include/linux/device.h                     | 12 ++++++++++++
+>  sound/soc/rockchip/rk3399_gru_sound.c      |  9 ++-------
+>  9 files changed, 23 insertions(+), 54 deletions(-)
+> 
 
-I have thought about this a bit more. And I think the more proper
-interface is to pass in a generic struct device* for codec.
-This way, the user of hdmi-codec driver on the DRM side is not limited
-to the relation chain of
-audio platform device -> codec platform device, which is just a
-special case in dw-hdmi driver.
-As long as DRM side can get hdmi-codec device pointer through
-drv_data, it can use this callback.
-Hope this makes the interface more generic.
+Reviewed-by: Rob Herring <robh@kernel.org>
