@@ -1,100 +1,101 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] mmc: dw_mmc: Fix occasional hang after tuning on eMMC
-Date: Wed, 10 Jul 2019 13:21:57 -0700
-Message-ID: <CAD=FV=WL_Hy78REn+0CMOjYgPcuDcN1w-+94QD9HHJraQBNj4g@mail.gmail.com>
-References: <20190708195613.205729-1-dianders@chromium.org>
- <CAJKOXPf9OTPaheUdiZtaDGU0sE2vsdRiLx5nptMt_EVKU7GObA@mail.gmail.com>
- <CAD=FV=WquwqKjUKh5=M6tbTrD3svVTGWLU3iSTzD-uXBX73YWA@mail.gmail.com> <CAD=FV=X=RALazfX+vjQ7E-JmVu6xqDWCad5hPF+gNtHCuvZMTA@mail.gmail.com>
+Subject: Re: [PATCH v5 2/7] drm/panel: simple: Add ability to override typical
+ timing
+Date: Wed, 10 Jul 2019 15:39:52 -0700
+Message-ID: <CAD=FV=XnDTKkscdCwFE1137aX6pTtv=5zqXf=yqcnchpZpt5_Q@mail.gmail.com>
+References: <20190401171724.215780-1-dianders@chromium.org>
+ <20190401171724.215780-3-dianders@chromium.org>
+ <20190630202246.GB15102@ravnborg.org>
+ <CAD=FV=V_wTD1xpkXRe-z2HsZ8QXKq7jmq8CsfhMnFxi-5XDJjw@mail.gmail.com>
+ <20190708175007.GA3511@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=X=RALazfX+vjQ7E-JmVu6xqDWCad5hPF+gNtHCuvZMTA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Guenter Roeck <groeck@chromium.org>, Sonny Rao <sonnyrao@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Alim Akhtar <alim.akhtar@gmail.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Linux MMC List <linux-mmc@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190708175007.GA3511@ravnborg.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sam Ravnborg <sam@ravnborg.org>
+Cc: devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, Jeffy Chen <jeffy.chen@rock-chips.com>, LKML <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thierry Reding <thierry.reding@gmail.com>, Sean Paul <seanpaul@chromium.org>, dri-devel <dri-devel@lists.freedesktop.org>, Boris Brezillon <boris.brezillon@collabora.com>, =?UTF-8?Q?Enric_Balletb=C3=B2?= <enric.balletbo@collabora.com>, =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>, Ezequiel Garcia <ezequiel@collabora.com>, Matthias Kaehlcke <mka@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Tue, Jul 9, 2019 at 3:02 PM Doug Anderson <dianders@chromium.org> wrote:
->
-> Hi,
->
-> On Tue, Jul 9, 2019 at 9:38 AM Doug Anderson <dianders@chromium.org> wrote:
-> >
-> > Hi,
-> >
-> > On Tue, Jul 9, 2019 at 2:07 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> > >
-> > > On Tue, 9 Jul 2019 at 00:48, Douglas Anderson <dianders@chromium.org> wrote:
-> > > >
-> > > > In commit 46d179525a1f ("mmc: dw_mmc: Wait for data transfer after
-> > > > response errors.") we fixed a tuning-induced hang that I saw when
-> > > > stress testing tuning on certain SD cards.  I won't re-hash that whole
-> > > > commit, but the summary is that as a normal part of tuning you need to
-> > > > deal with transfer errors and there were cases where these transfer
-> > > > errors was putting my system into a bad state causing all future
-> > > > transfers to fail.  That commit fixed handling of the transfer errors
-> > > > for me.
-> > > >
-> > > > In downstream Chrome OS my fix landed and had the same behavior for
-> > > > all SD/MMC commands.  However, it looks like when the commit landed
-> > > > upstream we limited it to only SD tuning commands.  Presumably this
-> > > > was to try to get around problems that Alim Akhtar reported on exynos
-> > > > [1].
-> > > >
-> > > > Unfortunately while stress testing reboots (and suspend/resume) on
-> > > > some rk3288-based Chromebooks I found the same problem on the eMMC on
-> > > > some of my Chromebooks (the ones with Hynix eMMC).  Since the eMMC
-> > > > tuning command is different (MMC_SEND_TUNING_BLOCK_HS200
-> > > > vs. MMC_SEND_TUNING_BLOCK) we were basically getting back into the
-> > > > same situation.
-> > > >
-> > > > I'm hoping that whatever problems exynos was having in the past are
-> > > > somehow magically fixed now and we can make the behavior the same for
-> > > > all commands.
-> > > >
-> > > > [1] https://lkml.kernel.org/r/CAGOxZ53WfNbaMe0_AM0qBqU47kAfgmPBVZC8K8Y-_J3mDMqW4A@mail.gmail.com
-> > > >
-> > > > Fixes: 46d179525a1f ("mmc: dw_mmc: Wait for data transfer after response errors.")
-> > > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > > > Cc: Marek Szyprowski <m.szyprowski@samsung.com>
-> > > > Cc: Alim Akhtar <alim.akhtar@gmail.com>
-> > > > Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> > > > ---
-> > > > Marek (or anyone else using exynos): is it easy for you to test this
-> > > > and check if things are still broken when we land this patch?  If so,
-> > > > I guess we could have a quirk to have different behavior for just
-> > > > Rockchip SoCs but I'd rather avoid that if possible.
-> > > >
-> > > > NOTE: I'm not hoping totally in vain here.  It is possible that some
-> > > > of the CTO/DTO timers that landed could be the magic that would get
-> > > > exynos unstuck.
-> > >
-> > > I have eMMC module attached to Odroid U3 (Exynos4412,
-> > > samsung,exynos4412-dw-mshc). What is the testing procedure? With your
-> > > patch it boots fine:
-> > > [    3.698637] mmc_host mmc1: Bus speed (slot 0) = 50000000Hz (slot
-> > > req 52000000Hz, actual 50000000HZ div = 0)
-> > > [    3.703900] mmc1: new DDR MMC card at address 0001
-> > > [    3.728458] mmcblk1: mmc1:0001 008G92 7.28 GiB
-> >
-> > To really test it, it'd be nice to see some HS200 eMMC cards enumerate
-> > OK.  Specifically the patch adjusts the error handling and the place
-> > where that happens mostly is during tuning.
-> >
-> > I'll also try to find some time today to check a peach_pit or a
-> > peach_pi.  I think I saw one in the pile near my desk so if it isn't
-> > in too bad of a shape I can give mainline a shot on it.
->
-> OK, I managed to get an exynos5800-peach-pi up and running.  I put my
-> patch in place and am currently at 45 reboots and counting w/ no
-> problems.
-
-In case it helps, I made it through 2379 more reboots on my peach_pi
-w/ no hangs.  I'm putting the device back in mothball now.  :-P  I
-didn't go back and try to reproduce the original problems so I guess I
-can't assert with 100% authority that the original issue is gone, but
-my testing combined with Enric's seems like things are working fine.
-
--Doug
+U2FtLAoKT24gTW9uLCBKdWwgOCwgMjAxOSBhdCAxMDo1MCBBTSBTYW0gUmF2bmJvcmcgPHNhbUBy
+YXZuYm9yZy5vcmc+IHdyb3RlOgo+Cj4gSGkgRG91Z2guCj4KPiBPbiBNb24sIEp1bCAwMSwgMjAx
+OSBhdCAwOTozOToyNEFNIC0wNzAwLCBEb3VnIEFuZGVyc29uIHdyb3RlOgo+ID4gSGksCj4gPgo+
+ID4gT24gU3VuLCBKdW4gMzAsIDIwMTkgYXQgMToyMiBQTSBTYW0gUmF2bmJvcmcgPHNhbUByYXZu
+Ym9yZy5vcmc+IHdyb3RlOgo+ID4gPgo+ID4gPiA+IEBAIC05MSw2ICs5Miw4IEBAIHN0cnVjdCBw
+YW5lbF9zaW1wbGUgewo+ID4gPiA+ICAgICAgIHN0cnVjdCBpMmNfYWRhcHRlciAqZGRjOwo+ID4g
+PiA+Cj4gPiA+ID4gICAgICAgc3RydWN0IGdwaW9fZGVzYyAqZW5hYmxlX2dwaW87Cj4gPiA+ID4g
+Kwo+ID4gPiA+ICsgICAgIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlIG92ZXJyaWRlX21vZGU7Cj4g
+PiA+IEkgZmFpbCB0byBzZWUgd2hlcmUgdGhpcyBwb2l0ZXIgaXMgYXNzaWduZWQuCj4gPgo+ID4g
+SW4gcGFuZWxfc2ltcGxlX3BhcnNlX292ZXJyaWRlX21vZGUoKS4gIFNwZWNpZmljYWxseToKPiA+
+Cj4gPiBkcm1fZGlzcGxheV9tb2RlX2Zyb21fdmlkZW9tb2RlKCZ2bSwgJnBhbmVsLT5vdmVycmlk
+ZV9tb2RlKTsKPgo+IFRoZSBhYm92ZSBjb2RlLXNuaXBwZXQgaXMgb25seSBjYWxsZWQgaW4gdGhl
+IHBhbmVsIGhhcyBzcGVjaWZpZWQgZGlzcGxheQo+IHRpbWluZ3MgdXNpbmcgZGlzcGxheV90aW1p
+bmdzIC0gaXQgaXMgbm90IGNhbGxlZCB3aGVuIGRpc3BsYXlfbW9kZSBpcwo+IHVzZWQuCj4gU28g
+b3ZlcnJpZGVfbW9kZSBpcyBvbmx5IGFzc2lnbmVkIGluIHNvbWUgY2FzZXMgYW5kIG5vdCBhbGwg
+Y2FzZXMuCj4gVGhpcyBuZWVkcyB0byBiZSBmaXhlZCBzbyB3ZSBkbyBub3QgcmVmZXJlbmNlIG92
+ZXJyaWRlX21vZGUgdW5sZXNzCj4gaXQgaXMgc2V0LgoKSSdtIGFmcmFpZCBJJ20gbm90IGZvbGxv
+d2luZyB5b3UgaGVyZS4KCiogb3ZlcnJpZGVfbW9kZSBpcyBhIHN0cnVjdHVyZSB0aGF0J3MgZGly
+ZWN0bHkgcGFydCBvZiAic3RydWN0IHBhbmVsX3NpbXBsZSIuCgoqIFRoZSBwYW5lbCBpcyBhbGxv
+Y2F0ZWQgaW4gcGFuZWxfc2ltcGxlX3Byb2JlKCkgd2l0aCBkZXZtX2t6YWxsb2MoKS4KCiogVGhl
+ICJ6IiBpbiBremFsbG9jIG1lYW5zIHRoYXQgdGhpcyBtZW1vcnkgd2lsbCBiZSB6ZXJvLWluaXRp
+YWxpemVkLgoKRnJvbSB0aGUgcG9pbnRzIGFib3ZlLCAib3ZlcnJpZGVfbW9kZSIgd2lsbCBhbHdh
+eXMgYmUgc2V0IHRvCnNvbWV0aGluZy4gIElmIHdlIGRpZG4ndCBydW4gImRybV9kaXNwbGF5X21v
+ZGVfZnJvbV92aWRlb21vZGUoJnZtLAomcGFuZWwtPm92ZXJyaWRlX21vZGUpOyIgdGhlbiB3ZSBr
+bm93IHRoZSBlbnRpcmUgb3ZlcnJpZGVfbW9kZQpzdHJ1Y3R1cmUgd2lsbCBiZSB6ZXJvLgoKV2hp
+bGUgaXQgdG9vayBhIHdoaWxlIGZvciBtZSB0byBnZXQgdXNlZCB0byBpdCwgdGhlIGtlcm5lbCBj
+b252ZW50aW9uCmlzIHRvIHJlbHkgb24gemVyby1pbml0aWFsaXphdGlvbiBhbmQgbm90IHRvIGV4
+cGxpY2l0bHkgaW5pdCB0aGluZ3MgdG8KemVyby4gIEFzIGFuIGV4YW1wbGUgb2YgdGhpcyBiZWlu
+ZyBjb2RpZmllZCBpbiB0aGUgc291cmNlLCB5b3UgY2FuIHNlZQp0aGF0ICJjaGVja3BhdGNoLnBs
+IiB3aWxsIHllbGwgYXQgeW91IGZvciBhIHNpbWlsYXIgdGhpbmc6ICJkbyBub3QKaW5pdGlhbGlz
+ZSBnbG9iYWxzIHRvIDAiLgoKCj4gPiA+IEBAIC0xNTIsNiArMTYyLDQ0IEBAIHN0YXRpYyBpbnQg
+cGFuZWxfc2ltcGxlX2dldF9maXhlZF9tb2RlcyhzdHJ1Y3QgcGFuZWxfc2ltcGxlICpwYW5lbCkK
+PiA+ID4gPiAgICAgICAgICAgICAgIG51bSsrOwo+ID4gPiA+ICAgICAgIH0KPiA+ID4gPgo+ID4g
+PiA+ICsgICAgIHJldHVybiBudW07Cj4gPiA+ID4gK30KPiA+ID4gPiArCj4gPiA+ID4gK3N0YXRp
+YyBpbnQgcGFuZWxfc2ltcGxlX2dldF9ub25fZWRpZF9tb2RlcyhzdHJ1Y3QgcGFuZWxfc2ltcGxl
+ICpwYW5lbCkKPiA+ID4gPiArewo+ID4gPiA+ICsgICAgIHN0cnVjdCBkcm1fY29ubmVjdG9yICpj
+b25uZWN0b3IgPSBwYW5lbC0+YmFzZS5jb25uZWN0b3I7Cj4gPiA+ID4gKyAgICAgc3RydWN0IGRy
+bV9kZXZpY2UgKmRybSA9IHBhbmVsLT5iYXNlLmRybTsKPiA+ID4gPiArICAgICBzdHJ1Y3QgZHJt
+X2Rpc3BsYXlfbW9kZSAqbW9kZTsKPiA+ID4gPiArICAgICBib29sIGhhc19vdmVycmlkZSA9IHBh
+bmVsLT5vdmVycmlkZV9tb2RlLnR5cGU7Cj4gPiA+IFRoaXMgbG9va3Mgc3VzcGljaW91cy4KPiA+
+ID4gcGFuZWwtPm92ZXJyaWRlX21vZGUudHlwZSBpcyBhbiB1bnNpZ25lZCBpbnQgdGhhdCBtYXkg
+aGF2ZSBhIG51bWJlciBvZgo+ID4gPiBiaXRzIHNldC4KPiA+ID4gU28gdGhlIGFib3ZlIGNvZGUg
+aW1wbGljaXRseSBjb252ZXJ0IGEgLnR5cGUgIT0gMCB0byBhIHRydWUuCj4gPiA+IFRoaXMgY2Fu
+IGJlIGV4cHJlc3NlZCBpbiBhIG11Y2ggbW9yZSByZWFkZXIgZnJpZW5kbHkgd2F5Lgo+ID4KPiA+
+IFlvdSB3b3VsZCBzdWdnZXN0IHRoYXQgSSBhZGQgYSBib29sZWFuIGZpZWxkIHRvIGEgc3RydWN0
+dXJlIHRvCj4gPiBpbmRpY2F0ZSB3aGV0aGVyIGFuIG92ZXJyaWRlIG1vZGUgaXMgcHJlc2VudD8K
+PiBBIHNpbXBsZSAgYm9vbCBoYXNfb3ZlcnJpZGUgPSBwYW5lbC0+b3ZlcnJpZGVfbW9kZS50eXBl
+ICE9IDA7Cj4gd291bGQgZG8gdGhlIHRyaWNrIGhlcmUuCj4gVGhlbiB0aGVyZSBpcyBubyBoaWRk
+ZW4gY29udmVyc2lvbiBmcm9tIGludCB0byBhIGJvb2wuCgpJIHdpbGwgY2hhbmdlIHRoaXMgdG8g
+InBhbmVsLT5vdmVycmlkZV9tb2RlLnR5cGUgIT0gMCIgaWYgeW91J3JlCnJlYWxseSBzdXJlLCBi
+dXQgdGhpcyBzZWVtcyBib3RoIGFnYWluc3QgdGhlIGdlbmVyYWwgTGludXggc3R5bGUKZmVlZGJh
+Y2sgSSd2ZSByZWNlaXZlZCBvdmVyIHRoZSB5ZWFycyAodGhvdWdoIHRoZXJlIGlzIGRlZmluaXRl
+bHkgbm90CjEwMCUgY29uc2lzdGVuY3kpIGFuZCBhbHNvIGFnYWluc3QgdGhlIGxvY2FsIGNvbnZl
+bnRpb24gaW4gdGhpcyBmaWxlLgpFeGFtcGxlcyBpbiB0aGlzIGZpbGUgb2YgdHJlYXRpbmcgaW50
+cyBhcyBib29scyB3aXRob3V0IGFuIGV4cGxpY2l0CiIhPSAwIjoKCiogcGFuZWxfc2ltcGxlX2dl
+dF9maXhlZF9tb2RlcyBjaGVja3MgImlmIChwYW5lbC0+ZGVzYy0+YnVzX2Zvcm1hdCkiCiogcGFu
+ZWxfc2ltcGxlX2Rpc2FibGUgY2hlY2tzICJpZiAocC0+ZGVzYy0+ZGVsYXkuZGlzYWJsZSkiCiog
+cGFuZWxfc2ltcGxlX3VucHJlcGFyZSBjaGVja3MgImlmIChwLT5kZXNjLT5kZWxheS51bnByZXBh
+cmUpIgoqIHBhbmVsX3NpbXBsZV9wcmVwYXJlIGNoZWNrcyAiaWYgKGRlbGF5KSIKKiBwYW5lbF9z
+aW1wbGVfZW5hYmxlIGNoZWNrcyAiaWYgKHAtPmRlc2MtPmRlbGF5LmVuYWJsZSkiCgouLi5hbmQs
+IGFsdGhvdWdoIHNsaWdodGx5IGRpZmZlcmVudCwgcG9pbnRlcnMgaW4gdGhpcyBmaWxlIGFyZSBj
+aGVja2VkCmZvciBOVUxMIHZzLiBub24tTlVMTCB3aXRob3V0IGFuIGV4cGxpY2l0ICI9PSBOVUxM
+Ii4KCk9mIGNvdXJzZSBqdXN0IGJlY2F1c2UgYWxsIHRoZSBvdGhlciBleGFtcGxlcyBpbiB0aGUg
+ZmlsZSBkbyBpdCBvbmUKd2F5IGRvZXNuJ3QgbWVhbiB0aGF0IG5ldyBjb2RlIGhhcyB0byBkbyBp
+dCBhbm90aGVyIHdheSwgYnV0IEkgd2FudGVkCnRvIGJlIHJlYWxseSBzdXJlIHlvdSB3YW50ZWQg
+bWUgdG8gZ28gYWdhaW5zdCB0aGUgZXhpc3RpbmcgY29udmVudGlvbgpiZWZvcmUgY2hhbmdpbmcg
+dGhpcy4KCgo+IEJ1dCBhcyBvdmVycmlkZV9tb2RlIGNhbiBiZSBOVUxMIHNvbWV0aGluZyBtb3Jl
+IG5lZWRzIHRvIGJlIGRvbmUuCgpJJ20gYWZyYWlkIEkgZG9uJ3QgdW5kZXJzdGFuZCBob3cgb3Zl
+cnJpZGVfbW9kZSBjYW4gYmUgTlVMTCBzaW5jZSBpdCdzCm5vdCBhIHBvaW50ZXIuICBDYW4geW91
+IGNsYXJpZnk/CgoKLURvdWcKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
+LWRldmVs
