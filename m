@@ -1,61 +1,100 @@
-From: Adrian Hunter <adrian.hunter@intel.com>
-Subject: Re: [PATCH v2 00/11] Arasan SDHCI enhancements and ZynqMP Tap Delays
- Handling
-Date: Wed, 10 Jul 2019 14:33:54 +0300
-Message-ID: <d4a733c4-9760-a790-5752-be3f14c53bec@intel.com>
-References: <1561958991-21935-1-git-send-email-manish.narani@xilinx.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] mmc: dw_mmc: Fix occasional hang after tuning on eMMC
+Date: Wed, 10 Jul 2019 13:21:57 -0700
+Message-ID: <CAD=FV=WL_Hy78REn+0CMOjYgPcuDcN1w-+94QD9HHJraQBNj4g@mail.gmail.com>
+References: <20190708195613.205729-1-dianders@chromium.org>
+ <CAJKOXPf9OTPaheUdiZtaDGU0sE2vsdRiLx5nptMt_EVKU7GObA@mail.gmail.com>
+ <CAD=FV=WquwqKjUKh5=M6tbTrD3svVTGWLU3iSTzD-uXBX73YWA@mail.gmail.com> <CAD=FV=X=RALazfX+vjQ7E-JmVu6xqDWCad5hPF+gNtHCuvZMTA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1561958991-21935-1-git-send-email-manish.narani@xilinx.com>
-Content-Language: en-US
+In-Reply-To: <CAD=FV=X=RALazfX+vjQ7E-JmVu6xqDWCad5hPF+gNtHCuvZMTA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Manish Narani <manish.narani@xilinx.com>, ulf.hansson@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, michal.simek@xilinx.com, christoph.muellner@theobroma-systems.com, philipp.tomsich@theobroma-systems.com, viresh.kumar@linaro.org, scott.branden@broadcom.com, ayaka@soulik.info, kernel@esmil.dk, tony.xie@rock-chips.com, rajan.vaja@xilinx.com, jolly.shah@xilinx.com, nava.manne@xilinx.com, mdf@kernel.org, olof@lixom.net
-Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Guenter Roeck <groeck@chromium.org>, Sonny Rao <sonnyrao@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Alim Akhtar <alim.akhtar@gmail.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Linux MMC List <linux-mmc@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 1/07/19 8:29 AM, Manish Narani wrote:
-> This patch series does the following:
->  - Reorganize the Clock Handling in Arasan SD driver
->  - Adds new sampling clock in Arasan SD driver
->  - Adds support to set Clock Delays in SD Arasan Driver
->  - Add SDIO Tap Delay handling in ZynqMP firmware driver
->  - Add support for ZynqMP Tap Delays setting in Arasan SD driver
-> 
-> Changes in v2:
-> 	- Replaced the deprecated calls to clock framework APIs
-> 	- Added support for dev_clk_get() call to work for SD card clock
-> 	- Separated the clock data struct
-> 	- Fragmented the patch series in smaller patches to make it more
-> 	  readable
-> 
-> This patch series contains a DT patch, which I think should be there to
-> maintain the order of commits.
-> 
-> Manish Narani (11):
->   dt-bindings: mmc: arasan: Update documentation for SD Card Clock
->   arm64: dts: rockchip: Add optional clock property indicating sdcard
->     clock
->   mmc: sdhci-of-arasan: Replace deprecated clk API calls
->   mmc: sdhci-of-arasan: Separate out clk related data to another
->     structure
->   dt-bindings: mmc: arasan: Update Documentation for the input clock
->   mmc: sdhci-of-arasan: Add sampling clock for a phy to use
->   dt-bindings: mmc: arasan: Add optional properties for Arasan SDHCI
->   mmc: sdhci-of-arasan: Add support to set clock phase delays for SD
->   firmware: xilinx: Add SDIO Tap Delay APIs
->   dt-bindings: mmc: arasan: Document 'xlnx,zynqmp-8.9a' controller
->   mmc: sdhci-of-arasan: Add support for ZynqMP Platform Tap Delays Setup
-> 
->  .../devicetree/bindings/mmc/arasan,sdhci.txt       |  49 ++-
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   4 +-
->  drivers/firmware/xilinx/zynqmp.c                   |  48 +++
->  drivers/mmc/host/sdhci-of-arasan.c                 | 453 ++++++++++++++++++++-
->  include/linux/firmware/xlnx-zynqmp.h               |  15 +-
->  5 files changed, 540 insertions(+), 29 deletions(-)
-> 
+Hi,
 
-For SDHCI:
+On Tue, Jul 9, 2019 at 3:02 PM Doug Anderson <dianders@chromium.org> wrote:
+>
+> Hi,
+>
+> On Tue, Jul 9, 2019 at 9:38 AM Doug Anderson <dianders@chromium.org> wrote:
+> >
+> > Hi,
+> >
+> > On Tue, Jul 9, 2019 at 2:07 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
+> > >
+> > > On Tue, 9 Jul 2019 at 00:48, Douglas Anderson <dianders@chromium.org> wrote:
+> > > >
+> > > > In commit 46d179525a1f ("mmc: dw_mmc: Wait for data transfer after
+> > > > response errors.") we fixed a tuning-induced hang that I saw when
+> > > > stress testing tuning on certain SD cards.  I won't re-hash that whole
+> > > > commit, but the summary is that as a normal part of tuning you need to
+> > > > deal with transfer errors and there were cases where these transfer
+> > > > errors was putting my system into a bad state causing all future
+> > > > transfers to fail.  That commit fixed handling of the transfer errors
+> > > > for me.
+> > > >
+> > > > In downstream Chrome OS my fix landed and had the same behavior for
+> > > > all SD/MMC commands.  However, it looks like when the commit landed
+> > > > upstream we limited it to only SD tuning commands.  Presumably this
+> > > > was to try to get around problems that Alim Akhtar reported on exynos
+> > > > [1].
+> > > >
+> > > > Unfortunately while stress testing reboots (and suspend/resume) on
+> > > > some rk3288-based Chromebooks I found the same problem on the eMMC on
+> > > > some of my Chromebooks (the ones with Hynix eMMC).  Since the eMMC
+> > > > tuning command is different (MMC_SEND_TUNING_BLOCK_HS200
+> > > > vs. MMC_SEND_TUNING_BLOCK) we were basically getting back into the
+> > > > same situation.
+> > > >
+> > > > I'm hoping that whatever problems exynos was having in the past are
+> > > > somehow magically fixed now and we can make the behavior the same for
+> > > > all commands.
+> > > >
+> > > > [1] https://lkml.kernel.org/r/CAGOxZ53WfNbaMe0_AM0qBqU47kAfgmPBVZC8K8Y-_J3mDMqW4A@mail.gmail.com
+> > > >
+> > > > Fixes: 46d179525a1f ("mmc: dw_mmc: Wait for data transfer after response errors.")
+> > > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > > > Cc: Marek Szyprowski <m.szyprowski@samsung.com>
+> > > > Cc: Alim Akhtar <alim.akhtar@gmail.com>
+> > > > Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> > > > ---
+> > > > Marek (or anyone else using exynos): is it easy for you to test this
+> > > > and check if things are still broken when we land this patch?  If so,
+> > > > I guess we could have a quirk to have different behavior for just
+> > > > Rockchip SoCs but I'd rather avoid that if possible.
+> > > >
+> > > > NOTE: I'm not hoping totally in vain here.  It is possible that some
+> > > > of the CTO/DTO timers that landed could be the magic that would get
+> > > > exynos unstuck.
+> > >
+> > > I have eMMC module attached to Odroid U3 (Exynos4412,
+> > > samsung,exynos4412-dw-mshc). What is the testing procedure? With your
+> > > patch it boots fine:
+> > > [    3.698637] mmc_host mmc1: Bus speed (slot 0) = 50000000Hz (slot
+> > > req 52000000Hz, actual 50000000HZ div = 0)
+> > > [    3.703900] mmc1: new DDR MMC card at address 0001
+> > > [    3.728458] mmcblk1: mmc1:0001 008G92 7.28 GiB
+> >
+> > To really test it, it'd be nice to see some HS200 eMMC cards enumerate
+> > OK.  Specifically the patch adjusts the error handling and the place
+> > where that happens mostly is during tuning.
+> >
+> > I'll also try to find some time today to check a peach_pit or a
+> > peach_pi.  I think I saw one in the pile near my desk so if it isn't
+> > in too bad of a shape I can give mainline a shot on it.
+>
+> OK, I managed to get an exynos5800-peach-pi up and running.  I put my
+> patch in place and am currently at 45 reboots and counting w/ no
+> problems.
 
-Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+In case it helps, I made it through 2379 more reboots on my peach_pi
+w/ no hangs.  I'm putting the device back in mothball now.  :-P  I
+didn't go back and try to reproduce the original problems so I guess I
+can't assert with 100% authority that the original issue is gone, but
+my testing combined with Enric's seems like things are working fine.
+
+-Doug
