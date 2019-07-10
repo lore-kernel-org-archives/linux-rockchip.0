@@ -1,36 +1,59 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 1/3] dt-bindings: display: rockchip: document VOP
- gamma LUT address
-Date: Tue, 9 Jul 2019 16:50:11 -0600
-Message-ID: <20190709225011.GA11245@bogus>
-References: <20190621211346.1324-1-ezequiel@collabora.com>
- <20190621211346.1324-2-ezequiel@collabora.com>
+From: Cheng-yi Chiang <cychiang@chromium.org>
+Subject: Re: [PATCH 5/7] ASoC: rockchip: rockchip-max98090: Add node for HDMI
+Date: Wed, 10 Jul 2019 12:11:48 +0800
+Message-ID: <CAFv8NwLiKu055S7apzj+gTYh0neQ5rLmPYEYkEj6Zf3hikWWpA@mail.gmail.com>
+References: <20190603043251.226549-1-cychiang@chromium.org>
+ <20190603043251.226549-6-cychiang@chromium.org> <20190709200121.GA19118@bogus>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20190621211346.1324-2-ezequiel@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Jacopo Mondi <jacopo@jmondi.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Boris Brezillon <boris.brezillon@collabora.com>, Sean Paul <seanpaul@chromium.org>, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190709200121.GA19118@bogus>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: linux-kernel <linux-kernel@vger.kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Philipp Zabel <p.zabel@pengutronix.de>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, linux-media@vger.kernel.org, moderated list:SOUND - SOC LAYER /
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCAyMSBKdW4gMjAxOSAxODoxMzo0NCAtMDMwMCwgRXplcXVpZWwgR2FyY2lhIHdyb3Rl
-Ogo+IEFkZCB0aGUgcmVnaXN0ZXIgc3BlY2lmaWVyIGRlc2NyaXB0aW9uIGZvciBhbgo+IG9wdGlv
-bmFsIGdhbW1hIExVVCBhZGRyZXNzLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEV6ZXF1aWVsIEdhcmNp
-YSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4KPiAtLS0KPiBDaGFuZ2VzIGZyb20gdjE6Cj4gKiBE
-cm9wIHJlZy1uYW1lcywgc3VnZ2VzdGVkIGJ5IERvdWcuCj4gLS0tCj4gIC4uLi9kZXZpY2V0cmVl
-L2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvcm9ja2NoaXAtdm9wLnR4dCAgIHwgNiArKysrKy0K
-PiAgMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+IAoKUmV2
-aWV3ZWQtYnk6IFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+Cl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
-LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+On Wed, Jul 10, 2019 at 4:01 AM Rob Herring <robh@kernel.org> wrote:
+>
+> On Mon, Jun 03, 2019 at 12:32:49PM +0800, Cheng-Yi Chiang wrote:
+> > Let user specify HDMI node so machine driver can use it to let codec
+> > driver register callback on correct hdmi-notifier.
+> >
+> > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+> > ---
+> >  Documentation/devicetree/bindings/sound/rockchip-max98090.txt | 2 ++
+> >  1 file changed, 2 insertions(+)
+> >
+> > diff --git a/Documentation/devicetree/bindings/sound/rockchip-max98090.txt b/Documentation/devicetree/bindings/sound/rockchip-max98090.txt
+> > index a805aa99ad75..dae57c14864e 100644
+> > --- a/Documentation/devicetree/bindings/sound/rockchip-max98090.txt
+> > +++ b/Documentation/devicetree/bindings/sound/rockchip-max98090.txt
+> > @@ -7,6 +7,7 @@ Required properties:
+> >    connected to the CODEC
+> >  - rockchip,audio-codec: The phandle of the MAX98090 audio codec
+> >  - rockchip,headset-codec: The phandle of Ext chip for jack detection
+> > +- rockchip,hdmi: The phandle of HDMI node for HDMI jack detection
+> >
+> >  Example:
+> >
+> > @@ -16,4 +17,5 @@ sound {
+> >       rockchip,i2s-controller = <&i2s>;
+> >       rockchip,audio-codec = <&max98090>;
+> >       rockchip,headset-codec = <&headsetcodec>;
+> > +     rockchip,hdmi= <&hdmi>;
+>
+> space                ^
+>
+> With that,
+>
+> Acked-by: Rob Herring <robh@kernel.org>
+>
+Hi Rob,
+Thank you for the review.
+But I have changed the approach in v2 so there is no need for machine
+driver to expose this property.
+Thanks!
+> >  };
+> > --
+> > 2.22.0.rc1.257.g3120a18244-goog
+> >
