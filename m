@@ -1,71 +1,90 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v6 0/3] drm/panel: simple: Add mode support to devicetree
-Date: Thu, 11 Jul 2019 13:34:52 -0700
-Message-ID: <20190711203455.125667-1-dianders@chromium.org>
+Subject: [PATCH v6 2/3] drm/panel: simple: Use display_timing for Innolux
+ n116bge
+Date: Thu, 11 Jul 2019 13:34:54 -0700
+Message-ID: <20190711203455.125667-3-dianders@chromium.org>
+References: <20190711203455.125667-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190711203455.125667-1-dianders@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Boris Brezillon <boris.brezillon@collabora.com>, mka@chromium.org, Rob Herring <robh+dt@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
+Cc: Rob Herring <robh+dt@kernel.org>, David Airlie <airlied@linux.ie>, Sam Ravnborg <sam@ravnborg.org>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Boris Brezillon <boris.brezillon@collabora.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, mka@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-I'm reviving Sean Paul's old patchset to get mode support in device
-tree.  The cover letter for his v3 is at:
-https://lists.freedesktop.org/archives/dri-devel/2018-February/165162.html
-
-v6 of this patch is just a repost of the 3 DRM patches in v5 rebased
-atop drm-misc.  A few notes:
-- I've dropped the bindings patch.  Commit 821a1f7171ae ("dt-bindings:
-  display: Convert common panel bindings to DT schema") has landed and
-  Rob H said [1] that when that landed the bindings were implicitly
-  supported.
-- Since the bindings patch was dropped I am assuming that Heiko
-  can just pick up the .dts patches from the v5 series.  I
-  double-checked with him and he confirmed this is fine.  Thus I
-  have left the device tree patches out of this version.
-
-There were some coding style discussions on v5 of the path but it's
-been agreed that we can land this series as-is and after it lands we
-can address the minor style issues.
-
-[1] https://lkml.kernel.org/r/CAL_JsqJGtUTpJL+SDEKi09aDT4yDzY4x9KwYmz08NaZcn=nHfA@mail.gmail.com
-
-Changes in v6:
-- Rebased to drm-misc next
-- Added tags
-
-Changes in v5:
-- Added Heiko's Tested-by
-
-Changes in v4:
-- Don't add mode from timing if override was specified (Thierry)
-- Add warning if timing and fixed mode was specified (Thierry)
-- Don't add fixed mode if timing was specified (Thierry)
-- Refactor/rename a bit to avoid extra indentation from "if" tests
-- i should be unsigned (Thierry)
-- Add annoying WARN_ONs for some cases (Thierry)
-- Simplify 'No display_timing found' handling (Thierry)
-- Rename to panel_simple_parse_override_mode() (Thierry)
-- display_timing for Innolux n116bge new for v4.
-- display_timing for AUO b101ean01 new for v4.
-
-Changes in v3:
-- No longer parse display-timings subnode, use panel-timing (Rob)
-
-Changes in v2:
-- Parse the full display-timings node (using the native-mode) (Rob)
-
-Douglas Anderson (2):
-  drm/panel: simple: Use display_timing for Innolux n116bge
-  drm/panel: simple: Use display_timing for AUO b101ean01
-
-Sean Paul (1):
-  drm/panel: simple: Add ability to override typical timing
-
- drivers/gpu/drm/panel/panel-simple.c | 171 ++++++++++++++++++++++-----
- 1 file changed, 139 insertions(+), 32 deletions(-)
-
--- 
-2.22.0.410.gd8fdbe21b5-goog
+Q29udmVydCB0aGUgSW5ub2x1eCBuMTE2YmdlIGZyb20gdXNpbmcgYSBmaXhlZCBtb2RlIHRvIHNw
+ZWNpZnlpbmcgYQpkaXNwbGF5IHRpbWluZyB3aXRoIG1pbi90eXAvbWF4IHZhbHVlcy4KCk5vdGUg
+dGhhdCB0aGUgbjExNmJnZSdzIGRhdGFzaGVldCBkb2Vzbid0IGZpdCB0b28gd2VsbCBpbnRvIERS
+TSdzIHdheQpvZiBzcGVjaWZ5aW5nIHRoaW5ncy4gIFNwZWNpZmljYWxseSB0aGUgcGFuZWwncyBk
+YXRhc2hlZXQganVzdApzcGVjaWZpZXMgdGhlIHZlcnRpY2FsIGJsYW5raW5nIHBlcmlvZCBhbmQg
+aG9yaXpvbnRhbCBibGFua2luZyBwZXJpb2QKYW5kIGRvZXNuJ3QgYnJlYWsgdGhpbmdzIG91dC4g
+IEZvciBub3cgd2UnbGwgbGVhdmUgZXZlcnl0aGluZyBhcyBhCmZpeGVkIHZhbHVlIGJ1dCBqdXN0
+IGFsbG93IGFkanVzdGluZyB0aGUgcGl4ZWwgY2xvY2suICBJJ3ZlIGFkZGVkIGEKY29tbWVudCBv
+biB3aGF0IHRoZSBkYXRhc2hlZXQgY2xhaW1zIHNvIHNvbWVvbmUgY291bGQgbGF0ZXIgZXhwYW5k
+CnRoaW5ncyB0byBmaXQgdGhlaXIgbmVlZHMgaWYgdGhleSB3YW50ZWQgdG8gdGVzdCBvdGhlciBi
+bGFua2luZwpwZXJpb2RzLgoKVGhlIGdvYWwgaGVyZSBpcyB0byBiZSBhYmxlIHRvIHNwZWNpZnkg
+dGhlIHBhbmVsIHRpbWluZ3MgaW4gdGhlIGRldmljZQp0cmVlIGZvciBzZXZlcmFsIHJrMzI4OCBD
+aHJvbWVib29rcyAobGlrZSByazMyODgtdmVyeW9uLWplcnJ5KS4gIFRoZXNlCkNocm9tZWJvb2tz
+IGhhdmUgYWxsIGJlZW4gcnVubmluZyBpbiB0aGUgZG93bnN0cmVhbSBrZXJuZWwgd2l0aCB0aGUK
+c3RhbmRhcmQgcG9yY2hlcyBhbmQgc3luYyBsZW5ndGhzIGJ1dCBqdXN0IHdpdGggYSBzbGlnaHRs
+eSBzbG93ZXIKcGl4ZWwgY2xvY2sgYmVjYXVzZSB0aGUgNzYuNDIgTUh6IGNsb2NrIGlzIG5vdCBh
+Y2hpZXZhYmxlIGZyb20gdGhlCmZpeGVkIFBMTCB0aGF0IHdhcyBhdmFpbGFibGUuICBUaGVzZSBD
+aHJvbWVib29rcyBvbmx5IGFjaGlldmUgYQpyZWZyZXNoIHJhdGUgb2YgfjU4IEh6LiAgV2hpbGUg
+aXQncyBwcm9iYWJsZSB0aGF0IHdlIGNvdWxkIGFkanVzdCB0aGUKdGltaW5ncyB0byBhY2hpZXZl
+IDYwIEh6IGl0J3MgcHJvYmFibHkgd2lzZXN0IHRvIG1hdGNoIHdoYXQncyBiZWVuCnJ1bm5pbmcg
+b24gdGhlc2UgZGV2aWNlcyBhbGwgdGhlc2UgeWVhcnMuCgpJJ2xsIG5vdGUgdGhhdCB0aG91Z2gg
+dGhlIHVwc3RyZWFtIGtlcm5lbCBoYXMgYWx3YXlzIHRyaWVkIHRvIGFjaGlldmUKNzYuNDIgTUh6
+LCBpdCBoYXMgYWN0dWFsbHkgYmVlbiBydW5uaW5nIGF0IDc0LjI1IE1IeiBhbHNvIHNpbmNlIHRo
+ZQp2aWRlbyBwcm9jZXNzb3IgaXMgcGFyZW50ZWQgb2ZmIHRoZSBzYW1lIGZpeGVkIFBMTC4KCkNo
+YW5nZXMgaW4gdjQ6CiAtIGRpc3BsYXlfdGltaW5nIGZvciBJbm5vbHV4IG4xMTZiZ2UgbmV3IGZv
+ciB2NC4KQ2hhbmdlcyBpbiB2NToKIC0gQWRkZWQgSGVpa28ncyBUZXN0ZWQtYnkKQ2hhbmdlcyBp
+biB2NjoKIC0gUmViYXNlZCB0byBkcm0tbWlzYyBuZXh0CiAtIEFkZGVkIHRhZ3MKClNpZ25lZC1v
+ZmYtYnk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KVGVzdGVkLWJ5
+OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgpBY2tlZC1ieTogVGhpZXJyeSBSZWRp
+bmcgPHRoaWVycnkucmVkaW5nQGdtYWlsLmNvbT4KLS0tCgogZHJpdmVycy9ncHUvZHJtL3BhbmVs
+L3BhbmVsLXNpbXBsZS5jIHwgMzcgKysrKysrKysrKysrKysrKystLS0tLS0tLS0tLQogMSBmaWxl
+IGNoYW5nZWQsIDIzIGluc2VydGlvbnMoKyksIDE0IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUuYyBiL2RyaXZlcnMvZ3B1L2RybS9w
+YW5lbC9wYW5lbC1zaW1wbGUuYwppbmRleCAxYmVlMTk3ODIxZWYuLjYwMjgwOWY2ZGE2YSAxMDA2
+NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5jCisrKyBiL2RyaXZl
+cnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zaW1wbGUuYwpAQCAtMTcwMiwyMyArMTcwMiwzMiBAQCBz
+dGF0aWMgY29uc3Qgc3RydWN0IHBhbmVsX2Rlc2MgaW5ub2x1eF9nMTIxeDFfbDAzID0gewogCX0s
+CiB9OwogCi1zdGF0aWMgY29uc3Qgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgaW5ub2x1eF9uMTE2
+YmdlX21vZGUgPSB7Ci0JLmNsb2NrID0gNzY0MjAsCi0JLmhkaXNwbGF5ID0gMTM2NiwKLQkuaHN5
+bmNfc3RhcnQgPSAxMzY2ICsgMTM2LAotCS5oc3luY19lbmQgPSAxMzY2ICsgMTM2ICsgMzAsCi0J
+Lmh0b3RhbCA9IDEzNjYgKyAxMzYgKyAzMCArIDYwLAotCS52ZGlzcGxheSA9IDc2OCwKLQkudnN5
+bmNfc3RhcnQgPSA3NjggKyA4LAotCS52c3luY19lbmQgPSA3NjggKyA4ICsgMTIsCi0JLnZ0b3Rh
+bCA9IDc2OCArIDggKyAxMiArIDEyLAotCS52cmVmcmVzaCA9IDYwLAotCS5mbGFncyA9IERSTV9N
+T0RFX0ZMQUdfTkhTWU5DIHwgRFJNX01PREVfRkxBR19OVlNZTkMsCisvKgorICogRGF0YXNoZWV0
+IHNwZWNpZmllcyB0aGF0IGF0IDYwIEh6IHJlZnJlc2ggcmF0ZToKKyAqIC0gdG90YWwgaG9yaXpv
+bnRhbCB0aW1lOiB7IDE1MDYsIDE1OTIsIDE3MTYgfQorICogLSB0b3RhbCB2ZXJ0aWNhbCB0aW1l
+OiB7IDc4OCwgODAwLCA4NjggfQorICoKKyAqIC4uLmJ1dCBkb2Vzbid0IGdvIGludG8gZXhhY3Rs
+eSBob3cgdGhhdCBzaG91bGQgYmUgc3BsaXQgaW50byBhIGZyb250CisgKiBwb3JjaCwgYmFjayBw
+b3JjaCwgb3Igc3luYyBsZW5ndGguICBGb3Igbm93IHdlJ2xsIGxlYXZlIGEgc2luZ2xlIHNldHRp
+bmcKKyAqIGhlcmUgd2hpY2ggYWxsb3dzIGEgYml0IG9mIHR3ZWFraW5nIG9mIHRoZSBwaXhlbCBj
+bG9jayBhdCB0aGUgZXhwZW5zZSBvZgorICogcmVmcmVzaCByYXRlLgorICovCitzdGF0aWMgY29u
+c3Qgc3RydWN0IGRpc3BsYXlfdGltaW5nIGlubm9sdXhfbjExNmJnZV90aW1pbmcgPSB7CisJLnBp
+eGVsY2xvY2sgPSB7IDcyNjAwMDAwLCA3NjQyMDAwMCwgODAyNDAwMDAgfSwKKwkuaGFjdGl2ZSA9
+IHsgMTM2NiwgMTM2NiwgMTM2NiB9LAorCS5oZnJvbnRfcG9yY2ggPSB7IDEzNiwgMTM2LCAxMzYg
+fSwKKwkuaGJhY2tfcG9yY2ggPSB7IDYwLCA2MCwgNjAgfSwKKwkuaHN5bmNfbGVuID0geyAzMCwg
+MzAsIDMwIH0sCisJLnZhY3RpdmUgPSB7IDc2OCwgNzY4LCA3NjggfSwKKwkudmZyb250X3BvcmNo
+ID0geyA4LCA4LCA4IH0sCisJLnZiYWNrX3BvcmNoID0geyAxMiwgMTIsIDEyIH0sCisJLnZzeW5j
+X2xlbiA9IHsgMTIsIDEyLCAxMiB9LAorCS5mbGFncyA9IERJU1BMQVlfRkxBR1NfVlNZTkNfTE9X
+IHwgRElTUExBWV9GTEFHU19IU1lOQ19MT1csCiB9OwogCiBzdGF0aWMgY29uc3Qgc3RydWN0IHBh
+bmVsX2Rlc2MgaW5ub2x1eF9uMTE2YmdlID0gewotCS5tb2RlcyA9ICZpbm5vbHV4X24xMTZiZ2Vf
+bW9kZSwKLQkubnVtX21vZGVzID0gMSwKKwkudGltaW5ncyA9ICZpbm5vbHV4X24xMTZiZ2VfdGlt
+aW5nLAorCS5udW1fdGltaW5ncyA9IDEsCiAJLmJwYyA9IDYsCiAJLnNpemUgPSB7CiAJCS53aWR0
+aCA9IDI1NiwKLS0gCjIuMjIuMC40MTAuZ2Q4ZmRiZTIxYjUtZ29vZwoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
+cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
