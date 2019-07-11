@@ -1,660 +1,175 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v3 2/4] media: uapi: Add VP8 stateless decoder API
-Date: Thu, 11 Jul 2019 16:30:35 +0200
-Message-ID: <1e22741f-1616-fe01-e5d8-aad73ef974ff@xs4all.nl>
-References: <20190705145050.25911-1-ezequiel@collabora.com>
- <20190705145050.25911-3-ezequiel@collabora.com>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Subject: Re: [PATCH v4 16/23] drm/mgag200: Provide ddc symlink in connector
+ sysfs directory
+Date: Thu, 11 Jul 2019 19:26:21 +0200
+Message-ID: <3a2bb4ef-0fd7-3076-e6c2-39f2a3454727@suse.de>
+References: <cover.1562843413.git.andrzej.p@collabora.com>
+ <d32a6b1f0a3b79f1fbc8d0894080908526f6e61e.1562843413.git.andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190705145050.25911-3-ezequiel@collabora.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, Hans Verkuil <hans.verkuil@cisco.com>
-Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org, Pawel Osciak <posciak@chromium.org>
+Content-Type: multipart/mixed; boundary="===============1296044343=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <d32a6b1f0a3b79f1fbc8d0894080908526f6e61e.1562843413.git.andrzej.p@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, dri-devel@lists.freedesktop.org
+Cc: Sam Ravnborg <sam@ravnborg.org>, Neil Armstrong <narmstrong@baylibre.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Douglas Anderson <dianders@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, kernel@collabora.com, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Vincent Abriou <vincent.abriou@st.com>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, David Airlie <airlied@linux.ie>, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Dave Airlie <airlied@redhat.com>, intel-gfx@lists.freedesktop.org, linux-tegra@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>, linux-arm-msm@vger.kernel.org, Alexios Zavras <alexios.zavras@intel.com>, Mamta Shukla <mamtashukla555@gmail.com>, linux-mediatek@lists.infradead.org, Jyr
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Ezequiel,
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============1296044343==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="M6nYUrh3oEarMl1892EPEAAzHEDzD10R3"
 
-Just a few small points:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--M6nYUrh3oEarMl1892EPEAAzHEDzD10R3
+Content-Type: multipart/mixed; boundary="8S0vaGiu1cLt80DL4dXMNOlmLb3f1te4c";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+ dri-devel@lists.freedesktop.org
+Cc: kernel@collabora.com, Alex Deucher <alexander.deucher@amd.com>,
+ =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
+ "David (ChunMing) Zhou" <David1.Zhou@amd.com>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Dave Airlie <airlied@redhat.com>, Andrzej Hajda <a.hajda@samsung.com>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>,
+ Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>,
+ Seung-Woo Kim <sw0312.kim@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ CK Hu <ck.hu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Clark <robdclark@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
+ Benjamin Gaignard <benjamin.gaignard@linaro.org>,
+ Vincent Abriou <vincent.abriou@st.com>, Chen-Yu Tsai <wens@csie.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Jyri Sarha <jsarha@ti.com>,
+ Tomi Valkeinen <tomi.valkeinen@ti.com>, Eric Anholt <eric@anholt.net>,
+ Sam Ravnborg <sam@ravnborg.org>, Huang Rui <ray.huang@amd.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, "Y.C. Chen" <yc_chen@aspeedtech.com>,
+ Neil Armstrong <narmstrong@baylibre.com>,
+ Douglas Anderson <dianders@chromium.org>, Jonas Karlman <jonas@kwiboo.se>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>,
+ Chris Wilson <chris@chris-wilson.co.uk>,
+ Ramalingam C <ramalingam.c@intel.com>,
+ Shashank Sharma <shashank.sharma@intel.com>,
+ Alexios Zavras <alexios.zavras@intel.com>,
+ Todor Tomov <todor.tomov@linaro.org>, Mamta Shukla
+ <mamtashukla555@gmail.com>, amd-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-tegra@vger.kernel.org
+Message-ID: <3a2bb4ef-0fd7-3076-e6c2-39f2a3454727@suse.de>
+Subject: Re: [PATCH v4 16/23] drm/mgag200: Provide ddc symlink in connector
+ sysfs directory
+References: <cover.1562843413.git.andrzej.p@collabora.com>
+ <d32a6b1f0a3b79f1fbc8d0894080908526f6e61e.1562843413.git.andrzej.p@collabora.com>
+In-Reply-To: <d32a6b1f0a3b79f1fbc8d0894080908526f6e61e.1562843413.git.andrzej.p@collabora.com>
 
-On 7/5/19 4:50 PM, Ezequiel Garcia wrote:
-> From: Pawel Osciak <posciak@chromium.org>
-> 
-> Add the parsed VP8 frame pixel format and controls, to be used
-> with the new stateless decoder API for VP8 to provide parameters
-> for accelerator (aka stateless) codecs.
-> 
-> Reviewed-by: Tomasz Figa <tfiga@chromium.org>
-> Reviewed-by: Boris Brezillon <boris.brezillon@collabora.com>
-> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> Signed-off-by: Pawel Osciak <posciak@chromium.org>
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> --
-> Changes from v2:
-> * Rename and document macroblock_bit_offset to first_part_header_bits.
-> * Document num_dct_part constraints.
-> 
-> Changes from v1:
-> * Move 1-bit fields to flags in the respective structures.
-> * Add padding fields to make all structures 8-byte aligned.
-> * Reorder fields where needed to avoid padding as much as possible.
-> * Fix documentation as needed.
-> 
-> Changes from RFC:
-> * Make sure the uAPI has the same size on x86, x86_64, arm and arm64.
-> * Move entropy coder state fields to a struct.
-> * Move key_frame field to the flags.
-> * Remove unneeded first_part_offset field.
-> * Add documentation.
+--8S0vaGiu1cLt80DL4dXMNOlmLb3f1te4c
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+Acked-by: Thomas Zimmermann <tzimmermann@suse.de>
+
+Am 11.07.19 um 13:26 schrieb Andrzej Pietrasiewicz:
+> Use the ddc pointer provided by the generic connector.
+>=20
+> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 > ---
->  Documentation/media/uapi/v4l/biblio.rst       |  10 +
->  .../media/uapi/v4l/ext-ctrls-codec.rst        | 323 ++++++++++++++++++
->  .../media/uapi/v4l/pixfmt-compressed.rst      |  20 ++
->  drivers/media/v4l2-core/v4l2-ctrls.c          |  10 +
->  drivers/media/v4l2-core/v4l2-ioctl.c          |   1 +
->  include/media/v4l2-ctrls.h                    |   3 +
->  include/media/vp8-ctrls.h                     | 110 ++++++
->  7 files changed, 477 insertions(+)
->  create mode 100644 include/media/vp8-ctrls.h
-> 
-> diff --git a/Documentation/media/uapi/v4l/biblio.rst b/Documentation/media/uapi/v4l/biblio.rst
-> index 8f4eb8823d82..ad2ff258afa8 100644
-> --- a/Documentation/media/uapi/v4l/biblio.rst
-> +++ b/Documentation/media/uapi/v4l/biblio.rst
-> @@ -395,3 +395,13 @@ colimg
->  :title:     Color Imaging: Fundamentals and Applications
->  
->  :author:    Erik Reinhard et al.
+>  drivers/gpu/drm/mgag200/mgag200_mode.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/mgag200/mgag200_mode.c b/drivers/gpu/drm/m=
+gag200/mgag200_mode.c
+> index a25054015e8c..8fb9444b2142 100644
+> --- a/drivers/gpu/drm/mgag200/mgag200_mode.c
+> +++ b/drivers/gpu/drm/mgag200/mgag200_mode.c
+> @@ -1703,6 +1703,11 @@ static struct drm_connector *mga_vga_init(struct=
+ drm_device *dev)
+>  		return NULL;
+> =20
+>  	connector =3D &mga_connector->base;
+> +	mga_connector->i2c =3D mgag200_i2c_create(dev);
+> +	if (!mga_connector->i2c)
+> +		DRM_ERROR("failed to add ddc bus\n");
 > +
-> +.. _vp8:
-> +
-> +VP8
-> +===
-> +
-> +
-> +:title:     RFC 6386: "VP8 Data Format and Decoding Guide"
-> +
-> +:author:    J. Bankoski et al.
-> diff --git a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-> index d6ea2ffd65c5..271c1e185cdf 100644
-> --- a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-> +++ b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-> @@ -2234,6 +2234,329 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
->      Quantization parameter for a P frame for FWHT. Valid range: from 1
->      to 31.
->  
-> +.. _v4l2-mpeg-vp8:
-> +
-> +``V4L2_CID_MPEG_VIDEO_VP8_FRAME_HEADER (struct)``
-> +    Specifies the frame parameters for the associated VP8 parsed frame data.
-> +    This includes the necessary parameters for
-> +    configuring a stateless hardware decoding pipeline for VP8.
-> +    The bitstream parameters are defined according to :ref:`vp8`.
-> +
-> +    .. note::
-> +
-> +       This compound control is not yet part of the public kernel API and
-> +       it is expected to change.
-> +
-> +.. c:type:: v4l2_ctrl_vp8_frame_header
-> +
-> +.. cssclass:: longtable
-> +
-> +.. tabularcolumns:: |p{5.8cm}|p{4.8cm}|p{6.6cm}|
-> +
-> +.. flat-table:: struct v4l2_ctrl_vp8_frame_header
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +    :widths:       1 1 2
-> +
-> +    * - struct :c:type:`v4l2_vp8_segment_header`
-> +      - ``segment_header``
-> +      - Structure with segment-based adjustments metadata.
-> +    * - struct :c:type:`v4l2_vp8_loopfilter_header`
-> +      - ``loopfilter_header``
-> +      - Structure with loop filter level adjustments metadata.
-> +    * - struct :c:type:`v4l2_vp8_quantization_header`
-> +      - ``quant_header``
-> +      - Structure with VP8 dequantization indices metadata.
-> +    * - struct :c:type:`v4l2_vp8_entropy_header`
-> +      - ``entropy_header``
-> +      - Structure with VP8 entropy coder probabilities metadata.
-> +    * - struct :c:type:`v4l2_vp8_entropy_coder_state`
-> +      - ``coder_state``
-> +      - Structure with VP8 entropy coder state.
-> +    * - __u16
-> +      - ``width``
-> +      - The width of the frame. Must be set for all frames.
-> +    * - __u16
-> +      - ``height``
-> +      - The height of the frame. Must be set for all frames.
-> +    * - __u8
-> +      - ``horizontal_scale``
-> +      - Horizontal scaling factor.
-> +    * - __u8
-> +      - ``vertical_scaling factor``
-> +      - Vertical scale.
-> +    * - __u8
-> +      - ``version``
-> +      - Bitstream version.
-> +    * - __u8
-> +      - ``prob_skip_false``
-> +      - Indicates the probability that the macroblock is not skipped.
-> +    * - __u8
-> +      - ``prob_intra``
-> +      - Indicates the probability that a macroblock is intra-predicted.
-> +    * - __u8
-> +      - ``prob_last``
-> +      - Indicates the probability that the last reference frame is used
-> +        for inter-prediction
-> +    * - __u8
-> +      - ``prob_gf``
-> +      - Indicates the probability that the golden reference frame is used
-> +        for inter-prediction
-> +    * - __u8
-> +      - ``num_dct_parts``
-> +      - Number of DCT coefficients partitions. Must be one of: 1, 2, 4, or 8.
-> +    * - __u32
-> +      - ``first_part_size``
-> +      - Size of the first partition, i.e. the control partition.
-> +    * - __u32
-> +      - ``first_part_header_bits``
-> +      - Size in bits of the first partition header portion.
-> +    * - __u32
-> +      - ``dct_part_sizes[8]``
-> +      - DCT coefficients sizes.
-> +    * - __u64
-> +      - ``last_frame_ts``
-> +      - Timestamp for the V4L2 capture buffer to use as last reference frame, used
-> +        with inter-coded frames. The timestamp refers to the ``timestamp`` field in
-> +	struct :c:type:`v4l2_buffer`. Use the :c:func:`v4l2_timeval_to_ns()`
-> +	function to convert the struct :c:type:`timeval` in struct
-> +	:c:type:`v4l2_buffer` to a __u64.
-> +    * - __u64
-> +      - ``golden_frame_ts``
-> +      - Timestamp for the V4L2 capture buffer to use as last reference frame, used
-> +        with inter-coded frames. The timestamp refers to the ``timestamp`` field in
-> +	struct :c:type:`v4l2_buffer`. Use the :c:func:`v4l2_timeval_to_ns()`
-> +	function to convert the struct :c:type:`timeval` in struct
-> +	:c:type:`v4l2_buffer` to a __u64.
-> +    * - __u64
-> +      - ``alt_frame_ts``
-> +      - Timestamp for the V4L2 capture buffer to use as alternate reference frame, used
-> +        with inter-coded frames. The timestamp refers to the ``timestamp`` field in
-> +	struct :c:type:`v4l2_buffer`. Use the :c:func:`v4l2_timeval_to_ns()`
-> +	function to convert the struct :c:type:`timeval` in struct
-> +	:c:type:`v4l2_buffer` to a __u64.
-> +    * - __u64
-> +      - ``flags``
-> +      - See :ref:`Frame Header Flags <vp8_frame_header_flags>`
-> +
-> +.. _vp8_frame_header_flags:
-> +
-> +``Frame Header Flags``
-> +
-> +.. cssclass:: longtable
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +    :widths:       1 1 2
-> +
-> +    * - ``V4L2_VP8_FRAME_HEADER_FLAG_KEY_FRAME``
-> +      - 0x01
-> +      - Inidicates if the frame is a key frame.
+> +	connector->ddc =3D &mga_connector->i2c->adapter;
+> =20
+>  	drm_connector_init(dev, connector,
+>  			   &mga_vga_connector_funcs, DRM_MODE_CONNECTOR_VGA);
+> @@ -1711,10 +1716,6 @@ static struct drm_connector *mga_vga_init(struct=
+ drm_device *dev)
+> =20
+>  	drm_connector_register(connector);
+> =20
+> -	mga_connector->i2c =3D mgag200_i2c_create(dev);
+> -	if (!mga_connector->i2c)
+> -		DRM_ERROR("failed to add ddc bus\n");
+> -
+>  	return connector;
+>  }
+> =20
+>=20
 
-Typo: Indicates
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Linux GmbH, Maxfeldstrasse 5, 90409 Nuernberg, Germany
+GF: Felix Imend=C3=B6rffer, Mary Higgins, Sri Rasiah
+HRB 21284 (AG N=C3=BCrnberg)
 
-> +    * - ``V4L2_VP8_FRAME_HEADER_FLAG_EXPERIMENTAL``
-> +      - 0x02
-> +      - Experimental bitstream.
-> +    * - ``V4L2_VP8_FRAME_HEADER_FLAG_SHOW_FRAME``
-> +      - 0x04
-> +      - Show frame flag, indicates if the frame is for display.
-> +    * - ``V4L2_VP8_FRAME_HEADER_FLAG_MB_NO_SKIP_COEFF``
-> +      - 0x08
-> +      - Enable/disable skipping of macroblocks with no non-zero coefficients.
-> +    * - ``V4L2_VP8_FRAME_HEADER_FLAG_SIGN_BIAS_GOLDEN``
-> +      - 0x10
-> +      - Sign of motion vectors when the golden frame is referenced.
-> +    * - ``V4L2_VP8_FRAME_HEADER_FLAG_SIGN_BIAS_ALT``
-> +      - 0x20
-> +      - Sign of motion vectors when the alt frame is referenced.
-> +
-> +.. c:type:: v4l2_vp8_entropy_coder_state
-> +
-> +.. cssclass:: longtable
-> +
-> +.. tabularcolumns:: |p{1.5cm}|p{6.3cm}|p{9.4cm}|
-> +
-> +.. flat-table:: struct v4l2_vp8_entropy_coder_state
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +    :widths:       1 1 2
-> +
-> +    * - __u8
-> +      - ``range``
-> +      -
-> +    * - __u8
-> +      - ``value``
-> +      -
-> +    * - __u8
-> +      - ``bit_count``
-> +      -
-> +    * - __u8
-> +      - ``padding``
-> +      -
 
-I prefer that this text is added to padding fields:
+--8S0vaGiu1cLt80DL4dXMNOlmLb3f1te4c--
 
-Applications and drivers must set this to zero.
+--M6nYUrh3oEarMl1892EPEAAzHEDzD10R3
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
-And in patch 3/4 all the padding fields should be zeroed.
+-----BEGIN PGP SIGNATURE-----
 
-> +
-> +.. c:type:: v4l2_vp8_segment_header
-> +
-> +.. cssclass:: longtable
-> +
-> +.. tabularcolumns:: |p{1.5cm}|p{6.3cm}|p{9.4cm}|
-> +
-> +.. flat-table:: struct v4l2_vp8_segment_header
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +    :widths:       1 1 2
-> +
-> +    * - __s8
-> +      - ``quant_update[4]``
-> +      - Signed quantizer value update.
-> +    * - __s8
-> +      - ``lf_update[4]``
-> +      - Signed loop filter level value update.
-> +    * - __u8
-> +      - ``segment_probs[3]``
-> +      - Segment probabilities.
-> +    * - __u8
-> +      - ``padding``
-> +      -
-> +    * - __u32
-> +      - ``flags``
-> +      - See :ref:`Segment Header Flags <vp8_segment_header_flags>`
-> +
-> +.. _vp8_segment_header_flags:
-> +
-> +``Segment Header Flags``
-> +
-> +.. cssclass:: longtable
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +    :widths:       1 1 2
-> +
-> +    * - ``V4L2_VP8_SEGMENT_HEADER_FLAG_ENABLED``
-> +      - 0x01
-> +      - Enable/disable segment-based adjustments.
-> +    * - ``V4L2_VP8_SEGMENT_HEADER_FLAG_UPDATE_MAP``
-> +      - 0x02
-> +      - Indicates if the macroblock segmentation map is updated in this frame.
-> +    * - ``V4L2_VP8_SEGMENT_HEADER_FLAG_UPDATE_FEATURE_DATA``
-> +      - 0x04
-> +      - Indicates if the segment feature data is updated in this frame.
-> +    * - ``V4L2_VP8_SEGMENT_HEADER_FLAG_DELTA_VALUE_MODE``
-> +      - 0x08
-> +      - If is set, the segment feature data mode is delta-value.
-> +        If cleared, it's absolute-value.
-> +
-> +.. c:type:: v4l2_vp8_loopfilter_header
-> +
-> +.. cssclass:: longtable
-> +
-> +.. tabularcolumns:: |p{1.5cm}|p{6.3cm}|p{9.4cm}|
-> +
-> +.. flat-table:: struct v4l2_vp8_loopfilter_header
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +    :widths:       1 1 2
-> +
-> +    * - __s8
-> +      - ``ref_frm_delta[4]``
-> +      - Reference adjustment (signed) delta value.
-> +    * - __s8
-> +      - ``mb_mode_delta[4]``
-> +      - Macroblock prediction mode adjustment (signed) delta value.
-> +    * - __u8
-> +      - ``sharpness_level``
-> +      - Sharpness level
-> +    * - __u8
-> +      - ``level``
-> +      - Filter level
-> +    * - __u16
-> +      - ``padding``
-> +      -
-> +    * - __u32
-> +      - ``flags``
-> +      - See :ref:`Loopfilter Header Flags <vp8_loopfilter_header_flags>`
-> +
-> +.. _vp8_loopfilter_header_flags:
-> +
-> +``Loopfilter Header Flags``
-> +
-> +.. cssclass:: longtable
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +    :widths:       1 1 2
-> +
-> +    * - ``V4L2_VP8_LF_HEADER_ADJ_ENABLE``
-> +      - 0x01
-> +      - Enable/disable macroblock-level loop filter adjustment.
-> +    * - ``V4L2_VP8_LF_HEADER_DELTA_UPDATE``
-> +      - 0x02
-> +      - Indicates if the delta values used in an adjustment are updated.
-> +    * - ``V4L2_VP8_LF_FILTER_TYPE_SIMPLE``
-> +      - 0x04
-> +      - If set, indicates the filter type is simple.
-> +        If cleared, the filter type is normal.
-> +
-> +.. c:type:: v4l2_vp8_quantization_header
-> +
-> +.. cssclass:: longtable
-> +
-> +.. tabularcolumns:: |p{1.5cm}|p{6.3cm}|p{9.4cm}|
-> +
-> +.. flat-table:: struct v4l2_vp8_quantization_header
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +    :widths:       1 1 2
-> +
-> +    * - __u8
-> +      - ``y_ac_qi``
-> +      - Luma AC coefficient table index.
-> +    * - __s8
-> +      - ``y_dc_delta``
-> +      - Luma DC delta vaue.
-> +    * - __s8
-> +      - ``y2_dc_delta``
-> +      - Y2 block DC delta value.
-> +    * - __s8
-> +      - ``y2_ac_delta``
-> +      - Y2 block AC delta value.
-> +    * - __s8
-> +      - ``uv_dc_delta``
-> +      - Chroma DC delta value.
-> +    * - __s8
-> +      - ``uv_ac_delta``
-> +      - Chroma AC delta value.
-> +    * - __u16
-> +      - ``padding``
-> +      -
-> +
-> +.. c:type:: v4l2_vp8_entropy_header
-> +
-> +.. cssclass:: longtable
-> +
-> +.. tabularcolumns:: |p{1.5cm}|p{6.3cm}|p{9.4cm}|
-> +
-> +.. flat-table:: struct v4l2_vp8_entropy_header
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +    :widths:       1 1 2
-> +
-> +    * - __u8
-> +      - ``coeff_probs[4][8][3][11]``
-> +      - Coefficient update probabilities.
-> +    * - __u8
-> +      - ``y_mode_probs[4]``
-> +      - Luma mode update probabilities.
-> +    * - __u8
-> +      - ``uv_mode_probs[3]``
-> +      - Chroma mode update probabilities.
-> +    * - __u8
-> +      - ``mv_probs[2][19]``
-> +      - MV decoding update probabilities.
-> +    * - __u8
-> +      - ``padding[3]``
-> +      -
-> +
->  .. raw:: latex
->  
->      \normalsize
-> diff --git a/Documentation/media/uapi/v4l/pixfmt-compressed.rst b/Documentation/media/uapi/v4l/pixfmt-compressed.rst
-> index 4b701fc7653e..f52a7b67023d 100644
-> --- a/Documentation/media/uapi/v4l/pixfmt-compressed.rst
-> +++ b/Documentation/media/uapi/v4l/pixfmt-compressed.rst
-> @@ -133,6 +133,26 @@ Compressed Formats
->        - ``V4L2_PIX_FMT_VP8``
->        - 'VP80'
->        - VP8 video elementary stream.
-> +    * .. _V4L2-PIX-FMT-VP8-FRAME:
-> +
-> +      - ``V4L2_PIX_FMT_VP8_FRAME``
-> +      - 'VP8F'
-> +      - VP8 parsed frame, as extracted from the container.
-> +	This format is adapted for stateless video decoders that implement a
-> +	VP8 pipeline (using the :ref:`mem2mem` and :ref:`media-request-api`).
-> +	Metadata associated with the frame to decode is required to be passed
-> +	through the ``V4L2_CID_MPEG_VIDEO_VP8_FRAME_HEADER`` control.
-> +	See the :ref:`associated Codec Control IDs <v4l2-mpeg-vp8>`.
-> +	Exactly one output and one capture buffer must be provided for use with
-> +	this pixel format. The output buffer must contain the appropriate number
-> +	of macroblocks to decode a full corresponding frame to the matching
-> +	capture buffer.
-> +
-> +	.. note::
-> +
-> +	   This format is not yet part of the public kernel API and it
-> +	   is expected to change.
-> +
->      * .. _V4L2-PIX-FMT-VP9:
->  
->        - ``V4L2_PIX_FMT_VP9``
-> diff --git a/drivers/media/v4l2-core/v4l2-ctrls.c b/drivers/media/v4l2-core/v4l2-ctrls.c
-> index 739418aa9108..b2c9f5816c4a 100644
-> --- a/drivers/media/v4l2-core/v4l2-ctrls.c
-> +++ b/drivers/media/v4l2-core/v4l2-ctrls.c
-> @@ -885,6 +885,7 @@ const char *v4l2_ctrl_get_name(u32 id)
->  	case V4L2_CID_MPEG_VIDEO_VPX_P_FRAME_QP:		return "VPX P-Frame QP Value";
->  	case V4L2_CID_MPEG_VIDEO_VP8_PROFILE:			return "VP8 Profile";
->  	case V4L2_CID_MPEG_VIDEO_VP9_PROFILE:			return "VP9 Profile";
-> +	case V4L2_CID_MPEG_VIDEO_VP8_FRAME_HEADER:		return "VP8 Frame Header";
->  
->  	/* HEVC controls */
->  	case V4L2_CID_MPEG_VIDEO_HEVC_I_FRAME_QP:		return "HEVC I-Frame QP Value";
-> @@ -1345,6 +1346,9 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
->  	case V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS:
->  		*type = V4L2_CTRL_TYPE_H264_DECODE_PARAMS;
->  		break;
-> +	case V4L2_CID_MPEG_VIDEO_VP8_FRAME_HEADER:
-> +		*type = V4L2_CTRL_TYPE_VP8_FRAME_HEADER;
-> +		break;
->  	default:
->  		*type = V4L2_CTRL_TYPE_INTEGER;
->  		break;
-> @@ -1690,6 +1694,9 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
->  	case V4L2_CTRL_TYPE_H264_SLICE_PARAMS:
->  	case V4L2_CTRL_TYPE_H264_DECODE_PARAMS:
->  		break;
-> +
-> +	case V4L2_CTRL_TYPE_VP8_FRAME_HEADER:
-> +		break;
->  	default:
->  		return -EINVAL;
->  	}
-> @@ -2360,6 +2367,9 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
->  	case V4L2_CTRL_TYPE_H264_DECODE_PARAMS:
->  		elem_size = sizeof(struct v4l2_ctrl_h264_decode_params);
->  		break;
-> +	case V4L2_CTRL_TYPE_VP8_FRAME_HEADER:
-> +		elem_size = sizeof(struct v4l2_ctrl_vp8_frame_header);
-> +		break;
->  	default:
->  		if (type < V4L2_CTRL_COMPOUND_TYPES)
->  			elem_size = sizeof(s32);
-> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-> index b1f4b991dba6..436a13204921 100644
-> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
-> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-> @@ -1331,6 +1331,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
->  		case V4L2_PIX_FMT_VC1_ANNEX_G:	descr = "VC-1 (SMPTE 412M Annex G)"; break;
->  		case V4L2_PIX_FMT_VC1_ANNEX_L:	descr = "VC-1 (SMPTE 412M Annex L)"; break;
->  		case V4L2_PIX_FMT_VP8:		descr = "VP8"; break;
-> +		case V4L2_PIX_FMT_VP8_FRAME:    descr = "VP8 FRAME"; break;
+iQEzBAEBCAAdFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl0ncUEACgkQaA3BHVML
+eiNDOQf/V82uMwvnLRj0DGrIvbmWkTJ1+JLlhJzekDs6PjWJPTJ9EkobcJ9GuWFV
+hE90Tt8U2u+MkrmeLbHiyVWYUAcWnb5F9ldlRKD+IXaeXnQoxMCuBLIbR/uVz6Mz
+BDUv4l0n+guDhbQZYfPhoQ3NcFnCRBshnxKq9R5F8zALotio+X7ZYvMSV+jxJhST
+6xA7pyIn6qIKcqO/1Ytunpon3rxf2xlJwWLdLhA8mKho3A2JhVmZk38zAWSBZ4FJ
+Q9ja+BhaxP1SO1iA63QqCrrGwoZVUXTdEWAB64Yw4DQyJ+cdDtIZfJDh68uYTbs+
+ggIdNPQBzpJeQHD/WpKXSKA56aYG3w==
+=ciQB
+-----END PGP SIGNATURE-----
 
-I prefer "VP8 Frame", unless there is some special reason to keep it all caps?
+--M6nYUrh3oEarMl1892EPEAAzHEDzD10R3--
 
->  		case V4L2_PIX_FMT_VP9:		descr = "VP9"; break;
->  		case V4L2_PIX_FMT_HEVC:		descr = "HEVC"; break; /* aka H.265 */
->  		case V4L2_PIX_FMT_FWHT:		descr = "FWHT"; break; /* used in vicodec */
-> diff --git a/include/media/v4l2-ctrls.h b/include/media/v4l2-ctrls.h
-> index b4433483af23..6e9dc9c44bb1 100644
-> --- a/include/media/v4l2-ctrls.h
-> +++ b/include/media/v4l2-ctrls.h
-> @@ -20,6 +20,7 @@
->  #include <media/mpeg2-ctrls.h>
->  #include <media/fwht-ctrls.h>
->  #include <media/h264-ctrls.h>
-> +#include <media/vp8-ctrls.h>
->  
->  /* forward references */
->  struct file;
-> @@ -48,6 +49,7 @@ struct poll_table_struct;
->   * @p_h264_scaling_matrix:	Pointer to a struct v4l2_ctrl_h264_scaling_matrix.
->   * @p_h264_slice_params:	Pointer to a struct v4l2_ctrl_h264_slice_params.
->   * @p_h264_decode_params:	Pointer to a struct v4l2_ctrl_h264_decode_params.
-> + * @p_vp8_frame_header:		Pointer to a VP8 frame header structure.
->   * @p:				Pointer to a compound value.
->   */
->  union v4l2_ctrl_ptr {
-> @@ -65,6 +67,7 @@ union v4l2_ctrl_ptr {
->  	struct v4l2_ctrl_h264_scaling_matrix *p_h264_scaling_matrix;
->  	struct v4l2_ctrl_h264_slice_params *p_h264_slice_params;
->  	struct v4l2_ctrl_h264_decode_params *p_h264_decode_params;
-> +	struct v4l2_ctrl_vp8_frame_header *p_vp8_frame_header;
->  	void *p;
->  };
->  
-> diff --git a/include/media/vp8-ctrls.h b/include/media/vp8-ctrls.h
-> new file mode 100644
-> index 000000000000..6cc2eeea4c90
-> --- /dev/null
-> +++ b/include/media/vp8-ctrls.h
-> @@ -0,0 +1,110 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * These are the VP8 state controls for use with stateless VP8
-> + * codec drivers.
-> + *
-> + * It turns out that these structs are not stable yet and will undergo
-> + * more changes. So keep them private until they are stable and ready to
-> + * become part of the official public API.
-> + */
-> +
-> +#ifndef _VP8_CTRLS_H_
-> +#define _VP8_CTRLS_H_
-> +
-> +#define V4L2_PIX_FMT_VP8_FRAME v4l2_fourcc('V', 'P', '8', 'F')
-> +
-> +#define V4L2_CID_MPEG_VIDEO_VP8_FRAME_HEADER (V4L2_CID_MPEG_BASE + 2000)
-> +#define V4L2_CTRL_TYPE_VP8_FRAME_HEADER 0x301
-> +
-> +#define V4L2_VP8_SEGMENT_HEADER_FLAG_ENABLED              0x01
-> +#define V4L2_VP8_SEGMENT_HEADER_FLAG_UPDATE_MAP           0x02
-> +#define V4L2_VP8_SEGMENT_HEADER_FLAG_UPDATE_FEATURE_DATA  0x04
-> +#define V4L2_VP8_SEGMENT_HEADER_FLAG_DELTA_VALUE_MODE     0x08
-> +
-> +struct v4l2_vp8_segment_header {
-> +	__s8 quant_update[4];
-> +	__s8 lf_update[4];
-> +	__u8 segment_probs[3];
-> +	__u8 padding;
-> +	__u32 flags;
-> +};
-> +
-> +#define V4L2_VP8_LF_HEADER_ADJ_ENABLE	0x01
-> +#define V4L2_VP8_LF_HEADER_DELTA_UPDATE	0x02
-> +#define V4L2_VP8_LF_FILTER_TYPE_SIMPLE	0x04
-> +struct v4l2_vp8_loopfilter_header {
-> +	__s8 ref_frm_delta[4];
-> +	__s8 mb_mode_delta[4];
-> +	__u8 sharpness_level;
-> +	__u8 level;
-> +	__u16 padding;
-> +	__u32 flags;
-> +};
-> +
-> +struct v4l2_vp8_quantization_header {
-> +	__u8 y_ac_qi;
-> +	__s8 y_dc_delta;
-> +	__s8 y2_dc_delta;
-> +	__s8 y2_ac_delta;
-> +	__s8 uv_dc_delta;
-> +	__s8 uv_ac_delta;
-> +	__u16 padding;
-> +};
-> +
-> +struct v4l2_vp8_entropy_header {
-> +	__u8 coeff_probs[4][8][3][11];
-> +	__u8 y_mode_probs[4];
-> +	__u8 uv_mode_probs[3];
-> +	__u8 mv_probs[2][19];
-> +	__u8 padding[3];
-> +};
-> +
-> +struct v4l2_vp8_entropy_coder_state {
-> +	__u8 range;
-> +	__u8 value;
-> +	__u8 bit_count;
-> +	__u8 padding;
-> +};
-> +
-> +#define V4L2_VP8_FRAME_HEADER_FLAG_KEY_FRAME		0x01
-> +#define V4L2_VP8_FRAME_HEADER_FLAG_EXPERIMENTAL		0x02
-> +#define V4L2_VP8_FRAME_HEADER_FLAG_SHOW_FRAME		0x04
-> +#define V4L2_VP8_FRAME_HEADER_FLAG_MB_NO_SKIP_COEFF	0x08
-> +#define V4L2_VP8_FRAME_HEADER_FLAG_SIGN_BIAS_GOLDEN	0x10
-> +#define V4L2_VP8_FRAME_HEADER_FLAG_SIGN_BIAS_ALT	0x20
-> +
-> +#define VP8_FRAME_IS_KEY_FRAME(hdr) \
-> +	(!!((hdr)->flags & V4L2_VP8_FRAME_HEADER_FLAG_KEY_FRAME))
-> +
-> +struct v4l2_ctrl_vp8_frame_header {
-> +	struct v4l2_vp8_segment_header segment_header;
-> +	struct v4l2_vp8_loopfilter_header lf_header;
-> +	struct v4l2_vp8_quantization_header quant_header;
-> +	struct v4l2_vp8_entropy_header entropy_header;
-> +	struct v4l2_vp8_entropy_coder_state coder_state;
-> +
-> +	__u16 width;
-> +	__u16 height;
-> +
-> +	__u8 horizontal_scale;
-> +	__u8 vertical_scale;
-> +
-> +	__u8 version;
-> +	__u8 prob_skip_false;
-> +	__u8 prob_intra;
-> +	__u8 prob_last;
-> +	__u8 prob_gf;
-> +	__u8 num_dct_parts;
-> +
-> +	__u32 first_part_size;
-> +	__u32 first_part_header_bits;
-> +	__u32 dct_part_sizes[8];
-> +
-> +	__u64 last_frame_ts;
-> +	__u64 golden_frame_ts;
-> +	__u64 alt_frame_ts;
-> +
-> +	__u64 flags;
-> +};
-> +
-> +#endif
-> 
+--===============1296044343==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
 
-Regards,
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
 
-	Hans
+--===============1296044343==--
