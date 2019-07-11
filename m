@@ -1,80 +1,45 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v6 3/3] drm/panel: simple: Use display_timing for AUO b101ean01
-Date: Thu, 11 Jul 2019 13:34:55 -0700
-Message-ID: <20190711203455.125667-4-dianders@chromium.org>
-References: <20190711203455.125667-1-dianders@chromium.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v5 6/7] ARM: dts: rockchip: Specify
+ rk3288-veyron-chromebook's display timings
+Date: Thu, 11 Jul 2019 23:27:44 +0200
+Message-ID: <4744731.Gbjux09qzx@diego>
+References: <20190401171724.215780-1-dianders@chromium.org>
+ <20190401171724.215780-7-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190711203455.125667-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Boris Brezillon <boris.brezillon@collabora.com>, mka@chromium.org, Rob Herring <robh+dt@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190401171724.215780-7-dianders@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Thierry Reding <thierry.reding@gmail.com>, Sean Paul <seanpaul@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Boris Brezillon <boris.brezillon@collabora.com>, Enric =?ISO-8859-1?Q?Balletb=F2?= <enric.balletbo@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, mka@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Convert the AUO b101ean01 from using a fixed mode to specifying a
-display timing with min/typ/max values.
-
-The AUO b101ean01's datasheet says:
-* Vertical blanking min is 12
-* Horizontal blanking min is 60
-* Pixel clock is between 65.3 MHz and 75 MHz
-
-The goal here is to be able to specify the proper timing in device
-tree to use on rk3288-veyron-minnie to match what the downstream
-kernel is using so that it can used the fixed PLL.
-
-Changes in v4:
- - display_timing for AUO b101ean01 new for v4.
-Changes in v6:
- - Rebased to drm-misc next
- - Added tags
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Acked-by: Thierry Reding <thierry.reding@gmail.com>
----
-
- drivers/gpu/drm/panel/panel-simple.c | 25 ++++++++++++-------------
- 1 file changed, 12 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
-index 602809f6da6a..226f068fb679 100644
---- a/drivers/gpu/drm/panel/panel-simple.c
-+++ b/drivers/gpu/drm/panel/panel-simple.c
-@@ -595,22 +595,21 @@ static const struct panel_desc auo_b101aw03 = {
- 	},
- };
- 
--static const struct drm_display_mode auo_b101ean01_mode = {
--	.clock = 72500,
--	.hdisplay = 1280,
--	.hsync_start = 1280 + 119,
--	.hsync_end = 1280 + 119 + 32,
--	.htotal = 1280 + 119 + 32 + 21,
--	.vdisplay = 800,
--	.vsync_start = 800 + 4,
--	.vsync_end = 800 + 4 + 20,
--	.vtotal = 800 + 4 + 20 + 8,
--	.vrefresh = 60,
-+static const struct display_timing auo_b101ean01_timing = {
-+	.pixelclock = { 65300000, 72500000, 75000000 },
-+	.hactive = { 1280, 1280, 1280 },
-+	.hfront_porch = { 18, 119, 119 },
-+	.hback_porch = { 21, 21, 21 },
-+	.hsync_len = { 32, 32, 32 },
-+	.vactive = { 800, 800, 800 },
-+	.vfront_porch = { 4, 4, 4 },
-+	.vback_porch = { 8, 8, 8 },
-+	.vsync_len = { 18, 20, 20 },
- };
- 
- static const struct panel_desc auo_b101ean01 = {
--	.modes = &auo_b101ean01_mode,
--	.num_modes = 1,
-+	.timings = &auo_b101ean01_timing,
-+	.num_timings = 1,
- 	.bpc = 6,
- 	.size = {
- 		.width = 217,
--- 
-2.22.0.410.gd8fdbe21b5-goog
+QW0gTW9udGFnLCAxLiBBcHJpbCAyMDE5LCAxOToxNzoyMyBDRVNUIHNjaHJpZWIgRG91Z2xhcyBB
+bmRlcnNvbjoKPiBMZXQncyBkb2N1bWVudCB0aGUgZGlzcGxheSB0aW1pbmdzIHRoYXQgbW9zdCB2
+ZXlyb24gY2hyb21lYm9va3MgKGxpa2UKPiBqYXEsIGplcnJ5LCBtaWdodHksIHNwZWVkeSkgaGF2
+ZSBiZWVuIHVzaW5nIG91dCBpbiB0aGUgZmllbGQuICBUaGlzCj4gdXNlcyB0aGUgc3RhbmRhcmQg
+YmxhbmtpbmdzIGJ1dCBhIHNsaWdodGx5IHNsb3dlciBjbG9jayByYXRlLCB0aHVzCj4gZ2V0dGlu
+ZyBhIHJlZnJlc2ggcmF0ZSA1OC4zIEh6Lgo+IAo+IE5PVEU6IHRoaXMgd29uJ3QgcmVhbGx5IGRv
+IGFueXRoaW5nIGV4Y2VwdCBjYXVzZSBEUk0gdG8gcHJvcGVybHkKPiByZXBvcnQgdGhlIHJlZnJl
+c2ggcmF0ZSBzaW5jZSB2b3BfY3J0Y19tb2RlX2ZpeHVwKCkgd2FzIHJvdW5kaW5nIHRoZQo+IHBp
+eGVsIGNsb2NrIHRvIDc0LjI1IE1IeiBhbnl3YXkuICBBcHBhcmVudGx5IHRoZSBhZGp1c3RlZCBy
+YXRlIGlzbid0Cj4gZXhwb3NlZCB0byB1c2Vyc3BhY2Ugc28gaXQncyBpbXBvcnRhbnQgdGhhdCB0
+aGUgcmF0ZSB3ZSdyZSB0cnlpbmcgdG8KPiBhY2hpZXZlIGlzIG1vc3RseSByaWdodC4KPiAKPiBG
+b3IgdGhlIGRvd25zdHJlYW0ga2VybmVsIGNoYW5nZSByZWxhdGVkIHRvIHRoaXMgc2VlIFNlZQo+
+IGh0dHBzOi8vY3JyZXYuY29tL2MvMzI0NTU4Lgo+IAo+IE5PVEU6IG1pbm5pZSB1c2VzIGEgZGlm
+ZmVyZW50IHBhbmVsIHdpbGwgYmUgZml4ZWQgdXAgaW4gYSBmdXR1cmUKPiBwYXRjaCwgc28gZm9y
+IG5vdyB3ZSdsbCBqdXN0IGRlbGV0ZSB0aGUgcGFuZWwgdGltaW5ncyB0aGVyZS4KPiAKPiBTaWdu
+ZWQtb2ZmLWJ5OiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+CgphcHBs
+aWVkIGZvciA1LjMKClRoYW5rcwpIZWlrbwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaS1kZXZlbA==
