@@ -1,35 +1,57 @@
-From: Alex Dewar <alex.dewar@gmx.co.uk>
-Subject: Re: Asus C101P Chromeboot fails to boot with Linux 5.2
-Date: Fri, 12 Jul 2019 17:27:22 +0100
-Message-ID: <862e98f3-8a89-a05e-1e85-e6f6004da32b@gmx.co.uk>
-References: <59042b09-7651-be1d-347f-0dc4aa02a91b@gmx.co.uk>
- <CANBLGcyO5wAHgSVjYFB+hcp+SzaKY9d0QJm-hxqnSYbZ4Yv97g@mail.gmail.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v6 0/3] drm/panel: simple: Add mode support to devicetree
+Date: Fri, 12 Jul 2019 09:37:33 -0700
+Message-ID: <CAD=FV=WG7SbdFu+-Kpr9JDQpNhQW+nA6tbfT2inwgTYF0mgdpQ@mail.gmail.com>
+References: <20190711203455.125667-1-dianders@chromium.org>
+ <20190712060737.GA9569@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CANBLGcyO5wAHgSVjYFB+hcp+SzaKY9d0QJm-hxqnSYbZ4Yv97g@mail.gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Emil Renner Berthing <kernel@esmil.dk>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190712060737.GA9569@ravnborg.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sam Ravnborg <sam@ravnborg.org>
+Cc: David Airlie <airlied@linux.ie>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thierry Reding <thierry.reding@gmail.com>, Sean Paul <seanpaul@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Boris Brezillon <boris.brezillon@collabora.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Rob Herring <robh+dt@kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Emil,
-
-I've tried booting with: audit=3D0 console=3Dtty0 console=3DttyS2,115200n8
-earlyprintk=3DttyS2,115200n8 init=3D/sbin/init root=3DPARTUUID=3D%U/PARTNR=
-OFF=3D1
-rootwait rw noinitrd
-
-Now I don't get the audit messages, but no other message is displayed
-either. It just alternates between a flashing cursor and a multicoloured
-square in the middle of the screen. The system isn't totally
-unresponsive though. If I press the power button it still shuts down
-properly.
-
-I've just tested it again and confirmed that it does boot with the
-v5.1.11 kernel.
-
-Best,
-Alex
+SGksCgpPbiBUaHUsIEp1bCAxMSwgMjAxOSBhdCAxMTowNyBQTSBTYW0gUmF2bmJvcmcgPHNhbUBy
+YXZuYm9yZy5vcmc+IHdyb3RlOgo+Cj4gSGkgRG91Zy4KPgo+IE9uIFRodSwgSnVsIDExLCAyMDE5
+IGF0IDAxOjM0OjUyUE0gLTA3MDAsIERvdWdsYXMgQW5kZXJzb24gd3JvdGU6Cj4gPiBJJ20gcmV2
+aXZpbmcgU2VhbiBQYXVsJ3Mgb2xkIHBhdGNoc2V0IHRvIGdldCBtb2RlIHN1cHBvcnQgaW4gZGV2
+aWNlCj4gPiB0cmVlLiAgVGhlIGNvdmVyIGxldHRlciBmb3IgaGlzIHYzIGlzIGF0Ogo+ID4gaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvYXJjaGl2ZXMvZHJpLWRldmVsLzIwMTgtRmVicnVh
+cnkvMTY1MTYyLmh0bWwKPiA+Cj4gPiB2NiBvZiB0aGlzIHBhdGNoIGlzIGp1c3QgYSByZXBvc3Qg
+b2YgdGhlIDMgRFJNIHBhdGNoZXMgaW4gdjUgcmViYXNlZAo+ID4gYXRvcCBkcm0tbWlzYy4gIEEg
+ZmV3IG5vdGVzOgo+ID4gLSBJJ3ZlIGRyb3BwZWQgdGhlIGJpbmRpbmdzIHBhdGNoLiAgQ29tbWl0
+IDgyMWExZjcxNzFhZSAoImR0LWJpbmRpbmdzOgo+ID4gICBkaXNwbGF5OiBDb252ZXJ0IGNvbW1v
+biBwYW5lbCBiaW5kaW5ncyB0byBEVCBzY2hlbWEiKSBoYXMgbGFuZGVkIGFuZAo+ID4gICBSb2Ig
+SCBzYWlkIFsxXSB0aGF0IHdoZW4gdGhhdCBsYW5kZWQgdGhlIGJpbmRpbmdzIHdlcmUgaW1wbGlj
+aXRseQo+ID4gICBzdXBwb3J0ZWQuCj4gPiAtIFNpbmNlIHRoZSBiaW5kaW5ncyBwYXRjaCB3YXMg
+ZHJvcHBlZCBJIGFtIGFzc3VtaW5nIHRoYXQgSGVpa28KPiA+ICAgY2FuIGp1c3QgcGljayB1cCB0
+aGUgLmR0cyBwYXRjaGVzIGZyb20gdGhlIHY1IHNlcmllcy4gIEkKPiA+ICAgZG91YmxlLWNoZWNr
+ZWQgd2l0aCBoaW0gYW5kIGhlIGNvbmZpcm1lZCB0aGlzIGlzIGZpbmUuICBUaHVzIEkKPiA+ICAg
+aGF2ZSBsZWZ0IHRoZSBkZXZpY2UgdHJlZSBwYXRjaGVzIG91dCBvZiB0aGlzIHZlcnNpb24uCj4g
+Pgo+ID4gVGhlcmUgd2VyZSBzb21lIGNvZGluZyBzdHlsZSBkaXNjdXNzaW9ucyBvbiB2NSBvZiB0
+aGUgcGF0aCBidXQgaXQncwo+ID4gYmVlbiBhZ3JlZWQgdGhhdCB3ZSBjYW4gbGFuZCB0aGlzIHNl
+cmllcyBhcy1pcyBhbmQgYWZ0ZXIgaXQgbGFuZHMgd2UKPiA+IGNhbiBhZGRyZXNzIHRoZSBtaW5v
+ciBzdHlsZSBpc3N1ZXMuCj4gPgo+ID4gWzFdIGh0dHBzOi8vbGttbC5rZXJuZWwub3JnL3IvQ0FM
+X0pzcUpHdFVUcEpMK1NERUtpMDlhRFQ0eUR6WTR4OUt3WW16MDhOYVpjbj1uSGZBQG1haWwuZ21h
+aWwuY29tCj4gPgo+ID4gQ2hhbmdlcyBpbiB2NjoKPiA+IC0gUmViYXNlZCB0byBkcm0tbWlzYyBu
+ZXh0Cj4gPiAtIEFkZGVkIHRhZ3MKPiAuLi4KPgo+IFRoYW5rcyBmb3IgeW91ciBwYXRpZW5jZSB3
+aXRoIHRoaXMuCj4gQXBwbGllZCB0byBkcm0tbWlzYy1uZXh0IGFuZCBwdXNoZWQgb3V0LgoKQXMg
+cHJvbWlzZWQsIHBvc3RlZCB0aGUgZm9sbG93LXVwIHBhdGNoIGFkZHJlc3NpbmcgdGhlIHN0eWxl
+IGNvbmNlcm5zCi8gc3VnZ2VzdGlvbnMuICBJIGRpZG4ndCBDQyBldmVyeSBsYXN0IHBlcnNvbiBo
+ZXJlLCBidXQgaXQncyBvbiBMS01MCmFuZCBJJ20gaGFwcHkgZm9yIGFueW9uZSB0byByZXZpZXcg
+aXQgdGhhdCBpcyBpbnRlcmVzdGVkOgoKaHR0cHM6Ly9sa21sLmtlcm5lbC5vcmcvci8yMDE5MDcx
+MjE2MzMzMy4yMzE4ODQtMS1kaWFuZGVyc0BjaHJvbWl1bS5vcmcKCi1Eb3VnCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
+c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNr
+dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
