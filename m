@@ -1,74 +1,78 @@
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Subject: Re: [REGRESSION] Xorg segfaults on Asus Chromebook CP101 with Linux
- v5.2 (was Asus C101P Chromeboot fails to boot with Linux 5.2)
-Date: Sat, 13 Jul 2019 19:58:38 -0300
-Message-ID: <CAAEAJfAeZaT5wd4k8Lkf6T3G7LpK5LmOOG2ZbVJAQ6Xb7Wtdcw@mail.gmail.com>
-References: <59042b09-7651-be1d-347f-0dc4aa02a91b@gmx.co.uk>
- <5fe66d5d-0624-323f-3bf8-56134ca85eca@gmx.co.uk>
- <f47f8759-8113-812a-b17a-4be09665369e@gmx.co.uk>
- <2648434.ut0pN6mfR1@phil> <2d52b787-187c-5638-660c-33d51a07770c@gmx.co.uk>
+From: Manish Narani <MNARANI@xilinx.com>
+Subject: RE: [PATCH v2 00/11] Arasan SDHCI enhancements and ZynqMP Tap Delays
+ Handling
+Date: Mon, 15 Jul 2019 07:15:39 +0000
+Message-ID: <MN2PR02MB602959626A4F6E462A321F35C1CF0@MN2PR02MB6029.namprd02.prod.outlook.com>
+References: <1561958991-21935-1-git-send-email-manish.narani@xilinx.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2d52b787-187c-5638-660c-33d51a07770c@gmx.co.uk>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Alex Dewar <alex.dewar@gmx.co.uk>
-Cc: devel@driverdev.osuosl.org, Heiko Stuebner <heiko@sntech.de>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Boris Brezillon <boris.brezillon@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-media <linux-media@vger.kernel.org>
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1561958991-21935-1-git-send-email-manish.narani@xilinx.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Manish Narani <MNARANI@xilinx.com>, "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>, "robh+dt@kernel.org" <robh+dt@kernel.org>, "mark.rutland@arm.com" <mark.rutland@arm.com>, "heiko@sntech.de" <heiko@sntech.de>, Michal Simek <michals@xilinx.com>, "adrian.hunter@intel.com" <adrian.hunter@intel.com>, "christoph.muellner@theobroma-systems.com" <christoph.muellner@theobroma-systems.com>, "philipp.tomsich@theobroma-systems.com" <philipp.tomsich@theobroma-systems.com>, "viresh.kumar@linaro.org" <viresh.kumar@linaro.org>, "scott.branden@broadcom.com" <scott.branden@broadcom.com>, "ayaka@soulik.info" <ayaka@soulik.info>, "kernel@esmil.dk" <kernel@esmil.dk>, "tony.xie@rock-chips.com" <tony.xie@rock-chips.com>, "mdf@kernel.org" <mdf@kernel.org>, olof@lixo
+Cc: "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, 13 Jul 2019 at 13:43, Alex Dewar <alex.dewar@gmx.co.uk> wrote:
->
-> On 13/07/2019 16:17, Heiko Stuebner wrote:
-> > Hi,
-> >
-> > Am Samstag, 13. Juli 2019, 13:38:45 CEST schrieb Alex Dewar:
-> >> I initially thought my machine was failing to boot entirely, but it
-> >> turns out it was just failing to start the display manager. I managed to
-> >> escape to a tty by hammering the keyboard a bit.
-> >>
-> >> I suspect the culprit is the rockchip_vpu driver (in staging/media),
-> >> which has been renamed to hantro in this merge window. When I run startx
-> >> from a terminal, X fails to start and Xorg segfaults (log here:
-> >> http://users.sussex.ac.uk/~ad374/xorg.log). X seems to work without any
-> >> issues in v5.1.
-> >
-> > 5.2 also has support for Panfrost (Mali-Midgard GPUs) but I'm not
-> > sure if it already can support X11 yet and your X11 log mentions
-> > libglamoregl in the segfault stack trace.
-> >
-> > Apart from it bisect that Greg suggested you could also just try
-> > blacklisting either panfrost or vpu kernel modules
-> > /etc/udev/somewhere . This would prevent them from loading
-> >
-> > Hope that helps
-> > Heiko
-> >
-> >
->
-> Hi Heiko,
->
-> Thanks for this. I blacklisted the panfrost driver and X magically
-> started working again.
->
-> I'll try to do a bisect later to find the offending commit though.
->
-> In related news, it also seems that the sound and wifi drivers aren't
-> working either in 5.2 (although I need to do a bit more testing to
-> confirm the latter).
->
+Ping!
 
-Adding myself and Tomeu.
-
-Perhaps we need to disable Panfrost from defconfig from now?
-
-Regards,
-Eze
+> -----Original Message-----
+> From: Manish Narani <manish.narani@xilinx.com>
+> Sent: Monday, July 1, 2019 11:00 AM
+> To: ulf.hansson@linaro.org; robh+dt@kernel.org; mark.rutland@arm.com;
+> heiko@sntech.de; Michal Simek <michals@xilinx.com>;
+> adrian.hunter@intel.com; christoph.muellner@theobroma-systems.com;
+> philipp.tomsich@theobroma-systems.com; viresh.kumar@linaro.org;
+> scott.branden@broadcom.com; ayaka@soulik.info; kernel@esmil.dk;
+> tony.xie@rock-chips.com; Rajan Vaja <RAJANV@xilinx.com>; Jolly Shah
+> <JOLLYS@xilinx.com>; Nava kishore Manne <navam@xilinx.com>;
+> mdf@kernel.org; Manish Narani <MNARANI@xilinx.com>; olof@lixom.net
+> Cc: linux-mmc@vger.kernel.org; devicetree@vger.kernel.org; linux-
+> kernel@vger.kernel.org; linux-arm-kernel@lists.infradead.org; linux-
+> rockchip@lists.infradead.org
+> Subject: [PATCH v2 00/11] Arasan SDHCI enhancements and ZynqMP Tap
+> Delays Handling
+>=20
+> This patch series does the following:
+>  - Reorganize the Clock Handling in Arasan SD driver
+>  - Adds new sampling clock in Arasan SD driver
+>  - Adds support to set Clock Delays in SD Arasan Driver
+>  - Add SDIO Tap Delay handling in ZynqMP firmware driver
+>  - Add support for ZynqMP Tap Delays setting in Arasan SD driver
+>=20
+> Changes in v2:
+> 	- Replaced the deprecated calls to clock framework APIs
+> 	- Added support for dev_clk_get() call to work for SD card clock
+> 	- Separated the clock data struct
+> 	- Fragmented the patch series in smaller patches to make it more
+> 	  readable
+>=20
+> This patch series contains a DT patch, which I think should be there to
+> maintain the order of commits.
+>=20
+> Manish Narani (11):
+>   dt-bindings: mmc: arasan: Update documentation for SD Card Clock
+>   arm64: dts: rockchip: Add optional clock property indicating sdcard
+>     clock
+>   mmc: sdhci-of-arasan: Replace deprecated clk API calls
+>   mmc: sdhci-of-arasan: Separate out clk related data to another
+>     structure
+>   dt-bindings: mmc: arasan: Update Documentation for the input clock
+>   mmc: sdhci-of-arasan: Add sampling clock for a phy to use
+>   dt-bindings: mmc: arasan: Add optional properties for Arasan SDHCI
+>   mmc: sdhci-of-arasan: Add support to set clock phase delays for SD
+>   firmware: xilinx: Add SDIO Tap Delay APIs
+>   dt-bindings: mmc: arasan: Document 'xlnx,zynqmp-8.9a' controller
+>   mmc: sdhci-of-arasan: Add support for ZynqMP Platform Tap Delays Setup
+>=20
+>  .../devicetree/bindings/mmc/arasan,sdhci.txt       |  49 ++-
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   4 +-
+>  drivers/firmware/xilinx/zynqmp.c                   |  48 +++
+>  drivers/mmc/host/sdhci-of-arasan.c                 | 453 +++++++++++++++=
++++++-
+>  include/linux/firmware/xlnx-zynqmp.h               |  15 +-
+>  5 files changed, 540 insertions(+), 29 deletions(-)
+>=20
+> --
+> 2.1.1
