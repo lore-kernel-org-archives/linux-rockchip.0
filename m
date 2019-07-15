@@ -1,8 +1,8 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 12/15] ram: rk3399: Move common sdram structures in common
+Subject: [PATCH v3 13/15] arm: include: rockchip: Move dramtypes to common
  header
-Date: Mon, 15 Jul 2019 23:51:07 +0530
-Message-ID: <20190715182110.21336-13-jagan@amarulasolutions.com>
+Date: Mon, 15 Jul 2019 23:51:08 +0530
+Message-ID: <20190715182110.21336-14-jagan@amarulasolutions.com>
 References: <20190715182110.21336-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,99 +22,89 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Move common sdram structures like sdram_cap_info, sdram_base_params
-into sdram_common header, this would help to reuse the same
-from another controllers like px30.
+dramtype enum numbers as common across all dram controllers
+in rockchip, so move the eneum values in common header.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- .../include/asm/arch-rockchip/sdram_common.h  | 29 +++++++++++++++++++
- .../include/asm/arch-rockchip/sdram_rk3399.h  | 28 ------------------
- 2 files changed, 29 insertions(+), 28 deletions(-)
+ arch/arm/include/asm/arch-rockchip/sdram.h        | 6 ------
+ arch/arm/include/asm/arch-rockchip/sdram_common.h | 8 ++++++++
+ arch/arm/include/asm/arch-rockchip/sdram_rk322x.h | 7 -------
+ arch/arm/include/asm/arch-rockchip/sdram_rk3399.h | 8 --------
+ 4 files changed, 8 insertions(+), 21 deletions(-)
 
+diff --git a/arch/arm/include/asm/arch-rockchip/sdram.h b/arch/arm/include/asm/arch-rockchip/sdram.h
+index bbe425deb9..9220763fa7 100644
+--- a/arch/arm/include/asm/arch-rockchip/sdram.h
++++ b/arch/arm/include/asm/arch-rockchip/sdram.h
+@@ -8,12 +8,6 @@
+ #ifndef _ASM_ARCH_RK3288_SDRAM_H__
+ #define _ASM_ARCH_RK3288_SDRAM_H__
+ 
+-enum {
+-	DDR3 = 3,
+-	LPDDR3 = 6,
+-	UNUSED = 0xFF,
+-};
+-
+ struct rk3288_sdram_channel {
+ 	/*
+ 	 * bit width in address, eg:
 diff --git a/arch/arm/include/asm/arch-rockchip/sdram_common.h b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-index 671c318d50..82ce3d3fc9 100644
+index 82ce3d3fc9..55abcdae77 100644
 --- a/arch/arm/include/asm/arch-rockchip/sdram_common.h
 +++ b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-@@ -5,6 +5,35 @@
- 
+@@ -6,6 +6,14 @@
  #ifndef _ASM_ARCH_SDRAM_COMMON_H
  #define _ASM_ARCH_SDRAM_COMMON_H
-+
-+struct sdram_cap_info {
-+	unsigned int rank;
-+	/* dram column number, 0 means this channel is invalid */
-+	unsigned int col;
-+	/* dram bank number, 3:8bank, 2:4bank */
-+	unsigned int bk;
-+	/* channel buswidth, 2:32bit, 1:16bit, 0:8bit */
-+	unsigned int bw;
-+	/* die buswidth, 2:32bit, 1:16bit, 0:8bit */
-+	unsigned int dbw;
-+	/*
-+	 * row_3_4 = 1: 6Gb or 12Gb die
-+	 * row_3_4 = 0: normal die, power of 2
-+	 */
-+	unsigned int row_3_4;
-+	unsigned int cs0_row;
-+	unsigned int cs1_row;
-+	unsigned int ddrconfig;
+ 
++enum {
++	DDR3 = 0x3,
++	LPDDR2 = 0x5,
++	LPDDR3 = 0x6,
++	LPDDR4 = 0x7,
++	UNUSED = 0xFF
 +};
 +
-+struct sdram_base_params {
-+	unsigned int ddr_freq;
-+	unsigned int dramtype;
-+	unsigned int num_channels;
-+	unsigned int stride;
-+	unsigned int odt;
-+};
-+
- /*
-  * sys_reg bitfield struct
-  * [31]		row_3_4_ch1
+ struct sdram_cap_info {
+ 	unsigned int rank;
+ 	/* dram column number, 0 means this channel is invalid */
+diff --git a/arch/arm/include/asm/arch-rockchip/sdram_rk322x.h b/arch/arm/include/asm/arch-rockchip/sdram_rk322x.h
+index d0091a7aaf..336c5d7e8c 100644
+--- a/arch/arm/include/asm/arch-rockchip/sdram_rk322x.h
++++ b/arch/arm/include/asm/arch-rockchip/sdram_rk322x.h
+@@ -7,13 +7,6 @@
+ 
+ #include <common.h>
+ 
+-enum {
+-	DDR3		= 3,
+-	LPDDR2		= 5,
+-	LPDDR3		= 6,
+-	UNUSED		= 0xFF,
+-};
+-
+ struct rk322x_sdram_channel {
+ 	/*
+ 	 * bit width in address, eg:
 diff --git a/arch/arm/include/asm/arch-rockchip/sdram_rk3399.h b/arch/arm/include/asm/arch-rockchip/sdram_rk3399.h
-index 5614b94ecb..65c92cf744 100644
+index 65c92cf744..471702f935 100644
 --- a/arch/arm/include/asm/arch-rockchip/sdram_rk3399.h
 +++ b/arch/arm/include/asm/arch-rockchip/sdram_rk3399.h
-@@ -71,39 +71,11 @@ struct rk3399_ddr_cic_regs {
- /* DENALI_CTL_274 */
- #define MEM_RST_VALID	1
+@@ -6,14 +6,6 @@
+ #ifndef _ASM_ARCH_SDRAM_RK3399_H
+ #define _ASM_ARCH_SDRAM_RK3399_H
  
--struct sdram_cap_info {
--	unsigned int rank;
--	/* dram column number, 0 means this channel is invalid */
--	unsigned int col;
--	/* dram bank number, 3:8bank, 2:4bank */
--	unsigned int bk;
--	/* channel buswidth, 2:32bit, 1:16bit, 0:8bit */
--	unsigned int bw;
--	/* die buswidth, 2:32bit, 1:16bit, 0:8bit */
--	unsigned int dbw;
--	/*
--	 * row_3_4 = 1: 6Gb or 12Gb die
--	 * row_3_4 = 0: normal die, power of 2
--	 */
--	unsigned int row_3_4;
--	unsigned int cs0_row;
--	unsigned int cs1_row;
--	unsigned int ddrconfig;
+-enum {
+-	DDR3 = 0x3,
+-	LPDDR2 = 0x5,
+-	LPDDR3 = 0x6,
+-	LPDDR4 = 0x7,
+-	UNUSED = 0xFF
 -};
 -
- struct rk3399_sdram_channel {
- 	struct sdram_cap_info cap_info;
- 	struct rk3399_msch_timings noc_timings;
+ struct rk3399_ddr_pctl_regs {
+ 	u32 denali_ctl[332];
  };
- 
--struct sdram_base_params {
--	unsigned int ddr_freq;
--	unsigned int dramtype;
--	unsigned int num_channels;
--	unsigned int stride;
--	unsigned int odt;
--};
--
- struct rk3399_sdram_params {
- 	struct rk3399_sdram_channel ch[2];
- 	struct sdram_base_params base;
 -- 
 2.18.0.321.gffc6fa0e3
