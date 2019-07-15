@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 09/15] ram: rk3399: Order tsel variables
-Date: Mon, 15 Jul 2019 23:51:04 +0530
-Message-ID: <20190715182110.21336-10-jagan@amarulasolutions.com>
+Subject: [PATCH v3 11/15] ram: rk3399: s/rk3399_base_params/sdram_base_params
+Date: Mon, 15 Jul 2019 23:51:06 +0530
+Message-ID: <20190715182110.21336-12-jagan@amarulasolutions.com>
 References: <20190715182110.21336-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,84 +21,40 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Order tsel* variable declarations and assignment in proper
-and meaningful way.
+Most of the ddr parameters are common in rk3399_base_params
+structure and which would reuse it in another controller like
+px30 in future.
 
-No functionality change.
+So, rename the structure from rk3399_base_params into
+sdram_base_params.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 37 +++++++++++++++++------------
- 1 file changed, 22 insertions(+), 15 deletions(-)
+ arch/arm/include/asm/arch-rockchip/sdram_rk3399.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 8a983f9bb1..043b27737d 100644
---- a/drivers/ram/rockchip/sdram_rk3399.c
-+++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -159,41 +159,48 @@ static void set_ds_odt(const struct chan_info *chan,
- 	u32 *denali_phy = chan->publ->denali_phy;
+diff --git a/arch/arm/include/asm/arch-rockchip/sdram_rk3399.h b/arch/arm/include/asm/arch-rockchip/sdram_rk3399.h
+index 683093d4ca..5614b94ecb 100644
+--- a/arch/arm/include/asm/arch-rockchip/sdram_rk3399.h
++++ b/arch/arm/include/asm/arch-rockchip/sdram_rk3399.h
+@@ -96,7 +96,7 @@ struct rk3399_sdram_channel {
+ 	struct rk3399_msch_timings noc_timings;
+ };
  
- 	u32 tsel_idle_en, tsel_wr_en, tsel_rd_en;
--	u32 tsel_idle_select_p, tsel_wr_select_dq_p, tsel_rd_select_p;
--	u32 tsel_wr_select_ca_p, tsel_wr_select_ca_n;
--	u32 tsel_idle_select_n, tsel_wr_select_dq_n, tsel_rd_select_n;
-+	u32 tsel_idle_select_p, tsel_rd_select_p;
-+	u32 tsel_idle_select_n, tsel_rd_select_n;
-+	u32 tsel_wr_select_dq_p, tsel_wr_select_ca_p;
-+	u32 tsel_wr_select_dq_n, tsel_wr_select_ca_n;
- 	u32 reg_value;
+-struct rk3399_base_params {
++struct sdram_base_params {
+ 	unsigned int ddr_freq;
+ 	unsigned int dramtype;
+ 	unsigned int num_channels;
+@@ -106,7 +106,7 @@ struct rk3399_base_params {
  
- 	if (params->base.dramtype == LPDDR4) {
- 		tsel_rd_select_p = PHY_DRV_ODT_HI_Z;
--		tsel_wr_select_dq_p = PHY_DRV_ODT_40;
--		tsel_wr_select_ca_p = PHY_DRV_ODT_40;
-+		tsel_rd_select_n = PHY_DRV_ODT_240;
-+
- 		tsel_idle_select_p = PHY_DRV_ODT_HI_Z;
-+		tsel_idle_select_n = PHY_DRV_ODT_240;
- 
--		tsel_rd_select_n = PHY_DRV_ODT_240;
-+		tsel_wr_select_dq_p = PHY_DRV_ODT_40;
- 		tsel_wr_select_dq_n = PHY_DRV_ODT_40;
-+
-+		tsel_wr_select_ca_p = PHY_DRV_ODT_40;
- 		tsel_wr_select_ca_n = PHY_DRV_ODT_40;
--		tsel_idle_select_n = PHY_DRV_ODT_240;
- 	} else if (params->base.dramtype == LPDDR3) {
- 		tsel_rd_select_p = PHY_DRV_ODT_240;
--		tsel_wr_select_dq_p = PHY_DRV_ODT_34_3;
--		tsel_wr_select_ca_p = PHY_DRV_ODT_48;
-+		tsel_rd_select_n = PHY_DRV_ODT_HI_Z;
-+
- 		tsel_idle_select_p = PHY_DRV_ODT_240;
-+		tsel_idle_select_n = PHY_DRV_ODT_HI_Z;
- 
--		tsel_rd_select_n = PHY_DRV_ODT_HI_Z;
-+		tsel_wr_select_dq_p = PHY_DRV_ODT_34_3;
- 		tsel_wr_select_dq_n = PHY_DRV_ODT_34_3;
-+
-+		tsel_wr_select_ca_p = PHY_DRV_ODT_48;
- 		tsel_wr_select_ca_n = PHY_DRV_ODT_48;
--		tsel_idle_select_n = PHY_DRV_ODT_HI_Z;
- 	} else {
- 		tsel_rd_select_p = PHY_DRV_ODT_240;
--		tsel_wr_select_dq_p = PHY_DRV_ODT_34_3;
--		tsel_wr_select_ca_p = PHY_DRV_ODT_34_3;
-+		tsel_rd_select_n = PHY_DRV_ODT_240;
-+
- 		tsel_idle_select_p = PHY_DRV_ODT_240;
-+		tsel_idle_select_n = PHY_DRV_ODT_240;
- 
--		tsel_rd_select_n = PHY_DRV_ODT_240;
-+		tsel_wr_select_dq_p = PHY_DRV_ODT_34_3;
- 		tsel_wr_select_dq_n = PHY_DRV_ODT_34_3;
-+
-+		tsel_wr_select_ca_p = PHY_DRV_ODT_34_3;
- 		tsel_wr_select_ca_n = PHY_DRV_ODT_34_3;
--		tsel_idle_select_n = PHY_DRV_ODT_240;
- 	}
- 
- 	if (params->base.odt == 1)
+ struct rk3399_sdram_params {
+ 	struct rk3399_sdram_channel ch[2];
+-	struct rk3399_base_params base;
++	struct sdram_base_params base;
+ 	struct rk3399_ddr_pctl_regs pctl_regs;
+ 	struct rk3399_ddr_pi_regs pi_regs;
+ 	struct rk3399_ddr_publ_regs phy_regs;
 -- 
 2.18.0.321.gffc6fa0e3
