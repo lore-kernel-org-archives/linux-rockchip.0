@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 10/18] ram: rockchip: Add debug sdram driver
-Date: Mon, 15 Jul 2019 23:58:48 +0530
-Message-ID: <20190715182856.21688-11-jagan@amarulasolutions.com>
+Subject: [PATCH v3 11/18] ram: rockchip: debug: Add sdram_print_ddr_info
+Date: Mon, 15 Jul 2019 23:58:49 +0530
+Message-ID: <20190715182856.21688-12-jagan@amarulasolutions.com>
 References: <20190715182856.21688-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,112 +21,86 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add sdram driver to handle debug across rockchip SoCs.
+Add sdram ddr info print support, this would help to
+observe the sdram base parameters.
 
-This would help to improve code debugging feature for
-sdram drivers in rockchip family, whoever wants to
-debug the driver should call these core debug code on
-their respective platform sdram drivers.
+Here is sample print on LPDDR4, 50MHz channel 0
+BW=32 Col=10 Bk=8 CS0 Row=15 CS1 Row=15 CS=2 Die BW=16
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- .../include/asm/arch-rockchip/sdram_common.h  |  9 +++++
- drivers/ram/rockchip/Kconfig                  |  9 +++++
- drivers/ram/rockchip/Makefile                 |  1 +
- drivers/ram/rockchip/sdram_debug.c            | 34 +++++++++++++++++++
- 4 files changed, 53 insertions(+)
- create mode 100644 drivers/ram/rockchip/sdram_debug.c
+ .../include/asm/arch-rockchip/sdram_common.h  |  7 ++++
+ drivers/ram/rockchip/sdram_debug.c            | 40 +++++++++++++++++++
+ 2 files changed, 47 insertions(+)
 
 diff --git a/arch/arm/include/asm/arch-rockchip/sdram_common.h b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-index 7ac25af327..171b233f95 100644
+index 171b233f95..cfbb511843 100644
 --- a/arch/arm/include/asm/arch-rockchip/sdram_common.h
 +++ b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-@@ -92,4 +92,13 @@ size_t rockchip_sdram_size(phys_addr_t reg);
- 
- /* Called by U-Boot board_init_r for Rockchip SoCs */
- int dram_init(void);
+@@ -97,8 +97,15 @@ int dram_init(void);
+ inline void sdram_print_dram_type(unsigned char dramtype)
+ {
+ }
 +
-+#if !defined(CONFIG_RAM_ROCKCHIP_DEBUG)
-+inline void sdram_print_dram_type(unsigned char dramtype)
++inline void sdram_print_ddr_info(struct sdram_cap_info *cap_info,
++				 struct sdram_base_params *base)
 +{
 +}
-+#else
-+void sdram_print_dram_type(unsigned char dramtype);
-+#endif /* CONFIG_RAM_ROCKCHIP_DEBUG */
-+
+ #else
+ void sdram_print_dram_type(unsigned char dramtype);
++void sdram_print_ddr_info(struct sdram_cap_info *cap_info,
++			  struct sdram_base_params *base);
+ #endif /* CONFIG_RAM_ROCKCHIP_DEBUG */
+ 
  #endif
-diff --git a/drivers/ram/rockchip/Kconfig b/drivers/ram/rockchip/Kconfig
-index 995cb487b8..151ffb684d 100644
---- a/drivers/ram/rockchip/Kconfig
-+++ b/drivers/ram/rockchip/Kconfig
-@@ -7,6 +7,15 @@ config RAM_ROCKCHIP
- 
- if RAM_ROCKCHIP
- 
-+config RAM_ROCKCHIP_DEBUG
-+	bool "Rockchip ram drivers debugging"
-+	help
-+	  This enables debugging ram driver API's for the platforms
-+	  based on Rockchip SoCs.
-+
-+	  This is an option for developers to understand the ram drivers
-+	  initialization, configurations and etc.
-+
- config RAM_RK3399
- 	bool "Ram driver for Rockchip RK3399"
- 	default ROCKCHIP_RK3399
-diff --git a/drivers/ram/rockchip/Makefile b/drivers/ram/rockchip/Makefile
-index 07d4b62a9d..feb1f82d00 100644
---- a/drivers/ram/rockchip/Makefile
-+++ b/drivers/ram/rockchip/Makefile
-@@ -3,6 +3,7 @@
- # Copyright (c) 2017 Theobroma Systems Design und Consulting GmbH
- #
- 
-+obj-$(CONFIG_RAM_ROCKCHIP_DEBUG) += sdram_debug.o
- obj-$(CONFIG_ROCKCHIP_RK3368) = dmc-rk3368.o
- obj-$(CONFIG_ROCKCHIP_RK3128) = sdram_rk3128.o
- obj-$(CONFIG_ROCKCHIP_RK3188) = sdram_rk3188.o
 diff --git a/drivers/ram/rockchip/sdram_debug.c b/drivers/ram/rockchip/sdram_debug.c
-new file mode 100644
-index 0000000000..c13e140fa5
---- /dev/null
+index c13e140fa5..69a6f94a73 100644
+--- a/drivers/ram/rockchip/sdram_debug.c
 +++ b/drivers/ram/rockchip/sdram_debug.c
-@@ -0,0 +1,34 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * (C) Copyright 2019 Rockchip Electronics Co., Ltd
-+ * (C) Copyright 2019 Amarula Solutions.
-+ * Author: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-+ */
+@@ -32,3 +32,43 @@ void sdram_print_dram_type(unsigned char dramtype)
+ 		break;
+ 	}
+ }
 +
-+#include <common.h>
-+#include <debug_uart.h>
-+#include <asm/arch-rockchip/sdram_common.h>
-+
-+void sdram_print_dram_type(unsigned char dramtype)
++void sdram_print_ddr_info(struct sdram_cap_info *cap_info,
++			  struct sdram_base_params *base)
 +{
-+	switch (dramtype) {
-+	case DDR3:
-+		printascii("DDR3");
-+		break;
-+	case DDR4:
-+		printascii("DDR4");
-+		break;
-+	case LPDDR2:
-+		printascii("LPDDR2");
-+		break;
-+	case LPDDR3:
-+		printascii("LPDDR3");
-+		break;
-+	case LPDDR4:
-+		printascii("LPDDR4");
-+		break;
-+	default:
-+		printascii("Unknown Device");
-+		break;
++	u32 bg;
++
++	bg = (cap_info->dbw == 0) ? 2 : 1;
++
++	sdram_print_dram_type(base->dramtype);
++
++	printascii(", ");
++	printdec(base->ddr_freq);
++	printascii("MHz\n");
++
++	printascii("BW=");
++	printdec(8 << cap_info->bw);
++
++	printascii(" Col=");
++	printdec(cap_info->col);
++
++	printascii(" Bk=");
++	printdec(0x1 << cap_info->bk);
++	if (base->dramtype == DDR4) {
++		printascii(" BG=");
++		printdec(1 << bg);
 +	}
++
++	printascii(" CS0 Row=");
++	printdec(cap_info->cs0_row);
++	if (cap_info->rank > 1) {
++		printascii(" CS1 Row=");
++		printdec(cap_info->cs1_row);
++	}
++
++	printascii(" CS=");
++	printdec(cap_info->rank);
++
++	printascii(" Die BW=");
++	printdec(8 << cap_info->dbw);
 +}
 -- 
 2.18.0.321.gffc6fa0e3
