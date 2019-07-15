@@ -1,7 +1,8 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 17/18] ram: rk3399: Enable sdram debug functions
-Date: Mon, 15 Jul 2019 23:58:55 +0530
-Message-ID: <20190715182856.21688-18-jagan@amarulasolutions.com>
+Subject: [PATCH v3 18/18] rockchip: dts: rk3399: nanopi-neo4: Use DDR3-1866
+ dtsi
+Date: Mon, 15 Jul 2019 23:58:56 +0530
+Message-ID: <20190715182856.21688-19-jagan@amarulasolutions.com>
 References: <20190715182856.21688-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,44 +22,35 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This would help to debug the sdram base parameters while
-debugging existing chip or while supporting new sdram type.
+Use DDR3-1866 2GB ddr timings dtsi for 1GB NanoPi Neo4 board.
 
-It require explicit enablement of CONFIG_RAM_ROCKCHIP_DEBUG
-for showing the debug prints.
+Since sdram rk3399 support dynamic stride and rank detection it
+can able to detect 1GB ddr eventough the timings are meant for
+dual channel, 2GB size.
+
+Bootchain after and before this change are:
+
+ TPL -> SPL -> U-Boot proper
+
+ rkbin -> SPL -> U-Boot proper
+
+This certainly fix the second channel data training initialization
+since we have dynamic rank, stride where second channel capabilities
+are clear or memset to 0.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index b83955f94e..9a60c24135 100644
---- a/drivers/ram/rockchip/sdram_rk3399.c
-+++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -1251,6 +1251,8 @@ static unsigned char calculate_stride(struct rk3399_sdram_params *params)
- 		}
- 	}
+diff --git a/arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi b/arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi
+index 7d22528f49..eb0aca4758 100644
+--- a/arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi
++++ b/arch/arm/dts/rk3399-nanopi-neo4-u-boot.dtsi
+@@ -4,3 +4,4 @@
+  */
  
-+	sdram_print_stride(stride);
-+
- 	return stride;
- }
- 
-@@ -1357,11 +1359,14 @@ static int sdram_init(struct dram_info *dram,
- 		debug("Channel ");
- 		debug(channel ? "1: " : "0: ");
- 
-+		sdram_print_ddr_info(cap_info, &params->base);
-+
- 		set_ddrconfig(chan, params, channel, cap_info->ddrconfig);
- 	}
- 
- 	if (params->base.num_channels == 0) {
- 		printf("%s: ", __func__);
-+		sdram_print_dram_type(params->base.dramtype);
- 		printf(" - %dMHz failed!\n", params->base.ddr_freq);
- 		return -EINVAL;
- 	}
+ #include "rk3399-nanopi4-u-boot.dtsi"
++#include "rk3399-sdram-ddr3-1866.dtsi"
 -- 
 2.18.0.321.gffc6fa0e3
