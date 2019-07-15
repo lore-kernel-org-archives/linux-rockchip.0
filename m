@@ -1,68 +1,86 @@
-From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 5.1 007/219] spi: rockchip: turn down tx dma bursts
-Date: Mon, 15 Jul 2019 10:00:08 -0400
-Message-ID: <20190715140341.6443-7-sashal@kernel.org>
-References: <20190715140341.6443-1-sashal@kernel.org>
+From: Tzung-Bi Shih <tzungbi@google.com>
+Subject: Re: [PATCH v3 1/5] ASoC: hdmi-codec: Add an op to set callback
+ function for plug event
+Date: Mon, 15 Jul 2019 23:56:19 +0800
+Message-ID: <CA+Px+wWbmUemETY3OMk1T9XS2w8ZXvZUhVEGzw_w6AxtU8R0rw@mail.gmail.com>
+References: <20190712100443.221322-1-cychiang@chromium.org>
+ <20190712100443.221322-2-cychiang@chromium.org>
+ <20190712105745.xr7jxc626lwoaajx@shell.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190715140341.6443-1-sashal@kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Emil Renner Berthing <kernel@esmil.dk>, Mark Brown <broonie@kernel.org>, Sasha Levin <sashal@kernel.org>, linux-spi@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190712105745.xr7jxc626lwoaajx@shell.armlinux.org.uk>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Cc: ALSA development <alsa-devel@alsa-project.org>, tzungbi@chromium.org, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, David Airlie <airlied@linux.ie>, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>, Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, linux-rockchip@lists.infradead.org, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel@ffwll.ch>, dgreid@chromium.org, Jaroslav Kysela <perex@perex.cz>, linux-arm-kernel@lists.infradead.org, Cheng-Yi Chiang <cychiang@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Emil Renner Berthing <kernel@esmil.dk>
+On Fri, Jul 12, 2019 at 6:58 PM Russell King - ARM Linux admin
+<linux@armlinux.org.uk> wrote:
+>
+> On Fri, Jul 12, 2019 at 06:04:39PM +0800, Cheng-Yi Chiang wrote:
+> > Add an op in hdmi_codec_ops so codec driver can register callback
+> > function to handle plug event.
+> >
+> > Driver in DRM can use this callback function to report connector status.
+> >
+> > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+> > ---
+> >  include/sound/hdmi-codec.h    | 16 +++++++++++++
+> >  sound/soc/codecs/hdmi-codec.c | 45 +++++++++++++++++++++++++++++++++++
+> >  2 files changed, 61 insertions(+)
+> >
+> > diff --git a/include/sound/hdmi-codec.h b/include/sound/hdmi-codec.h
+> > index 7fea496f1f34..9a8661680256 100644
+> > --- a/include/sound/hdmi-codec.h
+> > +++ b/include/sound/hdmi-codec.h
+> > @@ -47,6 +47,9 @@ struct hdmi_codec_params {
+> >       int channels;
+> >  };
+> >
+> > +typedef void (*hdmi_codec_plugged_cb)(struct device *dev,
+> > +                                   bool plugged);
+> > +
+>
+> I'd like to pose a question for people to think about.
+>
+> Firstly, typedefs are generally shunned in the kernel.  However, for
+> these cases it seems to make sense.
+>
+> However, should the "pointer"-ness be part of the typedef or not?  To
+> see what I mean, consider:
+>
+>         typedef void (*hdmi_foo)(void);
+>
+>         int register_foo(hdmi_foo foo);
+>
+> vs
+>
+>         typedef void hdmi_foo(void);
+>
+>         int register_foo(hdmi_foo *foo);
+>
+> which is more in keeping with how we code non-typedef'd code - it's
+> obvious that foo is a pointer while reading the code.
+I have a different opinion.  Its suffix "_cb" self-described it is a
+callback function.  Since function and function pointer are equivalent
+in the language, I think we don't need to emphasize that it is a
+function "pointer".
 
-[ Upstream commit 47300728fb213486a830565d2af49da967c9d16a ]
 
-This fixes tx and bi-directional dma transfers on rk3399-gru-kevin.
-
-It seems the SPI fifo must have room for 2 bursts when the dma_tx_req
-signal is generated or it might skip some words. This in turn makes
-the rx dma channel never complete for bi-directional transfers.
-
-Fix it by setting tx burst length to fifo_len / 4 and the dma
-watermark to fifo_len / 2.
-
-However the rk3399 TRM says (sic):
-"DMAC support incrementing-address burst and fixed-address burst. But in
-the case of access SPI and UART at byte or halfword size, DMAC only
-support fixed-address burst and the address must be aligned to word."
-
-So this relies on fifo_len being a multiple of 16 such that the
-burst length (= fifo_len / 4) is a multiple of 4 and the addresses
-will be word-aligned.
-
-Fixes: dcfc861d24ec ("spi: rockchip: adjust dma watermark and burstlen")
-Signed-off-by: Emil Renner Berthing <kernel@esmil.dk>
-Signed-off-by: Mark Brown <broonie@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/spi/spi-rockchip.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 3912526ead66..19f6a76f1c07 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -425,7 +425,7 @@ static int rockchip_spi_prepare_dma(struct rockchip_spi *rs,
- 			.direction = DMA_MEM_TO_DEV,
- 			.dst_addr = rs->dma_addr_tx,
- 			.dst_addr_width = rs->n_bytes,
--			.dst_maxburst = rs->fifo_len / 2,
-+			.dst_maxburst = rs->fifo_len / 4,
- 		};
- 
- 		dmaengine_slave_config(master->dma_tx, &txconf);
-@@ -526,7 +526,7 @@ static void rockchip_spi_config(struct rockchip_spi *rs,
- 	else
- 		writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_RXFTLR);
- 
--	writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_DMATDLR);
-+	writel_relaxed(rs->fifo_len / 2, rs->regs + ROCKCHIP_SPI_DMATDLR);
- 	writel_relaxed(0, rs->regs + ROCKCHIP_SPI_DMARDLR);
- 	writel_relaxed(dmacr, rs->regs + ROCKCHIP_SPI_DMACR);
- 
--- 
-2.20.1
+> It seems to me that the latter better matches what is in the kernel's
+> coding style, which states:
+>
+>   In general, a pointer, or a struct that has elements that can
+>   reasonably be directly accessed should **never** be a typedef.
+>
+> or maybe Documentation/process/coding-style.rst needs updating?
