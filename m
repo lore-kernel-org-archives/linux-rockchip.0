@@ -1,16 +1,13 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 08/99] ram: rk3399: Clear PI_175 interrupts in data
- training
-Date: Mon, 15 Jul 2019 20:39:58 +0800
-Message-ID: <4501bece-3331-575c-646f-05b07ec954b5@rock-chips.com>
-References: <20190617073252.27810-1-jagan@amarulasolutions.com>
- <20190617073252.27810-9-jagan@amarulasolutions.com>
+From: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: [PATCH AUTOSEL 5.2 007/249] spi: rockchip: turn down tx dma bursts
+Date: Mon, 15 Jul 2019 09:31:48 -0400
+Message-ID: <20190715133550.1772-7-sashal@kernel.org>
+References: <20190715133550.1772-1-sashal@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190617073252.27810-9-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Content-Language: en-US
+In-Reply-To: <20190715133550.1772-1-sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,54 +17,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Emil Renner Berthing <kernel-sKpHZLTYfq0@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMTkvNi8xNyDkuIvljYgzOjMxLCBKYWdhbiBUZWtpIHdyb3RlOgo+IENsZWFyIHRoZSBQ
-SV8xNzUgaW50ZXJydXB0cyBiZWZvcmUgcHJvY2Vzc2luZyBhY3R1YWwKPiBkYXRhIHRyYWluaW5n
-IGluIGFsbCByZWxldmFudCBjYWxscy4KPgo+IFRoaXMgd291bGQgaGVscCB0byBjbGVhciBpbnRl
-cnJ1cHQgZnJvbSBwcmV2aW91cyB0cmFpbmluZy4KPgo+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRl
-a2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgo+IFNpZ25lZC1vZmYtYnk6IFlvdU1pbiBD
-aGVuIDxjeW1Acm9jay1jaGlwcy5jb20+CgpSZXZpZXdlZC1ieTogS2V2ZXIgWWFuZyA8S2V2ZXIu
-eWFuZ0Byb2NrLWNoaXBzLmNvbT4KClRoYW5rcywKIMKgLSBLZXZlcgo+IC0tLQo+ICAgZHJpdmVy
-cy9yYW0vcm9ja2NoaXAvc2RyYW1fcmszMzk5LmMgfCAxNSArKysrKysrKysrKysrKysKPiAgIDEg
-ZmlsZSBjaGFuZ2VkLCAxNSBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9y
-YW0vcm9ja2NoaXAvc2RyYW1fcmszMzk5LmMgYi9kcml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbV9y
-azMzOTkuYwo+IGluZGV4IDIwYTNlODljMTcuLjE4OTg0NjZiNGMgMTAwNjQ0Cj4gLS0tIGEvZHJp
-dmVycy9yYW0vcm9ja2NoaXAvc2RyYW1fcmszMzk5LmMKPiArKysgYi9kcml2ZXJzL3JhbS9yb2Nr
-Y2hpcC9zZHJhbV9yazMzOTkuYwo+IEBAIC02MTcsNiArNjE3LDkgQEAgc3RhdGljIGludCBkYXRh
-X3RyYWluaW5nX2NhKGNvbnN0IHN0cnVjdCBjaGFuX2luZm8gKmNoYW4sIHUzMiBjaGFubmVsLAo+
-ICAgCXUzMiBvYnNfMCwgb2JzXzEsIG9ic18yLCBvYnNfZXJyID0gMDsKPiAgIAl1MzIgcmFuayA9
-IHBhcmFtcy0+Y2hbY2hhbm5lbF0ucmFuazsKPiAgIAo+ICsJLyogY2xlYXIgaW50ZXJydXB0LFBJ
-XzE3NSBQSV9JTlRfQUNLOldSOjA6MTcgKi8KPiArCXdyaXRlbCgweDAwMDAzZjdjLCAoJmRlbmFs
-aV9waVsxNzVdKSk7Cj4gKwo+ICAgCWZvciAoaSA9IDA7IGkgPCByYW5rOyBpKyspIHsKPiAgIAkJ
-c2VsZWN0X3Blcl9jc190cmFpbmluZ19pbmRleChjaGFuLCBpKTsKPiAgIAo+IEBAIC02NzEsNiAr
-Njc0LDkgQEAgc3RhdGljIGludCBkYXRhX3RyYWluaW5nX3dsKGNvbnN0IHN0cnVjdCBjaGFuX2lu
-Zm8gKmNoYW4sIHUzMiBjaGFubmVsLAo+ICAgCXUzMiBvYnNfMCwgb2JzXzEsIG9ic18yLCBvYnNf
-Mywgb2JzX2VyciA9IDA7Cj4gICAJdTMyIHJhbmsgPSBwYXJhbXMtPmNoW2NoYW5uZWxdLnJhbms7
-Cj4gICAKPiArCS8qIGNsZWFyIGludGVycnVwdCxQSV8xNzUgUElfSU5UX0FDSzpXUjowOjE3ICov
-Cj4gKwl3cml0ZWwoMHgwMDAwM2Y3YywgKCZkZW5hbGlfcGlbMTc1XSkpOwo+ICsKPiAgIAlmb3Ig
-KGkgPSAwOyBpIDwgcmFuazsgaSsrKSB7Cj4gICAJCXNlbGVjdF9wZXJfY3NfdHJhaW5pbmdfaW5k
-ZXgoY2hhbiwgaSk7Cj4gICAKPiBAQCAtNzMwLDYgKzczNiw5IEBAIHN0YXRpYyBpbnQgZGF0YV90
-cmFpbmluZ19yZyhjb25zdCBzdHJ1Y3QgY2hhbl9pbmZvICpjaGFuLCB1MzIgY2hhbm5lbCwKPiAg
-IAl1MzIgb2JzXzAsIG9ic18xLCBvYnNfMiwgb2JzXzMsIG9ic19lcnIgPSAwOwo+ICAgCXUzMiBy
-YW5rID0gcGFyYW1zLT5jaFtjaGFubmVsXS5yYW5rOwo+ICAgCj4gKwkvKiBjbGVhciBpbnRlcnJ1
-cHQsUElfMTc1IFBJX0lOVF9BQ0s6V1I6MDoxNyAqLwo+ICsJd3JpdGVsKDB4MDAwMDNmN2MsICgm
-ZGVuYWxpX3BpWzE3NV0pKTsKPiArCj4gICAJZm9yIChpID0gMDsgaSA8IHJhbms7IGkrKykgewo+
-ICAgCQlzZWxlY3RfcGVyX2NzX3RyYWluaW5nX2luZGV4KGNoYW4sIGkpOwo+ICAgCj4gQEAgLTc4
-OSw2ICs3OTgsOSBAQCBzdGF0aWMgaW50IGRhdGFfdHJhaW5pbmdfcmwoY29uc3Qgc3RydWN0IGNo
-YW5faW5mbyAqY2hhbiwgdTMyIGNoYW5uZWwsCj4gICAJdTMyIGksIHRtcDsKPiAgIAl1MzIgcmFu
-ayA9IHBhcmFtcy0+Y2hbY2hhbm5lbF0ucmFuazsKPiAgIAo+ICsJLyogY2xlYXIgaW50ZXJydXB0
-LFBJXzE3NSBQSV9JTlRfQUNLOldSOjA6MTcgKi8KPiArCXdyaXRlbCgweDAwMDAzZjdjLCAoJmRl
-bmFsaV9waVsxNzVdKSk7Cj4gKwo+ICAgCWZvciAoaSA9IDA7IGkgPCByYW5rOyBpKyspIHsKPiAg
-IAkJc2VsZWN0X3Blcl9jc190cmFpbmluZ19pbmRleChjaGFuLCBpKTsKPiAgIAo+IEBAIC04MzQs
-NiArODQ2LDkgQEAgc3RhdGljIGludCBkYXRhX3RyYWluaW5nX3dkcWwoY29uc3Qgc3RydWN0IGNo
-YW5faW5mbyAqY2hhbiwgdTMyIGNoYW5uZWwsCj4gICAJdTMyIGksIHRtcDsKPiAgIAl1MzIgcmFu
-ayA9IHBhcmFtcy0+Y2hbY2hhbm5lbF0ucmFuazsKPiAgIAo+ICsJLyogY2xlYXIgaW50ZXJydXB0
-LFBJXzE3NSBQSV9JTlRfQUNLOldSOjA6MTcgKi8KPiArCXdyaXRlbCgweDAwMDAzZjdjLCAoJmRl
-bmFsaV9waVsxNzVdKSk7Cj4gKwo+ICAgCWZvciAoaSA9IDA7IGkgPCByYW5rOyBpKyspIHsKPiAg
-IAkJc2VsZWN0X3Blcl9jc190cmFpbmluZ19pbmRleChjaGFuLCBpKTsKPiAgIAoKCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Emil Renner Berthing <kernel-sKpHZLTYfq0@public.gmane.org>
+
+[ Upstream commit 47300728fb213486a830565d2af49da967c9d16a ]
+
+This fixes tx and bi-directional dma transfers on rk3399-gru-kevin.
+
+It seems the SPI fifo must have room for 2 bursts when the dma_tx_req
+signal is generated or it might skip some words. This in turn makes
+the rx dma channel never complete for bi-directional transfers.
+
+Fix it by setting tx burst length to fifo_len / 4 and the dma
+watermark to fifo_len / 2.
+
+However the rk3399 TRM says (sic):
+"DMAC support incrementing-address burst and fixed-address burst. But in
+the case of access SPI and UART at byte or halfword size, DMAC only
+support fixed-address burst and the address must be aligned to word."
+
+So this relies on fifo_len being a multiple of 16 such that the
+burst length (= fifo_len / 4) is a multiple of 4 and the addresses
+will be word-aligned.
+
+Fixes: dcfc861d24ec ("spi: rockchip: adjust dma watermark and burstlen")
+Signed-off-by: Emil Renner Berthing <kernel-sKpHZLTYfq0@public.gmane.org>
+Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Signed-off-by: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+---
+ drivers/spi/spi-rockchip.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 9b91188a85f9..2cc6d9951b52 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -417,7 +417,7 @@ static int rockchip_spi_prepare_dma(struct rockchip_spi *rs,
+ 			.direction = DMA_MEM_TO_DEV,
+ 			.dst_addr = rs->dma_addr_tx,
+ 			.dst_addr_width = rs->n_bytes,
+-			.dst_maxburst = rs->fifo_len / 2,
++			.dst_maxburst = rs->fifo_len / 4,
+ 		};
+ 
+ 		dmaengine_slave_config(master->dma_tx, &txconf);
+@@ -518,7 +518,7 @@ static void rockchip_spi_config(struct rockchip_spi *rs,
+ 	else
+ 		writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_RXFTLR);
+ 
+-	writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_DMATDLR);
++	writel_relaxed(rs->fifo_len / 2, rs->regs + ROCKCHIP_SPI_DMATDLR);
+ 	writel_relaxed(0, rs->regs + ROCKCHIP_SPI_DMARDLR);
+ 	writel_relaxed(dmacr, rs->regs + ROCKCHIP_SPI_DMACR);
+ 
+-- 
+2.20.1
