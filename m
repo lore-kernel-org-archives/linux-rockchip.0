@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 05/15] ram: rk3399: s/tsel_wr_select_n/tsel_wr_select_dq_n
-Date: Mon, 15 Jul 2019 23:51:00 +0530
-Message-ID: <20190715182110.21336-6-jagan@amarulasolutions.com>
+Subject: [PATCH v3 06/15] ram: rk3399: s/tsel_wr_select_p/tsel_wr_select_dq_p
+Date: Mon, 15 Jul 2019 23:51:01 +0530
+Message-ID: <20190715182110.21336-7-jagan@amarulasolutions.com>
 References: <20190715182110.21336-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,7 +21,7 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Rename tsel_wr_select_n to tsel_wr_select_dq_n based
+Rename tsel_wr_select_p to tsel_wr_select_dq_p based
 on the bsp code.
 
 No functionality change.
@@ -33,51 +33,50 @@ Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index de5d8c1b5f..85ff47f133 100644
+index 85ff47f133..3ec32bdbc0 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -161,7 +161,7 @@ static void set_ds_odt(const struct chan_info *chan,
+@@ -159,14 +159,14 @@ static void set_ds_odt(const struct chan_info *chan,
+ 	u32 *denali_phy = chan->publ->denali_phy;
+ 
  	u32 tsel_idle_en, tsel_wr_en, tsel_rd_en;
- 	u32 tsel_idle_select_p, tsel_wr_select_p, tsel_rd_select_p;
+-	u32 tsel_idle_select_p, tsel_wr_select_p, tsel_rd_select_p;
++	u32 tsel_idle_select_p, tsel_wr_select_dq_p, tsel_rd_select_p;
  	u32 ca_tsel_wr_select_p, ca_tsel_wr_select_n;
--	u32 tsel_idle_select_n, tsel_wr_select_n, tsel_rd_select_n;
-+	u32 tsel_idle_select_n, tsel_wr_select_dq_n, tsel_rd_select_n;
+ 	u32 tsel_idle_select_n, tsel_wr_select_dq_n, tsel_rd_select_n;
  	u32 reg_value;
  
  	if (params->base.dramtype == LPDDR4) {
-@@ -171,7 +171,7 @@ static void set_ds_odt(const struct chan_info *chan,
+ 		tsel_rd_select_p = PHY_DRV_ODT_HI_Z;
+-		tsel_wr_select_p = PHY_DRV_ODT_40;
++		tsel_wr_select_dq_p = PHY_DRV_ODT_40;
+ 		ca_tsel_wr_select_p = PHY_DRV_ODT_40;
  		tsel_idle_select_p = PHY_DRV_ODT_HI_Z;
  
- 		tsel_rd_select_n = PHY_DRV_ODT_240;
--		tsel_wr_select_n = PHY_DRV_ODT_40;
-+		tsel_wr_select_dq_n = PHY_DRV_ODT_40;
- 		ca_tsel_wr_select_n = PHY_DRV_ODT_40;
+@@ -176,7 +176,7 @@ static void set_ds_odt(const struct chan_info *chan,
  		tsel_idle_select_n = PHY_DRV_ODT_240;
  	} else if (params->base.dramtype == LPDDR3) {
-@@ -181,7 +181,7 @@ static void set_ds_odt(const struct chan_info *chan,
+ 		tsel_rd_select_p = PHY_DRV_ODT_240;
+-		tsel_wr_select_p = PHY_DRV_ODT_34_3;
++		tsel_wr_select_dq_p = PHY_DRV_ODT_34_3;
+ 		ca_tsel_wr_select_p = PHY_DRV_ODT_48;
  		tsel_idle_select_p = PHY_DRV_ODT_240;
  
- 		tsel_rd_select_n = PHY_DRV_ODT_HI_Z;
--		tsel_wr_select_n = PHY_DRV_ODT_34_3;
-+		tsel_wr_select_dq_n = PHY_DRV_ODT_34_3;
- 		ca_tsel_wr_select_n = PHY_DRV_ODT_48;
+@@ -186,7 +186,7 @@ static void set_ds_odt(const struct chan_info *chan,
  		tsel_idle_select_n = PHY_DRV_ODT_HI_Z;
  	} else {
-@@ -191,7 +191,7 @@ static void set_ds_odt(const struct chan_info *chan,
+ 		tsel_rd_select_p = PHY_DRV_ODT_240;
+-		tsel_wr_select_p = PHY_DRV_ODT_34_3;
++		tsel_wr_select_dq_p = PHY_DRV_ODT_34_3;
+ 		ca_tsel_wr_select_p = PHY_DRV_ODT_34_3;
  		tsel_idle_select_p = PHY_DRV_ODT_240;
  
- 		tsel_rd_select_n = PHY_DRV_ODT_240;
--		tsel_wr_select_n = PHY_DRV_ODT_34_3;
-+		tsel_wr_select_dq_n = PHY_DRV_ODT_34_3;
- 		ca_tsel_wr_select_n = PHY_DRV_ODT_34_3;
- 		tsel_idle_select_n = PHY_DRV_ODT_240;
- 	}
 @@ -210,7 +210,7 @@ static void set_ds_odt(const struct chan_info *chan,
  	 * for write cycles for DQ/DM
  	 */
  	reg_value = tsel_rd_select_n | (tsel_rd_select_p << 0x4) |
--		    (tsel_wr_select_n << 8) | (tsel_wr_select_p << 12) |
-+		    (tsel_wr_select_dq_n << 8) | (tsel_wr_select_p << 12) |
+-		    (tsel_wr_select_dq_n << 8) | (tsel_wr_select_p << 12) |
++		    (tsel_wr_select_dq_n << 8) | (tsel_wr_select_dq_p << 12) |
  		    (tsel_idle_select_n << 16) | (tsel_idle_select_p << 20);
  	clrsetbits_le32(&denali_phy[6], 0xffffff, reg_value);
  	clrsetbits_le32(&denali_phy[134], 0xffffff, reg_value);
@@ -85,8 +84,8 @@ index de5d8c1b5f..85ff47f133 100644
  
  	/* phy_pad_fdbk_drive 23bit DENALI_PHY_924/925 */
  	clrsetbits_le32(&denali_phy[924], 0xff,
--			tsel_wr_select_n | (tsel_wr_select_p << 4));
-+			tsel_wr_select_dq_n | (tsel_wr_select_p << 4));
+-			tsel_wr_select_dq_n | (tsel_wr_select_p << 4));
++			tsel_wr_select_dq_n | (tsel_wr_select_dq_p << 4));
  	clrsetbits_le32(&denali_phy[925], 0xff,
  			tsel_rd_select_n | (tsel_rd_select_p << 4));
  
