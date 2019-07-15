@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 06/18] ram: rk3399: Move pwrup_srefresh_exit to dram_info
-Date: Mon, 15 Jul 2019 23:58:44 +0530
-Message-ID: <20190715182856.21688-7-jagan@amarulasolutions.com>
+Subject: [PATCH v3 08/18] ram: rockchip: Add initial Kconfig
+Date: Mon, 15 Jul 2019 23:58:46 +0530
+Message-ID: <20190715182856.21688-9-jagan@amarulasolutions.com>
 References: <20190715182856.21688-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,75 +21,62 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add pwrup_srefresh_exit to be part of dram_info so-that
-the it can help to support pwrup_srefresh_exit in individual
-channels while starting pctl in future.
+Right now sdram drivers in rockchip SoC are built based
+on the SoC configs which may not be an adequate solutions
+while adding common or debug driver.
 
-No functionality change.
+So, add meaningful Kconfig options start with rk3399.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+ drivers/ram/Kconfig           |  1 +
+ drivers/ram/rockchip/Kconfig  | 17 +++++++++++++++++
+ drivers/ram/rockchip/Makefile |  2 +-
+ 3 files changed, 19 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/ram/rockchip/Kconfig
 
-diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index a5da985e1a..6e944cafd9 100644
---- a/drivers/ram/rockchip/sdram_rk3399.c
-+++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -49,6 +49,7 @@ struct chan_info {
- struct dram_info {
- #if defined(CONFIG_TPL_BUILD) || \
- 	(!defined(CONFIG_TPL) && defined(CONFIG_SPL_BUILD))
-+	u32 pwrup_srefresh_exit;
- 	struct chan_info chan[2];
- 	struct clk ddr_clk;
- 	struct rk3399_cru *cru;
-@@ -487,8 +488,8 @@ static int phy_io_config(const struct chan_info *chan,
- 	return 0;
- }
+diff --git a/drivers/ram/Kconfig b/drivers/ram/Kconfig
+index fbf7d7b20f..568d8f2c6a 100644
+--- a/drivers/ram/Kconfig
++++ b/drivers/ram/Kconfig
+@@ -54,4 +54,5 @@ config K3_AM654_DDRSS
+ 	  config add support for the initialization of the external
+ 	  SDRAM devices connected to DDR subsystem.
  
--static int pctl_cfg(const struct chan_info *chan, u32 channel,
--		    const struct rk3399_sdram_params *params)
-+static int pctl_cfg(struct dram_info *dram, const struct chan_info *chan,
-+		    u32 channel, const struct rk3399_sdram_params *params)
- {
- 	u32 *denali_ctl = chan->pctl->denali_ctl;
- 	u32 *denali_pi = chan->pi->denali_pi;
-@@ -496,7 +497,6 @@ static int pctl_cfg(const struct chan_info *chan, u32 channel,
- 	const u32 *params_ctl = params->pctl_regs.denali_ctl;
- 	const u32 *params_phy = params->phy_regs.denali_phy;
- 	u32 tmp, tmp1, tmp2;
--	u32 pwrup_srefresh_exit;
- 	int ret;
- 	const ulong timeout_ms = 200;
- 
-@@ -518,7 +518,8 @@ static int pctl_cfg(const struct chan_info *chan, u32 channel,
- 	writel(params->phy_regs.denali_phy[911], &denali_phy[911]);
- 	writel(params->phy_regs.denali_phy[912], &denali_phy[912]);
- 
--	pwrup_srefresh_exit = readl(&denali_ctl[68]) & PWRUP_SREFRESH_EXIT;
-+	dram->pwrup_srefresh_exit = readl(&denali_ctl[68]) &
-+				    PWRUP_SREFRESH_EXIT;
- 	clrbits_le32(&denali_ctl[68], PWRUP_SREFRESH_EXIT);
- 
- 	/* PHY_DLL_RST_EN */
-@@ -594,7 +595,7 @@ static int pctl_cfg(const struct chan_info *chan, u32 channel,
- 	debug("DRAM (%s): phy locked after %ld ms\n", __func__, get_timer(tmp));
- 
- 	clrsetbits_le32(&denali_ctl[68], PWRUP_SREFRESH_EXIT,
--			pwrup_srefresh_exit);
-+			dram->pwrup_srefresh_exit);
- 	return 0;
- }
- 
-@@ -1179,7 +1180,7 @@ static int sdram_init(struct dram_info *dram,
- 		if (channel >= params->base.num_channels)
- 			continue;
- 
--		ret = pctl_cfg(chan, channel, params);
-+		ret = pctl_cfg(dram, chan, channel, params);
- 		if (ret < 0) {
- 			printf("%s: pctl config failed\n", __func__);
- 			return ret;
++source "drivers/ram/rockchip/Kconfig"
+ source "drivers/ram/stm32mp1/Kconfig"
+diff --git a/drivers/ram/rockchip/Kconfig b/drivers/ram/rockchip/Kconfig
+new file mode 100644
+index 0000000000..995cb487b8
+--- /dev/null
++++ b/drivers/ram/rockchip/Kconfig
+@@ -0,0 +1,17 @@
++config RAM_ROCKCHIP
++	bool "Ram drivers support for Rockchip SoCs"
++	depends on RAM && ARCH_ROCKCHIP
++	default y
++	help
++	  This enables support for ram drivers Rockchip SoCs.
++
++if RAM_ROCKCHIP
++
++config RAM_RK3399
++	bool "Ram driver for Rockchip RK3399"
++	default ROCKCHIP_RK3399
++	help
++	  This enables ram drivers support for the platforms based on
++	  Rockchip RK3399 SoC.
++
++endif # RAM_ROCKCHIP
+diff --git a/drivers/ram/rockchip/Makefile b/drivers/ram/rockchip/Makefile
+index 5df196066d..07d4b62a9d 100644
+--- a/drivers/ram/rockchip/Makefile
++++ b/drivers/ram/rockchip/Makefile
+@@ -9,4 +9,4 @@ obj-$(CONFIG_ROCKCHIP_RK3188) = sdram_rk3188.o
+ obj-$(CONFIG_ROCKCHIP_RK322X) = sdram_rk322x.o
+ obj-$(CONFIG_ROCKCHIP_RK3288) = sdram_rk3288.o
+ obj-$(CONFIG_ROCKCHIP_RK3328) = sdram_rk3328.o
+-obj-$(CONFIG_ROCKCHIP_RK3399) = sdram_rk3399.o
++obj-$(CONFIG_RAM_RK3399) += sdram_rk3399.o
 -- 
 2.18.0.321.gffc6fa0e3
