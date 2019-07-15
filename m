@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 04/18] ram: rk3399: Use rank mask in wdql data training
-Date: Mon, 15 Jul 2019 23:58:42 +0530
-Message-ID: <20190715182856.21688-5-jagan@amarulasolutions.com>
+Subject: [PATCH v3 05/18] ram: rk3399: Add phy pctrl reset support
+Date: Mon, 15 Jul 2019 23:58:43 +0530
+Message-ID: <20190715182856.21688-6-jagan@amarulasolutions.com>
 References: <20190715182856.21688-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,38 +21,74 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add rank_mask based on the rank number, this would keep
-the wdql data training loop based on the desired rank mask
-value instead of looping for all values.
+Add support for phy pctrl reset support for both channel 0, 1.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+ drivers/ram/rockchip/sdram_rk3399.c | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index b98df20fa5..16bd9427a6 100644
+index 16bd9427a6..a5da985e1a 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -861,11 +861,17 @@ static int data_training_wdql(const struct chan_info *chan, u32 channel,
- 	u32 *denali_pi = chan->pi->denali_pi;
- 	u32 i, tmp;
- 	u32 rank = params->ch[channel].cap_info.rank;
-+	u32 rank_mask;
+@@ -35,6 +35,10 @@
+ #define PHY_DRV_ODT_40		0xe
+ #define PHY_DRV_ODT_34_3	0xf
  
- 	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
- 	writel(0x00003f7c, (&denali_pi[175]));
++#define CRU_SFTRST_DDR_CTRL(ch, n)	((0x1 << (8 + 16 + (ch) * 4)) | \
++					((n) << (8 + (ch) * 4)))
++#define CRU_SFTRST_DDR_PHY(ch, n)	((0x1 << (9 + 16 + (ch) * 4)) | \
++					((n) << (9 + (ch) * 4)))
+ struct chan_info {
+ 	struct rk3399_ddr_pctl_regs *pctl;
+ 	struct rk3399_ddr_pi_regs *pi;
+@@ -79,6 +83,29 @@ static void copy_to_reg(u32 *dest, const u32 *src, u32 n)
+ 	}
+ }
  
--	for (i = 0; i < rank; i++) {
-+	rank_mask = (rank == 1) ? 0x1 : 0x3;
++static void rkclk_ddr_reset(struct rk3399_cru *cru, u32 channel, u32 ctl,
++			    u32 phy)
++{
++	channel &= 0x1;
++	ctl &= 0x1;
++	phy &= 0x1;
++	writel(CRU_SFTRST_DDR_CTRL(channel, ctl) |
++				   CRU_SFTRST_DDR_PHY(channel, phy),
++				   &cru->softrst_con[4]);
++}
 +
-+	for (i = 0; i < 4; i++) {
-+		if (!(rank_mask & (1 << i)))
-+			continue;
++static void phy_pctrl_reset(struct rk3399_cru *cru,  u32 channel)
++{
++	rkclk_ddr_reset(cru, channel, 1, 1);
++	udelay(10);
 +
- 		select_per_cs_training_index(chan, i);
++	rkclk_ddr_reset(cru, channel, 1, 0);
++	udelay(10);
++
++	rkclk_ddr_reset(cru, channel, 0, 0);
++	udelay(10);
++}
++
+ static void phy_dll_bypass_set(struct rk3399_ddr_publ_regs *ddr_publ_regs,
+ 			       u32 freq)
+ {
+@@ -1129,6 +1156,7 @@ static int sdram_init(struct dram_info *dram,
+ {
+ 	unsigned char dramtype = params->base.dramtype;
+ 	unsigned int ddr_freq = params->base.ddr_freq;
++	struct rk3399_cru *cru = dram->cru;
+ 	int channel;
+ 	int ret;
  
- 		/*
+@@ -1145,6 +1173,7 @@ static int sdram_init(struct dram_info *dram,
+ 		const struct chan_info *chan = &dram->chan[channel];
+ 		struct rk3399_ddr_publ_regs *publ = chan->publ;
+ 
++		phy_pctrl_reset(cru, channel);
+ 		phy_dll_bypass_set(publ, ddr_freq);
+ 
+ 		if (channel >= params->base.num_channels)
 -- 
 2.18.0.321.gffc6fa0e3
