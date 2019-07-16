@@ -1,77 +1,61 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v3 12/57] ram: rk3399: Rename sys_reg with sys_reg2
-Date: Tue, 16 Jul 2019 17:27:00 +0530
-Message-ID: <20190716115745.12585-13-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH v3 07/57] ram: rk3399: Add bk enc macro
+Date: Tue, 16 Jul 2019 17:26:55 +0530
+Message-ID: <20190716115745.12585-8-jagan@amarulasolutions.com>
 References: <20190716115745.12585-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20190716115745.12585-1-jagan@amarulasolutions.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, YouMin Chen <cym@rock-chips.com>, u-boot@lists.denx.de
-Cc: linux-rockchip@lists.infradead.org, gajjar04akash@gmail.com, linux-amarula@amarulasolutions.com, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190716115745.12585-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-VXNlIGRyYW0gY29uZmlnIHZhcmlhYmxlIG5hbWUgYXMgc3lzX3JlZzIgaW5zdGVhZCBvZiBzeXNf
-cmVnCnNpbmNlIHRoZSBmaW5hbCB2YXJpYWJsZSB2YWx1ZSBpcyB0byB3cml0dGVuIGludG8gYSBw
-bXVncmYKcmVnaXN0ZXIgbmFtZWQgYXMgc3lzX3JlZzIuCgpUaGlzIHJlZmxlY3QgdGhlIGJvdGgg
-dmFyaWFibGUgYW5kIGFzc29jaWF0ZWQgcmVnaXN0ZXIKbmFtZXMgYXJlIHNhbWUgYW5kIGFsc28g
-aGVscCB0byBhZGQgbmV4dCBzeXNfcmVnJ3MgdG8KYWRkIGl0IGluIGZ1dHVyZS4KClNpZ25lZC1v
-ZmYtYnk6IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgpTaWduZWQtb2Zm
-LWJ5OiBZb3VNaW4gQ2hlbiA8Y3ltQHJvY2stY2hpcHMuY29tPgotLS0KIGRyaXZlcnMvcmFtL3Jv
-Y2tjaGlwL3NkcmFtX3JrMzM5OS5jIHwgMjYgKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0KIDEg
-ZmlsZSBjaGFuZ2VkLCAxMyBpbnNlcnRpb25zKCspLCAxMyBkZWxldGlvbnMoLSkKCmRpZmYgLS1n
-aXQgYS9kcml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbV9yazMzOTkuYyBiL2RyaXZlcnMvcmFtL3Jv
-Y2tjaGlwL3NkcmFtX3JrMzM5OS5jCmluZGV4IDJkM2YwZjY5MDIuLjJlZjk2OWMwN2IgMTAwNjQ0
-Ci0tLSBhL2RyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX3JrMzM5OS5jCisrKyBiL2RyaXZlcnMv
-cmFtL3JvY2tjaGlwL3NkcmFtX3JrMzM5OS5jCkBAIC0xMDczLDExICsxMDczLDExIEBAIHN0YXRp
-YyB2b2lkIHNldF9kZHJjb25maWcoY29uc3Qgc3RydWN0IGNoYW5faW5mbyAqY2hhbiwKIHN0YXRp
-YyB2b2lkIGRyYW1fYWxsX2NvbmZpZyhzdHJ1Y3QgZHJhbV9pbmZvICpkcmFtLAogCQkJICAgIGNv
-bnN0IHN0cnVjdCByazMzOTlfc2RyYW1fcGFyYW1zICpwYXJhbXMpCiB7Ci0JdTMyIHN5c19yZWcg
-PSAwOworCXUzMiBzeXNfcmVnMiA9IDA7CiAJdW5zaWduZWQgaW50IGNoYW5uZWwsIGlkeDsKIAot
-CXN5c19yZWcgfD0gU1lTX1JFR19FTkNfRERSVFlQRShwYXJhbXMtPmJhc2UuZHJhbXR5cGUpOwot
-CXN5c19yZWcgfD0gU1lTX1JFR19FTkNfTlVNX0NIKHBhcmFtcy0+YmFzZS5udW1fY2hhbm5lbHMp
-OworCXN5c19yZWcyIHw9IFNZU19SRUdfRU5DX0REUlRZUEUocGFyYW1zLT5iYXNlLmRyYW10eXBl
-KTsKKwlzeXNfcmVnMiB8PSBTWVNfUkVHX0VOQ19OVU1fQ0gocGFyYW1zLT5iYXNlLm51bV9jaGFu
-bmVscyk7CiAKIAlmb3IgKGNoYW5uZWwgPSAwLCBpZHggPSAwOwogCSAgICAgKGlkeCA8IHBhcmFt
-cy0+YmFzZS5udW1fY2hhbm5lbHMpICYmIChjaGFubmVsIDwgMik7CkBAIC0xMDg5LDE1ICsxMDg5
-LDE1IEBAIHN0YXRpYyB2b2lkIGRyYW1fYWxsX2NvbmZpZyhzdHJ1Y3QgZHJhbV9pbmZvICpkcmFt
-LAogCQlpZiAocGFyYW1zLT5jaFtjaGFubmVsXS5jYXBfaW5mby5jb2wgPT0gMCkKIAkJCWNvbnRp
-bnVlOwogCQlpZHgrKzsKLQkJc3lzX3JlZyB8PSBTWVNfUkVHX0VOQ19ST1dfM180KGluZm8tPmNh
-cF9pbmZvLnJvd18zXzQsIGNoYW5uZWwpOwotCQlzeXNfcmVnIHw9IFNZU19SRUdfRU5DX0NISU5G
-TyhjaGFubmVsKTsKLQkJc3lzX3JlZyB8PSBTWVNfUkVHX0VOQ19SQU5LKGluZm8tPmNhcF9pbmZv
-LnJhbmssIGNoYW5uZWwpOwotCQlzeXNfcmVnIHw9IFNZU19SRUdfRU5DX0NPTChpbmZvLT5jYXBf
-aW5mby5jb2wsIGNoYW5uZWwpOwotCQlzeXNfcmVnIHw9IFNZU19SRUdfRU5DX0JLKGluZm8tPmNh
-cF9pbmZvLmJrLCBjaGFubmVsKTsKLQkJc3lzX3JlZyB8PSBTWVNfUkVHX0VOQ19DUzBfUk9XKGlu
-Zm8tPmNhcF9pbmZvLmNzMF9yb3csIGNoYW5uZWwpOwotCQlzeXNfcmVnIHw9IFNZU19SRUdfRU5D
-X0NTMV9ST1coaW5mby0+Y2FwX2luZm8uY3MxX3JvdywgY2hhbm5lbCk7Ci0JCXN5c19yZWcgfD0g
-U1lTX1JFR19FTkNfQlcoaW5mby0+Y2FwX2luZm8uYncsIGNoYW5uZWwpOwotCQlzeXNfcmVnIHw9
-IFNZU19SRUdfRU5DX0RCVyhpbmZvLT5jYXBfaW5mby5kYncsIGNoYW5uZWwpOworCQlzeXNfcmVn
-MiB8PSBTWVNfUkVHX0VOQ19ST1dfM180KGluZm8tPmNhcF9pbmZvLnJvd18zXzQsIGNoYW5uZWwp
-OworCQlzeXNfcmVnMiB8PSBTWVNfUkVHX0VOQ19DSElORk8oY2hhbm5lbCk7CisJCXN5c19yZWcy
-IHw9IFNZU19SRUdfRU5DX1JBTksoaW5mby0+Y2FwX2luZm8ucmFuaywgY2hhbm5lbCk7CisJCXN5
-c19yZWcyIHw9IFNZU19SRUdfRU5DX0NPTChpbmZvLT5jYXBfaW5mby5jb2wsIGNoYW5uZWwpOwor
-CQlzeXNfcmVnMiB8PSBTWVNfUkVHX0VOQ19CSyhpbmZvLT5jYXBfaW5mby5iaywgY2hhbm5lbCk7
-CisJCXN5c19yZWcyIHw9IFNZU19SRUdfRU5DX0NTMF9ST1coaW5mby0+Y2FwX2luZm8uY3MwX3Jv
-dywgY2hhbm5lbCk7CisJCXN5c19yZWcyIHw9IFNZU19SRUdfRU5DX0NTMV9ST1coaW5mby0+Y2Fw
-X2luZm8uY3MxX3JvdywgY2hhbm5lbCk7CisJCXN5c19yZWcyIHw9IFNZU19SRUdfRU5DX0JXKGlu
-Zm8tPmNhcF9pbmZvLmJ3LCBjaGFubmVsKTsKKwkJc3lzX3JlZzIgfD0gU1lTX1JFR19FTkNfREJX
-KGluZm8tPmNhcF9pbmZvLmRidywgY2hhbm5lbCk7CiAKIAkJZGRyX21zY2hfcmVncyA9IGRyYW0t
-PmNoYW5bY2hhbm5lbF0ubXNjaDsKIAkJbm9jX3RpbWluZyA9ICZwYXJhbXMtPmNoW2NoYW5uZWxd
-Lm5vY190aW1pbmdzOwpAQCAtMTExOCw3ICsxMTE4LDcgQEAgc3RhdGljIHZvaWQgZHJhbV9hbGxf
-Y29uZmlnKHN0cnVjdCBkcmFtX2luZm8gKmRyYW0sCiAJCQkJICAgICAxIDw8IDE3KTsKIAl9CiAK
-LQl3cml0ZWwoc3lzX3JlZywgJmRyYW0tPnBtdWdyZi0+b3NfcmVnMik7CisJd3JpdGVsKHN5c19y
-ZWcyLCAmZHJhbS0+cG11Z3JmLT5vc19yZWcyKTsKIAlya19jbHJzZXRyZWcoJmRyYW0tPnBtdXNn
-cmYtPnNvY19jb240LCAweDFmIDw8IDEwLAogCQkgICAgIHBhcmFtcy0+YmFzZS5zdHJpZGUgPDwg
-MTApOwogCi0tIAoyLjE4LjAuMzIxLmdmZmM2ZmEwZTMKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3Rz
-LmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
+Add simplified and meaningful macro for bk.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ arch/arm/include/asm/arch-rockchip/sdram_common.h | 2 ++
+ drivers/ram/rockchip/sdram_rk3399.c               | 3 +--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/include/asm/arch-rockchip/sdram_common.h b/arch/arm/include/asm/arch-rockchip/sdram_common.h
+index e7f15a7cf9..71062e3e71 100644
+--- a/arch/arm/include/asm/arch-rockchip/sdram_common.h
++++ b/arch/arm/include/asm/arch-rockchip/sdram_common.h
+@@ -86,6 +86,8 @@ struct sdram_base_params {
+ #define SYS_REG_ENC_COL(n, ch)		(((n) - 9) << SYS_REG_COL_SHIFT(ch))
+ #define SYS_REG_BK_SHIFT(ch)		(8 + (ch) * 16)
+ #define SYS_REG_BK_MASK			1
++#define SYS_REG_ENC_BK(n, ch)		(((n) == 3 ? 0 : 1) << \
++					SYS_REG_BK_SHIFT(ch))
+ #define SYS_REG_CS0_ROW_SHIFT(ch)	(6 + (ch) * 16)
+ #define SYS_REG_CS0_ROW_MASK		3
+ #define SYS_REG_CS1_ROW_SHIFT(ch)	(4 + (ch) * 16)
+diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
+index f6a83f2acf..b93a6c6c44 100644
+--- a/drivers/ram/rockchip/sdram_rk3399.c
++++ b/drivers/ram/rockchip/sdram_rk3399.c
+@@ -1093,8 +1093,7 @@ static void dram_all_config(struct dram_info *dram,
+ 		sys_reg |= SYS_REG_ENC_CHINFO(channel);
+ 		sys_reg |= SYS_REG_ENC_RANK(info->cap_info.rank, channel);
+ 		sys_reg |= SYS_REG_ENC_COL(info->cap_info.col, channel);
+-		sys_reg |= info->cap_info.bk == 3 ? 0 : 1 <<
+-			   SYS_REG_BK_SHIFT(channel);
++		sys_reg |= SYS_REG_ENC_BK(info->cap_info.bk, channel);
+ 		sys_reg |= (info->cap_info.cs0_row - 13) <<
+ 			    SYS_REG_CS0_ROW_SHIFT(channel);
+ 		sys_reg |= (info->cap_info.cs1_row - 13) <<
+-- 
+2.18.0.321.gffc6fa0e3
