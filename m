@@ -1,7 +1,8 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 26/57] ram: rk3399: Configure PHY_898, PHY_919 for lpddr4
-Date: Tue, 16 Jul 2019 17:27:14 +0530
-Message-ID: <20190716115745.12585-27-jagan@amarulasolutions.com>
+Subject: [PATCH v3 27/57] ram: rk3399: Configure BOOSTP_EN,
+ BOOSTN_EN for lpddr4
+Date: Tue, 16 Jul 2019 17:27:15 +0530
+Message-ID: <20190716115745.12585-28-jagan@amarulasolutions.com>
 References: <20190716115745.12585-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,32 +22,55 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-PHY_898, PHY_919 would require to configure PHY LP4 boot
-pll control and ca for lpddr4.
-
-So, configure the same in pctl_cfg for LPDDR4.
+Configure BOOSTP_EN, BOOSTN_EN for lpddr4 during phy IO config.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/ram/rockchip/sdram_rk3399.c | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index beb4f6de54..7625506458 100644
+index 7625506458..a9e092c39f 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -574,6 +574,11 @@ static int pctl_cfg(struct dram_info *dram, const struct chan_info *chan,
- 	writel(params->phy_regs.denali_phy[911], &denali_phy[911]);
- 	writel(params->phy_regs.denali_phy[912], &denali_phy[912]);
+@@ -35,6 +35,9 @@
+ #define PHY_DRV_ODT_40		0xe
+ #define PHY_DRV_ODT_34_3	0xf
+ 
++#define PHY_BOOSTP_EN		0x1
++#define PHY_BOOSTN_EN		0x1
++
+ #define CRU_SFTRST_DDR_CTRL(ch, n)	((0x1 << (8 + 16 + (ch) * 4)) | \
+ 					((n) << (8 + (ch) * 4)))
+ #define CRU_SFTRST_DDR_PHY(ch, n)	((0x1 << (9 + 16 + (ch) * 4)) | \
+@@ -312,6 +315,27 @@ static int phy_io_config(const struct chan_info *chan,
+ 	/* PHY_939 PHY_PAD_CS_DRIVE */
+ 	clrsetbits_le32(&denali_phy[939], 0x7 << 14, mode_sel << 14);
  
 +	if (IS_ENABLED(CONFIG_RAM_RK3399_LPDDR4)) {
-+		writel(params->phy_regs.denali_phy[898], &denali_phy[898]);
-+		writel(params->phy_regs.denali_phy[919], &denali_phy[919]);
++		/* BOOSTP_EN & BOOSTN_EN */
++		reg_value = ((PHY_BOOSTP_EN << 4) | PHY_BOOSTN_EN);
++		/* PHY_925 PHY_PAD_FDBK_DRIVE2 */
++		clrsetbits_le32(&denali_phy[925], 0xff << 8, reg_value << 8);
++		/* PHY_926 PHY_PAD_DATA_DRIVE */
++		clrsetbits_le32(&denali_phy[926], 0xff << 12, reg_value << 12);
++		/* PHY_927 PHY_PAD_DQS_DRIVE */
++		clrsetbits_le32(&denali_phy[927], 0xff << 14, reg_value << 14);
++		/* PHY_928 PHY_PAD_ADDR_DRIVE */
++		clrsetbits_le32(&denali_phy[928], 0xff << 20, reg_value << 20);
++		/* PHY_929 PHY_PAD_CLK_DRIVE */
++		clrsetbits_le32(&denali_phy[929], 0xff << 22, reg_value << 22);
++		/* PHY_935 PHY_PAD_CKE_DRIVE */
++		clrsetbits_le32(&denali_phy[935], 0xff << 20, reg_value << 20);
++		/* PHY_937 PHY_PAD_RST_DRIVE */
++		clrsetbits_le32(&denali_phy[937], 0xff << 20, reg_value << 20);
++		/* PHY_939 PHY_PAD_CS_DRIVE */
++		clrsetbits_le32(&denali_phy[939], 0xff << 20, reg_value << 20);
 +	}
 +
- 	dram->pwrup_srefresh_exit[channel] = readl(&denali_ctl[68]) &
- 					     PWRUP_SREFRESH_EXIT;
- 	clrbits_le32(&denali_ctl[68], PWRUP_SREFRESH_EXIT);
+ 	/* speed setting */
+ 	if (params->base.ddr_freq < 400)
+ 		speed = 0x0;
 -- 
 2.18.0.321.gffc6fa0e3
