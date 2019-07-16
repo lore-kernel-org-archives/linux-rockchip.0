@@ -1,8 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 34/57] ram: sdram: Configure lpddr4 tsel rd,
- wr based on IO settings
-Date: Tue, 16 Jul 2019 17:27:22 +0530
-Message-ID: <20190716115745.12585-35-jagan@amarulasolutions.com>
+Subject: [PATCH v3 31/57] ram: rk3399: Configure tsel write ca for lpddr4
+Date: Tue, 16 Jul 2019 17:27:19 +0530
+Message-ID: <20190716115745.12585-32-jagan@amarulasolutions.com>
 References: <20190716115745.12585-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,106 +21,45 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Now we have IO settings available for all supported sdram
-frequencies, so retrieve these IO settings and make used
-for LPDDR4 ds odt configuration.
+tsel write ca_p and ca_n values need to write on PHY 544, 672
+and 800 to configure ds odt.
+
+Configure the same PHY register for lpddr4 would require a mask
+value of (300 << 8).
+
+Add support for it.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 42 ++++++++++++++++++++++++-----
- 1 file changed, 36 insertions(+), 6 deletions(-)
+ drivers/ram/rockchip/sdram_rk3399.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 95d9f3a88b..1b8ce5160f 100644
+index 7689711a99..1050cbdb07 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -184,6 +184,33 @@ struct io_setting {
- 	},
- };
+@@ -502,9 +502,18 @@ static void set_ds_odt(const struct chan_info *chan,
  
-+/**
-+ * phy = 0, PHY boot freq
-+ * phy = 1, PHY index 0
-+ * phy = 2, PHY index 1
-+ */
-+static struct io_setting *
-+lpddr4_get_io_settings(const struct rk3399_sdram_params *params, u32 mr5)
-+{
-+	struct io_setting *io = NULL;
-+	u32 n;
-+
-+	for (n = 0; n < ARRAY_SIZE(lpddr4_io_setting); n++) {
-+		io = &lpddr4_io_setting[n];
-+
-+		if (io->mr5 != 0) {
-+			if (io->mhz >= params->base.ddr_freq &&
-+			    io->mr5 == mr5)
-+				break;
-+		} else {
-+			if (io->mhz >= params->base.ddr_freq)
-+				break;
-+		}
+ 	/* phy_adr_tsel_select_ 8bits DENALI_PHY_544/672/800 offset_0 */
+ 	reg_value = tsel_wr_select_ca_n | (tsel_wr_select_ca_p << 0x4);
+-	clrsetbits_le32(&denali_phy[544], 0xff, reg_value);
+-	clrsetbits_le32(&denali_phy[672], 0xff, reg_value);
+-	clrsetbits_le32(&denali_phy[800], 0xff, reg_value);
++	if (IS_ENABLED(CONFIG_RAM_RK3399_LPDDR4)) {
++		/* LPDDR4 these register read always return 0, so
++		 * can not use clrsetbits_le32(), need to write32
++		 */
++		writel((0x300 << 8) | reg_value, &denali_phy[544]);
++		writel((0x300 << 8) | reg_value, &denali_phy[672]);
++		writel((0x300 << 8) | reg_value, &denali_phy[800]);
++	} else {
++		clrsetbits_le32(&denali_phy[544], 0xff, reg_value);
++		clrsetbits_le32(&denali_phy[672], 0xff, reg_value);
++		clrsetbits_le32(&denali_phy[800], 0xff, reg_value);
 +	}
-+
-+	return io;
-+}
-+
- static void *get_ddrc0_con(struct dram_info *dram, u8 channel)
- {
- 	return (channel == 0) ? &dram->grf->ddrc0_con0 : &dram->grf->ddrc0_con1;
-@@ -524,7 +551,7 @@ static int phy_io_config(const struct chan_info *chan,
- }
  
- static void set_ds_odt(const struct chan_info *chan,
--		       const struct rk3399_sdram_params *params)
-+		       const struct rk3399_sdram_params *params, u32 mr5)
- {
- 	u32 *denali_phy = chan->publ->denali_phy;
- 
-@@ -533,19 +560,22 @@ static void set_ds_odt(const struct chan_info *chan,
- 	u32 tsel_idle_select_n, tsel_rd_select_n;
- 	u32 tsel_wr_select_dq_p, tsel_wr_select_ca_p;
- 	u32 tsel_wr_select_dq_n, tsel_wr_select_ca_n;
-+	struct io_setting *io = NULL;
- 	u32 reg_value;
- 
- 	if (params->base.dramtype == LPDDR4) {
-+		io = lpddr4_get_io_settings(params, mr5);
-+
- 		tsel_rd_select_p = PHY_DRV_ODT_HI_Z;
--		tsel_rd_select_n = PHY_DRV_ODT_240;
-+		tsel_rd_select_n = io->rd_odt;
- 
- 		tsel_idle_select_p = PHY_DRV_ODT_HI_Z;
- 		tsel_idle_select_n = PHY_DRV_ODT_240;
- 
--		tsel_wr_select_dq_p = PHY_DRV_ODT_40;
-+		tsel_wr_select_dq_p = io->wr_dq_drv;
- 		tsel_wr_select_dq_n = PHY_DRV_ODT_40;
- 
--		tsel_wr_select_ca_p = PHY_DRV_ODT_40;
-+		tsel_wr_select_ca_p = io->wr_ca_drv;
- 		tsel_wr_select_ca_n = PHY_DRV_ODT_40;
- 	} else if (params->base.dramtype == LPDDR3) {
- 		tsel_rd_select_p = PHY_DRV_ODT_240;
-@@ -723,7 +753,7 @@ static void pctl_start(struct dram_info *dram, u8 channel)
- }
- 
- static int pctl_cfg(struct dram_info *dram, const struct chan_info *chan,
--		    u32 channel, const struct rk3399_sdram_params *params)
-+		    u32 channel, struct rk3399_sdram_params *params)
- {
- 	u32 *denali_ctl = chan->pctl->denali_ctl;
- 	u32 *denali_pi = chan->pi->denali_pi;
-@@ -805,7 +835,7 @@ static int pctl_cfg(struct dram_info *dram, const struct chan_info *chan,
- 	copy_to_reg(&denali_phy[512], &params_phy[512], (549 - 512 + 1) * 4);
- 	copy_to_reg(&denali_phy[640], &params_phy[640], (677 - 640 + 1) * 4);
- 	copy_to_reg(&denali_phy[768], &params_phy[768], (805 - 768 + 1) * 4);
--	set_ds_odt(chan, params);
-+	set_ds_odt(chan, params, 0);
- 
- 	/*
- 	 * phy_dqs_tsel_wr_timing_X 8bits DENALI_PHY_84/212/340/468 offset_8
+ 	/* phy_pad_addr_drive 8bits DENALI_PHY_928 offset_0 */
+ 	clrsetbits_le32(&denali_phy[928], 0xff, reg_value);
 -- 
 2.18.0.321.gffc6fa0e3
