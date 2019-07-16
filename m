@@ -1,245 +1,58 @@
-From: Cheng-yi Chiang <cychiang@chromium.org>
-Subject: Re: [PATCH v3 2/5] drm: bridge: dw-hdmi: Report connector status
- using callback
-Date: Tue, 16 Jul 2019 20:04:28 +0800
-Message-ID: <CAFv8NwLBr+USzOJvSZzMt_EzxA=07-NTGzuKdusaMxbFyrBjFQ@mail.gmail.com>
-References: <20190712100443.221322-1-cychiang@chromium.org>
- <20190712100443.221322-3-cychiang@chromium.org> <20190712104748.zlgxgdjbtj2gw4yz@shell.armlinux.org.uk>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v3 01/57] ram: rk3399: Add ddrtype enc macro
+Date: Tue, 16 Jul 2019 20:57:41 +0800
+Message-ID: <aa1d313b-c777-afab-e1a6-e53be19ef968@rock-chips.com>
+References: <20190716115745.12585-1-jagan@amarulasolutions.com>
+ <20190716115745.12585-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190712104748.zlgxgdjbtj2gw4yz@shell.armlinux.org.uk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-Cc: linux-kernel <linux-kernel@vger.kernel.org>, "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..." <alsa-devel@alsa-project.org>, Doug Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, tzungbi@chromium.org, Jaroslav Kysela <perex@perex.cz>, Hans Verkuil <hverkuil@xs4all.nl>, Andrzej Hajda <a.hajda@samsung.com>, Mark Brown <broonie@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel@ffwll.ch>, Dylan Reid <dgreid@chromium.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20190716115745.12585-2-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, YouMin Chen <cym@rock-chips.com>, u-boot@lists.denx.de
+Cc: linux-rockchip@lists.infradead.org, gajjar04akash@gmail.com, linux-amarula@amarulasolutions.com, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jul 12, 2019 at 6:48 PM Russell King - ARM Linux admin
-<linux@armlinux.org.uk> wrote:
->
-> On Fri, Jul 12, 2019 at 06:04:40PM +0800, Cheng-Yi Chiang wrote:
-> > Allow codec driver register callback function for plug event.
-> >
-> > The callback registration flow:
-> > dw-hdmi <--- hw-hdmi-i2s-audio <--- hdmi-codec
-> >
-> > dw-hdmi-i2s-audio implements hook_plugged_cb op
-> > so codec driver can register the callback.
-> >
-> > dw-hdmi implements set_plugged_cb op so platform device can register the
-> > callback.
-> >
-> > When connector plug/unplug event happens, report this event using the
-> > callback.
-> >
-> > Make sure that audio and drm are using the single source of truth for
-> > connector status.
-> >
-> > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
-> > ---
-> >  .../gpu/drm/bridge/synopsys/dw-hdmi-audio.h   |  3 +
-> >  .../drm/bridge/synopsys/dw-hdmi-i2s-audio.c   | 10 ++++
-> >  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c     | 55 ++++++++++++++++++-
-> >  3 files changed, 67 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-audio.h b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-audio.h
-> > index 63b5756f463b..f523c590984e 100644
-> > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-audio.h
-> > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-audio.h
-> > @@ -2,6 +2,8 @@
-> >  #ifndef DW_HDMI_AUDIO_H
-> >  #define DW_HDMI_AUDIO_H
-> >
-> > +#include <sound/hdmi-codec.h>
-> > +
-> >  struct dw_hdmi;
-> >
-> >  struct dw_hdmi_audio_data {
-> > @@ -17,6 +19,7 @@ struct dw_hdmi_i2s_audio_data {
-> >
-> >       void (*write)(struct dw_hdmi *hdmi, u8 val, int offset);
-> >       u8 (*read)(struct dw_hdmi *hdmi, int offset);
-> > +     int (*set_plugged_cb)(struct dw_hdmi *hdmi, hdmi_codec_plugged_cb fn);
-> >  };
-> >
-> >  #endif
-> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-> > index 5cbb71a866d5..7b93cf05c985 100644
-> > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-> > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-> > @@ -104,10 +104,20 @@ static int dw_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
-> >       return -EINVAL;
-> >  }
-> >
-> > +static int dw_hdmi_i2s_hook_plugged_cb(struct device *dev, void *data,
-> > +                                    hdmi_codec_plugged_cb fn)
-> > +{
-> > +     struct dw_hdmi_i2s_audio_data *audio = data;
-> > +     struct dw_hdmi *hdmi = audio->hdmi;
-> > +
-> > +     return audio->set_plugged_cb(hdmi, fn);
-> > +}
-> > +
-> >  static struct hdmi_codec_ops dw_hdmi_i2s_ops = {
-> >       .hw_params      = dw_hdmi_i2s_hw_params,
-> >       .audio_shutdown = dw_hdmi_i2s_audio_shutdown,
-> >       .get_dai_id     = dw_hdmi_i2s_get_dai_id,
-> > +     .hook_plugged_cb = dw_hdmi_i2s_hook_plugged_cb,
-> >  };
-> >
-> >  static int snd_dw_hdmi_probe(struct platform_device *pdev)
-> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> > index 045b1b13fd0e..ce6646067472 100644
-> > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> > @@ -26,6 +26,8 @@
-> >  #include <drm/drm_probe_helper.h>
-> >  #include <drm/bridge/dw_hdmi.h>
-> >
-> > +#include <sound/hdmi-codec.h>
-> > +
-> >  #include <uapi/linux/media-bus-format.h>
-> >  #include <uapi/linux/videodev2.h>
-> >
-> > @@ -185,6 +187,9 @@ struct dw_hdmi {
-> >       void (*disable_audio)(struct dw_hdmi *hdmi);
-> >
-> >       struct cec_notifier *cec_notifier;
-> > +
-> > +     hdmi_codec_plugged_cb plugged_cb;
-> > +     enum drm_connector_status last_connector_result;
-> >  };
-> >
-> >  #define HDMI_IH_PHY_STAT0_RX_SENSE \
-> > @@ -209,6 +214,40 @@ static inline u8 hdmi_readb(struct dw_hdmi *hdmi, int offset)
-> >       return val;
-> >  }
-> >
-> > +static void handle_plugged_change(struct dw_hdmi *hdmi, bool plugged)
-> > +{
-> > +     struct platform_device *codec_pdev;
-> > +
-> > +     if (!hdmi->audio || IS_ERR(hdmi->audio))
-> > +             return;
-> > +     codec_pdev = platform_get_drvdata(hdmi->audio);
-> > +     if (!codec_pdev || IS_ERR(codec_pdev))
-> > +             return;
->
-> This looks fragile to me, poking about in another device's driver data
-> from another driver is really not a good design decision.  I think this
-> can be simplified if the registration function took the function
-> pointer and the struct device pointer, and then you only need one test
-> below:
->
-Hi Russell, Thank you for the detailed review.
-ACK to this suggestion.
-I have updated the registration function following your suggestion in v4.
-It looks much cleaner.
-
-> > +     if (!hdmi->plugged_cb)
-> > +             return;
-> > +
-> > +     hdmi->plugged_cb(&codec_pdev->dev, plugged);
-> > +}
-> > +
-> > +static int hdmi_set_plugged_cb(struct dw_hdmi *hdmi, hdmi_codec_plugged_cb fn)
-> > +{
-> > +     bool plugged;
-> > +     struct platform_device *codec_pdev;
-> > +
-> > +     if (!hdmi->audio || IS_ERR(hdmi->audio))
-> > +             return -EINVAL;
->
-> Given the current code structure, how can this ever be true when the
-> function is called?
->
-ACK
-Removed in v4.
-> > +     codec_pdev = platform_get_drvdata(hdmi->audio);
-> > +     if (!codec_pdev || IS_ERR(codec_pdev))
-> > +             return -EINVAL;
->
-> This doesn't seem like a good idea as I've pointed out above.
->
-ACK
-Fixed in v4.
-> > +
-> > +     mutex_lock(&hdmi->mutex);
-> > +     hdmi->plugged_cb = fn;
-> > +     plugged = hdmi->last_connector_result == connector_status_connected;
-> > +     handle_plugged_change(hdmi, plugged);
-> > +     mutex_unlock(&hdmi->mutex);
->
-> Should be a blank line here for readability.
->
-ACK
-Fixed in v4.
-> > +     return 0;
-> > +}
-> > +
-> >  static void hdmi_modb(struct dw_hdmi *hdmi, u8 data, u8 mask, unsigned reg)
-> >  {
-> >       regmap_update_bits(hdmi->regm, reg << hdmi->reg_shift, mask, data);
-> > @@ -2044,6 +2083,7 @@ dw_hdmi_connector_detect(struct drm_connector *connector, bool force)
-> >  {
-> >       struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi,
-> >                                            connector);
-> > +     enum drm_connector_status result;
-> >
-> >       mutex_lock(&hdmi->mutex);
-> >       hdmi->force = DRM_FORCE_UNSPECIFIED;
-> > @@ -2051,7 +2091,18 @@ dw_hdmi_connector_detect(struct drm_connector *connector, bool force)
-> >       dw_hdmi_update_phy_mask(hdmi);
-> >       mutex_unlock(&hdmi->mutex);
-> >
-> > -     return hdmi->phy.ops->read_hpd(hdmi, hdmi->phy.data);
-> > +     result = hdmi->phy.ops->read_hpd(hdmi, hdmi->phy.data);
-> > +
-> > +     mutex_lock(&hdmi->mutex);
-> > +     if (result != hdmi->last_connector_result) {
-> > +             dev_dbg(hdmi->dev, "read_hpd result: %d", result);
-> > +             handle_plugged_change(hdmi,
-> > +                                   result == connector_status_connected);
-> > +             hdmi->last_connector_result = result;
-> > +     }
-> > +     mutex_unlock(&hdmi->mutex);
-> > +
-> > +     return result;
-> >  }
-> >
-> >  static int dw_hdmi_connector_get_modes(struct drm_connector *connector)
-> > @@ -2460,6 +2511,7 @@ __dw_hdmi_probe(struct platform_device *pdev,
-> >       hdmi->rxsense = true;
-> >       hdmi->phy_mask = (u8)~(HDMI_PHY_HPD | HDMI_PHY_RX_SENSE);
-> >       hdmi->mc_clkdis = 0x7f;
-> > +     hdmi->last_connector_result = connector_status_disconnected;
-> >
-> >       mutex_init(&hdmi->mutex);
-> >       mutex_init(&hdmi->audio_mutex);
-> > @@ -2653,6 +2705,7 @@ __dw_hdmi_probe(struct platform_device *pdev,
-> >               audio.hdmi      = hdmi;
-> >               audio.write     = hdmi_writeb;
-> >               audio.read      = hdmi_readb;
-> > +             audio.set_plugged_cb = hdmi_set_plugged_cb;
->
-> Why is this necessary?
->
-> The I2S audio driver already depends on the dw-hdmi module through its
-> use of functions already exported.  Indirecting this through the
-> platform data makes no sense.
->
-> Just rename hdmi_set_plugged_cb to dw_hdmi_set_plugged_cb() and export
-> it for dw-hdmi-i2s-audio.c to use.
-ACK.
-Your suggestion makes sense.
-Removed in v4.
-
->
-> Thanks.
-Thanks so much!
-
->
-> --
-> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-> FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-> According to speedtest.net: 11.9Mbps down 500kbps up
+Ck9uIDIwMTkvNy8xNiDkuIvljYg3OjU2LCBKYWdhbiBUZWtpIHdyb3RlOgo+IEFkZCBzaW1wbGlm
+aWVkIGFuZCBtZWFuaW5nZnVsIG1hY3JvIGZvciBkZHJ0eXBlIG1hY3JvLgo+Cj4gU2lnbmVkLW9m
+Zi1ieTogSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gU2lnbmVkLW9m
+Zi1ieTogWW91TWluIENoZW4gPGN5bUByb2NrLWNoaXBzLmNvbT4KClJldmlld2VkLWJ5OiBLZXZl
+ciBZYW5nIDxLZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgoKVGhhbmtzLAogwqAtIEtldmVyCj4g
+LS0tCj4gICBhcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5o
+IHwgMSArCj4gICBkcml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbV9yazMzOTkuYyAgICAgICAgICAg
+ICAgIHwgMiArLQo+ICAgMiBmaWxlcyBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDEgZGVsZXRp
+b24oLSkKPgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlw
+L3NkcmFtX2NvbW1vbi5oIGIvYXJjaC9hcm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9zZHJh
+bV9jb21tb24uaAo+IGluZGV4IGI3NTQ5ZjVkOGEuLjkyYTRjNDg1YzIgMTAwNjQ0Cj4gLS0tIGEv
+YXJjaC9hcm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24uaAo+ICsrKyBi
+L2FyY2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAvc2RyYW1fY29tbW9uLmgKPiBAQCAt
+NzIsNiArNzIsNyBAQCBzdHJ1Y3Qgc2RyYW1fYmFzZV9wYXJhbXMgewo+ICAgI2RlZmluZSBTWVNf
+UkVHX1JPV18zXzRfU0hJRlQoY2gpCSgzMCArIChjaCkpCj4gICAjZGVmaW5lIFNZU19SRUdfUk9X
+XzNfNF9NQVNLCQkxCj4gICAjZGVmaW5lIFNZU19SRUdfQ0hJTkZPX1NISUZUKGNoKQkoMjggKyAo
+Y2gpKQo+ICsjZGVmaW5lIFNZU19SRUdfRU5DX0REUlRZUEUobikJCSgobikgPDwgU1lTX1JFR19E
+RFJUWVBFX1NISUZUKQo+ICAgI2RlZmluZSBTWVNfUkVHX1JBTktfU0hJRlQoY2gpCQkoMTEgKyAo
+Y2gpICogMTYpCj4gICAjZGVmaW5lIFNZU19SRUdfUkFOS19NQVNLCQkxCj4gICAjZGVmaW5lIFNZ
+U19SRUdfQ09MX1NISUZUKGNoKQkJKDkgKyAoY2gpICogMTYpCj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvcmFtL3JvY2tjaGlwL3NkcmFtX3JrMzM5OS5jIGIvZHJpdmVycy9yYW0vcm9ja2NoaXAvc2Ry
+YW1fcmszMzk5LmMKPiBpbmRleCA5YTYwYzI0MTM1Li5mNTg4MzZjMDM3IDEwMDY0NAo+IC0tLSBh
+L2RyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX3JrMzM5OS5jCj4gKysrIGIvZHJpdmVycy9yYW0v
+cm9ja2NoaXAvc2RyYW1fcmszMzk5LmMKPiBAQCAtMTA3Niw3ICsxMDc2LDcgQEAgc3RhdGljIHZv
+aWQgZHJhbV9hbGxfY29uZmlnKHN0cnVjdCBkcmFtX2luZm8gKmRyYW0sCj4gICAJdTMyIHN5c19y
+ZWcgPSAwOwo+ICAgCXVuc2lnbmVkIGludCBjaGFubmVsLCBpZHg7Cj4gICAKPiAtCXN5c19yZWcg
+fD0gcGFyYW1zLT5iYXNlLmRyYW10eXBlIDw8IFNZU19SRUdfRERSVFlQRV9TSElGVDsKPiArCXN5
+c19yZWcgfD0gU1lTX1JFR19FTkNfRERSVFlQRShwYXJhbXMtPmJhc2UuZHJhbXR5cGUpOwo+ICAg
+CXN5c19yZWcgfD0gKHBhcmFtcy0+YmFzZS5udW1fY2hhbm5lbHMgLSAxKSA8PCBTWVNfUkVHX05V
+TV9DSF9TSElGVDsKPiAgIAo+ICAgCWZvciAoY2hhbm5lbCA9IDAsIGlkeCA9IDA7CgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcg
+bGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8v
+dS1ib290Cg==
