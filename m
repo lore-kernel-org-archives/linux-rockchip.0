@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 37/57] ram: rk3399: Get lpddr4 tsel_rd_en from io settings
-Date: Tue, 16 Jul 2019 17:27:25 +0530
-Message-ID: <20190716115745.12585-38-jagan@amarulasolutions.com>
+Subject: [PATCH v3 38/57] ram: rk3399: Update lpddr4 vref based on io settings
+Date: Tue, 16 Jul 2019 17:27:26 +0530
+Message-ID: <20190716115745.12585-39-jagan@amarulasolutions.com>
 References: <20190716115745.12585-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,37 +21,60 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-For base.odt 1 the lpddr4 tsel_rd_en value is depending
-on IO settings of rd_odt_en.
+The vref_mode_dq, vref_value_dq on lpddr4 value is depending
+on IO settings of rd_vref.
 
 Add support for it.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ drivers/ram/rockchip/sdram_rk3399.c | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index e0be9d2485..9e40880835 100644
+index 9e40880835..4a2622a440 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -645,10 +645,14 @@ static void set_ds_odt(const struct chan_info *chan,
- 		tsel_ckcs_select_n = PHY_DRV_ODT_34_3;
- 	}
+@@ -338,7 +338,7 @@ static void set_memory_map(const struct chan_info *chan, u32 channel,
+ }
  
--	if (params->base.odt == 1)
-+	if (params->base.odt == 1) {
- 		tsel_rd_en = 1;
--	else
+ static int phy_io_config(const struct chan_info *chan,
+-			 const struct rk3399_sdram_params *params)
++			 const struct rk3399_sdram_params *params, u32 mr5)
+ {
+ 	u32 *denali_phy = chan->publ->denali_phy;
+ 	u32 vref_mode_dq, vref_value_dq, vref_mode_ac, vref_value_ac;
+@@ -349,9 +349,18 @@ static int phy_io_config(const struct chan_info *chan,
+ 
+ 	/* vref setting */
+ 	if (params->base.dramtype == LPDDR4) {
+-		/* LPDDR4 */
+-		vref_mode_dq = 0x6;
+-		vref_value_dq = 0x1f;
++		struct io_setting *io = lpddr4_get_io_settings(params, mr5);
++		u32 rd_vref = io->rd_vref * 1000;
 +
-+		if (params->base.dramtype == LPDDR4)
-+			tsel_rd_en = io->rd_odt_en;
-+	} else {
- 		tsel_rd_en = 0;
-+	}
++		if (rd_vref < 36700) {
++			/* MODE_LV[2:0] = LPDDR4 (Range 2)*/
++			vref_mode_dq = 0x7;
++			vref_value_dq = (rd_vref - 3300) / 521;
++		} else {
++			/* MODE_LV[2:0] = LPDDR4 (Range 1)*/
++			vref_mode_dq = 0x6;
++			vref_value_dq = (rd_vref - 15300) / 521;
++		}
+ 		vref_mode_ac = 0x6;
+ 		vref_value_ac = 0x1f;
+ 		mode_sel = 0x6;
+@@ -770,7 +779,7 @@ static void set_ds_odt(const struct chan_info *chan,
+ 	/* phy_pad_fdbk_term 1bit DENALI_PHY_930 offset_17 */
+ 	clrsetbits_le32(&denali_phy[930], 0x1 << 17, reg_value);
  
- 	tsel_wr_en = 0;
- 	tsel_idle_en = 0;
+-	phy_io_config(chan, params);
++	phy_io_config(chan, params, mr5);
+ }
+ 
+ static void pctl_start(struct dram_info *dram, u8 channel)
 -- 
 2.18.0.321.gffc6fa0e3
