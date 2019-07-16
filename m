@@ -1,61 +1,53 @@
-From: Cheng-Yi Chiang <cychiang@chromium.org>
-Subject: [PATCH v4 5/5] ASoC: rockchip_max98090: Add HDMI jack support
-Date: Tue, 16 Jul 2019 19:57:25 +0800
-Message-ID: <20190716115725.66558-6-cychiang@chromium.org>
-References: <20190716115725.66558-1-cychiang@chromium.org>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH v3 01/57] ram: rk3399: Add ddrtype enc macro
+Date: Tue, 16 Jul 2019 17:26:49 +0530
+Message-ID: <20190716115745.12585-2-jagan@amarulasolutions.com>
+References: <20190716115745.12585-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190716115725.66558-1-cychiang@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, dgreid@chromium.org, tzungbi@chromium.org, alsa-devel@alsa-project.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Cheng-Yi Chiang <cychiang@chromium.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20190716115745.12585-1-jagan@amarulasolutions.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, YouMin Chen <cym@rock-chips.com>, u-boot@lists.denx.de
+Cc: linux-rockchip@lists.infradead.org, gajjar04akash@gmail.com, linux-amarula@amarulasolutions.com, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-In machine driver, create a jack and let hdmi-codec report jack status.
-
-Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
----
- sound/soc/rockchip/rockchip_max98090.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
-
-diff --git a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
-index c82948e383da..c81c4acda917 100644
---- a/sound/soc/rockchip/rockchip_max98090.c
-+++ b/sound/soc/rockchip/rockchip_max98090.c
-@@ -134,6 +134,25 @@ enum {
- 	DAILINK_HDMI,
- };
- 
-+static struct snd_soc_jack rk_hdmi_jack;
-+
-+static int rk_hdmi_init(struct snd_soc_pcm_runtime *runtime)
-+{
-+	struct snd_soc_card *card = runtime->card;
-+	struct snd_soc_component *component = runtime->codec_dai->component;
-+	int ret;
-+
-+	/* enable jack detection */
-+	ret = snd_soc_card_jack_new(card, "HDMI Jack", SND_JACK_LINEOUT,
-+				    &rk_hdmi_jack, NULL, 0);
-+	if (ret) {
-+		dev_err(card->dev, "Can't new HDMI Jack %d\n", ret);
-+		return ret;
-+	}
-+
-+	return hdmi_codec_set_jack_detect(component, &rk_hdmi_jack);
-+}
-+
- /* max98090 and HDMI codec dai_link */
- static struct snd_soc_dai_link rk_dailinks[] = {
- 	[DAILINK_MAX98090] = {
-@@ -151,6 +170,7 @@ static struct snd_soc_dai_link rk_dailinks[] = {
- 		.ops = &rk_aif1_ops,
- 		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
- 			SND_SOC_DAIFMT_CBS_CFS,
-+		.init = rk_hdmi_init,
- 		SND_SOC_DAILINK_REG(hdmi),
- 	}
- };
--- 
-2.22.0.510.g264f2c817a-goog
+QWRkIHNpbXBsaWZpZWQgYW5kIG1lYW5pbmdmdWwgbWFjcm8gZm9yIGRkcnR5cGUgbWFjcm8uCgpT
+aWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KU2ln
+bmVkLW9mZi1ieTogWW91TWluIENoZW4gPGN5bUByb2NrLWNoaXBzLmNvbT4KLS0tCiBhcmNoL2Fy
+bS9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5oIHwgMSArCiBkcml2ZXJz
+L3JhbS9yb2NrY2hpcC9zZHJhbV9yazMzOTkuYyAgICAgICAgICAgICAgIHwgMiArLQogMiBmaWxl
+cyBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9h
+cmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5oIGIvYXJjaC9h
+cm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24uaAppbmRleCBiNzU0OWY1
+ZDhhLi45MmE0YzQ4NWMyIDEwMDY0NAotLS0gYS9hcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoLXJv
+Y2tjaGlwL3NkcmFtX2NvbW1vbi5oCisrKyBiL2FyY2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9j
+a2NoaXAvc2RyYW1fY29tbW9uLmgKQEAgLTcyLDYgKzcyLDcgQEAgc3RydWN0IHNkcmFtX2Jhc2Vf
+cGFyYW1zIHsKICNkZWZpbmUgU1lTX1JFR19ST1dfM180X1NISUZUKGNoKQkoMzAgKyAoY2gpKQog
+I2RlZmluZSBTWVNfUkVHX1JPV18zXzRfTUFTSwkJMQogI2RlZmluZSBTWVNfUkVHX0NISU5GT19T
+SElGVChjaCkJKDI4ICsgKGNoKSkKKyNkZWZpbmUgU1lTX1JFR19FTkNfRERSVFlQRShuKQkJKChu
+KSA8PCBTWVNfUkVHX0REUlRZUEVfU0hJRlQpCiAjZGVmaW5lIFNZU19SRUdfUkFOS19TSElGVChj
+aCkJCSgxMSArIChjaCkgKiAxNikKICNkZWZpbmUgU1lTX1JFR19SQU5LX01BU0sJCTEKICNkZWZp
+bmUgU1lTX1JFR19DT0xfU0hJRlQoY2gpCQkoOSArIChjaCkgKiAxNikKZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX3JrMzM5OS5jIGIvZHJpdmVycy9yYW0vcm9ja2NoaXAv
+c2RyYW1fcmszMzk5LmMKaW5kZXggOWE2MGMyNDEzNS4uZjU4ODM2YzAzNyAxMDA2NDQKLS0tIGEv
+ZHJpdmVycy9yYW0vcm9ja2NoaXAvc2RyYW1fcmszMzk5LmMKKysrIGIvZHJpdmVycy9yYW0vcm9j
+a2NoaXAvc2RyYW1fcmszMzk5LmMKQEAgLTEwNzYsNyArMTA3Niw3IEBAIHN0YXRpYyB2b2lkIGRy
+YW1fYWxsX2NvbmZpZyhzdHJ1Y3QgZHJhbV9pbmZvICpkcmFtLAogCXUzMiBzeXNfcmVnID0gMDsK
+IAl1bnNpZ25lZCBpbnQgY2hhbm5lbCwgaWR4OwogCi0Jc3lzX3JlZyB8PSBwYXJhbXMtPmJhc2Uu
+ZHJhbXR5cGUgPDwgU1lTX1JFR19ERFJUWVBFX1NISUZUOworCXN5c19yZWcgfD0gU1lTX1JFR19F
+TkNfRERSVFlQRShwYXJhbXMtPmJhc2UuZHJhbXR5cGUpOwogCXN5c19yZWcgfD0gKHBhcmFtcy0+
+YmFzZS5udW1fY2hhbm5lbHMgLSAxKSA8PCBTWVNfUkVHX05VTV9DSF9TSElGVDsKIAogCWZvciAo
+Y2hhbm5lbCA9IDAsIGlkeCA9IDA7Ci0tIAoyLjE4LjAuMzIxLmdmZmM2ZmEwZTMKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxp
+c3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3Ut
+Ym9vdAo=
