@@ -1,222 +1,114 @@
-From: Cheng-Yi Chiang <cychiang@chromium.org>
-Subject: [PATCH v4 4/5] ASoC: rockchip_max98090: Add dai_link for HDMI
-Date: Tue, 16 Jul 2019 19:57:24 +0800
-Message-ID: <20190716115725.66558-5-cychiang@chromium.org>
-References: <20190716115725.66558-1-cychiang@chromium.org>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH v3 00/57] ram: rk3399: Add LPDDR4 support
+Date: Tue, 16 Jul 2019 17:26:48 +0530
+Message-ID: <20190716115745.12585-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190716115725.66558-1-cychiang@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, dgreid@chromium.org, tzungbi@chromium.org, alsa-devel@alsa-project.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Cheng-Yi Chiang <cychiang@chromium.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, YouMin Chen <cym@rock-chips.com>, u-boot@lists.denx.de
+Cc: linux-rockchip@lists.infradead.org, gajjar04akash@gmail.com, linux-amarula@amarulasolutions.com, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Use two dai_links. One for HDMI and one for max98090.
-With this setup, audio can play to speaker and HDMI selectively.
-
-Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
----
- sound/soc/rockchip/Kconfig             |  3 +-
- sound/soc/rockchip/rockchip_max98090.c | 96 ++++++++++++++++++++------
- 2 files changed, 75 insertions(+), 24 deletions(-)
-
-diff --git a/sound/soc/rockchip/Kconfig b/sound/soc/rockchip/Kconfig
-index b43657e6e655..d610b553ea3b 100644
---- a/sound/soc/rockchip/Kconfig
-+++ b/sound/soc/rockchip/Kconfig
-@@ -40,9 +40,10 @@ config SND_SOC_ROCKCHIP_MAX98090
- 	select SND_SOC_ROCKCHIP_I2S
- 	select SND_SOC_MAX98090
- 	select SND_SOC_TS3A227E
-+	select SND_SOC_HDMI_CODEC
- 	help
- 	  Say Y or M here if you want to add support for SoC audio on Rockchip
--	  boards using the MAX98090 codec, such as Veyron.
-+	  boards using the MAX98090 codec and HDMI codec, such as Veyron.
- 
- config SND_SOC_ROCKCHIP_RT5645
- 	tristate "ASoC support for Rockchip boards using a RT5645/RT5650 codec"
-diff --git a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
-index c5fc24675a33..c82948e383da 100644
---- a/sound/soc/rockchip/rockchip_max98090.c
-+++ b/sound/soc/rockchip/rockchip_max98090.c
-@@ -11,6 +11,7 @@
- #include <linux/gpio.h>
- #include <linux/of_gpio.h>
- #include <sound/core.h>
-+#include <sound/hdmi-codec.h>
- #include <sound/jack.h>
- #include <sound/pcm.h>
- #include <sound/pcm_params.h>
-@@ -41,6 +42,7 @@ static const struct snd_soc_dapm_widget rk_dapm_widgets[] = {
- 	SND_SOC_DAPM_MIC("Headset Mic", NULL),
- 	SND_SOC_DAPM_MIC("Int Mic", NULL),
- 	SND_SOC_DAPM_SPK("Speaker", NULL),
-+	SND_SOC_DAPM_LINE("HDMI", NULL),
- };
- 
- static const struct snd_soc_dapm_route rk_audio_map[] = {
-@@ -52,6 +54,7 @@ static const struct snd_soc_dapm_route rk_audio_map[] = {
- 	{"Headphone", NULL, "HPR"},
- 	{"Speaker", NULL, "SPKL"},
- 	{"Speaker", NULL, "SPKR"},
-+	{"HDMI", NULL, "TX"},
- };
- 
- static const struct snd_kcontrol_new rk_mc_controls[] = {
-@@ -59,6 +62,7 @@ static const struct snd_kcontrol_new rk_mc_controls[] = {
- 	SOC_DAPM_PIN_SWITCH("Headset Mic"),
- 	SOC_DAPM_PIN_SWITCH("Int Mic"),
- 	SOC_DAPM_PIN_SWITCH("Speaker"),
-+	SOC_DAPM_PIN_SWITCH("HDMI"),
- };
- 
- static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
-@@ -92,38 +96,63 @@ static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
- 
- 	ret = snd_soc_dai_set_sysclk(cpu_dai, 0, mclk,
- 				     SND_SOC_CLOCK_OUT);
--	if (ret < 0) {
--		dev_err(codec_dai->dev, "Can't set codec clock %d\n", ret);
-+	if (ret) {
-+		dev_err(cpu_dai->dev, "Can't set cpu dai clock %d\n", ret);
- 		return ret;
- 	}
- 
-+	/* HDMI codec dai does not need to set sysclk. */
-+	if (!strcmp(rtd->dai_link->name, "HDMI"))
-+		return 0;
-+
- 	ret = snd_soc_dai_set_sysclk(codec_dai, 0, mclk,
- 				     SND_SOC_CLOCK_IN);
--	if (ret < 0) {
--		dev_err(codec_dai->dev, "Can't set codec clock %d\n", ret);
-+	if (ret) {
-+		dev_err(codec_dai->dev, "Can't set codec dai clock %d\n", ret);
- 		return ret;
- 	}
- 
--	return ret;
-+	return 0;
- }
- 
- static const struct snd_soc_ops rk_aif1_ops = {
- 	.hw_params = rk_aif1_hw_params,
- };
- 
--SND_SOC_DAILINK_DEFS(hifi,
-+SND_SOC_DAILINK_DEFS(analog,
- 	DAILINK_COMP_ARRAY(COMP_EMPTY()),
- 	DAILINK_COMP_ARRAY(COMP_CODEC(NULL, "HiFi")),
- 	DAILINK_COMP_ARRAY(COMP_EMPTY()));
- 
--static struct snd_soc_dai_link rk_dailink = {
--	.name = "max98090",
--	.stream_name = "Audio",
--	.ops = &rk_aif1_ops,
--	/* set max98090 as slave */
--	.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
--		SND_SOC_DAIFMT_CBS_CFS,
--	SND_SOC_DAILINK_REG(hifi),
-+SND_SOC_DAILINK_DEFS(hdmi,
-+	DAILINK_COMP_ARRAY(COMP_EMPTY()),
-+	DAILINK_COMP_ARRAY(COMP_CODEC(HDMI_CODEC_DRV_NAME, "i2s-hifi")),
-+	DAILINK_COMP_ARRAY(COMP_EMPTY()));
-+
-+enum {
-+	DAILINK_MAX98090,
-+	DAILINK_HDMI,
-+};
-+
-+/* max98090 and HDMI codec dai_link */
-+static struct snd_soc_dai_link rk_dailinks[] = {
-+	[DAILINK_MAX98090] = {
-+		.name = "max98090",
-+		.stream_name = "Analog",
-+		.ops = &rk_aif1_ops,
-+		/* set max98090 as slave */
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
-+			SND_SOC_DAIFMT_CBS_CFS,
-+		SND_SOC_DAILINK_REG(analog),
-+	},
-+	[DAILINK_HDMI] = {
-+		.name = "HDMI",
-+		.stream_name = "HDMI",
-+		.ops = &rk_aif1_ops,
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
-+			SND_SOC_DAIFMT_CBS_CFS,
-+		SND_SOC_DAILINK_REG(hdmi),
-+	}
- };
- 
- static int rk_98090_headset_init(struct snd_soc_component *component);
-@@ -136,8 +165,8 @@ static struct snd_soc_aux_dev rk_98090_headset_dev = {
- static struct snd_soc_card snd_soc_card_rk = {
- 	.name = "ROCKCHIP-I2S",
- 	.owner = THIS_MODULE,
--	.dai_link = &rk_dailink,
--	.num_links = 1,
-+	.dai_link = rk_dailinks,
-+	.num_links = ARRAY_SIZE(rk_dailinks),
- 	.aux_dev = &rk_98090_headset_dev,
- 	.num_aux_devs = 1,
- 	.dapm_widgets = rk_dapm_widgets,
-@@ -173,27 +202,48 @@ static int snd_rk_mc_probe(struct platform_device *pdev)
- 	int ret = 0;
- 	struct snd_soc_card *card = &snd_soc_card_rk;
- 	struct device_node *np = pdev->dev.of_node;
-+	struct device_node *np_analog;
-+	struct device_node *np_cpu;
-+	struct of_phandle_args args;
- 
- 	/* register the soc card */
- 	card->dev = &pdev->dev;
- 
--	rk_dailink.codecs->of_node = of_parse_phandle(np,
--			"rockchip,audio-codec", 0);
--	if (!rk_dailink.codecs->of_node) {
-+	np_analog = of_parse_phandle(np, "rockchip,audio-codec", 0);
-+	if (!np_analog) {
- 		dev_err(&pdev->dev,
- 			"Property 'rockchip,audio-codec' missing or invalid\n");
- 		return -EINVAL;
- 	}
-+	rk_dailinks[DAILINK_MAX98090].codecs->of_node = np_analog;
-+
-+	ret = of_parse_phandle_with_fixed_args(np, "rockchip,audio-codec",
-+					       0, 0, &args);
-+	if (ret) {
-+		dev_err(&pdev->dev,
-+			"Unable to parse property 'rockchip,audio-codec'\n");
-+		return ret;
-+	}
-+
-+	ret = snd_soc_get_dai_name(
-+			&args, &rk_dailinks[DAILINK_MAX98090].codecs->dai_name);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Unable to get codec dai_name\n");
-+		return ret;
-+	}
-+
-+	np_cpu = of_parse_phandle(np, "rockchip,i2s-controller", 0);
- 
--	rk_dailink.cpus->of_node = of_parse_phandle(np,
--			"rockchip,i2s-controller", 0);
--	if (!rk_dailink.cpus->of_node) {
-+	if (!np_cpu) {
- 		dev_err(&pdev->dev,
- 			"Property 'rockchip,i2s-controller' missing or invalid\n");
- 		return -EINVAL;
- 	}
- 
--	rk_dailink.platforms->of_node = rk_dailink.cpus->of_node;
-+	rk_dailinks[DAILINK_MAX98090].cpus->of_node = np_cpu;
-+	rk_dailinks[DAILINK_MAX98090].platforms->of_node = np_cpu;
-+	rk_dailinks[DAILINK_HDMI].cpus->of_node = np_cpu;
-+	rk_dailinks[DAILINK_HDMI].platforms->of_node = np_cpu;
- 
- 	rk_98090_headset_dev.codec_of_node = of_parse_phandle(np,
- 			"rockchip,headset-codec", 0);
--- 
-2.22.0.510.g264f2c817a-goog
+VGhpcyBpcyBuZXh0IHJldmlzb24gb2YgbHBkZHI0IHN1cHBvcnQgb24gcmszMzk5IGNvbXBhcmVk
+IHRvCnByZXZpb3VzIHNldFsxXS4gSXQgaGFzIHNvbWUgY2hhbmdlcyBiYXNlZCBvbiB0aGUgY29t
+bWl0IG9yZGVycwphbmQgc3F1YXNoaW5nIGZldyBwYXRjaGVzIHRvZ2V0aGVyIGFuZCByZXN0IGlz
+IHNhbWUuCgpUaGFua3MgdG8KLSBZb3VNaW4gQ2hlbgotIEFrYXNoIEdhamphcgotIEtldmVyIFlh
+bmcKZm9yIHN1cHBvcnRpbmcgYWxsIHRoZSBoZWxwIG9uIHRoaXMgd29yay4KCkNoYW5nZXMgZm9y
+IHYzOgotIHNxdWFzaCBzZXRfcmF0ZSBjb2RlIGluIG9uZSBwYXRjaAotIHRlc3RlZCBpbiBSb2Nr
+cHJvNjQgYW5kIFJvY2stUEktNAotIG9yZGVyIHRoZW0gaW4gcHJvcGVyIHdheQotIHJlYmFzZSBv
+biBtYXN0ZXIKQ2hhbmdlcyBmb3IgdjI6Ci0gaGFuZGxlIExQRERSNCBjb2RlIGFzIHBhcnQgb2Yg
+Q09ORklHX1JBTV9SSzMzOTlfTFBERFI0Ci0gc3VwcG9ydCBkYXRhX3RyYWluaW5nIGFuZCBzZXRf
+cmF0ZSB2aWEgc2RyYW1fcmszMzk5X29wcwotIGFkZCBwcm9wZXIgc3lzX3JlZ19lbmMgbWFjcm9z
+Ci0gYWRkIG5ldyBwYXRjaCB0byByZW5hbWUgdmFyaWFibGUgc2RyYW1fcGFyYW1zIHdpdGggcGFy
+YW1zCi0gZml4IGZldyBjb21taXQgbWVzc2FnZXMuCgpwYXRjaCAwMDAxIC0gMDAxODogYWRkIGRy
+YW0gY29uZmlnIGVuYyBtYWNybwoKcGF0Y2ggMDAxOTogY29uZmlndXJlIHBoeSBJTyBpbiBkcyBv
+ZHQKCnBhdGNoIDAwMjA6IGFkZCBMUEREUjQgY29uZmlnIAoKcGF0Y2ggMDAyMSAtIDAwNDM6IGxw
+ZGRyNCBkYXRhIHRyYWluaW5nIGNoYW5nZXMKCnBhdGNoIDAwNDQgLSAwMDQ2OiBzeXNjb24gcG11
+IHN1cHBvcnQKCnBhdGNoIDAwNDc6IHNldCA1ME1IeiBkZHIgY2xvY2sKCnBhdGNoIDAwNDg6IHNl
+dCA0MDBNSHogZGRyIGNsb2NrCgpwYXRjaCAwMDQ5OiBMUEREUjQtNDAwIHRpbWluZ3MKCnBhdGNo
+IDAwNTA6IExQRERSNC04MDAgdGltaW5ncwoKcGF0Y2ggMDA1MSAtIDAwNTI6IGxwZGRyNCBzZXQg
+cmF0ZQoKcGF0Y2ggMDA1MzogZW5hYmxlIGxwZGRyNCBzdXBwb3J0IG9uIFJvY2twcm82NAoKcGF0
+Y2ggMDA1NDogZW5hYmxlIGxwZGRyNCBzdXBwb3J0IG9uIFJvY2stUEkgNAoKcGF0Y2ggMDA1NTog
+YWRkIExQRERSLTEwMCB0aW1pbmdzIHZpYSBkdHMKCnBhdGNoIDAwNTY6IHVzZSBMUEREUi0xMDAg
+dGltaW5ncyBvbiBSb2NrcHJvNjQKCnBhdGNoIDAwNTc6IHVzZSBMUEREUi0xMDAgdGltaW5ncyBv
+biBSb2NrLVBJIDQKClsxXSBodHRwczovL3BhdGNod29yay5vemxhYnMub3JnL2NvdmVyLzExMTY3
+MzQvCgpBbnkgaW5wdXRzPwpKYWdhbi4KCkphZ2FuIFRla2kgKDU3KToKICByYW06IHJrMzM5OTog
+QWRkIGRkcnR5cGUgZW5jIG1hY3JvCiAgcmFtOiByazMzOTk6IEFkZCBjaGFubmVsIG51bWJlciBl
+bmNvZGVyIG1hY3JvCiAgcmFtOiByazMzOTk6IEFkZCByb3dfM180IGVuYyBtYWNybwogIHJhbTog
+cmszMzk5OiBBZGQgY2hpcGluZm8gbWFjcm8KICByYW06IHJrMzM5OTogQWRkIHJhbmsgZW5jIG1h
+Y3JvCiAgcmFtOiByazMzOTk6IEFkZCBjb2x1bW4gZW5jIG1hY3JvCiAgcmFtOiByazMzOTk6IEFk
+ZCBiayBlbmMgbWFjcm8KICByYW06IHJrMzM5OTogQWRkIGRidyBlbmMgbWFjcm8KICByYW06IHJr
+MzM5OTogQWRkIGNzMF9ydyBtYWNybwogIHJhbTogcmszMzk5OiBBZGQgY3MxX3J3IG1hY3JvCiAg
+cmFtOiByazMzOTk6IEFkZCBidyBlbmMgbWFjcm8KICByYW06IHJrMzM5OTogUmVuYW1lIHN5c19y
+ZWcgd2l0aCBzeXNfcmVnMgogIHJhbTogcmszMzk5OiBVcGRhdGUgY3MwX3JvdyB0byB1c2Ugc3lz
+X3JlZzMKICByYW06IHJrMzM5OTogVXBkYXRlIGNzMV9yb3cgdG8gdXNlIHN5c19yZWczCiAgcmFt
+OiByazMzOTk6IEFkZCBjczFfY29sIGVuYyBtYWNybwogIHJhbTogcmszMzk5OiBBZGQgZGRyIHZl
+cnNpb24gZW5jIG1hY3JvCiAgcmFtOiByazMzOTk6IEFkZCBkZHJ0aW1pbmdDMAogIHJhbTogcmsz
+Mzk5OiBBZGQgRGRyTW9kZQogIHJhbTogcmszMzk5OiBDb25maWd1cmUgcGh5IElPIGluIGRzIG9k
+dAogIHJhbTogcm9ja2NoaXA6IEtjb25maWc6IEFkZCBSSzMzOTkgTFBERFI0IGVudHJ5CiAgcmFt
+OiByazMzOTk6IEFkZCBscGRkcjQgcmFuayBtYXNrIGZvciBjYSB0cmFpbmluZwogIHJhbTogcmsz
+Mzk5OiBBZGQgbHBkZHI0IHJhbmsgbWFzayBmb3Igd2RxbCB0cmFpbmluZwogIHJhbTogcmszMzk5
+OiBNb3ZlIG1vZGVfc2VsIGFzc2lnbm1lbnQKICByYW06IHJrMzM5OTogRG9uJ3Qgd2FpdCBmb3Ig
+UExMIGxvY2sgaW4gbHBkZHI0CiAgcmFtOiByazMzOTk6IEF2b2lkIHR3byBjaGFubmVsIFpRIENh
+bCBTdGFydCBhdCB0aGUgc2FtZSB0aW1lCiAgcmFtOiByazMzOTk6IENvbmZpZ3VyZSBQSFlfODk4
+LCBQSFlfOTE5IGZvciBscGRkcjQKICByYW06IHJrMzM5OTogQ29uZmlndXJlIEJPT1NUUF9FTiwg
+Qk9PU1ROX0VOIGZvciBscGRkcjQKICByYW06IHJrMzM5OTogQ29uZmlndXJlIFNMRVdQX0VOLCBT
+TEVXTl9FTiBmb3IgbHBkZHI0CiAgcmFtOiByazMzOTk6IENvbmZpZ3VyZSBQSFkgUlhfQ01fSU5Q
+VVQgZm9yIGxwZGRyNAogIHJhbTogcmszMzk5OiBNYXAgY2hpcHNlbGVjdCBmb3IgbHBkZHI0CiAg
+cmFtOiByazMzOTk6IENvbmZpZ3VyZSB0c2VsIHdyaXRlIGNhIGZvciBscGRkcjQKICByYW06IHJr
+MzM5OTogRG9uJ3QgZGlzYWJsZSBkZmkgZHJhbSBjbGsgZm9yIGxwZGRyNCwgcmFuayAxCiAgcmFt
+OiByazMzOTk6IEFkZCBJTyBzZXR0aW5ncwogIHJhbTogc2RyYW06IENvbmZpZ3VyZSBscGRkcjQg
+dHNlbCByZCwgd3IgYmFzZWQgb24gSU8gc2V0dGluZ3MKICByYW06IHJrMzM5OTogQWRkIHRzZWwg
+Y29udHJvbCBjbG9jayBkcml2ZQogIHJhbTogcmszMzk5OiBDb25maWd1cmUgc29jIG9kdCBzdXBw
+b3J0CiAgcmFtOiByazMzOTk6IEdldCBscGRkcjQgdHNlbF9yZF9lbiBmcm9tIGlvIHNldHRpbmdz
+CiAgcmFtOiByazMzOTk6IFVwZGF0ZSBscGRkcjQgdnJlZiBiYXNlZCBvbiBpbyBzZXR0aW5ncwog
+IHJhbTogcmszMzk5OiBVcGRhdGUgbHBkZHI0IG1vZGVfc2VsIGJhc2VkIG9uIGlvIHNldHRpbmdz
+CiAgcmFtOiByazMzOTk6IFVwZGF0ZSBscGRkcjQgdnJlZl9tb2RlX2FjCiAgcmFtOiByazMzOTk6
+IFNpbXBsaWZ5IGRhdGEgdHJhaW5pbmcgZmlyc3QgYXJndW1lbnQKICByYW06IHJrMzM5OTogSGFu
+ZGxlIGRhdGEgdHJhaW5pbmcgdmlhIG9wcwogIHJhbTogcmszMzk5OiBBZGQgTFBQRFI0IG1yIGRl
+dGVjdGlvbgogIGFybTogaW5jbHVkZTogcm9ja2NoaXA6IEFkZCByazMzOTkgcG11IGZpbGUKICBy
+b2NrY2hpcDogcmszMzk5OiBzeXNjb246IEFkZCBwbXUgc3VwcG9ydAogIHJvY2tjaGlwOiBkdHM6
+IHJrMzM5OTogQWRkIHUtYm9vdCwgZG0tcHJlLXJlbG9jIGZvciBwbXUKICBjbGs6IHJvY2tjaGlw
+OiByazMzOTk6IFNldCA1ME1IeiBkZHIgY2xvY2sKICBjbGs6IHJvY2tjaGlwOiByazMzOTk6IFNl
+dCA0MDBNSHogZGRyIGNsb2NrCiAgcmFtOiByazMzOTk6IEFkZCBMUFBERFI0LTQwMCB0aW1pbmdz
+IGluYwogIHJhbTogcmszMzk5OiBBZGQgTFBQRERSNC04MDAgdGltaW5ncyBpbmMKICByYW06IHJr
+MzM5OTogQWRkIHNldF9yYXRlIHNkcmFtIHJrMzM5OSBvcHMKICByYW06IHJrMzM5OTogQWRkIGxw
+ZGRyNCBzZXQgcmF0ZSBzdXBwb3J0CiAgY29uZmlnczogcm9ja3BybzY0OiBFbmFibGUgTFBERFI0
+IHN1cHBvcnQKICBjb25maWdzOiByb2NrLXBpLTQ6IEVuYWJsZSBMUEREUjQgc3VwcG9ydAogIHJv
+Y2tjaGlwOiBkdHM6IHJrMzM5OTogQWRkIExQRERSNC0xMDAgdGltaW5ncwogIHJvY2tjaGlwOiBk
+dHM6IHJrMzM5OTogcm9ja3BybzY0OiBVc2UgTFBERFI0LTEwMCBkdHNpCiAgcm9ja2NoaXA6IGR0
+czogcmszMzk5OiByb2NrLXBpLTQ6IFVzZSBMUEREUjQtMTAwIGR0c2kKCiBhcmNoL2FybS9kdHMv
+cmszMzk5LXJvY2stcGktNC11LWJvb3QuZHRzaSAgICAgfCAgICAxICsKIGFyY2gvYXJtL2R0cy9y
+azMzOTktcm9ja3BybzY0LXUtYm9vdC5kdHNpICAgICB8ICAgIDEgKwogYXJjaC9hcm0vZHRzL3Jr
+MzM5OS1zZHJhbS1scGRkcjQtMTAwLmR0c2kgICAgIHwgMTUzNyArKysrKysrKysrKysrKysKIGFy
+Y2gvYXJtL2R0cy9yazMzOTktdS1ib290LmR0c2kgICAgICAgICAgICAgICB8ICAgIDQgKwogLi4u
+L2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAvcG11X3JrMzM5OS5oICAgIHwgICA3MiArCiAuLi4v
+aW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24uaCAgfCAgIDMxICsKIC4uLi9p
+bmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX3JrMzM5OS5oICB8ICAgMjkgKy0KIGFyY2gv
+YXJtL21hY2gtcm9ja2NoaXAvcmszMzk5L3N5c2Nvbl9yazMzOTkuYyB8ICAgIDggKwogY29uZmln
+cy9yb2NrLXBpLTQtcmszMzk5X2RlZmNvbmZpZyAgICAgICAgICAgIHwgICAgMSArCiBjb25maWdz
+L3JvY2twcm82NC1yazMzOTlfZGVmY29uZmlnICAgICAgICAgICAgfCAgICAxICsKIGRyaXZlcnMv
+Y2xrL3JvY2tjaGlwL2Nsa19yazMzOTkuYyAgICAgICAgICAgICB8ICAgIDggKwogZHJpdmVycy9y
+YW0vcm9ja2NoaXAvS2NvbmZpZyAgICAgICAgICAgICAgICAgIHwgICAgNyArCiAuLi4vcmFtL3Jv
+Y2tjaGlwL3NkcmFtLXJrMzM5OS1scGRkcjQtNDAwLmluYyAgfCAxNTcwICsrKysrKysrKysrKysr
+KwogLi4uL3JhbS9yb2NrY2hpcC9zZHJhbS1yazMzOTktbHBkZHI0LTgwMC5pbmMgIHwgMTU3MCAr
+KysrKysrKysrKysrKysKIGRyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX3JrMzM5OS5jICAgICAg
+ICAgICB8IDE3MjYgKysrKysrKysrKysrKystLS0KIDE1IGZpbGVzIGNoYW5nZWQsIDYzMTcgaW5z
+ZXJ0aW9ucygrKSwgMjQ5IGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJt
+L2R0cy9yazMzOTktc2RyYW0tbHBkZHI0LTEwMC5kdHNpCiBjcmVhdGUgbW9kZSAxMDA2NDQgYXJj
+aC9hcm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9wbXVfcmszMzk5LmgKIGNyZWF0ZSBtb2Rl
+IDEwMDY0NCBkcml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbS1yazMzOTktbHBkZHI0LTQwMC5pbmMK
+IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbS1yazMzOTktbHBk
+ZHI0LTgwMC5pbmMKCi0tIAoyLjE4LjAuMzIxLmdmZmM2ZmEwZTMKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290
+QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
