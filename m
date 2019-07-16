@@ -1,224 +1,168 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH v2 0/19] drm: drop use of drmp.h in drm-misc
-Date: Tue, 16 Jul 2019 08:50:22 +0200
-Message-ID: <20190716065022.GA18452@ravnborg.org>
-References: <20190716064220.18157-1-sam@ravnborg.org>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 01/15] ram: rk3399: Fix code warnings
+Date: Tue, 16 Jul 2019 15:28:25 +0800
+Message-ID: <a3cafbb0-aed0-51ad-7f85-a2a30731279f@rock-chips.com>
+References: <20190715182110.21336-1-jagan@amarulasolutions.com>
+ <20190715182110.21336-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <20190716064220.18157-1-sam@ravnborg.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: dri-devel@lists.freedesktop.org
-Cc: Maxime Jourdan <mjourdan@baylibre.com>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, Alexandru-Cosmin Gheorghe <Alexandru-Cosmin.Gheorghe@arm.com>, Eric Anholt <eric@anholt.net>, Fabio Estevam <festevam@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>, Deepak Sharma <deepak.sharma@amd.com>, Maxime Ripard <maxime.ripard@bootlin.com>, Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>, Kevin Hilman <khilman@baylibre.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Tomi Valkeinen <tomi.valkeinen@ti.com>, NXP Linux Team <linux-imx@nxp.com>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Francisco Jerez <currojerez@riseup.net>, Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Dan Carpenter <dan.carpenter@oracle.com>, Robert Tarasov <tutankhame>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190715182110.21336-2-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Copied all recipients on the cover letter.
-As the list is long this mail may not hit the mailing lists.
-
-	Sam
-
-On Tue, Jul 16, 2019 at 08:42:01AM +0200, Sam Ravnborg wrote:
-> This patch set removes a far share of the remaining uses of drmP.h.
-> Common for all patches are that the respective files are maintained
-> in drm-misc.
-> All patches are independent.
-> 
-> Patches have all been build tested with various configs and various
-> architectures.
-> There are likely introduced a few build issues that randconfig
-> build will reveal, but for all configs I have used the build was OK.
-> 
-> This patchset does not conclude the quest to kill all uses
-> of drmP.h, but it is a major step towards the goal.
-> 
-> Please review/ack.
-> I plan to apply the patches to drm-misc, but feel free
-> to do it yourself.
-> 
-> There will be conflicts with the ongoing work on ttm, gem etc.
-> But let's deal with the conflicts when they hit us - it
-> is simple conflicts in the list of include files.
-> 
-> v2:
-> - Removed merged patches
-> - Added ack from Emil Velikov to the full series
-> - Rebased on top of drm-misc-next
-> - Hand-edited the list of Cc: as get_maintainer.pl in some
->   cases looks up too much people, due to cross kernel commits
-> 
->         Sam
-> 
-> Sam Ravnborg (19):
->       drm/meson: drop use of drmP.h
->       drm/v3d: drop use of drmP.h
->       drm/pl111: drop use of drmP.h
->       drm/zte: drop use of drmP.h
->       drm/sun4i: drop use of drmP.h
->       drm/vc4: drop use of drmP.h
->       drm/r128: drop use of drmP.h
->       drm/udl: drop use of drmP.h
->       drm/omapdrm: drop use of drmP.h
->       drm/selftests: drop use of drmP.h
->       drm/tdfx: drop use of drmP.h
->       drm/vgem: drop use of drmP.h
->       drm/i810: drop use of drmP.h
->       drm/tilcdc: drop use of drmP.h
->       drm/i2c/ch7006: drop use of drmP.h
->       drm/i2c/sil164: drop use of drmP.h
->       drm/imx: drop use of drmP.h
->       drm/rockchip: drop use of drmP.h
->       drm/mediatek: drop use of drmP.h
-> 
->  drivers/gpu/drm/i2c/ch7006_priv.h                |  1 -
->  drivers/gpu/drm/i2c/sil164_drv.c                 |  3 ++-
->  drivers/gpu/drm/i810/i810_dma.c                  | 17 +++++++++----
->  drivers/gpu/drm/i810/i810_drv.c                  |  8 +++---
->  drivers/gpu/drm/i810/i810_drv.h                  |  2 ++
->  drivers/gpu/drm/imx/dw_hdmi-imx.c                | 14 ++++++-----
->  drivers/gpu/drm/imx/imx-drm-core.c               |  8 ++++--
->  drivers/gpu/drm/imx/imx-ldb.c                    | 22 +++++++++--------
->  drivers/gpu/drm/imx/imx-tve.c                    | 10 +++++---
->  drivers/gpu/drm/imx/ipuv3-crtc.c                 |  8 ++++--
->  drivers/gpu/drm/imx/ipuv3-plane.c                |  5 ++--
->  drivers/gpu/drm/imx/parallel-display.c           |  8 +++---
->  drivers/gpu/drm/mediatek/mtk_disp_color.c        |  2 +-
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c          |  2 +-
->  drivers/gpu/drm/mediatek/mtk_disp_rdma.c         |  2 +-
->  drivers/gpu/drm/mediatek/mtk_dpi.c               | 18 ++++++++------
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c          | 10 +++++---
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c      |  2 +-
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c           | 16 +++++++-----
->  drivers/gpu/drm/mediatek/mtk_drm_fb.c            |  7 +++---
->  drivers/gpu/drm/mediatek/mtk_drm_gem.c           |  6 +++--
->  drivers/gpu/drm/mediatek/mtk_drm_plane.c         |  2 +-
->  drivers/gpu/drm/mediatek/mtk_dsi.c               | 14 ++++++-----
->  drivers/gpu/drm/mediatek/mtk_hdmi.c              | 14 +++++++----
->  drivers/gpu/drm/meson/meson_crtc.c               | 16 ++++++------
->  drivers/gpu/drm/meson/meson_drv.c                | 27 +++++++++------------
->  drivers/gpu/drm/meson/meson_drv.h                | 11 ++++++---
->  drivers/gpu/drm/meson/meson_dw_hdmi.c            | 19 ++++++++-------
->  drivers/gpu/drm/meson/meson_overlay.c            | 13 ++++------
->  drivers/gpu/drm/meson/meson_plane.c              | 16 +++++-------
->  drivers/gpu/drm/meson/meson_registers.h          |  2 ++
->  drivers/gpu/drm/meson/meson_vclk.c               |  7 +++---
->  drivers/gpu/drm/meson/meson_vclk.h               |  4 +++
->  drivers/gpu/drm/meson/meson_venc.c               | 10 ++++----
->  drivers/gpu/drm/meson/meson_venc.h               |  2 ++
->  drivers/gpu/drm/meson/meson_venc_cvbs.c          | 11 ++++-----
->  drivers/gpu/drm/meson/meson_viu.c                |  7 ++----
->  drivers/gpu/drm/meson/meson_vpp.c                |  7 +++---
->  drivers/gpu/drm/meson/meson_vpp.h                |  3 +++
->  drivers/gpu/drm/omapdrm/omap_crtc.c              |  4 ++-
->  drivers/gpu/drm/omapdrm/omap_debugfs.c           |  2 ++
->  drivers/gpu/drm/omapdrm/omap_drv.c               | 10 ++++++--
->  drivers/gpu/drm/omapdrm/omap_drv.h               |  5 ++--
->  drivers/gpu/drm/omapdrm/omap_fb.c                |  4 +--
->  drivers/gpu/drm/omapdrm/omap_fbdev.c             |  2 ++
->  drivers/gpu/drm/omapdrm/omap_gem.c               |  2 ++
->  drivers/gpu/drm/omapdrm/omap_gem_dmabuf.c        |  3 +++
->  drivers/gpu/drm/omapdrm/omap_irq.c               |  2 ++
->  drivers/gpu/drm/pl111/pl111_debugfs.c            |  4 ++-
->  drivers/gpu/drm/pl111/pl111_display.c            |  6 +++--
->  drivers/gpu/drm/pl111/pl111_drm.h                | 11 +++++----
->  drivers/gpu/drm/pl111/pl111_drv.c                |  9 ++++---
->  drivers/gpu/drm/pl111/pl111_nomadik.h            |  3 ++-
->  drivers/gpu/drm/pl111/pl111_versatile.c          |  9 ++++---
->  drivers/gpu/drm/pl111/pl111_versatile.h          |  3 +++
->  drivers/gpu/drm/r128/r128_ioc32.c                |  3 ++-
->  drivers/gpu/drm/r128/r128_irq.c                  |  5 +++-
->  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c  | 10 +++-----
->  drivers/gpu/drm/rockchip/cdn-dp-core.c           | 17 ++++++-------
->  drivers/gpu/drm/rockchip/cdn-dp-core.h           |  2 +-
->  drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c  |  9 ++++---
->  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c      |  5 ++--
->  drivers/gpu/drm/rockchip/inno_hdmi.c             |  3 +--
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.c      | 12 +++++----
->  drivers/gpu/drm/rockchip/rockchip_drm_fb.c       |  3 ++-
->  drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c    |  2 +-
->  drivers/gpu/drm/rockchip/rockchip_drm_gem.c      |  8 +++---
->  drivers/gpu/drm/rockchip/rockchip_drm_psr.c      |  1 -
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.c      | 31 ++++++++++++------------
->  drivers/gpu/drm/rockchip/rockchip_lvds.c         | 16 ++++++------
->  drivers/gpu/drm/rockchip/rockchip_rgb.c          |  9 +++----
->  drivers/gpu/drm/rockchip/rockchip_vop_reg.c      | 11 ++++++---
->  drivers/gpu/drm/selftests/test-drm_framebuffer.c |  7 +++++-
->  drivers/gpu/drm/sun4i/sun4i_backend.c            | 16 ++++++------
->  drivers/gpu/drm/sun4i/sun4i_crtc.c               | 13 +++++-----
->  drivers/gpu/drm/sun4i/sun4i_drv.c                |  5 +++-
->  drivers/gpu/drm/sun4i/sun4i_framebuffer.c        |  1 -
->  drivers/gpu/drm/sun4i/sun4i_frontend.c           | 10 +++++---
->  drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c           | 17 +++++++------
->  drivers/gpu/drm/sun4i/sun4i_layer.c              |  3 +--
->  drivers/gpu/drm/sun4i/sun4i_lvds.c               |  2 +-
->  drivers/gpu/drm/sun4i/sun4i_rgb.c                |  2 +-
->  drivers/gpu/drm/sun4i/sun4i_tcon.c               | 20 ++++++++-------
->  drivers/gpu/drm/sun4i/sun4i_tv.c                 |  4 ++-
->  drivers/gpu/drm/sun4i/sun6i_mipi_dsi.c           |  9 ++++---
->  drivers/gpu/drm/sun4i/sun8i_csc.c                |  2 +-
->  drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c            |  3 +--
->  drivers/gpu/drm/sun4i/sun8i_mixer.c              | 14 +++++------
->  drivers/gpu/drm/sun4i/sun8i_tcon_top.c           |  6 ++---
->  drivers/gpu/drm/sun4i/sun8i_ui_layer.c           |  2 +-
->  drivers/gpu/drm/sun4i/sun8i_vi_layer.c           |  1 -
->  drivers/gpu/drm/tdfx/tdfx_drv.c                  | 11 ++++++---
->  drivers/gpu/drm/tilcdc/tilcdc_crtc.c             | 18 ++++++++------
->  drivers/gpu/drm/tilcdc/tilcdc_drv.c              | 19 ++++++++++++---
->  drivers/gpu/drm/tilcdc/tilcdc_drv.h              | 31 +++++++++++++-----------
->  drivers/gpu/drm/tilcdc/tilcdc_external.c         |  1 +
->  drivers/gpu/drm/tilcdc/tilcdc_panel.c            | 11 ++++++---
->  drivers/gpu/drm/tilcdc/tilcdc_plane.c            |  4 +--
->  drivers/gpu/drm/tilcdc/tilcdc_tfp410.c           |  8 +++---
->  drivers/gpu/drm/udl/udl_connector.c              |  4 +--
->  drivers/gpu/drm/udl/udl_connector.h              |  2 ++
->  drivers/gpu/drm/udl/udl_dmabuf.c                 |  6 +++--
->  drivers/gpu/drm/udl/udl_drv.c                    |  7 +++++-
->  drivers/gpu/drm/udl/udl_drv.h                    |  8 +++++-
->  drivers/gpu/drm/udl/udl_encoder.c                |  6 ++---
->  drivers/gpu/drm/udl/udl_fb.c                     | 15 ++++++------
->  drivers/gpu/drm/udl/udl_gem.c                    |  9 ++++---
->  drivers/gpu/drm/udl/udl_main.c                   |  6 +++--
->  drivers/gpu/drm/udl/udl_modeset.c                |  6 ++---
->  drivers/gpu/drm/udl/udl_transfer.c               |  4 ---
->  drivers/gpu/drm/v3d/v3d_debugfs.c                |  3 ++-
->  drivers/gpu/drm/v3d/v3d_drv.c                    |  5 +++-
->  drivers/gpu/drm/v3d/v3d_drv.h                    | 13 ++++++++--
->  drivers/gpu/drm/v3d/v3d_gem.c                    | 12 +++++----
->  drivers/gpu/drm/v3d/v3d_irq.c                    |  2 ++
->  drivers/gpu/drm/vc4/vc4_crtc.c                   | 11 ++++++---
->  drivers/gpu/drm/vc4/vc4_debugfs.c                |  1 -
->  drivers/gpu/drm/vc4/vc4_drv.c                    |  7 +++++-
->  drivers/gpu/drm/vc4/vc4_drv.h                    | 17 +++++++++----
->  drivers/gpu/drm/vc4/vc4_dsi.c                    | 17 +++++++------
->  drivers/gpu/drm/vc4/vc4_gem.c                    |  2 ++
->  drivers/gpu/drm/vc4/vc4_hvs.c                    |  5 +++-
->  drivers/gpu/drm/vc4/vc4_kms.c                    |  4 ++-
->  drivers/gpu/drm/vc4/vc4_plane.c                  |  6 +++--
->  drivers/gpu/drm/vc4/vc4_txp.c                    | 14 ++++++-----
->  drivers/gpu/drm/vc4/vc4_v3d.c                    |  4 +++
->  drivers/gpu/drm/vgem/vgem_drv.c                  | 11 +++++++--
->  drivers/gpu/drm/vgem/vgem_drv.h                  |  1 -
->  drivers/gpu/drm/vgem/vgem_fence.c                |  2 ++
->  drivers/gpu/drm/zte/zx_drm_drv.c                 |  3 ++-
->  drivers/gpu/drm/zte/zx_hdmi.c                    |  2 +-
->  drivers/gpu/drm/zte/zx_plane.c                   |  2 +-
->  drivers/gpu/drm/zte/zx_tvenc.c                   |  4 ++-
->  drivers/gpu/drm/zte/zx_vga.c                     |  4 ++-
->  drivers/gpu/drm/zte/zx_vou.c                     |  5 +++-
->  include/linux/soc/amlogic/meson-canvas.h         |  1 +
->  136 files changed, 626 insertions(+), 427 deletions(-)
-> 
-> 
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+Ck9uIDIwMTkvNy8xNiDkuIrljYgyOjIwLCBKYWdhbiBUZWtpIHdyb3RlOgo+IEZpeCBjaGVja3Bh
+dGNoIHdhcm5pbmlncyBvbiBzZHJhbV9yazMzOTkuYyBsaWtlCj4gLSBBdm9pZCBDYW1lbENhc2UK
+PiAtIFVubmVjZXNzYXJ5IHBhcmVudGhlc2VzCj4gLSBBbGlnbm1lbnQgc2hvdWxkIG1hdGNoIG9w
+ZW4gcGFyZW50aGVzaXMKPiAtIG11bHRpcGxlIGJsYW5rIGxpbmVzCj4gLSBtaXNzcGVsbGVkCj4g
+LSBzcGFjZXMgcHJlZmVycmVkIGFyb3VuZCB0aGF0ICc+PicKPgo+IFNpZ25lZC1vZmYtYnk6IEph
+Z2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgoKUmV2aWV3ZWQtYnk6IEtldmVy
+IFlhbmcgPEtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+CgpUaGFua3MsCiDCoC0gS2V2ZXIKPiAt
+LS0KPiAgIGRyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX3JrMzM5OS5jIHwgNDggKysrKysrKysr
+KysrKystLS0tLS0tLS0tLS0tLS0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAyNCBpbnNlcnRpb25zKCsp
+LCAyNCBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3JhbS9yb2NrY2hpcC9z
+ZHJhbV9yazMzOTkuYyBiL2RyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX3JrMzM5OS5jCj4gaW5k
+ZXggNTI1MTg2NTZjNC4uNTQxZTRhNGIxZSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3JhbS9yb2Nr
+Y2hpcC9zZHJhbV9yazMzOTkuYwo+ICsrKyBiL2RyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX3Jr
+MzM5OS5jCj4gQEAgLTQ3LDcgKzQ3LDcgQEAgc3RydWN0IGRyYW1faW5mbyB7Cj4gICAjZGVmaW5l
+IFBSRVNFVF9HUElPMF9IT0xEKG4pCSgoMHgxIDw8ICg3ICsgMTYpKSB8ICgobikgPDwgNykpCj4g
+ICAjZGVmaW5lIFBSRVNFVF9HUElPMV9IT0xEKG4pCSgoMHgxIDw8ICg4ICsgMTYpKSB8ICgobikg
+PDwgOCkpCj4gICAKPiAtI2RlZmluZSBQSFlfRFJWX09EVF9IaV9aCTB4MAo+ICsjZGVmaW5lIFBI
+WV9EUlZfT0RUX0hJX1oJMHgwCj4gICAjZGVmaW5lIFBIWV9EUlZfT0RUXzI0MAkJMHgxCj4gICAj
+ZGVmaW5lIFBIWV9EUlZfT0RUXzEyMAkJMHg4Cj4gICAjZGVmaW5lIFBIWV9EUlZfT0RUXzgwCQkw
+eDkKPiBAQCAtMTUwLDcgKzE1MCw3IEBAIHN0YXRpYyB2b2lkIHNldF9tZW1vcnlfbWFwKGNvbnN0
+IHN0cnVjdCBjaGFuX2luZm8gKmNoYW4sIHUzMiBjaGFubmVsLAo+ICAgCQkJKCgxNiAtIHJvdykg
+PDwgMjQpKTsKPiAgIAkvKiBQSV80MSBQSV9DU19NQVA6Ulc6MjQ6NCAqLwo+ICAgCWNscnNldGJp
+dHNfbGUzMigmZGVuYWxpX3BpWzQxXSwgMHhmIDw8IDI0LCBjc19tYXAgPDwgMjQpOwo+IC0JaWYg
+KChzZHJhbV9jaC0+cmFuayA9PSAxKSAmJiAoc2RyYW1fcGFyYW1zLT5iYXNlLmRyYW10eXBlID09
+IEREUjMpKQo+ICsJaWYgKHNkcmFtX2NoLT5yYW5rID09IDEgJiYgc2RyYW1fcGFyYW1zLT5iYXNl
+LmRyYW10eXBlID09IEREUjMpCj4gICAJCXdyaXRlbCgweDJFQzdGRkZGLCAmZGVuYWxpX3BpWzM0
+XSk7Cj4gICB9Cj4gICAKPiBAQCAtMTY2LDEwICsxNjYsMTAgQEAgc3RhdGljIHZvaWQgc2V0X2Rz
+X29kdChjb25zdCBzdHJ1Y3QgY2hhbl9pbmZvICpjaGFuLAo+ICAgCXUzMiByZWdfdmFsdWU7Cj4g
+ICAKPiAgIAlpZiAoc2RyYW1fcGFyYW1zLT5iYXNlLmRyYW10eXBlID09IExQRERSNCkgewo+IC0J
+CXRzZWxfcmRfc2VsZWN0X3AgPSBQSFlfRFJWX09EVF9IaV9aOwo+ICsJCXRzZWxfcmRfc2VsZWN0
+X3AgPSBQSFlfRFJWX09EVF9ISV9aOwo+ICAgCQl0c2VsX3dyX3NlbGVjdF9wID0gUEhZX0RSVl9P
+RFRfNDA7Cj4gICAJCWNhX3RzZWxfd3Jfc2VsZWN0X3AgPSBQSFlfRFJWX09EVF80MDsKPiAtCQl0
+c2VsX2lkbGVfc2VsZWN0X3AgPSBQSFlfRFJWX09EVF9IaV9aOwo+ICsJCXRzZWxfaWRsZV9zZWxl
+Y3RfcCA9IFBIWV9EUlZfT0RUX0hJX1o7Cj4gICAKPiAgIAkJdHNlbF9yZF9zZWxlY3RfbiA9IFBI
+WV9EUlZfT0RUXzI0MDsKPiAgIAkJdHNlbF93cl9zZWxlY3RfbiA9IFBIWV9EUlZfT0RUXzQwOwo+
+IEBAIC0xODEsMTAgKzE4MSwxMCBAQCBzdGF0aWMgdm9pZCBzZXRfZHNfb2R0KGNvbnN0IHN0cnVj
+dCBjaGFuX2luZm8gKmNoYW4sCj4gICAJCWNhX3RzZWxfd3Jfc2VsZWN0X3AgPSBQSFlfRFJWX09E
+VF80ODsKPiAgIAkJdHNlbF9pZGxlX3NlbGVjdF9wID0gUEhZX0RSVl9PRFRfMjQwOwo+ICAgCj4g
+LQkJdHNlbF9yZF9zZWxlY3RfbiA9IFBIWV9EUlZfT0RUX0hpX1o7Cj4gKwkJdHNlbF9yZF9zZWxl
+Y3RfbiA9IFBIWV9EUlZfT0RUX0hJX1o7Cj4gICAJCXRzZWxfd3Jfc2VsZWN0X24gPSBQSFlfRFJW
+X09EVF8zNF8zOwo+ICAgCQljYV90c2VsX3dyX3NlbGVjdF9uID0gUEhZX0RSVl9PRFRfNDg7Cj4g
+LQkJdHNlbF9pZGxlX3NlbGVjdF9uID0gUEhZX0RSVl9PRFRfSGlfWjsKPiArCQl0c2VsX2lkbGVf
+c2VsZWN0X24gPSBQSFlfRFJWX09EVF9ISV9aOwo+ICAgCX0gZWxzZSB7Cj4gICAJCXRzZWxfcmRf
+c2VsZWN0X3AgPSBQSFlfRFJWX09EVF8yNDA7Cj4gICAJCXRzZWxfd3Jfc2VsZWN0X3AgPSBQSFlf
+RFJWX09EVF8zNF8zOwo+IEBAIC0yOTQsNyArMjk0LDcgQEAgc3RhdGljIHZvaWQgc2V0X2RzX29k
+dChjb25zdCBzdHJ1Y3QgY2hhbl9pbmZvICpjaGFuLAo+ICAgfQo+ICAgCj4gICBzdGF0aWMgaW50
+IHBoeV9pb19jb25maWcoY29uc3Qgc3RydWN0IGNoYW5faW5mbyAqY2hhbiwKPiAtCQkJICBjb25z
+dCBzdHJ1Y3QgcmszMzk5X3NkcmFtX3BhcmFtcyAqc2RyYW1fcGFyYW1zKQo+ICsJCQkgY29uc3Qg
+c3RydWN0IHJrMzM5OV9zZHJhbV9wYXJhbXMgKnNkcmFtX3BhcmFtcykKPiAgIHsKPiAgIAl1MzIg
+KmRlbmFsaV9waHkgPSBjaGFuLT5wdWJsLT5kZW5hbGlfcGh5Owo+ICAgCXUzMiB2cmVmX21vZGVf
+ZHEsIHZyZWZfdmFsdWVfZHEsIHZyZWZfbW9kZV9hYywgdnJlZl92YWx1ZV9hYzsKPiBAQCAtNDIz
+LDcgKzQyMyw2IEBAIHN0YXRpYyBpbnQgcGh5X2lvX2NvbmZpZyhjb25zdCBzdHJ1Y3QgY2hhbl9p
+bmZvICpjaGFuLAo+ICAgCS8qIFBIWV85MzkgUEhZX1BBRF9DU19EUklWRSAqLwo+ICAgCWNscnNl
+dGJpdHNfbGUzMigmZGVuYWxpX3BoeVs5MzldLCAweDcgPDwgMTQsIG1vZGVfc2VsIDw8IDE0KTsK
+PiAgIAo+IC0KPiAgIAkvKiBzcGVlZCBzZXR0aW5nICovCj4gICAJaWYgKHNkcmFtX3BhcmFtcy0+
+YmFzZS5kZHJfZnJlcSA8IDQwMCkKPiAgIAkJc3BlZWQgPSAweDA7Cj4gQEAgLTQ5Miw3ICs0OTEs
+NyBAQCBzdGF0aWMgaW50IHBjdGxfY2ZnKGNvbnN0IHN0cnVjdCBjaGFuX2luZm8gKmNoYW4sIHUz
+MiBjaGFubmVsLAo+ICAgCXNldGJpdHNfbGUzMigmZGVuYWxpX3BpWzBdLCBTVEFSVCk7Cj4gICAJ
+c2V0Yml0c19sZTMyKCZkZW5hbGlfY3RsWzBdLCBTVEFSVCk7Cj4gICAKPiAtCS8qIFdhdGluZyBm
+b3IgcGh5IERMTCBsb2NrICovCj4gKwkvKiBXYWl0aW5nIGZvciBwaHkgRExMIGxvY2sgKi8KPiAg
+IAl3aGlsZSAoMSkgewo+ICAgCQl0bXAgPSByZWFkbCgmZGVuYWxpX3BoeVs5MjBdKTsKPiAgIAkJ
+dG1wMSA9IHJlYWRsKCZkZW5hbGlfcGh5WzkyMV0pOwo+IEBAIC01NDcsMTIgKzU0NiwxMiBAQCBz
+dGF0aWMgaW50IHBjdGxfY2ZnKGNvbnN0IHN0cnVjdCBjaGFuX2luZm8gKmNoYW4sIHUzMiBjaGFu
+bmVsLAo+ICAgCS8qIFBIWV9ETExfUlNUX0VOICovCj4gICAJY2xyc2V0Yml0c19sZTMyKCZkZW5h
+bGlfcGh5Wzk1N10sIDB4MyA8PCAyNCwgMHgyIDw8IDI0KTsKPiAgIAo+IC0JLyogV2F0aW5nIGZv
+ciBQSFkgYW5kIERSQU0gaW5pdCBjb21wbGV0ZSAqLwo+ICsJLyogV2FpdGluZyBmb3IgUEhZIGFu
+ZCBEUkFNIGluaXQgY29tcGxldGUgKi8KPiAgIAl0bXAgPSBnZXRfdGltZXIoMCk7Cj4gICAJZG8g
+ewo+ICAgCQlpZiAoZ2V0X3RpbWVyKHRtcCkgPiB0aW1lb3V0X21zKSB7Cj4gICAJCQlwcl9lcnIo
+IkRSQU0gKCVzKTogcGh5IGZhaWxlZCB0byBsb2NrIHdpdGhpbiAgJWxkIG1zXG4iLAo+IC0JCQkg
+ICAgICBfX2Z1bmNfXywgdGltZW91dF9tcyk7Cj4gKwkJCSAgICAgICBfX2Z1bmNfXywgdGltZW91
+dF9tcyk7Cj4gICAJCQlyZXR1cm4gLUVUSU1FOwo+ICAgCQl9Cj4gICAJfSB3aGlsZSAoIShyZWFk
+bCgmZGVuYWxpX2N0bFsyMDNdKSAmICgxIDw8IDMpKSk7Cj4gQEAgLTU2OSw3ICs1NjgsNyBAQCBz
+dGF0aWMgdm9pZCBzZWxlY3RfcGVyX2NzX3RyYWluaW5nX2luZGV4KGNvbnN0IHN0cnVjdCBjaGFu
+X2luZm8gKmNoYW4sCj4gICAJdTMyICpkZW5hbGlfcGh5ID0gY2hhbi0+cHVibC0+ZGVuYWxpX3Bo
+eTsKPiAgIAo+ICAgCS8qIFBIWV84NCBQSFlfUEVSX0NTX1RSQUlOSU5HX0VOXzAgMWJpdCBvZmZz
+ZXRfMTYgKi8KPiAtCWlmICgocmVhZGwoJmRlbmFsaV9waHlbODRdKT4+MTYpICYgMSkgewo+ICsJ
+aWYgKChyZWFkbCgmZGVuYWxpX3BoeVs4NF0pID4+IDE2KSAmIDEpIHsKPiAgIAkJLyoKPiAgIAkJ
+ICogUEhZXzgvMTM2LzI2NC8zOTIKPiAgIAkJICogcGh5X3Blcl9jc190cmFpbmluZ19pbmRleF9Y
+IDFiaXQgb2Zmc2V0XzI0Cj4gQEAgLTY0Niw3ICs2NDUsNyBAQCBzdGF0aWMgaW50IGRhdGFfdHJh
+aW5pbmdfY2EoY29uc3Qgc3RydWN0IGNoYW5faW5mbyAqY2hhbiwgdTMyIGNoYW5uZWwsCj4gICAJ
+CQlpZiAoKCgodG1wID4+IDExKSAmIDB4MSkgPT0gMHgxKSAmJgo+ICAgCQkJICAgICgoKHRtcCA+
+PiAxMykgJiAweDEpID09IDB4MSkgJiYKPiAgIAkJCSAgICAoKCh0bXAgPj4gNSkgJiAweDEpID09
+IDB4MCkgJiYKPiAtCQkJICAgIChvYnNfZXJyID09IDApKQo+ICsJCQkgICAgb2JzX2VyciA9PSAw
+KQo+ICAgCQkJCWJyZWFrOwo+ICAgCQkJZWxzZSBpZiAoKCgodG1wID4+IDUpICYgMHgxKSA9PSAw
+eDEpIHx8Cj4gICAJCQkJIChvYnNfZXJyID09IDEpKQo+IEBAIC03MDAsNyArNjk5LDcgQEAgc3Rh
+dGljIGludCBkYXRhX3RyYWluaW5nX3dsKGNvbnN0IHN0cnVjdCBjaGFuX2luZm8gKmNoYW4sIHUz
+MiBjaGFubmVsLAo+ICAgCQkJaWYgKCgoKHRtcCA+PiAxMCkgJiAweDEpID09IDB4MSkgJiYKPiAg
+IAkJCSAgICAoKCh0bXAgPj4gMTMpICYgMHgxKSA9PSAweDEpICYmCj4gICAJCQkgICAgKCgodG1w
+ID4+IDQpICYgMHgxKSA9PSAweDApICYmCj4gLQkJCSAgICAob2JzX2VyciA9PSAwKSkKPiArCQkJ
+ICAgIG9ic19lcnIgPT0gMCkKPiAgIAkJCQlicmVhazsKPiAgIAkJCWVsc2UgaWYgKCgoKHRtcCA+
+PiA0KSAmIDB4MSkgPT0gMHgxKSB8fAo+ICAgCQkJCSAob2JzX2VyciA9PSAxKSkKPiBAQCAtNzU5
+LDcgKzc1OCw3IEBAIHN0YXRpYyBpbnQgZGF0YV90cmFpbmluZ19yZyhjb25zdCBzdHJ1Y3QgY2hh
+bl9pbmZvICpjaGFuLCB1MzIgY2hhbm5lbCwKPiAgIAkJCWlmICgoKCh0bXAgPj4gOSkgJiAweDEp
+ID09IDB4MSkgJiYKPiAgIAkJCSAgICAoKCh0bXAgPj4gMTMpICYgMHgxKSA9PSAweDEpICYmCj4g
+ICAJCQkgICAgKCgodG1wID4+IDMpICYgMHgxKSA9PSAweDApICYmCj4gLQkJCSAgICAob2JzX2Vy
+ciA9PSAwKSkKPiArCQkJICAgIG9ic19lcnIgPT0gMCkKPiAgIAkJCQlicmVhazsKPiAgIAkJCWVs
+c2UgaWYgKCgoKHRtcCA+PiAzKSAmIDB4MSkgPT0gMHgxKSB8fAo+ICAgCQkJCSAob2JzX2VyciA9
+PSAxKSkKPiBAQCAtOTU1LDggKzk1NCwxMCBAQCBzdGF0aWMgdm9pZCBkcmFtX2FsbF9jb25maWco
+c3RydWN0IGRyYW1faW5mbyAqZHJhbSwKPiAgIAkJc3lzX3JlZyB8PSAoaW5mby0+cmFuayAtIDEp
+IDw8IFNZU19SRUdfUkFOS19TSElGVChjaGFubmVsKTsKPiAgIAkJc3lzX3JlZyB8PSAoaW5mby0+
+Y29sIC0gOSkgPDwgU1lTX1JFR19DT0xfU0hJRlQoY2hhbm5lbCk7Cj4gICAJCXN5c19yZWcgfD0g
+aW5mby0+YmsgPT0gMyA/IDAgOiAxIDw8IFNZU19SRUdfQktfU0hJRlQoY2hhbm5lbCk7Cj4gLQkJ
+c3lzX3JlZyB8PSAoaW5mby0+Y3MwX3JvdyAtIDEzKSA8PCBTWVNfUkVHX0NTMF9ST1dfU0hJRlQo
+Y2hhbm5lbCk7Cj4gLQkJc3lzX3JlZyB8PSAoaW5mby0+Y3MxX3JvdyAtIDEzKSA8PCBTWVNfUkVH
+X0NTMV9ST1dfU0hJRlQoY2hhbm5lbCk7Cj4gKwkJc3lzX3JlZyB8PSAoaW5mby0+Y3MwX3JvdyAt
+IDEzKSA8PAo+ICsJCQkgICAgU1lTX1JFR19DUzBfUk9XX1NISUZUKGNoYW5uZWwpOwo+ICsJCXN5
+c19yZWcgfD0gKGluZm8tPmNzMV9yb3cgLSAxMykgPDwKPiArCQkJICAgIFNZU19SRUdfQ1MxX1JP
+V19TSElGVChjaGFubmVsKTsKPiAgIAkJc3lzX3JlZyB8PSAoMiA+PiBpbmZvLT5idykgPDwgU1lT
+X1JFR19CV19TSElGVChjaGFubmVsKTsKPiAgIAkJc3lzX3JlZyB8PSAoMiA+PiBpbmZvLT5kYncp
+IDw8IFNZU19SRUdfREJXX1NISUZUKGNoYW5uZWwpOwo+ICAgCj4gQEAgLTk5MSw3ICs5OTIsNyBA
+QCBzdGF0aWMgdm9pZCBkcmFtX2FsbF9jb25maWcoc3RydWN0IGRyYW1faW5mbyAqZHJhbSwKPiAg
+IH0KPiAgIAo+ICAgc3RhdGljIGludCBzd2l0Y2hfdG9fcGh5X2luZGV4MShzdHJ1Y3QgZHJhbV9p
+bmZvICpkcmFtLAo+IC0JCQkJIGNvbnN0IHN0cnVjdCByazMzOTlfc2RyYW1fcGFyYW1zICpzZHJh
+bV9wYXJhbXMpCj4gKwkJCQljb25zdCBzdHJ1Y3QgcmszMzk5X3NkcmFtX3BhcmFtcyAqc2RyYW1f
+cGFyYW1zKQo+ICAgewo+ICAgCXUzMiBjaGFubmVsOwo+ICAgCXUzMiAqZGVuYWxpX3BoeTsKPiBA
+QCAtMTAyNiw3ICsxMDI3LDcgQEAgc3RhdGljIGludCBzd2l0Y2hfdG9fcGh5X2luZGV4MShzdHJ1
+Y3QgZHJhbV9pbmZvICpkcmFtLAo+ICAgCQlkZW5hbGlfcGh5ID0gZHJhbS0+Y2hhbltjaGFubmVs
+XS5wdWJsLT5kZW5hbGlfcGh5Owo+ICAgCQljbHJzZXRiaXRzX2xlMzIoJmRlbmFsaV9waHlbODk2
+XSwgKDB4MyA8PCA4KSB8IDEsIDEgPDwgOCk7Cj4gICAJCXJldCA9IGRhdGFfdHJhaW5pbmcoJmRy
+YW0tPmNoYW5bY2hhbm5lbF0sIGNoYW5uZWwsCj4gLQkJCQkgIHNkcmFtX3BhcmFtcywgUElfRlVM
+TF9UUkFJTklORyk7Cj4gKwkJCQkgICAgc2RyYW1fcGFyYW1zLCBQSV9GVUxMX1RSQUlOSU5HKTsK
+PiAgIAkJaWYgKHJldCkgewo+ICAgCQkJZGVidWcoImluZGV4MSB0cmFpbmluZyBmYWlsZWRcbiIp
+Owo+ICAgCQkJcmV0dXJuIHJldDsKPiBAQCAtMTExNiw4ICsxMTE3LDggQEAgc3RhdGljIGludCBj
+b252X29mX3BsYXRkYXRhKHN0cnVjdCB1ZGV2aWNlICpkZXYpCj4gICAJaW50IHJldDsKPiAgIAo+
+ICAgCXJldCA9IHJlZ21hcF9pbml0X21lbV9wbGF0ZGF0YShkZXYsIGR0cGxhdC0+cmVnLAo+IC0J
+CQlBUlJBWV9TSVpFKGR0cGxhdC0+cmVnKSAvIDIsCj4gLQkJCSZwbGF0LT5tYXApOwo+ICsJCQkJ
+ICAgICAgIEFSUkFZX1NJWkUoZHRwbGF0LT5yZWcpIC8gMiwKPiArCQkJCSAgICAgICAmcGxhdC0+
+bWFwKTsKPiAgIAlpZiAocmV0KQo+ICAgCQlyZXR1cm4gcmV0Owo+ICAgCj4gQEAgLTExOTksOCAr
+MTIwMCw4IEBAIHN0YXRpYyBpbnQgcmszMzk5X2RtY19wcm9iZShzdHJ1Y3QgdWRldmljZSAqZGV2
+KQo+ICAgCXByaXYtPnBtdWdyZiA9IHN5c2Nvbl9nZXRfZmlyc3RfcmFuZ2UoUk9DS0NISVBfU1lT
+Q09OX1BNVUdSRik7Cj4gICAJZGVidWcoIiVzOiBwbXVncmY9JXBcbiIsIF9fZnVuY19fLCBwcml2
+LT5wbXVncmYpOwo+ICAgCXByaXYtPmluZm8uYmFzZSA9IENPTkZJR19TWVNfU0RSQU1fQkFTRTsK
+PiAtCXByaXYtPmluZm8uc2l6ZSA9IHJvY2tjaGlwX3NkcmFtX3NpemUoCj4gLQkJCShwaHlzX2Fk
+ZHJfdCkmcHJpdi0+cG11Z3JmLT5vc19yZWcyKTsKPiArCXByaXYtPmluZm8uc2l6ZSA9Cj4gKwkJ
+cm9ja2NoaXBfc2RyYW1fc2l6ZSgocGh5c19hZGRyX3QpJnByaXYtPnBtdWdyZi0+b3NfcmVnMik7
+Cj4gICAjZW5kaWYKPiAgIAlyZXR1cm4gMDsKPiAgIH0KPiBAQCAtMTIxOCw3ICsxMjE5LDYgQEAg
+c3RhdGljIHN0cnVjdCByYW1fb3BzIHJrMzM5OV9kbWNfb3BzID0gewo+ICAgCS5nZXRfaW5mbyA9
+IHJrMzM5OV9kbWNfZ2V0X2luZm8sCj4gICB9Owo+ICAgCj4gLQo+ICAgc3RhdGljIGNvbnN0IHN0
+cnVjdCB1ZGV2aWNlX2lkIHJrMzM5OV9kbWNfaWRzW10gPSB7Cj4gICAJeyAuY29tcGF0aWJsZSA9
+ICJyb2NrY2hpcCxyazMzOTktZG1jIiB9LAo+ICAgCXsgfQoKCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
