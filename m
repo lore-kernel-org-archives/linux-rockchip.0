@@ -1,8 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 46/57] rockchip: dts: rk3399: Add u-boot,
- dm-pre-reloc for pmu
-Date: Tue, 16 Jul 2019 17:27:34 +0530
-Message-ID: <20190716115745.12585-47-jagan@amarulasolutions.com>
+Subject: [PATCH v3 47/57] clk: rockchip: rk3399: Set 50MHz ddr clock
+Date: Tue, 16 Jul 2019 17:27:35 +0530
+Message-ID: <20190716115745.12585-48-jagan@amarulasolutions.com>
 References: <20190716115745.12585-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,29 +21,28 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add u-boot,dm-pre-reloc property for pmu in rk3399-u-boot.dtsi
-so-that SPL can access pmu.
+Add support for setting 50MHz ddr clock.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- arch/arm/dts/rk3399-u-boot.dtsi | 4 ++++
+ drivers/clk/rockchip/clk_rk3399.c | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/arch/arm/dts/rk3399-u-boot.dtsi b/arch/arm/dts/rk3399-u-boot.dtsi
-index fcfce9ae02..2738a3889e 100644
---- a/arch/arm/dts/rk3399-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399-u-boot.dtsi
-@@ -3,6 +3,10 @@
-  * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-  */
+diff --git a/drivers/clk/rockchip/clk_rk3399.c b/drivers/clk/rockchip/clk_rk3399.c
+index 5d1ad94e85..1de21c9f3e 100644
+--- a/drivers/clk/rockchip/clk_rk3399.c
++++ b/drivers/clk/rockchip/clk_rk3399.c
+@@ -827,6 +827,10 @@ static ulong rk3399_ddr_set_clk(struct rk3399_cru *cru,
  
-+&pmu {
-+	u-boot,dm-pre-reloc;
-+};
-+
- &sdmmc {
- 	u-boot,dm-pre-reloc;
- };
+ 	/*  clk_ddrc == DPLL = 24MHz / refdiv * fbdiv / postdiv1 / postdiv2 */
+ 	switch (set_rate) {
++	case 50 * MHz:
++		dpll_cfg = (struct pll_div)
++		{.refdiv = 1, .fbdiv = 12, .postdiv1 = 3, .postdiv2 = 2};
++		break;
+ 	case 200 * MHz:
+ 		dpll_cfg = (struct pll_div)
+ 		{.refdiv = 1, .fbdiv = 50, .postdiv1 = 6, .postdiv2 = 1};
 -- 
 2.18.0.321.gffc6fa0e3
