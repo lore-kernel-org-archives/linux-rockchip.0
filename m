@@ -1,16 +1,11 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 57/57] rockchip: dts: rk3399: rock-pi-4: Use LPDDR4-100
- dtsi
-Date: Tue, 16 Jul 2019 21:22:23 +0800
-Message-ID: <6cde8764-ca5d-f256-333c-44d58080e6c7@rock-chips.com>
-References: <20190716115745.12585-1-jagan@amarulasolutions.com>
- <20190716115745.12585-58-jagan@amarulasolutions.com>
+From: "Eric Auer, EMW-MT" <auere-OIIjM32accxuPis3aSs6BxvVK+yQ3ZXh@public.gmane.org>
+Subject: RK3288 fast SPI DTS setting patches
+Date: Tue, 16 Jul 2019 15:34:11 +0200
+Message-ID: <20190716133056.M642@hochschule-trier.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190716115745.12585-58-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,27 +15,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMTkvNy8xNiDkuIvljYg3OjU3LCBKYWdhbiBUZWtpIHdyb3RlOgo+IFVzZSBMUEREUjQt
-MTAwIHNkcmFtIHRpbWluZ3MgZHRzaSBmb3IgUm9ja1BJLTQgYm9hcmQuCj4KPiBBbGwgdGhlc2Ug
-dGltaW5ncyBhcmUgcHJvY2Vzc2VkIGR1cmluZyBUUEwgc3RhZ2Ugb2Ygcm9jay1waS00IGJvYXJk
-LAo+IGJvb3RjaGFpbi4gVGhpcyBtYWtlIFRQTCB3b3VsZCByZXBsYWNlIHJvY2tjaGlwIGluIGhv
-dXNlIHJrYmluIGluCj4gY3VycmVudCBib290Y2hhaW4uCj4KPiBCb290Y2hhaW4gYWZ0ZXIgYW5k
-IGJlZm9yZSB0aGlzIGNoYW5nZToKPgo+ICAgICBUUEwgLT4gU1BMIC0+IFUtQm9vdCBwcm9wZXIK
-Pgo+ICAgcmtiaW4gLT4gU1BMIC0+IFUtQm9vdCBwcm9wZXIKPgo+IFNpZ25lZC1vZmYtYnk6IEph
-Z2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgoKUmV2aWV3ZWQtYnk6IEtldmVy
-IFlhbmcgPEtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+CgpUaGFua3MsCiDCoC0gS2V2ZXIKPiAt
-LS0KPiAgIGFyY2gvYXJtL2R0cy9yazMzOTktcm9jay1waS00LXUtYm9vdC5kdHNpIHwgMSArCj4g
-ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykKPgo+IGRpZmYgLS1naXQgYS9hcmNoL2Fy
-bS9kdHMvcmszMzk5LXJvY2stcGktNC11LWJvb3QuZHRzaSBiL2FyY2gvYXJtL2R0cy9yazMzOTkt
-cm9jay1waS00LXUtYm9vdC5kdHNpCj4gaW5kZXggN2JkZGMzYWNkYi4uZGJmYTRiYTlmOCAxMDA2
-NDQKPiAtLS0gYS9hcmNoL2FybS9kdHMvcmszMzk5LXJvY2stcGktNC11LWJvb3QuZHRzaQo+ICsr
-KyBiL2FyY2gvYXJtL2R0cy9yazMzOTktcm9jay1waS00LXUtYm9vdC5kdHNpCj4gQEAgLTQsMyAr
-NCw0IEBACj4gICAgKi8KPiAgIAo+ICAgI2luY2x1ZGUgInJrMzM5OS11LWJvb3QuZHRzaSIKPiAr
-I2luY2x1ZGUgInJrMzM5OS1zZHJhbS1scGRkcjQtMTAwLmR0c2kiCgoKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+Dear list,
+
+you may enjoy the patches below, regarding proper settings
+for higher SPI clocks on RK3288. Thank you for having a look!
+
+Base Version: Tinker OS 2.0.7 Linux Kernels Version 4.4.103
+https://github.com/TinkerBoard/debian_kernel/tree/release
+
+Regards, Eric
+
+
+
+--- arch/arm/boot/dts/rk3288.dtsi.original	2018-06-01 04:25:35 +0200
++++ arch/arm/boot/dts/rk3288.dtsi	2018-08-07 19:04:10 +0200
+@@ -373,8 +373,9 @@
+ 		dmas = <&dmac_peri 11>, <&dmac_peri 12>;
+ 		dma-names = "tx", "rx";
+ 		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
+-		pinctrl-names = "default";
++		pinctrl-names = "default", "high_speed";
+ 		pinctrl-0 = <&spi0_clk &spi0_tx &spi0_rx &spi0_cs0 &spi0_cs1>;
++		pinctrl-1 = <&spi0_clk_h &spi0_tx_h &spi0_rx_h &spi0_cs0_h &spi0_cs1_h>;
+ 		reg = <0x0 0xff110000 0x0 0x1000>;
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+@@ -403,9 +404,11 @@
+ 		dmas = <&dmac_peri 15>, <&dmac_peri 16>;
+ 		dma-names = "tx", "rx";
+ 		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
+-		pinctrl-names = "default";
+-		//pinctrl-0 = <&spi2_clk &spi2_tx &spi2_rx &spi2_cs0 &spi2_cs1>;
++		pinctrl-names = "default", "high_speed";
++		// pinctrl-0 = <&spi2_clk &spi2_tx &spi2_rx &spi2_cs0 &spi2_cs1>;
+ 		pinctrl-0 = <&spi2_clk &spi2_tx &spi2_rx &spi2_cs0>;
++		// pinctrl-1 = <&spi2_clk_h &spi2_tx_h &spi2_rx_h &spi2_cs0_h &spi2_cs1_h>;
++		pinctrl-1 = <&spi2_clk_h &spi2_tx_h &spi2_rx_h &spi2_cs0_h>;
+ 		reg = <0x0 0xff130000 0x0 0x1000>;
+ 		#address-cells = <2>;
+ 		#size-cells = <0>;
+@@ -2186,7 +2189,24 @@
+ 			spi0_cs1: spi0-cs1 {
+ 				rockchip,pins = <5 16 RK_FUNC_1 &pcfg_pull_up>;
+ 			};
++
++			spi0_clk_h: spi0-clk-h {
++				rockchip,pins = <5 12 RK_FUNC_1 &pcfg_pull_none_12ma>;
++			};
++			spi0_cs0_h: spi0-cs0-h {
++				rockchip,pins = <5 13 RK_FUNC_1 &pcfg_pull_none_12ma>;
++			};
++			spi0_tx_h: spi0-tx-h {
++				rockchip,pins = <5 14 RK_FUNC_1 &pcfg_pull_none_12ma>;
++			};
++			spi0_rx_h: spi0-rx-h {
++				rockchip,pins = <5 15 RK_FUNC_1 &pcfg_pull_up>;
++			};
++			spi0_cs1_h: spi0-cs1-h {
++				rockchip,pins = <5 16 RK_FUNC_1 &pcfg_pull_none_12ma>;
++			};
+ 		};
++
+ 		spi1 {
+ 			spi1_clk: spi1-clk {
+ 				rockchip,pins = <7 12 RK_FUNC_2 &pcfg_pull_up>;
+@@ -2218,6 +2238,23 @@
+ 			spi2_tx: spi2-tx {
+ 				rockchip,pins = <8 9 RK_FUNC_1 &pcfg_pull_up>;
+ 			};
++
++			spi2_cs1_h: spi2-cs1-h {
++				rockchip,pins = <8 3 RK_FUNC_1 &pcfg_pull_none_12ma>;
++			};
++			spi2_clk_h: spi2-clk-h {
++				rockchip,pins = <8 6 RK_FUNC_1 &pcfg_pull_none_12ma>;
++			};
++			spi2_cs0_h: spi2-cs0-h {
++				rockchip,pins = <8 7 RK_FUNC_1 &pcfg_pull_none_12ma>;
++			};
++			spi2_rx_h: spi2-rx-h {
++				rockchip,pins = <8 8 RK_FUNC_1 &pcfg_pull_up>;
++			};
++			spi2_tx_h: spi2-tx-h {
++				rockchip,pins = <8 9 RK_FUNC_1 &pcfg_pull_none_12ma>;
++			};
++
+ 		};
+ 
+ 		uart0 {
+--- arch/arm/boot/dts/rk3288-miniarm.dts.original	2018-06-01 04:25:35 +0200
++++ arch/arm/boot/dts/rk3288-miniarm.dts	2018-08-07 19:04:05 +0200
+@@ -637,8 +637,9 @@
+ &spi0 {
+ 	status = "okay";
+ 	max-freq = <50000000>;
+-	pinctrl-names = "default";
++	pinctrl-names = "default", "high_speed";
+ 	pinctrl-0 = <&spi0_clk &spi0_tx &spi0_rx &spi0_cs0 &spi0_cs1>;
++	pinctrl-1 = <&spi0_clk_h &spi0_tx_h &spi0_rx_h &spi0_cs0_h &spi0_cs1_h>;
+ 	#address-cells = <1>;
+ 
+ 	spidev@0 {
+@@ -659,8 +660,9 @@
+ &spi2 {
+ 	status = "okay";
+ 	max-freq = <50000000>;
+-	pinctrl-names = "default";
++	pinctrl-names = "default", "high_speed";
+ 	pinctrl-0 = <&spi2_clk &spi2_tx &spi2_rx &spi2_cs0 &spi2_cs1>;
++	pinctrl-1 = <&spi2_clk_h &spi2_tx_h &spi2_rx_h &spi2_cs0_h &spi2_cs1_h>;
+ 	#address-cells = <1>;
+ 
+ 	spidev@0 {
