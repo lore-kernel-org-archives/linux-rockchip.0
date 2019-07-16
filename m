@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 44/57] arm: include: rockchip: Add rk3399 pmu file
-Date: Tue, 16 Jul 2019 17:27:32 +0530
-Message-ID: <20190716115745.12585-45-jagan@amarulasolutions.com>
+Subject: [PATCH v3 42/57] ram: rk3399: Handle data training via ops
+Date: Tue, 16 Jul 2019 17:27:30 +0530
+Message-ID: <20190716115745.12585-43-jagan@amarulasolutions.com>
 References: <20190716115745.12585-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,93 +21,113 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add pmu header file for rk3399 SoC, this will help
-to configure pmu in sdram driver.
+data training can be even required for lpddr4 and we
+need to keep the lpddr4 code to compile only for relevant
+boards which do support lpddr4.
+
+For this requirement, and for code readability handle
+data training via sdram_rk3399_ops and same will update
+in future while supporting lpddr4 code.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- .../include/asm/arch-rockchip/pmu_rk3399.h    | 72 +++++++++++++++++++
- 1 file changed, 72 insertions(+)
- create mode 100644 arch/arm/include/asm/arch-rockchip/pmu_rk3399.h
+ drivers/ram/rockchip/sdram_rk3399.c | 43 ++++++++++++++++++++++-------
+ 1 file changed, 33 insertions(+), 10 deletions(-)
 
-diff --git a/arch/arm/include/asm/arch-rockchip/pmu_rk3399.h b/arch/arm/include/asm/arch-rockchip/pmu_rk3399.h
-new file mode 100644
-index 0000000000..f1096dccce
---- /dev/null
-+++ b/arch/arm/include/asm/arch-rockchip/pmu_rk3399.h
-@@ -0,0 +1,72 @@
-+/* SPDX-License-Identifier:     GPL-2.0+ */
-+/*
-+ * (C) Copyright 2018 Rockchip Electronics Co., Ltd.
-+ *
-+ */
-+
-+#ifndef __SOC_ROCKCHIP_RK3399_PMU_H__
-+#define __SOC_ROCKCHIP_RK3399_PMU_H__
-+
-+struct rk3399_pmu_regs {
-+	u32 pmu_wakeup_cfg[5];
-+	u32 pmu_pwrdn_con;
-+	u32 pmu_pwrdn_st;
-+	u32 pmu_pll_con;
-+	u32 pmu_pwrmode_con;
-+	u32 pmu_sft_con;
-+	u32 pmu_int_con;
-+	u32 pmu_int_st;
-+	u32 pmu_gpio0_pos_int_con;
-+	u32 pmu_gpio0_net_int_con;
-+	u32 pmu_gpio1_pos_int_con;
-+	u32 pmu_gpio1_net_int_con;
-+	u32 pmu_gpio0_pos_int_st;
-+	u32 pmu_gpio0_net_int_st;
-+	u32 pmu_gpio1_pos_int_st;
-+	u32 pmu_gpio1_net_int_st;
-+	u32 pmu_pwrdn_inten;
-+	u32 pmu_pwrdn_status;
-+	u32 pmu_wakeup_status;
-+	u32 pmu_bus_clr;
-+	u32 pmu_bus_idle_req;
-+	u32 pmu_bus_idle_st;
-+	u32 pmu_bus_idle_ack;
-+	u32 pmu_cci500_con;
-+	u32 pmu_adb400_con;
-+	u32 pmu_adb400_st;
-+	u32 pmu_power_st;
-+	u32 pmu_core_pwr_st;
-+	u32 pmu_osc_cnt;
-+	u32 pmu_plllock_cnt;
-+	u32 pmu_pllrst_cnt;
-+	u32 pmu_stable_cnt;
-+	u32 pmu_ddrio_pwron_cnt;
-+	u32 pmu_wakeup_rst_clr_cnt;
-+	u32 pmu_ddr_sref_st;
-+	u32 pmu_scu_l_pwrdn_cnt;
-+	u32 pmu_scu_l_pwrup_cnt;
-+	u32 pmu_scu_b_pwrdn_cnt;
-+	u32 pmu_scu_b_pwrup_cnt;
-+	u32 pmu_gpu_pwrdn_cnt;
-+	u32 pmu_gpu_pwrup_cnt;
-+	u32 pmu_center_pwrdn_cnt;
-+	u32 pmu_center_pwrup_cnt;
-+	u32 pmu_timeout_cnt;
-+	u32 pmu_cpu0apm_con;
-+	u32 pmu_cpu1apm_con;
-+	u32 pmu_cpu2apm_con;
-+	u32 pmu_cpu3apm_con;
-+	u32 pmu_cpu0bpm_con;
-+	u32 pmu_cpu1bpm_con;
-+	u32 pmu_noc_auto_ena;
-+	u32 pmu_pwrdn_con1;
-+	u32 reserved0[0x4];
-+	u32 pmu_sys_reg_reg0;
-+	u32 pmu_sys_reg_reg1;
-+	u32 pmu_sys_reg_reg2;
-+	u32 pmu_sys_reg_reg3;
+diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
+index 1aaaeb5b88..da01f08732 100644
+--- a/drivers/ram/rockchip/sdram_rk3399.c
++++ b/drivers/ram/rockchip/sdram_rk3399.c
+@@ -65,11 +65,17 @@ struct dram_info {
+ 	struct rk3399_pmucru *pmucru;
+ 	struct rk3399_pmusgrf_regs *pmusgrf;
+ 	struct rk3399_ddr_cic_regs *cic;
++	const struct sdram_rk3399_ops *ops;
+ #endif
+ 	struct ram_info info;
+ 	struct rk3399_pmugrf_regs *pmugrf;
+ };
+ 
++struct sdram_rk3399_ops {
++	int (*data_training)(struct dram_info *dram, u32 channel, u8 rank,
++			     struct rk3399_sdram_params *sdram);
 +};
 +
-+check_member(rk3399_pmu_regs, pmu_sys_reg_reg3, 0xfc);
+ #if defined(CONFIG_TPL_BUILD) || \
+ 	(!defined(CONFIG_TPL) && defined(CONFIG_SPL_BUILD))
+ 
+@@ -1464,6 +1470,23 @@ static void dram_all_config(struct dram_info *dram,
+ 	clrsetbits_le32(&dram->cru->glb_rst_con, 0x3, 0x3);
+ }
+ 
++static int default_data_training(struct dram_info *dram, u32 channel, u8 rank,
++				 struct rk3399_sdram_params *params)
++{
++	u8 training_flag = PI_READ_GATE_TRAINING;
 +
-+#endif	/* __SOC_ROCKCHIP_RK3399_PMU_H__ */
++	/*
++	 * LPDDR3 CA training msut be trigger before
++	 * other training.
++	 * DDR3 is not have CA training.
++	 */
++
++	if (params->base.dramtype == LPDDR3)
++		training_flag |= PI_CA_TRAINING;
++
++	return data_training(dram, channel, params, training_flag);
++}
++
+ static int switch_to_phy_index1(struct dram_info *dram,
+ 				const struct rk3399_sdram_params *params)
+ {
+@@ -1626,7 +1649,6 @@ static int sdram_init(struct dram_info *dram,
+ {
+ 	unsigned char dramtype = params->base.dramtype;
+ 	unsigned int ddr_freq = params->base.ddr_freq;
+-	u32 training_flag = PI_READ_GATE_TRAINING;
+ 	int channel, ch, rank;
+ 	int ret;
+ 
+@@ -1654,16 +1676,12 @@ static int sdram_init(struct dram_info *dram,
+ 
+ 			params->ch[ch].cap_info.rank = rank;
+ 
+-			/*
+-			 * LPDDR3 CA training msut be trigger before
+-			 * other training.
+-			 * DDR3 is not have CA training.
+-			 */
+-			if (params->base.dramtype == LPDDR3)
+-				training_flag |= PI_CA_TRAINING;
+-
+-			if (!(data_training(dram, ch, params, training_flag)))
++			ret = dram->ops->data_training(dram, ch, rank, params);
++			if (!ret) {
++				debug("%s: data trained for rank %d, ch %d\n",
++				      __func__, rank, ch);
+ 				break;
++			}
+ 		}
+ 		/* Computed rank with associated channel number */
+ 		params->ch[ch].cap_info.rank = rank;
+@@ -1743,6 +1761,10 @@ static int conv_of_platdata(struct udevice *dev)
+ }
+ #endif
+ 
++static const struct sdram_rk3399_ops rk3399_ops = {
++	.data_training = default_data_training,
++};
++
+ static int rk3399_dmc_init(struct udevice *dev)
+ {
+ 	struct dram_info *priv = dev_get_priv(dev);
+@@ -1760,6 +1782,7 @@ static int rk3399_dmc_init(struct udevice *dev)
+ 		return ret;
+ #endif
+ 
++	priv->ops = &rk3399_ops;
+ 	priv->cic = syscon_get_first_range(ROCKCHIP_SYSCON_CIC);
+ 	priv->grf = syscon_get_first_range(ROCKCHIP_SYSCON_GRF);
+ 	priv->pmugrf = syscon_get_first_range(ROCKCHIP_SYSCON_PMUGRF);
 -- 
 2.18.0.321.gffc6fa0e3
