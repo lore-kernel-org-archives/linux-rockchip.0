@@ -1,53 +1,60 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v3 01/57] ram: rk3399: Add ddrtype enc macro
-Date: Tue, 16 Jul 2019 17:26:49 +0530
-Message-ID: <20190716115745.12585-2-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH v3 02/57] ram: rk3399: Add channel number encoder macro
+Date: Tue, 16 Jul 2019 17:26:50 +0530
+Message-ID: <20190716115745.12585-3-jagan@amarulasolutions.com>
 References: <20190716115745.12585-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20190716115745.12585-1-jagan@amarulasolutions.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, YouMin Chen <cym@rock-chips.com>, u-boot@lists.denx.de
-Cc: linux-rockchip@lists.infradead.org, gajjar04akash@gmail.com, linux-amarula@amarulasolutions.com, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190716115745.12585-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-QWRkIHNpbXBsaWZpZWQgYW5kIG1lYW5pbmdmdWwgbWFjcm8gZm9yIGRkcnR5cGUgbWFjcm8uCgpT
-aWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KU2ln
-bmVkLW9mZi1ieTogWW91TWluIENoZW4gPGN5bUByb2NrLWNoaXBzLmNvbT4KLS0tCiBhcmNoL2Fy
-bS9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5oIHwgMSArCiBkcml2ZXJz
-L3JhbS9yb2NrY2hpcC9zZHJhbV9yazMzOTkuYyAgICAgICAgICAgICAgIHwgMiArLQogMiBmaWxl
-cyBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9h
-cmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5oIGIvYXJjaC9h
-cm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24uaAppbmRleCBiNzU0OWY1
-ZDhhLi45MmE0YzQ4NWMyIDEwMDY0NAotLS0gYS9hcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoLXJv
-Y2tjaGlwL3NkcmFtX2NvbW1vbi5oCisrKyBiL2FyY2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9j
-a2NoaXAvc2RyYW1fY29tbW9uLmgKQEAgLTcyLDYgKzcyLDcgQEAgc3RydWN0IHNkcmFtX2Jhc2Vf
-cGFyYW1zIHsKICNkZWZpbmUgU1lTX1JFR19ST1dfM180X1NISUZUKGNoKQkoMzAgKyAoY2gpKQog
-I2RlZmluZSBTWVNfUkVHX1JPV18zXzRfTUFTSwkJMQogI2RlZmluZSBTWVNfUkVHX0NISU5GT19T
-SElGVChjaCkJKDI4ICsgKGNoKSkKKyNkZWZpbmUgU1lTX1JFR19FTkNfRERSVFlQRShuKQkJKChu
-KSA8PCBTWVNfUkVHX0REUlRZUEVfU0hJRlQpCiAjZGVmaW5lIFNZU19SRUdfUkFOS19TSElGVChj
-aCkJCSgxMSArIChjaCkgKiAxNikKICNkZWZpbmUgU1lTX1JFR19SQU5LX01BU0sJCTEKICNkZWZp
-bmUgU1lTX1JFR19DT0xfU0hJRlQoY2gpCQkoOSArIChjaCkgKiAxNikKZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX3JrMzM5OS5jIGIvZHJpdmVycy9yYW0vcm9ja2NoaXAv
-c2RyYW1fcmszMzk5LmMKaW5kZXggOWE2MGMyNDEzNS4uZjU4ODM2YzAzNyAxMDA2NDQKLS0tIGEv
-ZHJpdmVycy9yYW0vcm9ja2NoaXAvc2RyYW1fcmszMzk5LmMKKysrIGIvZHJpdmVycy9yYW0vcm9j
-a2NoaXAvc2RyYW1fcmszMzk5LmMKQEAgLTEwNzYsNyArMTA3Niw3IEBAIHN0YXRpYyB2b2lkIGRy
-YW1fYWxsX2NvbmZpZyhzdHJ1Y3QgZHJhbV9pbmZvICpkcmFtLAogCXUzMiBzeXNfcmVnID0gMDsK
-IAl1bnNpZ25lZCBpbnQgY2hhbm5lbCwgaWR4OwogCi0Jc3lzX3JlZyB8PSBwYXJhbXMtPmJhc2Uu
-ZHJhbXR5cGUgPDwgU1lTX1JFR19ERFJUWVBFX1NISUZUOworCXN5c19yZWcgfD0gU1lTX1JFR19F
-TkNfRERSVFlQRShwYXJhbXMtPmJhc2UuZHJhbXR5cGUpOwogCXN5c19yZWcgfD0gKHBhcmFtcy0+
-YmFzZS5udW1fY2hhbm5lbHMgLSAxKSA8PCBTWVNfUkVHX05VTV9DSF9TSElGVDsKIAogCWZvciAo
-Y2hhbm5lbCA9IDAsIGlkeCA9IDA7Ci0tIAoyLjE4LjAuMzIxLmdmZmM2ZmEwZTMKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxp
-c3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3Ut
-Ym9vdAo=
+Add simplified and meaningful macro for channel number.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ arch/arm/include/asm/arch-rockchip/sdram_common.h | 2 ++
+ drivers/ram/rockchip/sdram_rk3399.c               | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/include/asm/arch-rockchip/sdram_common.h b/arch/arm/include/asm/arch-rockchip/sdram_common.h
+index 92a4c485c2..076afe2ae3 100644
+--- a/arch/arm/include/asm/arch-rockchip/sdram_common.h
++++ b/arch/arm/include/asm/arch-rockchip/sdram_common.h
+@@ -73,6 +73,8 @@ struct sdram_base_params {
+ #define SYS_REG_ROW_3_4_MASK		1
+ #define SYS_REG_CHINFO_SHIFT(ch)	(28 + (ch))
+ #define SYS_REG_ENC_DDRTYPE(n)		((n) << SYS_REG_DDRTYPE_SHIFT)
++#define SYS_REG_ENC_NUM_CH(n)		(((n) - SYS_REG_NUM_CH_MASK) << \
++					SYS_REG_NUM_CH_SHIFT)
+ #define SYS_REG_RANK_SHIFT(ch)		(11 + (ch) * 16)
+ #define SYS_REG_RANK_MASK		1
+ #define SYS_REG_COL_SHIFT(ch)		(9 + (ch) * 16)
+diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
+index f58836c037..830311ffa9 100644
+--- a/drivers/ram/rockchip/sdram_rk3399.c
++++ b/drivers/ram/rockchip/sdram_rk3399.c
+@@ -1077,7 +1077,7 @@ static void dram_all_config(struct dram_info *dram,
+ 	unsigned int channel, idx;
+ 
+ 	sys_reg |= SYS_REG_ENC_DDRTYPE(params->base.dramtype);
+-	sys_reg |= (params->base.num_channels - 1) << SYS_REG_NUM_CH_SHIFT;
++	sys_reg |= SYS_REG_ENC_NUM_CH(params->base.num_channels);
+ 
+ 	for (channel = 0, idx = 0;
+ 	     (idx < params->base.num_channels) && (channel < 2);
+-- 
+2.18.0.321.gffc6fa0e3
