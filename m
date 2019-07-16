@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 20/57] ram: rockchip: Kconfig: Add RK3399 LPDDR4 entry
-Date: Tue, 16 Jul 2019 17:27:08 +0530
-Message-ID: <20190716115745.12585-21-jagan@amarulasolutions.com>
+Subject: [PATCH v3 21/57] ram: rk3399: Add lpddr4 rank mask for ca training
+Date: Tue, 16 Jul 2019 17:27:09 +0530
+Message-ID: <20190716115745.12585-22-jagan@amarulasolutions.com>
 References: <20190716115745.12585-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,32 +21,32 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Supporting LPDDR4 code support in RK3399 would increases
-the size of SPL/TPL.
+Add rank_mask based on the rank number for lpddr4.
 
-So add kconfig entry for RK3399 LPDDR4 code so-that
-the boards have LPDDR4 can enable them via defconfig.
+This would keep the ca data training loop based on the
+desired rank mask value instead of looping for all values.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/Kconfig | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/ram/rockchip/sdram_rk3399.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/ram/rockchip/Kconfig b/drivers/ram/rockchip/Kconfig
-index 151ffb684d..4f274e01b3 100644
---- a/drivers/ram/rockchip/Kconfig
-+++ b/drivers/ram/rockchip/Kconfig
-@@ -23,4 +23,11 @@ config RAM_RK3399
- 	  This enables ram drivers support for the platforms based on
- 	  Rockchip RK3399 SoC.
+diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
+index a49677285d..8ecc3a1b74 100644
+--- a/drivers/ram/rockchip/sdram_rk3399.c
++++ b/drivers/ram/rockchip/sdram_rk3399.c
+@@ -687,7 +687,10 @@ static int data_training_ca(const struct chan_info *chan, u32 channel,
+ 	/* clear interrupt,PI_175 PI_INT_ACK:WR:0:17 */
+ 	writel(0x00003f7c, (&denali_pi[175]));
  
-+config RAM_RK3399_LPDDR4
-+	bool "LPDDR4 support for Rockchip RK3399"
-+	depends on RAM_RK3399
-+	help
-+	  This enables LPDDR4 sdram code support for the platforms based
-+	  on Rockchip RK3399 SoC.
-+
- endif # RAM_ROCKCHIP
+-	rank_mask = (rank == 1) ? 0x1 : 0x3;
++	if (params->base.dramtype == LPDDR4)
++		rank_mask = (rank == 1) ? 0x5 : 0xf;
++	else
++		rank_mask = (rank == 1) ? 0x1 : 0x3;
+ 
+ 	for (i = 0; i < 4; i++) {
+ 		if (!(rank_mask & (1 << i)))
 -- 
 2.18.0.321.gffc6fa0e3
