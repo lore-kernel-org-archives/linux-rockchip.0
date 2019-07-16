@@ -1,53 +1,98 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 17/18] ram: rk3399: Enable sdram debug functions
-Date: Tue, 16 Jul 2019 15:49:06 +0800
-Message-ID: <3416c78d-b1c3-a556-5730-041337085b62@rock-chips.com>
-References: <20190715182856.21688-1-jagan@amarulasolutions.com>
- <20190715182856.21688-18-jagan@amarulasolutions.com>
+From: Cheng-yi Chiang <cychiang@chromium.org>
+Subject: Re: [PATCH v3 1/5] ASoC: hdmi-codec: Add an op to set callback
+ function for plug event
+Date: Tue, 16 Jul 2019 15:59:36 +0800
+Message-ID: <CAFv8NwKwd8Yf4UmqUhcaP1pL2K_d_FSZm9JyY_Azy13017RWgg@mail.gmail.com>
+References: <20190712100443.221322-1-cychiang@chromium.org>
+ <20190712100443.221322-2-cychiang@chromium.org> <20190712105745.xr7jxc626lwoaajx@shell.armlinux.org.uk>
+ <CA+Px+wWbmUemETY3OMk1T9XS2w8ZXvZUhVEGzw_w6AxtU8R0rw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190715182856.21688-18-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CA+Px+wWbmUemETY3OMk1T9XS2w8ZXvZUhVEGzw_w6AxtU8R0rw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tzung-Bi Shih <tzungbi@google.com>
+Cc: Russell King - ARM Linux admin <linux@armlinux.org.uk>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, ALSA development <alsa-devel@alsa-project.org>, Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, tzungbi@chromium.org, Jaroslav Kysela <perex@perex.cz>, Hans Verkuil <hverkuil@xs4all.nl>, Andrzej Hajda <a.hajda@samsung.com>, Mark Brown <broonie@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel@ffwll.ch>, Dylan Reid <dgreid@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMTkvNy8xNiDkuIrljYgyOjI4LCBKYWdhbiBUZWtpIHdyb3RlOgo+IFRoaXMgd291bGQg
-aGVscCB0byBkZWJ1ZyB0aGUgc2RyYW0gYmFzZSBwYXJhbWV0ZXJzIHdoaWxlCj4gZGVidWdnaW5n
-IGV4aXN0aW5nIGNoaXAgb3Igd2hpbGUgc3VwcG9ydGluZyBuZXcgc2RyYW0gdHlwZS4KPgo+IEl0
-IHJlcXVpcmUgZXhwbGljaXQgZW5hYmxlbWVudCBvZiBDT05GSUdfUkFNX1JPQ0tDSElQX0RFQlVH
-Cj4gZm9yIHNob3dpbmcgdGhlIGRlYnVnIHByaW50cy4KPgo+IFNpZ25lZC1vZmYtYnk6IEphZ2Fu
-IFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgoKUmV2aWV3ZWQtYnk6IEtldmVyIFlh
-bmcgPEtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+CgpUaGFua3MsCiDCoC0gS2V2ZXIKPiAtLS0K
-PiAgIGRyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX3JrMzM5OS5jIHwgNSArKysrKwo+ICAgMSBm
-aWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcmFt
-L3JvY2tjaGlwL3NkcmFtX3JrMzM5OS5jIGIvZHJpdmVycy9yYW0vcm9ja2NoaXAvc2RyYW1fcmsz
-Mzk5LmMKPiBpbmRleCBiODM5NTVmOTRlLi45YTYwYzI0MTM1IDEwMDY0NAo+IC0tLSBhL2RyaXZl
-cnMvcmFtL3JvY2tjaGlwL3NkcmFtX3JrMzM5OS5jCj4gKysrIGIvZHJpdmVycy9yYW0vcm9ja2No
-aXAvc2RyYW1fcmszMzk5LmMKPiBAQCAtMTI1MSw2ICsxMjUxLDggQEAgc3RhdGljIHVuc2lnbmVk
-IGNoYXIgY2FsY3VsYXRlX3N0cmlkZShzdHJ1Y3QgcmszMzk5X3NkcmFtX3BhcmFtcyAqcGFyYW1z
-KQo+ICAgCQl9Cj4gICAJfQo+ICAgCj4gKwlzZHJhbV9wcmludF9zdHJpZGUoc3RyaWRlKTsKPiAr
-Cj4gICAJcmV0dXJuIHN0cmlkZTsKPiAgIH0KPiAgIAo+IEBAIC0xMzU3LDExICsxMzU5LDE0IEBA
-IHN0YXRpYyBpbnQgc2RyYW1faW5pdChzdHJ1Y3QgZHJhbV9pbmZvICpkcmFtLAo+ICAgCQlkZWJ1
-ZygiQ2hhbm5lbCAiKTsKPiAgIAkJZGVidWcoY2hhbm5lbCA/ICIxOiAiIDogIjA6ICIpOwo+ICAg
-Cj4gKwkJc2RyYW1fcHJpbnRfZGRyX2luZm8oY2FwX2luZm8sICZwYXJhbXMtPmJhc2UpOwo+ICsK
-PiAgIAkJc2V0X2RkcmNvbmZpZyhjaGFuLCBwYXJhbXMsIGNoYW5uZWwsIGNhcF9pbmZvLT5kZHJj
-b25maWcpOwo+ICAgCX0KPiAgIAo+ICAgCWlmIChwYXJhbXMtPmJhc2UubnVtX2NoYW5uZWxzID09
-IDApIHsKPiAgIAkJcHJpbnRmKCIlczogIiwgX19mdW5jX18pOwo+ICsJCXNkcmFtX3ByaW50X2Ry
-YW1fdHlwZShwYXJhbXMtPmJhc2UuZHJhbXR5cGUpOwo+ICAgCQlwcmludGYoIiAtICVkTUh6IGZh
-aWxlZCFcbiIsIHBhcmFtcy0+YmFzZS5kZHJfZnJlcSk7Cj4gICAJCXJldHVybiAtRUlOVkFMOwo+
-ICAgCX0KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAo=
+On Mon, Jul 15, 2019 at 11:56 PM Tzung-Bi Shih <tzungbi@google.com> wrote:
+>
+> On Fri, Jul 12, 2019 at 6:58 PM Russell King - ARM Linux admin
+> <linux@armlinux.org.uk> wrote:
+> >
+> > On Fri, Jul 12, 2019 at 06:04:39PM +0800, Cheng-Yi Chiang wrote:
+> > > Add an op in hdmi_codec_ops so codec driver can register callback
+> > > function to handle plug event.
+> > >
+> > > Driver in DRM can use this callback function to report connector status.
+> > >
+> > > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+> > > ---
+> > >  include/sound/hdmi-codec.h    | 16 +++++++++++++
+> > >  sound/soc/codecs/hdmi-codec.c | 45 +++++++++++++++++++++++++++++++++++
+> > >  2 files changed, 61 insertions(+)
+> > >
+> > > diff --git a/include/sound/hdmi-codec.h b/include/sound/hdmi-codec.h
+> > > index 7fea496f1f34..9a8661680256 100644
+> > > --- a/include/sound/hdmi-codec.h
+> > > +++ b/include/sound/hdmi-codec.h
+> > > @@ -47,6 +47,9 @@ struct hdmi_codec_params {
+> > >       int channels;
+> > >  };
+> > >
+> > > +typedef void (*hdmi_codec_plugged_cb)(struct device *dev,
+> > > +                                   bool plugged);
+> > > +
+> >
+> > I'd like to pose a question for people to think about.
+> >
+> > Firstly, typedefs are generally shunned in the kernel.  However, for
+> > these cases it seems to make sense.
+> >
+> > However, should the "pointer"-ness be part of the typedef or not?  To
+> > see what I mean, consider:
+> >
+> >         typedef void (*hdmi_foo)(void);
+> >
+> >         int register_foo(hdmi_foo foo);
+> >
+> > vs
+> >
+> >         typedef void hdmi_foo(void);
+> >
+> >         int register_foo(hdmi_foo *foo);
+> >
+> > which is more in keeping with how we code non-typedef'd code - it's
+> > obvious that foo is a pointer while reading the code.
+> I have a different opinion.  Its suffix "_cb" self-described it is a
+> callback function.  Since function and function pointer are equivalent
+> in the language, I think we don't need to emphasize that it is a
+> function "pointer".
+>
+>
+
+Hi Russell and Tzungbi, thank you for the review.
+Regarding this typedef of callback function, I found a thread
+discussing this very long time ago:
+
+https://yarchive.net/comp/linux/typedefs.html
+
+From that thread, Linus gave an example of using typedef for function
+pointer that is following to this pattern.
+I also looked around how other driver use it:
+$ git grep typedef | grep _cb | less | wc -l
+138
+$ git grep typedef | grep _cb | grep "(\*" | wc -l
+115
+Most of the typedef of callback function use this pattern.
+So I think this should be fine.
+Thanks!
+
+
+> > It seems to me that the latter better matches what is in the kernel's
+> > coding style, which states:
+> >
+> >   In general, a pointer, or a struct that has elements that can
+> >   reasonably be directly accessed should **never** be a typedef.
+> >
+> > or maybe Documentation/process/coding-style.rst needs updating?
