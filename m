@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 28/57] ram: rk3399: Configure SLEWP_EN, SLEWN_EN for lpddr4
-Date: Tue, 16 Jul 2019 17:27:16 +0530
-Message-ID: <20190716115745.12585-29-jagan@amarulasolutions.com>
+Subject: [PATCH v3 30/57] ram: rk3399: Map chipselect for lpddr4
+Date: Tue, 16 Jul 2019 17:27:18 +0530
+Message-ID: <20190716115745.12585-31-jagan@amarulasolutions.com>
 References: <20190716115745.12585-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,52 +21,37 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Configure SLEWP_EN, SLEWN_EN for lpddr4 during phy IO config.
+Assign desired cs_map values for lpddr4 during set memory map.
+
+Initial cs_map values is based on the sdram parameters, so
+the same will adjusted based dramtype as LPDDR4.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ drivers/ram/rockchip/sdram_rk3399.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index a9e092c39f..c02f936f2a 100644
+index 2ab10da53f..7689711a99 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -37,6 +37,8 @@
- 
- #define PHY_BOOSTP_EN		0x1
- #define PHY_BOOSTN_EN		0x1
-+#define PHY_SLEWP_EN		0x1
-+#define PHY_SLEWN_EN		0x1
- 
- #define CRU_SFTRST_DDR_CTRL(ch, n)	((0x1 << (8 + 16 + (ch) * 4)) | \
- 					((n) << (8 + (ch) * 4)))
-@@ -334,6 +336,25 @@ static int phy_io_config(const struct chan_info *chan,
- 		clrsetbits_le32(&denali_phy[937], 0xff << 20, reg_value << 20);
- 		/* PHY_939 PHY_PAD_CS_DRIVE */
- 		clrsetbits_le32(&denali_phy[939], 0xff << 20, reg_value << 20);
+@@ -188,6 +188,16 @@ static void set_memory_map(const struct chan_info *chan, u32 channel,
+ 	clrsetbits_le32(&denali_pi[155], (0x3 << 16) | (0x7 << 24),
+ 			((3 - sdram_ch->cap_info.bk) << 16) |
+ 			((16 - row) << 24));
 +
-+		/* SLEWP_EN & SLEWN_EN */
-+		reg_value = ((PHY_SLEWP_EN << 3) | PHY_SLEWN_EN);
-+		/* PHY_924 PHY_PAD_FDBK_DRIVE */
-+		clrsetbits_le32(&denali_phy[924], 0x3f << 8, reg_value << 8);
-+		/* PHY_926 PHY_PAD_DATA_DRIVE */
-+		clrsetbits_le32(&denali_phy[926], 0x3f, reg_value);
-+		/* PHY_927 PHY_PAD_DQS_DRIVE */
-+		clrsetbits_le32(&denali_phy[927], 0x3f, reg_value);
-+		/* PHY_928 PHY_PAD_ADDR_DRIVE */
-+		clrsetbits_le32(&denali_phy[928], 0x3f << 8, reg_value << 8);
-+		/* PHY_929 PHY_PAD_CLK_DRIVE */
-+		clrsetbits_le32(&denali_phy[929], 0x3f << 8, reg_value << 8);
-+		/* PHY_935 PHY_PAD_CKE_DRIVE */
-+		clrsetbits_le32(&denali_phy[935], 0x3f << 8, reg_value << 8);
-+		/* PHY_937 PHY_PAD_RST_DRIVE */
-+		clrsetbits_le32(&denali_phy[937], 0x3f << 8, reg_value << 8);
-+		/* PHY_939 PHY_PAD_CS_DRIVE */
-+		clrsetbits_le32(&denali_phy[939], 0x3f << 8, reg_value << 8);
- 	}
- 
- 	/* speed setting */
++	if (IS_ENABLED(CONFIG_RAM_RK3399_LPDDR4)) {
++		if (cs_map == 1)
++			cs_map = 0x5;
++		else if (cs_map == 2)
++			cs_map = 0xa;
++		else
++			cs_map = 0xF;
++	}
++
+ 	/* PI_41 PI_CS_MAP:RW:24:4 */
+ 	clrsetbits_le32(&denali_pi[41], 0xf << 24, cs_map << 24);
+ 	if (sdram_ch->cap_info.rank == 1 && params->base.dramtype == DDR3)
 -- 
 2.18.0.321.gffc6fa0e3
