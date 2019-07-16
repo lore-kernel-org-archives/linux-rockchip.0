@@ -1,7 +1,8 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 30/57] ram: rk3399: Map chipselect for lpddr4
-Date: Tue, 16 Jul 2019 17:27:18 +0530
-Message-ID: <20190716115745.12585-31-jagan@amarulasolutions.com>
+Subject: [PATCH v3 32/57] ram: rk3399: Don't disable dfi dram clk for lpddr4,
+ rank 1
+Date: Tue, 16 Jul 2019 17:27:20 +0530
+Message-ID: <20190716115745.12585-33-jagan@amarulasolutions.com>
 References: <20190716115745.12585-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,37 +22,46 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Assign desired cs_map values for lpddr4 during set memory map.
+The hardware for LPDDR4 with
+- CLK0P/N connect to lower 16-bits
+- CLK1P/N connect to higher 16-bits
 
-Initial cs_map values is based on the sdram parameters, so
-the same will adjusted based dramtype as LPDDR4.
+and usually dfi dram clk is configured via CLK1P/N, so
+disabling dfi dram clk will disable the CLK1P/N as well.
+
+So, add patch to not to disable dfi dram clk for lpddr4,
+with rank 1.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ drivers/ram/rockchip/sdram_rk3399.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 2ab10da53f..7689711a99 100644
+index 1050cbdb07..359ab0b826 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -188,6 +188,16 @@ static void set_memory_map(const struct chan_info *chan, u32 channel,
- 	clrsetbits_le32(&denali_pi[155], (0x3 << 16) | (0x7 << 24),
- 			((3 - sdram_ch->cap_info.bk) << 16) |
- 			((16 - row) << 24));
-+
-+	if (IS_ENABLED(CONFIG_RAM_RK3399_LPDDR4)) {
-+		if (cs_map == 1)
-+			cs_map = 0x5;
-+		else if (cs_map == 2)
-+			cs_map = 0xa;
-+		else
-+			cs_map = 0xF;
-+	}
-+
- 	/* PI_41 PI_CS_MAP:RW:24:4 */
- 	clrsetbits_le32(&denali_pi[41], 0xf << 24, cs_map << 24);
- 	if (sdram_ch->cap_info.rank == 1 && params->base.dramtype == DDR3)
+@@ -1225,8 +1225,18 @@ static void dram_all_config(struct dram_info *dram,
+ 		writel(noc_timing->ddrmode.d32,
+ 		       &ddr_msch_regs->ddrmode);
+ 
+-		/* rank 1 memory clock disable (dfi_dram_clk_disable = 1) */
+-		if (params->ch[channel].cap_info.rank == 1)
++		/**
++		 * rank 1 memory clock disable (dfi_dram_clk_disable = 1)
++		 *
++		 * The hardware for LPDDR4 with
++		 * - CLK0P/N connect to lower 16-bits
++		 * - CLK1P/N connect to higher 16-bits
++		 *
++		 * dfi dram clk is configured via CLK1P/N, so disabling
++		 * dfi dram clk will disable the CLK1P/N as well for lpddr4.
++		 */
++		if (params->ch[channel].cap_info.rank == 1 &&
++		    params->base.dramtype != LPDDR4)
+ 			setbits_le32(&dram->chan[channel].pctl->denali_ctl[276],
+ 				     1 << 17);
+ 	}
 -- 
 2.18.0.321.gffc6fa0e3
