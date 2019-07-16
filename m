@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 31/57] ram: rk3399: Configure tsel write ca for lpddr4
-Date: Tue, 16 Jul 2019 17:27:19 +0530
-Message-ID: <20190716115745.12585-32-jagan@amarulasolutions.com>
+Subject: [PATCH v3 33/57] ram: rk3399: Add IO settings
+Date: Tue, 16 Jul 2019 17:27:21 +0530
+Message-ID: <20190716115745.12585-34-jagan@amarulasolutions.com>
 References: <20190716115745.12585-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,45 +21,135 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-tsel write ca_p and ca_n values need to write on PHY 544, 672
-and 800 to configure ds odt.
+Add IO settings for dram ctl and phy.
 
-Configure the same PHY register for lpddr4 would require a mask
-value of (300 << 8).
+IO settings are useful for configuring ctl, phy odt, vref,
+mr5, mode select and other needed input output operations
+for lpddr4 or any other dramtype sdram.
 
-Add support for it.
+Right now, this patch added IO setting for all supported
+sdram frequencies.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/ram/rockchip/sdram_rk3399.c | 15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
+ drivers/ram/rockchip/sdram_rk3399.c | 104 ++++++++++++++++++++++++++++
+ 1 file changed, 104 insertions(+)
 
 diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 7689711a99..1050cbdb07 100644
+index 359ab0b826..95d9f3a88b 100644
 --- a/drivers/ram/rockchip/sdram_rk3399.c
 +++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -502,9 +502,18 @@ static void set_ds_odt(const struct chan_info *chan,
+@@ -80,6 +80,110 @@ struct rockchip_dmc_plat {
+ 	struct regmap *map;
+ };
  
- 	/* phy_adr_tsel_select_ 8bits DENALI_PHY_544/672/800 offset_0 */
- 	reg_value = tsel_wr_select_ca_n | (tsel_wr_select_ca_p << 0x4);
--	clrsetbits_le32(&denali_phy[544], 0xff, reg_value);
--	clrsetbits_le32(&denali_phy[672], 0xff, reg_value);
--	clrsetbits_le32(&denali_phy[800], 0xff, reg_value);
-+	if (IS_ENABLED(CONFIG_RAM_RK3399_LPDDR4)) {
-+		/* LPDDR4 these register read always return 0, so
-+		 * can not use clrsetbits_le32(), need to write32
-+		 */
-+		writel((0x300 << 8) | reg_value, &denali_phy[544]);
-+		writel((0x300 << 8) | reg_value, &denali_phy[672]);
-+		writel((0x300 << 8) | reg_value, &denali_phy[800]);
-+	} else {
-+		clrsetbits_le32(&denali_phy[544], 0xff, reg_value);
-+		clrsetbits_le32(&denali_phy[672], 0xff, reg_value);
-+		clrsetbits_le32(&denali_phy[800], 0xff, reg_value);
-+	}
- 
- 	/* phy_pad_addr_drive 8bits DENALI_PHY_928 offset_0 */
- 	clrsetbits_le32(&denali_phy[928], 0xff, reg_value);
++struct io_setting {
++	u32 mhz;
++	u32 mr5;
++	/* dram side */
++	u32 dq_odt;
++	u32 ca_odt;
++	u32 pdds;
++	u32 dq_vref;
++	u32 ca_vref;
++	/* phy side */
++	u32 rd_odt;
++	u32 wr_dq_drv;
++	u32 wr_ca_drv;
++	u32 wr_ckcs_drv;
++	u32 rd_odt_en;
++	u32 rd_vref;
++} lpddr4_io_setting[] = {
++	{
++		50 * MHz,
++		0,
++		/* dram side */
++		0,	/* dq_odt; */
++		0,	/* ca_odt; */
++		6,	/* pdds; */
++		0x72,	/* dq_vref; */
++		0x72,	/* ca_vref; */
++		/* phy side */
++		PHY_DRV_ODT_HI_Z,	/* rd_odt; */
++		PHY_DRV_ODT_40,	/* wr_dq_drv; */
++		PHY_DRV_ODT_40,	/* wr_ca_drv; */
++		PHY_DRV_ODT_40,	/* wr_ckcs_drv; */
++		0,	/* rd_odt_en;*/
++		41,	/* rd_vref; (unit %, range 3.3% - 48.7%) */
++	},
++	{
++		600 * MHz,
++		0,
++		/* dram side */
++		1,	/* dq_odt; */
++		0,	/* ca_odt; */
++		6,	/* pdds; */
++		0x72,	/* dq_vref; */
++		0x72,	/* ca_vref; */
++		/* phy side */
++		PHY_DRV_ODT_HI_Z,	/* rd_odt; */
++		PHY_DRV_ODT_48,	/* wr_dq_drv; */
++		PHY_DRV_ODT_40,	/* wr_ca_drv; */
++		PHY_DRV_ODT_40,	/* wr_ckcs_drv; */
++		0,	/* rd_odt_en; */
++		32,	/* rd_vref; (unit %, range 3.3% - 48.7%) */
++	},
++	{
++		800 * MHz,
++		0,
++		/* dram side */
++		1,	/* dq_odt; */
++		0,	/* ca_odt; */
++		1,	/* pdds; */
++		0x72,	/* dq_vref; */
++		0x72,	/* ca_vref; */
++		/* phy side */
++		PHY_DRV_ODT_40,	/* rd_odt; */
++		PHY_DRV_ODT_48,	/* wr_dq_drv; */
++		PHY_DRV_ODT_40,	/* wr_ca_drv; */
++		PHY_DRV_ODT_40,	/* wr_ckcs_drv; */
++		1,	/* rd_odt_en; */
++		17,	/* rd_vref; (unit %, range 3.3% - 48.7%) */
++	},
++	{
++		933 * MHz,
++		0,
++		/* dram side */
++		3,	/* dq_odt; */
++		0,	/* ca_odt; */
++		6,	/* pdds; */
++		0x59,	/* dq_vref; 32% */
++		0x72,	/* ca_vref; */
++		/* phy side */
++		PHY_DRV_ODT_HI_Z,	/* rd_odt; */
++		PHY_DRV_ODT_48,	/* wr_dq_drv; */
++		PHY_DRV_ODT_40,	/* wr_ca_drv; */
++		PHY_DRV_ODT_40,	/* wr_ckcs_drv; */
++		0,	/* rd_odt_en; */
++		32,	/* rd_vref; (unit %, range 3.3% - 48.7%) */
++	},
++	{
++		1066 * MHz,
++		0,
++		/* dram side */
++		6,	/* dq_odt; */
++		0,	/* ca_odt; */
++		1,	/* pdds; */
++		0x10,	/* dq_vref; */
++		0x72,	/* ca_vref; */
++		/* phy side */
++		PHY_DRV_ODT_40,	/* rd_odt; */
++		PHY_DRV_ODT_60,	/* wr_dq_drv; */
++		PHY_DRV_ODT_40,	/* wr_ca_drv; */
++		PHY_DRV_ODT_40,	/* wr_ckcs_drv; */
++		1,	/* rd_odt_en; */
++		17,	/* rd_vref; (unit %, range 3.3% - 48.7%) */
++	},
++};
++
+ static void *get_ddrc0_con(struct dram_info *dram, u8 channel)
+ {
+ 	return (channel == 0) ? &dram->grf->ddrc0_con0 : &dram->grf->ddrc0_con1;
 -- 
 2.18.0.321.gffc6fa0e3
