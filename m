@@ -1,60 +1,55 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 03/57] ram: rk3399: Add row_3_4 enc macro
-Date: Tue, 16 Jul 2019 17:26:51 +0530
-Message-ID: <20190716115745.12585-4-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH v3 05/57] ram: rk3399: Add rank enc macro
+Date: Tue, 16 Jul 2019 17:26:53 +0530
+Message-ID: <20190716115745.12585-6-jagan@amarulasolutions.com>
 References: <20190716115745.12585-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190716115745.12585-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20190716115745.12585-1-jagan@amarulasolutions.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, YouMin Chen <cym@rock-chips.com>, u-boot@lists.denx.de
+Cc: linux-rockchip@lists.infradead.org, gajjar04akash@gmail.com, linux-amarula@amarulasolutions.com, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add simplified and meaningful macro for row_3_4.
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Signed-off-by: YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- arch/arm/include/asm/arch-rockchip/sdram_common.h | 1 +
- drivers/ram/rockchip/sdram_rk3399.c               | 3 +--
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/arch/arm/include/asm/arch-rockchip/sdram_common.h b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-index 076afe2ae3..e5af3eab7e 100644
---- a/arch/arm/include/asm/arch-rockchip/sdram_common.h
-+++ b/arch/arm/include/asm/arch-rockchip/sdram_common.h
-@@ -71,6 +71,7 @@ struct sdram_base_params {
- #define SYS_REG_NUM_CH_MASK		1
- #define SYS_REG_ROW_3_4_SHIFT(ch)	(30 + (ch))
- #define SYS_REG_ROW_3_4_MASK		1
-+#define SYS_REG_ENC_ROW_3_4(n, ch)	((n) << (30 + (ch)))
- #define SYS_REG_CHINFO_SHIFT(ch)	(28 + (ch))
- #define SYS_REG_ENC_DDRTYPE(n)		((n) << SYS_REG_DDRTYPE_SHIFT)
- #define SYS_REG_ENC_NUM_CH(n)		(((n) - SYS_REG_NUM_CH_MASK) << \
-diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 830311ffa9..d97efb6996 100644
---- a/drivers/ram/rockchip/sdram_rk3399.c
-+++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -1089,8 +1089,7 @@ static void dram_all_config(struct dram_info *dram,
- 		if (params->ch[channel].cap_info.col == 0)
- 			continue;
- 		idx++;
--		sys_reg |= info->cap_info.row_3_4 <<
--			   SYS_REG_ROW_3_4_SHIFT(channel);
-+		sys_reg |= SYS_REG_ENC_ROW_3_4(info->cap_info.row_3_4, channel);
- 		sys_reg |= 1 << SYS_REG_CHINFO_SHIFT(channel);
- 		sys_reg |= (info->cap_info.rank - 1) <<
- 			   SYS_REG_RANK_SHIFT(channel);
--- 
-2.18.0.321.gffc6fa0e3
+QWRkIHNpbXBsaWZpZWQgYW5kIG1lYW5pbmdmdWwgbWFjcm8gZm9yIHJhbmsuCgpTaWduZWQtb2Zm
+LWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KU2lnbmVkLW9mZi1i
+eTogWW91TWluIENoZW4gPGN5bUByb2NrLWNoaXBzLmNvbT4KLS0tCiBhcmNoL2FybS9pbmNsdWRl
+L2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5oIHwgMiArKwogZHJpdmVycy9yYW0vcm9j
+a2NoaXAvc2RyYW1fcmszMzk5LmMgICAgICAgICAgICAgICB8IDMgKy0tCiAyIGZpbGVzIGNoYW5n
+ZWQsIDMgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9hcmNoL2Fy
+bS9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL3NkcmFtX2NvbW1vbi5oIGIvYXJjaC9hcm0vaW5j
+bHVkZS9hc20vYXJjaC1yb2NrY2hpcC9zZHJhbV9jb21tb24uaAppbmRleCAyZDBiZTkyMGQ5Li5k
+YjllMzAxMjZmIDEwMDY0NAotLS0gYS9hcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlw
+L3NkcmFtX2NvbW1vbi5oCisrKyBiL2FyY2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAv
+c2RyYW1fY29tbW9uLmgKQEAgLTc5LDYgKzc5LDggQEAgc3RydWN0IHNkcmFtX2Jhc2VfcGFyYW1z
+IHsKIAkJCQkJU1lTX1JFR19OVU1fQ0hfU0hJRlQpCiAjZGVmaW5lIFNZU19SRUdfUkFOS19TSElG
+VChjaCkJCSgxMSArIChjaCkgKiAxNikKICNkZWZpbmUgU1lTX1JFR19SQU5LX01BU0sJCTEKKyNk
+ZWZpbmUgU1lTX1JFR19FTkNfUkFOSyhuLCBjaCkJCSgoKG4pIC0gU1lTX1JFR19SQU5LX01BU0sp
+IDw8IFwKKwkJCQkJIFNZU19SRUdfUkFOS19TSElGVChjaCkpCiAjZGVmaW5lIFNZU19SRUdfQ09M
+X1NISUZUKGNoKQkJKDkgKyAoY2gpICogMTYpCiAjZGVmaW5lIFNZU19SRUdfQ09MX01BU0sJCTMK
+ICNkZWZpbmUgU1lTX1JFR19CS19TSElGVChjaCkJCSg4ICsgKGNoKSAqIDE2KQpkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9yYW0vcm9ja2NoaXAvc2RyYW1fcmszMzk5LmMgYi9kcml2ZXJzL3JhbS9yb2Nr
+Y2hpcC9zZHJhbV9yazMzOTkuYwppbmRleCA4NzRlODk2MzY5Li5jMjM5MGE3NzFjIDEwMDY0NAot
+LS0gYS9kcml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbV9yazMzOTkuYworKysgYi9kcml2ZXJzL3Jh
+bS9yb2NrY2hpcC9zZHJhbV9yazMzOTkuYwpAQCAtMTA5MSw4ICsxMDkxLDcgQEAgc3RhdGljIHZv
+aWQgZHJhbV9hbGxfY29uZmlnKHN0cnVjdCBkcmFtX2luZm8gKmRyYW0sCiAJCWlkeCsrOwogCQlz
+eXNfcmVnIHw9IFNZU19SRUdfRU5DX1JPV18zXzQoaW5mby0+Y2FwX2luZm8ucm93XzNfNCwgY2hh
+bm5lbCk7CiAJCXN5c19yZWcgfD0gU1lTX1JFR19FTkNfQ0hJTkZPKGNoYW5uZWwpOwotCQlzeXNf
+cmVnIHw9IChpbmZvLT5jYXBfaW5mby5yYW5rIC0gMSkgPDwKLQkJCSAgIFNZU19SRUdfUkFOS19T
+SElGVChjaGFubmVsKTsKKwkJc3lzX3JlZyB8PSBTWVNfUkVHX0VOQ19SQU5LKGluZm8tPmNhcF9p
+bmZvLnJhbmssIGNoYW5uZWwpOwogCQlzeXNfcmVnIHw9IChpbmZvLT5jYXBfaW5mby5jb2wgLSA5
+KSA8PAogCQkJICAgU1lTX1JFR19DT0xfU0hJRlQoY2hhbm5lbCk7CiAJCXN5c19yZWcgfD0gaW5m
+by0+Y2FwX2luZm8uYmsgPT0gMyA/IDAgOiAxIDw8Ci0tIAoyLjE4LjAuMzIxLmdmZmM2ZmEwZTMK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBt
+YWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xp
+c3RpbmZvL3UtYm9vdAo=
