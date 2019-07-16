@@ -1,14 +1,14 @@
 From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 54/57] configs: rock-pi-4: Enable LPDDR4 support
-Date: Tue, 16 Jul 2019 21:21:38 +0800
-Message-ID: <04e9fc61-d867-509c-7516-5b62abf8e758@rock-chips.com>
+Subject: Re: [PATCH v3 53/57] configs: rockpro64: Enable LPDDR4 support
+Date: Tue, 16 Jul 2019 21:21:26 +0800
+Message-ID: <c2d7edbf-5a2b-e4e9-2ce4-aeae9dfd0f53@rock-chips.com>
 References: <20190716115745.12585-1-jagan@amarulasolutions.com>
- <20190716115745.12585-55-jagan@amarulasolutions.com>
+ <20190716115745.12585-54-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190716115745.12585-55-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+In-Reply-To: <20190716115745.12585-54-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
@@ -25,17 +25,17 @@ List-Id: linux-rockchip.vger.kernel.org
 
 Ck9uIDIwMTkvNy8xNiDkuIvljYg3OjU3LCBKYWdhbiBUZWtpIHdyb3RlOgo+IER1ZSB0byBmb290
 LXByaW50IGlzc3Vlcywgd2UgaGF2ZSBMUEREUjQgY29kZSBjYW4gYmUKPiBtYXJrZWQgYXMgQ09O
-RklHX1JBTV9SSzMzOTlfTFBERFI0Lgo+Cj4gU28sIGVuYWJsZSBpdCBmb3IgUm9jay1QSS00IGJv
+RklHX1JBTV9SSzMzOTlfTFBERFI0Lgo+Cj4gU28sIGVuYWJsZSBpdCBmb3IgUm9ja3BybzY0IGJv
 YXJkLgo+Cj4gU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9u
 cy5jb20+CgpSZXZpZXdlZC1ieTogS2V2ZXIgWWFuZyA8S2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNv
-bT4KClRoYW5rcywKIMKgLSBLZXZlcgo+IC0tLQo+ICAgY29uZmlncy9yb2NrLXBpLTQtcmszMzk5
+bT4KClRoYW5rcywKIMKgLSBLZXZlcgo+IC0tLQo+ICAgY29uZmlncy9yb2NrcHJvNjQtcmszMzk5
 X2RlZmNvbmZpZyB8IDEgKwo+ICAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspCj4KPiBk
-aWZmIC0tZ2l0IGEvY29uZmlncy9yb2NrLXBpLTQtcmszMzk5X2RlZmNvbmZpZyBiL2NvbmZpZ3Mv
-cm9jay1waS00LXJrMzM5OV9kZWZjb25maWcKPiBpbmRleCBiZTY3MGRmMjNmLi5jNmZjOWI5OTVk
-IDEwMDY0NAo+IC0tLSBhL2NvbmZpZ3Mvcm9jay1waS00LXJrMzM5OV9kZWZjb25maWcKPiArKysg
-Yi9jb25maWdzL3JvY2stcGktNC1yazMzOTlfZGVmY29uZmlnCj4gQEAgLTI4LDYgKzI4LDcgQEAg
+aWZmIC0tZ2l0IGEvY29uZmlncy9yb2NrcHJvNjQtcmszMzk5X2RlZmNvbmZpZyBiL2NvbmZpZ3Mv
+cm9ja3BybzY0LXJrMzM5OV9kZWZjb25maWcKPiBpbmRleCBlOGZjN2FlMTQxLi4zOWU2OGFhZDgy
+IDEwMDY0NAo+IC0tLSBhL2NvbmZpZ3Mvcm9ja3BybzY0LXJrMzM5OV9kZWZjb25maWcKPiArKysg
+Yi9jb25maWdzL3JvY2twcm82NC1yazMzOTlfZGVmY29uZmlnCj4gQEAgLTI4LDYgKzI4LDcgQEAg
 Q09ORklHX1NQTF9PRl9DT05UUk9MPXkKPiAgIENPTkZJR19ERUZBVUxUX0RFVklDRV9UUkVFPSJy
-azMzOTktcm9jay1waS00Igo+ICAgQ09ORklHX09GX1NQTF9SRU1PVkVfUFJPUFM9InBpbmN0cmwt
+azMzOTktcm9ja3BybzY0Igo+ICAgQ09ORklHX09GX1NQTF9SRU1PVkVfUFJPUFM9InBpbmN0cmwt
 MCBwaW5jdHJsLW5hbWVzIGNsb2NrLW5hbWVzIGludGVycnVwdC1wYXJlbnQgYXNzaWduZWQtY2xv
 Y2tzIGFzc2lnbmVkLWNsb2NrLXJhdGVzIGFzc2lnbmVkLWNsb2NrLXBhcmVudHMiCj4gICBDT05G
 SUdfRU5WX0lTX0lOX01NQz15Cj4gK0NPTkZJR19SQU1fUkszMzk5X0xQRERSND15Cj4gICBDT05G
