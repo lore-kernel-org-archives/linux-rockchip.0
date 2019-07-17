@@ -1,28 +1,29 @@
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Subject: Re: [PATCH v1 1/1] arm64: dts: rockchip: Add support for TB-96AI
- board
-Date: Wed, 17 Jul 2019 21:19:29 +0530
-Message-ID: <20190717154929.GB13269@Mani-XPS-13-9360>
-References: <20190711021209.32529-1-zhangzj@rock-chips.com>
- <20190717154752.GA13269@Mani-XPS-13-9360>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v1 1/1] arm64: dts: rockchip: Add support for TB-96AI board
+Date: Wed, 17 Jul 2019 19:50:59 +0200
+Message-ID: <1742719.xClBtG7SZE@diego>
+References: <20190711021209.32529-1-zhangzj@rock-chips.com> <20190717154752.GA13269@Mani-XPS-13-9360>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
 In-Reply-To: <20190717154752.GA13269@Mani-XPS-13-9360>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Elon Zhang <zhangzj@rock-chips.com>
-Cc: heiko@sntech.de, mark.rutland@arm.com, robh+dt@kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: Elon Zhang <zhangzj@rock-chips.com>, mark.rutland@arm.com, robh+dt@kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jul 17, 2019 at 09:17:52PM +0530, Manivannan Sadhasivam wrote:
-> Hi Elon,
-> 
+Hi Elon,
+
+Am Mittwoch, 17. Juli 2019, 17:47:52 CEST schrieb Manivannan Sadhasivam:
 > Thanks for the patch. Overall, this patch needs a bit of cleanup. There
 > are many nodes added which are not available in mainline.
 > 
 > Please see comments inline.
-> 
+
+What Manivannan said, plus some additional things inline.
+
+
 > On Thu, Jul 11, 2019 at 10:12:09AM +0800, Elon Zhang wrote:
 > > Add devicetree support for RK3399Pro TB-96AI board, one of
 > > the 96Boards family.
@@ -72,9 +73,6 @@ On Wed, Jul 17, 2019 at 09:17:52PM +0530, Manivannan Sadhasivam wrote:
 > So, the compatible should be:
 > 
 > compatible = "beiqui,rk3399pro-tb-96ai", "rockchip,rk3399pro";
-
-s/beiqui/beiqi
-
 > 
 > And there should a separate patch to add the vendor prefix. You can refer
 > below patch:
@@ -98,7 +96,22 @@ s/beiqui/beiqi
 > > +		regulator-always-on;
 > > +		regulator-boot-on;
 > > +	};
-> > +
+
+please model a real power-tree following the board-schematics.
+This dangling unconnected vcc_phy regulator is a good
+indicator of things just being copied from the vendor bsp devicetree.
+
+So from a power-input down through the different converters
+that generate the subvoltages. And please also use the real
+voltage-rail-names used in the schematics.
+
+For reference just look at most rockchip arm64 boards
+(rk3399-rock960, rk3399-puma and a lot more)
+
+And if you look at regulator/regulator_summary in debugfs,
+it should create an actual tree structure ;-) .
+
+
 > > +	vcc5v0_sys: vccsys {
 > > +		compatible = "regulator-fixed";
 > > +		regulator-name = "vcc5v0_sys";
@@ -190,7 +203,13 @@ s/beiqui/beiqi
 > It looks like this driver is not present in mainline yet. I can see
 > some old patches in lkml archive but not sure about the status of those.
 > So, please remove this node and use dummy regulators where applicable.
-> 
+
+Actually the rk809 support went in just this merge-window some days ago.
+So we're good here.
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e444f6d68c07bc01a3a3d5905409dbe1ca391d26
+
+
 > > +		reg = <0x20>;
 > > +		interrupt-parent = <&gpio1>;
 > > +		interrupts = <RK_PC2 IRQ_TYPE_LEVEL_LOW>;
@@ -650,6 +669,14 @@ s/beiqui/beiqi
 > > +
 > > +&tcphy0 {
 > > +	extcon = <&fusb0>;
+
+this comes from the vendor kernel, which mimiks the old chrome-os
+of having a extcon and not using the newer type-c framework.
+So drop this please.
+
+
+Heiko
+
 > > +	status = "okay";
 > > +};
 > > +
@@ -745,8 +772,4 @@ s/beiqui/beiqi
 > > +	status = "okay";
 > > +};
 > > +
-> > -- 
-> > 2.17.1
-> > 
-> > 
-> > 
+> 
