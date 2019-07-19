@@ -1,67 +1,118 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v4 17/18] ram: rk3399: Enable sdram debug functions
-Date: Fri, 19 Jul 2019 20:40:31 +0530
-Message-ID: <20190719151031.14684-2-jagan@amarulasolutions.com>
-References: <20190719151031.14684-1-jagan@amarulasolutions.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH] SoC: rockchip: rockchip_max98090: Enable MICBIAS for headset keypress detection
+Date: Fri, 19 Jul 2019 19:39:29 +0200
+Message-ID: <20190719173929.24065-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190719151031.14684-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, YouMin Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gajjar04akash-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: Collabora Kernel ML <kernel@collabora.com>, dianders@chromium.org, cychiang@chromium.org, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This would help to debug the sdram base parameters while
-debugging existing chip or while supporting new sdram type.
+The TS3A227E says that the headset keypress detection needs the MICBIAS
+power in order to report the key events to ensure proper operation
+The headset keypress detection needs the MICBIAS power in order to report
+the key events all the time as long as MIC is present. So MICBIAS pin
+is forced on when a MICROPHONE is detected.
 
-It require explicit enablement of CONFIG_RAM_ROCKCHIP_DEBUG
-for showing the debug prints.
+On Veyron Minnie I observed that if the MICBIAS power is not present and
+the key press detection is activated (just because it is enabled when you
+insert a headset), it randomly reports a keypress on insert.
+E.g. (KEY_PLAYPAUSE)
 
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+ Event: (SW_HEADPHONE_INSERT), value 1
+ Event: (SW_MICROPHONE_INSERT), value 1
+ Event: -------------- SYN_REPORT ------------
+ Event: (KEY_PLAYPAUSE), value 1
+
+Userspace thinks that KEY_PLAYPAUSE is pressed and produces the annoying
+effect that the media player starts a play/pause loop.
+
+Note that, although most of the time the key reported is the one
+associated with BTN_0, not always this is true. On my tests I also saw
+different keys reported
+
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
-Changes for v4:
-- rebase on v4 16/18 patch
+Some notes about the patch
 
- drivers/ram/rockchip/sdram_rk3399.c | 5 +++++
- 1 file changed, 5 insertions(+)
+Steps to test (userspace GNOME3):
+1. Play audio using a media player
+2. Make sure the Internal MIC is selected as audio input device and
+doesn't switches when you insert the headset.
+3. Insert a headset (with buttons)
 
-diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-index 9df2f840ab..c59c985c19 100644
---- a/drivers/ram/rockchip/sdram_rk3399.c
-+++ b/drivers/ram/rockchip/sdram_rk3399.c
-@@ -1251,6 +1251,8 @@ static unsigned char calculate_stride(struct rk3399_sdram_params *params)
- 		}
- 	}
+Audio switches to headphones and you can hear that enters on a loop
+play/pause if the KEY_PLAYPAUSE was reported. Also you can check that
+press to any headset button doesn't work.
+
+The part where the datasheet says that power must be supplied in order
+to have keypress detection work is in page 44 of [1]
+
+"
+The TS3A227E can monitor the microphone line of a 4-pole headset to
+detect up to 4 key presses/releases and report the key press events
+back to the host. The key press detection must be activated manually
+by setting the KP Enable bit of the Device Settings 2 register. To
+ensure proper operation the MICBIAS voltage must be applied to MICP
+before enabling key press detection.
+"
+
+[1]  http://www.ti.com/lit/ds/symlink/ts3a227e.pdf
+
+ sound/soc/rockchip/rockchip_max98090.c | 32 ++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+
+diff --git a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
+index c5fc24675a33..782e534d4c0d 100644
+--- a/sound/soc/rockchip/rockchip_max98090.c
++++ b/sound/soc/rockchip/rockchip_max98090.c
+@@ -61,6 +61,37 @@ static const struct snd_kcontrol_new rk_mc_controls[] = {
+ 	SOC_DAPM_PIN_SWITCH("Speaker"),
+ };
  
-+	sdram_print_stride(stride);
++static int rk_jack_event(struct notifier_block *nb, unsigned long event,
++			 void *data)
++{
++	struct snd_soc_jack *jack = (struct snd_soc_jack *)data;
++	struct snd_soc_dapm_context *dapm = &jack->card->dapm;
 +
- 	return stride;
- }
- 
-@@ -1373,11 +1375,14 @@ static int sdram_init(struct dram_info *dram,
- 			}
- 		}
- 
-+		sdram_print_ddr_info(cap_info, &params->base);
++	if (event & SND_JACK_MICROPHONE)
++		snd_soc_dapm_force_enable_pin(dapm, "MICBIAS");
++	else
++		snd_soc_dapm_disable_pin(dapm, "MICBIAS");
 +
- 		set_ddrconfig(chan, params, channel, cap_info->ddrconfig);
- 	}
- 
- 	if (params->base.num_channels == 0) {
- 		printf("%s: ", __func__);
-+		sdram_print_dram_type(params->base.dramtype);
- 		printf(" - %dMHz failed!\n", params->base.ddr_freq);
- 		return -EINVAL;
- 	}
++	snd_soc_dapm_sync(dapm);
++
++	return 0;
++}
++
++static struct notifier_block rk_jack_nb = {
++	.notifier_call = rk_jack_event,
++};
++
++static int rk_init(struct snd_soc_pcm_runtime *runtime)
++{
++	/*
++	 * The jack has already been created in the rk_98090_headset_init()
++	 * function.
++	 */
++	snd_soc_jack_notifier_register(&headset_jack, &rk_jack_nb);
++
++	return 0;
++}
++
+ static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
+ 			     struct snd_pcm_hw_params *params)
+ {
+@@ -119,6 +150,7 @@ SND_SOC_DAILINK_DEFS(hifi,
+ static struct snd_soc_dai_link rk_dailink = {
+ 	.name = "max98090",
+ 	.stream_name = "Audio",
++	.init = rk_init,
+ 	.ops = &rk_aif1_ops,
+ 	/* set max98090 as slave */
+ 	.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
 -- 
-2.18.0.321.gffc6fa0e3
+2.20.1
