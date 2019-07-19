@@ -1,52 +1,59 @@
-From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 4.4 04/35] pinctrl: rockchip: fix leaked of_node references
-Date: Fri, 19 Jul 2019 00:13:52 -0400
-Message-ID: <20190719041423.19322-4-sashal@kernel.org>
-References: <20190719041423.19322-1-sashal@kernel.org>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Subject: Re: [RFC PATCH 23/30] of/platform: Export
+ of_platform_device_create_pdata()
+Date: Fri, 19 Jul 2019 16:25:37 +0530
+Message-ID: <f9034a1d-1906-54e8-62f0-cdacf95c42ab@ti.com>
+References: <20190604131516.13596-1-kishon@ti.com>
+ <20190604131516.13596-24-kishon@ti.com>
+ <CAL_JsqJ5gsctd7L3VOhTO1JdUqmMmSJRpos1XQyfxzmGO7wauw@mail.gmail.com>
+ <a80c7c33-7091-70d9-cd86-a19fe43d3bc6@ti.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190719041423.19322-1-sashal@kernel.org>
+In-Reply-To: <a80c7c33-7091-70d9-cd86-a19fe43d3bc6@ti.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Wen Yang <wen.yang99@zte.com.cn>, Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, Sasha Levin <sashal@kernel.org>
+To: Rob Herring <robh+dt@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Tom Joseph <tjoseph@cadence.com>, Bjorn Helgaas <bhelgaas@google.com>, Mark Rutland <mark.rutland@arm.com>, Arnd Bergmann <arnd@arndb.de>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Frank Rowand <frowand.list@gmail.com>, Jingoo Han <jingoohan1@gmail.com>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-omap <linux-omap@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Wen Yang <wen.yang99@zte.com.cn>
+Lorenzo,
 
-[ Upstream commit 3c89c70634bb0b6f48512de873e7a45c7e1fbaa5 ]
+On 11/06/19 10:08 AM, Kishon Vijay Abraham I wrote:
+> Hi Rob,
+> 
+> On 10/06/19 11:13 PM, Rob Herring wrote:
+>> On Tue, Jun 4, 2019 at 7:19 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
+>>>
+>>> Export of_platform_device_create_pdata() to be used by drivers to
+>>> create child devices with the given platform data. This can be used
+>>> by platform specific driver to send platform data core driver. For e.g.,
+>>> this will be used by TI's J721E SoC specific PCIe driver to send
+>>> ->start_link() ops and ->is_link_up() ops to Cadence core PCIe driver.
+>>
+>> NAK
+>>
+>> of_platform_device_create_pdata() is purely for legacy handling of
+>> auxdata which is something I hope to get rid of someday. Or to put it
+>> another way, auxdata use is a sign of platforms not fully converted to
+>> DT.
+> 
+> All right. Thanks for letting me know your thoughts.
+> 
+> Lorenzo,
+> 
+> We've modeled Cadence PCIe core as a separate driver and for some of the
+> functionalities (for example starting LTSSM or checking link status) it has to
+> invoke the wrapper driver functions (The registers for these are present in
+> wrapper and not in Cadence Core). In the case of Designware, we modeled DWC
+> core as a library which provided APIs to be used by wrapper driver. Now that
+> Rob is not inclined for passing platform data from one driver to another (in
+> this case TI specific J721E driver to Cadence PCIe driver), should we model
+> Cadence core also as a library? If you agree, I can prepare patches for making
+> Cadence PCIe core as a library. Please let me know your thoughts.
 
-The call to of_parse_phandle returns a node pointer with refcount
-incremented thus it must be explicitly decremented after the last
-usage.
+Can you share your thoughts on this?
 
-Detected by coccinelle with the following warnings:
-./drivers/pinctrl/pinctrl-rockchip.c:3221:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 3196, but without a corresponding object release within this function.
-./drivers/pinctrl/pinctrl-rockchip.c:3223:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 3196, but without a corresponding object release within this function.
-
-Signed-off-by: Wen Yang <wen.yang99@zte.com.cn>
-Cc: Linus Walleij <linus.walleij@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-gpio@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/pinctrl/pinctrl-rockchip.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index a0651128e23a..616055b5e996 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -1837,6 +1837,7 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank,
- 						    base,
- 						    &rockchip_regmap_config);
- 		}
-+		of_node_put(node);
- 	}
- 
- 	bank->irq = irq_of_parse_and_map(bank->of_node, 0);
--- 
-2.20.1
+Thanks
+Kishon
