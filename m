@@ -1,59 +1,128 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: Re: [RFC PATCH 23/30] of/platform: Export
- of_platform_device_create_pdata()
-Date: Fri, 19 Jul 2019 16:25:37 +0530
-Message-ID: <f9034a1d-1906-54e8-62f0-cdacf95c42ab@ti.com>
-References: <20190604131516.13596-1-kishon@ti.com>
- <20190604131516.13596-24-kishon@ti.com>
- <CAL_JsqJ5gsctd7L3VOhTO1JdUqmMmSJRpos1XQyfxzmGO7wauw@mail.gmail.com>
- <a80c7c33-7091-70d9-cd86-a19fe43d3bc6@ti.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH v4 16/18] ram: rk3399: Add rank detection support
+Date: Fri, 19 Jul 2019 20:40:30 +0530
+Message-ID: <20190719151031.14684-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <a80c7c33-7091-70d9-cd86-a19fe43d3bc6@ti.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Tom Joseph <tjoseph@cadence.com>, Bjorn Helgaas <bhelgaas@google.com>, Mark Rutland <mark.rutland@arm.com>, Arnd Bergmann <arnd@arndb.de>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Frank Rowand <frowand.list@gmail.com>, Jingoo Han <jingoohan1@gmail.com>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-omap <linux-omap@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, YouMin Chen <cym@rock-chips.com>, u-boot@lists.denx.de
+Cc: gajjar04akash@gmail.com, linux-rockchip@lists.infradead.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, linux-amarula@amarulasolutions.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Lorenzo,
-
-On 11/06/19 10:08 AM, Kishon Vijay Abraham I wrote:
-> Hi Rob,
-> 
-> On 10/06/19 11:13 PM, Rob Herring wrote:
->> On Tue, Jun 4, 2019 at 7:19 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
->>>
->>> Export of_platform_device_create_pdata() to be used by drivers to
->>> create child devices with the given platform data. This can be used
->>> by platform specific driver to send platform data core driver. For e.g.,
->>> this will be used by TI's J721E SoC specific PCIe driver to send
->>> ->start_link() ops and ->is_link_up() ops to Cadence core PCIe driver.
->>
->> NAK
->>
->> of_platform_device_create_pdata() is purely for legacy handling of
->> auxdata which is something I hope to get rid of someday. Or to put it
->> another way, auxdata use is a sign of platforms not fully converted to
->> DT.
-> 
-> All right. Thanks for letting me know your thoughts.
-> 
-> Lorenzo,
-> 
-> We've modeled Cadence PCIe core as a separate driver and for some of the
-> functionalities (for example starting LTSSM or checking link status) it has to
-> invoke the wrapper driver functions (The registers for these are present in
-> wrapper and not in Cadence Core). In the case of Designware, we modeled DWC
-> core as a library which provided APIs to be used by wrapper driver. Now that
-> Rob is not inclined for passing platform data from one driver to another (in
-> this case TI specific J721E driver to Cadence PCIe driver), should we model
-> Cadence core also as a library? If you agree, I can prepare patches for making
-> Cadence PCIe core as a library. Please let me know your thoughts.
-
-Can you share your thoughts on this?
-
-Thanks
-Kishon
+UmlnaHQgbm93IHRoZSByazMzOTkgc2RyYW0gZHJpdmVyIGFzc3VtZSB0aGF0IHRoZSBib2FyZApo
+YXMgY29uZmlndXJlZCB3aXRoIDIgY2hhbm5lbHMsIHNvIGFueSBwb3NzaWJpbGl0eSB0bwplbmFi
+bGUgc2luZ2xlIGNoYW5uZWwgb24gdGhlIHNhbWUgZHJpdmVyIHdpbGwgZW5jb3VudGVyCmNoYW5u
+ZWwgIzEgZGF0YSB0cmFpbmluZyBmYWlsdXJlLgoKTG9nOgpVLUJvb3QgVFBMIGJvYXJkIGluaXQK
+c2RyYW1faW5pdDogZGF0YSB0cmFpbmluZyBmYWlsZWQKcmszMzk5X2RtY19pbml0IERSQU0gaW5p
+dCBmYWlsZWQgLTUKClNvLCBhZGQgYW4gYWxnb3JpdGhtIHRoYXQgY2FuIGNhcGFibGUgdG8gY29t
+cHV0ZSB0aGUgYWN0aXZlCm9yIGNvbmZpZ3VyZWQgcmFuayB3aXRoIGFzc29jaWF0ZWQgY2hhbm5l
+bCBsaWtlCmEpIGRvIHJhbmsgbG9vcCB0byBjb21wdXRlIHRoZSBhY3RpdmUgcmFuaywgd2l0aCBh
+c3NvY2lhdGVkCiAgIGNoYW5uZWwgbnVtYmVycwpiKSB0aGVuLCBzdWNjZWVkIHRoZSBkYXRhIHRy
+YWluaW5nIG9ubHkgZm9yIGNvbmZpZ3VyZWQgY2hhbm5lbApjKSBwcmVzZXJ2ZSB0aGUgcmFuayBm
+b3IgZ2l2ZW4gY2hhbm5lbApkKSBkbyBjaGFubmVsIGxvb3AgZm9yIHNldHRpbmcgdGhlIGFjdGl2
+ZSBjaGFubmVsCmUpIGlmIGdpdmVuIHJhbmsgaXMgemVybyBvciBpbmFjdGl2ZSBvbiB0aGUgc3Bl
+Y2lmaWMgY2hhbm5lbCwKICAgY2xlYXIgdGhlIHRpbWluZ3MgZm9yIHRoZSBhc3NvY2lhdGVkIGNo
+YW5uZWwKZikgZmluYWxseSwgcmV0dXJuIGVycm9yIGlmIG51bWJlciBvZiBjaGFubmVscyBpcyB6
+ZXJvCgpUZXN0ZWQgaW4gTmFub1BJLU5FTzQgc2luY2UgaXQgc3VwcG9ydCBzaW5nbGUgY2hhbm5l
+bCBzZHJhbQpjb25maWd1cmF0aW9uLgoKU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVraSA8amFnYW5A
+YW1hcnVsYXNvbHV0aW9ucy5jb20+ClNpZ25lZC1vZmYtYnk6IFlvdU1pbiBDaGVuIDxjeW1Acm9j
+ay1jaGlwcy5jb20+ClJldmlld2VkLWJ5OiBLZXZlciBZYW5nIDxLZXZlci55YW5nQHJvY2stY2hp
+cHMuY29tPgooYWRkIFBJX1JFQURfR0FURV9UUkFJTklORyBmb3IgTFBERFIzIHRvIHN1cHBvcnQg
+cmszMzk5LWV2YiBjYXNlKQpTaWduZWQtb2ZmLWJ5OiBLZXZlciBZYW5nIDxLZXZlci55YW5nQHJv
+Y2stY2hpcHMuY29tPgotLS0KQ2hhbmdlcyBmb3IgdjQ6Ci0gYWRkIFBJX1JFQURfR0FURV9UUkFJ
+TklORywgUElfV1JJVEVfTEVWRUxJTkcgZm9yIExQRERSMwogIGFuZCBQSV9SRUFEX0dBVEVfVFJB
+SU5JTkcgZm9yIG90aGVyIGRyYW0gdHlwZXMuIAoKIGRyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFt
+X3JrMzM5OS5jIHwgMTIyICsrKysrKysrKysrKysrKysrKysrKysrLS0tLS0KIDEgZmlsZSBjaGFu
+Z2VkLCAxMDAgaW5zZXJ0aW9ucygrKSwgMjIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9yYW0vcm9ja2NoaXAvc2RyYW1fcmszMzk5LmMgYi9kcml2ZXJzL3JhbS9yb2NrY2hpcC9z
+ZHJhbV9yazMzOTkuYwppbmRleCA4YmJhY2I1Mjc1Li45ZGYyZjg0MGFiIDEwMDY0NAotLS0gYS9k
+cml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbV9yazMzOTkuYworKysgYi9kcml2ZXJzL3JhbS9yb2Nr
+Y2hpcC9zZHJhbV9yazMzOTkuYwpAQCAtMTI1NCwxMyArMTI1NCw1MiBAQCBzdGF0aWMgdW5zaWdu
+ZWQgY2hhciBjYWxjdWxhdGVfc3RyaWRlKHN0cnVjdCByazMzOTlfc2RyYW1fcGFyYW1zICpwYXJh
+bXMpCiAJcmV0dXJuIHN0cmlkZTsKIH0KIAorc3RhdGljIHZvaWQgY2xlYXJfY2hhbm5lbF9wYXJh
+bXMoc3RydWN0IHJrMzM5OV9zZHJhbV9wYXJhbXMgKnBhcmFtcywgdTggY2hhbm5lbCkKK3sKKwlw
+YXJhbXMtPmNoW2NoYW5uZWxdLmNhcF9pbmZvLnJhbmsgPSAwOworCXBhcmFtcy0+Y2hbY2hhbm5l
+bF0uY2FwX2luZm8uY29sID0gMDsKKwlwYXJhbXMtPmNoW2NoYW5uZWxdLmNhcF9pbmZvLmJrID0g
+MDsKKwlwYXJhbXMtPmNoW2NoYW5uZWxdLmNhcF9pbmZvLmJ3ID0gMzI7CisJcGFyYW1zLT5jaFtj
+aGFubmVsXS5jYXBfaW5mby5kYncgPSAzMjsKKwlwYXJhbXMtPmNoW2NoYW5uZWxdLmNhcF9pbmZv
+LnJvd18zXzQgPSAwOworCXBhcmFtcy0+Y2hbY2hhbm5lbF0uY2FwX2luZm8uY3MwX3JvdyA9IDA7
+CisJcGFyYW1zLT5jaFtjaGFubmVsXS5jYXBfaW5mby5jczFfcm93ID0gMDsKKwlwYXJhbXMtPmNo
+W2NoYW5uZWxdLmNhcF9pbmZvLmRkcmNvbmZpZyA9IDA7Cit9CisKK3N0YXRpYyBpbnQgcGN0bF9p
+bml0KHN0cnVjdCBkcmFtX2luZm8gKmRyYW0sIHN0cnVjdCByazMzOTlfc2RyYW1fcGFyYW1zICpw
+YXJhbXMpCit7CisJaW50IGNoYW5uZWw7CisJaW50IHJldDsKKworCWZvciAoY2hhbm5lbCA9IDA7
+IGNoYW5uZWwgPCAyOyBjaGFubmVsKyspIHsKKwkJY29uc3Qgc3RydWN0IGNoYW5faW5mbyAqY2hh
+biA9ICZkcmFtLT5jaGFuW2NoYW5uZWxdOworCQlzdHJ1Y3QgcmszMzk5X2NydSAqY3J1ID0gZHJh
+bS0+Y3J1OworCQlzdHJ1Y3QgcmszMzk5X2Rkcl9wdWJsX3JlZ3MgKnB1YmwgPSBjaGFuLT5wdWJs
+OworCisJCXBoeV9wY3RybF9yZXNldChjcnUsIGNoYW5uZWwpOworCQlwaHlfZGxsX2J5cGFzc19z
+ZXQocHVibCwgcGFyYW1zLT5iYXNlLmRkcl9mcmVxKTsKKworCQlyZXQgPSBwY3RsX2NmZyhkcmFt
+LCBjaGFuLCBjaGFubmVsLCBwYXJhbXMpOworCQlpZiAocmV0IDwgMCkgeworCQkJcHJpbnRmKCIl
+czogcGN0bCBjb25maWcgZmFpbGVkXG4iLCBfX2Z1bmNfXyk7CisJCQlyZXR1cm4gcmV0OworCQl9
+CisKKwkJLyogc3RhcnQgdG8gdHJpZ2dlciBpbml0aWFsaXphdGlvbiAqLworCQlwY3RsX3N0YXJ0
+KGRyYW0sIGNoYW5uZWwpOworCX0KKworCXJldHVybiAwOworfQorCiBzdGF0aWMgaW50IHNkcmFt
+X2luaXQoc3RydWN0IGRyYW1faW5mbyAqZHJhbSwKIAkJICAgICAgc3RydWN0IHJrMzM5OV9zZHJh
+bV9wYXJhbXMgKnBhcmFtcykKIHsKIAl1bnNpZ25lZCBjaGFyIGRyYW10eXBlID0gcGFyYW1zLT5i
+YXNlLmRyYW10eXBlOwogCXVuc2lnbmVkIGludCBkZHJfZnJlcSA9IHBhcmFtcy0+YmFzZS5kZHJf
+ZnJlcTsKLQlzdHJ1Y3QgcmszMzk5X2NydSAqY3J1ID0gZHJhbS0+Y3J1OwotCWludCBjaGFubmVs
+OworCXUzMiB0cmFpbmluZ19mbGFnID0gUElfUkVBRF9HQVRFX1RSQUlOSU5HOworCWludCBjaGFu
+bmVsLCBjaCwgcmFuazsKIAlpbnQgcmV0OwogCiAJZGVidWcoIlN0YXJ0aW5nIFNEUkFNIGluaXRp
+YWxpemF0aW9uLi4uXG4iKTsKQEAgLTEyNzIsMzYgKzEzMTEsNzUgQEAgc3RhdGljIGludCBzZHJh
+bV9pbml0KHN0cnVjdCBkcmFtX2luZm8gKmRyYW0sCiAJCXJldHVybiAtRTJCSUc7CiAJfQogCisJ
+Zm9yIChjaCA9IDA7IGNoIDwgMjsgY2grKykgeworCQlwYXJhbXMtPmNoW2NoXS5jYXBfaW5mby5y
+YW5rID0gMjsKKwkJZm9yIChyYW5rID0gMjsgcmFuayAhPSAwOyByYW5rLS0pIHsKKwkJCXJldCA9
+IHBjdGxfaW5pdChkcmFtLCBwYXJhbXMpOworCQkJaWYgKHJldCA8IDApIHsKKwkJCQlwcmludGYo
+IiVzOiBwY3RsIGluaXQgZmFpbGVkXG4iLCBfX2Z1bmNfXyk7CisJCQkJcmV0dXJuIHJldDsKKwkJ
+CX0KKworCQkJLyogTFBERFIyL0xQRERSMyBuZWVkIHRvIHdhaXQgREFJIGNvbXBsZXRlLCBtYXgg
+MTB1cyAqLworCQkJaWYgKGRyYW10eXBlID09IExQRERSMykKKwkJCQl1ZGVsYXkoMTApOworCisJ
+CQlwYXJhbXMtPmNoW2NoXS5jYXBfaW5mby5yYW5rID0gcmFuazsKKworCQkJLyoKKwkJCSAqIExQ
+RERSMyBDQSB0cmFpbmluZyBtc3V0IGJlIHRyaWdnZXIgYmVmb3JlCisJCQkgKiBvdGhlciB0cmFp
+bmluZy4KKwkJCSAqIEREUjMgaXMgbm90IGhhdmUgQ0EgdHJhaW5pbmcuCisJCQkgKi8KKwkJCWlm
+IChwYXJhbXMtPmJhc2UuZHJhbXR5cGUgPT0gTFBERFIzKQorCQkJCXRyYWluaW5nX2ZsYWcgfD0g
+UElfQ0FfVFJBSU5JTkc7CisKKwkJCWlmICghKGRhdGFfdHJhaW5pbmcoJmRyYW0tPmNoYW5bY2hd
+LCBjaCwKKwkJCQkJICAgIHBhcmFtcywgdHJhaW5pbmdfZmxhZykpKQorCQkJCWJyZWFrOworCQl9
+CisJCS8qIENvbXB1dGVkIHJhbmsgd2l0aCBhc3NvY2lhdGVkIGNoYW5uZWwgbnVtYmVyICovCisJ
+CXBhcmFtcy0+Y2hbY2hdLmNhcF9pbmZvLnJhbmsgPSByYW5rOworCX0KKworCXBhcmFtcy0+YmFz
+ZS5udW1fY2hhbm5lbHMgPSAwOwogCWZvciAoY2hhbm5lbCA9IDA7IGNoYW5uZWwgPCAyOyBjaGFu
+bmVsKyspIHsKIAkJY29uc3Qgc3RydWN0IGNoYW5faW5mbyAqY2hhbiA9ICZkcmFtLT5jaGFuW2No
+YW5uZWxdOwotCQlzdHJ1Y3QgcmszMzk5X2Rkcl9wdWJsX3JlZ3MgKnB1YmwgPSBjaGFuLT5wdWJs
+OwotCi0JCXBoeV9wY3RybF9yZXNldChjcnUsIGNoYW5uZWwpOwotCQlwaHlfZGxsX2J5cGFzc19z
+ZXQocHVibCwgZGRyX2ZyZXEpOworCQlzdHJ1Y3Qgc2RyYW1fY2FwX2luZm8gKmNhcF9pbmZvID0g
+JnBhcmFtcy0+Y2hbY2hhbm5lbF0uY2FwX2luZm87CisJCXU4IHRyYWluaW5nX2ZsYWcgPSBQSV9G
+VUxMX1RSQUlOSU5HOwogCi0JCWlmIChjaGFubmVsID49IHBhcmFtcy0+YmFzZS5udW1fY2hhbm5l
+bHMpCisJCWlmIChjYXBfaW5mby0+cmFuayA9PSAwKSB7CisJCQljbGVhcl9jaGFubmVsX3BhcmFt
+cyhwYXJhbXMsIGNoYW5uZWwpOwogCQkJY29udGludWU7Ci0KLQkJcmV0ID0gcGN0bF9jZmcoZHJh
+bSwgY2hhbiwgY2hhbm5lbCwgcGFyYW1zKTsKLQkJaWYgKHJldCA8IDApIHsKLQkJCXByaW50Zigi
+JXM6IHBjdGwgY29uZmlnIGZhaWxlZFxuIiwgX19mdW5jX18pOwotCQkJcmV0dXJuIHJldDsKKwkJ
+fSBlbHNlIHsKKwkJCXBhcmFtcy0+YmFzZS5udW1fY2hhbm5lbHMrKzsKIAkJfQogCi0JCS8qIHN0
+YXJ0IHRvIHRyaWdnZXIgaW5pdGlhbGl6YXRpb24gKi8KLQkJcGN0bF9zdGFydChkcmFtLCBjaGFu
+bmVsKTsKKwkJZGVidWcoIkNoYW5uZWwgIik7CisJCWRlYnVnKGNoYW5uZWwgPyAiMTogIiA6ICIw
+OiAiKTsKIAotCQkvKiBMUEREUjIvTFBERFIzIG5lZWQgdG8gd2FpdCBEQUkgY29tcGxldGUsIG1h
+eCAxMHVzICovCi0JCWlmIChkcmFtdHlwZSA9PSBMUEREUjMpCi0JCQl1ZGVsYXkoMTApOworCQkv
+KiBMUEREUjMgc2hvdWxkIGhhdmUgd3JpdGUgYW5kIHJlYWQgZ2F0ZSB0cmFpbmluZyAqLworCQlp
+ZiAocGFyYW1zLT5iYXNlLmRyYW10eXBlID09IExQRERSMykKKwkJCXRyYWluaW5nX2ZsYWcgPSBQ
+SV9XUklURV9MRVZFTElORyB8CisJCQkJCVBJX1JFQURfR0FURV9UUkFJTklORzsKIAotCQlpZiAo
+ZGF0YV90cmFpbmluZyhjaGFuLCBjaGFubmVsLCBwYXJhbXMsIFBJX0ZVTExfVFJBSU5JTkcpKSB7
+Ci0JCQlwcmludGYoIiVzOiBkYXRhIHRyYWluaW5nIGZhaWxlZFxuIiwgX19mdW5jX18pOwotCQkJ
+cmV0dXJuIC1FSU87CisJCWlmIChwYXJhbXMtPmJhc2UuZHJhbXR5cGUgIT0gTFBERFI0KSB7CisJ
+CQlyZXQgPSBkYXRhX3RyYWluaW5nKGRyYW0sIGNoYW5uZWwsIHBhcmFtcywKKwkJCQkJICAgIHRy
+YWluaW5nX2ZsYWcpOworCQkJaWYgKCFyZXQpIHsKKwkJCQlkZWJ1ZygiJXM6IGRhdGEgdHJhaW4g
+ZmFpbGVkIGZvciBjaGFubmVsICVkXG4iLAorCQkJCSAgICAgIF9fZnVuY19fLCByZXQpOworCQkJ
+CWNvbnRpbnVlOworCQkJfQogCQl9CiAKLQkJc2V0X2RkcmNvbmZpZyhjaGFuLCBwYXJhbXMsIGNo
+YW5uZWwsCi0JCQkgICAgICBwYXJhbXMtPmNoW2NoYW5uZWxdLmNhcF9pbmZvLmRkcmNvbmZpZyk7
+CisJCXNldF9kZHJjb25maWcoY2hhbiwgcGFyYW1zLCBjaGFubmVsLCBjYXBfaW5mby0+ZGRyY29u
+ZmlnKTsKKwl9CisKKwlpZiAocGFyYW1zLT5iYXNlLm51bV9jaGFubmVscyA9PSAwKSB7CisJCXBy
+aW50ZigiJXM6ICIsIF9fZnVuY19fKTsKKwkJcHJpbnRmKCIgLSAlZE1IeiBmYWlsZWQhXG4iLCBw
+YXJhbXMtPmJhc2UuZGRyX2ZyZXEpOworCQlyZXR1cm4gLUVJTlZBTDsKIAl9CiAKIAlwYXJhbXMt
+PmJhc2Uuc3RyaWRlID0gY2FsY3VsYXRlX3N0cmlkZShwYXJhbXMpOwotLSAKMi4xOC4wLjMyMS5n
+ZmZjNmZhMGUzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMu
+ZGVueC5kZS9saXN0aW5mby91LWJvb3QK
