@@ -1,14 +1,14 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 4.19 031/101] drm/rockchip: Properly adjust to a true
+Subject: [PATCH AUTOSEL 4.14 18/60] drm/rockchip: Properly adjust to a true
  clock in adjusted_mode
-Date: Fri, 19 Jul 2019 00:06:22 -0400
-Message-ID: <20190719040732.17285-31-sashal@kernel.org>
-References: <20190719040732.17285-1-sashal@kernel.org>
+Date: Fri, 19 Jul 2019 00:10:27 -0400
+Message-ID: <20190719041109.18262-18-sashal@kernel.org>
+References: <20190719041109.18262-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190719040732.17285-1-sashal@kernel.org>
+In-Reply-To: <20190719041109.18262-1-sashal@kernel.org>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -43,9 +43,9 @@ a2VybmVsLm9yZz4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
 cC5jIHwgMyArKy0KIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24o
 LSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
 cC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwppbmRleCBm
-OGY5YWU2NjIyZWIuLjg3MzYyNGExMWNlOCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Jv
+MWZhOGQ1YzliNTIuLjcwMTA0MjRiMmY4OSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Jv
 Y2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX3ZvcC5jCkBAIC04ODAsNyArODgwLDggQEAgc3RhdGljIGJvb2wgdm9wX2Ny
+cm9ja2NoaXBfZHJtX3ZvcC5jCkBAIC04NjEsNyArODYxLDggQEAgc3RhdGljIGJvb2wgdm9wX2Ny
 dGNfbW9kZV9maXh1cChzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCiAJc3RydWN0IHZvcCAqdm9wID0g
 dG9fdm9wKGNydGMpOwogCiAJYWRqdXN0ZWRfbW9kZS0+Y2xvY2sgPQotCQljbGtfcm91bmRfcmF0
 ZSh2b3AtPmRjbGssIG1vZGUtPmNsb2NrICogMTAwMCkgLyAxMDAwOworCQlESVZfUk9VTkRfVVAo
