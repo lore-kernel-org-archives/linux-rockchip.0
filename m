@@ -1,14 +1,14 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
+From: Vicente Bergas <vicencb@gmail.com>
 Subject: Re: kexec on rk3399
-Date: Mon, 22 Jul 2019 15:54:41 +0100
-Message-ID: <91c53121-9041-e8a2-97a2-5b5626e24c6e@arm.com>
+Date: Mon, 22 Jul 2019 18:08:37 +0200
+Message-ID: <7b8df2ae-032b-49bf-a7d8-5a0f8a1c2618@gmail.com>
 References: <ebcb52be-2063-4e2c-9a09-fdcacb94f855@gmail.com>
+ <20190722144636.x3bxq2ky7w2yfn3m@willie-the-truck>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <ebcb52be-2063-4e2c-9a09-fdcacb94f855@gmail.com>
-Content-Language: en-US
+In-Reply-To: <20190722144636.x3bxq2ky7w2yfn3m@willie-the-truck>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -18,39 +18,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Vicente Bergas <vicencb@gmail.com>, linux-arm-kernel@lists.infradead.org
-Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+To: Will Deacon <will@kernel.org>
+Cc: Matthias Brugger <mbrugger@suse.com>, Heiko Stuebner <heiko@sntech.de>, Marc Zyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 22/07/2019 15:31, Vicente Bergas wrote:
-> Hi, i have been running linux on rk3399 booted with kexec fine until 5.2
-> From 5.2 onwards, there are memory corruption issues as reported here:
-> http://lkml.iu.edu/hypermail/linux/kernel/1906.2/07211.html
-> kexec has been identified as the principal reason for the issues.
-> 
-> It turns out that kexec has never worked reliably on this platform,
-> i was just lucky until recently.
-> 
-> Please, can you provide some directions on how to debug the issue?
-> 
-> The latest test performed is:
->  1.- Boot v5.3-rc1
-
-Not the most trusted version, but hey, why not...
-
->  2.- Kexec into v5.2.2
->  3.- The kernel reports nothing (earlycon not enabled) and does not boot.
-> The same kernel v5.2.2 works fine when booted without kexec.
-
-Can you please enable earlycon and let us know how far it goes? Your
-previous reports hinting at runtime memory corruption, but this seems to
-be much more radical...
-
-FWIW, I was able to kexec using 5.2-rcx (for values of x around 6) on a
-NanoPC-T4, using a mainline u-boot and firmware.
-
-Thanks,
-
-	M.
--- 
-Jazz is not dead. It just smells funny...
+T24gTW9uZGF5LCBKdWx5IDIyLCAyMDE5IDQ6NDY6MzYgUE0gQ0VTVCwgV2lsbCBEZWFjb24gd3Jv
+dGU6Cj4gT24gTW9uLCBKdWwgMjIsIDIwMTkgYXQgMDQ6MzE6MjdQTSArMDIwMCwgVmljZW50ZSBC
+ZXJnYXMgd3JvdGU6Cj4+IEhpLCBpIGhhdmUgYmVlbiBydW5uaW5nIGxpbnV4IG9uIHJrMzM5OSBi
+b290ZWQgd2l0aCBrZXhlYyBmaW5lIHVudGlsIDUuMgo+PiBGcm9tIDUuMiBvbndhcmRzLCB0aGVy
+ZSBhcmUgbWVtb3J5IGNvcnJ1cHRpb24gaXNzdWVzIGFzIHJlcG9ydGVkIGhlcmU6Cj4+IGh0dHA6
+Ly9sa21sLml1LmVkdS9oeXBlcm1haWwvbGludXgva2VybmVsLzE5MDYuMi8wNzIxMS5odG1sCj4+
+IGtleGVjIGhhcyBiZWVuIGlkZW50aWZpZWQgYXMgdGhlIHByaW5jaXBhbCByZWFzb24gZm9yIHRo
+ZSBpc3N1ZXMuCj4KPiBJIHRob3VnaHQgdGhhdCB5b3UgcmVzb2x2ZWQgdGhpcyBpc3N1ZSBieSB1
+cGdyYWRpbmcgdS1ib290LiBEaWQgdGhhdCBub3QKPiBhY3R1YWxseSB3b3JrPwo+Cj4gV2lsbAoK
+SSBhbSBub3cgdXNpbmcgdS1ib290LCBidXQgdGhhdCBpcyBub3QgYSBzb2x1dGlvbi4KTXkgaW50
+ZW50aW9uIGlzIHRvIHVzZSBpdCBvbiB0aGUgU2FwcGhpcmUgYm9hcmQgYW5kIG9uIGdydS1rZXZp
+bi4KSSB3b3VsZCBsaWtlIHRoZSBib290bG9hZGVyIHRvIHN1cHBvcnQgSERNSSBvbiB0aGUgc2Fw
+cGhpcmUgYW5kIEVEUCBvbiAKa2V2aW4KZm9yIHRoZSBpbnRlcmFjdGl2ZSBib290IG1lbnUuClUt
+Qm9vdCBvbiB0aGUgU2FwcGhpcmUgYm9vdHMsIGJ1dCBoYXMgbm8gZ3JhcGhpYyBkaXNwbGF5LiBL
+ZXZpbiBpcyBub3QgCnN1cHBvcnRlZCBhdCBhbGwuCkkndmUgYWNoaXZlZCBzb21lIHByb2dyZXNz
+IG9uIHRoZSB1LWJvb3QgZnJvbnQsIGJ1dCBub3QgZW5vdWdoIHRvIGhhdmUgCmRpc3BsYXkuCgpX
+aXRoIGEga2V4ZWMtYmFzZWQgYm9vdGxvYWRlciBkaXNwbGF5IGlzIGFscmVhZHkgd29ya2luZywg
+b3V0IG9mIHRoZSBib3guCgpGcm9tIGFub3RoZXIgcG9pbnQgb2YgdmlldywgSSB3b3VsZCBsaWtl
+IHRvIHJlZHVjZSB0aGUgVENCICh0cnVzdGVkIApjb21wdXRpbmcgYmFzZSkuCkxpbnV4IGlzIGh1
+Z2UsIGJ1dCBpcyBhbHJlYWR5IGluIHRoZSBUQ0IsIHNvLCBleGVjdXRpbmcgaXQgdHdpY2UgZG9l
+cyBub3QgCmFkZCB0byB0aGUgVENCLgpVLUJvb3QsIGluc3RlYWQsIGlzIGVubGFyZ2luZyB0aGUg
+VENCLCBpbiB0aGlzIGNhc2UuCgpSZWdhcmRzLAogIFZpY2Vuw6cuCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5n
+IGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
