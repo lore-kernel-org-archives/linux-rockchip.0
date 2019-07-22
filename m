@@ -1,86 +1,36 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH] mmc: dw_mmc: Fix occasional hang after tuning on eMMC
-Date: Mon, 22 Jul 2019 15:41:51 +0200
-Message-ID: <CAPDyKFqcbFZWiMc3zLFP7cvkNG0hMB91rfy6T=dbrFks9EWMsQ@mail.gmail.com>
-References: <20190708195613.205729-1-dianders@chromium.org>
+From: Vicente Bergas <vicencb@gmail.com>
+Subject: kexec on rk3399
+Date: Mon, 22 Jul 2019 16:31:27 +0200
+Message-ID: <ebcb52be-2063-4e2c-9a09-fdcacb94f855@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190708195613.205729-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Jaehoon Chung <jh80.chung@samsung.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, Guenter Roeck <groeck@chromium.org>, Sonny Rao <sonnyrao@chromium.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Alim Akhtar <alim.akhtar@gmail.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-arm-kernel@lists.infradead.org
+Cc: Marc Zyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 8 Jul 2019 at 21:56, Douglas Anderson <dianders@chromium.org> wrote:
->
-> In commit 46d179525a1f ("mmc: dw_mmc: Wait for data transfer after
-> response errors.") we fixed a tuning-induced hang that I saw when
-> stress testing tuning on certain SD cards.  I won't re-hash that whole
-> commit, but the summary is that as a normal part of tuning you need to
-> deal with transfer errors and there were cases where these transfer
-> errors was putting my system into a bad state causing all future
-> transfers to fail.  That commit fixed handling of the transfer errors
-> for me.
->
-> In downstream Chrome OS my fix landed and had the same behavior for
-> all SD/MMC commands.  However, it looks like when the commit landed
-> upstream we limited it to only SD tuning commands.  Presumably this
-> was to try to get around problems that Alim Akhtar reported on exynos
-> [1].
->
-> Unfortunately while stress testing reboots (and suspend/resume) on
-> some rk3288-based Chromebooks I found the same problem on the eMMC on
-> some of my Chromebooks (the ones with Hynix eMMC).  Since the eMMC
-> tuning command is different (MMC_SEND_TUNING_BLOCK_HS200
-> vs. MMC_SEND_TUNING_BLOCK) we were basically getting back into the
-> same situation.
->
-> I'm hoping that whatever problems exynos was having in the past are
-> somehow magically fixed now and we can make the behavior the same for
-> all commands.
->
-> [1] https://lkml.kernel.org/r/CAGOxZ53WfNbaMe0_AM0qBqU47kAfgmPBVZC8K8Y-_J3mDMqW4A@mail.gmail.com
->
-> Fixes: 46d179525a1f ("mmc: dw_mmc: Wait for data transfer after response errors.")
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> Cc: Marek Szyprowski <m.szyprowski@samsung.com>
-> Cc: Alim Akhtar <alim.akhtar@gmail.com>
-> Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-
-Applied for fixes and by adding a stable tag, thanks!
-
-Kind regards
-Uffe
-
-
-> ---
-> Marek (or anyone else using exynos): is it easy for you to test this
-> and check if things are still broken when we land this patch?  If so,
-> I guess we could have a quirk to have different behavior for just
-> Rockchip SoCs but I'd rather avoid that if possible.
->
-> NOTE: I'm not hoping totally in vain here.  It is possible that some
-> of the CTO/DTO timers that landed could be the magic that would get
-> exynos unstuck.
->
->  drivers/mmc/host/dw_mmc.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-> index b53b6b7d4dd4..60c3a06e3469 100644
-> --- a/drivers/mmc/host/dw_mmc.c
-> +++ b/drivers/mmc/host/dw_mmc.c
-> @@ -2034,8 +2034,7 @@ static void dw_mci_tasklet_func(unsigned long priv)
->                                  * delayed. Allowing the transfer to take place
->                                  * avoids races and keeps things simple.
->                                  */
-> -                               if ((err != -ETIMEDOUT) &&
-> -                                   (cmd->opcode == MMC_SEND_TUNING_BLOCK)) {
-> +                               if (err != -ETIMEDOUT) {
->                                         state = STATE_SENDING_DATA;
->                                         continue;
->                                 }
-> --
-> 2.22.0.410.gd8fdbe21b5-goog
->
+SGksIGkgaGF2ZSBiZWVuIHJ1bm5pbmcgbGludXggb24gcmszMzk5IGJvb3RlZCB3aXRoIGtleGVj
+IGZpbmUgdW50aWwgNS4yCkZyb20gNS4yIG9ud2FyZHMsIHRoZXJlIGFyZSBtZW1vcnkgY29ycnVw
+dGlvbiBpc3N1ZXMgYXMgcmVwb3J0ZWQgaGVyZToKaHR0cDovL2xrbWwuaXUuZWR1L2h5cGVybWFp
+bC9saW51eC9rZXJuZWwvMTkwNi4yLzA3MjExLmh0bWwKa2V4ZWMgaGFzIGJlZW4gaWRlbnRpZmll
+ZCBhcyB0aGUgcHJpbmNpcGFsIHJlYXNvbiBmb3IgdGhlIGlzc3Vlcy4KCkl0IHR1cm5zIG91dCB0
+aGF0IGtleGVjIGhhcyBuZXZlciB3b3JrZWQgcmVsaWFibHkgb24gdGhpcyBwbGF0Zm9ybSwKaSB3
+YXMganVzdCBsdWNreSB1bnRpbCByZWNlbnRseS4KClBsZWFzZSwgY2FuIHlvdSBwcm92aWRlIHNv
+bWUgZGlyZWN0aW9ucyBvbiBob3cgdG8gZGVidWcgdGhlIGlzc3VlPwoKVGhlIGxhdGVzdCB0ZXN0
+IHBlcmZvcm1lZCBpczoKIDEuLSBCb290IHY1LjMtcmMxCiAyLi0gS2V4ZWMgaW50byB2NS4yLjIK
+IDMuLSBUaGUga2VybmVsIHJlcG9ydHMgbm90aGluZyAoZWFybHljb24gbm90IGVuYWJsZWQpIGFu
+ZCBkb2VzIG5vdCBib290LgpUaGUgc2FtZSBrZXJuZWwgdjUuMi4yIHdvcmtzIGZpbmUgd2hlbiBi
+b290ZWQgd2l0aG91dCBrZXhlYy4KClJlZ2FyZHMsCiAgVmljZW7Dpy4KCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxp
+bmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
