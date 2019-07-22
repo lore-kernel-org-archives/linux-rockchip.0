@@ -1,34 +1,22 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Applied "SoC: rockchip: rockchip_max98090: Enable MICBIAS for headset
- keypress detection" to the asoc tree
-Date: Mon, 22 Jul 2019 13:22:10 +0100 (BST)
-Message-ID: <20190722122210.1A0462740463@ypsilon.sirena.org.uk>
-References: <20190719173929.24065-1-enric.balletbo@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190719173929.24065-1-enric.balletbo@collabora.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Subject: Applied "SoC: rockchip-max98090: Remove MICBIAS as supply of input pin IN34" to the asoc tree
+Date: Mon, 22 Jul 2019 13:22:05 +0100 (BST)
+Message-ID: <20190722122205.95EA72742C1A@ypsilon.sirena.org.uk>
+References: <20190719180558.11459-1-enric.balletbo@collabora.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190719180558.11459-1-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, dianders@chromium.org, Jaroslav Kysela <perex@perex.cz>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Collabora Kernel ML <kernel@collabora.com>, linux-arm-kernel@lists.infradead.org, cychiang@chromium.org
+Cc: alsa-devel@alsa-project.org, Collabora Kernel ML <kernel@collabora.com>, cychiang@chromium.org, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, Jaroslav Kysela <perex@perex.cz>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 The patch
 
-   SoC: rockchip: rockchip_max98090: Enable MICBIAS for headset keypress detection
+   SoC: rockchip-max98090: Remove MICBIAS as supply of input pin IN34
 
 has been applied to the asoc tree at
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.3
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.4
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
@@ -49,91 +37,37 @@ to this mail.
 Thanks,
 Mark
 
-From f86621cd6c6f54edfdd62da347b2bbb8d7fddc8d Mon Sep 17 00:00:00 2001
+From 03cc2c22a711080790c5dcb546dd073fe38add05 Mon Sep 17 00:00:00 2001
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Date: Fri, 19 Jul 2019 19:39:29 +0200
-Subject: [PATCH] SoC: rockchip: rockchip_max98090: Enable MICBIAS for headset
- keypress detection
+Date: Fri, 19 Jul 2019 20:05:58 +0200
+Subject: [PATCH] SoC: rockchip-max98090: Remove MICBIAS as supply of input pin
+ IN34
 
-The TS3A227E says that the headset keypress detection needs the MICBIAS
-power in order to report the key events to ensure proper operation
-The headset keypress detection needs the MICBIAS power in order to report
-the key events all the time as long as MIC is present. So MICBIAS pin
-is forced on when a MICROPHONE is detected.
+Commit ec0d23b295b9 ("ASoC: rockchip-max98090: Fix the Headset Mic
+route.") moved the MICBIAS widget to supply Headset Mic but forget to
+remove the MICBIAS widget to supply IN34 which is not really needed, so
+remove that path so we have:
 
-On Veyron Minnie I observed that if the MICBIAS power is not present and
-the key press detection is activated (just because it is enabled when you
-insert a headset), it randomly reports a keypress on insert.
-E.g. (KEY_PLAYPAUSE)
-
- Event: (SW_HEADPHONE_INSERT), value 1
- Event: (SW_MICROPHONE_INSERT), value 1
- Event: -------------- SYN_REPORT ------------
- Event: (KEY_PLAYPAUSE), value 1
-
-Userspace thinks that KEY_PLAYPAUSE is pressed and produces the annoying
-effect that the media player starts a play/pause loop.
-
-Note that, although most of the time the key reported is the one
-associated with BTN_0, not always this is true. On my tests I also saw
-different keys reported
+   IN34 <==== Headset MIC <==== MICBIAS
 
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Link: https://lore.kernel.org/r/20190719173929.24065-1-enric.balletbo@collabora.com
+Link: https://lore.kernel.org/r/20190719180558.11459-1-enric.balletbo@collabora.com
 Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
- sound/soc/rockchip/rockchip_max98090.c | 32 ++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
+ sound/soc/rockchip/rockchip_max98090.c | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
-index c5fc24675a33..782e534d4c0d 100644
+index c5fc24675a33..d1c907631c2d 100644
 --- a/sound/soc/rockchip/rockchip_max98090.c
 +++ b/sound/soc/rockchip/rockchip_max98090.c
-@@ -61,6 +61,37 @@ static const struct snd_kcontrol_new rk_mc_controls[] = {
- 	SOC_DAPM_PIN_SWITCH("Speaker"),
- };
+@@ -45,7 +45,6 @@ static const struct snd_soc_dapm_widget rk_dapm_widgets[] = {
  
-+static int rk_jack_event(struct notifier_block *nb, unsigned long event,
-+			 void *data)
-+{
-+	struct snd_soc_jack *jack = (struct snd_soc_jack *)data;
-+	struct snd_soc_dapm_context *dapm = &jack->card->dapm;
-+
-+	if (event & SND_JACK_MICROPHONE)
-+		snd_soc_dapm_force_enable_pin(dapm, "MICBIAS");
-+	else
-+		snd_soc_dapm_disable_pin(dapm, "MICBIAS");
-+
-+	snd_soc_dapm_sync(dapm);
-+
-+	return 0;
-+}
-+
-+static struct notifier_block rk_jack_nb = {
-+	.notifier_call = rk_jack_event,
-+};
-+
-+static int rk_init(struct snd_soc_pcm_runtime *runtime)
-+{
-+	/*
-+	 * The jack has already been created in the rk_98090_headset_init()
-+	 * function.
-+	 */
-+	snd_soc_jack_notifier_register(&headset_jack, &rk_jack_nb);
-+
-+	return 0;
-+}
-+
- static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
- 			     struct snd_pcm_hw_params *params)
- {
-@@ -119,6 +150,7 @@ SND_SOC_DAILINK_DEFS(hifi,
- static struct snd_soc_dai_link rk_dailink = {
- 	.name = "max98090",
- 	.stream_name = "Audio",
-+	.init = rk_init,
- 	.ops = &rk_aif1_ops,
- 	/* set max98090 as slave */
- 	.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
+ static const struct snd_soc_dapm_route rk_audio_map[] = {
+ 	{"IN34", NULL, "Headset Mic"},
+-	{"IN34", NULL, "MICBIAS"},
+ 	{"Headset Mic", NULL, "MICBIAS"},
+ 	{"DMICL", NULL, "Int Mic"},
+ 	{"Headphone", NULL, "HPL"},
 -- 
 2.20.1
