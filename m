@@ -1,55 +1,56 @@
-From: Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>
+From: Marc Zyngier <marc.zyngier@arm.com>
 Subject: Re: kexec on rk3399
-Date: Mon, 22 Jul 2019 14:47:51 +0000
-Message-ID: <5167bdd7-6cdd-9214-582b-9c01342f2cb3@suse.com>
+Date: Mon, 22 Jul 2019 15:54:41 +0100
+Message-ID: <91c53121-9041-e8a2-97a2-5b5626e24c6e@arm.com>
 References: <ebcb52be-2063-4e2c-9a09-fdcacb94f855@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <ebcb52be-2063-4e2c-9a09-fdcacb94f855-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <ebcb52be-2063-4e2c-9a09-fdcacb94f855@gmail.com>
 Content-Language: en-US
-Content-ID: <373EFE8577B33D44BC5F1CB21251F836-WIijndS0fTycE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Cc: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Vicente Bergas <vicencb@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-DQoNCk9uIDIyLzA3LzIwMTkgMTY6MzEsIFZpY2VudGUgQmVyZ2FzIHdyb3RlOg0KPiBIaSwgaSBo
-YXZlIGJlZW4gcnVubmluZyBsaW51eCBvbiByazMzOTkgYm9vdGVkIHdpdGgga2V4ZWMgZmluZSB1
-bnRpbCA1LjINCj4gRnJvbSA1LjIgb253YXJkcywgdGhlcmUgYXJlIG1lbW9yeSBjb3JydXB0aW9u
-IGlzc3VlcyBhcyByZXBvcnRlZCBoZXJlOg0KPiBodHRwOi8vbGttbC5pdS5lZHUvaHlwZXJtYWls
-L2xpbnV4L2tlcm5lbC8xOTA2LjIvMDcyMTEuaHRtbA0KPiBrZXhlYyBoYXMgYmVlbiBpZGVudGlm
-aWVkIGFzIHRoZSBwcmluY2lwYWwgcmVhc29uIGZvciB0aGUgaXNzdWVzLg0KPiANCj4gSXQgdHVy
-bnMgb3V0IHRoYXQga2V4ZWMgaGFzIG5ldmVyIHdvcmtlZCByZWxpYWJseSBvbiB0aGlzIHBsYXRm
-b3JtLA0KPiBpIHdhcyBqdXN0IGx1Y2t5IHVudGlsIHJlY2VudGx5Lg0KPiANCj4gUGxlYXNlLCBj
-YW4geW91IHByb3ZpZGUgc29tZSBkaXJlY3Rpb25zIG9uIGhvdyB0byBkZWJ1ZyB0aGUgaXNzdWU/
-DQo+IA0KPiBUaGUgbGF0ZXN0IHRlc3QgcGVyZm9ybWVkIGlzOg0KPiAxLi0gQm9vdCB2NS4zLXJj
-MQ0KPiAyLi0gS2V4ZWMgaW50byB2NS4yLjINCj4gMy4tIFRoZSBrZXJuZWwgcmVwb3J0cyBub3Ro
-aW5nIChlYXJseWNvbiBub3QgZW5hYmxlZCkgYW5kIGRvZXMgbm90IGJvb3QuDQo+IFRoZSBzYW1l
-IGtlcm5lbCB2NS4yLjIgd29ya3MgZmluZSB3aGVuIGJvb3RlZCB3aXRob3V0IGtleGVjLg0KDQpJ
-cyB0aGVyZSBhIGtub3duIGtlcm5lbCB3aGVyZSBrZXhlYyB3YXMgd29ya2luZyAodjUuMiBlLmcu
-KT8NCklmIHlvdSBjYW4gZmluZCBvbmUsIHlvdSBjYW4gcnVuIGdpdCBiaXNlY3QgdG8gZmluZCB0
-aGUgY29tbWl0IHRoYXQgYnJlYWtzIHRoaW5ncy4NCg0KQXBhcnQgZnJvbSB0aGF0IHlvdSBzaG91
-bGQgdHJ5IHRvIGVuYWJsZSBlYXJseWNvbiBvbiB5b3VyIGtlcm5lbCB5b3Ugd2FudCB0bw0Ka2V4
-ZWMgaW50bywgc28gYXQgbGVhc3QgeW91IGNhbiBzZWUgaWYgaXQgY3Jhc2hlcyBpbiB0aGUgbmV3
-IGtlcm5lbC4gSWYgeW91DQpzdGlsbCBkb24ndCBzZWUgYW55dGhpbmcgeW91IGNhbiB0cnkgdG8g
-dXNlIHBydWdhdG9yeSBwcmludGluZyAoaWYgeW91IHVzZQ0Ka2V4ZWNfbG9hZCBhbmQgbm90IGtl
-eGVjX2ZpbGVfbG9hZCkuIEkgaGF2ZSBhIHdvcmstaW4tcHJvZ3Jlc3MgcGF0Y2hlcyB0aGF0IEkN
-CmNhbiBzaGFyZSB3aXRoIHlvdSBpZiBuZWVkZWQuIEp1c3QgbGV0IG1lIGtub3cuDQoNClJlZ2Fy
-ZHMsDQpNYXR0aGlhcw0KDQoNCj4gDQo+IFJlZ2FyZHMsDQo+IMKgVmljZW7Dpy4NCj4gDQo+IA0K
-PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXw0KPiBsaW51
-eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdA0KPiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJh
-ZGVhZC5vcmcNCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1hcm0ta2VybmVsDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+On 22/07/2019 15:31, Vicente Bergas wrote:
+> Hi, i have been running linux on rk3399 booted with kexec fine until 5.2
+> From 5.2 onwards, there are memory corruption issues as reported here:
+> http://lkml.iu.edu/hypermail/linux/kernel/1906.2/07211.html
+> kexec has been identified as the principal reason for the issues.
+> 
+> It turns out that kexec has never worked reliably on this platform,
+> i was just lucky until recently.
+> 
+> Please, can you provide some directions on how to debug the issue?
+> 
+> The latest test performed is:
+>  1.- Boot v5.3-rc1
+
+Not the most trusted version, but hey, why not...
+
+>  2.- Kexec into v5.2.2
+>  3.- The kernel reports nothing (earlycon not enabled) and does not boot.
+> The same kernel v5.2.2 works fine when booted without kexec.
+
+Can you please enable earlycon and let us know how far it goes? Your
+previous reports hinting at runtime memory corruption, but this seems to
+be much more radical...
+
+FWIW, I was able to kexec using 5.2-rcx (for values of x around 6) on a
+NanoPC-T4, using a mainline u-boot and firmware.
+
+Thanks,
+
+	M.
+-- 
+Jazz is not dead. It just smells funny...
