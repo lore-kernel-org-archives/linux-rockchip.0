@@ -1,49 +1,58 @@
-From: =?UTF-8?q?Andrius=20=C5=A0tikonas?= <andrius-4ZmsDwijFH7sq35pWSNszA@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: Add PWM fan for RockPro64
-Date: Wed, 24 Jul 2019 20:17:15 +0100
-Message-ID: <20190724191715.7668-1-andrius@stikonas.eu>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: Limit WiFi TX power on rk3288-veyron-jerry
+Date: Wed, 24 Jul 2019 12:56:08 -0700
+Message-ID: <CAD=FV=Wk2meLxa6AszjFs=Mfp_wML_7OMsn81FLA5tcdEx=1kg@mail.gmail.com>
+References: <20190723225258.93058-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: =?UTF-8?q?Andrius=20=C5=A0tikonas?= <andrius-4ZmsDwijFH7sq35pWSNszA@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190723225258.93058-1-mka@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Kaehlcke <mka@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Um9ja1BybzY0IGhhcyBhIGRlZGljYXRlZCBjaXJjdWl0IGZvciBkcml2aW5nIGEgMTJWIGZhbiBm
-cm9tIFBXTTEuCgpBdCB0aGUgbW9tZW50IHRoaXMgbWFrZXMgZmFuIHNwaW4gYXQgZnVsbCBzcGVl
-ZC4gZmFuY29udHJvbCBjYW4gYmUgdXNlZAp0byBjb250cm9sIGZhbiBzcGVlZC4gRS5nLiB0aGUg
-Zm9sbG93aW5nIGNvbmZpZyBmaWxlIHdvcmtzIHdlbGw6CgpJTlRFUlZBTD0xMApERVZQQVRIPWh3
-bW9uMD1kZXZpY2VzL3BsYXRmb3JtL3B3bS1mYW4KREVWTkFNRT1od21vbjA9cHdtZmFuCkZDVEVN
-UFM9aHdtb24wL2RldmljZS9wd20xPS4uL3RoZXJtYWwvdGhlcm1hbF96b25lMC90ZW1wCk1JTlRF
-TVA9aHdtb24wL2RldmljZS9wd20xPTQwCk1BWFRFTVA9aHdtb24wL2RldmljZS9wd20xPTYwCk1J
-TlNUQVJUPWh3bW9uMC9kZXZpY2UvcHdtMT0xMDAKTUlOU1RPUD1od21vbjAvZGV2aWNlL3B3bTE9
-NzAKCkluIHRoZSBmdXR1cmUgaXQgd291bGQgYmUgbmljZSB0byBkZWZpbmUgdHJpcCBwb2ludHMg
-aW4gZHRzIGZpbGUsCnNvIHRoYXQga2VybmVsIGNvdWxkIGFkanVzdCBmYW4gc3BlZWQgaXRzZWxm
-LgoKU2lnbmVkLW9mZi1ieTogQW5kcml1cyDFoHRpa29uYXMgPGFuZHJpdXNAc3Rpa29uYXMuZXU+
-Ci0tLQogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcm9ja3BybzY0LmR0cyB8
-IDEyICsrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDEyIGluc2VydGlvbnMoKykKCmRpZmYg
-LS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2NrcHJvNjQuZHRz
-IGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcm9ja3BybzY0LmR0cwppbmRl
-eCBlYjU1OTQwNjIwMDYuLjAyY2Y1ZDBkYmFlZCAxMDA2NDQKLS0tIGEvYXJjaC9hcm02NC9ib290
-L2R0cy9yb2NrY2hpcC9yazMzOTktcm9ja3BybzY0LmR0cworKysgYi9hcmNoL2FybTY0L2Jvb3Qv
-ZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2NrcHJvNjQuZHRzCkBAIC0xNjksNiArMTY5LDE0IEBACiAJ
-CXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDE0MDAwMDA+OwogCQl2aW4tc3VwcGx5ID0gPCZ2
-Y2M1djBfc3lzPjsKIAl9OworCisJZmFuOiBwd20tZmFuIHsKKwkJY29tcGF0aWJsZSA9ICJwd20t
-ZmFuIjsKKwkJI2Nvb2xpbmctY2VsbHMgPSA8Mj47CisJCWZhbi1zdXBwbHkgPSA8JnZjYzEydl9k
-Y2luPjsKKwkJcHdtcyA9IDwmcHdtMSAwIDUwMDAwIDA+OworCX07CisKIH07CiAKICZjcHVfbDAg
-ewpAQCAtNjAyLDYgKzYxMCwxMCBAQAogCXN0YXR1cyA9ICJva2F5IjsKIH07CiAKKyZwd20xIHsK
-KwlzdGF0dXMgPSAib2theSI7Cit9OworCiAmcHdtMiB7CiAJc3RhdHVzID0gIm9rYXkiOwogfTsK
-LS0gCjIuMjEuMAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+Hi,
+
+On Tue, Jul 23, 2019 at 3:53 PM Matthias Kaehlcke <mka@chromium.org> wrote:
+>
+> The downstream Chrome OS 3.14 kernel for jerry limits WiFi TX power
+> through calibration data in the device tree [1]. Add a DT node for
+> the WiFi chip and use the downstream calibration data.
+>
+> Not all calibration data entries have the length specified in the
+> binding (Documentation/devicetree/bindings/net/wireless/marvell-8xxx.txt),
+> however this is the data used by the downstream ('official') kernel
+> and the binding mentions that "the length can vary between hw
+> versions".
+>
+> [1] https://crrev.com/c/271237
+>
+> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+> ---
+>  arch/arm/boot/dts/rk3288-veyron-jerry.dts | 147 ++++++++++++++++++++++
+>  1 file changed, 147 insertions(+)
+
+I agree that this matches what's downstream and seems right.
+
+As you pointed out the bindings are a bit on the sketchy side,
+claiming a certain length in one place but then saying that the length
+depends on the HW version in another place.  I'll also point out that
+the bindings are inconsistent about the name that should be used.
+AKA:
+
+marvell,caldata-txpwrlimit-2g
+ -vs-
+marvell,caldata_00_txpwrlimit_2g_cfg_set
+
+...but I think the answer is that it doesn't matter at all from a
+practical point of view.  The code seems to just find everything that
+starts with "marvell,caldata" and send the binary blindly to the WiFi
+card.  Presumably there is enough of a header in the opaque binary
+data that the card can make sense of what it's being sent.
+
+
+So it seems like this is the best we can do given the current state of
+the world.
+
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
