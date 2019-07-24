@@ -1,7 +1,7 @@
 From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH 5/7] media: hantro: Add helpers to prepare/finish a run
-Date: Wed, 24 Jul 2019 14:17:00 -0300
-Message-ID: <20190724171702.9449-6-ezequiel@collabora.com>
+Subject: [PATCH 6/7] media: hantro: Move VP8 common code
+Date: Wed, 24 Jul 2019 14:17:01 -0300
+Message-ID: <20190724171702.9449-7-ezequiel@collabora.com>
 References: <20190724171702.9449-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,210 +21,99 @@ To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hans Verkuil <hans.verk
 Cc: fbuergisser-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+In order to introduce support for RK3399 VP8 decoding,
+move some common VP8 code. This will be reused by
+the RK3399 implementation, reducing code duplication.
 
-And use them where appropriate.
-
-We might want to move hantro_{prepare,finish}_run() calls to
-device_run() and have a 2-step approach similar to cedrus (prepare +
-trigger) at some point, but let's keep that for later.
-
-Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
- drivers/staging/media/hantro/hantro_drv.c     | 22 +++++++++++++++++++
- .../media/hantro/hantro_g1_mpeg2_dec.c        | 10 ++-------
- .../staging/media/hantro/hantro_g1_vp8_dec.c  |  9 ++------
- .../staging/media/hantro/hantro_h1_jpeg_enc.c |  7 ++++--
- drivers/staging/media/hantro/hantro_hw.h      |  2 ++
- .../media/hantro/rk3399_vpu_hw_jpeg_enc.c     |  8 ++-----
- .../media/hantro/rk3399_vpu_hw_mpeg2_dec.c    | 10 ++-------
- 7 files changed, 37 insertions(+), 31 deletions(-)
+ .../staging/media/hantro/hantro_g1_vp8_dec.c    | 17 -----------------
+ drivers/staging/media/hantro/hantro_hw.h        |  4 ++++
+ drivers/staging/media/hantro/hantro_vp8.c       | 15 +++++++++++++++
+ 3 files changed, 19 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index 398618b0d586..4af6ee80229e 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -153,6 +153,28 @@ void hantro_watchdog(struct work_struct *work)
- 	}
- }
- 
-+void hantro_prepare_run(struct hantro_ctx *ctx)
-+{
-+	struct vb2_v4l2_buffer *src_buf;
-+
-+	src_buf = hantro_get_src_buf(ctx);
-+	v4l2_ctrl_request_setup(src_buf->vb2_buf.req_obj.req,
-+				&ctx->ctrl_handler);
-+}
-+
-+void hantro_finish_run(struct hantro_ctx *ctx)
-+{
-+	struct vb2_v4l2_buffer *src_buf;
-+
-+	src_buf = hantro_get_src_buf(ctx);
-+	v4l2_ctrl_request_complete(src_buf->vb2_buf.req_obj.req,
-+				   &ctx->ctrl_handler);
-+
-+	/* Kick the watchdog. */
-+	schedule_delayed_work(&ctx->dev->watchdog_work,
-+			      msecs_to_jiffies(2000));
-+}
-+
- static void device_run(void *priv)
- {
- 	struct hantro_ctx *ctx = priv;
-diff --git a/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c b/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c
-index 55f861e96108..80f0e94f8afa 100644
---- a/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c
-+++ b/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c
-@@ -171,8 +171,7 @@ void hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx)
- 	dst_buf = hantro_get_dst_buf(ctx);
- 
- 	/* Apply request controls if any */
--	v4l2_ctrl_request_setup(src_buf->vb2_buf.req_obj.req,
--				&ctx->ctrl_handler);
-+	hantro_prepare_run(ctx);
- 
- 	slice_params = hantro_get_ctrl(ctx,
- 				       V4L2_CID_MPEG_VIDEO_MPEG2_SLICE_PARAMS);
-@@ -248,12 +247,7 @@ void hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx)
- 					&dst_buf->vb2_buf,
- 					sequence, picture, slice_params);
- 
--	/* Controls no longer in-use, we can complete them */
--	v4l2_ctrl_request_complete(src_buf->vb2_buf.req_obj.req,
--				   &ctx->ctrl_handler);
--
--	/* Kick the watchdog and start decoding */
--	schedule_delayed_work(&vpu->watchdog_work, msecs_to_jiffies(2000));
-+	hantro_finish_run(ctx);
- 
- 	reg = G1_REG_DEC_E(1);
- 	vdpu_write(vpu, reg, G1_SWREG(1));
 diff --git a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-index 6032cbbecb06..21b132b2ed04 100644
+index 21b132b2ed04..831223d43ee3 100644
 --- a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
 +++ b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-@@ -454,8 +454,7 @@ void hantro_g1_vp8_dec_run(struct hantro_ctx *ctx)
- 	u32 reg;
+@@ -16,8 +16,6 @@
+ #include "hantro.h"
+ #include "hantro_g1_regs.h"
  
- 	vb2_src = hantro_get_src_buf(ctx);
--	v4l2_ctrl_request_setup(vb2_src->vb2_buf.req_obj.req,
--				&ctx->ctrl_handler);
-+	hantro_prepare_run(ctx);
- 
- 	hdr = hantro_get_ctrl(ctx, V4L2_CID_MPEG_VIDEO_VP8_FRAME_HEADER);
- 	if (WARN_ON(!hdr))
-@@ -516,11 +515,7 @@ void hantro_g1_vp8_dec_run(struct hantro_ctx *ctx)
- 	cfg_ref(ctx, hdr);
- 	cfg_buffers(ctx, hdr);
- 
--	/* Controls no longer in-use, we can complete them */
--	v4l2_ctrl_request_complete(vb2_src->vb2_buf.req_obj.req,
--				   &ctx->ctrl_handler);
+-#define DEC_8190_ALIGN_MASK	0x07U
 -
--	schedule_delayed_work(&vpu->watchdog_work, msecs_to_jiffies(2000));
-+	hantro_finish_run(ctx);
+ /* DCT partition base address regs */
+ static const struct hantro_reg vp8_dec_dct_base[8] = {
+ 	{ G1_REG_ADDR_STR, 0, 0xffffffff },
+@@ -131,21 +129,6 @@ static const struct hantro_reg vp8_dec_pred_bc_tap[8][4] = {
+ 	},
+ };
  
- 	vdpu_write(vpu, G1_REG_INTERRUPT_DEC_E, G1_REG_INTERRUPT);
- }
-diff --git a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-index f5adb5cbde50..ecd34a7db190 100644
---- a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-+++ b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-@@ -87,6 +87,8 @@ void hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
- 	src_buf = hantro_get_src_buf(ctx);
- 	dst_buf = hantro_get_dst_buf(ctx);
- 
-+	hantro_prepare_run(ctx);
-+
- 	memset(&jpeg_ctx, 0, sizeof(jpeg_ctx));
- 	jpeg_ctx.buffer = vb2_plane_vaddr(&dst_buf->vb2_buf, 0);
- 	jpeg_ctx.width = ctx->dst_fmt.width;
-@@ -119,7 +121,8 @@ void hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
- 		| H1_REG_ENC_CTRL_ENC_MODE_JPEG
- 		| H1_REG_ENC_PIC_INTRA
- 		| H1_REG_ENC_CTRL_EN_BIT;
--	/* Kick the watchdog and start encoding */
--	schedule_delayed_work(&vpu->watchdog_work, msecs_to_jiffies(2000));
-+
-+	hantro_finish_run(ctx);
-+
- 	vepu_write(vpu, reg, H1_REG_ENC_CTRL);
- }
+-/*
+- * filter taps taken to 7-bit precision,
+- * reference RFC6386#Page-16, filters[8][6]
+- */
+-static const u32 vp8_dec_mc_filter[8][6] = {
+-	{ 0, 0, 128, 0, 0, 0 },
+-	{ 0, -6, 123, 12, -1, 0 },
+-	{ 2, -11, 108, 36, -8, 1 },
+-	{ 0, -9, 93, 50, -6, 0 },
+-	{ 3, -16, 77, 77, -16, 3 },
+-	{ 0, -6, 50, 93, -9, 0 },
+-	{ 1, -8, 36, 108, -11, 2 },
+-	{ 0, -1, 12, 123, -6, 0 }
+-};
+-
+ /*
+  * Set loop filters
+  */
 diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-index 7849852affde..34ef24e3a9ef 100644
+index 34ef24e3a9ef..185e27d47e47 100644
 --- a/drivers/staging/media/hantro/hantro_hw.h
 +++ b/drivers/staging/media/hantro/hantro_hw.h
-@@ -97,6 +97,8 @@ void hantro_watchdog(struct work_struct *work);
+@@ -15,6 +15,8 @@
+ #include <media/vp8-ctrls.h>
+ #include <media/videobuf2-core.h>
+ 
++#define DEC_8190_ALIGN_MASK	0x07U
++
+ struct hantro_dev;
+ struct hantro_ctx;
+ struct hantro_buf;
+@@ -93,6 +95,8 @@ extern const struct hantro_variant rk3399_vpu_variant;
+ extern const struct hantro_variant rk3328_vpu_variant;
+ extern const struct hantro_variant rk3288_vpu_variant;
+ 
++extern const u32 vp8_dec_mc_filter[8][6];
++
+ void hantro_watchdog(struct work_struct *work);
  void hantro_run(struct hantro_ctx *ctx);
  void hantro_irq_done(struct hantro_dev *vpu, unsigned int bytesused,
- 		     enum vb2_buffer_state result);
-+void hantro_prepare_run(struct hantro_ctx *ctx);
-+void hantro_finish_run(struct hantro_ctx *ctx);
+diff --git a/drivers/staging/media/hantro/hantro_vp8.c b/drivers/staging/media/hantro/hantro_vp8.c
+index 66c45335d871..be5cb01d1309 100644
+--- a/drivers/staging/media/hantro/hantro_vp8.c
++++ b/drivers/staging/media/hantro/hantro_vp8.c
+@@ -31,6 +31,21 @@ struct vp8_prob_tbl_packed {
+ 	u8 padding3[96];
+ };
  
- void hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx);
- void rk3399_vpu_jpeg_enc_run(struct hantro_ctx *ctx);
-diff --git a/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c b/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c
-index 82c5af822766..06162f569b5e 100644
---- a/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c
-+++ b/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c
-@@ -113,14 +113,12 @@ void rk3399_vpu_jpeg_enc_run(struct hantro_ctx *ctx)
- 	struct hantro_dev *vpu = ctx->dev;
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
- 	struct hantro_jpeg_ctx jpeg_ctx;
--	struct media_request *src_req;
- 	u32 reg;
- 
- 	src_buf = hantro_get_src_buf(ctx);
- 	dst_buf = hantro_get_dst_buf(ctx);
- 
--	src_req = src_buf->vb2_buf.req_obj.req;
--	v4l2_ctrl_request_setup(src_req, &ctx->ctrl_handler);
-+	hantro_prepare_run(ctx);
- 
- 	memset(&jpeg_ctx, 0, sizeof(jpeg_ctx));
- 	jpeg_ctx.buffer = vb2_plane_vaddr(&dst_buf->vb2_buf, 0);
-@@ -157,9 +155,7 @@ void rk3399_vpu_jpeg_enc_run(struct hantro_ctx *ctx)
- 		| VEPU_REG_ENCODE_FORMAT_JPEG
- 		| VEPU_REG_ENCODE_ENABLE;
- 
--	v4l2_ctrl_request_complete(src_req, &ctx->ctrl_handler);
--
- 	/* Kick the watchdog and start encoding */
--	schedule_delayed_work(&vpu->watchdog_work, msecs_to_jiffies(2000));
-+	hantro_finish_run(ctx);
- 	vepu_write(vpu, reg, VEPU_REG_ENCODE_START);
- }
-diff --git a/drivers/staging/media/hantro/rk3399_vpu_hw_mpeg2_dec.c b/drivers/staging/media/hantro/rk3399_vpu_hw_mpeg2_dec.c
-index 451bfcceadba..e7ba5c0441cc 100644
---- a/drivers/staging/media/hantro/rk3399_vpu_hw_mpeg2_dec.c
-+++ b/drivers/staging/media/hantro/rk3399_vpu_hw_mpeg2_dec.c
-@@ -172,9 +172,7 @@ void rk3399_vpu_mpeg2_dec_run(struct hantro_ctx *ctx)
- 	src_buf = hantro_get_src_buf(ctx);
- 	dst_buf = hantro_get_dst_buf(ctx);
- 
--	/* Apply request controls if any */
--	v4l2_ctrl_request_setup(src_buf->vb2_buf.req_obj.req,
--				&ctx->ctrl_handler);
-+	hantro_prepare_run(ctx);
- 
- 	slice_params = hantro_get_ctrl(ctx,
- 				       V4L2_CID_MPEG_VIDEO_MPEG2_SLICE_PARAMS);
-@@ -254,12 +252,8 @@ void rk3399_vpu_mpeg2_dec_run(struct hantro_ctx *ctx)
- 					 &dst_buf->vb2_buf,
- 					 sequence, picture, slice_params);
- 
--	/* Controls no longer in-use, we can complete them */
--	v4l2_ctrl_request_complete(src_buf->vb2_buf.req_obj.req,
--				   &ctx->ctrl_handler);
--
- 	/* Kick the watchdog and start decoding */
--	schedule_delayed_work(&vpu->watchdog_work, msecs_to_jiffies(2000));
-+	hantro_finish_run(ctx);
- 
- 	reg = vdpu_read(vpu, VDPU_SWREG(57)) | VDPU_REG_DEC_E(1);
- 	vdpu_write(vpu, reg, VDPU_SWREG(57));
++/*
++ * filter taps taken to 7-bit precision,
++ * reference RFC6386#Page-16, filters[8][6]
++ */
++const u32 vp8_dec_mc_filter[8][6] = {
++	{ 0, 0, 128, 0, 0, 0 },
++	{ 0, -6, 123, 12, -1, 0 },
++	{ 2, -11, 108, 36, -8, 1 },
++	{ 0, -9, 93, 50, -6, 0 },
++	{ 3, -16, 77, 77, -16, 3 },
++	{ 0, -6, 50, 93, -9, 0 },
++	{ 1, -8, 36, 108, -11, 2 },
++	{ 0, -1, 12, 123, -6, 0 }
++};
++
+ void hantro_vp8_prob_update(struct hantro_ctx *ctx,
+ 			    const struct v4l2_ctrl_vp8_frame_header *hdr)
+ {
 -- 
 2.22.0
