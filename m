@@ -1,55 +1,47 @@
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Subject: Re: [PATCH v4 14/23] drm/tilcdc: Provide ddc symlink in connector
- sysfs directory
-Date: Wed, 24 Jul 2019 10:51:01 +0200
-Message-ID: <f051455a-3559-8f8e-cc76-1a6388b102b5@collabora.com>
-References: <cover.1562843413.git.andrzej.p@collabora.com>
- <d1d415022c598fb7acd033f0f322dd67250adaa9.1562843413.git.andrzej.p@collabora.com>
- <20190723090532.GA787@ravnborg.org>
- <3ad60be5-49cf-4017-4b74-53a2d6272deb@collabora.com>
- <acfd895d-ab59-0190-e25c-1827bd8d214b@suse.de>
+From: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: [PATCH v2 2/2] mwifiex: Make use of the new sdio_trigger_replug()
+ API to reset
+Date: Wed, 24 Jul 2019 11:35:08 +0000 (UTC)
+Message-ID: <20190724113508.CD35360388@smtp.codeaurora.org>
+References: <20190722193939.125578-3-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <acfd895d-ab59-0190-e25c-1827bd8d214b@suse.de>
-Content-Language: en-US
+In-Reply-To: <20190722193939.125578-3-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Thomas Zimmermann <tzimmermann@suse.de>, Sam Ravnborg <sam@ravnborg.org>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, Maxime Ripard <maxime.ripard@bootlin.com>, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, kernel@collabora.com, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Vincent Abriou <vincent.abriou@st.com>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, David Airlie <airlied@linux.ie>, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Dave Airlie <airlied@redhat.com>, freedreno@lists.freedesktop.org, Pengutronix Kernel Team <kernel@pengutronix.de>, Jonas
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Adrian Hunter <adrian.hunter@intel.com>, Ganapathi Bhat <gbhat@marvell.com>, linux-wireless@vger.kernel.org, Andreas Fenkart <afenkart@gmail.com>, Brian Norris <briannorris@chromium.org>, Amitkumar Karwar <amitkarwar@gmail.com>, linux-rockchip@lists.infradead.org, Wolfram Sang <wsa+renesas@sang-engineering.com>, Nishant Sarmukadam <nishants@marvell.com>, netdev@vger.kernel.org, Avri Altman <avri.altman@wdc.com>, linux-mmc@vger.kernel.org, davem@davemloft.net, Xinming Hu <huxinming820@gmail.com>, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Thomas,
+Douglas Anderson <dianders@chromium.org> wrote:
 
-W dniu 24.07.2019 o 10:01, Thomas Zimmermann pisze:
-> Hi
+> As described in the patch ("mmc: core: Add sdio_trigger_replug()
+> API"), the current mwifiex_sdio_card_reset() is broken in the cases
+> where we're running Bluetooth on a second SDIO func on the same card
+> as WiFi.  The problem goes away if we just use the
+> sdio_trigger_replug() API call.
 > 
+> NOTE: Even though with this new solution there is less of a reason to
+> do our work from a workqueue (the unplug / plug mechanism we're using
+> is possible for a human to perform at any time so the stack is
+> supposed to handle it without it needing to be called from a special
+> context), we still need a workqueue because the Marvell reset function
+> could called from a context where sleeping is invalid and thus we
+> can't claim the host.  One example is Marvell's wakeup_timer_fn().
+> 
+> Cc: Andreas Fenkart <afenkart@gmail.com>
+> Cc: Brian Norris <briannorris@chromium.org>
+> Fixes: b4336a282db8 ("mwifiex: sdio: reset adapter using mmc_hw_reset")
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> Reviewed-by: Brian Norris <briannorris@chromium.org>
 
+I assume this is going via some other tree so I'm dropping this from my
+queue. If I should apply this please resend once the dependency is in
+wireless-drivers-next.
 
-> 
-> I think this echoes my concern about the implicit order of operation. It
-> seems too easy to get this wrong. If you don't want to add an additional
-> interface for setting the ddc field, why not add a dedicated initializer
-> function that sets the ddc field? Something like this.
-> 
-> int drm_connector_init_with_ddc(connector, funcs, ..., ddc)
-> {
-> 	ret = drm_connector_init(connector, funcs, ...);
-> 	if (ret)
-> 		return ret;
-> 
-> 	if (!ddc)
-> 		return 0;
-> 
-> 	connector->ddc = ddc;
-> 	/* set up sysfs */
-> 
-> 	return 0;
-> }
-> 
+Patch set to Not Applicable.
 
-True. I will send a v5 soon.
+-- 
+https://patchwork.kernel.org/patch/11053351/
 
-Thanks,
-
-Andrzej
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
