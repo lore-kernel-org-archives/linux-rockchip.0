@@ -1,52 +1,56 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] mwifiex: Make use of the new sdio_trigger_replug()
- API to reset
-Date: Wed, 24 Jul 2019 13:22:22 -0700
-Message-ID: <CAD=FV=WAsrBV9PzUz1qPzQru+AkOYZ5hsaWdhNYRTNqUfDeOmQ@mail.gmail.com>
-References: <20190722193939.125578-3-dianders@chromium.org> <20190724113508.47A356021C@smtp.codeaurora.org>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 1/2] ARM: dts: rockchip: move rk3288-veryon display
+ settings into a separate file
+Date: Wed, 24 Jul 2019 14:19:35 -0700
+Message-ID: <CAD=FV=U5Z4QqyjzJpERwhvJFPATS+khVWBCStnaJKZR0hHBWNQ@mail.gmail.com>
+References: <20190711223455.12210-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20190724113508.47A356021C-4h6buKAYkuurB/BPivuO70B+6BGkLq7r@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Ganapathi Bhat <gbhat-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Andreas Fenkart <afenkart-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Amitkumar Karwar <amitkarwar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Wolfram Sang <wsa+renesas-jBu1N2QxHDJrcw3mvpCnnVaTQe2KTcn/@public.gmane.org>, Nishant Sarmukadam <nishants-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, netdev <netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Avri Altman <avri.altman-Sjgp3cTcYWE@public.gmane.org>, Linux MMC List <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Xinming Hu <huxinming820-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190711223455.12210-1-mka@chromium.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Matthias Kaehlcke <mka@chromium.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Wed, Jul 24, 2019 at 4:35 AM Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org> wrote:
+On Thu, Jul 11, 2019 at 3:35 PM Matthias Kaehlcke <mka@chromium.org> wrote:
 >
-> Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
->
-> > As described in the patch ("mmc: core: Add sdio_trigger_replug()
-> > API"), the current mwifiex_sdio_card_reset() is broken in the cases
-> > where we're running Bluetooth on a second SDIO func on the same card
-> > as WiFi.  The problem goes away if we just use the
-> > sdio_trigger_replug() API call.
-> >
-> > NOTE: Even though with this new solution there is less of a reason to
-> > do our work from a workqueue (the unplug / plug mechanism we're using
-> > is possible for a human to perform at any time so the stack is
-> > supposed to handle it without it needing to be called from a special
-> > context), we still need a workqueue because the Marvell reset function
-> > could called from a context where sleeping is invalid and thus we
-> > can't claim the host.  One example is Marvell's wakeup_timer_fn().
-> >
-> > Cc: Andreas Fenkart <afenkart-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> > Cc: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > Fixes: b4336a282db8 ("mwifiex: sdio: reset adapter using mmc_hw_reset")
-> > Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > Reviewed-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->
-> I assume this is going via some other tree so I'm dropping this from my
-> queue. If I should apply this please resend once the dependency is in
-> wireless-drivers-next.
->
-> Patch set to Not Applicable.
+> diff --git a/arch/arm/boot/dts/rk3288-veyron-edp.dtsi b/arch/arm/boot/dts/rk3288-veyron-edp.dtsi
+> new file mode 100644
+> index 000000000000..5d812e9e78aa
+> --- /dev/null
+> +++ b/arch/arm/boot/dts/rk3288-veyron-edp.dtsi
+> @@ -0,0 +1,124 @@
+> +// SPDX-License-Identifier: GPL-2.0
 
-Thanks.  For now I'll assume that Ulf will pick it up if/when he is
-happy with patch #1 in this series.  Would you be willing to provide
-your Ack on this patch to make it clear to Ulf you're OK with that?
+Please allow MIT license:
+
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+
+
+> +&pinctrl {
+> +       backlight {
+> +               bl_en: bl-en {
+> +                       rockchip,pins = <7 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+> +               };
+> +       };
+> +};
+
+nit: convention on Rockchip device tree files is that all pinctrl
+stuff is at the bottom.  Downstream I think I added comments about
+this but those didn't make it upstream.
+
+Also: why did you move "bl_en" here but not "edp_hpd"?
 
 -Doug
