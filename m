@@ -1,129 +1,330 @@
-From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-Subject: Re: [PATCH v2 6/7] media: hantro: Move VP8 common code
-Date: Thu, 25 Jul 2019 13:22:30 -0300
-Message-ID: <20190725132230.6e7f0c22@coco.lan>
-References: <20190725141756.2518-1-ezequiel@collabora.com>
-        <20190725141756.2518-7-ezequiel@collabora.com>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: [PATCH v3 1/5] ARM: dts: rockchip: move rk3288-veryon display settings into a separate file
+Date: Thu, 25 Jul 2019 09:26:38 -0700
+Message-ID: <20190725162642.250709-2-mka@chromium.org>
+References: <20190725162642.250709-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190725141756.2518-7-ezequiel@collabora.com>
+In-Reply-To: <20190725162642.250709-1-mka@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: linux-media@vger.kernel.org, Hans Verkuil <hans.verkuil@cisco.com>, kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Em Thu, 25 Jul 2019 11:17:55 -0300
-Ezequiel Garcia <ezequiel@collabora.com> escreveu:
+The chromebook .dtsi file contains common settings for veyron
+Chromebooks with eDP displays. Some veyron devices with a display
+aren't Chromebooks (e.g. 'tiger' aka 'AOpen Chromebase Mini'), move
+display related bits from the chromebook .dtsi into a separate file
+to avoid redundant DT settings.
 
-> In order to introduce support for RK3399 VP8 decoding,
-> move some common VP8 code. This will be reused by
-> the RK3399 implementation, reducing code duplication.
-> 
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> ---
->  .../staging/media/hantro/hantro_g1_vp8_dec.c    | 17 -----------------
->  drivers/staging/media/hantro/hantro_hw.h        |  4 ++++
->  drivers/staging/media/hantro/hantro_vp8.c       | 15 +++++++++++++++
->  3 files changed, 19 insertions(+), 17 deletions(-)
-> 
-> diff --git a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-> index cd1fbd3a0d5f..181e2f76d8cb 100644
-> --- a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-> +++ b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-> @@ -16,8 +16,6 @@
->  #include "hantro.h"
->  #include "hantro_g1_regs.h"
->  
-> -#define DEC_8190_ALIGN_MASK	0x07U
-> -
->  /* DCT partition base address regs */
->  static const struct hantro_reg vp8_dec_dct_base[8] = {
->  	{ G1_REG_ADDR_STR, 0, 0xffffffff },
-> @@ -131,21 +129,6 @@ static const struct hantro_reg vp8_dec_pred_bc_tap[8][4] = {
->  	},
->  };
->  
-> -/*
-> - * filter taps taken to 7-bit precision,
-> - * reference RFC6386#Page-16, filters[8][6]
-> - */
-> -static const u32 vp8_dec_mc_filter[8][6] = {
-> -	{ 0, 0, 128, 0, 0, 0 },
-> -	{ 0, -6, 123, 12, -1, 0 },
-> -	{ 2, -11, 108, 36, -8, 1 },
-> -	{ 0, -9, 93, 50, -6, 0 },
-> -	{ 3, -16, 77, 77, -16, 3 },
-> -	{ 0, -6, 50, 93, -9, 0 },
-> -	{ 1, -8, 36, 108, -11, 2 },
-> -	{ 0, -1, 12, 123, -6, 0 }
-> -};
-> -
->  /*
->   * Set loop filters
->   */
-> diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-> index 34ef24e3a9ef..185e27d47e47 100644
-> --- a/drivers/staging/media/hantro/hantro_hw.h
-> +++ b/drivers/staging/media/hantro/hantro_hw.h
-> @@ -15,6 +15,8 @@
->  #include <media/vp8-ctrls.h>
->  #include <media/videobuf2-core.h>
->  
-> +#define DEC_8190_ALIGN_MASK	0x07U
-> +
->  struct hantro_dev;
->  struct hantro_ctx;
->  struct hantro_buf;
-> @@ -93,6 +95,8 @@ extern const struct hantro_variant rk3399_vpu_variant;
->  extern const struct hantro_variant rk3328_vpu_variant;
->  extern const struct hantro_variant rk3288_vpu_variant;
->  
-> +extern const u32 vp8_dec_mc_filter[8][6];
+The new file is included from the chromebook .dtsi and can be
+included by non-Chromebook devices with a display.
 
-Please don't do that, as a symbol like that can easily cause
-namespace clashes in the future. For all exported symbols,
-please prepend the driver name, like:
+Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+---
+Changes in v3:
+- allow MIT license
+- move pinctrl section to the bottom
 
-	hantro_vp8_dec_mc_filter
+Changes in v2:
+- rebased on v5.4-armsoc/dts32 (0d19541e3b45)
+---
+ .../boot/dts/rk3288-veyron-chromebook.dtsi    | 115 +---------------
+ arch/arm/boot/dts/rk3288-veyron-edp.dtsi      | 124 ++++++++++++++++++
+ 2 files changed, 125 insertions(+), 114 deletions(-)
+ create mode 100644 arch/arm/boot/dts/rk3288-veyron-edp.dtsi
 
-Regards,
-Mauro
-
-
-> +
->  void hantro_watchdog(struct work_struct *work);
->  void hantro_run(struct hantro_ctx *ctx);
->  void hantro_irq_done(struct hantro_dev *vpu, unsigned int bytesused,
-> diff --git a/drivers/staging/media/hantro/hantro_vp8.c b/drivers/staging/media/hantro/hantro_vp8.c
-> index 66c45335d871..be5cb01d1309 100644
-> --- a/drivers/staging/media/hantro/hantro_vp8.c
-> +++ b/drivers/staging/media/hantro/hantro_vp8.c
-> @@ -31,6 +31,21 @@ struct vp8_prob_tbl_packed {
->  	u8 padding3[96];
->  };
->  
-> +/*
-> + * filter taps taken to 7-bit precision,
-> + * reference RFC6386#Page-16, filters[8][6]
-> + */
-> +const u32 vp8_dec_mc_filter[8][6] = {
-> +	{ 0, 0, 128, 0, 0, 0 },
-> +	{ 0, -6, 123, 12, -1, 0 },
-> +	{ 2, -11, 108, 36, -8, 1 },
-> +	{ 0, -9, 93, 50, -6, 0 },
-> +	{ 3, -16, 77, 77, -16, 3 },
-> +	{ 0, -6, 50, 93, -9, 0 },
-> +	{ 1, -8, 36, 108, -11, 2 },
-> +	{ 0, -1, 12, 123, -6, 0 }
-> +};
-> +
->  void hantro_vp8_prob_update(struct hantro_ctx *ctx,
->  			    const struct v4l2_ctrl_vp8_frame_header *hdr)
->  {
-
-
-
-Thanks,
-Mauro
+diff --git a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
+index 6a28ce345ba0..ffb60f880b39 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
+@@ -10,6 +10,7 @@
+ #include <dt-bindings/input/input.h>
+ #include "rk3288-veyron.dtsi"
+ #include "rk3288-veyron-analog-audio.dtsi"
++#include "rk3288-veyron-edp.dtsi"
+ #include "rk3288-veyron-sdmmc.dtsi"
+ 
+ / {
+@@ -18,50 +19,6 @@
+ 		i2c20 = &i2c_tunnel;
+ 	};
+ 
+-	backlight: backlight {
+-		compatible = "pwm-backlight";
+-		brightness-levels = <
+-			  0   1   2   3   4   5   6   7
+-			  8   9  10  11  12  13  14  15
+-			 16  17  18  19  20  21  22  23
+-			 24  25  26  27  28  29  30  31
+-			 32  33  34  35  36  37  38  39
+-			 40  41  42  43  44  45  46  47
+-			 48  49  50  51  52  53  54  55
+-			 56  57  58  59  60  61  62  63
+-			 64  65  66  67  68  69  70  71
+-			 72  73  74  75  76  77  78  79
+-			 80  81  82  83  84  85  86  87
+-			 88  89  90  91  92  93  94  95
+-			 96  97  98  99 100 101 102 103
+-			104 105 106 107 108 109 110 111
+-			112 113 114 115 116 117 118 119
+-			120 121 122 123 124 125 126 127
+-			128 129 130 131 132 133 134 135
+-			136 137 138 139 140 141 142 143
+-			144 145 146 147 148 149 150 151
+-			152 153 154 155 156 157 158 159
+-			160 161 162 163 164 165 166 167
+-			168 169 170 171 172 173 174 175
+-			176 177 178 179 180 181 182 183
+-			184 185 186 187 188 189 190 191
+-			192 193 194 195 196 197 198 199
+-			200 201 202 203 204 205 206 207
+-			208 209 210 211 212 213 214 215
+-			216 217 218 219 220 221 222 223
+-			224 225 226 227 228 229 230 231
+-			232 233 234 235 236 237 238 239
+-			240 241 242 243 244 245 246 247
+-			248 249 250 251 252 253 254 255>;
+-		default-brightness-level = <128>;
+-		enable-gpios = <&gpio7 RK_PA2 GPIO_ACTIVE_HIGH>;
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&bl_en>;
+-		pwms = <&pwm0 0 1000000 0>;
+-		post-pwm-on-delay-ms = <10>;
+-		pwm-off-delay-ms = <10>;
+-	};
+-
+ 	gpio-charger {
+ 		compatible = "gpio-charger";
+ 		charger-type = "mains";
+@@ -85,35 +42,6 @@
+ 		};
+ 	};
+ 
+-	panel: panel {
+-		compatible ="innolux,n116bge", "simple-panel";
+-		status = "okay";
+-		power-supply = <&vcc33_lcd>;
+-		backlight = <&backlight>;
+-
+-		panel-timing {
+-			clock-frequency = <74250000>;
+-			hactive = <1366>;
+-			hfront-porch = <136>;
+-			hback-porch = <60>;
+-			hsync-len = <30>;
+-			hsync-active = <0>;
+-			vactive = <768>;
+-			vfront-porch = <8>;
+-			vback-porch = <12>;
+-			vsync-len = <12>;
+-			vsync-active = <0>;
+-		};
+-
+-		ports {
+-			panel_in: port {
+-				panel_in_edp: endpoint {
+-					remote-endpoint = <&edp_out_panel>;
+-				};
+-			};
+-		};
+-	};
+-
+ 	/* A non-regulated voltage from power supply or battery */
+ 	vccsys: vccsys {
+ 		compatible = "regulator-fixed";
+@@ -155,33 +83,6 @@
+ 	};
+ };
+ 
+-&edp {
+-	status = "okay";
+-
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&edp_hpd>;
+-
+-	ports {
+-		edp_out: port@1 {
+-			reg = <1>;
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-			edp_out_panel: endpoint@0 {
+-				reg = <0>;
+-				remote-endpoint = <&panel_in_edp>;
+-			};
+-		};
+-	};
+-};
+-
+-&edp_phy {
+-	status = "okay";
+-};
+-
+-&pwm0 {
+-	status = "okay";
+-};
+-
+ &rk808 {
+ 	vcc11-supply = <&vcc_5v>;
+ 
+@@ -234,14 +135,6 @@
+ 	};
+ };
+ 
+-&vopl {
+-	status = "okay";
+-};
+-
+-&vopl_mmu {
+-	status = "okay";
+-};
+-
+ &pinctrl {
+ 	pinctrl-0 = <
+ 		/* Common for sleep and wake, but no owners */
+@@ -264,12 +157,6 @@
+ 		&bt_dev_wake_sleep
+ 	>;
+ 
+-	backlight {
+-		bl_en: bl-en {
+-			rockchip,pins = <7 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+-		};
+-	};
+-
+ 	buttons {
+ 		ap_lid_int_l: ap-lid-int-l {
+ 			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
+diff --git a/arch/arm/boot/dts/rk3288-veyron-edp.dtsi b/arch/arm/boot/dts/rk3288-veyron-edp.dtsi
+new file mode 100644
+index 000000000000..c36fb0940478
+--- /dev/null
++++ b/arch/arm/boot/dts/rk3288-veyron-edp.dtsi
+@@ -0,0 +1,124 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Google Veyron (and derivatives) fragment for the edp displays
++ *
++ * Copyright 2019 Google LLC
++ */
++
++/ {
++	backlight: backlight {
++		compatible = "pwm-backlight";
++		brightness-levels = <
++			  0   1   2   3   4   5   6   7
++			  8   9  10  11  12  13  14  15
++			 16  17  18  19  20  21  22  23
++			 24  25  26  27  28  29  30  31
++			 32  33  34  35  36  37  38  39
++			 40  41  42  43  44  45  46  47
++			 48  49  50  51  52  53  54  55
++			 56  57  58  59  60  61  62  63
++			 64  65  66  67  68  69  70  71
++			 72  73  74  75  76  77  78  79
++			 80  81  82  83  84  85  86  87
++			 88  89  90  91  92  93  94  95
++			 96  97  98  99 100 101 102 103
++			104 105 106 107 108 109 110 111
++			112 113 114 115 116 117 118 119
++			120 121 122 123 124 125 126 127
++			128 129 130 131 132 133 134 135
++			136 137 138 139 140 141 142 143
++			144 145 146 147 148 149 150 151
++			152 153 154 155 156 157 158 159
++			160 161 162 163 164 165 166 167
++			168 169 170 171 172 173 174 175
++			176 177 178 179 180 181 182 183
++			184 185 186 187 188 189 190 191
++			192 193 194 195 196 197 198 199
++			200 201 202 203 204 205 206 207
++			208 209 210 211 212 213 214 215
++			216 217 218 219 220 221 222 223
++			224 225 226 227 228 229 230 231
++			232 233 234 235 236 237 238 239
++			240 241 242 243 244 245 246 247
++			248 249 250 251 252 253 254 255>;
++		default-brightness-level = <128>;
++		enable-gpios = <&gpio7 RK_PA2 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&bl_en>;
++		pwms = <&pwm0 0 1000000 0>;
++		post-pwm-on-delay-ms = <10>;
++		pwm-off-delay-ms = <10>;
++	};
++
++	panel: panel {
++		compatible ="innolux,n116bge", "simple-panel";
++		status = "okay";
++		power-supply = <&vcc33_lcd>;
++		backlight = <&backlight>;
++
++		panel-timing {
++			clock-frequency = <74250000>;
++			hactive = <1366>;
++			hfront-porch = <136>;
++			hback-porch = <60>;
++			hsync-len = <30>;
++			hsync-active = <0>;
++			vactive = <768>;
++			vfront-porch = <8>;
++			vback-porch = <12>;
++			vsync-len = <12>;
++			vsync-active = <0>;
++		};
++
++		ports {
++			panel_in: port {
++				panel_in_edp: endpoint {
++					remote-endpoint = <&edp_out_panel>;
++				};
++			};
++		};
++	};
++};
++
++&edp {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&edp_hpd>;
++
++	ports {
++		edp_out: port@1 {
++			reg = <1>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++			edp_out_panel: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&panel_in_edp>;
++			};
++		};
++	};
++};
++
++&edp_phy {
++	status = "okay";
++};
++
++&pwm0 {
++	status = "okay";
++};
++
++&vopl {
++	status = "okay";
++};
++
++&vopl_mmu {
++	status = "okay";
++};
++
++&pinctrl {
++	backlight {
++		bl_en: bl-en {
++			rockchip,pins = <7 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
+-- 
+2.22.0.709.g102302147b-goog
