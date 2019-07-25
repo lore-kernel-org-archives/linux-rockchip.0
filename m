@@ -1,175 +1,98 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: [PATCH v3 5/5] ARM: dts: rockchip: add veyron-tiger board
-Date: Thu, 25 Jul 2019 09:26:42 -0700
-Message-ID: <20190725162642.250709-6-mka@chromium.org>
-References: <20190725162642.250709-1-mka@chromium.org>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v2 6/7] media: hantro: Move VP8 common code
+Date: Thu, 25 Jul 2019 13:30:07 -0300
+Message-ID: <92f197b5d45e5f250c001752b11749af2533f4c3.camel@collabora.com>
+References: <20190725141756.2518-1-ezequiel@collabora.com>
+         <20190725141756.2518-7-ezequiel@collabora.com>
+         <20190725132230.6e7f0c22@coco.lan>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190725162642.250709-1-mka@chromium.org>
+In-Reply-To: <20190725132230.6e7f0c22@coco.lan>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Kaehlcke <mka@chromium.org>
+To: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Cc: linux-media@vger.kernel.org, Hans Verkuil <hans.verkuil@cisco.com>, kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Also known as the AOpen Chromebase Mini.
+On Thu, 2019-07-25 at 13:22 -0300, Mauro Carvalho Chehab wrote:
+> Em Thu, 25 Jul 2019 11:17:55 -0300
+> Ezequiel Garcia <ezequiel@collabora.com> escreveu:
+> 
+> > In order to introduce support for RK3399 VP8 decoding,
+> > move some common VP8 code. This will be reused by
+> > the RK3399 implementation, reducing code duplication.
+> > 
+> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > ---
+> >  .../staging/media/hantro/hantro_g1_vp8_dec.c    | 17 -----------------
+> >  drivers/staging/media/hantro/hantro_hw.h        |  4 ++++
+> >  drivers/staging/media/hantro/hantro_vp8.c       | 15 +++++++++++++++
+> >  3 files changed, 19 insertions(+), 17 deletions(-)
+> > 
+> > diff --git a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
+> > index cd1fbd3a0d5f..181e2f76d8cb 100644
+> > --- a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
+> > +++ b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
+> > @@ -16,8 +16,6 @@
+> >  #include "hantro.h"
+> >  #include "hantro_g1_regs.h"
+> >  
+> > -#define DEC_8190_ALIGN_MASK	0x07U
+> > -
+> >  /* DCT partition base address regs */
+> >  static const struct hantro_reg vp8_dec_dct_base[8] = {
+> >  	{ G1_REG_ADDR_STR, 0, 0xffffffff },
+> > @@ -131,21 +129,6 @@ static const struct hantro_reg vp8_dec_pred_bc_tap[8][4] = {
+> >  	},
+> >  };
+> >  
+> > -/*
+> > - * filter taps taken to 7-bit precision,
+> > - * reference RFC6386#Page-16, filters[8][6]
+> > - */
+> > -static const u32 vp8_dec_mc_filter[8][6] = {
+> > -	{ 0, 0, 128, 0, 0, 0 },
+> > -	{ 0, -6, 123, 12, -1, 0 },
+> > -	{ 2, -11, 108, 36, -8, 1 },
+> > -	{ 0, -9, 93, 50, -6, 0 },
+> > -	{ 3, -16, 77, 77, -16, 3 },
+> > -	{ 0, -6, 50, 93, -9, 0 },
+> > -	{ 1, -8, 36, 108, -11, 2 },
+> > -	{ 0, -1, 12, 123, -6, 0 }
+> > -};
+> > -
+> >  /*
+> >   * Set loop filters
+> >   */
+> > diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+> > index 34ef24e3a9ef..185e27d47e47 100644
+> > --- a/drivers/staging/media/hantro/hantro_hw.h
+> > +++ b/drivers/staging/media/hantro/hantro_hw.h
+> > @@ -15,6 +15,8 @@
+> >  #include <media/vp8-ctrls.h>
+> >  #include <media/videobuf2-core.h>
+> >  
+> > +#define DEC_8190_ALIGN_MASK	0x07U
+> > +
+> >  struct hantro_dev;
+> >  struct hantro_ctx;
+> >  struct hantro_buf;
+> > @@ -93,6 +95,8 @@ extern const struct hantro_variant rk3399_vpu_variant;
+> >  extern const struct hantro_variant rk3328_vpu_variant;
+> >  extern const struct hantro_variant rk3288_vpu_variant;
+> >  
+> > +extern const u32 vp8_dec_mc_filter[8][6];
+> 
+> Please don't do that, as a symbol like that can easily cause
+> namespace clashes in the future. For all exported symbols,
+> please prepend the driver name, like:
+> 
+> 	hantro_vp8_dec_mc_filter
+> 
 
-tiger and fievel are share the same board, tiger has a display and
-touchscreen, fievel not. Use the fievel .dts as base and add the
-extra bits.
+Right. Would you be OK, with taking Hans' PR and accept a follow-up
+patch fixing this?
 
-Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
----
-Changes in v3:
-- patch added to the series
----
- arch/arm/boot/dts/Makefile                |   1 +
- arch/arm/boot/dts/rk3288-veyron-tiger.dts | 125 ++++++++++++++++++++++
- 2 files changed, 126 insertions(+)
- create mode 100644 arch/arm/boot/dts/rk3288-veyron-tiger.dts
-
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index 9fd1e075c624..64b08922e75d 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -927,6 +927,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
- 	rk3288-veyron-minnie.dtb \
- 	rk3288-veyron-pinky.dtb \
- 	rk3288-veyron-speedy.dtb \
-+	rk3288-veyron-tiger.dtb \
- 	rk3288-vyasa.dtb
- dtb-$(CONFIG_ARCH_S3C24XX) += \
- 	s3c2416-smdk2416.dtb
-diff --git a/arch/arm/boot/dts/rk3288-veyron-tiger.dts b/arch/arm/boot/dts/rk3288-veyron-tiger.dts
-new file mode 100644
-index 000000000000..fae26d530841
---- /dev/null
-+++ b/arch/arm/boot/dts/rk3288-veyron-tiger.dts
-@@ -0,0 +1,125 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Google Veyron Tiger Rev 0+ board device tree source
-+ *
-+ * Copyright 2016 Google, Inc
-+ */
-+
-+/dts-v1/;
-+#include "rk3288-veyron-fievel.dts"
-+#include "rk3288-veyron-edp.dtsi"
-+
-+/ {
-+	model = "Google Tiger";
-+	compatible = "google,veyron-tiger-rev8", "google,veyron-tiger-rev7",
-+		     "google,veyron-tiger-rev6", "google,veyron-tiger-rev5",
-+		     "google,veyron-tiger-rev4", "google,veyron-tiger-rev3",
-+		     "google,veyron-tiger-rev2", "google,veyron-tiger-rev1",
-+		     "google,veyron-tiger-rev0", "google,veyron-tiger",
-+		     "google,veyron", "rockchip,rk3288";
-+
-+	/delete-node/ vcc18-lcd;
-+
-+	vccsys: vccsys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vccsys";
-+		regulator-boot-on;
-+		regulator-always-on;
-+	};
-+};
-+
-+&backlight {
-+	/* Tiger panel PWM must be >= 1%, so start non-zero brightness at 3 */
-+	brightness-levels = <
-+		  0   3   4   5   6   7
-+		  8   9  10  11  12  13  14  15
-+		 16  17  18  19  20  21  22  23
-+		 24  25  26  27  28  29  30  31
-+		 32  33  34  35  36  37  38  39
-+		 40  41  42  43  44  45  46  47
-+		 48  49  50  51  52  53  54  55
-+		 56  57  58  59  60  61  62  63
-+		 64  65  66  67  68  69  70  71
-+		 72  73  74  75  76  77  78  79
-+		 80  81  82  83  84  85  86  87
-+		 88  89  90  91  92  93  94  95
-+		 96  97  98  99 100 101 102 103
-+		104 105 106 107 108 109 110 111
-+		112 113 114 115 116 117 118 119
-+		120 121 122 123 124 125 126 127
-+		128 129 130 131 132 133 134 135
-+		136 137 138 139 140 141 142 143
-+		144 145 146 147 148 149 150 151
-+		152 153 154 155 156 157 158 159
-+		160 161 162 163 164 165 166 167
-+		168 169 170 171 172 173 174 175
-+		176 177 178 179 180 181 182 183
-+		184 185 186 187 188 189 190 191
-+		192 193 194 195 196 197 198 199
-+		200 201 202 203 204 205 206 207
-+		208 209 210 211 212 213 214 215
-+		216 217 218 219 220 221 222 223
-+		224 225 226 227 228 229 230 231
-+		232 233 234 235 236 237 238 239
-+		240 241 242 243 244 245 246 247
-+		248 249 250 251 252 253 254 255>;
-+};
-+
-+&backlight_regulator {
-+	vin-supply = <&vccsys>;
-+};
-+
-+&i2c3 {
-+	status = "okay";
-+
-+	clock-frequency = <400000>;
-+	i2c-scl-falling-time-ns = <50>;
-+	i2c-scl-rising-time-ns = <300>;
-+
-+	touchscreen@10 {
-+		compatible = "elan,ekth3500";
-+		reg = <0x10>;
-+		interrupt-parent = <&gpio2>;
-+		interrupts = <RK_PB6 IRQ_TYPE_EDGE_FALLING>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&touch_int &touch_rst>;
-+		reset-gpios = <&gpio2 RK_PB7 GPIO_ACTIVE_LOW>;
-+		vcc33-supply = <&vcc33_io>;
-+		vccio-supply = <&vcc33_io>;
-+		wakeup-source;
-+	};
-+};
-+
-+&panel {
-+	compatible = "auo,b101ean01", "simple-panel";
-+
-+	/delete-node/ panel-timing;
-+
-+	panel-timing {
-+		clock-frequency = <66666667>;
-+		hactive = <1280>;
-+		hfront-porch = <18>;
-+		hback-porch = <21>;
-+		hsync-len = <32>;
-+		vactive = <800>;
-+		vfront-porch = <4>;
-+		vback-porch = <8>;
-+		vsync-len = <18>;
-+	};
-+};
-+
-+&pinctrl {
-+	lcd {
-+		/delete-node/ avdd-1v8-disp-en;
-+	};
-+
-+	touchscreen {
-+		touch_int: touch-int {
-+			rockchip,pins = <2 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		touch_rst: touch-rst {
-+			rockchip,pins = <2 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
--- 
-2.22.0.709.g102302147b-goog
+Thanks,
+Eze
