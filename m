@@ -1,49 +1,84 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH 0/7] hantro: Add RK3399 VP8 decoding support
-Date: Thu, 25 Jul 2019 10:38:47 -0300
-Message-ID: <4f0d0390057195da326354da2343c98c93d86669.camel@collabora.com>
-References: <20190724171702.9449-1-ezequiel@collabora.com>
-         <b0cd9a4f-4bf9-a48c-6d7c-7147b13fa0b2@xs4all.nl>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH v3 2/7] drivers: Introduce device lookup variants by
+ of_node
+Date: Thu, 25 Jul 2019 14:54:02 +0100
+Message-ID: <20190725135402.GL23883@dell>
+References: <20190723221838.12024-1-suzuki.poulose@arm.com>
+ <20190723221838.12024-3-suzuki.poulose@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <b0cd9a4f-4bf9-a48c-6d7c-7147b13fa0b2@xs4all.nl>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org, Hans Verkuil <hans.verkuil@cisco.com>
-Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20190723221838.12024-3-suzuki.poulose@arm.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Suzuki K Poulose <suzuki.poulose@arm.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Thor Thayer <thor.thayer@linux.intel.com>, rafael@kernel.org, Maxime Ripard <maxime.ripard@bootlin.com>, linux-fpga@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, linux-i2c@vger.kernel.org, Frank Rowand <frowand.list@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, linux-rockchip@lists.infradead.org, Wolfram Sang <wsa@the-dreams.de>, David Airlie <airlied@linux.ie>, Jiri Slaby <jslaby@suse.com>, devicetree@vger.kernel.org, Alan Tull <atull@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>, Moritz Fischer <mdf@kernel.org>, linux-arm-kernel@lists.infradead.org, Mathieu Poirier <mathieu.poirier@linaro.org>, gregkh@linuxfoundation.org, Takashi Iwai <tiwai@suse.com>, linux-spi@vger.ke
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 2019-07-25 at 14:59 +0200, Hans Verkuil wrote:
-> On 7/24/19 7:16 PM, Ezequiel Garcia wrote:
-> > This series adds VP8 decoding support on RK3399 SoC.
-> > 
-> > I'm including a set of commits from Boris' recent H264 series [1].
-> > These commits add some helpers that are also useful for RK3399 VP8,
-> > and at the same time cleanup the driver nicely.
-> > 
-> > Finally, there's a fix by Francois Buergisser from Chromium team.
-> > 
-> > VP8 and MPEG-2 tested on RK3399 RockPi and RK3288 Rock2 boards.
-> 
-> I get this when compiling:
-> 
-> /home/hans/work/build/media-git/drivers/staging/media/hantro/hantro_g1_vp8_dec.c: In function 'hantro_g1_vp8_dec_run':
-> /home/hans/work/build/media-git/drivers/staging/media/hantro/hantro_g1_vp8_dec.c:435:26: warning: variable 'vb2_src' set but not used [-Wunused-but-
-> set-variable]
->   struct vb2_v4l2_buffer *vb2_src;
->                           ^~~~~~~
->   CC      drivers/staging/media/omap4iss/iss_csiphy.o
-> /home/hans/work/build/media-git/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c: In function 'rk3399_vpu_vp8_dec_run':
-> /home/hans/work/build/media-git/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c:515:26: warning: variable 'vb2_src' set but not used [-Wunused-
-> but-set-variable]
->   struct vb2_v4l2_buffer *vb2_src;
->                           ^~~~~~~
-> 
-> Can you take a look?
-> 
-
-Oops, I missed these warnings. I'll fix them and post a new version.
-
-Thanks,
-Eze
+T24gVHVlLCAyMyBKdWwgMjAxOSwgU3V6dWtpIEsgUG91bG9zZSB3cm90ZToKCj4gSW50cm9kdWNl
+IHdyYXBwZXJzIGZvciB7YnVzL2RyaXZlci9jbGFzc31fZmluZF9kZXZpY2UoKSB0bwo+IGxvY2F0
+ZSBkZXZpY2VzIGJ5IGl0cyBvZl9ub2RlLgo+IAo+IENjOiBNYWFydGVuIExhbmtob3JzdCA8bWFh
+cnRlbi5sYW5raG9yc3RAbGludXguaW50ZWwuY29tPgo+IENjOiBNYXhpbWUgUmlwYXJkIDxtYXhp
+bWUucmlwYXJkQGJvb3RsaW4uY29tPgo+IENjOiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCj4gQ2M6IERhdmlkIEFpcmxpZSA8YWlybGllZEBsaW51eC5pZT4KPiBDYzogRGFuaWVsIFZl
+dHRlciA8ZGFuaWVsQGZmd2xsLmNoPgo+IENjOiBkZXZpY2V0cmVlQHZnZXIua2VybmVsLm9yZwo+
+IENjOiBGbG9yaWFuIEZhaW5lbGxpIDxmLmZhaW5lbGxpQGdtYWlsLmNvbT4KPiBDYzogRnJhbmsg
+Um93YW5kIDxmcm93YW5kLmxpc3RAZ21haWwuY29tPgo+IENjOiBIZWlrbyBTdHVlYm5lciA8aGVp
+a29Ac250ZWNoLmRlPgo+IENjOiBMaWFtIEdpcmR3b29kIDxsZ2lyZHdvb2RAZ21haWwuY29tPgo+
+IENjOiBsaW51eC1pMmNAdmdlci5rZXJuZWwub3JnCj4gQ2M6IGxpbnV4LXJvY2tjaGlwQGxpc3Rz
+LmluZnJhZGVhZC5vcmcKPiBDYzogbGludXgtc3BpQHZnZXIua2VybmVsLm9yZwo+IENjOiBNYXRo
+aWV1IFBvaXJpZXIgPG1hdGhpZXUucG9pcmllckBsaW5hcm8ub3JnPgo+IENjOiBSb2IgSGVycmlu
+ZyA8cm9iaCtkdEBrZXJuZWwub3JnPgo+IENjOiBTcmluaXZhcyBLYW5kYWdhdGxhIDxzcmluaXZh
+cy5rYW5kYWdhdGxhQGxpbmFyby5vcmc+Cj4gQ2M6IFRha2FzaGkgSXdhaSA8dGl3YWlAc3VzZS5j
+b20+Cj4gQ2M6IFdvbGZyYW0gU2FuZyA8d3NhQHRoZS1kcmVhbXMuZGU+Cj4gQ2M6IEFsYW4gVHVs
+bCA8YXR1bGxAa2VybmVsLm9yZz4KPiBDYzogTW9yaXR6IEZpc2NoZXIgPG1kZkBrZXJuZWwub3Jn
+Pgo+IENjOiBsaW51eC1mcGdhQHZnZXIua2VybmVsLm9yZwo+IENjOiBQZXRlciBSb3NpbiA8cGVk
+YUBheGVudGlhLnNlPgo+IENjOiBNYXJrIEJyb3duIDxicm9vbmllQGtlcm5lbC5vcmc+Cj4gQ2M6
+IEZsb3JpYW4gRmFpbmVsbGkgPGYuZmFpbmVsbGlAZ21haWwuY29tPgo+IENjOiBIZWluZXIgS2Fs
+bHdlaXQgPGhrYWxsd2VpdDFAZ21haWwuY29tPgo+IENjOiAiRGF2aWQgUy4gTWlsbGVyIiA8ZGF2
+ZW1AZGF2ZW1sb2Z0Lm5ldD4KPiBDYzogQW5kcmV3IEx1bm4gPGFuZHJld0BsdW5uLmNoPgo+IENj
+OiBMaWFtIEdpcmR3b29kIDxsZ2lyZHdvb2RAZ21haWwuY29tPgo+IENjOiBHcmVnIEtyb2FoLUhh
+cnRtYW4gPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnPgo+IENjOiAiUmFmYWVsIEouIFd5c29j
+a2kiIDxyYWZhZWxAa2VybmVsLm9yZz4KPiBDYzogTGVlIEpvbmVzIDxsZWUuam9uZXNAbGluYXJv
+Lm9yZz4KPiBDYzogVGhvciBUaGF5ZXIgPHRob3IudGhheWVyQGxpbnV4LmludGVsLmNvbT4KPiBD
+YzogSmlyaSBTbGFieSA8anNsYWJ5QHN1c2UuY29tPgo+IENjOiBNYXJrIEJyb3duIDxicm9vbmll
+QGtlcm5lbC5vcmc+Cj4gQ2M6IEFuZHJldyBMdW5uIDxhbmRyZXdAbHVubi5jaD4KPiBDYzogUGV0
+ZXIgUm9zaW4gPHBlZGFAYXhlbnRpYS5zZT4KPiBTaWduZWQtb2ZmLWJ5OiBTdXp1a2kgSyBQb3Vs
+b3NlIDxzdXp1a2kucG91bG9zZUBhcm0uY29tPgo+IC0tLQo+ICAtIERyb3BwZWQgdGhlIHJldmll
+d2VkLWJ5IHRhZ3MgZnJvbSBUaG9yLCBNYXJrLCBBbmRyZXcgYW5kIFBldGVyIGFzIHRoZQo+ICAg
+IHBhdGNoZXMgYXJlIG1lcmVnZWQsIHRob3VnaCB0aGVyZSBhcmUgbm8gZnVuY3Rpb25hbCBjaGFu
+Z2VzLgo+IC0tLQo+ICBkcml2ZXJzL2FtYmEvdGVncmEtYWhiLmMgICAgICAgICAgICAgIHwgMTEg
+Ky0tLS0tLS0KPiAgZHJpdmVycy9mcGdhL2ZwZ2EtYnJpZGdlLmMgICAgICAgICAgICB8ICA4ICst
+LS0tLQo+ICBkcml2ZXJzL2ZwZ2EvZnBnYS1tZ3IuYyAgICAgICAgICAgICAgIHwgIDggKy0tLS0t
+Cj4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fbWlwaV9kc2kuYyAgICAgICAgfCAgNyArLS0tLQo+ICBk
+cml2ZXJzL2kyYy9pMmMtY29yZS1vZi5jICAgICAgICAgICAgIHwgIDcgKy0tLS0KPiAgZHJpdmVy
+cy9tZmQvYWx0ZXJhLXN5c21nci5jICAgICAgICAgICB8IDE0ICsrLS0tLS0tLS0KCkZvciBteSBv
+d24gcmVmZXJlbmNlOgogIEFja2VkLWZvci1NRkQtYnk6IExlZSBKb25lcyA8bGVlLmpvbmVzQGxp
+bmFyby5vcmc+CgpXaGF0J3MgdGhlIG1lcmdlIHBsYW4gZm9yIHRoaXMgcGF0Y2g/CgpJcyBhbnlv
+bmUgcHJlcGFyZWQgdG8gY3JlYXRlIGFuIGltbXV0YWJsZSBicmFuY2ggZm9yIHVzIHRvIHB1bGwg
+ZnJvbT8KSSdtIGhhcHB5IHRvIGRvIGl0IGlmIG5vIG9uZSBlbHNlIHN0ZXBzIHVwLgoKPiAgZHJp
+dmVycy9tdXgvY29yZS5jICAgICAgICAgICAgICAgICAgICB8ICA3ICstLS0tCj4gIGRyaXZlcnMv
+bmV0L3BoeS9tZGlvX2J1cy5jICAgICAgICAgICAgfCAgOSArLS0tLS0tCj4gIGRyaXZlcnMvbnZt
+ZW0vY29yZS5jICAgICAgICAgICAgICAgICAgfCAgNyArLS0tLQo+ICBkcml2ZXJzL29mL29mX21k
+aW8uYyAgICAgICAgICAgICAgICAgIHwgIDggKy0tLS0tCj4gIGRyaXZlcnMvb2YvcGxhdGZvcm0u
+YyAgICAgICAgICAgICAgICAgfCAgNyArLS0tLQo+ICBkcml2ZXJzL3JlZ3VsYXRvci9vZl9yZWd1
+bGF0b3IuYyAgICAgIHwgIDcgKy0tLS0KPiAgZHJpdmVycy9zcGkvc3BpLmMgICAgICAgICAgICAg
+ICAgICAgICB8IDIwICsrKy0tLS0tLS0tLS0tLQo+ICBpbmNsdWRlL2xpbnV4L2RldmljZS5oICAg
+ICAgICAgICAgICAgIHwgMzcgKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gIHNvdW5kL3Nv
+Yy9yb2NrY2hpcC9yazMzOTlfZ3J1X3NvdW5kLmMgfCAgOSArKy0tLS0tCj4gIDE1IGZpbGVzIGNo
+YW5nZWQsIDU2IGluc2VydGlvbnMoKyksIDExMCBkZWxldGlvbnMoLSkKCi0tIApMZWUgSm9uZXMg
+W+adjueQvOaWr10KTGluYXJvIFNlcnZpY2VzIFRlY2huaWNhbCBMZWFkCkxpbmFyby5vcmcg4pSC
+IE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwpGb2xsb3cgTGluYXJvOiBGYWNlYm9v
+ayB8IFR3aXR0ZXIgfCBCbG9nCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
+dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbA==
