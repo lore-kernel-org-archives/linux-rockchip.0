@@ -1,87 +1,49 @@
-From: Rasmus Villemoes <linux@rasmusvillemoes.dk>
-Subject: Re: [PATCH 7/9] media: hantro: Add core bits to support H264 decoding
-Date: Thu, 25 Jul 2019 15:31:41 +0200
-Message-ID: <25cc2826-fc8f-570a-07fa-8cbdb11830a7@rasmusvillemoes.dk>
-References: <20190619121540.29320-1-boris.brezillon@collabora.com>
- <20190619121540.29320-8-boris.brezillon@collabora.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH 0/7] hantro: Add RK3399 VP8 decoding support
+Date: Thu, 25 Jul 2019 10:38:47 -0300
+Message-ID: <4f0d0390057195da326354da2343c98c93d86669.camel@collabora.com>
+References: <20190724171702.9449-1-ezequiel@collabora.com>
+         <b0cd9a4f-4bf9-a48c-6d7c-7147b13fa0b2@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190619121540.29320-8-boris.brezillon@collabora.com>
-Content-Language: en-US
+In-Reply-To: <b0cd9a4f-4bf9-a48c-6d7c-7147b13fa0b2@xs4all.nl>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Boris Brezillon <boris.brezillon@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@iki.fi>, linux-media@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, kernel@collabora.com, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Ezequiel Garcia <ezequiel@collabora.com>, Jonas Karlman <jonas@kwiboo.se>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Andrew Morton <akpm@linux-foundation.org>, Philipp Zabel <p.zabel@pengutronix.de>, Hertz Wong <hertz.wong@rock-chips.com>
+To: Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org, Hans Verkuil <hans.verkuil@cisco.com>
+Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 19/06/2019 14.15, Boris Brezillon wrote:
-> From: Hertz Wong <hertz.wong@rock-chips.com>
+On Thu, 2019-07-25 at 14:59 +0200, Hans Verkuil wrote:
+> On 7/24/19 7:16 PM, Ezequiel Garcia wrote:
+> > This series adds VP8 decoding support on RK3399 SoC.
+> > 
+> > I'm including a set of commits from Boris' recent H264 series [1].
+> > These commits add some helpers that are also useful for RK3399 VP8,
+> > and at the same time cleanup the driver nicely.
+> > 
+> > Finally, there's a fix by Francois Buergisser from Chromium team.
+> > 
+> > VP8 and MPEG-2 tested on RK3399 RockPi and RK3288 Rock2 boards.
 > 
-> Add helpers and patch hantro_{drv,v4l2}.c to prepare addition of H264
-> decoding support.
+> I get this when compiling:
 > 
-> Signed-off-by: Hertz Wong <hertz.wong@rock-chips.com>
-> Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
-> ---
-> +
-> +	/*
-> +	 * Short term pics in descending pic num order, long term ones in
-> +	 * ascending order.
-> +	 */
-> +	if (!(a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM))
-> +		return b->frame_num - a->frame_num;
-> +
-> +	return a->pic_num - b->pic_num;
-> +}
+> /home/hans/work/build/media-git/drivers/staging/media/hantro/hantro_g1_vp8_dec.c: In function 'hantro_g1_vp8_dec_run':
+> /home/hans/work/build/media-git/drivers/staging/media/hantro/hantro_g1_vp8_dec.c:435:26: warning: variable 'vb2_src' set but not used [-Wunused-but-
+> set-variable]
+>   struct vb2_v4l2_buffer *vb2_src;
+>                           ^~~~~~~
+>   CC      drivers/staging/media/omap4iss/iss_csiphy.o
+> /home/hans/work/build/media-git/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c: In function 'rk3399_vpu_vp8_dec_run':
+> /home/hans/work/build/media-git/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c:515:26: warning: variable 'vb2_src' set but not used [-Wunused-
+> but-set-variable]
+>   struct vb2_v4l2_buffer *vb2_src;
+>                           ^~~~~~~
+> 
+> Can you take a look?
+> 
 
-Pet peeve: This works because ->frame_num and ->pic_num are u16, so
-their difference is guaranteed to fit in an int.
+Oops, I missed these warnings. I'll fix them and post a new version.
 
-> +static int b0_ref_list_cmp(const void *ptra, const void *ptrb, const void *data)
-> +{
-> +	const struct hantro_h264_reflist_builder *builder = data;
-> +	const struct v4l2_h264_dpb_entry *a, *b;
-> +	s32 poca, pocb;
-> +	u8 idxa, idxb;
-> +
-> +	idxa = *((u8 *)ptra);
-> +	idxb = *((u8 *)ptrb);
-> +	a = &builder->dpb[idxa];
-> +	b = &builder->dpb[idxb];
-> +
-> +	if ((a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM) !=
-> +	    (b->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)) {
-> +		/* Short term pics firt. */
-> +		if (!(a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM))
-> +			return -1;
-> +		else
-> +			return 1;
-> +	}
-> +
-> +	/* Long term pics in ascending pic num order. */
-> +	if (a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
-> +		return a->pic_num - b->pic_num;
-> +
-> +	poca = builder->pocs[idxa];
-> +	pocb = builder->pocs[idxb];
-> +
-> +	/*
-> +	 * Short term pics with POC < cur POC first in POC descending order
-> +	 * followed by short term pics with POC > cur POC in POC ascending
-> +	 * order.
-> +	 */
-> +	if ((poca < builder->curpoc) != (pocb < builder->curpoc))
-> +		return poca - pocb;
-> +	else if (poca < builder->curpoc)
-> +		return pocb - poca;
-> +
-> +	return poca - pocb;
-> +}
-
-Here, however, poca and pocb are ints. What guarantees that their values
-are not more than 2^31 apart? I know absolutely nothing about this code
-or what these numbers represent, so it may be obvious that they are
-smallish.
-
-Rasmus
+Thanks,
+Eze
