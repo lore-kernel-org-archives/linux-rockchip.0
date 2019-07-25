@@ -1,111 +1,93 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH v2 6/7] media: hantro: Move VP8 common code
-Date: Thu, 25 Jul 2019 14:25:28 -0300
-Message-ID: <c913045aa4e514786d449d4c0a05c43f09918d27.camel@collabora.com>
-References: <20190725141756.2518-1-ezequiel@collabora.com>
-         <20190725141756.2518-7-ezequiel@collabora.com>
-         <20190725132230.6e7f0c22@coco.lan>
-         <92f197b5d45e5f250c001752b11749af2533f4c3.camel@collabora.com>
-         <20190725133819.16379d96@coco.lan>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH v3 2/7] drivers: Introduce device lookup variants by
+ of_node
+Date: Thu, 25 Jul 2019 21:25:11 +0200
+Message-ID: <20190725192510.GA1440@kunai>
+References: <20190723221838.12024-1-suzuki.poulose@arm.com>
+ <20190723221838.12024-3-suzuki.poulose@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="zYM0uCDKw75PZbzx"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190725133819.16379d96@coco.lan>
+Content-Disposition: inline
+In-Reply-To: <20190723221838.12024-3-suzuki.poulose@arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-Cc: linux-media@vger.kernel.org, Hans Verkuil <hans.verkuil@cisco.com>, kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
+To: Suzuki K Poulose <suzuki.poulose@arm.com>
+Cc: linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org, rafael@kernel.org, linux-arm-kernel@lists.infradead.org, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <maxime.ripard@bootlin.com>, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, devicetree@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>, Frank Rowand <frowand.list@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, linux-i2c@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-spi@vger.kernel.org, Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Takashi Iwai <tiwai@suse.com>, Alan Tull <atull@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 2019-07-25 at 13:38 -0300, Mauro Carvalho Chehab wrote:
-> Em Thu, 25 Jul 2019 13:30:07 -0300
-> Ezequiel Garcia <ezequiel@collabora.com> escreveu:
-> 
-> > On Thu, 2019-07-25 at 13:22 -0300, Mauro Carvalho Chehab wrote:
-> > > Em Thu, 25 Jul 2019 11:17:55 -0300
-> > > Ezequiel Garcia <ezequiel@collabora.com> escreveu:
-> > >   
-> > > > In order to introduce support for RK3399 VP8 decoding,
-> > > > move some common VP8 code. This will be reused by
-> > > > the RK3399 implementation, reducing code duplication.
-> > > > 
-> > > > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> > > > ---
-> > > >  .../staging/media/hantro/hantro_g1_vp8_dec.c    | 17 -----------------
-> > > >  drivers/staging/media/hantro/hantro_hw.h        |  4 ++++
-> > > >  drivers/staging/media/hantro/hantro_vp8.c       | 15 +++++++++++++++
-> > > >  3 files changed, 19 insertions(+), 17 deletions(-)
-> > > > 
-> > > > diff --git a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-> > > > index cd1fbd3a0d5f..181e2f76d8cb 100644
-> > > > --- a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-> > > > +++ b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-> > > > @@ -16,8 +16,6 @@
-> > > >  #include "hantro.h"
-> > > >  #include "hantro_g1_regs.h"
-> > > >  
-> > > > -#define DEC_8190_ALIGN_MASK	0x07U
-> > > > -
-> > > >  /* DCT partition base address regs */
-> > > >  static const struct hantro_reg vp8_dec_dct_base[8] = {
-> > > >  	{ G1_REG_ADDR_STR, 0, 0xffffffff },
-> > > > @@ -131,21 +129,6 @@ static const struct hantro_reg vp8_dec_pred_bc_tap[8][4] = {
-> > > >  	},
-> > > >  };
-> > > >  
-> > > > -/*
-> > > > - * filter taps taken to 7-bit precision,
-> > > > - * reference RFC6386#Page-16, filters[8][6]
-> > > > - */
-> > > > -static const u32 vp8_dec_mc_filter[8][6] = {
-> > > > -	{ 0, 0, 128, 0, 0, 0 },
-> > > > -	{ 0, -6, 123, 12, -1, 0 },
-> > > > -	{ 2, -11, 108, 36, -8, 1 },
-> > > > -	{ 0, -9, 93, 50, -6, 0 },
-> > > > -	{ 3, -16, 77, 77, -16, 3 },
-> > > > -	{ 0, -6, 50, 93, -9, 0 },
-> > > > -	{ 1, -8, 36, 108, -11, 2 },
-> > > > -	{ 0, -1, 12, 123, -6, 0 }
-> > > > -};
-> > > > -
-> > > >  /*
-> > > >   * Set loop filters
-> > > >   */
-> > > > diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-> > > > index 34ef24e3a9ef..185e27d47e47 100644
-> > > > --- a/drivers/staging/media/hantro/hantro_hw.h
-> > > > +++ b/drivers/staging/media/hantro/hantro_hw.h
-> > > > @@ -15,6 +15,8 @@
-> > > >  #include <media/vp8-ctrls.h>
-> > > >  #include <media/videobuf2-core.h>
-> > > >  
-> > > > +#define DEC_8190_ALIGN_MASK	0x07U
-> > > > +
-> > > >  struct hantro_dev;
-> > > >  struct hantro_ctx;
-> > > >  struct hantro_buf;
-> > > > @@ -93,6 +95,8 @@ extern const struct hantro_variant rk3399_vpu_variant;
-> > > >  extern const struct hantro_variant rk3328_vpu_variant;
-> > > >  extern const struct hantro_variant rk3288_vpu_variant;
-> > > >  
-> > > > +extern const u32 vp8_dec_mc_filter[8][6];  
-> > > 
-> > > Please don't do that, as a symbol like that can easily cause
-> > > namespace clashes in the future. For all exported symbols,
-> > > please prepend the driver name, like:
-> > > 
-> > > 	hantro_vp8_dec_mc_filter
-> > >   
-> > 
-> > Right. Would you be OK, with taking Hans' PR and accept a follow-up
-> > patch fixing this?
-> 
-> No need. I went ahead and applied a fixup. Just remember about that
-> next time, as we don't want to mess with Kernel export symbol
-> namespace.
-> 
 
-Yes, definitely makes sense.
+--zYM0uCDKw75PZbzx
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thanks for taking care of this,
-Eze
+On Tue, Jul 23, 2019 at 11:18:33PM +0100, Suzuki K Poulose wrote:
+> Introduce wrappers for {bus/driver/class}_find_device() to
+> locate devices by its of_node.
+>=20
+> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+> Cc: Maxime Ripard <maxime.ripard@bootlin.com>
+> Cc: dri-devel@lists.freedesktop.org
+> Cc: David Airlie <airlied@linux.ie>
+> Cc: Daniel Vetter <daniel@ffwll.ch>
+> Cc: devicetree@vger.kernel.org
+> Cc: Florian Fainelli <f.fainelli@gmail.com>
+> Cc: Frank Rowand <frowand.list@gmail.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Liam Girdwood <lgirdwood@gmail.com>
+> Cc: linux-i2c@vger.kernel.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-spi@vger.kernel.org
+> Cc: Mathieu Poirier <mathieu.poirier@linaro.org>
+> Cc: Rob Herring <robh+dt@kernel.org>
+> Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+> Cc: Takashi Iwai <tiwai@suse.com>
+> Cc: Wolfram Sang <wsa@the-dreams.de>
+> Cc: Alan Tull <atull@kernel.org>
+> Cc: Moritz Fischer <mdf@kernel.org>
+> Cc: linux-fpga@vger.kernel.org
+> Cc: Peter Rosin <peda@axentia.se>
+> Cc: Mark Brown <broonie@kernel.org>
+> Cc: Florian Fainelli <f.fainelli@gmail.com>
+> Cc: Heiner Kallweit <hkallweit1@gmail.com>
+> Cc: "David S. Miller" <davem@davemloft.net>
+> Cc: Andrew Lunn <andrew@lunn.ch>
+> Cc: Liam Girdwood <lgirdwood@gmail.com>
+> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> Cc: "Rafael J. Wysocki" <rafael@kernel.org>
+> Cc: Lee Jones <lee.jones@linaro.org>
+> Cc: Thor Thayer <thor.thayer@linux.intel.com>
+> Cc: Jiri Slaby <jslaby@suse.com>
+> Cc: Mark Brown <broonie@kernel.org>
+> Cc: Andrew Lunn <andrew@lunn.ch>
+> Cc: Peter Rosin <peda@axentia.se>
+> Signed-off-by: Suzuki K Poulose <suzuki.poulose@arm.com>
+> ---
+>  - Dropped the reviewed-by tags from Thor, Mark, Andrew and Peter as the
+>    patches are mereged, though there are no functional changes.
+
+Acked-by: Wolfram Sang <wsa@the-dreams.de> # I2C part
+
+
+--zYM0uCDKw75PZbzx
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl06AhIACgkQFA3kzBSg
+KbZNIA/9HLsMnNVbTacVYltjXILzMKZYQ0kihekXpZMQbl+jlUgeNb0ge8XrGl47
+3ssjlN6wpc7uMNy9T6ScDTjzESHgvFKzKssjfoJ5fp+MDd3KFChbvSmLmm5vVOGc
+VjnjK+ls5meWoG4XdmJuqzlYbdnHOBI/7di4xhfzgN5TvJOjs83YHr7peNVJQgjv
+gTYT2flkrgONnfGKofDGJ4Bk60xOOT/w6oYY3CkzLxbKkaUd5BiIJriXCcKYVNXd
+uLLv5bw/yoU6Smilkgaq8ZdKSbid6VUbXul2Xi6/EEaxQX4Isvx3XNlplBogeAsB
+Jy39hEz2I+UEQHfWNKAIVJJSWyMH/HxwuGYeHB6e9pLqF93rBbXZla+/Uu+u00yW
+BzThKuVHqdQ4FDSbeLz69vJgjvStNgDG/XcYn9PbGtkPiSIrIDJbH1Wq8Wk/PKLX
+XvYAUkM5O/PYp0K4oS6G+7SmDPMLoCCem1PGJsN9QkWfV4b05MtFQFRvRE/voO7Z
+IeUCD1KiM4RUDNd6f9n7DM25OxMtwknJIbT7wuLjDe2KvPvF8/FTI2u2pY0GMaJe
+QZ1uZsSqL7qIUxud5DdTNEyIHgjJDybwyYs/abejIwxMK/tbyl3CiKC2ozg7pc0y
+myVXYa1A9Ecw3n86cwAqQON/rD/j1Bw+dQ/I85BaWBgSb1rPjzI=
+=uZDa
+-----END PGP SIGNATURE-----
+
+--zYM0uCDKw75PZbzx--
