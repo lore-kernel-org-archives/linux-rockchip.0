@@ -1,115 +1,87 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v2 0/2] mmc: core: Fix Marvell WiFi reset by adding SDIO
- API to replug card
-Date: Thu, 25 Jul 2019 15:28:11 +0200
-Message-ID: <CAPDyKFoND5Kaam72zxO4wChO0z_1XL2KWX6oNjVcMUGA7G8RFg@mail.gmail.com>
-References: <20190722193939.125578-1-dianders@chromium.org>
+From: Rasmus Villemoes <linux@rasmusvillemoes.dk>
+Subject: Re: [PATCH 7/9] media: hantro: Add core bits to support H264 decoding
+Date: Thu, 25 Jul 2019 15:31:41 +0200
+Message-ID: <25cc2826-fc8f-570a-07fa-8cbdb11830a7@rasmusvillemoes.dk>
+References: <20190619121540.29320-1-boris.brezillon@collabora.com>
+ <20190619121540.29320-8-boris.brezillon@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190722193939.125578-1-dianders@chromium.org>
+In-Reply-To: <20190619121540.29320-8-boris.brezillon@collabora.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Ganapathi Bhat <gbhat@marvell.com>, linux-wireless <linux-wireless@vger.kernel.org>, Andreas Fenkart <afenkart@gmail.com>, Brian Norris <briannorris@chromium.org>, Amitkumar Karwar <amitkarwar@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Nishant Sarmukadam <nishants@marvell.com>, netdev <netdev@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>, Xinming Hu <huxinming820@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Thomas Gleixner <tglx@linutronix.de>, Kate Stewart <kste>
+To: Boris Brezillon <boris.brezillon@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@iki.fi>, linux-media@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, kernel@collabora.com, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Ezequiel Garcia <ezequiel@collabora.com>, Jonas Karlman <jonas@kwiboo.se>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Andrew Morton <akpm@linux-foundation.org>, Philipp Zabel <p.zabel@pengutronix.de>, Hertz Wong <hertz.wong@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 22 Jul 2019 at 21:41, Douglas Anderson <dianders@chromium.org> wrote:
->
-> As talked about in the thread at:
->
-> http://lkml.kernel.org/r/CAD=FV=X7P2F1k_zwHc0mbtfk55-rucTz_GoDH=PL6zWqKYcpuw@mail.gmail.com
->
-> ...when the Marvell WiFi card tries to reset itself it kills
-> Bluetooth.  It was observed that we could re-init the card properly by
-> unbinding / rebinding the host controller.  It was also observed that
-> in the downstream Chrome OS codebase the solution used was
-> mmc_remove_host() / mmc_add_host(), which is similar to the solution
-> in this series.
->
-> So far I've only done testing of this series using the reset test
-> source that can be simulated via sysfs.  Specifically I ran this test:
->
-> for i in $(seq 1000); do
->   echo "LOOP $i --------"
->   echo 1 > /sys/kernel/debug/mwifiex/mlan0/reset
->
->   while true; do
->     if ! ping -w15 -c1 "${GW}" >/dev/null 2>&1; then
->       fail=$(( fail + 1 ))
->       echo "Fail WiFi ${fail}"
->       if [[ ${fail} == 3 ]]; then
->         exit 1
->       fi
->     else
->       fail=0
->       break
->     fi
->   done
->
->   hciconfig hci0 down
->   sleep 1
->   if ! hciconfig hci0 up; then
->     echo "Fail BT"
->     exit 1
->   fi
-> done
->
-> I ran this several times and got several hundred iterations each
-> before a failure.  When I saw failures:
->
-> * Once I saw a "Fail BT"; manually resetting the card again fixed it.
->   I didn't give it time to see if it would have detected this
->   automatically.
-> * Once I saw the ping fail because (for some reason) my device only
->   got an IPv6 address from my router and the IPv4 ping failed.  I
->   changed my script to use 'ping6' to see if that would help.
-> * Once I saw the ping fail because the higher level network stack
->   ("shill" in my case) seemed to crash.  A few minutes later the
->   system recovered itself automatically.  https://crbug.com/984593 if
->   you want more details.
-> * Sometimes while I was testing I saw "Fail WiFi 1" indicating a
->   transitory failure.  Usually this was an association failure, but in
->   one case I saw the device do "Firmware wakeup failed" after I
->   triggered the reset.  This caused the driver to trigger a re-reset
->   of itself which eventually recovered things.  This was good because
->   it was an actual test of the normal reset flow (not the one
->   triggered via sysfs).
->
-> Changes in v2:
-> - s/routnine/routine (Brian Norris, Matthias Kaehlcke).
-> - s/contining/containing (Matthias Kaehlcke).
-> - Add Matthias Reviewed-by tag.
-> - Removed clear_bit() calls and old comment (Brian Norris).
-> - Explicit CC of Andreas Fenkart.
-> - Explicit CC of Brian Norris.
-> - Add "Fixes" pointing at the commit Brian talked about.
-> - Add Brian's Reviewed-by tag.
->
-> Douglas Anderson (2):
->   mmc: core: Add sdio_trigger_replug() API
->   mwifiex: Make use of the new sdio_trigger_replug() API to reset
->
->  drivers/mmc/core/core.c                     | 28 +++++++++++++++++++--
->  drivers/mmc/core/sdio_io.c                  | 20 +++++++++++++++
->  drivers/net/wireless/marvell/mwifiex/sdio.c | 16 +-----------
->  include/linux/mmc/host.h                    | 15 ++++++++++-
->  include/linux/mmc/sdio_func.h               |  2 ++
->  5 files changed, 63 insertions(+), 18 deletions(-)
->
+On 19/06/2019 14.15, Boris Brezillon wrote:
+> From: Hertz Wong <hertz.wong@rock-chips.com>
+> 
+> Add helpers and patch hantro_{drv,v4l2}.c to prepare addition of H264
+> decoding support.
+> 
+> Signed-off-by: Hertz Wong <hertz.wong@rock-chips.com>
+> Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
+> ---
+> +
+> +	/*
+> +	 * Short term pics in descending pic num order, long term ones in
+> +	 * ascending order.
+> +	 */
+> +	if (!(a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM))
+> +		return b->frame_num - a->frame_num;
+> +
+> +	return a->pic_num - b->pic_num;
+> +}
 
-Doug, thanks for sending this!
+Pet peeve: This works because ->frame_num and ->pic_num are u16, so
+their difference is guaranteed to fit in an int.
 
-As you know, I have been working on additional changes for SDIO
-suspend/resume (still WIP and not ready for sharing) and this series
-is related.
+> +static int b0_ref_list_cmp(const void *ptra, const void *ptrb, const void *data)
+> +{
+> +	const struct hantro_h264_reflist_builder *builder = data;
+> +	const struct v4l2_h264_dpb_entry *a, *b;
+> +	s32 poca, pocb;
+> +	u8 idxa, idxb;
+> +
+> +	idxa = *((u8 *)ptra);
+> +	idxb = *((u8 *)ptrb);
+> +	a = &builder->dpb[idxa];
+> +	b = &builder->dpb[idxb];
+> +
+> +	if ((a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM) !=
+> +	    (b->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)) {
+> +		/* Short term pics firt. */
+> +		if (!(a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM))
+> +			return -1;
+> +		else
+> +			return 1;
+> +	}
+> +
+> +	/* Long term pics in ascending pic num order. */
+> +	if (a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
+> +		return a->pic_num - b->pic_num;
+> +
+> +	poca = builder->pocs[idxa];
+> +	pocb = builder->pocs[idxb];
+> +
+> +	/*
+> +	 * Short term pics with POC < cur POC first in POC descending order
+> +	 * followed by short term pics with POC > cur POC in POC ascending
+> +	 * order.
+> +	 */
+> +	if ((poca < builder->curpoc) != (pocb < builder->curpoc))
+> +		return poca - pocb;
+> +	else if (poca < builder->curpoc)
+> +		return pocb - poca;
+> +
+> +	return poca - pocb;
+> +}
 
-The thing is, that even during system suspend/resume, synchronizations
-are needed between the different layers (mmc host, mmc core and
-sdio-funcs), which is common to the problem you want to solve.
+Here, however, poca and pocb are ints. What guarantees that their values
+are not more than 2^31 apart? I know absolutely nothing about this code
+or what these numbers represent, so it may be obvious that they are
+smallish.
 
-That said, I need to scratch my head a bit more before I can provide
-you some feedback on $subject series. Moreover, it's vacation period
-at my side so things are moving a bit slower. Please be patient.
-
-Kind regards
-Uffe
+Rasmus
