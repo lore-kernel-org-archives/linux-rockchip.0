@@ -1,61 +1,189 @@
-From: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: [PATCH v2 2/2] mwifiex: Make use of the new sdio_trigger_replug() API to reset
-Date: Thu, 25 Jul 2019 08:56:35 +0300
-Message-ID: <87imrqzmgc.fsf@kamboji.qca.qualcomm.com>
-References: <20190722193939.125578-3-dianders@chromium.org>
-        <20190724113508.47A356021C@smtp.codeaurora.org>
-        <CAD=FV=WAsrBV9PzUz1qPzQru+AkOYZ5hsaWdhNYRTNqUfDeOmQ@mail.gmail.com>
+From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH 1/9] lib/sort.c: implement sort() variant taking context
+ argument
+Date: Thu, 25 Jul 2019 14:40:35 +0200
+Message-ID: <20190725144035.486a33ef@collabora.com>
+References: <20190619121540.29320-1-boris.brezillon@collabora.com>
+ <20190619121540.29320-2-boris.brezillon@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=WAsrBV9PzUz1qPzQru+AkOYZ5hsaWdhNYRTNqUfDeOmQ@mail.gmail.com>
-        (Doug Anderson's message of "Wed, 24 Jul 2019 13:22:22 -0700")
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Adrian Hunter <adrian.hunter@intel.com>, Ganapathi Bhat <gbhat@marvell.com>, linux-wireless <linux-wireless@vger.kernel.org>, Andreas Fenkart <afenkart@gmail.com>, Brian Norris <briannorris@chromium.org>, Amitkumar Karwar <amitkarwar@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Nishant Sarmukadam <nishants@marvell.com>, netdev <netdev@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>, Linux MMC List <linux-mmc@vger.kernel.org>, David Miller <davem@davemloft.net>, Xinming Hu <huxinming820@gmail.com>, LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190619121540.29320-2-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Andrew Morton <akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>
+Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Rasmus Villemoes <linux-qQsb+v5E8BnlAoU/VqSP6n9LOBIZ5rWg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Doug Anderson <dianders@chromium.org> writes:
+Hi Andrew,
 
-> Hi,
->
-> On Wed, Jul 24, 2019 at 4:35 AM Kalle Valo <kvalo@codeaurora.org> wrote:
->>
->> Douglas Anderson <dianders@chromium.org> wrote:
->>
->> > As described in the patch ("mmc: core: Add sdio_trigger_replug()
->> > API"), the current mwifiex_sdio_card_reset() is broken in the cases
->> > where we're running Bluetooth on a second SDIO func on the same card
->> > as WiFi.  The problem goes away if we just use the
->> > sdio_trigger_replug() API call.
->> >
->> > NOTE: Even though with this new solution there is less of a reason to
->> > do our work from a workqueue (the unplug / plug mechanism we're using
->> > is possible for a human to perform at any time so the stack is
->> > supposed to handle it without it needing to be called from a special
->> > context), we still need a workqueue because the Marvell reset function
->> > could called from a context where sleeping is invalid and thus we
->> > can't claim the host.  One example is Marvell's wakeup_timer_fn().
->> >
->> > Cc: Andreas Fenkart <afenkart@gmail.com>
->> > Cc: Brian Norris <briannorris@chromium.org>
->> > Fixes: b4336a282db8 ("mwifiex: sdio: reset adapter using mmc_hw_reset")
->> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
->> > Reviewed-by: Brian Norris <briannorris@chromium.org>
->>
->> I assume this is going via some other tree so I'm dropping this from my
->> queue. If I should apply this please resend once the dependency is in
->> wireless-drivers-next.
->>
->> Patch set to Not Applicable.
->
-> Thanks.  For now I'll assume that Ulf will pick it up if/when he is
-> happy with patch #1 in this series.  Would you be willing to provide
-> your Ack on this patch to make it clear to Ulf you're OK with that?
+On Wed, 19 Jun 2019 14:15:32 +0200
+Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
 
-Sure, I was planning to do that already in my previous email but forgot.
+> From: Rasmus Villemoes <linux-qQsb+v5E8BnlAoU/VqSP6n9LOBIZ5rWg@public.gmane.org>
+> 
+> Our list_sort() utility has always supported a context argument that
+> is passed through to the comparison routine. Now there's a use case
+> for the similar thing for sort().
+> 
+> This implements sort_r by simply extending the existing sort function
+> in the obvious way. To avoid code duplication, we want to implement
+> sort() in terms of sort_r(). The naive way to do that is
+> 
+> static int cmp_wrapper(const void *a, const void *b, const void *ctx)
+> {
+>   int (*real_cmp)(const void*, const void*) = ctx;
+>   return real_cmp(a, b);
+> }
+> 
+> sort(..., cmp) { sort_r(..., cmp_wrapper, cmp) }
+> 
+> but this would do two indirect calls for each comparison. Instead, do
+> as is done for the default swap functions - that only adds a cost of a
+> single easily predicted branch to each comparison call.
+> 
+> Aside from introducing support for the context argument, this also
+> serves as preparation for patches that will eliminate the indirect
+> comparison calls in common cases.
+> 
+> Requested-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> Signed-off-by: Rasmus Villemoes <linux-qQsb+v5E8BnlAoU/VqSP6n9LOBIZ5rWg@public.gmane.org>
+> Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> Cc: Andrew Morton <akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>
+> ---
+> Hi all,
+> 
+> Andrew, you acked the first version of this patch, but Rasmus proposed
+> a better solution and posted a v2. Can you review/ack this version.
 
-Acked-by: Kalle Valo <kvalo@codeaurora.org>
+Hans is planning to take that patch soon. Would you mind adding your
+Ack back (assuming you're okay with the new version of course)?
 
--- 
-Kalle Valo
+Thanks,
+
+Boris
+
+> 
+> Hans, Mauro, Andrew suggested to have this patch applied along with
+> its first user (the H264 backend of the hantro codec), so here it is.
+> Note that, if possible, I'd like to have this patch queued for the next
+> release even if the H264 bits don't get accepted as is. The rationale
+> here being that Rasmus told me he was planning to further improve the
+> sort() logic after the next -rc1 is out, and I fear his changes will
+> conflict with this patch, which might involve some kind synchronisation
+> (a topic branch) between the media maintainers and Andrew.
+> 
+> Let me know how you want to proceed with that.
+> 
+> Regards,
+> 
+> Boris
+> ---
+>  include/linux/sort.h |  5 +++++
+>  lib/sort.c           | 34 ++++++++++++++++++++++++++++------
+>  2 files changed, 33 insertions(+), 6 deletions(-)
+> 
+> diff --git a/include/linux/sort.h b/include/linux/sort.h
+> index 2b99a5dd073d..61b96d0ebc44 100644
+> --- a/include/linux/sort.h
+> +++ b/include/linux/sort.h
+> @@ -4,6 +4,11 @@
+>  
+>  #include <linux/types.h>
+>  
+> +void sort_r(void *base, size_t num, size_t size,
+> +	    int (*cmp)(const void *, const void *, const void *),
+> +	    void (*swap)(void *, void *, int),
+> +	    const void *priv);
+> +
+>  void sort(void *base, size_t num, size_t size,
+>  	  int (*cmp)(const void *, const void *),
+>  	  void (*swap)(void *, void *, int));
+> diff --git a/lib/sort.c b/lib/sort.c
+> index cf408aec3733..d54cf97e9548 100644
+> --- a/lib/sort.c
+> +++ b/lib/sort.c
+> @@ -144,6 +144,18 @@ static void do_swap(void *a, void *b, size_t size, swap_func_t swap_func)
+>  		swap_func(a, b, (int)size);
+>  }
+>  
+> +typedef int (*cmp_func_t)(const void *, const void *);
+> +typedef int (*cmp_r_func_t)(const void *, const void *, const void *);
+> +#define _CMP_WRAPPER ((cmp_r_func_t)0L)
+> +
+> +static int do_cmp(const void *a, const void *b,
+> +		  cmp_r_func_t cmp, const void *priv)
+> +{
+> +	if (cmp == _CMP_WRAPPER)
+> +		return ((cmp_func_t)(priv))(a, b);
+> +	return cmp(a, b, priv);
+> +}
+> +
+>  /**
+>   * parent - given the offset of the child, find the offset of the parent.
+>   * @i: the offset of the heap element whose parent is sought.  Non-zero.
+> @@ -171,12 +183,13 @@ static size_t parent(size_t i, unsigned int lsbit, size_t size)
+>  }
+>  
+>  /**
+> - * sort - sort an array of elements
+> + * sort_r - sort an array of elements
+>   * @base: pointer to data to sort
+>   * @num: number of elements
+>   * @size: size of each element
+>   * @cmp_func: pointer to comparison function
+>   * @swap_func: pointer to swap function or NULL
+> + * @priv: third argument passed to comparison function
+>   *
+>   * This function does a heapsort on the given array.  You may provide
+>   * a swap_func function if you need to do something more than a memory
+> @@ -188,9 +201,10 @@ static size_t parent(size_t i, unsigned int lsbit, size_t size)
+>   * O(n*n) worst-case behavior and extra memory requirements that make
+>   * it less suitable for kernel use.
+>   */
+> -void sort(void *base, size_t num, size_t size,
+> -	  int (*cmp_func)(const void *, const void *),
+> -	  void (*swap_func)(void *, void *, int size))
+> +void sort_r(void *base, size_t num, size_t size,
+> +	    int (*cmp_func)(const void *, const void *, const void *),
+> +	    void (*swap_func)(void *, void *, int size),
+> +	    const void *priv)
+>  {
+>  	/* pre-scale counters for performance */
+>  	size_t n = num * size, a = (num/2) * size;
+> @@ -238,12 +252,12 @@ void sort(void *base, size_t num, size_t size,
+>  		 * average, 3/4 worst-case.)
+>  		 */
+>  		for (b = a; c = 2*b + size, (d = c + size) < n;)
+> -			b = cmp_func(base + c, base + d) >= 0 ? c : d;
+> +			b = do_cmp(base + c, base + d, cmp_func, priv) >= 0 ? c : d;
+>  		if (d == n)	/* Special case last leaf with no sibling */
+>  			b = c;
+>  
+>  		/* Now backtrack from "b" to the correct location for "a" */
+> -		while (b != a && cmp_func(base + a, base + b) >= 0)
+> +		while (b != a && do_cmp(base + a, base + b, cmp_func, priv) >= 0)
+>  			b = parent(b, lsbit, size);
+>  		c = b;			/* Where "a" belongs */
+>  		while (b != a) {	/* Shift it into place */
+> @@ -252,4 +266,12 @@ void sort(void *base, size_t num, size_t size,
+>  		}
+>  	}
+>  }
+> +EXPORT_SYMBOL(sort_r);
+> +
+> +void sort(void *base, size_t num, size_t size,
+> +	  int (*cmp_func)(const void *, const void *),
+> +	  void (*swap_func)(void *, void *, int size))
+> +{
+> +	return sort_r(base, num, size, _CMP_WRAPPER, swap_func, cmp_func);
+> +}
+>  EXPORT_SYMBOL(sort);
