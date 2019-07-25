@@ -1,39 +1,40 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] clk: rockchip: Fix -Wunused-const-variable
-Date: Thu, 25 Jul 2019 21:49:51 +0200
-Message-ID: <1978058.CBpQlN27Fr@phil>
-References: <20190627222220.89175-1-nhuck@google.com> <CAKwvOd=RhoKvXzuGVe0PaQik8NEFhDkxuwv-T_s6KAtXCDVVvg@mail.gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add PWM fan for RockPro64
+Date: Thu, 25 Jul 2019 22:12:05 +0200
+Message-ID: <6471342.jnQKebxgib@phil>
+References: <20190724191715.7668-1-andrius@stikonas.eu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAKwvOd=RhoKvXzuGVe0PaQik8NEFhDkxuwv-T_s6KAtXCDVVvg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nick Desaulniers <ndesaulniers@google.com>
-Cc: Nathan Huckleberry <nhuck@google.com>, mturquette@baylibre.com, sboyd@kernel.org, andy.yan@rock-chips.com, zhangqing@rock-chips.com, linux-clk@vger.kernel.org, Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, clang-built-linux <clang-built-linux@googlegroups.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190724191715.7668-1-andrius-4ZmsDwijFH7sq35pWSNszA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andrius =?utf-8?B?xaB0aWtvbmFz?= <andrius-4ZmsDwijFH7sq35pWSNszA@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 28. Juni 2019, 00:32:38 CEST schrieb Nick Desaulniers:
-> On Thu, Jun 27, 2019 at 3:22 PM 'Nathan Huckleberry' via Clang Built
-> Linux <clang-built-linux@googlegroups.com> wrote:
-> >
-> > Clang produces the following warning
-> >
-> > drivers/clk/rockchip/clk-rv1108.c:125:7: warning: unused variable
-> > 'mux_pll_src_3plls_p' [-Wunused-const-variable]
-> > PNAME(mux_pll_src_3plls_p)      = { "apll", "gpll", "dpll" };
-> >
-> > Looks like this variable was never used. Deleting it to remove the
-> > warning.
-> 
-> Indeed, looks like it was dead when introduced in:
-> commit e44dde279492 ("clk: rockchip: add clock controller for rk1108")
-> 
-> I don't see a pattern between when mux_pll_src_4plls_p vs
-> mux_pll_src_2plls_p is used, so it's not clear where or even if
-> mux_pll_src_3plls_p should be used.
-
-The possible sources for a clock really differ often, so there is no general
-rule on when to use which sources ... except looking it up in the soc
-manual. And I guess any possible conflict will turn up when someone
-wants to use a clock that currently may reference the wrong sources.
+QW0gTWl0dHdvY2gsIDI0LiBKdWxpIDIwMTksIDIxOjE3OjE1IENFU1Qgc2NocmllYiBBbmRyaXVz
+IMWgdGlrb25hczoKPiBSb2NrUHJvNjQgaGFzIGEgZGVkaWNhdGVkIGNpcmN1aXQgZm9yIGRyaXZp
+bmcgYSAxMlYgZmFuIGZyb20gUFdNMS4KPiAKPiBBdCB0aGUgbW9tZW50IHRoaXMgbWFrZXMgZmFu
+IHNwaW4gYXQgZnVsbCBzcGVlZC4gZmFuY29udHJvbCBjYW4gYmUgdXNlZAo+IHRvIGNvbnRyb2wg
+ZmFuIHNwZWVkLiBFLmcuIHRoZSBmb2xsb3dpbmcgY29uZmlnIGZpbGUgd29ya3Mgd2VsbDoKPiAK
+PiBJTlRFUlZBTD0xMAo+IERFVlBBVEg9aHdtb24wPWRldmljZXMvcGxhdGZvcm0vcHdtLWZhbgo+
+IERFVk5BTUU9aHdtb24wPXB3bWZhbgo+IEZDVEVNUFM9aHdtb24wL2RldmljZS9wd20xPS4uL3Ro
+ZXJtYWwvdGhlcm1hbF96b25lMC90ZW1wCj4gTUlOVEVNUD1od21vbjAvZGV2aWNlL3B3bTE9NDAK
+PiBNQVhURU1QPWh3bW9uMC9kZXZpY2UvcHdtMT02MAo+IE1JTlNUQVJUPWh3bW9uMC9kZXZpY2Uv
+cHdtMT0xMDAKPiBNSU5TVE9QPWh3bW9uMC9kZXZpY2UvcHdtMT03MAo+IAo+IEluIHRoZSBmdXR1
+cmUgaXQgd291bGQgYmUgbmljZSB0byBkZWZpbmUgdHJpcCBwb2ludHMgaW4gZHRzIGZpbGUsCj4g
+c28gdGhhdCBrZXJuZWwgY291bGQgYWRqdXN0IGZhbiBzcGVlZCBpdHNlbGYuCgpwYXRjaGVzIHdl
+bGNvbWUgOy0pCgo+IFNpZ25lZC1vZmYtYnk6IEFuZHJpdXMgxaB0aWtvbmFzIDxhbmRyaXVzQHN0
+aWtvbmFzLmV1PgoKYXBwbGllZCBmb3IgNS40CgpUaGFua3MKSGVpa28KCgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
+ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
