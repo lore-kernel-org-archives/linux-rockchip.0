@@ -1,39 +1,129 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v2 1/7] media: hantro: Set DMA max segment size
-Date: Fri, 26 Jul 2019 00:41:48 +0900
-Message-ID: <CAAFQd5BxQJBNqMnS1bCVXz-9+dCkw0g4xmiPLYgtVCJx_pbRPg@mail.gmail.com>
-References: <20190725141756.2518-1-ezequiel@collabora.com> <20190725141756.2518-2-ezequiel@collabora.com>
- <1564069001.3006.1.camel@pengutronix.de>
+From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Subject: Re: [PATCH v2 6/7] media: hantro: Move VP8 common code
+Date: Thu, 25 Jul 2019 13:22:30 -0300
+Message-ID: <20190725132230.6e7f0c22@coco.lan>
+References: <20190725141756.2518-1-ezequiel@collabora.com>
+        <20190725141756.2518-7-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <1564069001.3006.1.camel@pengutronix.de>
-Sender: stable-owner@vger.kernel.org
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>, kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, stable@vger.kernel.org
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190725141756.2518-7-ezequiel@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: linux-media@vger.kernel.org, Hans Verkuil <hans.verkuil@cisco.com>, kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jul 26, 2019 at 12:36 AM Philipp Zabel <p.zabel@pengutronix.de> wrote:
->
-> On Thu, 2019-07-25 at 11:17 -0300, Ezequiel Garcia wrote:
-> > From: Francois Buergisser <fbuergisser@chromium.org>
-> >
-> > The Hantro codec is typically used in platforms with an IOMMU,
-> > so we need to set a proper DMA segment size.
->
-> ... to make sure the DMA-mapping subsystem produces contiguous mappings?
->
-> > Devices without an
-> > IOMMU will still fallback to default 64KiB segments.
->
-> I don't understand this comment. The default max_seg_size may be 64 KiB,
-> but if we are always setting it to DMA_BUT_MASK(32), there is no falling
-> back.
->
+Em Thu, 25 Jul 2019 11:17:55 -0300
+Ezequiel Garcia <ezequiel@collabora.com> escreveu:
 
-DMA mask and segment size are two completely orthogonal parameters.
-Please check https://elixir.bootlin.com/linux/v5.3-rc1/source/drivers/iommu/dma-iommu.c#L740
-for an example of how the latter is used.
+> In order to introduce support for RK3399 VP8 decoding,
+> move some common VP8 code. This will be reused by
+> the RK3399 implementation, reducing code duplication.
+> 
+> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> ---
+>  .../staging/media/hantro/hantro_g1_vp8_dec.c    | 17 -----------------
+>  drivers/staging/media/hantro/hantro_hw.h        |  4 ++++
+>  drivers/staging/media/hantro/hantro_vp8.c       | 15 +++++++++++++++
+>  3 files changed, 19 insertions(+), 17 deletions(-)
+> 
+> diff --git a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
+> index cd1fbd3a0d5f..181e2f76d8cb 100644
+> --- a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
+> +++ b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
+> @@ -16,8 +16,6 @@
+>  #include "hantro.h"
+>  #include "hantro_g1_regs.h"
+>  
+> -#define DEC_8190_ALIGN_MASK	0x07U
+> -
+>  /* DCT partition base address regs */
+>  static const struct hantro_reg vp8_dec_dct_base[8] = {
+>  	{ G1_REG_ADDR_STR, 0, 0xffffffff },
+> @@ -131,21 +129,6 @@ static const struct hantro_reg vp8_dec_pred_bc_tap[8][4] = {
+>  	},
+>  };
+>  
+> -/*
+> - * filter taps taken to 7-bit precision,
+> - * reference RFC6386#Page-16, filters[8][6]
+> - */
+> -static const u32 vp8_dec_mc_filter[8][6] = {
+> -	{ 0, 0, 128, 0, 0, 0 },
+> -	{ 0, -6, 123, 12, -1, 0 },
+> -	{ 2, -11, 108, 36, -8, 1 },
+> -	{ 0, -9, 93, 50, -6, 0 },
+> -	{ 3, -16, 77, 77, -16, 3 },
+> -	{ 0, -6, 50, 93, -9, 0 },
+> -	{ 1, -8, 36, 108, -11, 2 },
+> -	{ 0, -1, 12, 123, -6, 0 }
+> -};
+> -
+>  /*
+>   * Set loop filters
+>   */
+> diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+> index 34ef24e3a9ef..185e27d47e47 100644
+> --- a/drivers/staging/media/hantro/hantro_hw.h
+> +++ b/drivers/staging/media/hantro/hantro_hw.h
+> @@ -15,6 +15,8 @@
+>  #include <media/vp8-ctrls.h>
+>  #include <media/videobuf2-core.h>
+>  
+> +#define DEC_8190_ALIGN_MASK	0x07U
+> +
+>  struct hantro_dev;
+>  struct hantro_ctx;
+>  struct hantro_buf;
+> @@ -93,6 +95,8 @@ extern const struct hantro_variant rk3399_vpu_variant;
+>  extern const struct hantro_variant rk3328_vpu_variant;
+>  extern const struct hantro_variant rk3288_vpu_variant;
+>  
+> +extern const u32 vp8_dec_mc_filter[8][6];
 
-Best regards,
-Tomasz
+Please don't do that, as a symbol like that can easily cause
+namespace clashes in the future. For all exported symbols,
+please prepend the driver name, like:
+
+	hantro_vp8_dec_mc_filter
+
+Regards,
+Mauro
+
+
+> +
+>  void hantro_watchdog(struct work_struct *work);
+>  void hantro_run(struct hantro_ctx *ctx);
+>  void hantro_irq_done(struct hantro_dev *vpu, unsigned int bytesused,
+> diff --git a/drivers/staging/media/hantro/hantro_vp8.c b/drivers/staging/media/hantro/hantro_vp8.c
+> index 66c45335d871..be5cb01d1309 100644
+> --- a/drivers/staging/media/hantro/hantro_vp8.c
+> +++ b/drivers/staging/media/hantro/hantro_vp8.c
+> @@ -31,6 +31,21 @@ struct vp8_prob_tbl_packed {
+>  	u8 padding3[96];
+>  };
+>  
+> +/*
+> + * filter taps taken to 7-bit precision,
+> + * reference RFC6386#Page-16, filters[8][6]
+> + */
+> +const u32 vp8_dec_mc_filter[8][6] = {
+> +	{ 0, 0, 128, 0, 0, 0 },
+> +	{ 0, -6, 123, 12, -1, 0 },
+> +	{ 2, -11, 108, 36, -8, 1 },
+> +	{ 0, -9, 93, 50, -6, 0 },
+> +	{ 3, -16, 77, 77, -16, 3 },
+> +	{ 0, -6, 50, 93, -9, 0 },
+> +	{ 1, -8, 36, 108, -11, 2 },
+> +	{ 0, -1, 12, 123, -6, 0 }
+> +};
+> +
+>  void hantro_vp8_prob_update(struct hantro_ctx *ctx,
+>  			    const struct v4l2_ctrl_vp8_frame_header *hdr)
+>  {
+
+
+
+Thanks,
+Mauro
