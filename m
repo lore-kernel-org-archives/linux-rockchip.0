@@ -1,141 +1,61 @@
-From: Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] ARM: dts: rockchip: consolidate veyron panel and
- backlight settings
-Date: Wed, 24 Jul 2019 15:38:23 -0700
-Message-ID: <20190724223823.GC250418@google.com>
-References: <20190711223455.12210-1-mka@chromium.org>
- <20190711223455.12210-2-mka@chromium.org>
- <CAD=FV=Wj4Fei6t-STjY_FJkDKQYys5PcVquBJcdRE3wUN=y3Yg@mail.gmail.com>
+From: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: [PATCH v2 2/2] mwifiex: Make use of the new sdio_trigger_replug() API to reset
+Date: Thu, 25 Jul 2019 08:56:35 +0300
+Message-ID: <87imrqzmgc.fsf@kamboji.qca.qualcomm.com>
+References: <20190722193939.125578-3-dianders@chromium.org>
+        <20190724113508.47A356021C@smtp.codeaurora.org>
+        <CAD=FV=WAsrBV9PzUz1qPzQru+AkOYZ5hsaWdhNYRTNqUfDeOmQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAD=FV=Wj4Fei6t-STjY_FJkDKQYys5PcVquBJcdRE3wUN=y3Yg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=WAsrBV9PzUz1qPzQru+AkOYZ5hsaWdhNYRTNqUfDeOmQ@mail.gmail.com>
+        (Doug Anderson's message of "Wed, 24 Jul 2019 13:22:22 -0700")
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Adrian Hunter <adrian.hunter@intel.com>, Ganapathi Bhat <gbhat@marvell.com>, linux-wireless <linux-wireless@vger.kernel.org>, Andreas Fenkart <afenkart@gmail.com>, Brian Norris <briannorris@chromium.org>, Amitkumar Karwar <amitkarwar@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Nishant Sarmukadam <nishants@marvell.com>, netdev <netdev@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>, Linux MMC List <linux-mmc@vger.kernel.org>, David Miller <davem@davemloft.net>, Xinming Hu <huxinming820@gmail.com>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jul 24, 2019 at 02:46:30PM -0700, Doug Anderson wrote:
+Doug Anderson <dianders@chromium.org> writes:
+
 > Hi,
-> 
-> On Thu, Jul 11, 2019 at 3:35 PM Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> >
-> > diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-> > index 4cc7d3659484..2b0801a539c9 100644
-> > --- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-> > +++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-> > @@ -15,40 +15,6 @@
-> >                      "google,veyron-minnie-rev0", "google,veyron-minnie",
-> >                      "google,veyron", "rockchip,rk3288";
-> >
-> > -       backlight_regulator: backlight-regulator {
-> > -               compatible = "regulator-fixed";
-> > -               enable-active-high;
-> > -               gpio = <&gpio2 RK_PB4 GPIO_ACTIVE_HIGH>;
-> > -               pinctrl-names = "default";
-> > -               pinctrl-0 = <&bl_pwr_en>;
-> > -               regulator-name = "backlight_regulator";
-> > -               vin-supply = <&vcc33_sys>;
-> > -               startup-delay-us = <15000>;
-> > -       };
-> > -
-> > -       panel_regulator: panel-regulator {
-> > -               compatible = "regulator-fixed";
-> > -               enable-active-high;
-> > -               gpio = <&gpio7 RK_PB6 GPIO_ACTIVE_HIGH>;
-> > -               pinctrl-names = "default";
-> > -               pinctrl-0 = <&lcd_enable_h>;
-> > -               regulator-name = "panel_regulator";
-> > -               startup-delay-us = <100000>;
-> > -               vin-supply = <&vcc33_sys>;
-> > -       };
-> > -
-> > -       vcc18_lcd: vcc18-lcd {
-> > -               compatible = "regulator-fixed";
-> > -               enable-active-high;
-> > -               gpio = <&gpio2 RK_PB5 GPIO_ACTIVE_HIGH>;
-> > -               pinctrl-names = "default";
-> > -               pinctrl-0 = <&avdd_1v8_disp_en>;
-> > -               regulator-name = "vcc18_lcd";
-> > -               regulator-always-on;
-> > -               regulator-boot-on;
-> > -               vin-supply = <&vcc18_wl>;
-> > -       };
-> > -
-> >         volume_buttons: volume-buttons {
-> >                 compatible = "gpio-keys";
-> >                 pinctrl-names = "default";
-> 
-> You forgot to remove the line:
-> 
-> power-supply = <&backlight_regulator>;
-> 
-> ...from minnie.
+>
+> On Wed, Jul 24, 2019 at 4:35 AM Kalle Valo <kvalo@codeaurora.org> wrote:
+>>
+>> Douglas Anderson <dianders@chromium.org> wrote:
+>>
+>> > As described in the patch ("mmc: core: Add sdio_trigger_replug()
+>> > API"), the current mwifiex_sdio_card_reset() is broken in the cases
+>> > where we're running Bluetooth on a second SDIO func on the same card
+>> > as WiFi.  The problem goes away if we just use the
+>> > sdio_trigger_replug() API call.
+>> >
+>> > NOTE: Even though with this new solution there is less of a reason to
+>> > do our work from a workqueue (the unplug / plug mechanism we're using
+>> > is possible for a human to perform at any time so the stack is
+>> > supposed to handle it without it needing to be called from a special
+>> > context), we still need a workqueue because the Marvell reset function
+>> > could called from a context where sleeping is invalid and thus we
+>> > can't claim the host.  One example is Marvell's wakeup_timer_fn().
+>> >
+>> > Cc: Andreas Fenkart <afenkart@gmail.com>
+>> > Cc: Brian Norris <briannorris@chromium.org>
+>> > Fixes: b4336a282db8 ("mwifiex: sdio: reset adapter using mmc_hw_reset")
+>> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+>> > Reviewed-by: Brian Norris <briannorris@chromium.org>
+>>
+>> I assume this is going via some other tree so I'm dropping this from my
+>> queue. If I should apply this please resend once the dependency is in
+>> wireless-drivers-next.
+>>
+>> Patch set to Not Applicable.
+>
+> Thanks.  For now I'll assume that Ulf will pick it up if/when he is
+> happy with patch #1 in this series.  Would you be willing to provide
+> your Ack on this patch to make it clear to Ulf you're OK with that?
 
-good catch, thanks!
+Sure, I was planning to do that already in my previous email but forgot.
 
-> > diff --git a/arch/arm/boot/dts/rk3288-veyron-pinky.dts b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
-> > index 9b6f4d9b03b6..06af58e37a4b 100644
-> > --- a/arch/arm/boot/dts/rk3288-veyron-pinky.dts
-> > +++ b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
-> > @@ -14,7 +14,14 @@
-> >         compatible = "google,veyron-pinky-rev2", "google,veyron-pinky",
-> >                      "google,veyron", "rockchip,rk3288";
-> >
-> > +       /delete-node/backlight-regulator;
-> > +       /delete-node/panel-regulator;
-> >         /delete-node/emmc-pwrseq;
-> > +       /delete-node/vcc18-lcd;
-> > +};
-> > +
-> > +&backlight {
-> > +       /delete-property/power-supply;
-> >  };
-> >
-> >  &emmc {
-> > @@ -52,7 +59,17 @@
-> >         i2c-scl-rising-time-ns = <300>;
-> >  };
-> >
-> > +&panel {
-> > +       power-supply= <&vcc33_lcd>;
-> 
-> Might as well put a space before the "="?
+Acked-by: Kalle Valo <kvalo@codeaurora.org>
 
-will do
-
-> >  &pinctrl {
-> > +       /delete-node/ lcd;
-> > +
-> > +       backlight {
-> > +               /delete-node/ bl_pwr_en;
-> > +       };
-> 
-> I general as the defender of "pinky", I'll let Heiko confirm he's OK
-> with the color of this bikeshed.  Sometimes a bit of repetition is
-> preferred over a bunch of confusing /delete-node/ statements since
-> those tend to make things harder to reason about in general.  In this
-> case I think things are cleaner after your patch but I won't say it's
-> 100% clear cut.
-
-I agree that some repetition can be preferrable over /delete-node/
-statements. In this case repetition is above my personal threshold,
-especially since I'm about to add another device with eDP display and
-would have to repeat the mostly redundant config yet another time.
-
-If Heiko prefer's the repetition so be it :)
-
-> Other than nits I have double-checked this patch, so feel free to add
-> my Reviewed-by after nits are fixed.
-
-Thanks for the review!
+-- 
+Kalle Valo
