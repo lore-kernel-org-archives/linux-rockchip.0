@@ -1,98 +1,79 @@
-From: Boris Brezillon <boris.brezillon@collabora.com>
-Subject: Re: [PATCH 7/9] media: hantro: Add core bits to support H264
- decoding
-Date: Fri, 26 Jul 2019 12:06:58 +0200
-Message-ID: <20190726120658.53022c21@collabora.com>
-References: <20190619121540.29320-1-boris.brezillon@collabora.com>
-        <20190619121540.29320-8-boris.brezillon@collabora.com>
-        <25cc2826-fc8f-570a-07fa-8cbdb11830a7@rasmusvillemoes.dk>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH] Revert "ASoC: rockchip: i2s: Support mono capture"
+Date: Fri, 26 Jul 2019 12:17:17 +0100
+Message-ID: <20190726111717.GB4902@sirena.org.uk>
+References: <20190726044202.26866-1-cychiang@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <25cc2826-fc8f-570a-07fa-8cbdb11830a7@rasmusvillemoes.dk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rasmus Villemoes <linux@rasmusvillemoes.dk>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@iki.fi>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, kernel@collabora.com, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Ezequiel Garcia <ezequiel@collabora.com>, Jonas Karlman <jonas@kwiboo.se>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Andrew Morton <akpm@linux-foundation.org>, Philipp Zabel <p.zabel@pengutronix.de>, Hertz Wong <hertz.wong@rock-chips.com>
+Content-Type: multipart/mixed; boundary="===============3965781844057460306=="
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190726044202.26866-1-cychiang@chromium.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Cheng-Yi Chiang <cychiang@chromium.org>
+Cc: alsa-devel@alsa-project.org, tzungbi@chromium.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, dianders@chromium.org, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, mka@chromium.org, dgreid@chromium.org, Jaroslav Kysela <perex@perex.cz>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 25 Jul 2019 15:31:41 +0200
-Rasmus Villemoes <linux@rasmusvillemoes.dk> wrote:
 
-> On 19/06/2019 14.15, Boris Brezillon wrote:
-> > From: Hertz Wong <hertz.wong@rock-chips.com>
-> > 
-> > Add helpers and patch hantro_{drv,v4l2}.c to prepare addition of H264
-> > decoding support.
-> > 
-> > Signed-off-by: Hertz Wong <hertz.wong@rock-chips.com>
-> > Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
-> > ---
-> > +
-> > +	/*
-> > +	 * Short term pics in descending pic num order, long term ones in
-> > +	 * ascending order.
-> > +	 */
-> > +	if (!(a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM))
-> > +		return b->frame_num - a->frame_num;
-> > +
-> > +	return a->pic_num - b->pic_num;
-> > +}  
-> 
-> Pet peeve: This works because ->frame_num and ->pic_num are u16, so
-> their difference is guaranteed to fit in an int.
-> 
-> > +static int b0_ref_list_cmp(const void *ptra, const void *ptrb, const void *data)
-> > +{
-> > +	const struct hantro_h264_reflist_builder *builder = data;
-> > +	const struct v4l2_h264_dpb_entry *a, *b;
-> > +	s32 poca, pocb;
-> > +	u8 idxa, idxb;
-> > +
-> > +	idxa = *((u8 *)ptra);
-> > +	idxb = *((u8 *)ptrb);
-> > +	a = &builder->dpb[idxa];
-> > +	b = &builder->dpb[idxb];
-> > +
-> > +	if ((a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM) !=
-> > +	    (b->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)) {
-> > +		/* Short term pics firt. */
-> > +		if (!(a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM))
-> > +			return -1;
-> > +		else
-> > +			return 1;
-> > +	}
-> > +
-> > +	/* Long term pics in ascending pic num order. */
-> > +	if (a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
-> > +		return a->pic_num - b->pic_num;
-> > +
-> > +	poca = builder->pocs[idxa];
-> > +	pocb = builder->pocs[idxb];
-> > +
-> > +	/*
-> > +	 * Short term pics with POC < cur POC first in POC descending order
-> > +	 * followed by short term pics with POC > cur POC in POC ascending
-> > +	 * order.
-> > +	 */
-> > +	if ((poca < builder->curpoc) != (pocb < builder->curpoc))
-> > +		return poca - pocb;
-> > +	else if (poca < builder->curpoc)
-> > +		return pocb - poca;
-> > +
-> > +	return poca - pocb;
-> > +}  
-> 
-> Here, however, poca and pocb are ints. What guarantees that their values
-> are not more than 2^31 apart?
+--===============3965781844057460306==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="4bRzO86E/ozDv8r1"
+Content-Disposition: inline
 
-Good question. Both should normally be >= 0, which I guess prevents the
-s32 overflow. This being said, it's something passed by userspace, and
-I don't think we check the value (yet).
 
-> I know absolutely nothing about this code
-> or what these numbers represent, so it may be obvious that they are
-> smallish.
+--4bRzO86E/ozDv8r1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Well, a safe approach would be to replace those subtraction by a
-ternary operator.
+On Fri, Jul 26, 2019 at 12:42:02PM +0800, Cheng-Yi Chiang wrote:
+> This reverts commit db51707b9c9aeedd310ebce60f15d5bb006567e0.
+>=20
+> Previous discussion in
+
+Please use subject lines matching the style for the subsystem.  This
+makes it easier for people to identify relevant patches.
+
+Please include human readable descriptions of things like commits and
+issues being discussed in e-mail in your mails, this makes them much
+easier for humans to read especially when they have no internet access.
+I do frequently catch up on my mail on flights or while otherwise
+travelling so this is even more pressing for me than just being about
+making things a bit easier to read.
+
+--4bRzO86E/ozDv8r1
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl064T0ACgkQJNaLcl1U
+h9DmAAf9FDy70YAEs1yPd9vLXET+RkMVfd/1yiLlweWPaqgu5WqZDjmBFBOQBj98
+CnVVDFj3X1Fv6bQs6Q/+jRMuP5ckxiGPCFO2n0dV70pXNj0m/iGUHtj4ly/zOqsH
+hwNNbmOpHphNoz87TaPFdPCj6XWPcNUOIa9b+mv/g8sxzR+9AdhzP0xLaDY7ixN9
+0sZ+5QRGFuPsu/WscetgXtdTlhxFnEYpm6HxgvmZIrdKW0hYKVM7rSj4wKxiaP9T
+ZyYlSmH/oA1OATb8LuDUPE3TTCEmMnyZUSyEAHeXAeWNFZzNn4bG0XYBeQoNZE8C
+HZeFqmHV3qj2cU3rejJ2g1P3zqrKyA==
+=4GTC
+-----END PGP SIGNATURE-----
+
+--4bRzO86E/ozDv8r1--
+
+
+--===============3965781844057460306==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+--===============3965781844057460306==--
