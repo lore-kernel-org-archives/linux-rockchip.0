@@ -1,107 +1,139 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] Revert "ARM: dts: rockchip: add startup delay to
- rk3288-veyron panel-regulators"
-Date: Thu, 25 Jul 2019 16:35:12 -0700
-Message-ID: <CAD=FV=XNSc+-a6ytx2fsUnh54g64i6FW+6WsHMFqwEMWbBPZ5Q@mail.gmail.com>
-References: <20190620182056.61552-1-dianders@chromium.org> <CAD=FV=Wi21Emjg7CpCJfSRiKr_EisR20UO1tbPjAeJzdJNbSVw@mail.gmail.com>
- <CAD=FV=UhNfhVG422=huthFSptoV4FXED=xPtArO2KkyNb1U3Xw@mail.gmail.com> <3386344.sHu1S4gNag@phil>
+From: Andrew Morton <akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>
+Subject: Re: [PATCH 1/9] lib/sort.c: implement sort() variant taking context
+ argument
+Date: Thu, 25 Jul 2019 17:05:47 -0700
+Message-ID: <20190725170547.a8a357dd76cc586f475b782d@linux-foundation.org>
+References: <20190619121540.29320-1-boris.brezillon@collabora.com>
+ <20190619121540.29320-2-boris.brezillon@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3386344.sHu1S4gNag@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190619121540.29320-2-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Rasmus Villemoes <linux-qQsb+v5E8BnlAoU/VqSP6n9LOBIZ5rWg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Wed, 19 Jun 2019 14:15:32 +0200 Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
 
-On Thu, Jul 25, 2019 at 2:33 PM Heiko Stuebner <heiko@sntech.de> wrote:
->
-> Am Mittwoch, 3. Juli 2019, 06:54:58 CEST schrieb Doug Anderson:
-> > Hi,
-> >
-> > On Thu, Jun 20, 2019 at 1:31 PM Doug Anderson <dianders@chromium.org> wrote:
-> > >
-> > > Hi,
-> > >
-> > > On Thu, Jun 20, 2019 at 11:21 AM Douglas Anderson <dianders@chromium.org> wrote:
-> > > >
-> > > > This reverts commit 1f45e8c6d0161f044d679f242fe7514e2625af4a.
-> > > >
-> > > > This 100 ms mystery delay is not on downstream kernels and no longer
-> > > > seems needed on upstream kernels either [1].  Presumably something in the
-> > > > meantime has made things better.  A few possibilities for patches that
-> > > > have landed in the meantime that could have made this better are
-> > > > commit 3157694d8c7f ("pwm-backlight: Add support for PWM delays
-> > > > proprieties."), commit 5fb5caee92ba ("pwm-backlight: Enable/disable
-> > > > the PWM before/after LCD enable toggle."), and commit 6d5922dd0d60
-> > > > ("ARM: dts: rockchip: set PWM delay backlight settings for Veyron")
-> > > >
-> > > > Let's revert and get our 100 ms back.
-> > > >
-> > > > [1] https://lkml.kernel.org/r/2226970.BAPq4liE1j@diego
-> > > >
-> > > > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > > > ---
-> > > >
-> > > >  arch/arm/boot/dts/rk3288-veyron-jaq.dts    | 1 -
-> > > >  arch/arm/boot/dts/rk3288-veyron-jerry.dts  | 1 -
-> > > >  arch/arm/boot/dts/rk3288-veyron-minnie.dts | 1 -
-> > > >  arch/arm/boot/dts/rk3288-veyron-speedy.dts | 1 -
-> > > >  4 files changed, 4 deletions(-)
-> > >
-> > > Maybe wait before applying.  I've been running reboot tests now with
-> > > this patch applied (among others) and with enough reboots I managed to
-> > > see:
-> > >
-> > > [    5.682418] rockchip-dp ff970000.dp: eDP link training failed (-5)
-> > >
-> > > I'll see if I can confirm that it's this patch and why things are
-> > > different compared to downstream.
-> >
-> > OK, I finally got back to this and confirmed:
-> >
-> > 1. The above error is actually somewhat harmless.  The eDP failure
-> > will be retried automatically despite the scary message.  Specifically
-> > see the loop in analogix_dp_bridge_enable().  I confirmed that after
-> > seeing the error the screen came up just fine (I looked at the screen
-> > in two actual instances but I believe it's pretty much always fine).
-> >
-> > 2. I haven't seen any evidence that the eDP link training happens any
-> > more often with this revert in place.  Specifically, I see the same
-> > message in the logs (at what appears to be the same rate) with or
-> > without this revert.
-> >
-> > 3. Probably the link-training failures here are the same ones we
-> > debugged for PSR for rk3399-gru-kevin that we fixed by making the eDP
-> > PCLK rate exactly 24 MHz.  See <https://crrev.com/c/433393> for
-> > details.  On rk3399-gru-kevin it was super important to resolve the
-> > root cause of these errors because we had PSR (which meant we were
-> > constantly taking to the eDP controller).  On rk3288-veyron devices
-> > with no PSR the retry should be a fine solution and it doesn't seem
-> > like a good idea to fully rejigger our clock plan to fix the root
-> > cause.
-> >
-> >
-> > NOTE: I saw _one_ case on rk3288-veyron-minnie where the screen looked
-> > wonky at bootup and I saw the eDP link training error in the logs.
-> > That's what originally made me cautious.  I haven't been able to
-> > reproduce this, but presumably I just got super unlucky in that one
-> > case.  I've left devices rebooting all day at work and haven't seen
-> > the wonky screen since then.
-> >
-> >
-> > Summary: I think this revert is just fine.
->
-> it looks like by picking Matthias' cleanups of the veyron displays
-> first I broke this patch. I guess we just need to remove the
->         startup-delay-us = <100000>;
-> from the panel_regulator in the new rk3288-veyron-edp.dtsi ?
+> From: Rasmus Villemoes <linux-qQsb+v5E8BnlAoU/VqSP6n9LOBIZ5rWg@public.gmane.org>
+> 
+> Our list_sort() utility has always supported a context argument that
+> is passed through to the comparison routine. Now there's a use case
+> for the similar thing for sort().
+> 
+> This implements sort_r by simply extending the existing sort function
+> in the obvious way. To avoid code duplication, we want to implement
+> sort() in terms of sort_r(). The naive way to do that is
+> 
+> static int cmp_wrapper(const void *a, const void *b, const void *ctx)
+> {
+>   int (*real_cmp)(const void*, const void*) = ctx;
+>   return real_cmp(a, b);
+> }
+> 
+> sort(..., cmp) { sort_r(..., cmp_wrapper, cmp) }
+> 
+> but this would do two indirect calls for each comparison. Instead, do
+> as is done for the default swap functions - that only adds a cost of a
+> single easily predicted branch to each comparison call.
+> 
+> Aside from introducing support for the context argument, this also
+> serves as preparation for patches that will eliminate the indirect
+> comparison calls in common cases.
 
-Oops, I only checked Matthias's change against the current status of
-your for-next tree and forgot about this change.  Yes, the
-startup-delay should be removed there.  Do you want to resolve that
-when applying the patch or would you prefer a resend?
+Acked-by: Andrew Morton <akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>
 
--Doug
+> --- a/lib/sort.c
+> +++ b/lib/sort.c
+> @@ -144,6 +144,18 @@ static void do_swap(void *a, void *b, size_t size, swap_func_t swap_func)
+>  		swap_func(a, b, (int)size);
+>  }
+>  
+> +typedef int (*cmp_func_t)(const void *, const void *);
+> +typedef int (*cmp_r_func_t)(const void *, const void *, const void *);
+> +#define _CMP_WRAPPER ((cmp_r_func_t)0L)
+
+Although I can't say I'm a fan of _CMP_WRAPPER.  I don't understand
+what the name means.  Why not simply open-code NULL in the two sites?
+
+> +static int do_cmp(const void *a, const void *b,
+> +		  cmp_r_func_t cmp, const void *priv)
+> +{
+> +	if (cmp == _CMP_WRAPPER)
+> +		return ((cmp_func_t)(priv))(a, b);
+> +	return cmp(a, b, priv);
+> +}
+> +
+>  /**
+>   * parent - given the offset of the child, find the offset of the parent.
+>   * @i: the offset of the heap element whose parent is sought.  Non-zero.
+> @@ -171,12 +183,13 @@ static size_t parent(size_t i, unsigned int lsbit, size_t size)
+>  }
+>  
+>  /**
+> - * sort - sort an array of elements
+> + * sort_r - sort an array of elements
+>   * @base: pointer to data to sort
+>   * @num: number of elements
+>   * @size: size of each element
+>   * @cmp_func: pointer to comparison function
+>   * @swap_func: pointer to swap function or NULL
+> + * @priv: third argument passed to comparison function
+
+Passing priv==NULLis part of the interface and should be documented?
+
+>   *
+>   * This function does a heapsort on the given array.  You may provide
+>   * a swap_func function if you need to do something more than a memory
+> @@ -188,9 +201,10 @@ static size_t parent(size_t i, unsigned int lsbit, size_t size)
+>   * O(n*n) worst-case behavior and extra memory requirements that make
+>   * it less suitable for kernel use.
+>   */
+> -void sort(void *base, size_t num, size_t size,
+> -	  int (*cmp_func)(const void *, const void *),
+> -	  void (*swap_func)(void *, void *, int size))
+> +void sort_r(void *base, size_t num, size_t size,
+> +	    int (*cmp_func)(const void *, const void *, const void *),
+> +	    void (*swap_func)(void *, void *, int size),
+> +	    const void *priv)
+>  {
+>  	/* pre-scale counters for performance */
+>  	size_t n = num * size, a = (num/2) * size;
+> @@ -238,12 +252,12 @@ void sort(void *base, size_t num, size_t size,
+>  		 * average, 3/4 worst-case.)
+>  		 */
+>  		for (b = a; c = 2*b + size, (d = c + size) < n;)
+> -			b = cmp_func(base + c, base + d) >= 0 ? c : d;
+> +			b = do_cmp(base + c, base + d, cmp_func, priv) >= 0 ? c : d;
+>  		if (d == n)	/* Special case last leaf with no sibling */
+>  			b = c;
+>  
+>  		/* Now backtrack from "b" to the correct location for "a" */
+> -		while (b != a && cmp_func(base + a, base + b) >= 0)
+> +		while (b != a && do_cmp(base + a, base + b, cmp_func, priv) >= 0)
+>  			b = parent(b, lsbit, size);
+>  		c = b;			/* Where "a" belongs */
+>  		while (b != a) {	/* Shift it into place */
+> @@ -252,4 +266,12 @@ void sort(void *base, size_t num, size_t size,
+>  		}
+>  	}
+>  }
+> +EXPORT_SYMBOL(sort_r);
+> +
+> +void sort(void *base, size_t num, size_t size,
+> +	  int (*cmp_func)(const void *, const void *),
+> +	  void (*swap_func)(void *, void *, int size))
+> +{
+> +	return sort_r(base, num, size, _CMP_WRAPPER, swap_func, cmp_func);
+> +}
+>  EXPORT_SYMBOL(sort);
