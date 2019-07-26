@@ -1,75 +1,96 @@
-From: Cheng-Yi Chiang <cychiang@chromium.org>
-Subject: [PATCH] Revert "ASoC: rockchip: i2s: Support mono capture"
-Date: Fri, 26 Jul 2019 12:42:02 +0800
-Message-ID: <20190726044202.26866-1-cychiang@chromium.org>
+From: Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v5 02/24] drm: Add drm_connector_init() variant with ddc
+Date: Fri, 26 Jul 2019 08:35:09 +0200
+Message-ID: <20190726063509.GA6443@ravnborg.org>
+References: <cover.1563960855.git.andrzej.p@collabora.com>
+ <53f5ded2971235e5b63c9a3ed4ed8bccf10c78f2.1563960855.git.andrzej.p@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-kernel@vger.kernel.org
-Cc: alsa-devel@alsa-project.org, dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, tzungbi@chromium.org, Jaroslav Kysela <perex@perex.cz>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, dgreid@chromium.org, mka@chromium.org, linux-arm-kernel@lists.infradead.org, Cheng-Yi Chiang <cychiang@chromium.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <53f5ded2971235e5b63c9a3ed4ed8bccf10c78f2.1563960855.git.andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: "Y.C. Chen" <yc_chen-SAlXDmAnmOAqDJ6do+/SaQ@public.gmane.org>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Ramalingam C <ramalingam.c-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Joonas Lahtinen <joonas.lahtinen-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Benjamin Gaignard <benjamin.gaignard-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "David (ChunMing) Zhou" <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Vincent Abriou <vincent.abriou-qxv4g6HH51o@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Krzyszt
 List-Id: linux-rockchip.vger.kernel.org
 
-This reverts commit db51707b9c9aeedd310ebce60f15d5bb006567e0.
+Hi Andrzej.
 
-Previous discussion in
+On Wed, Jul 24, 2019 at 03:59:24PM +0200, Andrzej Pietrasiewicz wrote:
+> Allow passing ddc adapter pointer to the init function. Even if
+> drm_connector_init() sometime in the future decides to e.g. memset() all
+> connector fields to zeros, the newly added function ensures that at its
+> completion the ddc member of connector is correctly set.
+> 
+> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+>  drivers/gpu/drm/drm_connector.c | 19 +++++++++++++++++++
+>  include/drm/drm_connector.h     |  5 +++++
+>  2 files changed, 24 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+> index 068d4b05f1be..06fbfc44fb48 100644
+> --- a/drivers/gpu/drm/drm_connector.c
+> +++ b/drivers/gpu/drm/drm_connector.c
+> @@ -296,6 +296,25 @@ int drm_connector_init(struct drm_device *dev,
+>  }
+>  EXPORT_SYMBOL(drm_connector_init);
+>  
+> +int drm_connector_init_with_ddc(struct drm_device *dev,
+> +				struct drm_connector *connector,
+> +				const struct drm_connector_funcs *funcs,
+> +				int connector_type,
+> +				struct i2c_adapter *ddc)
+> +{
 
-https://patchwork.kernel.org/patch/10147153/
+This is good, with this helper there is no longer any confusion about
+ordering.
 
-explains the issue of the patch.
-While device is configured as 1-ch, hardware is still
-generating a 2-ch stream.
-When user space reads the data and assumes it is a 1-ch stream,
-the rate will be slower by 2x.
+drm_connector_init_with_ddc() is part of the public interface for
+drm_connector and needs kernel-doc documentation.
 
-Revert the change so 1-ch is not supported.
-User space can selectively take one channel data out of two channel
-if 1-ch is preferred.
-Currently, both channels record identical data.
+	Sam
 
-Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
----
- sound/soc/rockchip/rockchip_i2s.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 0a34d0eb8dba..88ebaf6e1880 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -326,7 +326,6 @@ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
- 		val |= I2S_CHN_4;
- 		break;
- 	case 2:
--	case 1:
- 		val |= I2S_CHN_2;
- 		break;
- 	default:
-@@ -459,7 +458,7 @@ static struct snd_soc_dai_driver rockchip_i2s_dai = {
- 	},
- 	.capture = {
- 		.stream_name = "Capture",
--		.channels_min = 1,
-+		.channels_min = 2,
- 		.channels_max = 2,
- 		.rates = SNDRV_PCM_RATE_8000_192000,
- 		.formats = (SNDRV_PCM_FMTBIT_S8 |
-@@ -659,7 +658,7 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 	}
- 
- 	if (!of_property_read_u32(node, "rockchip,capture-channels", &val)) {
--		if (val >= 1 && val <= 8)
-+		if (val >= 2 && val <= 8)
- 			soc_dai->capture.channels_max = val;
- 	}
- 
--- 
-2.22.0.709.g102302147b-goog
+> +	int ret;
+> +
+> +	ret = drm_connector_init(dev, connector, funcs, connector_type);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* provide ddc symlink in sysfs */
+> +	connector->ddc = ddc;
+> +
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL(drm_connector_init_with_ddc);
+> +
+>  /**
+>   * drm_connector_attach_edid_property - attach edid property.
+>   * @connector: the connector
+> diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+> index 33a6fff85fdb..937fda9c1374 100644
+> --- a/include/drm/drm_connector.h
+> +++ b/include/drm/drm_connector.h
+> @@ -1410,6 +1410,11 @@ int drm_connector_init(struct drm_device *dev,
+>  		       struct drm_connector *connector,
+>  		       const struct drm_connector_funcs *funcs,
+>  		       int connector_type);
+> +int drm_connector_init_with_ddc(struct drm_device *dev,
+> +				struct drm_connector *connector,
+> +				const struct drm_connector_funcs *funcs,
+> +				int connector_type,
+> +				struct i2c_adapter *ddc);
+>  void drm_connector_attach_edid_property(struct drm_connector *connector);
+>  int drm_connector_register(struct drm_connector *connector);
+>  void drm_connector_unregister(struct drm_connector *connector);
+> -- 
+> 2.17.1
