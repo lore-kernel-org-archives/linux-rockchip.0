@@ -1,58 +1,83 @@
-From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 5.2 05/85] ARM: dts: rockchip: Mark that the rk3288 timer might stop in suspend
-Date: Fri, 26 Jul 2019 09:38:15 -0400
-Message-ID: <20190726133936.11177-5-sashal@kernel.org>
+From: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: [PATCH AUTOSEL 5.2 12/85] arm64: dts: rockchip: fix isp iommu clocks
+ and power domain
+Date: Fri, 26 Jul 2019 09:38:22 -0400
+Message-ID: <20190726133936.11177-12-sashal@kernel.org>
 References: <20190726133936.11177-1-sashal@kernel.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190726133936.11177-1-sashal@kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Sasha Levin <sashal@kernel.org>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190726133936.11177-1-sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Douglas Anderson <dianders@chromium.org>
+From: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 
-[ Upstream commit 8ef1ba39a9fa53d2205e633bc9b21840a275908e ]
+[ Upstream commit c432a29d3fc9ee928caeca2f5cf68b3aebfa6817 ]
 
-This is similar to commit e6186820a745 ("arm64: dts: rockchip: Arch
-counter doesn't tick in system suspend").  Specifically on the rk3288
-it can be seen that the timer stops ticking in suspend if we end up
-running through the "osc_disable" path in rk3288_slp_mode_set().  In
-that path the 24 MHz clock will turn off and the timer stops.
+isp iommu requires wrapper variants of the clocks.
+noc variants are always on and using the wrapper variants will activate
+{A,H}CLK_ISP{0,1} due to the hierarchy.
 
-To test this, I ran this on a Chrome OS filesystem:
-  before=$(date); \
-  suspend_stress_test -c1 --suspend_min=30 --suspend_max=31; \
-  echo ${before}; date
+Tested using the pending isp patch set (which is not upstream
+yet). Without this patch, streaming from the isp stalls.
 
-...and I found that unless I plug in a device that requests USB wakeup
-to be active that the two calls to "date" would show that fewer than
-30 seconds passed.
+Also add the respective power domain and remove the "disabled" status.
 
-NOTE: deep suspend (where the 24 MHz clock gets disabled) isn't
-supported yet on upstream Linux so this was tested on a downstream
-kernel.
+Refer:
+ RK3399 TRM v1.4 Fig. 2-4 RK3399 Clock Architecture Diagram
+ RK3399 TRM v1.4 Fig. 8-1 RK3399 Power Domain Partition
 
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Signed-off-by: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Tested-by: Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Signed-off-by: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 ---
- arch/arm/boot/dts/rk3288.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index aa017abf4f42..f7bc886a4b51 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -231,6 +231,7 @@
- 			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
- 			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
- 		clock-frequency = <24000000>;
-+		arm,no-tick-in-suspend;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 196ac9b78076..89594a7276f4 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1706,11 +1706,11 @@
+ 		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
+ 		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		interrupt-names = "isp0_mmu";
+-		clocks = <&cru ACLK_ISP0_NOC>, <&cru HCLK_ISP0_NOC>;
++		clocks = <&cru ACLK_ISP0_WRAPPER>, <&cru HCLK_ISP0_WRAPPER>;
+ 		clock-names = "aclk", "iface";
+ 		#iommu-cells = <0>;
++		power-domains = <&power RK3399_PD_ISP0>;
+ 		rockchip,disable-mmu-reset;
+-		status = "disabled";
  	};
  
- 	timer: timer@ff810000 {
+ 	isp1_mmu: iommu@ff924000 {
+@@ -1718,11 +1718,11 @@
+ 		reg = <0x0 0xff924000 0x0 0x100>, <0x0 0xff925000 0x0 0x100>;
+ 		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		interrupt-names = "isp1_mmu";
+-		clocks = <&cru ACLK_ISP1_NOC>, <&cru HCLK_ISP1_NOC>;
++		clocks = <&cru ACLK_ISP1_WRAPPER>, <&cru HCLK_ISP1_WRAPPER>;
+ 		clock-names = "aclk", "iface";
+ 		#iommu-cells = <0>;
++		power-domains = <&power RK3399_PD_ISP1>;
+ 		rockchip,disable-mmu-reset;
+-		status = "disabled";
+ 	};
+ 
+ 	hdmi_sound: hdmi-sound {
 -- 
 2.20.1
