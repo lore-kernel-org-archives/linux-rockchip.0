@@ -1,35 +1,102 @@
-From: Maxime Ripard <mripard@kernel.org>
-Subject: Re: [PATCH v6 07/24] drm/sun4i: hdmi: Provide ddc symlink in sun4i
- hdmi connector sysfs directory
-Date: Sat, 27 Jul 2019 12:37:56 +0200
-Message-ID: <20190727103756.mow2d6mzhameue6h@flea.home>
-References: <cover.1564161140.git.andrzej.p@collabora.com>
- <b5a8881b226a9af7d31eb6a57d7fe0fccdcb3a47.1564161140.git.andrzej.p@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <b5a8881b226a9af7d31eb6a57d7fe0fccdcb3a47.1564161140.git.andrzej.p@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Cc: Sam Ravnborg <sam@ravnborg.org>, Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, kernel@collabora.com, linux-samsung-soc@vger.kernel.org, Vincent Abriou <vincent.abriou@st.com>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Dave Airlie <airlied@redhat.com>, intel-gfx@lists.freedesktop.org, freedreno@lists.freedesktop.org, linux-tegra@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>, linux-arm-msm@vger.kernel.org, Mamta Shukla <mamtashukla555@gmail.com>, linux-mediatek@lists.infradead.org, Jyri Sarha <jsarha@ti.co>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: [PATCH 1/2] ARM: dts: rockchip: Cleanup style around assignment operator
+Date: Sat, 27 Jul 2019 16:27:35 +0200
+Message-ID: <20190727142736.23188-1-krzk@kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzk@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBKdWwgMjYsIDIwMTkgYXQgMDc6MjM6MDFQTSArMDIwMCwgQW5kcnplaiBQaWV0cmFz
-aWV3aWN6IHdyb3RlOgo+IFVzZSB0aGUgZGRjIHBvaW50ZXIgcHJvdmlkZWQgYnkgdGhlIGdlbmVy
-aWMgY29ubmVjdG9yLgo+Cj4gU2lnbmVkLW9mZi1ieTogQW5kcnplaiBQaWV0cmFzaWV3aWN6IDxh
-bmRyemVqLnBAY29sbGFib3JhLmNvbT4KCkFja2VkLWJ5OiBNYXhpbWUgUmlwYXJkIDxtYXhpbWUu
-cmlwYXJkQGJvb3RsaW4uY29tPgoKTWF4aW1lCgotLQpNYXhpbWUgUmlwYXJkLCBCb290bGluCkVt
-YmVkZGVkIExpbnV4IGFuZCBLZXJuZWwgZW5naW5lZXJpbmcKaHR0cHM6Ly9ib290bGluLmNvbQpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
+Use a space before and after assignment operator to have consistent
+style.
+
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+---
+ arch/arm/boot/dts/rk3036.dtsi                   |  2 +-
+ arch/arm/boot/dts/rk3288-evb.dtsi               |  2 +-
+ arch/arm/boot/dts/rk3288-tinker.dtsi            | 12 ++++++------
+ arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi |  2 +-
+ 4 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index 0290ea4edd32..c776321b2cc4 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -484,7 +484,7 @@
+ 		compatible = "rockchip,rockchip-spi";
+ 		reg = <0x20074000 0x1000>;
+ 		interrupts = <GIC_SPI 23 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks =<&cru PCLK_SPI>, <&cru SCLK_SPI>;
++		clocks = <&cru PCLK_SPI>, <&cru SCLK_SPI>;
+ 		clock-names = "apb-pclk","spi_pclk";
+ 		dmas = <&pdma 8>, <&pdma 9>;
+ 		dma-names = "tx", "rx";
+diff --git a/arch/arm/boot/dts/rk3288-evb.dtsi b/arch/arm/boot/dts/rk3288-evb.dtsi
+index 820440715302..2afd686b2033 100644
+--- a/arch/arm/boot/dts/rk3288-evb.dtsi
++++ b/arch/arm/boot/dts/rk3288-evb.dtsi
+@@ -97,7 +97,7 @@
+ 	};
+ 
+ 	panel: panel {
+-		compatible ="lg,lp079qx1-sp0v", "simple-panel";
++		compatible = "lg,lp079qx1-sp0v", "simple-panel";
+ 		backlight = <&backlight>;
+ 		enable-gpios = <&gpio7 RK_PA4 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-0 = <&lcd_cs>;
+diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
+index 293576869546..81e4e953d4a4 100644
+--- a/arch/arm/boot/dts/rk3288-tinker.dtsi
++++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
+@@ -47,13 +47,13 @@
+ 		compatible = "gpio-leds";
+ 
+ 		act-led {
+-			gpios=<&gpio1 RK_PD0 GPIO_ACTIVE_HIGH>;
+-			linux,default-trigger="mmc0";
++			gpios = <&gpio1 RK_PD0 GPIO_ACTIVE_HIGH>;
++			linux,default-trigger = "mmc0";
+ 		};
+ 
+ 		heartbeat-led {
+-			gpios=<&gpio1 RK_PD1 GPIO_ACTIVE_HIGH>;
+-			linux,default-trigger="heartbeat";
++			gpios = <&gpio1 RK_PD1 GPIO_ACTIVE_HIGH>;
++			linux,default-trigger = "heartbeat";
+ 		};
+ 
+ 		pwr-led {
+@@ -443,7 +443,7 @@
+ 
+ &saradc {
+ 	vref-supply = <&vcc18_ldo1>;
+-	status ="okay";
++	status = "okay";
+ };
+ 
+ &sdmmc {
+@@ -516,7 +516,7 @@
+ };
+ 
+ &usb_otg {
+-	status= "okay";
++	status = "okay";
+ };
+ 
+ &vopb {
+diff --git a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
+index 1cadb522fd0d..e0183655e92c 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
+@@ -86,7 +86,7 @@
+ 	};
+ 
+ 	panel: panel {
+-		compatible ="innolux,n116bge", "simple-panel";
++		compatible = "innolux,n116bge", "simple-panel";
+ 		status = "okay";
+ 		power-supply = <&vcc33_lcd>;
+ 		backlight = <&backlight>;
+-- 
+2.17.1
