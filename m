@@ -1,104 +1,217 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH 00/15] rk3399: Add redundant boot support
-Date: Mon, 29 Jul 2019 13:16:56 +0530
-Message-ID: <20190729074711.16988-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH 01/15] arm: rockchip: Add common cru.h
+Date: Mon, 29 Jul 2019 13:16:57 +0530
+Message-ID: <20190729074711.16988-2-jagan@amarulasolutions.com>
+References: <20190729074711.16988-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, Akash Gajjar <akash@openedev.com>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190729074711.16988-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Qm9vdCByZWR1bmRhbmN5IGlzIG9uZSBvZiB0aGUga2V5IGNyaXRlcmlhIGZvciBzd2l0Y2gKcmVj
-b3Zlcnkgb3IgZ29sZGVuIHBhcnRpdGlvbiBiYXNlZCBvbiB0aGUgYm9vdGNvdW50IAp2YWx1ZSwg
-d2hpY2ggaW5kZWVkIHZlcnkgbXVjaCBuZWVkZWQgaW4gcHJvZHVjdGlvbiAKc3lzdGVtcyBvbiB0
-aGUgZmllbGRzLgoKVGhpcyBwYXRjaHNldCBzdXBwb3J0IHJlZHVuZGFudCBib290IG9uIFJvY2tj
-aGlwIHJrMzM5OS4KClRvIG1ha2UgZnVsbCBmdW5jdGlvbmFsIHJlZHVuZGFuY3kgYmVsb3cgZmVh
-dHVyZXMgCndvdWxkIHJlcXVpcmUgZnJvbSBVLUJvb3QgbGV2ZWwuCi0gYm9vdGNvdW50LCBmb3Ig
-Y291bnRpbmcgbnVtYmVyIHJlYm9vdHMKLSBhbHRib290Ci0gd2F0Y2hkb2cgc3VwcG9ydCwgaWYg
-U1BMIG9yIFUtQm9vdCByZXNldCBiZWNhdXNlIG9mIFdEVAotIGFkZCBDUFVJTkZPIGZvciBtb3Jl
-IHVuZGVyc3RhbmRpbmcgYWJvdXQgaG93IFNvQyBhbmQgCiAgcmVzZXQgcmVhc29uLgoKcGF0Y2gg
-MDAwMSAtIDAwMDU6IGNwdSBpbmZvLCByZXNldCByZWFzb24KCnBhdGNoIDAwMDYgLSAwMDA5OiBk
-ZXNpZ253YXJlIHdhdGNoZG9nIGRyaXZlciwgZG0tY29udmVyc2lvbgoKcGF0Y2ggMDAxMDogQWRk
-IHdhdGNoZG9nIHByb3BlcnR5IGF2YWlsYWJsZSB0byBTUEwKCnBhdGNoIDAwMTE6IEFkZCBLY29u
-ZmlnIG9wdGlvbiBmb3IgZHdfd2R0LmMKCnBhdGNoIDAwMTI6IERpc2FibGUgd2F0Y2hkb2cgZm9y
-IFRQTAoKcGF0Y2ggMDAxMzogZW5hYmxlIHdhdGNoZG9nIG9uIHJvY2twcm82NCwgb3ZlcmxheQoK
-cGF0Y2ggMDAxNDogYm9vdGNvdW50IHN1cHBvcnQKCnBhdGNoIDAwMTU6IGVuYWJsZSBib290Y291
-bnQgb24gcm9ja3BybzY0LCBvdmVybGF5CgpJIHdvdWxkIGxpa2UsIG5vdCB0byBtZXJnZSB3YXRj
-aGRvZyBhbmQgYm9vdGNvdW50IG9uIE1haW5saW5lCmRldmJvYXJkcyBzaW5jZSB0aGVzZSBmZWF0
-dXJlcyB3aWxsIG1vc3RseSByZXF1aXJlZCBvbiBwcm9kdWN0aW9uCmRldmljZXMgYnV0IGFueSBj
-b21tZW50cywgcGxlYXNlIHNoYXJlLgoKQW55IGlucHV0cz8KSmFnYW4uCgpKYWdhbiBUZWtpICgx
-NSk6CiAgYXJtOiByb2NrY2hpcDogQWRkIGNvbW1vbiBjcnUuaAogIHJvY2tjaGlwOiBBZGQgY3B1
-LWluZm8KICByb2NrY2hpcDogcmszMjg4OiBQcmludCByZXNldCByZWFzb24KICByb2NrY2hpcDog
-QWRkIGNvbW1vbiByZXNldCByZWFzb24KICByb2NrY2hpcDogcmszMjg4L3JrMzM5OTogRW5hYmxl
-IERJU1BMQVlfQ1BVSU5GTwogIHdkdDogZGVzaWdud2FyZTogU2ltcGxpZnkgaXNfZW5hYmxlZCBm
-dW5jdGlvbgogIHdkdDogZGVzaWdud2FyZTogU2ltcGxpZnkgZW5hYmxlIGZ1bmN0aW9uCiAgd2R0
-OiBkdzogQWRkIGRyaXZlci1tb2RlbCBzdXBwb3J0CiAgd2R0OiBkdzogUmVuYW1lIHRvIGR3X3dk
-dC5jCiAgcm9ja2NoaXA6IGR0czogcmszMzk5OiBBZGQgdS1ib290LCBkbS1wcmUtcmVsb2MgZm9y
-IHdhdGNoZG9nCiAgd2R0OiBLY29uZmlnOiBBZGQgV0RUX0RXIGVudHJ5CiAgaW5jbHVkZTogcmsz
-Mzk5OiBEaXNhYmxlIHdhdGNoZG9nIGluIFRQTAogIFtETyBOT1QgTUVSR0VdIHJrMzM5OTogcm9j
-a3BybzY0OiBFbmFibGUgd2F0Y2hkb2cKICByb2NrY2hpcDogcmszMzk5OiBBZGQgYm9vdGNvdW50
-IHN1cHBvcnQKICBbRE8gTk9UIE1FUkdFXSByazMzOTk6IHJvY2twcm82NDogRW5hYmxlIGJvb3Rj
-b3VudAoKIGFyY2gvYXJtL2R0cy9yazMzOTktdS1ib290LmR0c2kgICAgICAgICAgICAgICB8ICAg
-NiArCiBhcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL2NydS5oICAgICAgfCAgMjgg
-KysrCiAuLi4vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9jcnVfcmszMjg4LmggICAgfCAgMTQg
-Ky0KIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZpZyAgICAgICAgICAgICAgICB8ICAgMiAr
-CiBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL01ha2VmaWxlICAgICAgICAgICAgICAgfCAgIDEgKwog
-YXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9jcHUtaW5mby5jICAgICAgICAgICAgIHwgIDY1ICsrKysr
-KysKIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMjg4LWJvYXJkLmMgICAgICAgICB8ICAzOSAt
-LS0tCiBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzI4OC9jbGtfcmszMjg4LmMgICAgfCAgIDIg
-Ky0KIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMzk5LWJvYXJkLXNwbC5jICAgICB8ICAgMiAr
-LQogYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMzOTkvS2NvbmZpZyAgICAgICAgIHwgIDEwICsK
-IGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMzk5L2Nsa19yazMzOTkuYyAgICB8ICAgMiArLQog
-Y29tbW9uL2JvYXJkX2YuYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAyICstCiBj
-b25maWdzL2V2Yi1yazMyODhfZGVmY29uZmlnICAgICAgICAgICAgICAgICAgfCAgIDEgLQogY29u
-Zmlncy9ldmItcmszMzk5X2RlZmNvbmZpZyAgICAgICAgICAgICAgICAgIHwgICAxIC0KIGNvbmZp
-Z3MvZmVubmVjLXJrMzI4OF9kZWZjb25maWcgICAgICAgICAgICAgICB8ICAgMSAtCiBjb25maWdz
-L2ZpY3VzLXJrMzM5OV9kZWZjb25maWcgICAgICAgICAgICAgICAgfCAgIDEgLQogY29uZmlncy9m
-aXJlZmx5LXJrMzI4OF9kZWZjb25maWcgICAgICAgICAgICAgIHwgICAxIC0KIGNvbmZpZ3MvZmly
-ZWZseS1yazMzOTlfZGVmY29uZmlnICAgICAgICAgICAgICB8ICAgMSAtCiBjb25maWdzL21pcWkt
-cmszMjg4X2RlZmNvbmZpZyAgICAgICAgICAgICAgICAgfCAgIDEgLQogY29uZmlncy9uYW5vcGMt
-dDQtcmszMzk5X2RlZmNvbmZpZyAgICAgICAgICAgIHwgICAxIC0KIGNvbmZpZ3MvbmFub3BpLW00
-LXJrMzM5OV9kZWZjb25maWcgICAgICAgICAgICB8ICAgMSAtCiBjb25maWdzL25hbm9waS1uZW80
-LXJrMzM5OV9kZWZjb25maWcgICAgICAgICAgfCAgIDEgLQogY29uZmlncy9vcmFuZ2VwaS1yazMz
-OTlfZGVmY29uZmlnICAgICAgICAgICAgIHwgICAxIC0KIGNvbmZpZ3MvcGh5Y29yZS1yazMyODhf
-ZGVmY29uZmlnICAgICAgICAgICAgICB8ICAgMSAtCiBjb25maWdzL3BvcG1ldGFsLXJrMzI4OF9k
-ZWZjb25maWcgICAgICAgICAgICAgfCAgIDEgLQogY29uZmlncy9wdW1hLXJrMzM5OV9kZWZjb25m
-aWcgICAgICAgICAgICAgICAgIHwgICAxIC0KIGNvbmZpZ3Mvcm9jay1waS00LXJrMzM5OV9kZWZj
-b25maWcgICAgICAgICAgICB8ICAgMSAtCiBjb25maWdzL3JvY2s5NjAtcmszMzk5X2RlZmNvbmZp
-ZyAgICAgICAgICAgICAgfCAgIDEgLQogY29uZmlncy9yb2NrcHJvNjQtcmszMzk5X2RlZmNvbmZp
-ZyAgICAgICAgICAgIHwgICA0ICstCiBjb25maWdzL3Rpbmtlci1yazMyODhfZGVmY29uZmlnICAg
-ICAgICAgICAgICAgfCAgIDEgLQogY29uZmlncy92eWFzYS1yazMyODhfZGVmY29uZmlnICAgICAg
-ICAgICAgICAgIHwgICAxIC0KIGRyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsa19yazMyODguYyAgICAg
-ICAgICAgICB8ICAgMiArLQogZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrX3JrMzM5OS5jICAgICAg
-ICAgICAgIHwgICAyICstCiBkcml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbV9yazMyODguYyAgICAg
-ICAgICAgfCAgIDIgKy0KIGRyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX3JrMzM5OS5jICAgICAg
-ICAgICB8ICAgMiArLQogZHJpdmVycy92aWRlby9yb2NrY2hpcC9yazMyODhfbWlwaS5jICAgICAg
-ICAgIHwgICAyICstCiBkcml2ZXJzL3ZpZGVvL3JvY2tjaGlwL3JrMzM5OV9taXBpLmMgICAgICAg
-ICAgfCAgIDIgKy0KIGRyaXZlcnMvdmlkZW8vcm9ja2NoaXAvcmtfbWlwaS5jICAgICAgICAgICAg
-ICB8ICAgMiArLQogZHJpdmVycy93YXRjaGRvZy9LY29uZmlnICAgICAgICAgICAgICAgICAgICAg
-IHwgICA5ICsKIGRyaXZlcnMvd2F0Y2hkb2cvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICB8
-ICAgMiArLQogZHJpdmVycy93YXRjaGRvZy9kZXNpZ253YXJlX3dkdC5jICAgICAgICAgICAgIHwg
-IDczIC0tLS0tLS0KIGRyaXZlcnMvd2F0Y2hkb2cvZHdfd2R0LmMgICAgICAgICAgICAgICAgICAg
-ICB8IDE4NCArKysrKysrKysrKysrKysrKysKIGluY2x1ZGUvY29uZmlncy9yazMzOTlfY29tbW9u
-LmggICAgICAgICAgICAgICB8ICAxMCArLQogaW5jbHVkZS9jb25maWdzL3NvY2ZwZ2FfY29tbW9u
-LmggICAgICAgICAgICAgIHwgICAyICstCiBpbmNsdWRlL2NvbmZpZ3Mvc29jZnBnYV9zdHJhdGl4
-MTBfc29jZGsuaCAgICAgfCAgIDIgKy0KIHNjcmlwdHMvY29uZmlnX3doaXRlbGlzdC50eHQgICAg
-ICAgICAgICAgICAgICB8ICAgMSAtCiA0NiBmaWxlcyBjaGFuZ2VkLCAzMzIgaW5zZXJ0aW9ucygr
-KSwgMTYwIGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtL2luY2x1ZGUv
-YXNtL2FyY2gtcm9ja2NoaXAvY3J1LmgKIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9tYWNo
-LXJvY2tjaGlwL2NwdS1pbmZvLmMKIGRlbGV0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3dhdGNoZG9n
-L2Rlc2lnbndhcmVfd2R0LmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3dhdGNoZG9nL2R3
-X3dkdC5jCgotLSAKMi4xOC4wLjMyMS5nZmZjNmZhMGUzCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0
-cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
+Few of the rockchip family SoC atleast rk3288,
+rk3399 are sharing some cru register bits so
+adding common code between these SoC families
+would require to include both cru include files
+that indeed resulting function declarations error.
+
+So, create a common cru include as cru.h then
+include the arch cru include file and move the
+common cru register bit definitions into it.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ arch/arm/include/asm/arch-rockchip/cru.h   | 16 ++++++++++++++++
+ arch/arm/mach-rockchip/rk3288-board.c      |  2 +-
+ arch/arm/mach-rockchip/rk3288/clk_rk3288.c |  2 +-
+ arch/arm/mach-rockchip/rk3399-board-spl.c  |  2 +-
+ arch/arm/mach-rockchip/rk3399/clk_rk3399.c |  2 +-
+ drivers/clk/rockchip/clk_rk3288.c          |  2 +-
+ drivers/clk/rockchip/clk_rk3399.c          |  2 +-
+ drivers/ram/rockchip/sdram_rk3288.c        |  2 +-
+ drivers/ram/rockchip/sdram_rk3399.c        |  2 +-
+ drivers/video/rockchip/rk3288_mipi.c       |  2 +-
+ drivers/video/rockchip/rk3399_mipi.c       |  2 +-
+ drivers/video/rockchip/rk_mipi.c           |  2 +-
+ 12 files changed, 27 insertions(+), 11 deletions(-)
+ create mode 100644 arch/arm/include/asm/arch-rockchip/cru.h
+
+diff --git a/arch/arm/include/asm/arch-rockchip/cru.h b/arch/arm/include/asm/arch-rockchip/cru.h
+new file mode 100644
+index 0000000000..3b1a3bae71
+--- /dev/null
++++ b/arch/arm/include/asm/arch-rockchip/cru.h
+@@ -0,0 +1,16 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * (C) Copyright 2019 Amarula Solutions.
++ * Author: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
++
++#ifndef _ROCKCHIP_CLOCK_H
++#define _ROCKCHIP_CLOCK_H
++
++#if defined(CONFIG_ROCKCHIP_RK3288)
++# include <asm/arch-rockchip/cru_rk3288.h>
++#elif defined(CONFIG_ROCKCHIP_RK3399)
++# include <asm/arch-rockchip/cru_rk3399.h>
++#endif
++
++#endif /* _ROCKCHIP_CLOCK_H */
+diff --git a/arch/arm/mach-rockchip/rk3288-board.c b/arch/arm/mach-rockchip/rk3288-board.c
+index a250d50387..d3ec141fea 100644
+--- a/arch/arm/mach-rockchip/rk3288-board.c
++++ b/arch/arm/mach-rockchip/rk3288-board.c
+@@ -10,7 +10,7 @@
+ #include <syscon.h>
+ #include <asm/io.h>
+ #include <asm/arch-rockchip/clock.h>
+-#include <asm/arch-rockchip/cru_rk3288.h>
++#include <asm/arch-rockchip/cru.h>
+ #include <asm/arch-rockchip/periph.h>
+ #include <asm/arch-rockchip/pmu_rk3288.h>
+ #include <asm/arch-rockchip/qos_rk3288.h>
+diff --git a/arch/arm/mach-rockchip/rk3288/clk_rk3288.c b/arch/arm/mach-rockchip/rk3288/clk_rk3288.c
+index e64ee86f08..1730f12443 100644
+--- a/arch/arm/mach-rockchip/rk3288/clk_rk3288.c
++++ b/arch/arm/mach-rockchip/rk3288/clk_rk3288.c
+@@ -8,7 +8,7 @@
+ #include <dm.h>
+ #include <syscon.h>
+ #include <asm/arch-rockchip/clock.h>
+-#include <asm/arch-rockchip/cru_rk3288.h>
++#include <asm/arch-rockchip/cru.h>
+ 
+ int rockchip_get_clk(struct udevice **devp)
+ {
+diff --git a/arch/arm/mach-rockchip/rk3399-board-spl.c b/arch/arm/mach-rockchip/rk3399-board-spl.c
+index 7154d8e5d0..5642c7f523 100644
+--- a/arch/arm/mach-rockchip/rk3399-board-spl.c
++++ b/arch/arm/mach-rockchip/rk3399-board-spl.c
+@@ -15,7 +15,7 @@
+ #include <asm/io.h>
+ #include <asm/arch-rockchip/bootrom.h>
+ #include <asm/arch-rockchip/clock.h>
+-#include <asm/arch-rockchip/cru_rk3399.h>
++#include <asm/arch-rockchip/cru.h>
+ #include <asm/arch-rockchip/grf_rk3399.h>
+ #include <asm/arch-rockchip/hardware.h>
+ #include <asm/arch-rockchip/periph.h>
+diff --git a/arch/arm/mach-rockchip/rk3399/clk_rk3399.c b/arch/arm/mach-rockchip/rk3399/clk_rk3399.c
+index f0411c0a21..a80a46f1db 100644
+--- a/arch/arm/mach-rockchip/rk3399/clk_rk3399.c
++++ b/arch/arm/mach-rockchip/rk3399/clk_rk3399.c
+@@ -8,7 +8,7 @@
+ #include <dm.h>
+ #include <syscon.h>
+ #include <asm/arch-rockchip/clock.h>
+-#include <asm/arch-rockchip/cru_rk3399.h>
++#include <asm/arch-rockchip/cru.h>
+ 
+ static int rockchip_get_cruclk(struct udevice **devp)
+ {
+diff --git a/drivers/clk/rockchip/clk_rk3288.c b/drivers/clk/rockchip/clk_rk3288.c
+index 375d7f8acb..b05becd3d0 100644
+--- a/drivers/clk/rockchip/clk_rk3288.c
++++ b/drivers/clk/rockchip/clk_rk3288.c
+@@ -14,7 +14,7 @@
+ #include <syscon.h>
+ #include <asm/io.h>
+ #include <asm/arch-rockchip/clock.h>
+-#include <asm/arch-rockchip/cru_rk3288.h>
++#include <asm/arch-rockchip/cru.h>
+ #include <asm/arch-rockchip/grf_rk3288.h>
+ #include <asm/arch-rockchip/hardware.h>
+ #include <dt-bindings/clock/rk3288-cru.h>
+diff --git a/drivers/clk/rockchip/clk_rk3399.c b/drivers/clk/rockchip/clk_rk3399.c
+index d9950c159b..37a82788c6 100644
+--- a/drivers/clk/rockchip/clk_rk3399.c
++++ b/drivers/clk/rockchip/clk_rk3399.c
+@@ -14,7 +14,7 @@
+ #include <bitfield.h>
+ #include <asm/io.h>
+ #include <asm/arch-rockchip/clock.h>
+-#include <asm/arch-rockchip/cru_rk3399.h>
++#include <asm/arch-rockchip/cru.h>
+ #include <asm/arch-rockchip/hardware.h>
+ #include <dm/lists.h>
+ #include <dt-bindings/clock/rk3399-cru.h>
+diff --git a/drivers/ram/rockchip/sdram_rk3288.c b/drivers/ram/rockchip/sdram_rk3288.c
+index 6bb025a851..48b479d82b 100644
+--- a/drivers/ram/rockchip/sdram_rk3288.c
++++ b/drivers/ram/rockchip/sdram_rk3288.c
+@@ -16,7 +16,7 @@
+ #include <syscon.h>
+ #include <asm/io.h>
+ #include <asm/arch-rockchip/clock.h>
+-#include <asm/arch-rockchip/cru_rk3288.h>
++#include <asm/arch-rockchip/cru.h>
+ #include <asm/arch-rockchip/ddr_rk3288.h>
+ #include <asm/arch-rockchip/grf_rk3288.h>
+ #include <asm/arch-rockchip/pmu_rk3288.h>
+diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
+index 81fc71c051..0801faf7a1 100644
+--- a/drivers/ram/rockchip/sdram_rk3399.c
++++ b/drivers/ram/rockchip/sdram_rk3399.c
+@@ -14,7 +14,7 @@
+ #include <syscon.h>
+ #include <asm/io.h>
+ #include <asm/arch-rockchip/clock.h>
+-#include <asm/arch-rockchip/cru_rk3399.h>
++#include <asm/arch-rockchip/cru.h>
+ #include <asm/arch-rockchip/grf_rk3399.h>
+ #include <asm/arch-rockchip/pmu_rk3399.h>
+ #include <asm/arch-rockchip/hardware.h>
+diff --git a/drivers/video/rockchip/rk3288_mipi.c b/drivers/video/rockchip/rk3288_mipi.c
+index 7c4a4cc53b..65891ce45c 100644
+--- a/drivers/video/rockchip/rk3288_mipi.c
++++ b/drivers/video/rockchip/rk3288_mipi.c
+@@ -18,7 +18,7 @@
+ #include <dm/uclass-internal.h>
+ #include <linux/kernel.h>
+ #include <asm/arch-rockchip/clock.h>
+-#include <asm/arch-rockchip/cru_rk3288.h>
++#include <asm/arch-rockchip/cru.h>
+ #include <asm/arch-rockchip/grf_rk3288.h>
+ #include <asm/arch-rockchip/hardware.h>
+ #include <asm/arch-rockchip/rockchip_mipi_dsi.h>
+diff --git a/drivers/video/rockchip/rk3399_mipi.c b/drivers/video/rockchip/rk3399_mipi.c
+index a93b73400b..a5b7ba69a8 100644
+--- a/drivers/video/rockchip/rk3399_mipi.c
++++ b/drivers/video/rockchip/rk3399_mipi.c
+@@ -18,7 +18,7 @@
+ #include <dm/uclass-internal.h>
+ #include <linux/kernel.h>
+ #include <asm/arch-rockchip/clock.h>
+-#include <asm/arch-rockchip/cru_rk3399.h>
++#include <asm/arch-rockchip/cru.h>
+ #include <asm/arch-rockchip/grf_rk3399.h>
+ #include <asm/arch-rockchip/hardware.h>
+ #include <asm/arch-rockchip/rockchip_mipi_dsi.h>
+diff --git a/drivers/video/rockchip/rk_mipi.c b/drivers/video/rockchip/rk_mipi.c
+index bcd039b7bc..f9280e8607 100644
+--- a/drivers/video/rockchip/rk_mipi.c
++++ b/drivers/video/rockchip/rk_mipi.c
+@@ -18,7 +18,7 @@
+ #include <dm/uclass-internal.h>
+ #include <linux/kernel.h>
+ #include <asm/arch-rockchip/clock.h>
+-#include <asm/arch-rockchip/cru_rk3399.h>
++#include <asm/arch-rockchip/cru.h>
+ #include <asm/arch-rockchip/grf_rk3399.h>
+ #include <asm/arch-rockchip/rockchip_mipi_dsi.h>
+ 
+-- 
+2.18.0.321.gffc6fa0e3
