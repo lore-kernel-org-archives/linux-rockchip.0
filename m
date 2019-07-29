@@ -1,13 +1,15 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 14/15] rockchip: rk3399: Add bootcount support
-Date: Mon, 29 Jul 2019 13:17:10 +0530
-Message-ID: <20190729074711.16988-15-jagan@amarulasolutions.com>
+From: Matthias Urlichs <matthias-+qxcz+fHsVSELgA04lAiVw@public.gmane.org>
+Subject: Re: [PATCH 03/15] rockchip: rk3288: Print reset reason
+Date: Mon, 29 Jul 2019 09:57:37 +0200
+Message-ID: <286eb2bd-41f6-9e11-9bf5-84b4fd586dfb@urlichs.de>
 References: <20190729074711.16988-1-jagan@amarulasolutions.com>
+ <20190729074711.16988-4-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190729074711.16988-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+In-Reply-To: <20190729074711.16988-4-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Language: de-CH
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,76 +19,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add bootcount support for Rockchip rk3399.
-
-The bootcount value is preserved in PMU_SYS_REG0 register,
-this would help to support redundent boot.
-
-Once the redundant boot triggers, the altboot command
-will look for extlinux-rollback.conf on particular
-bootable partition which supposed to be a recovery
-partition where redundant boot required.
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- arch/arm/mach-rockchip/Kconfig        |  2 ++
- arch/arm/mach-rockchip/rk3399/Kconfig | 10 ++++++++++
- include/configs/rk3399_common.h       |  5 ++++-
- 3 files changed, 16 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
-index 17f31e89f3..dd5055ed69 100644
---- a/arch/arm/mach-rockchip/Kconfig
-+++ b/arch/arm/mach-rockchip/Kconfig
-@@ -184,6 +184,8 @@ config ROCKCHIP_RK3399
- 	imply TPL_CLK
- 	imply TPL_TINY_MEMSET
- 	imply TPL_ROCKCHIP_COMMON_BOARD
-+	imply SYS_BOOTCOUNT_SINGLEWORD if BOOTCOUNT_LIMIT
-+	imply CMD_BOOTCOUNT if BOOTCOUNT_LIMIT
- 	help
- 	  The Rockchip RK3399 is a ARM-based SoC with a dual-core Cortex-A72
- 	  and quad-core Cortex-A53.
-diff --git a/arch/arm/mach-rockchip/rk3399/Kconfig b/arch/arm/mach-rockchip/rk3399/Kconfig
-index 6660d05349..68ac913bcb 100644
---- a/arch/arm/mach-rockchip/rk3399/Kconfig
-+++ b/arch/arm/mach-rockchip/rk3399/Kconfig
-@@ -91,6 +91,16 @@ config TPL_STACK
- config TPL_TEXT_BASE
-         default 0xff8c2000
- 
-+if BOOTCOUNT_LIMIT
-+
-+config BOOTCOUNT_BOOTLIMIT
-+	default 3
-+
-+config SYS_BOOTCOUNT_ADDR
-+	default 0xff3100f0	# PMU_SYS_REG0
-+
-+endif # BOOTCOUNT_LIMIT
-+
- source "board/rockchip/evb_rk3399/Kconfig"
- source "board/theobroma-systems/puma_rk3399/Kconfig"
- source "board/vamrs/rock960_rk3399/Kconfig"
-diff --git a/include/configs/rk3399_common.h b/include/configs/rk3399_common.h
-index 67b48e03ba..ace82928d1 100644
---- a/include/configs/rk3399_common.h
-+++ b/include/configs/rk3399_common.h
-@@ -70,7 +70,10 @@
- 	"fdtfile=" CONFIG_DEFAULT_FDT_FILE "\0" \
- 	"partitions=" PARTS_DEFAULT \
- 	ROCKCHIP_DEVICE_SETTINGS \
--	BOOTENV
-+	BOOTENV \
-+	"altbootcmd=" \
-+		"setenv boot_syslinux_conf extlinux/extlinux-rollback.conf;" \
-+		"run distro_bootcmd\0"
- 
- #endif
- 
--- 
-2.18.0.321.gffc6fa0e3
+T24gMjkuMDcuMTkgMDk6NDYsIEphZ2FuIFRla2kgd3JvdGU6Cj4gUHJpbnQgdGhlIHJlYXNvbiBm
+b3IgcmVzZXQgaW5zdGVhZCBvZiBzdG9yaW5nIGl0IGludG8KPiBlbnYgdmFyaWFibGUgaW4gcmsz
+Mjg4LgoKV2h5ICJpbnN0ZWFkIiBhbmQgbm90ICJpbiBhZGRpdGlvbiB0byI/IEl0IG1ha2VzIHNl
+bnNlIHRvIGhhdmUgdGhlIHJlc2V0CnJlYXNvbiBhdmFpbGFibGUgaW4gYm9vdCBzY3JpcHRzLgoK
+TkI6IFdvdWxkIHRoaXMgYWxzbyBiZSBwb3NzaWJsZSBmb3IgMzM5OT8KCi0tIAotLSBtaXQgZnJl
+dW5kbGljaGVuIEdyw7zDn2VuCi0tIAotLSBNYXR0aGlhcyBVcmxpY2hzCgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
+ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
