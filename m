@@ -1,7 +1,8 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 12/15] include: rk3399: Disable watchdog in TPL
-Date: Mon, 29 Jul 2019 13:17:08 +0530
-Message-ID: <20190729074711.16988-13-jagan@amarulasolutions.com>
+Subject: [PATCH 10/15] rockchip: dts: rk3399: Add u-boot,
+ dm-pre-reloc for watchdog
+Date: Mon, 29 Jul 2019 13:17:06 +0530
+Message-ID: <20190729074711.16988-11-jagan@amarulasolutions.com>
 References: <20190729074711.16988-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,28 +22,30 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Disable watchdog for TPL, since there is no support it.
+Add u-boot,dm-pre-reloc property for watchdog in rk3399-u-boot.dtsi
+so-that SPL can access watchdog.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- include/configs/rk3399_common.h | 5 +++++
- 1 file changed, 5 insertions(+)
+ arch/arm/dts/rk3399-u-boot.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/include/configs/rk3399_common.h b/include/configs/rk3399_common.h
-index 8df0180284..67b48e03ba 100644
---- a/include/configs/rk3399_common.h
-+++ b/include/configs/rk3399_common.h
-@@ -46,6 +46,11 @@
- #define CONFIG_SYS_SDRAM_BASE		0
- #define SDRAM_MAX_SIZE			0xf8000000
+diff --git a/arch/arm/dts/rk3399-u-boot.dtsi b/arch/arm/dts/rk3399-u-boot.dtsi
+index 2738a3889e..54286b585b 100644
+--- a/arch/arm/dts/rk3399-u-boot.dtsi
++++ b/arch/arm/dts/rk3399-u-boot.dtsi
+@@ -3,6 +3,12 @@
+  * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+  */
  
-+#ifdef CONFIG_TPL_BUILD
-+# undef CONFIG_WDT
-+# undef CONFIG_WATCHDOG
-+#endif
++/ {
++	watchdog@ff848000 {
++		u-boot,dm-pre-reloc;
++	};
++};
 +
- #ifndef CONFIG_SPL_BUILD
- 
- #define ENV_MEM_LAYOUT_SETTINGS \
+ &pmu {
+ 	u-boot,dm-pre-reloc;
+ };
 -- 
 2.18.0.321.gffc6fa0e3
