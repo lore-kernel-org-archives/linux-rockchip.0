@@ -1,69 +1,47 @@
-From: Andy Shevchenko <andy.shevchenko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [U-Boot] [PATCH 08/15] wdt: dw: Add driver-model support
-Date: Mon, 29 Jul 2019 12:09:32 +0300
-Message-ID: <CAHp75Vfov5zY+QxY1P3nx95MsFSj+M8tjiHtSGiBaJ0f5rCLWA@mail.gmail.com>
-References: <20190729074711.16988-1-jagan@amarulasolutions.com>
- <20190729074711.16988-9-jagan@amarulasolutions.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH v6 11/24] drm/imx: imx-tve: Provide ddc symlink in
+ connector's sysfs
+Date: Mon, 29 Jul 2019 11:20:42 +0200
+Message-ID: <1564392042.7633.1.camel@pengutronix.de>
+References: <cover.1564161140.git.andrzej.p@collabora.com>
+ <1c660776741760b8094484268b670a09da8a9042.1564161140.git.andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190729074711.16988-9-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Cc: Andy Shevchenko <andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Chin Liang See <clsee-EIB2kfCEclfQT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1c660776741760b8094484268b670a09da8a9042.1564161140.git.andrzej.p@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, dri-devel@lists.freedesktop.org
+Cc: Sam Ravnborg <sam@ravnborg.org>, Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, Douglas Anderson <dianders@chromium.org>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, kernel@collabora.com, linux-samsung-soc@vger.kernel.org, Jyri Sarha <jsarha@ti.com>, Vincent Abriou <vincent.abriou@st.com>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Dave Airlie <airlied@redhat.com>, intel-gfx@lists.freedesktop.org, freedreno@lists.freedesktop.org, linux-tegra@vger.kernel.org, Pengutronix Kernel Team <kernel@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>, linux-arm-msm@vger.kernel.org, Alexios Zavras <alexios.zavras@intel.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jul 29, 2019 at 10:56 AM Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org> wrote:
->
-> Add driver-model code for designware watchdog.
-
-> +/*
-> + * Set the watchdog time interval.
-> + * Counter is 32 bit.
-> + */
-> +static int dw_wdt_set_timeout(struct dw_wdt *dw, unsigned int timeout)
-> +{
-> +       signed int i;
-> +
-> +       /* calculate the timeout range value */
-> +       i = (log_2_n_round_up(timeout * dw->clk_rate)) - 16;
-
-Redundant parenthesis.
-
-> +       if (i > 15)
-> +               i = 15;
-> +       if (i < 0)
-> +               i = 0;
-
-Use clamp_t().
-
-> +
-> +       writel((i | (i << 4)), dw->regs + DW_WDT_TORR);
-> +
-> +       return 0;
-> +}
-
-
-> +       ret = clk_get_by_index(dev, 0, &clk);
-> +       if (!ret)
-> +               dw->clk_rate = clk_get_rate(&clk);
-> +       else
-> +               return -EINVAL;
-
-Why not to use traditional pattern, i.e.
-
-  if (ret)
-    return -ERRNO;
-
--- 
-With Best Regards,
-Andy Shevchenko
+T24gRnJpLCAyMDE5LTA3LTI2IGF0IDE5OjIzICswMjAwLCBBbmRyemVqIFBpZXRyYXNpZXdpY3og
+d3JvdGU6Cj4gVXNlIHRoZSBkZGMgcG9pbnRlciBwcm92aWRlZCBieSB0aGUgZ2VuZXJpYyBjb25u
+ZWN0b3IuCj4gCj4gU2lnbmVkLW9mZi1ieTogQW5kcnplaiBQaWV0cmFzaWV3aWN6IDxhbmRyemVq
+LnBAY29sbGFib3JhLmNvbT4KCkFja2VkLWJ5OiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1
+dHJvbml4LmRlPgoKcmVnYXJkcwpQaGlsaXBwCgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vaW14
+L2lteC10dmUuYyB8IDYgKysrKy0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyks
+IDIgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9pbXgvaW14
+LXR2ZS5jIGIvZHJpdmVycy9ncHUvZHJtL2lteC9pbXgtdHZlLmMKPiBpbmRleCA2NDk1MTU4Njhm
+ODYuLjViYmZhYTJjZDBmNCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vaW14L2lteC10
+dmUuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9pbXgvaW14LXR2ZS5jCj4gQEAgLTQ4NCw4ICs0
+ODQsMTAgQEAgc3RhdGljIGludCBpbXhfdHZlX3JlZ2lzdGVyKHN0cnVjdCBkcm1fZGV2aWNlICpk
+cm0sIHN0cnVjdCBpbXhfdHZlICp0dmUpCj4gIAo+ICAJZHJtX2Nvbm5lY3Rvcl9oZWxwZXJfYWRk
+KCZ0dmUtPmNvbm5lY3RvciwKPiAgCQkJJmlteF90dmVfY29ubmVjdG9yX2hlbHBlcl9mdW5jcyk7
+Cj4gLQlkcm1fY29ubmVjdG9yX2luaXQoZHJtLCAmdHZlLT5jb25uZWN0b3IsICZpbXhfdHZlX2Nv
+bm5lY3Rvcl9mdW5jcywKPiAtCQkJICAgRFJNX01PREVfQ09OTkVDVE9SX1ZHQSk7Cj4gKwlkcm1f
+Y29ubmVjdG9yX2luaXRfd2l0aF9kZGMoZHJtLCAmdHZlLT5jb25uZWN0b3IsCj4gKwkJCQkgICAg
+JmlteF90dmVfY29ubmVjdG9yX2Z1bmNzLAo+ICsJCQkJICAgIERSTV9NT0RFX0NPTk5FQ1RPUl9W
+R0EsCj4gKwkJCQkgICAgdHZlLT5kZGMpOwo+ICAKPiAgCWRybV9jb25uZWN0b3JfYXR0YWNoX2Vu
+Y29kZXIoJnR2ZS0+Y29ubmVjdG9yLCAmdHZlLT5lbmNvZGVyKTsKPiAgCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
+ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
