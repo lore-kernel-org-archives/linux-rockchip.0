@@ -1,131 +1,77 @@
-From: Andreas Fenkart <afenkart@gmail.com>
-Subject: Re: [PATCH v2 0/2] mmc: core: Fix Marvell WiFi reset by adding SDIO
- API to replug card
-Date: Tue, 30 Jul 2019 10:46:56 +0200
-Message-ID: <CALtMJEB871Redpzx1u6G5GVEXz-kAP=vT6Wt98=X=xm4SEMeAQ@mail.gmail.com>
-References: <20190722193939.125578-1-dianders@chromium.org>
+From: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v3 2/7] drivers: Introduce device lookup variants by
+ of_node
+Date: Tue, 30 Jul 2019 13:03:15 +0200
+Message-ID: <20190730110315.GA31631@kroah.com>
+References: <20190723221838.12024-1-suzuki.poulose@arm.com>
+ <20190723221838.12024-3-suzuki.poulose@arm.com>
+ <20190725135402.GL23883@dell>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190722193939.125578-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Ganapathi Bhat <gbhat@marvell.com>, linux-wireless@vger.kernel.org, Brian Norris <briannorris@chromium.org>, Amitkumar Karwar <amitkarwar@gmail.com>, linux-rockchip@lists.infradead.org, Wolfram Sang <wsa+renesas@sang-engineering.com>, Nishant Sarmukadam <nishants@marvell.com>, netdev@vger.kernel.org, Avri Altman <avri.altman@wdc.com>, linux-mmc <linux-mmc@vger.kernel.org>, David Miller <davem@davemloft.net>, Xinming Hu <huxinming820@gmail.com>, linux-kernel@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>, Kate Stewart <kstewart@linuxfoundation.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20190725135402.GL23883@dell>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Lee Jones <lee.jones@linaro.org>
+Cc: Andrew Lunn <andrew@lunn.ch>, Thor Thayer <thor.thayer@linux.intel.com>, rafael@kernel.org, Maxime Ripard <maxime.ripard@bootlin.com>, linux-fpga@vger.kernel.org, dri-devel@lists.freedesktop.org, Liam Girdwood <lgirdwood@gmail.com>, "David S. Miller" <davem@davemloft.net>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, linux-i2c@vger.kernel.org, Frank Rowand <frowand.list@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, linux-rockchip@lists.infradead.org, Wolfram Sang <wsa@the-dreams.de>, David Airlie <airlied@linux.ie>, Jiri Slaby <jslaby@suse.com>, devicetree@vger.kernel.org, Alan Tull <atull@kernel.org>, Suzuki K Poulose <suzuki.poulose@arm.com>, Rob Herring <robh+dt@kernel.org>, Moritz Fischer <mdf@kernel.org>, Takashi Iwai <tiwai@suse.com>, linux-arm-kernel@lists.infradead.org, Mathieu Poirier <mathieu.poirier@linaro.org>, linux-kernel@vger.kernel.orgli
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Douglas,
-
-Am Mo., 22. Juli 2019 um 21:41 Uhr schrieb Douglas Anderson
-<dianders@chromium.org>:
->
-> As talked about in the thread at:
->
-> http://lkml.kernel.org/r/CAD=FV=X7P2F1k_zwHc0mbtfk55-rucTz_GoDH=PL6zWqKYcpuw@mail.gmail.com
->
-> ...when the Marvell WiFi card tries to reset itself it kills
-> Bluetooth.  It was observed that we could re-init the card properly by
-> unbinding / rebinding the host controller.  It was also observed that
-> in the downstream Chrome OS codebase the solution used was
-> mmc_remove_host() / mmc_add_host(), which is similar to the solution
-> in this series.
->
-> So far I've only done testing of this series using the reset test
-> source that can be simulated via sysfs.  Specifically I ran this test:
->
-> for i in $(seq 1000); do
->   echo "LOOP $i --------"
->   echo 1 > /sys/kernel/debug/mwifiex/mlan0/reset
->
->   while true; do
->     if ! ping -w15 -c1 "${GW}" >/dev/null 2>&1; then
->       fail=$(( fail + 1 ))
->       echo "Fail WiFi ${fail}"
->       if [[ ${fail} == 3 ]]; then
->         exit 1
->       fi
->     else
->       fail=0
->       break
->     fi
->   done
->
->   hciconfig hci0 down
->   sleep 1
->   if ! hciconfig hci0 up; then
->     echo "Fail BT"
->     exit 1
->   fi
-> done
->
-> I ran this several times and got several hundred iterations each
-> before a failure.  When I saw failures:
->
-> * Once I saw a "Fail BT"; manually resetting the card again fixed it.
->   I didn't give it time to see if it would have detected this
->   automatically.
-> * Once I saw the ping fail because (for some reason) my device only
->   got an IPv6 address from my router and the IPv4 ping failed.  I
->   changed my script to use 'ping6' to see if that would help.
-> * Once I saw the ping fail because the higher level network stack
->   ("shill" in my case) seemed to crash.  A few minutes later the
->   system recovered itself automatically.  https://crbug.com/984593 if
->   you want more details.
-> * Sometimes while I was testing I saw "Fail WiFi 1" indicating a
->   transitory failure.  Usually this was an association failure, but in
->   one case I saw the device do "Firmware wakeup failed" after I
->   triggered the reset.  This caused the driver to trigger a re-reset
->   of itself which eventually recovered things.  This was good because
->   it was an actual test of the normal reset flow (not the one
->   triggered via sysfs).
-
-This error triggers something. I remember that when I was working on
-suspend-to-ram feature, we had problems to wake up the firmware
-reliable. I found this patch in one of my old 3.13 tree
-
-    the missing bit -- ugly hack to force cmd52 before cmd53.
----
- drivers/mmc/host/omap_hsmmc.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/drivers/mmc/host/omap_hsmmc.c b/drivers/mmc/host/omap_hsmmc.c
-index fb24a006080f..710d0bdf39e5 100644
---- a/drivers/mmc/host/omap_hsmmc.c
-+++ b/drivers/mmc/host/omap_hsmmc.c
-@@ -2372,6 +2372,12 @@ static int omap_hsmmc_suspend(struct device *dev)
-        if (host->flags & HSMMC_SWAKEUP_QUIRK)
-                disable_irq(host->gpio_sdio_irq);
-
-+       /*
-+        * force a polling cycle after resume.
-+        * will issue cmd52, not cmd53 straight away
-+        */
-+       omap_hsmmc_enable_sdio_irq(host->mmc, false);
-+
-        if (host->dbclk)
-                clk_disable_unprepare(host->dbclk);
-
->
-> Changes in v2:
-> - s/routnine/routine (Brian Norris, Matthias Kaehlcke).
-> - s/contining/containing (Matthias Kaehlcke).
-> - Add Matthias Reviewed-by tag.
-> - Removed clear_bit() calls and old comment (Brian Norris).
-> - Explicit CC of Andreas Fenkart.
-> - Explicit CC of Brian Norris.
-> - Add "Fixes" pointing at the commit Brian talked about.
-> - Add Brian's Reviewed-by tag.
->
-> Douglas Anderson (2):
->   mmc: core: Add sdio_trigger_replug() API
->   mwifiex: Make use of the new sdio_trigger_replug() API to reset
->
->  drivers/mmc/core/core.c                     | 28 +++++++++++++++++++--
->  drivers/mmc/core/sdio_io.c                  | 20 +++++++++++++++
->  drivers/net/wireless/marvell/mwifiex/sdio.c | 16 +-----------
->  include/linux/mmc/host.h                    | 15 ++++++++++-
->  include/linux/mmc/sdio_func.h               |  2 ++
->  5 files changed, 63 insertions(+), 18 deletions(-)
->
-> --
-> 2.22.0.657.g960e92d24f-goog
->
+T24gVGh1LCBKdWwgMjUsIDIwMTkgYXQgMDI6NTQ6MDJQTSArMDEwMCwgTGVlIEpvbmVzIHdyb3Rl
+Ogo+IE9uIFR1ZSwgMjMgSnVsIDIwMTksIFN1enVraSBLIFBvdWxvc2Ugd3JvdGU6Cj4gCj4gPiBJ
+bnRyb2R1Y2Ugd3JhcHBlcnMgZm9yIHtidXMvZHJpdmVyL2NsYXNzfV9maW5kX2RldmljZSgpIHRv
+Cj4gPiBsb2NhdGUgZGV2aWNlcyBieSBpdHMgb2Zfbm9kZS4KPiA+IAo+ID4gQ2M6IE1hYXJ0ZW4g
+TGFua2hvcnN0IDxtYWFydGVuLmxhbmtob3JzdEBsaW51eC5pbnRlbC5jb20+Cj4gPiBDYzogTWF4
+aW1lIFJpcGFyZCA8bWF4aW1lLnJpcGFyZEBib290bGluLmNvbT4KPiA+IENjOiBkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4gPiBDYzogRGF2aWQgQWlybGllIDxhaXJsaWVkQGxpbnV4
+LmllPgo+ID4gQ2M6IERhbmllbCBWZXR0ZXIgPGRhbmllbEBmZndsbC5jaD4KPiA+IENjOiBkZXZp
+Y2V0cmVlQHZnZXIua2VybmVsLm9yZwo+ID4gQ2M6IEZsb3JpYW4gRmFpbmVsbGkgPGYuZmFpbmVs
+bGlAZ21haWwuY29tPgo+ID4gQ2M6IEZyYW5rIFJvd2FuZCA8ZnJvd2FuZC5saXN0QGdtYWlsLmNv
+bT4KPiA+IENjOiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+ID4gQ2M6IExpYW0g
+R2lyZHdvb2QgPGxnaXJkd29vZEBnbWFpbC5jb20+Cj4gPiBDYzogbGludXgtaTJjQHZnZXIua2Vy
+bmVsLm9yZwo+ID4gQ2M6IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiA+IENj
+OiBsaW51eC1zcGlAdmdlci5rZXJuZWwub3JnCj4gPiBDYzogTWF0aGlldSBQb2lyaWVyIDxtYXRo
+aWV1LnBvaXJpZXJAbGluYXJvLm9yZz4KPiA+IENjOiBSb2IgSGVycmluZyA8cm9iaCtkdEBrZXJu
+ZWwub3JnPgo+ID4gQ2M6IFNyaW5pdmFzIEthbmRhZ2F0bGEgPHNyaW5pdmFzLmthbmRhZ2F0bGFA
+bGluYXJvLm9yZz4KPiA+IENjOiBUYWthc2hpIEl3YWkgPHRpd2FpQHN1c2UuY29tPgo+ID4gQ2M6
+IFdvbGZyYW0gU2FuZyA8d3NhQHRoZS1kcmVhbXMuZGU+Cj4gPiBDYzogQWxhbiBUdWxsIDxhdHVs
+bEBrZXJuZWwub3JnPgo+ID4gQ2M6IE1vcml0eiBGaXNjaGVyIDxtZGZAa2VybmVsLm9yZz4KPiA+
+IENjOiBsaW51eC1mcGdhQHZnZXIua2VybmVsLm9yZwo+ID4gQ2M6IFBldGVyIFJvc2luIDxwZWRh
+QGF4ZW50aWEuc2U+Cj4gPiBDYzogTWFyayBCcm93biA8YnJvb25pZUBrZXJuZWwub3JnPgo+ID4g
+Q2M6IEZsb3JpYW4gRmFpbmVsbGkgPGYuZmFpbmVsbGlAZ21haWwuY29tPgo+ID4gQ2M6IEhlaW5l
+ciBLYWxsd2VpdCA8aGthbGx3ZWl0MUBnbWFpbC5jb20+Cj4gPiBDYzogIkRhdmlkIFMuIE1pbGxl
+ciIgPGRhdmVtQGRhdmVtbG9mdC5uZXQ+Cj4gPiBDYzogQW5kcmV3IEx1bm4gPGFuZHJld0BsdW5u
+LmNoPgo+ID4gQ2M6IExpYW0gR2lyZHdvb2QgPGxnaXJkd29vZEBnbWFpbC5jb20+Cj4gPiBDYzog
+R3JlZyBLcm9haC1IYXJ0bWFuIDxncmVna2hAbGludXhmb3VuZGF0aW9uLm9yZz4KPiA+IENjOiAi
+UmFmYWVsIEouIFd5c29ja2kiIDxyYWZhZWxAa2VybmVsLm9yZz4KPiA+IENjOiBMZWUgSm9uZXMg
+PGxlZS5qb25lc0BsaW5hcm8ub3JnPgo+ID4gQ2M6IFRob3IgVGhheWVyIDx0aG9yLnRoYXllckBs
+aW51eC5pbnRlbC5jb20+Cj4gPiBDYzogSmlyaSBTbGFieSA8anNsYWJ5QHN1c2UuY29tPgo+ID4g
+Q2M6IE1hcmsgQnJvd24gPGJyb29uaWVAa2VybmVsLm9yZz4KPiA+IENjOiBBbmRyZXcgTHVubiA8
+YW5kcmV3QGx1bm4uY2g+Cj4gPiBDYzogUGV0ZXIgUm9zaW4gPHBlZGFAYXhlbnRpYS5zZT4KPiA+
+IFNpZ25lZC1vZmYtYnk6IFN1enVraSBLIFBvdWxvc2UgPHN1enVraS5wb3Vsb3NlQGFybS5jb20+
+Cj4gPiAtLS0KPiA+ICAtIERyb3BwZWQgdGhlIHJldmlld2VkLWJ5IHRhZ3MgZnJvbSBUaG9yLCBN
+YXJrLCBBbmRyZXcgYW5kIFBldGVyIGFzIHRoZQo+ID4gICAgcGF0Y2hlcyBhcmUgbWVyZWdlZCwg
+dGhvdWdoIHRoZXJlIGFyZSBubyBmdW5jdGlvbmFsIGNoYW5nZXMuCj4gPiAtLS0KPiA+ICBkcml2
+ZXJzL2FtYmEvdGVncmEtYWhiLmMgICAgICAgICAgICAgIHwgMTEgKy0tLS0tLS0KPiA+ICBkcml2
+ZXJzL2ZwZ2EvZnBnYS1icmlkZ2UuYyAgICAgICAgICAgIHwgIDggKy0tLS0tCj4gPiAgZHJpdmVy
+cy9mcGdhL2ZwZ2EtbWdyLmMgICAgICAgICAgICAgICB8ICA4ICstLS0tLQo+ID4gIGRyaXZlcnMv
+Z3B1L2RybS9kcm1fbWlwaV9kc2kuYyAgICAgICAgfCAgNyArLS0tLQo+ID4gIGRyaXZlcnMvaTJj
+L2kyYy1jb3JlLW9mLmMgICAgICAgICAgICAgfCAgNyArLS0tLQo+ID4gIGRyaXZlcnMvbWZkL2Fs
+dGVyYS1zeXNtZ3IuYyAgICAgICAgICAgfCAxNCArKy0tLS0tLS0tCj4gCj4gRm9yIG15IG93biBy
+ZWZlcmVuY2U6Cj4gICBBY2tlZC1mb3ItTUZELWJ5OiBMZWUgSm9uZXMgPGxlZS5qb25lc0BsaW5h
+cm8ub3JnPgo+IAo+IFdoYXQncyB0aGUgbWVyZ2UgcGxhbiBmb3IgdGhpcyBwYXRjaD8KPiAKPiBJ
+cyBhbnlvbmUgcHJlcGFyZWQgdG8gY3JlYXRlIGFuIGltbXV0YWJsZSBicmFuY2ggZm9yIHVzIHRv
+IHB1bGwgZnJvbT8KPiBJJ20gaGFwcHkgdG8gZG8gaXQgaWYgbm8gb25lIGVsc2Ugc3RlcHMgdXAu
+CgpJJ2xsIHRha2UgaXQsIGFuZCBjcmVhdGUgYSBicmFuY2ggZm9yIGV2ZXJ5b25lIHRvIHB1bGwg
+ZnJvbS4KCnRoYW5rcywKCmdyZWcgay1oCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
+ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2RyaS1kZXZlbA==
