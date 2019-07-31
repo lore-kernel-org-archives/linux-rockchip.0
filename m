@@ -1,137 +1,243 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v8 00/14] Rockchip ISP1 Driver
-Date: Wed, 31 Jul 2019 11:42:26 -0300
-Message-ID: <77968a89-eec0-bc2f-f996-ef3e21e9efd8@collabora.com>
-References: <20190730184256.30338-1-helen.koike@collabora.com>
- <dbdfed3e-7bb6-bf1f-64b9-ab7298193e2d@xs4all.nl>
- <41e7e574-2708-eb4c-ea30-e6a1ac9c073e@collabora.com>
- <8ce532de-6c26-f8db-8754-c8dd1eb0764b@collabora.com>
- <74bb0ba1-2859-39ff-d946-129a440ba150@xs4all.nl>
- <fb1327fb-0903-ce62-4eea-94b81f599b62@xs4all.nl>
- <13d89676-ae84-5904-7606-935501cb2d89@xs4all.nl>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: [PATCH v2] ARM: dts: rockchip: A few fixes for veyron-{fievel,tiger}
+Date: Wed, 31 Jul 2019 08:15:27 -0700
+Message-ID: <20190731151527.122002-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <13d89676-ae84-5904-7606-935501cb2d89@xs4all.nl>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>, linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, zhengsq@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Fix/improve a few things for veyron fievel/tiger:
 
+- move 'vccsys' regulator from tiger to fievel, both boards
+  have it (and tiger includes the fievel .dtsi)
+- move 'ext_gmac' node below regulators
+- fix GPIO ids of vcc5_host1 and vcc5_host2 regulators
+- remove reset configuration from 'gmac' node, this is already done
+  in rk3288.dtsi
+- fixed style issues of some multi-line comments
+- switch 'vcc18_lcdt', 'vdd10_lcd' and 'vcc33_ccd' regulators off
+  during suspend
+- no pull-up on the Bluetooth wake-up pin, there is an external
+  pull-up. The signal is active low, add the 'bt_host_wake_l'
+  pinctrl config
+- move BC 1.2 pins up in the pinctrl config to keep 'wake only' pins
+  separate
+- add BC 1.2 pins to sleep config
 
-On 7/31/19 1:55 AM, Hans Verkuil wrote:
-> On 7/31/19 6:33 AM, Hans Verkuil wrote:
->> On 7/31/19 6:29 AM, Hans Verkuil wrote:
->>> On 7/31/19 2:08 AM, Helen Koike wrote:
->>>>
->>>>
->>>> On 7/30/19 5:50 PM, Helen Koike wrote:
->>>>>
->>>>>
->>>>> On 7/30/19 5:15 PM, Hans Verkuil wrote:
->>>>>> On 7/30/19 8:42 PM, Helen Koike wrote:
->>>>>>> Hello,
->>>>>>>
->>>>>>> I'm re-sending a new version of ISP(Camera) v4l2 driver for rockchip
->>>>>>> rk3399 SoC.
->>>>>>>
->>>>>>> I didn't change much from the last version, just applying the
->>>>>>> suggestions made in the previous one.
->>>>>>>
->>>>>>> This patchset is also available at:
->>>>>>> https://gitlab.collabora.com/koike/linux/tree/rockchip/isp/v8
->>>>>>>
->>>>>>> Libcamera patched to work with this version:
->>>>>>> https://gitlab.collabora.com/koike/libcamera
->>>>>>> (also sent to the mailing list)
->>>>>>>
->>>>>>> I tested on the rockpi 4 with a rpi v1.3 sensor and also with the
->>>>>>> Scarlet Chromebook.
->>>>>>>
->>>>>>> Known issues (same as in v7):
->>>>>>> -------------
->>>>>>> - Reloading the module doesn't work (there is some missing cleanup when
->>>>>>> unloading)
->>>>>>> - When capturing in bayer format, changing the size doesn't seem to
->>>>>>> affect the image.
->>>>>>> - crop needs more tests
->>>>>>> - v4l2-compliance error:
->>>>>>>         fail: v4l2-test-controls.cpp(824): subscribe event for control 'Image Processing Controls' failed
->>>>>>> test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: FAIL
->>>>>>
->>>>>> Can you mail me the full v4l2-compliance output?
->>>>>
->>>>> Sure, please check here: http://ix.io/1Q5u
->>>>> I updated v4l-utils with the latest version and I re-ran bootstrap/configure/make,
->>>>> but for some reason the hash from the link above is not the latest commit, probably some
->>>>> old configuration somewhere. I'll resend this log as soon as I get v4l2-compliance
->>>>> properly updated.
->>>>
->>>> Please see the output of v4l2-compliance here with an updated v4l-utils: http://ix.io/1Q6A
->>>
->>> So this FAIL is for /dev/v4l-subdev0 (rkisp1-isp-subdev).
->>>
->>> What is weird that this subdev does not appear to have controls at all.
->>>
->>> What is the output of 'v4l2-ctl -d /dev/v4l-subdev0 -l'? And if it lists
->>> controls, then why?
+Fixes: 0067692b662e ("ARM: dts: rockchip: add veyron-fievel board")
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+---
+Changes in v2:
+- remove 'regulator-suspend-microvolt' property from regulators
+  that are off during suspend
+- added Doug's 'Reviewed-by' tag
+---
+ arch/arm/boot/dts/rk3288-veyron-fievel.dts | 58 +++++++++++++---------
+ arch/arm/boot/dts/rk3288-veyron-tiger.dts  |  7 ---
+ arch/arm/boot/dts/rk3288-veyron.dtsi       |  4 ++
+ 3 files changed, 38 insertions(+), 31 deletions(-)
 
-root@rockpi:~# v4l2-ctl -d /dev/v4l-subdev0 -l
-
-Image Processing Controls
-
-                     pixel_rate 0x009f0902 (int64)  : min=1 max=2147483647 step=1 default=1 value=1 flags=read-only
-
-root@rockpi:~# v4l2-ctl -d /dev/v4l-subdev1 -l
-
-Image Processing Controls
-
-                     pixel_rate 0x009f0902 (int64)  : min=1 max=2147483647 step=1 default=1 value=1 flags=read-only
-
-It seems that ISP heritage the control from the sensor driver. I believe it
-happens because isp_dev->ctrl_handler was assigned to the v4l2_dev object:
-
-dev.c:  v4l2_ctrl_handler_init(&isp_dev->ctrl_handler, 5);
-dev.c:  v4l2_dev->ctrl_handler = &isp_dev->ctrl_handler;
-
-
->>>
->>> If you run 'v4l2-compliance -u /dev/v4l-subdev0', do you get a fail as
->>> well?
-
-Yes, but if I remove the ctrl_handler field from the struct rkisp1_isp_subdev
-I don't get the error on /dev/v4l-subdev0 (ISP) anymore, I just get the error
-on /dev/v4l-subdev1 (the sensor).
-
-Here is the output of v4l2-compliance -m /dev/media0 without the
-ctrl_handler field: http://ix.io/1Q9N
-
->>
->> I see the same issue with v4l-subdev1, but I see no "Media Driver Info"
->> in the v4l2-compliance output for that subdev. That's strange. It would
->> be good to know why that's happening.
-> 
-> It looks to be some parenting issue: v4l2-compliance expects to find
-> a mediaX directory in /sys/dev/char/81\:Y/device/ where 81:Y is the major/minor
-> of /dev/v4l-subdev1.
-> 
-> Because is this mi_get_media_fd() cannot find the media device for the subdev
-> in v4l2-compliance.
-
-So from my understanding this seems to be an issue in the sensor driver that
-I'm using and not in the ISP (to be verified).
-I'll submit the next version without the ctrl_handler field in struct rkisp1_isp_subdev,
-is that ok?
-
-Thanks
-Helen
-
-
-> 
-> Regards,
-> 
-> 	Hans
-> 
+diff --git a/arch/arm/boot/dts/rk3288-veyron-fievel.dts b/arch/arm/boot/dts/rk3288-veyron-fievel.dts
+index 696566f72d30..65d029ccc907 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-fievel.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-fievel.dts
+@@ -20,11 +20,11 @@
+ 
+ 	/delete-node/ bt-activity;
+ 
+-	ext_gmac: external-gmac-clock {
+-		compatible = "fixed-clock";
+-		#clock-cells = <0>;
+-		clock-frequency = <125000000>;
+-		clock-output-names = "ext_gmac";
++	vccsys: vccsys {
++		compatible = "regulator-fixed";
++		regulator-name = "vccsys";
++		regulator-boot-on;
++		regulator-always-on;
+ 	};
+ 
+ 	/*
+@@ -41,7 +41,7 @@
+ 	vcc5_host1: vcc5-host1-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+-		gpio = <&gpio5 RK_PC1 GPIO_ACTIVE_HIGH>;
++		gpio = <&gpio5 RK_PC2 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&hub_usb1_pwr_en>;
+ 		regulator-name = "vcc5_host1";
+@@ -52,7 +52,7 @@
+ 	vcc5_host2: vcc5-host2-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+-		gpio = <&gpio5 RK_PC2 GPIO_ACTIVE_HIGH>;
++		gpio = <&gpio5 RK_PB6 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&hub_usb2_pwr_en>;
+ 		regulator-name = "vcc5_host2";
+@@ -70,6 +70,13 @@
+ 		regulator-always-on;
+ 		regulator-boot-on;
+ 	};
++
++	ext_gmac: external-gmac-clock {
++		compatible = "fixed-clock";
++		#clock-cells = <0>;
++		clock-frequency = <125000000>;
++		clock-output-names = "ext_gmac";
++	};
+ };
+ 
+ &gmac {
+@@ -83,13 +90,13 @@
+ 	phy-supply = <&vcc33_lan>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&rgmii_pins>, <&phy_rst>, <&phy_pmeb>, <&phy_int>;
+-	resets = <&cru SRST_MAC>;
+-	reset-names = "stmmaceth";
+ 	rx_delay = <0x10>;
+ 	tx_delay = <0x30>;
+ 
+-	/* Reset for the RTL8211 PHY which requires a 10-ms reset pulse (low)
+-	 * with a 30ms settling time. */
++	/*
++	 * Reset for the RTL8211 PHY which requires a 10-ms reset pulse (low)
++	 * with a 30ms settling time.
++	 */
+ 	snps,reset-gpio = <&gpio4 RK_PB0 0>;
+ 	snps,reset-active-low;
+ 	snps,reset-delays-us = <0 10000 30000>;
+@@ -120,7 +127,8 @@
+ 	regulators {
+ 		/delete-node/ LDO_REG1;
+ 
+-		/* According to the schematic, vcc18_lcdt is for
++		/*
++		 * According to the schematic, vcc18_lcdt is for
+ 		 * HDMI_AVDD_1V8
+ 		 */
+ 		vcc18_lcdt: LDO_REG2 {
+@@ -130,12 +138,12 @@
+ 			regulator-max-microvolt = <1800000>;
+ 			regulator-name = "vdd18_lcdt";
+ 			regulator-state-mem {
+-				regulator-on-in-suspend;
+-				regulator-suspend-microvolt = <1800000>;
++				regulator-off-in-suspend;
+ 			};
+ 		};
+ 
+-		/* This is not a pwren anymore, but the real power supply,
++		/*
++		 * This is not a pwren anymore, but the real power supply,
+ 		 * vdd10_lcd for HDMI_AVDD_1V0
+ 		 */
+ 		vdd10_lcd: LDO_REG7 {
+@@ -145,8 +153,7 @@
+ 			regulator-max-microvolt = <1000000>;
+ 			regulator-name = "vdd10_lcd";
+ 			regulator-state-mem {
+-				regulator-on-in-suspend;
+-				regulator-suspend-microvolt = <1000000>;
++				regulator-off-in-suspend;
+ 			};
+ 		};
+ 
+@@ -158,8 +165,7 @@
+ 			regulator-max-microvolt = <3300000>;
+ 			regulator-name = "vcc33_ccd";
+ 			regulator-state-mem {
+-				regulator-on-in-suspend;
+-				regulator-suspend-microvolt = <3300000>;
++				regulator-off-in-suspend;
+ 			};
+ 		};
+ 
+@@ -180,7 +186,7 @@
+ 		interrupts = <RK_PD7 IRQ_TYPE_LEVEL_LOW>;
+ 		marvell,wakeup-pin = /bits/ 16 <13>;
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&bt_host_wake>;
++		pinctrl-0 = <&bt_host_wake_l>;
+ 	};
+ };
+ 
+@@ -206,13 +212,13 @@
+ 		&ddrio_pwroff
+ 		&global_pwroff
+ 
+-		/* Wake only */
+-		&bt_dev_wake_awake
+-		&pwr_led1_on
+-
+ 		/* For usb bc1.2 */
+ 		&usb_otg_ilim_sel
+ 		&usb_usb_ilim_sel
++
++		/* Wake only */
++		&bt_dev_wake_awake
++		&pwr_led1_on
+ 	>;
+ 
+ 	pinctrl-1 = <
+@@ -221,6 +227,10 @@
+ 		&ddrio_pwroff
+ 		&global_pwroff
+ 
++		/* For usb bc1.2 */
++		&usb_otg_ilim_sel
++		&usb_usb_ilim_sel
++
+ 		/* Sleep only */
+ 		&bt_dev_wake_sleep
+ 		&pwr_led1_blink
+diff --git a/arch/arm/boot/dts/rk3288-veyron-tiger.dts b/arch/arm/boot/dts/rk3288-veyron-tiger.dts
+index fae26d530841..27557203ae33 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-tiger.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-tiger.dts
+@@ -19,13 +19,6 @@
+ 		     "google,veyron", "rockchip,rk3288";
+ 
+ 	/delete-node/ vcc18-lcd;
+-
+-	vccsys: vccsys {
+-		compatible = "regulator-fixed";
+-		regulator-name = "vccsys";
+-		regulator-boot-on;
+-		regulator-always-on;
+-	};
+ };
+ 
+ &backlight {
+diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
+index 8fc8eac699bf..7525e3dd1fc1 100644
+--- a/arch/arm/boot/dts/rk3288-veyron.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
+@@ -586,6 +586,10 @@
+ 			rockchip,pins = <4 RK_PD7 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
+ 
++		bt_host_wake_l: bt-host-wake-l {
++			rockchip,pins = <4 RK_PD7 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
+ 		/*
+ 		 * We run sdio0 at max speed; bump up drive strength.
+ 		 * We also have external pulls, so disable the internal ones.
+-- 
+2.22.0.709.g102302147b-goog
