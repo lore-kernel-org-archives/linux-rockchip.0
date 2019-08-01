@@ -1,81 +1,53 @@
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+From: Tomasz Figa <tfiga@chromium.org>
 Subject: Re: [PATCH 7/9] media: hantro: Add core bits to support H264 decoding
-Date: Thu, 1 Aug 2019 09:04:10 +0200
-Message-ID: <20190801070410.GA22382@aptenodytes>
+Date: Thu, 1 Aug 2019 16:12:43 +0900
+Message-ID: <CAAFQd5BPFLqu0JvyxTfS9UAfWanFcXzFtuJ9jcPmHV+XSq6cvQ@mail.gmail.com>
 References: <20190619121540.29320-1-boris.brezillon@collabora.com>
- <20190619121540.29320-8-boris.brezillon@collabora.com>
- <CAHD77HksotqFBTE84rRM=DuNFX=YJPs=YnsuFkaN-pWUNCtoxA@mail.gmail.com>
+ <20190619121540.29320-8-boris.brezillon@collabora.com> <CAHD77HksotqFBTE84rRM=DuNFX=YJPs=YnsuFkaN-pWUNCtoxA@mail.gmail.com>
+ <20190801070410.GA22382@aptenodytes>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="gKMricLos+KVdGMg"
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAHD77HksotqFBTE84rRM=DuNFX=YJPs=YnsuFkaN-pWUNCtoxA@mail.gmail.com>
+In-Reply-To: <20190801070410.GA22382@aptenodytes>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Tomasz Figa <tfiga@chromium.org>
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 Cc: Boris Brezillon <boris.brezillon@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@iki.fi>, Linux Media Mailing List <linux-media@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>, Jonas Karlman <jonas@kwiboo.se>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Andrew Morton <akpm@linux-foundation.org>, Rasmus Villemoes <linux@rasmusvillemoes.dk>, Philipp Zabel <p.zabel@pengutronix.de>, Hertz Wong <hertz.wong@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-
---gKMricLos+KVdGMg
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-On Thu 01 Aug 19, 13:06, Tomasz Figa wrote:
-> Hi Boris,
->=20
-> On Wed, Jun 19, 2019 at 9:15 PM Boris Brezillon
-> <boris.brezillon@collabora.com> wrote:
-> [snip]
-> > @@ -533,10 +535,21 @@ hantro_queue_setup(struct vb2_queue *vq, unsigned=
- int *num_buffers,
-> >                 return -EINVAL;
-> >         }
+On Thu, Aug 1, 2019 at 4:04 PM Paul Kocialkowski
+<paul.kocialkowski@bootlin.com> wrote:
+>
+> Hi,
+>
+> On Thu 01 Aug 19, 13:06, Tomasz Figa wrote:
+> > Hi Boris,
 > >
-> > +       /* The H264 decoder needs extra size on the output buffer. */
-> > +       if (ctx->vpu_src_fmt->fourcc =3D=3D V4L2_PIX_FMT_H264_SLICE_RAW)
-> > +               extra_size0 =3D 128 * DIV_ROUND_UP(pixfmt->width, 16) *
-> > +                             DIV_ROUND_UP(pixfmt->height, 16);
-> > +
->=20
-> I wonder if this shouldn't be accounted for already in the sizeimage
-> returned by TRY_/S_FMT, so that the application can know the required
-> buffer size if it uses some external allocator and DMABUF memory type.
-> I know we had it like this in our downstream code, but it wasn't the
-> problem because we use minigbm, where we explicitly add the same
-> padding in the rockchip backend. Any thoughts?
+> > On Wed, Jun 19, 2019 at 9:15 PM Boris Brezillon
+> > <boris.brezillon@collabora.com> wrote:
+> > [snip]
+> > > @@ -533,10 +535,21 @@ hantro_queue_setup(struct vb2_queue *vq, unsigned int *num_buffers,
+> > >                 return -EINVAL;
+> > >         }
+> > >
+> > > +       /* The H264 decoder needs extra size on the output buffer. */
+> > > +       if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_H264_SLICE_RAW)
+> > > +               extra_size0 = 128 * DIV_ROUND_UP(pixfmt->width, 16) *
+> > > +                             DIV_ROUND_UP(pixfmt->height, 16);
+> > > +
+> >
+> > I wonder if this shouldn't be accounted for already in the sizeimage
+> > returned by TRY_/S_FMT, so that the application can know the required
+> > buffer size if it uses some external allocator and DMABUF memory type.
+> > I know we had it like this in our downstream code, but it wasn't the
+> > problem because we use minigbm, where we explicitly add the same
+> > padding in the rockchip backend. Any thoughts?
+>
+> Does the extra size have to be allocated along with the buffer?
+>
+> On cedrus, we have a need for a similar side-buffer but give it a dedicated CMA
+> allocation, which should allow dma-buf-imported buffers.
 
-Does the extra size have to be allocated along with the buffer?
+Yes, the decoder stores motion vectors (IIRC) after the image data.
 
-On cedrus, we have a need for a similar side-buffer but give it a dedicated=
- CMA
-allocation, which should allow dma-buf-imported buffers.
-
-Cheers,
-
-Paul
-
---=20
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
-
---gKMricLos+KVdGMg
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl1CjukACgkQ3cLmz3+f
-v9E6+wf+OYHawgm5Z7vHIOssrL6TF8ZV3xNsgqTT2Je54KLFCRbarBvD2HyB8nFc
-pSPCrxiELvO1Tio+KYCoYz2Xve0PlzdxiBq1zbEYnzb8k95YbZnOMb2Vj90ZLPNm
-FPpXE5VrVih6v5T3qgtqBNjaYRHOHLztiWoHRbRshiWxEPvzreD/Hfyawe4LbsJ6
-dnzSPh8DvV46LsjnYe4rskINbfEkxEk7VtBynQ9CucYaZ2O8xXKYVQk5D/XkNhtm
-48LgrQQJ2QrZH6Qed+We9pqBhOUH/in49PdD+UGN054dLBHT86nVc+0dbfJQW87N
-jwHDYAmZKitBd74E4nNs5DQeWXCfig==
-=h/ad
------END PGP SIGNATURE-----
-
---gKMricLos+KVdGMg--
+Best regards,
+Tomasz
