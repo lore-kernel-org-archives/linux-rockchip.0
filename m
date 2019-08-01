@@ -1,61 +1,248 @@
-From: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 02/13] drm/radeon: Eliminate possible use of an
- uninitialized variable
-Date: Thu, 1 Aug 2019 14:15:15 +0200
-Message-ID: <7cacac43-737e-1ddb-2951-394fcf9ad0b2@baylibre.com>
-References: <65481afa-1104-4ee9-e53d-f2732a10d4b9@baylibre.com>
- <cover.1564591626.git.andrzej.p@collabora.com>
- <cfff357a07bfa572baad058947f281b7095e1794.1564591626.git.andrzej.p@collabora.com>
+From: Matthias Kaehlcke <mka@chromium.org>
+Subject: [PATCH] ARM: dts: rockchip: Add pin names for rk3288-veyron fievel
+Date: Thu,  1 Aug 2019 15:03:54 -0700
+Message-ID: <20190801220354.142933-1-mka@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-In-Reply-To: <cfff357a07bfa572baad058947f281b7095e1794.1564591626.git.andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/amd-gfx>
-List-Post: <mailto:amd-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/amd-gfx>,
- <mailto:amd-gfx-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "amd-gfx" <amd-gfx-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Anthony Koo <Anthony.Koo-5C7GfCeVMHo@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomi Valkeinen <tomi.valkeinen-l0cyMroinI0@public.gmane.org>, David Francis <David.Francis-5C7GfCeVMHo@public.gmane.org>, Mamta Shukla <mamtashukla555-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Allison Randal <allison-wcfNWazeolPR7s880joybQ@public.gmane.org>, Leo Li <sunpeng.li-5C7GfCeVMHo@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rodrigo Vivi <rodrigo.vivi-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Bhawanpreet Lakha <Bhawanpreet.Lakha-5C7GfCeVMHo@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, Matthias Kaehlcke <mka@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQW5kcnplaiwKCkkgaGFkIHRvIHJldmVydCB0aGUgcHJldmlvdXMgcGF0Y2gsIHNvIHlvdSBz
-aG91bGQgcmUtc3BpbiBpdCBlbnRpcmVseSA6Cgo9PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PQpBZnRlciBtZXJnaW5nIHRoZSBkcm0tbWlzYyB0cmVlLCB0b2RheSdzIGxpbnV4LW5leHQg
-YnVpbGQgKHg4Nl82NAphbGxtb2Rjb25maWcpIGZhaWxlZCBsaWtlIHRoaXM6Cgpkcml2ZXJzL2dw
-dS9kcm0vcmFkZW9uL3JhZGVvbl9jb25uZWN0b3JzLmM6IEluIGZ1bmN0aW9uICdyYWRlb25fYWRk
-X2xlZ2FjeV9jb25uZWN0b3InOgpkcml2ZXJzL2dwdS9kcm0vcmFkZW9uL3JhZGVvbl9jb25uZWN0
-b3JzLmM6MjQzMzo1OiBlcnJvcjogJ2RkYycgdW5kZWNsYXJlZCAoZmlyc3QgdXNlIGluIHRoaXMg
-ZnVuY3Rpb24pCiAgICAgZGRjID0gJnJhZGVvbl9jb25uZWN0b3ItPmRkY19idXMtPmFkYXB0ZXI7
-CiAgICAgXn5+CmRyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9uX2Nvbm5lY3RvcnMuYzoyNDMz
-OjU6IG5vdGU6IGVhY2ggdW5kZWNsYXJlZCBpZGVudGlmaWVyIGlzIHJlcG9ydGVkIG9ubHkgb25j
-ZSBmb3IgZWFjaCBmdW5jdGlvbiBpdCBhcHBlYXJzIGluCgpDYXVzZWQgYnkgY29tbWl0CgogIGJl
-ZDdhMjE4MmRlNiAoImRybS9yYWRlb246IFByb3ZpZGUgZGRjIHN5bWxpbmsgaW4gY29ubmVjdG9y
-IHN5c2ZzIGRpcmVjdG9yeSIpCgpJIGhhdmUgdXNlZCB0aGUgZHJtLW1pc2MgdHJlZSBmcm9tIG5l
-eHQtMjAxOTA3MzEgZm9yIHRvZGF5Lgo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-CgpOZWlsCgpPbiAzMS8wNy8yMDE5IDE4OjU4LCBBbmRyemVqIFBpZXRyYXNpZXdpY3ogd3JvdGU6
-Cj4gZGRjIGxvY2FsIHZhcmlhYmxlIGlzIHBhc3NlZCB0byBkcm1fY29ubmVjdG9yX2luaXRfd2l0
-aF9kZGMoKSBhbmQgc2hvdWxkCj4gYmUgTlVMTCBpZiBubyBkZGMgaXMgYXZhaWxhYmxlLgo+IAo+
-IFNpZ25lZC1vZmYtYnk6IEFuZHJ6ZWogUGlldHJhc2lld2ljeiA8YW5kcnplai5wQGNvbGxhYm9y
-YS5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9uX2Nvbm5lY3RvcnMu
-YyB8IDIgKy0KPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0p
-Cj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9uX2Nvbm5lY3Rv
-cnMuYyBiL2RyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9uX2Nvbm5lY3RvcnMuYwo+IGluZGV4
-IGIzYWQ4ZDg5MDgwMS4uZDExMTMxZDAzZWQ2IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
-bS9yYWRlb24vcmFkZW9uX2Nvbm5lY3RvcnMuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yYWRl
-b24vcmFkZW9uX2Nvbm5lY3RvcnMuYwo+IEBAIC0xODcwLDcgKzE4NzAsNyBAQCByYWRlb25fYWRk
-X2F0b21fY29ubmVjdG9yKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCj4gIAlzdHJ1Y3QgcmFkZW9u
-X2Nvbm5lY3Rvcl9hdG9tX2RpZyAqcmFkZW9uX2RpZ19jb25uZWN0b3I7Cj4gIAlzdHJ1Y3QgZHJt
-X2VuY29kZXIgKmVuY29kZXI7Cj4gIAlzdHJ1Y3QgcmFkZW9uX2VuY29kZXIgKnJhZGVvbl9lbmNv
-ZGVyOwo+IC0Jc3RydWN0IGkyY19hZGFwdGVyICpkZGM7Cj4gKwlzdHJ1Y3QgaTJjX2FkYXB0ZXIg
-KmRkYyA9IE5VTEw7Cj4gIAl1aW50MzJfdCBzdWJwaXhlbF9vcmRlciA9IFN1YlBpeGVsTm9uZTsK
-PiAgCWJvb2wgc2hhcmVkX2RkYyA9IGZhbHNlOwo+ICAJYm9vbCBpc19kcF9icmlkZ2UgPSBmYWxz
-ZTsKPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmFt
-ZC1nZnggbWFpbGluZyBsaXN0CmFtZC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vYW1kLWdmeA==
+This is like commit 0ca87bd5baa6 ("ARM: dts: rockchip: Add pin names
+for rk3288-veyron-jerry") and other similar commits, but for the
+veyron fievel board (and tiger, which includes the fievel .dtsi).
+
+Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+---
+ arch/arm/boot/dts/rk3288-veyron-fievel.dts | 214 +++++++++++++++++++++
+ 1 file changed, 214 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rk3288-veyron-fievel.dts b/arch/arm/boot/dts/rk3288-veyron-fievel.dts
+index 696566f72d30..5c14a8fa6574 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-fievel.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-fievel.dts
+@@ -198,6 +198,220 @@
+ 	pinctrl-0 = <&drv_5v>;
+ };
+ 
++&gpio0 {
++	gpio-line-names = "PMIC_SLEEP_AP",
++			  "DDRIO_PWROFF",
++			  "DDRIO_RETEN",
++			  "TS3A227E_INT_L",
++			  "PMIC_INT_L",
++			  "PWR_KEY_L",
++			  "HUB_USB1_nFALUT",
++			  "PHY_PMEB",
++
++			  "PHY_INT",
++			  "REC_MODE_L",
++			  "OTP_OUT",
++			  "",
++			  "USB_OTG_POWER_EN",
++			  "AP_WARM_RESET_H",
++			  "USB_OTG_nFALUT",
++			  "I2C0_SDA_PMIC",
++
++			  "I2C0_SCL_PMIC",
++			  "DEVMODE_L",
++			  "USB_INT";
++};
++
++&gpio2 {
++	gpio-line-names = "CONFIG0",
++			  "CONFIG1",
++			  "CONFIG2",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "CONFIG3",
++
++			  "",
++			  "EMMC_RST_L",
++			  "",
++			  "",
++			  "BL_PWR_EN",
++			  "",
++			  "TOUCH_INT",
++			  "TOUCH_RST",
++
++			  "I2C3_SCL_TP",
++			  "I2C3_SDA_TP";
++};
++
++&gpio3 {
++	gpio-line-names = "FLASH0_D0",
++			  "FLASH0_D1",
++			  "FLASH0_D2",
++			  "FLASH0_D3",
++			  "FLASH0_D4",
++			  "FLASH0_D5",
++			  "FLASH0_D6",
++			  "FLASH0_D7",
++
++			  "VCC5V_GOOD_H",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++
++			  "FLASH0_CS2/EMMC_CMD",
++			  "",
++			  "FLASH0_DQS/EMMC_CLKO",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++
++			  "PHY_TXD2",
++			  "PHY_TXD3",
++			  "MAC_RXD2",
++			  "MAC_RXD3",
++			  "PHY_TXD0",
++			  "PHY_TXD1",
++			  "MAC_RXD0",
++			  "MAC_RXD1";
++};
++
++&gpio4 {
++	gpio-line-names = "MAC_MDC",
++			  "MAC_RXDV",
++			  "MAC_RXER",
++			  "MAC_CLK",
++			  "PHY_TXEN",
++			  "MAC_MDIO",
++			  "MAC_RXCLK",
++			  "",
++
++			  "PHY_RST",
++			  "PHY_TXCLK",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++
++			  "UART0_RXD",
++			  "UART0_TXD",
++			  "UART0_CTS_L",
++			  "UART0_RTS_L",
++			  "SDIO0_D0",
++			  "SDIO0_D1",
++			  "SDIO0_D2",
++			  "SDIO0_D3",
++
++			  "SDIO0_CMD",
++			  "SDIO0_CLK",
++			  "BT_DEV_WAKE",
++			  "",
++			  "WIFI_ENABLE_H",
++			  "BT_ENABLE_L",
++			  "WIFI_HOST_WAKE",
++			  "BT_HOST_WAKE";
++};
++
++&gpio5 {
++	gpio-line-names = "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++
++			  "",
++			  "",
++			  "",
++			  "",
++			  "USB_OTG_CTL1",
++			  "HUB_USB2_CTL1",
++			  "HUB_USB2_PWR_EN",
++			  "HUB_USB_ILIM_SEL",
++
++			  "USB_OTG_STATUS_L",
++			  "HUB_USB1_CTL1",
++			  "HUB_USB1_PWR_EN",
++			  "VCC50_HDMI_EN";
++};
++
++&gpio6 {
++	gpio-line-names = "I2S0_SCLK",
++			  "I2S0_LRCK_RX",
++			  "I2S0_LRCK_TX",
++			  "I2S0_SDI",
++			  "I2S0_SDO0",
++			  "HP_DET_H",
++			  "",
++			  "INT_CODEC",
++
++			  "I2S0_CLK",
++			  "I2C2_SDA",
++			  "I2C2_SCL",
++			  "MICDET",
++			  "",
++			  "",
++			  "",
++			  "",
++
++			  "HUB_USB2_nFALUT",
++			  "USB_OTG_ILIM_SEL";
++};
++
++&gpio7 {
++	gpio-line-names = "LCD_BL_PWM",
++			  "PWM_LOG",
++			  "BL_EN",
++			  "PWR_LED1",
++			  "TPM_INT_H",
++			  "SPK_ON",
++			  "FW_WP_AP",
++			  "",
++
++			  "CPU_NMI",
++			  "DVSOK",
++			  "",
++			  "EDP_HPD",
++			  "DVS1",
++			  "",
++			  "LCD_EN",
++			  "DVS2",
++
++			  "HDMI_CEC",
++			  "I2C4_SDA",
++			  "I2C4_SCL",
++			  "I2C5_SDA_HDMI",
++			  "I2C5_SCL_HDMI",
++			  "5V_DRV",
++			  "UART2_RXD",
++			  "UART2_TXD";
++};
++
++&gpio8 {
++	gpio-line-names = "RAM_ID0",
++			  "RAM_ID1",
++			  "RAM_ID2",
++			  "RAM_ID3",
++			  "I2C1_SDA_TPM",
++			  "I2C1_SCL_TPM",
++			  "SPI2_CLK",
++			  "SPI2_CS0",
++
++			  "SPI2_RXD",
++			  "SPI2_TXD";
++};
++
+ &pinctrl {
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <
+-- 
+2.22.0.770.g0f2c4a37fd-goog
