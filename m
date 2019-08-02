@@ -1,13 +1,13 @@
 From: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Subject: [PATCH 4.4 109/158] pinctrl: rockchip: fix leaked of_node references
-Date: Fri,  2 Aug 2019 11:28:50 +0200
-Message-ID: <20190802092226.353596858@linuxfoundation.org>
-References: <20190802092203.671944552@linuxfoundation.org>
+Subject: [PATCH 4.9 162/223] pinctrl: rockchip: fix leaked of_node references
+Date: Fri,  2 Aug 2019 11:36:27 +0200
+Message-ID: <20190802092248.664754116@linuxfoundation.org>
+References: <20190802092238.692035242@linuxfoundation.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190802092203.671944552-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190802092238.692035242-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -44,10 +44,10 @@ Signed-off-by: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index a0651128e23a..616055b5e996 100644
+index f826793e972c..417cd3bd7e0c 100644
 --- a/drivers/pinctrl/pinctrl-rockchip.c
 +++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -1837,6 +1837,7 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank,
+@@ -2208,6 +2208,7 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank,
  						    base,
  						    &rockchip_regmap_config);
  		}
