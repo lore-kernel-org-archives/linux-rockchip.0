@@ -1,59 +1,55 @@
-From: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Subject: [PATCH 4.9 162/223] pinctrl: rockchip: fix leaked of_node references
-Date: Fri,  2 Aug 2019 11:36:27 +0200
-Message-ID: <20190802092248.664754116@linuxfoundation.org>
-References: <20190802092238.692035242@linuxfoundation.org>
+From: YueHaibing <yuehaibing@huawei.com>
+Subject: [PATCH -next 00/12] crypto: use devm_platform_ioremap_resource() to simplify code
+Date: Fri, 2 Aug 2019 21:27:57 +0800
+Message-ID: <20190802132809.8116-1-yuehaibing@huawei.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190802092238.692035242-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wen Yang <wen.yang99-Th6q7B73Y6EnDS1+zs4M5A@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: herbert@gondor.apana.org.au, lars.persson@axis.com, jesper.nilsson@axis.com, davem@davemloft.net, thomas.lendacky@amd.com, gary.hook@amd.com, krzk@kernel.org, kgene@kernel.org, antoine.tenart@bootlin.com, matthias.bgg@gmail.com, jamie@jamieiles.com, agross@kernel.org, heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, clabbe.montjoie@gmail.com, mripard@kernel.org, wens@csie.org
+Cc: linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-arm-kernel@axis.com, linux-samsung-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, YueHaibing <yuehaibing@huawei.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-[ Upstream commit 3c89c70634bb0b6f48512de873e7a45c7e1fbaa5 ]
+devm_platform_ioremap_resource() internally have platform_get_resource()
+and devm_ioremap_resource() in it. So instead of calling them separately
+use devm_platform_ioremap_resource() directly.
 
-The call to of_parse_phandle returns a node pointer with refcount
-incremented thus it must be explicitly decremented after the last
-usage.
+YueHaibing (12):
+  crypto: artpec6 - use devm_platform_ioremap_resource() to simplify
+    code
+  crypto: ccp - use devm_platform_ioremap_resource() to simplify code
+  crypto: exynos - use devm_platform_ioremap_resource() to simplify code
+  crypto: img-hash - use devm_platform_ioremap_resource() to simplify
+    code
+  crypto: inside-secure - use devm_platform_ioremap_resource() to
+    simplify code
+  crypto: mediatek - use devm_platform_ioremap_resource() to simplify
+    code
+  crypto: picoxcell - use devm_platform_ioremap_resource() to simplify
+    code
+  crypto: sunxi-ss - use devm_platform_ioremap_resource() to simplify
+    code
+  crypto: rockchip - use devm_platform_ioremap_resource() to simplify
+    code
+  crypto: stm32 - use devm_platform_ioremap_resource() to simplify code
+  crypto: qce - use devm_platform_ioremap_resource() to simplify code
+  crypto: qcom-rng - use devm_platform_ioremap_resource() to simplify
+    code
 
-Detected by coccinelle with the following warnings:
-./drivers/pinctrl/pinctrl-rockchip.c:3221:2-8: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 3196, but without a corresponding object release within this function.
-./drivers/pinctrl/pinctrl-rockchip.c:3223:1-7: ERROR: missing of_node_put; acquired a node pointer with refcount incremented on line 3196, but without a corresponding object release within this function.
+ drivers/crypto/axis/artpec6_crypto.c    | 4 +---
+ drivers/crypto/ccp/sp-platform.c        | 4 +---
+ drivers/crypto/exynos-rng.c             | 4 +---
+ drivers/crypto/img-hash.c               | 4 +---
+ drivers/crypto/inside-secure/safexcel.c | 4 +---
+ drivers/crypto/mediatek/mtk-platform.c  | 3 +--
+ drivers/crypto/picoxcell_crypto.c       | 5 ++---
+ drivers/crypto/qce/core.c               | 4 +---
+ drivers/crypto/qcom-rng.c               | 4 +---
+ drivers/crypto/rockchip/rk3288_crypto.c | 4 +---
+ drivers/crypto/stm32/stm32-crc32.c      | 4 +---
+ drivers/crypto/stm32/stm32-cryp.c       | 4 +---
+ drivers/crypto/sunxi-ss/sun4i-ss-core.c | 4 +---
+ 13 files changed, 14 insertions(+), 38 deletions(-)
 
-Signed-off-by: Wen Yang <wen.yang99-Th6q7B73Y6EnDS1+zs4M5A@public.gmane.org>
-Cc: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Signed-off-by: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Signed-off-by: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- drivers/pinctrl/pinctrl-rockchip.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index f826793e972c..417cd3bd7e0c 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -2208,6 +2208,7 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank,
- 						    base,
- 						    &rockchip_regmap_config);
- 		}
-+		of_node_put(node);
- 	}
- 
- 	bank->irq = irq_of_parse_and_map(bank->of_node, 0);
 -- 
-2.20.1
+2.7.4
