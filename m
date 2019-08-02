@@ -1,67 +1,46 @@
-From: Antoine Tenart <antoine.tenart@bootlin.com>
-Subject: Re: [PATCH -next 05/12] crypto: inside-secure - use
- devm_platform_ioremap_resource() to simplify code
-Date: Fri, 2 Aug 2019 18:17:01 +0200
-Message-ID: <20190802161701.GD14470@kwain>
-References: <20190802132809.8116-1-yuehaibing@huawei.com>
- <20190802132809.8116-6-yuehaibing@huawei.com>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] drm/rockchip: Suspend DP late
+Date: Fri,  2 Aug 2019 11:46:16 -0700
+Message-ID: <20190802184616.44822-1-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190802132809.8116-6-yuehaibing@huawei.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: YueHaibing <yuehaibing@huawei.com>
-Cc: herbert@gondor.apana.org.au, lars.persson@axis.com, jesper.nilsson@axis.com, davem@davemloft.net, thomas.lendacky@amd.com, gary.hook@amd.com, krzk@kernel.org, kgene@kernel.org, antoine.tenart@bootlin.com, matthias.bgg@gmail.com, jamie@jamieiles.com, agross@kernel.org, heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, clabbe.montjoie@gmail.com, mripard@kernel.org, wens@csie.org, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-arm-kernel@axis.com, linux-samsung-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+To: Heiko Stuebner <heiko@sntech.de>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, seanpaul@chromium.org
+Cc: linux-rockchip@lists.infradead.org, mka@chromium.org, Douglas Anderson <dianders@chromium.org>, Sandy Huang <hjc@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
+In commit fe64ba5c6323 ("drm/rockchip: Resume DP early") we moved
+resume to be early but left suspend at its normal time.  This seems
+like it could be OK, but casues problems if a suspend gets interrupted
+partway through.  The OS only balances matching suspend/resume levels.
+...so if suspend was called then resume will be called.  If suspend
+late was called then resume early will be called.  ...but if suspend
+was called resume early might not get called.  This leads to an
+unbalance in the clock enables / disables.
 
-On Fri, Aug 02, 2019 at 09:28:02PM +0800, YueHaibing wrote:
-> Use devm_platform_ioremap_resource() to simplify the code a bit.
-> This is detected by coccinelle.
-> 
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+Lets take the simple fix and just move suspend to be late to match.
+This makes the PM core take proper care in keeping things balanced.
 
-Acked-by: Antoine Tenart <antoine.tenart@bootlin.com>
+Fixes: fe64ba5c6323 ("drm/rockchip: Resume DP early")
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
 
-Thanks,
-Antoine
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> ---
->  drivers/crypto/inside-secure/safexcel.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/drivers/crypto/inside-secure/safexcel.c b/drivers/crypto/inside-secure/safexcel.c
-> index d1f60fd..822744d 100644
-> --- a/drivers/crypto/inside-secure/safexcel.c
-> +++ b/drivers/crypto/inside-secure/safexcel.c
-> @@ -999,7 +999,6 @@ static void safexcel_init_register_offsets(struct safexcel_crypto_priv *priv)
->  static int safexcel_probe(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
-> -	struct resource *res;
->  	struct safexcel_crypto_priv *priv;
->  	int i, ret;
->  
-> @@ -1015,8 +1014,7 @@ static int safexcel_probe(struct platform_device *pdev)
->  
->  	safexcel_init_register_offsets(priv);
->  
-> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	priv->base = devm_ioremap_resource(dev, res);
-> +	priv->base = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(priv->base)) {
->  		dev_err(dev, "failed to get resource\n");
->  		return PTR_ERR(priv->base);
-> -- 
-> 2.7.4
-> 
-> 
-
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 7d7cb57410fc..f38f5e113c6b 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -436,7 +436,7 @@ static int rockchip_dp_resume(struct device *dev)
+ 
+ static const struct dev_pm_ops rockchip_dp_pm_ops = {
+ #ifdef CONFIG_PM_SLEEP
+-	.suspend = rockchip_dp_suspend,
++	.suspend_late = rockchip_dp_suspend,
+ 	.resume_early = rockchip_dp_resume,
+ #endif
+ };
 -- 
-Antoine Ténart, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+2.22.0.770.g0f2c4a37fd-goog
