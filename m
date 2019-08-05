@@ -1,67 +1,48 @@
-From: Sean Paul <sean@poorly.run>
-Subject: Re: [PATCH] drm/rockchip: Suspend DP late
-Date: Mon, 5 Aug 2019 11:11:03 -0400
-Message-ID: <20190805151103.GY104440@art_vandelay>
-References: <20190802184616.44822-1-dianders@chromium.org>
- <20190802192629.GX104440@art_vandelay>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH 7/9] media: hantro: Add core bits to support H264
+ decoding
+Date: Mon, 05 Aug 2019 15:38:39 -0300
+Message-ID: <cf60476860b1691ac15c17bedeee3cb908d17faf.camel@collabora.com>
+References: <20190619121540.29320-1-boris.brezillon@collabora.com>
+         <20190619121540.29320-8-boris.brezillon@collabora.com>
+         <CAHD77HksotqFBTE84rRM=DuNFX=YJPs=YnsuFkaN-pWUNCtoxA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20190802192629.GX104440@art_vandelay>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, mka@chromium.org, seanpaul@chromium.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAHD77HksotqFBTE84rRM=DuNFX=YJPs=YnsuFkaN-pWUNCtoxA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tomasz Figa <tfiga@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@iki.fi>, Linux Media Mailing List <linux-media@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, kernel@collabora.com, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Jonas Karlman <jonas@kwiboo.se>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Andrew Morton <akpm@linux-foundation.org>, Rasmus Villemoes <linux@rasmusvillemoes.dk>, Philipp Zabel <p.zabel@pengutronix.de>, Hertz Wong <hertz.wong@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBBdWcgMDIsIDIwMTkgYXQgMDM6MjY6MjlQTSAtMDQwMCwgU2VhbiBQYXVsIHdyb3Rl
-Ogo+IE9uIEZyaSwgQXVnIDAyLCAyMDE5IGF0IDExOjQ2OjE2QU0gLTA3MDAsIERvdWdsYXMgQW5k
-ZXJzb24gd3JvdGU6Cj4gPiBJbiBjb21taXQgZmU2NGJhNWM2MzIzICgiZHJtL3JvY2tjaGlwOiBS
-ZXN1bWUgRFAgZWFybHkiKSB3ZSBtb3ZlZAo+ID4gcmVzdW1lIHRvIGJlIGVhcmx5IGJ1dCBsZWZ0
-IHN1c3BlbmQgYXQgaXRzIG5vcm1hbCB0aW1lLiAgVGhpcyBzZWVtcwo+ID4gbGlrZSBpdCBjb3Vs
-ZCBiZSBPSywgYnV0IGNhc3VlcyBwcm9ibGVtcyBpZiBhIHN1c3BlbmQgZ2V0cyBpbnRlcnJ1cHRl
-ZAo+ID4gcGFydHdheSB0aHJvdWdoLiAgVGhlIE9TIG9ubHkgYmFsYW5jZXMgbWF0Y2hpbmcgc3Vz
-cGVuZC9yZXN1bWUgbGV2ZWxzLgo+ID4gLi4uc28gaWYgc3VzcGVuZCB3YXMgY2FsbGVkIHRoZW4g
-cmVzdW1lIHdpbGwgYmUgY2FsbGVkLiAgSWYgc3VzcGVuZAo+ID4gbGF0ZSB3YXMgY2FsbGVkIHRo
-ZW4gcmVzdW1lIGVhcmx5IHdpbGwgYmUgY2FsbGVkLiAgLi4uYnV0IGlmIHN1c3BlbmQKPiA+IHdh
-cyBjYWxsZWQgcmVzdW1lIGVhcmx5IG1pZ2h0IG5vdCBnZXQgY2FsbGVkLiAgVGhpcyBsZWFkcyB0
-byBhbgo+ID4gdW5iYWxhbmNlIGluIHRoZSBjbG9jayBlbmFibGVzIC8gZGlzYWJsZXMuCj4gPiAK
-PiA+IExldHMgdGFrZSB0aGUgc2ltcGxlIGZpeCBhbmQganVzdCBtb3ZlIHN1c3BlbmQgdG8gYmUg
-bGF0ZSB0byBtYXRjaC4KPiA+IFRoaXMgbWFrZXMgdGhlIFBNIGNvcmUgdGFrZSBwcm9wZXIgY2Fy
-ZSBpbiBrZWVwaW5nIHRoaW5ncyBiYWxhbmNlZC4KPiA+IAo+ID4gRml4ZXM6IGZlNjRiYTVjNjMy
-MyAoImRybS9yb2NrY2hpcDogUmVzdW1lIERQIGVhcmx5IikKPiA+IFNpZ25lZC1vZmYtYnk6IERv
-dWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KPiAKPiBSZXZpZXdlZC1ieTog
-U2VhbiBQYXVsIDxzZWFuQHBvb3JseS5ydW4+Cj4gCj4gVGhpcyBzaG91bGQgZ28gaW4gLW1pc2Mt
-Zml4ZXMgYW5kIGR1ZSB0byBzb21lLi4uIGFkbWluaXN0cmF0aXZlIHJlYXNvbnMuLi4gSQo+IHdp
-bGwgbGVhdmUgaXQgb24gdGhlIGxpc3QgdW50aWwgTWFhcnRlbiBoYXMgYSBjaGFuY2UgdG8gZmYg
-dG8gLXJjNCBvbiBNb25kYXkuCj4gSSdsbCBhcHBseSBpdCB0aGVuIHNvIGFzIHRvIG5vdCByZXF1
-aXJlIGEgYmFja21lcmdlLgoKV2UncmUgbm8gbG9uZ2VyIGFibGUgdG8gZmYgZHJtLW1pc2MtZml4
-ZXMgc2luY2UgYSBjb21taXQgY2FtZSBpbiBvbiBTYXR1cmRheSwgc28KSSd2ZSBwaWxlZCB0aGlz
-IG9uIGFzIHdlbGwuCgpUaGFua3MsCgpTZWFuCgo+IAo+IFNlYW4KPiAKPiA+IC0tLQo+ID4gCj4g
-PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgfCAyICst
-Cj4gPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4gPiAK
-PiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9j
-a2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5j
-Cj4gPiBpbmRleCA3ZDdjYjU3NDEwZmMuLmYzOGY1ZTExM2M2YiAxMDA2NDQKPiA+IC0tLSBhL2Ry
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jCj4gPiArKysgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYwo+ID4gQEAgLTQz
-Niw3ICs0MzYsNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RwX3Jlc3VtZShzdHJ1Y3QgZGV2aWNl
-ICpkZXYpCj4gPiAgCj4gPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBkZXZfcG1fb3BzIHJvY2tjaGlw
-X2RwX3BtX29wcyA9IHsKPiA+ICAjaWZkZWYgQ09ORklHX1BNX1NMRUVQCj4gPiAtCS5zdXNwZW5k
-ID0gcm9ja2NoaXBfZHBfc3VzcGVuZCwKPiA+ICsJLnN1c3BlbmRfbGF0ZSA9IHJvY2tjaGlwX2Rw
-X3N1c3BlbmQsCj4gPiAgCS5yZXN1bWVfZWFybHkgPSByb2NrY2hpcF9kcF9yZXN1bWUsCj4gPiAg
-I2VuZGlmCj4gPiAgfTsKPiA+IC0tIAo+ID4gMi4yMi4wLjc3MC5nMGYyYzRhMzdmZC1nb29nCj4g
-PiAKPiAKPiAtLSAKPiBTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBDaHJv
-bWl1bSBPUwoKLS0gClNlYW4gUGF1bCwgU29mdHdhcmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9t
-aXVtIE9TCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+Hey Tomasz,
+
+On Thu, 2019-08-01 at 13:06 +0900, Tomasz Figa wrote:
+> Hi Boris,
+> 
+> On Wed, Jun 19, 2019 at 9:15 PM Boris Brezillon
+> <boris.brezillon@collabora.com> wrote:
+> [snip]
+> > @@ -533,10 +535,21 @@ hantro_queue_setup(struct vb2_queue *vq, unsigned int *num_buffers,
+> >                 return -EINVAL;
+> >         }
+> > 
+> > +       /* The H264 decoder needs extra size on the output buffer. */
+> > +       if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_H264_SLICE_RAW)
+> > +               extra_size0 = 128 * DIV_ROUND_UP(pixfmt->width, 16) *
+> > +                             DIV_ROUND_UP(pixfmt->height, 16);
+> > +
+> 
+> I wonder if this shouldn't be accounted for already in the sizeimage
+> returned by TRY_/S_FMT, so that the application can know the required
+> buffer size if it uses some external allocator and DMABUF memory type.
+> I know we had it like this in our downstream code, but it wasn't the
+> problem because we use minigbm, where we explicitly add the same
+> padding in the rockchip backend. Any thoughts?
+> 
+
+Nice catch. This should be fixed and accounted in TRY_FMT as you suggest.
+
+Thanks,
+Eze 
