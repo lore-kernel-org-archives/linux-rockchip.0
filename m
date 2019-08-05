@@ -1,31 +1,42 @@
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH -next 03/12] crypto: exynos - use devm_platform_ioremap_resource()
- to simplify code
-Date: Mon, 5 Aug 2019 11:18:17 +0200
-Message-ID: <CAJKOXPfvMLehLn+iNOGDEFvsWc93eShUx0=8fn9JWiBOc7wpFw@mail.gmail.com>
-References: <20190802132809.8116-1-yuehaibing@huawei.com> <20190802132809.8116-4-yuehaibing@huawei.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 1/2] pinctrl: rockchip: Mark expected switch fall-through
+Date: Mon, 5 Aug 2019 12:32:52 +0200
+Message-ID: <CACRpkdaOe4FvvrVMwLk5_KiMdKVVNm5Z7fSyjPDWKcm5MzxvyQ@mail.gmail.com>
+References: <20190726112812.19665-1-anders.roxell@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190802132809.8116-4-yuehaibing@huawei.com>
+In-Reply-To: <20190726112812.19665-1-anders.roxell@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: YueHaibing <yuehaibing@huawei.com>
-Cc: herbert@gondor.apana.org.au, lars.persson@axis.com, jesper.nilsson@axis.com, davem@davemloft.net, thomas.lendacky@amd.com, gary.hook@amd.com, kgene@kernel.org, antoine.tenart@bootlin.com, matthias.bgg@gmail.com, jamie@jamieiles.com, agross@kernel.org, heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, clabbe.montjoie@gmail.com, mripard@kernel.org, wens@csie.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-crypto@vger.kernel.org, linux-arm-kernel@axis.com, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+To: Anders Roxell <anders.roxell@linaro.org>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Bjorn Andersson <bjorn.andersson@linaro.org>, Andy Gross <agross@kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 2 Aug 2019 at 15:31, YueHaibing <yuehaibing@huawei.com> wrote:
->
-> Use devm_platform_ioremap_resource() to simplify the code a bit.
-> This is detected by coccinelle.
->
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-> ---
->  drivers/crypto/exynos-rng.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
->
+On Fri, Jul 26, 2019 at 1:28 PM Anders Roxell <anders.roxell@linaro.org> wr=
+ote:
 
-Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
+> When fall-through warnings was enabled by default the following warning
+> was starting to show up:
+>
+> ../drivers/pinctrl/pinctrl-rockchip.c: In function =E2=80=98rockchip_gpio=
+_set_config=E2=80=99:
+> ../drivers/pinctrl/pinctrl-rockchip.c:2783:3: warning: this statement may=
+ fall
+>  through [-Wimplicit-fallthrough=3D]
+>    rockchip_gpio_set_debounce(gc, offset, true);
+>    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ../drivers/pinctrl/pinctrl-rockchip.c:2795:2: note: here
+>   default:
+>   ^~~~~~~
+>
+> Rework so that the compiler doesn't warn about fall-through. Add
+> 'return -ENOTSUPP;' to match the comment.
+>
+> Fixes: d93512ef0f0e ("Makefile: Globally enable fall-through warning")
+> Signed-off-by: Anders Roxell <anders.roxell@linaro.org>
 
-Best regards,
-Krzysztof
+Patch applied.
+
+Yours,
+Linus Walleij
