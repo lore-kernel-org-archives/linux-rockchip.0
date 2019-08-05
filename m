@@ -1,99 +1,739 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 09/15] wdt: dw: Rename to dw_wdt.c
-Date: Mon, 5 Aug 2019 20:40:17 +0800
-Message-ID: <e7507f4e-de8d-e61c-5538-0a3cc203ceba@rock-chips.com>
-References: <20190729074711.16988-1-jagan@amarulasolutions.com>
- <20190729074711.16988-10-jagan@amarulasolutions.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20190729074711.16988-10-jagan@amarulasolutions.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: Chin-Liang See <clsee@altera.com>, u-boot@lists.denx.de, Akash Gajjar <akash@openedev.com>, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com
+From: Andy Yan <andyshrk@gmail.com>
+Subject: [PATCH v2] arm64: dts: rockchip: Add dts for Leez RK3399 P710 SBC
+Date: Mon,  5 Aug 2019 20:40:37 +0800
+Message-ID: <20190805124037.10597-1-andyshrk@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Andy Yan <andyshrk@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMTkvNy8yOSDkuIvljYgzOjQ3LCBKYWdhbiBUZWtpIHdyb3RlOgo+IC0gdXNlIGR3IGlu
-c3RlYWQgb2YgZGVzaWdud2FyZSBmb3IgZHJpdmVyIGZpbGUgc2luY2UKPiAgICBMaW51eCBmb2xs
-b3dpbmcgdGhlIHNhbWUuCj4gLSBhZGQgQ09ORklHIG1hY3JvIHN0YXJ0IHdpdGggQ09ORklHX1dE
-VCBzaW5jZSB0aGUKPiAgICBkcml2ZXIgbW9kZSB3ZHQgZHJpdmVycyBmb2xsb3cgdGhpcy4KPgo+
-IENjOiBEaW5oIE5ndXllbiA8ZGluZ3V5ZW5Aa2VybmVsLm9yZz4KPiBDYzogQ2hpbi1MaWFuZyBT
-ZWUgPGNsc2VlQGFsdGVyYS5jb20+Cj4gU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVraSA8amFnYW5A
-YW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gLS0tCj4gICBjb21tb24vYm9hcmRfZi5jICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICB8IDIgKy0KPiAgIGRyaXZlcnMvd2F0Y2hkb2cvTWFrZWZp
-bGUgICAgICAgICAgICAgICAgICAgICAgIHwgMiArLQo+ICAgZHJpdmVycy93YXRjaGRvZy97ZGVz
-aWdud2FyZV93ZHQuYyA9PiBkd193ZHQuY30gfCAwCj4gICBpbmNsdWRlL2NvbmZpZ3Mvc29jZnBn
-YV9jb21tb24uaCAgICAgICAgICAgICAgICB8IDIgKy0KPiAgIGluY2x1ZGUvY29uZmlncy9zb2Nm
-cGdhX3N0cmF0aXgxMF9zb2Nkay5oICAgICAgIHwgMiArLQo+ICAgc2NyaXB0cy9jb25maWdfd2hp
-dGVsaXN0LnR4dCAgICAgICAgICAgICAgICAgICAgfCAyICstCj4gICA2IGZpbGVzIGNoYW5nZWQs
-IDUgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlvbnMoLSkKPiAgIHJlbmFtZSBkcml2ZXJzL3dhdGNo
-ZG9nL3tkZXNpZ253YXJlX3dkdC5jID0+IGR3X3dkdC5jfSAoMTAwJSkKPgo+IGRpZmYgLS1naXQg
-YS9jb21tb24vYm9hcmRfZi5jIGIvY29tbW9uL2JvYXJkX2YuYwo+IGluZGV4IDQ3NjBkNzI4ZjMu
-Ljc5ZWZlZjA3OTIgMTAwNjQ0Cj4gLS0tIGEvY29tbW9uL2JvYXJkX2YuYwo+ICsrKyBiL2NvbW1v
-bi9ib2FyZF9mLmMKPiBAQCAtOTUsNyArOTUsNyBAQCBzdGF0aWMgaW50IGluaXRfZnVuY193YXRj
-aGRvZ19pbml0KHZvaWQpCj4gICAjIGlmIGRlZmluZWQoQ09ORklHX0hXX1dBVENIRE9HKSAmJiBc
-Cj4gICAJKGRlZmluZWQoQ09ORklHX002OEspIHx8IGRlZmluZWQoQ09ORklHX01JQ1JPQkxBWkUp
-IHx8IFwKPiAgIAlkZWZpbmVkKENPTkZJR19TSCkgfHwgXAo+IC0JZGVmaW5lZChDT05GSUdfREVT
-SUdOV0FSRV9XQVRDSERPRykgfHwgXAo+ICsJZGVmaW5lZChDT05GSUdfV0RUX0RXKSB8fCBcCj4g
-ICAJZGVmaW5lZChDT05GSUdfSU1YX1dBVENIRE9HKSkKPiAgIAlod193YXRjaGRvZ19pbml0KCk7
-Cj4gICAJcHV0cygiICAgICAgIFdhdGNoZG9nIGVuYWJsZWRcbiIpOwo+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL3dhdGNoZG9nL01ha2VmaWxlIGIvZHJpdmVycy93YXRjaGRvZy9NYWtlZmlsZQo+IGlu
-ZGV4IDY4Yzk4OWFhMGIuLmExNGZkYWJmOGQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy93YXRjaGRv
-Zy9NYWtlZmlsZQo+ICsrKyBiL2RyaXZlcnMvd2F0Y2hkb2cvTWFrZWZpbGUKPiBAQCAtMTMsNyAr
-MTMsNiBAQCBlbmRpZgo+ICAgb2JqLSQoQ09ORklHX1M1UCkgICAgICAgICAgICAgICArPSBzNXBf
-d2R0Lm8KPiAgIG9iai0kKENPTkZJR19YSUxJTlhfVEJfV0FUQ0hET0cpICs9IHhpbGlueF90Yl93
-ZHQubwo+ICAgb2JqLSQoQ09ORklHX09NQVBfV0FUQ0hET0cpICs9IG9tYXBfd2R0Lm8KPiAtb2Jq
-LSQoQ09ORklHX0RFU0lHTldBUkVfV0FUQ0hET0cpICs9IGRlc2lnbndhcmVfd2R0Lm8KPiAgIG9i
-ai0kKENPTkZJR19VTFBfV0FUQ0hET0cpICs9IHVscF93ZG9nLm8KPiAgIG9iai0kKENPTkZJR19X
-RFQpICs9IHdkdC11Y2xhc3Mubwo+ICAgb2JqLSQoQ09ORklHX1dEVF9TQU5EQk9YKSArPSBzYW5k
-Ym94X3dkdC5vCj4gQEAgLTIzLDYgKzIyLDcgQEAgb2JqLSQoQ09ORklHX1dEVF9CQ002MzQ1KSAr
-PSBiY202MzQ1X3dkdC5vCj4gICBvYmotJChDT05GSUdfQkNNMjgzNV9XRFQpICAgICAgICs9IGJj
-bTI4MzVfd2R0Lm8KPiAgIG9iai0kKENPTkZJR19XRFRfT1JJT04pICs9IG9yaW9uX3dkdC5vCj4g
-ICBvYmotJChDT05GSUdfV0RUX0NETlMpICs9IGNkbnNfd2R0Lm8KPiArb2JqLSQoQ09ORklHX1dE
-VF9EVykgKz0gZHdfd2R0Lm8KPiAgIG9iai0kKENPTkZJR19XRFRfTVBDOHh4KSArPSBtcGM4eHhf
-d2R0Lm8KPiAgIG9iai0kKENPTkZJR19XRFRfTVQ3NjIxKSArPSBtdDc2MjFfd2R0Lm8KPiAgIG9i
-ai0kKENPTkZJR19XRFRfTVRLKSArPSBtdGtfd2R0Lm8KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy93
-YXRjaGRvZy9kZXNpZ253YXJlX3dkdC5jIGIvZHJpdmVycy93YXRjaGRvZy9kd193ZHQuYwo+IHNp
-bWlsYXJpdHkgaW5kZXggMTAwJQo+IHJlbmFtZSBmcm9tIGRyaXZlcnMvd2F0Y2hkb2cvZGVzaWdu
-d2FyZV93ZHQuYwo+IHJlbmFtZSB0byBkcml2ZXJzL3dhdGNoZG9nL2R3X3dkdC5jCj4gZGlmZiAt
-LWdpdCBhL2luY2x1ZGUvY29uZmlncy9zb2NmcGdhX2NvbW1vbi5oIGIvaW5jbHVkZS9jb25maWdz
-L3NvY2ZwZ2FfY29tbW9uLmgKPiBpbmRleCBkMTAzNGFjMjgwLi42NWYwMmVjYTJlIDEwMDY0NAo+
-IC0tLSBhL2luY2x1ZGUvY29uZmlncy9zb2NmcGdhX2NvbW1vbi5oCj4gKysrIGIvaW5jbHVkZS9j
-b25maWdzL3NvY2ZwZ2FfY29tbW9uLmgKPiBAQCAtMTA1LDcgKzEwNSw3IEBACj4gICAgKiBMNCBX
-YXRjaGRvZwo+ICAgICovCj4gICAjaWZkZWYgQ09ORklHX0hXX1dBVENIRE9HCj4gLSNkZWZpbmUg
-Q09ORklHX0RFU0lHTldBUkVfV0FUQ0hET0cKPiArI2RlZmluZSBDT05GSUdfV0RUX0RXCj4gICAj
-ZGVmaW5lIENPTkZJR19EV19XRFRfQkFTRQkJU09DRlBHQV9MNFdEMF9BRERSRVNTCj4gICAjZGVm
-aW5lIENPTkZJR19EV19XRFRfQ0xPQ0tfS0haCQkyNTAwMAo+ICAgI2RlZmluZSBDT05GSUdfV0FU
-Q0hET0dfVElNRU9VVF9NU0VDUwkzMDAwMAo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2NvbmZpZ3Mv
-c29jZnBnYV9zdHJhdGl4MTBfc29jZGsuaCBiL2luY2x1ZGUvY29uZmlncy9zb2NmcGdhX3N0cmF0
-aXgxMF9zb2Nkay5oCj4gaW5kZXggOGQyOTcxYzZlMi4uMzU4MmFlYzgyMiAxMDA2NDQKPiAtLS0g
-YS9pbmNsdWRlL2NvbmZpZ3Mvc29jZnBnYV9zdHJhdGl4MTBfc29jZGsuaAo+ICsrKyBiL2luY2x1
-ZGUvY29uZmlncy9zb2NmcGdhX3N0cmF0aXgxMF9zb2Nkay5oCj4gQEAgLTE2MSw3ICsxNjEsNyBA
-QCB1bnNpZ25lZCBpbnQgY21fZ2V0X3FzcGlfY29udHJvbGxlcl9jbGtfaHoodm9pZCk7Cj4gICAg
-Ki8KPiAgICNpZmRlZiBDT05GSUdfU1BMX0JVSUxECj4gICAjZGVmaW5lIENPTkZJR19IV19XQVRD
-SERPRwo+IC0jZGVmaW5lIENPTkZJR19ERVNJR05XQVJFX1dBVENIRE9HCj4gKyNkZWZpbmUgQ09O
-RklHX1dEVF9EVwo+ICAgI2RlZmluZSBDT05GSUdfRFdfV0RUX0JBU0UJCVNPQ0ZQR0FfTDRXRDBf
-QUREUkVTUwo+ICAgI2lmbmRlZiBfX0FTU0VNQkxZX18KPiAgIHVuc2lnbmVkIGludCBjbV9nZXRf
-bDRfc3lzX2ZyZWVfY2xrX2h6KHZvaWQpOwo+IGRpZmYgLS1naXQgYS9zY3JpcHRzL2NvbmZpZ193
-aGl0ZWxpc3QudHh0IGIvc2NyaXB0cy9jb25maWdfd2hpdGVsaXN0LnR4dAo+IGluZGV4IGU2MTZm
-NzIyOWIuLmYyNDUzNzI4YzYgMTAwNjQ0Cj4gLS0tIGEvc2NyaXB0cy9jb25maWdfd2hpdGVsaXN0
-LnR4dAo+ICsrKyBiL3NjcmlwdHMvY29uZmlnX3doaXRlbGlzdC50eHQKPiBAQCAtMzIzLDcgKzMy
-Myw3IEBAIENPTkZJR19ERUZBVUxUX0lNTVIKPiAgIENPTkZJR19ERUZfSFdDT05GSUcKPiAgIENP
-TkZJR19ERUxBWV9FTlZJUk9OTUVOVAo+ICAgQ09ORklHX0RFU0lHTldBUkVfRVRICj4gLUNPTkZJ
-R19ERVNJR05XQVJFX1dBVENIRE9HCj4gK0NPTkZJR19XRFRfRFcKCklzIGl0IGJldHRlciB0byBk
-ZWZpbmUgYSBXRFRfRFcgaW4gZHJpdmVycy93YXRjaGRvZy9LY29uZmlnIHNvIHRoYXQgd2UgCmRv
-bid0IG5lZWQKCnRoaXMgd2hpdGUgbGlzdD8KClRoYW5rcywKCi0gS2V2ZXIKCj4gICBDT05GSUdf
-REVWRUxPUAo+ICAgQ09ORklHX0RFVklDRV9UUkVFX0xJU1QKPiAgIENPTkZJR19ERlVfQUxUCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1h
-aWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlz
-dGluZm8vdS1ib290Cg==
+P710 is a RK3399 based SBC, designed by Leez [0].
+
+Specification
+- Rockchip RK3399
+- 4/2GB LPDDR4
+- TF sd scard slot
+- eMMC
+- M.2 B-Key for 4G LTE
+- AP6256 for WiFi + BT
+- Gigabit ethernet
+- HDMI out
+- 40 pin header
+- USB 2.0 x 2
+- USB 3.0 x 1
+- USB 3.0 Type-C x 1
+- TYPE-C Power supply
+
+[0]https://leez.lenovo.com
+
+Signed-off-by: Andy Yan <andyshrk@gmail.com>
+
+---
+
+Changes in v2:
+- Add vendor entry for Leez
+- Rework the regulator tree
+- Fix some pinctrl names
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3399-leez-p710.dts    | 645 ++++++++++++++++++
+ 4 files changed, 653 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
+
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 34865042f4e4..da9cd947abfa 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -329,6 +329,11 @@ properties:
+               - khadas,edge-v
+           - const: rockchip,rk3399
+ 
++      - description: Leez RK3399 P710
++        items:
++          - const: leez,p710
++          - const: rockchip,rk3399
++
+       - description: mqmaker MiQi
+         items:
+           - const: mqmaker,miqi
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 6992bbbbffab..4be4d9c367b9 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -503,6 +503,8 @@ patternProperties:
+     description: Lantiq Semiconductor
+   "^lattice,.*":
+     description: Lattice Semiconductor
++  "^leez,.*":
++    description: Leez
+   "^lego,.*":
+     description: LEGO Systems A/S
+   "^lemaker,.*":
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index daa2c78e22c3..1f18a9392d15 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -20,6 +20,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-hugsun-x99.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-khadas-edge.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-khadas-edge-captain.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-khadas-edge-v.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-leez-p710.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopc-t4.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-m4.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-neo4.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts b/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
+new file mode 100644
+index 000000000000..32baa57b9481
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
+@@ -0,0 +1,645 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2019 Andy Yan <andy.yan@gmail.com>
++ */
++
++/dts-v1/;
++#include <dt-bindings/input/linux-event-codes.h>
++#include <dt-bindings/pwm/pwm.h>
++#include "rk3399.dtsi"
++#include "rk3399-opp.dtsi"
++
++/ {
++	model = "Leez RK3399 P710";
++	compatible = "leez,p710", "rockchip,rk3399";
++
++	chosen {
++		stdout-path = "serial2:1500000n8";
++	};
++
++	clkin_gmac: external-gmac-clock {
++		compatible = "fixed-clock";
++		clock-frequency = <125000000>;
++		clock-output-names = "clkin_gmac";
++		#clock-cells = <0>;
++	};
++
++	sdio_pwrseq: sdio-pwrseq {
++		compatible = "mmc-pwrseq-simple";
++		clocks = <&rk808 1>;
++		clock-names = "ext_clock";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_reg_on_h>;
++		reset-gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
++	};
++
++	dc5v_adp: dc5v-adp {
++		compatible = "regulator-fixed";
++		regulator-name = "dc5v_adapter";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++	};
++
++	vcc5v0_sys: vcc5v0-sys {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&dc5v_adp>;
++	};
++
++	vcc3v3_sys: vcc3v3-sys {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc3v3_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vcc5v0_host0: vcc5v0_host1: vcc5v0-host {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_host";
++		regulator-boot-on;
++		regulator-always-on;
++		regulator-min-microvolt = <5500000>;
++		regulator-max-microvolt = <5500000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vcc5v0_host3: vcc5v0-host3 {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_host3";
++		enable-active-high;
++		gpio = <&gpio2 RK_PA2 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vcc5v0_host3_en>;
++		regulator-always-on;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vcc3v3_lan: vcc3v3-lan {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc3v3_lan";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vim-supply = <&vcc3v3_sys>;
++	};
++
++	vdd_log: vdd-log {
++		compatible = "pwm-regulator";
++		pwms = <&pwm2 0 25000 1>;
++		regulator-name = "vdd_log";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <800000>;
++		regulator-max-microvolt = <1400000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++};
++
++&cpu_l0 {
++	cpu-supply = <&vdd_cpu_l>;
++};
++
++&cpu_l1 {
++	cpu-supply = <&vdd_cpu_l>;
++};
++
++&cpu_l2 {
++	cpu-supply = <&vdd_cpu_l>;
++};
++
++&cpu_l3 {
++	cpu-supply = <&vdd_cpu_l>;
++};
++
++&cpu_b0 {
++	cpu-supply = <&vdd_cpu_b>;
++};
++
++&cpu_b1 {
++	cpu-supply = <&vdd_cpu_b>;
++};
++
++&emmc_phy {
++	status = "okay";
++};
++
++&gmac {
++	assigned-clocks = <&cru SCLK_RMII_SRC>;
++	assigned-clock-parents = <&clkin_gmac>;
++	clock_in_out = "input";
++	phy-supply = <&vcc3v3_lan>;
++	phy-mode = "rgmii";
++	pinctrl-names = "default";
++	pinctrl-0 = <&rgmii_pins>;
++	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	snps,reset-delays-us = <0 10000 50000>;
++	tx_delay = <0x28>;
++	rx_delay = <0x11>;
++	status = "okay";
++};
++
++&gpu {
++	mali-supply = <&vdd_gpu>;
++	status = "okay";
++};
++
++&hdmi {
++	ddc-i2c-bus = <&i2c7>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&hdmi_cec>;
++	status = "okay";
++};
++
++&hdmi_sound {
++	status = "okay";
++};
++
++&i2c0 {
++	clock-frequency = <400000>;
++	i2c-scl-rising-time-ns = <168>;
++	i2c-scl-falling-time-ns = <4>;
++	status = "okay";
++
++	rk808: pmic@1b {
++		compatible = "rockchip,rk808";
++		reg = <0x1b>;
++		interrupt-parent = <&gpio1>;
++		interrupts = <21 IRQ_TYPE_LEVEL_LOW>;
++		#clock-cells = <1>;
++		clock-output-names = "xin32k", "rk808-clkout2";
++		pinctrl-names = "default";
++		pinctrl-0 = <&pmic_int_l>;
++		rockchip,system-power-controller;
++		wakeup-source;
++
++		vcc1-supply = <&vcc5v0_sys>;
++		vcc2-supply = <&vcc5v0_sys>;
++		vcc3-supply = <&vcc5v0_sys>;
++		vcc4-supply = <&vcc5v0_sys>;
++		vcc6-supply = <&vcc5v0_sys>;
++		vcc7-supply = <&vcc5v0_sys>;
++		vcc8-supply = <&vcc3v3_sys>;
++		vcc9-supply = <&vcc5v0_sys>;
++		vcc10-supply = <&vcc5v0_sys>;
++		vcc11-supply = <&vcc5v0_sys>;
++		vcc12-supply = <&vcc3v3_sys>;
++		vddio-supply = <&vcc_1v8>;
++
++		regulators {
++			vdd_center: DCDC_REG1 {
++				regulator-name = "vdd_center";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <750000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-ramp-delay = <6001>;
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vdd_cpu_l: DCDC_REG2 {
++				regulator-name = "vdd_cpu_l";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <750000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-ramp-delay = <6001>;
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc_ddr: DCDC_REG3 {
++				regulator-name = "vcc_ddr";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-state-mem {
++					regulator-on-in-suspend;
++				};
++			};
++
++			vcc_1v8: DCDC_REG4 {
++				regulator-name = "vcc_1v8";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1800000>;
++				};
++			};
++
++			vcc1v8_dvp: LDO_REG1 {
++				regulator-name = "vcc1v8_dvp";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc1v8_hdmi: LDO_REG2 {
++				regulator-name = "vcc1v8_hdmi";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcca_1v8: LDO_REG3 {
++				regulator-name = "vcca_1v8";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1800000>;
++				};
++			};
++
++			vccio_sd: LDO_REG4 {
++				regulator-name = "vccio_sd";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3000000>;
++				};
++			};
++
++			vcca3v0_codec: LDO_REG5 {
++				regulator-name = "vcca3v0_codec";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc_1v5: LDO_REG6 {
++				regulator-name = "vcc_1v5";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1500000>;
++				regulator-max-microvolt = <1500000>;
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1500000>;
++				};
++			};
++
++			vcc0v9_hdmi: LDO_REG7 {
++				regulator-name = "vcc0v9_hdmi";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <900000>;
++				regulator-max-microvolt = <900000>;
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc_3v0: LDO_REG8 {
++				regulator-name = "vcc_3v0";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3000000>;
++				};
++			};
++		};
++	};
++
++	vdd_cpu_b: regulator@40 {
++		compatible = "silergy,syr827";
++		reg = <0x40>;
++		fcs,suspend-voltage-selector = <1>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vsel1_gpio>;
++		regulator-name = "vdd_cpu_b";
++		regulator-min-microvolt = <712500>;
++		regulator-max-microvolt = <1500000>;
++		regulator-ramp-delay = <1000>;
++		regulator-always-on;
++		regulator-boot-on;
++		vin-supply = <&vcc5v0_sys>;
++
++		regulator-state-mem {
++			regulator-off-in-suspend;
++		};
++	};
++
++	vdd_gpu: regulator@41 {
++		compatible = "silergy,syr828";
++		reg = <0x41>;
++		fcs,suspend-voltage-selector = <1>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vsel2_gpio>;
++		regulator-name = "vdd_gpu";
++		regulator-min-microvolt = <712500>;
++		regulator-max-microvolt = <1500000>;
++		regulator-ramp-delay = <1000>;
++		regulator-always-on;
++		regulator-boot-on;
++		vin-supply = <&vcc5v0_sys>;
++
++		regulator-state-mem {
++			regulator-off-in-suspend;
++		};
++	};
++};
++
++&i2c1 {
++	i2c-scl-rising-time-ns = <300>;
++	i2c-scl-falling-time-ns = <15>;
++	status = "okay";
++};
++
++&i2c3 {
++	i2c-scl-rising-time-ns = <450>;
++	i2c-scl-falling-time-ns = <15>;
++	status = "okay";
++};
++
++&i2c4 {
++	i2c-scl-rising-time-ns = <600>;
++	i2c-scl-falling-time-ns = <20>;
++	status = "okay";
++};
++
++&i2c7 {
++	status = "okay";
++};
++
++&i2s0 {
++	rockchip,playback-channels = <8>;
++	rockchip,capture-channels = <8>;
++	status = "okay";
++};
++
++&i2s1 {
++	rockchip,playback-channels = <2>;
++	rockchip,capture-channels = <2>;
++	status = "okay";
++};
++
++&i2s2 {
++	status = "okay";
++};
++
++&io_domains {
++	status = "okay";
++
++	bt656-supply = <&vcc1v8_dvp>;
++	audio-supply = <&vcc_1v8>;
++	sdmmc-supply = <&vccio_sd>;
++	gpio1830-supply = <&vcc_3v0>;
++};
++
++&pmu_io_domains {
++	status = "okay";
++	pmu1830-supply = <&vcc_3v0>;
++};
++
++&pinctrl {
++	bt {
++		bt_reg_on_h: bt-reg-on-h {
++			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		bt_host_wake_l: bt-host-wake-l {
++			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		bt_wake_l: bt-wake-l {
++			rockchip,pins = <2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	pmic {
++		pmic_int_l: pmic-int-l {
++			rockchip,pins = <1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++
++		vsel1_gpio: vsel1-gpio {
++			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++
++		vsel2_gpio: vsel2-gpio {
++			rockchip,pins = <1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++	};
++
++	usb2 {
++		vcc5v0_host3_en: vcc5v0-host3-en {
++			rockchip,pins = <2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	wifi {
++		wifi_reg_on_h: wifi-reg-on-h {
++			rockchip,pins =
++				<0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		wifi_host_wake_l: wifi-host-wake-l {
++			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&pwm2 {
++	status = "okay";
++};
++
++&saradc {
++	status = "okay";
++
++	vref-supply = <&vcc_1v8>;
++};
++
++&sdio0 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	bus-width = <4>;
++	clock-frequency = <50000000>;
++	cap-sdio-irq;
++	cap-sd-highspeed;
++	keep-power-in-suspend;
++	mmc-pwrseq = <&sdio_pwrseq>;
++	non-removable;
++	pinctrl-names = "default";
++	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
++	sd-uhs-sdr104;
++	status = "okay";
++
++	brcmf: wifi@1 {
++		compatible = "brcm,bcm4329-fmac";
++		reg = <1>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
++		interrupt-names = "host-wake";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_host_wake_l>;
++	};
++};
++
++&sdmmc {
++	bus-width = <4>;
++	cap-mmc-highspeed;
++	cap-sd-highspeed;
++	cd-gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
++	disable-wp;
++	max-frequency = <150000000>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&sdmmc_clk &sdmmc_cd &sdmmc_cmd &sdmmc_bus4>;
++	status = "okay";
++};
++
++&sdhci {
++	bus-width = <8>;
++	mmc-hs400-1_8v;
++	mmc-hs400-enhanced-strobe;
++	non-removable;
++	status = "okay";
++};
++
++&tcphy0 {
++	status = "okay";
++};
++
++&tcphy1 {
++	status = "okay";
++};
++
++&tsadc {
++	status = "okay";
++
++	/* tshut mode 0:CRU 1:GPIO */
++	rockchip,hw-tshut-mode = <1>;
++	/* tshut polarity 0:LOW 1:HIGH */
++	rockchip,hw-tshut-polarity = <1>;
++};
++
++&u2phy0 {
++	status = "okay";
++
++	u2phy0_otg: otg-port {
++		status = "okay";
++	};
++
++	u2phy0_host: host-port {
++		phy-supply = <&vcc5v0_host0>;
++		status = "okay";
++	};
++};
++
++&u2phy1 {
++	status = "okay";
++
++	u2phy1_otg: otg-port {
++		status = "okay";
++	};
++
++	u2phy1_host: host-port {
++		phy-supply = <&vcc5v0_host1>;
++		status = "okay";
++	};
++};
++
++&uart0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
++	status = "okay";
++
++	bluetooth {
++		compatible = "brcm,bcm43438-bt";
++		clocks = <&rk808 1>;
++		clock-names = "ext_clock";
++		device-wakeup-gpios = <&gpio2 RK_PD2 GPIO_ACTIVE_HIGH>;
++		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
++		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_reg_on_h>;
++	};
++};
++
++&uart2 {
++	status = "okay";
++};
++
++&usb_host0_ehci {
++	status = "okay";
++};
++
++&usb_host0_ohci {
++	status = "okay";
++};
++
++&usb_host1_ehci {
++	status = "okay";
++};
++
++&usb_host1_ohci {
++	status = "okay";
++};
++
++&usbdrd3_0 {
++	status = "okay";
++};
++
++&usbdrd_dwc3_0 {
++	status = "okay";
++	dr_mode = "otg";
++};
++
++&usbdrd3_1 {
++	status = "okay";
++};
++
++&usbdrd_dwc3_1 {
++	status = "okay";
++	dr_mode = "host";
++};
++
++&vopb {
++	status = "okay";
++};
++
++&vopb_mmu {
++	status = "okay";
++};
++
++&vopl {
++	status = "okay";
++};
++
++&vopl_mmu {
++	status = "okay";
++};
+-- 
+2.17.1
