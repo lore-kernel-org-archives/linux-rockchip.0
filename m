@@ -1,87 +1,35 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] phy-rockchip-inno-hdmi: Fix RK3328_TERM_RESISTOR_CALIB_SPEED_7_0's third value
-Date: Wed, 07 Aug 2019 23:02:57 +0200
-Message-ID: <5866399.zOWMQKR7fF@diego>
-References: <20190807192305.6604-1-natechancellor@gmail.com>
+Subject: Re: [PATCH] drm/rockchip: fix VOP_WIN_GET macro
+Date: Thu, 08 Aug 2019 00:48:14 +0200
+Message-ID: <2679769.bco7YeSQm7@diego>
+References: <20190703095111.29117-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190807192305.6604-1-natechancellor@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nathan Chancellor <natechancellor@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Andrzej Hajda <a.hajda@samsung.com>, Guenter Roeck <linux@roeck-us.net>, "kernelci . org bot" <bot@kernelci.org>, Naresh Kamboju <naresh.kamboju@linaro.org>, Robin Murphy <robin.murphy@arm.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190703095111.29117-1-john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 7. August 2019, 21:23:05 CEST schrieb Nathan Chancellor:
-> After commit "linux/bits.h: Add compile time sanity check of GENMASK
-> inputs" [1], arm64 defconfig builds started failing:
-> 
-> In file included from ../include/linux/bits.h:22,
->                  from ../include/linux/bitops.h:5,
->                  from ../include/linux/kernel.h:12,
->                  from ../include/linux/clk.h:13,
->                  from ../drivers/phy/rockchip/phy-rockchip-inno-hdmi.c:9:
-> ../drivers/phy/rockchip/phy-rockchip-inno-hdmi.c: In function 'inno_hdmi_phy_rk3328_power_on':
-> ../include/linux/build_bug.h:16:45: error: negative width in bit-field '<anonymous>'
->    16 | #define BUILD_BUG_ON_ZERO(e) (sizeof(struct { int:(-!!(e)); }))
->       |                                             ^
-> ../include/linux/bits.h:24:18: note: in expansion of macro 'BUILD_BUG_ON_ZERO'
->    24 |  ((unsigned long)BUILD_BUG_ON_ZERO(__builtin_choose_expr( \
->       |                  ^~~~~~~~~~~~~~~~~
-> ../include/linux/bits.h:39:3: note: in expansion of macro 'GENMASK_INPUT_CHECK'
->    39 |  (GENMASK_INPUT_CHECK(high, low) + __GENMASK(high, low))
->       |   ^~~~~~~~~~~~~~~~~~~
-> ../drivers/phy/rockchip/phy-rockchip-inno-hdmi.c:24:42: note: in expansion of macro 'GENMASK'
->    24 | #define UPDATE(x, h, l)  (((x) << (l)) & GENMASK((h), (l)))
->       |                                          ^~~~~~~
-> ../drivers/phy/rockchip/phy-rockchip-inno-hdmi.c:201:50: note: in expansion of macro 'UPDATE'
->   201 | #define RK3328_TERM_RESISTOR_CALIB_SPEED_7_0(x)  UPDATE(x, 7, 9)
->       |                                                  ^~~~~~
-> ../drivers/phy/rockchip/phy-rockchip-inno-hdmi.c:1046:26: note: in expansion of macro 'RK3328_TERM_RESISTOR_CALIB_SPEED_7_0'
->  1046 |   inno_write(inno, 0xc6, RK3328_TERM_RESISTOR_CALIB_SPEED_7_0(v));
->       |                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> 
-> As pointed out by Robin and Guenter, inno_write's val argument is an
-> 8-bit value so having a mask larger than that doesn't make sense. This
-> also matches the rest of the *_7_0 macros in this driver.
-> 
-> [1]: https://lore.kernel.org/lkml/20190801230358.4193-2-rikard.falkeborn@gmail.com/
-> 
-> Reported-by: Andrzej Hajda <a.hajda@samsung.com>
-> Reported-by: Guenter Roeck <linux@roeck-us.net>
-> Reported-by: kernelci.org bot <bot@kernelci.org>
-> Reported-by: Naresh Kamboju <naresh.kamboju@linaro.org>
-> Suggested-by: Guenter Roeck <linux@roeck-us.net>
-> Suggested-by: Robin Murphy <robin.murphy@arm.com>
-> Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
-> ---
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-on a rk3328-rock64 hdmi output still works
-Tested-by: Heiko Stuebner <heiko@sntech.de>
-
-@Kishon: Would probably be good to get this fast into 5.3-rc.
-
-
-Heiko
-
-
->  drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-> index b10a84cab4a7..2b97fb1185a0 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-> @@ -198,7 +198,7 @@
->  #define RK3328_BYPASS_TERM_RESISTOR_CALIB		BIT(7)
->  #define RK3328_TERM_RESISTOR_CALIB_SPEED_14_8(x)	UPDATE((x) >> 8, 6, 0)
->  /* REG:0xc6 */
-> -#define RK3328_TERM_RESISTOR_CALIB_SPEED_7_0(x)		UPDATE(x, 7, 9)
-> +#define RK3328_TERM_RESISTOR_CALIB_SPEED_7_0(x)		UPDATE(x, 7, 0)
->  /* REG:0xc7 */
->  #define RK3328_TERM_RESISTOR_50				UPDATE(0, 2, 1)
->  #define RK3328_TERM_RESISTOR_62_5			UPDATE(1, 2, 1)
-> 
+QW0gTWl0dHdvY2gsIDMuIEp1bGkgMjAxOSwgMTE6NTE6MTEgQ0VTVCBzY2hyaWViIEpvaG4gS2Vl
+cGluZzoKPiBDb21taXQgOWE2MWM1NGI5YmZmICgiZHJtL3JvY2tjaGlwOiB2b3A6IGdyb3VwIHZv
+cCByZWdpc3RlcnMiKSBzZWVtcyB0bwo+IGhhdmUgdW5pbnRlbnRpb25hbGx5IGNoYW5nZWQgdGhl
+IGRlZmludGlvbiBvZiB0aGlzIG1hY3JvLiAgU2luY2UgaXQgaXMKPiB1bnVzZWQsIHRoaXMgd2Fz
+IG5vdCBzcG90dGVkIGJ1dCBhbnkgYXR0ZW1wdCB0byB1c2UgaXQgcmVzdWx0cyBpbgo+IGNvbXBp
+bGF0aW9uIGVycm9ycy4KPiAKPiBSZXZlcnQgdG8gdGhlIHByZXZpb3VzIGRlZmluaXRpb24uCj4g
+Cj4gRml4ZXM6IDlhNjFjNTRiOWJmZiAoImRybS9yb2NrY2hpcDogdm9wOiBncm91cCB2b3AgcmVn
+aXN0ZXJzIikKPiBTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29t
+PgoKYXBwbGllZCB0byBkcm0tbWlzYy1uZXh0CgpUaGFua3MKSGVpa28KCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
