@@ -1,16 +1,11 @@
-From: Christoph Hellwig <hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-Subject: Re: [PATCH v4 0/5] iommu/amd: Convert the AMD iommu driver to the
- dma-iommu api
-Date: Sat, 10 Aug 2019 00:19:52 -0700
-Message-ID: <20190810071952.GA25550@infradead.org>
-References: <20190613223901.9523-1-murphyt7@tcd.ie>
- <20190624061945.GA4912@infradead.org>
+From: =?UTF-8?q?Andrius=20=C5=A0tikonas?= <andrius-4ZmsDwijFH7sq35pWSNszA@public.gmane.org>
+Subject: [PATCH] arm64: dts: rockchip: Enable internal SPI flash for RockPro64.
+Date: Sun, 11 Aug 2019 22:11:08 +0100
+Message-ID: <20190811211108.28071-1-andrius@stikonas.eu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20190624061945.GA4912-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,19 +15,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Tom Murphy <murphyt7-/Zw1syy4LHg@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jean-Philippe Brucker <jean-philippe.brucker-5wv7dgnIgG8@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andy Gross <agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Gerald Schaefer <gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: =?UTF-8?q?Andrius=20=C5=A0tikonas?= <andrius-4ZmsDwijFH7sq35pWSNszA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, Jun 23, 2019 at 11:19:45PM -0700, Christoph Hellwig wrote:
-> Tom,
-> 
-> next time please cc Jerg as the AMD IOMMU maintainer.
-> 
-> Joerg, any chance you could review this?  Toms patches to convert the
-> AMD and Intel IOMMU drivers to the dma-iommu code are going to make my
-> life in DMA land significantly easier, so I have a vested interest
-> in this series moving forward :)
-
-Tom, can you repost the series?  Seems like there hasn't been any
-news for a month.
+U2lnbmVkLW9mZi1ieTogQW5kcml1cyDFoHRpa29uYXMgPGFuZHJpdXNAc3Rpa29uYXMuZXU+Ci0t
+LQogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcm9ja3BybzY0LmR0cyB8IDE0
+ICsrKysrKysrKysrKysrCiAxIGZpbGUgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKQoKZGlmZiAt
+LWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvY2twcm82NC5kdHMg
+Yi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2NrcHJvNjQuZHRzCmluZGV4
+IGViNTU5NDA2MjAwNi4uYWJjOTdiMmMxZjE4IDEwMDY0NAotLS0gYS9hcmNoL2FybTY0L2Jvb3Qv
+ZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2NrcHJvNjQuZHRzCisrKyBiL2FyY2gvYXJtNjQvYm9vdC9k
+dHMvcm9ja2NoaXAvcmszMzk5LXJvY2twcm82NC5kdHMKQEAgLTYxMSw2ICs2MTEsMjAgQEAKIAlz
+dGF0dXMgPSAib2theSI7CiB9OwogCismc3BpMSB7CisgICAgICAgc3RhdHVzID0gIm9rYXkiOwor
+ICAgICAgIG1heC1mcmVxID0gPDEwMDAwMDAwPjsKKworICAgICAgIGZsYXNoQDAgeworICAgICAg
+ICAgICAgICAgY29tcGF0aWJsZSA9ICJqZWRlYyxzcGktbm9yIjsKKyAgICAgICAgICAgICAgICNh
+ZGRyZXNzLWNlbGxzID0gPDE+OworICAgICAgICAgICAgICAgI3NpemUtY2VsbHMgPSA8MT47Cisg
+ICAgICAgICAgICAgICByZWcgPSA8MD47CisgICAgICAgICAgICAgICBzcGktbWF4LWZyZXF1ZW5j
+eSA9IDwxMDAwMDAwMD47CisgICAgICAgfTsKK307CisKKwogJnNkbW1jIHsKIAlidXMtd2lkdGgg
+PSA8ND47CiAJY2FwLW1tYy1oaWdoc3BlZWQ7Ci0tIAoyLjIxLjAKCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
+c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
