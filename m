@@ -1,32 +1,111 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v2] ARM: dts: add device tree for Mecer Xtreme Mini S6
-Date: Mon, 12 Aug 2019 13:11:01 -0600
-Message-ID: <CAL_JsqKpNgVcM-Ou7BKWv0qxvkJx3=NuSHRTHonQ-XSz-NXb1w@mail.gmail.com>
-References: <20190811230015.28349-1-justin.swartz@risingedge.co.za>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: [PATCH v5 00/11] media: hantro: Add support for H264 decoding
+Date: Mon, 12 Aug 2019 16:35:11 -0300
+Message-ID: <20190812193522.10911-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190811230015.28349-1-justin.swartz@risingedge.co.za>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Justin Swartz <justin.swartz@risingedge.co.za>
-Cc: Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: linux-media@vger.kernel.org
+Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, Aug 11, 2019 at 5:01 PM Justin Swartz
-<justin.swartz@risingedge.co.za> wrote:
->
-> The Mecer Xtreme Mini S6 features a Rockchip RK3229 SoC,
-> 1GB DDR3 RAM, 8GB eMMC, MicroSD port, 10/100Mbps Ethernet,
-> Realtek 8723BS WLAN module, 2 x USB 2.0 ports, HDMI output,
-> and S/PDIF output.
->
-> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
-> ---
->  .../devicetree/bindings/arm/rockchip.yaml          |   5 +
->  .../devicetree/bindings/vendor-prefixes.yaml       |   2 +
->  arch/arm/boot/dts/Makefile                         |   1 +
->  arch/arm/boot/dts/rk3229-xms6.dts                  | 283 +++++++++++++++++++++
->  4 files changed, 291 insertions(+)
->  create mode 100644 arch/arm/boot/dts/rk3229-xms6.dts
+A new version of H264 uAPI review and Hantro G1 H264 decoding support.
+Compared to previous version, this version takes care of the
+suggestions from Hans Verkuil clarifying the uAPI spec.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+This series consolidates the two recent H264 series submitted
+by Boris [1] [2]. Some patches from [2] have been merged (namely,
+helpers for the Hantro driver), and so I'm adding the remanining
+bits required to support H264 on Hantro G1 VPU.
+
+* Patch 1 adds support for the sort_r() variant and has
+  been posted separately by Rasmus. It would be good to merge this patch
+  via the media tree, ideally as soon as possible, to avoid the
+  synchronisation burden that might appear if we decide to delay it.
+
+* Patch 2 to 4 extends the H264 uAPI, introducing frame-based vs slice-based
+  decoding granularity, and also support for different NALU start codes.
+  Currently, Annex B and no start codes are the supported options.
+
+  With the introduction of the start code control, the H264 parsed
+  slices pixel format should be renamed, dropping the _RAW suffix,
+  which is now meaningless.
+
+* Patch 5 removes the P0/B0/B1 ref lists from the decode_params control.
+  These lists are no longer needed since we build them on the
+  kernel side based on the DPB.
+
+* Patch 6 and 7 exposes the proper decoding mode and start code
+  on the cedrus driver. The driver functionality is not changed,
+  and only the Cedrus support is now being properly exposed to
+  userspace.
+
+* Patch 8 is needed to properly propagate the OUTPUT buffer timestamp to
+  the CAPTURE buffer one, which is required for intra-frame references.
+
+* Patches 9 to 11 adds H264 support for Hantro G1 and then enable
+  H264 decoding on RK3288.
+
+This is based on media master and tested on Rockchip RK3288 for Hantro and
+Allwinner H3 boards for Cedrus. Philipp Zabel tested on i.MX8MQ EVK using [3].
+
+The Ffmpeg branch used to test is based on the great work of Jonas and Boris,
+and is available in [4]. Instructions to build and run are as follows:
+
+./configure --enable-v4l2-request --enable-libdrm
+make -j4
+
+(test via framebuffer rendering):
+
+./ffmpeg -loglevel debug -hwaccel drm -hwaccel_device /dev/dri/card0 -i $some_file.avi -pix_fmt bgra -f fbdev /dev/fb0
+
+[1] https://www.mail-archive.com/linux-media@vger.kernel.org/msg148299.html
+[2] https://lkml.org/lkml/2019/6/19/379
+[3] git://git.pengutronix.de/git/pza/linux.git hantro/imx8m-wip
+[4] https://gitlab.collabora.com/ezequiel/ffmpeg/tree/stateless-mpeg2-vp8-h264-v4
+
+Boris Brezillon (3):
+  media: uapi: h264: Add the concept of decoding mode
+  media: uapi: h264: Get rid of the p0/b0/b1 ref-lists
+  media: hantro: Move copy_metadata() before doing a decode operation
+
+Ezequiel Garcia (4):
+  media: uapi: h264: Rename pixel format
+  media: uapi: h264: Add the concept of start code
+  media: cedrus: Cleanup control initialization
+  media: cedrus: Specify H264 startcode and decoding mode
+
+Hertz Wong (3):
+  media: hantro: Add core bits to support H264 decoding
+  media: hantro: Add support for H264 decoding on G1
+  media: hantro: Enable H264 decoding on rk3288
+
+Rasmus Villemoes (1):
+  lib/sort.c: implement sort() variant taking context argument
+
+ .../media/uapi/v4l/ext-ctrls-codec.rst        |  89 ++-
+ .../media/uapi/v4l/pixfmt-compressed.rst      |   8 +-
+ drivers/media/v4l2-core/v4l2-ctrls.c          |  18 +
+ drivers/media/v4l2-core/v4l2-ioctl.c          |   2 +-
+ drivers/staging/media/hantro/Makefile         |   2 +
+ drivers/staging/media/hantro/hantro.h         |   9 +-
+ drivers/staging/media/hantro/hantro_drv.c     |  50 +-
+ .../staging/media/hantro/hantro_g1_h264_dec.c | 292 ++++++++
+ drivers/staging/media/hantro/hantro_h264.c    | 651 ++++++++++++++++++
+ drivers/staging/media/hantro/hantro_hw.h      |  56 ++
+ drivers/staging/media/hantro/hantro_v4l2.c    |  10 +
+ drivers/staging/media/hantro/rk3288_vpu_hw.c  |  21 +-
+ drivers/staging/media/sunxi/cedrus/cedrus.c   |  65 +-
+ drivers/staging/media/sunxi/cedrus/cedrus.h   |   3 +-
+ .../staging/media/sunxi/cedrus/cedrus_dec.c   |   2 +-
+ .../staging/media/sunxi/cedrus/cedrus_video.c |   6 +-
+ include/linux/sort.h                          |   5 +
+ include/media/h264-ctrls.h                    |  22 +-
+ lib/sort.c                                    |  34 +-
+ 19 files changed, 1290 insertions(+), 55 deletions(-)
+ create mode 100644 drivers/staging/media/hantro/hantro_g1_h264_dec.c
+ create mode 100644 drivers/staging/media/hantro/hantro_h264.c
+
+-- 
+2.22.0
