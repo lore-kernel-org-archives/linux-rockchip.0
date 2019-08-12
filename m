@@ -1,137 +1,73 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH v4 03/11] media: uapi: h264: Add the concept of decoding
- mode
-Date: Mon, 12 Aug 2019 08:59:02 -0300
-Message-ID: <1d1ff6c5943c462f38235e4b003eff5ab65dbbd0.camel@collabora.com>
-References: <20190808103432.12062-1-ezequiel@collabora.com>
-         <20190808103432.12062-4-ezequiel@collabora.com>
-         <e8895d5f-af65-5ee8-665b-b9d4abd681bc@xs4all.nl>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH 14/15] rockchip: rk3399: Add bootcount support
+Date: Mon, 12 Aug 2019 20:16:43 +0800
+Message-ID: <3a38244a-974f-f3e5-0d09-28850b72b247@rock-chips.com>
+References: <20190729074711.16988-1-jagan@amarulasolutions.com>
+ <20190729074711.16988-15-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e8895d5f-af65-5ee8-665b-b9d4abd681bc@xs4all.nl>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org
-Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20190729074711.16988-15-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, Akash Gajjar <akash@openedev.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 2019-08-12 at 12:19 +0200, Hans Verkuil wrote:
-> On 8/8/19 12:34 PM, Ezequiel Garcia wrote:
-> > From: Boris Brezillon <boris.brezillon@collabora.com>
-> > 
-> > Some stateless decoders don't support per-slice decoding granularity
-> > (or at least not in a way that would make them efficient or easy to use).
-> > 
-> > Expose a menu to control the supported decoding modes. Drivers are
-> > allowed to support only one decoding but they can support both too.
-> > 
-> > Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
-> > Reviewed-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-> > ---
-> > Changes in v4:
-> > * Typos/rewording fixes
-> > 
-> > Changes in v3:
-> > * s/per-{slice,frame} decoding/{slice,frame}-based decoding/
-> > * Add Paul's R-b
-> > 
-> > Changes in v2:
-> > * Allow decoding multiple slices in per-slice decoding mode
-> > * Minor doc improvement/fixes
-> > ---
-> >  .../media/uapi/v4l/ext-ctrls-codec.rst        | 43 ++++++++++++++++++-
-> >  drivers/media/v4l2-core/v4l2-ctrls.c          |  9 ++++
-> >  include/media/h264-ctrls.h                    | 11 +++++
-> >  3 files changed, 62 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-> > index c5f39dd50043..ea0455957149 100644
-> > --- a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-> > +++ b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-> > @@ -1747,6 +1747,11 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
-> >      * - __u32
-> >        - ``size``
-> >        -
-> > +    * - __u32
-> > +      - ``start_byte_offset``
-> > +      - Where the slice payload starts in the output buffer. Useful when the
-> > +        OUTPUT buffer contains more than one slice (some codecs need to know
-> > +        where each slice starts in this buffer).
-> >      * - __u32
-> >        - ``header_bit_size``
-> >        -
-> > @@ -1930,7 +1935,10 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
-> >        -
-> >      * - __u16
-> >        - ``num_slices``
-> > -      - Number of slices needed to decode the current frame
-> > +      - Number of slices needed to decode the current frame/field. When
-> > +        operating in slice-based decoding mode (see
-> > +        :c:type:`v4l2_mpeg_video_h264_decoding_mode`), this field
-> > +        should always be set to one.
-> >      * - __u16
-> >        - ``nal_ref_idc``
-> >        - NAL reference ID value coming from the NAL Unit header
-> > @@ -2021,6 +2029,39 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
-> >        - 0x00000004
-> >        - The DPB entry is a long term reference frame
-> >  
-> > +``V4L2_CID_MPEG_VIDEO_H264_DECODING_MODE (enum)``
-> > +    Specifies the decoding mode to use. Currently exposes slice-based and
-> > +    frame-based decoding but new modes might be added later on.
-> > +    Drivers may expose a single or multiple decoding modes,
-> > +    depending on what they can support.
-> 
-> This should mention that this is valid for V4L2_PIX_FMT_H264_SLICE pixelformat
-> only. And it is a required control (i.e. it must always be present for that
-> pixelformat). Ditto for the start code control.
-> 
-> Also, the V4L2_PIX_FMT_H264_SLICE should refer to this control and the start
-> code control as well since these controls effectively are modifiers for the
-> pixelformat.
-> 
-
-Right, this makes perfect sense.
-
-> > +
-> > +    .. note::
-> > +
-> > +       This menu control is not yet part of the public kernel API and
-> > +       it is expected to change.
-> > +
-> > +.. c:type:: v4l2_mpeg_video_h264_decoding_mode
-> > +
-> > +.. cssclass:: longtable
-> > +
-> > +.. flat-table::
-> > +    :header-rows:  0
-> > +    :stub-columns: 0
-> > +    :widths:       1 1 2
-> > +
-> > +    * - ``V4L2_MPEG_VIDEO_H264_SLICE_BASED_DECODING``
-> > +      - 0
-> > +      - The decoding is done at the slice granularity.
-> > +        v4l2_ctrl_h264_decode_params->num_slices should be set to 1.
-> > +        The OUTPUT buffer must contain a single slice.
-> > +    * - ``V4L2_MPEG_VIDEO_H264_FRAME_BASED_DECODING``
-> > +      - 1
-> > +      - The decoding is done at the frame granularity.
-> > +        v4l2_ctrl_h264_decode_params->num_slices should be set to the number of
-> > +        slices forming a frame.
-> 
-> Actually, I wonder if there shouldn't be a third option: FIELD_BASED_DECODING
-> to indicate that the hardware expects the slices of a single field in a buffer
-> instead of both fields.
-> 
-> Or just stick to FRAME_BASED_DECODING for now but explicitly mention that
-> in the case of interlaced decoding both fields must be present in the buffer.
-> 
-
-OK.
-
-> A FIELD_BASED_DECODING option can always be added later if necessary.
-> 
-
-Thanks,
-Ezequiel
+SGkgSmFnYW4sCgoKT24gMjAxOS83LzI5IOS4i+WNiDM6NDcsIEphZ2FuIFRla2kgd3JvdGU6Cj4g
+QWRkIGJvb3Rjb3VudCBzdXBwb3J0IGZvciBSb2NrY2hpcCByazMzOTkuCj4KPiBUaGUgYm9vdGNv
+dW50IHZhbHVlIGlzIHByZXNlcnZlZCBpbiBQTVVfU1lTX1JFRzAgcmVnaXN0ZXIsCgpQTVVfU1lT
+X1JFRzAgaGFzIGJlZW4gdXNlZCBieSBvdGhlciBjYXNlIGluIFJvY2tjaGlwLCB3ZSBkb24ndApy
+ZWNvbW1lbmQgdG8gdXNlIGl0LCB0aGUgUE1VR1JGX09TX1JFRzMgaXMgc3RpbGwgcmVzZXJ2ZWQg
+bm93LApjb3VsZCB5b3UgdXNlIGl0IGluc3RlYWQ/CgpUaGFua3MsCi0gS2V2ZXIKCj4gdGhpcyB3
+b3VsZCBoZWxwIHRvIHN1cHBvcnQgcmVkdW5kZW50IGJvb3QuCj4KPiBPbmNlIHRoZSByZWR1bmRh
+bnQgYm9vdCB0cmlnZ2VycywgdGhlIGFsdGJvb3QgY29tbWFuZAo+IHdpbGwgbG9vayBmb3IgZXh0
+bGludXgtcm9sbGJhY2suY29uZiBvbiBwYXJ0aWN1bGFyCj4gYm9vdGFibGUgcGFydGl0aW9uIHdo
+aWNoIHN1cHBvc2VkIHRvIGJlIGEgcmVjb3ZlcnkKPiBwYXJ0aXRpb24gd2hlcmUgcmVkdW5kYW50
+IGJvb3QgcmVxdWlyZWQuCj4KPiBTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFy
+dWxhc29sdXRpb25zLmNvbT4KPiAtLS0KPiAgIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZp
+ZyAgICAgICAgfCAgMiArKwo+ICAgYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMzOTkvS2NvbmZp
+ZyB8IDEwICsrKysrKysrKysKPiAgIGluY2x1ZGUvY29uZmlncy9yazMzOTlfY29tbW9uLmggICAg
+ICAgfCAgNSArKysrLQo+ICAgMyBmaWxlcyBjaGFuZ2VkLCAxNiBpbnNlcnRpb25zKCspLCAxIGRl
+bGV0aW9uKC0pCj4KPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9LY29uZmln
+IGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9LY29uZmlnCj4gaW5kZXggMTdmMzFlODlmMy4uZGQ1
+MDU1ZWQ2OSAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcKPiAr
+KysgYi9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcKPiBAQCAtMTg0LDYgKzE4NCw4IEBA
+IGNvbmZpZyBST0NLQ0hJUF9SSzMzOTkKPiAgIAlpbXBseSBUUExfQ0xLCj4gICAJaW1wbHkgVFBM
+X1RJTllfTUVNU0VUCj4gICAJaW1wbHkgVFBMX1JPQ0tDSElQX0NPTU1PTl9CT0FSRAo+ICsJaW1w
+bHkgU1lTX0JPT1RDT1VOVF9TSU5HTEVXT1JEIGlmIEJPT1RDT1VOVF9MSU1JVAo+ICsJaW1wbHkg
+Q01EX0JPT1RDT1VOVCBpZiBCT09UQ09VTlRfTElNSVQKPiAgIAloZWxwCj4gICAJICBUaGUgUm9j
+a2NoaXAgUkszMzk5IGlzIGEgQVJNLWJhc2VkIFNvQyB3aXRoIGEgZHVhbC1jb3JlIENvcnRleC1B
+NzIKPiAgIAkgIGFuZCBxdWFkLWNvcmUgQ29ydGV4LUE1My4KPiBkaWZmIC0tZ2l0IGEvYXJjaC9h
+cm0vbWFjaC1yb2NrY2hpcC9yazMzOTkvS2NvbmZpZyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAv
+cmszMzk5L0tjb25maWcKPiBpbmRleCA2NjYwZDA1MzQ5Li42OGFjOTEzYmNiIDEwMDY0NAo+IC0t
+LSBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMzk5L0tjb25maWcKPiArKysgYi9hcmNoL2Fy
+bS9tYWNoLXJvY2tjaGlwL3JrMzM5OS9LY29uZmlnCj4gQEAgLTkxLDYgKzkxLDE2IEBAIGNvbmZp
+ZyBUUExfU1RBQ0sKPiAgIGNvbmZpZyBUUExfVEVYVF9CQVNFCj4gICAgICAgICAgIGRlZmF1bHQg
+MHhmZjhjMjAwMAo+ICAgCj4gK2lmIEJPT1RDT1VOVF9MSU1JVAo+ICsKPiArY29uZmlnIEJPT1RD
+T1VOVF9CT09UTElNSVQKPiArCWRlZmF1bHQgMwo+ICsKPiArY29uZmlnIFNZU19CT09UQ09VTlRf
+QUREUgo+ICsJZGVmYXVsdCAweGZmMzEwMGYwCSMgUE1VX1NZU19SRUcwCj4gKwo+ICtlbmRpZiAj
+IEJPT1RDT1VOVF9MSU1JVAo+ICsKPiAgIHNvdXJjZSAiYm9hcmQvcm9ja2NoaXAvZXZiX3JrMzM5
+OS9LY29uZmlnIgo+ICAgc291cmNlICJib2FyZC90aGVvYnJvbWEtc3lzdGVtcy9wdW1hX3JrMzM5
+OS9LY29uZmlnIgo+ICAgc291cmNlICJib2FyZC92YW1ycy9yb2NrOTYwX3JrMzM5OS9LY29uZmln
+Igo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2NvbmZpZ3MvcmszMzk5X2NvbW1vbi5oIGIvaW5jbHVk
+ZS9jb25maWdzL3JrMzM5OV9jb21tb24uaAo+IGluZGV4IDY3YjQ4ZTAzYmEuLmFjZTgyOTI4ZDEg
+MTAwNjQ0Cj4gLS0tIGEvaW5jbHVkZS9jb25maWdzL3JrMzM5OV9jb21tb24uaAo+ICsrKyBiL2lu
+Y2x1ZGUvY29uZmlncy9yazMzOTlfY29tbW9uLmgKPiBAQCAtNzAsNyArNzAsMTAgQEAKPiAgIAki
+ZmR0ZmlsZT0iIENPTkZJR19ERUZBVUxUX0ZEVF9GSUxFICJcMCIgXAo+ICAgCSJwYXJ0aXRpb25z
+PSIgUEFSVFNfREVGQVVMVCBcCj4gICAJUk9DS0NISVBfREVWSUNFX1NFVFRJTkdTIFwKPiAtCUJP
+T1RFTlYKPiArCUJPT1RFTlYgXAo+ICsJImFsdGJvb3RjbWQ9IiBcCj4gKwkJInNldGVudiBib290
+X3N5c2xpbnV4X2NvbmYgZXh0bGludXgvZXh0bGludXgtcm9sbGJhY2suY29uZjsiIFwKPiArCQki
+cnVuIGRpc3Ryb19ib290Y21kXDAiCj4gICAKPiAgICNlbmRpZgo+ICAgCgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApV
+LUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290
+Cg==
