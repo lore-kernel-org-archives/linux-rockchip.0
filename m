@@ -1,87 +1,223 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re:
- =?utf-8?q?=5BPATCH_14/15=5D_rockchip=3A_rk3399=3A_Add_bo?=
- =?utf-8?b?b3Rjb3VudCBzdXBwb3J044CQ6K+35rOo5oSP77yM6YKu5Lu255SxdS1ib290?=
- =?utf-8?b?LWJvdW5jZXNAbGlzdHMuZGVueC5kZeS7o+WPkeOAkQ==?=
-Date: Tue, 13 Aug 2019 09:02:52 +0800
-Message-ID: <c0607fc7-941d-e001-0537-111f49107c70@rock-chips.com>
-References: <20190729074711.16988-1-jagan@amarulasolutions.com>
- <20190729074711.16988-15-jagan@amarulasolutions.com>
- <3a38244a-974f-f3e5-0d09-28850b72b247@rock-chips.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v5 03/11] media: uapi: h264: Add the concept of decoding
+ mode
+Date: Tue, 13 Aug 2019 08:46:12 +0200
+Message-ID: <104276b0-0e9c-c25d-b25c-344ad475045a@xs4all.nl>
+References: <20190812193522.10911-1-ezequiel@collabora.com>
+ <20190812193522.10911-4-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <3a38244a-974f-f3e5-0d09-28850b72b247@rock-chips.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190812193522.10911-4-ezequiel@collabora.com>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, Akash Gajjar <akash@openedev.com>, linux-rockchip@lists.infradead.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org
+Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMTkvOC8xMiDkuIvljYg4OjE2LCBLZXZlciBZYW5nIHdyb3RlOgo+IEhpIEphZ2FuLAo+
-Cj4KPiBPbiAyMDE5LzcvMjkg5LiL5Y2IMzo0NywgSmFnYW4gVGVraSB3cm90ZToKPj4gQWRkIGJv
-b3Rjb3VudCBzdXBwb3J0IGZvciBSb2NrY2hpcCByazMzOTkuCj4+Cj4+IFRoZSBib290Y291bnQg
-dmFsdWUgaXMgcHJlc2VydmVkIGluIFBNVV9TWVNfUkVHMCByZWdpc3RlciwKPgo+IFBNVV9TWVNf
-UkVHMCBoYXMgYmVlbiB1c2VkIGJ5IG90aGVyIGNhc2UgaW4gUm9ja2NoaXAsIHdlIGRvbid0CgoK
-UGxlYXNlIGlnbm9yZSB0aGlzIG1haWwsIEkgbWl4aW5nIHRoZSByZWdpc3RlcnMgaW4gUE1VIGFu
-ZCBQTVVHUkYsCgp0aGUgUE1VX1NZU19SRUcwIGlzIG5vdCB1c2VkIHlldCBhbmQgeW91IGNhbiB1
-c2UgaXQuCgoKVGhhbmtzLAoKLSBLZXZlcgoKPiByZWNvbW1lbmQgdG8gdXNlIGl0LCB0aGUgUE1V
-R1JGX09TX1JFRzMgaXMgc3RpbGwgcmVzZXJ2ZWQgbm93LAo+IGNvdWxkIHlvdSB1c2UgaXQgaW5z
-dGVhZD8KPgo+IFRoYW5rcywKPiAtIEtldmVyCj4KPj4gdGhpcyB3b3VsZCBoZWxwIHRvIHN1cHBv
-cnQgcmVkdW5kZW50IGJvb3QuCj4+Cj4+IE9uY2UgdGhlIHJlZHVuZGFudCBib290IHRyaWdnZXJz
-LCB0aGUgYWx0Ym9vdCBjb21tYW5kCj4+IHdpbGwgbG9vayBmb3IgZXh0bGludXgtcm9sbGJhY2su
-Y29uZiBvbiBwYXJ0aWN1bGFyCj4+IGJvb3RhYmxlIHBhcnRpdGlvbiB3aGljaCBzdXBwb3NlZCB0
-byBiZSBhIHJlY292ZXJ5Cj4+IHBhcnRpdGlvbiB3aGVyZSByZWR1bmRhbnQgYm9vdCByZXF1aXJl
-ZC4KPj4KPj4gU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9u
-cy5jb20+Cj4+IC0tLQo+PiDCoCBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWfCoMKgwqDC
-oMKgwqDCoCB8wqAgMiArKwo+PiDCoCBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzM5OS9LY29u
-ZmlnIHwgMTAgKysrKysrKysrKwo+PiDCoCBpbmNsdWRlL2NvbmZpZ3MvcmszMzk5X2NvbW1vbi5o
-wqDCoMKgwqDCoMKgIHzCoCA1ICsrKystCj4+IMKgIDMgZmlsZXMgY2hhbmdlZCwgMTYgaW5zZXJ0
-aW9ucygrKSwgMSBkZWxldGlvbigtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vbWFjaC1y
-b2NrY2hpcC9LY29uZmlnIAo+PiBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZpZwo+PiBp
-bmRleCAxN2YzMWU4OWYzLi5kZDUwNTVlZDY5IDEwMDY0NAo+PiAtLS0gYS9hcmNoL2FybS9tYWNo
-LXJvY2tjaGlwL0tjb25maWcKPj4gKysrIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9LY29uZmln
-Cj4+IEBAIC0xODQsNiArMTg0LDggQEAgY29uZmlnIFJPQ0tDSElQX1JLMzM5OQo+PiDCoMKgwqDC
-oMKgIGltcGx5IFRQTF9DTEsKPj4gwqDCoMKgwqDCoCBpbXBseSBUUExfVElOWV9NRU1TRVQKPj4g
-wqDCoMKgwqDCoCBpbXBseSBUUExfUk9DS0NISVBfQ09NTU9OX0JPQVJECj4+ICvCoMKgwqAgaW1w
-bHkgU1lTX0JPT1RDT1VOVF9TSU5HTEVXT1JEIGlmIEJPT1RDT1VOVF9MSU1JVAo+PiArwqDCoMKg
-IGltcGx5IENNRF9CT09UQ09VTlQgaWYgQk9PVENPVU5UX0xJTUlUCj4+IMKgwqDCoMKgwqAgaGVs
-cAo+PiDCoMKgwqDCoMKgwqDCoCBUaGUgUm9ja2NoaXAgUkszMzk5IGlzIGEgQVJNLWJhc2VkIFNv
-QyB3aXRoIGEgZHVhbC1jb3JlIAo+PiBDb3J0ZXgtQTcyCj4+IMKgwqDCoMKgwqDCoMKgIGFuZCBx
-dWFkLWNvcmUgQ29ydGV4LUE1My4KPj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21hY2gtcm9ja2No
-aXAvcmszMzk5L0tjb25maWcgCj4+IGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMzOTkvS2Nv
-bmZpZwo+PiBpbmRleCA2NjYwZDA1MzQ5Li42OGFjOTEzYmNiIDEwMDY0NAo+PiAtLS0gYS9hcmNo
-L2FybS9tYWNoLXJvY2tjaGlwL3JrMzM5OS9LY29uZmlnCj4+ICsrKyBiL2FyY2gvYXJtL21hY2gt
-cm9ja2NoaXAvcmszMzk5L0tjb25maWcKPj4gQEAgLTkxLDYgKzkxLDE2IEBAIGNvbmZpZyBUUExf
-U1RBQ0sKPj4gwqAgY29uZmlnIFRQTF9URVhUX0JBU0UKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIGRl
-ZmF1bHQgMHhmZjhjMjAwMAo+PiDCoCAraWYgQk9PVENPVU5UX0xJTUlUCj4+ICsKPj4gK2NvbmZp
-ZyBCT09UQ09VTlRfQk9PVExJTUlUCj4+ICvCoMKgwqAgZGVmYXVsdCAzCj4+ICsKPj4gK2NvbmZp
-ZyBTWVNfQk9PVENPVU5UX0FERFIKPj4gK8KgwqDCoCBkZWZhdWx0IDB4ZmYzMTAwZjDCoMKgwqAg
-IyBQTVVfU1lTX1JFRzAKPj4gKwo+PiArZW5kaWYgIyBCT09UQ09VTlRfTElNSVQKPj4gKwo+PiDC
-oCBzb3VyY2UgImJvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvS2NvbmZpZyIKPj4gwqAgc291cmNl
-ICJib2FyZC90aGVvYnJvbWEtc3lzdGVtcy9wdW1hX3JrMzM5OS9LY29uZmlnIgo+PiDCoCBzb3Vy
-Y2UgImJvYXJkL3ZhbXJzL3JvY2s5NjBfcmszMzk5L0tjb25maWciCj4+IGRpZmYgLS1naXQgYS9p
-bmNsdWRlL2NvbmZpZ3MvcmszMzk5X2NvbW1vbi5oIAo+PiBiL2luY2x1ZGUvY29uZmlncy9yazMz
-OTlfY29tbW9uLmgKPj4gaW5kZXggNjdiNDhlMDNiYS4uYWNlODI5MjhkMSAxMDA2NDQKPj4gLS0t
-IGEvaW5jbHVkZS9jb25maWdzL3JrMzM5OV9jb21tb24uaAo+PiArKysgYi9pbmNsdWRlL2NvbmZp
-Z3MvcmszMzk5X2NvbW1vbi5oCj4+IEBAIC03MCw3ICs3MCwxMCBAQAo+PiDCoMKgwqDCoMKgICJm
-ZHRmaWxlPSIgQ09ORklHX0RFRkFVTFRfRkRUX0ZJTEUgIlwwIiBcCj4+IMKgwqDCoMKgwqAgInBh
-cnRpdGlvbnM9IiBQQVJUU19ERUZBVUxUIFwKPj4gwqDCoMKgwqDCoCBST0NLQ0hJUF9ERVZJQ0Vf
-U0VUVElOR1MgXAo+PiAtwqDCoMKgIEJPT1RFTlYKPj4gK8KgwqDCoCBCT09URU5WIFwKPj4gK8Kg
-wqDCoCAiYWx0Ym9vdGNtZD0iIFwKPj4gK8KgwqDCoMKgwqDCoMKgICJzZXRlbnYgYm9vdF9zeXNs
-aW51eF9jb25mIGV4dGxpbnV4L2V4dGxpbnV4LXJvbGxiYWNrLmNvbmY7IiBcCj4+ICvCoMKgwqDC
-oMKgwqDCoCAicnVuIGRpc3Ryb19ib290Y21kXDAiCj4+IMKgIMKgICNlbmRpZgo+Cj4KPiBfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IFUtQm9vdCBtYWls
-aW5nIGxpc3QKPiBVLUJvb3RAbGlzdHMuZGVueC5kZQo+IGh0dHBzOi8vbGlzdHMuZGVueC5kZS9s
-aXN0aW5mby91LWJvb3QKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8v
-bGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
+On 8/12/19 9:35 PM, Ezequiel Garcia wrote:
+> From: Boris Brezillon <boris.brezillon@collabora.com>
+> 
+> Some stateless decoders don't support per-slice decoding granularity
+> (or at least not in a way that would make them efficient or easy to use).
+> 
+> Expose a menu to control the supported decoding modes. Drivers are
+> allowed to support only one decoding but they can support both too.
+> 
+> Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
+> Reviewed-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> Tested-by: Philipp Zabel <p.zabel@pengutronix.de>
+> ---
+> Changes in v5:
+> * Improve specification as suggested by Hans.
+> Changes in v4:
+> * Typos/rewording fixes
+> Changes in v3:
+> * s/per-{slice,frame} decoding/{slice,frame}-based decoding/
+> * Add Paul's R-b
+> Changes in v2:
+> * Allow decoding multiple slices in per-slice decoding mode
+> * Minor doc improvement/fixes
+> ---
+>  .../media/uapi/v4l/ext-ctrls-codec.rst        | 47 ++++++++++++++++++-
+>  .../media/uapi/v4l/pixfmt-compressed.rst      |  3 +-
+>  drivers/media/v4l2-core/v4l2-ctrls.c          |  9 ++++
+>  include/media/h264-ctrls.h                    | 11 +++++
+>  4 files changed, 68 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> index c5f39dd50043..568390273fde 100644
+> --- a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> +++ b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> @@ -1747,6 +1747,11 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
+>      * - __u32
+>        - ``size``
+>        -
+> +    * - __u32
+> +      - ``start_byte_offset``
+> +      - Where the slice payload starts in the output buffer. Useful when the
+> +        OUTPUT buffer contains more than one slice (some codecs need to know
+> +        where each slice starts in this buffer).
+>      * - __u32
+>        - ``header_bit_size``
+>        -
+> @@ -1930,7 +1935,10 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
+>        -
+>      * - __u16
+>        - ``num_slices``
+> -      - Number of slices needed to decode the current frame
+> +      - Number of slices needed to decode the current frame/field. When
+> +        operating in slice-based decoding mode (see
+> +        :c:type:`v4l2_mpeg_video_h264_decoding_mode`), this field
+> +        should always be set to one.
+>      * - __u16
+>        - ``nal_ref_idc``
+>        - NAL reference ID value coming from the NAL Unit header
+> @@ -2021,6 +2029,43 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
+>        - 0x00000004
+>        - The DPB entry is a long term reference frame
+>  
+> +``V4L2_CID_MPEG_VIDEO_H264_DECODING_MODE (enum)``
+> +    Specifies the decoding mode to use. Currently exposes slice-based and
+> +    frame-based decoding but new modes might be added later on.
+> +    This control is used to complement V4L2_PIX_FMT_H264_SLICE
+> +    pixel format. Applications that support V4L2_PIX_FMT_H264_SLICE
+> +    are required to set this control in order to specify the decoding mode
+> +    that is expected for the buffer.
+> +    Drivers may expose a single or multiple decoding modes, depending
+> +    on what they can support.
+> +
+> +    .. note::
+> +
+> +       This menu control is not yet part of the public kernel API and
+> +       it is expected to change.
+> +
+> +.. c:type:: v4l2_mpeg_video_h264_decoding_mode
+> +
+> +.. cssclass:: longtable
+> +
+> +.. flat-table::
+> +    :header-rows:  0
+> +    :stub-columns: 0
+> +    :widths:       1 1 2
+> +
+> +    * - ``V4L2_MPEG_VIDEO_H264_SLICE_BASED_DECODING``
+> +      - 0
+> +      - The decoding is done at the slice granularity.
+> +        v4l2_ctrl_h264_decode_params->num_slices should be set to 1.
+> +        The OUTPUT buffer must contain a single slice.
+> +    * - ``V4L2_MPEG_VIDEO_H264_FRAME_BASED_DECODING``
+> +      - 1
+> +      - The decoding is done at the frame granularity.
+> +        v4l2_ctrl_h264_decode_params->num_slices should be set to the number of
+> +        slices forming a frame.
+> +        The OUTPUT buffer must contain all slices needed to decode the
+> +        frame. The OUTPUT buffer must also contain both fields.
+> +
+>  .. _v4l2-mpeg-mpeg2:
+>  
+>  ``V4L2_CID_MPEG_VIDEO_MPEG2_SLICE_PARAMS (struct)``
+> diff --git a/Documentation/media/uapi/v4l/pixfmt-compressed.rst b/Documentation/media/uapi/v4l/pixfmt-compressed.rst
+> index 9b65473a2288..50557c85d99d 100644
+> --- a/Documentation/media/uapi/v4l/pixfmt-compressed.rst
+> +++ b/Documentation/media/uapi/v4l/pixfmt-compressed.rst
+> @@ -61,7 +61,8 @@ Compressed Formats
+>  	stateless video decoders that implement an H264 pipeline
+>  	(using the :ref:`mem2mem` and :ref:`media-request-api`).
+>  	Metadata associated with the frame to decode are required to
+> -	be passed through the ``V4L2_CID_MPEG_VIDEO_H264_SPS``,
+> +	be passed through the ``V4L2_CID_MPEG_VIDEO_H264_DECODING_MODE``,
+
+No, that's not right. H264_DECODING_MODE isn't metadata that has to be
+passed via a request. It's a pixelformat modifier and has to be set only
+once to describe the format that's going to be passed to the HW.
+
+That should be made clear here. Same goes for the next patch.
+
+Regards,
+
+	Hans
+
+> +        ``V4L2_CID_MPEG_VIDEO_H264_SPS``,
+>  	``V4L2_CID_MPEG_VIDEO_H264_PPS``,
+>  	``V4L2_CID_MPEG_VIDEO_H264_SCALING_MATRIX``,
+>  	``V4L2_CID_MPEG_VIDEO_H264_SLICE_PARAMS`` and
+> diff --git a/drivers/media/v4l2-core/v4l2-ctrls.c b/drivers/media/v4l2-core/v4l2-ctrls.c
+> index cd1ae016706f..c3194299bfac 100644
+> --- a/drivers/media/v4l2-core/v4l2-ctrls.c
+> +++ b/drivers/media/v4l2-core/v4l2-ctrls.c
+> @@ -402,6 +402,11 @@ const char * const *v4l2_ctrl_get_menu(u32 id)
+>  		"Explicit",
+>  		NULL,
+>  	};
+> +	static const char * const h264_decoding_mode[] = {
+> +		"Slice-Based",
+> +		"Frame-Based",
+> +		NULL,
+> +	};
+>  	static const char * const mpeg_mpeg2_level[] = {
+>  		"Low",
+>  		"Main",
+> @@ -633,6 +638,8 @@ const char * const *v4l2_ctrl_get_menu(u32 id)
+>  		return h264_fp_arrangement_type;
+>  	case V4L2_CID_MPEG_VIDEO_H264_FMO_MAP_TYPE:
+>  		return h264_fmo_map_type;
+> +	case V4L2_CID_MPEG_VIDEO_H264_DECODING_MODE:
+> +		return h264_decoding_mode;
+>  	case V4L2_CID_MPEG_VIDEO_MPEG2_LEVEL:
+>  		return mpeg_mpeg2_level;
+>  	case V4L2_CID_MPEG_VIDEO_MPEG2_PROFILE:
+> @@ -852,6 +859,7 @@ const char *v4l2_ctrl_get_name(u32 id)
+>  	case V4L2_CID_MPEG_VIDEO_H264_SCALING_MATRIX:		return "H264 Scaling Matrix";
+>  	case V4L2_CID_MPEG_VIDEO_H264_SLICE_PARAMS:		return "H264 Slice Parameters";
+>  	case V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS:		return "H264 Decode Parameters";
+> +	case V4L2_CID_MPEG_VIDEO_H264_DECODING_MODE:		return "H264 Decoding Mode";
+>  	case V4L2_CID_MPEG_VIDEO_MPEG2_LEVEL:			return "MPEG2 Level";
+>  	case V4L2_CID_MPEG_VIDEO_MPEG2_PROFILE:			return "MPEG2 Profile";
+>  	case V4L2_CID_MPEG_VIDEO_MPEG4_I_FRAME_QP:		return "MPEG4 I-Frame QP Value";
+> @@ -1220,6 +1228,7 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
+>  	case V4L2_CID_MPEG_VIDEO_H264_VUI_SAR_IDC:
+>  	case V4L2_CID_MPEG_VIDEO_H264_SEI_FP_ARRANGEMENT_TYPE:
+>  	case V4L2_CID_MPEG_VIDEO_H264_FMO_MAP_TYPE:
+> +	case V4L2_CID_MPEG_VIDEO_H264_DECODING_MODE:
+>  	case V4L2_CID_MPEG_VIDEO_MPEG2_LEVEL:
+>  	case V4L2_CID_MPEG_VIDEO_MPEG2_PROFILE:
+>  	case V4L2_CID_MPEG_VIDEO_MPEG4_LEVEL:
+> diff --git a/include/media/h264-ctrls.h b/include/media/h264-ctrls.h
+> index 6160a69c0143..e6c510877f67 100644
+> --- a/include/media/h264-ctrls.h
+> +++ b/include/media/h264-ctrls.h
+> @@ -26,6 +26,7 @@
+>  #define V4L2_CID_MPEG_VIDEO_H264_SCALING_MATRIX	(V4L2_CID_MPEG_BASE+1002)
+>  #define V4L2_CID_MPEG_VIDEO_H264_SLICE_PARAMS	(V4L2_CID_MPEG_BASE+1003)
+>  #define V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS	(V4L2_CID_MPEG_BASE+1004)
+> +#define V4L2_CID_MPEG_VIDEO_H264_DECODING_MODE	(V4L2_CID_MPEG_BASE+1005)
+>  
+>  /* enum v4l2_ctrl_type type values */
+>  #define V4L2_CTRL_TYPE_H264_SPS			0x0110
+> @@ -33,6 +34,12 @@
+>  #define V4L2_CTRL_TYPE_H264_SCALING_MATRIX	0x0112
+>  #define V4L2_CTRL_TYPE_H264_SLICE_PARAMS	0x0113
+>  #define V4L2_CTRL_TYPE_H264_DECODE_PARAMS	0x0114
+> +#define V4L2_CTRL_TYPE_H264_DECODING_MODE	0x0115
+> +
+> +enum v4l2_mpeg_video_h264_decoding_mode {
+> +	V4L2_MPEG_VIDEO_H264_SLICE_BASED_DECODING,
+> +	V4L2_MPEG_VIDEO_H264_FRAME_BASED_DECODING,
+> +};
+>  
+>  #define V4L2_H264_SPS_CONSTRAINT_SET0_FLAG			0x01
+>  #define V4L2_H264_SPS_CONSTRAINT_SET1_FLAG			0x02
+> @@ -125,6 +132,10 @@ struct v4l2_h264_pred_weight_table {
+>  struct v4l2_ctrl_h264_slice_params {
+>  	/* Size in bytes, including header */
+>  	__u32 size;
+> +
+> +	/* Offset in bytes to the start of slice in the OUTPUT buffer. */
+> +	__u32 start_byte_offset;
+> +
+>  	/* Offset in bits to slice_data() from the beginning of this slice. */
+>  	__u32 header_bit_size;
+>  
+> 
