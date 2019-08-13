@@ -1,78 +1,87 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v5 11/11] media: hantro: Enable H264 decoding on rk3288
-Date: Mon, 12 Aug 2019 16:35:22 -0300
-Message-ID: <20190812193522.10911-12-ezequiel@collabora.com>
-References: <20190812193522.10911-1-ezequiel@collabora.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re:
+ =?utf-8?q?=5BPATCH_14/15=5D_rockchip=3A_rk3399=3A_Add_bo?=
+ =?utf-8?b?b3Rjb3VudCBzdXBwb3J044CQ6K+35rOo5oSP77yM6YKu5Lu255SxdS1ib290?=
+ =?utf-8?b?LWJvdW5jZXNAbGlzdHMuZGVueC5kZeS7o+WPkeOAkQ==?=
+Date: Tue, 13 Aug 2019 09:02:52 +0800
+Message-ID: <c0607fc7-941d-e001-0537-111f49107c70@rock-chips.com>
+References: <20190729074711.16988-1-jagan@amarulasolutions.com>
+ <20190729074711.16988-15-jagan@amarulasolutions.com>
+ <3a38244a-974f-f3e5-0d09-28850b72b247@rock-chips.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190812193522.10911-1-ezequiel@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-media@vger.kernel.org
-Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org, Hertz Wong <hertz.wong@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <3a38244a-974f-f3e5-0d09-28850b72b247@rock-chips.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, Akash Gajjar <akash@openedev.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Hertz Wong <hertz.wong@rock-chips.com>
-
-Now that the generic bits have been added, we can activate H264 decoding
-on rk3288.
-
-Signed-off-by: Hertz Wong <hertz.wong@rock-chips.com>
-Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
----
-Changes in v5:
-* None.
-Changes in v4:
-* None.
----
- drivers/staging/media/hantro/rk3288_vpu_hw.c | 21 +++++++++++++++++++-
- 1 file changed, 20 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/staging/media/hantro/rk3288_vpu_hw.c b/drivers/staging/media/hantro/rk3288_vpu_hw.c
-index f1b573a006ae..6bfcc47d1e58 100644
---- a/drivers/staging/media/hantro/rk3288_vpu_hw.c
-+++ b/drivers/staging/media/hantro/rk3288_vpu_hw.c
-@@ -61,6 +61,19 @@ static const struct hantro_fmt rk3288_vpu_dec_fmts[] = {
- 		.fourcc = V4L2_PIX_FMT_NV12,
- 		.codec_mode = HANTRO_MODE_NONE,
- 	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_H264_SLICE,
-+		.codec_mode = HANTRO_MODE_H264_DEC,
-+		.max_depth = 2,
-+		.frmsize = {
-+			.min_width = 48,
-+			.max_width = 3840,
-+			.step_width = H264_MB_DIM,
-+			.min_height = 48,
-+			.max_height = 2160,
-+			.step_height = H264_MB_DIM,
-+		},
-+	},
- 	{
- 		.fourcc = V4L2_PIX_FMT_MPEG2_SLICE,
- 		.codec_mode = HANTRO_MODE_MPEG2_DEC,
-@@ -162,6 +175,12 @@ static const struct hantro_codec_ops rk3288_vpu_codec_ops[] = {
- 		.init = hantro_jpeg_enc_init,
- 		.exit = hantro_jpeg_enc_exit,
- 	},
-+	[HANTRO_MODE_H264_DEC] = {
-+		.run = hantro_g1_h264_dec_run,
-+		.reset = rk3288_vpu_dec_reset,
-+		.init = hantro_h264_dec_init,
-+		.exit = hantro_h264_dec_exit,
-+	},
- 	[HANTRO_MODE_MPEG2_DEC] = {
- 		.run = hantro_g1_mpeg2_dec_run,
- 		.reset = rk3288_vpu_dec_reset,
-@@ -197,7 +216,7 @@ const struct hantro_variant rk3288_vpu_variant = {
- 	.dec_fmts = rk3288_vpu_dec_fmts,
- 	.num_dec_fmts = ARRAY_SIZE(rk3288_vpu_dec_fmts),
- 	.codec = HANTRO_JPEG_ENCODER | HANTRO_MPEG2_DECODER |
--		 HANTRO_VP8_DECODER,
-+		 HANTRO_VP8_DECODER | HANTRO_H264_DECODER,
- 	.codec_ops = rk3288_vpu_codec_ops,
- 	.irqs = rk3288_irqs,
- 	.num_irqs = ARRAY_SIZE(rk3288_irqs),
--- 
-2.22.0
+Ck9uIDIwMTkvOC8xMiDkuIvljYg4OjE2LCBLZXZlciBZYW5nIHdyb3RlOgo+IEhpIEphZ2FuLAo+
+Cj4KPiBPbiAyMDE5LzcvMjkg5LiL5Y2IMzo0NywgSmFnYW4gVGVraSB3cm90ZToKPj4gQWRkIGJv
+b3Rjb3VudCBzdXBwb3J0IGZvciBSb2NrY2hpcCByazMzOTkuCj4+Cj4+IFRoZSBib290Y291bnQg
+dmFsdWUgaXMgcHJlc2VydmVkIGluIFBNVV9TWVNfUkVHMCByZWdpc3RlciwKPgo+IFBNVV9TWVNf
+UkVHMCBoYXMgYmVlbiB1c2VkIGJ5IG90aGVyIGNhc2UgaW4gUm9ja2NoaXAsIHdlIGRvbid0CgoK
+UGxlYXNlIGlnbm9yZSB0aGlzIG1haWwsIEkgbWl4aW5nIHRoZSByZWdpc3RlcnMgaW4gUE1VIGFu
+ZCBQTVVHUkYsCgp0aGUgUE1VX1NZU19SRUcwIGlzIG5vdCB1c2VkIHlldCBhbmQgeW91IGNhbiB1
+c2UgaXQuCgoKVGhhbmtzLAoKLSBLZXZlcgoKPiByZWNvbW1lbmQgdG8gdXNlIGl0LCB0aGUgUE1V
+R1JGX09TX1JFRzMgaXMgc3RpbGwgcmVzZXJ2ZWQgbm93LAo+IGNvdWxkIHlvdSB1c2UgaXQgaW5z
+dGVhZD8KPgo+IFRoYW5rcywKPiAtIEtldmVyCj4KPj4gdGhpcyB3b3VsZCBoZWxwIHRvIHN1cHBv
+cnQgcmVkdW5kZW50IGJvb3QuCj4+Cj4+IE9uY2UgdGhlIHJlZHVuZGFudCBib290IHRyaWdnZXJz
+LCB0aGUgYWx0Ym9vdCBjb21tYW5kCj4+IHdpbGwgbG9vayBmb3IgZXh0bGludXgtcm9sbGJhY2su
+Y29uZiBvbiBwYXJ0aWN1bGFyCj4+IGJvb3RhYmxlIHBhcnRpdGlvbiB3aGljaCBzdXBwb3NlZCB0
+byBiZSBhIHJlY292ZXJ5Cj4+IHBhcnRpdGlvbiB3aGVyZSByZWR1bmRhbnQgYm9vdCByZXF1aXJl
+ZC4KPj4KPj4gU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9u
+cy5jb20+Cj4+IC0tLQo+PiDCoCBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWfCoMKgwqDC
+oMKgwqDCoCB8wqAgMiArKwo+PiDCoCBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzM5OS9LY29u
+ZmlnIHwgMTAgKysrKysrKysrKwo+PiDCoCBpbmNsdWRlL2NvbmZpZ3MvcmszMzk5X2NvbW1vbi5o
+wqDCoMKgwqDCoMKgIHzCoCA1ICsrKystCj4+IMKgIDMgZmlsZXMgY2hhbmdlZCwgMTYgaW5zZXJ0
+aW9ucygrKSwgMSBkZWxldGlvbigtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vbWFjaC1y
+b2NrY2hpcC9LY29uZmlnIAo+PiBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZpZwo+PiBp
+bmRleCAxN2YzMWU4OWYzLi5kZDUwNTVlZDY5IDEwMDY0NAo+PiAtLS0gYS9hcmNoL2FybS9tYWNo
+LXJvY2tjaGlwL0tjb25maWcKPj4gKysrIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9LY29uZmln
+Cj4+IEBAIC0xODQsNiArMTg0LDggQEAgY29uZmlnIFJPQ0tDSElQX1JLMzM5OQo+PiDCoMKgwqDC
+oMKgIGltcGx5IFRQTF9DTEsKPj4gwqDCoMKgwqDCoCBpbXBseSBUUExfVElOWV9NRU1TRVQKPj4g
+wqDCoMKgwqDCoCBpbXBseSBUUExfUk9DS0NISVBfQ09NTU9OX0JPQVJECj4+ICvCoMKgwqAgaW1w
+bHkgU1lTX0JPT1RDT1VOVF9TSU5HTEVXT1JEIGlmIEJPT1RDT1VOVF9MSU1JVAo+PiArwqDCoMKg
+IGltcGx5IENNRF9CT09UQ09VTlQgaWYgQk9PVENPVU5UX0xJTUlUCj4+IMKgwqDCoMKgwqAgaGVs
+cAo+PiDCoMKgwqDCoMKgwqDCoCBUaGUgUm9ja2NoaXAgUkszMzk5IGlzIGEgQVJNLWJhc2VkIFNv
+QyB3aXRoIGEgZHVhbC1jb3JlIAo+PiBDb3J0ZXgtQTcyCj4+IMKgwqDCoMKgwqDCoMKgIGFuZCBx
+dWFkLWNvcmUgQ29ydGV4LUE1My4KPj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21hY2gtcm9ja2No
+aXAvcmszMzk5L0tjb25maWcgCj4+IGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMzOTkvS2Nv
+bmZpZwo+PiBpbmRleCA2NjYwZDA1MzQ5Li42OGFjOTEzYmNiIDEwMDY0NAo+PiAtLS0gYS9hcmNo
+L2FybS9tYWNoLXJvY2tjaGlwL3JrMzM5OS9LY29uZmlnCj4+ICsrKyBiL2FyY2gvYXJtL21hY2gt
+cm9ja2NoaXAvcmszMzk5L0tjb25maWcKPj4gQEAgLTkxLDYgKzkxLDE2IEBAIGNvbmZpZyBUUExf
+U1RBQ0sKPj4gwqAgY29uZmlnIFRQTF9URVhUX0JBU0UKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIGRl
+ZmF1bHQgMHhmZjhjMjAwMAo+PiDCoCAraWYgQk9PVENPVU5UX0xJTUlUCj4+ICsKPj4gK2NvbmZp
+ZyBCT09UQ09VTlRfQk9PVExJTUlUCj4+ICvCoMKgwqAgZGVmYXVsdCAzCj4+ICsKPj4gK2NvbmZp
+ZyBTWVNfQk9PVENPVU5UX0FERFIKPj4gK8KgwqDCoCBkZWZhdWx0IDB4ZmYzMTAwZjDCoMKgwqAg
+IyBQTVVfU1lTX1JFRzAKPj4gKwo+PiArZW5kaWYgIyBCT09UQ09VTlRfTElNSVQKPj4gKwo+PiDC
+oCBzb3VyY2UgImJvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvS2NvbmZpZyIKPj4gwqAgc291cmNl
+ICJib2FyZC90aGVvYnJvbWEtc3lzdGVtcy9wdW1hX3JrMzM5OS9LY29uZmlnIgo+PiDCoCBzb3Vy
+Y2UgImJvYXJkL3ZhbXJzL3JvY2s5NjBfcmszMzk5L0tjb25maWciCj4+IGRpZmYgLS1naXQgYS9p
+bmNsdWRlL2NvbmZpZ3MvcmszMzk5X2NvbW1vbi5oIAo+PiBiL2luY2x1ZGUvY29uZmlncy9yazMz
+OTlfY29tbW9uLmgKPj4gaW5kZXggNjdiNDhlMDNiYS4uYWNlODI5MjhkMSAxMDA2NDQKPj4gLS0t
+IGEvaW5jbHVkZS9jb25maWdzL3JrMzM5OV9jb21tb24uaAo+PiArKysgYi9pbmNsdWRlL2NvbmZp
+Z3MvcmszMzk5X2NvbW1vbi5oCj4+IEBAIC03MCw3ICs3MCwxMCBAQAo+PiDCoMKgwqDCoMKgICJm
+ZHRmaWxlPSIgQ09ORklHX0RFRkFVTFRfRkRUX0ZJTEUgIlwwIiBcCj4+IMKgwqDCoMKgwqAgInBh
+cnRpdGlvbnM9IiBQQVJUU19ERUZBVUxUIFwKPj4gwqDCoMKgwqDCoCBST0NLQ0hJUF9ERVZJQ0Vf
+U0VUVElOR1MgXAo+PiAtwqDCoMKgIEJPT1RFTlYKPj4gK8KgwqDCoCBCT09URU5WIFwKPj4gK8Kg
+wqDCoCAiYWx0Ym9vdGNtZD0iIFwKPj4gK8KgwqDCoMKgwqDCoMKgICJzZXRlbnYgYm9vdF9zeXNs
+aW51eF9jb25mIGV4dGxpbnV4L2V4dGxpbnV4LXJvbGxiYWNrLmNvbmY7IiBcCj4+ICvCoMKgwqDC
+oMKgwqDCoCAicnVuIGRpc3Ryb19ib290Y21kXDAiCj4+IMKgIMKgICNlbmRpZgo+Cj4KPiBfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IFUtQm9vdCBtYWls
+aW5nIGxpc3QKPiBVLUJvb3RAbGlzdHMuZGVueC5kZQo+IGh0dHBzOi8vbGlzdHMuZGVueC5kZS9s
+aXN0aW5mby91LWJvb3QKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8v
+bGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
