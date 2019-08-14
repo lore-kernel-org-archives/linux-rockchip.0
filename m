@@ -1,114 +1,48 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: CPUfreq fail on rk3399-firefly (was: next/master boot: 285 boots:
- 16 failed, 264 passed with 3 offline, 1 untried/unknown,
- 1 conflict (next-20190718))
-Date: Wed, 14 Aug 2019 11:01:29 +0200
-Message-ID: <2314814.WbdfqDVNqK@phil>
-References: <5d3057c8.1c69fb81.c6489.8ad2@mx.google.com>
- <20190718162005.GF5761@sirena.org.uk> <7hmugdynmk.fsf@baylibre.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: Re: [PATCH 03/15] rockchip: rk3288: Print reset reason
+Date: Wed, 14 Aug 2019 15:10:38 +0530
+Message-ID: <CAMty3ZApcHpSmLtf4kTm+YqzpYMtGSU6N_Sm_xZNue2o73UvtQ@mail.gmail.com>
+References: <20190729074711.16988-1-jagan@amarulasolutions.com>
+ <20190729074711.16988-4-jagan@amarulasolutions.com>
+ <98408a3c-84bd-d54b-1b3a-49901c85ba3c@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <7hmugdynmk.fsf@baylibre.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Kevin Hilman <khilman@baylibre.com>
-Cc: linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, linux-next@vger.kernel.org, linux-arm-kernel@lists.infradead.org, kernel-build-reports@lists.linaro.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <98408a3c-84bd-d54b-1b3a-49901c85ba3c-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Am Dienstag, 13. August 2019, 19:35:31 CEST schrieb Kevin Hilman:
-> [ resent with correct addr for linux-rockchip list ]
-> 
-> Mark Brown <broonie@kernel.org> writes:
-> 
-> > On Thu, Jul 18, 2019 at 04:28:08AM -0700, kernelci.org bot wrote:
-> >
-> > Today's -next started failing to boot defconfig on rk3399-firefly:
-> >
-> >> arm64:
-> >
-> >>     defconfig:
-> >>         gcc-8:
-> >>             rk3399-firefly: 1 failed lab
-> >
-> > It hits a BUG() trying to set up cpufreq:
-> >
-> > [   87.381606] cpufreq: cpufreq_online: CPU0: Running at unlisted freq: 200000 KHz
-> > [   87.393244] cpufreq: cpufreq_online: CPU0: Unlisted initial frequency changed to: 408000 KHz
-> > [   87.469777] cpufreq: cpufreq_online: CPU4: Running at unlisted freq: 12000 KHz
-> > [   87.488595] cpu cpu4: _generic_set_opp_clk_only: failed to set clock rate: -22
-> > [   87.491881] cpufreq: __target_index: Failed to change cpu frequency: -22
-> > [   87.495335] ------------[ cut here ]------------
-> > [   87.496821] kernel BUG at drivers/cpufreq/cpufreq.c:1438!
-> > [   87.498462] Internal error: Oops - BUG: 0 [#1] PREEMPT SMP
-> >
-> > I'm struggling to see anything relevant in the diff from yesterday, the
-> > unlisted frequency warnings were there in the logs yesterday but no oops
-> > and I'm not seeing any changes in cpufreq, clk or anything relevant
-> > looking.
-> >
-> > Full bootlog and other info can be found here:
-> >
-> > 	https://kernelci.org/boot/id/5d302d8359b51498d049e983/
-> 
-> I confirm that disabling CPUfreq in the defconfig (CONFIG_CPU_FREQ=n)
-> makes the firefly board start working again.
-> 
-> Note that the default defconfig enables the "performance" CPUfreq
-> governor as the default governor, so during kernel boot, it will always
-> switch to the max frequency.
-> 
-> For fun, I set the default governor to "userspace" so the kernel
-> wouldn't make any OPP changes, and that leads to a slightly more
-> informative splat[1]
-> 
-> There is still an OPP change happening because the detected OPP is not
-> one that's listed in the table, so it tries to change to a listed OPP
-> and fails in the bowels of clk_set_rate()
-
-Though I think that might only be a symptom as well.
-Both the PLL setting code as well as the actual cpu-clock implementation
-is unchanged since 2017 (and runs just fine on all boards in my farm).
-
-One source for these issues is often the regulator supplying the cpu
-going haywire - aka the voltage not matching the opp.
-
-As in this error-case it's CPU4 being set, this would mean it might
-be the big cluster supplied by the external syr825 (fan5355 clone)
-that might act up. In the Firefly-rk3399 case this is even stranger.
-
-There is a discrepancy between the "fcs,suspend-voltage-selector"
-between different bootloader versions (how the selection-pin is set up),
-so the kernel might actually write his requested voltage to the wrong
-register (not the one for actual voltage, but the second set used for
-the suspend voltage).
-
-Did you by chance swap bootloaders at some point in recent past?
-
-I'd assume [2] might actually be the same issue last year, though
-the CI-logs are not available anymore it seems.
-
-
-Could you try to set the vdd_cpu_b regulator to disabled, so that
-cpufreq for this cluster defers and see what happens?
-
-I don't really have a Firefly in my boardfarm, so I let 5.3-rc run on
-a Theobroma Puma which has the same regulator setup as the Firefly
-and all including the performance governor did run nicely, so it really
-looks like some sort of Firefly specific issue.
-
-Heiko
-
-> [1] https://termbin.com/3oum
-
-[2] https://lkml.org/lkml/2018/6/19/1167
+T24gTW9uLCBBdWcgNSwgMjAxOSBhdCA2OjAwIFBNIEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9j
+ay1jaGlwcy5jb20+IHdyb3RlOgo+Cj4KPiBPbiAyMDE5LzcvMjkg5LiL5Y2IMzo0NiwgSmFnYW4g
+VGVraSB3cm90ZToKPiA+IFByaW50IHRoZSByZWFzb24gZm9yIHJlc2V0IGluc3RlYWQgb2Ygc3Rv
+cmluZyBpdCBpbnRvCj4gPiBlbnYgdmFyaWFibGUgaW4gcmszMjg4Lgo+ID4KPiA+IFRoaXMgd291
+bGQgaGVscCB0byBmaW5kIHRoZSByZXNldCByZWFzb24gZGlyZWN0bHkKPiA+IG9uIFUtQm9vdCBw
+cm9wZXIgbG9ncy4KPiA+Cj4gPiBDYzogV2FkaW0gRWdvcm92IDx3LmVnb3JvdkBwaHl0ZWMuZGU+
+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNv
+bT4KPiA+IC0tLQo+ID4gICBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzI4OC1ib2FyZC5jIHwg
+MiArLQo+ID4gICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkK
+PiA+Cj4gPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMyODgtYm9hcmQu
+YyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMjg4LWJvYXJkLmMKPiA+IGluZGV4IGQzZWMx
+NDFmZWEuLjYxMzI2NGQ3ZWUgMTAwNjQ0Cj4gPiAtLS0gYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlw
+L3JrMzI4OC1ib2FyZC5jCj4gPiArKysgYi9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzI4OC1i
+b2FyZC5jCj4gPiBAQCAtNzIsNyArNzIsNyBAQCBzdGF0aWMgdm9pZCByazMyODhfZGV0ZWN0X3Jl
+c2V0X3JlYXNvbih2b2lkKQo+ID4gICAgICAgICAgICAgICByZWFzb24gPSAidW5rbm93biByZXNl
+dCI7Cj4gPiAgICAgICB9Cj4gPgo+ID4gLSAgICAgZW52X3NldCgicmVzZXRfcmVhc29uIiwgcmVh
+c29uKTsKPiA+ICsgICAgIHByaW50ZigiUmVzZXQgY2F1c2U6ICVzXG4iLCByZWFzb24pOwo+Cj4K
+PiBXaHkgdGhpcyBuZWVkIHRvIHNldCBhcyBlbnYgYmVmb3JlPyBJIGRpZG4ndCB0b3VjaCB0aGlz
+IGNvZGUgd2hlbiBJIG1pZ3JhdGUKCkRvbid0IGtub3cgdGhlIHByb3BlciByZWFzb24gZm9yIHRo
+aXMsIGllIHdoeSBJIGhhdmUgQ0NlZCBXYWRpbS4KCldhZGltLCBhbnkgY29tbWVudHM/CgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
+cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
