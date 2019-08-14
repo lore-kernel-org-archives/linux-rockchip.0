@@ -1,63 +1,135 @@
-From: Michael Nazzareno Trimarchi <michael@amarulasolutions.com>
-Subject: Re: [PATCH 03/15] rockchip: rk3288: Print reset reason
-Date: Wed, 14 Aug 2019 12:46:26 +0200
-Message-ID: <CAOf5uwkuAYNFgVJjKfPvw3BPO1FgNnCpT_7e0JV7ARjNmZ5YSw@mail.gmail.com>
-References: <20190729074711.16988-1-jagan@amarulasolutions.com>
- <20190729074711.16988-4-jagan@amarulasolutions.com>
- <98408a3c-84bd-d54b-1b3a-49901c85ba3c@rock-chips.com>
- <CAMty3ZApcHpSmLtf4kTm+YqzpYMtGSU6N_Sm_xZNue2o73UvtQ@mail.gmail.com>
- <511a2886-707c-b7db-b3cf-7e3ed952f237@phytec.de>
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Subject: Re: [PATCH v5 04/11] media: uapi: h264: Add the concept of start code
+Date: Wed, 14 Aug 2019 13:49:28 +0200
+Message-ID: <20190814114928.GB4687@aptenodytes>
+References: <20190812193522.10911-1-ezequiel@collabora.com>
+ <20190812193522.10911-5-ezequiel@collabora.com>
+ <f88d144f-e0fe-6974-efe5-77b5ed5c6e09@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <511a2886-707c-b7db-b3cf-7e3ed952f237@phytec.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Wadim Egorov <w.egorov@phytec.de>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, U-Boot-Denx <u-boot@lists.denx.de>, linux-amarula <linux-amarula@amarulasolutions.com>, Akash Gajjar <akash@openedev.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="t0UkRYy7tHLRMCai"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <f88d144f-e0fe-6974-efe5-77b5ed5c6e09@xs4all.nl>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkKCgpPbiBXZWRuZXNkYXksIEF1Z3VzdCAxNCwgMjAxOSwgV2FkaW0gRWdvcm92IDx3LmVnb3Jv
-dkBwaHl0ZWMuZGU+IHdyb3RlOgoKPgo+IE9uIDE0LjA4LjE5IDExOjQwLCBKYWdhbiBUZWtpIHdy
-b3RlOgo+ID4gT24gTW9uLCBBdWcgNSwgMjAxOSBhdCA2OjAwIFBNIEtldmVyIFlhbmcgPGtldmVy
-LnlhbmdAcm9jay1jaGlwcy5jb20+Cj4gd3JvdGU6Cj4gPj4KPiA+PiBPbiAyMDE5LzcvMjkg5LiL
-5Y2IMzo0NiwgSmFnYW4gVGVraSB3cm90ZToKPiA+Pj4gUHJpbnQgdGhlIHJlYXNvbiBmb3IgcmVz
-ZXQgaW5zdGVhZCBvZiBzdG9yaW5nIGl0IGludG8KPiA+Pj4gZW52IHZhcmlhYmxlIGluIHJrMzI4
-OC4KPiA+Pj4KPiA+Pj4gVGhpcyB3b3VsZCBoZWxwIHRvIGZpbmQgdGhlIHJlc2V0IHJlYXNvbiBk
-aXJlY3RseQo+ID4+PiBvbiBVLUJvb3QgcHJvcGVyIGxvZ3MuCj4gPj4+Cj4gPj4+IENjOiBXYWRp
-bSBFZ29yb3YgPHcuZWdvcm92QHBoeXRlYy5kZT4KPiA+Pj4gU2lnbmVkLW9mZi1ieTogSmFnYW4g
-VGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gPj4+IC0tLQo+ID4+PiAgIGFyY2gv
-YXJtL21hY2gtcm9ja2NoaXAvcmszMjg4LWJvYXJkLmMgfCAyICstCj4gPj4+ICAgMSBmaWxlIGNo
-YW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4gPj4+Cj4gPj4+IGRpZmYgLS1n
-aXQgYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzI4OC1ib2FyZC5jCj4gYi9hcmNoL2FybS9t
-YWNoLXJvY2tjaGlwL3JrMzI4OC1ib2FyZC5jCj4gPj4+IGluZGV4IGQzZWMxNDFmZWEuLjYxMzI2
-NGQ3ZWUgMTAwNjQ0Cj4gPj4+IC0tLSBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMjg4LWJv
-YXJkLmMKPiA+Pj4gKysrIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMyODgtYm9hcmQuYwo+
-ID4+PiBAQCAtNzIsNyArNzIsNyBAQCBzdGF0aWMgdm9pZCByazMyODhfZGV0ZWN0X3Jlc2V0X3Jl
-YXNvbih2b2lkKQo+ID4+PiAgICAgICAgICAgICAgIHJlYXNvbiA9ICJ1bmtub3duIHJlc2V0IjsK
-PiA+Pj4gICAgICAgfQo+ID4+Pgo+ID4+PiAtICAgICBlbnZfc2V0KCJyZXNldF9yZWFzb24iLCBy
-ZWFzb24pOwo+ID4+PiArICAgICBwcmludGYoIlJlc2V0IGNhdXNlOiAlc1xuIiwgcmVhc29uKTsK
-PiA+Pgo+ID4+IFdoeSB0aGlzIG5lZWQgdG8gc2V0IGFzIGVudiBiZWZvcmU/IEkgZGlkbid0IHRv
-dWNoIHRoaXMgY29kZSB3aGVuIEkKPiBtaWdyYXRlCj4gPiBEb24ndCBrbm93IHRoZSBwcm9wZXIg
-cmVhc29uIGZvciB0aGlzLCBpZSB3aHkgSSBoYXZlIENDZWQgV2FkaW0uCj4gPgo+ID4gV2FkaW0s
-IGFueSBjb21tZW50cz8KPiBJZiB3ZSBwdXQgdGhlIHJlc2V0X3JlYXNvbiBpbnNpZGUgYW4gZW52
-aXJvbm1lbnQgdmFyaWFibGUgd2UgY2FuIGxhdGVyCj4gcmV1c2UgaXQgZnJvbSBhIHNjcmlwdCwg
-ZS5nLiBjaGFuZ2luZyB0aGUgYm9vdCBiZWhhdmlvciBmb3Igc3BlY2lhbAo+IGNhc2VzLiBSaWdo
-dCBub3cgSSBoYXZlIG5vIHVzZWNhc2UgZm9yIGl0LiBTbyBmcm9tIG15IHNpZGUgeW91IGNhbiBq
-dXN0Cj4gcHJpbnQgdGhlIHJlYXNvbiBpbnN0ZWFkIG9mIHNldHRpbmcgdGhlIGVudmlyb25tZW50
-LiBBRkFJUiBJIGNvcGllZCB0aGUKPiBlbnYtbWV0aG9kIGZyb20gYW5vdGhlciBib2FyZC4KPiBi
-dHcsIGJvYXJkL3hpbGlueC96eW5xbXAvenlucW1wLmMgaXMgZG9pbmcgYm90aC4KCgpUaGUgcmVh
-c29uIGlzIHRvdGFsbHkgdmFsaWQgYW5kIHdlIGRvbid0IGtub3cgZXZlbiBpcyBhbHJlYWR5IHVz
-ZSBpbiBzb21lCmRlcGxveS4gQWRkIHRoZSBwcmludCB3aXRob3V0IHJlbW92ZSB0aGUgZW52aXJv
-bm1lbnQgbWFrZSBtb3JlIHNlbnNlIHRvIG1lCgpNaWNoYWVsCgoKLS0gClNlbnQgZnJvbSBHbWFp
-bCBNb2JpbGUKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-VS1Cb290IG1haWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRl
-bnguZGUvbGlzdGluZm8vdS1ib290Cg==
+
+--t0UkRYy7tHLRMCai
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Wed 14 Aug 19, 10:11, Hans Verkuil wrote:
+> On 8/12/19 9:35 PM, Ezequiel Garcia wrote:
+> > Stateless decoders have different expectations about the
+> > start code that is prepended on H264 slices. Add a
+> > menu control to express the supported start code types
+> > (including no start code).
+> >=20
+> > Drivers are allowed to support only one start code type,
+> > but they can support both too.
+> >=20
+> > Note that this is independent of the H264 decoding mode,
+> > which specifies the granularity of the decoding operations.
+> > Either in frame-based or slice-based mode, this new control
+> > will allow to define the start code expected on H264 slices.
+> >=20
+> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > Tested-by: Philipp Zabel <p.zabel@pengutronix.de>
+> > ---
+> > Changes in v5:
+> > * Improve specification as suggested by Hans.
+> > Changes in v4:
+> > * New patch.
+> > ---
+> >  .../media/uapi/v4l/ext-ctrls-codec.rst        | 33 +++++++++++++++++++
+> >  .../media/uapi/v4l/pixfmt-compressed.rst      |  3 +-
+> >  drivers/media/v4l2-core/v4l2-ctrls.c          |  9 +++++
+> >  include/media/h264-ctrls.h                    |  6 ++++
+> >  4 files changed, 50 insertions(+), 1 deletion(-)
+> >=20
+>=20
+> <snip>
+>=20
+> > diff --git a/include/media/h264-ctrls.h b/include/media/h264-ctrls.h
+> > index e6c510877f67..31555c99f64a 100644
+> > --- a/include/media/h264-ctrls.h
+> > +++ b/include/media/h264-ctrls.h
+> > @@ -27,6 +27,7 @@
+> >  #define V4L2_CID_MPEG_VIDEO_H264_SLICE_PARAMS	(V4L2_CID_MPEG_BASE+1003)
+> >  #define V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS	(V4L2_CID_MPEG_BASE+100=
+4)
+> >  #define V4L2_CID_MPEG_VIDEO_H264_DECODING_MODE	(V4L2_CID_MPEG_BASE+100=
+5)
+> > +#define V4L2_CID_MPEG_VIDEO_H264_STARTCODE	(V4L2_CID_MPEG_BASE+1006)
+>=20
+> I almost forgot: can you change this to _START_CODE? Since it is two word=
+s?
+
+Agreed, I like it better this way too.
+
+> Thanks!
+>=20
+> 	Hans
+>=20
+> > =20
+> >  /* enum v4l2_ctrl_type type values */
+> >  #define V4L2_CTRL_TYPE_H264_SPS			0x0110
+> > @@ -41,6 +42,11 @@ enum v4l2_mpeg_video_h264_decoding_mode {
+> >  	V4L2_MPEG_VIDEO_H264_FRAME_BASED_DECODING,
+> >  };
+> > =20
+> > +enum v4l2_mpeg_video_h264_start_code {
+> > +	V4L2_MPEG_VIDEO_H264_NO_STARTCODE,
+> > +	V4L2_MPEG_VIDEO_H264_ANNEX_B_STARTCODE,
+
+Could we apply the same START_CODE renaming here too?
+
+I was also thinking that it would be slightly more readable put like this,
+with START_CODE as a prefix since it's common to both options and the name =
+of
+the enum:
+
+- V4L2_MPEG_VIDEO_H264_START_CODE_NONE
+- V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B
+
+What do you think?
+
+Cheers,
+
+Paul
+
+> > +};
+> > +
+> >  #define V4L2_H264_SPS_CONSTRAINT_SET0_FLAG			0x01
+> >  #define V4L2_H264_SPS_CONSTRAINT_SET1_FLAG			0x02
+> >  #define V4L2_H264_SPS_CONSTRAINT_SET2_FLAG			0x04
+> >=20
+>=20
+
+--=20
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
+
+--t0UkRYy7tHLRMCai
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl1T9UgACgkQ3cLmz3+f
+v9HGVQgAiV5mFB7VPdtODmRBRts3AVeDl89JHNmbGXNAG37Sm9z3pUd3Uz5FEScy
+owJySCgGlrUekE0s/IQ2/K5cqrhY1dvDuLb4Y8RmfgiPoj//GZy5wK28dUIuujb8
+VWkfYxUb1UHyYS0BwZGPqD8K0A34fTD/+jh3CME9vbhrjBGtnhoW3IwQ/MtDxxUJ
+ozmmiq6uRcWTcQfcCs89RhFjRk+zyxWnvMZwhIalkH6YdbB/XD4flM+W6JL66GYg
+JKiPwFNIcRkICQ/xW8q1Jvt7MMVYxBI1jgGJrz1Dw7mXJBX1pIPRnujYZL1KvgZA
+xpzvbtp2A1d1FTT+tFYYfRDNx2T+2A==
+=rJGn
+-----END PGP SIGNATURE-----
+
+--t0UkRYy7tHLRMCai--
