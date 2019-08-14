@@ -1,102 +1,199 @@
-From: Vicente Bergas <vicencb@gmail.com>
-Subject: Re: kexec on rk3399
-Date: Wed, 14 Aug 2019 15:15:02 +0200
-Message-ID: <4fc3e5b5-31fe-41f6-8031-b37454f21437@gmail.com>
-References: <ebcb52be-2063-4e2c-9a09-fdcacb94f855@gmail.com>
- <c6993a1e-6fc2-44ab-b59e-152142e2ff4d@gmail.com> <87v9uzaocj.fsf@gmail.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v5 03/11] media: uapi: h264: Add the concept of decoding
+ mode
+Date: Wed, 14 Aug 2019 11:08:31 -0300
+Message-ID: <48aa33392e81cc5b3a0a7eed403ecb91c89ac320.camel@collabora.com>
+References: <20190812193522.10911-1-ezequiel@collabora.com>
+         <20190812193522.10911-4-ezequiel@collabora.com>
+         <20190814122323.GC4687@aptenodytes>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <87v9uzaocj.fsf@gmail.com>
+In-Reply-To: <20190814122323.GC4687@aptenodytes>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Felipe Balbi <balbi@kernel.org>
-Cc: Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, Marc Zyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Matthias Brugger <mbrugger@suse.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Cc: linux-media@vger.kernel.org, kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wednesday, August 14, 2019 3:06:04 PM CEST, Felipe Balbi wrote:
+On Wed, 2019-08-14 at 14:23 +0200, Paul Kocialkowski wrote:
 > Hi,
->
-> Vicente Bergas <vicencb@gmail.com> writes:
->> On Monday, July 22, 2019 4:31:27 PM CEST, Vicente Bergas wrote:
->>> Hi, i have been running linux on rk3399 booted with kexec fine until 5.2
->>> From 5.2 onwards, there are memory corruption issues as reported here:
->>> http://lkml.iu.edu/hypermail/linux/kernel/1906.2/07211.html
->>> kexec has been identified as the principal reason for the issues.
->>>=20
->>> It turns out that kexec has never worked reliably on this platform, ...
->>=20
->> Thank you all for your suggestions on where the issue could be.
->>=20
->> It seems that it was the USB driver.
->> Now using v5.2.8 booted with kexec from v5.2.8 with a workaround and
->> so far so good. It is being tested on the Sapphire board.
->>=20
->> The workaround is:
->> --- a/drivers/usb/dwc3/dwc3-of-simple.c
->> +++ b/drivers/usb/dwc3/dwc3-of-simple.c
->> @@ -133,6 +133,13 @@
->>  =09return 0;
->>  }
->> =20
->> +static void dwc3_of_simple_shutdown(struct platform_device *pdev)
->> +{
->> +=09struct dwc3_of_simple *simple =3D platform_get_drvdata(pdev);
->> +
->> +=09reset_control_assert(simple->resets);
->> +}
->> +
->>  static int __maybe_unused dwc3_of_simple_runtime_suspend(struct device=20=
+> 
+> On Mon 12 Aug 19, 16:35, Ezequiel Garcia wrote:
+> > From: Boris Brezillon <boris.brezillon@collabora.com>
+> > 
+> > Some stateless decoders don't support per-slice decoding granularity
+> > (or at least not in a way that would make them efficient or easy to use).
+> > 
+> > Expose a menu to control the supported decoding modes. Drivers are
+> > allowed to support only one decoding but they can support both too.
+> > 
+> > Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
+> > Reviewed-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> > Tested-by: Philipp Zabel <p.zabel@pengutronix.de>
+> > ---
+> > Changes in v5:
+> > * Improve specification as suggested by Hans.
+> > Changes in v4:
+> > * Typos/rewording fixes
+> > Changes in v3:
+> > * s/per-{slice,frame} decoding/{slice,frame}-based decoding/
+> > * Add Paul's R-b
+> > Changes in v2:
+> > * Allow decoding multiple slices in per-slice decoding mode
+> > * Minor doc improvement/fixes
+> > ---
+> >  .../media/uapi/v4l/ext-ctrls-codec.rst        | 47 ++++++++++++++++++-
+> >  .../media/uapi/v4l/pixfmt-compressed.rst      |  3 +-
+> >  drivers/media/v4l2-core/v4l2-ctrls.c          |  9 ++++
+> >  include/media/h264-ctrls.h                    | 11 +++++
+> >  4 files changed, 68 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> > index c5f39dd50043..568390273fde 100644
+> > --- a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> > +++ b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> > @@ -1747,6 +1747,11 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
+> >      * - __u32
+> >        - ``size``
+> >        -
+> > +    * - __u32
+> > +      - ``start_byte_offset``
+> > +      - Where the slice payload starts in the output buffer. Useful when the
+> > +        OUTPUT buffer contains more than one slice (some codecs need to know
+> > +        where each slice starts in this buffer).
+> 
+> I think there is a possibility for misunderstanding here: does the
+> "slice payload" include the start code when it (annex-b) is selected?
+> 
+> I'd suspect that the hardware needs to know where the start code begings rather
+> than where the NAL unit starts when there is a start code. So I'd suggest
+> specifying it as the offset to the beginning of the start code (if present) or
+> to the slice NAL unit start otherwise.
+> 
 
->> *dev)
->>  {
->>  =09struct dwc3_of_simple=09*simple =3D dev_get_drvdata(dev);
->> @@ -190,6 +197,7 @@
->>  static struct platform_driver dwc3_of_simple_driver =3D {
->>  =09.probe=09=09=3D dwc3_of_simple_probe,
->>  =09.remove=09=09=3D dwc3_of_simple_remove,
->> +=09.shutdown=09=3D dwc3_of_simple_shutdown,
->>  =09.driver=09=09=3D {
->>  =09=09.name=09=3D "dwc3-of-simple",
->>  =09=09.of_match_table =3D of_dwc3_simple_match,
->>=20
->> If this patch is OK after review i can resubmit it as a pull request.
->
-> not a pull request, just send a patch using git send-email
->
->> Should a similar change be applied to drivers/usb/dwc3/core.c ?
->
-> Is it necessary? We haven't had any bug reports regarding that. Also, if
-> we have reset control support in the core driver, why do we need it in
-> of_simple? Seems like of_simple could just rely on what core does.
+Yes, start_byte_offset is the offset in bytes from the beginning
+of the OUTPUT buffer to the start of this slice (which may start
+with a start code as per the start code control).
 
-the workaround has been tested patching only core.c with
---- a/drivers/usb/dwc3/core.c
-+++ b/drivers/usb/dwc3/core.c
-@@ -1561,6 +1561,13 @@
- =09return 0;
- }
-=20
-+static void dwc3_shutdown(struct platform_device *pdev)
-+{
-+=09struct dwc3 *dwc =3D platform_get_drvdata(pdev);
-+
-+=09reset_control_assert(dwc->reset);
-+}
-+
- #ifdef CONFIG_PM
- static int dwc3_core_init_for_resume(struct dwc3 *dwc)
- {
-@@ -1866,6 +1873,7 @@
- static struct platform_driver dwc3_driver =3D {
- =09.probe=09=09=3D dwc3_probe,
- =09.remove=09=09=3D dwc3_remove,
-+=09.shutdown=09=3D dwc3_shutdown,
- =09.driver=09=09=3D {
- =09=09.name=09=3D "dwc3",
- =09=09.of_match_table=09=3D of_match_ptr(of_dwc3_match),
+I guess the field could be named simply "offset", but at the same
+time, this is bikeshedding.
 
-and leaving dwc3-of-simple.c as is, the issue persisted.
+> The clarification should probably also concern header_bit_size, to make it clear
+> where it is counted from. I think it makes sense to count it starting from
+> the start_byte_offset position.
+> 
 
-Regards,
-  Vicen=C3=A7.
+The header_bit_size is currently counted from the start of slice.
+It seems this needs to be better documented, but not necessarily
+as part of this patch.
+
+> >      * - __u32
+> >        - ``header_bit_size``
+> >        -
+> > @@ -1930,7 +1935,10 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
+> >        -
+> >      * - __u16
+> >        - ``num_slices``
+> > -      - Number of slices needed to decode the current frame
+> > +      - Number of slices needed to decode the current frame/field. When
+> > +        operating in slice-based decoding mode (see
+> > +        :c:type:`v4l2_mpeg_video_h264_decoding_mode`), this field
+> > +        should always be set to one.
+> 
+> I am fine with the current proposal for now, but I believe that we should keep
+> discussing whether we want per-slice mode to strictly enforce having a
+> single-slice, outside of this series.
+> 
+
+Sounds good.
+
+> One reason for that would be to gather multiple slices (up to what amounts to
+> a frame) for efficient use of OUTPUT buffers and to avoid allocating a huge
+> number of small ones (which is certainly quite inefficient due to CMA
+> alignment).
+> 
+> Apparently, passing multiple slice_params controls is an issue so per-frame mode
+> currently has to rely on the hardware being able to parse the slice header on
+> its own. The issue exists in the V4L2 API, where we need to know in advance
+> the maximum number of slices we want to use to make the control an array and
+> copy all the controls with each request, even if only a single-one is used.
+> 
+> Maybe one way to solve that would be to use multiple requests with the same
+> OUTPUT buffer, one per slice, so that we only have to pass a single slice_params
+> control per-request. And the first slice of the frame would get the other
+> controls too, while the others wouldn't (assuming we can trust that controls
+> won't change in-between and I'm not sure how true that is). Worst case, all
+> the controls have to be attached with each request, which is maybe still better
+> than passing a big number of unused slice_params controls each time.
+> 
+> Again, I believe the current proposal is good to go for now as it allows the
+> hantro driver to get-in staging, which is the priority.
+> 
+> But the issue I'm discussing should certainly be fixed before unstaging the API.
+> 
+
+Totally, I think the next step is to add multi-slice support to the cedrus
+driver. It will help consolidate the API.
+
+> >      * - __u16
+> >        - ``nal_ref_idc``
+> >        - NAL reference ID value coming from the NAL Unit header
+> > @@ -2021,6 +2029,43 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
+> >        - 0x00000004
+> >        - The DPB entry is a long term reference frame
+> >  
+> > +``V4L2_CID_MPEG_VIDEO_H264_DECODING_MODE (enum)``
+> > +    Specifies the decoding mode to use. Currently exposes slice-based and
+> > +    frame-based decoding but new modes might be added later on.
+> > +    This control is used to complement V4L2_PIX_FMT_H264_SLICE
+> > +    pixel format. Applications that support V4L2_PIX_FMT_H264_SLICE
+> > +    are required to set this control in order to specify the decoding mode
+> > +    that is expected for the buffer.
+> > +    Drivers may expose a single or multiple decoding modes, depending
+> > +    on what they can support.
+> > +
+> > +    .. note::
+> > +
+> > +       This menu control is not yet part of the public kernel API and
+> > +       it is expected to change.
+> > +
+> > +.. c:type:: v4l2_mpeg_video_h264_decoding_mode
+> > +
+> > +.. cssclass:: longtable
+> > +
+> > +.. flat-table::
+> > +    :header-rows:  0
+> > +    :stub-columns: 0
+> > +    :widths:       1 1 2
+> > +
+> > +    * - ``V4L2_MPEG_VIDEO_H264_SLICE_BASED_DECODING``
+> > +      - 0
+> > +      - The decoding is done at the slice granularity.
+> > +        v4l2_ctrl_h264_decode_params->num_slices should be set to 1.
+> > +        The OUTPUT buffer must contain a single slice.
+> > +    * - ``V4L2_MPEG_VIDEO_H264_FRAME_BASED_DECODING``
+> > +      - 1
+> > +      - The decoding is done at the frame granularity.
+> > +        v4l2_ctrl_h264_decode_params->num_slices should be set to the number of
+> > +        slices forming a frame.
+> > +        The OUTPUT buffer must contain all slices needed to decode the
+> > +        frame. The OUTPUT buffer must also contain both fields.
+> > +
+> 
+> Nitpick/suggestion here: could we use the name of the enum as a prefix for the
+> modes, like:
+> - V4L2_MPEG_VIDEO_H264_DECODING_MODE_PER_SLICE
+> - V4L2_MPEG_VIDEO_H264_DECODING_MODE_PER_FRAME
+> 
+> or
+> - V4L2_MPEG_VIDEO_H264_DECODING_MODE_SLICE_BASED
+> - V4L2_MPEG_VIDEO_H264_DECODING_MODE_FRAME_BASED
+> 
+> I personally find it more readable this way, since the same prefix is kept.
+> 
+
+Yes, that looks better.
+
+Thanks for reviewing,
+Ezequiel
