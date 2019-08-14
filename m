@@ -1,80 +1,114 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v5 04/11] media: uapi: h264: Add the concept of start code
-Date: Wed, 14 Aug 2019 10:11:04 +0200
-Message-ID: <f88d144f-e0fe-6974-efe5-77b5ed5c6e09@xs4all.nl>
-References: <20190812193522.10911-1-ezequiel@collabora.com>
- <20190812193522.10911-5-ezequiel@collabora.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: CPUfreq fail on rk3399-firefly (was: next/master boot: 285 boots:
+ 16 failed, 264 passed with 3 offline, 1 untried/unknown,
+ 1 conflict (next-20190718))
+Date: Wed, 14 Aug 2019 11:01:29 +0200
+Message-ID: <2314814.WbdfqDVNqK@phil>
+References: <5d3057c8.1c69fb81.c6489.8ad2@mx.google.com>
+ <20190718162005.GF5761@sirena.org.uk> <7hmugdynmk.fsf@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190812193522.10911-5-ezequiel@collabora.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org
-Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <7hmugdynmk.fsf@baylibre.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Kevin Hilman <khilman@baylibre.com>
+Cc: linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, linux-next@vger.kernel.org, linux-arm-kernel@lists.infradead.org, kernel-build-reports@lists.linaro.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 8/12/19 9:35 PM, Ezequiel Garcia wrote:
-> Stateless decoders have different expectations about the
-> start code that is prepended on H264 slices. Add a
-> menu control to express the supported start code types
-> (including no start code).
+Hi,
+
+Am Dienstag, 13. August 2019, 19:35:31 CEST schrieb Kevin Hilman:
+> [ resent with correct addr for linux-rockchip list ]
 > 
-> Drivers are allowed to support only one start code type,
-> but they can support both too.
+> Mark Brown <broonie@kernel.org> writes:
 > 
-> Note that this is independent of the H264 decoding mode,
-> which specifies the granularity of the decoding operations.
-> Either in frame-based or slice-based mode, this new control
-> will allow to define the start code expected on H264 slices.
+> > On Thu, Jul 18, 2019 at 04:28:08AM -0700, kernelci.org bot wrote:
+> >
+> > Today's -next started failing to boot defconfig on rk3399-firefly:
+> >
+> >> arm64:
+> >
+> >>     defconfig:
+> >>         gcc-8:
+> >>             rk3399-firefly: 1 failed lab
+> >
+> > It hits a BUG() trying to set up cpufreq:
+> >
+> > [   87.381606] cpufreq: cpufreq_online: CPU0: Running at unlisted freq: 200000 KHz
+> > [   87.393244] cpufreq: cpufreq_online: CPU0: Unlisted initial frequency changed to: 408000 KHz
+> > [   87.469777] cpufreq: cpufreq_online: CPU4: Running at unlisted freq: 12000 KHz
+> > [   87.488595] cpu cpu4: _generic_set_opp_clk_only: failed to set clock rate: -22
+> > [   87.491881] cpufreq: __target_index: Failed to change cpu frequency: -22
+> > [   87.495335] ------------[ cut here ]------------
+> > [   87.496821] kernel BUG at drivers/cpufreq/cpufreq.c:1438!
+> > [   87.498462] Internal error: Oops - BUG: 0 [#1] PREEMPT SMP
+> >
+> > I'm struggling to see anything relevant in the diff from yesterday, the
+> > unlisted frequency warnings were there in the logs yesterday but no oops
+> > and I'm not seeing any changes in cpufreq, clk or anything relevant
+> > looking.
+> >
+> > Full bootlog and other info can be found here:
+> >
+> > 	https://kernelci.org/boot/id/5d302d8359b51498d049e983/
 > 
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> Tested-by: Philipp Zabel <p.zabel@pengutronix.de>
-> ---
-> Changes in v5:
-> * Improve specification as suggested by Hans.
-> Changes in v4:
-> * New patch.
-> ---
->  .../media/uapi/v4l/ext-ctrls-codec.rst        | 33 +++++++++++++++++++
->  .../media/uapi/v4l/pixfmt-compressed.rst      |  3 +-
->  drivers/media/v4l2-core/v4l2-ctrls.c          |  9 +++++
->  include/media/h264-ctrls.h                    |  6 ++++
->  4 files changed, 50 insertions(+), 1 deletion(-)
+> I confirm that disabling CPUfreq in the defconfig (CONFIG_CPU_FREQ=n)
+> makes the firefly board start working again.
 > 
-
-<snip>
-
-> diff --git a/include/media/h264-ctrls.h b/include/media/h264-ctrls.h
-> index e6c510877f67..31555c99f64a 100644
-> --- a/include/media/h264-ctrls.h
-> +++ b/include/media/h264-ctrls.h
-> @@ -27,6 +27,7 @@
->  #define V4L2_CID_MPEG_VIDEO_H264_SLICE_PARAMS	(V4L2_CID_MPEG_BASE+1003)
->  #define V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS	(V4L2_CID_MPEG_BASE+1004)
->  #define V4L2_CID_MPEG_VIDEO_H264_DECODING_MODE	(V4L2_CID_MPEG_BASE+1005)
-> +#define V4L2_CID_MPEG_VIDEO_H264_STARTCODE	(V4L2_CID_MPEG_BASE+1006)
-
-I almost forgot: can you change this to _START_CODE? Since it is two words?
-
-Thanks!
-
-	Hans
-
->  
->  /* enum v4l2_ctrl_type type values */
->  #define V4L2_CTRL_TYPE_H264_SPS			0x0110
-> @@ -41,6 +42,11 @@ enum v4l2_mpeg_video_h264_decoding_mode {
->  	V4L2_MPEG_VIDEO_H264_FRAME_BASED_DECODING,
->  };
->  
-> +enum v4l2_mpeg_video_h264_start_code {
-> +	V4L2_MPEG_VIDEO_H264_NO_STARTCODE,
-> +	V4L2_MPEG_VIDEO_H264_ANNEX_B_STARTCODE,
-> +};
-> +
->  #define V4L2_H264_SPS_CONSTRAINT_SET0_FLAG			0x01
->  #define V4L2_H264_SPS_CONSTRAINT_SET1_FLAG			0x02
->  #define V4L2_H264_SPS_CONSTRAINT_SET2_FLAG			0x04
+> Note that the default defconfig enables the "performance" CPUfreq
+> governor as the default governor, so during kernel boot, it will always
+> switch to the max frequency.
 > 
+> For fun, I set the default governor to "userspace" so the kernel
+> wouldn't make any OPP changes, and that leads to a slightly more
+> informative splat[1]
+> 
+> There is still an OPP change happening because the detected OPP is not
+> one that's listed in the table, so it tries to change to a listed OPP
+> and fails in the bowels of clk_set_rate()
+
+Though I think that might only be a symptom as well.
+Both the PLL setting code as well as the actual cpu-clock implementation
+is unchanged since 2017 (and runs just fine on all boards in my farm).
+
+One source for these issues is often the regulator supplying the cpu
+going haywire - aka the voltage not matching the opp.
+
+As in this error-case it's CPU4 being set, this would mean it might
+be the big cluster supplied by the external syr825 (fan5355 clone)
+that might act up. In the Firefly-rk3399 case this is even stranger.
+
+There is a discrepancy between the "fcs,suspend-voltage-selector"
+between different bootloader versions (how the selection-pin is set up),
+so the kernel might actually write his requested voltage to the wrong
+register (not the one for actual voltage, but the second set used for
+the suspend voltage).
+
+Did you by chance swap bootloaders at some point in recent past?
+
+I'd assume [2] might actually be the same issue last year, though
+the CI-logs are not available anymore it seems.
+
+
+Could you try to set the vdd_cpu_b regulator to disabled, so that
+cpufreq for this cluster defers and see what happens?
+
+I don't really have a Firefly in my boardfarm, so I let 5.3-rc run on
+a Theobroma Puma which has the same regulator setup as the Firefly
+and all including the performance governor did run nicely, so it really
+looks like some sort of Firefly specific issue.
+
+Heiko
+
+> [1] https://termbin.com/3oum
+
+[2] https://lkml.org/lkml/2018/6/19/1167
