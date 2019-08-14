@@ -1,143 +1,78 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v6 06/11] media: cedrus: Cleanup control initialization
-Date: Wed, 14 Aug 2019 16:59:26 -0300
-Message-ID: <20190814195931.6587-7-ezequiel@collabora.com>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v6 07/11] media: cedrus: Specify H264 startcode and decoding
+ mode
+Date: Wed, 14 Aug 2019 16:59:27 -0300
+Message-ID: <20190814195931.6587-8-ezequiel@collabora.com>
 References: <20190814195931.6587-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190814195931.6587-1-ezequiel@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-media@vger.kernel.org
-Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org, Ezequiel Garcia <ezequiel@collabora.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190814195931.6587-1-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: fbuergisser-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-In order to introduce other controls, the control initialization
-needs to support an initial struct v4l2_ctrl_control.
+The cedrus VPU is slice-based and expects V4L2_PIX_FMT_H264_SLICE
+buffers to contain H264 slices with no start code.
 
-While here, let's cleanup the control initialization,
-removing unneeded fields.
+Expose this to userspace with the newly added menu control.
 
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+These two controls are specified as mandatory for applications,
+but we mark them as non-required on the driver side for
+backwards compatibility.
+
+Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
 Changes in v6:
-* None.
+* Adjust to control renames.
 Changes in v5:
-* None.
+* Clarify commit log.
 Changes in v4:
 * New patch.
 ---
- drivers/staging/media/sunxi/cedrus/cedrus.c | 45 +++++++++++----------
- drivers/staging/media/sunxi/cedrus/cedrus.h |  3 +-
- 2 files changed, 25 insertions(+), 23 deletions(-)
+ drivers/staging/media/sunxi/cedrus/cedrus.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
 diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.c b/drivers/staging/media/sunxi/cedrus/cedrus.c
-index 370937edfc14..7bdc413bf727 100644
+index 7bdc413bf727..69a836aa11ef 100644
 --- a/drivers/staging/media/sunxi/cedrus/cedrus.c
 +++ b/drivers/staging/media/sunxi/cedrus/cedrus.c
-@@ -29,44 +29,51 @@
- 
- static const struct cedrus_control cedrus_controls[] = {
- 	{
--		.id		= V4L2_CID_MPEG_VIDEO_MPEG2_SLICE_PARAMS,
--		.elem_size	= sizeof(struct v4l2_ctrl_mpeg2_slice_params),
-+		.cfg = {
-+			.id	= V4L2_CID_MPEG_VIDEO_MPEG2_SLICE_PARAMS,
-+		},
- 		.codec		= CEDRUS_CODEC_MPEG2,
- 		.required	= true,
- 	},
- 	{
--		.id		= V4L2_CID_MPEG_VIDEO_MPEG2_QUANTIZATION,
--		.elem_size	= sizeof(struct v4l2_ctrl_mpeg2_quantization),
-+		.cfg = {
-+			.id	= V4L2_CID_MPEG_VIDEO_MPEG2_QUANTIZATION,
-+		},
- 		.codec		= CEDRUS_CODEC_MPEG2,
- 		.required	= false,
- 	},
- 	{
--		.id		= V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS,
--		.elem_size	= sizeof(struct v4l2_ctrl_h264_decode_params),
-+		.cfg = {
-+			.id	= V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS,
-+		},
+@@ -77,6 +77,26 @@ static const struct cedrus_control cedrus_controls[] = {
  		.codec		= CEDRUS_CODEC_H264,
  		.required	= true,
  	},
- 	{
--		.id		= V4L2_CID_MPEG_VIDEO_H264_SLICE_PARAMS,
--		.elem_size	= sizeof(struct v4l2_ctrl_h264_slice_params),
++	{
 +		.cfg = {
-+			.id	= V4L2_CID_MPEG_VIDEO_H264_SLICE_PARAMS,
++			.id	= V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE,
++			.max	= V4L2_MPEG_VIDEO_H264_DECODE_MODE_SLICE_BASED,
++			.def	= V4L2_MPEG_VIDEO_H264_DECODE_MODE_SLICE_BASED,
++			.menu_skip_mask = BIT(V4L2_MPEG_VIDEO_H264_DECODE_MODE_FRAME_BASED),
 +		},
- 		.codec		= CEDRUS_CODEC_H264,
- 		.required	= true,
- 	},
- 	{
--		.id		= V4L2_CID_MPEG_VIDEO_H264_SPS,
--		.elem_size	= sizeof(struct v4l2_ctrl_h264_sps),
++		.codec		= CEDRUS_CODEC_H264,
++		.required	= false,
++	},
++	{
 +		.cfg = {
-+			.id	= V4L2_CID_MPEG_VIDEO_H264_SPS,
++			.id	= V4L2_CID_MPEG_VIDEO_H264_START_CODE,
++			.max	= V4L2_MPEG_VIDEO_H264_START_CODE_NONE,
++			.def	= V4L2_MPEG_VIDEO_H264_START_CODE_NONE,
++			.menu_skip_mask = BIT(V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B),
 +		},
- 		.codec		= CEDRUS_CODEC_H264,
- 		.required	= true,
- 	},
- 	{
--		.id		= V4L2_CID_MPEG_VIDEO_H264_PPS,
--		.elem_size	= sizeof(struct v4l2_ctrl_h264_pps),
-+		.cfg = {
-+			.id	= V4L2_CID_MPEG_VIDEO_H264_PPS,
-+		},
- 		.codec		= CEDRUS_CODEC_H264,
- 		.required	= true,
- 	},
- 	{
--		.id		= V4L2_CID_MPEG_VIDEO_H264_SCALING_MATRIX,
--		.elem_size	= sizeof(struct v4l2_ctrl_h264_scaling_matrix),
-+		.cfg = {
-+			.id	= V4L2_CID_MPEG_VIDEO_H264_SCALING_MATRIX,
-+		},
- 		.codec		= CEDRUS_CODEC_H264,
- 		.required	= true,
- 	},
-@@ -106,12 +113,8 @@ static int cedrus_init_ctrls(struct cedrus_dev *dev, struct cedrus_ctx *ctx)
- 		return -ENOMEM;
- 
- 	for (i = 0; i < CEDRUS_CONTROLS_COUNT; i++) {
--		struct v4l2_ctrl_config cfg = {};
--
--		cfg.elem_size = cedrus_controls[i].elem_size;
--		cfg.id = cedrus_controls[i].id;
--
--		ctrl = v4l2_ctrl_new_custom(hdl, &cfg, NULL);
-+		ctrl = v4l2_ctrl_new_custom(hdl, &cedrus_controls[i].cfg,
-+					    NULL);
- 		if (hdl->error) {
- 			v4l2_err(&dev->v4l2_dev,
- 				 "Failed to create new custom control\n");
-@@ -178,7 +181,7 @@ static int cedrus_request_validate(struct media_request *req)
- 			continue;
- 
- 		ctrl_test = v4l2_ctrl_request_hdl_ctrl_find(hdl,
--							    cedrus_controls[i].id);
-+							    cedrus_controls[i].cfg.id);
- 		if (!ctrl_test) {
- 			v4l2_info(&ctx->dev->v4l2_dev,
- 				  "Missing required codec control\n");
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.h b/drivers/staging/media/sunxi/cedrus/cedrus.h
-index 3f476d0fd981..283827656872 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus.h
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus.h
-@@ -49,8 +49,7 @@ enum cedrus_h264_pic_type {
++		.codec		= CEDRUS_CODEC_H264,
++		.required	= false,
++	},
  };
  
- struct cedrus_control {
--	u32			id;
--	u32			elem_size;
-+	struct v4l2_ctrl_config cfg;
- 	enum cedrus_codec	codec;
- 	unsigned char		required:1;
- };
+ #define CEDRUS_CONTROLS_COUNT	ARRAY_SIZE(cedrus_controls)
 -- 
 2.22.0
