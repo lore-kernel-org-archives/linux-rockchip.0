@@ -1,104 +1,115 @@
 From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH v5 04/11] media: uapi: h264: Add the concept of start
- code
-Date: Wed, 14 Aug 2019 11:12:16 -0300
-Message-ID: <c490068a4d1ea550f330e8127826014bec0e12f2.camel@collabora.com>
-References: <20190812193522.10911-1-ezequiel@collabora.com>
-         <20190812193522.10911-5-ezequiel@collabora.com>
-         <f88d144f-e0fe-6974-efe5-77b5ed5c6e09@xs4all.nl>
-         <20190814114928.GB4687@aptenodytes>
+Subject: [PATCH v6 00/11] media: hantro: Add support for H264 decoding
+Date: Wed, 14 Aug 2019 16:59:20 -0300
+Message-ID: <20190814195931.6587-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190814114928.GB4687@aptenodytes>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Hans Verkuil <hverkuil@xs4all.nl>
-Cc: linux-media@vger.kernel.org, kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
+To: linux-media@vger.kernel.org
+Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 2019-08-14 at 13:49 +0200, Paul Kocialkowski wrote:
-> Hi,
-> 
-> On Wed 14 Aug 19, 10:11, Hans Verkuil wrote:
-> > On 8/12/19 9:35 PM, Ezequiel Garcia wrote:
-> > > Stateless decoders have different expectations about the
-> > > start code that is prepended on H264 slices. Add a
-> > > menu control to express the supported start code types
-> > > (including no start code).
-> > > 
-> > > Drivers are allowed to support only one start code type,
-> > > but they can support both too.
-> > > 
-> > > Note that this is independent of the H264 decoding mode,
-> > > which specifies the granularity of the decoding operations.
-> > > Either in frame-based or slice-based mode, this new control
-> > > will allow to define the start code expected on H264 slices.
-> > > 
-> > > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> > > Tested-by: Philipp Zabel <p.zabel@pengutronix.de>
-> > > ---
-> > > Changes in v5:
-> > > * Improve specification as suggested by Hans.
-> > > Changes in v4:
-> > > * New patch.
-> > > ---
-> > >  .../media/uapi/v4l/ext-ctrls-codec.rst        | 33 +++++++++++++++++++
-> > >  .../media/uapi/v4l/pixfmt-compressed.rst      |  3 +-
-> > >  drivers/media/v4l2-core/v4l2-ctrls.c          |  9 +++++
-> > >  include/media/h264-ctrls.h                    |  6 ++++
-> > >  4 files changed, 50 insertions(+), 1 deletion(-)
-> > > 
-> > 
-> > <snip>
-> > 
-> > > diff --git a/include/media/h264-ctrls.h b/include/media/h264-ctrls.h
-> > > index e6c510877f67..31555c99f64a 100644
-> > > --- a/include/media/h264-ctrls.h
-> > > +++ b/include/media/h264-ctrls.h
-> > > @@ -27,6 +27,7 @@
-> > >  #define V4L2_CID_MPEG_VIDEO_H264_SLICE_PARAMS	(V4L2_CID_MPEG_BASE+1003)
-> > >  #define V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS	(V4L2_CID_MPEG_BASE+1004)
-> > >  #define V4L2_CID_MPEG_VIDEO_H264_DECODING_MODE	(V4L2_CID_MPEG_BASE+1005)
-> > > +#define V4L2_CID_MPEG_VIDEO_H264_STARTCODE	(V4L2_CID_MPEG_BASE+1006)
-> > 
-> > I almost forgot: can you change this to _START_CODE? Since it is two words?
-> 
-> Agreed, I like it better this way too.
-> 
+Small respin of H264 uAPI review and Hantro G1 H264 decoding support.
+Compared to previous version, this version does some more improvements
+on the uAPI spec, addressing feedback from Hans and Paul.
 
-The reason to have STARTCODE instead of START_CODE was to have some
-consistency with other controls (namely, V4L2_CID_MPEG_VIDEO_HEVC_WITHOUT_STARTCODE).
+I really hope I managed to get this right, and address current concerns.
 
-Consistency is really important in a API,
-but at the same time, I agree START_CODE looks better.
+Here's previous cover letter, for reference:
 
-> > Thanks!
-> > 
-> > 	Hans
-> > 
-> > >  
-> > >  /* enum v4l2_ctrl_type type values */
-> > >  #define V4L2_CTRL_TYPE_H264_SPS			0x0110
-> > > @@ -41,6 +42,11 @@ enum v4l2_mpeg_video_h264_decoding_mode {
-> > >  	V4L2_MPEG_VIDEO_H264_FRAME_BASED_DECODING,
-> > >  };
-> > >  
-> > > +enum v4l2_mpeg_video_h264_start_code {
-> > > +	V4L2_MPEG_VIDEO_H264_NO_STARTCODE,
-> > > +	V4L2_MPEG_VIDEO_H264_ANNEX_B_STARTCODE,
-> 
-> Could we apply the same START_CODE renaming here too?
-> 
-> I was also thinking that it would be slightly more readable put like this,
-> with START_CODE as a prefix since it's common to both options and the name of
-> the enum:
-> 
-> - V4L2_MPEG_VIDEO_H264_START_CODE_NONE
-> - V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B
-> 
+This series consolidates the two recent H264 series submitted
+by Boris [1] [2]. Some patches from [2] have been merged (namely,
+helpers for the Hantro driver), and so I'm adding the remanining
+bits required to support H264 on Hantro G1 VPU.
 
-Yes, that looks much better.
+* Patch 1 adds support for the sort_r() variant and has
+  been posted separately by Rasmus. It would be good to merge this patch
+  via the media tree, ideally as soon as possible, to avoid the
+  synchronisation burden that might appear if we decide to delay it.
 
-Thanks,
-Ezequiel
+* Patch 2 to 4 extends the H264 uAPI, introducing frame-based vs slice-based
+  decoding granularity, and also support for different NALU start codes.
+  Currently, Annex B and no start codes are the supported options.
+
+  With the introduction of the start code control, the H264 parsed
+  slices pixel format should be renamed, dropping the _RAW suffix,
+  which is now meaningless.
+
+* Patch 5 removes the P0/B0/B1 ref lists from the decode_params control.
+  These lists are no longer needed since we build them on the
+  kernel side based on the DPB.
+
+* Patch 6 and 7 exposes the proper decoding mode and start code
+  on the cedrus driver. The driver functionality is not changed,
+  and only the Cedrus support is now being properly exposed to
+  userspace.
+
+* Patch 8 is needed to properly propagate the OUTPUT buffer timestamp to
+  the CAPTURE buffer one, which is required for intra-frame references.
+
+* Patches 9 to 11 adds H264 support for Hantro G1 and then enable
+  H264 decoding on RK3288.
+
+This is based on media master and tested on Rockchip RK3288 for Hantro and
+Allwinner H3 boards for Cedrus. Philipp Zabel tested on i.MX8MQ EVK using [3].
+
+The Ffmpeg branch used to test is based on the great work of Jonas and Boris,
+and is available in [4]. Instructions to build and run are as follows:
+
+./configure --enable-v4l2-request --enable-libdrm
+make -j4
+
+(test via framebuffer rendering):
+
+./ffmpeg -loglevel debug -hwaccel drm -hwaccel_device /dev/dri/card0 -i $some_file.avi -pix_fmt bgra -f fbdev /dev/fb0
+
+[1] https://www.mail-archive.com/linux-media@vger.kernel.org/msg148299.html
+[2] https://lkml.org/lkml/2019/6/19/379
+[3] git://git.pengutronix.de/git/pza/linux.git hantro/imx8m-wip
+[4] https://gitlab.collabora.com/ezequiel/ffmpeg/tree/stateless-mpeg2-vp8-h264-v4
+
+Boris Brezillon (3):
+  media: uapi: h264: Add the concept of decoding mode
+  media: uapi: h264: Get rid of the p0/b0/b1 ref-lists
+  media: hantro: Move copy_metadata() before doing a decode operation
+
+Ezequiel Garcia (4):
+  media: uapi: h264: Rename pixel format
+  media: uapi: h264: Add the concept of start code
+  media: cedrus: Cleanup control initialization
+  media: cedrus: Specify H264 startcode and decoding mode
+
+Hertz Wong (3):
+  media: hantro: Add core bits to support H264 decoding
+  media: hantro: Add support for H264 decoding on G1
+  media: hantro: Enable H264 decoding on rk3288
+
+Rasmus Villemoes (1):
+  lib/sort.c: implement sort() variant taking context argument
+
+ .../media/uapi/v4l/ext-ctrls-codec.rst        |  89 ++-
+ .../media/uapi/v4l/pixfmt-compressed.rst      |  11 +-
+ drivers/media/v4l2-core/v4l2-ctrls.c          |  18 +
+ drivers/media/v4l2-core/v4l2-ioctl.c          |   2 +-
+ drivers/staging/media/hantro/Makefile         |   2 +
+ drivers/staging/media/hantro/hantro.h         |   9 +-
+ drivers/staging/media/hantro/hantro_drv.c     |  50 +-
+ .../staging/media/hantro/hantro_g1_h264_dec.c | 292 ++++++++
+ drivers/staging/media/hantro/hantro_h264.c    | 641 ++++++++++++++++++
+ drivers/staging/media/hantro/hantro_hw.h      |  56 ++
+ drivers/staging/media/hantro/hantro_v4l2.c    |  10 +
+ drivers/staging/media/hantro/rk3288_vpu_hw.c  |  21 +-
+ drivers/staging/media/sunxi/cedrus/cedrus.c   |  65 +-
+ drivers/staging/media/sunxi/cedrus/cedrus.h   |   3 +-
+ .../staging/media/sunxi/cedrus/cedrus_dec.c   |   2 +-
+ .../staging/media/sunxi/cedrus/cedrus_video.c |   6 +-
+ include/linux/sort.h                          |   5 +
+ include/media/h264-ctrls.h                    |  21 +-
+ lib/sort.c                                    |  34 +-
+ 19 files changed, 1281 insertions(+), 56 deletions(-)
+ create mode 100644 drivers/staging/media/hantro/hantro_g1_h264_dec.c
+ create mode 100644 drivers/staging/media/hantro/hantro_h264.c
+
+-- 
+2.22.0
