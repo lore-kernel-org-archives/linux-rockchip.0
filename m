@@ -1,103 +1,94 @@
 From: Felipe Balbi <balbi@kernel.org>
 Subject: Re: kexec on rk3399
-Date: Thu, 15 Aug 2019 09:00:16 +0300
-Message-ID: <87sgq3t1cf.fsf@gmail.com>
-References: <ebcb52be-2063-4e2c-9a09-fdcacb94f855@gmail.com> <c6993a1e-6fc2-44ab-b59e-152142e2ff4d@gmail.com> <87v9uzaocj.fsf@gmail.com> <4fc3e5b5-31fe-41f6-8031-b37454f21437@gmail.com>
+Date: Thu, 15 Aug 2019 09:06:02 +0300
+Message-ID: <87pnl7t12t.fsf@gmail.com>
+References: <ebcb52be-2063-4e2c-9a09-fdcacb94f855@gmail.com> <c6993a1e-6fc2-44ab-b59e-152142e2ff4d@gmail.com> <0408cb6c-1b16-eacb-d47e-17f4ff89e2b8@arm.com> <59055782-7fc2-4b16-af8b-a56fb845a43f@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4fc3e5b5-31fe-41f6-8031-b37454f21437@gmail.com>
+In-Reply-To: <59055782-7fc2-4b16-af8b-a56fb845a43f@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Vicente Bergas <vicencb@gmail.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, Marc Zyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Matthias Brugger <mbrugger@suse.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Vicente Bergas <vicencb@gmail.com>, Robin Murphy <robin.murphy@arm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, Marc Zyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Matthias Brugger <mbrugger@suse.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
 Hi,
 
 Vicente Bergas <vicencb@gmail.com> writes:
->> Vicente Bergas <vicencb@gmail.com> writes:
->>> On Monday, July 22, 2019 4:31:27 PM CEST, Vicente Bergas wrote:
->>>> Hi, i have been running linux on rk3399 booted with kexec fine until 5.2
->>>> From 5.2 onwards, there are memory corruption issues as reported here:
->>>> http://lkml.iu.edu/hypermail/linux/kernel/1906.2/07211.html
->>>> kexec has been identified as the principal reason for the issues.
->>>> 
->>>> It turns out that kexec has never worked reliably on this platform, ...
->>> 
->>> Thank you all for your suggestions on where the issue could be.
->>> 
->>> It seems that it was the USB driver.
->>> Now using v5.2.8 booted with kexec from v5.2.8 with a workaround and
->>> so far so good. It is being tested on the Sapphire board.
->>> 
->>> The workaround is:
->>> --- a/drivers/usb/dwc3/dwc3-of-simple.c
->>> +++ b/drivers/usb/dwc3/dwc3-of-simple.c
->>> @@ -133,6 +133,13 @@
->>>  	return 0;
->>>  }
->>>  
->>> +static void dwc3_of_simple_shutdown(struct platform_device *pdev)
->>> +{
->>> +	struct dwc3_of_simple *simple = platform_get_drvdata(pdev);
->>> +
->>> +	reset_control_assert(simple->resets);
->>> +}
->>> +
->>>  static int __maybe_unused dwc3_of_simple_runtime_suspend(struct device 
->>> *dev)
->>>  {
->>>  	struct dwc3_of_simple	*simple = dev_get_drvdata(dev);
->>> @@ -190,6 +197,7 @@
->>>  static struct platform_driver dwc3_of_simple_driver = {
->>>  	.probe		= dwc3_of_simple_probe,
->>>  	.remove		= dwc3_of_simple_remove,
->>> +	.shutdown	= dwc3_of_simple_shutdown,
->>>  	.driver		= {
->>>  		.name	= "dwc3-of-simple",
->>>  		.of_match_table = of_dwc3_simple_match,
->>> 
->>> If this patch is OK after review i can resubmit it as a pull request.
->>
->> not a pull request, just send a patch using git send-email
->>
->>> Should a similar change be applied to drivers/usb/dwc3/core.c ?
->>
->> Is it necessary? We haven't had any bug reports regarding that. Also, if
->> we have reset control support in the core driver, why do we need it in
->> of_simple? Seems like of_simple could just rely on what core does.
->
-> the workaround has been tested patching only core.c with
-> --- a/drivers/usb/dwc3/core.c
-> +++ b/drivers/usb/dwc3/core.c
-> @@ -1561,6 +1561,13 @@
->  	return 0;
->  }
->  
-> +static void dwc3_shutdown(struct platform_device *pdev)
-> +{
-> +	struct dwc3 *dwc = platform_get_drvdata(pdev);
-> +
-> +	reset_control_assert(dwc->reset);
-> +}
-> +
->  #ifdef CONFIG_PM
->  static int dwc3_core_init_for_resume(struct dwc3 *dwc)
->  {
-> @@ -1866,6 +1873,7 @@
->  static struct platform_driver dwc3_driver = {
->  	.probe		= dwc3_probe,
->  	.remove		= dwc3_remove,
-> +	.shutdown	= dwc3_shutdown,
->  	.driver		= {
->  		.name	= "dwc3",
->  		.of_match_table	= of_match_ptr(of_dwc3_match),
->
-> and leaving dwc3-of-simple.c as is, the issue persisted.
 
-That's because your reset controller is not passed to dwc3 core, only to
-your glue layer.
+> On Wednesday, August 14, 2019 3:12:26 PM CEST, Robin Murphy wrote:
+>> On 14/08/2019 13:53, Vicente Bergas wrote:
+>>> On Monday, July 22, 2019 4:31:27 PM CEST, Vicente Bergas wrote: ...
+>>
+>> This particular change looks like it's implicitly specific to 
+>> RK3399, which wouldn't be ideal. Presumably if the core dwc3 
+>> driver implemented shutdown correctly (echoing parts of 
+>> dwc3_remove(), I guess) then the glue layers shouldn't need 
+>> anything special anyway.
+>>
+>> Robin.
+>
+> I just checked simple->resets from dwc3-of-simple.c and it is an array
+> with multiple resets whereas dwc->reset from core.c is NULL.
+> So the reset seems specific to the glue layers.
+> Is there another way than resetting the thing that is
+> generic enough to go to core.c and allows kexec?
+
+This is a really odd 'failure'. We do full soft reset during driver
+initialization on dwc3. We shouldn't need to assert reset on shutdown,
+really.
+
+I think the problem is here:
+
+	if (simple->pulse_resets) {
+		ret = reset_control_reset(simple->resets);
+		if (ret)
+			goto err_resetc_put;
+	} else {
+		ret = reset_control_deassert(simple->resets);
+		if (ret)
+			goto err_resetc_put;
+	}
+
+Note that if pulse_resets is set, we will run a reset. But if
+pulse_resets is false and need_reset is true, we deassert the reset.
+
+I think below patch is enough:
+
+diff --git a/drivers/usb/dwc3/dwc3-of-simple.c b/drivers/usb/dwc3/dwc3-of-simple.c
+index bdac3e7d7b18..9a2f3e09aa2e 100644
+--- a/drivers/usb/dwc3/dwc3-of-simple.c
++++ b/drivers/usb/dwc3/dwc3-of-simple.c
+@@ -72,7 +72,15 @@ static int dwc3_of_simple_probe(struct platform_device *pdev)
+ 		ret = reset_control_reset(simple->resets);
+ 		if (ret)
+ 			goto err_resetc_put;
+-	} else {
++	}
++
++	if (simple->need_reset) {
++		ret = reset_control_assert(simple->resets);
++		if (ret)
++			goto err_resetc_put;
++
++		usleep_range(1000, 2000);
++
+ 		ret = reset_control_deassert(simple->resets);
+ 		if (ret)
+ 			goto err_resetc_put;
+@@ -121,9 +129,6 @@ static int dwc3_of_simple_remove(struct platform_device *pdev)
+ 	clk_bulk_put_all(simple->num_clocks, simple->clks);
+ 	simple->num_clocks = 0;
+ 
+-	if (!simple->pulse_resets)
+-		reset_control_assert(simple->resets);
+-
+ 	reset_control_put(simple->resets);
+ 
+ 	pm_runtime_disable(dev);
+
+Can you test?
 
 -- 
 balbi
