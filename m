@@ -1,42 +1,50 @@
-From: Vicente Bergas <vicencb@gmail.com>
-Subject: Re: kexec on rk3399
-Date: Thu, 15 Aug 2019 03:15:55 +0200
-Message-ID: <59055782-7fc2-4b16-af8b-a56fb845a43f@gmail.com>
-References: <ebcb52be-2063-4e2c-9a09-fdcacb94f855@gmail.com>
- <c6993a1e-6fc2-44ab-b59e-152142e2ff4d@gmail.com>
- <0408cb6c-1b16-eacb-d47e-17f4ff89e2b8@arm.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <0408cb6c-1b16-eacb-d47e-17f4ff89e2b8@arm.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Robin Murphy <robin.murphy@arm.com>, Felipe Balbi <balbi@kernel.org>
-Cc: Matthias Brugger <mbrugger@suse.com>, Heiko Stuebner <heiko@sntech.de>, Marc Zyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-usb@vger.kernel.org, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-arm-kernel@lists.infradead.org
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: [PATCH] arm: dts: rockchip: fix vcc_host_5v regulator for usb3 host
+Date: Thu, 15 Aug 2019 10:59:19 +0800
+Message-ID: <20190815025919.5194-1-kever.yang@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, Kever Yang <kever.yang@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, Jonas Karlman <jonas@kwiboo.se>, Katsuhiro Suzuki <katsuhiro@katsuster.net>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Tomohiro Mayama <parly-gh@iris.mystia.org>, Vasily Khoruzhick <anarsoul@gmail.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wednesday, August 14, 2019 3:12:26 PM CEST, Robin Murphy wrote:
-> On 14/08/2019 13:53, Vicente Bergas wrote:
->> On Monday, July 22, 2019 4:31:27 PM CEST, Vicente Bergas wrote: ...
->
-> This particular change looks like it's implicitly specific to 
-> RK3399, which wouldn't be ideal. Presumably if the core dwc3 
-> driver implemented shutdown correctly (echoing parts of 
-> dwc3_remove(), I guess) then the glue layers shouldn't need 
-> anything special anyway.
->
-> Robin.
+According to rock64 schemetic V2 and V3, the VCC_HOST_5V output is
+controlled by USB_20_HOST_DRV, which is the same as VCC_HOST1_5V.
 
-I just checked simple->resets from dwc3-of-simple.c and it is an array
-with multiple resets whereas dwc->reset from core.c is NULL.
-So the reset seems specific to the glue layers.
-Is there another way than resetting the thing that is
-generic enough to go to core.c and allows kexec?
+Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+---
+
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+index 7cfd5ca6cc85..bd4ad1635e0b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+@@ -35,9 +35,9 @@
+ 	vcc_host_5v: vcc-host-5v-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+-		gpio = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
++		gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&usb30_host_drv>;
++		pinctrl-0 = <&usb20_host_drv>;
+ 		regulator-name = "vcc_host_5v";
+ 		regulator-always-on;
+ 		regulator-boot-on;
+@@ -320,12 +320,6 @@
+ 			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+-
+-	usb3 {
+-		usb30_host_drv: usb30-host-drv {
+-			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
+-		};
+-	};
+ };
+ 
+ &sdmmc {
+-- 
+2.17.1
