@@ -1,94 +1,54 @@
-From: Felipe Balbi <balbi@kernel.org>
-Subject: Re: kexec on rk3399
-Date: Thu, 15 Aug 2019 09:06:02 +0300
-Message-ID: <87pnl7t12t.fsf@gmail.com>
-References: <ebcb52be-2063-4e2c-9a09-fdcacb94f855@gmail.com> <c6993a1e-6fc2-44ab-b59e-152142e2ff4d@gmail.com> <0408cb6c-1b16-eacb-d47e-17f4ff89e2b8@arm.com> <59055782-7fc2-4b16-af8b-a56fb845a43f@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: [PATCH v2] arm: dts: rockchip: fix vcc_host_5v regulator for usb3 host
+Date: Thu, 15 Aug 2019 16:12:52 +0800
+Message-ID: <20190815081252.27405-1-kever.yang@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <59055782-7fc2-4b16-af8b-a56fb845a43f@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Vicente Bergas <vicencb@gmail.com>, Robin Murphy <robin.murphy@arm.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, Marc Zyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Matthias Brugger <mbrugger@suse.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, Kever Yang <kever.yang@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, Jonas Karlman <jonas@kwiboo.se>, Katsuhiro Suzuki <katsuhiro@katsuster.net>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Tomohiro Mayama <parly-gh@iris.mystia.org>, Vasily Khoruzhick <anarsoul@gmail.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+According to rock64 schemetic V2 and V3, the VCC_HOST_5V output is
+controlled by USB_20_HOST_DRV, which is the same as VCC_HOST1_5V.
 
-Hi,
+Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+---
 
-Vicente Bergas <vicencb@gmail.com> writes:
+Changes in v2:
+- remove enable-active-high property
 
-> On Wednesday, August 14, 2019 3:12:26 PM CEST, Robin Murphy wrote:
->> On 14/08/2019 13:53, Vicente Bergas wrote:
->>> On Monday, July 22, 2019 4:31:27 PM CEST, Vicente Bergas wrote: ...
->>
->> This particular change looks like it's implicitly specific to 
->> RK3399, which wouldn't be ideal. Presumably if the core dwc3 
->> driver implemented shutdown correctly (echoing parts of 
->> dwc3_remove(), I guess) then the glue layers shouldn't need 
->> anything special anyway.
->>
->> Robin.
->
-> I just checked simple->resets from dwc3-of-simple.c and it is an array
-> with multiple resets whereas dwc->reset from core.c is NULL.
-> So the reset seems specific to the glue layers.
-> Is there another way than resetting the thing that is
-> generic enough to go to core.c and allows kexec?
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
 
-This is a really odd 'failure'. We do full soft reset during driver
-initialization on dwc3. We shouldn't need to assert reset on shutdown,
-really.
-
-I think the problem is here:
-
-	if (simple->pulse_resets) {
-		ret = reset_control_reset(simple->resets);
-		if (ret)
-			goto err_resetc_put;
-	} else {
-		ret = reset_control_deassert(simple->resets);
-		if (ret)
-			goto err_resetc_put;
-	}
-
-Note that if pulse_resets is set, we will run a reset. But if
-pulse_resets is false and need_reset is true, we deassert the reset.
-
-I think below patch is enough:
-
-diff --git a/drivers/usb/dwc3/dwc3-of-simple.c b/drivers/usb/dwc3/dwc3-of-simple.c
-index bdac3e7d7b18..9a2f3e09aa2e 100644
---- a/drivers/usb/dwc3/dwc3-of-simple.c
-+++ b/drivers/usb/dwc3/dwc3-of-simple.c
-@@ -72,7 +72,15 @@ static int dwc3_of_simple_probe(struct platform_device *pdev)
- 		ret = reset_control_reset(simple->resets);
- 		if (ret)
- 			goto err_resetc_put;
--	} else {
-+	}
-+
-+	if (simple->need_reset) {
-+		ret = reset_control_assert(simple->resets);
-+		if (ret)
-+			goto err_resetc_put;
-+
-+		usleep_range(1000, 2000);
-+
- 		ret = reset_control_deassert(simple->resets);
- 		if (ret)
- 			goto err_resetc_put;
-@@ -121,9 +129,6 @@ static int dwc3_of_simple_remove(struct platform_device *pdev)
- 	clk_bulk_put_all(simple->num_clocks, simple->clks);
- 	simple->num_clocks = 0;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+index 7cfd5ca6cc85..62936b432f9a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+@@ -34,10 +34,9 @@
  
--	if (!simple->pulse_resets)
--		reset_control_assert(simple->resets);
+ 	vcc_host_5v: vcc-host-5v-regulator {
+ 		compatible = "regulator-fixed";
+-		enable-active-high;
+-		gpio = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
++		gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&usb30_host_drv>;
++		pinctrl-0 = <&usb20_host_drv>;
+ 		regulator-name = "vcc_host_5v";
+ 		regulator-always-on;
+ 		regulator-boot-on;
+@@ -320,12 +319,6 @@
+ 			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
 -
- 	reset_control_put(simple->resets);
+-	usb3 {
+-		usb30_host_drv: usb30-host-drv {
+-			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
+-		};
+-	};
+ };
  
- 	pm_runtime_disable(dev);
-
-Can you test?
-
+ &sdmmc {
 -- 
-balbi
+2.17.1
