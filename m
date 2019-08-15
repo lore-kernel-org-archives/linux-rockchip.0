@@ -1,123 +1,115 @@
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-Subject: Re: [PATCH v8 05/14] media: rkisp1: add Rockchip ISP1 subdev driver
-Date: Thu, 15 Aug 2019 13:45:15 +0300
-Message-ID: <20190815104515.GO6133@paasikivi.fi.intel.com>
-References: <20190730184256.30338-1-helen.koike@collabora.com>
- <20190730184256.30338-6-helen.koike@collabora.com>
- <20190808091406.GQ21370@paasikivi.fi.intel.com>
- <da6c1d01-e3f6-ad73-db55-145d7832a665@collabora.com>
- <20190815082422.GM6133@paasikivi.fi.intel.com>
- <CAAFQd5Cd2k5ZCDfu=a281NLOa88vpm-P7ZPWF4Nnx==iyEkn7A@mail.gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: kexec on rk3399
+Date: Thu, 15 Aug 2019 12:09:25 +0100
+Message-ID: <4d18d4f7-a00e-bd60-6361-51054eba3bca@arm.com>
+References: <ebcb52be-2063-4e2c-9a09-fdcacb94f855@gmail.com>
+ <c6993a1e-6fc2-44ab-b59e-152142e2ff4d@gmail.com>
+ <0408cb6c-1b16-eacb-d47e-17f4ff89e2b8@arm.com>
+ <59055782-7fc2-4b16-af8b-a56fb845a43f@gmail.com> <87pnl7t12t.fsf@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <CAAFQd5Cd2k5ZCDfu=a281NLOa88vpm-P7ZPWF4Nnx==iyEkn7A@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: devicetree@vger.kernel.org, Eddie Cai <eddie.cai.linux@gmail.com>, kernel@collabora.com, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Chen Jacob <jacob2.chen@rock-chips.com>, Jeffy <jeffy.chen@rock-chips.com>, =?utf-8?B?6ZKf5Lul5bSH?= <zyc@rock-chips.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Allon Huang <allon.huang@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Helen Koike <helen.koike@collabora.com>, Jacob Chen <cc@rock-chips.com>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Shunqian Zheng <zhengsq@rock-chips.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>, "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>Linux
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <87pnl7t12t.fsf@gmail.com>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Felipe Balbi <balbi@kernel.org>, Vicente Bergas <vicencb@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Will Deacon <will.deacon@arm.com>, Marc Zyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Matthias Brugger <mbrugger@suse.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Aug 15, 2019 at 07:29:59PM +0900, Tomasz Figa wrote:
-> On Thu, Aug 15, 2019 at 5:25 PM Sakari Ailus
-> <sakari.ailus@linux.intel.com> wrote:
-> >
-> > Hi Helen,
-> >
-> > On Wed, Aug 14, 2019 at 09:58:05PM -0300, Helen Koike wrote:
-> >
-> > ...
-> >
-> > > >> +static int rkisp1_isp_sd_set_fmt(struct v4l2_subdev *sd,
-> > > >> +                           struct v4l2_subdev_pad_config *cfg,
-> > > >> +                           struct v4l2_subdev_format *fmt)
-> > > >> +{
-> > > >> +  struct rkisp1_device *isp_dev = sd_to_isp_dev(sd);
-> > > >> +  struct rkisp1_isp_subdev *isp_sd = &isp_dev->isp_sdev;
-> > > >> +  struct v4l2_mbus_framefmt *mf = &fmt->format;
-> > > >> +
-> > > >
-> > > > Note that for sub-device nodes, the driver is itself responsible for
-> > > > serialising the access to its data structures.
-> > >
-> > > But looking at subdev_do_ioctl_lock(), it seems that it serializes the
-> > > ioctl calls for subdevs, no? Or I'm misunderstanding something (which is
-> > > most probably) ?
-> >
-> > Good question. I had missed this change --- subdev_do_ioctl_lock() is
-> > relatively new. But setting that lock is still not possible as the struct
-> > is allocated in the framework and the device is registered before the
-> > driver gets hold of it. It's a good idea to provide the same serialisation
-> > for subdevs as well.
-> >
-> > I'll get back to this later.
-> >
-> > ...
-> >
-> > > >> +static int rkisp1_isp_sd_s_power(struct v4l2_subdev *sd, int on)
-> > > >
-> > > > If you support runtime PM, you shouldn't implement the s_power op.
-> > >
-> > > Is is ok to completly remove the usage of runtime PM then?
-> > > Like this http://ix.io/1RJb ?
-> >
-> > Please use runtime PM instead. In the long run we should get rid of the
-> > s_power op. Drivers themselves know better when the hardware they control
-> > should be powered on or off.
-> >
+On 15/08/2019 07:06, Felipe Balbi wrote:
 > 
-> One also needs to use runtime PM to handle power domains and power
-> dependencies on auxiliary devices, e.g. IOMMU.
+> Hi,
 > 
-> > >
-> > > tbh I'm not that familar with runtime PM and I'm not sure what is the
-> > > difference of it and using s_power op (and Documentation/power/runtime_pm.rst
-> > > is not being that helpful tbh).
-> >
-> > You can find a simple example e.g. in
-> > drivers/media/platform/atmel/atmel-isi.c .
-> >
-> > >
-> > > >
-> > > > You'll still need to call s_power on external subdevs though.
-> > > >
-> > > >> +{
-> > > >> +  struct rkisp1_device *isp_dev = sd_to_isp_dev(sd);
-> > > >> +  int ret;
-> > > >> +
-> > > >> +  v4l2_dbg(1, rkisp1_debug, &isp_dev->v4l2_dev, "s_power: %d\n", on);
-> > > >> +
-> > > >> +  if (on) {
-> > > >> +          ret = pm_runtime_get_sync(isp_dev->dev);
-> > >
-> > > If this is not ok to remove suport for runtime PM, then where should I put
-> > > the call to pm_runtime_get_sync() if not in this s_power op ?
-> >
-> > Basically the runtime_resume and runtime_suspend callbacks are where the
-> > device power state changes are implemented, and pm_runtime_get_sync and
-> > pm_runtime_put are how the driver controls the power state.
-> >
-> > So you no longer need the s_power() op at all. The op needs to be called on
-> > the pipeline however, as there are drivers that still use it.
-> >
+> Vicente Bergas <vicencb@gmail.com> writes:
 > 
-> For this driver, I suppose we would _get_sync() when we start
-> streaming (in the hardware, i.e. we want the ISP to start capturing
-> frames) and _put() when we stop and the driver shouldn't perform any
-> access to the hardware when the streaming is not active.
+>> On Wednesday, August 14, 2019 3:12:26 PM CEST, Robin Murphy wrote:
+>>> On 14/08/2019 13:53, Vicente Bergas wrote:
+>>>> On Monday, July 22, 2019 4:31:27 PM CEST, Vicente Bergas wrote: ...
+>>>
+>>> This particular change looks like it's implicitly specific to
+>>> RK3399, which wouldn't be ideal. Presumably if the core dwc3
+>>> driver implemented shutdown correctly (echoing parts of
+>>> dwc3_remove(), I guess) then the glue layers shouldn't need
+>>> anything special anyway.
+>>>
+>>> Robin.
+>>
+>> I just checked simple->resets from dwc3-of-simple.c and it is an array
+>> with multiple resets whereas dwc->reset from core.c is NULL.
+>> So the reset seems specific to the glue layers.
+>> Is there another way than resetting the thing that is
+>> generic enough to go to core.c and allows kexec?
+> 
+> This is a really odd 'failure'. We do full soft reset during driver
+> initialization on dwc3. We shouldn't need to assert reset on shutdown,
+> really.
 
-Agreed.
+Probing/initialisation has never been the problem. The issue for the 
+kexec case is that when the first kernel shuts down, there is currently 
+nothing to quiesce the controller (since only driver->shutdown gets 
+called, not driver->remove), and thus (presumably) external USB activity 
+causes it to keep writing back over the memory where the 
+descriptors/command ring used to be while the second kernel boots. The 
+second kernel will eventually probe and reset it appropriately, but by 
+that time the damage is already done.
 
--- 
-Sakari Ailus
-sakari.ailus@linux.intel.com
+Yanking on a hardware reset line when the first kernel shuts down is 
+certainly one way to stop any memory accesses if such a control is 
+available, but presumably there's a general software way to gracefully 
+disable the controller's DMA functions until a subsequent probe can 
+fully reset it again - I think that would be the preferable solution.
+
+Robin.
+
+> I think the problem is here:
+> 
+> 	if (simple->pulse_resets) {
+> 		ret = reset_control_reset(simple->resets);
+> 		if (ret)
+> 			goto err_resetc_put;
+> 	} else {
+> 		ret = reset_control_deassert(simple->resets);
+> 		if (ret)
+> 			goto err_resetc_put;
+> 	}
+> 
+> Note that if pulse_resets is set, we will run a reset. But if
+> pulse_resets is false and need_reset is true, we deassert the reset.
+> 
+> I think below patch is enough:
+> 
+> diff --git a/drivers/usb/dwc3/dwc3-of-simple.c b/drivers/usb/dwc3/dwc3-of-simple.c
+> index bdac3e7d7b18..9a2f3e09aa2e 100644
+> --- a/drivers/usb/dwc3/dwc3-of-simple.c
+> +++ b/drivers/usb/dwc3/dwc3-of-simple.c
+> @@ -72,7 +72,15 @@ static int dwc3_of_simple_probe(struct platform_device *pdev)
+>   		ret = reset_control_reset(simple->resets);
+>   		if (ret)
+>   			goto err_resetc_put;
+> -	} else {
+> +	}
+> +
+> +	if (simple->need_reset) {
+> +		ret = reset_control_assert(simple->resets);
+> +		if (ret)
+> +			goto err_resetc_put;
+> +
+> +		usleep_range(1000, 2000);
+> +
+>   		ret = reset_control_deassert(simple->resets);
+>   		if (ret)
+>   			goto err_resetc_put;
+> @@ -121,9 +129,6 @@ static int dwc3_of_simple_remove(struct platform_device *pdev)
+>   	clk_bulk_put_all(simple->num_clocks, simple->clks);
+>   	simple->num_clocks = 0;
+>   
+> -	if (!simple->pulse_resets)
+> -		reset_control_assert(simple->resets);
+> -
+>   	reset_control_put(simple->resets);
+>   
+>   	pm_runtime_disable(dev);
+> 
+> Can you test?
+> 
