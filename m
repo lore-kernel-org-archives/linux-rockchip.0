@@ -1,158 +1,238 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH v8 10/14] dt-bindings: Document the Rockchip ISP1 bindings
-Date: Fri, 16 Aug 2019 03:21:44 +0300
-Message-ID: <20190816002144.GG5011@pendragon.ideasonboard.com>
-References: <20190730184256.30338-1-helen.koike@collabora.com>
- <20190730184256.30338-11-helen.koike@collabora.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v6 03/11] media: uapi: h264: Add the concept of decoding
+ mode
+Date: Fri, 16 Aug 2019 09:34:47 +0200
+Message-ID: <38911c55-3ca7-4fd8-d10e-34f48a5a2851@xs4all.nl>
+References: <20190814195931.6587-1-ezequiel@collabora.com>
+ <20190814195931.6587-4-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <20190730184256.30338-11-helen.koike@collabora.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Helen Koike <helen.koike@collabora.com>
-Cc: devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, kernel@collabora.com, heiko@sntech.de, Rob Herring <robh@kernel.org>, jacob2.chen@rock-chips.com, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, hans.verkuil@cisco.com, sakari.ailus@linux.intel.com, zhengsq@rock-chips.com, mchehab@kernel.org, ezequiel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190814195931.6587-4-ezequiel@collabora.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org
+Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Helen,
+On 8/14/19 9:59 PM, Ezequiel Garcia wrote:
+> From: Boris Brezillon <boris.brezillon@collabora.com>
+> 
+> Some stateless decoders don't support per-slice decoding granularity
+> (or at least not in a way that would make them efficient or easy to use).
+> 
+> Expose a menu to control the supported decoding modes. Drivers are
+> allowed to support only one decoding but they can support both too.
 
-Thank you for the patch.
+The commit message doesn't say anything about the start_byte_offset
+addition and the num_slices documentation improvement. It probably
+should.
 
-On Tue, Jul 30, 2019 at 03:42:52PM -0300, Helen Koike wrote:
-> From: Jacob Chen <jacob2.chen@rock-chips.com>
+See more comments below:
+
 > 
-> Add DT bindings documentation for Rockchip ISP1
-> 
-> Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> [update for upstream]
-> Signed-off-by: Helen Koike <helen.koike@collabora.com>
-> 
+> Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
+> Reviewed-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> Tested-by: Philipp Zabel <p.zabel@pengutronix.de>
 > ---
+> Changes in v6:
+> * Fix spec, specifiying the decode-mode pixelformat modifier
+>   needs to be set once, as suggested by Hans.
+> * Rename, as suggested by Paul.
+> Changes in v5:
+> * Improve specification as suggested by Hans.
+> Changes in v4:
+> * Typos/rewording fixes
+> Changes in v3:
+> * s/per-{slice,frame} decoding/{slice,frame}-based decoding/
+> * Add Paul's R-b
+> Changes in v2:
+> * Allow decoding multiple slices in per-slice decoding mode
+> * Minor doc improvement/fixes
+> ---
+>  .../media/uapi/v4l/ext-ctrls-codec.rst        | 47 ++++++++++++++++++-
+>  .../media/uapi/v4l/pixfmt-compressed.rst      |  6 ++-
+>  drivers/media/v4l2-core/v4l2-ctrls.c          |  9 ++++
+>  include/media/h264-ctrls.h                    | 10 ++++
+>  4 files changed, 69 insertions(+), 3 deletions(-)
 > 
-> Changes in v8: None
-> Changes in v7:
-> - update document with new design and tested example
-> 
->  .../bindings/media/rockchip-isp1.txt          | 71 +++++++++++++++++++
->  1 file changed, 71 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/rockchip-isp1.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/media/rockchip-isp1.txt b/Documentation/devicetree/bindings/media/rockchip-isp1.txt
-> new file mode 100644
-> index 000000000000..a97fef0f189f
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/rockchip-isp1.txt
+> diff --git a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> index c5f39dd50043..623b34f61b32 100644
+> --- a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> +++ b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> @@ -1747,6 +1747,11 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
+>      * - __u32
+>        - ``size``
+>        -
+> +    * - __u32
+> +      - ``start_byte_offset``
+> +        Offset (in bytes) from the beginning of the OUTPUT buffer to the start
+> +        of the slice. If the slice starts with a start code, then this is the
+> +        offset to such start code.
 
-If there wasn't enough work on your plate already I'd propose converting
-this to yaml, but I'll refrain from doing so :-)
+This should mention that it should be set to 0 for SLICE_BASED decoding mode.
 
-> @@ -0,0 +1,71 @@
-> +Rockchip SoC Image Signal Processing unit v1
-> +----------------------------------------------
+>      * - __u32
+>        - ``header_bit_size``
+>        -
+> @@ -1930,7 +1935,10 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
+>        -
+>      * - __u16
+>        - ``num_slices``
+> -      - Number of slices needed to decode the current frame
+> +      - Number of slices needed to decode the current frame/field. When
+> +        operating in slice-based decoding mode (see
+> +        :c:type:`v4l2_mpeg_video_h264_decode_mode`), this field
+> +        should always be set to one.
+>      * - __u16
+>        - ``nal_ref_idc``
+>        - NAL reference ID value coming from the NAL Unit header
+> @@ -2021,6 +2029,43 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
+>        - 0x00000004
+>        - The DPB entry is a long term reference frame
+>  
+> +``V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE (enum)``
+> +    Specifies the decoding mode to use. Currently exposes slice-based and
+> +    frame-based decoding but new modes might be added later on.
+> +    This control is used as a modifier for V4L2_PIX_FMT_H264_SLICE
+> +    pixel format. Applications that support V4L2_PIX_FMT_H264_SLICE
+> +    are required to set this control in order to specify the decoding mode
+> +    that is expected for the buffer.
+> +    Drivers may expose a single or multiple decoding modes, depending
+> +    on what they can support.
 > +
-> +Rockchip ISP1 is the Camera interface for the Rockchip series of SoCs
-> +which contains image processing, scaling, and compression funcitons.
-
-s/funcitons/functions/
-
+> +    .. note::
 > +
-> +Required properties:
-> +- compatible: value should be one of the following
-> +	"rockchip,rk3288-cif-isp";
-> +	"rockchip,rk3399-cif-isp";
-> +- reg : offset and length of the register set for the device.
-> +- interrupts: should contain ISP interrupt.
-> +- clocks: phandle to the required clocks.
-> +- clock-names: required clock name.
-> +- iommus: required a iommu node.
-> +- phys: the phandle for the PHY port
-> +- phy-names: must contain "dphy"
+> +       This menu control is not yet part of the public kernel API and
+> +       it is expected to change.
 > +
-> +port node
-> +-------------------
+> +.. c:type:: v4l2_mpeg_video_h264_decode_mode
 > +
-> +The device node should contain one 'ports' child node, with children 'port'
-> +with child 'endpoint'.
-
-Extra . and line break ?
-
-> +nodes, according to the bindings defined in Documentation/devicetree/bindings/
-> +media/video-interfaces.txt.
+> +.. cssclass:: longtable
 > +
-> +- endpoint(mipi):
-> +	- remote-endpoint: Connecting to Rockchip MIPI-DPHY,
-> +		which is defined in rockchip-mipi-dphy.txt.
+> +.. flat-table::
+> +    :header-rows:  0
+> +    :stub-columns: 0
+> +    :widths:       1 1 2
 > +
-> +The port node must contain at least one endpoint, either parallel or mipi.
+> +    * - ``V4L2_MPEG_VIDEO_H264_DECODE_MODE_SLICE_BASED``
+> +      - 0
+> +      - Decoding is done at the slice granularity.
+> +        v4l2_ctrl_h264_decode_params->num_slices should be set to 1.
 
-If I understand things correctly, each ISP has a single CSI-2 receiver
-and a single parallel output, and can select one of them at runtime.
-This should be modelled as two separate ports. In addition to this,
-multiple CSI-2 sensors can be connected to the same CSI-2 receiver as
-long as all but one of them is held in reset (this is a poor man's CSI-2
-switch, which exists in device out in the market, so we have to support
-that). This should be modelled by multiple endpoints in the CSI-2 port.
+And start_byte_offset should be set to 0.
 
-> +It could have multiple endpoints, but please note the hardware don't support
-> +two sensors work at a time, they are supposed to work asynchronously.
+> +        The OUTPUT buffer must contain a single slice.
+> +    * - ``V4L2_MPEG_VIDEO_H264_DECODE_MODE_FRAME_BASED``
+> +      - 1
+> +      - Decoding is done at the frame granularity.
+> +        v4l2_ctrl_h264_decode_params->num_slices should be set to the number of
+> +        slices forming a frame.
 
-I assume you meant "are supposed to be mutually exclusive" or something
-similar ?
+And start_byte_offset should be filled in accordingly for each slice.
 
-> +
-> +Device node example
-> +-------------------
-> +
-> +	isp0: isp0@ff910000 {
-> +		compatible = "rockchip,rk3399-cif-isp";
-> +		reg = <0x0 0xff910000 0x0 0x4000>;
-> +		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		clocks = <&cru SCLK_ISP0>,
-> +			 <&cru ACLK_ISP0>, <&cru ACLK_ISP0_WRAPPER>,
-> +			 <&cru HCLK_ISP0>, <&cru HCLK_ISP0_WRAPPER>;
-> +		clock-names = "clk_isp",
-> +			      "aclk_isp", "aclk_isp_wrap",
-> +			      "hclk_isp", "hclk_isp_wrap";
-> +		power-domains = <&power RK3399_PD_ISP0>;
-> +		iommus = <&isp0_mmu>;
-> +		phys = <&dphy>;
-> +		phy-names = "dphy";
-> +
-> +		ports {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			port@0 {
-> +				mipi_in_wcam: endpoint@0 {
-> +					reg = <0>;
-> +					remote-endpoint = <&wcam_out>;
-> +					data-lanes = <1 2>;
-> +				};
-> +
-> +				mipi_in_ucam: endpoint@1 {
-> +					reg = <1>;
-> +					remote-endpoint = <&ucam_out>;
-> +					data-lanes = <1>;
-> +				};
-
-What are wcam and ucam ? It would help if you showed the sensor nodes in
-the example.
-
-> +			};
-> +		};
-> +	};
-
--- 
 Regards,
 
-Laurent Pinchart
+	Hans
+
+> +        The OUTPUT buffer must contain all slices needed to decode the
+> +        frame. The OUTPUT buffer must also contain both fields.
+> +
+>  .. _v4l2-mpeg-mpeg2:
+>  
+>  ``V4L2_CID_MPEG_VIDEO_MPEG2_SLICE_PARAMS (struct)``
+> diff --git a/Documentation/media/uapi/v4l/pixfmt-compressed.rst b/Documentation/media/uapi/v4l/pixfmt-compressed.rst
+> index 9b65473a2288..d666eb51741a 100644
+> --- a/Documentation/media/uapi/v4l/pixfmt-compressed.rst
+> +++ b/Documentation/media/uapi/v4l/pixfmt-compressed.rst
+> @@ -60,8 +60,10 @@ Compressed Formats
+>  	extracted from the H264 bitstream.  This format is adapted for
+>  	stateless video decoders that implement an H264 pipeline
+>  	(using the :ref:`mem2mem` and :ref:`media-request-api`).
+> -	Metadata associated with the frame to decode are required to
+> -	be passed through the ``V4L2_CID_MPEG_VIDEO_H264_SPS``,
+> +	This pixelformat has a modifier that must be set at least once
+> +	through the ``V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE`` control.
+> +	In addition, metadata associated with the frame to decode are
+> +	required to be passed through the ``V4L2_CID_MPEG_VIDEO_H264_SPS``,
+>  	``V4L2_CID_MPEG_VIDEO_H264_PPS``,
+>  	``V4L2_CID_MPEG_VIDEO_H264_SCALING_MATRIX``,
+>  	``V4L2_CID_MPEG_VIDEO_H264_SLICE_PARAMS`` and
+> diff --git a/drivers/media/v4l2-core/v4l2-ctrls.c b/drivers/media/v4l2-core/v4l2-ctrls.c
+> index cd1ae016706f..2c67f9fc4d5b 100644
+> --- a/drivers/media/v4l2-core/v4l2-ctrls.c
+> +++ b/drivers/media/v4l2-core/v4l2-ctrls.c
+> @@ -402,6 +402,11 @@ const char * const *v4l2_ctrl_get_menu(u32 id)
+>  		"Explicit",
+>  		NULL,
+>  	};
+> +	static const char * const h264_decode_mode[] = {
+> +		"Slice-Based",
+> +		"Frame-Based",
+> +		NULL,
+> +	};
+>  	static const char * const mpeg_mpeg2_level[] = {
+>  		"Low",
+>  		"Main",
+> @@ -633,6 +638,8 @@ const char * const *v4l2_ctrl_get_menu(u32 id)
+>  		return h264_fp_arrangement_type;
+>  	case V4L2_CID_MPEG_VIDEO_H264_FMO_MAP_TYPE:
+>  		return h264_fmo_map_type;
+> +	case V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE:
+> +		return h264_decode_mode;
+>  	case V4L2_CID_MPEG_VIDEO_MPEG2_LEVEL:
+>  		return mpeg_mpeg2_level;
+>  	case V4L2_CID_MPEG_VIDEO_MPEG2_PROFILE:
+> @@ -852,6 +859,7 @@ const char *v4l2_ctrl_get_name(u32 id)
+>  	case V4L2_CID_MPEG_VIDEO_H264_SCALING_MATRIX:		return "H264 Scaling Matrix";
+>  	case V4L2_CID_MPEG_VIDEO_H264_SLICE_PARAMS:		return "H264 Slice Parameters";
+>  	case V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS:		return "H264 Decode Parameters";
+> +	case V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE:		return "H264 Decode Mode";
+>  	case V4L2_CID_MPEG_VIDEO_MPEG2_LEVEL:			return "MPEG2 Level";
+>  	case V4L2_CID_MPEG_VIDEO_MPEG2_PROFILE:			return "MPEG2 Profile";
+>  	case V4L2_CID_MPEG_VIDEO_MPEG4_I_FRAME_QP:		return "MPEG4 I-Frame QP Value";
+> @@ -1220,6 +1228,7 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
+>  	case V4L2_CID_MPEG_VIDEO_H264_VUI_SAR_IDC:
+>  	case V4L2_CID_MPEG_VIDEO_H264_SEI_FP_ARRANGEMENT_TYPE:
+>  	case V4L2_CID_MPEG_VIDEO_H264_FMO_MAP_TYPE:
+> +	case V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE:
+>  	case V4L2_CID_MPEG_VIDEO_MPEG2_LEVEL:
+>  	case V4L2_CID_MPEG_VIDEO_MPEG2_PROFILE:
+>  	case V4L2_CID_MPEG_VIDEO_MPEG4_LEVEL:
+> diff --git a/include/media/h264-ctrls.h b/include/media/h264-ctrls.h
+> index 6160a69c0143..928c48c57282 100644
+> --- a/include/media/h264-ctrls.h
+> +++ b/include/media/h264-ctrls.h
+> @@ -26,6 +26,7 @@
+>  #define V4L2_CID_MPEG_VIDEO_H264_SCALING_MATRIX	(V4L2_CID_MPEG_BASE+1002)
+>  #define V4L2_CID_MPEG_VIDEO_H264_SLICE_PARAMS	(V4L2_CID_MPEG_BASE+1003)
+>  #define V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS	(V4L2_CID_MPEG_BASE+1004)
+> +#define V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE	(V4L2_CID_MPEG_BASE+1005)
+>  
+>  /* enum v4l2_ctrl_type type values */
+>  #define V4L2_CTRL_TYPE_H264_SPS			0x0110
+> @@ -34,6 +35,11 @@
+>  #define V4L2_CTRL_TYPE_H264_SLICE_PARAMS	0x0113
+>  #define V4L2_CTRL_TYPE_H264_DECODE_PARAMS	0x0114
+>  
+> +enum v4l2_mpeg_video_h264_decode_mode {
+> +	V4L2_MPEG_VIDEO_H264_DECODE_MODE_SLICE_BASED,
+> +	V4L2_MPEG_VIDEO_H264_DECODE_MODE_FRAME_BASED,
+> +};
+> +
+>  #define V4L2_H264_SPS_CONSTRAINT_SET0_FLAG			0x01
+>  #define V4L2_H264_SPS_CONSTRAINT_SET1_FLAG			0x02
+>  #define V4L2_H264_SPS_CONSTRAINT_SET2_FLAG			0x04
+> @@ -125,6 +131,10 @@ struct v4l2_h264_pred_weight_table {
+>  struct v4l2_ctrl_h264_slice_params {
+>  	/* Size in bytes, including header */
+>  	__u32 size;
+> +
+> +	/* Offset in bytes to the start of slice in the OUTPUT buffer. */
+> +	__u32 start_byte_offset;
+> +
+>  	/* Offset in bits to slice_data() from the beginning of this slice. */
+>  	__u32 header_bit_size;
+>  
+> 
