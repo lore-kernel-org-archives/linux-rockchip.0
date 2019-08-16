@@ -1,38 +1,62 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] Revert "ARM: dts: rockchip: add startup delay to rk3288-veyron panel-regulators"
-Date: Fri, 16 Aug 2019 13:28:25 +0200
-Message-ID: <1641883.xsURkgBn4i@phil>
-References: <20190620182056.61552-1-dianders@chromium.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Enable internal SPI flash for
+ RockPro64.
+Date: Fri, 16 Aug 2019 13:56:23 +0200
+Message-ID: <3189741.LD3pXP1jMj@phil>
+References: <20190811211108.28071-1-andrius@stikonas.eu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190620182056.61552-1-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: enric.balletbo@collabora.com, mka@chromium.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190811211108.28071-1-andrius-4ZmsDwijFH7sq35pWSNszA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andrius =?utf-8?B?xaB0aWtvbmFz?= <andrius-4ZmsDwijFH7sq35pWSNszA@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 20. Juni 2019, 20:20:56 CEST schrieb Douglas Anderson:
-> This reverts commit 1f45e8c6d0161f044d679f242fe7514e2625af4a.
-> 
-> This 100 ms mystery delay is not on downstream kernels and no longer
-> seems needed on upstream kernels either [1].  Presumably something in the
-> meantime has made things better.  A few possibilities for patches that
-> have landed in the meantime that could have made this better are
-> commit 3157694d8c7f ("pwm-backlight: Add support for PWM delays
-> proprieties."), commit 5fb5caee92ba ("pwm-backlight: Enable/disable
-> the PWM before/after LCD enable toggle."), and commit 6d5922dd0d60
-> ("ARM: dts: rockchip: set PWM delay backlight settings for Veyron")
-> 
-> Let's revert and get our 100 ms back.
-> 
-> [1] https://lkml.kernel.org/r/2226970.BAPq4liE1j@diego
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-
-I've rebased the change on top of Matthias' veyron display reorganization
-and applied it for 5.4
-
-Thanks
-Heiko
+SGkgQW5kcml1cywKCkkgZGlkIGFwcGx5IHRoaXMgcGF0Y2ggZm9yIDUuNCAuLi4gd2l0aCBhIGJp
+ZyBidXQgLi4uCk1lYW5pbmcgSSBkaWQgcXVpdGUgYSBudW1iZXIgb2YgY2hhbmdlcyBhcyBkZXNj
+cmliZWQgYmVsb3cKYW5kIHdvdWxkIGFzayB5b3UgdG8ga2VlcCB0aGVtIGluIG1pbmQgZm9yIGZ1
+dHVyZSBwYXRjaGVzLgoKU28gdGhlcmUgaXMgbm8gbmVlZCB0byByZXNlbmQgYSBmaXhlZCB2ZXJz
+aW9uIG9mIHRoaXMgcGF0Y2guCgooMSkgUGxlYXNlIGFsc28gaW5jbHVkZSBvdGhlciBsaXN0cywg
+c2NyaXB0cy9nZXRfbWFpbnRhaW5lci5wbCBpcyBhIGdvb2QKc3RhcnRpbmcgcG9pbnQuIGxpbnV4
+LXJvY2tjaGlwIGFsb25lIGZlZWxzIGxpa2UgaGlkaW5nIHRoZSBwYXRjaCA7LSkgLgoKQW0gU29u
+bnRhZywgMTEuIEF1Z3VzdCAyMDE5LCAyMzoxMTowOCBDRVNUIHNjaHJpZWIgQW5kcml1cyDFoHRp
+a29uYXM6CgooMikgUGxlYXNlIGFsd2F5cyBwcm92aWRlIGEgcGF0Y2ggZGVzY3JpcHRvbiBvZiBz
+b21lIHNvcnQsIEkgZGlkIGdvIHdpdGgKCSJUaGUgcm9ja3BybzY0IGNvbnRhaW5zIGEgbm9yLWZs
+YXNoIGNoaXAgY29ubmVjdGVkIHRvIHNwaTEuIgoKPiBTaWduZWQtb2ZmLWJ5OiBBbmRyaXVzIMWg
+dGlrb25hcyA8YW5kcml1c0BzdGlrb25hcy5ldT4KPiAtLS0KPiAgYXJjaC9hcm02NC9ib290L2R0
+cy9yb2NrY2hpcC9yazMzOTktcm9ja3BybzY0LmR0cyB8IDE0ICsrKysrKysrKysrKysrCj4gIDEg
+ZmlsZSBjaGFuZ2VkLCAxNCBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJt
+NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvY2twcm82NC5kdHMgYi9hcmNoL2FybTY0L2Jv
+b3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2NrcHJvNjQuZHRzCj4gaW5kZXggZWI1NTk0MDYyMDA2
+Li5hYmM5N2IyYzFmMTggMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
+cC9yazMzOTktcm9ja3BybzY0LmR0cwo+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
+aXAvcmszMzk5LXJvY2twcm82NC5kdHMKPiBAQCAtNjExLDYgKzYxMSwyMCBAQAo+ICAJc3RhdHVz
+ID0gIm9rYXkiOwo+ICB9Owo+ICAKPiArJnNwaTEgewoKKDMpIHBsZWFzZSBzb3J0IG5vZGVzIGFs
+cGhhYmV0aWNhbGx5LCBzbyBoZXJlIHRoaXMgc2hvdWxkIGJlIGJldHdlZW4KJnNkaW8gYW5kICZ0
+Y3BoeTAKCig0KSBBbGwgaW5kZW50YXRpb24gb2YgdGhlIGxpbmVzIGJlbG93IHdhcyBkb25lIHdp
+dGggc3BhY2VzLCBwbGVhc2UgdXNlIHRhYnMuCgo+ICsgICAgICAgc3RhdHVzID0gIm9rYXkiOwo+
+ICsgICAgICAgbWF4LWZyZXEgPSA8MTAwMDAwMDA+OwoKCig1KSBUaGlzIHByb3BlcnR5IGlzIG5v
+dCBwYXJ0IG9mIGFueSBiaW5kaW5nIGFuZCBhbHNvIG5vdCB1c2VkLCBzbyBkcm9wcGVkCgo+ICsK
+PiArICAgICAgIGZsYXNoQDAgewo+ICsgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gImplZGVj
+LHNwaS1ub3IiOwo+ICsgICAgICAgICAgICAgICAjYWRkcmVzcy1jZWxscyA9IDwxPjsKPiArICAg
+ICAgICAgICAgICAgI3NpemUtY2VsbHMgPSA8MT47CgooNikgVGhlcmUgaXMgbm8gbmVlZCBhdCBh
+bGwgZm9yIHRoZSAjZm9vLWNlbGxzIGhlcmUsIHRoZXkncmUgbm90IHBhcnQgb2YgdGhlCmJpbmRp
+bmcgYW5kIGFsc28gbm90IHVzZWQuCgo+ICsgICAgICAgICAgICAgICByZWcgPSA8MD47Cj4gKyAg
+ICAgICAgICAgICAgIHNwaS1tYXgtZnJlcXVlbmN5ID0gPDEwMDAwMDAwPjsKPiArICAgICAgIH07
+Cj4gK307Cj4gKwo+ICsKCig3KSBQbGVhc2UgbWFrZSBzdXJlIHRvIG5vdCBpbmNsdWRlIGRvdWJs
+ZSBlbXB0eSBsaW5lcywgdGhpcyBzaG91bGQgb25seSBiZQpvbmUgYmV0d2VlbiBub2Rlcy4KCgpU
+aGFua3MKSGVpa28KCj4gICZzZG1tYyB7Cj4gIAlidXMtd2lkdGggPSA8ND47Cj4gIAljYXAtbW1j
+LWhpZ2hzcGVlZDsKPiAKCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
