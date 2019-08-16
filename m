@@ -1,87 +1,148 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2] arm: dts: rockchip: fix vcc_host_5v regulator for usb3
- host
-Date: Fri, 16 Aug 2019 14:24:06 +0200
-Message-ID: <2932927.UJgUFA1Pmh@phil>
-References: <20190815081252.27405-1-kever.yang@rock-chips.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v6 03/11] media: uapi: h264: Add the concept of decoding
+ mode
+Date: Fri, 16 Aug 2019 09:29:13 -0300
+Message-ID: <3c7d72f3ae3a4235cd818a051ee0265ac123bdc1.camel@collabora.com>
+References: <20190814195931.6587-1-ezequiel@collabora.com>
+         <20190814195931.6587-4-ezequiel@collabora.com>
+         <38911c55-3ca7-4fd8-d10e-34f48a5a2851@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190815081252.27405-1-kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Vasily Khoruzhick <anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Tomohiro Mayama <parly-gh-HEvi76orzLt5vQOrPBq+1Q@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <38911c55-3ca7-4fd8-d10e-34f48a5a2851@xs4all.nl>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org
+Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kever, TL,
-
-[added TL Lim for clarification]
-
-Am Donnerstag, 15. August 2019, 10:12:52 CEST schrieb Kever Yang:
-> According to rock64 schemetic V2 and V3, the VCC_HOST_5V output is
-> controlled by USB_20_HOST_DRV, which is the same as VCC_HOST1_5V.
-
-The v1 schematics I have do reference the GPIO0_A0 as controlling this
-supply, so the big question would be how to handle the different versions.
-
-Because adding this would probably break v1 boards in this function.
-
-@TL: where v1 boards also sold or were they only used during development?
-If this were the case, we could just apply the patch, not caring about
-v1 boards, but if v1 boards were also sold to customers there would be
-more of a problem.
-
-Thanks
-Heiko
-
-
+On Fri, 2019-08-16 at 09:34 +0200, Hans Verkuil wrote:
+> On 8/14/19 9:59 PM, Ezequiel Garcia wrote:
+> > From: Boris Brezillon <boris.brezillon@collabora.com>
+> > 
+> > Some stateless decoders don't support per-slice decoding granularity
+> > (or at least not in a way that would make them efficient or easy to use).
+> > 
+> > Expose a menu to control the supported decoding modes. Drivers are
+> > allowed to support only one decoding but they can support both too.
 > 
-> Signed-off-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
+> The commit message doesn't say anything about the start_byte_offset
+> addition and the num_slices documentation improvement. It probably
+> should.
 > 
-> Changes in v2:
-> - remove enable-active-high property
+
+Yes, of course.
+
+> See more comments below:
 > 
->  arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 11 ++---------
->  1 file changed, 2 insertions(+), 9 deletions(-)
+> > Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
+> > Reviewed-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> > Tested-by: Philipp Zabel <p.zabel@pengutronix.de>
+> > ---
+> > Changes in v6:
+> > * Fix spec, specifiying the decode-mode pixelformat modifier
+> >   needs to be set once, as suggested by Hans.
+> > * Rename, as suggested by Paul.
+> > Changes in v5:
+> > * Improve specification as suggested by Hans.
+> > Changes in v4:
+> > * Typos/rewording fixes
+> > Changes in v3:
+> > * s/per-{slice,frame} decoding/{slice,frame}-based decoding/
+> > * Add Paul's R-b
+> > Changes in v2:
+> > * Allow decoding multiple slices in per-slice decoding mode
+> > * Minor doc improvement/fixes
+> > ---
+> >  .../media/uapi/v4l/ext-ctrls-codec.rst        | 47 ++++++++++++++++++-
+> >  .../media/uapi/v4l/pixfmt-compressed.rst      |  6 ++-
+> >  drivers/media/v4l2-core/v4l2-ctrls.c          |  9 ++++
+> >  include/media/h264-ctrls.h                    | 10 ++++
+> >  4 files changed, 69 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> > index c5f39dd50043..623b34f61b32 100644
+> > --- a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> > +++ b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> > @@ -1747,6 +1747,11 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
+> >      * - __u32
+> >        - ``size``
+> >        -
+> > +    * - __u32
+> > +      - ``start_byte_offset``
+> > +        Offset (in bytes) from the beginning of the OUTPUT buffer to the start
+> > +        of the slice. If the slice starts with a start code, then this is the
+> > +        offset to such start code.
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> index 7cfd5ca6cc85..62936b432f9a 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> @@ -34,10 +34,9 @@
->  
->  	vcc_host_5v: vcc-host-5v-regulator {
->  		compatible = "regulator-fixed";
-> -		enable-active-high;
-> -		gpio = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
-> +		gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
->  		pinctrl-names = "default";
-> -		pinctrl-0 = <&usb30_host_drv>;
-> +		pinctrl-0 = <&usb20_host_drv>;
->  		regulator-name = "vcc_host_5v";
->  		regulator-always-on;
->  		regulator-boot-on;
-> @@ -320,12 +319,6 @@
->  			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
->  		};
->  	};
-> -
-> -	usb3 {
-> -		usb30_host_drv: usb30-host-drv {
-> -			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-> -		};
-> -	};
->  };
->  
->  &sdmmc {
+> This should mention that it should be set to 0 for SLICE_BASED decoding mode.
 > 
+
+Right.
+
+> >      * - __u32
+> >        - ``header_bit_size``
+> >        -
+> > @@ -1930,7 +1935,10 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
+> >        -
+> >      * - __u16
+> >        - ``num_slices``
+> > -      - Number of slices needed to decode the current frame
+> > +      - Number of slices needed to decode the current frame/field. When
+> > +        operating in slice-based decoding mode (see
+> > +        :c:type:`v4l2_mpeg_video_h264_decode_mode`), this field
+> > +        should always be set to one.
+> >      * - __u16
+> >        - ``nal_ref_idc``
+> >        - NAL reference ID value coming from the NAL Unit header
+> > @@ -2021,6 +2029,43 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
+> >        - 0x00000004
+> >        - The DPB entry is a long term reference frame
+> >  
+> > +``V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE (enum)``
+> > +    Specifies the decoding mode to use. Currently exposes slice-based and
+> > +    frame-based decoding but new modes might be added later on.
+> > +    This control is used as a modifier for V4L2_PIX_FMT_H264_SLICE
+> > +    pixel format. Applications that support V4L2_PIX_FMT_H264_SLICE
+> > +    are required to set this control in order to specify the decoding mode
+> > +    that is expected for the buffer.
+> > +    Drivers may expose a single or multiple decoding modes, depending
+> > +    on what they can support.
+> > +
+> > +    .. note::
+> > +
+> > +       This menu control is not yet part of the public kernel API and
+> > +       it is expected to change.
+> > +
+> > +.. c:type:: v4l2_mpeg_video_h264_decode_mode
+> > +
+> > +.. cssclass:: longtable
+> > +
+> > +.. flat-table::
+> > +    :header-rows:  0
+> > +    :stub-columns: 0
+> > +    :widths:       1 1 2
+> > +
+> > +    * - ``V4L2_MPEG_VIDEO_H264_DECODE_MODE_SLICE_BASED``
+> > +      - 0
+> > +      - Decoding is done at the slice granularity.
+> > +        v4l2_ctrl_h264_decode_params->num_slices should be set to 1.
+> 
+> And start_byte_offset should be set to 0.
+> 
+
+OK.
+
+> > +        The OUTPUT buffer must contain a single slice.
+> > +    * - ``V4L2_MPEG_VIDEO_H264_DECODE_MODE_FRAME_BASED``
+> > +      - 1
+> > +      - Decoding is done at the frame granularity.
+> > +        v4l2_ctrl_h264_decode_params->num_slices should be set to the number of
+> > +        slices forming a frame.
+> 
+> And start_byte_offset should be filled in accordingly for each slice.
+> 
+
+OK.
+
+Thanks,
+Ezequiel
