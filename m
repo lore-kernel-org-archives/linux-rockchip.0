@@ -1,45 +1,188 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2] arm: dts: rockchip: fix vcc_host_5v regulator for usb3 host
-Date: Mon, 19 Aug 2019 16:43:45 +0200
-Message-ID: <3811189.poQrIVWTgf@phil>
-References: <20190815081252.27405-1-kever.yang@rock-chips.com> <2932927.UJgUFA1Pmh@phil> <208c56e1-bfe0-a982-927d-bdddc3116631@rock-chips.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v7 02/11] media: uapi: h264: Rename pixel format
+Date: Mon, 19 Aug 2019 17:53:41 +0200
+Message-ID: <e618bf01-3f82-ff06-1842-9d21a379d7ee@xs4all.nl>
+References: <20190816160132.7352-1-ezequiel@collabora.com>
+ <20190816160132.7352-3-ezequiel@collabora.com>
+ <20190819124110.GB32182@aptenodytes>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <208c56e1-bfe0-a982-927d-bdddc3116631@rock-chips.com>
+In-Reply-To: <20190819124110.GB32182@aptenodytes>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Jonas Karlman <jonas@kwiboo.se>, Katsuhiro Suzuki <katsuhiro@katsuster.net>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Tomohiro Mayama <parly-gh@iris.mystia.org>, Vasily Khoruzhick <anarsoul@gmail.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Ezequiel Garcia <ezequiel@collabora.com>
+Cc: linux-media@vger.kernel.org, kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kever,
+On 8/19/19 2:41 PM, Paul Kocialkowski wrote:
+> Hi,
+> 
+> On Fri 16 Aug 19, 13:01, Ezequiel Garcia wrote:
+>> The V4L2_PIX_FMT_H264_SLICE_RAW name was originally suggested
+>> because the pixel format would represent H264 slices without any
+>> start code.
+>>
+>> However, as we will now introduce a start code menu control,
+>> give the pixel format a more meaningful name, while it's
+>> still early enough to do so.
+> 
+> I definitely agree that SLICE_RAW is not the suffix we are looking for, but I'm
+> not sure that _SLICE is self-describing given that we can operate either
+> per-frame or per-slice, and _SLICE sort of implies the latter. Also, VP8 uses
+> _FRAME to clearly indicate that it operates per-frame.
 
-Am Montag, 19. August 2019, 02:29:31 CEST schrieb Kever Yang:
-> Hi Heiko,
-> 
-> On 2019/8/16 下午8:24, Heiko Stuebner wrote:
-> > Hi Kever, TL,
-> >
-> > [added TL Lim for clarification]
-> >
-> > Am Donnerstag, 15. August 2019, 10:12:52 CEST schrieb Kever Yang:
-> >> According to rock64 schemetic V2 and V3, the VCC_HOST_5V output is
-> >> controlled by USB_20_HOST_DRV, which is the same as VCC_HOST1_5V.
-> > The v1 schematics I have do reference the GPIO0_A0 as controlling this
-> > supply, so the big question would be how to handle the different versions.
-> >
-> > Because adding this would probably break v1 boards in this function.
-> >
-> > @TL: where v1 boards also sold or were they only used during development?
-> 
-> 
-> I have check this with TL when I make this patch, the V1 hardware was 
-> never sold and only V2/V3
-> 
-> are available on the market.
+Well, VP8 doesn't support slices at all.
 
-Thanks for clearing this up. I've applied this patch for 5.4 now.
+> 
+> In addition, the _SLICE suffix is used by MPEG-2 in the stable API. Since we
 
-Thanks
-Heiko
+Regarding MPEG-2: while it has a concept of slices, it is my understanding
+that you never process slices separately, but only full pictures. I may be
+wrong here.
+
+> certainly want MPEG-2 to allow per-slice and per-frame decoding as well as
+> H.264 and that the _SLICE format is specified to be the broken "concatenated
+> slices" that cedrus expects, we probably want to use another suffix. This way,
+> we could deprecated MPEG2_SLICE and introduce a new format for MPEG-2 that would
+> have consistent naming with the other mpeg formats.
+
+I actually think that H264_SLICE is a decent name.
+
+I'm less sure about MPEG2_SLICE since I am not sure if it means the same as
+a H264 slice.
+
+> 
+> One suggestion I had was to call it H264_PARSED (and apply this to MPEG-2 and
+> HEVC when similar controls to H.264 are set in place for them). I think Hans had
+> another suggestion for the name but I don't recall what it was at this point.
+
+I can't remember it either. In any case, I'm not that keen on _PARSED.
+
+I think for H264 and HEVC the _SLICE suffix is good enough.
+
+Regards,
+
+	Hans
+
+> 
+> Either way, if this has to be some debate, we could perhaps take it off your
+> series and stay with SLICE_RAW for now, as long as we do rename it before making
+> the API stable.
+> 
+> What do you think?
+> 
+> Cheers,
+> 
+> Paul
+> 
+>> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+>> Tested-by: Philipp Zabel <p.zabel@pengutronix.de>
+>> ---
+>> Changes in v7:
+>> * None.
+>> Changes in v6:
+>> * None.
+>> Changes in v5:
+>> * None.
+>> Changes in v4:
+>> * New patch.
+>> ---
+>>  Documentation/media/uapi/v4l/pixfmt-compressed.rst | 4 ++--
+>>  drivers/media/v4l2-core/v4l2-ioctl.c               | 2 +-
+>>  drivers/staging/media/sunxi/cedrus/cedrus_dec.c    | 2 +-
+>>  drivers/staging/media/sunxi/cedrus/cedrus_video.c  | 6 +++---
+>>  include/media/h264-ctrls.h                         | 2 +-
+>>  5 files changed, 8 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/Documentation/media/uapi/v4l/pixfmt-compressed.rst b/Documentation/media/uapi/v4l/pixfmt-compressed.rst
+>> index f52a7b67023d..9b65473a2288 100644
+>> --- a/Documentation/media/uapi/v4l/pixfmt-compressed.rst
+>> +++ b/Documentation/media/uapi/v4l/pixfmt-compressed.rst
+>> @@ -52,9 +52,9 @@ Compressed Formats
+>>        - ``V4L2_PIX_FMT_H264_MVC``
+>>        - 'M264'
+>>        - H264 MVC video elementary stream.
+>> -    * .. _V4L2-PIX-FMT-H264-SLICE-RAW:
+>> +    * .. _V4L2-PIX-FMT-H264-SLICE:
+>>  
+>> -      - ``V4L2_PIX_FMT_H264_SLICE_RAW``
+>> +      - ``V4L2_PIX_FMT_H264_SLICE``
+>>        - 'S264'
+>>        - H264 parsed slice data, without the start code and as
+>>  	extracted from the H264 bitstream.  This format is adapted for
+>> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+>> index bb5b4926538a..39f10621c91b 100644
+>> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+>> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+>> @@ -1343,7 +1343,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+>>  		case V4L2_PIX_FMT_H264:		descr = "H.264"; break;
+>>  		case V4L2_PIX_FMT_H264_NO_SC:	descr = "H.264 (No Start Codes)"; break;
+>>  		case V4L2_PIX_FMT_H264_MVC:	descr = "H.264 MVC"; break;
+>> -		case V4L2_PIX_FMT_H264_SLICE_RAW:	descr = "H.264 Parsed Slice Data"; break;
+>> +		case V4L2_PIX_FMT_H264_SLICE:	descr = "H.264 Parsed Slice Data"; break;
+>>  		case V4L2_PIX_FMT_H263:		descr = "H.263"; break;
+>>  		case V4L2_PIX_FMT_MPEG1:	descr = "MPEG-1 ES"; break;
+>>  		case V4L2_PIX_FMT_MPEG2:	descr = "MPEG-2 ES"; break;
+>> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+>> index bdad87eb9d79..56ca4c9ad01c 100644
+>> --- a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+>> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+>> @@ -46,7 +46,7 @@ void cedrus_device_run(void *priv)
+>>  			V4L2_CID_MPEG_VIDEO_MPEG2_QUANTIZATION);
+>>  		break;
+>>  
+>> -	case V4L2_PIX_FMT_H264_SLICE_RAW:
+>> +	case V4L2_PIX_FMT_H264_SLICE:
+>>  		run.h264.decode_params = cedrus_find_control_data(ctx,
+>>  			V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS);
+>>  		run.h264.pps = cedrus_find_control_data(ctx,
+>> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+>> index 681dfe3367a6..eeee3efd247b 100644
+>> --- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+>> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+>> @@ -38,7 +38,7 @@ static struct cedrus_format cedrus_formats[] = {
+>>  		.directions	= CEDRUS_DECODE_SRC,
+>>  	},
+>>  	{
+>> -		.pixelformat	= V4L2_PIX_FMT_H264_SLICE_RAW,
+>> +		.pixelformat	= V4L2_PIX_FMT_H264_SLICE,
+>>  		.directions	= CEDRUS_DECODE_SRC,
+>>  	},
+>>  	{
+>> @@ -104,7 +104,7 @@ static void cedrus_prepare_format(struct v4l2_pix_format *pix_fmt)
+>>  
+>>  	switch (pix_fmt->pixelformat) {
+>>  	case V4L2_PIX_FMT_MPEG2_SLICE:
+>> -	case V4L2_PIX_FMT_H264_SLICE_RAW:
+>> +	case V4L2_PIX_FMT_H264_SLICE:
+>>  		/* Zero bytes per line for encoded source. */
+>>  		bytesperline = 0;
+>>  
+>> @@ -449,7 +449,7 @@ static int cedrus_start_streaming(struct vb2_queue *vq, unsigned int count)
+>>  		ctx->current_codec = CEDRUS_CODEC_MPEG2;
+>>  		break;
+>>  
+>> -	case V4L2_PIX_FMT_H264_SLICE_RAW:
+>> +	case V4L2_PIX_FMT_H264_SLICE:
+>>  		ctx->current_codec = CEDRUS_CODEC_H264;
+>>  		break;
+>>  
+>> diff --git a/include/media/h264-ctrls.h b/include/media/h264-ctrls.h
+>> index e1404d78d6ff..6160a69c0143 100644
+>> --- a/include/media/h264-ctrls.h
+>> +++ b/include/media/h264-ctrls.h
+>> @@ -14,7 +14,7 @@
+>>  #include <linux/videodev2.h>
+>>  
+>>  /* Our pixel format isn't stable at the moment */
+>> -#define V4L2_PIX_FMT_H264_SLICE_RAW v4l2_fourcc('S', '2', '6', '4') /* H264 parsed slices */
+>> +#define V4L2_PIX_FMT_H264_SLICE v4l2_fourcc('S', '2', '6', '4') /* H264 parsed slices */
+>>  
+>>  /*
+>>   * This is put insanely high to avoid conflicting with controls that
+>> -- 
+>> 2.22.0
+>>
+> 
