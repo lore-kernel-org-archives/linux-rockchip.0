@@ -1,74 +1,45 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH v7 02/11] media: uapi: h264: Rename pixel format
-Date: Mon, 19 Aug 2019 11:38:51 -0300
-Message-ID: <a0b1f5806a0a5e5a58f1702485e36ec669c32f81.camel@collabora.com>
-References: <20190816160132.7352-1-ezequiel@collabora.com>
-         <20190816160132.7352-3-ezequiel@collabora.com>
-         <20190819124110.GB32182@aptenodytes>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2] arm: dts: rockchip: fix vcc_host_5v regulator for usb3 host
+Date: Mon, 19 Aug 2019 16:43:45 +0200
+Message-ID: <3811189.poQrIVWTgf@phil>
+References: <20190815081252.27405-1-kever.yang@rock-chips.com> <2932927.UJgUFA1Pmh@phil> <208c56e1-bfe0-a982-927d-bdddc3116631@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190819124110.GB32182@aptenodytes>
+In-Reply-To: <208c56e1-bfe0-a982-927d-bdddc3116631@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Cc: linux-media@vger.kernel.org, kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Jonas Karlman <jonas@kwiboo.se>, Katsuhiro Suzuki <katsuhiro@katsuster.net>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Tomohiro Mayama <parly-gh@iris.mystia.org>, Vasily Khoruzhick <anarsoul@gmail.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 2019-08-19 at 14:41 +0200, Paul Kocialkowski wrote:
-> Hi,
+Hi Kever,
+
+Am Montag, 19. August 2019, 02:29:31 CEST schrieb Kever Yang:
+> Hi Heiko,
 > 
-> On Fri 16 Aug 19, 13:01, Ezequiel Garcia wrote:
-> > The V4L2_PIX_FMT_H264_SLICE_RAW name was originally suggested
-> > because the pixel format would represent H264 slices without any
-> > start code.
-> > 
-> > However, as we will now introduce a start code menu control,
-> > give the pixel format a more meaningful name, while it's
-> > still early enough to do so.
+> On 2019/8/16 下午8:24, Heiko Stuebner wrote:
+> > Hi Kever, TL,
+> >
+> > [added TL Lim for clarification]
+> >
+> > Am Donnerstag, 15. August 2019, 10:12:52 CEST schrieb Kever Yang:
+> >> According to rock64 schemetic V2 and V3, the VCC_HOST_5V output is
+> >> controlled by USB_20_HOST_DRV, which is the same as VCC_HOST1_5V.
+> > The v1 schematics I have do reference the GPIO0_A0 as controlling this
+> > supply, so the big question would be how to handle the different versions.
+> >
+> > Because adding this would probably break v1 boards in this function.
+> >
+> > @TL: where v1 boards also sold or were they only used during development?
 > 
-> I definitely agree that SLICE_RAW is not the suffix we are looking for, but I'm
-> not sure that _SLICE is self-describing given that we can operate either
-> per-frame or per-slice, and _SLICE sort of implies the latter.
-
-This is not entirely so, per-frame or per-slice mode refer to the granularity
-of the stateless API, the pixel format is still composed of H264 NALU slices.
-
-As per the documentation, the decode_mode and the start_code are modifiers
-of the pixel format. As long as this is properly speced, the
-V4L2_PIX_FMT_H264_SLICE looks pretty OK to me.
-
->  Also, VP8 uses
-> _FRAME to clearly indicate that it operates per-frame.
 > 
-
-This is because VP8 doesn't have any concept of slices, the encoded unit
-is a video frame.
-
-> In addition, the _SLICE suffix is used by MPEG-2 in the stable API. Since we
-> certainly want MPEG-2 to allow per-slice and per-frame decoding as well as
-> H.264 and that the _SLICE format is specified to be the broken "concatenated
-> slices" that cedrus expects, we probably want to use another suffix. This way,
-> we could deprecated MPEG2_SLICE and introduce a new format for MPEG-2 that would
-> have consistent naming with the other mpeg formats.
+> I have check this with TL when I make this patch, the V1 hardware was 
+> never sold and only V2/V3
 > 
-> One suggestion I had was to call it H264_PARSED (and apply this to MPEG-2 and
-> HEVC when similar controls to H.264 are set in place for them). I think Hans had
-> another suggestion for the name but I don't recall what it was at this point.
-> 
-> Either way, if this has to be some debate, we could perhaps take it off your
-> series and stay with SLICE_RAW for now, as long as we do rename it before making
-> the API stable.
-> 
-> What do you think?
-> 
+> are available on the market.
 
-With the new pixel format modifiers (decode_mode and start_code), the _RAW suffix
-now has no meaning. Now, we could name it _PARSED or _SLICE. As long as this is
-properly documented (as it is now), that'd be fine.
+Thanks for clearing this up. I've applied this patch for 5.4 now.
 
-Now, to be completely honest, this discussion sounds like
-bikeshedding to me.
-
-Thanks,
-Eze
+Thanks
+Heiko
