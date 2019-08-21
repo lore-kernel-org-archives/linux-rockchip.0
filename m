@@ -1,85 +1,417 @@
-From: Nathan Chancellor <natechancellor@gmail.com>
-Subject: Re: [PATCH] phy-rockchip-inno-hdmi: Fix
- RK3328_TERM_RESISTOR_CALIB_SPEED_7_0's third value
-Date: Tue, 20 Aug 2019 11:12:20 -0700
-Message-ID: <20190820181220.GD9420@archlinux-threadripper>
-References: <20190807192305.6604-1-natechancellor@gmail.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH] ARM: dts: rockchip: remove rk3288 fennec board support
+Date: Wed, 21 Aug 2019 11:01:15 +0800
+Message-ID: <5dfd9896-b8d2-abd0-93f4-8bcfc4331aa3@rock-chips.com>
+References: <20190820100353.17728-1-kever.yang@rock-chips.com>
+ <3270378.xvmEzLMrnJ@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190807192305.6604-1-natechancellor@gmail.com>
+In-Reply-To: <3270378.xvmEzLMrnJ@phil>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Andrzej Hajda <a.hajda@samsung.com>, Guenter Roeck <linux@roeck-us.net>, "kernelci . org bot" <bot@kernelci.org>, Naresh Kamboju <naresh.kamboju@linaro.org>, Robin Murphy <robin.murphy@arm.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Aug 07, 2019 at 12:23:05PM -0700, Nathan Chancellor wrote:
-> After commit "linux/bits.h: Add compile time sanity check of GENMASK
-> inputs" [1], arm64 defconfig builds started failing:
-> 
-> In file included from ../include/linux/bits.h:22,
->                  from ../include/linux/bitops.h:5,
->                  from ../include/linux/kernel.h:12,
->                  from ../include/linux/clk.h:13,
->                  from ../drivers/phy/rockchip/phy-rockchip-inno-hdmi.c:9:
-> ../drivers/phy/rockchip/phy-rockchip-inno-hdmi.c: In function 'inno_hdmi_phy_rk3328_power_on':
-> ../include/linux/build_bug.h:16:45: error: negative width in bit-field '<anonymous>'
->    16 | #define BUILD_BUG_ON_ZERO(e) (sizeof(struct { int:(-!!(e)); }))
->       |                                             ^
-> ../include/linux/bits.h:24:18: note: in expansion of macro 'BUILD_BUG_ON_ZERO'
->    24 |  ((unsigned long)BUILD_BUG_ON_ZERO(__builtin_choose_expr( \
->       |                  ^~~~~~~~~~~~~~~~~
-> ../include/linux/bits.h:39:3: note: in expansion of macro 'GENMASK_INPUT_CHECK'
->    39 |  (GENMASK_INPUT_CHECK(high, low) + __GENMASK(high, low))
->       |   ^~~~~~~~~~~~~~~~~~~
-> ../drivers/phy/rockchip/phy-rockchip-inno-hdmi.c:24:42: note: in expansion of macro 'GENMASK'
->    24 | #define UPDATE(x, h, l)  (((x) << (l)) & GENMASK((h), (l)))
->       |                                          ^~~~~~~
-> ../drivers/phy/rockchip/phy-rockchip-inno-hdmi.c:201:50: note: in expansion of macro 'UPDATE'
->   201 | #define RK3328_TERM_RESISTOR_CALIB_SPEED_7_0(x)  UPDATE(x, 7, 9)
->       |                                                  ^~~~~~
-> ../drivers/phy/rockchip/phy-rockchip-inno-hdmi.c:1046:26: note: in expansion of macro 'RK3328_TERM_RESISTOR_CALIB_SPEED_7_0'
->  1046 |   inno_write(inno, 0xc6, RK3328_TERM_RESISTOR_CALIB_SPEED_7_0(v));
->       |                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> 
-> As pointed out by Robin and Guenter, inno_write's val argument is an
-> 8-bit value so having a mask larger than that doesn't make sense. This
-> also matches the rest of the *_7_0 macros in this driver.
-> 
-> [1]: https://lore.kernel.org/lkml/20190801230358.4193-2-rikard.falkeborn@gmail.com/
-> 
-> Reported-by: Andrzej Hajda <a.hajda@samsung.com>
-> Reported-by: Guenter Roeck <linux@roeck-us.net>
-> Reported-by: kernelci.org bot <bot@kernelci.org>
-> Reported-by: Naresh Kamboju <naresh.kamboju@linaro.org>
-> Suggested-by: Guenter Roeck <linux@roeck-us.net>
-> Suggested-by: Robin Murphy <robin.murphy@arm.com>
-> Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
-> ---
->  drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-> index b10a84cab4a7..2b97fb1185a0 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-> @@ -198,7 +198,7 @@
->  #define RK3328_BYPASS_TERM_RESISTOR_CALIB		BIT(7)
->  #define RK3328_TERM_RESISTOR_CALIB_SPEED_14_8(x)	UPDATE((x) >> 8, 6, 0)
->  /* REG:0xc6 */
-> -#define RK3328_TERM_RESISTOR_CALIB_SPEED_7_0(x)		UPDATE(x, 7, 9)
-> +#define RK3328_TERM_RESISTOR_CALIB_SPEED_7_0(x)		UPDATE(x, 7, 0)
->  /* REG:0xc7 */
->  #define RK3328_TERM_RESISTOR_50				UPDATE(0, 2, 1)
->  #define RK3328_TERM_RESISTOR_62_5			UPDATE(1, 2, 1)
-> -- 
-> 2.23.0.rc1
-> 
 
-There was a v3 of linux/bits.h: Add compile time sanity check of GENMASK
-inputs sent and this needs to be picked up to avoid build breakage when
-that is applied. Could someone please pick this up?
+On 2019/8/20 下午9:56, Heiko Stuebner wrote:
+> Hi Kever,
+>
+> Am Dienstag, 20. August 2019, 12:03:52 CEST schrieb Kever Yang:
+>> Since there is no one using this board, remove it.
+> so just to elaborate a bit, I guess this board was internal to Rockchip,
+> never went to the market and therefore is obsolete without any users,
+> right?
 
-Cheers,
-Nathan
+
+Yes, even if there is someone using this board, they don't use upstream 
+source code, you can see
+
+there is only one commit relate to board itself, but never update. So I 
+would like to remove it
+
+from kernel and U-Boot upstream.
+
+>
+> Also we should remove the binding  from
+> 	Documentation/devicetree/bindings/arm/rockchip.yaml as well
+
+Will update.
+
+
+Thanks,
+
+- Kever
+
+>
+>
+> Heiko
+>
+>
+>> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+>> ---
+>>
+>>   arch/arm/boot/dts/rk3288-fennec.dts | 347 ----------------------------
+>>   1 file changed, 347 deletions(-)
+>>   delete mode 100644 arch/arm/boot/dts/rk3288-fennec.dts
+>>
+>> diff --git a/arch/arm/boot/dts/rk3288-fennec.dts b/arch/arm/boot/dts/rk3288-fennec.dts
+>> deleted file mode 100644
+>> index 4847cf902a15..000000000000
+>> --- a/arch/arm/boot/dts/rk3288-fennec.dts
+>> +++ /dev/null
+>> @@ -1,347 +0,0 @@
+>> -// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+>> -
+>> -/dts-v1/;
+>> -
+>> -#include "rk3288.dtsi"
+>> -
+>> -/ {
+>> -	model = "Rockchip RK3288 Fennec Board";
+>> -	compatible = "rockchip,rk3288-fennec", "rockchip,rk3288";
+>> -
+>> -	memory@0 {
+>> -		reg = <0x0 0x0 0x0 0x80000000>;
+>> -		device_type = "memory";
+>> -	};
+>> -
+>> -	ext_gmac: external-gmac-clock {
+>> -		compatible = "fixed-clock";
+>> -		#clock-cells = <0>;
+>> -		clock-frequency = <125000000>;
+>> -		clock-output-names = "ext_gmac";
+>> -	};
+>> -
+>> -	vcc_sys: vsys-regulator {
+>> -		compatible = "regulator-fixed";
+>> -		regulator-name = "vcc_sys";
+>> -		regulator-min-microvolt = <5000000>;
+>> -		regulator-max-microvolt = <5000000>;
+>> -		regulator-always-on;
+>> -		regulator-boot-on;
+>> -	};
+>> -};
+>> -
+>> -&cpu0 {
+>> -	cpu0-supply = <&vdd_cpu>;
+>> -};
+>> -
+>> -&emmc {
+>> -	bus-width = <8>;
+>> -	cap-mmc-highspeed;
+>> -	non-removable;
+>> -	pinctrl-names = "default";
+>> -	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_pwr &emmc_bus8>;
+>> -	status = "okay";
+>> -};
+>> -
+>> -&gmac {
+>> -	assigned-clocks = <&cru SCLK_MAC>;
+>> -	assigned-clock-parents = <&ext_gmac>;
+>> -	clock_in_out = "input";
+>> -	pinctrl-names = "default";
+>> -	pinctrl-0 = <&rgmii_pins>, <&phy_rst>, <&phy_pmeb>, <&phy_int>;
+>> -	phy-supply = <&vcc_lan>;
+>> -	phy-mode = "rgmii";
+>> -	snps,reset-active-low;
+>> -	snps,reset-delays-us = <0 10000 1000000>;
+>> -	snps,reset-gpio = <&gpio4 RK_PB0 GPIO_ACTIVE_LOW>;
+>> -	tx_delay = <0x30>;
+>> -	rx_delay = <0x10>;
+>> -	status = "okay";
+>> -};
+>> -
+>> -&gpu {
+>> -	mali-supply = <&vdd_gpu>;
+>> -	status = "okay";
+>> -};
+>> -
+>> -&hdmi {
+>> -	status = "okay";
+>> -};
+>> -
+>> -&i2c0 {
+>> -	status = "okay";
+>> -	clock-frequency = <400000>;
+>> -
+>> -	rk808: pmic@1b {
+>> -		compatible = "rockchip,rk808";
+>> -		reg = <0x1b>;
+>> -		interrupt-parent = <&gpio0>;
+>> -		interrupts = <RK_PA4 IRQ_TYPE_LEVEL_LOW>;
+>> -		#clock-cells = <1>;
+>> -		clock-output-names = "xin32k", "rk808-clkout2";
+>> -		pinctrl-names = "default";
+>> -		pinctrl-0 = <&pmic_int &global_pwroff>;
+>> -		rockchip,system-power-controller;
+>> -		wakeup-source;
+>> -
+>> -		vcc1-supply = <&vcc_sys>;
+>> -		vcc2-supply = <&vcc_sys>;
+>> -		vcc3-supply = <&vcc_sys>;
+>> -		vcc4-supply = <&vcc_sys>;
+>> -		vcc6-supply = <&vcc_sys>;
+>> -		vcc7-supply = <&vcc_sys>;
+>> -		vcc8-supply = <&vcc_io>;
+>> -		vcc9-supply = <&vcc_io>;
+>> -		vcc10-supply = <&vcc_io>;
+>> -		vcc11-supply = <&vcc_io>;
+>> -		vcc12-supply = <&vcc_io>;
+>> -		vddio-supply = <&vcc_io>;
+>> -
+>> -		regulators {
+>> -			vdd_cpu: DCDC_REG1 {
+>> -				regulator-always-on;
+>> -				regulator-boot-on;
+>> -				regulator-min-microvolt = <750000>;
+>> -				regulator-max-microvolt = <1350000>;
+>> -				regulator-name = "vdd_arm";
+>> -				regulator-state-mem {
+>> -					regulator-off-in-suspend;
+>> -				};
+>> -			};
+>> -
+>> -			vdd_gpu: DCDC_REG2 {
+>> -				regulator-always-on;
+>> -				regulator-boot-on;
+>> -				regulator-min-microvolt = <850000>;
+>> -				regulator-max-microvolt = <1250000>;
+>> -				regulator-name = "vdd_gpu";
+>> -				regulator-state-mem {
+>> -					regulator-on-in-suspend;
+>> -					regulator-suspend-microvolt = <1000000>;
+>> -				};
+>> -			};
+>> -
+>> -			vcc_ddr: DCDC_REG3 {
+>> -				regulator-always-on;
+>> -				regulator-boot-on;
+>> -				regulator-name = "vcc_ddr";
+>> -				regulator-state-mem {
+>> -					regulator-on-in-suspend;
+>> -				};
+>> -			};
+>> -
+>> -			vcc_io: DCDC_REG4 {
+>> -				regulator-always-on;
+>> -				regulator-boot-on;
+>> -				regulator-min-microvolt = <3300000>;
+>> -				regulator-max-microvolt = <3300000>;
+>> -				regulator-name = "vcc_io";
+>> -				regulator-state-mem {
+>> -					regulator-on-in-suspend;
+>> -					regulator-suspend-microvolt = <3300000>;
+>> -				};
+>> -			};
+>> -
+>> -			vccio_pmu: LDO_REG1 {
+>> -				regulator-always-on;
+>> -				regulator-boot-on;
+>> -				regulator-min-microvolt = <3300000>;
+>> -				regulator-max-microvolt = <3300000>;
+>> -				regulator-name = "vccio_pmu";
+>> -				regulator-state-mem {
+>> -					regulator-on-in-suspend;
+>> -					regulator-suspend-microvolt = <3300000>;
+>> -				};
+>> -			};
+>> -
+>> -			vcca_33: LDO_REG2 {
+>> -				regulator-always-on;
+>> -				regulator-boot-on;
+>> -				regulator-min-microvolt = <3300000>;
+>> -				regulator-max-microvolt = <3300000>;
+>> -				regulator-name = "vcca_33";
+>> -				regulator-state-mem {
+>> -					regulator-off-in-suspend;
+>> -				};
+>> -			};
+>> -
+>> -			vdd_10: LDO_REG3 {
+>> -				regulator-always-on;
+>> -				regulator-boot-on;
+>> -				regulator-min-microvolt = <1000000>;
+>> -				regulator-max-microvolt = <1000000>;
+>> -				regulator-name = "vdd_10";
+>> -				regulator-state-mem {
+>> -					regulator-on-in-suspend;
+>> -					regulator-suspend-microvolt = <1000000>;
+>> -				};
+>> -			};
+>> -
+>> -			vcc_wl: LDO_REG4 {
+>> -				regulator-always-on;
+>> -				regulator-boot-on;
+>> -				regulator-min-microvolt = <1800000>;
+>> -				regulator-max-microvolt = <1800000>;
+>> -				regulator-name = "vcc_wl";
+>> -				regulator-state-mem {
+>> -					regulator-on-in-suspend;
+>> -					regulator-suspend-microvolt = <1800000>;
+>> -				};
+>> -			};
+>> -
+>> -			vccio_sd: LDO_REG5 {
+>> -				regulator-always-on;
+>> -				regulator-boot-on;
+>> -				regulator-min-microvolt = <1800000>;
+>> -				regulator-max-microvolt = <3300000>;
+>> -				regulator-name = "vccio_sd";
+>> -				regulator-state-mem {
+>> -					regulator-on-in-suspend;
+>> -					regulator-suspend-microvolt = <3300000>;
+>> -				};
+>> -			};
+>> -
+>> -			vdd10_lcd: LDO_REG6 {
+>> -				regulator-always-on;
+>> -				regulator-boot-on;
+>> -				regulator-min-microvolt = <1000000>;
+>> -				regulator-max-microvolt = <1000000>;
+>> -				regulator-name = "vdd10_lcd";
+>> -				regulator-state-mem {
+>> -					regulator-on-in-suspend;
+>> -					regulator-suspend-microvolt = <1000000>;
+>> -				};
+>> -			};
+>> -
+>> -			vcc_18: LDO_REG7 {
+>> -				regulator-always-on;
+>> -				regulator-boot-on;
+>> -				regulator-min-microvolt = <1800000>;
+>> -				regulator-max-microvolt = <1800000>;
+>> -				regulator-name = "vcc_18";
+>> -				regulator-state-mem {
+>> -					regulator-on-in-suspend;
+>> -					regulator-suspend-microvolt = <1800000>;
+>> -				};
+>> -			};
+>> -
+>> -			vcc18_lcd: LDO_REG8 {
+>> -				regulator-always-on;
+>> -				regulator-boot-on;
+>> -				regulator-min-microvolt = <1800000>;
+>> -				regulator-max-microvolt = <1800000>;
+>> -				regulator-name = "vcc18_lcd";
+>> -				regulator-state-mem {
+>> -					regulator-on-in-suspend;
+>> -					regulator-suspend-microvolt = <1800000>;
+>> -				};
+>> -			};
+>> -
+>> -			vcc_sd: SWITCH_REG1 {
+>> -				regulator-always-on;
+>> -				regulator-boot-on;
+>> -				regulator-name = "vcc_sd";
+>> -				regulator-state-mem {
+>> -					regulator-on-in-suspend;
+>> -				};
+>> -			};
+>> -
+>> -			vcc_lan: SWITCH_REG2 {
+>> -				regulator-always-on;
+>> -				regulator-boot-on;
+>> -				regulator-name = "vcc_lan";
+>> -				regulator-state-mem {
+>> -					regulator-on-in-suspend;
+>> -				};
+>> -			};
+>> -		};
+>> -	};
+>> -};
+>> -
+>> -&pinctrl {
+>> -	pcfg_output_high: pcfg-output-high {
+>> -		output-high;
+>> -	};
+>> -
+>> -	pcfg_output_low: pcfg-output-low {
+>> -		output-low;
+>> -	};
+>> -
+>> -	pcfg_pull_none_drv_8ma: pcfg-pull-none-drv-8ma {
+>> -		drive-strength = <8>;
+>> -	};
+>> -
+>> -	pcfg_pull_up_drv_8ma: pcfg-pull-up-drv-8ma {
+>> -		bias-pull-up;
+>> -		drive-strength = <8>;
+>> -	};
+>> -
+>> -	gmac {
+>> -		phy_int: phy-int {
+>> -			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>;
+>> -		};
+>> -
+>> -		phy_pmeb: phy-pmeb {
+>> -			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
+>> -		};
+>> -
+>> -		phy_rst: phy-rst {
+>> -			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_output_high>;
+>> -		};
+>> -	};
+>> -
+>> -	pmic {
+>> -		pmic_int: pmic-int {
+>> -			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
+>> -		};
+>> -	};
+>> -
+>> -	usbphy {
+>> -		host_drv: host-drv {
+>> -			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+>> -		};
+>> -	};
+>> -};
+>> -
+>> -&uart2 {
+>> -	status = "okay";
+>> -};
+>> -
+>> -&usbphy {
+>> -	pinctrl-names = "default";
+>> -	pinctrl-0 = <&host_drv>;
+>> -	vbus_drv-gpios = <&gpio0 RK_PB6 GPIO_ACTIVE_HIGH>;
+>> -	status = "okay";
+>> -};
+>> -
+>> -&usb_host0_ehci {
+>> -	status = "okay";
+>> -};
+>> -
+>> -&usb_host1 {
+>> -	status = "okay";
+>> -};
+>> -
+>> -&usb_otg {
+>> -	status = "okay";
+>> -};
+>> -
+>> -&usb_hsic {
+>> -	status = "okay";
+>> -};
+>> -
+>> -&vopb {
+>> -	status = "okay";
+>> -};
+>> -
+>> -&vopb_mmu {
+>> -	status = "okay";
+>> -};
+>> -
+>> -&vopl {
+>> -	status = "okay";
+>> -};
+>> -
+>> -&vopl_mmu {
+>> -	status = "okay";
+>> -};
+>>
+>
+>
+>
+>
