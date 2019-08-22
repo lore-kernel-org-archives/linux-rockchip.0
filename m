@@ -1,723 +1,275 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH v8 04/14] media: rkisp1: add Rockchip MIPI Synopsys DPHY
- driver
-Date: Thu, 22 Aug 2019 05:32:32 +0300
-Message-ID: <20190822023232.GE17402@pendragon.ideasonboard.com>
-References: <20190730184256.30338-1-helen.koike@collabora.com>
- <20190730184256.30338-5-helen.koike@collabora.com>
- <20190807130558.GF822@valkosipuli.retiisi.org.uk>
- <c61498b0-dd4c-53af-db82-169f8dfdc6bd@collabora.com>
- <20190815175440.GW5011@pendragon.ideasonboard.com>
- <28b05c0e-2f68-aecb-536a-c543bcd43de1@collabora.com>
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Subject: Re: [PATCH v7 02/11] media: uapi: h264: Rename pixel format
+Date: Thu, 22 Aug 2019 13:54:53 +0200
+Message-ID: <20190822115453.GA1627@aptenodytes>
+References: <20190816160132.7352-1-ezequiel@collabora.com>
+ <20190816160132.7352-3-ezequiel@collabora.com>
+ <20190819124110.GB32182@aptenodytes>
+ <e618bf01-3f82-ff06-1842-9d21a379d7ee@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="2oS5YaxWCcQjTEyO"
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <28b05c0e-2f68-aecb-536a-c543bcd43de1@collabora.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Helen Koike <helen.koike@collabora.com>
-Cc: devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, kernel@collabora.com, heiko@sntech.de, jacob2.chen@rock-chips.com, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, Sakari Ailus <sakari.ailus@iki.fi>, sakari.ailus@linux.intel.com, zhengsq@rock-chips.com, hans.verkuil@cisco.com, mchehab@kernel.org, ezequiel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+In-Reply-To: <e618bf01-3f82-ff06-1842-9d21a379d7ee@xs4all.nl>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Helen,
 
-On Wed, Aug 21, 2019 at 06:46:15PM -0300, Helen Koike wrote:
-> On 8/15/19 2:54 PM, Laurent Pinchart wrote:
-> > On Wed, Aug 07, 2019 at 10:37:55AM -0300, Helen Koike wrote:
-> >> On 8/7/19 10:05 AM, Sakari Ailus wrote:
-> >>> On Tue, Jul 30, 2019 at 03:42:46PM -0300, Helen Koike wrote:
-> >>>> From: Jacob Chen <jacob2.chen@rock-chips.com>
-> >>>>
-> >>>> This commit adds a subdev driver for Rockchip MIPI Synopsys DPHY driver
-> >>>>
-> >>>> Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
-> >>>> Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
-> >>>> Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-> >>>> [migrate to phy framework]
-> >>>> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> >>>> [update for upstream]
-> >>>> Signed-off-by: Helen Koike <helen.koike@collabora.com>
-> >>>>
-> >>>> ---
-> >>>>
-> >>>> Changes in v8:
-> >>>> - Remove boiler plate license text
-> >>>>
-> >>>> Changes in v7:
-> >>>> - Migrate dphy specific code from
-> >>>> drivers/media/platform/rockchip/isp1/mipi_dphy_sy.c
-> >>>> to drivers/phy/rockchip/phy-rockchip-dphy.c
-> >>>> - Drop support for rk3288
-> >>>> - Drop support for dphy txrx
-> >>>> - code styling and checkpatch fixes
-> >>>>
-> >>>>  drivers/phy/rockchip/Kconfig             |   8 +
-> >>>>  drivers/phy/rockchip/Makefile            |   1 +
-> >>>>  drivers/phy/rockchip/phy-rockchip-dphy.c | 408 +++++++++++++++++++++++
-> >>>>  3 files changed, 417 insertions(+)
-> >>>>  create mode 100644 drivers/phy/rockchip/phy-rockchip-dphy.c
-> >>>>
-> >>>> diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
-> >>>> index c454c90cd99e..afd072f135e6 100644
-> >>>> --- a/drivers/phy/rockchip/Kconfig
-> >>>> +++ b/drivers/phy/rockchip/Kconfig
-> >>>> @@ -9,6 +9,14 @@ config PHY_ROCKCHIP_DP
-> >>>>  	help
-> >>>>  	  Enable this to support the Rockchip Display Port PHY.
-> >>>>  
-> >>>> +config PHY_ROCKCHIP_DPHY
-> >>>> +	tristate "Rockchip MIPI Synopsys DPHY driver"
-> > 
-> > How much of this PHY is Rockchip-specific ? Would it make sense to turn
-> > it into a Synopsys DPHY driver, with some Rockchip glue ? I suppose this
-> > could always be done later, if needed (and I also suppose there's no
-> > existing driver in drivers/phy/ that support the same Synopsys IP).
-> > 
-> >>>> +	depends on ARCH_ROCKCHIP && OF
-> >>>
-> >>> How about (...) || COMPILE_TEST ?
-> >>>
-> >>>> +	select GENERIC_PHY_MIPI_DPHY
-> >>>> +	select GENERIC_PHY
-> >>>> +	help
-> >>>> +	  Enable this to support the Rockchip MIPI Synopsys DPHY.
-> >>>> +
-> >>>>  config PHY_ROCKCHIP_EMMC
-> >>>>  	tristate "Rockchip EMMC PHY Driver"
-> >>>>  	depends on ARCH_ROCKCHIP && OF
-> >>>> diff --git a/drivers/phy/rockchip/Makefile b/drivers/phy/rockchip/Makefile
-> >>>> index fd21cbaf40dd..f62e9010bcaf 100644
-> >>>> --- a/drivers/phy/rockchip/Makefile
-> >>>> +++ b/drivers/phy/rockchip/Makefile
-> >>>> @@ -1,5 +1,6 @@
-> >>>>  # SPDX-License-Identifier: GPL-2.0
-> >>>>  obj-$(CONFIG_PHY_ROCKCHIP_DP)		+= phy-rockchip-dp.o
-> >>>> +obj-$(CONFIG_PHY_ROCKCHIP_DPHY)		+= phy-rockchip-dphy.o
-> >>>>  obj-$(CONFIG_PHY_ROCKCHIP_EMMC)		+= phy-rockchip-emmc.o
-> >>>>  obj-$(CONFIG_PHY_ROCKCHIP_INNO_HDMI)	+= phy-rockchip-inno-hdmi.o
-> >>>>  obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB2)	+= phy-rockchip-inno-usb2.o
-> >>>> diff --git a/drivers/phy/rockchip/phy-rockchip-dphy.c b/drivers/phy/rockchip/phy-rockchip-dphy.c
-> >>>> new file mode 100644
-> >>>> index 000000000000..3a29976c2dff
-> >>>> --- /dev/null
-> >>>> +++ b/drivers/phy/rockchip/phy-rockchip-dphy.c
-> >>>> @@ -0,0 +1,408 @@
-> >>>> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> >>>> +/*
-> >>>> + * Rockchip MIPI Synopsys DPHY driver
-> >>>> + *
-> >>>> + * Based on:
-> >>>> + *
-> >>>> + * Copyright (C) 2016 FuZhou Rockchip Co., Ltd.
-> >>>> + * Author: Yakir Yang <ykk@@rock-chips.com>
-> >>>> + */
-> >>>> +
-> >>>> +#include <linux/clk.h>
-> >>>> +#include <linux/io.h>
-> >>>> +#include <linux/mfd/syscon.h>
-> >>>> +#include <linux/module.h>
-> >>>> +#include <linux/of.h>
-> >>>> +#include <linux/of_device.h>
-> >>>> +#include <linux/phy/phy.h>
-> >>>> +#include <linux/phy/phy-mipi-dphy.h>
-> >>>> +#include <linux/platform_device.h>
-> >>>> +#include <linux/regmap.h>
-> >>>> +
-> >>>> +#define RK3399_GRF_SOC_CON9	0x6224
-> >>>> +#define RK3399_GRF_SOC_CON21	0x6254
-> >>>> +#define RK3399_GRF_SOC_CON22	0x6258
-> >>>> +#define RK3399_GRF_SOC_CON23	0x625c
-> >>>> +#define RK3399_GRF_SOC_CON24	0x6260
-> >>>> +#define RK3399_GRF_SOC_CON25	0x6264
-> >>>> +#define RK3399_GRF_SOC_STATUS1	0xe2a4
-> >>>> +
-> >>>> +#define CLOCK_LANE_HS_RX_CONTROL		0x34
-> >>>> +#define LANE0_HS_RX_CONTROL			0x44
-> >>>> +#define LANE1_HS_RX_CONTROL			0x54
-> >>>> +#define LANE2_HS_RX_CONTROL			0x84
-> >>>> +#define LANE3_HS_RX_CONTROL			0x94
-> >>>> +#define HS_RX_DATA_LANES_THS_SETTLE_CONTROL	0x75
-> >>>> +
-> >>>> +#define MAX_DPHY_CLK 8
-> >>>> +
-> >>>> +#define PHY_TESTEN_ADDR			(0x1 << 16)
-> >>>> +#define PHY_TESTEN_DATA			(0x0 << 16)
-> >>>> +#define PHY_TESTCLK			(0x1 << 1)
-> >>>> +#define PHY_TESTCLR			(0x1 << 0)
-> > 
-> > Maybe s/0x// for the previous four lines ?
-> > 
-> >>>> +#define THS_SETTLE_COUNTER_THRESHOLD	0x04
-> >>>> +
-> >>>> +#define HIWORD_UPDATE(val, mask, shift) \
-> >>>> +	((val) << (shift) | (mask) << ((shift) + 16))
-> > 
-> > As you use this in a single place, I would inline it, possibly with a
-> > small comment that explains what's happening.
-> > 
-> >>>> +
-> >>>> +#define GRF_SOC_CON12                           0x0274
-> >>>> +
-> >>>> +#define GRF_EDP_REF_CLK_SEL_INTER_HIWORD_MASK   BIT(20)
-> >>>> +#define GRF_EDP_REF_CLK_SEL_INTER               BIT(4)
-> >>>> +
-> >>>> +#define GRF_EDP_PHY_SIDDQ_HIWORD_MASK           BIT(21)
-> >>>> +#define GRF_EDP_PHY_SIDDQ_ON                    0
-> >>>> +#define GRF_EDP_PHY_SIDDQ_OFF                   BIT(5)
-> > 
-> > I would recommend aligning the value of of all macros in the same way.
-> > 
-> >>>> +
-> >>>> +struct hsfreq_range {
-> >>>> +	u32 range_h;
-> > 
-> > The structure would be more compact if you turned this into a u16.
-> > 
-> >>>> +	u8 cfg_bit;
-> >>>> +};
-> >>>> +
-> >>>> +static const struct hsfreq_range rk3399_mipidphy_hsfreq_ranges[] = {
-> >>>> +	{  89, 0x00}, {  99, 0x10}, { 109, 0x20}, { 129, 0x01},
-> >>>> +	{ 139, 0x11}, { 149, 0x21}, { 169, 0x02}, { 179, 0x12},
-> >>>> +	{ 199, 0x22}, { 219, 0x03}, { 239, 0x13}, { 249, 0x23},
-> >>>> +	{ 269, 0x04}, { 299, 0x14}, { 329, 0x05}, { 359, 0x15},
-> >>>> +	{ 399, 0x25}, { 449, 0x06}, { 499, 0x16}, { 549, 0x07},
-> >>>> +	{ 599, 0x17}, { 649, 0x08}, { 699, 0x18}, { 749, 0x09},
-> >>>> +	{ 799, 0x19}, { 849, 0x29}, { 899, 0x39}, { 949, 0x0a},
-> >>>> +	{ 999, 0x1a}, {1049, 0x2a}, {1099, 0x3a}, {1149, 0x0b},
-> >>>> +	{1199, 0x1b}, {1249, 0x2b}, {1299, 0x3b}, {1349, 0x0c},
-> >>>> +	{1399, 0x1c}, {1449, 0x2c}, {1500, 0x3c}
-> > 
-> > Maybe s/{/{ / and s/}/ }/ to give it a bit more air ? :-)
-> > 
-> >>>> +};
-> >>>> +
-> >>>> +static const char * const rk3399_mipidphy_clks[] = {
-> >>>> +	"dphy-ref",
-> >>>> +	"dphy-cfg",
-> >>>> +	"grf",
-> >>>> +};
-> >>>> +
-> >>>> +enum dphy_reg_id {
-> >>>> +	GRF_DPHY_RX0_TURNDISABLE = 0,
-> >>>> +	GRF_DPHY_RX0_FORCERXMODE,
-> >>>> +	GRF_DPHY_RX0_FORCETXSTOPMODE,
-> >>>> +	GRF_DPHY_RX0_ENABLE,
-> >>>> +	GRF_DPHY_RX0_TESTCLR,
-> >>>> +	GRF_DPHY_RX0_TESTCLK,
-> >>>> +	GRF_DPHY_RX0_TESTEN,
-> >>>> +	GRF_DPHY_RX0_TESTDIN,
-> >>>> +	GRF_DPHY_RX0_TURNREQUEST,
-> >>>> +	GRF_DPHY_RX0_TESTDOUT,
-> >>>> +	GRF_DPHY_TX0_TURNDISABLE,
-> >>>> +	GRF_DPHY_TX0_FORCERXMODE,
-> >>>> +	GRF_DPHY_TX0_FORCETXSTOPMODE,
-> >>>> +	GRF_DPHY_TX0_TURNREQUEST,
-> >>>> +	GRF_DPHY_TX1RX1_TURNDISABLE,
-> >>>> +	GRF_DPHY_TX1RX1_FORCERXMODE,
-> >>>> +	GRF_DPHY_TX1RX1_FORCETXSTOPMODE,
-> >>>> +	GRF_DPHY_TX1RX1_ENABLE,
-> >>>> +	GRF_DPHY_TX1RX1_MASTERSLAVEZ,
-> >>>> +	GRF_DPHY_TX1RX1_BASEDIR,
-> >>>> +	GRF_DPHY_TX1RX1_ENABLECLK,
-> >>>> +	GRF_DPHY_TX1RX1_TURNREQUEST,
-> >>>> +	GRF_DPHY_RX1_SRC_SEL,
-> >>>> +	/* rk3288 only */
-> >>>> +	GRF_CON_DISABLE_ISP,
-> >>>> +	GRF_CON_ISP_DPHY_SEL,
-> >>>> +	GRF_DSI_CSI_TESTBUS_SEL,
-> >>>> +	GRF_DVP_V18SEL,
-> >>>> +	/* below is for rk3399 only */
-> >>>> +	GRF_DPHY_RX0_CLK_INV_SEL,
-> >>>> +	GRF_DPHY_RX1_CLK_INV_SEL,
-> >>>> +};
-> >>>> +
-> >>>> +struct dphy_reg {
-> >>>> +	u32 offset;
-> >>>> +	u32 mask;
-> >>>> +	u32 shift;
-> > 
-> > The offset should hold in 16 bits and the mask and shift in 8 bits. That
-> > would save space in the table below.
-> > 
-> >>>> +};
-> >>>> +
-> >>>> +#define PHY_REG(_offset, _width, _shift) \
-> >>>> +	{ .offset = _offset, .mask = BIT(_width) - 1, .shift = _shift, }
-> >>>> +
-> >>>> +static const struct dphy_reg rk3399_grf_dphy_regs[] = {
-> >>>> +	[GRF_DPHY_RX0_TURNREQUEST] = PHY_REG(RK3399_GRF_SOC_CON9, 4, 0),
-> >>>> +	[GRF_DPHY_RX0_CLK_INV_SEL] = PHY_REG(RK3399_GRF_SOC_CON9, 1, 10),
-> >>>> +	[GRF_DPHY_RX1_CLK_INV_SEL] = PHY_REG(RK3399_GRF_SOC_CON9, 1, 11),
-> >>>> +	[GRF_DPHY_RX0_ENABLE] = PHY_REG(RK3399_GRF_SOC_CON21, 4, 0),
-> >>>> +	[GRF_DPHY_RX0_FORCERXMODE] = PHY_REG(RK3399_GRF_SOC_CON21, 4, 4),
-> >>>> +	[GRF_DPHY_RX0_FORCETXSTOPMODE] = PHY_REG(RK3399_GRF_SOC_CON21, 4, 8),
-> >>>> +	[GRF_DPHY_RX0_TURNDISABLE] = PHY_REG(RK3399_GRF_SOC_CON21, 4, 12),
-> >>>> +	[GRF_DPHY_TX0_FORCERXMODE] = PHY_REG(RK3399_GRF_SOC_CON22, 4, 0),
-> >>>> +	[GRF_DPHY_TX0_FORCETXSTOPMODE] = PHY_REG(RK3399_GRF_SOC_CON22, 4, 4),
-> >>>> +	[GRF_DPHY_TX0_TURNDISABLE] = PHY_REG(RK3399_GRF_SOC_CON22, 4, 8),
-> >>>> +	[GRF_DPHY_TX0_TURNREQUEST] = PHY_REG(RK3399_GRF_SOC_CON22, 4, 12),
-> >>>> +	[GRF_DPHY_TX1RX1_ENABLE] = PHY_REG(RK3399_GRF_SOC_CON23, 4, 0),
-> >>>> +	[GRF_DPHY_TX1RX1_FORCERXMODE] = PHY_REG(RK3399_GRF_SOC_CON23, 4, 4),
-> >>>> +	[GRF_DPHY_TX1RX1_FORCETXSTOPMODE] = PHY_REG(RK3399_GRF_SOC_CON23, 4, 8),
-> >>>> +	[GRF_DPHY_TX1RX1_TURNDISABLE] = PHY_REG(RK3399_GRF_SOC_CON23, 4, 12),
-> >>>> +	[GRF_DPHY_TX1RX1_TURNREQUEST] = PHY_REG(RK3399_GRF_SOC_CON24, 4, 0),
-> >>>> +	[GRF_DPHY_RX1_SRC_SEL] = PHY_REG(RK3399_GRF_SOC_CON24, 1, 4),
-> >>>> +	[GRF_DPHY_TX1RX1_BASEDIR] = PHY_REG(RK3399_GRF_SOC_CON24, 1, 5),
-> >>>> +	[GRF_DPHY_TX1RX1_ENABLECLK] = PHY_REG(RK3399_GRF_SOC_CON24, 1, 6),
-> >>>> +	[GRF_DPHY_TX1RX1_MASTERSLAVEZ] = PHY_REG(RK3399_GRF_SOC_CON24, 1, 7),
-> >>>> +	[GRF_DPHY_RX0_TESTDIN] = PHY_REG(RK3399_GRF_SOC_CON25, 8, 0),
-> >>>> +	[GRF_DPHY_RX0_TESTEN] = PHY_REG(RK3399_GRF_SOC_CON25, 1, 8),
-> >>>> +	[GRF_DPHY_RX0_TESTCLK] = PHY_REG(RK3399_GRF_SOC_CON25, 1, 9),
-> >>>> +	[GRF_DPHY_RX0_TESTCLR] = PHY_REG(RK3399_GRF_SOC_CON25, 1, 10),
-> >>>> +	[GRF_DPHY_RX0_TESTDOUT] = PHY_REG(RK3399_GRF_SOC_STATUS1, 8, 0),
-> > 
-> > The annoying part with such an indirection is that you can't really
-> > write multiple fields in a single register with a single operation.
-> > Is the register mapping completely different between the rk3288 and the
-> > rk3399, or are the fields grouped in registers in a similar way ? In the
-> > latter case we could possibly optimise it.
-> 
-> This would be the rk3288 version:
-> 
-> +static const struct dphy_reg rk3288_grf_dphy_regs[] = {
-> +	[GRF_CON_DISABLE_ISP] = PHY_REG(RK3288_GRF_SOC_CON6, 1, 0),
-> +	[GRF_CON_ISP_DPHY_SEL] = PHY_REG(RK3288_GRF_SOC_CON6, 1, 1),
-> +	[GRF_DSI_CSI_TESTBUS_SEL] = PHY_REG(RK3288_GRF_SOC_CON6, 1, 14),
-> +	[GRF_DPHY_TX0_TURNDISABLE] = PHY_REG(RK3288_GRF_SOC_CON8, 4, 0),
-> +	[GRF_DPHY_TX0_FORCERXMODE] = PHY_REG(RK3288_GRF_SOC_CON8, 4, 4),
-> +	[GRF_DPHY_TX0_FORCETXSTOPMODE] = PHY_REG(RK3288_GRF_SOC_CON8, 4, 8),
-> +	[GRF_DPHY_TX1RX1_TURNDISABLE] = PHY_REG(RK3288_GRF_SOC_CON9, 4, 0),
-> +	[GRF_DPHY_TX1RX1_FORCERXMODE] = PHY_REG(RK3288_GRF_SOC_CON9, 4, 4),
-> +	[GRF_DPHY_TX1RX1_FORCETXSTOPMODE] = PHY_REG(RK3288_GRF_SOC_CON9, 4, 8),
-> +	[GRF_DPHY_TX1RX1_ENABLE] = PHY_REG(RK3288_GRF_SOC_CON9, 4, 12),
-> +	[GRF_DPHY_RX0_TURNDISABLE] = PHY_REG(RK3288_GRF_SOC_CON10, 4, 0),
-> +	[GRF_DPHY_RX0_FORCERXMODE] = PHY_REG(RK3288_GRF_SOC_CON10, 4, 4),
-> +	[GRF_DPHY_RX0_FORCETXSTOPMODE] = PHY_REG(RK3288_GRF_SOC_CON10, 4, 8),
-> +	[GRF_DPHY_RX0_ENABLE] = PHY_REG(RK3288_GRF_SOC_CON10, 4, 12),
-> +	[GRF_DPHY_RX0_TESTCLR] = PHY_REG(RK3288_GRF_SOC_CON14, 1, 0),
-> +	[GRF_DPHY_RX0_TESTCLK] = PHY_REG(RK3288_GRF_SOC_CON14, 1, 1),
-> +	[GRF_DPHY_RX0_TESTEN] = PHY_REG(RK3288_GRF_SOC_CON14, 1, 2),
-> +	[GRF_DPHY_RX0_TESTDIN] = PHY_REG(RK3288_GRF_SOC_CON14, 8, 3),
-> +	[GRF_DPHY_TX1RX1_ENABLECLK] = PHY_REG(RK3288_GRF_SOC_CON14, 1, 12),
-> +	[GRF_DPHY_RX1_SRC_SEL] = PHY_REG(RK3288_GRF_SOC_CON14, 1, 13),
-> +	[GRF_DPHY_TX1RX1_MASTERSLAVEZ] = PHY_REG(RK3288_GRF_SOC_CON14, 1, 14),
-> +	[GRF_DPHY_TX1RX1_BASEDIR] = PHY_REG(RK3288_GRF_SOC_CON14, 1, 15),
-> +	[GRF_DPHY_RX0_TURNREQUEST] = PHY_REG(RK3288_GRF_SOC_CON15, 4, 0),
-> +	[GRF_DPHY_TX1RX1_TURNREQUEST] = PHY_REG(RK3288_GRF_SOC_CON15, 4, 4),
-> +	[GRF_DPHY_TX0_TURNREQUEST] = PHY_REG(RK3288_GRF_SOC_CON15, 3, 8),
-> +	[GRF_DVP_V18SEL] = PHY_REG(RK3288_GRF_IO_VSEL, 1, 1),
-> +	[GRF_DPHY_RX0_TESTDOUT] = PHY_REG(RK3288_GRF_SOC_STATUS21, 8, 0),
-> +};
-> 
-> Which seems different mask and shifts from rk3399. If you have any ideas in
-> how to optimize this I would appreciate it.
+--2oS5YaxWCcQjTEyO
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-It would be tricky indeed :-( Nevermind for now.
+Hi,
 
-> >>>> +};
-> >>>> +
-> >>>> +struct dphy_drv_data {
-> >>>> +	const char * const *clks;
-> >>>> +	int num_clks;
-> > 
-> > This is never negative, you can make it an unsigned int.
-> > 
-> >>>> +	const struct hsfreq_range *hsfreq_ranges;
-> >>>> +	int num_hsfreq_ranges;
-> > 
-> > Same here.
-> > 
-> >>>> +	const struct dphy_reg *regs;
-> >>>> +};
-> >>>> +
-> >>>> +struct rockchip_dphy {
-> >>>> +	struct device *dev;
-> >>>> +	struct regmap *grf;
-> >>>> +	const struct dphy_reg *grf_regs;
-> >>>> +	struct clk_bulk_data clks[MAX_DPHY_CLK];
-> >>>> +
-> >>>> +	const struct dphy_drv_data *drv_data;
-> >>>> +	struct phy_configure_opts_mipi_dphy config;
-> >>>> +};
-> >>>> +
-> >>>> +static inline void write_grf_reg(struct rockchip_dphy *priv,
-> >>>> +				 int index, u8 value)
-> > 
-> > Maybe unsigned int index ?
-> > 
-> >>>> +{
-> >>>> +	const struct dphy_reg *reg = &priv->grf_regs[index];
-> >>>> +	unsigned int val = HIWORD_UPDATE(value, reg->mask, reg->shift);
-> >>>> +
-> >>>> +	WARN_ON(!reg->offset);
-> >>>> +	regmap_write(priv->grf, reg->offset, val);
-> >>>> +}
-> >>>> +
-> >>>> +static void mipidphy0_wr_reg(struct rockchip_dphy *priv,
-> >>>> +			     u8 test_code, u8 test_data)
-> > 
-> > Function (and structure) names have different prefixes, would it make
-> > sense to standardise them ? Maybe rockchip_dphy_ ? Or rk_dphy_ for a
-> > shorter version ? This could become rk_dphy_write_dphy(), and the
-> > previous function rk_dphy_write_grf().
-> > 
-> >>>> +{
-> >>>> +	/*
-> >>>> +	 * With the falling edge on TESTCLK, the TESTDIN[7:0] signal content
-> >>>> +	 * is latched internally as the current test code. Test data is
-> >>>> +	 * programmed internally by rising edge on TESTCLK.
-> >>>> +	 */
-> > 
-> > I've never understood why PHYs tend to have a register named TEST that
-> > contains way more than test data :-)
-> > 
-> >>>> +	write_grf_reg(priv, GRF_DPHY_RX0_TESTCLK, 1);
-> >>>> +	write_grf_reg(priv, GRF_DPHY_RX0_TESTDIN, test_code);
-> >>>> +	write_grf_reg(priv, GRF_DPHY_RX0_TESTEN, 1);
-> >>>> +	write_grf_reg(priv, GRF_DPHY_RX0_TESTCLK, 0);
-> >>>> +	write_grf_reg(priv, GRF_DPHY_RX0_TESTEN, 0);
-> >>>> +	write_grf_reg(priv, GRF_DPHY_RX0_TESTDIN, test_data);
-> >>>> +	write_grf_reg(priv, GRF_DPHY_RX0_TESTCLK, 1);
-> >>>> +}
-> >>>> +
-> >>>> +/* should be move to power_on */
-> > 
-> > s/move/moved/
-> > 
-> > Do you mean merging the two functions together ? What prevents from
-> > doing so ? 
-> 
-> Nothing really, this is a left over command as mipidphy_rx_stream_on() is already
-> being called from power_on, and I don't think we should merge it because
-> in the future we'll probably going to have mipidphy_txrx_stream_on() for dphy1.
-
-Fine with me, let's just remove the comment then.
-
-> >>>> +static int mipidphy_rx_stream_on(struct rockchip_dphy *priv)
-> >>>> +{
-> >>>> +	const struct dphy_drv_data *drv_data = priv->drv_data;
-> >>>> +	const struct hsfreq_range *hsfreq_ranges = drv_data->hsfreq_ranges;
-> >>>> +	struct phy_configure_opts_mipi_dphy *config = &priv->config;
-> >>>> +	unsigned int i, hsfreq = 0, data_rate_mbps = config->hs_clk_rate;
-> >>>> +	int num_hsfreq_ranges = drv_data->num_hsfreq_ranges;
-> >>>> +
-> >>>> +	do_div(data_rate_mbps, 1000 * 1000);
-> >>>> +
-> >>>> +	dev_dbg(priv->dev, "%s: lanes %d - data_rate_mbps %u\n",
-> >>>> +		__func__, config->lanes, data_rate_mbps);
-> >>>> +
-> >>>> +	for (i = 0; i < num_hsfreq_ranges; i++) {
-> >>>> +		if (hsfreq_ranges[i].range_h >= data_rate_mbps) {
-> >>>> +			hsfreq = hsfreq_ranges[i].cfg_bit;
-> >>>> +			break;
-> >>>> +		}
-> >>>> +	}
-> > 
-> > As num_hsfreq_ranges and hsfreq_ranges are only used in this loop, I
-> > would remove the local variables.
-> > 
-> >>>> +
-> >>>> +	write_grf_reg(priv, GRF_DPHY_RX0_FORCERXMODE, 0);
-> >>>> +	write_grf_reg(priv, GRF_DPHY_RX0_FORCETXSTOPMODE, 0);
-> >>>> +
-> >>>> +	/* Disable lan turn around, which is ignored in receive mode */
-> > 
-> > Is it "lan turn around", or "lane turn around" ?
-> > 
-> >>>> +	write_grf_reg(priv, GRF_DPHY_RX0_TURNREQUEST, 0);
-> >>>> +	write_grf_reg(priv, GRF_DPHY_RX0_TURNDISABLE, 0xf);
-> >>>> +
-> >>>> +	write_grf_reg(priv, GRF_DPHY_RX0_ENABLE, GENMASK(config->lanes - 1, 0));
-> >>>> +
-> >>>> +	/* dphy start */
-> >>>> +	write_grf_reg(priv, GRF_DPHY_RX0_TESTCLK, 1);
-> >>>> +	write_grf_reg(priv, GRF_DPHY_RX0_TESTCLR, 1);
-> >>>> +	usleep_range(100, 150);
-> >>>> +	write_grf_reg(priv, GRF_DPHY_RX0_TESTCLR, 0);
-> >>>> +	usleep_range(100, 150);
-> >>>> +
-> >>>> +	/* set clock lane */
-> >>>> +	/* HS hsfreq_range & lane 0  settle bypass */
-> >>>> +	mipidphy0_wr_reg(priv, CLOCK_LANE_HS_RX_CONTROL, 0);
-> >>>> +	/* HS RX Control of lane0 */
-> >>>> +	mipidphy0_wr_reg(priv, LANE0_HS_RX_CONTROL, hsfreq << 1);
-> >>>> +	/* HS RX Control of lane1 */
-> >>>> +	mipidphy0_wr_reg(priv, LANE1_HS_RX_CONTROL, 0);
-> >>>> +	/* HS RX Control of lane2 */
-> >>>> +	mipidphy0_wr_reg(priv, LANE2_HS_RX_CONTROL, 0);
-> >>>> +	/* HS RX Control of lane3 */
-> >>>> +	mipidphy0_wr_reg(priv, LANE3_HS_RX_CONTROL, 0);
-> > 
-> > Does this hardcode usage of a single lane ?
-> 
-> Rockchip seems to uses TEST* registers to set the hsfreqrange.
-> It mentions the test code 0x44 (which is LANE0_HS_RX_CONTROL)
-> but it doesn't mention the others lanes.
-> 
-> Replacing those call by
-> mipidphy0_wr_reg(priv, LANEx_HS_RX_CONTROL, hsfreq << 1);
-> seems to be working.
-> 
-> I can check if this changes the datarate (I just need to figure a proper
-> way to test this or get some docs).
-> 
-> Thanks for spotting this.
-
-We've discussed this on IRC, it's not clear if the above code is
-incorrect or not. Let's add this to a list of open issues.
-
-> >>>> +	/* HS RX Data Lanes Settle State Time Control */
-> >>>> +	mipidphy0_wr_reg(priv, HS_RX_DATA_LANES_THS_SETTLE_CONTROL,
-> >>>> +			 THS_SETTLE_COUNTER_THRESHOLD);
-> >>>> +
-> >>>> +	/* Normal operation */
-> >>>> +	mipidphy0_wr_reg(priv, 0x0, 0);
-> >>>> +
-> >>>> +	return 0;
-> >>>> +}
-> >>>> +
-> >>>> +static int rockchip_dphy_configure(struct phy *phy, union phy_configure_opts *opts)
-> >>>> +{
-> >>>> +	struct rockchip_dphy *priv = phy_get_drvdata(phy);
-> >>>> +	int ret;
-> >>>> +
-> >>>> +	/* pass with phy_mipi_dphy_get_default_config (with pixel rate?) */
-> > 
-> > I'm not sure to understand what this means.
-> 
-> iirc, the question is if we should fail when phy_mipi_dphy_config_validate() fails,
-> or if we should use a default config.
-> 
-> Looking at other examples, is seems that only two drivers call
-> phy_mipi_dphy_get_default_config() in a totally diferent context, not in mipi path.
-> So I guess I would just remove this comment if this is ok with you.
-
-OK.
-
-> >>>> +	ret = phy_mipi_dphy_config_validate(&opts->mipi_dphy);
-> >>>> +	if (ret)
-> >>>> +		return ret;
-> >>>> +
-> >>>> +	memcpy(&priv->config, opts, sizeof(priv->config));
-> >>>
-> >>> You could to:
-> >>>
-> >>> 	priv->config = *opts;
-> >>>
-> >>> Up to you. Some people like memcpy(). :-)
+On Mon 19 Aug 19, 17:53, Hans Verkuil wrote:
+> On 8/19/19 2:41 PM, Paul Kocialkowski wrote:
+> > Hi,
+> >=20
+> > On Fri 16 Aug 19, 13:01, Ezequiel Garcia wrote:
+> >> The V4L2_PIX_FMT_H264_SLICE_RAW name was originally suggested
+> >> because the pixel format would represent H264 slices without any
+> >> start code.
 > >>
-> >> your way is better thanks!
+> >> However, as we will now introduce a start code menu control,
+> >> give the pixel format a more meaningful name, while it's
+> >> still early enough to do so.
+> >=20
+> > I definitely agree that SLICE_RAW is not the suffix we are looking for,=
+ but I'm
+> > not sure that _SLICE is self-describing given that we can operate either
+> > per-frame or per-slice, and _SLICE sort of implies the latter. Also, VP=
+8 uses
+> > _FRAME to clearly indicate that it operates per-frame.
+>=20
+> Well, VP8 doesn't support slices at all.
+>=20
+> >=20
+> > In addition, the _SLICE suffix is used by MPEG-2 in the stable API. Sin=
+ce we
+>=20
+> Regarding MPEG-2: while it has a concept of slices, it is my understanding
+> that you never process slices separately, but only full pictures. I may be
+> wrong here.
+
+I don't think that is the case since ffmpeg clearly implements decoding on a
+per-slice basis (mpeg_decode_slice).
+
+Information is also passed on a per-slice basis to VAAPI=20
+(vaapi_mpeg2_decode_slice) with a distinct data buffer and slice parameter
+buffer for each slice. Among other things, it contains the vertical and
+horizontal positions for the slice, which we can set in the hardware.
+
+> > certainly want MPEG-2 to allow per-slice and per-frame decoding as well=
+ as
+> > H.264 and that the _SLICE format is specified to be the broken "concate=
+nated
+> > slices" that cedrus expects, we probably want to use another suffix. Th=
+is way,
+> > we could deprecated MPEG2_SLICE and introduce a new format for MPEG-2 t=
+hat would
+> > have consistent naming with the other mpeg formats.
+>=20
+> I actually think that H264_SLICE is a decent name.
+>=20
+> I'm less sure about MPEG2_SLICE since I am not sure if it means the same =
+as
+> a H264 slice.
+
+The main problem I see is that we have already specified MPEG2_SLICE in a w=
+ay
+that is incompatible with the future improvments we want to bring to the AP=
+I:
+" The output buffer must contain the appropriate number of macroblocks to
+decode a full corresponding frame to the matching capture buffer."
+
+So I only see two possibilities: either we decide to change the specificati=
+on
+of the pixel format and we can keep using the _SLICE suffix, either we need=
+ to
+introduce a new pixel format with another suffix, which should also be refl=
+ected
+on other MPEG formats for consistency. Then we can deprecate MPEG2_SLICE and
+have drivers stop using it.
+
+What do you think?
+
+Cheers,
+
+Paul
+
+> > One suggestion I had was to call it H264_PARSED (and apply this to MPEG=
+-2 and
+> > HEVC when similar controls to H.264 are set in place for them). I think=
+ Hans had
+> > another suggestion for the name but I don't recall what it was at this =
+point.
+>=20
+> I can't remember it either. In any case, I'm not that keen on _PARSED.
+>=20
+> I think for H264 and HEVC the _SLICE suffix is good enough.
+>=20
+> Regards,
+>=20
+> 	Hans
+>=20
+> >=20
+> > Either way, if this has to be some debate, we could perhaps take it off=
+ your
+> > series and stay with SLICE_RAW for now, as long as we do rename it befo=
+re making
+> > the API stable.
+> >=20
+> > What do you think?
+> >=20
+> > Cheers,
+> >=20
+> > Paul
+> >=20
+> >> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> >> Tested-by: Philipp Zabel <p.zabel@pengutronix.de>
+> >> ---
+> >> Changes in v7:
+> >> * None.
+> >> Changes in v6:
+> >> * None.
+> >> Changes in v5:
+> >> * None.
+> >> Changes in v4:
+> >> * New patch.
+> >> ---
+> >>  Documentation/media/uapi/v4l/pixfmt-compressed.rst | 4 ++--
+> >>  drivers/media/v4l2-core/v4l2-ioctl.c               | 2 +-
+> >>  drivers/staging/media/sunxi/cedrus/cedrus_dec.c    | 2 +-
+> >>  drivers/staging/media/sunxi/cedrus/cedrus_video.c  | 6 +++---
+> >>  include/media/h264-ctrls.h                         | 2 +-
+> >>  5 files changed, 8 insertions(+), 8 deletions(-)
 > >>
-> >>>> +
-> >>>> +	return 0;
-> >>>> +}
-> >>>> +
-> >>>> +static int rockchip_dphy_power_on(struct phy *phy)
-> >>>> +{
-> >>>> +	struct rockchip_dphy *priv = phy_get_drvdata(phy);
-> >>>> +	int ret;
-> >>>> +
-> >>>> +	ret = clk_bulk_enable(priv->drv_data->num_clks, priv->clks);
-> >>>> +	if (ret)
-> >>>> +		return ret;
-> >>>> +
-> >>>> +	return mipidphy_rx_stream_on(priv);
-> > 
-> > Should you call clk_bulk_disable() if mipidphy_rx_stream_on() fails ?
-> > Actually that function never fails, so I'd make it a void function, and
-> > return 0 here.
-> 
-> Ack, I made it void, I'll send it in the next version.
-> 
-> > What happens if the clock rate is higher than the maximum supported by
-> > the PHY ? Shouldn't rockchip_dphy_configure() fail in that case ?
-> 
-> This is checked in function mipidphy_rx_stream_on(), if it is higher we just
-> configure the maximum supported rate. Is this ok?
-
-I think it would be better to reject that in rockchip_dphy_configure()
-in order to let the user of the PHY handle the error as early as
-possible.
-
-> >>>> +}
-> >>>> +
-> >>>> +static int rockchip_dphy_power_off(struct phy *phy)
-> >>>> +{
-> >>>> +	struct rockchip_dphy *priv = phy_get_drvdata(phy);
-> >>>> +
-> > 
-> > No need to write any register ? That's scary, what will happen on the
-> > next power on, when the clocks gets enabled ?
-> 
-> Just for testing, I hacked the code to only call mipidphy_rx_stream_on() once,
-> when streaming for the first time, then I don't call it anymore and starting/stopping
-> streaming always works, so I guess it keeps the previous configuration when clocks
-> get enabled.
-> I wonder if this can be a problem when switching from dphy rx to txrx, but for now
-> we just support rx.
-> 
-> Maybe just calling rk_dphy_write_grf(priv, GRF_DPHY_RX0_ENABLE, 0) is enough.
-
-If that works with disable/enable sequences I think it would be good to
-include it.
-
-> >>>> +	clk_bulk_disable(priv->drv_data->num_clks, priv->clks);
-> >>>> +	return 0;
-> >>>> +}
-> >>>> +
-> >>>> +static int rockchip_dphy_init(struct phy *phy)
-> >>>> +{
-> >>>> +	struct rockchip_dphy *priv = phy_get_drvdata(phy);
-> >>>> +	int ret;
-> >>>> +
-> >>>> +	ret = clk_bulk_prepare(priv->drv_data->num_clks, priv->clks);
-> >>>
-> >>> return ...;
-> >>>
-> >>>> +	if (ret)
-> >>>> +		return ret;
-> >>>> +	return 0;
-> >>>> +}
-> >>>> +
-> >>>> +static int rockchip_dphy_exit(struct phy *phy)
-> >>>> +{
-> >>>> +	struct rockchip_dphy *priv = phy_get_drvdata(phy);
-> >>>> +
-> >>>> +	clk_bulk_unprepare(priv->drv_data->num_clks, priv->clks);
-> >>>> +	return 0;
-> >>>> +}
-> >>>> +
-> >>>> +static const struct phy_ops rockchip_dphy_ops = {
-> >>>> +	.power_on	= rockchip_dphy_power_on,
-> >>>> +	.power_off	= rockchip_dphy_power_off,
-> >>>> +	.init		= rockchip_dphy_init,
-> >>>> +	.exit		= rockchip_dphy_exit,
-> >>>> +	.configure	= rockchip_dphy_configure,
-> >>>> +	.owner		= THIS_MODULE,
-> >>>> +};
-> >>>> +
-> >>>> +static const struct dphy_drv_data rk3399_mipidphy_drv_data = {
-> >>>> +	.clks = rk3399_mipidphy_clks,
-> >>>> +	.num_clks = ARRAY_SIZE(rk3399_mipidphy_clks),
-> >>>> +	.hsfreq_ranges = rk3399_mipidphy_hsfreq_ranges,
-> >>>> +	.num_hsfreq_ranges = ARRAY_SIZE(rk3399_mipidphy_hsfreq_ranges),
-> >>>> +	.regs = rk3399_grf_dphy_regs,
-> >>>
-> >>> Do you expect to support more of the similar PHY(s) --- are there such? If
-> >>> not, you could put these in the code that uses them.
+> >> diff --git a/Documentation/media/uapi/v4l/pixfmt-compressed.rst b/Docu=
+mentation/media/uapi/v4l/pixfmt-compressed.rst
+> >> index f52a7b67023d..9b65473a2288 100644
+> >> --- a/Documentation/media/uapi/v4l/pixfmt-compressed.rst
+> >> +++ b/Documentation/media/uapi/v4l/pixfmt-compressed.rst
+> >> @@ -52,9 +52,9 @@ Compressed Formats
+> >>        - ``V4L2_PIX_FMT_H264_MVC``
+> >>        - 'M264'
+> >>        - H264 MVC video elementary stream.
+> >> -    * .. _V4L2-PIX-FMT-H264-SLICE-RAW:
+> >> +    * .. _V4L2-PIX-FMT-H264-SLICE:
+> >> =20
+> >> -      - ``V4L2_PIX_FMT_H264_SLICE_RAW``
+> >> +      - ``V4L2_PIX_FMT_H264_SLICE``
+> >>        - 'S264'
+> >>        - H264 parsed slice data, without the start code and as
+> >>  	extracted from the H264 bitstream.  This format is adapted for
+> >> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2=
+-core/v4l2-ioctl.c
+> >> index bb5b4926538a..39f10621c91b 100644
+> >> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+> >> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+> >> @@ -1343,7 +1343,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc=
+ *fmt)
+> >>  		case V4L2_PIX_FMT_H264:		descr =3D "H.264"; break;
+> >>  		case V4L2_PIX_FMT_H264_NO_SC:	descr =3D "H.264 (No Start Codes)"; b=
+reak;
+> >>  		case V4L2_PIX_FMT_H264_MVC:	descr =3D "H.264 MVC"; break;
+> >> -		case V4L2_PIX_FMT_H264_SLICE_RAW:	descr =3D "H.264 Parsed Slice Dat=
+a"; break;
+> >> +		case V4L2_PIX_FMT_H264_SLICE:	descr =3D "H.264 Parsed Slice Data"; =
+break;
+> >>  		case V4L2_PIX_FMT_H263:		descr =3D "H.263"; break;
+> >>  		case V4L2_PIX_FMT_MPEG1:	descr =3D "MPEG-1 ES"; break;
+> >>  		case V4L2_PIX_FMT_MPEG2:	descr =3D "MPEG-2 ES"; break;
+> >> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c b/drivers=
+/staging/media/sunxi/cedrus/cedrus_dec.c
+> >> index bdad87eb9d79..56ca4c9ad01c 100644
+> >> --- a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+> >> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+> >> @@ -46,7 +46,7 @@ void cedrus_device_run(void *priv)
+> >>  			V4L2_CID_MPEG_VIDEO_MPEG2_QUANTIZATION);
+> >>  		break;
+> >> =20
+> >> -	case V4L2_PIX_FMT_H264_SLICE_RAW:
+> >> +	case V4L2_PIX_FMT_H264_SLICE:
+> >>  		run.h264.decode_params =3D cedrus_find_control_data(ctx,
+> >>  			V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS);
+> >>  		run.h264.pps =3D cedrus_find_control_data(ctx,
+> >> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drive=
+rs/staging/media/sunxi/cedrus/cedrus_video.c
+> >> index 681dfe3367a6..eeee3efd247b 100644
+> >> --- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+> >> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+> >> @@ -38,7 +38,7 @@ static struct cedrus_format cedrus_formats[] =3D {
+> >>  		.directions	=3D CEDRUS_DECODE_SRC,
+> >>  	},
+> >>  	{
+> >> -		.pixelformat	=3D V4L2_PIX_FMT_H264_SLICE_RAW,
+> >> +		.pixelformat	=3D V4L2_PIX_FMT_H264_SLICE,
+> >>  		.directions	=3D CEDRUS_DECODE_SRC,
+> >>  	},
+> >>  	{
+> >> @@ -104,7 +104,7 @@ static void cedrus_prepare_format(struct v4l2_pix_=
+format *pix_fmt)
+> >> =20
+> >>  	switch (pix_fmt->pixelformat) {
+> >>  	case V4L2_PIX_FMT_MPEG2_SLICE:
+> >> -	case V4L2_PIX_FMT_H264_SLICE_RAW:
+> >> +	case V4L2_PIX_FMT_H264_SLICE:
+> >>  		/* Zero bytes per line for encoded source. */
+> >>  		bytesperline =3D 0;
+> >> =20
+> >> @@ -449,7 +449,7 @@ static int cedrus_start_streaming(struct vb2_queue=
+ *vq, unsigned int count)
+> >>  		ctx->current_codec =3D CEDRUS_CODEC_MPEG2;
+> >>  		break;
+> >> =20
+> >> -	case V4L2_PIX_FMT_H264_SLICE_RAW:
+> >> +	case V4L2_PIX_FMT_H264_SLICE:
+> >>  		ctx->current_codec =3D CEDRUS_CODEC_H264;
+> >>  		break;
+> >> =20
+> >> diff --git a/include/media/h264-ctrls.h b/include/media/h264-ctrls.h
+> >> index e1404d78d6ff..6160a69c0143 100644
+> >> --- a/include/media/h264-ctrls.h
+> >> +++ b/include/media/h264-ctrls.h
+> >> @@ -14,7 +14,7 @@
+> >>  #include <linux/videodev2.h>
+> >> =20
+> >>  /* Our pixel format isn't stable at the moment */
+> >> -#define V4L2_PIX_FMT_H264_SLICE_RAW v4l2_fourcc('S', '2', '6', '4') /=
+* H264 parsed slices */
+> >> +#define V4L2_PIX_FMT_H264_SLICE v4l2_fourcc('S', '2', '6', '4') /* H2=
+64 parsed slices */
+> >> =20
+> >>  /*
+> >>   * This is put insanely high to avoid conflicting with controls that
+> >> --=20
+> >> 2.22.0
 > >>
-> >> Yes, for rk3288 in the future.
-> >>
-> >>>> +};
-> >>>> +
-> >>>> +static const struct of_device_id rockchip_dphy_dt_ids[] = {
-> >>>> +	{
-> >>>> +		.compatible = "rockchip,rk3399-mipi-dphy",
-> >>>> +		.data = &rk3399_mipidphy_drv_data,
-> >>>> +	},
-> >>>> +	{}
-> >>>> +};
-> >>>> +MODULE_DEVICE_TABLE(of, rockchip_dphy_dt_ids);
-> >>>> +
-> >>>> +static int rockchip_dphy_probe(struct platform_device *pdev)
-> >>>> +{
-> >>>> +	struct device *dev = &pdev->dev;
-> >>>> +	struct device_node *np = dev->of_node;
-> >>>> +	const struct dphy_drv_data *drv_data;
-> >>>> +	struct phy_provider *phy_provider;
-> >>>> +	const struct of_device_id *of_id;
-> >>>> +	struct rockchip_dphy *priv;
-> >>>> +	struct regmap *grf;
-> >>>> +	struct phy *phy;
-> >>>> +	unsigned int i;
-> >>>> +	int ret;
-> >>>> +
-> >>>> +	if (!dev->parent || !dev->parent->of_node)
-> >>>> +		return -ENODEV;
-> >>>> +
-> >>>> +	if (platform_get_resource(pdev, IORESOURCE_MEM, 0)) {
-> >>>> +		dev_err(&pdev->dev, "Rockchip DPHY driver only suports rx\n");
-> > 
-> > You can replace pdev->dev with dev here and below.
-> > 
-> > s/rx/RX mode/ ?
-> > 
-> >>>> +		return -EINVAL;
-> >>>> +	}
-> >>>> +
-> >>>> +	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-> >>>> +	if (!priv)
-> >>>> +		return -ENOMEM;
-> >>>> +	priv->dev = dev;
-> >>>> +
-> >>>> +	grf = syscon_node_to_regmap(dev->parent->of_node);
-> >>>> +	if (IS_ERR(grf)) {
-> >>>> +		grf = syscon_regmap_lookup_by_phandle(dev->of_node,
-> >>>> +						      "rockchip,grf");
-> >>>> +		if (IS_ERR(grf)) {
-> >>>> +			dev_err(dev, "Can't find GRF syscon\n");
-> >>>> +			return -ENODEV;
-> >>>> +		}
-> >>>> +	}
-> >>>> +	priv->grf = grf;
-> >>>> +
-> >>>> +	of_id = of_match_device(rockchip_dphy_dt_ids, dev);
-> >>>> +	if (!of_id)
-> >>>> +		return -EINVAL;
-> >>>> +
-> >>>> +	drv_data = of_id->data;
-> >>>> +	priv->grf_regs = drv_data->regs;
-> > 
-> > Do you have to store grf_regs in priv, or could it be accessed through
-> > priv->drv_data->regs ?
-> > 
-> >>>> +	priv->drv_data = drv_data;
-> >>>> +	for (i = 0; i < drv_data->num_clks; i++)
-> >>>> +		priv->clks[i].id = drv_data->clks[i];
-> >>>> +	ret = devm_clk_bulk_get(&pdev->dev, drv_data->num_clks, priv->clks);
-> >>>> +	if (ret)
-> >>>> +		return ret;
-> >>>> +
-> >>>> +	phy = devm_phy_create(dev, np, &rockchip_dphy_ops);
-> >>>> +	if (IS_ERR(phy)) {
-> >>>> +		dev_err(dev, "failed to create phy\n");
-> >>>> +		return PTR_ERR(phy);
-> >>>> +	}
-> >>>> +	phy_set_drvdata(phy, priv);
-> >>>> +
-> >>>> +	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
-> >>>> +
-> >>>> +	return PTR_ERR_OR_ZERO(phy_provider);
-> >>>> +}
-> >>>> +
-> >>>> +static struct platform_driver rockchip_dphy_driver = {
-> >>>> +	.probe = rockchip_dphy_probe,
-> >>>> +	.driver = {
-> >>>> +		.name	= "rockchip-mipi-dphy",
-> >>>> +		.of_match_table = rockchip_dphy_dt_ids,
-> >>>> +	},
-> >>>> +};
-> >>>> +module_platform_driver(rockchip_dphy_driver);
-> >>>> +
-> >>>> +MODULE_AUTHOR("Ezequiel Garcia <ezequiel@collabora.com>");
-> >>>> +MODULE_DESCRIPTION("Rockchip MIPI Synopsys DPHY driver");
-> >>>> +MODULE_LICENSE("Dual MIT/GPL");
-> > 
-> > Overall this is quite good, there are only small issues.
-> 
-> Thank you a lot for your review
+> >=20
+>=20
 
--- 
-Regards,
+--=20
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
 
-Laurent Pinchart
+--2oS5YaxWCcQjTEyO
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl1egowACgkQ3cLmz3+f
+v9HUvwf/c1/t2Bh47jOv/AkazFk+B1K2PrLTIjCzloE2+ARtu+aA4ReG3ojr8W6K
+6/BNEPJsRPCXDKNgpRaZ5Z+CsQ2bA9ufcYK44c/XUnZQvWncOj4AZnfe5xSGzoF+
+vKAxGLRYgyuBL7clW9VTkH2ZFxC2L1cycQ2pappszgfisBzsKPBPuU+xB8ZAbKZr
+8TGSBSsXneH3DBUJ0o19efY0q91jNSNZFc6KQkDVXKDGsJPdEjKl7tIBjX4tFGd7
+kOgn93vIzkpXR7YXiBTMaVERsQq16LYCVZ4Tb6mrckHhNQo5oSPNdIchIsviLfic
+pJ9fJ2KPgUGKm8A+8twWoFcOAi3Ztg==
+=pbkP
+-----END PGP SIGNATURE-----
+
+--2oS5YaxWCcQjTEyO--
