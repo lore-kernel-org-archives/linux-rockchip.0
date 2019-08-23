@@ -1,29 +1,146 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [RESEND PATCH] arm64: dts: rockchip: add rk3328 VPU node
-Date: Thu, 22 Aug 2019 21:38:09 +0200
-Message-ID: <13275867.8yMunGSYaK@phil>
-References: <HE1PR06MB4011C8496657B2C267A66327ACAA0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+From: Manish Narani <MNARANI@xilinx.com>
+Subject: RE: [PATCH v2 01/11] dt-bindings: mmc: arasan: Update documentation
+ for SD Card Clock
+Date: Fri, 23 Aug 2019 10:01:31 +0000
+Message-ID: <MN2PR02MB6029DEFCD8E9B54AA9610023C1A40@MN2PR02MB6029.namprd02.prod.outlook.com>
+References: <1561958991-21935-1-git-send-email-manish.narani@xilinx.com>
+ <MN2PR02MB60299EB8B83C4EA68A0F2B33C1A80@MN2PR02MB6029.namprd02.prod.outlook.com>
+ <CAPDyKFqdLE7d9uz_KcpO0CihM+QsFyKbNsoDMoNLT2Qy_TmNdw@mail.gmail.com>
+ <4911073.ucheZMAtV3@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <HE1PR06MB4011C8496657B2C267A66327ACAA0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+In-Reply-To: <4911073.ucheZMAtV3@phil>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Rob Herring <robh+dt@kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>
+Cc: Rob Herring <robh@kernel.org>, "mark.rutland@arm.com" <mark.rutland@arm.com>, Michal Simek <michals@xilinx.com>, "adrian.hunter@intel.com" <adrian.hunter@intel.com>, "christoph.muellner@theobroma-systems.com" <christoph.muellner@theobroma-systems.com>, "philipp.tomsich@theobroma-systems.com" <philipp.tomsich@theobroma-systems.com>, "viresh.kumar@linaro.org" <viresh.kumar@linaro.org>, "scott.branden@broadcom.com" <scott.branden@broadcom.com>, "ayaka@soulik.info" <ayaka@soulik.info>, "kernel@esmil.dk" <kernel@esmil.dk>, "tony.xie@rock-chips.com" <tony.xie@rock-chips.com>, Rajan Vaja <RAJANV@xilinx.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.o
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 21. August 2019, 19:54:38 CEST schrieb Jonas Karlman:
-> This patch add a VPU device node for rk3328.
-> 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-
-applied for 5.4
-
-I'm still not sure where your original patch went though. I can see it
-in patchwork but somehow not in my inbox ... in any case, thanks for
-resending.
+Hi Heiko/Uffe,
 
 
-Thanks
-Heiko
+
+> -----Original Message-----
+> From: Heiko Stuebner <heiko@sntech.de>
+> Sent: Thursday, August 22, 2019 11:53 PM
+> To: Ulf Hansson <ulf.hansson@linaro.org>; linux-mmc@vger.kernel.org
+> Cc: Manish Narani <MNARANI@xilinx.com>; Rob Herring <robh@kernel.org>;
+> mark.rutland@arm.com; Michal Simek <michals@xilinx.com>;
+> adrian.hunter@intel.com; christoph.muellner@theobroma-systems.com;
+> philipp.tomsich@theobroma-systems.com; viresh.kumar@linaro.org;
+> scott.branden@broadcom.com; ayaka@soulik.info; kernel@esmil.dk;
+> tony.xie@rock-chips.com; Rajan Vaja <RAJANV@xilinx.com>;
+> devicetree@vger.kernel.org; linux-kernel@vger.kernel.org; linux-arm-
+> kernel@lists.infradead.org; linux-rockchip@lists.infradead.org
+> Subject: Re: [PATCH v2 01/11] dt-bindings: mmc: arasan: Update
+> documentation for SD Card Clock
+>=20
+> Am Donnerstag, 22. August 2019, 15:38:26 CEST schrieb Ulf Hansson:
+> > [...]
+> >
+> > > > > > > ---
+> > > > > > >  Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 15
+> > > > ++++++++++-
+> > > > > > ----
+> > > > > > >  1 file changed, 10 insertions(+), 5 deletions(-)
+> > > > > > >
+> > > > > > > diff --git
+> a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+> > > > > > b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+> > > > > > > index 1edbb04..15c6397 100644
+> > > > > > > --- a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+> > > > > > > +++ b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
+> > > > > > > @@ -23,6 +23,10 @@ Required Properties:
+> > > > > > >    - reg: From mmc bindings: Register location and length.
+> > > > > > >    - clocks: From clock bindings: Handles to clock inputs.
+> > > > > > >    - clock-names: From clock bindings: Tuple including "clk_x=
+in" and
+> > > > "clk_ahb"
+> > > > > > > +            Apart from these two there is one more optional =
+clock
+> which
+> > > > > > > +            is "clk_sdcard". This clock represents output cl=
+ock from
+> > > > > > > +            controller and card. This must be specified when=
+ #clock-
+> cells
+> > > > > > > +            is specified.
+> > > > > > >    - interrupts: Interrupt specifier
+> > > > > > >
+> > > > > > >  Required Properties for "arasan,sdhci-5.1":
+> > > > > > > @@ -36,9 +40,10 @@ Optional Properties:
+> > > > > > >    - clock-output-names: If specified, this will be the name =
+of the card
+> > > > clock
+> > > > > > >      which will be exposed by this device.  Required if #cloc=
+k-cells is
+> > > > > > >      specified.
+> > > > > > > -  - #clock-cells: If specified this should be the value <0>.=
+  With this
+> > > > property
+> > > > > > > -    in place we will export a clock representing the Card Cl=
+ock.  This
+> clock
+> > > > > > > -    is expected to be consumed by our PHY.  You must also sp=
+ecify
+> > > > > > > +  - #clock-cells: If specified this should be the value <0>.=
+ With this
+> > > > > > > +    property in place we will export one clock representing =
+the Card
+> > > > > > > +    Clock. This clock is expected to be consumed by our PHY.=
+ You
+> must
+> > > > also
+> > > > > > > +    specify
+> > > > > >
+> > > > > > specify what?
+> > > > > I think this line was already there, I missed to correct it, Will=
+ update in
+> v3.
+> > > > >
+> > > > > >
+> > > > > > The 3rd clock input I assume? This statement means any existing=
+ users
+> > > > > > with 2 clock inputs and #clock-cells are in error now. Is that =
+correct?
+> > > > > Yes, this is correct. So far there was only one vendor using '#cl=
+ock-cells'
+> > > > which is Rockchip. I have sent DT patch (02/11) for that also.
+> > > > > Here this is needed as earlier implementation isn't correct as su=
+ggested
+> by
+> > > > Uffe. (https://lkml.org/lkml/2019/6/20/486) .
+> > > >
+> > > > I am not sure how big of a problem the backwards compatible thingy
+> > > > with DT is, in general we must not break it. What do you say Manish=
+?
+> > >
+> > > Though I agree with Uffe on this, there is no other way from my
+> understanding. Please suggest.
+> > >
+> > > >
+> > > > As a workaround, would it be possible to use
+> > > > of_clk_get_from_provider() somehow to address the compatibility iss=
+ue?
+> > >
+> > > For this to be used we have to parse 'clkspec' from the DT node and p=
+ass
+> the same as an argument to this function. In this case also the DT node n=
+eeds to
+> be updated, which is same as we have done in this series.
+> >
+> > Alright. I guess breaking DTBs for Rockchip platforms isn't
+> > acceptable, especially if those are already widely deployed, which I
+> > have no idea of....
+>=20
+> The arasan sdhci is part of the rk3399, so every SBC using that SoC, but
+> also the whole Gru series of ChromeOS devices (Samsung Chromebook Plus
+> among them) would be affected.
+
+Thanks for confirming. This will be taken care of. I will go back to v1 cha=
+nges and will send v3.
+
+Thanks,
+Manish
