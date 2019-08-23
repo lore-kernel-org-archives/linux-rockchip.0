@@ -1,146 +1,63 @@
-From: Manish Narani <MNARANI@xilinx.com>
-Subject: RE: [PATCH v2 01/11] dt-bindings: mmc: arasan: Update documentation
- for SD Card Clock
-Date: Fri, 23 Aug 2019 10:01:31 +0000
-Message-ID: <MN2PR02MB6029DEFCD8E9B54AA9610023C1A40@MN2PR02MB6029.namprd02.prod.outlook.com>
-References: <1561958991-21935-1-git-send-email-manish.narani@xilinx.com>
- <MN2PR02MB60299EB8B83C4EA68A0F2B33C1A80@MN2PR02MB6029.namprd02.prod.outlook.com>
- <CAPDyKFqdLE7d9uz_KcpO0CihM+QsFyKbNsoDMoNLT2Qy_TmNdw@mail.gmail.com>
- <4911073.ucheZMAtV3@phil>
+From: Dan Johansen <strit@manjaro.org>
+Subject: Re: [PATCH] fix usb2 on rock64
+Date: Fri, 23 Aug 2019 11:56:03 +0200
+Message-ID: <4d415a1c775a768274f5780911acdf53@manjaro.org>
+References: <693449761bdd3e435089e849b0114018@manjaro.org>
+ <991ac738-1f5d-8bbd-9c0e-a7e6c05514d9@iris.mystia.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4911073.ucheZMAtV3@phil>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>
-Cc: Rob Herring <robh@kernel.org>, "mark.rutland@arm.com" <mark.rutland@arm.com>, Michal Simek <michals@xilinx.com>, "adrian.hunter@intel.com" <adrian.hunter@intel.com>, "christoph.muellner@theobroma-systems.com" <christoph.muellner@theobroma-systems.com>, "philipp.tomsich@theobroma-systems.com" <philipp.tomsich@theobroma-systems.com>, "viresh.kumar@linaro.org" <viresh.kumar@linaro.org>, "scott.branden@broadcom.com" <scott.branden@broadcom.com>, "ayaka@soulik.info" <ayaka@soulik.info>, "kernel@esmil.dk" <kernel@esmil.dk>, "tony.xie@rock-chips.com" <tony.xie@rock-chips.com>, Rajan Vaja <RAJANV@xilinx.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.o
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <991ac738-1f5d-8bbd-9c0e-a7e6c05514d9@iris.mystia.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Tomohiro Mayama <parly-gh@iris.mystia.org>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko/Uffe,
+Tomohiro Mayama skrev den 2019-03-08 11:48:
+> Hello Dan,
+> 
+> On 2019/03/08 16:35, Dan Johansen wrote:
+>> -        gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
+>> +        gpio = <&gpio0 RK_PD3 GPIO_ACTIVE_HIGH>;
+> 
+> According to Robin's advice by reading the schematic, correct GPIO pin
+> assignment is RK_PA2, but GPIO_ACTIVE_LOW. This fixed the USB problem
+> for me.
+> 
+> Please see the following thread:
+> https://lists.infradead.org/pipermail/linux-rockchip/2019-March/023298.html
+> 
+> Also please see this patch:
+> https://lists.infradead.org/pipermail/linux-rockchip/2019-March/023300.html
+> 
+> Or won't your problem be fixed with this patch?
+> 
+> Regards,
+> Tomohiro
 
+Ah, didn't see that one.
+Yes it does.
+Sorry. Please remove this patch submission.
 
+-- 
+Sincerely
 
-> -----Original Message-----
-> From: Heiko Stuebner <heiko@sntech.de>
-> Sent: Thursday, August 22, 2019 11:53 PM
-> To: Ulf Hansson <ulf.hansson@linaro.org>; linux-mmc@vger.kernel.org
-> Cc: Manish Narani <MNARANI@xilinx.com>; Rob Herring <robh@kernel.org>;
-> mark.rutland@arm.com; Michal Simek <michals@xilinx.com>;
-> adrian.hunter@intel.com; christoph.muellner@theobroma-systems.com;
-> philipp.tomsich@theobroma-systems.com; viresh.kumar@linaro.org;
-> scott.branden@broadcom.com; ayaka@soulik.info; kernel@esmil.dk;
-> tony.xie@rock-chips.com; Rajan Vaja <RAJANV@xilinx.com>;
-> devicetree@vger.kernel.org; linux-kernel@vger.kernel.org; linux-arm-
-> kernel@lists.infradead.org; linux-rockchip@lists.infradead.org
-> Subject: Re: [PATCH v2 01/11] dt-bindings: mmc: arasan: Update
-> documentation for SD Card Clock
->=20
-> Am Donnerstag, 22. August 2019, 15:38:26 CEST schrieb Ulf Hansson:
-> > [...]
-> >
-> > > > > > > ---
-> > > > > > >  Documentation/devicetree/bindings/mmc/arasan,sdhci.txt | 15
-> > > > ++++++++++-
-> > > > > > ----
-> > > > > > >  1 file changed, 10 insertions(+), 5 deletions(-)
-> > > > > > >
-> > > > > > > diff --git
-> a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-> > > > > > b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-> > > > > > > index 1edbb04..15c6397 100644
-> > > > > > > --- a/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-> > > > > > > +++ b/Documentation/devicetree/bindings/mmc/arasan,sdhci.txt
-> > > > > > > @@ -23,6 +23,10 @@ Required Properties:
-> > > > > > >    - reg: From mmc bindings: Register location and length.
-> > > > > > >    - clocks: From clock bindings: Handles to clock inputs.
-> > > > > > >    - clock-names: From clock bindings: Tuple including "clk_x=
-in" and
-> > > > "clk_ahb"
-> > > > > > > +            Apart from these two there is one more optional =
-clock
-> which
-> > > > > > > +            is "clk_sdcard". This clock represents output cl=
-ock from
-> > > > > > > +            controller and card. This must be specified when=
- #clock-
-> cells
-> > > > > > > +            is specified.
-> > > > > > >    - interrupts: Interrupt specifier
-> > > > > > >
-> > > > > > >  Required Properties for "arasan,sdhci-5.1":
-> > > > > > > @@ -36,9 +40,10 @@ Optional Properties:
-> > > > > > >    - clock-output-names: If specified, this will be the name =
-of the card
-> > > > clock
-> > > > > > >      which will be exposed by this device.  Required if #cloc=
-k-cells is
-> > > > > > >      specified.
-> > > > > > > -  - #clock-cells: If specified this should be the value <0>.=
-  With this
-> > > > property
-> > > > > > > -    in place we will export a clock representing the Card Cl=
-ock.  This
-> clock
-> > > > > > > -    is expected to be consumed by our PHY.  You must also sp=
-ecify
-> > > > > > > +  - #clock-cells: If specified this should be the value <0>.=
- With this
-> > > > > > > +    property in place we will export one clock representing =
-the Card
-> > > > > > > +    Clock. This clock is expected to be consumed by our PHY.=
- You
-> must
-> > > > also
-> > > > > > > +    specify
-> > > > > >
-> > > > > > specify what?
-> > > > > I think this line was already there, I missed to correct it, Will=
- update in
-> v3.
-> > > > >
-> > > > > >
-> > > > > > The 3rd clock input I assume? This statement means any existing=
- users
-> > > > > > with 2 clock inputs and #clock-cells are in error now. Is that =
-correct?
-> > > > > Yes, this is correct. So far there was only one vendor using '#cl=
-ock-cells'
-> > > > which is Rockchip. I have sent DT patch (02/11) for that also.
-> > > > > Here this is needed as earlier implementation isn't correct as su=
-ggested
-> by
-> > > > Uffe. (https://lkml.org/lkml/2019/6/20/486) .
-> > > >
-> > > > I am not sure how big of a problem the backwards compatible thingy
-> > > > with DT is, in general we must not break it. What do you say Manish=
-?
-> > >
-> > > Though I agree with Uffe on this, there is no other way from my
-> understanding. Please suggest.
-> > >
-> > > >
-> > > > As a workaround, would it be possible to use
-> > > > of_clk_get_from_provider() somehow to address the compatibility iss=
-ue?
-> > >
-> > > For this to be used we have to parse 'clkspec' from the DT node and p=
-ass
-> the same as an argument to this function. In this case also the DT node n=
-eeds to
-> be updated, which is same as we have done in this series.
-> >
-> > Alright. I guess breaking DTBs for Rockchip platforms isn't
-> > acceptable, especially if those are already widely deployed, which I
-> > have no idea of....
->=20
-> The arasan sdhci is part of the rk3399, so every SBC using that SoC, but
-> also the whole Gru series of ChromeOS devices (Samsung Chromebook Plus
-> among them) would be affected.
+Dan "Strit" Johansen
 
-Thanks for confirming. This will be taken care of. I will go back to v1 cha=
-nges and will send v3.
+Project Lead on the Manjaro ARM project
+https://www.manjaro.org
 
-Thanks,
-Manish
+Catch me on:
+Mastodon: @strit@mastodon.social
+Matrix: @strit:matrix.org
+Wire: @strit
+Email: strit@manjaro.org
