@@ -1,115 +1,97 @@
-From: Kevin Hilman <khilman@baylibre.com>
-Subject: Re: CPUfreq fail on rk3399-firefly
-Date: Fri, 23 Aug 2019 10:03:12 -0700
-Message-ID: <7h8srjzuen.fsf@baylibre.com>
-References: <5d3057c8.1c69fb81.c6489.8ad2@mx.google.com>
- <20190718162005.GF5761@sirena.org.uk> <7hmugdynmk.fsf@baylibre.com>
- <2314814.WbdfqDVNqK@phil> <7hv9uq9wfe.fsf@baylibre.com>
- <c973d3fa-5f0d-c277-7c83-6227942a671a@rock-chips.com>
- <7hd0gvzuvw.fsf@baylibre.com>
+From: Tom Murphy <murphyt7@tcd.ie>
+Subject: Re: [PATCH V5 1/5] iommu/amd: Remove unnecessary locking from AMD
+ iommu driver
+Date: Sat, 24 Aug 2019 08:56:59 +0100
+Message-ID: <CALQxJussiGDzWFT1xhko6no5jZNOezWCFuJQUCr4XwH4NHri3Q@mail.gmail.com>
+References: <20190815110944.3579-1-murphyt7@tcd.ie> <20190815110944.3579-2-murphyt7@tcd.ie>
+ <20190820094143.GA24154@infradead.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <7hd0gvzuvw.fsf@baylibre.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Kever Yang <kever.yang@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: kernel-build-reports@lists.linaro.org, linux-rockchip@lists.infradead.org, linux-next@vger.kernel.org, =?utf-8?B?6Zer5a2d?= =?utf-8?B?5Yab?= <andy.yan@rock-chips.com>, =?utf-8?B?5byg5pm0?= <elaine.zhang@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190820094143.GA24154@infradead.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Christoph Hellwig <hch@infradead.org>
+Cc: iommu@lists.linux-foundation.org, Heiko Stuebner <heiko@sntech.de>, virtualization@lists.linux-foundation.org, linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>, Jean-Philippe Brucker <jean-philippe@linaro.org>, linux-samsung-soc@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, David Woodhouse <dwmw2@infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-S2V2aW4gSGlsbWFuIDxraGlsbWFuQGJheWxpYnJlLmNvbT4gd3JpdGVzOgoKPiBLZXZlciBZYW5n
-IDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPiB3cml0ZXM6Cj4KPj4gSGkgS2V2aW4sIEhlaWtv
-LAo+Pgo+PiBPbiAyMDE5LzgvMjIg5LiK5Y2IMjo1OSwgS2V2aW4gSGlsbWFuIHdyb3RlOgo+Pj4g
-SGkgSGVpa28sCj4+Pgo+Pj4gSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4gd3JpdGVz
-Ogo+Pj4KPj4+PiBBbSBEaWVuc3RhZywgMTMuIEF1Z3VzdCAyMDE5LCAxOTozNTozMSBDRVNUIHNj
-aHJpZWIgS2V2aW4gSGlsbWFuOgo+Pj4+PiBbIHJlc2VudCB3aXRoIGNvcnJlY3QgYWRkciBmb3Ig
-bGludXgtcm9ja2NoaXAgbGlzdCBdCj4+Pj4+Cj4+Pj4+IE1hcmsgQnJvd24gPGJyb29uaWVAa2Vy
-bmVsLm9yZz4gd3JpdGVzOgo+Pj4+Pgo+Pj4+Pj4gT24gVGh1LCBKdWwgMTgsIDIwMTkgYXQgMDQ6
-Mjg6MDhBTSAtMDcwMCwga2VybmVsY2kub3JnIGJvdCB3cm90ZToKPj4+Pj4+Cj4+Pj4+PiBUb2Rh
-eSdzIC1uZXh0IHN0YXJ0ZWQgZmFpbGluZyB0byBib290IGRlZmNvbmZpZyBvbiByazMzOTktZmly
-ZWZseToKPj4+Pj4+Cj4+Pj4+Pj4gYXJtNjQ6Cj4+Pj4+Pj4gICAgICBkZWZjb25maWc6Cj4+Pj4+
-Pj4gICAgICAgICAgZ2NjLTg6Cj4+Pj4+Pj4gICAgICAgICAgICAgIHJrMzM5OS1maXJlZmx5OiAx
-IGZhaWxlZCBsYWIKPj4+Pj4+IEl0IGhpdHMgYSBCVUcoKSB0cnlpbmcgdG8gc2V0IHVwIGNwdWZy
-ZXE6Cj4+Pj4+Pgo+Pj4+Pj4gWyAgIDg3LjM4MTYwNl0gY3B1ZnJlcTogY3B1ZnJlcV9vbmxpbmU6
-IENQVTA6IFJ1bm5pbmcgYXQgdW5saXN0ZWQgZnJlcTogMjAwMDAwIEtIego+Pj4+Pj4gWyAgIDg3
-LjM5MzI0NF0gY3B1ZnJlcTogY3B1ZnJlcV9vbmxpbmU6IENQVTA6IFVubGlzdGVkIGluaXRpYWwg
-ZnJlcXVlbmN5IGNoYW5nZWQgdG86IDQwODAwMCBLSHoKPj4+Pj4+IFsgICA4Ny40Njk3NzddIGNw
-dWZyZXE6IGNwdWZyZXFfb25saW5lOiBDUFU0OiBSdW5uaW5nIGF0IHVubGlzdGVkIGZyZXE6IDEy
-MDAwIEtIego+Pj4+Pj4gWyAgIDg3LjQ4ODU5NV0gY3B1IGNwdTQ6IF9nZW5lcmljX3NldF9vcHBf
-Y2xrX29ubHk6IGZhaWxlZCB0byBzZXQgY2xvY2sgcmF0ZTogLTIyCj4+Pj4+PiBbICAgODcuNDkx
-ODgxXSBjcHVmcmVxOiBfX3RhcmdldF9pbmRleDogRmFpbGVkIHRvIGNoYW5nZSBjcHUgZnJlcXVl
-bmN5OiAtMjIKPj4+Pj4+IFsgICA4Ny40OTUzMzVdIC0tLS0tLS0tLS0tLVsgY3V0IGhlcmUgXS0t
-LS0tLS0tLS0tLQo+Pj4+Pj4gWyAgIDg3LjQ5NjgyMV0ga2VybmVsIEJVRyBhdCBkcml2ZXJzL2Nw
-dWZyZXEvY3B1ZnJlcS5jOjE0MzghCj4+Pj4+PiBbICAgODcuNDk4NDYyXSBJbnRlcm5hbCBlcnJv
-cjogT29wcyAtIEJVRzogMCBbIzFdIFBSRUVNUFQgU01QCj4+Pj4+Pgo+Pj4+Pj4gSSdtIHN0cnVn
-Z2xpbmcgdG8gc2VlIGFueXRoaW5nIHJlbGV2YW50IGluIHRoZSBkaWZmIGZyb20geWVzdGVyZGF5
-LCB0aGUKPj4+Pj4+IHVubGlzdGVkIGZyZXF1ZW5jeSB3YXJuaW5ncyB3ZXJlIHRoZXJlIGluIHRo
-ZSBsb2dzIHllc3RlcmRheSBidXQgbm8gb29wcwo+Pj4+Pj4gYW5kIEknbSBub3Qgc2VlaW5nIGFu
-eSBjaGFuZ2VzIGluIGNwdWZyZXEsIGNsayBvciBhbnl0aGluZyByZWxldmFudAo+Pj4+Pj4gbG9v
-a2luZy4KPj4+Pj4+Cj4+Pj4+PiBGdWxsIGJvb3Rsb2cgYW5kIG90aGVyIGluZm8gY2FuIGJlIGZv
-dW5kIGhlcmU6Cj4+Pj4+Pgo+Pj4+Pj4gCWh0dHBzOi8va2VybmVsY2kub3JnL2Jvb3QvaWQvNWQz
-MDJkODM1OWI1MTQ5OGQwNDllOTgzLwo+Pj4+PiBJIGNvbmZpcm0gdGhhdCBkaXNhYmxpbmcgQ1BV
-ZnJlcSBpbiB0aGUgZGVmY29uZmlnIChDT05GSUdfQ1BVX0ZSRVE9bikKPj4+Pj4gbWFrZXMgdGhl
-IGZpcmVmbHkgYm9hcmQgc3RhcnQgd29ya2luZyBhZ2Fpbi4KPj4+Pj4KPj4+Pj4gTm90ZSB0aGF0
-IHRoZSBkZWZhdWx0IGRlZmNvbmZpZyBlbmFibGVzIHRoZSAicGVyZm9ybWFuY2UiIENQVWZyZXEK
-Pj4+Pj4gZ292ZXJub3IgYXMgdGhlIGRlZmF1bHQgZ292ZXJub3IsIHNvIGR1cmluZyBrZXJuZWwg
-Ym9vdCwgaXQgd2lsbCBhbHdheXMKPj4+Pj4gc3dpdGNoIHRvIHRoZSBtYXggZnJlcXVlbmN5Lgo+
-Pj4+Pgo+Pj4+PiBGb3IgZnVuLCBJIHNldCB0aGUgZGVmYXVsdCBnb3Zlcm5vciB0byAidXNlcnNw
-YWNlIiBzbyB0aGUga2VybmVsCj4+Pj4+IHdvdWxkbid0IG1ha2UgYW55IE9QUCBjaGFuZ2VzLCBh
-bmQgdGhhdCBsZWFkcyB0byBhIHNsaWdodGx5IG1vcmUKPj4+Pj4gaW5mb3JtYXRpdmUgc3BsYXRb
-MV0KPj4+Pj4KPj4+Pj4gVGhlcmUgaXMgc3RpbGwgYW4gT1BQIGNoYW5nZSBoYXBwZW5pbmcgYmVj
-YXVzZSB0aGUgZGV0ZWN0ZWQgT1BQIGlzIG5vdAo+Pj4+PiBvbmUgdGhhdCdzIGxpc3RlZCBpbiB0
-aGUgdGFibGUsIHNvIGl0IHRyaWVzIHRvIGNoYW5nZSB0byBhIGxpc3RlZCBPUFAKPj4+Pj4gYW5k
-IGZhaWxzIGluIHRoZSBib3dlbHMgb2YgY2xrX3NldF9yYXRlKCkKPj4+PiBUaG91Z2ggSSB0aGlu
-ayB0aGF0IG1pZ2h0IG9ubHkgYmUgYSBzeW1wdG9tIGFzIHdlbGwuCj4+Pj4gQm90aCB0aGUgUExM
-IHNldHRpbmcgY29kZSBhcyB3ZWxsIGFzIHRoZSBhY3R1YWwgY3B1LWNsb2NrIGltcGxlbWVudGF0
-aW9uCj4+Pj4gaXMgdW5jaGFuZ2VkIHNpbmNlIDIwMTcgKGFuZCBydW5zIGp1c3QgZmluZSBvbiBh
-bGwgYm9hcmRzIGluIG15IGZhcm0pLgo+Pj4+Cj4+Pj4gT25lIHNvdXJjZSBmb3IgdGhlc2UgaXNz
-dWVzIGlzIG9mdGVuIHRoZSByZWd1bGF0b3Igc3VwcGx5aW5nIHRoZSBjcHUKPj4+PiBnb2luZyBo
-YXl3aXJlIC0gYWthIHRoZSB2b2x0YWdlIG5vdCBtYXRjaGluZyB0aGUgb3BwLgo+Pj4+Cj4+Pj4g
-QXMgaW4gdGhpcyBlcnJvci1jYXNlIGl0J3MgQ1BVNCBiZWluZyBzZXQsIHRoaXMgd291bGQgbWVh
-biBpdCBtaWdodAo+Pj4+IGJlIHRoZSBiaWcgY2x1c3RlciBzdXBwbGllZCBieSB0aGUgZXh0ZXJu
-YWwgc3lyODI1IChmYW41MzU1IGNsb25lKQo+Pj4+IHRoYXQgbWlnaHQgYWN0IHVwLiBJbiB0aGUg
-RmlyZWZseS1yazMzOTkgY2FzZSB0aGlzIGlzIGV2ZW4gc3RyYW5nZXIuCj4+Pj4KPj4+PiBUaGVy
-ZSBpcyBhIGRpc2NyZXBhbmN5IGJldHdlZW4gdGhlICJmY3Msc3VzcGVuZC12b2x0YWdlLXNlbGVj
-dG9yIgo+Pj4+IGJldHdlZW4gZGlmZmVyZW50IGJvb3Rsb2FkZXIgdmVyc2lvbnMgKGhvdyB0aGUg
-c2VsZWN0aW9uLXBpbiBpcyBzZXQgdXApLAo+Pj4+IHNvIHRoZSBrZXJuZWwgbWlnaHQgYWN0dWFs
-bHkgd3JpdGUgaGlzIHJlcXVlc3RlZCB2b2x0YWdlIHRvIHRoZSB3cm9uZwo+Pj4+IHJlZ2lzdGVy
-IChub3QgdGhlIG9uZSBmb3IgYWN0dWFsIHZvbHRhZ2UsIGJ1dCB0aGUgc2Vjb25kIHNldCB1c2Vk
-IGZvcgo+Pj4+IHRoZSBzdXNwZW5kIHZvbHRhZ2UpLgo+Pj4+Cj4+Pj4gRGlkIHlvdSBieSBjaGFu
-Y2Ugc3dhcCBib290bG9hZGVycyBhdCBzb21lIHBvaW50IGluIHJlY2VudCBwYXN0Pwo+Pj4gTm8s
-IGhhdmVuJ3QgdG91Y2hlZCBib290bG9hZGVyIHNpbmNlIEkgaW5pdGlhbGx5IHNldHVwIHRoZSBi
-b2FyZC4KPj4KPj4gVGhlIENQVSB2b2x0YWdlIGRvZXMgbm90IGFmZmVjdCBieSBib290bG9hZGVy
-IGZvciBrZXJuZWwgc2hvdWxkIGhhdmUgaXRzIAo+PiBvd24gb3BwLXRhYmxlLAo+Pgo+PiB0aGUg
-Ym9vdGxvYWRlciBtYXkgb25seSBhZmZlY3QgdGhlIGNlbnRlci9sb2dpYyBwb3dlciBzdXBwbHku
-Cj4+Cj4+Pgo+Pj4+IEknZCBhc3N1bWUgWzJdIG1pZ2h0IGFjdHVhbGx5IGJlIHRoZSBzYW1lIGlz
-c3VlIGxhc3QgeWVhciwgdGhvdWdoCj4+Pj4gdGhlIENJLWxvZ3MgYXJlIG5vdCBhdmFpbGFibGUg
-YW55bW9yZSBpdCBzZWVtcy4KPj4+Pgo+Pj4+IENvdWxkIHlvdSB0cnkgdG8gc2V0IHRoZSB2ZGRf
-Y3B1X2IgcmVndWxhdG9yIHRvIGRpc2FibGVkLCBzbyB0aGF0Cj4+Pj4gY3B1ZnJlcSBmb3IgdGhp
-cyBjbHVzdGVyIGRlZmVycyBhbmQgc2VlIHdoYXQgaGFwcGVucz8KPj4+IFllcywgdGhpcyBjaGFu
-Z2VbMV0gZGVmaW5pdGVseSBtYWtlcyB0aGluZ3MgYm9vdCByZWxpYWJseSBhZ2Fpbiwgc28KPj4+
-IHRoZXJlJ3MgZGVmaW50aWVseSBzb21ldGhpbmcgYSBiaXQgdW5zdGFibGUgd2l0aCB0aGlzIHJl
-Z3VsYXRvciwgYXQKPj4+IGxlYXN0IG9uIHRoaXMgZmlyZWZseS4KPj4KPj4gSXMgaXQgcG9zc2li
-bGUgdG8gdGFyZ2V0IHdoaWNoIHBhdGNoIGludHJvZHVjZSB0aGlzIGJ1Zz8gVGhpcyBib2FyZMKg
-IAo+PiBzaG91bGQgaGF2ZSB3b3JrIGNvcnJlY3RseSBmb3IgYSBsb25nIHRpbWUgd2l0aCB1cHN0
-cmVhbSBzb3VyY2UgY29kZS4KPgo+IFVuZm9ydHVuYXRlbHksIGl0IHNlZW1zIHRvIGJlIGEgcmVn
-dWxhciwgYnV0IGludGVybWl0dGVudCBmYWlsdXJlLCBzbwo+IGJpc2VjdGlvbiBpcyBub3QgcHJv
-ZHVjaW5nIGFueXRoaW5nIHJlbGlhYmxlLgo+Cj4gWW91IGNhbiBzZWUgdGhhdCBib3RoIGluIG1h
-aW5saW5lWzFdIGFuZCBpbiBsaW51eC1uZXh0WzJdIHRoZXJlIGFyZQo+IHBlcmlvZGljIGZhaWx1
-cmVzLCBidXQgaXQncyBoYXJkIHRvIHNlZSBhbnkgcGF0dGVybnMuCgpFdmVuIHdvcnNlLCBJIChy
-ZSl0ZXN0ZWQgbWFpbmxpbmUgZm9yIHZlcnNpb25zIHRoYXQgd2VyZSBwcmV2aW91c2x5CnBhc3Np
-bmcgKHY1LjIsIHY1LjMtcmM1KSBhbmQgdGhleSBhcmUgYWxzbyBmYWlsaW5nIG5vdy4KClRoZXkg
-d29yayBhZ2FpbiBpZiBJIGRpc2FibGUgdGhhdCByZWd1bGF0b3IgYXMgc3VnZ2VzdGVkIGJ5IEhl
-aWtvLgoKU28gdGhpcyBpcyBpbmNyZWFzaW5nbHkgcG9pbnRpbmcgdG8gZmFpbGluZyBoYXJkd2Fy
-ZS4KCktldmluCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1hcm0ta2VybmVsCg==
+>I have to admit I don't fully understand the concurrency issues here, but =
+neither do I understand what the mutex you removed might have helped to sta=
+rt with.
+
+Each range in the page tables is protected by the IO virtual address
+allocator. The iommu driver allocates an IOVA range using locks before
+it writes to a page table range. The IOVA allocator acts like a lock
+on a specific range of the page tables. So we can handle most of the
+concurrency issues in the IOVA allocator and avoid locking while
+writing to a range in the page tables.
+
+However because we have multiple levels of pages we might have to
+allocate a middle page (a PMD) which covers more than the IOVA range
+we have allocated.
+To solve this we could use locks:
+
+//pseudo code
+lock_page_table()
+if (we need to allocate middle pages) {
+ //allocate the page
+ //set the PMD value
+}
+unlock_page_table()
+
+but we can actually avoid having any locking by doing the following:
+
+//pseudo code
+if (we need to allocate middle pages) {
+ //allocate the page
+ //cmpxchg64 to set the PMD if it wasn't already set since we last checked
+ if (the PMD was set while since we last checked)
+   //free the page we just allocated
+}
+
+In this case we can end up doing a pointless page allocate and free
+but it's worth it to avoid using locks
+
+You can see this in the intel iommu code here:
+https://github.com/torvalds/linux/blob/9140d8bdd4c5a04abe181bb300378355d569=
+90a4/drivers/iommu/intel-iommu.c#L904
+
+>what the mutex you removed might have helped to start with.
+The mutex I removed is arguably completely useless.
+
+In the dma ops path we handle the IOVA allocations in the driver so we
+can be sure a certain range is protected by the IOVA allocator.
+
+Because the iommu ops path doesn't handle the IOVA allocations it
+seems reasonable to lock the page tables to avoid two writers writing
+to the same range at the same time. Without the lock it's complete
+chaos and all writers can be writing to the same range at the same
+time resulting in complete garbage.
+BUT the locking doesn't actually make any real difference. Even with
+locking we still have a race condition if two writers want to write to
+the same range at the same time, the race is just whoever gets the
+lock first, we still can't be sure what the result will be. So the
+result is still garbage, just slightly more usable garbage because at
+least the range is correct for one writer.
+It just makes no sense to ever have two writers writing to the same
+range and adding a lock doesn't fix that.
+Already the Intel iommu ops path doesn't use locks for it's page table
+so this isn't a new idea I'm just doing the same for the AMD iommu
+driver
+
+Does all that make sense?
+
+On Tue, 20 Aug 2019 at 10:41, Christoph Hellwig <hch@infradead.org> wrote:
+>
+> On Thu, Aug 15, 2019 at 12:09:39PM +0100, Tom Murphy wrote:
+> > We can remove the mutex lock from amd_iommu_map and amd_iommu_unmap.
+> > iommu_map doesn=E2=80=99t lock while mapping and so no two calls should=
+ touch
+> > the same iova range. The AMD driver already handles the page table page
+> > allocations without locks so we can safely remove the locks.
+>
+> I've been looking over the code and trying to understand how the
+> synchronization works.  I gues we the cmpxchg64 in free_clear_pte
+> is the important point here?  I have to admit I don't fully understand
+> the concurrency issues here, but neither do I understand what the
+> mutex you removed might have helped to start with.
