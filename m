@@ -1,59 +1,69 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 12/15] include: rk3399: Disable watchdog in TPL
-Date: Mon, 26 Aug 2019 09:34:12 +0800
-Message-ID: <cdf1402e-2aa2-b806-2790-9152ab58637b@rock-chips.com>
-References: <20190729074711.16988-1-jagan@amarulasolutions.com>
- <20190729074711.16988-13-jagan@amarulasolutions.com>
- <fd03eeac-8012-5013-ab03-aa1e39156700@rock-chips.com>
- <CAMty3ZC6xKM3VaKEjtMGDu4mLamuHLPP8DLc_L2KdDD9kzOrxw@mail.gmail.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: dw_mmc: CMD17 Data Error while rebooting
+Date: Mon, 26 Aug 2019 07:32:56 +0530
+Message-ID: <CAMty3ZDn5K44554LYsRY37Z1o1DHd0AseN0QUydBqEYcU-sJ4w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <CAMty3ZC6xKM3VaKEjtMGDu4mLamuHLPP8DLc_L2KdDD9kzOrxw@mail.gmail.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, U-Boot-Denx <u-boot@lists.denx.de>, Akash Gajjar <akash@openedev.com>, linux-amarula <linux-amarula@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jason Zhu <jason.zhu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SmFnYW4sCgpPbiAyMDE5LzgvMjYg5LiK5Y2INDoxNCwgSmFnYW4gVGVraSB3cm90ZToKPiBPbiBN
-b24sIEF1ZyA1LCAyMDE5IGF0IDY6MTMgUE0gS2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNo
-aXBzLmNvbT4gd3JvdGU6Cj4+Cj4+IE9uIDIwMTkvNy8yOSDkuIvljYgzOjQ3LCBKYWdhbiBUZWtp
-IHdyb3RlOgo+Pj4gRGlzYWJsZSB3YXRjaGRvZyBmb3IgVFBMLCBzaW5jZSB0aGVyZSBpcyBubyBz
-dXBwb3J0IGl0Lgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1
-bGFzb2x1dGlvbnMuY29tPgo+Pj4gLS0tCj4+PiAgICBpbmNsdWRlL2NvbmZpZ3MvcmszMzk5X2Nv
-bW1vbi5oIHwgNSArKysrKwo+Pj4gICAgMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKQo+
-Pj4KPj4+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2NvbmZpZ3MvcmszMzk5X2NvbW1vbi5oIGIvaW5j
-bHVkZS9jb25maWdzL3JrMzM5OV9jb21tb24uaAo+Pj4gaW5kZXggOGRmMDE4MDI4NC4uNjdiNDhl
-MDNiYSAxMDA2NDQKPj4+IC0tLSBhL2luY2x1ZGUvY29uZmlncy9yazMzOTlfY29tbW9uLmgKPj4+
-ICsrKyBiL2luY2x1ZGUvY29uZmlncy9yazMzOTlfY29tbW9uLmgKPj4+IEBAIC00Niw2ICs0Niwx
-MSBAQAo+Pj4gICAgI2RlZmluZSBDT05GSUdfU1lTX1NEUkFNX0JBU0UgICAgICAgICAgICAgICAw
-Cj4+PiAgICAjZGVmaW5lIFNEUkFNX01BWF9TSVpFICAgICAgICAgICAgICAgICAgICAgIDB4Zjgw
-MDAwMDAKPj4+Cj4+PiArI2lmZGVmIENPTkZJR19UUExfQlVJTEQKPj4+ICsjIHVuZGVmIENPTkZJ
-R19XRFQKPj4+ICsjIHVuZGVmIENPTkZJR19XQVRDSERPRwo+Pj4gKyNlbmRpZgo+Pgo+PiBJdCB3
-aWxsIGJlIGJldHRlciB0byB1c2UgQ09ORklHXyR7U1BMX1RQTH1XRFQgaW4gd2F0Y2hkb2cgTWFr
-ZWZpbGUsCj4+Cj4+IGJlY2F1c2UgYWxsIHRoZSBTb0MgbmVlZHMgdHJlYXQgdGhpcyBkcml2ZXIg
-c2VwYXJhdGUgaW4gVFBML1NQTC9VLUJvb3QKPj4gcHJvcGVyLgo+IEVuYWJsaW5nIFRQTCAodmlh
-IERNIG9yIHNvKSBjYW5ub3QgYmUgYW4gb3B0aW1hbCBzb2x1dGlvbnMgYXMgb2Ygbm93LAoKCkkn
-bSBub3Qgc3VnZ2VzdGluZyBlbmFibGUgV0RUIGluIFRQTCwgYnV0IG9ubHkgYWJvdXQgaG93IHRo
-ZSBXRFQgbW9kdWxlIAppcyBlbmFibGVkIGluIE1ha2VmaWxlIHN5c3RlbTsKCklmIHVzZWluZyBD
-T05GSUdfJHtTUExfVFBMfVdEVCBpbiBNYWtlZmlsZSwgdGhlbiB0aGUgV0RUIGlzIG5vdCBlbmFi
-bGVkIAppbiBUUEwgaWYgdGhlcmUgaXMgbm8KCkNPTkZJR19UUExfV0RULCBzbyB5b3UgZG9uJ3Qg
-aGF2ZSB0byB3cml0ZSB0aGUgJ3VuZGVmIC4uLicgY29kZSBmb3IgCkNPTkZJR19UUExfQlVJTEQu
-CgoKVGhhbmtzLAoKLSBLZXZlcgoKPiBzaW5jZSBpZiBpdCBjb250aW51b3VzbHkgcmVzZXR0aW5n
-IHdlIG5lZWQgdG8gdGFrZSBib290IHN3aXRjaCBiYXNlZAo+IG9uIGJvb3Rjb3VudCwgaWUgcG9z
-c2libGUgd2l0aCBTUEwgYW5kIFUtQm9vdCBwcm9wZXIgbm93LiBNYWtpbmcgYQo+IGJvb3Qgc3dp
-dGNoIHRvIFRQTCBtaWdodCBpbmNyZWFzZSBjb2RlIHNpemUsIHNvIHdpbGwgY2hlY2sgdGhpcwo+
-IGRlY2lzaW9uIGxhdGVyIGJhc2VkIG9uIHRoZSByZXF1aXJlbWVudC4KPgoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QK
-VS1Cb290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9v
-dAo=
+Hi All,
+
+I have seen the data error with CMD17 while rebooting the system from
+Linux, below shows the detailed log.
+
+Anyone encounter this issue? let me know if any inputs on this?
+
+Log:
+U-Boot TPL 2019.10-rc2-00154-gd6758c282a-dirty (Aug 26 2019 - 04:46:03)
+Trying to boot from BOOTROM
+Returning to boot ROM...
+
+U-Boot SPL 2019.10-rc2-00154-gd6758c282a-dirty (Aug 26 2019 - 04:46:03 +0530)
+WDT:   Started with servicing (60s timeout)
+Trying to boot from MMC1
+Buswidth = 0, clock: 0
+Buswidth = 1, clock: 0
+Buswidth = 1, clock: 400000
+Sending CMD0
+Sending CMD8
+Sending CMD55
+Sending CMD41
+Sending CMD55
+Sending CMD41
+Sending CMD2
+Sending CMD3
+Sending CMD9
+Sending CMD7
+Sending CMD55
+Sending CMD51
+Sending CMD6
+Sending CMD55
+Sending CMD6
+Buswidth = 4, clock: 400000
+Sending CMD6
+Buswidth = 4, clock: 50000000
+Sending CMD16
+Sending CMD17
+dwmci_data_transfer: DATA ERROR!
+Sending CMD16
+Sending CMD17
+dwmci_data_transfer: DATA ERROR!
+FIT: ret = -1
+mmc_load_image_raw_sector: mmc block read error
+SPL: failed to boot from all boot devices
+### ERROR ### Please RESET the board ###
+
+Jagan.
