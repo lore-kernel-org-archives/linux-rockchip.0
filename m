@@ -1,69 +1,122 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: dw_mmc: CMD17 Data Error while rebooting
-Date: Mon, 26 Aug 2019 07:32:56 +0530
-Message-ID: <CAMty3ZDn5K44554LYsRY37Z1o1DHd0AseN0QUydBqEYcU-sJ4w@mail.gmail.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: CPUfreq fail on rk3399-firefly
+Date: Mon, 26 Aug 2019 17:56:36 +0800
+Message-ID: <db7af16f-d8cc-fbcb-726d-2aeba5563076@rock-chips.com>
+References: <5d3057c8.1c69fb81.c6489.8ad2@mx.google.com>
+ <20190718162005.GF5761@sirena.org.uk> <7hmugdynmk.fsf@baylibre.com>
+ <2314814.WbdfqDVNqK@phil> <7hv9uq9wfe.fsf@baylibre.com>
+ <c973d3fa-5f0d-c277-7c83-6227942a671a@rock-chips.com>
+ <7hd0gvzuvw.fsf@baylibre.com> <7h8srjzuen.fsf@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jason Zhu <jason.zhu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <7h8srjzuen.fsf@baylibre.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Kevin Hilman <khilman@baylibre.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: kernel-build-reports@lists.linaro.org, linux-rockchip@lists.infradead.org, linux-next@vger.kernel.org, =?UTF-8?B?6Zer5a2d5Yab?= <andy.yan@rock-chips.com>, =?UTF-8?B?5byg5pm0?= <elaine.zhang@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi All,
-
-I have seen the data error with CMD17 while rebooting the system from
-Linux, below shows the detailed log.
-
-Anyone encounter this issue? let me know if any inputs on this?
-
-Log:
-U-Boot TPL 2019.10-rc2-00154-gd6758c282a-dirty (Aug 26 2019 - 04:46:03)
-Trying to boot from BOOTROM
-Returning to boot ROM...
-
-U-Boot SPL 2019.10-rc2-00154-gd6758c282a-dirty (Aug 26 2019 - 04:46:03 +0530)
-WDT:   Started with servicing (60s timeout)
-Trying to boot from MMC1
-Buswidth = 0, clock: 0
-Buswidth = 1, clock: 0
-Buswidth = 1, clock: 400000
-Sending CMD0
-Sending CMD8
-Sending CMD55
-Sending CMD41
-Sending CMD55
-Sending CMD41
-Sending CMD2
-Sending CMD3
-Sending CMD9
-Sending CMD7
-Sending CMD55
-Sending CMD51
-Sending CMD6
-Sending CMD55
-Sending CMD6
-Buswidth = 4, clock: 400000
-Sending CMD6
-Buswidth = 4, clock: 50000000
-Sending CMD16
-Sending CMD17
-dwmci_data_transfer: DATA ERROR!
-Sending CMD16
-Sending CMD17
-dwmci_data_transfer: DATA ERROR!
-FIT: ret = -1
-mmc_load_image_raw_sector: mmc block read error
-SPL: failed to boot from all boot devices
-### ERROR ### Please RESET the board ###
-
-Jagan.
+SGkgS2V2aW4sCgogwqDCoMKgIEkgd2FudCB0byBoYXZlIGEgdGVzdCB3aXRoIG15IGJvYXJkLCBJ
+IGNhbiBnZXQgdGhlIEltYWdlIGFuZCBkdGIgCmZyb20gdGhlIGxpbmsgZm9yIHRoZSBqb2IsCgpi
+dXQgaG93IGNhbiBJIGdldCB0aGUgcmFuZGlzayB3aGljaCBpcyBuYW1lZCBpbml0cmQtU0RieXky
+LmNwaW8uZ3o/CgoKVGhhbmtzLAoKLSBLZXZlcgoKT24gMjAxOS84LzI0IOS4iuWNiDE6MDMsIEtl
+dmluIEhpbG1hbiB3cm90ZToKPiBLZXZpbiBIaWxtYW4gPGtoaWxtYW5AYmF5bGlicmUuY29tPiB3
+cml0ZXM6Cj4KPj4gS2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4gd3JpdGVz
+Ogo+Pgo+Pj4gSGkgS2V2aW4sIEhlaWtvLAo+Pj4KPj4+IE9uIDIwMTkvOC8yMiDkuIrljYgyOjU5
+LCBLZXZpbiBIaWxtYW4gd3JvdGU6Cj4+Pj4gSGkgSGVpa28sCj4+Pj4KPj4+PiBIZWlrbyBTdHVl
+Ym5lciA8aGVpa29Ac250ZWNoLmRlPiB3cml0ZXM6Cj4+Pj4KPj4+Pj4gQW0gRGllbnN0YWcsIDEz
+LiBBdWd1c3QgMjAxOSwgMTk6MzU6MzEgQ0VTVCBzY2hyaWViIEtldmluIEhpbG1hbjoKPj4+Pj4+
+IFsgcmVzZW50IHdpdGggY29ycmVjdCBhZGRyIGZvciBsaW51eC1yb2NrY2hpcCBsaXN0IF0KPj4+
+Pj4+Cj4+Pj4+PiBNYXJrIEJyb3duIDxicm9vbmllQGtlcm5lbC5vcmc+IHdyaXRlczoKPj4+Pj4+
+Cj4+Pj4+Pj4gT24gVGh1LCBKdWwgMTgsIDIwMTkgYXQgMDQ6Mjg6MDhBTSAtMDcwMCwga2VybmVs
+Y2kub3JnIGJvdCB3cm90ZToKPj4+Pj4+Pgo+Pj4+Pj4+IFRvZGF5J3MgLW5leHQgc3RhcnRlZCBm
+YWlsaW5nIHRvIGJvb3QgZGVmY29uZmlnIG9uIHJrMzM5OS1maXJlZmx5Ogo+Pj4+Pj4+Cj4+Pj4+
+Pj4+IGFybTY0Ogo+Pj4+Pj4+PiAgICAgICBkZWZjb25maWc6Cj4+Pj4+Pj4+ICAgICAgICAgICBn
+Y2MtODoKPj4+Pj4+Pj4gICAgICAgICAgICAgICByazMzOTktZmlyZWZseTogMSBmYWlsZWQgbGFi
+Cj4+Pj4+Pj4gSXQgaGl0cyBhIEJVRygpIHRyeWluZyB0byBzZXQgdXAgY3B1ZnJlcToKPj4+Pj4+
+Pgo+Pj4+Pj4+IFsgICA4Ny4zODE2MDZdIGNwdWZyZXE6IGNwdWZyZXFfb25saW5lOiBDUFUwOiBS
+dW5uaW5nIGF0IHVubGlzdGVkIGZyZXE6IDIwMDAwMCBLSHoKPj4+Pj4+PiBbICAgODcuMzkzMjQ0
+XSBjcHVmcmVxOiBjcHVmcmVxX29ubGluZTogQ1BVMDogVW5saXN0ZWQgaW5pdGlhbCBmcmVxdWVu
+Y3kgY2hhbmdlZCB0bzogNDA4MDAwIEtIego+Pj4+Pj4+IFsgICA4Ny40Njk3NzddIGNwdWZyZXE6
+IGNwdWZyZXFfb25saW5lOiBDUFU0OiBSdW5uaW5nIGF0IHVubGlzdGVkIGZyZXE6IDEyMDAwIEtI
+ego+Pj4+Pj4+IFsgICA4Ny40ODg1OTVdIGNwdSBjcHU0OiBfZ2VuZXJpY19zZXRfb3BwX2Nsa19v
+bmx5OiBmYWlsZWQgdG8gc2V0IGNsb2NrIHJhdGU6IC0yMgo+Pj4+Pj4+IFsgICA4Ny40OTE4ODFd
+IGNwdWZyZXE6IF9fdGFyZ2V0X2luZGV4OiBGYWlsZWQgdG8gY2hhbmdlIGNwdSBmcmVxdWVuY3k6
+IC0yMgo+Pj4+Pj4+IFsgICA4Ny40OTUzMzVdIC0tLS0tLS0tLS0tLVsgY3V0IGhlcmUgXS0tLS0t
+LS0tLS0tLQo+Pj4+Pj4+IFsgICA4Ny40OTY4MjFdIGtlcm5lbCBCVUcgYXQgZHJpdmVycy9jcHVm
+cmVxL2NwdWZyZXEuYzoxNDM4IQo+Pj4+Pj4+IFsgICA4Ny40OTg0NjJdIEludGVybmFsIGVycm9y
+OiBPb3BzIC0gQlVHOiAwIFsjMV0gUFJFRU1QVCBTTVAKPj4+Pj4+Pgo+Pj4+Pj4+IEknbSBzdHJ1
+Z2dsaW5nIHRvIHNlZSBhbnl0aGluZyByZWxldmFudCBpbiB0aGUgZGlmZiBmcm9tIHllc3RlcmRh
+eSwgdGhlCj4+Pj4+Pj4gdW5saXN0ZWQgZnJlcXVlbmN5IHdhcm5pbmdzIHdlcmUgdGhlcmUgaW4g
+dGhlIGxvZ3MgeWVzdGVyZGF5IGJ1dCBubyBvb3BzCj4+Pj4+Pj4gYW5kIEknbSBub3Qgc2VlaW5n
+IGFueSBjaGFuZ2VzIGluIGNwdWZyZXEsIGNsayBvciBhbnl0aGluZyByZWxldmFudAo+Pj4+Pj4+
+IGxvb2tpbmcuCj4+Pj4+Pj4KPj4+Pj4+PiBGdWxsIGJvb3Rsb2cgYW5kIG90aGVyIGluZm8gY2Fu
+IGJlIGZvdW5kIGhlcmU6Cj4+Pj4+Pj4KPj4+Pj4+PiAJaHR0cHM6Ly9rZXJuZWxjaS5vcmcvYm9v
+dC9pZC81ZDMwMmQ4MzU5YjUxNDk4ZDA0OWU5ODMvCj4+Pj4+PiBJIGNvbmZpcm0gdGhhdCBkaXNh
+YmxpbmcgQ1BVZnJlcSBpbiB0aGUgZGVmY29uZmlnIChDT05GSUdfQ1BVX0ZSRVE9bikKPj4+Pj4+
+IG1ha2VzIHRoZSBmaXJlZmx5IGJvYXJkIHN0YXJ0IHdvcmtpbmcgYWdhaW4uCj4+Pj4+Pgo+Pj4+
+Pj4gTm90ZSB0aGF0IHRoZSBkZWZhdWx0IGRlZmNvbmZpZyBlbmFibGVzIHRoZSAicGVyZm9ybWFu
+Y2UiIENQVWZyZXEKPj4+Pj4+IGdvdmVybm9yIGFzIHRoZSBkZWZhdWx0IGdvdmVybm9yLCBzbyBk
+dXJpbmcga2VybmVsIGJvb3QsIGl0IHdpbGwgYWx3YXlzCj4+Pj4+PiBzd2l0Y2ggdG8gdGhlIG1h
+eCBmcmVxdWVuY3kuCj4+Pj4+Pgo+Pj4+Pj4gRm9yIGZ1biwgSSBzZXQgdGhlIGRlZmF1bHQgZ292
+ZXJub3IgdG8gInVzZXJzcGFjZSIgc28gdGhlIGtlcm5lbAo+Pj4+Pj4gd291bGRuJ3QgbWFrZSBh
+bnkgT1BQIGNoYW5nZXMsIGFuZCB0aGF0IGxlYWRzIHRvIGEgc2xpZ2h0bHkgbW9yZQo+Pj4+Pj4g
+aW5mb3JtYXRpdmUgc3BsYXRbMV0KPj4+Pj4+Cj4+Pj4+PiBUaGVyZSBpcyBzdGlsbCBhbiBPUFAg
+Y2hhbmdlIGhhcHBlbmluZyBiZWNhdXNlIHRoZSBkZXRlY3RlZCBPUFAgaXMgbm90Cj4+Pj4+PiBv
+bmUgdGhhdCdzIGxpc3RlZCBpbiB0aGUgdGFibGUsIHNvIGl0IHRyaWVzIHRvIGNoYW5nZSB0byBh
+IGxpc3RlZCBPUFAKPj4+Pj4+IGFuZCBmYWlscyBpbiB0aGUgYm93ZWxzIG9mIGNsa19zZXRfcmF0
+ZSgpCj4+Pj4+IFRob3VnaCBJIHRoaW5rIHRoYXQgbWlnaHQgb25seSBiZSBhIHN5bXB0b20gYXMg
+d2VsbC4KPj4+Pj4gQm90aCB0aGUgUExMIHNldHRpbmcgY29kZSBhcyB3ZWxsIGFzIHRoZSBhY3R1
+YWwgY3B1LWNsb2NrIGltcGxlbWVudGF0aW9uCj4+Pj4+IGlzIHVuY2hhbmdlZCBzaW5jZSAyMDE3
+IChhbmQgcnVucyBqdXN0IGZpbmUgb24gYWxsIGJvYXJkcyBpbiBteSBmYXJtKS4KPj4+Pj4KPj4+
+Pj4gT25lIHNvdXJjZSBmb3IgdGhlc2UgaXNzdWVzIGlzIG9mdGVuIHRoZSByZWd1bGF0b3Igc3Vw
+cGx5aW5nIHRoZSBjcHUKPj4+Pj4gZ29pbmcgaGF5d2lyZSAtIGFrYSB0aGUgdm9sdGFnZSBub3Qg
+bWF0Y2hpbmcgdGhlIG9wcC4KPj4+Pj4KPj4+Pj4gQXMgaW4gdGhpcyBlcnJvci1jYXNlIGl0J3Mg
+Q1BVNCBiZWluZyBzZXQsIHRoaXMgd291bGQgbWVhbiBpdCBtaWdodAo+Pj4+PiBiZSB0aGUgYmln
+IGNsdXN0ZXIgc3VwcGxpZWQgYnkgdGhlIGV4dGVybmFsIHN5cjgyNSAoZmFuNTM1NSBjbG9uZSkK
+Pj4+Pj4gdGhhdCBtaWdodCBhY3QgdXAuIEluIHRoZSBGaXJlZmx5LXJrMzM5OSBjYXNlIHRoaXMg
+aXMgZXZlbiBzdHJhbmdlci4KPj4+Pj4KPj4+Pj4gVGhlcmUgaXMgYSBkaXNjcmVwYW5jeSBiZXR3
+ZWVuIHRoZSAiZmNzLHN1c3BlbmQtdm9sdGFnZS1zZWxlY3RvciIKPj4+Pj4gYmV0d2VlbiBkaWZm
+ZXJlbnQgYm9vdGxvYWRlciB2ZXJzaW9ucyAoaG93IHRoZSBzZWxlY3Rpb24tcGluIGlzIHNldCB1
+cCksCj4+Pj4+IHNvIHRoZSBrZXJuZWwgbWlnaHQgYWN0dWFsbHkgd3JpdGUgaGlzIHJlcXVlc3Rl
+ZCB2b2x0YWdlIHRvIHRoZSB3cm9uZwo+Pj4+PiByZWdpc3RlciAobm90IHRoZSBvbmUgZm9yIGFj
+dHVhbCB2b2x0YWdlLCBidXQgdGhlIHNlY29uZCBzZXQgdXNlZCBmb3IKPj4+Pj4gdGhlIHN1c3Bl
+bmQgdm9sdGFnZSkuCj4+Pj4+Cj4+Pj4+IERpZCB5b3UgYnkgY2hhbmNlIHN3YXAgYm9vdGxvYWRl
+cnMgYXQgc29tZSBwb2ludCBpbiByZWNlbnQgcGFzdD8KPj4+PiBObywgaGF2ZW4ndCB0b3VjaGVk
+IGJvb3Rsb2FkZXIgc2luY2UgSSBpbml0aWFsbHkgc2V0dXAgdGhlIGJvYXJkLgo+Pj4gVGhlIENQ
+VSB2b2x0YWdlIGRvZXMgbm90IGFmZmVjdCBieSBib290bG9hZGVyIGZvciBrZXJuZWwgc2hvdWxk
+IGhhdmUgaXRzCj4+PiBvd24gb3BwLXRhYmxlLAo+Pj4KPj4+IHRoZSBib290bG9hZGVyIG1heSBv
+bmx5IGFmZmVjdCB0aGUgY2VudGVyL2xvZ2ljIHBvd2VyIHN1cHBseS4KPj4+Cj4+Pj4+IEknZCBh
+c3N1bWUgWzJdIG1pZ2h0IGFjdHVhbGx5IGJlIHRoZSBzYW1lIGlzc3VlIGxhc3QgeWVhciwgdGhv
+dWdoCj4+Pj4+IHRoZSBDSS1sb2dzIGFyZSBub3QgYXZhaWxhYmxlIGFueW1vcmUgaXQgc2VlbXMu
+Cj4+Pj4+Cj4+Pj4+IENvdWxkIHlvdSB0cnkgdG8gc2V0IHRoZSB2ZGRfY3B1X2IgcmVndWxhdG9y
+IHRvIGRpc2FibGVkLCBzbyB0aGF0Cj4+Pj4+IGNwdWZyZXEgZm9yIHRoaXMgY2x1c3RlciBkZWZl
+cnMgYW5kIHNlZSB3aGF0IGhhcHBlbnM/Cj4+Pj4gWWVzLCB0aGlzIGNoYW5nZVsxXSBkZWZpbml0
+ZWx5IG1ha2VzIHRoaW5ncyBib290IHJlbGlhYmx5IGFnYWluLCBzbwo+Pj4+IHRoZXJlJ3MgZGVm
+aW50aWVseSBzb21ldGhpbmcgYSBiaXQgdW5zdGFibGUgd2l0aCB0aGlzIHJlZ3VsYXRvciwgYXQK
+Pj4+PiBsZWFzdCBvbiB0aGlzIGZpcmVmbHkuCj4+PiBJcyBpdCBwb3NzaWJsZSB0byB0YXJnZXQg
+d2hpY2ggcGF0Y2ggaW50cm9kdWNlIHRoaXMgYnVnPyBUaGlzIGJvYXJkCj4+PiBzaG91bGQgaGF2
+ZSB3b3JrIGNvcnJlY3RseSBmb3IgYSBsb25nIHRpbWUgd2l0aCB1cHN0cmVhbSBzb3VyY2UgY29k
+ZS4KPj4gVW5mb3J0dW5hdGVseSwgaXQgc2VlbXMgdG8gYmUgYSByZWd1bGFyLCBidXQgaW50ZXJt
+aXR0ZW50IGZhaWx1cmUsIHNvCj4+IGJpc2VjdGlvbiBpcyBub3QgcHJvZHVjaW5nIGFueXRoaW5n
+IHJlbGlhYmxlLgo+Pgo+PiBZb3UgY2FuIHNlZSB0aGF0IGJvdGggaW4gbWFpbmxpbmVbMV0gYW5k
+IGluIGxpbnV4LW5leHRbMl0gdGhlcmUgYXJlCj4+IHBlcmlvZGljIGZhaWx1cmVzLCBidXQgaXQn
+cyBoYXJkIHRvIHNlZSBhbnkgcGF0dGVybnMuCj4gRXZlbiB3b3JzZSwgSSAocmUpdGVzdGVkIG1h
+aW5saW5lIGZvciB2ZXJzaW9ucyB0aGF0IHdlcmUgcHJldmlvdXNseQo+IHBhc3NpbmcgKHY1LjIs
+IHY1LjMtcmM1KSBhbmQgdGhleSBhcmUgYWxzbyBmYWlsaW5nIG5vdy4KPgo+IFRoZXkgd29yayBh
+Z2FpbiBpZiBJIGRpc2FibGUgdGhhdCByZWd1bGF0b3IgYXMgc3VnZ2VzdGVkIGJ5IEhlaWtvLgo+
+Cj4gU28gdGhpcyBpcyBpbmNyZWFzaW5nbHkgcG9pbnRpbmcgdG8gZmFpbGluZyBoYXJkd2FyZS4K
+Pgo+IEtldmluCj4KPgo+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
