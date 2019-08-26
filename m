@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 10/16] wdt: Kconfig: Add WDT_DW entry
-Date: Mon, 26 Aug 2019 23:51:05 +0530
-Message-ID: <20190826182111.30999-11-jagan@amarulasolutions.com>
+Subject: [PATCH v2 11/16] wdt: Kconfig: Add TPL_WDT entry
+Date: Mon, 26 Aug 2019 23:51:06 +0530
+Message-ID: <20190826182111.30999-12-jagan@amarulasolutions.com>
 References: <20190826182111.30999-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,48 +21,28 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add Kconfig entry for CONFIG_WDT_DW, and it indeed
-depends on DM WDT.
-
-So, it can be avialable on particular board defconfig
-only if they switch to use DW driver model code.
+Add missing Kconfig entry for TPL_WDT.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/watchdog/Kconfig     | 8 ++++++++
- scripts/config_whitelist.txt | 1 -
- 2 files changed, 8 insertions(+), 1 deletion(-)
+ drivers/watchdog/Kconfig | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/drivers/watchdog/Kconfig b/drivers/watchdog/Kconfig
-index a66a9bcbe2..8674633b90 100644
+index 8674633b90..7c7f0c67a0 100644
 --- a/drivers/watchdog/Kconfig
 +++ b/drivers/watchdog/Kconfig
-@@ -90,6 +90,14 @@ config WDT_CDNS
- 	   Select this to enable Cadence watchdog timer, which can be found on some
- 	   Xilinx Microzed Platform.
+@@ -182,4 +182,11 @@ config SPL_WDT
+ 	  Enable driver model for watchdog timer in SPL.
+ 	  This is similar to CONFIG_WDT in U-Boot.
  
-+config WDT_DW
-+	bool "Synopsys DesignWare watchdog"
-+	depends on WDT
-+	default y if ROCKCHIP_RK3399
++config TPL_WDT
++	bool "Enable driver model for watchdog timer drivers in TPL"
++	depends on TPL_DM
 +	help
-+	  Say Y here if to include support for the Synopsys DesignWare
-+	  watchdog timer found in many chips.
++	  Enable driver model for watchdog timer in TPL.
++	  This is similar to CONFIG_WDT in U-Boot.
 +
- config WDT_MPC8xx
- 	bool "MPC8xx watchdog timer support"
- 	depends on WDT && MPC8xx
-diff --git a/scripts/config_whitelist.txt b/scripts/config_whitelist.txt
-index 35c56262ed..0618cb9047 100644
---- a/scripts/config_whitelist.txt
-+++ b/scripts/config_whitelist.txt
-@@ -321,7 +321,6 @@ CONFIG_DEFAULT_IMMR
- CONFIG_DEF_HWCONFIG
- CONFIG_DELAY_ENVIRONMENT
- CONFIG_DESIGNWARE_ETH
--CONFIG_WDT_DW
- CONFIG_DEVELOP
- CONFIG_DEVICE_TREE_LIST
- CONFIG_DFU_ALT
+ endmenu
 -- 
 2.18.0.321.gffc6fa0e3
