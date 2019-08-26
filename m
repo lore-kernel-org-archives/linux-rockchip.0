@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 05/16] wdt: designware: Simplify is_enabled function
-Date: Mon, 26 Aug 2019 23:51:00 +0530
-Message-ID: <20190826182111.30999-6-jagan@amarulasolutions.com>
+Subject: [PATCH v2 06/16] wdt: designware: Simplify enable function
+Date: Mon, 26 Aug 2019 23:51:01 +0530
+Message-ID: <20190826182111.30999-7-jagan@amarulasolutions.com>
 References: <20190826182111.30999-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,31 +21,42 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chin Liang See <clsee-EIB2kfCEclfQT0dZR+AlfA@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Andy Shevchenko <andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Right now the designware is_enabled function is using
-numeric number to check whether watchdog is enabled or
-not, so use register macro and check the same.
+Simplify dw watchdog enable function by using
+proper macro and drop unwanted macros.
 
 Cc: Chin Liang See <clsee-EIB2kfCEclfQT0dZR+AlfA@public.gmane.org>
 Cc: Andy Shevchenko <andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/watchdog/designware_wdt.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/watchdog/designware_wdt.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/watchdog/designware_wdt.c b/drivers/watchdog/designware_wdt.c
-index c668567c66..bd858f0608 100644
+index bd858f0608..2979fda44e 100644
 --- a/drivers/watchdog/designware_wdt.c
 +++ b/drivers/watchdog/designware_wdt.c
-@@ -45,9 +45,7 @@ static void designware_wdt_enable(void)
+@@ -14,7 +14,6 @@
  
- static unsigned int designware_wdt_is_enabled(void)
+ #define DW_WDT_CR_EN_OFFSET	0x00
+ #define DW_WDT_CR_RMOD_OFFSET	0x01
+-#define DW_WDT_CR_RMOD_VAL	0x00
+ #define DW_WDT_CRR_RESTART_VAL	0x76
+ 
+ /*
+@@ -38,9 +37,11 @@ static int designware_wdt_settimeout(unsigned int timeout)
+ 
+ static void designware_wdt_enable(void)
  {
--	unsigned long val;
--	val = readl((CONFIG_DW_WDT_BASE + DW_WDT_CR));
--	return val & 0x1;
-+	return readl(CONFIG_DW_WDT_BASE + DW_WDT_CR) & DW_WDT_CR_RMOD_OFFSET;
+-	writel(((DW_WDT_CR_RMOD_VAL << DW_WDT_CR_RMOD_OFFSET) |
+-	      (0x1 << DW_WDT_CR_EN_OFFSET)),
+-	      (CONFIG_DW_WDT_BASE + DW_WDT_CR));
++	u32 val = readl(CONFIG_DW_WDT_BASE + DW_WDT_CR);
++
++	/* Enable watchdog */
++	val |= DW_WDT_CR_RMOD_OFFSET;
++	writel(val, CONFIG_DW_WDT_BASE + DW_WDT_CR);
  }
  
- #if defined(CONFIG_HW_WATCHDOG)
+ static unsigned int designware_wdt_is_enabled(void)
 -- 
 2.18.0.321.gffc6fa0e3
