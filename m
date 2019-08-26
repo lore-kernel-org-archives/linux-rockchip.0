@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 04/16] rockchip: Add rk3399 reset cause
-Date: Mon, 26 Aug 2019 23:50:59 +0530
-Message-ID: <20190826182111.30999-5-jagan@amarulasolutions.com>
+Subject: [PATCH v2 05/16] wdt: designware: Simplify is_enabled function
+Date: Mon, 26 Aug 2019 23:51:00 +0530
+Message-ID: <20190826182111.30999-6-jagan@amarulasolutions.com>
 References: <20190826182111.30999-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -18,101 +18,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chin Liang See <clsee-EIB2kfCEclfQT0dZR+AlfA@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Andy Shevchenko <andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add reset cause for rk3399 in common cpu-info file.
+Right now the designware is_enabled function is using
+numeric number to check whether watchdog is enabled or
+not, so use register macro and check the same.
 
-This would help to print the reset cause for
-various resets.
-
-Common code for various rockchip reset cause
-will add it in future.
-
+Cc: Chin Liang See <clsee-EIB2kfCEclfQT0dZR+AlfA@public.gmane.org>
+Cc: Andy Shevchenko <andriy.shevchenko-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- arch/arm/include/asm/arch-rockchip/cru.h | 12 +++++++
- arch/arm/mach-rockchip/cpu-info.c        | 43 ++++++++++++++++++++++++
- 2 files changed, 55 insertions(+)
+ drivers/watchdog/designware_wdt.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/arch/arm/include/asm/arch-rockchip/cru.h b/arch/arm/include/asm/arch-rockchip/cru.h
-index 3d1927580f..e267a71ca6 100644
---- a/arch/arm/include/asm/arch-rockchip/cru.h
-+++ b/arch/arm/include/asm/arch-rockchip/cru.h
-@@ -11,4 +11,16 @@
- # include <asm/arch-rockchip/cru_rk3399.h>
- #endif
+diff --git a/drivers/watchdog/designware_wdt.c b/drivers/watchdog/designware_wdt.c
+index c668567c66..bd858f0608 100644
+--- a/drivers/watchdog/designware_wdt.c
++++ b/drivers/watchdog/designware_wdt.c
+@@ -45,9 +45,7 @@ static void designware_wdt_enable(void)
  
-+/* CRU_GLB_RST_ST */
-+enum {
-+	GLB_POR_RST,
-+	FST_GLB_RST_ST		= BIT(0),
-+	SND_GLB_RST_ST		= BIT(1),
-+	FST_GLB_TSADC_RST_ST	= BIT(2),
-+	SND_GLB_TSADC_RST_ST	= BIT(3),
-+	FST_GLB_WDT_RST_ST	= BIT(4),
-+	SND_GLB_WDT_RST_ST	= BIT(5),
-+	GLB_RST_ST_MASK		= GENMASK(5, 0),
-+};
-+
- #endif /* _ROCKCHIP_CLOCK_H */
-diff --git a/arch/arm/mach-rockchip/cpu-info.c b/arch/arm/mach-rockchip/cpu-info.c
-index 90ce65d9ff..63d867fe78 100644
---- a/arch/arm/mach-rockchip/cpu-info.c
-+++ b/arch/arm/mach-rockchip/cpu-info.c
-@@ -5,10 +5,53 @@
-  */
- 
- #include <common.h>
-+#include <asm/io.h>
-+#include <asm/arch-rockchip/clock.h>
-+#include <asm/arch-rockchip/cru.h>
-+#include <asm/arch-rockchip/hardware.h>
-+#include <linux/err.h>
-+
-+static char *get_reset_cause(void)
-+{
-+	struct rockchip_cru *cru = rockchip_get_cru();
-+	char *cause = NULL;
-+
-+	if (IS_ERR(cru))
-+		return cause;
-+
-+	switch (cru->glb_rst_st) {
-+	case GLB_POR_RST:
-+		cause = "POR";
-+		break;
-+	case FST_GLB_RST_ST:
-+	case SND_GLB_RST_ST:
-+		cause = "RST";
-+		break;
-+	case FST_GLB_TSADC_RST_ST:
-+	case SND_GLB_TSADC_RST_ST:
-+		cause = "THERMAL";
-+		break;
-+	case FST_GLB_WDT_RST_ST:
-+	case SND_GLB_WDT_RST_ST:
-+		cause = "WDOG";
-+		break;
-+	default:
-+		cause = "unknown reset";
-+	}
-+
-+	/*
-+	 * Clear glb_rst_st, so we can determine the last reset cause
-+	 * for following resets.
-+	 */
-+	rk_clrreg(&cru->glb_rst_st, GLB_RST_ST_MASK);
-+
-+	return cause;
-+}
- 
- int print_cpuinfo(void)
+ static unsigned int designware_wdt_is_enabled(void)
  {
- 	printf("SoC: Rockchip %s\n", CONFIG_SYS_SOC);
-+	printf("Reset cause: %s\n", get_reset_cause());
+-	unsigned long val;
+-	val = readl((CONFIG_DW_WDT_BASE + DW_WDT_CR));
+-	return val & 0x1;
++	return readl(CONFIG_DW_WDT_BASE + DW_WDT_CR) & DW_WDT_CR_RMOD_OFFSET;
+ }
  
- 	/* TODO print operating temparature and clock */
- 
+ #if defined(CONFIG_HW_WATCHDOG)
 -- 
 2.18.0.321.gffc6fa0e3
