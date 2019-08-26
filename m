@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 11/16] wdt: Kconfig: Add TPL_WDT entry
-Date: Mon, 26 Aug 2019 23:51:06 +0530
-Message-ID: <20190826182111.30999-12-jagan@amarulasolutions.com>
+Subject: [DO NOT MERGE] [PATCH v2 14/16] rk3399: rockpro64: Enable watchdog
+Date: Mon, 26 Aug 2019 23:51:09 +0530
+Message-ID: <20190826182111.30999-15-jagan@amarulasolutions.com>
 References: <20190826182111.30999-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,28 +21,22 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add missing Kconfig entry for TPL_WDT.
+Enable watchdog in SPL and U-Boot proper for Rockpro64.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/watchdog/Kconfig | 7 +++++++
- 1 file changed, 7 insertions(+)
+ configs/rockpro64-rk3399_defconfig | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/watchdog/Kconfig b/drivers/watchdog/Kconfig
-index 8674633b90..7c7f0c67a0 100644
---- a/drivers/watchdog/Kconfig
-+++ b/drivers/watchdog/Kconfig
-@@ -182,4 +182,11 @@ config SPL_WDT
- 	  Enable driver model for watchdog timer in SPL.
- 	  This is similar to CONFIG_WDT in U-Boot.
- 
-+config TPL_WDT
-+	bool "Enable driver model for watchdog timer drivers in TPL"
-+	depends on TPL_DM
-+	help
-+	  Enable driver model for watchdog timer in TPL.
-+	  This is similar to CONFIG_WDT in U-Boot.
-+
- endmenu
+diff --git a/configs/rockpro64-rk3399_defconfig b/configs/rockpro64-rk3399_defconfig
+index e05ea3e186..5ff38efa53 100644
+--- a/configs/rockpro64-rk3399_defconfig
++++ b/configs/rockpro64-rk3399_defconfig
+@@ -55,3 +55,5 @@ CONFIG_USB_ETHER_RTL8152=y
+ CONFIG_USB_ETHER_SMSC95XX=y
+ CONFIG_SPL_TINY_MEMSET=y
+ CONFIG_ERRNO_STR=y
++CONFIG_WDT=y
++CONFIG_SPL_WATCHDOG_SUPPORT=y
 -- 
 2.18.0.321.gffc6fa0e3
