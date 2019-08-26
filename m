@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 12/16] spl: Add watchdog support fot TPL
-Date: Mon, 26 Aug 2019 23:51:07 +0530
-Message-ID: <20190826182111.30999-13-jagan@amarulasolutions.com>
+Subject: [PATCH v2 15/16] rockchip: rk3399: Add bootcount support
+Date: Mon, 26 Aug 2019 23:51:10 +0530
+Message-ID: <20190826182111.30999-16-jagan@amarulasolutions.com>
 References: <20190826182111.30999-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,53 +21,72 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add support to build watchdog for TPL.
+Add bootcount support for Rockchip rk3399.
+
+The bootcount value is preserved in PMU_SYS_REG0 register,
+this would help to support redundent boot.
+
+Once the redundant boot triggers, the altboot command
+will look for extlinux-rollback.conf on particular
+bootable partition which supposed to be a recovery
+partition where redundant boot required.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- common/spl/Kconfig | 9 +++++++++
- drivers/Makefile   | 2 +-
- 2 files changed, 10 insertions(+), 1 deletion(-)
+ arch/arm/mach-rockchip/Kconfig        |  2 ++
+ arch/arm/mach-rockchip/rk3399/Kconfig | 10 ++++++++++
+ include/configs/rk3399_common.h       |  5 ++++-
+ 3 files changed, 16 insertions(+), 1 deletion(-)
 
-diff --git a/common/spl/Kconfig b/common/spl/Kconfig
-index 660aa66d84..d4c5956b18 100644
---- a/common/spl/Kconfig
-+++ b/common/spl/Kconfig
-@@ -1370,6 +1370,15 @@ config TPL_YMODEM_SUPPORT
- 	  means of transmitting U-Boot over a serial line for using in TPL,
- 	  with a checksum to ensure correctness.
+diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
+index f5a80b4f0c..f3e4d72203 100644
+--- a/arch/arm/mach-rockchip/Kconfig
++++ b/arch/arm/mach-rockchip/Kconfig
+@@ -197,6 +197,8 @@ config ROCKCHIP_RK3399
+ 	imply TPL_CLK
+ 	imply TPL_TINY_MEMSET
+ 	imply TPL_ROCKCHIP_COMMON_BOARD
++	imply SYS_BOOTCOUNT_SINGLEWORD if BOOTCOUNT_LIMIT
++	imply CMD_BOOTCOUNT if BOOTCOUNT_LIMIT
+ 	help
+ 	  The Rockchip RK3399 is a ARM-based SoC with a dual-core Cortex-A72
+ 	  and quad-core Cortex-A53.
+diff --git a/arch/arm/mach-rockchip/rk3399/Kconfig b/arch/arm/mach-rockchip/rk3399/Kconfig
+index 6660d05349..68ac913bcb 100644
+--- a/arch/arm/mach-rockchip/rk3399/Kconfig
++++ b/arch/arm/mach-rockchip/rk3399/Kconfig
+@@ -91,6 +91,16 @@ config TPL_STACK
+ config TPL_TEXT_BASE
+         default 0xff8c2000
  
-+config TPL_WATCHDOG_SUPPORT
-+	bool "Support watchdog drivers"
-+	imply TPL_WDT if !HW_WATCHDOG
-+	help
-+	  Enable support for watchdog drivers in TPL. A watchdog is
-+	  typically a hardware peripheral which can reset the system when it
-+	  detects no activity for a while (such as a software crash). This
-+	  enables the drivers in drivers/watchdog as part of an TPL build.
++if BOOTCOUNT_LIMIT
 +
- endif # TPL
++config BOOTCOUNT_BOOTLIMIT
++	default 3
++
++config SYS_BOOTCOUNT_ADDR
++	default 0xff3100f0	# PMU_SYS_REG0
++
++endif # BOOTCOUNT_LIMIT
++
+ source "board/rockchip/evb_rk3399/Kconfig"
+ source "board/theobroma-systems/puma_rk3399/Kconfig"
+ source "board/vamrs/rock960_rk3399/Kconfig"
+diff --git a/include/configs/rk3399_common.h b/include/configs/rk3399_common.h
+index a5e69b26ad..724ea4cbfc 100644
+--- a/include/configs/rk3399_common.h
++++ b/include/configs/rk3399_common.h
+@@ -64,7 +64,10 @@
+ 	"fdtfile=" CONFIG_DEFAULT_FDT_FILE "\0" \
+ 	"partitions=" PARTS_DEFAULT \
+ 	ROCKCHIP_DEVICE_SETTINGS \
+-	BOOTENV
++	BOOTENV \
++	"altbootcmd=" \
++		"setenv boot_syslinux_conf extlinux/extlinux-rollback.conf;" \
++		"run distro_bootcmd\0"
  
- config SPL_AT91_MCK_BYPASS
-diff --git a/drivers/Makefile b/drivers/Makefile
-index a4bb5e4975..82f9ac4445 100644
---- a/drivers/Makefile
-+++ b/drivers/Makefile
-@@ -23,6 +23,7 @@ obj-$(CONFIG_$(SPL_TPL_)SPI_FLASH_SUPPORT) += mtd/spi/
- obj-$(CONFIG_$(SPL_TPL_)SPI_SUPPORT) += spi/
- obj-$(CONFIG_$(SPL_TPL_)TIMER) += timer/
- obj-$(CONFIG_$(SPL_TPL_)VIRTIO) += virtio/
-+obj-$(CONFIG_$(SPL_TPL_)WATCHDOG_SUPPORT) += watchdog/
- obj-$(CONFIG_$(SPL_)DM_MAILBOX) += mailbox/
- obj-$(CONFIG_$(SPL_)REMOTEPROC) += remoteproc/
- obj-$(CONFIG_$(SPL_TPL_)TPM) += tpm/
-@@ -53,7 +54,6 @@ obj-$(CONFIG_SPL_MUSB_NEW_SUPPORT) += usb/musb-new/
- obj-$(CONFIG_SPL_USB_GADGET) += usb/gadget/
- obj-$(CONFIG_SPL_USB_GADGET) += usb/common/
- obj-$(CONFIG_SPL_USB_GADGET) += usb/gadget/udc/
--obj-$(CONFIG_SPL_WATCHDOG_SUPPORT) += watchdog/
- obj-$(CONFIG_SPL_USB_HOST_SUPPORT) += usb/host/
- obj-$(CONFIG_OMAP_USB_PHY) += usb/phy/
- obj-$(CONFIG_SPL_SATA_SUPPORT) += ata/ scsi/
+ #endif
+ 
 -- 
 2.18.0.321.gffc6fa0e3
