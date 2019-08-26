@@ -1,102 +1,71 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v2 00/16] rk3399: Add redundant boot support
-Date: Mon, 26 Aug 2019 23:50:55 +0530
-Message-ID: <20190826182111.30999-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH v2 01/16] rockchip: Add cpu-info
+Date: Mon, 26 Aug 2019 23:50:56 +0530
+Message-ID: <20190826182111.30999-2-jagan@amarulasolutions.com>
+References: <20190826182111.30999-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, Akash Gajjar <akash@openedev.com>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190826182111.30999-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Qm9vdCByZWR1bmRhbmN5IGlzIG9uZSBvZiB0aGUga2V5IGNyaXRlcmlhIGZvciBzd2l0Y2gKcmVj
-b3Zlcnkgb3IgZ29sZGVuIHBhcnRpdGlvbiBiYXNlZCBvbiB0aGUgYm9vdGNvdW50IAp2YWx1ZSwg
-d2hpY2ggaW5kZWVkIHZlcnkgbXVjaCBuZWVkZWQgaW4gcHJvZHVjdGlvbiAKc3lzdGVtcyBvbiB0
-aGUgZmllbGRzLgoKVGhpcyBwYXRjaHNldCBzdXBwb3J0IHJlZHVuZGFudCBib290IG9uIFJvY2tj
-aGlwIHJrMzM5OS4KClRvIG1ha2UgZnVsbCBmdW5jdGlvbmFsIHJlZHVuZGFuY3kgYmVsb3cgZmVh
-dHVyZXMgCndvdWxkIHJlcXVpcmUgZnJvbSBVLUJvb3QgbGV2ZWwuCi0gYm9vdGNvdW50LCBmb3Ig
-Y291bnRpbmcgbnVtYmVyIHJlYm9vdHMKLSBhbHRib290Ci0gd2F0Y2hkb2cgc3VwcG9ydCwgaWYg
-U1BMIG9yIFUtQm9vdCByZXNldCBiZWNhdXNlIG9mIFdEVAotIGFkZCBDUFVJTkZPIGZvciBtb3Jl
-IHVuZGVyc3RhbmRpbmcgYWJvdXQgaG93IFNvQyBhbmQgCiAgcmVzZXQgcmVhc29uLgoKQ2hhbmdl
-cyBmb3IgdjI6Ci0gSGFuZGxlIFRQTCBidWlsZCBmb3Igd2F0Y2hkb2csIGlmIFRQTCB3b24ndCBl
-bmFibGUKLSBGaXggY29tbWVudHMgZm9yIGR3X3dkdCBkcml2ZXItbW9kZWwgY29tbWVudHMgZnJv
-bSBBbmR5Ci0gQWRkIEtjb25maWcgaXRlbXMgZm9yIFdEVF9UUEwKLSBTdXBwb3J0IFdEVCBvbiBU
-UEwgYXMgd2VsbAotIFVzZSBTWVNfU09DIGZvciBjcHUtaW5mbwoKSSB3b3VsZCBsaWtlLCBub3Qg
-dG8gbWVyZ2Ugd2F0Y2hkb2cgYW5kIGJvb3Rjb3VudCBvbiBNYWlubGluZQpkZXZib2FyZHMgc2lu
-Y2UgdGhlc2UgZmVhdHVyZXMgd2lsbCBtb3N0bHkgcmVxdWlyZWQgb24gcHJvZHVjdGlvbgpkZXZp
-Y2VzIGJ1dCBhbnkgY29tbWVudHMsIHBsZWFzZSBzaGFyZS4KCkFueSBpbnB1dHM/CkphZ2FuLgoK
-SmFnYW4gVGVraSAoMTYpOgogIHJvY2tjaGlwOiBBZGQgY3B1LWluZm8KICByb2NrY2hpcDogcmsz
-Mjg4L3JrMzM5OTogRW5hYmxlIERJU1BMQVlfQ1BVSU5GTwogIGFybTogcm9ja2NoaXA6IEFkZCBj
-b21tb24gY3J1LmgKICByb2NrY2hpcDogQWRkIHJrMzM5OSByZXNldCBjYXVzZQogIHdkdDogZGVz
-aWdud2FyZTogU2ltcGxpZnkgaXNfZW5hYmxlZCBmdW5jdGlvbgogIHdkdDogZGVzaWdud2FyZTog
-U2ltcGxpZnkgZW5hYmxlIGZ1bmN0aW9uCiAgd2R0OiBkdzogQWRkIGRyaXZlci1tb2RlbCBzdXBw
-b3J0CiAgd2R0OiBkdzogUmVuYW1lIHRvIGR3X3dkdC5jCiAgcm9ja2NoaXA6IGR0czogcmszMzk5
-OiBBZGQgdS1ib290LCBkbS1wcmUtcmVsb2MgZm9yIHdhdGNoZG9nCiAgd2R0OiBLY29uZmlnOiBB
-ZGQgV0RUX0RXIGVudHJ5CiAgd2R0OiBLY29uZmlnOiBBZGQgVFBMX1dEVCBlbnRyeQogIHNwbDog
-QWRkIHdhdGNoZG9nIHN1cHBvcnQgZm90IFRQTAogIHdhdGNoZG9nOiBIYW5kbGUgVFBMIGJ1aWxk
-IHdpdGggd2F0Y2hkb2cgZGlzYWJsZWQKICBbRE8gTk9UIE1FUkdFXSByazMzOTk6IHJvY2twcm82
-NDogRW5hYmxlIHdhdGNoZG9nCiAgcm9ja2NoaXA6IHJrMzM5OTogQWRkIGJvb3Rjb3VudCBzdXBw
-b3J0CiAgW0RPIE5PVCBNRVJHRV0gcmszMzk5OiByb2NrcHJvNjQ6IEVuYWJsZSBib290Y291bnQK
-CiBhcmNoL2FybS9kdHMvcmszMzk5LXUtYm9vdC5kdHNpICAgICAgICAgICAgICAgfCAgIDYgKwog
-YXJjaC9hcm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9jcnUuaCAgICAgIHwgIDI2ICsrKwog
-Li4uL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAvY3J1X3JrMzM5OS5oICAgIHwgIDEwICstCiBh
-cmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcgICAgICAgICAgICAgICAgfCAgIDIgKwogYXJj
-aC9hcm0vbWFjaC1yb2NrY2hpcC9NYWtlZmlsZSAgICAgICAgICAgICAgIHwgICAxICsKIGFyY2gv
-YXJtL21hY2gtcm9ja2NoaXAvY3B1LWluZm8uYyAgICAgICAgICAgICB8ICA1OSArKysrKysKIGFy
-Y2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMzk5L0tjb25maWcgICAgICAgICB8ICAxMCArCiBhcmNo
-L2FybS9tYWNoLXJvY2tjaGlwL3JrMzM5OS9jbGtfcmszMzk5LmMgICAgfCAgIDIgKy0KIGFyY2gv
-YXJtL21hY2gtcm9ja2NoaXAvcmszMzk5L3JrMzM5OS5jICAgICAgICB8ICAgMiArLQogY29tbW9u
-L2JvYXJkX2YuYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAyICstCiBjb21tb24v
-c3BsL0tjb25maWcgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDkgKwogY29uZmlncy9l
-dmItcmszMjg4X2RlZmNvbmZpZyAgICAgICAgICAgICAgICAgIHwgICAxIC0KIGNvbmZpZ3MvZXZi
-LXJrMzM5OV9kZWZjb25maWcgICAgICAgICAgICAgICAgICB8ICAgMSAtCiBjb25maWdzL2ZpY3Vz
-LXJrMzM5OV9kZWZjb25maWcgICAgICAgICAgICAgICAgfCAgIDEgLQogY29uZmlncy9maXJlZmx5
-LXJrMzI4OF9kZWZjb25maWcgICAgICAgICAgICAgIHwgICAxIC0KIGNvbmZpZ3MvZmlyZWZseS1y
-azMzOTlfZGVmY29uZmlnICAgICAgICAgICAgICB8ICAgMSAtCiBjb25maWdzL2toYWRhcy1lZGdl
-LWNhcHRhaW4tcmszMzk5X2RlZmNvbmZpZyAgfCAgIDEgLQogY29uZmlncy9raGFkYXMtZWRnZS1y
-azMzOTlfZGVmY29uZmlnICAgICAgICAgIHwgICAxIC0KIGNvbmZpZ3Mva2hhZGFzLWVkZ2Utdi1y
-azMzOTlfZGVmY29uZmlnICAgICAgICB8ICAgMSAtCiBjb25maWdzL21pcWktcmszMjg4X2RlZmNv
-bmZpZyAgICAgICAgICAgICAgICAgfCAgIDEgLQogY29uZmlncy9uYW5vcGMtdDQtcmszMzk5X2Rl
-ZmNvbmZpZyAgICAgICAgICAgIHwgICAxIC0KIGNvbmZpZ3MvbmFub3BpLW00LXJrMzM5OV9kZWZj
-b25maWcgICAgICAgICAgICB8ICAgMSAtCiBjb25maWdzL25hbm9waS1uZW80LXJrMzM5OV9kZWZj
-b25maWcgICAgICAgICAgfCAgIDEgLQogY29uZmlncy9vcmFuZ2VwaS1yazMzOTlfZGVmY29uZmln
-ICAgICAgICAgICAgIHwgICAxIC0KIGNvbmZpZ3MvcGh5Y29yZS1yazMyODhfZGVmY29uZmlnICAg
-ICAgICAgICAgICB8ICAgMSAtCiBjb25maWdzL3BvcG1ldGFsLXJrMzI4OF9kZWZjb25maWcgICAg
-ICAgICAgICAgfCAgIDEgLQogY29uZmlncy9wdW1hLXJrMzM5OV9kZWZjb25maWcgICAgICAgICAg
-ICAgICAgIHwgICAxIC0KIGNvbmZpZ3Mvcm9jay1waS00LXJrMzM5OV9kZWZjb25maWcgICAgICAg
-ICAgICB8ICAgMSAtCiBjb25maWdzL3JvY2s5NjAtcmszMzk5X2RlZmNvbmZpZyAgICAgICAgICAg
-ICAgfCAgIDEgLQogY29uZmlncy9yb2NrcHJvNjQtcmszMzk5X2RlZmNvbmZpZyAgICAgICAgICAg
-IHwgICA0ICstCiBjb25maWdzL3Rpbmtlci1yazMyODhfZGVmY29uZmlnICAgICAgICAgICAgICAg
-fCAgIDEgLQogY29uZmlncy92eWFzYS1yazMyODhfZGVmY29uZmlnICAgICAgICAgICAgICAgIHwg
-ICAxIC0KIGRyaXZlcnMvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAg
-MiArLQogZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrX3JrMzM5OS5jICAgICAgICAgICAgIHwgIDM2
-ICsrLS0KIGRyaXZlcnMvcmFtL3JvY2tjaGlwL3NkcmFtX3JrMzM5OS5jICAgICAgICAgICB8ICAx
-MCArLQogZHJpdmVycy92aWRlby9yb2NrY2hpcC9yazMzOTlfbWlwaS5jICAgICAgICAgIHwgICAy
-ICstCiBkcml2ZXJzL3ZpZGVvL3JvY2tjaGlwL3JrX21pcGkuYyAgICAgICAgICAgICAgfCAgIDIg
-Ky0KIGRyaXZlcnMvd2F0Y2hkb2cvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgICB8ICAxNSAr
-KwogZHJpdmVycy93YXRjaGRvZy9NYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgIHwgICAyICst
-CiBkcml2ZXJzL3dhdGNoZG9nL2Rlc2lnbndhcmVfd2R0LmMgICAgICAgICAgICAgfCAgNzMgLS0t
-LS0tLQogZHJpdmVycy93YXRjaGRvZy9kd193ZHQuYyAgICAgICAgICAgICAgICAgICAgIHwgMTg4
-ICsrKysrKysrKysrKysrKysrKwogaW5jbHVkZS9jb25maWdzL3JrMzM5OV9jb21tb24uaCAgICAg
-ICAgICAgICAgIHwgICA1ICstCiBpbmNsdWRlL2NvbmZpZ3Mvc29jZnBnYV9jb21tb24uaCAgICAg
-ICAgICAgICAgfCAgIDIgKy0KIGluY2x1ZGUvY29uZmlncy9zb2NmcGdhX3N0cmF0aXgxMF9zb2Nk
-ay5oICAgICB8ICAgMiArLQogaW5jbHVkZS93YXRjaGRvZy5oICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIHwgICA3ICstCiBzY3JpcHRzL2NvbmZpZ193aGl0ZWxpc3QudHh0ICAgICAgICAgICAg
-ICAgICAgfCAgIDEgLQogNDYgZmlsZXMgY2hhbmdlZCwgMzY0IGluc2VydGlvbnMoKyksIDEzNiBk
-ZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNo
-LXJvY2tjaGlwL2NydS5oCiBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vbWFjaC1yb2NrY2hp
-cC9jcHUtaW5mby5jCiBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy93YXRjaGRvZy9kZXNpZ253
-YXJlX3dkdC5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy93YXRjaGRvZy9kd193ZHQuYwoK
-LS0gCjIuMTguMC4zMjEuZ2ZmYzZmYTBlMwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5k
-ZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cg==
+Add cpu information for rockchip soc.
+
+This would help to print the SoC family number, with
+associated temparature, clock and reason for reset etc.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ arch/arm/mach-rockchip/Makefile   |  1 +
+ arch/arm/mach-rockchip/cpu-info.c | 16 ++++++++++++++++
+ 2 files changed, 17 insertions(+)
+ create mode 100644 arch/arm/mach-rockchip/cpu-info.c
+
+diff --git a/arch/arm/mach-rockchip/Makefile b/arch/arm/mach-rockchip/Makefile
+index 207f900011..76fc4942ee 100644
+--- a/arch/arm/mach-rockchip/Makefile
++++ b/arch/arm/mach-rockchip/Makefile
+@@ -20,6 +20,7 @@ ifeq ($(CONFIG_SPL_BUILD)$(CONFIG_TPL_BUILD),)
+ # we can have the preprocessor correctly recognise both 0x0 and 0
+ # meaning "turn it off".
+ obj-y += boot_mode.o
++obj-$(CONFIG_DISPLAY_CPUINFO) += cpu-info.o
+ obj-$(CONFIG_ROCKCHIP_COMMON_BOARD) += board.o
+ endif
+ 
+diff --git a/arch/arm/mach-rockchip/cpu-info.c b/arch/arm/mach-rockchip/cpu-info.c
+new file mode 100644
+index 0000000000..90ce65d9ff
+--- /dev/null
++++ b/arch/arm/mach-rockchip/cpu-info.c
+@@ -0,0 +1,16 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * (C) Copyright 2019 Amarula Solutions.
++ * Author: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
++
++#include <common.h>
++
++int print_cpuinfo(void)
++{
++	printf("SoC: Rockchip %s\n", CONFIG_SYS_SOC);
++
++	/* TODO print operating temparature and clock */
++
++	return 0;
++}
+-- 
+2.18.0.321.gffc6fa0e3
