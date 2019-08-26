@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 15/16] rockchip: rk3399: Add bootcount support
-Date: Mon, 26 Aug 2019 23:51:10 +0530
-Message-ID: <20190826182111.30999-16-jagan@amarulasolutions.com>
+Subject: [DO NOT MERGE] [PATCH v2 16/16] rk3399: rockpro64: Enable bootcount
+Date: Mon, 26 Aug 2019 23:51:11 +0530
+Message-ID: <20190826182111.30999-17-jagan@amarulasolutions.com>
 References: <20190826182111.30999-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,72 +21,22 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add bootcount support for Rockchip rk3399.
-
-The bootcount value is preserved in PMU_SYS_REG0 register,
-this would help to support redundent boot.
-
-Once the redundant boot triggers, the altboot command
-will look for extlinux-rollback.conf on particular
-bootable partition which supposed to be a recovery
-partition where redundant boot required.
+Enable bootcount support for Rockpro64 boards, this
+would help to use it for redundent boot.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- arch/arm/mach-rockchip/Kconfig        |  2 ++
- arch/arm/mach-rockchip/rk3399/Kconfig | 10 ++++++++++
- include/configs/rk3399_common.h       |  5 ++++-
- 3 files changed, 16 insertions(+), 1 deletion(-)
+ configs/rockpro64-rk3399_defconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
-index f5a80b4f0c..f3e4d72203 100644
---- a/arch/arm/mach-rockchip/Kconfig
-+++ b/arch/arm/mach-rockchip/Kconfig
-@@ -197,6 +197,8 @@ config ROCKCHIP_RK3399
- 	imply TPL_CLK
- 	imply TPL_TINY_MEMSET
- 	imply TPL_ROCKCHIP_COMMON_BOARD
-+	imply SYS_BOOTCOUNT_SINGLEWORD if BOOTCOUNT_LIMIT
-+	imply CMD_BOOTCOUNT if BOOTCOUNT_LIMIT
- 	help
- 	  The Rockchip RK3399 is a ARM-based SoC with a dual-core Cortex-A72
- 	  and quad-core Cortex-A53.
-diff --git a/arch/arm/mach-rockchip/rk3399/Kconfig b/arch/arm/mach-rockchip/rk3399/Kconfig
-index 6660d05349..68ac913bcb 100644
---- a/arch/arm/mach-rockchip/rk3399/Kconfig
-+++ b/arch/arm/mach-rockchip/rk3399/Kconfig
-@@ -91,6 +91,16 @@ config TPL_STACK
- config TPL_TEXT_BASE
-         default 0xff8c2000
- 
-+if BOOTCOUNT_LIMIT
-+
-+config BOOTCOUNT_BOOTLIMIT
-+	default 3
-+
-+config SYS_BOOTCOUNT_ADDR
-+	default 0xff3100f0	# PMU_SYS_REG0
-+
-+endif # BOOTCOUNT_LIMIT
-+
- source "board/rockchip/evb_rk3399/Kconfig"
- source "board/theobroma-systems/puma_rk3399/Kconfig"
- source "board/vamrs/rock960_rk3399/Kconfig"
-diff --git a/include/configs/rk3399_common.h b/include/configs/rk3399_common.h
-index a5e69b26ad..724ea4cbfc 100644
---- a/include/configs/rk3399_common.h
-+++ b/include/configs/rk3399_common.h
-@@ -64,7 +64,10 @@
- 	"fdtfile=" CONFIG_DEFAULT_FDT_FILE "\0" \
- 	"partitions=" PARTS_DEFAULT \
- 	ROCKCHIP_DEVICE_SETTINGS \
--	BOOTENV
-+	BOOTENV \
-+	"altbootcmd=" \
-+		"setenv boot_syslinux_conf extlinux/extlinux-rollback.conf;" \
-+		"run distro_bootcmd\0"
- 
- #endif
- 
+diff --git a/configs/rockpro64-rk3399_defconfig b/configs/rockpro64-rk3399_defconfig
+index 5ff38efa53..84d050d743 100644
+--- a/configs/rockpro64-rk3399_defconfig
++++ b/configs/rockpro64-rk3399_defconfig
+@@ -57,3 +57,4 @@ CONFIG_SPL_TINY_MEMSET=y
+ CONFIG_ERRNO_STR=y
+ CONFIG_WDT=y
+ CONFIG_SPL_WATCHDOG_SUPPORT=y
++CONFIG_BOOTCOUNT_LIMIT=y
 -- 
 2.18.0.321.gffc6fa0e3
