@@ -1,53 +1,63 @@
-From: Vicente Bergas <vicencb@gmail.com>
-Subject: Re: [PATCH] usb: dwc3: Add shutdown to
- =?iso-8859-1?Q?platform=5Fdriver?=
-Date: Tue, 27 Aug 2019 14:16:20 +0200
-Message-ID: <645526b8-bfed-4cc6-9500-1843c5fe0da9@gmail.com>
-References: <4d18d4f7-a00e-bd60-6361-51054eba3bca@arm.com>
- <20190817174140.6394-1-vicencb@gmail.com>
- <8d48017a-64c5-4b25-8d85-113ffcf502c9@gmail.com> <87v9uix1sv.fsf@gmail.com>
+From: Harry Wentland <hwentlan-5C7GfCeVMHo@public.gmane.org>
+Subject: Re: [PATCH RESEND 03/14] drm/amdgpu: Provide ddc symlink in dm
+ connector's sysfs directory
+Date: Tue, 27 Aug 2019 14:06:55 +0000
+Message-ID: <d7fa0b27-800b-9843-29cd-0e9095bfd75d@amd.com>
+References: <cover.1566845537.git.andrzej.p@collabora.com>
+ <40293fa4e619d1d1af213a076b1d03440e50c56c.1566845537.git.andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <87v9uix1sv.fsf@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Felipe Balbi <balbi@kernel.org>
-Cc: Matthias Brugger <mbrugger@suse.com>, Heiko Stuebner <heiko@sntech.de>, MarcZyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-usb@vger.kernel.org, Will Deacon <will.deacon@arm.com>, linux-rockchip@lists.infradead.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <40293fa4e619d1d1af213a076b1d03440e50c56c.1566845537.git.andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Language: en-US
+Content-ID: <B21E8E0F36C3F84EA1BD29A6779B155F-asWib9pRmPqcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, "dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+Cc: =?utf-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Ramalingam C <ramalingam.c-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Joonas Lahtinen <joonas.lahtinen-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Chris Wilson <chris-Y6uKTt2uX1cEflXRtASbqLVCufUGDwFn@public.gmane.org>, "Lakha,
+ Bhawanpreet" <Bhawanpreet.Lakha-5C7GfCeVMHo@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, "kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org" <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, "Koo,
+ Anthony" <Anthony.Koo-5C7GfCeVMHo@public.gmane.org>, =?utf-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, "Zhou,
+ David(ChunMing)" <David1.Zhou-5C7GfCeVMHo@public.gmane.org>, Mario Kleiner <mario.kleiner.de-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Tomi Valkeinen <tomi.valkeinen-l0cyMroinI0@public.gmane.org>, Franci
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlc2RheSwgQXVndXN0IDI3LCAyMDE5IDE6NTM6MDQgUE0gQ0VTVCwgRmVsaXBlIEJhbGJp
-IHdyb3RlOgo+IEhpLAo+Cj4gVmljZW50ZSBCZXJnYXMgPHZpY2VuY2JAZ21haWwuY29tPiB3cml0
-ZXM6Cj4+IE9uIFNhdHVyZGF5LCBBdWd1c3QgMTcsIDIwMTkgNzo0MTo0MCBQTSBDRVNULCBWaWNl
-bnRlIEJlcmdhcyB3cm90ZToKPj4+IE90aGVyd2lzZSB0aGUgZGV2aWNlIGtlZXBzIHdyaXRpbmcg
-dG8gbWVtb3J5IGFmdGVyIGtleGVjIGFuZCBkaXN0dXJicwo+Pj4gdGhlIG5leHQga2VybmVsLgou
-Li4KPgo+IHdoeSBkb24ndCB5b3UganVzdCBoYXZlIHNodXRkb3duIHVzZSB0aGUgc2FtZSBleGFj
-dCBmdW5jdGlvbiBhcyByZW1vdmU/Cj4gRnJhbmtseSwgdGhvdWdoLCBJIHN0aWxsIGRvbid0IGZ1
-bGx5IHVuZGVyc3RhbmQgd2hhdCdzIGdvaW5nIHdyb25nCj4gaGVyZS4gV2h5IGlzIHRoZSBkZXZp
-Y2Ugc3RpbGwgYWxpdmUgZHVyaW5nIGtleGVjPwo+Cj4gY2hlZXJzCgpIaSBGZWxpcGUsCnRoZSBy
-ZW1vdmUgYW5kIHNodXRkb3duIGZ1bmN0aW9ucyBoYXZlIGRpZmZlcmVudCBwcm90b3R5cGVzLCBz
-bwpzaHV0ZG93biBpcyB3cmFwcGluZyByZW1vdmUuCldvdWxkIGl0IGJlIHByZWZlcmFibGUgdG8g
-Y2FzdCByZW1vdmUgYXMgc2h1dGRvd24/CgpUaGUgaXNzdWUgd2l0aCBrZXhlYyBpcyB0aGF0IHRo
-ZSBkZXZpY2UgaXMgYmVpbmcgdXNlZCBkdXJpbmcgdGhlIGxpdmV0aW1lCm9mIHRoZSBmaXJzdCBr
-ZXJuZWwuIFdoZW4gdGhlIGZpcnN0IGtlcm5lbCBleGVjdXRlcyBrZXhlYyBpdCBjYWxscyB0aGUK
-c2h1dGRvd24gZnVuY3Rpb24gb2YgZHJpdmVycyAoaW5zdGVhZCBvZiByZW1vdmUpLiBCZWNhdXNl
-IG9mIHRoaXMgdGhlIGR3YzMKZGV2aWNlIGtlZXBzIGRvaW5nIHRoaW5ncyBsaWtlIERNQS4KV2hp
-bGUgdGhlIHNlY29uZCBrZXJuZWwgaXMgdGFraW5nIG92ZXIsIGl0IGdldHMgaXRzIG1lbW9yeSBj
-b3JydXB0ZWQgd2l0aApzdWNoIERNQSBhY2Nlc3NlcyBmcm9tIHRoZSBkZXZpY2UuIFdoZW4gdGhl
-IHNlY29uZCBrZXJuZWwgcmVhY2hlcyB0aGUgcG9pbnQKb2YgdGFraW5nIG92ZXIgdGhlIGR3YzMg
-ZGV2aWNlLCByZS1pbml0aWFsaXplcyBpdCwgYnV0IGl0IGlzIGFscmVhZHkgdG9vCmxhdGUuIFN0
-aWxsIHdvcnNlLCBpZiB0aGUgc2Vjb25kIGtlcm5lbCBkaWQgbm90IGhhdmUgdGhlIGR3YzMgZHJp
-dmVyLCBpdAp3b3VsZCBnZXQgZW5kbGVzcyBtZW1vcnkgY29ycnVwdGlvbnMuCkFsbCBpbiBhbGws
-IGRldmljZXMgdGhhdCBjYW4gZG8gRE1BIG5lZWQgdG8gc3RvcCBkb2luZyBpdCBvbiBzaHV0ZG93
-bi4KClJlZ2FyZHMsCiAgVmljZW7Dpy4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0t
-a2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
+On 2019-08-26 3:25 p.m., Andrzej Pietrasiewicz wrote:
+> Use the ddc pointer provided by the generic connector.
+> 
+> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+
+Reviewed-by: Harry Wentland <harry.wentland-5C7GfCeVMHo@public.gmane.org>
+
+Harry
+
+> ---
+>  drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+> index cb7cfa9b34f2..e872a415b409 100644
+> --- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+> +++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+> @@ -5144,11 +5144,12 @@ static int amdgpu_dm_connector_init(struct amdgpu_display_manager *dm,
+>  
+>  	connector_type = to_drm_connector_type(link->connector_signal);
+>  
+> -	res = drm_connector_init(
+> +	res = drm_connector_init_with_ddc(
+>  			dm->ddev,
+>  			&aconnector->base,
+>  			&amdgpu_dm_connector_funcs,
+> -			connector_type);
+> +			connector_type,
+> +			&i2c->base);
+>  
+>  	if (res) {
+>  		DRM_ERROR("connector_init failed\n");
+> 
