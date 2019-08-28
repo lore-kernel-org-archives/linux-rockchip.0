@@ -1,58 +1,84 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v1 1/1] ARM: dts: rockchip: set crypto default disabled on rk3288
-Date: Tue, 27 Aug 2019 16:28:21 +0200
-Message-ID: <4806912.UyKsYhR33o@phil>
-References: <20190827071439.14767-1-zhangzj@rock-chips.com>
+From: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH] PCI: rockchip: Properly handle optional regulators
+Date: Wed, 28 Aug 2019 17:07:37 +0200
+Message-ID: <20190828150737.30285-1-thierry.reding@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190827071439.14767-1-zhangzj@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Elon Zhang <zhangzj@rock-chips.com>
-Cc: mark.rutland@arm.com, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Vidya Sagar <vidyas-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andrew Murray <andrew.murray-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+From: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
 
-Am Dienstag, 27. August 2019, 09:14:39 CEST schrieb Elon Zhang:
-> Not every board needs to enable crypto node, so the node should
-> be set default disabled in rk3288.dtsi and enabled in specific
-> board dts file.
+regulator_get_optional() can fail for a number of reasons besides probe
+deferral. It can for example return -ENOMEM if it runs out of memory as
+it tries to allocate data structures. Propagating only -EPROBE_DEFER is
+problematic because it results in these legitimately fatal errors being
+treated as "regulator not specified in DT".
 
-Can you give a bit more rationale here? There would need to be a very
-specific reason because of the following:
+What we really want is to ignore the optional regulators only if they
+have not been specified in DT. regulator_get_optional() returns -ENODEV
+in this case, so that's the special case that we need to handle. So we
+propagate all errors, except -ENODEV, so that real failures will still
+cause the driver to fail probe.
 
-The crypto module is not wired to some board-specific components,
-so its usability does not depend on the specific board at all.
-Instead every board can just use it out of the box and the devicetree
-is supposed to describe the hardware and is _not_ meant as a space
-for user configuration.
+Signed-off-by: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+---
+ drivers/pci/controller/pcie-rockchip-host.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-So in fact the status property should probably go away completely from
-the crypto node, as it's usable out of the box in all cases.
-
-
-Heiko
-
-
-
-> Signed-off-by: Elon Zhang <zhangzj@rock-chips.com>
-> ---
->  arch/arm/boot/dts/rk3288.dtsi | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-> index cc893e154fe5..d509aa24177c 100644
-> --- a/arch/arm/boot/dts/rk3288.dtsi
-> +++ b/arch/arm/boot/dts/rk3288.dtsi
-> @@ -984,7 +984,7 @@
->  		clock-names = "aclk", "hclk", "sclk", "apb_pclk";
->  		resets = <&cru SRST_CRYPTO>;
->  		reset-names = "crypto-rst";
-> -		status = "okay";
-> +		status = "disabled";
->  	};
->  
->  	iep_mmu: iommu@ff900800 {
-> 
+diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
+index 8d20f1793a61..ef8e677ce9d1 100644
+--- a/drivers/pci/controller/pcie-rockchip-host.c
++++ b/drivers/pci/controller/pcie-rockchip-host.c
+@@ -608,29 +608,29 @@ static int rockchip_pcie_parse_host_dt(struct rockchip_pcie *rockchip)
+ 
+ 	rockchip->vpcie12v = devm_regulator_get_optional(dev, "vpcie12v");
+ 	if (IS_ERR(rockchip->vpcie12v)) {
+-		if (PTR_ERR(rockchip->vpcie12v) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
++		if (PTR_ERR(rockchip->vpcie12v) != -ENODEV)
++			return PTR_ERR(rockchip->vpcie12v);
+ 		dev_info(dev, "no vpcie12v regulator found\n");
+ 	}
+ 
+ 	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
+ 	if (IS_ERR(rockchip->vpcie3v3)) {
+-		if (PTR_ERR(rockchip->vpcie3v3) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
++		if (PTR_ERR(rockchip->vpcie3v3) != -ENODEV)
++			return PTR_ERR(rockchip->vpcie3v3);
+ 		dev_info(dev, "no vpcie3v3 regulator found\n");
+ 	}
+ 
+ 	rockchip->vpcie1v8 = devm_regulator_get_optional(dev, "vpcie1v8");
+ 	if (IS_ERR(rockchip->vpcie1v8)) {
+-		if (PTR_ERR(rockchip->vpcie1v8) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
++		if (PTR_ERR(rockchip->vpcie1v8) != -ENODEV)
++			return PTR_ERR(rockchip->vpcie1v8);
+ 		dev_info(dev, "no vpcie1v8 regulator found\n");
+ 	}
+ 
+ 	rockchip->vpcie0v9 = devm_regulator_get_optional(dev, "vpcie0v9");
+ 	if (IS_ERR(rockchip->vpcie0v9)) {
+-		if (PTR_ERR(rockchip->vpcie0v9) == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
++		if (PTR_ERR(rockchip->vpcie0v9) != -ENODEV)
++			return PTR_ERR(rockchip->vpcie0v9);
+ 		dev_info(dev, "no vpcie0v9 regulator found\n");
+ 	}
+ 
+-- 
+2.22.0
