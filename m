@@ -1,13 +1,15 @@
-From: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v2 1/6] PCI: rockchip: Propagate errors for optional regulators
-Date: Thu, 29 Aug 2019 12:53:14 +0200
-Message-ID: <20190829105319.14836-2-thierry.reding@gmail.com>
-References: <20190829105319.14836-1-thierry.reding@gmail.com>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: limit clock rate of eMMC for rk3328
+ boards
+Date: Thu, 29 Aug 2019 12:18:04 +0100
+Message-ID: <13f7aa42-068d-e849-1355-68ec566f9712@arm.com>
+References: <1567068062-174383-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190829105319.14836-1-thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <1567068062-174383-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Language: en-GB
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,77 +19,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andrew Murray <andrew.murray-5wv7dgnIgG8@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+On 29/08/2019 09:41, Shawn Lin wrote:
+> max-frequency is missing for rk3328-evb and rk3328-rock64, so the
+> eMMC will run into 200MHz bus clock in HS200 mode. The IO can only
+> support up to 150MHz for rk3228 Soc, so now rk3328 boards are not
+> always boot properly.
 
-regulator_get_optional() can fail for a number of reasons besides probe
-deferral. It can for example return -ENOMEM if it runs out of memory as
-it tries to allocate data structures. Propagating only -EPROBE_DEFER is
-problematic because it results in these legitimately fatal errors being
-treated as "regulator not specified in DT".
+Hmm, if 150MHz is a fundamental limitation of the SoC, maybe we should 
+just add it to the .dtsi? Board-level files could still override it with 
+a lower value if need be, but it would obviate the worry of missing it 
+when adding new boards.
 
-What we really want is to ignore the optional regulators only if they
-have not been specified in DT. regulator_get_optional() returns -ENODEV
-in this case, so that's the special case that we need to handle. So we
-propagate all errors, except -ENODEV, so that real failures will still
-cause the driver to fail probe.
+Robin.
 
-Cc: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Reviewed-by: Andrew Murray <andrew.murray-5wv7dgnIgG8@public.gmane.org>
-Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Acked-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
----
- drivers/pci/controller/pcie-rockchip-host.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index 8d20f1793a61..ef8e677ce9d1 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -608,29 +608,29 @@ static int rockchip_pcie_parse_host_dt(struct rockchip_pcie *rockchip)
- 
- 	rockchip->vpcie12v = devm_regulator_get_optional(dev, "vpcie12v");
- 	if (IS_ERR(rockchip->vpcie12v)) {
--		if (PTR_ERR(rockchip->vpcie12v) == -EPROBE_DEFER)
--			return -EPROBE_DEFER;
-+		if (PTR_ERR(rockchip->vpcie12v) != -ENODEV)
-+			return PTR_ERR(rockchip->vpcie12v);
- 		dev_info(dev, "no vpcie12v regulator found\n");
- 	}
- 
- 	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
- 	if (IS_ERR(rockchip->vpcie3v3)) {
--		if (PTR_ERR(rockchip->vpcie3v3) == -EPROBE_DEFER)
--			return -EPROBE_DEFER;
-+		if (PTR_ERR(rockchip->vpcie3v3) != -ENODEV)
-+			return PTR_ERR(rockchip->vpcie3v3);
- 		dev_info(dev, "no vpcie3v3 regulator found\n");
- 	}
- 
- 	rockchip->vpcie1v8 = devm_regulator_get_optional(dev, "vpcie1v8");
- 	if (IS_ERR(rockchip->vpcie1v8)) {
--		if (PTR_ERR(rockchip->vpcie1v8) == -EPROBE_DEFER)
--			return -EPROBE_DEFER;
-+		if (PTR_ERR(rockchip->vpcie1v8) != -ENODEV)
-+			return PTR_ERR(rockchip->vpcie1v8);
- 		dev_info(dev, "no vpcie1v8 regulator found\n");
- 	}
- 
- 	rockchip->vpcie0v9 = devm_regulator_get_optional(dev, "vpcie0v9");
- 	if (IS_ERR(rockchip->vpcie0v9)) {
--		if (PTR_ERR(rockchip->vpcie0v9) == -EPROBE_DEFER)
--			return -EPROBE_DEFER;
-+		if (PTR_ERR(rockchip->vpcie0v9) != -ENODEV)
-+			return PTR_ERR(rockchip->vpcie0v9);
- 		dev_info(dev, "no vpcie0v9 regulator found\n");
- 	}
- 
--- 
-2.22.0
+> Fixes: 955bebde057e ("arm64: dts: rockchip: add rk3328-rock64 board")
+> Fixes: 0c1f8546753f ("arm64: dts: rockchip: add RK3328 eavluation board devicetree")
+> Cc: Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> 
+>   arch/arm64/boot/dts/rockchip/rk3328-evb.dts    | 1 +
+>   arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 1 +
+>   2 files changed, 2 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
+> index 49c4b96..a5d8b0c 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
+> @@ -73,6 +73,7 @@
+>   &emmc {
+>   	bus-width = <8>;
+>   	cap-mmc-highspeed;
+> +	max-frequency = <150000000>;
+>   	non-removable;
+>   	pinctrl-names = "default";
+>   	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> index 62936b4..e99e22e 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+> @@ -132,6 +132,7 @@
+>   &emmc {
+>   	bus-width = <8>;
+>   	cap-mmc-highspeed;
+> +	max-frequency = <150000000>;
+>   	mmc-hs200-1_8v;
+>   	non-removable;
+>   	pinctrl-names = "default";
+> 
