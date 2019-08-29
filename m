@@ -1,83 +1,89 @@
-From: Elon Zhang <zhangzj@rock-chips.com>
-Subject: Re: [PATCH v1 1/1] ARM: dts: rockchip: set crypto default disabled on
- rk3288
-Date: Thu, 29 Aug 2019 19:31:00 +0800
-Message-ID: <3b9cbffa-291e-fc95-bce6-5b24f5fd860d@rock-chips.com>
-References: <20190827071439.14767-1-zhangzj@rock-chips.com>
- <4806912.UyKsYhR33o@phil>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] drm: dw-hdmi-i2s: enable audio clock in audio_startup
+Date: Thu, 29 Aug 2019 15:16:36 -0700
+Message-ID: <CAD=FV=Xb_SkUTkVRpOX7B+B0AdT3cOB+JamNyXzq_UQK3mvz1A@mail.gmail.com>
+References: <20190829042957.150929-1-cychiang@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4806912.UyKsYhR33o@phil>
-Content-Language: en-US
+In-Reply-To: <20190829042957.150929-1-cychiang@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: mark.rutland@arm.com, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Cheng-Yi Chiang <cychiang@chromium.org>
+Cc: LKML <linux-kernel@vger.kernel.org>, ALSA Development Mailing List <alsa-devel@alsa-project.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, kuninori.morimoto.gx@renesas.com, Sam Ravnborg <sam@ravnborg.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, =?UTF-8?B?6YOR5YW0?= <zhengxing@rock-chips.com>, =?UTF-8?B?6JSh6Im65Lyf?= <cain.cai@rock-chips.com>, Eddie Cai <eddie.cai@rock-chips.com>, =?UTF-8?B?6ZmI5riQ6aOe?= <jeffy.chen@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, dri-devel <dri-devel@lists.fre>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Hi,
 
-On 8/27/2019 22:28, Heiko Stuebner wrote:
-> Hi,
+On Wed, Aug 28, 2019 at 9:30 PM Cheng-Yi Chiang <cychiang@chromium.org> wrote:
 >
-> Am Dienstag, 27. August 2019, 09:14:39 CEST schrieb Elon Zhang:
->> Not every board needs to enable crypto node, so the node should
->> be set default disabled in rk3288.dtsi and enabled in specific
->> board dts file.
-> Can you give a bit more rationale here? There would need to be a very
-> specific reason because of the following:
+> In the designware databook, the sequence of enabling audio clock and
+> setting format is not clearly specified.
+> Currently, audio clock is enabled in the end of hw_param ops after
+> setting format.
 >
-> The crypto module is not wired to some board-specific components,
-> so its usability does not depend on the specific board at all.
-> Instead every board can just use it out of the box and the devicetree
-> is supposed to describe the hardware and is _not_ meant as a space
-> for user configuration.
+> On some monitors, there is a possibility that audio does not come out.
+> Fix this by enabling audio clock in audio_startup ops
+> before hw_param ops setting format.
+>
+> Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+> ---
+>  drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
+> index 5cbb71a866d5..08b4adbb1ddc 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
+> @@ -69,6 +69,14 @@ static int dw_hdmi_i2s_hw_params(struct device *dev, void *data,
+>         hdmi_write(audio, conf0, HDMI_AUD_CONF0);
+>         hdmi_write(audio, conf1, HDMI_AUD_CONF1);
+>
+> +       return 0;
+> +}
+> +
+> +static int dw_hdmi_i2s_audio_startup(struct device *dev, void *data)
+> +{
+> +       struct dw_hdmi_i2s_audio_data *audio = data;
+> +       struct dw_hdmi *hdmi = audio->hdmi;
+> +
+>         dw_hdmi_audio_enable(hdmi);
+>
+>         return 0;
+> @@ -105,6 +113,7 @@ static int dw_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
+>  }
+>
+>  static struct hdmi_codec_ops dw_hdmi_i2s_ops = {
+> +       .audio_startup = dw_hdmi_i2s_audio_startup,
+>         .hw_params      = dw_hdmi_i2s_hw_params,
+>         .audio_shutdown = dw_hdmi_i2s_audio_shutdown,
+>         .get_dai_id     = dw_hdmi_i2s_get_dai_id,
+> --
 
-Right for almost all normal hardware modules but the crypto module was 
-designed
+I am no expert on audio stuff, but this seems sane to me.  If you
+happened to spin it for another reason, it might seem slightly nicer
+to put the setting of ".audio_startup" adjacent to the setting of
+".audio_shutdown" in the struct.
 
-for secure world. As a result,  the crypto module will become 
-inaccessible for linux
+I have tested your patch on Chrome OS 4.19 and it definitely fixes the
+problems I saw.  Chrome OS 4.19 is a little different than upstream
+and I'm not setup to test HDMI audio directly on upstream, but I did
+at least confirm that my problem _wasn't_ magically fixed by any of
+these patches that I found upstream (I picked them into my tree and
+still saw the problem):
 
-kernel if secure world enable it.
+fc1ca6e01d0a drm/bridge: dw-hdmi-i2s: add .get_eld support
+43e88f670a5e drm/bridge: dw-hdmi-i2s: enable only the required i2s lanes
+46cecde310bb drm/bridge: dw-hdmi-i2s: reset audio fifo before applying
+new params
+0c6098859176 drm/bridge: dw-hdmi-i2s: set the channel allocation
+17a1e555b608 drm/bridge: dw-hdmi-i2s: enable lpcm multi channels
+da5f5bc92f49 drm/bridge: dw-hdmi: set channel count in the infoframes
+2a2a3d2ff799 drm/bridge: dw-hdmi: move audio channel setup out of ahb
+8067f62bccaf drm/bridge: dw-hdmi-i2s: support more i2s format
 
-We plan to enable the crypto module in secure world so we should set 
-crypto module
+Thus:
 
-default disabled in linux kernel.
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
+Tested-by: Douglas Anderson <dianders@chromium.org>
 
->
-> So in fact the status property should probably go away completely from
-> the crypto node, as it's usable out of the box in all cases.
->
->
-> Heiko
->
->
->
->> Signed-off-by: Elon Zhang <zhangzj@rock-chips.com>
->> ---
->>   arch/arm/boot/dts/rk3288.dtsi | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
->> index cc893e154fe5..d509aa24177c 100644
->> --- a/arch/arm/boot/dts/rk3288.dtsi
->> +++ b/arch/arm/boot/dts/rk3288.dtsi
->> @@ -984,7 +984,7 @@
->>   		clock-names = "aclk", "hclk", "sclk", "apb_pclk";
->>   		resets = <&cru SRST_CRYPTO>;
->>   		reset-names = "crypto-rst";
->> -		status = "okay";
->> +		status = "disabled";
->>   	};
->>   
->>   	iep_mmu: iommu@ff900800 {
->>
->
->
->
->
->
->
+-Doug
