@@ -1,89 +1,74 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] drm: dw-hdmi-i2s: enable audio clock in audio_startup
-Date: Thu, 29 Aug 2019 15:16:36 -0700
-Message-ID: <CAD=FV=Xb_SkUTkVRpOX7B+B0AdT3cOB+JamNyXzq_UQK3mvz1A@mail.gmail.com>
-References: <20190829042957.150929-1-cychiang@chromium.org>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2] arm64: dts: rockchip: limit clock rate of MMC controllers
+ for RK3328
+Date: Fri, 30 Aug 2019 08:26:47 +0800
+Message-ID: <1567124807-199633-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190829042957.150929-1-cychiang@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Cheng-Yi Chiang <cychiang@chromium.org>
-Cc: LKML <linux-kernel@vger.kernel.org>, ALSA Development Mailing List <alsa-devel@alsa-project.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, kuninori.morimoto.gx@renesas.com, Sam Ravnborg <sam@ravnborg.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, =?UTF-8?B?6YOR5YW0?= <zhengxing@rock-chips.com>, =?UTF-8?B?6JSh6Im65Lyf?= <cain.cai@rock-chips.com>, Eddie Cai <eddie.cai@rock-chips.com>, =?UTF-8?B?6ZmI5riQ6aOe?= <jeffy.chen@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, dri-devel <dri-devel@lists.fre>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+150MHz is a fundamental limitation of RK3288 Soc, w/o this limitation,
+eMMC, for instance, will run into 200MHz clock rate in HS200 mode, which
+makes the RK3328 boards not always boot properly. By adding it in
+rk3328.dtsi would also obviate the worry of missing it when adding new
+boards.
 
-On Wed, Aug 28, 2019 at 9:30 PM Cheng-Yi Chiang <cychiang@chromium.org> wrote:
->
-> In the designware databook, the sequence of enabling audio clock and
-> setting format is not clearly specified.
-> Currently, audio clock is enabled in the end of hw_param ops after
-> setting format.
->
-> On some monitors, there is a possibility that audio does not come out.
-> Fix this by enabling audio clock in audio_startup ops
-> before hw_param ops setting format.
->
-> Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
-> ---
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
->
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-> index 5cbb71a866d5..08b4adbb1ddc 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-> @@ -69,6 +69,14 @@ static int dw_hdmi_i2s_hw_params(struct device *dev, void *data,
->         hdmi_write(audio, conf0, HDMI_AUD_CONF0);
->         hdmi_write(audio, conf1, HDMI_AUD_CONF1);
->
-> +       return 0;
-> +}
-> +
-> +static int dw_hdmi_i2s_audio_startup(struct device *dev, void *data)
-> +{
-> +       struct dw_hdmi_i2s_audio_data *audio = data;
-> +       struct dw_hdmi *hdmi = audio->hdmi;
-> +
->         dw_hdmi_audio_enable(hdmi);
->
->         return 0;
-> @@ -105,6 +113,7 @@ static int dw_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
->  }
->
->  static struct hdmi_codec_ops dw_hdmi_i2s_ops = {
-> +       .audio_startup = dw_hdmi_i2s_audio_startup,
->         .hw_params      = dw_hdmi_i2s_hw_params,
->         .audio_shutdown = dw_hdmi_i2s_audio_shutdown,
->         .get_dai_id     = dw_hdmi_i2s_get_dai_id,
-> --
+Fixes: 52e02d377a72 ("arm64: dts: rockchip: add core dtsi file for RK3328 SoCs")
+Cc: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-I am no expert on audio stuff, but this seems sane to me.  If you
-happened to spin it for another reason, it might seem slightly nicer
-to put the setting of ".audio_startup" adjacent to the setting of
-".audio_shutdown" in the struct.
+---
 
-I have tested your patch on Chrome OS 4.19 and it definitely fixes the
-problems I saw.  Chrome OS 4.19 is a little different than upstream
-and I'm not setup to test HDMI audio directly on upstream, but I did
-at least confirm that my problem _wasn't_ magically fixed by any of
-these patches that I found upstream (I picked them into my tree and
-still saw the problem):
+Not a strickly fix patch but add fixes tag in hope for stable
+kernel maintainers would help backport it.
 
-fc1ca6e01d0a drm/bridge: dw-hdmi-i2s: add .get_eld support
-43e88f670a5e drm/bridge: dw-hdmi-i2s: enable only the required i2s lanes
-46cecde310bb drm/bridge: dw-hdmi-i2s: reset audio fifo before applying
-new params
-0c6098859176 drm/bridge: dw-hdmi-i2s: set the channel allocation
-17a1e555b608 drm/bridge: dw-hdmi-i2s: enable lpcm multi channels
-da5f5bc92f49 drm/bridge: dw-hdmi: set channel count in the infoframes
-2a2a3d2ff799 drm/bridge: dw-hdmi: move audio channel setup out of ahb
-8067f62bccaf drm/bridge: dw-hdmi-i2s: support more i2s format
+Changes in v2:
+- move the limitation in rk3288.dtsi
 
-Thus:
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
-Tested-by: Douglas Anderson <dianders@chromium.org>
-
--Doug
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 4a175ff..31cc154 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -813,6 +813,7 @@
+ 			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
+ 		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+ 		fifo-depth = <0x100>;
++		max-frequency = <150000000>;
+ 		status = "disabled";
+ 	};
+ 
+@@ -824,6 +825,7 @@
+ 			 <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
+ 		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+ 		fifo-depth = <0x100>;
++		max-frequency = <150000000>;
+ 		status = "disabled";
+ 	};
+ 
+@@ -835,6 +837,7 @@
+ 			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
+ 		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+ 		fifo-depth = <0x100>;
++		max-frequency = <150000000>;
+ 		status = "disabled";
+ 	};
+ 
+-- 
+1.9.1
