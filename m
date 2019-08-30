@@ -1,52 +1,58 @@
-From: Cheng-yi Chiang <cychiang@chromium.org>
-Subject: Re: [PATCH v5 0/5] Add HDMI jack support on RK3288
-Date: Fri, 30 Aug 2019 10:55:12 +0800
-Message-ID: <CAFv8NwLiY+ro0L4c5vjSOGN8jA-Qr4zm2OWvVHkiuoa7_4e2Fg@mail.gmail.com>
-References: <20190717083327.47646-1-cychiang@chromium.org> <CA+Px+wX4gbntkd6y8NN8xwXpZLD4MH9rTeHcW9+Ndtw=3_mWBw@mail.gmail.com>
+From: Jack Mitchell <ml-psbXN780rFT10XsdtD+oqA@public.gmane.org>
+Subject: Re: RK3288 dwc2 USB OTG + macOS
+Date: Fri, 30 Aug 2019 11:49:32 +0100
+Message-ID: <bcda1da2-fcdf-2c5b-d07b-5cf397571eb7@embed.me.uk>
+References: <e6321abc-1d3a-cfa1-638a-6051719462ad@embed.me.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CA+Px+wX4gbntkd6y8NN8xwXpZLD4MH9rTeHcW9+Ndtw=3_mWBw@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tzung-Bi Shih <tzungbi@google.com>
-Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, ALSA development <alsa-devel@alsa-project.org>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <e6321abc-1d3a-cfa1-638a-6051719462ad-psbXN780rFT10XsdtD+oqA@public.gmane.org>
+Content-Language: en-BW
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Cc: hminas-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Phillip Karls <prkarls-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jul 17, 2019 at 6:28 PM Tzung-Bi Shih <tzungbi@google.com> wrote:
->
-> On Wed, Jul 17, 2019 at 4:33 PM Cheng-Yi Chiang <cychiang@chromium.org> wrote:
-> >
-> > This patch series supports HDMI jack reporting on RK3288, which uses
-> > DRM dw-hdmi driver and hdmi-codec codec driver.
-> >
-> > The previous discussion about reporting jack status using hdmi-notifier
-> > and drm_audio_component is at
-> >
-> > https://lore.kernel.org/patchwork/patch/1083027/
-> >
-> > The new approach is to use a callback mechanism that is
-> > specific to hdmi-codec.
-> >
-> > Changes from v4 to v5:
-> > - synopsys/Kconfig: Remove the incorrect dependency change in v4.
-> > - rockchip/Kconfig: Add dependency of hdmi-codec when it is really need
-> >   for jack support.
-> >
-> > Cheng-Yi Chiang (5):
-> >   ASoC: hdmi-codec: Add an op to set callback function for plug event
-> >   drm: bridge: dw-hdmi: Report connector status using callback
-> >   drm: dw-hdmi-i2s: Use fixed id for codec device
-> >   ASoC: rockchip_max98090: Add dai_link for HDMI
-> >   ASoC: rockchip_max98090: Add HDMI jack support
-> >
-> LGTM.
->
-> Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+On 22/08/2019 17:06, Jack Mitchell wrote:
+> I'm having issues on a Firefly rk3288 board when trying to use USB
+> gadget ethernet on macOS. The dr_mode is set to "otg" and it works fine
+> with my Linux desktop.
+> 
+> If I set the dr_mode to "peripheral" macOS will work, but still takes
+> around 10 seconds to enumerate the device which makes me think it's only
+> just working. However, I need the port to be in "otg" mode as it will
+> switch between peripheral/host use cases.
+> 
+> I've attached a log from the dwc2 driver from mainline Linux 5.2 when
+> being plugged into the macOS device for 30 seconds, then removed. The
+> mac in this case is a 2013 macbook pro. Any pointers in the right
+> direction would be greatly appreciated.
+> 
+> Regards,
+> Jack.
+> 
 
-Hi Daniel,
-Do you have further concern on this patch series related to hdmi-codec
-and drm part ?
-We would like to merge this patch series if possible.
-They will be needed in many future chrome projects for HDMI audio jack
-detection.
-Thanks a lot!
+I've been poking about with this some more and I've managed to bisect
+the issue down to the following commit
+
+729cac693eecfebdb9e152eaddddd358ae2decb7 usb: dwc2: Change ISOC DDMA flow
+
+If I build before this commit everything works fine with a g_ether
+gadget device on mac. Unfortunately it's a rather large change which I
+can't just revert in master as it's got multiple dependant commits
+later. So, any advice on what could be causing this or how to help debug
+it would be much appreciated, as at the moment I've just forward ported
+the working 4.16 version of the driver over the 5.3-rc6 broken driver
+which isn't very sustainable in the long run.
+
+Regards,
+Jack.
