@@ -1,74 +1,52 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2] arm64: dts: rockchip: limit clock rate of MMC controllers
- for RK3328
-Date: Fri, 30 Aug 2019 08:26:47 +0800
-Message-ID: <1567124807-199633-1-git-send-email-shawn.lin@rock-chips.com>
+From: Cheng-yi Chiang <cychiang@chromium.org>
+Subject: Re: [PATCH v5 0/5] Add HDMI jack support on RK3288
+Date: Fri, 30 Aug 2019 10:55:12 +0800
+Message-ID: <CAFv8NwLiY+ro0L4c5vjSOGN8jA-Qr4zm2OWvVHkiuoa7_4e2Fg@mail.gmail.com>
+References: <20190717083327.47646-1-cychiang@chromium.org> <CA+Px+wX4gbntkd6y8NN8xwXpZLD4MH9rTeHcW9+Ndtw=3_mWBw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CA+Px+wX4gbntkd6y8NN8xwXpZLD4MH9rTeHcW9+Ndtw=3_mWBw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tzung-Bi Shih <tzungbi@google.com>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, ALSA development <alsa-devel@alsa-project.org>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-150MHz is a fundamental limitation of RK3288 Soc, w/o this limitation,
-eMMC, for instance, will run into 200MHz clock rate in HS200 mode, which
-makes the RK3328 boards not always boot properly. By adding it in
-rk3328.dtsi would also obviate the worry of missing it when adding new
-boards.
+On Wed, Jul 17, 2019 at 6:28 PM Tzung-Bi Shih <tzungbi@google.com> wrote:
+>
+> On Wed, Jul 17, 2019 at 4:33 PM Cheng-Yi Chiang <cychiang@chromium.org> wrote:
+> >
+> > This patch series supports HDMI jack reporting on RK3288, which uses
+> > DRM dw-hdmi driver and hdmi-codec codec driver.
+> >
+> > The previous discussion about reporting jack status using hdmi-notifier
+> > and drm_audio_component is at
+> >
+> > https://lore.kernel.org/patchwork/patch/1083027/
+> >
+> > The new approach is to use a callback mechanism that is
+> > specific to hdmi-codec.
+> >
+> > Changes from v4 to v5:
+> > - synopsys/Kconfig: Remove the incorrect dependency change in v4.
+> > - rockchip/Kconfig: Add dependency of hdmi-codec when it is really need
+> >   for jack support.
+> >
+> > Cheng-Yi Chiang (5):
+> >   ASoC: hdmi-codec: Add an op to set callback function for plug event
+> >   drm: bridge: dw-hdmi: Report connector status using callback
+> >   drm: dw-hdmi-i2s: Use fixed id for codec device
+> >   ASoC: rockchip_max98090: Add dai_link for HDMI
+> >   ASoC: rockchip_max98090: Add HDMI jack support
+> >
+> LGTM.
+>
+> Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
 
-Fixes: 52e02d377a72 ("arm64: dts: rockchip: add core dtsi file for RK3328 SoCs")
-Cc: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: Liang Chen <cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
----
-
-Not a strickly fix patch but add fixes tag in hope for stable
-kernel maintainers would help backport it.
-
-Changes in v2:
-- move the limitation in rk3288.dtsi
-
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 4a175ff..31cc154 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -813,6 +813,7 @@
- 			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
- 		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
- 		fifo-depth = <0x100>;
-+		max-frequency = <150000000>;
- 		status = "disabled";
- 	};
- 
-@@ -824,6 +825,7 @@
- 			 <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
- 		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
- 		fifo-depth = <0x100>;
-+		max-frequency = <150000000>;
- 		status = "disabled";
- 	};
- 
-@@ -835,6 +837,7 @@
- 			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
- 		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
- 		fifo-depth = <0x100>;
-+		max-frequency = <150000000>;
- 		status = "disabled";
- 	};
- 
--- 
-1.9.1
+Hi Daniel,
+Do you have further concern on this patch series related to hdmi-codec
+and drm part ?
+We would like to merge this patch series if possible.
+They will be needed in many future chrome projects for HDMI audio jack
+detection.
+Thanks a lot!
