@@ -1,74 +1,41 @@
-From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
-Subject: [RFC 07/12] media: uapi: h264: Add DPB entry field reference flags
-Date: Sun, 1 Sep 2019 12:45:46 +0000
-Message-ID: <HE1PR06MB4011559BF2447047C66285D2ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: [RFC 12/12] media: hantro: Enable H264 decoding on RK3328
+Date: Sun, 1 Sep 2019 12:45:49 +0000
+Message-ID: <HE1PR06MB401121228D13FA596BE8ADDFACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 References: <HE1PR06MB40117D0EE96E6FA638A04B78ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
  <20190901124531.23645-1-jonas@kwiboo.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190901124531.23645-1-jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190901124531.23645-1-jonas@kwiboo.se>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Boris Brezillon <boris.brezillon@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Jonas Karlman <jonas@kwiboo.se>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add DPB entry flags to help indicate when a reference frame is a field picture
-and how the DPB entry is referenced, top or bottom field or full frame.
+RK3328 SoC has the same decoder IP block as RK3399,
+lets enable H264 decoding on RK3328.
 
-Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- Documentation/media/uapi/v4l/ext-ctrls-codec.rst | 12 ++++++++++++
- include/media/h264-ctrls.h                       |  4 ++++
- 2 files changed, 16 insertions(+)
+ drivers/staging/media/hantro/rk3399_vpu_hw.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-index bc5dd8e76567..eb6c32668ad7 100644
---- a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-+++ b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-@@ -2022,6 +2022,18 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
-     * - ``V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM``
-       - 0x00000004
-       - The DPB entry is a long term reference frame
-+    * - ``V4L2_H264_DPB_ENTRY_FLAG_FIELD_PICTURE``
-+      - 0x00000008
-+      - The DPB entry is a field picture
-+    * - ``V4L2_H264_DPB_ENTRY_FLAG_REF_TOP``
-+      - 0x00000010
-+      - The DPB entry is a top field reference
-+    * - ``V4L2_H264_DPB_ENTRY_FLAG_REF_BOTTOM``
-+      - 0x00000020
-+      - The DPB entry is a bottom field reference
-+    * - ``V4L2_H264_DPB_ENTRY_FLAG_REF_FRAME``
-+      - 0x00000030
-+      - The DPB entry is a reference frame
- 
- ``V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE (enum)``
-     Specifies the decoding mode to use. Currently exposes slice-based and
-diff --git a/include/media/h264-ctrls.h b/include/media/h264-ctrls.h
-index e877bf1d537c..76020ebd1e6c 100644
---- a/include/media/h264-ctrls.h
-+++ b/include/media/h264-ctrls.h
-@@ -185,6 +185,10 @@ struct v4l2_ctrl_h264_slice_params {
- #define V4L2_H264_DPB_ENTRY_FLAG_VALID		0x01
- #define V4L2_H264_DPB_ENTRY_FLAG_ACTIVE		0x02
- #define V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM	0x04
-+#define V4L2_H264_DPB_ENTRY_FLAG_FIELD_PICTURE	0x08
-+#define V4L2_H264_DPB_ENTRY_FLAG_REF_TOP	0x10
-+#define V4L2_H264_DPB_ENTRY_FLAG_REF_BOTTOM	0x20
-+#define V4L2_H264_DPB_ENTRY_FLAG_REF_FRAME	0x30
- 
- struct v4l2_h264_dpb_entry {
- 	__u64 reference_ts;
+diff --git a/drivers/staging/media/hantro/rk3399_vpu_hw.c b/drivers/staging/media/hantro/rk3399_vpu_hw.c
+index 47ca51b75a0d..08b965129377 100644
+--- a/drivers/staging/media/hantro/rk3399_vpu_hw.c
++++ b/drivers/staging/media/hantro/rk3399_vpu_hw.c
+@@ -232,7 +232,8 @@ const struct hantro_variant rk3328_vpu_variant = {
+ 	.dec_offset = 0x400,
+ 	.dec_fmts = rk3399_vpu_dec_fmts,
+ 	.num_dec_fmts = ARRAY_SIZE(rk3399_vpu_dec_fmts),
+-	.codec = HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER,
++	.codec = HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER |
++		 HANTRO_H264_DECODER,
+ 	.codec_ops = rk3399_vpu_codec_ops,
+ 	.irqs = rk3328_irqs,
+ 	.num_irqs = ARRAY_SIZE(rk3328_irqs),
 -- 
 2.17.1
