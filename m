@@ -1,69 +1,86 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH] drm: dw-hdmi-i2s: enable audio clock in audio_startup
-Date: Sun, 1 Sep 2019 10:03:53 +0000
-Message-ID: <HE1PR06MB4011FA45247F186BB83DFF04ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
-References: <20190829042957.150929-1-cychiang@chromium.org>
+From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH RFC 00/12] media: hantro: H264 fixes and improvements
+Date: Sun, 1 Sep 2019 12:42:35 +0000
+Message-ID: <HE1PR06MB40117D0EE96E6FA638A04B78ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20190829042957.150929-1-cychiang@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Language: en-US
-Content-ID: <0218E2ADABBE9D4DBD0D6B875F7CFEE1@eurprd06.prod.outlook.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Cheng-Yi Chiang <cychiang@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Cc: Jernej Skrabec <jernej.skrabec@siol.net>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, "tzungbi@chromium.org" <tzungbi@chromium.org>, "zhengxing@rock-chips.com" <zhengxing@rock-chips.com>, "kuninori.morimoto.gx@renesas.com" <kuninori.morimoto.gx@renesas.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "airlied@linux.ie" <airlied@linux.ie>, "jeffy.chen@rock-chips.com" <jeffy.chen@rock-chips.com>, "dianders@chromium.org" <dianders@chromium.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "cain.cai@rock-chips.com" <cain.cai@rock-chips.com>, Neil Armstrong <narmstrong@baylibre.com>, "eddie.cai@rock-chips.com" <eddie.cai@rock-chips.com>, "Laurent.pinchart@ideasonboard.com" <Laurent.pinchart@ideasonboard.com>, "enric.balletbo@collabora.com" <enric.balletbo@collabora.com>, "dgreid@chromium.org" <dgreid@>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOS0wOC0yOSAwNjoyOSwgQ2hlbmctWWkgQ2hpYW5nIHdyb3RlOgo+IEluIHRoZSBkZXNp
-Z253YXJlIGRhdGFib29rLCB0aGUgc2VxdWVuY2Ugb2YgZW5hYmxpbmcgYXVkaW8gY2xvY2sgYW5k
-Cj4gc2V0dGluZyBmb3JtYXQgaXMgbm90IGNsZWFybHkgc3BlY2lmaWVkLgo+IEN1cnJlbnRseSwg
-YXVkaW8gY2xvY2sgaXMgZW5hYmxlZCBpbiB0aGUgZW5kIG9mIGh3X3BhcmFtIG9wcyBhZnRlcgo+
-IHNldHRpbmcgZm9ybWF0Lgo+Cj4gT24gc29tZSBtb25pdG9ycywgdGhlcmUgaXMgYSBwb3NzaWJp
-bGl0eSB0aGF0IGF1ZGlvIGRvZXMgbm90IGNvbWUgb3V0Lgo+IEZpeCB0aGlzIGJ5IGVuYWJsaW5n
-IGF1ZGlvIGNsb2NrIGluIGF1ZGlvX3N0YXJ0dXAgb3BzCj4gYmVmb3JlIGh3X3BhcmFtIG9wcyBz
-ZXR0aW5nIGZvcm1hdC4KPgo+IFNpZ25lZC1vZmYtYnk6IENoZW5nLVlpIENoaWFuZyA8Y3ljaGlh
-bmdAY2hyb21pdW0ub3JnPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lz
-L2R3LWhkbWktaTJzLWF1ZGlvLmMgfCA5ICsrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgOSBp
-bnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5v
-cHN5cy9kdy1oZG1pLWkycy1hdWRpby5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5
-cy9kdy1oZG1pLWkycy1hdWRpby5jCj4gaW5kZXggNWNiYjcxYTg2NmQ1Li4wOGI0YWRiYjFkZGMg
-MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLWky
-cy1hdWRpby5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1p
-LWkycy1hdWRpby5jCj4gQEAgLTY5LDYgKzY5LDE0IEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9pMnNf
-aHdfcGFyYW1zKHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSwKPiAgCWhkbWlfd3JpdGUo
-YXVkaW8sIGNvbmYwLCBIRE1JX0FVRF9DT05GMCk7Cj4gIAloZG1pX3dyaXRlKGF1ZGlvLCBjb25m
-MSwgSERNSV9BVURfQ09ORjEpOwo+ICAKPiArCXJldHVybiAwOwo+ICt9Cj4gKwo+ICtzdGF0aWMg
-aW50IGR3X2hkbWlfaTJzX2F1ZGlvX3N0YXJ0dXAoc3RydWN0IGRldmljZSAqZGV2LCB2b2lkICpk
-YXRhKQo+ICt7Cj4gKwlzdHJ1Y3QgZHdfaGRtaV9pMnNfYXVkaW9fZGF0YSAqYXVkaW8gPSBkYXRh
-Owo+ICsJc3RydWN0IGR3X2hkbWkgKmhkbWkgPSBhdWRpby0+aGRtaTsKPiArCj4gIAlkd19oZG1p
-X2F1ZGlvX2VuYWJsZShoZG1pKTsKPiAgCj4gIAlyZXR1cm4gMDsKPiBAQCAtMTA1LDYgKzExMyw3
-IEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9pMnNfZ2V0X2RhaV9pZChzdHJ1Y3Qgc25kX3NvY19jb21w
-b25lbnQgKmNvbXBvbmVudCwKPiAgfQo+ICAKPiAgc3RhdGljIHN0cnVjdCBoZG1pX2NvZGVjX29w
-cyBkd19oZG1pX2kyc19vcHMgPSB7Cj4gKwkuYXVkaW9fc3RhcnR1cCA9IGR3X2hkbWlfaTJzX2F1
-ZGlvX3N0YXJ0dXAsCgpBIHNtYWxsIHdoaXRlIHNwYWNlIG5pdCwgdGhlcmUgc2hvdWxkIGJlIGEg
-dGFiIGFuZCBub3Qgc3BhY2UgdG8gYWxpZ24gdGhlIGVxdWFsIHNpZ24gYWJvdmUuCkFsc28gdGhp
-cyBwYXRjaCBkbyBub3QgY2xlYW5seSBhcHBseSB0byBkcm0tbWlzYy1uZXh0IG9yIGxpbnV4LW5l
-eHQgYWZ0ZXIKZmMxY2E2ZTAxZDBhICJkcm0vYnJpZGdlOiBkdy1oZG1pLWkyczogYWRkIC5nZXRf
-ZWxkIHN1cHBvcnQiIHdhcyBtZXJnZWQuCgpUaGlzIHBhdGNoIGRvZXMgZml4IGFuIGlzc3VlIEkg
-aGF2ZSBvYnNlcnZlZCBvbiBteSBSb2NrY2hpcCBkZXZpY2VzIHdoZXJlIGF1ZGlvIHdvdWxkIG5v
-dCBhbHdheXMKY2FtZSBvdXQgYWZ0ZXIgc3dpdGNoaW5nIGJldHdlZW4gYXVkaW8gc3RyZWFtcyBo
-YXZpbmcgZGlmZmVyZW50IHJhdGUgYW5kIGNoYW5uZWxzIHBhcmFtZXRlcnMuCkkgdXNlZCB0byBj
-YXJyeSBbMV0gdG8gZml4IHRoYXQgaXNzdWUsIGJ1dCB0aGlzIHNlZW1zIGxpa2UgYSBtb3JlIHNh
-bmUgZml4LgoKWzFdIGh0dHBzOi8vZ2l0aHViLmNvbS9Ld2lib28vbGludXgtcm9ja2NoaXAvY29t
-bWl0LzQ4NjJlNDA0NDUzMmI4YjQ4MGZhM2EwZmFkZGMxOTc1ODY2MjM4MDgKCldpdGggYWJvdmUg
-Zml4ZWQsCgpSZXZpZXdlZC1ieTogSm9uYXMgS2FybG1hbiA8am9uYXNAa3dpYm9vLnNlPgoKUmVn
-YXJkcywKSm9uYXMKCj4gIAkuaHdfcGFyYW1zCT0gZHdfaGRtaV9pMnNfaHdfcGFyYW1zLAo+ICAJ
-LmF1ZGlvX3NodXRkb3duCT0gZHdfaGRtaV9pMnNfYXVkaW9fc2h1dGRvd24sCj4gIAkuZ2V0X2Rh
-aV9pZAk9IGR3X2hkbWlfaTJzX2dldF9kYWlfaWQsCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcmktZGV2ZWw=
+This series contains fixes and improvements for the hantro H264 decoder.
+
+Patch 1-6 fixes issues and limitations observed when preparing support
+for field encoded content.
+
+Patch 7 introduce new DPB entry flags that is used to signal how a reference
+frame is referenced. This information is needed to correctly build a
+reference list for field encoded content.
+
+Patch 8 adds bits to handle field encoded content, this is a rough patch
+and should be reworked with proper code style and formatting.
+Please get back with feedback on how to improve this.
+
+The following samples from [1] are now playable with patch 1-8
+- H264_1080i-25-interlace_Kaesescheibchen.mkv
+- H264_10_1080i_50_AC3-Astra19.2_ProSieben_HD.ts
+- big_buck_bunny_1080p_H264_AAC_25fps_7200K.mp4
+- h264_tivo_sample.ts
+
+The rest of the patches refactors G1 H264 code to more closely match
+the code generated by my rockchip-vpu-regtool at [2] and then adds
+support for H264 decoding on RK3399/RK3328 using the VPU2 block.
+This code is early work and needs proper code style and formatting,
+I just wanted to share the early work and get some initial feedback.
+
+This series has been tested using ffmpeg v4l2 request hwaccel at [3] [4]
+
+[1] http://kwiboo.libreelec.tv/test/samples/
+[2] https://github.com/Kwiboo/rockchip-vpu-regtool
+[3] https://github.com/Kwiboo/FFmpeg/commits/v4l2-request-hwaccel-4.0.4
+[4] https://github.com/Kwiboo/FFmpeg/compare/4.0.4-Leia-18.4...45df99d31062e068073cf899dce559e334c9127f
+
+Regards,
+Jonas
+
+Jonas Karlman (12):
+  media: hantro: Fix H264 max frmsize supported on RK3288
+  media: hantro: Do not reorder H264 scaling list
+  media: hantro: Fix H264 motion vector buffer offset
+  media: hantro: Reduce H264 extra space for motion vectors
+  media: hantro: Remove now unused H264 pic_size
+  media: hantro: Set H264 FIELDPIC_FLAG_E flag correctly
+  media: uapi: h264: Add DPB entry field reference flags
+  media: hantro: Fix H264 decoding of field encoded content
+  media: hantro: Refactor G1 H264 code
+  media: hantro: Add support for H264 decoding on RK3399
+  media: hantro: Enable H264 decoding on RK3399
+  media: hantro: Enable H264 decoding on RK3328
+
+ .../media/uapi/v4l/ext-ctrls-codec.rst        |  12 +
+ drivers/staging/media/hantro/Makefile         |   1 +
+ .../staging/media/hantro/hantro_g1_h264_dec.c | 685 +++++++++++-------
+ drivers/staging/media/hantro/hantro_h264.c    | 209 +++---
+ drivers/staging/media/hantro/hantro_hw.h      |  10 +-
+ drivers/staging/media/hantro/hantro_v4l2.c    |   6 +-
+ drivers/staging/media/hantro/rk3288_vpu_hw.c  |   4 +-
+ drivers/staging/media/hantro/rk3399_vpu_hw.c  |  24 +-
+ .../media/hantro/rk3399_vpu_hw_h264_dec.c     | 486 +++++++++++++
+ include/media/h264-ctrls.h                    |   4 +
+ 10 files changed, 1091 insertions(+), 350 deletions(-)
+ create mode 100644 drivers/staging/media/hantro/rk3399_vpu_hw_h264_dec.c
+
+-- 
+2.17.1
