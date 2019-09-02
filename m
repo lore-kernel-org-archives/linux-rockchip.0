@@ -1,65 +1,56 @@
-From: Cheng-Yi Chiang <cychiang@chromium.org>
-Subject: [PATCH v2] drm: dw-hdmi-i2s: enable audio clock in audio_startup
-Date: Mon,  2 Sep 2019 11:54:35 +0800
-Message-ID: <20190902035435.44463-1-cychiang@chromium.org>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v2 01/16] rockchip: Add cpu-info
+Date: Mon, 2 Sep 2019 16:33:56 +0800
+Message-ID: <f8a53239-d91c-5f19-817b-6ae325601b3f@rock-chips.com>
+References: <20190826182111.30999-1-jagan@amarulasolutions.com>
+ <20190826182111.30999-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, a.hajda@samsung.com, Laurent.pinchart@ideasonboard.com, airlied@linux.ie, daniel@ffwll.ch, kuninori.morimoto.gx@renesas.com, sam@ravnborg.org, cychiang@chromium.org, dianders@chromium.org, dgreid@chromium.org, tzungbi@chromium.org, zhengxing@rock-chips.com, cain.cai@rock-chips.com, eddie.cai@rock-chips.com, jeffy.chen@rock-chips.com, enric.balletbo@collabora.com, dri-devel@lists.freedesktop.org, Jonas Karlman <jonas@kwiboo.se>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20190826182111.30999-2-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, Akash Gajjar <akash@openedev.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In the designware databook, the sequence of enabling audio clock and
-setting format is not clearly specified.
-Currently, audio clock is enabled in the end of hw_param ops after
-setting format.
-
-On some monitors, there is a possibility that audio does not come out.
-Fix this by enabling audio clock in audio_startup ops
-before hw_param ops setting format.
-
-Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
-Reviewed-by: Jonas Karlman <jonas@kwiboo.se>
-Tested-by: Douglas Anderson <dianders@chromium.org>
----
- Changes from v1:
- 1. Move audio_startup to the front of audio_shutdown.
- 2. Fix the indentation of audio_startup equal sign using tab.
- 3. Rebase the patch on linux-next/master.
- 4. Add Reviewed-by and Tested-by fields from dianders@chromium.org.
- 5. Add Reviewed-by field from jonas@kwiboo.se.
-
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-index 1d15cf9b6821..34d8e837555f 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-@@ -109,6 +109,14 @@ static int dw_hdmi_i2s_hw_params(struct device *dev, void *data,
- 	hdmi_write(audio, conf0, HDMI_AUD_CONF0);
- 	hdmi_write(audio, conf1, HDMI_AUD_CONF1);
- 
-+	return 0;
-+}
-+
-+static int dw_hdmi_i2s_audio_startup(struct device *dev, void *data)
-+{
-+	struct dw_hdmi_i2s_audio_data *audio = data;
-+	struct dw_hdmi *hdmi = audio->hdmi;
-+
- 	dw_hdmi_audio_enable(hdmi);
- 
- 	return 0;
-@@ -153,6 +161,7 @@ static int dw_hdmi_i2s_get_dai_id(struct snd_soc_component *component,
- 
- static struct hdmi_codec_ops dw_hdmi_i2s_ops = {
- 	.hw_params	= dw_hdmi_i2s_hw_params,
-+	.audio_startup  = dw_hdmi_i2s_audio_startup,
- 	.audio_shutdown	= dw_hdmi_i2s_audio_shutdown,
- 	.get_eld	= dw_hdmi_i2s_get_eld,
- 	.get_dai_id	= dw_hdmi_i2s_get_dai_id,
--- 
-2.23.0.187.g17f5b7556c-goog
+Ck9uIDIwMTkvOC8yNyDkuIrljYgyOjIwLCBKYWdhbiBUZWtpIHdyb3RlOgo+IEFkZCBjcHUgaW5m
+b3JtYXRpb24gZm9yIHJvY2tjaGlwIHNvYy4KPgo+IFRoaXMgd291bGQgaGVscCB0byBwcmludCB0
+aGUgU29DIGZhbWlseSBudW1iZXIsIHdpdGgKPiBhc3NvY2lhdGVkIHRlbXBhcmF0dXJlLCBjbG9j
+ayBhbmQgcmVhc29uIGZvciByZXNldCBldGMuCj4KPiBTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtp
+IDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KClJldmlld2VkLWJ5OiBLZXZlciBZYW5nIDxr
+ZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgoKVGhhbmtzLAotIEtldmVyCj4gLS0tCj4gICBhcmNo
+L2FybS9tYWNoLXJvY2tjaGlwL01ha2VmaWxlICAgfCAgMSArCj4gICBhcmNoL2FybS9tYWNoLXJv
+Y2tjaGlwL2NwdS1pbmZvLmMgfCAxNiArKysrKysrKysrKysrKysrCj4gICAyIGZpbGVzIGNoYW5n
+ZWQsIDE3IGluc2VydGlvbnMoKykKPiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9tYWNo
+LXJvY2tjaGlwL2NwdS1pbmZvLmMKPgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9tYWNoLXJvY2tj
+aGlwL01ha2VmaWxlIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9NYWtlZmlsZQo+IGluZGV4IDIw
+N2Y5MDAwMTEuLjc2ZmM0OTQyZWUgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm0vbWFjaC1yb2NrY2hp
+cC9NYWtlZmlsZQo+ICsrKyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvTWFrZWZpbGUKPiBAQCAt
+MjAsNiArMjAsNyBAQCBpZmVxICgkKENPTkZJR19TUExfQlVJTEQpJChDT05GSUdfVFBMX0JVSUxE
+KSwpCj4gICAjIHdlIGNhbiBoYXZlIHRoZSBwcmVwcm9jZXNzb3IgY29ycmVjdGx5IHJlY29nbmlz
+ZSBib3RoIDB4MCBhbmQgMAo+ICAgIyBtZWFuaW5nICJ0dXJuIGl0IG9mZiIuCj4gICBvYmoteSAr
+PSBib290X21vZGUubwo+ICtvYmotJChDT05GSUdfRElTUExBWV9DUFVJTkZPKSArPSBjcHUtaW5m
+by5vCj4gICBvYmotJChDT05GSUdfUk9DS0NISVBfQ09NTU9OX0JPQVJEKSArPSBib2FyZC5vCj4g
+ICBlbmRpZgo+ICAgCj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvY3B1LWlu
+Zm8uYyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvY3B1LWluZm8uYwo+IG5ldyBmaWxlIG1vZGUg
+MTAwNjQ0Cj4gaW5kZXggMDAwMDAwMDAwMC4uOTBjZTY1ZDlmZgo+IC0tLSAvZGV2L251bGwKPiAr
+KysgYi9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL2NwdS1pbmZvLmMKPiBAQCAtMCwwICsxLDE2IEBA
+Cj4gKy8vIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiAoR1BMLTIuMCsgT1IgTUlUKQo+ICsvKgo+
+ICsgKiAoQykgQ29weXJpZ2h0IDIwMTkgQW1hcnVsYSBTb2x1dGlvbnMuCj4gKyAqIEF1dGhvcjog
+SmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gKyAqLwo+ICsKPiArI2lu
+Y2x1ZGUgPGNvbW1vbi5oPgo+ICsKPiAraW50IHByaW50X2NwdWluZm8odm9pZCkKPiArewo+ICsJ
+cHJpbnRmKCJTb0M6IFJvY2tjaGlwICVzXG4iLCBDT05GSUdfU1lTX1NPQyk7Cj4gKwo+ICsJLyog
+VE9ETyBwcmludCBvcGVyYXRpbmcgdGVtcGFyYXR1cmUgYW5kIGNsb2NrICovCj4gKwo+ICsJcmV0
+dXJuIDA7Cj4gK30KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlz
+dHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
