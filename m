@@ -1,51 +1,70 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH RFC 00/12] media: hantro: H264 fixes and improvements
-Date: Mon, 2 Sep 2019 16:28:57 +0000
-Message-ID: <HE1PR06MB40118B3C30939861DD91113CACBE0@HE1PR06MB4011.eurprd06.prod.outlook.com>
-References: <HE1PR06MB40117D0EE96E6FA638A04B78ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
- <f204a408f980f3ae0cfb859acdc765cdc1c0ff01.camel@collabora.com>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [PATCH v3 0/6] pwm: ensure pwm_apply_state() doesn't modify the
+ state argument
+Date: Mon, 2 Sep 2019 22:19:05 +0200
+Message-ID: <20190902201905.kyduxnehcjfzitrc@pengutronix.de>
+References: <20190824153707.13746-1-uwe@kleine-koenig.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f204a408f980f3ae0cfb859acdc765cdc1c0ff01.camel@collabora.com>
-Content-Language: en-US
-Content-ID: <DEA1D42DB45AA442864B3E4EAF3C896C@eurprd06.prod.outlook.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Boris Brezillon <boris.brezillon@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20190824153707.13746-1-uwe-rXY34ruvC2xidJT2blvkqNi2O/JbrIOy@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Patrick Havelange <patrick.havelange-buIOx9BAs4sybS5Ee8rs3A@public.gmane.org>
+Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOS0wOS0wMiAxNTowMiwgRXplcXVpZWwgR2FyY2lhIHdyb3RlOg0KPiBIaSBKb25hcywN
-Cj4NCj4gVGhhbmtzIGZvciB0aGUgc2VyaWVzLCBJJ2xsIGJlIHJldmlld2luZyB0aGlzIHNob3J0
-bHkuDQo+DQo+IE9uIFN1biwgMjAxOS0wOS0wMSBhdCAxMjo0MiArMDAwMCwgSm9uYXMgS2FybG1h
-biB3cm90ZToNCj4+IFRoaXMgc2VyaWVzIGNvbnRhaW5zIGZpeGVzIGFuZCBpbXByb3ZlbWVudHMg
-Zm9yIHRoZSBoYW50cm8gSDI2NCBkZWNvZGVyLg0KPj4NCj4+IFBhdGNoIDEtNiBmaXhlcyBpc3N1
-ZXMgYW5kIGxpbWl0YXRpb25zIG9ic2VydmVkIHdoZW4gcHJlcGFyaW5nIHN1cHBvcnQNCj4+IGZv
-ciBmaWVsZCBlbmNvZGVkIGNvbnRlbnQuDQo+Pg0KPj4gUGF0Y2ggNyBpbnRyb2R1Y2UgbmV3IERQ
-QiBlbnRyeSBmbGFncyB0aGF0IGlzIHVzZWQgdG8gc2lnbmFsIGhvdyBhIHJlZmVyZW5jZQ0KPj4g
-ZnJhbWUgaXMgcmVmZXJlbmNlZC4gVGhpcyBpbmZvcm1hdGlvbiBpcyBuZWVkZWQgdG8gY29ycmVj
-dGx5IGJ1aWxkIGENCj4+IHJlZmVyZW5jZSBsaXN0IGZvciBmaWVsZCBlbmNvZGVkIGNvbnRlbnQu
-DQo+Pg0KPj4gUGF0Y2ggOCBhZGRzIGJpdHMgdG8gaGFuZGxlIGZpZWxkIGVuY29kZWQgY29udGVu
-dCwgdGhpcyBpcyBhIHJvdWdoIHBhdGNoDQo+PiBhbmQgc2hvdWxkIGJlIHJld29ya2VkIHdpdGgg
-cHJvcGVyIGNvZGUgc3R5bGUgYW5kIGZvcm1hdHRpbmcuDQo+PiBQbGVhc2UgZ2V0IGJhY2sgd2l0
-aCBmZWVkYmFjayBvbiBob3cgdG8gaW1wcm92ZSB0aGlzLg0KPj4NCj4+IFRoZSBmb2xsb3dpbmcg
-c2FtcGxlcyBmcm9tIFsxXSBhcmUgbm93IHBsYXlhYmxlIHdpdGggcGF0Y2ggMS04DQo+PiAtIEgy
-NjRfMTA4MGktMjUtaW50ZXJsYWNlX0thZXNlc2NoZWliY2hlbi5ta3YNCj4+IC0gSDI2NF8xMF8x
-MDgwaV81MF9BQzMtQXN0cmExOS4yX1Byb1NpZWJlbl9IRC50cw0KPj4gLSBiaWdfYnVja19idW5u
-eV8xMDgwcF9IMjY0X0FBQ18yNWZwc183MjAwSy5tcDQNCj4+IC0gaDI2NF90aXZvX3NhbXBsZS50
-cw0KPj4NCj4+IFRoZSByZXN0IG9mIHRoZSBwYXRjaGVzIHJlZmFjdG9ycyBHMSBIMjY0IGNvZGUg
-dG8gbW9yZSBjbG9zZWx5IG1hdGNoDQo+PiB0aGUgY29kZSBnZW5lcmF0ZWQgYnkgbXkgcm9ja2No
-aXAtdnB1LXJlZ3Rvb2wgYXQgWzJdIGFuZCB0aGVuIGFkZHMNCj4+IHN1cHBvcnQgZm9yIEgyNjQg
-ZGVjb2Rpbmcgb24gUkszMzk5L1JLMzMyOCB1c2luZyB0aGUgVlBVMiBibG9jay4NCj4+IFRoaXMg
-Y29kZSBpcyBlYXJseSB3b3JrIGFuZCBuZWVkcyBwcm9wZXIgY29kZSBzdHlsZSBhbmQgZm9ybWF0
-dGluZywNCj4+IEkganVzdCB3YW50ZWQgdG8gc2hhcmUgdGhlIGVhcmx5IHdvcmsgYW5kIGdldCBz
-b21lIGluaXRpYWwgZmVlZGJhY2suDQo+Pg0KPj4gVGhpcyBzZXJpZXMgaGFzIGJlZW4gdGVzdGVk
-IHVzaW5nIGZmbXBlZyB2NGwyIHJlcXVlc3QgaHdhY2NlbCBhdCBbM10gWzRdDQo+Pg0KPiBXaGF0
-IGJvYXJkcyBoYXZlIHlvdSB0ZXN0ZWQgdGhpcyBvbj8NCg0KTWFpbiB0ZXN0aW5nIGhhcyBiZWVu
-IGRvbmUgb24gYSBUaW5rZXIgQm9hcmQgUyAoUkszMjg4KSBhbmQgYSBSb2NrNjQgKFJLMzMyOCkg
-ZGV2aWNlLg0KVmVyeSBsaW1pdGVkIHRlc3Rpbmcgb24gYSBSb2NrIFBpIDQgKFJLMzM5OSkgdXNp
-bmcgZWFybGllciB2ZXJzaW9uIG9mIHRoZSBwYXRjaHNldCwNCkkgd2lsbCByZWRvIHNvbWUgUksz
-Mzk5IHRlc3RpbmcgdG8gbWFrZSBzdXJlIGl0IGlzIG5vdCBvbmx5IFZQVTIgb24gUkszMzI4IHRo
-YXQgd29ya3MuDQoNClJlZ2FyZHMsDQpKb25hcw0KDQo+DQo+IFRoYW5rcywNCj4gRXplcXVpZWwN
-Cj4NCg0K
+On Sat, Aug 24, 2019 at 05:37:01PM +0200, Uwe Kleine-K=F6nig wrote:
+> Hello,
+> =
+
+> this series eventually changes the prototype of pwm_apply_state to take
+> a const struct pwm_state *, see the last patch for a rationale.
+> =
+
+> Changes since v2 apart from rebasing and so covering a few more drivers
+> is mainly addressing the concern that after state was rounded and
+> applied at least pwm_get_state should return the rounded values. See
+> patch 2.
+
+I thought a bit on this series and there is a question about it.
+Depending on what is considered the right answer for it, this series
+might have to change.
+
+The key question is:
+
+  - Is pwm_get_state() supposed to return
+    a) the last requested configuration; or
+    b) the last actually implemented configuration?
+
+(If the difference is unclear: consider a PWM that can only implement
+the following periods:
+
+	1 ms, 2 ms, 3 ms, 4 ms, 5 ms, 6 ms, ...
+
+and a consumer requested 4.2 ms. Should pwm_get_state() return .period =3D 4
+ms (assuming this was picked) or 4.2 ms?)
+
+As of v5.3-rc5 it depends on the backend driver. For most of them 4.2 ms
+is returned. My series tries to push it to return 4 ms instead. (But
+this only works for backends that implement the .get_state() callback.
+And it gets more complicated as the drivers are not free of surprises.)
+
+Maybe we need functions for both answers?
+
+Best regards
+Uwe
+
+-- =
+
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
