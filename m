@@ -1,52 +1,124 @@
-From: "Alex Dewar" <alex.dewar90-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: Broken suspend/resume on RK3399-based Chromebook
-Date: Tue, 03 Sep 2019 11:26:33 +0100
-Message-ID: <BWQAN40QNAV4.2CDUWRNCWYSUA@lenovo-laptop>
-References: <CAHNYxRwKScOowbO5QFGbA_SibyqTds+X7hZ1zP4A-FuTEeqP1A@mail.gmail.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH 03/12] media: hantro: Fix H264 motion vector buffer
+ offset
+Date: Tue, 03 Sep 2019 12:58:35 +0200
+Message-ID: <1567508315.5229.3.camel@pengutronix.de>
+References: <HE1PR06MB40117D0EE96E6FA638A04B78ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+         <20190901124531.23645-1-jonas@kwiboo.se>
+         <HE1PR06MB40115337CD86C429EF24430CACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAHNYxRwKScOowbO5QFGbA_SibyqTds+X7hZ1zP4A-FuTEeqP1A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <HE1PR06MB40115337CD86C429EF24430CACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jonas Karlman <jonas@kwiboo.se>, Ezequiel Garcia <ezequiel@collabora.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Alexandru,
+Hi Jonas,
 
-Thanks for your detailed response.
+On Sun, 2019-09-01 at 12:45 +0000, Jonas Karlman wrote:
+> A decoded 8-bit 4:2:0 frame need memory for up to 448 macroblocks
+> and is laid out in memory as follow:
 
-On Mon Aug 26, 2019 at 1:08 PM Alexandru M Stan wrote:
-> Hello Alex,
+Do you mean "A decoded 8-bit 4:2:0 frame needs up to 448 bytes per
+macroblock"?
+
+A 1280x720 frame already consists of 3600 macroblocks (each 16x16 Y +
+2x8x8 Cb,Cr).
+
+> +-------------------+
+> > Y-plane   256 MBs |
+
+So that looks like it should be 256 bytes * number of macroblocks
+instead, same for the following two.
+
+> +-------------------+
+> > UV-plane  128 MBs |
+> +-------------------+
+> > MV buffer  64 MBs |
+> 
+> +-------------------+
 >
-> On Sat, Aug 24, 2019 at 2:55 AM Alex Dewar <alex.dewar90-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> > I've got an Asus Chromebook Flip C101PA, which is based on the Rockchip RK3399
-> > SoC, and it seems like suspend and resume is broken (AFAIK it's never worked).
->
-> Sounds about right. I don't think it ever worked.
+> The motion vector buffer offset is currently correct for 4:2:0 because
+> the extra space for motion vectors is overallocated with an extra 64 MBs.
+> 
+> Wrong offset for both destination and motion vector buffer are used
+> for the bottom field of field encoded content, wrong offset is
+> also used for 4:0:0 (monochrome) content.
+> 
+> Fix this by always setting the motion vector address to the expected
+> 384 MBs offset for 4:2:0 and 256 MBs offset for 4:0:0 content.
 
-I should probably say that I've only tested on fairly recent kernels, so
-I guess it could have worked at some point.
+Expected by whom? For example, could these be placed in separate buffers
+instead of appended to the VB2 allocated buffers?
 
->
-> Another debugging tip:
-> You should get one of these: https://www.sparkfun.com/products/14746
-> It will let you get a serial console out of the rk3399, and you'll
-> also be able to see what the EC has to say about stuff.
-> How to use it: https://www.chromium.org/chromium-os/ccd
->
+> Also use correct destination and motion vector buffer offset
+> for the bottom field of field encoded content.
+> 
+> While at it also extend the check for 4:0:0 (monochrome) to include an
+> additional check for High Profile (100).
+> 
+> Fixes: dea0a82f3d22 ("media: hantro: Add support for H264 decoding on G1")
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> ---
+>  .../staging/media/hantro/hantro_g1_h264_dec.c | 33 +++++++++++--------
+>  1 file changed, 19 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/staging/media/hantro/hantro_g1_h264_dec.c b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+> index 7ab534936843..159bd67e0a36 100644
+> --- a/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+> +++ b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+> @@ -19,6 +19,9 @@
+>  #include "hantro_hw.h"
+>  #include "hantro_v4l2.h"
+>  
+> +#define MV_OFFSET_420	384
+> +#define MV_OFFSET_400	256
+> +
+>  static void set_params(struct hantro_ctx *ctx)
+>  {
+>  	const struct hantro_h264_dec_ctrls *ctrls = &ctx->h264_dec.ctrls;
+> @@ -49,8 +52,8 @@ static void set_params(struct hantro_ctx *ctx)
+>  	vdpu_write_relaxed(vpu, reg, G1_REG_DEC_CTRL0);
+>  
+>  	/* Decoder control register 1. */
+> -	reg = G1_REG_DEC_CTRL1_PIC_MB_WIDTH(sps->pic_width_in_mbs_minus1 + 1) |
+> -	      G1_REG_DEC_CTRL1_PIC_MB_HEIGHT_P(sps->pic_height_in_map_units_minus1 + 1) |
+> +	reg = G1_REG_DEC_CTRL1_PIC_MB_WIDTH(H264_MB_WIDTH(ctx->dst_fmt.width)) |
+> +	      G1_REG_DEC_CTRL1_PIC_MB_HEIGHT_P(H264_MB_HEIGHT(ctx->dst_fmt.height)) |
+>  	      G1_REG_DEC_CTRL1_REF_FRAMES(sps->max_num_ref_frames);
+>  	vdpu_write_relaxed(vpu, reg, G1_REG_DEC_CTRL1);
+>  
+> @@ -79,7 +82,7 @@ static void set_params(struct hantro_ctx *ctx)
+>  		reg |= G1_REG_DEC_CTRL4_CABAC_E;
+>  	if (sps->flags & V4L2_H264_SPS_FLAG_DIRECT_8X8_INFERENCE)
+>  		reg |= G1_REG_DEC_CTRL4_DIR_8X8_INFER_E;
+> -	if (sps->chroma_format_idc == 0)
+> +	if (sps->profile_idc >= 100 && sps->chroma_format_idc == 0)
+>  		reg |= G1_REG_DEC_CTRL4_BLACKWHITE_E;
+>  	if (pps->flags & V4L2_H264_PPS_FLAG_WEIGHTED_PRED)
+>  		reg |= G1_REG_DEC_CTRL4_WEIGHT_PRED_E;
+> @@ -233,6 +236,7 @@ static void set_buffers(struct hantro_ctx *ctx)
+>  	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+>  	struct hantro_dev *vpu = ctx->dev;
+>  	dma_addr_t src_dma, dst_dma;
+> +	unsigned int offset = MV_OFFSET_420;
+>  
+>  	src_buf = hantro_get_src_buf(ctx);
+>  	dst_buf = hantro_get_dst_buf(ctx);
+> @@ -243,19 +247,20 @@ static void set_buffers(struct hantro_ctx *ctx)
+>  
+>  	/* Destination (decoded frame) buffer. */
+>  	dst_dma = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
+> +	if (ctrls->slices[0].flags & V4L2_H264_SLICE_FLAG_BOTTOM_FIELD)
+> +		dst_dma += ALIGN(ctx->dst_fmt.width, H264_MB_DIM);
 
-I'll look into this; thanks. And thanks for all the work you guys have
-put into upstreaming the Chromebook code!
+How does this work? Does userspace decode two fields into the same
+capture buffer and the hardware writes each field with a stride of 2
+lines? I suppose this corresponds to V4L2_FIELD_INTERLACED. Could this
+also be made to support V4L2_FIELD_SEQ_TB output?
 
-> Please let us know if you find anything interesting,
-> Alexandru Stan (amstan)
+regards
+Philipp
