@@ -1,50 +1,52 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [RFC 08/12] media: hantro: Fix H264 decoding of field encoded
- content
-Date: Tue, 03 Sep 2019 17:01:56 +0200
-Message-ID: <1567522916.5229.11.camel@pengutronix.de>
-References: <HE1PR06MB40117D0EE96E6FA638A04B78ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
-         <20190901124531.23645-1-jonas@kwiboo.se>
-         <HE1PR06MB4011EA39133818A85768B91FACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
-         <1567516908.5229.7.camel@pengutronix.de>
-         <DB6PR06MB4007C0F89BAEC6F9F1F2AA18ACB90@DB6PR06MB4007.eurprd06.prod.outlook.com>
+From: Sasha Levin <sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 055/167] arm64: dts: rockchip: enable usb-host regulators at boot on rk3328-rock64
+Date: Tue,  3 Sep 2019 12:23:27 -0400
+Message-ID: <20190903162519.7136-55-sashal@kernel.org>
+References: <20190903162519.7136-1-sashal@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <DB6PR06MB4007C0F89BAEC6F9F1F2AA18ACB90@DB6PR06MB4007.eurprd06.prod.outlook.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jonas Karlman <jonas@kwiboo.se>, Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20190903162519.7136-1-sashal@kernel.org>
+Sender: stable-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Cc: Dmitry Voytik <voytikd@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sasha Levin <sashal@kernel.org>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 2019-09-03 at 14:02 +0000, Jonas Karlman wrote:
-> On 2019-09-03 15:21, Philipp Zabel wrote:
-> > On Sun, 2019-09-01 at 12:45 +0000, Jonas Karlman wrote:
-> > > This need code cleanup and formatting
-> > > 
-> > > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> > 
-> > The previous patches all work, but this patch breaks decoding of
-> > progressive content for me (i.MX8MQ with FFmpeg based on Ezequiel's
-> > branch).
-> 
-> Please try with ffmpeg based on my v4l2-request-hwaccel-4.0.4-hantro branch at [1],
-> up to and including the commit "HACK: add dpb flags for reference usage and field picture".
-> That commit adds code to set reference flags needed by the changes in this patch.
-> 
-> There is probably also some other minor difference between our two ffmpeg branches.
-> I have not observed any issues with progressive content with this patch and my ffmpeg branch (on a RK3288 device).
-> Some H264 reference samples do have visual issues after this patch, however all my real world samples does seem to work.
-> 
-> My branch use libudev to probe media/video devices and needs to be configured with:
-> --enable-v4l2-request --enable-libudev --enable-libdrm
-> 
-> [1] https://github.com/Kwiboo/FFmpeg/commits/v4l2-request-hwaccel-4.0.4-hantro
+From: Dmitry Voytik <voytikd@gmail.com>
 
-I hadn't realized that this is a backwards incompatible change. With
-your branch rebased onto n4.2, and this patch applied, decoding seems to
-work.
+[ Upstream commit 26e2d7b03ea7ff254bf78305aa44dda62e70b78e ]
 
-regards
-Philipp
+After commit ef05bcb60c1a, boot from USB drives is broken.
+Fix this problem by enabling usb-host regulators during boot time.
+
+Fixes: ef05bcb60c1a ("arm64: dts: rockchip: fix vcc_host1_5v pin assign on rk3328-rock64")
+Cc: stable@vger.kernel.org
+Signed-off-by: Dmitry Voytik <voytikd@gmail.com>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+index c142169a58fc5..e9147e35b7396 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+@@ -40,6 +40,7 @@
+ 		pinctrl-0 = <&usb30_host_drv>;
+ 		regulator-name = "vcc_host_5v";
+ 		regulator-always-on;
++		regulator-boot-on;
+ 		vin-supply = <&vcc_sys>;
+ 	};
+ 
+@@ -50,6 +51,7 @@
+ 		pinctrl-0 = <&usb20_host_drv>;
+ 		regulator-name = "vcc_host1_5v";
+ 		regulator-always-on;
++		regulator-boot-on;
+ 		vin-supply = <&vcc_sys>;
+ 	};
+ 
+-- 
+2.20.1
