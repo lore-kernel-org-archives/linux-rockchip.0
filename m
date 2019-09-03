@@ -1,158 +1,84 @@
-From: Neil Armstrong <narmstrong@baylibre.com>
-Subject: Re: [PATCH] drm: bridge/dw_hdmi: add audio sample channel status
- setting
-Date: Tue, 3 Sep 2019 11:53:33 +0200
-Message-ID: <e1c3483c-baa6-c726-e547-fadf40d259f4@baylibre.com>
-References: <20190903055103.134764-1-cychiang@chromium.org>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH 02/12] media: hantro: Do not reorder H264 scaling list
+Date: Tue, 03 Sep 2019 11:56:39 +0200
+Message-ID: <1567504599.5229.1.camel@pengutronix.de>
+References: <HE1PR06MB40117D0EE96E6FA638A04B78ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+         <20190901124531.23645-1-jonas@kwiboo.se>
+         <HE1PR06MB40116C92C3D52C5957EF48E9ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+         <1567432843.3666.6.camel@pengutronix.de>
+         <HE1PR06MB4011A8F99D58E5ACFAE3CECAACBE0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190903055103.134764-1-cychiang@chromium.org>
-Content-Language: en-US
+In-Reply-To: <HE1PR06MB4011A8F99D58E5ACFAE3CECAACBE0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Cheng-Yi Chiang <cychiang@chromium.org>, linux-kernel@vger.kernel.org
-Cc: alsa-devel@alsa-project.org, tzungbi@chromium.org, zhengxing@rock-chips.com, kuninori.morimoto.gx@renesas.com, a.hajda@samsung.com, airlied@linux.ie, kuankuan.y@gmail.com, jeffy.chen@rock-chips.com, dianders@chromium.org, dri-devel@lists.freedesktop.org, cain.cai@rock-chips.com, linux-rockchip@lists.infradead.org, eddie.cai@rock-chips.com, Laurent.pinchart@ideasonboard.com, daniel@ffwll.ch, Yakir Yang <ykk@rock-chips.com>, enric.balletbo@collabora.com, dgreid@chromium.org, sam@ravnborg.org, linux-arm-kernel@lists.infradead.org
+To: Jonas Karlman <jonas@kwiboo.se>, Ezequiel Garcia <ezequiel@collabora.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Mon, 2019-09-02 at 16:18 +0000, Jonas Karlman wrote:
+> On 2019-09-02 16:00, Philipp Zabel wrote:
+> > Hi Jonas,
+> > 
+> > On Sun, 2019-09-01 at 12:45 +0000, Jonas Karlman wrote:
+> > > Scaling list supplied from userspace using ffmpeg and libva-v4l2-request
+> > > is already in matrix order and can be used without applying the inverse
+> > > scanning process.
+> > 
+> > "in matrix order" is equivalent to "in raster scan order"?
+> 
+> The values supplied by ffmpeg and libva-v4l2-request is in the order after the
+> inverse scanning process has been applied (scaling list has been transformed
+> into a scaling matrix). Not sure what this is called, "matrix order" seemed
+> close enough.
 
-On 03/09/2019 07:51, Cheng-Yi Chiang wrote:
-> From: Yakir Yang <ykk@rock-chips.com>
-> 
-> When transmitting IEC60985 linear PCM audio, we configure the
-> Audio Sample Channel Status information of all the channel
-> status bits in the IEC60958 frame.
-> Refer to 60958-3 page 10 for frequency, original frequency, and
-> wordlength setting.
-> 
-> This fix the issue that audio does not come out on some monitors
-> (e.g. LG 22CV241)
-> 
-> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
-> Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
-> ---
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 59 +++++++++++++++++++++++
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi.h | 20 ++++++++
->  2 files changed, 79 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> index bd65d0479683..34d46e25d610 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> @@ -582,6 +582,63 @@ static unsigned int hdmi_compute_n(unsigned int freq, unsigned long pixel_clk)
->  	return n;
->  }
->  
-> +static void hdmi_set_schnl(struct dw_hdmi *hdmi)
-> +{
-> +	u8 aud_schnl_samplerate;
-> +	u8 aud_schnl_8;
-> +
-> +	/* These registers are on RK3288 using version 2.0a. */
-> +	if (hdmi->version != 0x200a)
-> +		return;
+Ok, after reading chapters
 
-Are these limited to the 2.0a version *in* RK3288, or 2.0a version on all
-SoCs ?
+8.5.6 Inverse scanning process for 4x4 transform coefficients and scaling lists
+8.5.7 Inverse scanning process for 8x8 transform coefficients and scaling lists
 
-> +
-> +	switch (hdmi->sample_rate) {
-> +	case 32000:
-> +		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_32K;
-> +		break;
-> +	case 44100:
-> +		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_44K1;
-> +		break;
-> +	case 48000:
-> +		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_48K;
-> +		break;
-> +	case 88200:
-> +		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_88K2;
-> +		break;
-> +	case 96000:
-> +		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_96K;
-> +		break;
-> +	case 176400:
-> +		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_176K4;
-> +		break;
-> +	case 192000:
-> +		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_192K;
-> +		break;
-> +	case 768000:
-> +		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_768K;
-> +		break;
-> +	default:
-> +		dev_warn(hdmi->dev, "Unsupported audio sample rate (%u)\n",
-> +			 hdmi->sample_rate);
-> +		return;
-> +	}
-> +
-> +	/* set channel status register */
-> +	hdmi_modb(hdmi, aud_schnl_samplerate, HDMI_FC_AUDSCHNLS7_SMPRATE_MASK,
-> +		  HDMI_FC_AUDSCHNLS7);
-> +
-> +	/*
-> +	 * Set original frequency to be the same as frequency.
-> +	 * Use one-complement value as stated in IEC60958-3 page 13.
-> +	 */
-> +	aud_schnl_8 = (~aud_schnl_samplerate) <<
-> +			HDMI_FC_AUDSCHNLS8_ORIGSAMPFREQ_OFFSET;
-> +
-> +	/* This means word length is 16 bit. Refer to IEC60958-3 page 12. */
-> +	aud_schnl_8 |= 2 << HDMI_FC_AUDSCHNLS8_WORDLEGNTH_OFFSET;
-> +
-> +	hdmi_writeb(hdmi, aud_schnl_8, HDMI_FC_AUDSCHNLS8);
-> +}
-> +
->  static void hdmi_set_clk_regenerator(struct dw_hdmi *hdmi,
->  	unsigned long pixel_clk, unsigned int sample_rate)
->  {
-> @@ -620,6 +677,8 @@ static void hdmi_set_clk_regenerator(struct dw_hdmi *hdmi,
->  	hdmi->audio_cts = cts;
->  	hdmi_set_cts_n(hdmi, cts, hdmi->audio_enable ? n : 0);
->  	spin_unlock_irq(&hdmi->audio_lock);
-> +
-> +	hdmi_set_schnl(hdmi);
->  }
->  
->  static void hdmi_init_clk_regenerator(struct dw_hdmi *hdmi)
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
-> index 6988f12d89d9..619ebc1c8354 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
-> @@ -158,6 +158,17 @@
->  #define HDMI_FC_SPDDEVICEINF                    0x1062
->  #define HDMI_FC_AUDSCONF                        0x1063
->  #define HDMI_FC_AUDSSTAT                        0x1064
-> +#define HDMI_FC_AUDSV                           0x1065
-> +#define HDMI_FC_AUDSU                           0x1066
-> +#define HDMI_FC_AUDSCHNLS0                      0x1067
-> +#define HDMI_FC_AUDSCHNLS1                      0x1068
-> +#define HDMI_FC_AUDSCHNLS2                      0x1069
-> +#define HDMI_FC_AUDSCHNLS3                      0x106a
-> +#define HDMI_FC_AUDSCHNLS4                      0x106b
-> +#define HDMI_FC_AUDSCHNLS5                      0x106c
-> +#define HDMI_FC_AUDSCHNLS6                      0x106d
-> +#define HDMI_FC_AUDSCHNLS7                      0x106e
-> +#define HDMI_FC_AUDSCHNLS8                      0x106f
->  #define HDMI_FC_DATACH0FILL                     0x1070
->  #define HDMI_FC_DATACH1FILL                     0x1071
->  #define HDMI_FC_DATACH2FILL                     0x1072
-> @@ -706,6 +717,15 @@ enum {
->  /* HDMI_FC_AUDSCHNLS7 field values */
->  	HDMI_FC_AUDSCHNLS7_ACCURACY_OFFSET = 4,
->  	HDMI_FC_AUDSCHNLS7_ACCURACY_MASK = 0x30,
-> +	HDMI_FC_AUDSCHNLS7_SMPRATE_MASK = 0x0f,
-> +	HDMI_FC_AUDSCHNLS7_SMPRATE_192K = 0xe,
-> +	HDMI_FC_AUDSCHNLS7_SMPRATE_176K4 = 0xc,
-> +	HDMI_FC_AUDSCHNLS7_SMPRATE_96K = 0xa,
-> +	HDMI_FC_AUDSCHNLS7_SMPRATE_768K = 0x9,
-> +	HDMI_FC_AUDSCHNLS7_SMPRATE_88K2 = 0x8,
-> +	HDMI_FC_AUDSCHNLS7_SMPRATE_32K = 0x3,
-> +	HDMI_FC_AUDSCHNLS7_SMPRATE_48K = 0x2,
-> +	HDMI_FC_AUDSCHNLS7_SMPRATE_44K1 = 0x0,
->  
->  /* HDMI_FC_AUDSCHNLS8 field values */
->  	HDMI_FC_AUDSCHNLS8_ORIGSAMPFREQ_MASK = 0xf0,
+of ITU-T Rec. H.264, this seems clear enough. I just asked to make sure,
+because libva documentation uses the term "raster scan" [1].
+
+[1] http://intel.github.io/libva/structVAIQMatrixBufferH264.html
+
+> Since there is two scan orders, zig-zag and field, and cedrus already expecting
+> the values in "matrix" order, it seems more logical to let userspace handle the
+> inverse scanning process.
+
+I agree.
+
+[...]
+> > This changes the size of struct hantro_h264_dec_priv_tbl. Did this
+> > describe the auxiliary buffer format incorrectly before?
 > 
+> Based on RKMPP and Hantro SDK the HW expects the 8x8 inter/intra list for
+> Y-component to be located at indices 0 and 1, lists for Cr/Cb is only used for
+> 4:4:4 and HW only supports 4:0:0/4:2:0 if I am not mistaken. So the unused
+> extra 4 lists at the end of the auxiliary buffer seemed like a waste,
+> also RKMPP and Hantro SDK only seemed to allocate space for 2 lists.
+
+Ok.
+
+> > After this change, the second 8x8 scaling list has moved to a different
+> > offset. Is this where the hardware has always been looking for it, or is
+> > there a change missing in another place?
+> 
+> As mentioned above HW only looks at indices 0 and 1, and ffmpeg will store the
+> inter/intra Y list at indices 0 and 3 as seen at [1], in similar way cedrus only
+> use indices 0 and 3 at [2].
+> FFmpeg memcpy entire scaling_matrix8 to scaling_list_8x8 for v4l2-request-api
+> and memcpy scaling_matrix8[0] and scaling_matrix8[3] for vaapi.
+> 
+> You can see the effect of this patch using the h264_tivo_sample.ts sample from
+> cover letter, patch 3-8 must be applied. With this patch applied the green
+> football field will stay green, without the patch the field will shift in colors.
+> 
+> [1] https://github.com/FFmpeg/FFmpeg/blob/master/libavcodec/h264_ps.c#L299-L308
+> [2] https://git.linuxtv.org/media_tree.git/tree/drivers/staging/media/sunxi/cedrus/cedrus_h264.c#n231
+
+Thank you, I'll try this.
+
+regards
+Philipp
