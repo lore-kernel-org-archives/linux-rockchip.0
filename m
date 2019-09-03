@@ -1,115 +1,134 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH 03/12] media: hantro: Fix H264 motion vector buffer offset
-Date: Tue, 3 Sep 2019 20:13:08 +0000
-Message-ID: <HE1PR06MB401167BD655F537D4136737AACB90@HE1PR06MB4011.eurprd06.prod.outlook.com>
-References: <HE1PR06MB40117D0EE96E6FA638A04B78ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
- <20190901124531.23645-1-jonas@kwiboo.se>
- <HE1PR06MB40115337CD86C429EF24430CACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
- <1567508315.5229.3.camel@pengutronix.de>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [PATCH v3 5/6] pwm: fsl-ftm: Don't update the state for the
+ caller of pwm_apply_state()
+Date: Tue, 3 Sep 2019 22:15:50 +0200
+Message-ID: <20190903201550.gxcyed5svtq33ev2@pengutronix.de>
+References: <20190824153707.13746-1-uwe@kleine-koenig.org>
+ <20190824153707.13746-6-uwe@kleine-koenig.org>
+ <CAD=FV=X8kVU_zr69aKe-+GkAQh-tDwVf8tFogKve3s5O5ndF-g@mail.gmail.com>
+ <20190902142709.wxrjsfzorozgeiuh@pengutronix.de>
+ <CAD=FV=XFTuixKL-VBv-QObiO=Jg43i6W0enprLgXQ0U8=9C49A@mail.gmail.com>
+ <20190903184800.2fmmvwyzbwbsaf6y@pengutronix.de>
+ <CAD=FV=XOyayzv6N9Ky8m2ffXe4UzUijzrL8JCMZC3K+MEzaRFw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1567508315.5229.3.camel@pengutronix.de>
-Content-Language: en-US
-Content-ID: <0AEA8BFA2FB26D429009542510288FBE@eurprd06.prod.outlook.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Philipp Zabel <p.zabel@pengutronix.de>, Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=XOyayzv6N9Ky8m2ffXe4UzUijzrL8JCMZC3K+MEzaRFw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Patrick Havelange <patrick.havelange-buIOx9BAs4sybS5Ee8rs3A@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOS0wOS0wMyAxMjo1OCwgUGhpbGlwcCBaYWJlbCB3cm90ZToNCj4gSGkgSm9uYXMsDQo+
-DQo+IE9uIFN1biwgMjAxOS0wOS0wMSBhdCAxMjo0NSArMDAwMCwgSm9uYXMgS2FybG1hbiB3cm90
-ZToNCj4+IEEgZGVjb2RlZCA4LWJpdCA0OjI6MCBmcmFtZSBuZWVkIG1lbW9yeSBmb3IgdXAgdG8g
-NDQ4IG1hY3JvYmxvY2tzDQo+PiBhbmQgaXMgbGFpZCBvdXQgaW4gbWVtb3J5IGFzIGZvbGxvdzoN
-Cj4gRG8geW91IG1lYW4gIkEgZGVjb2RlZCA4LWJpdCA0OjI6MCBmcmFtZSBuZWVkcyB1cCB0byA0
-NDggYnl0ZXMgcGVyDQo+IG1hY3JvYmxvY2siPw0KPg0KPiBBIDEyODB4NzIwIGZyYW1lIGFscmVh
-ZHkgY29uc2lzdHMgb2YgMzYwMCBtYWNyb2Jsb2NrcyAoZWFjaCAxNngxNiBZICsNCj4gMng4eDgg
-Q2IsQ3IpLg0KDQpZb3UgYXJlIGNvcnJlY3QsIHRoYW5rcyBmb3IgcG9pbnRpbmcgb3V0LCBJIHdp
-bGwgY2hhbmdlIGluIGEgdjIuDQoNCj4NCj4+ICstLS0tLS0tLS0tLS0tLS0tLS0tKw0KPj4+IFkt
-cGxhbmUgICAyNTYgTUJzIHwNCj4gU28gdGhhdCBsb29rcyBsaWtlIGl0IHNob3VsZCBiZSAyNTYg
-Ynl0ZXMgKiBudW1iZXIgb2YgbWFjcm9ibG9ja3MNCj4gaW5zdGVhZCwgc2FtZSBmb3IgdGhlIGZv
-bGxvd2luZyB0d28uDQoNCkFjay4NCg0KPg0KPj4gKy0tLS0tLS0tLS0tLS0tLS0tLS0rDQo+Pj4g
-VVYtcGxhbmUgIDEyOCBNQnMgfA0KPj4gKy0tLS0tLS0tLS0tLS0tLS0tLS0rDQo+Pj4gTVYgYnVm
-ZmVyICA2NCBNQnMgfA0KPj4gKy0tLS0tLS0tLS0tLS0tLS0tLS0rDQo+Pg0KPj4gVGhlIG1vdGlv
-biB2ZWN0b3IgYnVmZmVyIG9mZnNldCBpcyBjdXJyZW50bHkgY29ycmVjdCBmb3IgNDoyOjAgYmVj
-YXVzZQ0KPj4gdGhlIGV4dHJhIHNwYWNlIGZvciBtb3Rpb24gdmVjdG9ycyBpcyBvdmVyYWxsb2Nh
-dGVkIHdpdGggYW4gZXh0cmEgNjQgTUJzLg0KPj4NCj4+IFdyb25nIG9mZnNldCBmb3IgYm90aCBk
-ZXN0aW5hdGlvbiBhbmQgbW90aW9uIHZlY3RvciBidWZmZXIgYXJlIHVzZWQNCj4+IGZvciB0aGUg
-Ym90dG9tIGZpZWxkIG9mIGZpZWxkIGVuY29kZWQgY29udGVudCwgd3Jvbmcgb2Zmc2V0IGlzDQo+
-PiBhbHNvIHVzZWQgZm9yIDQ6MDowIChtb25vY2hyb21lKSBjb250ZW50Lg0KPj4NCj4+IEZpeCB0
-aGlzIGJ5IGFsd2F5cyBzZXR0aW5nIHRoZSBtb3Rpb24gdmVjdG9yIGFkZHJlc3MgdG8gdGhlIGV4
-cGVjdGVkDQo+PiAzODQgTUJzIG9mZnNldCBmb3IgNDoyOjAgYW5kIDI1NiBNQnMgb2Zmc2V0IGZv
-ciA0OjA6MCBjb250ZW50Lg0KPiBFeHBlY3RlZCBieSB3aG9tPyBGb3IgZXhhbXBsZSwgY291bGQg
-dGhlc2UgYmUgcGxhY2VkIGluIHNlcGFyYXRlIGJ1ZmZlcnMNCj4gaW5zdGVhZCBvZiBhcHBlbmRl
-ZCB0byB0aGUgVkIyIGFsbG9jYXRlZCBidWZmZXJzPw0KDQpGcm9tIHdoYXQgSSB1bmRlcnN0YW5k
-IG1haW4gYW5kIGhpZ2ggcHJvZmlsZSBkZWNvZGluZyBoYXZlIGh3IGNvbnN0cmFpbnRzIGluIHRo
-YXQNCnRoZSBkaXJlY3QgbW9kZSBtb3Rpb24gdmVjdG9ycyBidWZmZXIgbXVzdCBiZSBsb2NhdGVk
-IGNvbnRpbnVvdXNseSBhZnRlciB0aGUgWVVWIGJ1ZmZlci4NCg0KSSBhbHNvIG9ic2VydmVkIGlu
-c3RhbmNlcyB3aGVyZSB0aGUgY3VycmVudCByZXF1aXJlbWVudCBmb3IgcHJvZmlsZV9pZGMgPiA2
-NiBjYXVzZWQgaXNzdWVzDQpmb3Igc29tZSBzdHJlYW1zLCBlLmcuIGJpZ19idWNrX2J1bm55XzEw
-ODBwX0gyNjRfQUFDXzI1ZnBzXzcyMDBLLm1wNA0KDQpCZWNhdXNlIG9mIHRoaXMgaXQgd2FzIGp1
-c3QgZWFzaWVyIHRvIGFsd2F5cyBjb25maWd1cmUgdGhlIG1vdGlvbiB2ZWN0b3IgYnVmZmVyIGFk
-ZHJlc3MuDQoNCj4NCj4+IEFsc28gdXNlIGNvcnJlY3QgZGVzdGluYXRpb24gYW5kIG1vdGlvbiB2
-ZWN0b3IgYnVmZmVyIG9mZnNldA0KPj4gZm9yIHRoZSBib3R0b20gZmllbGQgb2YgZmllbGQgZW5j
-b2RlZCBjb250ZW50Lg0KPj4NCj4+IFdoaWxlIGF0IGl0IGFsc28gZXh0ZW5kIHRoZSBjaGVjayBm
-b3IgNDowOjAgKG1vbm9jaHJvbWUpIHRvIGluY2x1ZGUgYW4NCj4+IGFkZGl0aW9uYWwgY2hlY2sg
-Zm9yIEhpZ2ggUHJvZmlsZSAoMTAwKS4NCj4+DQo+PiBGaXhlczogZGVhMGE4MmYzZDIyICgibWVk
-aWE6IGhhbnRybzogQWRkIHN1cHBvcnQgZm9yIEgyNjQgZGVjb2Rpbmcgb24gRzEiKQ0KPj4gU2ln
-bmVkLW9mZi1ieTogSm9uYXMgS2FybG1hbiA8am9uYXNAa3dpYm9vLnNlPg0KPj4gLS0tDQo+PiAg
-Li4uL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMV9oMjY0X2RlYy5jIHwgMzMgKysrKysr
-KysrKystLS0tLS0tLQ0KPj4gIDEgZmlsZSBjaGFuZ2VkLCAxOSBpbnNlcnRpb25zKCspLCAxNCBk
-ZWxldGlvbnMoLSkNCj4+DQo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hh
-bnRyby9oYW50cm9fZzFfaDI2NF9kZWMuYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8v
-aGFudHJvX2cxX2gyNjRfZGVjLmMNCj4+IGluZGV4IDdhYjUzNDkzNjg0My4uMTU5YmQ2N2UwYTM2
-IDEwMDY0NA0KPj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzFf
-aDI2NF9kZWMuYw0KPj4gKysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9f
-ZzFfaDI2NF9kZWMuYw0KPj4gQEAgLTE5LDYgKzE5LDkgQEANCj4+ICAjaW5jbHVkZSAiaGFudHJv
-X2h3LmgiDQo+PiAgI2luY2x1ZGUgImhhbnRyb192NGwyLmgiDQo+PiAgDQo+PiArI2RlZmluZSBN
-Vl9PRkZTRVRfNDIwCTM4NA0KPj4gKyNkZWZpbmUgTVZfT0ZGU0VUXzQwMAkyNTYNCj4+ICsNCj4+
-ICBzdGF0aWMgdm9pZCBzZXRfcGFyYW1zKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgpDQo+PiAgew0K
-Pj4gIAljb25zdCBzdHJ1Y3QgaGFudHJvX2gyNjRfZGVjX2N0cmxzICpjdHJscyA9ICZjdHgtPmgy
-NjRfZGVjLmN0cmxzOw0KPj4gQEAgLTQ5LDggKzUyLDggQEAgc3RhdGljIHZvaWQgc2V0X3BhcmFt
-cyhzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQ0KPj4gIAl2ZHB1X3dyaXRlX3JlbGF4ZWQodnB1LCBy
-ZWcsIEcxX1JFR19ERUNfQ1RSTDApOw0KPj4gIA0KPj4gIAkvKiBEZWNvZGVyIGNvbnRyb2wgcmVn
-aXN0ZXIgMS4gKi8NCj4+IC0JcmVnID0gRzFfUkVHX0RFQ19DVFJMMV9QSUNfTUJfV0lEVEgoc3Bz
-LT5waWNfd2lkdGhfaW5fbWJzX21pbnVzMSArIDEpIHwNCj4+IC0JICAgICAgRzFfUkVHX0RFQ19D
-VFJMMV9QSUNfTUJfSEVJR0hUX1Aoc3BzLT5waWNfaGVpZ2h0X2luX21hcF91bml0c19taW51czEg
-KyAxKSB8DQo+PiArCXJlZyA9IEcxX1JFR19ERUNfQ1RSTDFfUElDX01CX1dJRFRIKEgyNjRfTUJf
-V0lEVEgoY3R4LT5kc3RfZm10LndpZHRoKSkgfA0KPj4gKwkgICAgICBHMV9SRUdfREVDX0NUUkwx
-X1BJQ19NQl9IRUlHSFRfUChIMjY0X01CX0hFSUdIVChjdHgtPmRzdF9mbXQuaGVpZ2h0KSkgfA0K
-Pj4gIAkgICAgICBHMV9SRUdfREVDX0NUUkwxX1JFRl9GUkFNRVMoc3BzLT5tYXhfbnVtX3JlZl9m
-cmFtZXMpOw0KPj4gIAl2ZHB1X3dyaXRlX3JlbGF4ZWQodnB1LCByZWcsIEcxX1JFR19ERUNfQ1RS
-TDEpOw0KPj4gIA0KPj4gQEAgLTc5LDcgKzgyLDcgQEAgc3RhdGljIHZvaWQgc2V0X3BhcmFtcyhz
-dHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQ0KPj4gIAkJcmVnIHw9IEcxX1JFR19ERUNfQ1RSTDRfQ0FC
-QUNfRTsNCj4+ICAJaWYgKHNwcy0+ZmxhZ3MgJiBWNEwyX0gyNjRfU1BTX0ZMQUdfRElSRUNUXzhY
-OF9JTkZFUkVOQ0UpDQo+PiAgCQlyZWcgfD0gRzFfUkVHX0RFQ19DVFJMNF9ESVJfOFg4X0lORkVS
-X0U7DQo+PiAtCWlmIChzcHMtPmNocm9tYV9mb3JtYXRfaWRjID09IDApDQo+PiArCWlmIChzcHMt
-PnByb2ZpbGVfaWRjID49IDEwMCAmJiBzcHMtPmNocm9tYV9mb3JtYXRfaWRjID09IDApDQo+PiAg
-CQlyZWcgfD0gRzFfUkVHX0RFQ19DVFJMNF9CTEFDS1dISVRFX0U7DQo+PiAgCWlmIChwcHMtPmZs
-YWdzICYgVjRMMl9IMjY0X1BQU19GTEFHX1dFSUdIVEVEX1BSRUQpDQo+PiAgCQlyZWcgfD0gRzFf
-UkVHX0RFQ19DVFJMNF9XRUlHSFRfUFJFRF9FOw0KPj4gQEAgLTIzMyw2ICsyMzYsNyBAQCBzdGF0
-aWMgdm9pZCBzZXRfYnVmZmVycyhzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQ0KPj4gIAlzdHJ1Y3Qg
-dmIyX3Y0bDJfYnVmZmVyICpzcmNfYnVmLCAqZHN0X2J1ZjsNCj4+ICAJc3RydWN0IGhhbnRyb19k
-ZXYgKnZwdSA9IGN0eC0+ZGV2Ow0KPj4gIAlkbWFfYWRkcl90IHNyY19kbWEsIGRzdF9kbWE7DQo+
-PiArCXVuc2lnbmVkIGludCBvZmZzZXQgPSBNVl9PRkZTRVRfNDIwOw0KPj4gIA0KPj4gIAlzcmNf
-YnVmID0gaGFudHJvX2dldF9zcmNfYnVmKGN0eCk7DQo+PiAgCWRzdF9idWYgPSBoYW50cm9fZ2V0
-X2RzdF9idWYoY3R4KTsNCj4+IEBAIC0yNDMsMTkgKzI0NywyMCBAQCBzdGF0aWMgdm9pZCBzZXRf
-YnVmZmVycyhzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQ0KPj4gIA0KPj4gIAkvKiBEZXN0aW5hdGlv
-biAoZGVjb2RlZCBmcmFtZSkgYnVmZmVyLiAqLw0KPj4gIAlkc3RfZG1hID0gdmIyX2RtYV9jb250
-aWdfcGxhbmVfZG1hX2FkZHIoJmRzdF9idWYtPnZiMl9idWYsIDApOw0KPj4gKwlpZiAoY3RybHMt
-PnNsaWNlc1swXS5mbGFncyAmIFY0TDJfSDI2NF9TTElDRV9GTEFHX0JPVFRPTV9GSUVMRCkNCj4+
-ICsJCWRzdF9kbWEgKz0gQUxJR04oY3R4LT5kc3RfZm10LndpZHRoLCBIMjY0X01CX0RJTSk7DQo+
-IEhvdyBkb2VzIHRoaXMgd29yaz8gRG9lcyB1c2Vyc3BhY2UgZGVjb2RlIHR3byBmaWVsZHMgaW50
-byB0aGUgc2FtZQ0KPiBjYXB0dXJlIGJ1ZmZlciBhbmQgdGhlIGhhcmR3YXJlIHdyaXRlcyBlYWNo
-IGZpZWxkIHdpdGggYSBzdHJpZGUgb2YgMg0KPiBsaW5lcz8gSSBzdXBwb3NlIHRoaXMgY29ycmVz
-cG9uZHMgdG8gVjRMMl9GSUVMRF9JTlRFUkxBQ0VELiBDb3VsZCB0aGlzDQo+IGFsc28gYmUgbWFk
-ZSB0byBzdXBwb3J0IFY0TDJfRklFTERfU0VRX1RCIG91dHB1dD8NCg0KWWVzLCBib3RoIGZpZWxk
-cyBhcmUgZGVjb2RlZCBpbnRvIHRoZSBzYW1lIGNhcHR1cmUgYnVmZmVyLCB0b3AgZmllbGQgdG8g
-b2RkIG51bWJlcmVkIGxpbmVzDQphbmQgYm90dG9tIGZpZWxkIHRvIGV2ZW4gbnVtYmVyZWQgbGlu
-ZXMsIHNvIEkgZ3Vlc3MgdGhpcyBjb3JyZXNwb25kcyB0byBWNEwyX0ZJRUxEX0lOVEVSTEFDRUQu
-DQpUaGlzIGlzIGFsc28gaG93IHRoZSBjZWRydXMgZHJpdmVyIGhhbmRsZXMgZmllbGQgZGVjb2Rp
-bmcgd2l0aCBKZXJuZWoncyBoMjY0IHBhdGNoZXMuDQoNCkkgZG8gbm90IGtub3cgaWYgaXQgaXMg
-cG9zc2libGUgdG8gY29uZmlndXJlIHRoZSBodyB0byBkZWNvZGUgaW50byBhIFY0TDJfRklFTERf
-U0VRX1RCIHR5cGUgb3V0cHV0Lg0KDQpSZWdhcmRzLA0KSm9uYXMNCg0KPg0KPiByZWdhcmRzDQo+
-IFBoaWxpcHANCg0K
+On Tue, Sep 03, 2019 at 12:35:25PM -0700, Doug Anderson wrote:
+> Hi,
+> =
+
+> On Tue, Sep 3, 2019 at 11:48 AM Uwe Kleine-K=F6nig
+> <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
+> >
+> > Hello,
+> >
+> > On Tue, Sep 03, 2019 at 09:54:37AM -0700, Doug Anderson wrote:
+> > > On Mon, Sep 2, 2019 at 7:27 AM Uwe Kleine-K=F6nig
+> > > <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
+> > > > On Fri, Aug 30, 2019 at 10:39:16AM -0700, Doug Anderson wrote:
+> > > > > On Sat, Aug 24, 2019 at 8:37 AM Uwe Kleine-K=F6nig <uwe@kleine-ko=
+enig.org> wrote:
+> > > > > >
+> > > > > > The pwm-fsl-ftm driver is one of only three PWM drivers which u=
+pdates
+> > > > > > the state for the caller of pwm_apply_state(). This might have
+> > > > > > surprising results if the caller reuses the values expecting th=
+em to
+> > > > > > still represent the same state.
+> > > > > >
+> > > > > > Signed-off-by: Uwe Kleine-K=F6nig <uwe-rXY34ruvC2xidJT2blvkqNi2O/JbrIOy@public.gmane.org>
+> > > > > > ---
+> > > > > >  drivers/pwm/pwm-fsl-ftm.c | 4 ----
+> > > > > >  1 file changed, 4 deletions(-)
+> > > > >
+> > > > > Presumably this patch could break something since the pwm-fsl-ftm
+> > > > > driver doesn't appear to implement the get_state() function.  ...=
+or
+> > > > > did I miss it?
+> > > >
+> > > > I don't expect breakage. We have more than 50 pwm drivers and only =
+three
+> > > > of them made use of adapting the passed state. So unless you do
+> > > > something special with the PWM (i.e. more than backlight, LED or fan
+> > > > control) I don't think a consumer might care. But it might well be =
+that
+> > > > I miss something so feel free to prove me wrong.
+> > >
+> > > I don't have this hardware so I can't prove you wrong.  ...but
+> > > presumably someone added the code to return the state on purpose?
+> > >
+> > > Maybe you could implement get_state() for this driver in your series?
+> >
+> > Sure, I could. But I don't have hardware either and so I'm not in a
+> > better position than anybody else on this list.
+> >
+> > I suggest to apply as is during the merge window, and let affected
+> > user report problems (or patches) if there really is an issue.
+> > Guessing what people might suffer from and trying to cure this with
+> > untested patches won't help I think.
+> =
+
+> I suppose it's not up to me, but I would rather have a patch that
+> attempts to keep things working like they did before rather than one
+> that is known to change behavior.  Even worse is that your patch
+> description doesn't mention this functionality change at all.
+
+I suggest to add
+
+	As the driver doesn't provide a .get_state() callback it is
+	expected that this changes behaviour slightly as pwm_get_state()
+	will yield the last set instead of the last implemented setting.
+
+to the commit log to fix this.
+
+> I will also note that not everyone does a deep test of all
+> functionality during every kernel merge window.  ...so your change in
+> functionality certain has a pretty high chance of remaining broken for
+> a while.
+
+I don't expect any real breakage. The changed behaviour only affects
+users of pwm_get_state() that is called after pwm_apply_state(). =
+
+
+> In addition if a PWM is used for something like a PWM
+> regulator then subtle changes can cause totally non-obvious breakages,
+> maybe adjusting regulators by a very small percentage.
+
+So for drivers/regulator/pwm-regulator.c this affects the .get_voltage()
+call only. Note that .set_voltage() does call pwm_get_state() but
+doesn't use the result. I don't see how my change would affect the
+configuration written to the PWM registers when the PWM regulator driver
+is its user. So if you want to convince me that the PWM regulator is one
+of the potentially affected consumers, you have to work a bit harder.
+:-)
+
+> If you implement the getter it seems (to me) more likely you'll either
+> get it right or it will totally break things.  That's actually a much
+> better failure mode...
+
+I don't see how it would totally break even if the untested .get_state()
+returns bogus values.
+
+Best regards
+Uwe
+
+-- =
+
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
