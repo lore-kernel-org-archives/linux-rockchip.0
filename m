@@ -1,132 +1,209 @@
-From: Neil Armstrong <narmstrong@baylibre.com>
-Subject: Re: [PATCH] drm: bridge/dw_hdmi: add audio sample channel status
- setting
-Date: Tue, 3 Sep 2019 20:00:33 +0200
-Message-ID: <d8a80ba5-dd2b-f84d-bbfc-9dd5ccbc26e9@baylibre.com>
-References: <20190903055103.134764-1-cychiang@chromium.org>
- <e1c3483c-baa6-c726-e547-fadf40d259f4@baylibre.com>
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
+Subject: Re: [PATCH] drm: bridge/dw_hdmi: add audio sample channel status setting
+Date: Tue, 03 Sep 2019 20:08:28 +0200
+Message-ID: <19353031.SdOy5F5fmg@jernej-laptop>
+References: <20190903055103.134764-1-cychiang@chromium.org> <e1c3483c-baa6-c726-e547-fadf40d259f4@baylibre.com> <d8a80ba5-dd2b-f84d-bbfc-9dd5ccbc26e9@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <e1c3483c-baa6-c726-e547-fadf40d259f4@baylibre.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Cheng-Yi Chiang <cychiang@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>
-Cc: alsa-devel@alsa-project.org, tzungbi@chromium.org, zhengxing@rock-chips.com, kuninori.morimoto.gx@renesas.com, linux-rockchip@lists.infradead.org, airlied@linux.ie, sam@ravnborg.org, jeffy.chen@rock-chips.com, dianders@chromium.org, cain.cai@rock-chips.com, eddie.cai@rock-chips.com, Laurent.pinchart@ideasonboard.com, Yakir Yang <ykk@rock-chips.com>, enric.balletbo@collabora.com, dgreid@chromium.org, kuankuan.y@gmail.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <d8a80ba5-dd2b-f84d-bbfc-9dd5ccbc26e9@baylibre.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Neil Armstrong <narmstrong@baylibre.com>
+Cc: Cheng-Yi Chiang <cychiang@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Jonas Karlman <jonas@kwiboo.se>, alsa-devel@alsa-project.org, tzungbi@chromium.org, zhengxing@rock-chips.com, kuninori.morimoto.gx@renesas.com, a.hajda@samsung.com, airlied@linux.ie, kuankuan.y@gmail.com, jeffy.chen@rock-chips.com, dianders@chromium.org, cain.cai@rock-chips.com, linux-rockchip@lists.infradead.org, eddie.cai@rock-chips.com, Laurent.pinchart@ideasonboard.com, daniel@ffwll.ch, Yakir Yang <ykk@rock-chips.com>, enric.balletbo@collabora.com, dgreid@chromium.org, sam@ravnborg.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpMZSAwMy8wOS8yMDE5IMOgIDExOjUzLCBOZWlsIEFybXN0cm9uZyBhIMOpY3JpdCA6Cj4g
-SGksCj4gCj4gT24gMDMvMDkvMjAxOSAwNzo1MSwgQ2hlbmctWWkgQ2hpYW5nIHdyb3RlOgo+PiBG
-cm9tOiBZYWtpciBZYW5nIDx5a2tAcm9jay1jaGlwcy5jb20+Cj4+Cj4+IFdoZW4gdHJhbnNtaXR0
-aW5nIElFQzYwOTg1IGxpbmVhciBQQ00gYXVkaW8sIHdlIGNvbmZpZ3VyZSB0aGUKPj4gQXVkaW8g
-U2FtcGxlIENoYW5uZWwgU3RhdHVzIGluZm9ybWF0aW9uIG9mIGFsbCB0aGUgY2hhbm5lbAo+PiBz
-dGF0dXMgYml0cyBpbiB0aGUgSUVDNjA5NTggZnJhbWUuCj4+IFJlZmVyIHRvIDYwOTU4LTMgcGFn
-ZSAxMCBmb3IgZnJlcXVlbmN5LCBvcmlnaW5hbCBmcmVxdWVuY3ksIGFuZAo+PiB3b3JkbGVuZ3Ro
-IHNldHRpbmcuCj4+Cj4+IFRoaXMgZml4IHRoZSBpc3N1ZSB0aGF0IGF1ZGlvIGRvZXMgbm90IGNv
-bWUgb3V0IG9uIHNvbWUgbW9uaXRvcnMKPj4gKGUuZy4gTEcgMjJDVjI0MSkKPj4KPj4gU2lnbmVk
-LW9mZi1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgo+PiBTaWduZWQtb2ZmLWJ5
-OiBDaGVuZy1ZaSBDaGlhbmcgPGN5Y2hpYW5nQGNocm9taXVtLm9yZz4KPj4gLS0tCj4+ICBkcml2
-ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyB8IDU5ICsrKysrKysrKysrKysr
-KysrKysrKysrCj4+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuaCB8
-IDIwICsrKysrKysrCj4+ICAyIGZpbGVzIGNoYW5nZWQsIDc5IGluc2VydGlvbnMoKykKPj4KPj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jIGIv
-ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPj4gaW5kZXggYmQ2NWQw
-NDc5NjgzLi4zNGQ0NmUyNWQ2MTAgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlk
-Z2Uvc3lub3BzeXMvZHctaGRtaS5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lu
-b3BzeXMvZHctaGRtaS5jCj4+IEBAIC01ODIsNiArNTgyLDYzIEBAIHN0YXRpYyB1bnNpZ25lZCBp
-bnQgaGRtaV9jb21wdXRlX24odW5zaWduZWQgaW50IGZyZXEsIHVuc2lnbmVkIGxvbmcgcGl4ZWxf
-Y2xrKQo+PiAgCXJldHVybiBuOwo+PiAgfQo+PiAgCj4+ICtzdGF0aWMgdm9pZCBoZG1pX3NldF9z
-Y2hubChzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPj4gK3sKPj4gKwl1OCBhdWRfc2Nobmxfc2FtcGxl
-cmF0ZTsKPj4gKwl1OCBhdWRfc2NobmxfODsKPj4gKwo+PiArCS8qIFRoZXNlIHJlZ2lzdGVycyBh
-cmUgb24gUkszMjg4IHVzaW5nIHZlcnNpb24gMi4wYS4gKi8KPj4gKwlpZiAoaGRtaS0+dmVyc2lv
-biAhPSAweDIwMGEpCj4+ICsJCXJldHVybjsKPiAKPiBBcmUgdGhlc2UgbGltaXRlZCB0byB0aGUg
-Mi4wYSB2ZXJzaW9uICppbiogUkszMjg4LCBvciAyLjBhIHZlcnNpb24gb24gYWxsCj4gU29DcyA/
-CgpBZnRlciBpbnZlc3RpZ2F0aW9ucywgQW1sb2dpYyBzZXRzIHRoZXNlIHJlZ2lzdGVycyBvbiB0
-aGVpciAyLjBhIHZlcnNpb24KYXN3ZWxsLCBhbmQgSmVybmVqIChhZGRlZCBpbiBDYykgcmVwb3J0
-ZWQgbWUgQWxsd2lubmVyIHNldHMgdGhlbSBvbiB0aGVpcgo8IDIuMGEgYW5kID4gMi4wYSBJUHMg
-dmVyc2lvbnMuCgpDYW4geW91IGNoZWNrIG9uIHRoZSBSb2NrY2hpcCBJUCB2ZXJzaW9ucyBpbiBS
-SzMzOTkgPwoKRm9yIHJlZmVyZW5jZSwgdGhlIEhETUkgMS40YSBJUCB2ZXJzaW9uIGFsbHdpbm5l
-ciBzZXR1cHMgaXM6Cmh0dHBzOi8vZ2l0aHViLmNvbS9BbGx3aW5uZXItSG9tbGV0L0gzLUJTUDQu
-NC1saW51eC9ibG9iL21hc3Rlci9kcml2ZXJzL3ZpZGVvL2ZiZGV2L3N1bnhpL2Rpc3AyL2hkbWkv
-aGRtaV9ic3Bfc3VuOGl3Ny5jI0w1MzEtTDUzOQoocmVnaXN0ZXJzIGEgInNjcmFtYmxlZCIgYnV0
-IGEgY3VzdG9tIGJpdCBjYW4gcmVzZXQgdG8gdGhlIG9yaWdpbmFsIG1hcHBpbmcsCjB4MTA2NiAu
-Li4gMHgxMDZmKQoKTmVpbAoKPiAKPj4gKwo+PiArCXN3aXRjaCAoaGRtaS0+c2FtcGxlX3JhdGUp
-IHsKPj4gKwljYXNlIDMyMDAwOgo+PiArCQlhdWRfc2Nobmxfc2FtcGxlcmF0ZSA9IEhETUlfRkNf
-QVVEU0NITkxTN19TTVBSQVRFXzMySzsKPj4gKwkJYnJlYWs7Cj4+ICsJY2FzZSA0NDEwMDoKPj4g
-KwkJYXVkX3NjaG5sX3NhbXBsZXJhdGUgPSBIRE1JX0ZDX0FVRFNDSE5MUzdfU01QUkFURV80NEsx
-Owo+PiArCQlicmVhazsKPj4gKwljYXNlIDQ4MDAwOgo+PiArCQlhdWRfc2Nobmxfc2FtcGxlcmF0
-ZSA9IEhETUlfRkNfQVVEU0NITkxTN19TTVBSQVRFXzQ4SzsKPj4gKwkJYnJlYWs7Cj4+ICsJY2Fz
-ZSA4ODIwMDoKPj4gKwkJYXVkX3NjaG5sX3NhbXBsZXJhdGUgPSBIRE1JX0ZDX0FVRFNDSE5MUzdf
-U01QUkFURV84OEsyOwo+PiArCQlicmVhazsKPj4gKwljYXNlIDk2MDAwOgo+PiArCQlhdWRfc2No
-bmxfc2FtcGxlcmF0ZSA9IEhETUlfRkNfQVVEU0NITkxTN19TTVBSQVRFXzk2SzsKPj4gKwkJYnJl
-YWs7Cj4+ICsJY2FzZSAxNzY0MDA6Cj4+ICsJCWF1ZF9zY2hubF9zYW1wbGVyYXRlID0gSERNSV9G
-Q19BVURTQ0hOTFM3X1NNUFJBVEVfMTc2SzQ7Cj4+ICsJCWJyZWFrOwo+PiArCWNhc2UgMTkyMDAw
-Ogo+PiArCQlhdWRfc2Nobmxfc2FtcGxlcmF0ZSA9IEhETUlfRkNfQVVEU0NITkxTN19TTVBSQVRF
-XzE5Mks7Cj4+ICsJCWJyZWFrOwo+PiArCWNhc2UgNzY4MDAwOgo+PiArCQlhdWRfc2Nobmxfc2Ft
-cGxlcmF0ZSA9IEhETUlfRkNfQVVEU0NITkxTN19TTVBSQVRFXzc2OEs7Cj4+ICsJCWJyZWFrOwo+
-PiArCWRlZmF1bHQ6Cj4+ICsJCWRldl93YXJuKGhkbWktPmRldiwgIlVuc3VwcG9ydGVkIGF1ZGlv
-IHNhbXBsZSByYXRlICgldSlcbiIsCj4+ICsJCQkgaGRtaS0+c2FtcGxlX3JhdGUpOwo+PiArCQly
-ZXR1cm47Cj4+ICsJfQo+PiArCj4+ICsJLyogc2V0IGNoYW5uZWwgc3RhdHVzIHJlZ2lzdGVyICov
-Cj4+ICsJaGRtaV9tb2RiKGhkbWksIGF1ZF9zY2hubF9zYW1wbGVyYXRlLCBIRE1JX0ZDX0FVRFND
-SE5MUzdfU01QUkFURV9NQVNLLAo+PiArCQkgIEhETUlfRkNfQVVEU0NITkxTNyk7Cj4+ICsKPj4g
-KwkvKgo+PiArCSAqIFNldCBvcmlnaW5hbCBmcmVxdWVuY3kgdG8gYmUgdGhlIHNhbWUgYXMgZnJl
-cXVlbmN5Lgo+PiArCSAqIFVzZSBvbmUtY29tcGxlbWVudCB2YWx1ZSBhcyBzdGF0ZWQgaW4gSUVD
-NjA5NTgtMyBwYWdlIDEzLgo+PiArCSAqLwo+PiArCWF1ZF9zY2hubF84ID0gKH5hdWRfc2Nobmxf
-c2FtcGxlcmF0ZSkgPDwKPj4gKwkJCUhETUlfRkNfQVVEU0NITkxTOF9PUklHU0FNUEZSRVFfT0ZG
-U0VUOwo+PiArCj4+ICsJLyogVGhpcyBtZWFucyB3b3JkIGxlbmd0aCBpcyAxNiBiaXQuIFJlZmVy
-IHRvIElFQzYwOTU4LTMgcGFnZSAxMi4gKi8KPj4gKwlhdWRfc2NobmxfOCB8PSAyIDw8IEhETUlf
-RkNfQVVEU0NITkxTOF9XT1JETEVHTlRIX09GRlNFVDsKPj4gKwo+PiArCWhkbWlfd3JpdGViKGhk
-bWksIGF1ZF9zY2hubF84LCBIRE1JX0ZDX0FVRFNDSE5MUzgpOwo+PiArfQo+PiArCj4+ICBzdGF0
-aWMgdm9pZCBoZG1pX3NldF9jbGtfcmVnZW5lcmF0b3Ioc3RydWN0IGR3X2hkbWkgKmhkbWksCj4+
-ICAJdW5zaWduZWQgbG9uZyBwaXhlbF9jbGssIHVuc2lnbmVkIGludCBzYW1wbGVfcmF0ZSkKPj4g
-IHsKPj4gQEAgLTYyMCw2ICs2NzcsOCBAQCBzdGF0aWMgdm9pZCBoZG1pX3NldF9jbGtfcmVnZW5l
-cmF0b3Ioc3RydWN0IGR3X2hkbWkgKmhkbWksCj4+ICAJaGRtaS0+YXVkaW9fY3RzID0gY3RzOwo+
-PiAgCWhkbWlfc2V0X2N0c19uKGhkbWksIGN0cywgaGRtaS0+YXVkaW9fZW5hYmxlID8gbiA6IDAp
-Owo+PiAgCXNwaW5fdW5sb2NrX2lycSgmaGRtaS0+YXVkaW9fbG9jayk7Cj4+ICsKPj4gKwloZG1p
-X3NldF9zY2hubChoZG1pKTsKPj4gIH0KPj4gIAo+PiAgc3RhdGljIHZvaWQgaGRtaV9pbml0X2Ns
-a19yZWdlbmVyYXRvcihzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPj4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5oIGIvZHJpdmVycy9ncHUvZHJtL2Jy
-aWRnZS9zeW5vcHN5cy9kdy1oZG1pLmgKPj4gaW5kZXggNjk4OGYxMmQ4OWQ5Li42MTllYmMxYzgz
-NTQgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRt
-aS5oCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5oCj4+
-IEBAIC0xNTgsNiArMTU4LDE3IEBACj4+ICAjZGVmaW5lIEhETUlfRkNfU1BEREVWSUNFSU5GICAg
-ICAgICAgICAgICAgICAgICAweDEwNjIKPj4gICNkZWZpbmUgSERNSV9GQ19BVURTQ09ORiAgICAg
-ICAgICAgICAgICAgICAgICAgIDB4MTA2Mwo+PiAgI2RlZmluZSBIRE1JX0ZDX0FVRFNTVEFUICAg
-ICAgICAgICAgICAgICAgICAgICAgMHgxMDY0Cj4+ICsjZGVmaW5lIEhETUlfRkNfQVVEU1YgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAweDEwNjUKPj4gKyNkZWZpbmUgSERNSV9GQ19BVURTVSAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIDB4MTA2Ngo+PiArI2RlZmluZSBIRE1JX0ZDX0FVRFND
-SE5MUzAgICAgICAgICAgICAgICAgICAgICAgMHgxMDY3Cj4+ICsjZGVmaW5lIEhETUlfRkNfQVVE
-U0NITkxTMSAgICAgICAgICAgICAgICAgICAgICAweDEwNjgKPj4gKyNkZWZpbmUgSERNSV9GQ19B
-VURTQ0hOTFMyICAgICAgICAgICAgICAgICAgICAgIDB4MTA2OQo+PiArI2RlZmluZSBIRE1JX0ZD
-X0FVRFNDSE5MUzMgICAgICAgICAgICAgICAgICAgICAgMHgxMDZhCj4+ICsjZGVmaW5lIEhETUlf
-RkNfQVVEU0NITkxTNCAgICAgICAgICAgICAgICAgICAgICAweDEwNmIKPj4gKyNkZWZpbmUgSERN
-SV9GQ19BVURTQ0hOTFM1ICAgICAgICAgICAgICAgICAgICAgIDB4MTA2Ywo+PiArI2RlZmluZSBI
-RE1JX0ZDX0FVRFNDSE5MUzYgICAgICAgICAgICAgICAgICAgICAgMHgxMDZkCj4+ICsjZGVmaW5l
-IEhETUlfRkNfQVVEU0NITkxTNyAgICAgICAgICAgICAgICAgICAgICAweDEwNmUKPj4gKyNkZWZp
-bmUgSERNSV9GQ19BVURTQ0hOTFM4ICAgICAgICAgICAgICAgICAgICAgIDB4MTA2Zgo+PiAgI2Rl
-ZmluZSBIRE1JX0ZDX0RBVEFDSDBGSUxMICAgICAgICAgICAgICAgICAgICAgMHgxMDcwCj4+ICAj
-ZGVmaW5lIEhETUlfRkNfREFUQUNIMUZJTEwgICAgICAgICAgICAgICAgICAgICAweDEwNzEKPj4g
-ICNkZWZpbmUgSERNSV9GQ19EQVRBQ0gyRklMTCAgICAgICAgICAgICAgICAgICAgIDB4MTA3Mgo+
-PiBAQCAtNzA2LDYgKzcxNywxNSBAQCBlbnVtIHsKPj4gIC8qIEhETUlfRkNfQVVEU0NITkxTNyBm
-aWVsZCB2YWx1ZXMgKi8KPj4gIAlIRE1JX0ZDX0FVRFNDSE5MUzdfQUNDVVJBQ1lfT0ZGU0VUID0g
-NCwKPj4gIAlIRE1JX0ZDX0FVRFNDSE5MUzdfQUNDVVJBQ1lfTUFTSyA9IDB4MzAsCj4+ICsJSERN
-SV9GQ19BVURTQ0hOTFM3X1NNUFJBVEVfTUFTSyA9IDB4MGYsCj4+ICsJSERNSV9GQ19BVURTQ0hO
-TFM3X1NNUFJBVEVfMTkySyA9IDB4ZSwKPj4gKwlIRE1JX0ZDX0FVRFNDSE5MUzdfU01QUkFURV8x
-NzZLNCA9IDB4YywKPj4gKwlIRE1JX0ZDX0FVRFNDSE5MUzdfU01QUkFURV85NksgPSAweGEsCj4+
-ICsJSERNSV9GQ19BVURTQ0hOTFM3X1NNUFJBVEVfNzY4SyA9IDB4OSwKPj4gKwlIRE1JX0ZDX0FV
-RFNDSE5MUzdfU01QUkFURV84OEsyID0gMHg4LAo+PiArCUhETUlfRkNfQVVEU0NITkxTN19TTVBS
-QVRFXzMySyA9IDB4MywKPj4gKwlIRE1JX0ZDX0FVRFNDSE5MUzdfU01QUkFURV80OEsgPSAweDIs
-Cj4+ICsJSERNSV9GQ19BVURTQ0hOTFM3X1NNUFJBVEVfNDRLMSA9IDB4MCwKPj4gIAo+PiAgLyog
-SERNSV9GQ19BVURTQ0hOTFM4IGZpZWxkIHZhbHVlcyAqLwo+PiAgCUhETUlfRkNfQVVEU0NITkxT
-OF9PUklHU0FNUEZSRVFfTUFTSyA9IDB4ZjAsCj4+Cj4gCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+Hi!
+
+Dne torek, 03. september 2019 ob 20:00:33 CEST je Neil Armstrong napisal(a):
+> Hi,
+> 
+> Le 03/09/2019 à 11:53, Neil Armstrong a écrit :
+> > Hi,
+> > 
+> > On 03/09/2019 07:51, Cheng-Yi Chiang wrote:
+> >> From: Yakir Yang <ykk@rock-chips.com>
+> >> 
+> >> When transmitting IEC60985 linear PCM audio, we configure the
+> >> Audio Sample Channel Status information of all the channel
+> >> status bits in the IEC60958 frame.
+> >> Refer to 60958-3 page 10 for frequency, original frequency, and
+> >> wordlength setting.
+> >> 
+> >> This fix the issue that audio does not come out on some monitors
+> >> (e.g. LG 22CV241)
+> >> 
+> >> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+> >> Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+> >> ---
+> >> 
+> >>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 59 +++++++++++++++++++++++
+> >>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.h | 20 ++++++++
+> >>  2 files changed, 79 insertions(+)
+> >> 
+> >> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> >> b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c index
+> >> bd65d0479683..34d46e25d610 100644
+> >> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> >> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> >> @@ -582,6 +582,63 @@ static unsigned int hdmi_compute_n(unsigned int
+> >> freq, unsigned long pixel_clk)>> 
+> >>  	return n;
+> >>  
+> >>  }
+> >> 
+> >> +static void hdmi_set_schnl(struct dw_hdmi *hdmi)
+> >> +{
+> >> +	u8 aud_schnl_samplerate;
+> >> +	u8 aud_schnl_8;
+> >> +
+> >> +	/* These registers are on RK3288 using version 2.0a. */
+> >> +	if (hdmi->version != 0x200a)
+> >> +		return;
+> > 
+> > Are these limited to the 2.0a version *in* RK3288, or 2.0a version on all
+> > SoCs ?
+> 
+> After investigations, Amlogic sets these registers on their 2.0a version
+> aswell, and Jernej (added in Cc) reported me Allwinner sets them on their
+> < 2.0a and > 2.0a IPs versions.
+> 
+> Can you check on the Rockchip IP versions in RK3399 ?
+> 
+> For reference, the HDMI 1.4a IP version allwinner setups is:
+> https://github.com/Allwinner-Homlet/H3-BSP4.4-linux/blob/master/drivers/vide
+> o/fbdev/sunxi/disp2/hdmi/hdmi_bsp_sun8iw7.c#L531-L539 (registers a
+> "scrambled" but a custom bit can reset to the original mapping, 0x1066 ...
+> 0x106f)
+
+For easier reading, here is similar, but annotated version: http://ix.io/1Ub6
+Check function bsp_hdmi_audio().
+
+Unless there is a special reason, you can just remove that check.
+
+Best regards,
+Jernej
+
+> 
+> Neil
+> 
+> >> +
+> >> +	switch (hdmi->sample_rate) {
+> >> +	case 32000:
+> >> +		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_32K;
+> >> +		break;
+> >> +	case 44100:
+> >> +		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_44K1;
+> >> +		break;
+> >> +	case 48000:
+> >> +		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_48K;
+> >> +		break;
+> >> +	case 88200:
+> >> +		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_88K2;
+> >> +		break;
+> >> +	case 96000:
+> >> +		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_96K;
+> >> +		break;
+> >> +	case 176400:
+> >> +		aud_schnl_samplerate = 
+HDMI_FC_AUDSCHNLS7_SMPRATE_176K4;
+> >> +		break;
+> >> +	case 192000:
+> >> +		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_192K;
+> >> +		break;
+> >> +	case 768000:
+> >> +		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_768K;
+> >> +		break;
+> >> +	default:
+> >> +		dev_warn(hdmi->dev, "Unsupported audio sample rate (%u)
+\n",
+> >> +			 hdmi->sample_rate);
+> >> +		return;
+> >> +	}
+> >> +
+> >> +	/* set channel status register */
+> >> +	hdmi_modb(hdmi, aud_schnl_samplerate, 
+HDMI_FC_AUDSCHNLS7_SMPRATE_MASK,
+> >> +		  HDMI_FC_AUDSCHNLS7);
+> >> +
+> >> +	/*
+> >> +	 * Set original frequency to be the same as frequency.
+> >> +	 * Use one-complement value as stated in IEC60958-3 page 13.
+> >> +	 */
+> >> +	aud_schnl_8 = (~aud_schnl_samplerate) <<
+> >> +			HDMI_FC_AUDSCHNLS8_ORIGSAMPFREQ_OFFSET;
+> >> +
+> >> +	/* This means word length is 16 bit. Refer to IEC60958-3 page 12. 
+*/
+> >> +	aud_schnl_8 |= 2 << HDMI_FC_AUDSCHNLS8_WORDLEGNTH_OFFSET;
+> >> +
+> >> +	hdmi_writeb(hdmi, aud_schnl_8, HDMI_FC_AUDSCHNLS8);
+> >> +}
+> >> +
+> >> 
+> >>  static void hdmi_set_clk_regenerator(struct dw_hdmi *hdmi,
+> >>  
+> >>  	unsigned long pixel_clk, unsigned int sample_rate)
+> >>  
+> >>  {
+> >> 
+> >> @@ -620,6 +677,8 @@ static void hdmi_set_clk_regenerator(struct dw_hdmi
+> >> *hdmi,>> 
+> >>  	hdmi->audio_cts = cts;
+> >>  	hdmi_set_cts_n(hdmi, cts, hdmi->audio_enable ? n : 0);
+> >>  	spin_unlock_irq(&hdmi->audio_lock);
+> >> 
+> >> +
+> >> +	hdmi_set_schnl(hdmi);
+> >> 
+> >>  }
+> >>  
+> >>  static void hdmi_init_clk_regenerator(struct dw_hdmi *hdmi)
+> >> 
+> >> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
+> >> b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h index
+> >> 6988f12d89d9..619ebc1c8354 100644
+> >> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
+> >> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
+> >> @@ -158,6 +158,17 @@
+> >> 
+> >>  #define HDMI_FC_SPDDEVICEINF                    0x1062
+> >>  #define HDMI_FC_AUDSCONF                        0x1063
+> >>  #define HDMI_FC_AUDSSTAT                        0x1064
+> >> 
+> >> +#define HDMI_FC_AUDSV                           0x1065
+> >> +#define HDMI_FC_AUDSU                           0x1066
+> >> +#define HDMI_FC_AUDSCHNLS0                      0x1067
+> >> +#define HDMI_FC_AUDSCHNLS1                      0x1068
+> >> +#define HDMI_FC_AUDSCHNLS2                      0x1069
+> >> +#define HDMI_FC_AUDSCHNLS3                      0x106a
+> >> +#define HDMI_FC_AUDSCHNLS4                      0x106b
+> >> +#define HDMI_FC_AUDSCHNLS5                      0x106c
+> >> +#define HDMI_FC_AUDSCHNLS6                      0x106d
+> >> +#define HDMI_FC_AUDSCHNLS7                      0x106e
+> >> +#define HDMI_FC_AUDSCHNLS8                      0x106f
+> >> 
+> >>  #define HDMI_FC_DATACH0FILL                     0x1070
+> >>  #define HDMI_FC_DATACH1FILL                     0x1071
+> >>  #define HDMI_FC_DATACH2FILL                     0x1072
+> >> 
+> >> @@ -706,6 +717,15 @@ enum {
+> >> 
+> >>  /* HDMI_FC_AUDSCHNLS7 field values */
+> >>  
+> >>  	HDMI_FC_AUDSCHNLS7_ACCURACY_OFFSET = 4,
+> >>  	HDMI_FC_AUDSCHNLS7_ACCURACY_MASK = 0x30,
+> >> 
+> >> +	HDMI_FC_AUDSCHNLS7_SMPRATE_MASK = 0x0f,
+> >> +	HDMI_FC_AUDSCHNLS7_SMPRATE_192K = 0xe,
+> >> +	HDMI_FC_AUDSCHNLS7_SMPRATE_176K4 = 0xc,
+> >> +	HDMI_FC_AUDSCHNLS7_SMPRATE_96K = 0xa,
+> >> +	HDMI_FC_AUDSCHNLS7_SMPRATE_768K = 0x9,
+> >> +	HDMI_FC_AUDSCHNLS7_SMPRATE_88K2 = 0x8,
+> >> +	HDMI_FC_AUDSCHNLS7_SMPRATE_32K = 0x3,
+> >> +	HDMI_FC_AUDSCHNLS7_SMPRATE_48K = 0x2,
+> >> +	HDMI_FC_AUDSCHNLS7_SMPRATE_44K1 = 0x0,
+> >> 
+> >>  /* HDMI_FC_AUDSCHNLS8 field values */
+> >>  
+> >>  	HDMI_FC_AUDSCHNLS8_ORIGSAMPFREQ_MASK = 0xf0,
