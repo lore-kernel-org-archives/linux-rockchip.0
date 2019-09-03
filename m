@@ -1,80 +1,132 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH for 5.4] media: hantro: Fix s_fmt for dynamic resolution changes
-Date: Tue,  3 Sep 2019 14:12:56 -0300
-Message-ID: <20190903171256.25052-1-ezequiel@collabora.com>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Subject: Re: [PATCH] drm: bridge/dw_hdmi: add audio sample channel status
+ setting
+Date: Tue, 3 Sep 2019 20:00:33 +0200
+Message-ID: <d8a80ba5-dd2b-f84d-bbfc-9dd5ccbc26e9@baylibre.com>
+References: <20190903055103.134764-1-cychiang@chromium.org>
+ <e1c3483c-baa6-c726-e547-fadf40d259f4@baylibre.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-media@vger.kernel.org
-Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org, Ezequiel Garcia <ezequiel@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <e1c3483c-baa6-c726-e547-fadf40d259f4@baylibre.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Cheng-Yi Chiang <cychiang@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>
+Cc: alsa-devel@alsa-project.org, tzungbi@chromium.org, zhengxing@rock-chips.com, kuninori.morimoto.gx@renesas.com, linux-rockchip@lists.infradead.org, airlied@linux.ie, sam@ravnborg.org, jeffy.chen@rock-chips.com, dianders@chromium.org, cain.cai@rock-chips.com, eddie.cai@rock-chips.com, Laurent.pinchart@ideasonboard.com, Yakir Yang <ykk@rock-chips.com>, enric.balletbo@collabora.com, dgreid@chromium.org, kuankuan.y@gmail.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Commit 953aaa1492c53 ("media: rockchip/vpu: Prepare things to support decoders")
-changed the conditions under S_FMT was allowed for OUTPUT
-CAPTURE buffers.
-
-However, and according to the mem-to-mem stateless decoder specification,
-in order to support dynamic resolution changes, S_FMT should be allowed
-even if OUTPUT buffers have been allocated.
-
-Relax decoder S_FMT restrictions on OUTPUT buffers, allowing a resolution
-modification, provided the pixel format stays the same.
-
-Tested on RK3288 platforms using ChromiumOS Video Decode/Encode Accelerator Unittests.
-
-Fixes: 953aaa1492c53 ("media: rockchip/vpu: Prepare things to support decoders")
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
----
- drivers/staging/media/hantro/hantro_v4l2.c | 22 ++++++++++++++++------
- 1 file changed, 16 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-index 3dae52abb96c..d48b548842cf 100644
---- a/drivers/staging/media/hantro/hantro_v4l2.c
-+++ b/drivers/staging/media/hantro/hantro_v4l2.c
-@@ -367,19 +367,22 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
- {
- 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
- 	struct hantro_ctx *ctx = fh_to_ctx(priv);
-+	struct vb2_queue *vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
- 	const struct hantro_fmt *formats;
- 	unsigned int num_fmts;
--	struct vb2_queue *vq;
- 	int ret;
- 
--	/* Change not allowed if queue is busy. */
--	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
--	if (vb2_is_busy(vq))
--		return -EBUSY;
--
- 	if (!hantro_is_encoder_ctx(ctx)) {
- 		struct vb2_queue *peer_vq;
- 
-+		/*
-+		 * In other to support dynamic resolution change,
-+		 * the decoder admits a resolution change, as long
-+		 * as the pixelformat remains. Can't be done if streaming.
-+		 */
-+		if (vb2_is_streaming(vq) || (vb2_is_busy(vq) &&
-+		    pix_mp->pixelformat != ctx->src_fmt.pixelformat))
-+			return -EBUSY;
- 		/*
- 		 * Since format change on the OUTPUT queue will reset
- 		 * the CAPTURE queue, we can't allow doing so
-@@ -389,6 +392,13 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
- 					  V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
- 		if (vb2_is_busy(peer_vq))
- 			return -EBUSY;
-+	} else {
-+		/*
-+		 * The encoder doesn't admit a format change if
-+		 * there are OUTPUT buffers allocated.
-+		 */
-+		if (vb2_is_busy(vq))
-+			return -EBUSY;
- 	}
- 
- 	ret = vidioc_try_fmt_out_mplane(file, priv, f);
--- 
-2.22.0
+SGksCgpMZSAwMy8wOS8yMDE5IMOgIDExOjUzLCBOZWlsIEFybXN0cm9uZyBhIMOpY3JpdCA6Cj4g
+SGksCj4gCj4gT24gMDMvMDkvMjAxOSAwNzo1MSwgQ2hlbmctWWkgQ2hpYW5nIHdyb3RlOgo+PiBG
+cm9tOiBZYWtpciBZYW5nIDx5a2tAcm9jay1jaGlwcy5jb20+Cj4+Cj4+IFdoZW4gdHJhbnNtaXR0
+aW5nIElFQzYwOTg1IGxpbmVhciBQQ00gYXVkaW8sIHdlIGNvbmZpZ3VyZSB0aGUKPj4gQXVkaW8g
+U2FtcGxlIENoYW5uZWwgU3RhdHVzIGluZm9ybWF0aW9uIG9mIGFsbCB0aGUgY2hhbm5lbAo+PiBz
+dGF0dXMgYml0cyBpbiB0aGUgSUVDNjA5NTggZnJhbWUuCj4+IFJlZmVyIHRvIDYwOTU4LTMgcGFn
+ZSAxMCBmb3IgZnJlcXVlbmN5LCBvcmlnaW5hbCBmcmVxdWVuY3ksIGFuZAo+PiB3b3JkbGVuZ3Ro
+IHNldHRpbmcuCj4+Cj4+IFRoaXMgZml4IHRoZSBpc3N1ZSB0aGF0IGF1ZGlvIGRvZXMgbm90IGNv
+bWUgb3V0IG9uIHNvbWUgbW9uaXRvcnMKPj4gKGUuZy4gTEcgMjJDVjI0MSkKPj4KPj4gU2lnbmVk
+LW9mZi1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgo+PiBTaWduZWQtb2ZmLWJ5
+OiBDaGVuZy1ZaSBDaGlhbmcgPGN5Y2hpYW5nQGNocm9taXVtLm9yZz4KPj4gLS0tCj4+ICBkcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyB8IDU5ICsrKysrKysrKysrKysr
+KysrKysrKysrCj4+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuaCB8
+IDIwICsrKysrKysrCj4+ICAyIGZpbGVzIGNoYW5nZWQsIDc5IGluc2VydGlvbnMoKykKPj4KPj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jIGIv
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPj4gaW5kZXggYmQ2NWQw
+NDc5NjgzLi4zNGQ0NmUyNWQ2MTAgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlk
+Z2Uvc3lub3BzeXMvZHctaGRtaS5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lu
+b3BzeXMvZHctaGRtaS5jCj4+IEBAIC01ODIsNiArNTgyLDYzIEBAIHN0YXRpYyB1bnNpZ25lZCBp
+bnQgaGRtaV9jb21wdXRlX24odW5zaWduZWQgaW50IGZyZXEsIHVuc2lnbmVkIGxvbmcgcGl4ZWxf
+Y2xrKQo+PiAgCXJldHVybiBuOwo+PiAgfQo+PiAgCj4+ICtzdGF0aWMgdm9pZCBoZG1pX3NldF9z
+Y2hubChzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPj4gK3sKPj4gKwl1OCBhdWRfc2Nobmxfc2FtcGxl
+cmF0ZTsKPj4gKwl1OCBhdWRfc2NobmxfODsKPj4gKwo+PiArCS8qIFRoZXNlIHJlZ2lzdGVycyBh
+cmUgb24gUkszMjg4IHVzaW5nIHZlcnNpb24gMi4wYS4gKi8KPj4gKwlpZiAoaGRtaS0+dmVyc2lv
+biAhPSAweDIwMGEpCj4+ICsJCXJldHVybjsKPiAKPiBBcmUgdGhlc2UgbGltaXRlZCB0byB0aGUg
+Mi4wYSB2ZXJzaW9uICppbiogUkszMjg4LCBvciAyLjBhIHZlcnNpb24gb24gYWxsCj4gU29DcyA/
+CgpBZnRlciBpbnZlc3RpZ2F0aW9ucywgQW1sb2dpYyBzZXRzIHRoZXNlIHJlZ2lzdGVycyBvbiB0
+aGVpciAyLjBhIHZlcnNpb24KYXN3ZWxsLCBhbmQgSmVybmVqIChhZGRlZCBpbiBDYykgcmVwb3J0
+ZWQgbWUgQWxsd2lubmVyIHNldHMgdGhlbSBvbiB0aGVpcgo8IDIuMGEgYW5kID4gMi4wYSBJUHMg
+dmVyc2lvbnMuCgpDYW4geW91IGNoZWNrIG9uIHRoZSBSb2NrY2hpcCBJUCB2ZXJzaW9ucyBpbiBS
+SzMzOTkgPwoKRm9yIHJlZmVyZW5jZSwgdGhlIEhETUkgMS40YSBJUCB2ZXJzaW9uIGFsbHdpbm5l
+ciBzZXR1cHMgaXM6Cmh0dHBzOi8vZ2l0aHViLmNvbS9BbGx3aW5uZXItSG9tbGV0L0gzLUJTUDQu
+NC1saW51eC9ibG9iL21hc3Rlci9kcml2ZXJzL3ZpZGVvL2ZiZGV2L3N1bnhpL2Rpc3AyL2hkbWkv
+aGRtaV9ic3Bfc3VuOGl3Ny5jI0w1MzEtTDUzOQoocmVnaXN0ZXJzIGEgInNjcmFtYmxlZCIgYnV0
+IGEgY3VzdG9tIGJpdCBjYW4gcmVzZXQgdG8gdGhlIG9yaWdpbmFsIG1hcHBpbmcsCjB4MTA2NiAu
+Li4gMHgxMDZmKQoKTmVpbAoKPiAKPj4gKwo+PiArCXN3aXRjaCAoaGRtaS0+c2FtcGxlX3JhdGUp
+IHsKPj4gKwljYXNlIDMyMDAwOgo+PiArCQlhdWRfc2Nobmxfc2FtcGxlcmF0ZSA9IEhETUlfRkNf
+QVVEU0NITkxTN19TTVBSQVRFXzMySzsKPj4gKwkJYnJlYWs7Cj4+ICsJY2FzZSA0NDEwMDoKPj4g
+KwkJYXVkX3NjaG5sX3NhbXBsZXJhdGUgPSBIRE1JX0ZDX0FVRFNDSE5MUzdfU01QUkFURV80NEsx
+Owo+PiArCQlicmVhazsKPj4gKwljYXNlIDQ4MDAwOgo+PiArCQlhdWRfc2Nobmxfc2FtcGxlcmF0
+ZSA9IEhETUlfRkNfQVVEU0NITkxTN19TTVBSQVRFXzQ4SzsKPj4gKwkJYnJlYWs7Cj4+ICsJY2Fz
+ZSA4ODIwMDoKPj4gKwkJYXVkX3NjaG5sX3NhbXBsZXJhdGUgPSBIRE1JX0ZDX0FVRFNDSE5MUzdf
+U01QUkFURV84OEsyOwo+PiArCQlicmVhazsKPj4gKwljYXNlIDk2MDAwOgo+PiArCQlhdWRfc2No
+bmxfc2FtcGxlcmF0ZSA9IEhETUlfRkNfQVVEU0NITkxTN19TTVBSQVRFXzk2SzsKPj4gKwkJYnJl
+YWs7Cj4+ICsJY2FzZSAxNzY0MDA6Cj4+ICsJCWF1ZF9zY2hubF9zYW1wbGVyYXRlID0gSERNSV9G
+Q19BVURTQ0hOTFM3X1NNUFJBVEVfMTc2SzQ7Cj4+ICsJCWJyZWFrOwo+PiArCWNhc2UgMTkyMDAw
+Ogo+PiArCQlhdWRfc2Nobmxfc2FtcGxlcmF0ZSA9IEhETUlfRkNfQVVEU0NITkxTN19TTVBSQVRF
+XzE5Mks7Cj4+ICsJCWJyZWFrOwo+PiArCWNhc2UgNzY4MDAwOgo+PiArCQlhdWRfc2Nobmxfc2Ft
+cGxlcmF0ZSA9IEhETUlfRkNfQVVEU0NITkxTN19TTVBSQVRFXzc2OEs7Cj4+ICsJCWJyZWFrOwo+
+PiArCWRlZmF1bHQ6Cj4+ICsJCWRldl93YXJuKGhkbWktPmRldiwgIlVuc3VwcG9ydGVkIGF1ZGlv
+IHNhbXBsZSByYXRlICgldSlcbiIsCj4+ICsJCQkgaGRtaS0+c2FtcGxlX3JhdGUpOwo+PiArCQly
+ZXR1cm47Cj4+ICsJfQo+PiArCj4+ICsJLyogc2V0IGNoYW5uZWwgc3RhdHVzIHJlZ2lzdGVyICov
+Cj4+ICsJaGRtaV9tb2RiKGhkbWksIGF1ZF9zY2hubF9zYW1wbGVyYXRlLCBIRE1JX0ZDX0FVRFND
+SE5MUzdfU01QUkFURV9NQVNLLAo+PiArCQkgIEhETUlfRkNfQVVEU0NITkxTNyk7Cj4+ICsKPj4g
+KwkvKgo+PiArCSAqIFNldCBvcmlnaW5hbCBmcmVxdWVuY3kgdG8gYmUgdGhlIHNhbWUgYXMgZnJl
+cXVlbmN5Lgo+PiArCSAqIFVzZSBvbmUtY29tcGxlbWVudCB2YWx1ZSBhcyBzdGF0ZWQgaW4gSUVD
+NjA5NTgtMyBwYWdlIDEzLgo+PiArCSAqLwo+PiArCWF1ZF9zY2hubF84ID0gKH5hdWRfc2Nobmxf
+c2FtcGxlcmF0ZSkgPDwKPj4gKwkJCUhETUlfRkNfQVVEU0NITkxTOF9PUklHU0FNUEZSRVFfT0ZG
+U0VUOwo+PiArCj4+ICsJLyogVGhpcyBtZWFucyB3b3JkIGxlbmd0aCBpcyAxNiBiaXQuIFJlZmVy
+IHRvIElFQzYwOTU4LTMgcGFnZSAxMi4gKi8KPj4gKwlhdWRfc2NobmxfOCB8PSAyIDw8IEhETUlf
+RkNfQVVEU0NITkxTOF9XT1JETEVHTlRIX09GRlNFVDsKPj4gKwo+PiArCWhkbWlfd3JpdGViKGhk
+bWksIGF1ZF9zY2hubF84LCBIRE1JX0ZDX0FVRFNDSE5MUzgpOwo+PiArfQo+PiArCj4+ICBzdGF0
+aWMgdm9pZCBoZG1pX3NldF9jbGtfcmVnZW5lcmF0b3Ioc3RydWN0IGR3X2hkbWkgKmhkbWksCj4+
+ICAJdW5zaWduZWQgbG9uZyBwaXhlbF9jbGssIHVuc2lnbmVkIGludCBzYW1wbGVfcmF0ZSkKPj4g
+IHsKPj4gQEAgLTYyMCw2ICs2NzcsOCBAQCBzdGF0aWMgdm9pZCBoZG1pX3NldF9jbGtfcmVnZW5l
+cmF0b3Ioc3RydWN0IGR3X2hkbWkgKmhkbWksCj4+ICAJaGRtaS0+YXVkaW9fY3RzID0gY3RzOwo+
+PiAgCWhkbWlfc2V0X2N0c19uKGhkbWksIGN0cywgaGRtaS0+YXVkaW9fZW5hYmxlID8gbiA6IDAp
+Owo+PiAgCXNwaW5fdW5sb2NrX2lycSgmaGRtaS0+YXVkaW9fbG9jayk7Cj4+ICsKPj4gKwloZG1p
+X3NldF9zY2hubChoZG1pKTsKPj4gIH0KPj4gIAo+PiAgc3RhdGljIHZvaWQgaGRtaV9pbml0X2Ns
+a19yZWdlbmVyYXRvcihzdHJ1Y3QgZHdfaGRtaSAqaGRtaSkKPj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5oIGIvZHJpdmVycy9ncHUvZHJtL2Jy
+aWRnZS9zeW5vcHN5cy9kdy1oZG1pLmgKPj4gaW5kZXggNjk4OGYxMmQ4OWQ5Li42MTllYmMxYzgz
+NTQgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRt
+aS5oCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5oCj4+
+IEBAIC0xNTgsNiArMTU4LDE3IEBACj4+ICAjZGVmaW5lIEhETUlfRkNfU1BEREVWSUNFSU5GICAg
+ICAgICAgICAgICAgICAgICAweDEwNjIKPj4gICNkZWZpbmUgSERNSV9GQ19BVURTQ09ORiAgICAg
+ICAgICAgICAgICAgICAgICAgIDB4MTA2Mwo+PiAgI2RlZmluZSBIRE1JX0ZDX0FVRFNTVEFUICAg
+ICAgICAgICAgICAgICAgICAgICAgMHgxMDY0Cj4+ICsjZGVmaW5lIEhETUlfRkNfQVVEU1YgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAweDEwNjUKPj4gKyNkZWZpbmUgSERNSV9GQ19BVURTVSAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIDB4MTA2Ngo+PiArI2RlZmluZSBIRE1JX0ZDX0FVRFND
+SE5MUzAgICAgICAgICAgICAgICAgICAgICAgMHgxMDY3Cj4+ICsjZGVmaW5lIEhETUlfRkNfQVVE
+U0NITkxTMSAgICAgICAgICAgICAgICAgICAgICAweDEwNjgKPj4gKyNkZWZpbmUgSERNSV9GQ19B
+VURTQ0hOTFMyICAgICAgICAgICAgICAgICAgICAgIDB4MTA2OQo+PiArI2RlZmluZSBIRE1JX0ZD
+X0FVRFNDSE5MUzMgICAgICAgICAgICAgICAgICAgICAgMHgxMDZhCj4+ICsjZGVmaW5lIEhETUlf
+RkNfQVVEU0NITkxTNCAgICAgICAgICAgICAgICAgICAgICAweDEwNmIKPj4gKyNkZWZpbmUgSERN
+SV9GQ19BVURTQ0hOTFM1ICAgICAgICAgICAgICAgICAgICAgIDB4MTA2Ywo+PiArI2RlZmluZSBI
+RE1JX0ZDX0FVRFNDSE5MUzYgICAgICAgICAgICAgICAgICAgICAgMHgxMDZkCj4+ICsjZGVmaW5l
+IEhETUlfRkNfQVVEU0NITkxTNyAgICAgICAgICAgICAgICAgICAgICAweDEwNmUKPj4gKyNkZWZp
+bmUgSERNSV9GQ19BVURTQ0hOTFM4ICAgICAgICAgICAgICAgICAgICAgIDB4MTA2Zgo+PiAgI2Rl
+ZmluZSBIRE1JX0ZDX0RBVEFDSDBGSUxMICAgICAgICAgICAgICAgICAgICAgMHgxMDcwCj4+ICAj
+ZGVmaW5lIEhETUlfRkNfREFUQUNIMUZJTEwgICAgICAgICAgICAgICAgICAgICAweDEwNzEKPj4g
+ICNkZWZpbmUgSERNSV9GQ19EQVRBQ0gyRklMTCAgICAgICAgICAgICAgICAgICAgIDB4MTA3Mgo+
+PiBAQCAtNzA2LDYgKzcxNywxNSBAQCBlbnVtIHsKPj4gIC8qIEhETUlfRkNfQVVEU0NITkxTNyBm
+aWVsZCB2YWx1ZXMgKi8KPj4gIAlIRE1JX0ZDX0FVRFNDSE5MUzdfQUNDVVJBQ1lfT0ZGU0VUID0g
+NCwKPj4gIAlIRE1JX0ZDX0FVRFNDSE5MUzdfQUNDVVJBQ1lfTUFTSyA9IDB4MzAsCj4+ICsJSERN
+SV9GQ19BVURTQ0hOTFM3X1NNUFJBVEVfTUFTSyA9IDB4MGYsCj4+ICsJSERNSV9GQ19BVURTQ0hO
+TFM3X1NNUFJBVEVfMTkySyA9IDB4ZSwKPj4gKwlIRE1JX0ZDX0FVRFNDSE5MUzdfU01QUkFURV8x
+NzZLNCA9IDB4YywKPj4gKwlIRE1JX0ZDX0FVRFNDSE5MUzdfU01QUkFURV85NksgPSAweGEsCj4+
+ICsJSERNSV9GQ19BVURTQ0hOTFM3X1NNUFJBVEVfNzY4SyA9IDB4OSwKPj4gKwlIRE1JX0ZDX0FV
+RFNDSE5MUzdfU01QUkFURV84OEsyID0gMHg4LAo+PiArCUhETUlfRkNfQVVEU0NITkxTN19TTVBS
+QVRFXzMySyA9IDB4MywKPj4gKwlIRE1JX0ZDX0FVRFNDSE5MUzdfU01QUkFURV80OEsgPSAweDIs
+Cj4+ICsJSERNSV9GQ19BVURTQ0hOTFM3X1NNUFJBVEVfNDRLMSA9IDB4MCwKPj4gIAo+PiAgLyog
+SERNSV9GQ19BVURTQ0hOTFM4IGZpZWxkIHZhbHVlcyAqLwo+PiAgCUhETUlfRkNfQVVEU0NITkxT
+OF9PUklHU0FNUEZSRVFfTUFTSyA9IDB4ZjAsCj4+Cj4gCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
+QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
