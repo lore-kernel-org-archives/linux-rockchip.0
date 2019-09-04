@@ -1,64 +1,109 @@
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH 3/4] media: hantro: Add helper for the H264 motion
- vectors allocation
-Date: Wed, 04 Sep 2019 09:50:16 -0300
-Message-ID: <5e4b569ff2e8a36a828f3623e71943bd23e795b5.camel@collabora.com>
-References: <20190903181711.7559-1-ezequiel@collabora.com>
- <20190903181711.7559-4-ezequiel@collabora.com>
- <1567592270.3041.4.camel@pengutronix.de>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH for 5.4] media: hantro: Fix s_fmt for dynamic resolution
+ changes
+Date: Wed, 04 Sep 2019 10:01:50 -0300
+Message-ID: <37bbd1b8ee7bb82c75aefb675e0c3ddd955dde0b.camel@collabora.com>
+References: <20190903171256.25052-1-ezequiel@collabora.com>
+         <1567592011.3041.1.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1567592270.3041.4.camel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Chris Healy <cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1567592011.3041.1.camel@pengutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org
+Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 2019-09-04 at 12:17 +0200, Philipp Zabel wrote:
-> On Tue, 2019-09-03 at 15:17 -0300, Ezequiel Garcia wrote:
-> > Introduce a helper to allow easier enablement of the post-processing
-> > feature. No functional changes intended.
+On Wed, 2019-09-04 at 12:13 +0200, Philipp Zabel wrote:
+> Hi Ezequiel,
+> 
+> On Tue, 2019-09-03 at 14:12 -0300, Ezequiel Garcia wrote:
+> > Commit 953aaa1492c53 ("media: rockchip/vpu: Prepare things to support decoders")
+> > changed the conditions under S_FMT was allowed for OUTPUT
+> > CAPTURE buffers.
 > > 
-> > Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> > However, and according to the mem-to-mem stateless decoder specification,
+> > in order to support dynamic resolution changes, S_FMT should be allowed
+> > even if OUTPUT buffers have been allocated.
+> > 
+> > Relax decoder S_FMT restrictions on OUTPUT buffers, allowing a resolution
+> > modification, provided the pixel format stays the same.
+> > 
+> > Tested on RK3288 platforms using ChromiumOS Video Decode/Encode Accelerator Unittests.
+> > 
+> > Fixes: 953aaa1492c53 ("media: rockchip/vpu: Prepare things to support decoders")
+> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 > > ---
-> >  drivers/staging/media/hantro/hantro.h      | 6 ++++++
-> >  drivers/staging/media/hantro/hantro_v4l2.c | 4 ++--
-> >  2 files changed, 8 insertions(+), 2 deletions(-)
+> >  drivers/staging/media/hantro/hantro_v4l2.c | 22 ++++++++++++++++------
+> >  1 file changed, 16 insertions(+), 6 deletions(-)
 > > 
-> > diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
-> > index deb90ae37859..e8872f24e351 100644
-> > --- a/drivers/staging/media/hantro/hantro.h
-> > +++ b/drivers/staging/media/hantro/hantro.h
-> > @@ -381,4 +381,10 @@ hantro_get_dst_buf(struct hantro_ctx *ctx)
-> >  	return v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-> >  }
+> > diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
+> > index 3dae52abb96c..d48b548842cf 100644
+> > --- a/drivers/staging/media/hantro/hantro_v4l2.c
+> > +++ b/drivers/staging/media/hantro/hantro_v4l2.c
+> > @@ -367,19 +367,22 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+> >  {
+> >  	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+> >  	struct hantro_ctx *ctx = fh_to_ctx(priv);
+> > +	struct vb2_queue *vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+> >  	const struct hantro_fmt *formats;
+> >  	unsigned int num_fmts;
+> > -	struct vb2_queue *vq;
+> >  	int ret;
 > >  
-> > +static inline unsigned int
-> > +hantro_h264_buffer_extra_size(unsigned int width, unsigned int height)
-> > +
-> > +	return 128 * MB_WIDTH(width) * MB_HEIGHT(height);
-> > +}
+> > -	/* Change not allowed if queue is busy. */
+> > -	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+> > -	if (vb2_is_busy(vq))
+> > -		return -EBUSY;
+> > -
+> >  	if (!hantro_is_encoder_ctx(ctx)) {
+> >  		struct vb2_queue *peer_vq;
+> >  
+> > +		/*
+> > +		 * In other to support dynamic resolution change,
+> > +		 * the decoder admits a resolution change, as long
+> > +		 * as the pixelformat remains. Can't be done if streaming.
+> > +		 */
+> > +		if (vb2_is_streaming(vq) || (vb2_is_busy(vq) &&
+> > +		    pix_mp->pixelformat != ctx->src_fmt.pixelformat))
 > 
-> This doesn't seem to be used or modified by patch 4 at all?
+> Before using contents of the v4l2_format f for comparison, we should run
+> vidioc_try_fmt_out_mplane over it.
+
+Right, good catch.
+
+>  Also, besides pixelformat, sizeimage
+> shouldn't change either, at least if this is a VB2_MMAP queue.
 > 
 
-Oh, thanks for spotting this. Indeed, this patch is superflous.
-The helper was used, but then after cleaning-up hantro_postproc.c
-I realized it wasn't needed.
+This is the OUTPUT queue, so I don't see why the sizeimage
+of the coded buffers should stay the same. Maybe I'm missing
+something? 
 
-We can drop this one, but OTOH hiding the H264 extra size seems
-a nice cleanup. Perhaps Jonas can grab this patch as part
-of his improvements series.
+> > +			return -EBUSY;
+> >  		/*
+> >  		 * Since format change on the OUTPUT queue will reset
+> >  		 * the CAPTURE queue, we can't allow doing so
+> > @@ -389,6 +392,13 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+> >  					  V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
+> >  		if (vb2_is_busy(peer_vq))
+> >  			return -EBUSY;
+> > +	} else {
+> > +		/*
+> > +		 * The encoder doesn't admit a format change if
+> > +		 * there are OUTPUT buffers allocated.
+> > +		 */
+> > +		if (vb2_is_busy(vq))
+> > +			return -EBUSY;
+> >  	}
+> >  
+> >  	ret = vidioc_try_fmt_out_mplane(file, priv, f);
+> 
+> I think this needs to be moved up.
+> 
+
+Right.
 
 Thanks,
 Ezequiel
