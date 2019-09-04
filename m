@@ -1,95 +1,88 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH for 5.4] media: hantro: Fix s_fmt for dynamic resolution
- changes
-Date: Wed, 04 Sep 2019 15:28:24 +0200
-Message-ID: <1567603704.3041.10.camel@pengutronix.de>
-References: <20190903171256.25052-1-ezequiel@collabora.com>
-         <1567592011.3041.1.camel@pengutronix.de>
-         <37bbd1b8ee7bb82c75aefb675e0c3ddd955dde0b.camel@collabora.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] mmc: dw_mmc-rockchip: Using 180 sample phase if all
+ phases work
+Date: Wed, 4 Sep 2019 08:44:01 -0700
+Message-ID: <CAD=FV=Vwmj=LehhLCN5OBbEfNNXp9gULLYRoVV86HtqZBxvEjw@mail.gmail.com>
+References: <1567564030-83224-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <37bbd1b8ee7bb82c75aefb675e0c3ddd955dde0b.camel@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org
-Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1567564030-83224-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Linux MMC List <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 2019-09-04 at 10:01 -0300, Ezequiel Garcia wrote:
-> On Wed, 2019-09-04 at 12:13 +0200, Philipp Zabel wrote:
-> > Hi Ezequiel,
-> > 
-> > On Tue, 2019-09-03 at 14:12 -0300, Ezequiel Garcia wrote:
-> > > Commit 953aaa1492c53 ("media: rockchip/vpu: Prepare things to support decoders")
-> > > changed the conditions under S_FMT was allowed for OUTPUT
-> > > CAPTURE buffers.
-> > > 
-> > > However, and according to the mem-to-mem stateless decoder specification,
-> > > in order to support dynamic resolution changes, S_FMT should be allowed
-> > > even if OUTPUT buffers have been allocated.
-> > > 
-> > > Relax decoder S_FMT restrictions on OUTPUT buffers, allowing a resolution
-> > > modification, provided the pixel format stays the same.
-> > > 
-> > > Tested on RK3288 platforms using ChromiumOS Video Decode/Encode Accelerator Unittests.
-> > > 
-> > > Fixes: 953aaa1492c53 ("media: rockchip/vpu: Prepare things to support decoders")
-> > > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> > > ---
-> > >  drivers/staging/media/hantro/hantro_v4l2.c | 22 ++++++++++++++++------
-> > >  1 file changed, 16 insertions(+), 6 deletions(-)
-> > > 
-> > > diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-> > > index 3dae52abb96c..d48b548842cf 100644
-> > > --- a/drivers/staging/media/hantro/hantro_v4l2.c
-> > > +++ b/drivers/staging/media/hantro/hantro_v4l2.c
-> > > @@ -367,19 +367,22 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
-> > >  {
-> > >  	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
-> > >  	struct hantro_ctx *ctx = fh_to_ctx(priv);
-> > > +	struct vb2_queue *vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
-> > >  	const struct hantro_fmt *formats;
-> > >  	unsigned int num_fmts;
-> > > -	struct vb2_queue *vq;
-> > >  	int ret;
-> > >  
-> > > -	/* Change not allowed if queue is busy. */
-> > > -	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
-> > > -	if (vb2_is_busy(vq))
-> > > -		return -EBUSY;
-> > > -
-> > >  	if (!hantro_is_encoder_ctx(ctx)) {
-> > >  		struct vb2_queue *peer_vq;
-> > >  
-> > > +		/*
-> > > +		 * In other to support dynamic resolution change,
-> > > +		 * the decoder admits a resolution change, as long
-> > > +		 * as the pixelformat remains. Can't be done if streaming.
-> > > +		 */
-> > > +		if (vb2_is_streaming(vq) || (vb2_is_busy(vq) &&
-> > > +		    pix_mp->pixelformat != ctx->src_fmt.pixelformat))
-> > 
-> > Before using contents of the v4l2_format f for comparison, we should run
-> > vidioc_try_fmt_out_mplane over it.
-> 
-> Right, good catch.
-> 
-> >  Also, besides pixelformat, sizeimage
-> > shouldn't change either, at least if this is a VB2_MMAP queue.
-> > 
-> 
-> This is the OUTPUT queue, so I don't see why the sizeimage
-> of the coded buffers should stay the same. Maybe I'm missing
-> something? 
+Hi,
 
-If the OUTPUT vb2_queue is busy, we already have some buffers of the old
-size allocated. We can't change their size dynamically with just
-VIDIOC_S_FMT.
+On Tue, Sep 3, 2019 at 7:28 PM Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>
+> default_sample_phase is used to make sure the cards are enumurated
+> properly and will be set to 0 if not assigned. However, the sample
+> phase should depends on the tuned phase if running higher clock rate.
+> If all phases work but default_sample_phase isn't assigned, driver
+> set sample phase to 0 for this case, which isn't the best choice,
+> because we always expect to set phase to the middle of window. To
+> solve the following continually issues we have seen in the test, we
+> need set phase to the more stable one, 180, if all phases work.
+>
+> mmcblk1: error -84 transferring data, sector 1735064, nr 8, cmd
+> response 0x900, card status 0xb00
+> mmcblk1: retrying using single block read
+> dwmmc_rockchip ff0f0000.dwmmc: All phases work, using default phase 0.
+> mmcblk1: retrying because a re-tune was needed
+>
+> .....
+>
+> mmcblk1: error -84 transferring data, sector 1728672, nr 248, cmd
+> response 0x900, card status 0xb00
+> mmcblk1: retrying using single block read
+> dwmmc_rockchip ff0f0000.dwmmc: All phases work, using default phase 0.
+>
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>
+>  drivers/mmc/host/dw_mmc-rockchip.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+> index d4d0213..9ef9723 100644
+> --- a/drivers/mmc/host/dw_mmc-rockchip.c
+> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
+> @@ -209,9 +209,8 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
+>         }
+>
+>         if (ranges[0].start == 0 && ranges[0].end == priv->num_phases - 1) {
+> -               clk_set_phase(priv->sample_clk, priv->default_sample_phase);
+> -               dev_info(host->dev, "All phases work, using default phase %d.",
+> -                        priv->default_sample_phase);
+> +               clk_set_phase(priv->sample_clk, 180);
+> +               dev_info(host->dev, "All phases work, using phase 180.");
 
-Maybe this should correct sizeimage to the old size instead of returning
--EBUSY? Either way, if the old buffer size is too small to reasonably
-decode the new resolution, the OUTPUT buffers have to be reallocated.
+This violates what is documented in the device tree bindings, which says:
 
-regards
-Philipp
+* rockchip,default-sample-phase: The default phase to set ciu-sample at
+  probing, low speeds or in case where all phases work at tuning time.
+  If not specified 0 deg will be used.
+
+Specifically:
+* You don't use "default-sample-phase" at all when all phases pass.
+* You don't default to 0 if not specified.
+
+Personally I think we could change the bindings to say: "If not
+specified 180 deg will be used" and then change the code to do the
+same.  If we wanted to keep the "stable ABI" that is device tree we
+could also just do the "180 default" for new SoCs and then manually
+add the device tree fragment to all old dts files.
+
+
+-Doug
