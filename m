@@ -1,204 +1,185 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v3 5/6] pwm: fsl-ftm: Don't update the state for the
- caller of pwm_apply_state()
-Date: Wed, 4 Sep 2019 10:21:37 +0200
-Message-ID: <20190904082137.7rro26fh4cankej5@pengutronix.de>
-References: <20190824153707.13746-6-uwe@kleine-koenig.org>
- <CAD=FV=X8kVU_zr69aKe-+GkAQh-tDwVf8tFogKve3s5O5ndF-g@mail.gmail.com>
- <20190902142709.wxrjsfzorozgeiuh@pengutronix.de>
- <CAD=FV=XFTuixKL-VBv-QObiO=Jg43i6W0enprLgXQ0U8=9C49A@mail.gmail.com>
- <20190903184800.2fmmvwyzbwbsaf6y@pengutronix.de>
- <CAD=FV=XOyayzv6N9Ky8m2ffXe4UzUijzrL8JCMZC3K+MEzaRFw@mail.gmail.com>
- <20190903201550.gxcyed5svtq33ev2@pengutronix.de>
- <CAD=FV=WjRiaNLJQJ25OeNSpY455H-ev8g3iZN24UXQtk3uXhtA@mail.gmail.com>
- <20190903210740.qgyvxxmsdg5dzaby@pengutronix.de>
- <CAD=FV=VDj8pCmkBd70buQNVmiv56OUEVWfRJALYgtZcESvPXdw@mail.gmail.com>
+From: Cheng-yi Chiang <cychiang@chromium.org>
+Subject: Re: [PATCH] drm: bridge/dw_hdmi: add audio sample channel status setting
+Date: Wed, 4 Sep 2019 17:09:29 +0800
+Message-ID: <CAFv8NwKHZM+zTu7GF_J0Xk6hubA2JK4cCsdhsDPOGk=3rnbCZw@mail.gmail.com>
+References: <20190903055103.134764-1-cychiang@chromium.org> <e1c3483c-baa6-c726-e547-fadf40d259f4@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAD=FV=VDj8pCmkBd70buQNVmiv56OUEVWfRJALYgtZcESvPXdw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Patrick Havelange <patrick.havelange-buIOx9BAs4sybS5Ee8rs3A@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <e1c3483c-baa6-c726-e547-fadf40d259f4@baylibre.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Neil Armstrong <narmstrong@baylibre.com>
+Cc: linux-kernel <linux-kernel@vger.kernel.org>, "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..." <alsa-devel@alsa-project.org>, tzungbi@chromium.org, Xing Zheng <zhengxing@rock-chips.com>, kuninori.morimoto.gx@renesas.com, Andrzej Hajda <a.hajda@samsung.com>, David Airlie <airlied@linux.ie>, kuankuan.y@gmail.com, Jeffy Chen <jeffy.chen@rock-chips.com>, Doug Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, cain.cai@rock-chips.com, linux-rockchip@lists.infradead.org, =?UTF-8?B?6JSh5p6r?= <eddie.cai@rock-chips.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel@ffwll.ch>, Yakir Yang <ykk@rock-chips.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Dylan Reid <dgreid@chromium.org>, sam@r
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Sep 03, 2019 at 02:48:54PM -0700, Doug Anderson wrote:
+Hi,
+
+On Tue, Sep 3, 2019 at 5:53 PM Neil Armstrong <narmstrong@baylibre.com> wrote:
+>
 > Hi,
-> =
-
-> On Tue, Sep 3, 2019 at 2:07 PM Uwe Kleine-K=F6nig
-> <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
+>
+> On 03/09/2019 07:51, Cheng-Yi Chiang wrote:
+> > From: Yakir Yang <ykk@rock-chips.com>
 > >
-> > On Tue, Sep 03, 2019 at 01:50:27PM -0700, Doug Anderson wrote:
-> > > Hi,
-> > >
-> > > On Tue, Sep 3, 2019 at 1:15 PM Uwe Kleine-K=F6nig
-> > > <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
-> > > >
-> > > > On Tue, Sep 03, 2019 at 12:35:25PM -0700, Doug Anderson wrote:
-> > > > > Hi,
-> > > > >
-> > > > > On Tue, Sep 3, 2019 at 11:48 AM Uwe Kleine-K=F6nig
-> > > > > <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
-> > > > > >
-> > > > > > Hello,
-> > > > > >
-> > > > > > On Tue, Sep 03, 2019 at 09:54:37AM -0700, Doug Anderson wrote:
-> > > > > > > On Mon, Sep 2, 2019 at 7:27 AM Uwe Kleine-K=F6nig
-> > > > > > > <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
-> > > > > > > > On Fri, Aug 30, 2019 at 10:39:16AM -0700, Doug Anderson wro=
-te:
-> > > > > > > > > On Sat, Aug 24, 2019 at 8:37 AM Uwe Kleine-K=F6nig <uwe@k=
-leine-koenig.org> wrote:
-> > > > > > > > > >
-> > > > > > > > > > The pwm-fsl-ftm driver is one of only three PWM drivers=
- which updates
-> > > > > > > > > > the state for the caller of pwm_apply_state(). This mig=
-ht have
-> > > > > > > > > > surprising results if the caller reuses the values expe=
-cting them to
-> > > > > > > > > > still represent the same state.
-> > > > > > > > > >
-> > > > > > > > > > Signed-off-by: Uwe Kleine-K=F6nig <uwe-rXY34ruvC2xidJT2blvkqA@public.gmane.org=
-g>
-> > > > > > > > > > ---
-> > > > > > > > > >  drivers/pwm/pwm-fsl-ftm.c | 4 ----
-> > > > > > > > > >  1 file changed, 4 deletions(-)
-> > > > > > > > >
-> > > > > > > > > Presumably this patch could break something since the pwm=
--fsl-ftm
-> > > > > > > > > driver doesn't appear to implement the get_state() functi=
-on.  ...or
-> > > > > > > > > did I miss it?
-> > > > > > > >
-> > > > > > > > I don't expect breakage. We have more than 50 pwm drivers a=
-nd only three
-> > > > > > > > of them made use of adapting the passed state. So unless yo=
-u do
-> > > > > > > > something special with the PWM (i.e. more than backlight, L=
-ED or fan
-> > > > > > > > control) I don't think a consumer might care. But it might =
-well be that
-> > > > > > > > I miss something so feel free to prove me wrong.
-> > > > > > >
-> > > > > > > I don't have this hardware so I can't prove you wrong.  ...but
-> > > > > > > presumably someone added the code to return the state on purp=
-ose?
-> > > > > > >
-> > > > > > > Maybe you could implement get_state() for this driver in your=
- series?
-> > > > > >
-> > > > > > Sure, I could. But I don't have hardware either and so I'm not =
-in a
-> > > > > > better position than anybody else on this list.
-> > > > > >
-> > > > > > I suggest to apply as is during the merge window, and let affec=
-ted
-> > > > > > user report problems (or patches) if there really is an issue.
-> > > > > > Guessing what people might suffer from and trying to cure this =
-with
-> > > > > > untested patches won't help I think.
-> > > > >
-> > > > > I suppose it's not up to me, but I would rather have a patch that
-> > > > > attempts to keep things working like they did before rather than =
-one
-> > > > > that is known to change behavior.  Even worse is that your patch
-> > > > > description doesn't mention this functionality change at all.
-> > > >
-> > > > I suggest to add
-> > > >
-> > > >         As the driver doesn't provide a .get_state() callback it is
-> > > >         expected that this changes behaviour slightly as pwm_get_st=
-ate()
-> > > >         will yield the last set instead of the last implemented set=
-ting.
-> > > >
-> > > > to the commit log to fix this.
-> > > >
-> > > > > I will also note that not everyone does a deep test of all
-> > > > > functionality during every kernel merge window.  ...so your chang=
-e in
-> > > > > functionality certain has a pretty high chance of remaining broke=
-n for
-> > > > > a while.
-> > > >
-> > > > I don't expect any real breakage. The changed behaviour only affects
-> > > > users of pwm_get_state() that is called after pwm_apply_state().
-> > > >
-> > > > > In addition if a PWM is used for something like a PWM
-> > > > > regulator then subtle changes can cause totally non-obvious break=
-ages,
-> > > > > maybe adjusting regulators by a very small percentage.
-> > > >
-> > > > So for drivers/regulator/pwm-regulator.c this affects the .get_volt=
-age()
-> > > > call only. Note that .set_voltage() does call pwm_get_state() but
-> > > > doesn't use the result. I don't see how my change would affect the
-> > > > configuration written to the PWM registers when the PWM regulator d=
-river
-> > > > is its user. So if you want to convince me that the PWM regulator i=
-s one
-> > > > of the potentially affected consumers, you have to work a bit harde=
-r.
-> > > > :-)
-> > >
-> > > Prior to your patch, pwm_apply_state() would call the ->apply()
-> > > function, right?  That would modify the state.  Then pwm_apply_state()
-> > > would store the state (after it had been modified) into pwm->state.
-> > > All future calls to pwm_get_state() would return the modified state.
-> > >
-> > > ...this means that the call to pwm_get_state() in
-> > > pwm_regulator_get_voltage() would return the actual hardware state.
-> > >
-> > > After your patch series pwm_get_state() will not return the actual
-> > > hardware state for "pwm-fsl-ftm.c", it will return the state that was
-> > > programmed.
-> > >
-> > > While pwm_set_voltage() will not necessarily be affected, future calls
-> > > to pwm_regulator_get_voltage() could be affected.  Unless you are
-> > > asserting that 100% of the calls to pwm_get_voltage() cosmetic.
-> > >
-> > >
-> > > Please correct anything I got wrong there.
+> > When transmitting IEC60985 linear PCM audio, we configure the
+> > Audio Sample Channel Status information of all the channel
+> > status bits in the IEC60958 frame.
+> > Refer to 60958-3 page 10 for frequency, original frequency, and
+> > wordlength setting.
 > >
-> > I think this is all true. The key question here is then: Who calls the
-> > .get_voltage() callback and cares about the result? Yes, it changes a
-> > few files in sysfs but apart from that?
-> =
+> > This fix the issue that audio does not come out on some monitors
+> > (e.g. LG 22CV241)
+> >
+> > Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+> > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+> > ---
+> >  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 59 +++++++++++++++++++++++
+> >  drivers/gpu/drm/bridge/synopsys/dw-hdmi.h | 20 ++++++++
+> >  2 files changed, 79 insertions(+)
+> >
+> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> > index bd65d0479683..34d46e25d610 100644
+> > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> > @@ -582,6 +582,63 @@ static unsigned int hdmi_compute_n(unsigned int freq, unsigned long pixel_clk)
+> >       return n;
+> >  }
+> >
+> > +static void hdmi_set_schnl(struct dw_hdmi *hdmi)
+> > +{
+> > +     u8 aud_schnl_samplerate;
+> > +     u8 aud_schnl_8;
+> > +
+> > +     /* These registers are on RK3288 using version 2.0a. */
+> > +     if (hdmi->version != 0x200a)
+> > +             return;
+>
+> Are these limited to the 2.0a version *in* RK3288, or 2.0a version on all
+> SoCs ?
+>
 
-> There are lots of drivers that call get_voltage() for things other
-> than sysfs, but without auditing each one I can't say if any of them
-> would change behavior in a way that would matter.
+In the original patch by Yakir,
 
-In my book it is ok to do such a change. The driver continues to compile
-just fine, it isn't knowingly broken. And if someone finds a regression
-we can fix it then and have someone who cares for testing.
+https://lore.kernel.org/patchwork/patch/539653/   (sorry, I should
+have added this link in the "after the cut" note)
 
-And even if a regulator changes its behaviour slightly and breaks in a
-hardly detectable way, I would bet that in 95% of the cases it only
-worked by chance before. And I hope for the remaining 5% who seem to
-care about correctness, that the reverify on a kernel upgrade.
+The fix is limited to version 2.0.
+Since I am only testing on RK3288 with 2.0a, I change the check to 2.0a only.
+I can not test 2.0a version on other SoCs.
+The databook I have at hand is 2.0a (not specific to RK3288) so I
+think all 2.0a should have this register.
 
-Yes, there might be some cases falling through the cracks, but if we
-start to demand this kind of care from people who work on generic code
-(here: PWM core) we will be stuck for a long time and scare people with
-motivation away. So the lesser evil in my eyes is to accept that not all
-corner cases might be handled because they are unknown.
+As for other version like version 1.3 on iMX6, there is no such
+register, as stated by Russell
 
-Best regards
-Uwe
+http://lkml.iu.edu/hypermail/linux/kernel/1501.3/06268.html.
 
--- =
+So at least we should check the version.
+Maybe we can set the criteria as version 2.0 or above to make it a safe patch ?
+If there is the same need on other SoC with version < 2.0, it can be
+added later.
+Presumably, there will be databook of that version to help confirming
+this setting.
 
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Thanks!
+> > +
+> > +     switch (hdmi->sample_rate) {
+> > +     case 32000:
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_32K;
+> > +             break;
+> > +     case 44100:
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_44K1;
+> > +             break;
+> > +     case 48000:
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_48K;
+> > +             break;
+> > +     case 88200:
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_88K2;
+> > +             break;
+> > +     case 96000:
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_96K;
+> > +             break;
+> > +     case 176400:
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_176K4;
+> > +             break;
+> > +     case 192000:
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_192K;
+> > +             break;
+> > +     case 768000:
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_768K;
+> > +             break;
+> > +     default:
+> > +             dev_warn(hdmi->dev, "Unsupported audio sample rate (%u)\n",
+> > +                      hdmi->sample_rate);
+> > +             return;
+> > +     }
+> > +
+> > +     /* set channel status register */
+> > +     hdmi_modb(hdmi, aud_schnl_samplerate, HDMI_FC_AUDSCHNLS7_SMPRATE_MASK,
+> > +               HDMI_FC_AUDSCHNLS7);
+> > +
+> > +     /*
+> > +      * Set original frequency to be the same as frequency.
+> > +      * Use one-complement value as stated in IEC60958-3 page 13.
+> > +      */
+> > +     aud_schnl_8 = (~aud_schnl_samplerate) <<
+> > +                     HDMI_FC_AUDSCHNLS8_ORIGSAMPFREQ_OFFSET;
+> > +
+> > +     /* This means word length is 16 bit. Refer to IEC60958-3 page 12. */
+> > +     aud_schnl_8 |= 2 << HDMI_FC_AUDSCHNLS8_WORDLEGNTH_OFFSET;
+> > +
+> > +     hdmi_writeb(hdmi, aud_schnl_8, HDMI_FC_AUDSCHNLS8);
+> > +}
+> > +
+> >  static void hdmi_set_clk_regenerator(struct dw_hdmi *hdmi,
+> >       unsigned long pixel_clk, unsigned int sample_rate)
+> >  {
+> > @@ -620,6 +677,8 @@ static void hdmi_set_clk_regenerator(struct dw_hdmi *hdmi,
+> >       hdmi->audio_cts = cts;
+> >       hdmi_set_cts_n(hdmi, cts, hdmi->audio_enable ? n : 0);
+> >       spin_unlock_irq(&hdmi->audio_lock);
+> > +
+> > +     hdmi_set_schnl(hdmi);
+> >  }
+> >
+> >  static void hdmi_init_clk_regenerator(struct dw_hdmi *hdmi)
+> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
+> > index 6988f12d89d9..619ebc1c8354 100644
+> > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
+> > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
+> > @@ -158,6 +158,17 @@
+> >  #define HDMI_FC_SPDDEVICEINF                    0x1062
+> >  #define HDMI_FC_AUDSCONF                        0x1063
+> >  #define HDMI_FC_AUDSSTAT                        0x1064
+> > +#define HDMI_FC_AUDSV                           0x1065
+> > +#define HDMI_FC_AUDSU                           0x1066
+> > +#define HDMI_FC_AUDSCHNLS0                      0x1067
+> > +#define HDMI_FC_AUDSCHNLS1                      0x1068
+> > +#define HDMI_FC_AUDSCHNLS2                      0x1069
+> > +#define HDMI_FC_AUDSCHNLS3                      0x106a
+> > +#define HDMI_FC_AUDSCHNLS4                      0x106b
+> > +#define HDMI_FC_AUDSCHNLS5                      0x106c
+> > +#define HDMI_FC_AUDSCHNLS6                      0x106d
+> > +#define HDMI_FC_AUDSCHNLS7                      0x106e
+> > +#define HDMI_FC_AUDSCHNLS8                      0x106f
+> >  #define HDMI_FC_DATACH0FILL                     0x1070
+> >  #define HDMI_FC_DATACH1FILL                     0x1071
+> >  #define HDMI_FC_DATACH2FILL                     0x1072
+> > @@ -706,6 +717,15 @@ enum {
+> >  /* HDMI_FC_AUDSCHNLS7 field values */
+> >       HDMI_FC_AUDSCHNLS7_ACCURACY_OFFSET = 4,
+> >       HDMI_FC_AUDSCHNLS7_ACCURACY_MASK = 0x30,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_MASK = 0x0f,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_192K = 0xe,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_176K4 = 0xc,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_96K = 0xa,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_768K = 0x9,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_88K2 = 0x8,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_32K = 0x3,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_48K = 0x2,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_44K1 = 0x0,
+> >
+> >  /* HDMI_FC_AUDSCHNLS8 field values */
+> >       HDMI_FC_AUDSCHNLS8_ORIGSAMPFREQ_MASK = 0xf0,
+> >
+>
