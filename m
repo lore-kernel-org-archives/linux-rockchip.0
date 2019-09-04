@@ -1,23 +1,12 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v3 5/6] pwm: fsl-ftm: Don't update the state for the
- caller of pwm_apply_state()
-Date: Tue, 3 Sep 2019 14:48:54 -0700
-Message-ID: <CAD=FV=VDj8pCmkBd70buQNVmiv56OUEVWfRJALYgtZcESvPXdw@mail.gmail.com>
-References: <20190824153707.13746-1-uwe@kleine-koenig.org>
- <20190824153707.13746-6-uwe@kleine-koenig.org>
- <CAD=FV=X8kVU_zr69aKe-+GkAQh-tDwVf8tFogKve3s5O5ndF-g@mail.gmail.com>
- <20190902142709.wxrjsfzorozgeiuh@pengutronix.de>
- <CAD=FV=XFTuixKL-VBv-QObiO=Jg43i6W0enprLgXQ0U8=9C49A@mail.gmail.com>
- <20190903184800.2fmmvwyzbwbsaf6y@pengutronix.de>
- <CAD=FV=XOyayzv6N9Ky8m2ffXe4UzUijzrL8JCMZC3K+MEzaRFw@mail.gmail.com>
- <20190903201550.gxcyed5svtq33ev2@pengutronix.de>
- <CAD=FV=WjRiaNLJQJ25OeNSpY455H-ev8g3iZN24UXQtk3uXhtA@mail.gmail.com>
- <20190903210740.qgyvxxmsdg5dzaby@pengutronix.de>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] mmc: dw_mmc-rockchip: Using 180 sample phase if all phases
+ work
+Date: Wed,  4 Sep 2019 10:27:10 +0800
+Message-ID: <1567564030-83224-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190903210740.qgyvxxmsdg5dzaby-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -27,110 +16,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <maxime.ripard-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Patrick Havelange <patrick.havelange-buIOx9BAs4sybS5Ee8rs3A@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBUdWUsIFNlcCAzLCAyMDE5IGF0IDI6MDcgUE0gVXdlIEtsZWluZS1Lw7ZuaWcKPHUu
-a2xlaW5lLWtvZW5pZ0BwZW5ndXRyb25peC5kZT4gd3JvdGU6Cj4KPiBPbiBUdWUsIFNlcCAwMywg
-MjAxOSBhdCAwMTo1MDoyN1BNIC0wNzAwLCBEb3VnIEFuZGVyc29uIHdyb3RlOgo+ID4gSGksCj4g
-Pgo+ID4gT24gVHVlLCBTZXAgMywgMjAxOSBhdCAxOjE1IFBNIFV3ZSBLbGVpbmUtS8O2bmlnCj4g
-PiA8dS5rbGVpbmUta29lbmlnQHBlbmd1dHJvbml4LmRlPiB3cm90ZToKPiA+ID4KPiA+ID4gT24g
-VHVlLCBTZXAgMDMsIDIwMTkgYXQgMTI6MzU6MjVQTSAtMDcwMCwgRG91ZyBBbmRlcnNvbiB3cm90
-ZToKPiA+ID4gPiBIaSwKPiA+ID4gPgo+ID4gPiA+IE9uIFR1ZSwgU2VwIDMsIDIwMTkgYXQgMTE6
-NDggQU0gVXdlIEtsZWluZS1Lw7ZuaWcKPiA+ID4gPiA8dS5rbGVpbmUta29lbmlnQHBlbmd1dHJv
-bml4LmRlPiB3cm90ZToKPiA+ID4gPiA+Cj4gPiA+ID4gPiBIZWxsbywKPiA+ID4gPiA+Cj4gPiA+
-ID4gPiBPbiBUdWUsIFNlcCAwMywgMjAxOSBhdCAwOTo1NDozN0FNIC0wNzAwLCBEb3VnIEFuZGVy
-c29uIHdyb3RlOgo+ID4gPiA+ID4gPiBPbiBNb24sIFNlcCAyLCAyMDE5IGF0IDc6MjcgQU0gVXdl
-IEtsZWluZS1Lw7ZuaWcKPiA+ID4gPiA+ID4gPHUua2xlaW5lLWtvZW5pZ0BwZW5ndXRyb25peC5k
-ZT4gd3JvdGU6Cj4gPiA+ID4gPiA+ID4gT24gRnJpLCBBdWcgMzAsIDIwMTkgYXQgMTA6Mzk6MTZB
-TSAtMDcwMCwgRG91ZyBBbmRlcnNvbiB3cm90ZToKPiA+ID4gPiA+ID4gPiA+IE9uIFNhdCwgQXVn
-IDI0LCAyMDE5IGF0IDg6MzcgQU0gVXdlIEtsZWluZS1Lw7ZuaWcgPHV3ZUBrbGVpbmUta29lbmln
-Lm9yZz4gd3JvdGU6Cj4gPiA+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiA+IFRoZSBwd20t
-ZnNsLWZ0bSBkcml2ZXIgaXMgb25lIG9mIG9ubHkgdGhyZWUgUFdNIGRyaXZlcnMgd2hpY2ggdXBk
-YXRlcwo+ID4gPiA+ID4gPiA+ID4gPiB0aGUgc3RhdGUgZm9yIHRoZSBjYWxsZXIgb2YgcHdtX2Fw
-cGx5X3N0YXRlKCkuIFRoaXMgbWlnaHQgaGF2ZQo+ID4gPiA+ID4gPiA+ID4gPiBzdXJwcmlzaW5n
-IHJlc3VsdHMgaWYgdGhlIGNhbGxlciByZXVzZXMgdGhlIHZhbHVlcyBleHBlY3RpbmcgdGhlbSB0
-bwo+ID4gPiA+ID4gPiA+ID4gPiBzdGlsbCByZXByZXNlbnQgdGhlIHNhbWUgc3RhdGUuCj4gPiA+
-ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IFV3ZSBLbGVpbmUt
-S8O2bmlnIDx1d2VAa2xlaW5lLWtvZW5pZy5vcmc+Cj4gPiA+ID4gPiA+ID4gPiA+IC0tLQo+ID4g
-PiA+ID4gPiA+ID4gPiAgZHJpdmVycy9wd20vcHdtLWZzbC1mdG0uYyB8IDQgLS0tLQo+ID4gPiA+
-ID4gPiA+ID4gPiAgMSBmaWxlIGNoYW5nZWQsIDQgZGVsZXRpb25zKC0pCj4gPiA+ID4gPiA+ID4g
-Pgo+ID4gPiA+ID4gPiA+ID4gUHJlc3VtYWJseSB0aGlzIHBhdGNoIGNvdWxkIGJyZWFrIHNvbWV0
-aGluZyBzaW5jZSB0aGUgcHdtLWZzbC1mdG0KPiA+ID4gPiA+ID4gPiA+IGRyaXZlciBkb2Vzbid0
-IGFwcGVhciB0byBpbXBsZW1lbnQgdGhlIGdldF9zdGF0ZSgpIGZ1bmN0aW9uLiAgLi4ub3IKPiA+
-ID4gPiA+ID4gPiA+IGRpZCBJIG1pc3MgaXQ/Cj4gPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gPiBJ
-IGRvbid0IGV4cGVjdCBicmVha2FnZS4gV2UgaGF2ZSBtb3JlIHRoYW4gNTAgcHdtIGRyaXZlcnMg
-YW5kIG9ubHkgdGhyZWUKPiA+ID4gPiA+ID4gPiBvZiB0aGVtIG1hZGUgdXNlIG9mIGFkYXB0aW5n
-IHRoZSBwYXNzZWQgc3RhdGUuIFNvIHVubGVzcyB5b3UgZG8KPiA+ID4gPiA+ID4gPiBzb21ldGhp
-bmcgc3BlY2lhbCB3aXRoIHRoZSBQV00gKGkuZS4gbW9yZSB0aGFuIGJhY2tsaWdodCwgTEVEIG9y
-IGZhbgo+ID4gPiA+ID4gPiA+IGNvbnRyb2wpIEkgZG9uJ3QgdGhpbmsgYSBjb25zdW1lciBtaWdo
-dCBjYXJlLiBCdXQgaXQgbWlnaHQgd2VsbCBiZSB0aGF0Cj4gPiA+ID4gPiA+ID4gSSBtaXNzIHNv
-bWV0aGluZyBzbyBmZWVsIGZyZWUgdG8gcHJvdmUgbWUgd3JvbmcuCj4gPiA+ID4gPiA+Cj4gPiA+
-ID4gPiA+IEkgZG9uJ3QgaGF2ZSB0aGlzIGhhcmR3YXJlIHNvIEkgY2FuJ3QgcHJvdmUgeW91IHdy
-b25nLiAgLi4uYnV0Cj4gPiA+ID4gPiA+IHByZXN1bWFibHkgc29tZW9uZSBhZGRlZCB0aGUgY29k
-ZSB0byByZXR1cm4gdGhlIHN0YXRlIG9uIHB1cnBvc2U/Cj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+
-IE1heWJlIHlvdSBjb3VsZCBpbXBsZW1lbnQgZ2V0X3N0YXRlKCkgZm9yIHRoaXMgZHJpdmVyIGlu
-IHlvdXIgc2VyaWVzPwo+ID4gPiA+ID4KPiA+ID4gPiA+IFN1cmUsIEkgY291bGQuIEJ1dCBJIGRv
-bid0IGhhdmUgaGFyZHdhcmUgZWl0aGVyIGFuZCBzbyBJJ20gbm90IGluIGEKPiA+ID4gPiA+IGJl
-dHRlciBwb3NpdGlvbiB0aGFuIGFueWJvZHkgZWxzZSBvbiB0aGlzIGxpc3QuCj4gPiA+ID4gPgo+
-ID4gPiA+ID4gSSBzdWdnZXN0IHRvIGFwcGx5IGFzIGlzIGR1cmluZyB0aGUgbWVyZ2Ugd2luZG93
-LCBhbmQgbGV0IGFmZmVjdGVkCj4gPiA+ID4gPiB1c2VyIHJlcG9ydCBwcm9ibGVtcyAob3IgcGF0
-Y2hlcykgaWYgdGhlcmUgcmVhbGx5IGlzIGFuIGlzc3VlLgo+ID4gPiA+ID4gR3Vlc3Npbmcgd2hh
-dCBwZW9wbGUgbWlnaHQgc3VmZmVyIGZyb20gYW5kIHRyeWluZyB0byBjdXJlIHRoaXMgd2l0aAo+
-ID4gPiA+ID4gdW50ZXN0ZWQgcGF0Y2hlcyB3b24ndCBoZWxwIEkgdGhpbmsuCj4gPiA+ID4KPiA+
-ID4gPiBJIHN1cHBvc2UgaXQncyBub3QgdXAgdG8gbWUsIGJ1dCBJIHdvdWxkIHJhdGhlciBoYXZl
-IGEgcGF0Y2ggdGhhdAo+ID4gPiA+IGF0dGVtcHRzIHRvIGtlZXAgdGhpbmdzIHdvcmtpbmcgbGlr
-ZSB0aGV5IGRpZCBiZWZvcmUgcmF0aGVyIHRoYW4gb25lCj4gPiA+ID4gdGhhdCBpcyBrbm93biB0
-byBjaGFuZ2UgYmVoYXZpb3IuICBFdmVuIHdvcnNlIGlzIHRoYXQgeW91ciBwYXRjaAo+ID4gPiA+
-IGRlc2NyaXB0aW9uIGRvZXNuJ3QgbWVudGlvbiB0aGlzIGZ1bmN0aW9uYWxpdHkgY2hhbmdlIGF0
-IGFsbC4KPiA+ID4KPiA+ID4gSSBzdWdnZXN0IHRvIGFkZAo+ID4gPgo+ID4gPiAgICAgICAgIEFz
-IHRoZSBkcml2ZXIgZG9lc24ndCBwcm92aWRlIGEgLmdldF9zdGF0ZSgpIGNhbGxiYWNrIGl0IGlz
-Cj4gPiA+ICAgICAgICAgZXhwZWN0ZWQgdGhhdCB0aGlzIGNoYW5nZXMgYmVoYXZpb3VyIHNsaWdo
-dGx5IGFzIHB3bV9nZXRfc3RhdGUoKQo+ID4gPiAgICAgICAgIHdpbGwgeWllbGQgdGhlIGxhc3Qg
-c2V0IGluc3RlYWQgb2YgdGhlIGxhc3QgaW1wbGVtZW50ZWQgc2V0dGluZy4KPiA+ID4KPiA+ID4g
-dG8gdGhlIGNvbW1pdCBsb2cgdG8gZml4IHRoaXMuCj4gPiA+Cj4gPiA+ID4gSSB3aWxsIGFsc28g
-bm90ZSB0aGF0IG5vdCBldmVyeW9uZSBkb2VzIGEgZGVlcCB0ZXN0IG9mIGFsbAo+ID4gPiA+IGZ1
-bmN0aW9uYWxpdHkgZHVyaW5nIGV2ZXJ5IGtlcm5lbCBtZXJnZSB3aW5kb3cuICAuLi5zbyB5b3Vy
-IGNoYW5nZSBpbgo+ID4gPiA+IGZ1bmN0aW9uYWxpdHkgY2VydGFpbiBoYXMgYSBwcmV0dHkgaGln
-aCBjaGFuY2Ugb2YgcmVtYWluaW5nIGJyb2tlbiBmb3IKPiA+ID4gPiBhIHdoaWxlLgo+ID4gPgo+
-ID4gPiBJIGRvbid0IGV4cGVjdCBhbnkgcmVhbCBicmVha2FnZS4gVGhlIGNoYW5nZWQgYmVoYXZp
-b3VyIG9ubHkgYWZmZWN0cwo+ID4gPiB1c2VycyBvZiBwd21fZ2V0X3N0YXRlKCkgdGhhdCBpcyBj
-YWxsZWQgYWZ0ZXIgcHdtX2FwcGx5X3N0YXRlKCkuCj4gPiA+Cj4gPiA+ID4gSW4gYWRkaXRpb24g
-aWYgYSBQV00gaXMgdXNlZCBmb3Igc29tZXRoaW5nIGxpa2UgYSBQV00KPiA+ID4gPiByZWd1bGF0
-b3IgdGhlbiBzdWJ0bGUgY2hhbmdlcyBjYW4gY2F1c2UgdG90YWxseSBub24tb2J2aW91cyBicmVh
-a2FnZXMsCj4gPiA+ID4gbWF5YmUgYWRqdXN0aW5nIHJlZ3VsYXRvcnMgYnkgYSB2ZXJ5IHNtYWxs
-IHBlcmNlbnRhZ2UuCj4gPiA+Cj4gPiA+IFNvIGZvciBkcml2ZXJzL3JlZ3VsYXRvci9wd20tcmVn
-dWxhdG9yLmMgdGhpcyBhZmZlY3RzIHRoZSAuZ2V0X3ZvbHRhZ2UoKQo+ID4gPiBjYWxsIG9ubHku
-IE5vdGUgdGhhdCAuc2V0X3ZvbHRhZ2UoKSBkb2VzIGNhbGwgcHdtX2dldF9zdGF0ZSgpIGJ1dAo+
-ID4gPiBkb2Vzbid0IHVzZSB0aGUgcmVzdWx0LiBJIGRvbid0IHNlZSBob3cgbXkgY2hhbmdlIHdv
-dWxkIGFmZmVjdCB0aGUKPiA+ID4gY29uZmlndXJhdGlvbiB3cml0dGVuIHRvIHRoZSBQV00gcmVn
-aXN0ZXJzIHdoZW4gdGhlIFBXTSByZWd1bGF0b3IgZHJpdmVyCj4gPiA+IGlzIGl0cyB1c2VyLiBT
-byBpZiB5b3Ugd2FudCB0byBjb252aW5jZSBtZSB0aGF0IHRoZSBQV00gcmVndWxhdG9yIGlzIG9u
-ZQo+ID4gPiBvZiB0aGUgcG90ZW50aWFsbHkgYWZmZWN0ZWQgY29uc3VtZXJzLCB5b3UgaGF2ZSB0
-byB3b3JrIGEgYml0IGhhcmRlci4KPiA+ID4gOi0pCj4gPgo+ID4gUHJpb3IgdG8geW91ciBwYXRj
-aCwgcHdtX2FwcGx5X3N0YXRlKCkgd291bGQgY2FsbCB0aGUgLT5hcHBseSgpCj4gPiBmdW5jdGlv
-biwgcmlnaHQ/ICBUaGF0IHdvdWxkIG1vZGlmeSB0aGUgc3RhdGUuICBUaGVuIHB3bV9hcHBseV9z
-dGF0ZSgpCj4gPiB3b3VsZCBzdG9yZSB0aGUgc3RhdGUgKGFmdGVyIGl0IGhhZCBiZWVuIG1vZGlm
-aWVkKSBpbnRvIHB3bS0+c3RhdGUuCj4gPiBBbGwgZnV0dXJlIGNhbGxzIHRvIHB3bV9nZXRfc3Rh
-dGUoKSB3b3VsZCByZXR1cm4gdGhlIG1vZGlmaWVkIHN0YXRlLgo+ID4KPiA+IC4uLnRoaXMgbWVh
-bnMgdGhhdCB0aGUgY2FsbCB0byBwd21fZ2V0X3N0YXRlKCkgaW4KPiA+IHB3bV9yZWd1bGF0b3Jf
-Z2V0X3ZvbHRhZ2UoKSB3b3VsZCByZXR1cm4gdGhlIGFjdHVhbCBoYXJkd2FyZSBzdGF0ZS4KPiA+
-Cj4gPiBBZnRlciB5b3VyIHBhdGNoIHNlcmllcyBwd21fZ2V0X3N0YXRlKCkgd2lsbCBub3QgcmV0
-dXJuIHRoZSBhY3R1YWwKPiA+IGhhcmR3YXJlIHN0YXRlIGZvciAicHdtLWZzbC1mdG0uYyIsIGl0
-IHdpbGwgcmV0dXJuIHRoZSBzdGF0ZSB0aGF0IHdhcwo+ID4gcHJvZ3JhbW1lZC4KPiA+Cj4gPiBX
-aGlsZSBwd21fc2V0X3ZvbHRhZ2UoKSB3aWxsIG5vdCBuZWNlc3NhcmlseSBiZSBhZmZlY3RlZCwg
-ZnV0dXJlIGNhbGxzCj4gPiB0byBwd21fcmVndWxhdG9yX2dldF92b2x0YWdlKCkgY291bGQgYmUg
-YWZmZWN0ZWQuICBVbmxlc3MgeW91IGFyZQo+ID4gYXNzZXJ0aW5nIHRoYXQgMTAwJSBvZiB0aGUg
-Y2FsbHMgdG8gcHdtX2dldF92b2x0YWdlKCkgY29zbWV0aWMuCj4gPgo+ID4KPiA+IFBsZWFzZSBj
-b3JyZWN0IGFueXRoaW5nIEkgZ290IHdyb25nIHRoZXJlLgo+Cj4gSSB0aGluayB0aGlzIGlzIGFs
-bCB0cnVlLiBUaGUga2V5IHF1ZXN0aW9uIGhlcmUgaXMgdGhlbjogV2hvIGNhbGxzIHRoZQo+IC5n
-ZXRfdm9sdGFnZSgpIGNhbGxiYWNrIGFuZCBjYXJlcyBhYm91dCB0aGUgcmVzdWx0PyBZZXMsIGl0
-IGNoYW5nZXMgYQo+IGZldyBmaWxlcyBpbiBzeXNmcyBidXQgYXBhcnQgZnJvbSB0aGF0PwoKVGhl
-cmUgYXJlIGxvdHMgb2YgZHJpdmVycyB0aGF0IGNhbGwgZ2V0X3ZvbHRhZ2UoKSBmb3IgdGhpbmdz
-IG90aGVyCnRoYW4gc3lzZnMsIGJ1dCB3aXRob3V0IGF1ZGl0aW5nIGVhY2ggb25lIEkgY2FuJ3Qg
-c2F5IGlmIGFueSBvZiB0aGVtCndvdWxkIGNoYW5nZSBiZWhhdmlvciBpbiBhIHdheSB0aGF0IHdv
-dWxkIG1hdHRlci4KCi1Eb3VnCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJvY2tjaGlwCg==
+default_sample_phase is used to make sure the cards are enumurated
+properly and will be set to 0 if not assigned. However, the sample
+phase should depends on the tuned phase if running higher clock rate.
+If all phases work but default_sample_phase isn't assigned, driver
+set sample phase to 0 for this case, which isn't the best choice,
+because we always expect to set phase to the middle of window. To
+solve the following continually issues we have seen in the test, we
+need set phase to the more stable one, 180, if all phases work.
+
+mmcblk1: error -84 transferring data, sector 1735064, nr 8, cmd
+response 0x900, card status 0xb00
+mmcblk1: retrying using single block read
+dwmmc_rockchip ff0f0000.dwmmc: All phases work, using default phase 0.
+mmcblk1: retrying because a re-tune was needed
+
+.....
+
+mmcblk1: error -84 transferring data, sector 1728672, nr 248, cmd
+response 0x900, card status 0xb00
+mmcblk1: retrying using single block read
+dwmmc_rockchip ff0f0000.dwmmc: All phases work, using default phase 0.
+
+Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+
+ drivers/mmc/host/dw_mmc-rockchip.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+index d4d0213..9ef9723 100644
+--- a/drivers/mmc/host/dw_mmc-rockchip.c
++++ b/drivers/mmc/host/dw_mmc-rockchip.c
+@@ -209,9 +209,8 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
+ 	}
+ 
+ 	if (ranges[0].start == 0 && ranges[0].end == priv->num_phases - 1) {
+-		clk_set_phase(priv->sample_clk, priv->default_sample_phase);
+-		dev_info(host->dev, "All phases work, using default phase %d.",
+-			 priv->default_sample_phase);
++		clk_set_phase(priv->sample_clk, 180);
++		dev_info(host->dev, "All phases work, using phase 180.");
+ 		goto free;
+ 	}
+ 
+-- 
+1.9.1
