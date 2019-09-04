@@ -1,14 +1,14 @@
 From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH 2/4] media: hantro: Simplify buffer helpers
-Date: Wed, 04 Sep 2019 12:50:50 +0200
-Message-ID: <1567594250.3041.8.camel@pengutronix.de>
+Subject: Re: [PATCH 1/4] media: hantro: Simplify macroblock macros
+Date: Wed, 04 Sep 2019 12:50:47 +0200
+Message-ID: <1567594247.3041.7.camel@pengutronix.de>
 References: <20190903181711.7559-1-ezequiel@collabora.com>
- <20190903181711.7559-3-ezequiel@collabora.com>
+ <20190903181711.7559-2-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190903181711.7559-3-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+In-Reply-To: <20190903181711.7559-2-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -23,10 +23,8 @@ Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlma
 List-Id: linux-rockchip.vger.kernel.org
 
 On Tue, 2019-09-03 at 15:17 -0300, Ezequiel Garcia wrote:
-> Modify hantro_get_ref() and hantro_h264_get_ref_buf() helpers
-> to return the buffer DMA address, this makes the code simpler
-> and at the same time will allow easier enablement of the
-> post-processing feature.
+> It seems all codecs are using a 16x16 size macroblock,
+> and so it's possible to have just one set of macroblock macros.
 > 
 > Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 
