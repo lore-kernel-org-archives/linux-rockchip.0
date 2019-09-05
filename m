@@ -1,95 +1,196 @@
-From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] mmc: dw_mmc-rockchip: Using 180 sample phase if all
- phases work
-Date: Thu, 5 Sep 2019 09:30:08 +0200
-Message-ID: <CAPDyKFqbr9Q-aDOf3t+nftw=a1vR95yHHo=-ieoT1fnQ1S-HCQ@mail.gmail.com>
-References: <1567564030-83224-1-git-send-email-shawn.lin@rock-chips.com>
- <CAD=FV=Vwmj=LehhLCN5OBbEfNNXp9gULLYRoVV86HtqZBxvEjw@mail.gmail.com>
+From: Cheng-Yi Chiang <cychiang@chromium.org>
+Subject: [PATCH v2] drm: bridge/dw_hdmi: add audio sample channel status setting
+Date: Thu,  5 Sep 2019 17:43:25 +0800
+Message-ID: <20190905094325.33156-1-cychiang@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAD=FV=Vwmj=LehhLCN5OBbEfNNXp9gULLYRoVV86HtqZBxvEjw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Linux MMC List <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, a.hajda@samsung.com, Laurent.pinchart@ideasonboard.com, airlied@linux.ie, daniel@ffwll.ch, kuninori.morimoto.gx@renesas.com, sam@ravnborg.org, cychiang@chromium.org, dianders@chromium.org, dgreid@chromium.org, tzungbi@chromium.org, zhengxing@rock-chips.com, cain.cai@rock-chips.com, eddie.cai@rock-chips.com, jeffy.chen@rock-chips.com, kuankuan.y@gmail.com, enric.balletbo@collabora.com, dri-devel@lists.freedesktop.org, jernej.skrabec@siol.net, jonas@kwiboo.se, Yakir Yang <ykk@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 4 Sep 2019 at 17:44, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
->
-> Hi,
->
-> On Tue, Sep 3, 2019 at 7:28 PM Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> >
-> > default_sample_phase is used to make sure the cards are enumurated
-> > properly and will be set to 0 if not assigned. However, the sample
-> > phase should depends on the tuned phase if running higher clock rate.
-> > If all phases work but default_sample_phase isn't assigned, driver
-> > set sample phase to 0 for this case, which isn't the best choice,
-> > because we always expect to set phase to the middle of window. To
-> > solve the following continually issues we have seen in the test, we
-> > need set phase to the more stable one, 180, if all phases work.
-> >
-> > mmcblk1: error -84 transferring data, sector 1735064, nr 8, cmd
-> > response 0x900, card status 0xb00
-> > mmcblk1: retrying using single block read
-> > dwmmc_rockchip ff0f0000.dwmmc: All phases work, using default phase 0.
-> > mmcblk1: retrying because a re-tune was needed
-> >
-> > .....
-> >
-> > mmcblk1: error -84 transferring data, sector 1728672, nr 248, cmd
-> > response 0x900, card status 0xb00
-> > mmcblk1: retrying using single block read
-> > dwmmc_rockchip ff0f0000.dwmmc: All phases work, using default phase 0.
-> >
-> > Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > ---
-> >
-> >  drivers/mmc/host/dw_mmc-rockchip.c | 5 ++---
-> >  1 file changed, 2 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-> > index d4d0213..9ef9723 100644
-> > --- a/drivers/mmc/host/dw_mmc-rockchip.c
-> > +++ b/drivers/mmc/host/dw_mmc-rockchip.c
-> > @@ -209,9 +209,8 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
-> >         }
-> >
-> >         if (ranges[0].start == 0 && ranges[0].end == priv->num_phases - 1) {
-> > -               clk_set_phase(priv->sample_clk, priv->default_sample_phase);
-> > -               dev_info(host->dev, "All phases work, using default phase %d.",
-> > -                        priv->default_sample_phase);
-> > +               clk_set_phase(priv->sample_clk, 180);
-> > +               dev_info(host->dev, "All phases work, using phase 180.");
->
-> This violates what is documented in the device tree bindings, which says:
->
-> * rockchip,default-sample-phase: The default phase to set ciu-sample at
->   probing, low speeds or in case where all phases work at tuning time.
->   If not specified 0 deg will be used.
->
-> Specifically:
-> * You don't use "default-sample-phase" at all when all phases pass.
-> * You don't default to 0 if not specified.
->
-> Personally I think we could change the bindings to say: "If not
-> specified 180 deg will be used" and then change the code to do the
-> same.  If we wanted to keep the "stable ABI" that is device tree we
-> could also just do the "180 default" for new SoCs and then manually
-> add the device tree fragment to all old dts files.
->
+From: Yakir Yang <ykk@rock-chips.com>
 
-Thanks for spotting this! Let me drop the patch and wait for a new
-version from Shawn.
+When transmitting IEC60985 linear PCM audio, we configure the
+Aduio Sample Channel Status information of all the channel
+status bits in the IEC60958 frame.
+Refer to 60958-3 page 10 for frequency, original frequency, and
+wordlength setting.
 
-Kind regards
-Uffe
+This fix the issue that audio does not come out on some monitors
+(e.g. LG 22CV241)
+
+Note that these registers are only for interfaces:
+I2S audio interface, General Purpose Audio (GPA), or AHB audio DMA
+(AHBAUDDMA).
+For S/PDIF interface this information comes from the stream.
+
+Currently this function dw_hdmi_set_channel_status is only called
+from dw-hdmi-i2s-audio in I2S setup.
+
+Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+---
+ Original patch by Yakir Yang is at
+
+ https://lore.kernel.org/patchwork/patch/539653/
+
+ Change from v1 to v2:
+ 1. Remove the version check because this will only be called by
+    dw-hdmi-i2s-audio, and the registers are available in I2S setup.
+ 2. Set these registers in dw_hdmi_i2s_hw_params.
+ 3. Fix the sample width setting so it can use 16 or 24 bits.
+
+ .../drm/bridge/synopsys/dw-hdmi-i2s-audio.c   |  1 +
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c     | 70 +++++++++++++++++++
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.h     | 20 ++++++
+ include/drm/bridge/dw_hdmi.h                  |  2 +
+ 4 files changed, 93 insertions(+)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
+index 34d8e837555f..b801a28b0f17 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
+@@ -102,6 +102,7 @@ static int dw_hdmi_i2s_hw_params(struct device *dev, void *data,
+ 	}
+ 
+ 	dw_hdmi_set_sample_rate(hdmi, hparms->sample_rate);
++	dw_hdmi_set_channel_status(hdmi, hparms->sample_width);
+ 	dw_hdmi_set_channel_count(hdmi, hparms->channels);
+ 	dw_hdmi_set_channel_allocation(hdmi, hparms->cea.channel_allocation);
+ 
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index bd65d0479683..d1daa369c8ae 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -582,6 +582,76 @@ static unsigned int hdmi_compute_n(unsigned int freq, unsigned long pixel_clk)
+ 	return n;
+ }
+ 
++/*
++ * When transmitting IEC60958 linear PCM audio, these registers allow to
++ * configure the channel status information of all the channel status
++ * bits in the IEC60958 frame. For the moment this configuration is only
++ * used when the I2S audio interface, General Purpose Audio (GPA),
++ * or AHB audio DMA (AHBAUDDMA) interface is active
++ * (for S/PDIF interface this information comes from the stream).
++ */
++void dw_hdmi_set_channel_status(struct dw_hdmi *hdmi,
++				unsigned int sample_width)
++{
++	u8 aud_schnl_samplerate;
++	u8 aud_schnl_8;
++	u8 word_length_bits;
++
++	switch (hdmi->sample_rate) {
++	case 32000:
++		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_32K;
++		break;
++	case 44100:
++		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_44K1;
++		break;
++	case 48000:
++		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_48K;
++		break;
++	case 88200:
++		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_88K2;
++		break;
++	case 96000:
++		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_96K;
++		break;
++	case 176400:
++		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_176K4;
++		break;
++	case 192000:
++		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_192K;
++		break;
++	case 768000:
++		aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_768K;
++		break;
++	default:
++		dev_warn(hdmi->dev, "Unsupported audio sample rate (%u)\n",
++			 hdmi->sample_rate);
++		return;
++	}
++
++	/* set channel status register */
++	hdmi_modb(hdmi, aud_schnl_samplerate, HDMI_FC_AUDSCHNLS7_SMPRATE_MASK,
++		  HDMI_FC_AUDSCHNLS7);
++
++	/*
++	 * Set original frequency to be the same as frequency.
++	 * Use one-complement value as stated in IEC60958-3 page 13.
++	 */
++	aud_schnl_8 = (~aud_schnl_samplerate) <<
++			HDMI_FC_AUDSCHNLS8_ORIGSAMPFREQ_OFFSET;
++
++	/*
++	 * Refer to IEC60958-3 page 12. We can accept 16 bits or 24 bits.
++	 * Otherwise, set the register to 0t o indicate using default value.
++	 */
++	word_length_bits = (sample_width == 16) ? 0x2 :
++			    ((sample_width == 24) ? 0xb : 0);
++
++	aud_schnl_8 |= word_length_bits << HDMI_FC_AUDSCHNLS8_WORDLEGNTH_OFFSET;
++
++	hdmi_writeb(hdmi, aud_schnl_8, HDMI_FC_AUDSCHNLS8);
++}
++EXPORT_SYMBOL_GPL(dw_hdmi_set_channel_status);
++
+ static void hdmi_set_clk_regenerator(struct dw_hdmi *hdmi,
+ 	unsigned long pixel_clk, unsigned int sample_rate)
+ {
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
+index 6988f12d89d9..619ebc1c8354 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
+@@ -158,6 +158,17 @@
+ #define HDMI_FC_SPDDEVICEINF                    0x1062
+ #define HDMI_FC_AUDSCONF                        0x1063
+ #define HDMI_FC_AUDSSTAT                        0x1064
++#define HDMI_FC_AUDSV                           0x1065
++#define HDMI_FC_AUDSU                           0x1066
++#define HDMI_FC_AUDSCHNLS0                      0x1067
++#define HDMI_FC_AUDSCHNLS1                      0x1068
++#define HDMI_FC_AUDSCHNLS2                      0x1069
++#define HDMI_FC_AUDSCHNLS3                      0x106a
++#define HDMI_FC_AUDSCHNLS4                      0x106b
++#define HDMI_FC_AUDSCHNLS5                      0x106c
++#define HDMI_FC_AUDSCHNLS6                      0x106d
++#define HDMI_FC_AUDSCHNLS7                      0x106e
++#define HDMI_FC_AUDSCHNLS8                      0x106f
+ #define HDMI_FC_DATACH0FILL                     0x1070
+ #define HDMI_FC_DATACH1FILL                     0x1071
+ #define HDMI_FC_DATACH2FILL                     0x1072
+@@ -706,6 +717,15 @@ enum {
+ /* HDMI_FC_AUDSCHNLS7 field values */
+ 	HDMI_FC_AUDSCHNLS7_ACCURACY_OFFSET = 4,
+ 	HDMI_FC_AUDSCHNLS7_ACCURACY_MASK = 0x30,
++	HDMI_FC_AUDSCHNLS7_SMPRATE_MASK = 0x0f,
++	HDMI_FC_AUDSCHNLS7_SMPRATE_192K = 0xe,
++	HDMI_FC_AUDSCHNLS7_SMPRATE_176K4 = 0xc,
++	HDMI_FC_AUDSCHNLS7_SMPRATE_96K = 0xa,
++	HDMI_FC_AUDSCHNLS7_SMPRATE_768K = 0x9,
++	HDMI_FC_AUDSCHNLS7_SMPRATE_88K2 = 0x8,
++	HDMI_FC_AUDSCHNLS7_SMPRATE_32K = 0x3,
++	HDMI_FC_AUDSCHNLS7_SMPRATE_48K = 0x2,
++	HDMI_FC_AUDSCHNLS7_SMPRATE_44K1 = 0x0,
+ 
+ /* HDMI_FC_AUDSCHNLS8 field values */
+ 	HDMI_FC_AUDSCHNLS8_ORIGSAMPFREQ_MASK = 0xf0,
+diff --git a/include/drm/bridge/dw_hdmi.h b/include/drm/bridge/dw_hdmi.h
+index cf528c289857..12144d2f80f4 100644
+--- a/include/drm/bridge/dw_hdmi.h
++++ b/include/drm/bridge/dw_hdmi.h
+@@ -156,6 +156,8 @@ void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense);
+ 
+ void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate);
+ void dw_hdmi_set_channel_count(struct dw_hdmi *hdmi, unsigned int cnt);
++void dw_hdmi_set_channel_status(struct dw_hdmi *hdmi,
++				unsigned int sample_width);
+ void dw_hdmi_set_channel_allocation(struct dw_hdmi *hdmi, unsigned int ca);
+ void dw_hdmi_audio_enable(struct dw_hdmi *hdmi);
+ void dw_hdmi_audio_disable(struct dw_hdmi *hdmi);
+-- 
+2.23.0.187.g17f5b7556c-goog
