@@ -1,67 +1,100 @@
-From: Bjorn Andersson <bjorn.andersson@linaro.org>
-Subject: Re: [PATCH -next 08/15] thermal: tsens: use
- devm_platform_ioremap_resource() to simplify code
-Date: Wed, 4 Sep 2019 14:50:39 -0700
-Message-ID: <20190904215039.GG580@tuxbook-pro>
-References: <20190904122939.23780-1-yuehaibing@huawei.com>
- <20190904122939.23780-9-yuehaibing@huawei.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: =?UTF-8?Q?Re=3a_=5bPATCH=5d_mmc=3a_dw=5fmmc-rockchip=3a_Using_180_s?=
+ =?UTF-8?B?YW1wbGUgcGhhc2UgaWYgYWxsIHBoYXNlcyB3b3Jr44CQ6K+35rOo5oSP77yM6YKu?=
+ =?UTF-8?B?5Lu255SxbGludXgtbW1jLW93bmVyQHZnZXIua2VybmVsLm9yZ+S7o+WPkeOAkQ==?=
+Date: Thu, 5 Sep 2019 08:38:08 +0800
+Message-ID: <f461c5ba-4798-8177-618a-4b864c24e5b3@rock-chips.com>
+References: <1567564030-83224-1-git-send-email-shawn.lin@rock-chips.com>
+ <CAD=FV=Vwmj=LehhLCN5OBbEfNNXp9gULLYRoVV86HtqZBxvEjw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190904122939.23780-9-yuehaibing@huawei.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: YueHaibing <yuehaibing@huawei.com>
-Cc: miquel.raynal@bootlin.com, rui.zhang@intel.com, edubezval@gmail.com, daniel.lezcano@linaro.org, amit.kucheria@verdurent.com, eric@anholt.net, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, mmayer@broadcom.com, computersforpeace@gmail.com, gregory.0xf0@gmail.com, matthias.bgg@gmail.com, agross@kernel.org, heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, marc.w.gonzalez@free.fr, mans@mansr.com, talel@amazon.com, jun.nie@linaro.org, shawnguo@kernel.org, phil@raspberrypi.org, gregkh@linuxfoundation.org, david.hernandezsanchez@st.com, horms+renesas@verge.net.au, wsa+renesas@sang-engineering.com, bcm-kernel-feedback-list@broadcom.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rpi-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAD=FV=Vwmj=LehhLCN5OBbEfNNXp9gULLYRoVV86HtqZBxvEjw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Linux MMC List <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed 04 Sep 05:29 PDT 2019, YueHaibing wrote:
 
-> Use devm_platform_ioremap_resource() to simplify the code a bit.
-> This is detected by coccinelle.
+On 2019/9/4 23:44, Doug Anderson wrote:
+> Hi,
+> 
+> On Tue, Sep 3, 2019 at 7:28 PM Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>>
+>> default_sample_phase is used to make sure the cards are enumurated
+>> properly and will be set to 0 if not assigned. However, the sample
+>> phase should depends on the tuned phase if running higher clock rate.
+>> If all phases work but default_sample_phase isn't assigned, driver
+>> set sample phase to 0 for this case, which isn't the best choice,
+>> because we always expect to set phase to the middle of window. To
+>> solve the following continually issues we have seen in the test, we
+>> need set phase to the more stable one, 180, if all phases work.
+>>
+>> mmcblk1: error -84 transferring data, sector 1735064, nr 8, cmd
+>> response 0x900, card status 0xb00
+>> mmcblk1: retrying using single block read
+>> dwmmc_rockchip ff0f0000.dwmmc: All phases work, using default phase 0.
+>> mmcblk1: retrying because a re-tune was needed
+>>
+>> .....
+>>
+>> mmcblk1: error -84 transferring data, sector 1728672, nr 248, cmd
+>> response 0x900, card status 0xb00
+>> mmcblk1: retrying using single block read
+>> dwmmc_rockchip ff0f0000.dwmmc: All phases work, using default phase 0.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> ---
+>>
+>>   drivers/mmc/host/dw_mmc-rockchip.c | 5 ++---
+>>   1 file changed, 2 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+>> index d4d0213..9ef9723 100644
+>> --- a/drivers/mmc/host/dw_mmc-rockchip.c
+>> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
+>> @@ -209,9 +209,8 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
+>>          }
+>>
+>>          if (ranges[0].start == 0 && ranges[0].end == priv->num_phases - 1) {
+>> -               clk_set_phase(priv->sample_clk, priv->default_sample_phase);
+>> -               dev_info(host->dev, "All phases work, using default phase %d.",
+>> -                        priv->default_sample_phase);
+>> +               clk_set_phase(priv->sample_clk, 180);
+>> +               dev_info(host->dev, "All phases work, using phase 180.");
+> 
+> This violates what is documented in the device tree bindings, which says:
 > 
 
-Reviewed-by: Bjorn Andersson <bjorn.andersson@linaro.org>
+Thanks for catching this.
 
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-> ---
->  drivers/thermal/qcom/tsens-common.c | 7 ++-----
->  1 file changed, 2 insertions(+), 5 deletions(-)
+> * rockchip,default-sample-phase: The default phase to set ciu-sample at
+>    probing, low speeds or in case where all phases work at tuning time.
+>    If not specified 0 deg will be used.
 > 
-> diff --git a/drivers/thermal/qcom/tsens-common.c b/drivers/thermal/qcom/tsens-common.c
-> index 528df88..43ce4fb 100644
-> --- a/drivers/thermal/qcom/tsens-common.c
-> +++ b/drivers/thermal/qcom/tsens-common.c
-> @@ -155,7 +155,6 @@ int __init init_common(struct tsens_priv *priv)
->  {
->  	void __iomem *tm_base, *srot_base;
->  	struct device *dev = priv->dev;
-> -	struct resource *res;
->  	u32 enabled;
->  	int ret, i, j;
->  	struct platform_device *op = of_find_device_by_node(priv->dev->of_node);
-> @@ -166,8 +165,7 @@ int __init init_common(struct tsens_priv *priv)
->  	if (op->num_resources > 1) {
->  		/* DT with separate SROT and TM address space */
->  		priv->tm_offset = 0;
-> -		res = platform_get_resource(op, IORESOURCE_MEM, 1);
-> -		srot_base = devm_ioremap_resource(&op->dev, res);
-> +		srot_base = devm_platform_ioremap_resource(op, 1);
->  		if (IS_ERR(srot_base)) {
->  			ret = PTR_ERR(srot_base);
->  			goto err_put_device;
-> @@ -184,8 +182,7 @@ int __init init_common(struct tsens_priv *priv)
->  		priv->tm_offset = 0x1000;
->  	}
->  
-> -	res = platform_get_resource(op, IORESOURCE_MEM, 0);
-> -	tm_base = devm_ioremap_resource(&op->dev, res);
-> +	tm_base = devm_platform_ioremap_resource(op, 0);
->  	if (IS_ERR(tm_base)) {
->  		ret = PTR_ERR(tm_base);
->  		goto err_put_device;
-> -- 
-> 2.7.4
+> Specifically:
+> * You don't use "default-sample-phase" at all when all phases pass.
+> * You don't default to 0 if not specified.
+> 
+> Personally I think we could change the bindings to say: "If not
+> specified 180 deg will be used" and then change the code to do the
+
+That sounds sane to me. I will respin v2 to fix the bingdings and
+change the code.
+
+> same.  If we wanted to keep the "stable ABI" that is device tree we
+> could also just do the "180 default" for new SoCs and then manually
+> add the device tree fragment to all old dts files.
+> >
+> -Doug
 > 
 > 
