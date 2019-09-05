@@ -1,52 +1,66 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 2/2] Rockchip DT64 changes for 5.4 - round2
-Date: Thu, 05 Sep 2019 14:18:54 +0200
-Message-ID: <43564855.cWDBQSyQMS@phil>
-References: <1718334.9BoTfW0Ujv@phil>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL] Rockchip clock updates for 5.4
+Date: Thu, 05 Sep 2019 14:25:14 +0200
+Message-ID: <1787421.rStINWtZbh@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1718334.9BoTfW0Ujv@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, soc@kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit fc702ed49a8668a17343811ee28214d845bfc5e6:
+Hi Mike, Stephen,
 
-  arm64: dts: rockchip: Add dts for Leez RK3399 P710 SBC (2019-08-16 14:39:20 +0200)
+please find below rockchip clock changes for 5.4
+
+Please pull
+
+Thanks
+Heiko
+
+
+The following changes since commit 5f9e832c137075045d15cd6899ab0505cfb2ca4b:
+
+  Linus 5.3-rc1 (2019-07-21 14:05:38 -0700)
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.4-rockchip-dts64-2
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.4-rockchip-clk1
 
-for you to fetch changes up to 03e61929c0d227ed3e1c322fc3804216ea298b7e:
+for you to fetch changes up to ac68dfd3c4836bb2636fd37f3e075ed218afdb2b:
 
-  arm64: dts: rockchip: limit clock rate of MMC controllers for RK3328 (2019-09-01 03:00:17 +0200)
-
-----------------------------------------------------------------
-RK3328 mmc clockrate limit and addition of vpu node as well
-as a regulator fix for the rk3328-rock64.
+  clk: rockchip: Add clock controller for the rk3308 (2019-09-05 12:43:39 +0200)
 
 ----------------------------------------------------------------
-Jonas Karlman (1):
-      arm64: dts: rockchip: add rk3328 VPU node
+Removal of an unused variable vom rv1108 and addition of
+clock driver for rk3308 arm64 soc.
 
-Kever Yang (1):
-      arm64: dts: rockchip: fix vcc_host_5v regulator for usb3 host
+----------------------------------------------------------------
+Finley Xiao (3):
+      dt-bindings: Add bindings for rk3308 clock controller
+      clk: rockchip: Add dt-binding header for rk3308
+      clk: rockchip: Add clock controller for the rk3308
 
-Shawn Lin (1):
-      arm64: dts: rockchip: limit clock rate of MMC controllers for RK3328
+Nathan Huckleberry (1):
+      clk: rockchip: Fix -Wunused-const-variable in rv1108 clk driver
 
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 11 ++---------
- arch/arm64/boot/dts/rockchip/rk3328.dtsi       | 17 ++++++++++++++++-
- 2 files changed, 18 insertions(+), 10 deletions(-)
+ .../bindings/clock/rockchip,rk3308-cru.txt         |  60 ++
+ drivers/clk/rockchip/Makefile                      |   1 +
+ drivers/clk/rockchip/clk-rk3308.c                  | 955 +++++++++++++++++++++
+ drivers/clk/rockchip/clk-rv1108.c                  |   1 -
+ drivers/clk/rockchip/clk.h                         |  13 +
+ include/dt-bindings/clock/rk3308-cru.h             | 387 +++++++++
+ 6 files changed, 1416 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3308-cru.txt
+ create mode 100644 drivers/clk/rockchip/clk-rk3308.c
+ create mode 100644 include/dt-bindings/clock/rk3308-cru.h
