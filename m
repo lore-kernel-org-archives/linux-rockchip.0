@@ -1,59 +1,33 @@
-From: =?iso-8859-1?Q?M=E5ns_Rullg=E5rd?= <mans@mansr.com>
-Subject: Re: [PATCH -next 12/15] thermal: tango: use devm_platform_ioremap_resource() to simplify code
-Date: Thu, 05 Sep 2019 12:06:54 +0100
-Message-ID: <yw1xmufj6lyp.fsf@mansr.com>
-References: <20190904122939.23780-1-yuehaibing@huawei.com>
-        <20190904122939.23780-13-yuehaibing@huawei.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v1 0/3] clk: rockchip: support clock controller for rk3308 SoC
+Date: Thu, 05 Sep 2019 13:22:43 +0200
+Message-ID: <8098861.lOb4sKEy6F@phil>
+References: <20190903115947.26618-1-finley.xiao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190904122939.23780-13-yuehaibing@huawei.com>
-        (yuehaibing@huawei.com's message of "Wed, 4 Sep 2019 20:29:36 +0800")
+In-Reply-To: <20190903115947.26618-1-finley.xiao@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: YueHaibing <yuehaibing@huawei.com>
-Cc: miquel.raynal@bootlin.com, rui.zhang@intel.com, edubezval@gmail.com, daniel.lezcano@linaro.org, amit.kucheria@verdurent.com, eric@anholt.net, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, mmayer@broadcom.com, computersforpeace@gmail.com, gregory.0xf0@gmail.com, matthias.bgg@gmail.com, agross@kernel.org, heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, marc.w.gonzalez@free.fr, talel@amazon.com, jun.nie@linaro.org, shawnguo@kernel.org, phil@raspberrypi.org, gregkh@linuxfoundation.org, david.hernandezsanchez@st.com, horms+renesas@verge.net.au, wsa+renesas@sang-engineering.com, bcm-kernel-feedback-list@broadcom.com, linux-pm@vger.kernel.org, linux-kernel@vger.kerne
+To: Finley Xiao <finley.xiao@rock-chips.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, zhangqing@rock-chips.com, huangtao@rock-chips.com, tony.xie@rock-chips.com, andy.yan@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-YueHaibing <yuehaibing@huawei.com> writes:
+Hi Finley,
 
-> Use devm_platform_ioremap_resource() to simplify the code a bit.
-> This is detected by coccinelle.
->
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+Am Dienstag, 3. September 2019, 13:59:44 CEST schrieb Finley Xiao:
+> Finley Xiao (3):
+>   dt-bindings: Add bindings for rk3308 clock controller
+>   clk: rockchip: Add dt-binding header for rk3308
+>   clk: rockchip: Add clock controller for the RK3308
 
-Acked-by: Mans Rullgard <mans@mansr.com>
+applied for (hopefully still) 5.4.
 
-> ---
->  drivers/thermal/tango_thermal.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
->
-> diff --git a/drivers/thermal/tango_thermal.c b/drivers/thermal/tango_thermal.c
-> index 304b461..f44441b 100644
-> --- a/drivers/thermal/tango_thermal.c
-> +++ b/drivers/thermal/tango_thermal.c
-> @@ -73,7 +73,6 @@ static void tango_thermal_init(struct tango_thermal_priv *priv)
->
->  static int tango_thermal_probe(struct platform_device *pdev)
->  {
-> -	struct resource *res;
->  	struct tango_thermal_priv *priv;
->  	struct thermal_zone_device *tzdev;
->
-> @@ -81,8 +80,7 @@ static int tango_thermal_probe(struct platform_device *pdev)
->  	if (!priv)
->  		return -ENOMEM;
->
-> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	priv->base = devm_ioremap_resource(&pdev->dev, res);
-> +	priv->base = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(priv->base))
->  		return PTR_ERR(priv->base);
->
-> -- 
-> 2.7.4
->
+I did change the binding patch to name the i2s mclk inputs explicitly
+as you can see in [0] as placeholders in dt-bindings do not necessarily
+work that great.
 
--- 
-Måns Rullgård
+
+Heiko
+
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=v5.4-clk/next&id=2d1fb8e983dc0669f276b176142798a228dc0f38
