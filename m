@@ -1,11 +1,13 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 1/2] Rockchip DT32 changes for 5.4 - round2
-Date: Thu, 05 Sep 2019 14:18:11 +0200
-Message-ID: <1718334.9BoTfW0Ujv@phil>
+Subject: [GIT PULL 2/2] Rockchip DT64 changes for 5.4 - round2
+Date: Thu, 05 Sep 2019 14:18:54 +0200
+Message-ID: <43564855.cWDBQSyQMS@phil>
+References: <1718334.9BoTfW0Ujv@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1718334.9BoTfW0Ujv@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -19,44 +21,32 @@ To: arm@kernel.org
 Cc: linux-rockchip@lists.infradead.org, soc@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi (arm-)soc people,
+The following changes since commit fc702ed49a8668a17343811ee28214d845bfc5e6:
 
-please find below and in the reply a small second round of Rockchip changes
-targetted at 5.4.
-
-Mainly only small cleanups and have been in linux-next for a while now,
-I just didn't get to pull-requests due to travel and jetlag.
-Linus wrote that he wants to do an -rc8 but if the stuff below is too late
-I can also easily move it to 5.5.
-
-So if not too late, please pull
-Thanks
-Heiko
-
-
-The following changes since commit dd7c66ac777a70e224e66593e95ce6d22147c919:
-
-  ARM: dts: add device tree for Mecer Xtreme Mini S6 (2019-08-16 18:04:43 +0200)
+  arm64: dts: rockchip: Add dts for Leez RK3399 P710 SBC (2019-08-16 14:39:20 +0200)
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.4-rockchip-dts32-2
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.4-rockchip-dts64-2
 
-for you to fetch changes up to 9f72a1d0300b03a9fc6cba93f8cc0ab326185788:
+for you to fetch changes up to 03e61929c0d227ed3e1c322fc3804216ea298b7e:
 
-  dt-bindings: arm: rockchip: remove reference to fennec board (2019-08-22 21:32:18 +0200)
-
-----------------------------------------------------------------
-Removal of the rk3288-fennec board which never made it to
-any market.
+  arm64: dts: rockchip: limit clock rate of MMC controllers for RK3328 (2019-09-01 03:00:17 +0200)
 
 ----------------------------------------------------------------
-Kever Yang (2):
-      ARM: dts: rockchip: remove rk3288 fennec board support
-      dt-bindings: arm: rockchip: remove reference to fennec board
+RK3328 mmc clockrate limit and addition of vpu node as well
+as a regulator fix for the rk3328-rock64.
 
- .../devicetree/bindings/arm/rockchip.yaml          |   5 -
- arch/arm/boot/dts/Makefile                         |   1 -
- arch/arm/boot/dts/rk3288-fennec.dts                | 347 ---------------------
- 3 files changed, 353 deletions(-)
- delete mode 100644 arch/arm/boot/dts/rk3288-fennec.dts
+----------------------------------------------------------------
+Jonas Karlman (1):
+      arm64: dts: rockchip: add rk3328 VPU node
+
+Kever Yang (1):
+      arm64: dts: rockchip: fix vcc_host_5v regulator for usb3 host
+
+Shawn Lin (1):
+      arm64: dts: rockchip: limit clock rate of MMC controllers for RK3328
+
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 11 ++---------
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi       | 17 ++++++++++++++++-
+ 2 files changed, 18 insertions(+), 10 deletions(-)
