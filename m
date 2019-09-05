@@ -1,33 +1,62 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v1 0/3] clk: rockchip: support clock controller for rk3308 SoC
-Date: Thu, 05 Sep 2019 13:22:43 +0200
-Message-ID: <8098861.lOb4sKEy6F@phil>
-References: <20190903115947.26618-1-finley.xiao@rock-chips.com>
+Subject: [GIT PULL 1/2] Rockchip DT32 changes for 5.4 - round2
+Date: Thu, 05 Sep 2019 14:18:11 +0200
+Message-ID: <1718334.9BoTfW0Ujv@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190903115947.26618-1-finley.xiao@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Finley Xiao <finley.xiao@rock-chips.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, zhangqing@rock-chips.com, huangtao@rock-chips.com, tony.xie@rock-chips.com, andy.yan@rock-chips.com
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, soc@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Finley,
+Hi (arm-)soc people,
 
-Am Dienstag, 3. September 2019, 13:59:44 CEST schrieb Finley Xiao:
-> Finley Xiao (3):
->   dt-bindings: Add bindings for rk3308 clock controller
->   clk: rockchip: Add dt-binding header for rk3308
->   clk: rockchip: Add clock controller for the RK3308
+please find below and in the reply a small second round of Rockchip changes
+targetted at 5.4.
 
-applied for (hopefully still) 5.4.
+Mainly only small cleanups and have been in linux-next for a while now,
+I just didn't get to pull-requests due to travel and jetlag.
+Linus wrote that he wants to do an -rc8 but if the stuff below is too late
+I can also easily move it to 5.5.
 
-I did change the binding patch to name the i2s mclk inputs explicitly
-as you can see in [0] as placeholders in dt-bindings do not necessarily
-work that great.
-
-
+So if not too late, please pull
+Thanks
 Heiko
 
-[0] https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=v5.4-clk/next&id=2d1fb8e983dc0669f276b176142798a228dc0f38
+
+The following changes since commit dd7c66ac777a70e224e66593e95ce6d22147c919:
+
+  ARM: dts: add device tree for Mecer Xtreme Mini S6 (2019-08-16 18:04:43 +0200)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.4-rockchip-dts32-2
+
+for you to fetch changes up to 9f72a1d0300b03a9fc6cba93f8cc0ab326185788:
+
+  dt-bindings: arm: rockchip: remove reference to fennec board (2019-08-22 21:32:18 +0200)
+
+----------------------------------------------------------------
+Removal of the rk3288-fennec board which never made it to
+any market.
+
+----------------------------------------------------------------
+Kever Yang (2):
+      ARM: dts: rockchip: remove rk3288 fennec board support
+      dt-bindings: arm: rockchip: remove reference to fennec board
+
+ .../devicetree/bindings/arm/rockchip.yaml          |   5 -
+ arch/arm/boot/dts/Makefile                         |   1 -
+ arch/arm/boot/dts/rk3288-fennec.dts                | 347 ---------------------
+ 3 files changed, 353 deletions(-)
+ delete mode 100644 arch/arm/boot/dts/rk3288-fennec.dts
