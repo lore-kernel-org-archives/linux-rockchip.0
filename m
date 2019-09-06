@@ -1,49 +1,114 @@
-From: Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [GIT PULL] Rockchip clock updates for 5.4
-Date: Thu, 05 Sep 2019 11:48:44 -0700
-Message-ID: <20190905184846.C015520825@mail.kernel.org>
-References: <1787421.rStINWtZbh@phil>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH for 5.4] media: hantro: Fix s_fmt for dynamic resolution
+ changes
+Date: Fri, 06 Sep 2019 11:26:16 +0200
+Message-ID: <1567761976.6575.1.camel@pengutronix.de>
+References: <20190903171256.25052-1-ezequiel@collabora.com>
+         <1567592011.3041.1.camel@pengutronix.de>
+         <37bbd1b8ee7bb82c75aefb675e0c3ddd955dde0b.camel@collabora.com>
+         <1567603704.3041.10.camel@pengutronix.de>
+         <93b49e964b1f9f5c799affd2ab5416a16f0dda23.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1787421.rStINWtZbh@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <93b49e964b1f9f5c799affd2ab5416a16f0dda23.camel@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org
+Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Heiko Stuebner (2019-09-05 05:25:14)
-> Hi Mike, Stephen,
+On Thu, 2019-09-05 at 15:00 -0300, Ezequiel Garcia wrote:
+> On Wed, 2019-09-04 at 15:28 +0200, Philipp Zabel wrote:
+> > On Wed, 2019-09-04 at 10:01 -0300, Ezequiel Garcia wrote:
+> > > On Wed, 2019-09-04 at 12:13 +0200, Philipp Zabel wrote:
+> > > > Hi Ezequiel,
+> > > > 
+> > > > On Tue, 2019-09-03 at 14:12 -0300, Ezequiel Garcia wrote:
+> > > > > Commit 953aaa1492c53 ("media: rockchip/vpu: Prepare things to support decoders")
+> > > > > changed the conditions under S_FMT was allowed for OUTPUT
+> > > > > CAPTURE buffers.
+> > > > > 
+> > > > > However, and according to the mem-to-mem stateless decoder specification,
+> > > > > in order to support dynamic resolution changes, S_FMT should be allowed
+> > > > > even if OUTPUT buffers have been allocated.
+> > > > > 
+> > > > > Relax decoder S_FMT restrictions on OUTPUT buffers, allowing a resolution
+> > > > > modification, provided the pixel format stays the same.
+> > > > > 
+> > > > > Tested on RK3288 platforms using ChromiumOS Video Decode/Encode Accelerator Unittests.
+> > > > > 
+> > > > > Fixes: 953aaa1492c53 ("media: rockchip/vpu: Prepare things to support decoders")
+> > > > > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > > > > ---
+> > > > >  drivers/staging/media/hantro/hantro_v4l2.c | 22 ++++++++++++++++------
+> > > > >  1 file changed, 16 insertions(+), 6 deletions(-)
+> > > > > 
+> > > > > diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
+> > > > > index 3dae52abb96c..d48b548842cf 100644
+> > > > > --- a/drivers/staging/media/hantro/hantro_v4l2.c
+> > > > > +++ b/drivers/staging/media/hantro/hantro_v4l2.c
+> > > > > @@ -367,19 +367,22 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+> > > > >  {
+> > > > >  	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+> > > > >  	struct hantro_ctx *ctx = fh_to_ctx(priv);
+> > > > > +	struct vb2_queue *vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+> > > > >  	const struct hantro_fmt *formats;
+> > > > >  	unsigned int num_fmts;
+> > > > > -	struct vb2_queue *vq;
+> > > > >  	int ret;
+> > > > >  
+> > > > > -	/* Change not allowed if queue is busy. */
+> > > > > -	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+> > > > > -	if (vb2_is_busy(vq))
+> > > > > -		return -EBUSY;
+> > > > > -
+> > > > >  	if (!hantro_is_encoder_ctx(ctx)) {
+> > > > >  		struct vb2_queue *peer_vq;
+> > > > >  
+> > > > > +		/*
+> > > > > +		 * In other to support dynamic resolution change,
+> > > > > +		 * the decoder admits a resolution change, as long
+> > > > > +		 * as the pixelformat remains. Can't be done if streaming.
+> > > > > +		 */
+> > > > > +		if (vb2_is_streaming(vq) || (vb2_is_busy(vq) &&
+> > > > > +		    pix_mp->pixelformat != ctx->src_fmt.pixelformat))
+> > > > 
+> > > > Before using contents of the v4l2_format f for comparison, we should run
+> > > > vidioc_try_fmt_out_mplane over it.
+> > > 
+> > > Right, good catch.
+> > > 
+> > > >  Also, besides pixelformat, sizeimage
+> > > > shouldn't change either, at least if this is a VB2_MMAP queue.
+> > > > 
+> > > 
+> > > This is the OUTPUT queue, so I don't see why the sizeimage
+> > > of the coded buffers should stay the same. Maybe I'm missing
+> > > something? 
+> > 
+> > If the OUTPUT vb2_queue is busy, we already have some buffers of the old
+> > size allocated. We can't change their size dynamically with just
+> > VIDIOC_S_FMT.
+> > 
+> > Maybe this should correct sizeimage to the old size instead of returning
+> > -EBUSY? Either way, if the old buffer size is too small to reasonably
+> > decode the new resolution, the OUTPUT buffers have to be reallocated.
+> > 
 > 
-> please find below rockchip clock changes for 5.4
-> 
-> Please pull
-> 
-> Thanks
-> Heiko
-> 
-> 
-> The following changes since commit 5f9e832c137075045d15cd6899ab0505cfb2ca4b:
-> 
->   Linus 5.3-rc1 (2019-07-21 14:05:38 -0700)
-> 
-> are available in the Git repository at:
-> 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.4-rockchip-clk1
-> 
-> for you to fetch changes up to ac68dfd3c4836bb2636fd37f3e075ed218afdb2b:
-> 
->   clk: rockchip: Add clock controller for the rk3308 (2019-09-05 12:43:39 +0200)
-> 
-> ----------------------------------------------------------------
+> Note that for a decoder, the OUTPUT side buffers are coded. Is there any
+> straightforward correlation between the buffer size and the resolution?
+>
+> In other words, how does the driver figure out if the size is
+> resonably large?
 
-Thanks. Pulled into clk-next
+The decoded frame size seems like a reasonable upper bound at first, but
+especially for formats like H.264 it is trivial to construct slices that
+are larger than that with I_PCM macroblocks.
+
+I think for H.264 some limit depending on profile and level can be
+constructed from spec chapter A.3. "Levels", by looking at the rules for
+the sum of NumBytesInNALunit, though not quite straightforward.
+
+regards
+Philipp
