@@ -1,85 +1,69 @@
-From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: add analog audio nodes on
- rk3399-rockpro64
-Date: Sun,  8 Sep 2019 02:48:33 +0900
-Message-ID: <20190907174833.19957-1-katsuhiro@katsuster.net>
+From: Cheng-yi Chiang <cychiang@chromium.org>
+Subject: Re: [PATCH v5 0/5] Add HDMI jack support on RK3288
+Date: Sun, 8 Sep 2019 21:51:01 +0800
+Message-ID: <CAFv8NwJjG4mwfnYO=M3O9nZN48D6aY72nQuqEFpZL68dh5727w@mail.gmail.com>
+References: <20190717083327.47646-1-cychiang@chromium.org> <CA+Px+wX4gbntkd6y8NN8xwXpZLD4MH9rTeHcW9+Ndtw=3_mWBw@mail.gmail.com>
+ <CAFv8NwLiY+ro0L4c5vjSOGN8jA-Qr4zm2OWvVHkiuoa7_4e2Fg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAFv8NwLiY+ro0L4c5vjSOGN8jA-Qr4zm2OWvVHkiuoa7_4e2Fg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tzung-Bi Shih <tzungbi@google.com>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, ALSA development <alsa-devel@alsa-project.org>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Neil Armstrong <narmstrong@baylibre.c>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds audio codec (Everest ES8316) and I2S audio nodes for
-RK3399 RockPro64.
+On Fri, Aug 30, 2019 at 10:55 AM Cheng-yi Chiang <cychiang@chromium.org> wrote:
+>
+> On Wed, Jul 17, 2019 at 6:28 PM Tzung-Bi Shih <tzungbi@google.com> wrote:
+> >
+> > On Wed, Jul 17, 2019 at 4:33 PM Cheng-Yi Chiang <cychiang@chromium.org> wrote:
+> > >
+> > > This patch series supports HDMI jack reporting on RK3288, which uses
+> > > DRM dw-hdmi driver and hdmi-codec codec driver.
+> > >
+> > > The previous discussion about reporting jack status using hdmi-notifier
+> > > and drm_audio_component is at
+> > >
+> > > https://lore.kernel.org/patchwork/patch/1083027/
+> > >
+> > > The new approach is to use a callback mechanism that is
+> > > specific to hdmi-codec.
+> > >
+> > > Changes from v4 to v5:
+> > > - synopsys/Kconfig: Remove the incorrect dependency change in v4.
+> > > - rockchip/Kconfig: Add dependency of hdmi-codec when it is really need
+> > >   for jack support.
+> > >
+> > > Cheng-Yi Chiang (5):
+> > >   ASoC: hdmi-codec: Add an op to set callback function for plug event
+> > >   drm: bridge: dw-hdmi: Report connector status using callback
+> > >   drm: dw-hdmi-i2s: Use fixed id for codec device
+> > >   ASoC: rockchip_max98090: Add dai_link for HDMI
+> > >   ASoC: rockchip_max98090: Add HDMI jack support
+> > >
+> > LGTM.
+> >
+> > Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+>
+> Hi Daniel,
+> Do you have further concern on this patch series related to hdmi-codec
+> and drm part ?
+> We would like to merge this patch series if possible.
+> They will be needed in many future chrome projects for HDMI audio jack
+> detection.
+> Thanks a lot!
 
-Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
----
- .../boot/dts/rockchip/rk3399-rockpro64.dts    | 28 +++++++++++++++++++
- 1 file changed, 28 insertions(+)
+Hi Neil,
+I am not sure if this patch series is under your radar.
+Would you mind taking a look ?
+This patch series has been following great suggestions from various
+reviewers, so I hope it is fine now.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-index 0401d4ec1f45..8b1e6382b140 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-@@ -81,6 +81,12 @@
- 		reset-gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
- 	};
- 
-+	sound {
-+		compatible = "audio-graph-card";
-+		label = "rockchip,rk3399";
-+		dais = <&i2s1_p0>;
-+	};
-+
- 	vcc12v_dcin: vcc12v-dcin {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc12v_dcin";
-@@ -470,6 +476,20 @@
- 	i2c-scl-rising-time-ns = <300>;
- 	i2c-scl-falling-time-ns = <15>;
- 	status = "okay";
-+
-+	es8316: codec@11 {
-+		compatible = "everest,es8316";
-+		reg = <0x11>;
-+		clocks = <&cru SCLK_I2S_8CH_OUT>;
-+		clock-names = "mclk";
-+		#sound-dai-cells = <0>;
-+
-+		port {
-+			es8316_p0_0: endpoint {
-+				remote-endpoint = <&i2s1_p0_0>;
-+			};
-+		};
-+	};
- };
- 
- &i2c3 {
-@@ -505,6 +525,14 @@
- 	rockchip,playback-channels = <2>;
- 	rockchip,capture-channels = <2>;
- 	status = "okay";
-+
-+	i2s1_p0: port {
-+		i2s1_p0_0: endpoint {
-+			dai-format = "i2s";
-+			mclk-fs = <256>;
-+			remote-endpoint = <&es8316_p0_0>;
-+		};
-+	};
- };
- 
- &i2s2 {
--- 
-2.23.0.rc1
+Audio jack reporting for HDMI might not be needed for other OS, but it
+is a must on ChromeOS.
+We have many previous projects using different local patch sets to
+achieve HDMI jack reporting.
+I hope that we can achieve a proper way and really get the patches
+merged to mainline.
+Thanks a lot!
