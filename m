@@ -1,69 +1,69 @@
-From: Cheng-yi Chiang <cychiang@chromium.org>
-Subject: Re: [PATCH v5 0/5] Add HDMI jack support on RK3288
-Date: Sun, 8 Sep 2019 21:51:01 +0800
-Message-ID: <CAFv8NwJjG4mwfnYO=M3O9nZN48D6aY72nQuqEFpZL68dh5727w@mail.gmail.com>
-References: <20190717083327.47646-1-cychiang@chromium.org> <CA+Px+wX4gbntkd6y8NN8xwXpZLD4MH9rTeHcW9+Ndtw=3_mWBw@mail.gmail.com>
- <CAFv8NwLiY+ro0L4c5vjSOGN8jA-Qr4zm2OWvVHkiuoa7_4e2Fg@mail.gmail.com>
+From: Tom Murphy <murphyt7@tcd.ie>
+Subject: [PATCH v6 0/5] iommu/amd: Convert the AMD iommu driver to the dma-iommu api
+Date: Sun,  8 Sep 2019 09:56:36 -0700
+Message-ID: <20190908165642.22253-1-murphyt7@tcd.ie>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFv8NwLiY+ro0L4c5vjSOGN8jA-Qr4zm2OWvVHkiuoa7_4e2Fg@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Tzung-Bi Shih <tzungbi@google.com>
-Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, ALSA development <alsa-devel@alsa-project.org>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Neil Armstrong <narmstrong@baylibre.c>
+To: iommu@lists.linux-foundation.org
+Cc: Tom Murphy <murphyt7@tcd.ie>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <agross@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Jean-Philippe Brucker <jean-philippe@linaro.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Aug 30, 2019 at 10:55 AM Cheng-yi Chiang <cychiang@chromium.org> wrote:
->
-> On Wed, Jul 17, 2019 at 6:28 PM Tzung-Bi Shih <tzungbi@google.com> wrote:
-> >
-> > On Wed, Jul 17, 2019 at 4:33 PM Cheng-Yi Chiang <cychiang@chromium.org> wrote:
-> > >
-> > > This patch series supports HDMI jack reporting on RK3288, which uses
-> > > DRM dw-hdmi driver and hdmi-codec codec driver.
-> > >
-> > > The previous discussion about reporting jack status using hdmi-notifier
-> > > and drm_audio_component is at
-> > >
-> > > https://lore.kernel.org/patchwork/patch/1083027/
-> > >
-> > > The new approach is to use a callback mechanism that is
-> > > specific to hdmi-codec.
-> > >
-> > > Changes from v4 to v5:
-> > > - synopsys/Kconfig: Remove the incorrect dependency change in v4.
-> > > - rockchip/Kconfig: Add dependency of hdmi-codec when it is really need
-> > >   for jack support.
-> > >
-> > > Cheng-Yi Chiang (5):
-> > >   ASoC: hdmi-codec: Add an op to set callback function for plug event
-> > >   drm: bridge: dw-hdmi: Report connector status using callback
-> > >   drm: dw-hdmi-i2s: Use fixed id for codec device
-> > >   ASoC: rockchip_max98090: Add dai_link for HDMI
-> > >   ASoC: rockchip_max98090: Add HDMI jack support
-> > >
-> > LGTM.
-> >
-> > Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
->
-> Hi Daniel,
-> Do you have further concern on this patch series related to hdmi-codec
-> and drm part ?
-> We would like to merge this patch series if possible.
-> They will be needed in many future chrome projects for HDMI audio jack
-> detection.
-> Thanks a lot!
+Convert the AMD iommu driver to the dma-iommu api. Remove the iova
+handling and reserve region code from the AMD iommu driver.
 
-Hi Neil,
-I am not sure if this patch series is under your radar.
-Would you mind taking a look ?
-This patch series has been following great suggestions from various
-reviewers, so I hope it is fine now.
+Change-log:
+V6:
+-add more details to the description of patch 001-iommu-amd-Remove-unnecessary-locking-from-AMD-iommu-.patch
+-rename handle_deferred_device to iommu_dma_deferred_attach
+-fix double tabs in 0003-iommu-dma-iommu-Handle-deferred-devices.patch
+V5:
+-Rebase on top of linux-next
+V4:
+-Rebase on top of linux-next
+-Split the removing of the unnecessary locking in the amd iommu driver into a seperate patch
+-refactor the "iommu/dma-iommu: Handle deferred devices" patch and address comments
+v3:
+-rename dma_limit to dma_mask
+-exit handle_deferred_device early if (!is_kdump_kernel())
+-remove pointless calls to handle_deferred_device
+v2:
+-Rebase on top of this series:
+ http://git.infradead.org/users/hch/misc.git/shortlog/refs/heads/dma-iommu-ops.3
+-Add a gfp_t parameter to the iommu_ops::map function.
+-Made use of the reserve region code inside the dma-iommu api
 
-Audio jack reporting for HDMI might not be needed for other OS, but it
-is a must on ChromeOS.
-We have many previous projects using different local patch sets to
-achieve HDMI jack reporting.
-I hope that we can achieve a proper way and really get the patches
-merged to mainline.
-Thanks a lot!
+Tom Murphy (5):
+  iommu/amd: Remove unnecessary locking from AMD iommu driver
+  iommu: Add gfp parameter to iommu_ops::map
+  iommu/dma-iommu: Handle deferred devices
+  iommu/dma-iommu: Use the dev->coherent_dma_mask
+  iommu/amd: Convert AMD iommu driver to the dma-iommu api
+
+ drivers/iommu/Kconfig           |   1 +
+ drivers/iommu/amd_iommu.c       | 690 ++++----------------------------
+ drivers/iommu/amd_iommu_types.h |   1 -
+ drivers/iommu/arm-smmu-v3.c     |   2 +-
+ drivers/iommu/arm-smmu.c        |   2 +-
+ drivers/iommu/dma-iommu.c       |  43 +-
+ drivers/iommu/exynos-iommu.c    |   2 +-
+ drivers/iommu/intel-iommu.c     |   2 +-
+ drivers/iommu/iommu.c           |  43 +-
+ drivers/iommu/ipmmu-vmsa.c      |   2 +-
+ drivers/iommu/msm_iommu.c       |   2 +-
+ drivers/iommu/mtk_iommu.c       |   2 +-
+ drivers/iommu/mtk_iommu_v1.c    |   2 +-
+ drivers/iommu/omap-iommu.c      |   2 +-
+ drivers/iommu/qcom_iommu.c      |   2 +-
+ drivers/iommu/rockchip-iommu.c  |   2 +-
+ drivers/iommu/s390-iommu.c      |   2 +-
+ drivers/iommu/tegra-gart.c      |   2 +-
+ drivers/iommu/tegra-smmu.c      |   2 +-
+ drivers/iommu/virtio-iommu.c    |   2 +-
+ include/linux/iommu.h           |  21 +-
+ 21 files changed, 178 insertions(+), 651 deletions(-)
+
+-- 
+2.20.1
