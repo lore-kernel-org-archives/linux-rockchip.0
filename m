@@ -1,23 +1,21 @@
 From: Cheng-yi Chiang <cychiang@chromium.org>
 Subject: Re: [PATCH v2] drm: bridge/dw_hdmi: add audio sample channel status setting
-Date: Mon, 9 Sep 2019 10:26:51 +0800
-Message-ID: <CAFv8NwKFtTvscJoBg55tPs49HHpX_K8-9cC63J6WJ2p15K3bRg@mail.gmail.com>
-References: <20190905094325.33156-1-cychiang@chromium.org> <7000610.EoTGzQ87Ws@jernej-laptop>
+Date: Mon, 9 Sep 2019 10:29:18 +0800
+Message-ID: <CAFv8NwJV2ogJu99AN2T4OusDJ-h=PTHQHABNYtcAdazePJ7gBQ@mail.gmail.com>
+References: <20190905094325.33156-1-cychiang@chromium.org> <20190908183748.GN13294@shell.armlinux.org.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <7000610.EoTGzQ87Ws@jernej-laptop>
+In-Reply-To: <20190908183748.GN13294@shell.armlinux.org.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Jernej_=C5=A0krabec?= <jernej.skrabec@siol.net>
-Cc: linux-kernel <linux-kernel@vger.kernel.org>, "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..." <alsa-devel@alsa-project.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, kuninori.morimoto.gx@renesas.com, sam@ravnborg.org, Doug Anderson <dianders@chromium.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, Xing Zheng <zhengxing@rock-chips.com>, cain.cai@rock-chips.com, =?UTF-8?B?6JSh5p6r?= <eddie.cai@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, kuankuan.y@gmail.com, Enric Balletbo i Serra <enric.balletbo@collabora.com>, dri-devel@lists
+To: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Cc: linux-kernel <linux-kernel@vger.kernel.org>, "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..." <alsa-devel@alsa-project.org>, kuninori.morimoto.gx@renesas.com, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, cain.cai@rock-chips.com, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, sam@ravnborg.org, Xing Zheng <zhengxing@rock-chips.com>, linux-rockchip@lists.infradead.org, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, Jonas Karlman <jonas@kwiboo.se>, Jeffy Chen <jeffy.chen@rock-chips.com>, =?UTF-8?B?6JSh5p6r?= <eddie.cai@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Jernej Skrabec <jernej.skrabec@siol.net>, Doug Anderson <dianders@chromium.org>Daniel Vetter <da>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Sep 9, 2019 at 2:18 AM Jernej =C5=A0krabec <jernej.skrabec@siol.net=
-> wrote:
+On Mon, Sep 9, 2019 at 2:38 AM Russell King - ARM Linux admin
+<linux@armlinux.org.uk> wrote:
 >
-> Dne =C4=8Detrtek, 05. september 2019 ob 11:43:25 CEST je Cheng-Yi Chiang
-> napisal(a):
+> On Thu, Sep 05, 2019 at 05:43:25PM +0800, Cheng-Yi Chiang wrote:
 > > From: Yakir Yang <ykk@rock-chips.com>
 > >
 > > When transmitting IEC60985 linear PCM audio, we configure the
@@ -56,37 +54,42 @@ On Mon, Sep 9, 2019 at 2:18 AM Jernej =C5=A0krabec <jernej.skrabec@siol.net=
 > >  include/drm/bridge/dw_hdmi.h                  |  2 +
 > >  4 files changed, 93 insertions(+)
 > >
-> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-> > b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c index
-> > 34d8e837555f..b801a28b0f17 100644
+> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
+> > index 34d8e837555f..b801a28b0f17 100644
 > > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
 > > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-> > @@ -102,6 +102,7 @@ static int dw_hdmi_i2s_hw_params(struct device *dev=
-,
-> > void *data, }
+> > @@ -102,6 +102,7 @@ static int dw_hdmi_i2s_hw_params(struct device *dev, void *data,
+> >       }
 > >
 > >       dw_hdmi_set_sample_rate(hdmi, hparms->sample_rate);
 > > +     dw_hdmi_set_channel_status(hdmi, hparms->sample_width);
 > >       dw_hdmi_set_channel_count(hdmi, hparms->channels);
-> >       dw_hdmi_set_channel_allocation(hdmi, hparms-
-> >cea.channel_allocation);
+> >       dw_hdmi_set_channel_allocation(hdmi, hparms->cea.channel_allocation);
 > >
-> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> > b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c index
-> > bd65d0479683..d1daa369c8ae 100644
+>
+> dw_hdmi_i2s_hw_params() is passed the channel status data in
+> hparams->iec.status  Rather than re-creating it afresh in the driver,
+> I'd recommend programming the already supplied channel status data
+> into the registers.
+>
+
+Hi Russell,
+Thank you for pointing this out.
+I did not realize that the status data is already set.
+I will fix in v3 to make this patch much simpler.
+
+> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> > index bd65d0479683..d1daa369c8ae 100644
 > > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 > > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> > @@ -582,6 +582,76 @@ static unsigned int hdmi_compute_n(unsigned int fr=
-eq,
-> > unsigned long pixel_clk) return n;
+> > @@ -582,6 +582,76 @@ static unsigned int hdmi_compute_n(unsigned int freq, unsigned long pixel_clk)
+> >       return n;
 > >  }
 > >
 > > +/*
-> > + * When transmitting IEC60958 linear PCM audio, these registers allow =
-to
+> > + * When transmitting IEC60958 linear PCM audio, these registers allow to
 > > + * configure the channel status information of all the channel status
-> > + * bits in the IEC60958 frame. For the moment this configuration is on=
-ly
+> > + * bits in the IEC60958 frame. For the moment this configuration is only
 > > + * used when the I2S audio interface, General Purpose Audio (GPA),
 > > + * or AHB audio DMA (AHBAUDDMA) interface is active
 > > + * (for S/PDIF interface this information comes from the stream).
@@ -100,84 +103,70 @@ ly
 > > +
 > > +     switch (hdmi->sample_rate) {
 > > +     case 32000:
-> > +             aud_schnl_samplerate =3D HDMI_FC_AUDSCHNLS7_SMPRATE_32K;
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_32K;
 > > +             break;
 > > +     case 44100:
-> > +             aud_schnl_samplerate =3D HDMI_FC_AUDSCHNLS7_SMPRATE_44K1;
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_44K1;
 > > +             break;
 > > +     case 48000:
-> > +             aud_schnl_samplerate =3D HDMI_FC_AUDSCHNLS7_SMPRATE_48K;
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_48K;
 > > +             break;
 > > +     case 88200:
-> > +             aud_schnl_samplerate =3D HDMI_FC_AUDSCHNLS7_SMPRATE_88K2;
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_88K2;
 > > +             break;
 > > +     case 96000:
-> > +             aud_schnl_samplerate =3D HDMI_FC_AUDSCHNLS7_SMPRATE_96K;
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_96K;
 > > +             break;
 > > +     case 176400:
-> > +             aud_schnl_samplerate =3D HDMI_FC_AUDSCHNLS7_SMPRATE_176K4=
-;
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_176K4;
 > > +             break;
 > > +     case 192000:
-> > +             aud_schnl_samplerate =3D HDMI_FC_AUDSCHNLS7_SMPRATE_192K;
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_192K;
 > > +             break;
 > > +     case 768000:
-> > +             aud_schnl_samplerate =3D HDMI_FC_AUDSCHNLS7_SMPRATE_768K;
+> > +             aud_schnl_samplerate = HDMI_FC_AUDSCHNLS7_SMPRATE_768K;
 > > +             break;
 > > +     default:
-> > +             dev_warn(hdmi->dev, "Unsupported audio sample rate (%u)
-> \n",
+> > +             dev_warn(hdmi->dev, "Unsupported audio sample rate (%u)\n",
 > > +                      hdmi->sample_rate);
 > > +             return;
 > > +     }
 > > +
 > > +     /* set channel status register */
-> > +     hdmi_modb(hdmi, aud_schnl_samplerate,
-> HDMI_FC_AUDSCHNLS7_SMPRATE_MASK,
+> > +     hdmi_modb(hdmi, aud_schnl_samplerate, HDMI_FC_AUDSCHNLS7_SMPRATE_MASK,
 > > +               HDMI_FC_AUDSCHNLS7);
 > > +
 > > +     /*
 > > +      * Set original frequency to be the same as frequency.
 > > +      * Use one-complement value as stated in IEC60958-3 page 13.
 > > +      */
-> > +     aud_schnl_8 =3D (~aud_schnl_samplerate) <<
+> > +     aud_schnl_8 = (~aud_schnl_samplerate) <<
 > > +                     HDMI_FC_AUDSCHNLS8_ORIGSAMPFREQ_OFFSET;
 > > +
 > > +     /*
 > > +      * Refer to IEC60958-3 page 12. We can accept 16 bits or 24 bits.
-> > +      * Otherwise, set the register to 0t o indicate using default
-> value.
->
-> Nit: "0t 0" -> "0 to"
->
-> With that fixed, this patch is:
-> Reviewed-by: Jernej Skrabec <jernej.skrabec@siol.net>
->
-> Best regards,
-> Jernej
-Hi Jernej,
-Thank you for reviewing the patch.
-But as Russell pointed in the next mail,
-I will update in v3 to make this patch much more simpler.
-
->
+> > +      * Otherwise, set the register to 0t o indicate using default value.
 > > +      */
-> > +     word_length_bits =3D (sample_width =3D=3D 16) ? 0x2 :
-> > +                         ((sample_width =3D=3D 24) ? 0xb : 0);
+> > +     word_length_bits = (sample_width == 16) ? 0x2 :
+> > +                         ((sample_width == 24) ? 0xb : 0);
 > > +
-> > +     aud_schnl_8 |=3D word_length_bits <<
-> HDMI_FC_AUDSCHNLS8_WORDLEGNTH_OFFSET;
+> > +     aud_schnl_8 |= word_length_bits << HDMI_FC_AUDSCHNLS8_WORDLEGNTH_OFFSET;
 > > +
 > > +     hdmi_writeb(hdmi, aud_schnl_8, HDMI_FC_AUDSCHNLS8);
 > > +}
 > > +EXPORT_SYMBOL_GPL(dw_hdmi_set_channel_status);
+>
+> As mentioned above, the channel status data is actually already
+> provided - so we don't really need the above at all.  It just
+> needs the data programmed into the registers.
+>
+ACK
 > > +
 > >  static void hdmi_set_clk_regenerator(struct dw_hdmi *hdmi,
 > >       unsigned long pixel_clk, unsigned int sample_rate)
 > >  {
-> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
-> > b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h index
-> > 6988f12d89d9..619ebc1c8354 100644
+> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
+> > index 6988f12d89d9..619ebc1c8354 100644
 > > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
 > > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
 > > @@ -158,6 +158,17 @@
@@ -200,39 +189,48 @@ I will update in v3 to make this patch much more simpler.
 > >  #define HDMI_FC_DATACH2FILL                     0x1072
 > > @@ -706,6 +717,15 @@ enum {
 > >  /* HDMI_FC_AUDSCHNLS7 field values */
-> >       HDMI_FC_AUDSCHNLS7_ACCURACY_OFFSET =3D 4,
-> >       HDMI_FC_AUDSCHNLS7_ACCURACY_MASK =3D 0x30,
-> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_MASK =3D 0x0f,
-> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_192K =3D 0xe,
-> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_176K4 =3D 0xc,
-> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_96K =3D 0xa,
-> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_768K =3D 0x9,
-> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_88K2 =3D 0x8,
-> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_32K =3D 0x3,
-> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_48K =3D 0x2,
-> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_44K1 =3D 0x0,
-> >
+> >       HDMI_FC_AUDSCHNLS7_ACCURACY_OFFSET = 4,
+> >       HDMI_FC_AUDSCHNLS7_ACCURACY_MASK = 0x30,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_MASK = 0x0f,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_192K = 0xe,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_176K4 = 0xc,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_96K = 0xa,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_768K = 0x9,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_88K2 = 0x8,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_32K = 0x3,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_48K = 0x2,
+> > +     HDMI_FC_AUDSCHNLS7_SMPRATE_44K1 = 0x0,
+>
+> These look very much like the IEC958_AES* consumer definitions in
+> include/sound/asoundef.h.
+ACK. Will remove in v3.
+>
 > >  /* HDMI_FC_AUDSCHNLS8 field values */
-> >       HDMI_FC_AUDSCHNLS8_ORIGSAMPFREQ_MASK =3D 0xf0,
-> > diff --git a/include/drm/bridge/dw_hdmi.h b/include/drm/bridge/dw_hdmi.=
-h
+> >       HDMI_FC_AUDSCHNLS8_ORIGSAMPFREQ_MASK = 0xf0,
+> > diff --git a/include/drm/bridge/dw_hdmi.h b/include/drm/bridge/dw_hdmi.h
 > > index cf528c289857..12144d2f80f4 100644
 > > --- a/include/drm/bridge/dw_hdmi.h
 > > +++ b/include/drm/bridge/dw_hdmi.h
-> > @@ -156,6 +156,8 @@ void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, b=
-ool
-> > hpd, bool rx_sense);
+> > @@ -156,6 +156,8 @@ void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense);
 > >
 > >  void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate);
-> >  void dw_hdmi_set_channel_count(struct dw_hdmi *hdmi, unsigned int cnt)=
-;
+> >  void dw_hdmi_set_channel_count(struct dw_hdmi *hdmi, unsigned int cnt);
 > > +void dw_hdmi_set_channel_status(struct dw_hdmi *hdmi,
 > > +                             unsigned int sample_width);
-> >  void dw_hdmi_set_channel_allocation(struct dw_hdmi *hdmi, unsigned int=
- ca);
-> > void dw_hdmi_audio_enable(struct dw_hdmi *hdmi);
+> >  void dw_hdmi_set_channel_allocation(struct dw_hdmi *hdmi, unsigned int ca);
+> >  void dw_hdmi_audio_enable(struct dw_hdmi *hdmi);
 > >  void dw_hdmi_audio_disable(struct dw_hdmi *hdmi);
+> > --
+> > 2.23.0.187.g17f5b7556c-goog
+> >
+> >
+> > _______________________________________________
+> > linux-arm-kernel mailing list
+> > linux-arm-kernel@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+> >
 >
->
->
->
+> --
+> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+> FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+> According to speedtest.net: 11.9Mbps down 500kbps up
