@@ -1,54 +1,73 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 0/4] Enable Hantro G1 post-processor
-Date: Mon, 9 Sep 2019 16:07:17 +0900
-Message-ID: <CAAFQd5AdikoN+7TG=0ZGFkSzaK2UFHM4VG7SYtfUtmjQgD61zA@mail.gmail.com>
-References: <20190903181711.7559-1-ezequiel@collabora.com>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Subject: Re: [PATCH v5 0/5] Add HDMI jack support on RK3288
+Date: Mon, 9 Sep 2019 09:37:14 +0200
+Message-ID: <7019a223-cc97-e1c6-907b-e6b3d626164f@baylibre.com>
+References: <20190717083327.47646-1-cychiang@chromium.org>
+ <CA+Px+wX4gbntkd6y8NN8xwXpZLD4MH9rTeHcW9+Ndtw=3_mWBw@mail.gmail.com>
+ <CAFv8NwLiY+ro0L4c5vjSOGN8jA-Qr4zm2OWvVHkiuoa7_4e2Fg@mail.gmail.com>
+ <CAFv8NwJjG4mwfnYO=M3O9nZN48D6aY72nQuqEFpZL68dh5727w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190903181711.7559-1-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Chris Healy <cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAFv8NwJjG4mwfnYO=M3O9nZN48D6aY72nQuqEFpZL68dh5727w@mail.gmail.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Cheng-yi Chiang <cychiang@chromium.org>, Tzung-Bi Shih <tzungbi@google.com>
+Cc: Jernej Skrabec <jernej.skrabec@siol.net>, ALSA development <alsa-devel@alsa-project.org>, Douglas Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Jonas Karlman <jonas@kwiboo.se>, Takashi Iwai <tiwai@suse.com>, tzungbi@chromium.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Russell King <rmk+kernel@armlinux.org.uk>, Mark Brown <broonie@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, linux-rockchip@lists.infradead.org, Dylan Reid <dgreid@chromium.org>, Jaroslav Kysela <perex@perex.cz>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Ezequiel,
-
-On Wed, Sep 4, 2019 at 3:17 AM Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
->
-> Hi all,
->
-> This series enables the post-processor support available
-> on the Hantro G1 VPU. The post-processor block can be
-> pipelined with the decoder hardware, allowing to perform
-> operations such as color conversion, scaling, rotation,
-> cropping, among others.
->
-> The decoder hardware needs its own set of NV12 buffers
-> (the native decoder format), and the post-processor is the
-> owner of the CAPTURE buffers. This allows the application
-> get processed (scaled, converted, etc) buffers, completely
-> transparently.
->
-> This feature is implemented by exposing other CAPTURE pixel
-> formats to the application (ENUM_FMT). When the application
-> sets a pixel format other than NV12, the driver will enable
-> and use the post-processor transparently.
-
-I'll try to review the series a bit later, but a general comment here
-is that the userspace wouldn't have a way to distinguish between the
-native and post-processed formats. I'm pretty much sure that
-post-processing at least imposes some power penalty, so it would be
-good if the userspace could avoid it if unnecessary.
-
-Best regards,
-Tomasz
+SGksCgpPbiAwOC8wOS8yMDE5IDE1OjUxLCBDaGVuZy15aSBDaGlhbmcgd3JvdGU6Cj4gT24gRnJp
+LCBBdWcgMzAsIDIwMTkgYXQgMTA6NTUgQU0gQ2hlbmcteWkgQ2hpYW5nIDxjeWNoaWFuZ0BjaHJv
+bWl1bS5vcmc+IHdyb3RlOgo+Pgo+PiBPbiBXZWQsIEp1bCAxNywgMjAxOSBhdCA2OjI4IFBNIFR6
+dW5nLUJpIFNoaWggPHR6dW5nYmlAZ29vZ2xlLmNvbT4gd3JvdGU6Cj4+Pgo+Pj4gT24gV2VkLCBK
+dWwgMTcsIDIwMTkgYXQgNDozMyBQTSBDaGVuZy1ZaSBDaGlhbmcgPGN5Y2hpYW5nQGNocm9taXVt
+Lm9yZz4gd3JvdGU6Cj4+Pj4KPj4+PiBUaGlzIHBhdGNoIHNlcmllcyBzdXBwb3J0cyBIRE1JIGph
+Y2sgcmVwb3J0aW5nIG9uIFJLMzI4OCwgd2hpY2ggdXNlcwo+Pj4+IERSTSBkdy1oZG1pIGRyaXZl
+ciBhbmQgaGRtaS1jb2RlYyBjb2RlYyBkcml2ZXIuCj4+Pj4KPj4+PiBUaGUgcHJldmlvdXMgZGlz
+Y3Vzc2lvbiBhYm91dCByZXBvcnRpbmcgamFjayBzdGF0dXMgdXNpbmcgaGRtaS1ub3RpZmllcgo+
+Pj4+IGFuZCBkcm1fYXVkaW9fY29tcG9uZW50IGlzIGF0Cj4+Pj4KPj4+PiBodHRwczovL2xvcmUu
+a2VybmVsLm9yZy9wYXRjaHdvcmsvcGF0Y2gvMTA4MzAyNy8KPj4+Pgo+Pj4+IFRoZSBuZXcgYXBw
+cm9hY2ggaXMgdG8gdXNlIGEgY2FsbGJhY2sgbWVjaGFuaXNtIHRoYXQgaXMKPj4+PiBzcGVjaWZp
+YyB0byBoZG1pLWNvZGVjLgo+Pj4+Cj4+Pj4gQ2hhbmdlcyBmcm9tIHY0IHRvIHY1Ogo+Pj4+IC0g
+c3lub3BzeXMvS2NvbmZpZzogUmVtb3ZlIHRoZSBpbmNvcnJlY3QgZGVwZW5kZW5jeSBjaGFuZ2Ug
+aW4gdjQuCj4+Pj4gLSByb2NrY2hpcC9LY29uZmlnOiBBZGQgZGVwZW5kZW5jeSBvZiBoZG1pLWNv
+ZGVjIHdoZW4gaXQgaXMgcmVhbGx5IG5lZWQKPj4+PiAgIGZvciBqYWNrIHN1cHBvcnQuCj4+Pj4K
+Pj4+PiBDaGVuZy1ZaSBDaGlhbmcgKDUpOgo+Pj4+ICAgQVNvQzogaGRtaS1jb2RlYzogQWRkIGFu
+IG9wIHRvIHNldCBjYWxsYmFjayBmdW5jdGlvbiBmb3IgcGx1ZyBldmVudAo+Pj4+ICAgZHJtOiBi
+cmlkZ2U6IGR3LWhkbWk6IFJlcG9ydCBjb25uZWN0b3Igc3RhdHVzIHVzaW5nIGNhbGxiYWNrCj4+
+Pj4gICBkcm06IGR3LWhkbWktaTJzOiBVc2UgZml4ZWQgaWQgZm9yIGNvZGVjIGRldmljZQo+Pj4+
+ICAgQVNvQzogcm9ja2NoaXBfbWF4OTgwOTA6IEFkZCBkYWlfbGluayBmb3IgSERNSQo+Pj4+ICAg
+QVNvQzogcm9ja2NoaXBfbWF4OTgwOTA6IEFkZCBIRE1JIGphY2sgc3VwcG9ydAo+Pj4+Cj4+PiBM
+R1RNLgo+Pj4KPj4+IFJldmlld2VkLWJ5OiBUenVuZy1CaSBTaGloIDx0enVuZ2JpQGdvb2dsZS5j
+b20+Cj4+Cj4+IEhpIERhbmllbCwKPj4gRG8geW91IGhhdmUgZnVydGhlciBjb25jZXJuIG9uIHRo
+aXMgcGF0Y2ggc2VyaWVzIHJlbGF0ZWQgdG8gaGRtaS1jb2RlYwo+PiBhbmQgZHJtIHBhcnQgPwo+
+PiBXZSB3b3VsZCBsaWtlIHRvIG1lcmdlIHRoaXMgcGF0Y2ggc2VyaWVzIGlmIHBvc3NpYmxlLgo+
+PiBUaGV5IHdpbGwgYmUgbmVlZGVkIGluIG1hbnkgZnV0dXJlIGNocm9tZSBwcm9qZWN0cyBmb3Ig
+SERNSSBhdWRpbyBqYWNrCj4+IGRldGVjdGlvbi4KPj4gVGhhbmtzIGEgbG90IQo+IAo+IEhpIE5l
+aWwsCj4gSSBhbSBub3Qgc3VyZSBpZiB0aGlzIHBhdGNoIHNlcmllcyBpcyB1bmRlciB5b3VyIHJh
+ZGFyLgo+IFdvdWxkIHlvdSBtaW5kIHRha2luZyBhIGxvb2sgPwo+IFRoaXMgcGF0Y2ggc2VyaWVz
+IGhhcyBiZWVuIGZvbGxvd2luZyBncmVhdCBzdWdnZXN0aW9ucyBmcm9tIHZhcmlvdXMKPiByZXZp
+ZXdlcnMsIHNvIEkgaG9wZSBpdCBpcyBmaW5lIG5vdy4KCkknZCBsaWtlIHNvbWUgcmV2aWV3IGZy
+b20gQVNvQyBwZW9wbGUgYW5kIG90aGVyIGRybSBicmlkZ2UgcmV2aWV3ZXJzLApKZXJuZWosIEpv
+bmFzICYgQW5kcnplai4KCkpvbmFzIGNvdWxkIGhhdmUgc29tZSBjb21tZW50cyBvbiB0aGUgb3Zl
+cmFsbCBwYXRjaHNldC4KCj4gCj4gQXVkaW8gamFjayByZXBvcnRpbmcgZm9yIEhETUkgbWlnaHQg
+bm90IGJlIG5lZWRlZCBmb3Igb3RoZXIgT1MsIGJ1dCBpdAo+IGlzIGEgbXVzdCBvbiBDaHJvbWVP
+Uy4KPiBXZSBoYXZlIG1hbnkgcHJldmlvdXMgcHJvamVjdHMgdXNpbmcgZGlmZmVyZW50IGxvY2Fs
+IHBhdGNoIHNldHMgdG8KPiBhY2hpZXZlIEhETUkgamFjayByZXBvcnRpbmcuCj4gSSBob3BlIHRo
+YXQgd2UgY2FuIGFjaGlldmUgYSBwcm9wZXIgd2F5IGFuZCByZWFsbHkgZ2V0IHRoZSBwYXRjaGVz
+Cj4gbWVyZ2VkIHRvIG1haW5saW5lLgo+IFRoYW5rcyBhIGxvdCEKPiAKClN1cmUsCkRvbid0IGZv
+cmdldCB0byBwdXQgSmVybmVqLCBKb25hcywgYW5kIEplcm9tZSBCcnVuZXQgPGpicnVuZXRAYmF5
+bGlicmUuY29tPiB3aG8gaXMKd29ya2luZyBvbiBpbnRlZ3JhdGluZyBhdWRpbyBvbiB0aGUgQW1s
+b2dpYyBTb0NzLgoKTmVpbApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWw=
