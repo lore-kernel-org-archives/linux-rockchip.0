@@ -1,114 +1,52 @@
-From: Elon Zhang <zhangzj@rock-chips.com>
-Subject: Re: [PATCH v1 1/1] ARM: dts: rockchip: set crypto default disabled on
- rk3288
-Date: Tue, 10 Sep 2019 10:45:04 +0800
-Message-ID: <192e0e32-363b-b6aa-84ed-67040c0c5f4f@rock-chips.com>
-References: <20190827071439.14767-1-zhangzj@rock-chips.com>
- <4806912.UyKsYhR33o@phil>
- <3b9cbffa-291e-fc95-bce6-5b24f5fd860d@rock-chips.com>
- <3345609.Z0LLm6LDBC@phil>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH 02/12] media: hantro: Do not reorder H264 scaling list
+Date: Tue, 10 Sep 2019 11:14:17 +0100
+Message-ID: <56f8886353ced71426e2ce6442eed18fe349cdab.camel@collabora.com>
+References: <HE1PR06MB40117D0EE96E6FA638A04B78ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+         <20190901124531.23645-1-jonas@kwiboo.se>
+         <HE1PR06MB40116C92C3D52C5957EF48E9ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+         <1567432843.3666.6.camel@pengutronix.de>
+         <HE1PR06MB4011A8F99D58E5ACFAE3CECAACBE0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3345609.Z0LLm6LDBC@phil>
-Content-Language: en-US
+In-Reply-To: <HE1PR06MB4011A8F99D58E5ACFAE3CECAACBE0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: mark.rutland@arm.com, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Hi Jonas,
 
-On 9/1/2019 07:04, Heiko Stuebner wrote:
-> Hi Elon,
->
-> Am Donnerstag, 29. August 2019, 13:31:00 CEST schrieb Elon Zhang:
->> On 8/27/2019 22:28, Heiko Stuebner wrote:
->>> Am Dienstag, 27. August 2019, 09:14:39 CEST schrieb Elon Zhang:
->>>> Not every board needs to enable crypto node, so the node should
->>>> be set default disabled in rk3288.dtsi and enabled in specific
->>>> board dts file.
->>> Can you give a bit more rationale here? There would need to be a very
->>> specific reason because of the following:
->>>
->>> The crypto module is not wired to some board-specific components,
->>> so its usability does not depend on the specific board at all.
->>> Instead every board can just use it out of the box and the devicetree
->>> is supposed to describe the hardware and is _not_ meant as a space
->>> for user configuration.
->> Right for almost all normal hardware modules but the crypto module was
->> designed
->>
->> for secure world. As a result,  the crypto module will become
->> inaccessible for linux kernel if secure world enable it.
->>
->> We plan to enable the crypto module in secure world so we should set
->> crypto module default disabled in linux kernel.
-> ok ... I'm halfway convinced ;-) .
->
-> The big thing I want to see is that secure setting in the actual firmware.
-> Aka right now you probably have that in your Rockchip-specific ATF fork
-> and I really want to see the relevant change for public uboot or ATF.
->
-> I don't necessarily require it to be fully merged before taking this, but
-> I really want to see the change either on a mailing list or atf gerrit
-> instance [that makes the crypto engine secure only].
->
-> Rationale behind this is that we don't care very much about private stuff
-> that the general ecosystem doesn't benefit from.
+Thanks for your patch.
 
-Now the crypto security property setting is done in the rockchip private 
-code, which is not
+On Mon, 2019-09-02 at 16:18 +0000, Jonas Karlman wrote:
+[..]
+> 
+> > > diff --git a/drivers/staging/media/hantro/hantro_h264.c b/drivers/staging/media/hantro/hantro_h264.c
+> > > index 0d758e0c0f99..e2d01145ac4f 100644
+> > > --- a/drivers/staging/media/hantro/hantro_h264.c
+> > > +++ b/drivers/staging/media/hantro/hantro_h264.c
+> > > @@ -20,7 +20,7 @@
+> > >  /* Size with u32 units. */
+> > >  #define CABAC_INIT_BUFFER_SIZE		(460 * 2)
+> > >  #define POC_BUFFER_SIZE			34
+> > > -#define SCALING_LIST_SIZE		(6 * 16 + 6 * 64)
+> > > +#define SCALING_LIST_SIZE		(6 * 16 + 2 * 64)
+> > This changes the size of struct hantro_h264_dec_priv_tbl. Did this
+> > describe the auxiliary buffer format incorrectly before?
+> 
+> Based on RKMPP and Hantro SDK the HW expects the 8x8 inter/intra list for
+> Y-component to be located at indices 0 and 1, lists for Cr/Cb is only used for
+> 4:4:4 and HW only supports 4:0:0/4:2:0 if I am not mistaken. So the unused
+> extra 4 lists at the end of the auxiliary buffer seemed like a waste,
+> also RKMPP and Hantro SDK only seemed to allocate space for 2 lists.
+> 
 
-opensource. So  if you don't care about private stuff and the change in 
-private stuff will not
+I think it would make a lot of sense to document what the hardware
+expects somewhere, perhaps as part of the struct hantro_h264_dec_priv_tbl
+documentation?
 
-affect the upstream kernel,  the crypto can be enabled in upstream kernel?
-
->
->
-> Thanks
-> Heiko
->
->
->>> So in fact the status property should probably go away completely from
->>> the crypto node, as it's usable out of the box in all cases.
->>>
->>>
->>> Heiko
->>>
->>>
->>>
->>>> Signed-off-by: Elon Zhang <zhangzj@rock-chips.com>
->>>> ---
->>>>    arch/arm/boot/dts/rk3288.dtsi | 2 +-
->>>>    1 file changed, 1 insertion(+), 1 deletion(-)
->>>>
->>>> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
->>>> index cc893e154fe5..d509aa24177c 100644
->>>> --- a/arch/arm/boot/dts/rk3288.dtsi
->>>> +++ b/arch/arm/boot/dts/rk3288.dtsi
->>>> @@ -984,7 +984,7 @@
->>>>    		clock-names = "aclk", "hclk", "sclk", "apb_pclk";
->>>>    		resets = <&cru SRST_CRYPTO>;
->>>>    		reset-names = "crypto-rst";
->>>> -		status = "okay";
->>>> +		status = "disabled";
->>>>    	};
->>>>    
->>>>    	iep_mmu: iommu@ff900800 {
->>>>
->>>
->>>
->>>
->>>
->>>
->>
->>
->
->
->
->
->
->
+Thanks,
+Ezequiel
