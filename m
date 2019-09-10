@@ -1,52 +1,57 @@
 From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH 02/12] media: hantro: Do not reorder H264 scaling list
-Date: Tue, 10 Sep 2019 11:14:17 +0100
-Message-ID: <56f8886353ced71426e2ce6442eed18fe349cdab.camel@collabora.com>
+Subject: Re: [PATCH 03/12] media: hantro: Fix H264 motion vector buffer
+ offset
+Date: Tue, 10 Sep 2019 11:18:34 +0100
+Message-ID: <255f22b1ddea5fa81104865769eec0fcb5617b36.camel@collabora.com>
 References: <HE1PR06MB40117D0EE96E6FA638A04B78ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
          <20190901124531.23645-1-jonas@kwiboo.se>
-         <HE1PR06MB40116C92C3D52C5957EF48E9ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
-         <1567432843.3666.6.camel@pengutronix.de>
-         <HE1PR06MB4011A8F99D58E5ACFAE3CECAACBE0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+         <HE1PR06MB40115337CD86C429EF24430CACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <HE1PR06MB4011A8F99D58E5ACFAE3CECAACBE0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+In-Reply-To: <HE1PR06MB40115337CD86C429EF24430CACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Boris Brezillon <boris.brezillon@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi Jonas,
 
-Thanks for your patch.
+Thanks for fixing this, I'm happy we are reducing the amount
+of black magic here.
 
-On Mon, 2019-09-02 at 16:18 +0000, Jonas Karlman wrote:
-[..]
+On Sun, 2019-09-01 at 12:45 +0000, Jonas Karlman wrote:
+> A decoded 8-bit 4:2:0 frame need memory for up to 448 macroblocks
+> and is laid out in memory as follow:
 > 
-> > > diff --git a/drivers/staging/media/hantro/hantro_h264.c b/drivers/staging/media/hantro/hantro_h264.c
-> > > index 0d758e0c0f99..e2d01145ac4f 100644
-> > > --- a/drivers/staging/media/hantro/hantro_h264.c
-> > > +++ b/drivers/staging/media/hantro/hantro_h264.c
-> > > @@ -20,7 +20,7 @@
-> > >  /* Size with u32 units. */
-> > >  #define CABAC_INIT_BUFFER_SIZE		(460 * 2)
-> > >  #define POC_BUFFER_SIZE			34
-> > > -#define SCALING_LIST_SIZE		(6 * 16 + 6 * 64)
-> > > +#define SCALING_LIST_SIZE		(6 * 16 + 2 * 64)
-> > This changes the size of struct hantro_h264_dec_priv_tbl. Did this
-> > describe the auxiliary buffer format incorrectly before?
+> +-------------------+
+> > Y-plane   256 MBs |
+> +-------------------+
+> > UV-plane  128 MBs |
+> +-------------------+
+> > MV buffer  64 MBs |
+> +-------------------+
 > 
-> Based on RKMPP and Hantro SDK the HW expects the 8x8 inter/intra list for
-> Y-component to be located at indices 0 and 1, lists for Cr/Cb is only used for
-> 4:4:4 and HW only supports 4:0:0/4:2:0 if I am not mistaken. So the unused
-> extra 4 lists at the end of the auxiliary buffer seemed like a waste,
-> also RKMPP and Hantro SDK only seemed to allocate space for 2 lists.
+> The motion vector buffer offset is currently correct for 4:2:0 because
+> the extra space for motion vectors is overallocated with an extra 64 MBs.
+> 
+> Wrong offset for both destination and motion vector buffer are used
+> for the bottom field of field encoded content, wrong offset is
+> also used for 4:0:0 (monochrome) content.
+> 
+> Fix this by always setting the motion vector address to the expected
+> 384 MBs offset for 4:2:0 and 256 MBs offset for 4:0:0 content.
+> 
+> Also use correct destination and motion vector buffer offset
+> for the bottom field of field encoded content.
+> 
+> While at it also extend the check for 4:0:0 (monochrome) to include an
+> additional check for High Profile (100).
 > 
 
-I think it would make a lot of sense to document what the hardware
-expects somewhere, perhaps as part of the struct hantro_h264_dec_priv_tbl
-documentation?
+As with the scaling list, I believe it would make a lot of sense
+to document this in the driver itself.
 
 Thanks,
 Ezequiel
