@@ -1,55 +1,114 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH 01/12] media: hantro: Fix H264 max frmsize supported on
- RK3288
-Date: Mon, 9 Sep 2019 19:25:06 +0000
-Message-ID: <HE1PR06MB401159D9A49FE4864CEF30F5ACB70@HE1PR06MB4011.eurprd06.prod.outlook.com>
-References: <HE1PR06MB40117D0EE96E6FA638A04B78ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
- <HE1PR06MB4011EAB6F0965D47A20AF805ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
- <b7a43c96fa861de1dbbe969e3aaa4220e7e96793.camel@collabora.com>
+From: Elon Zhang <zhangzj@rock-chips.com>
+Subject: Re: [PATCH v1 1/1] ARM: dts: rockchip: set crypto default disabled on
+ rk3288
+Date: Tue, 10 Sep 2019 10:45:04 +0800
+Message-ID: <192e0e32-363b-b6aa-84ed-67040c0c5f4f@rock-chips.com>
+References: <20190827071439.14767-1-zhangzj@rock-chips.com>
+ <4806912.UyKsYhR33o@phil>
+ <3b9cbffa-291e-fc95-bce6-5b24f5fd860d@rock-chips.com>
+ <3345609.Z0LLm6LDBC@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <b7a43c96fa861de1dbbe969e3aaa4220e7e96793.camel@collabora.com>
+In-Reply-To: <3345609.Z0LLm6LDBC@phil>
 Content-Language: en-US
-Content-ID: <E5F5A2A879876A45ADFDACE62684BCF4@eurprd06.prod.outlook.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Boris Brezillon <boris.brezillon@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mark.rutland@arm.com, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOS0wOS0wNCAxNTowNywgRXplcXVpZWwgR2FyY2lhIHdyb3RlOg0KPiBIZWxsbyBKb25h
-cywNCj4NCj4gVGhhbmsgeW91IGZvciB0aGUgcGF0Y2guDQo+DQo+IE9uIFN1biwgMjAxOS0wOS0w
-MSBhdCAxMjo0NSArMDAwMCwgSm9uYXMgS2FybG1hbiB3cm90ZToNCj4+IFRSTSBzcGVjaWZ5IHN1
-cHBvcnRlZCBpbWFnZSBzaXplIDQ4eDQ4IHRvIDQwOTZ4MjMwNCBhdCBzdGVwIHNpemUgMTYgcGl4
-ZWxzLA0KPj4gY2hhbmdlIGZybXNpemUgbWF4X3dpZHRoL21heF9oZWlnaHQgdG8gbWF0Y2ggVFJN
-Lg0KPj4NCj4gVGhlIFJLMzI4OCBUUk0gdjEuMSAoMjAxNS04LTIwKSBJIGhhdmUgaGVyZSBtZW50
-aW9ucyBhIG1heGltdW0NCj4gb2YgMzg0MHgyMTYwLg0KPg0KPiBJIG11c3QgYWRtaXQgSSBoYXZl
-bid0IHRlc3RlZCB3aXRoIGFjdHVhbCBjb250ZW50IHRoaXMgc2l6ZQ0KPiB0byB2ZXJpZnkgaXQs
-IGhhdmUgeW91IGNoZWNrZWQgaXQ/DQoNCkkgY2FuIGNvbmZpcm0gdGhhdCBvbmUgb2YgbXkgdGVz
-dCBzYW1wbGVzIChQVVBQSUVTIEJBVEggSU4gNEspIGlzIDQwOTZ4MjMwNCBhbmQgY2FuIGJlIGRl
-Y29kZWQgYWZ0ZXIgdGhpcyBwYXRjaC4NCkhvd2V2ZXIgdGhlIGRlY29kaW5nIHNwZWVkIGlzIG5v
-dCBvcHRpbWFsIGF0IDQwME1oeiwgaWYgSSByZWNhbGwgY29ycmVjdGx5IHlvdSBuZWVkIHRvIHNl
-dCB0aGUgVlBVMSBjbG9jayB0byA2MDBNaHogZm9yIDRLIGRlY29kaW5nIG9uIFJLMzI4OC4NCg0K
-VGhlIFJLMzI4OCBUUk0gdmNvZGVjIGNoYXB0ZXIgZnJvbSBbMV0sIHVua25vd24gcmV2aXNpb24g
-YW5kIGRhdGUsIGxpc3RzIDQ4eDQ4IHRvIDQwOTZ4MjMwNCBzdGVwIHNpemUgMTYgcGl4ZWxzIHVu
-ZGVyIDI1LjUuMSBILjI2NCBkZWNvZGVyLg0KDQpbMV0gaHR0cDovL3d3dy50LWZpcmVmbHkuY29t
-L2Rvd25sb2FkL2ZpcmVmbHktcmszMjg4L2RvY3MvVFJNL3JrMzI4OC1jaGFwdGVyLTI1LXZpZGVv
-LWVuY29kZXItZGVjb2Rlci11bml0LSh2Y29kZWMpLnBkZg0KDQpSZWdhcmRzLA0KSm9uYXMNCg0K
-Pg0KPiBUaGFua3MsDQo+IEV6ZXF1aWVsDQo+ICANCj4+IEZpeGVzOiA3NjAzMjc5MzBlMTAgKCJt
-ZWRpYTogaGFudHJvOiBFbmFibGUgSDI2NCBkZWNvZGluZyBvbiByazMyODgiKQ0KPj4gU2lnbmVk
-LW9mZi1ieTogSm9uYXMgS2FybG1hbiA8am9uYXNAa3dpYm9vLnNlPg0KPj4gLS0tDQo+PiAgZHJp
-dmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9yazMyODhfdnB1X2h3LmMgfCA0ICsrLS0NCj4+ICAx
-IGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQ0KPj4NCj4+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL3JrMzI4OF92cHVfaHcuYyBi
-L2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vcmszMjg4X3ZwdV9ody5jDQo+PiBpbmRleCA2
-YmZjYzQ3ZDFlNTguLmViYjAxN2I4YTMzNCAxMDA2NDQNCj4+IC0tLSBhL2RyaXZlcnMvc3RhZ2lu
-Zy9tZWRpYS9oYW50cm8vcmszMjg4X3ZwdV9ody5jDQo+PiArKysgYi9kcml2ZXJzL3N0YWdpbmcv
-bWVkaWEvaGFudHJvL3JrMzI4OF92cHVfaHcuYw0KPj4gQEAgLTY3LDEwICs2NywxMCBAQCBzdGF0
-aWMgY29uc3Qgc3RydWN0IGhhbnRyb19mbXQgcmszMjg4X3ZwdV9kZWNfZm10c1tdID0gew0KPj4g
-IAkJLm1heF9kZXB0aCA9IDIsDQo+PiAgCQkuZnJtc2l6ZSA9IHsNCj4+ICAJCQkubWluX3dpZHRo
-ID0gNDgsDQo+PiAtCQkJLm1heF93aWR0aCA9IDM4NDAsDQo+PiArCQkJLm1heF93aWR0aCA9IDQw
-OTYsDQo+PiAgCQkJLnN0ZXBfd2lkdGggPSBIMjY0X01CX0RJTSwNCj4+ICAJCQkubWluX2hlaWdo
-dCA9IDQ4LA0KPj4gLQkJCS5tYXhfaGVpZ2h0ID0gMjE2MCwNCj4+ICsJCQkubWF4X2hlaWdodCA9
-IDIzMDQsDQo+PiAgCQkJLnN0ZXBfaGVpZ2h0ID0gSDI2NF9NQl9ESU0sDQo+PiAgCQl9LA0KPj4g
-IAl9LA0KPg0KDQo=
+Hi Heiko,
+
+On 9/1/2019 07:04, Heiko Stuebner wrote:
+> Hi Elon,
+>
+> Am Donnerstag, 29. August 2019, 13:31:00 CEST schrieb Elon Zhang:
+>> On 8/27/2019 22:28, Heiko Stuebner wrote:
+>>> Am Dienstag, 27. August 2019, 09:14:39 CEST schrieb Elon Zhang:
+>>>> Not every board needs to enable crypto node, so the node should
+>>>> be set default disabled in rk3288.dtsi and enabled in specific
+>>>> board dts file.
+>>> Can you give a bit more rationale here? There would need to be a very
+>>> specific reason because of the following:
+>>>
+>>> The crypto module is not wired to some board-specific components,
+>>> so its usability does not depend on the specific board at all.
+>>> Instead every board can just use it out of the box and the devicetree
+>>> is supposed to describe the hardware and is _not_ meant as a space
+>>> for user configuration.
+>> Right for almost all normal hardware modules but the crypto module was
+>> designed
+>>
+>> for secure world. As a result,  the crypto module will become
+>> inaccessible for linux kernel if secure world enable it.
+>>
+>> We plan to enable the crypto module in secure world so we should set
+>> crypto module default disabled in linux kernel.
+> ok ... I'm halfway convinced ;-) .
+>
+> The big thing I want to see is that secure setting in the actual firmware.
+> Aka right now you probably have that in your Rockchip-specific ATF fork
+> and I really want to see the relevant change for public uboot or ATF.
+>
+> I don't necessarily require it to be fully merged before taking this, but
+> I really want to see the change either on a mailing list or atf gerrit
+> instance [that makes the crypto engine secure only].
+>
+> Rationale behind this is that we don't care very much about private stuff
+> that the general ecosystem doesn't benefit from.
+
+Now the crypto security property setting is done in the rockchip private 
+code, which is not
+
+opensource. So  if you don't care about private stuff and the change in 
+private stuff will not
+
+affect the upstream kernel,  the crypto can be enabled in upstream kernel?
+
+>
+>
+> Thanks
+> Heiko
+>
+>
+>>> So in fact the status property should probably go away completely from
+>>> the crypto node, as it's usable out of the box in all cases.
+>>>
+>>>
+>>> Heiko
+>>>
+>>>
+>>>
+>>>> Signed-off-by: Elon Zhang <zhangzj@rock-chips.com>
+>>>> ---
+>>>>    arch/arm/boot/dts/rk3288.dtsi | 2 +-
+>>>>    1 file changed, 1 insertion(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+>>>> index cc893e154fe5..d509aa24177c 100644
+>>>> --- a/arch/arm/boot/dts/rk3288.dtsi
+>>>> +++ b/arch/arm/boot/dts/rk3288.dtsi
+>>>> @@ -984,7 +984,7 @@
+>>>>    		clock-names = "aclk", "hclk", "sclk", "apb_pclk";
+>>>>    		resets = <&cru SRST_CRYPTO>;
+>>>>    		reset-names = "crypto-rst";
+>>>> -		status = "okay";
+>>>> +		status = "disabled";
+>>>>    	};
+>>>>    
+>>>>    	iep_mmu: iommu@ff900800 {
+>>>>
+>>>
+>>>
+>>>
+>>>
+>>>
+>>
+>>
+>
+>
+>
+>
+>
+>
