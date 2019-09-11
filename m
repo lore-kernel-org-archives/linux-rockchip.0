@@ -1,72 +1,115 @@
-From: John Stultz <john.stultz@linaro.org>
-Subject: Re: [PATCH 0/7] add support for clocksource/clockevent DT selection
-Date: Wed, 11 Sep 2019 09:06:01 -0700
-Message-ID: <CALAqxLXRVc-K5q=me1=5tA0XYT7ncrArSoD+hq=JOGWVF9-7SQ@mail.gmail.com>
-References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
- <CALAqxLWLStTqGx5DAvUKOYupdgK-doOxRF5Z_Us=L5vnFaa=7w@mail.gmail.com>
- <cb451591-88ad-f1b3-b654-cea86ae11cac@microchip.com>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Subject: Re: [PATCH v3] drm: bridge/dw_hdmi: add audio sample channel status
+ setting
+Date: Wed, 11 Sep 2019 18:23:59 +0200
+Message-ID: <1e2ec69d-e42d-4e1b-7ce9-d1620cfbb4c9@baylibre.com>
+References: <20190911082646.134347-1-cychiang@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org>
-In-Reply-To: <cb451591-88ad-f1b3-b654-cea86ae11cac@microchip.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-snps-arc>,
- <mailto:linux-snps-arc-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-snps-arc/>
-List-Post: <mailto:linux-snps-arc@lists.infradead.org>
-List-Help: <mailto:linux-snps-arc-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-snps-arc>,
- <mailto:linux-snps-arc-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-snps-arc" <linux-snps-arc-bounces@lists.infradead.org>
-Errors-To: linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org
-To: Claudiu Beznea <Claudiu.Beznea@microchip.com>
-Cc: tmaimon77@gmail.com, Linus Walleij <linus.walleij@linaro.org>, nsekhar@ti.com, guoren@kernel.org, linux-stm32@st-md-mailman.stormreply.com, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, linux-samsung-soc@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kevin Hilman <khilman@baylibre.com>, Ludovic.Desroches@microchip.com, linux-imx@nxp.com, =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, uclinux-h8-devel@lists.sourceforge.jp, Marc Zyngier <marc.zyngier@arm.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-unisoc@lists.infradead.org, =?UTF-8?Q?Krzysztof_Ha=C5=82asa?= <khalasa@piap.pl>, Thomas Gleixner <tglx@linutronix.de>, sbranden@broadcom.com, lkml <linux-kernel@vger.kernel.org>, Ralf Baechle <ralf@linux-mips.org>, Paul Burton <paul.burton@mips.com>, kernel@pengutronix.de, Mark Rutland <mark.rutland@arm.co>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20190911082646.134347-1-cychiang@chromium.org>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Cheng-Yi Chiang <cychiang@chromium.org>, linux-kernel@vger.kernel.org
+Cc: alsa-devel@alsa-project.org, kuninori.morimoto.gx@renesas.com, airlied@linux.ie, dri-devel@lists.freedesktop.org, cain.cai@rock-chips.com, Laurent.pinchart@ideasonboard.com, Yakir Yang <ykk@rock-chips.com>, sam@ravnborg.org, Jerome Brunet <jbrunet@baylibre.com>, zhengxing@rock-chips.com, linux-rockchip@lists.infradead.org, dgreid@chromium.org, tzungbi@chromium.org, Jonas Karlman <jonas@kwiboo.se>, jeffy.chen@rock-chips.com, eddie.cai@rock-chips.com, linux-arm-kernel@lists.infradead.org, Jernej Skrabec <jernej.skrabec@siol.net>, dianders@chromium.org, enric.balletbo@collabora.com, kuankuan.y@gmail.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Sep 10, 2019 at 11:52 PM <Claudiu.Beznea@microchip.com> wrote:
-> On 10.09.2019 19:05, John Stultz wrote:
-> > External E-Mail
-> > On Tue, Sep 10, 2019 at 6:47 AM Claudiu Beznea
-> > <claudiu.beznea@microchip.com> wrote:
-> >>
-> >> This series adds support to permit the selection of clocksource/clockevent
-> >> via DT.
-> >
-> > Sorry about this, but could you try to include more of a rational for
-> > *why* this would be useful in your cover-letter/commit messages?
-> >
->
-> Sorry for not being to clear in the cover letter.
->
-> The case I am trying to solve here is as follows:
-> The timer hardware for which I publish a driver at [1] cannot work at the
-> same time as a clocksource and clockevent. On some of our platforms we have
-> more than one such a timer. So we could use one hardware resource as
-> clocksource and one as clockevent but not one for both.
-> Due to this, I proposed in the driver at [1] to have 1st probed hardware to
-> work as clocksource and the 2nd one to work as clockevent.
-[snip]
-> Due to this Daniel proposed to have an unified mechanism for this scenario,
-> see [2], (something like what I proposed in this series), such that to have
-> a determinism b/w the function that the hardware resources would behave
-> (either clocksource or clockevent or both).
-
-Thanks for the additional explanation! I'd suggest adding something
-like it to the commit logs for next time.
-
-Personally, I tend to think of DT bindings as a big harry ABI, and as
-such avoid it as much as possible. :)
-
-I'd probably favor driver tweaks to ensure the hardware only gets
-registered once for each, using a minimal DT compatible or flag on the
-hardware to better describe the underlying hardware quirk that keeps
-it from being usable for both clocksource and clockevent usage.
-
-That way the DT sticks to accurately describing hardware, instead of
-system/software-abstraction configuration details that just apply for
-Linux.
-
-But, again, I'm not really a DT person, so I'll defer to Rob and Daniel.
-
-thanks
--john
+T24gMTEvMDkvMjAxOSAxMDoyNiwgQ2hlbmctWWkgQ2hpYW5nIHdyb3RlOgo+IEZyb206IFlha2ly
+IFlhbmcgPHlra0Byb2NrLWNoaXBzLmNvbT4KPiAKPiBXaGVuIHRyYW5zbWl0dGluZyBJRUM2MDk4
+NSBsaW5lYXIgUENNIGF1ZGlvLCB3ZSBjb25maWd1cmUgdGhlCj4gQWR1aW8gU2FtcGxlIENoYW5u
+ZWwgU3RhdHVzIGluZm9ybWF0aW9uIGluIHRoZSBJRUM2MDk1OCBmcmFtZS4KPiBUaGUgc3RhdHVz
+IGJpdCBpcyBhbHJlYWR5IGF2YWlsYWJsZSBpbiBpZWMuc3RhdHVzIG9mIGhkbWlfY29kZWNfcGFy
+YW1zLgo+IAo+IFRoaXMgZml4IHRoZSBpc3N1ZSB0aGF0IGF1ZGlvIGRvZXMgbm90IGNvbWUgb3V0
+IG9uIHNvbWUgbW9uaXRvcnMKPiAoZS5nLiBMRyAyMkNWMjQxKQo+IAo+IE5vdGUgdGhhdCB0aGVz
+ZSByZWdpc3RlcnMgYXJlIG9ubHkgZm9yIGludGVyZmFjZXM6Cj4gSTJTIGF1ZGlvIGludGVyZmFj
+ZSwgR2VuZXJhbCBQdXJwb3NlIEF1ZGlvIChHUEEpLCBvciBBSEIgYXVkaW8gRE1BCj4gKEFIQkFV
+RERNQSkuCj4gRm9yIFMvUERJRiBpbnRlcmZhY2UgdGhpcyBpbmZvcm1hdGlvbiBjb21lcyBmcm9t
+IHRoZSBzdHJlYW0uCj4gCj4gQ3VycmVudGx5IHRoaXMgZnVuY3Rpb24gZHdfaGRtaV9zZXRfY2hh
+bm5lbF9zdGF0dXMgaXMgb25seSBjYWxsZWQKPiBmcm9tIGR3LWhkbWktaTJzLWF1ZGlvIGluIEky
+UyBzZXR1cC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBZYWtpciBZYW5nIDx5a2tAcm9jay1jaGlwcy5j
+b20+Cj4gU2lnbmVkLW9mZi1ieTogQ2hlbmctWWkgQ2hpYW5nIDxjeWNoaWFuZ0BjaHJvbWl1bS5v
+cmc+Cj4gLS0tCj4gCj4gQ2hhbmdlIGZyb20gdjIgdG8gdjM6Cj4gMS4gUmV1c2Ugd2hhdCBpcyBh
+bHJlYWR5IHNldCBpbiBpZWMuc3RhdHVzIGluIGh3X3BhcmFtLgo+IDIuIFJlbW92ZSBhbGwgdXNl
+bGVzcyBkZWZpbml0aW9uIG9mIHJlZ2lzdGVycyBhbmQgdmFsdWVzLgo+IDMuIE5vdGUgdGhhdCB0
+aGUgb3JpZ2luYWwgc2FtcGxpbmcgZnJlcXVlbmN5IGlzIG5vdCB3cml0dGVuIHRvCj4gICAgdGhl
+IGNoYW5uZWwgc3RhdHVzIGFzIHdlIHJldXNlIGNyZWF0ZV9pZWM5NThfY29uc3VtZXIgaW4gcGNt
+X2llYzk1OC5jLgo+ICAgIFdpdGhvdXQgdGhhdCBpdCBjYW4gc3RpbGwgcGxheSBhdWRpbyBmaW5l
+Lgo+IAo+ICAuLi4vZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLWkycy1hdWRpby5jICAgfCAg
+MSArCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jICAgICB8IDIw
+ICsrKysrKysrKysrKysrKysrKysKPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9k
+dy1oZG1pLmggICAgIHwgIDIgKysKPiAgaW5jbHVkZS9kcm0vYnJpZGdlL2R3X2hkbWkuaCAgICAg
+ICAgICAgICAgICAgIHwgIDEgKwo+ICA0IGZpbGVzIGNoYW5nZWQsIDI0IGluc2VydGlvbnMoKykK
+PiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1p
+LWkycy1hdWRpby5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLWky
+cy1hdWRpby5jCj4gaW5kZXggMzRkOGU4Mzc1NTVmLi4yMGY0ZjkyZGQ4NjYgMTAwNjQ0Cj4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLWkycy1hdWRpby5jCj4g
+KysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLWkycy1hdWRpby5j
+Cj4gQEAgLTEwMiw2ICsxMDIsNyBAQCBzdGF0aWMgaW50IGR3X2hkbWlfaTJzX2h3X3BhcmFtcyhz
+dHJ1Y3QgZGV2aWNlICpkZXYsIHZvaWQgKmRhdGEsCj4gIAl9Cj4gIAo+ICAJZHdfaGRtaV9zZXRf
+c2FtcGxlX3JhdGUoaGRtaSwgaHBhcm1zLT5zYW1wbGVfcmF0ZSk7Cj4gKwlkd19oZG1pX3NldF9j
+aGFubmVsX3N0YXR1cyhoZG1pLCBocGFybXMtPmllYy5zdGF0dXMpOwo+ICAJZHdfaGRtaV9zZXRf
+Y2hhbm5lbF9jb3VudChoZG1pLCBocGFybXMtPmNoYW5uZWxzKTsKPiAgCWR3X2hkbWlfc2V0X2No
+YW5uZWxfYWxsb2NhdGlvbihoZG1pLCBocGFybXMtPmNlYS5jaGFubmVsX2FsbG9jYXRpb24pOwo+
+ICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1p
+LmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYwo+IGluZGV4IGJk
+NjVkMDQ3OTY4My4uYWE3ZWZkNGRhMWM4IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9i
+cmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9z
+eW5vcHN5cy9kdy1oZG1pLmMKPiBAQCAtNTgyLDYgKzU4MiwyNiBAQCBzdGF0aWMgdW5zaWduZWQg
+aW50IGhkbWlfY29tcHV0ZV9uKHVuc2lnbmVkIGludCBmcmVxLCB1bnNpZ25lZCBsb25nIHBpeGVs
+X2NsaykKPiAgCXJldHVybiBuOwo+ICB9Cj4gIAo+ICsvKgo+ICsgKiBXaGVuIHRyYW5zbWl0dGlu
+ZyBJRUM2MDk1OCBsaW5lYXIgUENNIGF1ZGlvLCB0aGVzZSByZWdpc3RlcnMgYWxsb3cgdG8KPiAr
+ICogY29uZmlndXJlIHRoZSBjaGFubmVsIHN0YXR1cyBpbmZvcm1hdGlvbiBvZiBhbGwgdGhlIGNo
+YW5uZWwgc3RhdHVzCj4gKyAqIGJpdHMgaW4gdGhlIElFQzYwOTU4IGZyYW1lLiBGb3IgdGhlIG1v
+bWVudCB0aGlzIGNvbmZpZ3VyYXRpb24gaXMgb25seQo+ICsgKiB1c2VkIHdoZW4gdGhlIEkyUyBh
+dWRpbyBpbnRlcmZhY2UsIEdlbmVyYWwgUHVycG9zZSBBdWRpbyAoR1BBKSwKPiArICogb3IgQUhC
+IGF1ZGlvIERNQSAoQUhCQVVERE1BKSBpbnRlcmZhY2UgaXMgYWN0aXZlCj4gKyAqIChmb3IgUy9Q
+RElGIGludGVyZmFjZSB0aGlzIGluZm9ybWF0aW9uIGNvbWVzIGZyb20gdGhlIHN0cmVhbSkuCj4g
+KyAqLwo+ICt2b2lkIGR3X2hkbWlfc2V0X2NoYW5uZWxfc3RhdHVzKHN0cnVjdCBkd19oZG1pICpo
+ZG1pLAo+ICsJCQkJdTggKmNoYW5uZWxfc3RhdHVzKQo+ICt7Cj4gKwkvKgo+ICsJICogU2V0IGNo
+YW5uZWwgc3RhdHVzIHJlZ2lzdGVyIGZvciBmcmVxdWVuY3kgYW5kIHdvcmQgbGVuZ3RoLgo+ICsJ
+ICogVXNlIGRlZmF1bHQgdmFsdWVzIGZvciBvdGhlciByZWdpc3RlcnMuCj4gKwkgKi8KPiArCWhk
+bWlfd3JpdGViKGhkbWksIGNoYW5uZWxfc3RhdHVzWzNdLCBIRE1JX0ZDX0FVRFNDSE5MUzcpOwo+
+ICsJaGRtaV93cml0ZWIoaGRtaSwgY2hhbm5lbF9zdGF0dXNbNF0sIEhETUlfRkNfQVVEU0NITkxT
+OCk7Cj4gK30KPiArRVhQT1JUX1NZTUJPTF9HUEwoZHdfaGRtaV9zZXRfY2hhbm5lbF9zdGF0dXMp
+Owo+ICsKPiAgc3RhdGljIHZvaWQgaGRtaV9zZXRfY2xrX3JlZ2VuZXJhdG9yKHN0cnVjdCBkd19o
+ZG1pICpoZG1pLAo+ICAJdW5zaWduZWQgbG9uZyBwaXhlbF9jbGssIHVuc2lnbmVkIGludCBzYW1w
+bGVfcmF0ZSkKPiAgewo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9w
+c3lzL2R3LWhkbWkuaCBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5o
+Cj4gaW5kZXggNjk4OGYxMmQ4OWQ5Li5mY2ZmNTA1OWRiMjQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmgKPiArKysgYi9kcml2ZXJzL2dwdS9k
+cm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuaAo+IEBAIC0xNTgsNiArMTU4LDggQEAKPiAgI2Rl
+ZmluZSBIRE1JX0ZDX1NQRERFVklDRUlORiAgICAgICAgICAgICAgICAgICAgMHgxMDYyCj4gICNk
+ZWZpbmUgSERNSV9GQ19BVURTQ09ORiAgICAgICAgICAgICAgICAgICAgICAgIDB4MTA2Mwo+ICAj
+ZGVmaW5lIEhETUlfRkNfQVVEU1NUQVQgICAgICAgICAgICAgICAgICAgICAgICAweDEwNjQKPiAr
+I2RlZmluZSBIRE1JX0ZDX0FVRFNDSE5MUzcgICAgICAgICAgICAgICAgICAgICAgMHgxMDZlCj4g
+KyNkZWZpbmUgSERNSV9GQ19BVURTQ0hOTFM4ICAgICAgICAgICAgICAgICAgICAgIDB4MTA2Zgo+
+ICAjZGVmaW5lIEhETUlfRkNfREFUQUNIMEZJTEwgICAgICAgICAgICAgICAgICAgICAweDEwNzAK
+PiAgI2RlZmluZSBIRE1JX0ZDX0RBVEFDSDFGSUxMICAgICAgICAgICAgICAgICAgICAgMHgxMDcx
+Cj4gICNkZWZpbmUgSERNSV9GQ19EQVRBQ0gyRklMTCAgICAgICAgICAgICAgICAgICAgIDB4MTA3
+Mgo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9icmlkZ2UvZHdfaGRtaS5oIGIvaW5jbHVkZS9k
+cm0vYnJpZGdlL2R3X2hkbWkuaAo+IGluZGV4IGNmNTI4YzI4OTg1Ny4uNGIzZTg2M2M0ZjhhIDEw
+MDY0NAo+IC0tLSBhL2luY2x1ZGUvZHJtL2JyaWRnZS9kd19oZG1pLmgKPiArKysgYi9pbmNsdWRl
+L2RybS9icmlkZ2UvZHdfaGRtaS5oCj4gQEAgLTE1Niw2ICsxNTYsNyBAQCB2b2lkIGR3X2hkbWlf
+c2V0dXBfcnhfc2Vuc2Uoc3RydWN0IGR3X2hkbWkgKmhkbWksIGJvb2wgaHBkLCBib29sIHJ4X3Nl
+bnNlKTsKPiAgCj4gIHZvaWQgZHdfaGRtaV9zZXRfc2FtcGxlX3JhdGUoc3RydWN0IGR3X2hkbWkg
+KmhkbWksIHVuc2lnbmVkIGludCByYXRlKTsKPiAgdm9pZCBkd19oZG1pX3NldF9jaGFubmVsX2Nv
+dW50KHN0cnVjdCBkd19oZG1pICpoZG1pLCB1bnNpZ25lZCBpbnQgY250KTsKPiArdm9pZCBkd19o
+ZG1pX3NldF9jaGFubmVsX3N0YXR1cyhzdHJ1Y3QgZHdfaGRtaSAqaGRtaSwgdTggKmNoYW5uZWxf
+c3RhdHVzKTsKPiAgdm9pZCBkd19oZG1pX3NldF9jaGFubmVsX2FsbG9jYXRpb24oc3RydWN0IGR3
+X2hkbWkgKmhkbWksIHVuc2lnbmVkIGludCBjYSk7Cj4gIHZvaWQgZHdfaGRtaV9hdWRpb19lbmFi
+bGUoc3RydWN0IGR3X2hkbWkgKmhkbWkpOwo+ICB2b2lkIGR3X2hkbWlfYXVkaW9fZGlzYWJsZShz
+dHJ1Y3QgZHdfaGRtaSAqaGRtaSk7Cj4gCgpMb29rcyBmaW5lIGZvciBtZToKUmV2aWV3ZWQtYnk6
+IE5laWwgQXJtc3Ryb25nIDxuYXJtc3Ryb25nQGJheWxpYnJlLmNvbT4KCkpvbmFzID8gSmVybmVq
+ID8gUnVzc2VsbCA/CgpJZiBpdCdzIG9rIGZvciB5b3UgSSdsbCBhcHBseSBpdC4KCk5laWwKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
