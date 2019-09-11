@@ -1,116 +1,67 @@
-From: Cheng-Yi Chiang <cychiang@chromium.org>
-Subject: [PATCH v3] drm: bridge/dw_hdmi: add audio sample channel status setting
-Date: Wed, 11 Sep 2019 16:26:46 +0800
-Message-ID: <20190911082646.134347-1-cychiang@chromium.org>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH 0/4] Enable Hantro G1 post-processor
+Date: Wed, 11 Sep 2019 09:27:16 +0100
+Message-ID: <6e493142690d48ee7e65c1cb2a4d6aec1e3b671b.camel@collabora.com>
+References: <20190903181711.7559-1-ezequiel@collabora.com>
+ <CAAFQd5AdikoN+7TG=0ZGFkSzaK2UFHM4VG7SYtfUtmjQgD61zA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, a.hajda@samsung.com, Laurent.pinchart@ideasonboard.com, airlied@linux.ie, daniel@ffwll.ch, kuninori.morimoto.gx@renesas.com, sam@ravnborg.org, cychiang@chromium.org, dianders@chromium.org, dgreid@chromium.org, tzungbi@chromium.org, zhengxing@rock-chips.com, cain.cai@rock-chips.com, eddie.cai@rock-chips.com, jeffy.chen@rock-chips.com, kuankuan.y@gmail.com, enric.balletbo@collabora.com, dri-devel@lists.freedesktop.org, Neil Armstrong <narmstrong@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>, Yakir Yang <ykk@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAAFQd5AdikoN+7TG=0ZGFkSzaK2UFHM4VG7SYtfUtmjQgD61zA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Chris Healy <cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Yakir Yang <ykk@rock-chips.com>
+On Mon, 2019-09-09 at 16:07 +0900, Tomasz Figa wrote:
+> Hi Ezequiel,
+> 
+> On Wed, Sep 4, 2019 at 3:17 AM Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+> > Hi all,
+> > 
+> > This series enables the post-processor support available
+> > on the Hantro G1 VPU. The post-processor block can be
+> > pipelined with the decoder hardware, allowing to perform
+> > operations such as color conversion, scaling, rotation,
+> > cropping, among others.
+> > 
+> > The decoder hardware needs its own set of NV12 buffers
+> > (the native decoder format), and the post-processor is the
+> > owner of the CAPTURE buffers. This allows the application
+> > get processed (scaled, converted, etc) buffers, completely
+> > transparently.
+> > 
+> > This feature is implemented by exposing other CAPTURE pixel
+> > formats to the application (ENUM_FMT). When the application
+> > sets a pixel format other than NV12, the driver will enable
+> > and use the post-processor transparently.
+> 
+> I'll try to review the series a bit later, but a general comment here
+> is that the userspace wouldn't have a way to distinguish between the
+> native and post-processed formats. I'm pretty much sure that
+> post-processing at least imposes some power penalty, so it would be
+> good if the userspace could avoid it if unnecessary.
+> 
 
-When transmitting IEC60985 linear PCM audio, we configure the
-Aduio Sample Channel Status information in the IEC60958 frame.
-The status bit is already available in iec.status of hdmi_codec_params.
+Hm, that's true, good catch.
 
-This fix the issue that audio does not come out on some monitors
-(e.g. LG 22CV241)
+So, it would be desirable to retain the current behavior of allowing
+the application to just set a different pixel format and get
+a post-processed frame, transparently.
 
-Note that these registers are only for interfaces:
-I2S audio interface, General Purpose Audio (GPA), or AHB audio DMA
-(AHBAUDDMA).
-For S/PDIF interface this information comes from the stream.
+But at the same time, it would be nice if the application is somehow
+aware of the post-processing happening. Maybe we can expose a more
+accurate media controller topology, have applications enable
+the post-processing pipeline explicitly.
 
-Currently this function dw_hdmi_set_channel_status is only called
-from dw-hdmi-i2s-audio in I2S setup.
-
-Signed-off-by: Yakir Yang <ykk@rock-chips.com>
-Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
----
-
-Change from v2 to v3:
-1. Reuse what is already set in iec.status in hw_param.
-2. Remove all useless definition of registers and values.
-3. Note that the original sampling frequency is not written to
-   the channel status as we reuse create_iec958_consumer in pcm_iec958.c.
-   Without that it can still play audio fine.
-
- .../drm/bridge/synopsys/dw-hdmi-i2s-audio.c   |  1 +
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c     | 20 +++++++++++++++++++
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.h     |  2 ++
- include/drm/bridge/dw_hdmi.h                  |  1 +
- 4 files changed, 24 insertions(+)
-
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-index 34d8e837555f..20f4f92dd866 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-@@ -102,6 +102,7 @@ static int dw_hdmi_i2s_hw_params(struct device *dev, void *data,
- 	}
- 
- 	dw_hdmi_set_sample_rate(hdmi, hparms->sample_rate);
-+	dw_hdmi_set_channel_status(hdmi, hparms->iec.status);
- 	dw_hdmi_set_channel_count(hdmi, hparms->channels);
- 	dw_hdmi_set_channel_allocation(hdmi, hparms->cea.channel_allocation);
- 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index bd65d0479683..aa7efd4da1c8 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -582,6 +582,26 @@ static unsigned int hdmi_compute_n(unsigned int freq, unsigned long pixel_clk)
- 	return n;
- }
- 
-+/*
-+ * When transmitting IEC60958 linear PCM audio, these registers allow to
-+ * configure the channel status information of all the channel status
-+ * bits in the IEC60958 frame. For the moment this configuration is only
-+ * used when the I2S audio interface, General Purpose Audio (GPA),
-+ * or AHB audio DMA (AHBAUDDMA) interface is active
-+ * (for S/PDIF interface this information comes from the stream).
-+ */
-+void dw_hdmi_set_channel_status(struct dw_hdmi *hdmi,
-+				u8 *channel_status)
-+{
-+	/*
-+	 * Set channel status register for frequency and word length.
-+	 * Use default values for other registers.
-+	 */
-+	hdmi_writeb(hdmi, channel_status[3], HDMI_FC_AUDSCHNLS7);
-+	hdmi_writeb(hdmi, channel_status[4], HDMI_FC_AUDSCHNLS8);
-+}
-+EXPORT_SYMBOL_GPL(dw_hdmi_set_channel_status);
-+
- static void hdmi_set_clk_regenerator(struct dw_hdmi *hdmi,
- 	unsigned long pixel_clk, unsigned int sample_rate)
- {
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
-index 6988f12d89d9..fcff5059db24 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
-@@ -158,6 +158,8 @@
- #define HDMI_FC_SPDDEVICEINF                    0x1062
- #define HDMI_FC_AUDSCONF                        0x1063
- #define HDMI_FC_AUDSSTAT                        0x1064
-+#define HDMI_FC_AUDSCHNLS7                      0x106e
-+#define HDMI_FC_AUDSCHNLS8                      0x106f
- #define HDMI_FC_DATACH0FILL                     0x1070
- #define HDMI_FC_DATACH1FILL                     0x1071
- #define HDMI_FC_DATACH2FILL                     0x1072
-diff --git a/include/drm/bridge/dw_hdmi.h b/include/drm/bridge/dw_hdmi.h
-index cf528c289857..4b3e863c4f8a 100644
---- a/include/drm/bridge/dw_hdmi.h
-+++ b/include/drm/bridge/dw_hdmi.h
-@@ -156,6 +156,7 @@ void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense);
- 
- void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int rate);
- void dw_hdmi_set_channel_count(struct dw_hdmi *hdmi, unsigned int cnt);
-+void dw_hdmi_set_channel_status(struct dw_hdmi *hdmi, u8 *channel_status);
- void dw_hdmi_set_channel_allocation(struct dw_hdmi *hdmi, unsigned int ca);
- void dw_hdmi_audio_enable(struct dw_hdmi *hdmi);
- void dw_hdmi_audio_disable(struct dw_hdmi *hdmi);
--- 
-2.23.0.162.g0b9fbb3734-goog
+Thanks for the feedback,
+Ezequiel
