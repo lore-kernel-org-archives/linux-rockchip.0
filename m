@@ -1,118 +1,123 @@
-From: Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>
-Subject: Re: [PATCH 0/4] Enable Hantro G1 post-processor
-Date: Wed, 11 Sep 2019 15:49:38 -0400
-Message-ID: <c7b62640ae0e57a9da0c6c5245b5454af08ad2a0.camel@ndufresne.ca>
-References: <20190903181711.7559-1-ezequiel@collabora.com>
- <CAAFQd5AdikoN+7TG=0ZGFkSzaK2UFHM4VG7SYtfUtmjQgD61zA@mail.gmail.com>
- <6e493142690d48ee7e65c1cb2a4d6aec1e3b671b.camel@collabora.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 0/2] mmc: core: Fix Marvell WiFi reset by adding SDIO
+ API to replug card
+Date: Wed, 11 Sep 2019 14:26:04 -0700
+Message-ID: <CAD=FV=VTLoqGbxFFMT8h72cfHCLupyvZpD75JB0N86+kFA+vzw@mail.gmail.com>
+References: <20190722193939.125578-1-dianders@chromium.org> <CAPDyKFoND5Kaam72zxO4wChO0z_1XL2KWX6oNjVcMUGA7G8RFg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0211386631024562723=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <6e493142690d48ee7e65c1cb2a4d6aec1e3b671b.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Chris Healy <cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFoND5Kaam72zxO4wChO0z_1XL2KWX6oNjVcMUGA7G8RFg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Ganapathi Bhat <gbhat@marvell.com>, linux-wireless <linux-wireless@vger.kernel.org>, Andreas Fenkart <afenkart@gmail.com>, Brian Norris <briannorris@chromium.org>, Amitkumar Karwar <amitkarwar@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Nishant Sarmukadam <nishants@marvell.com>, netdev <netdev@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>, Xinming Hu <huxinming820@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Thomas Gleixner <tglx@linutronix.de>, Kate Stewart <kste>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi,
 
---===============0211386631024562723==
-Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-	boundary="=-a9ozNFCk/x1M6OTkHF6F"
+On Thu, Jul 25, 2019 at 6:28 AM Ulf Hansson <ulf.hansson@linaro.org> wrote:
+>
+> On Mon, 22 Jul 2019 at 21:41, Douglas Anderson <dianders@chromium.org> wrote:
+> >
+> > As talked about in the thread at:
+> >
+> > http://lkml.kernel.org/r/CAD=FV=X7P2F1k_zwHc0mbtfk55-rucTz_GoDH=PL6zWqKYcpuw@mail.gmail.com
+> >
+> > ...when the Marvell WiFi card tries to reset itself it kills
+> > Bluetooth.  It was observed that we could re-init the card properly by
+> > unbinding / rebinding the host controller.  It was also observed that
+> > in the downstream Chrome OS codebase the solution used was
+> > mmc_remove_host() / mmc_add_host(), which is similar to the solution
+> > in this series.
+> >
+> > So far I've only done testing of this series using the reset test
+> > source that can be simulated via sysfs.  Specifically I ran this test:
+> >
+> > for i in $(seq 1000); do
+> >   echo "LOOP $i --------"
+> >   echo 1 > /sys/kernel/debug/mwifiex/mlan0/reset
+> >
+> >   while true; do
+> >     if ! ping -w15 -c1 "${GW}" >/dev/null 2>&1; then
+> >       fail=$(( fail + 1 ))
+> >       echo "Fail WiFi ${fail}"
+> >       if [[ ${fail} == 3 ]]; then
+> >         exit 1
+> >       fi
+> >     else
+> >       fail=0
+> >       break
+> >     fi
+> >   done
+> >
+> >   hciconfig hci0 down
+> >   sleep 1
+> >   if ! hciconfig hci0 up; then
+> >     echo "Fail BT"
+> >     exit 1
+> >   fi
+> > done
+> >
+> > I ran this several times and got several hundred iterations each
+> > before a failure.  When I saw failures:
+> >
+> > * Once I saw a "Fail BT"; manually resetting the card again fixed it.
+> >   I didn't give it time to see if it would have detected this
+> >   automatically.
+> > * Once I saw the ping fail because (for some reason) my device only
+> >   got an IPv6 address from my router and the IPv4 ping failed.  I
+> >   changed my script to use 'ping6' to see if that would help.
+> > * Once I saw the ping fail because the higher level network stack
+> >   ("shill" in my case) seemed to crash.  A few minutes later the
+> >   system recovered itself automatically.  https://crbug.com/984593 if
+> >   you want more details.
+> > * Sometimes while I was testing I saw "Fail WiFi 1" indicating a
+> >   transitory failure.  Usually this was an association failure, but in
+> >   one case I saw the device do "Firmware wakeup failed" after I
+> >   triggered the reset.  This caused the driver to trigger a re-reset
+> >   of itself which eventually recovered things.  This was good because
+> >   it was an actual test of the normal reset flow (not the one
+> >   triggered via sysfs).
+> >
+> > Changes in v2:
+> > - s/routnine/routine (Brian Norris, Matthias Kaehlcke).
+> > - s/contining/containing (Matthias Kaehlcke).
+> > - Add Matthias Reviewed-by tag.
+> > - Removed clear_bit() calls and old comment (Brian Norris).
+> > - Explicit CC of Andreas Fenkart.
+> > - Explicit CC of Brian Norris.
+> > - Add "Fixes" pointing at the commit Brian talked about.
+> > - Add Brian's Reviewed-by tag.
+> >
+> > Douglas Anderson (2):
+> >   mmc: core: Add sdio_trigger_replug() API
+> >   mwifiex: Make use of the new sdio_trigger_replug() API to reset
+> >
+> >  drivers/mmc/core/core.c                     | 28 +++++++++++++++++++--
+> >  drivers/mmc/core/sdio_io.c                  | 20 +++++++++++++++
+> >  drivers/net/wireless/marvell/mwifiex/sdio.c | 16 +-----------
+> >  include/linux/mmc/host.h                    | 15 ++++++++++-
+> >  include/linux/mmc/sdio_func.h               |  2 ++
+> >  5 files changed, 63 insertions(+), 18 deletions(-)
+> >
+>
+> Doug, thanks for sending this!
+>
+> As you know, I have been working on additional changes for SDIO
+> suspend/resume (still WIP and not ready for sharing) and this series
+> is related.
+>
+> The thing is, that even during system suspend/resume, synchronizations
+> are needed between the different layers (mmc host, mmc core and
+> sdio-funcs), which is common to the problem you want to solve.
+>
+> That said, I need to scratch my head a bit more before I can provide
+> you some feedback on $subject series. Moreover, it's vacation period
+> at my side so things are moving a bit slower. Please be patient.
 
+I had kinda forgotten about this series after we landed it locally in
+Chrome OS, but I realized that it never got resolved upstream.  Any
+chance your head has been sufficiently scratched and you're now happy
+with $subject series?  ;-)
 
---=-a9ozNFCk/x1M6OTkHF6F
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Le mercredi 11 septembre 2019 =C3=A0 09:27 +0100, Ezequiel Garcia a =C3=A9c=
-rit :
-> On Mon, 2019-09-09 at 16:07 +0900, Tomasz Figa wrote:
-> > Hi Ezequiel,
-> >=20
-> > On Wed, Sep 4, 2019 at 3:17 AM Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>=
- wrote:
-> > > Hi all,
-> > >=20
-> > > This series enables the post-processor support available
-> > > on the Hantro G1 VPU. The post-processor block can be
-> > > pipelined with the decoder hardware, allowing to perform
-> > > operations such as color conversion, scaling, rotation,
-> > > cropping, among others.
-> > >=20
-> > > The decoder hardware needs its own set of NV12 buffers
-> > > (the native decoder format), and the post-processor is the
-> > > owner of the CAPTURE buffers. This allows the application
-> > > get processed (scaled, converted, etc) buffers, completely
-> > > transparently.
-> > >=20
-> > > This feature is implemented by exposing other CAPTURE pixel
-> > > formats to the application (ENUM_FMT). When the application
-> > > sets a pixel format other than NV12, the driver will enable
-> > > and use the post-processor transparently.
-> >=20
-> > I'll try to review the series a bit later, but a general comment here
-> > is that the userspace wouldn't have a way to distinguish between the
-> > native and post-processed formats. I'm pretty much sure that
-> > post-processing at least imposes some power penalty, so it would be
-> > good if the userspace could avoid it if unnecessary.
-> >=20
->=20
-> Hm, that's true, good catch.
->=20
-> So, it would be desirable to retain the current behavior of allowing
-> the application to just set a different pixel format and get
-> a post-processed frame, transparently.
->=20
-> But at the same time, it would be nice if the application is somehow
-> aware of the post-processing happening. Maybe we can expose a more
-> accurate media controller topology, have applications enable
-> the post-processing pipeline explicitly.
-
-How it works on the stateful side is that userspace set the encoding
-type (the codec), then passes a header (in our case, there will be
-parsed structures replacing this) first. The driver then configure
-capture format, giving a hint of the "default" or "native" format. This
-may or may not be sufficient, but it does work in giving userspace a
-hint.
-
->=20
-> Thanks for the feedback,
-> Ezequiel
->=20
-
---=-a9ozNFCk/x1M6OTkHF6F
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCXXlP0gAKCRBxUwItrAao
-HNw+AKCQcVOG1SaxOGLL555nItsPa9cvMQCeK4EDSk7KrRai+IkgEBCyQDHa8Yo=
-=ffC4
------END PGP SIGNATURE-----
-
---=-a9ozNFCk/x1M6OTkHF6F--
-
-
-
---===============0211386631024562723==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0211386631024562723==--
+-Doug
