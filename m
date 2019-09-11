@@ -1,12 +1,12 @@
 From: Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>
 Subject: Re: [PATCH 0/4] Enable Hantro G1 post-processor
-Date: Wed, 11 Sep 2019 15:48:29 -0400
-Message-ID: <20b4042dc3627b46e336e8c1c6fc401622bf3df9.camel@ndufresne.ca>
+Date: Wed, 11 Sep 2019 15:49:38 -0400
+Message-ID: <c7b62640ae0e57a9da0c6c5245b5454af08ad2a0.camel@ndufresne.ca>
 References: <20190903181711.7559-1-ezequiel@collabora.com>
  <CAAFQd5AdikoN+7TG=0ZGFkSzaK2UFHM4VG7SYtfUtmjQgD61zA@mail.gmail.com>
  <6e493142690d48ee7e65c1cb2a4d6aec1e3b671b.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============6750570524956984805=="
+Content-Type: multipart/mixed; boundary="===============0211386631024562723=="
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <6e493142690d48ee7e65c1cb2a4d6aec1e3b671b.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -23,12 +23,12 @@ Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlma
 List-Id: linux-rockchip.vger.kernel.org
 
 
---===============6750570524956984805==
+--===============0211386631024562723==
 Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-	boundary="=-v1t+JGEHFAUPnEcHoFwA"
+	boundary="=-a9ozNFCk/x1M6OTkHF6F"
 
 
---=-v1t+JGEHFAUPnEcHoFwA
+--=-a9ozNFCk/x1M6OTkHF6F
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -88,22 +88,23 @@ hint.
 > Ezequiel
 >=20
 
---=-v1t+JGEHFAUPnEcHoFwA
+--=-a9ozNFCk/x1M6OTkHF6F
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCXXlPiQAKCRBxUwItrAao
-HII0AJ4pjy8CgdrB0H02TI6NAG3s7SUkWACffzXziQp0QiEe8fgzFulcgFS/XSU=
-=q71o
+iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCXXlP0gAKCRBxUwItrAao
+HNw+AKCQcVOG1SaxOGLL555nItsPa9cvMQCeK4EDSk7KrRai+IkgEBCyQDHa8Yo=
+=ffC4
 -----END PGP SIGNATURE-----
 
---=-v1t+JGEHFAUPnEcHoFwA--
+--=-a9ozNFCk/x1M6OTkHF6F--
 
 
 
---===============6750570524956984805==
+--===============0211386631024562723==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -114,4 +115,4 @@ Linux-rockchip mailing list
 Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============6750570524956984805==--
+--===============0211386631024562723==--
