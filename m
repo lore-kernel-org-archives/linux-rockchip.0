@@ -1,50 +1,92 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: rk3288: HDMI out causing boot hang
-Date: Fri, 13 Sep 2019 08:19:47 +0530
-Message-ID: <CAMty3ZDo6Hk9swGcaZ0RNC-4KeQ=EJS9gu_-+ewmM618GHhO+w@mail.gmail.com>
+From: Tony McKahan <tonymckahan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [U-Boot] rk3288: HDMI out causing boot hang
+Date: Thu, 12 Sep 2019 23:21:22 -0400
+Message-ID: <CAERgokkJiuGZ2aoWthA+eFQ5r_Vsv2mp1FGdEghGsu2MaC1Nvg@mail.gmail.com>
+References: <CAMty3ZDo6Hk9swGcaZ0RNC-4KeQ=EJS9gu_-+ewmM618GHhO+w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, Anatolij Gustschin <agust@denx.de>
-Cc: U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAMty3ZDo6Hk9swGcaZ0RNC-4KeQ=EJS9gu_-+ewmM618GHhO+w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Cc: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Anatolij Gustschin <agust-ynQEQJNshbs@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQWxsLAoKRGlkIGFueW9uZSB0cmllZCBIRE1JIG91dCBvbiByazMyODg/IEVuYWJsaW5nIEhE
-TUkgb3V0IGNhdXNpbmcgYm9vdApoYW5nLCBkdXJpbmcgc3Rkb3V0IGluaXRpYWxpemF0aW9uIGZy
-b20gY29uc29sZS5jCgpFbmFibGVkIGJlbG93IGNvbmZpZ3MgYW5kIHN0ZGluL291dC9lcnIgZW52
-aXJvbm1lbnQgdG8gcHJvYmUgdGhlCkRNX1ZJREVPLCBzZWVtcyBsaWtlIHRoZSBjb25zb2xlIGlu
-aXRpYWxpemF0aW9uIGhhbmdzIGR1cmluZyBzdGRvdXQKaW5pdGlhbGl6YXRpb24uCgpMb2c6Ck1v
-ZGVsOiBUaW5rZXItUkszMjg4CkRSQU06ICAyIEdpQgpNTUM6ICAgZHdtbWNAZmYwYzAwMDA6IDEK
-TG9hZGluZyBFbnZpcm9ubWVudCBmcm9tIE1NQy4uLiBPSwoxLiBjb25zb2xlX2luaXRfcgoyLiBj
-b25zb2xlX2luaXRfcgoyLjEgY29uc29sZV9pbml0X3IKcmszMjg4X3ZvcF9wcm9iZQp2b3BAZmY5
-MzAwMDA6IHByb2JpbmcgcmVndWxhdG9yICd2Y2MxOF9sY2QnCnZvcEBmZjkzMDAwMDogcHJvYmlu
-ZyByZWd1bGF0b3IgJ1ZDQzE4X0xDRCcKdm9wQGZmOTMwMDAwOiBwcm9iaW5nIHJlZ3VsYXRvciAn
-dmRkMTBfbGNkX3B3cmVuX2gnCnZvcEBmZjkzMDAwMDogcHJvYmluZyByZWd1bGF0b3IgJ3ZkZDEw
-X2xjZCcKdm9wQGZmOTMwMDAwOiBwcm9iaW5nIHJlZ3VsYXRvciAnVkREMTBfTENEJwp2b3BAZmY5
-MzAwMDA6IHByb2JpbmcgcmVndWxhdG9yICd2Y2MzM19sY2QnCnJrX2Rpc3BsYXlfaW5pdCh2b3BA
-ZmY5MzAwMDAsIDIxMzkwOTUwNDAsIGVuZHBvaW50QDApCnZvcF9pZD0wCnJlbW90ZSB2b3BfaWQ9
-MApya19kaXNwbGF5X2luaXQodm9wQGZmOTMwMDAwKTogbm8gVUNMQVNTX0RJU1BMQVkgZm9yIHJl
-bW90ZS1lbmRwb2ludApEZXZpY2UgZmFpbGVkOiByZXQ9LTIyCnJrX2Rpc3BsYXlfaW5pdCh2b3BA
-ZmY5MzAwMDAsIDIxMzkwOTUwNDAsIGVuZHBvaW50QDEpCnZvcF9pZD0xCnJlbW90ZSB2b3BfaWQ9
-MApGb3VuZCBkZXZpY2UgJ2hkbWlAZmY5ODAwMDAnLCBkaXNwX3VjX3ByaXY9N2NmNzE3MTAKcmsz
-Mjg4X2hkbWlfcHJvYmUKaGRtaUBmZjk4MDAwMDogcHJvYmluZyByZWd1bGF0b3IgJ3ZjYzUwX2hk
-bWknCnJrX2hkbWlfcHJvYmU6IDEKcmtfaGRtaV9wcm9iZTogMgpya19oZG1pX3Byb2JlOiBkb25l
-IQpmYj03ZjgwMDAwMCwgc2l6ZT0yNTYwIDE0NDAKcmszMjg4X3ZvcF9wcm9iZSBkb25lIQoKQ2hh
-bmdlczoKK0NPTkZJR19ETV9WSURFTz15CitDT05GSUdfRElTUExBWT15CitDT05GSUdfVklERU9f
-Uk9DS0NISVA9eQorQ09ORklHX0RJU1BMQVlfUk9DS0NISVBfSERNST15CitDT05GSUdfQ09OU09M
-RV9TQ1JPTExfTElORVM9MTAKCisjZGVmaW5lIFJPQ0tDSElQX0RFVklDRV9TRVRUSU5HUyBcCisg
-ICAgICAgICAgICAgICAic3Rkb3V0PXNlcmlhbCx2aWRjb25zb2xlXDAiIFwKKyAgICAgICAgICAg
-ICAgICJzdGRlcnI9c2VyaWFsLHZpZGNvbnNvbGVcMCIKCkFueSBpbnB1dHM/CgpKYWdhbi4KX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxp
-bmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGlu
-Zm8vdS1ib290Cg==
+Hello Jagan,
+
+On Thu, Sep 12, 2019 at 10:50 PM Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org> wrote:
+>
+> Hi All,
+>
+> Did anyone tried HDMI out on rk3288? Enabling HDMI out causing boot
+> hang, during stdout initialization from console.c
+>
+> Enabled below configs and stdin/out/err environment to probe the
+> DM_VIDEO, seems like the console initialization hangs during stdout
+> initialization.
+>
+> Log:
+> Model: Tinker-RK3288
+> DRAM:  2 GiB
+> MMC:   dwmmc@ff0c0000: 1
+> Loading Environment from MMC... OK
+> 1. console_init_r
+> 2. console_init_r
+> 2.1 console_init_r
+> rk3288_vop_probe
+> vop@ff930000: probing regulator 'vcc18_lcd'
+> vop@ff930000: probing regulator 'VCC18_LCD'
+> vop@ff930000: probing regulator 'vdd10_lcd_pwren_h'
+> vop@ff930000: probing regulator 'vdd10_lcd'
+> vop@ff930000: probing regulator 'VDD10_LCD'
+> vop@ff930000: probing regulator 'vcc33_lcd'
+> rk_display_init(vop@ff930000, 2139095040, endpoint@0)
+> vop_id=0
+> remote vop_id=0
+> rk_display_init(vop@ff930000): no UCLASS_DISPLAY for remote-endpoint
+> Device failed: ret=-22
+> rk_display_init(vop@ff930000, 2139095040, endpoint@1)
+> vop_id=1
+> remote vop_id=0
+> Found device 'hdmi@ff980000', disp_uc_priv=7cf71710
+> rk3288_hdmi_probe
+> hdmi@ff980000: probing regulator 'vcc50_hdmi'
+> rk_hdmi_probe: 1
+> rk_hdmi_probe: 2
+> rk_hdmi_probe: done!
+> fb=7f800000, size=2560 1440
+> rk3288_vop_probe done!
+>
+> Changes:
+> +CONFIG_DM_VIDEO=y
+> +CONFIG_DISPLAY=y
+> +CONFIG_VIDEO_ROCKCHIP=y
+> +CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+> +CONFIG_CONSOLE_SCROLL_LINES=10
+>
+> +#define ROCKCHIP_DEVICE_SETTINGS \
+> +               "stdout=serial,vidconsole\0" \
+> +               "stderr=serial,vidconsole\0"
+>
+> Any inputs?
+
+I saw this some time ago with Armbian with ASUS Tinker Board, but
+thought I had somehow misconfigured it, and simply disabled it.  I can
+confirm it hangs for me though.
+
+>
+> Jagan.
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
