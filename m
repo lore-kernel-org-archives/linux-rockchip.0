@@ -1,197 +1,50 @@
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@siol.net>
-Subject: Re: [PATCH v3] drm: bridge/dw_hdmi: add audio sample channel status setting
-Date: Thu, 12 Sep 2019 17:25:33 +0200
-Message-ID: <7842247.f7rGGmobG6@jernej-laptop>
-References: <20190911082646.134347-1-cychiang@chromium.org> <10668907.r1TyVuJQb1@jernej-laptop> <CAFv8NwJGa0HXsnv2MvJhknpr9PxUL3jH2HZLSLiSD5s_nHiQhQ@mail.gmail.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: rk3288: HDMI out causing boot hang
+Date: Fri, 13 Sep 2019 08:19:47 +0530
+Message-ID: <CAMty3ZDo6Hk9swGcaZ0RNC-4KeQ=EJS9gu_-+ewmM618GHhO+w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFv8NwJGa0HXsnv2MvJhknpr9PxUL3jH2HZLSLiSD5s_nHiQhQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Cheng-yi Chiang <cychiang@chromium.org>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, linux-kernel <linux-kernel@vger.kernel.org>, "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..." <alsa-devel@alsa-project.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, kuninori.morimoto.gx@renesas.com, sam@ravnborg.org, Doug Anderson <dianders@chromium.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, Xing Zheng <zhengxing@rock-chips.com>, cain.cai@rock-chips.com, =?utf-8?B?6JSh5p6r?= <eddie.cai@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, kuankuan.y@gmail.com, Enric Balletbo i Serra <enri>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Kever Yang <kever.yang@rock-chips.com>, Anatolij Gustschin <agust@denx.de>
+Cc: U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Dne sreda, 11. september 2019 ob 19:02:38 CEST je Cheng-yi Chiang napisal(a):
-> On Thu, Sep 12, 2019 at 12:54 AM Jernej Škrabec <jernej.skrabec@siol.net> 
-wrote:
-> > Dne sreda, 11. september 2019 ob 18:23:59 CEST je Neil Armstrong 
-napisal(a):
-> > > On 11/09/2019 10:26, Cheng-Yi Chiang wrote:
-> > > > From: Yakir Yang <ykk@rock-chips.com>
-> > > > 
-> > > > When transmitting IEC60985 linear PCM audio, we configure the
-> > > > Aduio Sample Channel Status information in the IEC60958 frame.
-> > > > The status bit is already available in iec.status of
-> > > > hdmi_codec_params.
-> > > > 
-> > > > This fix the issue that audio does not come out on some monitors
-> > > > (e.g. LG 22CV241)
-> > > > 
-> > > > Note that these registers are only for interfaces:
-> > > > I2S audio interface, General Purpose Audio (GPA), or AHB audio DMA
-> > > > (AHBAUDDMA).
-> > > > For S/PDIF interface this information comes from the stream.
-> > > > 
-> > > > Currently this function dw_hdmi_set_channel_status is only called
-> > > > from dw-hdmi-i2s-audio in I2S setup.
-> > > > 
-> > > > Signed-off-by: Yakir Yang <ykk@rock-chips.com>
-> > > > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
-> > > > ---
-> > > > 
-> > > > Change from v2 to v3:
-> > > > 1. Reuse what is already set in iec.status in hw_param.
-> > > > 2. Remove all useless definition of registers and values.
-> > > > 3. Note that the original sampling frequency is not written to
-> > > > 
-> > > >    the channel status as we reuse create_iec958_consumer in
-> > > >    pcm_iec958.c.
-> > > >    Without that it can still play audio fine.
-> > > >  
-> > > >  .../drm/bridge/synopsys/dw-hdmi-i2s-audio.c   |  1 +
-> > > >  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c     | 20
-> > > >  +++++++++++++++++++
-> > > >  drivers/gpu/drm/bridge/synopsys/dw-hdmi.h     |  2 ++
-> > > >  include/drm/bridge/dw_hdmi.h                  |  1 +
-> > > >  4 files changed, 24 insertions(+)
-> > > > 
-> > > > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-> > > > b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c index
-> > > > 34d8e837555f..20f4f92dd866 100644
-> > > > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-> > > > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-> > > > @@ -102,6 +102,7 @@ static int dw_hdmi_i2s_hw_params(struct device
-> > > > *dev,
-> > > > void *data,>
-> > > > 
-> > > >     }
-> > > >     
-> > > >     dw_hdmi_set_sample_rate(hdmi, hparms->sample_rate);
-> > > > 
-> > > > +   dw_hdmi_set_channel_status(hdmi, hparms->iec.status);
-> > > > 
-> > > >     dw_hdmi_set_channel_count(hdmi, hparms->channels);
-> > > >     dw_hdmi_set_channel_allocation(hdmi, hparms-
-> > >
-> > >cea.channel_allocation);
-> > >
-> > > > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> > > > b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c index
-> > > > bd65d0479683..aa7efd4da1c8 100644
-> > > > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> > > > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> > > > @@ -582,6 +582,26 @@ static unsigned int hdmi_compute_n(unsigned int
-> > > > freq,
-> > > > unsigned long pixel_clk)>
-> > > > 
-> > > >     return n;
-> > > >  
-> > > >  }
-> > > > 
-> > > > +/*
-> > > > + * When transmitting IEC60958 linear PCM audio, these registers allow
-> > > > to
-> > > > + * configure the channel status information of all the channel status
-> > > > + * bits in the IEC60958 frame. For the moment this configuration is
-> > > > only
-> > > > + * used when the I2S audio interface, General Purpose Audio (GPA),
-> > > > + * or AHB audio DMA (AHBAUDDMA) interface is active
-> > > > + * (for S/PDIF interface this information comes from the stream).
-> > > > + */
-> > > > +void dw_hdmi_set_channel_status(struct dw_hdmi *hdmi,
-> > > > +                           u8 *channel_status)
-> > > > +{
-> > > > +   /*
-> > > > +    * Set channel status register for frequency and word length.
-> > > > +    * Use default values for other registers.
-> > > > +    */
-> > > > +   hdmi_writeb(hdmi, channel_status[3], HDMI_FC_AUDSCHNLS7);
-> > > > +   hdmi_writeb(hdmi, channel_status[4], HDMI_FC_AUDSCHNLS8);
-> > > > +}
-> > > > +EXPORT_SYMBOL_GPL(dw_hdmi_set_channel_status);
-> > > > +
-> > > > 
-> > > >  static void hdmi_set_clk_regenerator(struct dw_hdmi *hdmi,
-> > > >  
-> > > >     unsigned long pixel_clk, unsigned int sample_rate)
-> > > >  
-> > > >  {
-> > > > 
-> > > > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
-> > > > b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h index
-> > > > 6988f12d89d9..fcff5059db24 100644
-> > > > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
-> > > > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.h
-> > > > @@ -158,6 +158,8 @@
-> > > > 
-> > > >  #define HDMI_FC_SPDDEVICEINF                    0x1062
-> > > >  #define HDMI_FC_AUDSCONF                        0x1063
-> > > >  #define HDMI_FC_AUDSSTAT                        0x1064
-> > > > 
-> > > > +#define HDMI_FC_AUDSCHNLS7                      0x106e
-> > > > +#define HDMI_FC_AUDSCHNLS8                      0x106f
-> > > > 
-> > > >  #define HDMI_FC_DATACH0FILL                     0x1070
-> > > >  #define HDMI_FC_DATACH1FILL                     0x1071
-> > > >  #define HDMI_FC_DATACH2FILL                     0x1072
-> > > > 
-> > > > diff --git a/include/drm/bridge/dw_hdmi.h
-> > > > b/include/drm/bridge/dw_hdmi.h
-> > > > index cf528c289857..4b3e863c4f8a 100644
-> > > > --- a/include/drm/bridge/dw_hdmi.h
-> > > > +++ b/include/drm/bridge/dw_hdmi.h
-> > > > @@ -156,6 +156,7 @@ void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi,
-> > > > bool
-> > > > hpd, bool rx_sense);>
-> > > > 
-> > > >  void dw_hdmi_set_sample_rate(struct dw_hdmi *hdmi, unsigned int
-> > > >  rate);
-> > > >  void dw_hdmi_set_channel_count(struct dw_hdmi *hdmi, unsigned int
-> > > >  cnt);
-> > > > 
-> > > > +void dw_hdmi_set_channel_status(struct dw_hdmi *hdmi, u8
-> > > > *channel_status);
-> > > > 
-> > > >  void dw_hdmi_set_channel_allocation(struct dw_hdmi *hdmi, unsigned
-> > > >  int
-> > > >  ca);
-> > > >  void dw_hdmi_audio_enable(struct dw_hdmi *hdmi);
-> > > >  void dw_hdmi_audio_disable(struct dw_hdmi *hdmi);
-> > > 
-> > > Looks fine for me:
-> > > Reviewed-by: Neil Armstrong <narmstrong@baylibre.com>
-> > > 
-> > > Jonas ? Jernej ? Russell ?
-> > 
-> > Patch itself is fine, I'm just wondering if more information should be
-> > copied from status array to registers. But I think they are not 1:1
-> > mapping so some
-> > more work would be needed. Anyway, patch is:
-> Hi Jernej,
-> Yes you are right. I was thinking about the same thing.
-> But there are also some fields in the IEC60958 spec not mapped to the
-> registers on dw-hdmi.
-> So I ended up just writing the two registers in the original ykk's
-> patch, and ignoring "original sampling frequency" like pcm_iec958.
-> It turns out that audio plays fine on my LG monitor. So I suggest we
-> can keep this patch as simple as it is, and add more register setting
-> if we find issue.
-> Thanks!
-
-I think that for reliable audio passthrough support these registers will have 
-to be updated, but as I said, I'm fine with this patch as-is.
-
-Best regards,
-Jernej
-
-> 
-> > Reviewed-by: Jernej Skrabec <jernej.skrabec@siol.net>
-> > 
-> > Best regards,
-> > Jernej
-> > 
-> > > If it's ok for you I'll apply it.
-> > > 
-> > > Neil
+SGkgQWxsLAoKRGlkIGFueW9uZSB0cmllZCBIRE1JIG91dCBvbiByazMyODg/IEVuYWJsaW5nIEhE
+TUkgb3V0IGNhdXNpbmcgYm9vdApoYW5nLCBkdXJpbmcgc3Rkb3V0IGluaXRpYWxpemF0aW9uIGZy
+b20gY29uc29sZS5jCgpFbmFibGVkIGJlbG93IGNvbmZpZ3MgYW5kIHN0ZGluL291dC9lcnIgZW52
+aXJvbm1lbnQgdG8gcHJvYmUgdGhlCkRNX1ZJREVPLCBzZWVtcyBsaWtlIHRoZSBjb25zb2xlIGlu
+aXRpYWxpemF0aW9uIGhhbmdzIGR1cmluZyBzdGRvdXQKaW5pdGlhbGl6YXRpb24uCgpMb2c6Ck1v
+ZGVsOiBUaW5rZXItUkszMjg4CkRSQU06ICAyIEdpQgpNTUM6ICAgZHdtbWNAZmYwYzAwMDA6IDEK
+TG9hZGluZyBFbnZpcm9ubWVudCBmcm9tIE1NQy4uLiBPSwoxLiBjb25zb2xlX2luaXRfcgoyLiBj
+b25zb2xlX2luaXRfcgoyLjEgY29uc29sZV9pbml0X3IKcmszMjg4X3ZvcF9wcm9iZQp2b3BAZmY5
+MzAwMDA6IHByb2JpbmcgcmVndWxhdG9yICd2Y2MxOF9sY2QnCnZvcEBmZjkzMDAwMDogcHJvYmlu
+ZyByZWd1bGF0b3IgJ1ZDQzE4X0xDRCcKdm9wQGZmOTMwMDAwOiBwcm9iaW5nIHJlZ3VsYXRvciAn
+dmRkMTBfbGNkX3B3cmVuX2gnCnZvcEBmZjkzMDAwMDogcHJvYmluZyByZWd1bGF0b3IgJ3ZkZDEw
+X2xjZCcKdm9wQGZmOTMwMDAwOiBwcm9iaW5nIHJlZ3VsYXRvciAnVkREMTBfTENEJwp2b3BAZmY5
+MzAwMDA6IHByb2JpbmcgcmVndWxhdG9yICd2Y2MzM19sY2QnCnJrX2Rpc3BsYXlfaW5pdCh2b3BA
+ZmY5MzAwMDAsIDIxMzkwOTUwNDAsIGVuZHBvaW50QDApCnZvcF9pZD0wCnJlbW90ZSB2b3BfaWQ9
+MApya19kaXNwbGF5X2luaXQodm9wQGZmOTMwMDAwKTogbm8gVUNMQVNTX0RJU1BMQVkgZm9yIHJl
+bW90ZS1lbmRwb2ludApEZXZpY2UgZmFpbGVkOiByZXQ9LTIyCnJrX2Rpc3BsYXlfaW5pdCh2b3BA
+ZmY5MzAwMDAsIDIxMzkwOTUwNDAsIGVuZHBvaW50QDEpCnZvcF9pZD0xCnJlbW90ZSB2b3BfaWQ9
+MApGb3VuZCBkZXZpY2UgJ2hkbWlAZmY5ODAwMDAnLCBkaXNwX3VjX3ByaXY9N2NmNzE3MTAKcmsz
+Mjg4X2hkbWlfcHJvYmUKaGRtaUBmZjk4MDAwMDogcHJvYmluZyByZWd1bGF0b3IgJ3ZjYzUwX2hk
+bWknCnJrX2hkbWlfcHJvYmU6IDEKcmtfaGRtaV9wcm9iZTogMgpya19oZG1pX3Byb2JlOiBkb25l
+IQpmYj03ZjgwMDAwMCwgc2l6ZT0yNTYwIDE0NDAKcmszMjg4X3ZvcF9wcm9iZSBkb25lIQoKQ2hh
+bmdlczoKK0NPTkZJR19ETV9WSURFTz15CitDT05GSUdfRElTUExBWT15CitDT05GSUdfVklERU9f
+Uk9DS0NISVA9eQorQ09ORklHX0RJU1BMQVlfUk9DS0NISVBfSERNST15CitDT05GSUdfQ09OU09M
+RV9TQ1JPTExfTElORVM9MTAKCisjZGVmaW5lIFJPQ0tDSElQX0RFVklDRV9TRVRUSU5HUyBcCisg
+ICAgICAgICAgICAgICAic3Rkb3V0PXNlcmlhbCx2aWRjb25zb2xlXDAiIFwKKyAgICAgICAgICAg
+ICAgICJzdGRlcnI9c2VyaWFsLHZpZGNvbnNvbGVcMCIKCkFueSBpbnB1dHM/CgpKYWdhbi4KX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxp
+bmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGlu
+Zm8vdS1ib290Cg==
