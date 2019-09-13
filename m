@@ -1,156 +1,111 @@
 From: Neil Armstrong <narmstrong@baylibre.com>
-Subject: Re: [PATCH v3] drm: bridge/dw_hdmi: add audio sample channel status
- setting
-Date: Fri, 13 Sep 2019 10:46:12 +0200
-Message-ID: <5f8ec989-9f59-072f-20d4-4cb6ff76a5ac@baylibre.com>
-References: <20190911082646.134347-1-cychiang@chromium.org>
- <1e2ec69d-e42d-4e1b-7ce9-d1620cfbb4c9@baylibre.com>
- <10668907.r1TyVuJQb1@jernej-laptop>
- <CAFv8NwJGa0HXsnv2MvJhknpr9PxUL3jH2HZLSLiSD5s_nHiQhQ@mail.gmail.com>
- <HE1PR06MB4011478532D8E127697565EDACB30@HE1PR06MB4011.eurprd06.prod.outlook.com>
+Subject: Re: [PATCH v5 0/5] Add HDMI jack support on RK3288
+Date: Fri, 13 Sep 2019 11:32:57 +0200
+Message-ID: <3fc94731-f66a-223d-995e-97ac67f9e882@baylibre.com>
+References: <20190717083327.47646-1-cychiang@chromium.org>
+ <CA+Px+wX4gbntkd6y8NN8xwXpZLD4MH9rTeHcW9+Ndtw=3_mWBw@mail.gmail.com>
+ <CAFv8NwLiY+ro0L4c5vjSOGN8jA-Qr4zm2OWvVHkiuoa7_4e2Fg@mail.gmail.com>
+ <CAFv8NwJjG4mwfnYO=M3O9nZN48D6aY72nQuqEFpZL68dh5727w@mail.gmail.com>
+ <7019a223-cc97-e1c6-907b-e6b3d626164f@baylibre.com>
+ <20190909135346.GG2036@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <HE1PR06MB4011478532D8E127697565EDACB30@HE1PR06MB4011.eurprd06.prod.outlook.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jonas Karlman <jonas@kwiboo.se>, Cheng-yi Chiang <cychiang@chromium.org>
-Cc: "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..." <alsa-devel@alsa-project.org>, Doug Anderson <dianders@chromium.org>, "kuninori.morimoto.gx@renesas.com" <kuninori.morimoto.gx@renesas.com>, David Airlie <airlied@linux.ie>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "cain.cai@rock-chips.com" <cain.cai@rock-chips.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Yakir Yang <ykk@rock-chips.com>, "sam@ravnborg.org" <sam@ravnborg.org>, Jerome Brunet <jbrunet@baylibre.com>, Xing Zheng <zhengxing@rock-chips.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Dylan Reid <dgreid@chromium.org>, "tzungbi@chromium.org" <tzungbi@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>, =?UTF-8?B?6JSh5p6r?= <eddie.cai@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infrade>
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature";
+ boundary="UBRWlaGOHY0XEFVZVHxIrla091rV5aEyl"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190909135346.GG2036@sirena.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Cheng-yi Chiang <cychiang@chromium.org>, Tzung-Bi Shih <tzungbi@google.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, ALSA development <alsa-devel@alsa-project.org>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradea
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTMvMDkvMjAxOSAwODozNywgSm9uYXMgS2FybG1hbiB3cm90ZToKPiBPbiAyMDE5LTA5LTEx
-IDE5OjAyLCBDaGVuZy15aSBDaGlhbmcgd3JvdGU6Cj4+IE9uIFRodSwgU2VwIDEyLCAyMDE5IGF0
-IDEyOjU0IEFNIEplcm5laiDFoGtyYWJlYyA8amVybmVqLnNrcmFiZWNAc2lvbC5uZXQ+IHdyb3Rl
-Ogo+Pj4gRG5lIHNyZWRhLCAxMS4gc2VwdGVtYmVyIDIwMTkgb2IgMTg6MjM6NTkgQ0VTVCBqZSBO
-ZWlsIEFybXN0cm9uZyBuYXBpc2FsKGEpOgo+Pj4+IE9uIDExLzA5LzIwMTkgMTA6MjYsIENoZW5n
-LVlpIENoaWFuZyB3cm90ZToKPj4+Pj4gRnJvbTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMu
-Y29tPgo+Pj4+Pgo+Pj4+PiBXaGVuIHRyYW5zbWl0dGluZyBJRUM2MDk4NSBsaW5lYXIgUENNIGF1
-ZGlvLCB3ZSBjb25maWd1cmUgdGhlCj4+Pj4+IEFkdWlvIFNhbXBsZSBDaGFubmVsIFN0YXR1cyBp
-bmZvcm1hdGlvbiBpbiB0aGUgSUVDNjA5NTggZnJhbWUuCj4+Pj4+IFRoZSBzdGF0dXMgYml0IGlz
-IGFscmVhZHkgYXZhaWxhYmxlIGluIGllYy5zdGF0dXMgb2YgaGRtaV9jb2RlY19wYXJhbXMuCj4+
-Pj4+Cj4+Pj4+IFRoaXMgZml4IHRoZSBpc3N1ZSB0aGF0IGF1ZGlvIGRvZXMgbm90IGNvbWUgb3V0
-IG9uIHNvbWUgbW9uaXRvcnMKPj4+Pj4gKGUuZy4gTEcgMjJDVjI0MSkKPj4+Pj4KPj4+Pj4gTm90
-ZSB0aGF0IHRoZXNlIHJlZ2lzdGVycyBhcmUgb25seSBmb3IgaW50ZXJmYWNlczoKPj4+Pj4gSTJT
-IGF1ZGlvIGludGVyZmFjZSwgR2VuZXJhbCBQdXJwb3NlIEF1ZGlvIChHUEEpLCBvciBBSEIgYXVk
-aW8gRE1BCj4+Pj4+IChBSEJBVURETUEpLgo+Pj4+PiBGb3IgUy9QRElGIGludGVyZmFjZSB0aGlz
-IGluZm9ybWF0aW9uIGNvbWVzIGZyb20gdGhlIHN0cmVhbS4KPj4+Pj4KPj4+Pj4gQ3VycmVudGx5
-IHRoaXMgZnVuY3Rpb24gZHdfaGRtaV9zZXRfY2hhbm5lbF9zdGF0dXMgaXMgb25seSBjYWxsZWQK
-Pj4+Pj4gZnJvbSBkdy1oZG1pLWkycy1hdWRpbyBpbiBJMlMgc2V0dXAuCj4+Pj4+Cj4+Pj4+IFNp
-Z25lZC1vZmYtYnk6IFlha2lyIFlhbmcgPHlra0Byb2NrLWNoaXBzLmNvbT4KPj4+Pj4gU2lnbmVk
-LW9mZi1ieTogQ2hlbmctWWkgQ2hpYW5nIDxjeWNoaWFuZ0BjaHJvbWl1bS5vcmc+Cj4+Pj4+IC0t
-LQo+Pj4+Pgo+Pj4+PiBDaGFuZ2UgZnJvbSB2MiB0byB2MzoKPj4+Pj4gMS4gUmV1c2Ugd2hhdCBp
-cyBhbHJlYWR5IHNldCBpbiBpZWMuc3RhdHVzIGluIGh3X3BhcmFtLgo+Pj4+PiAyLiBSZW1vdmUg
-YWxsIHVzZWxlc3MgZGVmaW5pdGlvbiBvZiByZWdpc3RlcnMgYW5kIHZhbHVlcy4KPj4+Pj4gMy4g
-Tm90ZSB0aGF0IHRoZSBvcmlnaW5hbCBzYW1wbGluZyBmcmVxdWVuY3kgaXMgbm90IHdyaXR0ZW4g
-dG8KPj4+Pj4KPj4+Pj4gICAgdGhlIGNoYW5uZWwgc3RhdHVzIGFzIHdlIHJldXNlIGNyZWF0ZV9p
-ZWM5NThfY29uc3VtZXIgaW4gcGNtX2llYzk1OC5jLgo+Pj4+PiAgICBXaXRob3V0IHRoYXQgaXQg
-Y2FuIHN0aWxsIHBsYXkgYXVkaW8gZmluZS4KPj4+Pj4KPj4+Pj4gIC4uLi9kcm0vYnJpZGdlL3N5
-bm9wc3lzL2R3LWhkbWktaTJzLWF1ZGlvLmMgICB8ICAxICsKPj4+Pj4gIGRyaXZlcnMvZ3B1L2Ry
-bS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jICAgICB8IDIwICsrKysrKysrKysrKysrKysrKysK
-Pj4+Pj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5oICAgICB8ICAy
-ICsrCj4+Pj4+ICBpbmNsdWRlL2RybS9icmlkZ2UvZHdfaGRtaS5oICAgICAgICAgICAgICAgICAg
-fCAgMSArCj4+Pj4+ICA0IGZpbGVzIGNoYW5nZWQsIDI0IGluc2VydGlvbnMoKykKPj4+Pj4KPj4+
-Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS1p
-MnMtYXVkaW8uYwo+Pj4+PiBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRt
-aS1pMnMtYXVkaW8uYyBpbmRleAo+Pj4+PiAzNGQ4ZTgzNzU1NWYuLjIwZjRmOTJkZDg2NiAxMDA2
-NDQKPj4+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLWky
-cy1hdWRpby5jCj4+Pj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHct
-aGRtaS1pMnMtYXVkaW8uYwo+Pj4+PiBAQCAtMTAyLDYgKzEwMiw3IEBAIHN0YXRpYyBpbnQgZHdf
-aGRtaV9pMnNfaHdfcGFyYW1zKHN0cnVjdCBkZXZpY2UgKmRldiwKPj4+Pj4gdm9pZCAqZGF0YSw+
-Cj4+Pj4+ICAgICB9Cj4+Pj4+Cj4+Pj4+ICAgICBkd19oZG1pX3NldF9zYW1wbGVfcmF0ZShoZG1p
-LCBocGFybXMtPnNhbXBsZV9yYXRlKTsKPj4+Pj4KPj4+Pj4gKyAgIGR3X2hkbWlfc2V0X2NoYW5u
-ZWxfc3RhdHVzKGhkbWksIGhwYXJtcy0+aWVjLnN0YXR1cyk7Cj4+Pj4+Cj4+Pj4+ICAgICBkd19o
-ZG1pX3NldF9jaGFubmVsX2NvdW50KGhkbWksIGhwYXJtcy0+Y2hhbm5lbHMpOwo+Pj4+PiAgICAg
-ZHdfaGRtaV9zZXRfY2hhbm5lbF9hbGxvY2F0aW9uKGhkbWksIGhwYXJtcy0KPj4+PiBjZWEuY2hh
-bm5lbF9hbGxvY2F0aW9uKTsKPj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlk
-Z2Uvc3lub3BzeXMvZHctaGRtaS5jCj4+Pj4+IGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5v
-cHN5cy9kdy1oZG1pLmMgaW5kZXgKPj4+Pj4gYmQ2NWQwNDc5NjgzLi5hYTdlZmQ0ZGExYzggMTAw
-NjQ0Cj4+Pj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5j
-Cj4+Pj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jCj4+
-Pj4+IEBAIC01ODIsNiArNTgyLDI2IEBAIHN0YXRpYyB1bnNpZ25lZCBpbnQgaGRtaV9jb21wdXRl
-X24odW5zaWduZWQgaW50IGZyZXEsCj4+Pj4+IHVuc2lnbmVkIGxvbmcgcGl4ZWxfY2xrKT4KPj4+
-Pj4gICAgIHJldHVybiBuOwo+Pj4+Pgo+Pj4+PiAgfQo+Pj4+Pgo+Pj4+PiArLyoKPj4+Pj4gKyAq
-IFdoZW4gdHJhbnNtaXR0aW5nIElFQzYwOTU4IGxpbmVhciBQQ00gYXVkaW8sIHRoZXNlIHJlZ2lz
-dGVycyBhbGxvdyB0bwo+Pj4+PiArICogY29uZmlndXJlIHRoZSBjaGFubmVsIHN0YXR1cyBpbmZv
-cm1hdGlvbiBvZiBhbGwgdGhlIGNoYW5uZWwgc3RhdHVzCj4+Pj4+ICsgKiBiaXRzIGluIHRoZSBJ
-RUM2MDk1OCBmcmFtZS4gRm9yIHRoZSBtb21lbnQgdGhpcyBjb25maWd1cmF0aW9uIGlzIG9ubHkK
-Pj4+Pj4gKyAqIHVzZWQgd2hlbiB0aGUgSTJTIGF1ZGlvIGludGVyZmFjZSwgR2VuZXJhbCBQdXJw
-b3NlIEF1ZGlvIChHUEEpLAo+Pj4+PiArICogb3IgQUhCIGF1ZGlvIERNQSAoQUhCQVVERE1BKSBp
-bnRlcmZhY2UgaXMgYWN0aXZlCj4+Pj4+ICsgKiAoZm9yIFMvUERJRiBpbnRlcmZhY2UgdGhpcyBp
-bmZvcm1hdGlvbiBjb21lcyBmcm9tIHRoZSBzdHJlYW0pLgo+Pj4+PiArICovCj4+Pj4+ICt2b2lk
-IGR3X2hkbWlfc2V0X2NoYW5uZWxfc3RhdHVzKHN0cnVjdCBkd19oZG1pICpoZG1pLAo+Pj4+PiAr
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgdTggKmNoYW5uZWxfc3RhdHVzKQo+Pj4+PiArewo+
-Pj4+PiArICAgLyoKPj4+Pj4gKyAgICAqIFNldCBjaGFubmVsIHN0YXR1cyByZWdpc3RlciBmb3Ig
-ZnJlcXVlbmN5IGFuZCB3b3JkIGxlbmd0aC4KPj4+Pj4gKyAgICAqIFVzZSBkZWZhdWx0IHZhbHVl
-cyBmb3Igb3RoZXIgcmVnaXN0ZXJzLgo+Pj4+PiArICAgICovCj4+Pj4+ICsgICBoZG1pX3dyaXRl
-YihoZG1pLCBjaGFubmVsX3N0YXR1c1szXSwgSERNSV9GQ19BVURTQ0hOTFM3KTsKPj4+Pj4gKyAg
-IGhkbWlfd3JpdGViKGhkbWksIGNoYW5uZWxfc3RhdHVzWzRdLCBIRE1JX0ZDX0FVRFNDSE5MUzgp
-Owo+Pj4+PiArfQo+Pj4+PiArRVhQT1JUX1NZTUJPTF9HUEwoZHdfaGRtaV9zZXRfY2hhbm5lbF9z
-dGF0dXMpOwo+Pj4+PiArCj4+Pj4+Cj4+Pj4+ICBzdGF0aWMgdm9pZCBoZG1pX3NldF9jbGtfcmVn
-ZW5lcmF0b3Ioc3RydWN0IGR3X2hkbWkgKmhkbWksCj4+Pj4+Cj4+Pj4+ICAgICB1bnNpZ25lZCBs
-b25nIHBpeGVsX2NsaywgdW5zaWduZWQgaW50IHNhbXBsZV9yYXRlKQo+Pj4+Pgo+Pj4+PiAgewo+
-Pj4+Pgo+Pj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9k
-dy1oZG1pLmgKPj4+Pj4gYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWku
-aCBpbmRleAo+Pj4+PiA2OTg4ZjEyZDg5ZDkuLmZjZmY1MDU5ZGIyNCAxMDA2NDQKPj4+Pj4gLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmgKPj4+Pj4gKysrIGIv
-ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmgKPj4+Pj4gQEAgLTE1OCw2
-ICsxNTgsOCBAQAo+Pj4+Pgo+Pj4+PiAgI2RlZmluZSBIRE1JX0ZDX1NQRERFVklDRUlORiAgICAg
-ICAgICAgICAgICAgICAgMHgxMDYyCj4+Pj4+ICAjZGVmaW5lIEhETUlfRkNfQVVEU0NPTkYgICAg
-ICAgICAgICAgICAgICAgICAgICAweDEwNjMKPj4+Pj4gICNkZWZpbmUgSERNSV9GQ19BVURTU1RB
-VCAgICAgICAgICAgICAgICAgICAgICAgIDB4MTA2NAo+Pj4+Pgo+Pj4+PiArI2RlZmluZSBIRE1J
-X0ZDX0FVRFNDSE5MUzcgICAgICAgICAgICAgICAgICAgICAgMHgxMDZlCj4+Pj4+ICsjZGVmaW5l
-IEhETUlfRkNfQVVEU0NITkxTOCAgICAgICAgICAgICAgICAgICAgICAweDEwNmYKPj4+Pj4KPj4+
-Pj4gICNkZWZpbmUgSERNSV9GQ19EQVRBQ0gwRklMTCAgICAgICAgICAgICAgICAgICAgIDB4MTA3
-MAo+Pj4+PiAgI2RlZmluZSBIRE1JX0ZDX0RBVEFDSDFGSUxMICAgICAgICAgICAgICAgICAgICAg
-MHgxMDcxCj4+Pj4+ICAjZGVmaW5lIEhETUlfRkNfREFUQUNIMkZJTEwgICAgICAgICAgICAgICAg
-ICAgICAweDEwNzIKPj4+Pj4KPj4+Pj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvZHJtL2JyaWRnZS9k
-d19oZG1pLmggYi9pbmNsdWRlL2RybS9icmlkZ2UvZHdfaGRtaS5oCj4+Pj4+IGluZGV4IGNmNTI4
-YzI4OTg1Ny4uNGIzZTg2M2M0ZjhhIDEwMDY0NAo+Pj4+PiAtLS0gYS9pbmNsdWRlL2RybS9icmlk
-Z2UvZHdfaGRtaS5oCj4+Pj4+ICsrKyBiL2luY2x1ZGUvZHJtL2JyaWRnZS9kd19oZG1pLmgKPj4+
-Pj4gQEAgLTE1Niw2ICsxNTYsNyBAQCB2b2lkIGR3X2hkbWlfc2V0dXBfcnhfc2Vuc2Uoc3RydWN0
-IGR3X2hkbWkgKmhkbWksIGJvb2wKPj4+Pj4gaHBkLCBib29sIHJ4X3NlbnNlKTs+Cj4+Pj4+ICB2
-b2lkIGR3X2hkbWlfc2V0X3NhbXBsZV9yYXRlKHN0cnVjdCBkd19oZG1pICpoZG1pLCB1bnNpZ25l
-ZCBpbnQgcmF0ZSk7Cj4+Pj4+ICB2b2lkIGR3X2hkbWlfc2V0X2NoYW5uZWxfY291bnQoc3RydWN0
-IGR3X2hkbWkgKmhkbWksIHVuc2lnbmVkIGludCBjbnQpOwo+Pj4+Pgo+Pj4+PiArdm9pZCBkd19o
-ZG1pX3NldF9jaGFubmVsX3N0YXR1cyhzdHJ1Y3QgZHdfaGRtaSAqaGRtaSwgdTgKPj4+Pj4gKmNo
-YW5uZWxfc3RhdHVzKTsKPj4+Pj4KPj4+Pj4gIHZvaWQgZHdfaGRtaV9zZXRfY2hhbm5lbF9hbGxv
-Y2F0aW9uKHN0cnVjdCBkd19oZG1pICpoZG1pLCB1bnNpZ25lZCBpbnQKPj4+Pj4gIGNhKTsKPj4+
-Pj4gIHZvaWQgZHdfaGRtaV9hdWRpb19lbmFibGUoc3RydWN0IGR3X2hkbWkgKmhkbWkpOwo+Pj4+
-PiAgdm9pZCBkd19oZG1pX2F1ZGlvX2Rpc2FibGUoc3RydWN0IGR3X2hkbWkgKmhkbWkpOwo+Pj4+
-IExvb2tzIGZpbmUgZm9yIG1lOgo+Pj4+IFJldmlld2VkLWJ5OiBOZWlsIEFybXN0cm9uZyA8bmFy
-bXN0cm9uZ0BiYXlsaWJyZS5jb20+Cj4+Pj4KPj4+PiBKb25hcyA/IEplcm5laiA/IFJ1c3NlbGwg
-Pwo+Pj4gUGF0Y2ggaXRzZWxmIGlzIGZpbmUsIEknbSBqdXN0IHdvbmRlcmluZyBpZiBtb3JlIGlu
-Zm9ybWF0aW9uIHNob3VsZCBiZSBjb3BpZWQKPj4+IGZyb20gc3RhdHVzIGFycmF5IHRvIHJlZ2lz
-dGVycy4gQnV0IEkgdGhpbmsgdGhleSBhcmUgbm90IDE6MSBtYXBwaW5nIHNvIHNvbWUKPj4+IG1v
-cmUgd29yayB3b3VsZCBiZSBuZWVkZWQuIEFueXdheSwgcGF0Y2ggaXM6Cj4+IEhpIEplcm5laiwK
-Pj4gWWVzIHlvdSBhcmUgcmlnaHQuIEkgd2FzIHRoaW5raW5nIGFib3V0IHRoZSBzYW1lIHRoaW5n
-Lgo+PiBCdXQgdGhlcmUgYXJlIGFsc28gc29tZSBmaWVsZHMgaW4gdGhlIElFQzYwOTU4IHNwZWMg
-bm90IG1hcHBlZCB0byB0aGUKPj4gcmVnaXN0ZXJzIG9uIGR3LWhkbWkuCj4+IFNvIEkgZW5kZWQg
-dXAganVzdCB3cml0aW5nIHRoZSB0d28gcmVnaXN0ZXJzIGluIHRoZSBvcmlnaW5hbCB5a2sncwo+
-PiBwYXRjaCwgYW5kIGlnbm9yaW5nICJvcmlnaW5hbCBzYW1wbGluZyBmcmVxdWVuY3kiIGxpa2Ug
-cGNtX2llYzk1OC4KPj4gSXQgdHVybnMgb3V0IHRoYXQgYXVkaW8gcGxheXMgZmluZSBvbiBteSBM
-RyBtb25pdG9yLiBTbyBJIHN1Z2dlc3Qgd2UKPj4gY2FuIGtlZXAgdGhpcyBwYXRjaCBhcyBzaW1w
-bGUgYXMgaXQgaXMsIGFuZCBhZGQgbW9yZSByZWdpc3RlciBzZXR0aW5nCj4+IGlmIHdlIGZpbmQg
-aXNzdWUuCj4+IFRoYW5rcyEKPiAKPiBJbiBteSBvbGQgbXVsdGktY2hhbm5lbCBscGNtIHBhdGNo
-IFsxXSBJIG9ubHkgd3JvdGUgc2FtcGxlIHJhdGUgdG8gRkNfQVVEU0NITkxTNy4KPiBUaGlzIGlz
-IG11Y2ggY2xlYW5lciBhbmQgc2ltcGxlciwgYW5kIHNldHRpbmcgRkNfQVVEU0NITkxTOCBkb2Vz
-IG5vdCBjYXVzZSBhbnkKPiBwcm9ibGVtcyB3aGVuIEkgdGVzdGVkIG9uIEFTVVMgVGlua2VyIEJv
-YXJkIFMgKFJLMzI4OCkuCj4gCj4gUmV2aWV3ZWQtYnk6IEpvbmFzIEthcmxtYW4gPGpvbmFzQGt3
-aWJvby5zZT4KPiAKPiAKPiBbMV0gaHR0cHM6Ly9naXRodWIuY29tL0t3aWJvby9saW51eC1yb2Nr
-Y2hpcC9jb21taXQvNGFmOWViYzU2N2NjZjBhMDg1MWZhMjYwMDk3MDIxYzI3YWViYmI2YgoKVGhh
-bmtzIEpvbmFzLCBKZXJuZWosCgpBcHBseWluZyBub3cuCgpOZWlsCgo+IAo+IFJlZ2FyZHMsCj4g
-Sm9uYXMKPiAKPj4KPj4+Cj4+PiBSZXZpZXdlZC1ieTogSmVybmVqIFNrcmFiZWMgPGplcm5lai5z
-a3JhYmVjQHNpb2wubmV0Pgo+Pj4KPj4+IEJlc3QgcmVnYXJkcywKPj4+IEplcm5lago+Pj4KPj4+
-PiBJZiBpdCdzIG9rIGZvciB5b3UgSSdsbCBhcHBseSBpdC4KPj4+Pgo+Pj4+IE5laWwKPj4+PgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--UBRWlaGOHY0XEFVZVHxIrla091rV5aEyl
+Content-Type: multipart/mixed; boundary="rm5OjYgCDNiLh12bKFbv4tVbo1MJJOHLY";
+ protected-headers="v1"
+From: Neil Armstrong <narmstrong@baylibre.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: Cheng-yi Chiang <cychiang@chromium.org>,
+ Tzung-Bi Shih <tzungbi@google.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Hans Verkuil <hverkuil@xs4all.nl>, Liam Girdwood <lgirdwood@gmail.com>,
+ Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>,
+ Russell King <rmk+kernel@armlinux.org.uk>,
+ Andrzej Hajda <a.hajda@samsung.com>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>,
+ Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org,
+ ALSA development <alsa-devel@alsa-project.org>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Jernej Skrabec
+ <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>
+Message-ID: <3fc94731-f66a-223d-995e-97ac67f9e882@baylibre.com>
+Subject: Re: [PATCH v5 0/5] Add HDMI jack support on RK3288
+References: <20190717083327.47646-1-cychiang@chromium.org>
+ <CA+Px+wX4gbntkd6y8NN8xwXpZLD4MH9rTeHcW9+Ndtw=3_mWBw@mail.gmail.com>
+ <CAFv8NwLiY+ro0L4c5vjSOGN8jA-Qr4zm2OWvVHkiuoa7_4e2Fg@mail.gmail.com>
+ <CAFv8NwJjG4mwfnYO=M3O9nZN48D6aY72nQuqEFpZL68dh5727w@mail.gmail.com>
+ <7019a223-cc97-e1c6-907b-e6b3d626164f@baylibre.com>
+ <20190909135346.GG2036@sirena.org.uk>
+In-Reply-To: <20190909135346.GG2036@sirena.org.uk>
+
+--rm5OjYgCDNiLh12bKFbv4tVbo1MJJOHLY
+Content-Type: text/plain; charset=windows-1252
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On 09/09/2019 15:53, Mark Brown wrote:
+> On Mon, Sep 09, 2019 at 09:37:14AM +0200, Neil Armstrong wrote:
+>=20
+>> I'd like some review from ASoC people and other drm bridge reviewers,
+>> Jernej, Jonas & Andrzej.
+>=20
+>> Jonas could have some comments on the overall patchset.
+>=20
+> The ASoC bits look basically fine, I've gone ahead and applied
+> patch 1 as is since we're just before the merge window and that
+> way we reduce potential cross tree issues.  I know there's a lot
+> of discussion on the DRM side about how they want to handle
+> things with jacks, I'm not 100% sure what the latest thinking is
+> there.
+>=20
+
+Thanks Mark.
+
+
+Cheng-Yi can you resent this serie without the already applied
+first patch with Jernej, Jonas, and Jerome Brunet <jbrunet@baylibre.com> =
+CCed ?
+
+Thanks,
+Neil
+
+
+--rm5OjYgCDNiLh12bKFbv4tVbo1MJJOHLY--
+
+--UBRWlaGOHY0XEFVZVHxIrla091rV5aEyl
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEPVPGJshWBf4d9CyLd9zb2sjISdEFAl17YkkACgkQd9zb2sjI
+SdFL8xAAm/uVVOJY0VK0uVX/gv2nNJ+t90WPrW3BfoWCLRaSr1czldafQkylTwQl
+EOHl8NcYz5pttql0d1ZKh6uZSCTsMtWRb6Qwm14c3ptFaD9y1TI8X+R+zryTIgA5
+fuaLScVQ+kDpMwWYvZvVdWnu7/7Wdtj+uDNEooXlxeIvylxQzPYGQLcrdyZz54DZ
+vPl/scouuoKobHYXHw5AUs/ipsHUxcfD9wm+s4lrcIcE8FSjoVqbwZsonqDlHfOY
+lCykwi/sj2A567r0fL0Qipj4cqa5Zzvy955v0K5E1bHbTFs3I9kKsMsrLmYrpVB8
+pG+Tz31EKziArzadGNlxjjI6ViRQxwXAOPUfDZW7JFmWPD+aF2ZquQttp3GGlbwf
+9ndAcqd0yPqBaWwaPWAZJ/CbZiKPeDtAVcBtiR/pHYDUgMiDq88O3deynxUer4qw
+06IrtU9X8yn02vEh2L+6fLCG3NfMCUdyl4lRCmxSJ8K83pCOx1iMpcawEJq+xktX
+qvQVxXHrp1D5drRUA+87MDZmI5aQ/9HoYY+tIMTC21D7JFB/x2U6n0nFRyLi/muG
+gD0oD4cBhYhH+xJhKQeBmx+cA6xb90J4mfzFvpWvwDeGNsJJ+QaLGmdz9b50Aqd9
+XKP4tzxUvHbepIhN1NPCh1Xe2cU06KRt2S/ID9usnk2cnXoigUg=
+=JmCa
+-----END PGP SIGNATURE-----
+
+--UBRWlaGOHY0XEFVZVHxIrla091rV5aEyl--
