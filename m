@@ -1,60 +1,55 @@
-From: Michael Nazzareno Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: Re: [U-Boot] rk3288: HDMI out causing boot hang
-Date: Fri, 13 Sep 2019 16:02:54 +0200
-Message-ID: <CAOf5uwmUWXN27rNZ3JR13QSTH3NpGoODvySsCeUtrRE14Kq--Q@mail.gmail.com>
+From: Michael Nazzareno Trimarchi <michael@amarulasolutions.com>
+Subject: Re: rk3288: HDMI out causing boot hang
+Date: Fri, 13 Sep 2019 17:02:52 +0200
+Message-ID: <CAOf5uw=TpMsy54SWMXV=GjoNbvk_cW-Rvf0C3AP_0=mPM1q7HA@mail.gmail.com>
 References: <CAMty3ZDo6Hk9swGcaZ0RNC-4KeQ=EJS9gu_-+ewmM618GHhO+w@mail.gmail.com>
  <20190913160129.0cc8bc99@crub>
+ <CAOf5uwmUWXN27rNZ3JR13QSTH3NpGoODvySsCeUtrRE14Kq--Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190913160129.0cc8bc99@crub>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Anatolij Gustschin <agust-ynQEQJNshbs@public.gmane.org>
-Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <CAOf5uwmUWXN27rNZ3JR13QSTH3NpGoODvySsCeUtrRE14Kq--Q@mail.gmail.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Anatolij Gustschin <agust@denx.de>
+Cc: U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Anatolij
-
-On Fri, Sep 13, 2019 at 4:01 PM Anatolij Gustschin <agust-ynQEQJNshbs@public.gmane.org> wrote:
->
-> Hi Jagan,
->
-> On Fri, 13 Sep 2019 08:19:47 +0530
-> Jagan Teki jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org wrote:
-> ...
-> > Any inputs?
->
-> Try to input "setenv stdout serial" command on the serial console.
-> There might be a chance that stdout/stdin has switched to the
-> video console and the output proceeds there. If the HDMI display
-> shows nothing, it appears like a hang.
-
-It's not an hang. It's the output is not shown. I'm trying to
-understand the reason
-
-Michael
->
-> --
-> Anatolij
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-
-
--- 
-| Michael Nazzareno Trimarchi                     Amarula Solutions BV |
-| COO  -  Founder                                      Cruquiuskade 47 |
-| +31(0)851119172                                 Amsterdam 1018 AM NL |
-|                  [`as] http://www.amarulasolutions.com               |
+SGkKCk9uIEZyaSwgU2VwIDEzLCAyMDE5IGF0IDQ6MDIgUE0gTWljaGFlbCBOYXp6YXJlbm8gVHJp
+bWFyY2hpCjxtaWNoYWVsQGFtYXJ1bGFzb2x1dGlvbnMuY29tPiB3cm90ZToKPgo+IEhpIEFuYXRv
+bGlqCj4KPiBPbiBGcmksIFNlcCAxMywgMjAxOSBhdCA0OjAxIFBNIEFuYXRvbGlqIEd1c3RzY2hp
+biA8YWd1c3RAZGVueC5kZT4gd3JvdGU6Cj4gPgo+ID4gSGkgSmFnYW4sCj4gPgo+ID4gT24gRnJp
+LCAxMyBTZXAgMjAxOSAwODoxOTo0NyArMDUzMAo+ID4gSmFnYW4gVGVraSBqYWdhbkBhbWFydWxh
+c29sdXRpb25zLmNvbSB3cm90ZToKPiA+IC4uLgo+ID4gPiBBbnkgaW5wdXRzPwo+ID4KPiA+IFRy
+eSB0byBpbnB1dCAic2V0ZW52IHN0ZG91dCBzZXJpYWwiIGNvbW1hbmQgb24gdGhlIHNlcmlhbCBj
+b25zb2xlLgo+ID4gVGhlcmUgbWlnaHQgYmUgYSBjaGFuY2UgdGhhdCBzdGRvdXQvc3RkaW4gaGFz
+IHN3aXRjaGVkIHRvIHRoZQo+ID4gdmlkZW8gY29uc29sZSBhbmQgdGhlIG91dHB1dCBwcm9jZWVk
+cyB0aGVyZS4gSWYgdGhlIEhETUkgZGlzcGxheQo+ID4gc2hvd3Mgbm90aGluZywgaXQgYXBwZWFy
+cyBsaWtlIGEgaGFuZy4KPgo+IEl0J3Mgbm90IGFuIGhhbmcuIEl0J3MgdGhlIG91dHB1dCBpcyBu
+b3Qgc2hvd24uIEknbSB0cnlpbmcgdG8KPiB1bmRlcnN0YW5kIHRoZSByZWFzb24KPgoKSSBoYXZl
+IGZpeGVkLCBzdGlsbCBub3Qgc28gZ29vZCA7KQoKTWljaGFlbAoKPiBNaWNoYWVsCj4gPgo+ID4g
+LS0KPiA+IEFuYXRvbGlqCj4gPgo+ID4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KPiA+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+ID4gTGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+ID4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo+Cj4KPgo+IC0tCj4gfCBNaWNoYWVs
+IE5henphcmVubyBUcmltYXJjaGkgICAgICAgICAgICAgICAgICAgICBBbWFydWxhIFNvbHV0aW9u
+cyBCViB8Cj4gfCBDT08gIC0gIEZvdW5kZXIgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIENydXF1aXVza2FkZSA0NyB8Cj4gfCArMzEoMCk4NTExMTkxNzIgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICBBbXN0ZXJkYW0gMTAxOCBBTSBOTCB8Cj4gfCAgICAgICAgICAg
+ICAgICAgIFtgYXNdIGh0dHA6Ly93d3cuYW1hcnVsYXNvbHV0aW9ucy5jb20gICAgICAgICAgICAg
+ICB8CgoKCi0tIAp8IE1pY2hhZWwgTmF6emFyZW5vIFRyaW1hcmNoaSAgICAgICAgICAgICAgICAg
+ICAgIEFtYXJ1bGEgU29sdXRpb25zIEJWIHwKfCBDT08gIC0gIEZvdW5kZXIgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIENydXF1aXVza2FkZSA0NyB8CnwgKzMxKDApODUxMTE5
+MTcyICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQW1zdGVyZGFtIDEwMTggQU0gTkwg
+fAp8ICAgICAgICAgICAgICAgICAgW2Bhc10gaHR0cDovL3d3dy5hbWFydWxhc29sdXRpb25zLmNv
+bSAgICAgICAgICAgICAgIHwKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KVS1Cb290IG1haWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczov
+L2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cg==
