@@ -1,85 +1,42 @@
-From: Michael Nazzareno Trimarchi <michael@amarulasolutions.com>
-Subject: Re: rk3288: HDMI out causing boot hang
-Date: Fri, 13 Sep 2019 17:05:13 +0200
-Message-ID: <CAOf5uwksWBMPFPQ-FKa0EKE6tCc4tU-qqQ9KyYDHX3hMgLk3BA@mail.gmail.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: Re: [U-Boot] rk3288: HDMI out causing boot hang
+Date: Sat, 14 Sep 2019 02:51:57 +0530
+Message-ID: <CAMty3ZBg+YpBU28jxbWpE4YPihdfLFWYYtJOtsN384wCkZD_Rw@mail.gmail.com>
 References: <CAMty3ZDo6Hk9swGcaZ0RNC-4KeQ=EJS9gu_-+ewmM618GHhO+w@mail.gmail.com>
  <20190913160129.0cc8bc99@crub>
- <CAOf5uwmUWXN27rNZ3JR13QSTH3NpGoODvySsCeUtrRE14Kq--Q@mail.gmail.com>
- <CAOf5uw=TpMsy54SWMXV=GjoNbvk_cW-Rvf0C3AP_0=mPM1q7HA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <CAOf5uw=TpMsy54SWMXV=GjoNbvk_cW-Rvf0C3AP_0=mPM1q7HA@mail.gmail.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Anatolij Gustschin <agust@denx.de>
-Cc: U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20190913160129.0cc8bc99@crub>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Anatolij Gustschin <agust-ynQEQJNshbs@public.gmane.org>
+Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkKCk9uIEZyaSwgU2VwIDEzLCAyMDE5IGF0IDU6MDIgUE0gTWljaGFlbCBOYXp6YXJlbm8gVHJp
-bWFyY2hpCjxtaWNoYWVsQGFtYXJ1bGFzb2x1dGlvbnMuY29tPiB3cm90ZToKPgo+IEhpCj4KPiBP
-biBGcmksIFNlcCAxMywgMjAxOSBhdCA0OjAyIFBNIE1pY2hhZWwgTmF6emFyZW5vIFRyaW1hcmNo
-aQo+IDxtaWNoYWVsQGFtYXJ1bGFzb2x1dGlvbnMuY29tPiB3cm90ZToKPiA+Cj4gPiBIaSBBbmF0
-b2xpago+ID4KPiA+IE9uIEZyaSwgU2VwIDEzLCAyMDE5IGF0IDQ6MDEgUE0gQW5hdG9saWogR3Vz
-dHNjaGluIDxhZ3VzdEBkZW54LmRlPiB3cm90ZToKPiA+ID4KPiA+ID4gSGkgSmFnYW4sCj4gPiA+
-Cj4gPiA+IE9uIEZyaSwgMTMgU2VwIDIwMTkgMDg6MTk6NDcgKzA1MzAKPiA+ID4gSmFnYW4gVGVr
-aSBqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbSB3cm90ZToKPiA+ID4gLi4uCj4gPiA+ID4gQW55
-IGlucHV0cz8KPiA+ID4KPiA+ID4gVHJ5IHRvIGlucHV0ICJzZXRlbnYgc3Rkb3V0IHNlcmlhbCIg
-Y29tbWFuZCBvbiB0aGUgc2VyaWFsIGNvbnNvbGUuCj4gPiA+IFRoZXJlIG1pZ2h0IGJlIGEgY2hh
-bmNlIHRoYXQgc3Rkb3V0L3N0ZGluIGhhcyBzd2l0Y2hlZCB0byB0aGUKPiA+ID4gdmlkZW8gY29u
-c29sZSBhbmQgdGhlIG91dHB1dCBwcm9jZWVkcyB0aGVyZS4gSWYgdGhlIEhETUkgZGlzcGxheQo+
-ID4gPiBzaG93cyBub3RoaW5nLCBpdCBhcHBlYXJzIGxpa2UgYSBoYW5nLgo+ID4KPiA+IEl0J3Mg
-bm90IGFuIGhhbmcuIEl0J3MgdGhlIG91dHB1dCBpcyBub3Qgc2hvd24uIEknbSB0cnlpbmcgdG8K
-PiA+IHVuZGVyc3RhbmQgdGhlIHJlYXNvbgoKSXQgd2FzIGEgYnVnIG9mIHRoZSBvbGQgdWJvb3QK
-CmNvbW1pdCA3OWNkY2FjZWQ3MTBkOTU1ZjY4MDY2ZDAyMzI3Yjg2YmU1NzMzMzljCkF1dGhvcjog
-TmlrbGFzIFNjaHVsemUgPG1lQGpucy5pbz4KRGF0ZTogICBTdW4gSnVsIDE0IDEwOjQwOjEzIDIw
-MTkgKzAwMDAKCiAgICByb2NrY2hpcDogdmlkZW86IHJrMzI4OF9oZG1pOiBBZGQgbWlzc2luZyBj
-YWxsIHRvIGR3X2hkbWlfZW5hYmxlKCkKCiAgICBUaGUgUkszMjg4IEhETUkgZHJpdmVyJ3Mgcmsz
-Mjg4X2hkbWlfZW5hYmxlKCkgY3VycmVudGx5IGxhY2tzIGEgY2FsbCB0bwogICAgZHdfaGRtaV9l
-bmFibGUoKS4gVGh1cywgdGhlIEhETUkgb3V0cHV0IG5ldmVyIGdldHMgZW5hYmxlZC4KCiAgICBT
-aWduZWQtb2ZmLWJ5OiBOaWtsYXMgU2NodWx6ZSA8bWVAam5zLmlvPgogICAgQ2M6IFBoaWxpcHAg
-VG9tc2ljaCA8cGhpbGlwcC50b21zaWNoQHRoZW9icm9tYS1zeXN0ZW1zLmNvbT4KICAgIFJldmll
-d2VkLWJ5OiBLZXZlciBZYW5nIDxLZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgogICAgUmV2aWV3
-ZWQtYnk6IFBoaWxpcHAgVG9tc2ljaCA8cGhpbGlwcC50b21zaWNoQHRoZW9icm9tYS1zeXN0ZW1z
-LmNvbT4KCmRpZmYgLS1naXQgYS9kcml2ZXJzL3ZpZGVvL3JvY2tjaGlwL3JrMzI4OF9oZG1pLmMK
-Yi9kcml2ZXJzL3ZpZGVvL3JvY2tjaGlwL3JrMzI4OF9oZG1pLmMKaW5kZXggMzE1ZDNhZGYyNy4u
-M2QyNWNlOTI0YyAxMDA2NDQKLS0tIGEvZHJpdmVycy92aWRlby9yb2NrY2hpcC9yazMyODhfaGRt
-aS5jCisrKyBiL2RyaXZlcnMvdmlkZW8vcm9ja2NoaXAvcmszMjg4X2hkbWkuYwpAQCAtMzMsNyAr
-MzMsNyBAQCBzdGF0aWMgaW50IHJrMzI4OF9oZG1pX2VuYWJsZShzdHJ1Y3QgdWRldmljZSAqZGV2
-LAppbnQgcGFuZWxfYnBwLAogICAgICAgIC8qIGhkbWkgZGF0YSBmcm9tIHZvcCBpZCAqLwogICAg
-ICAgIHJrX2NscnNldHJlZygmZ3JmLT5zb2NfY29uNiwgMSA8PCA0LCAodm9wX2lkID09IDEpID8g
-KDEgPDwgNCkgOiAwKTsKCi0gICAgICAgcmV0dXJuIDA7CisgICAgICAgcmV0dXJuIGR3X2hkbWlf
-ZW5hYmxlKCZwcml2LT5oZG1pLCBlZGlkKTsKIH0KCk5vdyBJIG5lZWQgdG8gdGVzdCB0aGUgbWFp
-bmxpbmUgb25lCgpNaWNoYWVsCgo+ID4KPgo+IEkgaGF2ZSBmaXhlZCwgc3RpbGwgbm90IHNvIGdv
-b2QgOykKPgo+IE1pY2hhZWwKPgo+ID4gTWljaGFlbAo+ID4gPgo+ID4gPiAtLQo+ID4gPiBBbmF0
-b2xpago+ID4gPgo+ID4gPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwo+ID4gPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiA+ID4gTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+ID4gPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4gPgo+ID4KPiA+Cj4gPiAtLQo+ID4g
-fCBNaWNoYWVsIE5henphcmVubyBUcmltYXJjaGkgICAgICAgICAgICAgICAgICAgICBBbWFydWxh
-IFNvbHV0aW9ucyBCViB8Cj4gPiB8IENPTyAgLSAgRm91bmRlciAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgQ3J1cXVpdXNrYWRlIDQ3IHwKPiA+IHwgKzMxKDApODUxMTE5MTcy
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQW1zdGVyZGFtIDEwMTggQU0gTkwgfAo+
-ID4gfCAgICAgICAgICAgICAgICAgIFtgYXNdIGh0dHA6Ly93d3cuYW1hcnVsYXNvbHV0aW9ucy5j
-b20gICAgICAgICAgICAgICB8Cj4KPgo+Cj4gLS0KPiB8IE1pY2hhZWwgTmF6emFyZW5vIFRyaW1h
-cmNoaSAgICAgICAgICAgICAgICAgICAgIEFtYXJ1bGEgU29sdXRpb25zIEJWIHwKPiB8IENPTyAg
-LSAgRm91bmRlciAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQ3J1cXVpdXNr
-YWRlIDQ3IHwKPiB8ICszMSgwKTg1MTExOTE3MiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIEFtc3RlcmRhbSAxMDE4IEFNIE5MIHwKPiB8ICAgICAgICAgICAgICAgICAgW2Bhc10gaHR0
-cDovL3d3dy5hbWFydWxhc29sdXRpb25zLmNvbSAgICAgICAgICAgICAgIHwKCgoKLS0gCnwgTWlj
-aGFlbCBOYXp6YXJlbm8gVHJpbWFyY2hpICAgICAgICAgICAgICAgICAgICAgQW1hcnVsYSBTb2x1
-dGlvbnMgQlYgfAp8IENPTyAgLSAgRm91bmRlciAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgQ3J1cXVpdXNrYWRlIDQ3IHwKfCArMzEoMCk4NTExMTkxNzIgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBBbXN0ZXJkYW0gMTAxOCBBTSBOTCB8CnwgICAgICAgICAgICAg
-ICAgICBbYGFzXSBodHRwOi8vd3d3LmFtYXJ1bGFzb2x1dGlvbnMuY29tICAgICAgICAgICAgICAg
-fApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3Qg
-bWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9s
-aXN0aW5mby91LWJvb3QK
+Hi Anatolij,
+
+On Fri, Sep 13, 2019 at 7:31 PM Anatolij Gustschin <agust-ynQEQJNshbs@public.gmane.org> wrote:
+>
+> Hi Jagan,
+>
+> On Fri, 13 Sep 2019 08:19:47 +0530
+> Jagan Teki jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org wrote:
+> ...
+> > Any inputs?
+>
+> Try to input "setenv stdout serial" command on the serial console.
+> There might be a chance that stdout/stdin has switched to the
+> video console and the output proceeds there. If the HDMI display
+> shows nothing, it appears like a hang.
+
+setting serial to stdout, would be a normal case, with this display
+didn't probe atall.
