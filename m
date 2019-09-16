@@ -1,132 +1,127 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v2 0/2] mmc: core: Fix Marvell WiFi reset by adding SDIO
- API to replug card
-Date: Mon, 16 Sep 2019 11:25:10 +0200
-Message-ID: <CAPDyKFrPHguMrMvXN0yHbD9GmEg4m=J1Un=LcpE0PB7WqMRYSg@mail.gmail.com>
-References: <20190722193939.125578-1-dianders@chromium.org>
- <CAPDyKFoND5Kaam72zxO4wChO0z_1XL2KWX6oNjVcMUGA7G8RFg@mail.gmail.com> <CAD=FV=VTLoqGbxFFMT8h72cfHCLupyvZpD75JB0N86+kFA+vzw@mail.gmail.com>
+From: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH 0/4] Enable Hantro G1 post-processor
+Date: Mon, 16 Sep 2019 15:18:53 -0300
+Message-ID: <d7154e5c-6acc-7ee9-a26b-3f9b4efdbbe0@collabora.com>
+References: <20190903181711.7559-1-ezequiel@collabora.com>
+ <CAAFQd5AdikoN+7TG=0ZGFkSzaK2UFHM4VG7SYtfUtmjQgD61zA@mail.gmail.com>
+ <6e493142690d48ee7e65c1cb2a4d6aec1e3b671b.camel@collabora.com>
+ <c7b62640ae0e57a9da0c6c5245b5454af08ad2a0.camel@ndufresne.ca>
+ <CAAFQd5CKkdN0byeAonPvvzmHQ5CRXLRVidAG8FGmxExHzgvaqA@mail.gmail.com>
+ <9d7cb0caf39aa4704e5d83fab56a65b305c5b924.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=VTLoqGbxFFMT8h72cfHCLupyvZpD75JB0N86+kFA+vzw@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Ganapathi Bhat <gbhat@marvell.com>, linux-wireless <linux-wireless@vger.kernel.org>, Andreas Fenkart <afenkart@gmail.com>, Brian Norris <briannorris@chromium.org>, Amitkumar Karwar <amitkarwar@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Nishant Sarmukadam <nishants@marvell.com>, netdev <netdev@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>, Xinming Hu <huxinming820@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Thomas Gleixner <tglx@linutronix.de>, Kate Stewart <kste>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <9d7cb0caf39aa4704e5d83fab56a65b305c5b924.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Chris Healy <cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 11 Sep 2019 at 23:26, Doug Anderson <dianders@chromium.org> wrote:
->
-> Hi,
->
-> On Thu, Jul 25, 2019 at 6:28 AM Ulf Hansson <ulf.hansson@linaro.org> wrote:
-> >
-> > On Mon, 22 Jul 2019 at 21:41, Douglas Anderson <dianders@chromium.org> wrote:
-> > >
-> > > As talked about in the thread at:
-> > >
-> > > http://lkml.kernel.org/r/CAD=FV=X7P2F1k_zwHc0mbtfk55-rucTz_GoDH=PL6zWqKYcpuw@mail.gmail.com
-> > >
-> > > ...when the Marvell WiFi card tries to reset itself it kills
-> > > Bluetooth.  It was observed that we could re-init the card properly by
-> > > unbinding / rebinding the host controller.  It was also observed that
-> > > in the downstream Chrome OS codebase the solution used was
-> > > mmc_remove_host() / mmc_add_host(), which is similar to the solution
-> > > in this series.
-> > >
-> > > So far I've only done testing of this series using the reset test
-> > > source that can be simulated via sysfs.  Specifically I ran this test:
-> > >
-> > > for i in $(seq 1000); do
-> > >   echo "LOOP $i --------"
-> > >   echo 1 > /sys/kernel/debug/mwifiex/mlan0/reset
-> > >
-> > >   while true; do
-> > >     if ! ping -w15 -c1 "${GW}" >/dev/null 2>&1; then
-> > >       fail=$(( fail + 1 ))
-> > >       echo "Fail WiFi ${fail}"
-> > >       if [[ ${fail} == 3 ]]; then
-> > >         exit 1
-> > >       fi
-> > >     else
-> > >       fail=0
-> > >       break
-> > >     fi
-> > >   done
-> > >
-> > >   hciconfig hci0 down
-> > >   sleep 1
-> > >   if ! hciconfig hci0 up; then
-> > >     echo "Fail BT"
-> > >     exit 1
-> > >   fi
-> > > done
-> > >
-> > > I ran this several times and got several hundred iterations each
-> > > before a failure.  When I saw failures:
-> > >
-> > > * Once I saw a "Fail BT"; manually resetting the card again fixed it.
-> > >   I didn't give it time to see if it would have detected this
-> > >   automatically.
-> > > * Once I saw the ping fail because (for some reason) my device only
-> > >   got an IPv6 address from my router and the IPv4 ping failed.  I
-> > >   changed my script to use 'ping6' to see if that would help.
-> > > * Once I saw the ping fail because the higher level network stack
-> > >   ("shill" in my case) seemed to crash.  A few minutes later the
-> > >   system recovered itself automatically.  https://crbug.com/984593 if
-> > >   you want more details.
-> > > * Sometimes while I was testing I saw "Fail WiFi 1" indicating a
-> > >   transitory failure.  Usually this was an association failure, but in
-> > >   one case I saw the device do "Firmware wakeup failed" after I
-> > >   triggered the reset.  This caused the driver to trigger a re-reset
-> > >   of itself which eventually recovered things.  This was good because
-> > >   it was an actual test of the normal reset flow (not the one
-> > >   triggered via sysfs).
-> > >
-> > > Changes in v2:
-> > > - s/routnine/routine (Brian Norris, Matthias Kaehlcke).
-> > > - s/contining/containing (Matthias Kaehlcke).
-> > > - Add Matthias Reviewed-by tag.
-> > > - Removed clear_bit() calls and old comment (Brian Norris).
-> > > - Explicit CC of Andreas Fenkart.
-> > > - Explicit CC of Brian Norris.
-> > > - Add "Fixes" pointing at the commit Brian talked about.
-> > > - Add Brian's Reviewed-by tag.
-> > >
-> > > Douglas Anderson (2):
-> > >   mmc: core: Add sdio_trigger_replug() API
-> > >   mwifiex: Make use of the new sdio_trigger_replug() API to reset
-> > >
-> > >  drivers/mmc/core/core.c                     | 28 +++++++++++++++++++--
-> > >  drivers/mmc/core/sdio_io.c                  | 20 +++++++++++++++
-> > >  drivers/net/wireless/marvell/mwifiex/sdio.c | 16 +-----------
-> > >  include/linux/mmc/host.h                    | 15 ++++++++++-
-> > >  include/linux/mmc/sdio_func.h               |  2 ++
-> > >  5 files changed, 63 insertions(+), 18 deletions(-)
-> > >
-> >
-> > Doug, thanks for sending this!
-> >
-> > As you know, I have been working on additional changes for SDIO
-> > suspend/resume (still WIP and not ready for sharing) and this series
-> > is related.
-> >
-> > The thing is, that even during system suspend/resume, synchronizations
-> > are needed between the different layers (mmc host, mmc core and
-> > sdio-funcs), which is common to the problem you want to solve.
-> >
-> > That said, I need to scratch my head a bit more before I can provide
-> > you some feedback on $subject series. Moreover, it's vacation period
-> > at my side so things are moving a bit slower. Please be patient.
->
-> I had kinda forgotten about this series after we landed it locally in
-> Chrome OS, but I realized that it never got resolved upstream.  Any
-> chance your head has been sufficiently scratched and you're now happy
-> with $subject series?  ;-)
-
-It's still on my TODO list. Apologize for the delay, but I still need
-more time to look into it, possibly later this week.
-
-In any case, let's make sure we get this problem resolved for v5.5.
-
-Kind regards
-Uffe
+SGVsbG8sCgpPbiA5LzEyLzE5IDg6MzUgQU0sIEV6ZXF1aWVsIEdhcmNpYSB3cm90ZToKPiBPbiBU
+aHUsIDIwMTktMDktMTIgYXQgMTQ6NTIgKzA5MDAsIFRvbWFzeiBGaWdhIHdyb3RlOgo+PiBPbiBU
+aHUsIFNlcCAxMiwgMjAxOSBhdCA0OjQ5IEFNIE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1
+ZnJlc25lLmNhPiB3cm90ZToKPj4+IExlIG1lcmNyZWRpIDExIHNlcHRlbWJyZSAyMDE5IMOgIDA5
+OjI3ICswMTAwLCBFemVxdWllbCBHYXJjaWEgYSDDqWNyaXQgOgo+Pj4+IE9uIE1vbiwgMjAxOS0w
+OS0wOSBhdCAxNjowNyArMDkwMCwgVG9tYXN6IEZpZ2Egd3JvdGU6Cj4+Pj4+IEhpIEV6ZXF1aWVs
+LAo+Pj4+Pgo+Pj4+PiBPbiBXZWQsIFNlcCA0LCAyMDE5IGF0IDM6MTcgQU0gRXplcXVpZWwgR2Fy
+Y2lhIDxlemVxdWllbEBjb2xsYWJvcmEuY29tPiB3cm90ZToKPj4+Pj4+IEhpIGFsbCwKPj4+Pj4+
+Cj4+Pj4+PiBUaGlzIHNlcmllcyBlbmFibGVzIHRoZSBwb3N0LXByb2Nlc3NvciBzdXBwb3J0IGF2
+YWlsYWJsZQo+Pj4+Pj4gb24gdGhlIEhhbnRybyBHMSBWUFUuIFRoZSBwb3N0LXByb2Nlc3NvciBi
+bG9jayBjYW4gYmUKPj4+Pj4+IHBpcGVsaW5lZCB3aXRoIHRoZSBkZWNvZGVyIGhhcmR3YXJlLCBh
+bGxvd2luZyB0byBwZXJmb3JtCj4+Pj4+PiBvcGVyYXRpb25zIHN1Y2ggYXMgY29sb3IgY29udmVy
+c2lvbiwgc2NhbGluZywgcm90YXRpb24sCj4+Pj4+PiBjcm9wcGluZywgYW1vbmcgb3RoZXJzLgo+
+Pj4+Pj4KPj4+Pj4+IFRoZSBkZWNvZGVyIGhhcmR3YXJlIG5lZWRzIGl0cyBvd24gc2V0IG9mIE5W
+MTIgYnVmZmVycwo+Pj4+Pj4gKHRoZSBuYXRpdmUgZGVjb2RlciBmb3JtYXQpLCBhbmQgdGhlIHBv
+c3QtcHJvY2Vzc29yIGlzIHRoZQo+Pj4+Pj4gb3duZXIgb2YgdGhlIENBUFRVUkUgYnVmZmVycy4g
+VGhpcyBhbGxvd3MgdGhlIGFwcGxpY2F0aW9uCj4+Pj4+PiBnZXQgcHJvY2Vzc2VkIChzY2FsZWQs
+IGNvbnZlcnRlZCwgZXRjKSBidWZmZXJzLCBjb21wbGV0ZWx5Cj4+Pj4+PiB0cmFuc3BhcmVudGx5
+Lgo+Pj4+Pj4KPj4+Pj4+IFRoaXMgZmVhdHVyZSBpcyBpbXBsZW1lbnRlZCBieSBleHBvc2luZyBv
+dGhlciBDQVBUVVJFIHBpeGVsCj4+Pj4+PiBmb3JtYXRzIHRvIHRoZSBhcHBsaWNhdGlvbiAoRU5V
+TV9GTVQpLiBXaGVuIHRoZSBhcHBsaWNhdGlvbgo+Pj4+Pj4gc2V0cyBhIHBpeGVsIGZvcm1hdCBv
+dGhlciB0aGFuIE5WMTIsIHRoZSBkcml2ZXIgd2lsbCBlbmFibGUKPj4+Pj4+IGFuZCB1c2UgdGhl
+IHBvc3QtcHJvY2Vzc29yIHRyYW5zcGFyZW50bHkuCj4+Pj4+Cj4+Pj4+IEknbGwgdHJ5IHRvIHJl
+dmlldyB0aGUgc2VyaWVzIGEgYml0IGxhdGVyLCBidXQgYSBnZW5lcmFsIGNvbW1lbnQgaGVyZQo+
+Pj4+PiBpcyB0aGF0IHRoZSB1c2Vyc3BhY2Ugd291bGRuJ3QgaGF2ZSBhIHdheSB0byBkaXN0aW5n
+dWlzaCBiZXR3ZWVuIHRoZQo+Pj4+PiBuYXRpdmUgYW5kIHBvc3QtcHJvY2Vzc2VkIGZvcm1hdHMu
+IEknbSBwcmV0dHkgbXVjaCBzdXJlIHRoYXQKPj4+Pj4gcG9zdC1wcm9jZXNzaW5nIGF0IGxlYXN0
+IGltcG9zZXMgc29tZSBwb3dlciBwZW5hbHR5LCBzbyBpdCB3b3VsZCBiZQo+Pj4+PiBnb29kIGlm
+IHRoZSB1c2Vyc3BhY2UgY291bGQgYXZvaWQgaXQgaWYgdW5uZWNlc3NhcnkuCj4+Pj4+Cj4+Pj4K
+Pj4+PiBIbSwgdGhhdCdzIHRydWUsIGdvb2QgY2F0Y2guCj4+Pj4KPj4+PiBTbywgaXQgd291bGQg
+YmUgZGVzaXJhYmxlIHRvIHJldGFpbiB0aGUgY3VycmVudCBiZWhhdmlvciBvZiBhbGxvd2luZwo+
+Pj4+IHRoZSBhcHBsaWNhdGlvbiB0byBqdXN0IHNldCBhIGRpZmZlcmVudCBwaXhlbCBmb3JtYXQg
+YW5kIGdldAo+Pj4+IGEgcG9zdC1wcm9jZXNzZWQgZnJhbWUsIHRyYW5zcGFyZW50bHkuCj4+Pj4K
+Pj4+PiBCdXQgYXQgdGhlIHNhbWUgdGltZSwgaXQgd291bGQgYmUgbmljZSBpZiB0aGUgYXBwbGlj
+YXRpb24gaXMgc29tZWhvdwo+Pj4+IGF3YXJlIG9mIHRoZSBwb3N0LXByb2Nlc3NpbmcgaGFwcGVu
+aW5nLiBNYXliZSB3ZSBjYW4gZXhwb3NlIGEgbW9yZQo+Pj4+IGFjY3VyYXRlIG1lZGlhIGNvbnRy
+b2xsZXIgdG9wb2xvZ3ksIGhhdmUgYXBwbGljYXRpb25zIGVuYWJsZQo+Pj4+IHRoZSBwb3N0LXBy
+b2Nlc3NpbmcgcGlwZWxpbmUgZXhwbGljaXRseS4KPj4+Cj4+PiBIb3cgaXQgd29ya3Mgb24gdGhl
+IHN0YXRlZnVsIHNpZGUgaXMgdGhhdCB1c2Vyc3BhY2Ugc2V0IHRoZSBlbmNvZGluZwo+Pj4gdHlw
+ZSAodGhlIGNvZGVjKSwgdGhlbiBwYXNzZXMgYSBoZWFkZXIgKGluIG91ciBjYXNlLCB0aGVyZSB3
+aWxsIGJlCj4+PiBwYXJzZWQgc3RydWN0dXJlcyByZXBsYWNpbmcgdGhpcykgZmlyc3QuIFRoZSBk
+cml2ZXIgdGhlbiBjb25maWd1cmUKPj4+IGNhcHR1cmUgZm9ybWF0LCBnaXZpbmcgYSBoaW50IG9m
+IHRoZSAiZGVmYXVsdCIgb3IgIm5hdGl2ZSIgZm9ybWF0LiBUaGlzCj4+PiBtYXkgb3IgbWF5IG5v
+dCBiZSBzdWZmaWNpZW50LCBidXQgaXQgZG9lcyB3b3JrIGluIGdpdmluZyB1c2Vyc3BhY2UgYQo+
+Pj4gaGludC4KPj4KPj4gVGhlIGJhZCBzaWRlIG9mIHRoYXQgaXMgdGhhdCB3ZSBjYW4ndCBoYW5k
+bGUgbW9yZSB0aGFuIDEgbmF0aXZlIGZvcm1hdC4KPj4KPj4gRm9yIHRoZSBtb3N0IGJhY2t3YXJk
+cy1jb21wYXRpYmxlIGJlaGF2aW9yLCBzb3J0aW5nIHRoZSByZXN1bHRzIG9mCj4+IEVOVU1fRk1U
+IGFjY29yZGluZyB0byBmb3JtYXQgcHJlZmVyZW5jZSB3b3VsZCBhbGxvdyB0aGUgYXBwbGljYXRp
+b25zCj4+IHRoYXQgY2hvb3NlIHRoZSBmaXJzdCBmb3JtYXQgcmV0dXJuZWQgdGhhdCB3b3JrcyBm
+b3IgdGhlbSB0byBjaG9vc2UKPj4gdGhlIGJlc3Qgb25lLgo+Pgo+PiBGb3IgYSBmdXJ0aGVyIGlt
+cHJvdmVtZW50LCBhbiBFTlVNX0ZNVCBmbGFnIHRoYXQgdGVsbHMgdGhlIHVzZXJzcGFjZQo+PiB0
+aGF0IGEgZm9ybWF0IGlzIHByZWZlcnJlZCBjb3VsZCB3b3JrLgo+Pgo+PiBUaGF0IHNhaWQsIG1v
+ZGVsbGluZyB0aGUgcGlwZWxpbmUgYXBwcm9wcmlhdGVseSB1c2luZyB0aGUgbWVkaWEKPj4gY29u
+dHJvbGxlciBpcyB0aGUgaWRlYSBJIGxpa2UgdGhlIG1vc3QsIGJlY2F1c2UgaXQncyB0aGUgbW9z
+dAo+PiBjb21wcmVoZW5zaXZlIHNvbHV0aW9uLiBUaGF0IHdvdWxkIGhhdmUgdG8gYmUgd2VsbCBz
+cGVjaWZpZWQgYW5kCj4+IGRvY3VtZW50ZWQsIHRob3VnaCwgYW5kIHNvdW5kcyBsaWtlIGEgbG9u
+ZyB0ZXJtIGVmZm9ydC4KPj4KCkkgd2FzIHBsYXlpbmcgd2l0aCB2aW1jIHRvIGVtdWxhdGUgdGhp
+cyB0b3BvbG9neS4KCldoYXQgSSB3b3VsZCBzdWdnZXN0IGlzIGEgdG9wb2xvZ3kgbGlrZSB0aGlz
+OgoKRGV2aWNlIHRvcG9sb2d5Ci0gZW50aXR5IDE6IERlY29kZXIgKDIgcGFkcywgMyBsaW5rcykK
+ICAgICAgICAgICAgdHlwZSBWNEwyIHN1YmRldiBzdWJ0eXBlIFVua25vd24gZmxhZ3MgMAogICAg
+ICAgIHBhZDA6IFNpbmsKICAgICAgICAgICAgICAgIDwtICJNMk0gVmlkZW8gTm9kZSI6MSBbRU5B
+QkxFRF0KICAgICAgICBwYWQxOiBTb3VyY2UKICAgICAgICAgICAgICAgIC0+ICJNMk0gVmlkZW8g
+Tm9kZSI6MCBbRU5BQkxFRF0KICAgICAgICAgICAgICAgIC0+ICJQb3N0UHJvYyI6MCBbXQoKLSBl
+bnRpdHkgNDogUG9zdFByb2MgKDIgcGFkcywgMiBsaW5rcykKICAgICAgICAgICAgdHlwZSBWNEwy
+IHN1YmRldiBzdWJ0eXBlIFVua25vd24gZmxhZ3MgMAogICAgICAgIHBhZDA6IFNpbmsKICAgICAg
+ICAgICAgICAgIDwtICJEZWNvZGVyIjoxIFtdCiAgICAgICAgcGFkMTogU291cmNlCiAgICAgICAg
+ICAgICAgICAtPiAiTTJNIFZpZGVvIE5vZGUiOjAgW10KCi0gZW50aXR5IDc6IE0yTSBWaWRlbyBO
+b2RlICgyIHBhZHMsIDMgbGlua3MpCiAgICAgICAgICAgIHR5cGUgTm9kZSBzdWJ0eXBlIFY0TCBm
+bGFncyAwCiAgICAgICAgICAgIGRldmljZSBub2RlIG5hbWUgL2Rldi92aWRlbzAKICAgICAgICBw
+YWQwOiBTaW5rCiAgICAgICAgICAgICAgICA8LSAiRGVjb2RlciI6MSBbRU5BQkxFRF0KICAgICAg
+ICAgICAgICAgIDwtICJQb3N0UHJvYyI6MSBbXQogICAgICAgIHBhZDE6IFNvdXJjZQogICAgICAg
+ICAgICAgICAgLT4gIkRlY29kZXIiOjAgW0VOQUJMRURdCgpEb3QgZmlsZToKLS0tLS0tLS0tCmRp
+Z3JhcGggYm9hcmQgewoJcmFua2Rpcj1UQgoJbjAwMDAwMDAxIFtsYWJlbD0ie3s8cG9ydDA+IDB9
+IHwgRGVjb2RlclxuIHwgezxwb3J0MT4gMX19Iiwgc2hhcGU9TXJlY29yZCwgc3R5bGU9ZmlsbGVk
+LCBmaWxsY29sb3I9Z3JlZW5dCgluMDAwMDAwMDE6cG9ydDEgLT4gbjAwMDAwMDA3CgluMDAwMDAw
+MDE6cG9ydDEgLT4gbjAwMDAwMDA0OnBvcnQwIFtzdHlsZT1kYXNoZWRdCgluMDAwMDAwMDQgW2xh
+YmVsPSJ7ezxwb3J0MD4gMH0gfCBQb3N0UHJvY1xuIHwgezxwb3J0MT4gMX19Iiwgc2hhcGU9TXJl
+Y29yZCwgc3R5bGU9ZmlsbGVkLCBmaWxsY29sb3I9Z3JlZW5dCgluMDAwMDAwMDQ6cG9ydDEgLT4g
+bjAwMDAwMDA3IFtzdHlsZT1kYXNoZWRdCgluMDAwMDAwMDcgW2xhYmVsPSJNMk0gVmlkZW8gTm9k
+ZVxuL2Rldi92aWRlbzAiLCBzaGFwZT1ib3gsIHN0eWxlPWZpbGxlZCwgZmlsbGNvbG9yPXllbGxv
+d10KCW4wMDAwMDAwNyAtPiBuMDAwMDAwMDE6cG9ydDAKfQoKCkFsc28sIGFzIHlvdSBtZW50aW9u
+ZWQgaW4gcGF0Y2ggNDoKCj4gT24gdGhlIFlVVi10by1SR0IgcGF0aCwgdGhlIHBvc3QtcHJvY2Vz
+c2luZyBwaXBlbGluZQo+IGFsbG93cyB0byBtb2RpZnkgdGhlIGltYWdlIGNvbnRyYXN0LCBicmln
+dGhuZXNzIGFuZCBzYXR1cmF0aW9uLAo+IHNvIGFkZGl0aW9uYWwgdXNlciBjb250cm9scyBhcmUg
+YWRkZWQgdG8gZXhwb3NlIHRoZW0uCgpTbyBJIHRoaW5rIGl0IHdvdWxkIG1ha2Ugc2Vuc2UgdG8g
+ZXhwb3NlIHRoZXNlIGNvbnRyb2xzIGluIHRoZSBwb3N0LXByb2Nlc3NvciBzdWJkZXYsCnRocm91
+Z2ggYSAvZGV2L3Y0bC1zdWJkZXYwLCB0aGlzIGF2b2lkcyBoYXZpbmcgYSBkeW5hbWljIHNldCBv
+ZiBjb250cm9scyBpbiB0aGUgdmlkZW8gbm9kZQpkZXBlbmRpbmcgb24gdGhlIHBhdGguCgpZb3Ug
+ZG9uJ3QgZXZlbiBuZWVkIHRvIGltcGxlbWVudCBWSURJT0Nfe0csU31fRk9STUFUIGluIHRoZSBw
+YWRzIChhdCBsZWFzdCB2NGwyLWNvbXBsaWFuY2UKZG9lc24ndCBjb21wbGFpbiwgaXQgaXMgaGFw
+cHkgd2l0aCAiTm90IFN1cHBvcnRlZCIpLiBTbyB0aGUgcG9zdC1wcm9jZXNzb3IgL2Rldi92NGwt
+c3ViZGV2MApkZXZub2RlIGNvdWxkIGJlIHVzZWQgdG8gZXhwb3NlIG9ubHkgdGhlc2UgY29udHJv
+bHMsIGFuZCB5b3UgZG9uJ3QgbmVlZCB0byBleHBvc2UgYSBkZXZub2RlCnRvIHRoZSBEZWNvZGVy
+IGVudGl0eSBhYm92ZSAodW5sZXNzIHlvdSBoYXZlIGFub3RoZXIgcmVhc29uKS4KCkkgaG9wZSB0
+aGlzIGhlbHBzLApIZWxlbgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
+LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9saW51eC1yb2NrY2hpcAo=
