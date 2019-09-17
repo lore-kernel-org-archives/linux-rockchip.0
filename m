@@ -1,46 +1,34 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 13/13] arm64: dts: rockchip: enable usb2phy on px30-evb
-Date: Tue, 17 Sep 2019 10:26:59 +0200
-Message-ID: <20190917082659.25549-13-heiko@sntech.de>
-References: <20190917082659.25549-1-heiko@sntech.de>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH] dt-bindings: arm: rockchip: fix Theobroma-System board bindings
+Date: Tue, 17 Sep 2019 09:16:49 -0500
+Message-ID: <CAL_Jsq+OkHMEzx3goQoUt9xvfuGLbu4v7VD5y6wqrNYp96-z7g@mail.gmail.com>
+References: <20190917083453.25744-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190917082659.25549-1-heiko@sntech.de>
+In-Reply-To: <20190917083453.25744-1-heiko@sntech.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, linux-rockchip@lists.infradead.org, christoph.muellner@theobroma-systems.com, Heiko Stuebner <heiko@sntech.de>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, devicetree@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, Christoph Muellner <christoph.muellner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable the phy node ion the px30 evb board.
+On Tue, Sep 17, 2019 at 3:35 AM Heiko Stuebner <heiko@sntech.de> wrote:
+>
+> The naming convention for the existing Theobroma boards is
+> soc-q7module-baseboard, so rk3399-puma-haikou and the in-kernel
+> devicetrees also follow that scheme.
+>
+> For some reason in the binding a wrong or outdated naming slipped
+> in which does not match the used devicetrees and makes the dt-schema
+> complain now.
+>
+> Fix this by using the names used in the wild by actual boards.
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- arch/arm64/boot/dts/rockchip/px30-evb.dts | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+Perhaps a Fixes tag.
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30-evb.dts b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-index 1185a314ba4a..936ed7d71ffc 100644
---- a/arch/arm64/boot/dts/rockchip/px30-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-@@ -485,6 +485,18 @@
- 	status = "okay";
- };
- 
-+&u2phy {
-+	status = "okay";
-+
-+	u2phy_host: host-port {
-+		status = "okay";
-+	};
-+
-+	u2phy_otg: otg-port {
-+		status = "okay";
-+	};
-+};
-+
- &uart1 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&uart1_xfer &uart1_cts>;
--- 
-2.20.1
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+
+Reviewed-by: Rob Herring <robh@kernel.org>
