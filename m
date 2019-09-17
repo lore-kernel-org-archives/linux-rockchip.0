@@ -1,48 +1,58 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 1/4] mfd: rk808: fix rk818 ID template
-Date: Tue, 17 Sep 2019 10:12:53 +0200
-Message-ID: <20190917081256.24919-1-heiko@sntech.de>
+Subject: [PATCH 2/4] mfd: rk808: fix rk817 powerkey integration
+Date: Tue, 17 Sep 2019 10:12:54 +0200
+Message-ID: <20190917081256.24919-2-heiko@sntech.de>
+References: <20190917081256.24919-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190917081256.24919-1-heiko@sntech.de>
 Sender: linux-kernel-owner@vger.kernel.org
 To: lee.jones@linaro.org
-Cc: linux-kernel@vger.kernel.org, d.schultz@phytec.de, linux-rockchip@lists.infradead.org, christoph.muellner@theobroma-systems.com, tony.xie@rock-chips.com, stable@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>, Joseph Chen <chenjh@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-kernel@vger.kernel.org, d.schultz@phytec.de, linux-rockchip@lists.infradead.org, christoph.muellner@theobroma-systems.com, tony.xie@rock-chips.com, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Daniel Schultz <d.schultz@phytec.de>
+The pwrkey integration seems to stem from the vendor kernel, as the
+compatible is wrong and also the order of key-irqs is swapped.
 
-The Rockchip PMIC driver can automatically detect connected component
-versions by reading the ID_MSB and ID_LSB registers. The probe function
-will always fail with RK818 PMICs because the ID_MSK is 0xFFF0 and the
-RK818 template ID is 0x8181.
+So fix these issues to make the pwrkey on rk817 actually work.
 
-This patch changes this value to 0x8180.
-
-Fixes: 9d6105e19f61 ("mfd: rk808: Fix up the chip id get failed")
-Cc: stable@vger.kernel.org
-Cc: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: Joseph Chen <chenjh@rock-chips.com>
-Signed-off-by: Daniel Schultz <d.schultz@phytec.de>
-Acked-by: Lee Jones <lee.jones@linaro.org>
-[resend as it seems to have dropped on the floor]
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- include/linux/mfd/rk808.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/mfd/rk808.c | 14 +++-----------
+ 1 file changed, 3 insertions(+), 11 deletions(-)
 
-diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
-index 7cfd2b0504df..a59bf323f713 100644
---- a/include/linux/mfd/rk808.h
-+++ b/include/linux/mfd/rk808.h
-@@ -610,7 +610,7 @@ enum {
- 	RK808_ID = 0x0000,
- 	RK809_ID = 0x8090,
- 	RK817_ID = 0x8170,
--	RK818_ID = 0x8181,
-+	RK818_ID = 0x8180,
+diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+index 050478cabc95..966841744ee6 100644
+--- a/drivers/mfd/rk808.c
++++ b/drivers/mfd/rk808.c
+@@ -121,16 +121,8 @@ static struct resource rk817_rtc_resources[] = {
  };
  
- struct rk808 {
+ static struct resource rk805_key_resources[] = {
+-	{
+-		.start  = RK805_IRQ_PWRON_FALL,
+-		.end    = RK805_IRQ_PWRON_FALL,
+-		.flags  = IORESOURCE_IRQ,
+-	},
+-	{
+-		.start  = RK805_IRQ_PWRON_RISE,
+-		.end    = RK805_IRQ_PWRON_RISE,
+-		.flags  = IORESOURCE_IRQ,
+-	}
++	DEFINE_RES_IRQ(RK805_IRQ_PWRON_RISE),
++	DEFINE_RES_IRQ(RK805_IRQ_PWRON_FALL),
+ };
+ 
+ static struct resource rk817_pwrkey_resources[] = {
+@@ -167,7 +159,7 @@ static const struct mfd_cell rk817s[] = {
+ 	{ .name = "rk808-clkout",},
+ 	{ .name = "rk808-regulator",},
+ 	{
+-		.name = "rk8xx-pwrkey",
++		.name = "rk805-pwrkey",
+ 		.num_resources = ARRAY_SIZE(rk817_pwrkey_resources),
+ 		.resources = &rk817_pwrkey_resources[0],
+ 	},
 -- 
 2.20.1
