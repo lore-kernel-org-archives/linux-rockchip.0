@@ -1,58 +1,45 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 2/4] mfd: rk808: fix rk817 powerkey integration
-Date: Tue, 17 Sep 2019 10:12:54 +0200
-Message-ID: <20190917081256.24919-2-heiko@sntech.de>
-References: <20190917081256.24919-1-heiko@sntech.de>
+Subject: [PATCH 5/5] clk: rockchip: protect the pclk_usb_grf as critical
+Date: Tue, 17 Sep 2019 10:19:03 +0200
+Message-ID: <20190917081903.25139-5-heiko@sntech.de>
+References: <20190917081903.25139-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190917081256.24919-1-heiko@sntech.de>
+In-Reply-To: <20190917081903.25139-1-heiko@sntech.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: lee.jones@linaro.org
-Cc: linux-kernel@vger.kernel.org, d.schultz@phytec.de, linux-rockchip@lists.infradead.org, christoph.muellner@theobroma-systems.com, tony.xie@rock-chips.com, Heiko Stuebner <heiko@sntech.de>
+To: linux-clk@vger.kernel.org
+Cc: mturquette@baylibre.com, sboyd@kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, finley.xiao@rock-chips.com, zhangqing@rock-chips.com, christoph.muellner@theobroma-systems.com, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-The pwrkey integration seems to stem from the vendor kernel, as the
-compatible is wrong and also the order of key-irqs is swapped.
-
-So fix these issues to make the pwrkey on rk817 actually work.
+Make this clock a real critical clock, so that writes to the usbphy grf
+always succeed.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/mfd/rk808.c | 14 +++-----------
- 1 file changed, 3 insertions(+), 11 deletions(-)
+ drivers/clk/rockchip/clk-px30.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
-index 050478cabc95..966841744ee6 100644
---- a/drivers/mfd/rk808.c
-+++ b/drivers/mfd/rk808.c
-@@ -121,16 +121,8 @@ static struct resource rk817_rtc_resources[] = {
+diff --git a/drivers/clk/rockchip/clk-px30.c b/drivers/clk/rockchip/clk-px30.c
+index 7a8bc416c947..6fb9c98b7d24 100644
+--- a/drivers/clk/rockchip/clk-px30.c
++++ b/drivers/clk/rockchip/clk-px30.c
+@@ -799,7 +799,7 @@ static struct rockchip_clk_branch px30_clk_branches[] __initdata = {
+ 	GATE(0, "pclk_ddrphy", "pclk_top_pre", CLK_IGNORE_UNUSED, PX30_CLKGATE_CON(16), 3, GFLAGS),
+ 	GATE(PCLK_MIPIDSIPHY, "pclk_mipidsiphy", "pclk_top_pre", 0, PX30_CLKGATE_CON(16), 4, GFLAGS),
+ 	GATE(PCLK_MIPICSIPHY, "pclk_mipicsiphy", "pclk_top_pre", 0, PX30_CLKGATE_CON(16), 5, GFLAGS),
+-	GATE(PCLK_USB_GRF, "pclk_usb_grf", "pclk_top_pre", CLK_IGNORE_UNUSED, PX30_CLKGATE_CON(16), 6, GFLAGS),
++	GATE(PCLK_USB_GRF, "pclk_usb_grf", "pclk_top_pre", 0, PX30_CLKGATE_CON(16), 6, GFLAGS),
+ 	GATE(0, "pclk_cpu_hoost", "pclk_top_pre", CLK_IGNORE_UNUSED, PX30_CLKGATE_CON(16), 7, GFLAGS),
+ 
+ 	/* PD_VI */
+@@ -995,6 +995,7 @@ static const char *const px30_cru_critical_clocks[] __initconst = {
+ 	"usb480m",
+ 	"clk_uart2",
+ 	"pclk_uart2",
++	"pclk_usb_grf",
  };
  
- static struct resource rk805_key_resources[] = {
--	{
--		.start  = RK805_IRQ_PWRON_FALL,
--		.end    = RK805_IRQ_PWRON_FALL,
--		.flags  = IORESOURCE_IRQ,
--	},
--	{
--		.start  = RK805_IRQ_PWRON_RISE,
--		.end    = RK805_IRQ_PWRON_RISE,
--		.flags  = IORESOURCE_IRQ,
--	}
-+	DEFINE_RES_IRQ(RK805_IRQ_PWRON_RISE),
-+	DEFINE_RES_IRQ(RK805_IRQ_PWRON_FALL),
- };
- 
- static struct resource rk817_pwrkey_resources[] = {
-@@ -167,7 +159,7 @@ static const struct mfd_cell rk817s[] = {
- 	{ .name = "rk808-clkout",},
- 	{ .name = "rk808-regulator",},
- 	{
--		.name = "rk8xx-pwrkey",
-+		.name = "rk805-pwrkey",
- 		.num_resources = ARRAY_SIZE(rk817_pwrkey_resources),
- 		.resources = &rk817_pwrkey_resources[0],
- 	},
+ static void __init px30_clk_init(struct device_node *np)
 -- 
 2.20.1
