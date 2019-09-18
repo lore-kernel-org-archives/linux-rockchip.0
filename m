@@ -1,75 +1,97 @@
-From: Jerome Brunet <jbrunet@baylibre.com>
+From: Cheng-yi Chiang <cychiang@chromium.org>
 Subject: Re: [PATCH v6 2/4] drm: dw-hdmi-i2s: Use fixed id for codec device
-Date: Wed, 18 Sep 2019 10:43:49 +0200
-Message-ID: <1j7e663sfu.fsf@starbuckisacylon.baylibre.com>
+Date: Wed, 18 Sep 2019 19:52:39 +0800
+Message-ID: <CAFv8Nw+JssR+qJYWaQAjDRbHuNidHXQBPLsbOM7kNs4MN-Nkkw@mail.gmail.com>
 References: <20190918082500.209281-1-cychiang@chromium.org>
- <20190918082500.209281-3-cychiang@chromium.org>
+ <20190918082500.209281-3-cychiang@chromium.org> <1j7e663sfu.fsf@starbuckisacylon.baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <20190918082500.209281-3-cychiang@chromium.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Cheng-Yi Chiang <cychiang@chromium.org>
-Cc: alsa-devel@alsa-project.org, Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Hans Verkuil <hverkuil@xs4all.nl>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, dgreid@chromium.org, tzungbi@chromium.org, Jonas Karlman <jonas@kwiboo.se>, Liam Girdwood <lgirdwood@gmail.com>, Russell King <rmk+kernel@armlinux.org.uk>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, linux-arm-kernel@lists.infradead.org, Jernej Skrabec <jernej.skrabec@siol.net>, dianders@chromium.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1j7e663sfu.fsf@starbuckisacylon.baylibre.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jerome Brunet <jbrunet@baylibre.com>
+Cc: linux-kernel <linux-kernel@vger.kernel.org>, Neil Armstrong <narmstrong@baylibre.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..." <alsa-devel@alsa-proje>
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIFdlZCAxOCBTZXAgMjAxOSBhdCAxMDoyNCwgQ2hlbmctWWkgQ2hpYW5nIDxjeWNoaWFuZ0Bj
-aHJvbWl1bS5vcmc+IHdyb3RlOgoKPiBUaGUgcHJvYmxlbSBvZiB1c2luZyBhdXRvIElEIGlzIHRo
-YXQgdGhlIGRldmljZSBuYW1lIHdpbGwgYmUgbGlrZQo+IGhkbWktYXVkaW8tY29kZWMuPGlkIG51
-bWJlcj4uYXV0by4KPgo+IFRoZSBudW1iZXIgbWlnaHQgYmUgY2hhbmdlZCB3aGVuIHRoZXJlIGFy
-ZSBvdGhlciBwbGF0Zm9ybSBkZXZpY2VzIGJlaW5nCj4gY3JlYXRlZCBiZWZvcmUgaGRtaS1hdWRp
-by1jb2RlYyBkZXZpY2UuCj4gVXNlIGEgZml4ZWQgbmFtZSBzbyBtYWNoaW5lIGRyaXZlciBjYW4g
-c2V0IGNvZGVjIG5hbWUgb24gdGhlIERBSSBsaW5rLgo+Cj4gVXNpbmcgdGhlIGZpeGVkIG5hbWUg
-c2hvdWxkIGJlIGZpbmUgYmVjYXVzZSB0aGVyZSB3aWxsIG9ubHkgYmUgb25lCj4gaGRtaS1hdWRp
-by1jb2RlYyBkZXZpY2UuCgpXaGlsZSB0aGlzIGlzIHRydWUgYWxsIHBsYXRmb3JtcyB3ZSBrbm93
-IG9mIChJIHN1cHBvc2UpLCBJdCBtaWdodCBub3QgYmUKdGhlIGNhc2UgbGF0ZXIgb24uIEkgd29u
-ZGVyIGlmIG1ha2luZyBzdWNoIGFzc3VtcHRpb24gaXMgcmVhbGx5CmRlc2lyYWJsZSBpbiBhIGNv
-ZGUgd2hpY2ggaXMgdXNlZCBieSBxdWl0ZSBhIGZldyBkaWZmZXJlbnQgcGxhdGZvcm1zLgoKSW5z
-dGVhZCBvZiB0cnlpbmcgdG8gcHJlZGljdCB3aGF0IHRoZSBkZXZpY2UgbmFtZSB3aWxsIGJlLCBj
-YW4ndCB5b3UganVzdApxdWVyeSBpdCBpbiB5b3VyIG1hY2hpbmUgZHJpdmVyID8gVXNpbmcgYSBk
-ZXZpY2UgdHJlZSBwaGFuZGxlIG1heWJlID8KCkl0IGlzIHF1aXRlIHVzdWFsIHRvIHNldCB0aGUg
-ZGFpIGxpbmtzIHRoaXMgd2F5LCAic2ltcGxlLWNhcmQiIGlzIGEgZ29vZApleGFtcGxlIG9mIHRo
-aXMuCgo+Cj4gRml4IHRoZSBjb2RlYyBuYW1lIGluIHJvY2tjaGlwIHJrMzI4OF9oZG1pX2FuYWxv
-ZyBtYWNoaW5lIGRyaXZlci4KPgo+IFNpZ25lZC1vZmYtYnk6IENoZW5nLVlpIENoaWFuZyA8Y3lj
-aGlhbmdAY2hyb21pdW0ub3JnPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9w
-c3lzL2R3LWhkbWktaTJzLWF1ZGlvLmMgfCAyICstCj4gIHNvdW5kL3NvYy9yb2NrY2hpcC9yazMy
-ODhfaGRtaV9hbmFsb2cuYyAgICAgICAgICAgICB8IDMgKystCj4gIDIgZmlsZXMgY2hhbmdlZCwg
-MyBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-Z3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS1pMnMtYXVkaW8uYyBiL2RyaXZlcnMvZ3B1
-L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS1pMnMtYXVkaW8uYwo+IGluZGV4IGQ3ZTY1Yzg2
-OTQxNS4uODZiZDQ4MmI5Zjk0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
-c3lub3BzeXMvZHctaGRtaS1pMnMtYXVkaW8uYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlk
-Z2Uvc3lub3BzeXMvZHctaGRtaS1pMnMtYXVkaW8uYwo+IEBAIC0xOTMsNyArMTkzLDcgQEAgc3Rh
-dGljIGludCBzbmRfZHdfaGRtaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+
-ICAKPiAgCW1lbXNldCgmcGRldmluZm8sIDAsIHNpemVvZihwZGV2aW5mbykpOwo+ICAJcGRldmlu
-Zm8ucGFyZW50CQk9IHBkZXYtPmRldi5wYXJlbnQ7Cj4gLQlwZGV2aW5mby5pZAkJPSBQTEFURk9S
-TV9ERVZJRF9BVVRPOwo+ICsJcGRldmluZm8uaWQJCT0gUExBVEZPUk1fREVWSURfTk9ORTsKPiAg
-CXBkZXZpbmZvLm5hbWUJCT0gSERNSV9DT0RFQ19EUlZfTkFNRTsKPiAgCXBkZXZpbmZvLmRhdGEJ
-CT0gJnBkYXRhOwo+ICAJcGRldmluZm8uc2l6ZV9kYXRhCT0gc2l6ZW9mKHBkYXRhKTsKPiBkaWZm
-IC0tZ2l0IGEvc291bmQvc29jL3JvY2tjaGlwL3JrMzI4OF9oZG1pX2FuYWxvZy5jIGIvc291bmQv
-c29jL3JvY2tjaGlwL3JrMzI4OF9oZG1pX2FuYWxvZy5jCj4gaW5kZXggNzY3NzAwYzM0ZWUyLi44
-Mjg2MDI1YTg3NDcgMTAwNjQ0Cj4gLS0tIGEvc291bmQvc29jL3JvY2tjaGlwL3JrMzI4OF9oZG1p
-X2FuYWxvZy5jCj4gKysrIGIvc291bmQvc29jL3JvY2tjaGlwL3JrMzI4OF9oZG1pX2FuYWxvZy5j
-Cj4gQEAgLTE1LDYgKzE1LDcgQEAKPiAgI2luY2x1ZGUgPGxpbnV4L2dwaW8uaD4KPiAgI2luY2x1
-ZGUgPGxpbnV4L29mX2dwaW8uaD4KPiAgI2luY2x1ZGUgPHNvdW5kL2NvcmUuaD4KPiArI2luY2x1
-ZGUgPHNvdW5kL2hkbWktY29kZWMuaD4KPiAgI2luY2x1ZGUgPHNvdW5kL2phY2suaD4KPiAgI2lu
-Y2x1ZGUgPHNvdW5kL3BjbS5oPgo+ICAjaW5jbHVkZSA8c291bmQvcGNtX3BhcmFtcy5oPgo+IEBA
-IC0xNDIsNyArMTQzLDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBzbmRfc29jX29wcyBya19vcHMg
-PSB7Cj4gIFNORF9TT0NfREFJTElOS19ERUZTKGF1ZGlvLAo+ICAJREFJTElOS19DT01QX0FSUkFZ
-KENPTVBfRU1QVFkoKSksCj4gIAlEQUlMSU5LX0NPTVBfQVJSQVkoQ09NUF9DT0RFQyhOVUxMLCBO
-VUxMKSwKPiAtCQkJICAgQ09NUF9DT0RFQygiaGRtaS1hdWRpby1jb2RlYy4yLmF1dG8iLCAiaTJz
-LWhpZmkiKSksCj4gKwkJCSAgIENPTVBfQ09ERUMoSERNSV9DT0RFQ19EUlZfTkFNRSwgImkycy1o
-aWZpIikpLAo+ICAJREFJTElOS19DT01QX0FSUkFZKENPTVBfRU1QVFkoKSkpOwo+ICAKPiAgc3Rh
-dGljIHN0cnVjdCBzbmRfc29jX2RhaV9saW5rIHJrX2RhaWxpbmsgPSB7CgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
+On Wed, Sep 18, 2019 at 4:43 PM Jerome Brunet <jbrunet@baylibre.com> wrote:
+>
+>
+> On Wed 18 Sep 2019 at 10:24, Cheng-Yi Chiang <cychiang@chromium.org> wrote:
+>
+> > The problem of using auto ID is that the device name will be like
+> > hdmi-audio-codec.<id number>.auto.
+> >
+> > The number might be changed when there are other platform devices being
+> > created before hdmi-audio-codec device.
+> > Use a fixed name so machine driver can set codec name on the DAI link.
+> >
+> > Using the fixed name should be fine because there will only be one
+> > hdmi-audio-codec device.
+>
+> While this is true all platforms we know of (I suppose), It might not be
+> the case later on. I wonder if making such assumption is really
+> desirable in a code which is used by quite a few different platforms.
+>
+> Instead of trying to predict what the device name will be, can't you just
+> query it in your machine driver ? Using a device tree phandle maybe ?
+>
+> It is quite usual to set the dai links this way, "simple-card" is a good
+> example of this.
+>
+
+Hi Jerome,
+Thanks for the quick reply!
+And thanks for pointing this out.
+I found that
+soc_component_to_node searches upward for one layer so it can find the
+node which creates hdmi-audio-codec in runtime. This works even that
+hdmi-audio-codec does not have its own node in dts.
+I will change accordingly in v7.
+Thanks!
+
+
+
+> >
+> > Fix the codec name in rockchip rk3288_hdmi_analog machine driver.
+> >
+> > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+> > ---
+> >  drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c | 2 +-
+> >  sound/soc/rockchip/rk3288_hdmi_analog.c             | 3 ++-
+> >  2 files changed, 3 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
+> > index d7e65c869415..86bd482b9f94 100644
+> > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
+> > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
+> > @@ -193,7 +193,7 @@ static int snd_dw_hdmi_probe(struct platform_device *pdev)
+> >
+> >       memset(&pdevinfo, 0, sizeof(pdevinfo));
+> >       pdevinfo.parent         = pdev->dev.parent;
+> > -     pdevinfo.id             = PLATFORM_DEVID_AUTO;
+> > +     pdevinfo.id             = PLATFORM_DEVID_NONE;
+> >       pdevinfo.name           = HDMI_CODEC_DRV_NAME;
+> >       pdevinfo.data           = &pdata;
+> >       pdevinfo.size_data      = sizeof(pdata);
+> > diff --git a/sound/soc/rockchip/rk3288_hdmi_analog.c b/sound/soc/rockchip/rk3288_hdmi_analog.c
+> > index 767700c34ee2..8286025a8747 100644
+> > --- a/sound/soc/rockchip/rk3288_hdmi_analog.c
+> > +++ b/sound/soc/rockchip/rk3288_hdmi_analog.c
+> > @@ -15,6 +15,7 @@
+> >  #include <linux/gpio.h>
+> >  #include <linux/of_gpio.h>
+> >  #include <sound/core.h>
+> > +#include <sound/hdmi-codec.h>
+> >  #include <sound/jack.h>
+> >  #include <sound/pcm.h>
+> >  #include <sound/pcm_params.h>
+> > @@ -142,7 +143,7 @@ static const struct snd_soc_ops rk_ops = {
+> >  SND_SOC_DAILINK_DEFS(audio,
+> >       DAILINK_COMP_ARRAY(COMP_EMPTY()),
+> >       DAILINK_COMP_ARRAY(COMP_CODEC(NULL, NULL),
+> > -                        COMP_CODEC("hdmi-audio-codec.2.auto", "i2s-hifi")),
+> > +                        COMP_CODEC(HDMI_CODEC_DRV_NAME, "i2s-hifi")),
+> >       DAILINK_COMP_ARRAY(COMP_EMPTY()));
+> >
+> >  static struct snd_soc_dai_link rk_dailink = {
+>
