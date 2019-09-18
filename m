@@ -1,78 +1,75 @@
-From: Cheng-Yi Chiang <cychiang@chromium.org>
-Subject: [PATCH v6 4/4] ASoC: rockchip_max98090: Add HDMI jack support
-Date: Wed, 18 Sep 2019 16:25:00 +0800
-Message-ID: <20190918082500.209281-5-cychiang@chromium.org>
+From: Jerome Brunet <jbrunet@baylibre.com>
+Subject: Re: [PATCH v6 2/4] drm: dw-hdmi-i2s: Use fixed id for codec device
+Date: Wed, 18 Sep 2019 10:43:49 +0200
+Message-ID: <1j7e663sfu.fsf@starbuckisacylon.baylibre.com>
 References: <20190918082500.209281-1-cychiang@chromium.org>
+ <20190918082500.209281-3-cychiang@chromium.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190918082500.209281-1-cychiang@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: Neil Armstrong <narmstrong@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, dgreid@chromium.org, tzungbi@chromium.org, alsa-devel@alsa-project.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infrad
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-reply-to: <20190918082500.209281-3-cychiang@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Cheng-Yi Chiang <cychiang@chromium.org>
+Cc: alsa-devel@alsa-project.org, Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Hans Verkuil <hverkuil@xs4all.nl>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, dgreid@chromium.org, tzungbi@chromium.org, Jonas Karlman <jonas@kwiboo.se>, Liam Girdwood <lgirdwood@gmail.com>, Russell King <rmk+kernel@armlinux.org.uk>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, linux-arm-kernel@lists.infradead.org, Jernej Skrabec <jernej.skrabec@siol.net>, dianders@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In machine driver, create a jack and let hdmi-codec report jack status.
-
-Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
----
- sound/soc/rockchip/Kconfig             |  3 ++-
- sound/soc/rockchip/rockchip_max98090.c | 20 ++++++++++++++++++++
- 2 files changed, 22 insertions(+), 1 deletion(-)
-
-diff --git a/sound/soc/rockchip/Kconfig b/sound/soc/rockchip/Kconfig
-index b43657e6e655..d610b553ea3b 100644
---- a/sound/soc/rockchip/Kconfig
-+++ b/sound/soc/rockchip/Kconfig
-@@ -40,9 +40,10 @@ config SND_SOC_ROCKCHIP_MAX98090
- 	select SND_SOC_ROCKCHIP_I2S
- 	select SND_SOC_MAX98090
- 	select SND_SOC_TS3A227E
-+	select SND_SOC_HDMI_CODEC
- 	help
- 	  Say Y or M here if you want to add support for SoC audio on Rockchip
--	  boards using the MAX98090 codec, such as Veyron.
-+	  boards using the MAX98090 codec and HDMI codec, such as Veyron.
- 
- config SND_SOC_ROCKCHIP_RT5645
- 	tristate "ASoC support for Rockchip boards using a RT5645/RT5650 codec"
-diff --git a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
-index c82948e383da..c81c4acda917 100644
---- a/sound/soc/rockchip/rockchip_max98090.c
-+++ b/sound/soc/rockchip/rockchip_max98090.c
-@@ -134,6 +134,25 @@ enum {
- 	DAILINK_HDMI,
- };
- 
-+static struct snd_soc_jack rk_hdmi_jack;
-+
-+static int rk_hdmi_init(struct snd_soc_pcm_runtime *runtime)
-+{
-+	struct snd_soc_card *card = runtime->card;
-+	struct snd_soc_component *component = runtime->codec_dai->component;
-+	int ret;
-+
-+	/* enable jack detection */
-+	ret = snd_soc_card_jack_new(card, "HDMI Jack", SND_JACK_LINEOUT,
-+				    &rk_hdmi_jack, NULL, 0);
-+	if (ret) {
-+		dev_err(card->dev, "Can't new HDMI Jack %d\n", ret);
-+		return ret;
-+	}
-+
-+	return hdmi_codec_set_jack_detect(component, &rk_hdmi_jack);
-+}
-+
- /* max98090 and HDMI codec dai_link */
- static struct snd_soc_dai_link rk_dailinks[] = {
- 	[DAILINK_MAX98090] = {
-@@ -151,6 +170,7 @@ static struct snd_soc_dai_link rk_dailinks[] = {
- 		.ops = &rk_aif1_ops,
- 		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
- 			SND_SOC_DAIFMT_CBS_CFS,
-+		.init = rk_hdmi_init,
- 		SND_SOC_DAILINK_REG(hdmi),
- 	}
- };
--- 
-2.23.0.237.gc6a4ce50a0-goog
+Ck9uIFdlZCAxOCBTZXAgMjAxOSBhdCAxMDoyNCwgQ2hlbmctWWkgQ2hpYW5nIDxjeWNoaWFuZ0Bj
+aHJvbWl1bS5vcmc+IHdyb3RlOgoKPiBUaGUgcHJvYmxlbSBvZiB1c2luZyBhdXRvIElEIGlzIHRo
+YXQgdGhlIGRldmljZSBuYW1lIHdpbGwgYmUgbGlrZQo+IGhkbWktYXVkaW8tY29kZWMuPGlkIG51
+bWJlcj4uYXV0by4KPgo+IFRoZSBudW1iZXIgbWlnaHQgYmUgY2hhbmdlZCB3aGVuIHRoZXJlIGFy
+ZSBvdGhlciBwbGF0Zm9ybSBkZXZpY2VzIGJlaW5nCj4gY3JlYXRlZCBiZWZvcmUgaGRtaS1hdWRp
+by1jb2RlYyBkZXZpY2UuCj4gVXNlIGEgZml4ZWQgbmFtZSBzbyBtYWNoaW5lIGRyaXZlciBjYW4g
+c2V0IGNvZGVjIG5hbWUgb24gdGhlIERBSSBsaW5rLgo+Cj4gVXNpbmcgdGhlIGZpeGVkIG5hbWUg
+c2hvdWxkIGJlIGZpbmUgYmVjYXVzZSB0aGVyZSB3aWxsIG9ubHkgYmUgb25lCj4gaGRtaS1hdWRp
+by1jb2RlYyBkZXZpY2UuCgpXaGlsZSB0aGlzIGlzIHRydWUgYWxsIHBsYXRmb3JtcyB3ZSBrbm93
+IG9mIChJIHN1cHBvc2UpLCBJdCBtaWdodCBub3QgYmUKdGhlIGNhc2UgbGF0ZXIgb24uIEkgd29u
+ZGVyIGlmIG1ha2luZyBzdWNoIGFzc3VtcHRpb24gaXMgcmVhbGx5CmRlc2lyYWJsZSBpbiBhIGNv
+ZGUgd2hpY2ggaXMgdXNlZCBieSBxdWl0ZSBhIGZldyBkaWZmZXJlbnQgcGxhdGZvcm1zLgoKSW5z
+dGVhZCBvZiB0cnlpbmcgdG8gcHJlZGljdCB3aGF0IHRoZSBkZXZpY2UgbmFtZSB3aWxsIGJlLCBj
+YW4ndCB5b3UganVzdApxdWVyeSBpdCBpbiB5b3VyIG1hY2hpbmUgZHJpdmVyID8gVXNpbmcgYSBk
+ZXZpY2UgdHJlZSBwaGFuZGxlIG1heWJlID8KCkl0IGlzIHF1aXRlIHVzdWFsIHRvIHNldCB0aGUg
+ZGFpIGxpbmtzIHRoaXMgd2F5LCAic2ltcGxlLWNhcmQiIGlzIGEgZ29vZApleGFtcGxlIG9mIHRo
+aXMuCgo+Cj4gRml4IHRoZSBjb2RlYyBuYW1lIGluIHJvY2tjaGlwIHJrMzI4OF9oZG1pX2FuYWxv
+ZyBtYWNoaW5lIGRyaXZlci4KPgo+IFNpZ25lZC1vZmYtYnk6IENoZW5nLVlpIENoaWFuZyA8Y3lj
+aGlhbmdAY2hyb21pdW0ub3JnPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9w
+c3lzL2R3LWhkbWktaTJzLWF1ZGlvLmMgfCAyICstCj4gIHNvdW5kL3NvYy9yb2NrY2hpcC9yazMy
+ODhfaGRtaV9hbmFsb2cuYyAgICAgICAgICAgICB8IDMgKystCj4gIDIgZmlsZXMgY2hhbmdlZCwg
+MyBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+Z3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS1pMnMtYXVkaW8uYyBiL2RyaXZlcnMvZ3B1
+L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS1pMnMtYXVkaW8uYwo+IGluZGV4IGQ3ZTY1Yzg2
+OTQxNS4uODZiZDQ4MmI5Zjk0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
+c3lub3BzeXMvZHctaGRtaS1pMnMtYXVkaW8uYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlk
+Z2Uvc3lub3BzeXMvZHctaGRtaS1pMnMtYXVkaW8uYwo+IEBAIC0xOTMsNyArMTkzLDcgQEAgc3Rh
+dGljIGludCBzbmRfZHdfaGRtaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+
+ICAKPiAgCW1lbXNldCgmcGRldmluZm8sIDAsIHNpemVvZihwZGV2aW5mbykpOwo+ICAJcGRldmlu
+Zm8ucGFyZW50CQk9IHBkZXYtPmRldi5wYXJlbnQ7Cj4gLQlwZGV2aW5mby5pZAkJPSBQTEFURk9S
+TV9ERVZJRF9BVVRPOwo+ICsJcGRldmluZm8uaWQJCT0gUExBVEZPUk1fREVWSURfTk9ORTsKPiAg
+CXBkZXZpbmZvLm5hbWUJCT0gSERNSV9DT0RFQ19EUlZfTkFNRTsKPiAgCXBkZXZpbmZvLmRhdGEJ
+CT0gJnBkYXRhOwo+ICAJcGRldmluZm8uc2l6ZV9kYXRhCT0gc2l6ZW9mKHBkYXRhKTsKPiBkaWZm
+IC0tZ2l0IGEvc291bmQvc29jL3JvY2tjaGlwL3JrMzI4OF9oZG1pX2FuYWxvZy5jIGIvc291bmQv
+c29jL3JvY2tjaGlwL3JrMzI4OF9oZG1pX2FuYWxvZy5jCj4gaW5kZXggNzY3NzAwYzM0ZWUyLi44
+Mjg2MDI1YTg3NDcgMTAwNjQ0Cj4gLS0tIGEvc291bmQvc29jL3JvY2tjaGlwL3JrMzI4OF9oZG1p
+X2FuYWxvZy5jCj4gKysrIGIvc291bmQvc29jL3JvY2tjaGlwL3JrMzI4OF9oZG1pX2FuYWxvZy5j
+Cj4gQEAgLTE1LDYgKzE1LDcgQEAKPiAgI2luY2x1ZGUgPGxpbnV4L2dwaW8uaD4KPiAgI2luY2x1
+ZGUgPGxpbnV4L29mX2dwaW8uaD4KPiAgI2luY2x1ZGUgPHNvdW5kL2NvcmUuaD4KPiArI2luY2x1
+ZGUgPHNvdW5kL2hkbWktY29kZWMuaD4KPiAgI2luY2x1ZGUgPHNvdW5kL2phY2suaD4KPiAgI2lu
+Y2x1ZGUgPHNvdW5kL3BjbS5oPgo+ICAjaW5jbHVkZSA8c291bmQvcGNtX3BhcmFtcy5oPgo+IEBA
+IC0xNDIsNyArMTQzLDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBzbmRfc29jX29wcyBya19vcHMg
+PSB7Cj4gIFNORF9TT0NfREFJTElOS19ERUZTKGF1ZGlvLAo+ICAJREFJTElOS19DT01QX0FSUkFZ
+KENPTVBfRU1QVFkoKSksCj4gIAlEQUlMSU5LX0NPTVBfQVJSQVkoQ09NUF9DT0RFQyhOVUxMLCBO
+VUxMKSwKPiAtCQkJICAgQ09NUF9DT0RFQygiaGRtaS1hdWRpby1jb2RlYy4yLmF1dG8iLCAiaTJz
+LWhpZmkiKSksCj4gKwkJCSAgIENPTVBfQ09ERUMoSERNSV9DT0RFQ19EUlZfTkFNRSwgImkycy1o
+aWZpIikpLAo+ICAJREFJTElOS19DT01QX0FSUkFZKENPTVBfRU1QVFkoKSkpOwo+ICAKPiAgc3Rh
+dGljIHN0cnVjdCBzbmRfc29jX2RhaV9saW5rIHJrX2RhaWxpbmsgPSB7CgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
