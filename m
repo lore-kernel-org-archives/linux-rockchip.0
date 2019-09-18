@@ -1,97 +1,72 @@
-From: Cheng-yi Chiang <cychiang@chromium.org>
-Subject: Re: [PATCH v6 2/4] drm: dw-hdmi-i2s: Use fixed id for codec device
-Date: Wed, 18 Sep 2019 19:52:39 +0800
-Message-ID: <CAFv8Nw+JssR+qJYWaQAjDRbHuNidHXQBPLsbOM7kNs4MN-Nkkw@mail.gmail.com>
-References: <20190918082500.209281-1-cychiang@chromium.org>
- <20190918082500.209281-3-cychiang@chromium.org> <1j7e663sfu.fsf@starbuckisacylon.baylibre.com>
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Subject: Re: [PATCH RESEND 00/14] Next round of associating ddc
+ adapters with connectors
+Date: Wed, 18 Sep 2019 16:01:20 +0200
+Message-ID: <0799e830-400d-4ced-7108-c8fcfd5ef8c0@collabora.com>
+References: <cover.1566845537.git.andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1j7e663sfu.fsf@starbuckisacylon.baylibre.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jerome Brunet <jbrunet@baylibre.com>
-Cc: linux-kernel <linux-kernel@vger.kernel.org>, Neil Armstrong <narmstrong@baylibre.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..." <alsa-devel@alsa-proje>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
+In-Reply-To: <cover.1566845537.git.andrzej.p@collabora.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, kernel@collabora.com, Anthony Koo <Anthony.Koo@amd.com>, Emil Velikov <emil.velikov@collabora.com>, linux-samsung-soc@vger.kernel.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, David Francis <David.Francis@amd.com>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Leo Li <sunpeng.li@amd.com>, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, Jyri Sarha <jsarha@ti.com>, Mamta Shukla <mamtashukla555@gmail.com>, linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>, Bhawanpreet Lakha <Bhawanpreet.Lakha@amd.com>linux-
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Sep 18, 2019 at 4:43 PM Jerome Brunet <jbrunet@baylibre.com> wrote:
->
->
-> On Wed 18 Sep 2019 at 10:24, Cheng-Yi Chiang <cychiang@chromium.org> wrote:
->
-> > The problem of using auto ID is that the device name will be like
-> > hdmi-audio-codec.<id number>.auto.
-> >
-> > The number might be changed when there are other platform devices being
-> > created before hdmi-audio-codec device.
-> > Use a fixed name so machine driver can set codec name on the DAI link.
-> >
-> > Using the fixed name should be fine because there will only be one
-> > hdmi-audio-codec device.
->
-> While this is true all platforms we know of (I suppose), It might not be
-> the case later on. I wonder if making such assumption is really
-> desirable in a code which is used by quite a few different platforms.
->
-> Instead of trying to predict what the device name will be, can't you just
-> query it in your machine driver ? Using a device tree phandle maybe ?
->
-> It is quite usual to set the dai links this way, "simple-card" is a good
-> example of this.
->
-
-Hi Jerome,
-Thanks for the quick reply!
-And thanks for pointing this out.
-I found that
-soc_component_to_node searches upward for one layer so it can find the
-node which creates hdmi-audio-codec in runtime. This works even that
-hdmi-audio-codec does not have its own node in dts.
-I will change accordingly in v7.
-Thanks!
-
-
-
-> >
-> > Fix the codec name in rockchip rk3288_hdmi_analog machine driver.
-> >
-> > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
-> > ---
-> >  drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c | 2 +-
-> >  sound/soc/rockchip/rk3288_hdmi_analog.c             | 3 ++-
-> >  2 files changed, 3 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-> > index d7e65c869415..86bd482b9f94 100644
-> > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-> > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-i2s-audio.c
-> > @@ -193,7 +193,7 @@ static int snd_dw_hdmi_probe(struct platform_device *pdev)
-> >
-> >       memset(&pdevinfo, 0, sizeof(pdevinfo));
-> >       pdevinfo.parent         = pdev->dev.parent;
-> > -     pdevinfo.id             = PLATFORM_DEVID_AUTO;
-> > +     pdevinfo.id             = PLATFORM_DEVID_NONE;
-> >       pdevinfo.name           = HDMI_CODEC_DRV_NAME;
-> >       pdevinfo.data           = &pdata;
-> >       pdevinfo.size_data      = sizeof(pdata);
-> > diff --git a/sound/soc/rockchip/rk3288_hdmi_analog.c b/sound/soc/rockchip/rk3288_hdmi_analog.c
-> > index 767700c34ee2..8286025a8747 100644
-> > --- a/sound/soc/rockchip/rk3288_hdmi_analog.c
-> > +++ b/sound/soc/rockchip/rk3288_hdmi_analog.c
-> > @@ -15,6 +15,7 @@
-> >  #include <linux/gpio.h>
-> >  #include <linux/of_gpio.h>
-> >  #include <sound/core.h>
-> > +#include <sound/hdmi-codec.h>
-> >  #include <sound/jack.h>
-> >  #include <sound/pcm.h>
-> >  #include <sound/pcm_params.h>
-> > @@ -142,7 +143,7 @@ static const struct snd_soc_ops rk_ops = {
-> >  SND_SOC_DAILINK_DEFS(audio,
-> >       DAILINK_COMP_ARRAY(COMP_EMPTY()),
-> >       DAILINK_COMP_ARRAY(COMP_CODEC(NULL, NULL),
-> > -                        COMP_CODEC("hdmi-audio-codec.2.auto", "i2s-hifi")),
-> > +                        COMP_CODEC(HDMI_CODEC_DRV_NAME, "i2s-hifi")),
-> >       DAILINK_COMP_ARRAY(COMP_EMPTY()));
-> >
-> >  static struct snd_soc_dai_link rk_dailink = {
->
+SGkgQWxsLAoKQSBnZW50bGUgcGluZy4KCkFuZHJ6ZWoKClcgZG5pdSAyNi4wOC4yMDE5IG/CoDIx
+OjI1LCBBbmRyemVqIFBpZXRyYXNpZXdpY3ogcGlzemU6Cj4gSSdtIHJlc2VuZGluZyB0aGUgcGF0
+Y2hlcyB3aGljaCBoYXZlIHNvbWVob3cgZ290IGxvc3Q6IG9uZSBwYXRjaAo+IGZyb20gR2VlcnQg
+YW5kIDEzIHBhdGNoZXMgZnJvbSBtZS4KPiAKPiBHZWVydCdzIHBhdGNoIHVwZGF0ZXMgdGhlIGVy
+cm9yIG1lc3NhZ2UgdG8gcmVmbGVjdCB0aGUgYWN0dWFsbHkKPiBjYWxsZWQgZnVuY3Rpb24ncyBu
+YW1lLgo+IAo+IE1vc3Qgb2YgcGF0Y2hlcyBmcm9tIG1lIGhhdmUgdGhlaXIgQWNrZWQtYnkgYW5k
+IFJldmlld2VkLWJ5IHRhZ3MKPiBhbmQgZGVhbCB3aXRoIHByb3ZpZGluZyBhIGRkYyBzeW1saW5r
+IGluIGNvbm5lY3RvcidzIHN5c2ZzIGRpcmVjdG9yeS4KPiAKPiBSZWJhc2VkIG9udG8gZHJtLW1p
+c2MtbmV4dCBhcyBvZiAyNnRoIEF1Z3VzdC4KPiAKPiBBbmRyemVqIFBpZXRyYXNpZXdpY3ogKDEz
+KToKPiAgICBkcm0vcmFkZW9uOiBQcm92aWRlIGRkYyBzeW1saW5rIGluIGNvbm5lY3RvciBzeXNm
+cyBkaXJlY3RvcnkKPiAgICBkcm0vYW1kZ3B1OiBQcm92aWRlIGRkYyBzeW1saW5rIGluIGRtIGNv
+bm5lY3RvcidzIHN5c2ZzIGRpcmVjdG9yeQo+ICAgIGRybS9leHlub3M6IFByb3ZpZGUgZGRjIHN5
+bWxpbmsgaW4gY29ubmVjdG9yJ3Mgc3lzZnMKPiAgICBkcm06IHJvY2tjaGlwOiBQcm92aWRlIGRk
+YyBzeW1saW5rIGluIHJrMzA2Nl9oZG1pIHN5c2ZzIGRpcmVjdG9yeQo+ICAgIGRybTogcm9ja2No
+aXA6IFByb3ZpZGUgZGRjIHN5bWxpbmsgaW4gaW5ub19oZG1pIHN5c2ZzIGRpcmVjdG9yeQo+ICAg
+IGRybS9tc20vaGRtaTogUHJvdmlkZSBkZGMgc3ltbGluayBpbiBoZG1pIGNvbm5lY3RvciBzeXNm
+cyBkaXJlY3RvcnkKPiAgICBkcm0vbWVkaWF0ZWs6IFByb3ZpZGUgZGRjIHN5bWxpbmsgaW4gaGRt
+aSBjb25uZWN0b3Igc3lzZnMgZGlyZWN0b3J5Cj4gICAgZHJtL3RlZ3JhOiBQcm92aWRlIGRkYyBz
+eW1saW5rIGluIG91dHB1dCBjb25uZWN0b3Igc3lzZnMgZGlyZWN0b3J5Cj4gICAgZHJtL3ZjNDog
+UHJvdmlkZSBkZGMgc3ltbGluayBpbiBjb25uZWN0b3Igc3lzZnMgZGlyZWN0b3J5Cj4gICAgZHJt
+OiB6dGU6IFByb3ZpZGUgZGRjIHN5bWxpbmsgaW4gaGRtaSBjb25uZWN0b3Igc3lzZnMgZGlyZWN0
+b3J5Cj4gICAgZHJtOiB6dGU6IFByb3ZpZGUgZGRjIHN5bWxpbmsgaW4gdmdhIGNvbm5lY3RvciBz
+eXNmcyBkaXJlY3RvcnkKPiAgICBkcm0vdGlsY2RjOiBQcm92aWRlIGRkYyBzeW1saW5rIGluIGNv
+bm5lY3RvciBzeXNmcyBkaXJlY3RvcnkKPiAgICBkcm0vaTkxNTogUHJvdmlkZSBkZGMgc3ltbGlu
+ayBpbiBoZG1pIGNvbm5lY3RvciBzeXNmcyBkaXJlY3RvcnkKPiAKPiBHZWVydCBVeXR0ZXJob2V2
+ZW4gKDEpOgo+ICAgIGRybS9icmlkZ2U6IHRpLXRmcDQxMDogVXBkYXRlIGRybV9jb25uZWN0b3Jf
+aW5pdF93aXRoX2RkYygpIGVycm9yCj4gICAgICBtZXNzYWdlCj4gCj4gICAuLi4vZ3B1L2RybS9h
+bWQvZGlzcGxheS9hbWRncHVfZG0vYW1kZ3B1X2RtLmMgfCAgIDUgKy0KPiAgIGRyaXZlcnMvZ3B1
+L2RybS9icmlkZ2UvdGktdGZwNDEwLmMgICAgICAgICAgICB8ICAgMyArLQo+ICAgZHJpdmVycy9n
+cHUvZHJtL2V4eW5vcy9leHlub3NfaGRtaS5jICAgICAgICAgIHwgICA2ICstCj4gICBkcml2ZXJz
+L2dwdS9kcm0vaTkxNS9kaXNwbGF5L2ludGVsX2hkbWkuYyAgICAgfCAgMTIgKy0KPiAgIGRyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jICAgICAgICAgICB8ICAgNyArLQo+ICAgZHJp
+dmVycy9ncHUvZHJtL21zbS9oZG1pL2hkbWlfY29ubmVjdG9yLmMgICAgIHwgICA2ICstCj4gICBk
+cml2ZXJzL2dwdS9kcm0vcmFkZW9uL3JhZGVvbl9jb25uZWN0b3JzLmMgICAgfCAxNDMgKysrKysr
+KysrKysrKy0tLS0tCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLmMgICAg
+ICAgICAgfCAgIDYgKy0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yazMwNjZfaGRtaS5j
+ICAgICAgICB8ICAgNyArLQo+ICAgZHJpdmVycy9ncHUvZHJtL3RlZ3JhL2hkbWkuYyAgICAgICAg
+ICAgICAgICAgIHwgICA3ICstCj4gICBkcml2ZXJzL2dwdS9kcm0vdGVncmEvc29yLmMgICAgICAg
+ICAgICAgICAgICAgfCAgIDcgKy0KPiAgIGRyaXZlcnMvZ3B1L2RybS90aWxjZGMvdGlsY2RjX3Rm
+cDQxMC5jICAgICAgICB8ICAgNiArLQo+ICAgZHJpdmVycy9ncHUvZHJtL3ZjNC92YzRfaGRtaS5j
+ICAgICAgICAgICAgICAgIHwgIDEyICstCj4gICBkcml2ZXJzL2dwdS9kcm0venRlL3p4X2hkbWku
+YyAgICAgICAgICAgICAgICAgfCAgIDYgKy0KPiAgIGRyaXZlcnMvZ3B1L2RybS96dGUvenhfdmdh
+LmMgICAgICAgICAgICAgICAgICB8ICAgNiArLQo+ICAgMTUgZmlsZXMgY2hhbmdlZCwgMTY4IGlu
+c2VydGlvbnMoKyksIDcxIGRlbGV0aW9ucygtKQo+IAoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtZ2Z4IG1haWxpbmcgbGlzdApJbnRlbC1nZnhA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
+YW4vbGlzdGluZm8vaW50ZWwtZ2Z4
