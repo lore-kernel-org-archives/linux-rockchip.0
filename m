@@ -1,95 +1,56 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH 6/6] arm64: dts: rockchip: Fix roc-rk3399-pc regulator input rails
-Date: Thu, 19 Sep 2019 10:58:22 +0530
-Message-ID: <20190919052822.10403-7-jagan@amarulasolutions.com>
-References: <20190919052822.10403-1-jagan@amarulasolutions.com>
+From: Rasmus Villemoes <linux@rasmusvillemoes.dk>
+Subject: [PATCH] pwm: rockchip: simplify rockchip_pwm_get_state()
+Date: Thu, 19 Sep 2019 11:17:27 +0200
+Message-ID: <20190919091728.24756-1-linux@rasmusvillemoes.dk>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190919052822.10403-1-jagan@amarulasolutions.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Levin Du <djw@t-chip.com.cn>, Akash Gajjar <akash@openedev.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: Da Xue <da@lessconfused.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Thierry Reding <thierry.reding@gmail.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-pwm@vger.kernel.org, Rasmus Villemoes <linux@rasmusvillemoes.dk>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, David Wu <david.wu@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Few, know rk808 pmic regulators VCC[1-4], VCC[6-7], VCC[9-11],
-VDD_LOG, VDD_GPU, VDD_CPU_B, VCC3V3_SYS are inputting with vcc_sys
-which is 5V power rail from dc_12v.
+The way state->enabled is computed is rather convoluted and hard to
+read - both branches of the if() actually do the exact same thing. So
+remove the if(), and further simplify "<boolean condition> ? true :
+false" to "<boolean condition>".
 
-So, replace the vin-supply of above mentioned regulators
-with vcc_sys as per the PMIC-RK808-D page of roc-rk3399-pc
-schematics.
-
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Signed-off-by: Rasmus Villemoes <linux@rasmusvillemoes.dk>
 ---
- .../rk3399-libretech-roc-rk3399-pc.dts        | 26 +++++++++----------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+I stumbled on this while trying to understand how the pwm subsystem
+works. This patch is a semantic no-op, but it's also possible that,
+say, the first branch simply contains a "double negative" so either
+the != should be == or the "false : true" should be "true : false".
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-libretech-roc-rk3399-pc.dts b/arch/arm64/boot/dts/rockchip/rk3399-libretech-roc-rk3399-pc.dts
-index 51242ea5447d..1eddb2e00809 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-libretech-roc-rk3399-pc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-libretech-roc-rk3399-pc.dts
-@@ -85,7 +85,7 @@
- 		regulator-boot-on;
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
--		vin-supply = <&dc_12v>;
-+		vin-supply = <&vcc_sys>;
- 	};
+ drivers/pwm/pwm-rockchip.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
+index 51b96cb7dd25..54c6399e3f00 100644
+--- a/drivers/pwm/pwm-rockchip.c
++++ b/drivers/pwm/pwm-rockchip.c
+@@ -83,12 +83,7 @@ static void rockchip_pwm_get_state(struct pwm_chip *chip,
+ 	state->duty_cycle =  DIV_ROUND_CLOSEST_ULL(tmp, clk_rate);
  
- 	/* Actually 3 regulators (host0, 1, 2) controlled by the same gpio */
-@@ -129,7 +129,7 @@
- 		regulator-boot-on;
- 		regulator-min-microvolt = <800000>;
- 		regulator-max-microvolt = <1400000>;
--		vin-supply = <&vcc3v3_sys>;
-+		vin-supply = <&vcc_sys>;
- 	};
- };
+ 	val = readl_relaxed(pc->base + pc->data->regs.ctrl);
+-	if (pc->data->supports_polarity)
+-		state->enabled = ((val & enable_conf) != enable_conf) ?
+-				 false : true;
+-	else
+-		state->enabled = ((val & enable_conf) == enable_conf) ?
+-				 true : false;
++	state->enabled = ((val & enable_conf) == enable_conf);
  
-@@ -202,16 +202,16 @@
- 		rockchip,system-power-controller;
- 		wakeup-source;
- 
--		vcc1-supply = <&vcc3v3_sys>;
--		vcc2-supply = <&vcc3v3_sys>;
--		vcc3-supply = <&vcc3v3_sys>;
--		vcc4-supply = <&vcc3v3_sys>;
--		vcc6-supply = <&vcc3v3_sys>;
--		vcc7-supply = <&vcc3v3_sys>;
-+		vcc1-supply = <&vcc_sys>;
-+		vcc2-supply = <&vcc_sys>;
-+		vcc3-supply = <&vcc_sys>;
-+		vcc4-supply = <&vcc_sys>;
-+		vcc6-supply = <&vcc_sys>;
-+		vcc7-supply = <&vcc_sys>;
- 		vcc8-supply = <&vcc3v3_sys>;
--		vcc9-supply = <&vcc3v3_sys>;
--		vcc10-supply = <&vcc3v3_sys>;
--		vcc11-supply = <&vcc3v3_sys>;
-+		vcc9-supply = <&vcc_sys>;
-+		vcc10-supply = <&vcc_sys>;
-+		vcc11-supply = <&vcc_sys>;
- 		vcc12-supply = <&vcc3v3_sys>;
- 		vddio-supply = <&vcc1v8_pmu>;
- 
-@@ -385,7 +385,7 @@
- 		regulator-ramp-delay = <1000>;
- 		regulator-always-on;
- 		regulator-boot-on;
--		vin-supply = <&vcc3v3_sys>;
-+		vin-supply = <&vcc_sys>;
- 
- 		regulator-state-mem {
- 			regulator-off-in-suspend;
-@@ -404,7 +404,7 @@
- 		regulator-ramp-delay = <1000>;
- 		regulator-always-on;
- 		regulator-boot-on;
--		vin-supply = <&vcc3v3_sys>;
-+		vin-supply = <&vcc_sys>;
- 
- 		regulator-state-mem {
- 			regulator-off-in-suspend;
+ 	if (pc->data->supports_polarity) {
+ 		if (!(val & PWM_DUTY_POSITIVE))
 -- 
-2.18.0.321.gffc6fa0e3
+2.20.1
