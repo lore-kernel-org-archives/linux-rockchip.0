@@ -1,15 +1,11 @@
-From: Vicente Bergas <vicencb@gmail.com>
-Subject: Re: [PATCH] usb: dwc3: Add shutdown to
- =?iso-8859-1?Q?platform=5Fdriver?=
-Date: Thu, 19 Sep 2019 13:36:17 +0200
-Message-ID: <e226af9a-3719-4641-9f8c-402e8de7b058@gmail.com>
-References: <4d18d4f7-a00e-bd60-6361-51054eba3bca@arm.com>
- <20190817174140.6394-1-vicencb@gmail.com>
+From: Cheng-Yi Chiang <cychiang@chromium.org>
+Subject: [PATCH v7 0/4] Add HDMI jack support on RK3288
+Date: Thu, 19 Sep 2019 21:54:46 +0800
+Message-ID: <20190919135450.62309-1-cychiang@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190817174140.6394-1-vicencb@gmail.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -19,39 +15,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Felipe Balbi <balbi@kernel.org>
-Cc: Matthias Brugger <mbrugger@suse.com>, Heiko Stuebner <heiko@sntech.de>, MarcZyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-usb@vger.kernel.org, Will Deacon <will.deacon@arm.com>, linux-rockchip@lists.infradead.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+To: linux-kernel@vger.kernel.org
+Cc: alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Liam Girdwood <lgirdwood@gmail.com>, Hans Verkuil <hverkuil@xs4all.nl>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jerome Brunet <jbrunet@baylibre.com>, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, dgreid@chromium.org, Cheng-Yi Chiang <cychiang@chromium.org>, tzungbi@chromium.org, Jonas Karlman <jonas@kwiboo.se>, Russell King <rmk+kernel@armlinux.org.uk>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, linux-arm-kernel@lists.infradead.org, Jernej Skrabec <jernej.skrabec@siol.net>, dianders@chromium.org, Daniel Vetter <daniel@ffwll.ch>
 List-Id: linux-rockchip.vger.kernel.org
 
-UGluZz8KCk9uIFNhdHVyZGF5LCBBdWd1c3QgMTcsIDIwMTkgNzo0MTo0MCBQTSBDRVNULCBWaWNl
-bnRlIEJlcmdhcyB3cm90ZToKPiBPdGhlcndpc2UgdGhlIGRldmljZSBrZWVwcyB3cml0aW5nIHRv
-IG1lbW9yeSBhZnRlciBrZXhlYyBhbmQgZGlzdHVyYnMKPiB0aGUgbmV4dCBrZXJuZWwuCj4KPiBT
-aWduZWQtb2ZmLWJ5OiBWaWNlbnRlIEJlcmdhcyA8dmljZW5jYkBnbWFpbC5jb20+Cj4gLS0tCj4g
-IGRyaXZlcnMvdXNiL2R3YzMvZHdjMy1vZi1zaW1wbGUuYyB8IDYgKysrKysrCj4gIDEgZmlsZSBj
-aGFuZ2VkLCA2IGluc2VydGlvbnMoKykKPgo+IEhpIEZlbGlwZSwgUm9iaW4sCj4gdGhpcyB2ZXJz
-aW9uIGNhbGxzICdyZW1vdmUnIGZyb20gJ3NodXRkb3duJyBpbnN0ZWFkIG9mIGp1c3QgYXNzZXJ0
-aW5nCj4gYSByZXNldCBiZWNhdXNlIGl0IGxvb2tzIGxpa2UgYSBjbGVhbmVyIHdheSB0byBzdG9w
-IHRoZSBkZXZpY2UuCj4KPiBDYWxsaW5nIHJlbW92ZSBmcm9tIHNodXRkb3duIGluIGNvcmUuYyBp
-bnN0ZWFkIG9mIGR3YzMtb2Ytc2ltcGxlLmMgZG9lcyBub3QKPiBmaXggdGhlIGlzc3VlIGVpdGhl
-ci4KPgo+IEl0IGhhcyBiZWVuIHRlc3RlZCBvbiB0aGUgc2FwcGhpcmUgYm9hcmQsIGEgUkszMzk5
-IHBsYXRmb3JtLgo+Cj4gUmVnYXJkcywKPiAgIFZpY2Vuw6cuCj4KPiBkaWZmIC0tZ2l0IGEvZHJp
-dmVycy91c2IvZHdjMy9kd2MzLW9mLXNpbXBsZS5jIAo+IGIvZHJpdmVycy91c2IvZHdjMy9kd2Mz
-LW9mLXNpbXBsZS5jCj4gaW5kZXggYmRhYzNlN2Q3YjE4Li5kNWZkNDVjNjQ5MDEgMTAwNjQ0Cj4g
-LS0tIGEvZHJpdmVycy91c2IvZHdjMy9kd2MzLW9mLXNpbXBsZS5jCj4gKysrIGIvZHJpdmVycy91
-c2IvZHdjMy9kd2MzLW9mLXNpbXBsZS5jCj4gQEAgLTEzMyw2ICsxMzMsMTEgQEAgc3RhdGljIGlu
-dCBkd2MzX29mX3NpbXBsZV9yZW1vdmUoc3RydWN0IAo+IHBsYXRmb3JtX2RldmljZSAqcGRldikK
-PiAgCXJldHVybiAwOwo+ICB9Cj4gIAo+ICtzdGF0aWMgdm9pZCBkd2MzX29mX3NpbXBsZV9zaHV0
-ZG93bihzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICt7Cj4gKwlkd2MzX29mX3NpbXBs
-ZV9yZW1vdmUocGRldik7Cj4gK30KPiArCj4gIHN0YXRpYyBpbnQgX19tYXliZV91bnVzZWQgCj4g
-ZHdjM19vZl9zaW1wbGVfcnVudGltZV9zdXNwZW5kKHN0cnVjdCBkZXZpY2UgKmRldikKPiAgewo+
-ICAJc3RydWN0IGR3YzNfb2Zfc2ltcGxlCSpzaW1wbGUgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsK
-PiBAQCAtMTkwLDYgKzE5NSw3IEBAIE1PRFVMRV9ERVZJQ0VfVEFCTEUob2YsIG9mX2R3YzNfc2lt
-cGxlX21hdGNoKTsKPiAgc3RhdGljIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgZHdjM19vZl9zaW1w
-bGVfZHJpdmVyID0gewo+ICAJLnByb2JlCQk9IGR3YzNfb2Zfc2ltcGxlX3Byb2JlLAo+ICAJLnJl
-bW92ZQkJPSBkd2MzX29mX3NpbXBsZV9yZW1vdmUsCj4gKwkuc2h1dGRvd24JPSBkd2MzX29mX3Np
-bXBsZV9zaHV0ZG93biwKPiAgCS5kcml2ZXIJCT0gewo+ICAJCS5uYW1lCT0gImR3YzMtb2Ytc2lt
-cGxlIiwKPiAgCQkub2ZfbWF0Y2hfdGFibGUgPSBvZl9kd2MzX3NpbXBsZV9tYXRjaCwKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2Vy
-bmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVs
-Cg==
+This patch series supports HDMI jack reporting on RK3288, which uses
+DRM dw-hdmi driver and hdmi-codec codec driver.
+
+The previous discussion about reporting jack status using hdmi-notifier
+and drm_audio_component is at
+
+https://lore.kernel.org/patchwork/patch/1083027/
+
+The new approach is to use a callback mechanism that is
+specific to hdmi-codec.
+
+The dependent change on hdmi-codec.c
+
+https://patchwork.kernel.org/patch/11047447
+
+has been picked up by Mark Brown in ASoC tree for-5.4 branch.
+
+Changes from v6 to v7:
+
+1. rockchip_max98090: Use phandle of HDMI from DTS to find
+   codec_dai. With this we don't need to set fixed id for the
+   created hdmi-audio-codec device.
+
+Cheng-Yi Chiang (4):
+  drm: bridge: dw-hdmi: Report connector status using callback
+  ASoC: rockchip-max98090: Add description for rockchip,hdmi-codec
+  ASoC: rockchip_max98090: Add dai_link for HDMI
+  ASoC: rockchip_max98090: Add HDMI jack support
+
+ .../bindings/sound/rockchip-max98090.txt      |   2 +
+ .../boot/dts/rk3288-veyron-analog-audio.dtsi  |   1 +
+ .../drm/bridge/synopsys/dw-hdmi-i2s-audio.c   |  11 ++
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c     |  41 ++++-
+ include/drm/bridge/dw_hdmi.h                  |   4 +
+ sound/soc/rockchip/Kconfig                    |   3 +-
+ sound/soc/rockchip/rockchip_max98090.c        | 149 ++++++++++++++----
+ 7 files changed, 182 insertions(+), 29 deletions(-)
+
+-- 
+2.23.0.237.gc6a4ce50a0-goog
