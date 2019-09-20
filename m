@@ -1,326 +1,197 @@
-From: Cheng-yi Chiang <cychiang@chromium.org>
-Subject: Re: [PATCH v7 3/4] ASoC: rockchip_max98090: Add dai_link for HDMI
-Date: Fri, 20 Sep 2019 21:16:54 +0800
-Message-ID: <CAFv8Nw+DxXJQMs+iv7OWoM_ZLz3hZyrwrZLW0AbLVnfHdUvP=Q@mail.gmail.com>
-References: <20190919135450.62309-1-cychiang@chromium.org> <20190919135450.62309-4-cychiang@chromium.org>
- <1660944.WuPFEyXK2U@jernej-laptop>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v2 8/8] dt-bindings: pwm: Convert Samsung PWM bindings to json-schema
+Date: Fri, 20 Sep 2019 10:50:50 -0500
+Message-ID: <CAL_Jsq+0ikCageBv3TSwx0tp=ZDkrFwpFVt2gJHWsFe2f-K2pA@mail.gmail.com>
+References: <20190918173141.4314-1-krzk@kernel.org> <20190918173141.4314-8-krzk@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1660944.WuPFEyXK2U@jernej-laptop>
+In-Reply-To: <20190918173141.4314-8-krzk@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Jernej_=C5=A0krabec?= <jernej.skrabec@siol.net>
-Cc: linux-kernel <linux-kernel@vger.kernel.org>, Neil Armstrong <narmstrong@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Jonas Karlman <jonas@kwiboo.se>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Dylan Reid <dgreid@chromium.org>, tzungbi@chromium.org, "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..." <alsa-devel@alsa-project.o>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Thierry Reding <thierry.reding@gmail.com>, Matt Mackall <mpm@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>, Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, linux-clk <linux-clk@vger.kernel.org>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Linux LED Subsystem <linux-leds@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Linux PWM List <linux-pwm@vger.kernel.org>, linux-tegra@vger.kernel.org, "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE" <bcm-kernel-feedback-list@b>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Sep 19, 2019 at 11:08 PM Jernej =C5=A0krabec <jernej.skrabec@siol.n=
-et> wrote:
+On Wed, Sep 18, 2019 at 12:32 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
 >
-> Hi!
+> Convert Samsung PWM (S3C, S5P and Exynos SoCs) bindings to DT schema
+> format using json-schema.
 >
-> Dne =C4=8Detrtek, 19. september 2019 ob 15:54:49 CEST je Cheng-Yi Chiang
-> napisal(a):
-> > Use two dai_links. One for HDMI and one for max98090.
-> > With this setup, audio can play to speaker and HDMI selectively.
-> >
-> > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
-> > ---
-> >  .../boot/dts/rk3288-veyron-analog-audio.dtsi  |   1 +
-> >  sound/soc/rockchip/rockchip_max98090.c        | 129 ++++++++++++++----
-> >  2 files changed, 103 insertions(+), 27 deletions(-)
-> >
-> > diff --git a/arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi
-> > b/arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi index
-> > 445270aa136e..51208d161d65 100644
-> > --- a/arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi
-> > +++ b/arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi
-> > @@ -17,6 +17,7 @@
-> >               rockchip,hp-det-gpios =3D <&gpio6 RK_PA5
-> GPIO_ACTIVE_HIGH>;
-> >               rockchip,mic-det-gpios =3D <&gpio6 RK_PB3
-> GPIO_ACTIVE_LOW>;
-> >               rockchip,headset-codec =3D <&headsetcodec>;
-> > +             rockchip,hdmi-codec =3D <&hdmi>;
-> >       };
-> >  };
-> >
-> > diff --git a/sound/soc/rockchip/rockchip_max98090.c
-> > b/sound/soc/rockchip/rockchip_max98090.c index c5fc24675a33..6c217492bb=
-30
-> > 100644
-> > --- a/sound/soc/rockchip/rockchip_max98090.c
-> > +++ b/sound/soc/rockchip/rockchip_max98090.c
-> > @@ -11,6 +11,7 @@
-> >  #include <linux/gpio.h>
-> >  #include <linux/of_gpio.h>
-> >  #include <sound/core.h>
-> > +#include <sound/hdmi-codec.h>
-> >  #include <sound/jack.h>
-> >  #include <sound/pcm.h>
-> >  #include <sound/pcm_params.h>
-> > @@ -41,6 +42,7 @@ static const struct snd_soc_dapm_widget rk_dapm_widge=
-ts[]
-> > =3D { SND_SOC_DAPM_MIC("Headset Mic", NULL),
-> >       SND_SOC_DAPM_MIC("Int Mic", NULL),
-> >       SND_SOC_DAPM_SPK("Speaker", NULL),
-> > +     SND_SOC_DAPM_LINE("HDMI", NULL),
-> >  };
-> >
-> >  static const struct snd_soc_dapm_route rk_audio_map[] =3D {
-> > @@ -52,6 +54,7 @@ static const struct snd_soc_dapm_route rk_audio_map[]=
- =3D {
-> >       {"Headphone", NULL, "HPR"},
-> >       {"Speaker", NULL, "SPKL"},
-> >       {"Speaker", NULL, "SPKR"},
-> > +     {"HDMI", NULL, "TX"},
-> >  };
-> >
-> >  static const struct snd_kcontrol_new rk_mc_controls[] =3D {
-> > @@ -59,6 +62,7 @@ static const struct snd_kcontrol_new rk_mc_controls[]=
- =3D {
-> >       SOC_DAPM_PIN_SWITCH("Headset Mic"),
-> >       SOC_DAPM_PIN_SWITCH("Int Mic"),
-> >       SOC_DAPM_PIN_SWITCH("Speaker"),
-> > +     SOC_DAPM_PIN_SWITCH("HDMI"),
-> >  };
-> >
-> >  static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
-> > @@ -92,38 +96,63 @@ static int rk_aif1_hw_params(struct snd_pcm_substre=
-am
-> > *substream,
-> >
-> >       ret =3D snd_soc_dai_set_sysclk(cpu_dai, 0, mclk,
-> >                                    SND_SOC_CLOCK_OUT);
-> > -     if (ret < 0) {
-> > -             dev_err(codec_dai->dev, "Can't set codec clock %d\n",
-> ret);
-> > +     if (ret) {
-> > +             dev_err(cpu_dai->dev, "Can't set cpu dai clock %d\n",
-> ret);
-> >               return ret;
-> >       }
-> >
-> > +     /* HDMI codec dai does not need to set sysclk. */
-> > +     if (!strcmp(rtd->dai_link->name, "HDMI"))
-> > +             return 0;
-> > +
-> >       ret =3D snd_soc_dai_set_sysclk(codec_dai, 0, mclk,
-> >                                    SND_SOC_CLOCK_IN);
-> > -     if (ret < 0) {
-> > -             dev_err(codec_dai->dev, "Can't set codec clock %d\n",
-> ret);
-> > +     if (ret) {
-> > +             dev_err(codec_dai->dev, "Can't set codec dai clock
-> %d\n", ret);
-> >               return ret;
-> >       }
-> >
-> > -     return ret;
-> > +     return 0;
-> >  }
-> >
-> >  static const struct snd_soc_ops rk_aif1_ops =3D {
-> >       .hw_params =3D rk_aif1_hw_params,
-> >  };
-> >
-> > -SND_SOC_DAILINK_DEFS(hifi,
-> > -     DAILINK_COMP_ARRAY(COMP_EMPTY()),
-> > -     DAILINK_COMP_ARRAY(COMP_CODEC(NULL, "HiFi")),
-> > -     DAILINK_COMP_ARRAY(COMP_EMPTY()));
-> > -
-> > -static struct snd_soc_dai_link rk_dailink =3D {
-> > -     .name =3D "max98090",
-> > -     .stream_name =3D "Audio",
-> > -     .ops =3D &rk_aif1_ops,
-> > -     /* set max98090 as slave */
-> > -     .dai_fmt =3D SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
-> > -             SND_SOC_DAIFMT_CBS_CFS,
-> > -     SND_SOC_DAILINK_REG(hifi),
-> > +SND_SOC_DAILINK_DEFS(analog,
-> > +                  DAILINK_COMP_ARRAY(COMP_EMPTY()),
-> > +                  DAILINK_COMP_ARRAY(COMP_CODEC(NULL, "HiFi")),
-> > +                  DAILINK_COMP_ARRAY(COMP_EMPTY()));
-> > +
-> > +SND_SOC_DAILINK_DEFS(hdmi,
-> > +                  DAILINK_COMP_ARRAY(COMP_EMPTY()),
-> > +                  DAILINK_COMP_ARRAY(COMP_CODEC(NULL, "i2s-hifi")),
-> > +                  DAILINK_COMP_ARRAY(COMP_EMPTY()));
-> > +
-> > +enum {
-> > +     DAILINK_MAX98090,
-> > +     DAILINK_HDMI,
-> > +};
-> > +
-> > +/* max98090 and HDMI codec dai_link */
-> > +static struct snd_soc_dai_link rk_dailinks[] =3D {
-> > +     [DAILINK_MAX98090] =3D {
-> > +             .name =3D "max98090",
-> > +             .stream_name =3D "Analog",
-> > +             .ops =3D &rk_aif1_ops,
-> > +             /* set max98090 as slave */
-> > +             .dai_fmt =3D SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
-> > +                     SND_SOC_DAIFMT_CBS_CFS,
-> > +             SND_SOC_DAILINK_REG(analog),
-> > +     },
-> > +     [DAILINK_HDMI] =3D {
-> > +             .name =3D "HDMI",
-> > +             .stream_name =3D "HDMI",
-> > +             .ops =3D &rk_aif1_ops,
-> > +             .dai_fmt =3D SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
-> > +                     SND_SOC_DAIFMT_CBS_CFS,
-> > +             SND_SOC_DAILINK_REG(hdmi),
-> > +     }
-> >  };
-> >
-> >  static int rk_98090_headset_init(struct snd_soc_component *component);
-> > @@ -136,8 +165,8 @@ static struct snd_soc_aux_dev rk_98090_headset_dev =
-=3D {
-> >  static struct snd_soc_card snd_soc_card_rk =3D {
-> >       .name =3D "ROCKCHIP-I2S",
-> >       .owner =3D THIS_MODULE,
-> > -     .dai_link =3D &rk_dailink,
-> > -     .num_links =3D 1,
-> > +     .dai_link =3D rk_dailinks,
-> > +     .num_links =3D ARRAY_SIZE(rk_dailinks),
-> >       .aux_dev =3D &rk_98090_headset_dev,
-> >       .num_aux_devs =3D 1,
-> >       .dapm_widgets =3D rk_dapm_widgets,
-> > @@ -173,27 +202,73 @@ static int snd_rk_mc_probe(struct platform_device
-> > *pdev) int ret =3D 0;
-> >       struct snd_soc_card *card =3D &snd_soc_card_rk;
-> >       struct device_node *np =3D pdev->dev.of_node;
-> > +     struct device_node *np_analog;
-> > +     struct device_node *np_cpu;
-> > +     struct device_node *np_hdmi_codec;
-> > +     struct of_phandle_args args;
-> >
-> >       /* register the soc card */
-> >       card->dev =3D &pdev->dev;
-> >
-> > -     rk_dailink.codecs->of_node =3D of_parse_phandle(np,
-> > -                     "rockchip,audio-codec", 0);
-> > -     if (!rk_dailink.codecs->of_node) {
-> > +     np_analog =3D of_parse_phandle(np, "rockchip,audio-codec", 0);
-> > +     if (!np_analog) {
-> >               dev_err(&pdev->dev,
-> >                       "Property 'rockchip,audio-codec' missing or
-> invalid\n");
-> >               return -EINVAL;
-> >       }
-> > +     rk_dailinks[DAILINK_MAX98090].codecs->of_node =3D np_analog;
-> > +
-> > +     ret =3D of_parse_phandle_with_fixed_args(np, "rockchip,audio-code=
-c",
-> > +                                            0, 0, &args);
-> > +     if (ret) {
-> > +             dev_err(&pdev->dev,
-> > +                     "Unable to parse property 'rockchip,audio-
-> codec'\n");
-> > +             return ret;
-> > +     }
-> > +
-> > +     ret =3D snd_soc_get_dai_name(
-> > +                     &args, &rk_dailinks[DAILINK_MAX98090].codecs-
-> >dai_name);
-> > +     if (ret) {
-> > +             dev_err(&pdev->dev, "Unable to get codec dai_name\n");
-> > +             return ret;
-> > +     }
-> > +
-> > +     np_cpu =3D of_parse_phandle(np, "rockchip,i2s-controller", 0);
-> >
-> > -     rk_dailink.cpus->of_node =3D of_parse_phandle(np,
-> > -                     "rockchip,i2s-controller", 0);
-> > -     if (!rk_dailink.cpus->of_node) {
-> > +     if (!np_cpu) {
-> >               dev_err(&pdev->dev,
-> >                       "Property 'rockchip,i2s-controller' missing
-> or invalid\n");
-> >               return -EINVAL;
-> >       }
-> >
-> > -     rk_dailink.platforms->of_node =3D rk_dailink.cpus->of_node;
-> > +     np_hdmi_codec =3D of_parse_phandle(np, "rockchip,hdmi-codec", 0);
-> > +     if (!np_hdmi_codec) {
-> > +             dev_err(&pdev->dev,
-> > +                     "Property 'rockchip,hdmi-codec' missing or
-> invalid\n");
-> > +             return -EINVAL;
-> > +     }
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 >
-> Property "rockchip,hdmi-codec" is added in this series, right? You can't =
-make
-> it mandatory, because kernel must be backward compatible with old device =
-tree
-> files and they don't have this property.
+> ---
 >
-> Think about use case when user happily used this driver and after kernel
-> update, it suddenly stops working. You can't assume that board DTB file w=
-ill be
-> updated along with kernel update.
+> Changes since v1:
+> 1. Indent example with four spaces (more readable),
+> 2. Fix samsung,pwm-outputs after review,
+> 3. Remove double-quotes from clock names.
+> ---
+>  .../devicetree/bindings/pwm/pwm-samsung.txt   |  51 ---------
+>  .../devicetree/bindings/pwm/pwm-samsung.yaml  | 107 ++++++++++++++++++
+>  2 files changed, 107 insertions(+), 51 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/pwm/pwm-samsung.txt
+>  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-samsung.yaml
 >
-> Just make it optional and don't expose jack functionality if it's not pre=
-sent.
-Hi Jernej,
-Thanks for the reply.
-I see. Yes I can make it optional.
-But it will become a little bit messy for two types of usage to share
-one machine driver.
+> diff --git a/Documentation/devicetree/bindings/pwm/pwm-samsung.txt b/Documentation/devicetree/bindings/pwm/pwm-samsung.txt
+> deleted file mode 100644
+> index 5538de9c2007..000000000000
+> --- a/Documentation/devicetree/bindings/pwm/pwm-samsung.txt
+> +++ /dev/null
+> @@ -1,51 +0,0 @@
+> -* Samsung PWM timers
+> -
+> -Samsung SoCs contain PWM timer blocks which can be used for system clock source
+> -and clock event timers, as well as to drive SoC outputs with PWM signal. Each
+> -PWM timer block provides 5 PWM channels (not all of them can drive physical
+> -outputs - see SoC and board manual).
+> -
+> -Be aware that the clocksource driver supports only uniprocessor systems.
+> -
+> -Required properties:
+> -- compatible : should be one of following:
+> -    samsung,s3c2410-pwm - for 16-bit timers present on S3C24xx SoCs
+> -    samsung,s3c6400-pwm - for 32-bit timers present on S3C64xx SoCs
+> -    samsung,s5p6440-pwm - for 32-bit timers present on S5P64x0 SoCs
+> -    samsung,s5pc100-pwm - for 32-bit timers present on S5PC100, S5PV210,
+> -                         Exynos4210 rev0 SoCs
+> -    samsung,exynos4210-pwm - for 32-bit timers present on Exynos4210,
+> -                          Exynos4x12, Exynos5250 and Exynos5420 SoCs
+> -- reg: base address and size of register area
+> -- interrupts: list of timer interrupts (one interrupt per timer, starting at
+> -  timer 0)
+> -- clock-names: should contain all following required clock names:
+> -    - "timers" - PWM base clock used to generate PWM signals,
+> -  and any subset of following optional clock names:
+> -    - "pwm-tclk0" - first external PWM clock source,
+> -    - "pwm-tclk1" - second external PWM clock source.
+> -  Note that not all IP variants allow using all external clock sources.
+> -  Refer to SoC documentation to learn which clock source configurations
+> -  are available.
+> -- clocks: should contain clock specifiers of all clocks, which input names
+> -  have been specified in clock-names property, in same order.
+> -- #pwm-cells: should be 3. See pwm.txt in this directory for a description of
+> -  the cells format. The only third cell flag supported by this binding is
+> -  PWM_POLARITY_INVERTED.
+> -
+> -Optional properties:
+> -- samsung,pwm-outputs: list of PWM channels used as PWM outputs on particular
+> -    platform - an array of up to 5 elements being indices of PWM channels
+> -    (from 0 to 4), the order does not matter.
+> -
+> -Example:
+> -       pwm@7f006000 {
+> -               compatible = "samsung,s3c6400-pwm";
+> -               reg = <0x7f006000 0x1000>;
+> -               interrupt-parent = <&vic0>;
+> -               interrupts = <23>, <24>, <25>, <27>, <28>;
+> -               clocks = <&clock 67>;
+> -               clock-names = "timers";
+> -               samsung,pwm-outputs = <0>, <1>;
+> -               #pwm-cells = <3>;
+> -       }
+> diff --git a/Documentation/devicetree/bindings/pwm/pwm-samsung.yaml b/Documentation/devicetree/bindings/pwm/pwm-samsung.yaml
+> new file mode 100644
+> index 000000000000..06d11faabff6
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pwm/pwm-samsung.yaml
+> @@ -0,0 +1,107 @@
+> +# SPDX-License-Identifier: GPL-2.0
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pwm/pwm-samsung.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Samsung SoC PWM timers
+> +
+> +maintainers:
+> +  - Thierry Reding <thierry.reding@gmail.com>
+> +  - Krzysztof Kozlowski <krzk@kernel.org>
+> +
+> +description: |+
+> +  Samsung SoCs contain PWM timer blocks which can be used for system clock source
+> +  and clock event timers, as well as to drive SoC outputs with PWM signal. Each
+> +  PWM timer block provides 5 PWM channels (not all of them can drive physical
+> +  outputs - see SoC and board manual).
+> +
+> +  Be aware that the clocksource driver supports only uniprocessor systems.
+> +
+> +allOf:
+> +  - $ref: pwm.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - samsung,s3c2410-pwm             # 16-bit, S3C24xx
+> +      - samsung,s3c6400-pwm             # 32-bit, S3C64xx
+> +      - samsung,s5p6440-pwm             # 32-bit, S5P64x0
+> +      - samsung,s5pc100-pwm             # 32-bit, S5PC100, S5PV210, Exynos4210 rev0 SoCs
+> +      - samsung,exynos4210-pwm          # 32-bit, Exynos
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    minItems: 1
+> +    maxItems: 3
+> +
+> +  clock-names:
+> +    description: |
+> +      Should contain all following required clock names:
+> +      - "timers" - PWM base clock used to generate PWM signals,
+> +      and any subset of following optional clock names:
+> +      - "pwm-tclk0" - first external PWM clock source,
+> +      - "pwm-tclk1" - second external PWM clock source.
+> +      Note that not all IP variants allow using all external clock sources.
+> +      Refer to SoC documentation to learn which clock source configurations
+> +      are available.
+> +    oneOf:
+> +      - items:
+> +        - const: timers
+> +      - items:
+> +        - const: timers
+> +        - const: pwm-tclk0
+> +      - items:
+> +        - const: timers
+> +        - const: pwm-tclk1
+> +      - items:
+> +        - const: timers
+> +        - const: pwm-tclk0
+> +        - const: pwm-tclk1
+> +
+> +  interrupts:
+> +    description:
+> +      One interrupt per timer, starting at timer 0.
+> +    minItems: 1
+> +    maxItems: 5
+> +
+> +  "#pwm-cells":
+> +    description:
+> +      The only third cell flag supported by this binding
+> +      is PWM_POLARITY_INVERTED.
+> +    const: 3
+> +
+> +  samsung,pwm-outputs:
+> +    description:
+> +      A list of PWM channels used as PWM outputs on particular platform.
+> +      It is an array of up to 5 elements being indices of PWM channels
+> +      (from 0 to 4), the order does not matter.
+> +    allOf:
+> +      - $ref: /schemas/types.yaml#/definitions/uint32-array
+> +      - uniqueItems: true
+> +      - items:
+> +          minimum: 0
+> +          maximum: 4
+> +
+> +required:
+> +  - clocks
+> +  - clock-names
+> +  - compatible
+> +  - interrupts
+> +  - "#pwm-cells"
+> +  - reg
 
-I think I will create two instances of structs for
+additionalProperties: false
 
-dapm widgets,
-dapm routes,
-kcontrols,
-dai_links
+should work here. And in the rng binding too.
 
-for "max98090 only" and "max98090+hdmi"
-
-and set those fields in snd_soc_card depending on depending on the property=
-.
-These two usages can still share most of the function calls.
-Hope this looks clean.
-
-If you have a cleaner way of sharing machine driver please let me know.
-I'll post an update probably next week.
-Thanks a lot!
-
-
->
-> Best regards,
-> Jernej
->
-> > +
-> > +     rk_dailinks[DAILINK_HDMI].codecs->of_node =3D np_hdmi_codec;
-> > +
-> > +     ret =3D of_parse_phandle_with_fixed_args(np, "rockchip,hdmi-codec=
-",
-> > +                                            0, 0, &args);
-> > +     if (ret) {
-> > +             dev_err(&pdev->dev,
-> > +                     "Unable to parse property 'rockchip,hdmi-
-> codec'\n");
-> > +             return ret;
-> > +     }
-> > +
-> > +     ret =3D snd_soc_get_dai_name(
-> > +                     &args, &rk_dailinks[DAILINK_HDMI].codecs-
-> >dai_name);
-> > +     if (ret) {
-> > +             dev_err(&pdev->dev, "Unable to get hdmi codec
-> dai_name\n");
-> > +             return ret;
-> > +     }
-> > +
-> > +     rk_dailinks[DAILINK_MAX98090].cpus->of_node =3D np_cpu;
-> > +     rk_dailinks[DAILINK_MAX98090].platforms->of_node =3D np_cpu;
-> > +     rk_dailinks[DAILINK_HDMI].cpus->of_node =3D np_cpu;
-> > +     rk_dailinks[DAILINK_HDMI].platforms->of_node =3D np_cpu;
-> >
-> >       rk_98090_headset_dev.codec_of_node =3D of_parse_phandle(np,
-> >                       "rockchip,headset-codec", 0);
->
->
->
->
+Rob
