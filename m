@@ -1,745 +1,495 @@
-From: Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: [PATCH trivial 3/3] treewide: arch: Fix Kconfig indentation
-Date: Mon, 23 Sep 2019 18:00:13 +0200
-Message-ID: <20190923160013.8550-3-krzk__30796.6322334082$1569254546$gmane$org@kernel.org>
-References: <20190923160013.8550-1-krzk@kernel.org>
+From: Jerome Brunet <jbrunet@baylibre.com>
+Subject: [PATCH 2/3] clk: let init callback return an error code
+Date: Tue, 24 Sep 2019 14:39:53 +0200
+Message-ID: <20190924123954.31561-3-jbrunet@baylibre.com>
+References: <20190924123954.31561-1-jbrunet@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190923160013.8550-1-krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jiri Kosina <trivial-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-alpha-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, uclinux-h8-devel-5NWGOfrQmneRv+LV9MX5uooqe+aC9MnS@public.gmane.org, linux-m68k-cunTk1MwBs8S/qaLPR03pWD2FQJk+8+b@public.gmane.org, openrisc-cunTk1MwBs9a3B2Vnqf2dGD2FQJk+8+b@public.gmane.org, linuxppc-dev-uLR06cmDAlY/bJ5BZ2RsiQ@public.gmane.org, linux-riscv-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-um-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keyrings-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-acpi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-ide-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-block-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, openipmi-developer-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-edac-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-efi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-hwmon-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-iio-u79uwXL29TZUIDd8j+nm9g@public.gmane.org
-Cc: Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190924123954.31561-1-jbrunet@baylibre.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>
+Cc: Jerome Brunet <jbrunet@baylibre.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Tero Kristo <t-kristo@ti.com>, Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, "David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-omap@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Adjust indentation from spaces to tab (+optional two spaces) as in
-coding style with command like:
-    $ sed -e 's/^        /\t/' -i */Kconfig
+If the init callback is allowed to request resources, it needs a return
+value to report the outcome of such a request.
 
-Signed-off-by: Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Signed-off-by: Jerome Brunet <jbrunet@baylibre.com>
 ---
- arch/Kconfig                           |  4 ++--
- arch/alpha/Kconfig                     |  2 +-
- arch/arm/Kconfig.debug                 |  4 ++--
- arch/arm/mach-ep93xx/Kconfig           |  8 ++++----
- arch/arm/mach-hisi/Kconfig             |  2 +-
- arch/arm/mach-ixp4xx/Kconfig           | 16 ++++++++--------
- arch/arm/mach-mmp/Kconfig              |  2 +-
- arch/arm/mach-omap1/Kconfig            | 14 +++++++-------
- arch/arm/mach-prima2/Kconfig           |  6 +++---
- arch/arm/mach-s3c24xx/Kconfig          |  4 ++--
- arch/arm/mach-s3c64xx/Kconfig          |  6 +++---
- arch/arm/plat-samsung/Kconfig          |  2 +-
- arch/arm64/Kconfig                     |  6 +++---
- arch/arm64/Kconfig.debug               |  2 +-
- arch/h8300/Kconfig                     |  4 ++--
- arch/h8300/Kconfig.cpu                 |  4 ++--
- arch/m68k/Kconfig.bus                  |  2 +-
- arch/m68k/Kconfig.debug                | 16 ++++++++--------
- arch/m68k/Kconfig.machine              |  8 ++++----
- arch/nds32/Kconfig.cpu                 | 18 +++++++++---------
- arch/openrisc/Kconfig                  | 26 +++++++++++++-------------
- arch/powerpc/Kconfig.debug             | 18 +++++++++---------
- arch/powerpc/platforms/Kconfig.cputype |  2 +-
- arch/riscv/Kconfig.socs                |  2 +-
- arch/sh/boards/Kconfig                 |  2 +-
- arch/sh/mm/Kconfig                     |  2 +-
- arch/um/Kconfig                        |  2 +-
- arch/x86/Kconfig                       | 18 +++++++++---------
- 28 files changed, 101 insertions(+), 101 deletions(-)
 
-diff --git a/arch/Kconfig b/arch/Kconfig
-index 5f8a5d84dbbe..8d4f77bbed29 100644
---- a/arch/Kconfig
-+++ b/arch/Kconfig
-@@ -76,7 +76,7 @@ config JUMP_LABEL
-        depends on HAVE_ARCH_JUMP_LABEL
-        depends on CC_HAS_ASM_GOTO
-        help
--         This option enables a transparent branch optimization that
-+	 This option enables a transparent branch optimization that
- 	 makes certain almost-always-true or almost-always-false branch
- 	 conditions even cheaper to execute within the kernel.
- 
-@@ -84,7 +84,7 @@ config JUMP_LABEL
- 	 scheduler functionality, networking code and KVM have such
- 	 branches and include support for this optimization technique.
- 
--         If it is detected that the compiler has support for "asm goto",
-+	 If it is detected that the compiler has support for "asm goto",
- 	 the kernel will compile such branches with just a nop
- 	 instruction. When the condition flag is toggled to true, the
- 	 nop will be converted to a jump instruction to execute the
-diff --git a/arch/alpha/Kconfig b/arch/alpha/Kconfig
-index ef179033a7c2..30a6291355cb 100644
---- a/arch/alpha/Kconfig
-+++ b/arch/alpha/Kconfig
-@@ -545,7 +545,7 @@ config NR_CPUS
- 	default "4" if !ALPHA_GENERIC && !ALPHA_MARVEL
- 	help
- 	  MARVEL support can handle a maximum of 32 CPUs, all the others
--          with working support have a maximum of 4 CPUs.
-+	  with working support have a maximum of 4 CPUs.
- 
- config ARCH_DISCONTIGMEM_ENABLE
- 	bool "Discontiguous Memory Support"
-diff --git a/arch/arm/Kconfig.debug b/arch/arm/Kconfig.debug
-index 8bcbd0cd739b..0e5d52fbddbd 100644
---- a/arch/arm/Kconfig.debug
-+++ b/arch/arm/Kconfig.debug
-@@ -274,7 +274,7 @@ choice
- 		select DEBUG_UART_8250
- 		help
- 		  Say Y here if you want the debug print routines to direct
--                  their output to the CNS3xxx UART0.
-+	          their output to the CNS3xxx UART0.
- 
- 	config DEBUG_DAVINCI_DA8XX_UART1
- 		bool "Kernel low-level debugging on DaVinci DA8XX using UART1"
-@@ -828,7 +828,7 @@ choice
- 		select DEBUG_UART_8250
- 		help
- 		  Say Y here if you want kernel low-level debugging support
--                  on Rockchip RV1108 based platforms.
-+	          on Rockchip RV1108 based platforms.
- 
- 	config DEBUG_RV1108_UART1
- 		bool "Kernel low-level debugging messages via Rockchip RV1108 UART1"
-diff --git a/arch/arm/mach-ep93xx/Kconfig b/arch/arm/mach-ep93xx/Kconfig
-index f2db5fd38145..bf81dfab7f1b 100644
---- a/arch/arm/mach-ep93xx/Kconfig
-+++ b/arch/arm/mach-ep93xx/Kconfig
-@@ -126,10 +126,10 @@ config MACH_MICRO9S
- 	  Contec Micro9-Slim board.
- 
- config MACH_SIM_ONE
--        bool "Support Simplemachines Sim.One board"
--        help
--          Say 'Y' here if you want your kernel to support the
--          Simplemachines Sim.One board.
-+	bool "Support Simplemachines Sim.One board"
-+	help
-+	  Say 'Y' here if you want your kernel to support the
-+	  Simplemachines Sim.One board.
- 
- config MACH_SNAPPER_CL15
- 	bool "Support Bluewater Systems Snapper CL15 Module"
-diff --git a/arch/arm/mach-hisi/Kconfig b/arch/arm/mach-hisi/Kconfig
-index 98338a489921..4697a756f676 100644
---- a/arch/arm/mach-hisi/Kconfig
-+++ b/arch/arm/mach-hisi/Kconfig
-@@ -31,7 +31,7 @@ config ARCH_HIP01
-        select HAVE_ARM_TWD if SMP
-        select ARM_GLOBAL_TIMER
-        help
--         Support for Hisilicon HIP01 SoC family
-+	 Support for Hisilicon HIP01 SoC family
- 
- config ARCH_HIP04
- 	bool "Hisilicon HiP04 Cortex A15 family"
-diff --git a/arch/arm/mach-ixp4xx/Kconfig b/arch/arm/mach-ixp4xx/Kconfig
-index f7211b57b1e7..484e8eb16baa 100644
---- a/arch/arm/mach-ixp4xx/Kconfig
-+++ b/arch/arm/mach-ixp4xx/Kconfig
-@@ -214,14 +214,14 @@ config IXP4XX_INDIRECT_PCI
- 	bool "Use indirect PCI memory access"
- 	depends on PCI
- 	help
--          IXP4xx provides two methods of accessing PCI memory space:
+ Sorry about the spam.
+ This patch change quite a few files so I have tried to Cc the
+ relevant people. Stephen, You may notice that I have added a
+ couple of the network people. You need an Ack from one of them
+ since the Amlogic G12a mdio mux has a clock which uses the .init()
+ callback
+
+ drivers/clk/clk.c                     | 17 ++++++++++------
+ drivers/clk/meson/clk-mpll.c          |  4 +++-
+ drivers/clk/meson/clk-phase.c         |  4 +++-
+ drivers/clk/meson/clk-pll.c           |  4 +++-
+ drivers/clk/meson/sclk-div.c          |  4 +++-
+ drivers/clk/microchip/clk-core.c      |  8 ++++++--
+ drivers/clk/mmp/clk-frac.c            |  4 +++-
+ drivers/clk/mmp/clk-mix.c             |  4 +++-
+ drivers/clk/qcom/clk-hfpll.c          |  6 ++++--
+ drivers/clk/rockchip/clk-pll.c        | 28 ++++++++++++++++-----------
+ drivers/clk/ti/clock.h                |  2 +-
+ drivers/clk/ti/clockdomain.c          |  8 +++++---
+ drivers/net/phy/mdio-mux-meson-g12a.c |  4 +++-
+ include/linux/clk-provider.h          | 10 +++++++---
+ 14 files changed, 72 insertions(+), 35 deletions(-)
+
+diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
+index 232144cca6cf..df853a98fad2 100644
+--- a/drivers/clk/clk.c
++++ b/drivers/clk/clk.c
+@@ -3298,16 +3298,21 @@ static int __clk_core_init(struct clk_core *core)
+ 	 * optional platform-specific magic
+ 	 *
+ 	 * The .init callback is not used by any of the basic clock types, but
+-	 * exists for weird hardware that must perform initialization magic.
+-	 * Please consider other ways of solving initialization problems before
+-	 * using this callback, as its use is discouraged.
++	 * exists for weird hardware that must perform initialization magic for
++	 * CCF to get an accurate view of clock for any other callbacks. It may
++	 * also be used needs to perform dynamic allocations. Such allocation
++	 * must be freed in the terminate() callback.
++	 * This callback shall not be used to initialize the parameters state,
++	 * such as rate, parent, etc ...
+ 	 *
+ 	 * If it exist, this callback should called before any other callback of
+ 	 * the clock
+ 	 */
+-	if (core->ops->init)
+-		core->ops->init(core->hw);
 -
--          1) A direct mapped window from 0x48000000 to 0x4BFFFFFF (64MB).
--             To access PCI via this space, we simply ioremap() the BAR
--             into the kernel and we can use the standard read[bwl]/write[bwl]
--             macros. This is the preferred method due to speed but it
--             limits the system to just 64MB of PCI memory. This can be
--             problematic if using video cards and other memory-heavy devices.
-+	  IXP4xx provides two methods of accessing PCI memory space:
++	if (core->ops->init) {
++		ret = core->ops->init(core->hw);
++		if (ret)
++			goto out;
++	}
+ 
+ 	core->parent = __clk_init_parent(core);
+ 
+diff --git a/drivers/clk/meson/clk-mpll.c b/drivers/clk/meson/clk-mpll.c
+index 2d39a8bc367c..fc9df4860872 100644
+--- a/drivers/clk/meson/clk-mpll.c
++++ b/drivers/clk/meson/clk-mpll.c
+@@ -129,7 +129,7 @@ static int mpll_set_rate(struct clk_hw *hw,
+ 	return 0;
+ }
+ 
+-static void mpll_init(struct clk_hw *hw)
++static int mpll_init(struct clk_hw *hw)
+ {
+ 	struct clk_regmap *clk = to_clk_regmap(hw);
+ 	struct meson_clk_mpll_data *mpll = meson_clk_mpll_data(clk);
+@@ -151,6 +151,8 @@ static void mpll_init(struct clk_hw *hw)
+ 	/* Set the magic misc bit if required */
+ 	if (MESON_PARM_APPLICABLE(&mpll->misc))
+ 		meson_parm_write(clk->map, &mpll->misc, 1);
 +
-+	  1) A direct mapped window from 0x48000000 to 0x4BFFFFFF (64MB).
-+	     To access PCI via this space, we simply ioremap() the BAR
-+	     into the kernel and we can use the standard read[bwl]/write[bwl]
-+	     macros. This is the preferred method due to speed but it
-+	     limits the system to just 64MB of PCI memory. This can be
-+	     problematic if using video cards and other memory-heavy devices.
++	return 0;
+ }
  
- 	  2) If > 64MB of memory space is required, the IXP4xx can be
- 	     configured to use indirect registers to access the whole PCI
-diff --git a/arch/arm/mach-mmp/Kconfig b/arch/arm/mach-mmp/Kconfig
-index 0440109e973b..c549fc3938b8 100644
---- a/arch/arm/mach-mmp/Kconfig
-+++ b/arch/arm/mach-mmp/Kconfig
-@@ -150,7 +150,7 @@ config CPU_MMP2
- 	  Select code specific to MMP2. MMP2 is ARMv7 compatible.
+ const struct clk_ops meson_clk_mpll_ro_ops = {
+diff --git a/drivers/clk/meson/clk-phase.c b/drivers/clk/meson/clk-phase.c
+index 80c3ada193a4..fe22e171121a 100644
+--- a/drivers/clk/meson/clk-phase.c
++++ b/drivers/clk/meson/clk-phase.c
+@@ -78,7 +78,7 @@ meson_clk_triphase_data(struct clk_regmap *clk)
+ 	return (struct meson_clk_triphase_data *)clk->data;
+ }
  
- config USB_EHCI_MV_U2O
--        bool "EHCI support for PXA USB OTG controller"
-+	bool "EHCI support for PXA USB OTG controller"
- 	depends on USB_EHCI_MV
- 	help
- 	  Enables support for OTG controller which can be switched to host mode.
-diff --git a/arch/arm/mach-omap1/Kconfig b/arch/arm/mach-omap1/Kconfig
-index 2a17dc1d122c..89138d14d0f2 100644
---- a/arch/arm/mach-omap1/Kconfig
-+++ b/arch/arm/mach-omap1/Kconfig
-@@ -66,8 +66,8 @@ config MACH_OMAP_INNOVATOR
- 	bool "TI Innovator"
- 	depends on ARCH_OMAP1 && (ARCH_OMAP15XX || ARCH_OMAP16XX)
- 	help
--          TI OMAP 1510 or 1610 Innovator board support. Say Y here if you
--          have such a board.
-+	  TI OMAP 1510 or 1610 Innovator board support. Say Y here if you
-+	  have such a board.
+-static void meson_clk_triphase_sync(struct clk_hw *hw)
++static int meson_clk_triphase_sync(struct clk_hw *hw)
+ {
+ 	struct clk_regmap *clk = to_clk_regmap(hw);
+ 	struct meson_clk_triphase_data *tph = meson_clk_triphase_data(clk);
+@@ -88,6 +88,8 @@ static void meson_clk_triphase_sync(struct clk_hw *hw)
+ 	val = meson_parm_read(clk->map, &tph->ph0);
+ 	meson_parm_write(clk->map, &tph->ph1, val);
+ 	meson_parm_write(clk->map, &tph->ph2, val);
++
++	return 0;
+ }
  
- config MACH_OMAP_H2
- 	bool "TI H2 Support"
-@@ -94,7 +94,7 @@ config MACH_OMAP_OSK
- 	depends on ARCH_OMAP1 && ARCH_OMAP16XX
-     	help
- 	  TI OMAP 5912 OSK (OMAP Starter Kit) board support. Say Y here
--          if you have such a board.
-+	  if you have such a board.
+ static int meson_clk_triphase_get_phase(struct clk_hw *hw)
+diff --git a/drivers/clk/meson/clk-pll.c b/drivers/clk/meson/clk-pll.c
+index ddb1e5634739..489092dde3a6 100644
+--- a/drivers/clk/meson/clk-pll.c
++++ b/drivers/clk/meson/clk-pll.c
+@@ -277,7 +277,7 @@ static int meson_clk_pll_wait_lock(struct clk_hw *hw)
+ 	return -ETIMEDOUT;
+ }
  
- config OMAP_OSK_MISTRAL
- 	bool "Mistral QVGA board Support"
-@@ -180,10 +180,10 @@ config MACH_OMAP_GENERIC
- 	bool "Generic OMAP board"
- 	depends on ARCH_OMAP1 && (ARCH_OMAP15XX || ARCH_OMAP16XX)
- 	help
--          Support for generic OMAP-1510, 1610 or 1710 board with
--          no FPGA. Can be used as template for porting Linux to
--          custom OMAP boards. Say Y here if you have a custom
--          board.
-+	  Support for generic OMAP-1510, 1610 or 1710 board with
-+	  no FPGA. Can be used as template for porting Linux to
-+	  custom OMAP boards. Say Y here if you have a custom
-+	  board.
+-static void meson_clk_pll_init(struct clk_hw *hw)
++static int meson_clk_pll_init(struct clk_hw *hw)
+ {
+ 	struct clk_regmap *clk = to_clk_regmap(hw);
+ 	struct meson_clk_pll_data *pll = meson_clk_pll_data(clk);
+@@ -288,6 +288,8 @@ static void meson_clk_pll_init(struct clk_hw *hw)
+ 				       pll->init_count);
+ 		meson_parm_write(clk->map, &pll->rst, 0);
+ 	}
++
++	return 0;
+ }
  
- endmenu
+ static int meson_clk_pll_is_enabled(struct clk_hw *hw)
+diff --git a/drivers/clk/meson/sclk-div.c b/drivers/clk/meson/sclk-div.c
+index 3acf03780221..76d31c0a3342 100644
+--- a/drivers/clk/meson/sclk-div.c
++++ b/drivers/clk/meson/sclk-div.c
+@@ -216,7 +216,7 @@ static int sclk_div_is_enabled(struct clk_hw *hw)
+ 	return 0;
+ }
  
-diff --git a/arch/arm/mach-prima2/Kconfig b/arch/arm/mach-prima2/Kconfig
-index 6f66785fab01..88a76d265fd9 100644
---- a/arch/arm/mach-prima2/Kconfig
-+++ b/arch/arm/mach-prima2/Kconfig
-@@ -22,7 +22,7 @@ config ARCH_ATLAS6
- 	default y
- 	select SIRF_IRQ
- 	help
--          Support for CSR SiRFSoC ARM Cortex A9 Platform
-+	  Support for CSR SiRFSoC ARM Cortex A9 Platform
+-static void sclk_div_init(struct clk_hw *hw)
++static int sclk_div_init(struct clk_hw *hw)
+ {
+ 	struct clk_regmap *clk = to_clk_regmap(hw);
+ 	struct meson_sclk_div_data *sclk = meson_sclk_div_data(clk);
+@@ -231,6 +231,8 @@ static void sclk_div_init(struct clk_hw *hw)
+ 		sclk->cached_div = val + 1;
  
- config ARCH_ATLAS7
- 	bool "CSR SiRFSoC ATLAS7 ARM Cortex A7 Platform"
-@@ -32,7 +32,7 @@ config ARCH_ATLAS7
- 	select HAVE_ARM_SCU if SMP
- 	select HAVE_SMP
- 	help
--          Support for CSR SiRFSoC ARM Cortex A7 Platform
-+	  Support for CSR SiRFSoC ARM Cortex A7 Platform
+ 	sclk_div_get_duty_cycle(hw, &sclk->cached_duty);
++
++	return 0;
+ }
  
- config ARCH_PRIMA2
- 	bool "CSR SiRFSoC PRIMA2 ARM Cortex A9 Platform"
-@@ -41,7 +41,7 @@ config ARCH_PRIMA2
- 	select ZONE_DMA
- 	select PRIMA2_TIMER
- 	help
--          Support for CSR SiRFSoC ARM Cortex A9 Platform
-+	  Support for CSR SiRFSoC ARM Cortex A9 Platform
+ const struct clk_ops meson_sclk_div_ops = {
+diff --git a/drivers/clk/microchip/clk-core.c b/drivers/clk/microchip/clk-core.c
+index 567755d6f844..1b4f023cdc8b 100644
+--- a/drivers/clk/microchip/clk-core.c
++++ b/drivers/clk/microchip/clk-core.c
+@@ -266,10 +266,12 @@ static void roclk_disable(struct clk_hw *hw)
+ 	writel(REFO_ON | REFO_OE, PIC32_CLR(refo->ctrl_reg));
+ }
  
- config SIRF_IRQ
- 	bool
-diff --git a/arch/arm/mach-s3c24xx/Kconfig b/arch/arm/mach-s3c24xx/Kconfig
-index 686f0bbde998..95db290637aa 100644
---- a/arch/arm/mach-s3c24xx/Kconfig
-+++ b/arch/arm/mach-s3c24xx/Kconfig
-@@ -141,8 +141,8 @@ config S3C2410_CPUFREQ_UTILS
-        bool
-        depends on ARM_S3C24XX_CPUFREQ
-        help
--         Internal node to select timing code that is common to the s3c2410
--         and s3c2440/s3c244 cpu frequency support.
-+	 Internal node to select timing code that is common to the s3c2410
-+	 and s3c2440/s3c244 cpu frequency support.
+-static void roclk_init(struct clk_hw *hw)
++static int roclk_init(struct clk_hw *hw)
+ {
+ 	/* initialize clock in disabled state */
+ 	roclk_disable(hw);
++
++	return 0;
+ }
  
- # cpu frequency support common to s3c2412, s3c2413 and s3c2442
+ static u8 roclk_get_parent(struct clk_hw *hw)
+@@ -880,7 +882,7 @@ static int sclk_set_parent(struct clk_hw *hw, u8 index)
+ 	return err;
+ }
  
-diff --git a/arch/arm/mach-s3c64xx/Kconfig b/arch/arm/mach-s3c64xx/Kconfig
-index 5700822e3c74..125e50301d2a 100644
---- a/arch/arm/mach-s3c64xx/Kconfig
-+++ b/arch/arm/mach-s3c64xx/Kconfig
-@@ -202,7 +202,7 @@ config SMDK6410_SD_CH0
- 	bool "Use channel 0 only"
- 	depends on MACH_SMDK6410
- 	help
--          Select CON7 (channel 0) as the MMC/SD slot, as
-+	  Select CON7 (channel 0) as the MMC/SD slot, as
- 	  at least some SMDK6410 boards come with the
- 	  resistors fitted so that the card detects for
- 	  channels 0 and 1 are the same.
-@@ -211,7 +211,7 @@ config SMDK6410_SD_CH1
- 	bool "Use channel 1 only"
- 	depends on MACH_SMDK6410
- 	help
--          Select CON6 (channel 1) as the MMC/SD slot, as
-+	  Select CON6 (channel 1) as the MMC/SD slot, as
- 	  at least some SMDK6410 boards come with the
- 	  resistors fitted so that the card detects for
- 	  channels 0 and 1 are the same.
-@@ -257,7 +257,7 @@ config MACH_NCP
- 	select S3C_DEV_HSMMC1
- 	select S3C_DEV_I2C1
- 	help
--          Machine support for the Samsung NCP
-+	  Machine support for the Samsung NCP
+-static void sclk_init(struct clk_hw *hw)
++static int sclk_init(struct clk_hw *hw)
+ {
+ 	struct pic32_sys_clk *sclk = clkhw_to_sys_clk(hw);
+ 	unsigned long flags;
+@@ -899,6 +901,8 @@ static void sclk_init(struct clk_hw *hw)
+ 		writel(v, sclk->slew_reg);
+ 		spin_unlock_irqrestore(&sclk->core->reg_lock, flags);
+ 	}
++
++	return 0;
+ }
  
- config MACH_HMT
- 	bool "Airgoo HMT"
-diff --git a/arch/arm/plat-samsung/Kconfig b/arch/arm/plat-samsung/Kconfig
-index 301e572651c0..99ae92fa452a 100644
---- a/arch/arm/plat-samsung/Kconfig
-+++ b/arch/arm/plat-samsung/Kconfig
-@@ -250,7 +250,7 @@ config S3C_PM_DEBUG_LED_SMDK
-        bool "SMDK LED suspend/resume debugging"
-        depends on PM && (MACH_SMDK6410)
-        help
--         Say Y here to enable the use of the SMDK LEDs on the baseboard
-+	 Say Y here to enable the use of the SMDK LEDs on the baseboard
- 	 for debugging of the state of the suspend and resume process.
+ /* sclk with post-divider */
+diff --git a/drivers/clk/mmp/clk-frac.c b/drivers/clk/mmp/clk-frac.c
+index 90bf181f191a..fabc09aca6c4 100644
+--- a/drivers/clk/mmp/clk-frac.c
++++ b/drivers/clk/mmp/clk-frac.c
+@@ -109,7 +109,7 @@ static int clk_factor_set_rate(struct clk_hw *hw, unsigned long drate,
+ 	return 0;
+ }
  
- 	 Note, this currently only works for S3C64XX based SMDK boards.
-diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
-index 41a9b4257b72..60233baf3f0f 100644
---- a/arch/arm64/Kconfig
-+++ b/arch/arm64/Kconfig
-@@ -262,7 +262,7 @@ config GENERIC_HWEIGHT
- 	def_bool y
+-static void clk_factor_init(struct clk_hw *hw)
++static int clk_factor_init(struct clk_hw *hw)
+ {
+ 	struct mmp_clk_factor *factor = to_clk_factor(hw);
+ 	struct mmp_clk_factor_masks *masks = factor->masks;
+@@ -146,6 +146,8 @@ static void clk_factor_init(struct clk_hw *hw)
  
- config GENERIC_CSUM
--        def_bool y
-+	def_bool y
+ 	if (factor->lock)
+ 		spin_unlock_irqrestore(factor->lock, flags);
++
++	return 0;
+ }
  
- config GENERIC_CALIBRATE_DELAY
- 	def_bool y
-@@ -832,7 +832,7 @@ config ARM64_PA_BITS
- config CPU_BIG_ENDIAN
-        bool "Build big-endian kernel"
-        help
--         Say Y if you plan on running a kernel in big-endian mode.
-+	 Say Y if you plan on running a kernel in big-endian mode.
+ static const struct clk_ops clk_factor_ops = {
+diff --git a/drivers/clk/mmp/clk-mix.c b/drivers/clk/mmp/clk-mix.c
+index 90814b2613c0..d2cd36c54474 100644
+--- a/drivers/clk/mmp/clk-mix.c
++++ b/drivers/clk/mmp/clk-mix.c
+@@ -419,12 +419,14 @@ static int mmp_clk_set_rate(struct clk_hw *hw, unsigned long rate,
+ 	}
+ }
  
- config SCHED_MC
- 	bool "Multi-core scheduler support"
-@@ -1593,7 +1593,7 @@ config EFI
- 	help
- 	  This option provides support for runtime services provided
- 	  by UEFI firmware (such as non-volatile variables, realtime
--          clock, and platform reset). A UEFI stub is also provided to
-+	  clock, and platform reset). A UEFI stub is also provided to
- 	  allow the kernel to be booted as an EFI application. This
- 	  is only useful on systems that have UEFI firmware.
+-static void mmp_clk_mix_init(struct clk_hw *hw)
++static int mmp_clk_mix_init(struct clk_hw *hw)
+ {
+ 	struct mmp_clk_mix *mix = to_clk_mix(hw);
  
-diff --git a/arch/arm64/Kconfig.debug b/arch/arm64/Kconfig.debug
-index cf09010d825f..bb1eb10a7a62 100644
---- a/arch/arm64/Kconfig.debug
-+++ b/arch/arm64/Kconfig.debug
-@@ -8,7 +8,7 @@ config ARM64_PTDUMP_DEBUGFS
- 	depends on DEBUG_KERNEL
- 	select ARM64_PTDUMP_CORE
- 	select DEBUG_FS
--        help
-+	help
- 	  Say Y here if you want to show the kernel pagetable layout in a
- 	  debugfs file. This information is only useful for kernel developers
- 	  who are working in architecture specific areas of the kernel.
-diff --git a/arch/h8300/Kconfig b/arch/h8300/Kconfig
-index 14bb45644c0c..7a33141fd0b7 100644
---- a/arch/h8300/Kconfig
-+++ b/arch/h8300/Kconfig
-@@ -1,6 +1,6 @@
- # SPDX-License-Identifier: GPL-2.0
- config H8300
--        def_bool y
-+	def_bool y
- 	select ARCH_32BIT_OFF_T
- 	select ARCH_HAS_BINFMT_FLAT
- 	select BINFMT_FLAT_ARGVP_ENVP_ON_STACK
-@@ -38,7 +38,7 @@ config NO_IOPORT_MAP
- 	def_bool y
+ 	if (mix->table)
+ 		_filter_clk_table(mix, mix->table, mix->table_size);
++
++	return 0;
+ }
  
- config GENERIC_CSUM
--        def_bool y
-+	def_bool y
+ const struct clk_ops mmp_clk_mix_ops = {
+diff --git a/drivers/clk/qcom/clk-hfpll.c b/drivers/clk/qcom/clk-hfpll.c
+index 3c04805f2a55..e847d586a73a 100644
+--- a/drivers/clk/qcom/clk-hfpll.c
++++ b/drivers/clk/qcom/clk-hfpll.c
+@@ -196,7 +196,7 @@ static unsigned long clk_hfpll_recalc_rate(struct clk_hw *hw,
+ 	return l_val * parent_rate;
+ }
  
- config HZ
- 	int
-diff --git a/arch/h8300/Kconfig.cpu b/arch/h8300/Kconfig.cpu
-index b5e14d513e62..59be62d0716b 100644
---- a/arch/h8300/Kconfig.cpu
-+++ b/arch/h8300/Kconfig.cpu
-@@ -90,11 +90,11 @@ config H8S_SIM
- endchoice
+-static void clk_hfpll_init(struct clk_hw *hw)
++static int clk_hfpll_init(struct clk_hw *hw)
+ {
+ 	struct clk_hfpll *h = to_clk_hfpll(hw);
+ 	struct hfpll_data const *hd = h->d;
+@@ -206,7 +206,7 @@ static void clk_hfpll_init(struct clk_hw *hw)
+ 	regmap_read(regmap, hd->mode_reg, &mode);
+ 	if (mode != (PLL_BYPASSNL | PLL_RESET_N | PLL_OUTCTRL)) {
+ 		__clk_hfpll_init_once(hw);
+-		return;
++		return 0;
+ 	}
  
- config H8300_BUILTIN_DTB
--        string "Builtin DTB"
-+	string "Builtin DTB"
- 	default ""
+ 	if (hd->status_reg) {
+@@ -218,6 +218,8 @@ static void clk_hfpll_init(struct clk_hw *hw)
+ 			__clk_hfpll_init_once(hw);
+ 		}
+ 	}
++
++	return 0;
+ }
  
- config OFFSET
--        hex "Load offset"
-+	hex "Load offset"
- 	default 0
+ static int hfpll_is_enabled(struct clk_hw *hw)
+diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
+index 198417d56300..10560d963baf 100644
+--- a/drivers/clk/rockchip/clk-pll.c
++++ b/drivers/clk/rockchip/clk-pll.c
+@@ -282,7 +282,7 @@ static int rockchip_rk3036_pll_is_enabled(struct clk_hw *hw)
+ 	return !(pllcon & RK3036_PLLCON1_PWRDOWN);
+ }
  
- endmenu
-diff --git a/arch/m68k/Kconfig.bus b/arch/m68k/Kconfig.bus
-index 9d0a3a23d50e..f1be832e2b74 100644
---- a/arch/m68k/Kconfig.bus
-+++ b/arch/m68k/Kconfig.bus
-@@ -66,6 +66,6 @@ endif
- if !MMU
+-static void rockchip_rk3036_pll_init(struct clk_hw *hw)
++static int rockchip_rk3036_pll_init(struct clk_hw *hw)
+ {
+ 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
+ 	const struct rockchip_pll_rate_table *rate;
+@@ -290,14 +290,14 @@ static void rockchip_rk3036_pll_init(struct clk_hw *hw)
+ 	unsigned long drate;
  
- config ISA_DMA_API
--        def_bool !M5272
-+	def_bool !M5272
+ 	if (!(pll->flags & ROCKCHIP_PLL_SYNC_RATE))
+-		return;
++		return 0;
  
- endif
-diff --git a/arch/m68k/Kconfig.debug b/arch/m68k/Kconfig.debug
-index f43643111eaf..11b306bdd788 100644
---- a/arch/m68k/Kconfig.debug
-+++ b/arch/m68k/Kconfig.debug
-@@ -12,16 +12,16 @@ config EARLY_PRINTK
- 	bool "Early printk"
- 	depends on !(SUN3 || M68000 || COLDFIRE)
- 	help
--          Write kernel log output directly to a serial port.
--          Where implemented, output goes to the framebuffer as well.
--          PROM console functionality on Sun 3x is not affected by this option.
-+	  Write kernel log output directly to a serial port.
-+	  Where implemented, output goes to the framebuffer as well.
-+	  PROM console functionality on Sun 3x is not affected by this option.
+ 	drate = clk_hw_get_rate(hw);
+ 	rate = rockchip_get_pll_settings(pll, drate);
  
--          Pass "earlyprintk" on the kernel command line to get a
--          boot console.
-+	  Pass "earlyprintk" on the kernel command line to get a
-+	  boot console.
+ 	/* when no rate setting for the current rate, rely on clk_set_rate */
+ 	if (!rate)
+-		return;
++		return 0;
  
--          This is useful for kernel debugging when your machine crashes very
--          early, i.e. before the normal console driver is loaded.
--          You should normally say N here, unless you want to debug such a crash.
-+	  This is useful for kernel debugging when your machine crashes very
-+	  early, i.e. before the normal console driver is loaded.
-+	  You should normally say N here, unless you want to debug such a crash.
+ 	rockchip_rk3036_pll_get_params(pll, &cur);
  
- if !MMU
+@@ -319,13 +319,15 @@ static void rockchip_rk3036_pll_init(struct clk_hw *hw)
+ 		if (!parent) {
+ 			pr_warn("%s: parent of %s not available\n",
+ 				__func__, __clk_get_name(hw->clk));
+-			return;
++			return 0;
+ 		}
  
-diff --git a/arch/m68k/Kconfig.machine b/arch/m68k/Kconfig.machine
-index c01e103492fd..b23a66bac77f 100644
---- a/arch/m68k/Kconfig.machine
-+++ b/arch/m68k/Kconfig.machine
-@@ -269,10 +269,10 @@ config AMCORE
- 	  Support for the Sysam AMCORE open-hardware generic board.
+ 		pr_debug("%s: pll %s: rate params do not match rate table, adjusting\n",
+ 			 __func__, __clk_get_name(hw->clk));
+ 		rockchip_rk3036_pll_set_params(pll, rate);
+ 	}
++
++	return 0;
+ }
  
- config STMARK2
--        bool "Sysam stmark2 board support"
--        depends on M5441x
--        help
--          Support for the Sysam stmark2 open-hardware generic board.
-+	bool "Sysam stmark2 board support"
-+	depends on M5441x
-+	help
-+	  Support for the Sysam stmark2 open-hardware generic board.
+ static const struct clk_ops rockchip_rk3036_pll_clk_norate_ops = {
+@@ -515,7 +517,7 @@ static int rockchip_rk3066_pll_is_enabled(struct clk_hw *hw)
+ 	return !(pllcon & RK3066_PLLCON3_PWRDOWN);
+ }
  
- config FIREBEE
- 	bool "FireBee board support"
-diff --git a/arch/nds32/Kconfig.cpu b/arch/nds32/Kconfig.cpu
-index f80a4ab63da2..2216cd789b29 100644
---- a/arch/nds32/Kconfig.cpu
-+++ b/arch/nds32/Kconfig.cpu
-@@ -13,8 +13,8 @@ config FPU
- 	default n
- 	help
- 	  If FPU ISA is used in user space, this configuration shall be Y to
--          enable required support in kerenl such as fpu context switch and
--          fpu exception handler.
-+	  enable required support in kerenl such as fpu context switch and
-+	  fpu exception handler.
+-static void rockchip_rk3066_pll_init(struct clk_hw *hw)
++static int rockchip_rk3066_pll_init(struct clk_hw *hw)
+ {
+ 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
+ 	const struct rockchip_pll_rate_table *rate;
+@@ -523,14 +525,14 @@ static void rockchip_rk3066_pll_init(struct clk_hw *hw)
+ 	unsigned long drate;
  
- 	  If no FPU ISA is used in user space, say N.
+ 	if (!(pll->flags & ROCKCHIP_PLL_SYNC_RATE))
+-		return;
++		return 0;
  
-@@ -24,7 +24,7 @@ config LAZY_FPU
- 	default y
- 	help
- 	  Say Y here to enable the lazy FPU scheme. The lazy FPU scheme can
--          enhance system performance by reducing the context switch
-+	  enhance system performance by reducing the context switch
- 	  frequency of the FPU register.
+ 	drate = clk_hw_get_rate(hw);
+ 	rate = rockchip_get_pll_settings(pll, drate);
  
- 	  For nomal case, say Y.
-@@ -75,11 +75,11 @@ choice
- 	  if its cache way size is larger than page size. You can specify the
- 	  CPU type direcly or choose CPU_V3 if unsure.
+ 	/* when no rate setting for the current rate, rely on clk_set_rate */
+ 	if (!rate)
+-		return;
++		return 0;
  
--          A kernel built for N10 is able to run on N15, D15, N13, N10 or D10.
--          A kernel built for N15 is able to run on N15 or D15.
--          A kernel built for D10 is able to run on D10 or D15.
--          A kernel built for D15 is able to run on D15.
--          A kernel built for N13 is able to run on N15, N13 or D15.
-+	  A kernel built for N10 is able to run on N15, D15, N13, N10 or D10.
-+	  A kernel built for N15 is able to run on N15 or D15.
-+	  A kernel built for D10 is able to run on D10 or D15.
-+	  A kernel built for D15 is able to run on D15.
-+	  A kernel built for N13 is able to run on N15, N13 or D15.
+ 	rockchip_rk3066_pll_get_params(pll, &cur);
  
- config CPU_N15
- 	bool "AndesCore N15"
-@@ -173,7 +173,7 @@ config HIGHMEM
+@@ -543,6 +545,8 @@ static void rockchip_rk3066_pll_init(struct clk_hw *hw)
+ 			 __func__, clk_hw_get_name(hw));
+ 		rockchip_rk3066_pll_set_params(pll, rate);
+ 	}
++
++	return 0;
+ }
  
- config CACHE_L2
- 	bool "Support L2 cache"
--        default y
-+	default y
- 	help
- 	  Say Y here to enable L2 cache if your SoC are integrated with L2CC.
- 	  If unsure, say N.
-diff --git a/arch/openrisc/Kconfig b/arch/openrisc/Kconfig
-index bf326f0edd2f..1928e061ff96 100644
---- a/arch/openrisc/Kconfig
-+++ b/arch/openrisc/Kconfig
-@@ -13,7 +13,7 @@ config OPENRISC
- 	select IRQ_DOMAIN
- 	select HANDLE_DOMAIN_IRQ
- 	select GPIOLIB
--        select HAVE_ARCH_TRACEHOOK
-+	select HAVE_ARCH_TRACEHOOK
- 	select SPARSE_IRQ
- 	select GENERIC_IRQ_CHIP
- 	select GENERIC_IRQ_PROBE
-@@ -51,12 +51,12 @@ config NO_IOPORT_MAP
- 	def_bool y
+ static const struct clk_ops rockchip_rk3066_pll_clk_norate_ops = {
+@@ -761,7 +765,7 @@ static int rockchip_rk3399_pll_is_enabled(struct clk_hw *hw)
+ 	return !(pllcon & RK3399_PLLCON3_PWRDOWN);
+ }
  
- config TRACE_IRQFLAGS_SUPPORT
--        def_bool y
-+	def_bool y
+-static void rockchip_rk3399_pll_init(struct clk_hw *hw)
++static int rockchip_rk3399_pll_init(struct clk_hw *hw)
+ {
+ 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
+ 	const struct rockchip_pll_rate_table *rate;
+@@ -769,14 +773,14 @@ static void rockchip_rk3399_pll_init(struct clk_hw *hw)
+ 	unsigned long drate;
  
- # For now, use generic checksum functions
- #These can be reimplemented in assembly later if so inclined
- config GENERIC_CSUM
--        def_bool y
-+	def_bool y
+ 	if (!(pll->flags & ROCKCHIP_PLL_SYNC_RATE))
+-		return;
++		return 0;
  
- config STACKTRACE_SUPPORT
- 	def_bool y
-@@ -89,8 +89,8 @@ config DCACHE_WRITETHROUGH
- 	  If unsure say N here
+ 	drate = clk_hw_get_rate(hw);
+ 	rate = rockchip_get_pll_settings(pll, drate);
  
- config OPENRISC_BUILTIN_DTB
--        string "Builtin DTB"
--        default ""
-+	string "Builtin DTB"
-+	default ""
+ 	/* when no rate setting for the current rate, rely on clk_set_rate */
+ 	if (!rate)
+-		return;
++		return 0;
  
- menu "Class II Instructions"
+ 	rockchip_rk3399_pll_get_params(pll, &cur);
  
-@@ -161,13 +161,13 @@ config OPENRISC_HAVE_SHADOW_GPRS
- 	  On a unicore system it's safe to say N here if you are unsure.
+@@ -798,13 +802,15 @@ static void rockchip_rk3399_pll_init(struct clk_hw *hw)
+ 		if (!parent) {
+ 			pr_warn("%s: parent of %s not available\n",
+ 				__func__, __clk_get_name(hw->clk));
+-			return;
++			return 0;
+ 		}
  
- config CMDLINE
--        string "Default kernel command string"
--        default ""
--        help
--          On some architectures there is currently no way for the boot loader
--          to pass arguments to the kernel. For these architectures, you should
--          supply some command-line options at build time by entering them
--          here.
-+	string "Default kernel command string"
-+	default ""
-+	help
-+	  On some architectures there is currently no way for the boot loader
-+	  to pass arguments to the kernel. For these architectures, you should
-+	  supply some command-line options at build time by entering them
-+	  here.
+ 		pr_debug("%s: pll %s: rate params do not match rate table, adjusting\n",
+ 			 __func__, __clk_get_name(hw->clk));
+ 		rockchip_rk3399_pll_set_params(pll, rate);
+ 	}
++
++	return 0;
+ }
  
- menu "Debugging options"
+ static const struct clk_ops rockchip_rk3399_pll_clk_norate_ops = {
+diff --git a/drivers/clk/ti/clock.h b/drivers/clk/ti/clock.h
+index e4b8392ff63c..adef9c16e43b 100644
+--- a/drivers/clk/ti/clock.h
++++ b/drivers/clk/ti/clock.h
+@@ -252,7 +252,7 @@ extern const struct clk_ops omap_gate_clk_ops;
  
-@@ -185,7 +185,7 @@ config OPENRISC_ESR_EXCEPTION_BUG_CHECK
- 	default n
- 	help
- 	  This option enables some checks that might expose some problems
--          in kernel.
-+	  in kernel.
+ extern struct ti_clk_features ti_clk_features;
  
- 	  Say N if you are unsure.
+-void omap2_init_clk_clkdm(struct clk_hw *hw);
++int omap2_init_clk_clkdm(struct clk_hw *hw);
+ int omap2_clkops_enable_clkdm(struct clk_hw *hw);
+ void omap2_clkops_disable_clkdm(struct clk_hw *hw);
  
-diff --git a/arch/powerpc/Kconfig.debug b/arch/powerpc/Kconfig.debug
-index c59920920ddc..4e1d39847462 100644
---- a/arch/powerpc/Kconfig.debug
-+++ b/arch/powerpc/Kconfig.debug
-@@ -122,8 +122,8 @@ config XMON_DEFAULT_RO_MODE
- 	depends on XMON
- 	default y
- 	help
--          Operate xmon in read-only mode. The cmdline options 'xmon=rw' and
--          'xmon=ro' override this default.
-+	  Operate xmon in read-only mode. The cmdline options 'xmon=rw' and
-+	  'xmon=ro' override this default.
+diff --git a/drivers/clk/ti/clockdomain.c b/drivers/clk/ti/clockdomain.c
+index 423a99b9f10c..ee56306f79d5 100644
+--- a/drivers/clk/ti/clockdomain.c
++++ b/drivers/clk/ti/clockdomain.c
+@@ -101,16 +101,16 @@ void omap2_clkops_disable_clkdm(struct clk_hw *hw)
+  *
+  * Convert a clockdomain name stored in a struct clk 'clk' into a
+  * clockdomain pointer, and save it into the struct clk.  Intended to be
+- * called during clk_register().  No return value.
++ * called during clk_register(). Returns 0 on success, -EERROR otherwise.
+  */
+-void omap2_init_clk_clkdm(struct clk_hw *hw)
++int omap2_init_clk_clkdm(struct clk_hw *hw)
+ {
+ 	struct clk_hw_omap *clk = to_clk_hw_omap(hw);
+ 	struct clockdomain *clkdm;
+ 	const char *clk_name;
  
- config DEBUGGER
- 	bool
-@@ -222,7 +222,7 @@ config PPC_EARLY_DEBUG_44x
- 	help
- 	  Select this to enable early debugging for IBM 44x chips via the
- 	  inbuilt serial port.  If you enable this, ensure you set
--          PPC_EARLY_DEBUG_44x_PHYSLOW below to suit your target board.
-+	  PPC_EARLY_DEBUG_44x_PHYSLOW below to suit your target board.
+ 	if (!clk->clkdm_name)
+-		return;
++		return 0;
  
- config PPC_EARLY_DEBUG_40x
- 	bool "Early serial debugging for IBM/AMCC 40x CPUs"
-@@ -325,7 +325,7 @@ config PPC_EARLY_DEBUG_44x_PHYSLOW
- 	default "0x40000200"
- 	help
- 	  You probably want 0x40000200 for ebony boards and
--          0x40000300 for taishan
-+	  0x40000300 for taishan
+ 	clk_name = __clk_get_name(hw->clk);
  
- config PPC_EARLY_DEBUG_44x_PHYSHIGH
- 	hex "EPRN of early debug UART physical address"
-@@ -359,9 +359,9 @@ config FAIL_IOMMU
- 	  If you are unsure, say N.
+@@ -123,6 +123,8 @@ void omap2_init_clk_clkdm(struct clk_hw *hw)
+ 		pr_debug("clock: could not associate clk %s to clkdm %s\n",
+ 			 clk_name, clk->clkdm_name);
+ 	}
++
++	return 0;
+ }
  
- config PPC_PTDUMP
--        bool "Export kernel pagetable layout to userspace via debugfs"
--        depends on DEBUG_KERNEL && DEBUG_FS
--        help
-+	bool "Export kernel pagetable layout to userspace via debugfs"
-+	depends on DEBUG_KERNEL && DEBUG_FS
-+	help
- 	  This option exports the state of the kernel pagetables to a
- 	  debugfs file. This is only useful for kernel developers who are
- 	  working in architecture specific areas of the kernel - probably
-@@ -390,8 +390,8 @@ config PPC_DEBUG_WX
+ static void __init of_ti_clockdomain_setup(struct device_node *node)
+diff --git a/drivers/net/phy/mdio-mux-meson-g12a.c b/drivers/net/phy/mdio-mux-meson-g12a.c
+index 7a9ad54582e1..bf86c9c7a288 100644
+--- a/drivers/net/phy/mdio-mux-meson-g12a.c
++++ b/drivers/net/phy/mdio-mux-meson-g12a.c
+@@ -123,7 +123,7 @@ static int g12a_ephy_pll_is_enabled(struct clk_hw *hw)
+ 	return (val & PLL_CTL0_LOCK_DIG) ? 1 : 0;
+ }
  
- config PPC_FAST_ENDIAN_SWITCH
- 	bool "Deprecated fast endian-switch syscall"
--        depends on DEBUG_KERNEL && PPC_BOOK3S_64
--        help
-+	depends on DEBUG_KERNEL && PPC_BOOK3S_64
-+	help
- 	  If you're unsure what this is, say N.
+-static void g12a_ephy_pll_init(struct clk_hw *hw)
++static int g12a_ephy_pll_init(struct clk_hw *hw)
+ {
+ 	struct g12a_ephy_pll *pll = g12a_ephy_pll_to_dev(hw);
  
- config KASAN_SHADOW_OFFSET
-diff --git a/arch/powerpc/platforms/Kconfig.cputype b/arch/powerpc/platforms/Kconfig.cputype
-index 12543e53fa96..073b6cb6d1ac 100644
---- a/arch/powerpc/platforms/Kconfig.cputype
-+++ b/arch/powerpc/platforms/Kconfig.cputype
-@@ -421,7 +421,7 @@ config PPC_PERF_CTRS
-        def_bool y
-        depends on PERF_EVENTS && PPC_HAVE_PMU_SUPPORT
-        help
--         This enables the powerpc-specific perf_event back-end.
-+	 This enables the powerpc-specific perf_event back-end.
+@@ -136,6 +136,8 @@ static void g12a_ephy_pll_init(struct clk_hw *hw)
+ 	writel(0x20200000, pll->base + ETH_PLL_CTL5);
+ 	writel(0x0000c002, pll->base + ETH_PLL_CTL6);
+ 	writel(0x00000023, pll->base + ETH_PLL_CTL7);
++
++	return 0;
+ }
  
- config FORCE_SMP
- 	# Allow platforms to force SMP=y by selecting this
-diff --git a/arch/riscv/Kconfig.socs b/arch/riscv/Kconfig.socs
-index 536c0ef4aee8..85199004c6ef 100644
---- a/arch/riscv/Kconfig.socs
-+++ b/arch/riscv/Kconfig.socs
-@@ -8,6 +8,6 @@ config SOC_SIFIVE
-        select CLK_SIFIVE_FU540_PRCI
-        select SIFIVE_PLIC
-        help
--         This enables support for SiFive SoC platform hardware.
-+	 This enables support for SiFive SoC platform hardware.
+ static const struct clk_ops g12a_ephy_pll_ops = {
+diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
+index 2fdfe8061363..b82ec4c4ca95 100644
+--- a/include/linux/clk-provider.h
++++ b/include/linux/clk-provider.h
+@@ -190,8 +190,12 @@ struct clk_duty {
+  *
+  * @init:	Perform platform-specific initialization magic.
+  *		This is not not used by any of the basic clock types.
+- *		Please consider other ways of solving initialization problems
+- *		before using this callback, as its use is discouraged.
++ *		This callback exist for HW which needs to perform some
++ *		initialisation magic for CCF to get an accurate view of the
++ *		clock. It may also be used dynamic resource allocation is
++ *		required. It shall not used to deal with clock parameters,
++ *		such as rate or parents.
++ *		Returns 0 on success, -EERROR otherwise.
+  *
+  * @debug_init:	Set up type-specific debugfs entries for this clock.  This
+  *		is called once, after the debugfs directory entry for this
+@@ -243,7 +247,7 @@ struct clk_ops {
+ 					  struct clk_duty *duty);
+ 	int		(*set_duty_cycle)(struct clk_hw *hw,
+ 					  struct clk_duty *duty);
+-	void		(*init)(struct clk_hw *hw);
++	int		(*init)(struct clk_hw *hw);
+ 	void		(*debug_init)(struct clk_hw *hw, struct dentry *dentry);
+ };
  
- endmenu
-diff --git a/arch/sh/boards/Kconfig b/arch/sh/boards/Kconfig
-index cee24c308337..60a113114a76 100644
---- a/arch/sh/boards/Kconfig
-+++ b/arch/sh/boards/Kconfig
-@@ -231,7 +231,7 @@ config SH_MIGOR
- 	select REGULATOR_FIXED_VOLTAGE if REGULATOR
- 	help
- 	  Select Migo-R if configuring for the SH7722 Migo-R platform
--          by Renesas System Solutions Asia Pte. Ltd.
-+	  by Renesas System Solutions Asia Pte. Ltd.
- 
- config SH_AP325RXA
- 	bool "AP-325RXA"
-diff --git a/arch/sh/mm/Kconfig b/arch/sh/mm/Kconfig
-index 5c8a2ebfc720..d84316abaa81 100644
---- a/arch/sh/mm/Kconfig
-+++ b/arch/sh/mm/Kconfig
-@@ -2,7 +2,7 @@
- menu "Memory management options"
- 
- config MMU
--        bool "Support for memory management hardware"
-+	bool "Support for memory management hardware"
- 	depends on !CPU_SH2
- 	default y
- 	help
-diff --git a/arch/um/Kconfig b/arch/um/Kconfig
-index fec6b4ca2b6e..2a6d04fcb3e9 100644
---- a/arch/um/Kconfig
-+++ b/arch/um/Kconfig
-@@ -153,7 +153,7 @@ config KERNEL_STACK_ORDER
- 	  It is possible to reduce the stack to 1 for 64BIT and 0 for 32BIT on
- 	  older (pre-2017) CPUs. It is not recommended on newer CPUs due to the
- 	  increase in the size of the state which needs to be saved when handling
--          signals.
-+	  signals.
- 
- config MMAPPER
- 	tristate "iomem emulation driver"
-diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
-index 96ea2c7449ef..989eaa96e3e6 100644
---- a/arch/x86/Kconfig
-+++ b/arch/x86/Kconfig
-@@ -806,9 +806,9 @@ config KVM_GUEST
- 	  timing infrastructure such as time of day, and system time
- 
- config ARCH_CPUIDLE_HALTPOLL
--        def_bool n
--        prompt "Disable host haltpoll when loading haltpoll driver"
--        help
-+	def_bool n
-+	prompt "Disable host haltpoll when loading haltpoll driver"
-+	help
- 	  If virtualized under KVM, disable host haltpoll.
- 
- config PVH
-@@ -892,11 +892,11 @@ config APB_TIMER
-        select DW_APB_TIMER
-        depends on X86_INTEL_MID && SFI
-        help
--         APB timer is the replacement for 8254, HPET on X86 MID platforms.
--         The APBT provides a stable time base on SMP
--         systems, unlike the TSC, but it is more expensive to access,
--         as it is off-chip. APB timers are always running regardless of CPU
--         C states, they are used as per CPU clockevent device when possible.
-+	 APB timer is the replacement for 8254, HPET on X86 MID platforms.
-+	 The APBT provides a stable time base on SMP
-+	 systems, unlike the TSC, but it is more expensive to access,
-+	 as it is off-chip. APB timers are always running regardless of CPU
-+	 C states, they are used as per CPU clockevent device when possible.
- 
- # Mark as expert because too many people got it wrong.
- # The code disables itself when not needed.
-@@ -1962,7 +1962,7 @@ config EFI_STUB
-        depends on EFI && !X86_USE_3DNOW
-        select RELOCATABLE
-        ---help---
--          This kernel feature allows a bzImage to be loaded directly
-+	  This kernel feature allows a bzImage to be loaded directly
- 	  by EFI firmware without the use of a bootloader.
- 
- 	  See Documentation/admin-guide/efi-stub.rst for more information.
 -- 
-2.17.1
+2.21.0
