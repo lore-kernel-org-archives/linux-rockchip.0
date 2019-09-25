@@ -1,90 +1,110 @@
-From: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
-Subject: Re: [PATCH 06/11] PCI: of: Add inbound resource parsing to helpers
-Date: Wed, 25 Sep 2019 11:00:13 +0200
-Message-ID: <20190925110013.43ffbce6@windsurf>
-References: <20190924214630.12817-1-robh@kernel.org>
- <20190924214630.12817-7-robh@kernel.org>
+From: Ayan Halder <Ayan.Halder-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH] drm/rockchip: Add AFBC support
+Date: Wed, 25 Sep 2019 09:28:26 +0000
+Message-ID: <20190925092824.GA21018@arm.com>
+References: <20190923122014.18229-1-andrzej.p@collabora.com>
+ <da7f0c5e-9ca9-020d-5366-2b21a42acdff@baylibre.com>
+ <332335a5-dc7f-2cce-601f-f73e9243dee5@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20190924214630.12817-7-robh@kernel.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Ryder Lee <ryder.lee@mediatek.com>, Nadav Haklai <nadavh@marvell.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Michal Simek <michal.simek@xilinx.com>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Shawn Lin <shawn.lin@rock-chips.com>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>, linux-mediatek@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>, Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboards.org, linux-renesas-soc@vger.kernel.org, Tom Joseph <tjoseph@cadence.com>, Gusta
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <332335a5-dc7f-2cce-601f-f73e9243dee5-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Language: en-US
+Content-ID: <5495A5E01BDFF9419EECBCB110C451E4-R04qaBv3nuicE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: nd <nd-5wv7dgnIgG8@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Sean Paul <sean-p7yTbzM4H96eqtR555YLDQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Maxime Ripard <mripard-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org" <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 24 Sep 2019 16:46:25 -0500
-Rob Herring <robh@kernel.org> wrote:
+On Mon, Sep 23, 2019 at 05:34:14PM +0200, Andrzej Pietrasiewicz wrote:
+> Dear All,
+> =
 
-> Extend devm_of_pci_get_host_bridge_resources() and
-> pci_parse_request_of_pci_ranges() helpers to also parse the inbound
-> addresses from DT 'dma-ranges' and populate a resource list with the
-> translated addresses. This will help ensure 'dma-ranges' is always
-> parsed in a consistent way.
-> 
-> Cc: Jingoo Han <jingoohan1@gmail.com>
-> Cc: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
-> Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-> Cc: Bjorn Helgaas <bhelgaas@google.com>
-> Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
-> Cc: Will Deacon <will@kernel.org>
-> Cc: Linus Walleij <linus.walleij@linaro.org>
-> Cc: Toan Le <toan@os.amperecomputing.com>
-> Cc: Ley Foon Tan <lftan@altera.com>
-> Cc: Tom Joseph <tjoseph@cadence.com>
-> Cc: Ray Jui <rjui@broadcom.com>
-> Cc: Scott Branden <sbranden@broadcom.com>
-> Cc: bcm-kernel-feedback-list@broadcom.com
-> Cc: Ryder Lee <ryder.lee@mediatek.com>
-> Cc: Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>
-> Cc: Hou Zhiqiang <Zhiqiang.Hou@nxp.com>
-> Cc: Simon Horman <horms@verge.net.au>
-> Cc: Shawn Lin <shawn.lin@rock-chips.com>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Michal Simek <michal.simek@xilinx.com>
-> Cc: rfi@lists.rocketboards.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-renesas-soc@vger.kernel.org
-> Cc: linux-rockchip@lists.infradead.org
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  .../pci/controller/dwc/pcie-designware-host.c |  3 +-
->  drivers/pci/controller/pci-aardvark.c         |  2 +-
->  drivers/pci/controller/pci-ftpci100.c         |  3 +-
->  drivers/pci/controller/pci-host-common.c      |  2 +-
->  drivers/pci/controller/pci-v3-semi.c          |  2 +-
->  drivers/pci/controller/pci-versatile.c        |  2 +-
->  drivers/pci/controller/pci-xgene.c            |  1 +
->  drivers/pci/controller/pcie-altera.c          |  2 +-
->  drivers/pci/controller/pcie-cadence-host.c    |  2 +-
->  drivers/pci/controller/pcie-iproc-platform.c  |  1 +
->  drivers/pci/controller/pcie-mediatek.c        |  2 +-
->  drivers/pci/controller/pcie-mobiveil.c        |  4 +-
->  drivers/pci/controller/pcie-rcar.c            |  3 +-
->  drivers/pci/controller/pcie-rockchip-host.c   |  3 +-
->  drivers/pci/controller/pcie-xilinx-nwl.c      |  2 +-
->  drivers/pci/controller/pcie-xilinx.c          |  2 +-
->  drivers/pci/of.c                              | 44 ++++++++++++++++++-
->  drivers/pci/pci.h                             |  8 +++-
->  include/linux/pci.h                           |  2 +
->  19 files changed, 72 insertions(+), 18 deletions(-)
+> As a result of my mistake I've sent this patch with an incorrect SOB chai=
+n.
+> Please kindly disregard this patch.
+> =
 
-for the AArdvark bits:
+> @Neil: thank you for your time you spent reviewing it and answering and I=
+'m
+> sorry it's to no effect.
+> @Ezequiel, @Tomeu: I apologize to you. My mistake.
+> =
 
-Tested-by: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
-(on Armada 3720-DB, with a E1000E NIC)
+> Regards,
+> =
 
-Thomas
--- 
-Thomas Petazzoni, CTO, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+> Andrzej Pietrasiewicz
+> =
+
+> =
+
+> W dniu 23.09.2019 o=A015:53, Neil Armstrong pisze:
+> >On 23/09/2019 14:20, Andrzej Pietrasiewicz wrote:
+> >>From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> >>
+> >>AFBC is a proprietary lossless image compression protocol and format.
+> >>It helps reduce memory bandwidth of the graphics pipeline operations.
+> >>This, in turn, improves power efficiency.
+> >>
+> >>Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> >>[locking improvements]
+> >>Signed-off-by: Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> >>[squashing the above, commit message and Rockchip AFBC modifier]
+> >>Signed-off-by: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> >>---
+> >>  drivers/gpu/drm/rockchip/rockchip_drm_fb.c  | 27 ++++++
+> >>  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 94 ++++++++++++++++++++-
+> >>  drivers/gpu/drm/rockchip/rockchip_drm_vop.h | 12 +++
+> >>  drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 18 ++++
+> >>  include/uapi/drm/drm_fourcc.h               |  3 +
+> >>  5 files changed, 151 insertions(+), 3 deletions(-)
+> >>
+> >
+> >[...]
+> >
+> >>diff --git a/include/uapi/drm/drm_fourcc.h b/include/uapi/drm/drm_fourc=
+c.h
+> >>index 3feeaa3f987a..ba6caf06c824 100644
+> >>--- a/include/uapi/drm/drm_fourcc.h
+> >>+++ b/include/uapi/drm/drm_fourcc.h
+> >>@@ -742,6 +742,9 @@ extern "C" {
+> >>   */
+> >>  #define AFBC_FORMAT_MOD_BCH     (1ULL << 11)
+> >>+#define AFBC_FORMAT_MOD_ROCKCHIP \
+> >>+	(AFBC_FORMAT_MOD_BLOCK_SIZE_16x16 | AFBC_FORMAT_MOD_SPARSE)
+> >
+> >This define looks useless, what's Rockchip specific here ?
+> >
+Please reuse the existing AFBC modifiers.
+
+Have a look at malidp_format_modifiers[] in which we have defined
+the modifiers(for our driver) we are using.
+
+In your case, it will be
+DRM_FORMAT_MOD_ARM_AFBC(AFBC_FORMAT_MOD_BLOCK_SIZE_16x16|AFBC_FORMAT_MOD_SP=
+ARSE)
+
+> >Neil
+> >
+> >>+
+> >>  /*
+> >>   * Allwinner tiled modifier
+> >>   *
+> >>
+> >
+> =
+
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
