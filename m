@@ -1,91 +1,90 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: [PATCH 3/3] drm/rockchip: Add support 10bit yuv format
-Date: Wed, 25 Sep 2019 16:06:40 +0800
-Message-ID: <1569398801-92201-4-git-send-email-hjc@rock-chips.com>
-References: <1569398801-92201-1-git-send-email-hjc@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1569398801-92201-1-git-send-email-hjc@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Cc: Ayan.Halder@arm.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+Subject: Re: [PATCH 06/11] PCI: of: Add inbound resource parsing to helpers
+Date: Wed, 25 Sep 2019 11:00:13 +0200
+Message-ID: <20190925110013.43ffbce6@windsurf>
+References: <20190924214630.12817-1-robh@kernel.org>
+ <20190924214630.12817-7-robh@kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190924214630.12817-7-robh@kernel.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rob Herring <robh@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Ryder Lee <ryder.lee@mediatek.com>, Nadav Haklai <nadavh@marvell.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Michal Simek <michal.simek@xilinx.com>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Shawn Lin <shawn.lin@rock-chips.com>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>, linux-mediatek@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>, Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboards.org, linux-renesas-soc@vger.kernel.org, Tom Joseph <tjoseph@cadence.com>, Gusta
 List-Id: linux-rockchip.vger.kernel.org
 
-Add support 10bit yuv format display for rockchip some socs,
-include:
-    RK3288/RK3228/RK3328/RK3368/RK3399
+On Tue, 24 Sep 2019 16:46:25 -0500
+Rob Herring <robh@kernel.org> wrote:
 
-Signed-off-by: Sandy Huang <hjc@rock-chips.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 16 ++++++++++++++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h |  1 +
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c |  2 ++
- 3 files changed, 19 insertions(+)
+> Extend devm_of_pci_get_host_bridge_resources() and
+> pci_parse_request_of_pci_ranges() helpers to also parse the inbound
+> addresses from DT 'dma-ranges' and populate a resource list with the
+> translated addresses. This will help ensure 'dma-ranges' is always
+> parsed in a consistent way.
+> 
+> Cc: Jingoo Han <jingoohan1@gmail.com>
+> Cc: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
+> Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+> Cc: Bjorn Helgaas <bhelgaas@google.com>
+> Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+> Cc: Will Deacon <will@kernel.org>
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: Toan Le <toan@os.amperecomputing.com>
+> Cc: Ley Foon Tan <lftan@altera.com>
+> Cc: Tom Joseph <tjoseph@cadence.com>
+> Cc: Ray Jui <rjui@broadcom.com>
+> Cc: Scott Branden <sbranden@broadcom.com>
+> Cc: bcm-kernel-feedback-list@broadcom.com
+> Cc: Ryder Lee <ryder.lee@mediatek.com>
+> Cc: Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>
+> Cc: Hou Zhiqiang <Zhiqiang.Hou@nxp.com>
+> Cc: Simon Horman <horms@verge.net.au>
+> Cc: Shawn Lin <shawn.lin@rock-chips.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Michal Simek <michal.simek@xilinx.com>
+> Cc: rfi@lists.rocketboards.org
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-renesas-soc@vger.kernel.org
+> Cc: linux-rockchip@lists.infradead.org
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  .../pci/controller/dwc/pcie-designware-host.c |  3 +-
+>  drivers/pci/controller/pci-aardvark.c         |  2 +-
+>  drivers/pci/controller/pci-ftpci100.c         |  3 +-
+>  drivers/pci/controller/pci-host-common.c      |  2 +-
+>  drivers/pci/controller/pci-v3-semi.c          |  2 +-
+>  drivers/pci/controller/pci-versatile.c        |  2 +-
+>  drivers/pci/controller/pci-xgene.c            |  1 +
+>  drivers/pci/controller/pcie-altera.c          |  2 +-
+>  drivers/pci/controller/pcie-cadence-host.c    |  2 +-
+>  drivers/pci/controller/pcie-iproc-platform.c  |  1 +
+>  drivers/pci/controller/pcie-mediatek.c        |  2 +-
+>  drivers/pci/controller/pcie-mobiveil.c        |  4 +-
+>  drivers/pci/controller/pcie-rcar.c            |  3 +-
+>  drivers/pci/controller/pcie-rockchip-host.c   |  3 +-
+>  drivers/pci/controller/pcie-xilinx-nwl.c      |  2 +-
+>  drivers/pci/controller/pcie-xilinx.c          |  2 +-
+>  drivers/pci/of.c                              | 44 ++++++++++++++++++-
+>  drivers/pci/pci.h                             |  8 +++-
+>  include/linux/pci.h                           |  2 +
+>  19 files changed, 72 insertions(+), 18 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index ce5b45d..9cb9fff 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -249,6 +249,21 @@ static bool has_rb_swapped(uint32_t format)
- 	}
- }
- 
-+static bool is_yuv_10bit(uint32_t format)
-+{
-+	switch (format) {
-+	case DRM_FORMAT_NV12_10:
-+	case DRM_FORMAT_NV21_10:
-+	case DRM_FORMAT_NV16_10:
-+	case DRM_FORMAT_NV61_10:
-+	case DRM_FORMAT_NV24_10:
-+	case DRM_FORMAT_NV42_10:
-+		return true;
-+	default:
-+		return false;
-+	}
-+}
-+
- static int vop_format_get_bpp(u32 format, u8 plane)
- {
- 	const struct drm_format_info *info;
-@@ -890,6 +905,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 		dma_addr = rk_uv_obj->dma_addr + offset + fb->offsets[1];
- 		VOP_WIN_SET(vop, win, uv_vir, DIV_ROUND_UP(fb->pitches[1], 4));
- 		VOP_WIN_SET(vop, win, uv_mst, dma_addr);
-+		VOP_WIN_SET(vop, win, fmt_10, is_yuv_10bit(fb->format->format));
- 
- 		for (i = 0; i < NUM_YUV2YUV_COEFFICIENTS; i++) {
- 			VOP_WIN_YUV2YUV_COEFFICIENT_SET(vop,
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-index 2149a889..adc2b0b5 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-@@ -133,6 +133,7 @@ struct vop_win_phy {
- 	struct vop_reg gate;
- 	struct vop_reg format;
- 	struct vop_reg rb_swap;
-+	struct vop_reg fmt_10;
- 	struct vop_reg act_info;
- 	struct vop_reg dsp_info;
- 	struct vop_reg dsp_st;
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index d1494be..732e535 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -544,6 +544,7 @@ static const struct vop_win_phy rk3288_win01_data = {
- 	.nformats = ARRAY_SIZE(formats_win_full),
- 	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
- 	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
-+	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
- 	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
- 	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
- 	.dsp_info = VOP_REG(RK3288_WIN0_DSP_INFO, 0x0fff0fff, 0),
-@@ -674,6 +675,7 @@ static const struct vop_win_phy rk3368_win01_data = {
- 	.nformats = ARRAY_SIZE(formats_win_full),
- 	.enable = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 0),
- 	.format = VOP_REG(RK3368_WIN0_CTRL0, 0x7, 1),
-+	.fmt_10 = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 4),
- 	.rb_swap = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 12),
- 	.x_mir_en = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 21),
- 	.y_mir_en = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 22),
+for the AArdvark bits:
+
+Tested-by: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+(on Armada 3720-DB, with a E1000E NIC)
+
+Thomas
 -- 
-2.7.4
+Thomas Petazzoni, CTO, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
