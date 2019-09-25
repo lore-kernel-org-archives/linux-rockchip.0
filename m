@@ -1,62 +1,91 @@
 From: Sandy Huang <hjc@rock-chips.com>
-Subject: [PATCH 2/3] drm/rockchip: Add vop_format_get_bpp to get format bpp
-Date: Wed, 25 Sep 2019 16:06:39 +0800
-Message-ID: <1569398801-92201-3-git-send-email-hjc@rock-chips.com>
+Subject: [PATCH 3/3] drm/rockchip: Add support 10bit yuv format
+Date: Wed, 25 Sep 2019 16:06:40 +0800
+Message-ID: <1569398801-92201-4-git-send-email-hjc@rock-chips.com>
 References: <1569398801-92201-1-git-send-email-hjc@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1569398801-92201-1-git-send-email-hjc@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Cc: linux-rockchip@lists.infradead.org, Ayan.Halder@arm.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: Ayan.Halder@arm.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Rm9yIDEwYml0IHl1diBmb3JtYXQsIHdlIG5lZWQgdG8gZ2V0IGZvcm1hdCBicHAgZWFjaCBwbGFu
-ZSwgc28gd2UKQWRkIHZvcF9mb3JtYXRfZ2V0X2JwcCgpIHRvIGluc3RlYWQgb2YgZm9ybWF0LT5j
-cHBbXTsKClNpZ25lZC1vZmYtYnk6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+Ci0t
-LQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDI2ICsrKysr
-KysrKysrKysrKysrKysrKysrLS0tCiAxIGZpbGUgY2hhbmdlZCwgMjMgaW5zZXJ0aW9ucygrKSwg
-MyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92
-b3AuYwppbmRleCAyZjgyMWM1Li5jZTViNDVkIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmMKQEAgLTI0OSw2ICsyNDksMjUgQEAgc3RhdGljIGJvb2wgaGFz
-X3JiX3N3YXBwZWQodWludDMyX3QgZm9ybWF0KQogCX0KIH0KIAorc3RhdGljIGludCB2b3BfZm9y
-bWF0X2dldF9icHAodTMyIGZvcm1hdCwgdTggcGxhbmUpCit7CisJY29uc3Qgc3RydWN0IGRybV9m
-b3JtYXRfaW5mbyAqaW5mbzsKKworCWluZm8gPSBkcm1fZm9ybWF0X2luZm8oZm9ybWF0KTsKKwlp
-ZiAoIWluZm8gfHwgcGxhbmUgPj0gaW5mby0+bnVtX3BsYW5lcykKKwkJcmV0dXJuIDA7CisKKwlp
-ZiAoaW5mby0+Y3BwWzBdID09IDApIHsKKwkJLyogb25seSBzdXBwb3J0IERSTV9GT1JNQVRfTlZ4
-eF8xMCBub3cgKi8KKwkJaWYgKHBsYW5lID09IDApCisJCQlyZXR1cm4gMTA7CisJCWVsc2UKKwkJ
-CXJldHVybiAyMDsKKwl9CisKKwlyZXR1cm4gaW5mby0+Y3BwW3BsYW5lXSAqIDg7Cit9CisKIHN0
-YXRpYyBlbnVtIHZvcF9kYXRhX2Zvcm1hdCB2b3BfY29udmVydF9mb3JtYXQodWludDMyX3QgZm9y
-bWF0KQogewogCXN3aXRjaCAoZm9ybWF0KSB7CkBAIC04MzIsNyArODUxLDggQEAgc3RhdGljIHZv
-aWQgdm9wX3BsYW5lX2F0b21pY191cGRhdGUoc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCiAJZHNw
-X3N0eSA9IGRlc3QtPnkxICsgY3J0Yy0+bW9kZS52dG90YWwgLSBjcnRjLT5tb2RlLnZzeW5jX3N0
-YXJ0OwogCWRzcF9zdCA9IGRzcF9zdHkgPDwgMTYgfCAoZHNwX3N0eCAmIDB4ZmZmZik7CiAKLQlv
-ZmZzZXQgPSAoc3JjLT54MSA+PiAxNikgKiBmYi0+Zm9ybWF0LT5jcHBbMF07CisJb2Zmc2V0ID0g
-KHNyYy0+eDEgPj4gMTYpICoKKwkJCXZvcF9mb3JtYXRfZ2V0X2JwcChmYi0+Zm9ybWF0LT5mb3Jt
-YXQsIDApIC8gODsKIAlvZmZzZXQgKz0gKHNyYy0+eTEgPj4gMTYpICogZmItPnBpdGNoZXNbMF07
-CiAJZG1hX2FkZHIgPSBya19vYmotPmRtYV9hZGRyICsgb2Zmc2V0ICsgZmItPm9mZnNldHNbMF07
-CiAKQEAgLTg1OSwxMiArODc5LDEyIEBAIHN0YXRpYyB2b2lkIHZvcF9wbGFuZV9hdG9taWNfdXBk
-YXRlKHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lLAogCWlmIChpc195dXYpIHsKIAkJaW50IGhzdWIg
-PSBmYi0+Zm9ybWF0LT5oc3ViOwogCQlpbnQgdnN1YiA9IGZiLT5mb3JtYXQtPnZzdWI7Ci0JCWlu
-dCBicHAgPSBmYi0+Zm9ybWF0LT5jcHBbMV07CisJCWludCBicHAgPSB2b3BfZm9ybWF0X2dldF9i
-cHAoZmItPmZvcm1hdC0+Zm9ybWF0LCAxKTsKIAogCQl1dl9vYmogPSBmYi0+b2JqWzFdOwogCQly
-a191dl9vYmogPSB0b19yb2NrY2hpcF9vYmoodXZfb2JqKTsKIAotCQlvZmZzZXQgPSAoc3JjLT54
-MSA+PiAxNikgKiBicHAgLyBoc3ViOworCQlvZmZzZXQgPSAoc3JjLT54MSA+PiAxNikgKiBicHAg
-LyA4IC8gaHN1YjsKIAkJb2Zmc2V0ICs9IChzcmMtPnkxID4+IDE2KSAqIGZiLT5waXRjaGVzWzFd
-IC8gdnN1YjsKIAogCQlkbWFfYWRkciA9IHJrX3V2X29iai0+ZG1hX2FkZHIgKyBvZmZzZXQgKyBm
-Yi0+b2Zmc2V0c1sxXTsKLS0gCjIuNy40CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbA==
+Add support 10bit yuv format display for rockchip some socs,
+include:
+    RK3288/RK3228/RK3328/RK3368/RK3399
+
+Signed-off-by: Sandy Huang <hjc@rock-chips.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 16 ++++++++++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h |  1 +
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c |  2 ++
+ 3 files changed, 19 insertions(+)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index ce5b45d..9cb9fff 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -249,6 +249,21 @@ static bool has_rb_swapped(uint32_t format)
+ 	}
+ }
+ 
++static bool is_yuv_10bit(uint32_t format)
++{
++	switch (format) {
++	case DRM_FORMAT_NV12_10:
++	case DRM_FORMAT_NV21_10:
++	case DRM_FORMAT_NV16_10:
++	case DRM_FORMAT_NV61_10:
++	case DRM_FORMAT_NV24_10:
++	case DRM_FORMAT_NV42_10:
++		return true;
++	default:
++		return false;
++	}
++}
++
+ static int vop_format_get_bpp(u32 format, u8 plane)
+ {
+ 	const struct drm_format_info *info;
+@@ -890,6 +905,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+ 		dma_addr = rk_uv_obj->dma_addr + offset + fb->offsets[1];
+ 		VOP_WIN_SET(vop, win, uv_vir, DIV_ROUND_UP(fb->pitches[1], 4));
+ 		VOP_WIN_SET(vop, win, uv_mst, dma_addr);
++		VOP_WIN_SET(vop, win, fmt_10, is_yuv_10bit(fb->format->format));
+ 
+ 		for (i = 0; i < NUM_YUV2YUV_COEFFICIENTS; i++) {
+ 			VOP_WIN_YUV2YUV_COEFFICIENT_SET(vop,
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+index 2149a889..adc2b0b5 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+@@ -133,6 +133,7 @@ struct vop_win_phy {
+ 	struct vop_reg gate;
+ 	struct vop_reg format;
+ 	struct vop_reg rb_swap;
++	struct vop_reg fmt_10;
+ 	struct vop_reg act_info;
+ 	struct vop_reg dsp_info;
+ 	struct vop_reg dsp_st;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+index d1494be..732e535 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+@@ -544,6 +544,7 @@ static const struct vop_win_phy rk3288_win01_data = {
+ 	.nformats = ARRAY_SIZE(formats_win_full),
+ 	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
+ 	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
++	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
+ 	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
+ 	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
+ 	.dsp_info = VOP_REG(RK3288_WIN0_DSP_INFO, 0x0fff0fff, 0),
+@@ -674,6 +675,7 @@ static const struct vop_win_phy rk3368_win01_data = {
+ 	.nformats = ARRAY_SIZE(formats_win_full),
+ 	.enable = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 0),
+ 	.format = VOP_REG(RK3368_WIN0_CTRL0, 0x7, 1),
++	.fmt_10 = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 4),
+ 	.rb_swap = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 12),
+ 	.x_mir_en = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 21),
+ 	.y_mir_en = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 22),
+-- 
+2.7.4
