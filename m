@@ -1,80 +1,421 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: [PATCH v2 3/3] drm/rockchip: Add support 10bit yuv format
-Date: Thu, 26 Sep 2019 16:24:49 +0800
-Message-ID: <1569486289-152061-4-git-send-email-hjc@rock-chips.com>
-References: <1569486289-152061-1-git-send-email-hjc@rock-chips.com>
+From: Andrew Murray <andrew.murray@arm.com>
+Subject: Re: [PATCH 06/11] PCI: of: Add inbound resource parsing to helpers
+Date: Thu, 26 Sep 2019 09:29:58 +0100
+Message-ID: <20190926082958.GV9720@e119886-lin.cambridge.arm.com>
+References: <20190924214630.12817-1-robh@kernel.org>
+ <20190924214630.12817-7-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1569486289-152061-1-git-send-email-hjc@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20190924214630.12817-7-robh@kernel.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rob Herring <robh@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Ryder Lee <ryder.lee@mediatek.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Michal Simek <michal.simek@xilinx.com>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Shawn Lin <shawn.lin@rock-chips.com>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>, linux-mediatek@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>, Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboards.org, linux-renesas-soc@vger.kernel.org, Tom Joseph <tjoseph@caden>
 List-Id: linux-rockchip.vger.kernel.org
 
-QWRkIHN1cHBvcnQgMTBiaXQgeXV2IGZvcm1hdCBkaXNwbGF5IGZvciByb2NrY2hpcCBzb21lIHNv
-Y3MsCmluY2x1ZGU6CiAgICBSSzMyODgvUkszMjI4L1JLMzMyOC9SSzMzNjgvUkszMzk5CgpTaWdu
-ZWQtb2ZmLWJ5OiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgotLS0KIGRyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAxNiArKysrKysrKysrKysrKysr
-CiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oIHwgIDEgKwogZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyB8ICAyICsrCiAzIGZpbGVz
-IGNoYW5nZWQsIDE5IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV92b3AuYwppbmRleCBjZTc0MjE4Li40Yjg3ZDg4IDEwMDY0NAotLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCisrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKQEAgLTI0OSw2ICsyNDksMjEgQEAgc3Rh
-dGljIGJvb2wgaGFzX3JiX3N3YXBwZWQodWludDMyX3QgZm9ybWF0KQogCX0KIH0KIAorc3RhdGlj
-IGJvb2wgaXNfMTBiaXRfeXV2KHVpbnQzMl90IGZvcm1hdCkKK3sKKwlzd2l0Y2ggKGZvcm1hdCkg
-eworCWNhc2UgRFJNX0ZPUk1BVF9OVjEyXzEwOgorCWNhc2UgRFJNX0ZPUk1BVF9OVjIxXzEwOgor
-CWNhc2UgRFJNX0ZPUk1BVF9OVjE2XzEwOgorCWNhc2UgRFJNX0ZPUk1BVF9OVjYxXzEwOgorCWNh
-c2UgRFJNX0ZPUk1BVF9OVjI0XzEwOgorCWNhc2UgRFJNX0ZPUk1BVF9OVjQyXzEwOgorCQlyZXR1
-cm4gdHJ1ZTsKKwlkZWZhdWx0OgorCQlyZXR1cm4gZmFsc2U7CisJfQorfQorCiBzdGF0aWMgdTMy
-IHJvY2tjaGlwX3ZvcF9nZXRfb2Zmc2V0KHN0cnVjdCBkcm1fcGxhbmVfc3RhdGUgKnN0YXRlLCB1
-OCBwbGFuZSkKIHsKIAljb25zdCBzdHJ1Y3QgZHJtX2Zvcm1hdF9pbmZvICppbmZvOwpAQCAtOTEz
-LDYgKzkyOCw3IEBAIHN0YXRpYyB2b2lkIHZvcF9wbGFuZV9hdG9taWNfdXBkYXRlKHN0cnVjdCBk
-cm1fcGxhbmUgKnBsYW5lLAogCQlkbWFfYWRkciA9IHJrX3V2X29iai0+ZG1hX2FkZHIgKyBvZmZz
-ZXQgKyBmYi0+b2Zmc2V0c1sxXTsKIAkJVk9QX1dJTl9TRVQodm9wLCB3aW4sIHV2X3ZpciwgRElW
-X1JPVU5EX1VQKGZiLT5waXRjaGVzWzFdLCA0KSk7CiAJCVZPUF9XSU5fU0VUKHZvcCwgd2luLCB1
-dl9tc3QsIGRtYV9hZGRyKTsKKwkJVk9QX1dJTl9TRVQodm9wLCB3aW4sIGZtdF8xMCwgaXNfMTBi
-aXRfeXV2KGZiLT5mb3JtYXQtPmZvcm1hdCkpOwogCiAJCWZvciAoaSA9IDA7IGkgPCBOVU1fWVVW
-MllVVl9DT0VGRklDSUVOVFM7IGkrKykgewogCQkJVk9QX1dJTl9ZVVYyWVVWX0NPRUZGSUNJRU5U
-X1NFVCh2b3AsCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-ZHJtX3ZvcC5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaApp
-bmRleCAyMTQ5YTg4OS4uYWRjMmIwYjUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV92b3AuaApAQCAtMTMzLDYgKzEzMyw3IEBAIHN0cnVjdCB2b3Bfd2luX3BoeSB7
-CiAJc3RydWN0IHZvcF9yZWcgZ2F0ZTsKIAlzdHJ1Y3Qgdm9wX3JlZyBmb3JtYXQ7CiAJc3RydWN0
-IHZvcF9yZWcgcmJfc3dhcDsKKwlzdHJ1Y3Qgdm9wX3JlZyBmbXRfMTA7CiAJc3RydWN0IHZvcF9y
-ZWcgYWN0X2luZm87CiAJc3RydWN0IHZvcF9yZWcgZHNwX2luZm87CiAJc3RydWN0IHZvcF9yZWcg
-ZHNwX3N0OwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3Zv
-cF9yZWcuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKaW5k
-ZXggZDE0OTRiZS4uNzMyZTUzNSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX3ZvcF9yZWcuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfdm9wX3JlZy5jCkBAIC01NDQsNiArNTQ0LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3Bf
-d2luX3BoeSByazMyODhfd2luMDFfZGF0YSA9IHsKIAkubmZvcm1hdHMgPSBBUlJBWV9TSVpFKGZv
-cm1hdHNfd2luX2Z1bGwpLAogCS5lbmFibGUgPSBWT1BfUkVHKFJLMzI4OF9XSU4wX0NUUkwwLCAw
-eDEsIDApLAogCS5mb3JtYXQgPSBWT1BfUkVHKFJLMzI4OF9XSU4wX0NUUkwwLCAweDcsIDEpLAor
-CS5mbXRfMTAgPSBWT1BfUkVHKFJLMzI4OF9XSU4wX0NUUkwwLCAweDEsIDQpLAogCS5yYl9zd2Fw
-ID0gVk9QX1JFRyhSSzMyODhfV0lOMF9DVFJMMCwgMHgxLCAxMiksCiAJLmFjdF9pbmZvID0gVk9Q
-X1JFRyhSSzMyODhfV0lOMF9BQ1RfSU5GTywgMHgxZmZmMWZmZiwgMCksCiAJLmRzcF9pbmZvID0g
-Vk9QX1JFRyhSSzMyODhfV0lOMF9EU1BfSU5GTywgMHgwZmZmMGZmZiwgMCksCkBAIC02NzQsNiAr
-Njc1LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3Bfd2luX3BoeSByazMzNjhfd2luMDFfZGF0
-YSA9IHsKIAkubmZvcm1hdHMgPSBBUlJBWV9TSVpFKGZvcm1hdHNfd2luX2Z1bGwpLAogCS5lbmFi
-bGUgPSBWT1BfUkVHKFJLMzM2OF9XSU4wX0NUUkwwLCAweDEsIDApLAogCS5mb3JtYXQgPSBWT1Bf
-UkVHKFJLMzM2OF9XSU4wX0NUUkwwLCAweDcsIDEpLAorCS5mbXRfMTAgPSBWT1BfUkVHKFJLMzM2
-OF9XSU4wX0NUUkwwLCAweDEsIDQpLAogCS5yYl9zd2FwID0gVk9QX1JFRyhSSzMzNjhfV0lOMF9D
-VFJMMCwgMHgxLCAxMiksCiAJLnhfbWlyX2VuID0gVk9QX1JFRyhSSzMzNjhfV0lOMF9DVFJMMCwg
-MHgxLCAyMSksCiAJLnlfbWlyX2VuID0gVk9QX1JFRyhSSzMzNjhfV0lOMF9DVFJMMCwgMHgxLCAy
-MiksCi0tIAoyLjcuNAoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
-cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWw=
+On Tue, Sep 24, 2019 at 04:46:25PM -0500, Rob Herring wrote:
+> Extend devm_of_pci_get_host_bridge_resources() and
+> pci_parse_request_of_pci_ranges() helpers to also parse the inbound
+> addresses from DT 'dma-ranges' and populate a resource list with the
+> translated addresses. This will help ensure 'dma-ranges' is always
+> parsed in a consistent way.
+> 
+> Cc: Jingoo Han <jingoohan1@gmail.com>
+> Cc: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
+> Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+> Cc: Bjorn Helgaas <bhelgaas@google.com>
+> Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+> Cc: Will Deacon <will@kernel.org>
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: Toan Le <toan@os.amperecomputing.com>
+> Cc: Ley Foon Tan <lftan@altera.com>
+> Cc: Tom Joseph <tjoseph@cadence.com>
+> Cc: Ray Jui <rjui@broadcom.com>
+> Cc: Scott Branden <sbranden@broadcom.com>
+> Cc: bcm-kernel-feedback-list@broadcom.com
+> Cc: Ryder Lee <ryder.lee@mediatek.com>
+> Cc: Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>
+> Cc: Hou Zhiqiang <Zhiqiang.Hou@nxp.com>
+> Cc: Simon Horman <horms@verge.net.au>
+> Cc: Shawn Lin <shawn.lin@rock-chips.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Michal Simek <michal.simek@xilinx.com>
+> Cc: rfi@lists.rocketboards.org
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-renesas-soc@vger.kernel.org
+> Cc: linux-rockchip@lists.infradead.org
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+
+Reviewed-by: Andrew Murray <andrew.murray@arm.com>
+
+>  .../pci/controller/dwc/pcie-designware-host.c |  3 +-
+>  drivers/pci/controller/pci-aardvark.c         |  2 +-
+>  drivers/pci/controller/pci-ftpci100.c         |  3 +-
+>  drivers/pci/controller/pci-host-common.c      |  2 +-
+>  drivers/pci/controller/pci-v3-semi.c          |  2 +-
+>  drivers/pci/controller/pci-versatile.c        |  2 +-
+>  drivers/pci/controller/pci-xgene.c            |  1 +
+>  drivers/pci/controller/pcie-altera.c          |  2 +-
+>  drivers/pci/controller/pcie-cadence-host.c    |  2 +-
+>  drivers/pci/controller/pcie-iproc-platform.c  |  1 +
+>  drivers/pci/controller/pcie-mediatek.c        |  2 +-
+>  drivers/pci/controller/pcie-mobiveil.c        |  4 +-
+>  drivers/pci/controller/pcie-rcar.c            |  3 +-
+>  drivers/pci/controller/pcie-rockchip-host.c   |  3 +-
+>  drivers/pci/controller/pcie-xilinx-nwl.c      |  2 +-
+>  drivers/pci/controller/pcie-xilinx.c          |  2 +-
+>  drivers/pci/of.c                              | 44 ++++++++++++++++++-
+>  drivers/pci/pci.h                             |  8 +++-
+>  include/linux/pci.h                           |  2 +
+>  19 files changed, 72 insertions(+), 18 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
+> index f93252d0da5b..0743ae64bb0f 100644
+> --- a/drivers/pci/controller/dwc/pcie-designware-host.c
+> +++ b/drivers/pci/controller/dwc/pcie-designware-host.c
+> @@ -342,7 +342,8 @@ int dw_pcie_host_init(struct pcie_port *pp)
+>  		return -ENOMEM;
+>  
+>  	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
+> -					&bridge->windows, &pp->io_base);
+> +					&bridge->windows, &bridge->dma_ranges,
+> +					&pp->io_base);
+>  	if (ret)
+>  		return ret;
+>  
+> diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
+> index ff3af3d34028..c00b391529f3 100644
+> --- a/drivers/pci/controller/pci-aardvark.c
+> +++ b/drivers/pci/controller/pci-aardvark.c
+> @@ -940,7 +940,7 @@ static int advk_pcie_probe(struct platform_device *pdev)
+>  	}
+>  
+>  	ret = pci_parse_request_of_pci_ranges(dev, &pcie->resources,
+> -					      &bus);
+> +					      &bridge->dma_ranges, &bus);
+>  	if (ret) {
+>  		dev_err(dev, "Failed to parse resources\n");
+>  		return ret;
+> diff --git a/drivers/pci/controller/pci-ftpci100.c b/drivers/pci/controller/pci-ftpci100.c
+> index bf5ece5d9291..3e07a8203736 100644
+> --- a/drivers/pci/controller/pci-ftpci100.c
+> +++ b/drivers/pci/controller/pci-ftpci100.c
+> @@ -481,7 +481,8 @@ static int faraday_pci_probe(struct platform_device *pdev)
+>  		return PTR_ERR(p->base);
+>  
+>  	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
+> -						    &res, &io_base);
+> +						    &res, &host->dma_ranges,
+> +						    &io_base);
+>  	if (ret)
+>  		return ret;
+>  
+> diff --git a/drivers/pci/controller/pci-host-common.c b/drivers/pci/controller/pci-host-common.c
+> index c742881b5061..183381c19ee8 100644
+> --- a/drivers/pci/controller/pci-host-common.c
+> +++ b/drivers/pci/controller/pci-host-common.c
+> @@ -27,7 +27,7 @@ static struct pci_config_window *gen_pci_init(struct device *dev,
+>  	struct pci_config_window *cfg;
+>  
+>  	/* Parse our PCI ranges and request their resources */
+> -	err = pci_parse_request_of_pci_ranges(dev, resources, &bus_range);
+> +	err = pci_parse_request_of_pci_ranges(dev, resources, NULL, &bus_range);
+>  	if (err)
+>  		return ERR_PTR(err);
+>  
+> diff --git a/drivers/pci/controller/pci-v3-semi.c b/drivers/pci/controller/pci-v3-semi.c
+> index d219404bad92..090df766faf9 100644
+> --- a/drivers/pci/controller/pci-v3-semi.c
+> +++ b/drivers/pci/controller/pci-v3-semi.c
+> @@ -794,7 +794,7 @@ static int v3_pci_probe(struct platform_device *pdev)
+>  		return PTR_ERR(v3->config_base);
+>  
+>  	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &res,
+> -						    &io_base);
+> +						    &host->dma_ranges, &io_base);
+>  	if (ret)
+>  		return ret;
+>  
+> diff --git a/drivers/pci/controller/pci-versatile.c b/drivers/pci/controller/pci-versatile.c
+> index 237b1abb26f2..211159f54b4a 100644
+> --- a/drivers/pci/controller/pci-versatile.c
+> +++ b/drivers/pci/controller/pci-versatile.c
+> @@ -93,7 +93,7 @@ static int versatile_pci_probe(struct platform_device *pdev)
+>  	if (IS_ERR(versatile_cfg_base[1]))
+>  		return PTR_ERR(versatile_cfg_base[1]);
+>  
+> -	ret = pci_parse_request_of_pci_ranges(dev, &pci_res, NULL);
+> +	ret = pci_parse_request_of_pci_ranges(dev, &pci_res, NULL, NULL);
+>  	if (ret)
+>  		return ret;
+>  
+> diff --git a/drivers/pci/controller/pci-xgene.c b/drivers/pci/controller/pci-xgene.c
+> index ffda3e8b4742..11f27c42c06a 100644
+> --- a/drivers/pci/controller/pci-xgene.c
+> +++ b/drivers/pci/controller/pci-xgene.c
+> @@ -635,6 +635,7 @@ static int xgene_pcie_probe(struct platform_device *pdev)
+>  		return ret;
+>  
+>  	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &res,
+> +						    &bridge->dma_ranges,
+>  						    &iobase);
+>  	if (ret)
+>  		return ret;
+> diff --git a/drivers/pci/controller/pcie-altera.c b/drivers/pci/controller/pcie-altera.c
+> index 2ed00babff5a..fde6a3b16fb9 100644
+> --- a/drivers/pci/controller/pcie-altera.c
+> +++ b/drivers/pci/controller/pcie-altera.c
+> @@ -801,7 +801,7 @@ static int altera_pcie_probe(struct platform_device *pdev)
+>  	}
+>  
+>  	ret = pci_parse_request_of_pci_ranges(dev, &pcie->resources,
+> -					      NULL);
+> +					      &bridge->dma_ranges, NULL);
+>  	if (ret) {
+>  		dev_err(dev, "Failed add resources\n");
+>  		return ret;
+> diff --git a/drivers/pci/controller/pcie-cadence-host.c b/drivers/pci/controller/pcie-cadence-host.c
+> index 97e251090b4f..a8f7a6284c3e 100644
+> --- a/drivers/pci/controller/pcie-cadence-host.c
+> +++ b/drivers/pci/controller/pcie-cadence-host.c
+> @@ -211,7 +211,7 @@ static int cdns_pcie_host_init(struct device *dev,
+>  	int err;
+>  
+>  	/* Parse our PCI ranges and request their resources */
+> -	err = pci_parse_request_of_pci_ranges(dev, resources, &bus_range);
+> +	err = pci_parse_request_of_pci_ranges(dev, resources, NULL, &bus_range);
+>  	if (err)
+>  		return err;
+>  
+> diff --git a/drivers/pci/controller/pcie-iproc-platform.c b/drivers/pci/controller/pcie-iproc-platform.c
+> index 5a3550b6bb29..62eee2d17f43 100644
+> --- a/drivers/pci/controller/pcie-iproc-platform.c
+> +++ b/drivers/pci/controller/pcie-iproc-platform.c
+> @@ -101,6 +101,7 @@ static int iproc_pcie_pltfm_probe(struct platform_device *pdev)
+>  	}
+>  
+>  	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &resources,
+> +						    &bridge->dma_ranges,
+>  						    &iobase);
+>  	if (ret) {
+>  		dev_err(dev, "unable to get PCI host bridge resources\n");
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index cea4112b5309..f3996eed152d 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -1032,7 +1032,7 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
+>  	int err;
+>  
+>  	err = pci_parse_request_of_pci_ranges(dev, windows,
+> -					      &bus);
+> +					      &host->dma_ranges, &bus);
+>  	if (err)
+>  		return err;
+>  
+> diff --git a/drivers/pci/controller/pcie-mobiveil.c b/drivers/pci/controller/pcie-mobiveil.c
+> index 672e633601c7..93064faaa656 100644
+> --- a/drivers/pci/controller/pcie-mobiveil.c
+> +++ b/drivers/pci/controller/pcie-mobiveil.c
+> @@ -875,7 +875,9 @@ static int mobiveil_pcie_probe(struct platform_device *pdev)
+>  
+>  	/* parse the host bridge base addresses from the device tree file */
+>  	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
+> -						    &pcie->resources, &iobase);
+> +						    &pcie->resources,
+> +						    &bridge->dma_ranges,
+> +						    &iobase);
+>  	if (ret) {
+>  		dev_err(dev, "Getting bridge resources failed\n");
+>  		return ret;
+> diff --git a/drivers/pci/controller/pcie-rcar.c b/drivers/pci/controller/pcie-rcar.c
+> index f6a669a9af41..b8d6e86a5539 100644
+> --- a/drivers/pci/controller/pcie-rcar.c
+> +++ b/drivers/pci/controller/pcie-rcar.c
+> @@ -1138,7 +1138,8 @@ static int rcar_pcie_probe(struct platform_device *pdev)
+>  	pcie->dev = dev;
+>  	platform_set_drvdata(pdev, pcie);
+>  
+> -	err = pci_parse_request_of_pci_ranges(dev, &pcie->resources, NULL);
+> +	err = pci_parse_request_of_pci_ranges(dev, &pcie->resources,
+> +					      &bridge->dma_ranges, NULL);
+>  	if (err)
+>  		goto err_free_bridge;
+>  
+> diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
+> index 8d20f1793a61..093b816b9dc9 100644
+> --- a/drivers/pci/controller/pcie-rockchip-host.c
+> +++ b/drivers/pci/controller/pcie-rockchip-host.c
+> @@ -996,7 +996,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  		goto err_deinit_port;
+>  
+>  	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
+> -						    &res, &io_base);
+> +						    &res, &bridge->dma_ranges,
+> +						    &io_base);
+>  	if (err)
+>  		goto err_remove_irq_domain;
+>  
+> diff --git a/drivers/pci/controller/pcie-xilinx-nwl.c b/drivers/pci/controller/pcie-xilinx-nwl.c
+> index 45c0f344ccd1..5c9132a02d15 100644
+> --- a/drivers/pci/controller/pcie-xilinx-nwl.c
+> +++ b/drivers/pci/controller/pcie-xilinx-nwl.c
+> @@ -846,7 +846,7 @@ static int nwl_pcie_probe(struct platform_device *pdev)
+>  	}
+>  
+>  	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &res,
+> -						    &iobase);
+> +						    &bridge->dma_ranges, &iobase);
+>  	if (err) {
+>  		dev_err(dev, "Getting bridge resources failed\n");
+>  		return err;
+> diff --git a/drivers/pci/controller/pcie-xilinx.c b/drivers/pci/controller/pcie-xilinx.c
+> index 5bf3af3b28e6..a95faca30291 100644
+> --- a/drivers/pci/controller/pcie-xilinx.c
+> +++ b/drivers/pci/controller/pcie-xilinx.c
+> @@ -648,7 +648,7 @@ static int xilinx_pcie_probe(struct platform_device *pdev)
+>  	}
+>  
+>  	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &res,
+> -						    &iobase);
+> +						    &bridge->dma_ranges, &iobase);
+>  	if (err) {
+>  		dev_err(dev, "Getting bridge resources failed\n");
+>  		return err;
+> diff --git a/drivers/pci/of.c b/drivers/pci/of.c
+> index bc7b27a28795..8d31e078461f 100644
+> --- a/drivers/pci/of.c
+> +++ b/drivers/pci/of.c
+> @@ -257,7 +257,9 @@ EXPORT_SYMBOL_GPL(of_pci_check_probe_only);
+>   */
+>  int devm_of_pci_get_host_bridge_resources(struct device *dev,
+>  			unsigned char busno, unsigned char bus_max,
+> -			struct list_head *resources, resource_size_t *io_base)
+> +			struct list_head *resources,
+> +			struct list_head *ib_resources,
+> +			resource_size_t *io_base)
+>  {
+>  	struct device_node *dev_node = dev->of_node;
+>  	struct resource *res, tmp_res;
+> @@ -340,6 +342,42 @@ int devm_of_pci_get_host_bridge_resources(struct device *dev,
+>  		pci_add_resource_offset(resources, res,	res->start - range.pci_addr);
+>  	}
+>  
+> +	/* Check for dma-ranges property */
+> +	if (!ib_resources)
+> +		return 0;
+> +	err = of_pci_dma_range_parser_init(&parser, dev_node);
+> +	if (err)
+> +		return 0;
+> +
+> +	dev_dbg(dev, "Parsing dma-ranges property...\n");
+> +	for_each_of_pci_range(&parser, &range) {
+> +		/*
+> +		 * If we failed translation or got a zero-sized region
+> +		 * then skip this range
+> +		 */
+> +		if (((range.flags & IORESOURCE_TYPE_BITS) != IORESOURCE_MEM) ||
+> +		    range.cpu_addr == OF_BAD_ADDR || range.size == 0)
+> +			continue;
+> +
+> +		dev_info(dev, "IB MEM %#010llx..%#010llx -> %#010llx\n",
+> +			 range.cpu_addr,
+> +			 range.cpu_addr + range.size - 1, range.pci_addr);
+> +
+> +
+> +		err = of_pci_range_to_resource(&range, dev_node, &tmp_res);
+> +		if (err)
+> +			continue;
+> +
+> +		res = devm_kmemdup(dev, &tmp_res, sizeof(tmp_res), GFP_KERNEL);
+> +		if (!res) {
+> +			err = -ENOMEM;
+> +			goto failed;
+> +		}
+> +
+> +		pci_add_resource_offset(ib_resources, res,
+> +					res->start - range.pci_addr);
+> +	}
+> +
+>  	return 0;
+>  
+>  failed:
+> @@ -482,6 +520,7 @@ EXPORT_SYMBOL_GPL(of_irq_parse_and_map_pci);
+>  
+>  int pci_parse_request_of_pci_ranges(struct device *dev,
+>  				    struct list_head *resources,
+> +				    struct list_head *ib_resources,
+>  				    struct resource **bus_range)
+>  {
+>  	int err, res_valid = 0;
+> @@ -489,8 +528,9 @@ int pci_parse_request_of_pci_ranges(struct device *dev,
+>  	struct resource_entry *win, *tmp;
+>  
+>  	INIT_LIST_HEAD(resources);
+> +	INIT_LIST_HEAD(ib_resources);
+>  	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, resources,
+> -						    &iobase);
+> +						    ib_resources, &iobase);
+>  	if (err)
+>  		return err;
+>  
+> diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
+> index d22d1b807701..790458953c54 100644
+> --- a/drivers/pci/pci.h
+> +++ b/drivers/pci/pci.h
+> @@ -582,11 +582,15 @@ of_pci_get_max_link_speed(struct device_node *node)
+>  #if defined(CONFIG_OF_ADDRESS)
+>  int devm_of_pci_get_host_bridge_resources(struct device *dev,
+>  			unsigned char busno, unsigned char bus_max,
+> -			struct list_head *resources, resource_size_t *io_base);
+> +			struct list_head *resources,
+> +			struct list_head *ib_resources,
+> +			resource_size_t *io_base);
+>  #else
+>  static inline int devm_of_pci_get_host_bridge_resources(struct device *dev,
+>  			unsigned char busno, unsigned char bus_max,
+> -			struct list_head *resources, resource_size_t *io_base)
+> +			struct list_head *resources,
+> +			struct list_head *ib_resources,
+> +			resource_size_t *io_base);
+>  {
+>  	return -EINVAL;
+>  }
+> diff --git a/include/linux/pci.h b/include/linux/pci.h
+> index 82e4cd1b7ac3..d57389b86f92 100644
+> --- a/include/linux/pci.h
+> +++ b/include/linux/pci.h
+> @@ -2312,6 +2312,7 @@ void pci_release_bus_of_node(struct pci_bus *bus);
+>  struct irq_domain *pci_host_bridge_of_msi_domain(struct pci_bus *bus);
+>  int pci_parse_request_of_pci_ranges(struct device *dev,
+>  				    struct list_head *resources,
+> +				    struct list_head *ib_resources,
+>  				    struct resource **bus_range);
+>  
+>  /* Arch may override this (weak) */
+> @@ -2326,6 +2327,7 @@ static inline struct irq_domain *
+>  pci_host_bridge_of_msi_domain(struct pci_bus *bus) { return NULL; }
+>  static inline int pci_parse_request_of_pci_ranges(struct device *dev,
+>  						  struct list_head *resources,
+> +						  struct list_head *ib_resources,
+>  						  struct resource **bus_range)
+>  {
+>  	return -EINVAL;
+> -- 
+> 2.20.1
+> 
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
