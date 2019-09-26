@@ -1,111 +1,80 @@
 From: Sandy Huang <hjc@rock-chips.com>
-Subject: [PATCH v2 2/3] drm/rockchip: Add rockchip_vop_get_offset to get offset
-Date: Thu, 26 Sep 2019 16:24:48 +0800
-Message-ID: <1569486289-152061-3-git-send-email-hjc@rock-chips.com>
+Subject: [PATCH v2 3/3] drm/rockchip: Add support 10bit yuv format
+Date: Thu, 26 Sep 2019 16:24:49 +0800
+Message-ID: <1569486289-152061-4-git-send-email-hjc@rock-chips.com>
 References: <1569486289-152061-1-git-send-email-hjc@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <1569486289-152061-1-git-send-email-hjc@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Cc: maarten.lankhorst@linux.intel.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add rockchip_vop_get_offset to get offset, this can compatible legacy
-and block_h/w format describe.
-
-Signed-off-by: Sandy Huang <hjc@rock-chips.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 61 ++++++++++++++++++++++++-----
- 1 file changed, 52 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 2f821c5..ce74218 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -249,6 +249,56 @@ static bool has_rb_swapped(uint32_t format)
- 	}
- }
- 
-+static u32 rockchip_vop_get_offset(struct drm_plane_state *state, u8 plane)
-+{
-+	const struct drm_format_info *info;
-+	struct drm_rect *src = &state->src;
-+	struct drm_framebuffer *fb = state->fb;
-+	u32 format = fb->format->format;
-+	u8 h_div = 1, v_div = 1;
-+	u32 block_w, block_h, block_size, block_start_y, num_hblocks;
-+	u32 sample_x, sample_y;
-+	u32 offset;
-+
-+	info = drm_format_info(format);
-+	if (!info || plane >= info->num_planes)
-+		return 0;
-+
-+	if (plane > 0) {
-+		h_div = fb->format->hsub;
-+		v_div = fb->format->vsub;
-+	}
-+
-+	switch (format) {
-+	case DRM_FORMAT_NV12_10:
-+	case DRM_FORMAT_NV21_10:
-+	case DRM_FORMAT_NV16_10:
-+	case DRM_FORMAT_NV61_10:
-+	case DRM_FORMAT_NV24_10:
-+	case DRM_FORMAT_NV42_10:
-+		block_w = drm_format_info_block_width(fb->format, plane);
-+		block_h = drm_format_info_block_height(fb->format, plane);
-+		block_size = fb->format->char_per_block[plane];
-+
-+		sample_x = (src->x1 >> 16) / h_div;
-+		sample_y = (src->y1 >> 16) / v_div;
-+		block_start_y = (sample_y / block_h) * block_h;
-+		num_hblocks = sample_x / block_w;
-+
-+		offset = fb->pitches[plane] * block_start_y;
-+		offset += block_size * num_hblocks;
-+
-+		break;
-+	default:
-+		offset = (src->x1 >> 16) * fb->format->cpp[plane] / h_div;
-+		offset += (src->y1 >> 16) * fb->pitches[plane] / v_div;
-+
-+		break;
-+	}
-+
-+	return offset;
-+}
-+
- static enum vop_data_format vop_convert_format(uint32_t format)
- {
- 	switch (format) {
-@@ -832,8 +882,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 	dsp_sty = dest->y1 + crtc->mode.vtotal - crtc->mode.vsync_start;
- 	dsp_st = dsp_sty << 16 | (dsp_stx & 0xffff);
- 
--	offset = (src->x1 >> 16) * fb->format->cpp[0];
--	offset += (src->y1 >> 16) * fb->pitches[0];
-+	offset = rockchip_vop_get_offset(state, 0);
- 	dma_addr = rk_obj->dma_addr + offset + fb->offsets[0];
- 
- 	/*
-@@ -857,16 +906,10 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 		    (state->rotation & DRM_MODE_REFLECT_X) ? 1 : 0);
- 
- 	if (is_yuv) {
--		int hsub = fb->format->hsub;
--		int vsub = fb->format->vsub;
--		int bpp = fb->format->cpp[1];
--
- 		uv_obj = fb->obj[1];
- 		rk_uv_obj = to_rockchip_obj(uv_obj);
- 
--		offset = (src->x1 >> 16) * bpp / hsub;
--		offset += (src->y1 >> 16) * fb->pitches[1] / vsub;
--
-+		offset = rockchip_vop_get_offset(state, 1);
- 		dma_addr = rk_uv_obj->dma_addr + offset + fb->offsets[1];
- 		VOP_WIN_SET(vop, win, uv_vir, DIV_ROUND_UP(fb->pitches[1], 4));
- 		VOP_WIN_SET(vop, win, uv_mst, dma_addr);
--- 
-2.7.4
+QWRkIHN1cHBvcnQgMTBiaXQgeXV2IGZvcm1hdCBkaXNwbGF5IGZvciByb2NrY2hpcCBzb21lIHNv
+Y3MsCmluY2x1ZGU6CiAgICBSSzMyODgvUkszMjI4L1JLMzMyOC9SSzMzNjgvUkszMzk5CgpTaWdu
+ZWQtb2ZmLWJ5OiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgotLS0KIGRyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAxNiArKysrKysrKysrKysrKysr
+CiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oIHwgIDEgKwogZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyB8ICAyICsrCiAzIGZpbGVz
+IGNoYW5nZWQsIDE5IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV92b3AuYwppbmRleCBjZTc0MjE4Li40Yjg3ZDg4IDEwMDY0NAotLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCisrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKQEAgLTI0OSw2ICsyNDksMjEgQEAgc3Rh
+dGljIGJvb2wgaGFzX3JiX3N3YXBwZWQodWludDMyX3QgZm9ybWF0KQogCX0KIH0KIAorc3RhdGlj
+IGJvb2wgaXNfMTBiaXRfeXV2KHVpbnQzMl90IGZvcm1hdCkKK3sKKwlzd2l0Y2ggKGZvcm1hdCkg
+eworCWNhc2UgRFJNX0ZPUk1BVF9OVjEyXzEwOgorCWNhc2UgRFJNX0ZPUk1BVF9OVjIxXzEwOgor
+CWNhc2UgRFJNX0ZPUk1BVF9OVjE2XzEwOgorCWNhc2UgRFJNX0ZPUk1BVF9OVjYxXzEwOgorCWNh
+c2UgRFJNX0ZPUk1BVF9OVjI0XzEwOgorCWNhc2UgRFJNX0ZPUk1BVF9OVjQyXzEwOgorCQlyZXR1
+cm4gdHJ1ZTsKKwlkZWZhdWx0OgorCQlyZXR1cm4gZmFsc2U7CisJfQorfQorCiBzdGF0aWMgdTMy
+IHJvY2tjaGlwX3ZvcF9nZXRfb2Zmc2V0KHN0cnVjdCBkcm1fcGxhbmVfc3RhdGUgKnN0YXRlLCB1
+OCBwbGFuZSkKIHsKIAljb25zdCBzdHJ1Y3QgZHJtX2Zvcm1hdF9pbmZvICppbmZvOwpAQCAtOTEz
+LDYgKzkyOCw3IEBAIHN0YXRpYyB2b2lkIHZvcF9wbGFuZV9hdG9taWNfdXBkYXRlKHN0cnVjdCBk
+cm1fcGxhbmUgKnBsYW5lLAogCQlkbWFfYWRkciA9IHJrX3V2X29iai0+ZG1hX2FkZHIgKyBvZmZz
+ZXQgKyBmYi0+b2Zmc2V0c1sxXTsKIAkJVk9QX1dJTl9TRVQodm9wLCB3aW4sIHV2X3ZpciwgRElW
+X1JPVU5EX1VQKGZiLT5waXRjaGVzWzFdLCA0KSk7CiAJCVZPUF9XSU5fU0VUKHZvcCwgd2luLCB1
+dl9tc3QsIGRtYV9hZGRyKTsKKwkJVk9QX1dJTl9TRVQodm9wLCB3aW4sIGZtdF8xMCwgaXNfMTBi
+aXRfeXV2KGZiLT5mb3JtYXQtPmZvcm1hdCkpOwogCiAJCWZvciAoaSA9IDA7IGkgPCBOVU1fWVVW
+MllVVl9DT0VGRklDSUVOVFM7IGkrKykgewogCQkJVk9QX1dJTl9ZVVYyWVVWX0NPRUZGSUNJRU5U
+X1NFVCh2b3AsCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX3ZvcC5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaApp
+bmRleCAyMTQ5YTg4OS4uYWRjMmIwYjUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV92b3AuaApAQCAtMTMzLDYgKzEzMyw3IEBAIHN0cnVjdCB2b3Bfd2luX3BoeSB7
+CiAJc3RydWN0IHZvcF9yZWcgZ2F0ZTsKIAlzdHJ1Y3Qgdm9wX3JlZyBmb3JtYXQ7CiAJc3RydWN0
+IHZvcF9yZWcgcmJfc3dhcDsKKwlzdHJ1Y3Qgdm9wX3JlZyBmbXRfMTA7CiAJc3RydWN0IHZvcF9y
+ZWcgYWN0X2luZm87CiAJc3RydWN0IHZvcF9yZWcgZHNwX2luZm87CiAJc3RydWN0IHZvcF9yZWcg
+ZHNwX3N0OwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3Zv
+cF9yZWcuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKaW5k
+ZXggZDE0OTRiZS4uNzMyZTUzNSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX3ZvcF9yZWcuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfdm9wX3JlZy5jCkBAIC01NDQsNiArNTQ0LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3Bf
+d2luX3BoeSByazMyODhfd2luMDFfZGF0YSA9IHsKIAkubmZvcm1hdHMgPSBBUlJBWV9TSVpFKGZv
+cm1hdHNfd2luX2Z1bGwpLAogCS5lbmFibGUgPSBWT1BfUkVHKFJLMzI4OF9XSU4wX0NUUkwwLCAw
+eDEsIDApLAogCS5mb3JtYXQgPSBWT1BfUkVHKFJLMzI4OF9XSU4wX0NUUkwwLCAweDcsIDEpLAor
+CS5mbXRfMTAgPSBWT1BfUkVHKFJLMzI4OF9XSU4wX0NUUkwwLCAweDEsIDQpLAogCS5yYl9zd2Fw
+ID0gVk9QX1JFRyhSSzMyODhfV0lOMF9DVFJMMCwgMHgxLCAxMiksCiAJLmFjdF9pbmZvID0gVk9Q
+X1JFRyhSSzMyODhfV0lOMF9BQ1RfSU5GTywgMHgxZmZmMWZmZiwgMCksCiAJLmRzcF9pbmZvID0g
+Vk9QX1JFRyhSSzMyODhfV0lOMF9EU1BfSU5GTywgMHgwZmZmMGZmZiwgMCksCkBAIC02NzQsNiAr
+Njc1LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3Bfd2luX3BoeSByazMzNjhfd2luMDFfZGF0
+YSA9IHsKIAkubmZvcm1hdHMgPSBBUlJBWV9TSVpFKGZvcm1hdHNfd2luX2Z1bGwpLAogCS5lbmFi
+bGUgPSBWT1BfUkVHKFJLMzM2OF9XSU4wX0NUUkwwLCAweDEsIDApLAogCS5mb3JtYXQgPSBWT1Bf
+UkVHKFJLMzM2OF9XSU4wX0NUUkwwLCAweDcsIDEpLAorCS5mbXRfMTAgPSBWT1BfUkVHKFJLMzM2
+OF9XSU4wX0NUUkwwLCAweDEsIDQpLAogCS5yYl9zd2FwID0gVk9QX1JFRyhSSzMzNjhfV0lOMF9D
+VFJMMCwgMHgxLCAxMiksCiAJLnhfbWlyX2VuID0gVk9QX1JFRyhSSzMzNjhfV0lOMF9DVFJMMCwg
+MHgxLCAyMSksCiAJLnlfbWlyX2VuID0gVk9QX1JFRyhSSzMzNjhfV0lOMF9DVFJMMCwgMHgxLCAy
+MiksCi0tIAoyLjcuNAoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWw=
