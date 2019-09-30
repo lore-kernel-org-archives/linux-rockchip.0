@@ -1,89 +1,81 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 4/7] dt-bindings: chosen: Add clocksource and clockevent
- selection
-Date: Mon, 30 Sep 2019 09:32:46 -0500
-Message-ID: <20190930143246.GA19967@bogus>
-References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
- <1568123236-767-5-git-send-email-claudiu.beznea@microchip.com>
- <20190910143231.GB14966@e107533-lin.cambridge.arm.com>
- <ab43b209-78fa-0cab-b8ea-acd4c550e689@microchip.com>
- <20190910150826.GA18308@e107533-lin.cambridge.arm.com>
- <20190910151055.GX21254@piout.net>
- <CACRpkda4mmpbPWa2nD93CvD6HWzcTUDzyyLdQxC2gNB7XiJF3w@mail.gmail.com>
- <a2aca46a-8eb9-d8a8-de42-9850a8a8f44c@microchip.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: [PATCH v3 0/5] RK3288 Gamma LUT
+Date: Mon, 30 Sep 2019 19:27:57 -0300
+Message-ID: <20190930222802.32088-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <a2aca46a-8eb9-d8a8-de42-9850a8a8f44c@microchip.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-snps-arc>,
- <mailto:linux-snps-arc-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-snps-arc/>
-List-Post: <mailto:linux-snps-arc@lists.infradead.org>
-List-Help: <mailto:linux-snps-arc-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-snps-arc>,
- <mailto:linux-snps-arc-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-snps-arc" <linux-snps-arc-bounces@lists.infradead.org>
-Errors-To: linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org
-To: Claudiu.Beznea@microchip.com
-Cc: tmaimon77@gmail.com, linus.walleij@linaro.org, nsekhar@ti.com, guoren@kernel.org, linux-stm32@st-md-mailman.stormreply.com, heiko@sntech.de, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, khilman@baylibre.com, Ludovic.Desroches@microchip.com, linux-imx@nxp.com, u.kleine-koenig@pengutronix.de, uclinux-h8-devel@lists.sourceforge.jp, marc.zyngier@arm.com, s.hauer@pengutronix.de, linux-unisoc@lists.infradead.org, khalasa@piap.pl, tglx@linutronix.de, sbranden@broadcom.com, linux-kernel@vger.kernel.org, ralf@linux-mips.org, paul.burton@mips.com, kernel@pengutronix.de, mark.rutland@arm.com, alexandre.belloni@bootlin.com, jhogan@kernel.org, palmer@sifive.com, eric@anholt.net, thierry.reding@gmail.com, manivannan.sadhasivam@linaro.org, ysato@users.sourceforge.jp, zhang.lyra@gmail.com, daniel.lezcano@linaro.org, jonathanh@nvidia.com, bgolaszewski@baylibre.co
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>, Douglas Anderson <dianders@chromium.org>, Jacopo Mondi <jacopo@jmondi.org>, Ilia Mirkin <imirkin@alum.mit.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Sep 11, 2019 at 07:18:07AM +0000, Claudiu.Beznea@microchip.com wrote:
-> 
-> 
-> On 11.09.2019 03:03, Linus Walleij wrote:
-> > External E-Mail
-> > 
-> > 
-> > On Tue, Sep 10, 2019 at 4:11 PM Alexandre Belloni
-> > <alexandre.belloni@bootlin.com> wrote:
-> >> On 10/09/2019 16:08:26+0100, Sudeep Holla wrote:
-> >>> On Tue, Sep 10, 2019 at 02:51:50PM +0000, Claudiu.Beznea@microchip.com wrote:
-> > 
-> >>> In that case, why can't we identify capability that with the compatibles
-> >>> for this timer IP ?
-> >>>
-> >>> IOW, I don't like the proposal as it's hardware limitation.
-> >>
-> >> To be clear, bot timers are exactly the same but can't be clocksource
-> >> and clockevent at the same time. Why would we have different compatibles
-> >> for the exact same IP?
-> > 
-> > In that case why not just pick the first one you find as clocksource
-> > and the second one as clock event? As they all come to the
-> > same timer of init function two simple local state variables can
-> > solve that:
-> > 
-> > static bool registered_clocksource;
-> > static bool registered_clockevent;
-> > 
-> > probe(timer) {
-> >    if (!registered_clocksource) {
-> >        register_clocksource(timer);
-> >        registrered_clocksource = true;
-> >        return;
-> >    }
-> >    if (!registered_clockevent) {
-> >        register_clockevent(timer);
-> >        registered_clockevent = true;
-> >        return;
-> >    }
-> >    pr_info("surplus timer %p\n", timer);
-> > }
-> > 
-> 
-> That was also my proposal for the driver I'm sending this series for (see
-> [1]) but it has been proposed to implement a mechanism similar to this one
-> in this series (see [2] and [3]).
+Let's support Gamma LUT configuration on RK3288 SoCs.
 
-This comes up over and over, and the answer is still no. Either each 
-block is identical and doesn't matter which one is used for what or 
-there is some h/w difference that you should describe. 
+In order to do so, this series adds a new and optional
+address resource.
+    
+A separate address resource is required because on this RK3288,
+the LUT address is after the MMU address, which is requested
+by the iommu driver. This prevents the DRM driver
+from requesting an entire register space.
 
-If you want something that would even be considered to put into DT, 
-then define something BSD or other OS's could use too. (That's not a 
-suggestion to respin this with generalized names.)
+The current implementation works for RGB 10-bit tables, as that
+is what seems to work on RK3288.
 
-Rob
+This has been tested on a Rock2 Square board, using
+'modetest' tool (modetest now supports GAMMA_LUT property),
+with legacy and atomic APIs.
+
+In addition, I've tested it with Jacopo's modified kmsxx [1],
+See the rcar-du color management series for more information [2].
+
+[1] https://jmondi.org/cgit/kmsxx/
+[2] https://lkml.org/lkml/2019/9/6/490
+
+Thanks,
+Eze
+
+Changes from v2:
+* revert Sean Paul's patch, in order to use
+  atomic_commit_tail hook.
+* add RFC/patch for color management on resume.
+
+Changes from v1:
+* drop explicit linear LUT after finding a proper
+  way to disable gamma correction.
+* avoid setting gamma is the CRTC is not active.
+* s/int/unsigned int as suggested by Jacopo.
+* only enable color management and set gamma size
+  if gamma LUT is supported, suggested by Doug.
+* drop the reg-names usage, and instead just use indexed reg
+  specifiers, suggested by Doug.
+
+Changes from RFC:
+* Request (an optional) address resource for the LUT.
+* Add devicetree changes.
+* Drop support for RK3399, which doesn't seem to work
+  out of the box and needs more research.
+* Support pass-thru setting when GAMMA_LUT is NULL.
+* Add a check for the gamma size, as suggested by Ilia.
+* Move gamma setting to atomic_commit_tail, as pointed
+  out by Jacopo/Laurent, is the correct way.
+
+Ezequiel Garcia (5):
+  Revert "drm/rockchip: Use drm_atomic_helper_commit_tail_rpm"
+  dt-bindings: display: rockchip: document VOP gamma LUT address
+  drm/rockchip: Add optional support for CRTC gamma LUT
+  ARM: dts: rockchip: Add RK3288 VOP gamma LUT address
+  RFC: drm/atomic-helper: Reapply color transformation after resume
+
+ .../display/rockchip/rockchip-vop.txt         |   6 +-
+ arch/arm/boot/dts/rk3288.dtsi                 |   4 +-
+ drivers/gpu/drm/drm_atomic_helper.c           |  12 ++
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c    |  24 +++-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c   | 114 ++++++++++++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h   |   7 ++
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c   |   2 +
+ 7 files changed, 165 insertions(+), 4 deletions(-)
+
+-- 
+2.22.0
