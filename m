@@ -1,206 +1,101 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 2/8] dt-bindings: sram: Convert SRAM bindings to
- json-schema
-Date: Tue, 1 Oct 2019 09:00:03 -0500
-Message-ID: <20191001140003.GA31344@bogus>
-References: <20190918173141.4314-1-krzk@kernel.org>
- <20190918173141.4314-2-krzk@kernel.org>
+From: Jacopo Mondi <jacopo@jmondi.org>
+Subject: Re: [PATCH v3 5/5] RFC: drm/atomic-helper: Reapply color
+ transformation after resume
+Date: Tue, 1 Oct 2019 16:52:22 +0200
+Message-ID: <20191001145222.32aapomoqlaxpvbb@uno.localdomain>
+References: <20190930222802.32088-1-ezequiel@collabora.com>
+ <20190930222802.32088-6-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="zl62uyu5oe5zzls3"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190918173141.4314-2-krzk@kernel.org>
+In-Reply-To: <20190930222802.32088-6-ezequiel@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Thierry Reding <thierry.reding@gmail.com>, Matt Mackall <mpm@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>, Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-pwm@vger.kernel.org, linux-tegra@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>, Douglas Anderson <dianders@chromium.org>, Ilia Mirkin <imirkin@alum.mit.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Sep 18, 2019 at 07:31:35PM +0200, Krzysztof Kozlowski wrote:
-> Convert generic mmio-sram bindings to DT schema format using
-> json-schema.
 
-I've been slow getting to this because I started on the same thing...
+--zl62uyu5oe5zzls3
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> 
+Hi Ezequiel,
+
+On Mon, Sep 30, 2019 at 07:28:02PM -0300, Ezequiel Garcia wrote:
+> Some platforms are not able to maintain the color transformation
+> state after a system suspend/resume cycle.
+>
+> Set the colog_mgmt_changed flag so that CMM on the CRTCs in
+
+CMM is the name of the Renesas unit for color enanchement. It should
+not be used here as this will apply to all platforms.
+
+> the suspend state are reapplied after system resume.
+>
+> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 > ---
-> 
-> Changes since v1:
-> 1. Indent example with four spaces (more readable).
+> This is an RFC, and it's mostly based on Jacopo Mondi's work https://lkml.org/lkml/2019/9/6/498.
+>
+> Changes from v2:
+> * New patch.
 > ---
->  .../devicetree/bindings/sram/sram.txt         |  80 ----------
->  .../devicetree/bindings/sram/sram.yaml        | 138 ++++++++++++++++++
->  2 files changed, 138 insertions(+), 80 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/sram/sram.txt
->  create mode 100644 Documentation/devicetree/bindings/sram/sram.yaml
+>  drivers/gpu/drm/drm_atomic_helper.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_atomic_helper.c
+> index e41db0f202ca..518488125575 100644
+> --- a/drivers/gpu/drm/drm_atomic_helper.c
+> +++ b/drivers/gpu/drm/drm_atomic_helper.c
+> @@ -3234,8 +3234,20 @@ int drm_atomic_helper_resume(struct drm_device *dev,
+>  			     struct drm_atomic_state *state)
+>  {
+>  	struct drm_modeset_acquire_ctx ctx;
+> +	struct drm_crtc_state *crtc_state;
+> +	struct drm_crtc *crtc;
+> +	unsigned int i;
+>  	int err;
+>
+> +	for_each_new_crtc_in_state(state, crtc, crtc_state, i) {
+> +		/*
+> +		 * Force re-enablement of CMM after system resume if any
+> +		 * of the DRM color transformation properties was set in
+> +		 * the state saved at system suspend time.
+> +		 */
+> +		if (crtc_state->gamma_lut)
 
-> diff --git a/Documentation/devicetree/bindings/sram/sram.yaml b/Documentation/devicetree/bindings/sram/sram.yaml
-> new file mode 100644
-> index 000000000000..8d9d6ce494b2
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sram/sram.yaml
-> @@ -0,0 +1,138 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sram/sram.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Generic on-chip SRAM
-> +
-> +maintainers:
-> +  - FIXME <who@should.it.be>
+Please note that in my original patch I only took gamma_lut into
+account as that's what our CMM supports at the moment, but you should
+here consider the degamma_lut and cmt flags in the crtc_state.
 
-You can put me.
+> +			crtc_state->color_mgmt_changed = true;
+> +	}
+>  	drm_mode_config_reset(dev);
+>
+>  	DRM_MODESET_LOCK_ALL_BEGIN(dev, ctx, 0, err);
+> --
+> 2.22.0
+>
 
-> +
-> +description: |+
-> +  Simple IO memory regions to be managed by the genalloc API.
-> +
-> +  Each child of the sram node specifies a region of reserved memory. Each
-> +  child node should use a 'reg' property to specify a specific range of
-> +  reserved memory.
-> +
-> +  Following the generic-names recommended practice, node names should
-> +  reflect the purpose of the node. Unit address (@<address>) should be
-> +  appended to the name.
-> +
-> +properties:
-> +  $nodename:
-> +    pattern: "^sram(@.*)?"
-> +
-> +  compatible:
-> +    items:
-> +      - enum:
-> +          - mmio-sram
-> +          - atmel,sama5d2-securam
+--zl62uyu5oe5zzls3
+Content-Type: application/pgp-signature; name="signature.asc"
 
-I was trying to go down the path of putting all the compatibles for 
-various SRAM bindings here, but I ran into some issues. I need to 
-revisit as I've forgotten the exact issue.
+-----BEGIN PGP SIGNATURE-----
 
-This would need to be a 'contains' if this is going to work for others.
+iQIzBAABCAAdFiEEtcQ9SICaIIqPWDjAcjQGjxahVjwFAl2TaCYACgkQcjQGjxah
+VjyNJA//aSwBuTdB7lLcaiEaE+P3RsAcLZl6sS/EGaTO5tsvgJD43qhcW0FyAZdV
+8ABNJ3e+W7ZgTzkHWVBvs6Y5eQlE3AvvAhXFPEjL9ca9Y/rRLgcF6mQ8GQCqsYO7
+dvBkd1bpWG7XBOO5KzSLSDbIsjDRmDbpFVQHtTWDJZN/LzIqZHoGPZL9Tc7yoAY7
+9MW3av52glPOWqTJj9zscg/Y7BWuapCmmPPV97iLUPKVtvN/G+2fgIVxushM2e3K
+TJvYsU63CZ5pzKX1U02UBbs0KKsENRRjWCTcGs2gf5xq0WhBs+lC0uZAclNkw/lu
+wd5ehPD3CaE2NiBECnHtptxEZE+jMzzP7jmDojYHILG0NqV6pcVVHdZsYK7AE/qb
+CfqDtLn6HnbaZZcia7Smp50QpTGY5z46Qe9l15CH/wtzjywwyKyl9GvuEK18ycx5
+6iwGZW0PYHJnAQwh0U4F92akAXIOf5xfpW2358jlIr8iwmSE5UgrqA4YcDDPGDfs
+7YvBDUBn/Bs0RYUetb/+HI5rcYZsWdBkpL/cHP6y+8yItmdS9IyYlHS6pXxm3X04
+dS7tEaUs29GYJKsVshqq7ORctg0pd4ebsSsZeyqTLq7YmzXefjzpHihSvuKt0oMU
+pqCdnYKZkFUm70gLJXTHVVjSty7YOBB428DgPlWTFmgNUvVUqec=
+=hYRk
+-----END PGP SIGNATURE-----
 
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  "#address-cells":
-> +    description: Should use the same values as the root node.
-> +
-> +  "#size-cells":
-> +    description: Should use the same values as the root node.
-
-I defined both of these to be 1 as 4GB of SRAM should be enough for a 
-while. We can debate 1 or 2 cells vs. 1, but there's no reason it has to 
-be the same as the root (unless we're failing to do address 
-translation).
-
-> +
-> +  ranges:
-> +    description:
-> +      Should translate from local addresses within the sram to bus addresses.
-> +
-> +  no-memory-wc:
-> +    description:
-> +      The flag indicating, that SRAM memory region has not to be remapped
-> +      as write combining. WC is used by default.
-> +    type: boolean
-> +
-> +  # TODO: additionalProperties: false
-> +
-> +patternProperties:
-> +  "^([a-z]*-)?sram@[a-f0-9]$":
-> +    type: object
-> +    description:
-> +      Each child of the sram node specifies a region of reserved memory.
-> +    properties:
-> +      reg:
-> +        description:
-> +          IO mem address range, relative to the SRAM range.
-
-maxItems: 1
-
-> +
-> +      compatible:
-> +        $ref: /schemas/types.yaml#/definitions/string
-> +        description:
-> +          Should contain a vendor specific string in the form
-> +          <vendor>,[<device>-]<usage>
-> +
-> +      pool:
-> +        description:
-> +          Indicates that the particular reserved SRAM area is addressable
-> +          and in use by another device or devices.
-> +        type: boolean
-> +
-> +      export:
-> +        description:
-> +          Indicates that the reserved SRAM area may be accessed outside
-> +          of the kernel, e.g. by bootloader or userspace.
-> +        type: boolean
-> +
-> +      protect-exec:
-> +        description: |
-> +          Same as 'pool' above but with the additional constraint that code
-> +          will be run from the region and that the memory is maintained as
-> +          read-only, executable during code execution. NOTE: This region must
-> +          be page aligned on start and end in order to properly allow
-> +          manipulation of the page attributes.
-> +        type: boolean
-> +
-> +      label:
-> +        $ref: /schemas/types.yaml#/definitions/string
-
-Already has a type definition.
-
-> +        description:
-> +          The name for the reserved partition, if omitted, the label is taken
-> +          from the node name excluding the unit address.
-> +
-> +      clocks:
-> +        description:
-> +          A list of phandle and clock specifier pair that controls the
-> +          single SRAM clock.
-> +
-> +      # TODO: additionalProperties: false
-> +
-> +    required:
-> +      - reg
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - "#address-cells"
-> +  - "#size-cells"
-> +  - ranges
-> +
-> +examples:
-> +  - |
-> +    sram: sram@5c000000 {
-> +        compatible = "mmio-sram";
-> +        reg = <0x5c000000 0x40000>; /* 256 KiB SRAM at address 0x5c000000 */
-> +
-> +        #address-cells = <1>;
-> +        #size-cells = <1>;
-> +        ranges = <0 0x5c000000 0x40000>;
-> +
-> +        smp-sram@100 {
-> +            compatible = "socvendor,smp-sram";
-> +            reg = <0x100 0x50>;
-> +        };
-> +
-> +        device-sram@1000 {
-> +            reg = <0x1000 0x1000>;
-> +            pool;
-> +        };
-> +
-> +        exported@20000 {
-> +            reg = <0x20000 0x20000>;
-> +            export;
-> +        };
-> +    };
-> -- 
-> 2.17.1
-> 
+--zl62uyu5oe5zzls3--
