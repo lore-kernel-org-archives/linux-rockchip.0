@@ -1,64 +1,64 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH 1/6] arm64: dts: rockchip: Fix rk3399-roc-pc pwm2 pin
-Date: Tue, 1 Oct 2019 15:56:14 +0530
-Message-ID: <CAMty3ZDKaywoPxCSD-5N2pLjtGmZ-dZ7ZgUOJqiB1V_9rfR26A@mail.gmail.com>
+Subject: Re: [PATCH 4/6] arm64: dts: rockchip: Rename roc-pc with libretech notation
+Date: Tue, 1 Oct 2019 16:03:54 +0530
+Message-ID: <CAMty3ZBZ0kXsc-4EwUwy9rAHcDvhhYL1JWkyhhdvSvfRdyvvwA@mail.gmail.com>
 References: <20190919052822.10403-1-jagan@amarulasolutions.com>
- <20190919052822.10403-2-jagan@amarulasolutions.com> <6797961.eJj5WIFbM9@phil>
+ <20190919052822.10403-5-jagan@amarulasolutions.com> <4177305.6QI6aNXrAv@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <6797961.eJj5WIFbM9@phil>
+In-Reply-To: <4177305.6QI6aNXrAv@phil>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Levin Du <djw@t-chip.com.cn>, Akash Gajjar <akash@openedev.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Da Xue <da@lessconfused.com>, devicetree <devicetree@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-
-On Mon, Sep 30, 2019 at 2:51 AM Heiko Stuebner <heiko@sntech.de> wrote:
+On Mon, Sep 30, 2019 at 3:02 AM Heiko Stuebner <heiko@sntech.de> wrote:
 >
 > Hi Jagan,
 >
-> Am Donnerstag, 19. September 2019, 07:28:17 CEST schrieb Jagan Teki:
-> > ROC-PC is not able to boot linux console if PWM2_d is
-> > unattached to any pinctrl logic.
+> Am Donnerstag, 19. September 2019, 07:28:20 CEST schrieb Jagan Teki:
+> > Though the ROC-PC is manufactured by firefly, it is co-designed
+> > by libretch like other Libretech computer boards from allwinner,
+> > amlogic does.
 > >
-> > To be precise the linux boot hang with last logs as,
-> > ...
-> > .....
-> > [    0.003367] Console: colour dummy device 80x25
-> > [    0.003788] printk: console [tty0] enabled
-> > [    0.004178] printk: bootconsole [uart8250] disabled
+> > So, it is always meaningful to keep maintain those vendors who
+> > are part of design participation so-that the linux mainline
+> > code will expose outside world who are the makers of such
+> > hardware prototypes.
 > >
-> > In ROC-PC the PWM2_d pin is connected to LOG_DVS_PWM of
-> > VDD_LOG. So, for normal working operations this needs to
-> > active and pull-down.
+> > So, rename the existing rk3399-roc-pc.dts with libretch notation,
+> > rk3399-libretech-roc-rk3399-pc.dts
 > >
-> > This patch fix, by attaching pinctrl active and pull-down
-> > the pwm2.
+> > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/Makefile                           | 2 +-
+> >  .../{rk3399-roc-pc.dts => rk3399-libretech-roc-rk3399-pc.dts}   | 0
 >
-> This looks highly dubious on first glance. The pwm subsystem nor
-> the Rockchip pwm driver do not do any pinctrl handling.
+> Somewhat "randomly" renaming files for "exposure" of the maker isn't the
+> way to go. Especially as the file name itself is merely a handle and not
+> meant for fame. The board filename should mainly enable developers to
+> hopefully the correct board file to use/change - and "rk3399-roc-pc"
+> is sufficiently unique to do that.
 >
-> So I don't really see where that "active" pinctrl state is supposed
-> to come from.
+> Similar to how the NanoPi boards do that.
 >
-> Comparing with the pwm driver in the vendor tree I see that there
-> is such a state defined there. But that code there also looks strange
-> as that driver never again leaves this active state after entering it.
+> And renames not only loose the history of changes but also in this case
+> the file is in the kernel since july 2018 - more than a year, so this might
+> actually affect the workflow of someone.
+
+Yes, I agreed this point.
+
 >
-> Also for example all the Gru devices run with quite a number of pwm-
-> regulators without needing additional fiddling with the pwm itself, so
-> I don't really see why that should be different here.
+> So I'd really expect an actual technical reason for a rename.
 
-I deed, I was supposed to think the same. but the vendor kernel dts
-from firefly do follow the pwm2 pinctrl [1]. I wouldn't find any
-information other than this vensor information, ie one of the reason I
-have marked "Levin Du" who initially supported this board.
+This changes purely based on the recent changes on naming conventions
+that have been followed in amlogic and allwinner with regards to
+libretech [1]. I have seen few Bananapi boards from Allwinner H3 has
+been converted as per Libretech computer recently. I assume these
+changes are because libretech has part of co-designed vendor and also
+open source forum supported for these hardware.
 
-One, think I have seen was this pinctrl active fixed the boot hang.
-any inputs from would be very helpful.
+For further information, may be Da Xue can comment on this.
 
-Levin Du, any inputs?
-
-[1] https://github.com/FireflyTeam/kernel/blob/stable-4.4-rk3399-linux/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi#L1184
+[1] https://libre.computer/products/boards/
