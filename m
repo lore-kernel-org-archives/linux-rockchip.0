@@ -1,72 +1,64 @@
-From: Cheng-Yi Chiang <cychiang@chromium.org>
-Subject: [PATCH] drm/bridge: dw-hdmi: Restore audio when setting a mode
-Date: Tue,  1 Oct 2019 09:00:20 +0800
-Message-ID: <20191001010020.122134-1-cychiang@chromium.org>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH 1/6] arm64: dts: rockchip: Fix rk3399-roc-pc pwm2 pin
+Date: Tue, 1 Oct 2019 15:56:14 +0530
+Message-ID: <CAMty3ZDKaywoPxCSD-5N2pLjtGmZ-dZ7ZgUOJqiB1V_9rfR26A@mail.gmail.com>
+References: <20190919052822.10403-1-jagan@amarulasolutions.com>
+ <20190919052822.10403-2-jagan@amarulasolutions.com> <6797961.eJj5WIFbM9@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-kernel@vger.kernel.org
-Cc: Jernej Skrabec <jernej.skrabec@siol.net>, tzungbi@chromium.org, alsa-devel@alsa-project.org, Jonas Karlman <jonas@kwiboo.se>, Neil Armstrong <narmstrong@baylibre.com>, dianders@chromium.org, dri-devel@lists.freedesktop.org, Jaroslav Kysela <perex@perex.cz>, Hans Verkuil <hverkuil@xs4all.nl>, linux-rockchip@lists.infradead.org, Russell King <rmk+kernel@armlinux.org.uk>, Mark Brown <broonie@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Yakir Yang <ykk@rock-chips.com>, dgreid@chromium.org, Cheng-Yi Chiang <cychiang@chromium.org>, linux-arm-kernel@lists.infradead.org, Jerome Brunet <jbrunet@baylibre.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <6797961.eJj5WIFbM9@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Levin Du <djw@t-chip.com.cn>, Akash Gajjar <akash@openedev.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Da Xue <da@lessconfused.com>, devicetree <devicetree@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Daniel Kurtz <djkurtz@chromium.org>
+Hi Heiko,
 
-When setting a new display mode, dw_hdmi_setup() calls
-dw_hdmi_enable_video_path(), which disables all hdmi clocks, including
-the audio clock.
+On Mon, Sep 30, 2019 at 2:51 AM Heiko Stuebner <heiko@sntech.de> wrote:
+>
+> Hi Jagan,
+>
+> Am Donnerstag, 19. September 2019, 07:28:17 CEST schrieb Jagan Teki:
+> > ROC-PC is not able to boot linux console if PWM2_d is
+> > unattached to any pinctrl logic.
+> >
+> > To be precise the linux boot hang with last logs as,
+> > ...
+> > .....
+> > [    0.003367] Console: colour dummy device 80x25
+> > [    0.003788] printk: console [tty0] enabled
+> > [    0.004178] printk: bootconsole [uart8250] disabled
+> >
+> > In ROC-PC the PWM2_d pin is connected to LOG_DVS_PWM of
+> > VDD_LOG. So, for normal working operations this needs to
+> > active and pull-down.
+> >
+> > This patch fix, by attaching pinctrl active and pull-down
+> > the pwm2.
+>
+> This looks highly dubious on first glance. The pwm subsystem nor
+> the Rockchip pwm driver do not do any pinctrl handling.
+>
+> So I don't really see where that "active" pinctrl state is supposed
+> to come from.
+>
+> Comparing with the pwm driver in the vendor tree I see that there
+> is such a state defined there. But that code there also looks strange
+> as that driver never again leaves this active state after entering it.
+>
+> Also for example all the Gru devices run with quite a number of pwm-
+> regulators without needing additional fiddling with the pwm itself, so
+> I don't really see why that should be different here.
 
-We should only (re-)enable the audio clock if audio was already enabled
-when setting the new mode.
+I deed, I was supposed to think the same. but the vendor kernel dts
+from firefly do follow the pwm2 pinctrl [1]. I wouldn't find any
+information other than this vensor information, ie one of the reason I
+have marked "Levin Du" who initially supported this board.
 
-Without this patch, on RK3288, there will be HDMI audio on some monitors
-if i2s was played to headphone when the monitor was plugged.
-ACER H277HU and ASUS PB278 are two of the monitors showing this issue.
+One, think I have seen was this pinctrl active fixed the boot hang.
+any inputs from would be very helpful.
 
-Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
-Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
-Signed-off-by: Yakir Yang <ykk@rock-chips.com>
----
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
+Levin Du, any inputs?
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index aa7efd4da1c8..c60e951122c9 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -1982,6 +1982,15 @@ static void hdmi_disable_overflow_interrupts(struct dw_hdmi *hdmi)
- 		    HDMI_IH_MUTE_FC_STAT2);
- }
- 
-+static void dw_hdmi_audio_restore(struct dw_hdmi *hdmi)
-+{
-+	mutex_lock(&hdmi->audio_mutex);
-+
-+	hdmi_enable_audio_clk(hdmi, hdmi->audio_enable);
-+
-+	mutex_unlock(&hdmi->audio_mutex);
-+}
-+
- static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
- {
- 	int ret;
-@@ -2045,7 +2054,7 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
- 
- 		/* HDMI Initialization Step E - Configure audio */
- 		hdmi_clk_regenerator_update_pixel_clock(hdmi);
--		hdmi_enable_audio_clk(hdmi, true);
-+		dw_hdmi_audio_restore(hdmi);
- 	}
- 
- 	/* not for DVI mode */
--- 
-2.23.0.444.g18eeb5a265-goog
+[1] https://github.com/FireflyTeam/kernel/blob/stable-4.4-rk3399-linux/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi#L1184
