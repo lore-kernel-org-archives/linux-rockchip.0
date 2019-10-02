@@ -1,217 +1,101 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: [PATCH] ARM: dts: rockchip: Use interpolated brightness tables for veyron
-Date: Tue,  1 Oct 2019 16:07:43 -0700
-Message-ID: <20191001160735.1.Ic9fd698810ea569c465350154da40b85d24f805b@changeid>
+From: <Claudiu.Beznea@microchip.com>
+Subject: Re: [PATCH 4/7] dt-bindings: chosen: Add clocksource and clockevent
+ selection
+Date: Wed, 2 Oct 2019 13:32:44 +0000
+Message-ID: <e78e7520-213c-8075-d71e-b8db2ebdceb7@microchip.com>
+References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
+ <1568123236-767-5-git-send-email-claudiu.beznea@microchip.com>
+ <20190910143231.GB14966@e107533-lin.cambridge.arm.com>
+ <ab43b209-78fa-0cab-b8ea-acd4c550e689@microchip.com>
+ <20190910150826.GA18308@e107533-lin.cambridge.arm.com>
+ <20190910151055.GX21254@piout.net>
+ <CACRpkda4mmpbPWa2nD93CvD6HWzcTUDzyyLdQxC2gNB7XiJF3w@mail.gmail.com>
+ <a2aca46a-8eb9-d8a8-de42-9850a8a8f44c@microchip.com>
+ <20190930143246.GA19967@bogus>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: Douglas Anderson <dianders@chromium.org>, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190930143246.GA19967@bogus>
+Content-Language: en-US
+Content-ID: <2405F53375D403478DD0705798481038@namprd11.prod.outlook.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-snps-arc>,
+ <mailto:linux-snps-arc-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-snps-arc/>
+List-Post: <mailto:linux-snps-arc@lists.infradead.org>
+List-Help: <mailto:linux-snps-arc-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-snps-arc>,
+ <mailto:linux-snps-arc-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-snps-arc" <linux-snps-arc-bounces@lists.infradead.org>
+Errors-To: linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org
+To: robh@kernel.org
+Cc: tmaimon77@gmail.com, linus.walleij@linaro.org, nsekhar@ti.com, guoren@kernel.org, linux-stm32@st-md-mailman.stormreply.com, heiko@sntech.de, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, khilman@baylibre.com, Ludovic.Desroches@microchip.com, linux-imx@nxp.com, u.kleine-koenig@pengutronix.de, uclinux-h8-devel@lists.sourceforge.jp, marc.zyngier@arm.com, s.hauer@pengutronix.de, linux-unisoc@lists.infradead.org, khalasa@piap.pl, tglx@linutronix.de, sbranden@broadcom.com, linux-kernel@vger.kernel.org, ralf@linux-mips.org, paul.burton@mips.com, kernel@pengutronix.de, mark.rutland@arm.com, alexandre.belloni@bootlin.com, jhogan@kernel.org, palmer@sifive.com, eric@anholt.net, thierry.reding@gmail.com, manivannan.sadhasivam@linaro.org, ysato@users.sourceforge.jp, zhang.lyra@gmail.com, daniel.lezcano@linaro.org, jonathanh@nvidia.com, bgolaszewski@baylibre.co
 List-Id: linux-rockchip.vger.kernel.org
 
-Use interpolated brightness tables (added by commit 573fe6d1c25
-("backlight: pwm_bl: Linear interpolation between
-brightness-levels") for veyron, instead of specifying every single
-step.
 
-Another option would be to switch to a perceptual brightness curve
-(CIE 1931), with the caveat that it would change the behavior of
-the backlight. Also the concept of a minimum brightness level is
-currently not supported for CIE 1931 curves.
 
-Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
----
+On 30.09.2019 17:32, Rob Herring wrote:
+> On Wed, Sep 11, 2019 at 07:18:07AM +0000, Claudiu.Beznea@microchip.com wrote:
+>>
+>>
+>> On 11.09.2019 03:03, Linus Walleij wrote:
+>>> External E-Mail
+>>>
+>>>
+>>> On Tue, Sep 10, 2019 at 4:11 PM Alexandre Belloni
+>>> <alexandre.belloni@bootlin.com> wrote:
+>>>> On 10/09/2019 16:08:26+0100, Sudeep Holla wrote:
+>>>>> On Tue, Sep 10, 2019 at 02:51:50PM +0000, Claudiu.Beznea@microchip.com wrote:
+>>>
+>>>>> In that case, why can't we identify capability that with the compatibles
+>>>>> for this timer IP ?
+>>>>>
+>>>>> IOW, I don't like the proposal as it's hardware limitation.
+>>>>
+>>>> To be clear, bot timers are exactly the same but can't be clocksource
+>>>> and clockevent at the same time. Why would we have different compatibles
+>>>> for the exact same IP?
+>>>
+>>> In that case why not just pick the first one you find as clocksource
+>>> and the second one as clock event? As they all come to the
+>>> same timer of init function two simple local state variables can
+>>> solve that:
+>>>
+>>> static bool registered_clocksource;
+>>> static bool registered_clockevent;
+>>>
+>>> probe(timer) {
+>>>    if (!registered_clocksource) {
+>>>        register_clocksource(timer);
+>>>        registrered_clocksource = true;
+>>>        return;
+>>>    }
+>>>    if (!registered_clockevent) {
+>>>        register_clockevent(timer);
+>>>        registered_clockevent = true;
+>>>        return;
+>>>    }
+>>>    pr_info("surplus timer %p\n", timer);
+>>> }
+>>>
+>>
+>> That was also my proposal for the driver I'm sending this series for (see
+>> [1]) but it has been proposed to implement a mechanism similar to this one
+>> in this series (see [2] and [3]).
+> 
+> This comes up over and over, and the answer is still no. Either each 
+> block is identical and doesn't matter which one is used for what or 
+> there is some h/w difference that you should describe. 
 
- arch/arm/boot/dts/rk3288-veyron-edp.dtsi   | 35 ++--------------------
- arch/arm/boot/dts/rk3288-veyron-jaq.dts    | 35 ++--------------------
- arch/arm/boot/dts/rk3288-veyron-minnie.dts | 35 ++--------------------
- arch/arm/boot/dts/rk3288-veyron-tiger.dts  | 35 ++--------------------
- 4 files changed, 8 insertions(+), 132 deletions(-)
+There are no hardware differences in my case. The block just cannot work at
+the same time  as clocksource and clockevent. And on SAM9X60's we want to
+use it as clockevent for high resolution timers support.
 
-diff --git a/arch/arm/boot/dts/rk3288-veyron-edp.dtsi b/arch/arm/boot/dts/rk3288-veyron-edp.dtsi
-index 773bedca872f..e95c89fe0545 100644
---- a/arch/arm/boot/dts/rk3288-veyron-edp.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron-edp.dtsi
-@@ -41,39 +41,8 @@
- 
- 	backlight: backlight {
- 		compatible = "pwm-backlight";
--		brightness-levels = <
--			  0   1   2   3   4   5   6   7
--			  8   9  10  11  12  13  14  15
--			 16  17  18  19  20  21  22  23
--			 24  25  26  27  28  29  30  31
--			 32  33  34  35  36  37  38  39
--			 40  41  42  43  44  45  46  47
--			 48  49  50  51  52  53  54  55
--			 56  57  58  59  60  61  62  63
--			 64  65  66  67  68  69  70  71
--			 72  73  74  75  76  77  78  79
--			 80  81  82  83  84  85  86  87
--			 88  89  90  91  92  93  94  95
--			 96  97  98  99 100 101 102 103
--			104 105 106 107 108 109 110 111
--			112 113 114 115 116 117 118 119
--			120 121 122 123 124 125 126 127
--			128 129 130 131 132 133 134 135
--			136 137 138 139 140 141 142 143
--			144 145 146 147 148 149 150 151
--			152 153 154 155 156 157 158 159
--			160 161 162 163 164 165 166 167
--			168 169 170 171 172 173 174 175
--			176 177 178 179 180 181 182 183
--			184 185 186 187 188 189 190 191
--			192 193 194 195 196 197 198 199
--			200 201 202 203 204 205 206 207
--			208 209 210 211 212 213 214 215
--			216 217 218 219 220 221 222 223
--			224 225 226 227 228 229 230 231
--			232 233 234 235 236 237 238 239
--			240 241 242 243 244 245 246 247
--			248 249 250 251 252 253 254 255>;
-+		brightness-levels = <0 255>;
-+		num-interpolated-steps = <254>;
- 		default-brightness-level = <128>;
- 		enable-gpios = <&gpio7 RK_PA2 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
-diff --git a/arch/arm/boot/dts/rk3288-veyron-jaq.dts b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
-index 56ad9a43a6c2..5e10cc644875 100644
---- a/arch/arm/boot/dts/rk3288-veyron-jaq.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
-@@ -21,39 +21,8 @@
- 
- &backlight {
- 	/* Jaq panel PWM must be >= 3%, so start non-zero brightness at 8 */
--	brightness-levels = <
--		  0
--		  8   9  10  11  12  13  14  15
--		 16  17  18  19  20  21  22  23
--		 24  25  26  27  28  29  30  31
--		 32  33  34  35  36  37  38  39
--		 40  41  42  43  44  45  46  47
--		 48  49  50  51  52  53  54  55
--		 56  57  58  59  60  61  62  63
--		 64  65  66  67  68  69  70  71
--		 72  73  74  75  76  77  78  79
--		 80  81  82  83  84  85  86  87
--		 88  89  90  91  92  93  94  95
--		 96  97  98  99 100 101 102 103
--		104 105 106 107 108 109 110 111
--		112 113 114 115 116 117 118 119
--		120 121 122 123 124 125 126 127
--		128 129 130 131 132 133 134 135
--		136 137 138 139 140 141 142 143
--		144 145 146 147 148 149 150 151
--		152 153 154 155 156 157 158 159
--		160 161 162 163 164 165 166 167
--		168 169 170 171 172 173 174 175
--		176 177 178 179 180 181 182 183
--		184 185 186 187 188 189 190 191
--		192 193 194 195 196 197 198 199
--		200 201 202 203 204 205 206 207
--		208 209 210 211 212 213 214 215
--		216 217 218 219 220 221 222 223
--		224 225 226 227 228 229 230 231
--		232 233 234 235 236 237 238 239
--		240 241 242 243 244 245 246 247
--		248 249 250 251 252 253 254 255>;
-+	brightness-levels = <8 255>;
-+	num-interpolated-steps = <246>;
- };
- 
- &rk808 {
-diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-index 6b0e1cb1f681..503278e60d6b 100644
---- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-@@ -39,39 +39,8 @@
- 
- &backlight {
- 	/* Minnie panel PWM must be >= 1%, so start non-zero brightness at 3 */
--	brightness-levels = <
--			  0   3   4   5   6   7
--			  8   9  10  11  12  13  14  15
--			 16  17  18  19  20  21  22  23
--			 24  25  26  27  28  29  30  31
--			 32  33  34  35  36  37  38  39
--			 40  41  42  43  44  45  46  47
--			 48  49  50  51  52  53  54  55
--			 56  57  58  59  60  61  62  63
--			 64  65  66  67  68  69  70  71
--			 72  73  74  75  76  77  78  79
--			 80  81  82  83  84  85  86  87
--			 88  89  90  91  92  93  94  95
--			 96  97  98  99 100 101 102 103
--			104 105 106 107 108 109 110 111
--			112 113 114 115 116 117 118 119
--			120 121 122 123 124 125 126 127
--			128 129 130 131 132 133 134 135
--			136 137 138 139 140 141 142 143
--			144 145 146 147 148 149 150 151
--			152 153 154 155 156 157 158 159
--			160 161 162 163 164 165 166 167
--			168 169 170 171 172 173 174 175
--			176 177 178 179 180 181 182 183
--			184 185 186 187 188 189 190 191
--			192 193 194 195 196 197 198 199
--			200 201 202 203 204 205 206 207
--			208 209 210 211 212 213 214 215
--			216 217 218 219 220 221 222 223
--			224 225 226 227 228 229 230 231
--			232 233 234 235 236 237 238 239
--			240 241 242 243 244 245 246 247
--			248 249 250 251 252 253 254 255>;
-+	brightness-levels = <3 255>;
-+	num-interpolated-steps = <251>;
- };
- 
- &i2c_tunnel {
-diff --git a/arch/arm/boot/dts/rk3288-veyron-tiger.dts b/arch/arm/boot/dts/rk3288-veyron-tiger.dts
-index 27557203ae33..e50367564dc6 100644
---- a/arch/arm/boot/dts/rk3288-veyron-tiger.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-tiger.dts
-@@ -23,39 +23,8 @@
- 
- &backlight {
- 	/* Tiger panel PWM must be >= 1%, so start non-zero brightness at 3 */
--	brightness-levels = <
--		  0   3   4   5   6   7
--		  8   9  10  11  12  13  14  15
--		 16  17  18  19  20  21  22  23
--		 24  25  26  27  28  29  30  31
--		 32  33  34  35  36  37  38  39
--		 40  41  42  43  44  45  46  47
--		 48  49  50  51  52  53  54  55
--		 56  57  58  59  60  61  62  63
--		 64  65  66  67  68  69  70  71
--		 72  73  74  75  76  77  78  79
--		 80  81  82  83  84  85  86  87
--		 88  89  90  91  92  93  94  95
--		 96  97  98  99 100 101 102 103
--		104 105 106 107 108 109 110 111
--		112 113 114 115 116 117 118 119
--		120 121 122 123 124 125 126 127
--		128 129 130 131 132 133 134 135
--		136 137 138 139 140 141 142 143
--		144 145 146 147 148 149 150 151
--		152 153 154 155 156 157 158 159
--		160 161 162 163 164 165 166 167
--		168 169 170 171 172 173 174 175
--		176 177 178 179 180 181 182 183
--		184 185 186 187 188 189 190 191
--		192 193 194 195 196 197 198 199
--		200 201 202 203 204 205 206 207
--		208 209 210 211 212 213 214 215
--		216 217 218 219 220 221 222 223
--		224 225 226 227 228 229 230 231
--		232 233 234 235 236 237 238 239
--		240 241 242 243 244 245 246 247
--		248 249 250 251 252 253 254 255>;
-+	brightness-levels = <3 255>;
-+	num-interpolated-steps = <251>;
- };
- 
- &backlight_regulator {
--- 
-2.23.0.444.g18eeb5a265-goog
+> 
+> If you want something that would even be considered to put into DT, 
+> then define something BSD or other OS's could use too. (That's not a 
+> suggestion to respin this with generalized names.)
+> 
+> Rob
+> 
+> 
