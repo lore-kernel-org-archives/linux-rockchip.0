@@ -1,154 +1,73 @@
 From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v3 1/5] clk: rockchip: Add supprot to limit input rate for fractional divider
-Date: Thu, 03 Oct 2019 11:10:06 -0700
-Message-ID: <20191003181007.4D6D620679@mail.kernel.org>
-References: <1569553244-3165-1-git-send-email-zhangqing@rock-chips.com> <1569553244-3165-2-git-send-email-zhangqing@rock-chips.com>
+Subject: Re: [PATCH v3 2/5] clk: rockchip: fix up the frac clk get rate error
+Date: Thu, 03 Oct 2019 11:11:01 -0700
+Message-ID: <20191003181102.803B120862@mail.kernel.org>
+References: <1569553244-3165-1-git-send-email-zhangqing@rock-chips.com> <1569553244-3165-3-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1569553244-3165-2-git-send-email-zhangqing@rock-chips.com>
+In-Reply-To: <1569553244-3165-3-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de
-Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, Finley Xiao <finley.xiao@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>
+Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Elaine Zhang (2019-09-26 20:00:40)
-> diff --git a/drivers/clk/rockchip/clk-px30.c b/drivers/clk/rockchip/clk-p=
-x30.c
-> index 3a501896b280..6c2f53dc73b6 100644
-> --- a/drivers/clk/rockchip/clk-px30.c
-> +++ b/drivers/clk/rockchip/clk-px30.c
-> @@ -13,6 +13,7 @@
->  #include "clk.h"
-> =20
->  #define PX30_GRF_SOC_STATUS0           0x480
-> +#define PX30_FRAC_MAX_PRATE            600000000
-> =20
->  enum px30_plls {
->         apll, dpll, cpll, npll, apll_b_h, apll_b_l,
-> @@ -420,7 +421,7 @@ enum px30_pmu_plls {
->         COMPOSITE_FRACMUX(0, "dclk_vopb_frac", "dclk_vopb_src", CLK_SET_R=
-ATE_PARENT,
->                         PX30_CLKSEL_CON(6), 0,
->                         PX30_CLKGATE_CON(2), 3, GFLAGS,
-> -                       &px30_dclk_vopb_fracmux),
-> +                       &px30_dclk_vopb_fracmux, 0),
->         GATE(DCLK_VOPB, "dclk_vopb", "dclk_vopb_mux", CLK_SET_RATE_PARENT,
->                         PX30_CLKGATE_CON(2), 4, GFLAGS),
->         COMPOSITE(0, "dclk_vopl_src", mux_npll_cpll_p, 0,
-> @@ -429,7 +430,7 @@ enum px30_pmu_plls {
->         COMPOSITE_FRACMUX(0, "dclk_vopl_frac", "dclk_vopl_src", CLK_SET_R=
-ATE_PARENT,
->                         PX30_CLKSEL_CON(9), 0,
->                         PX30_CLKGATE_CON(2), 7, GFLAGS,
-> -                       &px30_dclk_vopl_fracmux),
-> +                       &px30_dclk_vopl_fracmux, 0),
->         GATE(DCLK_VOPL, "dclk_vopl", "dclk_vopl_mux", CLK_SET_RATE_PARENT,
->                         PX30_CLKGATE_CON(2), 8, GFLAGS),
-> =20
-> @@ -555,7 +556,7 @@ enum px30_pmu_plls {
->         COMPOSITE_FRACMUX(0, "clk_pdm_frac", "clk_pdm_src", CLK_SET_RATE_=
-PARENT,
+Quoting Elaine Zhang (2019-09-26 20:00:41)
+> support fractional divider with only one level parent clock
 
-Can you make a new macro COMPOSITE_FRACMUX_PRATE or something that
-passes in another argument so that we don't have to change the users
-of this macro when they don't care?
+Please put a lot more description in here. A single sentence doesn't
+help anyone understand the motivation for the change.
 
->                         PX30_CLKSEL_CON(27), 0,
->                         PX30_CLKGATE_CON(9), 10, GFLAGS,
-> -                       &px30_pdm_fracmux),
-> +                       &px30_pdm_fracmux, PX30_FRAC_MAX_PRATE),
->         GATE(SCLK_PDM, "clk_pdm", "clk_pdm_mux", CLK_SET_RATE_PARENT,
->                         PX30_CLKGATE_CON(9), 11, GFLAGS),
-> =20
-> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk=
--rk3399.c
-> index ce1d2446f142..bda5d50c5319 100644
-> --- a/drivers/clk/rockchip/clk-rk3399.c
-> +++ b/drivers/clk/rockchip/clk-rk3399.c
-> @@ -13,6 +13,12 @@
->  #include <dt-bindings/clock/rk3399-cru.h>
->  #include "clk.h"
-> =20
-> +#define RK3399_I2S_FRAC_MAX_PRATE       800000000
-> +#define RK3399_UART_FRAC_MAX_PRATE     800000000
-> +#define RK3399_SPDIF_FRAC_MAX_PRATE    600000000
-> +#define RK3399_VOP_FRAC_MAX_PRATE      600000000
-> +#define RK3399_WIFI_FRAC_MAX_PRATE     600000000
-
-Is the "max rate" really just the frequency of the parent? If so, why
-can't round_rate() on the parent figure out what that value is and only
-provide that frequency?
-
-> +
->  enum rk3399_plls {
->         lpll, bpll, dpll, cpll, gpll, npll, vpll,
->  };
+>=20
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> ---
+>  drivers/clk/rockchip/clk.c | 19 ++++++++++++-------
+>  1 file changed, 12 insertions(+), 7 deletions(-)
+>=20
 > diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-> index 546e810c3560..fac5a4a3f5c3 100644
+> index fac5a4a3f5c3..8f77c3f9fab7 100644
 > --- a/drivers/clk/rockchip/clk.c
 > +++ b/drivers/clk/rockchip/clk.c
-> @@ -184,12 +184,26 @@ static void rockchip_fractional_approximation(struc=
+> @@ -190,16 +190,21 @@ static void rockchip_fractional_approximation(struc=
 t clk_hw *hw,
->         unsigned long p_rate, p_parent_rate;
->         struct clk_hw *p_parent;
->         unsigned long scale;
-> +       u32 div;
-
-Why u32 instead of unsigned long?
-
-> =20
->         p_rate =3D clk_hw_get_rate(clk_hw_get_parent(hw));
-> -       if ((rate * 20 > p_rate) && (p_rate % rate !=3D 0)) {
-> +       if (((rate * 20 > p_rate) && (p_rate % rate !=3D 0)) ||
-> +           (fd->max_prate && fd->max_prate < p_rate)) {
+>         if (((rate * 20 > p_rate) && (p_rate % rate !=3D 0)) ||
+>             (fd->max_prate && fd->max_prate < p_rate)) {
 >                 p_parent =3D clk_hw_get_parent(clk_hw_get_parent(hw));
->                 p_parent_rate =3D clk_hw_get_rate(p_parent);
->                 *parent_rate =3D p_parent_rate;
-> +               if (fd->max_prate && p_parent_rate > fd->max_prate) {
-> +                       div =3D DIV_ROUND_UP(p_parent_rate, fd->max_prate=
+> -               p_parent_rate =3D clk_hw_get_rate(p_parent);
+> -               *parent_rate =3D p_parent_rate;
+> -               if (fd->max_prate && p_parent_rate > fd->max_prate) {
+> -                       div =3D DIV_ROUND_UP(p_parent_rate, fd->max_prate=
 );
-> +                       *parent_rate =3D p_parent_rate / div;
-> +               }
-> +
-> +               if (*parent_rate < rate * 20) {
-
-20 seems very magical.
-
-> +                       pr_err("%s parent_rate(%ld) is low than rate(%ld)=
-*20, fractional div is not allowed\n",
-
-s/low/lower/?
-
-> +                              clk_hw_get_name(hw), *parent_rate, rate);
-> +                       *m =3D 0;
-> +                       *n =3D 1;
-> +                       return;
-> +               }
->         }
+> -                       *parent_rate =3D p_parent_rate / div;
+> +               if (!p_parent) {
+> +                       *parent_rate =3D p_rate;
+> +               } else {
+> +                       p_parent_rate =3D clk_hw_get_rate(p_parent);
+> +                       *parent_rate =3D p_parent_rate;
+> +                       if (fd->max_prate && p_parent_rate > fd->max_prat=
+e) {
+> +                               div =3D DIV_ROUND_UP(p_parent_rate,
+> +                                                  fd->max_prate);
+> +                               *parent_rate =3D p_parent_rate / div;
+> +                       }
+>                 }
 > =20
->         /*
-> diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
-> index 2ae7604783dd..30993c0630a3 100644
-> --- a/include/linux/clk-provider.h
-> +++ b/include/linux/clk-provider.h
-> @@ -624,6 +624,7 @@ struct clk_hw *clk_hw_register_fixed_factor(struct de=
-vice *dev,
->   * @mwidth:    width of the numerator bit field
->   * @nshift:    shift to the denominator bit field
->   * @nwidth:    width of the denominator bit field
-> + * @max_parent:        the maximum frequency of fractional divider paren=
-t clock
+>                 if (*parent_rate < rate * 20) {
+> -                       pr_err("%s parent_rate(%ld) is low than rate(%ld)=
+*20, fractional div is not allowed\n",
+> -                              clk_hw_get_name(hw), *parent_rate, rate);
+> +                       pr_warn("%s p_rate(%ld) is low than rate(%ld)*20,=
+ use integer or half-div\n",
+> +                               clk_hw_get_name(hw), *parent_rate, rate);
 
-This doesn't match the name of the member.
+Hm.. now it's changed to a warning?
 
->   * @lock:      register lock
->   *
->   * Clock with adjustable fractional divider affecting its output frequen=
-cy.
-> @@ -647,6 +648,7 @@ struct clk_fractional_divider {
->         u8              nwidth;
->         u32             nmask;
->         u8              flags;
-> +       unsigned long   max_prate;
+>                         *m =3D 0;
+>                         *n =3D 1;
+>                         return;
+> --=20
+> 1.9.1
+>=20
+>=20
+>=20
