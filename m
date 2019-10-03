@@ -1,118 +1,68 @@
-From: Matthias Kaehlcke <mka@chromium.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: Use interpolated brightness tables
- for veyron
-Date: Wed, 2 Oct 2019 16:44:36 -0700
-Message-ID: <20191002234436.GI87296@google.com>
-References: <20191001160735.1.Ic9fd698810ea569c465350154da40b85d24f805b@changeid>
- <CAD=FV=UnZtGN142yUu-NzVG00P=1MZ-X3aY+cjrMRCnL2D8xFg@mail.gmail.com>
+From: Cheng-Yi Chiang <cychiang@chromium.org>
+Subject: [PATCH v2] FROMLIST: drm/bridge: dw-hdmi: Restore audio when setting a mode
+Date: Thu,  3 Oct 2019 12:05:40 +0800
+Message-ID: <20191003040540.180310-1-cychiang@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAD=FV=UnZtGN142yUu-NzVG00P=1MZ-X3aY+cjrMRCnL2D8xFg@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+To: linux-kernel@vger.kernel.org
+Cc: Neil Armstrong <narmstrong@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, dianders@chromium.org, dgreid@chromium.org, tzungbi@chromium.org, alsa-devel@alsa-project.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Cheng-Yi Chiang <cychiang@chromium.org>, Yakir Yang <ykk@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Oct 02, 2019 at 03:23:54PM -0700, Doug Anderson wrote:
-> Hi,
-> 
-> On Tue, Oct 1, 2019 at 4:07 PM Matthias Kaehlcke <mka@chromium.org> wrote:
-> > --- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-> > +++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-> > @@ -39,39 +39,8 @@
-> >
-> >  &backlight {
-> >         /* Minnie panel PWM must be >= 1%, so start non-zero brightness at 3 */
-> > -       brightness-levels = <
-> > -                         0   3   4   5   6   7
-> > -                         8   9  10  11  12  13  14  15
-> > -                        16  17  18  19  20  21  22  23
-> > -                        24  25  26  27  28  29  30  31
-> > -                        32  33  34  35  36  37  38  39
-> > -                        40  41  42  43  44  45  46  47
-> > -                        48  49  50  51  52  53  54  55
-> > -                        56  57  58  59  60  61  62  63
-> > -                        64  65  66  67  68  69  70  71
-> > -                        72  73  74  75  76  77  78  79
-> > -                        80  81  82  83  84  85  86  87
-> > -                        88  89  90  91  92  93  94  95
-> > -                        96  97  98  99 100 101 102 103
-> > -                       104 105 106 107 108 109 110 111
-> > -                       112 113 114 115 116 117 118 119
-> > -                       120 121 122 123 124 125 126 127
-> > -                       128 129 130 131 132 133 134 135
-> > -                       136 137 138 139 140 141 142 143
-> > -                       144 145 146 147 148 149 150 151
-> > -                       152 153 154 155 156 157 158 159
-> > -                       160 161 162 163 164 165 166 167
-> > -                       168 169 170 171 172 173 174 175
-> > -                       176 177 178 179 180 181 182 183
-> > -                       184 185 186 187 188 189 190 191
-> > -                       192 193 194 195 196 197 198 199
-> > -                       200 201 202 203 204 205 206 207
-> > -                       208 209 210 211 212 213 214 215
-> > -                       216 217 218 219 220 221 222 223
-> > -                       224 225 226 227 228 229 230 231
-> > -                       232 233 234 235 236 237 238 239
-> > -                       240 241 242 243 244 245 246 247
-> > -                       248 249 250 251 252 253 254 255>;
-> > +       brightness-levels = <3 255>;
-> > +       num-interpolated-steps = <251>;
-> 
-> I _think_ you want:
-> 
-> brightness-levels = <0 3 255>;
-> num-interpolated-steps = <252>;
-> 
-> Specifically:
-> 
-> * It seems like you're intending to keep everything the same and just
-> have a more compact representation, right?
+From: Daniel Kurtz <djkurtz@chromium.org>
 
-Ideally yes, I thought we were missing 1 level due to the 0 step being
-missing, but it's actually 2, since I interpreted 'num-interpolated-steps'
-as the number between two values in the table, however it is this number +1.
+When setting a new display mode, dw_hdmi_setup() calls
+dw_hdmi_enable_video_path(), which disables all hdmi clocks, including
+the audio clock.
 
-> Looking through the values in '/sys/class/backlight/backlight' on
-> minnie shows differences before and after your patch.
-> 
-> * I think you want brightness of 0 to match to PWM level 0.
+We should only (re-)enable the audio clock if audio was already enabled
+when setting the new mode.
 
-For level 0 that was actually given, due to
+Without this patch, on RK3288, there will be HDMI audio on some monitors
+if i2s was played to headphone when the monitor was plugged.
+ACER H277HU and ASUS PB278 are two of the monitors showing this issue.
 
-pwm_backlight_update_status()
-{
-  ..
-  if (brightness > 0) {
-    ...
-  } else
-    pwm_backlight_power_off(pb);
-  ...
-}
+Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+---
+ Change from v1 to v2:
+ - Use audio_lock to protect audio clock.
 
-but we're slightly off for the rest of the levels.
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
-> * If I put in printouts in the code with your table, I see:
-> 
-> pwm-backlight backlight: new number of brightness levels: 252
-> pwm-backlight backlight: i=0, j=0, lc=0, value=3
-> pwm-backlight backlight: i=0, j=1, lc=1, value=4
-> ...
-> pwm-backlight backlight: i=0, j=250, lc=250, value=253
-> pwm-backlight backlight: lc=251, data->levels[i]=255
-> 
-> ...as you can see, you end up missing assigning a value of 254.
-
-Thanks for investigating. With 'num-interpolated-steps' increased
-by one this is fixed, though we are still missing one level at the
-beginning of the table. I didn't expect 'brightness-levels = <0 3 255>'
-to work, since there are less than 252/251 integer numbers between 0
-and 3, but the code actually accounts for that case and just interprets
-it as a single step, which is what we want.
-
-Long story short: you are right, we want
-
-brightness-levels = <0 3 255>;
-num-interpolated-steps = <252>;
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index aa7efd4da1c8..749d8e4c535b 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -1982,6 +1982,17 @@ static void hdmi_disable_overflow_interrupts(struct dw_hdmi *hdmi)
+ 		    HDMI_IH_MUTE_FC_STAT2);
+ }
+ 
++static void dw_hdmi_audio_restore(struct dw_hdmi *hdmi)
++{
++	unsigned long flags;
++
++	spin_lock_irqsave(&hdmi->audio_lock, flags);
++
++	hdmi_enable_audio_clk(hdmi, hdmi->audio_enable);
++
++	spin_unlock_irqrestore(&hdmi->audio_lock, flags);
++}
++
+ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
+ {
+ 	int ret;
+@@ -2045,7 +2056,7 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
+ 
+ 		/* HDMI Initialization Step E - Configure audio */
+ 		hdmi_clk_regenerator_update_pixel_clock(hdmi);
+-		hdmi_enable_audio_clk(hdmi, true);
++		dw_hdmi_audio_restore(hdmi);
+ 	}
+ 
+ 	/* not for DVI mode */
+-- 
+2.23.0.444.g18eeb5a265-goog
