@@ -1,52 +1,31 @@
-From: Soeren Moch <smoch@web.de>
-Subject: [PATCH 2/3] arm64: dts: rockchip: fix RockPro64 sdhci settings
-Date: Thu,  3 Oct 2019 23:50:35 +0200
-Message-ID: <20191003215036.15023-2-smoch@web.de>
-References: <20191003215036.15023-1-smoch@web.de>
-Content-Transfer-Encoding: quoted-printable
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 5/6] arm64: dts: rockchip: Rename vcc12v_sys into dc_12v for roc-rk3399-pc
+Date: Fri, 04 Oct 2019 00:49:42 +0200
+Message-ID: <2645663.MEMbyMBloX@phil>
+References: <20190919052822.10403-1-jagan@amarulasolutions.com> <20190919052822.10403-6-jagan@amarulasolutions.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191003215036.15023-1-smoch@web.de>
+In-Reply-To: <20190919052822.10403-6-jagan@amarulasolutions.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Soeren Moch <smoch@web.de>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: Levin Du <djw@t-chip.com.cn>, Akash Gajjar <akash@openedev.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Da Xue <da@lessconfused.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-amarula@amarulasolutions.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The RockPro64 schematics [1], [2] show that the rk3399 EMMC_STRB pin is
-connected to the RESET pin instead of the DATA_STROBE pin of the eMMC modu=
-le.
-So the data strobe cannot be used for its intended purpose on this board,
-and so the HS400 eMMC mode is not functional. Limit the controller to HS20=
-0.
+Am Donnerstag, 19. September 2019, 07:28:21 CEST schrieb Jagan Teki:
+> It is always better practice to follow regulator naming conventions
+> as per the schematics for future references.
+> 
+> This would indeed helpful to review and check the naming convention
+> directly on schematics, both for the code reviewers and the developers.
+> 
+> So, rename vcc12v_sys into dc_12v as per rk3399 power tree as per
+> roc-rk3399-pc schematics.
+> 
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 
-[1] http://files.pine64.org/doc/rockpro64/rockpro64_v21-SCH.pdf
-[2] http://files.pine64.org/doc/rock64/PINE64_eMMC_Module_20170719.pdf
+applied for 5.5 (with the filename changed to the current one of course)
 
-Fixes: e4f3fb490967 ("arm64: dts: rockchip: add initial dts support for Ro=
-ckpro64")
-Signed-off-by: Soeren Moch <smoch@web.de>
-=2D--
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-=2D--
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm6=
-4/boot/dts/rockchip/rk3399-rockpro64.dts
-index 845eb070b5b0..2e44dae4865a 100644
-=2D-- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-@@ -636,8 +636,7 @@
-
- &sdhci {
- 	bus-width =3D <8>;
--	mmc-hs400-1_8v;
--	mmc-hs400-enhanced-strobe;
-+	mmc-hs200-1_8v;
- 	non-removable;
- 	status =3D "okay";
- };
-=2D-
-2.17.1
+Thanks
+Heiko
