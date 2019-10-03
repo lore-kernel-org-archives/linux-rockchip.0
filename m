@@ -1,13 +1,23 @@
 From: Cheng-Yi Chiang <cychiang@chromium.org>
-Subject: [PATCH v2] FROMLIST: drm/bridge: dw-hdmi: Restore audio when setting a mode
-Date: Thu,  3 Oct 2019 12:05:40 +0800
-Message-ID: <20191003040540.180310-1-cychiang@chromium.org>
+Subject: [PATCH v2 RESEND] drm/bridge: dw-hdmi: Restore audio when setting a
+ mode
+Date: Thu,  3 Oct 2019 12:14:38 +0800
+Message-ID: <20191003041438.194224-1-cychiang@chromium.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: linux-kernel@vger.kernel.org
-Cc: Neil Armstrong <narmstrong@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, dianders@chromium.org, dgreid@chromium.org, tzungbi@chromium.org, alsa-devel@alsa-project.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Cheng-Yi Chiang <cychiang@chromium.org>, Yakir Yang <ykk@rock-chips.com>
+Cc: Jernej Skrabec <jernej.skrabec@siol.net>, tzungbi@chromium.org, alsa-devel@alsa-project.org, Jonas Karlman <jonas@kwiboo.se>, Neil Armstrong <narmstrong@baylibre.com>, dianders@chromium.org, dri-devel@lists.freedesktop.org, Jaroslav Kysela <perex@perex.cz>, Hans Verkuil <hverkuil@xs4all.nl>, linux-rockchip@lists.infradead.org, Russell King <rmk+kernel@armlinux.org.uk>, Mark Brown <broonie@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Yakir Yang <ykk@rock-chips.com>, dgreid@chromium.org, Cheng-Yi Chiang <cychiang@chromium.org>, linux-arm-kernel@lists.infradead.org, Jerome Brunet <jbrunet@baylibre.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 From: Daniel Kurtz <djkurtz@chromium.org>
@@ -28,7 +38,8 @@ Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
 Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 ---
  Change from v1 to v2:
- - Use audio_lock to protect audio clock.
+  - Use audio_lock to protect audio clock.
+  - Fix the patch title.
 
  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 13 ++++++++++++-
  1 file changed, 12 insertions(+), 1 deletion(-)
