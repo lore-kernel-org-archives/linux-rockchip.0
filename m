@@ -1,60 +1,101 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: Round up _before_ giving to the clock
- framework
-Date: Thu, 3 Oct 2019 11:48:57 -0700
-Message-ID: <CAD=FV=UnC_b1DfN0Aq1bcw_1Oz95Kc-2hkkEULY84+bMfd4sNw@mail.gmail.com>
-References: <20191003102003.1.Ib233b3e706cf6317858384264d5b0ed35657456e@changeid>
- <CAMavQKKTdsJmVy1wz8K66qyZ_iONqStM8JXJwX=9XspVAKT28A@mail.gmail.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: [PATCH v2 0/4] Enable Hantro G1 post-processor
+Date: Thu,  3 Oct 2019 16:08:29 -0300
+Message-ID: <20191003190833.29046-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAMavQKKTdsJmVy1wz8K66qyZ_iONqStM8JXJwX=9XspVAKT28A@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <sean@poorly.run>
-Cc: David Airlie <airlied@linux.ie>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>, Sean Paul <seanpaul@chromium.org>, Ryan Case <ryandcase@chromium.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-media@vger.kernel.org
+Cc: kernel@collabora.com, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Chris Healy <cphealy@gmail.com>, linux-kernel@vger.kernel.org, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBUaHUsIE9jdCAzLCAyMDE5IGF0IDExOjM3IEFNIFNlYW4gUGF1bCA8c2VhbkBwb29y
-bHkucnVuPiB3cm90ZToKPgo+IE9uIFRodSwgT2N0IDMsIDIwMTkgYXQgMToyMCBQTSBEb3VnbGFz
-IEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+IHdyb3RlOgo+ID4KPiA+IEknbSBlbWJh
-cmFzc2VkIHRvIHNheSB0aGF0IGV2ZW4gdGhvdWdoIEkndmUgdG91Y2hlZAo+ID4gdm9wX2NydGNf
-bW9kZV9maXh1cCgpIHR3aWNlIGFuZCBJIHN3ZWFyIEkgdGVzdGVkIGl0LCB0aGVyZSdzIHN0aWxs
-IGEKPiA+IHN0dXBpZCBnbGFyaW5nIGJ1ZyBpbiBpdC4gIFNwZWNpZmljYWxseSwgb24gdmV5cm9u
-X21pbm5pZSAod2l0aCBhbGwKPiA+IHRoZSBsYXRlc3QgZGlzcGxheSB0aW1pbmdzKSB3ZSB3YW50
-IHRvIGJlIHNldHRpbmcgb3VyIHBpeGVsIGNsb2NrIHRvCj4gPiA2Niw2NjYsNjY2LjY3IEh6IGFu
-ZCB3ZSB0ZWxsIHVzZXJzcGFjZSB0aGF0J3Mgd2hhdCB3ZSBzZXQsIGJ1dCB3ZSdyZQo+ID4gYWN0
-dWFsbHkgY2hvb3NpbmcgNjYsMDAwLDAwMCBIei4gIFRoaXMgaXMgY29uZmlybWVkIGJ5IGxvb2tp
-bmcgYXQgdGhlCj4gPiBjbG9jayB0cmVlLgo+ID4KPiA+IFRoZSBwcm9ibGVtIGlzIHRoYXQgaW4g
-ZHJtX2Rpc3BsYXlfbW9kZV9mcm9tX3ZpZGVvbW9kZSgpIHdlIGNvbnZlcnQKPiA+IGZyb20gSHog
-dG8ga0h6IHdpdGg6Cj4gPgo+ID4gICBkbW9kZS0+Y2xvY2sgPSB2bS0+cGl4ZWxjbG9jayAvIDEw
-MDA7Cj4gPgo+ID4gLi4uc28gd2hlbiB0aGUgZGV2aWNlIHRyZWUgc3BlY2lmaWVzIGEgY2xvY2sg
-b2YgNjY2NjY2NjcgZm9yIHRoZSBwYW5lbAo+ID4gdGhlbiBEUk0gdHJhbnNsYXRlcyB0aGF0IHRv
-IDY2NjY2MDAwLiAgVGhlIGNsb2NrIGZyYW1ld29yayB3aWxsIGFsd2F5cwo+ID4gcGljayBhIGNs
-b2NrIHRoYXQgaXMgX2xvd2VyXyB0aGFuIHRoZSBvbmUgcmVxdWVzdGVkLCBzbyBpdCB3aWxsIHJl
-ZnVzZQo+ID4gdG8gcGljayA2NjY2NjY2NyBhbmQgd2UnbGwgZW5kIHVwIGF0IDY2MDAwMDAwLgo+
-ID4KPiA+IFdoaWxlIHdlIGNvdWxkIHRyeSB0byBmaXggZHJtX2Rpc3BsYXlfbW9kZV9mcm9tX3Zp
-ZGVvbW9kZSgpIHRvIHJvdW5kCj4gPiB0byB0aGUgbmVhcmVzdCBrSHogYW5kIGl0IHdvdWxkIGZp
-eCBvdXIgcHJvYmxlbSwKPgo+IEkgZ290IGEgYml0IGNvbmZ1c2VkIHJlYWRpbmcgdGhpcyBhbmQg
-RG91ZyBzdHJhaWdodGVuZWQgbWUgb3V0IGluIGEKPiBzaWRlYmFuZCBjb252ZXJzYXRpb24uCj4K
-PiBUbyBzdW1tYXJpemUsIHRoZSBkcm1fZGlzcGxheV9tb2RlX2Zyb21fdmlkZW9tb2RlKCkgY2Fs
-bCByZWZlcmVuY2VkCj4gYWJvdmUgaXMgZnJvbSBwYW5lbC1zaW1wbGUsIGFuZCB0aGlzIGRvd25z
-bG90dGluZyBpcyBzcGVjaWZpYyB0bwo+IHJvY2tjaGlwJ3MgY2xvY2sgZHJpdmVyLiBTbyBJJ3Zl
-IGFza2VkIHRvIGNsYXJpZnkgdGhlc2UgMiBwb2ludHMgc28KPiBpdCdzIGNsZWFyIGZyb20gdGhl
-IGNvbW1pdCBtZXNzYWdlIHRoYXQgdGhpcyBwYXRjaCBpcyB0aGUgYmVzdAo+IHNvbHV0aW9uLiBX
-aXRoIHRoYXQgYWRkcmVzc2VkLAo+Cj4gUmV2aWV3ZWQtYnk6IFNlYW4gUGF1bCA8c2VhbnBhdWxA
-Y2hyb21pdW0ub3JnPgoKVGhhbmtzIGZvciB0aGUgcmV2aWV3ISAgSG9wZWZ1bGx5IHBlb3BsZSBk
-b24ndCBtaW5kIHRoZSBxdWljayBzcGluLi4uCgpodHRwczovL2xvcmUua2VybmVsLm9yZy9yLzIw
-MTkxMDAzMTE0NzI2LnYyLjEuSWIyMzNiM2U3MDZjZjYzMTc4NTgzODQyNjRkNWIwZWQzNTY1NzQ1
-NmVAY2hhbmdlaWQKCi1Eb3VnCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aS1kZXZlbA==
+Hi all,
+
+The Hantro G1 VPU post-processor block can be pipelined with
+the decoder hardware, allowing to perform operations such as
+color conversion, scaling, rotation, cropping, among others.
+
+When the post-processor is enabled, the decoder hardware
+gets its own set of NV12 buffers (the native decoder format),
+and the post-processor is the owner of the CAPTURE buffers.
+
+This allows the application get processed
+(scaled, converted, etc) buffers, completely transparently.
+
+This feature is implemented by exposing the post-processed pixel
+formats on ENUM_FMT. When the application sets a pixel format
+other than NV12, and if the post-processor is MC-linked,
+the driver will make use of it, transparently.
+
+On this v2, the media controller API is now required
+to "enable" (aka link, in topology jargon) the post-processor.
+Therefore, applications now have to explicitly request this feature.
+
+For instance, the post-processor is enabled using the media-ctl
+tool:
+
+media-ctl -l "'decoder':1 -> 'rockchip,rk3288-vpu-dec':0[0]"
+media-ctl -l "'postproc':1 -> 'rockchip,rk3288-vpu-dec':0[1]"
+
+v4l2-ctl -d 1 --list-formats
+ioctl: VIDIOC_ENUM_FMT
+	Type: Video Capture Multiplanar
+
+	[0]: 'NV12' (Y/CbCr 4:2:0)
+	[1]: 'YUYV' (YUYV 4:2:2)
+
+Patches 1 and 2 are simply cleanups needed to easier integrate the
+post-processor. Patch 2 is a bit invasive, but it's a step
+forward towards merging the implementation for RK3399 and RK3288.
+
+Patch 3 re-works the media-topology, making the decoder
+a v4l2_subdevice, instead of a bare entity. This allows
+to introduce a more accurate of the decoder+post-processor complex.
+
+Patch 4 introduces the post-processing support.
+
+This is tested on RK3288 platforms with MPEG-2, VP8 and
+H264 streams, decoding to YUY2 surfaces. For now, this series
+is only adding support for NV12-to-YUY2 conversion.
+
+The design and implementation is quite different from v1:
+
+* The decoder->post-processor topology is now exposed
+  explicitly and applications need to configure the pipeline.
+  By default, the decoder is enabled and the post-processor
+  is disabled.
+
+* RGB post-processing output has been dropped. We might
+  add this in the future, but for now, it seems it would
+  make the code more complex without a use-case in mind.
+  RGB is much more memory-consuming so less attractive
+  than YUV, and modern GPUs and display controllers support YUV.
+
+* The post-processor implementation still supports RK3288
+  only. However, a generic register infrastructure is introduced
+  to make addition of other variants such as RK3399 really easy.
+
+Ezequiel Garcia (4):
+  media: hantro: Cleanup format negotiation helpers
+  media: hantro: mpeg2_dec: Re-use common register macros
+  media: hantro: Rework media topology
+  media: hantro: Support color conversion via post-processing
+
+ drivers/staging/media/hantro/Makefile         |   1 +
+ drivers/staging/media/hantro/hantro.h         | 105 +++++-
+ drivers/staging/media/hantro/hantro_drv.c     | 336 ++++++++++++++----
+ .../staging/media/hantro/hantro_g1_h264_dec.c |   2 +-
+ .../media/hantro/hantro_g1_mpeg2_dec.c        | 188 ++++------
+ drivers/staging/media/hantro/hantro_g1_regs.h | 109 ++++--
+ .../staging/media/hantro/hantro_g1_vp8_dec.c  |   2 +-
+ drivers/staging/media/hantro/hantro_h264.c    |   6 +-
+ drivers/staging/media/hantro/hantro_hw.h      |  13 +
+ .../staging/media/hantro/hantro_postproc.c    | 141 ++++++++
+ drivers/staging/media/hantro/hantro_v4l2.c    | 116 ++++--
+ drivers/staging/media/hantro/rk3288_vpu_hw.c  |  10 +
+ 12 files changed, 754 insertions(+), 275 deletions(-)
+ create mode 100644 drivers/staging/media/hantro/hantro_postproc.c
+
+-- 
+2.22.0
