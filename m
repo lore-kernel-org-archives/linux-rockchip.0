@@ -1,110 +1,90 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH_3/3=5d_arm64=3a_dts=3a_rockchip=3a_fix_Roc?=
- =?UTF-8?B?a1BybzY0IHNkbW1jIHNldHRpbmdz44CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGlu?=
- =?UTF-8?Q?ux-rockchip-bounces+shawn=2elin=3drock-chips=2ecom=40lists=2einfr?=
- =?UTF-8?B?YWRlYWQub3Jn5Luj5Y+R44CR?=
-Date: Fri, 4 Oct 2019 15:20:01 +0100
-Message-ID: <fc7dce53-ad39-26e3-7c19-ab60ff4cc332@arm.com>
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: =?utf-8?B?UmU6IFtQQVRDSCAzLzNdIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBmaXggUm9j?=
+ =?utf-8?B?a1BybzY0IHNkbW1jIHNldHRpbmdz44CQ6K+35rOo5oSP77yM6YKu5Lu255Sx?=
+ =?utf-8?B?bGludXgtcm9ja2NoaXAtYm91bmNlcytzaGF3bi5saW49cm9jay1jaGlwcy5j?=
+ =?utf-8?B?b21AbGlzdHMuaW5mcmFkZWFkLm9yZ+S7o+WPkeOAkQ==?=
+Date: Fri, 4 Oct 2019 14:42:42 +0000
+Message-ID: <HE1PR06MB4011FC12B5F4D3C455DEF738AC9E0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 References: <20191003215036.15023-1-smoch@web.de>
  <20191003215036.15023-3-smoch@web.de>
  <31181f3c-20ec-e717-1f7e-8b35cd54d96d@arm.com>
  <a8b20c45-0426-ee42-4efc-52e56ea6bb20@web.de>
  <120e2dbc-55eb-2205-b00f-7e50928ec706@rock-chips.com>
  <1c452b8b-853f-8f58-5f3a-0bbecbe20557@web.de>
+ <fc7dce53-ad39-26e3-7c19-ab60ff4cc332@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1c452b8b-853f-8f58-5f3a-0bbecbe20557@web.de>
-Content-Language: en-GB
+In-Reply-To: <fc7dce53-ad39-26e3-7c19-ab60ff4cc332@arm.com>
+Content-Language: en-US
+Content-ID: <3CAD63302B4A2E4EB53971FB8091A3C2@eurprd06.prod.outlook.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Soeren Moch <smoch@web.de>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Robin Murphy <robin.murphy@arm.com>, Soeren Moch <smoch@web.de>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 04/10/2019 04:39, Soeren Moch wrote:
-> 
-> 
-> On 04.10.19 04:13, Shawn Lin wrote:
->> On 2019/10/4 8:53, Soeren Moch wrote:
->>>
->>>
->>> On 04.10.19 02:01, Robin Murphy wrote:
->>>> On 2019-10-03 10:50 pm, Soeren Moch wrote:
->>>>> According to the RockPro64 schematic [1] the rk3399 sdmmc
->>>>> controller is
->>>>> connected to a microSD (TF card) slot, which cannot be switched to
->>>>> 1.8V.
->>>>
->>>> Really? AFAICS the SDMMC0 wiring looks pretty much identical to the
->>>> NanoPC-T4 schematic (it's the same reference design, after all), and I
->>>> know that board can happily drive a UHS-I microSD card with 1.8v I/Os,
->>>> because mine's doing so right now.
->>>>
->>>> Robin.
->>> OK, the RockPro64 does not allow a card reset (power cycle) since
->>> VCC3V0_SD is directly connected to VCC3V3_SYS (via R89555), the
->>> SDMMC0_PWH_H signal is not connected. So the card fails to identify
->>> itself after suspend or reboot when switched to 1.8V operation.
-
-Ah, thanks for clarifying - I did overlook the subtlety that U12 and 
-friends have "NC" as alternative part numbers, even though they aren't 
-actually marked as DNP. So it's still not so much "cannot be switched" 
-as "switching can lead to other problems".
-
->>
->> I believe we addressed this issue long time ago, please check:
->>
->> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6a11fc47f175c8d87018e89cb58e2d36c66534cb
->>
-> Thanks for the pointer.
-> In this case I guess I should use following patch instead:
-> 
-> --- rk3399-rockpro64.dts.bak    2019-10-03 22:14:00.067745799 +0200
-> +++ rk3399-rockpro64.dts    2019-10-04 00:02:50.047892366 +0200
-> @@ -619,6 +619,8 @@
->       max-frequency = <150000000>;
->       pinctrl-names = "default";
->       pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_bus4>;
-> +    sd-uhs-sdr104;
-> +    vqmmc-supply = <&vcc_sdio>;
->       status = "okay";
->   };
->   
-> When I do so, the sd card is detected as SDR104, but a reboot hangs:
-> 
-> Boot1: 2018-06-26, version: 1.14
-> CPUId = 0x0
-> ChipType = 0x10, 286
-> Spi_ChipId = c84018
-> no find rkpartition
-> SpiBootInit:ffffffff
-> mmc: ERROR: SDHCI ERR:cmd:0x102,stat:0x18000
-> mmc: ERROR: Card did not respond to voltage select!
-> emmc reinit
-> mmc: ERROR: SDHCI ERR:cmd:0x102,stat:0x18000
-> mmc: ERROR: Card did not respond to voltage select!
-> emmc reinit
-> mmc: ERROR: SDHCI ERR:cmd:0x102,stat:0x18000
-> mmc: ERROR: Card did not respond to voltage select!
-> SdmmcInit=2 1
-> mmc0:cmd5,32
-> mmc0:cmd7,32
-> mmc0:cmd5,32
-> mmc0:cmd7,32
-> mmc0:cmd5,32
-> mmc0:cmd7,32
-> SdmmcInit=0 1
-> 
-> So I guess I should use a different miniloader for this reboot to work!?
-> Or what else could be wrong here?
-
-Hmm, I guess this is "the Tinkerboard problem" again - the patch above 
-would be OK if we could get as far as the kernel, but can't help if the 
-offending card is itself the boot medium. There was a proposal here:
-
-https://patchwork.kernel.org/patch/10817217/
-
-although I'm not sure what if any progress has been made since then.
-
-Robin.
+T24gMjAxOS0xMC0wNCAxNjoyMCwgUm9iaW4gTXVycGh5IHdyb3RlOg0KPiBPbiAwNC8xMC8yMDE5
+IDA0OjM5LCBTb2VyZW4gTW9jaCB3cm90ZToNCj4+DQo+PiBPbiAwNC4xMC4xOSAwNDoxMywgU2hh
+d24gTGluIHdyb3RlOg0KPj4+IE9uIDIwMTkvMTAvNCA4OjUzLCBTb2VyZW4gTW9jaCB3cm90ZToN
+Cj4+Pj4NCj4+Pj4gT24gMDQuMTAuMTkgMDI6MDEsIFJvYmluIE11cnBoeSB3cm90ZToNCj4+Pj4+
+IE9uIDIwMTktMTAtMDMgMTA6NTAgcG0sIFNvZXJlbiBNb2NoIHdyb3RlOg0KPj4+Pj4+IEFjY29y
+ZGluZyB0byB0aGUgUm9ja1BybzY0IHNjaGVtYXRpYyBbMV0gdGhlIHJrMzM5OSBzZG1tYw0KPj4+
+Pj4+IGNvbnRyb2xsZXIgaXMNCj4+Pj4+PiBjb25uZWN0ZWQgdG8gYSBtaWNyb1NEIChURiBjYXJk
+KSBzbG90LCB3aGljaCBjYW5ub3QgYmUgc3dpdGNoZWQgdG8NCj4+Pj4+PiAxLjhWLg0KPj4+Pj4g
+UmVhbGx5PyBBRkFJQ1MgdGhlIFNETU1DMCB3aXJpbmcgbG9va3MgcHJldHR5IG11Y2ggaWRlbnRp
+Y2FsIHRvIHRoZQ0KPj4+Pj4gTmFub1BDLVQ0IHNjaGVtYXRpYyAoaXQncyB0aGUgc2FtZSByZWZl
+cmVuY2UgZGVzaWduLCBhZnRlciBhbGwpLCBhbmQgSQ0KPj4+Pj4ga25vdyB0aGF0IGJvYXJkIGNh
+biBoYXBwaWx5IGRyaXZlIGEgVUhTLUkgbWljcm9TRCBjYXJkIHdpdGggMS44diBJL09zLA0KPj4+
+Pj4gYmVjYXVzZSBtaW5lJ3MgZG9pbmcgc28gcmlnaHQgbm93Lg0KPj4+Pj4NCj4+Pj4+IFJvYmlu
+Lg0KPj4+PiBPSywgdGhlIFJvY2tQcm82NCBkb2VzIG5vdCBhbGxvdyBhIGNhcmQgcmVzZXQgKHBv
+d2VyIGN5Y2xlKSBzaW5jZQ0KPj4+PiBWQ0MzVjBfU0QgaXMgZGlyZWN0bHkgY29ubmVjdGVkIHRv
+IFZDQzNWM19TWVMgKHZpYSBSODk1NTUpLCB0aGUNCj4+Pj4gU0RNTUMwX1BXSF9IIHNpZ25hbCBp
+cyBub3QgY29ubmVjdGVkLiBTbyB0aGUgY2FyZCBmYWlscyB0byBpZGVudGlmeQ0KPj4+PiBpdHNl
+bGYgYWZ0ZXIgc3VzcGVuZCBvciByZWJvb3Qgd2hlbiBzd2l0Y2hlZCB0byAxLjhWIG9wZXJhdGlv
+bi4NCj4gQWgsIHRoYW5rcyBmb3IgY2xhcmlmeWluZyAtIEkgZGlkIG92ZXJsb29rIHRoZSBzdWJ0
+bGV0eSB0aGF0IFUxMiBhbmQgDQo+IGZyaWVuZHMgaGF2ZSAiTkMiIGFzIGFsdGVybmF0aXZlIHBh
+cnQgbnVtYmVycywgZXZlbiB0aG91Z2ggdGhleSBhcmVuJ3QgDQo+IGFjdHVhbGx5IG1hcmtlZCBh
+cyBETlAuIFNvIGl0J3Mgc3RpbGwgbm90IHNvIG11Y2ggImNhbm5vdCBiZSBzd2l0Y2hlZCIgDQo+
+IGFzICJzd2l0Y2hpbmcgY2FuIGxlYWQgdG8gb3RoZXIgcHJvYmxlbXMiLg0KPg0KPj4+IEkgYmVs
+aWV2ZSB3ZSBhZGRyZXNzZWQgdGhpcyBpc3N1ZSBsb25nIHRpbWUgYWdvLCBwbGVhc2UgY2hlY2s6
+DQo+Pj4NCj4+PiBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dp
+dC90b3J2YWxkcy9saW51eC5naXQvY29tbWl0Lz9pZD02YTExZmM0N2YxNzVjOGQ4NzAxOGU4OWNi
+NThlMmQzNmM2NjUzNGNiDQo+Pj4NCj4+IFRoYW5rcyBmb3IgdGhlIHBvaW50ZXIuDQo+PiBJbiB0
+aGlzIGNhc2UgSSBndWVzcyBJIHNob3VsZCB1c2UgZm9sbG93aW5nIHBhdGNoIGluc3RlYWQ6DQo+
+Pg0KPj4gLS0tIHJrMzM5OS1yb2NrcHJvNjQuZHRzLmJhayDCoMKgIDIwMTktMTAtMDMgMjI6MTQ6
+MDAuMDY3NzQ1Nzk5ICswMjAwDQo+PiArKysgcmszMzk5LXJvY2twcm82NC5kdHPCoMKgwqAgMjAx
+OS0xMC0wNCAwMDowMjo1MC4wNDc4OTIzNjYgKzAyMDANCj4+IEBAIC02MTksNiArNjE5LDggQEAN
+Cj4+ICDCoMKgwqDCoCBtYXgtZnJlcXVlbmN5ID0gPDE1MDAwMDAwMD47DQo+PiAgwqDCoMKgwqAg
+cGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsNCj4+ICDCoMKgwqDCoCBwaW5jdHJsLTAgPSA8JnNk
+bW1jX2NsayAmc2RtbWNfY21kICZzZG1tY19idXM0PjsNCj4+ICvCoMKgwqAgc2QtdWhzLXNkcjEw
+NDsNCj4+ICvCoMKgwqAgdnFtbWMtc3VwcGx5ID0gPCZ2Y2Nfc2Rpbz47DQo+PiAgwqDCoMKgwqAg
+c3RhdHVzID0gIm9rYXkiOw0KPj4gIMKgfTsNCj4+ICAgDQo+PiBXaGVuIEkgZG8gc28sIHRoZSBz
+ZCBjYXJkIGlzIGRldGVjdGVkIGFzIFNEUjEwNCwgYnV0IGEgcmVib290IGhhbmdzOg0KPj4NCj4+
+IEJvb3QxOiAyMDE4LTA2LTI2LCB2ZXJzaW9uOiAxLjE0DQo+PiBDUFVJZCA9IDB4MA0KPj4gQ2hp
+cFR5cGUgPSAweDEwLCAyODYNCj4+IFNwaV9DaGlwSWQgPSBjODQwMTgNCj4+IG5vIGZpbmQgcmtw
+YXJ0aXRpb24NCj4+IFNwaUJvb3RJbml0OmZmZmZmZmZmDQo+PiBtbWM6IEVSUk9SOiBTREhDSSBF
+UlI6Y21kOjB4MTAyLHN0YXQ6MHgxODAwMA0KPj4gbW1jOiBFUlJPUjogQ2FyZCBkaWQgbm90IHJl
+c3BvbmQgdG8gdm9sdGFnZSBzZWxlY3QhDQo+PiBlbW1jIHJlaW5pdA0KPj4gbW1jOiBFUlJPUjog
+U0RIQ0kgRVJSOmNtZDoweDEwMixzdGF0OjB4MTgwMDANCj4+IG1tYzogRVJST1I6IENhcmQgZGlk
+IG5vdCByZXNwb25kIHRvIHZvbHRhZ2Ugc2VsZWN0IQ0KPj4gZW1tYyByZWluaXQNCj4+IG1tYzog
+RVJST1I6IFNESENJIEVSUjpjbWQ6MHgxMDIsc3RhdDoweDE4MDAwDQo+PiBtbWM6IEVSUk9SOiBD
+YXJkIGRpZCBub3QgcmVzcG9uZCB0byB2b2x0YWdlIHNlbGVjdCENCj4+IFNkbW1jSW5pdD0yIDEN
+Cj4+IG1tYzA6Y21kNSwzMg0KPj4gbW1jMDpjbWQ3LDMyDQo+PiBtbWMwOmNtZDUsMzINCj4+IG1t
+YzA6Y21kNywzMg0KPj4gbW1jMDpjbWQ1LDMyDQo+PiBtbWMwOmNtZDcsMzINCj4+IFNkbW1jSW5p
+dD0wIDENCj4+DQo+PiBTbyBJIGd1ZXNzIEkgc2hvdWxkIHVzZSBhIGRpZmZlcmVudCBtaW5pbG9h
+ZGVyIGZvciB0aGlzIHJlYm9vdCB0byB3b3JrIT8NCj4+IE9yIHdoYXQgZWxzZSBjb3VsZCBiZSB3
+cm9uZyBoZXJlPw0KPiBIbW0sIEkgZ3Vlc3MgdGhpcyBpcyAidGhlIFRpbmtlcmJvYXJkIHByb2Js
+ZW0iIGFnYWluIC0gdGhlIHBhdGNoIGFib3ZlIA0KPiB3b3VsZCBiZSBPSyBpZiB3ZSBjb3VsZCBn
+ZXQgYXMgZmFyIGFzIHRoZSBrZXJuZWwsIGJ1dCBjYW4ndCBoZWxwIGlmIHRoZSANCj4gb2ZmZW5k
+aW5nIGNhcmQgaXMgaXRzZWxmIHRoZSBib290IG1lZGl1bS4gVGhlcmUgd2FzIGEgcHJvcG9zYWwg
+aGVyZToNCj4NCj4gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDgxNzIxNy8N
+Cj4NCj4gYWx0aG91Z2ggSSdtIG5vdCBzdXJlIHdoYXQgaWYgYW55IHByb2dyZXNzIGhhcyBiZWVu
+IG1hZGUgc2luY2UgdGhlbi4NCg0KQ29ycmVjdCwgSSBuZXZlciBnb3QgYXJvdW5kIHRvIGNvbXBs
+ZXRlIHRlc3Rpbmcgb24gb3RoZXIgZGV2aWNlcy4NCk1heWJlIHNvbWVvbmUgbW9yZSBmYW1pbGlh
+ciB3aXRoIG1tYyBzdWJzeXN0ZW0gY2FuIHBpY2sgdGhhdCB1cCBpZiBpdCBub3cgdHVybnMgb3V0
+IG90aGVyIGRldmljZXMgc2hvdyB0aGUgc2FtZS9zaW1pbGFyIGlzc3VlPw0KDQpmd2l3IHRoZSAi
+bW1jOiBjb3JlOiBzZXQgaW5pdGlhbCBzaWduYWwgdm9sdGFnZSBvbiBwb3dlciBvZmYiIHJmYy9w
+YXRjaCBoYXZlIGJlZW4gdXNlZCBpbiBMaWJyZUVMRUMgcm9ja2NoaXAgYnVpbGRzIGZvciB3ZWxs
+IG92ZXIgYSB5ZWFyIG5vdy4NCg0KUmVnYXJkcywNCkpvbmFzDQoNCj4NCj4gUm9iaW4uDQo+DQoN
+Cg==
