@@ -1,34 +1,44 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: fix RockPro64 sdmmc =?UTF-8?B?c2V0dGluZ3PjgJDor7fms6jmhI/vvIzpgq7ku7bnlLFsaW51eC1yb2NrY2hpcC1ib3VuY2VzK3NoYXduLmxpbj1yb2NrLWNoaXBzLmNvbUBsaXN0cy5pbmZyYWRlYWQub3Jn5Luj5Y+R44CR?=
-Date: Fri, 04 Oct 2019 22:18:16 +0200
-Message-ID: <2162187.GalWoky0CO@phil>
-References: <20191003215036.15023-1-smoch@web.de> <e4aaddc2-441b-b835-380e-374a3d935474@web.de> <c180ec58-083b-5730-a188-58eb6100b7b6@web.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
+From: Soeren Moch <smoch@web.de>
+Subject: [PATCH v2] arm64: dts: rockchip: fix RockPro64 sdmmc settings
+Date: Fri,  4 Oct 2019 22:32:13 +0200
+Message-ID: <20191004203213.4995-1-smoch@web.de>
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <c180ec58-083b-5730-a188-58eb6100b7b6@web.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Soeren Moch <smoch@web.de>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Soeren Moch <smoch@web.de>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Sören,
+According to the RockPro64 schematic [1] the rk3399 sdmmc controller is
+connected to a microSD (TF card) slot. Remove the cap-mmc-highspeed
+property of the sdmmc controller, since no mmc card can be connected here.
 
-Am Freitag, 4. Oktober 2019, 22:15:45 CEST schrieb Soeren Moch:
-> Heiko,
-> 
-> since you started to apply the first 2 Patches of this series (thanks
-> for that!), now after all the discussions here (and the heads-up for the
-> implemented mode detection) I think we should leave the vcc_sdio
-> regulator settings unmodified.
+[1] http://files.pine64.org/doc/rockpro64/rockpro64_v21-SCH.pdf
 
-I was composing a mail about me holding off on this patch due to the
-ongoing discussion when your mail came ;-)
+Fixes: e4f3fb490967 ("arm64: dts: rockchip: add initial dts support for Ro=
+ckpro64")
+Signed-off-by: Soeren Moch <smoch@web.de>
+=2D--
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+=2D--
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts | 1 -
+ 1 file changed, 1 deletion(-)
 
-> It still could make sense to remove the cap-mmc-highspeed property. Are
-> you OK with a V2 patch for that?
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm6=
+4/boot/dts/rockchip/rk3399-rockpro64.dts
+index 2e44dae4865a..6ec4d273a39b 100644
+=2D-- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+@@ -624,7 +624,6 @@
 
-Sure, go ahead.
-
-Heiko
+ &sdmmc {
+ 	bus-width =3D <4>;
+-	cap-mmc-highspeed;
+ 	cap-sd-highspeed;
+ 	cd-gpios =3D <&gpio0 7 GPIO_ACTIVE_LOW>;
+ 	disable-wp;
+=2D-
+2.17.1
