@@ -1,29 +1,33 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: add analog audio nodes on rk3399-rockpro64
-Date: Fri, 04 Oct 2019 21:54:59 +0200
-Message-ID: <3908342.LUz8zmGQAZ@phil>
-References: <20190907174833.19957-1-katsuhiro@katsuster.net> <74097d16-ec3e-70e9-f835-25ae265b0ad9@katsuster.net>
+Subject: Re: [PATCH 1/3] arm64: dts: rockchip: fix RockPro64 vdd-log regulator settings
+Date: Fri, 04 Oct 2019 22:04:11 +0200
+Message-ID: <3200327.mLoWUYiBOS@phil>
+References: <20191003215036.15023-1-smoch@web.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <74097d16-ec3e-70e9-f835-25ae265b0ad9@katsuster.net>
+In-Reply-To: <20191003215036.15023-1-smoch@web.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Soeren Moch <smoch@web.de>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Katsuhiro,
-
-Am Freitag, 4. Oktober 2019, 19:26:00 CEST schrieb Katsuhiro Suzuki:
-> Past about 1 month, so I send a ping...
+Am Donnerstag, 3. Oktober 2019, 23:50:34 CEST schrieb Soeren Moch:
+> The RockPro64 schematic [1] page 18 states a min voltage of 0.8V and a
+> max voltage of 1.4V for the VDD_LOG pwm regulator. However, there is an
+> additional note that the pwm parameter needs to be modified.
+> From the schematics a voltage range of 0.8V to 1.7V can be calculated.
+> Additional voltage measurements on the board show that this fix indeed
+> leads to the correct voltage, while without this fix the voltage was set
+> too high.
 > 
-> On 2019/09/08 2:48, Katsuhiro Suzuki wrote:
-> > This patch adds audio codec (Everest ES8316) and I2S audio nodes for
-> > RK3399 RockPro64.
-> > 
-> > Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+> [1] http://files.pine64.org/doc/rockpro64/rockpro64_v21-SCH.pdf
+> 
+> Fixes: e4f3fb490967 ("arm64: dts: rockchip: add initial dts support for Rockpro64")
+> Signed-off-by: Soeren Moch <smoch@web.de>
 
-thanks for the reminder, applied for 5.5
+applied as fix  for 5.4
 
+Thanks for going that extra mile with all the calculations and measurements
 Heiko
