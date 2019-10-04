@@ -1,14 +1,15 @@
-From: Robin Murphy <robin.murphy@arm.com>
+From: Soeren Moch <smoch@web.de>
 Subject: Re: [PATCH 3/3] arm64: dts: rockchip: fix RockPro64 sdmmc settings
-Date: Fri, 4 Oct 2019 01:01:01 +0100
-Message-ID: <31181f3c-20ec-e717-1f7e-8b35cd54d96d@arm.com>
+Date: Fri, 4 Oct 2019 02:53:26 +0200
+Message-ID: <a8b20c45-0426-ee42-4efc-52e56ea6bb20@web.de>
 References: <20191003215036.15023-1-smoch@web.de>
  <20191003215036.15023-3-smoch@web.de>
+ <31181f3c-20ec-e717-1f7e-8b35cd54d96d@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20191003215036.15023-3-smoch@web.de>
+In-Reply-To: <31181f3c-20ec-e717-1f7e-8b35cd54d96d@arm.com>
 Content-Language: en-GB
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
@@ -19,67 +20,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Soeren Moch <smoch@web.de>, Heiko Stuebner <heiko@sntech.de>
+To: Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>
 Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2019-10-03 10:50 pm, Soeren Moch wrote:
-> According to the RockPro64 schematic [1] the rk3399 sdmmc controller is
-> connected to a microSD (TF card) slot, which cannot be switched to 1.8V.
-
-Really? AFAICS the SDMMC0 wiring looks pretty much identical to the 
-NanoPC-T4 schematic (it's the same reference design, after all), and I 
-know that board can happily drive a UHS-I microSD card with 1.8v I/Os, 
-because mine's doing so right now.
-
-Robin.
-
-> So also configure the vcc_sdio regulator, which drives the i/o voltage
-> of the sdmmc controller, accordingly.
-> 
-> While at it, also remove the cap-mmc-highspeed property of the sdmmc
-> controller, since no mmc card can be connected here.
-> 
-> [1] http://files.pine64.org/doc/rockpro64/rockpro64_v21-SCH.pdf
-> 
-> Fixes: e4f3fb490967 ("arm64: dts: rockchip: add initial dts support for Rockpro64")
-> Signed-off-by: Soeren Moch <smoch@web.de>
-> ---
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-kernel@vger.kernel.org
-> ---
->   arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-> index 2e44dae4865a..084f1d994a50 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-> @@ -353,7 +353,7 @@
->   				regulator-name = "vcc_sdio";
->   				regulator-always-on;
->   				regulator-boot-on;
-> -				regulator-min-microvolt = <1800000>;
-> +				regulator-min-microvolt = <3000000>;
->   				regulator-max-microvolt = <3000000>;
->   				regulator-state-mem {
->   					regulator-on-in-suspend;
-> @@ -624,7 +624,6 @@
-> 
->   &sdmmc {
->   	bus-width = <4>;
-> -	cap-mmc-highspeed;
->   	cap-sd-highspeed;
->   	cd-gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
->   	disable-wp;
-> --
-> 2.17.1
-> 
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
+CgpPbiAwNC4xMC4xOSAwMjowMSwgUm9iaW4gTXVycGh5IHdyb3RlOgo+IE9uIDIwMTktMTAtMDMg
+MTA6NTAgcG0sIFNvZXJlbiBNb2NoIHdyb3RlOgo+PiBBY2NvcmRpbmcgdG8gdGhlIFJvY2tQcm82
+NCBzY2hlbWF0aWMgWzFdIHRoZSByazMzOTkgc2RtbWMgY29udHJvbGxlciBpcwo+PiBjb25uZWN0
+ZWQgdG8gYSBtaWNyb1NEIChURiBjYXJkKSBzbG90LCB3aGljaCBjYW5ub3QgYmUgc3dpdGNoZWQg
+dG8gMS44Vi4KPgo+IFJlYWxseT8gQUZBSUNTIHRoZSBTRE1NQzAgd2lyaW5nIGxvb2tzIHByZXR0
+eSBtdWNoIGlkZW50aWNhbCB0byB0aGUKPiBOYW5vUEMtVDQgc2NoZW1hdGljIChpdCdzIHRoZSBz
+YW1lIHJlZmVyZW5jZSBkZXNpZ24sIGFmdGVyIGFsbCksIGFuZCBJCj4ga25vdyB0aGF0IGJvYXJk
+IGNhbiBoYXBwaWx5IGRyaXZlIGEgVUhTLUkgbWljcm9TRCBjYXJkIHdpdGggMS44diBJL09zLAo+
+IGJlY2F1c2UgbWluZSdzIGRvaW5nIHNvIHJpZ2h0IG5vdy4KPgo+IFJvYmluLgpPSywgdGhlIFJv
+Y2tQcm82NCBkb2VzIG5vdCBhbGxvdyBhIGNhcmQgcmVzZXQgKHBvd2VyIGN5Y2xlKSBzaW5jZQpW
+Q0MzVjBfU0QgaXMgZGlyZWN0bHkgY29ubmVjdGVkIHRvIFZDQzNWM19TWVMgKHZpYSBSODk1NTUp
+LCB0aGUKU0RNTUMwX1BXSF9IIHNpZ25hbCBpcyBub3QgY29ubmVjdGVkLiBTbyB0aGUgY2FyZCBm
+YWlscyB0byBpZGVudGlmeQppdHNlbGYgYWZ0ZXIgc3VzcGVuZCBvciByZWJvb3Qgd2hlbiBzd2l0
+Y2hlZCB0byAxLjhWIG9wZXJhdGlvbi4KClJlZ2FyZHMsClNvZXJlbgo+Cj4+IFNvIGFsc28gY29u
+ZmlndXJlIHRoZSB2Y2Nfc2RpbyByZWd1bGF0b3IsIHdoaWNoIGRyaXZlcyB0aGUgaS9vIHZvbHRh
+Z2UKPj4gb2YgdGhlIHNkbW1jIGNvbnRyb2xsZXIsIGFjY29yZGluZ2x5Lgo+Pgo+PiBXaGlsZSBh
+dCBpdCwgYWxzbyByZW1vdmUgdGhlIGNhcC1tbWMtaGlnaHNwZWVkIHByb3BlcnR5IG9mIHRoZSBz
+ZG1tYwo+PiBjb250cm9sbGVyLCBzaW5jZSBubyBtbWMgY2FyZCBjYW4gYmUgY29ubmVjdGVkIGhl
+cmUuCj4+Cj4+IFsxXSBodHRwOi8vZmlsZXMucGluZTY0Lm9yZy9kb2Mvcm9ja3BybzY0L3JvY2tw
+cm82NF92MjEtU0NILnBkZgo+Pgo+PiBGaXhlczogZTRmM2ZiNDkwOTY3ICgiYXJtNjQ6IGR0czog
+cm9ja2NoaXA6IGFkZCBpbml0aWFsIGR0cyBzdXBwb3J0Cj4+IGZvciBSb2NrcHJvNjQiKQo+PiBT
+aWduZWQtb2ZmLWJ5OiBTb2VyZW4gTW9jaCA8c21vY2hAd2ViLmRlPgo+PiAtLS0KPj4gQ2M6IEhl
+aWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4+IENjOiBsaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCj4+IENjOiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5v
+cmcKPj4gQ2M6IGxpbnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmcKPj4gLS0tCj4+IMKgIGFyY2gv
+YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvY2twcm82NC5kdHMgfCAzICstLQo+PiDC
+oCAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDIgZGVsZXRpb25zKC0pCj4+Cj4+IGRp
+ZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2NrcHJvNjQu
+ZHRzCj4+IGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcm9ja3BybzY0LmR0
+cwo+PiBpbmRleCAyZTQ0ZGFlNDg2NWEuLjA4NGYxZDk5NGE1MCAxMDA2NDQKPj4gLS0tIGEvYXJj
+aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcm9ja3BybzY0LmR0cwo+PiArKysgYi9h
+cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2NrcHJvNjQuZHRzCj4+IEBAIC0z
+NTMsNyArMzUzLDcgQEAKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZWd1
+bGF0b3ItbmFtZSA9ICJ2Y2Nfc2RpbyI7Cj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqAgcmVndWxhdG9yLWFsd2F5cy1vbjsKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoCByZWd1bGF0b3ItYm9vdC1vbjsKPj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoCByZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwxODAwMDAwPjsKPj4gK8KgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoCByZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwzMDAwMDAwPjsK
+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZWd1bGF0b3ItbWF4LW1pY3Jv
+dm9sdCA9IDwzMDAwMDAwPjsKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBy
+ZWd1bGF0b3Itc3RhdGUtbWVtIHsKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgIHJlZ3VsYXRvci1vbi1pbi1zdXNwZW5kOwo+PiBAQCAtNjI0LDcgKzYyNCw2IEBA
+Cj4+Cj4+IMKgICZzZG1tYyB7Cj4+IMKgwqDCoMKgwqAgYnVzLXdpZHRoID0gPDQ+Owo+PiAtwqDC
+oMKgIGNhcC1tbWMtaGlnaHNwZWVkOwo+PiDCoMKgwqDCoMKgIGNhcC1zZC1oaWdoc3BlZWQ7Cj4+
+IMKgwqDCoMKgwqAgY2QtZ3Bpb3MgPSA8JmdwaW8wIDcgR1BJT19BQ1RJVkVfTE9XPjsKPj4gwqDC
+oMKgwqDCoCBkaXNhYmxlLXdwOwo+PiAtLSAKPj4gMi4xNy4xCj4+Cj4+Cj4+IF9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4+IExpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdAo+PiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4+IGh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKPj4K
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFy
+bS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1r
+ZXJuZWwK
