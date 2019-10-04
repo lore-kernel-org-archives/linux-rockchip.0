@@ -1,48 +1,108 @@
-From: =?UTF-8?Q?S=c3=b6ren_Moch?= <smoch-S0/GAf8tV78@public.gmane.org>
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH_3/3=5d_arm64=3a_dts=3a_rockchip=3a_fix_Roc?=
- =?UTF-8?B?a1BybzY0IHNkbW1jIHNldHRpbmdz44CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGlu?=
- =?UTF-8?Q?ux-rockchip-bounces+shawn=2elin=3drock-chips=2ecom=40lists=2einfr?=
- =?UTF-8?B?YWRlYWQub3Jn5Luj5Y+R44CR?=
-Date: Fri, 4 Oct 2019 22:39:15 +0200
-Message-ID: <a5514bb4-472e-b697-27a4-54e30d5679bd@web.de>
-References: <20191003215036.15023-1-smoch@web.de>
- <e4aaddc2-441b-b835-380e-374a3d935474@web.de>
- <c180ec58-083b-5730-a188-58eb6100b7b6@web.de> <2162187.GalWoky0CO@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix usb-c on Hugsun X99 TV Box
+Date: Fri, 04 Oct 2019 23:45:08 +0200
+Message-ID: <2223294.9I8gkMH88G@phil>
+References: <20190929032230.24628-1-npcomplete13@gmail.com>
+ <54c67ca8-8428-48ee-9a96-e1216ba02839@gmail.com>
+ <20190929234615.GA5355@vivek-desktop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2162187.GalWoky0CO@phil>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20190929234615.GA5355@vivek-desktop>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Vivek Unune <npcomplete13@gmail.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, Felipe Balbi <felipe.balbi@linux.intel.com>, Felipe Balbi <balbi@kernel.org>, linux-kernel@vger.kernel.org, Vicente Bergas <vicencb@gmail.com>, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, akash@openedev.com, ezequiel@collabora.com, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAwNC4xMC4xOSAyMjoxOCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gSGkgU8O2cmVuLAo+
-Cj4gQW0gRnJlaXRhZywgNC4gT2t0b2JlciAyMDE5LCAyMjoxNTo0NSBDRVNUIHNjaHJpZWIgU29l
-cmVuIE1vY2g6Cj4+IEhlaWtvLAo+Pgo+PiBzaW5jZSB5b3Ugc3RhcnRlZCB0byBhcHBseSB0aGUg
-Zmlyc3QgMiBQYXRjaGVzIG9mIHRoaXMgc2VyaWVzICh0aGFua3MKPj4gZm9yIHRoYXQhKSwgbm93
-IGFmdGVyIGFsbCB0aGUgZGlzY3Vzc2lvbnMgaGVyZSAoYW5kIHRoZSBoZWFkcy11cCBmb3IgdGhl
-Cj4+IGltcGxlbWVudGVkIG1vZGUgZGV0ZWN0aW9uKSBJIHRoaW5rIHdlIHNob3VsZCBsZWF2ZSB0
-aGUgdmNjX3NkaW8KPj4gcmVndWxhdG9yIHNldHRpbmdzIHVubW9kaWZpZWQuCj4gSSB3YXMgY29t
-cG9zaW5nIGEgbWFpbCBhYm91dCBtZSBob2xkaW5nIG9mZiBvbiB0aGlzIHBhdGNoIGR1ZSB0byB0
-aGUKPiBvbmdvaW5nIGRpc2N1c3Npb24gd2hlbiB5b3VyIG1haWwgY2FtZSA7LSkKPgo+PiBJdCBz
-dGlsbCBjb3VsZCBtYWtlIHNlbnNlIHRvIHJlbW92ZSB0aGUgY2FwLW1tYy1oaWdoc3BlZWQgcHJv
-cGVydHkuIEFyZQo+PiB5b3UgT0sgd2l0aCBhIFYyIHBhdGNoIGZvciB0aGF0Pwo+IFN1cmUsIGdv
-IGFoZWFkLgo+Ck9LLCBJIHNlbnQgYSBWMiBwYXRjaCBmb3IgdGhhdC4KCk1heWJlIHNvbWVvbmUg
-Y2FuIGNvbWUgdXAgd2l0aCBhIHJlYWwgc29sdXRpb24gZm9yIHRoZSAxLjhWLzMuM1YKcHJvYmxl
-bSwgd2hpY2ggd291bGQgYWxsb3cgdG8gZW5hYmxlIHRoZSB1aHMtc2RyMTA0IG1vZGUgYnkgZGVm
-YXVsdC4KRm9yIG5vdyBJIHRoaW5rIHdlIGhhdmUgdG8gbGl2ZSB3aXRoIHNkLWhpZ2hzcGVlZCB0
-byBiZSBhYmxlIHRvCihyZS0pYm9vdCBmcm9tIFNELgoKVGhhbmtzLApTb2VyZW4KCgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Vivek,
+
+Am Montag, 30. September 2019, 01:46:15 CEST schrieb Vivek Unune:
+> On Sun, Sep 29, 2019 at 01:22:17PM +0200, Vicente Bergas wrote:
+> > On Sunday, September 29, 2019 5:22:30 AM CEST, Vivek Unune wrote:
+> > > Fix usb-c on X99 TV Box. Tested with armbian w/ kernel 5.3
+> > > =
+
+> > > Signed-off-by: Vivek Unune <npcomplete13@gmail.com>
+> > > ---
+> > >  arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts | 4 ++--
+> > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > > =
+
+> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
+> > > b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
+> > > index 0d1f5f9a0de9..c133e8d64b2a 100644
+> > > --- a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
+> > > +++ b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
+> > > @@ -644,7 +644,7 @@
+> > >  	status =3D "okay";
+> > >  	u2phy0_host: host-port {
+> > > -		phy-supply =3D <&vcc5v0_host>;
+> > > +		phy-supply =3D <&vcc5v0_typec>;
+> > >  		status =3D "okay";
+> > >  	};
+> > > @@ -712,7 +712,7 @@
+> > >  &usbdrd_dwc3_0 {
+> > >  	status =3D "okay";
+> > > -	dr_mode =3D "otg";
+> > > +	dr_mode =3D "host";
+> > >  };
+> > >  &usbdrd3_1 {
+> > =
+
+> > Hi Vivek,
+> > =
+
+> > which is the relationship of your patch and this commit:
+> > =
+
+> > e1d9149e8389f1690cdd4e4056766dd26488a0fe
+> > arm64: dts: rockchip: Fix USB3 Type-C on rk3399-sapphire
+> > =
+
+> > with respect to this other commit:
+> > =
+
+> > c09b73cfac2a9317f1104169045c519c6021aa1d
+> > usb: dwc3: don't set gadget->is_otg flag
+> > =
+
+> > ?
+> > =
+
+> > I did not test reverting e1d9149e since c09b73cf was applied.
+> > =
+
+> > Regards,
+> >  Vicen=E7.
+> > =
+
+> =
+
+> Hi Vicen=E7,
+> =
+
+> Indeed, I was motivated by e1d9149e ("arm64: dts: rockchip: Fix USB3 =
+
+> Type-C on rk3399-sapphire"). X99 TV box showed exact same symptoms
+> with usb-c port. After applying the fix, it worked.
+> =
+
+> I was not aware of c09b73cf ("usb: dwc3: don't set gadget->is_otg
+>  flag") and it will be interesting to test it. This might render
+> my fix unecessary.
+
+So I'll let this patch sit here for now.
+Once you've done the testing, can you please respond with the
+result (both positive and negative results please).
+
+Thanks
+Heiko
