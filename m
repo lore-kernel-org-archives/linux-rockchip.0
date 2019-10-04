@@ -1,10 +1,10 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Soeren Moch <smoch@web.de>
 Subject: =?UTF-8?Q?Re=3a_=5bPATCH_3/3=5d_arm64=3a_dts=3a_rockchip=3a_fix_Roc?=
  =?UTF-8?B?a1BybzY0IHNkbW1jIHNldHRpbmdz44CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGlu?=
  =?UTF-8?Q?ux-rockchip-bounces+shawn=2elin=3drock-chips=2ecom=40lists=2einfr?=
  =?UTF-8?B?YWRlYWQub3Jn5Luj5Y+R44CR?=
-Date: Fri, 4 Oct 2019 23:33:20 +0800
-Message-ID: <0c6fdb65-be2a-68e3-a686-14ce9b0a00a4@rock-chips.com>
+Date: Fri, 4 Oct 2019 18:39:09 +0200
+Message-ID: <a5b7caab-ffde-30e0-88bc-53a53748701a@web.de>
 References: <20191003215036.15023-1-smoch@web.de>
  <20191003215036.15023-3-smoch@web.de>
  <31181f3c-20ec-e717-1f7e-8b35cd54d96d@arm.com>
@@ -13,87 +13,113 @@ References: <20191003215036.15023-1-smoch@web.de>
  <1c452b8b-853f-8f58-5f3a-0bbecbe20557@web.de>
  <fc7dce53-ad39-26e3-7c19-ab60ff4cc332@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <fc7dce53-ad39-26e3-7c19-ab60ff4cc332-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <fc7dce53-ad39-26e3-7c19-ab60ff4cc332@arm.com>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOS8xMC80IDIyOjIwLCBSb2JpbiBNdXJwaHkgd3JvdGU6Cj4gT24gMDQvMTAvMjAxOSAw
-NDozOSwgU29lcmVuIE1vY2ggd3JvdGU6Cj4+Cj4+Cj4+IE9uIDA0LjEwLjE5IDA0OjEzLCBTaGF3
-biBMaW4gd3JvdGU6Cj4+PiBPbiAyMDE5LzEwLzQgODo1MywgU29lcmVuIE1vY2ggd3JvdGU6Cj4+
-Pj4KPj4+Pgo+Pj4+IE9uIDA0LjEwLjE5IDAyOjAxLCBSb2JpbiBNdXJwaHkgd3JvdGU6Cj4+Pj4+
-IE9uIDIwMTktMTAtMDMgMTA6NTAgcG0sIFNvZXJlbiBNb2NoIHdyb3RlOgo+Pj4+Pj4gQWNjb3Jk
-aW5nIHRvIHRoZSBSb2NrUHJvNjQgc2NoZW1hdGljIFsxXSB0aGUgcmszMzk5IHNkbW1jCj4+Pj4+
-PiBjb250cm9sbGVyIGlzCj4+Pj4+PiBjb25uZWN0ZWQgdG8gYSBtaWNyb1NEIChURiBjYXJkKSBz
-bG90LCB3aGljaCBjYW5ub3QgYmUgc3dpdGNoZWQgdG8KPj4+Pj4+IDEuOFYuCj4+Pj4+Cj4+Pj4+
-IFJlYWxseT8gQUZBSUNTIHRoZSBTRE1NQzAgd2lyaW5nIGxvb2tzIHByZXR0eSBtdWNoIGlkZW50
-aWNhbCB0byB0aGUKPj4+Pj4gTmFub1BDLVQ0IHNjaGVtYXRpYyAoaXQncyB0aGUgc2FtZSByZWZl
-cmVuY2UgZGVzaWduLCBhZnRlciBhbGwpLCBhbmQgSQo+Pj4+PiBrbm93IHRoYXQgYm9hcmQgY2Fu
-IGhhcHBpbHkgZHJpdmUgYSBVSFMtSSBtaWNyb1NEIGNhcmQgd2l0aCAxLjh2IEkvT3MsCj4+Pj4+
-IGJlY2F1c2UgbWluZSdzIGRvaW5nIHNvIHJpZ2h0IG5vdy4KPj4+Pj4KPj4+Pj4gUm9iaW4uCj4+
-Pj4gT0ssIHRoZSBSb2NrUHJvNjQgZG9lcyBub3QgYWxsb3cgYSBjYXJkIHJlc2V0IChwb3dlciBj
-eWNsZSkgc2luY2UKPj4+PiBWQ0MzVjBfU0QgaXMgZGlyZWN0bHkgY29ubmVjdGVkIHRvIFZDQzNW
-M19TWVMgKHZpYSBSODk1NTUpLCB0aGUKPj4+PiBTRE1NQzBfUFdIX0ggc2lnbmFsIGlzIG5vdCBj
-b25uZWN0ZWQuIFNvIHRoZSBjYXJkIGZhaWxzIHRvIGlkZW50aWZ5Cj4+Pj4gaXRzZWxmIGFmdGVy
-IHN1c3BlbmQgb3IgcmVib290IHdoZW4gc3dpdGNoZWQgdG8gMS44ViBvcGVyYXRpb24uCj4gCj4g
-QWgsIHRoYW5rcyBmb3IgY2xhcmlmeWluZyAtIEkgZGlkIG92ZXJsb29rIHRoZSBzdWJ0bGV0eSB0
-aGF0IFUxMiBhbmQgCj4gZnJpZW5kcyBoYXZlICJOQyIgYXMgYWx0ZXJuYXRpdmUgcGFydCBudW1i
-ZXJzLCBldmVuIHRob3VnaCB0aGV5IGFyZW4ndCAKPiBhY3R1YWxseSBtYXJrZWQgYXMgRE5QLiBT
-byBpdCdzIHN0aWxsIG5vdCBzbyBtdWNoICJjYW5ub3QgYmUgc3dpdGNoZWQiIAo+IGFzICJzd2l0
-Y2hpbmcgY2FuIGxlYWQgdG8gb3RoZXIgcHJvYmxlbXMiLgo+IAo+Pj4KPj4+IEkgYmVsaWV2ZSB3
-ZSBhZGRyZXNzZWQgdGhpcyBpc3N1ZSBsb25nIHRpbWUgYWdvLCBwbGVhc2UgY2hlY2s6Cj4+Pgo+
-Pj4gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFs
-ZHMvbGludXguZ2l0L2NvbW1pdC8/aWQ9NmExMWZjNDdmMTc1YzhkODcwMThlODljYjU4ZTJkMzZj
-NjY1MzRjYiAKPj4+Cj4+Pgo+PiBUaGFua3MgZm9yIHRoZSBwb2ludGVyLgo+PiBJbiB0aGlzIGNh
-c2UgSSBndWVzcyBJIHNob3VsZCB1c2UgZm9sbG93aW5nIHBhdGNoIGluc3RlYWQ6Cj4+Cj4+IC0t
-LSByazMzOTktcm9ja3BybzY0LmR0cy5iYWsgwqDCoCAyMDE5LTEwLTAzIDIyOjE0OjAwLjA2Nzc0
-NTc5OSArMDIwMAo+PiArKysgcmszMzk5LXJvY2twcm82NC5kdHPCoMKgwqAgMjAxOS0xMC0wNCAw
-MDowMjo1MC4wNDc4OTIzNjYgKzAyMDAKPj4gQEAgLTYxOSw2ICs2MTksOCBAQAo+PiDCoMKgwqDC
-oMKgIG1heC1mcmVxdWVuY3kgPSA8MTUwMDAwMDAwPjsKPj4gwqDCoMKgwqDCoCBwaW5jdHJsLW5h
-bWVzID0gImRlZmF1bHQiOwo+PiDCoMKgwqDCoMKgIHBpbmN0cmwtMCA9IDwmc2RtbWNfY2xrICZz
-ZG1tY19jbWQgJnNkbW1jX2J1czQ+Owo+PiArwqDCoMKgIHNkLXVocy1zZHIxMDQ7Cj4+ICvCoMKg
-wqAgdnFtbWMtc3VwcGx5ID0gPCZ2Y2Nfc2Rpbz47Cj4+IMKgwqDCoMKgwqAgc3RhdHVzID0gIm9r
-YXkiOwo+PiDCoMKgfTsKPj4gV2hlbiBJIGRvIHNvLCB0aGUgc2QgY2FyZCBpcyBkZXRlY3RlZCBh
-cyBTRFIxMDQsIGJ1dCBhIHJlYm9vdCBoYW5nczoKPj4KPj4gQm9vdDE6IDIwMTgtMDYtMjYsIHZl
-cnNpb246IDEuMTQKPj4gQ1BVSWQgPSAweDAKPj4gQ2hpcFR5cGUgPSAweDEwLCAyODYKPj4gU3Bp
-X0NoaXBJZCA9IGM4NDAxOAo+PiBubyBmaW5kIHJrcGFydGl0aW9uCj4+IFNwaUJvb3RJbml0OmZm
-ZmZmZmZmCj4+IG1tYzogRVJST1I6IFNESENJIEVSUjpjbWQ6MHgxMDIsc3RhdDoweDE4MDAwCj4+
-IG1tYzogRVJST1I6IENhcmQgZGlkIG5vdCByZXNwb25kIHRvIHZvbHRhZ2Ugc2VsZWN0IQo+PiBl
-bW1jIHJlaW5pdAo+PiBtbWM6IEVSUk9SOiBTREhDSSBFUlI6Y21kOjB4MTAyLHN0YXQ6MHgxODAw
-MAo+PiBtbWM6IEVSUk9SOiBDYXJkIGRpZCBub3QgcmVzcG9uZCB0byB2b2x0YWdlIHNlbGVjdCEK
-Pj4gZW1tYyByZWluaXQKPj4gbW1jOiBFUlJPUjogU0RIQ0kgRVJSOmNtZDoweDEwMixzdGF0OjB4
-MTgwMDAKPj4gbW1jOiBFUlJPUjogQ2FyZCBkaWQgbm90IHJlc3BvbmQgdG8gdm9sdGFnZSBzZWxl
-Y3QhCj4+IFNkbW1jSW5pdD0yIDEKPj4gbW1jMDpjbWQ1LDMyCj4+IG1tYzA6Y21kNywzMgo+PiBt
-bWMwOmNtZDUsMzIKPj4gbW1jMDpjbWQ3LDMyCj4+IG1tYzA6Y21kNSwzMgo+PiBtbWMwOmNtZDcs
-MzIKPj4gU2RtbWNJbml0PTAgMQo+Pgo+PiBTbyBJIGd1ZXNzIEkgc2hvdWxkIHVzZSBhIGRpZmZl
-cmVudCBtaW5pbG9hZGVyIGZvciB0aGlzIHJlYm9vdCB0byB3b3JrIT8KPj4gT3Igd2hhdCBlbHNl
-IGNvdWxkIGJlIHdyb25nIGhlcmU/Cj4gCj4gSG1tLCBJIGd1ZXNzIHRoaXMgaXMgInRoZSBUaW5r
-ZXJib2FyZCBwcm9ibGVtIiBhZ2FpbiAtIHRoZSBwYXRjaCBhYm92ZSAKPiB3b3VsZCBiZSBPSyBp
-ZiB3ZSBjb3VsZCBnZXQgYXMgZmFyIGFzIHRoZSBrZXJuZWwsIGJ1dCBjYW4ndCBoZWxwIGlmIHRo
-ZSAKCkkgZGlkbid0IHJlYWxpemUgdGhhdCBTRCB3YXMgdXNlZCBhcyBib290IG1lZGl1bSBmb3Ig
-Um9ja1BybzY0LCBidXQgSQpkaWQgcGF0Y2ggdGhlIHZlbmRvciB0cmVlIHRvIHNvbHZlIHRoZSBp
-c3N1ZSBmb3IgVGlua2VyYm9hcmQsIHNlZQpodHRwczovL2dpdGh1Yi5jb20vcm9ja2NoaXAtbGlu
-dXgva2VybmVsL2NvbW1pdC9hNGNjZGUyMWY1YTlmMDRmOTk2ZmIwMjQ3OWNiOWYxNmQzZGM4ZGMw
-CgpNeSBpbml0aWFsIHBsYW4gd2FzIHRvIHBhdGNoaW5nIHVwc3RyZWFtIGtlcm5lbCBieSBhZGRp
-bmcgLT5zaHV0ZG93bixidXQKbmV2ZXIgZmluaXNoIGl0LgoKPiBvZmZlbmRpbmcgY2FyZCBpcyBp
-dHNlbGYgdGhlIGJvb3QgbWVkaXVtLiBUaGVyZSB3YXMgYSBwcm9wb3NhbCBoZXJlOgo+IAo+IGh0
-dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTA4MTcyMTcvCgpUaGlzIFJGQyBhbHNv
-IGxvb2tzIGdvb2QgdG8gbWUsIGJ1dCBzZWVtcyBpdCBuZWVkcyB2b2x1bnRlZXJzCnRvIHB1c2gg
-aXQgYWdhaW4uCgo+IAo+IGFsdGhvdWdoIEknbSBub3Qgc3VyZSB3aGF0IGlmIGFueSBwcm9ncmVz
-cyBoYXMgYmVlbiBtYWRlIHNpbmNlIHRoZW4uCj4gCj4gUm9iaW4uCj4gCj4gCj4gCgoKLS0gCkJl
-c3QgUmVnYXJkcwpTaGF3biBMaW4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+
+On 04.10.19 16:20, Robin Murphy wrote:
+> On 04/10/2019 04:39, Soeren Moch wrote:
+>>
+>>
+>> On 04.10.19 04:13, Shawn Lin wrote:
+>>> On 2019/10/4 8:53, Soeren Moch wrote:
+>>>>
+>>>>
+>>>> On 04.10.19 02:01, Robin Murphy wrote:
+>>>>> On 2019-10-03 10:50 pm, Soeren Moch wrote:
+>>>>>> According to the RockPro64 schematic [1] the rk3399 sdmmc
+>>>>>> controller is
+>>>>>> connected to a microSD (TF card) slot, which cannot be switched to
+>>>>>> 1.8V.
+>>>>>
+>>>>> Really? AFAICS the SDMMC0 wiring looks pretty much identical to the
+>>>>> NanoPC-T4 schematic (it's the same reference design, after all),
+>>>>> and I
+>>>>> know that board can happily drive a UHS-I microSD card with 1.8v
+>>>>> I/Os,
+>>>>> because mine's doing so right now.
+>>>>>
+>>>>> Robin.
+>>>> OK, the RockPro64 does not allow a card reset (power cycle) since
+>>>> VCC3V0_SD is directly connected to VCC3V3_SYS (via R89555), the
+>>>> SDMMC0_PWH_H signal is not connected. So the card fails to identify
+>>>> itself after suspend or reboot when switched to 1.8V operation.
+>
+> Ah, thanks for clarifying - I did overlook the subtlety that U12 and
+> friends have "NC" as alternative part numbers, even though they aren't
+> actually marked as DNP. So it's still not so much "cannot be switched"
+> as "switching can lead to other problems".
+Agreed. I should have been more precise about this in the commit message.
+
+Soeren
+>
+>>>
+>>> I believe we addressed this issue long time ago, please check:
+>>>
+>>> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/com=
+mit/?id=3D6a11fc47f175c8d87018e89cb58e2d36c66534cb
+>>>
+>>>
+>> Thanks for the pointer.
+>> In this case I guess I should use following patch instead:
+>>
+>> --- rk3399-rockpro64.dts.bak =C2=A0=C2=A0 2019-10-03 22:14:00.067745799=
+ +0200
+>> +++ rk3399-rockpro64.dts=C2=A0=C2=A0=C2=A0 2019-10-04 00:02:50.04789236=
+6 +0200
+>> @@ -619,6 +619,8 @@
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 max-frequency =3D <150000000>;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pinctrl-names =3D "default";
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pinctrl-0 =3D <&sdmmc_clk &sdmmc_cmd &sd=
+mmc_bus4>;
+>> +=C2=A0=C2=A0=C2=A0 sd-uhs-sdr104;
+>> +=C2=A0=C2=A0=C2=A0 vqmmc-supply =3D <&vcc_sdio>;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 status =3D "okay";
+>> =C2=A0=C2=A0};
+>> =C2=A0 When I do so, the sd card is detected as SDR104, but a reboot ha=
+ngs:
+>>
+>> Boot1: 2018-06-26, version: 1.14
+>> CPUId =3D 0x0
+>> ChipType =3D 0x10, 286
+>> Spi_ChipId =3D c84018
+>> no find rkpartition
+>> SpiBootInit:ffffffff
+>> mmc: ERROR: SDHCI ERR:cmd:0x102,stat:0x18000
+>> mmc: ERROR: Card did not respond to voltage select!
+>> emmc reinit
+>> mmc: ERROR: SDHCI ERR:cmd:0x102,stat:0x18000
+>> mmc: ERROR: Card did not respond to voltage select!
+>> emmc reinit
+>> mmc: ERROR: SDHCI ERR:cmd:0x102,stat:0x18000
+>> mmc: ERROR: Card did not respond to voltage select!
+>> SdmmcInit=3D2 1
+>> mmc0:cmd5,32
+>> mmc0:cmd7,32
+>> mmc0:cmd5,32
+>> mmc0:cmd7,32
+>> mmc0:cmd5,32
+>> mmc0:cmd7,32
+>> SdmmcInit=3D0 1
+>>
+>> So I guess I should use a different miniloader for this reboot to work!=
+?
+>> Or what else could be wrong here?
+>
+> Hmm, I guess this is "the Tinkerboard problem" again - the patch above
+> would be OK if we could get as far as the kernel, but can't help if
+> the offending card is itself the boot medium. There was a proposal here:
+>
+> https://patchwork.kernel.org/patch/10817217/
+>
+> although I'm not sure what if any progress has been made since then.
+>
+> Robin.
