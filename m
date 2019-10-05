@@ -1,103 +1,59 @@
-From: Vivek Unune <npcomplete13@gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix usb-c on Hugsun X99 TV Box
-Date: Fri, 4 Oct 2019 20:52:00 -0400
-Message-ID: <20191005005200.GA11418@vivek-desktop>
-References: <20190929032230.24628-1-npcomplete13@gmail.com>
- <54c67ca8-8428-48ee-9a96-e1216ba02839@gmail.com>
- <20190929234615.GA5355@vivek-desktop>
- <2223294.9I8gkMH88G@phil>
+From: Amr Bekhit <amr-X1kpDkasp4NBDgjK7y7TUQ@public.gmane.org>
+Subject: [PATCH] rockchip_rk3288_efuse_read: Fix segfault in
+ rockchip_rk3288_efuse_read by using readl instead of readb when reading
+ REG_EFUSE_DOUT.
+Date: Sat, 5 Oct 2019 10:50:44 +0300
+Message-ID: <CAHmAUHKD90eibgj3JmHaJNduhrOQZUZBZixtZE+dWxR2L6Bq1Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <2223294.9I8gkMH88G@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Vicente Bergas <vicencb@gmail.com>, robh+dt@kernel.org, mark.rutland@arm.com, ezequiel@collabora.com, akash@openedev.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Felipe Balbi <balbi@kernel.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Roger Quadros <rogerq@ti.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Oct 04, 2019 at 11:45:08PM +0200, Heiko Stuebner wrote:
-> Hi Vivek,
-> 
-> Am Montag, 30. September 2019, 01:46:15 CEST schrieb Vivek Unune:
-> > On Sun, Sep 29, 2019 at 01:22:17PM +0200, Vicente Bergas wrote:
-> > > On Sunday, September 29, 2019 5:22:30 AM CEST, Vivek Unune wrote:
-> > > > Fix usb-c on X99 TV Box. Tested with armbian w/ kernel 5.3
-> > > > 
-> > > > Signed-off-by: Vivek Unune <npcomplete13@gmail.com>
-> > > > ---
-> > > >  arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts | 4 ++--
-> > > >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > > > 
-> > > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-> > > > b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-> > > > index 0d1f5f9a0de9..c133e8d64b2a 100644
-> > > > --- a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-> > > > +++ b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-> > > > @@ -644,7 +644,7 @@
-> > > >  	status = "okay";
-> > > >  	u2phy0_host: host-port {
-> > > > -		phy-supply = <&vcc5v0_host>;
-> > > > +		phy-supply = <&vcc5v0_typec>;
-> > > >  		status = "okay";
-> > > >  	};
-> > > > @@ -712,7 +712,7 @@
-> > > >  &usbdrd_dwc3_0 {
-> > > >  	status = "okay";
-> > > > -	dr_mode = "otg";
-> > > > +	dr_mode = "host";
-> > > >  };
-> > > >  &usbdrd3_1 {
-> > > 
-> > > Hi Vivek,
-> > > 
-> > > which is the relationship of your patch and this commit:
-> > > 
-> > > e1d9149e8389f1690cdd4e4056766dd26488a0fe
-> > > arm64: dts: rockchip: Fix USB3 Type-C on rk3399-sapphire
-> > > 
-> > > with respect to this other commit:
-> > > 
-> > > c09b73cfac2a9317f1104169045c519c6021aa1d
-> > > usb: dwc3: don't set gadget->is_otg flag
-> > > 
-> > > ?
-> > > 
-> > > I did not test reverting e1d9149e since c09b73cf was applied.
-> > > 
-> > > Regards,
-> > >  Vicenç.
-> > > 
-> > 
-> > Hi Vicenç,
-> > 
-> > Indeed, I was motivated by e1d9149e ("arm64: dts: rockchip: Fix USB3 
-> > Type-C on rk3399-sapphire"). X99 TV box showed exact same symptoms
-> > with usb-c port. After applying the fix, it worked.
-> > 
-> > I was not aware of c09b73cf ("usb: dwc3: don't set gadget->is_otg
-> >  flag") and it will be interesting to test it. This might render
-> > my fix unecessary.
-> 
-> So I'll let this patch sit here for now.
-> Once you've done the testing, can you please respond with the
-> result (both positive and negative results please).
-> 
-> Thanks
-> Heiko
-> 
-> 
+When trying to read the efuse of the RK3188 a segfault is raised when
+the following line is called in rockchip_rk3288_efuse_read:
 
-Hi Heiko,
+*buf++ = readb(efuse->base + REG_EFUSE_DOUT);
 
-I tested the c09b73cf patch without modifying exsisting dts. I can confirm
-that that patch doesn't work for me. No usb-c devices were recognized.
+It appears that the problem here might be the use of readb, which I
+suspect is triggering an unaligned access. Changing this to readl
+resolves the issue (as is done in rockchip_rk3399_efuse_read).
 
-Vicenç - were you able to test it?
+From 9923a6889aa325faf842a6757c9f9bd0f0195acb Mon Sep 17 00:00:00 2001
+From: Amr Bekhit <amr-X1kpDkasp4NBDgjK7y7TUQ@public.gmane.org>
+Date: Sat, 5 Oct 2019 10:45:17 +0300
+Subject: [PATCH] Fix segfault in rockchip_rk3288_efuse_read by using readl
+ instead of readb when reading REG_EFUSE_DOUT.
 
-As soon as I apply dts patch, usb-c devices are recognized.
+Signed-off-by: Amr Bekhit <amr-X1kpDkasp4NBDgjK7y7TUQ@public.gmane.org>
+---
+ drivers/nvmem/rockchip-efuse.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks,
-
-Vivek
+diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
+index e4579de5d014..f680a80d81cf 100644
+--- a/drivers/nvmem/rockchip-efuse.c
++++ b/drivers/nvmem/rockchip-efuse.c
+@@ -78,7 +78,7 @@ static int rockchip_rk3288_efuse_read(void *context,
+unsigned int offset,
+  writel(readl(efuse->base + REG_EFUSE_CTRL) |
+       RK3288_STROBE, efuse->base + REG_EFUSE_CTRL);
+  udelay(1);
+- *buf++ = readb(efuse->base + REG_EFUSE_DOUT);
++ *buf++ = readl(efuse->base + REG_EFUSE_DOUT);
+  writel(readl(efuse->base + REG_EFUSE_CTRL) &
+         (~RK3288_STROBE), efuse->base + REG_EFUSE_CTRL);
+  udelay(1);
+-- 
+2.20.1
