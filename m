@@ -1,140 +1,217 @@
-From: =?UTF-8?Q?Andr=c3=a9_Przywara?= <andre.przywara@arm.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Subject: Re: aarch64 Kernel Panic Asynchronous SError Interrupt on large file
  IO
-Date: Mon, 7 Oct 2019 15:01:05 +0100
-Message-ID: <0d1c5c50-6fb0-0154-26cc-c7823dd7ea26@arm.com>
+Date: Mon, 07 Oct 2019 16:06:44 +0200
+Message-ID: <39265746.Q1QFhyvV51@diego>
 References: <CA+Vb7hpe_USzdCuTBHd8V-t6YeQ0oApiBrvM-D43JuhJda6eyQ@mail.gmail.com>
- <1596764.niU1GBd6P2@phil> <7f659a93-81e1-65f3-8239-537307f34f42@arm.com>
- <2769202.trDOcCdrXg@diego>
+ <2769202.trDOcCdrXg@diego> <0d1c5c50-6fb0-0154-26cc-c7823dd7ea26@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2769202.trDOcCdrXg@diego>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Robin Murphy <robin.murphy@arm.com>
-Cc: Catalin Marinas <catalin.marinas@arm.com>, vicencb@gmail.com, linux-rockchip@lists.infradead.org, Philipp Richter <richterphilipp.pops@gmail.com>, Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <0d1c5c50-6fb0-0154-26cc-c7823dd7ea26-5wv7dgnIgG8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?ISO-8859-1?Q?Andr=E9?= Przywara <andre.przywara-5wv7dgnIgG8@public.gmane.org>
+Cc: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Philipp Richter <richterphilipp.pops-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMDcvMTAvMjAxOSAxNDozOCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gQW0gTW9udGFnLCA3
-LiBPa3RvYmVyIDIwMTksIDEzOjUxOjM3IENFU1Qgc2NocmllYiBSb2JpbiBNdXJwaHk6Cj4+IE9u
-IDA2LzEwLzIwMTkgMTQ6MTMsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+Pj4gQW0gU29ubnRhZywg
-Ni4gT2t0b2JlciAyMDE5LCAwMTo0NToyMyBDRVNUIHNjaHJpZWIgUm9iaW4gTXVycGh5Ogo+Pj4+
-IE9uIDIwMTktMDgtMTkgMTE6NDMgYW0sIFdpbGwgRGVhY29uIHdyb3RlOgo+Pj4+PiBPbiBNb24s
-IEF1ZyAxOSwgMjAxOSBhdCAxMTowNzoxNEFNICswMTAwLCBDYXRhbGluIE1hcmluYXMgd3JvdGU6
-Cj4+Pj4+PiBPbiBTYXQsIEF1ZyAxNywgMjAxOSBhdCAwMzoxMjo0MVBNICswMjAwLCBQaGlsaXBw
-IFJpY2h0ZXIgd3JvdGU6Cj4+Pj4+Pj4gSSBhZGRlZCAibWVtdGVzdD00IiB0byB0aGUga2VybmVs
-IGNtZGxpbmUgYW5kIEknbSBnZXR0aW5nIHZlcnkgcXVpY2t5Cj4+Pj4+Pj4gYSAiSW50ZXJuYWwg
-ZXJyb3I6IHN5bmNocm9ub3VzIGV4dGVybmFsIGFib3J0IiBwYW5pYy4KPj4+Pj4+IFsuLi5dCj4+
-Pj4+Pj4gWyAgICAwLjAwMDAwMF0gZWFybHlfbWVtdGVzdDogIyBvZiB0ZXN0czogNAo+Pj4+Pj4+
-IFsgICAgMC4wMDAwMDBdICAgMHgwMDAwMDAwMDAwMjAwMDAwIC0gMHgwMDAwMDAwMDAyMDgwMDAw
-IHBhdHRlcm4gYWFhYWFhYWFhYWFhYWFhYQo+Pj4+Pj4+IFsgICAgMC4wMDAwMDBdICAgMHgwMDAw
-MDAwMDAzYTk1MDAwIC0gMHgwMDAwMDAwMGY4NDAwMDAwIHBhdHRlcm4gYWFhYWFhYWFhYWFhYWFh
-YQo+Pj4+Pj4+IFsgICAgMC4wMDAwMDBdIEludGVybmFsIGVycm9yOiBzeW5jaHJvbm91cyBleHRl
-cm5hbCBhYm9ydDogOTYwMDAyMTAgWyMxXSBTTVAKPj4+Pj4+Cj4+Pj4+PiBBdCBsZWFzdCBpdCdz
-IGEgc3luY2hyb25vdXMgZXJyb3IgOykuCj4+Pj4+Pgo+Pj4+Pj4+IFsgICAgMC4wMDAwMDBdIHBj
-IDogZWFybHlfbWVtdGVzdCsweDE2Yy8weDIzYwo+Pj4+Pj4gWy4uLl0KPj4+Pj4+PiBbICAgIDAu
-MDAwMDAwXSBDb2RlOiBkMjgwMDAwMiBkMjgwMDAwMSBlYjA0MDBiZiA1NDAwMDMwOSAoZjk0MDAw
-ODApCj4+Pj4+Pgo+Pj4+Pj4gZGVjb2RlY29kZSBzYXlzOgo+Pj4+Pj4KPj4+Pj4+ICAgICAgMDog
-ICBkMjgwMDAwMiAgICAgICAgbW92ICAgICB4MiwgIzB4MCAgICAgICAgICAgICAgICAgICAgICAg
-IC8vICMwCj4+Pj4+PiAgICAgIDQ6ICAgZDI4MDAwMDEgICAgICAgIG1vdiAgICAgeDEsICMweDAg
-ICAgICAgICAgICAgICAgICAgICAgICAvLyAjMAo+Pj4+Pj4gICAgICA4OiAgIGViMDQwMGJmICAg
-ICAgICBjbXAgICAgIHg1LCB4NAo+Pj4+Pj4gICAgICBjOiAgIDU0MDAwMzA5ICAgICAgICBiLmxz
-ICAgIDB4NmMgIC8vIGIucGxhc3QKPj4+Pj4+ICAgICAxMDoqICBmOTQwMDA4MCAgICAgICAgbGRy
-ICAgICB4MCwgW3g0XSAgICAgICAgICAgICAgICA8LS0gdHJhcHBpbmcgaW5zdHJ1Y3Rpb24KPj4+
-Pj4+Cj4+Pj4+PiBJIGd1ZXNzIHRoYXQncyB0aGUgcmVhZCBvZiAqcCBpbiBtZW10ZXN0KCkuIFdy
-aXRpbmcgKnAgcHJvYmFibHkKPj4+Pj4+IGdlbmVyYXRlcyBhc3luY2hyb25vdXMgZXJyb3JzIGl0
-IHlvdSBoYXZlbid0IHNlZW4gaXQgeWV0Lgo+Pj4+Pj4KPj4+Pj4+PiBJcyBteSBib2FyZCBjb21w
-bGV0ZWx5IGJyb2tlbiA/IDooCj4+Pj4+Pgo+Pj4+Pj4gT25lIHBvc3NpYmlsaXR5IGlzIHRoYXQg
-eW91IGRvbid0IGhhdmUgYW55IG1lbW9yeSB3aGVyZSB5b3UgdGhpbmsgdGhlcmUKPj4+Pj4+IGlz
-LCBzbyB0aGUgbWFwcGluZyBqdXN0IGRvZXNuJ3QgdHJhbnNsYXRlIHRvIGFueSB2YWxpZCBwaHlz
-aWNhbAo+Pj4+Pj4gbG9jYXRpb24uCj4+Pj4+Pgo+Pj4+Pj4gQ2FuIHlvdSBhZGQgc29tZSBwcmlu
-dGsoYWRkcikgaW4gZG9fc2VhKCkgdG8gc2VlIGlmIGl0IGFsd2F5cyBmYXVsdHMgb24KPj4+Pj4+
-IHRoZSBzYW1lIGFkZHJlc3M/Cj4+Pj4+Cj4+Pj4+IEFsdGVybmF0aXZlbHksIGp1c3QgcnVuIGl0
-IGEgZmV3IG1vcmUgdGltZXMgYW5kIHNlZSBpZiB0aGUgcmVnaXN0ZXIgZHVtcAo+Pj4+PiBjaGFu
-Z2VzLiBDdXJyZW50bHkgd2UndmUgZ290Ogo+Pj4+Pgo+Pj4+PiBbICAgIDAuMDAwMDAwXSB4NSA6
-IGZmZmY4MDAwZjg0MDAwMDAgeDQgOiBmZmZmODAwMDA4NDAwMDAwCj4+Pj4+IFsgICAgMC4wMDAw
-MDBdIHgzIDogMDAwMDAwMDAwODQwMDAwMCB4MiA6IDAwMDAwMDAwMDAwMDAwMDAKPj4+Pj4gWyAg
-ICAwLjAwMDAwMF0geDEgOiAwMDAwMDAwMDAwMDAwMDAwIHgwIDogYWFhYWFhYWFhYWFhYWFhYQo+
-Pj4+Pgo+Pj4+PiBzbyBJJ2QgZ3Vlc3MgdGhhdCB4MyBpcyB0aGUgZmF1bHRpbmcgcGEuIFRoZSBm
-YXVsdGluZyAobGluZWFyKSBWQXMgaW4gdGhlCj4+Pj4+IG9yaWdpbmwgcmVwb3J0IHdlcmUgMHhm
-ZmZmODAwMDA5Yzc0YWE4IGFuZCAweGZmZmY4MDAwMDljMDgzOTAsIHdoaWNoIGlzCj4+Pj4+IHN0
-aWxsIGEgd2F5IHdheSBvZmYgZnJvbSB0aGlzIG9uZSA6Lwo+Pj4+Pgo+Pj4+PiBMb29raW5nIGF0
-IHRoZSBUUk0gZm9yIHRoZSByazMzMjgsIHRoZXJlJ3MgNGdiIG9mIHJhbSBzdGFydGluZyBhdCBw
-YSAweDAsCj4+Pj4+IHNvIG1heWJlIHNvbWUgb2YgaXQgaGFzIGJlZW4gY29uZmlndXJlZCBhcyBz
-ZWN1cmUgb3IgdGhlIG1lbW9yeSBjb250cm9sbGVyCj4+Pj4+IGhhc24ndCBiZWVuIHByb3Blcmx5
-IGluaXRpYWxpc2VkPwo+Pj4+Cj4+Pj4gRldJVyBJJ3ZlIG5vdGljZWQgbXkgUkszMzk5IGJvYXJk
-IGRvaW5nIHRoaXMgdG9vLCBub3cgdGhhdCBJJ3ZlIHN0YXJ0ZWQKPj4+PiB1c2luZyBpdCBpbiBh
-bmdlci4gSSdtIHVzaW5nIGEgaGFja3kgZmlybXdhcmUgY29tcHJpc2luZyB1cHN0cmVhbSBVLUJv
-b3QKPj4+PiBtdW5nZWQgd2l0aCB0aGUgUm9ja2NoaXAgbWluaWxvYWRlciBhbmQgZG93bnN0cmVh
-bSBUcnVzdGVkIEZpcm13YXJlCj4+Pj4gYmluYXJpZXMsCj4+Pgo+Pj4gYW55IHJlYXNvbiBmb3Ig
-dGhhdCBjb21iaW5hdGlvbj8gRm9yIGV4YW1wbGUgdGhlIHJvY2twcm82NCBnb3QgZGRyNCBzdXBw
-b3J0Cj4+PiBpbiB1cHN0cmVhbSB1Ym9vdCByZWNlbnRseS4KPj4KPj4gTm90IHJlYWxseTsgaXQn
-cyBqdXN0IHRoZSAid29ya3Mgd2VsbCBlbm91Z2giIHNldHVwIHRoYXQgbWFkZSBkaXN0cm8gCj4+
-IGJvb3QgdXNhYmxlIGJlZm9yZSB0aGUgU1BMIHN1cHBvcnQgd2VudCB1cHN0cmVhbSwgYW5kIChv
-dGhlciB0aGFuIAo+PiBoYWNraW5nIGluIHRoZSBDUFUgUExMIGluaXRpYWxpc2F0aW9uIHdoaWNo
-IG90aGVyd2lzZSBnZXRzIGxvc3QgaW4gdGhhdCAKPj4gY29tYmluYXRpb24pIEkgaGF2ZW4ndCB0
-b3VjaGVkIGl0IHNpbmNlLgo+Pgo+PiBbIGZvciBub3cgSSd2ZSBqdXN0IGhhY2tlZCBhIHJlc2Vy
-dmVkLW1lbW9yeSBub2RlIGludG8gbXkgRFQuLi4gb25lIGRheSAKPj4gSSdsbCBnZXQgcm91bmQg
-dG8gZmlybXdhcmUgdGlua2VyaW5nIDspIF0KPj4KPj4KPj4+PiBhbmQgaXQgbG9va3MgbGlrZSB0
-aGF0IG1pc21hdGNoIGlzIHRoZSByb290IG9mIHRoaXMgcHJvYmxlbS4KPj4+PiBCb290aW5nIGEg
-ZGlmZmVyZW50IGltYWdlIGJhc2VkIG9uIHRoZSBCU1AgVS1ib290IHNob3dzIHRoYXQgdGhhdCdz
-Cj4+Pj4gcGFzc2luZyBhIG1lbW9yeSBub2RlIHdpdGggdGhlIHJhbmdlIDB4ODQwMDAwMC0weDk2
-MDAwMDAgZW50aXJlbHkgY2FydmVkCj4+Pj4gb3V0LCBzbyB0aGlzIGlzIHByZXN1bWFibHkgY2xh
-aW1lZCBieSB0aGUgc2VjdXJlIGZpcm13YXJlL1RFRSBhbmQgc2V0IHRvCj4+Pj4gYWJvcnQgTm9u
-LVNlY3VyZSBhY2Nlc3Nlcy4KPj4+Cj4+PiBBcyBURUUgb24gUFgzMCBpcyBhbHNvIG9uZSBvZiBt
-eSBjdXJyZW50IHByb2plY3RzLCBJJ3ZlIHN0dW1ibGVkIG92ZXIgdGhhdAo+Pj4gbWVtb3J5IGlz
-c3VlLiBBdCBsZWFzdCBPUC1URUUgY2FuIGdldCBwYXNzZWQgYSBsb2NhdGlvbiBmb3IgYSBkdGIg
-ZHVyaW5nCj4+PiBzdGFydHVwIHdoaWNoIGl0IHRoZW4gd291bGQgbW9kaWZ5IHRvIGFkZCBhIHJl
-c2VydmVkIHNlY3Rpb24gZm9yIGl0cyBtZW1vcnkuCj4+Pgo+Pj4gQnV0IHRoYXQgZHRiIGdlbmVy
-YWxseSBpcyBub3QgdGhlIG9uZSwgdGhlIGtlcm5lbCB3aWxsIGFjdHVhbGx5IHVzZSwgYnV0Cj4+
-PiBpbnN0ZWFkIG9ubHkgdGhlIG9uZSB1c2VkIGJ5IHVib290LiBleHRsaW51eCwgdGZ0cCBvciB3
-aGF0ZXZlciB3aWxsIG5vcm1hbGx5Cj4+PiBsb2FkIGFuZCB1c2UgYSBuZXcgZHRiIGZvciB0aGUg
-a2VybmVsIHdoaWNoIHdpbGwgbGlrZWx5IG5vdCBnZXQgdGhhdCBtZW1vcnkKPj4+IHJlc2VydmF0
-aW9uIGF1dG9tYXRpY2FsbHk/Cj4+Pgo+Pj4gSSdtIG5vdCB5ZXQgc3VyZSBob3cgdGhpcyBpcyBz
-dXBwb3NlZCB0byB3b3JrIGluIGFuIGFsbC11cHN0cmVhbQo+Pj4gY29uZmlndXJhdGlvbiAtIEkn
-bSBydW5uaW5nIHVwc3RyZWFtIHUtYm9vdCArIHVwc3RyZWFtIFRGLUEgKyB1cHN0cmVhbQo+Pj4g
-T1AtVGVlIGluIG15IHByb2plY3QgZW52aXJvbm1lbnQgcmlnaHQgbm93Lgo+Pgo+PiBBcyBmYXIg
-YXMgSSB1bmRlcnN0YW5kLCBVLUJvb3QgaXMgc3RpbGwgcmVzcG9uc2libGUgZm9yIGdlbmVyYXRp
-bmcgdGhlIAo+PiBtZW1vcnkgbm9kZSBpbiB3aGF0ZXZlciBEVEIgaXQgbG9hZHMgYW5kIHBhc3Nl
-cyB0byB0aGUga2VybmVsLCBzbyBpdCAKPj4gc2hvdWxkIHN0aWxsIGJlIGFibGUgdG8gYWRqdXN0
-IHRoYXQgYWNjb3JkaW5nbHkuIFByZXN1bWFibHkgVS1Cb290IG5lZWRzIAo+PiB0byBkaXNjb3Zl
-ciBhbnkgZmlybXdhcmUvVEVFIHJlc2VydmF0aW9ucyBlYXJseSBvbiB0byBhdm9pZCB0b3VjaGlu
-ZyBhbnkgCj4+IFNlY3VyZSBtZW1vcnkgaXRzZWxmLCBzbyBpdCBzaG91bGQganVzdCBuZWVkIHRv
-IGtlZXAgdHJhY2sgb2YgdGhlbSB1bnRpbCAKPj4gZmluYWxpc2luZyB0aGUga2VybmVsIERUQi4K
-PiAKPiBZZWFoLCB0aGF0J3Mgc2ltaWxhciB0byB3aGF0IEkgZGlzY292ZXJlZCBzbyBmYXIgOi1E
-IC4KPiAKPiBTUEwgbG9hZHMgdS1ib290Lml0YiB3aGljaCBzaG91bGQgY29udGFpbiwgdS1ib290
-LCB0Zi1hLCB0ZWUgYW5kIGR0Lgo+IFt2ZW5kb3IgdGYtYSBtaWdodCBkbyB0aGF0IGRpZmZlcmVu
-dGx5IHRob3VnaF0KPiAKPiBJdCBwYXNzZXMgdGhlIGR0LWFkZHJlc3MgYXMgcGFyYW0gdG8gYm90
-aCB0Zi1hIGFuZCBvcHRlZSwgd2hpY2ggdGhlbgo+IG1heSBhZGQgc3R1ZmYsIGxpa2Ugb3B0ZWUg
-YWRkaW5nIHRoZSBmaXJtd2FyZS1ub2RlICsgcmVzZXJ2ZWQtbWVtb3J5Cj4gc2VjdGlvbnMuCj4g
-Cj4gVGhpcyBkdCBpcyB0aGVuIHRoZSBiYXNpcyBmb3IgdGhlIG1haW4gdS1ib290LCB0byBiZSBm
-b3VuZCBhdCBnZC0+ZmR0X2Jsb2IuCj4gU28gdS1ib290IHdpbGwgbmVlZCB0byBkaXNjb3ZlciBh
-bmQgdHJhbnNwbGFudCBvcHRlZS1maXJtd2FyZSArIG9wdGVlCj4gcmVzZXJ2ZWQtbWVtb3J5IHNl
-Y3Rpb25zIHRvIGFueSBsYXRlciBkdCB0aGF0IGdldHMgbG9hZGVkLgoKSW5kZWVkIFUtQm9vdCBp
-cyBtb3N0bHkgaWdub3JpbmcgYm90aCAvbWVtcmVzZXJ2ZS8gYW5kIC9yZXNlcnZlZC1tZW1vcnkK
-Zm9yIGl0cyBvd24gcHVycG9zZXMgc28gZmFyLiBUaGVyZSBpcyBjb2RlCihib290X2ZkdF9hZGRf
-bWVtX3Jzdl9yZWdpb25zKCkpIHRvIHBhcnNlIHRob3NlIG5vZGVzIGFuZCB0cmFuc2xhdGUgdGhl
-bQppbnRvIGFuIGxtYiBibG9jaywgYnV0IHRoaXMgaXMgdGhlbiBvbmx5IHVzZWQgZm9yIHJlbG9j
-YXRpbmcgRkRUIGFuZAppbml0cmQgd2hlbiBsb2FkaW5nIGtlcm5lbHMsIEFGQUlDUy4gSSB0aGlu
-ayB0aGUgaWRlYSBpcyB0aGF0IHRoZSBtb3N0Cm9mIHRoZSBtZW1vcnkgc2V0dXAgKGhlYXApIGlz
-IHN0YXRpYyBhbnl3YXkgYW5kIHlvdSB3b3VsZCB0YWtlIGNhcmUgb2YKbm90IHBsYWNpbmcgYW55
-IFUtQm9vdCBjb21wb25lbnRzIGluIHJlc2VydmVkIG1lbW9yeSByZWdpb25zIGluIHRoZQpmaXJz
-dCBwbGFjZS4KSXMgVS1Cb290IGFjdHVhbGx5IHRyaXBwaW5nIG92ZXIgc29tZXRoaW5nPyBPciBp
-cyB0aGlzIGp1c3QgdG8gYmUgc2FmZQpmb3IgdGhlIGZ1dHVyZT8KCkFuZCBJIGhhdmUgYSBndXQg
-ZmVlbGluZyB0aGUgaW1wbGVtZW50aW5nIG5vLW1hcCB3aWxsIGJlIHRyaWNreSwgQUZBSUsKdGhl
-IHBhZ2UgdGFibGUgc2V0dXAgaXMgbW9zdGx5IHN0YXRpYyBhbmQgd29uJ3QgY2hhbmdlIGFmdGVy
-IHRoZSBNTVUgaXMKZW5hYmxlZC4gV2hpY2ggbWVhbnMgd2Ugd291bGQgbmVlZCB0byBkbyBpdCBi
-ZWZvcmUgdGhlIE1NVSBpcyBlbmFibGVkPwoKQ2hlZXJzLApBbmRyZQoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5n
-IGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+Am Montag, 7. Oktober 2019, 16:01:05 CEST schrieb Andr=E9 Przywara:
+> On 07/10/2019 14:38, Heiko St=FCbner wrote:
+> > Am Montag, 7. Oktober 2019, 13:51:37 CEST schrieb Robin Murphy:
+> >> On 06/10/2019 14:13, Heiko Stuebner wrote:
+> >>> Am Sonntag, 6. Oktober 2019, 01:45:23 CEST schrieb Robin Murphy:
+> >>>> On 2019-08-19 11:43 am, Will Deacon wrote:
+> >>>>> On Mon, Aug 19, 2019 at 11:07:14AM +0100, Catalin Marinas wrote:
+> >>>>>> On Sat, Aug 17, 2019 at 03:12:41PM +0200, Philipp Richter wrote:
+> >>>>>>> I added "memtest=3D4" to the kernel cmdline and I'm getting very =
+quicky
+> >>>>>>> a "Internal error: synchronous external abort" panic.
+> >>>>>> [...]
+> >>>>>>> [    0.000000] early_memtest: # of tests: 4
+> >>>>>>> [    0.000000]   0x0000000000200000 - 0x0000000002080000 pattern =
+aaaaaaaaaaaaaaaa
+> >>>>>>> [    0.000000]   0x0000000003a95000 - 0x00000000f8400000 pattern =
+aaaaaaaaaaaaaaaa
+> >>>>>>> [    0.000000] Internal error: synchronous external abort: 960002=
+10 [#1] SMP
+> >>>>>>
+> >>>>>> At least it's a synchronous error ;).
+> >>>>>>
+> >>>>>>> [    0.000000] pc : early_memtest+0x16c/0x23c
+> >>>>>> [...]
+> >>>>>>> [    0.000000] Code: d2800002 d2800001 eb0400bf 54000309 (f940008=
+0)
+> >>>>>>
+> >>>>>> decodecode says:
+> >>>>>>
+> >>>>>>      0:   d2800002        mov     x2, #0x0                        =
+// #0
+> >>>>>>      4:   d2800001        mov     x1, #0x0                        =
+// #0
+> >>>>>>      8:   eb0400bf        cmp     x5, x4
+> >>>>>>      c:   54000309        b.ls    0x6c  // b.plast
+> >>>>>>     10:*  f9400080        ldr     x0, [x4]                <-- trap=
+ping instruction
+> >>>>>>
+> >>>>>> I guess that's the read of *p in memtest(). Writing *p probably
+> >>>>>> generates asynchronous errors it you haven't seen it yet.
+> >>>>>>
+> >>>>>>> Is my board completely broken ? :(
+> >>>>>>
+> >>>>>> One possibility is that you don't have any memory where you think =
+there
+> >>>>>> is, so the mapping just doesn't translate to any valid physical
+> >>>>>> location.
+> >>>>>>
+> >>>>>> Can you add some printk(addr) in do_sea() to see if it always faul=
+ts on
+> >>>>>> the same address?
+> >>>>>
+> >>>>> Alternatively, just run it a few more times and see if the register=
+ dump
+> >>>>> changes. Currently we've got:
+> >>>>>
+> >>>>> [    0.000000] x5 : ffff8000f8400000 x4 : ffff800008400000
+> >>>>> [    0.000000] x3 : 0000000008400000 x2 : 0000000000000000
+> >>>>> [    0.000000] x1 : 0000000000000000 x0 : aaaaaaaaaaaaaaaa
+> >>>>>
+> >>>>> so I'd guess that x3 is the faulting pa. The faulting (linear) VAs =
+in the
+> >>>>> originl report were 0xffff800009c74aa8 and 0xffff800009c08390, whic=
+h is
+> >>>>> still a way way off from this one :/
+> >>>>>
+> >>>>> Looking at the TRM for the rk3328, there's 4gb of ram starting at p=
+a 0x0,
+> >>>>> so maybe some of it has been configured as secure or the memory con=
+troller
+> >>>>> hasn't been properly initialised?
+> >>>>
+> >>>> FWIW I've noticed my RK3399 board doing this too, now that I've star=
+ted
+> >>>> using it in anger. I'm using a hacky firmware comprising upstream U-=
+Boot
+> >>>> munged with the Rockchip miniloader and downstream Trusted Firmware
+> >>>> binaries,
+> >>>
+> >>> any reason for that combination? For example the rockpro64 got ddr4 s=
+upport
+> >>> in upstream uboot recently.
+> >>
+> >> Not really; it's just the "works well enough" setup that made distro =
+
+> >> boot usable before the SPL support went upstream, and (other than =
+
+> >> hacking in the CPU PLL initialisation which otherwise gets lost in tha=
+t =
+
+> >> combination) I haven't touched it since.
+> >>
+> >> [ for now I've just hacked a reserved-memory node into my DT... one da=
+y =
+
+> >> I'll get round to firmware tinkering ;) ]
+> >>
+> >>
+> >>>> and it looks like that mismatch is the root of this problem.
+> >>>> Booting a different image based on the BSP U-boot shows that that's
+> >>>> passing a memory node with the range 0x8400000-0x9600000 entirely ca=
+rved
+> >>>> out, so this is presumably claimed by the secure firmware/TEE and se=
+t to
+> >>>> abort Non-Secure accesses.
+> >>>
+> >>> As TEE on PX30 is also one of my current projects, I've stumbled over=
+ that
+> >>> memory issue. At least OP-TEE can get passed a location for a dtb dur=
+ing
+> >>> startup which it then would modify to add a reserved section for its =
+memory.
+> >>>
+> >>> But that dtb generally is not the one, the kernel will actually use, =
+but
+> >>> instead only the one used by uboot. extlinux, tftp or whatever will n=
+ormally
+> >>> load and use a new dtb for the kernel which will likely not get that =
+memory
+> >>> reservation automatically?
+> >>>
+> >>> I'm not yet sure how this is supposed to work in an all-upstream
+> >>> configuration - I'm running upstream u-boot + upstream TF-A + upstream
+> >>> OP-Tee in my project environment right now.
+> >>
+> >> As far as I understand, U-Boot is still responsible for generating the =
+
+> >> memory node in whatever DTB it loads and passes to the kernel, so it =
+
+> >> should still be able to adjust that accordingly. Presumably U-Boot nee=
+ds =
+
+> >> to discover any firmware/TEE reservations early on to avoid touching a=
+ny =
+
+> >> Secure memory itself, so it should just need to keep track of them unt=
+il =
+
+> >> finalising the kernel DTB.
+> > =
+
+> > Yeah, that's similar to what I discovered so far :-D .
+> > =
+
+> > SPL loads u-boot.itb which should contain, u-boot, tf-a, tee and dt.
+> > [vendor tf-a might do that differently though]
+> > =
+
+> > It passes the dt-address as param to both tf-a and optee, which then
+> > may add stuff, like optee adding the firmware-node + reserved-memory
+> > sections.
+> > =
+
+> > This dt is then the basis for the main u-boot, to be found at gd->fdt_b=
+lob.
+> > So u-boot will need to discover and transplant optee-firmware + optee
+> > reserved-memory sections to any later dt that gets loaded.
+> =
+
+> Indeed U-Boot is mostly ignoring both /memreserve/ and /reserved-memory
+> for its own purposes so far. There is code
+> (boot_fdt_add_mem_rsv_regions()) to parse those nodes and translate them
+> into an lmb block, but this is then only used for relocating FDT and
+> initrd when loading kernels, AFAICS. I think the idea is that the most
+> of the memory setup (heap) is static anyway and you would take care of
+> not placing any U-Boot components in reserved memory regions in the
+> first place.
+> Is U-Boot actually tripping over something? Or is this just to be safe
+> for the future?
+
+It's not u-boot that is tripping but a later loaded kernel. As I've written
+op-tee adds its nodes to the dt loaded by the SPL from a FIT image.
+
+Which may not necessarily be the same dt that gets used by the later
+kernel. PXE-boot for example may very well just load a different dt
+from emmc / network than the one stored in the firmware image.
+
+So the reserved memory sections will need to move over to that dt
+as well if we're starting a kernel with a different dt, similar to how
+u-boot will add the core memory there as well.
+
+
+Heiko
+
+> And I have a gut feeling the implementing no-map will be tricky, AFAIK
+> the page table setup is mostly static and won't change after the MMU is
+> enabled. Which means we would need to do it before the MMU is enabled?
+> =
+
+> Cheers,
+> Andre
+> =
