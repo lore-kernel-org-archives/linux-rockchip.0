@@ -1,214 +1,139 @@
-From: Sean Paul <sean@poorly.run>
-Subject: Re: [PATCH v3 3/5] drm/rockchip: Add optional support for CRTC gamma
- LUT
-Date: Mon, 7 Oct 2019 14:54:32 -0400
-Message-ID: <20191007185432.GG126146@art_vandelay>
-References: <20190930222802.32088-1-ezequiel@collabora.com>
- <20190930222802.32088-4-ezequiel@collabora.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 0/2] mmc: core: Fix Marvell WiFi reset by adding SDIO
+ API to replug card
+Date: Mon, 7 Oct 2019 16:39:32 -0700
+Message-ID: <CAD=FV=W-qh2NnDc-C1_Tki3=D7vzNGG2PgnZjCjdLU9gL68AxA@mail.gmail.com>
+References: <20190722193939.125578-1-dianders@chromium.org>
+ <CAPDyKFoND5Kaam72zxO4wChO0z_1XL2KWX6oNjVcMUGA7G8RFg@mail.gmail.com>
+ <CAD=FV=VTLoqGbxFFMT8h72cfHCLupyvZpD75JB0N86+kFA+vzw@mail.gmail.com> <CAPDyKFrPHguMrMvXN0yHbD9GmEg4m=J1Un=LcpE0PB7WqMRYSg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20190930222802.32088-4-ezequiel@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Jacopo Mondi <jacopo@jmondi.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Boris Brezillon <boris.brezillon@collabora.com>, Sean Paul <seanpaul@chromium.org>, Rob Herring <robh+dt@kernel.org>, Jacopo Mondi <jacopo+renesas@jmondi.org>, kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFrPHguMrMvXN0yHbD9GmEg4m=J1Un=LcpE0PB7WqMRYSg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Ganapathi Bhat <gbhat@marvell.com>, linux-wireless <linux-wireless@vger.kernel.org>, Andreas Fenkart <afenkart@gmail.com>, Brian Norris <briannorris@chromium.org>, Amitkumar Karwar <amitkarwar@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Nishant Sarmukadam <nishants@marvell.com>, netdev <netdev@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>, Xinming Hu <huxinming820@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Thomas Gleixner <tglx@linutronix.de>, Kate Stewart <kste>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCBTZXAgMzAsIDIwMTkgYXQgMDc6Mjg6MDBQTSAtMDMwMCwgRXplcXVpZWwgR2FyY2lh
-IHdyb3RlOgo+IEFkZCBhbiBvcHRpb25hbCBDUlRDIGdhbW1hIExVVCBzdXBwb3J0LCBhbmQgZW5h
-YmxlIGl0IG9uIFJLMzI4OC4KPiBUaGlzIGlzIGN1cnJlbnRseSBlbmFibGVkIHZpYSBhIHNlcGFy
-YXRlIGFkZHJlc3MgcmVzb3VyY2UsCj4gd2hpY2ggbmVlZHMgdG8gYmUgc3BlY2lmaWVkIGluIHRo
-ZSBkZXZpY2V0cmVlLgo+IAo+IFRoZSBhZGRyZXNzIHJlc291cmNlIGlzIHJlcXVpcmVkIGJlY2F1
-c2Ugb24gc29tZSBTb0NzLCBzdWNoIGFzCj4gUkszMjg4LCB0aGUgTFVUIGFkZHJlc3MgaXMgYWZ0
-ZXIgdGhlIE1NVSBhZGRyZXNzLCBhbmQgdGhlIGxhdHRlcgo+IGlzIHN1cHBvcnRlZCBieSBhIGRp
-ZmZlcmVudCBkcml2ZXIuIFRoaXMgcHJldmVudHMgdGhlIERSTSBkcml2ZXIKPiBmcm9tIHJlcXVl
-c3RpbmcgYW4gZW50aXJlIHJlZ2lzdGVyIHNwYWNlLgo+IAo+IFRoZSBjdXJyZW50IGltcGxlbWVu
-dGF0aW9uIHdvcmtzIGZvciBSR0IgMTAtYml0IHRhYmxlcywgYXMgdGhhdAo+IGlzIHdoYXQgc2Vl
-bXMgdG8gd29yayBvbiBSSzMyODguCj4gCj4gU2lnbmVkLW9mZi1ieTogRXplcXVpZWwgR2FyY2lh
-IDxlemVxdWllbEBjb2xsYWJvcmEuY29tPgo+IFJldmlld2VkLWJ5OiBEb3VnbGFzIEFuZGVyc29u
-IDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+Cj4gUmV2aWV3ZWQtYnk6IEphY29wbyBNb25kaSA8amFj
-b3BvK3JlbmVzYXNAam1vbmRpLm9yZz4KPiAtLS0KPiBDaGFuZ2VzIGZyb20gdjI6Cj4gKiBOb25l
-Lgo+IAo+IENoYW5nZXMgZnJvbSB2MToKPiAqIGRyb3AgZXhwbGljaXQgbGluZWFyIExVVCBhZnRl
-ciBmaW5kaW5nIGEgcHJvcGVyCj4gICB3YXkgdG8gZGlzYWJsZSBnYW1tYSBjb3JyZWN0aW9uLgo+
-ICogYXZvaWQgc2V0dGluZyBnYW1tYSBpcyB0aGUgQ1JUQyBpcyBub3QgYWN0aXZlLgo+ICogcy9p
-bnQvdW5zaWduZWQgaW50IGFzIHN1Z2dlc3RlZCBieSBKYWNvcG8uCj4gKiBvbmx5IGVuYWJsZSBj
-b2xvciBtYW5hZ2VtZW50IGFuZCBzZXQgZ2FtbWEgc2l6ZQo+ICAgaWYgZ2FtbWEgTFVUIGlzIHN1
-cHBvcnRlZCwgc3VnZ2VzdGVkIGJ5IERvdWcuCj4gKiBkcm9wIHRoZSByZWctbmFtZXMgdXNhZ2Us
-IGFuZCBpbnN0ZWFkIGp1c3QgdXNlIGluZGV4ZWQgcmVnCj4gICBzcGVjaWZpZXJzLCBzdWdnZXN0
-ZWQgYnkgRG91Zy4KPiAKPiBDaGFuZ2VzIGZyb20gUkZDOgo+ICogUmVxdWVzdCAoYW4gb3B0aW9u
-YWwpIGFkZHJlc3MgcmVzb3VyY2UgZm9yIHRoZSBMVVQuCj4gKiBEcm9wIHN1cHBvcnQgZm9yIFJL
-MzM5OSwgd2hpY2ggZG9lc24ndCBzZWVtIHRvIHdvcmsKPiAgIG91dCBvZiB0aGUgYm94IGFuZCBu
-ZWVkcyBtb3JlIHJlc2VhcmNoLgo+ICogU3VwcG9ydCBwYXNzLXRocnUgc2V0dGluZyB3aGVuIEdB
-TU1BX0xVVCBpcyBOVUxMLgo+ICogQWRkIGEgY2hlY2sgZm9yIHRoZSBnYW1tYSBzaXplLCBhcyBz
-dWdnZXN0ZWQgYnkgSWxpYS4KPiAqIE1vdmUgZ2FtbWEgc2V0dGluZyB0byBhdG9taWNfY29tbWl0
-X3RhaWwsIGFzIHBvaW50ZWQKPiAgIG91dCBieSBKYWNvcG8vTGF1cmVudCwgaXMgdGhlIGNvcnJl
-Y3Qgd2F5Lgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Zi
-LmMgIHwgICAzICsKPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
-YyB8IDExNCArKysrKysrKysrKysrKysrKysrKwo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX3ZvcC5oIHwgICA3ICsrCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF92b3BfcmVnLmMgfCAgIDIgKwo+ICA0IGZpbGVzIGNoYW5nZWQsIDEyNiBpbnNlcnRp
-b25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fZmIuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+
-IGluZGV4IGRiYTM1MmVjMGVlMy4uZmQxZDk4NzY5OGFiIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+IEBAIC0xNyw2ICsxNyw3IEBACj4gICNpbmNs
-dWRlICJyb2NrY2hpcF9kcm1fZHJ2LmgiCj4gICNpbmNsdWRlICJyb2NrY2hpcF9kcm1fZmIuaCIK
-PiAgI2luY2x1ZGUgInJvY2tjaGlwX2RybV9nZW0uaCIKPiArI2luY2x1ZGUgInJvY2tjaGlwX2Ry
-bV92b3AuaCIKPiAgCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2ZyYW1lYnVmZmVyX2Z1bmNz
-IHJvY2tjaGlwX2RybV9mYl9mdW5jcyA9IHsKPiAgCS5kZXN0cm95ICAgICAgID0gZHJtX2dlbV9m
-Yl9kZXN0cm95LAo+IEBAIC0xMTIsNiArMTEzLDggQEAgcm9ja2NoaXBfYXRvbWljX2hlbHBlcl9j
-b21taXRfdGFpbF9ycG0oc3RydWN0IGRybV9hdG9taWNfc3RhdGUgKm9sZF9zdGF0ZSkKPiAgCj4g
-IAlkcm1fYXRvbWljX2hlbHBlcl9jb21taXRfbW9kZXNldF9kaXNhYmxlcyhkZXYsIG9sZF9zdGF0
-ZSk7Cj4gIAo+ICsJcm9ja2NoaXBfZHJtX3ZvcF9nYW1tYV9zZXQob2xkX3N0YXRlKTsKPiArCgpJ
-bnN0ZWFkIG9mIGR1cGxpY2F0aW5nIHRoZSBjb21taXRfdGFpbCBoZWxwZXIsIGNvdWxkIHlvdSBq
-dXN0IGltcGxlbWVudAouYXRvbWljX2JlZ2luKCkgYW5kIGNhbGwgdGhpcyBmcm9tIHRoZXJlPyBJ
-IHRoaW5rIHRoZSBvbmx5IGhpdGNoIGlzIGlmIHlvdQpuZWVkIHRoaXMgdG8gYmUgY29tcGxldGVk
-IGJlZm9yZSBjcnRjLT5hdG9taWNfZW5hYmxlKCksIGF0IHdoaWNoIHBvaW50IHlvdQptaWdodCBu
-ZWVkIHRvIGNhbGwgaXQgZnJvbSB2b3BfY3J0Y19hdG9taWNfZW5hYmxlKCkgYW5kIHRoZW4gZGV0
-ZWN0IHRoYXQgaW4KYXRvbWljX2JlZ2luKCkKClRoYXQgd291bGQgcHJldmVudCB0aGUgcmV2ZXJ0
-IGluIHBhdGNoIDEgYW5kIGtlZXAgcm9ja2NoaXAgb24gdGhlIGhlbHBlciB0cmFpbi4KClNlYW4K
-Cj4gIAlkcm1fYXRvbWljX2hlbHBlcl9jb21taXRfbW9kZXNldF9lbmFibGVzKGRldiwgb2xkX3N0
-YXRlKTsKPiAgCj4gIAlkcm1fYXRvbWljX2hlbHBlcl9jb21taXRfcGxhbmVzKGRldiwgb2xkX3N0
-YXRlLAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IGlu
-ZGV4IDJmODIxYzU4MDA3Yy4uM2E0OTc5NGM2YTQzIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gQEAgLTE0MSw2ICsxNDEsNyBAQCBzdHJ1Y3Qg
-dm9wIHsKPiAgCj4gIAl1aW50MzJfdCAqcmVnc2JhazsKPiAgCXZvaWQgX19pb21lbSAqcmVnczsK
-PiArCXZvaWQgX19pb21lbSAqbHV0X3JlZ3M7Cj4gIAo+ICAJLyogcGh5c2ljYWwgbWFwIGxlbmd0
-aCBvZiB2b3AgcmVnaXN0ZXIgKi8KPiAgCXVpbnQzMl90IGxlbjsKPiBAQCAtMTE5Myw2ICsxMTk0
-LDEwMiBAQCBzdGF0aWMgdm9pZCB2b3Bfd2FpdF9mb3JfaXJxX2hhbmRsZXIoc3RydWN0IHZvcCAq
-dm9wKQo+ICAJc3luY2hyb25pemVfaXJxKHZvcC0+aXJxKTsKPiAgfQo+ICAKPiArc3RhdGljIGJv
-b2wgdm9wX2RzcF9sdXRfaXNfZW5hYmxlKHN0cnVjdCB2b3AgKnZvcCkKPiArewo+ICsJcmV0dXJu
-IHZvcF9yZWFkX3JlZyh2b3AsIDAsICZ2b3AtPmRhdGEtPmNvbW1vbi0+ZHNwX2x1dF9lbik7Cj4g
-K30KPiArCj4gK3N0YXRpYyB2b2lkIHZvcF9jcnRjX3dyaXRlX2dhbW1hX2x1dChzdHJ1Y3Qgdm9w
-ICp2b3AsIHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiArewo+ICsJc3RydWN0IGRybV9jb2xvcl9s
-dXQgKmx1dCA9IGNydGMtPnN0YXRlLT5nYW1tYV9sdXQtPmRhdGE7Cj4gKwl1bnNpZ25lZCBpbnQg
-aTsKPiArCj4gKwlmb3IgKGkgPSAwOyBpIDwgY3J0Yy0+Z2FtbWFfc2l6ZTsgaSsrKSB7Cj4gKwkJ
-dTMyIHdvcmQ7Cj4gKwo+ICsJCXdvcmQgPSAoZHJtX2NvbG9yX2x1dF9leHRyYWN0KGx1dFtpXS5y
-ZWQsIDEwKSA8PCAyMCkgfAo+ICsJCSAgICAgICAoZHJtX2NvbG9yX2x1dF9leHRyYWN0KGx1dFtp
-XS5ncmVlbiwgMTApIDw8IDEwKSB8Cj4gKwkJCWRybV9jb2xvcl9sdXRfZXh0cmFjdChsdXRbaV0u
-Ymx1ZSwgMTApOwo+ICsJCXdyaXRlbCh3b3JkLCB2b3AtPmx1dF9yZWdzICsgaSAqIDQpOwo+ICsJ
-fQo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCB2b3BfY3J0Y19nYW1tYV9zZXQoc3RydWN0IHZvcCAq
-dm9wLCBzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCj4gKwkJCSAgICAgICBzdHJ1Y3QgZHJtX2NydGNf
-c3RhdGUgKm9sZF9zdGF0ZSkKPiArewo+ICsJdW5zaWduZWQgaW50IGlkbGU7Cj4gKwlpbnQgcmV0
-Owo+ICsKPiArCS8qCj4gKwkgKiBJbiBvcmRlciB0byB3cml0ZSB0aGUgTFVUIHRvIHRoZSBpbnRl
-cm5hbCBSQU0gbWVtb3J5LAo+ICsJICogd2UgbmVlZCB0byBmaXJzdCBtYWtlIHN1cmUgdGhlIGRz
-cF9sdXRfZW4gYml0IGlzIGNsZWFyZWQuCj4gKwkgKi8KPiArCXNwaW5fbG9jaygmdm9wLT5yZWdf
-bG9jayk7Cj4gKwlWT1BfUkVHX1NFVCh2b3AsIGNvbW1vbiwgZHNwX2x1dF9lbiwgMCk7Cj4gKwl2
-b3BfY2ZnX2RvbmUodm9wKTsKPiArCXNwaW5fdW5sb2NrKCZ2b3AtPnJlZ19sb2NrKTsKPiArCj4g
-KwkvKgo+ICsJICogSWYgdGhlIENSVEMgaXMgbm90IGFjdGl2ZSwgZHNwX2x1dF9lbiB3aWxsIG5v
-dCBnZXQgY2xlYXJlZC4KPiArCSAqIEFwcGFyZW50bHkgd2Ugc3RpbGwgbmVlZCB0byBkbyB0aGUg
-YWJvdmUgc3RlcCB0byBmb3IKPiArCSAqIGdhbW1hIGNvcnJlY3Rpb24gdG8gYmUgZGlzYWJsZWQu
-Cj4gKwkgKi8KPiArCWlmICghY3J0Yy0+c3RhdGUtPmFjdGl2ZSkKPiArCQlyZXR1cm47Cj4gKwo+
-ICsJcmV0ID0gcmVhZHhfcG9sbF90aW1lb3V0KHZvcF9kc3BfbHV0X2lzX2VuYWJsZSwgdm9wLAo+
-ICsJCQkJIGlkbGUsICFpZGxlLCA1LCAzMCAqIDEwMDApOwo+ICsJaWYgKHJldCkgewo+ICsJCURS
-TV9ERVZfRVJST1Iodm9wLT5kZXYsICJkaXNwbGF5IExVVCBSQU0gZW5hYmxlIHRpbWVvdXQhXG4i
-KTsKPiArCQlyZXR1cm47Cj4gKwl9Cj4gKwo+ICsJc3Bpbl9sb2NrKCZ2b3AtPnJlZ19sb2NrKTsK
-PiArCj4gKwlpZiAoY3J0Yy0+c3RhdGUtPmdhbW1hX2x1dCAmJgo+ICsJICAgKCFvbGRfc3RhdGUt
-PmdhbW1hX2x1dCB8fCAoY3J0Yy0+c3RhdGUtPmdhbW1hX2x1dC0+YmFzZS5pZCAhPQo+ICsJCQkJ
-ICAgICAgb2xkX3N0YXRlLT5nYW1tYV9sdXQtPmJhc2UuaWQpKSkKPiArCQl2b3BfY3J0Y193cml0
-ZV9nYW1tYV9sdXQodm9wLCBjcnRjKTsKPiArCj4gKwlWT1BfUkVHX1NFVCh2b3AsIGNvbW1vbiwg
-ZHNwX2x1dF9lbiwgMSk7Cj4gKwl2b3BfY2ZnX2RvbmUodm9wKTsKPiArCXNwaW5fdW5sb2NrKCZ2
-b3AtPnJlZ19sb2NrKTsKPiArfQo+ICsKPiArc3RhdGljIGludCB2b3BfY3J0Y19hdG9taWNfY2hl
-Y2soc3RydWN0IGRybV9jcnRjICpjcnRjLAo+ICsJCQkJIHN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAq
-Y3J0Y19zdGF0ZSkKPiArewo+ICsJc3RydWN0IHZvcCAqdm9wID0gdG9fdm9wKGNydGMpOwo+ICsK
-PiArCWlmICh2b3AtPmx1dF9yZWdzICYmIGNydGNfc3RhdGUtPmNvbG9yX21nbXRfY2hhbmdlZCAm
-Jgo+ICsJICAgIGNydGNfc3RhdGUtPmdhbW1hX2x1dCkgewo+ICsJCXVuc2lnbmVkIGludCBsZW47
-Cj4gKwo+ICsJCWxlbiA9IGRybV9jb2xvcl9sdXRfc2l6ZShjcnRjX3N0YXRlLT5nYW1tYV9sdXQp
-Owo+ICsJCWlmIChsZW4gIT0gY3J0Yy0+Z2FtbWFfc2l6ZSkgewo+ICsJCQlEUk1fREVCVUdfS01T
-KCJJbnZhbGlkIExVVCBzaXplOyBnb3QgJWQsIGV4cGVjdGVkICVkXG4iLAo+ICsJCQkJICAgICAg
-bGVuLCBjcnRjLT5nYW1tYV9zaXplKTsKPiArCQkJcmV0dXJuIC1FSU5WQUw7Cj4gKwkJfQo+ICsJ
-fQo+ICsKPiArCXJldHVybiAwOwo+ICt9Cj4gKwo+ICt2b2lkIHJvY2tjaGlwX2RybV92b3BfZ2Ft
-bWFfc2V0KHN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZSkKPiArewo+ICsJc3RydWN0IGRy
-bV9jcnRjX3N0YXRlICpvbGRfY3J0Y19zdGF0ZTsKPiArCXN0cnVjdCBkcm1fY3J0YyAqY3J0YzsK
-PiArCXVuc2lnbmVkIGludCBpOwo+ICsKPiArCWZvcl9lYWNoX29sZF9jcnRjX2luX3N0YXRlKHN0
-YXRlLCBjcnRjLCBvbGRfY3J0Y19zdGF0ZSwgaSkgewo+ICsJCXN0cnVjdCB2b3AgKnZvcCA9IHRv
-X3ZvcChjcnRjKTsKPiArCj4gKwkJaWYgKHZvcC0+bHV0X3JlZ3MgJiYgY3J0Yy0+c3RhdGUtPmNv
-bG9yX21nbXRfY2hhbmdlZCkKPiArCQkJdm9wX2NydGNfZ2FtbWFfc2V0KHZvcCwgY3J0Yywgb2xk
-X2NydGNfc3RhdGUpOwo+ICsJfQo+ICt9Cj4gKwo+ICBzdGF0aWMgdm9pZCB2b3BfY3J0Y19hdG9t
-aWNfZmx1c2goc3RydWN0IGRybV9jcnRjICpjcnRjLAo+ICAJCQkJICBzdHJ1Y3QgZHJtX2NydGNf
-c3RhdGUgKm9sZF9jcnRjX3N0YXRlKQo+ICB7Cj4gQEAgLTEyNDUsNiArMTM0Miw3IEBAIHN0YXRp
-YyB2b2lkIHZvcF9jcnRjX2F0b21pY19mbHVzaChzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCj4gIAo+
-ICBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9jcnRjX2hlbHBlcl9mdW5jcyB2b3BfY3J0Y19oZWxw
-ZXJfZnVuY3MgPSB7Cj4gIAkubW9kZV9maXh1cCA9IHZvcF9jcnRjX21vZGVfZml4dXAsCj4gKwku
-YXRvbWljX2NoZWNrID0gdm9wX2NydGNfYXRvbWljX2NoZWNrLAo+ICAJLmF0b21pY19mbHVzaCA9
-IHZvcF9jcnRjX2F0b21pY19mbHVzaCwKPiAgCS5hdG9taWNfZW5hYmxlID0gdm9wX2NydGNfYXRv
-bWljX2VuYWJsZSwKPiAgCS5hdG9taWNfZGlzYWJsZSA9IHZvcF9jcnRjX2F0b21pY19kaXNhYmxl
-LAo+IEBAIC0xMzYzLDYgKzE0NjEsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9jcnRjX2Z1
-bmNzIHZvcF9jcnRjX2Z1bmNzID0gewo+ICAJLmRpc2FibGVfdmJsYW5rID0gdm9wX2NydGNfZGlz
-YWJsZV92YmxhbmssCj4gIAkuc2V0X2NyY19zb3VyY2UgPSB2b3BfY3J0Y19zZXRfY3JjX3NvdXJj
-ZSwKPiAgCS52ZXJpZnlfY3JjX3NvdXJjZSA9IHZvcF9jcnRjX3ZlcmlmeV9jcmNfc291cmNlLAo+
-ICsJLmdhbW1hX3NldCA9IGRybV9hdG9taWNfaGVscGVyX2xlZ2FjeV9nYW1tYV9zZXQsCj4gIH07
-Cj4gIAo+ICBzdGF0aWMgdm9pZCB2b3BfZmJfdW5yZWZfd29ya2VyKHN0cnVjdCBkcm1fZmxpcF93
-b3JrICp3b3JrLCB2b2lkICp2YWwpCj4gQEAgLTE1MjAsNiArMTYxOSwxMCBAQCBzdGF0aWMgaW50
-IHZvcF9jcmVhdGVfY3J0YyhzdHJ1Y3Qgdm9wICp2b3ApCj4gIAkJZ290byBlcnJfY2xlYW51cF9w
-bGFuZXM7Cj4gIAo+ICAJZHJtX2NydGNfaGVscGVyX2FkZChjcnRjLCAmdm9wX2NydGNfaGVscGVy
-X2Z1bmNzKTsKPiArCWlmICh2b3AtPmx1dF9yZWdzKSB7Cj4gKwkJZHJtX21vZGVfY3J0Y19zZXRf
-Z2FtbWFfc2l6ZShjcnRjLCB2b3BfZGF0YS0+bHV0X3NpemUpOwo+ICsJCWRybV9jcnRjX2VuYWJs
-ZV9jb2xvcl9tZ210KGNydGMsIDAsIGZhbHNlLCB2b3BfZGF0YS0+bHV0X3NpemUpOwo+ICsJfQo+
-ICAKPiAgCS8qCj4gIAkgKiBDcmVhdGUgZHJtX3BsYW5lcyBmb3Igb3ZlcmxheSB3aW5kb3dzIHdp
-dGggcG9zc2libGVfY3J0Y3MgcmVzdHJpY3RlZAo+IEBAIC0xODI1LDYgKzE5MjgsMTcgQEAgc3Rh
-dGljIGludCB2b3BfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3Rl
-ciwgdm9pZCAqZGF0YSkKPiAgCWlmIChJU19FUlIodm9wLT5yZWdzKSkKPiAgCQlyZXR1cm4gUFRS
-X0VSUih2b3AtPnJlZ3MpOwo+ICAKPiArCXJlcyA9IHBsYXRmb3JtX2dldF9yZXNvdXJjZShwZGV2
-LCBJT1JFU09VUkNFX01FTSwgMSk7Cj4gKwlpZiAocmVzKSB7Cj4gKwkJaWYgKCF2b3BfZGF0YS0+
-bHV0X3NpemUpIHsKPiArCQkJRFJNX0RFVl9FUlJPUihkZXYsICJubyBnYW1tYSBMVVQgc2l6ZSBk
-ZWZpbmVkXG4iKTsKPiArCQkJcmV0dXJuIC1FSU5WQUw7Cj4gKwkJfQo+ICsJCXZvcC0+bHV0X3Jl
-Z3MgPSBkZXZtX2lvcmVtYXBfcmVzb3VyY2UoZGV2LCByZXMpOwo+ICsJCWlmIChJU19FUlIodm9w
-LT5sdXRfcmVncykpCj4gKwkJCXJldHVybiBQVFJfRVJSKHZvcC0+bHV0X3JlZ3MpOwo+ICsJfQo+
-ICsKPiAgCXZvcC0+cmVnc2JhayA9IGRldm1fa3phbGxvYyhkZXYsIHZvcC0+bGVuLCBHRlBfS0VS
-TkVMKTsKPiAgCWlmICghdm9wLT5yZWdzYmFrKQo+ICAJCXJldHVybiAtRU5PTUVNOwo+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuaAo+IGluZGV4IDIxNDlhODg5
-YzI5ZC4uYmQxYmNkNWExNGU5IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmgKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfZHJtX3ZvcC5oCj4gQEAgLTcsNiArNyw4IEBACj4gICNpZm5kZWYgX1JPQ0tDSElQX0RS
-TV9WT1BfSAo+ICAjZGVmaW5lIF9ST0NLQ0hJUF9EUk1fVk9QX0gKPiAgCj4gKyNpbmNsdWRlIDxk
-cm0vZHJtX2F0b21pYy5oPgo+ICsKPiAgLyoKPiAgICogbWFqb3I6IElQIG1ham9yIHZlcnNpb24s
-IHVzZWQgZm9yIElQIHN0cnVjdHVyZQo+ICAgKiBtaW5vcjogYmlnIGZlYXR1cmUgY2hhbmdlIHVu
-ZGVyIHNhbWUgc3RydWN0dXJlCj4gQEAgLTY3LDYgKzY5LDcgQEAgc3RydWN0IHZvcF9jb21tb24g
-ewo+ICAJc3RydWN0IHZvcF9yZWcgZGl0aGVyX2Rvd25fbW9kZTsKPiAgCXN0cnVjdCB2b3BfcmVn
-IGRpdGhlcl9kb3duX2VuOwo+ICAJc3RydWN0IHZvcF9yZWcgZGl0aGVyX3VwOwo+ICsJc3RydWN0
-IHZvcF9yZWcgZHNwX2x1dF9lbjsKPiAgCXN0cnVjdCB2b3BfcmVnIGdhdGVfZW47Cj4gIAlzdHJ1
-Y3Qgdm9wX3JlZyBtbXVfZW47Cj4gIAlzdHJ1Y3Qgdm9wX3JlZyBvdXRfbW9kZTsKPiBAQCAtMTcw
-LDYgKzE3Myw3IEBAIHN0cnVjdCB2b3BfZGF0YSB7Cj4gIAljb25zdCBzdHJ1Y3Qgdm9wX3dpbl95
-dXYyeXV2X2RhdGEgKndpbl95dXYyeXV2Owo+ICAJY29uc3Qgc3RydWN0IHZvcF93aW5fZGF0YSAq
-d2luOwo+ICAJdW5zaWduZWQgaW50IHdpbl9zaXplOwo+ICsJdW5zaWduZWQgaW50IGx1dF9zaXpl
-Owo+ICAKPiAgI2RlZmluZSBWT1BfRkVBVFVSRV9PVVRQVVRfUkdCMTAJQklUKDApCj4gICNkZWZp
-bmUgVk9QX0ZFQVRVUkVfSU5URVJOQUxfUkdCCUJJVCgxKQo+IEBAIC0zNzMsNCArMzc3LDcgQEAg
-c3RhdGljIGlubGluZSBpbnQgc2NsX3ZvcF9jYWxfbGJfbW9kZShpbnQgd2lkdGgsIGJvb2wgaXNf
-eXV2KQo+ICB9Cj4gIAo+ICBleHRlcm4gY29uc3Qgc3RydWN0IGNvbXBvbmVudF9vcHMgdm9wX2Nv
-bXBvbmVudF9vcHM7Cj4gKwo+ICt2b2lkIHJvY2tjaGlwX2RybV92b3BfZ2FtbWFfc2V0KHN0cnVj
-dCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZSk7Cj4gKwo+ICAjZW5kaWYgLyogX1JPQ0tDSElQX0RS
-TV9WT1BfSCAqLwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfdm9wX3JlZy5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcu
-Ywo+IGluZGV4IGQxNDk0YmUxNDQ3MS4uNDJkZGNiNjk4YzgyIDEwMDY0NAo+IC0tLSBhL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKPiArKysgYi9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCj4gQEAgLTU5OCw2ICs1OTgsNyBAQCBz
-dGF0aWMgY29uc3Qgc3RydWN0IHZvcF9jb21tb24gcmszMjg4X2NvbW1vbiA9IHsKPiAgCS5kaXRo
-ZXJfZG93bl9lbiA9IFZPUF9SRUcoUkszMjg4X0RTUF9DVFJMMSwgMHgxLCAyKSwKPiAgCS5wcmVf
-ZGl0aGVyX2Rvd24gPSBWT1BfUkVHKFJLMzI4OF9EU1BfQ1RSTDEsIDB4MSwgMSksCj4gIAkuZGl0
-aGVyX3VwID0gVk9QX1JFRyhSSzMyODhfRFNQX0NUUkwxLCAweDEsIDYpLAo+ICsJLmRzcF9sdXRf
-ZW4gPSBWT1BfUkVHKFJLMzI4OF9EU1BfQ1RSTDEsIDB4MSwgMCksCj4gIAkuZGF0YV9ibGFuayA9
-IFZPUF9SRUcoUkszMjg4X0RTUF9DVFJMMCwgMHgxLCAxOSksCj4gIAkuZHNwX2JsYW5rID0gVk9Q
-X1JFRyhSSzMyODhfRFNQX0NUUkwwLCAweDMsIDE4KSwKPiAgCS5vdXRfbW9kZSA9IFZPUF9SRUco
-UkszMjg4X0RTUF9DVFJMMCwgMHhmLCAwKSwKPiBAQCAtNjQ2LDYgKzY0Nyw3IEBAIHN0YXRpYyBj
-b25zdCBzdHJ1Y3Qgdm9wX2RhdGEgcmszMjg4X3ZvcCA9IHsKPiAgCS5vdXRwdXQgPSAmcmszMjg4
-X291dHB1dCwKPiAgCS53aW4gPSByazMyODhfdm9wX3dpbl9kYXRhLAo+ICAJLndpbl9zaXplID0g
-QVJSQVlfU0laRShyazMyODhfdm9wX3dpbl9kYXRhKSwKPiArCS5sdXRfc2l6ZSA9IDEwMjQsCj4g
-IH07Cj4gIAo+ICBzdGF0aWMgY29uc3QgaW50IHJrMzM2OF92b3BfaW50cnNbXSA9IHsKPiAtLSAK
-PiAyLjIyLjAKPiAKCi0tIApTZWFuIFBhdWwsIFNvZnR3YXJlIEVuZ2luZWVyLCBHb29nbGUgLyBD
-aHJvbWl1bSBPUwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
+Hi,
+
+On Mon, Sep 16, 2019 at 2:25 AM Ulf Hansson <ulf.hansson@linaro.org> wrote:
+>
+> On Wed, 11 Sep 2019 at 23:26, Doug Anderson <dianders@chromium.org> wrote:
+> >
+> > Hi,
+> >
+> > On Thu, Jul 25, 2019 at 6:28 AM Ulf Hansson <ulf.hansson@linaro.org> wrote:
+> > >
+> > > On Mon, 22 Jul 2019 at 21:41, Douglas Anderson <dianders@chromium.org> wrote:
+> > > >
+> > > > As talked about in the thread at:
+> > > >
+> > > > http://lkml.kernel.org/r/CAD=FV=X7P2F1k_zwHc0mbtfk55-rucTz_GoDH=PL6zWqKYcpuw@mail.gmail.com
+> > > >
+> > > > ...when the Marvell WiFi card tries to reset itself it kills
+> > > > Bluetooth.  It was observed that we could re-init the card properly by
+> > > > unbinding / rebinding the host controller.  It was also observed that
+> > > > in the downstream Chrome OS codebase the solution used was
+> > > > mmc_remove_host() / mmc_add_host(), which is similar to the solution
+> > > > in this series.
+> > > >
+> > > > So far I've only done testing of this series using the reset test
+> > > > source that can be simulated via sysfs.  Specifically I ran this test:
+> > > >
+> > > > for i in $(seq 1000); do
+> > > >   echo "LOOP $i --------"
+> > > >   echo 1 > /sys/kernel/debug/mwifiex/mlan0/reset
+> > > >
+> > > >   while true; do
+> > > >     if ! ping -w15 -c1 "${GW}" >/dev/null 2>&1; then
+> > > >       fail=$(( fail + 1 ))
+> > > >       echo "Fail WiFi ${fail}"
+> > > >       if [[ ${fail} == 3 ]]; then
+> > > >         exit 1
+> > > >       fi
+> > > >     else
+> > > >       fail=0
+> > > >       break
+> > > >     fi
+> > > >   done
+> > > >
+> > > >   hciconfig hci0 down
+> > > >   sleep 1
+> > > >   if ! hciconfig hci0 up; then
+> > > >     echo "Fail BT"
+> > > >     exit 1
+> > > >   fi
+> > > > done
+> > > >
+> > > > I ran this several times and got several hundred iterations each
+> > > > before a failure.  When I saw failures:
+> > > >
+> > > > * Once I saw a "Fail BT"; manually resetting the card again fixed it.
+> > > >   I didn't give it time to see if it would have detected this
+> > > >   automatically.
+> > > > * Once I saw the ping fail because (for some reason) my device only
+> > > >   got an IPv6 address from my router and the IPv4 ping failed.  I
+> > > >   changed my script to use 'ping6' to see if that would help.
+> > > > * Once I saw the ping fail because the higher level network stack
+> > > >   ("shill" in my case) seemed to crash.  A few minutes later the
+> > > >   system recovered itself automatically.  https://crbug.com/984593 if
+> > > >   you want more details.
+> > > > * Sometimes while I was testing I saw "Fail WiFi 1" indicating a
+> > > >   transitory failure.  Usually this was an association failure, but in
+> > > >   one case I saw the device do "Firmware wakeup failed" after I
+> > > >   triggered the reset.  This caused the driver to trigger a re-reset
+> > > >   of itself which eventually recovered things.  This was good because
+> > > >   it was an actual test of the normal reset flow (not the one
+> > > >   triggered via sysfs).
+> > > >
+> > > > Changes in v2:
+> > > > - s/routnine/routine (Brian Norris, Matthias Kaehlcke).
+> > > > - s/contining/containing (Matthias Kaehlcke).
+> > > > - Add Matthias Reviewed-by tag.
+> > > > - Removed clear_bit() calls and old comment (Brian Norris).
+> > > > - Explicit CC of Andreas Fenkart.
+> > > > - Explicit CC of Brian Norris.
+> > > > - Add "Fixes" pointing at the commit Brian talked about.
+> > > > - Add Brian's Reviewed-by tag.
+> > > >
+> > > > Douglas Anderson (2):
+> > > >   mmc: core: Add sdio_trigger_replug() API
+> > > >   mwifiex: Make use of the new sdio_trigger_replug() API to reset
+> > > >
+> > > >  drivers/mmc/core/core.c                     | 28 +++++++++++++++++++--
+> > > >  drivers/mmc/core/sdio_io.c                  | 20 +++++++++++++++
+> > > >  drivers/net/wireless/marvell/mwifiex/sdio.c | 16 +-----------
+> > > >  include/linux/mmc/host.h                    | 15 ++++++++++-
+> > > >  include/linux/mmc/sdio_func.h               |  2 ++
+> > > >  5 files changed, 63 insertions(+), 18 deletions(-)
+> > > >
+> > >
+> > > Doug, thanks for sending this!
+> > >
+> > > As you know, I have been working on additional changes for SDIO
+> > > suspend/resume (still WIP and not ready for sharing) and this series
+> > > is related.
+> > >
+> > > The thing is, that even during system suspend/resume, synchronizations
+> > > are needed between the different layers (mmc host, mmc core and
+> > > sdio-funcs), which is common to the problem you want to solve.
+> > >
+> > > That said, I need to scratch my head a bit more before I can provide
+> > > you some feedback on $subject series. Moreover, it's vacation period
+> > > at my side so things are moving a bit slower. Please be patient.
+> >
+> > I had kinda forgotten about this series after we landed it locally in
+> > Chrome OS, but I realized that it never got resolved upstream.  Any
+> > chance your head has been sufficiently scratched and you're now happy
+> > with $subject series?  ;-)
+>
+> It's still on my TODO list. Apologize for the delay, but I still need
+> more time to look into it, possibly later this week.
+>
+> In any case, let's make sure we get this problem resolved for v5.5.
+
+Hi Ulf.  It's your friendly pest, Doug, here to ask how things are going.  :-P
+
+
+-Doug
