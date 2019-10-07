@@ -1,124 +1,81 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: aarch64 Kernel Panic Asynchronous SError Interrupt on large file
- IO
-Date: Mon, 7 Oct 2019 12:51:37 +0100
-Message-ID: <7f659a93-81e1-65f3-8239-537307f34f42@arm.com>
-References: <CA+Vb7hpe_USzdCuTBHd8V-t6YeQ0oApiBrvM-D43JuhJda6eyQ@mail.gmail.com>
- <20190819104313.fekk5cxxznoctvz5@willie-the-truck>
- <006d3ee0-2711-1b4e-d8cf-6a226fcad0e4@arm.com> <1596764.niU1GBd6P2@phil>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Subject: Re: [PATCH v2 RESEND] drm/bridge: dw-hdmi: Restore audio when setting
+ a mode
+Date: Mon, 7 Oct 2019 13:57:52 +0200
+Message-ID: <b8ad03db-b93f-44e0-ccd6-fc8bda1af223@baylibre.com>
+References: <20191003041438.194224-1-cychiang@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1596764.niU1GBd6P2@phil>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Catalin Marinas <catalin.marinas@arm.com>, vicencb@gmail.com, linux-rockchip@lists.infradead.org, andre.przywara@arm.com, Philipp Richter <richterphilipp.pops@gmail.com>, Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191003041438.194224-1-cychiang@chromium.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Cheng-Yi Chiang <cychiang@chromium.org>, linux-kernel@vger.kernel.org
+Cc: Jerome Brunet <jbrunet@baylibre.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, dianders@chromium.org, dgreid@chromium.org, tzungbi@chromium.org, alsa-devel@alsa-project.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Yakir Yang <ykk@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 06/10/2019 14:13, Heiko Stuebner wrote:
-> Am Sonntag, 6. Oktober 2019, 01:45:23 CEST schrieb Robin Murphy:
->> On 2019-08-19 11:43 am, Will Deacon wrote:
->>> On Mon, Aug 19, 2019 at 11:07:14AM +0100, Catalin Marinas wrote:
->>>> On Sat, Aug 17, 2019 at 03:12:41PM +0200, Philipp Richter wrote:
->>>>> I added "memtest=4" to the kernel cmdline and I'm getting very quicky
->>>>> a "Internal error: synchronous external abort" panic.
->>>> [...]
->>>>> [    0.000000] early_memtest: # of tests: 4
->>>>> [    0.000000]   0x0000000000200000 - 0x0000000002080000 pattern aaaaaaaaaaaaaaaa
->>>>> [    0.000000]   0x0000000003a95000 - 0x00000000f8400000 pattern aaaaaaaaaaaaaaaa
->>>>> [    0.000000] Internal error: synchronous external abort: 96000210 [#1] SMP
->>>>
->>>> At least it's a synchronous error ;).
->>>>
->>>>> [    0.000000] pc : early_memtest+0x16c/0x23c
->>>> [...]
->>>>> [    0.000000] Code: d2800002 d2800001 eb0400bf 54000309 (f9400080)
->>>>
->>>> decodecode says:
->>>>
->>>>      0:   d2800002        mov     x2, #0x0                        // #0
->>>>      4:   d2800001        mov     x1, #0x0                        // #0
->>>>      8:   eb0400bf        cmp     x5, x4
->>>>      c:   54000309        b.ls    0x6c  // b.plast
->>>>     10:*  f9400080        ldr     x0, [x4]                <-- trapping instruction
->>>>
->>>> I guess that's the read of *p in memtest(). Writing *p probably
->>>> generates asynchronous errors it you haven't seen it yet.
->>>>
->>>>> Is my board completely broken ? :(
->>>>
->>>> One possibility is that you don't have any memory where you think there
->>>> is, so the mapping just doesn't translate to any valid physical
->>>> location.
->>>>
->>>> Can you add some printk(addr) in do_sea() to see if it always faults on
->>>> the same address?
->>>
->>> Alternatively, just run it a few more times and see if the register dump
->>> changes. Currently we've got:
->>>
->>> [    0.000000] x5 : ffff8000f8400000 x4 : ffff800008400000
->>> [    0.000000] x3 : 0000000008400000 x2 : 0000000000000000
->>> [    0.000000] x1 : 0000000000000000 x0 : aaaaaaaaaaaaaaaa
->>>
->>> so I'd guess that x3 is the faulting pa. The faulting (linear) VAs in the
->>> originl report were 0xffff800009c74aa8 and 0xffff800009c08390, which is
->>> still a way way off from this one :/
->>>
->>> Looking at the TRM for the rk3328, there's 4gb of ram starting at pa 0x0,
->>> so maybe some of it has been configured as secure or the memory controller
->>> hasn't been properly initialised?
->>
->> FWIW I've noticed my RK3399 board doing this too, now that I've started
->> using it in anger. I'm using a hacky firmware comprising upstream U-Boot
->> munged with the Rockchip miniloader and downstream Trusted Firmware
->> binaries,
+Hi,
+
+On 03/10/2019 06:14, Cheng-Yi Chiang wrote:
+> From: Daniel Kurtz <djkurtz@chromium.org>
 > 
-> any reason for that combination? For example the rockpro64 got ddr4 support
-> in upstream uboot recently.
-
-Not really; it's just the "works well enough" setup that made distro 
-boot usable before the SPL support went upstream, and (other than 
-hacking in the CPU PLL initialisation which otherwise gets lost in that 
-combination) I haven't touched it since.
-
-[ for now I've just hacked a reserved-memory node into my DT... one day 
-I'll get round to firmware tinkering ;) ]
-
->> and it looks like that mismatch is the root of this problem.
->> Booting a different image based on the BSP U-boot shows that that's
->> passing a memory node with the range 0x8400000-0x9600000 entirely carved
->> out, so this is presumably claimed by the secure firmware/TEE and set to
->> abort Non-Secure accesses.
+> When setting a new display mode, dw_hdmi_setup() calls
+> dw_hdmi_enable_video_path(), which disables all hdmi clocks, including
+> the audio clock.
 > 
-> As TEE on PX30 is also one of my current projects, I've stumbled over that
-> memory issue. At least OP-TEE can get passed a location for a dtb during
-> startup which it then would modify to add a reserved section for its memory.
+> We should only (re-)enable the audio clock if audio was already enabled
+> when setting the new mode.
 > 
-> But that dtb generally is not the one, the kernel will actually use, but
-> instead only the one used by uboot. extlinux, tftp or whatever will normally
-> load and use a new dtb for the kernel which will likely not get that memory
-> reservation automatically?
+> Without this patch, on RK3288, there will be HDMI audio on some monitors
+> if i2s was played to headphone when the monitor was plugged.
+> ACER H277HU and ASUS PB278 are two of the monitors showing this issue.
 > 
-> I'm not yet sure how this is supposed to work in an all-upstream
-> configuration - I'm running upstream u-boot + upstream TF-A + upstream
-> OP-Tee in my project environment right now.
+> Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+> Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+> ---
+>  Change from v1 to v2:
+>   - Use audio_lock to protect audio clock.
+>   - Fix the patch title.
+> 
+>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 13 ++++++++++++-
+>  1 file changed, 12 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> index aa7efd4da1c8..749d8e4c535b 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> @@ -1982,6 +1982,17 @@ static void hdmi_disable_overflow_interrupts(struct dw_hdmi *hdmi)
+>  		    HDMI_IH_MUTE_FC_STAT2);
+>  }
+>  
+> +static void dw_hdmi_audio_restore(struct dw_hdmi *hdmi)
+> +{
+> +	unsigned long flags;
+> +
+> +	spin_lock_irqsave(&hdmi->audio_lock, flags);
+> +
+> +	hdmi_enable_audio_clk(hdmi, hdmi->audio_enable);
+> +
+> +	spin_unlock_irqrestore(&hdmi->audio_lock, flags);
 
-As far as I understand, U-Boot is still responsible for generating the 
-memory node in whatever DTB it loads and passes to the kernel, so it 
-should still be able to adjust that accordingly. Presumably U-Boot needs 
-to discover any firmware/TEE reservations early on to avoid touching any 
-Secure memory itself, so it should just need to keep track of them until 
-finalising the kernel DTB.
+Dumb question, why is this protected by a spinlock ?
 
-Robin.
+Neil
+
+> +}
+> +
+>  static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
+>  {
+>  	int ret;
+> @@ -2045,7 +2056,7 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
+>  
+>  		/* HDMI Initialization Step E - Configure audio */
+>  		hdmi_clk_regenerator_update_pixel_clock(hdmi);
+> -		hdmi_enable_audio_clk(hdmi, true);
+> +		dw_hdmi_audio_restore(hdmi);
+>  	}
+>  
+>  	/* not for DVI mode */
+> 
