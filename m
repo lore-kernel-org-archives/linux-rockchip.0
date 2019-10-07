@@ -1,7 +1,7 @@
 From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v2 for 5.4 2/4] media: hantro: Fix H264 max frmsize supported on RK3288
-Date: Mon,  7 Oct 2019 14:45:03 -0300
-Message-ID: <20191007174505.10681-3-ezequiel@collabora.com>
+Subject: [PATCH v2 for 5.4 3/4] media: hantro: Fix motion vectors usage condition
+Date: Mon,  7 Oct 2019 14:45:04 -0300
+Message-ID: <20191007174505.10681-4-ezequiel@collabora.com>
 References: <20191007174505.10681-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -9,39 +9,41 @@ Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20191007174505.10681-1-ezequiel@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-media@vger.kernel.org
-Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>
+Cc: kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Jonas Karlman <jonas@kwiboo.se>
+From: Francois Buergisser <fbuergisser@chromium.org>
 
-TRM specify supported image size 48x48 to 4096x2304 at step size 16 pixels,
-change frmsize max_width/max_height to match TRM.
+The setting of the motion vectors usage and the setting of motion
+vectors address are currently done under different conditions.
 
-Fixes: 760327930e10 ("media: hantro: Enable H264 decoding on rk3288")
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+When decoding pre-recorded videos, this results of leaving the motion
+vectors address unset, resulting in faulty memory accesses. Fix it
+by using the same condition everywhere, which matches the profiles
+that support motion vectors.
+
+Fixes: dea0a82f3d22 ("media: hantro: Add support for H264 decoding on G1")
+Signed-off-by: Francois Buergisser <fbuergisser@chromium.org>
+Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
 v2:
-* No changes.
+* New patch.
 
- drivers/staging/media/hantro/rk3288_vpu_hw.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/media/hantro/hantro_g1_h264_dec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/hantro/rk3288_vpu_hw.c b/drivers/staging/media/hantro/rk3288_vpu_hw.c
-index 6bfcc47d1e58..ebb017b8a334 100644
---- a/drivers/staging/media/hantro/rk3288_vpu_hw.c
-+++ b/drivers/staging/media/hantro/rk3288_vpu_hw.c
-@@ -67,10 +67,10 @@ static const struct hantro_fmt rk3288_vpu_dec_fmts[] = {
- 		.max_depth = 2,
- 		.frmsize = {
- 			.min_width = 48,
--			.max_width = 3840,
-+			.max_width = 4096,
- 			.step_width = H264_MB_DIM,
- 			.min_height = 48,
--			.max_height = 2160,
-+			.max_height = 2304,
- 			.step_height = H264_MB_DIM,
- 		},
- 	},
+diff --git a/drivers/staging/media/hantro/hantro_g1_h264_dec.c b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+index 7ab534936843..c92460407613 100644
+--- a/drivers/staging/media/hantro/hantro_g1_h264_dec.c
++++ b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+@@ -35,7 +35,7 @@ static void set_params(struct hantro_ctx *ctx)
+ 	if (sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD)
+ 		reg |= G1_REG_DEC_CTRL0_SEQ_MBAFF_E;
+ 	reg |= G1_REG_DEC_CTRL0_PICORD_COUNT_E;
+-	if (dec_param->nal_ref_idc)
++	if (sps->profile_idc > 66)
+ 		reg |= G1_REG_DEC_CTRL0_WRITE_MVS_E;
+ 
+ 	if (!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY) &&
 -- 
 2.22.0
