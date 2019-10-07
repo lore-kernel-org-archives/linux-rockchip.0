@@ -1,158 +1,102 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add Beelink A1
-Date: Mon, 7 Oct 2019 07:53:06 -0500
-Message-ID: <CAL_JsqKBy+i+=gGyYhBgcMUYsWd_CL_GnEoQqALBb+Gy7Ogb6A@mail.gmail.com>
-References: <9037b7edbbb41cbbf699ebe3a511daf22d886e7d.1570444695.git.robin.murphy@arm.com>
+From: Cheng-yi Chiang <cychiang@chromium.org>
+Subject: Re: [PATCH v2 RESEND] drm/bridge: dw-hdmi: Restore audio when setting
+ a mode
+Date: Mon, 7 Oct 2019 21:03:10 +0800
+Message-ID: <CAFv8Nw+xfqzKC+x9m-Zd-dmPNayXxqTCeo8JsO7pQn8Uk1Ybsw@mail.gmail.com>
+References: <20191003041438.194224-1-cychiang@chromium.org> <b8ad03db-b93f-44e0-ccd6-fc8bda1af223@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <9037b7edbbb41cbbf699ebe3a511daf22d886e7d.1570444695.git.robin.murphy@arm.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: devicetree@vger.kernel.org, "heiko@sntech.de" <heiko@sntech.de>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <b8ad03db-b93f-44e0-ccd6-fc8bda1af223@baylibre.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Neil Armstrong <narmstrong@baylibre.com>
+Cc: linux-kernel <linux-kernel@vger.kernel.org>, Jerome Brunet <jbrunet@baylibre.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Doug Anderson <dianders@chromium.org>, Dylan Reid <dgreid@chromium.org>, Tzung-Bi Shih <tzungbi@chromium.org>, "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..." <alsa-devel@alsa-project.org>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Yakir Yang <ykk@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Oct 7, 2019 at 6:33 AM Robin Murphy <robin.murphy@arm.com> wrote:
+On Mon, Oct 7, 2019 at 7:57 PM Neil Armstrong <narmstrong@baylibre.com> wrote:
 >
-> Beelink A1 is a TV box implementing the higher-end options of the
-> RK3328 reference design - the DTB from the stock Android firmware is
-> clearly the "rk3328-box-plus" variant from the Rockchip 3.10 BSP with
-> minor modifications to accommodate the USB WiFi module and additional
-> VFD-style LED driver. It features:
+> Hi,
 >
-> - 4GB of 32-bit LPDDR3
-> - 16GB of HS200 eMMC (newer models with 32GB also exist)
-> - Realtek RTL8211F phy for gigabit ethernet
-> - Fn-Link 6221E-UUC module (RealTek RTL8821CU) for 11ac WiFi and Bluetooth 4.2
-> - HDMI and analog A/V
-> - 1x USB 3.0 type A host, 1x USB 2.0 type A OTG, 1x micro SD
-> - IR receiver and a neat little LED clock display.
+> On 03/10/2019 06:14, Cheng-Yi Chiang wrote:
+> > From: Daniel Kurtz <djkurtz@chromium.org>
+> >
+> > When setting a new display mode, dw_hdmi_setup() calls
+> > dw_hdmi_enable_video_path(), which disables all hdmi clocks, including
+> > the audio clock.
+> >
+> > We should only (re-)enable the audio clock if audio was already enabled
+> > when setting the new mode.
+> >
+> > Without this patch, on RK3288, there will be HDMI audio on some monitors
+> > if i2s was played to headphone when the monitor was plugged.
+> > ACER H277HU and ASUS PB278 are two of the monitors showing this issue.
+> >
+> > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+> > Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+> > Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+> > ---
+> >  Change from v1 to v2:
+> >   - Use audio_lock to protect audio clock.
+> >   - Fix the patch title.
+> >
+> >  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 13 ++++++++++++-
+> >  1 file changed, 12 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> > index aa7efd4da1c8..749d8e4c535b 100644
+> > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> > @@ -1982,6 +1982,17 @@ static void hdmi_disable_overflow_interrupts(struct dw_hdmi *hdmi)
+> >                   HDMI_IH_MUTE_FC_STAT2);
+> >  }
+> >
+> > +static void dw_hdmi_audio_restore(struct dw_hdmi *hdmi)
+> > +{
+> > +     unsigned long flags;
+> > +
+> > +     spin_lock_irqsave(&hdmi->audio_lock, flags);
+> > +
+> > +     hdmi_enable_audio_clk(hdmi, hdmi->audio_enable);
+> > +
+> > +     spin_unlock_irqrestore(&hdmi->audio_lock, flags);
 >
-> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
-> ---
+> Dumb question, why is this protected by a spinlock ?
 >
-> One question I'm wondering about is whether it's worth pushing the HDMI
-> and analog codec audio cards down into rk3328.dtsi (as with HDMI audio
-> on RK3399), since those audio pipelines are internal to the SoC and the
-> board only really governs whether the outputs are wired up or not.
+> Neil
+>
 
-Seems reasonable. One other candidate below.
+Hi Neil,
+Thanks for the review.
+Good catch. I found that the spinlock audio_lock was introduced in
 
+b90120a96608 drm: bridge/dw_hdmi: introduce interfaces to enable and
+disable audio
+
+to protect N/CTS value.
+Actually it was not used to protect audio clock.
+So we don't need this spinlock.
+
+Hi Daniel Kurtz,
+If this rings any bell in your memory as for why this is protected,
+please let me know.
+I would like to remove this spinlock and simplify this patch in v3.
+
+Thanks!
+
+
+> > +}
+> > +
+> >  static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
+> >  {
+> >       int ret;
+> > @@ -2045,7 +2056,7 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
+> >
+> >               /* HDMI Initialization Step E - Configure audio */
+> >               hdmi_clk_regenerator_update_pixel_clock(hdmi);
+> > -             hdmi_enable_audio_clk(hdmi, true);
+> > +             dw_hdmi_audio_restore(hdmi);
+> >       }
+> >
+> >       /* not for DVI mode */
+> >
 >
->  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
-
-In the future, please split bindings to a separate patch.
-
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  arch/arm64/boot/dts/rockchip/rk3328-a1.dts    | 399 ++++++++++++++++++
->  3 files changed, 405 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-a1.dts
->
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index c82c5e57d44c..f27f7805f57e 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -40,6 +40,11 @@ properties:
->            - const: asus,rk3288-tinker-s
->            - const: rockchip,rk3288
->
-> +      - description: Beelink A1
-> +        items:
-> +          - const: azw,beelink-a1
-> +          - const: rockchip,rk3328
-> +
->        - description: bq Curie 2 tablet
->          items:
->            - const: mundoreader,bq-curie2
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index 1f18a9392d15..a6f250e7cde2 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -1,5 +1,6 @@
->  # SPDX-License-Identifier: GPL-2.0
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-evb.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-roc-cc.dtb
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-> new file mode 100644
-> index 000000000000..03ad663ff821
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-> @@ -0,0 +1,399 @@
-> +// SPDX-License-Identifier: (GPL-2.0-only OR MIT)
-> +// Copyright (c) 2017-2019 Arm Ltd.
-> +
-> +/dts-v1/;
-> +#include "rk3328.dtsi"
-> +
-> +/ {
-> +       model = "Beelink A1";
-> +       compatible = "azw,beelink-a1", "rockchip,rk3328";
-> +
-> +       /*
-> +        * UART pins, as viewed with bottom of case removed:
-> +        *
-> +        *           Front
-> +        *        /-------
-> +        *  L    / o <- Gnd
-> +        *  e   / o <-- Rx
-> +        *  f  / o <--- Tx
-> +        *  t / o <---- +3.3v
-> +        *    |
-> +        */
-> +       chosen {
-> +               stdout-path = "serial2:1500000n8";
-> +       };
-> +
-> +       gmac_clkin: external-gmac-clock {
-> +               compatible = "fixed-clock";
-> +               clock-frequency = <125000000>;
-> +               clock-output-names = "gmac_clkin";
-> +               #clock-cells = <0>;
-> +       };
-> +
-> +       vcc_host_5v: usb3-current-switch {
-> +               compatible = "regulator-fixed";
-> +               enable-active-high;
-> +               gpio = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
-> +               pinctrl-names = "default";
-> +               pinctrl-0 = <&usb30_host_drv>;
-> +               regulator-name = "vcc_host_5v";
-> +               vin-supply = <&vcc_sys>;
-> +       };
-> +
-> +       vcc_sys: vcc-sys {
-> +               compatible = "regulator-fixed";
-> +               regulator-name = "vcc_sys";
-> +               regulator-min-microvolt = <5000000>;
-> +               regulator-max-microvolt = <5000000>;
-> +       };
-> +
-> +       cpus {
-> +               idle-states {
-> +                       entry-method = "arm,psci";
-> +
-> +                       cpu_sleep: cpu-sleep {
-> +                               compatible = "arm,idle-state";
-> +                               arm,psci-suspend-param = <0x0010000>;
-> +                               local-timer-stop;
-> +                               entry-latency-us = <120>;
-> +                               exit-latency-us = <250>;
-> +                               min-residency-us = <900>;
-
-This doesn't seem like something that's board specific, but I guess
-the regulator could have some influence on these times. If so, the
-board file could always override a default.
-
-Rob
