@@ -1,100 +1,130 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH v2 for 5.4 2/4] media: hantro: Fix H264 max frmsize
- supported on RK3288
-Date: Tue, 8 Oct 2019 20:39:51 +0000
-Message-ID: <HE1PR06MB4011D0189027292BD1107CAFAC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
-References: <20191007174505.10681-1-ezequiel@collabora.com>
- <20191007174505.10681-3-ezequiel@collabora.com>
- <CAAFQd5BNu2ea3ei_imHmEwmdna0+iiSbQSv_SBsdHfP4Uh1h4Q@mail.gmail.com>
- <HE1PR06MB4011EC9E93ECBB6773252247AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
- <CAAFQd5CWoAP1psrEW6bVMkRmhFeTvFKtDSLjT7nefc2YiFovqQ@mail.gmail.com>
- <CAAFQd5AYCiKcA9pGc44L3gGHLPx6iMSb7KywkO8OqVv4gS8KvQ@mail.gmail.com>
- <CAAFQd5AQXGX_2gmKLfymH5mLG-uVh-v+XXtGXzbfzYzVVV42mA@mail.gmail.com>
- <HE1PR06MB4011B897EA5497659A19BCC6AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v3 3/5] drm/rockchip: Add optional support for CRTC
+ gamma LUT
+Date: Tue, 08 Oct 2019 18:55:34 -0300
+Message-ID: <d37e781548fbcb1cb891d681b322645b7af7f01b.camel@collabora.com>
+References: <20190930222802.32088-1-ezequiel@collabora.com>
+         <20190930222802.32088-4-ezequiel@collabora.com>
+         <20191007185432.GG126146@art_vandelay>
+         <dad6ee9aa3699af0f794f467224a8a01798d86b2.camel@collabora.com>
+         <9cdd23c20ed91d4c4654aaae27d8c3addfd9af3f.camel@collabora.com>
+         <20191008200339.GD85762@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <HE1PR06MB4011B897EA5497659A19BCC6AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
-Content-Language: en-US
-Content-ID: <81210C9C23B978499F116EE89FCEBF48@eurprd06.prod.outlook.com>
+In-Reply-To: <20191008200339.GD85762@art_vandelay>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: "fbuergisser@chromium.org" <fbuergisser@chromium.org>, "kernel@collabora.com" <kernel@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Alexandre Courbot <acourbot@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Douglas Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Boris Brezillon <boris.brezillon@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>
+To: Sean Paul <sean@poorly.run>
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>, Douglas Anderson <dianders@chromium.org>, Jacopo Mondi <jacopo@jmondi.org>, Ilia Mirkin <imirkin@alum.mit.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Jacopo Mondi <jacopo+renesas@jmondi.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOS0xMC0wOCAxNjoxMiwgSm9uYXMgS2FybG1hbiB3cm90ZToNCj4gT24gMjAxOS0xMC0w
-OCAxNTo1MywgVG9tYXN6IEZpZ2Egd3JvdGU6DQo+PiBPbiBUdWUsIE9jdCA4LCAyMDE5IGF0IDEw
-OjM1IFBNIFRvbWFzeiBGaWdhIDx0ZmlnYUBjaHJvbWl1bS5vcmc+IHdyb3RlOg0KPj4+IE9uIFR1
-ZSwgT2N0IDgsIDIwMTkgYXQgNzo0MiBQTSBUb21hc3ogRmlnYSA8dGZpZ2FAY2hyb21pdW0ub3Jn
-PiB3cm90ZToNCj4+Pj4gT24gVHVlLCBPY3QgOCwgMjAxOSBhdCAzOjMxIFBNIEpvbmFzIEthcmxt
-YW4gPGpvbmFzQGt3aWJvby5zZT4gd3JvdGU6DQo+Pj4+PiBPbiAyMDE5LTEwLTA4IDA3OjI3LCBU
-b21hc3ogRmlnYSB3cm90ZToNCj4+Pj4+PiBIaSBFemVxdWllbCwgSm9uYXMsDQo+Pj4+Pj4NCj4+
-Pj4+PiBPbiBUdWUsIE9jdCA4LCAyMDE5IGF0IDI6NDYgQU0gRXplcXVpZWwgR2FyY2lhIDxlemVx
-dWllbEBjb2xsYWJvcmEuY29tPiB3cm90ZToNCj4+Pj4+Pj4gRnJvbTogSm9uYXMgS2FybG1hbiA8
-am9uYXNAa3dpYm9vLnNlPg0KPj4+Pj4+Pg0KPj4+Pj4+PiBUUk0gc3BlY2lmeSBzdXBwb3J0ZWQg
-aW1hZ2Ugc2l6ZSA0OHg0OCB0byA0MDk2eDIzMDQgYXQgc3RlcCBzaXplIDE2IHBpeGVscywNCj4+
-Pj4+Pj4gY2hhbmdlIGZybXNpemUgbWF4X3dpZHRoL21heF9oZWlnaHQgdG8gbWF0Y2ggVFJNLg0K
-Pj4+Pj4+Pg0KPj4+Pj4+PiBGaXhlczogNzYwMzI3OTMwZTEwICgibWVkaWE6IGhhbnRybzogRW5h
-YmxlIEgyNjQgZGVjb2Rpbmcgb24gcmszMjg4IikNCj4+Pj4+Pj4gU2lnbmVkLW9mZi1ieTogSm9u
-YXMgS2FybG1hbiA8am9uYXNAa3dpYm9vLnNlPg0KPj4+Pj4+PiAtLS0NCj4+Pj4+Pj4gdjI6DQo+
-Pj4+Pj4+ICogTm8gY2hhbmdlcy4NCj4+Pj4+Pj4NCj4+Pj4+Pj4gIGRyaXZlcnMvc3RhZ2luZy9t
-ZWRpYS9oYW50cm8vcmszMjg4X3ZwdV9ody5jIHwgNCArKy0tDQo+Pj4+Pj4+ICAxIGZpbGUgY2hh
-bmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQ0KPj4+Pj4+Pg0KPj4+Pj4+PiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9yazMyODhfdnB1X2h3LmMg
-Yi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL3JrMzI4OF92cHVfaHcuYw0KPj4+Pj4+PiBp
-bmRleCA2YmZjYzQ3ZDFlNTguLmViYjAxN2I4YTMzNCAxMDA2NDQNCj4+Pj4+Pj4gLS0tIGEvZHJp
-dmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9yazMyODhfdnB1X2h3LmMNCj4+Pj4+Pj4gKysrIGIv
-ZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9yazMyODhfdnB1X2h3LmMNCj4+Pj4+Pj4gQEAg
-LTY3LDEwICs2NywxMCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGhhbnRyb19mbXQgcmszMjg4X3Zw
-dV9kZWNfZm10c1tdID0gew0KPj4+Pj4+PiAgICAgICAgICAgICAgICAgLm1heF9kZXB0aCA9IDIs
-DQo+Pj4+Pj4+ICAgICAgICAgICAgICAgICAuZnJtc2l6ZSA9IHsNCj4+Pj4+Pj4gICAgICAgICAg
-ICAgICAgICAgICAgICAgLm1pbl93aWR0aCA9IDQ4LA0KPj4+Pj4+PiAtICAgICAgICAgICAgICAg
-ICAgICAgICAubWF4X3dpZHRoID0gMzg0MCwNCj4+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAg
-ICAgLm1heF93aWR0aCA9IDQwOTYsDQo+Pj4+Pj4+ICAgICAgICAgICAgICAgICAgICAgICAgIC5z
-dGVwX3dpZHRoID0gSDI2NF9NQl9ESU0sDQo+Pj4+Pj4+ICAgICAgICAgICAgICAgICAgICAgICAg
-IC5taW5faGVpZ2h0ID0gNDgsDQo+Pj4+Pj4+IC0gICAgICAgICAgICAgICAgICAgICAgIC5tYXhf
-aGVpZ2h0ID0gMjE2MCwNCj4+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgLm1heF9oZWln
-aHQgPSAyMzA0LA0KPj4+Pj4+IFRoaXMgZG9lc24ndCBtYXRjaCB0aGUgZGF0YXNoZWV0IEkgaGF2
-ZSwgd2hpY2ggaXMgUkszMjg4IERhdGFzaGVldCBSZXYNCj4+Pj4+PiAxLjQgYW5kIHdoaWNoIGhh
-cyB0aGUgdmFsdWVzIGFzIGluIGN1cnJlbnQgY29kZS4gV2hhdCdzIHRoZSBvbmUgeW91DQo+Pj4+
-Pj4gZ290IHRoZSB2YWx1ZXMgZnJvbT8NCj4+Pj4+IFRoZSBSSzMyODggVFJNIHZjb2RlYyBjaGFw
-dGVyIGZyb20gWzFdLCB1bmtub3duIHJldmlzaW9uIGFuZCBkYXRlLCBsaXN0cyA0OHg0OCB0byA0
-MDk2eDIzMDQgc3RlcCBzaXplIDE2IHBpeGVscyB1bmRlciAyNS41LjEgSC4yNjQgZGVjb2Rlci4N
-Cj4+Pj4+DQo+Pj4+PiBJIGNhbiBhbHNvIGNvbmZpcm0gdGhhdCBvbmUgb2YgbXkgdGVzdCBzYW1w
-bGVzIChQVVBQSUVTIEJBVEggSU4gNEspIGlzIDQwOTZ4MjMwNCBhbmQgY2FuIGJlIGRlY29kZWQg
-YWZ0ZXIgdGhpcyBwYXRjaC4NCj4+Pj4+IEhvd2V2ZXIgdGhlIGRlY29kaW5nIHNwZWVkIGlzIG5v
-dCBvcHRpbWFsIGF0IDQwME1oeiwgaWYgSSByZWNhbGwgY29ycmVjdGx5IHlvdSBuZWVkIHRvIHNl
-dCB0aGUgVlBVMSBjbG9jayB0byA2MDBNaHogZm9yIDRLIGRlY29kaW5nIG9uIFJLMzI4OC4NCj4+
-Pj4+DQo+Pj4+PiBJIGFtIG5vdCBzdXJlIGlmIEkgc2hvdWxkIGluY2x1ZGUgYSB2MiBvZiB0aGlz
-IHBhdGNoIGluIG15IHYyIHNlcmllcywgYXMtaXMgdGhpcyBwYXRjaCBkbyBub3QgYXBwbHkgb24g
-bWFzdGVyIChIMjY0X01CX0RJTSBoYXMgY2hhbmdlZCB0byBNQl9ESU0gaW4gbWFzdGVyKS4NCj4+
-Pj4+DQo+Pj4+PiBbMV0gaHR0cDovL3d3dy50LWZpcmVmbHkuY29tL2Rvd25sb2FkL2ZpcmVmbHkt
-cmszMjg4L2RvY3MvVFJNL3JrMzI4OC1jaGFwdGVyLTI1LXZpZGVvLWVuY29kZXItZGVjb2Rlci11
-bml0LSh2Y29kZWMpLnBkZg0KPj4+PiBJIGNoZWNrZWQgdGhlIFJLMzI4OCBUUk0gVjEuMSB0b28g
-YW5kIGl0IHJlZmVycyB0byAzODQweDIxNjBAMjRmcHMgYXMNCj4+Pj4gdGhlIG1heGltdW0uDQo+
-Pj4+DQo+Pj4+IEFzIGZvciBwZXJmb3JtYW5jZSwgd2UndmUgYWN0dWFsbHkgYmVlbiBnZXR0aW5n
-IGFyb3VuZCAzMyBmcHMgYXQgNDAwDQo+Pj4+IE1IeiB3aXRoIDM4NDB4MjE2MCBvbiBvdXIgZGV2
-aWNlcyAodGhlIG9sZCBSSzMyODggQXN1cyBDaHJvbWVib29rDQo+Pj4+IEZsaXApLg0KPj4+Pg0K
-Pj4+PiBJIGd1ZXNzIHdlIG1pZ2h0IHdhbnQgdG8gY2hlY2sgdGhhdCB3aXRoIEhhbnRyby4NCj4+
-PiBDb3VsZCB5b3UgY2hlY2sgdGhlIHZhbHVlIG9mIGJpdHMgMTA6MCBpbiByZWdpc3RlciBhdCAw
-eDBjOD8gVGhhdA0KPj4+IHNob3VsZCBiZSB0aGUgbWF4aW11bSBzdXBwb3J0ZWQgc3RyZWFtIHdp
-ZHRoIGluIHRoZSB1bml0cyBvZiAxNg0KPj4+IHBpeGVscy4NCj4+IENvcnJlY3Rpb246IFRoZSB1
-bml0IGlzIDEgcGl4ZWwgYW5kIHRoZXJlIGFyZSBhZGRpdGlvbmFsIDIgbW9zdA0KPj4gc2lnbmlm
-aWNhbnQgYml0cyBhdCAweDBkOCwgMTU6MTQuDQo+IEkgd2lsbCBjaGVjayB0aGlzIGxhdGVyIHRv
-bmlnaHQgd2hlbiBJIGhhdmUgYWNjZXNzIHRvIG15IGRldmljZXMuDQoNCk15IEFzdXMgVGlua2Vy
-IEJvYXJkIFMgKFJLMzI4OC1DKSBpcyByZXBvcnRpbmcgc3VwcG9ydCBmb3IgMHg3ODAgLyAxOTIw
-IHBpeGVsczoNCg0KMHgwMDDCoCAoMCkgPSAweDY3MzEzNjg4DQoweDBjOCAoNTApID0gMHhmYmI1
-NmY4MA0KMHgwZDggKDU0KSA9IDB4ZTVkYTAwMDANCg0KPiBUaGUgUFVQUElFUyBCQVRIIElOIDRL
-ICg0MDk2eDIzMDQpIHNhbXBsZSBkZWNvZGVkIHdpdGhvdXQgaXNzdWUgdXNpbmcgcm9ja2NoaXAg
-NC40IEJTUCBrZXJuZWwgYW5kIG1wcCBsYXN0IHRpbWUgSSB0ZXN0ZWQuDQo+DQo+IFRoZSB2Y29k
-ZWMgZHJpdmVyIGluIDQuNCBCU1Aga2VybmVsIHVzZSAzMDAvNDAwIE1oeiBhcyBkZWZhdWx0IGNs
-b2NrIHJhdGUgYW5kIHdpbGwgY2hhbmdlIHRvIDYwMCBNaHogd2hlbiB3aWR0aCBpcyBvdmVyIDI1
-NjAsIHNlZSBbMV06DQo+IMKgIHJhaXNlIGZyZXF1ZW5jeSBmb3IgcmVzb2x1dGlvbiBsYXJnZXIg
-dGhhbiAxNDQwcCBhdmMNCj4NCj4gWzFdIGh0dHBzOi8vZ2l0aHViLmNvbS9yb2NrY2hpcC1saW51
-eC9rZXJuZWwvYmxvYi9kZXZlbG9wLTQuNC9kcml2ZXJzL3ZpZGVvL3JvY2tjaGlwL3Zjb2RlYy92
-Y29kZWNfc2VydmljZS5jI0wyNTUxLUwyNTcwDQo+DQo+IFJlZ2FyZHMsDQo+IEpvbmFzDQo+DQo+
-PiBCZXN0IHJlZ2FyZHMsDQo+PiBUb21hc3oNCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18NCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0DQo+IExp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcNCj4gaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcA0KDQo=
+On Tue, 2019-10-08 at 16:03 -0400, Sean Paul wrote:
+> On Tue, Oct 08, 2019 at 04:33:35PM -0300, Ezequiel Garcia wrote:
+> > On Tue, 2019-10-08 at 16:23 -0300, Ezequiel Garcia wrote:
+> > > Hello Sean,
+> > > 
+> > > On Mon, 2019-10-07 at 14:54 -0400, Sean Paul wrote:
+> > > > On Mon, Sep 30, 2019 at 07:28:00PM -0300, Ezequiel Garcia wrote:
+> > > > > Add an optional CRTC gamma LUT support, and enable it on RK3288.
+> > > > > This is currently enabled via a separate address resource,
+> > > > > which needs to be specified in the devicetree.
+> > > > > 
+> > > > > The address resource is required because on some SoCs, such as
+> > > > > RK3288, the LUT address is after the MMU address, and the latter
+> > > > > is supported by a different driver. This prevents the DRM driver
+> > > > > from requesting an entire register space.
+> > > > > 
+> > > > > The current implementation works for RGB 10-bit tables, as that
+> > > > > is what seems to work on RK3288.
+> > > > > 
+> > > > > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > > > > Reviewed-by: Douglas Anderson <dianders@chromium.org>
+> > > > > Reviewed-by: Jacopo Mondi <jacopo+renesas@jmondi.org>
+> > > > > ---
+> > > > > Changes from v2:
+> > > > > * None.
+> > > > > 
+> > > > > Changes from v1:
+> > > > > * drop explicit linear LUT after finding a proper
+> > > > >   way to disable gamma correction.
+> > > > > * avoid setting gamma is the CRTC is not active.
+> > > > > * s/int/unsigned int as suggested by Jacopo.
+> > > > > * only enable color management and set gamma size
+> > > > >   if gamma LUT is supported, suggested by Doug.
+> > > > > * drop the reg-names usage, and instead just use indexed reg
+> > > > >   specifiers, suggested by Doug.
+> > > > > 
+> > > > > Changes from RFC:
+> > > > > * Request (an optional) address resource for the LUT.
+> > > > > * Drop support for RK3399, which doesn't seem to work
+> > > > >   out of the box and needs more research.
+> > > > > * Support pass-thru setting when GAMMA_LUT is NULL.
+> > > > > * Add a check for the gamma size, as suggested by Ilia.
+> > > > > * Move gamma setting to atomic_commit_tail, as pointed
+> > > > >   out by Jacopo/Laurent, is the correct way.
+> > > > > ---
+> > > > >  drivers/gpu/drm/rockchip/rockchip_drm_fb.c  |   3 +
+> > > > >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 114 ++++++++++++++++++++
+> > > > >  drivers/gpu/drm/rockchip/rockchip_drm_vop.h |   7 ++
+> > > > >  drivers/gpu/drm/rockchip/rockchip_vop_reg.c |   2 +
+> > > > >  4 files changed, 126 insertions(+)
+> > > > > 
+> > > > > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> > > > > index dba352ec0ee3..fd1d987698ab 100644
+> > > > > --- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> > > > > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> > > > > @@ -17,6 +17,7 @@
+> > > > >  #include "rockchip_drm_drv.h"
+> > > > >  #include "rockchip_drm_fb.h"
+> > > > >  #include "rockchip_drm_gem.h"
+> > > > > +#include "rockchip_drm_vop.h"
+> > > > >  
+> > > > >  static const struct drm_framebuffer_funcs rockchip_drm_fb_funcs = {
+> > > > >  	.destroy       = drm_gem_fb_destroy,
+> > > > > @@ -112,6 +113,8 @@ rockchip_atomic_helper_commit_tail_rpm(struct drm_atomic_state *old_state)
+> > > > >  
+> > > > >  	drm_atomic_helper_commit_modeset_disables(dev, old_state);
+> > > > >  
+> > > > > +	rockchip_drm_vop_gamma_set(old_state);
+> > > > > +
+> > > > 
+> > > > Instead of duplicating the commit_tail helper, could you just implement
+> > > > .atomic_begin() and call this from there? I think the only hitch is if you
+> > > > need this to be completed before crtc->atomic_enable(), at which point you
+> > > > might need to call it from vop_crtc_atomic_enable() and then detect that in
+> > > > atomic_begin()
+> > > > 
+> > > 
+> > > I think moving this to .atomic_begin might be enough. Let me send a new
+> > > series and we can see how that goes.
+> > > 
+> > 
+> > Oh, before going forward, pleaste note that the first iteration
+> > of this patch (as noted in the changelog) was applying the gamma lut
+> > on .atomic_flush. However, Laurent and Jacopo pointed out that
+> > it might add some tearing to do so, and that's why it was moved
+> > to commit_tail.
+> > 
+> > I have to admit I'm not too sure about the difference between
+> > applying this gamma LUT on atomic_begin or atomic_flush,
+> > perhaps you can clarify that?
+> 
+> The only difference between what you have now and calling it in atomic_begin
+> is that as you have it now, it's set before crtc->atomic_enable() is called.
+> I think in order to address Ville's concerns on the other patch, you'll need
+> to set it the lut in .atomic_enable() anyways, so here's what I would suggest:
+> 
+> - Set the LUT in .atomic_enable() wherever it makes sense (you have it at the
+>   start now)
+> - Add an .atomic_begin() implementation and check state->color_mgmt_changed and
+>   state->active_changed. color_mgmt_changed && !active_changed, set the lut
+> - Remove patches 1 & 5
+> 
+> ...I think :-)
+> 
+
+OK, that helped! Patches in 3...2...
+
+Regards,
+Ezequiel
