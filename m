@@ -1,104 +1,103 @@
-From: djw@t-chip.com.cn
-Subject: Re: [PATCH 1/6] arm64: dts: rockchip: Fix rk3399-roc-pc pwm2 pin
-Date: Tue, 08 Oct 2019 11:11:10 +0800
-Message-ID: <87eezolynl.fsf@archiso.i-did-not-set--mail-host-address--so-tickle-me>
-References: <20190919052822.10403-1-jagan@amarulasolutions.com>
- <20190919052822.10403-2-jagan@amarulasolutions.com>
- <6797961.eJj5WIFbM9@phil>
- <CAMty3ZDKaywoPxCSD-5N2pLjtGmZ-dZ7ZgUOJqiB1V_9rfR26A@mail.gmail.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH v2 for 5.4 3/4] media: hantro: Fix motion vectors usage condition
+Date: Tue, 8 Oct 2019 12:29:22 +0900
+Message-ID: <CAAFQd5BEPO3nicr1PzRNWoVEzsvKvv5AkqoMVh2AG7qST+bZdA@mail.gmail.com>
+References: <20191007174505.10681-1-ezequiel@collabora.com>
+ <20191007174505.10681-4-ezequiel@collabora.com> <HE1PR06MB4011204B3FC2DAABB4BD1BACAC9B0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAMty3ZDKaywoPxCSD-5N2pLjtGmZ-dZ7ZgUOJqiB1V_9rfR26A@mail.gmail.com>
- (Jagan Teki's message of "Tue, 1 Oct 2019 15:56:14 +0530")
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Akash Gajjar <akash@openedev.com>, Da Xue <da@lessconfused.com>, linux-amarula <linux-amarula@amarulasolutions.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <HE1PR06MB4011204B3FC2DAABB4BD1BACAC9B0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "kernel@collabora.com" <kernel@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, "fbuergisser@chromium.org" <fbuergisser@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Jagan Teki <jagan@amarulasolutions.com> writes:
+Hi Jonas,
 
-> Hi Heiko,
+On Tue, Oct 8, 2019 at 3:33 AM Jonas Karlman <jonas@kwiboo.se> wrote:
 >
-> On Mon, Sep 30, 2019 at 2:51 AM Heiko Stuebner <heiko@sntech.de> wrote:
->>
->> Hi Jagan,
->>
->> Am Donnerstag, 19. September 2019, 07:28:17 CEST schrieb Jagan Teki:
->> > ROC-PC is not able to boot linux console if PWM2_d is
->> > unattached to any pinctrl logic.
->> >
->> > To be precise the linux boot hang with last logs as,
->> > ...
->> > .....
->> > [    0.003367] Console: colour dummy device 80x25
->> > [    0.003788] printk: console [tty0] enabled
->> > [    0.004178] printk: bootconsole [uart8250] disabled
->> >
->> > In ROC-PC the PWM2_d pin is connected to LOG_DVS_PWM of
->> > VDD_LOG. So, for normal working operations this needs to
->> > active and pull-down.
->> >
->> > This patch fix, by attaching pinctrl active and pull-down
->> > the pwm2.
->>
->> This looks highly dubious on first glance. The pwm subsystem nor
->> the Rockchip pwm driver do not do any pinctrl handling.
->>
->> So I don't really see where that "active" pinctrl state is supposed
->> to come from.
->>
->> Comparing with the pwm driver in the vendor tree I see that there
->> is such a state defined there. But that code there also looks strange
->> as that driver never again leaves this active state after entering it.
->>
->> Also for example all the Gru devices run with quite a number of pwm-
->> regulators without needing additional fiddling with the pwm itself, so
->> I don't really see why that should be different here.
+> On 2019-10-07 19:45, Ezequiel Garcia wrote:
+> > From: Francois Buergisser <fbuergisser@chromium.org>
+> >
+> > The setting of the motion vectors usage and the setting of motion
+> > vectors address are currently done under different conditions.
+> >
+> > When decoding pre-recorded videos, this results of leaving the motion
+> > vectors address unset, resulting in faulty memory accesses. Fix it
+> > by using the same condition everywhere, which matches the profiles
+> > that support motion vectors.
 >
-> I deed, I was supposed to think the same. but the vendor kernel dts
-> from firefly do follow the pwm2 pinctrl [1]. I wouldn't find any
-> information other than this vensor information, ie one of the reason I
-> have marked "Levin Du" who initially supported this board.
+> This does not fully match hantro sdk:
 >
-> One, think I have seen was this pinctrl active fixed the boot hang.
-> any inputs from would be very helpful.
+>   enable direct MV writing and POC tables for high/main streams.
+>   enable it also for any "baseline" stream which have main/high tools enabled.
 >
-> Levin Du, any inputs?
+>   (sps->profile_idc > 66 && sps->constrained_set0_flag == 0) ||
+>   sps->frame_mbs_only_flag != 1 ||
+>   sps->chroma_format_idc != 1 ||
+>   sps->scaling_matrix_present_flag != 0 ||
+>   pps->entropy_coding_mode_flag != 0 ||
+>   pps->weighted_pred_flag != 0 ||
+>   pps->weighted_bi_pred_idc != 0 ||
+>   pps->transform8x8_flag != 0 ||
+>   pps->scaling_matrix_present_flag != 0
+
+Thanks for double checking this. I can confirm that it's what Hantro
+SDK does indeed.
+
+However, would a stream with sps->profile_idc <= 66 and those other
+conditions met be still a compliant stream?
+
 >
-> [1] https://github.com/FireflyTeam/kernel/blob/stable-4.4-rk3399-linux/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi#L1184
+> Above check is used when DIR_MV_BASE should be written.
+> And WRITE_MVS_E is set to nal_ref_idc != 0 when above is true.
 >
+> I think it may be safer to always set DIR_MV_BASE and keep the existing nal_ref_idc check for WRITE_MVS_E.
 
-A grep of the `pwm2` shows that there's such block in rk3399-nanopi4.dtsi:
+That might have a performance penalty or some other side effects,
+though. Otherwise Hantro SDK wouldn't have enable it conditionally.
 
-    &pwm2 {
-            pinctrl-names = "active";
-            pinctrl-0 = <&pwm2_pin_pull_down>;
-            status = "okay";
-    };
+> (That is what I did in my "media: hantro: H264 fixes and improvements" series, v2 is incoming)
+> Or have you found any video that is having issues in such case?
 
-But last time I checked, using the mainline U-Boot (the roc-rk3399-pc is
-in mainline now) with mainline linux v5.2-rc7, no such setting is
-necessary, and the board boots happily.
+We've been running the code with sps->profile_idc > 66 in production
+for 4 years and haven't seen any reports of a stream that wasn't
+decoded correctly.
 
-I cannot find the use of "active" pinctrl state in the
-`drivers/pwm/pwm-rockchip.c`. If the pinctrl state needs to be setup as
-default, the `pinctrl-names` needs to be "default" or "init" (see
-`drivers/base/pinctrl.c`) .
+If we decide to go with a different behavior, I'd suggest thoroughly
+verifying the behavior on a big number of streams, including some
+performance measurements.
 
-Jagan, what version of board do you use? I checked with
-"ROC-RK3399-PC-V1.0-A 2018-07-12". 
+Best regards,
+Tomasz
 
-Thanks
-
---
-Levin Du
+>
+> Regards,
+> Jonas
+>
+> >
+> > Fixes: dea0a82f3d22 ("media: hantro: Add support for H264 decoding on G1")
+> > Signed-off-by: Francois Buergisser <fbuergisser@chromium.org>
+> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > ---
+> > v2:
+> > * New patch.
+> >
+> >  drivers/staging/media/hantro/hantro_g1_h264_dec.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/media/hantro/hantro_g1_h264_dec.c b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+> > index 7ab534936843..c92460407613 100644
+> > --- a/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+> > +++ b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+> > @@ -35,7 +35,7 @@ static void set_params(struct hantro_ctx *ctx)
+> >       if (sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD)
+> >               reg |= G1_REG_DEC_CTRL0_SEQ_MBAFF_E;
+> >       reg |= G1_REG_DEC_CTRL0_PICORD_COUNT_E;
+> > -     if (dec_param->nal_ref_idc)
+> > +     if (sps->profile_idc > 66)
+> >               reg |= G1_REG_DEC_CTRL0_WRITE_MVS_E;
+> >
+> >       if (!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY) &&
+>
