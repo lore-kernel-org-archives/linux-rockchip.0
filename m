@@ -1,92 +1,79 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH v2 for 5.4 3/4] media: hantro: Fix motion vectors usage
- condition
-Date: Tue, 8 Oct 2019 06:23:49 +0000
-Message-ID: <HE1PR06MB40111D7287970183CF6D0DD1AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 for 5.4 2/4] media: hantro: Fix H264 max frmsize
+ supported on RK3288
+Date: Tue, 8 Oct 2019 06:31:34 +0000
+Message-ID: <HE1PR06MB4011EC9E93ECBB6773252247AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 References: <20191007174505.10681-1-ezequiel@collabora.com>
- <20191007174505.10681-4-ezequiel@collabora.com>
- <HE1PR06MB4011204B3FC2DAABB4BD1BACAC9B0@HE1PR06MB4011.eurprd06.prod.outlook.com>
- <CAAFQd5BEPO3nicr1PzRNWoVEzsvKvv5AkqoMVh2AG7qST+bZdA@mail.gmail.com>
+ <20191007174505.10681-3-ezequiel@collabora.com>
+ <CAAFQd5BNu2ea3ei_imHmEwmdna0+iiSbQSv_SBsdHfP4Uh1h4Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAAFQd5BEPO3nicr1PzRNWoVEzsvKvv5AkqoMVh2AG7qST+bZdA@mail.gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAAFQd5BNu2ea3ei_imHmEwmdna0+iiSbQSv_SBsdHfP4Uh1h4Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 Content-Language: en-US
-Content-ID: <2CFDDD4A09BD664FAFFC25D53E8CFDF0@eurprd06.prod.outlook.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "kernel@collabora.com" <kernel@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, "fbuergisser@chromium.org" <fbuergisser@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Douglas Anderson <dianders@chromium.org>
+Content-ID: <10B199680F83BE4F8A7AF0D78CC0BF51-NhzUejbdEhGcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: "fbuergisser-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <fbuergisser-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org" <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOS0xMC0wOCAwNToyOSwgVG9tYXN6IEZpZ2Egd3JvdGU6DQo+IEhpIEpvbmFzLA0KPg0K
-PiBPbiBUdWUsIE9jdCA4LCAyMDE5IGF0IDM6MzMgQU0gSm9uYXMgS2FybG1hbiA8am9uYXNAa3dp
-Ym9vLnNlPiB3cm90ZToNCj4+IE9uIDIwMTktMTAtMDcgMTk6NDUsIEV6ZXF1aWVsIEdhcmNpYSB3
-cm90ZToNCj4+PiBGcm9tOiBGcmFuY29pcyBCdWVyZ2lzc2VyIDxmYnVlcmdpc3NlckBjaHJvbWl1
-bS5vcmc+DQo+Pj4NCj4+PiBUaGUgc2V0dGluZyBvZiB0aGUgbW90aW9uIHZlY3RvcnMgdXNhZ2Ug
-YW5kIHRoZSBzZXR0aW5nIG9mIG1vdGlvbg0KPj4+IHZlY3RvcnMgYWRkcmVzcyBhcmUgY3VycmVu
-dGx5IGRvbmUgdW5kZXIgZGlmZmVyZW50IGNvbmRpdGlvbnMuDQo+Pj4NCj4+PiBXaGVuIGRlY29k
-aW5nIHByZS1yZWNvcmRlZCB2aWRlb3MsIHRoaXMgcmVzdWx0cyBvZiBsZWF2aW5nIHRoZSBtb3Rp
-b24NCj4+PiB2ZWN0b3JzIGFkZHJlc3MgdW5zZXQsIHJlc3VsdGluZyBpbiBmYXVsdHkgbWVtb3J5
-IGFjY2Vzc2VzLiBGaXggaXQNCj4+PiBieSB1c2luZyB0aGUgc2FtZSBjb25kaXRpb24gZXZlcnl3
-aGVyZSwgd2hpY2ggbWF0Y2hlcyB0aGUgcHJvZmlsZXMNCj4+PiB0aGF0IHN1cHBvcnQgbW90aW9u
-IHZlY3RvcnMuDQo+PiBUaGlzIGRvZXMgbm90IGZ1bGx5IG1hdGNoIGhhbnRybyBzZGs6DQo+Pg0K
-Pj4gICBlbmFibGUgZGlyZWN0IE1WIHdyaXRpbmcgYW5kIFBPQyB0YWJsZXMgZm9yIGhpZ2gvbWFp
-biBzdHJlYW1zLg0KPj4gICBlbmFibGUgaXQgYWxzbyBmb3IgYW55ICJiYXNlbGluZSIgc3RyZWFt
-IHdoaWNoIGhhdmUgbWFpbi9oaWdoIHRvb2xzIGVuYWJsZWQuDQo+Pg0KPj4gICAoc3BzLT5wcm9m
-aWxlX2lkYyA+IDY2ICYmIHNwcy0+Y29uc3RyYWluZWRfc2V0MF9mbGFnID09IDApIHx8DQo+PiAg
-IHNwcy0+ZnJhbWVfbWJzX29ubHlfZmxhZyAhPSAxIHx8DQo+PiAgIHNwcy0+Y2hyb21hX2Zvcm1h
-dF9pZGMgIT0gMSB8fA0KPj4gICBzcHMtPnNjYWxpbmdfbWF0cml4X3ByZXNlbnRfZmxhZyAhPSAw
-IHx8DQo+PiAgIHBwcy0+ZW50cm9weV9jb2RpbmdfbW9kZV9mbGFnICE9IDAgfHwNCj4+ICAgcHBz
-LT53ZWlnaHRlZF9wcmVkX2ZsYWcgIT0gMCB8fA0KPj4gICBwcHMtPndlaWdodGVkX2JpX3ByZWRf
-aWRjICE9IDAgfHwNCj4+ICAgcHBzLT50cmFuc2Zvcm04eDhfZmxhZyAhPSAwIHx8DQo+PiAgIHBw
-cy0+c2NhbGluZ19tYXRyaXhfcHJlc2VudF9mbGFnICE9IDANCj4gVGhhbmtzIGZvciBkb3VibGUg
-Y2hlY2tpbmcgdGhpcy4gSSBjYW4gY29uZmlybSB0aGF0IGl0J3Mgd2hhdCBIYW50cm8NCj4gU0RL
-IGRvZXMgaW5kZWVkLg0KPg0KPiBIb3dldmVyLCB3b3VsZCBhIHN0cmVhbSB3aXRoIHNwcy0+cHJv
-ZmlsZV9pZGMgPD0gNjYgYW5kIHRob3NlIG90aGVyDQo+IGNvbmRpdGlvbnMgbWV0IGJlIHN0aWxs
-IGEgY29tcGxpYW50IHN0cmVhbT8NCg0KWW91IGFyZSBjb3JyZWN0LCBpZiBhIG5vbi1jb21wbGlh
-bnQgdmlkZW8gaXMgaGF2aW5nIGRlY29kaW5nIHByb2JsZW1zIGl0IHNob3VsZCBwcm9iYWJseSBi
-ZSBoYW5kbGVkDQpvbiB1c2Vyc3BhY2Ugc2lkZSAoYnkgbm90IHJlcG9ydGluZyBiYXNlbGluZSBw
-cm9maWxlKSBhbmQgbm90IGluIGtlcm5lbC4NCkFsbCBteSB2aWRlbyBzYW1wbGVzIHRoYXQgd2Fz
-IGhhdmluZyB0aGUgaXNzdWUgZml4ZWQgaW4gdGhpcyBwYXRjaCBhcmUgbm93IGRlY29kZWQgY29y
-cmVjdGx5Lg0KDQo+DQo+PiBBYm92ZSBjaGVjayBpcyB1c2VkIHdoZW4gRElSX01WX0JBU0Ugc2hv
-dWxkIGJlIHdyaXR0ZW4uDQo+PiBBbmQgV1JJVEVfTVZTX0UgaXMgc2V0IHRvIG5hbF9yZWZfaWRj
-ICE9IDAgd2hlbiBhYm92ZSBpcyB0cnVlLg0KPj4NCj4+IEkgdGhpbmsgaXQgbWF5IGJlIHNhZmVy
-IHRvIGFsd2F5cyBzZXQgRElSX01WX0JBU0UgYW5kIGtlZXAgdGhlIGV4aXN0aW5nIG5hbF9yZWZf
-aWRjIGNoZWNrIGZvciBXUklURV9NVlNfRS4NCj4gVGhhdCBtaWdodCBoYXZlIGEgcGVyZm9ybWFu
-Y2UgcGVuYWx0eSBvciBzb21lIG90aGVyIHNpZGUgZWZmZWN0cywNCj4gdGhvdWdoLiBPdGhlcndp
-c2UgSGFudHJvIFNESyB3b3VsZG4ndCBoYXZlIGVuYWJsZSBpdCBjb25kaXRpb25hbGx5Lg0KPg0K
-Pj4gKFRoYXQgaXMgd2hhdCBJIGRpZCBpbiBteSAibWVkaWE6IGhhbnRybzogSDI2NCBmaXhlcyBh
-bmQgaW1wcm92ZW1lbnRzIiBzZXJpZXMsIHYyIGlzIGluY29taW5nKQ0KPj4gT3IgaGF2ZSB5b3Ug
-Zm91bmQgYW55IHZpZGVvIHRoYXQgaXMgaGF2aW5nIGlzc3VlcyBpbiBzdWNoIGNhc2U/DQo+IFdl
-J3ZlIGJlZW4gcnVubmluZyB0aGUgY29kZSB3aXRoIHNwcy0+cHJvZmlsZV9pZGMgPiA2NiBpbiBw
-cm9kdWN0aW9uDQo+IGZvciA0IHllYXJzIGFuZCBoYXZlbid0IHNlZW4gYW55IHJlcG9ydHMgb2Yg
-YSBzdHJlYW0gdGhhdCB3YXNuJ3QNCj4gZGVjb2RlZCBjb3JyZWN0bHkuDQo+DQo+IElmIHdlIGRl
-Y2lkZSB0byBnbyB3aXRoIGEgZGlmZmVyZW50IGJlaGF2aW9yLCBJJ2Qgc3VnZ2VzdCB0aG9yb3Vn
-aGx5DQo+IHZlcmlmeWluZyB0aGUgYmVoYXZpb3Igb24gYSBiaWcgbnVtYmVyIG9mIHN0cmVhbXMs
-IGluY2x1ZGluZyBzb21lDQo+IHBlcmZvcm1hbmNlIG1lYXN1cmVtZW50cy4NCg0KSSBhZ3JlZSwg
-SSB3b3VsZCBob3dldmVyIHN1Z2dlc3QgdG8gY2hhbmdlIHRoZSBpZiBzdGF0ZW1lbnQgdG8gdGhl
-IGZvbGxvd2luZyAob3Igc2ltaWxhcikNCmFzIHRoYXQgc2hvdWxkIGJlIHRoZSBvcHRpbWFsIGZv
-ciBwZXJmb3JtYW5jZSByZWFzb25zIGFuZCBtYXRjaCB0aGUgaGFudHJvIHNkay4NCg0KaWYgKHNw
-cy0+cHJvZmlsZV9pZGMgPiA2NiAmJiBkZWNfcGFyYW0tPm5hbF9yZWZfaWRjKQ0KDQpSZWdhcmRz
-LA0KSm9uYXMNCg0KPg0KPiBCZXN0IHJlZ2FyZHMsDQo+IFRvbWFzeg0KPg0KPj4gUmVnYXJkcywN
-Cj4+IEpvbmFzDQo+Pg0KPj4+IEZpeGVzOiBkZWEwYTgyZjNkMjIgKCJtZWRpYTogaGFudHJvOiBB
-ZGQgc3VwcG9ydCBmb3IgSDI2NCBkZWNvZGluZyBvbiBHMSIpDQo+Pj4gU2lnbmVkLW9mZi1ieTog
-RnJhbmNvaXMgQnVlcmdpc3NlciA8ZmJ1ZXJnaXNzZXJAY2hyb21pdW0ub3JnPg0KPj4+IFNpZ25l
-ZC1vZmYtYnk6IEV6ZXF1aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4NCj4+PiAt
-LS0NCj4+PiB2MjoNCj4+PiAqIE5ldyBwYXRjaC4NCj4+Pg0KPj4+ICBkcml2ZXJzL3N0YWdpbmcv
-bWVkaWEvaGFudHJvL2hhbnRyb19nMV9oMjY0X2RlYy5jIHwgMiArLQ0KPj4+ICAxIGZpbGUgY2hh
-bmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkNCj4+Pg0KPj4+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMV9oMjY0X2RlYy5jIGIvZHJp
-dmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzFfaDI2NF9kZWMuYw0KPj4+IGluZGV4
-IDdhYjUzNDkzNjg0My4uYzkyNDYwNDA3NjEzIDEwMDY0NA0KPj4+IC0tLSBhL2RyaXZlcnMvc3Rh
-Z2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cxX2gyNjRfZGVjLmMNCj4+PiArKysgYi9kcml2ZXJz
-L3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMV9oMjY0X2RlYy5jDQo+Pj4gQEAgLTM1LDcg
-KzM1LDcgQEAgc3RhdGljIHZvaWQgc2V0X3BhcmFtcyhzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQ0K
-Pj4+ICAgICAgIGlmIChzcHMtPmZsYWdzICYgVjRMMl9IMjY0X1NQU19GTEFHX01CX0FEQVBUSVZF
-X0ZSQU1FX0ZJRUxEKQ0KPj4+ICAgICAgICAgICAgICAgcmVnIHw9IEcxX1JFR19ERUNfQ1RSTDBf
-U0VRX01CQUZGX0U7DQo+Pj4gICAgICAgcmVnIHw9IEcxX1JFR19ERUNfQ1RSTDBfUElDT1JEX0NP
-VU5UX0U7DQo+Pj4gLSAgICAgaWYgKGRlY19wYXJhbS0+bmFsX3JlZl9pZGMpDQo+Pj4gKyAgICAg
-aWYgKHNwcy0+cHJvZmlsZV9pZGMgPiA2NikNCj4+PiAgICAgICAgICAgICAgIHJlZyB8PSBHMV9S
-RUdfREVDX0NUUkwwX1dSSVRFX01WU19FOw0KPj4+DQo+Pj4gICAgICAgaWYgKCEoc3BzLT5mbGFn
-cyAmIFY0TDJfSDI2NF9TUFNfRkxBR19GUkFNRV9NQlNfT05MWSkgJiYNCg0K
+On 2019-10-08 07:27, Tomasz Figa wrote:
+> Hi Ezequiel, Jonas,
+>
+> On Tue, Oct 8, 2019 at 2:46 AM Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+>> From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+>>
+>> TRM specify supported image size 48x48 to 4096x2304 at step size 16 pixels,
+>> change frmsize max_width/max_height to match TRM.
+>>
+>> Fixes: 760327930e10 ("media: hantro: Enable H264 decoding on rk3288")
+>> Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+>> ---
+>> v2:
+>> * No changes.
+>>
+>>  drivers/staging/media/hantro/rk3288_vpu_hw.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/staging/media/hantro/rk3288_vpu_hw.c b/drivers/staging/media/hantro/rk3288_vpu_hw.c
+>> index 6bfcc47d1e58..ebb017b8a334 100644
+>> --- a/drivers/staging/media/hantro/rk3288_vpu_hw.c
+>> +++ b/drivers/staging/media/hantro/rk3288_vpu_hw.c
+>> @@ -67,10 +67,10 @@ static const struct hantro_fmt rk3288_vpu_dec_fmts[] = {
+>>                 .max_depth = 2,
+>>                 .frmsize = {
+>>                         .min_width = 48,
+>> -                       .max_width = 3840,
+>> +                       .max_width = 4096,
+>>                         .step_width = H264_MB_DIM,
+>>                         .min_height = 48,
+>> -                       .max_height = 2160,
+>> +                       .max_height = 2304,
+> This doesn't match the datasheet I have, which is RK3288 Datasheet Rev
+> 1.4 and which has the values as in current code. What's the one you
+> got the values from?
+
+The RK3288 TRM vcodec chapter from [1], unknown revision and date, lists 48x48 to 4096x2304 step size 16 pixels under 25.5.1 H.264 decoder.
+
+I can also confirm that one of my test samples (PUPPIES BATH IN 4K) is 4096x2304 and can be decoded after this patch.
+However the decoding speed is not optimal at 400Mhz, if I recall correctly you need to set the VPU1 clock to 600Mhz for 4K decoding on RK3288.
+
+I am not sure if I should include a v2 of this patch in my v2 series, as-is this patch do not apply on master (H264_MB_DIM has changed to MB_DIM in master).
+
+[1] http://www.t-firefly.com/download/firefly-rk3288/docs/TRM/rk3288-chapter-25-video-encoder-decoder-unit-(vcodec).pdf
+
+Regards,
+Jonas
+
+>
+> Best regards,
+> Tomasz
