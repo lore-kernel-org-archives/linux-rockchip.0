@@ -1,103 +1,64 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v2 for 5.4 3/4] media: hantro: Fix motion vectors usage condition
-Date: Tue, 8 Oct 2019 12:29:22 +0900
-Message-ID: <CAAFQd5BEPO3nicr1PzRNWoVEzsvKvv5AkqoMVh2AG7qST+bZdA@mail.gmail.com>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 for 5.4 2/4] media: hantro: Fix H264 max frmsize
+ supported on RK3288
+Date: Tue, 8 Oct 2019 14:27:53 +0900
+Message-ID: <CAAFQd5BNu2ea3ei_imHmEwmdna0+iiSbQSv_SBsdHfP4Uh1h4Q@mail.gmail.com>
 References: <20191007174505.10681-1-ezequiel@collabora.com>
- <20191007174505.10681-4-ezequiel@collabora.com> <HE1PR06MB4011204B3FC2DAABB4BD1BACAC9B0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+ <20191007174505.10681-3-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <HE1PR06MB4011204B3FC2DAABB4BD1BACAC9B0@HE1PR06MB4011.eurprd06.prod.outlook.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "kernel@collabora.com" <kernel@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, "fbuergisser@chromium.org" <fbuergisser@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Douglas Anderson <dianders@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191007174505.10681-3-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: fbuergisser-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jonas,
+Hi Ezequiel, Jonas,
 
-On Tue, Oct 8, 2019 at 3:33 AM Jonas Karlman <jonas@kwiboo.se> wrote:
+On Tue, Oct 8, 2019 at 2:46 AM Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
 >
-> On 2019-10-07 19:45, Ezequiel Garcia wrote:
-> > From: Francois Buergisser <fbuergisser@chromium.org>
-> >
-> > The setting of the motion vectors usage and the setting of motion
-> > vectors address are currently done under different conditions.
-> >
-> > When decoding pre-recorded videos, this results of leaving the motion
-> > vectors address unset, resulting in faulty memory accesses. Fix it
-> > by using the same condition everywhere, which matches the profiles
-> > that support motion vectors.
+> From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
 >
-> This does not fully match hantro sdk:
+> TRM specify supported image size 48x48 to 4096x2304 at step size 16 pixels,
+> change frmsize max_width/max_height to match TRM.
 >
->   enable direct MV writing and POC tables for high/main streams.
->   enable it also for any "baseline" stream which have main/high tools enabled.
+> Fixes: 760327930e10 ("media: hantro: Enable H264 decoding on rk3288")
+> Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+> ---
+> v2:
+> * No changes.
 >
->   (sps->profile_idc > 66 && sps->constrained_set0_flag == 0) ||
->   sps->frame_mbs_only_flag != 1 ||
->   sps->chroma_format_idc != 1 ||
->   sps->scaling_matrix_present_flag != 0 ||
->   pps->entropy_coding_mode_flag != 0 ||
->   pps->weighted_pred_flag != 0 ||
->   pps->weighted_bi_pred_idc != 0 ||
->   pps->transform8x8_flag != 0 ||
->   pps->scaling_matrix_present_flag != 0
-
-Thanks for double checking this. I can confirm that it's what Hantro
-SDK does indeed.
-
-However, would a stream with sps->profile_idc <= 66 and those other
-conditions met be still a compliant stream?
-
+>  drivers/staging/media/hantro/rk3288_vpu_hw.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
-> Above check is used when DIR_MV_BASE should be written.
-> And WRITE_MVS_E is set to nal_ref_idc != 0 when above is true.
->
-> I think it may be safer to always set DIR_MV_BASE and keep the existing nal_ref_idc check for WRITE_MVS_E.
+> diff --git a/drivers/staging/media/hantro/rk3288_vpu_hw.c b/drivers/staging/media/hantro/rk3288_vpu_hw.c
+> index 6bfcc47d1e58..ebb017b8a334 100644
+> --- a/drivers/staging/media/hantro/rk3288_vpu_hw.c
+> +++ b/drivers/staging/media/hantro/rk3288_vpu_hw.c
+> @@ -67,10 +67,10 @@ static const struct hantro_fmt rk3288_vpu_dec_fmts[] = {
+>                 .max_depth = 2,
+>                 .frmsize = {
+>                         .min_width = 48,
+> -                       .max_width = 3840,
+> +                       .max_width = 4096,
+>                         .step_width = H264_MB_DIM,
+>                         .min_height = 48,
+> -                       .max_height = 2160,
+> +                       .max_height = 2304,
 
-That might have a performance penalty or some other side effects,
-though. Otherwise Hantro SDK wouldn't have enable it conditionally.
-
-> (That is what I did in my "media: hantro: H264 fixes and improvements" series, v2 is incoming)
-> Or have you found any video that is having issues in such case?
-
-We've been running the code with sps->profile_idc > 66 in production
-for 4 years and haven't seen any reports of a stream that wasn't
-decoded correctly.
-
-If we decide to go with a different behavior, I'd suggest thoroughly
-verifying the behavior on a big number of streams, including some
-performance measurements.
+This doesn't match the datasheet I have, which is RK3288 Datasheet Rev
+1.4 and which has the values as in current code. What's the one you
+got the values from?
 
 Best regards,
 Tomasz
-
->
-> Regards,
-> Jonas
->
-> >
-> > Fixes: dea0a82f3d22 ("media: hantro: Add support for H264 decoding on G1")
-> > Signed-off-by: Francois Buergisser <fbuergisser@chromium.org>
-> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> > ---
-> > v2:
-> > * New patch.
-> >
-> >  drivers/staging/media/hantro/hantro_g1_h264_dec.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/staging/media/hantro/hantro_g1_h264_dec.c b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
-> > index 7ab534936843..c92460407613 100644
-> > --- a/drivers/staging/media/hantro/hantro_g1_h264_dec.c
-> > +++ b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
-> > @@ -35,7 +35,7 @@ static void set_params(struct hantro_ctx *ctx)
-> >       if (sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD)
-> >               reg |= G1_REG_DEC_CTRL0_SEQ_MBAFF_E;
-> >       reg |= G1_REG_DEC_CTRL0_PICORD_COUNT_E;
-> > -     if (dec_param->nal_ref_idc)
-> > +     if (sps->profile_idc > 66)
-> >               reg |= G1_REG_DEC_CTRL0_WRITE_MVS_E;
-> >
-> >       if (!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY) &&
->
