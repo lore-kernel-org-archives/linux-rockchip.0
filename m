@@ -1,105 +1,82 @@
-From: Pavel Machek <pavel@denx.de>
-Subject: Re: [PATCH 4.19 061/106] PCI: rockchip: Propagate errors for
- optional regulators
-Date: Tue, 8 Oct 2019 14:24:16 +0200
-Message-ID: <20191008122416.GE608@amd>
-References: <20191006171124.641144086@linuxfoundation.org>
- <20191006171149.476262829@linuxfoundation.org>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH v2 for 5.4 2/4] media: hantro: Fix H264 max frmsize
+ supported on RK3288
+Date: Tue, 8 Oct 2019 22:35:42 +0900
+Message-ID: <CAAFQd5AYCiKcA9pGc44L3gGHLPx6iMSb7KywkO8OqVv4gS8KvQ@mail.gmail.com>
+References: <20191007174505.10681-1-ezequiel@collabora.com>
+ <20191007174505.10681-3-ezequiel@collabora.com> <CAAFQd5BNu2ea3ei_imHmEwmdna0+iiSbQSv_SBsdHfP4Uh1h4Q@mail.gmail.com>
+ <HE1PR06MB4011EC9E93ECBB6773252247AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+ <CAAFQd5CWoAP1psrEW6bVMkRmhFeTvFKtDSLjT7nefc2YiFovqQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-        protocol="application/pgp-signature"; boundary="Qz2CZ664xQdCRdPu"
-Return-path: <stable-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20191006171149.476262829@linuxfoundation.org>
-Sender: stable-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <treding@nvidia.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Andrew Murray <andrew.murray@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, linux-rockchip@lists.infradead.org, Sasha Levin <sashal@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAAFQd5CWoAP1psrEW6bVMkRmhFeTvFKtDSLjT7nefc2YiFovqQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, "kernel@collabora.com" <kernel@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, "fbuergisser@chromium.org" <fbuergisser@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Tue, Oct 8, 2019 at 7:42 PM Tomasz Figa <tfiga@chromium.org> wrote:
+>
+> On Tue, Oct 8, 2019 at 3:31 PM Jonas Karlman <jonas@kwiboo.se> wrote:
+> >
+> > On 2019-10-08 07:27, Tomasz Figa wrote:
+> > > Hi Ezequiel, Jonas,
+> > >
+> > > On Tue, Oct 8, 2019 at 2:46 AM Ezequiel Garcia <ezequiel@collabora.com> wrote:
+> > >> From: Jonas Karlman <jonas@kwiboo.se>
+> > >>
+> > >> TRM specify supported image size 48x48 to 4096x2304 at step size 16 pixels,
+> > >> change frmsize max_width/max_height to match TRM.
+> > >>
+> > >> Fixes: 760327930e10 ("media: hantro: Enable H264 decoding on rk3288")
+> > >> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> > >> ---
+> > >> v2:
+> > >> * No changes.
+> > >>
+> > >>  drivers/staging/media/hantro/rk3288_vpu_hw.c | 4 ++--
+> > >>  1 file changed, 2 insertions(+), 2 deletions(-)
+> > >>
+> > >> diff --git a/drivers/staging/media/hantro/rk3288_vpu_hw.c b/drivers/staging/media/hantro/rk3288_vpu_hw.c
+> > >> index 6bfcc47d1e58..ebb017b8a334 100644
+> > >> --- a/drivers/staging/media/hantro/rk3288_vpu_hw.c
+> > >> +++ b/drivers/staging/media/hantro/rk3288_vpu_hw.c
+> > >> @@ -67,10 +67,10 @@ static const struct hantro_fmt rk3288_vpu_dec_fmts[] = {
+> > >>                 .max_depth = 2,
+> > >>                 .frmsize = {
+> > >>                         .min_width = 48,
+> > >> -                       .max_width = 3840,
+> > >> +                       .max_width = 4096,
+> > >>                         .step_width = H264_MB_DIM,
+> > >>                         .min_height = 48,
+> > >> -                       .max_height = 2160,
+> > >> +                       .max_height = 2304,
+> > > This doesn't match the datasheet I have, which is RK3288 Datasheet Rev
+> > > 1.4 and which has the values as in current code. What's the one you
+> > > got the values from?
+> >
+> > The RK3288 TRM vcodec chapter from [1], unknown revision and date, lists 48x48 to 4096x2304 step size 16 pixels under 25.5.1 H.264 decoder.
+> >
+> > I can also confirm that one of my test samples (PUPPIES BATH IN 4K) is 4096x2304 and can be decoded after this patch.
+> > However the decoding speed is not optimal at 400Mhz, if I recall correctly you need to set the VPU1 clock to 600Mhz for 4K decoding on RK3288.
+> >
+> > I am not sure if I should include a v2 of this patch in my v2 series, as-is this patch do not apply on master (H264_MB_DIM has changed to MB_DIM in master).
+> >
+> > [1] http://www.t-firefly.com/download/firefly-rk3288/docs/TRM/rk3288-chapter-25-video-encoder-decoder-unit-(vcodec).pdf
+>
+> I checked the RK3288 TRM V1.1 too and it refers to 3840x2160@24fps as
+> the maximum.
+>
+> As for performance, we've actually been getting around 33 fps at 400
+> MHz with 3840x2160 on our devices (the old RK3288 Asus Chromebook
+> Flip).
+>
+> I guess we might want to check that with Hantro.
 
---Qz2CZ664xQdCRdPu
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Could you check the value of bits 10:0 in register at 0x0c8? That
+should be the maximum supported stream width in the units of 16
+pixels.
 
-On Sun 2019-10-06 19:21:07, Greg Kroah-Hartman wrote:
-> From: Thierry Reding <treding@nvidia.com>
->=20
-> [ Upstream commit 0e3ff0ac5f71bdb6be2a698de0ed0c7e6e738269 ]
->=20
-> regulator_get_optional() can fail for a number of reasons besides probe
-> deferral. It can for example return -ENOMEM if it runs out of memory as
-> it tries to allocate data structures. Propagating only -EPROBE_DEFER is
-> problematic because it results in these legitimately fatal errors being
-> treated as "regulator not specified in DT".
->=20
-> What we really want is to ignore the optional regulators only if they
-> have not been specified in DT. regulator_get_optional() returns -ENODEV
-> in this case, so that's the special case that we need to handle. So we
-> propagate all errors, except -ENODEV, so that real failures will still
-> cause the driver to fail probe.
-
-61,62,63,64: Is this fixing any real bug? Why is it suitable for
--stable?
-
-								Pavel
-
-> +++ b/drivers/pci/controller/pcie-rockchip-host.c
-> @@ -608,29 +608,29 @@ static int rockchip_pcie_parse_host_dt(struct rockc=
-hip_pcie *rockchip)
-> =20
->  	rockchip->vpcie12v =3D devm_regulator_get_optional(dev, "vpcie12v");
->  	if (IS_ERR(rockchip->vpcie12v)) {
-> -		if (PTR_ERR(rockchip->vpcie12v) =3D=3D -EPROBE_DEFER)
-> -			return -EPROBE_DEFER;
-> +		if (PTR_ERR(rockchip->vpcie12v) !=3D -ENODEV)
-> +			return PTR_ERR(rockchip->vpcie12v);
->  		dev_info(dev, "no vpcie12v regulator found\n");
->  	}
-> =20
->  	rockchip->vpcie3v3 =3D devm_regulator_get_optional(dev, "vpcie3v3");
->  	if (IS_ERR(rockchip->vpcie3v3)) {
-> -		if (PTR_ERR(rockchip->vpcie3v3) =3D=3D -EPROBE_DEFER)
-> -			return -EPROBE_DEFER;
-> +		if (PTR_ERR(rockchip->vpcie3v3) !=3D -ENODEV)
-> +			return PTR_ERR(rockchip->vpcie3v3);
->  		dev_info(dev, "no vpcie3v3 regulator found\n");
->  	}
-> =20
->  	rockchip->vpcie1v8 =3D devm_regulator_get_optional(dev, "vpcie1v8");
->  	if (IS_ERR(rockchip->vpcie1v8)) {
-> -		if (PTR_ERR(rockchip->vpcie1v8) =3D=3D -EPROBE_DEFER)
-> -			return -EPROBE_DEFER;
-> +		if (PTR_ERR(rockchip->vpcie1v8) !=3D -ENODEV)
-> +			return PTR_ERR(rockchip->vpcie1v8);
->  		dev_info(dev, "no vpcie1v8 regulator found\n");
->  	}
-> =20
->  	rockchip->vpcie0v9 =3D devm_regulator_get_optional(dev, "vpcie0v9");
->  	if (IS_ERR(rockchip->vpcie0v9)) {
-> -		if (PTR_ERR(rockchip->vpcie0v9) =3D=3D -EPROBE_DEFER)
-> -			return -EPROBE_DEFER;
-> +		if (PTR_ERR(rockchip->vpcie0v9) !=3D -ENODEV)
-> +			return PTR_ERR(rockchip->vpcie0v9);
->  		dev_info(dev, "no vpcie0v9 regulator found\n");
->  	}
-> =20
-
---=20
-(english) http://www.livejournal.com/~pavelmachek
-(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
-g.html
-
---Qz2CZ664xQdCRdPu
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iEYEARECAAYFAl2cf/AACgkQMOfwapXb+vJv3ACfRzDkFXlTi9tPJOxO6+xiSAgn
-z9oAnjZ9WXSOdp7sZSsix4hoHFpYHA7p
-=2wkE
------END PGP SIGNATURE-----
-
---Qz2CZ664xQdCRdPu--
+Best regards,
+Tomasz
