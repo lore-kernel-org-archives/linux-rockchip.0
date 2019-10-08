@@ -1,52 +1,97 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2] ARM: dts: rockchip: Use interpolated brightness tables
- for veyron
-Date: Tue, 8 Oct 2019 11:05:24 -0700
-Message-ID: <CAD=FV=Xi-M=Kk0axj=ukGMDr4p0a86LRdiL-6WyPZnL2vuDZGA@mail.gmail.com>
-References: <20191003094137.v2.1.Ic9fd698810ea569c465350154da40b85d24f805b@changeid>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v3 3/5] drm/rockchip: Add optional support for CRTC
+ gamma LUT
+Date: Tue, 08 Oct 2019 16:23:36 -0300
+Message-ID: <dad6ee9aa3699af0f794f467224a8a01798d86b2.camel@collabora.com>
+References: <20190930222802.32088-1-ezequiel@collabora.com>
+         <20190930222802.32088-4-ezequiel@collabora.com>
+         <20191007185432.GG126146@art_vandelay>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191003094137.v2.1.Ic9fd698810ea569c465350154da40b85d24f805b@changeid>
+In-Reply-To: <20191007185432.GG126146@art_vandelay>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Kaehlcke <mka@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+To: Sean Paul <sean@poorly.run>
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>, Douglas Anderson <dianders@chromium.org>, Jacopo Mondi <jacopo@jmondi.org>, Ilia Mirkin <imirkin@alum.mit.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Jacopo Mondi <jacopo+renesas@jmondi.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hello Sean,
 
-On Thu, Oct 3, 2019 at 9:42 AM Matthias Kaehlcke <mka@chromium.org> wrote:
->
-> Use interpolated brightness tables (added by commit 573fe6d1c25
-> ("backlight: pwm_bl: Linear interpolation between
-> brightness-levels") for veyron, instead of specifying every single
-> step. Some devices/panels have intervals that are smaller than
-> the specified 'num-interpolated-steps', the driver interprets
-> these intervals as a single step.
->
-> Another option would be to switch to a perceptual brightness curve
-> (CIE 1931), with the caveat that it would change the behavior of
-> the backlight. Also the concept of a minimum brightness level is
-> currently not supported for CIE 1931 curves.
->
-> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
-> ---
->
-> Changes in v2:
-> - added 0 as first step for devices/panels that require a minimum
->   PWM duty cycle
-> - increased 'num-interpolated-steps' values by one, it's not the
->   number of steps between levels, but that number +1
->
->  arch/arm/boot/dts/rk3288-veyron-edp.dtsi   | 35 ++--------------------
->  arch/arm/boot/dts/rk3288-veyron-jaq.dts    | 35 ++--------------------
->  arch/arm/boot/dts/rk3288-veyron-minnie.dts | 35 ++--------------------
->  arch/arm/boot/dts/rk3288-veyron-tiger.dts  | 35 ++--------------------
->  4 files changed, 8 insertions(+), 132 deletions(-)
+On Mon, 2019-10-07 at 14:54 -0400, Sean Paul wrote:
+> On Mon, Sep 30, 2019 at 07:28:00PM -0300, Ezequiel Garcia wrote:
+> > Add an optional CRTC gamma LUT support, and enable it on RK3288.
+> > This is currently enabled via a separate address resource,
+> > which needs to be specified in the devicetree.
+> > 
+> > The address resource is required because on some SoCs, such as
+> > RK3288, the LUT address is after the MMU address, and the latter
+> > is supported by a different driver. This prevents the DRM driver
+> > from requesting an entire register space.
+> > 
+> > The current implementation works for RGB 10-bit tables, as that
+> > is what seems to work on RK3288.
+> > 
+> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > Reviewed-by: Douglas Anderson <dianders@chromium.org>
+> > Reviewed-by: Jacopo Mondi <jacopo+renesas@jmondi.org>
+> > ---
+> > Changes from v2:
+> > * None.
+> > 
+> > Changes from v1:
+> > * drop explicit linear LUT after finding a proper
+> >   way to disable gamma correction.
+> > * avoid setting gamma is the CRTC is not active.
+> > * s/int/unsigned int as suggested by Jacopo.
+> > * only enable color management and set gamma size
+> >   if gamma LUT is supported, suggested by Doug.
+> > * drop the reg-names usage, and instead just use indexed reg
+> >   specifiers, suggested by Doug.
+> > 
+> > Changes from RFC:
+> > * Request (an optional) address resource for the LUT.
+> > * Drop support for RK3399, which doesn't seem to work
+> >   out of the box and needs more research.
+> > * Support pass-thru setting when GAMMA_LUT is NULL.
+> > * Add a check for the gamma size, as suggested by Ilia.
+> > * Move gamma setting to atomic_commit_tail, as pointed
+> >   out by Jacopo/Laurent, is the correct way.
+> > ---
+> >  drivers/gpu/drm/rockchip/rockchip_drm_fb.c  |   3 +
+> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 114 ++++++++++++++++++++
+> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.h |   7 ++
+> >  drivers/gpu/drm/rockchip/rockchip_vop_reg.c |   2 +
+> >  4 files changed, 126 insertions(+)
+> > 
+> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> > index dba352ec0ee3..fd1d987698ab 100644
+> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> > @@ -17,6 +17,7 @@
+> >  #include "rockchip_drm_drv.h"
+> >  #include "rockchip_drm_fb.h"
+> >  #include "rockchip_drm_gem.h"
+> > +#include "rockchip_drm_vop.h"
+> >  
+> >  static const struct drm_framebuffer_funcs rockchip_drm_fb_funcs = {
+> >  	.destroy       = drm_gem_fb_destroy,
+> > @@ -112,6 +113,8 @@ rockchip_atomic_helper_commit_tail_rpm(struct drm_atomic_state *old_state)
+> >  
+> >  	drm_atomic_helper_commit_modeset_disables(dev, old_state);
+> >  
+> > +	rockchip_drm_vop_gamma_set(old_state);
+> > +
+> 
+> Instead of duplicating the commit_tail helper, could you just implement
+> .atomic_begin() and call this from there? I think the only hitch is if you
+> need this to be completed before crtc->atomic_enable(), at which point you
+> might need to call it from vop_crtc_atomic_enable() and then detect that in
+> atomic_begin()
+> 
 
-I guess if someone wanted to they could try to increase the number of
-steps and see if they got prettier backlight transition, but what's
-there now doesn't bother me and has the advantage of matching what has
-been in use forever.  Thus:
+I think moving this to .atomic_begin might be enough. Let me send a new
+series and we can see how that goes.
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+Thanks for reviewing,
+Ezequiel
