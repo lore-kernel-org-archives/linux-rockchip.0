@@ -1,118 +1,52 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] iommu/rockchip: Don't loop until failure to count interrupts
-Date: Tue, 08 Oct 2019 19:58:14 +0200
-Message-ID: <3132916.nyj3dfveGU@diego>
-References: <20191008135843.30640-1-enric.balletbo@collabora.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2] ARM: dts: rockchip: Use interpolated brightness tables
+ for veyron
+Date: Tue, 8 Oct 2019 11:05:24 -0700
+Message-ID: <CAD=FV=Xi-M=Kk0axj=ukGMDr4p0a86LRdiL-6WyPZnL2vuDZGA@mail.gmail.com>
+References: <20191003094137.v2.1.Ic9fd698810ea569c465350154da40b85d24f805b@changeid>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191008135843.30640-1-enric.balletbo@collabora.com>
+In-Reply-To: <20191003094137.v2.1.Ic9fd698810ea569c465350154da40b85d24f805b@changeid>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: linux-kernel@vger.kernel.org, dianders@chromium.org, mka@chromium.org, groeck@chromium.org, kernel@collabora.com, bleung@chromium.org, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org, Joerg Roedel <joro@8bytes.org>, linux-arm-kernel@lists.infradead.org
+To: Matthias Kaehlcke <mka@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Enric,
+Hi,
 
-Am Dienstag, 8. Oktober 2019, 15:58:43 CEST schrieb Enric Balletbo i Serra:
-> As platform_get_irq() now prints an error when the interrupt does not
-> exist, counting interrupts by looping until failure causes the printing
-> of scary messages like:
-> 
->  rk_iommu ff924000.iommu: IRQ index 1 not found
->  rk_iommu ff914000.iommu: IRQ index 1 not found
->  rk_iommu ff903f00.iommu: IRQ index 1 not found
->  rk_iommu ff8f3f00.iommu: IRQ index 1 not found
->  rk_iommu ff650800.iommu: IRQ index 1 not found
-> 
-> Fix this by using the platform_irq_count() helper to avoid touching
-> non-existent interrupts.
-
-It looks like we did the same fix ... see my patch from september 25:
-https://patchwork.kernel.org/patch/11161221/
-
-
-> Fixes: 7723f4c5ecdb8d83 ("driver core: platform: Add an error message to platform_get_irq*()")
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+On Thu, Oct 3, 2019 at 9:42 AM Matthias Kaehlcke <mka@chromium.org> wrote:
+>
+> Use interpolated brightness tables (added by commit 573fe6d1c25
+> ("backlight: pwm_bl: Linear interpolation between
+> brightness-levels") for veyron, instead of specifying every single
+> step. Some devices/panels have intervals that are smaller than
+> the specified 'num-interpolated-steps', the driver interprets
+> these intervals as a single step.
+>
+> Another option would be to switch to a perceptual brightness curve
+> (CIE 1931), with the caveat that it would change the behavior of
+> the backlight. Also the concept of a minimum brightness level is
+> currently not supported for CIE 1931 curves.
+>
+> Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
 > ---
-> 
->  drivers/iommu/rockchip-iommu.c | 35 +++++++++++++++++++++++-----------
->  1 file changed, 24 insertions(+), 11 deletions(-)
-> 
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index 26290f310f90..8c6318bd1b37 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -1136,7 +1136,7 @@ static int rk_iommu_probe(struct platform_device *pdev)
->  	struct rk_iommu *iommu;
->  	struct resource *res;
->  	int num_res = pdev->num_resources;
-> -	int err, i, irq;
-> +	int err, i, irq, num_irqs;
->  
->  	iommu = devm_kzalloc(dev, sizeof(*iommu), GFP_KERNEL);
->  	if (!iommu)
-> @@ -1219,20 +1219,28 @@ static int rk_iommu_probe(struct platform_device *pdev)
->  
->  	pm_runtime_enable(dev);
->  
-> -	i = 0;
-> -	while ((irq = platform_get_irq(pdev, i++)) != -ENXIO) {
-> -		if (irq < 0)
-> -			return irq;
-> +	num_irqs = platform_irq_count(pdev);
-> +	if (num_irqs < 0) {
-> +		err = num_irqs;
-> +		goto err_disable_pm_runtime;
-> +	}
+>
+> Changes in v2:
+> - added 0 as first step for devices/panels that require a minimum
+>   PWM duty cycle
+> - increased 'num-interpolated-steps' values by one, it's not the
+>   number of steps between levels, but that number +1
+>
+>  arch/arm/boot/dts/rk3288-veyron-edp.dtsi   | 35 ++--------------------
+>  arch/arm/boot/dts/rk3288-veyron-jaq.dts    | 35 ++--------------------
+>  arch/arm/boot/dts/rk3288-veyron-minnie.dts | 35 ++--------------------
+>  arch/arm/boot/dts/rk3288-veyron-tiger.dts  | 35 ++--------------------
+>  4 files changed, 8 insertions(+), 132 deletions(-)
 
-By moving the basic irq count above the pm_runtime_enable
-you save some lines and the whole goto logic ... see my patch
-for reference :-D
+I guess if someone wanted to they could try to increase the number of
+steps and see if they got prettier backlight transition, but what's
+there now doesn't bother me and has the advantage of matching what has
+been in use forever.  Thus:
 
-Heiko
-
-> +
-> +	for (i = 0; i < num_irqs; i++) {
-> +		irq = platform_get_irq(pdev, i);
-> +		if (irq < 0) {
-> +			err = irq;
-> +			goto err_disable_pm_runtime;
-> +		}
->  
->  		err = devm_request_irq(iommu->dev, irq, rk_iommu_irq,
->  				       IRQF_SHARED, dev_name(dev), iommu);
-> -		if (err) {
-> -			pm_runtime_disable(dev);
-> -			goto err_remove_sysfs;
-> -		}
-> +		if (err)
-> +			goto err_disable_pm_runtime;
->  	}
->  
->  	return 0;
-> +err_disable_pm_runtime:
-> +	pm_runtime_disable(dev);
->  err_remove_sysfs:
->  	iommu_device_sysfs_remove(&iommu->iommu);
->  err_put_group:
-> @@ -1245,10 +1253,15 @@ static int rk_iommu_probe(struct platform_device *pdev)
->  static void rk_iommu_shutdown(struct platform_device *pdev)
->  {
->  	struct rk_iommu *iommu = platform_get_drvdata(pdev);
-> -	int i = 0, irq;
-> +	int i, irq, num_irqs;
->  
-> -	while ((irq = platform_get_irq(pdev, i++)) != -ENXIO)
-> +	num_irqs = platform_irq_count(pdev);
-> +	for (i = 0; i < num_irqs; i++) {
-> +		irq = platform_get_irq(pdev, i);
-> +		if (irq < 0)
-> +			continue;
->  		devm_free_irq(iommu->dev, irq, iommu);
-> +	}
->  
->  	pm_runtime_force_suspend(&pdev->dev);
->  }
-> 
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
