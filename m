@@ -1,133 +1,147 @@
-From: Sean Paul <sean@poorly.run>
-Subject: Re: [PATCH v3 3/5] drm/rockchip: Add optional support for CRTC gamma
- LUT
-Date: Tue, 8 Oct 2019 16:03:39 -0400
-Message-ID: <20191008200339.GD85762@art_vandelay>
-References: <20190930222802.32088-1-ezequiel@collabora.com>
- <20190930222802.32088-4-ezequiel@collabora.com>
- <20191007185432.GG126146@art_vandelay>
- <dad6ee9aa3699af0f794f467224a8a01798d86b2.camel@collabora.com>
- <9cdd23c20ed91d4c4654aaae27d8c3addfd9af3f.camel@collabora.com>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Subject: Re: [PATCH] iommu/rockchip: Don't loop until failure to count interrupts
+Date: Tue, 8 Oct 2019 22:21:39 +0200
+Message-ID: <CAFqH_50xbB-+zEffHYPt+NPCVAikQpcWc_uxbkA0a6ppT5OJQA@mail.gmail.com>
+References: <20191008135843.30640-1-enric.balletbo@collabora.com> <3132916.nyj3dfveGU@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <9cdd23c20ed91d4c4654aaae27d8c3addfd9af3f.camel@collabora.com>
+In-Reply-To: <3132916.nyj3dfveGU@diego>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Sean Paul <sean@poorly.run>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>, Douglas Anderson <dianders@chromium.org>, Jacopo Mondi <jacopo@jmondi.org>, Ilia Mirkin <imirkin@alum.mit.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Jacopo Mondi <jacopo+renesas@jmondi.org>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Joerg Roedel <joro@8bytes.org>, linux-kernel <linux-kernel@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, iommu@lists.linux-foundation.org, Matthias Kaehlcke <mka@chromium.org>, Guenter Roeck <groeck@chromium.org>, Collabora Kernel ML <kernel@collabora.com>, Benson Leung <bleung@chromium.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Oct 08, 2019 at 04:33:35PM -0300, Ezequiel Garcia wrote:
-> On Tue, 2019-10-08 at 16:23 -0300, Ezequiel Garcia wrote:
-> > Hello Sean,
-> > 
-> > On Mon, 2019-10-07 at 14:54 -0400, Sean Paul wrote:
-> > > On Mon, Sep 30, 2019 at 07:28:00PM -0300, Ezequiel Garcia wrote:
-> > > > Add an optional CRTC gamma LUT support, and enable it on RK3288.
-> > > > This is currently enabled via a separate address resource,
-> > > > which needs to be specified in the devicetree.
-> > > > 
-> > > > The address resource is required because on some SoCs, such as
-> > > > RK3288, the LUT address is after the MMU address, and the latter
-> > > > is supported by a different driver. This prevents the DRM driver
-> > > > from requesting an entire register space.
-> > > > 
-> > > > The current implementation works for RGB 10-bit tables, as that
-> > > > is what seems to work on RK3288.
-> > > > 
-> > > > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> > > > Reviewed-by: Douglas Anderson <dianders@chromium.org>
-> > > > Reviewed-by: Jacopo Mondi <jacopo+renesas@jmondi.org>
-> > > > ---
-> > > > Changes from v2:
-> > > > * None.
-> > > > 
-> > > > Changes from v1:
-> > > > * drop explicit linear LUT after finding a proper
-> > > >   way to disable gamma correction.
-> > > > * avoid setting gamma is the CRTC is not active.
-> > > > * s/int/unsigned int as suggested by Jacopo.
-> > > > * only enable color management and set gamma size
-> > > >   if gamma LUT is supported, suggested by Doug.
-> > > > * drop the reg-names usage, and instead just use indexed reg
-> > > >   specifiers, suggested by Doug.
-> > > > 
-> > > > Changes from RFC:
-> > > > * Request (an optional) address resource for the LUT.
-> > > > * Drop support for RK3399, which doesn't seem to work
-> > > >   out of the box and needs more research.
-> > > > * Support pass-thru setting when GAMMA_LUT is NULL.
-> > > > * Add a check for the gamma size, as suggested by Ilia.
-> > > > * Move gamma setting to atomic_commit_tail, as pointed
-> > > >   out by Jacopo/Laurent, is the correct way.
-> > > > ---
-> > > >  drivers/gpu/drm/rockchip/rockchip_drm_fb.c  |   3 +
-> > > >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 114 ++++++++++++++++++++
-> > > >  drivers/gpu/drm/rockchip/rockchip_drm_vop.h |   7 ++
-> > > >  drivers/gpu/drm/rockchip/rockchip_vop_reg.c |   2 +
-> > > >  4 files changed, 126 insertions(+)
-> > > > 
-> > > > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-> > > > index dba352ec0ee3..fd1d987698ab 100644
-> > > > --- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-> > > > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-> > > > @@ -17,6 +17,7 @@
-> > > >  #include "rockchip_drm_drv.h"
-> > > >  #include "rockchip_drm_fb.h"
-> > > >  #include "rockchip_drm_gem.h"
-> > > > +#include "rockchip_drm_vop.h"
-> > > >  
-> > > >  static const struct drm_framebuffer_funcs rockchip_drm_fb_funcs = {
-> > > >  	.destroy       = drm_gem_fb_destroy,
-> > > > @@ -112,6 +113,8 @@ rockchip_atomic_helper_commit_tail_rpm(struct drm_atomic_state *old_state)
-> > > >  
-> > > >  	drm_atomic_helper_commit_modeset_disables(dev, old_state);
-> > > >  
-> > > > +	rockchip_drm_vop_gamma_set(old_state);
-> > > > +
-> > > 
-> > > Instead of duplicating the commit_tail helper, could you just implement
-> > > .atomic_begin() and call this from there? I think the only hitch is if you
-> > > need this to be completed before crtc->atomic_enable(), at which point you
-> > > might need to call it from vop_crtc_atomic_enable() and then detect that in
-> > > atomic_begin()
-> > > 
-> > 
-> > I think moving this to .atomic_begin might be enough. Let me send a new
-> > series and we can see how that goes.
-> > 
-> 
-> Oh, before going forward, pleaste note that the first iteration
-> of this patch (as noted in the changelog) was applying the gamma lut
-> on .atomic_flush. However, Laurent and Jacopo pointed out that
-> it might add some tearing to do so, and that's why it was moved
-> to commit_tail.
-> 
-> I have to admit I'm not too sure about the difference between
-> applying this gamma LUT on atomic_begin or atomic_flush,
-> perhaps you can clarify that?
+Hi Heiko,
 
-The only difference between what you have now and calling it in atomic_begin
-is that as you have it now, it's set before crtc->atomic_enable() is called.
-I think in order to address Ville's concerns on the other patch, you'll need
-to set it the lut in .atomic_enable() anyways, so here's what I would suggest:
+Missatge de Heiko St=C3=BCbner <heiko@sntech.de> del dia dt., 8 d=E2=80=99o=
+ct. 2019
+a les 19:58:
+>
+> Hi Enric,
+>
+> Am Dienstag, 8. Oktober 2019, 15:58:43 CEST schrieb Enric Balletbo i Serr=
+a:
+> > As platform_get_irq() now prints an error when the interrupt does not
+> > exist, counting interrupts by looping until failure causes the printing
+> > of scary messages like:
+> >
+> >  rk_iommu ff924000.iommu: IRQ index 1 not found
+> >  rk_iommu ff914000.iommu: IRQ index 1 not found
+> >  rk_iommu ff903f00.iommu: IRQ index 1 not found
+> >  rk_iommu ff8f3f00.iommu: IRQ index 1 not found
+> >  rk_iommu ff650800.iommu: IRQ index 1 not found
+> >
+> > Fix this by using the platform_irq_count() helper to avoid touching
+> > non-existent interrupts.
+>
+> It looks like we did the same fix ... see my patch from september 25:
+> https://patchwork.kernel.org/patch/11161221/
+>
 
-- Set the LUT in .atomic_enable() wherever it makes sense (you have it at the
-  start now)
-- Add an .atomic_begin() implementation and check state->color_mgmt_changed and
-  state->active_changed. color_mgmt_changed && !active_changed, set the lut
-- Remove patches 1 & 5
+How in the hell I didn't catch this patch! Anyway, forget about this
+patch then, sorry for the noise.
 
-...I think :-)
+Thanks,
+ Enric
 
-Sean
-
-> 
-> Thanks!
-> Ezequiel 
-> 
-> 
-
--- 
-Sean Paul, Software Engineer, Google / Chromium OS
+>
+> > Fixes: 7723f4c5ecdb8d83 ("driver core: platform: Add an error message t=
+o platform_get_irq*()")
+> > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> > ---
+> >
+> >  drivers/iommu/rockchip-iommu.c | 35 +++++++++++++++++++++++-----------
+> >  1 file changed, 24 insertions(+), 11 deletions(-)
+> >
+> > diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-io=
+mmu.c
+> > index 26290f310f90..8c6318bd1b37 100644
+> > --- a/drivers/iommu/rockchip-iommu.c
+> > +++ b/drivers/iommu/rockchip-iommu.c
+> > @@ -1136,7 +1136,7 @@ static int rk_iommu_probe(struct platform_device =
+*pdev)
+> >       struct rk_iommu *iommu;
+> >       struct resource *res;
+> >       int num_res =3D pdev->num_resources;
+> > -     int err, i, irq;
+> > +     int err, i, irq, num_irqs;
+> >
+> >       iommu =3D devm_kzalloc(dev, sizeof(*iommu), GFP_KERNEL);
+> >       if (!iommu)
+> > @@ -1219,20 +1219,28 @@ static int rk_iommu_probe(struct platform_devic=
+e *pdev)
+> >
+> >       pm_runtime_enable(dev);
+> >
+> > -     i =3D 0;
+> > -     while ((irq =3D platform_get_irq(pdev, i++)) !=3D -ENXIO) {
+> > -             if (irq < 0)
+> > -                     return irq;
+> > +     num_irqs =3D platform_irq_count(pdev);
+> > +     if (num_irqs < 0) {
+> > +             err =3D num_irqs;
+> > +             goto err_disable_pm_runtime;
+> > +     }
+>
+> By moving the basic irq count above the pm_runtime_enable
+> you save some lines and the whole goto logic ... see my patch
+> for reference :-D
+>
+> Heiko
+>
+> > +
+> > +     for (i =3D 0; i < num_irqs; i++) {
+> > +             irq =3D platform_get_irq(pdev, i);
+> > +             if (irq < 0) {
+> > +                     err =3D irq;
+> > +                     goto err_disable_pm_runtime;
+> > +             }
+> >
+> >               err =3D devm_request_irq(iommu->dev, irq, rk_iommu_irq,
+> >                                      IRQF_SHARED, dev_name(dev), iommu)=
+;
+> > -             if (err) {
+> > -                     pm_runtime_disable(dev);
+> > -                     goto err_remove_sysfs;
+> > -             }
+> > +             if (err)
+> > +                     goto err_disable_pm_runtime;
+> >       }
+> >
+> >       return 0;
+> > +err_disable_pm_runtime:
+> > +     pm_runtime_disable(dev);
+> >  err_remove_sysfs:
+> >       iommu_device_sysfs_remove(&iommu->iommu);
+> >  err_put_group:
+> > @@ -1245,10 +1253,15 @@ static int rk_iommu_probe(struct platform_devic=
+e *pdev)
+> >  static void rk_iommu_shutdown(struct platform_device *pdev)
+> >  {
+> >       struct rk_iommu *iommu =3D platform_get_drvdata(pdev);
+> > -     int i =3D 0, irq;
+> > +     int i, irq, num_irqs;
+> >
+> > -     while ((irq =3D platform_get_irq(pdev, i++)) !=3D -ENXIO)
+> > +     num_irqs =3D platform_irq_count(pdev);
+> > +     for (i =3D 0; i < num_irqs; i++) {
+> > +             irq =3D platform_get_irq(pdev, i);
+> > +             if (irq < 0)
+> > +                     continue;
+> >               devm_free_irq(iommu->dev, irq, iommu);
+> > +     }
+> >
+> >       pm_runtime_force_suspend(&pdev->dev);
+> >  }
+> >
+>
+>
+>
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
