@@ -1,54 +1,133 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH] arm64: dts: rockchip: Fix override mode for rk3399-kevin panel
-Date: Tue,  8 Oct 2019 12:49:54 -0700
-Message-ID: <20191008124949.1.I674acd441997dd0690c86c9003743aacda1cf5dd@changeid>
+From: Sean Paul <sean@poorly.run>
+Subject: Re: [PATCH v3 3/5] drm/rockchip: Add optional support for CRTC gamma
+ LUT
+Date: Tue, 8 Oct 2019 16:03:39 -0400
+Message-ID: <20191008200339.GD85762@art_vandelay>
+References: <20190930222802.32088-1-ezequiel@collabora.com>
+ <20190930222802.32088-4-ezequiel@collabora.com>
+ <20191007185432.GG126146@art_vandelay>
+ <dad6ee9aa3699af0f794f467224a8a01798d86b2.camel@collabora.com>
+ <9cdd23c20ed91d4c4654aaae27d8c3addfd9af3f.camel@collabora.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <9cdd23c20ed91d4c4654aaae27d8c3addfd9af3f.camel@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Douglas Anderson <dianders@chromium.org>, Sean Paul <seanpaul@chromium.org>, devicetree@vger.kernel.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Viresh Kumar <viresh.kumar@linaro.org>, linux-arm-kernel@lists.infradead.org
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: Sean Paul <sean@poorly.run>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, kernel@collabora.com, Sean Paul <seanpaul@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>, Douglas Anderson <dianders@chromium.org>, Jacopo Mondi <jacopo@jmondi.org>, Ilia Mirkin <imirkin@alum.mit.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Jacopo Mondi <jacopo+renesas@jmondi.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-When I re-posted Sean's original commit to add the override mode for
-the kevin panel, for some reason I didn't notice that the pixel clock
-wasn't quite right.  Looking at /sys/kernel/debug/clk/clk_summary on
-downstream kernels it can be seen that the VOP clock is supposed to be
-266,666,667 Hz achieved by dividing the 800 MHz PLL by 3.
+On Tue, Oct 08, 2019 at 04:33:35PM -0300, Ezequiel Garcia wrote:
+> On Tue, 2019-10-08 at 16:23 -0300, Ezequiel Garcia wrote:
+> > Hello Sean,
+> > 
+> > On Mon, 2019-10-07 at 14:54 -0400, Sean Paul wrote:
+> > > On Mon, Sep 30, 2019 at 07:28:00PM -0300, Ezequiel Garcia wrote:
+> > > > Add an optional CRTC gamma LUT support, and enable it on RK3288.
+> > > > This is currently enabled via a separate address resource,
+> > > > which needs to be specified in the devicetree.
+> > > > 
+> > > > The address resource is required because on some SoCs, such as
+> > > > RK3288, the LUT address is after the MMU address, and the latter
+> > > > is supported by a different driver. This prevents the DRM driver
+> > > > from requesting an entire register space.
+> > > > 
+> > > > The current implementation works for RGB 10-bit tables, as that
+> > > > is what seems to work on RK3288.
+> > > > 
+> > > > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > > > Reviewed-by: Douglas Anderson <dianders@chromium.org>
+> > > > Reviewed-by: Jacopo Mondi <jacopo+renesas@jmondi.org>
+> > > > ---
+> > > > Changes from v2:
+> > > > * None.
+> > > > 
+> > > > Changes from v1:
+> > > > * drop explicit linear LUT after finding a proper
+> > > >   way to disable gamma correction.
+> > > > * avoid setting gamma is the CRTC is not active.
+> > > > * s/int/unsigned int as suggested by Jacopo.
+> > > > * only enable color management and set gamma size
+> > > >   if gamma LUT is supported, suggested by Doug.
+> > > > * drop the reg-names usage, and instead just use indexed reg
+> > > >   specifiers, suggested by Doug.
+> > > > 
+> > > > Changes from RFC:
+> > > > * Request (an optional) address resource for the LUT.
+> > > > * Drop support for RK3399, which doesn't seem to work
+> > > >   out of the box and needs more research.
+> > > > * Support pass-thru setting when GAMMA_LUT is NULL.
+> > > > * Add a check for the gamma size, as suggested by Ilia.
+> > > > * Move gamma setting to atomic_commit_tail, as pointed
+> > > >   out by Jacopo/Laurent, is the correct way.
+> > > > ---
+> > > >  drivers/gpu/drm/rockchip/rockchip_drm_fb.c  |   3 +
+> > > >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 114 ++++++++++++++++++++
+> > > >  drivers/gpu/drm/rockchip/rockchip_drm_vop.h |   7 ++
+> > > >  drivers/gpu/drm/rockchip/rockchip_vop_reg.c |   2 +
+> > > >  4 files changed, 126 insertions(+)
+> > > > 
+> > > > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> > > > index dba352ec0ee3..fd1d987698ab 100644
+> > > > --- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> > > > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> > > > @@ -17,6 +17,7 @@
+> > > >  #include "rockchip_drm_drv.h"
+> > > >  #include "rockchip_drm_fb.h"
+> > > >  #include "rockchip_drm_gem.h"
+> > > > +#include "rockchip_drm_vop.h"
+> > > >  
+> > > >  static const struct drm_framebuffer_funcs rockchip_drm_fb_funcs = {
+> > > >  	.destroy       = drm_gem_fb_destroy,
+> > > > @@ -112,6 +113,8 @@ rockchip_atomic_helper_commit_tail_rpm(struct drm_atomic_state *old_state)
+> > > >  
+> > > >  	drm_atomic_helper_commit_modeset_disables(dev, old_state);
+> > > >  
+> > > > +	rockchip_drm_vop_gamma_set(old_state);
+> > > > +
+> > > 
+> > > Instead of duplicating the commit_tail helper, could you just implement
+> > > .atomic_begin() and call this from there? I think the only hitch is if you
+> > > need this to be completed before crtc->atomic_enable(), at which point you
+> > > might need to call it from vop_crtc_atomic_enable() and then detect that in
+> > > atomic_begin()
+> > > 
+> > 
+> > I think moving this to .atomic_begin might be enough. Let me send a new
+> > series and we can see how that goes.
+> > 
+> 
+> Oh, before going forward, pleaste note that the first iteration
+> of this patch (as noted in the changelog) was applying the gamma lut
+> on .atomic_flush. However, Laurent and Jacopo pointed out that
+> it might add some tearing to do so, and that's why it was moved
+> to commit_tail.
+> 
+> I have to admit I'm not too sure about the difference between
+> applying this gamma LUT on atomic_begin or atomic_flush,
+> perhaps you can clarify that?
 
-Looking at history, it seems that even Sean's first patch [1] had this
-funny clock rate.  I'm not sure where it came from since the commit
-message specifically mentioned 26666 kHz and the Chrome OS tree [2]
-can be seen to request 266667 kHz.
+The only difference between what you have now and calling it in atomic_begin
+is that as you have it now, it's set before crtc->atomic_enable() is called.
+I think in order to address Ville's concerns on the other patch, you'll need
+to set it the lut in .atomic_enable() anyways, so here's what I would suggest:
 
-In any case, let's fix it up.  This together with my patch [3] to do
-the proper rounding when setting the clock rate makes the VOP clock
-more proper as seen in /sys/kernel/debug/clk/clk_summary.
+- Set the LUT in .atomic_enable() wherever it makes sense (you have it at the
+  start now)
+- Add an .atomic_begin() implementation and check state->color_mgmt_changed and
+  state->active_changed. color_mgmt_changed && !active_changed, set the lut
+- Remove patches 1 & 5
 
-[1] https://lore.kernel.org/r/20180206165626.37692-4-seanpaul@chromium.org
-[2] https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4/drivers/gpu/drm/panel/panel-simple.c#1172
-[3] https://lkml.kernel.org/r/20191003114726.v2.1.Ib233b3e706cf6317858384264d5b0ed35657456e@changeid
+...I think :-)
 
-Fixes: 84ebd2da6d04 ("arm64: dts: rockchip: Specify override mode for kevin panel")
-Cc: Sean Paul <seanpaul@chromium.org>
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
+Sean
 
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> Thanks!
+> Ezequiel 
+> 
+> 
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-index e152b0ca0290..b8066868a3fe 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-@@ -44,7 +44,7 @@
- 		power-supply = <&pp3300_disp>;
- 
- 		panel-timing {
--			clock-frequency = <266604720>;
-+			clock-frequency = <266666667>;
- 			hactive = <2400>;
- 			hfront-porch = <48>;
- 			hback-porch = <84>;
 -- 
-2.23.0.581.g78d2f28ef7-goog
+Sean Paul, Software Engineer, Google / Chromium OS
