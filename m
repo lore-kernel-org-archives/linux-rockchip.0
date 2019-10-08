@@ -1,111 +1,102 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH v2 for 5.4 3/4] media: hantro: Fix motion vectors usage
- condition
-Date: Tue, 8 Oct 2019 13:57:31 +0000
-Message-ID: <HE1PR06MB40112032B360DE217C939FB3AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
-References: <20191007174505.10681-1-ezequiel@collabora.com>
- <20191007174505.10681-4-ezequiel@collabora.com>
- <HE1PR06MB4011204B3FC2DAABB4BD1BACAC9B0@HE1PR06MB4011.eurprd06.prod.outlook.com>
- <CAAFQd5BEPO3nicr1PzRNWoVEzsvKvv5AkqoMVh2AG7qST+bZdA@mail.gmail.com>
- <HE1PR06MB40111D7287970183CF6D0DD1AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
- <CAAFQd5AqYsUJeM5tzOY3WNFRZu74k6Yst3TpxcfB61zZtaHJDA@mail.gmail.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH] iommu/rockchip: Don't loop until failure to count interrupts
+Date: Tue,  8 Oct 2019 15:58:43 +0200
+Message-ID: <20191008135843.30640-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAAFQd5AqYsUJeM5tzOY3WNFRZu74k6Yst3TpxcfB61zZtaHJDA@mail.gmail.com>
-Content-Language: en-US
-Content-ID: <847A2C5297D88848A26211DE7C46DBF3@eurprd06.prod.outlook.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "kernel@collabora.com" <kernel@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, "fbuergisser@chromium.org" <fbuergisser@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Douglas Anderson <dianders@chromium.org>
+To: linux-kernel@vger.kernel.org
+Cc: heiko@sntech.de, dianders@chromium.org, mka@chromium.org, groeck@chromium.org, kernel@collabora.com, bleung@chromium.org, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org, Joerg Roedel <joro@8bytes.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOS0xMC0wOCAxMjoyNiwgVG9tYXN6IEZpZ2Egd3JvdGU6DQo+IE9uIFR1ZSwgT2N0IDgs
-IDIwMTkgYXQgMzoyMyBQTSBKb25hcyBLYXJsbWFuIDxqb25hc0Brd2lib28uc2U+IHdyb3RlOg0K
-Pj4gT24gMjAxOS0xMC0wOCAwNToyOSwgVG9tYXN6IEZpZ2Egd3JvdGU6DQo+Pj4gSGkgSm9uYXMs
-DQo+Pj4NCj4+PiBPbiBUdWUsIE9jdCA4LCAyMDE5IGF0IDM6MzMgQU0gSm9uYXMgS2FybG1hbiA8
-am9uYXNAa3dpYm9vLnNlPiB3cm90ZToNCj4+Pj4gT24gMjAxOS0xMC0wNyAxOTo0NSwgRXplcXVp
-ZWwgR2FyY2lhIHdyb3RlOg0KPj4+Pj4gRnJvbTogRnJhbmNvaXMgQnVlcmdpc3NlciA8ZmJ1ZXJn
-aXNzZXJAY2hyb21pdW0ub3JnPg0KPj4+Pj4NCj4+Pj4+IFRoZSBzZXR0aW5nIG9mIHRoZSBtb3Rp
-b24gdmVjdG9ycyB1c2FnZSBhbmQgdGhlIHNldHRpbmcgb2YgbW90aW9uDQo+Pj4+PiB2ZWN0b3Jz
-IGFkZHJlc3MgYXJlIGN1cnJlbnRseSBkb25lIHVuZGVyIGRpZmZlcmVudCBjb25kaXRpb25zLg0K
-Pj4+Pj4NCj4+Pj4+IFdoZW4gZGVjb2RpbmcgcHJlLXJlY29yZGVkIHZpZGVvcywgdGhpcyByZXN1
-bHRzIG9mIGxlYXZpbmcgdGhlIG1vdGlvbg0KPj4+Pj4gdmVjdG9ycyBhZGRyZXNzIHVuc2V0LCBy
-ZXN1bHRpbmcgaW4gZmF1bHR5IG1lbW9yeSBhY2Nlc3Nlcy4gRml4IGl0DQo+Pj4+PiBieSB1c2lu
-ZyB0aGUgc2FtZSBjb25kaXRpb24gZXZlcnl3aGVyZSwgd2hpY2ggbWF0Y2hlcyB0aGUgcHJvZmls
-ZXMNCj4+Pj4+IHRoYXQgc3VwcG9ydCBtb3Rpb24gdmVjdG9ycy4NCj4+Pj4gVGhpcyBkb2VzIG5v
-dCBmdWxseSBtYXRjaCBoYW50cm8gc2RrOg0KPj4+Pg0KPj4+PiAgIGVuYWJsZSBkaXJlY3QgTVYg
-d3JpdGluZyBhbmQgUE9DIHRhYmxlcyBmb3IgaGlnaC9tYWluIHN0cmVhbXMuDQo+Pj4+ICAgZW5h
-YmxlIGl0IGFsc28gZm9yIGFueSAiYmFzZWxpbmUiIHN0cmVhbSB3aGljaCBoYXZlIG1haW4vaGln
-aCB0b29scyBlbmFibGVkLg0KPj4+Pg0KPj4+PiAgIChzcHMtPnByb2ZpbGVfaWRjID4gNjYgJiYg
-c3BzLT5jb25zdHJhaW5lZF9zZXQwX2ZsYWcgPT0gMCkgfHwNCj4+Pj4gICBzcHMtPmZyYW1lX21i
-c19vbmx5X2ZsYWcgIT0gMSB8fA0KPj4+PiAgIHNwcy0+Y2hyb21hX2Zvcm1hdF9pZGMgIT0gMSB8
-fA0KPj4+PiAgIHNwcy0+c2NhbGluZ19tYXRyaXhfcHJlc2VudF9mbGFnICE9IDAgfHwNCj4+Pj4g
-ICBwcHMtPmVudHJvcHlfY29kaW5nX21vZGVfZmxhZyAhPSAwIHx8DQo+Pj4+ICAgcHBzLT53ZWln
-aHRlZF9wcmVkX2ZsYWcgIT0gMCB8fA0KPj4+PiAgIHBwcy0+d2VpZ2h0ZWRfYmlfcHJlZF9pZGMg
-IT0gMCB8fA0KPj4+PiAgIHBwcy0+dHJhbnNmb3JtOHg4X2ZsYWcgIT0gMCB8fA0KPj4+PiAgIHBw
-cy0+c2NhbGluZ19tYXRyaXhfcHJlc2VudF9mbGFnICE9IDANCj4+PiBUaGFua3MgZm9yIGRvdWJs
-ZSBjaGVja2luZyB0aGlzLiBJIGNhbiBjb25maXJtIHRoYXQgaXQncyB3aGF0IEhhbnRybw0KPj4+
-IFNESyBkb2VzIGluZGVlZC4NCj4+Pg0KPj4+IEhvd2V2ZXIsIHdvdWxkIGEgc3RyZWFtIHdpdGgg
-c3BzLT5wcm9maWxlX2lkYyA8PSA2NiBhbmQgdGhvc2Ugb3RoZXINCj4+PiBjb25kaXRpb25zIG1l
-dCBiZSBzdGlsbCBhIGNvbXBsaWFudCBzdHJlYW0/DQo+PiBZb3UgYXJlIGNvcnJlY3QsIGlmIGEg
-bm9uLWNvbXBsaWFudCB2aWRlbyBpcyBoYXZpbmcgZGVjb2RpbmcgcHJvYmxlbXMgaXQgc2hvdWxk
-IHByb2JhYmx5IGJlIGhhbmRsZWQNCj4+IG9uIHVzZXJzcGFjZSBzaWRlIChieSBub3QgcmVwb3J0
-aW5nIGJhc2VsaW5lIHByb2ZpbGUpIGFuZCBub3QgaW4ga2VybmVsLg0KPj4gQWxsIG15IHZpZGVv
-IHNhbXBsZXMgdGhhdCB3YXMgaGF2aW5nIHRoZSBpc3N1ZSBmaXhlZCBpbiB0aGlzIHBhdGNoIGFy
-ZSBub3cgZGVjb2RlZCBjb3JyZWN0bHkuDQo+Pg0KPj4+PiBBYm92ZSBjaGVjayBpcyB1c2VkIHdo
-ZW4gRElSX01WX0JBU0Ugc2hvdWxkIGJlIHdyaXR0ZW4uDQo+Pj4+IEFuZCBXUklURV9NVlNfRSBp
-cyBzZXQgdG8gbmFsX3JlZl9pZGMgIT0gMCB3aGVuIGFib3ZlIGlzIHRydWUuDQo+Pj4+DQo+Pj4+
-IEkgdGhpbmsgaXQgbWF5IGJlIHNhZmVyIHRvIGFsd2F5cyBzZXQgRElSX01WX0JBU0UgYW5kIGtl
-ZXAgdGhlIGV4aXN0aW5nIG5hbF9yZWZfaWRjIGNoZWNrIGZvciBXUklURV9NVlNfRS4NCj4+PiBU
-aGF0IG1pZ2h0IGhhdmUgYSBwZXJmb3JtYW5jZSBwZW5hbHR5IG9yIHNvbWUgb3RoZXIgc2lkZSBl
-ZmZlY3RzLA0KPj4+IHRob3VnaC4gT3RoZXJ3aXNlIEhhbnRybyBTREsgd291bGRuJ3QgaGF2ZSBl
-bmFibGUgaXQgY29uZGl0aW9uYWxseS4NCj4+Pg0KPj4+PiAoVGhhdCBpcyB3aGF0IEkgZGlkIGlu
-IG15ICJtZWRpYTogaGFudHJvOiBIMjY0IGZpeGVzIGFuZCBpbXByb3ZlbWVudHMiIHNlcmllcywg
-djIgaXMgaW5jb21pbmcpDQo+Pj4+IE9yIGhhdmUgeW91IGZvdW5kIGFueSB2aWRlbyB0aGF0IGlz
-IGhhdmluZyBpc3N1ZXMgaW4gc3VjaCBjYXNlPw0KPj4+IFdlJ3ZlIGJlZW4gcnVubmluZyB0aGUg
-Y29kZSB3aXRoIHNwcy0+cHJvZmlsZV9pZGMgPiA2NiBpbiBwcm9kdWN0aW9uDQo+Pj4gZm9yIDQg
-eWVhcnMgYW5kIGhhdmVuJ3Qgc2VlbiBhbnkgcmVwb3J0cyBvZiBhIHN0cmVhbSB0aGF0IHdhc24n
-dA0KPj4+IGRlY29kZWQgY29ycmVjdGx5Lg0KPj4+DQo+Pj4gSWYgd2UgZGVjaWRlIHRvIGdvIHdp
-dGggYSBkaWZmZXJlbnQgYmVoYXZpb3IsIEknZCBzdWdnZXN0IHRob3JvdWdobHkNCj4+PiB2ZXJp
-ZnlpbmcgdGhlIGJlaGF2aW9yIG9uIGEgYmlnIG51bWJlciBvZiBzdHJlYW1zLCBpbmNsdWRpbmcg
-c29tZQ0KPj4+IHBlcmZvcm1hbmNlIG1lYXN1cmVtZW50cy4NCj4+IEkgYWdyZWUsIEkgd291bGQg
-aG93ZXZlciBzdWdnZXN0IHRvIGNoYW5nZSB0aGUgaWYgc3RhdGVtZW50IHRvIHRoZSBmb2xsb3dp
-bmcgKG9yIHNpbWlsYXIpDQo+PiBhcyB0aGF0IHNob3VsZCBiZSB0aGUgb3B0aW1hbCBmb3IgcGVy
-Zm9ybWFuY2UgcmVhc29ucyBhbmQgbWF0Y2ggdGhlIGhhbnRybyBzZGsuDQo+Pg0KPj4gaWYgKHNw
-cy0+cHJvZmlsZV9pZGMgPiA2NiAmJiBkZWNfcGFyYW0tPm5hbF9yZWZfaWRjKQ0KPiBTb3JyeSBm
-b3IgbXkgaWdub3JhbmNlLCBidXQgY291bGQgeW91IGVsYWJvcmF0ZSBvbiB0aGlzPyBXaGF0J3Mg
-dGhlDQo+IG1lYW5pbmcgb2YgbmFsX3JlZl9pZGM/IEkgZG9uJ3Qgc2VlIGl0IGJlaW5nIGNoZWNr
-ZWQgaW4gdGhlIEhhbnRybyBTREsNCj4gY29uZGl0aW9uIHlvdSBtZW50aW9uZWQgZWFybGllci4N
-Cg0KTXkgc29tZXdoYXQgbGltaXRlZCB1bmRlcnN0YW5kaW5nIG9mIGgyNjQgc3BlYyBpcyB0aGF0
-IG5hbF9yZWZfaWRjIHNob3VsZCBiZSAwIGZvciBub24tcmVmZXJlbmNlIGZpZWxkL2ZyYW1lL3Bp
-Y3R1cmVzDQphbmQgYmVjYXVzZSBvZiB0aGlzIHRoZXJlIHNob3VsZCBub3QgYmUgYW55IG5lZWQg
-dG8gd3JpdGUgbW90aW9uIHZlY3RvciBkYXRhIGFzIHRoZSBmaWVsZC9mcmFtZSBzaG91bGQgbm90
-IGJlIHJlZmVyZW5jZWQuDQoNCk15IGJhc2UgZm9yIHRoZSBoYW50cm8gc2RrIGNvZGUgaXMgdGhl
-IGlteDggaW14LXZwdS1oYW50cm8gcGFja2FnZSBhbmQgaXQgdXNlcyAoc2ltcGxpZmllZCk6DQrC
-oCBTZXREZWNSZWdpc3RlcihoMjY0X3JlZ3MsIEhXSUZfV1JJVEVfTVZTX0UsIG5hbF9yZWZfaWRj
-ICE9IDApDQpmb3IgTVZDIHRoZXJlIGlzIGFuIGFkZGl0aW9uYWwgY29uZGl0aW9uLg0KDQpSZWdh
-cmRzLA0KSm9uYXMNCg0KPg0KPj4gUmVnYXJkcywNCj4+IEpvbmFzDQo+Pg0KPj4+IEJlc3QgcmVn
-YXJkcywNCj4+PiBUb21hc3oNCj4+Pg0KPj4+PiBSZWdhcmRzLA0KPj4+PiBKb25hcw0KPj4+Pg0K
-Pj4+Pj4gRml4ZXM6IGRlYTBhODJmM2QyMiAoIm1lZGlhOiBoYW50cm86IEFkZCBzdXBwb3J0IGZv
-ciBIMjY0IGRlY29kaW5nIG9uIEcxIikNCj4+Pj4+IFNpZ25lZC1vZmYtYnk6IEZyYW5jb2lzIEJ1
-ZXJnaXNzZXIgPGZidWVyZ2lzc2VyQGNocm9taXVtLm9yZz4NCj4+Pj4+IFNpZ25lZC1vZmYtYnk6
-IEV6ZXF1aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4NCj4+Pj4+IC0tLQ0KPj4+
-Pj4gdjI6DQo+Pj4+PiAqIE5ldyBwYXRjaC4NCj4+Pj4+DQo+Pj4+PiAgZHJpdmVycy9zdGFnaW5n
-L21lZGlhL2hhbnRyby9oYW50cm9fZzFfaDI2NF9kZWMuYyB8IDIgKy0NCj4+Pj4+ICAxIGZpbGUg
-Y2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkNCj4+Pj4+DQo+Pj4+PiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzFfaDI2NF9kZWMu
-YyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cxX2gyNjRfZGVjLmMNCj4+
-Pj4+IGluZGV4IDdhYjUzNDkzNjg0My4uYzkyNDYwNDA3NjEzIDEwMDY0NA0KPj4+Pj4gLS0tIGEv
-ZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzFfaDI2NF9kZWMuYw0KPj4+Pj4g
-KysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzFfaDI2NF9kZWMuYw0K
-Pj4+Pj4gQEAgLTM1LDcgKzM1LDcgQEAgc3RhdGljIHZvaWQgc2V0X3BhcmFtcyhzdHJ1Y3QgaGFu
-dHJvX2N0eCAqY3R4KQ0KPj4+Pj4gICAgICAgaWYgKHNwcy0+ZmxhZ3MgJiBWNEwyX0gyNjRfU1BT
-X0ZMQUdfTUJfQURBUFRJVkVfRlJBTUVfRklFTEQpDQo+Pj4+PiAgICAgICAgICAgICAgIHJlZyB8
-PSBHMV9SRUdfREVDX0NUUkwwX1NFUV9NQkFGRl9FOw0KPj4+Pj4gICAgICAgcmVnIHw9IEcxX1JF
-R19ERUNfQ1RSTDBfUElDT1JEX0NPVU5UX0U7DQo+Pj4+PiAtICAgICBpZiAoZGVjX3BhcmFtLT5u
-YWxfcmVmX2lkYykNCj4+Pj4+ICsgICAgIGlmIChzcHMtPnByb2ZpbGVfaWRjID4gNjYpDQo+Pj4+
-PiAgICAgICAgICAgICAgIHJlZyB8PSBHMV9SRUdfREVDX0NUUkwwX1dSSVRFX01WU19FOw0KPj4+
-Pj4NCj4+Pj4+ICAgICAgIGlmICghKHNwcy0+ZmxhZ3MgJiBWNEwyX0gyNjRfU1BTX0ZMQUdfRlJB
-TUVfTUJTX09OTFkpICYmDQoNCg==
+As platform_get_irq() now prints an error when the interrupt does not
+exist, counting interrupts by looping until failure causes the printing
+of scary messages like:
+
+ rk_iommu ff924000.iommu: IRQ index 1 not found
+ rk_iommu ff914000.iommu: IRQ index 1 not found
+ rk_iommu ff903f00.iommu: IRQ index 1 not found
+ rk_iommu ff8f3f00.iommu: IRQ index 1 not found
+ rk_iommu ff650800.iommu: IRQ index 1 not found
+
+Fix this by using the platform_irq_count() helper to avoid touching
+non-existent interrupts.
+
+Fixes: 7723f4c5ecdb8d83 ("driver core: platform: Add an error message to platform_get_irq*()")
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
+
+ drivers/iommu/rockchip-iommu.c | 35 +++++++++++++++++++++++-----------
+ 1 file changed, 24 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index 26290f310f90..8c6318bd1b37 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -1136,7 +1136,7 @@ static int rk_iommu_probe(struct platform_device *pdev)
+ 	struct rk_iommu *iommu;
+ 	struct resource *res;
+ 	int num_res = pdev->num_resources;
+-	int err, i, irq;
++	int err, i, irq, num_irqs;
+ 
+ 	iommu = devm_kzalloc(dev, sizeof(*iommu), GFP_KERNEL);
+ 	if (!iommu)
+@@ -1219,20 +1219,28 @@ static int rk_iommu_probe(struct platform_device *pdev)
+ 
+ 	pm_runtime_enable(dev);
+ 
+-	i = 0;
+-	while ((irq = platform_get_irq(pdev, i++)) != -ENXIO) {
+-		if (irq < 0)
+-			return irq;
++	num_irqs = platform_irq_count(pdev);
++	if (num_irqs < 0) {
++		err = num_irqs;
++		goto err_disable_pm_runtime;
++	}
++
++	for (i = 0; i < num_irqs; i++) {
++		irq = platform_get_irq(pdev, i);
++		if (irq < 0) {
++			err = irq;
++			goto err_disable_pm_runtime;
++		}
+ 
+ 		err = devm_request_irq(iommu->dev, irq, rk_iommu_irq,
+ 				       IRQF_SHARED, dev_name(dev), iommu);
+-		if (err) {
+-			pm_runtime_disable(dev);
+-			goto err_remove_sysfs;
+-		}
++		if (err)
++			goto err_disable_pm_runtime;
+ 	}
+ 
+ 	return 0;
++err_disable_pm_runtime:
++	pm_runtime_disable(dev);
+ err_remove_sysfs:
+ 	iommu_device_sysfs_remove(&iommu->iommu);
+ err_put_group:
+@@ -1245,10 +1253,15 @@ static int rk_iommu_probe(struct platform_device *pdev)
+ static void rk_iommu_shutdown(struct platform_device *pdev)
+ {
+ 	struct rk_iommu *iommu = platform_get_drvdata(pdev);
+-	int i = 0, irq;
++	int i, irq, num_irqs;
+ 
+-	while ((irq = platform_get_irq(pdev, i++)) != -ENXIO)
++	num_irqs = platform_irq_count(pdev);
++	for (i = 0; i < num_irqs; i++) {
++		irq = platform_get_irq(pdev, i);
++		if (irq < 0)
++			continue;
+ 		devm_free_irq(iommu->dev, irq, iommu);
++	}
+ 
+ 	pm_runtime_force_suspend(&pdev->dev);
+ }
+-- 
+2.20.1
