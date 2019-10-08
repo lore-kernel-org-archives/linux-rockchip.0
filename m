@@ -1,50 +1,118 @@
-From: Cheng-Yi Chiang <cychiang@chromium.org>
-Subject: [PATCH v3] drm/bridge: dw-hdmi: Restore audio when setting a mode
-Date: Tue,  8 Oct 2019 18:21:45 +0800
-Message-ID: <20191008102145.55134-1-cychiang@chromium.org>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH v2 for 5.4 3/4] media: hantro: Fix motion vectors usage condition
+Date: Tue, 8 Oct 2019 19:26:39 +0900
+Message-ID: <CAAFQd5AqYsUJeM5tzOY3WNFRZu74k6Yst3TpxcfB61zZtaHJDA@mail.gmail.com>
+References: <20191007174505.10681-1-ezequiel@collabora.com>
+ <20191007174505.10681-4-ezequiel@collabora.com> <HE1PR06MB4011204B3FC2DAABB4BD1BACAC9B0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+ <CAAFQd5BEPO3nicr1PzRNWoVEzsvKvv5AkqoMVh2AG7qST+bZdA@mail.gmail.com> <HE1PR06MB40111D7287970183CF6D0DD1AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <HE1PR06MB40111D7287970183CF6D0DD1AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: Neil Armstrong <narmstrong@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, dianders@chromium.org, dgreid@chromium.org, tzungbi@chromium.org, alsa-devel@alsa-project.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Cheng-Yi Chiang <cychiang@chromium.org>, Yakir Yang <ykk@rock-chips.com>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "kernel@collabora.com" <kernel@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, "fbuergisser@chromium.org" <fbuergisser@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Daniel Kurtz <djkurtz@chromium.org>
+On Tue, Oct 8, 2019 at 3:23 PM Jonas Karlman <jonas@kwiboo.se> wrote:
+>
+> On 2019-10-08 05:29, Tomasz Figa wrote:
+> > Hi Jonas,
+> >
+> > On Tue, Oct 8, 2019 at 3:33 AM Jonas Karlman <jonas@kwiboo.se> wrote:
+> >> On 2019-10-07 19:45, Ezequiel Garcia wrote:
+> >>> From: Francois Buergisser <fbuergisser@chromium.org>
+> >>>
+> >>> The setting of the motion vectors usage and the setting of motion
+> >>> vectors address are currently done under different conditions.
+> >>>
+> >>> When decoding pre-recorded videos, this results of leaving the motion
+> >>> vectors address unset, resulting in faulty memory accesses. Fix it
+> >>> by using the same condition everywhere, which matches the profiles
+> >>> that support motion vectors.
+> >> This does not fully match hantro sdk:
+> >>
+> >>   enable direct MV writing and POC tables for high/main streams.
+> >>   enable it also for any "baseline" stream which have main/high tools enabled.
+> >>
+> >>   (sps->profile_idc > 66 && sps->constrained_set0_flag == 0) ||
+> >>   sps->frame_mbs_only_flag != 1 ||
+> >>   sps->chroma_format_idc != 1 ||
+> >>   sps->scaling_matrix_present_flag != 0 ||
+> >>   pps->entropy_coding_mode_flag != 0 ||
+> >>   pps->weighted_pred_flag != 0 ||
+> >>   pps->weighted_bi_pred_idc != 0 ||
+> >>   pps->transform8x8_flag != 0 ||
+> >>   pps->scaling_matrix_present_flag != 0
+> > Thanks for double checking this. I can confirm that it's what Hantro
+> > SDK does indeed.
+> >
+> > However, would a stream with sps->profile_idc <= 66 and those other
+> > conditions met be still a compliant stream?
+>
+> You are correct, if a non-compliant video is having decoding problems it should probably be handled
+> on userspace side (by not reporting baseline profile) and not in kernel.
+> All my video samples that was having the issue fixed in this patch are now decoded correctly.
+>
+> >
+> >> Above check is used when DIR_MV_BASE should be written.
+> >> And WRITE_MVS_E is set to nal_ref_idc != 0 when above is true.
+> >>
+> >> I think it may be safer to always set DIR_MV_BASE and keep the existing nal_ref_idc check for WRITE_MVS_E.
+> > That might have a performance penalty or some other side effects,
+> > though. Otherwise Hantro SDK wouldn't have enable it conditionally.
+> >
+> >> (That is what I did in my "media: hantro: H264 fixes and improvements" series, v2 is incoming)
+> >> Or have you found any video that is having issues in such case?
+> > We've been running the code with sps->profile_idc > 66 in production
+> > for 4 years and haven't seen any reports of a stream that wasn't
+> > decoded correctly.
+> >
+> > If we decide to go with a different behavior, I'd suggest thoroughly
+> > verifying the behavior on a big number of streams, including some
+> > performance measurements.
+>
+> I agree, I would however suggest to change the if statement to the following (or similar)
+> as that should be the optimal for performance reasons and match the hantro sdk.
+>
+> if (sps->profile_idc > 66 && dec_param->nal_ref_idc)
 
-When setting a new display mode, dw_hdmi_setup() calls
-dw_hdmi_enable_video_path(), which disables all hdmi clocks, including
-the audio clock.
+Sorry for my ignorance, but could you elaborate on this? What's the
+meaning of nal_ref_idc? I don't see it being checked in the Hantro SDK
+condition you mentioned earlier.
 
-We should only (re-)enable the audio clock if audio was already enabled
-when setting the new mode.
-
-Without this patch, on RK3288, there will be HDMI audio on some monitors
-if i2s was played to headphone when the monitor was plugged.
-ACER H277HU and ASUS PB278 are two of the monitors showing this issue.
-
-Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
-Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
-Signed-off-by: Yakir Yang <ykk@rock-chips.com>
----
- Change from v2 to v3:
- - Remove spinlock around setting clock.
-
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index a15fbf71b9d7..af060162b0af 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -2054,7 +2054,7 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
- 
- 		/* HDMI Initialization Step E - Configure audio */
- 		hdmi_clk_regenerator_update_pixel_clock(hdmi);
--		hdmi_enable_audio_clk(hdmi, true);
-+		hdmi_enable_audio_clk(hdmi, hdmi->audio_enable);
- 	}
- 
- 	/* not for DVI mode */
--- 
-2.23.0.581.g78d2f28ef7-goog
+>
+> Regards,
+> Jonas
+>
+> >
+> > Best regards,
+> > Tomasz
+> >
+> >> Regards,
+> >> Jonas
+> >>
+> >>> Fixes: dea0a82f3d22 ("media: hantro: Add support for H264 decoding on G1")
+> >>> Signed-off-by: Francois Buergisser <fbuergisser@chromium.org>
+> >>> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> >>> ---
+> >>> v2:
+> >>> * New patch.
+> >>>
+> >>>  drivers/staging/media/hantro/hantro_g1_h264_dec.c | 2 +-
+> >>>  1 file changed, 1 insertion(+), 1 deletion(-)
+> >>>
+> >>> diff --git a/drivers/staging/media/hantro/hantro_g1_h264_dec.c b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+> >>> index 7ab534936843..c92460407613 100644
+> >>> --- a/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+> >>> +++ b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+> >>> @@ -35,7 +35,7 @@ static void set_params(struct hantro_ctx *ctx)
+> >>>       if (sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD)
+> >>>               reg |= G1_REG_DEC_CTRL0_SEQ_MBAFF_E;
+> >>>       reg |= G1_REG_DEC_CTRL0_PICORD_COUNT_E;
+> >>> -     if (dec_param->nal_ref_idc)
+> >>> +     if (sps->profile_idc > 66)
+> >>>               reg |= G1_REG_DEC_CTRL0_WRITE_MVS_E;
+> >>>
+> >>>       if (!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY) &&
+>
