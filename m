@@ -1,75 +1,149 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v2 for 5.4 2/4] media: hantro: Fix H264 max frmsize
- supported on RK3288
-Date: Tue, 8 Oct 2019 19:42:09 +0900
-Message-ID: <CAAFQd5CWoAP1psrEW6bVMkRmhFeTvFKtDSLjT7nefc2YiFovqQ@mail.gmail.com>
-References: <20191007174505.10681-1-ezequiel@collabora.com>
- <20191007174505.10681-3-ezequiel@collabora.com> <CAAFQd5BNu2ea3ei_imHmEwmdna0+iiSbQSv_SBsdHfP4Uh1h4Q@mail.gmail.com>
- <HE1PR06MB4011EC9E93ECBB6773252247AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v2 0/2] mmc: core: Fix Marvell WiFi reset by adding SDIO
+ API to replug card
+Date: Tue, 8 Oct 2019 13:49:04 +0200
+Message-ID: <CAPDyKFoXh9dzunsac9M43gHky1HjWvEBXXGp5Mj=0g3APM36aw@mail.gmail.com>
+References: <20190722193939.125578-1-dianders@chromium.org>
+ <CAPDyKFoND5Kaam72zxO4wChO0z_1XL2KWX6oNjVcMUGA7G8RFg@mail.gmail.com>
+ <CAD=FV=VTLoqGbxFFMT8h72cfHCLupyvZpD75JB0N86+kFA+vzw@mail.gmail.com>
+ <CAPDyKFrPHguMrMvXN0yHbD9GmEg4m=J1Un=LcpE0PB7WqMRYSg@mail.gmail.com> <CAD=FV=W-qh2NnDc-C1_Tki3=D7vzNGG2PgnZjCjdLU9gL68AxA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <HE1PR06MB4011EC9E93ECBB6773252247AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, "kernel@collabora.com" <kernel@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, "fbuergisser@chromium.org" <fbuergisser@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Douglas Anderson <dianders@chromium.org>
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=W-qh2NnDc-C1_Tki3=D7vzNGG2PgnZjCjdLU9gL68AxA@mail.gmail.com>
+Sender: netdev-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Ganapathi Bhat <gbhat@marvell.com>, linux-wireless <linux-wireless@vger.kernel.org>, Andreas Fenkart <afenkart@gmail.com>, Brian Norris <briannorris@chromium.org>, Amitkumar Karwar <amitkarwar@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Nishant Sarmukadam <nishants@marvell.com>, netdev <netdev@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>, Xinming Hu <huxinming820@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Thomas Gleixner <tglx@linutronix.de>, Kate Stewart <kste>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Oct 8, 2019 at 3:31 PM Jonas Karlman <jonas@kwiboo.se> wrote:
+On Tue, 8 Oct 2019 at 01:39, Doug Anderson <dianders@chromium.org> wrote:
 >
-> On 2019-10-08 07:27, Tomasz Figa wrote:
-> > Hi Ezequiel, Jonas,
+> Hi,
+>
+> On Mon, Sep 16, 2019 at 2:25 AM Ulf Hansson <ulf.hansson@linaro.org> wrote:
 > >
-> > On Tue, Oct 8, 2019 at 2:46 AM Ezequiel Garcia <ezequiel@collabora.com> wrote:
-> >> From: Jonas Karlman <jonas@kwiboo.se>
-> >>
-> >> TRM specify supported image size 48x48 to 4096x2304 at step size 16 pixels,
-> >> change frmsize max_width/max_height to match TRM.
-> >>
-> >> Fixes: 760327930e10 ("media: hantro: Enable H264 decoding on rk3288")
-> >> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> >> ---
-> >> v2:
-> >> * No changes.
-> >>
-> >>  drivers/staging/media/hantro/rk3288_vpu_hw.c | 4 ++--
-> >>  1 file changed, 2 insertions(+), 2 deletions(-)
-> >>
-> >> diff --git a/drivers/staging/media/hantro/rk3288_vpu_hw.c b/drivers/staging/media/hantro/rk3288_vpu_hw.c
-> >> index 6bfcc47d1e58..ebb017b8a334 100644
-> >> --- a/drivers/staging/media/hantro/rk3288_vpu_hw.c
-> >> +++ b/drivers/staging/media/hantro/rk3288_vpu_hw.c
-> >> @@ -67,10 +67,10 @@ static const struct hantro_fmt rk3288_vpu_dec_fmts[] = {
-> >>                 .max_depth = 2,
-> >>                 .frmsize = {
-> >>                         .min_width = 48,
-> >> -                       .max_width = 3840,
-> >> +                       .max_width = 4096,
-> >>                         .step_width = H264_MB_DIM,
-> >>                         .min_height = 48,
-> >> -                       .max_height = 2160,
-> >> +                       .max_height = 2304,
-> > This doesn't match the datasheet I have, which is RK3288 Datasheet Rev
-> > 1.4 and which has the values as in current code. What's the one you
-> > got the values from?
+> > On Wed, 11 Sep 2019 at 23:26, Doug Anderson <dianders@chromium.org> wrote:
+> > >
+> > > Hi,
+> > >
+> > > On Thu, Jul 25, 2019 at 6:28 AM Ulf Hansson <ulf.hansson@linaro.org> wrote:
+> > > >
+> > > > On Mon, 22 Jul 2019 at 21:41, Douglas Anderson <dianders@chromium.org> wrote:
+> > > > >
+> > > > > As talked about in the thread at:
+> > > > >
+> > > > > http://lkml.kernel.org/r/CAD=FV=X7P2F1k_zwHc0mbtfk55-rucTz_GoDH=PL6zWqKYcpuw@mail.gmail.com
+> > > > >
+> > > > > ...when the Marvell WiFi card tries to reset itself it kills
+> > > > > Bluetooth.  It was observed that we could re-init the card properly by
+> > > > > unbinding / rebinding the host controller.  It was also observed that
+> > > > > in the downstream Chrome OS codebase the solution used was
+> > > > > mmc_remove_host() / mmc_add_host(), which is similar to the solution
+> > > > > in this series.
+> > > > >
+> > > > > So far I've only done testing of this series using the reset test
+> > > > > source that can be simulated via sysfs.  Specifically I ran this test:
+> > > > >
+> > > > > for i in $(seq 1000); do
+> > > > >   echo "LOOP $i --------"
+> > > > >   echo 1 > /sys/kernel/debug/mwifiex/mlan0/reset
+> > > > >
+> > > > >   while true; do
+> > > > >     if ! ping -w15 -c1 "${GW}" >/dev/null 2>&1; then
+> > > > >       fail=$(( fail + 1 ))
+> > > > >       echo "Fail WiFi ${fail}"
+> > > > >       if [[ ${fail} == 3 ]]; then
+> > > > >         exit 1
+> > > > >       fi
+> > > > >     else
+> > > > >       fail=0
+> > > > >       break
+> > > > >     fi
+> > > > >   done
+> > > > >
+> > > > >   hciconfig hci0 down
+> > > > >   sleep 1
+> > > > >   if ! hciconfig hci0 up; then
+> > > > >     echo "Fail BT"
+> > > > >     exit 1
+> > > > >   fi
+> > > > > done
+> > > > >
+> > > > > I ran this several times and got several hundred iterations each
+> > > > > before a failure.  When I saw failures:
+> > > > >
+> > > > > * Once I saw a "Fail BT"; manually resetting the card again fixed it.
+> > > > >   I didn't give it time to see if it would have detected this
+> > > > >   automatically.
+> > > > > * Once I saw the ping fail because (for some reason) my device only
+> > > > >   got an IPv6 address from my router and the IPv4 ping failed.  I
+> > > > >   changed my script to use 'ping6' to see if that would help.
+> > > > > * Once I saw the ping fail because the higher level network stack
+> > > > >   ("shill" in my case) seemed to crash.  A few minutes later the
+> > > > >   system recovered itself automatically.  https://crbug.com/984593 if
+> > > > >   you want more details.
+> > > > > * Sometimes while I was testing I saw "Fail WiFi 1" indicating a
+> > > > >   transitory failure.  Usually this was an association failure, but in
+> > > > >   one case I saw the device do "Firmware wakeup failed" after I
+> > > > >   triggered the reset.  This caused the driver to trigger a re-reset
+> > > > >   of itself which eventually recovered things.  This was good because
+> > > > >   it was an actual test of the normal reset flow (not the one
+> > > > >   triggered via sysfs).
+> > > > >
+> > > > > Changes in v2:
+> > > > > - s/routnine/routine (Brian Norris, Matthias Kaehlcke).
+> > > > > - s/contining/containing (Matthias Kaehlcke).
+> > > > > - Add Matthias Reviewed-by tag.
+> > > > > - Removed clear_bit() calls and old comment (Brian Norris).
+> > > > > - Explicit CC of Andreas Fenkart.
+> > > > > - Explicit CC of Brian Norris.
+> > > > > - Add "Fixes" pointing at the commit Brian talked about.
+> > > > > - Add Brian's Reviewed-by tag.
+> > > > >
+> > > > > Douglas Anderson (2):
+> > > > >   mmc: core: Add sdio_trigger_replug() API
+> > > > >   mwifiex: Make use of the new sdio_trigger_replug() API to reset
+> > > > >
+> > > > >  drivers/mmc/core/core.c                     | 28 +++++++++++++++++++--
+> > > > >  drivers/mmc/core/sdio_io.c                  | 20 +++++++++++++++
+> > > > >  drivers/net/wireless/marvell/mwifiex/sdio.c | 16 +-----------
+> > > > >  include/linux/mmc/host.h                    | 15 ++++++++++-
+> > > > >  include/linux/mmc/sdio_func.h               |  2 ++
+> > > > >  5 files changed, 63 insertions(+), 18 deletions(-)
+> > > > >
+> > > >
+> > > > Doug, thanks for sending this!
+> > > >
+> > > > As you know, I have been working on additional changes for SDIO
+> > > > suspend/resume (still WIP and not ready for sharing) and this series
+> > > > is related.
+> > > >
+> > > > The thing is, that even during system suspend/resume, synchronizations
+> > > > are needed between the different layers (mmc host, mmc core and
+> > > > sdio-funcs), which is common to the problem you want to solve.
+> > > >
+> > > > That said, I need to scratch my head a bit more before I can provide
+> > > > you some feedback on $subject series. Moreover, it's vacation period
+> > > > at my side so things are moving a bit slower. Please be patient.
+> > >
+> > > I had kinda forgotten about this series after we landed it locally in
+> > > Chrome OS, but I realized that it never got resolved upstream.  Any
+> > > chance your head has been sufficiently scratched and you're now happy
+> > > with $subject series?  ;-)
+> >
+> > It's still on my TODO list. Apologize for the delay, but I still need
+> > more time to look into it, possibly later this week.
+> >
+> > In any case, let's make sure we get this problem resolved for v5.5.
 >
-> The RK3288 TRM vcodec chapter from [1], unknown revision and date, lists 48x48 to 4096x2304 step size 16 pixels under 25.5.1 H.264 decoder.
->
-> I can also confirm that one of my test samples (PUPPIES BATH IN 4K) is 4096x2304 and can be decoded after this patch.
-> However the decoding speed is not optimal at 400Mhz, if I recall correctly you need to set the VPU1 clock to 600Mhz for 4K decoding on RK3288.
->
-> I am not sure if I should include a v2 of this patch in my v2 series, as-is this patch do not apply on master (H264_MB_DIM has changed to MB_DIM in master).
->
-> [1] http://www.t-firefly.com/download/firefly-rk3288/docs/TRM/rk3288-chapter-25-video-encoder-decoder-unit-(vcodec).pdf
+> Hi Ulf.  It's your friendly pest, Doug, here to ask how things are going.  :-P
 
-I checked the RK3288 TRM V1.1 too and it refers to 3840x2160@24fps as
-the maximum.
+:-)
 
-As for performance, we've actually been getting around 33 fps at 400
-MHz with 3840x2160 on our devices (the old RK3288 Asus Chromebook
-Flip).
+The series on the top of my "things to review" list. I will definitely
+provide you with some feedback then next days or so.
 
-I guess we might want to check that with Hantro.
+Again, sorry for the delay!
 
-Best regards,
-Tomasz
+Kind regards
+Uffe
