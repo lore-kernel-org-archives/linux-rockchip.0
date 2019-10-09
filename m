@@ -1,51 +1,46 @@
-From: Colin Ian King <colin.king@canonical.com>
-Subject: Potential issue setting vid_regs in Rockchip AXI PCIe endpoint
- controller driver
-Date: Wed, 9 Oct 2019 11:18:56 +0100
-Message-ID: <cd70cd13-5b0e-ea14-f7b1-fb8866c4dbbf@canonical.com>
+From: Ben Dooks <ben.dooks@codethink.co.uk>
+Subject: [PATCH] drm/rockchip: make rockchip_gem_alloc_object static
+Date: Wed,  9 Oct 2019 13:10:22 +0100
+Message-ID: <20191009121022.17478-1-ben.dooks@codethink.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, linux-rockchip@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-kernel@lists.codethink.co.uk
+Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Ben Dooks <ben.dooks@codethink.co.uk>, Daniel Vetter <daniel@ffwll.ch>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Static analysis with Coverity has detected a potential issue in the
-Rockchip AXI PCIe endpoint controller driver.  The issue is in
-drivers/pci/controller/pcie-rockchip-ep.c, function
-rockchip_pcie_ep_write_header:
-
-The coverity report is as follows:
-
-124 static int rockchip_pcie_ep_write_header(struct pci_epc *epc, u8 fn,
-125                                         struct pci_epf_header *hdr)
-126 {
-127        struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
-128        struct rockchip_pcie *rockchip = &ep->rockchip;
-129
-130        /* All functions share the same vendor ID with function 0 */
-131        if (fn == 0) {
-132                u32 vid_regs = (hdr->vendorid & GENMASK(15, 0)) |
-
-   CID 12883 (#1 of 1): Operands don't affect result
-
-(CONSTANT_EXPRESSION_RESULT) result_independent_of_operands:
-
-hdr->subsys_vendor_id & (4294901760UL /* ~0UL - (1UL << 16) + 1 & (~0UL
->> 64 - 1 - 31) */) is always 0 regardless of the values of its
-operands. This occurs as a value.
-
-133                               (hdr->subsys_vendor_id & GENMASK(31,
-16)) << 16;
-
-The expression (hdr->subsys_vendor_id & GENMASK(31, 16)) << 16 always
-results in zero. Since the GENMASK gets the top 16 bits of
-hdr->subsys_vendor_id then it looks like the 16 bit left shift is not
-required, but I don't know if that is a correct assumption or not.
-
-Colin
+VGhlIHJvY2tjaGlwX2dlbV9hbGxvY19vYmplY3QgZnVuY3Rpb24gaXMgbm90IGV4cG9ydGVkIHNv
+Cm1ha2UgaXQgc3RhdGljIHRvIGF2b2lkIHRoZSBmb2xsb3dpbmcgc3BhcnNlIHdhcm5pbmc6Cgpk
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jOjI5NzoyODogd2Fybmlu
+Zzogc3ltYm9sICdyb2NrY2hpcF9nZW1fYWxsb2Nfb2JqZWN0JyB3YXMgbm90IGRlY2xhcmVkLiBT
+aG91bGQgaXQgYmUgc3RhdGljPwoKU2lnbmVkLW9mZi1ieTogQmVuIERvb2tzIDxiZW4uZG9va3NA
+Y29kZXRoaW5rLmNvLnVrPgotLS0KQ2M6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+
+CkNjOiAiSGVpa28gU3TDvGJuZXIiIDxoZWlrb0BzbnRlY2guZGU+CkNjOiBEYXZpZCBBaXJsaWUg
+PGFpcmxpZWRAbGludXguaWU+CkNjOiBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3bGwuY2g+CkNj
+OiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCkNjOiBsaW51eC1hcm0ta2VybmVsQGxp
+c3RzLmluZnJhZGVhZC5vcmcKQ2M6IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+LS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIHwgMiArLQog
+MSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyBiL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKaW5kZXggMjkxZTg5YjQwNDVmLi43
+NTgyZDBlNmE2MGEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fZ2VtLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9n
+ZW0uYwpAQCAtMjk0LDcgKzI5NCw3IEBAIHN0YXRpYyB2b2lkIHJvY2tjaGlwX2dlbV9yZWxlYXNl
+X29iamVjdChzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqKQogCWtmcmVlKHJrX29i
+aik7CiB9CiAKLXN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICoKK3N0YXRpYyBzdHJ1Y3Qgcm9j
+a2NoaXBfZ2VtX29iamVjdCAqCiAJcm9ja2NoaXBfZ2VtX2FsbG9jX29iamVjdChzdHJ1Y3QgZHJt
+X2RldmljZSAqZHJtLCB1bnNpZ25lZCBpbnQgc2l6ZSkKIHsKIAlzdHJ1Y3Qgcm9ja2NoaXBfZ2Vt
+X29iamVjdCAqcmtfb2JqOwotLSAKMi4yMy4wCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgt
+YXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
