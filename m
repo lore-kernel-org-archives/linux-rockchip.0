@@ -1,122 +1,51 @@
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Subject: Re: [PATCH] iommu/rockchip: don't use platform_get_irq to implicitly
- count irqs
-Date: Wed, 9 Oct 2019 10:22:02 +0200
-Message-ID: <CAFqH_53xE7fH-Mf0_qokamUCBNDedadSLQa=uxiP_v7TW7DPfw@mail.gmail.com>
-References: <20190925184346.14121-1-heiko@sntech.de>
+From: Colin Ian King <colin.king@canonical.com>
+Subject: Potential issue setting vid_regs in Rockchip AXI PCIe endpoint
+ controller driver
+Date: Wed, 9 Oct 2019 11:18:56 +0100
+Message-ID: <cd70cd13-5b0e-ea14-f7b1-fb8866c4dbbf@canonical.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190925184346.14121-1-heiko@sntech.de>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Joerg Roedel <joro@8bytes.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, iommu@lists.linux-foundation.org, linux-kernel <linux-kernel@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>, linux-rockchip@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-Missatge de Heiko Stuebner <heiko@sntech.de> del dia dc., 25 de set.
-2019 a les 20:44:
->
-> Till now the Rockchip iommu driver walked through the irq list via
-> platform_get_irq() until it encountered an ENXIO error. With the
-> recent change to add a central error message, this always results
-> in such an error for each iommu on probe and shutdown.
->
-> To not confuse people, switch to platform_count_irqs() to get the
-> actual number of interrupts before walking through them.
->
-> Fixes: 7723f4c5ecdb ("driver core: platform: Add an error message to platform_get_irq*()")
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
+Static analysis with Coverity has detected a potential issue in the
+Rockchip AXI PCIe endpoint controller driver.  The issue is in
+drivers/pci/controller/pcie-rockchip-ep.c, function
+rockchip_pcie_ep_write_header:
 
-This patch definitely removes the annoying messages on my Samsung
-Chromebook Plus like:
+The coverity report is as follows:
 
- rk_iommu ff924000.iommu: IRQ index 1 not found
- rk_iommu ff914000.iommu: IRQ index 1 not found
- rk_iommu ff903f00.iommu: IRQ index 1 not found
- rk_iommu ff8f3f00.iommu: IRQ index 1 not found
- rk_iommu ff650800.iommu: IRQ index 1 not found
+124 static int rockchip_pcie_ep_write_header(struct pci_epc *epc, u8 fn,
+125                                         struct pci_epf_header *hdr)
+126 {
+127        struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
+128        struct rockchip_pcie *rockchip = &ep->rockchip;
+129
+130        /* All functions share the same vendor ID with function 0 */
+131        if (fn == 0) {
+132                u32 vid_regs = (hdr->vendorid & GENMASK(15, 0)) |
 
-FWIW, I sent a similar patch [1] to fix this, but can be rejected in
-favour of the Heiko's patch. So,
+   CID 12883 (#1 of 1): Operands don't affect result
 
-Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+(CONSTANT_EXPRESSION_RESULT) result_independent_of_operands:
 
-Thanks,
- Enric
+hdr->subsys_vendor_id & (4294901760UL /* ~0UL - (1UL << 16) + 1 & (~0UL
+>> 64 - 1 - 31) */) is always 0 regardless of the values of its
+operands. This occurs as a value.
 
-[1] https://lkml.org/lkml/2019/10/8/551
+133                               (hdr->subsys_vendor_id & GENMASK(31,
+16)) << 16;
 
->  drivers/iommu/rockchip-iommu.c | 19 ++++++++++++++-----
->  1 file changed, 14 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index 26290f310f90..4dcbf68dfda4 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -100,6 +100,7 @@ struct rk_iommu {
->         struct device *dev;
->         void __iomem **bases;
->         int num_mmu;
-> +       int num_irq;
->         struct clk_bulk_data *clocks;
->         int num_clocks;
->         bool reset_disabled;
-> @@ -1136,7 +1137,7 @@ static int rk_iommu_probe(struct platform_device *pdev)
->         struct rk_iommu *iommu;
->         struct resource *res;
->         int num_res = pdev->num_resources;
-> -       int err, i, irq;
-> +       int err, i;
->
->         iommu = devm_kzalloc(dev, sizeof(*iommu), GFP_KERNEL);
->         if (!iommu)
-> @@ -1163,6 +1164,10 @@ static int rk_iommu_probe(struct platform_device *pdev)
->         if (iommu->num_mmu == 0)
->                 return PTR_ERR(iommu->bases[0]);
->
-> +       iommu->num_irq = platform_irq_count(pdev);
-> +       if (iommu->num_irq < 0)
-> +               return iommu->num_irq;
-> +
->         iommu->reset_disabled = device_property_read_bool(dev,
->                                         "rockchip,disable-mmu-reset");
->
-> @@ -1219,8 +1224,9 @@ static int rk_iommu_probe(struct platform_device *pdev)
->
->         pm_runtime_enable(dev);
->
-> -       i = 0;
-> -       while ((irq = platform_get_irq(pdev, i++)) != -ENXIO) {
-> +       for (i = 0; i < iommu->num_irq; i++) {
-> +               int irq = platform_get_irq(pdev, i);
-> +
->                 if (irq < 0)
->                         return irq;
->
-> @@ -1245,10 +1251,13 @@ static int rk_iommu_probe(struct platform_device *pdev)
->  static void rk_iommu_shutdown(struct platform_device *pdev)
->  {
->         struct rk_iommu *iommu = platform_get_drvdata(pdev);
-> -       int i = 0, irq;
-> +       int i;
-> +
-> +       for (i = 0; i < iommu->num_irq; i++) {
-> +               int irq = platform_get_irq(pdev, i);
->
-> -       while ((irq = platform_get_irq(pdev, i++)) != -ENXIO)
->                 devm_free_irq(iommu->dev, irq, iommu);
-> +       }
->
->         pm_runtime_force_suspend(&pdev->dev);
->  }
-> --
-> 2.23.0
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+The expression (hdr->subsys_vendor_id & GENMASK(31, 16)) << 16 always
+results in zero. Since the GENMASK gets the top 16 bits of
+hdr->subsys_vendor_id then it looks like the 16 bit left shift is not
+required, but I don't know if that is a correct assumption or not.
+
+Colin
