@@ -1,39 +1,115 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: CPUfreq fail on rk3399-firefly
-Date: Thu, 10 Oct 2019 17:32:48 +0800
-Message-ID: <3ed325e9-c958-c329-66b7-6eee8da06fde@rock-chips.com>
-References: <5d3057c8.1c69fb81.c6489.8ad2@mx.google.com>
- <20190718162005.GF5761@sirena.org.uk> <7hmugdynmk.fsf@baylibre.com>
- <2314814.WbdfqDVNqK@phil> <7hv9uq9wfe.fsf@baylibre.com>
- <c973d3fa-5f0d-c277-7c83-6227942a671a@rock-chips.com>
- <7hd0gvzuvw.fsf@baylibre.com> <7h8srjzuen.fsf@baylibre.com>
- <7hh84yisd3.fsf@baylibre.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v2 1/2] mmc: core: Add sdio_trigger_replug() API
+Date: Thu, 10 Oct 2019 16:10:32 +0200
+Message-ID: <CAPDyKFpKWo4n+nmBXVcDc4TNzFV3vc+3aeKcu_nKaB=hj=RKUQ@mail.gmail.com>
+References: <20190722193939.125578-1-dianders@chromium.org> <20190722193939.125578-2-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <7hh84yisd3.fsf@baylibre.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Kevin Hilman <khilman@baylibre.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: kernel-build-reports@lists.linaro.org, linux-rockchip@lists.infradead.org, linux-next@vger.kernel.org, =?UTF-8?B?6Zer5a2d5Yab?= <andy.yan@rock-chips.com>, =?UTF-8?B?5byg5pm0?= <elaine.zhang@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190722193939.125578-2-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Ganapathi Bhat <gbhat@marvell.com>, linux-wireless <linux-wireless@vger.kernel.org>, Andreas Fenkart <afenkart@gmail.com>, Brian Norris <briannorris@chromium.org>, Amitkumar Karwar <amitkarwar@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Nishant Sarmukadam <nishants@marvell.com>, netdev <netdev@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>, Xinming Hu <huxinming820@gmail.com>, Matthias Kaehlcke <mka@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>Thomas Gleixner <t>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgS2V2aW4sCgogwqDCoMKgIEkgd2lsbCBzZW5kIHlvdSBhIEZpcmVmbHktcmszMzk5IGJvYXJk
-IHRvIHlvdS4KCgpUaGFua3MsCgotIEtldmVyCgpPbiAyMDE5LzkvMjcg5LiK5Y2INjo1MSwgS2V2
-aW4gSGlsbWFuIHdyb3RlOgo+IFRoaXMgaXMgbm93IGZhaWxpbmcgaW4gdGhlIHY1LjIgc3RhYmxl
-IHRyZWUuCj4KPiBBbnkgc3VnZ2VzdGlvbnMgb24gd2hhdCB0byBkbz8gIG90aGVyd2lzZSwgSSds
-bCBqdXN0IG5lZWQgdG8gZGlzYWJsZQo+IHRoaXMgYm9hcmQuCj4KPiBPciwgaWYgc29tZW9uZSB3
-YW50cyB0byBkb25hdGUgYSBuZXcgcmszMzk5LWZpcmVmbHkgZm9yIG15IGxhYiwgSSdkIGJlCj4g
-Z2xhZCB0byB0cnkgcmVwbGFjaW5nIGl0Lgo+Cj4gS2V2aW4KCgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxp
-c3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+On Mon, 22 Jul 2019 at 21:41, Douglas Anderson <dianders@chromium.org> wrote:
+>
+> When using Marvell WiFi SDIO cards, it is not uncommon for Linux WiFi
+> driver to fully lose the communication channel to the firmware running
+> on the card.  Presumably the firmware on the card has a bug or two in
+> it and occasionally crashes.
+>
+> The Marvell WiFi driver attempts to recover from this problem.
+> Specifically the driver has the function mwifiex_sdio_card_reset()
+> which is called when communcation problems are found.  That function
+> attempts to reset the state of things by utilizing the mmc_hw_reset()
+> function.
+>
+> The current solution is a bit complex because the Marvell WiFi driver
+> needs to manually deinit and reinit the WiFi driver around the reset
+> call.  This means it's going through a bunch of code paths that aren't
+> normally tested.  However, complexity isn't our only problem.  The
+> other (bigger) problem is that Marvell WiFi cards are often combo
+> WiFi/Bluetooth cards and Bluetooth runs on a second SDIO func.  While
+> the WiFi driver knows that it should re-init its own state around the
+> mmc_hw_reset() call there is no good way to inform the Bluetooth
+> driver.  That means that in Linux today when you reset the Marvell
+> WiFi driver you lose all Bluetooth communication.  Doh!
+
+Thanks for a nice description to the problem!
+
+In principle it makes mmc_hw_reset() quite questionable to use for
+SDIO func drivers, at all. However, let's consider that for later.
+
+>
+> One way to fix the above problems is to leverage a more standard way
+> to reset the Marvell WiFi card where we go through the same code paths
+> as card unplug and the card plug.  In this patch we introduce a new
+> API call for doing just that: sdio_trigger_replug().  This API call
+> will trigger an unplug of the SDIO card followed by a plug of the
+> card.  As part of this the card will be nicely reset.
+
+I have been thinking back and forth on this, exploring various
+options, perhaps adding some callbacks that the core could invoke to
+inform the SDIO func drivers of what is going on.
+
+Although, in the end this boils done to complexity and I think your
+approach is simply the most superior in regards to this. However, I
+think there is a few things that we can do to even further simply your
+approach, let me comment on the code below.
+
+>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> Reviewed-by: Matthias Kaehlcke <mka@chromium.org>
+> ---
+>
+> Changes in v2:
+> - s/routnine/routine (Brian Norris, Matthias Kaehlcke).
+> - s/contining/containing (Matthias Kaehlcke).
+> - Add Matthias Reviewed-by tag.
+>
+>  drivers/mmc/core/core.c       | 28 ++++++++++++++++++++++++++--
+>  drivers/mmc/core/sdio_io.c    | 20 ++++++++++++++++++++
+>  include/linux/mmc/host.h      | 15 ++++++++++++++-
+>  include/linux/mmc/sdio_func.h |  2 ++
+>  4 files changed, 62 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
+> index 221127324709..5da365b1fdb4 100644
+> --- a/drivers/mmc/core/core.c
+> +++ b/drivers/mmc/core/core.c
+> @@ -2161,6 +2161,12 @@ int mmc_sw_reset(struct mmc_host *host)
+>  }
+>  EXPORT_SYMBOL(mmc_sw_reset);
+>
+> +void mmc_trigger_replug(struct mmc_host *host)
+> +{
+> +       host->trigger_replug_state = MMC_REPLUG_STATE_UNPLUG;
+> +       _mmc_detect_change(host, 0, false);
+> +}
+> +
+>  static int mmc_rescan_try_freq(struct mmc_host *host, unsigned freq)
+>  {
+>         host->f_init = freq;
+> @@ -2214,6 +2220,11 @@ int _mmc_detect_card_removed(struct mmc_host *host)
+>         if (!host->card || mmc_card_removed(host->card))
+>                 return 1;
+>
+> +       if (host->trigger_replug_state == MMC_REPLUG_STATE_UNPLUG) {
+> +               mmc_card_set_removed(host->card);
+> +               return 1;
+
+Do you really need to set state of the card to "removed"?
+
+If I understand correctly, what you need is to allow mmc_rescan() to
+run a second time, in particular for non removable cards.
+
+In that path, mmc_rescan should find the card being non-functional,
+thus it should remove it and then try to re-initialize it again. Etc.
+
+Do you want me to send a patch to show you what I mean!?
+
+[...]
+
+Kind regards
+Uffe
