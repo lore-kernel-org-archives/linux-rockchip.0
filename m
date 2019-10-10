@@ -1,183 +1,108 @@
-From: Nickey Yang <nickey.yang@rock-chips.com>
-Subject: [PATCH 1/1] drm/rockchip: vop: add the definition of dclk_pol
-Date: Thu, 10 Oct 2019 11:44:52 +0800
-Message-ID: <20191010034452.20260-2-nickey.yang@rock-chips.com>
-References: <20191010034452.20260-1-nickey.yang@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191010034452.20260-1-nickey.yang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, hjc@rock-chips.com
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, seanpaul@chromium.org, laurent.pinchart@ideasonboard.com
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 for 5.4 2/4] media: hantro: Fix H264 max frmsize
+ supported on RK3288
+Date: Thu, 10 Oct 2019 16:23:56 +0900
+Message-ID: <CAAFQd5DEhHF+_oO_0ZKS1mi26hJ-JueFxXfdpyQ3ATzMW5Czaw@mail.gmail.com>
+References: <20191007174505.10681-1-ezequiel@collabora.com>
+ <20191007174505.10681-3-ezequiel@collabora.com>
+ <CAAFQd5BNu2ea3ei_imHmEwmdna0+iiSbQSv_SBsdHfP4Uh1h4Q@mail.gmail.com>
+ <HE1PR06MB4011EC9E93ECBB6773252247AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+ <CAAFQd5CWoAP1psrEW6bVMkRmhFeTvFKtDSLjT7nefc2YiFovqQ@mail.gmail.com>
+ <CAAFQd5AYCiKcA9pGc44L3gGHLPx6iMSb7KywkO8OqVv4gS8KvQ@mail.gmail.com>
+ <CAAFQd5AQXGX_2gmKLfymH5mLG-uVh-v+XXtGXzbfzYzVVV42mA@mail.gmail.com>
+ <HE1PR06MB4011B897EA5497659A19BCC6AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <HE1PR06MB4011B897EA5497659A19BCC6AC9A0-yb6jErQ+GTm7n+Tc7eNcVa71xdIjGZSdvxpqHgZTriW3zl9H0oFU5g@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Cc: "fbuergisser-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <fbuergisser-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org" <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Some VOP's (such as px30) dclk_pol bit is at the last.
-So it is necessary to distinguish dclk_pol and pin_pol.
+On Tue, Oct 8, 2019 at 11:12 PM Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org> wrote:
+>
+> On 2019-10-08 15:53, Tomasz Figa wrote:
+> > On Tue, Oct 8, 2019 at 10:35 PM Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> >> On Tue, Oct 8, 2019 at 7:42 PM Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> >>> On Tue, Oct 8, 2019 at 3:31 PM Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org> wrote:
+> >>>> On 2019-10-08 07:27, Tomasz Figa wrote:
+> >>>>> Hi Ezequiel, Jonas,
+> >>>>>
+> >>>>> On Tue, Oct 8, 2019 at 2:46 AM Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+> >>>>>> From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+> >>>>>>
+> >>>>>> TRM specify supported image size 48x48 to 4096x2304 at step size 16 pixels,
+> >>>>>> change frmsize max_width/max_height to match TRM.
+> >>>>>>
+> >>>>>> Fixes: 760327930e10 ("media: hantro: Enable H264 decoding on rk3288")
+> >>>>>> Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+> >>>>>> ---
+> >>>>>> v2:
+> >>>>>> * No changes.
+> >>>>>>
+> >>>>>>  drivers/staging/media/hantro/rk3288_vpu_hw.c | 4 ++--
+> >>>>>>  1 file changed, 2 insertions(+), 2 deletions(-)
+> >>>>>>
+> >>>>>> diff --git a/drivers/staging/media/hantro/rk3288_vpu_hw.c b/drivers/staging/media/hantro/rk3288_vpu_hw.c
+> >>>>>> index 6bfcc47d1e58..ebb017b8a334 100644
+> >>>>>> --- a/drivers/staging/media/hantro/rk3288_vpu_hw.c
+> >>>>>> +++ b/drivers/staging/media/hantro/rk3288_vpu_hw.c
+> >>>>>> @@ -67,10 +67,10 @@ static const struct hantro_fmt rk3288_vpu_dec_fmts[] = {
+> >>>>>>                 .max_depth = 2,
+> >>>>>>                 .frmsize = {
+> >>>>>>                         .min_width = 48,
+> >>>>>> -                       .max_width = 3840,
+> >>>>>> +                       .max_width = 4096,
+> >>>>>>                         .step_width = H264_MB_DIM,
+> >>>>>>                         .min_height = 48,
+> >>>>>> -                       .max_height = 2160,
+> >>>>>> +                       .max_height = 2304,
+> >>>>> This doesn't match the datasheet I have, which is RK3288 Datasheet Rev
+> >>>>> 1.4 and which has the values as in current code. What's the one you
+> >>>>> got the values from?
+> >>>> The RK3288 TRM vcodec chapter from [1], unknown revision and date, lists 48x48 to 4096x2304 step size 16 pixels under 25.5.1 H.264 decoder.
+> >>>>
+> >>>> I can also confirm that one of my test samples (PUPPIES BATH IN 4K) is 4096x2304 and can be decoded after this patch.
+> >>>> However the decoding speed is not optimal at 400Mhz, if I recall correctly you need to set the VPU1 clock to 600Mhz for 4K decoding on RK3288.
+> >>>>
+> >>>> I am not sure if I should include a v2 of this patch in my v2 series, as-is this patch do not apply on master (H264_MB_DIM has changed to MB_DIM in master).
+> >>>>
+> >>>> [1] http://www.t-firefly.com/download/firefly-rk3288/docs/TRM/rk3288-chapter-25-video-encoder-decoder-unit-(vcodec).pdf
+> >>> I checked the RK3288 TRM V1.1 too and it refers to 3840x2160@24fps as
+> >>> the maximum.
+> >>>
+> >>> As for performance, we've actually been getting around 33 fps at 400
+> >>> MHz with 3840x2160 on our devices (the old RK3288 Asus Chromebook
+> >>> Flip).
+> >>>
+> >>> I guess we might want to check that with Hantro.
+> >> Could you check the value of bits 10:0 in register at 0x0c8? That
+> >> should be the maximum supported stream width in the units of 16
+> >> pixels.
+> > Correction: The unit is 1 pixel and there are additional 2 most
+> > significant bits at 0x0d8, 15:14.
+>
+> I will check this later tonight when I have access to my devices.
+> The PUPPIES BATH IN 4K (4096x2304) sample decoded without issue using rockchip 4.4 BSP kernel and mpp last time I tested.
+>
+> The vcodec driver in 4.4 BSP kernel use 300/400 Mhz as default clock rate and will change to 600 Mhz when width is over 2560, see [1]:
+>   raise frequency for resolution larger than 1440p avc
+>
+> [1] https://github.com/rockchip-linux/kernel/blob/develop-4.4/drivers/video/rockchip/vcodec/vcodec_service.c#L2551-L2570
 
-Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 12 +++---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h |  8 +++-
- drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 45 ++++++++++++++-------
- 3 files changed, 43 insertions(+), 22 deletions(-)
+How comes it works for us well at 400 MHz? Better DRAM? Differences in
+how Vcodec BSP handles the hardware that somehow make the decoding
+slower?
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 613404f86668..0d6682ed9e15 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1085,9 +1085,7 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
- 		DRM_DEV_ERROR(vop->dev, "Failed to enable vop (%d)\n", ret);
- 		return;
- 	}
--
--	pin_pol = BIT(DCLK_INVERT);
--	pin_pol |= (adjusted_mode->flags & DRM_MODE_FLAG_PHSYNC) ?
-+	pin_pol = (adjusted_mode->flags & DRM_MODE_FLAG_PHSYNC) ?
- 		   BIT(HSYNC_POSITIVE) : 0;
- 	pin_pol |= (adjusted_mode->flags & DRM_MODE_FLAG_PVSYNC) ?
- 		   BIT(VSYNC_POSITIVE) : 0;
-@@ -1096,25 +1094,29 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
- 
- 	switch (s->output_type) {
- 	case DRM_MODE_CONNECTOR_LVDS:
--		VOP_REG_SET(vop, output, rgb_en, 1);
-+		VOP_REG_SET(vop, output, rgb_dclk_pol, 1);
- 		VOP_REG_SET(vop, output, rgb_pin_pol, pin_pol);
-+		VOP_REG_SET(vop, output, rgb_en, 1);
- 		break;
- 	case DRM_MODE_CONNECTOR_eDP:
-+		VOP_REG_SET(vop, output, edp_dclk_pol, 1);
- 		VOP_REG_SET(vop, output, edp_pin_pol, pin_pol);
- 		VOP_REG_SET(vop, output, edp_en, 1);
- 		break;
- 	case DRM_MODE_CONNECTOR_HDMIA:
-+		VOP_REG_SET(vop, output, hdmi_dclk_pol, 1);
- 		VOP_REG_SET(vop, output, hdmi_pin_pol, pin_pol);
- 		VOP_REG_SET(vop, output, hdmi_en, 1);
- 		break;
- 	case DRM_MODE_CONNECTOR_DSI:
-+		VOP_REG_SET(vop, output, mipi_dclk_pol, 1);
- 		VOP_REG_SET(vop, output, mipi_pin_pol, pin_pol);
- 		VOP_REG_SET(vop, output, mipi_en, 1);
- 		VOP_REG_SET(vop, output, mipi_dual_channel_en,
- 			    !!(s->output_flags & ROCKCHIP_OUTPUT_DSI_DUAL));
- 		break;
- 	case DRM_MODE_CONNECTOR_DisplayPort:
--		pin_pol &= ~BIT(DCLK_INVERT);
-+		VOP_REG_SET(vop, output, dp_dclk_pol, 0);
- 		VOP_REG_SET(vop, output, dp_pin_pol, pin_pol);
- 		VOP_REG_SET(vop, output, dp_en, 1);
- 		break;
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-index 2149a889c29d..ea1f97a5aa5d 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-@@ -46,10 +46,15 @@ struct vop_modeset {
- struct vop_output {
- 	struct vop_reg pin_pol;
- 	struct vop_reg dp_pin_pol;
-+	struct vop_reg dp_dclk_pol;
- 	struct vop_reg edp_pin_pol;
-+	struct vop_reg edp_dclk_pol;
- 	struct vop_reg hdmi_pin_pol;
-+	struct vop_reg hdmi_dclk_pol;
- 	struct vop_reg mipi_pin_pol;
-+	struct vop_reg mipi_dclk_pol;
- 	struct vop_reg rgb_pin_pol;
-+	struct vop_reg rgb_dclk_pol;
- 	struct vop_reg dp_en;
- 	struct vop_reg edp_en;
- 	struct vop_reg hdmi_en;
-@@ -294,8 +299,7 @@ enum dither_down_mode_sel {
- enum vop_pol {
- 	HSYNC_POSITIVE = 0,
- 	VSYNC_POSITIVE = 1,
--	DEN_NEGATIVE   = 2,
--	DCLK_INVERT    = 3
-+	DEN_NEGATIVE   = 2
- };
- 
- #define FRAC_16_16(mult, div)    (((mult) << 16) / (div))
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-index d1494be14471..f92c899d656c 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-@@ -214,9 +214,11 @@ static const struct vop_modeset px30_modeset = {
- };
- 
- static const struct vop_output px30_output = {
--	.rgb_pin_pol = VOP_REG(PX30_DSP_CTRL0, 0xf, 1),
--	.mipi_pin_pol = VOP_REG(PX30_DSP_CTRL0, 0xf, 25),
-+	.rgb_dclk_pol = VOP_REG(PX30_DSP_CTRL0, 0x1, 1),
-+	.rgb_pin_pol = VOP_REG(PX30_DSP_CTRL0, 0x7, 2),
- 	.rgb_en = VOP_REG(PX30_DSP_CTRL0, 0x1, 0),
-+	.mipi_dclk_pol = VOP_REG(PX30_DSP_CTRL0, 0x1, 25),
-+	.mipi_pin_pol = VOP_REG(PX30_DSP_CTRL0, 0x7, 26),
- 	.mipi_en = VOP_REG(PX30_DSP_CTRL0, 0x1, 24),
- };
- 
-@@ -717,10 +719,14 @@ static const struct vop_win_data rk3368_vop_win_data[] = {
- };
- 
- static const struct vop_output rk3368_output = {
--	.rgb_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0xf, 16),
--	.hdmi_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0xf, 20),
--	.edp_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0xf, 24),
--	.mipi_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0xf, 28),
-+	.rgb_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 19),
-+	.hdmi_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 23),
-+	.edp_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 27),
-+	.mipi_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 31),
-+	.rgb_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 16),
-+	.hdmi_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 20),
-+	.edp_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 24),
-+	.mipi_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 28),
- 	.rgb_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 12),
- 	.hdmi_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 13),
- 	.edp_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 14),
-@@ -764,11 +770,16 @@ static const struct vop_data rk3366_vop = {
- };
- 
- static const struct vop_output rk3399_output = {
--	.dp_pin_pol = VOP_REG(RK3399_DSP_CTRL1, 0xf, 16),
--	.rgb_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0xf, 16),
--	.hdmi_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0xf, 20),
--	.edp_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0xf, 24),
--	.mipi_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0xf, 28),
-+	.dp_dclk_pol = VOP_REG(RK3399_DSP_CTRL1, 0x1, 19),
-+	.rgb_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 19),
-+	.hdmi_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 23),
-+	.edp_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 27),
-+	.mipi_dclk_pol = VOP_REG(RK3368_DSP_CTRL1, 0x1, 31),
-+	.dp_pin_pol = VOP_REG(RK3399_DSP_CTRL1, 0x7, 16),
-+	.rgb_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 16),
-+	.hdmi_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 20),
-+	.edp_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 24),
-+	.mipi_pin_pol = VOP_REG(RK3368_DSP_CTRL1, 0x7, 28),
- 	.dp_en = VOP_REG(RK3399_SYS_CTRL, 0x1, 11),
- 	.rgb_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 12),
- 	.hdmi_en = VOP_REG(RK3288_SYS_CTRL, 0x1, 13),
-@@ -872,14 +883,18 @@ static const struct vop_modeset rk3328_modeset = {
- };
- 
- static const struct vop_output rk3328_output = {
-+	.rgb_dclk_pol = VOP_REG(RK3328_DSP_CTRL1, 0x1, 19),
-+	.hdmi_dclk_pol = VOP_REG(RK3328_DSP_CTRL1, 0x1, 23),
-+	.edp_dclk_pol = VOP_REG(RK3328_DSP_CTRL1, 0x1, 27),
-+	.mipi_dclk_pol = VOP_REG(RK3328_DSP_CTRL1, 0x1, 31),
- 	.rgb_en = VOP_REG(RK3328_SYS_CTRL, 0x1, 12),
- 	.hdmi_en = VOP_REG(RK3328_SYS_CTRL, 0x1, 13),
- 	.edp_en = VOP_REG(RK3328_SYS_CTRL, 0x1, 14),
- 	.mipi_en = VOP_REG(RK3328_SYS_CTRL, 0x1, 15),
--	.rgb_pin_pol = VOP_REG(RK3328_DSP_CTRL1, 0xf, 16),
--	.hdmi_pin_pol = VOP_REG(RK3328_DSP_CTRL1, 0xf, 20),
--	.edp_pin_pol = VOP_REG(RK3328_DSP_CTRL1, 0xf, 24),
--	.mipi_pin_pol = VOP_REG(RK3328_DSP_CTRL1, 0xf, 28),
-+	.rgb_pin_pol = VOP_REG(RK3328_DSP_CTRL1, 0x7, 16),
-+	.hdmi_pin_pol = VOP_REG(RK3328_DSP_CTRL1, 0x7, 20),
-+	.edp_pin_pol = VOP_REG(RK3328_DSP_CTRL1, 0x7, 24),
-+	.mipi_pin_pol = VOP_REG(RK3328_DSP_CTRL1, 0x7, 28),
- };
- 
- static const struct vop_misc rk3328_misc = {
--- 
-2.17.1
+Best regards,
+Tomasz
