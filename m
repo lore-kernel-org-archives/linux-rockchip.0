@@ -1,33 +1,29 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Update nanopi4 phy reset properties
-Date: Thu, 10 Oct 2019 23:29:12 +0200
-Message-ID: <2606862.TP9lFruHDT@phil>
-References: <4d16c24ae3651a2119cf5bb1213f46a9fce4b39a.1570444773.git.robin.murphy@arm.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: fix RockPro64 sdmmc settings
+Date: Thu, 10 Oct 2019 23:30:26 +0200
+Message-ID: <2055831.6uBfQfHlXk@phil>
+References: <20191004203213.4995-1-smoch@web.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <4d16c24ae3651a2119cf5bb1213f46a9fce4b39a.1570444773.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191004203213.4995-1-smoch@web.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Soeren Moch <smoch@web.de>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 7. Oktober 2019, 13:33:26 CEST schrieb Robin Murphy:
-> Use the now-preferred generic phy reset properties instead of the
-> dwmac-specific ones.
+Am Freitag, 4. Oktober 2019, 22:32:13 CEST schrieb Soeren Moch:
+> According to the RockPro64 schematic [1] the rk3399 sdmmc controller is
+> connected to a microSD (TF card) slot. Remove the cap-mmc-highspeed
+> property of the sdmmc controller, since no mmc card can be connected here.
 > 
-> Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+> [1] http://files.pine64.org/doc/rockpro64/rockpro64_v21-SCH.pdf
+> 
+> Fixes: e4f3fb490967 ("arm64: dts: rockchip: add initial dts support for Rockpro64")
+> Signed-off-by: Soeren Moch <smoch@web.de>
 
-applied for 5.5
+applied as fix for 5.4
 
 Thanks
 Heiko
