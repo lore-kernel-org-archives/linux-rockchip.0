@@ -1,135 +1,286 @@
-From: Sean Paul <sean@poorly.run>
-Subject: Re: [PATCH v2] drm/rockchip: Round up _before_ giving to the clock
- framework
-Date: Wed, 9 Oct 2019 15:45:02 -0400
-Message-ID: <20191009194502.GH85762@art_vandelay>
-References: <20191003114726.v2.1.Ib233b3e706cf6317858384264d5b0ed35657456e@changeid>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Subject: Re: [PATCH v4 2/3] drm/rockchip: Add optional support for CRTC gamma LUT
+Date: Wed, 9 Oct 2019 21:45:54 -0300
+Message-ID: <CAAEAJfDP0PsGAoRfGyDyWj7DxgP6nwwwA1_gwLQuVy-fRDa-UA@mail.gmail.com>
+References: <20191008230038.24037-1-ezequiel@collabora.com>
+ <20191008230038.24037-3-ezequiel@collabora.com> <20191009180136.GE85762@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20191003114726.v2.1.Ib233b3e706cf6317858384264d5b0ed35657456e@changeid>
+In-Reply-To: <20191009180136.GE85762@art_vandelay>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: heiko@sntech.de, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, mka@chromium.org, seanpaul@chromium.org, ryandcase@chromium.org, tfiga@chromium.org, linux-arm-kernel@lists.infradead.org
+To: Sean Paul <sean@poorly.run>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Jacopo Mondi <jacopo@jmondi.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Douglas Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Boris Brezillon <boris.brezillon@collabora.com>, Sean Paul <seanpaul@chromium.org>, Rob Herring <robh+dt@kernel.org>, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Oct 03, 2019 at 11:47:30AM -0700, Douglas Anderson wrote:
-> I'm embarassed to say that even though I've touched
-> vop_crtc_mode_fixup() twice and I swear I tested it, there's still a
-> stupid glaring bug in it.  Specifically, on veyron_minnie (with all
-> the latest display timings) we want to be setting our pixel clock to
-> 66,666,666.67 Hz and we tell userspace that's what we set, but we're
-> actually choosing 66,000,000 Hz.  This is confirmed by looking at the
-> clock tree.
-> 
-> The problem is that in drm_display_mode_from_videomode() we convert
-> from Hz to kHz with:
-> 
->   dmode->clock = vm->pixelclock / 1000;
-> 
-> ...and drm_display_mode_from_videomode() is called from panel-simple
-> when we have an "override_mode" like we do on veyron_minnie.  See
-> commit 123643e5c40a ("ARM: dts: rockchip: Specify
-> rk3288-veyron-minnie's display timings").
-> 
-> ...so when the device tree specifies a clock of 66666667 for the panel
-> then DRM translates that to 66666000.  The clock framework will always
-> pick a clock that is _lower_ than the one requested, so it will refuse
-> to pick 66666667 and we'll end up at 66000000.
-> 
-> While we could try to fix drm_display_mode_from_videomode() to round
-> to the nearest kHz and it would fix our problem, it wouldn't help if
-> the clock we actually needed was 60,000,001 Hz.  We could
-> alternatively have DRM always round up, but maybe this would break
-> someone else who already baked in the assumption that DRM rounds down.
-> Specifically note that clock drivers are not consistent about whether
-> they round up or round down when you call clk_set_rate().  We know how
-> Rockchip's clock driver works, but (for instance) you can see that on
-> most Qualcomm clocks the default is clk_rcg2_ops which rounds up.
-> 
-> Let's solve this by just adding 999 Hz before calling
-> clk_round_rate().  This should be safe and work everywhere.  As
-> discussed in more detail in comments in the commit, Rockchip's PLLs
-> are configured in a way that there shouldn't be another PLL setting
-> that is only a few kHz off so we won't get mixed up.
-> 
-> NOTE: if this is picked to stable, it's probably easiest to first pick
-> commit 527e4ca3b6d1 ("drm/rockchip: Base adjustments of the mode based
-> on prev adjustments") which shouldn't hurt in stable.
-> 
-> Fixes: b59b8de31497 ("drm/rockchip: return a true clock rate to adjusted_mode")
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Hello Sean,
 
-Pushed to drm-misc-next, thanks for your patch (and revision)!
+Thanks for the thourough review.
 
-Sean
+On Wed, 9 Oct 2019 at 15:01, Sean Paul <sean@poorly.run> wrote:
+>
+> On Tue, Oct 08, 2019 at 08:00:37PM -0300, Ezequiel Garcia wrote:
+> > Add an optional CRTC gamma LUT support, and enable it on RK3288.
+> > This is currently enabled via a separate address resource,
+> > which needs to be specified in the devicetree.
+> >
+> > The address resource is required because on some SoCs, such as
+> > RK3288, the LUT address is after the MMU address, and the latter
+> > is supported by a different driver. This prevents the DRM driver
+> > from requesting an entire register space.
+> >
+> > The current implementation works for RGB 10-bit tables, as that
+> > is what seems to work on RK3288.
+> >
+> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+>
+> Hey Ezequiel,
+> Just a few comments on the actual content of the patch as opposed to my higher
+> level comments yesterday. I think we're almost there, thanks for sticking this
+> out!
+>
+> > ---
+> > Changes from v3:
+> > * Move to atomic_enable and atomic_begin,
+> >   as discussed with Sean Paul.
+> > * Dropped the Reviewed-bys.
+> > Changes from v2:
+> > * None.
+> > Changes from v1:
+> > * drop explicit linear LUT after finding a proper
+> >   way to disable gamma correction.
+> > * avoid setting gamma is the CRTC is not active.
+> > * s/int/unsigned int as suggested by Jacopo.
+> > * only enable color management and set gamma size
+> >   if gamma LUT is supported, suggested by Doug.
+> > * drop the reg-names usage, and instead just use indexed reg
+> >   specifiers, suggested by Doug.
+> > Changes from RFC:
+> > * Request (an optional) address resource for the LUT.
+> > * Drop support for RK3399, which doesn't seem to work
+> >   out of the box and needs more research.
+> > * Support pass-thru setting when GAMMA_LUT is NULL.
+> > * Add a check for the gamma size, as suggested by Ilia.
+> > * Move gamma setting to atomic_commit_tail, as pointed
+> >   out by Jacopo/Laurent, is the correct way.
+> > ---
+> >  drivers/gpu/drm/rockchip/rockchip_drm_fb.c  |   1 +
+> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 125 ++++++++++++++++++++
+> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.h |   5 +
+> >  drivers/gpu/drm/rockchip/rockchip_vop_reg.c |   2 +
+> >  4 files changed, 133 insertions(+)
+> >
+> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> > index ca01234c037c..697ee04b85cf 100644
+> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> > @@ -17,6 +17,7 @@
+> >  #include "rockchip_drm_drv.h"
+> >  #include "rockchip_drm_fb.h"
+> >  #include "rockchip_drm_gem.h"
+> > +#include "rockchip_drm_vop.h"
+>
+> Leftover from the previous version?
+>
 
-> Reviewed-by: Sean Paul <seanpaul@chromium.org>
-> ---
-> 
-> Changes in v2:
-> - Beefed up the commit message (Sean).
-> 
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 37 +++++++++++++++++++--
->  1 file changed, 34 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> index 613404f86668..84e3decb17b1 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> @@ -1040,10 +1040,41 @@ static bool vop_crtc_mode_fixup(struct drm_crtc *crtc,
->  				struct drm_display_mode *adjusted_mode)
->  {
->  	struct vop *vop = to_vop(crtc);
-> +	unsigned long rate;
->  
-> -	adjusted_mode->clock =
-> -		DIV_ROUND_UP(clk_round_rate(vop->dclk,
-> -					    adjusted_mode->clock * 1000), 1000);
-> +	/*
-> +	 * Clock craziness.
-> +	 *
-> +	 * Key points:
-> +	 *
-> +	 * - DRM works in in kHz.
-> +	 * - Clock framework works in Hz.
-> +	 * - Rockchip's clock driver picks the clock rate that is the
-> +	 *   same _OR LOWER_ than the one requested.
-> +	 *
-> +	 * Action plan:
-> +	 *
-> +	 * 1. When DRM gives us a mode, we should add 999 Hz to it.  That way
-> +	 *    if the clock we need is 60000001 Hz (~60 MHz) and DRM tells us to
-> +	 *    make 60000 kHz then the clock framework will actually give us
-> +	 *    the right clock.
-> +	 *
-> +	 *    NOTE: if the PLL (maybe through a divider) could actually make
-> +	 *    a clock rate 999 Hz higher instead of the one we want then this
-> +	 *    could be a problem.  Unfortunately there's not much we can do
-> +	 *    since it's baked into DRM to use kHz.  It shouldn't matter in
-> +	 *    practice since Rockchip PLLs are controlled by tables and
-> +	 *    even if there is a divider in the middle I wouldn't expect PLL
-> +	 *    rates in the table that are just a few kHz different.
-> +	 *
-> +	 * 2. Get the clock framework to round the rate for us to tell us
-> +	 *    what it will actually make.
-> +	 *
-> +	 * 3. Store the rounded up rate so that we don't need to worry about
-> +	 *    this in the actual clk_set_rate().
-> +	 */
-> +	rate = clk_round_rate(vop->dclk, adjusted_mode->clock * 1000 + 999);
-> +	adjusted_mode->clock = DIV_ROUND_UP(rate, 1000);
->  
->  	return true;
->  }
-> -- 
-> 2.23.0.444.g18eeb5a265-goog
-> 
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+Yup.
 
--- 
-Sean Paul, Software Engineer, Google / Chromium OS
+> >
+> >  static const struct drm_framebuffer_funcs rockchip_drm_fb_funcs = {
+> >       .destroy       = drm_gem_fb_destroy,
+> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> > index 613404f86668..85c1269a1218 100644
+> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> > @@ -139,6 +139,7 @@ struct vop {
+> >
+> >       uint32_t *regsbak;
+> >       void __iomem *regs;
+> > +     void __iomem *lut_regs;
+> >
+> >       /* physical map length of vop register */
+> >       uint32_t len;
+> > @@ -1048,6 +1049,84 @@ static bool vop_crtc_mode_fixup(struct drm_crtc *crtc,
+> >       return true;
+> >  }
+> >
+> > +static bool vop_dsp_lut_is_enable(struct vop *vop)
+>
+> *enabled
+>
+
+Good catch.
+
+> > +{
+> > +     return vop_read_reg(vop, 0, &vop->data->common->dsp_lut_en);
+> > +}
+> > +
+> > +static void vop_crtc_write_gamma_lut(struct vop *vop, struct drm_crtc *crtc)
+> > +{
+> > +     struct drm_color_lut *lut = crtc->state->gamma_lut->data;
+> > +     unsigned int i;
+> > +
+> > +     for (i = 0; i < crtc->gamma_size; i++) {
+> > +             u32 word;
+> > +
+> > +             word = (drm_color_lut_extract(lut[i].red, 10) << 20) |
+> > +                    (drm_color_lut_extract(lut[i].green, 10) << 10) |
+> > +                     drm_color_lut_extract(lut[i].blue, 10);
+> > +             writel(word, vop->lut_regs + i * 4);
+> > +     }
+> > +}
+> > +
+> > +static void vop_crtc_gamma_set(struct vop *vop, struct drm_crtc *crtc,
+> > +                            struct drm_crtc_state *old_crtc_state)
+> > +{
+> > +     unsigned int idle;
+> > +     int ret;
+> > +
+>
+> How about:
+>
+>         if (!vop->lut_regs)
+>                 return;
+>
+> here and then you can remove that condition above the 2 callsites
+>
+
+Yes, sounds good.
+
+> > +     /*
+> > +      * In order to write the LUT to the internal memory,
+> > +      * we need to first make sure the dsp_lut_en bit is cleared.
+> > +      */
+> > +     spin_lock(&vop->reg_lock);
+> > +     VOP_REG_SET(vop, common, dsp_lut_en, 0);
+> > +     vop_cfg_done(vop);
+> > +     spin_unlock(&vop->reg_lock);
+> > +
+> > +     /*
+> > +      * If the CRTC is not active, dsp_lut_en will not get cleared.
+> > +      * Apparently we still need to do the above step to for
+> > +      * gamma correction to be disabled.
+> > +      */
+> > +     if (!crtc->state->active)
+> > +             return;
+> > +
+
+I have realized that the above might no longer be needed,
+given we are now using atomic_enable and atomic_begin.
+
+Not sure if the CRTC is supposed to clear its GAMMA
+when disabled.
+
+> > +     ret = readx_poll_timeout(vop_dsp_lut_is_enable, vop,
+> > +                              idle, !idle, 5, 30 * 1000);
+> > +     if (ret) {
+> > +             DRM_DEV_ERROR(vop->dev, "display LUT RAM enable timeout!\n");
+> > +             return;
+> > +     }
+> > +
+> > +     if (crtc->state->gamma_lut &&
+> > +        (!old_crtc_state->gamma_lut || (crtc->state->gamma_lut->base.id !=
+> > +                                     old_crtc_state->gamma_lut->base.id))) {
+>
+> Silly question, but isn't the second part of this check redundant since you need
+> color_mgmt_changed || active_changed to get into this function?
+>
+> So maybe invert the conditional here and exit early (to save a level of
+> indentation in the block below):
+>
+
+I took this from malidp_atomic_commit_update_gamma. I _believe_
+the rational for this is that color_mgmt_changed can be set by re-setting
+the gamma property, to the same property. But I admit I haven't
+tested it's the case.
+
+OTOH, it won't really affect much to re-write the table, if the user
+requested a change.
+
+>         if (!crtc->state->gamma_lut)
+>                 return;
+>
+
+In any case, inverting the condition makes sense.
+
+>         spin_lock(&vop->reg_lock);
+>
+>         vop_crtc_write_gamma_lut(vop, crtc);
+>         VOP_REG_SET(vop, common, dsp_lut_en, 1);
+>         vop_cfg_done(vop);
+>
+>         spin_unlock(&vop->reg_lock);
+>
+> > +
+> > +             spin_lock(&vop->reg_lock);
+> > +
+> > +             vop_crtc_write_gamma_lut(vop, crtc);
+> > +             VOP_REG_SET(vop, common, dsp_lut_en, 1);
+> > +             vop_cfg_done(vop);
+> > +
+> > +             spin_unlock(&vop->reg_lock);
+> > +     }
+> > +}
+> > +
+> > +static void vop_crtc_atomic_begin(struct drm_crtc *crtc,
+> > +                                struct drm_crtc_state *old_crtc_state)
+> > +{
+> > +     struct vop *vop = to_vop(crtc);
+> > +
+> > +     /*
+> > +      * Only update GAMMA if the 'active' flag is not changed,
+> > +      * otherwise it's updated by .atomic_enable.
+> > +      */
+> > +     if (vop->lut_regs && crtc->state->color_mgmt_changed &&
+> > +         !crtc->state->active_changed)
+> > +             vop_crtc_gamma_set(vop, crtc, old_crtc_state);
+> > +}
+> > +
+> >  static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
+> >                                  struct drm_crtc_state *old_state)
+> >  {
+> > @@ -1075,6 +1154,14 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
+> >               return;
+> >       }
+> >
+> > +     /*
+> > +      * If we have a GAMMA LUT in the state, then let's make sure
+> > +      * it's updated. We might be coming out of suspend,
+> > +      * which means the LUT internal memory needs to be re-written.
+> > +      */
+> > +     if (vop->lut_regs && crtc->state->gamma_lut)
+> > +             vop_crtc_gamma_set(vop, crtc, old_state);
+> > +
+> >       mutex_lock(&vop->vop_lock);
+> >
+> >       WARN_ON(vop->event);
+> > @@ -1191,6 +1278,26 @@ static void vop_wait_for_irq_handler(struct vop *vop)
+> >       synchronize_irq(vop->irq);
+> >  }
+> >
+> > +static int vop_crtc_atomic_check(struct drm_crtc *crtc,
+> > +                              struct drm_crtc_state *crtc_state)
+> > +{
+> > +     struct vop *vop = to_vop(crtc);
+> > +
+> > +     if (vop->lut_regs && crtc_state->color_mgmt_changed &&
+> > +         crtc_state->gamma_lut) {
+> > +             unsigned int len;
+> > +
+> > +             len = drm_color_lut_size(crtc_state->gamma_lut);
+> > +             if (len != crtc->gamma_size) {
+> > +                     DRM_DEBUG_KMS("Invalid LUT size; got %d, expected %d\n",
+> > +                                   len, crtc->gamma_size);
+> > +                     return -EINVAL;
+> > +             }
+>
+> Overflow is avoided in drm_mode_gamma_set_ioctl(), so I don't think you need
+> this function.
+>
+
+But that only applies to the legacy path. Isn't this needed to ensure
+a gamma blob
+has the right size?
+
+Thanks,
+Ezequiel
