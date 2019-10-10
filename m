@@ -1,59 +1,99 @@
-From: Ilia Mirkin <imirkin@alum.mit.edu>
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
 Subject: Re: [PATCH v4 2/3] drm/rockchip: Add optional support for CRTC gamma
  LUT
-Date: Thu, 10 Oct 2019 12:23:05 -0400
-Message-ID: <CAKb7UvhWWYcpmyMZgerdJiG=sZjQUBVkeEwev+PdYzBW6+xsbQ@mail.gmail.com>
+Date: Thu, 10 Oct 2019 20:36:07 +0300
+Message-ID: <20191010173607.GH1208@intel.com>
 References: <20191008230038.24037-1-ezequiel@collabora.com>
  <20191008230038.24037-3-ezequiel@collabora.com>
  <20191009180136.GE85762@art_vandelay>
  <CAAEAJfDP0PsGAoRfGyDyWj7DxgP6nwwwA1_gwLQuVy-fRDa-UA@mail.gmail.com>
  <20191010160059.GJ85762@art_vandelay>
+ <CAKb7UvhWWYcpmyMZgerdJiG=sZjQUBVkeEwev+PdYzBW6+xsbQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191010160059.GJ85762@art_vandelay>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Sean Paul <sean@poorly.run>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, Jacopo Mondi <jacopo@jmondi.org>, Rob Herring <robh+dt@kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Douglas Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Boris Brezillon <boris.brezillon@collabora.com>, Sean Paul <seanpaul@chromium.org>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAKb7UvhWWYcpmyMZgerdJiG=sZjQUBVkeEwev+PdYzBW6+xsbQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ilia Mirkin <imirkin@alum.mit.edu>
+Cc: Sean Paul <sean@poorly.run>, Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, Jacopo Mondi <jacopo@jmondi.org>, Rob Herring <robh+dt@kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Douglas Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Boris Brezillon <boris.brezillon@collabora.com>, Sean Paul <seanpaul@chromium.org>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBPY3QgMTAsIDIwMTkgYXQgMTI6MDEgUE0gU2VhbiBQYXVsIDxzZWFuQHBvb3JseS5y
-dW4+IHdyb3RlOgo+ID4gPiA+ICtzdGF0aWMgaW50IHZvcF9jcnRjX2F0b21pY19jaGVjayhzdHJ1
-Y3QgZHJtX2NydGMgKmNydGMsCj4gPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IHN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAqY3J0Y19zdGF0ZSkKPiA+ID4gPiArewo+ID4gPiA+ICsg
-ICAgIHN0cnVjdCB2b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsKPiA+ID4gPiArCj4gPiA+ID4gKyAg
-ICAgaWYgKHZvcC0+bHV0X3JlZ3MgJiYgY3J0Y19zdGF0ZS0+Y29sb3JfbWdtdF9jaGFuZ2VkICYm
-Cj4gPiA+ID4gKyAgICAgICAgIGNydGNfc3RhdGUtPmdhbW1hX2x1dCkgewo+ID4gPiA+ICsgICAg
-ICAgICAgICAgdW5zaWduZWQgaW50IGxlbjsKPiA+ID4gPiArCj4gPiA+ID4gKyAgICAgICAgICAg
-ICBsZW4gPSBkcm1fY29sb3JfbHV0X3NpemUoY3J0Y19zdGF0ZS0+Z2FtbWFfbHV0KTsKPiA+ID4g
-PiArICAgICAgICAgICAgIGlmIChsZW4gIT0gY3J0Yy0+Z2FtbWFfc2l6ZSkgewo+ID4gPiA+ICsg
-ICAgICAgICAgICAgICAgICAgICBEUk1fREVCVUdfS01TKCJJbnZhbGlkIExVVCBzaXplOyBnb3Qg
-JWQsIGV4cGVjdGVkICVkXG4iLAo+ID4gPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIGxlbiwgY3J0Yy0+Z2FtbWFfc2l6ZSk7Cj4gPiA+ID4gKyAgICAgICAgICAgICAgICAg
-ICAgIHJldHVybiAtRUlOVkFMOwo+ID4gPiA+ICsgICAgICAgICAgICAgfQo+ID4gPgo+ID4gPiBP
-dmVyZmxvdyBpcyBhdm9pZGVkIGluIGRybV9tb2RlX2dhbW1hX3NldF9pb2N0bCgpLCBzbyBJIGRv
-bid0IHRoaW5rIHlvdSBuZWVkCj4gPiA+IHRoaXMgZnVuY3Rpb24uCj4gPiA+Cj4gPgo+ID4gQnV0
-IHRoYXQgb25seSBhcHBsaWVzIHRvIHRoZSBsZWdhY3kgcGF0aC4gSXNuJ3QgdGhpcyBuZWVkZWQg
-dG8gZW5zdXJlCj4gPiBhIGdhbW1hIGJsb2IKPiA+IGhhcyB0aGUgcmlnaHQgc2l6ZT8KPgo+IFll
-YWgsIGdvb2QgcG9pbnQsIHdlIGNoZWNrIHRoZSBlbGVtZW50IHNpemUgaW4gdGhlIGF0b21pYyBw
-YXRoLCBidXQgbm90IHRoZSBtYXgKPiBzaXplLiBJIGhhdmVuJ3QgbG9va2VkIGF0IGVub3VnaCBj
-b2xvciBsdXQgc3R1ZmYgdG8gaGF2ZSBhbiBvcGluaW9uIHdoZXRoZXIgdGhpcwo+IGNoZWNrIHdv
-dWxkIGJlIHVzZWZ1bCBpbiBhIGhlbHBlciBmdW5jdGlvbiBvciBub3QsIHNvbWV0aGluZyB0byBj
-b25zaWRlciwgSQo+IHN1cHBvc2UuCgpTb21lIGltcGxlbWVudGF0aW9ucyBzdXBwb3J0IG11bHRp
-cGxlIHNpemVzIChlLmcuIDI1NiBhbmQgMTAyNCkgYnV0Cm5vdCBhbnl0aGluZyBpbiBiZXR3ZWVu
-LiBJdCB3b3VsZCBiZSBkaWZmaWN1bHQgdG8gZXhwb3NlIHRoaXMKZ2VuZXJpY2FsbHksIEkgd291
-bGQgaW1hZ2luZS4gVGhlIDI1NiBzaXplIGlzIGtpbmQgb2Ygc3BlY2lhbCwgc2luY2UKYmFzaWNh
-bGx5IGFsbCBsZWdhY3kgdXNhZ2UgYXNzdW1lcyB0aGF0IDI1NiBpcyB0aGUgb25lIHRydWUgcXVh
-bnRpdHkKb2YgTFVUIGVudHJpZXMuLi4KCiAgLWlsaWEKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVs
+On Thu, Oct 10, 2019 at 12:23:05PM -0400, Ilia Mirkin wrote:
+> On Thu, Oct 10, 2019 at 12:01 PM Sean Paul <sean@poorly.run> wrote:
+> > > > > +static int vop_crtc_atomic_check(struct drm_crtc *crtc,
+> > > > > +                              struct drm_crtc_state *crtc_state)
+> > > > > +{
+> > > > > +     struct vop *vop = to_vop(crtc);
+> > > > > +
+> > > > > +     if (vop->lut_regs && crtc_state->color_mgmt_changed &&
+> > > > > +         crtc_state->gamma_lut) {
+> > > > > +             unsigned int len;
+> > > > > +
+> > > > > +             len = drm_color_lut_size(crtc_state->gamma_lut);
+> > > > > +             if (len != crtc->gamma_size) {
+> > > > > +                     DRM_DEBUG_KMS("Invalid LUT size; got %d, expected %d\n",
+> > > > > +                                   len, crtc->gamma_size);
+> > > > > +                     return -EINVAL;
+> > > > > +             }
+> > > >
+> > > > Overflow is avoided in drm_mode_gamma_set_ioctl(), so I don't think you need
+> > > > this function.
+> > > >
+> > >
+> > > But that only applies to the legacy path. Isn't this needed to ensure
+> > > a gamma blob
+> > > has the right size?
+> >
+> > Yeah, good point, we check the element size in the atomic path, but not the max
+> > size. I haven't looked at enough color lut stuff to have an opinion whether this
+> > check would be useful in a helper function or not, something to consider, I
+> > suppose.
+> 
+> Some implementations support multiple sizes (e.g. 256 and 1024) but
+> not anything in between. It would be difficult to expose this
+> generically, I would imagine.
+> The 256 size is kind of special, since
+> basically all legacy usage assumes that 256 is the one true quantity
+> of LUT entries...
+
+What we do currently in i915 is:
+crtc->gamma_size = 256
+GAMMA_LUT_SIZE = platform specific (256, 129, 257, 2^10, or 2^18+1 (lol))
+DEGAMMA_LUT_SIZE = platform specific (0, 33, 65, or 2^10)
+
+i915 will accept:
+- gamma lut of size 256, iff ctm==NULL and degamma==NULL (the so
+  called "legacy gamma" mode)
+- (de)gamma_lut of size (DE)GAMMA_LUT_SIZE if it passes the
+  checks done by drm_color_lut_check()
+
+Ie. just one or two gamma modes per platform is exposed. And that's
+about all we can do with the current uapi even though our hardware
+supports many more modes.
+
+The resulting precision, interpolation vs. truncation behaviour,
+and handling of out of gamut values are all totally unspecified
+and userspace just has to make a guess.
+
+We also cheat with the 2^10 sized LUTs a bit due to the hw sharing
+the same LUT for gamma and degamma, and so if you enable both at
+the same time we throw away every second entry and each stage
+only gets a 2^9 entry LUT in the end.
+
+Oh and for the 2^18+1 monstrosity we cheat even more and
+throw away ~99.8% of the entries :(
+
+
+This here was my idea for extending the uapi so that we
+could expose the full hw capabilities and let userspace
+decide which mode suits it best without having to guess
+what it'll get:
+https://github.com/vsyrjala/linux/commits/gamma_mode_prop
+
+Maybe in a few years I'll find time to get back to it...
+
+-- 
+Ville Syrjälä
+Intel
