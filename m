@@ -1,50 +1,34 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v5 3/3] ARM: dts: rockchip: Add RK3288 VOP gamma LUT address
-Date: Thu, 10 Oct 2019 16:43:51 -0300
-Message-ID: <20191010194351.17940-4-ezequiel@collabora.com>
-References: <20191010194351.17940-1-ezequiel@collabora.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: add cr50 tpm to rk3399-gru scarlet
+ and bob
+Date: Thu, 10 Oct 2019 23:21:13 +0200
+Message-ID: <1981411.DENka8z7px@phil>
+References: <20180822120925.12388-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191010194351.17940-1-ezequiel@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Jacopo Mondi <jacopo@jmondi.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Boris Brezillon <boris.brezillon@collabora.com>, Sean Paul <seanpaul@chromium.org>, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20180822120925.12388-1-heiko@sntech.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-rockchip@lists.infradead.org
+Cc: amstan@chromium.org, sboyd@kernel.org, briannorris@chromium.org, dianders@chromium.org, smbarber@chromium.org, apronin@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-UkszMjg4IFNvQyBWT1BzIGhhdmUgb3B0aW9uYWwgc3VwcG9ydCBHYW1tYSBMVVQgc2V0dGluZywK
-d2hpY2ggcmVxdWlyZXMgc3BlY2lmeWluZyB0aGUgR2FtbWEgTFVUIGFkZHJlc3MgaW4gdGhlIGRl
-dmljZXRyZWUuCgpTaWduZWQtb2ZmLWJ5OiBFemVxdWllbCBHYXJjaWEgPGV6ZXF1aWVsQGNvbGxh
-Ym9yYS5jb20+ClJldmlld2VkLWJ5OiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1
-bS5vcmc+Ci0tLQpDaGFuZ2VzIGZyb20gdjQ6CiogTm9uZS4KQ2hhbmdlcyBmcm9tIHYzOgoqIE5v
-bmUuCkNoYW5nZXMgZnJvbSB2MjoKKiBOb25lLgpDaGFuZ2VzIGZyb20gdjE6CiogRHJvcCByZWct
-bmFtZXMsIGFzIHN1Z2dlc3RlZCBieSBEb3VnLgotLS0KIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4
-OC5kdHNpIHwgNCArKy0tCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0
-aW9ucygtKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC5kdHNpIGIvYXJj
-aC9hcm0vYm9vdC9kdHMvcmszMjg4LmR0c2kKaW5kZXggY2M4OTNlMTU0ZmU1Li5jNmZjNjMzYWNl
-ODAgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC5kdHNpCisrKyBiL2FyY2gv
-YXJtL2Jvb3QvZHRzL3JrMzI4OC5kdHNpCkBAIC0xMDIzLDcgKzEwMjMsNyBAQAogCiAJdm9wYjog
-dm9wQGZmOTMwMDAwIHsKIAkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMyODgtdm9wIjsKLQkJ
-cmVnID0gPDB4MCAweGZmOTMwMDAwIDB4MCAweDE5Yz47CisJCXJlZyA9IDwweDAgMHhmZjkzMDAw
-MCAweDAgMHgxOWM+LCA8MHgwIDB4ZmY5MzEwMDAgMHgwIDB4MTAwMD47CiAJCWludGVycnVwdHMg
-PSA8R0lDX1NQSSAxNSBJUlFfVFlQRV9MRVZFTF9ISUdIPjsKIAkJY2xvY2tzID0gPCZjcnUgQUNM
-S19WT1AwPiwgPCZjcnUgRENMS19WT1AwPiwgPCZjcnUgSENMS19WT1AwPjsKIAkJY2xvY2stbmFt
-ZXMgPSAiYWNsa192b3AiLCAiZGNsa192b3AiLCAiaGNsa192b3AiOwpAQCAtMTA3Myw3ICsxMDcz
-LDcgQEAKIAogCXZvcGw6IHZvcEBmZjk0MDAwMCB7CiAJCWNvbXBhdGlibGUgPSAicm9ja2NoaXAs
-cmszMjg4LXZvcCI7Ci0JCXJlZyA9IDwweDAgMHhmZjk0MDAwMCAweDAgMHgxOWM+OworCQlyZWcg
-PSA8MHgwIDB4ZmY5NDAwMDAgMHgwIDB4MTljPiwgPDB4MCAweGZmOTQxMDAwIDB4MCAweDEwMDA+
-OwogCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTYgSVJRX1RZUEVfTEVWRUxfSElHSD47CiAJCWNs
-b2NrcyA9IDwmY3J1IEFDTEtfVk9QMT4sIDwmY3J1IERDTEtfVk9QMT4sIDwmY3J1IEhDTEtfVk9Q
-MT47CiAJCWNsb2NrLW5hbWVzID0gImFjbGtfdm9wIiwgImRjbGtfdm9wIiwgImhjbGtfdm9wIjsK
-LS0gCjIuMjIuMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Am Mittwoch, 22. August 2018, 14:09:25 CEST schrieb Heiko Stuebner:
+> Scarlet and Bob use the Google-developed cr50 chip to do things
+> like TPM and closed-case-debugging.
+> 
+> Add the nodes describing the cr50 and its spi-connection.
+> 
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+
+with the cr50 now having reached a maintainer tree,
+applied for 5.5
