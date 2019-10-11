@@ -1,178 +1,130 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add Beelink A1
-Date: Fri, 11 Oct 2019 13:20:38 +0100
-Message-ID: <4c490e48-7a85-4ef9-771c-165defde39cc@arm.com>
-References: <9037b7edbbb41cbbf699ebe3a511daf22d886e7d.1570444695.git.robin.murphy@arm.com>
- <CAL_JsqKBy+i+=gGyYhBgcMUYsWd_CL_GnEoQqALBb+Gy7Ogb6A@mail.gmail.com>
+From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [RESEND PATCH v2 2/4] media: dt-bindings: rockchip: Document
+ RK3399 Video Decoder bindings
+Date: Fri, 11 Oct 2019 07:50:16 -0500
+Message-ID: <CAL_JsqL_6xPyb4kTDR3dbLc4Uptwox=1F4zaGjHVmahNyk25=w@mail.gmail.com>
+References: <20191011093342.3471-1-boris.brezillon@collabora.com>
+ <20191011093342.3471-3-boris.brezillon@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAL_JsqKBy+i+=gGyYhBgcMUYsWd_CL_GnEoQqALBb+Gy7Ogb6A@mail.gmail.com>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>, "heiko@sntech.de" <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191011093342.3471-3-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 07/10/2019 13:53, Rob Herring wrote:
-> On Mon, Oct 7, 2019 at 6:33 AM Robin Murphy <robin.murphy@arm.com> wrote:
->>
->> Beelink A1 is a TV box implementing the higher-end options of the
->> RK3328 reference design - the DTB from the stock Android firmware is
->> clearly the "rk3328-box-plus" variant from the Rockchip 3.10 BSP with
->> minor modifications to accommodate the USB WiFi module and additional
->> VFD-style LED driver. It features:
->>
->> - 4GB of 32-bit LPDDR3
->> - 16GB of HS200 eMMC (newer models with 32GB also exist)
->> - Realtek RTL8211F phy for gigabit ethernet
->> - Fn-Link 6221E-UUC module (RealTek RTL8821CU) for 11ac WiFi and Bluetooth 4.2
->> - HDMI and analog A/V
->> - 1x USB 3.0 type A host, 1x USB 2.0 type A OTG, 1x micro SD
->> - IR receiver and a neat little LED clock display.
->>
->> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
->> ---
->>
->> One question I'm wondering about is whether it's worth pushing the HDMI
->> and analog codec audio cards down into rk3328.dtsi (as with HDMI audio
->> on RK3399), since those audio pipelines are internal to the SoC and the
->> board only really governs whether the outputs are wired up or not.
-> 
-> Seems reasonable. One other candidate below.
-> 
->>
->>   .../devicetree/bindings/arm/rockchip.yaml     |   5 +
-> 
-> In the future, please split bindings to a separate patch.
+On Fri, Oct 11, 2019 at 4:33 AM Boris Brezillon
+<boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+>
+> Document the Rockchip RK3399 Video Decoder bindings.
 
-Ha, busted! I thought this might be trivial enough to slip through, but 
-I'll split it out if you prefer.
+You need some more headers for the example (or drop defines):
 
->>   arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->>   arch/arm64/boot/dts/rockchip/rk3328-a1.dts    | 399 ++++++++++++++++++
->>   3 files changed, 405 insertions(+)
->>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-a1.dts
->>
->> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
->> index c82c5e57d44c..f27f7805f57e 100644
->> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
->> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
->> @@ -40,6 +40,11 @@ properties:
->>             - const: asus,rk3288-tinker-s
->>             - const: rockchip,rk3288
->>
->> +      - description: Beelink A1
->> +        items:
->> +          - const: azw,beelink-a1
->> +          - const: rockchip,rk3328
->> +
->>         - description: bq Curie 2 tablet
->>           items:
->>             - const: mundoreader,bq-curie2
->> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
->> index 1f18a9392d15..a6f250e7cde2 100644
->> --- a/arch/arm64/boot/dts/rockchip/Makefile
->> +++ b/arch/arm64/boot/dts/rockchip/Makefile
->> @@ -1,5 +1,6 @@
->>   # SPDX-License-Identifier: GPL-2.0
->>   dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-evb.dtb
->> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
->>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
->>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
->>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-roc-cc.dtb
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
->> new file mode 100644
->> index 000000000000..03ad663ff821
->> --- /dev/null
->> +++ b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
->> @@ -0,0 +1,399 @@
->> +// SPDX-License-Identifier: (GPL-2.0-only OR MIT)
->> +// Copyright (c) 2017-2019 Arm Ltd.
->> +
->> +/dts-v1/;
->> +#include "rk3328.dtsi"
->> +
->> +/ {
->> +       model = "Beelink A1";
->> +       compatible = "azw,beelink-a1", "rockchip,rk3328";
->> +
->> +       /*
->> +        * UART pins, as viewed with bottom of case removed:
->> +        *
->> +        *           Front
->> +        *        /-------
->> +        *  L    / o <- Gnd
->> +        *  e   / o <-- Rx
->> +        *  f  / o <--- Tx
->> +        *  t / o <---- +3.3v
->> +        *    |
->> +        */
->> +       chosen {
->> +               stdout-path = "serial2:1500000n8";
->> +       };
->> +
->> +       gmac_clkin: external-gmac-clock {
->> +               compatible = "fixed-clock";
->> +               clock-frequency = <125000000>;
->> +               clock-output-names = "gmac_clkin";
->> +               #clock-cells = <0>;
->> +       };
->> +
->> +       vcc_host_5v: usb3-current-switch {
->> +               compatible = "regulator-fixed";
->> +               enable-active-high;
->> +               gpio = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
->> +               pinctrl-names = "default";
->> +               pinctrl-0 = <&usb30_host_drv>;
->> +               regulator-name = "vcc_host_5v";
->> +               vin-supply = <&vcc_sys>;
->> +       };
->> +
->> +       vcc_sys: vcc-sys {
->> +               compatible = "regulator-fixed";
->> +               regulator-name = "vcc_sys";
->> +               regulator-min-microvolt = <5000000>;
->> +               regulator-max-microvolt = <5000000>;
->> +       };
->> +
->> +       cpus {
->> +               idle-states {
->> +                       entry-method = "arm,psci";
->> +
->> +                       cpu_sleep: cpu-sleep {
->> +                               compatible = "arm,idle-state";
->> +                               arm,psci-suspend-param = <0x0010000>;
->> +                               local-timer-stop;
->> +                               entry-latency-us = <120>;
->> +                               exit-latency-us = <250>;
->> +                               min-residency-us = <900>;
-> 
-> This doesn't seem like something that's board specific, but I guess
-> the regulator could have some influence on these times. If so, the
-> board file could always override a default.
+Error: Documentation/devicetree/bindings/media/rockchip,vdec.example.dts:23.28-29
+syntax error
+FATAL ERROR: Unable to parse input tree
+scripts/Makefile.lib:321: recipe for target
+'Documentation/devicetree/bindings/media/rockchip,vdec.example.dt.yaml'
+failed
+make[1]: *** [Documentation/devicetree/bindings/media/rockchip,vdec.example.dt.yaml]
+Error 1
+Makefile:1282: recipe for target 'dt_binding_check' failed
+make: *** [dt_binding_check] Error 2
 
-True, this is traceable back to the Rockchip Android BSP where it's 
-actually applied to the entire SoC family[1]. I don't know if there's 
-likely to be any difference between the downstream "RKTRUST" firmware 
-binaries (which this nominally represents) and upstream ATF in terms of 
-their PSCI implementation/performance.
-
-I've not got round to properly tinkering with suspend/resume and power 
-management stuff yet, so I guess another option would be to just forget 
-about this part for now - Heiko, any opinions?
-
-Cheers,
-Robin.
-
-[1] 
-https://github.com/rockchip-linux/kernel/blob/release-3.10/arch/arm64/boot/dts/rk322xh.dtsi#L107-L118
+>
+> Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+>  .../bindings/media/rockchip,vdec.yaml         | 71 +++++++++++++++++++
+>  1 file changed, 71 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+>
+> diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+> new file mode 100644
+> index 000000000000..7167c3d6a389
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+> @@ -0,0 +1,71 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/rockchip,vdec.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip Video Decoder (VDec) Device Tree Bindings
+> +
+> +maintainers:
+> +  - Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> +
+> +description: |-
+> +  The Rockchip rk3399 has a stateless Video Decoder that can decodes H.264,
+> +  HEVC an VP9 streams.
+> +
+> +properties:
+> +  compatible:
+> +    const: rockchip,rk3399-vdec
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: The Video Decoder AXI interface clock
+> +      - description: The Video Decoder AHB interface clock
+> +      - description: The Video Decoded CABAC clock
+> +      - description: The Video Decoder core clock
+> +
+> +  clock-names:
+> +    items:
+> +      - const: aclk
+> +      - const: iface
+> +      - const: cabac
+> +      - const: core
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  iommus:
+> +    maxItems: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +  - power-domains
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +
+> +    vdec: video-codec@ff660000 {
+> +        compatible = "rockchip,rk3399-vdec";
+> +        reg = <0x0 0xff660000 0x0 0x400>;
+> +        interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH 0>;
+> +        clocks = <&cru ACLK_VDU>, <&cru HCLK_VDU>,
+> +                 <&cru SCLK_VDU_CA>, <&cru SCLK_VDU_CORE>;
+> +        clock-names = "aclk", "iface", "cabac", "core";
+> +        power-domains = <&power RK3399_PD_VDU>;
+> +        iommus = <&vdec_mmu>;
+> +    };
+> +
+> +...
+> --
+> 2.21.0
+>
