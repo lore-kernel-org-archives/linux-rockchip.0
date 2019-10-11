@@ -1,134 +1,74 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: =?utf-8?B?UmU6IFtQQVRDSCAzLzNdIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBmaXggUm9j?=
- =?utf-8?B?a1BybzY0IHNkbW1jIHNldHRpbmdz44CQ6K+35rOo5oSP77yM6YKu5Lu255Sx?=
- =?utf-8?B?bGludXgtcm9ja2NoaXAtYm91bmNlcytzaGF3bi5saW49cm9jay1jaGlwcy5j?=
- =?utf-8?B?b21AbGlzdHMuaW5mcmFkZWFkLm9yZ+S7o+WPkeOAkQ==?=
-Date: Fri, 11 Oct 2019 08:22:00 +0000
-Message-ID: <HE1PR06MB40115FDF385886FDDE122CD6AC970@HE1PR06MB4011.eurprd06.prod.outlook.com>
-References: <20191003215036.15023-1-smoch@web.de>
- <20191003215036.15023-3-smoch@web.de>
- <31181f3c-20ec-e717-1f7e-8b35cd54d96d@arm.com>
- <a8b20c45-0426-ee42-4efc-52e56ea6bb20@web.de>
- <120e2dbc-55eb-2205-b00f-7e50928ec706@rock-chips.com>
- <1c452b8b-853f-8f58-5f3a-0bbecbe20557@web.de>
- <fc7dce53-ad39-26e3-7c19-ab60ff4cc332@arm.com>
- <0c6fdb65-be2a-68e3-a686-14ce9b0a00a4@rock-chips.com>
- <e4aaddc2-441b-b835-380e-374a3d935474@web.de>
+From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v2 0/4] media: rockchip: Add the rkvdec driver
+Date: Fri, 11 Oct 2019 11:09:35 +0200
+Message-ID: <20191011090939.1377-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e4aaddc2-441b-b835-380e-374a3d935474@web.de>
-Content-Language: en-US
-Content-ID: <43A809E331C7B7498DB269FB490E9B3C@eurprd06.prod.outlook.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?utf-8?B?U8O2cmVuIE1vY2g=?= <smoch@web.de>, Shawn Lin <shawn.lin@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOS0xMC0wNCAxOToyNCwgU8O2cmVuIE1vY2ggd3JvdGU6DQo+DQo+IE9uIDA0LjEwLjE5
-IDE3OjMzLCBTaGF3biBMaW4gd3JvdGU6DQo+PiBPbiAyMDE5LzEwLzQgMjI6MjAsIFJvYmluIE11
-cnBoeSB3cm90ZToNCj4+PiBPbiAwNC8xMC8yMDE5IDA0OjM5LCBTb2VyZW4gTW9jaCB3cm90ZToN
-Cj4+Pj4NCj4+Pj4gT24gMDQuMTAuMTkgMDQ6MTMsIFNoYXduIExpbiB3cm90ZToNCj4+Pj4+IE9u
-IDIwMTkvMTAvNCA4OjUzLCBTb2VyZW4gTW9jaCB3cm90ZToNCj4+Pj4+Pg0KPj4+Pj4+IE9uIDA0
-LjEwLjE5IDAyOjAxLCBSb2JpbiBNdXJwaHkgd3JvdGU6DQo+Pj4+Pj4+IE9uIDIwMTktMTAtMDMg
-MTA6NTAgcG0sIFNvZXJlbiBNb2NoIHdyb3RlOg0KPj4+Pj4+Pj4gQWNjb3JkaW5nIHRvIHRoZSBS
-b2NrUHJvNjQgc2NoZW1hdGljIFsxXSB0aGUgcmszMzk5IHNkbW1jDQo+Pj4+Pj4+PiBjb250cm9s
-bGVyIGlzDQo+Pj4+Pj4+PiBjb25uZWN0ZWQgdG8gYSBtaWNyb1NEIChURiBjYXJkKSBzbG90LCB3
-aGljaCBjYW5ub3QgYmUgc3dpdGNoZWQgdG8NCj4+Pj4+Pj4+IDEuOFYuDQo+Pj4+Pj4+IFJlYWxs
-eT8gQUZBSUNTIHRoZSBTRE1NQzAgd2lyaW5nIGxvb2tzIHByZXR0eSBtdWNoIGlkZW50aWNhbCB0
-byB0aGUNCj4+Pj4+Pj4gTmFub1BDLVQ0IHNjaGVtYXRpYyAoaXQncyB0aGUgc2FtZSByZWZlcmVu
-Y2UgZGVzaWduLCBhZnRlciBhbGwpLA0KPj4+Pj4+PiBhbmQgSQ0KPj4+Pj4+PiBrbm93IHRoYXQg
-Ym9hcmQgY2FuIGhhcHBpbHkgZHJpdmUgYSBVSFMtSSBtaWNyb1NEIGNhcmQgd2l0aCAxLjh2DQo+
-Pj4+Pj4+IEkvT3MsDQo+Pj4+Pj4+IGJlY2F1c2UgbWluZSdzIGRvaW5nIHNvIHJpZ2h0IG5vdy4N
-Cj4+Pj4+Pj4NCj4+Pj4+Pj4gUm9iaW4uDQo+Pj4+Pj4gT0ssIHRoZSBSb2NrUHJvNjQgZG9lcyBu
-b3QgYWxsb3cgYSBjYXJkIHJlc2V0IChwb3dlciBjeWNsZSkgc2luY2UNCj4+Pj4+PiBWQ0MzVjBf
-U0QgaXMgZGlyZWN0bHkgY29ubmVjdGVkIHRvIFZDQzNWM19TWVMgKHZpYSBSODk1NTUpLCB0aGUN
-Cj4+Pj4+PiBTRE1NQzBfUFdIX0ggc2lnbmFsIGlzIG5vdCBjb25uZWN0ZWQuIFNvIHRoZSBjYXJk
-IGZhaWxzIHRvIGlkZW50aWZ5DQo+Pj4+Pj4gaXRzZWxmIGFmdGVyIHN1c3BlbmQgb3IgcmVib290
-IHdoZW4gc3dpdGNoZWQgdG8gMS44ViBvcGVyYXRpb24uDQo+Pj4gQWgsIHRoYW5rcyBmb3IgY2xh
-cmlmeWluZyAtIEkgZGlkIG92ZXJsb29rIHRoZSBzdWJ0bGV0eSB0aGF0IFUxMiBhbmQNCj4+PiBm
-cmllbmRzIGhhdmUgIk5DIiBhcyBhbHRlcm5hdGl2ZSBwYXJ0IG51bWJlcnMsIGV2ZW4gdGhvdWdo
-IHRoZXkNCj4+PiBhcmVuJ3QgYWN0dWFsbHkgbWFya2VkIGFzIEROUC4gU28gaXQncyBzdGlsbCBu
-b3Qgc28gbXVjaCAiY2Fubm90IGJlDQo+Pj4gc3dpdGNoZWQiIGFzICJzd2l0Y2hpbmcgY2FuIGxl
-YWQgdG8gb3RoZXIgcHJvYmxlbXMiLg0KPj4+DQo+Pj4+PiBJIGJlbGlldmUgd2UgYWRkcmVzc2Vk
-IHRoaXMgaXNzdWUgbG9uZyB0aW1lIGFnbywgcGxlYXNlIGNoZWNrOg0KPj4+Pj4NCj4+Pj4+IGh0
-dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xp
-bnV4LmdpdC9jb21taXQvP2lkPTZhMTFmYzQ3ZjE3NWM4ZDg3MDE4ZTg5Y2I1OGUyZDM2YzY2NTM0
-Y2INCj4+Pj4+DQo+Pj4+Pg0KPj4+PiBUaGFua3MgZm9yIHRoZSBwb2ludGVyLg0KPj4+PiBJbiB0
-aGlzIGNhc2UgSSBndWVzcyBJIHNob3VsZCB1c2UgZm9sbG93aW5nIHBhdGNoIGluc3RlYWQ6DQo+
-Pj4+DQo+Pj4+IC0tLSByazMzOTktcm9ja3BybzY0LmR0cy5iYWsgwqDCoCAyMDE5LTEwLTAzIDIy
-OjE0OjAwLjA2Nzc0NTc5OSArMDIwMA0KPj4+PiArKysgcmszMzk5LXJvY2twcm82NC5kdHPCoMKg
-wqAgMjAxOS0xMC0wNCAwMDowMjo1MC4wNDc4OTIzNjYgKzAyMDANCj4+Pj4gQEAgLTYxOSw2ICs2
-MTksOCBAQA0KPj4+PiDCoMKgwqDCoMKgIG1heC1mcmVxdWVuY3kgPSA8MTUwMDAwMDAwPjsNCj4+
-Pj4gwqDCoMKgwqDCoCBwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOw0KPj4+PiDCoMKgwqDCoMKg
-IHBpbmN0cmwtMCA9IDwmc2RtbWNfY2xrICZzZG1tY19jbWQgJnNkbW1jX2J1czQ+Ow0KPj4+PiAr
-wqDCoMKgIHNkLXVocy1zZHIxMDQ7DQo+Pj4+ICvCoMKgwqAgdnFtbWMtc3VwcGx5ID0gPCZ2Y2Nf
-c2Rpbz47DQo+Pj4+IMKgwqDCoMKgwqAgc3RhdHVzID0gIm9rYXkiOw0KPj4+PiDCoMKgfTsNCj4+
-Pj4gV2hlbiBJIGRvIHNvLCB0aGUgc2QgY2FyZCBpcyBkZXRlY3RlZCBhcyBTRFIxMDQsIGJ1dCBh
-IHJlYm9vdCBoYW5nczoNCj4+Pj4NCj4+Pj4gQm9vdDE6IDIwMTgtMDYtMjYsIHZlcnNpb246IDEu
-MTQNCj4+Pj4gQ1BVSWQgPSAweDANCj4+Pj4gQ2hpcFR5cGUgPSAweDEwLCAyODYNCj4+Pj4gU3Bp
-X0NoaXBJZCA9IGM4NDAxOA0KPj4+PiBubyBmaW5kIHJrcGFydGl0aW9uDQo+Pj4+IFNwaUJvb3RJ
-bml0OmZmZmZmZmZmDQo+Pj4+IG1tYzogRVJST1I6IFNESENJIEVSUjpjbWQ6MHgxMDIsc3RhdDow
-eDE4MDAwDQo+Pj4+IG1tYzogRVJST1I6IENhcmQgZGlkIG5vdCByZXNwb25kIHRvIHZvbHRhZ2Ug
-c2VsZWN0IQ0KPj4+PiBlbW1jIHJlaW5pdA0KPj4+PiBtbWM6IEVSUk9SOiBTREhDSSBFUlI6Y21k
-OjB4MTAyLHN0YXQ6MHgxODAwMA0KPj4+PiBtbWM6IEVSUk9SOiBDYXJkIGRpZCBub3QgcmVzcG9u
-ZCB0byB2b2x0YWdlIHNlbGVjdCENCj4+Pj4gZW1tYyByZWluaXQNCj4+Pj4gbW1jOiBFUlJPUjog
-U0RIQ0kgRVJSOmNtZDoweDEwMixzdGF0OjB4MTgwMDANCj4+Pj4gbW1jOiBFUlJPUjogQ2FyZCBk
-aWQgbm90IHJlc3BvbmQgdG8gdm9sdGFnZSBzZWxlY3QhDQo+Pj4+IFNkbW1jSW5pdD0yIDENCj4+
-Pj4gbW1jMDpjbWQ1LDMyDQo+Pj4+IG1tYzA6Y21kNywzMg0KPj4+PiBtbWMwOmNtZDUsMzINCj4+
-Pj4gbW1jMDpjbWQ3LDMyDQo+Pj4+IG1tYzA6Y21kNSwzMg0KPj4+PiBtbWMwOmNtZDcsMzINCj4+
-Pj4gU2RtbWNJbml0PTAgMQ0KPj4+Pg0KPj4+PiBTbyBJIGd1ZXNzIEkgc2hvdWxkIHVzZSBhIGRp
-ZmZlcmVudCBtaW5pbG9hZGVyIGZvciB0aGlzIHJlYm9vdCB0bw0KPj4+PiB3b3JrIT8NCj4+Pj4g
-T3Igd2hhdCBlbHNlIGNvdWxkIGJlIHdyb25nIGhlcmU/DQo+Pj4gSG1tLCBJIGd1ZXNzIHRoaXMg
-aXMgInRoZSBUaW5rZXJib2FyZCBwcm9ibGVtIiBhZ2FpbiAtIHRoZSBwYXRjaA0KPj4+IGFib3Zl
-IHdvdWxkIGJlIE9LIGlmIHdlIGNvdWxkIGdldCBhcyBmYXIgYXMgdGhlIGtlcm5lbCwgYnV0IGNh
-bid0DQo+Pj4gaGVscCBpZiB0aGUgDQo+PiBJIGRpZG4ndCByZWFsaXplIHRoYXQgU0Qgd2FzIHVz
-ZWQgYXMgYm9vdCBtZWRpdW0gZm9yIFJvY2tQcm82NCwgYnV0IEkNCj4+IGRpZCBwYXRjaCB0aGUg
-dmVuZG9yIHRyZWUgdG8gc29sdmUgdGhlIGlzc3VlIGZvciBUaW5rZXJib2FyZCwgc2VlDQo+PiBo
-dHRwczovL2dpdGh1Yi5jb20vcm9ja2NoaXAtbGludXgva2VybmVsL2NvbW1pdC9hNGNjZGUyMWY1
-YTlmMDRmOTk2ZmIwMjQ3OWNiOWYxNmQzZGM4ZGMwDQo+Pg0KPj4NCj4+IE15IGluaXRpYWwgcGxh
-biB3YXMgdG8gcGF0Y2hpbmcgdXBzdHJlYW0ga2VybmVsIGJ5IGFkZGluZyAtPnNodXRkb3duLGJ1
-dA0KPj4gbmV2ZXIgZmluaXNoIGl0Lg0KPj4NCj4+PiBvZmZlbmRpbmcgY2FyZCBpcyBpdHNlbGYg
-dGhlIGJvb3QgbWVkaXVtLiBUaGVyZSB3YXMgYSBwcm9wb3NhbCBoZXJlOg0KPj4+DQo+Pj4gaHR0
-cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDgxNzIxNy8NCj4+IFRoaXMgUkZDIGFs
-c28gbG9va3MgZ29vZCB0byBtZSwgYnV0IHNlZW1zIGl0IG5lZWRzIHZvbHVudGVlcnMNCj4+IHRv
-IHB1c2ggaXQgYWdhaW4uDQo+IE9oLCBJIHRoaW5rIHRoaXMgaXMgYSB0b3RhbGx5IHdyb25nIHdh
-eS4NCj4NCj4gV2hpbGUgdGhpcyBtaWdodCB3b3JrIGZvciBzb21lIGNhcmRzLCBzZXR0aW5nIHRo
-ZSBjb250cm9sbGVyJ3MgaS9vDQo+IHZvbHRhZ2UgdG8gMy4zViB3aGlsZSBsZWF2aW5nIHRoZSBj
-YXJkIGF0IDEuOFYgY29uZmlndXJhdGlvbiBpcyB0b3RhbGx5DQo+IGFnYWluc3QgdGhlIHNwZWNp
-ZmljYXRpb24sIGNhbiBsZWFkIHRvIGFsbCBraW5kcyBvZiBzdHJhbmdlIGJlaGF2aW91cg0KPiBh
-bmQgZXZlbiBjYXVzZSBoYXJkd2FyZSBkYW1hZ2UuIEl0IGFsc28gd291bGQgYWN0aXZlbHkgZGVm
-ZW5kIHRoZQ0KPiBwdXJwb3NlIG9mIHRoZSBhYm92ZSBtZW50aW9uZWQgcGF0Y2ggKDZhMTFmYzQp
-IHdoZXJlIHRoZSBrZXJuZWwgZ3Vlc3Nlcw0KPiB0aGUgaS9vIHZvbHRhZ2UgZnJvbSB0aGUgY2Fy
-ZCBjb25maWd1cmF0aW9uIGFuZCBzd2l0Y2hlcyB0aGUgY29udHJvbGxlcg0KPiBhY2NvcmRpbmds
-eS4gV2Ugd291bGQgZW5kIHVwIHdpdGggYSAxLjhWIGNhcmQgYW5kIGNvbnRyb2xsZXINCj4gY29u
-ZmlndXJhdGlvbiBhbmQgYSByZWd1bGF0b3Igdm9sdGFnZSBvZiAzLjNWLiBUaGlzIHdvdWxkIG9u
-bHkgd29yayB3aXRoDQo+IGdvb2QgbHVjay4gRXZlbiBpZiB0aGUga2VybmVsIGRyaXZlciB3b3Vs
-ZCBzd2l0Y2ggdGhlIHJlZ3VsYXRvciBiYWNrIHRvDQo+IDEuOFYgaW4gdGhpcyBjYXNlLCB0aGUg
-dm9sdGFnZSBtaXNtYXRjaCByZW1haW5zIGluIHRoZSBib290bG9hZGVyIHdoZW4NCj4gdGhpcyBj
-YXJkIGNvbnRhaW5zIHRoZSBib290IGltYWdlLg0KPg0KPiBUaGUgb25seSBzYW5lIHdheSBJIHNl
-ZSB0byBoYW5kbGUgdGhpcyBpcyBpbXBsZW1lbnRpbmcgdGhlIHNhbWUNCj4gd29ya2Fyb3VuZCAo
-bW9kZSBndWVzc2luZykgYWxzbyBpbiB0aGUgYm9vdGxvYWRlciAocm9ja2NoaXAgbWluaWxvYWRl
-cg0KPiBhbmQgdS1ib290IFNQTCBzaW5jZSBib3RoIGJvb3Rsb2FkZXIgY2hhaW5zIGFyZSBzdXBw
-b3J0ZWQgZm9yIHRoaXMgYm9hcmQpLg0KPg0KPiBPciBtYXliZSBJIG1pc3Mgc29tZXRoaW5nPw0K
-DQpUaGFua3MgZm9yIHlvdXIgaW5wdXQsIEkgaGF2ZSBtYWRlIGEgbmV3IHNlcmllcyBbMV0gd2l0
-aCBhIHNpbWlsYXIgYXBwcm9hY2ggYnV0IGlzIGxpbWl0ZWQgdG8gZHdfbW1jLXJvY2tjaGlwDQph
-bmQgb25seSBjaGFuZ2VzIHRoZSByZWd1bGF0b3IgYXQgcG93ZXJfb2ZmIGFmdGVyIHRoZSByZWd1
-bGF0b3IgaGFzIGJlZW4gZGlzYWJsZWQgKHRoZSB2cW1tYyByZWd1bGF0b3IgaW4gYWZmZWN0ZWQg
-ZGV2aWNlcyBpcyBhbHdheXMtb24pLg0KDQpUbyBteSBrbm93bGVkZ2UgdGhlIHByb2JsZW0gaXMg
-bm90IHdpdGggdGhlIHJvY2tjaGlwIG1pbmlsb2FkZXIgb3IgdS1ib290IFNQTCwgaXQgaXMgdGhl
-IGluaXRpYWwgYm9vdCByb20gdGhhdCB0cmllcyB0byBsb2FkDQp0aGUgbWluaWxvYWRlci9TUEwg
-ZnJvbSBhIFNELWNhcmQsIHNvIG5vdGhpbmcgdGhhdCBjYW4gYmUgdXBkYXRlZC4NCg0KSSBoYXZl
-IG9ic2VydmVkIHRoaXMgaXNzdWUgb24gdGhlIGZvbGxvd2luZyBkZXZpY2VzLCBhbmQgdGhlIHBh
-dGNoZXMgYXQgWzFdIG1ha2VzIGl0IHBvc3NpYmxlIHRvIHJlYm9vdCBmcm9tIFNELWNhcmQgYWZ0
-ZXIgVUhTIGhhcyBiZWVuIGVuYWJsZWQuDQotIEFzdXMgVGlua2VyIEJvYXJkIChSSzMyODgpDQot
-IFJvY2tjaGlwIFNhcHBoaXJlIEJvYXJkIChSSzMzOTkpDQotIFJhZHhhIFJvY2sgUGkgNCAoUksz
-Mzk5KQ0KLSBQaW5lNjQgUm9ja1BybzY0IChSSzMzOTkpDQpBbGwgb2YgdGhlIGFib3ZlIHNlZW0g
-dG8gdXNlIHRoZSBSSzgwOCByZWd1bGF0b3IgZm9yIHNkIGlvIHZvbHRhZ2UuDQoNClRoZSBST0Mt
-UkszMzI4LUNDIGRpZCBub3QgaGF2ZSB0aGlzIGlzc3VlIGFuZCBzZWVtIHRvIGF1dG9tYXRpY2Fs
-bHkgcmVzZXQgdG8gMy4zdi4NCg0KWzFdIGh0dHBzOi8vZ2l0aHViLmNvbS9Ld2lib28vbGludXgt
-cm9ja2NoaXAvY29tcGFyZS9uZXh0LTIwMTkxMDExLi4ubmV4dC0yMDE5MTAxMS1tbWMNCg0KUmVn
-YXJkcywNCkpvbmFzDQoNCj4NCj4gU29lcmVuDQo+DQo+DQo+Pj4gYWx0aG91Z2ggSSdtIG5vdCBz
-dXJlIHdoYXQgaWYgYW55IHByb2dyZXNzIGhhcyBiZWVuIG1hZGUgc2luY2UgdGhlbi4NCj4+Pg0K
-Pj4+IFJvYmluLg0KPj4+DQo=
+Hello,
+
+This is v2 of the rkvdec driver which was initially posted as part of
+my RFC adding codec helpers.
+For this version, I decided to get rid of the helper stuff which is
+likely to take some more time to settle. The patchset now contains a
+proper DT binding doc.
+
+Note that this implementation is likely to be adjusted based on the
+outcome of the 'scaling matrix order' [1] and 'dynamic resolution
+changes' [2] discussions, but I thought it'd be worth posting this
+version to start getting feeback.
+
+Regards,
+
+Boris
+
+[1]https://patchwork.kernel.org/cover/11125207/
+[2]https://lkml.org/lkml/2019/9/3/1033
+
+Boris Brezillon (4):
+  media: vb2: Add a helper to get the vb2 buffer attached to a request
+  media: dt-bindings: rockchip: Document RK3399 Video Decoder bindings
+  media: rockchip: Add the rkvdec driver
+  arm64: dts: rockchip: rk3399: Define the rockchip Video Decoder node
+
+ .../bindings/media/rockchip,vdec.yaml         |   71 ++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi      |   14 +-
+ .../media/common/videobuf2/videobuf2-core.c   |   23 +
+ drivers/staging/media/Kconfig                 |    2 +
+ drivers/staging/media/Makefile                |    1 +
+ drivers/staging/media/rockchip/Kconfig        |   16 +
+ drivers/staging/media/rockchip/Makefile       |    2 +
+ drivers/staging/media/rockchip/vdec/Kconfig   |   14 +
+ drivers/staging/media/rockchip/vdec/Makefile  |    3 +
+ .../staging/media/rockchip/vdec/rkvdec-h264.c |  960 +++++++++++++++
+ .../staging/media/rockchip/vdec/rkvdec-regs.h |  306 +++++
+ drivers/staging/media/rockchip/vdec/rkvdec.c  | 1089 +++++++++++++++++
+ drivers/staging/media/rockchip/vdec/rkvdec.h  |  131 ++
+ include/media/videobuf2-core.h                |   11 +
+ 14 files changed, 2642 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+ create mode 100644 drivers/staging/media/rockchip/Kconfig
+ create mode 100644 drivers/staging/media/rockchip/Makefile
+ create mode 100644 drivers/staging/media/rockchip/vdec/Kconfig
+ create mode 100644 drivers/staging/media/rockchip/vdec/Makefile
+ create mode 100644 drivers/staging/media/rockchip/vdec/rkvdec-h264.c
+ create mode 100644 drivers/staging/media/rockchip/vdec/rkvdec-regs.h
+ create mode 100644 drivers/staging/media/rockchip/vdec/rkvdec.c
+ create mode 100644 drivers/staging/media/rockchip/vdec/rkvdec.h
+
+-- 
+2.21.0
