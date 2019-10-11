@@ -1,259 +1,174 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Subject: Re: [RESEND PATCH v2 3/4] media: rockchip: Add the rkvdec driver
-Date: Fri, 11 Oct 2019 13:21:42 +0200
-Message-ID: <d689990c-e5c0-5914-fc3d-37d623b68812@xs4all.nl>
-References: <20191011093342.3471-1-boris.brezillon@collabora.com>
- <20191011093342.3471-4-boris.brezillon@collabora.com>
- <8d3abbd9-f27d-f17f-8298-b0cc7c63ab3e@xs4all.nl>
- <20191011131540.002a61a9@dhcp-172-31-174-146.wireless.concordia.ca>
+From: Soeren Moch <smoch@web.de>
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: fix RockPro64 sdmmc settings
+Date: Fri, 11 Oct 2019 13:40:45 +0200
+Message-ID: <13064e01-9472-fc4d-2c7f-c186fa2a9a91@web.de>
+References: <20191003215036.15023-1-smoch@web.de>
+ <20191003215036.15023-3-smoch@web.de>
+ <31181f3c-20ec-e717-1f7e-8b35cd54d96d@arm.com>
+ <a8b20c45-0426-ee42-4efc-52e56ea6bb20@web.de>
+ <120e2dbc-55eb-2205-b00f-7e50928ec706@rock-chips.com>
+ <1c452b8b-853f-8f58-5f3a-0bbecbe20557@web.de>
+ <fc7dce53-ad39-26e3-7c19-ab60ff4cc332@arm.com>
+ <0c6fdb65-be2a-68e3-a686-14ce9b0a00a4@rock-chips.com>
+ <e4aaddc2-441b-b835-380e-374a3d935474@web.de>
+ <HE1PR06MB40115FDF385886FDDE122CD6AC970@HE1PR06MB4011.eurprd06.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191011131540.002a61a9-RcKxWJ4Cfj07VwOnMuImuy7eAjiKCowXPIyMCRxp1+LbFSlKd4bkJ/d9D2ou9A/h@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <HE1PR06MB40115FDF385886FDDE122CD6AC970@HE1PR06MB4011.eurprd06.prod.outlook.com>
+Content-Language: en-GB
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Jonas Karlman <jonas@kwiboo.se>, Shawn Lin <shawn.lin@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 10/11/19 1:15 PM, Boris Brezillon wrote:
-> Hi Hans,
-> 
-> On Fri, 11 Oct 2019 12:06:35 +0200
-> Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org> wrote:
-> 
->>> diff --git a/drivers/staging/media/rockchip/Kconfig b/drivers/staging/media/rockchip/Kconfig
->>> new file mode 100644
->>> index 000000000000..8c617ae2c84f
->>> --- /dev/null
->>> +++ b/drivers/staging/media/rockchip/Kconfig
->>> @@ -0,0 +1,16 @@
->>> +# SPDX-License-Identifier: GPL-2.0
->>> +config VIDEO_ROCKCHIP
->>> +	bool "Rockchip Video Devices"
->>> +	depends on ARCH_ROCKCHIP || COMPILE_TEST
->>> +	help
->>> +	  If you have a Rockchip SoC based embedding a video codec.
->>> +
->>> +	  Note that this option doesn't include new drivers in the
->>> +	  kernel: saying N will just cause Kconfig to skip all the
->>> +	  questions about Allwinner media devices.
->>> +
->>> +if VIDEO_ROCKCHIP
->>> +
->>> +source "drivers/staging/media/rockchip/vdec/Kconfig"
->>> +
->>> +endif  
->>
->> Is this really necessary? I think the 'source' line can just be added to
->> drivers/staging/media/Kconfig. This config option here is rather vague.
-> 
-> I based it on the Allwinner/Cedrus model (even left an 'Allwinner' in
-> the description :)), but I can definitely move the source line in
-> drivers/staging/media/Kconfig or even get rid of the rockchip dir if
-> you prefer.
-> 
->>
->>> diff --git a/drivers/staging/media/rockchip/Makefile b/drivers/staging/media/rockchip/Makefile
->>> new file mode 100644
->>> index 000000000000..b3705b51f1b9
->>> --- /dev/null
->>> +++ b/drivers/staging/media/rockchip/Makefile
->>> @@ -0,0 +1,2 @@
->>> +# SPDX-License-Identifier: GPL-2.0
->>> +obj-$(CONFIG_VIDEO_ROCKCHIP_VDEC) += vdec/
->>> diff --git a/drivers/staging/media/rockchip/vdec/Kconfig b/drivers/staging/media/rockchip/vdec/Kconfig
->>> new file mode 100644
->>> index 000000000000..329b4a813c47
->>> --- /dev/null
->>> +++ b/drivers/staging/media/rockchip/vdec/Kconfig
->>> @@ -0,0 +1,14 @@
->>> +# SPDX-License-Identifier: GPL-2.0
->>> +config VIDEO_ROCKCHIP_VDEC
->>> +	tristate "Rockchip Video Decoder driver"
->>> +	depends on ARCH_ROCKCHIP || COMPILE_TEST
->>> +	depends on VIDEO_DEV && VIDEO_V4L2 && MEDIA_CONTROLLER
->>> +	depends on MEDIA_CONTROLLER_REQUEST_API
->>> +	select VIDEOBUF2_DMA_CONTIG
->>> +	select VIDEOBUF2_VMALLOC
->>> +	select V4L2_MEM2MEM_DEV
->>> +	help
->>> +	  Support for the Rockchip Video Decoder IP present on Rockchip SoC,
->>> +	  which accelerates video decoding.
->>> +	  To compile this driver as a module, choose M here: the module
->>> +	  will be called hantro-vpu.  
->>
->> hantro-vpu? Not rkvdec?
-> 
-> Should be rkvdec, indeed. That's what happens when you copy things from
-> an existing driver :-).
-> 
-> 
->>> +
->>> +/* Constant CABAC table. */
->>> +static const u32 rkvdec_h264_cabac_table[] = {  
->>
->> Where does this table come from? It needs some provenance.
-> 
-> Chromeos kernels [1] and MPP code base [2]. I'll add a comment pointing
-> to those trees.
-> 
-> [...]
-> 
->>> +
->>> +struct rkvdec_h264_reflist_builder {
->>> +	const struct v4l2_h264_dpb_entry *dpb;
->>> +	s32 pocs[RKVDEC_H264_DPB_SIZE];
->>> +	u8 unordered_reflist[RKVDEC_H264_DPB_SIZE];
->>> +	int frame_nums[RKVDEC_H264_DPB_SIZE];
->>> +	s32 curpoc;
->>> +	u8 num_valid;
->>> +};  
->>
->> What's a 'poc'? Perhaps this can use some comments.
-> 
-> Picture Order Count. I'll add comment.
-> 
->>
->> It looks like code is copied from hantro_h264.c. Is there anything that
->> can be reasonably shared between the two drivers?
-> 
-> I was planning on exporting those helpers at some point, but I'd like
-> the reflist creation logic to settle before doing (we still need to fix
-> things for interlaced streams, which is what Jonas is working on).
-> 
-> 
-> 
->>> +
->>> +static int p_ref_list_cmp(const void *ptra, const void *ptrb, const void *data)
->>> +{
->>> +	const struct rkvdec_h264_reflist_builder *builder = data;
->>> +	const struct v4l2_h264_dpb_entry *a, *b;
->>> +	u8 idxa, idxb;
->>> +
->>> +	idxa = *((u8 *)ptra);
->>> +	idxb = *((u8 *)ptrb);
->>> +	a = &builder->dpb[idxa];
->>> +	b = &builder->dpb[idxb];
->>> +
->>> +	if ((a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM) !=
->>> +	    (b->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)) {
->>> +		/* Short term pics firt. */  
->>
->> firt -> first
-> 
-> Will fix the typo.
-> 
->>
->>> +		if (!(a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM))
->>> +			return -1;
->>> +		else
->>> +			return 1;
->>> +	}
->>> +
->>> +	/*
->>> +	 * Short term pics in descending pic num order, long term ones in
->>> +	 * ascending order.
->>> +	 */
->>> +	if (!(a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)) {
->>> +		int frame_num_a, frame_num_b;
->>> +
->>> +		frame_num_a = builder->frame_nums[idxa];
->>> +		frame_num_b = builder->frame_nums[idxb];
->>> +		return frame_num_b > frame_num_a ? 1 : -1;
->>> +	}
->>> +
->>> +	return a->pic_num > b->pic_num ? 1 : -1;
->>> +}
->>> +
->>> +static int b0_ref_list_cmp(const void *ptra, const void *ptrb, const void *data)
->>> +{
->>> +	const struct rkvdec_h264_reflist_builder *builder = data;
->>> +	const struct v4l2_h264_dpb_entry *a, *b;
->>> +	s32 poca, pocb;
->>> +	u8 idxa, idxb;
->>> +
->>> +	idxa = *((u8 *)ptra);
->>> +	idxb = *((u8 *)ptrb);
->>> +	a = &builder->dpb[idxa];
->>> +	b = &builder->dpb[idxb];
->>> +
->>> +	if ((a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM) !=
->>> +	    (b->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)) {
->>> +		/* Short term pics firt. */  
->>
->> Ditto. Check the code for this typo. It's in the hantro code as well.
-> 
-> Will do.
-> 
->>
->>> +		if (!(a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM))
->>> +			return -1;
->>> +		else
->>> +			return 1;
->>> +	}
->>> +
->>> +	/* Long term pics in ascending pic num order. */
->>> +	if (a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
->>> +		return a->pic_num > b->pic_num ? 1 : -1;
->>> +
->>> +	poca = builder->pocs[idxa];
->>> +	pocb = builder->pocs[idxb];
->>> +
->>> +	/*
->>> +	 * Short term pics with POC < cur POC first in POC descending order
->>> +	 * followed by short term pics with POC > cur POC in POC ascending
->>> +	 * order.
->>> +	 */
->>> +	if ((poca < builder->curpoc) != (pocb < builder->curpoc))
->>> +		return poca > pocb ? 1 : -1;
->>> +	else if (poca < builder->curpoc)
->>> +		return pocb > poca ? 1 : -1;
->>> +
->>> +	return poca > pocb ? 1 : -1;
->>> +}
-> 
->>> +static void rkvdec_reset_fmt(struct rkvdec_ctx *ctx, struct v4l2_format *f,
->>> +			     u32 fourcc)
->>> +{
->>> +	memset(f, 0, sizeof(*f));
->>> +	f->fmt.pix_mp.pixelformat = fourcc;
->>> +	f->fmt.pix_mp.field = V4L2_FIELD_NONE;
->>> +	f->fmt.pix_mp.colorspace = V4L2_COLORSPACE_JPEG,  
->>
->> Don't use this colorspace. I see it is also used in the hantro driver, that should
->> be corrected as well.
->>
->> The colorimetry comes from the stream metadata, and for a stateless driver I
->> assume that it is userspace that parses that.
->>
->> V4L2_COLORSPACE_JPEG should only be used by (M)JPEG codecs. And even there is it
->> dubious. See section 2.17.10 in the spec for more info.
-> 
-> What should I use when the formats are reset then?
-
-Depends on the resolution: SDTV should use V4L2_COLORSPACE_SMPTE170M, others REC709.
-
-If you don't know the resolution here, then stick to REC709.
-
-Regards,
-
-	Hans
-
-> 
-> Thanks for the prompt review!
-> 
-> Boris
-> 
-> [1]https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-4.4/drivers/media/platform/rockchip-vpu/rk3399_vdec_hw_h264d.c#45
-> [2]https://github.com/rockchip-linux/mpp/blob/release/mpp/hal/rkdec/h264d/hal_h264d_rkv_reg.c#L67
-> 
+CgpPbiAxMS4xMC4xOSAxMDoyMiwgSm9uYXMgS2FybG1hbiB3cm90ZToKPiBPbiAyMDE5LTEwLTA0
+IDE5OjI0LCBTw7ZyZW4gTW9jaCB3cm90ZToKPj4gT24gMDQuMTAuMTkgMTc6MzMsIFNoYXduIExp
+biB3cm90ZToKPj4+IE9uIDIwMTkvMTAvNCAyMjoyMCwgUm9iaW4gTXVycGh5IHdyb3RlOgo+Pj4+
+IE9uIDA0LzEwLzIwMTkgMDQ6MzksIFNvZXJlbiBNb2NoIHdyb3RlOgo+Pj4+PiBPbiAwNC4xMC4x
+OSAwNDoxMywgU2hhd24gTGluIHdyb3RlOgo+Pj4+Pj4gT24gMjAxOS8xMC80IDg6NTMsIFNvZXJl
+biBNb2NoIHdyb3RlOgo+Pj4+Pj4+IE9uIDA0LjEwLjE5IDAyOjAxLCBSb2JpbiBNdXJwaHkgd3Jv
+dGU6Cj4+Pj4+Pj4+IE9uIDIwMTktMTAtMDMgMTA6NTAgcG0sIFNvZXJlbiBNb2NoIHdyb3RlOgo+
+Pj4+Pj4+Pj4gQWNjb3JkaW5nIHRvIHRoZSBSb2NrUHJvNjQgc2NoZW1hdGljIFsxXSB0aGUgcmsz
+Mzk5IHNkbW1jCj4+Pj4+Pj4+PiBjb250cm9sbGVyIGlzCj4+Pj4+Pj4+PiBjb25uZWN0ZWQgdG8g
+YSBtaWNyb1NEIChURiBjYXJkKSBzbG90LCB3aGljaCBjYW5ub3QgYmUgc3dpdGNoZWQgdG8KPj4+
+Pj4+Pj4+IDEuOFYuCj4+Pj4+Pj4+IFJlYWxseT8gQUZBSUNTIHRoZSBTRE1NQzAgd2lyaW5nIGxv
+b2tzIHByZXR0eSBtdWNoIGlkZW50aWNhbCB0byB0aGUKPj4+Pj4+Pj4gTmFub1BDLVQ0IHNjaGVt
+YXRpYyAoaXQncyB0aGUgc2FtZSByZWZlcmVuY2UgZGVzaWduLCBhZnRlciBhbGwpLAo+Pj4+Pj4+
+PiBhbmQgSQo+Pj4+Pj4+PiBrbm93IHRoYXQgYm9hcmQgY2FuIGhhcHBpbHkgZHJpdmUgYSBVSFMt
+SSBtaWNyb1NEIGNhcmQgd2l0aCAxLjh2Cj4+Pj4+Pj4+IEkvT3MsCj4+Pj4+Pj4+IGJlY2F1c2Ug
+bWluZSdzIGRvaW5nIHNvIHJpZ2h0IG5vdy4KPj4+Pj4+Pj4KPj4+Pj4+Pj4gUm9iaW4uCj4+Pj4+
+Pj4gT0ssIHRoZSBSb2NrUHJvNjQgZG9lcyBub3QgYWxsb3cgYSBjYXJkIHJlc2V0IChwb3dlciBj
+eWNsZSkgc2luY2UKPj4+Pj4+PiBWQ0MzVjBfU0QgaXMgZGlyZWN0bHkgY29ubmVjdGVkIHRvIFZD
+QzNWM19TWVMgKHZpYSBSODk1NTUpLCB0aGUKPj4+Pj4+PiBTRE1NQzBfUFdIX0ggc2lnbmFsIGlz
+IG5vdCBjb25uZWN0ZWQuIFNvIHRoZSBjYXJkIGZhaWxzIHRvIGlkZW50aWZ5Cj4+Pj4+Pj4gaXRz
+ZWxmIGFmdGVyIHN1c3BlbmQgb3IgcmVib290IHdoZW4gc3dpdGNoZWQgdG8gMS44ViBvcGVyYXRp
+b24uCj4+Pj4gQWgsIHRoYW5rcyBmb3IgY2xhcmlmeWluZyAtIEkgZGlkIG92ZXJsb29rIHRoZSBz
+dWJ0bGV0eSB0aGF0IFUxMiBhbmQKPj4+PiBmcmllbmRzIGhhdmUgIk5DIiBhcyBhbHRlcm5hdGl2
+ZSBwYXJ0IG51bWJlcnMsIGV2ZW4gdGhvdWdoIHRoZXkKPj4+PiBhcmVuJ3QgYWN0dWFsbHkgbWFy
+a2VkIGFzIEROUC4gU28gaXQncyBzdGlsbCBub3Qgc28gbXVjaCAiY2Fubm90IGJlCj4+Pj4gc3dp
+dGNoZWQiIGFzICJzd2l0Y2hpbmcgY2FuIGxlYWQgdG8gb3RoZXIgcHJvYmxlbXMiLgo+Pj4+Cj4+
+Pj4+PiBJIGJlbGlldmUgd2UgYWRkcmVzc2VkIHRoaXMgaXNzdWUgbG9uZyB0aW1lIGFnbywgcGxl
+YXNlIGNoZWNrOgo+Pj4+Pj4KPj4+Pj4+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9s
+aW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC9jb21taXQvP2lkPTZhMTFmYzQ3ZjE3
+NWM4ZDg3MDE4ZTg5Y2I1OGUyZDM2YzY2NTM0Y2IKPj4+Pj4+Cj4+Pj4+Pgo+Pj4+PiBUaGFua3Mg
+Zm9yIHRoZSBwb2ludGVyLgo+Pj4+PiBJbiB0aGlzIGNhc2UgSSBndWVzcyBJIHNob3VsZCB1c2Ug
+Zm9sbG93aW5nIHBhdGNoIGluc3RlYWQ6Cj4+Pj4+Cj4+Pj4+IC0tLSByazMzOTktcm9ja3BybzY0
+LmR0cy5iYWsgwqDCoCAyMDE5LTEwLTAzIDIyOjE0OjAwLjA2Nzc0NTc5OSArMDIwMAo+Pj4+PiAr
+KysgcmszMzk5LXJvY2twcm82NC5kdHPCoMKgwqAgMjAxOS0xMC0wNCAwMDowMjo1MC4wNDc4OTIz
+NjYgKzAyMDAKPj4+Pj4gQEAgLTYxOSw2ICs2MTksOCBAQAo+Pj4+PiDCoMKgwqDCoMKgIG1heC1m
+cmVxdWVuY3kgPSA8MTUwMDAwMDAwPjsKPj4+Pj4gwqDCoMKgwqDCoCBwaW5jdHJsLW5hbWVzID0g
+ImRlZmF1bHQiOwo+Pj4+PiDCoMKgwqDCoMKgIHBpbmN0cmwtMCA9IDwmc2RtbWNfY2xrICZzZG1t
+Y19jbWQgJnNkbW1jX2J1czQ+Owo+Pj4+PiArwqDCoMKgIHNkLXVocy1zZHIxMDQ7Cj4+Pj4+ICvC
+oMKgwqAgdnFtbWMtc3VwcGx5ID0gPCZ2Y2Nfc2Rpbz47Cj4+Pj4+IMKgwqDCoMKgwqAgc3RhdHVz
+ID0gIm9rYXkiOwo+Pj4+PiDCoMKgfTsKPj4+Pj4gV2hlbiBJIGRvIHNvLCB0aGUgc2QgY2FyZCBp
+cyBkZXRlY3RlZCBhcyBTRFIxMDQsIGJ1dCBhIHJlYm9vdCBoYW5nczoKPj4+Pj4KPj4+Pj4gQm9v
+dDE6IDIwMTgtMDYtMjYsIHZlcnNpb246IDEuMTQKPj4+Pj4gQ1BVSWQgPSAweDAKPj4+Pj4gQ2hp
+cFR5cGUgPSAweDEwLCAyODYKPj4+Pj4gU3BpX0NoaXBJZCA9IGM4NDAxOAo+Pj4+PiBubyBmaW5k
+IHJrcGFydGl0aW9uCj4+Pj4+IFNwaUJvb3RJbml0OmZmZmZmZmZmCj4+Pj4+IG1tYzogRVJST1I6
+IFNESENJIEVSUjpjbWQ6MHgxMDIsc3RhdDoweDE4MDAwCj4+Pj4+IG1tYzogRVJST1I6IENhcmQg
+ZGlkIG5vdCByZXNwb25kIHRvIHZvbHRhZ2Ugc2VsZWN0IQo+Pj4+PiBlbW1jIHJlaW5pdAo+Pj4+
+PiBtbWM6IEVSUk9SOiBTREhDSSBFUlI6Y21kOjB4MTAyLHN0YXQ6MHgxODAwMAo+Pj4+PiBtbWM6
+IEVSUk9SOiBDYXJkIGRpZCBub3QgcmVzcG9uZCB0byB2b2x0YWdlIHNlbGVjdCEKPj4+Pj4gZW1t
+YyByZWluaXQKPj4+Pj4gbW1jOiBFUlJPUjogU0RIQ0kgRVJSOmNtZDoweDEwMixzdGF0OjB4MTgw
+MDAKPj4+Pj4gbW1jOiBFUlJPUjogQ2FyZCBkaWQgbm90IHJlc3BvbmQgdG8gdm9sdGFnZSBzZWxl
+Y3QhCj4+Pj4+IFNkbW1jSW5pdD0yIDEKPj4+Pj4gbW1jMDpjbWQ1LDMyCj4+Pj4+IG1tYzA6Y21k
+NywzMgo+Pj4+PiBtbWMwOmNtZDUsMzIKPj4+Pj4gbW1jMDpjbWQ3LDMyCj4+Pj4+IG1tYzA6Y21k
+NSwzMgo+Pj4+PiBtbWMwOmNtZDcsMzIKPj4+Pj4gU2RtbWNJbml0PTAgMQo+Pj4+Pgo+Pj4+PiBT
+byBJIGd1ZXNzIEkgc2hvdWxkIHVzZSBhIGRpZmZlcmVudCBtaW5pbG9hZGVyIGZvciB0aGlzIHJl
+Ym9vdCB0bwo+Pj4+PiB3b3JrIT8KPj4+Pj4gT3Igd2hhdCBlbHNlIGNvdWxkIGJlIHdyb25nIGhl
+cmU/Cj4+Pj4gSG1tLCBJIGd1ZXNzIHRoaXMgaXMgInRoZSBUaW5rZXJib2FyZCBwcm9ibGVtIiBh
+Z2FpbiAtIHRoZSBwYXRjaAo+Pj4+IGFib3ZlIHdvdWxkIGJlIE9LIGlmIHdlIGNvdWxkIGdldCBh
+cyBmYXIgYXMgdGhlIGtlcm5lbCwgYnV0IGNhbid0Cj4+Pj4gaGVscCBpZiB0aGUgCj4+PiBJIGRp
+ZG4ndCByZWFsaXplIHRoYXQgU0Qgd2FzIHVzZWQgYXMgYm9vdCBtZWRpdW0gZm9yIFJvY2tQcm82
+NCwgYnV0IEkKPj4+IGRpZCBwYXRjaCB0aGUgdmVuZG9yIHRyZWUgdG8gc29sdmUgdGhlIGlzc3Vl
+IGZvciBUaW5rZXJib2FyZCwgc2VlCj4+PiBodHRwczovL2dpdGh1Yi5jb20vcm9ja2NoaXAtbGlu
+dXgva2VybmVsL2NvbW1pdC9hNGNjZGUyMWY1YTlmMDRmOTk2ZmIwMjQ3OWNiOWYxNmQzZGM4ZGMw
+Cj4+Pgo+Pj4KPj4+IE15IGluaXRpYWwgcGxhbiB3YXMgdG8gcGF0Y2hpbmcgdXBzdHJlYW0ga2Vy
+bmVsIGJ5IGFkZGluZyAtPnNodXRkb3duLGJ1dAo+Pj4gbmV2ZXIgZmluaXNoIGl0Lgo+Pj4KPj4+
+PiBvZmZlbmRpbmcgY2FyZCBpcyBpdHNlbGYgdGhlIGJvb3QgbWVkaXVtLiBUaGVyZSB3YXMgYSBw
+cm9wb3NhbCBoZXJlOgo+Pj4+Cj4+Pj4gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRj
+aC8xMDgxNzIxNy8KPj4+IFRoaXMgUkZDIGFsc28gbG9va3MgZ29vZCB0byBtZSwgYnV0IHNlZW1z
+IGl0IG5lZWRzIHZvbHVudGVlcnMKPj4+IHRvIHB1c2ggaXQgYWdhaW4uCj4+IE9oLCBJIHRoaW5r
+IHRoaXMgaXMgYSB0b3RhbGx5IHdyb25nIHdheS4KPj4KPj4gV2hpbGUgdGhpcyBtaWdodCB3b3Jr
+IGZvciBzb21lIGNhcmRzLCBzZXR0aW5nIHRoZSBjb250cm9sbGVyJ3MgaS9vCj4+IHZvbHRhZ2Ug
+dG8gMy4zViB3aGlsZSBsZWF2aW5nIHRoZSBjYXJkIGF0IDEuOFYgY29uZmlndXJhdGlvbiBpcyB0
+b3RhbGx5Cj4+IGFnYWluc3QgdGhlIHNwZWNpZmljYXRpb24sIGNhbiBsZWFkIHRvIGFsbCBraW5k
+cyBvZiBzdHJhbmdlIGJlaGF2aW91cgo+PiBhbmQgZXZlbiBjYXVzZSBoYXJkd2FyZSBkYW1hZ2Uu
+IEl0IGFsc28gd291bGQgYWN0aXZlbHkgZGVmZW5kIHRoZQo+PiBwdXJwb3NlIG9mIHRoZSBhYm92
+ZSBtZW50aW9uZWQgcGF0Y2ggKDZhMTFmYzQpIHdoZXJlIHRoZSBrZXJuZWwgZ3Vlc3Nlcwo+PiB0
+aGUgaS9vIHZvbHRhZ2UgZnJvbSB0aGUgY2FyZCBjb25maWd1cmF0aW9uIGFuZCBzd2l0Y2hlcyB0
+aGUgY29udHJvbGxlcgo+PiBhY2NvcmRpbmdseS4gV2Ugd291bGQgZW5kIHVwIHdpdGggYSAxLjhW
+IGNhcmQgYW5kIGNvbnRyb2xsZXIKPj4gY29uZmlndXJhdGlvbiBhbmQgYSByZWd1bGF0b3Igdm9s
+dGFnZSBvZiAzLjNWLiBUaGlzIHdvdWxkIG9ubHkgd29yayB3aXRoCj4+IGdvb2QgbHVjay4gRXZl
+biBpZiB0aGUga2VybmVsIGRyaXZlciB3b3VsZCBzd2l0Y2ggdGhlIHJlZ3VsYXRvciBiYWNrIHRv
+Cj4+IDEuOFYgaW4gdGhpcyBjYXNlLCB0aGUgdm9sdGFnZSBtaXNtYXRjaCByZW1haW5zIGluIHRo
+ZSBib290bG9hZGVyIHdoZW4KPj4gdGhpcyBjYXJkIGNvbnRhaW5zIHRoZSBib290IGltYWdlLgo+
+Pgo+PiBUaGUgb25seSBzYW5lIHdheSBJIHNlZSB0byBoYW5kbGUgdGhpcyBpcyBpbXBsZW1lbnRp
+bmcgdGhlIHNhbWUKPj4gd29ya2Fyb3VuZCAobW9kZSBndWVzc2luZykgYWxzbyBpbiB0aGUgYm9v
+dGxvYWRlciAocm9ja2NoaXAgbWluaWxvYWRlcgo+PiBhbmQgdS1ib290IFNQTCBzaW5jZSBib3Ro
+IGJvb3Rsb2FkZXIgY2hhaW5zIGFyZSBzdXBwb3J0ZWQgZm9yIHRoaXMgYm9hcmQpLgo+Pgo+PiBP
+ciBtYXliZSBJIG1pc3Mgc29tZXRoaW5nPwo+IFRoYW5rcyBmb3IgeW91ciBpbnB1dCwgSSBoYXZl
+IG1hZGUgYSBuZXcgc2VyaWVzIFsxXSB3aXRoIGEgc2ltaWxhciBhcHByb2FjaCBidXQgaXMgbGlt
+aXRlZCB0byBkd19tbWMtcm9ja2NoaXAKPiBhbmQgb25seSBjaGFuZ2VzIHRoZSByZWd1bGF0b3Ig
+YXQgcG93ZXJfb2ZmIGFmdGVyIHRoZSByZWd1bGF0b3IgaGFzIGJlZW4gZGlzYWJsZWQgKHRoZSB2
+cW1tYyByZWd1bGF0b3IgaW4gYWZmZWN0ZWQgZGV2aWNlcyBpcyBhbHdheXMtb24pLgpUaGFua3Mg
+Zm9yIHlvdXIgd29yayBvbiB0aGlzLiBVbmZvcnR1bmF0ZWx5IEkgc3RpbGwgdGhpbmsgdGhhdCB0
+aGlzIGlzCnRoZSB3cm9uZyBhcHByb2FjaC4KSSBzZWUgc2V2ZXJhbCBwcm9ibGVtcyBpbiB5b3Vy
+IHBhdGNoIHNlcmllczoKLSBZb3UgaW50cm9kdWNlZCBHUElPMF9QQTEgYXMgcmVndWxhdG9yIGVu
+YWJsZSBmb3IgUm9ja1BybzY0LgpVbmZvcnR1bmF0ZWx5IFBpbmU2NCBkZWNpZGVkIHRvIGRpc2Fi
+bGUgdGhpcyByZWd1bGF0b3Igb24gQm9hcmQgVmVyc2lvbgoyLjEgKHJlYWwgcHJvZHVjdCB2ZXJz
+aW9uKSwgc2VlIGFib3ZlLiBJIGhhdmUgbm8gaWRlYSB3aHkgdGhleSBkaWQgdGhpcy4KLSBZb3Ug
+Y2hhbmdlZCB0aGUgaS9vIHZvbHRhZ2UgZnJvbSAzLjBWIHRvIDMuM1YuIFRoaXMgaXMgbm90IGFs
+bG93ZWQgb24KUkszMzk5IEkvTyBiYW5rIEYuCgpDaGFuZ2luZyB0aGUgaS9vIHZvbHRhZ2UgdG8g
+My4wVi8zLjNWIHdoaWxlIHRoZSBzZCBjYXJkIGlzIGNvbmZpZ3VyZWQKZm9yIDEuOFYgaXMgYWdh
+aW5zdCB0aGUgc3BlY2lmaWNhdGlvbiBhbmQgZGFuZ2Vyb3VzLiBXaGlsZSBleHBlcmltZW50aW5n
+CndpdGggZGlmZmVyZW50IGltYWdlcyAoYXl1ZmFuLCBhcm1iaWFuKSBmb3IgbXkgbmV3bHkgYm91
+Z2h0IFJvY2tQcm82NCBJCmtpbGxlZCBhIFNEIGNhcmQgKDMyR0IgU2Ftc3VuZyBVSFMtSSkuIEkg
+Y2Fubm90IHJlY29uc3RydWN0IHRoZSBleGFjdApjaXJjdW1zdGFuY2VzLCBidXQgSSdtIHByZXR0
+eSBzdXJlIHRoaXMgaGFwcGVuZWQgZHVlIHRvIHRoZSB2b2x0YWdlCm1pc21hdGNoLiBPZiBjb3Vy
+c2UgSSdtIG5vdCBrZWVuIHRvIGV4cGVyaW1lbnQgZnVydGhlciB3aXRoIHRoaXMgYW5kCmtpbGwg
+bW9yZSBzZCBjYXJkcy4gVGhpcyBpcyBub3QganVzdCBhbiB0aGVvcmV0aWNhbCBpc3N1ZS4KPiBU
+byBteSBrbm93bGVkZ2UgdGhlIHByb2JsZW0gaXMgbm90IHdpdGggdGhlIHJvY2tjaGlwIG1pbmls
+b2FkZXIgb3IgdS1ib290IFNQTCwgaXQgaXMgdGhlIGluaXRpYWwgYm9vdCByb20gdGhhdCB0cmll
+cyB0byBsb2FkCj4gdGhlIG1pbmlsb2FkZXIvU1BMIGZyb20gYSBTRC1jYXJkLCBzbyBub3RoaW5n
+IHRoYXQgY2FuIGJlIHVwZGF0ZWQuCldoYXQgSSBvYnNlcnZlZCBvbiBteSBSb2NrUHJvNjQ6ClRo
+ZSBST00gYm9vdGxvYWRlciBhbHdheXMgd2FzIGFibGUgdG8gbG9hZCB0aGUgbmV4dCBzdGFnZSwg
+bWF5YmUgZHVlIHRvCnRoZSBsb3cgaW5pdGlhbCBjbG9jayBvZiA0MDBrSHo/IEFsc28gdGhlIFJP
+TSBib290bG9hZGVyIGNhbm5vdCBjaGFuZ2UKdm9sdGFnZSByZWd1bGF0b3Igc2V0dGluZ3MuIFNv
+IGlmIHRoZSBpL28gdm9sdGFnZSBzdGlsbCBpcyBhdCAxLjhWIGFuZAptYXRjaGluZyB0aGUgc2Qg
+Y2FyZCBzZXR0aW5nLCB0aGVyZSBpcyBubyBwcm9ibGVtIGZvciB0aGUgUk9NIGJvb3Rsb2FkZXIu
+ClNvIEkgdGhpbmsgdGhlIG5vcm1hbCByZWJvb3QgaGFuZGxpbmcgc2hvdWxkIGJlOgpJZiB0aGUg
+c2QgY2FyZCBjYW4gYmUgc3dpdGNoZWQgb2ZmIChwcmVmZXJyZWQgc29sdXRpb24pLCBkbyBzbyBh
+bmQgcmVzZXQKdGhlIGNvbnRyb2xsZXIgaS9vIHZvbHRhZ2UgdG8gMy4wVi8zLjNWLgpJZiB0aGUg
+c2QgY2FyZCBjYW4gbm90IGJlIHN3aXRjaGVkIG9mZiwgbWFrZSBzdXJlIHRvIGxlYXZlIHRoZQpj
+b250cm9sbGVyIGkvbyB2b2x0YWdlIGF0IHRoZSBjdXJyZW50IHNldHRpbmcuIE1ha2Ugc3VyZSBp
+biBsYXRlciBib290CnN0YWdlcyB0byBub3QgY2hhbmdlIHRoZSBjb250cm9sbGVyIGkvbyB2b2x0
+YWdlIHRvIDMuMFYvMy4zViB3aGVuIHRoZQpjYXJkIGlzIGNvbmZpZ3VyZWQgZm9yIDEuOFYuIEFj
+Y29yZGluZyB0byB0aGUgcGF0Y2ggbWVudGlvbmVkIGFib3ZlIHRoaXMKYmVoYXZpb3VyIGFscmVh
+ZHkgaXMgaW1wbGVtZW50ZWQgaW4gbGludXgsIHdlIGFsc28gbmVlZCB0aGlzIGZvciB0aGUKYm9v
+dGxvYWRlcnMuCgpSZWdhcmRzLApTb2VyZW4KPgo+IEkgaGF2ZSBvYnNlcnZlZCB0aGlzIGlzc3Vl
+IG9uIHRoZSBmb2xsb3dpbmcgZGV2aWNlcywgYW5kIHRoZSBwYXRjaGVzIGF0IFsxXSBtYWtlcyBp
+dCBwb3NzaWJsZSB0byByZWJvb3QgZnJvbSBTRC1jYXJkIGFmdGVyIFVIUyBoYXMgYmVlbiBlbmFi
+bGVkLgo+IC0gQXN1cyBUaW5rZXIgQm9hcmQgKFJLMzI4OCkKPiAtIFJvY2tjaGlwIFNhcHBoaXJl
+IEJvYXJkIChSSzMzOTkpCj4gLSBSYWR4YSBSb2NrIFBpIDQgKFJLMzM5OSkKPiAtIFBpbmU2NCBS
+b2NrUHJvNjQgKFJLMzM5OSkKPiBBbGwgb2YgdGhlIGFib3ZlIHNlZW0gdG8gdXNlIHRoZSBSSzgw
+OCByZWd1bGF0b3IgZm9yIHNkIGlvIHZvbHRhZ2UuCj4KPiBUaGUgUk9DLVJLMzMyOC1DQyBkaWQg
+bm90IGhhdmUgdGhpcyBpc3N1ZSBhbmQgc2VlbSB0byBhdXRvbWF0aWNhbGx5IHJlc2V0IHRvIDMu
+M3YuCj4KPiBbMV0gaHR0cHM6Ly9naXRodWIuY29tL0t3aWJvby9saW51eC1yb2NrY2hpcC9jb21w
+YXJlL25leHQtMjAxOTEwMTEuLi5uZXh0LTIwMTkxMDExLW1tYwo+Cj4gUmVnYXJkcywKPiBKb25h
+cwo+Cj4+IFNvZXJlbgo+Pgo+Pgo+Pj4+IGFsdGhvdWdoIEknbSBub3Qgc3VyZSB3aGF0IGlmIGFu
+eSBwcm9ncmVzcyBoYXMgYmVlbiBtYWRlIHNpbmNlIHRoZW4uCj4+Pj4KPj4+PiBSb2Jpbi4KPj4+
+PgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51
+eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1h
+cm0ta2VybmVsCg==
