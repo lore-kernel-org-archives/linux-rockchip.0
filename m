@@ -1,83 +1,178 @@
-From: Daniel Stone <daniel@fooishbar.org>
-Subject: Re: [PATCH 2/2] drm/rockchip: Add support for afbc
-Date: Fri, 11 Oct 2019 12:59:02 +0100
-Message-ID: <CAPj87rNb=Sa2Hg8KZK5ioocdv0BMj9c3NHK2v4UZibMmw2DdGA@mail.gmail.com>
-References: <20191011111813.20851-1-andrzej.p@collabora.com>
- <20191011111813.20851-3-andrzej.p@collabora.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add Beelink A1
+Date: Fri, 11 Oct 2019 13:20:38 +0100
+Message-ID: <4c490e48-7a85-4ef9-771c-165defde39cc@arm.com>
+References: <9037b7edbbb41cbbf699ebe3a511daf22d886e7d.1570444695.git.robin.murphy@arm.com>
+ <CAL_JsqKBy+i+=gGyYhBgcMUYsWd_CL_GnEoQqALBb+Gy7Ogb6A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191011111813.20851-3-andrzej.p@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Cc: David Airlie <airlied@linux.ie>, Liviu Dudau <liviu.dudau@arm.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, kernel@collabora.com, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CAL_JsqKBy+i+=gGyYhBgcMUYsWd_CL_GnEoQqALBb+Gy7Ogb6A@mail.gmail.com>
+Content-Language: en-GB
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rob Herring <robh@kernel.org>, "heiko@sntech.de" <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQW5kcnplaiwKCk9uIEZyaSwgMTEgT2N0IDIwMTkgYXQgMTI6MTgsIEFuZHJ6ZWogUGlldHJh
-c2lld2ljego8YW5kcnplai5wQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+IEBAIC0zMiw2ICszNSw0
-NiBAQCByb2NrY2hpcF9mYl9hbGxvYyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LCBjb25zdCBzdHJ1
-Y3QgZHJtX21vZGVfZmJfY21kMiAqbW9kZV9jbQo+ICAgICAgICAgaW50IHJldDsKPiAgICAgICAg
-IGludCBpOwo+Cj4gKyAgICAgICBpZiAobW9kZV9jbWQtPm1vZGlmaWVyWzBdKSB7Cj4gKyAgICAg
-ICAgICAgICAgIGNvbnN0IHN0cnVjdCBkcm1fZm9ybWF0X2luZm8gKmluZm87Cj4gKyAgICAgICAg
-ICAgICAgIGludCBicHA7Cj4gKwo+ICsgICAgICAgICAgICAgICBpZiAobW9kZV9jbWQtPm1vZGlm
-aWVyWzBdICYKClVzZSAhPSBoZXJlLCBub3QgJn4uCgo+ICsgICAgICAgY2FzZSBEUk1fRk9STUFU
-X0JHUjg4ODoKPiArICAgICAgICAgICAgICAgcmV0dXJuIEFGQkNfRk1UX1U4VThVODsKPiArICAg
-ICAgIGNhc2UgRFJNX0ZPUk1BVF9SR0I1NjU6Cj4gKyAgICAgICBjYXNlIERSTV9GT1JNQVRfQkdS
-NTY1Ogo+ICsgICAgICAgICAgICAgICByZXR1cm4gQUZCQ19GTVRfUkdCNTY1Owo+ICsgICAgICAg
-ZGVmYXVsdDoKPiArICAgICAgICAgICAgICAgRFJNX0VSUk9SKCJ1bnN1cHBvcnRlZCBhZmJjIGZv
-cm1hdFslMDh4XVxuIiwgZm9ybWF0KTsKClRoaXMgc2hvdWxkIG5vdCBiZSByZWFjaGFibGUsIGJl
-Y2F1c2UgeW91IHNob3VsZG4ndCBiZSBhYmxlIHRvIGNyZWF0ZQphIGZyYW1lYnVmZmVyIHdpdGgg
-YW4gdW5zdXBwb3J0ZWQgZm9ybWF0L21vZGlmaWVyIGNvbWJpbmF0aW9uLgoKPiArc3RhdGljIGJv
-b2wgcm9ja2NoaXBfbW9kX3N1cHBvcnRlZChzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKPiArICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHUzMiBmb3JtYXQsIHU2NCBtb2RpZmllcikK
-PiArewo+ICsgICAgICAgY29uc3Qgc3RydWN0IGRybV9mb3JtYXRfaW5mbyAqaW5mbzsKPiArCj4g
-KyAgICAgICBpZiAoV0FSTl9PTihtb2RpZmllciA9PSBEUk1fRk9STUFUX01PRF9JTlZBTElEKSkK
-PiArICAgICAgICAgICAgICAgcmV0dXJuIGZhbHNlOwo+ICsKPiArICAgICAgIGlmIChtb2RpZmll
-ciA9PSBEUk1fRk9STUFUX01PRF9MSU5FQVIpCj4gKyAgICAgICAgICAgICAgIHJldHVybiB0cnVl
-Owo+ICsKPiArICAgICAgIGlmIChtb2RpZmllciAmIH5EUk1fRk9STUFUX01PRF9BUk1fQUZCQygK
-CkFnYWluIHVzZSAhPSBoZXJlLgoKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEFG
-QkNfRk9STUFUX01PRF9CTE9DS19TSVpFXzE2eDE2IHwKPiArICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIEFGQkNfRk9STUFUX01PRF9TUEFSU0UKPiArICAgICAgICAgICAgICAgICAgICAg
-ICApCj4gKyAgICAgICApIHsKPiArICAgICAgICAgICAgICAgRFJNX0RFQlVHX0tNUygiVW5zdXBw
-b3J0ZWQgZm9ybWF0IG1vZGlmZXIgMHglbGx4XG4iLCBtb2RpZmllcik7Cj4gKwo+ICsgICAgICAg
-ICAgICAgICByZXR1cm4gZmFsc2U7Cj4gKyAgICAgICB9Cj4gKwo+ICsgICAgICAgaW5mbyA9IGRy
-bV9mb3JtYXRfaW5mbyhmb3JtYXQpOwo+ICsgICAgICAgaWYgKGluZm8tPm51bV9wbGFuZXMgIT0g
-MSkgewo+ICsgICAgICAgICAgICAgICBEUk1fREVCVUdfS01TKCJBRkJDIGJ1ZmZlcnMgZXhwZWN0
-IG9uZSBwbGFuZVxuIik7Cj4gKyAgICAgICAgICAgICAgIHJldHVybiBmYWxzZTsKPiArICAgICAg
-IH0KClRoaXMgaXMgd2hlcmUgeW91IHNob3VsZCByZWplY3QgdW5zdXBwb3J0ZWQgZm9ybWF0ICsg
-QUZCQwpjb21iaW5hdGlvbnMuIERvaW5nIGl0IGhlcmUgcHJldmVudHMgaXQgZnJvbSBldmVyIGJl
-aW5nIGFkdmVydGlzZWQgdG8KdXNlcnNwYWNlIGluIHRoZSBmaXJzdCBwbGFjZS4KCj4gQEAgLTgw
-OCw2ICs5MTksMjQgQEAgc3RhdGljIHZvaWQgdm9wX3BsYW5lX2F0b21pY191cGRhdGUoc3RydWN0
-IGRybV9wbGFuZSAqcGxhbmUsCj4KPiAgICAgICAgIHNwaW5fbG9jaygmdm9wLT5yZWdfbG9jayk7
-Cj4KPiArICAgICAgIGlmIChmYi0+bW9kaWZpZXIgPT0gRFJNX0ZPUk1BVF9NT0RfQVJNX0FGQkMo
-Cj4gKyAgICAgICAgICAgICAgIEFGQkNfRk9STUFUX01PRF9CTE9DS19TSVpFXzE2eDE2IHwgQUZC
-Q19GT1JNQVRfTU9EX1NQQVJTRSkpIHsKPiArICAgICAgICAgICAgICAgaW50IGFmYmNfZm9ybWF0
-ID0gdm9wX2NvbnZlcnRfYWZiY19mb3JtYXQoZmItPmZvcm1hdC0+Zm9ybWF0KTsKPiArCj4gKyAg
-ICAgICAgICAgICAgIFZPUF9BRkJDX1NFVCh2b3AsIGZvcm1hdCwgYWZiY19mb3JtYXQgfCAxIDw8
-IDQpOwoKSSBhc3N1bWUgdGhlICgxIDw8IDQpIHByb2dyYW1zIHRoZSAxNngxNiBibG9jayBzaXpl
-LiBDYW4gd2Ugc3VwcG9ydApvdGhlciBibG9jayBzaXplcz8KCj4gKyAgICAgICAgICAgICAgIFZP
-UF9BRkJDX1NFVCh2b3AsIGhyZWdfYmxvY2tfc3BsaXQsIDApOwoKRG9lcyB0aGlzIG1lYW4gd2Ug
-Y2FuIGFsc28gc3VwcG9ydCBBRkJDX0ZPUk1BVF9NT0RfU1BMSVQ/Cgo+ICsgICAgICAgICAgICAg
-ICBWT1BfQUZCQ19TRVQodm9wLCB3aW5fc2VsLCBWT1BfV0lOX1RPX0lOREVYKHZvcF93aW4pKTsK
-PiArICAgICAgICAgICAgICAgVk9QX0FGQkNfU0VUKHZvcCwgaGRyX3B0ciwgZG1hX2FkZHIpOwo+
-ICsgICAgICAgICAgICAgICBWT1BfQUZCQ19TRVQodm9wLCBwaWNfc2l6ZSwgYWN0X2luZm8pOwo+
-ICsKPiArICAgICAgICAgICAgICAgLyoKPiArICAgICAgICAgICAgICAgICogVGhlIHdpbmRvdyBi
-ZWluZyB1ZGF0ZWQgYmVjb21lcyB0aGUgQUZCQyB3aW5kb3cKPiArICAgICAgICAgICAgICAgICov
-Cj4gKyAgICAgICAgICAgICAgIHZvcC0+YWZiY193aW4gPSB2b3Bfd2luOwo+ICsKPiArICAgICAg
-ICAgICAgICAgcHJfaW5mbygiQUZCQyBvbiBwbGFuZSAlc1xuIiwgcGxhbmUtPm5hbWUpOwoKUGxl
-YXNlIGRvIG5vdCB1c2UgcHJfaW5mbygpIGhlcmUuIFVzZXJzcGFjZSBzaG91bGQgbm90IGJlIGFi
-bGUgdG8KdHJpZ2dlciBsb2dnaW5nLCBhcGFydCBmcm9tIERSTV9ERUJVRy4KCj4gK3N0YXRpYyBj
-b25zdCB1aW50NjRfdCBmb3JtYXRfbW9kaWZpZXJzX3dpbl9mdWxsW10gPSB7Cj4gKyAgICAgICBE
-Uk1fRk9STUFUX01PRF9OT05FLAoKKkRSTV9GT1JNQVRfTU9EX0xJTkVBUgoKQ2hlZXJzLApEYW5p
-ZWwKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
-dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+On 07/10/2019 13:53, Rob Herring wrote:
+> On Mon, Oct 7, 2019 at 6:33 AM Robin Murphy <robin.murphy@arm.com> wrote:
+>>
+>> Beelink A1 is a TV box implementing the higher-end options of the
+>> RK3328 reference design - the DTB from the stock Android firmware is
+>> clearly the "rk3328-box-plus" variant from the Rockchip 3.10 BSP with
+>> minor modifications to accommodate the USB WiFi module and additional
+>> VFD-style LED driver. It features:
+>>
+>> - 4GB of 32-bit LPDDR3
+>> - 16GB of HS200 eMMC (newer models with 32GB also exist)
+>> - Realtek RTL8211F phy for gigabit ethernet
+>> - Fn-Link 6221E-UUC module (RealTek RTL8821CU) for 11ac WiFi and Bluetooth 4.2
+>> - HDMI and analog A/V
+>> - 1x USB 3.0 type A host, 1x USB 2.0 type A OTG, 1x micro SD
+>> - IR receiver and a neat little LED clock display.
+>>
+>> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+>> ---
+>>
+>> One question I'm wondering about is whether it's worth pushing the HDMI
+>> and analog codec audio cards down into rk3328.dtsi (as with HDMI audio
+>> on RK3399), since those audio pipelines are internal to the SoC and the
+>> board only really governs whether the outputs are wired up or not.
+> 
+> Seems reasonable. One other candidate below.
+> 
+>>
+>>   .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+> 
+> In the future, please split bindings to a separate patch.
+
+Ha, busted! I thought this might be trivial enough to slip through, but 
+I'll split it out if you prefer.
+
+>>   arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>>   arch/arm64/boot/dts/rockchip/rk3328-a1.dts    | 399 ++++++++++++++++++
+>>   3 files changed, 405 insertions(+)
+>>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-a1.dts
+>>
+>> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+>> index c82c5e57d44c..f27f7805f57e 100644
+>> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+>> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+>> @@ -40,6 +40,11 @@ properties:
+>>             - const: asus,rk3288-tinker-s
+>>             - const: rockchip,rk3288
+>>
+>> +      - description: Beelink A1
+>> +        items:
+>> +          - const: azw,beelink-a1
+>> +          - const: rockchip,rk3328
+>> +
+>>         - description: bq Curie 2 tablet
+>>           items:
+>>             - const: mundoreader,bq-curie2
+>> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+>> index 1f18a9392d15..a6f250e7cde2 100644
+>> --- a/arch/arm64/boot/dts/rockchip/Makefile
+>> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+>> @@ -1,5 +1,6 @@
+>>   # SPDX-License-Identifier: GPL-2.0
+>>   dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-evb.dtb
+>> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
+>>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
+>>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
+>>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-roc-cc.dtb
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
+>> new file mode 100644
+>> index 000000000000..03ad663ff821
+>> --- /dev/null
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
+>> @@ -0,0 +1,399 @@
+>> +// SPDX-License-Identifier: (GPL-2.0-only OR MIT)
+>> +// Copyright (c) 2017-2019 Arm Ltd.
+>> +
+>> +/dts-v1/;
+>> +#include "rk3328.dtsi"
+>> +
+>> +/ {
+>> +       model = "Beelink A1";
+>> +       compatible = "azw,beelink-a1", "rockchip,rk3328";
+>> +
+>> +       /*
+>> +        * UART pins, as viewed with bottom of case removed:
+>> +        *
+>> +        *           Front
+>> +        *        /-------
+>> +        *  L    / o <- Gnd
+>> +        *  e   / o <-- Rx
+>> +        *  f  / o <--- Tx
+>> +        *  t / o <---- +3.3v
+>> +        *    |
+>> +        */
+>> +       chosen {
+>> +               stdout-path = "serial2:1500000n8";
+>> +       };
+>> +
+>> +       gmac_clkin: external-gmac-clock {
+>> +               compatible = "fixed-clock";
+>> +               clock-frequency = <125000000>;
+>> +               clock-output-names = "gmac_clkin";
+>> +               #clock-cells = <0>;
+>> +       };
+>> +
+>> +       vcc_host_5v: usb3-current-switch {
+>> +               compatible = "regulator-fixed";
+>> +               enable-active-high;
+>> +               gpio = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
+>> +               pinctrl-names = "default";
+>> +               pinctrl-0 = <&usb30_host_drv>;
+>> +               regulator-name = "vcc_host_5v";
+>> +               vin-supply = <&vcc_sys>;
+>> +       };
+>> +
+>> +       vcc_sys: vcc-sys {
+>> +               compatible = "regulator-fixed";
+>> +               regulator-name = "vcc_sys";
+>> +               regulator-min-microvolt = <5000000>;
+>> +               regulator-max-microvolt = <5000000>;
+>> +       };
+>> +
+>> +       cpus {
+>> +               idle-states {
+>> +                       entry-method = "arm,psci";
+>> +
+>> +                       cpu_sleep: cpu-sleep {
+>> +                               compatible = "arm,idle-state";
+>> +                               arm,psci-suspend-param = <0x0010000>;
+>> +                               local-timer-stop;
+>> +                               entry-latency-us = <120>;
+>> +                               exit-latency-us = <250>;
+>> +                               min-residency-us = <900>;
+> 
+> This doesn't seem like something that's board specific, but I guess
+> the regulator could have some influence on these times. If so, the
+> board file could always override a default.
+
+True, this is traceable back to the Rockchip Android BSP where it's 
+actually applied to the entire SoC family[1]. I don't know if there's 
+likely to be any difference between the downstream "RKTRUST" firmware 
+binaries (which this nominally represents) and upstream ATF in terms of 
+their PSCI implementation/performance.
+
+I've not got round to properly tinkering with suspend/resume and power 
+management stuff yet, so I guess another option would be to just forget 
+about this part for now - Heiko, any opinions?
+
+Cheers,
+Robin.
+
+[1] 
+https://github.com/rockchip-linux/kernel/blob/release-3.10/arch/arm64/boot/dts/rk322xh.dtsi#L107-L118
