@@ -1,38 +1,50 @@
-From: Markus Elfring <Markus.Elfring-S0/GAf8tV78@public.gmane.org>
-Subject: clk: rockchip: Checking a kmemdup() call in
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: clk: rockchip: Checking a kmemdup() call in
  rockchip_clk_register_pll()
-Date: Sat, 12 Oct 2019 15:55:44 +0200
-Message-ID: <e96505a8-b554-f61e-3940-0b9e9c7850ff@web.de>
+Date: Sat, 12 Oct 2019 23:32:12 +0200
+Message-ID: <5801053.xxhhKtLrcJ@diego>
+References: <e96505a8-b554-f61e-3940-0b9e9c7850ff@web.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Aditya Pakki <pakki001-OJFnDUYgAso@public.gmane.org>, Kangjie Lu <kjlu-OJFnDUYgAso@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Navid Emamdoost <emamd001-OJFnDUYgAso@public.gmane.org>, Stephen McCamant <smccaman-OJFnDUYgAso@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <e96505a8-b554-f61e-3940-0b9e9c7850ff@web.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Markus Elfring <Markus.Elfring@web.de>
+Cc: Stephen Boyd <sboyd@kernel.org>, Kangjie Lu <kjlu@umn.edu>, Michael Turquette <mturquette@baylibre.com>, Stephen McCamant <smccaman@umn.edu>, kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, Navid Emamdoost <emamd001@umn.edu>, Aditya Pakki <pakki001@umn.edu>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8sCgpJIHRyaWVkIGFub3RoZXIgc2NyaXB0IGZvciB0aGUgc2VtYW50aWMgcGF0Y2ggbGFu
-Z3VhZ2Ugb3V0LgpUaGlzIHNvdXJjZSBjb2RlIGFuYWx5c2lzIGFwcHJvYWNoIHBvaW50cyBvdXQg
-dGhhdCB0aGUgaW1wbGVtZW50YXRpb24Kb2YgdGhlIGZ1bmN0aW9uIOKAnHJvY2tjaGlwX2Nsa19y
-ZWdpc3Rlcl9wbGzigJ0gY29udGFpbnMgYWxzbyBhIGNhbGwKb2YgdGhlIGZ1bmN0aW9uIOKAnGtt
-ZW1kdXDigJ0uCmh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0
-L3RvcnZhbGRzL2xpbnV4LmdpdC90cmVlL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1wbGwuYz9p
-ZD0xYzBjYzVmMWFlNWVlNWE2OTEzNzA0YzBkNzVhNmU5OTYwNGVlMzBhI245MTMKaHR0cHM6Ly9l
-bGl4aXIuYm9vdGxpbi5jb20vbGludXgvdjUuNC1yYzIvc291cmNlL2RyaXZlcnMvY2xrL3JvY2tj
-aGlwL2Nsay1wbGwuYyNMOTEzCgoqIERvIHlvdSBmaW5kIHRoZSB1c2FnZSBvZiB0aGUgZm9ybWF0
-IHN0cmluZyDigJwlczogY291bGQgbm90IGFsbG9jYXRlCiAgcmF0ZSB0YWJsZSBmb3IgJXNcbuKA
-nSBzdGlsbCBhcHByb3ByaWF0ZSBhdCB0aGlzIHBsYWNlPwoKKiBJcyB0aGVyZSBhIG5lZWQgdG8g
-YWRqdXN0IHRoZSBlcnJvciBoYW5kbGluZyBoZXJlPwoKUmVnYXJkcywKTWFya3VzCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+SGkgTWFya3VzLAoKQW0gU2Ftc3RhZywgMTIuIE9rdG9iZXIgMjAxOSwgMTU6NTU6NDQgQ0VTVCBz
+Y2hyaWViIE1hcmt1cyBFbGZyaW5nOgo+IEkgdHJpZWQgYW5vdGhlciBzY3JpcHQgZm9yIHRoZSBz
+ZW1hbnRpYyBwYXRjaCBsYW5ndWFnZSBvdXQuCj4gVGhpcyBzb3VyY2UgY29kZSBhbmFseXNpcyBh
+cHByb2FjaCBwb2ludHMgb3V0IHRoYXQgdGhlIGltcGxlbWVudGF0aW9uCj4gb2YgdGhlIGZ1bmN0
+aW9uIOKAnHJvY2tjaGlwX2Nsa19yZWdpc3Rlcl9wbGzigJ0gY29udGFpbnMgYWxzbyBhIGNhbGwK
+PiBvZiB0aGUgZnVuY3Rpb24g4oCca21lbWR1cOKAnS4KPiBodHRwczovL2dpdC5rZXJuZWwub3Jn
+L3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2YWxkcy9saW51eC5naXQvdHJlZS9kcml2ZXJz
+L2Nsay9yb2NrY2hpcC9jbGstcGxsLmM/aWQ9MWMwY2M1ZjFhZTVlZTVhNjkxMzcwNGMwZDc1YTZl
+OTk2MDRlZTMwYSNuOTEzCj4gaHR0cHM6Ly9lbGl4aXIuYm9vdGxpbi5jb20vbGludXgvdjUuNC1y
+YzIvc291cmNlL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1wbGwuYyNMOTEzCj4gCj4gKiBEbyB5
+b3UgZmluZCB0aGUgdXNhZ2Ugb2YgdGhlIGZvcm1hdCBzdHJpbmcg4oCcJXM6IGNvdWxkIG5vdCBh
+bGxvY2F0ZQo+ICAgcmF0ZSB0YWJsZSBmb3IgJXNcbuKAnSBzdGlsbCBhcHByb3ByaWF0ZSBhdCB0
+aGlzIHBsYWNlPwoKSWYgdGhlcmUgaXMgYW4gaW50ZXJuYWwgIm5vLW1lbW9yeSIgb3V0cHV0IGZy
+b20gaW5zaWRlIGttZW1kdXAgbm93LApJIGd1ZXNzIHRoZSBvbmUgaW4gdGhlIGNsb2NrIGRyaXZl
+ciB3b3VsZCBiZSBhIGR1cGxpY2F0ZSBhbmQgY291bGQgZ28gYXdheS4KCj4gKiBJcyB0aGVyZSBh
+IG5lZWQgdG8gYWRqdXN0IHRoZSBlcnJvciBoYW5kbGluZyBoZXJlPwoKVGhlcmUgaXMgbm8gbmVl
+ZCBmb3IgYWRkaXRpb25hbCBlcnJvciBoYW5kbGluZy4gTGlrZSBpZiB0aGUgcmF0ZS10YWJsZQpj
+b3VsZCBub3QgYmUgZHVwbGljYXRlZCwgdGhlIGNsb2NrIHdpbGwgc3RpbGwgcmVwb3J0IHRoZSBj
+b3JyZWN0IGNsb2NrcmF0ZQp5b3UgY2FuIGp1c3Qgbm90IHNldCBhIG5ldyByYXRlLgoKQW5kIGZv
+ciBhIHN5c3RlbSBpdCdzIGFsd2F5cyBiZXR0ZXIgdG8gaGF2ZSB0aGUgY2xvY2sgZHJpdmVyIHBy
+ZXNlbnQKdGhhbiBmb3IgYWxsIGRldmljZS1kcml2ZXJzIHRvIGZhaWwgcHJvYmluZy4gRXNwZWNp
+YWxseSBhcyB0aGlzIHN0YXJ0IGFzCmNvcmUgY2xvY2sgZHJpdmVyLCBzbyB0aGVyZSBpcyBubyBk
+ZWZlcnJpbmcgcG9zc2libGUuCgpIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1h
+cm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
