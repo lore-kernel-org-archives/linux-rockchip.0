@@ -1,287 +1,254 @@
-From: Qu Wenruo <quwenruo.btrfs@gmx.com>
-Subject: Re: [PATCH v3 00/57] ram: rk3399: Add LPDDR4 support
-Date: Sat, 12 Oct 2019 18:37:59 +0800
-Message-ID: <23d554e3-4345-25bd-f5be-00222485164c@gmx.com>
-References: <20190716115745.12585-1-jagan@amarulasolutions.com>
- <310a4823-ce36-6152-2886-2bb6fcc0e328@gmx.com>
- <9816875f-6166-ce55-6ed5-211e6a40b4fe@gmx.com>
- <b75d1b23-78e4-01e0-77e0-26de152a8b89@rock-chips.com>
+From: Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org>
+Subject: [PATCH 3/3] arm64: dts: rockchip: fix RockPro64 sdmmc settings
+Date: Sat, 12 Oct 2019 14:45:52 +0200
+Message-ID: <6728ce64-d35d-f27a-b1b3-a83847f6b672@web.de>
+References: <20191003215036.15023-1-smoch@web.de>
+ <20191003215036.15023-3-smoch@web.de>
+ <31181f3c-20ec-e717-1f7e-8b35cd54d96d@arm.com>
+ <a8b20c45-0426-ee42-4efc-52e56ea6bb20@web.de>
+ <120e2dbc-55eb-2205-b00f-7e50928ec706@rock-chips.com>
+ <1c452b8b-853f-8f58-5f3a-0bbecbe20557@web.de>
+ <fc7dce53-ad39-26e3-7c19-ab60ff4cc332@arm.com>
+ <0c6fdb65-be2a-68e3-a686-14ce9b0a00a4@rock-chips.com>
+ <e4aaddc2-441b-b835-380e-374a3d935474@web.de>
+ <HE1PR06MB40115FDF385886FDDE122CD6AC970@HE1PR06MB4011.eurprd06.prod.outlook.com>
+ <13064e01-9472-fc4d-2c7f-c186fa2a9a91@web.de>
+ <64a7d056-28d0-b6d8-6148-b98b58265c08@arm.com>
+ <6c2e6523-dc0a-1ad6-ffd3-7ef63c6f7df9@web.de>
+ <971537f8-2fe5-9ebe-3f04-9e3d99c915a9@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============9068094149968586444=="
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <b75d1b23-78e4-01e0-77e0-26de152a8b89@rock-chips.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>, Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, YouMin Chen <cym@rock-chips.com>, u-boot@lists.denx.de
-Cc: linux-rockchip@lists.infradead.org, gajjar04akash@gmail.com, linux-amarula@amarulasolutions.com, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <971537f8-2fe5-9ebe-3f04-9e3d99c915a9-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============9068094149968586444==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="bP66AjoczJsd9IuK8IUEVwTljq9uLfPb6"
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---bP66AjoczJsd9IuK8IUEVwTljq9uLfPb6
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-
-
-On 2019/10/8 =E4=B8=8A=E5=8D=888:31, Kever Yang wrote:
-> Hi Qu and Mani,
->=20
->=20
-> This patch has already on the mater, you can try with master code and
-> use idbloader.img
->=20
-> directly.
->=20
->=20
-> Thanks,
-
-Confirmed it works perfectly on RockPi 4, while the previous tag
-v2019.04, it boots but could easily hit SError memory error.
-
-Great work!
-
-Thanks,
-Qu
->=20
-> - Kever
->=20
-> On 2019/10/6 =E4=B8=8A=E5=8D=889:30, Qu Wenruo wrote:
->>
->> On 2019/10/6 =E4=B8=8A=E5=8D=889:05, Qu Wenruo wrote:
->>>
->>> On 2019/7/16 =E4=B8=8B=E5=8D=887:56, Jagan Teki wrote:
->>>> This is next revison of lpddr4 support on rk3399 compared to
->>>> previous set[1]. It has some changes based on the commit orders
->>>> and squashing few patches together and rest is same.
->>>>
->>>> Thanks to
->>>> - YouMin Chen
->>>> - Akash Gajjar
->>>> - Kever Yang
->>>> for supporting all the help on this work.
->>>>
->>>> Changes for v3:
->>>> - squash set_rate code in one patch
->>>> - tested in Rockpro64 and Rock-PI-4
->>> Great works! Can't wait to try them on both boards!
->>>
->>> Would you mind to setup a git repo for this large patchset?
->>> It would be much easier for other guys to test, other than fetching a=
-ll
->>> the patches and apply them.
->> In fact the patchset can't be applied to current master due to conflic=
-ts.
->> And furthermore the hash doesn't match any existing tree.
->>
->> Would you mind to rebase it to current master? Or at least a git repo =
-so
->> I could try to rebase them.
->>
->> Thanks,
->> Qu
->>> Thanks,
->>> Qu
->>>
->>>> - order them in proper way
->>>> - rebase on master
->>>> Changes for v2:
->>>> - handle LPDDR4 code as part of CONFIG_RAM_RK3399_LPDDR4
->>>> - support data_training and set_rate via sdram_rk3399_ops
->>>> - add proper sys_reg_enc macros
->>>> - add new patch to rename variable sdram_params with params
->>>> - fix few commit messages.
->>>>
->>>> patch 0001 - 0018: add dram config enc macro
->>>>
->>>> patch 0019: configure phy IO in ds odt
->>>>
->>>> patch 0020: add LPDDR4 config
->>>>
->>>> patch 0021 - 0043: lpddr4 data training changes
->>>>
->>>> patch 0044 - 0046: syscon pmu support
->>>>
->>>> patch 0047: set 50MHz ddr clock
->>>>
->>>> patch 0048: set 400MHz ddr clock
->>>>
->>>> patch 0049: LPDDR4-400 timings
->>>>
->>>> patch 0050: LPDDR4-800 timings
->>>>
->>>> patch 0051 - 0052: lpddr4 set rate
->>>>
->>>> patch 0053: enable lpddr4 support on Rockpro64
->>>>
->>>> patch 0054: enable lpddr4 support on Rock-PI 4
->>>>
->>>> patch 0055: add LPDDR-100 timings via dts
->>>>
->>>> patch 0056: use LPDDR-100 timings on Rockpro64
->>>>
->>>> patch 0057: use LPDDR-100 timings on Rock-PI 4
->>>>
->>>> [1] https://patchwork.ozlabs.org/cover/1116734/
->>>>
->>>> Any inputs?
->>>> Jagan.
->>>>
->>>> Jagan Teki (57):
->>>> =C2=A0=C2=A0 ram: rk3399: Add ddrtype enc macro
->>>> =C2=A0=C2=A0 ram: rk3399: Add channel number encoder macro
->>>> =C2=A0=C2=A0 ram: rk3399: Add row_3_4 enc macro
->>>> =C2=A0=C2=A0 ram: rk3399: Add chipinfo macro
->>>> =C2=A0=C2=A0 ram: rk3399: Add rank enc macro
->>>> =C2=A0=C2=A0 ram: rk3399: Add column enc macro
->>>> =C2=A0=C2=A0 ram: rk3399: Add bk enc macro
->>>> =C2=A0=C2=A0 ram: rk3399: Add dbw enc macro
->>>> =C2=A0=C2=A0 ram: rk3399: Add cs0_rw macro
->>>> =C2=A0=C2=A0 ram: rk3399: Add cs1_rw macro
->>>> =C2=A0=C2=A0 ram: rk3399: Add bw enc macro
->>>> =C2=A0=C2=A0 ram: rk3399: Rename sys_reg with sys_reg2
->>>> =C2=A0=C2=A0 ram: rk3399: Update cs0_row to use sys_reg3
->>>> =C2=A0=C2=A0 ram: rk3399: Update cs1_row to use sys_reg3
->>>> =C2=A0=C2=A0 ram: rk3399: Add cs1_col enc macro
->>>> =C2=A0=C2=A0 ram: rk3399: Add ddr version enc macro
->>>> =C2=A0=C2=A0 ram: rk3399: Add ddrtimingC0
->>>> =C2=A0=C2=A0 ram: rk3399: Add DdrMode
->>>> =C2=A0=C2=A0 ram: rk3399: Configure phy IO in ds odt
->>>> =C2=A0=C2=A0 ram: rockchip: Kconfig: Add RK3399 LPDDR4 entry
->>>> =C2=A0=C2=A0 ram: rk3399: Add lpddr4 rank mask for ca training
->>>> =C2=A0=C2=A0 ram: rk3399: Add lpddr4 rank mask for wdql training
->>>> =C2=A0=C2=A0 ram: rk3399: Move mode_sel assignment
->>>> =C2=A0=C2=A0 ram: rk3399: Don't wait for PLL lock in lpddr4
->>>> =C2=A0=C2=A0 ram: rk3399: Avoid two channel ZQ Cal Start at the same=
- time
->>>> =C2=A0=C2=A0 ram: rk3399: Configure PHY_898, PHY_919 for lpddr4
->>>> =C2=A0=C2=A0 ram: rk3399: Configure BOOSTP_EN, BOOSTN_EN for lpddr4
->>>> =C2=A0=C2=A0 ram: rk3399: Configure SLEWP_EN, SLEWN_EN for lpddr4
->>>> =C2=A0=C2=A0 ram: rk3399: Configure PHY RX_CM_INPUT for lpddr4
->>>> =C2=A0=C2=A0 ram: rk3399: Map chipselect for lpddr4
->>>> =C2=A0=C2=A0 ram: rk3399: Configure tsel write ca for lpddr4
->>>> =C2=A0=C2=A0 ram: rk3399: Don't disable dfi dram clk for lpddr4, ran=
-k 1
->>>> =C2=A0=C2=A0 ram: rk3399: Add IO settings
->>>> =C2=A0=C2=A0 ram: sdram: Configure lpddr4 tsel rd, wr based on IO se=
-ttings
->>>> =C2=A0=C2=A0 ram: rk3399: Add tsel control clock drive
->>>> =C2=A0=C2=A0 ram: rk3399: Configure soc odt support
->>>> =C2=A0=C2=A0 ram: rk3399: Get lpddr4 tsel_rd_en from io settings
->>>> =C2=A0=C2=A0 ram: rk3399: Update lpddr4 vref based on io settings
->>>> =C2=A0=C2=A0 ram: rk3399: Update lpddr4 mode_sel based on io setting=
-s
->>>> =C2=A0=C2=A0 ram: rk3399: Update lpddr4 vref_mode_ac
->>>> =C2=A0=C2=A0 ram: rk3399: Simplify data training first argument
->>>> =C2=A0=C2=A0 ram: rk3399: Handle data training via ops
->>>> =C2=A0=C2=A0 ram: rk3399: Add LPPDR4 mr detection
->>>> =C2=A0=C2=A0 arm: include: rockchip: Add rk3399 pmu file
->>>> =C2=A0=C2=A0 rockchip: rk3399: syscon: Add pmu support
->>>> =C2=A0=C2=A0 rockchip: dts: rk3399: Add u-boot, dm-pre-reloc for pmu=
-
->>>> =C2=A0=C2=A0 clk: rockchip: rk3399: Set 50MHz ddr clock
->>>> =C2=A0=C2=A0 clk: rockchip: rk3399: Set 400MHz ddr clock
->>>> =C2=A0=C2=A0 ram: rk3399: Add LPPDDR4-400 timings inc
->>>> =C2=A0=C2=A0 ram: rk3399: Add LPPDDR4-800 timings inc
->>>> =C2=A0=C2=A0 ram: rk3399: Add set_rate sdram rk3399 ops
->>>> =C2=A0=C2=A0 ram: rk3399: Add lpddr4 set rate support
->>>> =C2=A0=C2=A0 configs: rockpro64: Enable LPDDR4 support
->>>> =C2=A0=C2=A0 configs: rock-pi-4: Enable LPDDR4 support
->>>> =C2=A0=C2=A0 rockchip: dts: rk3399: Add LPDDR4-100 timings
->>>> =C2=A0=C2=A0 rockchip: dts: rk3399: rockpro64: Use LPDDR4-100 dtsi
->>>> =C2=A0=C2=A0 rockchip: dts: rk3399: rock-pi-4: Use LPDDR4-100 dtsi
->>>>
->>>> =C2=A0 arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi=C2=A0=C2=A0=C2=A0=C2=
-=A0 |=C2=A0=C2=A0=C2=A0 1 +
->>>> =C2=A0 arch/arm/dts/rk3399-rockpro64-u-boot.dtsi=C2=A0=C2=A0=C2=A0=C2=
-=A0 |=C2=A0=C2=A0=C2=A0 1 +
->>>> =C2=A0 arch/arm/dts/rk3399-sdram-lpddr4-100.dtsi=C2=A0=C2=A0=C2=A0=C2=
-=A0 | 1537 +++++++++++++++
->>>> =C2=A0 arch/arm/dts/rk3399-u-boot.dtsi=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=
- 4 +
->>>> =C2=A0 .../include/asm/arch-rockchip/pmu_rk3399.h=C2=A0=C2=A0=C2=A0 =
-|=C2=A0=C2=A0 72 +
->>>> =C2=A0 .../include/asm/arch-rockchip/sdram_common.h=C2=A0 |=C2=A0=C2=
-=A0 31 +
->>>> =C2=A0 .../include/asm/arch-rockchip/sdram_rk3399.h=C2=A0 |=C2=A0=C2=
-=A0 29 +-
->>>> =C2=A0 arch/arm/mach-rockchip/rk3399/syscon_rk3399.c |=C2=A0=C2=A0=C2=
-=A0 8 +
->>>> =C2=A0 configs/rock-pi-4-rk3399_defconfig=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0 1 +
->>>> =C2=A0 configs/rockpro64-rk3399_defconfig=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0 1 +
->>>> =C2=A0 drivers/clk/rockchip/clk_rk3399.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0 8 +
->>>> =C2=A0 drivers/ram/rockchip/Kconfig=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=
-=A0=C2=A0=C2=A0 7 +
->>>> =C2=A0 .../ram/rockchip/sdram-rk3399-lpddr4-400.inc=C2=A0 | 1570 +++=
-++++++++++++
->>>> =C2=A0 .../ram/rockchip/sdram-rk3399-lpddr4-800.inc=C2=A0 | 1570 +++=
-++++++++++++
->>>> =C2=A0 drivers/ram/rockchip/sdram_rk3399.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 1726
->>>> ++++++++++++++---
->>>> =C2=A0 15 files changed, 6317 insertions(+), 249 deletions(-)
->>>> =C2=A0 create mode 100644 arch/arm/dts/rk3399-sdram-lpddr4-100.dtsi
->>>> =C2=A0 create mode 100644 arch/arm/include/asm/arch-rockchip/pmu_rk3=
-399.h
->>>> =C2=A0 create mode 100644 drivers/ram/rockchip/sdram-rk3399-lpddr4-4=
-00.inc
->>>> =C2=A0 create mode 100644 drivers/ram/rockchip/sdram-rk3399-lpddr4-8=
-00.inc
->>>>
->>>
->>> _______________________________________________
->>> U-Boot mailing list
->>> U-Boot@lists.denx.de
->>> https://lists.denx.de/listinfo/u-boot
->>>
->=20
->=20
-
-
---bP66AjoczJsd9IuK8IUEVwTljq9uLfPb6
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEELd9y5aWlW6idqkLhwj2R86El/qgFAl2hrQcACgkQwj2R86El
-/qizPAf9FB5zYnYT5BLDI2xa4JZj4OCXXjOzM+xmgJNV3UgIvMEFQQZMRUKZpB2r
-Sj/CKLmsOn2HwiBYxa/j5kgnyogQX57691036zOQ8CPL6Crch4KJ2bpQc1+Zecu8
-RG0pVc9jsaPUNtkLz08aExpNrxGnm9BOAQzHOURjgHbcDAidCxcoewXEPU+6RpuI
-fRYPVSS8AAJuZzbwrPuhm5HNqcwQZ6bQB0TfF3MAUmsloRa9nUl9eLnbXfK/UWn5
-YoaTe2RZfIW6TyCwwFQ7S1OQRPIlCg6XrBtUTzpw2QLrPsM9PTCANBRVUPiiBhUS
-japO4InnNaZ+FY9ZsOWFnB7UHEHycw==
-=jyso
------END PGP SIGNATURE-----
-
---bP66AjoczJsd9IuK8IUEVwTljq9uLfPb6--
-
---===============9068094149968586444==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1h
-aWxpbmcgbGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlz
-dGluZm8vdS1ib290Cg==
-
---===============9068094149968586444==--
+T24gMTIuMTAuMTkgMDY6MDksIFNoYXduIExpbiB3cm90ZToKPiBPbiAyMDE5LzEwLzExIDIyOjE2
+LCBTb2VyZW4gTW9jaCB3cm90ZToKPj4gT24gMTEuMTAuMTkgMTU6MDAsIFJvYmluIE11cnBoeSB3
+cm90ZToKPj4+IE9uIDExLzEwLzIwMTkgMTI6NDAsIFNvZXJlbiBNb2NoIHdyb3RlOgo+Pj4+IE9u
+IDExLjEwLjE5IDEwOjIyLCBKb25hcyBLYXJsbWFuIHdyb3RlOgo+Pj4+PiBPbiAyMDE5LTEwLTA0
+IDE5OjI0LCBTw7ZyZW4gTW9jaCB3cm90ZToKPj4+Pj4+IE9uIDA0LjEwLjE5IDE3OjMzLCBTaGF3
+biBMaW4gd3JvdGU6Cj4+Pj4+Pj4gT24gMjAxOS8xMC80IDIyOjIwLCBSb2JpbiBNdXJwaHkgd3Jv
+dGU6Cj4+Pj4+Pj4+IE9uIDA0LzEwLzIwMTkgMDQ6MzksIFNvZXJlbiBNb2NoIHdyb3RlOgo+Pj4+
+Pj4+Pj4gT24gMDQuMTAuMTkgMDQ6MTMsIFNoYXduIExpbiB3cm90ZToKPj4+Pj4+Pj4+PiBPbiAy
+MDE5LzEwLzQgODo1MywgU29lcmVuIE1vY2ggd3JvdGU6Cj4+Pj4+Pj4+Pj4+IE9uIDA0LjEwLjE5
+IDAyOjAxLCBSb2JpbiBNdXJwaHkgd3JvdGU6Cj4+Pj4+Pj4+Pj4+PiBPbiAyMDE5LTEwLTAzIDEw
+OjUwIHBtLCBTb2VyZW4gTW9jaCB3cm90ZToKPj4+Pj4+Pj4+Pj4+PiBBY2NvcmRpbmcgdG8gdGhl
+IFJvY2tQcm82NCBzY2hlbWF0aWMgWzFdIHRoZSByazMzOTkgc2RtbWMKPj4+Pj4+Pj4+Pj4+PiBj
+b250cm9sbGVyIGlzCj4+Pj4+Pj4+Pj4+Pj4gY29ubmVjdGVkIHRvIGEgbWljcm9TRCAoVEYgY2Fy
+ZCkgc2xvdCwgd2hpY2ggY2Fubm90IGJlCj4+Pj4+Pj4+Pj4+Pj4gc3dpdGNoZWQgdG8KPj4+Pj4+
+Pj4+Pj4+PiAxLjhWLgo+Pj4+Pj4+Pj4+Pj4gUmVhbGx5PyBBRkFJQ1MgdGhlIFNETU1DMCB3aXJp
+bmcgbG9va3MgcHJldHR5IG11Y2ggaWRlbnRpY2FsCj4+Pj4+Pj4+Pj4+PiB0byB0aGUKPj4+Pj4+
+Pj4+Pj4+IE5hbm9QQy1UNCBzY2hlbWF0aWMgKGl0J3MgdGhlIHNhbWUgcmVmZXJlbmNlIGRlc2ln
+biwgYWZ0ZXIKPj4+Pj4+Pj4+Pj4+IGFsbCksCj4+Pj4+Pj4+Pj4+PiBhbmQgSQo+Pj4+Pj4+Pj4+
+Pj4ga25vdyB0aGF0IGJvYXJkIGNhbiBoYXBwaWx5IGRyaXZlIGEgVUhTLUkgbWljcm9TRCBjYXJk
+IHdpdGgKPj4+Pj4+Pj4+Pj4+IDEuOHYKPj4+Pj4+Pj4+Pj4+IEkvT3MsCj4+Pj4+Pj4+Pj4+PiBi
+ZWNhdXNlIG1pbmUncyBkb2luZyBzbyByaWdodCBub3cuCj4+Pj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+
+Pj4gUm9iaW4uCj4+Pj4+Pj4+Pj4+IE9LLCB0aGUgUm9ja1BybzY0IGRvZXMgbm90IGFsbG93IGEg
+Y2FyZCByZXNldCAocG93ZXIgY3ljbGUpCj4+Pj4+Pj4+Pj4+IHNpbmNlCj4+Pj4+Pj4+Pj4+IFZD
+QzNWMF9TRCBpcyBkaXJlY3RseSBjb25uZWN0ZWQgdG8gVkNDM1YzX1NZUyAodmlhIFI4OTU1NSks
+IHRoZQo+Pj4+Pj4+Pj4+PiBTRE1NQzBfUFdIX0ggc2lnbmFsIGlzIG5vdCBjb25uZWN0ZWQuIFNv
+IHRoZSBjYXJkIGZhaWxzIHRvCj4+Pj4+Pj4+Pj4+IGlkZW50aWZ5Cj4+Pj4+Pj4+Pj4+IGl0c2Vs
+ZiBhZnRlciBzdXNwZW5kIG9yIHJlYm9vdCB3aGVuIHN3aXRjaGVkIHRvIDEuOFYgb3BlcmF0aW9u
+Lgo+Pj4+Pj4+PiBBaCwgdGhhbmtzIGZvciBjbGFyaWZ5aW5nIC0gSSBkaWQgb3Zlcmxvb2sgdGhl
+IHN1YnRsZXR5IHRoYXQKPj4+Pj4+Pj4gVTEyIGFuZAo+Pj4+Pj4+PiBmcmllbmRzIGhhdmUgIk5D
+IiBhcyBhbHRlcm5hdGl2ZSBwYXJ0IG51bWJlcnMsIGV2ZW4gdGhvdWdoIHRoZXkKPj4+Pj4+Pj4g
+YXJlbid0IGFjdHVhbGx5IG1hcmtlZCBhcyBETlAuIFNvIGl0J3Mgc3RpbGwgbm90IHNvIG11Y2gK
+Pj4+Pj4+Pj4gImNhbm5vdCBiZQo+Pj4+Pj4+PiBzd2l0Y2hlZCIgYXMgInN3aXRjaGluZyBjYW4g
+bGVhZCB0byBvdGhlciBwcm9ibGVtcyIuCj4+Pj4+Pj4+Cj4+Pj4+Pj4+Pj4gSSBiZWxpZXZlIHdl
+IGFkZHJlc3NlZCB0aGlzIGlzc3VlIGxvbmcgdGltZSBhZ28sIHBsZWFzZSBjaGVjazoKPj4+Pj4+
+Pj4+Pgo+Pj4+Pj4+Pj4+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJu
+ZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC9jb21taXQvP2lkPTZhMTFmYzQ3ZjE3NWM4ZDg3MDE4
+ZTg5Y2I1OGUyZDM2YzY2NTM0Y2IKPj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+Cj4+Pj4+Pj4+Pj4KPj4+
+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4gVGhhbmtzIGZvciB0aGUgcG9pbnRlci4KPj4+Pj4+Pj4+IEluIHRo
+aXMgY2FzZSBJIGd1ZXNzIEkgc2hvdWxkIHVzZSBmb2xsb3dpbmcgcGF0Y2ggaW5zdGVhZDoKPj4+
+Pj4+Pj4+Cj4+Pj4+Pj4+PiAtLS0gcmszMzk5LXJvY2twcm82NC5kdHMuYmFrIMKgwqAgMjAxOS0x
+MC0wMyAyMjoxNDowMC4wNjc3NDU3OTkKPj4+Pj4+Pj4+ICswMjAwCj4+Pj4+Pj4+PiArKysgcmsz
+Mzk5LXJvY2twcm82NC5kdHPCoMKgwqAgMjAxOS0xMC0wNCAwMDowMjo1MC4wNDc4OTIzNjYgKzAy
+MDAKPj4+Pj4+Pj4+IEBAIC02MTksNiArNjE5LDggQEAKPj4+Pj4+Pj4+IMKgwqDCoMKgwqDCoMKg
+IG1heC1mcmVxdWVuY3kgPSA8MTUwMDAwMDAwPjsKPj4+Pj4+Pj4+IMKgwqDCoMKgwqDCoMKgIHBp
+bmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+Pj4+Pj4+PiDCoMKgwqDCoMKgwqDCoCBwaW5jdHJs
+LTAgPSA8JnNkbW1jX2NsayAmc2RtbWNfY21kICZzZG1tY19idXM0PjsKPj4+Pj4+Pj4+ICvCoMKg
+wqAgc2QtdWhzLXNkcjEwNDsKPj4+Pj4+Pj4+ICvCoMKgwqAgdnFtbWMtc3VwcGx5ID0gPCZ2Y2Nf
+c2Rpbz47Cj4+Pj4+Pj4+PiDCoMKgwqDCoMKgwqDCoCBzdGF0dXMgPSAib2theSI7Cj4+Pj4+Pj4+
+PiDCoMKgwqDCoH07Cj4+Pj4+Pj4+PiBXaGVuIEkgZG8gc28sIHRoZSBzZCBjYXJkIGlzIGRldGVj
+dGVkIGFzIFNEUjEwNCwgYnV0IGEgcmVib290Cj4+Pj4+Pj4+PiBoYW5nczoKPj4+Pj4+Pj4+Cj4+
+Pj4+Pj4+PiBCb290MTogMjAxOC0wNi0yNiwgdmVyc2lvbjogMS4xNAo+Pj4+Pj4+Pj4gQ1BVSWQg
+PSAweDAKPj4+Pj4+Pj4+IENoaXBUeXBlID0gMHgxMCwgMjg2Cj4+Pj4+Pj4+PiBTcGlfQ2hpcElk
+ID0gYzg0MDE4Cj4+Pj4+Pj4+PiBubyBmaW5kIHJrcGFydGl0aW9uCj4+Pj4+Pj4+PiBTcGlCb290
+SW5pdDpmZmZmZmZmZgo+Pj4+Pj4+Pj4gbW1jOiBFUlJPUjogU0RIQ0kgRVJSOmNtZDoweDEwMixz
+dGF0OjB4MTgwMDAKPj4+Pj4+Pj4+IG1tYzogRVJST1I6IENhcmQgZGlkIG5vdCByZXNwb25kIHRv
+IHZvbHRhZ2Ugc2VsZWN0IQo+Pj4+Pj4+Pj4gZW1tYyByZWluaXQKPj4+Pj4+Pj4+IG1tYzogRVJS
+T1I6IFNESENJIEVSUjpjbWQ6MHgxMDIsc3RhdDoweDE4MDAwCj4+Pj4+Pj4+PiBtbWM6IEVSUk9S
+OiBDYXJkIGRpZCBub3QgcmVzcG9uZCB0byB2b2x0YWdlIHNlbGVjdCEKPj4+Pj4+Pj4+IGVtbWMg
+cmVpbml0Cj4+Pj4+Pj4+PiBtbWM6IEVSUk9SOiBTREhDSSBFUlI6Y21kOjB4MTAyLHN0YXQ6MHgx
+ODAwMAo+Pj4+Pj4+Pj4gbW1jOiBFUlJPUjogQ2FyZCBkaWQgbm90IHJlc3BvbmQgdG8gdm9sdGFn
+ZSBzZWxlY3QhCj4+Pj4+Pj4+PiBTZG1tY0luaXQ9MiAxCj4+Pj4+Pj4+PiBtbWMwOmNtZDUsMzIK
+Pj4+Pj4+Pj4+IG1tYzA6Y21kNywzMgo+Pj4+Pj4+Pj4gbW1jMDpjbWQ1LDMyCj4+Pj4+Pj4+PiBt
+bWMwOmNtZDcsMzIKPj4+Pj4+Pj4+IG1tYzA6Y21kNSwzMgo+Pj4+Pj4+Pj4gbW1jMDpjbWQ3LDMy
+Cj4+Pj4+Pj4+PiBTZG1tY0luaXQ9MCAxCj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4gU28gSSBndWVzcyBJ
+IHNob3VsZCB1c2UgYSBkaWZmZXJlbnQgbWluaWxvYWRlciBmb3IgdGhpcyByZWJvb3QgdG8KPj4+
+Pj4+Pj4+IHdvcmshPwo+Pj4+Pj4+Pj4gT3Igd2hhdCBlbHNlIGNvdWxkIGJlIHdyb25nIGhlcmU/
+Cj4+Pj4+Pj4+IEhtbSwgSSBndWVzcyB0aGlzIGlzICJ0aGUgVGlua2VyYm9hcmQgcHJvYmxlbSIg
+YWdhaW4gLSB0aGUgcGF0Y2gKPj4+Pj4+Pj4gYWJvdmUgd291bGQgYmUgT0sgaWYgd2UgY291bGQg
+Z2V0IGFzIGZhciBhcyB0aGUga2VybmVsLCBidXQgY2FuJ3QKPj4+Pj4+Pj4gaGVscCBpZiB0aGUK
+Pj4+Pj4+PiBJIGRpZG4ndCByZWFsaXplIHRoYXQgU0Qgd2FzIHVzZWQgYXMgYm9vdCBtZWRpdW0g
+Zm9yIFJvY2tQcm82NCwKPj4+Pj4+PiBidXQgSQo+Pj4+Pj4+IGRpZCBwYXRjaCB0aGUgdmVuZG9y
+IHRyZWUgdG8gc29sdmUgdGhlIGlzc3VlIGZvciBUaW5rZXJib2FyZCwgc2VlCj4+Pj4+Pj4gaHR0
+cHM6Ly9naXRodWIuY29tL3JvY2tjaGlwLWxpbnV4L2tlcm5lbC9jb21taXQvYTRjY2RlMjFmNWE5
+ZjA0Zjk5NmZiMDI0NzljYjlmMTZkM2RjOGRjMAo+Pj4+Pj4+Cj4+Pj4+Pj4KPj4+Pj4+Pgo+Pj4+
+Pj4+Cj4+Pj4+Pj4gTXkgaW5pdGlhbCBwbGFuIHdhcyB0byBwYXRjaGluZyB1cHN0cmVhbSBrZXJu
+ZWwgYnkgYWRkaW5nCj4+Pj4+Pj4gLT5zaHV0ZG93bixidXQKPj4+Pj4+PiBuZXZlciBmaW5pc2gg
+aXQuCj4+Pj4+Pj4KPj4+Pj4+Pj4gb2ZmZW5kaW5nIGNhcmQgaXMgaXRzZWxmIHRoZSBib290IG1l
+ZGl1bS4gVGhlcmUgd2FzIGEgcHJvcG9zYWwKPj4+Pj4+Pj4gaGVyZToKPj4+Pj4+Pj4KPj4+Pj4+
+Pj4gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDgxNzIxNy8KPj4+Pj4+PiBU
+aGlzIFJGQyBhbHNvIGxvb2tzIGdvb2QgdG8gbWUsIGJ1dCBzZWVtcyBpdCBuZWVkcyB2b2x1bnRl
+ZXJzCj4+Pj4+Pj4gdG8gcHVzaCBpdCBhZ2Fpbi4KPj4+Pj4+IE9oLCBJIHRoaW5rIHRoaXMgaXMg
+YSB0b3RhbGx5IHdyb25nIHdheS4KPj4+Pj4+Cj4+Pj4+PiBXaGlsZSB0aGlzIG1pZ2h0IHdvcmsg
+Zm9yIHNvbWUgY2FyZHMsIHNldHRpbmcgdGhlIGNvbnRyb2xsZXIncyBpL28KPj4+Pj4+IHZvbHRh
+Z2UgdG8gMy4zViB3aGlsZSBsZWF2aW5nIHRoZSBjYXJkIGF0IDEuOFYgY29uZmlndXJhdGlvbiBp
+cwo+Pj4+Pj4gdG90YWxseQo+Pj4+Pj4gYWdhaW5zdCB0aGUgc3BlY2lmaWNhdGlvbiwgY2FuIGxl
+YWQgdG8gYWxsIGtpbmRzIG9mIHN0cmFuZ2UKPj4+Pj4+IGJlaGF2aW91cgo+Pj4+Pj4gYW5kIGV2
+ZW4gY2F1c2UgaGFyZHdhcmUgZGFtYWdlLiBJdCBhbHNvIHdvdWxkIGFjdGl2ZWx5IGRlZmVuZCB0
+aGUKPj4+Pj4+IHB1cnBvc2Ugb2YgdGhlIGFib3ZlIG1lbnRpb25lZCBwYXRjaCAoNmExMWZjNCkg
+d2hlcmUgdGhlIGtlcm5lbAo+Pj4+Pj4gZ3Vlc3Nlcwo+Pj4+Pj4gdGhlIGkvbyB2b2x0YWdlIGZy
+b20gdGhlIGNhcmQgY29uZmlndXJhdGlvbiBhbmQgc3dpdGNoZXMgdGhlCj4+Pj4+PiBjb250cm9s
+bGVyCj4+Pj4+PiBhY2NvcmRpbmdseS4gV2Ugd291bGQgZW5kIHVwIHdpdGggYSAxLjhWIGNhcmQg
+YW5kIGNvbnRyb2xsZXIKPj4+Pj4+IGNvbmZpZ3VyYXRpb24gYW5kIGEgcmVndWxhdG9yIHZvbHRh
+Z2Ugb2YgMy4zVi4gVGhpcyB3b3VsZCBvbmx5IHdvcmsKPj4+Pj4+IHdpdGgKPj4+Pj4+IGdvb2Qg
+bHVjay4gRXZlbiBpZiB0aGUga2VybmVsIGRyaXZlciB3b3VsZCBzd2l0Y2ggdGhlIHJlZ3VsYXRv
+cgo+Pj4+Pj4gYmFjayB0bwo+Pj4+Pj4gMS44ViBpbiB0aGlzIGNhc2UsIHRoZSB2b2x0YWdlIG1p
+c21hdGNoIHJlbWFpbnMgaW4gdGhlIGJvb3Rsb2FkZXIKPj4+Pj4+IHdoZW4KPj4+Pj4+IHRoaXMg
+Y2FyZCBjb250YWlucyB0aGUgYm9vdCBpbWFnZS4KPj4+Pj4+Cj4+Pj4+PiBUaGUgb25seSBzYW5l
+IHdheSBJIHNlZSB0byBoYW5kbGUgdGhpcyBpcyBpbXBsZW1lbnRpbmcgdGhlIHNhbWUKPj4+Pj4+
+IHdvcmthcm91bmQgKG1vZGUgZ3Vlc3NpbmcpIGFsc28gaW4gdGhlIGJvb3Rsb2FkZXIgKHJvY2tj
+aGlwCj4+Pj4+PiBtaW5pbG9hZGVyCj4+Pj4+PiBhbmQgdS1ib290IFNQTCBzaW5jZSBib3RoIGJv
+b3Rsb2FkZXIgY2hhaW5zIGFyZSBzdXBwb3J0ZWQgZm9yIHRoaXMKPj4+Pj4+IGJvYXJkKS4KPj4+
+Pj4+Cj4+Pj4+PiBPciBtYXliZSBJIG1pc3Mgc29tZXRoaW5nPwo+Pj4+PiBUaGFua3MgZm9yIHlv
+dXIgaW5wdXQsIEkgaGF2ZSBtYWRlIGEgbmV3IHNlcmllcyBbMV0gd2l0aCBhIHNpbWlsYXIKPj4+
+Pj4gYXBwcm9hY2ggYnV0IGlzIGxpbWl0ZWQgdG8gZHdfbW1jLXJvY2tjaGlwCj4+Pj4+IGFuZCBv
+bmx5IGNoYW5nZXMgdGhlIHJlZ3VsYXRvciBhdCBwb3dlcl9vZmYgYWZ0ZXIgdGhlIHJlZ3VsYXRv
+ciBoYXMKPj4+Pj4gYmVlbiBkaXNhYmxlZCAodGhlIHZxbW1jIHJlZ3VsYXRvciBpbiBhZmZlY3Rl
+ZCBkZXZpY2VzIGlzIGFsd2F5cy1vbikuCj4+Pj4gVGhhbmtzIGZvciB5b3VyIHdvcmsgb24gdGhp
+cy4gVW5mb3J0dW5hdGVseSBJIHN0aWxsIHRoaW5rIHRoYXQgdGhpcyBpcwo+Pj4+IHRoZSB3cm9u
+ZyBhcHByb2FjaC4KPj4+PiBJIHNlZSBzZXZlcmFsIHByb2JsZW1zIGluIHlvdXIgcGF0Y2ggc2Vy
+aWVzOgo+Pj4+IC0gWW91IGludHJvZHVjZWQgR1BJTzBfUEExIGFzIHJlZ3VsYXRvciBlbmFibGUg
+Zm9yIFJvY2tQcm82NC4KPj4+PiBVbmZvcnR1bmF0ZWx5IFBpbmU2NCBkZWNpZGVkIHRvIGRpc2Fi
+bGUgdGhpcyByZWd1bGF0b3Igb24gQm9hcmQKPj4+PiBWZXJzaW9uCj4+Pj4gMi4xIChyZWFsIHBy
+b2R1Y3QgdmVyc2lvbiksIHNlZSBhYm92ZS4gSSBoYXZlIG5vIGlkZWEgd2h5IHRoZXkgZGlkCj4+
+Pj4gdGhpcy4KPj4+PiAtIFlvdSBjaGFuZ2VkIHRoZSBpL28gdm9sdGFnZSBmcm9tIDMuMFYgdG8g
+My4zVi4gVGhpcyBpcyBub3QKPj4+PiBhbGxvd2VkIG9uCj4+Pj4gUkszMzk5IEkvTyBiYW5rIEYu
+Cj4+Pj4KPj4+PiBDaGFuZ2luZyB0aGUgaS9vIHZvbHRhZ2UgdG8gMy4wVi8zLjNWIHdoaWxlIHRo
+ZSBzZCBjYXJkIGlzIGNvbmZpZ3VyZWQKPj4+PiBmb3IgMS44ViBpcyBhZ2FpbnN0IHRoZSBzcGVj
+aWZpY2F0aW9uIGFuZCBkYW5nZXJvdXMuIFdoaWxlCj4+Pj4gZXhwZXJpbWVudGluZwo+Pj4+IHdp
+dGggZGlmZmVyZW50IGltYWdlcyAoYXl1ZmFuLCBhcm1iaWFuKSBmb3IgbXkgbmV3bHkgYm91Z2h0
+Cj4+Pj4gUm9ja1BybzY0IEkKPj4+PiBraWxsZWQgYSBTRCBjYXJkICgzMkdCIFNhbXN1bmcgVUhT
+LUkpLiBJIGNhbm5vdCByZWNvbnN0cnVjdCB0aGUgZXhhY3QKPj4+PiBjaXJjdW1zdGFuY2VzLCBi
+dXQgSSdtIHByZXR0eSBzdXJlIHRoaXMgaGFwcGVuZWQgZHVlIHRvIHRoZSB2b2x0YWdlCj4+Pj4g
+bWlzbWF0Y2guIE9mIGNvdXJzZSBJJ20gbm90IGtlZW4gdG8gZXhwZXJpbWVudCBmdXJ0aGVyIHdp
+dGggdGhpcyBhbmQKPj4+PiBraWxsIG1vcmUgc2QgY2FyZHMuIFRoaXMgaXMgbm90IGp1c3QgYW4g
+dGhlb3JldGljYWwgaXNzdWUuCj4+Pj4+IFRvIG15IGtub3dsZWRnZSB0aGUgcHJvYmxlbSBpcyBu
+b3Qgd2l0aCB0aGUgcm9ja2NoaXAgbWluaWxvYWRlciBvcgo+Pj4+PiB1LWJvb3QgU1BMLCBpdCBp
+cyB0aGUgaW5pdGlhbCBib290IHJvbSB0aGF0IHRyaWVzIHRvIGxvYWQKPj4+Pj4gdGhlIG1pbmls
+b2FkZXIvU1BMIGZyb20gYSBTRC1jYXJkLCBzbyBub3RoaW5nIHRoYXQgY2FuIGJlIHVwZGF0ZWQu
+Cj4+Pj4gV2hhdCBJIG9ic2VydmVkIG9uIG15IFJvY2tQcm82NDoKPj4+PiBUaGUgUk9NIGJvb3Rs
+b2FkZXIgYWx3YXlzIHdhcyBhYmxlIHRvIGxvYWQgdGhlIG5leHQgc3RhZ2UsIG1heWJlCj4+Pj4g
+ZHVlIHRvCj4+Pj4gdGhlIGxvdyBpbml0aWFsIGNsb2NrIG9mIDQwMGtIej8gQWxzbyB0aGUgUk9N
+IGJvb3Rsb2FkZXIgY2Fubm90IGNoYW5nZQo+Pj4+IHZvbHRhZ2UgcmVndWxhdG9yIHNldHRpbmdz
+LiBTbyBpZiB0aGUgaS9vIHZvbHRhZ2Ugc3RpbGwgaXMgYXQgMS44ViBhbmQKPj4+PiBtYXRjaGlu
+ZyB0aGUgc2QgY2FyZCBzZXR0aW5nLCB0aGVyZSBpcyBubyBwcm9ibGVtIGZvciB0aGUgUk9NCj4+
+Pj4gYm9vdGxvYWRlci4KPj4+Cj4+PiBIbW0sIHRoYXQgbWFrZXMgbWUgd29uZGVyIGlmIHRoZSBw
+cm9ibGVtIG1pZ2h0IGJlIG5vdCBzbyBtdWNoIHRoYXQgdGhlCj4+PiBsZXZlbCBvZiBTRE1NQzBf
+VkREIGl0c2VsZiBzdGF5cyBhdCAxLjhWLCBidXQgdGhhdCBhdCBzb21lIHBvaW50IGFmdGVyCj4+
+PiB0aGUgYm9vdHJvbSB0aGUgR1JGX0lPX1ZTRUwgYml0IGdldHMgcmVzZXQgc28gdGhlIGNvbnRy
+b2xsZXIganVzdAo+Pj4gc3RvcHMgYmVpbmcgYWJsZSB0byByZWFkIGFueXRoaW5nIGFzIGxvZ2lj
+LWhpZ2guCj4+IFdvdWxkIGJlIGdyZWF0IGlmIHNvbWVvbmUgZnJvbSBSb2NrY2hpcCBjb3VsZCBn
+aXZlIHNvbWUgaW5zaWdodHMgd2hldGhlcgo+PiBhbmQgd2hlbiBkdXJpbmcgcmVib290IEdSRl9J
+T19WU0VMIGlzIHJlc2V0IChBVEYgYmVmb3JlIHJlYm9vdCwgc29tZSBTb0MKPj4gc29mdC1yZXNl
+dCwgUk9NIGJvb3Rsb2FkZXIsIHJrbWluaWxvYWRlciwgc29tZXRoaW5nIGRpZmZlcmVudCksIFNo
+YXduPwo+Cj4gUk9NIGNvZGUgYW5kIG1pbmlsb2FkZXIgbmV2ZXIgdG91Y2ggdGhpcyBHUkZfSU9f
+VlNFTCBmb3Igc2RtbWMsIGFuZCBvbmx5Cj4ga2VybmVsIGRpZCBzaW5jZSBub3cgaXQgc3VwcG9y
+dCBVSFMgbW9kZS4gQWZ0ZXIgcmVib290LCB0aGUgdmFsdWUgc2hvdWxkCj4gZGVwZW5kcyBvbiB0
+aGUgKHZhbHVlLWluLWtlcm5lbCAmJiBkb2VzLXJlYm9vdC1sZXZlbC1ob2xkLXRoaXMtcmVnPykK
+Pgo+IERpZmZlcmVudCBTb0NzK1BNSUNzIGV4Y3V0ZSBkaWZmZXJlbnRzIHJlYm9vdCBsZXZlbCBw
+b2xpY3kuCk9LLCB0aGFua3MuIFJvY2tQcm82NCB1c2VzIFJLMzM5OSBhbmQgUks4MDhELgpJcyB0
+aGVyZSBzdWNoIGEgc29mdC1yZXNldCBmb3IgR1JGX0lPX1ZTRUwgaW4gUkszMzk5PwoKCkxldCdz
+IGhhdmUgYW5vdGhlciBkZXRhaWxlZCBsb29rIGF0IHRoZSByZWJvb3QgcHJvY2VzcyBvbiBteSBS
+b2NrUHJvNjQKd2l0aCBTRCBVSFMgZW5hYmxlZDoKClvCoMKgIDg0LjY3NTU0OF0gcmVib290OiBS
+ZXN0YXJ0aW5nIHN5c3RlbQpERFIgVmVyc2lvbiAxLjIzIDIwMTkwNzA5ClsuLi5dCmNoYW5nZSBm
+cmVxIHRvIDg1Nk1IeiAxLDAKY2ggMCBkZHJjb25maWcgPSAweDEwMSwgZGRyc2l6ZSA9IDB4MjAy
+MApjaCAxIGRkcmNvbmZpZyA9IDB4MTAxLCBkZHJzaXplID0gMHgyMDIwCnBtdWdyZl9vc19yZWdb
+Ml0gPSAweDNBQTFGQUExLCBzdHJpZGUgPSAweEQKT1VUCkJvb3QxOiAyMDE4LTA2LTI2LCB2ZXJz
+aW9uOiAxLjE0CkNQVUlkID0gMHgwCkNoaXBUeXBlID0gMHgxMCwgMjg3ClNwaV9DaGlwSWQgPSBj
+ODQwMTgKbm8gZmluZCBya3BhcnRpdGlvbgpTcGlCb290SW5pdDpmZmZmZmZmZgptbWM6IEVSUk9S
+OiBTREhDSSBFUlI6Y21kOjB4MTAyLHN0YXQ6MHgxODAwMAptbWM6IEVSUk9SOiBDYXJkIGRpZCBu
+b3QgcmVzcG9uZCB0byB2b2x0YWdlIHNlbGVjdCEKZW1tYyByZWluaXQKbW1jOiBFUlJPUjogU0RI
+Q0kgRVJSOmNtZDoweDEwMixzdGF0OjB4MTgwMDAKbW1jOiBFUlJPUjogQ2FyZCBkaWQgbm90IHJl
+c3BvbmQgdG8gdm9sdGFnZSBzZWxlY3QhCmVtbWMgcmVpbml0Cm1tYzogRVJST1I6IFNESENJIEVS
+UjpjbWQ6MHgxMDIsc3RhdDoweDE4MDAwCm1tYzogRVJST1I6IENhcmQgZGlkIG5vdCByZXNwb25k
+IHRvIHZvbHRhZ2Ugc2VsZWN0IQpTZG1tY0luaXQ9MiAxCm1tYzA6Y21kNSwzMgptbWMwOmNtZDE2
+LDMyCm1tYzA6Y21kNSwzMgptbWMwOmNtZDE2LDMyCm1tYzA6Y21kNSwzMsKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAKCm1t
+YzA6Y21kMTYsMzIKU2RtbWNJbml0PTAgMQpwb3dlck9uIDQ4OTgzNwpVc2IgcmUgQm9vdC4gNjQ4
+OTgzMQpVc2IgcmUgQm9vdC4gMTI0ODk4MzcKVXNiIHJlIEJvb3QuIDE4NDg5ODQwClNvZnRSZXNl
+dApERFIgVmVyc2lvbiAxLjIzIDIwMTkwNzA5Cltib290IGxvb3BdCgpXaGF0IHdlIGNhbiBzZWUg
+aGVyZToKVGhlIFJPTSBib290bG9hZGVyIGlzIGFibGUgdG8gYWNjZXNzIHRoZSBTRCBjYXJkIGFm
+dGVyIHJlYm9vdCwgaXQgbG9hZHMKYW5kIHN0YXJ0cyB0aGUgRERSIGNvbmZpZyBmaXJtd2FyZSB3
+aXRob3V0IGFueSBwcm9ibGVtLiBUaGUgRERSIGZpcm13YXJlCnJ1bnMgdGhyb3VnaCBhbmQgbG9h
+ZHMgYW5kIHN0YXJ0cyB0aGUgbWluaWxvYWRlciB3aXRob3V0IGFueSBwcm9ibGVtLgpUaGUgbWlu
+aWxvYWRlciB0aGVuIHRyaWVzIHRvIGZpbmQgUktUUlVTVCBvbiBTUEkgKGVtcHR5IG9uIG15IGJv
+YXJkKSwKZU1NQyAobm90IHBvcHVsYXRlZCkgYW5kIFNEIGNhcmQgYW5kIGZhaWxzIHRvIGFjY2Vz
+cyB0aGUgU0QgY2FyZApwcm9wZXJseSwgaWYgdGhpcyBjYXJkIGlzIGNvbmZpZ3VyZWQgZm9yIFVI
+UyBtb2RlLiAoV2l0aCBTRCBjYXJkIGF0IEhTCm5vdCBVSFMgY29uZmlndXJhdGlvbiB0aGUgbWlu
+aWxvYWRlciBqdXN0IGxvYWRzIGFuZCBzdGFydHMgQVRGLCBURUUgYW5kCnUtYm9vdCB3aXRob3V0
+IGFueSBwcm9ibGVtLikKClNvIGluIHByaW5jaXBsZSB0aGUgVUhTIGNvbmZpZ3VyZWQgU0QgY2Fy
+ZCBjYW4gYmUgYWNjZXNzZWQgYWZ0ZXIgcmVib290CndpdGhvdXQgYW55IHByb2JsZW0uIEF0IGxl
+YXN0IFJPTSBib290bG9hZGVyIGFuZCBERFIgZmlybXdhcmUgZG8gc28uIFRoZQptaW5pbG9hZGVy
+IHNlZW1zIHRvIGRvIHNvbWV0aGluZyBkaWZmZXJlbnRseSBhbmQgdGhlcmVmb3JlIGZhaWxzLgpT
+aGF3biwgYW55IGlkZWEgd2hhdCdzIGdvaW5nIG9uIHRoZXJlPwoKU29lcmVuCgoKPgo+PiBPciBn
+ZXRzIHRoaXMgVlNFTCBjaGFuZ2VkIG9ubHkgd2hlbiBzd2l0Y2hpbmcgdGhlIHZvbHRhZ2UgcmVn
+dWxhdG9yICh2aWEKPj4gaW9fZG9tYWlucyxzZG1tYy1zdXBwbHkpPwo+Pgo+PiBTb2VyZW4KPj4+
+Cj4+PiBSb2Jpbi4KPj4+Cj4+Pj4gU28gSSB0aGluayB0aGUgbm9ybWFsIHJlYm9vdCBoYW5kbGlu
+ZyBzaG91bGQgYmU6Cj4+Pj4gSWYgdGhlIHNkIGNhcmQgY2FuIGJlIHN3aXRjaGVkIG9mZiAocHJl
+ZmVycmVkIHNvbHV0aW9uKSwgZG8gc28gYW5kCj4+Pj4gcmVzZXQKPj4+PiB0aGUgY29udHJvbGxl
+ciBpL28gdm9sdGFnZSB0byAzLjBWLzMuM1YuCj4+Pj4gSWYgdGhlIHNkIGNhcmQgY2FuIG5vdCBi
+ZSBzd2l0Y2hlZCBvZmYsIG1ha2Ugc3VyZSB0byBsZWF2ZSB0aGUKPj4+PiBjb250cm9sbGVyIGkv
+byB2b2x0YWdlIGF0IHRoZSBjdXJyZW50IHNldHRpbmcuIE1ha2Ugc3VyZSBpbiBsYXRlciBib290
+Cj4+Pj4gc3RhZ2VzIHRvIG5vdCBjaGFuZ2UgdGhlIGNvbnRyb2xsZXIgaS9vIHZvbHRhZ2UgdG8g
+My4wVi8zLjNWIHdoZW4gdGhlCj4+Pj4gY2FyZCBpcyBjb25maWd1cmVkIGZvciAxLjhWLiBBY2Nv
+cmRpbmcgdG8gdGhlIHBhdGNoIG1lbnRpb25lZCBhYm92ZQo+Pj4+IHRoaXMKPj4+PiBiZWhhdmlv
+dXIgYWxyZWFkeSBpcyBpbXBsZW1lbnRlZCBpbiBsaW51eCwgd2UgYWxzbyBuZWVkIHRoaXMgZm9y
+IHRoZQo+Pj4+IGJvb3Rsb2FkZXJzLgo+Pj4+Cj4+Pj4gUmVnYXJkcywKPj4+PiBTb2VyZW4KPj4+
+Pj4KPj4+Pj4gSSBoYXZlIG9ic2VydmVkIHRoaXMgaXNzdWUgb24gdGhlIGZvbGxvd2luZyBkZXZp
+Y2VzLCBhbmQgdGhlIHBhdGNoZXMKPj4+Pj4gYXQgWzFdIG1ha2VzIGl0IHBvc3NpYmxlIHRvIHJl
+Ym9vdCBmcm9tIFNELWNhcmQgYWZ0ZXIgVUhTIGhhcyBiZWVuCj4+Pj4+IGVuYWJsZWQuCj4+Pj4+
+IC0gQXN1cyBUaW5rZXIgQm9hcmQgKFJLMzI4OCkKPj4+Pj4gLSBSb2NrY2hpcCBTYXBwaGlyZSBC
+b2FyZCAoUkszMzk5KQo+Pj4+PiAtIFJhZHhhIFJvY2sgUGkgNCAoUkszMzk5KQo+Pj4+PiAtIFBp
+bmU2NCBSb2NrUHJvNjQgKFJLMzM5OSkKPj4+Pj4gQWxsIG9mIHRoZSBhYm92ZSBzZWVtIHRvIHVz
+ZSB0aGUgUks4MDggcmVndWxhdG9yIGZvciBzZCBpbyB2b2x0YWdlLgo+Pj4+Pgo+Pj4+PiBUaGUg
+Uk9DLVJLMzMyOC1DQyBkaWQgbm90IGhhdmUgdGhpcyBpc3N1ZSBhbmQgc2VlbSB0byBhdXRvbWF0
+aWNhbGx5Cj4+Pj4+IHJlc2V0IHRvIDMuM3YuCj4+Pj4+Cj4+Pj4+IFsxXQo+Pj4+PiBodHRwczov
+L2dpdGh1Yi5jb20vS3dpYm9vL2xpbnV4LXJvY2tjaGlwL2NvbXBhcmUvbmV4dC0yMDE5MTAxMS4u
+Lm5leHQtMjAxOTEwMTEtbW1jCj4+Pj4+Cj4+Pj4+Cj4+Pj4+IFJlZ2FyZHMsCj4+Pj4+IEpvbmFz
+Cj4+Pj4+Cj4+Pj4+PiBTb2VyZW4KPj4+Pj4+Cj4+Pj4+Pgo+Pj4+Pj4+PiBhbHRob3VnaCBJJ20g
+bm90IHN1cmUgd2hhdCBpZiBhbnkgcHJvZ3Jlc3MgaGFzIGJlZW4gbWFkZSBzaW5jZQo+Pj4+Pj4+
+PiB0aGVuLgo+Pj4+Pj4+Pgo+Pj4+Pj4+PiBSb2Jpbi4KPj4+Pj4+Pj4KPj4+Pgo+Pj4+Cj4+Cj4+
+Cj4+Cj4+Cj4+Cj4KPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
