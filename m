@@ -1,13 +1,14 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] drm/rockchip: make rockchip_gem_alloc_object static
-Date: Sun, 13 Oct 2019 23:57:53 +0200
-Message-ID: <4332900.Is0gsZspTc@phil>
-References: <20191009121022.17478-1-ben.dooks@codethink.co.uk>
+Subject: Re: [PATCH] drm/rockchip/rk3066: Use devm_platform_ioremap_resource()
+ in rk3066_hdmi_bind()
+Date: Sun, 13 Oct 2019 23:58:26 +0200
+Message-ID: <12988569.FbAFs2EWry@phil>
+References: <0666bc0b-6624-21a0-47c4-b78e2a3b3ad5@web.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191009121022.17478-1-ben.dooks@codethink.co.uk>
+In-Reply-To: <0666bc0b-6624-21a0-47c4-b78e2a3b3ad5@web.de>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -17,18 +18,18 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Ben Dooks <ben.dooks@codethink.co.uk>
-Cc: linux-kernel@lists.codethink.co.uk, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Markus Elfring <Markus.Elfring@web.de>
+Cc: David Airlie <airlied@linux.ie>, kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, LKML <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org, Zheng Yang <zhengyang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTWl0dHdvY2gsIDkuIE9rdG9iZXIgMjAxOSwgMTQ6MTA6MjIgQ0VTVCBzY2hyaWViIEJlbiBE
-b29rczoKPiBUaGUgcm9ja2NoaXBfZ2VtX2FsbG9jX29iamVjdCBmdW5jdGlvbiBpcyBub3QgZXhw
-b3J0ZWQgc28KPiBtYWtlIGl0IHN0YXRpYyB0byBhdm9pZCB0aGUgZm9sbG93aW5nIHNwYXJzZSB3
-YXJuaW5nOgo+IAo+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmM6
-Mjk3OjI4OiB3YXJuaW5nOiBzeW1ib2wgJ3JvY2tjaGlwX2dlbV9hbGxvY19vYmplY3QnIHdhcyBu
-b3QgZGVjbGFyZWQuIFNob3VsZCBpdCBiZSBzdGF0aWM/Cj4gCj4gU2lnbmVkLW9mZi1ieTogQmVu
-IERvb2tzIDxiZW4uZG9va3NAY29kZXRoaW5rLmNvLnVrPgoKYXBwbGllZCB0byBkcm0tbWlzYy1u
-ZXh0CgpUaGFua3MKSGVpa28KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWw=
+QW0gU2Ftc3RhZywgMjEuIFNlcHRlbWJlciAyMDE5LCAyMDo0MDoxNiBDRVNUIHNjaHJpZWIgTWFy
+a3VzIEVsZnJpbmc6Cj4gRnJvbTogTWFya3VzIEVsZnJpbmcgPGVsZnJpbmdAdXNlcnMuc291cmNl
+Zm9yZ2UubmV0Pgo+IERhdGU6IFNhdCwgMjEgU2VwIDIwMTkgMjA6MzI6MjUgKzAyMDAKPiAKPiBT
+aW1wbGlmeSB0aGlzIGZ1bmN0aW9uIGltcGxlbWVudGF0aW9uIGJ5IHVzaW5nIGEga25vd24gd3Jh
+cHBlciBmdW5jdGlvbi4KPiAKPiBUaGlzIGlzc3VlIHdhcyBkZXRlY3RlZCBieSB1c2luZyB0aGUg
+Q29jY2luZWxsZSBzb2Z0d2FyZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBNYXJrdXMgRWxmcmluZyA8
+ZWxmcmluZ0B1c2Vycy5zb3VyY2Vmb3JnZS5uZXQ+CgphcHBsaWVkIHRvIGRybS1taXNjLW5leHQK
+ClRoYW5rcwpIZWlrbwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
+ZXZlbA==
