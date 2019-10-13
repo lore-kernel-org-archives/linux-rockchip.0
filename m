@@ -1,57 +1,50 @@
-From: Markus Elfring <Markus.Elfring@web.de>
-Subject: Re: clk: rockchip: Checking a kmemdup() call in
- rockchip_clk_register_pll()
-Date: Sun, 13 Oct 2019 10:45:09 +0200
-Message-ID: <29d12079-d888-e090-da5a-c407c13d696b@web.de>
-References: <e96505a8-b554-f61e-3940-0b9e9c7850ff@web.de>
- <5801053.xxhhKtLrcJ@diego>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH 0/7] add support for clocksource/clockevent DT selection
+Date: Sun, 13 Oct 2019 20:16:10 +0200
+Message-ID: <14df6e5d-19ef-4ebc-fd11-9953bc3fc44e@linaro.org>
+References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
+ <c3a68a08-d134-cd28-c8af-f757628e07f1@linaro.org>
+ <72edc5fd-df05-cba5-5aa7-39da1709415b@microchip.com>
+ <620a19d5-73b8-709d-9eec-49274ac23e51@microchip.com>
+ <187d7020-fbe9-7984-2358-8a70faef019f@microchip.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <5801053.xxhhKtLrcJ@diego>
+Return-path: <linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org>
+In-Reply-To: <187d7020-fbe9-7984-2358-8a70faef019f@microchip.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org
-Cc: Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Aditya Pakki <pakki001@umn.edu>, Kangjie Lu <kjlu@umn.edu>, LKML <linux-kernel@vger.kernel.org>, Navid Emamdoost <emamd001@umn.edu>, Stephen McCamant <smccaman@umn.edu>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-snps-arc>,
+ <mailto:linux-snps-arc-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-snps-arc/>
+List-Post: <mailto:linux-snps-arc@lists.infradead.org>
+List-Help: <mailto:linux-snps-arc-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-snps-arc>,
+ <mailto:linux-snps-arc-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-snps-arc" <linux-snps-arc-bounces@lists.infradead.org>
+Errors-To: linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org
+To: Claudiu.Beznea@microchip.com, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, nsekhar@ti.com, bgolaszewski@baylibre.com, monstr@monstr.eu, john@phrozen.org, ralf@linux-mips.org, paul.burton@mips.com, jhogan@kernel.org, lftan@altera.com, tglx@linutronix.de, vgupta@synopsys.com, marc.zyngier@arm.com, patrice.chotard@st.com, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, eric@anholt.net, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, linus.walleij@linaro.org, shc_work@mail.ru, kgene@kernel.org, krzk@kernel.org, ysato@users.sourceforge.jp, liviu.dudau@arm.com, sudeep.holla@arm.com, lorenzo.pieralisi@arm.com, shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com, baohua@kernel.org, Nicolas.Ferre@microchip.com, alexandre.belloni@bo
+Cc: uclinux-h8-devel@lists.sourceforge.jp, devicetree@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org, openbmc@lists.ozlabs.org, linux-oxnas@groups.io, linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, linux-unisoc@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-tegra@vger.kernel.org, nios2-dev@lists.rocketboards.org, linux-riscv@lists.infradead.org, linux-snps-arc@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Pj4gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFs
-ZHMvbGludXguZ2l0L3RyZWUvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXBsbC5jP2lkPTFjMGNj
-NWYxYWU1ZWU1YTY5MTM3MDRjMGQ3NWE2ZTk5NjA0ZWUzMGEjbjkxMwo+PiBodHRwczovL2VsaXhp
-ci5ib290bGluLmNvbS9saW51eC92NS40LXJjMi9zb3VyY2UvZHJpdmVycy9jbGsvcm9ja2NoaXAv
-Y2xrLXBsbC5jI0w5MTMKPj4KPj4gKiBEbyB5b3UgZmluZCB0aGUgdXNhZ2Ugb2YgdGhlIGZvcm1h
-dCBzdHJpbmcg4oCcJXM6IGNvdWxkIG5vdCBhbGxvY2F0ZQo+PiAgIHJhdGUgdGFibGUgZm9yICVz
-XG7igJ0gc3RpbGwgYXBwcm9wcmlhdGUgYXQgdGhpcyBwbGFjZT8KPgo+IElmIHRoZXJlIGlzIGFu
-IGludGVybmFsICJuby1tZW1vcnkiIG91dHB1dCBmcm9tIGluc2lkZSBrbWVtZHVwIG5vdywKPiBJ
-IGd1ZXNzIHRoZSBvbmUgaW4gdGhlIGNsb2NrIGRyaXZlciB3b3VsZCBiZSBhIGR1cGxpY2F0ZSBh
-bmQgY291bGQgZ28gYXdheS4KCkhvdyBkbyB5b3UgdGhpbmsgYWJvdXQgdG8gcmVjaGVjayBpbmZv
-cm1hdGlvbiBzb3VyY2VzIGFyb3VuZAp0aGUgTGludXggYWxsb2NhdGlvbiBmYWlsdXJlIHJlcG9y
-dD8KaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFs
-ZHMvbGludXguZ2l0L3RyZWUvRG9jdW1lbnRhdGlvbi9wcm9jZXNzL2NvZGluZy1zdHlsZS5yc3Q/
-aWQ9ZGE5NDAwMTIzOWNjZWI5M2MxMzJhMzE5MjhkNmRkYzQyMTQ4NjJkNSNuODc4CgoKPj4gKiBJ
-cyB0aGVyZSBhIG5lZWQgdG8gYWRqdXN0IHRoZSBlcnJvciBoYW5kbGluZyBoZXJlPwo+Cj4gVGhl
-cmUgaXMgbm8gbmVlZCBmb3IgYWRkaXRpb25hbCBlcnJvciBoYW5kbGluZy4KCklmIHlvdSB3b3Vs
-ZCBsaWtlIHRvIG9taXQgdGhlIG1hY3JvIGNhbGwg4oCcV0FSTuKAnSwgSSB3b3VsZCBleHBlY3Qg
-YWxzbwp0byBleHByZXNzIGEgY29ycmVzcG9uZGluZyBudWxsIHBvaW50ZXIgY2hlY2suCgoKPiBM
-aWtlIGlmIHRoZSByYXRlLXRhYmxlIGNvdWxkIG5vdCBiZSBkdXBsaWNhdGVkLAo+IHRoZSBjbG9j
-ayB3aWxsIHN0aWxsIHJlcG9ydCB0aGUgY29ycmVjdCBjbG9ja3JhdGUKPiB5b3UgY2FuIGp1c3Qg
-bm90IHNldCBhIG5ldyByYXRlLgoKSG93IG11Y2ggd2lsbCBhIGRpZmZlcmVudCBzeXN0ZW0gY29u
-ZmlndXJhdGlvbiBtYXR0ZXIgZmluYWxseT8KKERvIHlvdSByZWFsbHkgd2FudCB0byB0cmVhdCB0
-aGlzIHNldHRpbmcgYXMg4oCcb3B0aW9uYWzigJ0/KQoKCj4gQW5kIGZvciBhIHN5c3RlbSBpdCdz
-IGFsd2F5cyBiZXR0ZXIgdG8gaGF2ZSB0aGUgY2xvY2sgZHJpdmVyIHByZXNlbnQKPiB0aGFuIGZv
-ciBhbGwgZGV2aWNlLWRyaXZlcnMgdG8gZmFpbCBwcm9iaW5nLiBFc3BlY2lhbGx5IGFzIHRoaXMg
-c3RhcnQgYXMKPiBjb3JlIGNsb2NrIGRyaXZlciwgc28gdGhlcmUgaXMgbm8gZGVmZXJyaW5nIHBv
-c3NpYmxlLgoKSSBpbWFnaW5lIHRoYXQgc3VjaCBhIHZpZXcgY2FuIGJlIGNsYXJpZmllZCBmdXJ0
-aGVyLgoKUmVnYXJkcywKTWFya3VzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2Vy
-bmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
+CkhpIENsYXVkaXUsCgpzb3JyeSBmb3IgdGhlIGRlbGF5LCBJIHdhcyBPb08gYWdhaW4uCgpPbiAw
+My8xMC8yMDE5IDEyOjQzLCBDbGF1ZGl1LkJlem5lYUBtaWNyb2NoaXAuY29tIHdyb3RlOgo+IAo+
+IAo+IE9uIDAyLjEwLjIwMTkgMTY6MzUsIENsYXVkaXUgQmV6bmVhIHdyb3RlOgo+PiBIaSBEYW5p
+ZWwsCj4+Cj4+IFRha2luZyBpbnRvIGFjY291bnQgdGhhdCBSb2IgZG9lc24ndCBhZ3JlZSB3aXRo
+IHRoZSBzb2x1dGlvbiBwcm9wb3NlZCBpbgo+PiB0aGlzIHNlcmllcyBkbyB5b3UgdGhpbmsgdGhl
+cmUgaXMgYSBjaGFuY2UgdG8gbWVyZ2UgdGhpcyBkcml2ZXIgYXMgaXM/Cj4gCj4gU29ycnksIEkg
+d2FzIHRhbGtpbmcgaGVyZSBhYm91dCB0aGUgZHJpdmVyIGF0IFsxXS4KPiAKPiBbMV0gaHR0cHM6
+Ly9sb3JlLmtlcm5lbC5vcmcvbGttbC8xNTUyNTgwNzcyLTg0OTktMS1naXQtc2VuZC1lbWFpbC1j
+bGF1ZGl1LmJlem5lYUBtaWNyb2NoaXAuY29tLwoKRGFtbiEgNyBtb250aHMgb2xkLiBJJ20gdHJ1
+bHkgc29ycnkgd2UgZG8gbm90IGhhdmUgcHJvZ3Jlc3Mgb24gdGhpcy4gTGV0CmZpeCB0aGlzIG9u
+Y2UgYW5kIGZvciBhbGwuCgpJbiB0aGUgZHJpdmVyOgoKcmV0ID0gb2ZfcHJvcGVydHlfcmVhZF91
+MzIobm9kZSwgImNsb2NrLWZyZXF1ZW5jeSIsICZmcmVxKTsKCkl0IGlzIHVuY2xlYXIgaG93IGlz
+IHVzZWQgdGhpcyBwcm9wZXJ0eS4gSXQgc2hvdWxkIGJlIHRoZSBmcmVxdWVuY3kKZHJpdmluZyB0
+aGUgdGltZXIsIGJ1dCBjYW4gd2UgZ2V0IGZyb20gYSBjbGtfZ2V0X3JhdGUoKSBhbmQgYSBmaXhl
+ZCBkaXZpZGVyPwoKCi0tIAogPGh0dHA6Ly93d3cubGluYXJvLm9yZy8+IExpbmFyby5vcmcg4pSC
+IE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwoKRm9sbG93IExpbmFybzogIDxodHRw
+Oi8vd3d3LmZhY2Vib29rLmNvbS9wYWdlcy9MaW5hcm8+IEZhY2Vib29rIHwKPGh0dHA6Ly90d2l0
+dGVyLmNvbS8jIS9saW5hcm9vcmc+IFR3aXR0ZXIgfAo8aHR0cDovL3d3dy5saW5hcm8ub3JnL2xp
+bmFyby1ibG9nLz4gQmxvZwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmxpbnV4LXNucHMtYXJjIG1haWxpbmcgbGlzdApsaW51eC1zbnBzLWFyY0BsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtc25wcy1hcmMK
