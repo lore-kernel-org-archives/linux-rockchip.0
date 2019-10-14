@@ -1,30 +1,27 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 1/2] dt-bindings: pinctrl: rockchip: add rk3308 SoC
- support
-Date: Mon, 14 Oct 2019 13:15:52 -0500
-Message-ID: <20191014181552.GA12199@bogus>
-References: <20191012061528.27821-1-jay.xu@rock-chips.com>
- <20191014030348.18860-1-jay.xu@rock-chips.com>
+Subject: Re: [PATCH 1/2] dt-bindings: nvmem: add binding for Rockchip OTP
+ controller
+Date: Mon, 14 Oct 2019 14:50:00 -0500
+Message-ID: <20191014195000.GA17233@bogus>
+References: <20190925184957.14338-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20191014030348.18860-1-jay.xu@rock-chips.com>
+In-Reply-To: <20190925184957.14338-1-heiko@sntech.de>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: linus.walleij@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>
+Cc: srinivas.kandagatla@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, christoph.muellner@theobroma-systems.com, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 14 Oct 2019 11:03:48 +0800, Jianqun Xu wrote:
-> Add rk3308 SoC support to rockchip pinctrl.
+On Wed, 25 Sep 2019 20:49:56 +0200, Heiko Stuebner wrote:
+> Newer Rockchip SoCs use a different IP for accessing special one-
+> time-programmable memory, so add a binding for these controllers.
 > 
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 > ---
-> changes since v1:
-> - Add Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> 
->  Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt | 1 +
->  1 file changed, 1 insertion(+)
+>  .../bindings/nvmem/rockchip-otp.txt           | 25 +++++++++++++++++++
+>  1 file changed, 25 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/nvmem/rockchip-otp.txt
 > 
 
-Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Rob Herring <robh@kernel.org>
