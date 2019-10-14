@@ -1,107 +1,46 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v2] ARM: dts: rockchip: remove some tabs and spaces from dtsi files
-Date: Mon, 14 Oct 2019 23:06:19 +0200
-Message-ID: <20191014210619.12778-1-jbx6244@gmail.com>
-References: <20191014174521.11611-1-jbx6244@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191014174521.11611-1-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: [PATCH v2 1/3] dt-bindings: ARM: rockchip: Add Beelink A1
+Date: Mon, 14 Oct 2019 23:19:04 +0100
+Message-ID: <82324d17b770fa8ea189fa708490d2c8c0c9290e.1571090991.git.robin.murphy@arm.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: heiko@sntech.de
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Cleanup the Rockchip dtsi files a little bit
-by removing some tabs and spaces.
+Add a binding for the RK3328-based Beelink A1 TV box.
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Signed-off-by: Robin Murphy <robin.murphy@arm.com>
 ---
- arch/arm/boot/dts/rk3036.dtsi           |  4 ++--
- arch/arm/boot/dts/rk3288-rock2-som.dtsi |  8 ++++----
- arch/arm/boot/dts/rk3288-tinker.dtsi    | 14 +++++---------
- 3 files changed, 11 insertions(+), 15 deletions(-)
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index c776321b2..c70182c5a 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -696,8 +696,8 @@
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index c82c5e57d44c..f27f7805f57e 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -40,6 +40,11 @@ properties:
+           - const: asus,rk3288-tinker-s
+           - const: rockchip,rk3288
  
- 		hdmi {
- 			hdmi_ctl: hdmi-ctl {
--				rockchip,pins = <1 RK_PB0  1 &pcfg_pull_none>,
--						<1 RK_PB1  1 &pcfg_pull_none>,
-+				rockchip,pins = <1 RK_PB0 1 &pcfg_pull_none>,
-+						<1 RK_PB1 1 &pcfg_pull_none>,
- 						<1 RK_PB2 1 &pcfg_pull_none>,
- 						<1 RK_PB3 1 &pcfg_pull_none>;
- 			};
-diff --git a/arch/arm/boot/dts/rk3288-rock2-som.dtsi b/arch/arm/boot/dts/rk3288-rock2-som.dtsi
-index 9f9e2bfd1..44bb5e6f8 100644
---- a/arch/arm/boot/dts/rk3288-rock2-som.dtsi
-+++ b/arch/arm/boot/dts/rk3288-rock2-som.dtsi
-@@ -230,14 +230,14 @@
- 	};
- 
- 	emmc {
--			emmc_reset: emmc-reset {
--				rockchip,pins = <3 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
--			};
-+		emmc_reset: emmc-reset {
-+			rockchip,pins = <3 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
- 	};
- 
- 	gmac {
- 		phy_rst: phy-rst {
--			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO  &pcfg_output_high>;
-+			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_output_high>;
- 		};
- 	};
- };
-diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
-index 81e4e953d..0aeef23ca 100644
---- a/arch/arm/boot/dts/rk3288-tinker.dtsi
-+++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
-@@ -382,18 +382,15 @@
- 
- 	pmic {
- 		pmic_int: pmic-int {
--			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO \
--					&pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 
- 		dvs_1: dvs-1 {
--			rockchip,pins = <0 RK_PB3 RK_FUNC_GPIO \
--					&pcfg_pull_down>;
-+			rockchip,pins = <0 RK_PB3 RK_FUNC_GPIO &pcfg_pull_down>;
- 		};
- 
- 		dvs_2: dvs-2 {
--			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO \
--					&pcfg_pull_down>;
-+			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_down>;
- 		};
- 	};
- 
-@@ -406,8 +403,7 @@
- 		};
- 
- 		sdmmc_clk: sdmmc-clk {
--			rockchip,pins = <6 RK_PC4 1 \
--					&pcfg_pull_none_drv_8ma>;
-+			rockchip,pins = <6 RK_PC4 1 &pcfg_pull_none_drv_8ma>;
- 		};
- 
- 		sdmmc_cmd: sdmmc-cmd {
-@@ -432,7 +428,7 @@
- 	sdio {
- 		wifi_enable: wifi-enable {
- 			rockchip,pins = <4 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>,
--				<4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
-+					<4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- };
++      - description: Beelink A1
++        items:
++          - const: azw,beelink-a1
++          - const: rockchip,rk3328
++
+       - description: bq Curie 2 tablet
+         items:
+           - const: mundoreader,bq-curie2
 -- 
-2.11.0
+2.17.1
