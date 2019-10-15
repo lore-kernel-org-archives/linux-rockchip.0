@@ -1,422 +1,138 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH v2 3/3] arm64: dts: rockchip: Add Beelink A1
-Date: Mon, 14 Oct 2019 23:19:06 +0100
-Message-ID: <2aa21c5f3020062cf6a47057bdf3c01f0ec863ea.1571090991.git.robin.murphy@arm.com>
-References: <82324d17b770fa8ea189fa708490d2c8c0c9290e.1571090991.git.robin.murphy@arm.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH v2 for 5.4 2/4] media: hantro: Fix H264 max frmsize
+ supported on RK3288
+Date: Tue, 15 Oct 2019 12:27:32 +0900
+Message-ID: <CAAFQd5Aj1fh5MbT1B8HZQmwYOSRr6C68uHmAPJ+5dec1K-szEA@mail.gmail.com>
+References: <20191007174505.10681-1-ezequiel@collabora.com>
+ <20191007174505.10681-3-ezequiel@collabora.com> <CAAFQd5BNu2ea3ei_imHmEwmdna0+iiSbQSv_SBsdHfP4Uh1h4Q@mail.gmail.com>
+ <HE1PR06MB4011EC9E93ECBB6773252247AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+ <CAAFQd5CWoAP1psrEW6bVMkRmhFeTvFKtDSLjT7nefc2YiFovqQ@mail.gmail.com>
+ <CAAFQd5AYCiKcA9pGc44L3gGHLPx6iMSb7KywkO8OqVv4gS8KvQ@mail.gmail.com>
+ <CAAFQd5AQXGX_2gmKLfymH5mLG-uVh-v+XXtGXzbfzYzVVV42mA@mail.gmail.com>
+ <HE1PR06MB4011B897EA5497659A19BCC6AC9A0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+ <CAAFQd5DEhHF+_oO_0ZKS1mi26hJ-JueFxXfdpyQ3ATzMW5Czaw@mail.gmail.com> <0d40f89059cd5aba96adcdd24340636df3315592.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <82324d17b770fa8ea189fa708490d2c8c0c9290e.1571090991.git.robin.murphy@arm.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: heiko@sntech.de
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <0d40f89059cd5aba96adcdd24340636df3315592.camel@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Jonas Karlman <jonas@kwiboo.se>, Ezequiel Garcia <ezequiel@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, "kernel@collabora.com" <kernel@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Alexandre Courbot <acourbot@chromium.org>, "fbuergisser@chromium.org" <fbuergisser@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Beelink A1 is a TV box implementing the higher-end options of the
-RK3328 reference design - the DTB from the stock Android firmware is
-clearly the "rk3328-box-plus" variant from the Rockchip 3.10 BSP with
-minor modifications to accommodate the USB WiFi module and additional
-VFD-style LED driver. It features:
+On Mon, Oct 14, 2019 at 7:10 AM Nicolas Dufresne
+<nicolas.dufresne@collabora.com> wrote:
+>
+> Le jeudi 10 octobre 2019 =C3=A0 16:23 +0900, Tomasz Figa a =C3=A9crit :
+> > On Tue, Oct 8, 2019 at 11:12 PM Jonas Karlman <jonas@kwiboo.se> wrote:
+> > > On 2019-10-08 15:53, Tomasz Figa wrote:
+> > > > On Tue, Oct 8, 2019 at 10:35 PM Tomasz Figa <tfiga@chromium.org> wr=
+ote:
+> > > > > On Tue, Oct 8, 2019 at 7:42 PM Tomasz Figa <tfiga@chromium.org> w=
+rote:
+> > > > > > On Tue, Oct 8, 2019 at 3:31 PM Jonas Karlman <jonas@kwiboo.se> =
+wrote:
+> > > > > > > On 2019-10-08 07:27, Tomasz Figa wrote:
+> > > > > > > > Hi Ezequiel, Jonas,
+> > > > > > > >
+> > > > > > > > On Tue, Oct 8, 2019 at 2:46 AM Ezequiel Garcia <ezequiel@co=
+llabora.com> wrote:
+> > > > > > > > > From: Jonas Karlman <jonas@kwiboo.se>
+> > > > > > > > >
+> > > > > > > > > TRM specify supported image size 48x48 to 4096x2304 at st=
+ep size 16 pixels,
+> > > > > > > > > change frmsize max_width/max_height to match TRM.
+> > > > > > > > >
+> > > > > > > > > Fixes: 760327930e10 ("media: hantro: Enable H264 decoding=
+ on rk3288")
+> > > > > > > > > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> > > > > > > > > ---
+> > > > > > > > > v2:
+> > > > > > > > > * No changes.
+> > > > > > > > >
+> > > > > > > > >  drivers/staging/media/hantro/rk3288_vpu_hw.c | 4 ++--
+> > > > > > > > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > > > > > > > >
+> > > > > > > > > diff --git a/drivers/staging/media/hantro/rk3288_vpu_hw.c=
+ b/drivers/staging/media/hantro/rk3288_vpu_hw.c
+> > > > > > > > > index 6bfcc47d1e58..ebb017b8a334 100644
+> > > > > > > > > --- a/drivers/staging/media/hantro/rk3288_vpu_hw.c
+> > > > > > > > > +++ b/drivers/staging/media/hantro/rk3288_vpu_hw.c
+> > > > > > > > > @@ -67,10 +67,10 @@ static const struct hantro_fmt rk3288=
+_vpu_dec_fmts[] =3D {
+> > > > > > > > >                 .max_depth =3D 2,
+> > > > > > > > >                 .frmsize =3D {
+> > > > > > > > >                         .min_width =3D 48,
+> > > > > > > > > -                       .max_width =3D 3840,
+> > > > > > > > > +                       .max_width =3D 4096,
+> > > > > > > > >                         .step_width =3D H264_MB_DIM,
+> > > > > > > > >                         .min_height =3D 48,
+> > > > > > > > > -                       .max_height =3D 2160,
+> > > > > > > > > +                       .max_height =3D 2304,
+> > > > > > > > This doesn't match the datasheet I have, which is RK3288 Da=
+tasheet Rev
+> > > > > > > > 1.4 and which has the values as in current code. What's the=
+ one you
+> > > > > > > > got the values from?
+> > > > > > > The RK3288 TRM vcodec chapter from [1], unknown revision and =
+date, lists 48x48 to 4096x2304 step size 16 pixels under 25.5.1 H.264 decod=
+er.
+> > > > > > >
+> > > > > > > I can also confirm that one of my test samples (PUPPIES BATH =
+IN 4K) is 4096x2304 and can be decoded after this patch.
+> > > > > > > However the decoding speed is not optimal at 400Mhz, if I rec=
+all correctly you need to set the VPU1 clock to 600Mhz for 4K decoding on R=
+K3288.
+> > > > > > >
+> > > > > > > I am not sure if I should include a v2 of this patch in my v2=
+ series, as-is this patch do not apply on master (H264_MB_DIM has changed t=
+o MB_DIM in master).
+> > > > > > >
+> > > > > > > [1] http://www.t-firefly.com/download/firefly-rk3288/docs/TRM=
+/rk3288-chapter-25-video-encoder-decoder-unit-(vcodec).pdf
+> > > > > > I checked the RK3288 TRM V1.1 too and it refers to 3840x2160@24=
+fps as
+> > > > > > the maximum.
+> > > > > >
+> > > > > > As for performance, we've actually been getting around 33 fps a=
+t 400
+> > > > > > MHz with 3840x2160 on our devices (the old RK3288 Asus Chromebo=
+ok
+> > > > > > Flip).
+> > > > > >
+> > > > > > I guess we might want to check that with Hantro.
+> > > > > Could you check the value of bits 10:0 in register at 0x0c8? That
+> > > > > should be the maximum supported stream width in the units of 16
+> > > > > pixels.
+> > > > Correction: The unit is 1 pixel and there are additional 2 most
+> > > > significant bits at 0x0d8, 15:14.
+> > >
+> > > I will check this later tonight when I have access to my devices.
+> > > The PUPPIES BATH IN 4K (4096x2304) sample decoded without issue using=
+ rockchip 4.4 BSP kernel and mpp last time I tested.
+> > >
+> > > The vcodec driver in 4.4 BSP kernel use 300/400 Mhz as default clock =
+rate and will change to 600 Mhz when width is over 2560, see [1]:
+> > >   raise frequency for resolution larger than 1440p avc
+> > >
+> > > [1] https://github.com/rockchip-linux/kernel/blob/develop-4.4/drivers=
+/video/rockchip/vcodec/vcodec_service.c#L2551-L2570
+> >
+> > How comes it works for us well at 400 MHz? Better DRAM? Differences in
+> > how Vcodec BSP handles the hardware that somehow make the decoding
+> > slower?
+>
+> FWIW, here on the mainline driver, on RK3288, playing a 4K30 sample
+> (probably the max for this one) get stuck at 20fps with 400MHz. So
+> 600MHz would in theory be perfect to reach 30fps. That being said,
+> different stream yield different performance with H264 and other
+> CODECs, so doing a completely objective evaluation is hard.
 
-- 4GB of 32-bit LPDDR3
-- 16GB of HS200 eMMC (newer models with 32GB also exist)
-- Realtek RTL8211F phy for gigabit ethernet
-- Fn-Link 6221E-UUC module (RealTek RTL8821CU) for 11ac WiFi and Bluetooth 4.2
-- HDMI and analog A/V
-- 1x USB 3.0 type A host, 1x USB 2.0 type A OTG, 1x micro SD
-- IR receiver and a neat little LED clock display.
+For a fair comparison, we're using the following stream in our 4K
+performance test:
+http://storage.googleapis.com/chromiumos-test-assets-public/tast/cros/video=
+/perf/h264/2160p_30fps_300frames_20190801.h264
 
-Signed-off-by: Robin Murphy <robin.murphy@arm.com>
----
- arch/arm64/boot/dts/rockchip/Makefile      |   1 +
- arch/arm64/boot/dts/rockchip/rk3328-a1.dts | 359 +++++++++++++++++++++
- 2 files changed, 360 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 1f18a9392d15..a6f250e7cde2 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -1,5 +1,6 @@
- # SPDX-License-Identifier: GPL-2.0
- dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-evb.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-roc-cc.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-new file mode 100644
-index 000000000000..76b49f573101
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-@@ -0,0 +1,359 @@
-+// SPDX-License-Identifier: (GPL-2.0-only OR MIT)
-+// Copyright (c) 2017-2019 Arm Ltd.
-+
-+/dts-v1/;
-+#include "rk3328.dtsi"
-+
-+/ {
-+	model = "Beelink A1";
-+	compatible = "azw,beelink-a1", "rockchip,rk3328";
-+
-+	/*
-+	 * UART pins, as viewed with bottom of case removed:
-+	 *
-+	 *           Front
-+	 *        /-------
-+	 *  L    / o <- Gnd
-+	 *  e   / o <-- Rx
-+	 *  f  / o <--- Tx
-+	 *  t / o <---- +3.3v
-+	 *    |
-+	 */
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	gmac_clkin: external-gmac-clock {
-+		compatible = "fixed-clock";
-+		clock-frequency = <125000000>;
-+		clock-output-names = "gmac_clkin";
-+		#clock-cells = <0>;
-+	};
-+
-+	vcc_host_5v: usb3-current-switch {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb30_host_drv>;
-+		regulator-name = "vcc_host_5v";
-+		vin-supply = <&vcc_sys>;
-+	};
-+
-+	vcc_sys: vcc-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_sys";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
-+
-+	ir-receiver {
-+		compatible = "gpio-ir-receiver";
-+		gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_HIGH>;
-+	};
-+};
-+
-+&analog_sound {
-+	simple-audio-card,name = "Analog A/V";
-+	status = "okay";
-+};
-+
-+&codec {
-+	status = "okay";
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&emmc {
-+	bus-width = <8>;
-+	cap-mmc-highspeed;
-+	mmc-ddr-1_8v;
-+	mmc-hs200-1_8v;
-+	no-sd;
-+	no-sdio;
-+	non-removable;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
-+	vmmc-supply = <&vcc_io>;
-+	vqmmc-supply = <&vcc18_emmc>;
-+	status = "okay";
-+};
-+
-+&gmac2io {
-+	assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
-+	assigned-clock-parents = <&gmac_clkin>, <&gmac_clkin>;
-+	clock_in_out = "input";
-+	phy-handle = <&rtl8211f>;
-+	phy-mode = "rgmii";
-+	phy-supply = <&vcc_io>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&rgmiim1_pins>;
-+	snps,aal;
-+	snps,pbl = <0x4>;
-+	tx_delay = <0x26>;
-+	rx_delay = <0x11>;
-+	status = "okay";
-+
-+	mdio {
-+		compatible = "snps,dwmac-mdio";
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		rtl8211f: phy@0 {
-+			reg = <0>;
-+			reset-assert-us = <10000>;
-+			reset-deassert-us = <30000>;
-+			reset-gpios = <&gpio2 RK_PC1 GPIO_ACTIVE_LOW>;
-+		};
-+	};
-+};
-+
-+&gpu {
-+	mali-supply = <&vdd_logic>;
-+};
-+
-+&hdmi {
-+	status = "okay";
-+};
-+
-+&hdmiphy {
-+	status = "okay";
-+};
-+
-+&hdmi_sound {
-+	status = "okay";
-+};
-+
-+&i2c1 {
-+	clock-frequency = <1000000>;
-+	i2c-scl-falling-time-ns = <5>;
-+	i2c-scl-rising-time-ns = <83>;
-+	status = "okay";
-+
-+	pmic@18 {
-+		compatible = "rockchip,rk805";
-+		reg = <0x18>;
-+		interrupt-parent = <&gpio2>;
-+		interrupts = <RK_PA6 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pmic_int_l>;
-+		rockchip,system-power-controller;
-+		wakeup-source;
-+
-+		vcc1-supply = <&vcc_sys>;
-+		vcc2-supply = <&vcc_sys>;
-+		vcc3-supply = <&vcc_sys>;
-+		vcc4-supply = <&vcc_sys>;
-+		vcc5-supply = <&vcc_io>;
-+		vcc6-supply = <&vcc_io>;
-+
-+		regulators {
-+			vdd_logic: DCDC_REG1 {
-+				regulator-name = "vdd_logic";
-+				regulator-min-microvolt = <700000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
-+				};
-+			};
-+
-+			vdd_arm: DCDC_REG2 {
-+				regulator-name = "vdd_arm";
-+				regulator-min-microvolt = <700000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <950000>;
-+				};
-+			};
-+
-+			vcc_ddr: DCDC_REG3 {
-+				regulator-name = "vcc_ddr";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vcc_io: DCDC_REG4 {
-+				regulator-name = "vcc_io";
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vdd_18: LDO_REG1 {
-+				regulator-name = "vdd_18";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vcc18_emmc: LDO_REG2 {
-+				regulator-name = "vcc_18emmc";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vdd_11: LDO_REG3 {
-+				regulator-name = "vdd_11";
-+				regulator-min-microvolt = <1100000>;
-+				regulator-max-microvolt = <1100000>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1100000>;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&i2s0 {
-+	status = "okay";
-+};
-+
-+&i2s1 {
-+	status = "okay";
-+};
-+
-+&io_domains {
-+	vccio1-supply = <&vcc_io>;
-+	vccio2-supply = <&vcc18_emmc>;
-+	vccio3-supply = <&vcc_io>;
-+	vccio4-supply = <&vdd_18>;
-+	vccio5-supply = <&vcc_io>;
-+	vccio6-supply = <&vdd_18>;
-+	pmuio-supply = <&vcc_io>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	pmic {
-+		pmic_int_l: pmic-int-l {
-+			rockchip,pins = <2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	usb3 {
-+		usb30_host_drv: usb30-host-drv {
-+			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	wifi {
-+		bt_dis: bt-dis {
-+			rockchip,pins = <2 RK_PC5 RK_FUNC_GPIO &pcfg_output_low>;
-+		};
-+
-+		bt_wake_host: bt-wake-host {
-+			rockchip,pins = <2 RK_PC0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		chip_en: chip-en {
-+			rockchip,pins = <2 RK_PC3 RK_FUNC_GPIO &pcfg_output_low>;
-+		};
-+
-+		host_wake_bt: host-wake-bt {
-+			rockchip,pins = <2 RK_PB7 RK_FUNC_GPIO &pcfg_output_high>;
-+		};
-+
-+		wl_dis: wl-dis {
-+			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_output_low>;
-+		};
-+
-+		wl_wake_host: wl-wake-host {
-+			rockchip,pins = <3 RK_PA1 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
-+	vmmc-supply = <&vcc_io>;
-+	vqmmc-supply = <&vcc_io>;
-+	status = "okay";
-+};
-+
-+&tsadc {
-+	rockchip,hw-tshut-mode = <0>;
-+	rockchip,hw-tshut-polarity = <0>;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
-+
-+&u2phy {
-+	status = "okay";
-+};
-+
-+&u2phy_host {
-+	status = "okay";
-+};
-+
-+&u2phy_otg {
-+	status = "okay";
-+};
-+
-+&usb20_otg {
-+	dr_mode = "host";
-+	status = "okay";
-+};
-+
-+&usb_host0_ehci {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&bt_dis &bt_wake_host &chip_en &host_wake_bt &wl_dis &wl_wake_host>;
-+	status = "okay";
-+};
-+
-+&vop {
-+	status = "okay";
-+};
-+
-+&vop_mmu {
-+	status = "okay";
-+};
--- 
-2.17.1
+Best regards,
+Tomasz
