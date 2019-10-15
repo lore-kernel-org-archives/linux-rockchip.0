@@ -1,499 +1,57 @@
-From: Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH v3 2/2] pinctrl: rockchip: add rk3308 SoC support
-Date: Tue, 15 Oct 2019 17:17:08 +0800
-Message-ID: <20191015091708.7934-3-jay.xu@rock-chips.com>
-References: <20191015091708.7934-1-jay.xu@rock-chips.com>
+From: <Claudiu.Beznea@microchip.com>
+Subject: Re: [PATCH 0/7] add support for clocksource/clockevent DT selection
+Date: Tue, 15 Oct 2019 09:23:35 +0000
+Message-ID: <7071b6fa-f7ed-c879-4a43-44100dbe6121@microchip.com>
+References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
+ <c3a68a08-d134-cd28-c8af-f757628e07f1@linaro.org>
+ <72edc5fd-df05-cba5-5aa7-39da1709415b@microchip.com>
+ <620a19d5-73b8-709d-9eec-49274ac23e51@microchip.com>
+ <187d7020-fbe9-7984-2358-8a70faef019f@microchip.com>
+ <14df6e5d-19ef-4ebc-fd11-9953bc3fc44e@linaro.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191015091708.7934-1-jay.xu@rock-chips.com>
+In-Reply-To: <14df6e5d-19ef-4ebc-fd11-9953bc3fc44e@linaro.org>
+Content-Language: en-US
+Content-ID: <BFEA965B7AA9B54388AC67448362747B@namprd11.prod.outlook.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linus.walleij@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Jianqun Xu <jay.xu@rock-chips.com>
+To: daniel.lezcano@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, nsekhar@ti.com, bgolaszewski@baylibre.com, monstr@monstr.eu, john@phrozen.org, ralf@linux-mips.org, paul.burton@mips.com, jhogan@kernel.org, lftan@altera.com, tglx@linutronix.de, vgupta@synopsys.com, marc.zyngier@arm.com, patrice.chotard@st.com, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, eric@anholt.net, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, linus.walleij@linaro.org, shc_work@mail.ru, kgene@kernel.org, krzk@kernel.org, ysato@users.sourceforge.jp, liviu.dudau@arm.com, sudeep.holla@arm.com, lorenzo.pieralisi@arm.com, shawnguo@kernel.org
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, nios2-dev@lists.rocketboards.org, linux-snps-arc@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-rpi-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, uclinux-h8-devel@lists.sourceforge.jp, linux-amlogic@lists.infradead.org, openbmc@lists.ozlabs.org, linux-oxnas@groups.io, linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org, linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch do support pinctrl for RK3308 SoCs.
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
----
-changes since v2:
-- Fix increase offset according to iomux width
-
-changes since v1:
-- Add type case for pull get/set
-- Add Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
- drivers/pinctrl/pinctrl-rockchip.c | 382 ++++++++++++++++++++++++++++-
- 1 file changed, 381 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index dc0bbf198cbc..fc9a2a9959d9 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -58,6 +58,7 @@ enum rockchip_pinctrl_type {
- 	RK3128,
- 	RK3188,
- 	RK3288,
-+	RK3308,
- 	RK3368,
- 	RK3399,
- };
-@@ -70,6 +71,7 @@ enum rockchip_pinctrl_type {
- #define IOMUX_SOURCE_PMU	BIT(2)
- #define IOMUX_UNROUTED		BIT(3)
- #define IOMUX_WIDTH_3BIT	BIT(4)
-+#define IOMUX_WIDTH_2BIT	BIT(5)
- 
- /**
-  * @type: iomux variant using IOMUX_* constants
-@@ -656,6 +658,100 @@ static  struct rockchip_mux_recalced_data rk3128_mux_recalced_data[] = {
- 	},
- };
- 
-+static struct rockchip_mux_recalced_data rk3308_mux_recalced_data[] = {
-+	{
-+		.num = 1,
-+		.pin = 14,
-+		.reg = 0x28,
-+		.bit = 12,
-+		.mask = 0xf
-+	}, {
-+		.num = 1,
-+		.pin = 15,
-+		.reg = 0x2c,
-+		.bit = 0,
-+		.mask = 0x3
-+	}, {
-+		.num = 1,
-+		.pin = 18,
-+		.reg = 0x30,
-+		.bit = 4,
-+		.mask = 0xf
-+	}, {
-+		.num = 1,
-+		.pin = 19,
-+		.reg = 0x30,
-+		.bit = 8,
-+		.mask = 0xf
-+	}, {
-+		.num = 1,
-+		.pin = 20,
-+		.reg = 0x30,
-+		.bit = 12,
-+		.mask = 0xf
-+	}, {
-+		.num = 1,
-+		.pin = 21,
-+		.reg = 0x34,
-+		.bit = 0,
-+		.mask = 0xf
-+	}, {
-+		.num = 1,
-+		.pin = 22,
-+		.reg = 0x34,
-+		.bit = 4,
-+		.mask = 0xf
-+	}, {
-+		.num = 1,
-+		.pin = 23,
-+		.reg = 0x34,
-+		.bit = 8,
-+		.mask = 0xf
-+	}, {
-+		.num = 3,
-+		.pin = 12,
-+		.reg = 0x68,
-+		.bit = 8,
-+		.mask = 0xf
-+	}, {
-+		.num = 3,
-+		.pin = 13,
-+		.reg = 0x68,
-+		.bit = 12,
-+		.mask = 0xf
-+	}, {
-+		.num = 2,
-+		.pin = 2,
-+		.reg = 0x608,
-+		.bit = 0,
-+		.mask = 0x7
-+	}, {
-+		.num = 2,
-+		.pin = 3,
-+		.reg = 0x608,
-+		.bit = 4,
-+		.mask = 0x7
-+	}, {
-+		.num = 2,
-+		.pin = 16,
-+		.reg = 0x610,
-+		.bit = 8,
-+		.mask = 0x7
-+	}, {
-+		.num = 3,
-+		.pin = 10,
-+		.reg = 0x610,
-+		.bit = 0,
-+		.mask = 0x7
-+	}, {
-+		.num = 3,
-+		.pin = 11,
-+		.reg = 0x610,
-+		.bit = 4,
-+		.mask = 0x7
-+	},
-+};
-+
- static struct rockchip_mux_recalced_data rk3328_mux_recalced_data[] = {
- 	{
- 		.num = 2,
-@@ -982,6 +1078,192 @@ static struct rockchip_mux_route_data rk3288_mux_route_data[] = {
- 	},
- };
- 
-+static struct rockchip_mux_route_data rk3308_mux_route_data[] = {
-+	{
-+		/* rtc_clk */
-+		.bank_num = 0,
-+		.pin = 19,
-+		.func = 1,
-+		.route_offset = 0x314,
-+		.route_val = BIT(16 + 0) | BIT(0),
-+	}, {
-+		/* uart2_rxm0 */
-+		.bank_num = 1,
-+		.pin = 22,
-+		.func = 2,
-+		.route_offset = 0x314,
-+		.route_val = BIT(16 + 2) | BIT(16 + 3),
-+	}, {
-+		/* uart2_rxm1 */
-+		.bank_num = 4,
-+		.pin = 26,
-+		.func = 2,
-+		.route_offset = 0x314,
-+		.route_val = BIT(16 + 2) | BIT(16 + 3) | BIT(2),
-+	}, {
-+		/* i2c3_sdam0 */
-+		.bank_num = 0,
-+		.pin = 15,
-+		.func = 2,
-+		.route_offset = 0x608,
-+		.route_val = BIT(16 + 8) | BIT(16 + 9),
-+	}, {
-+		/* i2c3_sdam1 */
-+		.bank_num = 3,
-+		.pin = 12,
-+		.func = 2,
-+		.route_offset = 0x608,
-+		.route_val = BIT(16 + 8) | BIT(16 + 9) | BIT(8),
-+	}, {
-+		/* i2c3_sdam2 */
-+		.bank_num = 2,
-+		.pin = 0,
-+		.func = 3,
-+		.route_offset = 0x608,
-+		.route_val = BIT(16 + 8) | BIT(16 + 9) | BIT(9),
-+	}, {
-+		/* i2s-8ch-1-sclktxm0 */
-+		.bank_num = 1,
-+		.pin = 3,
-+		.func = 2,
-+		.route_offset = 0x308,
-+		.route_val = BIT(16 + 3),
-+	}, {
-+		/* i2s-8ch-1-sclkrxm0 */
-+		.bank_num = 1,
-+		.pin = 4,
-+		.func = 2,
-+		.route_offset = 0x308,
-+		.route_val = BIT(16 + 3),
-+	}, {
-+		/* i2s-8ch-1-sclktxm1 */
-+		.bank_num = 1,
-+		.pin = 13,
-+		.func = 2,
-+		.route_offset = 0x308,
-+		.route_val = BIT(16 + 3) | BIT(3),
-+	}, {
-+		/* i2s-8ch-1-sclkrxm1 */
-+		.bank_num = 1,
-+		.pin = 14,
-+		.func = 2,
-+		.route_offset = 0x308,
-+		.route_val = BIT(16 + 3) | BIT(3),
-+	}, {
-+		/* pdm-clkm0 */
-+		.bank_num = 1,
-+		.pin = 4,
-+		.func = 3,
-+		.route_offset = 0x308,
-+		.route_val =  BIT(16 + 12) | BIT(16 + 13),
-+	}, {
-+		/* pdm-clkm1 */
-+		.bank_num = 1,
-+		.pin = 14,
-+		.func = 4,
-+		.route_offset = 0x308,
-+		.route_val = BIT(16 + 12) | BIT(16 + 13) | BIT(12),
-+	}, {
-+		/* pdm-clkm2 */
-+		.bank_num = 2,
-+		.pin = 6,
-+		.func = 2,
-+		.route_offset = 0x308,
-+		.route_val = BIT(16 + 12) | BIT(16 + 13) | BIT(13),
-+	}, {
-+		/* pdm-clkm-m2 */
-+		.bank_num = 2,
-+		.pin = 4,
-+		.func = 3,
-+		.route_offset = 0x600,
-+		.route_val = BIT(16 + 2) | BIT(2),
-+	}, {
-+		/* spi1_miso */
-+		.bank_num = 3,
-+		.pin = 10,
-+		.func = 3,
-+		.route_offset = 0x314,
-+		.route_val = BIT(16 + 9),
-+	}, {
-+		/* spi1_miso_m1 */
-+		.bank_num = 2,
-+		.pin = 4,
-+		.func = 2,
-+		.route_offset = 0x314,
-+		.route_val = BIT(16 + 9) | BIT(9),
-+	}, {
-+		/* owire_m0 */
-+		.bank_num = 0,
-+		.pin = 11,
-+		.func = 3,
-+		.route_offset = 0x314,
-+		.route_val = BIT(16 + 10) | BIT(16 + 11),
-+	}, {
-+		/* owire_m1 */
-+		.bank_num = 1,
-+		.pin = 22,
-+		.func = 7,
-+		.route_offset = 0x314,
-+		.route_val = BIT(16 + 10) | BIT(16 + 11) | BIT(10),
-+	}, {
-+		/* owire_m2 */
-+		.bank_num = 2,
-+		.pin = 2,
-+		.func = 5,
-+		.route_offset = 0x314,
-+		.route_val = BIT(16 + 10) | BIT(16 + 11) | BIT(11),
-+	}, {
-+		/* can_rxd_m0 */
-+		.bank_num = 0,
-+		.pin = 11,
-+		.func = 2,
-+		.route_offset = 0x314,
-+		.route_val = BIT(16 + 12) | BIT(16 + 13),
-+	}, {
-+		/* can_rxd_m1 */
-+		.bank_num = 1,
-+		.pin = 22,
-+		.func = 5,
-+		.route_offset = 0x314,
-+		.route_val = BIT(16 + 12) | BIT(16 + 13) | BIT(12),
-+	}, {
-+		/* can_rxd_m2 */
-+		.bank_num = 2,
-+		.pin = 2,
-+		.func = 4,
-+		.route_offset = 0x314,
-+		.route_val = BIT(16 + 12) | BIT(16 + 13) | BIT(13),
-+	}, {
-+		/* mac_rxd0_m0 */
-+		.bank_num = 1,
-+		.pin = 20,
-+		.func = 3,
-+		.route_offset = 0x314,
-+		.route_val = BIT(16 + 14),
-+	}, {
-+		/* mac_rxd0_m1 */
-+		.bank_num = 4,
-+		.pin = 2,
-+		.func = 2,
-+		.route_offset = 0x314,
-+		.route_val = BIT(16 + 14) | BIT(14),
-+	}, {
-+		/* uart3_rx */
-+		.bank_num = 3,
-+		.pin = 12,
-+		.func = 4,
-+		.route_offset = 0x314,
-+		.route_val = BIT(16 + 15),
-+	}, {
-+		/* uart3_rx_m1 */
-+		.bank_num = 0,
-+		.pin = 17,
-+		.func = 3,
-+		.route_offset = 0x314,
-+		.route_val = BIT(16 + 15) | BIT(15),
-+	},
-+};
-+
- static struct rockchip_mux_route_data rk3328_mux_route_data[] = {
- 	{
- 		/* uart2dbg_rxm0 */
-@@ -1475,6 +1757,26 @@ static int rv1108_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
- 	return 0;
- }
- 
-+#define RK3308_SCHMITT_PINS_PER_REG		8
-+#define RK3308_SCHMITT_BANK_STRIDE		16
-+#define RK3308_SCHMITT_GRF_OFFSET		0x1a0
-+
-+static int rk3308_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
-+				    int pin_num, struct regmap **regmap,
-+				    int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+
-+	*regmap = info->regmap_base;
-+	*reg = RK3308_SCHMITT_GRF_OFFSET;
-+
-+	*reg += bank->bank_num * RK3308_SCHMITT_BANK_STRIDE;
-+	*reg += ((pin_num / RK3308_SCHMITT_PINS_PER_REG) * 4);
-+	*bit = pin_num % RK3308_SCHMITT_PINS_PER_REG;
-+
-+	return 0;
-+}
-+
- #define RK2928_PULL_OFFSET		0x118
- #define RK2928_PULL_PINS_PER_REG	16
- #define RK2928_PULL_BANK_STRIDE		8
-@@ -1646,6 +1948,40 @@ static void rk3228_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
- 	*bit *= RK3288_DRV_BITS_PER_PIN;
- }
- 
-+#define RK3308_PULL_OFFSET		0xa0
-+
-+static void rk3308_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
-+				    int pin_num, struct regmap **regmap,
-+				    int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+
-+	*regmap = info->regmap_base;
-+	*reg = RK3308_PULL_OFFSET;
-+	*reg += bank->bank_num * RK3188_PULL_BANK_STRIDE;
-+	*reg += ((pin_num / RK3188_PULL_PINS_PER_REG) * 4);
-+
-+	*bit = (pin_num % RK3188_PULL_PINS_PER_REG);
-+	*bit *= RK3188_PULL_BITS_PER_PIN;
-+}
-+
-+#define RK3308_DRV_GRF_OFFSET		0x100
-+
-+static void rk3308_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
-+				    int pin_num, struct regmap **regmap,
-+				    int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+
-+	*regmap = info->regmap_base;
-+	*reg = RK3308_DRV_GRF_OFFSET;
-+	*reg += bank->bank_num * RK3288_DRV_BANK_STRIDE;
-+	*reg += ((pin_num / RK3288_DRV_PINS_PER_REG) * 4);
-+
-+	*bit = (pin_num % RK3288_DRV_PINS_PER_REG);
-+	*bit *= RK3288_DRV_BITS_PER_PIN;
-+}
-+
- #define RK3368_PULL_GRF_OFFSET		0x100
- #define RK3368_PULL_PMU_OFFSET		0x10
- 
-@@ -1986,6 +2322,7 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
- 	case RV1108:
- 	case RK3188:
- 	case RK3288:
-+	case RK3308:
- 	case RK3368:
- 	case RK3399:
- 		pull_type = bank->pull_type[pin_num / 8];
-@@ -2030,6 +2367,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
- 	case RV1108:
- 	case RK3188:
- 	case RK3288:
-+	case RK3308:
- 	case RK3368:
- 	case RK3399:
- 		pull_type = bank->pull_type[pin_num / 8];
-@@ -2293,6 +2631,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
- 	case RV1108:
- 	case RK3188:
- 	case RK3288:
-+	case RK3308:
- 	case RK3368:
- 	case RK3399:
- 		return (pull != PIN_CONFIG_BIAS_PULL_PIN_DEFAULT);
-@@ -3303,7 +3642,8 @@ static struct rockchip_pin_ctrl *rockchip_pinctrl_get_soc_data(
- 			 * 4bit iomux'es are spread over two registers.
- 			 */
- 			inc = (iom->type & (IOMUX_WIDTH_4BIT |
--					    IOMUX_WIDTH_3BIT)) ? 8 : 4;
-+					    IOMUX_WIDTH_3BIT |
-+					    IOMUX_WIDTH_2BIT)) ? 8 : 4;
- 			if (iom->type & IOMUX_SOURCE_PMU)
- 				pmu_offs += inc;
- 			else
-@@ -3709,6 +4049,44 @@ static struct rockchip_pin_ctrl rk3288_pin_ctrl = {
- 		.drv_calc_reg		= rk3288_calc_drv_reg_and_bit,
- };
- 
-+static struct rockchip_pin_bank rk3308_pin_banks[] = {
-+	PIN_BANK_IOMUX_FLAGS(0, 32, "gpio0", IOMUX_WIDTH_2BIT,
-+					     IOMUX_WIDTH_2BIT,
-+					     IOMUX_WIDTH_2BIT,
-+					     IOMUX_WIDTH_2BIT),
-+	PIN_BANK_IOMUX_FLAGS(1, 32, "gpio1", IOMUX_WIDTH_2BIT,
-+					     IOMUX_WIDTH_2BIT,
-+					     IOMUX_WIDTH_2BIT,
-+					     IOMUX_WIDTH_2BIT),
-+	PIN_BANK_IOMUX_FLAGS(2, 32, "gpio2", IOMUX_WIDTH_2BIT,
-+					     IOMUX_WIDTH_2BIT,
-+					     IOMUX_WIDTH_2BIT,
-+					     IOMUX_WIDTH_2BIT),
-+	PIN_BANK_IOMUX_FLAGS(3, 32, "gpio3", IOMUX_WIDTH_2BIT,
-+					     IOMUX_WIDTH_2BIT,
-+					     IOMUX_WIDTH_2BIT,
-+					     IOMUX_WIDTH_2BIT),
-+	PIN_BANK_IOMUX_FLAGS(4, 32, "gpio4", IOMUX_WIDTH_2BIT,
-+					     IOMUX_WIDTH_2BIT,
-+					     IOMUX_WIDTH_2BIT,
-+					     IOMUX_WIDTH_2BIT),
-+};
-+
-+static struct rockchip_pin_ctrl rk3308_pin_ctrl = {
-+		.pin_banks		= rk3308_pin_banks,
-+		.nr_banks		= ARRAY_SIZE(rk3308_pin_banks),
-+		.label			= "RK3308-GPIO",
-+		.type			= RK3308,
-+		.grf_mux_offset		= 0x0,
-+		.iomux_recalced		= rk3308_mux_recalced_data,
-+		.niomux_recalced	= ARRAY_SIZE(rk3308_mux_recalced_data),
-+		.iomux_routes		= rk3308_mux_route_data,
-+		.niomux_routes		= ARRAY_SIZE(rk3308_mux_route_data),
-+		.pull_calc_reg		= rk3308_calc_pull_reg_and_bit,
-+		.drv_calc_reg		= rk3308_calc_drv_reg_and_bit,
-+		.schmitt_calc_reg	= rk3308_calc_schmitt_reg_and_bit,
-+};
-+
- static struct rockchip_pin_bank rk3328_pin_banks[] = {
- 	PIN_BANK_IOMUX_FLAGS(0, 32, "gpio0", 0, 0, 0, 0),
- 	PIN_BANK_IOMUX_FLAGS(1, 32, "gpio1", 0, 0, 0, 0),
-@@ -3849,6 +4227,8 @@ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
- 		.data = &rk3228_pin_ctrl },
- 	{ .compatible = "rockchip,rk3288-pinctrl",
- 		.data = &rk3288_pin_ctrl },
-+	{ .compatible = "rockchip,rk3308-pinctrl",
-+		.data = &rk3308_pin_ctrl },
- 	{ .compatible = "rockchip,rk3328-pinctrl",
- 		.data = &rk3328_pin_ctrl },
- 	{ .compatible = "rockchip,rk3368-pinctrl",
--- 
-2.17.1
+SGkgRGFuaWVsLA0KDQpPbiAxMy4xMC4yMDE5IDIxOjE2LCBEYW5pZWwgTGV6Y2FubyB3cm90ZToN
+Cj4gSGkgQ2xhdWRpdSwNCj4gDQo+IHNvcnJ5IGZvciB0aGUgZGVsYXksIEkgd2FzIE9vTyBhZ2Fp
+bi4NCg0KTm8gcHJvYmxlbSwgdGhhbmsgeW91IGZvciB5b3VyIHJlcGx5Lg0KDQo+IA0KPiBPbiAw
+My8xMC8yMDE5IDEyOjQzLCBDbGF1ZGl1LkJlem5lYUBtaWNyb2NoaXAuY29tIHdyb3RlOg0KPj4N
+Cj4+DQo+PiBPbiAwMi4xMC4yMDE5IDE2OjM1LCBDbGF1ZGl1IEJlem5lYSB3cm90ZToNCj4+PiBI
+aSBEYW5pZWwsDQo+Pj4NCj4+PiBUYWtpbmcgaW50byBhY2NvdW50IHRoYXQgUm9iIGRvZXNuJ3Qg
+YWdyZWUgd2l0aCB0aGUgc29sdXRpb24gcHJvcG9zZWQgaW4NCj4+PiB0aGlzIHNlcmllcyBkbyB5
+b3UgdGhpbmsgdGhlcmUgaXMgYSBjaGFuY2UgdG8gbWVyZ2UgdGhpcyBkcml2ZXIgYXMgaXM/DQo+
+Pg0KPj4gU29ycnksIEkgd2FzIHRhbGtpbmcgaGVyZSBhYm91dCB0aGUgZHJpdmVyIGF0IFsxXS4N
+Cj4+DQo+PiBbMV0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGttbC8xNTUyNTgwNzcyLTg0OTkt
+MS1naXQtc2VuZC1lbWFpbC1jbGF1ZGl1LmJlem5lYUBtaWNyb2NoaXAuY29tLw0KPiANCj4gRGFt
+biEgNyBtb250aHMgb2xkLiBJJ20gdHJ1bHkgc29ycnkgd2UgZG8gbm90IGhhdmUgcHJvZ3Jlc3Mg
+b24gdGhpcy4gTGV0DQo+IGZpeCB0aGlzIG9uY2UgYW5kIGZvciBhbGwuDQo+IA0KPiBJbiB0aGUg
+ZHJpdmVyOg0KPiANCj4gcmV0ID0gb2ZfcHJvcGVydHlfcmVhZF91MzIobm9kZSwgImNsb2NrLWZy
+ZXF1ZW5jeSIsICZmcmVxKTsNCj4gDQo+IEl0IGlzIHVuY2xlYXIgaG93IGlzIHVzZWQgdGhpcyBw
+cm9wZXJ0eS4gSXQgc2hvdWxkIGJlIHRoZSBmcmVxdWVuY3kNCj4gZHJpdmluZyB0aGUgdGltZXIs
+IGJ1dCBjYW4gd2UgZ2V0IGZyb20gYSBjbGtfZ2V0X3JhdGUoKSBhbmQgYSBmaXhlZCBkaXZpZGVy
+Pw0KPiANCg0KVGhlIHRpbWVyIGNvdWxkIGJlIGRyaXZlbiBieSAyIGNsb2NrIHNvdXJjZXMsIG9u
+ZSBpcyBjYWxsZWQgcGVyaXBoZXJhbA0KY2xvY2sgYW5kIGlzIHRoZSBjbG9jayB0aGF0IGlzIGFs
+c28gZHJpdmluZyB0aGUgSVAgaXRzZWxmLCBhbmQgb25lIGlzDQpjYWxsZWQgZ2VuZXJpYyBjbG9j
+ayAodGhpcyBjb3VsZCBkcml2ZSBvbmx5IHRoZSB0aW1lciBpdHNlbGYpIGFuZCBzaG91bGQgYmUN
+CmF0IGxlYXN0IDMgdGltZXMgbG93ZXIgdGhhbiB0aGUgcGVyaXBoZXJhbCBjbG9jay4NCg0KV2Ug
+Y291bGQgY2hvb3NlIHRoZSBjbG9jayBkcml2aW5nIHRoZSB0aW1lciBieSBzZXR0aW5nIHRoZSBQ
+SVQ2NEJfTVIuU0dDTEsNCmJpdCAoMCAtIG1lYW5zIHRoZSB0aW1lciBpdHNlbGYgaXMgZHJpdmVu
+IGJ5IHBlcmlwaGVyYWwgY2xvY2ssIDEgLSBtZWFucw0KdGhlIHRpbWVyIGlzIGRyaXZlbiBieSB0
+aGUgZ2VuZXJpYyBjbG9jaykuDQoNClRoZSB0aW1lciBjbG9jayBzb3VyY2UgY291bGQgYmUgZGl2
+aWRlZCBieSBNUi5QUkVTICsgMS4NCg0KU28sIEkgdXNlZCB0aGUgY2xvY2stZnJlcXVlbmN5IERU
+IGJpbmRpbmcgdG8gbGV0IHVzZXIgY2hvb3NlIHRoZSB0aW1lcidzDQpmcmVxdWVuY3kuIEJhc2Vk
+IG9uIHRoZSB2YWx1ZSBwcm92aWRlZCB2aWEgdGhpcyBEVCBiaW5kaW5nIHRoZSBiZXN0IGNsb2Nr
+DQpzb3VyY2UgYW5kIHByZXNjYWxlciBpcyBjaG9zZW4gdmlhIG1jaHBfcGl0NjRiX3ByZXNfcHJl
+cGFyZSgpIGZ1bmN0aW9uLg0KDQpBcyB0aGUgZGF0YXNoZWV0IGZvciB0aGUgcHJvZHVjdCB0aGF0
+IGlzIHVzaW5nIHRoaXMgSVAgaXMgb3BlbiBub3csIEknbQ0KaW5zZXJ0aW5nIGhlcmUgYSBsaW5r
+IHRvIGl0IFsxXS4NCg0KVGhhbmsgeW91LA0KQ2xhdWRpdSBCZXpuZWENCg0KWzFdDQpodHRwOi8v
+d3cxLm1pY3JvY2hpcC5jb20vZG93bmxvYWRzL2VuL0RldmljZURvYy9TQU05WDYwLURhdGEtU2hl
+ZXQtRFM2MDAwMTU3OUEucGRmDQoNCj4gDQo=
