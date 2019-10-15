@@ -1,32 +1,25 @@
 From: Joerg Roedel <joro@8bytes.org>
-Subject: Re: [PATCH] iommu/rockchip: don't use platform_get_irq to implicitly
- count irqs
-Date: Tue, 15 Oct 2019 12:45:46 +0200
-Message-ID: <20191015104546.GD14518@8bytes.org>
-References: <20190925184346.14121-1-heiko@sntech.de>
+Subject: Re: [PATCH] iommu: rockchip: Free domain on .domain_free
+Date: Tue, 15 Oct 2019 13:16:38 +0200
+Message-ID: <20191015111638.GH14518@8bytes.org>
+References: <20191002172923.22430-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20190925184346.14121-1-heiko@sntech.de>
+In-Reply-To: <20191002172923.22430-1-ezequiel@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux-foundation.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Sep 25, 2019 at 08:43:46PM +0200, Heiko Stuebner wrote:
-> Till now the Rockchip iommu driver walked through the irq list via
-> platform_get_irq() until it encountered an ENXIO error. With the
-> recent change to add a central error message, this always results
-> in such an error for each iommu on probe and shutdown.
+On Wed, Oct 02, 2019 at 02:29:23PM -0300, Ezequiel Garcia wrote:
+> IOMMU domain resource life is well-defined, managed
+> by .domain_alloc and .domain_free.
 > 
-> To not confuse people, switch to platform_count_irqs() to get the
-> actual number of interrupts before walking through them.
+> Therefore, domain-specific resources shouldn't be tied to
+> the device life, but instead to its domain.
 > 
-> Fixes: 7723f4c5ecdb ("driver core: platform: Add an error message to platform_get_irq*()")
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->  drivers/iommu/rockchip-iommu.c | 19 ++++++++++++++-----
->  1 file changed, 14 insertions(+), 5 deletions(-)
+> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 
-Applied for v5.4, thanks.
+Looks good to me, if Heiko Acks it I apply it for v5.5.
