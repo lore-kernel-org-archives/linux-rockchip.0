@@ -1,8 +1,7 @@
 From: Rob Herring <robh@kernel.org>
-Subject: [PATCH v2 11/25] PCI: rockchip: Drop storing driver private outbound
- resource data
-Date: Wed, 16 Oct 2019 15:06:33 -0500
-Message-ID: <20191016200647.32050-12-robh@kernel.org>
+Subject: [PATCH v2 13/25] PCI: xgene: Use pci_parse_request_of_pci_ranges()
+Date: Wed, 16 Oct 2019 15:06:35 -0500
+Message-ID: <20191016200647.32050-14-robh@kernel.org>
 References: <20191016200647.32050-1-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,149 +21,135 @@ To: Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, 
 Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Michal Simek <michal.simek@xilinx.com>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Linus Walleij <linus.walleij@linaro.org>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>, Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboards.org, linux-renesas-soc@vger.kernel.org, Tom Joseph <tjoseph@cadence.com>, Srinath Mannam <srinath.mannam@b>
 List-Id: linux-rockchip.vger.kernel.org
 
-The Rockchip host bridge driver doesn't need to store outboard resources
-in its private struct as they are already stored in struct
-pci_host_bridge.
+Convert the xgene host bridge to use the common
+pci_parse_request_of_pci_ranges().
 
-Cc: Shawn Lin <shawn.lin@rock-chips.com>
+There's no need to assign the resources to a temporary list first. Just
+use bridge->windows directly and remove all the temporary list handling.
+
+Cc: Toan Le <toan@os.amperecomputing.com>
 Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 Cc: Andrew Murray <andrew.murray@arm.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
 v2:
 - New patch
 
- drivers/pci/controller/pcie-rockchip-host.c | 54 +++++++++------------
- drivers/pci/controller/pcie-rockchip.h      |  5 --
- 2 files changed, 23 insertions(+), 36 deletions(-)
+ drivers/pci/controller/pci-xgene.c | 39 +++++++++---------------------
+ 1 file changed, 11 insertions(+), 28 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index 8d2e6f2e141e..2255ff53e2fb 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -806,19 +806,28 @@ static int rockchip_pcie_prog_ib_atu(struct rockchip_pcie *rockchip,
- static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
- {
- 	struct device *dev = rockchip->dev;
-+	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(rockchip);
-+	struct resource_entry *entry;
-+	u64 pci_addr, size;
- 	int offset;
- 	int err;
- 	int reg_no;
-
- 	rockchip_pcie_cfg_configuration_accesses(rockchip,
- 						 AXI_WRAPPER_TYPE0_CFG);
-+	entry = resource_list_get_entry_of_type(&bridge->windows, IORESOURCE_MEM);
-+	if (!entry)
-+		return -ENODEV;
-+
-+	size = resource_size(entry->res);
-+	pci_addr = entry->res->start - entry->offset;
-+	rockchip->msg_bus_addr = pci_addr;
-
--	for (reg_no = 0; reg_no < (rockchip->mem_size >> 20); reg_no++) {
-+	for (reg_no = 0; reg_no < (size >> 20); reg_no++) {
- 		err = rockchip_pcie_prog_ob_atu(rockchip, reg_no + 1,
- 						AXI_WRAPPER_MEM_WRITE,
- 						20 - 1,
--						rockchip->mem_bus_addr +
--						(reg_no << 20),
-+						pci_addr + (reg_no << 20),
- 						0);
- 		if (err) {
- 			dev_err(dev, "program RC mem outbound ATU failed\n");
-@@ -832,14 +841,20 @@ static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
- 		return err;
- 	}
-
--	offset = rockchip->mem_size >> 20;
--	for (reg_no = 0; reg_no < (rockchip->io_size >> 20); reg_no++) {
-+	entry = resource_list_get_entry_of_type(&bridge->windows, IORESOURCE_IO);
-+	if (!entry)
-+		return -ENODEV;
-+
-+	size = resource_size(entry->res);
-+	pci_addr = entry->res->start - entry->offset;
-+
-+	offset = size >> 20;
-+	for (reg_no = 0; reg_no < (size >> 20); reg_no++) {
- 		err = rockchip_pcie_prog_ob_atu(rockchip,
- 						reg_no + 1 + offset,
- 						AXI_WRAPPER_IO_WRITE,
- 						20 - 1,
--						rockchip->io_bus_addr +
--						(reg_no << 20),
-+						pci_addr + (reg_no << 20),
- 						0);
- 		if (err) {
- 			dev_err(dev, "program RC io outbound ATU failed\n");
-@@ -852,8 +867,7 @@ static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
- 				  AXI_WRAPPER_NOR_MSG,
- 				  20 - 1, 0, 0);
-
--	rockchip->msg_bus_addr = rockchip->mem_bus_addr +
--					((reg_no + offset) << 20);
-+	rockchip->msg_bus_addr += ((reg_no + offset) << 20);
- 	return err;
+diff --git a/drivers/pci/controller/pci-xgene.c b/drivers/pci/controller/pci-xgene.c
+index ffda3e8b4742..7d0f0395a479 100644
+--- a/drivers/pci/controller/pci-xgene.c
++++ b/drivers/pci/controller/pci-xgene.c
+@@ -405,15 +405,13 @@ static void xgene_pcie_setup_cfg_reg(struct xgene_pcie_port *port)
+ 	xgene_pcie_writel(port, CFGCTL, EN_REG);
  }
 
-@@ -951,7 +965,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+-static int xgene_pcie_map_ranges(struct xgene_pcie_port *port,
+-				 struct list_head *res,
+-				 resource_size_t io_base)
++static int xgene_pcie_map_ranges(struct xgene_pcie_port *port)
+ {
++	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(port);
+ 	struct resource_entry *window;
+ 	struct device *dev = port->dev;
+-	int ret;
+
+-	resource_list_for_each_entry(window, res) {
++	resource_list_for_each_entry(window, &bridge->windows) {
+ 		struct resource *res = window->res;
+ 		u64 restype = resource_type(res);
+
+@@ -421,11 +419,9 @@ static int xgene_pcie_map_ranges(struct xgene_pcie_port *port,
+
+ 		switch (restype) {
+ 		case IORESOURCE_IO:
+-			xgene_pcie_setup_ob_reg(port, res, OMR3BARL, io_base,
++			xgene_pcie_setup_ob_reg(port, res, OMR3BARL,
++						pci_pio_to_address(res->start),
+ 						res->start - window->offset);
+-			ret = devm_pci_remap_iospace(dev, res, io_base);
+-			if (ret < 0)
+-				return ret;
+ 			break;
+ 		case IORESOURCE_MEM:
+ 			if (res->flags & IORESOURCE_PREFETCH)
+@@ -567,8 +563,7 @@ static void xgene_pcie_clear_config(struct xgene_pcie_port *port)
+ 		xgene_pcie_writel(port, i, 0);
+ }
+
+-static int xgene_pcie_setup(struct xgene_pcie_port *port, struct list_head *res,
+-			    resource_size_t io_base)
++static int xgene_pcie_setup(struct xgene_pcie_port *port)
+ {
+ 	struct device *dev = port->dev;
+ 	u32 val, lanes = 0, speed = 0;
+@@ -580,7 +575,7 @@ static int xgene_pcie_setup(struct xgene_pcie_port *port, struct list_head *res,
+ 	val = (XGENE_PCIE_DEVICEID << 16) | XGENE_PCIE_VENDORID;
+ 	xgene_pcie_writel(port, BRIDGE_CFG_0, val);
+
+-	ret = xgene_pcie_map_ranges(port, res, io_base);
++	ret = xgene_pcie_map_ranges(port);
+ 	if (ret)
+ 		return ret;
+
+@@ -607,11 +602,9 @@ static int xgene_pcie_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *dn = dev->of_node;
+ 	struct xgene_pcie_port *port;
+-	resource_size_t iobase = 0;
  	struct pci_bus *bus, *child;
  	struct pci_host_bridge *bridge;
- 	struct resource *bus_res;
--	struct resource_entry *win;
- 	int err;
+ 	int ret;
+-	LIST_HEAD(res);
 
- 	if (!dev->of_node)
-@@ -997,27 +1010,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*port));
+ 	if (!bridge)
+@@ -634,20 +627,14 @@ static int xgene_pcie_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return ret;
 
- 	rockchip->root_bus_nr = bus_res->start;
+-	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &res,
+-						    &iobase);
++	ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows, NULL);
+ 	if (ret)
+ 		return ret;
 
--	/* Get the I/O and memory ranges from DT */
--	resource_list_for_each_entry(win, &bridge->windows) {
--		switch (resource_type(win->res)) {
--		case IORESOURCE_IO:
--			io = win->res;
--			io->name = "I/O";
--			rockchip->io_size = resource_size(io);
--			rockchip->io_bus_addr = io->start - win->offset;
--			rockchip->io = io;
--			break;
--		case IORESOURCE_MEM:
--			mem = win->res;
--			mem->name = "MEM";
--			rockchip->mem_size = resource_size(mem);
--			rockchip->mem_bus_addr = mem->start - win->offset;
--			break;
--		default:
--			continue;
--		}
--	}
+-	ret = devm_request_pci_bus_resources(dev, &res);
+-	if (ret)
+-		goto error;
 -
- 	err = rockchip_pcie_cfg_atu(rockchip);
- 	if (err)
- 		goto err_remove_irq_domain;
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index 8e87a059ce73..bef42a803b56 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -304,13 +304,8 @@ struct rockchip_pcie {
- 	struct	irq_domain *irq_domain;
- 	int     offset;
- 	struct pci_bus *root_bus;
--	struct resource *io;
--	phys_addr_t io_bus_addr;
--	u32     io_size;
- 	void    __iomem *msg_region;
--	u32     mem_size;
- 	phys_addr_t msg_bus_addr;
--	phys_addr_t mem_bus_addr;
- 	bool is_rc;
- 	struct resource *mem_res;
- };
+-	ret = xgene_pcie_setup(port, &res, iobase);
++	ret = xgene_pcie_setup(port);
+ 	if (ret)
+-		goto error;
++		return ret;
+
+-	list_splice_init(&res, &bridge->windows);
+ 	bridge->dev.parent = dev;
+ 	bridge->sysdata = port;
+ 	bridge->busnr = 0;
+@@ -657,7 +644,7 @@ static int xgene_pcie_probe(struct platform_device *pdev)
+
+ 	ret = pci_scan_root_bus_bridge(bridge);
+ 	if (ret < 0)
+-		goto error;
++		return ret;
+
+ 	bus = bridge->bus;
+
+@@ -666,10 +653,6 @@ static int xgene_pcie_probe(struct platform_device *pdev)
+ 		pcie_bus_configure_settings(child);
+ 	pci_bus_add_devices(bus);
+ 	return 0;
+-
+-error:
+-	pci_free_resource_list(&res);
+-	return ret;
+ }
+
+ static const struct of_device_id xgene_pcie_match_table[] = {
 --
 2.20.1
