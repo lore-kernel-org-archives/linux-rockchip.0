@@ -1,7 +1,7 @@
 From: Rob Herring <robh@kernel.org>
-Subject: [PATCH v2 10/25] PCI: rockchip: Use pci_parse_request_of_pci_ranges()
-Date: Wed, 16 Oct 2019 15:06:32 -0500
-Message-ID: <20191016200647.32050-11-robh@kernel.org>
+Subject: [PATCH v2 12/25] PCI: v3-semi: Use pci_parse_request_of_pci_ranges()
+Date: Wed, 16 Oct 2019 15:06:34 -0500
+Message-ID: <20191016200647.32050-13-robh@kernel.org>
 References: <20191016200647.32050-1-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,134 +21,123 @@ To: Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, 
 Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Michal Simek <michal.simek@xilinx.com>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Linus Walleij <linus.walleij@linaro.org>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>, Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboards.org, linux-renesas-soc@vger.kernel.org, Tom Joseph <tjoseph@cadence.com>, Srinath Mannam <srinath.mannam@b>
 List-Id: linux-rockchip.vger.kernel.org
 
-Convert the Rockchip host bridge to use the common
+Convert V3 host bridge to use the common
 pci_parse_request_of_pci_ranges().
 
-There's no need to assign the resources to a temporary list first. Just
-use bridge->windows directly and remove all the temporary list handling.
-
-Cc: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>
 Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 Cc: Andrew Murray <andrew.murray@arm.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
 v2:
 - New patch
 
- drivers/pci/controller/pcie-rockchip-host.c | 36 ++++-----------------
- 1 file changed, 7 insertions(+), 29 deletions(-)
+ drivers/pci/controller/pci-v3-semi.c | 35 +++++-----------------------
+ 1 file changed, 6 insertions(+), 29 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index ef8e677ce9d1..8d2e6f2e141e 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -950,14 +950,10 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+diff --git a/drivers/pci/controller/pci-v3-semi.c b/drivers/pci/controller/pci-v3-semi.c
+index d219404bad92..96677520f6c1 100644
+--- a/drivers/pci/controller/pci-v3-semi.c
++++ b/drivers/pci/controller/pci-v3-semi.c
+@@ -241,10 +241,8 @@ struct v3_pci {
+ 	void __iomem *config_base;
+ 	struct pci_bus *bus;
+ 	u32 config_mem;
+-	u32 io_mem;
+ 	u32 non_pre_mem;
+ 	u32 pre_mem;
+-	phys_addr_t io_bus_addr;
+ 	phys_addr_t non_pre_bus_addr;
+ 	phys_addr_t pre_bus_addr;
+ 	struct regmap *map;
+@@ -520,35 +518,22 @@ static int v3_integrator_init(struct v3_pci *v3)
+ }
+
+ static int v3_pci_setup_resource(struct v3_pci *v3,
+-				 resource_size_t io_base,
+ 				 struct pci_host_bridge *host,
+ 				 struct resource_entry *win)
+ {
+ 	struct device *dev = v3->dev;
+ 	struct resource *mem;
+ 	struct resource *io;
+-	int ret;
+
+ 	switch (resource_type(win->res)) {
+ 	case IORESOURCE_IO:
+ 		io = win->res;
+-		io->name = "V3 PCI I/O";
+-		v3->io_mem = io_base;
+-		v3->io_bus_addr = io->start - win->offset;
+-		dev_dbg(dev, "I/O window %pR, bus addr %pap\n",
+-			io, &v3->io_bus_addr);
+-		ret = devm_pci_remap_iospace(dev, io, io_base);
+-		if (ret) {
+-			dev_warn(dev,
+-				 "error %d: failed to map resource %pR\n",
+-				 ret, io);
+-			return ret;
+-		}
++
+ 		/* Setup window 2 - PCI I/O */
+-		writel(v3_addr_to_lb_base2(v3->io_mem) |
++		writel(v3_addr_to_lb_base2(pci_pio_to_address(io->start)) |
+ 		       V3_LB_BASE2_ENABLE,
+ 		       v3->base + V3_LB_BASE2);
+-		writew(v3_addr_to_lb_map2(v3->io_bus_addr),
++		writew(v3_addr_to_lb_map2(io->start - win->offset),
+ 		       v3->base + V3_LB_MAP2);
+ 		break;
+ 	case IORESOURCE_MEM:
+@@ -732,7 +717,6 @@ static int v3_pci_probe(struct platform_device *pdev)
+ {
  	struct device *dev = &pdev->dev;
- 	struct pci_bus *bus, *child;
- 	struct pci_host_bridge *bridge;
-+	struct resource *bus_res;
- 	struct resource_entry *win;
+ 	struct device_node *np = dev->of_node;
 -	resource_size_t io_base;
--	struct resource	*mem;
--	struct resource	*io;
- 	int err;
-
+ 	struct resource *regs;
+ 	struct resource_entry *win;
+ 	struct v3_pci *v3;
+@@ -741,7 +725,6 @@ static int v3_pci_probe(struct platform_device *pdev)
+ 	u16 val;
+ 	int irq;
+ 	int ret;
 -	LIST_HEAD(res);
+
+ 	host = pci_alloc_host_bridge(sizeof(*v3));
+ 	if (!host)
+@@ -793,12 +776,7 @@ static int v3_pci_probe(struct platform_device *pdev)
+ 	if (IS_ERR(v3->config_base))
+ 		return PTR_ERR(v3->config_base);
+
+-	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &res,
+-						    &io_base);
+-	if (ret)
+-		return ret;
 -
- 	if (!dev->of_node)
- 		return -ENODEV;
+-	ret = devm_request_pci_bus_resources(dev, &res);
++	ret = pci_parse_request_of_pci_ranges(dev, &host->windows, NULL);
+ 	if (ret)
+ 		return ret;
 
-@@ -995,29 +991,20 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	if (err < 0)
- 		goto err_deinit_port;
-
--	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
--						    &res, &io_base);
-+	err = pci_parse_request_of_pci_ranges(dev, &bridge->windows, &bus_res);
- 	if (err)
- 		goto err_remove_irq_domain;
-
--	err = devm_request_pci_bus_resources(dev, &res);
--	if (err)
--		goto err_free_res;
-+	rockchip->root_bus_nr = bus_res->start;
+@@ -852,8 +830,8 @@ static int v3_pci_probe(struct platform_device *pdev)
+ 	writew(val, v3->base + V3_PCI_CMD);
 
  	/* Get the I/O and memory ranges from DT */
 -	resource_list_for_each_entry(win, &res) {
-+	resource_list_for_each_entry(win, &bridge->windows) {
- 		switch (resource_type(win->res)) {
- 		case IORESOURCE_IO:
- 			io = win->res;
- 			io->name = "I/O";
- 			rockchip->io_size = resource_size(io);
- 			rockchip->io_bus_addr = io->start - win->offset;
--			err = pci_remap_iospace(io, io_base);
--			if (err) {
--				dev_warn(dev, "error %d: failed to map resource %pR\n",
--					 err, io);
--				continue;
--			}
- 			rockchip->io = io;
- 			break;
- 		case IORESOURCE_MEM:
-@@ -1026,9 +1013,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 			rockchip->mem_size = resource_size(mem);
- 			rockchip->mem_bus_addr = mem->start - win->offset;
- 			break;
--		case IORESOURCE_BUS:
--			rockchip->root_bus_nr = win->res->start;
--			break;
- 		default:
- 			continue;
- 		}
-@@ -1036,15 +1020,14 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+-		ret = v3_pci_setup_resource(v3, io_base, host, win);
++	resource_list_for_each_entry(win, &host->windows) {
++		ret = v3_pci_setup_resource(v3, host, win);
+ 		if (ret) {
+ 			dev_err(dev, "error setting up resources\n");
+ 			return ret;
+@@ -931,7 +909,6 @@ static int v3_pci_probe(struct platform_device *pdev)
+ 	val |= V3_SYSTEM_M_LOCK;
+ 	writew(val, v3->base + V3_SYSTEM);
 
- 	err = rockchip_pcie_cfg_atu(rockchip);
- 	if (err)
--		goto err_unmap_iospace;
-+		goto err_remove_irq_domain;
-
- 	rockchip->msg_region = devm_ioremap(dev, rockchip->msg_bus_addr, SZ_1M);
- 	if (!rockchip->msg_region) {
- 		err = -ENOMEM;
--		goto err_unmap_iospace;
-+		goto err_remove_irq_domain;
- 	}
-
--	list_splice_init(&res, &bridge->windows);
- 	bridge->dev.parent = dev;
- 	bridge->sysdata = rockchip;
- 	bridge->busnr = 0;
-@@ -1054,7 +1037,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
-
- 	err = pci_scan_root_bus_bridge(bridge);
- 	if (err < 0)
--		goto err_unmap_iospace;
-+		goto err_remove_irq_domain;
-
- 	bus = bridge->bus;
-
-@@ -1068,10 +1051,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	pci_bus_add_devices(bus);
- 	return 0;
-
--err_unmap_iospace:
--	pci_unmap_iospace(rockchip->io);
--err_free_res:
--	pci_free_resource_list(&res);
- err_remove_irq_domain:
- 	irq_domain_remove(rockchip->irq_domain);
- err_deinit_port:
-@@ -1097,7 +1076,6 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
-
- 	pci_stop_root_bus(rockchip->root_bus);
- 	pci_remove_root_bus(rockchip->root_bus);
--	pci_unmap_iospace(rockchip->io);
- 	irq_domain_remove(rockchip->irq_domain);
-
- 	rockchip_pcie_deinit_phys(rockchip);
+-	list_splice_init(&res, &host->windows);
+ 	ret = pci_scan_root_bus_bridge(host);
+ 	if (ret) {
+ 		dev_err(dev, "failed to register host: %d\n", ret);
 --
 2.20.1
