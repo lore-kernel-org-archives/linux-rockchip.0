@@ -1,94 +1,131 @@
-From: Rob Herring <robh@kernel.org>
-Subject: [PATCH v2 25/25] PCI: Make devm_of_pci_get_host_bridge_resources()
- static
-Date: Wed, 16 Oct 2019 15:06:47 -0500
-Message-ID: <20191016200647.32050-26-robh@kernel.org>
-References: <20191016200647.32050-1-robh@kernel.org>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 1/2] mmc: core: Add sdio_trigger_replug() API
+Date: Wed, 16 Oct 2019 17:22:08 -0700
+Message-ID: <CAD=FV=WTKy3PmMSCbjKA_Ro_MP+dFE89oCzi_Bs7YeCrcD+3Xg@mail.gmail.com>
+References: <20190722193939.125578-1-dianders@chromium.org>
+ <20190722193939.125578-2-dianders@chromium.org> <CAPDyKFpKWo4n+nmBXVcDc4TNzFV3vc+3aeKcu_nKaB=hj=RKUQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20191016200647.32050-1-robh@kernel.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Michal Simek <michal.simek@xilinx.com>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Linus Walleij <linus.walleij@linaro.org>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>, Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboards.org, linux-renesas-soc@vger.kernel.org, Tom Joseph <tjoseph@cadence.com>, Srinath Mannam <srinath.mannam@b>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFpKWo4n+nmBXVcDc4TNzFV3vc+3aeKcu_nKaB=hj=RKUQ@mail.gmail.com>
+Sender: netdev-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Kalle Valo <kvalo@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Ganapathi Bhat <gbhat@marvell.com>, linux-wireless <linux-wireless@vger.kernel.org>, Andreas Fenkart <afenkart@gmail.com>, Brian Norris <briannorris@chromium.org>, Amitkumar Karwar <amitkarwar@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Nishant Sarmukadam <nishants@marvell.com>, netdev <netdev@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>, Xinming Hu <huxinming820@gmail.com>, Matthias Kaehlcke <mka@chromium.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>Thomas Gleixner <t>
 List-Id: linux-rockchip.vger.kernel.org
 
-Now that all the PCI host drivers are using pci_parse_request_of_pci_ranges(),
-make devm_of_pci_get_host_bridge_resources() static.
+Hi,
 
-Cc: Bjorn Helgaas <bhelgaas@google.com>
-Signed-off-by: Rob Herring <robh@kernel.org>
----
- drivers/pci/of.c  |  5 +----
- drivers/pci/pci.h | 17 -----------------
- 2 files changed, 1 insertion(+), 21 deletions(-)
+On Thu, Oct 10, 2019 at 7:11 AM Ulf Hansson <ulf.hansson@linaro.org> wrote:
+>
+> On Mon, 22 Jul 2019 at 21:41, Douglas Anderson <dianders@chromium.org> wrote:
+> >
+> > When using Marvell WiFi SDIO cards, it is not uncommon for Linux WiFi
+> > driver to fully lose the communication channel to the firmware running
+> > on the card.  Presumably the firmware on the card has a bug or two in
+> > it and occasionally crashes.
+> >
+> > The Marvell WiFi driver attempts to recover from this problem.
+> > Specifically the driver has the function mwifiex_sdio_card_reset()
+> > which is called when communcation problems are found.  That function
+> > attempts to reset the state of things by utilizing the mmc_hw_reset()
+> > function.
+> >
+> > The current solution is a bit complex because the Marvell WiFi driver
+> > needs to manually deinit and reinit the WiFi driver around the reset
+> > call.  This means it's going through a bunch of code paths that aren't
+> > normally tested.  However, complexity isn't our only problem.  The
+> > other (bigger) problem is that Marvell WiFi cards are often combo
+> > WiFi/Bluetooth cards and Bluetooth runs on a second SDIO func.  While
+> > the WiFi driver knows that it should re-init its own state around the
+> > mmc_hw_reset() call there is no good way to inform the Bluetooth
+> > driver.  That means that in Linux today when you reset the Marvell
+> > WiFi driver you lose all Bluetooth communication.  Doh!
+>
+> Thanks for a nice description to the problem!
+>
+> In principle it makes mmc_hw_reset() quite questionable to use for
+> SDIO func drivers, at all. However, let's consider that for later.
 
-diff --git a/drivers/pci/of.c b/drivers/pci/of.c
-index 0b1e4623dfcf..00e4b9fcb41d 100644
---- a/drivers/pci/of.c
-+++ b/drivers/pci/of.c
-@@ -236,7 +236,6 @@ void of_pci_check_probe_only(void)
- }
- EXPORT_SYMBOL_GPL(of_pci_check_probe_only);
- 
--#if defined(CONFIG_OF_ADDRESS)
- /**
-  * devm_of_pci_get_host_bridge_resources() - Resource-managed parsing of PCI
-  *                                           host bridge resources from DT
-@@ -255,7 +254,7 @@ EXPORT_SYMBOL_GPL(of_pci_check_probe_only);
-  * It returns zero if the range parsing has been successful or a standard error
-  * value if it failed.
-  */
--int devm_of_pci_get_host_bridge_resources(struct device *dev,
-+static int devm_of_pci_get_host_bridge_resources(struct device *dev,
- 			unsigned char busno, unsigned char bus_max,
- 			struct list_head *resources,
- 			struct list_head *ib_resources,
-@@ -384,8 +383,6 @@ int devm_of_pci_get_host_bridge_resources(struct device *dev,
- 	pci_free_resource_list(resources);
- 	return err;
- }
--EXPORT_SYMBOL_GPL(devm_of_pci_get_host_bridge_resources);
--#endif /* CONFIG_OF_ADDRESS */
- 
- #if IS_ENABLED(CONFIG_OF_IRQ)
- /**
-diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
-index 6692c4fe4290..118a4974537b 100644
---- a/drivers/pci/pci.h
-+++ b/drivers/pci/pci.h
-@@ -630,23 +630,6 @@ static inline void pci_set_bus_of_node(struct pci_bus *bus) { }
- static inline void pci_release_bus_of_node(struct pci_bus *bus) { }
- #endif /* CONFIG_OF */
- 
--#if defined(CONFIG_OF_ADDRESS)
--int devm_of_pci_get_host_bridge_resources(struct device *dev,
--			unsigned char busno, unsigned char bus_max,
--			struct list_head *resources,
--			struct list_head *ib_resources,
--			resource_size_t *io_base);
--#else
--static inline int devm_of_pci_get_host_bridge_resources(struct device *dev,
--			unsigned char busno, unsigned char bus_max,
--			struct list_head *resources,
--			struct list_head *ib_resources,
--			resource_size_t *io_base)
--{
--	return -EINVAL;
--}
--#endif
--
- #ifdef CONFIG_PCIEAER
- void pci_no_aer(void);
- void pci_aer_init(struct pci_dev *dev);
--- 
-2.20.1
+Yeah, unless you somehow knew that your card would only have one function.
+
+
+> > One way to fix the above problems is to leverage a more standard way
+> > to reset the Marvell WiFi card where we go through the same code paths
+> > as card unplug and the card plug.  In this patch we introduce a new
+> > API call for doing just that: sdio_trigger_replug().  This API call
+> > will trigger an unplug of the SDIO card followed by a plug of the
+> > card.  As part of this the card will be nicely reset.
+>
+> I have been thinking back and forth on this, exploring various
+> options, perhaps adding some callbacks that the core could invoke to
+> inform the SDIO func drivers of what is going on.
+>
+> Although, in the end this boils done to complexity and I think your
+> approach is simply the most superior in regards to this. However, I
+> think there is a few things that we can do to even further simply your
+> approach, let me comment on the code below.
+
+Right.  Unplugging / re-plugging is sorta gross / inelegant, but it is
+definitely simpler and nice that it doesn't add so many new code
+paths.  For cases where you're just trying to re-init things with a
+hammer it works pretty well.
+
+
+> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> > Reviewed-by: Matthias Kaehlcke <mka@chromium.org>
+> > ---
+> >
+> > Changes in v2:
+> > - s/routnine/routine (Brian Norris, Matthias Kaehlcke).
+> > - s/contining/containing (Matthias Kaehlcke).
+> > - Add Matthias Reviewed-by tag.
+> >
+> >  drivers/mmc/core/core.c       | 28 ++++++++++++++++++++++++++--
+> >  drivers/mmc/core/sdio_io.c    | 20 ++++++++++++++++++++
+> >  include/linux/mmc/host.h      | 15 ++++++++++++++-
+> >  include/linux/mmc/sdio_func.h |  2 ++
+> >  4 files changed, 62 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
+> > index 221127324709..5da365b1fdb4 100644
+> > --- a/drivers/mmc/core/core.c
+> > +++ b/drivers/mmc/core/core.c
+> > @@ -2161,6 +2161,12 @@ int mmc_sw_reset(struct mmc_host *host)
+> >  }
+> >  EXPORT_SYMBOL(mmc_sw_reset);
+> >
+> > +void mmc_trigger_replug(struct mmc_host *host)
+> > +{
+> > +       host->trigger_replug_state = MMC_REPLUG_STATE_UNPLUG;
+> > +       _mmc_detect_change(host, 0, false);
+> > +}
+> > +
+> >  static int mmc_rescan_try_freq(struct mmc_host *host, unsigned freq)
+> >  {
+> >         host->f_init = freq;
+> > @@ -2214,6 +2220,11 @@ int _mmc_detect_card_removed(struct mmc_host *host)
+> >         if (!host->card || mmc_card_removed(host->card))
+> >                 return 1;
+> >
+> > +       if (host->trigger_replug_state == MMC_REPLUG_STATE_UNPLUG) {
+> > +               mmc_card_set_removed(host->card);
+> > +               return 1;
+>
+> Do you really need to set state of the card to "removed"?
+>
+> If I understand correctly, what you need is to allow mmc_rescan() to
+> run a second time, in particular for non removable cards.
+>
+> In that path, mmc_rescan should find the card being non-functional,
+> thus it should remove it and then try to re-initialize it again. Etc.
+>
+> Do you want me to send a patch to show you what I mean!?
+
+If you don't mind, that would probably be easiest.  I've totally
+swapped out all of the implementation details of this from my brain
+now, but if I saw a patch from you it would be easy for me to analyze
+it and test it.
+
+Thanks!
+
+-Doug
