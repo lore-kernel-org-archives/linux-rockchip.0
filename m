@@ -1,11 +1,16 @@
-From: "Ben Dooks (Codethink)" <ben.dooks@codethink.co.uk>
-Subject: [PATCH] clk: rockchip: make clk_half_divider_ops static
-Date: Thu, 17 Oct 2019 11:53:48 +0100
-Message-ID: <20191017105348.8061-1-ben.dooks@codethink.co.uk>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 11/25] PCI: rockchip: Drop storing driver private
+ outbound resource data
+Date: Thu, 17 Oct 2019 07:24:50 -0500
+Message-ID: <CAL_Jsq+Hmwy04-XtTCp+H=H5BeaFVeHXgq1R0xVvBdgPEsDbPw@mail.gmail.com>
+References: <20191016200647.32050-1-robh@kernel.org>
+ <20191016200647.32050-12-robh@kernel.org>
+ <20191017072625.GB19517@infradead.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20191017072625.GB19517@infradead.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -15,45 +20,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-kernel@lists.codethink.co.uk
-Cc: Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, linux-rockchip@lists.infradead.org, "Ben Dooks (Codethink)" <ben.dooks@codethink.co.uk>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Christoph Hellwig <hch@infradead.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, PCI <linux-pci@vger.kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Michal Simek <michal.simek@xilinx.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE" <bcm-kernel-feedback-list@broadcom.com>, Shawn Lin <shawn.lin@rock-chips.com>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Ryder Lee <ryder.lee@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>moderated list:AR
 List-Id: linux-rockchip.vger.kernel.org
 
-The clk_half_divider_ops is not used outside or declared
-outside of drivers/clk/rockchip/clk-half-divider.c so make
-it static to avoid the following warning:
+On Thu, Oct 17, 2019 at 2:26 AM Christoph Hellwig <hch@infradead.org> wrote:
+>
+> On Wed, Oct 16, 2019 at 03:06:33PM -0500, Rob Herring wrote:
+> > +     entry = resource_list_get_entry_of_type(&bridge->windows, IORESOURCE_MEM);
+>
+> This add another too long line.  Please audit the whole series for that.
 
-drivers/clk/rockchip/clk-half-divider.c:142:22: warning: symbol 'clk_half_divider_ops' was not declared. Should it be static?
+82 characters didn't seem worth a line break...
 
-Signed-off-by: Ben Dooks <ben.dooks@codethink.co.uk>
----
-Cc: Michael Turquette <mturquette@baylibre.com>
-Cc: Stephen Boyd <sboyd@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-clk@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
----
- drivers/clk/rockchip/clk-half-divider.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/clk/rockchip/clk-half-divider.c b/drivers/clk/rockchip/clk-half-divider.c
-index ba9f00dc9740..b333fc28c94b 100644
---- a/drivers/clk/rockchip/clk-half-divider.c
-+++ b/drivers/clk/rockchip/clk-half-divider.c
-@@ -139,12 +139,11 @@ static int clk_half_divider_set_rate(struct clk_hw *hw, unsigned long rate,
- 	return 0;
- }
- 
--const struct clk_ops clk_half_divider_ops = {
-+static const struct clk_ops clk_half_divider_ops = {
- 	.recalc_rate = clk_half_divider_recalc_rate,
- 	.round_rate = clk_half_divider_round_rate,
- 	.set_rate = clk_half_divider_set_rate,
- };
--EXPORT_SYMBOL_GPL(clk_half_divider_ops);
- 
- /**
-  * Register a clock branch.
--- 
-2.23.0
+Rob
