@@ -1,13 +1,14 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 5/5] doc: boards: Add rockchip documentation
-Date: Fri, 18 Oct 2019 00:37:10 +0530
-Message-ID: <20191017190710.29985-6-jagan@amarulasolutions.com>
-References: <20191017190710.29985-1-jagan@amarulasolutions.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Add core dts for RK3308 SOC
+Date: Fri, 18 Oct 2019 01:30:22 +0200
+Message-ID: <5242916.cCMrPAA6xQ@phil>
+References: <20191017030242.32219-1-andy.yan@rock-chips.com>
+ <20191017030449.32289-1-andy.yan@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191017190710.29985-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+In-Reply-To: <20191017030449.32289-1-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,179 +18,223 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, "Matwey V . Kornilov" <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Rockchip has documentation file, doc/README.rockchip but
-which is not so readable to add or understand the existing
-contents. Even the format that support is legacy readme
-in U-Boot.
+Hi Andy,
 
-Add rockchip specific documentation file using new rst
-format, which describes the information about Rockchip
-supported boards and it's usage steps.
+Am Donnerstag, 17. Oktober 2019, 05:04:49 CEST schrieb Andy Yan:
 
-Added minimal information about rk3288, rk3328, rk3368
-and rk3399 boards and usage. This would indeed updated
-further based on the requirements and updates.
+> +	psci {
+> +		compatible = "arm,psci-1.0";
+> +		method = "smc";
+> +	};
 
-Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Matwey V. Kornilov <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- doc/board/rockchip/index.rst    |  10 +++
- doc/board/rockchip/rockchip.rst | 125 ++++++++++++++++++++++++++++++++
- 2 files changed, 135 insertions(+)
- create mode 100644 doc/board/rockchip/index.rst
- create mode 100644 doc/board/rockchip/rockchip.rst
+Please also provide a ATF implementation for the rk3308 :-)
+[Not a requirement for getting this merged, but it would be
+really cool to have sources for the full stack]
 
-diff --git a/doc/board/rockchip/index.rst b/doc/board/rockchip/index.rst
-new file mode 100644
-index 0000000000..0c377e9bbb
---- /dev/null
-+++ b/doc/board/rockchip/index.rst
-@@ -0,0 +1,10 @@
-+.. SPDX-License-Identifier: GPL-2.0+
-+.. Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-+
-+Rockchip
-+========
-+
-+.. toctree::
-+   :maxdepth: 2
-+
-+   rockchip
-diff --git a/doc/board/rockchip/rockchip.rst b/doc/board/rockchip/rockchip.rst
-new file mode 100644
-index 0000000000..782a0f1c7a
---- /dev/null
-+++ b/doc/board/rockchip/rockchip.rst
-@@ -0,0 +1,125 @@
-+.. SPDX-License-Identifier: GPL-2.0+
-+.. Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-+
-+ROCKCHIP
-+========
-+
-+About this
-+----------
-+
-+This document describes the information about Rockchip supported boards
-+and it's usage steps.
-+
-+Rockchip boards
-+---------------
-+
-+Rockchip is SoC solutions provider for tablets & PCs, streaming media
-+TV boxes, AI audio & vision, IoT hardware.
-+
-+A wide range of Rockchip SoCs with associated boardsare supported in
-+mainline U-Boot.
-+
-+List of mainline supported rockchip boards:
-+
-+* rk3288
-+     - Evb-RK3288
-+     - Firefly-RK3288
-+     - mqmaker MiQi
-+     - Phytec RK3288 PCM-947
-+     - PopMetal-RK3288
-+     - Radxa Rock 2 Square
-+     - Tinker-RK3288
-+     - Google Jerry
-+     - Google Mickey
-+     - Google Minnie
-+     - Google Speedy
-+     - Amarula Vyasa-RK3288
-+* rk3328
-+     - Rockchip RK3328 EVB
-+     - Pine64 Rock64
-+* rk3368
-+     - GeekBox
-+     - PX5 EVB
-+     - Rockchip sheep board
-+     - Theobroma Systems RK3368-uQ7 SoM
-+* rk3399
-+     - 96boards RK3399 Ficus
-+     - 96boards Rock960
-+     - Firefly-RK3399 Board
-+     - Firefly ROC-RK3399-PC Board
-+     - FriendlyElec NanoPC-T4
-+     - FriendlyElec NanoPi M4
-+     - FriendlyARM NanoPi NEO4
-+     - Google Bob
-+     - Khadas Edge
-+     - Khadas Edge-Captain
-+     - Khadas Edge-V
-+     - Orange Pi RK3399 Board
-+     - Pine64 RockPro64
-+     - Radxa ROCK Pi 4
-+     - Rockchip RK3399 Evaluation Board
-+     - Theobroma Systems RK3399-Q7 SoM
-+
-+Building
-+--------
-+
-+TF-A
-+^^^^
-+
-+TF-A would require to build for ARM64 Rockchip SoCs platforms.
-+
-+To build TF-A::
-+
-+        git clone https://github.com/ARM-software/arm-trusted-firmware.git
-+        cd arm-trusted-firmware
-+        make realclean
-+        make CROSS_COMPILE=aarch64-linux-gnu- PLAT=rk3399
-+
-+Specify the PLAT= with desired rockchip platform to build TF-A for.
-+
-+U-Boot
-+^^^^^^
-+
-+To build rk3328 boards::
-+
-+        export BL31=/path/to/arm-trusted-firmware/to/bl31.elf
-+        make evb-rk3328_defconfig
-+        make
-+
-+To build rk3288 boards::
-+
-+        make evb-rk3288_defconfig
-+        make
-+
-+To build rk3368 boards::
-+
-+        export BL31=/path/to/arm-trusted-firmware/to/bl31.elf
-+        make evb-px5_defconfig
-+        make
-+
-+To build rk3399 boards::
-+
-+        export BL31=/path/to/arm-trusted-firmware/to/bl31.elf
-+        make evb-rk3399_defconfig
-+        make
-+
-+SD Card Flashing
-+----------------
-+
-+To write an image that boots from an SD card (assumed to be /dev/sda):
-+
-+TPL + SPL::
-+
-+        sudo dd if=u-boot-rockchip-with-tpl-spl.bin of=/dev/sda seek=64
-+        sync
-+
-+TODO
-+----
-+
-+- Add SPL-alone SD Card flashing steps
-+- Add rockchip idbloader image building
-+- Describe steps for eMMC flashing
-+- Add missing SoC's with it boards list
-+
-+.. Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-+.. Thu Oct 17 22:36:14 IST 2019
--- 
-2.18.0.321.gffc6fa0e3
+> +
+> +	ramoops_mem: ramoops_mem {
+> +		reg = <0x0 0x110000 0x0 0xf0000>;
+> +		reg-names = "ramoops_mem";
+> +	};
+> +
+> +	ramoops: ramoops {
+> +		compatible = "ramoops";
+> +		record-size = <0x0 0x30000>;
+> +		console-size = <0x0 0xc0000>;
+> +		ftrace-size = <0x0 0x00000>;
+> +		pmsg-size = <0x0 0x00000>;
+> +		memory-region = <&ramoops_mem>;
+> +	};
+
+I think ramoops are more a per-board thing, like for the evb.
+As they'll require cooperation with bootloaders to not mangle that
+memory area. For this please also coordinate with Kever because
+I somehow remember we have u-boot sometimes at 0x100000.
+
+
+> +	grf: grf@ff000000 {
+> +		compatible = "rockchip,rk3308-grf", "syscon", "simple-mfd";
+
+Please add a patch adding the rockchip,rk3308-grf compatible to
+Documentation/devicetree/bindings/soc/rockchip/grf.txt
+
+> +		reg = <0x0 0xff000000 0x0 0x10000>;
+> +
+> +		reboot-mode {
+> +			compatible = "syscon-reboot-mode";
+> +			offset = <0x500>;
+> +			mode-bootloader = <BOOT_BL_DOWNLOAD>;
+> +			mode-loader = <BOOT_BL_DOWNLOAD>;
+> +			mode-normal = <BOOT_NORMAL>;
+> +			mode-recovery = <BOOT_RECOVERY>;
+> +			mode-fastboot = <BOOT_FASTBOOT>;
+> +		};
+> +	};
+> +
+> +	detect_grf: syscon@ff00b000 {
+> +		compatible = "syscon", "simple-mfd";
+
+	compatible = "rockchip,rk3308-detect-grf", "syscon"
++ add the rk3308-detect-grf to the binding
+
+> +		reg = <0x0 0xff00b000 0x0 0x1000>;
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
+> +	};
+> +
+> +	core_grf: syscon@ff00c000 {
+> +		compatible = "syscon", "simple-mfd";
+
+same as detect_grf
+
+> +		reg = <0x0 0xff00c000 0x0 0x1000>;
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
+> +
+> +	};
+> +
+> +	i2c0: i2c@ff040000 {
+> +		compatible = "rockchip,rk3399-i2c";
+
+	compatible = "rockchip,rk3308-i2c", "rockchip,rk3399-i2c";
+Same for all i2c controllers.
+
+> +		reg = <0x0 0xff040000 0x0 0x1000>;
+> +		clocks = <&cru SCLK_I2C0>, <&cru PCLK_I2C0>;
+> +		clock-names = "i2c", "pclk";
+> +		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&i2c0_xfer>;
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		status = "disabled";
+> +	};
+
+
+> +	spi0: spi@ff120000 {
+> +		compatible = "rockchip,rk3308-spi", "rockchip,rk3066-spi";
+> +		reg = <0x0 0xff120000 0x0 0x1000>;
+> +		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		clocks = <&cru SCLK_SPI0>, <&cru PCLK_SPI0>;
+> +		clock-names = "spiclk", "apb_pclk";
+> +		dmas = <&dmac0 0>, <&dmac0 1>;
+> +		dma-names = "tx", "rx";
+> +		pinctrl-names = "default", "high_speed";
+
+there is no high_speed pinctrl defined for the Rockchip spi driver
+in mainline, so this part should go away in a first step.
+Same for the other spi controllers.
+
+> +		pinctrl-0 = <&spi0_clk &spi0_csn0 &spi0_miso &spi0_mosi>;
+> +		pinctrl-1 = <&spi0_clk_hs &spi0_csn0 &spi0_miso_hs &spi0_mosi_hs>;
+> +		status = "disabled";
+> +	};
+
+
+> +	rktimer: rktimer@ff1a0000 {
+> +		compatible = "rockchip,rk3288-timer";
+
+	compatible = "rockchip,rk3308-timer", "rockchip,rk3288-timer";
+
+> +		reg = <0x0 0xff1a0000 0x0 0x20>;
+> +		interrupts = <GIC_SPI 25 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru PCLK_TIMER>, <&cru SCLK_TIMER0>;
+> +		clock-names = "pclk", "timer";
+> +	};
+
+
+
+> +	amba {
+> +		compatible = "arm,amba-bus";
+
+compatible = "simple-bus";
+
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +
+> +		dmac0: dma-controller@ff2c0000 {
+> +			compatible = "arm,pl330", "arm,primecell";
+> +			reg = <0x0 0xff2c0000 0x0 0x4000>;
+> +			interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
+> +			#dma-cells = <1>;
+> +			clocks = <&cru ACLK_DMAC0>;
+> +			clock-names = "apb_pclk";
+> +			peripherals-req-type-burst;
+
+peripherals-req-type-burst is undocumented so likely some change to the
+dma driver not yet upstream?
+
+> +		};
+> +
+> +		dmac1: dma-controller@ff2d0000 {
+> +			compatible = "arm,pl330", "arm,primecell";
+> +			reg = <0x0 0xff2d0000 0x0 0x4000>;
+> +			interrupts = <GIC_SPI 2 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 3 IRQ_TYPE_LEVEL_HIGH>;
+> +			#dma-cells = <1>;
+> +			clocks = <&cru ACLK_DMAC1>;
+> +			clock-names = "apb_pclk";
+> +			peripherals-req-type-burst;
+> +		};
+> +	};
+> +
+> +	i2s_2ch_0: i2s@ff350000 {
+> +		compatible = "rockchip,rk3308-i2s", "rockchip,rk3066-i2s";
+> +		reg = <0x0 0xff350000 0x0 0x1000>;
+> +		interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru SCLK_I2S0_2CH>, <&cru HCLK_I2S0_2CH>;
+> +		clock-names = "i2s_clk", "i2s_hclk";
+> +		dmas = <&dmac1 8>, <&dmac1 9>;
+> +		dma-names = "tx", "rx";
+> +		resets = <&cru SRST_I2S0_2CH_M>, <&cru SRST_I2S0_2CH_H>;
+> +		reset-names = "reset-m", "reset-h";
+
+These resets don't seem to be defined in driver or binding?
+Same for other i2s
+
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&i2s_2ch_0_sclk
+> +			     &i2s_2ch_0_lrck
+> +			     &i2s_2ch_0_sdi
+> +			     &i2s_2ch_0_sdo>;
+> +		status = "disabled";
+> +	};
+
+
+> +
+> +	mac: ethernet@ff4e0000 {
+> +		compatible = "rockchip,rk3308-mac";
+
+Was this support to the network driver already submitted?
+Because I wasn't able to find it in the gmac driver.
+
+> +		reg = <0x0 0xff4e0000 0x0 0x10000>;
+> +		rockchip,grf = <&grf>;
+> +		interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
+> +		interrupt-names = "macirq";
+> +		clocks = <&cru SCLK_MAC>, <&cru SCLK_MAC_RX_TX>,
+> +			 <&cru SCLK_MAC_RX_TX>, <&cru SCLK_MAC_REF>,
+> +			 <&cru SCLK_MAC>, <&cru ACLK_MAC>,
+> +			 <&cru PCLK_MAC>, <&cru SCLK_MAC_RMII>;
+> +		clock-names = "stmmaceth", "mac_clk_rx",
+> +			      "mac_clk_tx", "clk_mac_ref",
+> +			      "clk_mac_refout", "aclk_mac",
+> +			      "pclk_mac", "clk_mac_speed";
+> +		phy-mode = "rmii";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&rmii_pins &mac_refclk_12ma>;
+> +		resets = <&cru SRST_MAC_A>;
+> +		reset-names = "stmmaceth";
+> +		status = "disabled";
+> +	};
+
+
+Heiko
