@@ -1,15 +1,12 @@
-From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-Subject: Re: rk3328 USB3 controller
-Date: Fri, 18 Oct 2019 10:54:29 +0900
-Message-ID: <86b42c42-6f89-9773-4275-2fe93165a90f@katsuster.net>
-References: <CAMdYzYp9xdtb6eiUs-Tiq4jJ-jr31LTzng2o-qAbOfu_63zXVg@mail.gmail.com>
- <1b0f65be-51b6-69dd-e204-6d168f17eb7d@think-future.de>
- <20191017162131.GH14623@think-future.de>
+From: Markus Elfring <Markus.Elfring-S0/GAf8tV78@public.gmane.org>
+Subject: iommu/rockchip: Checking a device_link_add() call in
+ rk_iommu_add_device()
+Date: Fri, 18 Oct 2019 09:00:14 +0200
+Message-ID: <c4a1fdd2-4383-dd0f-1d4b-f27ab62b383e@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191017162131.GH14623-ehbYDe70fqD9uQeqpI+JUg@public.gmane.org>
 Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
@@ -20,41 +17,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: 4omecha-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+To: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, =?UTF-8?B?SsO2cmcgUsO2ZGVs?= <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: "Rafael J. Wysocki" <rafael-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Stephen McCamant <smccaman-OJFnDUYgAso@public.gmane.org>, Kangjie Lu <kjlu-OJFnDUYgAso@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Navid Emamdoost <emamd001-OJFnDUYgAso@public.gmane.org>, Aditya Pakki <pakki001-OJFnDUYgAso@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8sCgpPbiAyMDE5LzEwLzE4IDE6MjEsIDRvbWVjaGFAZ21haWwuY29tIHdyb3RlOgo+IE9u
-IDIwMTktMTAtMTcgMTQ6MDc6NDMsIEthdHN1aGlybyBTdXp1a2kgd3JvdGU6Cj4+IEhlbGxvIFBl
-dGVyLAo+Pgo+PiBVU0IzIHBoeSBkcml2ZXIgInJvY2tjaGlwLHJrMzMyOC11M3BoeSIgaGFzIG5v
-dCBiZWVuIGltcGxlbWVudGVkIG9uCj4+IHVwc3RyZWFtIGxpbnV4IGtlcm5lbC4KPj4KPj4gRmly
-ZWZseVRlYW0gdXNlIHRoZSBzcGVjaWFsIHZlcnNpb24gb2YgbGludXggdGhhdCBpcyBtb2RpZmll
-ZCBieSBSb2NrY2hpcC4KPj4gKEl0IHNlZW1zIGJhc2VkIG9uIGxpbnV4LTQuNCkKPj4KPj4gcm9j
-a2NoaXAscmszMzI4LXUzcGh5IGlzIHByb3ZpZGVkIGJ5Cj4+IMKgaHR0cHM6Ly9naXRodWIuY29t
-L0ZpcmVmbHlUZWFtL2tlcm5lbC9kcml2ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtaW5u
-by11c2IzLmMKPiBUaGF0J3MgYSA0MDQgb3ZlciBoZXJlLgo+IAo+IAoKT29wcywgdGhpcyBVUkwg
-aXMgY29ycmVjdC4KCmh0dHBzOi8vZ2l0aHViLmNvbS9GaXJlZmx5VGVhbS9rZXJuZWwvYmxvYi9y
-b2MtcmszMzI4LWNjL2RyaXZlcnMvcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1pbm5vLXVzYjMu
-YwoKCj4+Cj4+IElmIHlvdSB3YW50IHRvIHVzZSBVU0IgMy4wIHdpdGggdXBzdHJlYW0gbGludXgs
-IHdlIG5lZWQgdG8gcG9ydCB0aGlzCj4+IFVTQjMgcGh5IGRyaXZlciBmcm9tIHJvY2tjaGlwLWxp
-bnV4IHRvIHVwc3RyZWFtIGtlcm5lbCwgSSB0aGluay4KPj4KPj4gQmVzdCBSZWdhcmRzLAo+PiBL
-YXRzdWhpcm8gU3V6dWtpCj4+Cj4+Cj4+IE9uIDIwMTkvMTAvMTcgMzo1NCwgUGV0ZXIgR2VpcyB3
-cm90ZToKPj4+IEdvb2QgQWZ0ZXJub29uLAo+Pj4KPj4+IElzIHRoZXJlIGEgcGFydGljdWxhciBy
-ZWFzb24gd2h5IHRoZSBVU0IzIGNvbnRyb2xsZXIgb24gdGhlIHJrMzMyOCBoYXMKPj4+IG5vdCBi
-ZWVuIGVuYWJsZWQ/Cj4+PiBJdCdzIGVuYWJsZWQgb24gdGhlIFRlYW1GaXJlZmx5IHNvdXJjZSBb
-MF0uCj4+PiBJIHB1bGxlZCBpdCBpbiB0byBteSBkZXZpY2UgdHJlZSBhbmQgaGF2ZSBiZWVuIHVz
-aW5nIGEgVVNCMyBTU0QgYXMgbXkKPj4+IGJvb3QgZGV2aWNlIGZvciBvdmVyIGEgeWVhciBub3cu
-Cj4+Pgo+Pj4gSWYgSSB3ZXJlIHRvIHN1Ym1pdCB0aGUgcGF0Y2gsIHdvdWxkIHknYWxsIGJlIG9w
-ZW4gdG8gcHVsbGluZyBpdCBpbj8KPj4+Cj4+PiBbMF0gaHR0cHM6Ly9naXRodWIuY29tL0ZpcmVm
-bHlUZWFtL2tlcm5lbC9ibG9iL3JvYy1yazMzMjgtY2MvYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
-Y2hpcC9yazMzMjguZHRzaQo+Pj4KPj4+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCj4+PiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPj4+IExpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPj4+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
-b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKPj4+Cj4+Cj4+Cj4+IF9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4+IExpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdAo+PiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4+IGh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
-PiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+SGVsbG8sCgpJIHRyaWVkIGFub3RoZXIgc2NyaXB0IGZvciB0aGUgc2VtYW50aWMgcGF0Y2ggbGFu
+Z3VhZ2Ugb3V0LgpUaGlzIHNvdXJjZSBjb2RlIGFuYWx5c2lzIGFwcHJvYWNoIHBvaW50cyBvdXQg
+dGhhdCB0aGUgaW1wbGVtZW50YXRpb24Kb2YgdGhlIGZ1bmN0aW9uIOKAnHJrX2lvbW11X2FkZF9k
+ZXZpY2XigJ0gY29udGFpbnMgc3RpbGwKYW4gdW5jaGVja2VkIGNhbGwgb2YgdGhlIGZ1bmN0aW9u
+IOKAnGRldmljZV9saW5rX2FkZOKAnS4KaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xp
+bnV4L2tlcm5lbC9naXQvbmV4dC9saW51eC1uZXh0LmdpdC90cmVlL2RyaXZlcnMvaW9tbXUvcm9j
+a2NoaXAtaW9tbXUuYz9pZD0zZWY4NDVkYTNjM2IxODBkZGQzODZlMjI4YWMzMjI4ZDg0YTUyMmQz
+I24xMDc1Cmh0dHBzOi8vZWxpeGlyLmJvb3RsaW4uY29tL2xpbnV4L3Y1LjQtcmMyL3NvdXJjZS9k
+cml2ZXJzL2lvbW11L3JvY2tjaGlwLWlvbW11LmMjTDEwNzEKCkhvdyBkbyB5b3UgdGhpbmsgYWJv
+dXQgdG8gaW1wcm92ZSBpdD8KCldoaWNoIGVycm9yIGNvZGUgd291bGQgeW91IGxpa2UgdG8gcmV0
+dXJuIGZvciBhIGZhaWxlZApkZXZpY2UgbGluayBhZGRpdGlvbiBhdCB0aGlzIHBsYWNlPwoKUmVn
+YXJkcywKTWFya3VzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
