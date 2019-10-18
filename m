@@ -1,15 +1,16 @@
 From: Andrew Murray <andrew.murray@arm.com>
-Subject: Re: [PATCH v2 07/25] PCI: iproc: Use pci_parse_request_of_pci_ranges()
-Date: Fri, 18 Oct 2019 14:00:13 +0100
-Message-ID: <20191018130013.GI47056@e119886-lin.cambridge.arm.com>
+Subject: Re: [PATCH v2 09/25] PCI: mobiveil: Use
+ pci_parse_request_of_pci_ranges()
+Date: Fri, 18 Oct 2019 16:41:41 +0100
+Message-ID: <20191018154141.GJ47056@e119886-lin.cambridge.arm.com>
 References: <20191016200647.32050-1-robh@kernel.org>
- <20191016200647.32050-8-robh@kernel.org>
+ <20191016200647.32050-10-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <20191016200647.32050-8-robh@kernel.org>
+In-Reply-To: <20191016200647.32050-10-robh@kernel.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -23,88 +24,131 @@ To: Rob Herring <robh@kernel.org>
 Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Michal Simek <michal.simek@xilinx.com>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Linus Walleij <linus.walleij@linaro.org>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>, Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboards.org, linux-renesas-soc@vger.kernel.org, Tom Joseph <tjos>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Oct 16, 2019 at 03:06:29PM -0500, Rob Herring wrote:
-> Convert the iProc host bridge to use the common
+On Wed, Oct 16, 2019 at 03:06:31PM -0500, Rob Herring wrote:
+> Convert the Mobiveil host bridge to use the common
 > pci_parse_request_of_pci_ranges().
 > 
-> There's no need to assign the resources to a temporary list, so just use
-> bridge->windows directly.
+> There's no need to assign the resources to a temporary list first. Just
+> use bridge->windows directly and remove all the temporary list handling.
 > 
+> Cc: Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>
+> Cc: Hou Zhiqiang <Zhiqiang.Hou@nxp.com>
 > Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 > Cc: Andrew Murray <andrew.murray@arm.com>
 > Cc: Bjorn Helgaas <bhelgaas@google.com>
-> Cc: Ray Jui <rjui@broadcom.com>
-> Cc: Scott Branden <sbranden@broadcom.com>
-> Cc: bcm-kernel-feedback-list@broadcom.com
 > Signed-off-by: Rob Herring <robh@kernel.org>
 > ---
-> v2:
-> - New patch
 
 Reviewed-by: Andrew Murray <andrew.murray@arm.com>
 
+> v2:
+> - New patch
 > 
->  drivers/pci/controller/pcie-iproc-platform.c | 8 ++------
->  drivers/pci/controller/pcie-iproc.c          | 5 -----
->  2 files changed, 2 insertions(+), 11 deletions(-)
+>  drivers/pci/controller/pcie-mobiveil.c | 26 +++++++-------------------
+>  1 file changed, 7 insertions(+), 19 deletions(-)
 > 
-> diff --git a/drivers/pci/controller/pcie-iproc-platform.c b/drivers/pci/controller/pcie-iproc-platform.c
-> index 9ee6200a66f4..375d815f7301 100644
-> --- a/drivers/pci/controller/pcie-iproc-platform.c
-> +++ b/drivers/pci/controller/pcie-iproc-platform.c
-> @@ -43,8 +43,6 @@ static int iproc_pcie_pltfm_probe(struct platform_device *pdev)
->  	struct iproc_pcie *pcie;
->  	struct device_node *np = dev->of_node;
->  	struct resource reg;
-> -	resource_size_t iobase = 0;
-> -	LIST_HEAD(resources);
+> diff --git a/drivers/pci/controller/pcie-mobiveil.c b/drivers/pci/controller/pcie-mobiveil.c
+> index a45a6447b01d..4eab8624ce4d 100644
+> --- a/drivers/pci/controller/pcie-mobiveil.c
+> +++ b/drivers/pci/controller/pcie-mobiveil.c
+> @@ -140,7 +140,6 @@ struct mobiveil_msi {			/* MSI information */
+> 
+>  struct mobiveil_pcie {
+>  	struct platform_device *pdev;
+> -	struct list_head resources;
+>  	void __iomem *config_axi_slave_base;	/* endpoint config base */
+>  	void __iomem *csr_axi_slave_base;	/* root port config base */
+>  	void __iomem *apb_csr_base;	/* MSI register base */
+> @@ -575,6 +574,7 @@ static void mobiveil_pcie_enable_msi(struct mobiveil_pcie *pcie)
+> 
+>  static int mobiveil_host_init(struct mobiveil_pcie *pcie)
+>  {
+> +	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(pcie);
+>  	u32 value, pab_ctrl, type;
+>  	struct resource_entry *win;
+> 
+> @@ -631,7 +631,7 @@ static int mobiveil_host_init(struct mobiveil_pcie *pcie)
+>  	program_ib_windows(pcie, WIN_NUM_0, 0, 0, MEM_WINDOW_TYPE, IB_WIN_SIZE);
+> 
+>  	/* Get the I/O and memory ranges from DT */
+> -	resource_list_for_each_entry(win, &pcie->resources) {
+> +	resource_list_for_each_entry(win, &bridge->windows) {
+>  		if (resource_type(win->res) == IORESOURCE_MEM)
+>  			type = MEM_WINDOW_TYPE;
+>  		else if (resource_type(win->res) == IORESOURCE_IO)
+> @@ -857,7 +857,6 @@ static int mobiveil_pcie_probe(struct platform_device *pdev)
+>  	struct pci_bus *child;
 >  	struct pci_host_bridge *bridge;
+>  	struct device *dev = &pdev->dev;
+> -	resource_size_t iobase;
 >  	int ret;
 > 
-> @@ -97,8 +95,7 @@ static int iproc_pcie_pltfm_probe(struct platform_device *pdev)
->  	if (IS_ERR(pcie->phy))
->  		return PTR_ERR(pcie->phy);
+>  	/* allocate the PCIe port */
+> @@ -875,11 +874,8 @@ static int mobiveil_pcie_probe(struct platform_device *pdev)
+>  		return ret;
+>  	}
 > 
-> -	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &resources,
-> -						    &iobase);
+> -	INIT_LIST_HEAD(&pcie->resources);
+> -
+>  	/* parse the host bridge base addresses from the device tree file */
+> -	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
+> -						    &pcie->resources, &iobase);
 > +	ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows, NULL);
 >  	if (ret) {
->  		dev_err(dev, "unable to get PCI host bridge resources\n");
+>  		dev_err(dev, "Getting bridge resources failed\n");
 >  		return ret;
-> @@ -113,10 +110,9 @@ static int iproc_pcie_pltfm_probe(struct platform_device *pdev)
->  		pcie->map_irq = of_irq_parse_and_map_pci;
->  	}
-> 
-> -	ret = iproc_pcie_setup(pcie, &resources);
-> +	ret = iproc_pcie_setup(pcie, &bridge->windows);
+> @@ -892,24 +888,19 @@ static int mobiveil_pcie_probe(struct platform_device *pdev)
+>  	ret = mobiveil_host_init(pcie);
 >  	if (ret) {
->  		dev_err(dev, "PCIe controller setup failed\n");
-> -		pci_free_resource_list(&resources);
->  		return ret;
+>  		dev_err(dev, "Failed to initialize host\n");
+> -		goto error;
+> +		return ret;
 >  	}
 > 
-> diff --git a/drivers/pci/controller/pcie-iproc.c b/drivers/pci/controller/pcie-iproc.c
-> index 2d457bfdaf66..223335ee791a 100644
-> --- a/drivers/pci/controller/pcie-iproc.c
-> +++ b/drivers/pci/controller/pcie-iproc.c
-> @@ -1498,10 +1498,6 @@ int iproc_pcie_setup(struct iproc_pcie *pcie, struct list_head *res)
->  		return ret;
+>  	/* initialize the IRQ domains */
+>  	ret = mobiveil_pcie_init_irq_domain(pcie);
+>  	if (ret) {
+>  		dev_err(dev, "Failed creating IRQ Domain\n");
+> -		goto error;
+> +		return ret;
 >  	}
 > 
-> -	ret = devm_request_pci_bus_resources(dev, res);
+>  	irq_set_chained_handler_and_data(pcie->irq, mobiveil_pcie_isr, pcie);
+> 
+> -	ret = devm_request_pci_bus_resources(dev, &pcie->resources);
 > -	if (ret)
-> -		return ret;
+> -		goto error;
 > -
->  	ret = phy_init(pcie->phy);
+>  	/* Initialize bridge */
+> -	list_splice_init(&pcie->resources, &bridge->windows);
+>  	bridge->dev.parent = dev;
+>  	bridge->sysdata = pcie;
+>  	bridge->busnr = pcie->root_bus_nr;
+> @@ -920,13 +911,13 @@ static int mobiveil_pcie_probe(struct platform_device *pdev)
+>  	ret = mobiveil_bringup_link(pcie);
 >  	if (ret) {
->  		dev_err(dev, "unable to initialize PCIe PHY\n");
-> @@ -1543,7 +1539,6 @@ int iproc_pcie_setup(struct iproc_pcie *pcie, struct list_head *res)
->  		if (iproc_pcie_msi_enable(pcie))
->  			dev_info(dev, "not using iProc MSI\n");
+>  		dev_info(dev, "link bring-up failed\n");
+> -		goto error;
+> +		return ret;
+>  	}
 > 
-> -	list_splice_init(res, &host->windows);
->  	host->busnr = 0;
->  	host->dev.parent = dev;
->  	host->ops = &iproc_pcie_ops;
+>  	/* setup the kernel resources for the newly added PCIe root bus */
+>  	ret = pci_scan_root_bus_bridge(bridge);
+>  	if (ret)
+> -		goto error;
+> +		return ret;
+> 
+>  	bus = bridge->bus;
+> 
+> @@ -936,9 +927,6 @@ static int mobiveil_pcie_probe(struct platform_device *pdev)
+>  	pci_bus_add_devices(bus);
+> 
+>  	return 0;
+> -error:
+> -	pci_free_resource_list(&pcie->resources);
+> -	return ret;
+>  }
+> 
+>  static const struct of_device_id mobiveil_pcie_of_match[] = {
 > --
 > 2.20.1
