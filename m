@@ -1,68 +1,54 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v3 2/5] Makefile: Rename idbloader.img with
- u-boot-spl-rockchip.bin
-Date: Fri, 18 Oct 2019 18:56:14 +0800
-Message-ID: <7e1e42fd-a4e3-4b3c-8d7b-82f3ad7551cd@rock-chips.com>
-References: <20191017190710.29985-1-jagan@amarulasolutions.com>
- <20191017190710.29985-3-jagan@amarulasolutions.com>
+From: Andrew Murray <andrew.murray@arm.com>
+Subject: Re: [PATCH v2 02/25] PCI: Export pci_parse_request_of_pci_ranges()
+Date: Fri, 18 Oct 2019 13:06:07 +0100
+Message-ID: <20191018120607.GD47056@e119886-lin.cambridge.arm.com>
+References: <20191016200647.32050-1-robh@kernel.org>
+ <20191016200647.32050-3-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20191017190710.29985-3-jagan@amarulasolutions.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: u-boot@lists.denx.de, "Matwey V . Kornilov" <matwey.kornilov@gmail.com>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20191016200647.32050-3-robh@kernel.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rob Herring <robh@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Michal Simek <michal.simek@xilinx.com>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Linus Walleij <linus.walleij@linaro.org>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>, Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboards.org, linux-renesas-soc@vger.kernel.org, Tom Joseph <tjos>
 List-Id: linux-rockchip.vger.kernel.org
 
-SmFnYW4sCgoKT24gMjAxOS8xMC8xOCDkuIrljYgzOjA3LCBKYWdhbiBUZWtpIHdyb3RlOgo+IGlk
-YmxvYWRlci5pbWcgbmFtZSBpcyBzcGVjaWZpYyB0byByb2NrY2hpcCwKClRoaXMgaXMgc3BlY2lm
-aWMgZm9yIHJvY2tjaGlwLCBsaWtlIHJrc2QsIHJrc3BpIHR5cGUgaW4gbWtpbWFnZSwgc2luY2Ug
-Cml0J3MgY2xlYXIgZm9yIHdoYXQgaXQgc3RhbmRzIGZvciwKCkkgdGhpbmsgaXQgY2FuIGFsc28g
-dXNlZCBpbiBVLUJvb3QuCgo+IHdoZXJlIGl0IHVzdWFsbHkKPiBjcmVhdGVkIHVzaW5nIHJvY2tj
-aGlwIHRvb2xzLgoKCk5vLCBpZGJsb2FkZXIgc3RhbmRzIGZvciB0aGUgaW1hZ2Ugd2l0aCBpZGIg
-aGVhZGVyIHBhY2thZ2VkIHdpdGggdHdvIApzdGFnZSBsb2FkZXIsIGVnLiBUUEwrU1BMCgpvciBk
-ZHIuYmluK21pbmlsb2FkZXIuYmluLCBhbmQgbWF5YmUgZGRyLmJpbiArIFNQTO+8jCBUUEwrbWlu
-aWxvYWRlci5iaW4sCgpub3QgcmVsYXRlZCB0byByb2NrY2hpcCB0b29scywgaXQgY2FuIGFsc28g
-YmUgY3JlYXRlZCB3aXRoIFUtQm9vdCAKbWtpbWFnZSB0b29sLgoKPiBTaW5jZSB0aGUgaW1hZ2Ug
-aXMgY3JlYXRlZCBhcwo+IHBlciBVLUJvb3QgZ2VuZXJpYyBidWlsZHMgbGlrZSBTUEwsIGJldHRl
-ciB0byBmb2xsb3cgdGhlCj4gZ2VuZXJpYyBVLUJvb3QgbmFtaW5nIG5vdGF0aW9uIGxpa2Ugb3Ro
-ZXIgU29DJ3MgZm9sbG93aW5nLgo+Cj4gRW5hYmxlIGlkYmxvYWRlci5pbWcgd2l0aCB1LWJvb3Qt
-c3BsLXJvY2tjaGlwLmJpbiBhbmQgY3JlYXRlCj4gdGhlIHNhbWUgaW4gc3BsIGRpcmVjdG9yeSBz
-aW5jZSBpdCBpcyBTUEwgZmlsZSBhbmQgTWFrZWZpbGUuc3BsCj4gd2lsbCBjbGVhbiBpdCBieSBk
-ZWZhdWx0Lgo+Cj4gQ2M6IEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+Cj4g
-Q2M6IE1hdHdleSBWLiBLb3JuaWxvdiA8bWF0d2V5Lmtvcm5pbG92QGdtYWlsLmNvbT4KPiBTaWdu
-ZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KPiAtLS0K
-PiAgIE1ha2VmaWxlIHwgNCArKy0tCj4gICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCsp
-LCAyIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL01ha2VmaWxlIGIvTWFrZWZpbGUKPiBp
-bmRleCBlYzU1ZTBmNmE0Li45MThiNWQ1M2UwIDEwMDY0NAo+IC0tLSBhL01ha2VmaWxlCj4gKysr
-IGIvTWFrZWZpbGUKPiBAQCAtODg3LDcgKzg4Nyw3IEBAIEFMTC15ICs9IHUtYm9vdC13aXRoLWR0
-Yi5iaW4KPiAgIGVuZGlmCj4gICAKPiAgIGlmZXEgKCQoQ09ORklHX0FSQ0hfUk9DS0NISVApJChD
-T05GSUdfU1BMKSQoQ09ORklHX1RQTCkseXl5KQo+IC1BTEwteSArPSBpZGJsb2FkZXIuaW1nCj4g
-K0FMTC15ICs9IHNwbC91LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbgoKClRoaXMgaWRibG9hZGVyIGlu
-Y2x1ZGluZyBJREIgaGVhZGVyLCBUUEwsIGFuZCBTUEwsIEkgZG9uJ3QgdGhpbmsgbmFtZSBpdCAK
-YXMgc3BsIGFuZAoKcHV0IGl0IGluIHNwbCBkaXJlY3RvcnkgbWFrZSBhbnkgc2Vuc2UuCgpJIHRo
-b3VnaCB0aGUgb3JpZ2luIG91dHB1dCBmaWxlIHVzZSBwb3N0Zml4ICcuYmluJyBhbmQgdGhvc2Ug
-aW1hZ2UgYWZ0ZXIgCnBhY2sgYW5kIGNhbsKgIGJlCgpkZCB0byBzdG9yYWdlIGRpcmVjdGx5IGJl
-dHRlciB0byB1c2UgcG9zdGZpeCAnLmltZycuCgpBYm91dCB0aGUgY2xlYW4sIGl0IHdpbGwgYmUg
-YmV0dGVyIHRvIGJlIGNsZWFuIGxpa2Ugb3RoZXIgJy5pbWcnIGZpbGUgaW4gCnRoZSBNYWtlZmls
-ZS4KCgpUaGFua3MsCgotIEtldmVyCgo+ICAgZW5kaWYKPiAgIAo+ICAgTERGTEFHU191LWJvb3Qg
-Kz0gJChMREZMQUdTX0ZJTkFMKQo+IEBAIC0xMzQ0LDcgKzEzNDQsNyBAQCBlbmRpZgo+ICAgTUtJ
-TUFHRUZMQUdTX3UtYm9vdC10cGwuaW1nID0gLW4gJChDT05GSUdfU1lTX1NPQykgLVQgJChST0NL
-Q0hJUF9JTUdfVFlQRSkKPiAgIHRwbC91LWJvb3QtdHBsLmltZzogdHBsL3UtYm9vdC10cGwuYmlu
-IEZPUkNFCj4gICAJJChjYWxsIGlmX2NoYW5nZWQsbWtpbWFnZSkKPiAtaWRibG9hZGVyLmltZzog
-dHBsL3UtYm9vdC10cGwuaW1nIHNwbC91LWJvb3Qtc3BsLmJpbiBGT1JDRQo+ICtzcGwvdS1ib290
-LXNwbC1yb2NrY2hpcC5iaW46IHRwbC91LWJvb3QtdHBsLmltZyBzcGwvdS1ib290LXNwbC5iaW4g
-Rk9SQ0UKPiAgIAkkKGNhbGwgaWZfY2hhbmdlZCxjYXQpCj4gICBlbmRpZgo+ICAgCgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcg
-bGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8v
-dS1ib290Cg==
+On Wed, Oct 16, 2019 at 03:06:24PM -0500, Rob Herring wrote:
+> pci_parse_request_of_pci_ranges() is missing a module export, so add it.
+> 
+> Cc: Bjorn Helgaas <bhelgaas@google.com>
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+> v2:
+> - New patch
+> 
+>  drivers/pci/of.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/pci/of.c b/drivers/pci/of.c
+> index 36891e7deee3..f3da49a31db4 100644
+> --- a/drivers/pci/of.c
+> +++ b/drivers/pci/of.c
+> @@ -530,6 +530,7 @@ int pci_parse_request_of_pci_ranges(struct device *dev,
+>  	pci_free_resource_list(resources);
+>  	return err;
+>  }
+> +EXPORT_SYMBOL_GPL(pci_parse_request_of_pci_ranges);
+> 
+
+Reviewed-by: Andrew Murray <andrew.murray@arm.com>
+
+>  #endif /* CONFIG_PCI */
+> 
+> --
+> 2.20.1
