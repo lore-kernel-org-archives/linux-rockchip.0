@@ -1,168 +1,46 @@
-From: Andrew Murray <andrew.murray@arm.com>
-Subject: Re: [PATCH v2 10/25] PCI: rockchip: Use
- pci_parse_request_of_pci_ranges()
-Date: Fri, 18 Oct 2019 16:51:52 +0100
-Message-ID: <20191018155152.GK47056@e119886-lin.cambridge.arm.com>
-References: <20191016200647.32050-1-robh@kernel.org>
- <20191016200647.32050-11-robh@kernel.org>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH 0/7] add support for clocksource/clockevent DT selection
+Date: Fri, 18 Oct 2019 22:24:32 +0200
+Message-ID: <8e9f709f-2ded-c666-26e0-9235d6107c34@linaro.org>
+References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
+ <c3a68a08-d134-cd28-c8af-f757628e07f1@linaro.org>
+ <72edc5fd-df05-cba5-5aa7-39da1709415b@microchip.com>
+ <620a19d5-73b8-709d-9eec-49274ac23e51@microchip.com>
+ <187d7020-fbe9-7984-2358-8a70faef019f@microchip.com>
+ <14df6e5d-19ef-4ebc-fd11-9953bc3fc44e@linaro.org>
+ <7071b6fa-f7ed-c879-4a43-44100dbe6121@microchip.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <20191016200647.32050-11-robh@kernel.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Michal Simek <michal.simek@xilinx.com>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Linus Walleij <linus.walleij@linaro.org>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>, Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboards.org, linux-renesas-soc@vger.kernel.org, Tom Joseph <tjos>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org>
+In-Reply-To: <7071b6fa-f7ed-c879-4a43-44100dbe6121@microchip.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-snps-arc>,
+ <mailto:linux-snps-arc-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-snps-arc/>
+List-Post: <mailto:linux-snps-arc@lists.infradead.org>
+List-Help: <mailto:linux-snps-arc-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-snps-arc>,
+ <mailto:linux-snps-arc-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-snps-arc" <linux-snps-arc-bounces@lists.infradead.org>
+Errors-To: linux-snps-arc-bounces+gla-linux-snps-arc=m.gmane.org@lists.infradead.org
+To: Claudiu.Beznea@microchip.com, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, nsekhar@ti.com, bgolaszewski@baylibre.com, monstr@monstr.eu, john@phrozen.org, ralf@linux-mips.org, paul.burton@mips.com, jhogan@kernel.org, lftan@altera.com, tglx@linutronix.de, vgupta@synopsys.com, marc.zyngier@arm.com, patrice.chotard@st.com, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, eric@anholt.net, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, linus.walleij@linaro.org, shc_work@mail.ru, kgene@kernel.org, krzk@kernel.org, ysato@users.sourceforge.jp, liviu.dudau@arm.com, sudeep.holla@arm.com, lorenzo.pieralisi@arm.com, shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com, baohua@kernel.org, Nicolas.Ferre@microchip.com, alexandre.belloni@bo
+Cc: uclinux-h8-devel@lists.sourceforge.jp, devicetree@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org, openbmc@lists.ozlabs.org, linux-oxnas@groups.io, linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, linux-unisoc@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-tegra@vger.kernel.org, nios2-dev@lists.rocketboards.org, linux-riscv@lists.infradead.org, linux-snps-arc@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Oct 16, 2019 at 03:06:32PM -0500, Rob Herring wrote:
-> Convert the Rockchip host bridge to use the common
-> pci_parse_request_of_pci_ranges().
-> 
-> There's no need to assign the resources to a temporary list first. Just
-> use bridge->windows directly and remove all the temporary list handling.
-> 
-> Cc: Shawn Lin <shawn.lin@rock-chips.com>
-> Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-> Cc: Andrew Murray <andrew.murray@arm.com>
-> Cc: Bjorn Helgaas <bhelgaas@google.com>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: linux-rockchip@lists.infradead.org
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
-> v2:
-> - New patch
-> 
->  drivers/pci/controller/pcie-rockchip-host.c | 36 ++++-----------------
->  1 file changed, 7 insertions(+), 29 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-> index ef8e677ce9d1..8d2e6f2e141e 100644
-> --- a/drivers/pci/controller/pcie-rockchip-host.c
-> +++ b/drivers/pci/controller/pcie-rockchip-host.c
-> @@ -950,14 +950,10 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	struct device *dev = &pdev->dev;
->  	struct pci_bus *bus, *child;
->  	struct pci_host_bridge *bridge;
-> +	struct resource *bus_res;
->  	struct resource_entry *win;
-> -	resource_size_t io_base;
-> -	struct resource	*mem;
-> -	struct resource	*io;
->  	int err;
-> 
-> -	LIST_HEAD(res);
-> -
->  	if (!dev->of_node)
->  		return -ENODEV;
-> 
-> @@ -995,29 +991,20 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	if (err < 0)
->  		goto err_deinit_port;
-> 
-> -	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
-> -						    &res, &io_base);
-> +	err = pci_parse_request_of_pci_ranges(dev, &bridge->windows, &bus_res);
->  	if (err)
->  		goto err_remove_irq_domain;
-> 
-> -	err = devm_request_pci_bus_resources(dev, &res);
-> -	if (err)
-> -		goto err_free_res;
-> +	rockchip->root_bus_nr = bus_res->start;
-> 
->  	/* Get the I/O and memory ranges from DT */
-> -	resource_list_for_each_entry(win, &res) {
-> +	resource_list_for_each_entry(win, &bridge->windows) {
->  		switch (resource_type(win->res)) {
->  		case IORESOURCE_IO:
->  			io = win->res;
->  			io->name = "I/O";
-
-In some patches of this series we drop the custom naming of memory resources,
-yet in others, like this one, we preserve the custom naming.
-
-Should we be consistent in preserving the existing naming?
-
-Thanks,
-
-Andrew Murray
-
->  			rockchip->io_size = resource_size(io);
->  			rockchip->io_bus_addr = io->start - win->offset;
-> -			err = pci_remap_iospace(io, io_base);
-> -			if (err) {
-> -				dev_warn(dev, "error %d: failed to map resource %pR\n",
-> -					 err, io);
-> -				continue;
-> -			}
->  			rockchip->io = io;
->  			break;
->  		case IORESOURCE_MEM:
-> @@ -1026,9 +1013,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  			rockchip->mem_size = resource_size(mem);
->  			rockchip->mem_bus_addr = mem->start - win->offset;
->  			break;
-> -		case IORESOURCE_BUS:
-> -			rockchip->root_bus_nr = win->res->start;
-> -			break;
->  		default:
->  			continue;
->  		}
-> @@ -1036,15 +1020,14 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
-> 
->  	err = rockchip_pcie_cfg_atu(rockchip);
->  	if (err)
-> -		goto err_unmap_iospace;
-> +		goto err_remove_irq_domain;
-> 
->  	rockchip->msg_region = devm_ioremap(dev, rockchip->msg_bus_addr, SZ_1M);
->  	if (!rockchip->msg_region) {
->  		err = -ENOMEM;
-> -		goto err_unmap_iospace;
-> +		goto err_remove_irq_domain;
->  	}
-> 
-> -	list_splice_init(&res, &bridge->windows);
->  	bridge->dev.parent = dev;
->  	bridge->sysdata = rockchip;
->  	bridge->busnr = 0;
-> @@ -1054,7 +1037,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
-> 
->  	err = pci_scan_root_bus_bridge(bridge);
->  	if (err < 0)
-> -		goto err_unmap_iospace;
-> +		goto err_remove_irq_domain;
-> 
->  	bus = bridge->bus;
-> 
-> @@ -1068,10 +1051,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	pci_bus_add_devices(bus);
->  	return 0;
-> 
-> -err_unmap_iospace:
-> -	pci_unmap_iospace(rockchip->io);
-> -err_free_res:
-> -	pci_free_resource_list(&res);
->  err_remove_irq_domain:
->  	irq_domain_remove(rockchip->irq_domain);
->  err_deinit_port:
-> @@ -1097,7 +1076,6 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
-> 
->  	pci_stop_root_bus(rockchip->root_bus);
->  	pci_remove_root_bus(rockchip->root_bus);
-> -	pci_unmap_iospace(rockchip->io);
->  	irq_domain_remove(rockchip->irq_domain);
-> 
->  	rockchip_pcie_deinit_phys(rockchip);
-> --
-> 2.20.1
+CkhpIENsYXVkaXUsCgpPbiAxNS8xMC8yMDE5IDExOjIzLCBDbGF1ZGl1LkJlem5lYUBtaWNyb2No
+aXAuY29tIHdyb3RlOgoKWyAuLi4gXQoKPiBUaGUgdGltZXIgY2xvY2sgc291cmNlIGNvdWxkIGJl
+IGRpdmlkZWQgYnkgTVIuUFJFUyArIDEuCj4gCj4gU28sIEkgdXNlZCB0aGUgY2xvY2stZnJlcXVl
+bmN5IERUIGJpbmRpbmcgdG8gbGV0IHVzZXIgY2hvb3NlIHRoZSB0aW1lcidzCj4gZnJlcXVlbmN5
+LiBCYXNlZCBvbiB0aGUgdmFsdWUgcHJvdmlkZWQgdmlhIHRoaXMgRFQgYmluZGluZyB0aGUgYmVz
+dCBjbG9jawo+IHNvdXJjZSBhbmQgcHJlc2NhbGVyIGlzIGNob3NlbiB2aWEgbWNocF9waXQ2NGJf
+cHJlc19wcmVwYXJlKCkgZnVuY3Rpb24uCgpJJ20gd2lsbGluZyB0byB0YWtlIHRoZSBkcml2ZXIg
+YnV0IEkgZG91YnQgdGhlIHB1cnBvc2Ugb2YgdGhlCmNsb2NrLWZyZXF1ZW5jeSBpcyB0byBsZXQg
+dGhlIHVzZXIgY2hvb3NlIHRoZSBmcmVxdWVuY3kuCgoKWyAuLi4gXQoKCi0tIAogPGh0dHA6Ly93
+d3cubGluYXJvLm9yZy8+IExpbmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBB
+Uk0gU29DcwoKRm9sbG93IExpbmFybzogIDxodHRwOi8vd3d3LmZhY2Vib29rLmNvbS9wYWdlcy9M
+aW5hcm8+IEZhY2Vib29rIHwKPGh0dHA6Ly90d2l0dGVyLmNvbS8jIS9saW5hcm9vcmc+IFR3aXR0
+ZXIgfAo8aHR0cDovL3d3dy5saW5hcm8ub3JnL2xpbmFyby1ibG9nLz4gQmxvZwoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LXNucHMtYXJjIG1h
+aWxpbmcgbGlzdApsaW51eC1zbnBzLWFyY0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtc25wcy1hcmMK
