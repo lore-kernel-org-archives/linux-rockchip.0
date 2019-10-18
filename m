@@ -1,107 +1,60 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add basic dts for RK3308 EVB
-Date: Fri, 18 Oct 2019 01:39:58 +0200
-Message-ID: <120878573.PH0Dm224ES@phil>
-References: <20191017030242.32219-1-andy.yan@rock-chips.com> <20191017030520.32420-1-andy.yan@rock-chips.com>
+From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Subject: Re: rk3328 USB3 controller
+Date: Fri, 18 Oct 2019 10:54:29 +0900
+Message-ID: <86b42c42-6f89-9773-4275-2fe93165a90f@katsuster.net>
+References: <CAMdYzYp9xdtb6eiUs-Tiq4jJ-jr31LTzng2o-qAbOfu_63zXVg@mail.gmail.com>
+ <1b0f65be-51b6-69dd-e204-6d168f17eb7d@think-future.de>
+ <20191017162131.GH14623@think-future.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191017030520.32420-1-andy.yan@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, robh+dt@kernel.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191017162131.GH14623-ehbYDe70fqD9uQeqpI+JUg@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: 4omecha-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Andy,
-
-Am Donnerstag, 17. Oktober 2019, 05:05:20 CEST schrieb Andy Yan:
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index c82c5e57d44c..b680c4b8b2c9 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -447,6 +447,11 @@ properties:
->            - const: rockchip,r88
->            - const: rockchip,rk3368
->  
-> +      - description: Rockchip RK3308 Evaluation board
-> +        items:
-> +          - const: rockchip,rk3308-evb
-> +          - const: rockchip,rk3308
-> +
->        - description: Rockchip RK3228 Evaluation board
->          items:
->            - const: rockchip,rk3228-evb
-
-Rob likes the binding addition to be a separate patch.
-
-> +	vdd_log: vdd_core: vdd-core {
-> +		compatible = "pwm-regulator";
-> +		pwms = <&pwm0 0 5000 1>;
-> +		regulator-name = "vdd_core";
-> +		regulator-min-microvolt = <827000>;
-> +		regulator-max-microvolt = <1340000>;
-> +		regulator-init-microvolt = <1015000>;
-> +		regulator-early-min-microvolt = <1015000>;
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-settling-time-up-us = <250>;
-> +		status = "okay";
-
-It's a board-regulator, so always "okay", no need for a status.
-
-In general for regulators, please create an actual regulator tree, with
-correctly modelled supply-chains following the naming according
-to the board schematics. See for example rk3399-gru for a nice example.
-
-> +	};
-> +
-> +	vdd_1v0: vdd-1v0 {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vdd_1v0";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <1000000>;
-> +		regulator-max-microvolt = <1000000>;
-
-As noted above, missing vin-supply
-
-> +	};
-> +
-
-> +	vccio_flash: vccio-flash {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vccio_flash";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <1800000>;
-> +		regulator-max-microvolt = <1800000>;
-> +	};
-> +
-> +	vcc_phy: vcc-phy-regulator {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_phy";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-
-This is the classic example of not following the schematics.
-I.e. no Rockchip board I know has a regulator named "vcc_phy"
-that is completely unconnected, yet all boards in the vendor tree
-have this regulator ;-) ... so as I said, please follow the schematics.
-
-> +	};
-> +
-> +	vbus_host: vbus-host-regulator {
-> +		compatible = "regulator-fixed";
-> +		enable-active-high;
-> +		gpio = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&usb_drv>;
-> +		regulator-name = "vbus_host";
-> +	};
-> +};
-> +
-
-
-Thanks
-Heiko
+SGVsbG8sCgpPbiAyMDE5LzEwLzE4IDE6MjEsIDRvbWVjaGFAZ21haWwuY29tIHdyb3RlOgo+IE9u
+IDIwMTktMTAtMTcgMTQ6MDc6NDMsIEthdHN1aGlybyBTdXp1a2kgd3JvdGU6Cj4+IEhlbGxvIFBl
+dGVyLAo+Pgo+PiBVU0IzIHBoeSBkcml2ZXIgInJvY2tjaGlwLHJrMzMyOC11M3BoeSIgaGFzIG5v
+dCBiZWVuIGltcGxlbWVudGVkIG9uCj4+IHVwc3RyZWFtIGxpbnV4IGtlcm5lbC4KPj4KPj4gRmly
+ZWZseVRlYW0gdXNlIHRoZSBzcGVjaWFsIHZlcnNpb24gb2YgbGludXggdGhhdCBpcyBtb2RpZmll
+ZCBieSBSb2NrY2hpcC4KPj4gKEl0IHNlZW1zIGJhc2VkIG9uIGxpbnV4LTQuNCkKPj4KPj4gcm9j
+a2NoaXAscmszMzI4LXUzcGh5IGlzIHByb3ZpZGVkIGJ5Cj4+IMKgaHR0cHM6Ly9naXRodWIuY29t
+L0ZpcmVmbHlUZWFtL2tlcm5lbC9kcml2ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtaW5u
+by11c2IzLmMKPiBUaGF0J3MgYSA0MDQgb3ZlciBoZXJlLgo+IAo+IAoKT29wcywgdGhpcyBVUkwg
+aXMgY29ycmVjdC4KCmh0dHBzOi8vZ2l0aHViLmNvbS9GaXJlZmx5VGVhbS9rZXJuZWwvYmxvYi9y
+b2MtcmszMzI4LWNjL2RyaXZlcnMvcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1pbm5vLXVzYjMu
+YwoKCj4+Cj4+IElmIHlvdSB3YW50IHRvIHVzZSBVU0IgMy4wIHdpdGggdXBzdHJlYW0gbGludXgs
+IHdlIG5lZWQgdG8gcG9ydCB0aGlzCj4+IFVTQjMgcGh5IGRyaXZlciBmcm9tIHJvY2tjaGlwLWxp
+bnV4IHRvIHVwc3RyZWFtIGtlcm5lbCwgSSB0aGluay4KPj4KPj4gQmVzdCBSZWdhcmRzLAo+PiBL
+YXRzdWhpcm8gU3V6dWtpCj4+Cj4+Cj4+IE9uIDIwMTkvMTAvMTcgMzo1NCwgUGV0ZXIgR2VpcyB3
+cm90ZToKPj4+IEdvb2QgQWZ0ZXJub29uLAo+Pj4KPj4+IElzIHRoZXJlIGEgcGFydGljdWxhciBy
+ZWFzb24gd2h5IHRoZSBVU0IzIGNvbnRyb2xsZXIgb24gdGhlIHJrMzMyOCBoYXMKPj4+IG5vdCBi
+ZWVuIGVuYWJsZWQ/Cj4+PiBJdCdzIGVuYWJsZWQgb24gdGhlIFRlYW1GaXJlZmx5IHNvdXJjZSBb
+MF0uCj4+PiBJIHB1bGxlZCBpdCBpbiB0byBteSBkZXZpY2UgdHJlZSBhbmQgaGF2ZSBiZWVuIHVz
+aW5nIGEgVVNCMyBTU0QgYXMgbXkKPj4+IGJvb3QgZGV2aWNlIGZvciBvdmVyIGEgeWVhciBub3cu
+Cj4+Pgo+Pj4gSWYgSSB3ZXJlIHRvIHN1Ym1pdCB0aGUgcGF0Y2gsIHdvdWxkIHknYWxsIGJlIG9w
+ZW4gdG8gcHVsbGluZyBpdCBpbj8KPj4+Cj4+PiBbMF0gaHR0cHM6Ly9naXRodWIuY29tL0ZpcmVm
+bHlUZWFtL2tlcm5lbC9ibG9iL3JvYy1yazMzMjgtY2MvYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
+Y2hpcC9yazMzMjguZHRzaQo+Pj4KPj4+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCj4+PiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPj4+IExpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPj4+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKPj4+Cj4+Cj4+Cj4+IF9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4+IExpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdAo+PiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4+IGh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+PiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
