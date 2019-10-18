@@ -1,38 +1,68 @@
-From: Markus Elfring <Markus.Elfring-S0/GAf8tV78@public.gmane.org>
-Subject: iommu/rockchip: Checking a device_link_add() call in
- rk_iommu_add_device()
-Date: Fri, 18 Oct 2019 09:00:14 +0200
-Message-ID: <c4a1fdd2-4383-dd0f-1d4b-f27ab62b383e@web.de>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v3 2/5] Makefile: Rename idbloader.img with
+ u-boot-spl-rockchip.bin
+Date: Fri, 18 Oct 2019 18:56:14 +0800
+Message-ID: <7e1e42fd-a4e3-4b3c-8d7b-82f3ad7551cd@rock-chips.com>
+References: <20191017190710.29985-1-jagan@amarulasolutions.com>
+ <20191017190710.29985-3-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20191017190710.29985-3-jagan@amarulasolutions.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, =?UTF-8?B?SsO2cmcgUsO2ZGVs?= <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: "Rafael J. Wysocki" <rafael-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Stephen McCamant <smccaman-OJFnDUYgAso@public.gmane.org>, Kangjie Lu <kjlu-OJFnDUYgAso@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Navid Emamdoost <emamd001-OJFnDUYgAso@public.gmane.org>, Aditya Pakki <pakki001-OJFnDUYgAso@public.gmane.org>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, "Matwey V . Kornilov" <matwey.kornilov@gmail.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8sCgpJIHRyaWVkIGFub3RoZXIgc2NyaXB0IGZvciB0aGUgc2VtYW50aWMgcGF0Y2ggbGFu
-Z3VhZ2Ugb3V0LgpUaGlzIHNvdXJjZSBjb2RlIGFuYWx5c2lzIGFwcHJvYWNoIHBvaW50cyBvdXQg
-dGhhdCB0aGUgaW1wbGVtZW50YXRpb24Kb2YgdGhlIGZ1bmN0aW9uIOKAnHJrX2lvbW11X2FkZF9k
-ZXZpY2XigJ0gY29udGFpbnMgc3RpbGwKYW4gdW5jaGVja2VkIGNhbGwgb2YgdGhlIGZ1bmN0aW9u
-IOKAnGRldmljZV9saW5rX2FkZOKAnS4KaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xp
-bnV4L2tlcm5lbC9naXQvbmV4dC9saW51eC1uZXh0LmdpdC90cmVlL2RyaXZlcnMvaW9tbXUvcm9j
-a2NoaXAtaW9tbXUuYz9pZD0zZWY4NDVkYTNjM2IxODBkZGQzODZlMjI4YWMzMjI4ZDg0YTUyMmQz
-I24xMDc1Cmh0dHBzOi8vZWxpeGlyLmJvb3RsaW4uY29tL2xpbnV4L3Y1LjQtcmMyL3NvdXJjZS9k
-cml2ZXJzL2lvbW11L3JvY2tjaGlwLWlvbW11LmMjTDEwNzEKCkhvdyBkbyB5b3UgdGhpbmsgYWJv
-dXQgdG8gaW1wcm92ZSBpdD8KCldoaWNoIGVycm9yIGNvZGUgd291bGQgeW91IGxpa2UgdG8gcmV0
-dXJuIGZvciBhIGZhaWxlZApkZXZpY2UgbGluayBhZGRpdGlvbiBhdCB0aGlzIHBsYWNlPwoKUmVn
-YXJkcywKTWFya3VzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+SmFnYW4sCgoKT24gMjAxOS8xMC8xOCDkuIrljYgzOjA3LCBKYWdhbiBUZWtpIHdyb3RlOgo+IGlk
+YmxvYWRlci5pbWcgbmFtZSBpcyBzcGVjaWZpYyB0byByb2NrY2hpcCwKClRoaXMgaXMgc3BlY2lm
+aWMgZm9yIHJvY2tjaGlwLCBsaWtlIHJrc2QsIHJrc3BpIHR5cGUgaW4gbWtpbWFnZSwgc2luY2Ug
+Cml0J3MgY2xlYXIgZm9yIHdoYXQgaXQgc3RhbmRzIGZvciwKCkkgdGhpbmsgaXQgY2FuIGFsc28g
+dXNlZCBpbiBVLUJvb3QuCgo+IHdoZXJlIGl0IHVzdWFsbHkKPiBjcmVhdGVkIHVzaW5nIHJvY2tj
+aGlwIHRvb2xzLgoKCk5vLCBpZGJsb2FkZXIgc3RhbmRzIGZvciB0aGUgaW1hZ2Ugd2l0aCBpZGIg
+aGVhZGVyIHBhY2thZ2VkIHdpdGggdHdvIApzdGFnZSBsb2FkZXIsIGVnLiBUUEwrU1BMCgpvciBk
+ZHIuYmluK21pbmlsb2FkZXIuYmluLCBhbmQgbWF5YmUgZGRyLmJpbiArIFNQTO+8jCBUUEwrbWlu
+aWxvYWRlci5iaW4sCgpub3QgcmVsYXRlZCB0byByb2NrY2hpcCB0b29scywgaXQgY2FuIGFsc28g
+YmUgY3JlYXRlZCB3aXRoIFUtQm9vdCAKbWtpbWFnZSB0b29sLgoKPiBTaW5jZSB0aGUgaW1hZ2Ug
+aXMgY3JlYXRlZCBhcwo+IHBlciBVLUJvb3QgZ2VuZXJpYyBidWlsZHMgbGlrZSBTUEwsIGJldHRl
+ciB0byBmb2xsb3cgdGhlCj4gZ2VuZXJpYyBVLUJvb3QgbmFtaW5nIG5vdGF0aW9uIGxpa2Ugb3Ro
+ZXIgU29DJ3MgZm9sbG93aW5nLgo+Cj4gRW5hYmxlIGlkYmxvYWRlci5pbWcgd2l0aCB1LWJvb3Qt
+c3BsLXJvY2tjaGlwLmJpbiBhbmQgY3JlYXRlCj4gdGhlIHNhbWUgaW4gc3BsIGRpcmVjdG9yeSBz
+aW5jZSBpdCBpcyBTUEwgZmlsZSBhbmQgTWFrZWZpbGUuc3BsCj4gd2lsbCBjbGVhbiBpdCBieSBk
+ZWZhdWx0Lgo+Cj4gQ2M6IEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+Cj4g
+Q2M6IE1hdHdleSBWLiBLb3JuaWxvdiA8bWF0d2V5Lmtvcm5pbG92QGdtYWlsLmNvbT4KPiBTaWdu
+ZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KPiAtLS0K
+PiAgIE1ha2VmaWxlIHwgNCArKy0tCj4gICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCsp
+LCAyIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL01ha2VmaWxlIGIvTWFrZWZpbGUKPiBp
+bmRleCBlYzU1ZTBmNmE0Li45MThiNWQ1M2UwIDEwMDY0NAo+IC0tLSBhL01ha2VmaWxlCj4gKysr
+IGIvTWFrZWZpbGUKPiBAQCAtODg3LDcgKzg4Nyw3IEBAIEFMTC15ICs9IHUtYm9vdC13aXRoLWR0
+Yi5iaW4KPiAgIGVuZGlmCj4gICAKPiAgIGlmZXEgKCQoQ09ORklHX0FSQ0hfUk9DS0NISVApJChD
+T05GSUdfU1BMKSQoQ09ORklHX1RQTCkseXl5KQo+IC1BTEwteSArPSBpZGJsb2FkZXIuaW1nCj4g
+K0FMTC15ICs9IHNwbC91LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbgoKClRoaXMgaWRibG9hZGVyIGlu
+Y2x1ZGluZyBJREIgaGVhZGVyLCBUUEwsIGFuZCBTUEwsIEkgZG9uJ3QgdGhpbmsgbmFtZSBpdCAK
+YXMgc3BsIGFuZAoKcHV0IGl0IGluIHNwbCBkaXJlY3RvcnkgbWFrZSBhbnkgc2Vuc2UuCgpJIHRo
+b3VnaCB0aGUgb3JpZ2luIG91dHB1dCBmaWxlIHVzZSBwb3N0Zml4ICcuYmluJyBhbmQgdGhvc2Ug
+aW1hZ2UgYWZ0ZXIgCnBhY2sgYW5kIGNhbsKgIGJlCgpkZCB0byBzdG9yYWdlIGRpcmVjdGx5IGJl
+dHRlciB0byB1c2UgcG9zdGZpeCAnLmltZycuCgpBYm91dCB0aGUgY2xlYW4sIGl0IHdpbGwgYmUg
+YmV0dGVyIHRvIGJlIGNsZWFuIGxpa2Ugb3RoZXIgJy5pbWcnIGZpbGUgaW4gCnRoZSBNYWtlZmls
+ZS4KCgpUaGFua3MsCgotIEtldmVyCgo+ICAgZW5kaWYKPiAgIAo+ICAgTERGTEFHU191LWJvb3Qg
+Kz0gJChMREZMQUdTX0ZJTkFMKQo+IEBAIC0xMzQ0LDcgKzEzNDQsNyBAQCBlbmRpZgo+ICAgTUtJ
+TUFHRUZMQUdTX3UtYm9vdC10cGwuaW1nID0gLW4gJChDT05GSUdfU1lTX1NPQykgLVQgJChST0NL
+Q0hJUF9JTUdfVFlQRSkKPiAgIHRwbC91LWJvb3QtdHBsLmltZzogdHBsL3UtYm9vdC10cGwuYmlu
+IEZPUkNFCj4gICAJJChjYWxsIGlmX2NoYW5nZWQsbWtpbWFnZSkKPiAtaWRibG9hZGVyLmltZzog
+dHBsL3UtYm9vdC10cGwuaW1nIHNwbC91LWJvb3Qtc3BsLmJpbiBGT1JDRQo+ICtzcGwvdS1ib290
+LXNwbC1yb2NrY2hpcC5iaW46IHRwbC91LWJvb3QtdHBsLmltZyBzcGwvdS1ib290LXNwbC5iaW4g
+Rk9SQ0UKPiAgIAkkKGNhbGwgaWZfY2hhbmdlZCxjYXQpCj4gICBlbmRpZgo+ICAgCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KVS1Cb290IG1haWxpbmcg
+bGlzdApVLUJvb3RAbGlzdHMuZGVueC5kZQpodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8v
+dS1ib290Cg==
