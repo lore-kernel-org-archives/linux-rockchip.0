@@ -1,62 +1,248 @@
-From: <Claudiu.Beznea@microchip.com>
-Subject: Re: [PATCH 0/7] add support for clocksource/clockevent DT selection
-Date: Mon, 21 Oct 2019 08:58:10 +0000
-Message-ID: <215a1cd3-b1a8-5171-d70c-8d8081038e7f@microchip.com>
-References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
- <c3a68a08-d134-cd28-c8af-f757628e07f1@linaro.org>
- <72edc5fd-df05-cba5-5aa7-39da1709415b@microchip.com>
- <620a19d5-73b8-709d-9eec-49274ac23e51@microchip.com>
- <187d7020-fbe9-7984-2358-8a70faef019f@microchip.com>
- <14df6e5d-19ef-4ebc-fd11-9953bc3fc44e@linaro.org>
- <7071b6fa-f7ed-c879-4a43-44100dbe6121@microchip.com>
- <8e9f709f-2ded-c666-26e0-9235d6107c34@linaro.org>
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Add core dts for RK3308 SOC
+Date: Mon, 21 Oct 2019 17:09:26 +0800
+Message-ID: <35a37c31-0e28-1900-1e50-d6b7dc78266b@rock-chips.com>
+References: <20191017030242.32219-1-andy.yan@rock-chips.com>
+ <20191017030449.32289-1-andy.yan@rock-chips.com> <5242916.cCMrPAA6xQ@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <8e9f709f-2ded-c666-26e0-9235d6107c34@linaro.org>
+In-Reply-To: <5242916.cCMrPAA6xQ@phil>
 Content-Language: en-US
-Content-ID: <60F94980C60DF447B0B88B0D90F5A4BE@namprd11.prod.outlook.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: daniel.lezcano@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, linux@armlinux.org.uk, nsekhar@ti.com, bgolaszewski@baylibre.com, monstr@monstr.eu, john@phrozen.org, ralf@linux-mips.org, paul.burton@mips.com, jhogan@kernel.org, lftan@altera.com, tglx@linutronix.de, vgupta@synopsys.com, marc.zyngier@arm.com, patrice.chotard@st.com, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, eric@anholt.net, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, linus.walleij@linaro.org, shc_work@mail.ru, kgene@kernel.org, krzk@kernel.org, ysato@users.sourceforge.jp, liviu.dudau@arm.com, sudeep.holla@arm.com, lorenzo.pieralisi@arm.com, shawnguo@kernel.org
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, nios2-dev@lists.rocketboards.org, linux-snps-arc@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-rpi-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, uclinux-h8-devel@lists.sourceforge.jp, linux-amlogic@lists.infradead.org, openbmc@lists.ozlabs.org, linux-oxnas@groups.io, linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org, linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, robh+dt@kernel.org, devicetree@vger.kernel.org, tony.xie@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGFuaWVsLA0KDQpPbiAxOC4xMC4yMDE5IDIzOjI0LCBEYW5pZWwgTGV6Y2FubyB3cm90ZToN
-Cj4gSGkgQ2xhdWRpdSwNCj4gDQo+IE9uIDE1LzEwLzIwMTkgMTE6MjMsIENsYXVkaXUuQmV6bmVh
-QG1pY3JvY2hpcC5jb20gd3JvdGU6DQo+IA0KPiBbIC4uLiBdDQo+IA0KPj4gVGhlIHRpbWVyIGNs
-b2NrIHNvdXJjZSBjb3VsZCBiZSBkaXZpZGVkIGJ5IE1SLlBSRVMgKyAxLg0KPj4NCj4+IFNvLCBJ
-IHVzZWQgdGhlIGNsb2NrLWZyZXF1ZW5jeSBEVCBiaW5kaW5nIHRvIGxldCB1c2VyIGNob29zZSB0
-aGUgdGltZXIncw0KPj4gZnJlcXVlbmN5LiBCYXNlZCBvbiB0aGUgdmFsdWUgcHJvdmlkZWQgdmlh
-IHRoaXMgRFQgYmluZGluZyB0aGUgYmVzdCBjbG9jaw0KPj4gc291cmNlIGFuZCBwcmVzY2FsZXIg
-aXMgY2hvc2VuIHZpYSBtY2hwX3BpdDY0Yl9wcmVzX3ByZXBhcmUoKSBmdW5jdGlvbi4NCj4gDQo+
-IEknbSB3aWxsaW5nIHRvIHRha2UgdGhlIGRyaXZlciBidXQgSSBkb3VidCB0aGUgcHVycG9zZSBv
-ZiB0aGUNCj4gY2xvY2stZnJlcXVlbmN5IGlzIHRvIGxldCB0aGUgdXNlciBjaG9vc2UgdGhlIGZy
-ZXF1ZW5jeS4NCj4gDQoNCkkgZm91bmQgdGhpcyBhcHByb2FjaCBpbiB0aGUgZm9sbG93aW5nIGFs
-cmVhZHkgaW50ZWdyYXRlZCBkcml2ZXJzOg0KZHJpdmVycy9jbG9ja3NvdXJjZS9hcm12N21fc3lz
-dGljay5jDQpkcml2ZXJzL2Nsb2Nrc291cmNlL2JjbTI4MzVfdGltZXIuYw0KZHJpdmVycy9jbG9j
-a3NvdXJjZS9iY21fa29uYV90aW1lci5jDQpkcml2ZXJzL2Nsb2Nrc291cmNlL21pcHMtZ2ljLXRp
-bWVyLmMNCmRyaXZlcnMvY2xvY2tzb3VyY2UvbXBzMi10aW1lci5jDQpkcml2ZXJzL2Nsb2Nrc291
-cmNlL3RpbWVyLXFjb20uYw0KZHJpdmVycy9jbG9ja3NvdXJjZS9hcm1fYXJjaF90aW1lci5jDQoN
-Ckxvb2tpbmcgdGhyb3VnaCB0aGUgZG9jdW1lbnRhdGlvbiBvZiB0aGVzZSwgbW9zdCBvZiB0aGVt
-IGRvY3VtZW50IHRoaXMgRFQNCnByb3BlcnR5IGFzIHRoZSBmcmVxdWVuY3kgb2YgdGhlIGNsb2Nr
-IHRoYXQgZHJpdmVycyB0aGUgdGltZXIsIGJ1dCBub25lIG9mDQp0aGVtIHNlZW1zIHRvIGhhdmUg
-c29tZSBJUCBpbnRlcm5hbCBkaXZpZGVycyBzbyB0aGF0IHRoZSB0aW1lciB0byB0aWNrIGF0DQpk
-aWZmZXJlbnQgZnJlcXVlbmN5IHRoYW4gdGhlIGNsb2NrIHRoYXQgZmVlZHMgdGhlIElQLiBGcm9t
-IHRoZQ0KZG9jdW1lbnRhdGlvbiBvZiB0aGUgYWJvdmUgZHJpdmVyczsNCmRyaXZlcnMvY2xvY2tz
-b3VyY2UvYXJtdjdtX3N5c3RpY2suYw0KCS0gY2xvY2stZnJlcXVlbmN5IDogVGhlIHJhdGUgaW4g
-SFogaW4gaW5wdXQgb2YgdGhlIEFSTSBTeXNUaWNrDQoNCmRyaXZlcnMvY2xvY2tzb3VyY2UvYmNt
-MjgzNV90aW1lci5jDQoJLSBjbG9jay1mcmVxdWVuY3kgOiBUaGUgZnJlcXVlbmN5IG9mIHRoZSBj
-bG9jayB0aGF0IGRyaXZlcyB0aGUgY291bnRlciwgaW4NCkh6Lg0KZHJpdmVycy9jbG9ja3NvdXJj
-ZS9iY21fa29uYV90aW1lci5jDQoJLSBjbG9jay1mcmVxdWVuY3k6IGZyZXF1ZW5jeSB0aGF0IHRo
-ZSBjbG9jayBvcGVyYXRlcw0KDQpkcml2ZXJzL2Nsb2Nrc291cmNlL21pcHMtZ2ljLXRpbWVyLmMN
-CgljbG9jay1mcmVxdWVuY3kgOiBDbG9jayBmcmVxdWVuY3kgYXQgd2hpY2ggdGhlIEdJQyB0aW1l
-cnMgb3BlcmF0ZS4NCmRyaXZlcnMvY2xvY2tzb3VyY2UvbXBzMi10aW1lci5jDQoJLSBjbG9jay1m
-cmVxdWVuY3kgOiBUaGUgcmF0ZSBpbiBIWiBpbiBpbnB1dCBvZiB0aGUgQVJNIE1QUzIgdGltZXIN
-Cg0KZHJpdmVycy9jbG9ja3NvdXJjZS90aW1lci1xY29tLmMNCgktIGNsb2NrLWZyZXF1ZW5jeSA6
-IFRoZSBmcmVxdWVuY3kgb2YgdGhlIGRlYnVnIHRpbWVyIGFuZCB0aGUgZ2VuZXJhbA0KcHVycG9z
-ZQ0KICAgICAgICAgICAgICAgICAgICB0aW1lcihzKSBpbiBIeiBpbiB0aGF0IG9yZGVyLg0KDQoN
-ClRoaXMgaXMgd2h5IEkgYWxzbyBjaG9zZSB0aGlzIERUIGJpbmRpbmdzLg0KDQpJZiB5b3Ugd2Fu
-dCBJIGNhbiBzdGljayB0byBhIGZpeGVkIGZyZXF1ZW5jeSBoYXJkIGNvZGVkIGluIHRoZSBkcml2
-ZXIuDQpQbGVhc2UgbGV0IG1lIGtub3cgaWYgdGhpcyB3b3VsZCBiZSBPSyBmb3IgeW91Lg0KDQpU
-aGFuayB5b3UsDQpDbGF1ZGl1IEJlem5lYQ0KDQo+IA0KPiBbIC4uLiBdDQo+IA0KPiANCg==
+Hi Heiko:
+
+Thanks for your kindly review.
+
+On 10/18/19 7:30 AM, Heiko Stuebner wrote:
+> Hi Andy,
+>
+> Am Donnerstag, 17. Oktober 2019, 05:04:49 CEST schrieb Andy Yan:
+>
+>> +	psci {
+>> +		compatible = "arm,psci-1.0";
+>> +		method = "smc";
+>> +	};
+> Please also provide a ATF implementation for the rk3308 :-)
+> [Not a requirement for getting this merged, but it would be
+> really cool to have sources for the full stack]
+
+
+Tony's team has the plan to do it.
+
+>> +
+>> +	ramoops_mem: ramoops_mem {
+>> +		reg = <0x0 0x110000 0x0 0xf0000>;
+>> +		reg-names = "ramoops_mem";
+>> +	};
+>> +
+>> +	ramoops: ramoops {
+>> +		compatible = "ramoops";
+>> +		record-size = <0x0 0x30000>;
+>> +		console-size = <0x0 0xc0000>;
+>> +		ftrace-size = <0x0 0x00000>;
+>> +		pmsg-size = <0x0 0x00000>;
+>> +		memory-region = <&ramoops_mem>;
+>> +	};
+> I think ramoops are more a per-board thing, like for the evb.
+> As they'll require cooperation with bootloaders to not mangle that
+> memory area. For this please also coordinate with Kever because
+> I somehow remember we have u-boot sometimes at 0x100000.
+>
+I removed it in V2.
+>> +	grf: grf@ff000000 {
+>> +		compatible = "rockchip,rk3308-grf", "syscon", "simple-mfd";
+> Please add a patch adding the rockchip,rk3308-grf compatible to
+> Documentation/devicetree/bindings/soc/rockchip/grf.txt
+
+
+Done
+
+>
+>> +		reg = <0x0 0xff000000 0x0 0x10000>;
+>> +
+>> +		reboot-mode {
+>> +			compatible = "syscon-reboot-mode";
+>> +			offset = <0x500>;
+>> +			mode-bootloader = <BOOT_BL_DOWNLOAD>;
+>> +			mode-loader = <BOOT_BL_DOWNLOAD>;
+>> +			mode-normal = <BOOT_NORMAL>;
+>> +			mode-recovery = <BOOT_RECOVERY>;
+>> +			mode-fastboot = <BOOT_FASTBOOT>;
+>> +		};
+>> +	};
+>> +
+>> +	detect_grf: syscon@ff00b000 {
+>> +		compatible = "syscon", "simple-mfd";
+> 	compatible = "rockchip,rk3308-detect-grf", "syscon"
+> + add the rk3308-detect-grf to the binding
+Done
+>> +		reg = <0x0 0xff00b000 0x0 0x1000>;
+>> +		#address-cells = <1>;
+>> +		#size-cells = <1>;
+>> +	};
+>> +
+>> +	core_grf: syscon@ff00c000 {
+>> +		compatible = "syscon", "simple-mfd";
+> same as detect_grf
+Done
+>
+>> +		reg = <0x0 0xff00c000 0x0 0x1000>;
+>> +		#address-cells = <1>;
+>> +		#size-cells = <1>;
+>> +
+>> +	};
+>> +
+>> +	i2c0: i2c@ff040000 {
+>> +		compatible = "rockchip,rk3399-i2c";
+> 	compatible = "rockchip,rk3308-i2c", "rockchip,rk3399-i2c";
+> Same for all i2c controllers.
+Done
+>
+>> +		reg = <0x0 0xff040000 0x0 0x1000>;
+>> +		clocks = <&cru SCLK_I2C0>, <&cru PCLK_I2C0>;
+>> +		clock-names = "i2c", "pclk";
+>> +		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
+>> +		pinctrl-names = "default";
+>> +		pinctrl-0 = <&i2c0_xfer>;
+>> +		#address-cells = <1>;
+>> +		#size-cells = <0>;
+>> +		status = "disabled";
+>> +	};
+>
+>> +	spi0: spi@ff120000 {
+>> +		compatible = "rockchip,rk3308-spi", "rockchip,rk3066-spi";
+>> +		reg = <0x0 0xff120000 0x0 0x1000>;
+>> +		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
+>> +		#address-cells = <1>;
+>> +		#size-cells = <0>;
+>> +		clocks = <&cru SCLK_SPI0>, <&cru PCLK_SPI0>;
+>> +		clock-names = "spiclk", "apb_pclk";
+>> +		dmas = <&dmac0 0>, <&dmac0 1>;
+>> +		dma-names = "tx", "rx";
+>> +		pinctrl-names = "default", "high_speed";
+> there is no high_speed pinctrl defined for the Rockchip spi driver
+> in mainline, so this part should go away in a first step.
+> Same for the other spi controllers.
+>
+Removed
+>> +		pinctrl-0 = <&spi0_clk &spi0_csn0 &spi0_miso &spi0_mosi>;
+>> +		pinctrl-1 = <&spi0_clk_hs &spi0_csn0 &spi0_miso_hs &spi0_mosi_hs>;
+>> +		status = "disabled";
+>> +	};
+>
+>> +	rktimer: rktimer@ff1a0000 {
+>> +		compatible = "rockchip,rk3288-timer";
+> 	compatible = "rockchip,rk3308-timer", "rockchip,rk3288-timer";
+Done
+>
+>> +		reg = <0x0 0xff1a0000 0x0 0x20>;
+>> +		interrupts = <GIC_SPI 25 IRQ_TYPE_LEVEL_HIGH>;
+>> +		clocks = <&cru PCLK_TIMER>, <&cru SCLK_TIMER0>;
+>> +		clock-names = "pclk", "timer";
+>> +	};
+>
+>
+>> +	amba {
+>> +		compatible = "arm,amba-bus";
+> compatible = "simple-bus";
+
+Done
+>> +		#address-cells = <2>;
+>> +		#size-cells = <2>;
+>> +		ranges;
+>> +
+>> +		dmac0: dma-controller@ff2c0000 {
+>> +			compatible = "arm,pl330", "arm,primecell";
+>> +			reg = <0x0 0xff2c0000 0x0 0x4000>;
+>> +			interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>,
+>> +				     <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
+>> +			#dma-cells = <1>;
+>> +			clocks = <&cru ACLK_DMAC0>;
+>> +			clock-names = "apb_pclk";
+>> +			peripherals-req-type-burst;
+> peripherals-req-type-burst is undocumented so likely some change to the
+> dma driver not yet upstream?
+
+
+  not upstream， so i remove it.
+
+>> +		};
+>> +
+>> +		dmac1: dma-controller@ff2d0000 {
+>> +			compatible = "arm,pl330", "arm,primecell";
+>> +			reg = <0x0 0xff2d0000 0x0 0x4000>;
+>> +			interrupts = <GIC_SPI 2 IRQ_TYPE_LEVEL_HIGH>,
+>> +				     <GIC_SPI 3 IRQ_TYPE_LEVEL_HIGH>;
+>> +			#dma-cells = <1>;
+>> +			clocks = <&cru ACLK_DMAC1>;
+>> +			clock-names = "apb_pclk";
+>> +			peripherals-req-type-burst;
+>> +		};
+>> +	};
+>> +
+>> +	i2s_2ch_0: i2s@ff350000 {
+>> +		compatible = "rockchip,rk3308-i2s", "rockchip,rk3066-i2s";
+>> +		reg = <0x0 0xff350000 0x0 0x1000>;
+>> +		interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_HIGH>;
+>> +		clocks = <&cru SCLK_I2S0_2CH>, <&cru HCLK_I2S0_2CH>;
+>> +		clock-names = "i2s_clk", "i2s_hclk";
+>> +		dmas = <&dmac1 8>, <&dmac1 9>;
+>> +		dma-names = "tx", "rx";
+>> +		resets = <&cru SRST_I2S0_2CH_M>, <&cru SRST_I2S0_2CH_H>;
+>> +		reset-names = "reset-m", "reset-h";
+> These resets don't seem to be defined in driver or binding?
+> Same for other i2s
+
+
+Remove in v2
+
+>
+>> +		pinctrl-names = "default";
+>> +		pinctrl-0 = <&i2s_2ch_0_sclk
+>> +			     &i2s_2ch_0_lrck
+>> +			     &i2s_2ch_0_sdi
+>> +			     &i2s_2ch_0_sdo>;
+>> +		status = "disabled";
+>> +	};
+>
+>> +
+>> +	mac: ethernet@ff4e0000 {
+>> +		compatible = "rockchip,rk3308-mac";
+> Was this support to the network driver already submitted?
+> Because I wasn't able to find it in the gmac driver.
+
+
+I remove mac in v2.
+
+>
+>> +		reg = <0x0 0xff4e0000 0x0 0x10000>;
+>> +		rockchip,grf = <&grf>;
+>> +		interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
+>> +		interrupt-names = "macirq";
+>> +		clocks = <&cru SCLK_MAC>, <&cru SCLK_MAC_RX_TX>,
+>> +			 <&cru SCLK_MAC_RX_TX>, <&cru SCLK_MAC_REF>,
+>> +			 <&cru SCLK_MAC>, <&cru ACLK_MAC>,
+>> +			 <&cru PCLK_MAC>, <&cru SCLK_MAC_RMII>;
+>> +		clock-names = "stmmaceth", "mac_clk_rx",
+>> +			      "mac_clk_tx", "clk_mac_ref",
+>> +			      "clk_mac_refout", "aclk_mac",
+>> +			      "pclk_mac", "clk_mac_speed";
+>> +		phy-mode = "rmii";
+>> +		pinctrl-names = "default";
+>> +		pinctrl-0 = <&rmii_pins &mac_refclk_12ma>;
+>> +		resets = <&cru SRST_MAC_A>;
+>> +		reset-names = "stmmaceth";
+>> +		status = "disabled";
+>> +	};
+>
+> Heiko
+>
+>
+>
+>
