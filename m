@@ -1,115 +1,60 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: Re: [PATCH v3 4/5] rockchip: Add Binman support
-Date: Mon, 21 Oct 2019 13:46:48 +0530
-Message-ID: <CAMty3ZBDYf4qDd+mBwiqJsy3VKnC1GsvjyizKuSDm4i0Fx6NwQ@mail.gmail.com>
-References: <20191017190710.29985-1-jagan@amarulasolutions.com>
- <20191017190710.29985-5-jagan@amarulasolutions.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191017190710.29985-5-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, "Matwey V . Kornilov" <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v2 1/4] dt-bindings: Add doc about rk3308 General Register Files
+Date: Mon, 21 Oct 2019 16:45:55 +0800
+Message-ID: <20191021084555.28356-1-andy.yan@rock-chips.com>
+References: <20191021084437.28279-1-andy.yan@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191021084437.28279-1-andy.yan@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: kever.yang@rock-chips.com, robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgU2ltb24sCgpPbiBGcmksIE9jdCAxOCwgMjAxOSBhdCAxMjozOCBBTSBKYWdhbiBUZWtpIDxq
-YWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4gd3JvdGU6Cj4KPiBUUEwtYmFzZWQgcm9ja2NoaXAg
-cGxhdGZvcm0gbGlrZSByazMyODgsIHJrMzMyOCwgcmszMzY4Cj4gYW5kIHJrMzM5OSBoYXMgdGhy
-ZWUgc3RhZ2UgYm9vdCBsb2FkZXJzIGxpa2UgVFBMLCBTUEwgYW5kCj4gVS1Cb290IHByb3Blci4g
-Rm9yIGVhY2ggc3RhZ2Ugd2UgbmVlZCB0byBidXJuIHRoZSBpbWFnZQo+IG9uIHRvIGZsYXNoIHdp
-dGggcmVzcGVjdGl2ZSBvZmZzZXRzLgo+Cj4gVGhpcyBwYXRjaCBjcmVhdGUgYSBzaW5nbGUgaW1h
-Z2UgdXNpbmcgYmlubWFuLCBzbyB0aGF0Cj4gdXNlciBjYW4gZ2V0IHJpZCBvZiBidXJuaW5nIGRp
-ZmZlcmVudCBzdGFnZSBib290IGltYWdlcy4KPgo+IFRoZSBuZXcgaW1hZ2UgY2FsbGVkICd1LWJv
-b3Qtcm9ja2NoaXAtd2l0aC10cGwtc3BsLmJpbicKPiB3aGljaCBjYW4gYnVybiBpbnRvIGZsYXNo
-IGxpa2U6Cj4KPiDigrkgc3VkbyBkZCBpZj11LWJvb3Qtcm9ja2NoaXAtd2l0aC10cGwtc3BsLmJp
-biBvZj0vZGV2L3NkYSBzZWVrPTY0Cj4KPiBUaGlzIHdvdWxkIGVhc2lseSBleHRlbmQgaWYgb3Ro
-ZXIgcm9ja2NoaXAgZmFtaWx5IFNvQydzIHdvdWxkCj4gbWFrZSB1c2Ugb2Ygc2luZ2xlIGltYWdl
-IGNyZWF0aW9uLgo+Cj4gQ2M6IEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+
-Cj4gQ2M6IE1hdHdleSBWLiBLb3JuaWxvdiA8bWF0d2V5Lmtvcm5pbG92QGdtYWlsLmNvbT4KPiBT
-aWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KPiAt
-LS0KPiAgTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICAgICAgIHwgMTAgKysrKysrKysrKwo+
-ICBhcmNoL2FybS9LY29uZmlnICAgICAgICAgICAgICAgICAgfCAgMSArCj4gIGFyY2gvYXJtL2R0
-cy9yazMyODgtdS1ib290LmR0c2kgICB8ICAyICsrCj4gIGFyY2gvYXJtL2R0cy9yazMzMjgtdS1i
-b290LmR0c2kgICB8ICAyICsrCj4gIGFyY2gvYXJtL2R0cy9yazMzNjgtdS1ib290LmR0c2kgICB8
-ICAyICsrCj4gIGFyY2gvYXJtL2R0cy9yazMzOTktdS1ib290LmR0c2kgICB8ICAyICsrCj4gIGFy
-Y2gvYXJtL2R0cy9yb2NrY2hpcC11LWJvb3QuZHRzaSB8IDIxICsrKysrKysrKysrKysrKysrKysr
-Kwo+ICBpbmNsdWRlL2NvbmZpZ3Mvcm9ja2NoaXAtY29tbW9uLmggfCAgMiArKwo+ICA4IGZpbGVz
-IGNoYW5nZWQsIDQyIGluc2VydGlvbnMoKykKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJt
-L2R0cy9yb2NrY2hpcC11LWJvb3QuZHRzaQo+Cj4gZGlmZiAtLWdpdCBhL01ha2VmaWxlIGIvTWFr
-ZWZpbGUKPiBpbmRleCA5MThiNWQ1M2UwLi4wNDk3ODFlMGJhIDEwMDY0NAo+IC0tLSBhL01ha2Vm
-aWxlCj4gKysrIGIvTWFrZWZpbGUKPiBAQCAtODg4LDYgKzg4OCw3IEBAIGVuZGlmCj4KPiAgaWZl
-cSAoJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkkKENPTkZJR19TUEwpJChDT05GSUdfVFBMKSx5eXkp
-Cj4gIEFMTC15ICs9IHNwbC91LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbgo+ICtBTEwteSArPSB1LWJv
-b3Qtcm9ja2NoaXAtd2l0aC10cGwtc3BsLmJpbgo+ICBlbmRpZgo+Cj4gIExERkxBR1NfdS1ib290
-ICs9ICQoTERGTEFHU19GSU5BTCkKPiBAQCAtMTM0Niw2ICsxMzQ3LDE1IEBAIHRwbC91LWJvb3Qt
-dHBsLmltZzogdHBsL3UtYm9vdC10cGwuYmluIEZPUkNFCj4gICAgICAgICAkKGNhbGwgaWZfY2hh
-bmdlZCxta2ltYWdlKQo+ICBzcGwvdS1ib290LXNwbC1yb2NrY2hpcC5iaW46IHRwbC91LWJvb3Qt
-dHBsLmltZyBzcGwvdS1ib290LXNwbC5iaW4gRk9SQ0UKPiAgICAgICAgICQoY2FsbCBpZl9jaGFu
-Z2VkLGNhdCkKPiArCj4gK2lmZGVmIENPTkZJR19TUExfTE9BRF9GSVQKPiArUk9DS0NISVBfVUJP
-T1RfSU1HIDo9IHUtYm9vdC5pdGIKPiArZWxzZQo+ICtST0NLQ0hJUF9VQk9PVF9JTUcgOj0gdS1i
-b290LmltZwo+ICtlbmRpZgo+ICsKPiArdS1ib290LXJvY2tjaGlwLXdpdGgtdHBsLXNwbC5iaW46
-IHNwbC91LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbiAkKFJPQ0tDSElQX1VCT09UX0lNRykgRk9SQ0UK
-PiArICAgICAgICQoY2FsbCBpZl9jaGFuZ2VkLGJpbm1hbikKPiAgZW5kaWYKPgo+ICBpZmVxICgk
-KENPTkZJR19BUkNIX0xQQzMyWFgpJChDT05GSUdfU1BMKSx5eSkKPiBkaWZmIC0tZ2l0IGEvYXJj
-aC9hcm0vS2NvbmZpZyBiL2FyY2gvYXJtL0tjb25maWcKPiBpbmRleCAxZGYyYWJhM2MyLi44N2Zh
-MWY0M2Y0IDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtL0tjb25maWcKPiArKysgYi9hcmNoL2FybS9L
-Y29uZmlnCj4gQEAgLTE1OTQsNiArMTU5NCw3IEBAIGNvbmZpZyBBUkNIX1NUTTMyTVAKPiAgY29u
-ZmlnIEFSQ0hfUk9DS0NISVAKPiAgICAgICAgIGJvb2wgIlN1cHBvcnQgUm9ja2NoaXAgU29DcyIK
-PiAgICAgICAgIHNlbGVjdCBCTEsKPiArICAgICAgIHNlbGVjdCBCSU5NQU4gaWYgVFBMICYmIFNQ
-TAo+ICAgICAgICAgc2VsZWN0IERNCj4gICAgICAgICBzZWxlY3QgRE1fR1BJTwo+ICAgICAgICAg
-c2VsZWN0IERNX0kyQwo+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9kdHMvcmszMjg4LXUtYm9vdC5k
-dHNpIGIvYXJjaC9hcm0vZHRzL3JrMzI4OC11LWJvb3QuZHRzaQo+IGluZGV4IDNmMDBhM2I2ZDMu
-LjZkMzE3MzUzNjIgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm0vZHRzL3JrMzI4OC11LWJvb3QuZHRz
-aQo+ICsrKyBiL2FyY2gvYXJtL2R0cy9yazMyODgtdS1ib290LmR0c2kKPiBAQCAtMyw2ICszLDgg
-QEAKPiAgICogQ29weXJpZ2h0IChDKSAyMDE5IFJvY2tjaGlwIEVsZWN0cm9uaWNzIENvLiwgTHRk
-Cj4gICAqLwo+Cj4gKyNpbmNsdWRlICJyb2NrY2hpcC11LWJvb3QuZHRzaSIKPiArCj4gIC8gewo+
-ICAgICAgICAgY2hvc2VuIHsKPiAgICAgICAgICAgICAgICAgdS1ib290LHNwbC1ib290LW9yZGVy
-ID0gXAo+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9kdHMvcmszMzI4LXUtYm9vdC5kdHNpIGIvYXJj
-aC9hcm0vZHRzL3JrMzMyOC11LWJvb3QuZHRzaQo+IGluZGV4IGZmYmQ2NTdlMzEuLjBjNTFhOGRi
-ZmIgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm0vZHRzL3JrMzMyOC11LWJvb3QuZHRzaQo+ICsrKyBi
-L2FyY2gvYXJtL2R0cy9yazMzMjgtdS1ib290LmR0c2kKPiBAQCAtMyw2ICszLDggQEAKPiAgICog
-KEMpIENvcHlyaWdodCAyMDE5IFJvY2tjaGlwIEVsZWN0cm9uaWNzIENvLiwgTHRkCj4gICAqLwo+
-Cj4gKyNpbmNsdWRlICJyb2NrY2hpcC11LWJvb3QuZHRzaSIKPiArCj4gIC8gewo+ICAgICAgICAg
-YWxpYXNlcyB7Cj4gICAgICAgICAgICAgICAgIG1tYzAgPSAmZW1tYzsKPiBkaWZmIC0tZ2l0IGEv
-YXJjaC9hcm0vZHRzL3JrMzM2OC11LWJvb3QuZHRzaSBiL2FyY2gvYXJtL2R0cy9yazMzNjgtdS1i
-b290LmR0c2kKPiBpbmRleCAxZTdkMDc5MzE1Li40MWFjMDU0YjgxIDEwMDY0NAo+IC0tLSBhL2Fy
-Y2gvYXJtL2R0cy9yazMzNjgtdS1ib290LmR0c2kKPiArKysgYi9hcmNoL2FybS9kdHMvcmszMzY4
-LXUtYm9vdC5kdHNpCj4gQEAgLTIsMyArMiw1IEBACj4gIC8qCj4gICAqIENvcHlyaWdodCAoQykg
-MjAxOSBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KPiAgICovCj4gKwo+
-ICsjaW5jbHVkZSAicm9ja2NoaXAtdS1ib290LmR0c2kiCj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJt
-L2R0cy9yazMzOTktdS1ib290LmR0c2kgYi9hcmNoL2FybS9kdHMvcmszMzk5LXUtYm9vdC5kdHNp
-Cj4gaW5kZXggMjczOGEzODg5ZS4uZmU4YTczZDY1MyAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybS9k
-dHMvcmszMzk5LXUtYm9vdC5kdHNpCj4gKysrIGIvYXJjaC9hcm0vZHRzL3JrMzM5OS11LWJvb3Qu
-ZHRzaQo+IEBAIC0zLDYgKzMsOCBAQAo+ICAgKiBDb3B5cmlnaHQgKEMpIDIwMTkgSmFnYW4gVGVr
-aSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gICAqLwo+Cj4gKyNpbmNsdWRlICJyb2Nr
-Y2hpcC11LWJvb3QuZHRzaSIKPiArCj4gICZwbXUgewo+ICAgICAgICAgdS1ib290LGRtLXByZS1y
-ZWxvYzsKPiAgfTsKPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vZHRzL3JvY2tjaGlwLXUtYm9vdC5k
-dHNpIGIvYXJjaC9hcm0vZHRzL3JvY2tjaGlwLXUtYm9vdC5kdHNpCj4gbmV3IGZpbGUgbW9kZSAx
-MDA2NDQKPiBpbmRleCAwMDAwMDAwMDAwLi5jNDk2MTA3MTE5Cj4gLS0tIC9kZXYvbnVsbAo+ICsr
-KyBiL2FyY2gvYXJtL2R0cy9yb2NrY2hpcC11LWJvb3QuZHRzaQo+IEBAIC0wLDAgKzEsMjEgQEAK
-PiArLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjArCj4gKy8qCj4gKyAqIENvcHly
-aWdodCAoQykgMjAxOSBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KPiAr
-ICovCj4gKwo+ICsjaW5jbHVkZSA8Y29uZmlnLmg+Cj4gKwo+ICsvIHsKPiArICAgICAgIGJpbm1h
-biB7Cj4gKyAgICAgICAgICAgICAgIGZpbGVuYW1lID0gInUtYm9vdC1yb2NrY2hpcC13aXRoLXRw
-bC1zcGwuYmluIjsKPiArICAgICAgICAgICAgICAgcGFkLWJ5dGUgPSA8MHhmZj47Cj4gKwo+ICsg
-ICAgICAgICAgICAgICBibG9iIHsKPiArICAgICAgICAgICAgICAgICAgICAgICBmaWxlbmFtZSA9
-ICJzcGwvdS1ib290LXNwbC1yb2NrY2hpcC5iaW4iOwo+ICsgICAgICAgICAgICAgICB9Owo+ICsK
-PiArICAgICAgICAgICAgICAgdS1ib290LWltZyB7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAg
-b2Zmc2V0ID0gPENPTkZJR19TUExfUEFEX1RPPjsKPiArICAgICAgICAgICAgICAgfTsKCnUtYm9v
-dC1pbWcgc2VlbXMgdG8gYmUgY29tcGF0aWJsZSBvciB3b3JraW5nIHdpdGggdS1ib290Lml0YiBi
-dXQKaW5kZWVkIExpbnV4IGZhaWxlZCB0byBib290IHdpdGggJ1N0YXJ0aW5nIGtlcm5lbCAuLi4n
-IGRvZXMgYmlubWFuCnJlYWxseSBrbm93IHRoYXQgdGhpcyBpcyBpdGI/IG9yIHNvbWUgb3Zlcmxh
-cCBvbiBteSBpbWFnZSBvZmZzZXQsIG5vdApzdXJlLiBhbnkgaGVscD8KCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+RK3308 GRF is divided into four sections: GRF, SGRF,
+DETECTGRF, COREGRF. This patch add documentation for
+it.
+
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+
+---
+
+Changes in v2: None
+
+ .../devicetree/bindings/soc/rockchip/grf.txt          | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.txt b/Documentation/devicetree/bindings/soc/rockchip/grf.txt
+index d7debec26ba4..61d89749918a 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.txt
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.txt
+@@ -10,6 +10,12 @@ From RK3368 SoCs, the GRF is divided into two sections,
+ 
+ On RK3328 SoCs, the GRF adds a section for USB2PHYGRF,
+ 
++ON RK3308 SoC, the GRF is divided into four sections:
++- GRF, used for general non-secure system,
++- SGRF, used for general secure system,
++- DETECTGRF, used for audio codec system,
++- COREGRF, used for pvtm,
++
+ Required Properties:
+ 
+ - compatible: GRF should be one of the following:
+@@ -19,10 +25,15 @@ Required Properties:
+    - "rockchip,rk3188-grf", "syscon": for rk3188
+    - "rockchip,rk3228-grf", "syscon": for rk3228
+    - "rockchip,rk3288-grf", "syscon": for rk3288
++   - "rockchip,rk3308-grf", "syscon": for rk3308
+    - "rockchip,rk3328-grf", "syscon": for rk3328
+    - "rockchip,rk3368-grf", "syscon": for rk3368
+    - "rockchip,rk3399-grf", "syscon": for rk3399
+    - "rockchip,rv1108-grf", "syscon": for rv1108
++- compatible: DETECTGRF should be one of the following:
++   - "rockchip,rk3308-detect-grf", "syscon": for rk3308
++- compatilbe: COREGRF should be one of the following:
++   - "rockchip,rk3308-core-grf", "syscon": for rk3308
+ - compatible: PMUGRF should be one of the following:
+    - "rockchip,px30-pmugrf", "syscon": for px30
+    - "rockchip,rk3368-pmugrf", "syscon": for rk3368
+-- 
+2.17.1
