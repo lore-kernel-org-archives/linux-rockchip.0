@@ -1,15 +1,14 @@
 From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v2 16/25] PCI: versatile: Use
- pci_parse_request_of_pci_ranges()
-Date: Mon, 21 Oct 2019 02:39:07 +0200
-Message-ID: <CACRpkdYjY0JZCCfb9r9A2GKmO03hHXNCqGmy6qqBkLfOdZZdEQ@mail.gmail.com>
+Subject: Re: [PATCH v2 17/25] PCI: versatile: Remove usage of PHYS_OFFSET
+Date: Mon, 21 Oct 2019 02:40:27 +0200
+Message-ID: <CACRpkdbhPPRDixrR4rWSopFEd-5AKpjHF1-Su-ViAGMDLQiKkw@mail.gmail.com>
 References: <20191016200647.32050-1-robh@kernel.org>
- <20191016200647.32050-17-robh@kernel.org>
+ <20191016200647.32050-18-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20191016200647.32050-17-robh@kernel.org>
+In-Reply-To: <20191016200647.32050-18-robh@kernel.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -25,20 +24,23 @@ List-Id: linux-rockchip.vger.kernel.org
 
 On Wed, Oct 16, 2019 at 10:07 PM Rob Herring <robh@kernel.org> wrote:
 
-> Convert ARM Versatile host bridge to use the common
-> pci_parse_request_of_pci_ranges().
+> PHYS_OFFSET is not universally defined on all arches and using it prevents
+> enabling COMPILE_TEST. PAGE_OFFSET and __pa() are always available, so use
+> them to get the physical start of memory address.
 >
-> There's no need to assign the resources to a temporary list first. Just
-> use bridge->windows directly and remove all the temporary list handling.
+> This should have probably used 'dma-ranges' to get the address, but we
+> don't want to force a DT update to do that. At least in QEMU, the SMAP
+> registers have no effect (or perhaps the only value that is handled is 0).
 >
 > Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+> Cc: Andrew Murray <andrew.murray@arm.com>
 > Cc: Bjorn Helgaas <bhelgaas@google.com>
 > Signed-off-by: Rob Herring <robh@kernel.org>
 > ---
 > v2:
-> - Fix 'mem' initial value to 1
-> - Remove temporary resource list
+> - New patch to fix build failure on some arches.
 
+Always wondered how to do this right, now I can fix other stuff!
 Acked-by: Linus Walleij <linus.walleij@linaro.org>
 
 Yours,
