@@ -1,88 +1,101 @@
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: [PATCH v4 7/7] dt-bindings: sram: Merge Socionext SRAM bindings into generic
-Date: Mon, 21 Oct 2019 18:13:51 +0200
-Message-ID: <20191021161351.20789-7-krzk@kernel.org>
-References: <20191021161351.20789-1-krzk@kernel.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v4 5/7] dt-bindings: sram: Merge Rockchip SRAM bindings into generic
+Date: Mon, 21 Oct 2019 18:18:14 +0200
+Message-ID: <3101747.Dqu2aBfdh7@diego>
+References: <20191021161351.20789-1-krzk@kernel.org> <20191021161351.20789-5-krzk@kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191021161351.20789-1-krzk@kernel.org>
+In-Reply-To: <20191021161351.20789-5-krzk@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>, Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk@kernel.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The Socionext SRAM bindings list only compatible so integrate them into
-generic SRAM bindings schema.
+Am Montag, 21. Oktober 2019, 18:13:49 CEST schrieb Krzysztof Kozlowski:
+> The Rockchip SRAM bindings list only compatible so integrate them into
+> generic SRAM bindings schema.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 
-Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+Acked-by: Heiko Stuebner <heiko@sntech.de>
 
----
-
-Changes since v3:
-1. New patch
----
- .../bindings/sram/milbeaut-smp-sram.txt       | 24 -------------------
- .../devicetree/bindings/sram/sram.yaml        | 15 ++++++++++++
- 2 files changed, 15 insertions(+), 24 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/sram/milbeaut-smp-sram.txt
-
-diff --git a/Documentation/devicetree/bindings/sram/milbeaut-smp-sram.txt b/Documentation/devicetree/bindings/sram/milbeaut-smp-sram.txt
-deleted file mode 100644
-index 194f6a3c1c1e..000000000000
---- a/Documentation/devicetree/bindings/sram/milbeaut-smp-sram.txt
-+++ /dev/null
-@@ -1,24 +0,0 @@
--Milbeaut SRAM for smp bringup
--
--Milbeaut SoCs use a part of the sram for the bringup of the secondary cores.
--Once they get powered up in the bootloader, they stay at the specific part
--of the sram.
--Therefore the part needs to be added as the sub-node of mmio-sram.
--
--Required sub-node properties:
--- compatible : should be "socionext,milbeaut-smp-sram"
--
--Example:
--
--        sram: sram@0 {
--                compatible = "mmio-sram";
--                reg = <0x0 0x10000>;
--                #address-cells = <1>;
--                #size-cells = <1>;
--                ranges = <0 0x0 0x10000>;
--
--                smp-sram@f100 {
--                        compatible = "socionext,milbeaut-smp-sram";
--                        reg = <0xf100 0x20>;
--                };
--        };
-diff --git a/Documentation/devicetree/bindings/sram/sram.yaml b/Documentation/devicetree/bindings/sram/sram.yaml
-index 95d8cc7e2b87..de39e06c1ed9 100644
---- a/Documentation/devicetree/bindings/sram/sram.yaml
-+++ b/Documentation/devicetree/bindings/sram/sram.yaml
-@@ -72,6 +72,7 @@ patternProperties:
-           - rockchip,rk3066-smp-sram
-           - samsung,exynos4210-sysram
-           - samsung,exynos4210-sysram-ns
-+          - socionext,milbeaut-smp-sram
- 
-       reg:
-         description:
-@@ -241,3 +242,17 @@ examples:
-             reg = <0x1000 0x8>;
-         };
-     };
-+
-+  - |
-+    sram@0 {
-+        compatible = "mmio-sram";
-+        reg = <0x0 0x10000>;
-+        #address-cells = <1>;
-+        #size-cells = <1>;
-+        ranges = <0 0x0 0x10000>;
-+
-+        smp-sram@f100 {
-+            compatible = "socionext,milbeaut-smp-sram";
-+            reg = <0xf100 0x20>;
-+        };
-+    };
--- 
-2.17.1
+> 
+> ---
+> 
+> Changes since v3:
+> 1. New patch
+> ---
+>  .../bindings/sram/rockchip-smp-sram.txt       | 30 -------------------
+>  .../devicetree/bindings/sram/sram.yaml        | 15 ++++++++++
+>  2 files changed, 15 insertions(+), 30 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/sram/rockchip-smp-sram.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/sram/rockchip-smp-sram.txt b/Documentation/devicetree/bindings/sram/rockchip-smp-sram.txt
+> deleted file mode 100644
+> index 800701ecffca..000000000000
+> --- a/Documentation/devicetree/bindings/sram/rockchip-smp-sram.txt
+> +++ /dev/null
+> @@ -1,30 +0,0 @@
+> -Rockchip SRAM for smp bringup:
+> -------------------------------
+> -
+> -Rockchip's smp-capable SoCs use the first part of the sram for the bringup
+> -of the cores. Once the core gets powered up it executes the code that is
+> -residing at the very beginning of the sram.
+> -
+> -Therefore a reserved section sub-node has to be added to the mmio-sram
+> -declaration.
+> -
+> -Required sub-node properties:
+> -- compatible : should be "rockchip,rk3066-smp-sram"
+> -
+> -The rest of the properties should follow the generic mmio-sram discription
+> -found in Documentation/devicetree/bindings/sram/sram.txt
+> -
+> -Example:
+> -
+> -	sram: sram@10080000 {
+> -		compatible = "mmio-sram";
+> -		reg = <0x10080000 0x10000>;
+> -		#address-cells = <1>;
+> -		#size-cells = <1>;
+> -		ranges;
+> -
+> -		smp-sram@10080000 {
+> -			compatible = "rockchip,rk3066-smp-sram";
+> -			reg = <0x10080000 0x50>;
+> -		};
+> -	};
+> diff --git a/Documentation/devicetree/bindings/sram/sram.yaml b/Documentation/devicetree/bindings/sram/sram.yaml
+> index b92e3e10fbfc..1c2d8b0408c0 100644
+> --- a/Documentation/devicetree/bindings/sram/sram.yaml
+> +++ b/Documentation/devicetree/bindings/sram/sram.yaml
+> @@ -68,6 +68,7 @@ patternProperties:
+>            - amlogic,meson8-smp-sram
+>            - amlogic,meson8b-smp-sram
+>            - renesas,smp-sram
+> +          - rockchip,rk3066-smp-sram
+>            - samsung,exynos4210-sysram
+>            - samsung,exynos4210-sysram-ns
+>  
+> @@ -201,3 +202,17 @@ examples:
+>              reg = <0 0x10>;
+>          };
+>      };
+> +
+> +  - |
+> +    sram@10080000 {
+> +        compatible = "mmio-sram";
+> +        reg = <0x10080000 0x10000>;
+> +        #address-cells = <1>;
+> +        #size-cells = <1>;
+> +        ranges;
+> +
+> +        smp-sram@10080000 {
+> +            compatible = "rockchip,rk3066-smp-sram";
+> +            reg = <0x10080000 0x50>;
+> +        };
+> +    };
+> 
