@@ -1,39 +1,79 @@
-From: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 20/25] PCI: ftpci100: Use inbound resources for setup
-Date: Mon, 21 Oct 2019 02:41:58 +0200
-Message-ID: <CACRpkdby+LF5B8t8omn4CVv36NoYya0DZJPCi3a-4FUmDCFrVA@mail.gmail.com>
-References: <20191016200647.32050-1-robh@kernel.org>
- <20191016200647.32050-21-robh@kernel.org>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH v3 2/5] Makefile: Rename idbloader.img with
+	u-boot-spl-rockchip.bin
+Date: Mon, 21 Oct 2019 10:56:39 +0530
+Message-ID: <CAMty3ZDZ_P-soW2poo3nJ8PF=3Wxe0RoGzW7B_xDTkZx8UCm8Q@mail.gmail.com>
+References: <20191017190710.29985-1-jagan@amarulasolutions.com>
+ <20191017190710.29985-3-jagan@amarulasolutions.com>
+ <7e1e42fd-a4e3-4b3c-8d7b-82f3ad7551cd@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191016200647.32050-21-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Karthikeyan Mitran <m.karthikeyan-DTHOJn6Rh8lhmhkoCovsdw@public.gmane.org>, linux-pci <linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Toan Le <toan-shex6MNQR2J/SfDzf78azzKzEDxYleXD@public.gmane.org>, Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, bcm-kernel-feedback-list <bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Ray Jui <rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Hou Zhiqiang <Zhiqiang.Hou-3arQi8VN3Tc@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Andrew Murray <andrew.murray-5wv7dgnIgG8@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Scott Branden <sbranden@br>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <7e1e42fd-a4e3-4b3c-8d7b-82f3ad7551cd@rock-chips.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>, Tom Rini <trini@konsulko.com>
+Cc: "Matwey V . Kornilov" <matwey.kornilov@gmail.com>, U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Oct 16, 2019 at 10:07 PM Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
-
-> Now that the helpers provide the inbound resources in the host bridge
-> 'dma_ranges' resource list, convert Faraday ftpci100 host bridge to use
-> the resource list to setup the inbound addresses.
->
-> Cc: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
-> Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-> Reviewed-by: Andrew Murray <andrew.murray-5wv7dgnIgG8@public.gmane.org>
-> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-
-Acked-by: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-
-Yours,
-Linus Walleij
+SGkgS2V2ZXIsCgpPbiBGcmksIE9jdCAxOCwgMjAxOSBhdCA0OjI2IFBNIEtldmVyIFlhbmcgPGtl
+dmVyLnlhbmdAcm9jay1jaGlwcy5jb20+IHdyb3RlOgo+Cj4gSmFnYW4sCj4KPgo+IE9uIDIwMTkv
+MTAvMTgg5LiK5Y2IMzowNywgSmFnYW4gVGVraSB3cm90ZToKPiA+IGlkYmxvYWRlci5pbWcgbmFt
+ZSBpcyBzcGVjaWZpYyB0byByb2NrY2hpcCwKPgo+IFRoaXMgaXMgc3BlY2lmaWMgZm9yIHJvY2tj
+aGlwLCBsaWtlIHJrc2QsIHJrc3BpIHR5cGUgaW4gbWtpbWFnZSwgc2luY2UKPiBpdCdzIGNsZWFy
+IGZvciB3aGF0IGl0IHN0YW5kcyBmb3IsCj4KPiBJIHRoaW5rIGl0IGNhbiBhbHNvIHVzZWQgaW4g
+VS1Cb290Lgo+Cj4gPiB3aGVyZSBpdCB1c3VhbGx5Cj4gPiBjcmVhdGVkIHVzaW5nIHJvY2tjaGlw
+IHRvb2xzLgo+Cj4KPiBObywgaWRibG9hZGVyIHN0YW5kcyBmb3IgdGhlIGltYWdlIHdpdGggaWRi
+IGhlYWRlciBwYWNrYWdlZCB3aXRoIHR3bwo+IHN0YWdlIGxvYWRlciwgZWcuIFRQTCtTUEwKPgo+
+IG9yIGRkci5iaW4rbWluaWxvYWRlci5iaW4sIGFuZCBtYXliZSBkZHIuYmluICsgU1BM77yMIFRQ
+TCttaW5pbG9hZGVyLmJpbiwKPgo+IG5vdCByZWxhdGVkIHRvIHJvY2tjaGlwIHRvb2xzLCBpdCBj
+YW4gYWxzbyBiZSBjcmVhdGVkIHdpdGggVS1Cb290Cj4gbWtpbWFnZSB0b29sLgoKSSB1bmRlcnN0
+YW5kIHdoYXQgaWRibG9hZGVyIGNvbnRhaW5zLCBpdCBpcyBsaWtlIHJvY2tjaGlwIFNQTC4gYnV0
+IHRoZQptYWluIGNvbmNlcm4gaGVyZSBpcyB0aGUgbmFtaW5nIGNvbnZlbnRpb24gdXNlZCBpbiBV
+LUJvb3QuIEl0IHdvdWxkIGJlCmEgc3RhbmRhcmQgd2F5IG9mIHVzaW5nIG5hbWluZyBjb252ZW50
+aW9ucyB3aGVyZSB0aGUgZmluYWwgb3V0cHV0Cm5hbWluZyBjb252ZW50aW9ucyBzaG91bGQgaGF2
+ZSB1LWJvb3Qgc3VwcG9ydCBzdGFnZXMoVFBMLCBTUEwsIFUtQm9vdCkKYW5kIHBsYXRmb3JtIHNw
+ZWNpZmljIG5hbWUuIFRoaXMgd2F5IGl0IGlzIGxlc3MgY29uZnVzZWQgd2hhdCBleGFjdGx5Cml0
+IGNvbnRhaW5zLgoKTW9yZW92ZXIgbW9zdCBvZiB0aGUgcGxhdGZvcm0gc3BlY2lmaWMgYmluIGVu
+ZGVkIHVwIHVzaW5nIHRoaXMgdHlwZSBvZgpjb252ZW50aW9ucy4KCi0gdS1ib290LXNwbC1tdGsu
+YmluIC0gTWVkaWF0ZWsgU1BMIGJpbgotIHUtYm9vdC1tdGsuYmluIC0gTWVkaWF0ZWsgVS1Cb290
+IGJpbiAod291bGQgYmUgZmluYWwgaW1hZ2UpCi0gdS1ib290LXN1bnhpLXdpdGgtc3BsLmJpbiAt
+IEFsbHdpbm5lciBVLUJvb3Qgd2l0aCBTUEwKLSB1LWJvb3QteDg2LXN0YXJ0MTYtdHBsLmJpbgoK
+U2ltaWxhciBuYW1pbmcgY29udmVudGlvbnMgdXNlZCBmb3IgdGVncmEsIHg4NiBldGMuCgpJJ20g
+Y29tcGxldGVseSBhd2FyZSBvZiB3aGF0IHlvdSdyZSB0cnlpbmcgdG8gYWJicmV2aWF0ZQppZGJs
+b2FkZXIuaW1nLCBidXQgaGF2aW5nIHUtYm9vdC1zcGwtcm9ja2NoaXAuYmluIGlzIG1vcmUgcmVh
+ZGFibGUgYW5kCnVuZGVyc3RhbmQgdGhhbiBpZGJsb2FkZXIuCgo+Cj4gPiBTaW5jZSB0aGUgaW1h
+Z2UgaXMgY3JlYXRlZCBhcwo+ID4gcGVyIFUtQm9vdCBnZW5lcmljIGJ1aWxkcyBsaWtlIFNQTCwg
+YmV0dGVyIHRvIGZvbGxvdyB0aGUKPiA+IGdlbmVyaWMgVS1Cb290IG5hbWluZyBub3RhdGlvbiBs
+aWtlIG90aGVyIFNvQydzIGZvbGxvd2luZy4KPiA+Cj4gPiBFbmFibGUgaWRibG9hZGVyLmltZyB3
+aXRoIHUtYm9vdC1zcGwtcm9ja2NoaXAuYmluIGFuZCBjcmVhdGUKPiA+IHRoZSBzYW1lIGluIHNw
+bCBkaXJlY3Rvcnkgc2luY2UgaXQgaXMgU1BMIGZpbGUgYW5kIE1ha2VmaWxlLnNwbAo+ID4gd2ls
+bCBjbGVhbiBpdCBieSBkZWZhdWx0Lgo+ID4KPiA+IENjOiBLZXZlciBZYW5nIDxrZXZlci55YW5n
+QHJvY2stY2hpcHMuY29tPgo+ID4gQ2M6IE1hdHdleSBWLiBLb3JuaWxvdiA8bWF0d2V5Lmtvcm5p
+bG92QGdtYWlsLmNvbT4KPiA+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1
+bGFzb2x1dGlvbnMuY29tPgo+ID4gLS0tCj4gPiAgIE1ha2VmaWxlIHwgNCArKy0tCj4gPiAgIDEg
+ZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4gPgo+ID4gZGlm
+ZiAtLWdpdCBhL01ha2VmaWxlIGIvTWFrZWZpbGUKPiA+IGluZGV4IGVjNTVlMGY2YTQuLjkxOGI1
+ZDUzZTAgMTAwNjQ0Cj4gPiAtLS0gYS9NYWtlZmlsZQo+ID4gKysrIGIvTWFrZWZpbGUKPiA+IEBA
+IC04ODcsNyArODg3LDcgQEAgQUxMLXkgKz0gdS1ib290LXdpdGgtZHRiLmJpbgo+ID4gICBlbmRp
+Zgo+ID4KPiA+ICAgaWZlcSAoJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkkKENPTkZJR19TUEwpJChD
+T05GSUdfVFBMKSx5eXkpCj4gPiAtQUxMLXkgKz0gaWRibG9hZGVyLmltZwo+ID4gK0FMTC15ICs9
+IHNwbC91LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbgo+Cj4KPiBUaGlzIGlkYmxvYWRlciBpbmNsdWRp
+bmcgSURCIGhlYWRlciwgVFBMLCBhbmQgU1BMLCBJIGRvbid0IHRoaW5rIG5hbWUgaXQKPiBhcyBz
+cGwgYW5kCj4KPiBwdXQgaXQgaW4gc3BsIGRpcmVjdG9yeSBtYWtlIGFueSBzZW5zZS4KPgo+IEkg
+dGhvdWdoIHRoZSBvcmlnaW4gb3V0cHV0IGZpbGUgdXNlIHBvc3RmaXggJy5iaW4nIGFuZCB0aG9z
+ZSBpbWFnZSBhZnRlcgo+IHBhY2sgYW5kIGNhbiAgYmUKPgo+IGRkIHRvIHN0b3JhZ2UgZGlyZWN0
+bHkgYmV0dGVyIHRvIHVzZSBwb3N0Zml4ICcuaW1nJy4KPgo+IEFib3V0IHRoZSBjbGVhbiwgaXQg
+d2lsbCBiZSBiZXR0ZXIgdG8gYmUgY2xlYW4gbGlrZSBvdGhlciAnLmltZycgZmlsZSBpbgo+IHRo
+ZSBNYWtlZmlsZS4KClRoaXMgbWFrZSBzZW5zZSwgSSBoYXZlIG5leHQgdmVyc2lvbiBzZXQgd2hl
+cmUgaXQgdXNlZCBoYW5kbGUgdGhlc2Ugc28KY2FyZWZ1bGx5LgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBs
+aXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
