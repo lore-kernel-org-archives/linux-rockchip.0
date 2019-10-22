@@ -1,65 +1,92 @@
-From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Subject: Re: [PATCH 1/2] dt-bindings: nvmem: add binding for Rockchip OTP
- controller
-Date: Tue, 22 Oct 2019 13:24:18 +0100
-Message-ID: <3b5f4018-82b1-946d-d81d-252eb872d5d1@linaro.org>
-References: <20190925184957.14338-1-heiko@sntech.de>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 2/6] drm: Introduce DRM_MODE_DUMB_KERNEL_MAP flag
+Date: Tue, 22 Oct 2019 07:42:06 -0500
+Message-ID: <CAL_Jsq+kyLZ8LAVN-5UDJUy9nMLiAjN452HWg5WYAfLS7QD=Yw@mail.gmail.com>
+References: <20191021214550.1461-1-robh@kernel.org>
+ <20191021214550.1461-3-robh@kernel.org>
+ <20191022111443.GE4756@pendragon.ideasonboard.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20190925184957.14338-1-heiko@sntech.de>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, christoph.muellner@theobroma-systems.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20191022111443.GE4756@pendragon.ideasonboard.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, Liviu Dudau <liviu.dudau@arm.com>, dri-devel <dri-devel@lists.freedesktop.org>, Yannick Fertre <yannick.fertre@st.com>, Kevin Hilman <khilman@baylibre.com>, Xinwei Kong <kong.kongxinwei@hisilicon.com>, Xinliang Liu <z.liuxinliang@hisilicon.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Chen-Yu Tsai <wens@csie.org>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, "James (Qian) Wang" <james.qian.wang@arm.com>, Alexandre Torgue <alexandre.torgue@st.com>, Chen Feng <puck.chen@hisilicon.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, Philippe Cornu <philipp>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 25/09/2019 19:49, Heiko Stuebner wrote:
-> Newer Rockchip SoCs use a different IP for accessing special one-
-> time-programmable memory, so add a binding for these controllers.
-> 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-
-Applied both, thanks,
-srini
-
-> ---
->   .../bindings/nvmem/rockchip-otp.txt           | 25 +++++++++++++++++++
->   1 file changed, 25 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/nvmem/rockchip-otp.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-otp.txt b/Documentation/devicetree/bindings/nvmem/rockchip-otp.txt
-> new file mode 100644
-> index 000000000000..40f649f7c2e5
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/nvmem/rockchip-otp.txt
-> @@ -0,0 +1,25 @@
-> +Rockchip internal OTP (One Time Programmable) memory device tree bindings
-> +
-> +Required properties:
-> +- compatible: Should be one of the following.
-> +  - "rockchip,px30-otp" - for PX30 SoCs.
-> +  - "rockchip,rk3308-otp" - for RK3308 SoCs.
-> +- reg: Should contain the registers location and size
-> +- clocks: Must contain an entry for each entry in clock-names.
-> +- clock-names: Should be "otp", "apb_pclk" and "phy".
-> +- resets: Must contain an entry for each entry in reset-names.
-> +  See ../../reset/reset.txt for details.
-> +- reset-names: Should be "phy".
-> +
-> +See nvmem.txt for more information.
-> +
-> +Example:
-> +	otp: otp@ff290000 {
-> +		compatible = "rockchip,px30-otp";
-> +		reg = <0x0 0xff290000 0x0 0x4000>;
-> +		#address-cells = <1>;
-> +		#size-cells = <1>;
-> +		clocks = <&cru SCLK_OTP_USR>, <&cru PCLK_OTP_NS>,
-> +			 <&cru PCLK_OTP_PHY>;
-> +		clock-names = "otp", "apb_pclk", "phy";
-> +	};
-> 
+T24gVHVlLCBPY3QgMjIsIDIwMTkgYXQgNjoxNCBBTSBMYXVyZW50IFBpbmNoYXJ0CjxsYXVyZW50
+LnBpbmNoYXJ0QGlkZWFzb25ib2FyZC5jb20+IHdyb3RlOgo+Cj4gSGkgUm9iLAo+Cj4gVGhhbmsg
+eW91IGZvciB0aGUgcGF0Y2guCj4KPiBPbiBNb24sIE9jdCAyMSwgMjAxOSBhdCAwNDo0NTo0NlBN
+IC0wNTAwLCBSb2IgSGVycmluZyB3cm90ZToKPiA+IEludHJvZHVjZSBhIG5ldyBmbGFnLCBEUk1f
+TU9ERV9EVU1CX0tFUk5FTF9NQVAsIGZvciBzdHJ1Y3QKPiA+IGRybV9tb2RlX2NyZWF0ZV9kdW1i
+LiBUaGlzIGZsYWcgaXMgZm9yIGludGVybmFsIGtlcm5lbCB1c2UgdG8gaW5kaWNhdGUKPiA+IGlm
+IGR1bWIgYnVmZmVyIGFsbG9jYXRpb24gbmVlZHMgYSBrZXJuZWwgbWFwcGluZy4gVGhpcyBpcyBu
+ZWVkZWQgb25seSBmb3IKPiA+IENNQSB3aGVyZSBjcmVhdGluZyBhIGtlcm5lbCBtYXBwaW5nIG9y
+IG5vdCBoYXMgdG8gYmUgZGVjaWRlZCBhdCBhbGxvY2F0aW9uCj4gPiB0aW1lIGJlY2F1c2UgY3Jl
+YXRpbmcgYSBtYXBwaW5nIG9uIGRlbWFuZCAod2l0aCB2bWFwKCkpIGlzIG5vdCBndWFyYW50ZWVk
+Cj4gPiB0byB3b3JrLiBTZXZlcmFsIGRyaXZlcnMgYXJlIHVzaW5nIENNQSwgYnV0IG5vdCB0aGUg
+Q01BIGhlbHBlcnMgYmVjYXVzZQo+ID4gdGhleSBkaXN0aW5ndWlzaCBiZXR3ZWVuIGtlcm5lbCBh
+bmQgdXNlcnNwYWNlIGFsbG9jYXRpb25zIHRvIGNyZWF0ZSBhCj4gPiBrZXJuZWwgbWFwcGluZyBv
+ciBub3QuCj4gPgo+ID4gVXBkYXRlIHRoZSBjYWxsZXJzIG9mIGRybV9tb2RlX2R1bWJfY3JlYXRl
+KCkgdG8gc2V0Cj4gPiBkcm1fbW9kZV9kdW1iX2NyZWF0ZS5mbGFncyB0byBhcHByb3ByaWF0ZSBk
+ZWZhdWx0cy4gQ3VycmVudGx5LCBmbGFncyBjYW4KPiA+IGJlIHNldCB0byBhbnl0aGluZyBieSB1
+c2Vyc3BhY2UsIGJ1dCBpcyB1bnVzZWQgd2l0aGluIHRoZSBrZXJuZWwuIExldCdzCj4gPiBmb3Jj
+ZSBmbGFncyB0byB6ZXJvIChubyBrZXJuZWwgbWFwcGluZykgZm9yIHVzZXJzcGFjZSBjYWxsZXJz
+IGJ5IGRlZmF1bHQuCj4gPiBGb3IgaW4ga2VybmVsIGNsaWVudHMsIHNldCBEUk1fTU9ERV9EVU1C
+X0tFUk5FTF9NQVAgYnkgZGVmYXVsdC4gRHJpdmVycwo+ID4gY2FuIG92ZXJyaWRlIHRoaXMgYXMg
+bmVlZGVkLgo+ID4KPiA+IENjOiBEYXZpZCBBaXJsaWUgPGFpcmxpZWRAbGludXguaWU+Cj4gPiBD
+YzogRGFuaWVsIFZldHRlciA8ZGFuaWVsQGZmd2xsLmNoPgo+ID4gQ2M6IE1hYXJ0ZW4gTGFua2hv
+cnN0IDxtYWFydGVuLmxhbmtob3JzdEBsaW51eC5pbnRlbC5jb20+Cj4gPiBDYzogTWF4aW1lIFJp
+cGFyZCA8bXJpcGFyZEBrZXJuZWwub3JnPgo+ID4gQ2M6IFNlYW4gUGF1bCA8c2VhbkBwb29ybHku
+cnVuPgo+ID4gU2lnbmVkLW9mZi1ieTogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4KPiA+
+IC0tLQo+ID4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fY2xpZW50LmMgICAgICAgfCAxICsKPiA+ICBk
+cml2ZXJzL2dwdS9kcm0vZHJtX2R1bWJfYnVmZmVycy5jIHwgNSArKysrLQo+ID4gIGluY2x1ZGUv
+dWFwaS9kcm0vZHJtX21vZGUuaCAgICAgICAgfCAyICsrCj4gPiAgMyBmaWxlcyBjaGFuZ2VkLCA3
+IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncHUvZHJtL2RybV9jbGllbnQuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fY2xpZW50LmMKPiA+
+IGluZGV4IGQ5YTJlMzY5NTUyNS4uZGJmYzgwNjFiMzkyIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVy
+cy9ncHUvZHJtL2RybV9jbGllbnQuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9jbGll
+bnQuYwo+ID4gQEAgLTI2NCw2ICsyNjQsNyBAQCBkcm1fY2xpZW50X2J1ZmZlcl9jcmVhdGUoc3Ry
+dWN0IGRybV9jbGllbnRfZGV2ICpjbGllbnQsIHUzMiB3aWR0aCwgdTMyIGhlaWdodCwgdQo+ID4g
+ICAgICAgZHVtYl9hcmdzLndpZHRoID0gd2lkdGg7Cj4gPiAgICAgICBkdW1iX2FyZ3MuaGVpZ2h0
+ID0gaGVpZ2h0Owo+ID4gICAgICAgZHVtYl9hcmdzLmJwcCA9IGluZm8tPmNwcFswXSAqIDg7Cj4g
+PiArICAgICBkdW1iX2FyZ3MuZmxhZ3MgPSBEUk1fTU9ERV9EVU1CX0tFUk5FTF9NQVA7Cj4gPiAg
+ICAgICByZXQgPSBkcm1fbW9kZV9jcmVhdGVfZHVtYihkZXYsICZkdW1iX2FyZ3MsIGNsaWVudC0+
+ZmlsZSk7Cj4gPiAgICAgICBpZiAocmV0KQo+ID4gICAgICAgICAgICAgICBnb3RvIGVycl9kZWxl
+dGU7Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2RybV9kdW1iX2J1ZmZlcnMuYyBi
+L2RyaXZlcnMvZ3B1L2RybS9kcm1fZHVtYl9idWZmZXJzLmMKPiA+IGluZGV4IGQxOGE3NDBmZTBm
+MS4uNzRhMTNmMTRjMTczIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9kdW1i
+X2J1ZmZlcnMuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9kdW1iX2J1ZmZlcnMuYwo+
+ID4gQEAgLTk3LDcgKzk3LDEwIEBAIGludCBkcm1fbW9kZV9jcmVhdGVfZHVtYihzdHJ1Y3QgZHJt
+X2RldmljZSAqZGV2LAo+ID4gIGludCBkcm1fbW9kZV9jcmVhdGVfZHVtYl9pb2N0bChzdHJ1Y3Qg
+ZHJtX2RldmljZSAqZGV2LAo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2b2lkICpk
+YXRhLCBzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGVfcHJpdikKPiA+ICB7Cj4gPiAtICAgICByZXR1cm4g
+ZHJtX21vZGVfY3JlYXRlX2R1bWIoZGV2LCBkYXRhLCBmaWxlX3ByaXYpOwo+ID4gKyAgICAgc3Ry
+dWN0IGRybV9tb2RlX2NyZWF0ZV9kdW1iICphcmdzID0gZGF0YTsKPiA+ICsKPiA+ICsgICAgIGFy
+Z3MtPmZsYWdzID0gMDsKPgo+IEkgd291bGQgcHJlZmVyIHJldHVybmluZyBhbiBlcnJvciBpZiBm
+bGFncyBpcyBzZXQgdG8gYSBub24temVybyB2YWx1ZSwKPiB0byBjYXRjaCB1c2Vyc3BhY2UgZXJy
+b3JzIGVhcmx5LCBidXQgSSdtIGFsc28gd29ycmllZCBpdCB3b3VsZCBicmVhawo+IGV4aXN0aW5n
+IHVzZXJzcGFjZSBieSB1bmNvdmVyaW5nIGV4aXN0aW5nIGJ1Z3MuIFN0aWxsLCBpZiB3ZSBsYXRl
+ciBhZGQKPiBmbGFncyB0aGF0IHVzZXJzcGFjZSBjYW4gc2V0LCB0aG9zZSBleGlzdGluZyBidWdz
+IHdpbGwgYmUgdHJpZ2dlcmVkLCBzbwo+IHdlJ2xsIGhhdmUgdG8gZGVhbCB3aXRoIHRoZW0gYW55
+d2F5LCBhbmQgd2UgY291bGQgYWxyZWFkeSBnaXZlIGl0IGEgdHJ5LgoKSSB3b3VsZCBsaWtlIHRo
+YXQgdG9vLCBidXQgdGhlIGNvbW1lbnQganVzdCBhYm92ZSB0aGlzIGNvZGUgdGVsbHMgbWUKdGhh
+dCdzIGxpa2VseSB0byBicmVhayB0aGluZ3M6CgogICAgICAgIC8qCiAgICAgICAgICogaGFuZGxl
+LCBwaXRjaCBhbmQgc2l6ZSBhcmUgb3V0cHV0IHBhcmFtZXRlcnMuIFplcm8gdGhlbSBvdXQgdG8K
+ICAgICAgICAgKiBwcmV2ZW50IGRyaXZlcnMgZnJvbSBhY2NpZGVudGFsbHkgdXNpbmcgdW5pbml0
+aWFsaXplZCBkYXRhLiBTaW5jZQogICAgICAgICAqIG5vdCBhbGwgZXhpc3RpbmcgdXNlcnNwYWNl
+IGlzIGNsZWFyaW5nIHRoZXNlIGZpZWxkcyBwcm9wZXJseSB3ZQogICAgICAgICAqIGNhbm5vdCBy
+ZWplY3QgSU9DVEwgd2l0aCBnYXJiYWdlIGluIHRoZW0uCiAgICAgICAgICovCgpNYXliZSB1c2Vy
+c3BhY2UgZG9lcyBjb3JyZWN0bHkgemVybyBvdXQgaW5wdXQgcGFyYW1zLgoKUm9iCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
