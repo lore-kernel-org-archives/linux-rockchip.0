@@ -1,59 +1,48 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [DO NOT MERGE] [PATCH 9/9] rockchip: rk3399: Enable fastboot
-Date: Tue, 22 Oct 2019 23:24:58 +0530
-Message-ID: <20191022175458.22604-10-jagan@amarulasolutions.com>
-References: <20191022175458.22604-1-jagan@amarulasolutions.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 4/6] drm/cma-helper: Support DRM_MODE_DUMB_KERNEL_MAP flag
+Date: Tue, 22 Oct 2019 14:52:29 -0500
+Message-ID: <CAL_JsqJwJgNHy4wr0as0n-R3ist_yKp3ytyBw4bPXjtSOSMOXQ@mail.gmail.com>
+References: <20191021214550.1461-1-robh@kernel.org>
+ <20191021214550.1461-5-robh@kernel.org>
+ <20191022113001.GG4756@pendragon.ideasonboard.com>
+ <CAMuHMdXCq9urRDCSmLueVpsv9-FxJ6pxQf-9Ua=vT-TrRs++fQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191022175458.22604-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAMuHMdXCq9urRDCSmLueVpsv9-FxJ6pxQf-9Ua=vT-TrRs++fQ@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, Liviu Dudau <liviu.dudau@arm.com>, DRI Development <dri-devel@lists.freedesktop.org>, Philippe Cornu <philippe.cornu@st.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, linux-stm32@st-md-mailman.stormreply.com, Linux-Renesas <linux-renesas-soc@vger.kernel.org>, Kevin Hilman <khilman@baylibre.com>, Chen-Yu Tsai <wens@csie.org>, Xinliang Liu <z.liuxinliang@hisilicon.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Xinwei Kong <kong.kongxinwei@hisilicon.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, "James (Qian) Wang" <james.qian.wang@arm.com>, Alexandre Torgue <alexandre.torgue@st.com>, Chen Feng <puck.chen@hisilicon.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Vincent Abriou <vincent.abriou@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable fastboot on NanoPC-T4 and ROC-PC based rk3399 boards.
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- configs/nanopc-t4-rk3399_defconfig | 3 +++
- configs/roc-rk3399-pc_defconfig    | 3 +++
- 2 files changed, 6 insertions(+)
-
-diff --git a/configs/nanopc-t4-rk3399_defconfig b/configs/nanopc-t4-rk3399_defconfig
-index 1d4c8f8a02..608f7fad30 100644
---- a/configs/nanopc-t4-rk3399_defconfig
-+++ b/configs/nanopc-t4-rk3399_defconfig
-@@ -53,5 +53,8 @@ CONFIG_USB_ETHER_ASIX88179=y
- CONFIG_USB_ETHER_MCS7830=y
- CONFIG_USB_ETHER_RTL8152=y
- CONFIG_USB_ETHER_SMSC95XX=y
-+CONFIG_USB_GADGET=y
-+CONFIG_USB_DWC3=y
-+CONFIG_USB_DWC3_GADGET=y
- CONFIG_SPL_TINY_MEMSET=y
- CONFIG_ERRNO_STR=y
-diff --git a/configs/roc-rk3399-pc_defconfig b/configs/roc-rk3399-pc_defconfig
-index 28b18333d7..571df0ff14 100644
---- a/configs/roc-rk3399-pc_defconfig
-+++ b/configs/roc-rk3399-pc_defconfig
-@@ -54,5 +54,8 @@ CONFIG_USB_ETHER_ASIX88179=y
- CONFIG_USB_ETHER_MCS7830=y
- CONFIG_USB_ETHER_RTL8152=y
- CONFIG_USB_ETHER_SMSC95XX=y
-+CONFIG_USB_GADGET=y
-+CONFIG_USB_DWC3=y
-+CONFIG_USB_DWC3_GADGET=y
- CONFIG_SPL_TINY_MEMSET=y
- CONFIG_ERRNO_STR=y
--- 
-2.18.0.321.gffc6fa0e3
+T24gVHVlLCBPY3QgMjIsIDIwMTkgYXQgNjo0MCBBTSBHZWVydCBVeXR0ZXJob2V2ZW4gPGdlZXJ0
+QGxpbnV4LW02OGsub3JnPiB3cm90ZToKPgo+IEhpIExhdXJlbnQsCj4KPiBPbiBUdWUsIE9jdCAy
+MiwgMjAxOSBhdCAxOjMwIFBNIExhdXJlbnQgUGluY2hhcnQKPiA8bGF1cmVudC5waW5jaGFydEBp
+ZGVhc29uYm9hcmQuY29tPiB3cm90ZToKPiA+IE9uIE1vbiwgT2N0IDIxLCAyMDE5IGF0IDA0OjQ1
+OjQ4UE0gLTA1MDAsIFJvYiBIZXJyaW5nIHdyb3RlOgo+Cj4gPiA+IC0tLSBhL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiA+ID4gKysrIGIvZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+ID4gPiBAQCAtNDE5LDYgKzQxOSw3IEBA
+IGludCByb2NrY2hpcF9nZW1fZHVtYl9jcmVhdGUoc3RydWN0IGRybV9maWxlICpmaWxlX3ByaXYs
+Cj4gPiA+ICAgICAgICAqIGFsaWduIHRvIDY0IGJ5dGVzIHNpbmNlIE1hbGkgcmVxdWlyZXMgaXQu
+Cj4gPiA+ICAgICAgICAqLwo+ID4gPiAgICAgICBhcmdzLT5waXRjaCA9IEFMSUdOKG1pbl9waXRj
+aCwgNjQpOwo+ID4gPiArICAgICBhcmdzLT5mbGFncyA9IERSTV9NT0RFX0RVTUJfS0VSTkVMX01B
+UDsKPiA+ID4gICAgICAgYXJncy0+c2l6ZSA9IGFyZ3MtPnBpdGNoICogYXJncy0+aGVpZ2h0Owo+
+ID4KPiA+IE15IE9DRCBnZXRzIHRyaWdnZXJlZCBieSBmbGFncyBhcHBlYXJpbmcgaW4gdGhlIG1p
+ZGRsZSBoZXJlIHdoaWxlIGl0IGlzCj4gPiBhdCB0aGUgZW5kIGluIG90aGVyIGRyaXZlcnMgOi0p
+Cj4KPiAuLi4gd2hpbGUgImZsYWdzIiBhcHBlYXJzIGJlZm9yZSAicGl0Y2giIGFuZCAic2l6ZSIg
+aW4gdGhlIGFjdHVhbCBzdHJ1Y3QKPiBkZWZpbml0aW9uLi4uIEFhYXJnaGwgOy0pCgpUaGVyZSB3
+YXMgc29tZSByZWFzb25pbmcgaGVyZSBhcyBteSBDTUEgaGVscGVyIGNvbnZlcnNpb24gcGF0Y2gg
+aXMKZ29pbmcgdG8gaW5zZXJ0IGNvZGUgYmV0d2VlbiBmbGFncyBhbmQgc2l6ZS4KCkJ1dCB0byBr
+ZWVwIGV2ZXJ5b25lJ3MgT0NEIGluIGNoZWNrLCBJIGNhbiBzZXQgZmxhZ3MgZmlyc3QuCgpSb2IK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
