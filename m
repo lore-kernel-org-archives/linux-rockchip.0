@@ -1,722 +1,201 @@
-From: djw@t-chip.com.cn
-Subject: Re: [PATCH 1/6] arm64: dts: rockchip: Fix rk3399-roc-pc pwm2 pin
-Date: Tue, 22 Oct 2019 14:19:21 +0800
-Message-ID: <87mudtuwt2.fsf@archiso.i-did-not-set--mail-host-address--so-tickle-me>
-References: <20190919052822.10403-1-jagan@amarulasolutions.com>
- <109d708e-d182-fafa-44ad-0e6e0f813e0d@fivetechno.de>
- <CAMty3ZBu2WRJV9X6_ZAXBfpBs42p04Ph7amFpfO64iOQM-Sw_w@mail.gmail.com>
- <3560168.eQioKvBMyi@phil>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Subject: Re: [PATCH 4/6] drm/cma-helper: Support DRM_MODE_DUMB_KERNEL_MAP flag
+Date: Tue, 22 Oct 2019 09:50:09 +0200
+Message-ID: <906c3ecc-89ed-43a9-f011-68b012bba81d@baylibre.com>
+References: <20191021214550.1461-1-robh@kernel.org>
+ <20191021214550.1461-5-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <3560168.eQioKvBMyi@phil> (Heiko Stuebner's message of "Fri, 18
- Oct 2019 01:33:23 +0200")
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>, Markus Reichl <m.reichl@fivetechno.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Jagan Teki <jagan@amarulasolutions.com>, Da Xue <da@lessconfused.com>, linux-amarula <linux-amarula@amarulasolutions.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Akash Gajjar <akash@openedev.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20191021214550.1461-5-robh@kernel.org>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Rob Herring <robh@kernel.org>, dri-devel@lists.freedesktop.org
+Cc: David Airlie <airlied@linux.ie>, Liviu Dudau <liviu.dudau@arm.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, linux-amlogic@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, Yannick Fertre <yannick.fertre@st.com>, Kevin Hilman <khilman@baylibre.com>, Xinwei Kong <kong.kongxinwei@hisilicon.com>, Xinliang Liu <z.liuxinliang@hisilicon.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, "James (Qian) Wang" <james.qian.wang@arm.com>, Alexandre Torgue <alexandre.torgue@st.com>, Chen Feng <puck.chen@hisilicon.com>, linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, Philippe Cornu <philippe.cornu@st.com>, Vincent Abriou <vincent.abriou@st.com>Ma
 List-Id: linux-rockchip.vger.kernel.org
 
-Sorry for the late reply, been stung by the mismatch use of ATF and U-Boot. If
-you're using U-Boot version before v2019.10, make sure to use the ATF version
-before this commit:
-
-    commit 0aad563c74807195cc7fe2208d17e2d889157f1e (HEAD, tag: blacksheep, refs/bisect/bad)
-    Author: Kever Yang <kever.yang@rock-chips.com>
-    Date:   Thu Sep 19 10:37:36 2019 +0800
-
-        rockchip: Update BL31_BASE to 0x40000
-
-or use the master branch in git://git.denx.de/u-boot-rockchip.git .
-
-This is very important, or you'll be stuck at:
-
-    U-Boot TPL 2019.10-djw (Oct 22 2019 - 03:08:48)
-    Trying to boot from BOOTROM
-    Returning to boot ROM...
-
-    U-Boot SPL 2019.10-djw (Oct 22 2019 - 03:08:48 +0000)
-    Trying to boot from MMC1
-
-I have tried the following combination:
-
- - U-Boot: v2019.10
- - ATF: 382ddb3dd46a rockchip: Fix typo for TF content text
- - Kernel: 5.4.0-rc3-next-20191017
-
-*Without* the pwm patch, all boot fine. Here's the full log:
-
-#+begin_src text
-U-Boot TPL 2019.10-djw (Oct 22 2019 - 03:51:17)
-Trying to boot from BOOTROM
-Returning to boot ROM...
-
-U-Boot SPL 2019.10-djw (Oct 22 2019 - 03:51:17 +0000)
-Trying to boot from MMC1
-
-
-U-Boot 2019.10-djw (Oct 22 2019 - 03:51:20 +0000)
-
-Model: Firefly ROC-RK3399-PC Board
-DRAM:  3.9 GiB
-MMC:   dwmmc@fe320000: 1, sdhci@fe330000: 0
-Loading Environment from EXT4... Card did not respond to voltage select!
-In:    serial@ff1a0000
-Out:   serial@ff1a0000
-Err:   serial@ff1a0000
-Model: Firefly ROC-RK3399-PC Board
-rockchip_dnl_key_pressed: adc_channel_single_shot fail!
-Net:
-Error: ethernet@fe300000 address not set.
-eth-1: ethernet@fe300000
-Hit any key to stop autoboot:  0
-Card did not respond to voltage select!
-switch to partitions #0, OK
-mmc1 is current device
-Scanning mmc 1:1...
-Found U-Boot script /boot/boot.scr
-2995 bytes read in 5 ms (585 KiB/s)
-## Executing script at 00500000
-Boot script loaded from mmc 1
-186 bytes read in 4 ms (44.9 KiB/s)
-6748991 bytes read in 290 ms (22.2 MiB/s)
-26163712 bytes read in 1110 ms (22.5 MiB/s)
-53831 bytes read in 10 ms (5.1 MiB/s)
-2698 bytes read in 8 ms (329.1 KiB/s)
-Applying kernel provided DT fixup script (rockchip-fixup.scr)
-## Executing script at 39000000
-## Loading init Ramdisk from Legacy Image at 04000000 ...
-   Image Name:   uInitrd
-   Image Type:   AArch64 Linux RAMDisk Image (gzip compressed)
-   Data Size:    6748927 Bytes = 6.4 MiB
-   Load Address: 00000000
-   Entry Point:  00000000
-   Verifying Checksum ... OK
-## Flattened Device Tree blob at 01f00000
-   Booting using the fdt blob at 0x1f00000
-   Loading Ramdisk to f58b0000, end f5f1faff ... OK
-   Loading Device Tree to 00000000f583a000, end 00000000f58affff ... OK
-
-Starting kernel ...
-
-[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
-[    0.000000] Linux version 5.4.0-rc3-next-20191017-05460-g3ef845da3c3b-dirty (dujw@tchip14) (gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.9)) #8 SMP PREEMPT Tue Oct 22 12:08:35 CST 2019
-[    0.000000] Machine model: Firefly ROC-RK3399-PC Board
-[    0.000000] earlycon: uart8250 at MMIO32 0x00000000ff1a0000 (options '')
-[    0.000000] printk: bootconsole [uart8250] enabled
-[    0.000000] efi: Getting EFI parameters from FDT:
-[    0.000000] efi: UEFI not found.
-[    0.000000] cma: Reserved 32 MiB at 0x000000003e000000
-[    0.000000] NUMA: No NUMA configuration found
-[    0.000000] NUMA: Faking a node at [mem 0x0000000000200000-0x00000000f7ffffff]
-[    0.000000] NUMA: NODE_DATA [mem 0xf77ef100-0xf77f0fff]
-[    0.000000] Zone ranges:
-[    0.000000]   DMA      [mem 0x0000000000200000-0x000000003fffffff]
-[    0.000000]   DMA32    [mem 0x0000000040000000-0x00000000f7ffffff]
-[    0.000000]   Normal   empty
-[    0.000000] Movable zone start for each node
-[    0.000000] Early memory node ranges
-[    0.000000]   node   0: [mem 0x0000000000200000-0x00000000f7ffffff]
-[    0.000000] Initmem setup node 0 [mem 0x0000000000200000-0x00000000f7ffffff]
-[    0.000000] psci: probing for conduit method from DT.
-[    0.000000] psci: PSCIv1.1 detected in firmware.
-[    0.000000] psci: Using standard PSCI v0.2 function IDs
-[    0.000000] psci: MIGRATE_INFO_TYPE not supported.
-[    0.000000] psci: SMC Calling Convention v1.1
-[    0.000000] percpu: Embedded 22 pages/cpu s52952 r8192 d28968 u90112
-[    0.000000] Detected VIPT I-cache on CPU0
-[    0.000000] CPU features: detected: ARM erratum 845719
-[    0.000000] CPU features: detected: GIC system register CPU interface
-[    0.000000] Speculative Store Bypass Disable mitigation not required
-[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 999432
-[    0.000000] Policy zone: DMA32
-[    0.000000] Kernel command line: root=UUID=78f156fe-c41f-4fdc-93f1-5d30f67659c8 rootwait rootfstype=ext4 console=ttyS2,1500000 earlycon=uart8250,mmio32,0xff1a0000 swiotlb=1 console=tty1 panic=10 consoleblank=0 loglevel=7 ubootpart=e636e926-01 usb-storage.quirks=0x2537:0x1066:u,0x2537:0x1068:u   cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory swapaccount=1
-[    0.000000] Dentry cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
-[    0.000000] Inode-cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
-[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
-[    0.000000] software IO TLB: mapped [mem 0x3dfc0000-0x3e000000] (0MB)
-[    0.000000] Memory: 3915000K/4061184K available (12092K kernel code, 1870K rwdata, 6464K rodata, 5056K init, 451K bss, 113416K reserved, 32768K cma-reserved)
-[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=6, Nodes=1
-[    0.000000] rcu: Preemptible hierarchical RCU implementation.
-[    0.000000] rcu:     RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=6.
-[    0.000000]  Tasks RCU enabled.
-[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
-[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=6
-[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
-[    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
-[    0.000000] GICv3: 256 SPIs implemented
-[    0.000000] GICv3: 0 Extended SPIs implemented
-[    0.000000] GICv3: Distributor has no Range Selector support
-[    0.000000] GICv3: 16 PPIs implemented
-[    0.000000] GICv3: no VLPI support, no direct LPI support
-[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000fef00000
-[    0.000000] ITS [mem 0xfee20000-0xfee3ffff]
-[    0.000000] ITS@0x00000000fee20000: allocated 65536 Devices @f6880000 (flat, esz 8, psz 64K, shr 0)
-[    0.000000] ITS: using cache flushing for cmd queue
-[    0.000000] GICv3: using LPI property table @0x00000000f6840000
-[    0.000000] GIC: using cache flushing for LPI property table
-[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x00000000f6850000
-[    0.000000] GICv3: GIC: PPI partition interrupt-partition-0[0] { /cpus/cpu@0[0] /cpus/cpu@1[1] /cpus/cpu@2[2] /cpus/cpu@3[3] }
-[    0.000000] GICv3: GIC: PPI partition interrupt-partition-1[1] { /cpus/cpu@100[4] /cpus/cpu@101[5] }
-[    0.000000] random: get_random_bytes called from start_kernel+0x2bc/0x458 with crng_init=0
-[    0.000000] arch_timer: cp15 timer(s) running at 24.00MHz (phys).
-[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
-[    0.000007] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
-[    0.003549] Console: colour dummy device 80x25
-[    0.003991] printk: console [tty1] enabled
-[    0.004387] printk: bootconsole [uart8250] disabled
-[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
-[    0.000000] Linux version 5.4.0-rc3-next-20191017-05460-g3ef845da3c3b-dirty (dujw@tchip14) (gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.9)) #8 SMP PREEMPT Tue Oct 22 12:08:35 CST 2019
-[    0.000000] Machine model: Firefly ROC-RK3399-PC Board
-[    0.000000] earlycon: uart8250 at MMIO32 0x00000000ff1a0000 (options '')
-[    0.000000] printk: bootconsole [uart8250] enabled
-[    0.000000] efi: Getting EFI parameters from FDT:
-[    0.000000] efi: UEFI not found.
-[    0.000000] cma: Reserved 32 MiB at 0x000000003e000000
-[    0.000000] NUMA: No NUMA configuration found
-[    0.000000] NUMA: Faking a node at [mem 0x0000000000200000-0x00000000f7ffffff]
-[    0.000000] NUMA: NODE_DATA [mem 0xf77ef100-0xf77f0fff]
-[    0.000000] Zone ranges:
-[    0.000000]   DMA      [mem 0x0000000000200000-0x000000003fffffff]
-[    0.000000]   DMA32    [mem 0x0000000040000000-0x00000000f7ffffff]
-[    0.000000]   Normal   empty
-[    0.000000] Movable zone start for each node
-[    0.000000] Early memory node ranges
-[    0.000000]   node   0: [mem 0x0000000000200000-0x00000000f7ffffff]
-[    0.000000] Initmem setup node 0 [mem 0x0000000000200000-0x00000000f7ffffff]
-[    0.000000] psci: probing for conduit method from DT.
-[    0.000000] psci: PSCIv1.1 detected in firmware.
-[    0.000000] psci: Using standard PSCI v0.2 function IDs
-[    0.000000] psci: MIGRATE_INFO_TYPE not supported.
-[    0.000000] psci: SMC Calling Convention v1.1
-[    0.000000] percpu: Embedded 22 pages/cpu s52952 r8192 d28968 u90112
-[    0.000000] Detected VIPT I-cache on CPU0
-[    0.000000] CPU features: detected: ARM erratum 845719
-[    0.000000] CPU features: detected: GIC system register CPU interface
-[    0.000000] Speculative Store Bypass Disable mitigation not required
-[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 999432
-[    0.000000] Policy zone: DMA32
-[    0.000000] Kernel command line: root=UUID=78f156fe-c41f-4fdc-93f1-5d30f67659c8 rootwait rootfstype=ext4 console=ttyS2,1500000 earlycon=uart8250,mmio32,0xff1a0000 swiotlb=1 console=tty1 panic=10 consoleblank=0 loglevel=7 ubootpart=e636e926-01 usb-storage.quirks=0x2537:0x1066:u,0x2537:0x1068:u   cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory swapaccount=1
-[    0.000000] Dentry cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
-[    0.000000] Inode-cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
-[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
-[    0.000000] software IO TLB: mapped [mem 0x3dfc0000-0x3e000000] (0MB)
-[    0.000000] Memory: 3915000K/4061184K available (12092K kernel code, 1870K rwdata, 6464K rodata, 5056K init, 451K bss, 113416K reserved, 32768K cma-reserved)
-[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=6, Nodes=1
-[    0.000000] rcu: Preemptible hierarchical RCU implementation.
-[    0.000000] rcu:     RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=6.
-[    0.000000]  Tasks RCU enabled.
-[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
-[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=6
-[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
-[    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
-[    0.000000] GICv3: 256 SPIs implemented
-[    0.000000] GICv3: 0 Extended SPIs implemented
-[    0.000000] GICv3: Distributor has no Range Selector support
-[    0.000000] GICv3: 16 PPIs implemented
-[    0.000000] GICv3: no VLPI support, no direct LPI support
-[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000fef00000
-[    0.000000] ITS [mem 0xfee20000-0xfee3ffff]
-[    0.000000] ITS@0x00000000fee20000: allocated 65536 Devices @f6880000 (flat, esz 8, psz 64K, shr 0)
-[    0.000000] ITS: using cache flushing for cmd queue
-[    0.000000] GICv3: using LPI property table @0x00000000f6840000
-[    0.000000] GIC: using cache flushing for LPI property table
-[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x00000000f6850000
-[    0.000000] GICv3: GIC: PPI partition interrupt-partition-0[0] { /cpus/cpu@0[0] /cpus/cpu@1[1] /cpus/cpu@2[2] /cpus/cpu@3[3] }
-[    0.000000] GICv3: GIC: PPI partition interrupt-partition-1[1] { /cpus/cpu@100[4] /cpus/cpu@101[5] }
-[    0.000000] random: get_random_bytes called from start_kernel+0x2bc/0x458 with crng_init=0
-[    0.000000] arch_timer: cp15 timer(s) running at 24.00MHz (phys).
-[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
-[    0.000007] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
-[    0.003549] Console: colour dummy device 80x25
-[    0.003991] printk: console [tty1] enabled
-[    0.004387] printk: bootconsole [uart8250] disabled
-[    0.004976] Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=96000)
-[    0.005011] pid_max: default: 32768 minimum: 301
-[    0.005161] LSM: Security Framework initializing
-[    0.005273] Mount-cache hash table entries: 8192 (order: 4, 65536 bytes, linear)
-[    0.005319] Mountpoint-cache hash table entries: 8192 (order: 4, 65536 bytes, linear)
-[    0.027598] ASID allocator initialised with 32768 entries
-[    0.035594] rcu: Hierarchical SRCU implementation.
-[    0.043750] Platform MSI: interrupt-controller@fee20000 domain created
-[    0.044174] PCI/MSI: /interrupt-controller@fee00000/interrupt-controller@fee20000 domain created
-[    0.049783] EFI services will not be available.
-[    0.055773] smp: Bringing up secondary CPUs ...
-[    0.088001] Detected VIPT I-cache on CPU1
-[    0.088041] GICv3: CPU1: found redistributor 1 region 0:0x00000000fef20000
-[    0.088059] GICv3: CPU1: using allocated LPI pending table @0x00000000f6860000
-[    0.088110] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
-[    0.120075] Detected VIPT I-cache on CPU2
-[    0.120107] GICv3: CPU2: found redistributor 2 region 0:0x00000000fef40000
-[    0.120122] GICv3: CPU2: using allocated LPI pending table @0x00000000f6870000
-[    0.120154] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
-[    0.152178] Detected VIPT I-cache on CPU3
-[    0.152206] GICv3: CPU3: found redistributor 3 region 0:0x00000000fef60000
-[    0.152220] GICv3: CPU3: using allocated LPI pending table @0x00000000f6900000
-[    0.152252] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
-[    0.184290] CPU features: detected: EL2 vector hardening
-[    0.184315] Detected PIPT I-cache on CPU4
-[    0.184347] GICv3: CPU4: found redistributor 100 region 0:0x00000000fef80000
-[    0.184361] GICv3: CPU4: using allocated LPI pending table @0x00000000f6910000
-[    0.184397] CPU4: Booted secondary processor 0x0000000100 [0x410fd082]
-[    0.216396] Detected PIPT I-cache on CPU5
-[    0.216422] GICv3: CPU5: found redistributor 101 region 0:0x00000000fefa0000
-[    0.216435] GICv3: CPU5: using allocated LPI pending table @0x00000000f6920000
-[    0.216464] CPU5: Booted secondary processor 0x0000000101 [0x410fd082]
-[    0.216579] smp: Brought up 1 node, 6 CPUs
-[    0.216911] SMP: Total of 6 processors activated.
-[    0.216932] CPU features: detected: 32-bit EL0 Support
-[    0.216953] CPU features: detected: CRC32 instructions
-[    0.231355] CPU: All CPU(s) started at EL2
-[    0.231417] alternatives: patching kernel code
-[    0.234632] devtmpfs: initialized
-[    0.251858] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
-[    0.251915] futex hash table entries: 2048 (order: 5, 131072 bytes, linear)
-[    0.253910] pinctrl core: initialized pinctrl subsystem
-[    0.256273] DMI not present or invalid.
-[    0.256848] NET: Registered protocol family 16
-[    0.259401] DMA: preallocated 256 KiB pool for atomic allocations
-[    0.259440] audit: initializing netlink subsys (disabled)
-[    0.259661] audit: type=2000 audit(0.256:1): state=initialized audit_enabled=0 res=1
-[    0.261941] cpuidle: using governor menu
-[    0.262782] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
-[    0.265709] Serial: AMBA PL011 UART driver
-[    0.316763] HugeTLB registered 1.00 GiB page size, pre-allocated 0 pages
-[    0.316790] HugeTLB registered 32.0 MiB page size, pre-allocated 0 pages
-[    0.316807] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
-[    0.316823] HugeTLB registered 64.0 KiB page size, pre-allocated 0 pages
-[    0.320105] cryptd: max_cpu_qlen set to 1000
-[    0.325843] ACPI: Interpreter disabled.
-[    0.327922] dc_12v: supplied by vcc_vbus_typec0
-[    0.329430] vcc_sys: supplied by dc_12v
-[    0.330330] iommu: Default domain type: Translated
-[    0.332313] vgaarb: loaded
-[    0.332696] SCSI subsystem initialized
-[    0.333164] usbcore: registered new interface driver usbfs
-[    0.333222] usbcore: registered new interface driver hub
-[    0.333309] usbcore: registered new device driver usb
-[    0.334563] pps_core: LinuxPPS API ver. 1 registered
-[    0.334578] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
-[    0.334606] PTP clock support registered
-[    0.334824] EDAC MC: Ver: 3.0.0
-[    0.336545] FPGA manager framework
-[    0.336636] Advanced Linux Sound Architecture Driver Initialized.
-[    0.337584] clocksource: Switched to clocksource arch_sys_counter
-[    0.337772] VFS: Disk quotas dquot_6.6.0
-[    0.337842] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
-[    0.338047] pnp: PnP ACPI: disabled
-[    0.345726] thermal_sys: Registered thermal governor 'step_wise'
-[    0.345730] thermal_sys: Registered thermal governor 'power_allocator'
-[    0.346251] NET: Registered protocol family 2
-[    0.346695] tcp_listen_portaddr_hash hash table entries: 2048 (order: 3, 32768 bytes, linear)
-[    0.346790] TCP established hash table entries: 32768 (order: 6, 262144 bytes, linear)
-[    0.347148] TCP bind hash table entries: 32768 (order: 7, 524288 bytes, linear)
-[    0.347824] TCP: Hash tables configured (established 32768 bind 32768)
-[    0.347954] UDP hash table entries: 2048 (order: 4, 65536 bytes, linear)
-[    0.348100] UDP-Lite hash table entries: 2048 (order: 4, 65536 bytes, linear)
-[    0.348491] NET: Registered protocol family 1
-[    0.352990] RPC: Registered named UNIX socket transport module.
-[    0.353008] RPC: Registered udp transport module.
-[    0.353021] RPC: Registered tcp transport module.
-[    0.353033] RPC: Registered tcp NFSv4.1 backchannel transport module.
-[    0.353053] PCI: CLS 0 bytes, default 64
-[    0.353218] Unpacking initramfs...
-[    0.791121] Freeing initrd memory: 6588K
-[    0.792233] hw perfevents: enabled with armv8_cortex_a53 PMU driver, 7 counters available
-[    0.792578] hw perfevents: enabled with armv8_cortex_a72 PMU driver, 7 counters available
-[    0.792994] kvm [1]: IPA Size Limit: 40bits
-[    0.793782] kvm [1]: vgic-v2@fff20000
-[    0.793818] kvm [1]: GIC system register CPU interface enabled
-[    0.794016] kvm [1]: vgic interrupt IRQ10
-[    0.794241] kvm [1]: Hyp mode initialized successfully
-[    0.884124] Initialise system trusted keyrings
-[    0.884329] workingset: timestamp_bits=44 max_order=20 bucket_order=0
-[    0.891824] squashfs: version 4.0 (2009/01/31) Phillip Lougher
-[    0.892624] NFS: Registering the id_resolver key type
-[    0.892658] Key type id_resolver registered
-[    0.892671] Key type id_legacy registered
-[    0.892692] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
-[    0.892878] 9p: Installing v9fs 9p2000 file system support
-[    0.920345] Key type asymmetric registered
-[    0.920367] Asymmetric key parser 'x509' registered
-[    0.920423] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 245)
-[    0.920442] io scheduler mq-deadline registered
-[    0.920456] io scheduler kyber registered
-[    0.926994] vcc5v0_host: supplied by vcc_sys
-[    0.928594] vcc_vbus_typec1: supplied by vcc_sys
-[    0.943953] EINJ: ACPI disabled.
-[    0.953391] dma-pl330 ff6d0000.dma-controller: Loaded driver for PL330 DMAC-241330
-[    0.953419] dma-pl330 ff6d0000.dma-controller:       DBUFF-32x8bytes Num_Chans-6 Num_Peri-12 Num_Events-12
-[    0.954648] dma-pl330 ff6e0000.dma-controller: Loaded driver for PL330 DMAC-241330
-[    0.954674] dma-pl330 ff6e0000.dma-controller:       DBUFF-128x8bytes Num_Chans-8 Num_Peri-20 Num_Events-16
-[    0.961527] pwm-regulator: supplied by regulator-dummy
-[    0.961783] vcc3v3_sys: supplied by vcc_sys
-[    0.967643] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
-[    0.969899] ff180000.serial: ttyS0 at MMIO 0xff180000 (irq = 35, base_baud = 1500000) is a 16550A
-[    0.970665] ff1a0000.serial: ttyS2 at MMIO 0xff1a0000 (irq = 36, base_baud = 1500000) is a 16550A
-[    1.070498] printk: console [ttyS2] enabled
-[    1.072690] SuperH (H)SCI(F) driver initialized
-[    1.074098] msm_serial: driver initialized
-[    1.076752] cacheinfo: Unable to detect cache hierarchy for CPU 0
-[    1.085950] loop: module loaded
-[    1.093551] libphy: Fixed MDIO Bus: probed
-[    1.094237] tun: Universal TUN/TAP device driver, 1.6
-[    1.095944] thunder_xcv, ver 1.0
-[    1.096279] thunder_bgx, ver 1.0
-[    1.096609] nicpf, ver 1.0
-[    1.097937] hclge is initializing
-[    1.098241] hns3: Hisilicon Ethernet Network Driver for Hip08 Family - version
-[    1.098884] hns3: Copyright (c) 2017 Huawei Corporation.
-[    1.099409] e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
-[    1.099928] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
-[    1.100494] igb: Intel(R) Gigabit Ethernet Network Driver - version 5.6.0-k
-[    1.101112] igb: Copyright (c) 2007-2014 Intel Corporation.
-[    1.101664] igbvf: Intel(R) Gigabit Virtual Function Network Driver - version 2.4.0-k
-[    1.102360] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
-[    1.103463] sky2: driver version 1.30
-[    1.104946] VFIO - User Level meta-driver version: 0.3
-[    1.112306] OF: graph: no port node found in /syscon@ff770000/usb2-phy@e450/otg-port
-[    1.122046] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
-[    1.122637] ehci-pci: EHCI PCI platform driver
-[    1.123070] ehci-platform: EHCI generic platform driver
-[    1.125777] ehci-platform fe380000.usb: EHCI Host Controller
-[    1.126303] ehci-platform fe380000.usb: new USB bus registered, assigned bus number 1
-[    1.127102] ehci-platform fe380000.usb: irq 27, io mem 0xfe380000
-[    1.141619] ehci-platform fe380000.usb: USB 2.0 started, EHCI 1.00
-[    1.142803] hub 1-0:1.0: USB hub found
-[    1.143180] hub 1-0:1.0: 1 port detected
-[    1.146012] ehci-platform fe3c0000.usb: EHCI Host Controller
-[    1.146535] ehci-platform fe3c0000.usb: new USB bus registered, assigned bus number 2
-[    1.147342] ehci-platform fe3c0000.usb: irq 29, io mem 0xfe3c0000
-[    1.161610] ehci-platform fe3c0000.usb: USB 2.0 started, EHCI 1.00
-[    1.162711] hub 2-0:1.0: USB hub found
-[    1.163078] hub 2-0:1.0: 1 port detected
-[    1.163962] ehci-orion: EHCI orion driver
-[    1.164545] ehci-exynos: EHCI EXYNOS driver
-[    1.165087] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
-[    1.165682] ohci-pci: OHCI PCI platform driver
-[    1.166131] ohci-platform: OHCI generic platform driver
-[    1.166788] ohci-platform fe3a0000.usb: Generic Platform OHCI controller
-[    1.167402] ohci-platform fe3a0000.usb: new USB bus registered, assigned bus number 3
-[    1.168187] ohci-platform fe3a0000.usb: irq 28, io mem 0xfe3a0000
-[    1.230303] hub 3-0:1.0: USB hub found
-[    1.230677] hub 3-0:1.0: 1 port detected
-[    1.231464] ohci-platform fe3e0000.usb: Generic Platform OHCI controller
-[    1.232077] ohci-platform fe3e0000.usb: new USB bus registered, assigned bus number 4
-[    1.232859] ohci-platform fe3e0000.usb: irq 30, io mem 0xfe3e0000
-[    1.294303] hub 4-0:1.0: USB hub found
-[    1.294681] hub 4-0:1.0: 1 port detected
-[    1.295532] ohci-exynos: OHCI EXYNOS driver
-[    1.296673] xhci-hcd xhci-hcd.0.auto: xHCI Host Controller
-[    1.297184] xhci-hcd xhci-hcd.0.auto: new USB bus registered, assigned bus number 5
-[    1.298024] xhci-hcd xhci-hcd.0.auto: hcc params 0x0220fe64 hci version 0x110 quirks 0x0000000002010010
-[    1.298874] xhci-hcd xhci-hcd.0.auto: irq 221, io mem 0xfe800000
-[    1.300138] hub 5-0:1.0: USB hub found
-[    1.300508] hub 5-0:1.0: 1 port detected
-[    1.301147] xhci-hcd xhci-hcd.0.auto: xHCI Host Controller
-[    1.301672] xhci-hcd xhci-hcd.0.auto: new USB bus registered, assigned bus number 6
-[    1.302368] xhci-hcd xhci-hcd.0.auto: Host supports USB 3.0 SuperSpeed
-[    1.303008] usb usb6: We don't know the algorithms for LPM for this host, disabling LPM.
-[    1.304247] hub 6-0:1.0: USB hub found
-[    1.304615] hub 6-0:1.0: 1 port detected
-[    1.305401] xhci-hcd xhci-hcd.1.auto: xHCI Host Controller
-[    1.305931] xhci-hcd xhci-hcd.1.auto: new USB bus registered, assigned bus number 7
-[    1.306740] xhci-hcd xhci-hcd.1.auto: hcc params 0x0220fe64 hci version 0x110 quirks 0x0000000002010010
-[    1.307613] xhci-hcd xhci-hcd.1.auto: irq 222, io mem 0xfe900000
-[    1.308849] hub 7-0:1.0: USB hub found
-[    1.309217] hub 7-0:1.0: 1 port detected
-[    1.309891] xhci-hcd xhci-hcd.1.auto: xHCI Host Controller
-[    1.310392] xhci-hcd xhci-hcd.1.auto: new USB bus registered, assigned bus number 8
-[    1.311082] xhci-hcd xhci-hcd.1.auto: Host supports USB 3.0 SuperSpeed
-[    1.311718] usb usb8: We don't know the algorithms for LPM for this host, disabling LPM.
-[    1.312952] hub 8-0:1.0: USB hub found
-[    1.313323] hub 8-0:1.0: 1 port detected
-[    1.314480] usbcore: registered new interface driver usb-storage
-[    1.320093] i2c /dev entries driver
-[    1.324485] rk808 0-001b: chip id: 0x0
-[    1.328883] rk808-regulator rk808-regulator: there is no dvs0 gpio
-[    1.329459] rk808-regulator rk808-regulator: there is no dvs1 gpio
-[    1.330110] DCDC_REG1: supplied by vcc_sys
-[    1.331413] DCDC_REG2: supplied by vcc_sys
-[    1.332396] DCDC_REG3: supplied by vcc_sys
-[    1.332977] DCDC_REG4: supplied by vcc_sys
-[    1.333911] LDO_REG1: supplied by vcc_sys
-[    1.335603] LDO_REG2: supplied by vcc_sys
-[    1.336986] LDO_REG3: supplied by vcc_sys
-[    1.338510] LDO_REG4: supplied by vcc_sys
-[    1.340068] LDO_REG5: supplied by vcc_sys
-[    1.341447] LDO_REG6: supplied by vcc_sys
-[    1.343009] LDO_REG7: supplied by vcc_sys
-[    1.344422] LDO_REG8: supplied by vcc_sys
-[    1.345946] SWITCH_REG1: supplied by vcc3v3_sys
-[    1.346700] SWITCH_REG2: supplied by vcc3v3_sys
-[    1.348527] fan53555-regulator 0-0040: FAN53555 Option[8] Rev[1] Detected!
-[    1.349169] fan53555-reg: supplied by vcc_sys
-[    1.350855] vcc1v8_s3: supplied by vcc_1v8
-[    1.351881] fan53555-regulator 0-0041: FAN53555 Option[8] Rev[1] Detected!
-[    1.352511] fan53555-reg: supplied by vcc_sys
-[    1.368314] sdhci: Secure Digital Host Controller Interface driver
-[    1.368862] sdhci: Copyright(c) Pierre Ossman
-[    1.369505] Synopsys Designware Multimedia Card Interface Driver
-[    1.370641] dwmmc_rockchip fe320000.dwmmc: IDMAC supports 32-bit address mode.
-[    1.371285] dwmmc_rockchip fe320000.dwmmc: Using internal DMA controller.
-[    1.371886] dwmmc_rockchip fe320000.dwmmc: Version ID is 270a
-[    1.372413] dwmmc_rockchip fe320000.dwmmc: DW MMC controller at irq 25,32 bit host data width,256 deep fifo
-[    1.373324] dwmmc_rockchip fe320000.dwmmc: Got CD GPIO
-[    1.385648] mmc_host mmc0: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
-[    1.399877] sdhci-pltfm: SDHCI platform and OF driver helper
-[    1.401041] mmc1: CQHCI version 5.10
-[    1.401266] random: fast init done
-[    1.426404] mmc1: SDHCI controller on fe330000.sdhci [fe330000.sdhci] using ADMA
-[    1.428236] ledtrig-cpu: registered to indicate activity on CPUs
-[    1.429501] usbcore: registered new interface driver usbhid
-[    1.430031] usbhid: USB HID core driver
-[    1.433350] NET: Registered protocol family 17
-[    1.433842] 9pnet: Installing 9P2000 support
-[    1.434243] Key type dns_resolver registered
-[    1.435281] registered taskstats version 1
-[    1.435649] Loading compiled-in X.509 certificates
-[    1.451542] hctosys: unable to open rtc device (rtc0)
-[    1.452769] ALSA device list:
-[    1.453036]   No soundcards found.
-[    1.455546] Freeing unused kernel memory: 5056K
-[    1.457774] Run /init as init process
-[    1.463868] mmc_host mmc0: Bus speed (slot 0) = 50000000Hz (slot req 50000000Hz, actual 50000000HZ div = 0)
-[    1.464836] mmc0: new high speed SDHC card at address aaaa
-[    1.465825] mmcblk0: mmc0:aaaa SC16G 14.8 GiB
-[    1.473051]  mmcblk0: p1
-[    1.917928] EXT4-fs (mmcblk0p1): mounted filesystem with writeback data mode. Opts: (null)
-[    2.460565] systemd[1]: System time before build time, advancing clock.
-[    2.486504] systemd[1]: systemd 237 running in system mode. (+PAM +AUDIT +SELINUX +IMA +APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD -IDN2 +IDN -PCRE2 default-hierarchy=hybrid)
-[    2.488625] systemd[1]: Detected architecture arm64.
-[    2.529981] systemd[1]: Set hostname to <roc>.
-[    2.560455] ttyS2 - failed to request DMA
-[    2.674962] systemd[1]: File /lib/systemd/system/systemd-journald.service:36 configures an IP firewall (IPAddressDeny=any), but the local system does not support BPF/cgroup based firewalling.
-[    2.676456] systemd[1]: Proceeding WITHOUT firewalling in effect! (This warning is only shown for the first loaded unit using IP firewalling.)
-[    2.748456] systemd[1]: /lib/systemd/system/rk3399-bluetooth.service:11: Support for option SysVStartPriority= has been removed and it is ignored
-[    2.794574] random: systemd: uninitialized urandom read (16 bytes read)
-[    2.795190] systemd[1]: Reached target System Time Synchronized.
-[    2.795997] random: systemd: uninitialized urandom read (16 bytes read)
-[    2.796650] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
-[    2.797433] random: systemd: uninitialized urandom read (16 bytes read)
-[    2.798109] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
-[    2.798858] systemd[1]: Reached target Local Encrypted Volumes.
-[    2.902750] EXT4-fs (mmcblk0p1): re-mounted. Opts: commit=600,errors=remount-ro
-
-Ubuntu Bionic with Armbian Linux ttyS2
-
-roc login:
-#+end_src
-
-
-Heiko Stuebner <heiko@sntech.de> writes:
-
-> Am Donnerstag, 17. Oktober 2019, 15:49:04 CEST schrieb Jagan Teki:
->> Hi Markus,
->>
->> On Thu, Oct 17, 2019 at 6:56 PM Markus Reichl <m.reichl@fivetechno.de> wrote:
->
->> >
->> > Hi Jagan,
->> >
->> > your patch fixes booting my rk3399-roc-pc with 5.4.0-rc3-next-20191017.
->> > Without your patch roc-pc hangs here:
->> > [    9.703526] pwm-regulator: supplied by regulator-dummy
->>
->> Thanks for testing this.
->>
->> Indeed the same change available in BSP
->> https://github.com/FireflyTeam/kernel/blob/stable-4.4-rk3399-linux/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi#L1184
->
-> Still there is no "active" pinctrl for the mainline pwm driver at all.
-> So while that may cause a different handling in the vendor kernel in
-> mainline you just cause the driver to not set any pinctrl setting at all.
-> Aka the pin settings stay at what they are when coming from the bootloader.
->
-> So maybe you just need to compare the state the pin is on in comparison
-> to what the new (failing?) pinctrl setting is doing.
->
-> Heiko
->
->> I'm waiting for Levin response on this issue, need to update commit
->> information accordingly.
->>
->> >
->> > Am 16.10.19 um 19:09 schrieb Jagan Teki:
->> > > Hi Levin,
->> > >
->> > > On Tue, Oct 8, 2019 at 8:42 AM <djw@t-chip.com.cn> wrote:
->> > >>
->> > >> Jagan Teki <jagan@amarulasolutions.com> writes:
->> > >>
->> > >> > Hi Heiko,
->> > >> >
->> > >> > On Mon, Sep 30, 2019 at 2:51 AM Heiko Stuebner <heiko@sntech.de> wrote:
->> > >> >>
->> > >> >> Hi Jagan,
->> > >> >>
->> > >> >> Am Donnerstag, 19. September 2019, 07:28:17 CEST schrieb Jagan Teki:
->> > >> >> > ROC-PC is not able to boot linux console if PWM2_d is
->> > >> >> > unattached to any pinctrl logic.
->> > >> >> >
->> > >> >> > To be precise the linux boot hang with last logs as,
->> > >> >> > ...
->> > >> >> > .....
->> > >> >> > [    0.003367] Console: colour dummy device 80x25
->> > >> >> > [    0.003788] printk: console [tty0] enabled
->> > >> >> > [    0.004178] printk: bootconsole [uart8250] disabled
->> > >> >> >
->> > >> >> > In ROC-PC the PWM2_d pin is connected to LOG_DVS_PWM of
->> > >> >> > VDD_LOG. So, for normal working operations this needs to
->> > >> >> > active and pull-down.
->> > >> >> >
->> > >> >> > This patch fix, by attaching pinctrl active and pull-down
->> > >> >> > the pwm2.
->> > >> >>
->> > >> >> This looks highly dubious on first glance. The pwm subsystem nor
->> > >> >> the Rockchip pwm driver do not do any pinctrl handling.
->> > >> >>
->> > >> >> So I don't really see where that "active" pinctrl state is supposed
->> > >> >> to come from.
->> > >> >>
->> > >> >> Comparing with the pwm driver in the vendor tree I see that there
->> > >> >> is such a state defined there. But that code there also looks strange
->> > >> >> as that driver never again leaves this active state after entering it.
->> > >> >>
->> > >> >> Also for example all the Gru devices run with quite a number of pwm-
->> > >> >> regulators without needing additional fiddling with the pwm itself, so
->> > >> >> I don't really see why that should be different here.
->> > >> >
->> > >> > I deed, I was supposed to think the same. but the vendor kernel dts
->> > >> > from firefly do follow the pwm2 pinctrl [1]. I wouldn't find any
->> > >> > information other than this vensor information, ie one of the reason I
->> > >> > have marked "Levin Du" who initially supported this board.
->> > >> >
->> > >> > One, think I have seen was this pinctrl active fixed the boot hang.
->> > >> > any inputs from would be very helpful.
->> > >> >
->> > >> > Levin Du, any inputs?
->> > >> >
->> > >> > [1] https://github.com/FireflyTeam/kernel/blob/stable-4.4-rk3399-linux/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi#L1184> > >> >
->> > >>
->> > >> A grep of the `pwm2` shows that there's such block in rk3399-nanopi4.dtsi:
->> > >>
->> > >>     &pwm2 {
->> > >>             pinctrl-names = "active";
->> > >>             pinctrl-0 = <&pwm2_pin_pull_down>;
->> > >>             status = "okay";
->> > >>     };
->> > >>
->> > >> But last time I checked, using the mainline U-Boot (the roc-rk3399-pc is
->> > >> in mainline now) with mainline linux v5.2-rc7, no such setting is
->> > >> necessary, and the board boots happily.
->> > >>
->> > >> I cannot find the use of "active" pinctrl state in the
->> > >> `drivers/pwm/pwm-rockchip.c`. If the pinctrl state needs to be setup as
->> > >> default, the `pinctrl-names` needs to be "default" or "init" (see
->> > >> `drivers/base/pinctrl.c`) .
->> > >>
->> > >> Jagan, what version of board do you use? I checked with
->> > >> "ROC-RK3399-PC-V1.0-A 2018-07-12".
->> > >
->> > > I have ROC-RK3399-PC-V1.A 2018.09.25 and powering with TYPE-C0 port.
->> > >
->> > > And here the boot log
->> > >
->> > > [    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
->> > > [    0.000000] Linux version 5.4.0-rc3-next-20191016
->> > > (jagan@jagan-XPS-13-9350) (gcc version 6.3.1 20170109 (Linaro GCC
->> > > 6.3-2017.02)) #1 SMP PREEMPT Wed Oct 16 21:17:23 IST 2019
->> > > [    0.000000] Machine model: Firefly ROC-RK3399-PC Board
->> > > [    0.000000] earlycon: uart8250 at MMIO32 0x00000000ff1a0000 (options '')
->> > > [    0.000000] printk: bootconsole [uart8250] enabled
->> > > [    0.000000] efi: Getting EFI parameters from FDT:
->> > > [    0.000000] efi: UEFI not found.
->> > > [    0.000000] cma: Reserved 32 MiB at 0x000000003e000000
->> > > [    0.000000] NUMA: No NUMA configuration found
->> > > [    0.000000] NUMA: Faking a node at [mem
->> > > 0x0000000000200000-0x00000000f7ffffff]
->> > > [    0.000000] NUMA: NODE_DATA [mem 0xf77ef100-0xf77f0fff]
->> > > [    0.000000] Zone ranges:
->> > > [    0.000000]   DMA      [mem 0x0000000000200000-0x000000003fffffff]
->> > > [    0.000000]   DMA32    [mem 0x0000000040000000-0x00000000f7ffffff]
->> > > [    0.000000]   Normal   empty
->> > > [    0.000000] Movable zone start for each node
->> > > [    0.000000] Early memory node ranges
->> > > [    0.000000]   node   0: [mem 0x0000000000200000-0x00000000f7ffffff]
->> > > [    0.000000] Initmem setup node 0 [mem 0x0000000000200000-0x00000000f7ffffff]
->> > > [    0.000000] psci: probing for conduit method from DT.
->> > > [    0.000000] psci: PSCIv1.1 detected in firmware.
->> > > [    0.000000] psci: Using standard PSCI v0.2 function IDs
->> > > [    0.000000] psci: MIGRATE_INFO_TYPE not supported.
->> > > [    0.000000] psci: SMC Calling Convention v1.1
->> > > [    0.000000] percpu: Embedded 22 pages/cpu s52952 r8192 d28968 u90112
->> > > [    0.000000] Detected VIPT I-cache on CPU0
->> > > [    0.000000] CPU features: detected: ARM erratum 845719
->> > > [    0.000000] CPU features: detected: GIC system register CPU interface
->> > > [    0.000000] Speculative Store Bypass Disable mitigation not required
->> > > [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 999432
->> > > [    0.000000] Policy zone: DMA32
->> > > [    0.000000] Kernel command line:
->> > > earlycon=uart8250,mmio32,0xff1a0000 root=/dev/mmcblk1p1 rootwait
->> > > [    0.000000] Dentry cache hash table entries: 524288 (order: 10,
->> > > 4194304 bytes, linear)
->> > > [    0.000000] Inode-cache hash table entries: 262144 (order: 9,
->> > > 2097152 bytes, linear)
->> > > [    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
->> > > [    0.000000] software IO TLB: mapped [mem 0x3a000000-0x3e000000] (64MB)
->> > > [    0.000000] Memory: 3856004K/4061184K available (12028K kernel
->> > > code, 1870K rwdata, 6440K rodata, 5056K init, 451K bss, 172412K
->> > > reserved, 32768K cma-reserved)
->> > > [    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=6, Nodes=1
->> > > [    0.000000] rcu: Preemptible hierarchical RCU implementation.
->> > > [    0.000000] rcu:     RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=6.
->> > > [    0.000000]  Tasks RCU enabled.
->> > > [    0.000000] rcu: RCU calculated value of scheduler-enlistment delay
->> > > is 25 jiffies.
->> > > [    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=6
->> > > [    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
->> > > [    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
->> > > [    0.000000] GICv3: 256 SPIs implemented
->> > > [    0.000000] GICv3: 0 Extended SPIs implemented
->> > > [    0.000000] GICv3: Distributor has no Range Selector support
->> > > [    0.000000] GICv3: 16 PPIs implemented
->> > > [    0.000000] GICv3: no VLPI support, no direct LPI support
->> > > [    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000fef00000
->> > > [    0.000000] ITS [mem 0xfee20000-0xfee3ffff]
->> > > [    0.000000] ITS@0x00000000fee20000: allocated 65536 Devices
->> > > @f6880000 (flat, esz 8, psz 64K, shr 0)
->> > > [    0.000000] ITS: using cache flushing for cmd queue
->> > > [    0.000000] GICv3: using LPI property table @0x00000000f6840000
->> > > [    0.000000] GIC: using cache flushing for LPI property table
->> > > [    0.000000] GICv3: CPU0: using allocated LPI pending table
->> > > @0x00000000f6850000
->> > > [    0.000000] GICv3: GIC: PPI partition interrupt-partition-0[0] {
->> > > /cpus/cpu@0[0] /cpus/cpu@1[1] /cpus/cpu@2[2] /cpus/cpu@3[3] }
->> > > [    0.000000] GICv3: GIC: PPI partition interrupt-partition-1[1] {
->> > > /cpus/cpu@100[4] /cpus/cpu@101[5] }
->> > > [    0.000000] random: get_random_bytes called from
->> > > start_kernel+0x2b8/0x454 with crng_init=0
->> > > [    0.000000] arch_timer: cp15 timer(s) running at 24.00MHz (phys).
->> > > [    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff
->> > > max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
->> > > [    0.000006] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps
->> > > every 4398046511097ns
->> > > [    0.003201] Console: colour dummy device 80x25
->> > > [    0.003624] printk: console [tty0] enabled
->> > > [    0.004020] printk: bootconsole [uart8250] disabled
->> >
->> > I had to put "console=ttyS2,1500000" in kernel command line to get further logging beyond this point.
->>
->> Noted, thanks.
->>
---
-Levin Du
+T24gMjEvMTAvMjAxOSAyMzo0NSwgUm9iIEhlcnJpbmcgd3JvdGU6Cj4gQWRkIHN1cHBvcnQgaW4g
+Q01BIGhlbHBlcnMgdG8gaGFuZGxlIGNhbGxlcnMgc3BlY2lmeWluZwo+IERSTV9NT0RFX0RVTUJf
+S0VSTkVMX01BUCBmbGFnLiBFeGlzdGluZyBiZWhhdmlvciBpcyBtYWludGFpbmVkIHdpdGggdGhp
+cwo+IGNoYW5nZS4gZHJtX2dlbV9jbWFfZHVtYl9jcmVhdGUoKSBhbHdheXMgY3JlYXRlcyBhIGtl
+cm5lbCBtYXBwaW5nIGFzCj4gYmVmb3JlLiBkcm1fZ2VtX2NtYV9kdW1iX2NyZWF0ZV9pbnRlcm5h
+bCgpIGxldHMgdGhlIGNhbGxlciBzZXQgdGhlIGZsYWdzCj4gYXMgZGVzaXJlZC4gVGhlcmVmb3Jl
+LCB1cGRhdGUgYWxsIHRoZSBleGlzdGluZyBjYWxsZXJzIG9mCj4gZHJtX2dlbV9jbWFfZHVtYl9j
+cmVhdGVfaW50ZXJuYWwoKSB0byBhbHNvIHNldCB0aGUKPiBEUk1fTU9ERV9EVU1CX0tFUk5FTF9N
+QVAgZmxhZy4KPiAKPiBDYzogTWFhcnRlbiBMYW5raG9yc3QgPG1hYXJ0ZW4ubGFua2hvcnN0QGxp
+bnV4LmludGVsLmNvbT4KPiBDYzogTWF4aW1lIFJpcGFyZCA8bXJpcGFyZEBrZXJuZWwub3JnPgo+
+IENjOiBTZWFuIFBhdWwgPHNlYW5AcG9vcmx5LnJ1bj4KPiBDYzogRGF2aWQgQWlybGllIDxhaXJs
+aWVkQGxpbnV4LmllPgo+IENjOiBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3bGwuY2g+Cj4gQ2M6
+ICJKYW1lcyAoUWlhbikgV2FuZyIgPGphbWVzLnFpYW4ud2FuZ0Bhcm0uY29tPgo+IENjOiBMaXZp
+dSBEdWRhdSA8bGl2aXUuZHVkYXVAYXJtLmNvbT4KPiBDYzogQnJpYW4gU3RhcmtleSA8YnJpYW4u
+c3RhcmtleUBhcm0uY29tPgo+IENjOiBOZWlsIEFybXN0cm9uZyA8bmFybXN0cm9uZ0BiYXlsaWJy
+ZS5jb20+Cj4gQ2M6IEtldmluIEhpbG1hbiA8a2hpbG1hbkBiYXlsaWJyZS5jb20+Cj4gQ2M6IExh
+dXJlbnQgUGluY2hhcnQgPGxhdXJlbnQucGluY2hhcnRAaWRlYXNvbmJvYXJkLmNvbT4KPiBDYzog
+S2llcmFuIEJpbmdoYW0gPGtpZXJhbi5iaW5naGFtK3JlbmVzYXNAaWRlYXNvbmJvYXJkLmNvbT4K
+PiBDYzogU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KPiBDYzogIkhlaWtvIFN0w7xi
+bmVyIiA8aGVpa29Ac250ZWNoLmRlPgo+IENjOiBZYW5uaWNrIEZlcnRyZSA8eWFubmljay5mZXJ0
+cmVAc3QuY29tPgo+IENjOiBQaGlsaXBwZSBDb3JudSA8cGhpbGlwcGUuY29ybnVAc3QuY29tPgo+
+IENjOiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRAbGluYXJvLm9yZz4KPiBD
+YzogVmluY2VudCBBYnJpb3UgPHZpbmNlbnQuYWJyaW91QHN0LmNvbT4KPiBDYzogTWF4aW1lIENv
+cXVlbGluIDxtY29xdWVsaW4uc3RtMzJAZ21haWwuY29tPgo+IENjOiBBbGV4YW5kcmUgVG9yZ3Vl
+IDxhbGV4YW5kcmUudG9yZ3VlQHN0LmNvbT4KPiBDYzogQ2hlbi1ZdSBUc2FpIDx3ZW5zQGNzaWUu
+b3JnPgo+IENjOiBsaW51eC1hbWxvZ2ljQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBDYzogbGludXgt
+YXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gQ2M6IGxpbnV4LXJlbmVzYXMtc29jQHZn
+ZXIua2VybmVsLm9yZwo+IENjOiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4g
+Q2M6IGxpbnV4LXN0bTMyQHN0LW1kLW1haWxtYW4uc3Rvcm1yZXBseS5jb20KPiBTaWduZWQtb2Zm
+LWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgo+IC0tLQo+ICAuLi4vZ3B1L2RybS9h
+cm0vZGlzcGxheS9rb21lZGEva29tZWRhX2ttcy5jICAgfCAgMSArCj4gIGRyaXZlcnMvZ3B1L2Ry
+bS9hcm0vbWFsaWRwX2Rydi5jICAgICAgICAgICAgICB8ICAxICsKPiAgZHJpdmVycy9ncHUvZHJt
+L2RybV9nZW1fY21hX2hlbHBlci5jICAgICAgICAgIHwgNDggKysrKysrKysrKystLS0tLS0tLQo+
+ICBkcml2ZXJzL2dwdS9kcm0vbWVzb24vbWVzb25fZHJ2LmMgICAgICAgICAgICAgfCAgMSArCj4g
+IGRyaXZlcnMvZ3B1L2RybS9yY2FyLWR1L3JjYXJfZHVfa21zLmMgICAgICAgICB8ICAxICsKPiAg
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyAgIHwgIDEgKwo+ICBk
+cml2ZXJzL2dwdS9kcm0vc3RtL2Rydi5jICAgICAgICAgICAgICAgICAgICAgfCAgMSArCj4gIGRy
+aXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9kcnYuYyAgICAgICAgICAgICB8ICAxICsKPiAgOCBm
+aWxlcyBjaGFuZ2VkLCAzNiBpbnNlcnRpb25zKCspLCAxOSBkZWxldGlvbnMoLSkKPiAKPiBkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfa21zLmMg
+Yi9kcml2ZXJzL2dwdS9kcm0vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9rbXMuYwo+IGluZGV4
+IGQ0OTc3MmRlOTNlMC4uN2NmMGRjNGNiZmMxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
+bS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRhX2ttcy5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJt
+L2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfa21zLmMKPiBAQCAtMzEsNiArMzEsNyBAQCBzdGF0
+aWMgaW50IGtvbWVkYV9nZW1fY21hX2R1bWJfY3JlYXRlKHN0cnVjdCBkcm1fZmlsZSAqZmlsZSwK
+PiAgCXUzMiBwaXRjaCA9IERJVl9ST1VORF9VUChhcmdzLT53aWR0aCAqIGFyZ3MtPmJwcCwgOCk7
+Cj4gIAo+ICAJYXJncy0+cGl0Y2ggPSBBTElHTihwaXRjaCwgbWRldi0+Y2hpcC5idXNfd2lkdGgp
+Owo+ICsJYXJncy0+ZmxhZ3MgPSBEUk1fTU9ERV9EVU1CX0tFUk5FTF9NQVA7Cj4gIAo+ICAJcmV0
+dXJuIGRybV9nZW1fY21hX2R1bWJfY3JlYXRlX2ludGVybmFsKGZpbGUsIGRldiwgYXJncyk7Cj4g
+IH0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2FybS9tYWxpZHBfZHJ2LmMgYi9kcml2
+ZXJzL2dwdS9kcm0vYXJtL21hbGlkcF9kcnYuYwo+IGluZGV4IDhhNzYzMTVhYWEwZi4uYWViMWE3
+NzllY2MxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vbWFsaWRwX2Rydi5jCj4g
+KysrIGIvZHJpdmVycy9ncHUvZHJtL2FybS9tYWxpZHBfZHJ2LmMKPiBAQCAtNDY1LDYgKzQ2NSw3
+IEBAIHN0YXRpYyBpbnQgbWFsaWRwX2R1bWJfY3JlYXRlKHN0cnVjdCBkcm1fZmlsZSAqZmlsZV9w
+cml2LAo+ICAJdTggYWxpZ25tZW50ID0gbWFsaWRwX2h3X2dldF9waXRjaF9hbGlnbihtYWxpZHAt
+PmRldiwgMSk7Cj4gIAo+ICAJYXJncy0+cGl0Y2ggPSBBTElHTihESVZfUk9VTkRfVVAoYXJncy0+
+d2lkdGggKiBhcmdzLT5icHAsIDgpLCBhbGlnbm1lbnQpOwo+ICsJYXJncy0+ZmxhZ3MgPSBEUk1f
+TU9ERV9EVU1CX0tFUk5FTF9NQVA7Cj4gIAo+ICAJcmV0dXJuIGRybV9nZW1fY21hX2R1bWJfY3Jl
+YXRlX2ludGVybmFsKGZpbGVfcHJpdiwgZHJtLCBhcmdzKTsKPiAgfQo+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwdS9kcm0vZHJtX2dlbV9jbWFfaGVscGVyLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJt
+X2dlbV9jbWFfaGVscGVyLmMKPiBpbmRleCA0Y2ViZmUwMWU2ZWEuLmY5MWU5ZThhZGVhZiAxMDA2
+NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2dlbV9jbWFfaGVscGVyLmMKPiArKysgYi9k
+cml2ZXJzL2dwdS9kcm0vZHJtX2dlbV9jbWFfaGVscGVyLmMKPiBAQCAtNzgsMjEgKzc4LDggQEAg
+X19kcm1fZ2VtX2NtYV9jcmVhdGUoc3RydWN0IGRybV9kZXZpY2UgKmRybSwgc2l6ZV90IHNpemUp
+Cj4gIAlyZXR1cm4gRVJSX1BUUihyZXQpOwo+ICB9Cj4gIAo+IC0vKioKPiAtICogZHJtX2dlbV9j
+bWFfY3JlYXRlIC0gYWxsb2NhdGUgYW4gb2JqZWN0IHdpdGggdGhlIGdpdmVuIHNpemUKPiAtICog
+QGRybTogRFJNIGRldmljZQo+IC0gKiBAc2l6ZTogc2l6ZSBvZiB0aGUgb2JqZWN0IHRvIGFsbG9j
+YXRlCj4gLSAqCj4gLSAqIFRoaXMgZnVuY3Rpb24gY3JlYXRlcyBhIENNQSBHRU0gb2JqZWN0IGFu
+ZCBhbGxvY2F0ZXMgYSBjb250aWd1b3VzIGNodW5rIG9mCj4gLSAqIG1lbW9yeSBhcyBiYWNraW5n
+IHN0b3JlLiBUaGUgYmFja2luZyBtZW1vcnkgaGFzIHRoZSB3cml0ZWNvbWJpbmUgYXR0cmlidXRl
+Cj4gLSAqIHNldC4KPiAtICoKPiAtICogUmV0dXJuczoKPiAtICogQSBzdHJ1Y3QgZHJtX2dlbV9j
+bWFfb2JqZWN0ICogb24gc3VjY2VzcyBvciBhbiBFUlJfUFRSKCktZW5jb2RlZCBuZWdhdGl2ZQo+
+IC0gKiBlcnJvciBjb2RlIG9uIGZhaWx1cmUuCj4gLSAqLwo+IC1zdHJ1Y3QgZHJtX2dlbV9jbWFf
+b2JqZWN0ICpkcm1fZ2VtX2NtYV9jcmVhdGUoc3RydWN0IGRybV9kZXZpY2UgKmRybSwKPiAtCQkJ
+CQkgICAgICBzaXplX3Qgc2l6ZSkKPiArc3RhdGljIHN0cnVjdCBkcm1fZ2VtX2NtYV9vYmplY3Qg
+Kgo+ICtkcm1fZ2VtX2NtYV9jcmVhdGVfZmxhZ3Moc3RydWN0IGRybV9kZXZpY2UgKmRybSwgc2l6
+ZV90IHNpemUsIHUzMiBmbGFncykKPiAgewo+ICAJc3RydWN0IGRybV9nZW1fY21hX29iamVjdCAq
+Y21hX29iajsKPiAgCWludCByZXQ7Cj4gQEAgLTEwMyw2ICs5MCw5IEBAIHN0cnVjdCBkcm1fZ2Vt
+X2NtYV9vYmplY3QgKmRybV9nZW1fY21hX2NyZWF0ZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLAo+
+ICAJaWYgKElTX0VSUihjbWFfb2JqKSkKPiAgCQlyZXR1cm4gY21hX29iajsKPiAgCj4gKwlpZiAo
+IShmbGFncyAmIERSTV9NT0RFX0RVTUJfS0VSTkVMX01BUCkpCj4gKwkJY21hX29iai0+ZG1hX2F0
+dHJzIHw9IERNQV9BVFRSX05PX0tFUk5FTF9NQVBQSU5HOwo+ICsKPiAgCWNtYV9vYmotPnZhZGRy
+ID0gZG1hX2FsbG9jX2F0dHJzKGRybS0+ZGV2LCBzaXplLCAmY21hX29iai0+cGFkZHIsCj4gIAkJ
+CQkJIEdGUF9LRVJORUwgfCBfX0dGUF9OT1dBUk4sCj4gIAkJCQkJIGNtYV9vYmotPmRtYV9hdHRy
+cyk7Cj4gQEAgLTExOSw2ICsxMDksMjUgQEAgc3RydWN0IGRybV9nZW1fY21hX29iamVjdCAqZHJt
+X2dlbV9jbWFfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sCj4gIAlkcm1fZ2VtX29iamVj
+dF9wdXRfdW5sb2NrZWQoJmNtYV9vYmotPmJhc2UpOwo+ICAJcmV0dXJuIEVSUl9QVFIocmV0KTsK
+PiAgfQo+ICsKPiArLyoqCj4gKyAqIGRybV9nZW1fY21hX2NyZWF0ZSAtIGFsbG9jYXRlIGFuIG9i
+amVjdCB3aXRoIHRoZSBnaXZlbiBzaXplCj4gKyAqIEBkcm06IERSTSBkZXZpY2UKPiArICogQHNp
+emU6IHNpemUgb2YgdGhlIG9iamVjdCB0byBhbGxvY2F0ZQo+ICsgKgo+ICsgKiBUaGlzIGZ1bmN0
+aW9uIGNyZWF0ZXMgYSBDTUEgR0VNIG9iamVjdCBhbmQgYWxsb2NhdGVzIGEgY29udGlndW91cyBj
+aHVuayBvZgo+ICsgKiBtZW1vcnkgYXMgYmFja2luZyBzdG9yZS4gVGhlIGJhY2tpbmcgbWVtb3J5
+IGhhcyB0aGUgd3JpdGVjb21iaW5lIGF0dHJpYnV0ZQo+ICsgKiBzZXQuCj4gKyAqCj4gKyAqIFJl
+dHVybnM6Cj4gKyAqIEEgc3RydWN0IGRybV9nZW1fY21hX29iamVjdCAqIG9uIHN1Y2Nlc3Mgb3Ig
+YW4gRVJSX1BUUigpLWVuY29kZWQgbmVnYXRpdmUKPiArICogZXJyb3IgY29kZSBvbiBmYWlsdXJl
+Lgo+ICsgKi8KPiArc3RydWN0IGRybV9nZW1fY21hX29iamVjdCAqZHJtX2dlbV9jbWFfY3JlYXRl
+KHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sCj4gKwkJCQkJICAgICAgc2l6ZV90IHNpemUpCj4gK3sK
+PiArCXJldHVybiBkcm1fZ2VtX2NtYV9jcmVhdGVfZmxhZ3MoZHJtLCBzaXplLCBEUk1fTU9ERV9E
+VU1CX0tFUk5FTF9NQVApOwo+ICt9Cj4gIEVYUE9SVF9TWU1CT0xfR1BMKGRybV9nZW1fY21hX2Ny
+ZWF0ZSk7Cj4gIAo+ICAvKioKPiBAQCAtMTM5LDE0ICsxNDgsMTQgQEAgRVhQT1JUX1NZTUJPTF9H
+UEwoZHJtX2dlbV9jbWFfY3JlYXRlKTsKPiAgICovCj4gIHN0YXRpYyBzdHJ1Y3QgZHJtX2dlbV9j
+bWFfb2JqZWN0ICoKPiAgZHJtX2dlbV9jbWFfY3JlYXRlX3dpdGhfaGFuZGxlKHN0cnVjdCBkcm1f
+ZmlsZSAqZmlsZV9wcml2LAo+IC0JCQkgICAgICAgc3RydWN0IGRybV9kZXZpY2UgKmRybSwgc2l6
+ZV90IHNpemUsCj4gKwkJCSAgICAgICBzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCBzaXplX3Qgc2l6
+ZSwgdTMyIGZsYWdzLAo+ICAJCQkgICAgICAgdWludDMyX3QgKmhhbmRsZSkKPiAgewo+ICAJc3Ry
+dWN0IGRybV9nZW1fY21hX29iamVjdCAqY21hX29iajsKPiAgCXN0cnVjdCBkcm1fZ2VtX29iamVj
+dCAqZ2VtX29iajsKPiAgCWludCByZXQ7Cj4gIAo+IC0JY21hX29iaiA9IGRybV9nZW1fY21hX2Ny
+ZWF0ZShkcm0sIHNpemUpOwo+ICsJY21hX29iaiA9IGRybV9nZW1fY21hX2NyZWF0ZV9mbGFncyhk
+cm0sIHNpemUsIGZsYWdzKTsKPiAgCWlmIChJU19FUlIoY21hX29iaikpCj4gIAkJcmV0dXJuIGNt
+YV9vYmo7Cj4gIAo+IEBAIC0yMjUsNyArMjM0LDcgQEAgaW50IGRybV9nZW1fY21hX2R1bWJfY3Jl
+YXRlX2ludGVybmFsKHN0cnVjdCBkcm1fZmlsZSAqZmlsZV9wcml2LAo+ICAJCWFyZ3MtPnNpemUg
+PSBhcmdzLT5waXRjaCAqIGFyZ3MtPmhlaWdodDsKPiAgCj4gIAljbWFfb2JqID0gZHJtX2dlbV9j
+bWFfY3JlYXRlX3dpdGhfaGFuZGxlKGZpbGVfcHJpdiwgZHJtLCBhcmdzLT5zaXplLAo+IC0JCQkJ
+CQkgJmFyZ3MtPmhhbmRsZSk7Cj4gKwkJCQkJCSBhcmdzLT5mbGFncywgJmFyZ3MtPmhhbmRsZSk7
+Cj4gIAlyZXR1cm4gUFRSX0VSUl9PUl9aRVJPKGNtYV9vYmopOwo+ICB9Cj4gIEVYUE9SVF9TWU1C
+T0xfR1BMKGRybV9nZW1fY21hX2R1bWJfY3JlYXRlX2ludGVybmFsKTsKPiBAQCAtMjU2LDkgKzI2
+NSwxMCBAQCBpbnQgZHJtX2dlbV9jbWFfZHVtYl9jcmVhdGUoc3RydWN0IGRybV9maWxlICpmaWxl
+X3ByaXYsCj4gIAo+ICAJYXJncy0+cGl0Y2ggPSBESVZfUk9VTkRfVVAoYXJncy0+d2lkdGggKiBh
+cmdzLT5icHAsIDgpOwo+ICAJYXJncy0+c2l6ZSA9IGFyZ3MtPnBpdGNoICogYXJncy0+aGVpZ2h0
+Owo+ICsJYXJncy0+ZmxhZ3MgPSBEUk1fTU9ERV9EVU1CX0tFUk5FTF9NQVA7Cj4gIAo+ICAJY21h
+X29iaiA9IGRybV9nZW1fY21hX2NyZWF0ZV93aXRoX2hhbmRsZShmaWxlX3ByaXYsIGRybSwgYXJn
+cy0+c2l6ZSwKPiAtCQkJCQkJICZhcmdzLT5oYW5kbGUpOwo+ICsJCQkJCQkgYXJncy0+ZmxhZ3Ms
+ICZhcmdzLT5oYW5kbGUpOwo+ICAJcmV0dXJuIFBUUl9FUlJfT1JfWkVSTyhjbWFfb2JqKTsKPiAg
+fQo+ICBFWFBPUlRfU1lNQk9MX0dQTChkcm1fZ2VtX2NtYV9kdW1iX2NyZWF0ZSk7Cj4gZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZXNvbi9tZXNvbl9kcnYuYyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9tZXNvbi9tZXNvbl9kcnYuYwo+IGluZGV4IDM5N2MzMzE4MmY0Zi4uMTU5MzUxOGRjYmU0IDEw
+MDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZXNvbi9tZXNvbl9kcnYuYwo+ICsrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9tZXNvbi9tZXNvbl9kcnYuYwo+IEBAIC04MSw2ICs4MSw3IEBAIHN0YXRp
+YyBpbnQgbWVzb25fZHVtYl9jcmVhdGUoc3RydWN0IGRybV9maWxlICpmaWxlLCBzdHJ1Y3QgZHJt
+X2RldmljZSAqZGV2LAo+ICAJICovCj4gIAlhcmdzLT5waXRjaCA9IEFMSUdOKERJVl9ST1VORF9V
+UChhcmdzLT53aWR0aCAqIGFyZ3MtPmJwcCwgOCksIFNaXzY0KTsKPiAgCWFyZ3MtPnNpemUgPSBQ
+QUdFX0FMSUdOKGFyZ3MtPnBpdGNoICogYXJncy0+aGVpZ2h0KTsKPiArCWFyZ3MtPmZsYWdzID0g
+RFJNX01PREVfRFVNQl9LRVJORUxfTUFQOwo+ICAKPiAgCXJldHVybiBkcm1fZ2VtX2NtYV9kdW1i
+X2NyZWF0ZV9pbnRlcm5hbChmaWxlLCBkZXYsIGFyZ3MpOwo+ICB9Cj4gZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvZ3B1L2RybS9yY2FyLWR1L3JjYXJfZHVfa21zLmMgYi9kcml2ZXJzL2dwdS9kcm0vcmNh
+ci1kdS9yY2FyX2R1X2ttcy5jCj4gaW5kZXggMmRjOWNhZWU4NzY3Li5jOWIxZjI5OGNlN2UgMTAw
+NjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JjYXItZHUvcmNhcl9kdV9rbXMuYwo+ICsrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9yY2FyLWR1L3JjYXJfZHVfa21zLmMKPiBAQCAtMjk5LDYgKzI5OSw3
+IEBAIGludCByY2FyX2R1X2R1bWJfY3JlYXRlKHN0cnVjdCBkcm1fZmlsZSAqZmlsZSwgc3RydWN0
+IGRybV9kZXZpY2UgKmRldiwKPiAgCQlhbGlnbiA9IDE2ICogYXJncy0+YnBwIC8gODsKPiAgCj4g
+IAlhcmdzLT5waXRjaCA9IHJvdW5kdXAobWluX3BpdGNoLCBhbGlnbik7Cj4gKwlhcmdzLT5mbGFn
+cyA9IERSTV9NT0RFX0RVTUJfS0VSTkVMX01BUDsKPiAgCj4gIAlyZXR1cm4gZHJtX2dlbV9jbWFf
+ZHVtYl9jcmVhdGVfaW50ZXJuYWwoZmlsZSwgZGV2LCBhcmdzKTsKPiAgfQo+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIGIvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+IGluZGV4IDc1ODJkMGU2YTYwYS4u
+ZjA5YjlhMDM1Mzc2IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fZ2VtLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX2dlbS5jCj4gQEAgLTQxOSw2ICs0MTksNyBAQCBpbnQgcm9ja2NoaXBfZ2VtX2R1bWJfY3Jl
+YXRlKHN0cnVjdCBkcm1fZmlsZSAqZmlsZV9wcml2LAo+ICAJICogYWxpZ24gdG8gNjQgYnl0ZXMg
+c2luY2UgTWFsaSByZXF1aXJlcyBpdC4KPiAgCSAqLwo+ICAJYXJncy0+cGl0Y2ggPSBBTElHTiht
+aW5fcGl0Y2gsIDY0KTsKPiArCWFyZ3MtPmZsYWdzID0gRFJNX01PREVfRFVNQl9LRVJORUxfTUFQ
+Owo+ICAJYXJncy0+c2l6ZSA9IGFyZ3MtPnBpdGNoICogYXJncy0+aGVpZ2h0Owo+ICAKPiAgCXJr
+X29iaiA9IHJvY2tjaGlwX2dlbV9jcmVhdGVfd2l0aF9oYW5kbGUoZmlsZV9wcml2LCBkZXYsIGFy
+Z3MtPnNpemUsCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9zdG0vZHJ2LmMgYi9kcml2
+ZXJzL2dwdS9kcm0vc3RtL2Rydi5jCj4gaW5kZXggNWE5ZjlhY2E4YmMyLi4wZjc2YTRhYzk1YjMg
+MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3N0bS9kcnYuYwo+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9zdG0vZHJ2LmMKPiBAQCAtNDcsNiArNDcsNyBAQCBzdGF0aWMgaW50IHN0bV9nZW1f
+Y21hX2R1bWJfY3JlYXRlKHN0cnVjdCBkcm1fZmlsZSAqZmlsZSwKPiAgCSAqLwo+ICAJYXJncy0+
+cGl0Y2ggPSByb3VuZHVwKG1pbl9waXRjaCwgMTI4KTsKPiAgCWFyZ3MtPmhlaWdodCA9IHJvdW5k
+dXAoYXJncy0+aGVpZ2h0LCA0KTsKPiArCWFyZ3MtPmZsYWdzID0gRFJNX01PREVfRFVNQl9LRVJO
+RUxfTUFQOwo+ICAKPiAgCXJldHVybiBkcm1fZ2VtX2NtYV9kdW1iX2NyZWF0ZV9pbnRlcm5hbChm
+aWxlLCBkZXYsIGFyZ3MpOwo+ICB9Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9zdW40
+aS9zdW40aV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9kcnYuYwo+IGluZGV4
+IGE1NzU3YjExYjczMC4uZjY1M2E1ZDFlMmQ2IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
+bS9zdW40aS9zdW40aV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9k
+cnYuYwo+IEBAIC0zNCw2ICszNCw3IEBAIHN0YXRpYyBpbnQgZHJtX3N1bjRpX2dlbV9kdW1iX2Ny
+ZWF0ZShzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGVfcHJpdiwKPiAgewo+ICAJLyogVGhlIGhhcmR3YXJl
+IG9ubHkgYWxsb3dzIGV2ZW4gcGl0Y2hlcyBmb3IgWVVWIGJ1ZmZlcnMuICovCj4gIAlhcmdzLT5w
+aXRjaCA9IEFMSUdOKERJVl9ST1VORF9VUChhcmdzLT53aWR0aCAqIGFyZ3MtPmJwcCwgOCksIDIp
+Owo+ICsJYXJncy0+ZmxhZ3MgPSBEUk1fTU9ERV9EVU1CX0tFUk5FTF9NQVA7Cj4gIAo+ICAJcmV0
+dXJuIGRybV9nZW1fY21hX2R1bWJfY3JlYXRlX2ludGVybmFsKGZpbGVfcHJpdiwgZHJtLCBhcmdz
+KTsKPiAgfQo+IAoKUmV2aWV3ZWQtYnk6IE5laWwgQXJtc3Ryb25nIDxuYXJtc3Ryb25nQGJheWxp
+YnJlLmNvbT4gIyBmb3IgZHJtX2dlbV9jbWFfaGVscGVyIGFuZCBtZXNvbiBkcm0gZHJpdmVyCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
+YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
+LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
