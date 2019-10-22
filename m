@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 6/9] usb: dwc3: Add phy interface for dwc3_uboot
-Date: Tue, 22 Oct 2019 23:24:55 +0530
-Message-ID: <20191022175458.22604-7-jagan@amarulasolutions.com>
+Subject: [PATCH 8/9] rockchip: Setup dwc3_device (for non-dm gadgets)
+Date: Tue, 22 Oct 2019 23:24:57 +0530
+Message-ID: <20191022175458.22604-9-jagan@amarulasolutions.com>
 References: <20191022175458.22604-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,144 +21,68 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: Marek Vasut <marex-ynQEQJNshbs@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-U-Boot has two different variants of dwc3 initializations,
-- with dm variant gadget, so the respective dm driver would
-  call the dwc3_init in core.
-- with non-dm variant gadget, so the usage board file would
-  call dwc3_uboot_init in core.
+Setup dwc3_device structure for non-dm gadgets, which is used
+in rk3399 platforms.
 
-The driver probe would handle all respective gadget properties
-including phy interface via phy_type property and then trigger
-dwc3_init for dm-variant gadgets.
-
-So, to support the phy interface for non-dm variant gadgets,
-the better option is dwc3_uboot_init since there is no
-dedicated controller for non-dm variant gadgets.
-
-This patch support for adding phy interface like 8/16-bit UTMI+
-code for dwc3_uboot.
-
-This change used Linux phy.h enum list, to make proper code
-compatibility.
+dwc3_device would have basic regbase, dr_mode, high speed
+and 16-bit UTMI+ etc.
 
 Cc: Marek Vasut <marex-ynQEQJNshbs@public.gmane.org>
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/usb/dwc3/core.c | 26 ++++++++++++++++++++++++++
- drivers/usb/dwc3/core.h | 12 ++++++++++++
- include/dwc3-uboot.h    |  2 ++
- include/linux/usb/phy.h | 19 +++++++++++++++++++
- 4 files changed, 59 insertions(+)
- create mode 100644 include/linux/usb/phy.h
+ arch/arm/mach-rockchip/board.c | 32 ++++++++++++++++++++++++++++++--
+ 1 file changed, 30 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-index 2498f0efb1..3e2295d75c 100644
---- a/drivers/usb/dwc3/core.c
-+++ b/drivers/usb/dwc3/core.c
-@@ -600,6 +600,30 @@ static void dwc3_core_exit_mode(struct dwc3 *dwc)
- 	}
+diff --git a/arch/arm/mach-rockchip/board.c b/arch/arm/mach-rockchip/board.c
+index 8ca3463731..1468f1da80 100644
+--- a/arch/arm/mach-rockchip/board.c
++++ b/arch/arm/mach-rockchip/board.c
+@@ -49,8 +49,10 @@ void enable_caches(void)
  }
+ #endif
  
-+static void dwc3_uboot_hsphy_mode(struct dwc3_device *dwc3_dev, struct dwc3 *dwc)
-+{
-+	enum usb_phy_interface hsphy_mode = dwc3_dev->hsphy_mode;
-+	u32 reg;
+-#if defined(CONFIG_USB_GADGET) && defined(CONFIG_USB_GADGET_DWC2_OTG)
++#if defined(CONFIG_USB_GADGET)
+ #include <usb.h>
 +
-+	/* Set dwc3 usb2 phy config */
-+	reg = dwc3_readl(dwc->regs, DWC3_GUSB2PHYCFG(0));
-+	reg |= DWC3_GUSB2PHYCFG_PHYIF;
-+	reg &= ~DWC3_GUSB2PHYCFG_USBTRDTIM_MASK;
-+
-+	switch (hsphy_mode) {
-+	case USBPHY_INTERFACE_MODE_UTMI:
-+		reg |= DWC3_GUSB2PHYCFG_USBTRDTIM_8BIT;
-+		break;
-+	case USBPHY_INTERFACE_MODE_UTMIW:
-+		reg |= DWC3_GUSB2PHYCFG_USBTRDTIM_16BIT;
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	dwc3_writel(dwc->regs, DWC3_GUSB2PHYCFG(0), reg);
-+}
-+
- #define DWC3_ALIGN_MASK		(16 - 1)
++#if defined(CONFIG_USB_GADGET_DWC2_OTG)
+ #include <usb/dwc2_udc.h>
  
- /**
-@@ -708,6 +732,8 @@ int dwc3_uboot_init(struct dwc3_device *dwc3_dev)
- 		goto err0;
- 	}
- 
-+	dwc3_uboot_hsphy_mode(dwc3_dev, dwc);
+ static struct dwc2_plat_otg_data otg_data = {
+@@ -91,7 +93,33 @@ int board_usb_cleanup(int index, enum usb_init_type init)
+ {
+ 	return 0;
+ }
+-#endif
++#endif /* CONFIG_USB_GADGET_DWC2_OTG */
 +
- 	ret = dwc3_event_buffers_setup(dwc);
- 	if (ret) {
- 		dev_err(dwc->dev, "failed to setup event buffers\n");
-diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
-index cfe29884e7..c6888064b4 100644
---- a/drivers/usb/dwc3/core.h
-+++ b/drivers/usb/dwc3/core.h
-@@ -162,6 +162,18 @@
- /* Global USB2 PHY Configuration Register */
- #define DWC3_GUSB2PHYCFG_PHYSOFTRST	(1 << 31)
- #define DWC3_GUSB2PHYCFG_SUSPHY		(1 << 6)
-+#define DWC3_GUSB2PHYCFG_PHYIF		(1 << 3)
++#if defined(CONFIG_USB_DWC3) && !defined(CONFIG_DM_USB_GADGET)
++#include <dwc3-uboot.h>
 +
-+/* Global USB2 PHY Configuration Mask */
-+#define DWC3_GUSB2PHYCFG_USBTRDTIM_MASK		(0xf << 10)
-+
-+/* Global USB2 PHY Configuration Offset */
-+#define DWC3_GUSB2PHYCFG_USBTRDTIM_OFFSET	10
-+
-+#define DWC3_GUSB2PHYCFG_USBTRDTIM_16BIT	(0x5 << \
-+		DWC3_GUSB2PHYCFG_USBTRDTIM_OFFSET)
-+#define DWC3_GUSB2PHYCFG_USBTRDTIM_8BIT		(0x9 << \
-+		DWC3_GUSB2PHYCFG_USBTRDTIM_OFFSET)
- 
- /* Global USB3 PIPE Control Register */
- #define DWC3_GUSB3PIPECTL_PHYSOFTRST	(1 << 31)
-diff --git a/include/dwc3-uboot.h b/include/dwc3-uboot.h
-index 9941cc37a3..3c9e204cf0 100644
---- a/include/dwc3-uboot.h
-+++ b/include/dwc3-uboot.h
-@@ -10,10 +10,12 @@
- #define __DWC3_UBOOT_H_
- 
- #include <linux/usb/otg.h>
-+#include <linux/usb/phy.h>
- 
- struct dwc3_device {
- 	unsigned long base;
- 	enum usb_dr_mode dr_mode;
-+	enum usb_phy_interface hsphy_mode;
- 	u32 maximum_speed;
- 	unsigned tx_fifo_resize:1;
- 	unsigned has_lpm_erratum;
-diff --git a/include/linux/usb/phy.h b/include/linux/usb/phy.h
-new file mode 100644
-index 0000000000..158ca9cd85
---- /dev/null
-+++ b/include/linux/usb/phy.h
-@@ -0,0 +1,19 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * USB PHY defines
-+ *
-+ * These APIs may be used between USB controllers.  USB device drivers
-+ * (for either host or peripheral roles) don't use these calls; they
-+ * continue to use just usb_device and usb_gadget.
-+ */
-+
-+#ifndef __LINUX_USB_PHY_H
-+#define __LINUX_USB_PHY_H
-+
-+enum usb_phy_interface {
-+	USBPHY_INTERFACE_MODE_UNKNOWN,
-+	USBPHY_INTERFACE_MODE_UTMI,
-+	USBPHY_INTERFACE_MODE_UTMIW,
++static struct dwc3_device dwc3_device_data = {
++	.maximum_speed = USB_SPEED_HIGH,
++	.base = 0xfe800000,
++	.dr_mode = USB_DR_MODE_PERIPHERAL,
++	.index = 0,
++	.dis_u2_susphy_quirk = 1,
++	.hsphy_mode = USBPHY_INTERFACE_MODE_UTMIW,
 +};
 +
-+#endif /* __LINUX_USB_PHY_H */
++int usb_gadget_handle_interrupts(void)
++{
++	dwc3_uboot_handle_interrupt(0);
++	return 0;
++}
++
++int board_usb_init(int index, enum usb_init_type init)
++{
++	return dwc3_uboot_init(&dwc3_device_data);
++}
++#endif /* CONFIG_USB_DWC3 */
++
++#endif /* CONFIG_USB_GADGET */
+ 
+ #if CONFIG_IS_ENABLED(FASTBOOT)
+ int fastboot_set_reboot_flag(void)
 -- 
 2.18.0.321.gffc6fa0e3
