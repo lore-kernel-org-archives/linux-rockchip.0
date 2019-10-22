@@ -1,11 +1,13 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 0/9] rockchip: rk3399: Add fastboot support
-Date: Tue, 22 Oct 2019 23:24:49 +0530
-Message-ID: <20191022175458.22604-1-jagan@amarulasolutions.com>
+Subject: [PATCH 1/9] gadget: Select USB_GADGET_MANUFACTURER for rockchip
+Date: Tue, 22 Oct 2019 23:24:50 +0530
+Message-ID: <20191022175458.22604-2-jagan@amarulasolutions.com>
+References: <20191022175458.22604-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191022175458.22604-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,71 +21,223 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patchset add fastboot support on RK3399 and also
-rework of CONFIG items related to fastboot support.
+Select the gadget manufacturer as 'Rockchip' for
+all rockchip platform SoC's.
 
-patch 0001 - 0005: existing gadget, fastboot config move
+This eventually drop the explicit defined added
+on supported board defconfig files.
 
-patch 0006: add phy interface for dwc3_uboot
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ configs/elgin-rv1108_defconfig    | 1 -
+ configs/evb-rk3036_defconfig      | 1 -
+ configs/evb-rk3229_defconfig      | 1 -
+ configs/evb-rk3288_defconfig      | 1 -
+ configs/evb-rk3328_defconfig      | 1 -
+ configs/evb-rv1108_defconfig      | 1 -
+ configs/firefly-rk3288_defconfig  | 1 -
+ configs/kylin-rk3036_defconfig    | 1 -
+ configs/miqi-rk3288_defconfig     | 1 -
+ configs/phycore-rk3288_defconfig  | 1 -
+ configs/popmetal-rk3288_defconfig | 1 -
+ configs/rock2_defconfig           | 1 -
+ configs/rock64-rk3328_defconfig   | 1 -
+ configs/tinker-rk3288_defconfig   | 1 -
+ configs/vyasa-rk3288_defconfig    | 1 -
+ drivers/usb/gadget/Kconfig        | 1 +
+ 16 files changed, 1 insertion(+), 15 deletions(-)
 
-patch 0007: 0008: dwc3 setup for rk3399
-
-patch 0009: enable fastboot, nanopc-t4, roc-pc
-
-SD card work fine, but eMMC seems unstable when partitioning
-with gpt like below but it can be problem with fastboot though.
-
-=> gpt write mmc 0 $partitions
-Writing GPT: mmc write failed
-** Can't write to device 0 **
-** Can't write to device 0 **
-error!
-=> gpt verify mmc 0 $partitions
-GUID Partition Table Header signature is wrong: 0x0 != 0x5452415020494645
-gpt_verify_headers: *** ERROR: Invalid GPT ***
-Verify GPT: error!
-
-Any inputs?
-Jagan.
-
-Jagan Teki (9):
-  gadget: Select USB_GADGET_MANUFACTURER for rockchip
-  gadget: Select USB_GADGET_VENDOR_NUM for rockchip
-  gadget: rockchip: USB_GADGET_PRODUCT_NUM
-  gadget: rockchip: Add rk3128 USB_GADGET_PRODUCT_NUM
-  fastboot: rockchip: Select FASTBOOT_FLASH[_MMC_DEV]
-  usb: dwc3: Add phy interface for dwc3_uboot
-  gadget: rockchip: Add rk3399 USB_GADGET_PRODUCT_NUM
-  rockchip: Setup dwc3_device (for non-dm gadgets)
-  [DO NOT MERGE] rockchip: rk3399: Enable fastboot
-
- arch/arm/mach-rockchip/board.c     | 32 ++++++++++++++++++++++++++++--
- configs/elgin-rv1108_defconfig     |  2 --
- configs/evb-rk3036_defconfig       |  5 -----
- configs/evb-rk3128_defconfig       |  2 --
- configs/evb-rk3229_defconfig       |  5 -----
- configs/evb-rk3288_defconfig       |  5 -----
- configs/evb-rk3328_defconfig       |  5 -----
- configs/evb-rv1108_defconfig       |  2 --
- configs/firefly-rk3288_defconfig   |  5 -----
- configs/kylin-rk3036_defconfig     |  5 -----
- configs/miqi-rk3288_defconfig      |  5 -----
- configs/nanopc-t4-rk3399_defconfig |  3 +++
- configs/phycore-rk3288_defconfig   |  5 -----
- configs/popmetal-rk3288_defconfig  |  5 -----
- configs/roc-rk3399-pc_defconfig    |  3 +++
- configs/rock2_defconfig            |  2 --
- configs/rock64-rk3328_defconfig    |  5 -----
- configs/tinker-rk3288_defconfig    |  5 -----
- configs/vyasa-rk3288_defconfig     |  3 ---
- drivers/fastboot/Kconfig           |  4 +++-
- drivers/usb/dwc3/core.c            | 26 ++++++++++++++++++++++++
- drivers/usb/dwc3/core.h            | 12 +++++++++++
- drivers/usb/gadget/Kconfig         |  6 ++++++
- include/dwc3-uboot.h               |  2 ++
- include/linux/usb/phy.h            | 19 ++++++++++++++++++
- 25 files changed, 104 insertions(+), 69 deletions(-)
- create mode 100644 include/linux/usb/phy.h
-
+diff --git a/configs/elgin-rv1108_defconfig b/configs/elgin-rv1108_defconfig
+index b3d8d28bea..c9d703a0f5 100644
+--- a/configs/elgin-rv1108_defconfig
++++ b/configs/elgin-rv1108_defconfig
+@@ -49,7 +49,6 @@ CONFIG_USB_OHCI_HCD=y
+ CONFIG_USB_OHCI_GENERIC=y
+ CONFIG_USB_DWC2=y
+ CONFIG_USB_GADGET=y
+-CONFIG_USB_GADGET_MANUFACTURER="Rockchip"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x2207
+ CONFIG_USB_GADGET_PRODUCT_NUM=0x110a
+ CONFIG_USB_GADGET_DWC2_OTG=y
+diff --git a/configs/evb-rk3036_defconfig b/configs/evb-rk3036_defconfig
+index 2e7f57ae95..4df2a90b92 100644
+--- a/configs/evb-rk3036_defconfig
++++ b/configs/evb-rk3036_defconfig
+@@ -54,7 +54,6 @@ CONFIG_SYSRESET=y
+ # CONFIG_SPL_SYSRESET is not set
+ CONFIG_USB=y
+ CONFIG_USB_GADGET=y
+-CONFIG_USB_GADGET_MANUFACTURER="Rockchip"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x2207
+ CONFIG_USB_GADGET_PRODUCT_NUM=0x310a
+ CONFIG_USB_GADGET_DWC2_OTG=y
+diff --git a/configs/evb-rk3229_defconfig b/configs/evb-rk3229_defconfig
+index 9c8c084178..be91ba1e0c 100644
+--- a/configs/evb-rk3229_defconfig
++++ b/configs/evb-rk3229_defconfig
+@@ -64,7 +64,6 @@ CONFIG_DEBUG_UART_SHIFT=2
+ CONFIG_SYSRESET=y
+ CONFIG_USB=y
+ CONFIG_USB_GADGET=y
+-CONFIG_USB_GADGET_MANUFACTURER="Rockchip"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x2207
+ CONFIG_USB_GADGET_PRODUCT_NUM=0x320a
+ CONFIG_USB_GADGET_DWC2_OTG=y
+diff --git a/configs/evb-rk3288_defconfig b/configs/evb-rk3288_defconfig
+index 043ee32bb4..a52e0af79d 100644
+--- a/configs/evb-rk3288_defconfig
++++ b/configs/evb-rk3288_defconfig
+@@ -73,7 +73,6 @@ CONFIG_USB=y
+ CONFIG_USB_DWC2=y
+ CONFIG_ROCKCHIP_USB2_PHY=y
+ CONFIG_USB_GADGET=y
+-CONFIG_USB_GADGET_MANUFACTURER="Rockchip"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x2207
+ CONFIG_USB_GADGET_PRODUCT_NUM=0x320a
+ CONFIG_USB_GADGET_DWC2_OTG=y
+diff --git a/configs/evb-rk3328_defconfig b/configs/evb-rk3328_defconfig
+index 37610774c1..6f9a3a3e72 100644
+--- a/configs/evb-rk3328_defconfig
++++ b/configs/evb-rk3328_defconfig
+@@ -87,7 +87,6 @@ CONFIG_USB_OHCI_GENERIC=y
+ CONFIG_USB_DWC2=y
+ CONFIG_USB_DWC3=y
+ CONFIG_USB_GADGET=y
+-CONFIG_USB_GADGET_MANUFACTURER="Rockchip"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x2207
+ CONFIG_USB_GADGET_PRODUCT_NUM=0x330a
+ CONFIG_USB_GADGET_DWC2_OTG=y
+diff --git a/configs/evb-rv1108_defconfig b/configs/evb-rv1108_defconfig
+index 2e28871f37..36bd7eb0f1 100644
+--- a/configs/evb-rv1108_defconfig
++++ b/configs/evb-rv1108_defconfig
+@@ -46,7 +46,6 @@ CONFIG_USB_OHCI_HCD=y
+ CONFIG_USB_OHCI_GENERIC=y
+ CONFIG_USB_DWC2=y
+ CONFIG_USB_GADGET=y
+-CONFIG_USB_GADGET_MANUFACTURER="Rockchip"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x2207
+ CONFIG_USB_GADGET_PRODUCT_NUM=0x110a
+ CONFIG_USB_GADGET_DWC2_OTG=y
+diff --git a/configs/firefly-rk3288_defconfig b/configs/firefly-rk3288_defconfig
+index 29935d869c..4a1d7a6648 100644
+--- a/configs/firefly-rk3288_defconfig
++++ b/configs/firefly-rk3288_defconfig
+@@ -78,7 +78,6 @@ CONFIG_USB_DWC2=y
+ CONFIG_ROCKCHIP_USB2_PHY=y
+ CONFIG_USB_KEYBOARD=y
+ CONFIG_USB_GADGET=y
+-CONFIG_USB_GADGET_MANUFACTURER="Rockchip"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x2207
+ CONFIG_USB_GADGET_PRODUCT_NUM=0x320a
+ CONFIG_USB_GADGET_DWC2_OTG=y
+diff --git a/configs/kylin-rk3036_defconfig b/configs/kylin-rk3036_defconfig
+index dc587070d3..41ad46f12a 100644
+--- a/configs/kylin-rk3036_defconfig
++++ b/configs/kylin-rk3036_defconfig
+@@ -58,7 +58,6 @@ CONFIG_SYSRESET=y
+ CONFIG_USB=y
+ CONFIG_USB_DWC2=y
+ CONFIG_USB_GADGET=y
+-CONFIG_USB_GADGET_MANUFACTURER="Rockchip"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x2207
+ CONFIG_USB_GADGET_PRODUCT_NUM=0x310a
+ CONFIG_USB_GADGET_DWC2_OTG=y
+diff --git a/configs/miqi-rk3288_defconfig b/configs/miqi-rk3288_defconfig
+index 7b4e3f7f3a..3e761e9983 100644
+--- a/configs/miqi-rk3288_defconfig
++++ b/configs/miqi-rk3288_defconfig
+@@ -73,7 +73,6 @@ CONFIG_USB=y
+ CONFIG_USB_DWC2=y
+ CONFIG_ROCKCHIP_USB2_PHY=y
+ CONFIG_USB_GADGET=y
+-CONFIG_USB_GADGET_MANUFACTURER="Rockchip"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x2207
+ CONFIG_USB_GADGET_PRODUCT_NUM=0x320a
+ CONFIG_USB_GADGET_DWC2_OTG=y
+diff --git a/configs/phycore-rk3288_defconfig b/configs/phycore-rk3288_defconfig
+index 2914ede36c..ce8a0e5268 100644
+--- a/configs/phycore-rk3288_defconfig
++++ b/configs/phycore-rk3288_defconfig
+@@ -77,7 +77,6 @@ CONFIG_USB=y
+ CONFIG_USB_DWC2=y
+ CONFIG_ROCKCHIP_USB2_PHY=y
+ CONFIG_USB_GADGET=y
+-CONFIG_USB_GADGET_MANUFACTURER="Rockchip"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x2207
+ CONFIG_USB_GADGET_PRODUCT_NUM=0x320a
+ CONFIG_USB_GADGET_DWC2_OTG=y
+diff --git a/configs/popmetal-rk3288_defconfig b/configs/popmetal-rk3288_defconfig
+index 67dd3f3f2d..89400dd5de 100644
+--- a/configs/popmetal-rk3288_defconfig
++++ b/configs/popmetal-rk3288_defconfig
+@@ -73,7 +73,6 @@ CONFIG_USB=y
+ CONFIG_USB_DWC2=y
+ CONFIG_ROCKCHIP_USB2_PHY=y
+ CONFIG_USB_GADGET=y
+-CONFIG_USB_GADGET_MANUFACTURER="Rockchip"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x2207
+ CONFIG_USB_GADGET_PRODUCT_NUM=0x320a
+ CONFIG_USB_GADGET_DWC2_OTG=y
+diff --git a/configs/rock2_defconfig b/configs/rock2_defconfig
+index 80d6db5d83..953d760155 100644
+--- a/configs/rock2_defconfig
++++ b/configs/rock2_defconfig
+@@ -74,7 +74,6 @@ CONFIG_USB=y
+ CONFIG_USB_DWC2=y
+ CONFIG_ROCKCHIP_USB2_PHY=y
+ CONFIG_USB_GADGET=y
+-CONFIG_USB_GADGET_MANUFACTURER="Rockchip"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x2207
+ CONFIG_USB_GADGET_PRODUCT_NUM=0x320a
+ CONFIG_USB_GADGET_DWC2_OTG=y
+diff --git a/configs/rock64-rk3328_defconfig b/configs/rock64-rk3328_defconfig
+index 3ab0af1158..d86456e363 100644
+--- a/configs/rock64-rk3328_defconfig
++++ b/configs/rock64-rk3328_defconfig
+@@ -89,7 +89,6 @@ CONFIG_USB_OHCI_GENERIC=y
+ CONFIG_USB_DWC2=y
+ CONFIG_USB_DWC3=y
+ CONFIG_USB_GADGET=y
+-CONFIG_USB_GADGET_MANUFACTURER="Rockchip"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x2207
+ CONFIG_USB_GADGET_PRODUCT_NUM=0x330a
+ CONFIG_USB_GADGET_DWC2_OTG=y
+diff --git a/configs/tinker-rk3288_defconfig b/configs/tinker-rk3288_defconfig
+index eff3b06b5c..aa9f86d6f8 100644
+--- a/configs/tinker-rk3288_defconfig
++++ b/configs/tinker-rk3288_defconfig
+@@ -79,7 +79,6 @@ CONFIG_USB=y
+ CONFIG_USB_DWC2=y
+ CONFIG_ROCKCHIP_USB2_PHY=y
+ CONFIG_USB_GADGET=y
+-CONFIG_USB_GADGET_MANUFACTURER="Rockchip"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x2207
+ CONFIG_USB_GADGET_PRODUCT_NUM=0x320a
+ CONFIG_USB_GADGET_DWC2_OTG=y
+diff --git a/configs/vyasa-rk3288_defconfig b/configs/vyasa-rk3288_defconfig
+index 89921e6836..3a8cc9e722 100644
+--- a/configs/vyasa-rk3288_defconfig
++++ b/configs/vyasa-rk3288_defconfig
+@@ -71,7 +71,6 @@ CONFIG_USB_DWC2=y
+ CONFIG_ROCKCHIP_USB2_PHY=y
+ CONFIG_USB_KEYBOARD=y
+ CONFIG_USB_GADGET=y
+-CONFIG_USB_GADGET_MANUFACTURER="Rockchip"
+ CONFIG_USB_GADGET_VENDOR_NUM=0x2207
+ CONFIG_USB_GADGET_PRODUCT_NUM=0x320a
+ CONFIG_USB_GADGET_DWC2_OTG=y
+diff --git a/drivers/usb/gadget/Kconfig b/drivers/usb/gadget/Kconfig
+index 26b4d12a09..1959a390f3 100644
+--- a/drivers/usb/gadget/Kconfig
++++ b/drivers/usb/gadget/Kconfig
+@@ -39,6 +39,7 @@ if USB_GADGET
+ config USB_GADGET_MANUFACTURER
+ 	string "Vendor name of the USB device"
+ 	default "Allwinner Technology" if ARCH_SUNXI
++	default "Rockchip" if ARCH_ROCKCHIP
+ 	default "U-Boot"
+ 	help
+ 	  Vendor name of the USB device emulated, reported to the host device.
 -- 
 2.18.0.321.gffc6fa0e3
