@@ -1,13 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v4 1/7] Makefile: Add rockchip image type
-Date: Thu, 24 Oct 2019 01:26:46 +0530
-Message-ID: <20191023195652.7158-2-jagan@amarulasolutions.com>
-References: <20191023195652.7158-1-jagan@amarulasolutions.com>
+Subject: [PATCH v4 0/7] rockchip: Add Binman support
+Date: Thu, 24 Oct 2019 01:26:45 +0530
+Message-ID: <20191023195652.7158-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191023195652.7158-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,40 +16,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, "Matwey V . Kornilov" <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add rockchip image type support. right now the image
-type marked with rksd, So create image type variable
-with required image type like rksd or rkspi.
+This is v4 set for Binman support in rockchip, [1] here is
+previous patchset.
 
-Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Matwey V. Kornilov <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- Makefile | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+This series add single boot image with binman for arm32 and
+pad_cat for arm64 rockchip platforms both TPL + SPL and SPL-alone
+targets.
 
-diff --git a/Makefile b/Makefile
-index 6fda3268e7..3e05d3fcfe 100644
---- a/Makefile
-+++ b/Makefile
-@@ -1334,7 +1334,15 @@ u-boot-with-spl.bin: $(SPL_IMAGE) $(SPL_PAYLOAD) FORCE
- 	$(call if_changed,pad_cat)
- 
- ifeq ($(CONFIG_ARCH_ROCKCHIP),y)
--MKIMAGEFLAGS_u-boot-tpl.img = -n $(CONFIG_SYS_SOC) -T rksd
-+
-+# rockchip image type
-+ifeq ($(CONFIG_SPI_FLASH_SUPPORT),y)
-+ROCKCHIP_IMG_TYPE := rkspi
-+else
-+ROCKCHIP_IMG_TYPE := rksd
-+endif
-+
-+MKIMAGEFLAGS_u-boot-tpl.img = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
- tpl/u-boot-tpl.img: tpl/u-boot-tpl.bin FORCE
- 	$(call if_changed,mkimage)
- idbloader.img: tpl/u-boot-tpl.img spl/u-boot-spl.bin FORCE
+Changes for v4:
+- support all rockchip platforms
+- add new patches for dtsi changes
+- update documentation
+- format proper commit message
+- rebase on master
+Changes for v3:
+- rebase on master
+- add binman for rk3288, rk3328, rk3368, rk3399
+- added rst documentation for rockchip
+Changes for v2:
+- Add few clean target patches
+- update bl31.elf env handling code, with logging
+- support puma itb, via BL31 and PMUM0 env
+- enable BUILD_TARGET for ROCKCHIP_RK3399
+- add patch to build rockchip dtbs based on SoC types
+
+[1] https://patchwork.ozlabs.org/cover/1178957/
+
+Jagan Teki (7):
+  Makefile: Add rockchip image type
+  Makefile: rockchip: Suffix platform type with tpl name
+  Makefile: rockchip: Support SPL-alone mkimage
+  Makefile: rockchip: Use u-boot preferred spl name
+  arm: dts: rk3036: Add rk3036-u-boot.dtsi
+  rockchip: Add Single boot image (with binman, pad_cat)
+  doc: boards: Add rockchip documentation
+
+ Makefile                            |  36 ++++++--
+ arch/arm/Kconfig                    |   1 +
+ arch/arm/dts/rk3036-sdk-u-boot.dtsi |   2 +
+ arch/arm/dts/rk3036-u-boot.dtsi     |   6 ++
+ arch/arm/dts/rk3288-u-boot.dtsi     |   2 +
+ arch/arm/dts/rockchip-u-boot.dtsi   |  21 +++++
+ doc/board/rockchip/index.rst        |  10 +++
+ doc/board/rockchip/rockchip.rst     | 128 ++++++++++++++++++++++++++++
+ include/configs/rockchip-common.h   |   2 +
+ 9 files changed, 203 insertions(+), 5 deletions(-)
+ create mode 100644 arch/arm/dts/rk3036-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rockchip-u-boot.dtsi
+ create mode 100644 doc/board/rockchip/index.rst
+ create mode 100644 doc/board/rockchip/rockchip.rst
+
 -- 
 2.18.0.321.gffc6fa0e3
