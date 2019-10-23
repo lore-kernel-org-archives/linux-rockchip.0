@@ -1,11 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v4 4/7] Makefile: rockchip: Use u-boot preferred spl name
-Date: Thu, 24 Oct 2019 01:26:49 +0530
-Message-ID: <20191023195652.7158-5-jagan@amarulasolutions.com>
+Subject: [PATCH v4 6/7] rockchip: Add Single boot image (with binman, pad_cat)
+Date: Thu, 24 Oct 2019 01:26:51 +0530
+Message-ID: <20191023195652.7158-7-jagan@amarulasolutions.com>
 References: <20191023195652.7158-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20191023195652.7158-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -18,62 +18,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, "Matwey V . Kornilov" <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Most of the platforms uses the platform type and particular
-boot stage on their image naming conventions in makefile
-like,
-
-u-boot-sunxi-with-spl.bin - Allwinner U-Boot with SPL
-u-boot-spl-mtk.bin - Mediatek SPL bin
-
-This would help to understand the users to what that
-particular image belongs to? and less confused.
-
-On that note, use u-boot-spl-rockchip.bin instead of
-idbloader.img. idbloader.img is still a proper naming
-for rockchip external documentation but u-boot preferred
-spl name would always good choice in upstream tree.
-
-Also, bin is more conventional way to include it on tools
-like binman, pad_cat etc in future patches.
-
-Note: usage of platform type, boot stage doesn't follow
-consistent oder as of now.
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- Makefile | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/Makefile b/Makefile
-index b58107d6ef..a4278170d4 100644
---- a/Makefile
-+++ b/Makefile
-@@ -887,7 +887,7 @@ ALL-y += u-boot-with-dtb.bin
- endif
- 
- ifeq ($(CONFIG_ARCH_ROCKCHIP)$(CONFIG_SPL),yy)
--ALL-y += idbloader.img
-+ALL-y += u-boot-spl-rockchip.bin
- endif
- 
- LDFLAGS_u-boot += $(LDFLAGS_FINAL)
-@@ -1347,11 +1347,11 @@ ifeq ($(CONFIG_SPL)$(CONFIG_TPL),yy)
- MKIMAGEFLAGS_u-boot-tpl-rockchip.bin = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
- tpl/u-boot-tpl-rockchip.bin: tpl/u-boot-tpl.bin FORCE
- 	$(call if_changed,mkimage)
--idbloader.img: tpl/u-boot-tpl-rockchip.bin spl/u-boot-spl.bin FORCE
-+u-boot-spl-rockchip.bin: tpl/u-boot-tpl-rockchip.bin spl/u-boot-spl.bin FORCE
- 	$(call if_changed,cat)
- else
--MKIMAGEFLAGS_idbloader.img = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
--idbloader.img: spl/u-boot-spl.bin FORCE
-+MKIMAGEFLAGS_u-boot-spl-rockchip.bin = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
-+u-boot-spl-rockchip.bin: spl/u-boot-spl.bin FORCE
- 	$(call if_changed,mkimage)
- endif
- 
--- 
-2.18.0.321.gffc6fa0e3
+QWxsIHJvY2tjaGlwIHBsYXRmb3JtcyBzdXBwb3J0IFRQTCBvciBTUEwtYmFzZWQgYm9vdGxvYWRl
+cgppbiBtYWlubGluZSB3aXRoIFUtQm9vdCBwcm9wZXIgYXMgZmluYWwgc3RhZ2UuIEZvciBlYWNo
+CnN0YWdlIHdlIG5lZWQgdG8gYnVybiB0aGUgaW1hZ2Ugb24gdG8gZmxhc2ggd2l0aCByZXNwZWN0
+aXZlCm9mZnNldHMuCgpUaGlzIHBhdGNoIGNyZWF0ZXMgYSBzaW5nbGUgYm9vdCBpbWFnZSBjb21w
+b25lbnQgdXNpbmcKLSBiaW5tYW4sIGZvciBhcm0zMiByb2NrY2hpcCBwbGF0Zm9ybXMKLSBwYWRf
+Y2F0LCBmb3IgYXJtNjQgcm9ja2NoaXAgcGxhdGZvcm1zLgoKVGhpcyB3b3VsZCBoZWxwIHVzZXJz
+IHRvIGdldCByaWQgb2YgYnVybmluZyBkaWZmZXJlbnQKYm9vdCBzdGFnZSBpbWFnZXMuCgpUaGUg
+bmV3IGltYWdlIGNhbGxlZCAndS1ib290LXJvY2tjaGlwLmJpbicKd2hpY2ggY2FuIGJ1cm4gaW50
+byBmbGFzaCBsaWtlOgoK4oK5IHN1ZG8gZGQgaWY9dS1ib290LXJvY2tjaGlwLmJpbiBvZj0vZGV2
+L3NkYSBzZWVrPTY0CgpUaGlzIHdvdWxkIHN1cHBvcnQgYWxsIHJvY2tjaGlwIHBsYXRmb3Jtcywg
+ZXhjZXB0IHJrMzEyOApzaW5jZSBpdCBkb2Vzbid0IHN1cHBvcnQgZm9yIFNQTCB5ZXQuCgpDYzog
+S2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KQ2M6IE1hdHdleSBWLiBLb3Ju
+aWxvdiA8bWF0d2V5Lmtvcm5pbG92QGdtYWlsLmNvbT4KU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVr
+aSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Ci0tLQogTWFrZWZpbGUgICAgICAgICAgICAg
+ICAgICAgICAgICAgIHwgMTggKysrKysrKysrKysrKystLS0tCiBhcmNoL2FybS9LY29uZmlnICAg
+ICAgICAgICAgICAgICAgfCAgMSArCiBhcmNoL2FybS9kdHMvcmszMDM2LXUtYm9vdC5kdHNpICAg
+fCAgMiArKwogYXJjaC9hcm0vZHRzL3JrMzI4OC11LWJvb3QuZHRzaSAgIHwgIDIgKysKIGFyY2gv
+YXJtL2R0cy9yb2NrY2hpcC11LWJvb3QuZHRzaSB8IDIxICsrKysrKysrKysrKysrKysrKysrKwog
+aW5jbHVkZS9jb25maWdzL3JvY2tjaGlwLWNvbW1vbi5oIHwgIDIgKysKIDYgZmlsZXMgY2hhbmdl
+ZCwgNDIgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2RlIDEwMDY0NCBh
+cmNoL2FybS9kdHMvcm9ja2NoaXAtdS1ib290LmR0c2kKCmRpZmYgLS1naXQgYS9NYWtlZmlsZSBi
+L01ha2VmaWxlCmluZGV4IGE0Mjc4MTcwZDQuLjZjNzAxMDZjNmUgMTAwNjQ0Ci0tLSBhL01ha2Vm
+aWxlCisrKyBiL01ha2VmaWxlCkBAIC04ODcsNyArODg3LDcgQEAgQUxMLXkgKz0gdS1ib290LXdp
+dGgtZHRiLmJpbgogZW5kaWYKIAogaWZlcSAoJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkkKENPTkZJ
+R19TUEwpLHl5KQotQUxMLXkgKz0gdS1ib290LXNwbC1yb2NrY2hpcC5iaW4KK0FMTC15ICs9IHUt
+Ym9vdC1yb2NrY2hpcC5iaW4KIGVuZGlmCiAKIExERkxBR1NfdS1ib290ICs9ICQoTERGTEFHU19G
+SU5BTCkKQEAgLTEzNDcsMTUgKzEzNDcsMjUgQEAgaWZlcSAoJChDT05GSUdfU1BMKSQoQ09ORklH
+X1RQTCkseXkpCiBNS0lNQUdFRkxBR1NfdS1ib290LXRwbC1yb2NrY2hpcC5iaW4gPSAtbiAkKENP
+TkZJR19TWVNfU09DKSAtVCAkKFJPQ0tDSElQX0lNR19UWVBFKQogdHBsL3UtYm9vdC10cGwtcm9j
+a2NoaXAuYmluOiB0cGwvdS1ib290LXRwbC5iaW4gRk9SQ0UKIAkkKGNhbGwgaWZfY2hhbmdlZCxt
+a2ltYWdlKQotdS1ib290LXNwbC1yb2NrY2hpcC5iaW46IHRwbC91LWJvb3QtdHBsLXJvY2tjaGlw
+LmJpbiBzcGwvdS1ib290LXNwbC5iaW4gRk9SQ0UKK3NwbC91LWJvb3Qtc3BsLXJvY2tjaGlwLmJp
+bjogdHBsL3UtYm9vdC10cGwtcm9ja2NoaXAuYmluIHNwbC91LWJvb3Qtc3BsLmJpbiBGT1JDRQog
+CSQoY2FsbCBpZl9jaGFuZ2VkLGNhdCkKIGVsc2UKIE1LSU1BR0VGTEFHU191LWJvb3Qtc3BsLXJv
+Y2tjaGlwLmJpbiA9IC1uICQoQ09ORklHX1NZU19TT0MpIC1UICQoUk9DS0NISVBfSU1HX1RZUEUp
+Ci11LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbjogc3BsL3UtYm9vdC1zcGwuYmluIEZPUkNFCitzcGwv
+dS1ib290LXNwbC1yb2NrY2hpcC5iaW46IHNwbC91LWJvb3Qtc3BsLmJpbiBGT1JDRQogCSQoY2Fs
+bCBpZl9jaGFuZ2VkLG1raW1hZ2UpCiBlbmRpZgogCi1lbmRpZgoraWZlcSAoJChDT05GSUdfQVJN
+NjQpLCkKK3UtYm9vdC1yb2NrY2hpcC5iaW46IHNwbC91LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbiB1
+LWJvb3QuaW1nIEZPUkNFCisJJChjYWxsIGlmX2NoYW5nZWQsYmlubWFuKQorZWxzZQorT0JKQ09Q
+WUZMQUdTX3UtYm9vdC1yb2NrY2hpcC5iaW4gPSAtSSBiaW5hcnkgLU8gYmluYXJ5IFwKKwktLXBh
+ZC10bz0kKENPTkZJR19TUExfUEFEX1RPKSAtLWdhcC1maWxsPTB4ZmYKK3UtYm9vdC1yb2NrY2hp
+cC5iaW46IHNwbC91LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbiB1LWJvb3QuaXRiIEZPUkNFCisJJChj
+YWxsIGlmX2NoYW5nZWQscGFkX2NhdCkKK2VuZGlmICMgQ09ORklHX0FSTTY0CisKK2VuZGlmICMg
+Q09ORklHX0FSQ0hfUk9DS0NISVAKIAogaWZlcSAoJChDT05GSUdfQVJDSF9MUEMzMlhYKSQoQ09O
+RklHX1NQTCkseXkpCiBNS0lNQUdFRkxBR1NfbHBjMzJ4eC1zcGwuaW1nID0gLVQgbHBjMzJ4eGlt
+YWdlIC1hICQoQ09ORklHX1NQTF9URVhUX0JBU0UpCmRpZmYgLS1naXQgYS9hcmNoL2FybS9LY29u
+ZmlnIGIvYXJjaC9hcm0vS2NvbmZpZwppbmRleCAxZGYyYWJhM2MyLi44MTA3NDE0NjI2IDEwMDY0
+NAotLS0gYS9hcmNoL2FybS9LY29uZmlnCisrKyBiL2FyY2gvYXJtL0tjb25maWcKQEAgLTE1OTQs
+NiArMTU5NCw3IEBAIGNvbmZpZyBBUkNIX1NUTTMyTVAKIGNvbmZpZyBBUkNIX1JPQ0tDSElQCiAJ
+Ym9vbCAiU3VwcG9ydCBSb2NrY2hpcCBTb0NzIgogCXNlbGVjdCBCTEsKKwlzZWxlY3QgQklOTUFO
+IGlmICFBUk02NAogCXNlbGVjdCBETQogCXNlbGVjdCBETV9HUElPCiAJc2VsZWN0IERNX0kyQwpk
+aWZmIC0tZ2l0IGEvYXJjaC9hcm0vZHRzL3JrMzAzNi11LWJvb3QuZHRzaSBiL2FyY2gvYXJtL2R0
+cy9yazMwMzYtdS1ib290LmR0c2kKaW5kZXggMWU3ZDA3OTMxNS4uNDFhYzA1NGI4MSAxMDA2NDQK
+LS0tIGEvYXJjaC9hcm0vZHRzL3JrMzAzNi11LWJvb3QuZHRzaQorKysgYi9hcmNoL2FybS9kdHMv
+cmszMDM2LXUtYm9vdC5kdHNpCkBAIC0yLDMgKzIsNSBAQAogLyoKICAqIENvcHlyaWdodCAoQykg
+MjAxOSBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KICAqLworCisjaW5j
+bHVkZSAicm9ja2NoaXAtdS1ib290LmR0c2kiCmRpZmYgLS1naXQgYS9hcmNoL2FybS9kdHMvcmsz
+Mjg4LXUtYm9vdC5kdHNpIGIvYXJjaC9hcm0vZHRzL3JrMzI4OC11LWJvb3QuZHRzaQppbmRleCAz
+ZjAwYTNiNmQzLi42ZDMxNzM1MzYyIDEwMDY0NAotLS0gYS9hcmNoL2FybS9kdHMvcmszMjg4LXUt
+Ym9vdC5kdHNpCisrKyBiL2FyY2gvYXJtL2R0cy9yazMyODgtdS1ib290LmR0c2kKQEAgLTMsNiAr
+Myw4IEBACiAgKiBDb3B5cmlnaHQgKEMpIDIwMTkgUm9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uLCBM
+dGQKICAqLwogCisjaW5jbHVkZSAicm9ja2NoaXAtdS1ib290LmR0c2kiCisKIC8gewogCWNob3Nl
+biB7CiAJCXUtYm9vdCxzcGwtYm9vdC1vcmRlciA9IFwKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2R0
+cy9yb2NrY2hpcC11LWJvb3QuZHRzaSBiL2FyY2gvYXJtL2R0cy9yb2NrY2hpcC11LWJvb3QuZHRz
+aQpuZXcgZmlsZSBtb2RlIDEwMDY0NAppbmRleCAwMDAwMDAwMDAwLi5iYzBiMTQxMmEyCi0tLSAv
+ZGV2L251bGwKKysrIGIvYXJjaC9hcm0vZHRzL3JvY2tjaGlwLXUtYm9vdC5kdHNpCkBAIC0wLDAg
+KzEsMjEgQEAKKy8vIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wKworLyoKKyAqIENv
+cHlyaWdodCAoQykgMjAxOSBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4K
+KyAqLworCisjaW5jbHVkZSA8Y29uZmlnLmg+CisKKy8geworCWJpbm1hbiB7CisJCWZpbGVuYW1l
+ID0gInUtYm9vdC1yb2NrY2hpcC5iaW4iOworCQlwYWQtYnl0ZSA9IDwweGZmPjsKKworCQlibG9i
+IHsKKwkJCWZpbGVuYW1lID0gInNwbC91LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbiI7CisJCX07CisK
+KwkJdS1ib290LWltZyB7CisJCQlvZmZzZXQgPSA8Q09ORklHX1NQTF9QQURfVE8+OworCQl9Owor
+CX07Cit9OwpkaWZmIC0tZ2l0IGEvaW5jbHVkZS9jb25maWdzL3JvY2tjaGlwLWNvbW1vbi5oIGIv
+aW5jbHVkZS9jb25maWdzL3JvY2tjaGlwLWNvbW1vbi5oCmluZGV4IDY4ZTExMDVhNGIuLmQ3ZjVj
+YTlmYTQgMTAwNjQ0Ci0tLSBhL2luY2x1ZGUvY29uZmlncy9yb2NrY2hpcC1jb21tb24uaAorKysg
+Yi9pbmNsdWRlL2NvbmZpZ3Mvcm9ja2NoaXAtY29tbW9uLmgKQEAgLTksNiArOSw4IEBACiAKICNk
+ZWZpbmUgQ09ORklHX1NZU19OUzE2NTUwX01FTTMyCiAKKyNkZWZpbmUgQ09ORklHX1NQTF9QQURf
+VE8JCTgzNTU4NDAKKwogI2lmbmRlZiBDT05GSUdfU1BMX0JVSUxECiAKIC8qIEZpcnN0IHRyeSB0
+byBib290IGZyb20gU0QgKGluZGV4IDApLCB0aGVuIGVNTUMgKGluZGV4IDEpICovCi0tIAoyLjE4
+LjAuMzIxLmdmZmM2ZmEwZTMKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
