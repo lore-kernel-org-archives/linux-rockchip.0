@@ -1,185 +1,161 @@
-From: Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] usb: dwc3: Add shutdown to platform_driver
-Date: Wed, 23 Oct 2019 09:31:21 +0300
-Message-ID: <877e4wj7ly.fsf@gmail.com>
-References: <4d18d4f7-a00e-bd60-6361-51054eba3bca@arm.com>
- <20190817174140.6394-1-vicencb@gmail.com>
- <8d48017a-64c5-4b25-8d85-113ffcf502c9@gmail.com> <87v9uix1sv.fsf@gmail.com>
- <645526b8-bfed-4cc6-9500-1843c5fe0da9@gmail.com>
- <0edb55d4-3bad-47ac-9d29-8d994d182e67@gmail.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH 5/9] fastboot: rockchip: Select
+	FASTBOOT_FLASH[_MMC_DEV]
+Date: Wed, 23 Oct 2019 15:46:54 +0800
+Message-ID: <f093a722-b297-3917-2826-3ddb243e57f4@rock-chips.com>
+References: <20191022175458.22604-1-jagan@amarulasolutions.com>
+ <20191022175458.22604-6-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============3430461228271172271=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <0edb55d4-3bad-47ac-9d29-8d994d182e67-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, MarcZyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20191022175458.22604-6-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
---===============3430461228271172271==
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha256; protocol="application/pgp-signature"
-
---=-=-=
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-
-Hi,
-
-(sorry for the long delay)
-
-Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> writes:
-
-> On Tuesday, August 27, 2019 2:16:20 PM CEST, Vicente Bergas wrote:
->> On Tuesday, August 27, 2019 1:53:04 PM CEST, Felipe Balbi wrote:
->>> Hi,
->>>=20
->>> Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> writes:
->>>> On Saturday, August 17, 2019 7:41:40 PM CEST, Vicente Bergas wrote:
->>>>> Otherwise the device keeps writing to memory after kexec and disturbs
->>>>> the next kernel.
->> ...
->>>=20
->>> why don't you just have shutdown use the same exact function as remove?
->>> Frankly, though, I still don't fully understand what's going wrong
->>> here. Why is the device still alive during kexec?
->>>=20
->>> cheers
->>
->> Hi Felipe,
->> the remove and shutdown functions have different prototypes, so
->> shutdown is wrapping remove.
->> Would it be preferable to cast remove as shutdown?
->>
->> The issue with kexec is that the device is being used during the livetime
->> of the first kernel. When the first kernel executes kexec it calls the
->> shutdown function of drivers (instead of remove). Because of this the dw=
-c3
->> device keeps doing things like DMA.
->> While the second kernel is taking over, it gets its memory corrupted with
->> such DMA accesses from the device. When the second kernel reaches the po=
-int
->> of taking over the dwc3 device, re-initializes it, but it is already too
->> late. Still worse, if the second kernel did not have the dwc3 driver, it
->> would get endless memory corruptions.
->> All in all, devices that can do DMA need to stop doing it on shutdown.
->>
->> Regards,
->>  Vicen=C3=A7.
->
-> Hi,
-> please, can you provide some feedback on this?
-
-I meant something like this:
-
-diff --git a/drivers/usb/dwc3/dwc3-of-simple.c b/drivers/usb/dwc3/dwc3-of-s=
-imple.c
-index bdac3e7d7b18..e64754be47b4 100644
-=2D-- a/drivers/usb/dwc3/dwc3-of-simple.c
-+++ b/drivers/usb/dwc3/dwc3-of-simple.c
-@@ -110,12 +110,9 @@ static int dwc3_of_simple_probe(struct platform_device=
- *pdev)
- 	return ret;
- }
-=20
-=2Dstatic int dwc3_of_simple_remove(struct platform_device *pdev)
-+static void __dwc3_of_simple_teardown(struct dwc3_of_simple *simple)
- {
-=2D	struct dwc3_of_simple	*simple =3D platform_get_drvdata(pdev);
-=2D	struct device		*dev =3D &pdev->dev;
-=2D
-=2D	of_platform_depopulate(dev);
-+	of_platform_depopulate(simple->dev);
-=20
- 	clk_bulk_disable_unprepare(simple->num_clocks, simple->clks);
- 	clk_bulk_put_all(simple->num_clocks, simple->clks);
-@@ -126,13 +123,27 @@ static int dwc3_of_simple_remove(struct platform_devi=
-ce *pdev)
-=20
- 	reset_control_put(simple->resets);
-=20
-=2D	pm_runtime_disable(dev);
-=2D	pm_runtime_put_noidle(dev);
-=2D	pm_runtime_set_suspended(dev);
-+	pm_runtime_disable(simple->dev);
-+	pm_runtime_put_noidle(simple->dev);
-+	pm_runtime_set_suspended(simple->dev);
-+}
-+
-+static int dwc3_of_simple_remove(struct platform_device *pdev)
-+{
-+	struct dwc3_of_simple	*simple =3D platform_get_drvdata(pdev);
-+
-+	__dwc3_of_simple_teardown(simple);
-=20
- 	return 0;
- }
-=20
-+static void dwc3_of_simple_shutdown(struct platform_device *pdev)
-+{
-+	struct dwc3_of_simple	*simple =3D platform_get_drvdata(pdev);
-+
-+	__dwc3_of_simple_teardown(simple);
-+}
-+
- static int __maybe_unused dwc3_of_simple_runtime_suspend(struct device *de=
-v)
- {
- 	struct dwc3_of_simple	*simple =3D dev_get_drvdata(dev);
-@@ -190,6 +201,7 @@ MODULE_DEVICE_TABLE(of, of_dwc3_simple_match);
- static struct platform_driver dwc3_of_simple_driver =3D {
- 	.probe		=3D dwc3_of_simple_probe,
- 	.remove		=3D dwc3_of_simple_remove,
-+	.shutdown	=3D dwc3_of_simple_shutdown,
- 	.driver		=3D {
- 		.name	=3D "dwc3-of-simple",
- 		.of_match_table =3D of_dwc3_simple_match,
-
-Can you make sure it works as you intended?
-
-=2D-=20
-balbi
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEElLzh7wn96CXwjh2IzL64meEamQYFAl2v87kACgkQzL64meEa
-mQbaxw//YJnKwS6yzWR83UxUA12uq1zvf4FjLM/l6eMrQ9ov/ksOEHccUzcRzbJG
-b/yrRZiW6mLXmVMSeaY6Ho6ijJ7RocG8Ry6gVu/+3DIH1myqyZdF095nrZZR4yEY
-spCi0Yel29Zc0CMcM2zx9QjgebaAxYleWc752q2yyOMFzNvyGJM0iLdxyBdJ2VKW
-K4sF0CrvbhGWhoryvgSM+enjR1nEp3i5em/NLR3tvLrzMWEP6GkEvL4nePoSeW2y
-P9N1hh/IHEpnUyTmQKrqIWTW+UW1V09NaLFQhMB4+t80nlp4t2zXIKTSLaf41czC
-fo+NYa96hRgcMBnX07dt5wInHPydQEmYaMavWmW2X2KkGwWP58+LrytZbXuJ97Ho
-9pCNKzRNmgqr3zpvPbBFMmwwEiqR7Nzzh9c0OmEK5exrsG7M6yxiMG2UrOQsxvRB
-E48wnS6yKZvMYakZYM9RcXfV6/GTmlolD++Fh6Eavv3MX9KM6eAFWyAe81r7eMrJ
-vEfq8XTaVCFM6uOSym60cPu820lp6C1E4D8AW4gso3ILY5FEdbqabJnCabGjJr+/
-plq8mWB6wigew0yYguisoDu8Lr/b/t8e4hem9oIBh96ODpg9pFSaOu7Hp7MtLd9b
-I2TnOJtuAXw8KbTa+kbKbhfoPOVEQAWm0q66mN1S7I0HBC5S2Cc=
-=7XbG
------END PGP SIGNATURE-----
---=-=-=--
-
-
---===============3430461228271172271==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3430461228271172271==--
+SmFnYW4sCgpPbiAyMDE5LzEwLzIzIOS4iuWNiDE6NTQsIEphZ2FuIFRla2kgd3JvdGU6Cj4gU2Vs
+ZWN0IENPTkZJR19GQVNUQk9PVF9GTEFTSCwgQ09ORklHX0ZBU1RCT09UX0ZMQVNIX01NQ19ERVYK
+PiBmb3Igcm9ja2NoaXAgU29DIHBsYWZvcm1zIGluIGZhc3Rib290IEtjb25maWcgZmlsZSBpbnN0
+ZWFkCj4gb2YgZGVmaW5lZCBpdCBpbiBib2FyZCBkZWZjb25maWcuCj4KPiBUaGlzIGV2ZW50dWFs
+bHkgZHJvcCB0aGUgZXhwbGljaXQgY29uZmlncyBkZWZpbmVkIGluCj4gc3VwcG9ydGluZyBib2Fy
+ZCBkZWZjb25maWcgZmlsZXMuCj4KPiBTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBh
+bWFydWxhc29sdXRpb25zLmNvbT4KPiAtLS0KPiAgIGNvbmZpZ3MvZXZiLXJrMzAzNl9kZWZjb25m
+aWcgICAgICB8IDIgLS0KPiAgIGNvbmZpZ3MvZXZiLXJrMzEyOF9kZWZjb25maWcgICAgICB8IDIg
+LS0KPiAgIGNvbmZpZ3MvZXZiLXJrMzIyOV9kZWZjb25maWcgICAgICB8IDIgLS0KPiAgIGNvbmZp
+Z3MvZXZiLXJrMzI4OF9kZWZjb25maWcgICAgICB8IDIgLS0KPiAgIGNvbmZpZ3MvZXZiLXJrMzMy
+OF9kZWZjb25maWcgICAgICB8IDIgLS0KPiAgIGNvbmZpZ3MvZmlyZWZseS1yazMyODhfZGVmY29u
+ZmlnICB8IDIgLS0KPiAgIGNvbmZpZ3Mva3lsaW4tcmszMDM2X2RlZmNvbmZpZyAgICB8IDIgLS0K
+PiAgIGNvbmZpZ3MvbWlxaS1yazMyODhfZGVmY29uZmlnICAgICB8IDIgLS0KPiAgIGNvbmZpZ3Mv
+cGh5Y29yZS1yazMyODhfZGVmY29uZmlnICB8IDIgLS0KPiAgIGNvbmZpZ3MvcG9wbWV0YWwtcmsz
+Mjg4X2RlZmNvbmZpZyB8IDIgLS0KPiAgIGNvbmZpZ3Mvcm9jazY0LXJrMzMyOF9kZWZjb25maWcg
+ICB8IDIgLS0KPiAgIGNvbmZpZ3MvdGlua2VyLXJrMzI4OF9kZWZjb25maWcgICB8IDIgLS0KPiAg
+IGRyaXZlcnMvZmFzdGJvb3QvS2NvbmZpZyAgICAgICAgICB8IDQgKysrLQo+ICAgMTMgZmlsZXMg
+Y2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCAyNSBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQg
+YS9jb25maWdzL2V2Yi1yazMwMzZfZGVmY29uZmlnIGIvY29uZmlncy9ldmItcmszMDM2X2RlZmNv
+bmZpZwo+IGluZGV4IGMwMmVmNmFmNGUuLmNhMmJhOWQwZDggMTAwNjQ0Cj4gLS0tIGEvY29uZmln
+cy9ldmItcmszMDM2X2RlZmNvbmZpZwo+ICsrKyBiL2NvbmZpZ3MvZXZiLXJrMzAzNl9kZWZjb25m
+aWcKPiBAQCAtMzYsOCArMzYsNiBAQCBDT05GSUdfUkVHTUFQPXkKPiAgIENPTkZJR19TWVNDT049
+eQo+ICAgIyBDT05GSUdfU1BMX0JMSyBpcyBub3Qgc2V0Cj4gICBDT05GSUdfQ0xLPXkKPiAtQ09O
+RklHX0ZBU1RCT09UX0ZMQVNIPXkKPiAtQ09ORklHX0ZBU1RCT09UX0ZMQVNIX01NQ19ERVY9MAo+
+ICAgQ09ORklHX0ZBU1RCT09UX0NNRF9PRU1fRk9STUFUPXkKPiAgIENPTkZJR19ST0NLQ0hJUF9H
+UElPPXkKPiAgIENPTkZJR19TWVNfSTJDX1JPQ0tDSElQPXkKPiBkaWZmIC0tZ2l0IGEvY29uZmln
+cy9ldmItcmszMTI4X2RlZmNvbmZpZyBiL2NvbmZpZ3MvZXZiLXJrMzEyOF9kZWZjb25maWcKPiBp
+bmRleCBhMzE4OTYzOGExLi45ZDgxZDk2ZTY4IDEwMDY0NAo+IC0tLSBhL2NvbmZpZ3MvZXZiLXJr
+MzEyOF9kZWZjb25maWcKPiArKysgYi9jb25maWdzL2V2Yi1yazMxMjhfZGVmY29uZmlnCj4gQEAg
+LTIyLDggKzIyLDYgQEAgQ09ORklHX1NZU0NPTj15Cj4gICBDT05GSUdfQ0xLPXkKPiAgIENPTkZJ
+R19GQVNUQk9PVF9CVUZfQUREUj0weDYwODAwODAwCj4gICBDT05GSUdfRkFTVEJPT1RfQlVGX1NJ
+WkU9MHgwNDAwMDAwMAo+IC1DT05GSUdfRkFTVEJPT1RfRkxBU0g9eQo+IC1DT05GSUdfRkFTVEJP
+T1RfRkxBU0hfTU1DX0RFVj0wCj4gICBDT05GSUdfRkFTVEJPT1RfQ01EX09FTV9GT1JNQVQ9eQo+
+ICAgQ09ORklHX1JPQ0tDSElQX0dQSU89eQo+ICAgQ09ORklHX1NZU19JMkNfUk9DS0NISVA9eQo+
+IGRpZmYgLS1naXQgYS9jb25maWdzL2V2Yi1yazMyMjlfZGVmY29uZmlnIGIvY29uZmlncy9ldmIt
+cmszMjI5X2RlZmNvbmZpZwo+IGluZGV4IGU3YjgxM2Q2MjcuLmEzNjU5MzFlNDcgMTAwNjQ0Cj4g
+LS0tIGEvY29uZmlncy9ldmItcmszMjI5X2RlZmNvbmZpZwo+ICsrKyBiL2NvbmZpZ3MvZXZiLXJr
+MzIyOV9kZWZjb25maWcKPiBAQCAtNDQsOCArNDQsNiBAQCBDT05GSUdfQ0xLPXkKPiAgIENPTkZJ
+R19TUExfQ0xLPXkKPiAgIENPTkZJR19UUExfQ0xLPXkKPiAgIENPTkZJR19GQVNUQk9PVF9CVUZf
+U0laRT0weDA0MDAwMDAwCj4gLUNPTkZJR19GQVNUQk9PVF9GTEFTSD15Cj4gLUNPTkZJR19GQVNU
+Qk9PVF9GTEFTSF9NTUNfREVWPTAKPiAgIENPTkZJR19GQVNUQk9PVF9DTURfT0VNX0ZPUk1BVD15
+Cj4gICBDT05GSUdfUk9DS0NISVBfR1BJTz15Cj4gICBDT05GSUdfU1lTX0kyQ19ST0NLQ0hJUD15
+Cj4gZGlmZiAtLWdpdCBhL2NvbmZpZ3MvZXZiLXJrMzI4OF9kZWZjb25maWcgYi9jb25maWdzL2V2
+Yi1yazMyODhfZGVmY29uZmlnCj4gaW5kZXggYTZjNTdkZmFhNi4uYTg4ZjM5MWI5NiAxMDA2NDQK
+PiAtLS0gYS9jb25maWdzL2V2Yi1yazMyODhfZGVmY29uZmlnCj4gKysrIGIvY29uZmlncy9ldmIt
+cmszMjg4X2RlZmNvbmZpZwo+IEBAIC00NCw4ICs0NCw2IEBAIENPTkZJR19TWVNDT049eQo+ICAg
+Q09ORklHX1NQTF9TWVNDT049eQo+ICAgQ09ORklHX0NMSz15Cj4gICBDT05GSUdfU1BMX0NMSz15
+Cj4gLUNPTkZJR19GQVNUQk9PVF9GTEFTSD15Cj4gLUNPTkZJR19GQVNUQk9PVF9GTEFTSF9NTUNf
+REVWPTAKPiAgIENPTkZJR19GQVNUQk9PVF9DTURfT0VNX0ZPUk1BVD15Cj4gICBDT05GSUdfUk9D
+S0NISVBfR1BJTz15Cj4gICBDT05GSUdfU1lTX0kyQ19ST0NLQ0hJUD15Cj4gZGlmZiAtLWdpdCBh
+L2NvbmZpZ3MvZXZiLXJrMzMyOF9kZWZjb25maWcgYi9jb25maWdzL2V2Yi1yazMzMjhfZGVmY29u
+ZmlnCj4gaW5kZXggYzlkMDU2YjRiOS4uZDEzMzQ3N2U2MiAxMDA2NDQKPiAtLS0gYS9jb25maWdz
+L2V2Yi1yazMzMjhfZGVmY29uZmlnCj4gKysrIGIvY29uZmlncy9ldmItcmszMzI4X2RlZmNvbmZp
+Zwo+IEBAIC00OCw4ICs0OCw2IEBAIENPTkZJR19DTEs9eQo+ICAgQ09ORklHX1NQTF9DTEs9eQo+
+ICAgQ09ORklHX1RQTF9DTEs9eQo+ICAgQ09ORklHX0ZBU1RCT09UX0JVRl9BRERSPTB4ODAwODAw
+Cj4gLUNPTkZJR19GQVNUQk9PVF9GTEFTSD15Cj4gLUNPTkZJR19GQVNUQk9PVF9GTEFTSF9NTUNf
+REVWPTEKPiAgIENPTkZJR19GQVNUQk9PVF9DTURfT0VNX0ZPUk1BVD15Cj4gICBDT05GSUdfUk9D
+S0NISVBfR1BJTz15Cj4gICBDT05GSUdfU1lTX0kyQ19ST0NLQ0hJUD15Cj4gZGlmZiAtLWdpdCBh
+L2NvbmZpZ3MvZmlyZWZseS1yazMyODhfZGVmY29uZmlnIGIvY29uZmlncy9maXJlZmx5LXJrMzI4
+OF9kZWZjb25maWcKPiBpbmRleCAyZGUxNjZhZTkwLi40YmQ4MTA0OGU5IDEwMDY0NAo+IC0tLSBh
+L2NvbmZpZ3MvZmlyZWZseS1yazMyODhfZGVmY29uZmlnCj4gKysrIGIvY29uZmlncy9maXJlZmx5
+LXJrMzI4OF9kZWZjb25maWcKPiBAQCAtNDYsOCArNDYsNiBAQCBDT05GSUdfU1BMX1NZU0NPTj15
+Cj4gICAjIENPTkZJR19TUExfU0lNUExFX0JVUyBpcyBub3Qgc2V0Cj4gICBDT05GSUdfQ0xLPXkK
+PiAgIENPTkZJR19TUExfQ0xLPXkKPiAtQ09ORklHX0ZBU1RCT09UX0ZMQVNIPXkKPiAtQ09ORklH
+X0ZBU1RCT09UX0ZMQVNIX01NQ19ERVY9MAo+ICAgQ09ORklHX0ZBU1RCT09UX0NNRF9PRU1fRk9S
+TUFUPXkKPiAgIENPTkZJR19ST0NLQ0hJUF9HUElPPXkKPiAgIENPTkZJR19TWVNfSTJDX1JPQ0tD
+SElQPXkKPiBkaWZmIC0tZ2l0IGEvY29uZmlncy9reWxpbi1yazMwMzZfZGVmY29uZmlnIGIvY29u
+Zmlncy9reWxpbi1yazMwMzZfZGVmY29uZmlnCj4gaW5kZXggZmYyMGRlYTBmYy4uNzkxODhjMTZi
+NyAxMDA2NDQKPiAtLS0gYS9jb25maWdzL2t5bGluLXJrMzAzNl9kZWZjb25maWcKPiArKysgYi9j
+b25maWdzL2t5bGluLXJrMzAzNl9kZWZjb25maWcKPiBAQCAtMzgsOCArMzgsNiBAQCBDT05GSUdf
+UkVHTUFQPXkKPiAgIENPTkZJR19TWVNDT049eQo+ICAgIyBDT05GSUdfU1BMX0JMSyBpcyBub3Qg
+c2V0Cj4gICBDT05GSUdfQ0xLPXkKPiAtQ09ORklHX0ZBU1RCT09UX0ZMQVNIPXkKPiAtQ09ORklH
+X0ZBU1RCT09UX0ZMQVNIX01NQ19ERVY9MAo+ICAgQ09ORklHX0ZBU1RCT09UX0NNRF9PRU1fRk9S
+TUFUPXkKPiAgIENPTkZJR19ST0NLQ0hJUF9HUElPPXkKPiAgIENPTkZJR19TWVNfSTJDX1JPQ0tD
+SElQPXkKPiBkaWZmIC0tZ2l0IGEvY29uZmlncy9taXFpLXJrMzI4OF9kZWZjb25maWcgYi9jb25m
+aWdzL21pcWktcmszMjg4X2RlZmNvbmZpZwo+IGluZGV4IGZiYWZiYjg1N2EuLjFiNTUwMDhhOTYg
+MTAwNjQ0Cj4gLS0tIGEvY29uZmlncy9taXFpLXJrMzI4OF9kZWZjb25maWcKPiArKysgYi9jb25m
+aWdzL21pcWktcmszMjg4X2RlZmNvbmZpZwo+IEBAIC00Niw4ICs0Niw2IEBAIENPTkZJR19TUExf
+U1lTQ09OPXkKPiAgICMgQ09ORklHX1NQTF9TSU1QTEVfQlVTIGlzIG5vdCBzZXQKPiAgIENPTkZJ
+R19DTEs9eQo+ICAgQ09ORklHX1NQTF9DTEs9eQo+IC1DT05GSUdfRkFTVEJPT1RfRkxBU0g9eQo+
+IC1DT05GSUdfRkFTVEJPT1RfRkxBU0hfTU1DX0RFVj0wCj4gICBDT05GSUdfRkFTVEJPT1RfQ01E
+X09FTV9GT1JNQVQ9eQo+ICAgQ09ORklHX1JPQ0tDSElQX0dQSU89eQo+ICAgQ09ORklHX1NZU19J
+MkNfUk9DS0NISVA9eQo+IGRpZmYgLS1naXQgYS9jb25maWdzL3BoeWNvcmUtcmszMjg4X2RlZmNv
+bmZpZyBiL2NvbmZpZ3MvcGh5Y29yZS1yazMyODhfZGVmY29uZmlnCj4gaW5kZXggNzBlM2JkYzYy
+MS4uZjQ0OTc0YjE5MSAxMDA2NDQKPiAtLS0gYS9jb25maWdzL3BoeWNvcmUtcmszMjg4X2RlZmNv
+bmZpZwo+ICsrKyBiL2NvbmZpZ3MvcGh5Y29yZS1yazMyODhfZGVmY29uZmlnCj4gQEAgLTQ4LDgg
+KzQ4LDYgQEAgQ09ORklHX1NQTF9TWVNDT049eQo+ICAgIyBDT05GSUdfU1BMX1NJTVBMRV9CVVMg
+aXMgbm90IHNldAo+ICAgQ09ORklHX0NMSz15Cj4gICBDT05GSUdfU1BMX0NMSz15Cj4gLUNPTkZJ
+R19GQVNUQk9PVF9GTEFTSD15Cj4gLUNPTkZJR19GQVNUQk9PVF9GTEFTSF9NTUNfREVWPTAKPiAg
+IENPTkZJR19GQVNUQk9PVF9DTURfT0VNX0ZPUk1BVD15Cj4gICBDT05GSUdfUk9DS0NISVBfR1BJ
+Tz15Cj4gICBDT05GSUdfU1lTX0kyQ19ST0NLQ0hJUD15Cj4gZGlmZiAtLWdpdCBhL2NvbmZpZ3Mv
+cG9wbWV0YWwtcmszMjg4X2RlZmNvbmZpZyBiL2NvbmZpZ3MvcG9wbWV0YWwtcmszMjg4X2RlZmNv
+bmZpZwo+IGluZGV4IDYxMWFmZjVlMWQuLmFmNzA2ODQwNDUgMTAwNjQ0Cj4gLS0tIGEvY29uZmln
+cy9wb3BtZXRhbC1yazMyODhfZGVmY29uZmlnCj4gKysrIGIvY29uZmlncy9wb3BtZXRhbC1yazMy
+ODhfZGVmY29uZmlnCj4gQEAgLTQ2LDggKzQ2LDYgQEAgQ09ORklHX1NQTF9TWVNDT049eQo+ICAg
+IyBDT05GSUdfU1BMX1NJTVBMRV9CVVMgaXMgbm90IHNldAo+ICAgQ09ORklHX0NMSz15Cj4gICBD
+T05GSUdfU1BMX0NMSz15Cj4gLUNPTkZJR19GQVNUQk9PVF9GTEFTSD15Cj4gLUNPTkZJR19GQVNU
+Qk9PVF9GTEFTSF9NTUNfREVWPTAKPiAgIENPTkZJR19GQVNUQk9PVF9DTURfT0VNX0ZPUk1BVD15
+Cj4gICBDT05GSUdfUk9DS0NISVBfR1BJTz15Cj4gICBDT05GSUdfU1lTX0kyQ19ST0NLQ0hJUD15
+Cj4gZGlmZiAtLWdpdCBhL2NvbmZpZ3Mvcm9jazY0LXJrMzMyOF9kZWZjb25maWcgYi9jb25maWdz
+L3JvY2s2NC1yazMzMjhfZGVmY29uZmlnCj4gaW5kZXggNWU2NDAwM2RkMy4uZmM5MDc5ZWI0ZSAx
+MDA2NDQKPiAtLS0gYS9jb25maWdzL3JvY2s2NC1yazMzMjhfZGVmY29uZmlnCj4gKysrIGIvY29u
+Zmlncy9yb2NrNjQtcmszMzI4X2RlZmNvbmZpZwo+IEBAIC01MSw4ICs1MSw2IEBAIENPTkZJR19D
+TEs9eQo+ICAgQ09ORklHX1NQTF9DTEs9eQo+ICAgQ09ORklHX1RQTF9DTEs9eQo+ICAgQ09ORklH
+X0ZBU1RCT09UX0JVRl9BRERSPTB4ODAwODAwCj4gLUNPTkZJR19GQVNUQk9PVF9GTEFTSD15Cj4g
+LUNPTkZJR19GQVNUQk9PVF9GTEFTSF9NTUNfREVWPTEKPiAgIENPTkZJR19GQVNUQk9PVF9DTURf
+T0VNX0ZPUk1BVD15Cj4gICBDT05GSUdfUk9DS0NISVBfR1BJTz15Cj4gICBDT05GSUdfU1lTX0ky
+Q19ST0NLQ0hJUD15Cj4gZGlmZiAtLWdpdCBhL2NvbmZpZ3MvdGlua2VyLXJrMzI4OF9kZWZjb25m
+aWcgYi9jb25maWdzL3Rpbmtlci1yazMyODhfZGVmY29uZmlnCj4gaW5kZXggNDY3MDY1ZTNhZC4u
+YTYyNDI3MGFmZiAxMDA2NDQKPiAtLS0gYS9jb25maWdzL3Rpbmtlci1yazMyODhfZGVmY29uZmln
+Cj4gKysrIGIvY29uZmlncy90aW5rZXItcmszMjg4X2RlZmNvbmZpZwo+IEBAIC00OCw4ICs0OCw2
+IEBAIENPTkZJR19TUExfU1lTQ09OPXkKPiAgICMgQ09ORklHX1NQTF9TSU1QTEVfQlVTIGlzIG5v
+dCBzZXQKPiAgIENPTkZJR19DTEs9eQo+ICAgQ09ORklHX1NQTF9DTEs9eQo+IC1DT05GSUdfRkFT
+VEJPT1RfRkxBU0g9eQo+IC1DT05GSUdfRkFTVEJPT1RfRkxBU0hfTU1DX0RFVj0wCj4gICBDT05G
+SUdfRkFTVEJPT1RfQ01EX09FTV9GT1JNQVQ9eQo+ICAgQ09ORklHX1JPQ0tDSElQX0dQSU89eQo+
+ICAgQ09ORklHX1NZU19JMkNfUk9DS0NISVA9eQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2Zhc3Ri
+b290L0tjb25maWcgYi9kcml2ZXJzL2Zhc3Rib290L0tjb25maWcKPiBpbmRleCBkNjNlY2RkMjdl
+Li4zNDg2NGNhNjEzIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZmFzdGJvb3QvS2NvbmZpZwo+ICsr
+KyBiL2RyaXZlcnMvZmFzdGJvb3QvS2NvbmZpZwo+IEBAIC02NCw3ICs2NCw3IEBAIGNvbmZpZyBG
+QVNUQk9PVF9VU0JfREVWCj4gICAKPiAgIGNvbmZpZyBGQVNUQk9PVF9GTEFTSAo+ICAgCWJvb2wg
+IkVuYWJsZSBGQVNUQk9PVCBGTEFTSCBjb21tYW5kIgo+IC0JZGVmYXVsdCB5IGlmIEFSQ0hfU1VO
+WEkKPiArCWRlZmF1bHQgeSBpZiBBUkNIX1NVTlhJIHx8IEFSQ0hfUk9DS0NISVAKPiAgIAlkZXBl
+bmRzIG9uIE1NQyB8fCAoTkFORCAmJiBDTURfTVREUEFSVFMpCj4gICAJc2VsZWN0IElNQUdFX1NQ
+QVJTRQo+ICAgCWhlbHAKPiBAQCAtODksNiArODksOCBAQCBlbmRjaG9pY2UKPiAgIGNvbmZpZyBG
+QVNUQk9PVF9GTEFTSF9NTUNfREVWCj4gICAJaW50ICJEZWZpbmUgRkFTVEJPT1QgTU1DIEZMQVNI
+IGRlZmF1bHQgZGV2aWNlIgo+ICAgCWRlcGVuZHMgb24gRkFTVEJPT1RfRkxBU0hfTU1DCj4gKwlk
+ZWZhdWx0IDEgaWYgUk9DS0NISVBfUkszMzI4CgpXZSBjYW4gdXNlICcwJyBmb3IgcmszMzI4wqAg
+YW5kIHJlbW92ZSB0aGlzIGxpbmUuCgpXaGVuIHdlIHVzaW5nIGZhc3Rib290LCB3ZSBzdXBwb3Nl
+IHRvIGFjY2VzcyB0byBlTU1DLCBidXQgbm90IFNEQ2FyZCwKCmFuZCB0aGUgZU1NQyBudW1iZXIg
+aXMgYWx3YXlzICcwJyBvbiBSb2NrY2hpcCBwbGF0Zm9ybS4KClRoYW5rcywKCi0gS2V2ZXIKCj4g
+KwlkZWZhdWx0IDAgaWYgQVJDSF9ST0NLQ0hJUAo+ICAgCWRlZmF1bHQgMCBpZiBBUkNIX1NVTlhJ
+ICYmIE1NQ19TVU5YSV9TTE9UX0VYVFJBID0gLTEKPiAgIAlkZWZhdWx0IDEgaWYgQVJDSF9TVU5Y
+SSAmJiBNTUNfU1VOWElfU0xPVF9FWFRSQSAhPSAtMQo+ICAgCWhlbHAKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUt
+Qm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
