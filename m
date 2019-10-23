@@ -1,59 +1,67 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v4 5/7] arm: dts: rk3036: Add rk3036-u-boot.dtsi
-Date: Thu, 24 Oct 2019 01:26:50 +0530
-Message-ID: <20191023195652.7158-6-jagan@amarulasolutions.com>
-References: <20191023195652.7158-1-jagan@amarulasolutions.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH 5/6] drm/mediatek: Convert to use CMA helpers
+Date: Thu, 24 Oct 2019 05:06:24 +0800
+Message-ID: <1571864784.19128.8.camel@mtksdaap41>
+References: <20191021214550.1461-1-robh@kernel.org>
+ <20191021214550.1461-6-robh@kernel.org>
+ <1cbca96c-19dd-1d15-949c-7fbcc15369b4@gmail.com>
+ <CAL_JsqL6G=F45G+-QXF6T1269f9YquXfYtjoUkCpAoNartxM=Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191023195652.7158-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAL_JsqL6G=F45G+-QXF6T1269f9YquXfYtjoUkCpAoNartxM=Q@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, Liviu Dudau <liviu.dudau@arm.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Yannick Fertre <yannick.fertre@st.com>, Nicolas Boichat <drinkcat@chromium.org>, Kevin Hilman <khilman@baylibre.com>, Xinwei Kong <kong.kongxinwei@hisilicon.com>, Xinliang Liu <z.liuxinliang@hisilicon.com>, "open list:ARM/Rockchip
+ SoC..." <linux-rockchip@lists.infradead.org>, Chen-Yu Tsai <wens@csie.org>, "James (Qian) Wang" <james.qian.wang@arm.com>, Ulrich Hecht <uli@fpond.eu>, Alexandre Torgue <alexandre.torgue@st.com>, Chen Feng <puck.chen@hisilicon.com>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>, moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTUR
 List-Id: linux-rockchip.vger.kernel.org
 
-Add U-Boot specific dtsi file for rk3036 SoC. This
-would help to add U-Boot specific dts nodes, properties
-which are common across rk3036.
-
-Right now, the file is empty, will add required changes
-in future patches.
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- arch/arm/dts/rk3036-sdk-u-boot.dtsi | 2 ++
- arch/arm/dts/rk3036-u-boot.dtsi     | 4 ++++
- 2 files changed, 6 insertions(+)
- create mode 100644 arch/arm/dts/rk3036-u-boot.dtsi
-
-diff --git a/arch/arm/dts/rk3036-sdk-u-boot.dtsi b/arch/arm/dts/rk3036-sdk-u-boot.dtsi
-index 6f15f4a8ec..754800c6e6 100644
---- a/arch/arm/dts/rk3036-sdk-u-boot.dtsi
-+++ b/arch/arm/dts/rk3036-sdk-u-boot.dtsi
-@@ -1,3 +1,5 @@
-+#include "rk3036-u-boot.dtsi"
-+
- &uart2 {
- 	u-boot,dm-pre-reloc;
- };
-diff --git a/arch/arm/dts/rk3036-u-boot.dtsi b/arch/arm/dts/rk3036-u-boot.dtsi
-new file mode 100644
-index 0000000000..1e7d079315
---- /dev/null
-+++ b/arch/arm/dts/rk3036-u-boot.dtsi
-@@ -0,0 +1,4 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+/*
-+ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-+ */
--- 
-2.18.0.321.gffc6fa0e3
+SGksIFJvYjoKCk9uIFdlZCwgMjAxOS0xMC0yMyBhdCAxMjo0MiAtMDUwMCwgUm9iIEhlcnJpbmcg
+d3JvdGU6Cj4gT24gVHVlLCBPY3QgMjIsIDIwMTkgYXQgMTI6MDcgUE0gTWF0dGhpYXMgQnJ1Z2dl
+cgo+IDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPiB3cm90ZToKPiA+Cj4gPiBIaSBSb2IsCj4gPgo+
+ID4gT24gMjEvMTAvMjAxOSAyMzo0NSwgUm9iIEhlcnJpbmcgd3JvdGU6Cj4gPiA+IFRoZSBvbmx5
+IHJlYXNvbiB0aGUgTWVkaWF0ZWsgZHJpdmVyIGRvZXNuJ3QgdXNlIHRoZSBDTUEgaGVscGVycyBp
+cyBpdAo+ID4gPiBzZXRzIERNQV9BVFRSX05PX0tFUk5FTF9NQVBQSU5HIGFuZCBkb2VzIGEgdm1h
+cCgpIG9uIGRlbWFuZC4gVXNpbmcKPiA+ID4gdm1hcCgpIGlzIG5vdCBldmVuIGd1YXJhbnRlZWQg
+dG8gd29yayBhcyBETUEgYnVmZmVycyBtYXkgbm90IGhhdmUgYQo+ID4gPiBzdHJ1Y3QgcGFnZS4g
+Tm93IHRoYXQgdGhlIENNQSBoZWxwZXJzIHN1cHBvcnQgc2V0dGluZwo+ID4gPiBETUFfQVRUUl9O
+T19LRVJORUxfTUFQUElORyBhcyBuZWVkZWQgb3Igbm90LCBjb252ZXJ0IE1lZGlhdGVrIGRyaXZl
+ciB0bwo+ID4gPiB1c2UgQ01BIGhlbHBlcnMuCj4gPiA+Cj4gPiA+IENjOiBDSyBIdSA8Y2suaHVA
+bWVkaWF0ZWsuY29tPgo+ID4gPiBDYzogUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25p
+eC5kZT4KPiA+ID4gQ2M6IERhdmlkIEFpcmxpZSA8YWlybGllZEBsaW51eC5pZT4KPiA+ID4gQ2M6
+IERhbmllbCBWZXR0ZXIgPGRhbmllbEBmZndsbC5jaD4KPiA+ID4gQ2M6IE1hdHRoaWFzIEJydWdn
+ZXIgPG1hdHRoaWFzLmJnZ0BnbWFpbC5jb20+Cj4gPiA+IENjOiBsaW51eC1hcm0ta2VybmVsQGxp
+c3RzLmluZnJhZGVhZC5vcmcKPiA+ID4gQ2M6IGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKPiA+ID4gU2lnbmVkLW9mZi1ieTogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4K
+PiA+ID4gLS0tCj4gPgo+ID4gSSB0ZXN0ZWQgdGhpcyBvbiBteSBDaHJvbWVib29rIHdpdGggc29t
+ZSBwYXRjaGVzIG9uIHRvcCBvZiB2NS40LXJjMSBbMV0sIHdoaWNoCj4gPiB3b3JrLiBJZiBJIGFk
+ZCB5b3VyIHBhdGNoZXMgb24gdG9wIG9mIHRoYXQsIHRoZSBzeXN0ZW0gZG9lcyBub3QgYm9vdCB1
+cC4KPiA+IFVuZm9ydHVuYXRlbHkgSSBkb24ndCBoYXZlIGEgc2VyaWFsIGNvbnNvbGUsIHNvIEkg
+d2Fzbid0IGFibGUgdG8gc2VlIGlmIHRoZXJlIGlzCj4gPiBhbnkgZXJyb3IgbWVzc2FnZS4KPiAK
+PiBUaGFua3MgZm9yIHRlc3RpbmcuIEknbSBiYXNlZCBvbiBkcm0tbWlzYy1uZXh0LCBidXQgZG9u
+J3Qgc2VlIGFueXRoaW5nCj4gb2J2aW91cyB0aGVyZSB0aGF0IHdvdWxkIG1hdHRlci4gVGhlcmUg
+YXJlIHNvbWUgbW1hcCBjaGFuZ2VzLCBidXQgSQo+IHRoaW5rIHRoZXkgc2hvdWxkbid0IG1hdHRl
+ci4KPiAKPiBEaWQgeW91IGhhdmUgZmJjb24gZW5hYmxlZD8gVGhhdCBtYXkgZ2l2ZSBtb3JlIGNs
+dWVzIGFib3V0IHdoZXJlIHRoZSBwcm9ibGVtIGlzLgoKVGhlcmUgYXJlIHByaXYtPmRtYV9kZXYg
+Zm9yIGRtYSBkZXZpY2UsIGJ1dCBpdCBpcyBub3QgZHJtIGRldmljZS4gSW4KbXQ4MTczLmR0c2kg
+WzFdLCB0aGVyZSBhcmUgbW1zeXMgZGV2aWNlIGFuZCBvdmwgZGV2aWNlLCBtbXN5cyBkZXZpY2Ug
+aXMKZHJtIGRldmljZSBhbmQgb3ZsIGRldmljZSBpcyBtbXN5cydzIHN1YiBkZXZpY2Ugd2hpY2gg
+cHJvdmlkZSBkbWEKZnVuY3Rpb24sIHNvIG92bCBpcyB0aGUgcHJpdi0+ZG1hX2Rldi4gSSB0aGlu
+ayB5b3VyIHBhdGNoIGRpcmVjdGx5IHVzZQpkcm0gZGV2aWNlIGZvciBkbWEgb3BlcmF0aW9uIGFu
+ZCB0aGlzIHdvdWxkIGNhdXNlIGRtYSBmdW5jdGlvbiBmYWlsLgpQbGVhc2UgdXNlIHByaXYtPmRt
+YV9kZXYgZm9yIGRtYSBvcGVyYXRpb24uCgpSZWdhcmRzLApDSwoKWzFdCmh0dHBzOi8vZ2l0Lmtl
+cm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC90cmVl
+L2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTczLmR0c2k/aD12NS40LXJjNAo+IAo+
+IFJvYgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
+aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
