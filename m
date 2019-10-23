@@ -1,146 +1,185 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 4/6] drm/cma-helper: Support DRM_MODE_DUMB_KERNEL_MAP flag
-Date: Tue, 22 Oct 2019 15:02:06 -0500
-Message-ID: <CAL_JsqJk4xeFCHPqpXUSW4XJ=eQ+EYPUpjX_4UL9Pw_OAcqLdA@mail.gmail.com>
-References: <20191021214550.1461-1-robh@kernel.org>
- <20191021214550.1461-5-robh@kernel.org>
- <20191022113001.GG4756@pendragon.ideasonboard.com>
+From: Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] usb: dwc3: Add shutdown to platform_driver
+Date: Wed, 23 Oct 2019 09:31:21 +0300
+Message-ID: <877e4wj7ly.fsf@gmail.com>
+References: <4d18d4f7-a00e-bd60-6361-51054eba3bca@arm.com>
+ <20190817174140.6394-1-vicencb@gmail.com>
+ <8d48017a-64c5-4b25-8d85-113ffcf502c9@gmail.com> <87v9uix1sv.fsf@gmail.com>
+ <645526b8-bfed-4cc6-9500-1843c5fe0da9@gmail.com>
+ <0edb55d4-3bad-47ac-9d29-8d994d182e67@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191022113001.GG4756@pendragon.ideasonboard.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, Liviu Dudau <liviu.dudau@arm.com>, dri-devel <dri-devel@lists.freedesktop.org>, linux-amlogic@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, Yannick Fertre <yannick.fertre@st.com>, Kevin Hilman <khilman@baylibre.com>, Xinwei Kong <kong.kongxinwei@hisilicon.com>, Xinliang Liu <z.liuxinliang@hisilicon.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Chen-Yu Tsai <wens@csie.org>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, "James (Qian) Wang" <james.qian.wang@arm.com>, Alexandre Torgue <alexandre.torgue@st.com>, Chen Feng <puck.chen@hisilicon.com>, "open list:MEDIA DRIVERS FOR RENESAS - FCP" <linux-renesas-soc@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gma>
+Content-Type: multipart/mixed; boundary="===============3430461228271172271=="
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <0edb55d4-3bad-47ac-9d29-8d994d182e67-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, MarcZyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBPY3QgMjIsIDIwMTkgYXQgNjozMCBBTSBMYXVyZW50IFBpbmNoYXJ0CjxsYXVyZW50
-LnBpbmNoYXJ0QGlkZWFzb25ib2FyZC5jb20+IHdyb3RlOgo+Cj4gSGkgUm9iLAo+Cj4gVGhhbmsg
-eW91IGZvciB0aGUgcGF0Y2guCj4KPiBPbiBNb24sIE9jdCAyMSwgMjAxOSBhdCAwNDo0NTo0OFBN
-IC0wNTAwLCBSb2IgSGVycmluZyB3cm90ZToKPiA+IEFkZCBzdXBwb3J0IGluIENNQSBoZWxwZXJz
-IHRvIGhhbmRsZSBjYWxsZXJzIHNwZWNpZnlpbmcKPiA+IERSTV9NT0RFX0RVTUJfS0VSTkVMX01B
-UCBmbGFnLiBFeGlzdGluZyBiZWhhdmlvciBpcyBtYWludGFpbmVkIHdpdGggdGhpcwo+ID4gY2hh
-bmdlLiBkcm1fZ2VtX2NtYV9kdW1iX2NyZWF0ZSgpIGFsd2F5cyBjcmVhdGVzIGEga2VybmVsIG1h
-cHBpbmcgYXMKPiA+IGJlZm9yZS4gZHJtX2dlbV9jbWFfZHVtYl9jcmVhdGVfaW50ZXJuYWwoKSBs
-ZXRzIHRoZSBjYWxsZXIgc2V0IHRoZSBmbGFncwo+ID4gYXMgZGVzaXJlZC4gVGhlcmVmb3JlLCB1
-cGRhdGUgYWxsIHRoZSBleGlzdGluZyBjYWxsZXJzIG9mCj4gPiBkcm1fZ2VtX2NtYV9kdW1iX2Ny
-ZWF0ZV9pbnRlcm5hbCgpIHRvIGFsc28gc2V0IHRoZQo+ID4gRFJNX01PREVfRFVNQl9LRVJORUxf
-TUFQIGZsYWcuCj4gPgo+ID4gQ2M6IE1hYXJ0ZW4gTGFua2hvcnN0IDxtYWFydGVuLmxhbmtob3Jz
-dEBsaW51eC5pbnRlbC5jb20+Cj4gPiBDYzogTWF4aW1lIFJpcGFyZCA8bXJpcGFyZEBrZXJuZWwu
-b3JnPgo+ID4gQ2M6IFNlYW4gUGF1bCA8c2VhbkBwb29ybHkucnVuPgo+ID4gQ2M6IERhdmlkIEFp
-cmxpZSA8YWlybGllZEBsaW51eC5pZT4KPiA+IENjOiBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3
-bGwuY2g+Cj4gPiBDYzogIkphbWVzIChRaWFuKSBXYW5nIiA8amFtZXMucWlhbi53YW5nQGFybS5j
-b20+Cj4gPiBDYzogTGl2aXUgRHVkYXUgPGxpdml1LmR1ZGF1QGFybS5jb20+Cj4gPiBDYzogQnJp
-YW4gU3RhcmtleSA8YnJpYW4uc3RhcmtleUBhcm0uY29tPgo+ID4gQ2M6IE5laWwgQXJtc3Ryb25n
-IDxuYXJtc3Ryb25nQGJheWxpYnJlLmNvbT4KPiA+IENjOiBLZXZpbiBIaWxtYW4gPGtoaWxtYW5A
-YmF5bGlicmUuY29tPgo+ID4gQ2M6IExhdXJlbnQgUGluY2hhcnQgPGxhdXJlbnQucGluY2hhcnRA
-aWRlYXNvbmJvYXJkLmNvbT4KPiA+IENjOiBLaWVyYW4gQmluZ2hhbSA8a2llcmFuLmJpbmdoYW0r
-cmVuZXNhc0BpZGVhc29uYm9hcmQuY29tPgo+ID4gQ2M6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1j
-aGlwcy5jb20+Cj4gPiBDYzogIkhlaWtvIFN0w7xibmVyIiA8aGVpa29Ac250ZWNoLmRlPgo+ID4g
-Q2M6IFlhbm5pY2sgRmVydHJlIDx5YW5uaWNrLmZlcnRyZUBzdC5jb20+Cj4gPiBDYzogUGhpbGlw
-cGUgQ29ybnUgPHBoaWxpcHBlLmNvcm51QHN0LmNvbT4KPiA+IENjOiBCZW5qYW1pbiBHYWlnbmFy
-ZCA8YmVuamFtaW4uZ2FpZ25hcmRAbGluYXJvLm9yZz4KPiA+IENjOiBWaW5jZW50IEFicmlvdSA8
-dmluY2VudC5hYnJpb3VAc3QuY29tPgo+ID4gQ2M6IE1heGltZSBDb3F1ZWxpbiA8bWNvcXVlbGlu
-LnN0bTMyQGdtYWlsLmNvbT4KPiA+IENjOiBBbGV4YW5kcmUgVG9yZ3VlIDxhbGV4YW5kcmUudG9y
-Z3VlQHN0LmNvbT4KPiA+IENjOiBDaGVuLVl1IFRzYWkgPHdlbnNAY3NpZS5vcmc+Cj4gPiBDYzog
-bGludXgtYW1sb2dpY0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gPiBDYzogbGludXgtYXJtLWtlcm5l
-bEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gPiBDYzogbGludXgtcmVuZXNhcy1zb2NAdmdlci5rZXJu
-ZWwub3JnCj4gPiBDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+ID4gQ2M6
-IGxpbnV4LXN0bTMyQHN0LW1kLW1haWxtYW4uc3Rvcm1yZXBseS5jb20KPiA+IFNpZ25lZC1vZmYt
-Ynk6IFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+Cj4gPiAtLS0KPiA+ICAuLi4vZ3B1L2Ry
-bS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRhX2ttcy5jICAgfCAgMSArCj4gPiAgZHJpdmVycy9n
-cHUvZHJtL2FybS9tYWxpZHBfZHJ2LmMgICAgICAgICAgICAgIHwgIDEgKwo+ID4gIGRyaXZlcnMv
-Z3B1L2RybS9kcm1fZ2VtX2NtYV9oZWxwZXIuYyAgICAgICAgICB8IDQ4ICsrKysrKysrKysrLS0t
-LS0tLS0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVzb24vbWVzb25fZHJ2LmMgICAgICAgICAgICAg
-fCAgMSArCj4gPiAgZHJpdmVycy9ncHUvZHJtL3JjYXItZHUvcmNhcl9kdV9rbXMuYyAgICAgICAg
-IHwgIDEgKwo+ID4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMg
-ICB8ICAxICsKPiA+ICBkcml2ZXJzL2dwdS9kcm0vc3RtL2Rydi5jICAgICAgICAgICAgICAgICAg
-ICAgfCAgMSArCj4gPiAgZHJpdmVycy9ncHUvZHJtL3N1bjRpL3N1bjRpX2Rydi5jICAgICAgICAg
-ICAgIHwgIDEgKwo+ID4gIDggZmlsZXMgY2hhbmdlZCwgMzYgaW5zZXJ0aW9ucygrKSwgMTkgZGVs
-ZXRpb25zKC0pCj4gPgo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxh
-eS9rb21lZGEva29tZWRhX2ttcy5jIGIvZHJpdmVycy9ncHUvZHJtL2FybS9kaXNwbGF5L2tvbWVk
-YS9rb21lZGFfa21zLmMKPiA+IGluZGV4IGQ0OTc3MmRlOTNlMC4uN2NmMGRjNGNiZmMxIDEwMDY0
-NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfa21z
-LmMKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRhX2tt
-cy5jCj4gPiBAQCAtMzEsNiArMzEsNyBAQCBzdGF0aWMgaW50IGtvbWVkYV9nZW1fY21hX2R1bWJf
-Y3JlYXRlKHN0cnVjdCBkcm1fZmlsZSAqZmlsZSwKPiA+ICAgICAgIHUzMiBwaXRjaCA9IERJVl9S
-T1VORF9VUChhcmdzLT53aWR0aCAqIGFyZ3MtPmJwcCwgOCk7Cj4gPgo+ID4gICAgICAgYXJncy0+
-cGl0Y2ggPSBBTElHTihwaXRjaCwgbWRldi0+Y2hpcC5idXNfd2lkdGgpOwo+ID4gKyAgICAgYXJn
-cy0+ZmxhZ3MgPSBEUk1fTU9ERV9EVU1CX0tFUk5FTF9NQVA7Cj4gPgo+ID4gICAgICAgcmV0dXJu
-IGRybV9nZW1fY21hX2R1bWJfY3JlYXRlX2ludGVybmFsKGZpbGUsIGRldiwgYXJncyk7Cj4gPiAg
-fQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vbWFsaWRwX2Rydi5jIGIvZHJp
-dmVycy9ncHUvZHJtL2FybS9tYWxpZHBfZHJ2LmMKPiA+IGluZGV4IDhhNzYzMTVhYWEwZi4uYWVi
-MWE3NzllY2MxIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2FybS9tYWxpZHBfZHJ2
-LmMKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9hcm0vbWFsaWRwX2Rydi5jCj4gPiBAQCAtNDY1
-LDYgKzQ2NSw3IEBAIHN0YXRpYyBpbnQgbWFsaWRwX2R1bWJfY3JlYXRlKHN0cnVjdCBkcm1fZmls
-ZSAqZmlsZV9wcml2LAo+ID4gICAgICAgdTggYWxpZ25tZW50ID0gbWFsaWRwX2h3X2dldF9waXRj
-aF9hbGlnbihtYWxpZHAtPmRldiwgMSk7Cj4gPgo+ID4gICAgICAgYXJncy0+cGl0Y2ggPSBBTElH
-TihESVZfUk9VTkRfVVAoYXJncy0+d2lkdGggKiBhcmdzLT5icHAsIDgpLCBhbGlnbm1lbnQpOwo+
-ID4gKyAgICAgYXJncy0+ZmxhZ3MgPSBEUk1fTU9ERV9EVU1CX0tFUk5FTF9NQVA7Cj4gPgo+ID4g
-ICAgICAgcmV0dXJuIGRybV9nZW1fY21hX2R1bWJfY3JlYXRlX2ludGVybmFsKGZpbGVfcHJpdiwg
-ZHJtLCBhcmdzKTsKPiA+ICB9Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2RybV9n
-ZW1fY21hX2hlbHBlci5jIGIvZHJpdmVycy9ncHUvZHJtL2RybV9nZW1fY21hX2hlbHBlci5jCj4g
-PiBpbmRleCA0Y2ViZmUwMWU2ZWEuLmY5MWU5ZThhZGVhZiAxMDA2NDQKPiA+IC0tLSBhL2RyaXZl
-cnMvZ3B1L2RybS9kcm1fZ2VtX2NtYV9oZWxwZXIuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJt
-L2RybV9nZW1fY21hX2hlbHBlci5jCj4gPiBAQCAtNzgsMjEgKzc4LDggQEAgX19kcm1fZ2VtX2Nt
-YV9jcmVhdGUoc3RydWN0IGRybV9kZXZpY2UgKmRybSwgc2l6ZV90IHNpemUpCj4gPiAgICAgICBy
-ZXR1cm4gRVJSX1BUUihyZXQpOwo+ID4gIH0KPiA+Cj4gPiAtLyoqCj4gPiAtICogZHJtX2dlbV9j
-bWFfY3JlYXRlIC0gYWxsb2NhdGUgYW4gb2JqZWN0IHdpdGggdGhlIGdpdmVuIHNpemUKPiA+IC0g
-KiBAZHJtOiBEUk0gZGV2aWNlCj4gPiAtICogQHNpemU6IHNpemUgb2YgdGhlIG9iamVjdCB0byBh
-bGxvY2F0ZQo+ID4gLSAqCj4gPiAtICogVGhpcyBmdW5jdGlvbiBjcmVhdGVzIGEgQ01BIEdFTSBv
-YmplY3QgYW5kIGFsbG9jYXRlcyBhIGNvbnRpZ3VvdXMgY2h1bmsgb2YKPiA+IC0gKiBtZW1vcnkg
-YXMgYmFja2luZyBzdG9yZS4gVGhlIGJhY2tpbmcgbWVtb3J5IGhhcyB0aGUgd3JpdGVjb21iaW5l
-IGF0dHJpYnV0ZQo+ID4gLSAqIHNldC4KPiA+IC0gKgo+ID4gLSAqIFJldHVybnM6Cj4gPiAtICog
-QSBzdHJ1Y3QgZHJtX2dlbV9jbWFfb2JqZWN0ICogb24gc3VjY2VzcyBvciBhbiBFUlJfUFRSKCkt
-ZW5jb2RlZCBuZWdhdGl2ZQo+ID4gLSAqIGVycm9yIGNvZGUgb24gZmFpbHVyZS4KPiA+IC0gKi8K
-PiA+IC1zdHJ1Y3QgZHJtX2dlbV9jbWFfb2JqZWN0ICpkcm1fZ2VtX2NtYV9jcmVhdGUoc3RydWN0
-IGRybV9kZXZpY2UgKmRybSwKPiA+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgc2l6ZV90IHNpemUpCj4gPiArc3RhdGljIHN0cnVjdCBkcm1fZ2VtX2NtYV9vYmpl
-Y3QgKgo+ID4gK2RybV9nZW1fY21hX2NyZWF0ZV9mbGFncyhzdHJ1Y3QgZHJtX2RldmljZSAqZHJt
-LCBzaXplX3Qgc2l6ZSwgdTMyIGZsYWdzKQo+ID4gIHsKPiA+ICAgICAgIHN0cnVjdCBkcm1fZ2Vt
-X2NtYV9vYmplY3QgKmNtYV9vYmo7Cj4gPiAgICAgICBpbnQgcmV0Owo+ID4gQEAgLTEwMyw2ICs5
-MCw5IEBAIHN0cnVjdCBkcm1fZ2VtX2NtYV9vYmplY3QgKmRybV9nZW1fY21hX2NyZWF0ZShzdHJ1
-Y3QgZHJtX2RldmljZSAqZHJtLAo+ID4gICAgICAgaWYgKElTX0VSUihjbWFfb2JqKSkKPiA+ICAg
-ICAgICAgICAgICAgcmV0dXJuIGNtYV9vYmo7Cj4gPgo+ID4gKyAgICAgaWYgKCEoZmxhZ3MgJiBE
-Uk1fTU9ERV9EVU1CX0tFUk5FTF9NQVApKQo+ID4gKyAgICAgICAgICAgICBjbWFfb2JqLT5kbWFf
-YXR0cnMgfD0gRE1BX0FUVFJfTk9fS0VSTkVMX01BUFBJTkc7Cj4gPiArCj4gPiAgICAgICBjbWFf
-b2JqLT52YWRkciA9IGRtYV9hbGxvY19hdHRycyhkcm0tPmRldiwgc2l6ZSwgJmNtYV9vYmotPnBh
-ZGRyLAo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgR0ZQX0tFUk5F
-TCB8IF9fR0ZQX05PV0FSTiwKPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIGNtYV9vYmotPmRtYV9hdHRycyk7Cj4gPiBAQCAtMTE5LDYgKzEwOSwyNSBAQCBzdHJ1Y3Qg
-ZHJtX2dlbV9jbWFfb2JqZWN0ICpkcm1fZ2VtX2NtYV9jcmVhdGUoc3RydWN0IGRybV9kZXZpY2Ug
-KmRybSwKPiA+ICAgICAgIGRybV9nZW1fb2JqZWN0X3B1dF91bmxvY2tlZCgmY21hX29iai0+YmFz
-ZSk7Cj4gPiAgICAgICByZXR1cm4gRVJSX1BUUihyZXQpOwo+ID4gIH0KPiA+ICsKPiA+ICsvKioK
-PiA+ICsgKiBkcm1fZ2VtX2NtYV9jcmVhdGUgLSBhbGxvY2F0ZSBhbiBvYmplY3Qgd2l0aCB0aGUg
-Z2l2ZW4gc2l6ZQo+ID4gKyAqIEBkcm06IERSTSBkZXZpY2UKPiA+ICsgKiBAc2l6ZTogc2l6ZSBv
-ZiB0aGUgb2JqZWN0IHRvIGFsbG9jYXRlCj4gPiArICoKPiA+ICsgKiBUaGlzIGZ1bmN0aW9uIGNy
-ZWF0ZXMgYSBDTUEgR0VNIG9iamVjdCBhbmQgYWxsb2NhdGVzIGEgY29udGlndW91cyBjaHVuayBv
-Zgo+ID4gKyAqIG1lbW9yeSBhcyBiYWNraW5nIHN0b3JlLiBUaGUgYmFja2luZyBtZW1vcnkgaGFz
-IHRoZSB3cml0ZWNvbWJpbmUgYXR0cmlidXRlCj4gPiArICogc2V0Lgo+ID4gKyAqCj4KPiBTaG91
-bGRuJ3QgeW91IG1lbnRpb24gaGVyZSB0aGF0IHRoZSBmdW5jdGlvbiBhbHdheXMgY3JlYXRlcyBh
-IGtlcm5lbAo+IG1hcHBpbmcsIGFuZCB0aGF0IGNhbGxlcnMgdGhhdCBkb24ndCBuZWVkIHRoZSBt
-YXBwaW5nIHNob3VsZCB1c2UKPiBkcm1fZ2VtX2NtYV9kdW1iX2NyZWF0ZV9pbnRlcm5hbCgpIGlu
-c3RlYWQgPwoKQXJlIHlvdSBjb25mdXNpbmcgZHJtX2dlbV9jbWFfY3JlYXRlIHdpdGggZHJtX2dl
-bV9jbWFfZHVtYl9jcmVhdGU/CmRybV9nZW1fY21hX2R1bWJfY3JlYXRlKCkgdXNlcyBkZWZhdWx0
-cyBhbmQKZHJtX2dlbV9jbWFfZHVtYl9jcmVhdGVfaW50ZXJuYWwoKSBhbGxvd3MgdGhlIGNhbGxl
-ciB0byB0d2VhawpwYXJhbWV0ZXJzLiBOb3RoaW5nIG5ldyB0aGVyZSBvdGhlciB0aGFuIGFuIGFk
-ZGl0aW9uYWwgcGFyYW0gdG8gdHdlYWsuCgo+IGRybV9nZW1fY21hX2R1bWJfY3JlYXRlX2ludGVy
-bmFsKCkgb3BlcmF0ZXMgYXQgYSBkaWZmZXJlbnQgbGV2ZWwgdGhvdWdoLAo+IGFuZCBkcm1fZ2Vt
-X2NtYV9jcmVhdGUoKSBpcyBvbmx5IGV4cG9ydGVkIGZvciBhIHNpbmdsZSBkcml2ZXIuIFRoZXJl
-J3MKPiBubyBlcXVpdmFsZW50IHRvIGRybV9nZW1fY21hX2NyZWF0ZSgpIHRoYXQgY2FuIHNraXAg
-dGhlIGtlcm5lbCBtYXBwaW5nLgoKQmVjYXVzZSB3ZSBkb24ndCB5ZXQgbmVlZCBvbmUuIGRybV9n
-ZW1fY21hX2NyZWF0ZV9mbGFncygpIGNhbiBiZSBtYWRlCnB1YmxpYyB3aGVuIHdlIGRvLiBJIGNv
-dWxkIGRvIHRoYXQgbm93IEkgZ3Vlc3MgYW5kIG1ha2UKZHJtX2dlbV9jbWFfY3JlYXRlIGFuIGlu
-bGluZSB3cmFwcGVyLgoKUm9iCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aS1kZXZlbA==
+--===============3430461228271172271==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha256; protocol="application/pgp-signature"
+
+--=-=-=
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+
+Hi,
+
+(sorry for the long delay)
+
+Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> writes:
+
+> On Tuesday, August 27, 2019 2:16:20 PM CEST, Vicente Bergas wrote:
+>> On Tuesday, August 27, 2019 1:53:04 PM CEST, Felipe Balbi wrote:
+>>> Hi,
+>>>=20
+>>> Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> writes:
+>>>> On Saturday, August 17, 2019 7:41:40 PM CEST, Vicente Bergas wrote:
+>>>>> Otherwise the device keeps writing to memory after kexec and disturbs
+>>>>> the next kernel.
+>> ...
+>>>=20
+>>> why don't you just have shutdown use the same exact function as remove?
+>>> Frankly, though, I still don't fully understand what's going wrong
+>>> here. Why is the device still alive during kexec?
+>>>=20
+>>> cheers
+>>
+>> Hi Felipe,
+>> the remove and shutdown functions have different prototypes, so
+>> shutdown is wrapping remove.
+>> Would it be preferable to cast remove as shutdown?
+>>
+>> The issue with kexec is that the device is being used during the livetime
+>> of the first kernel. When the first kernel executes kexec it calls the
+>> shutdown function of drivers (instead of remove). Because of this the dw=
+c3
+>> device keeps doing things like DMA.
+>> While the second kernel is taking over, it gets its memory corrupted with
+>> such DMA accesses from the device. When the second kernel reaches the po=
+int
+>> of taking over the dwc3 device, re-initializes it, but it is already too
+>> late. Still worse, if the second kernel did not have the dwc3 driver, it
+>> would get endless memory corruptions.
+>> All in all, devices that can do DMA need to stop doing it on shutdown.
+>>
+>> Regards,
+>>  Vicen=C3=A7.
+>
+> Hi,
+> please, can you provide some feedback on this?
+
+I meant something like this:
+
+diff --git a/drivers/usb/dwc3/dwc3-of-simple.c b/drivers/usb/dwc3/dwc3-of-s=
+imple.c
+index bdac3e7d7b18..e64754be47b4 100644
+=2D-- a/drivers/usb/dwc3/dwc3-of-simple.c
++++ b/drivers/usb/dwc3/dwc3-of-simple.c
+@@ -110,12 +110,9 @@ static int dwc3_of_simple_probe(struct platform_device=
+ *pdev)
+ 	return ret;
+ }
+=20
+=2Dstatic int dwc3_of_simple_remove(struct platform_device *pdev)
++static void __dwc3_of_simple_teardown(struct dwc3_of_simple *simple)
+ {
+=2D	struct dwc3_of_simple	*simple =3D platform_get_drvdata(pdev);
+=2D	struct device		*dev =3D &pdev->dev;
+=2D
+=2D	of_platform_depopulate(dev);
++	of_platform_depopulate(simple->dev);
+=20
+ 	clk_bulk_disable_unprepare(simple->num_clocks, simple->clks);
+ 	clk_bulk_put_all(simple->num_clocks, simple->clks);
+@@ -126,13 +123,27 @@ static int dwc3_of_simple_remove(struct platform_devi=
+ce *pdev)
+=20
+ 	reset_control_put(simple->resets);
+=20
+=2D	pm_runtime_disable(dev);
+=2D	pm_runtime_put_noidle(dev);
+=2D	pm_runtime_set_suspended(dev);
++	pm_runtime_disable(simple->dev);
++	pm_runtime_put_noidle(simple->dev);
++	pm_runtime_set_suspended(simple->dev);
++}
++
++static int dwc3_of_simple_remove(struct platform_device *pdev)
++{
++	struct dwc3_of_simple	*simple =3D platform_get_drvdata(pdev);
++
++	__dwc3_of_simple_teardown(simple);
+=20
+ 	return 0;
+ }
+=20
++static void dwc3_of_simple_shutdown(struct platform_device *pdev)
++{
++	struct dwc3_of_simple	*simple =3D platform_get_drvdata(pdev);
++
++	__dwc3_of_simple_teardown(simple);
++}
++
+ static int __maybe_unused dwc3_of_simple_runtime_suspend(struct device *de=
+v)
+ {
+ 	struct dwc3_of_simple	*simple =3D dev_get_drvdata(dev);
+@@ -190,6 +201,7 @@ MODULE_DEVICE_TABLE(of, of_dwc3_simple_match);
+ static struct platform_driver dwc3_of_simple_driver =3D {
+ 	.probe		=3D dwc3_of_simple_probe,
+ 	.remove		=3D dwc3_of_simple_remove,
++	.shutdown	=3D dwc3_of_simple_shutdown,
+ 	.driver		=3D {
+ 		.name	=3D "dwc3-of-simple",
+ 		.of_match_table =3D of_dwc3_simple_match,
+
+Can you make sure it works as you intended?
+
+=2D-=20
+balbi
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEElLzh7wn96CXwjh2IzL64meEamQYFAl2v87kACgkQzL64meEa
+mQbaxw//YJnKwS6yzWR83UxUA12uq1zvf4FjLM/l6eMrQ9ov/ksOEHccUzcRzbJG
+b/yrRZiW6mLXmVMSeaY6Ho6ijJ7RocG8Ry6gVu/+3DIH1myqyZdF095nrZZR4yEY
+spCi0Yel29Zc0CMcM2zx9QjgebaAxYleWc752q2yyOMFzNvyGJM0iLdxyBdJ2VKW
+K4sF0CrvbhGWhoryvgSM+enjR1nEp3i5em/NLR3tvLrzMWEP6GkEvL4nePoSeW2y
+P9N1hh/IHEpnUyTmQKrqIWTW+UW1V09NaLFQhMB4+t80nlp4t2zXIKTSLaf41czC
+fo+NYa96hRgcMBnX07dt5wInHPydQEmYaMavWmW2X2KkGwWP58+LrytZbXuJ97Ho
+9pCNKzRNmgqr3zpvPbBFMmwwEiqR7Nzzh9c0OmEK5exrsG7M6yxiMG2UrOQsxvRB
+E48wnS6yKZvMYakZYM9RcXfV6/GTmlolD++Fh6Eavv3MX9KM6eAFWyAe81r7eMrJ
+vEfq8XTaVCFM6uOSym60cPu820lp6C1E4D8AW4gso3ILY5FEdbqabJnCabGjJr+/
+plq8mWB6wigew0yYguisoDu8Lr/b/t8e4hem9oIBh96ODpg9pFSaOu7Hp7MtLd9b
+I2TnOJtuAXw8KbTa+kbKbhfoPOVEQAWm0q66mN1S7I0HBC5S2Cc=
+=7XbG
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+
+--===============3430461228271172271==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3430461228271172271==--
