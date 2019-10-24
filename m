@@ -1,60 +1,109 @@
-From: Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>
-Subject: Re: [PATCH v2] usb: dwc2: Fix NULL qh in dwc2_queue_transaction
-Date: Thu, 24 Oct 2019 09:48:20 +0000
-Message-ID: <bcd6d6ff-2b62-c73d-03ea-ed103d01d026@synopsys.com>
-References: <20191023140530.v2.1.I9850aab29e945168070b0a9c50c421d5485e7d97@changeid>
+From: Vicente Bergas <vicencb@gmail.com>
+Subject: Re: [PATCH] usb: dwc3: Add shutdown to
+ =?iso-8859-1?Q?platform=5Fdriver?=
+Date: Thu, 24 Oct 2019 14:15:04 +0200
+Message-ID: <fcddc3d9-f36a-4b7b-be3f-ee720fbacb05@gmail.com>
+References: <4d18d4f7-a00e-bd60-6361-51054eba3bca@arm.com>
+ <20190817174140.6394-1-vicencb@gmail.com>
+ <8d48017a-64c5-4b25-8d85-113ffcf502c9@gmail.com> <87v9uix1sv.fsf@gmail.com>
+ <645526b8-bfed-4cc6-9500-1843c5fe0da9@gmail.com>
+ <0edb55d4-3bad-47ac-9d29-8d994d182e67@gmail.com> <877e4wj7ly.fsf@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191023140530.v2.1.I9850aab29e945168070b0a9c50c421d5485e7d97@changeid>
-Content-Language: en-US
-Content-ID: <BDF7DCB2DCE30A4880A9087654969F83@namprd12.prod.outlook.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "stefan.wahren@i2se.com" <stefan.wahren@i2se.com>, "mka@chromium.org" <mka@chromium.org>, Alexandru M Stan <amstan@chromium.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <877e4wj7ly.fsf@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Felipe Balbi <balbi@kernel.org>
+Cc: Matthias Brugger <mbrugger@suse.com>, Heiko Stuebner <heiko@sntech.de>, MarcZyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-usb@vger.kernel.org, Will Deacon <will.deacon@arm.com>, linux-rockchip@lists.infradead.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-DQoNCk9uIDEwLzI0LzIwMTkgMTowNiBBTSwgRG91Z2xhcyBBbmRlcnNvbiB3cm90ZToNCj4gRnJv
-bTogQWxleGFuZHJ1IE0gU3RhbiA8YW1zdGFuQGNocm9taXVtLm9yZz4NCj4gDQo+IFdoZW4gYSB1
-c2IgZGV2aWNlIGRpc2Nvbm5lY3RzIGluIGEgY2VydGFpbiB3YXksIGR3YzJfcXVldWVfdHJhbnNh
-Y3Rpb24NCj4gc3RpbGwgZ2V0cyBjYWxsZWQgYWZ0ZXIgZHdjMl9oY2RfY2xlYW51cF9jaGFubmVs
-cy4NCj4gDQo+IGR3YzJfaGNkX2NsZWFudXBfY2hhbm5lbHMgZG9lcyAiY2hhbm5lbC0+cWggPSBO
-VUxMOyIgYnV0DQo+IGR3YzJfcXVldWVfdHJhbnNhY3Rpb24gc3RpbGwgd2FudHMgdG8gZGVyZWZl
-cmVuY2UgcWguDQo+IFRoaXMgYWRkcyBhIGNoZWNrIGZvciBhIG51bGwgcWguDQo+IA0KPiBTaWdu
-ZWQtb2ZmLWJ5OiBBbGV4YW5kcnUgTSBTdGFuIDxhbXN0YW5AY2hyb21pdW0ub3JnPg0KPiBbZGlh
-bmRlcnM6IHJlYmFzZWQgdG8gbWFpbmxpbmVdDQo+IFNpZ25lZC1vZmYtYnk6IERvdWdsYXMgQW5k
-ZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4NCg0KQWNrZWQtYnk6IE1pbmFzIEhhcnV0eXVu
-eWFuIDxobWluYXNAc3lub3BzeXMuY29tPg0KDQo+IC0tLQ0KPiBXaGlsZSB0ZXN0aW5nIGEgbmV3
-ZXIgdmVyc2lvbiBvZiB0aGUgTGludXgga2VybmVsIG9uIHJrMzI4OC12ZXlyb24NCj4gZGV2aWNl
-cyB3ZSBzYXcgYSBidW5jaCBvZiBjcmFzaGVzIHJlcG9ydGVkIGluIGR3YzJfcXVldWVfdHJhbnNh
-Y3Rpb24oKQ0KPiB3aGVyZSBjaGFuLT5xaCB3YXMgTlVMTCBbMV0uICBJIGRvbid0IGtub3cgaG93
-IHRvIHJlcHJvZHVjZSB0aG9zZQ0KPiBjcmFzaGVzIG15c2VsZiwgYnV0IEkgbm90aWNlZCB0aGF0
-IGluIG91ciAzLjE0IGtlcm5lbCB3ZSBoYWQgYSBwYXRjaA0KPiB0aGF0IHByb2JhYmx5IGZpeGVk
-IGl0LiAgVGhhdCBwYXRjaCB3YXMgc2VudCB1cHN0cmVhbSBhZ2VzIGFnbyBbMl0gYnV0DQo+IG5l
-dmVyIGxhbmRlZC4gIEhlcmUgSSd2ZSByZWJhc2VkIHRoZSBwYXRjaC4gIFdoaWxlIEkgaGF2ZW4n
-dA0KPiByZXByb2R1Y2VkIHRoZSBjcmFzaCBteXNlbGYsIGl0IHNlZW1zIGZhaXJseSBsaWtlbHkg
-dGhhdCB0aGlzIHdpbGwgZml4DQo+IHRoZSBwcm9ibGVtLg0KPiANCj4gWzFdIGh0dHBzOi8vdXJs
-ZGVmZW5zZS5wcm9vZnBvaW50LmNvbS92Mi91cmw/dT1odHRwcy0zQV9fY3JidWcuY29tXzEwMTcz
-ODgmZD1Ed0lEQVEmYz1EUEw2X1hfNkprWEZ4N0FYV3FCMHRnJnI9Y1FCS3Q0cS1xek5WQzUzck5B
-d3V3cGxIMjNWNjFySFFoaFVMdmRMQTBVOCZtPWNub3pUbHkxRHRJMDFwWjR3YndFR1NRVzNUdENz
-aXdhTlV5NXNuNXZnMHcmcz03Yk9XMUZUZWxRRUpuWmVySVdIV29zSUJpWVQ2ZHZ3YnNtWVRyWXl6
-S2ZBJmU9DQo+IFsyXSBodHRwczovL3VybGRlZmVuc2UucHJvb2Zwb2ludC5jb20vdjIvdXJsP3U9
-aHR0cHMtM0FfX2xvcmUua2VybmVsLm9yZ19yXzE0NDI5NTI2NTEtMkQ0MzQxLTJEMi0yRGdpdC0y
-RHNlbmQtMkRlbWFpbC0yRGFtc3Rhbi00MGNocm9taXVtLm9yZyZkPUR3SURBUSZjPURQTDZfWF82
-SmtYRng3QVhXcUIwdGcmcj1jUUJLdDRxLXF6TlZDNTNyTkF3dXdwbEgyM1Y2MXJIUWhoVUx2ZExB
-MFU4Jm09Y25velRseTFEdEkwMXBaNHdid0VHU1FXM1R0Q3Npd2FOVXk1c241dmcwdyZzPXZtWmpG
-Vlduc0ZQVTZTZ3h3NUlwSi1OWUlBYkRxeVcwaXRKeTAwTUxZU3MmZT0NCj4gDQo+IENoYW5nZXMg
-aW4gdjI6DQo+IC0gUmViYXNlZCB0byBtYWlubGluZQ0KPiANCj4gICBkcml2ZXJzL3VzYi9kd2My
-L2hjZC5jIHwgMiArLQ0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxl
-dGlvbigtKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvdXNiL2R3YzIvaGNkLmMgYi9kcml2
-ZXJzL3VzYi9kd2MyL2hjZC5jDQo+IGluZGV4IDgxYWZlNTUzYWE2Ni4uYjkwZjg1OGFmOTYwIDEw
-MDY0NA0KPiAtLS0gYS9kcml2ZXJzL3VzYi9kd2MyL2hjZC5jDQo+ICsrKyBiL2RyaXZlcnMvdXNi
-L2R3YzIvaGNkLmMNCj4gQEAgLTI4MjQsNyArMjgyNCw3IEBAIHN0YXRpYyBpbnQgZHdjMl9xdWV1
-ZV90cmFuc2FjdGlvbihzdHJ1Y3QgZHdjMl9oc290ZyAqaHNvdGcsDQo+ICAgCQlsaXN0X21vdmVf
-dGFpbCgmY2hhbi0+c3BsaXRfb3JkZXJfbGlzdF9lbnRyeSwNCj4gICAJCQkgICAgICAgJmhzb3Rn
-LT5zcGxpdF9vcmRlcik7DQo+ICAgDQo+IC0JaWYgKGhzb3RnLT5wYXJhbXMuaG9zdF9kbWEpIHsN
-Cj4gKwlpZiAoaHNvdGctPnBhcmFtcy5ob3N0X2RtYSAmJiBjaGFuLT5xaCkgew0KPiAgIAkJaWYg
-KGhzb3RnLT5wYXJhbXMuZG1hX2Rlc2NfZW5hYmxlKSB7DQo+ICAgCQkJaWYgKCFjaGFuLT54ZmVy
-X3N0YXJ0ZWQgfHwNCj4gICAJCQkgICAgY2hhbi0+ZXBfdHlwZSA9PSBVU0JfRU5EUE9JTlRfWEZF
-Ul9JU09DKSB7DQo+IA0K
+On Wednesday, October 23, 2019 8:31:21 AM CEST, Felipe Balbi wrote:
+> Hi,
+>
+> (sorry for the long delay)
+>
+> Vicente Bergas <vicencb@gmail.com> writes:
+>
+>> On Tuesday, August 27, 2019 2:16:20 PM CEST, Vicente Bergas wrote: ...
+>
+> I meant something like this:
+>
+> diff --git a/drivers/usb/dwc3/dwc3-of-simple.c 
+> b/drivers/usb/dwc3/dwc3-of-simple.c
+> index bdac3e7d7b18..e64754be47b4 100644
+> --- a/drivers/usb/dwc3/dwc3-of-simple.c
+> +++ b/drivers/usb/dwc3/dwc3-of-simple.c
+> @@ -110,12 +110,9 @@ static int dwc3_of_simple_probe(struct 
+> platform_device *pdev)
+>  	return ret;
+>  }
+>  
+> -static int dwc3_of_simple_remove(struct platform_device *pdev)
+> +static void __dwc3_of_simple_teardown(struct dwc3_of_simple *simple)
+>  {
+> -	struct dwc3_of_simple	*simple = platform_get_drvdata(pdev);
+> -	struct device		*dev = &pdev->dev;
+> -
+> -	of_platform_depopulate(dev);
+> +	of_platform_depopulate(simple->dev);
+>  
+>  	clk_bulk_disable_unprepare(simple->num_clocks, simple->clks);
+>  	clk_bulk_put_all(simple->num_clocks, simple->clks);
+> @@ -126,13 +123,27 @@ static int dwc3_of_simple_remove(struct 
+> platform_device *pdev)
+>  
+>  	reset_control_put(simple->resets);
+>  
+> -	pm_runtime_disable(dev);
+> -	pm_runtime_put_noidle(dev);
+> -	pm_runtime_set_suspended(dev);
+> +	pm_runtime_disable(simple->dev);
+> +	pm_runtime_put_noidle(simple->dev);
+> +	pm_runtime_set_suspended(simple->dev);
+> +}
+> +
+> +static int dwc3_of_simple_remove(struct platform_device *pdev)
+> +{
+> +	struct dwc3_of_simple	*simple = platform_get_drvdata(pdev);
+> +
+> +	__dwc3_of_simple_teardown(simple);
+>  
+>  	return 0;
+>  }
+>  
+> +static void dwc3_of_simple_shutdown(struct platform_device *pdev)
+> +{
+> +	struct dwc3_of_simple	*simple = platform_get_drvdata(pdev);
+> +
+> +	__dwc3_of_simple_teardown(simple);
+> +}
+> +
+>  static int __maybe_unused 
+> dwc3_of_simple_runtime_suspend(struct device *dev)
+>  {
+>  	struct dwc3_of_simple	*simple = dev_get_drvdata(dev);
+> @@ -190,6 +201,7 @@ MODULE_DEVICE_TABLE(of, of_dwc3_simple_match);
+>  static struct platform_driver dwc3_of_simple_driver = {
+>  	.probe		= dwc3_of_simple_probe,
+>  	.remove		= dwc3_of_simple_remove,
+> +	.shutdown	= dwc3_of_simple_shutdown,
+>  	.driver		= {
+>  		.name	= "dwc3-of-simple",
+>  		.of_match_table = of_dwc3_simple_match,
+>
+> Can you make sure it works as you intended?
+
+Hi Felipe,
+just applied your approach to v5.3.7 and it is working properly.
+
+Thanks,
+  Vicente.
