@@ -1,42 +1,59 @@
-From: Vicente Bergas <vicencb@gmail.com>
-Subject: Re: [PATCH] usb: dwc3: Add shutdown to
- =?iso-8859-1?Q?platform=5Fdriver?=
-Date: Fri, 25 Oct 2019 12:42:49 +0200
-Message-ID: <7e062766-6d2c-44b3-a513-f976bda40704@gmail.com>
-References: <4d18d4f7-a00e-bd60-6361-51054eba3bca@arm.com>
- <20190817174140.6394-1-vicencb@gmail.com>
- <8d48017a-64c5-4b25-8d85-113ffcf502c9@gmail.com> <87v9uix1sv.fsf@gmail.com>
- <645526b8-bfed-4cc6-9500-1843c5fe0da9@gmail.com>
- <0edb55d4-3bad-47ac-9d29-8d994d182e67@gmail.com> <877e4wj7ly.fsf@gmail.com>
- <fcddc3d9-f36a-4b7b-be3f-ee720fbacb05@gmail.com> <87pnil2kc2.fsf@gmail.com>
+From: Cheng-Yi Chiang <cychiang@chromium.org>
+Subject: [PATCH v8 0/6] Add HDMI jack support on RK3288
+Date: Fri, 25 Oct 2019 21:30:01 +0800
+Message-ID: <20191025133007.11190-1-cychiang@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <87pnil2kc2.fsf@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Felipe Balbi <balbi@kernel.org>
-Cc: Matthias Brugger <mbrugger@suse.com>, Heiko Stuebner <heiko@sntech.de>, MarcZyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-usb@vger.kernel.org, Will Deacon <will.deacon@arm.com>, linux-rockchip@lists.infradead.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: Neil Armstrong <narmstrong@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, dianders@chromium.org, dgreid@chromium.org, tzungbi@chromium.org, alsa-devel@alsa-project.org, dri-devel@lists.freedesktop
 List-Id: linux-rockchip.vger.kernel.org
 
-On Friday, October 25, 2019 12:25:17 PM CEST, Felipe Balbi wrote:
-> hi,
->
-> Vicente Bergas <vicencb@gmail.com> writes:
->
->> On Wednesday, October 23, 2019 8:31:21 AM CEST, Felipe Balbi wrote: ...
->
-> Do you want to send it as a formal patch or shall I do it?
+This patch series supports HDMI jack reporting on RK3288, which uses
+DRM dw-hdmi driver and hdmi-codec codec driver.
 
-All yours. Thank you for reviewing and proposing this solution.
+The previous discussion about reporting jack status using hdmi-notifier
+and drm_audio_component is at
 
-Regards,
-  Vicente.
+https://lore.kernel.org/patchwork/patch/1083027/
+
+The new approach is to use a callback mechanism that is
+specific to hdmi-codec.
+
+The dependent change on hdmi-codec.c
+
+6fa5963c37a2 ASoC: hdmi-codec: Add an op to set callback function for plug event
+
+has been merged to upstream.
+
+Changes from v7 to v8:
+
+1. rockchip_max98090: Allow three different use cases:
+   max98090-only: For backward compatibility where DTS does not specify HDMI node.
+   HDMI-only: For HDMI-only board like veyron-mickey.
+   max98090 + HDMI: For other veyron boards.
+   Pass different compatible string to specify the use case.
+
+2. Add more maintainers to cc-list for new device property reviewing.
+
+Cheng-Yi Chiang (6):
+  drm: bridge: dw-hdmi: Report connector status using callback
+  ASoC: rockchip-max98090: Support usage with and without HDMI
+  ASoC: rockchip_max98090: Optionally support HDMI use case
+  ASoC: rockchip_max98090: Add HDMI jack support
+  ARM: dts: rockchip: Add HDMI support to rk3288-veyron-analog-audio
+  ARM: dts: rockchip: Add HDMI audio support to rk3288-veyron-mickey.dts
+
+ .../bindings/sound/rockchip-max98090.txt      |  38 +-
+ .../boot/dts/rk3288-veyron-analog-audio.dtsi  |   3 +-
+ arch/arm/boot/dts/rk3288-veyron-mickey.dts    |   7 +
+ .../drm/bridge/synopsys/dw-hdmi-i2s-audio.c   |  11 +
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c     |  41 +-
+ include/drm/bridge/dw_hdmi.h                  |   4 +
+ sound/soc/rockchip/Kconfig                    |   3 +-
+ sound/soc/rockchip/rockchip_max98090.c        | 392 +++++++++++++++---
+ 8 files changed, 425 insertions(+), 74 deletions(-)
+
+-- 
+2.24.0.rc0.303.g954a862665-goog
