@@ -1,25 +1,25 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 4/4] arm64: dts: rockchip: Add basic dts for RK3308 EVB
-Date: Sun, 27 Oct 2019 18:55:40 +0100
-Message-ID: <2097189.7Le80tXmf3@phil>
-References: <20191021084437.28279-1-andy.yan@rock-chips.com> <20191021084657.28629-1-andy.yan@rock-chips.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add LED nodes on rk3399-roc-pc
+Date: Sun, 27 Oct 2019 19:18:37 +0100
+Message-ID: <4966121.jNSStvosxs@phil>
+References: <7d8d85c9-5fde-7943-a6b6-639bca38bdc1@fivetechno.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191021084657.28629-1-andy.yan@rock-chips.com>
+In-Reply-To: <7d8d85c9-5fde-7943-a6b6-639bca38bdc1@fivetechno.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: kever.yang@rock-chips.com, robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Markus Reichl <m.reichl@fivetechno.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Jagan Teki <jagan@amarulasolutions.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 21. Oktober 2019, 10:46:57 CET schrieb Andy Yan:
-> This board use uart4 as debug port and arm core voltage
-> is modulated by pwm, logic voltage is fixed to 1.05V.
+Am Montag, 21. Oktober 2019, 12:24:36 CET schrieb Markus Reichl:
+> rk3399-roc-pc has three gpio LEDs, enable them.
 > 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
 
 applied for 5.5
+git am choked a bit on your inline signature though.
 
 Thanks
 Heiko
