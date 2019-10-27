@@ -1,25 +1,21 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add LED nodes on rk3399-roc-pc
-Date: Sun, 27 Oct 2019 19:18:37 +0100
-Message-ID: <4966121.jNSStvosxs@phil>
-References: <7d8d85c9-5fde-7943-a6b6-639bca38bdc1@fivetechno.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: enable gpu on rk3399-puma
+Date: Sun, 27 Oct 2019 19:22:02 +0100
+Message-ID: <7251662.sC0l0EPzFi@phil>
+References: <20191023223954.3139-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <7d8d85c9-5fde-7943-a6b6-639bca38bdc1@fivetechno.de>
+In-Reply-To: <20191023223954.3139-1-heiko@sntech.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Markus Reichl <m.reichl@fivetechno.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Jagan Teki <jagan@amarulasolutions.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, christoph.muellner@theobroma-systems.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 21. Oktober 2019, 12:24:36 CET schrieb Markus Reichl:
-> rk3399-roc-pc has three gpio LEDs, enable them.
+Am Donnerstag, 24. Oktober 2019, 00:39:54 CET schrieb Heiko Stuebner:
+> Set the supplying regulator and enable the gpu node on the rk3399-puma som.
 > 
-> Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
 applied for 5.5
-git am choked a bit on your inline signature though.
-
-Thanks
-Heiko
