@@ -1,7 +1,7 @@
 From: Rob Herring <robh@kernel.org>
-Subject: [PATCH v3 20/25] PCI: ftpci100: Use inbound resources for setup
-Date: Mon, 28 Oct 2019 11:32:51 -0500
-Message-ID: <20191028163256.8004-21-robh@kernel.org>
+Subject: [PATCH v3 22/25] PCI: xgene: Use inbound resources for setup
+Date: Mon, 28 Oct 2019 11:32:53 -0500
+Message-ID: <20191028163256.8004-23-robh@kernel.org>
 References: <20191028163256.8004-1-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,80 +22,86 @@ Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil
 List-Id: linux-rockchip.vger.kernel.org
 
 Now that the helpers provide the inbound resources in the host bridge
-'dma_ranges' resource list, convert Faraday ftpci100 host bridge to use
-the resource list to setup the inbound addresses.
+'dma_ranges' resource list, convert the Xgene host bridge to use the
+resource list to setup the inbound addresses.
 
+Cc: Toan Le <toan@os.amperecomputing.com>
 Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>
 Reviewed-by: Andrew Murray <andrew.murray@arm.com>
-Acked-by: Linus Walleij <linus.walleij@linaro.org>
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/pci/controller/pci-ftpci100.c | 27 ++++++++++-----------------
- 1 file changed, 10 insertions(+), 17 deletions(-)
+ drivers/pci/controller/pci-xgene.c | 33 ++++++++++--------------------
+ 1 file changed, 11 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/pci/controller/pci-ftpci100.c b/drivers/pci/controller/pci-ftpci100.c
-index 66288b94e92d..1b67564de7af 100644
---- a/drivers/pci/controller/pci-ftpci100.c
-+++ b/drivers/pci/controller/pci-ftpci100.c
-@@ -375,12 +375,11 @@ static int faraday_pci_setup_cascaded_irq(struct faraday_pci *p)
- 	return 0;
+diff --git a/drivers/pci/controller/pci-xgene.c b/drivers/pci/controller/pci-xgene.c
+index 9408269d943d..de195fd430dc 100644
+--- a/drivers/pci/controller/pci-xgene.c
++++ b/drivers/pci/controller/pci-xgene.c
+@@ -481,27 +481,28 @@ static int xgene_pcie_select_ib_reg(u8 *ib_reg_mask, u64 size)
  }
  
--static int faraday_pci_parse_map_dma_ranges(struct faraday_pci *p,
--					    struct device_node *np)
-+static int faraday_pci_parse_map_dma_ranges(struct faraday_pci *p)
+ static void xgene_pcie_setup_ib_reg(struct xgene_pcie_port *port,
+-				    struct of_pci_range *range, u8 *ib_reg_mask)
++				    struct resource_entry *entry,
++				    u8 *ib_reg_mask)
  {
+ 	void __iomem *cfg_base = port->cfg_base;
+ 	struct device *dev = port->dev;
+ 	void *bar_addr;
+ 	u32 pim_reg;
+-	u64 cpu_addr = range->cpu_addr;
+-	u64 pci_addr = range->pci_addr;
+-	u64 size = range->size;
++	u64 cpu_addr = entry->res->start;
++	u64 pci_addr = cpu_addr - entry->offset;
++	u64 size = resource_size(entry->res);
+ 	u64 mask = ~(size - 1) | EN_REG;
+ 	u32 flags = PCI_BASE_ADDRESS_MEM_TYPE_64;
+ 	u32 bar_low;
+ 	int region;
+ 
+-	region = xgene_pcie_select_ib_reg(ib_reg_mask, range->size);
++	region = xgene_pcie_select_ib_reg(ib_reg_mask, size);
+ 	if (region < 0) {
+ 		dev_warn(dev, "invalid pcie dma-range config\n");
+ 		return;
+ 	}
+ 
+-	if (range->flags & IORESOURCE_PREFETCH)
++	if (entry->res->flags & IORESOURCE_PREFETCH)
+ 		flags |= PCI_BASE_ADDRESS_MEM_PREFETCH;
+ 
+ 	bar_low = pcie_bar_low_val((u32)cpu_addr, flags);
+@@ -532,25 +533,13 @@ static void xgene_pcie_setup_ib_reg(struct xgene_pcie_port *port,
+ 
+ static int xgene_pcie_parse_map_dma_ranges(struct xgene_pcie_port *port)
+ {
+-	struct device_node *np = port->node;
 -	struct of_pci_range range;
 -	struct of_pci_range_parser parser;
- 	struct device *dev = p->dev;
-+	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(p);
+-	struct device *dev = port->dev;
++	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(port);
 +	struct resource_entry *entry;
- 	u32 confreg[3] = {
- 		FARADAY_PCI_MEM1_BASE_SIZE,
- 		FARADAY_PCI_MEM2_BASE_SIZE,
-@@ -389,19 +388,13 @@ static int faraday_pci_parse_map_dma_ranges(struct faraday_pci *p,
- 	int i = 0;
- 	u32 val;
+ 	u8 ib_reg_mask = 0;
  
 -	if (of_pci_dma_range_parser_init(&parser, np)) {
 -		dev_err(dev, "missing dma-ranges property\n");
 -		return -EINVAL;
 -	}
 -
--	/*
--	 * Get the dma-ranges from the device tree
--	 */
+-	/* Get the dma-ranges from DT */
 -	for_each_of_pci_range(&parser, &range) {
--		u64 end = range.pci_addr + range.size - 1;
-+	resource_list_for_each_entry(entry, &bridge->dma_ranges) {
-+		u64 pci_addr = entry->res->start - entry->offset;
-+		u64 end = entry->res->end - entry->offset;
- 		int ret;
+-		u64 end = range.cpu_addr + range.size - 1;
++	resource_list_for_each_entry(entry, &bridge->dma_ranges)
++		xgene_pcie_setup_ib_reg(port, entry, &ib_reg_mask);
  
--		ret = faraday_res_to_memcfg(range.pci_addr, range.size, &val);
-+		ret = faraday_res_to_memcfg(pci_addr,
-+					    resource_size(entry->res), &val);
- 		if (ret) {
- 			dev_err(dev,
- 				"DMA range %d: illegal MEM resource size\n", i);
-@@ -409,7 +402,7 @@ static int faraday_pci_parse_map_dma_ranges(struct faraday_pci *p,
- 		}
- 
- 		dev_info(dev, "DMA MEM%d BASE: 0x%016llx -> 0x%016llx config %08x\n",
--			 i + 1, range.pci_addr, end, val);
-+			 i + 1, pci_addr, end, val);
- 		if (i <= 2) {
- 			faraday_raw_pci_write_config(p, 0, 0, confreg[i],
- 						     4, val);
-@@ -539,7 +532,7 @@ static int faraday_pci_probe(struct platform_device *pdev)
- 			cur_bus_speed = PCI_SPEED_66MHz;
- 	}
- 
--	ret = faraday_pci_parse_map_dma_ranges(p, dev->of_node);
-+	ret = faraday_pci_parse_map_dma_ranges(p);
- 	if (ret)
- 		return ret;
+-		dev_dbg(dev, "0x%08x 0x%016llx..0x%016llx -> 0x%016llx\n",
+-			range.flags, range.cpu_addr, end, range.pci_addr);
+-		xgene_pcie_setup_ib_reg(port, &range, &ib_reg_mask);
+-	}
+ 	return 0;
+ }
  
 -- 
 2.20.1
