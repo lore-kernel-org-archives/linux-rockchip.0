@@ -1,7 +1,7 @@
 From: Rob Herring <robh@kernel.org>
-Subject: [PATCH v3 21/25] PCI: v3-semi: Use inbound resources for setup
-Date: Mon, 28 Oct 2019 11:32:52 -0500
-Message-ID: <20191028163256.8004-22-robh@kernel.org>
+Subject: [PATCH v3 23/25] PCI: iproc: Use inbound resources for setup
+Date: Mon, 28 Oct 2019 11:32:54 -0500
+Message-ID: <20191028163256.8004-24-robh@kernel.org>
 References: <20191028163256.8004-1-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,100 +22,140 @@ Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil
 List-Id: linux-rockchip.vger.kernel.org
 
 Now that the helpers provide the inbound resources in the host bridge
-'dma_ranges' resource list, convert the v3-semi host bridge to use
+'dma_ranges' resource list, convert Broadcom iProc host bridge to use
 the resource list to setup the inbound addresses.
 
 Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>
+Cc: Ray Jui <rjui@broadcom.com>
+Cc: Scott Branden <sbranden@broadcom.com>
+Cc: bcm-kernel-feedback-list@broadcom.com
 Reviewed-by: Andrew Murray <andrew.murray@arm.com>
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/pci/controller/pci-v3-semi.c | 38 ++++++++++++----------------
- 1 file changed, 16 insertions(+), 22 deletions(-)
+v2:
+ - Fix iproc_pcie_paxb_v2_msi_steer() to use resource_entry
+---
+ drivers/pci/controller/pcie-iproc.c | 77 +++++++----------------------
+ 1 file changed, 17 insertions(+), 60 deletions(-)
 
-diff --git a/drivers/pci/controller/pci-v3-semi.c b/drivers/pci/controller/pci-v3-semi.c
-index 2209c7671115..bd05221f5a22 100644
---- a/drivers/pci/controller/pci-v3-semi.c
-+++ b/drivers/pci/controller/pci-v3-semi.c
-@@ -598,28 +598,30 @@ static int v3_pci_setup_resource(struct v3_pci *v3,
+diff --git a/drivers/pci/controller/pcie-iproc.c b/drivers/pci/controller/pcie-iproc.c
+index 223335ee791a..f4d78e66846e 100644
+--- a/drivers/pci/controller/pcie-iproc.c
++++ b/drivers/pci/controller/pcie-iproc.c
+@@ -1122,15 +1122,16 @@ static int iproc_pcie_ib_write(struct iproc_pcie *pcie, int region_idx,
  }
  
- static int v3_get_dma_range_config(struct v3_pci *v3,
--				   struct of_pci_range *range,
-+				   struct resource_entry *entry,
- 				   u32 *pci_base, u32 *pci_map)
+ static int iproc_pcie_setup_ib(struct iproc_pcie *pcie,
+-			       struct of_pci_range *range,
++			       struct resource_entry *entry,
+ 			       enum iproc_pcie_ib_map_type type)
  {
- 	struct device *dev = v3->dev;
--	u64 cpu_end = range->cpu_addr + range->size - 1;
--	u64 pci_end = range->pci_addr + range->size - 1;
-+	u64 cpu_addr = entry->res->start;
-+	u64 cpu_end = entry->res->end;
-+	u64 pci_end = cpu_end - entry->offset;
+ 	struct device *dev = pcie->dev;
+ 	struct iproc_pcie_ib *ib = &pcie->ib;
+ 	int ret;
+ 	unsigned int region_idx, size_idx;
+-	u64 axi_addr = range->cpu_addr, pci_addr = range->pci_addr;
+-	resource_size_t size = range->size;
++	u64 axi_addr = entry->res->start;
 +	u64 pci_addr = entry->res->start - entry->offset;
- 	u32 val;
++	resource_size_t size = resource_size(entry->res);
  
--	if (range->pci_addr & ~V3_PCI_BASE_M_ADR_BASE) {
-+	if (pci_addr & ~V3_PCI_BASE_M_ADR_BASE) {
- 		dev_err(dev, "illegal range, only PCI bits 31..20 allowed\n");
- 		return -EINVAL;
- 	}
--	val = ((u32)range->pci_addr) & V3_PCI_BASE_M_ADR_BASE;
-+	val = ((u32)pci_addr) & V3_PCI_BASE_M_ADR_BASE;
- 	*pci_base = val;
+ 	/* iterate through all IARR mapping regions */
+ 	for (region_idx = 0; region_idx < ib->nr_regions; region_idx++) {
+@@ -1182,66 +1183,19 @@ static int iproc_pcie_setup_ib(struct iproc_pcie *pcie,
+ 	return ret;
+ }
  
--	if (range->cpu_addr & ~V3_PCI_MAP_M_MAP_ADR) {
-+	if (cpu_addr & ~V3_PCI_MAP_M_MAP_ADR) {
- 		dev_err(dev, "illegal range, only CPU bits 31..20 allowed\n");
- 		return -EINVAL;
- 	}
--	val = ((u32)range->cpu_addr) & V3_PCI_MAP_M_MAP_ADR;
-+	val = ((u32)cpu_addr) & V3_PCI_MAP_M_MAP_ADR;
- 
--	switch (range->size) {
-+	switch (resource_size(entry->res)) {
- 	case SZ_1M:
- 		val |= V3_LB_BASE_ADR_SIZE_1MB;
- 		break;
-@@ -667,8 +669,8 @@ static int v3_get_dma_range_config(struct v3_pci *v3,
- 	dev_dbg(dev,
- 		"DMA MEM CPU: 0x%016llx -> 0x%016llx => "
- 		"PCI: 0x%016llx -> 0x%016llx base %08x map %08x\n",
--		range->cpu_addr, cpu_end,
--		range->pci_addr, pci_end,
-+		cpu_addr, cpu_end,
-+		pci_addr, pci_end,
- 		*pci_base, *pci_map);
- 
- 	return 0;
-@@ -677,24 +679,16 @@ static int v3_get_dma_range_config(struct v3_pci *v3,
- static int v3_pci_parse_map_dma_ranges(struct v3_pci *v3,
- 				       struct device_node *np)
- {
--	struct of_pci_range range;
--	struct of_pci_range_parser parser;
-+	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(v3);
- 	struct device *dev = v3->dev;
-+	struct resource_entry *entry;
- 	int i = 0;
- 
--	if (of_pci_dma_range_parser_init(&parser, np)) {
--		dev_err(dev, "missing dma-ranges property\n");
--		return -EINVAL;
+-static int iproc_pcie_add_dma_range(struct device *dev,
+-				    struct list_head *resources,
+-				    struct of_pci_range *range)
+-{
+-	struct resource *res;
+-	struct resource_entry *entry, *tmp;
+-	struct list_head *head = resources;
+-
+-	res = devm_kzalloc(dev, sizeof(struct resource), GFP_KERNEL);
+-	if (!res)
+-		return -ENOMEM;
+-
+-	resource_list_for_each_entry(tmp, resources) {
+-		if (tmp->res->start < range->cpu_addr)
+-			head = &tmp->node;
 -	}
 -
--	/*
--	 * Get the dma-ranges from the device tree
--	 */
--	for_each_of_pci_range(&parser, &range) {
-+	resource_list_for_each_entry(entry, &bridge->dma_ranges) {
- 		int ret;
- 		u32 pci_base, pci_map;
+-	res->start = range->cpu_addr;
+-	res->end = res->start + range->size - 1;
+-
+-	entry = resource_list_create_entry(res, 0);
+-	if (!entry)
+-		return -ENOMEM;
+-
+-	entry->offset = res->start - range->cpu_addr;
+-	resource_list_add(entry, head);
+-
+-	return 0;
+-}
+-
+ static int iproc_pcie_map_dma_ranges(struct iproc_pcie *pcie)
+ {
+ 	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
+-	struct of_pci_range range;
+-	struct of_pci_range_parser parser;
+-	int ret;
+-	LIST_HEAD(resources);
+-
+-	/* Get the dma-ranges from DT */
+-	ret = of_pci_dma_range_parser_init(&parser, pcie->dev->of_node);
+-	if (ret)
+-		return ret;
++	struct resource_entry *entry;
++	int ret = 0;
  
--		ret = v3_get_dma_range_config(v3, &range, &pci_base, &pci_map);
-+		ret = v3_get_dma_range_config(v3, entry, &pci_base, &pci_map);
+-	for_each_of_pci_range(&parser, &range) {
+-		ret = iproc_pcie_add_dma_range(pcie->dev,
+-					       &resources,
+-					       &range);
+-		if (ret)
+-			goto out;
++	resource_list_for_each_entry(entry, &host->dma_ranges) {
+ 		/* Each range entry corresponds to an inbound mapping region */
+-		ret = iproc_pcie_setup_ib(pcie, &range, IPROC_PCIE_IB_MAP_MEM);
++		ret = iproc_pcie_setup_ib(pcie, entry, IPROC_PCIE_IB_MAP_MEM);
  		if (ret)
- 			return ret;
+-			goto out;
++			break;
+ 	}
+ 
+-	list_splice_init(&resources, &host->dma_ranges);
+-
+-	return 0;
+-out:
+-	pci_free_resource_list(&resources);
+ 	return ret;
+ }
+ 
+@@ -1276,13 +1230,16 @@ static int iproce_pcie_get_msi(struct iproc_pcie *pcie,
+ static int iproc_pcie_paxb_v2_msi_steer(struct iproc_pcie *pcie, u64 msi_addr)
+ {
+ 	int ret;
+-	struct of_pci_range range;
++	struct resource_entry entry;
++
++	memset(&entry, 0, sizeof(entry));
++	entry.res = &entry.__res;
+ 
+-	memset(&range, 0, sizeof(range));
+-	range.size = SZ_32K;
+-	range.pci_addr = range.cpu_addr = msi_addr & ~(range.size - 1);
++	msi_addr &= ~(SZ_32K - 1);
++	entry.res->start = msi_addr;
++	entry.res->end = msi_addr + SZ_32K - 1;
+ 
+-	ret = iproc_pcie_setup_ib(pcie, &range, IPROC_PCIE_IB_MAP_IO);
++	ret = iproc_pcie_setup_ib(pcie, &entry, IPROC_PCIE_IB_MAP_IO);
+ 	return ret;
+ }
  
 -- 
 2.20.1
