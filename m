@@ -1,7 +1,8 @@
 From: Rob Herring <robh@kernel.org>
-Subject: [PATCH v3 14/25] PCI: xilinx: Use pci_parse_request_of_pci_ranges()
-Date: Mon, 28 Oct 2019 11:32:45 -0500
-Message-ID: <20191028163256.8004-15-robh@kernel.org>
+Subject: [PATCH v3 15/25] PCI: xilinx-nwl: Use
+ pci_parse_request_of_pci_ranges()
+Date: Mon, 28 Oct 2019 11:32:46 -0500
+Message-ID: <20191028163256.8004-16-robh@kernel.org>
 References: <20191028163256.8004-1-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,7 +22,7 @@ To: Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, 
 Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Michal Simek <michal.simek@xilinx.com>, Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Linus Walleij <linus.walleij@linaro.org>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>, Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboards.org, linux-renesas-soc@vger.kernel.org, Tom Joseph <tjoseph@cadence>
 List-Id: linux-rockchip.vger.kernel.org
 
-Convert the Xilinx host bridge to use the common
+Convert the xilinx-nwl host bridge to use the common
 pci_parse_request_of_pci_ranges().
 
 There's no need to assign the resources to a temporary list first. Just
@@ -33,23 +34,23 @@ Cc: Bjorn Helgaas <bhelgaas@google.com>
 Cc: Michal Simek <michal.simek@xilinx.com>
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/pci/controller/pcie-xilinx.c | 17 ++---------------
- 1 file changed, 2 insertions(+), 15 deletions(-)
+ drivers/pci/controller/pcie-xilinx-nwl.c | 20 ++++----------------
+ 1 file changed, 4 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-xilinx.c b/drivers/pci/controller/pcie-xilinx.c
-index 5bf3af3b28e6..257702288787 100644
---- a/drivers/pci/controller/pcie-xilinx.c
-+++ b/drivers/pci/controller/pcie-xilinx.c
-@@ -619,8 +619,6 @@ static int xilinx_pcie_probe(struct platform_device *pdev)
- 	struct pci_bus *bus, *child;
+diff --git a/drivers/pci/controller/pcie-xilinx-nwl.c b/drivers/pci/controller/pcie-xilinx-nwl.c
+index 45c0f344ccd1..e135a4b60489 100644
+--- a/drivers/pci/controller/pcie-xilinx-nwl.c
++++ b/drivers/pci/controller/pcie-xilinx-nwl.c
+@@ -821,8 +821,6 @@ static int nwl_pcie_probe(struct platform_device *pdev)
+ 	struct pci_bus *child;
  	struct pci_host_bridge *bridge;
  	int err;
 -	resource_size_t iobase = 0;
 -	LIST_HEAD(res);
  
- 	if (!dev->of_node)
- 		return -ENODEV;
-@@ -647,19 +645,12 @@ static int xilinx_pcie_probe(struct platform_device *pdev)
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*pcie));
+ 	if (!bridge)
+@@ -845,24 +843,18 @@ static int nwl_pcie_probe(struct platform_device *pdev)
  		return err;
  	}
  
@@ -65,21 +66,34 @@ index 5bf3af3b28e6..257702288787 100644
 -	if (err)
 -		goto error;
 -
--
+ 	err = nwl_pcie_init_irq_domain(pcie);
+ 	if (err) {
+ 		dev_err(dev, "Failed creating IRQ Domain\n");
+-		goto error;
++		return err;
+ 	}
+ 
 -	list_splice_init(&res, &bridge->windows);
  	bridge->dev.parent = dev;
- 	bridge->sysdata = port;
- 	bridge->busnr = 0;
-@@ -673,7 +664,7 @@ static int xilinx_pcie_probe(struct platform_device *pdev)
- #endif
+ 	bridge->sysdata = pcie;
+ 	bridge->busnr = pcie->root_busno;
+@@ -874,13 +866,13 @@ static int nwl_pcie_probe(struct platform_device *pdev)
+ 		err = nwl_pcie_enable_msi(pcie);
+ 		if (err < 0) {
+ 			dev_err(dev, "failed to enable MSI support: %d\n", err);
+-			goto error;
++			return err;
+ 		}
+ 	}
+ 
  	err = pci_scan_root_bus_bridge(bridge);
- 	if (err < 0)
+ 	if (err)
 -		goto error;
 +		return err;
  
  	bus = bridge->bus;
  
-@@ -682,10 +673,6 @@ static int xilinx_pcie_probe(struct platform_device *pdev)
+@@ -889,10 +881,6 @@ static int nwl_pcie_probe(struct platform_device *pdev)
  		pcie_bus_configure_settings(child);
  	pci_bus_add_devices(bus);
  	return 0;
@@ -89,6 +103,6 @@ index 5bf3af3b28e6..257702288787 100644
 -	return err;
  }
  
- static const struct of_device_id xilinx_pcie_of_match[] = {
+ static struct platform_driver nwl_pcie_driver = {
 -- 
 2.20.1
