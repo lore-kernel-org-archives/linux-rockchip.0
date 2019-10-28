@@ -1,7 +1,7 @@
 From: Rob Herring <robh@kernel.org>
-Subject: [PATCH v3 05/25] PCI: dwc: Use pci_parse_request_of_pci_ranges()
-Date: Mon, 28 Oct 2019 11:32:36 -0500
-Message-ID: <20191028163256.8004-6-robh@kernel.org>
+Subject: [PATCH v3 07/25] PCI: iproc: Use pci_parse_request_of_pci_ranges()
+Date: Mon, 28 Oct 2019 11:32:38 -0500
+Message-ID: <20191028163256.8004-8-robh@kernel.org>
 References: <20191028163256.8004-1-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,70 +21,81 @@ To: Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, 
 Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Michal Simek <michal.simek@xilinx.com>, Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Linus Walleij <linus.walleij@linaro.org>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>, Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboards.org, linux-renesas-soc@vger.kernel.org, Tom Joseph <tjoseph@cadence>
 List-Id: linux-rockchip.vger.kernel.org
 
-Convert the Designware host bridge to use the common
+Convert the iProc host bridge to use the common
 pci_parse_request_of_pci_ranges().
 
-Cc: Jingoo Han <jingoohan1@gmail.com>
-Cc: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
+There's no need to assign the resources to a temporary list, so just use
+bridge->windows directly.
+
 Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Andrew Murray <andrew.murray@arm.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>
+Cc: Ray Jui <rjui@broadcom.com>
+Cc: Scott Branden <sbranden@broadcom.com>
+Cc: bcm-kernel-feedback-list@broadcom.com
+Reviewed-by: Andrew Murray <andrew.murray@arm.com>
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- .../pci/controller/dwc/pcie-designware-host.c | 28 ++++++-------------
- 1 file changed, 8 insertions(+), 20 deletions(-)
+ drivers/pci/controller/pcie-iproc-platform.c | 8 ++------
+ drivers/pci/controller/pcie-iproc.c          | 5 -----
+ 2 files changed, 2 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
-index 0f36a926059a..aeec8b65eb97 100644
---- a/drivers/pci/controller/dwc/pcie-designware-host.c
-+++ b/drivers/pci/controller/dwc/pcie-designware-host.c
-@@ -319,7 +319,7 @@ int dw_pcie_host_init(struct pcie_port *pp)
- 	struct device *dev = pci->dev;
+diff --git a/drivers/pci/controller/pcie-iproc-platform.c b/drivers/pci/controller/pcie-iproc-platform.c
+index 9ee6200a66f4..375d815f7301 100644
+--- a/drivers/pci/controller/pcie-iproc-platform.c
++++ b/drivers/pci/controller/pcie-iproc-platform.c
+@@ -43,8 +43,6 @@ static int iproc_pcie_pltfm_probe(struct platform_device *pdev)
+ 	struct iproc_pcie *pcie;
  	struct device_node *np = dev->of_node;
- 	struct platform_device *pdev = to_platform_device(dev);
--	struct resource_entry *win, *tmp;
-+	struct resource_entry *win;
- 	struct pci_bus *child;
+ 	struct resource reg;
+-	resource_size_t iobase = 0;
+-	LIST_HEAD(resources);
  	struct pci_host_bridge *bridge;
- 	struct resource *cfg_res;
-@@ -342,31 +342,19 @@ int dw_pcie_host_init(struct pcie_port *pp)
- 	if (!bridge)
- 		return -ENOMEM;
+ 	int ret;
  
--	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
--					&bridge->windows, &pp->io_base);
+@@ -97,8 +95,7 @@ static int iproc_pcie_pltfm_probe(struct platform_device *pdev)
+ 	if (IS_ERR(pcie->phy))
+ 		return PTR_ERR(pcie->phy);
+ 
+-	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &resources,
+-						    &iobase);
++	ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows, NULL);
+ 	if (ret) {
+ 		dev_err(dev, "unable to get PCI host bridge resources\n");
+ 		return ret;
+@@ -113,10 +110,9 @@ static int iproc_pcie_pltfm_probe(struct platform_device *pdev)
+ 		pcie->map_irq = of_irq_parse_and_map_pci;
+ 	}
+ 
+-	ret = iproc_pcie_setup(pcie, &resources);
++	ret = iproc_pcie_setup(pcie, &bridge->windows);
+ 	if (ret) {
+ 		dev_err(dev, "PCIe controller setup failed\n");
+-		pci_free_resource_list(&resources);
+ 		return ret;
+ 	}
+ 
+diff --git a/drivers/pci/controller/pcie-iproc.c b/drivers/pci/controller/pcie-iproc.c
+index 2d457bfdaf66..223335ee791a 100644
+--- a/drivers/pci/controller/pcie-iproc.c
++++ b/drivers/pci/controller/pcie-iproc.c
+@@ -1498,10 +1498,6 @@ int iproc_pcie_setup(struct iproc_pcie *pcie, struct list_head *res)
+ 		return ret;
+ 	}
+ 
+-	ret = devm_request_pci_bus_resources(dev, res);
 -	if (ret)
 -		return ret;
 -
--	ret = devm_request_pci_bus_resources(dev, &bridge->windows);
-+	ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows, NULL);
- 	if (ret)
- 		return ret;
+ 	ret = phy_init(pcie->phy);
+ 	if (ret) {
+ 		dev_err(dev, "unable to initialize PCIe PHY\n");
+@@ -1543,7 +1539,6 @@ int iproc_pcie_setup(struct iproc_pcie *pcie, struct list_head *res)
+ 		if (iproc_pcie_msi_enable(pcie))
+ 			dev_info(dev, "not using iProc MSI\n");
  
- 	/* Get the I/O and memory ranges from DT */
--	resource_list_for_each_entry_safe(win, tmp, &bridge->windows) {
-+	resource_list_for_each_entry(win, &bridge->windows) {
- 		switch (resource_type(win->res)) {
- 		case IORESOURCE_IO:
--			ret = devm_pci_remap_iospace(dev, win->res,
--						     pp->io_base);
--			if (ret) {
--				dev_warn(dev, "Error %d: failed to map resource %pR\n",
--					 ret, win->res);
--				resource_list_destroy_entry(win);
--			} else {
--				pp->io = win->res;
--				pp->io->name = "I/O";
--				pp->io_size = resource_size(pp->io);
--				pp->io_bus_addr = pp->io->start - win->offset;
--			}
-+			pp->io = win->res;
-+			pp->io->name = "I/O";
-+			pp->io_size = resource_size(pp->io);
-+			pp->io_bus_addr = pp->io->start - win->offset;
-+			pp->io_base = pci_pio_to_address(pp->io->start);
- 			break;
- 		case IORESOURCE_MEM:
- 			pp->mem = win->res;
+-	list_splice_init(res, &host->windows);
+ 	host->busnr = 0;
+ 	host->dev.parent = dev;
+ 	host->ops = &iproc_pcie_ops;
 -- 
 2.20.1
