@@ -1,50 +1,87 @@
-From: Cheng-Yi Chiang <cychiang@chromium.org>
-Subject: [PATCH] ASoC: rockchip: rockchip_max98090: Enable SHDN to fix headset detection
-Date: Mon, 28 Oct 2019 17:52:29 +0800
-Message-ID: <20191028095229.99438-1-cychiang@chromium.org>
+From: Markus Reichl <m.reichl@fivetechno.de>
+Subject: [PATCH] arm64: dts: rockchip: Add PCIe node on rk3399-roc-pc
+Date: Mon, 28 Oct 2019 15:47:27 +0100
+Message-ID: <09300c2d-4298-1b01-ac41-d1b2610589d4@fivetechno.de>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Language: de-DE
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, enric.balletbo@collabora.com, dianders@chromium.org, dgreid@chromium.org, tzungbi@chromium.org, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Cheng-Yi Chiang <cychiang@chromium.org>
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, Markus Reichl <m.reichl@fivetechno.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-max98090 spec states that chip needs to be in turned-on state to supply
-mic bias. Enable SHDN dapm widget along with MICBIAS widget to
-actually turn on mic bias for proper headset button detection.
-This is similar to cht_ti_jack_event in
-sound/soc/intel/boards/cht_bsw_max98090_ti.c.
+rk3399-roc-pc has a PCIe interface. Enable it for use with
+the M.2 NGFF M_KEY slot on roc-rk3399-mezzanine board.
+Tested with Samsung 970 evo plus SSD.
 
-Note that due to ts3a227e reports the jack event right away before the
-notifier is registered, if headset is plugged on boot, headset button
-will not get detected until headset is unplugged and plugged. This is
-still an issue to be fixed.
-
-Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
 ---
- sound/soc/rockchip/rockchip_max98090.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ .../arm64/boot/dts/rockchip/rk3399-roc-pc.dts | 38 +++++++++++++++++++
+ 1 file changed, 38 insertions(+)
 
-diff --git a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
-index 0097df1fae66..e80b09143b63 100644
---- a/sound/soc/rockchip/rockchip_max98090.c
-+++ b/sound/soc/rockchip/rockchip_max98090.c
-@@ -66,10 +66,13 @@ static int rk_jack_event(struct notifier_block *nb, unsigned long event,
- 	struct snd_soc_jack *jack = (struct snd_soc_jack *)data;
- 	struct snd_soc_dapm_context *dapm = &jack->card->dapm;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
+index 9313251765c7..2d637d54994b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
+@@ -158,6 +158,21 @@
+ 		regulator-max-microvolt = <1400000>;
+ 		vin-supply = <&vcc_sys>;
+ 	};
++
++	/* on roc-rk3399-mezzanine board */
++	vcc3v3_pcie: vcc3v3-pcie {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc3v3_pcie";
++		enable-active-high;
++		gpio = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vcc3v3_pcie_en>;
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&dc_12v>;
++	};
+ };
  
--	if (event & SND_JACK_MICROPHONE)
-+	if (event & SND_JACK_MICROPHONE) {
- 		snd_soc_dapm_force_enable_pin(dapm, "MICBIAS");
--	else
-+		snd_soc_dapm_force_enable_pin(dapm, "SHDN");
-+	} else {
- 		snd_soc_dapm_disable_pin(dapm, "MICBIAS");
-+		snd_soc_dapm_disable_pin(dapm, "SHDN");
-+	}
+ &cpu_l0 {
+@@ -514,6 +529,19 @@
+ 	status = "okay";
+ };
  
- 	snd_soc_dapm_sync(dapm);
++&pcie_phy {
++	status = "okay";
++};
++
++&pcie0 {
++	ep-gpios = <&gpio4 RK_PD1 GPIO_ACTIVE_HIGH>;
++	num-lanes = <4>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie_perst>;
++	vpcie3v3-supply = <&vcc3v3_pcie>;
++	status = "okay";
++};
++
+ &pinctrl {
+ 	lcd-panel {
+ 		lcd_panel_reset: lcd-panel-reset {
+@@ -535,6 +563,16 @@
+ 		};
+ 	};
  
++	pcie {
++		vcc3v3_pcie_en: vcc3v3-pcie-en {
++			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		pcie_perst: pcie-perst {
++			rockchip,pins = <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	pmic {
+ 		vsel1_gpio: vsel1-gpio {
+ 			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
 -- 
-2.24.0.rc0.303.g954a862665-goog
+2.20.1
