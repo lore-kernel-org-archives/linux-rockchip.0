@@ -1,73 +1,60 @@
-From: Cheng-yi Chiang <cychiang@chromium.org>
-Subject: Re: [PATCH v8 2/6] ASoC: rockchip-max98090: Support usage with and
- without HDMI
-Date: Mon, 28 Oct 2019 10:32:24 +0800
-Message-ID: <CAFv8NwKhe=CEuMCgeP1G0-Az4GEdMGPMMhvM3oY2=KmZNGrcRw@mail.gmail.com>
-References: <20191025133007.11190-1-cychiang@chromium.org>
- <20191025133007.11190-3-cychiang@chromium.org>
- <20191025162232.GA23022@bogus>
+From: Cheng-Yi Chiang <cychiang@chromium.org>
+Subject: [PATCH v9 0/6] Add HDMI jack support on RK3288
+Date: Mon, 28 Oct 2019 15:19:24 +0800
+Message-ID: <20191028071930.145899-1-cychiang@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20191025162232.GA23022@bogus>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..." <alsa-devel@alsa-project.org>, Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel <linux-kernel@vger.kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jerome Brunet <jbrunet@baylibre.com>, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, Dylan Reid <dgreid@chromium.org>, devicetree@vger.kernel.org, Tzung-Bi Shih <tzungbi@chromium.org>, Jonas Karlman <jonas@kwiboo.se>, Liam Girdwood <lgirdwood@gmail.com>, Russell King <rmk+kernel@armlinux.org.uk>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, linux-arm-kernel@lists.infradead.org, Jernej
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: Neil Armstrong <narmstrong@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, dianders@chromium.org, dgreid@chromium.org, tzungbi@chromium.org, alsa-devel@alsa-project.org, dri-devel@lists.freedesktop
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Oct 26, 2019 at 12:22 AM Rob Herring <robh@kernel.org> wrote:
->
-> On Fri, Oct 25, 2019 at 09:30:03PM +0800, Cheng-Yi Chiang wrote:
-> > There will be multiple boards sharing this machine driver.
-> > Use compatible string to specify the use case.
-> >
-> > "rockchip,rockchip-audio-max98090" for max98090-only.
-> > "rockchip,rockchip-audio-hdmi" for HDMI-only
-> > "rockchip,rockchip-audio-max98090-hdmi" for max98090 plus
-> >
-> > Move these properties to optional because they are not needed for
-> > HDMI-only use case.
-> > "rockchip,audio-codec": The phandle of the MAX98090 audio codec
-> > "rockchip,headset-codec": The phandle of Ext chip for jack detection
-> >
-> > The machine driver change will add support for HDMI codec in
-> > rockchip-max98090.
-> > Add one optional property "rockchip,hdmi-codec" to let user specify HDMI
-> > device node in DTS so machine driver can find hdmi-codec device node for
-> > codec DAI.
->
-> Why not just use the presence of rockchip,hdmi-codec to enable HDMI or
-> not. Maybe you still add rockchip,rockchip-audio-hdmi for HDMI only.
->
-> Really, the same should have been done for which codec is used too, but
-> I guess someone wanted 2 machine drivers.
+This patch series supports HDMI jack reporting on RK3288, which uses
+DRM dw-hdmi driver and hdmi-codec codec driver.
 
-Hi Rob,
-Thanks for the quick reply.
-I can make change in machine driver so that
-- The presence of rockchip,audio-codec enable max98090
-- The presence of rockchip,hdmi-codec enable HDMI.
+The previous discussion about reporting jack status using hdmi-notifier
+and drm_audio_component is at
 
-With that, we don't need the three properties added in this patch:
-"rockchip,rockchip-audio-max98090" for max98090-only.
-"rockchip,rockchip-audio-hdmi" for HDMI-only
-"rockchip,rockchip-audio-max98090-hdmi" for max98090 plus HDMI.
+https://lore.kernel.org/patchwork/patch/1083027/
 
-I will post an update soon. Thanks!
+The new approach is to use a callback mechanism that is
+specific to hdmi-codec.
 
->
->
-> >
-> > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
-> > ---
-> >  .../bindings/sound/rockchip-max98090.txt      | 38 +++++++++++++++++--
-> >  1 file changed, 35 insertions(+), 3 deletions(-)
+The dependent change on hdmi-codec.c
+
+commit 6fa5963c37a2 ("ASoC: hdmi-codec: Add an op to set callback function for plug event")
+
+has been merged to upstream.
+
+Changes from v8 to v9:
+
+1. rockchip_max98090:
+   Use the presence of rockchip,audio-codec to determine the presense of max98090
+   in sound card.
+   Use the presence of rockchip,hdmi-codec to determine the presence of HDMI in
+   sound card.
+   Remove the compatible strings added in v8.
+
+2. #include <sound/hdmi-codec.h> should be in the patch of adding HDMI jack support.
+
+Cheng-Yi Chiang (6):
+  drm: bridge: dw-hdmi: Report connector status using callback
+  ASoC: rockchip-max98090: Support usage with and without HDMI
+  ASoC: rockchip_max98090: Optionally support HDMI use case
+  ASoC: rockchip_max98090: Add HDMI jack support
+  ARM: dts: rockchip: Add HDMI support to rk3288-veyron-analog-audio
+  ARM: dts: rockchip: Add HDMI audio support to rk3288-veyron-mickey.dts
+
+ .../bindings/sound/rockchip-max98090.txt      |  27 +-
+ .../boot/dts/rk3288-veyron-analog-audio.dtsi  |   1 +
+ arch/arm/boot/dts/rk3288-veyron-mickey.dts    |   7 +
+ .../drm/bridge/synopsys/dw-hdmi-i2s-audio.c   |  11 +
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c     |  41 ++-
+ include/drm/bridge/dw_hdmi.h                  |   4 +
+ sound/soc/rockchip/Kconfig                    |   3 +-
+ sound/soc/rockchip/rockchip_max98090.c        | 313 ++++++++++++++----
+ 8 files changed, 338 insertions(+), 69 deletions(-)
+
+-- 
+2.24.0.rc0.303.g954a862665-goog
