@@ -1,7 +1,7 @@
 From: Rob Herring <robh@kernel.org>
-Subject: [PATCH v3 22/25] PCI: xgene: Use inbound resources for setup
-Date: Mon, 28 Oct 2019 11:32:53 -0500
-Message-ID: <20191028163256.8004-23-robh@kernel.org>
+Subject: [PATCH v3 21/25] PCI: v3-semi: Use inbound resources for setup
+Date: Mon, 28 Oct 2019 11:32:52 -0500
+Message-ID: <20191028163256.8004-22-robh@kernel.org>
 References: <20191028163256.8004-1-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,86 +22,100 @@ Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil
 List-Id: linux-rockchip.vger.kernel.org
 
 Now that the helpers provide the inbound resources in the host bridge
-'dma_ranges' resource list, convert the Xgene host bridge to use the
-resource list to setup the inbound addresses.
+'dma_ranges' resource list, convert the v3-semi host bridge to use
+the resource list to setup the inbound addresses.
 
-Cc: Toan Le <toan@os.amperecomputing.com>
 Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>
 Reviewed-by: Andrew Murray <andrew.murray@arm.com>
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/pci/controller/pci-xgene.c | 33 ++++++++++--------------------
- 1 file changed, 11 insertions(+), 22 deletions(-)
+ drivers/pci/controller/pci-v3-semi.c | 38 ++++++++++++----------------
+ 1 file changed, 16 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/pci/controller/pci-xgene.c b/drivers/pci/controller/pci-xgene.c
-index 9408269d943d..de195fd430dc 100644
---- a/drivers/pci/controller/pci-xgene.c
-+++ b/drivers/pci/controller/pci-xgene.c
-@@ -481,27 +481,28 @@ static int xgene_pcie_select_ib_reg(u8 *ib_reg_mask, u64 size)
+diff --git a/drivers/pci/controller/pci-v3-semi.c b/drivers/pci/controller/pci-v3-semi.c
+index 2209c7671115..bd05221f5a22 100644
+--- a/drivers/pci/controller/pci-v3-semi.c
++++ b/drivers/pci/controller/pci-v3-semi.c
+@@ -598,28 +598,30 @@ static int v3_pci_setup_resource(struct v3_pci *v3,
  }
  
- static void xgene_pcie_setup_ib_reg(struct xgene_pcie_port *port,
--				    struct of_pci_range *range, u8 *ib_reg_mask)
-+				    struct resource_entry *entry,
-+				    u8 *ib_reg_mask)
+ static int v3_get_dma_range_config(struct v3_pci *v3,
+-				   struct of_pci_range *range,
++				   struct resource_entry *entry,
+ 				   u32 *pci_base, u32 *pci_map)
  {
- 	void __iomem *cfg_base = port->cfg_base;
- 	struct device *dev = port->dev;
- 	void *bar_addr;
- 	u32 pim_reg;
--	u64 cpu_addr = range->cpu_addr;
--	u64 pci_addr = range->pci_addr;
--	u64 size = range->size;
+ 	struct device *dev = v3->dev;
+-	u64 cpu_end = range->cpu_addr + range->size - 1;
+-	u64 pci_end = range->pci_addr + range->size - 1;
 +	u64 cpu_addr = entry->res->start;
-+	u64 pci_addr = cpu_addr - entry->offset;
-+	u64 size = resource_size(entry->res);
- 	u64 mask = ~(size - 1) | EN_REG;
- 	u32 flags = PCI_BASE_ADDRESS_MEM_TYPE_64;
- 	u32 bar_low;
- 	int region;
++	u64 cpu_end = entry->res->end;
++	u64 pci_end = cpu_end - entry->offset;
++	u64 pci_addr = entry->res->start - entry->offset;
+ 	u32 val;
  
--	region = xgene_pcie_select_ib_reg(ib_reg_mask, range->size);
-+	region = xgene_pcie_select_ib_reg(ib_reg_mask, size);
- 	if (region < 0) {
- 		dev_warn(dev, "invalid pcie dma-range config\n");
- 		return;
+-	if (range->pci_addr & ~V3_PCI_BASE_M_ADR_BASE) {
++	if (pci_addr & ~V3_PCI_BASE_M_ADR_BASE) {
+ 		dev_err(dev, "illegal range, only PCI bits 31..20 allowed\n");
+ 		return -EINVAL;
  	}
+-	val = ((u32)range->pci_addr) & V3_PCI_BASE_M_ADR_BASE;
++	val = ((u32)pci_addr) & V3_PCI_BASE_M_ADR_BASE;
+ 	*pci_base = val;
  
--	if (range->flags & IORESOURCE_PREFETCH)
-+	if (entry->res->flags & IORESOURCE_PREFETCH)
- 		flags |= PCI_BASE_ADDRESS_MEM_PREFETCH;
+-	if (range->cpu_addr & ~V3_PCI_MAP_M_MAP_ADR) {
++	if (cpu_addr & ~V3_PCI_MAP_M_MAP_ADR) {
+ 		dev_err(dev, "illegal range, only CPU bits 31..20 allowed\n");
+ 		return -EINVAL;
+ 	}
+-	val = ((u32)range->cpu_addr) & V3_PCI_MAP_M_MAP_ADR;
++	val = ((u32)cpu_addr) & V3_PCI_MAP_M_MAP_ADR;
  
- 	bar_low = pcie_bar_low_val((u32)cpu_addr, flags);
-@@ -532,25 +533,13 @@ static void xgene_pcie_setup_ib_reg(struct xgene_pcie_port *port,
+-	switch (range->size) {
++	switch (resource_size(entry->res)) {
+ 	case SZ_1M:
+ 		val |= V3_LB_BASE_ADR_SIZE_1MB;
+ 		break;
+@@ -667,8 +669,8 @@ static int v3_get_dma_range_config(struct v3_pci *v3,
+ 	dev_dbg(dev,
+ 		"DMA MEM CPU: 0x%016llx -> 0x%016llx => "
+ 		"PCI: 0x%016llx -> 0x%016llx base %08x map %08x\n",
+-		range->cpu_addr, cpu_end,
+-		range->pci_addr, pci_end,
++		cpu_addr, cpu_end,
++		pci_addr, pci_end,
+ 		*pci_base, *pci_map);
  
- static int xgene_pcie_parse_map_dma_ranges(struct xgene_pcie_port *port)
+ 	return 0;
+@@ -677,24 +679,16 @@ static int v3_get_dma_range_config(struct v3_pci *v3,
+ static int v3_pci_parse_map_dma_ranges(struct v3_pci *v3,
+ 				       struct device_node *np)
  {
--	struct device_node *np = port->node;
 -	struct of_pci_range range;
 -	struct of_pci_range_parser parser;
--	struct device *dev = port->dev;
-+	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(port);
++	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(v3);
+ 	struct device *dev = v3->dev;
 +	struct resource_entry *entry;
- 	u8 ib_reg_mask = 0;
+ 	int i = 0;
  
 -	if (of_pci_dma_range_parser_init(&parser, np)) {
 -		dev_err(dev, "missing dma-ranges property\n");
 -		return -EINVAL;
 -	}
 -
--	/* Get the dma-ranges from DT */
+-	/*
+-	 * Get the dma-ranges from the device tree
+-	 */
 -	for_each_of_pci_range(&parser, &range) {
--		u64 end = range.cpu_addr + range.size - 1;
-+	resource_list_for_each_entry(entry, &bridge->dma_ranges)
-+		xgene_pcie_setup_ib_reg(port, entry, &ib_reg_mask);
++	resource_list_for_each_entry(entry, &bridge->dma_ranges) {
+ 		int ret;
+ 		u32 pci_base, pci_map;
  
--		dev_dbg(dev, "0x%08x 0x%016llx..0x%016llx -> 0x%016llx\n",
--			range.flags, range.cpu_addr, end, range.pci_addr);
--		xgene_pcie_setup_ib_reg(port, &range, &ib_reg_mask);
--	}
- 	return 0;
- }
+-		ret = v3_get_dma_range_config(v3, &range, &pci_base, &pci_map);
++		ret = v3_get_dma_range_config(v3, entry, &pci_base, &pci_map);
+ 		if (ret)
+ 			return ret;
  
 -- 
 2.20.1
