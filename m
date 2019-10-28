@@ -1,7 +1,7 @@
 From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH 4/5] arm64: dts: rockchip: add usb3 to rk3328 devicetree
-Date: Mon, 28 Oct 2019 18:22:53 +0000
-Message-ID: <20191028182254.30739-5-pgwipeout@gmail.com>
+Subject: [PATCH 5/5] arm64: dts: rockchip: enable usb3 on rk3328-roc-cc
+Date: Mon, 28 Oct 2019 18:22:54 +0000
+Message-ID: <20191028182254.30739-6-pgwipeout@gmail.com>
 References: <20191028182254.30739-1-pgwipeout@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,104 +21,51 @@ To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
 Cc: katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org, Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Now that we have a proper phy driver, we can add the requisite bits to the
-rk3328 device tree.
-Added the u3drd and u3phy nodes.
+Enable the usb3 controller and phy on the rk3328-roc-cc device tree.
 
 Signed-off-by: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 72 ++++++++++++++++++++++++
- 1 file changed, 72 insertions(+)
+ .../arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 21 +++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 31cc1541f1f5..072e988ad655 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -805,6 +805,47 @@
- 		};
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index bb40c163b05d..f300f3d0f02e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -328,6 +328,18 @@
+ 	status = "okay";
+ };
  
-+	usb3phy_grf: syscon@ff460000 {
-+		compatible = "rockchip,usb3phy-grf", "syscon";
-+		reg = <0x0 0xff460000 0x0 0x1000>;
-+	};
++&u3phy {
++	status = "okay";
++};
 +
-+	u3phy: usb3-phy@ff470000 {
-+		compatible = "rockchip,rk3328-u3phy";
-+		reg = <0x0 0xff470000 0x0 0x0>;
-+		rockchip,u3phygrf = <&usb3phy_grf>;
-+		rockchip,grf = <&grf>;
-+		interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "linestate";
-+		clocks = <&cru PCLK_USB3PHY_OTG>, <&cru PCLK_USB3PHY_PIPE>;
-+		clock-names = "u3phy-otg", "u3phy-pipe";
-+		resets = <&cru SRST_USB3PHY_U2>,
-+			 <&cru SRST_USB3PHY_U3>,
-+			 <&cru SRST_USB3PHY_PIPE>,
-+			 <&cru SRST_USB3OTG_UTMI>,
-+			 <&cru SRST_USB3PHY_OTG_P>,
-+			 <&cru SRST_USB3PHY_PIPE_P>;
-+		reset-names = "u3phy-u2-por", "u3phy-u3-por",
-+			      "u3phy-pipe-mac", "u3phy-utmi-mac",
-+			      "u3phy-utmi-apb", "u3phy-pipe-apb";
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		status = "disabled";
++&u3phy_utmi {
++	status = "okay";
++};
 +
-+		u3phy_utmi: utmi@ff470000 {
-+			reg = <0x0 0xff470000 0x0 0x8000>;
-+			#phy-cells = <0>;
-+			status = "disabled";
-+		};
++&u3phy_pipe {
++	status = "okay";
++};
 +
-+		u3phy_pipe: pipe@ff478000 {
-+			reg = <0x0 0xff478000 0x0 0x8000>;
-+			#phy-cells = <0>;
-+			status = "disabled";
-+		};
-+	};
-+
- 	sdmmc: dwmmc@ff500000 {
- 		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
- 		reg = <0x0 0xff500000 0x0 0x4000>;
-@@ -936,6 +977,37 @@
- 		status = "disabled";
- 	};
+ &uart2 {
+ 	status = "okay";
+ };
+@@ -344,6 +356,15 @@
+ 	status = "okay";
+ };
  
-+	usbdrd3: usb@ff600000 {
-+		compatible = "rockchip,rk3328-dwc3", "rockchip,rk3399-dwc3";
-+		clocks = <&cru SCLK_USB3OTG_REF>, <&cru ACLK_USB3OTG>,
-+			 <&cru SCLK_USB3OTG_SUSPEND>;
-+		clock-names = "ref", "bus_early",
-+			      "suspend";
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		clock-ranges;
-+		status = "disabled";
++&usbdrd3 {
++	status = "okay";
++};
 +
-+		usbdrd_dwc3: dwc3@ff600000 {
-+			compatible = "snps,dwc3";
-+			reg = <0x0 0xff600000 0x0 0x100000>;
-+			interrupts = <GIC_SPI 67 IRQ_TYPE_LEVEL_HIGH>;
-+			dr_mode = "otg";
-+			phys = <&u3phy_utmi>, <&u3phy_pipe>;
-+			phy-names = "usb2-phy", "usb3-phy";
-+			phy_type = "utmi_wide";
-+			snps,dis_enblslpm_quirk;
-+			snps,dis-u2-freeclk-exists-quirk;
-+			snps,dis_u2_susphy_quirk;
-+			snps,dis_u3_susphy_quirk;
-+			snps,dis-del-phy-power-chg-quirk;
-+			snps,dis-tx-ipgap-linecheck-quirk;
-+			snps,xhci-trb-ent-quirk;
-+			status = "disabled";
-+		};
-+	};
++&usbdrd_dwc3 {
++	dr_mode = "host";
++	status = "okay";
++};
 +
- 	gic: interrupt-controller@ff811000 {
- 		compatible = "arm,gic-400";
- 		#interrupt-cells = <3>;
+ &vop {
+ 	status = "okay";
+ };
 -- 
 2.20.1
