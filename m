@@ -1,7 +1,7 @@
 From: Rob Herring <robh@kernel.org>
-Subject: [PATCH v3 17/25] PCI: versatile: Remove usage of PHYS_OFFSET
-Date: Mon, 28 Oct 2019 11:32:48 -0500
-Message-ID: <20191028163256.8004-18-robh@kernel.org>
+Subject: [PATCH v3 18/25] PCI: versatile: Enable COMPILE_TEST
+Date: Mon, 28 Oct 2019 11:32:49 -0500
+Message-ID: <20191028163256.8004-19-robh@kernel.org>
 References: <20191028163256.8004-1-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,48 +21,31 @@ To: Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, 
 Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Michal Simek <michal.simek@xilinx.com>, Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Linus Walleij <linus.walleij@linaro.org>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>, Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboards.org, linux-renesas-soc@vger.kernel.org, Tom Joseph <tjoseph@cadence>
 List-Id: linux-rockchip.vger.kernel.org
 
-PHYS_OFFSET is not universally defined on all arches and using it prevents
-enabling COMPILE_TEST. PAGE_OFFSET and __pa() are always available, so use
-them to get the physical start of memory address.
+Since commit a574795bc383 ("PCI: generic,versatile: Remove unused
+pci_sys_data structures") the build dependency on ARM is gone, so let's
+enable COMPILE_TEST for versatile.
 
-This should have probably used 'dma-ranges' to get the address, but we
-don't want to force a DT update to do that. At least in QEMU, the SMAP
-registers have no effect (or perhaps the only value that is handled is 0).
-
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Andrew Murray <andrew.murray@arm.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>
+Reviewed-by: Andrew Murray <andrew.murray@arm.com>
 Acked-by: Linus Walleij <linus.walleij@linaro.org>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/pci/controller/pci-versatile.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/pci/controller/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/pci/controller/pci-versatile.c b/drivers/pci/controller/pci-versatile.c
-index 18697f2ea345..eae1b859990b 100644
---- a/drivers/pci/controller/pci-versatile.c
-+++ b/drivers/pci/controller/pci-versatile.c
-@@ -99,7 +99,7 @@ static int versatile_pci_probe(struct platform_device *pdev)
- 	resource_list_for_each_entry(entry, &bridge->windows) {
- 		if (resource_type(entry->res) == IORESOURCE_MEM) {
- 			writel(entry->res->start >> 28, PCI_IMAP(mem));
--			writel(PHYS_OFFSET >> 28, PCI_SMAP(mem));
-+			writel(__pa(PAGE_OFFSET) >> 28, PCI_SMAP(mem));
- 			mem++;
- 		}
- 	}
-@@ -136,9 +136,9 @@ static int versatile_pci_probe(struct platform_device *pdev)
- 	/*
- 	 * Configure the PCI inbound memory windows to be 1:1 mapped to SDRAM
- 	 */
--	writel(PHYS_OFFSET, local_pci_cfg_base + PCI_BASE_ADDRESS_0);
--	writel(PHYS_OFFSET, local_pci_cfg_base + PCI_BASE_ADDRESS_1);
--	writel(PHYS_OFFSET, local_pci_cfg_base + PCI_BASE_ADDRESS_2);
-+	writel(__pa(PAGE_OFFSET), local_pci_cfg_base + PCI_BASE_ADDRESS_0);
-+	writel(__pa(PAGE_OFFSET), local_pci_cfg_base + PCI_BASE_ADDRESS_1);
-+	writel(__pa(PAGE_OFFSET), local_pci_cfg_base + PCI_BASE_ADDRESS_2);
+diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
+index 70e078238899..f5de9119e8d3 100644
+--- a/drivers/pci/controller/Kconfig
++++ b/drivers/pci/controller/Kconfig
+@@ -135,7 +135,7 @@ config PCI_V3_SEMI
  
- 	/*
- 	 * For many years the kernel and QEMU were symbiotically buggy
+ config PCI_VERSATILE
+ 	bool "ARM Versatile PB PCI controller"
+-	depends on ARCH_VERSATILE
++	depends on ARCH_VERSATILE || COMPILE_TEST
+ 
+ config PCIE_IPROC
+ 	tristate
 -- 
 2.20.1
