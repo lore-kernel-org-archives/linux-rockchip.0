@@ -1,75 +1,132 @@
-From: Cheng-yi Chiang <cychiang@chromium.org>
-Subject: Re: [PATCH v8 3/6] ASoC: rockchip_max98090: Optionally support HDMI
- use case
-Date: Tue, 29 Oct 2019 10:40:55 +0800
-Message-ID: <CAFv8NwJYrpT=hCFwWfbdRvC971X-XGS-mjEBJrggQTJ02nhv7g@mail.gmail.com>
-References: <20191025133007.11190-4-cychiang@chromium.org> <201910290345.w2EEW5S3%lkp@intel.com>
+From: "Z.q. Hou" <zhiqiang.hou@nxp.com>
+Subject: RE: [PATCH v3 09/25] PCI: mobiveil: Use
+ pci_parse_request_of_pci_ranges()
+Date: Tue, 29 Oct 2019 09:00:34 +0000
+Message-ID: <DB8PR04MB6747A5E55650DD7ED174840284610@DB8PR04MB6747.eurprd04.prod.outlook.com>
+References: <20191028163256.8004-1-robh@kernel.org>
+ <20191028163256.8004-10-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <201910290345.w2EEW5S3%lkp@intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: kbuild test robot <lkp@intel.com>
-Cc: kbuild-all@lists.01.org, linux-kernel <linux-kernel@vger.kernel.org>, Neil Armstrong <narmstrong@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Doug Anderson <dianders@chromium.org>
+Content-Type: text/plain; charset="gb2312"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20191028163256.8004-10-robh@kernel.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Rob Herring <robh@kernel.org>, Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Michal Simek <michal.simek@xilinx.com>, Christoph Hellwig <hch@infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "bcm-kernel-feedback-list@broadcom.com" <bcm-kernel-feedback-list@broadcom.com>, Shawn Lin <shawn.lin@rock-chips.com>, Ray Jui <rjui@broadcom.com>, Simon Horman <horms@verge.net.au>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Scott
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Oct 29, 2019 at 3:10 AM kbuild test robot <lkp@intel.com> wrote:
->
-> Hi Cheng-Yi,
->
-> I love your patch! Yet something to improve:
->
-> [auto build test ERROR on rockchip/for-next]
-> [also build test ERROR on v5.4-rc5 next-20191028]
-> [if your patch is applied to the wrong git tree, please drop us a note to=
- help
-> improve the system. BTW, we also suggest to use '--base' option to specif=
-y the
-> base tree in git format-patch, please see https://stackoverflow.com/a/374=
-06982]
->
-> url:    https://github.com/0day-ci/linux/commits/Cheng-Yi-Chiang/Add-HDMI=
--jack-support-on-RK3288/20191028-212502
-> base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockc=
-hip.git for-next
-> config: i386-allmodconfig (attached as .config)
-> compiler: gcc-7 (Debian 7.4.0-14) 7.4.0
-> reproduce:
->         # save the attached .config to linux build tree
->         make ARCH=3Di386
->
-> If you fix the issue, kindly add following tag
-> Reported-by: kbuild test robot <lkp@intel.com>
->
-> All errors (new ones prefixed by >>):
->
->    sound/soc/rockchip/snd-soc-rockchip-max98090: struct of_device_id is 1=
-96 bytes.  The last of 3 is:
->    0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 =
-0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 =
-0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 =
-0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 =
-0x00 0x00 0x00 0x00 0x00 0x72 0x6f 0x63 0x6b 0x63 0x68 0x69 0x70 0x2c 0x72 =
-0x6f 0x63 0x6b 0x63 0x68 0x69 0x70 0x2d 0x61 0x75 0x64 0x69 0x6f 0x2d 0x6d =
-0x61 0x78 0x39 0x38 0x30 0x39 0x30 0x2d 0x68 0x64 0x6d 0x69 0x00 0x00 0x00 =
-0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 =
-0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 =
-0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 =
-0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 =
-0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 =
-0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x10 0x00 =
-0x00 0x00
-> >> FATAL: sound/soc/rockchip/snd-soc-rockchip-max98090: struct of_device_=
-id is not terminated with a NULL entry!
-
-Please ignore this error for v8 patch series because the change in
-rockchip_max98090.c of of_device_id is removed in v9 patch series.
-Thanks!
-
->
-> ---
-> 0-DAY kernel test infrastructure                Open Source Technology Ce=
-nter
-> https://lists.01.org/pipermail/kbuild-all                   Intel Corpora=
-tion
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogUm9iIEhlcnJpbmcgPHJv
+YmhAa2VybmVsLm9yZz4NCj4gU2VudDogMjAxOcTqMTDUwjI5yNUgMDozMw0KPiBUbzogQW5kcmV3
+IE11cnJheSA8YW5kcmV3Lm11cnJheUBhcm0uY29tPjsgQmpvcm4gSGVsZ2Fhcw0KPiA8YmhlbGdh
+YXNAZ29vZ2xlLmNvbT47IExvcmVuem8gUGllcmFsaXNpIDxsb3JlbnpvLnBpZXJhbGlzaUBhcm0u
+Y29tPg0KPiBDYzogbGludXgtcGNpQHZnZXIua2VybmVsLm9yZzsgbGludXgtYXJtLWtlcm5lbEBs
+aXN0cy5pbmZyYWRlYWQub3JnOw0KPiBiY20ta2VybmVsLWZlZWRiYWNrLWxpc3RAYnJvYWRjb20u
+Y29tOyBDaHJpc3RvcGggSGVsbHdpZw0KPiA8aGNoQGluZnJhZGVhZC5vcmc+OyBHdXN0YXZvIFBp
+bWVudGVsDQo+IDxndXN0YXZvLnBpbWVudGVsQHN5bm9wc3lzLmNvbT47IEhlaWtvIFN0dWVibmVy
+IDxoZWlrb0BzbnRlY2guZGU+Ow0KPiBaLnEuIEhvdSA8emhpcWlhbmcuaG91QG54cC5jb20+OyBK
+aW5nb28gSGFuIDxqaW5nb29oYW4xQGdtYWlsLmNvbT47DQo+IEthcnRoaWtleWFuIE1pdHJhbiA8
+bS5rYXJ0aGlrZXlhbkBtb2JpdmVpbC5jby5pbj47IExleSBGb29uIFRhbg0KPiA8bGZ0YW5AYWx0
+ZXJhLmNvbT47IExpbnVzIFdhbGxlaWogPGxpbnVzLndhbGxlaWpAbGluYXJvLm9yZz47DQo+IGxp
+bnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmc7IGxpbnV4LXJlbmVzYXMtc29jQHZnZXIu
+a2VybmVsLm9yZzsNCj4gbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZzsgTWF0dGhp
+YXMgQnJ1Z2dlcg0KPiA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT47IE1pY2hhbCBTaW1layA8bWlj
+aGFsLnNpbWVrQHhpbGlueC5jb20+OyBSYXkNCj4gSnVpIDxyanVpQGJyb2FkY29tLmNvbT47IHJm
+aUBsaXN0cy5yb2NrZXRib2FyZHMub3JnOyBSeWRlciBMZWUNCj4gPHJ5ZGVyLmxlZUBtZWRpYXRl
+ay5jb20+OyBTY290dCBCcmFuZGVuIDxzYnJhbmRlbkBicm9hZGNvbS5jb20+Ow0KPiBTaGF3biBM
+aW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT47IFNpbW9uIEhvcm1hbg0KPiA8aG9ybXNAdmVy
+Z2UubmV0LmF1PjsgU3JpbmF0aCBNYW5uYW0NCj4gPHNyaW5hdGgubWFubmFtQGJyb2FkY29tLmNv
+bT47IFRob21hcyBQZXRhenpvbmkNCj4gPHRob21hcy5wZXRhenpvbmlAYm9vdGxpbi5jb20+OyBU
+b2FuIExlDQo+IDx0b2FuQG9zLmFtcGVyZWNvbXB1dGluZy5jb20+OyBUb20gSm9zZXBoIDx0am9z
+ZXBoQGNhZGVuY2UuY29tPjsNCj4gV2lsbCBEZWFjb24gPHdpbGxAa2VybmVsLm9yZz4NCj4gU3Vi
+amVjdDogW1BBVENIIHYzIDA5LzI1XSBQQ0k6IG1vYml2ZWlsOiBVc2UNCj4gcGNpX3BhcnNlX3Jl
+cXVlc3Rfb2ZfcGNpX3JhbmdlcygpDQo+IA0KPiBDb252ZXJ0IHRoZSBNb2JpdmVpbCBob3N0IGJy
+aWRnZSB0byB1c2UgdGhlIGNvbW1vbg0KPiBwY2lfcGFyc2VfcmVxdWVzdF9vZl9wY2lfcmFuZ2Vz
+KCkuDQo+IA0KPiBUaGVyZSdzIG5vIG5lZWQgdG8gYXNzaWduIHRoZSByZXNvdXJjZXMgdG8gYSB0
+ZW1wb3JhcnkgbGlzdCBmaXJzdC4gSnVzdCB1c2UNCj4gYnJpZGdlLT53aW5kb3dzIGRpcmVjdGx5
+IGFuZCByZW1vdmUgYWxsIHRoZSB0ZW1wb3JhcnkgbGlzdCBoYW5kbGluZy4NCj4gDQo+IENjOiBL
+YXJ0aGlrZXlhbiBNaXRyYW4gPG0ua2FydGhpa2V5YW5AbW9iaXZlaWwuY28uaW4+DQo+IENjOiBI
+b3UgWmhpcWlhbmcgPFpoaXFpYW5nLkhvdUBueHAuY29tPg0KPiBDYzogTG9yZW56byBQaWVyYWxp
+c2kgPGxvcmVuem8ucGllcmFsaXNpQGFybS5jb20+DQo+IENjOiBCam9ybiBIZWxnYWFzIDxiaGVs
+Z2Fhc0Bnb29nbGUuY29tPg0KPiBSZXZpZXdlZC1ieTogQW5kcmV3IE11cnJheSA8YW5kcmV3Lm11
+cnJheUBhcm0uY29tPg0KPiBTaWduZWQtb2ZmLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwu
+b3JnPg0KPiAtLS0NCj4gIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tb2JpdmVpbC5jIHwg
+MjYgKysrKysrKy0tLS0tLS0tLS0tLS0tLS0tLS0NCj4gIDEgZmlsZSBjaGFuZ2VkLCA3IGluc2Vy
+dGlvbnMoKyksIDE5IGRlbGV0aW9ucygtKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNp
+L2NvbnRyb2xsZXIvcGNpZS1tb2JpdmVpbC5jDQo+IGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9w
+Y2llLW1vYml2ZWlsLmMNCj4gaW5kZXggYTQ1YTY0NDdiMDFkLi40ZWFiODYyNGNlNGQgMTAwNjQ0
+DQo+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tb2JpdmVpbC5jDQo+ICsrKyBi
+L2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tb2JpdmVpbC5jDQo+IEBAIC0xNDAsNyArMTQw
+LDYgQEAgc3RydWN0IG1vYml2ZWlsX21zaSB7CQkJLyogTVNJIGluZm9ybWF0aW9uDQo+ICovDQo+
+IA0KPiAgc3RydWN0IG1vYml2ZWlsX3BjaWUgew0KPiAgCXN0cnVjdCBwbGF0Zm9ybV9kZXZpY2Ug
+KnBkZXY7DQo+IC0Jc3RydWN0IGxpc3RfaGVhZCByZXNvdXJjZXM7DQo+ICAJdm9pZCBfX2lvbWVt
+ICpjb25maWdfYXhpX3NsYXZlX2Jhc2U7CS8qIGVuZHBvaW50IGNvbmZpZyBiYXNlICovDQo+ICAJ
+dm9pZCBfX2lvbWVtICpjc3JfYXhpX3NsYXZlX2Jhc2U7CS8qIHJvb3QgcG9ydCBjb25maWcgYmFz
+ZSAqLw0KPiAgCXZvaWQgX19pb21lbSAqYXBiX2Nzcl9iYXNlOwkvKiBNU0kgcmVnaXN0ZXIgYmFz
+ZSAqLw0KPiBAQCAtNTc1LDYgKzU3NCw3IEBAIHN0YXRpYyB2b2lkIG1vYml2ZWlsX3BjaWVfZW5h
+YmxlX21zaShzdHJ1Y3QNCj4gbW9iaXZlaWxfcGNpZSAqcGNpZSkNCj4gDQo+ICBzdGF0aWMgaW50
+IG1vYml2ZWlsX2hvc3RfaW5pdChzdHJ1Y3QgbW9iaXZlaWxfcGNpZSAqcGNpZSkgIHsNCj4gKwlz
+dHJ1Y3QgcGNpX2hvc3RfYnJpZGdlICpicmlkZ2UgPSBwY2lfaG9zdF9icmlkZ2VfZnJvbV9wcml2
+KHBjaWUpOw0KPiAgCXUzMiB2YWx1ZSwgcGFiX2N0cmwsIHR5cGU7DQo+ICAJc3RydWN0IHJlc291
+cmNlX2VudHJ5ICp3aW47DQo+IA0KPiBAQCAtNjMxLDcgKzYzMSw3IEBAIHN0YXRpYyBpbnQgbW9i
+aXZlaWxfaG9zdF9pbml0KHN0cnVjdCBtb2JpdmVpbF9wY2llDQo+ICpwY2llKQ0KPiAgCXByb2dy
+YW1faWJfd2luZG93cyhwY2llLCBXSU5fTlVNXzAsIDAsIDAsIE1FTV9XSU5ET1dfVFlQRSwNCj4g
+SUJfV0lOX1NJWkUpOw0KPiANCj4gIAkvKiBHZXQgdGhlIEkvTyBhbmQgbWVtb3J5IHJhbmdlcyBm
+cm9tIERUICovDQo+IC0JcmVzb3VyY2VfbGlzdF9mb3JfZWFjaF9lbnRyeSh3aW4sICZwY2llLT5y
+ZXNvdXJjZXMpIHsNCj4gKwlyZXNvdXJjZV9saXN0X2Zvcl9lYWNoX2VudHJ5KHdpbiwgJmJyaWRn
+ZS0+d2luZG93cykgew0KPiAgCQlpZiAocmVzb3VyY2VfdHlwZSh3aW4tPnJlcykgPT0gSU9SRVNP
+VVJDRV9NRU0pDQo+ICAJCQl0eXBlID0gTUVNX1dJTkRPV19UWVBFOw0KPiAgCQllbHNlIGlmIChy
+ZXNvdXJjZV90eXBlKHdpbi0+cmVzKSA9PSBJT1JFU09VUkNFX0lPKSBAQCAtODU3LDcNCj4gKzg1
+Nyw2IEBAIHN0YXRpYyBpbnQgbW9iaXZlaWxfcGNpZV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2
+aWNlICpwZGV2KQ0KPiAgCXN0cnVjdCBwY2lfYnVzICpjaGlsZDsNCj4gIAlzdHJ1Y3QgcGNpX2hv
+c3RfYnJpZGdlICpicmlkZ2U7DQo+ICAJc3RydWN0IGRldmljZSAqZGV2ID0gJnBkZXYtPmRldjsN
+Cj4gLQlyZXNvdXJjZV9zaXplX3QgaW9iYXNlOw0KPiAgCWludCByZXQ7DQo+IA0KPiAgCS8qIGFs
+bG9jYXRlIHRoZSBQQ0llIHBvcnQgKi8NCj4gQEAgLTg3NSwxMSArODc0LDggQEAgc3RhdGljIGlu
+dCBtb2JpdmVpbF9wY2llX3Byb2JlKHN0cnVjdA0KPiBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpDQo+
+ICAJCXJldHVybiByZXQ7DQo+ICAJfQ0KPiANCj4gLQlJTklUX0xJU1RfSEVBRCgmcGNpZS0+cmVz
+b3VyY2VzKTsNCj4gLQ0KPiAgCS8qIHBhcnNlIHRoZSBob3N0IGJyaWRnZSBiYXNlIGFkZHJlc3Nl
+cyBmcm9tIHRoZSBkZXZpY2UgdHJlZSBmaWxlICovDQo+IC0JcmV0ID0gZGV2bV9vZl9wY2lfZ2V0
+X2hvc3RfYnJpZGdlX3Jlc291cmNlcyhkZXYsIDAsIDB4ZmYsDQo+IC0JCQkJCQkgICAgJnBjaWUt
+PnJlc291cmNlcywgJmlvYmFzZSk7DQo+ICsJcmV0ID0gcGNpX3BhcnNlX3JlcXVlc3Rfb2ZfcGNp
+X3JhbmdlcyhkZXYsICZicmlkZ2UtPndpbmRvd3MsIE5VTEwpOw0KPiAgCWlmIChyZXQpIHsNCj4g
+IAkJZGV2X2VycihkZXYsICJHZXR0aW5nIGJyaWRnZSByZXNvdXJjZXMgZmFpbGVkXG4iKTsNCj4g
+IAkJcmV0dXJuIHJldDsNCj4gQEAgLTg5MiwyNCArODg4LDE5IEBAIHN0YXRpYyBpbnQgbW9iaXZl
+aWxfcGNpZV9wcm9iZShzdHJ1Y3QNCj4gcGxhdGZvcm1fZGV2aWNlICpwZGV2KQ0KPiAgCXJldCA9
+IG1vYml2ZWlsX2hvc3RfaW5pdChwY2llKTsNCj4gIAlpZiAocmV0KSB7DQo+ICAJCWRldl9lcnIo
+ZGV2LCAiRmFpbGVkIHRvIGluaXRpYWxpemUgaG9zdFxuIik7DQo+IC0JCWdvdG8gZXJyb3I7DQo+
+ICsJCXJldHVybiByZXQ7DQo+ICAJfQ0KPiANCj4gIAkvKiBpbml0aWFsaXplIHRoZSBJUlEgZG9t
+YWlucyAqLw0KPiAgCXJldCA9IG1vYml2ZWlsX3BjaWVfaW5pdF9pcnFfZG9tYWluKHBjaWUpOw0K
+PiAgCWlmIChyZXQpIHsNCj4gIAkJZGV2X2VycihkZXYsICJGYWlsZWQgY3JlYXRpbmcgSVJRIERv
+bWFpblxuIik7DQo+IC0JCWdvdG8gZXJyb3I7DQo+ICsJCXJldHVybiByZXQ7DQo+ICAJfQ0KPiAN
+Cj4gIAlpcnFfc2V0X2NoYWluZWRfaGFuZGxlcl9hbmRfZGF0YShwY2llLT5pcnEsIG1vYml2ZWls
+X3BjaWVfaXNyLCBwY2llKTsNCj4gDQo+IC0JcmV0ID0gZGV2bV9yZXF1ZXN0X3BjaV9idXNfcmVz
+b3VyY2VzKGRldiwgJnBjaWUtPnJlc291cmNlcyk7DQo+IC0JaWYgKHJldCkNCj4gLQkJZ290byBl
+cnJvcjsNCj4gLQ0KPiAgCS8qIEluaXRpYWxpemUgYnJpZGdlICovDQo+IC0JbGlzdF9zcGxpY2Vf
+aW5pdCgmcGNpZS0+cmVzb3VyY2VzLCAmYnJpZGdlLT53aW5kb3dzKTsNCj4gIAlicmlkZ2UtPmRl
+di5wYXJlbnQgPSBkZXY7DQo+ICAJYnJpZGdlLT5zeXNkYXRhID0gcGNpZTsNCj4gIAlicmlkZ2Ut
+PmJ1c25yID0gcGNpZS0+cm9vdF9idXNfbnI7DQo+IEBAIC05MjAsMTMgKzkxMSwxMyBAQCBzdGF0
+aWMgaW50IG1vYml2ZWlsX3BjaWVfcHJvYmUoc3RydWN0DQo+IHBsYXRmb3JtX2RldmljZSAqcGRl
+dikNCj4gIAlyZXQgPSBtb2JpdmVpbF9icmluZ3VwX2xpbmsocGNpZSk7DQo+ICAJaWYgKHJldCkg
+ew0KPiAgCQlkZXZfaW5mbyhkZXYsICJsaW5rIGJyaW5nLXVwIGZhaWxlZFxuIik7DQo+IC0JCWdv
+dG8gZXJyb3I7DQo+ICsJCXJldHVybiByZXQ7DQo+ICAJfQ0KPiANCj4gIAkvKiBzZXR1cCB0aGUg
+a2VybmVsIHJlc291cmNlcyBmb3IgdGhlIG5ld2x5IGFkZGVkIFBDSWUgcm9vdCBidXMgKi8NCj4g
+IAlyZXQgPSBwY2lfc2Nhbl9yb290X2J1c19icmlkZ2UoYnJpZGdlKTsNCj4gIAlpZiAocmV0KQ0K
+PiAtCQlnb3RvIGVycm9yOw0KPiArCQlyZXR1cm4gcmV0Ow0KPiANCj4gIAlidXMgPSBicmlkZ2Ut
+PmJ1czsNCj4gDQo+IEBAIC05MzYsOSArOTI3LDYgQEAgc3RhdGljIGludCBtb2JpdmVpbF9wY2ll
+X3Byb2JlKHN0cnVjdA0KPiBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpDQo+ICAJcGNpX2J1c19hZGRf
+ZGV2aWNlcyhidXMpOw0KPiANCj4gIAlyZXR1cm4gMDsNCj4gLWVycm9yOg0KPiAtCXBjaV9mcmVl
+X3Jlc291cmNlX2xpc3QoJnBjaWUtPnJlc291cmNlcyk7DQo+IC0JcmV0dXJuIHJldDsNCj4gIH0N
+Cj4gDQo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBtb2JpdmVpbF9wY2llX29m
+X21hdGNoW10gPSB7DQo+IC0tDQo+IDIuMjAuMQ0KDQpSZXZpZXdlZC1ieTogSG91IFpoaXFpYW5n
+IDxaaGlxaWFuZy5Ib3VAbnhwLmNvbT4NCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1r
+ZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
