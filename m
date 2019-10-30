@@ -1,13 +1,13 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 4.19 10/38] ASoc: rockchip: i2s: Fix RPM imbalance
-Date: Wed, 30 Oct 2019 11:53:38 -0400
-Message-ID: <20191030155406.10109-10-sashal@kernel.org>
-References: <20191030155406.10109-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.14 05/24] ASoc: rockchip: i2s: Fix RPM imbalance
+Date: Wed, 30 Oct 2019 11:55:36 -0400
+Message-ID: <20191030155555.10494-5-sashal@kernel.org>
+References: <20191030155555.10494-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191030155406.10109-1-sashal@kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20191030155555.10494-1-sashal@kernel.org>
+Sender: stable-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
 Cc: Robin Murphy <robin.murphy@arm.com>, Mark Brown <broonie@kernel.org>, Sasha Levin <sashal@kernel.org>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
@@ -31,11 +31,11 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 11399f81c92f9..b86f76c3598cd 100644
+index 66fc13a2396a0..0e07e3dea7de4 100644
 --- a/sound/soc/rockchip/rockchip_i2s.c
 +++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -677,7 +677,7 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 	ret = rockchip_pcm_platform_register(&pdev->dev);
+@@ -676,7 +676,7 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+ 	ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
  	if (ret) {
  		dev_err(&pdev->dev, "Could not register PCM\n");
 -		return ret;
