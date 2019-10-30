@@ -1,93 +1,83 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v3 19/25] PCI: of: Add inbound resource parsing to helpers
-Date: Tue, 29 Oct 2019 17:12:24 -0500
-Message-ID: <20191029221224.GA117069@google.com>
-References: <20191029110751.GB27171@e121166-lin.cambridge.arm.com>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH 0/5] add rk3328 usb3 phy driver
+Date: Wed, 30 Oct 2019 00:17:56 +0000
+Message-ID: <9e5546de-f5b6-7f60-96d0-612249e832ce@arm.com>
+References: <20191028182254.30739-1-pgwipeout@gmail.com>
+ <5230f80c-9684-72e0-8f96-602428a9e655@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <20191029110751.GB27171@e121166-lin.cambridge.arm.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Michal Simek <michal.simek@xilinx.com>, Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Shawn Lin <shawn.lin@rock-chips.com>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>, linux-mediatek@lists.infradead.org, Andrew Murray <andrew.murray@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>, Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboar
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <5230f80c-9684-72e0-8f96-602428a9e655-5wv7dgnIgG8@public.gmane.org>
+Content-Language: en-GB
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org
+Cc: katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Oct 29, 2019 at 11:07:51AM +0000, Lorenzo Pieralisi wrote:
-> On Mon, Oct 28, 2019 at 11:32:50AM -0500, Rob Herring wrote:
-> > Extend devm_of_pci_get_host_bridge_resources() and
-> > pci_parse_request_of_pci_ranges() helpers to also parse the inbound
-> > addresses from DT 'dma-ranges' and populate a resource list with the
-> > translated addresses. This will help ensure 'dma-ranges' is always
-> > parsed in a consistent way.
-> > 
-> > Cc: Jingoo Han <jingoohan1@gmail.com>
-> > Cc: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
-> > Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-> > Cc: Bjorn Helgaas <bhelgaas@google.com>
-> > Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
-> > Cc: Will Deacon <will@kernel.org>
-> > Cc: Linus Walleij <linus.walleij@linaro.org>
-> > Cc: Toan Le <toan@os.amperecomputing.com>
-> > Cc: Ley Foon Tan <lftan@altera.com>
-> > Cc: Tom Joseph <tjoseph@cadence.com>
-> > Cc: Ray Jui <rjui@broadcom.com>
-> > Cc: Scott Branden <sbranden@broadcom.com>
-> > Cc: bcm-kernel-feedback-list@broadcom.com
-> > Cc: Ryder Lee <ryder.lee@mediatek.com>
-> > Cc: Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>
-> > Cc: Hou Zhiqiang <Zhiqiang.Hou@nxp.com>
-> > Cc: Simon Horman <horms@verge.net.au>
-> > Cc: Shawn Lin <shawn.lin@rock-chips.com>
-> > Cc: Heiko Stuebner <heiko@sntech.de>
-> > Cc: Michal Simek <michal.simek@xilinx.com>
-> > Cc: rfi@lists.rocketboards.org
-> > Cc: linux-mediatek@lists.infradead.org
-> > Cc: linux-renesas-soc@vger.kernel.org
-> > Cc: linux-rockchip@lists.infradead.org
-> > Tested-by: Thomas Petazzoni <thomas.petazzoni@bootlin.com> # for AArdvark
-> > Reviewed-by: Andrew Murray <andrew.murray@arm.com>
-> > Acked-by: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
-> > Signed-off-by: Rob Herring <robh@kernel.org>
-> > ---
-> > v2:
-> >  - Fix crash in INIT_LIST_HEAD when ib_resources is NULL
-> > ---
-> >  .../pci/controller/dwc/pcie-designware-host.c |  3 +-
-> >  drivers/pci/controller/pci-aardvark.c         |  2 +-
-> >  drivers/pci/controller/pci-ftpci100.c         |  3 +-
-> >  drivers/pci/controller/pci-host-common.c      |  2 +-
-> >  drivers/pci/controller/pci-v3-semi.c          |  3 +-
-> >  drivers/pci/controller/pci-versatile.c        |  3 +-
-> >  drivers/pci/controller/pci-xgene.c            |  3 +-
-> >  drivers/pci/controller/pcie-altera.c          |  2 +-
-> >  drivers/pci/controller/pcie-cadence-host.c    |  2 +-
-> >  drivers/pci/controller/pcie-iproc-platform.c  |  3 +-
-> >  drivers/pci/controller/pcie-mediatek.c        |  2 +-
-> >  drivers/pci/controller/pcie-mobiveil.c        |  3 +-
-> >  drivers/pci/controller/pcie-rcar.c            |  3 +-
-> >  drivers/pci/controller/pcie-rockchip-host.c   |  3 +-
-> >  drivers/pci/controller/pcie-xilinx-nwl.c      |  3 +-
-> >  drivers/pci/controller/pcie-xilinx.c          |  3 +-
-> >  drivers/pci/of.c                              | 45 ++++++++++++++++++-
-> >  drivers/pci/pci.h                             |  8 +++-
-> >  include/linux/pci.h                           |  9 ++--
-> >  19 files changed, 82 insertions(+), 23 deletions(-)
-> 
-> Hi Bjorn,
-> 
-> please let me know if you are OK with this patch, the series is
-> ready to go upstream IMO.
-
-Yep, looks good to me.  If you want it:
-
-Acked-by: Bjorn Helgaas <bhelgaas@google.com>
+T24gMjAxOS0xMC0yOCA2OjQxIHBtLCBSb2JpbiBNdXJwaHkgd3JvdGU6Cj4gT24gMjgvMTAvMjAx
+OSAxODoyMiwgUGV0ZXIgR2VpcyB3cm90ZToKPj4gSXQgdG9vayBhIGxvdCBtb3JlIGVmZm9ydCB0
+aGFuIG9yaWdpbmFsbHkgYW50aWNpcGF0ZWQsIGJ1dCBoZXJlIGl0IGlzLgo+PiBUaGlzIGlzIHRo
+ZSBkcml2ZXIgZnJvbSBbMF0sIHVwZGF0ZWQgdG8gd29yayB3aXRoIHRoZSBjdXJyZW50IGtlcm5l
+bC4KPj4gSSd2ZSB0ZXN0ZWQgaXQgb24gdGhlIHJrMzMyOC1yb2MtY2MgYm9hcmQsIGJvdGggdXNi
+IDIuMCBhbmQgdXNiIDMuMAo+PiBkZXZpY2VzIGRldGVjdCBvbiBob3RwbHVnLgo+IAo+IFRoYW5r
+cyBQZXRlciwgSSdsbCB0cnkgdG8gZ2l2ZSB0aGlzIGEgZ28gb24gbXkgYm94IGZvciBjb25maXJt
+YXRpb24uCgpPSywgSSBob29rZWQgaXQgdXAgd2l0aCBhIHZidXMtZHJ2LWdwaW8gaGFja2VkIGlu
+IC0gVVNCIDIuMCAKdW5wbHVnL3JlcGx1ZyBkb2VzIGluZGVlZCB3b3JrIGZpbmUsIGJ1dCBpdCB0
+YWtlcyBhIHdoaWxlIHRvIGFja25vd2xlZGdlIAphbiB1bnBsdWcgb2YgYSBVU0IgMy4wIGRldmlj
+ZSwgYW5kIHRocm93cyBhIGJ1bmNoIG9mIGVycm9ycyBldmVyeSB0aW1lOgoKWyAgMjg4LjIyOTU2
+OF0gdXNiIHVzYjQtcG9ydDE6IENhbm5vdCBlbmFibGUuIE1heWJlIHRoZSBVU0IgY2FibGUgaXMg
+YmFkPwpbICAyOTAuODA5NTk5XSB1c2IgdXNiNC1wb3J0MTogQ2Fubm90IGVuYWJsZS4gTWF5YmUg
+dGhlIFVTQiBjYWJsZSBpcyBiYWQ/ClsgIDI5My4zODk1OTRdIHVzYiB1c2I0LXBvcnQxOiBDYW5u
+b3QgZW5hYmxlLiBNYXliZSB0aGUgVVNCIGNhYmxlIGlzIGJhZD8KWyAgMjk1Ljk2OTYwMF0gdXNi
+IHVzYjQtcG9ydDE6IENhbm5vdCBlbmFibGUuIE1heWJlIHRoZSBVU0IgY2FibGUgaXMgYmFkPwpb
+ICAyOTUuOTcwNDE4XSB1c2IgNC0xOiBVU0IgZGlzY29ubmVjdCwgZGV2aWNlIG51bWJlciAxMApb
+ICAyOTkuMjA5NjMxXSB1c2IgdXNiNC1wb3J0MTogQ2Fubm90IGVuYWJsZS4gTWF5YmUgdGhlIFVT
+QiBjYWJsZSBpcyBiYWQ/ClsgIDMwMS43ODk2NTVdIHVzYiB1c2I0LXBvcnQxOiBDYW5ub3QgZW5h
+YmxlLiBNYXliZSB0aGUgVVNCIGNhYmxlIGlzIGJhZD8KWyAgMzAxLjc5MDUzNF0gdXNiIHVzYjQt
+cG9ydDE6IGF0dGVtcHQgcG93ZXIgY3ljbGUKCihhbHRob3VnaCBuZXcgZGV2aWNlcyBhcmUgc3Rp
+bGwgZGV0ZWN0ZWQgT0sgZXZlbnR1YWxseSkKClJvYmluLgoKPiBPbmUgcXVpY2sgY29tbWVudCBp
+cyB0aGF0IGl0IG1pZ2h0IGJlIHdvcnRoIGltcG9ydGluZyB0aGUgdmVyc2lvbiBmcm9tIAo+IFJv
+Y2tjaGlwJ3Mgb3duIGtlcm5lbCB0cmVlLCBhcyB0aGF0IGluY2x1ZGVzIHRoaXMgYWRkaXRpb25h
+bCBwYXRjaCB3aGljaCAKPiBsb29rcyBsaWtlIGEgd2VsY29tZSBpbXByb3ZlbWVudDoKPiAKPiBo
+dHRwczovL2dpdGh1Yi5jb20vcm9ja2NoaXAtbGludXgva2VybmVsL2NvbW1pdC8xMmVmYTlhY2Fk
+NjViNGMzMjU2NjgzYzFjY2Q3Njk2ODdiZTNjYTU2I2RpZmYtYjYzMTdiMzQyNWFjMDU0YmU1NTFh
+YmRjZGE5MTBiNjggCj4gCj4gCj4gQWxzbywgYXMgaXQncyBhIG5ldyBwaHkgZHJpdmVyLCB3ZSBz
+aG91bGQga2VlcCBLaXNob24gKCtjYykgaW4gdGhlIGxvb3AgCj4gYXMgdGhlIHN1YnN5c3RlbSBt
+YWludGFpbmVyLgo+IAo+IFJvYmluLgo+IAo+PiBbMF0gCj4+IGh0dHBzOi8vZ2l0aHViLmNvbS9G
+aXJlZmx5VGVhbS9rZXJuZWwvY29tbWl0cy9yb2MtcmszMzI4LWNjL2RyaXZlcnMvcGh5L3JvY2tj
+aGlwL3BoeS1yb2NrY2hpcC1pbm5vLXVzYjMuYyAKPj4KPj4KPj4gUGV0ZXIgR2VpcyAoNSk6Cj4+
+IMKgwqAgcGh5OiByb2NrY2hpcDogYWRkIGlubm8tdXNiMyBwaHkgZHJpdmVyCj4+IMKgwqAgZHQt
+YmluZGluZ3M6IGNsZWFuIHVwIHJvY2tjaGlwIGdyZiBiaW5kaW5nIGRvY3VtZW50Cj4+IMKgwqAg
+RG9jdW1lbnRhdGlvbjogYmluZGluZ3M6IGFkZCBkdCBkb2N1bWVudGF0aW9uIGZvciByb2NrY2hp
+cCB1c2IzIHBoeQo+PiDCoMKgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBhZGQgdXNiMyB0byByazMz
+MjggZGV2aWNldHJlZQo+PiDCoMKgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBlbmFibGUgdXNiMyBv
+biByazMzMjgtcm9jLWNjCj4+Cj4+IMKgIC4uLi9iaW5kaW5ncy9waHkvcGh5LXJvY2tjaGlwLWlu
+bm8tdXNiMy55YW1swqAgfMKgIDE1NyArKysKPj4gwqAgLi4uL2RldmljZXRyZWUvYmluZGluZ3Mv
+c29jL3JvY2tjaGlwL2dyZi50eHTCoCB8wqDCoMKgIDggKy0KPj4gwqAgLi4uL2RldmljZXRyZWUv
+YmluZGluZ3MvdXNiL3JvY2tjaGlwLGR3YzMudHh0IHzCoMKgwqAgOSArLQo+PiDCoCAuLi4vYXJt
+NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LXJvYy1jYy5kdHMgfMKgwqAgMjEgKwo+PiDCoCBh
+cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMyOC5kdHNpwqDCoMKgwqDCoCB8wqDCoCA3
+MiArKwo+PiDCoCBkcml2ZXJzL3BoeS9yb2NrY2hpcC9LY29uZmlnwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKgIDkgKwo+PiDCoCBkcml2ZXJzL3BoeS9yb2NrY2hpcC9N
+YWtlZmlsZcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgwqAgMSArCj4+IMKg
+IGRyaXZlcnMvcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1pbm5vLXVzYjMuYyB8IDExMDcgKysr
+KysrKysrKysrKysrKysKPj4gwqAgOCBmaWxlcyBjaGFuZ2VkLCAxMzc4IGluc2VydGlvbnMoKyks
+IDYgZGVsZXRpb25zKC0pCj4+IMKgIGNyZWF0ZSBtb2RlIDEwMDY0NCAKPj4gRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9waHktcm9ja2NoaXAtaW5uby11c2IzLnlhbWwKPj4g
+wqAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1p
+bm5vLXVzYjMuYwo+Pgo+IAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2NoaXBA
+bGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcm9ja2NoaXAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
+cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
