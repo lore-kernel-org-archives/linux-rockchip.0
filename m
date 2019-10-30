@@ -1,7 +1,7 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 5.3 26/81] arm64: dts: rockchip: fix RockPro64 sdhci settings
-Date: Wed, 30 Oct 2019 11:48:32 -0400
-Message-ID: <20191030154928.9432-26-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.3 41/81] arm64: dts: rockchip: fix RockPro64 sdmmc settings
+Date: Wed, 30 Oct 2019 11:48:47 -0400
+Message-ID: <20191030154928.9432-41-sashal@kernel.org>
 References: <20191030154928.9432-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -14,38 +14,34 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Soeren Moch <smoch@web.de>
 
-[ Upstream commit 2558b3b1b11a1b32b336be2dd0aabfa6d35ddcb5 ]
+[ Upstream commit 5234c14531152702a9f3e575cb552b7e9cea9f94 ]
 
-The RockPro64 schematics [1], [2] show that the rk3399 EMMC_STRB pin is
-connected to the RESET pin instead of the DATA_STROBE pin of the eMMC module.
-So the data strobe cannot be used for its intended purpose on this board,
-and so the HS400 eMMC mode is not functional. Limit the controller to HS200.
+According to the RockPro64 schematic [1] the rk3399 sdmmc controller is
+connected to a microSD (TF card) slot. Remove the cap-mmc-highspeed
+property of the sdmmc controller, since no mmc card can be connected here.
 
 [1] http://files.pine64.org/doc/rockpro64/rockpro64_v21-SCH.pdf
-[2] http://files.pine64.org/doc/rock64/PINE64_eMMC_Module_20170719.pdf
 
 Fixes: e4f3fb490967 ("arm64: dts: rockchip: add initial dts support for Rockpro64")
 Signed-off-by: Soeren Moch <smoch@web.de>
-Link: https://lore.kernel.org/r/20191003215036.15023-2-smoch@web.de
+Link: https://lore.kernel.org/r/20191004203213.4995-1-smoch@web.de
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-index cad314f708300..1ff617230f6c4 100644
+index 1ff617230f6c4..99d65d2fca5e1 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-@@ -625,8 +625,7 @@
+@@ -613,7 +613,6 @@
  
- &sdhci {
- 	bus-width = <8>;
--	mmc-hs400-1_8v;
--	mmc-hs400-enhanced-strobe;
-+	mmc-hs200-1_8v;
- 	non-removable;
- 	status = "okay";
- };
+ &sdmmc {
+ 	bus-width = <4>;
+-	cap-mmc-highspeed;
+ 	cap-sd-highspeed;
+ 	cd-gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
+ 	disable-wp;
 -- 
 2.20.1
