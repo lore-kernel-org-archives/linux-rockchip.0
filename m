@@ -1,40 +1,30 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/5] phy: rockchip: add inno-usb3 phy driver
-Date: Wed, 30 Oct 2019 09:15:25 +0100
-Message-ID: <10419898.gYlDFaIxON@phil>
-References: <20191028182254.30739-1-pgwipeout@gmail.com>
- <20191028182254.30739-2-pgwipeout@gmail.com>
+From: Tzung-Bi Shih <tzungbi@google.com>
+Subject: Re: [PATCH v9 5/6] ARM: dts: rockchip: Add HDMI support to rk3288-veyron-analog-audio
+Date: Wed, 30 Oct 2019 17:09:46 +0800
+Message-ID: <CA+Px+wXAo5EPjudneS+aFEAfBRAQR1Xp6goutdMdYTPeKcfTTA@mail.gmail.com>
+References: <20191028071930.145899-1-cychiang@chromium.org> <20191028071930.145899-6-cychiang@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191028182254.30739-2-pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191028071930.145899-6-cychiang@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Cheng-Yi Chiang <cychiang@chromium.org>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Neil Armstrong <narmstrong@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>, Hans Verkuil <hverkuil@xs4all.nl>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, Russell King <rmk+kernel@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Douglas Anderson <dianders@chromium.org>, dgreid@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 28. Oktober 2019, 19:22:50 CET schrieb Peter Geis:
-> Add the rockchip innosilicon usb3 phy driver, supporting devices such as the rk3328.
-> Pulled from:
-> https://github.com/FireflyTeam/kernel/blob/roc-rk3328-cc/drivers/phy/rockchip/phy-rockchip-inno-usb3.c
-> 
-> Signed-off-by: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Mark,
 
-What happens on plug - unplug - plug?
+This series has 6 patches.  We noticed you have merged the first 4
+patches (includes the DT binding one:
+https://mailman.alsa-project.org/pipermail/alsa-devel/2019-October/157668.html).
 
-I remember what kept me from pushing the usb3 stuff for rk3328
-was the usbphy breaking hotplug after the first unplug.
+There are 2 DTS patches are still on the list:
+- [PATCH v9 5/6] ARM: dts: rockchip: Add HDMI support to
+rk3288-veyron-analog-audio
+https://mailman.alsa-project.org/pipermail/alsa-devel/2019-October/157499.html
+- [PATCH v9 6/6] ARM: dts: rockchip: Add HDMI audio support to
+rk3288-veyron-mickey.dts
+https://mailman.alsa-project.org/pipermail/alsa-devel/2019-October/157500.html
 
-Did this get fixed?
-
-Thanks
-Heiko
+Are you waiting for other maintainers' acknowledgement?  Or do we need
+to resend them with maybe some modifications?
