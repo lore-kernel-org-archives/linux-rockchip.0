@@ -1,15 +1,16 @@
-From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 0/5] add rk3328 usb3 phy driver
-Date: Tue, 29 Oct 2019 21:15:03 -0400
-Message-ID: <CAMdYzYrZhof2DtrNH4+Amu1ZN-6sWw57rC+2joqXSyWVn99wWw@mail.gmail.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 4/5] arm64: dts: rockchip: add usb3 to rk3328 devicetree
+Date: Wed, 30 Oct 2019 10:28:05 +0800
+Message-ID: <1572402485.18464.22.camel@mhfsdcap03>
 References: <20191028182254.30739-1-pgwipeout@gmail.com>
- <5230f80c-9684-72e0-8f96-602428a9e655@arm.com>
- <9e5546de-f5b6-7f60-96d0-612249e832ce@arm.com>
+ <20191028182254.30739-5-pgwipeout@gmail.com>
+ <1572314332.18464.9.camel@mhfsdcap03>
+ <CAMdYzYrn+KGH3LSrRXxfessQyzv_319RO+skotTkS7H0VDFC0A@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <9e5546de-f5b6-7f60-96d0-612249e832ce-5wv7dgnIgG8@public.gmane.org>
+In-Reply-To: <CAMdYzYrn+KGH3LSrRXxfessQyzv_319RO+skotTkS7H0VDFC0A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,89 +20,151 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, kishon-l0cyMroinI0@public.gmane.org
+To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Oct 29, 2019, 20:18 Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org> wrote:
->
-> On 2019-10-28 6:41 pm, Robin Murphy wrote:
-> > On 28/10/2019 18:22, Peter Geis wrote:
-> >> It took a lot more effort than originally anticipated, but here it is.
-> >> This is the driver from [0], updated to work with the current kernel.
-> >> I've tested it on the rk3328-roc-cc board, both usb 2.0 and usb 3.0
-> >> devices detect on hotplug.
+On Tue, 2019-10-29 at 11:31 -0400, Peter Geis wrote:
+> On Mon, Oct 28, 2019 at 9:59 PM Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 > >
-> > Thanks Peter, I'll try to give this a go on my box for confirmation.
->
-> OK, I hooked it up with a vbus-drv-gpio hacked in - USB 2.0
-> unplug/replug does indeed work fine, but it takes a while to acknowledge
-> an unplug of a USB 3.0 device, and throws a bunch of errors every time:
->
-> [  288.229568] usb usb4-port1: Cannot enable. Maybe the USB cable is bad?
-> [  290.809599] usb usb4-port1: Cannot enable. Maybe the USB cable is bad?
-> [  293.389594] usb usb4-port1: Cannot enable. Maybe the USB cable is bad?
-> [  295.969600] usb usb4-port1: Cannot enable. Maybe the USB cable is bad?
-> [  295.970418] usb 4-1: USB disconnect, device number 10
-> [  299.209631] usb usb4-port1: Cannot enable. Maybe the USB cable is bad?
-> [  301.789655] usb usb4-port1: Cannot enable. Maybe the USB cable is bad?
-> [  301.790534] usb usb4-port1: attempt power cycle
->
-> (although new devices are still detected OK eventually)
->
-> Robin.
-(Resending because I forgot the Android Gmail app fails at plain text)
+> > On Mon, 2019-10-28 at 18:22 +0000, Peter Geis wrote:
+> > > Now that we have a proper phy driver, we can add the requisite bits to the
+> > > rk3328 device tree.
+> > > Added the u3drd and u3phy nodes.
+> > >
+> > > Signed-off-by: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> > > ---
+> > >  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 72 ++++++++++++++++++++++++
+> > >  1 file changed, 72 insertions(+)
+> > >
+> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> > > index 31cc1541f1f5..072e988ad655 100644
+> > > --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> > > +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> > > @@ -805,6 +805,47 @@
+> > >               };
+> > >       };
+> > >
+> > > +     usb3phy_grf: syscon@ff460000 {
+> > > +             compatible = "rockchip,usb3phy-grf", "syscon";
+> > > +             reg = <0x0 0xff460000 0x0 0x1000>;
+> > > +     };
+> > > +
+> > > +     u3phy: usb3-phy@ff470000 {
+> > usb-phy?
+> 
+> This change does not seem wise, as there are also various usb2-phys
+> that are controlled via other drivers, while the usb3phy also has to
+> support usb2 as a fallback.
+We can use u3phy label, or phy-cells = <1>, to provide phys type to
+distighuish u3/u2phy if need.
 
-Thanks! May I ask which board and what type of USB 3 device it was?
-(I tried a usb3 hub and a Samsung sad)
+> 
+> > > +             compatible = "rockchip,rk3328-u3phy";
+> > > +             reg = <0x0 0xff470000 0x0 0x0>;
+> > It's zero length, may be not necessary, how about use ranges with
+> > parameter ?
+> 
+> I'll look into this.
+> 
+> >
+> > > +             rockchip,u3phygrf = <&usb3phy_grf>;
+> > > +             rockchip,grf = <&grf>;
+> > > +             interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_HIGH>;
+> > > +             interrupt-names = "linestate";
+> > > +             clocks = <&cru PCLK_USB3PHY_OTG>, <&cru PCLK_USB3PHY_PIPE>;
+> > > +             clock-names = "u3phy-otg", "u3phy-pipe";
+> > To me, no need u3phy prefix
+> 
+> Same as above, since this could cause confusion with the usb2 phy devices.
+Other info can be used, e.g. compatible;
 
-Also I noticed some odd behavior when I was getting it to work.
-When the u3phy driver loaded but wasn't tied to the controller, it
-would put everything to sleep.
-In this state, the u2 host port also failed to enumerate on boot.
-It's almost as if they have something common between them that isn't
-being accounted for in the u2 driver.
-With the u3phy driver loaded and tied to the controller, I couldn't
-get a low speed device to work in the u2 host port (the aeotec zwave
-stick at 12m) but a hs device works fine.
->
->
-> > One quick comment is that it might be worth importing the version from
-> > Rockchip's own kernel tree, as that includes this additional patch which
-> > looks like a welcome improvement:
+
+> 
+> > > +             resets = <&cru SRST_USB3PHY_U2>,
+> > > +                      <&cru SRST_USB3PHY_U3>,
+> > > +                      <&cru SRST_USB3PHY_PIPE>,
+> > > +                      <&cru SRST_USB3OTG_UTMI>,
+> > > +                      <&cru SRST_USB3PHY_OTG_P>,
+> > > +                      <&cru SRST_USB3PHY_PIPE_P>;
+> > > +             reset-names = "u3phy-u2-por", "u3phy-u3-por",
+> > > +                           "u3phy-pipe-mac", "u3phy-utmi-mac",
+> > > +                           "u3phy-utmi-apb", "u3phy-pipe-apb";
+> > ditto
 > >
-> > https://github.com/rockchip-linux/kernel/commit/12efa9acad65b4c3256683c1ccd769687be3ca56#diff-b6317b3425ac054be551abdcda910b68
+> > > +             #address-cells = <2>;
+> > > +             #size-cells = <2>;
+> > > +             ranges;
+> > > +             status = "disabled";
+> > > +
+> > > +             u3phy_utmi: utmi@ff470000 {
+> > usb-phy instead of utmi?
+> 
+> The stock driver looks for these by name, and they are both different functions.
+> This change would break the driver.
+Use phy_type? refer to bindings/usb/generic.txt
+
+> 
+> >
+> > > +                     reg = <0x0 0xff470000 0x0 0x8000>;
+> > > +                     #phy-cells = <0>;
+> > > +                     status = "disabled";
+> > > +             };
+> > > +
+> > > +             u3phy_pipe: pipe@ff478000 {
+> > usb-phy
+> 
+> Same as above.
+> 
+> > > +                     reg = <0x0 0xff478000 0x0 0x8000>;
+> > > +                     #phy-cells = <0>;
+> > > +                     status = "disabled";
+> > > +             };
+> > > +     };
+> > > +
+> > >       sdmmc: dwmmc@ff500000 {
+> > >               compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
+> > >               reg = <0x0 0xff500000 0x0 0x4000>;
+> > > @@ -936,6 +977,37 @@
+> > >               status = "disabled";
+> > >       };
+> > >
+> > > +     usbdrd3: usb@ff600000 {
+> > > +             compatible = "rockchip,rk3328-dwc3", "rockchip,rk3399-dwc3";
+> > > +             clocks = <&cru SCLK_USB3OTG_REF>, <&cru ACLK_USB3OTG>,
+> > > +                      <&cru SCLK_USB3OTG_SUSPEND>;
+> > > +             clock-names = "ref", "bus_early",
+> > > +                           "suspend";
+> > > +             #address-cells = <2>;
+> > > +             #size-cells = <2>;
+> > > +             ranges;
+> > > +             clock-ranges;
+> > > +             status = "disabled";
+> > > +
+> > > +             usbdrd_dwc3: dwc3@ff600000 {
+> > > +                     compatible = "snps,dwc3";
+> > > +                     reg = <0x0 0xff600000 0x0 0x100000>;
+> > > +                     interrupts = <GIC_SPI 67 IRQ_TYPE_LEVEL_HIGH>;
+> > > +                     dr_mode = "otg";
+> > > +                     phys = <&u3phy_utmi>, <&u3phy_pipe>;
+> > > +                     phy-names = "usb2-phy", "usb3-phy";
+> > > +                     phy_type = "utmi_wide";
+> > > +                     snps,dis_enblslpm_quirk;
+> > > +                     snps,dis-u2-freeclk-exists-quirk;
+> > > +                     snps,dis_u2_susphy_quirk;
+> > > +                     snps,dis_u3_susphy_quirk;
+> > > +                     snps,dis-del-phy-power-chg-quirk;
+> > > +                     snps,dis-tx-ipgap-linecheck-quirk;
+> > > +                     snps,xhci-trb-ent-quirk;
+> > > +                     status = "disabled";
+> > > +             };
+> > > +     };
+> > > +
+> > >       gic: interrupt-controller@ff811000 {
+> > >               compatible = "arm,gic-400";
+> > >               #interrupt-cells = <3>;
 > >
 > >
-> > Also, as it's a new phy driver, we should keep Kishon (+cc) in the loop
-> > as the subsystem maintainer.
-> >
-> > Robin.
-> >
-> >> [0]
-> >> https://github.com/FireflyTeam/kernel/commits/roc-rk3328-cc/drivers/phy/rockchip/phy-rockchip-inno-usb3.c
-> >>
-> >>
-> >> Peter Geis (5):
-> >>    phy: rockchip: add inno-usb3 phy driver
-> >>    dt-bindings: clean up rockchip grf binding document
-> >>    Documentation: bindings: add dt documentation for rockchip usb3 phy
-> >>    arm64: dts: rockchip: add usb3 to rk3328 devicetree
-> >>    arm64: dts: rockchip: enable usb3 on rk3328-roc-cc
-> >>
-> >>   .../bindings/phy/phy-rockchip-inno-usb3.yaml  |  157 +++
-> >>   .../devicetree/bindings/soc/rockchip/grf.txt  |    8 +-
-> >>   .../devicetree/bindings/usb/rockchip,dwc3.txt |    9 +-
-> >>   .../arm64/boot/dts/rockchip/rk3328-roc-cc.dts |   21 +
-> >>   arch/arm64/boot/dts/rockchip/rk3328.dtsi      |   72 ++
-> >>   drivers/phy/rockchip/Kconfig                  |    9 +
-> >>   drivers/phy/rockchip/Makefile                 |    1 +
-> >>   drivers/phy/rockchip/phy-rockchip-inno-usb3.c | 1107 +++++++++++++++++
-> >>   8 files changed, 1378 insertions(+), 6 deletions(-)
-> >>   create mode 100644
-> >> Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb3.yaml
-> >>   create mode 100644 drivers/phy/rockchip/phy-rockchip-inno-usb3.c
-> >>
 > >
 > > _______________________________________________
 > > Linux-rockchip mailing list
