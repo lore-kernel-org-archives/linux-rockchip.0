@@ -1,67 +1,33 @@
-From: Adrian Ratiu <adrian.ratiu@collabora.com>
-Subject: [PATCH 4/4] dt-bindings: display: add IMX MIPI DSI host controller doc
-Date: Thu, 31 Oct 2019 16:26:33 +0200
-Message-ID: <20191031142633.12460-5-adrian.ratiu@collabora.com>
-References: <20191031142633.12460-1-adrian.ratiu@collabora.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 2/5] dt-bindings: clean up rockchip grf binding document
+Date: Thu, 31 Oct 2019 15:25:34 +0100
+Message-ID: <1871898.EhJZENLof5@phil>
+References: <20191028182254.30739-1-pgwipeout@gmail.com>
+ <20191028182254.30739-3-pgwipeout@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191031142633.12460-1-adrian.ratiu@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-arm-kernel@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-rockchip@lists.infradead.org
-Cc: Martyn Welch <martyn.welch@collabora.com>, kernel@collabora.com, Sjoerd Simons <sjoerd.simons@collabora.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191028182254.30739-3-pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-U2lnbmVkLW9mZi1ieTogU2pvZXJkIFNpbW9ucyA8c2pvZXJkLnNpbW9uc0Bjb2xsYWJvcmEuY29t
-PgpTaWduZWQtb2ZmLWJ5OiBNYXJ0eW4gV2VsY2ggPG1hcnR5bi53ZWxjaEBjb2xsYWJvcmEuY29t
-PgpTaWduZWQtb2ZmLWJ5OiBBZHJpYW4gUmF0aXUgPGFkcmlhbi5yYXRpdUBjb2xsYWJvcmEuY29t
-PgotLS0KIC4uLi9iaW5kaW5ncy9kaXNwbGF5L2lteC9taXBpLWRzaS50eHQgICAgICAgICB8IDU2
-ICsrKysrKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCA1NiBpbnNlcnRpb25zKCspCiBj
-cmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3Bs
-YXkvaW14L21pcGktZHNpLnR4dAoKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJl
-ZS9iaW5kaW5ncy9kaXNwbGF5L2lteC9taXBpLWRzaS50eHQgYi9Eb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3MvZGlzcGxheS9pbXgvbWlwaS1kc2kudHh0Cm5ldyBmaWxlIG1vZGUgMTAw
-NjQ0CmluZGV4IDAwMDAwMDAwMDAwMC4uM2YwNWMzMmVmOTYzCi0tLSAvZGV2L251bGwKKysrIGIv
-RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvaW14L21pcGktZHNpLnR4
-dApAQCAtMCwwICsxLDU2IEBACitGcmVlc2NhbGUgaS5NWDYgRFcgTUlQSSBEU0kgSG9zdCBDb250
-cm9sbGVyCis9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CisKK1Ro
-ZSBEU0kgaG9zdCBjb250cm9sbGVyIGlzIGEgU3lub3BzeXMgRGVzaWduV2FyZSBNSVBJIERTSSB2
-MS4wMSBJUAord2l0aCBhIGNvbXBhbmlvbiBQSFkgSVAuCisKK1RoZXNlIERUIGJpbmRpbmdzIGZv
-bGxvdyB0aGUgU3lub3BzeXMgRFcgTUlQSSBEU0kgYmluZGluZ3MgZGVmaW5lZCBpbgorRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL2R3X21pcGlfZHNpLnR4
-dCB3aXRoCit0aGUgZm9sbG93aW5nIGRldmljZS1zcGVjaWZpYyBwcm9wZXJ0aWVzLgorCitSZXF1
-aXJlZCBwcm9wZXJ0aWVzOgorCistICNhZGRyZXNzLWNlbGxzOiBTaG91bGQgYmUgPDE+LgorLSAj
-c2l6ZS1jZWxsczogU2hvdWxkIGJlIDwwPi4KKy0gY29tcGF0aWJsZTogImZzbCxpbXg2cS1taXBp
-LWRzaSIsICJzbnBzLGR3LW1pcGktZHNpIi4KKy0gcmVnOiBTZWUgZHdfbWlwaV9kc2kudHh0Lgor
-LSBpbnRlcnJ1cHRzOiBUaGUgY29udHJvbGxlcidzIENQVSBpbnRlcnJ1cHQuCistIGNsb2Nrcywg
-Y2xvY2stbmFtZXM6IFBoYW5kbGVzIHRvIHRoZSBjb250cm9sbGVyJ3MgcGxsIHJlZmVyZW5jZQor
-ICBjbG9jayhyZWYpIGFuZCBBUEIgY2xvY2socGNsayksIGFzIGRlc2NyaWJlZCBpbiBbMV0uCist
-IHBvcnRzOiBhIHBvcnQgbm9kZSB3aXRoIGVuZHBvaW50IGRlZmluaXRpb25zIGFzIGRlZmluZWQg
-aW4gWzJdLgorLSBncHI6IFNob3VsZCBiZSA8Jmdwcj4uCisgICAgICAgUGhhbmRsZSB0byB0aGUg
-aW9tdXhjLWdwciByZWdpb24gY29udGFpbmluZyB0aGUgbXVsdGlwbGV4ZXIKKyAgICAgICBjb250
-cm9sIHJlZ2lzdGVyLgorCitbMV0gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Ns
-b2NrL2Nsb2NrLWJpbmRpbmdzLnR4dAorWzJdIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy9tZWRpYS92aWRlby1pbnRlcmZhY2VzLnR4dAorCitFeGFtcGxlOgorCisJbWlwaV9kc2k6
-IG1pcGlAMjFlMDAwMCB7CisJCSNhZGRyZXNzLWNlbGxzID0gPDE+OworCQkjc2l6ZS1jZWxscyA9
-IDwwPjsKKwkJY29tcGF0aWJsZSA9ICJmc2wsaW14NnEtbWlwaS1kc2kiLCAic25wcyxkdy1taXBp
-LWRzaSI7CisJCXJlZyA9IDwweDAyMWUwMDAwIDB4NDAwMD47CisJCWludGVycnVwdHMgPSA8MCAx
-MDIgSVJRX1RZUEVfTEVWRUxfSElHSD47CisJCWdwciA9IDwmZ3ByPjsKKwkJY2xvY2tzID0gPCZj
-bGtzIElNWDZRRExfQ0xLX01JUElfQ09SRV9DRkc+LAorCQkJIDwmY2xrcyBJTVg2UURMX0NMS19N
-SVBJX0lQRz47CisJCWNsb2NrLW5hbWVzID0gInJlZiIsICJwY2xrIjsKKwkJc3RhdHVzID0gIm9r
-YXkiOworCisJCXBvcnRzIHsKKwkJCXBvcnRAMCB7CisJCQkJcmVnID0gPDA+OworCQkJCW1pcGlf
-bXV4XzA6IGVuZHBvaW50IHsKKwkJCQkJcmVtb3RlLWVuZHBvaW50ID0gPCZpcHUxX2RpMF9taXBp
-PjsKKwkJCQl9OworCQkJfTsKKwkJCXBvcnRAMSB7CisJCQkJcmVnID0gPDE+OworCQkJCW1pcGlf
-bXV4XzE6IGVuZHBvaW50IHsKKwkJCQkJcmVtb3RlLWVuZHBvaW50ID0gPCZpcHUxX2RpMV9taXBp
-PjsKKwkJCQl9OworCQkJfTsKKwkJfTsKKyAgICAgICAgfTsKLS0gCjIuMjMuMAoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Am Montag, 28. Oktober 2019, 19:22:51 CET schrieb Peter Geis:
+> Fixup some typos and inconsistencies in the grf binding.
+> 
+> Signed-off-by: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+
+applied for 5.5
+
+Thanks
+Heiko
