@@ -1,95 +1,68 @@
-From: Markus Reichl <m.reichl@fivetechno.de>
-Subject: [PATCH] arm64: dts: rockchip: Rework voltage supplies for regulators
- on rk3399-roc-pc
-Date: Thu, 31 Oct 2019 14:30:06 +0100
-Message-ID: <22b56700-3c9e-0f60-cd74-7ff24d4f1a23@fivetechno.de>
+From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 1/5] phy: rockchip: add inno-usb3 phy driver
+Date: Thu, 31 Oct 2019 10:02:07 -0400
+Message-ID: <CAMdYzYpgjV7AwbF97gs7amuh6WGu0Mbzv_-ziWOZTYX0qe6rsQ@mail.gmail.com>
+References: <20191028182254.30739-1-pgwipeout@gmail.com>
+ <20191028182254.30739-2-pgwipeout@gmail.com>
+ <10419898.gYlDFaIxON@phil>
+ <CAMdYzYqex=xoXR+Xhg=LNwEa0hobbSghRzj8AkmVOSNhp7x1-A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Language: de-DE
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, Markus Reichl <m.reichl@fivetechno.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAMdYzYqex=xoXR+Xhg=LNwEa0hobbSghRzj8AkmVOSNhp7x1-A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Correct the voltage supplies according to the board schematics
-ROC-3399-PC-V10-A-20180804.
-
-Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
----
- .../arm64/boot/dts/rockchip/rk3399-roc-pc.dts | 30 ++++++++++---------
- 1 file changed, 16 insertions(+), 14 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
-index e06e4163605b..def8bca7d158 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
-@@ -142,7 +142,7 @@
- 		regulator-boot-on;
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
--		vin-supply = <&vcc_sys>;
-+		vin-supply = <&dc_12v>;
- 	};
- 
- 	/* Actually 3 regulators (host0, 1, 2) controlled by the same gpio */
-@@ -190,7 +190,7 @@
- 		regulator-boot-on;
- 		regulator-min-microvolt = <800000>;
- 		regulator-max-microvolt = <1400000>;
--		vin-supply = <&vcc_sys>;
-+		vin-supply = <&vcc3v3_sys>;
- 	};
- 
- 	/* on roc-rk3399-mezzanine board */
-@@ -283,18 +283,20 @@
- 		rockchip,system-power-controller;
- 		wakeup-source;
- 
--		vcc1-supply = <&vcc_sys>;
--		vcc2-supply = <&vcc_sys>;
--		vcc3-supply = <&vcc_sys>;
--		vcc4-supply = <&vcc_sys>;
--		vcc6-supply = <&vcc_sys>;
--		vcc7-supply = <&vcc_sys>;
-+		vcc1-supply = <&vcc3v3_sys>;
-+		vcc2-supply = <&vcc3v3_sys>;
-+		vcc3-supply = <&vcc3v3_sys>;
-+		vcc4-supply = <&vcc3v3_sys>;
-+		vcc6-supply = <&vcc3v3_sys>;
-+		vcc7-supply = <&vcc3v3_sys>;
- 		vcc8-supply = <&vcc3v3_sys>;
--		vcc9-supply = <&vcc_sys>;
--		vcc10-supply = <&vcc_sys>;
--		vcc11-supply = <&vcc_sys>;
-+		vcc9-supply = <&vcc3v3_sys>;
-+		vcc10-supply = <&vcc3v3_sys>;
-+		vcc11-supply = <&vcc3v3_sys>;
- 		vcc12-supply = <&vcc3v3_sys>;
--		vddio-supply = <&vcc1v8_pmu>;
-+		vcc13-supply = <&vcc3v3_sys>;
-+		vcc14-supply = <&vcc3v3_sys>;
-+		vddio-supply = <&vcc_3v0>;
- 
- 		regulators {
- 			vdd_center: DCDC_REG1 {
-@@ -466,7 +468,7 @@
- 		regulator-ramp-delay = <1000>;
- 		regulator-always-on;
- 		regulator-boot-on;
--		vin-supply = <&vcc_sys>;
-+		vin-supply = <&vcc3v3_sys>;
- 
- 		regulator-state-mem {
- 			regulator-off-in-suspend;
-@@ -485,7 +487,7 @@
- 		regulator-ramp-delay = <1000>;
- 		regulator-always-on;
- 		regulator-boot-on;
--		vin-supply = <&vcc_sys>;
-+		vin-supply = <&vcc3v3_sys>;
- 
- 		regulator-state-mem {
- 			regulator-off-in-suspend;
--- 
-2.20.1
+On Wed, Oct 30, 2019 at 1:46 PM Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>
+> On Wed, Oct 30, 2019 at 4:15 AM Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> >
+> > Am Montag, 28. Oktober 2019, 19:22:50 CET schrieb Peter Geis:
+> > > Add the rockchip innosilicon usb3 phy driver, supporting devices such as the rk3328.
+> > > Pulled from:
+> > > https://github.com/FireflyTeam/kernel/blob/roc-rk3328-cc/drivers/phy/rockchip/phy-rockchip-inno-usb3.c
+> > >
+> > > Signed-off-by: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> >
+> > What happens on plug - unplug - plug?
+> >
+> > I remember what kept me from pushing the usb3 stuff for rk3328
+> > was the usbphy breaking hotplug after the first unplug.
+> >
+> > Did this get fixed?
+> >
+> > Thanks
+> > Heiko
+> >
+> >
+> It seems to have been corrected, at least partially.
+> The hotplug issue may have been resolved by [0].
+Other possibilities are two commits [1], [2].
+One disables usb3 autosuspend, the other adds a linestate quirk.
+[1] https://github.com/FireflyTeam/kernel/commit/1758c75d334c7b321a86708797541e05e9301ec5
+[2] https://github.com/FireflyTeam/kernel/commit/65bfd30a169c880da359a6dfef032b670457debd
+>
+> On my rk3328-roc-cc board, both USB2 and USB3 work correctly for
+> hotplugging with this driver.
+> I did encounter some odd behavior with the USB2HOST port, where it
+> stopped reading FS devices when this was loaded.
+> I'm wondering if we have a common clock problem or some other
+> undocumented shared dependancy.
+>
+> Robin encountered some odd behavior when unplugging a USB3 device, the
+> controller didn't recognize it for a while.
+> I don't have that problem, but I don't know what board she's using.
+>
+> [0] commit fb903392131a324a243c7731389277db1cd9f8df
+> clk: rockchip: fix wrong clock definitions for rk3328
