@@ -1,78 +1,95 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH] phy: phy-rockchip-inno-usb2: add phy description for px30
-Date: Thu, 31 Oct 2019 18:32:22 +0530
-Message-ID: <1b31d4fe-fd78-700a-6e53-298bd85d7a27@ti.com>
-References: <20190917082532.25479-1-heiko@sntech.de> <1974613.gpRaQal8Ma@phil>
+From: Markus Reichl <m.reichl@fivetechno.de>
+Subject: [PATCH] arm64: dts: rockchip: Rework voltage supplies for regulators
+ on rk3399-roc-pc
+Date: Thu, 31 Oct 2019 14:30:06 +0100
+Message-ID: <22b56700-3c9e-0f60-cd74-7ff24d4f1a23@fivetechno.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1974613.gpRaQal8Ma@phil>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Language: de-DE
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, Markus Reichl <m.reichl@fivetechno.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Correct the voltage supplies according to the board schematics
+ROC-3399-PC-V10-A-20180804.
 
+Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
+---
+ .../arm64/boot/dts/rockchip/rk3399-roc-pc.dts | 30 ++++++++++---------
+ 1 file changed, 16 insertions(+), 14 deletions(-)
 
-On 31/10/19 5:38 PM, Heiko Stuebner wrote:
-> Hi Kishon,
-> 
-> Am Dienstag, 17. September 2019, 10:25:32 CET schrieb Heiko Stuebner:
->> The px30 soc from Rockchip shares the same register description as
->> the rk3328, so can re-use its definitions.
->>
->> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> 
-> could you pick this up as well please?
-
-merged now, thanks.
-
--Kishon
-> 
-> Thanks
-> Heiko
-> 
->> ---
->>  Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt | 1 +
->>  drivers/phy/rockchip/phy-rockchip-inno-usb2.c                    | 1 +
->>  2 files changed, 2 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
->> index 00639baae74a..541f5298827c 100644
->> --- a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
->> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
->> @@ -2,6 +2,7 @@ ROCKCHIP USB2.0 PHY WITH INNO IP BLOCK
->>  
->>  Required properties (phy (parent) node):
->>   - compatible : should be one of the listed compatibles:
->> +	* "rockchip,px30-usb2phy"
->>  	* "rockchip,rk3228-usb2phy"
->>  	* "rockchip,rk3328-usb2phy"
->>  	* "rockchip,rk3366-usb2phy"
->> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
->> index eae865ff312c..680cc0c8825c 100644
->> --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
->> +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
->> @@ -1423,6 +1423,7 @@ static const struct rockchip_usb2phy_cfg rv1108_phy_cfgs[] = {
->>  };
->>  
->>  static const struct of_device_id rockchip_usb2phy_dt_match[] = {
->> +	{ .compatible = "rockchip,px30-usb2phy", .data = &rk3328_phy_cfgs },
->>  	{ .compatible = "rockchip,rk3228-usb2phy", .data = &rk3228_phy_cfgs },
->>  	{ .compatible = "rockchip,rk3328-usb2phy", .data = &rk3328_phy_cfgs },
->>  	{ .compatible = "rockchip,rk3366-usb2phy", .data = &rk3366_phy_cfgs },
->>
-> 
-> 
-> 
-> 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
+index e06e4163605b..def8bca7d158 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
+@@ -142,7 +142,7 @@
+ 		regulator-boot-on;
+ 		regulator-min-microvolt = <3300000>;
+ 		regulator-max-microvolt = <3300000>;
+-		vin-supply = <&vcc_sys>;
++		vin-supply = <&dc_12v>;
+ 	};
+ 
+ 	/* Actually 3 regulators (host0, 1, 2) controlled by the same gpio */
+@@ -190,7 +190,7 @@
+ 		regulator-boot-on;
+ 		regulator-min-microvolt = <800000>;
+ 		regulator-max-microvolt = <1400000>;
+-		vin-supply = <&vcc_sys>;
++		vin-supply = <&vcc3v3_sys>;
+ 	};
+ 
+ 	/* on roc-rk3399-mezzanine board */
+@@ -283,18 +283,20 @@
+ 		rockchip,system-power-controller;
+ 		wakeup-source;
+ 
+-		vcc1-supply = <&vcc_sys>;
+-		vcc2-supply = <&vcc_sys>;
+-		vcc3-supply = <&vcc_sys>;
+-		vcc4-supply = <&vcc_sys>;
+-		vcc6-supply = <&vcc_sys>;
+-		vcc7-supply = <&vcc_sys>;
++		vcc1-supply = <&vcc3v3_sys>;
++		vcc2-supply = <&vcc3v3_sys>;
++		vcc3-supply = <&vcc3v3_sys>;
++		vcc4-supply = <&vcc3v3_sys>;
++		vcc6-supply = <&vcc3v3_sys>;
++		vcc7-supply = <&vcc3v3_sys>;
+ 		vcc8-supply = <&vcc3v3_sys>;
+-		vcc9-supply = <&vcc_sys>;
+-		vcc10-supply = <&vcc_sys>;
+-		vcc11-supply = <&vcc_sys>;
++		vcc9-supply = <&vcc3v3_sys>;
++		vcc10-supply = <&vcc3v3_sys>;
++		vcc11-supply = <&vcc3v3_sys>;
+ 		vcc12-supply = <&vcc3v3_sys>;
+-		vddio-supply = <&vcc1v8_pmu>;
++		vcc13-supply = <&vcc3v3_sys>;
++		vcc14-supply = <&vcc3v3_sys>;
++		vddio-supply = <&vcc_3v0>;
+ 
+ 		regulators {
+ 			vdd_center: DCDC_REG1 {
+@@ -466,7 +468,7 @@
+ 		regulator-ramp-delay = <1000>;
+ 		regulator-always-on;
+ 		regulator-boot-on;
+-		vin-supply = <&vcc_sys>;
++		vin-supply = <&vcc3v3_sys>;
+ 
+ 		regulator-state-mem {
+ 			regulator-off-in-suspend;
+@@ -485,7 +487,7 @@
+ 		regulator-ramp-delay = <1000>;
+ 		regulator-always-on;
+ 		regulator-boot-on;
+-		vin-supply = <&vcc_sys>;
++		vin-supply = <&vcc3v3_sys>;
+ 
+ 		regulator-state-mem {
+ 			regulator-off-in-suspend;
+-- 
+2.20.1
