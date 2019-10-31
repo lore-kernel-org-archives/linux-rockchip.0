@@ -1,122 +1,82 @@
-From: Markus Reichl <m.reichl@fivetechno.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add PCIe node on rk3399-roc-pc
-Date: Thu, 31 Oct 2019 19:12:10 +0100
-Message-ID: <f66fe5c3-6760-20b0-54cc-8f0c1a754bab@fivetechno.de>
-References: <09300c2d-4298-1b01-ac41-d1b2610589d4@fivetechno.de>
- <1719506.vT9a8mQdzu@phil>
+From: Adrian Ratiu <adrian.ratiu@collabora.com>
+Subject: Re: [PATCH 0/4] Genericize DW MIPI DSI bridge and add i.MX 6 driver
+Date: Thu, 31 Oct 2019 21:10:48 +0200
+Message-ID: <87y2x091dz.fsf@iwork.i-did-not-set--mail-host-address--so-tickle-me>
+References: <20191031142633.12460-1-adrian.ratiu@collabora.com>
+ <CACvgo50NmofJrCvADOTxJqJqKEWDsy8qD-1B6R356vFMcmdbWA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; format=flowed
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1719506.vT9a8mQdzu@phil>
-Content-Language: de-DE
+In-Reply-To: <CACvgo50NmofJrCvADOTxJqJqKEWDsy8qD-1B6R356vFMcmdbWA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Jagan Teki <jagan@amarulasolutions.com>, linux-arm-kernel@lists.infradead.org
+To: Emil Velikov <emil.l.velikov@gmail.com>, Adrian Ratiu <adrian.ratiu@collabora.com>
+Cc: "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, ML dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, kernel@collabora.com, linux-stm32@st-md-mailman.stormreply.com, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-Am 31.10.19 um 17:57 schrieb Heiko Stuebner:
-> Hi,
-> 
-> Am Montag, 28. Oktober 2019, 15:47:27 CET schrieb Markus Reichl:
->> rk3399-roc-pc has a PCIe interface. Enable it for use with
->> the M.2 NGFF M_KEY slot on roc-rk3399-mezzanine board.
->> Tested with Samsung 970 evo plus SSD.
->> 
->> Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
->> ---
->>  .../arm64/boot/dts/rockchip/rk3399-roc-pc.dts | 38 +++++++++++++++++++
->>  1 file changed, 38 insertions(+)
->> 
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
->> index 9313251765c7..2d637d54994b 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
->> +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
->> @@ -158,6 +158,21 @@
->>  		regulator-max-microvolt = <1400000>;
->>  		vin-supply = <&vcc_sys>;
->>  	};
->> +
->> +	/* on roc-rk3399-mezzanine board */
-> 
-> I'm undecided on this. From what I've seen that mezzanine board is some
-> sort of addon, like a raspberry pi hat. Therefore it's not always present,
-> so probably should not be part of the base board dts.
-> 
-> I'm thinking a dt-overlay that can then be activated might be the solution
-> of choice, but I've reached out to arm-soc poeple on irc to determine the
-> correct course.
-> 
-I have seen some board.dtsi with board_only.dts respective board_extension.dts
-in the arch/arm64/boot/dts/rockchip directory. Would that be ok?
+On Thu, 31 Oct 2019, Emil Velikov <emil.l.velikov@gmail.com> 
+wrote:
+> Hi Adrian, 
 
-Markus 
+Hi Emil!
 
 > 
-> Heiko
+> On Thu, 31 Oct 2019 at 14:26, Adrian Ratiu 
+> <adrian.ratiu@collabora.com> wrote: 
+>> 
+>> Having a generic Synopsis DesignWare MIPI-DSI host controller 
+>> bridge driver is a very good idea, however the current 
+>> implementation has hardcoded quite a lot of the register 
+>> layouts used by the two supported SoC vendors, STM and 
+>> Rockchip, which use IP cores v1.30 and v1.31. 
+>> 
+>> This makes it hard to support other SoC vendors like the 
+>> FSL/NXP i.MX 6 which use older v1.01 cores or future versions 
+>> because, based on history, layout changes should also be 
+>> expected in new DSI versions / SoCs. 
+>> 
+>> This patch series converts the bridge and platform drivers to 
+>> access registers via generic regmap APIs and allows each 
+>> platform driver to configure its register layout via struct 
+>> reg_fields, then adds support for the host controller found on 
+>> i.MX 6. 
+>> 
+> Have you considered keeping the difference internal to the 
+> dw-mipi-dsi driver?  Say having the iMX6 module "request" the 
+> v1.01 regmap from the bridge driver, while rockchip/others doing 
+> the equivalent.
+
+No, I haven't. It sounds like a good idea though and I think it's 
+doable. Thank you!
+ 
 > 
->> +	vcc3v3_pcie: vcc3v3-pcie {
->> +		compatible = "regulator-fixed";
->> +		regulator-name = "vcc3v3_pcie";
->> +		enable-active-high;
->> +		gpio = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
->> +		pinctrl-names = "default";
->> +		pinctrl-0 = <&vcc3v3_pcie_en>;
->> +		regulator-always-on;
->> +		regulator-boot-on;
->> +		regulator-min-microvolt = <3300000>;
->> +		regulator-max-microvolt = <3300000>;
->> +		vin-supply = <&dc_12v>;
->> +	};
->>  };
->>  
->>  &cpu_l0 {
->> @@ -514,6 +529,19 @@
->>  	status = "okay";
->>  };
->>  
->> +&pcie_phy {
->> +	status = "okay";
->> +};
->> +
->> +&pcie0 {
->> +	ep-gpios = <&gpio4 RK_PD1 GPIO_ACTIVE_HIGH>;
->> +	num-lanes = <4>;
->> +	pinctrl-names = "default";
->> +	pinctrl-0 = <&pcie_perst>;
->> +	vpcie3v3-supply = <&vcc3v3_pcie>;
->> +	status = "okay";
->> +};
->> +
->>  &pinctrl {
->>  	lcd-panel {
->>  		lcd_panel_reset: lcd-panel-reset {
->> @@ -535,6 +563,16 @@
->>  		};
->>  	};
->>  
->> +	pcie {
->> +		vcc3v3_pcie_en: vcc3v3-pcie-en {
->> +			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
->> +		};
->> +
->> +		pcie_perst: pcie-perst {
->> +			rockchip,pins = <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
->> +		};
->> +	};
->> +
->>  	pmic {
->>  		vsel1_gpio: vsel1-gpio {
->>  			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
+>>  .../bindings/display/imx/mipi-dsi.txt         |  56 ++ 
+>>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 518 
+>>  +++++++++--------- drivers/gpu/drm/imx/Kconfig 
+>>  |   7 + drivers/gpu/drm/imx/Makefile                  |   1 + 
+>>  drivers/gpu/drm/imx/dw_mipi_dsi-imx.c         | 502 
+>>  +++++++++++++++++ .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c 
+>>  | 154 +++++- drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         | 
+>>  160 +++++- include/drm/bridge/dw_mipi_dsi.h              |  60 
+>>  +- 8 files changed, 1185 insertions(+), 273 deletions(-) 
+>>  create mode 100644 
+>>  Documentation/devicetree/bindings/display/imx/mipi-dsi.txt 
+>>  create mode 100644 drivers/gpu/drm/imx/dw_mipi_dsi-imx.c 
 >> 
 > 
-> 
-> 
-> 
-> 
+> This should make the delta a lot smaller, avoiding the 
+> unnecessary copy of register fields and regmap.  Plus plugging 
+> future users will be dead trivial.
+
+Agreed. I'll do this in v2 unless someone objects or proposes a 
+better alternative.
+
+I'll let this series sit a little more on review so others have a 
+chance to see and review; will address all feedback in v2.
+
+>
+> -Emil
+>
 > _______________________________________________
 > Linux-rockchip mailing list
 > Linux-rockchip@lists.infradead.org
 > http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
