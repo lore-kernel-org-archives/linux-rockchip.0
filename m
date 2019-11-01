@@ -1,158 +1,36 @@
-From: Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add PCIe node on rk3399-roc-pc
-Date: Fri, 1 Nov 2019 07:47:22 -0400
-Message-ID: <CAMdYzYqxe=WT0-vefX2jZiv_8z-GxygVdVjykt8AdAU=gi1TqQ@mail.gmail.com>
-References: <09300c2d-4298-1b01-ac41-d1b2610589d4@fivetechno.de>
- <1719506.vT9a8mQdzu@phil> <f66fe5c3-6760-20b0-54cc-8f0c1a754bab@fivetechno.de>
- <2490852.kIovObk3uj@phil>
+From: Chuhong Yuan <hslester96@gmail.com>
+Subject: [PATCH] net: ethernet: arc: add the missed clk_disable_unprepare
+Date: Fri,  1 Nov 2019 20:17:25 +0800
+Message-ID: <20191101121725.13349-1-hslester96@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2490852.kIovObk3uj@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Markus Reichl <m.reichl@fivetechno.de>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Jagan Teki <jagan@amarulasolutions.com>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+Cc: "David S . Miller" <davem@davemloft.net>, Heiko Stuebner <heiko@sntech.de>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Chuhong Yuan <hslester96@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Nov 1, 2019 at 4:06 AM Heiko Stuebner <heiko@sntech.de> wrote:
->
-> Hi Markus,
->
-> Am Donnerstag, 31. Oktober 2019, 19:12:10 CET schrieb Markus Reichl:
-> > Am 31.10.19 um 17:57 schrieb Heiko Stuebner:
-> > > Am Montag, 28. Oktober 2019, 15:47:27 CET schrieb Markus Reichl:
-> > >> rk3399-roc-pc has a PCIe interface. Enable it for use with
-> > >> the M.2 NGFF M_KEY slot on roc-rk3399-mezzanine board.
-> > >> Tested with Samsung 970 evo plus SSD.
-> > >>
-> > >> Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
-> > >> ---
-> > >>  .../arm64/boot/dts/rockchip/rk3399-roc-pc.dts | 38 +++++++++++++++++++
-> > >>  1 file changed, 38 insertions(+)
-> > >>
-> > >> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
-> > >> index 9313251765c7..2d637d54994b 100644
-> > >> --- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
-> > >> +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
-> > >> @@ -158,6 +158,21 @@
-> > >>            regulator-max-microvolt = <1400000>;
-> > >>            vin-supply = <&vcc_sys>;
-> > >>    };
-> > >> +
-> > >> +  /* on roc-rk3399-mezzanine board */
-> > >
-> > > I'm undecided on this. From what I've seen that mezzanine board is some
-> > > sort of addon, like a raspberry pi hat. Therefore it's not always present,
-> > > so probably should not be part of the base board dts.
-> > >
-> > > I'm thinking a dt-overlay that can then be activated might be the solution
-> > > of choice, but I've reached out to arm-soc poeple on irc to determine the
-> > > correct course.
-> > >
-> > I have seen some board.dtsi with board_only.dts respective board_extension.dts
-> > in the arch/arm64/boot/dts/rockchip directory. Would that be ok?
->
-> The answer is twofold I guess ;-)
->
-> (1) The 100% correct way would probably be to use a devicetree overlay
-> together with capemgr [0] to load the overlay from userspace, but
+The remove misses to disable and unprepare priv->macclk like what is done
+when probe fails.
+Add the missed call in remove.
 
-I think this also illustrates the current lack of a device-tree
-overlay loading mechanism in the current upstream kernel.
-I've now seen two implementations, a sysfs based one, and now capemgr.
-Reading the capemgr implementation, I like this better because it
-addresses both the boot and runtime applications.
+Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
+---
+ drivers/net/ethernet/arc/emac_rockchip.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
->
-> (2a) The distinction between system-on-module + baseboard and
-> board+cape is somewhat foggy I think and it really doesn't look like there
-> will be a big plethora of capes for the roc-rk3399-pc
->
-> (2b) People may actually want to boot of that nvme pcie drive attached
-> to the mezzanine, so it will be somewhat permanent connection anyway
-> and also the system then cannot wait for userspace to come up first, if
-> the userspace is sitting on that drive ;-) .
->
-> So I think, going the dts+dts-extension is the best way to go.
->
-> Heiko
->
->
-> [0] https://elinux.org/Capemgr
->
->
->
-> > >> +  vcc3v3_pcie: vcc3v3-pcie {
-> > >> +          compatible = "regulator-fixed";
-> > >> +          regulator-name = "vcc3v3_pcie";
-> > >> +          enable-active-high;
-> > >> +          gpio = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
-> > >> +          pinctrl-names = "default";
-> > >> +          pinctrl-0 = <&vcc3v3_pcie_en>;
-> > >> +          regulator-always-on;
-> > >> +          regulator-boot-on;
-> > >> +          regulator-min-microvolt = <3300000>;
-> > >> +          regulator-max-microvolt = <3300000>;
-> > >> +          vin-supply = <&dc_12v>;
-> > >> +  };
-> > >>  };
-> > >>
-> > >>  &cpu_l0 {
-> > >> @@ -514,6 +529,19 @@
-> > >>    status = "okay";
-> > >>  };
-> > >>
-> > >> +&pcie_phy {
-> > >> +  status = "okay";
-> > >> +};
-> > >> +
-> > >> +&pcie0 {
-> > >> +  ep-gpios = <&gpio4 RK_PD1 GPIO_ACTIVE_HIGH>;
-> > >> +  num-lanes = <4>;
-> > >> +  pinctrl-names = "default";
-> > >> +  pinctrl-0 = <&pcie_perst>;
-> > >> +  vpcie3v3-supply = <&vcc3v3_pcie>;
-> > >> +  status = "okay";
-> > >> +};
-> > >> +
-> > >>  &pinctrl {
-> > >>    lcd-panel {
-> > >>            lcd_panel_reset: lcd-panel-reset {
-> > >> @@ -535,6 +563,16 @@
-> > >>            };
-> > >>    };
-> > >>
-> > >> +  pcie {
-> > >> +          vcc3v3_pcie_en: vcc3v3-pcie-en {
-> > >> +                  rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
-> > >> +          };
-> > >> +
-> > >> +          pcie_perst: pcie-perst {
-> > >> +                  rockchip,pins = <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
-> > >> +          };
-> > >> +  };
-> > >> +
-> > >>    pmic {
-> > >>            vsel1_gpio: vsel1-gpio {
-> > >>                    rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
-> > >>
-> > >
-> > >
-> > >
-> > >
-> > >
-> > > _______________________________________________
-> > > Linux-rockchip mailing list
-> > > Linux-rockchip@lists.infradead.org
-> > > http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> > >
-> >
->
->
->
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+diff --git a/drivers/net/ethernet/arc/emac_rockchip.c b/drivers/net/ethernet/arc/emac_rockchip.c
+index 42d2e1b02c44..664d664e0925 100644
+--- a/drivers/net/ethernet/arc/emac_rockchip.c
++++ b/drivers/net/ethernet/arc/emac_rockchip.c
+@@ -256,6 +256,9 @@ static int emac_rockchip_remove(struct platform_device *pdev)
+ 	if (priv->regulator)
+ 		regulator_disable(priv->regulator);
+ 
++	if (priv->soc_data->need_div_macclk)
++		clk_disable_unprepare(priv->macclk);
++
+ 	free_netdev(ndev);
+ 	return err;
+ }
+-- 
+2.23.0
