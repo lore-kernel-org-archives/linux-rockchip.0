@@ -1,23 +1,26 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Split rk3399-roc-pc for with and
- without mezzanine board.
-Date: Fri, 1 Nov 2019 22:48:38 +0530
-Message-ID: <CAMty3ZDSK4mJk0bkQ_e3m1=Ar+NnGZS7q8zFYJJHtZY3HeBkfw@mail.gmail.com>
-References: <075b3fa6-dab7-5fec-df68-b53f32bf061b@fivetechno.de>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH] net: ethernet: arc: add the missed
+ clk_disable_unprepare
+Date: Fri, 01 Nov 2019 10:25:56 -0700 (PDT)
+Message-ID: <20191101.102556.721413828280813656.davem@davemloft.net>
+References: <20191101121725.13349-1-hslester96@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <075b3fa6-dab7-5fec-df68-b53f32bf061b@fivetechno.de>
+In-Reply-To: <20191101121725.13349-1-hslester96@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Markus Reichl <m.reichl@fivetechno.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, devicetree <devicetree@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>
+To: hslester96@gmail.com
+Cc: heiko@sntech.de, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Nov 1, 2019 at 10:24 PM Markus Reichl <m.reichl@fivetechno.de> wrote:
->
-> For rk3399-roc-pc is a mezzanine board available that carries M.2 and
-> POE interfaces. Use it with a separate dts.
+From: Chuhong Yuan <hslester96@gmail.com>
+Date: Fri,  1 Nov 2019 20:17:25 +0800
 
-Thanks for the patch. Indeed have an impression to go this via overlay
-rather than a separate dts since it is HAT for base board, does it
-make sense? or is this the way it is handling in rockchip dts files?
+> The remove misses to disable and unprepare priv->macclk like what is done
+> when probe fails.
+> Add the missed call in remove.
+> 
+> Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
+
+Applied, thank you.
