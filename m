@@ -1,26 +1,47 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH] net: ethernet: arc: add the missed
- clk_disable_unprepare
-Date: Fri, 01 Nov 2019 10:25:56 -0700 (PDT)
-Message-ID: <20191101.102556.721413828280813656.davem@davemloft.net>
-References: <20191101121725.13349-1-hslester96@gmail.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH] configs: Rename roc-rk3399-pc -> roc-pc-rk3399
+	defconfig
+Date: Sat,  2 Nov 2019 10:19:02 +0530
+Message-ID: <20191102044902.8979-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191101121725.13349-1-hslester96@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: hslester96@gmail.com
-Cc: heiko@sntech.de, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Chuhong Yuan <hslester96@gmail.com>
-Date: Fri,  1 Nov 2019 20:17:25 +0800
-
-> The remove misses to disable and unprepare priv->macclk like what is done
-> when probe fails.
-> Add the missed call in remove.
-> 
-> Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
-
-Applied, thank you.
+cm9jLXJrMzM5OS1wY19kZWZjb25maWcgaXMgY29tbWl0dGVkIGluIGJlbG93Cgpjb21taXQgPDhh
+NjgxZjRjNWFhMTVkYjUxYWQwMjA5NzM0ODU5YzlmZTdjMjljZmQ+ICgicm9ja2NoaXA6IHJrMzM5
+OToKQWRkIFJPQy1SSzMzOTktUEMgc3VwcG9ydCIpCgp3aGljaCBkb2Vzbid0IGZvbGxvdyB0aGUg
+ZXhpc3RpbmcgZGVmY29uZmlncyBvbiByazMzOTkuCgpTbywgcmVuYW1lIGFzIGZvbGxvd2VkIHdp
+dGggb3RoZXIgcmszMzk5IGRlZmNvbmZpZ3MuCgpDYzogTGV2aW4gRHUgPGRqd0B0LWNoaXAuY29t
+LmNuPgpTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNv
+bT4KLS0tCiBib2FyZC9yb2NrY2hpcC9ldmJfcmszMzk5L01BSU5UQUlORVJTICAgICAgICAgICAg
+ICAgICAgICAgICAgfCAyICstCiBjb25maWdzL3tyb2MtcmszMzk5LXBjX2RlZmNvbmZpZyA9PiBy
+b2MtcGMtcmszMzk5X2RlZmNvbmZpZ30gfCAwCiAyIGZpbGVzIGNoYW5nZWQsIDEgaW5zZXJ0aW9u
+KCspLCAxIGRlbGV0aW9uKC0pCiByZW5hbWUgY29uZmlncy97cm9jLXJrMzM5OS1wY19kZWZjb25m
+aWcgPT4gcm9jLXBjLXJrMzM5OV9kZWZjb25maWd9ICgxMDAlKQoKZGlmZiAtLWdpdCBhL2JvYXJk
+L3JvY2tjaGlwL2V2Yl9yazMzOTkvTUFJTlRBSU5FUlMgYi9ib2FyZC9yb2NrY2hpcC9ldmJfcmsz
+Mzk5L01BSU5UQUlORVJTCmluZGV4IGY4Mjk5ZDk0NjAuLjE3ZGZhZmI3NDMgMTAwNjQ0Ci0tLSBh
+L2JvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvTUFJTlRBSU5FUlMKKysrIGIvYm9hcmQvcm9ja2No
+aXAvZXZiX3JrMzM5OS9NQUlOVEFJTkVSUwpAQCAtNTIsNyArNTIsNyBAQCBGOglhcmNoL2FybS9k
+dHMvcmszMzk5LW9yYW5nZXBpLXUtYm9vdC5kdHNpCiBST0MtUkszMzk5LVBDCiBNOglMZXZpbiBE
+dSA8ZGp3QHQtY2hpcC5jb20uY24+CiBTOglNYWludGFpbmVkCi1GOgljb25maWdzL3JvYy1yazMz
+OTktcGNfZGVmY29uZmlnCitGOgljb25maWdzL3JvYy1wYy1yazMzOTlfZGVmY29uZmlnCiBGOglh
+cmNoL2FybS9kdHMvcmszMzk5LXJvYy1wYy11LWJvb3QuZHRzaQogCiBST0NLLVBJLTQKZGlmZiAt
+LWdpdCBhL2NvbmZpZ3Mvcm9jLXJrMzM5OS1wY19kZWZjb25maWcgYi9jb25maWdzL3JvYy1wYy1y
+azMzOTlfZGVmY29uZmlnCnNpbWlsYXJpdHkgaW5kZXggMTAwJQpyZW5hbWUgZnJvbSBjb25maWdz
+L3JvYy1yazMzOTktcGNfZGVmY29uZmlnCnJlbmFtZSB0byBjb25maWdzL3JvYy1wYy1yazMzOTlf
+ZGVmY29uZmlnCi0tIAoyLjE4LjAuMzIxLmdmZmM2ZmEwZTMKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxp
+c3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
