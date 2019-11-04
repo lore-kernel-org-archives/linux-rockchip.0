@@ -1,859 +1,410 @@
-From: Andrew Murray <andrew.murray@arm.com>
-Subject: [PATCH v1 7/7] dt-bindings: PCI: Use IRQ flags for legacy PCI IRQ
- interrupts
-Date: Mon,  4 Nov 2019 16:38:21 +0000
-Message-ID: <20191104163834.8932-8-andrew.murray@arm.com>
-References: <20191104163834.8932-1-andrew.murray@arm.com>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Subject: Re: [PATCH v2 2/3] drm: Measure Self Refresh Entry/Exit times to
+ avoid thrashing
+Date: Mon, 4 Nov 2019 18:26:49 +0100
+Message-ID: <CAFqH_53nZMk04+2rDOoWXEfq3Zw=i+gBjMSGb93WBjww9ercnw@mail.gmail.com>
+References: <20190918200734.149876-1-sean@poorly.run> <20190918200734.149876-2-sean@poorly.run>
+ <20190919141413.GU218215@art_vandelay> <CAFqH_53iQt0o9keRQLyqx-B=bni37bkTACF=wBKgSLOLz-hw4g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20191104163834.8932-1-andrew.murray@arm.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Ley Foon Tan <lftan@altera.com>, Jesper Nilsson <jesper.nilsson@axis.com>, Tom Joseph <tjoseph@cadence.com>, Richard Zhu <hongxing.zhu@nxp.com>, Lucas Stach <l.stach@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Zhou Wang <wangzhou1@hisilicon.com>, Will Deacon <will@kernel.org>, Xiaowei Song <songxiaowei@hisilicon.com>, Binghui Wang <wangbinghui@hisilicon.com>, Ryder Lee <ryder.lee@mediatek.com>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, David Daney <david.daney@cavium.com>, Jonathan Chocron <jonnyc@amazon.com>, Andy Gross <agross@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Kishon
-Cc: devicetree@vger.kernel.org, linux-pci@vger.kernel.org, rfi@lists.rocketboards.org, linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org, NXP Linux Team <linux-imx@nxp.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, linux-arm-msm@vger.kernel.org, linux-omap@vger.kernel.org, Fabio Estevam <festevam@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAFqH_53iQt0o9keRQLyqx-B=bni37bkTACF=wBKgSLOLz-hw4g@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Paul <sean@poorly.run>
+Cc: dri-devel <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Sean Paul <seanpaul@chromium.org>, jekarl@iki.fi, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Replace magic numbers used to describe legacy PCI IRQ interrupts
-with #define.
+Missatge de Enric Balletbo Serra <eballetbo@gmail.com> del dia dc., 30
+d=E2=80=99oct. 2019 a les 17:59:
+>
+> Hi Sean,
+>
+> Since 5.4-rc1 my Samsung Chromebook Plus (kevin) doesn't
+> suspend/resume correctly, at least once every ten suspend/resume
+> cycles the display doesn't turn on, and when this happens the kernel
+> log message reports:
+>
+> [   60.420230] PM: suspend exit
+> [   60.463866] rockchip-dp ff970000.edp: AUX CH cmd reply timeout!
+> [   60.971653] rockchip-dp ff970000.edp: AUX CH enable timeout!
+> [   61.478668] rockchip-dp ff970000.edp: AUX CH enable timeout!
+> [   61.985661] rockchip-dp ff970000.edp: AUX CH enable timeout!
+> [   62.492644] rockchip-dp ff970000.edp: AUX CH enable timeout!
+> [   62.999617] rockchip-dp ff970000.edp: AUX CH enable timeout!
+> [   63.506595] rockchip-dp ff970000.edp: AUX CH enable timeout!
+> [   64.013678] rockchip-dp ff970000.edp: AUX CH enable timeout!
+> [   64.522856] rockchip-dp ff970000.edp: AUX CH enable timeout!
+> [   60.463866] rockchip-dp ff970000.edp: AUX CH cmd reply timeout!
+> [   60.971653] rockchip-dp ff970000.edp: AUX CH enable timeout!
+> [   61.478668] rockchip-dp ff970000.edp: AUX CH enable timeout!
+> [   61.985661] rockchip-dp ff970000.edp: AUX CH enable timeout!
+> [   62.492644] rockchip-dp ff970000.edp: AUX CH enable timeout!
+> ...
+>
+> Today I bisected the problem and pointed me to this commit. Reverting
+> the commit fixes the issue, but from I quick look I don't see any
+> obvious problem. I'll spend more time tomorrow looking at this but any
+> idea will be welcome.
+>
 
-Signed-off-by: Andrew Murray <andrew.murray@arm.com>
----
- .../devicetree/bindings/pci/83xx-512x-pci.txt | 18 ++---
- .../devicetree/bindings/pci/aardvark-pci.txt  | 10 +--
- .../devicetree/bindings/pci/altera-pcie.txt   | 10 +--
- .../bindings/pci/axis,artpec6-pcie.txt        | 10 +--
- .../bindings/pci/cdns,cdns-pcie-host.txt      | 10 +--
- .../bindings/pci/faraday,ftpci100.txt         | 68 +++++++++----------
- .../bindings/pci/fsl,imx6q-pcie.txt           | 10 +--
- .../bindings/pci/hisilicon-pcie.txt           | 20 +++---
- .../bindings/pci/host-generic-pci.txt         | 10 +--
- .../devicetree/bindings/pci/kirin-pcie.txt    | 10 +--
- .../bindings/pci/layerscape-pci.txt           | 10 +--
- .../devicetree/bindings/pci/mediatek-pcie.txt | 40 +++++------
- .../devicetree/bindings/pci/mobiveil-pcie.txt |  8 +--
- .../devicetree/bindings/pci/pci-rcar-gen2.txt |  8 +--
- .../bindings/pci/pci-thunder-pem.txt          | 10 +--
- .../devicetree/bindings/pci/pcie-al.txt       |  4 +-
- .../devicetree/bindings/pci/qcom,pcie.txt     | 20 +++---
- .../bindings/pci/ralink,rt3883-pci.txt        | 18 ++---
- .../bindings/pci/rockchip-pcie-host.txt       | 10 +--
- .../devicetree/bindings/pci/ti-pci.txt        | 10 +--
- .../devicetree/bindings/pci/uniphier-pcie.txt | 10 +--
- .../bindings/pci/v3-v360epc-pci.txt           | 34 +++++-----
- .../devicetree/bindings/pci/versatile.txt     | 40 +++++------
- .../devicetree/bindings/pci/xgene-pci-msi.txt | 10 +--
- .../devicetree/bindings/pci/xgene-pci.txt     | 10 +--
- .../bindings/pci/xilinx-nwl-pcie.txt          | 10 +--
- .../devicetree/bindings/pci/xilinx-pcie.txt   | 20 +++---
- 27 files changed, 224 insertions(+), 224 deletions(-)
+Update for the record. After looking a bit more I don't think this
+patch is problematic. I think the problem was already there but after
+this patch is easier to reproduce just because the PSR entry code work
+is delayed a bit (before was called every 100ms). I think the problem
+is more related with the current enable/disable path when panel is in
+SR mode or not after a suspend/resume.
 
-diff --git a/Documentation/devicetree/bindings/pci/83xx-512x-pci.txt b/Documentation/devicetree/bindings/pci/83xx-512x-pci.txt
-index 3abeecf4983f..cb80b9e49a2b 100644
---- a/Documentation/devicetree/bindings/pci/83xx-512x-pci.txt
-+++ b/Documentation/devicetree/bindings/pci/83xx-512x-pci.txt
-@@ -9,19 +9,19 @@ Freescale 83xx and 512x SOCs include the same PCI bridge core.
- 
- Example (MPC8313ERDB)
- 	pci0: pci@e0008500 {
--		interrupt-map-mask = <0xf800 0x0 0x0 0x7>;
-+		interrupt-map-mask = <0xf800 0x0 0x0 IRQ_INT_ALL>;
- 		interrupt-map = <
- 				/* IDSEL 0x0E -mini PCI */
--				 0x7000 0x0 0x0 0x1 &ipic 18 0x8
--				 0x7000 0x0 0x0 0x2 &ipic 18 0x8
--				 0x7000 0x0 0x0 0x3 &ipic 18 0x8
--				 0x7000 0x0 0x0 0x4 &ipic 18 0x8
-+				 0x7000 0x0 0x0 IRQ_INTA &ipic 18 0x8
-+				 0x7000 0x0 0x0 IRQ_INTB &ipic 18 0x8
-+				 0x7000 0x0 0x0 IRQ_INTC &ipic 18 0x8
-+				 0x7000 0x0 0x0 IRQ_INTD &ipic 18 0x8
- 
- 				/* IDSEL 0x0F - PCI slot */
--				 0x7800 0x0 0x0 0x1 &ipic 17 0x8
--				 0x7800 0x0 0x0 0x2 &ipic 18 0x8
--				 0x7800 0x0 0x0 0x3 &ipic 17 0x8
--				 0x7800 0x0 0x0 0x4 &ipic 18 0x8>;
-+				 0x7800 0x0 0x0 IRQ_INTA &ipic 17 0x8
-+				 0x7800 0x0 0x0 IRQ_INTB &ipic 18 0x8
-+				 0x7800 0x0 0x0 IRQ_INTC &ipic 17 0x8
-+				 0x7800 0x0 0x0 IRQ_INTD &ipic 18 0x8>;
- 		interrupt-parent = <&ipic>;
- 		interrupts = <66 0x8>;
- 		bus-range = <0x0 0x0>;
-diff --git a/Documentation/devicetree/bindings/pci/aardvark-pci.txt b/Documentation/devicetree/bindings/pci/aardvark-pci.txt
-index 310ef7145c47..ca8fe542edc9 100644
---- a/Documentation/devicetree/bindings/pci/aardvark-pci.txt
-+++ b/Documentation/devicetree/bindings/pci/aardvark-pci.txt
-@@ -43,11 +43,11 @@ Example:
- 		msi-parent = <&pcie0>;
- 		ranges = <0x82000000 0 0xe8000000   0 0xe8000000 0 0x1000000 /* Port 0 MEM */
- 			  0x81000000 0 0xe9000000   0 0xe9000000 0 0x10000>; /* Port 0 IO*/
--		interrupt-map-mask = <0 0 0 7>;
--		interrupt-map = <0 0 0 1 &pcie_intc 0>,
--				<0 0 0 2 &pcie_intc 1>,
--				<0 0 0 3 &pcie_intc 2>,
--				<0 0 0 4 &pcie_intc 3>;
-+		interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0 0 0 IRQ_INTA &pcie_intc 0>,
-+				<0 0 0 IRQ_INTB &pcie_intc 1>,
-+				<0 0 0 IRQ_INTC &pcie_intc 2>,
-+				<0 0 0 IRQ_INTD &pcie_intc 3>;
- 		pcie_intc: interrupt-controller {
- 			interrupt-controller;
- 			#interrupt-cells = <1>;
-diff --git a/Documentation/devicetree/bindings/pci/altera-pcie.txt b/Documentation/devicetree/bindings/pci/altera-pcie.txt
-index 816b244a221e..f9902dca1a03 100644
---- a/Documentation/devicetree/bindings/pci/altera-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/altera-pcie.txt
-@@ -40,11 +40,11 @@ Example
- 		msi-parent = <&msi_to_gic_gen_0>;
- 		#address-cells = <3>;
- 		#size-cells = <2>;
--		interrupt-map-mask = <0 0 0 7>;
--		interrupt-map = <0 0 0 1 &pcie_0 1>,
--			            <0 0 0 2 &pcie_0 2>,
--			            <0 0 0 3 &pcie_0 3>,
--			            <0 0 0 4 &pcie_0 4>;
-+		interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0 0 0 IRQ_INTA &pcie_0 1>,
-+			            <0 0 0 IRQ_INTB &pcie_0 2>,
-+			            <0 0 0 IRQ_INTC &pcie_0 3>,
-+			            <0 0 0 IRQ_INTD &pcie_0 4>;
- 		ranges = <0x82000000 0x00000000 0x00000000 0xc0000000 0x00000000 0x10000000
- 			  0x82000000 0x00000000 0x10000000 0xd0000000 0x00000000 0x10000000>;
- 	};
-diff --git a/Documentation/devicetree/bindings/pci/axis,artpec6-pcie.txt b/Documentation/devicetree/bindings/pci/axis,artpec6-pcie.txt
-index 979dc7b6cfe8..c71dbe94f0eb 100644
---- a/Documentation/devicetree/bindings/pci/axis,artpec6-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/axis,artpec6-pcie.txt
-@@ -41,10 +41,10 @@ Example:
- 		interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "msi";
- 		#interrupt-cells = <1>;
--		interrupt-map-mask = <0 0 0 0x7>;
--		interrupt-map = <0 0 0 1 &intc GIC_SPI 144 IRQ_TYPE_LEVEL_HIGH>,
--		                <0 0 0 2 &intc GIC_SPI 145 IRQ_TYPE_LEVEL_HIGH>,
--		                <0 0 0 3 &intc GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>,
--		                <0 0 0 4 &intc GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0 0 0 IRQ_INTA &intc GIC_SPI 144 IRQ_TYPE_LEVEL_HIGH>,
-+		                <0 0 0 IRQ_INTB &intc GIC_SPI 145 IRQ_TYPE_LEVEL_HIGH>,
-+		                <0 0 0 IRQ_INTC &intc GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>,
-+		                <0 0 0 IRQ_INTD &intc GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
- 		axis,syscon-pcie = <&syscon>;
- 	};
-diff --git a/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-host.txt b/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-host.txt
-index 91de69c713a9..67845103c8f0 100644
---- a/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-host.txt
-+++ b/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-host.txt
-@@ -52,12 +52,12 @@ pcie@fb000000 {
- 
- 	#interrupt-cells = <0x1>;
- 
--	interrupt-map = <0x0 0x0 0x0  0x1  &gic  0x0 0x0 0x0 14 0x1
--			 0x0 0x0 0x0  0x2  &gic  0x0 0x0 0x0 15 0x1
--			 0x0 0x0 0x0  0x3  &gic  0x0 0x0 0x0 16 0x1
--			 0x0 0x0 0x0  0x4  &gic  0x0 0x0 0x0 17 0x1>;
-+	interrupt-map = <0x0 0x0 0x0  IRQ_INTA  &gic  0x0 0x0 0x0 14 0x1
-+			 0x0 0x0 0x0  IRQ_INTB  &gic  0x0 0x0 0x0 15 0x1
-+			 0x0 0x0 0x0  IRQ_INTC  &gic  0x0 0x0 0x0 16 0x1
-+			 0x0 0x0 0x0  IRQ_INTD  &gic  0x0 0x0 0x0 17 0x1>;
- 
--	interrupt-map-mask = <0x0 0x0 0x0  0x7>;
-+	interrupt-map-mask = <0x0 0x0 0x0 IRQ_INT_ALL>;
- 
- 	msi-parent = <&its_pci>;
- 
-diff --git a/Documentation/devicetree/bindings/pci/faraday,ftpci100.txt b/Documentation/devicetree/bindings/pci/faraday,ftpci100.txt
-index 5f8cb4962f8d..b267d4853773 100644
---- a/Documentation/devicetree/bindings/pci/faraday,ftpci100.txt
-+++ b/Documentation/devicetree/bindings/pci/faraday,ftpci100.txt
-@@ -61,24 +61,24 @@ variant) interrupts assigns the default interrupt mapping/swizzling has
- typically been like this, doing the swizzling on the interrupt controller side
- rather than in the interconnect:
- 
--interrupt-map-mask = <0xf800 0 0 7>;
-+interrupt-map-mask = <0xf800 0 0 IRQ_INT_ALL>;
- interrupt-map =
--	<0x4800 0 0 1 &pci_intc 0>, /* Slot 9 */
--	<0x4800 0 0 2 &pci_intc 1>,
--	<0x4800 0 0 3 &pci_intc 2>,
--	<0x4800 0 0 4 &pci_intc 3>,
--	<0x5000 0 0 1 &pci_intc 1>, /* Slot 10 */
--	<0x5000 0 0 2 &pci_intc 2>,
--	<0x5000 0 0 3 &pci_intc 3>,
--	<0x5000 0 0 4 &pci_intc 0>,
--	<0x5800 0 0 1 &pci_intc 2>, /* Slot 11 */
--	<0x5800 0 0 2 &pci_intc 3>,
--	<0x5800 0 0 3 &pci_intc 0>,
--	<0x5800 0 0 4 &pci_intc 1>,
--	<0x6000 0 0 1 &pci_intc 3>, /* Slot 12 */
--	<0x6000 0 0 2 &pci_intc 0>,
--	<0x6000 0 0 3 &pci_intc 1>,
--	<0x6000 0 0 4 &pci_intc 2>;
-+	<0x4800 0 0 IRQ_INTA &pci_intc 0>, /* Slot 9 */
-+	<0x4800 0 0 IRQ_INTB &pci_intc 1>,
-+	<0x4800 0 0 IRQ_INTC &pci_intc 2>,
-+	<0x4800 0 0 IRQ_INTD &pci_intc 3>,
-+	<0x5000 0 0 IRQ_INTA &pci_intc 1>, /* Slot 10 */
-+	<0x5000 0 0 IRQ_INTB &pci_intc 2>,
-+	<0x5000 0 0 IRQ_INTC &pci_intc 3>,
-+	<0x5000 0 0 IRQ_INTD &pci_intc 0>,
-+	<0x5800 0 0 IRQ_INTA &pci_intc 2>, /* Slot 11 */
-+	<0x5800 0 0 IRQ_INTB &pci_intc 3>,
-+	<0x5800 0 0 IRQ_INTC &pci_intc 0>,
-+	<0x5800 0 0 IRQ_INTD &pci_intc 1>,
-+	<0x6000 0 0 IRQ_INTA &pci_intc 3>, /* Slot 12 */
-+	<0x6000 0 0 IRQ_INTB &pci_intc 0>,
-+	<0x6000 0 0 IRQ_INTC &pci_intc 1>,
-+	<0x6000 0 0 IRQ_INTD &pci_intc 2>;
- 
- Example:
- 
-@@ -108,24 +108,24 @@ pci@50000000 {
- 	/* 64MiB at 0x00000000-0x03ffffff */
- 	<0x02000000 0 0x00000000 0x00000000 0 0x04000000>;
- 
--	interrupt-map-mask = <0xf800 0 0 7>;
-+	interrupt-map-mask = <0xf800 0 0 IRQ_INT_ALL>;
- 	interrupt-map =
--		<0x4800 0 0 1 &pci_intc 0>, /* Slot 9 */
--		<0x4800 0 0 2 &pci_intc 1>,
--		<0x4800 0 0 3 &pci_intc 2>,
--		<0x4800 0 0 4 &pci_intc 3>,
--		<0x5000 0 0 1 &pci_intc 1>, /* Slot 10 */
--		<0x5000 0 0 2 &pci_intc 2>,
--		<0x5000 0 0 3 &pci_intc 3>,
--		<0x5000 0 0 4 &pci_intc 0>,
--		<0x5800 0 0 1 &pci_intc 2>, /* Slot 11 */
--		<0x5800 0 0 2 &pci_intc 3>,
--		<0x5800 0 0 3 &pci_intc 0>,
--		<0x5800 0 0 4 &pci_intc 1>,
--		<0x6000 0 0 1 &pci_intc 3>, /* Slot 12 */
--		<0x6000 0 0 2 &pci_intc 0>,
--		<0x6000 0 0 3 &pci_intc 0>,
--		<0x6000 0 0 4 &pci_intc 0>;
-+		<0x4800 0 0 IRQ_INTA &pci_intc 0>, /* Slot 9 */
-+		<0x4800 0 0 IRQ_INTB &pci_intc 1>,
-+		<0x4800 0 0 IRQ_INTC &pci_intc 2>,
-+		<0x4800 0 0 IRQ_INTD &pci_intc 3>,
-+		<0x5000 0 0 IRQ_INTA &pci_intc 1>, /* Slot 10 */
-+		<0x5000 0 0 IRQ_INTB &pci_intc 2>,
-+		<0x5000 0 0 IRQ_INTC &pci_intc 3>,
-+		<0x5000 0 0 IRQ_INTD &pci_intc 0>,
-+		<0x5800 0 0 IRQ_INTA &pci_intc 2>, /* Slot 11 */
-+		<0x5800 0 0 IRQ_INTB &pci_intc 3>,
-+		<0x5800 0 0 IRQ_INTC &pci_intc 0>,
-+		<0x5800 0 0 IRQ_INTD &pci_intc 1>,
-+		<0x6000 0 0 IRQ_INTA &pci_intc 3>, /* Slot 12 */
-+		<0x6000 0 0 IRQ_INTB &pci_intc 0>,
-+		<0x6000 0 0 IRQ_INTC &pci_intc 0>,
-+		<0x6000 0 0 IRQ_INTD &pci_intc 0>;
- 	pci_intc: interrupt-controller {
- 		interrupt-parent = <&intcon>;
- 		interrupt-controller;
-diff --git a/Documentation/devicetree/bindings/pci/fsl,imx6q-pcie.txt b/Documentation/devicetree/bindings/pci/fsl,imx6q-pcie.txt
-index de4b2baf91e8..dc331885124a 100644
---- a/Documentation/devicetree/bindings/pci/fsl,imx6q-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/fsl,imx6q-pcie.txt
-@@ -77,11 +77,11 @@ Example:
- 		interrupts = <GIC_SPI 120 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "msi";
- 		#interrupt-cells = <1>;
--		interrupt-map-mask = <0 0 0 0x7>;
--		interrupt-map = <0 0 0 1 &intc GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>,
--		                <0 0 0 2 &intc GIC_SPI 122 IRQ_TYPE_LEVEL_HIGH>,
--		                <0 0 0 3 &intc GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH>,
--		                <0 0 0 4 &intc GIC_SPI 120 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0 0 0 IRQ_INTA &intc GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>,
-+		                <0 0 0 IRQ_INTB &intc GIC_SPI 122 IRQ_TYPE_LEVEL_HIGH>,
-+		                <0 0 0 IRQ_INTC &intc GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH>,
-+		                <0 0 0 IRQ_INTD &intc GIC_SPI 120 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&clks 144>, <&clks 206>, <&clks 189>;
- 		clock-names = "pcie", "pcie_bus", "pcie_phy";
- 	};
-diff --git a/Documentation/devicetree/bindings/pci/hisilicon-pcie.txt b/Documentation/devicetree/bindings/pci/hisilicon-pcie.txt
-index 0dcb87d6554f..3e809c7d9b07 100644
---- a/Documentation/devicetree/bindings/pci/hisilicon-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/hisilicon-pcie.txt
-@@ -35,11 +35,11 @@ Hip05 Example (note that Hip06 is the same except compatible):
- 		num-lanes = <8>;
- 		port-id = <1>;
- 		#interrupt-cells = <1>;
--		interrupt-map-mask = <0xf800 0 0 7>;
--		interrupt-map = <0x0 0 0 1 &mbigen_pcie 1 10
--				 0x0 0 0 2 &mbigen_pcie 2 11
--				 0x0 0 0 3 &mbigen_pcie 3 12
--				 0x0 0 0 4 &mbigen_pcie 4 13>;
-+		interrupt-map-mask = <0xf800 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0x0 0 0 IRQ_INTA &mbigen_pcie 1 10
-+				 0x0 0 0 IRQ_INTB &mbigen_pcie 2 11
-+				 0x0 0 0 IRQ_INTC &mbigen_pcie 3 12
-+				 0x0 0 0 IRQ_INTD &mbigen_pcie 4 13>;
- 	};
- 
- HiSilicon Hip06/Hip07 PCIe host bridge DT (almost-ECAM) description.
-@@ -77,9 +77,9 @@ Example:
- 		ranges = <0x02000000 0 0xb2000000 0x0 0xb2000000 0 0x5ff0000
- 			  0x01000000 0 0 0 0xb7ff0000 0 0x10000>;
- 		#interrupt-cells = <1>;
--		interrupt-map-mask = <0xf800 0 0 7>;
--		interrupt-map = <0x0 0 0 1 &mbigen_pcie0 650 4
--				 0x0 0 0 2 &mbigen_pcie0 650 4
--				 0x0 0 0 3 &mbigen_pcie0 650 4
--				 0x0 0 0 4 &mbigen_pcie0 650 4>;
-+		interrupt-map-mask = <0xf800 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0x0 0 0 IRQ_INTA &mbigen_pcie0 650 4
-+				 0x0 0 0 IRQ_INTB &mbigen_pcie0 650 4
-+				 0x0 0 0 IRQ_INTC &mbigen_pcie0 650 4
-+				 0x0 0 0 IRQ_INTD &mbigen_pcie0 650 4>;
- 	};
-diff --git a/Documentation/devicetree/bindings/pci/host-generic-pci.txt b/Documentation/devicetree/bindings/pci/host-generic-pci.txt
-index 614b594f4e72..51a56ad3f1a9 100644
---- a/Documentation/devicetree/bindings/pci/host-generic-pci.txt
-+++ b/Documentation/devicetree/bindings/pci/host-generic-pci.txt
-@@ -91,11 +91,11 @@ pci {
-     #interrupt-cells = <0x1>;
- 
-     // PCI_DEVICE(3)  INT#(1)  CONTROLLER(PHANDLE)  CONTROLLER_DATA(3)
--    interrupt-map = <  0x0 0x0 0x0  0x1  &gic  0x0 0x4 0x1
--                     0x800 0x0 0x0  0x1  &gic  0x0 0x5 0x1
--                    0x1000 0x0 0x0  0x1  &gic  0x0 0x6 0x1
--                    0x1800 0x0 0x0  0x1  &gic  0x0 0x7 0x1>;
-+    interrupt-map = <  0x0 0x0 0x0 IRQ_INTA  &gic  0x0 0x4 0x1
-+                     0x800 0x0 0x0 IRQ_INTA  &gic  0x0 0x5 0x1
-+                    0x1000 0x0 0x0 IRQ_INTA  &gic  0x0 0x6 0x1
-+                    0x1800 0x0 0x0 IRQ_INTA  &gic  0x0 0x7 0x1>;
- 
-     // PCI_DEVICE(3)  INT#(1)
--    interrupt-map-mask = <0xf800 0x0 0x0  0x7>;
-+    interrupt-map-mask = <0xf800 0x0 0x0 IRQ_MAP_ALL>;
- }
-diff --git a/Documentation/devicetree/bindings/pci/kirin-pcie.txt b/Documentation/devicetree/bindings/pci/kirin-pcie.txt
-index 6bbe43818ad5..7da640d6578e 100644
---- a/Documentation/devicetree/bindings/pci/kirin-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/kirin-pcie.txt
-@@ -34,11 +34,11 @@ Example based on kirin960:
- 		ranges = <0x02000000 0x0 0x00000000 0x0 0xf5000000 0x0 0x2000000>;
- 		num-lanes = <1>;
- 		#interrupt-cells = <1>;
--		interrupt-map-mask = <0xf800 0 0 7>;
--		interrupt-map = <0x0 0 0 1 &gic 0 0 0  282 4>,
--				<0x0 0 0 2 &gic 0 0 0  283 4>,
--				<0x0 0 0 3 &gic 0 0 0  284 4>,
--				<0x0 0 0 4 &gic 0 0 0  285 4>;
-+		interrupt-map-mask = <0xf800 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0x0 0 0 IRQ_INTA &gic 0 0 0  282 4>,
-+				<0x0 0 0 IRQ_INTB &gic 0 0 0  283 4>,
-+				<0x0 0 0 IRQ_INTC &gic 0 0 0  284 4>,
-+				<0x0 0 0 IRQ_INTD &gic 0 0 0  285 4>;
- 		clocks = <&crg_ctrl HI3660_PCIEPHY_REF>,
- 			 <&crg_ctrl HI3660_CLK_GATE_PCIEAUX>,
- 			 <&crg_ctrl HI3660_PCLK_GATE_PCIE_PHY>,
-diff --git a/Documentation/devicetree/bindings/pci/layerscape-pci.txt b/Documentation/devicetree/bindings/pci/layerscape-pci.txt
-index e20ceaab9b38..1016e9f8982a 100644
---- a/Documentation/devicetree/bindings/pci/layerscape-pci.txt
-+++ b/Documentation/devicetree/bindings/pci/layerscape-pci.txt
-@@ -56,9 +56,9 @@ Example:
- 			  0xc2000000 0x0 0x20000000 0x40 0x20000000 0x0 0x20000000   /* prefetchable memory */
- 			  0x82000000 0x0 0x40000000 0x40 0x40000000 0x0 0x40000000>; /* non-prefetchable memory */
- 		#interrupt-cells = <1>;
--		interrupt-map-mask = <0 0 0 7>;
--		interrupt-map = <0000 0 0 1 &gic GIC_SPI 91  IRQ_TYPE_LEVEL_HIGH>,
--				<0000 0 0 2 &gic GIC_SPI 188 IRQ_TYPE_LEVEL_HIGH>,
--				<0000 0 0 3 &gic GIC_SPI 190 IRQ_TYPE_LEVEL_HIGH>,
--				<0000 0 0 4 &gic GIC_SPI 192 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0000 0 0 IRQ_INTA &gic GIC_SPI 91  IRQ_TYPE_LEVEL_HIGH>,
-+				<0000 0 0 IRQ_INTB &gic GIC_SPI 188 IRQ_TYPE_LEVEL_HIGH>,
-+				<0000 0 0 IRQ_INTC &gic GIC_SPI 190 IRQ_TYPE_LEVEL_HIGH>,
-+				<0000 0 0 IRQ_INTD &gic GIC_SPI 192 IRQ_TYPE_LEVEL_HIGH>;
- 	};
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-index 7468d666763a..00728cdad957 100644
---- a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-@@ -169,11 +169,11 @@ Examples for MT2712:
- 			#size-cells = <2>;
- 			#interrupt-cells = <1>;
- 			ranges;
--			interrupt-map-mask = <0 0 0 7>;
--			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
--					<0 0 0 2 &pcie_intc0 1>,
--					<0 0 0 3 &pcie_intc0 2>,
--					<0 0 0 4 &pcie_intc0 3>;
-+			interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+			interrupt-map = <0 0 0 IRQ_INTA &pcie_intc0 0>,
-+					<0 0 0 IRQ_INTB &pcie_intc0 1>,
-+					<0 0 0 IRQ_INTC &pcie_intc0 2>,
-+					<0 0 0 IRQ_INTD &pcie_intc0 3>;
- 			pcie_intc0: interrupt-controller {
- 				interrupt-controller;
- 				#address-cells = <0>;
-@@ -187,11 +187,11 @@ Examples for MT2712:
- 			#size-cells = <2>;
- 			#interrupt-cells = <1>;
- 			ranges;
--			interrupt-map-mask = <0 0 0 7>;
--			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
--					<0 0 0 2 &pcie_intc1 1>,
--					<0 0 0 3 &pcie_intc1 2>,
--					<0 0 0 4 &pcie_intc1 3>;
-+			interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+			interrupt-map = <0 0 0 IRQ_INTA &pcie_intc1 0>,
-+					<0 0 0 IRQ_INTB &pcie_intc1 1>,
-+					<0 0 0 IRQ_INTC &pcie_intc1 2>,
-+					<0 0 0 IRQ_INTD &pcie_intc1 3>;
- 			pcie_intc1: interrupt-controller {
- 				interrupt-controller;
- 				#address-cells = <0>;
-@@ -240,11 +240,11 @@ Examples for MT7622:
- 			#size-cells = <2>;
- 			#interrupt-cells = <1>;
- 			ranges;
--			interrupt-map-mask = <0 0 0 7>;
--			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
--					<0 0 0 2 &pcie_intc0 1>,
--					<0 0 0 3 &pcie_intc0 2>,
--					<0 0 0 4 &pcie_intc0 3>;
-+			interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+			interrupt-map = <0 0 0 IRQ_INTA &pcie_intc0 0>,
-+					<0 0 0 IRQ_INTB &pcie_intc0 1>,
-+					<0 0 0 IRQ_INTC &pcie_intc0 2>,
-+					<0 0 0 IRQ_INTD &pcie_intc0 3>;
- 			pcie_intc0: interrupt-controller {
- 				interrupt-controller;
- 				#address-cells = <0>;
-@@ -258,11 +258,11 @@ Examples for MT7622:
- 			#size-cells = <2>;
- 			#interrupt-cells = <1>;
- 			ranges;
--			interrupt-map-mask = <0 0 0 7>;
--			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
--					<0 0 0 2 &pcie_intc1 1>,
--					<0 0 0 3 &pcie_intc1 2>,
--					<0 0 0 4 &pcie_intc1 3>;
-+			interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+			interrupt-map = <0 0 0 IRQ_INTA &pcie_intc1 0>,
-+					<0 0 0 IRQ_INTB &pcie_intc1 1>,
-+					<0 0 0 IRQ_INTC &pcie_intc1 2>,
-+					<0 0 0 IRQ_INTD &pcie_intc1 3>;
- 			pcie_intc1: interrupt-controller {
- 				interrupt-controller;
- 				#address-cells = <0>;
-diff --git a/Documentation/devicetree/bindings/pci/mobiveil-pcie.txt b/Documentation/devicetree/bindings/pci/mobiveil-pcie.txt
-index 64156993e052..03070b3bfda1 100644
---- a/Documentation/devicetree/bindings/pci/mobiveil-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/mobiveil-pcie.txt
-@@ -62,11 +62,11 @@ Example:
- 		interrupt-parent = <&gic>;
- 		#interrupt-cells = <1>;
- 		interrupts = < 0 89 4 >;
--		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
- 		interrupt-map = <0 0 0 0 &pci_express 0>,
--				<0 0 0 1 &pci_express 1>,
--				<0 0 0 2 &pci_express 2>,
--				<0 0 0 3 &pci_express 3>;
-+				<0 0 0 IRQ_INTA &pci_express 1>,
-+				<0 0 0 IRQ_INTB &pci_express 2>,
-+				<0 0 0 IRQ_INTC &pci_express 3>;
- 		ranges = < 0x83000000 0 0x00000000 0xa8000000 0 0x8000000>;
- 
- 	};
-diff --git a/Documentation/devicetree/bindings/pci/pci-rcar-gen2.txt b/Documentation/devicetree/bindings/pci/pci-rcar-gen2.txt
-index b94078f58d8e..7c6a19e0b131 100644
---- a/Documentation/devicetree/bindings/pci/pci-rcar-gen2.txt
-+++ b/Documentation/devicetree/bindings/pci/pci-rcar-gen2.txt
-@@ -56,10 +56,10 @@ Example SoC configuration:
- 		#size-cells = <2>;
- 		#interrupt-cells = <1>;
- 		dma-ranges = <0x42000000 0 0x40000000 0 0x40000000 0 0x40000000>;
--		interrupt-map-mask = <0xff00 0 0 0x7>;
--		interrupt-map = <0x0000 0 0 1 &gic 0 108 IRQ_TYPE_LEVEL_HIGH
--				 0x0800 0 0 1 &gic 0 108 IRQ_TYPE_LEVEL_HIGH
--				 0x1000 0 0 2 &gic 0 108 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-map-mask = <0xff00 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0x0000 0 0 IRQ_INTA &gic 0 108 IRQ_TYPE_LEVEL_HIGH
-+				 0x0800 0 0 IRQ_INTA &gic 0 108 IRQ_TYPE_LEVEL_HIGH
-+				 0x1000 0 0 IRQ_INTB &gic 0 108 IRQ_TYPE_LEVEL_HIGH>;
- 
- 		usb@1,0 {
- 			reg = <0x800 0 0 0 0>;
-diff --git a/Documentation/devicetree/bindings/pci/pci-thunder-pem.txt b/Documentation/devicetree/bindings/pci/pci-thunder-pem.txt
-index f131faea3b7c..edfaedfe8c8c 100644
---- a/Documentation/devicetree/bindings/pci/pci-thunder-pem.txt
-+++ b/Documentation/devicetree/bindings/pci/pci-thunder-pem.txt
-@@ -35,9 +35,9 @@ Example:
- 		 <0x03000000 0x87e0 0xc2f00000 0x87e0 0xc2000000 0x00 0x00100000>; /* mem64 PEM BAR4 */
- 
- 	#interrupt-cells = <1>;
--	interrupt-map-mask = <0 0 0 7>;
--	interrupt-map = <0 0 0 1 &gic0 0 0 0 24 4>, /* INTA */
--			<0 0 0 2 &gic0 0 0 0 25 4>, /* INTB */
--			<0 0 0 3 &gic0 0 0 0 26 4>, /* INTC */
--			<0 0 0 4 &gic0 0 0 0 27 4>; /* INTD */
-+	interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+	interrupt-map = <0 0 0 IRQ_INTA &gic0 0 0 0 24 4>,
-+			<0 0 0 IRQ_INTB &gic0 0 0 0 25 4>,
-+			<0 0 0 IRQ_INTC &gic0 0 0 0 26 4>,
-+			<0 0 0 IRQ_INTD &gic0 0 0 0 27 4>;
-     };
-diff --git a/Documentation/devicetree/bindings/pci/pcie-al.txt b/Documentation/devicetree/bindings/pci/pcie-al.txt
-index 557a5089229d..8bb3d935d3fa 100644
---- a/Documentation/devicetree/bindings/pci/pcie-al.txt
-+++ b/Documentation/devicetree/bindings/pci/pcie-al.txt
-@@ -40,7 +40,7 @@ Example:
- 		#size-cells = <2>;
- 		#interrupt-cells = <1>;
- 		interrupts = <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH>;
--		interrupt-map-mask = <0x00 0 0 7>;
--		interrupt-map = <0x0000 0 0 1 &gic GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH>; /* INTa */
-+		interrupt-map-mask = <0x00 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0x0000 0 0 IRQ_INTA &gic GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH>;
- 		ranges = <0x02000000 0x0 0xc0010000 0x0 0xc0010000 0x0 0x07ff0000>;
- 	};
-diff --git a/Documentation/devicetree/bindings/pci/qcom,pcie.txt b/Documentation/devicetree/bindings/pci/qcom,pcie.txt
-index ada80b01bf0c..898599eed2e5 100644
---- a/Documentation/devicetree/bindings/pci/qcom,pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/qcom,pcie.txt
-@@ -251,11 +251,11 @@
- 		interrupts = <GIC_SPI 238 IRQ_TYPE_NONE>;
- 		interrupt-names = "msi";
- 		#interrupt-cells = <1>;
--		interrupt-map-mask = <0 0 0 0x7>;
--		interrupt-map = <0 0 0 1 &intc 0 36 IRQ_TYPE_LEVEL_HIGH>, /* int_a */
--				<0 0 0 2 &intc 0 37 IRQ_TYPE_LEVEL_HIGH>, /* int_b */
--				<0 0 0 3 &intc 0 38 IRQ_TYPE_LEVEL_HIGH>, /* int_c */
--				<0 0 0 4 &intc 0 39 IRQ_TYPE_LEVEL_HIGH>; /* int_d */
-+		interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0 0 0 IRQ_INTA &intc 0 36 IRQ_TYPE_LEVEL_HIGH>,
-+				<0 0 0 IRQ_INTB &intc 0 37 IRQ_TYPE_LEVEL_HIGH>,
-+				<0 0 0 IRQ_INTC &intc 0 38 IRQ_TYPE_LEVEL_HIGH>,
-+				<0 0 0 IRQ_INTD &intc 0 39 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&gcc PCIE_A_CLK>,
- 			 <&gcc PCIE_H_CLK>,
- 			 <&gcc PCIE_PHY_CLK>;
-@@ -289,11 +289,11 @@
- 		interrupts = <GIC_SPI 243 IRQ_TYPE_NONE>;
- 		interrupt-names = "msi";
- 		#interrupt-cells = <1>;
--		interrupt-map-mask = <0 0 0 0x7>;
--		interrupt-map = <0 0 0 1 &intc 0 244 IRQ_TYPE_LEVEL_HIGH>, /* int_a */
--				<0 0 0 2 &intc 0 245 IRQ_TYPE_LEVEL_HIGH>, /* int_b */
--				<0 0 0 3 &intc 0 247 IRQ_TYPE_LEVEL_HIGH>, /* int_c */
--				<0 0 0 4 &intc 0 248 IRQ_TYPE_LEVEL_HIGH>; /* int_d */
-+		interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0 0 0 IRQ_INTA &intc 0 244 IRQ_TYPE_LEVEL_HIGH>,
-+				<0 0 0 IRQ_INTB &intc 0 245 IRQ_TYPE_LEVEL_HIGH>,
-+				<0 0 0 IRQ_INTC &intc 0 247 IRQ_TYPE_LEVEL_HIGH>,
-+				<0 0 0 IRQ_INTD &intc 0 248 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&gcc GCC_PCIE_0_CFG_AHB_CLK>,
- 			 <&gcc GCC_PCIE_0_MSTR_AXI_CLK>,
- 			 <&gcc GCC_PCIE_0_SLV_AXI_CLK>,
-diff --git a/Documentation/devicetree/bindings/pci/ralink,rt3883-pci.txt b/Documentation/devicetree/bindings/pci/ralink,rt3883-pci.txt
-index ffba4f63d71f..09a4a28fb472 100644
---- a/Documentation/devicetree/bindings/pci/ralink,rt3883-pci.txt
-+++ b/Documentation/devicetree/bindings/pci/ralink,rt3883-pci.txt
-@@ -131,18 +131,18 @@
- 				0x01000000 0 0x00000000 0x10160000 0 0x00010000 /* io space */
- 			>;
- 
--			interrupt-map-mask = <0xf800 0 0 7>;
-+			interrupt-map-mask = <0xf800 0 0 IRQ_INT_ALL>;
- 			interrupt-map = <
- 				/* IDSEL 17 */
--				0x8800 0 0 1 &pciintc 18
--				0x8800 0 0 2 &pciintc 18
--				0x8800 0 0 3 &pciintc 18
--				0x8800 0 0 4 &pciintc 18
-+				0x8800 0 0 IRQ_INTA &pciintc 18
-+				0x8800 0 0 IRQ_INTB &pciintc 18
-+				0x8800 0 0 IRQ_INTC &pciintc 18
-+				0x8800 0 0 IRQ_INTD &pciintc 18
- 				/* IDSEL 18 */
--				0x9000 0 0 1 &pciintc 19
--				0x9000 0 0 2 &pciintc 19
--				0x9000 0 0 3 &pciintc 19
--				0x9000 0 0 4 &pciintc 19
-+				0x9000 0 0 IRQ_INTA &pciintc 19
-+				0x9000 0 0 IRQ_INTB &pciintc 19
-+				0x9000 0 0 IRQ_INTC &pciintc 19
-+				0x9000 0 0 IRQ_INTD &pciintc 19
- 			>;
- 
- 			pci-bridge@1 {
-diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt b/Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt
-index af34c65773fd..4538d18b4c3c 100644
---- a/Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt
-+++ b/Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt
-@@ -112,11 +112,11 @@ pcie0: pcie@f8000000 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pcie_clkreq>;
- 	#interrupt-cells = <1>;
--	interrupt-map-mask = <0 0 0 7>;
--	interrupt-map = <0 0 0 1 &pcie0_intc 0>,
--			<0 0 0 2 &pcie0_intc 1>,
--			<0 0 0 3 &pcie0_intc 2>,
--			<0 0 0 4 &pcie0_intc 3>;
-+	interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+	interrupt-map = <0 0 0 IRQ_INTA &pcie0_intc 0>,
-+			<0 0 0 IRQ_INTB &pcie0_intc 1>,
-+			<0 0 0 IRQ_INTC &pcie0_intc 2>,
-+			<0 0 0 IRQ_INTD &pcie0_intc 3>;
- 	pcie0_intc: interrupt-controller {
- 		interrupt-controller;
- 		#address-cells = <0>;
-diff --git a/Documentation/devicetree/bindings/pci/ti-pci.txt b/Documentation/devicetree/bindings/pci/ti-pci.txt
-index d5cbfe6b0d89..795b09755977 100644
---- a/Documentation/devicetree/bindings/pci/ti-pci.txt
-+++ b/Documentation/devicetree/bindings/pci/ti-pci.txt
-@@ -88,11 +88,11 @@ axi {
- 		ti,hwmods = "pcie1";
- 		phys = <&pcie1_phy>;
- 		phy-names = "pcie-phy0";
--		interrupt-map-mask = <0 0 0 7>;
--		interrupt-map = <0 0 0 1 &pcie_intc 1>,
--				<0 0 0 2 &pcie_intc 2>,
--				<0 0 0 3 &pcie_intc 3>,
--				<0 0 0 4 &pcie_intc 4>;
-+		interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0 0 0 IRQ_INTA &pcie_intc 1>,
-+				<0 0 0 IRQ_INTB &pcie_intc 2>,
-+				<0 0 0 IRQ_INTC &pcie_intc 3>,
-+				<0 0 0 IRQ_INTD &pcie_intc 4>;
- 		pcie_intc: interrupt-controller {
- 			interrupt-controller;
- 			#address-cells = <0>;
-diff --git a/Documentation/devicetree/bindings/pci/uniphier-pcie.txt b/Documentation/devicetree/bindings/pci/uniphier-pcie.txt
-index 1fa2c5906d4d..b5416798a638 100644
---- a/Documentation/devicetree/bindings/pci/uniphier-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/uniphier-pcie.txt
-@@ -66,11 +66,11 @@ Example:
- 		#interrupt-cells = <1>;
- 		interrupt-names = "dma", "msi";
- 		interrupts = <0 224 4>, <0 225 4>;
--		interrupt-map-mask = <0 0 0  7>;
--		interrupt-map = <0 0 0  1  &pcie_intc 0>,	/* INTA */
--				<0 0 0  2  &pcie_intc 1>,	/* INTB */
--				<0 0 0  3  &pcie_intc 2>,	/* INTC */
--				<0 0 0  4  &pcie_intc 3>;	/* INTD */
-+		interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0 0 0  IRQ_INTA  &pcie_intc 0>,
-+				<0 0 0  IRQ_INTB  &pcie_intc 1>,
-+				<0 0 0  IRQ_INTC  &pcie_intc 2>,
-+				<0 0 0  IRQ_INTD  &pcie_intc 3>;
- 
- 		pcie_intc: legacy-interrupt-controller {
- 			interrupt-controller;
-diff --git a/Documentation/devicetree/bindings/pci/v3-v360epc-pci.txt b/Documentation/devicetree/bindings/pci/v3-v360epc-pci.txt
-index 11063293f761..bfa37aa4933d 100644
---- a/Documentation/devicetree/bindings/pci/v3-v360epc-pci.txt
-+++ b/Documentation/devicetree/bindings/pci/v3-v360epc-pci.txt
-@@ -50,27 +50,27 @@ pci: pciv3@62000000 {
- 		0x20000000 0 0x20000000 /* 512 MB @ LB 20000000 1:1 */
- 		0x02000000 0 0x80000000 /* Core module alias memory */
- 		0x80000000 0 0x40000000>; /* 1GB @ LB 80000000 */
--	interrupt-map-mask = <0xf800 0 0 0x7>;
-+	interrupt-map-mask = <0xf800 0 0 IRQ_INT_ALL>;
- 	interrupt-map = <
- 	/* IDSEL 9 */
--	0x4800 0 0 1 &pic 13 /* INT A on slot 9 is irq 13 */
--	0x4800 0 0 2 &pic 14 /* INT B on slot 9 is irq 14 */
--	0x4800 0 0 3 &pic 15 /* INT C on slot 9 is irq 15 */
--	0x4800 0 0 4 &pic 16 /* INT D on slot 9 is irq 16 */
-+	0x4800 0 0 IRQ_INTA &pic 13 /* INT A on slot 9 is irq 13 */
-+	0x4800 0 0 IRQ_INTB &pic 14 /* INT B on slot 9 is irq 14 */
-+	0x4800 0 0 IRQ_INTC &pic 15 /* INT C on slot 9 is irq 15 */
-+	0x4800 0 0 IRQ_INTD &pic 16 /* INT D on slot 9 is irq 16 */
- 	/* IDSEL 10 */
--	0x5000 0 0 1 &pic 14 /* INT A on slot 10 is irq 14 */
--	0x5000 0 0 2 &pic 15 /* INT B on slot 10 is irq 15 */
--	0x5000 0 0 3 &pic 16 /* INT C on slot 10 is irq 16 */
--	0x5000 0 0 4 &pic 13 /* INT D on slot 10 is irq 13 */
-+	0x5000 0 0 IRQ_INTA &pic 14 /* INT A on slot 10 is irq 14 */
-+	0x5000 0 0 IRQ_INTB &pic 15 /* INT B on slot 10 is irq 15 */
-+	0x5000 0 0 IRQ_INTC &pic 16 /* INT C on slot 10 is irq 16 */
-+	0x5000 0 0 IRQ_INTD &pic 13 /* INT D on slot 10 is irq 13 */
- 	/* IDSEL 11 */
--	0x5800 0 0 1 &pic 15 /* INT A on slot 11 is irq 15 */
--	0x5800 0 0 2 &pic 16 /* INT B on slot 11 is irq 16 */
--	0x5800 0 0 3 &pic 13 /* INT C on slot 11 is irq 13 */
--	0x5800 0 0 4 &pic 14 /* INT D on slot 11 is irq 14 */
-+	0x5800 0 0 IRQ_INTA &pic 15 /* INT A on slot 11 is irq 15 */
-+	0x5800 0 0 IRQ_INTB &pic 16 /* INT B on slot 11 is irq 16 */
-+	0x5800 0 0 IRQ_INTC &pic 13 /* INT C on slot 11 is irq 13 */
-+	0x5800 0 0 IRQ_INTD &pic 14 /* INT D on slot 11 is irq 14 */
- 	/* IDSEL 12 */
--	0x6000 0 0 1 &pic 16 /* INT A on slot 12 is irq 16 */
--	0x6000 0 0 2 &pic 13 /* INT B on slot 12 is irq 13 */
--	0x6000 0 0 3 &pic 14 /* INT C on slot 12 is irq 14 */
--	0x6000 0 0 4 &pic 15 /* INT D on slot 12 is irq 15 */
-+	0x6000 0 0 IRQ_INTA &pic 16 /* INT A on slot 12 is irq 16 */
-+	0x6000 0 0 IRQ_INTB &pic 13 /* INT B on slot 12 is irq 13 */
-+	0x6000 0 0 IRQ_INTC &pic 14 /* INT C on slot 12 is irq 14 */
-+	0x6000 0 0 IRQ_INTD &pic 15 /* INT D on slot 12 is irq 15 */
- 	>;
- };
-diff --git a/Documentation/devicetree/bindings/pci/versatile.txt b/Documentation/devicetree/bindings/pci/versatile.txt
-index 0a702b13d2ac..a02c7b9683ac 100644
---- a/Documentation/devicetree/bindings/pci/versatile.txt
-+++ b/Documentation/devicetree/bindings/pci/versatile.txt
-@@ -36,24 +36,24 @@ pci-controller@10001000 {
- 		  0x02000000 0 0x50000000 0x50000000 0 0x10000000   /* non-prefetchable memory */
- 		  0x42000000 0 0x60000000 0x60000000 0 0x10000000>; /* prefetchable memory */
- 
--	interrupt-map-mask = <0x1800 0 0 7>;
--	interrupt-map = <0x1800 0 0 1 &sic 28
--			 0x1800 0 0 2 &sic 29
--			 0x1800 0 0 3 &sic 30
--			 0x1800 0 0 4 &sic 27
--
--			 0x1000 0 0 1 &sic 27
--			 0x1000 0 0 2 &sic 28
--			 0x1000 0 0 3 &sic 29
--			 0x1000 0 0 4 &sic 30
--
--			 0x0800 0 0 1 &sic 30
--			 0x0800 0 0 2 &sic 27
--			 0x0800 0 0 3 &sic 28
--			 0x0800 0 0 4 &sic 29
--
--			 0x0000 0 0 1 &sic 29
--			 0x0000 0 0 2 &sic 30
--			 0x0000 0 0 3 &sic 27
--			 0x0000 0 0 4 &sic 28>;
-+	interrupt-map-mask = <0x1800 0 0 IRQ_INT_ALL>;
-+	interrupt-map = <0x1800 0 0 IRQ_INTA &sic 28
-+			 0x1800 0 0 IRQ_INTB &sic 29
-+			 0x1800 0 0 IRQ_INTC &sic 30
-+			 0x1800 0 0 IRQ_INTD &sic 27
-+
-+			 0x1000 0 0 IRQ_INTA &sic 27
-+			 0x1000 0 0 IRQ_INTB &sic 28
-+			 0x1000 0 0 IRQ_INTC &sic 29
-+			 0x1000 0 0 IRQ_INTD &sic 30
-+
-+			 0x0800 0 0 IRQ_INTA &sic 30
-+			 0x0800 0 0 IRQ_INTB &sic 27
-+			 0x0800 0 0 IRQ_INTC &sic 28
-+			 0x0800 0 0 IRQ_INTD &sic 29
-+
-+			 0x0000 0 0 IRQ_INTA &sic 29
-+			 0x0000 0 0 IRQ_INTB &sic 30
-+			 0x0000 0 0 IRQ_INTC &sic 27
-+			 0x0000 0 0 IRQ_INTD &sic 28>;
- };
-diff --git a/Documentation/devicetree/bindings/pci/xgene-pci-msi.txt b/Documentation/devicetree/bindings/pci/xgene-pci-msi.txt
-index 85d9b95234f7..0e84e6621b4a 100644
---- a/Documentation/devicetree/bindings/pci/xgene-pci-msi.txt
-+++ b/Documentation/devicetree/bindings/pci/xgene-pci-msi.txt
-@@ -57,11 +57,11 @@ SoC DTSI:
- 			  0x02000000 0x00 0x80000000 0xe1 0x80000000 0x00 0x80000000>; /* mem */
- 		dma-ranges = <0x42000000 0x80 0x00000000 0x80 0x00000000 0x00 0x80000000
- 			      0x42000000 0x00 0x00000000 0x00 0x00000000 0x80 0x00000000>;
--		interrupt-map-mask = <0x0 0x0 0x0 0x7>;
--		interrupt-map = <0x0 0x0 0x0 0x1 &gic 0x0 0xc2 0x1
--				 0x0 0x0 0x0 0x2 &gic 0x0 0xc3 0x1
--				 0x0 0x0 0x0 0x3 &gic 0x0 0xc4 0x1
--				 0x0 0x0 0x0 0x4 &gic 0x0 0xc5 0x1>;
-+		interrupt-map-mask = <0x0 0x0 0x0 IRQ_INT_ALL>;
-+		interrupt-map = <0x0 0x0 0x0 IRQ_INTA &gic 0x0 0xc2 0x1
-+				 0x0 0x0 0x0 IRQ_INTB &gic 0x0 0xc3 0x1
-+				 0x0 0x0 0x0 IRQ_INTC &gic 0x0 0xc4 0x1
-+				 0x0 0x0 0x0 IRQ_INTD &gic 0x0 0xc5 0x1>;
- 		dma-coherent;
- 		clocks = <&pcie0clk 0>;
- 		msi-parent= <&msi>;
-diff --git a/Documentation/devicetree/bindings/pci/xgene-pci.txt b/Documentation/devicetree/bindings/pci/xgene-pci.txt
-index 92490330dc1c..0f0e3eb64101 100644
---- a/Documentation/devicetree/bindings/pci/xgene-pci.txt
-+++ b/Documentation/devicetree/bindings/pci/xgene-pci.txt
-@@ -39,11 +39,11 @@ Example:
- 			  0x02000000 0x00 0x80000000 0xe1 0x80000000 0x00 0x80000000>; /* mem */
- 		dma-ranges = <0x42000000 0x80 0x00000000 0x80 0x00000000 0x00 0x80000000
- 			      0x42000000 0x00 0x00000000 0x00 0x00000000 0x80 0x00000000>;
--		interrupt-map-mask = <0x0 0x0 0x0 0x7>;
--		interrupt-map = <0x0 0x0 0x0 0x1 &gic 0x0 0xc2 0x1
--				 0x0 0x0 0x0 0x2 &gic 0x0 0xc3 0x1
--				 0x0 0x0 0x0 0x3 &gic 0x0 0xc4 0x1
--				 0x0 0x0 0x0 0x4 &gic 0x0 0xc5 0x1>;
-+		interrupt-map-mask = <0x0 0x0 0x0 IRQ_INT_ALL>;
-+		interrupt-map = <0x0 0x0 0x0 IRQ_INTA &gic 0x0 0xc2 0x1
-+				 0x0 0x0 0x0 IRQ_INTB &gic 0x0 0xc3 0x1
-+				 0x0 0x0 0x0 IRQ_INTC &gic 0x0 0xc4 0x1
-+				 0x0 0x0 0x0 IRQ_INTD &gic 0x0 0xc5 0x1>;
- 		dma-coherent;
- 		clocks = <&pcie0clk 0>;
- 	};
-diff --git a/Documentation/devicetree/bindings/pci/xilinx-nwl-pcie.txt b/Documentation/devicetree/bindings/pci/xilinx-nwl-pcie.txt
-index 01bf7fdf4c19..5964fdf752bc 100644
---- a/Documentation/devicetree/bindings/pci/xilinx-nwl-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/xilinx-nwl-pcie.txt
-@@ -47,11 +47,11 @@ nwl_pcie: pcie@fd0e0000 {
- 	interrupt-parent = <&gic>;
- 	interrupts = <0 114 4>, <0 115 4>, <0 116 4>, <0 117 4>, <0 118 4>;
- 	interrupt-names = "msi0", "msi1", "intx", "dummy", "misc";
--	interrupt-map-mask = <0x0 0x0 0x0 0x7>;
--	interrupt-map = <0x0 0x0 0x0 0x1 &pcie_intc 0x1>,
--			<0x0 0x0 0x0 0x2 &pcie_intc 0x2>,
--			<0x0 0x0 0x0 0x3 &pcie_intc 0x3>,
--			<0x0 0x0 0x0 0x4 &pcie_intc 0x4>;
-+	interrupt-map-mask = <0x0 0x0 0x0 IRQ_INT_ALL>;
-+	interrupt-map = <0x0 0x0 0x0 IRQ_INTA &pcie_intc 0x1>,
-+			<0x0 0x0 0x0 IRQ_INTB &pcie_intc 0x2>,
-+			<0x0 0x0 0x0 IRQ_INTC &pcie_intc 0x3>,
-+			<0x0 0x0 0x0 IRQ_INTD &pcie_intc 0x4>;
- 
- 	msi-parent = <&nwl_pcie>;
- 	reg = <0x0 0xfd0e0000 0x0 0x1000>,
-diff --git a/Documentation/devicetree/bindings/pci/xilinx-pcie.txt b/Documentation/devicetree/bindings/pci/xilinx-pcie.txt
-index fd57a81180a4..82b7d07bda51 100644
---- a/Documentation/devicetree/bindings/pci/xilinx-pcie.txt
-+++ b/Documentation/devicetree/bindings/pci/xilinx-pcie.txt
-@@ -47,11 +47,11 @@ Zynq:
- 		reg = < 0x50000000 0x1000000 >;
- 		device_type = "pci";
- 		interrupts = < 0 52 4 >;
--		interrupt-map-mask = <0 0 0 7>;
--		interrupt-map = <0 0 0 1 &pcie_intc 1>,
--				<0 0 0 2 &pcie_intc 2>,
--				<0 0 0 3 &pcie_intc 3>,
--				<0 0 0 4 &pcie_intc 4>;
-+		interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0 0 0 IRQ_INTA &pcie_intc 1>,
-+				<0 0 0 IRQ_INTB &pcie_intc 2>,
-+				<0 0 0 IRQ_INTC &pcie_intc 3>,
-+				<0 0 0 IRQ_INTD &pcie_intc 4>;
- 		ranges = < 0x02000000 0 0x60000000 0x60000000 0 0x10000000 >;
- 
- 		pcie_intc: interrupt-controller {
-@@ -72,11 +72,11 @@ Microblaze:
- 		device_type = "pci";
- 		interrupt-parent = <&microblaze_0_intc>;
- 		interrupts = <1 2>;
--		interrupt-map-mask = <0 0 0 7>;
--		interrupt-map = <0 0 0 1 &pcie_intc 1>,
--				<0 0 0 2 &pcie_intc 2>,
--				<0 0 0 3 &pcie_intc 3>,
--				<0 0 0 4 &pcie_intc 4>;
-+		interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
-+		interrupt-map = <0 0 0 IRQ_INTA &pcie_intc 1>,
-+				<0 0 0 IRQ_INTB &pcie_intc 2>,
-+				<0 0 0 IRQ_INTC &pcie_intc 3>,
-+				<0 0 0 IRQ_INTD &pcie_intc 4>;
- 		ranges = <0x02000000 0x00000000 0x80000000 0x80000000 0x00000000 0x10000000>;
- 
- 		pcie_intc: interrupt-controller {
--- 
-2.21.0
+Anyway, I will continue the discussion on another thread when I find
+the root cause.
+
+Thanks,
+ Enric
+
+> Thanks,
+>  Enric
+>
+> Missatge de Sean Paul <sean@poorly.run> del dia dj., 19 de set. 2019 a
+> les 16:14:
+> >
+> > On Wed, Sep 18, 2019 at 04:07:29PM -0400, Sean Paul wrote:
+> > > From: Sean Paul <seanpaul@chromium.org>
+> > >
+> > > Currently the self refresh idle timer is a const set by the crtc. Thi=
+s
+> > > is fine if the self refresh entry/exit times are well-known for all
+> > > panels used on that crtc. However panels and workloads can vary quite=
+ a
+> > > bit, and a timeout which works well for one doesn't work well for
+> > > another.
+> > >
+> > > In the extreme, if the timeout is too short we could get in a situati=
+on
+> > > where the self refresh exits are taking so long we queue up a self re=
+fresh
+> > > entry before the exit commit is even finished.
+> > >
+> > > This patch changes the idle timeout to a moving average of the entry
+> > > times + a moving average of exit times + the crtc constant.
+> > >
+> > > This patch was tested on rockchip, with a kevin CrOS panel the idle
+> > > delay averages out to about ~235ms (35 entry + 100 exit + 100 const).=
+ On
+> > > the same board, the bob panel idle delay lands around ~340ms (90 entr=
+y
+> > > + 150 exit + 100 const).
+> > >
+> > > WRT the dedicated mutex in self_refresh_data, it would be nice if we
+> > > could rely on drm_crtc.mutex to protect the average times, but there =
+are
+> > > a few reasons why a separate lock is a better choice:
+> > > - We can't rely on drm_crtc.mutex being held if we're doing a nonbloc=
+king
+> > >   commit
+> > > - We can't grab drm_crtc.mutex since drm_modeset_lock() doesn't tell =
+us
+> > >   whether the lock was already held in the acquire context (it eats
+> > >   -EALREADY), so we can't tell if we should drop it or not
+> > > - We don't need such a heavy-handed lock for what we're trying to do,
+> > >   commit ordering doesn't matter, so a point-of-use lock will be less
+> > >   contentious
+> > >
+> > > Reviewed-by: Daniel Vetter <daniel.vetter@ffwll.ch>
+> >
+> > Pushed the first 2 to drm-misc-next-fixes to fix the gru-bob regression=
+. I'll
+> > fix up the 3rd patch separately.
+> >
+> > Thank you for the reviews!
+> >
+> > Sean
+> >
+> > > Signed-off-by: Sean Paul <seanpaul@chromium.org>
+> > > Link to v1: https://patchwork.freedesktop.org/patch/msgid/20190917200=
+443.64481-2-sean@poorly.run
+> > >
+> > > Changes in v2:
+> > > - Migrate locking explanation from comment to commit msg (Daniel)
+> > > - Turf constant entry delay and multiply the avg times by 2 (Daniel)
+> > > ---
+> > >  drivers/gpu/drm/drm_atomic_helper.c         | 20 ++++++
+> > >  drivers/gpu/drm/drm_self_refresh_helper.c   | 72 +++++++++++++++++++=
+--
+> > >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c |  5 +-
+> > >  include/drm/drm_self_refresh_helper.h       |  6 +-
+> > >  4 files changed, 90 insertions(+), 13 deletions(-)
+> > >
+> > > diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/dr=
+m_atomic_helper.c
+> > > index 9d7e4da6c292..3f13fa9a9e24 100644
+> > > --- a/drivers/gpu/drm/drm_atomic_helper.c
+> > > +++ b/drivers/gpu/drm/drm_atomic_helper.c
+> > > @@ -26,6 +26,7 @@
+> > >   */
+> > >
+> > >  #include <linux/dma-fence.h>
+> > > +#include <linux/ktime.h>
+> > >
+> > >  #include <drm/drm_atomic.h>
+> > >  #include <drm/drm_atomic_helper.h>
+> > > @@ -1570,9 +1571,23 @@ static void commit_tail(struct drm_atomic_stat=
+e *old_state)
+> > >  {
+> > >       struct drm_device *dev =3D old_state->dev;
+> > >       const struct drm_mode_config_helper_funcs *funcs;
+> > > +     ktime_t start;
+> > > +     s64 commit_time_ms;
+> > >
+> > >       funcs =3D dev->mode_config.helper_private;
+> > >
+> > > +     /*
+> > > +      * We're measuring the _entire_ commit, so the time will vary d=
+epending
+> > > +      * on how many fences and objects are involved. For the purpose=
+s of self
+> > > +      * refresh, this is desirable since it'll give us an idea of ho=
+w
+> > > +      * congested things are. This will inform our decision on how o=
+ften we
+> > > +      * should enter self refresh after idle.
+> > > +      *
+> > > +      * These times will be averaged out in the self refresh helpers=
+ to avoid
+> > > +      * overreacting over one outlier frame
+> > > +      */
+> > > +     start =3D ktime_get();
+> > > +
+> > >       drm_atomic_helper_wait_for_fences(dev, old_state, false);
+> > >
+> > >       drm_atomic_helper_wait_for_dependencies(old_state);
+> > > @@ -1582,6 +1597,11 @@ static void commit_tail(struct drm_atomic_stat=
+e *old_state)
+> > >       else
+> > >               drm_atomic_helper_commit_tail(old_state);
+> > >
+> > > +     commit_time_ms =3D ktime_ms_delta(ktime_get(), start);
+> > > +     if (commit_time_ms > 0)
+> > > +             drm_self_refresh_helper_update_avg_times(old_state,
+> > > +                                              (unsigned long)commit_=
+time_ms);
+> > > +
+> > >       drm_atomic_helper_commit_cleanup_done(old_state);
+> > >
+> > >       drm_atomic_state_put(old_state);
+> > > diff --git a/drivers/gpu/drm/drm_self_refresh_helper.c b/drivers/gpu/=
+drm/drm_self_refresh_helper.c
+> > > index 9095cebf2147..68f4765a5896 100644
+> > > --- a/drivers/gpu/drm/drm_self_refresh_helper.c
+> > > +++ b/drivers/gpu/drm/drm_self_refresh_helper.c
+> > > @@ -5,6 +5,7 @@
+> > >   * Authors:
+> > >   * Sean Paul <seanpaul@chromium.org>
+> > >   */
+> > > +#include <linux/average.h>
+> > >  #include <linux/bitops.h>
+> > >  #include <linux/slab.h>
+> > >  #include <linux/workqueue.h>
+> > > @@ -50,10 +51,17 @@
+> > >   * atomic_check when &drm_crtc_state.self_refresh_active is true.
+> > >   */
+> > >
+> > > +#define SELF_REFRESH_AVG_SEED_MS 200
+> > > +
+> > > +DECLARE_EWMA(psr_time, 4, 4)
+> > > +
+> > >  struct drm_self_refresh_data {
+> > >       struct drm_crtc *crtc;
+> > >       struct delayed_work entry_work;
+> > > -     unsigned int entry_delay_ms;
+> > > +
+> > > +     struct mutex avg_mutex;
+> > > +     struct ewma_psr_time entry_avg_ms;
+> > > +     struct ewma_psr_time exit_avg_ms;
+> > >  };
+> > >
+> > >  static void drm_self_refresh_helper_entry_work(struct work_struct *w=
+ork)
+> > > @@ -121,6 +129,44 @@ static void drm_self_refresh_helper_entry_work(s=
+truct work_struct *work)
+> > >       drm_modeset_acquire_fini(&ctx);
+> > >  }
+> > >
+> > > +/**
+> > > + * drm_self_refresh_helper_update_avg_times - Updates a crtc's SR ti=
+me averages
+> > > + * @state: the state which has just been applied to hardware
+> > > + * @commit_time_ms: the amount of time in ms that this commit took t=
+o complete
+> > > + *
+> > > + * Called after &drm_mode_config_funcs.atomic_commit_tail, this func=
+tion will
+> > > + * update the average entry/exit self refresh times on self refresh =
+transitions.
+> > > + * These averages will be used when calculating how long to delay be=
+fore
+> > > + * entering self refresh mode after activity.
+> > > + */
+> > > +void drm_self_refresh_helper_update_avg_times(struct drm_atomic_stat=
+e *state,
+> > > +                                           unsigned int commit_time_=
+ms)
+> > > +{
+> > > +     struct drm_crtc *crtc;
+> > > +     struct drm_crtc_state *old_crtc_state, *new_crtc_state;
+> > > +     int i;
+> > > +
+> > > +     for_each_oldnew_crtc_in_state(state, crtc, old_crtc_state,
+> > > +                                   new_crtc_state, i) {
+> > > +             struct drm_self_refresh_data *sr_data =3D crtc->self_re=
+fresh_data;
+> > > +             struct ewma_psr_time *time;
+> > > +
+> > > +             if (old_crtc_state->self_refresh_active =3D=3D
+> > > +                 new_crtc_state->self_refresh_active)
+> > > +                     continue;
+> > > +
+> > > +             if (new_crtc_state->self_refresh_active)
+> > > +                     time =3D &sr_data->entry_avg_ms;
+> > > +             else
+> > > +                     time =3D &sr_data->exit_avg_ms;
+> > > +
+> > > +             mutex_lock(&sr_data->avg_mutex);
+> > > +             ewma_psr_time_add(time, commit_time_ms);
+> > > +             mutex_unlock(&sr_data->avg_mutex);
+> > > +     }
+> > > +}
+> > > +EXPORT_SYMBOL(drm_self_refresh_helper_update_avg_times);
+> > > +
+> > >  /**
+> > >   * drm_self_refresh_helper_alter_state - Alters the atomic state for=
+ SR exit
+> > >   * @state: the state currently being checked
+> > > @@ -152,6 +198,7 @@ void drm_self_refresh_helper_alter_state(struct d=
+rm_atomic_state *state)
+> > >
+> > >       for_each_new_crtc_in_state(state, crtc, crtc_state, i) {
+> > >               struct drm_self_refresh_data *sr_data;
+> > > +             unsigned int delay;
+> > >
+> > >               /* Don't trigger the entry timer when we're already in =
+SR */
+> > >               if (crtc_state->self_refresh_active)
+> > > @@ -161,8 +208,13 @@ void drm_self_refresh_helper_alter_state(struct =
+drm_atomic_state *state)
+> > >               if (!sr_data)
+> > >                       continue;
+> > >
+> > > +             mutex_lock(&sr_data->avg_mutex);
+> > > +             delay =3D (ewma_psr_time_read(&sr_data->entry_avg_ms) +
+> > > +                      ewma_psr_time_read(&sr_data->exit_avg_ms)) * 2=
+;
+> > > +             mutex_unlock(&sr_data->avg_mutex);
+> > > +
+> > >               mod_delayed_work(system_wq, &sr_data->entry_work,
+> > > -                              msecs_to_jiffies(sr_data->entry_delay_=
+ms));
+> > > +                              msecs_to_jiffies(delay));
+> > >       }
+> > >  }
+> > >  EXPORT_SYMBOL(drm_self_refresh_helper_alter_state);
+> > > @@ -170,12 +222,10 @@ EXPORT_SYMBOL(drm_self_refresh_helper_alter_sta=
+te);
+> > >  /**
+> > >   * drm_self_refresh_helper_init - Initializes self refresh helpers f=
+or a crtc
+> > >   * @crtc: the crtc which supports self refresh supported displays
+> > > - * @entry_delay_ms: amount of inactivity to wait before entering sel=
+f refresh
+> > >   *
+> > >   * Returns zero if successful or -errno on failure
+> > >   */
+> > > -int drm_self_refresh_helper_init(struct drm_crtc *crtc,
+> > > -                              unsigned int entry_delay_ms)
+> > > +int drm_self_refresh_helper_init(struct drm_crtc *crtc)
+> > >  {
+> > >       struct drm_self_refresh_data *sr_data =3D crtc->self_refresh_da=
+ta;
+> > >
+> > > @@ -189,8 +239,18 @@ int drm_self_refresh_helper_init(struct drm_crtc=
+ *crtc,
+> > >
+> > >       INIT_DELAYED_WORK(&sr_data->entry_work,
+> > >                         drm_self_refresh_helper_entry_work);
+> > > -     sr_data->entry_delay_ms =3D entry_delay_ms;
+> > >       sr_data->crtc =3D crtc;
+> > > +     mutex_init(&sr_data->avg_mutex);
+> > > +     ewma_psr_time_init(&sr_data->entry_avg_ms);
+> > > +     ewma_psr_time_init(&sr_data->exit_avg_ms);
+> > > +
+> > > +     /*
+> > > +      * Seed the averages so they're non-zero (and sufficiently larg=
+e
+> > > +      * for even poorly performing panels). As time goes on, this wi=
+ll be
+> > > +      * averaged out and the values will trend to their true value.
+> > > +      */
+> > > +     ewma_psr_time_add(&sr_data->entry_avg_ms, SELF_REFRESH_AVG_SEED=
+_MS);
+> > > +     ewma_psr_time_add(&sr_data->exit_avg_ms, SELF_REFRESH_AVG_SEED_=
+MS);
+> > >
+> > >       crtc->self_refresh_data =3D sr_data;
+> > >       return 0;
+> > > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gp=
+u/drm/rockchip/rockchip_drm_vop.c
+> > > index 2f821c58007c..613404f86668 100644
+> > > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> > > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> > > @@ -39,8 +39,6 @@
+> > >  #include "rockchip_drm_vop.h"
+> > >  #include "rockchip_rgb.h"
+> > >
+> > > -#define VOP_SELF_REFRESH_ENTRY_DELAY_MS 100
+> > > -
+> > >  #define VOP_WIN_SET(vop, win, name, v) \
+> > >               vop_reg_set(vop, &win->phy->name, win->base, ~0, v, #na=
+me)
+> > >  #define VOP_SCL_SET(vop, win, name, v) \
+> > > @@ -1563,8 +1561,7 @@ static int vop_create_crtc(struct vop *vop)
+> > >       init_completion(&vop->line_flag_completion);
+> > >       crtc->port =3D port;
+> > >
+> > > -     ret =3D drm_self_refresh_helper_init(crtc,
+> > > -                                        VOP_SELF_REFRESH_ENTRY_DELAY=
+_MS);
+> > > +     ret =3D drm_self_refresh_helper_init(crtc);
+> > >       if (ret)
+> > >               DRM_DEV_DEBUG_KMS(vop->dev,
+> > >                       "Failed to init %s with SR helpers %d, ignoring=
+\n",
+> > > diff --git a/include/drm/drm_self_refresh_helper.h b/include/drm/drm_=
+self_refresh_helper.h
+> > > index 397a583ccca7..5b79d253fb46 100644
+> > > --- a/include/drm/drm_self_refresh_helper.h
+> > > +++ b/include/drm/drm_self_refresh_helper.h
+> > > @@ -12,9 +12,9 @@ struct drm_atomic_state;
+> > >  struct drm_crtc;
+> > >
+> > >  void drm_self_refresh_helper_alter_state(struct drm_atomic_state *st=
+ate);
+> > > +void drm_self_refresh_helper_update_avg_times(struct drm_atomic_stat=
+e *state,
+> > > +                                           unsigned int commit_time_=
+ms);
+> > >
+> > > -int drm_self_refresh_helper_init(struct drm_crtc *crtc,
+> > > -                              unsigned int entry_delay_ms);
+> > > -
+> > > +int drm_self_refresh_helper_init(struct drm_crtc *crtc);
+> > >  void drm_self_refresh_helper_cleanup(struct drm_crtc *crtc);
+> > >  #endif
+> > > --
+> > > Sean Paul, Software Engineer, Google / Chromium OS
+> > >
+> >
+> > --
+> > Sean Paul, Software Engineer, Google / Chromium OS
+> > _______________________________________________
+> > dri-devel mailing list
+> > dri-devel@lists.freedesktop.org
+> > https://lists.freedesktop.org/mailman/listinfo/dri-devel
