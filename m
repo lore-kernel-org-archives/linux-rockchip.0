@@ -1,410 +1,161 @@
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Subject: Re: [PATCH v2 2/3] drm: Measure Self Refresh Entry/Exit times to
- avoid thrashing
-Date: Mon, 4 Nov 2019 18:26:49 +0100
-Message-ID: <CAFqH_53nZMk04+2rDOoWXEfq3Zw=i+gBjMSGb93WBjww9ercnw@mail.gmail.com>
-References: <20190918200734.149876-1-sean@poorly.run> <20190918200734.149876-2-sean@poorly.run>
- <20190919141413.GU218215@art_vandelay> <CAFqH_53iQt0o9keRQLyqx-B=bni37bkTACF=wBKgSLOLz-hw4g@mail.gmail.com>
+From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [BUG] rk3399-rockpro64 pcie synchronous external abort
+Date: Mon, 4 Nov 2019 13:55:40 -0500
+Message-ID: <CAMdYzYoTwjKz4EN8PtD5pZfu3+SX+68JL+dfvmCrSnLL=K6Few@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFqH_53iQt0o9keRQLyqx-B=bni37bkTACF=wBKgSLOLz-hw4g@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sean Paul <sean@poorly.run>
-Cc: dri-devel <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Sean Paul <seanpaul@chromium.org>, jekarl@iki.fi, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Missatge de Enric Balletbo Serra <eballetbo@gmail.com> del dia dc., 30
-d=E2=80=99oct. 2019 a les 17:59:
->
-> Hi Sean,
->
-> Since 5.4-rc1 my Samsung Chromebook Plus (kevin) doesn't
-> suspend/resume correctly, at least once every ten suspend/resume
-> cycles the display doesn't turn on, and when this happens the kernel
-> log message reports:
->
-> [   60.420230] PM: suspend exit
-> [   60.463866] rockchip-dp ff970000.edp: AUX CH cmd reply timeout!
-> [   60.971653] rockchip-dp ff970000.edp: AUX CH enable timeout!
-> [   61.478668] rockchip-dp ff970000.edp: AUX CH enable timeout!
-> [   61.985661] rockchip-dp ff970000.edp: AUX CH enable timeout!
-> [   62.492644] rockchip-dp ff970000.edp: AUX CH enable timeout!
-> [   62.999617] rockchip-dp ff970000.edp: AUX CH enable timeout!
-> [   63.506595] rockchip-dp ff970000.edp: AUX CH enable timeout!
-> [   64.013678] rockchip-dp ff970000.edp: AUX CH enable timeout!
-> [   64.522856] rockchip-dp ff970000.edp: AUX CH enable timeout!
-> [   60.463866] rockchip-dp ff970000.edp: AUX CH cmd reply timeout!
-> [   60.971653] rockchip-dp ff970000.edp: AUX CH enable timeout!
-> [   61.478668] rockchip-dp ff970000.edp: AUX CH enable timeout!
-> [   61.985661] rockchip-dp ff970000.edp: AUX CH enable timeout!
-> [   62.492644] rockchip-dp ff970000.edp: AUX CH enable timeout!
-> ...
->
-> Today I bisected the problem and pointed me to this commit. Reverting
-> the commit fixes the issue, but from I quick look I don't see any
-> obvious problem. I'll spend more time tomorrow looking at this but any
-> idea will be welcome.
->
+Good Morning,
 
-Update for the record. After looking a bit more I don't think this
-patch is problematic. I think the problem was already there but after
-this patch is easier to reproduce just because the PSR entry code work
-is delayed a bit (before was called every 100ms). I think the problem
-is more related with the current enable/disable path when panel is in
-SR mode or not after a suspend/resume.
+I'm attempting to debug an issue with the rockpro64 pcie port.
+It would appear that the port does not like various cards, including
+cards of the same make that randomly work or do not work, such as
+Intel i340 based NICs.
+I'm experiencing it with a GTX645 gpu.
 
-Anyway, I will continue the discussion on another thread when I find
-the root cause.
+This seems to be a long running issue, referenced both at [0], and [1].
+There was an attempt to rectify it, by adding a delay between training
+and probing [2], but that doesn't seem to be the issue here.
+It appears that when we probe further into the card, such as devfn >
+1, we trigger the bug.
+I've added a print statement that prints the devfn, address, and size
+information, which you can see below.
 
-Thanks,
- Enric
+I've attempted setting the available number of lanes to 1 as well, to
+no difference.
 
-> Thanks,
->  Enric
->
-> Missatge de Sean Paul <sean@poorly.run> del dia dj., 19 de set. 2019 a
-> les 16:14:
-> >
-> > On Wed, Sep 18, 2019 at 04:07:29PM -0400, Sean Paul wrote:
-> > > From: Sean Paul <seanpaul@chromium.org>
-> > >
-> > > Currently the self refresh idle timer is a const set by the crtc. Thi=
-s
-> > > is fine if the self refresh entry/exit times are well-known for all
-> > > panels used on that crtc. However panels and workloads can vary quite=
- a
-> > > bit, and a timeout which works well for one doesn't work well for
-> > > another.
-> > >
-> > > In the extreme, if the timeout is too short we could get in a situati=
-on
-> > > where the self refresh exits are taking so long we queue up a self re=
-fresh
-> > > entry before the exit commit is even finished.
-> > >
-> > > This patch changes the idle timeout to a moving average of the entry
-> > > times + a moving average of exit times + the crtc constant.
-> > >
-> > > This patch was tested on rockchip, with a kevin CrOS panel the idle
-> > > delay averages out to about ~235ms (35 entry + 100 exit + 100 const).=
- On
-> > > the same board, the bob panel idle delay lands around ~340ms (90 entr=
-y
-> > > + 150 exit + 100 const).
-> > >
-> > > WRT the dedicated mutex in self_refresh_data, it would be nice if we
-> > > could rely on drm_crtc.mutex to protect the average times, but there =
-are
-> > > a few reasons why a separate lock is a better choice:
-> > > - We can't rely on drm_crtc.mutex being held if we're doing a nonbloc=
-king
-> > >   commit
-> > > - We can't grab drm_crtc.mutex since drm_modeset_lock() doesn't tell =
-us
-> > >   whether the lock was already held in the acquire context (it eats
-> > >   -EALREADY), so we can't tell if we should drop it or not
-> > > - We don't need such a heavy-handed lock for what we're trying to do,
-> > >   commit ordering doesn't matter, so a point-of-use lock will be less
-> > >   contentious
-> > >
-> > > Reviewed-by: Daniel Vetter <daniel.vetter@ffwll.ch>
-> >
-> > Pushed the first 2 to drm-misc-next-fixes to fix the gru-bob regression=
-. I'll
-> > fix up the 3rd patch separately.
-> >
-> > Thank you for the reviews!
-> >
-> > Sean
-> >
-> > > Signed-off-by: Sean Paul <seanpaul@chromium.org>
-> > > Link to v1: https://patchwork.freedesktop.org/patch/msgid/20190917200=
-443.64481-2-sean@poorly.run
-> > >
-> > > Changes in v2:
-> > > - Migrate locking explanation from comment to commit msg (Daniel)
-> > > - Turf constant entry delay and multiply the avg times by 2 (Daniel)
-> > > ---
-> > >  drivers/gpu/drm/drm_atomic_helper.c         | 20 ++++++
-> > >  drivers/gpu/drm/drm_self_refresh_helper.c   | 72 +++++++++++++++++++=
---
-> > >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c |  5 +-
-> > >  include/drm/drm_self_refresh_helper.h       |  6 +-
-> > >  4 files changed, 90 insertions(+), 13 deletions(-)
-> > >
-> > > diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/dr=
-m_atomic_helper.c
-> > > index 9d7e4da6c292..3f13fa9a9e24 100644
-> > > --- a/drivers/gpu/drm/drm_atomic_helper.c
-> > > +++ b/drivers/gpu/drm/drm_atomic_helper.c
-> > > @@ -26,6 +26,7 @@
-> > >   */
-> > >
-> > >  #include <linux/dma-fence.h>
-> > > +#include <linux/ktime.h>
-> > >
-> > >  #include <drm/drm_atomic.h>
-> > >  #include <drm/drm_atomic_helper.h>
-> > > @@ -1570,9 +1571,23 @@ static void commit_tail(struct drm_atomic_stat=
-e *old_state)
-> > >  {
-> > >       struct drm_device *dev =3D old_state->dev;
-> > >       const struct drm_mode_config_helper_funcs *funcs;
-> > > +     ktime_t start;
-> > > +     s64 commit_time_ms;
-> > >
-> > >       funcs =3D dev->mode_config.helper_private;
-> > >
-> > > +     /*
-> > > +      * We're measuring the _entire_ commit, so the time will vary d=
-epending
-> > > +      * on how many fences and objects are involved. For the purpose=
-s of self
-> > > +      * refresh, this is desirable since it'll give us an idea of ho=
-w
-> > > +      * congested things are. This will inform our decision on how o=
-ften we
-> > > +      * should enter self refresh after idle.
-> > > +      *
-> > > +      * These times will be averaged out in the self refresh helpers=
- to avoid
-> > > +      * overreacting over one outlier frame
-> > > +      */
-> > > +     start =3D ktime_get();
-> > > +
-> > >       drm_atomic_helper_wait_for_fences(dev, old_state, false);
-> > >
-> > >       drm_atomic_helper_wait_for_dependencies(old_state);
-> > > @@ -1582,6 +1597,11 @@ static void commit_tail(struct drm_atomic_stat=
-e *old_state)
-> > >       else
-> > >               drm_atomic_helper_commit_tail(old_state);
-> > >
-> > > +     commit_time_ms =3D ktime_ms_delta(ktime_get(), start);
-> > > +     if (commit_time_ms > 0)
-> > > +             drm_self_refresh_helper_update_avg_times(old_state,
-> > > +                                              (unsigned long)commit_=
-time_ms);
-> > > +
-> > >       drm_atomic_helper_commit_cleanup_done(old_state);
-> > >
-> > >       drm_atomic_state_put(old_state);
-> > > diff --git a/drivers/gpu/drm/drm_self_refresh_helper.c b/drivers/gpu/=
-drm/drm_self_refresh_helper.c
-> > > index 9095cebf2147..68f4765a5896 100644
-> > > --- a/drivers/gpu/drm/drm_self_refresh_helper.c
-> > > +++ b/drivers/gpu/drm/drm_self_refresh_helper.c
-> > > @@ -5,6 +5,7 @@
-> > >   * Authors:
-> > >   * Sean Paul <seanpaul@chromium.org>
-> > >   */
-> > > +#include <linux/average.h>
-> > >  #include <linux/bitops.h>
-> > >  #include <linux/slab.h>
-> > >  #include <linux/workqueue.h>
-> > > @@ -50,10 +51,17 @@
-> > >   * atomic_check when &drm_crtc_state.self_refresh_active is true.
-> > >   */
-> > >
-> > > +#define SELF_REFRESH_AVG_SEED_MS 200
-> > > +
-> > > +DECLARE_EWMA(psr_time, 4, 4)
-> > > +
-> > >  struct drm_self_refresh_data {
-> > >       struct drm_crtc *crtc;
-> > >       struct delayed_work entry_work;
-> > > -     unsigned int entry_delay_ms;
-> > > +
-> > > +     struct mutex avg_mutex;
-> > > +     struct ewma_psr_time entry_avg_ms;
-> > > +     struct ewma_psr_time exit_avg_ms;
-> > >  };
-> > >
-> > >  static void drm_self_refresh_helper_entry_work(struct work_struct *w=
-ork)
-> > > @@ -121,6 +129,44 @@ static void drm_self_refresh_helper_entry_work(s=
-truct work_struct *work)
-> > >       drm_modeset_acquire_fini(&ctx);
-> > >  }
-> > >
-> > > +/**
-> > > + * drm_self_refresh_helper_update_avg_times - Updates a crtc's SR ti=
-me averages
-> > > + * @state: the state which has just been applied to hardware
-> > > + * @commit_time_ms: the amount of time in ms that this commit took t=
-o complete
-> > > + *
-> > > + * Called after &drm_mode_config_funcs.atomic_commit_tail, this func=
-tion will
-> > > + * update the average entry/exit self refresh times on self refresh =
-transitions.
-> > > + * These averages will be used when calculating how long to delay be=
-fore
-> > > + * entering self refresh mode after activity.
-> > > + */
-> > > +void drm_self_refresh_helper_update_avg_times(struct drm_atomic_stat=
-e *state,
-> > > +                                           unsigned int commit_time_=
-ms)
-> > > +{
-> > > +     struct drm_crtc *crtc;
-> > > +     struct drm_crtc_state *old_crtc_state, *new_crtc_state;
-> > > +     int i;
-> > > +
-> > > +     for_each_oldnew_crtc_in_state(state, crtc, old_crtc_state,
-> > > +                                   new_crtc_state, i) {
-> > > +             struct drm_self_refresh_data *sr_data =3D crtc->self_re=
-fresh_data;
-> > > +             struct ewma_psr_time *time;
-> > > +
-> > > +             if (old_crtc_state->self_refresh_active =3D=3D
-> > > +                 new_crtc_state->self_refresh_active)
-> > > +                     continue;
-> > > +
-> > > +             if (new_crtc_state->self_refresh_active)
-> > > +                     time =3D &sr_data->entry_avg_ms;
-> > > +             else
-> > > +                     time =3D &sr_data->exit_avg_ms;
-> > > +
-> > > +             mutex_lock(&sr_data->avg_mutex);
-> > > +             ewma_psr_time_add(time, commit_time_ms);
-> > > +             mutex_unlock(&sr_data->avg_mutex);
-> > > +     }
-> > > +}
-> > > +EXPORT_SYMBOL(drm_self_refresh_helper_update_avg_times);
-> > > +
-> > >  /**
-> > >   * drm_self_refresh_helper_alter_state - Alters the atomic state for=
- SR exit
-> > >   * @state: the state currently being checked
-> > > @@ -152,6 +198,7 @@ void drm_self_refresh_helper_alter_state(struct d=
-rm_atomic_state *state)
-> > >
-> > >       for_each_new_crtc_in_state(state, crtc, crtc_state, i) {
-> > >               struct drm_self_refresh_data *sr_data;
-> > > +             unsigned int delay;
-> > >
-> > >               /* Don't trigger the entry timer when we're already in =
-SR */
-> > >               if (crtc_state->self_refresh_active)
-> > > @@ -161,8 +208,13 @@ void drm_self_refresh_helper_alter_state(struct =
-drm_atomic_state *state)
-> > >               if (!sr_data)
-> > >                       continue;
-> > >
-> > > +             mutex_lock(&sr_data->avg_mutex);
-> > > +             delay =3D (ewma_psr_time_read(&sr_data->entry_avg_ms) +
-> > > +                      ewma_psr_time_read(&sr_data->exit_avg_ms)) * 2=
-;
-> > > +             mutex_unlock(&sr_data->avg_mutex);
-> > > +
-> > >               mod_delayed_work(system_wq, &sr_data->entry_work,
-> > > -                              msecs_to_jiffies(sr_data->entry_delay_=
-ms));
-> > > +                              msecs_to_jiffies(delay));
-> > >       }
-> > >  }
-> > >  EXPORT_SYMBOL(drm_self_refresh_helper_alter_state);
-> > > @@ -170,12 +222,10 @@ EXPORT_SYMBOL(drm_self_refresh_helper_alter_sta=
-te);
-> > >  /**
-> > >   * drm_self_refresh_helper_init - Initializes self refresh helpers f=
-or a crtc
-> > >   * @crtc: the crtc which supports self refresh supported displays
-> > > - * @entry_delay_ms: amount of inactivity to wait before entering sel=
-f refresh
-> > >   *
-> > >   * Returns zero if successful or -errno on failure
-> > >   */
-> > > -int drm_self_refresh_helper_init(struct drm_crtc *crtc,
-> > > -                              unsigned int entry_delay_ms)
-> > > +int drm_self_refresh_helper_init(struct drm_crtc *crtc)
-> > >  {
-> > >       struct drm_self_refresh_data *sr_data =3D crtc->self_refresh_da=
-ta;
-> > >
-> > > @@ -189,8 +239,18 @@ int drm_self_refresh_helper_init(struct drm_crtc=
- *crtc,
-> > >
-> > >       INIT_DELAYED_WORK(&sr_data->entry_work,
-> > >                         drm_self_refresh_helper_entry_work);
-> > > -     sr_data->entry_delay_ms =3D entry_delay_ms;
-> > >       sr_data->crtc =3D crtc;
-> > > +     mutex_init(&sr_data->avg_mutex);
-> > > +     ewma_psr_time_init(&sr_data->entry_avg_ms);
-> > > +     ewma_psr_time_init(&sr_data->exit_avg_ms);
-> > > +
-> > > +     /*
-> > > +      * Seed the averages so they're non-zero (and sufficiently larg=
-e
-> > > +      * for even poorly performing panels). As time goes on, this wi=
-ll be
-> > > +      * averaged out and the values will trend to their true value.
-> > > +      */
-> > > +     ewma_psr_time_add(&sr_data->entry_avg_ms, SELF_REFRESH_AVG_SEED=
-_MS);
-> > > +     ewma_psr_time_add(&sr_data->exit_avg_ms, SELF_REFRESH_AVG_SEED_=
-MS);
-> > >
-> > >       crtc->self_refresh_data =3D sr_data;
-> > >       return 0;
-> > > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gp=
-u/drm/rockchip/rockchip_drm_vop.c
-> > > index 2f821c58007c..613404f86668 100644
-> > > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> > > @@ -39,8 +39,6 @@
-> > >  #include "rockchip_drm_vop.h"
-> > >  #include "rockchip_rgb.h"
-> > >
-> > > -#define VOP_SELF_REFRESH_ENTRY_DELAY_MS 100
-> > > -
-> > >  #define VOP_WIN_SET(vop, win, name, v) \
-> > >               vop_reg_set(vop, &win->phy->name, win->base, ~0, v, #na=
-me)
-> > >  #define VOP_SCL_SET(vop, win, name, v) \
-> > > @@ -1563,8 +1561,7 @@ static int vop_create_crtc(struct vop *vop)
-> > >       init_completion(&vop->line_flag_completion);
-> > >       crtc->port =3D port;
-> > >
-> > > -     ret =3D drm_self_refresh_helper_init(crtc,
-> > > -                                        VOP_SELF_REFRESH_ENTRY_DELAY=
-_MS);
-> > > +     ret =3D drm_self_refresh_helper_init(crtc);
-> > >       if (ret)
-> > >               DRM_DEV_DEBUG_KMS(vop->dev,
-> > >                       "Failed to init %s with SR helpers %d, ignoring=
-\n",
-> > > diff --git a/include/drm/drm_self_refresh_helper.h b/include/drm/drm_=
-self_refresh_helper.h
-> > > index 397a583ccca7..5b79d253fb46 100644
-> > > --- a/include/drm/drm_self_refresh_helper.h
-> > > +++ b/include/drm/drm_self_refresh_helper.h
-> > > @@ -12,9 +12,9 @@ struct drm_atomic_state;
-> > >  struct drm_crtc;
-> > >
-> > >  void drm_self_refresh_helper_alter_state(struct drm_atomic_state *st=
-ate);
-> > > +void drm_self_refresh_helper_update_avg_times(struct drm_atomic_stat=
-e *state,
-> > > +                                           unsigned int commit_time_=
-ms);
-> > >
-> > > -int drm_self_refresh_helper_init(struct drm_crtc *crtc,
-> > > -                              unsigned int entry_delay_ms);
-> > > -
-> > > +int drm_self_refresh_helper_init(struct drm_crtc *crtc);
-> > >  void drm_self_refresh_helper_cleanup(struct drm_crtc *crtc);
-> > >  #endif
-> > > --
-> > > Sean Paul, Software Engineer, Google / Chromium OS
-> > >
-> >
-> > --
-> > Sean Paul, Software Engineer, Google / Chromium OS
-> > _______________________________________________
-> > dri-devel mailing list
-> > dri-devel@lists.freedesktop.org
-> > https://lists.freedesktop.org/mailman/listinfo/dri-devel
+If anyone could point me in the right direction as to where to
+continue debugging, I'd greatly appreciate it.
+
+[0] https://github.com/ayufan-rock64/linux-build/issues/254
+[1] https://github.com/rockchip-linux/kernel/issues/116
+[2] https://github.com/ayufan-rock64/linux-kernel/commit/3cde5c624c9c39aa03251a55c2d26a48b5bdca5b
+
+[  198.491458] rockchip-pcie f8000000.pcie: missing legacy phy; search
+for per-lane PHY
+[  198.492986] rockchip-pcie f8000000.pcie: no vpcie1v8 regulator found
+[  198.493060] rockchip-pcie f8000000.pcie: no vpcie0v9 regulator found
+[  198.550444] rockchip-pcie f8000000.pcie: current link width is x1
+[  198.550458] rockchip-pcie f8000000.pcie: idling lane 1
+[  198.550479] rockchip-pcie f8000000.pcie: idling lane 2
+[  198.550490] rockchip-pcie f8000000.pcie: idling lane 3
+[  198.550608] rockchip-pcie f8000000.pcie: host bridge /pcie@f8000000 ranges:
+[  198.550625] rockchip-pcie f8000000.pcie: Parsing ranges property...
+[  198.550656] rockchip-pcie f8000000.pcie:   MEM
+0xfa000000..0xfbdfffff -> 0xfa000000
+[  198.550676] rockchip-pcie f8000000.pcie:    IO
+0xfbe00000..0xfbefffff -> 0xfbe00000
+[  198.552908] rockchip-pcie f8000000.pcie: PCI host bridge to bus 0000:00
+[  198.552933] pci_bus 0000:00: root bus resource [bus 00-1f]
+[  198.552943] pci_bus 0000:00: root bus resource [mem 0xfa000000-0xfbdfffff]
+[  198.552954] pci_bus 0000:00: root bus resource [io  0x0000-0xfffff]
+(bus address [0xfbe00000-0xfbefffff])
+[  198.552965] pci_bus 0000:00: scanning bus
+[  198.554198] pci 0000:00:00.0: [1d87:0100] type 01 class 0x060400
+[  198.555508] pci 0000:00:00.0: supports D1
+[  198.555516] pci 0000:00:00.0: PME# supported from D0 D1 D3hot
+[  198.556023] pci 0000:00:00.0: PME# disabled
+[  198.561245] pci_bus 0000:00: fixups for bus
+[  198.561269] pci 0000:00:00.0: scanning [bus 00-00] behind bridge, pass 0
+[  198.561277] pci 0000:00:00.0: bridge configuration invalid ([bus
+00-00]), reconfiguring
+[  198.566429] pci 0000:00:00.0: scanning [bus 00-00] behind bridge, pass 1
+[  198.567008] pci_bus 0000:01: scanning bus
+[  198.567171] pci 0000:01:00.0: [10de:11c4] type 00 class 0x030000
+[  198.567420] pci 0000:01:00.0: reg 0x10: [mem 0x00000000-0x00ffffff]
+[  198.567515] pci 0000:01:00.0: reg 0x14: [mem 0x00000000-0x07ffffff
+64bit pref]
+[  198.567608] pci 0000:01:00.0: reg 0x1c: [mem 0x00000000-0x01ffffff
+64bit pref]
+[  198.567665] pci 0000:01:00.0: reg 0x24: initial BAR value 0x00000000 invalid
+[  198.567673] pci 0000:01:00.0: reg 0x24: [io  size 0x0080]
+[  198.567730] pci 0000:01:00.0: reg 0x30: [mem 0x00000000-0x0007ffff pref]
+[  198.567815] pci 0000:01:00.0: Max Payload Size set to 256 (was 128, max 256)
+[  198.569051] pci 0000:01:00.0: 2.000 Gb/s available PCIe bandwidth,
+limited by 2.5 GT/s x1 link at 0000:00:00.0 (capable of 126.016 Gb/s
+with 8 GT/s x16 link)
+[  198.570225] pci 0000:01:00.0: vgaarb: VGA device added:
+decodes=io+mem,owns=none,locks=none
+[  198.570481] pci 0000:01:00.1: [10de:0e0b] type 00 class 0x040300
+[  198.570663] pci 0000:01:00.1: reg 0x10: [mem 0x00000000-0x00003fff]
+[  198.571039] pci 0000:01:00.1: Max Payload Size set to 256 (was 128, max 256)
+<snip>
+[  198.749857] pci_bus 0000:01: read pcie, devfn 1, at 100, size 2
+[  198.750252] pci_bus 0000:01: read pcie, devfn 2, at 0, size 4
+[  198.750881] Internal error: synchronous external abort: 96000210
+[#1] PREEMPT SMP
+[  198.751581] Modules linked in: drm_panel_orientation_quirks
+pcie_rockchip_host(+) cpufreq_dt sch_fq_codel ip_tables x_tables ipv6
+crc_ccitt nf_defrag_ipv6
+[  198.752861] CPU: 1 PID: 1686 Comm: systemd-udevd Not tainted
+5.4.0-rc5-next-20191031-00001-gddbfb17ac1c4-dirty #5
+[  198.753791] Hardware name: Pine64 RockPro64 (DT)
+[  198.754215] pstate: 60400085 (nZCv daIf +PAN -UAO)
+[  198.754672] pc : __raw_readl+0x0/0x8 [pcie_rockchip_host]
+[  198.755172] lr : rockchip_pcie_rd_conf+0x140/0x1dc [pcie_rockchip_host]
+[  198.755773] sp : ffff8000132af530
+[  198.756079] x29: ffff8000132af530 x28: 0000000000000000
+[  198.756565] x27: 0000000000000001 x26: 0000000000000000
+[  198.757049] x25: ffff0000c20ac000 x24: 0000000000002000
+[  198.757534] x23: ffff0000c20ae5c0 x22: ffff8000132af5d4
+[  198.758018] x21: 0000000000002000 x20: 0000000000000004
+[  198.758502] x19: 0000000000102000 x18: 0000000000000001
+[  198.758987] x17: 0000000000000000 x16: 0000000000000000
+[  198.759472] x15: ffffffffffffffff x14: ffff80001159bcc8
+[  198.759957] x13: 0000000000000000 x12: ffff800011b2c000
+[  198.760441] x11: ffff8000115bf000 x10: ffff800011310018
+[  198.760926] x9 : 00000000fffb9fff x8 : 0000000000000001
+[  198.761410] x7 : 0000000000000000 x6 : ffff0000f7492548
+[  198.761894] x5 : 0000000000000001 x4 : ffff0000f7492548
+[  198.762379] x3 : 0000000000000000 x2 : 0000000000c00008
+[  198.762863] x1 : ffff80001dc00008 x0 : ffff80001a102000
+[  198.763348] Call trace:
+[  198.763583]  __raw_readl+0x0/0x8 [pcie_rockchip_host]
+[  198.764057]  pci_bus_read_config_dword+0x88/0xd0
+[  198.764484]  pci_bus_generic_read_dev_vendor_id+0x40/0x1b8
+[  198.764982]  pci_bus_read_dev_vendor_id+0x58/0x88
+[  198.765413]  pci_scan_single_device+0x84/0xf8
+[  198.765812]  pci_scan_slot+0x7c/0x120
+[  198.766149]  pci_scan_child_bus_extend+0x68/0x2dc
+[  198.766579]  pci_scan_bridge_extend+0x350/0x588
+[  198.766992]  pci_scan_child_bus_extend+0x21c/0x2dc
+[  198.767430]  pci_scan_child_bus+0x24/0x30
+[  198.767797]  pci_scan_root_bus_bridge+0xc4/0xd0
+[  198.768215]  rockchip_pcie_probe+0x610/0x74c [pcie_rockchip_host]
+[  198.768770]  platform_drv_probe+0x58/0xa8
+[  198.769139]  really_probe+0xe0/0x318
+[  198.769468]  driver_probe_device+0x5c/0xf0
+[  198.769844]  device_driver_attach+0x74/0x80
+[  198.770227]  __driver_attach+0x64/0xe8
+[  198.770572]  bus_for_each_dev+0x84/0xd8
+[  198.770924]  driver_attach+0x30/0x40
+[  198.771253]  bus_add_driver+0x188/0x1e8
+[  198.771605]  driver_register+0x64/0x110
+[  198.771956]  __platform_driver_register+0x54/0x60
+[  198.772388]  rockchip_pcie_driver_init+0x28/0x10000 [pcie_rockchip_host]
+[  198.772998]  do_one_initcall+0x94/0x390
+[  198.773353]  do_init_module+0x88/0x268
+[  198.773697]  load_module+0x1e18/0x2198
+[  198.774043]  __do_sys_finit_module+0xd0/0xe8
+[  198.774435]  __arm64_sys_finit_module+0x28/0x38
+[  198.774858]  el0_svc_common.constprop.3+0xa4/0x1d8
+[  198.775297]  el0_svc_handler+0x34/0xa0
+[  198.775645]  el0_svc+0x14/0x40
+[  198.775928]  el0_sync_handler+0x118/0x290
+[  198.776295]  el0_sync+0x164/0x180
+[  198.776609] Code: bad PC value
+[  198.776897] ---[ end trace 88fc77651b5e2909 ]---
