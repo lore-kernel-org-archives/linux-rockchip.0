@@ -1,48 +1,46 @@
-From: Pan Bian <bianpan2016@163.com>
-Subject: [PATCH] media: rockchip/rga: fix potential use after free
-Date: Tue,  5 Nov 2019 23:55:54 +0800
-Message-ID: <1572969354-8967-1-git-send-email-bianpan2016@163.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: dw-dsi dphy timing calculations
+Date: Tue, 05 Nov 2019 17:42:53 +0100
+Message-ID: <19189086.sEj5AHWfUf@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jacob Chen <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Pan Bian <bianpan2016@163.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: philippe.cornu@st.com
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, christoph.muellner@theobroma-systems.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The variable vga->vfd is an alias for vfd. Therefore, releasing vfd and
-then unregister vga->vfd will lead to a use after free bug. In fact, the
-free operation and the unregister operation are reversed.
-
-Signed-off-by: Pan Bian <bianpan2016@163.com>
----
- drivers/media/platform/rockchip/rga/rga.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index e9ff12b6b5bb..613b868fce33 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -901,9 +901,9 @@ static int rga_probe(struct platform_device *pdev)
- 	return 0;
- 
- rel_vdev:
--	video_device_release(vfd);
--unreg_video_dev:
- 	video_unregister_device(rga->vfd);
-+unreg_video_dev:
-+	video_device_release(vfd);
- unreg_v4l2_dev:
- 	v4l2_device_unregister(&rga->v4l2_dev);
- err_put_clk:
--- 
-2.7.4
+SGkgUGhpbGlwcGUsCgp3aGVuIHlvdSBkaWQgdGhlIGRkIHRoZSBkdy1kc2kgZ2VuZXJhbGl6YXRp
+b24sCmR3X21pcGlfZHNpX2RwaHlfdGltaW5nX2NvbmZpZygpIGRpZCBlbmQgdXAgd2l0aCBzdGF0
+aWMgdmFsdWVzIGFuZCBhCmNvbW1lbnQgc3RhdGluZyAiZGF0YSAmIGNsb2NrIGxhbmUgdGltZXJz
+IHNob3VsZCBiZSBjb21wdXRlZCBhY2NvcmRpbmcKdG8gcGFuZWwgYmxhbmtpbmdzIGFuZCB0byB0
+aGUgYXV0b21hdGljIGNsb2NrIGxhbmUgY29udHJvbCBtb2RlLi4uIi4KCkVzcGVjaWFsbHkgd2l0
+aCB0aGUgUEhZX0hTMkxQX1RJTUUoMHg2MCkgSSByYW4gaW50byBwcm9ibGVtcy4KT24gdGhlIEdv
+b2dsZS1HcnUtU2NhcmxldCAoQ2hyb21lT1MgdGFibGV0IHdpdGggYSBoaWdocmVzIGRpc3BsYXkp
+CmV2ZXJ5dGhpbmcgd29ya3MgbmljZWx5IChwYW5lbCBjbG9jayAyMjlNSHopIGJ1dCBvbiB0aGUg
+ZGV2aWNlIEknbQpvbiByaWdodCBub3cgKHBhbmVsIGNsb2NrIDY0TUh6KSBJIGVuZCB1cCB3aXRo
+IGJyb2tlbiBvdXRwdXQgKHBpeGVsCmdhcmJhZ2UpLgoKV2hlbiBJIHNldCBpdCB0byB0aGUgdmFs
+dWUgZm91bmQgaW4gdGhlIFJvY2tjaGlwIHZlbmRvciBrZXJuZWwKUEhZX0hTMkxQX1RJTUUoMHgx
+NCkgdGhhdCBkaXNwbGF5IHdvcmtzIGFzIGV4cGVjdGVkLgoKVGhlIFJvY2tjaGlwIFNvQyBtYW51
+YWwgaXMgcHJldHR5IHNwYXJzZSBvbiB3aGF0IHRoaXMgdmFsdWUgc2hvdWxkCmFjdHVhbGx5IGJl
+LCBzbyBJJ20gaG9waW5nIHRoYXQgeW91IG1heSBoYXZlIHNvbWUgaW5zaWdodHMgOy0pIC4KClNv
+IGZhciBJIGhhdmUgZm91bmQgCglodHRwczovL2dpdGh1Yi5jb20vc3VyZHVwZXRydS9odWF3ZWkt
+cDYvYmxvYi9tYXN0ZXIva2VybmVsL2h1YXdlaS9od3A2X3UwNi9kcml2ZXJzL3ZpZGVvL2szL21p
+cGlfZHNpLmMjTDk3CmFuZAoJaHR0cHM6Ly9naXRodWIuY29tL3RvcnZhbGRzL2xpbnV4L2Jsb2Iv
+bWFzdGVyL2RyaXZlcnMvZ3B1L2RybS9oaXNpbGljb24va2lyaW4vZHdfZHJtX2RzaS5jI0wyNzYK
+CmJ1dCBzaW1wbHkgY29weWluZyBzdHJhbmdlIGNhbGN1bGF0b25zIHNlZW1zIHdyb25nLCBzaW1p
+bGFybHkKdG8ganVzdCBzd2FwcGluZyB0aGUgaGFyZGNvZGVkIHZhbHVlIGZyb20gMHg0MCB0byBt
+eSBuZWVkZWQgMHgxNCA7LSkgLgoKU28gaWYgeW91IGhhdmUgc29tZSBpbnNpZ2h0cyBJIHdvdWxk
+IGJlIG1vc3QgZ3JhdGVmdWwgOi1EIC4KClRoYW5rcwpIZWlrbwoKCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
