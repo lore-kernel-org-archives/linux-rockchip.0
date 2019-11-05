@@ -1,40 +1,46 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] phy-rockchip-inno-hdmi: fix spelling mistake "Innosilion" -> "Innosilicon"
-Date: Tue, 05 Nov 2019 11:51:16 +0100
-Message-ID: <1850187.4m7IYqKVMe@diego>
-References: <20191105105026.50581-1-colin.king@canonical.com>
+From: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v1 7/7] dt-bindings: PCI: Use IRQ flags for legacy PCI IRQ
+ interrupts
+Date: Tue, 5 Nov 2019 16:08:29 +0100
+Message-ID: <CACRpkdb=5i3+H3OtGXSYQEjSq5ROrysfmnG-koGck+chEEgLnQ@mail.gmail.com>
+References: <20191104163834.8932-1-andrew.murray@arm.com>
+ <20191104163834.8932-8-andrew.murray@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191105105026.50581-1-colin.king@canonical.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Colin King <colin.king@canonical.com>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191104163834.8932-8-andrew.murray-5wv7dgnIgG8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andrew Murray <andrew.murray-5wv7dgnIgG8@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Karthikeyan Mitran <m.karthikeyan-DTHOJn6Rh8lhmhkoCovsdw@public.gmane.org>, David Daney <david.daney-YGCgFSpz5w/QT0dZR+AlfA@public.gmane.org>, linux-pci <linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Binghui Wang <wangbinghui-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Jonathan Chocron <jonnyc-vV1OtcyAfmbQT0dZR+AlfA@public.gmane.org>, Toan Le <toan-shex6MNQR2J/SfDzf78azzKzEDxYleXD@public.gmane.org>, Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jesper Nilsson <jesper.nilsson-VrBV9hrLPhE@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Kunihiko Hayashi <hayashi.kunihiko-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Tom Joseph <tjoseph-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, linux-arm-kernel-VrBV9hrLPhE@public.gmane.org, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Andy Gross <agross@ke>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 5. November 2019, 11:50:26 CET schrieb Colin King:
-> From: Colin Ian King <colin.king@canonical.com>
-> 
-> There is a spelling mistake in the module description. Fix it.
-> 
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+Hi Andrew,
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+thanks for your patch!
 
-> ---
->  drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-> index 2b97fb1185a0..91923209a026 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-> @@ -1273,5 +1273,5 @@ static struct platform_driver inno_hdmi_phy_driver = {
->  module_platform_driver(inno_hdmi_phy_driver);
->  
->  MODULE_AUTHOR("Zheng Yang <zhengyang@rock-chips.com>");
-> -MODULE_DESCRIPTION("Innosilion HDMI 2.0 Transmitter PHY Driver");
-> +MODULE_DESCRIPTION("Innosilicon HDMI 2.0 Transmitter PHY Driver");
->  MODULE_LICENSE("GPL v2");
-> 
+On Mon, Nov 4, 2019 at 5:39 PM Andrew Murray <andrew.murray-5wv7dgnIgG8@public.gmane.org> wrote:
+
+> Replace magic numbers used to describe legacy PCI IRQ interrupts
+> with #define.
+>
+> Signed-off-by: Andrew Murray <andrew.murray-5wv7dgnIgG8@public.gmane.org>
+
+When I add examples I usually make sure that above the examples
+are the appropriate #include files, this is becoming more important
+as we convert to yaml, then you need the right includes because the
+examples will get compiled.
+
+With that taken into account:
+Reviewed-by: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+
+Yours,
+Linus Walleij
