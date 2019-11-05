@@ -1,49 +1,52 @@
-From: Levin Du <djw@t-chip.com.cn>
-Subject: Re:
- =?utf-8?q?=5BPATCH=5D_configs=3A_Rename_roc-rk3399-pc_-?=
- =?utf-8?b?PiByb2MtcGMtcmszMzk5IGRlZmNvbmZpZ+OAkOivt+azqOaEj++8jOmCrg==?=
- =?utf-8?b?5Lu255SxdS1ib290LWJvdW5jZXNAbGlzdHMuZGVueC5kZeS7o+WPkeOAkQ==?=
-Date: Tue, 05 Nov 2019 10:11:14 +0800
-Message-ID: <87k18fqdh9.fsf@archiso.i-did-not-set--mail-host-address--so-tickle-me>
-References: <20191102044902.8979-1-jagan@amarulasolutions.com>
- <20191102122808.v5nnb67gfwq24rae@tazenda.kollasch.net>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20191102122808.v5nnb67gfwq24rae@tazenda.kollasch.net> (Jonathan
- A. Kollasch's message of "Sat, 2 Nov 2019 07:28:08 -0500")
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: "Jonathan A. Kollasch" <jakllsch@kollasch.net>
-Cc: linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, u-boot@lists.denx.de
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v1 3/3] ARM64: dts: rockchip: rk3308: add tsadc node
+Date: Tue,  5 Nov 2019 11:17:26 +0800
+Message-ID: <1572923846-23310-4-git-send-email-zhangqing@rock-chips.com>
+References: <1572923846-23310-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1572923846-23310-1-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: amit.kucheria@verdurent.com, rui.zhang@intel.com, edubezval@gmail.com, daniel.lezcano@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, andy.yan@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-ClRoZSBtYWlubGluZSB1c2VzICdyazMzOTktKicsIHNvIHRoZXJlJ3JlIHJrMzM5OS1maXJlZmx5
-LmR0cywKcmszMzk5LXJvYy1wYy5kdHMsIHJrMzM5OS1raGFkYXMtZWRnZS5kdHMsIGV0Yy4gU2hh
-bGwgd2UgZm9sbG93IHRoZSBrZXJuZWwKY29udmVudGlvbiwgb3IgYWRkIGFub3RoZXIgcm9jLXBj
-LXJrMzM5OSB0byB0aGUgbWF0cml4PyBJIHByZWZlciB0byBrZWVwIGl0IGFzCml0IGlzLgoKCiJK
-b25hdGhhbiBBLiBLb2xsYXNjaCIgPGpha2xsc2NoQGtvbGxhc2NoLm5ldD4gd3JpdGVzOgoKPiBP
-biBTYXQsIE5vdiAwMiwgMjAxOSBhdCAxMDoxOTowMkFNICswNTMwLCBKYWdhbiBUZWtpIHdyb3Rl
-Ogo+PiByb2MtcmszMzk5LXBjX2RlZmNvbmZpZyBpcyBjb21taXR0ZWQgaW4gYmVsb3cKPj4gCj4+
-IGNvbW1pdCA8OGE2ODFmNGM1YWExNWRiNTFhZDAyMDk3MzQ4NTljOWZlN2MyOWNmZD4gKCJyb2Nr
-Y2hpcDogcmszMzk5Ogo+Cj4+IEFkZCBST0MtUkszMzk5LVBDIHN1cHBvcnQiKQo+PiAKPj4gd2hp
-Y2ggZG9lc24ndCBmb2xsb3cgdGhlIGV4aXN0aW5nIGRlZmNvbmZpZ3Mgb24gcmszMzk5Lgo+PiAK
-Pj4gU28sIHJlbmFtZSBhcyBmb2xsb3dlZCB3aXRoIG90aGVyIHJrMzM5OSBkZWZjb25maWdzLgo+
-PiAKPj4gQ2M6IExldmluIER1IDxkandAdC1jaGlwLmNvbS5jbj4KPj4gU2lnbmVkLW9mZi1ieTog
-SmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4+IC0tLQo+Cj4gVGhpcyBz
-dHJpa2VzIG1lIGFzIHdyb25nLCBhcyB0aGUgZXhpc3RpbmcgbmFtZSBpcyB0aGUgYWN0dWFsIG5h
-bWUgb2YgdGhlCj4gYm9hcmQuCj4KPiBodHRwczovL2xpYnJlLmNvbXB1dGVyL3Byb2R1Y3RzL2Jv
-YXJkcy9yb2MtcmszMzk5LXBjLwo+Cj4gCUpvbmF0aGFuIEtvbGxhc2NoCj4gX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBVLUJvb3QgbWFpbGluZyBsaXN0
-Cj4gVS1Cb290QGxpc3RzLmRlbnguZGUKPiBodHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8v
-dS1ib290Ci0tIApMZXZpbiBEdQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0
-cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
+This patch add a tsadc device node for rk3308.
+
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+index 8bdc66c62975..7023df31046d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+@@ -513,6 +513,26 @@
+ 		status = "disabled";
+ 	};
+ 
++	tsadc: tsadc@ff1f0000 {
++		compatible = "rockchip,rk3308-tsadc";
++		reg = <0x0 0xff1f0000 0x0 0x100>;
++		interrupts = <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH>;
++		rockchip,grf = <&grf>;
++		clocks = <&cru SCLK_TSADC>, <&cru PCLK_TSADC>;
++		clock-names = "tsadc", "apb_pclk";
++		assigned-clocks = <&cru SCLK_TSADC>;
++		assigned-clock-rates = <50000>;
++		resets = <&cru SRST_TSADC>;
++		reset-names = "tsadc-apb";
++		pinctrl-names = "init", "default", "sleep";
++		pinctrl-0 = <&tsadc_otp_gpio>;
++		pinctrl-1 = <&tsadc_otp_gpio>;
++		pinctrl-2 = <&tsadc_otp_gpio>;
++		#thermal-sensor-cells = <1>;
++		rockchip,hw-tshut-temp = <120000>;
++		status = "disabled";
++	};
++
+ 	amba {
+ 		compatible = "simple-bus";
+ 		#address-cells = <2>;
+-- 
+1.9.1
