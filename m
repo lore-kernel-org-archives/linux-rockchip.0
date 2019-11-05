@@ -1,38 +1,96 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3] arm64: dts: rockchip: Split rk3399-roc-pc for with
- and  without mezzanine board.
-Date: Tue, 5 Nov 2019 15:13:29 -0600
-Message-ID: <20191105211329.GA8500@bogus>
-References: <7293c5f6-a07f-cf51-954f-92907879eea2@fivetechno.de>
+From: Daniel Stone <daniels@collabora.com>
+Subject: Re: [PATCHv2 1/4] drm/arm: Factor out generic afbc helpers
+Date: Tue, 05 Nov 2019 23:26:36 +0000
+Message-ID: <f4aa14e89852c9ef46ade10e8eccdb66b1adc052.camel@collabora.com>
+References: <2485717.1SzL54aMiy@e123338-lin>
+ <20191104221228.3588-1-andrzej.p@collabora.com>
+ <20191104221228.3588-2-andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <7293c5f6-a07f-cf51-954f-92907879eea2@fivetechno.de>
-Content-Language: de-DE
-Sender: linux-kernel-owner@vger.kernel.org
-Cc: Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, Markus Reichl <m.reichl@fivetechno.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20191104221228.3588-2-andrzej.p@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, dri-devel@lists.freedesktop.org
+Cc: Ayan Halder <Ayan.Halder@arm.com>, kernel@collabora.com, David Airlie <airlied@linux.ie>, Liviu Dudau <liviu.dudau@arm.com>, linux-rockchip@lists.infradead.org, James Wang <james.qian.wang@arm.com>, Mihail Atanassov <mihail.atanassov@arm.com>, Sean Paul <sean@poorly.run>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 4 Nov 2019 16:22:25 +0100, Markus Reichl wrote:
-> For rk3399-roc-pc is a mezzanine board available that carries M.2 and
-> POE interfaces. Use it with a separate dts.
-> 
-> ---
-> v3: Use enum in binding and full name in compatible string and file name.
-> v2: Add new compatible string for roc-pc with mezzanine board.
-> --
-> 
-> Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
-> ---
->  .../devicetree/bindings/arm/rockchip.yaml     |   4 +-
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../dts/rockchip/rk3399-roc-pc-mezzanine.dts  |  72 ++
->  .../arm64/boot/dts/rockchip/rk3399-roc-pc.dts | 757 +----------------
->  .../boot/dts/rockchip/rk3399-roc-pc.dtsi      | 770 ++++++++++++++++++
->  5 files changed, 847 insertions(+), 757 deletions(-)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-> 
-
-Acked-by: Rob Herring <robh@kernel.org>
+SGkgQW5kcnplaiwKVGhhbmtzIGZvciB0YWtpbmcgdGhpcyBvbiEgSXQncyBsb29raW5nIGJldHRl
+ciB0aGFuIHYxIGZvciBzdXJlLiBBIGZldwp0aGluZ3MgYmVsb3c6CgpPbiBNb24sIDIwMTktMTEt
+MDQgYXQgMjM6MTIgKzAxMDAsIEFuZHJ6ZWogUGlldHJhc2lld2ljeiB3cm90ZToKPiArYm9vbCBk
+cm1fYWZiY19jaGVja19vZmZzZXQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiArCQkJICAgY29u
+c3Qgc3RydWN0IGRybV9tb2RlX2ZiX2NtZDIgKm1vZGVfY21kKQo+ICt7Cj4gKwlpZiAobW9kZV9j
+bWQtPm9mZnNldHNbMF0gIT0gMCkgewo+ICsJCURSTV9ERUJVR19LTVMoIkFGQkMgYnVmZmVycycg
+cGxhbmUgb2Zmc2V0IHNob3VsZCBiZQo+IDBcbiIpOwo+ICsJCXJldHVybiBmYWxzZTsKPiArCX0K
+PiArCj4gKwlyZXR1cm4gdHJ1ZTsKPiArfQo+ICtFWFBPUlRfU1lNQk9MX0dQTChkcm1fYWZiY19j
+aGVja19vZmZzZXQpOwoKSXMgdGhpcyBhY3R1YWxseSB1bml2ZXJzYWxseSB0cnVlPyBJZiB0aGUg
+b2Zmc2V0IGlzIHN1ZmZpY2llbnRseQphbGlnbmVkIGZvciAoZS5nLikgRE1BIHRyYW5zZmVycyB0
+byBzdWNjZWVkLCBpcyB0aGVyZSBhbnkgcmVhc29uIHdoeSBpdAptdXN0IGJlIHplcm8/Cgo+ICti
+b29sIGRybV9hZmJjX2NoZWNrX3NpemVfYWxpZ24oc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiAr
+CQkJICAgICAgIGNvbnN0IHN0cnVjdCBkcm1fbW9kZV9mYl9jbWQyICptb2RlX2NtZCkKPiArewo+
+ICsJc3dpdGNoIChtb2RlX2NtZC0+bW9kaWZpZXJbMF0gJgo+IEFGQkNfRk9STUFUX01PRF9CTE9D
+S19TSVpFX01BU0spIHsKPiArCWNhc2UgQUZCQ19GT1JNQVRfTU9EX0JMT0NLX1NJWkVfMTZ4MTY6
+Cj4gKwkJaWYgKChtb2RlX2NtZC0+d2lkdGggJSAxNikgfHwgKG1vZGVfY21kLT5oZWlnaHQgJSAx
+NikpCj4gewoKVGhpcyBpcyBhIGRlYWxicmVha2VyIGZvciBtYW55IHJlc29sdXRpb25zOiBmb3Ig
+ZXhhbXBsZSwgMTM2Nng3NjggaXNuJ3QKY2xlYW5seSBkaXZpc2libGUgYnkgMTYgaW4gd2lkdGgu
+IFNvIHRoaXMgbWVhbnMgdGhhdCB3ZSB3b3VsZCBoYXZlIHRvCmVpdGhlciB1c2UgYSBsYXJnZXIg
+YnVmZmVyIGFuZCBjcm9wLCBvciBzY2FsZSwgb3Igc29tZXRoaW5nLgoKTm8gdXNlcnNwYWNlIGlz
+IHByZXBhcmVkIHRvIGFsaWduIGZiIHdpZHRoL2hlaWdodCB0byB0aWxlIGRpbWVuc2lvbnMKbGlr
+ZSB0aGlzLCBzbyB0aGlzIGNoZWNrIHdpbGwgYmFzaWNhbGx5IGZhaWwgZXZlcnl3aGVyZS4KCkhv
+d2V2ZXIsIG92ZXJhbGxvY2F0aW9uIHJlbGF0aXZlIHRvIHRoZSBkZWNsYXJlZCB3aWR0aC9oZWln
+aHQgaXNuJ3QgYQpwcm9ibGVtIGF0IGFsbC4gSW4gb3JkZXIgdG8gZGVhbCB3aXRoIGhvcml6b250
+YWwgYWxpZ25tZW50LCB5b3Ugc2ltcGx5Cm5lZWQgdG8gZW5zdXJlIHRoYXQgdGhlIHN0cmlkZSBp
+cyBhIG11bHRpcGxlIG9mIHRoZSB0aWxlIHdpZHRoOyBmb3IKdmVydGljYWwgYXJyYW5nZW1lbnQs
+IHRoYXQgdGhlIGJ1ZmZlciBpcyBsYXJnZSBlbm91Z2ggdG8gY29udGFpbgpzdWZmaWNpZW50ICds
+aW5lcycgdG8gdGhlIG5leHQgdGlsZSBib3VuZGFyeS4KCmkuZS4gcmF0aGVyIHRoYW4gY2hlY2tp
+bmcgd2lkdGgvaGVpZ2h0LCB5b3Ugc2hvdWxkIGNoZWNrOgogICogZmJfc3RyaWRlID49IChBTElH
+TihmYl93aWR0aCwgdGlsZV93aWR0aCksIGJwcCkKICAqIGJ1Zl9zaXplID49IGZiX3N0cmlkZSAq
+IEFMSUdOKGZiX2hlaWdodCwgdGlsZV9oZWlnaHQpCgpUaGlzIG1heSBmb3JjZSB1cyB0byBkbyBz
+b21lIHNpbGx5IGNyb3BwaW5nIGdhbWVzIGluc2lkZSB0aGUgUm9ja2NoaXAKS01TIGRyaXZlciwg
+YnV0IEkgZmVlbCBpdCBiZWF0cyB0aGUgYWx0ZXJuYXRpdmUgb2YgYnJlYWtpbmcgdXNlcnNwYWNl
+LgoKPiArCQkJRFJNX0RFQlVHX0tNUygKPiArCQkJCSJBRkJDIGJ1ZmZlciBtdXN0IGJlIGFsaWdu
+ZWQgdG8gMTYKPiBwaXhlbHNcbiIKPiArCQkJKTsKPiArCQkJcmV0dXJuIGZhbHNlOwo+ICsJCX0K
+PiArCQlicmVhazsKPiArCWNhc2UgQUZCQ19GT1JNQVRfTU9EX0JMT0NLX1NJWkVfMzJ4ODoKPiAr
+CQkvKiBmYWxsIHRocm91Z2ggKi8KCkl0J3MgYWxzbyBpbmNvbmdydW91cyB0aGF0IDMyeDggaXMg
+dW5zdXBwb3J0ZWQgaGVyZSwgYnV0IGhhcyBhIHNlY3Rpb24KaW4gZ2V0X3N1cGVyYmxrX3doOyBw
+bGVhc2UgaGFybW9uaXNlIHRoZW0gc28gdGhpcyBzZWN0aW9uIGVpdGhlciBkb2VzCnRoZSBjaGVj
+a3MgYXMgYWJvdmUsIG9yIHRoYXQgZ2V0X3N1cGVyYmxrX3doIGRvZXNuJ3Qgc3VwcG9ydCAzMng4
+CmVpdGhlci4KCj4gK2Jvb2wgZHJtX2FmYmNfY2hlY2tfZmJfc2l6ZV9yZXQodTMyIHBpdGNoLCBp
+bnQgYnBwLAo+ICsJCQkJdTMyIHcsIHUzMiBoLCB1MzIgc3VwZXJibGtfdywgdTMyCj4gc3VwZXJi
+bGtfaCwKPiArCQkJCXNpemVfdCBzaXplLCB1MzIgb2Zmc2V0LCB1MzIgaGRyX2FsaWduLAo+ICsJ
+CQkJdTMyICpwYXlsb2FkX29mZiwgdTMyICp0b3RhbF9zaXplKQo+ICt7Cj4gKwlpbnQgbl9zdXBl
+cmJsa3MgPSAwOwo+ICsJdTMyIHN1cGVyYmxrX3N6ID0gMDsKPiArCXUzMiBhZmJjX3NpemUgPSAw
+OwoKUGxlYXNlIGRvbid0IGluaXRpYWxpc2UgdGhlIGFib3ZlIHRocmVlIHZhcmlhYmxlcywgZ2l2
+ZW4gdGhhdCB5b3UgZ28gb24KdG8gaW1tZWRpYXRlbHkgY2hhbmdlIHRoZWlyIHZhbHVlcy4gSW4g
+dGhpcyBjYXNlLCBpbml0aWFsaXNpbmcgdG8gemVybwpjYW4gb25seSBoaWRlIGxlZ2l0aW1hdGUg
+dW5pbml0aWFsaXNlZC12YXJpYWJsZS11c2Ugd2FybmluZ3MuCgo+ICsJbl9zdXBlcmJsa3MgPSAo
+dyAvIHN1cGVyYmxrX3cpICogKGggLyBzdXBlcmJsa19oKTsKPiArCXN1cGVyYmxrX3N6ID0gKGJw
+cCAqIHN1cGVyYmxrX3cgKiBzdXBlcmJsa19oKSAvIEJJVFNfUEVSX0JZVEU7Cj4gKwlhZmJjX3Np
+emUgPSBBTElHTihuX3N1cGVyYmxrcyAqIEFGQkNfSEVBREVSX1NJWkUsIGhkcl9hbGlnbik7Cj4g
+KwkqcGF5bG9hZF9vZmYgPSBhZmJjX3NpemU7Cj4gKwo+ICsJYWZiY19zaXplICs9IG5fc3VwZXJi
+bGtzICogQUxJR04oc3VwZXJibGtfc3osCj4gQUZCQ19TVVBFUkJMS19BTElHTk1FTlQpOwo+ICsJ
+KnRvdGFsX3NpemUgPSBhZmJjX3NpemUgKyBvZmZzZXQ7CgpHZW5lcmFsbHkgdGhlc2UgYXJlIHJl
+ZmVycmVkIHRvIGFzICd0aWxlcycgcmF0aGVyIHRoYW4gJ3N1cGVyYmxvY2tzJywKZ2l2ZW4gdGhh
+dCBJIHdvdWxkIG9ubHkgZXhwZWN0IG9uZSBzdXBlcmJsb2NrIHBlciBidWZmZXIsIGJ1dCBpZiB0
+aGF0J3MKdGhlIHRlcm1pbm9sb2d5IEFGQkMgdXNlcyB0aGVuIGl0IG1pZ2h0IGJlIGJldHRlciB0
+byBzdGljayB3aXRoIGl0LgoKPiArCWlmICgodyAqIGJwcCkgIT0gKHBpdGNoICogQklUU19QRVJf
+QllURSkpIHsKPiArCQlEUk1fREVCVUdfS01TKCJJbnZhbGlkIHZhbHVlIG9mIChwaXRjaCAqIEJJ
+VFNfUEVSX0JZVEUpCj4gKD0ldSkgc2hvdWxkIGJlIHNhbWUgYXMgd2lkdGggKD0ldSkgKiBicHAg
+KD0ldSlcbiIsCj4gKwkJCSAgICAgIHBpdGNoICogQklUU19QRVJfQllURSwgdywgYnBwCj4gKwkJ
+KTsKPiArCQlyZXR1cm4gZmFsc2U7Cj4gKwl9CgpIYXZpbmcgYSB0b28tc21hbGwgcGl0Y2ggaXMg
+b2J2aW91c2x5IGEgcHJvYmxlbSBhbmQgd2Ugc2hvdWxkIHJlamVjdAppdC4gQnV0IGlzIGhhdmlu
+ZyBhIHRvby1sYXJnZSBwaXRjaCByZWFsbHkgYSBwcm9ibGVtOyBkb2VzIGl0IG5lZWQgdG8KYmUg
+YW4gZXhhY3QgbWF0Y2gsIG9yIGNhbiB3ZSBzdXBwb3J0IHRoZSBjYXNlIHdoZXJlIHRoZSBwaXRj
+aCBpcyB0b28KbGFyZ2UgYnV0IGFsc28gdGlsZS1hbGlnbmVkPyBJZiB3ZSBjYW4sIGl0IHdvdWxk
+IGJlIHZlcnkgZ29vZCB0bwpzdXBwb3J0IHRoYXQuCgpDaGVlcnMsCkRhbmllbAoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
+bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
