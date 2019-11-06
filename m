@@ -1,76 +1,179 @@
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Subject: Re: [PATCHv2 1/4] drm/arm: Factor out generic afbc helpers
-Date: Wed, 6 Nov 2019 13:45:05 +0100
-Message-ID: <d4828420-6109-ff93-e0da-d0493cf3aef5@collabora.com>
-References: <2485717.1SzL54aMiy@e123338-lin>
- <20191104221228.3588-1-andrzej.p@collabora.com>
- <20191104221228.3588-2-andrzej.p@collabora.com>
- <20191105092232.GV10326@phenom.ffwll.local>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH 2/3] drm/rockchip: add ability to handle external dphys
+ in mipi-dsi
+Date: Wed, 6 Nov 2019 15:05:57 +0200
+Message-ID: <20191106130557.GF4878@pendragon.ideasonboard.com>
+References: <20191106112650.8365-1-heiko.stuebner@theobroma-systems.com>
+ <20191106112650.8365-2-heiko.stuebner@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191105092232.GV10326@phenom.ffwll.local>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: kernel@collabora.com, Mihail Atanassov <mihail.atanassov@arm.com>, David Airlie <airlied@linux.ie>, Liviu Dudau <liviu.dudau@arm.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, James Wang <james.qian.wang@arm.com>, Ayan Halder <Ayan.Halder@arm.com>, Sean Paul <sean@poorly.run>
+Content-Type: text/plain; charset=utf-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20191106112650.8365-2-heiko.stuebner@theobroma-systems.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Cc: dri-devel@lists.freedesktop.org, a.hajda@samsung.com, hjc@rock-chips.com, robh+dt@kernel.org, mark.rutland@arm.com, narmstrong@baylibre.com, jonas@kwiboo.se, jernej.skrabec@siol.net, philippe.cornu@st.com, yannick.fertre@st.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, heiko@sntech.de, christoph.muellner@theobroma-systems.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGFuaWVsLAoKVGhhbmsgeW91IGZvciByZXZpZXcsCgpXIGRuaXUgMDUuMTEuMjAxOSBvwqAx
-MDoyMiwgRGFuaWVsIFZldHRlciBwaXN6ZToKPiBPbiBNb24sIE5vdiAwNCwgMjAxOSBhdCAxMTox
-MjoyNVBNICswMTAwLCBBbmRyemVqIFBpZXRyYXNpZXdpY3ogd3JvdGU6Cj4+IFRoZXNlIGFyZSB1
-c2VmdWwgZm9yIG90aGVyIHVzZXJzIG9mIGFmYmMsIGUuZy4gcm9ja2NoaXAuCj4+Cgo8c25pcD4K
-Cj4+ICsKPj4gK2Jvb2wgZHJtX2FmYmNfY2hlY2tfZmJfc2l6ZV9yZXQodTMyIHBpdGNoLCBpbnQg
-YnBwLAo+PiArCQkJCXUzMiB3LCB1MzIgaCwgdTMyIHN1cGVyYmxrX3csIHUzMiBzdXBlcmJsa19o
-LAo+PiArCQkJCXNpemVfdCBzaXplLCB1MzIgb2Zmc2V0LCB1MzIgaGRyX2FsaWduLAo+PiArCQkJ
-CXUzMiAqcGF5bG9hZF9vZmYsIHUzMiAqdG90YWxfc2l6ZSkKPj4gK3sKPj4gKwlpbnQgbl9zdXBl
-cmJsa3MgPSAwOwo+PiArCXUzMiBzdXBlcmJsa19zeiA9IDA7Cj4+ICsJdTMyIGFmYmNfc2l6ZSA9
-IDA7Cj4+ICsKPj4gKwluX3N1cGVyYmxrcyA9ICh3IC8gc3VwZXJibGtfdykgKiAoaCAvIHN1cGVy
-YmxrX2gpOwo+PiArCXN1cGVyYmxrX3N6ID0gKGJwcCAqIHN1cGVyYmxrX3cgKiBzdXBlcmJsa19o
-KSAvIEJJVFNfUEVSX0JZVEU7Cj4+ICsJYWZiY19zaXplID0gQUxJR04obl9zdXBlcmJsa3MgKiBB
-RkJDX0hFQURFUl9TSVpFLCBoZHJfYWxpZ24pOwo+PiArCSpwYXlsb2FkX29mZiA9IGFmYmNfc2l6
-ZTsKPj4gKwo+PiArCWFmYmNfc2l6ZSArPSBuX3N1cGVyYmxrcyAqIEFMSUdOKHN1cGVyYmxrX3N6
-LCBBRkJDX1NVUEVSQkxLX0FMSUdOTUVOVCk7Cj4+ICsJKnRvdGFsX3NpemUgPSBhZmJjX3NpemUg
-KyBvZmZzZXQ7Cj4+ICsKPj4gKwlpZiAoKHcgKiBicHApICE9IChwaXRjaCAqIEJJVFNfUEVSX0JZ
-VEUpKSB7Cj4+ICsJCURSTV9ERUJVR19LTVMoIkludmFsaWQgdmFsdWUgb2YgKHBpdGNoICogQklU
-U19QRVJfQllURSkgKD0ldSkgc2hvdWxkIGJlIHNhbWUgYXMgd2lkdGggKD0ldSkgKiBicHAgKD0l
-dSlcbiIsCj4+ICsJCQkgICAgICBwaXRjaCAqIEJJVFNfUEVSX0JZVEUsIHcsIGJwcAo+PiArCQkp
-Owo+PiArCQlyZXR1cm4gZmFsc2U7Cj4+ICsJfQo+PiArCj4+ICsJaWYgKHNpemUgPCBhZmJjX3Np
-emUpIHsKPj4gKwkJRFJNX0RFQlVHX0tNUygiYnVmZmVyIHNpemUgKCV6dSkgdG9vIHNtYWxsIGZv
-ciBBRkJDIGJ1ZmZlciBzaXplID0gJXVcbiIsCj4+ICsJCQkgICAgICBzaXplLCBhZmJjX3NpemUK
-Pj4gKwkJKTsKPj4gKwo+PiArCQlyZXR1cm4gZmFsc2U7Cj4+ICsJfQo+PiArCj4+ICsJcmV0dXJu
-IHRydWU7Cj4+ICt9Cj4+ICtFWFBPUlRfU1lNQk9MKGRybV9hZmJjX2NoZWNrX2ZiX3NpemVfcmV0
-KTsKPj4gKwo+PiArYm9vbCBkcm1fYWZiY19jaGVja19mYl9zaXplKHUzMiBwaXRjaCwgaW50IGJw
-cCwKPj4gKwkJCSAgICB1MzIgdywgdTMyIGgsIHUzMiBzdXBlcmJsa193LCB1MzIgc3VwZXJibGtf
-aCwKPj4gKwkJCSAgICBzaXplX3Qgc2l6ZSwgdTMyIG9mZnNldCwgdTMyIGhkcl9hbGlnbikKPj4g
-K3sKPj4gKwl1MzIgcGF5bG9hZF9vZmZzZXQsIHRvdGFsX3NpemU7Cj4+ICsKPj4gKwlyZXR1cm4g
-ZHJtX2FmYmNfY2hlY2tfZmJfc2l6ZV9yZXQocGl0Y2gsIGJwcCwgdywgaCwKPj4gKwkJCQkJICBz
-dXBlcmJsa193LCBzdXBlcmJsa19oLAo+PiArCQkJCQkgIHNpemUsIG9mZnNldCwgaGRyX2FsaWdu
-LAo+PiArCQkJCQkgICZwYXlsb2FkX29mZnNldCwgJnRvdGFsX3NpemUpOwo+PiArfQo+PiArRVhQ
-T1JUX1NZTUJPTChkcm1fYWZiY19jaGVja19mYl9zaXplKTsKPiAKPiBXaHkgZG9uJ3Qgd2UgaGF2
-ZSBvbmUgb3ZlcmFsbCAiY2hlY2sgYWZiYyBwYXJhbWV0ZXJzIGFnYWluc3QgYnVmZmVyIgo+IGZ1
-bmN0aW9uPwo+IAoKSSBub3RpY2VkIHRoYXQgZGlmZmVyZW50IGRyaXZlcnMgaGF2ZSBkaWZmZXJl
-bnQgbmVlZHMgKG1hbGlkcAphbmQgcm9ja2NoaXAgYXJlIGtpbmQgb2Ygc2ltaWxhciwgYnV0IGtv
-bWVkYSBpcyBhIGJpdCBkaWZmZXJlbnQpLgpUaGF0IGlzIHdoeSB0aGUgaGVscGVycyBhcmUgb25s
-eSBidWlsZGluZyBibG9ja3Mgb3V0IG9mIHdoaWNoCmVhY2ggZHJpdmVyIGJ1aWxkcyBpdHMgb3du
-IGNoZWNraW5nIGxvZ2ljLiBJbiBwYXJ0aWN1bGFyIGtvbWVkYQp3YW50cyBzb21lIGJ5LXByb2R1
-Y3RzIG9mIHRoZSBjaGVjayBzdG9yZWQgaW4gaXRzIGludGVybmFsIGRhdGEKc3RydWN0dXJlcywg
-aGVuY2UgZHJtX2FmYmNfY2hlY2tfZmJfc2l6ZV9yZXQoKSBhbmQgaXRzIHdyYXBwZXIKZHJtX2Fm
-YmNfY2hlY2tfZmJfc2l6ZSgpIHdoaWNoIGlnbm9yZXMgdGhlICJvdXQiIHBhcmFtZXRlcnMuCgpJ
-ZiBJIHdhbnRlZCB0byBjcmVhdGUgb25lIG92ZXJhbGwgImNoZWNrIGFmYmMgcGFyYW1ldGVycyIg
-SSdkIGhhdmUKdG8gY29tZSB1cCB3aXRoIGEgd2F5IHRvIHBhc3MgZHJpdmVyLXNwZWNpZmljIHJl
-cXVpcmVtZW50cyB0byBpdAphbmQgdGhlbiBpbnNpZGUgdGhlIGZ1bmN0aW9uIGhhdmUgc29tZSBs
-b2dpYyB0byBkZWNpZGUgd2hhdCB0bwpjaGVjayBhZ2FpbnN0IHdoYXQuIERvIHlvdSB0aGluayBp
-dCBpcyB3b3J0aCBpdD8KCkFuZHJ6ZWoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpLWRldmVs
+Hi Heiko,
+
+Thank you for the patch.
+
+On Wed, Nov 06, 2019 at 12:26:49PM +0100, Heiko Stuebner wrote:
+> While the common case is that the dsi controller uses an internal dphy,
+> accessed through the phy registers inside the dsi controller, there is
+> also the possibility to use a separate dphy from a different vendor.
+> 
+> One such case is the Rockchip px30 that uses a Innosilicon Mipi dphy,
+> so add the support for handling such a constellation, including the pll
+> also getting generated inside that external phy.
+> 
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> ---
+>  .../display/rockchip/dw_mipi_dsi_rockchip.txt |  7 ++-
+>  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 54 ++++++++++++++++++-
+>  2 files changed, 57 insertions(+), 4 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+> index ce4c1fc9116c..8b25156a9dcf 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+> +++ b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+> @@ -8,8 +8,9 @@ Required properties:
+>  	      "rockchip,rk3399-mipi-dsi", "snps,dw-mipi-dsi".
+>  - reg: Represent the physical address range of the controller.
+>  - interrupts: Represent the controller's interrupt to the CPU(s).
+> -- clocks, clock-names: Phandles to the controller's pll reference
+> -  clock(ref) and APB clock(pclk). For RK3399, a phy config clock
+> +- clocks, clock-names: Phandles to the controller's and APB clock(pclk)
+> +  and either a pll reference clock(ref) (internal dphy) or pll clock(pll)
+> +  (when connected to an external phy). For RK3399, a phy config clock
+
+Why does external PHY clock need to be specified here ? Shouldn't it be
+handled by the PHY instead ?
+
+>    (phy_cfg) and a grf clock(grf) are required. As described in [1].
+>  - rockchip,grf: this soc should set GRF regs to mux vopl/vopb.
+>  - ports: contain a port node with endpoint definitions as defined in [2].
+> @@ -18,6 +19,8 @@ Required properties:
+>  - video port 1 for either a panel or subsequent encoder
+>  
+>  Optional properties:
+> +- phys: from general PHY binding: the phandle for the PHY device.
+> +- phy-names: Should be "dphy" if phys references an external phy.
+>  - power-domains: a phandle to mipi dsi power domain node.
+>  - resets: list of phandle + reset specifier pairs, as described in [3].
+>  - reset-names: string reset name, must be "apb".
+> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> index bc073ec5c183..99ec625e0448 100644
+> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> @@ -12,6 +12,7 @@
+>  #include <linux/mfd/syscon.h>
+>  #include <linux/module.h>
+>  #include <linux/of_device.h>
+> +#include <linux/phy/phy.h>
+>  #include <linux/pm_runtime.h>
+>  #include <linux/regmap.h>
+>  
+> @@ -223,6 +224,9 @@ struct dw_mipi_dsi_rockchip {
+>  	bool is_slave;
+>  	struct dw_mipi_dsi_rockchip *slave;
+>  
+> +	/* optional external dphy */
+> +	struct phy *phy;
+> +
+>  	unsigned int lane_mbps; /* per lane */
+>  	u16 input_div;
+>  	u16 feedback_div;
+> @@ -359,6 +363,9 @@ static int dw_mipi_dsi_phy_init(void *priv_data)
+>  	struct dw_mipi_dsi_rockchip *dsi = priv_data;
+>  	int ret, i, vco;
+>  
+> +	if (dsi->phy)
+> +		return 0;
+> +
+>  	/*
+>  	 * Get vco from frequency(lane_mbps)
+>  	 * vco	frequency table
+> @@ -467,6 +474,27 @@ static int dw_mipi_dsi_phy_init(void *priv_data)
+>  	return ret;
+>  }
+>  
+> +static void dw_mipi_dsi_phy_power_on(void *priv_data)
+> +{
+> +	struct dw_mipi_dsi_rockchip *dsi = priv_data;
+> +	int ret;
+> +
+> +	ret = phy_set_mode(dsi->phy, PHY_MODE_MIPI_DPHY);
+> +	if (ret) {
+> +		DRM_DEV_ERROR(dsi->dev, "failed to set phy mode: %d\n", ret);
+> +		return;
+> +	}
+> +
+> +	phy_power_on(dsi->phy);
+> +}
+> +
+> +static void dw_mipi_dsi_phy_power_off(void *priv_data)
+> +{
+> +	struct dw_mipi_dsi_rockchip *dsi = priv_data;
+> +
+> +	phy_power_off(dsi->phy);
+> +}
+> +
+>  static int
+>  dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
+>  			  unsigned long mode_flags, u32 lanes, u32 format,
+> @@ -504,9 +532,21 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
+>  				      "DPHY clock frequency is out of range\n");
+>  	}
+>  
+> -	fin = clk_get_rate(dsi->pllref_clk);
+>  	fout = target_mbps * USEC_PER_SEC;
+>  
+> +	/* an external phy does have a controllable pll clk */
+> +	if (dsi->phy) {
+> +		fout = clk_round_rate(dsi->pllref_clk, fout);
+> +		clk_set_rate(dsi->pllref_clk, fout);
+> +
+> +		dsi->lane_mbps = target_mbps;
+> +		*lane_mbps = dsi->lane_mbps;
+> +
+> +		return 0;
+> +	}
+> +
+> +	fin = clk_get_rate(dsi->pllref_clk);
+> +
+>  	/* constraint: 5Mhz <= Fref / N <= 40MHz */
+>  	min_prediv = DIV_ROUND_UP(fin, 40 * USEC_PER_SEC);
+>  	max_prediv = fin / (5 * USEC_PER_SEC);
+> @@ -561,6 +601,8 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
+>  
+>  static const struct dw_mipi_dsi_phy_ops dw_mipi_dsi_rockchip_phy_ops = {
+>  	.init = dw_mipi_dsi_phy_init,
+> +	.power_on = dw_mipi_dsi_phy_power_on,
+> +	.power_off = dw_mipi_dsi_phy_power_off,
+>  	.get_lane_mbps = dw_mipi_dsi_get_lane_mbps,
+>  };
+>  
+> @@ -920,7 +962,15 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
+>  		return -EINVAL;
+>  	}
+>  
+> -	dsi->pllref_clk = devm_clk_get(dev, "ref");
+> +	/* try to get a possible external dphy */
+> +	dsi->phy = devm_phy_optional_get(dev, "dphy");
+> +	if (IS_ERR(dsi->phy)) {
+> +		ret = PTR_ERR(dsi->phy);
+> +		DRM_DEV_ERROR(dev, "failed to get mipi dphy: %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	dsi->pllref_clk = devm_clk_get(dev, dsi->phy ? "pll" : "ref");
+>  	if (IS_ERR(dsi->pllref_clk)) {
+>  		ret = PTR_ERR(dsi->pllref_clk);
+>  		DRM_DEV_ERROR(dev,
+
+-- 
+Regards,
+
+Laurent Pinchart
