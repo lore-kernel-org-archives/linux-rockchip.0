@@ -1,100 +1,76 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v9 1/4] media: videodev2.h, v4l2-ioctl: add rkisp1 meta
- buffer format
-Date: Wed, 6 Nov 2019 09:30:53 -0300
-Message-ID: <28cff7ab-ef56-791e-0342-571f64cb9807@collabora.com>
-References: <20191106120132.6876-1-helen.koike@collabora.com>
- <20191106120132.6876-2-helen.koike@collabora.com>
- <9102bcf8-0279-7972-daff-b15aaf98804d@cisco.com>
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Subject: Re: [PATCHv2 1/4] drm/arm: Factor out generic afbc helpers
+Date: Wed, 6 Nov 2019 13:45:05 +0100
+Message-ID: <d4828420-6109-ff93-e0da-d0493cf3aef5@collabora.com>
+References: <2485717.1SzL54aMiy@e123338-lin>
+ <20191104221228.3588-1-andrzej.p@collabora.com>
+ <20191104221228.3588-2-andrzej.p@collabora.com>
+ <20191105092232.GV10326@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9102bcf8-0279-7972-daff-b15aaf98804d@cisco.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20191105092232.GV10326@phenom.ffwll.local>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: "Hans Verkuil (hansverk)" <hansverk@cisco.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Cc: "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "eddie.cai.linux@gmail.com" <eddie.cai.linux@gmail.com>, "mchehab@kernel.org" <mchehab@kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>, "jeffy.chen@rock-chips.com" <jeffy.chen@rock-chips.com>, "zyc@rock-chips.com" <zyc@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "tfiga@chromium.org" <tfiga@chromium.org>, "hans.verkuil@cisco.com" <hans.verkuil@cisco.com>, "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>, "sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>, "kernel@collabora.com" <kernel@collabora.com>, "ezequiel@collabora.com" <ezequiel@collabora.com>, linux-arm-kernel@lists.inf
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: kernel@collabora.com, Mihail Atanassov <mihail.atanassov@arm.com>, David Airlie <airlied@linux.ie>, Liviu Dudau <liviu.dudau@arm.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, James Wang <james.qian.wang@arm.com>, Ayan Halder <Ayan.Halder@arm.com>, Sean Paul <sean@poorly.run>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 11/6/19 10:22 AM, Hans Verkuil (hansverk) wrote:
-> On 11/6/19 1:01 PM, Helen Koike wrote:
->> From: Shunqian Zheng <zhengsq@rock-chips.com>
->>
->> Add the Rockchip ISP1 specific processing parameter format
->> V4L2_META_FMT_RK_ISP1_PARAMS and metadata format
->> V4L2_META_FMT_RK_ISP1_STAT_3A for 3A.
->>
->> Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
->> Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
->> Acked-by: Hans Verkuil <hans.verkuil@cisco.com>
-> 
-> I acked this? It is missing documentation for these new formats.
-
-I think so https://www.spinics.net/lists/linux-rockchip/msg18999.html :)
-
-I'll update the docs and the fixes you pointed below.
-
-Thanks.
-Helen
-
-> 
->> [refactored for upstream]
->> Signed-off-by: Helen Koike <helen.koike@collabora.com>
->> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->>
->> ---
->>
->> Changes in v9:
->> - Add reviewed-by tag from Laurent
->>
->> Changes in v8: None
->> Changes in v7:
->> - s/IPU3/RK_ISP1
->>
->>  drivers/media/v4l2-core/v4l2-ioctl.c | 2 ++
->>  include/uapi/linux/videodev2.h       | 4 ++++
->>  2 files changed, 6 insertions(+)
->>
->> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
->> index 315ac12c3e0a..ade990554caf 100644
->> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
->> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
->> @@ -1341,6 +1341,8 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
->>  	case V4L2_META_FMT_UVC:		descr = "UVC Payload Header Metadata"; break;
->>  	case V4L2_META_FMT_D4XX:	descr = "Intel D4xx UVC Metadata"; break;
->>  	case V4L2_META_FMT_VIVID:       descr = "Vivid Metadata"; break;
->> +	case V4L2_META_FMT_RK_ISP1_PARAMS:	descr = "Rockchip ISP1 3A params"; break;
-> 
-> params -> Params
-> 
->> +	case V4L2_META_FMT_RK_ISP1_STAT_3A:	descr = "Rockchip ISP1 3A statistics"; break;
-> 
-> statistics -> Statistics
-> 
->>  
->>  	default:
->>  		/* Compressed formats */
->> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
->> index f98bbcced8ff..56798b09cd85 100644
->> --- a/include/uapi/linux/videodev2.h
->> +++ b/include/uapi/linux/videodev2.h
->> @@ -762,6 +762,10 @@ struct v4l2_pix_format {
->>  #define V4L2_META_FMT_D4XX        v4l2_fourcc('D', '4', 'X', 'X') /* D4XX Payload Header metadata */
->>  #define V4L2_META_FMT_VIVID	  v4l2_fourcc('V', 'I', 'V', 'D') /* Vivid Metadata */
->>  
->> +/* Vendor specific - used for RK_ISP1 camera sub-system */
->> +#define V4L2_META_FMT_RK_ISP1_PARAMS	v4l2_fourcc('R', 'K', '1', 'P') /* Rockchip ISP1 params */
->> +#define V4L2_META_FMT_RK_ISP1_STAT_3A	v4l2_fourcc('R', 'K', '1', 'S') /* Rockchip ISP1 3A statistics */
->> +
->>  /* priv field value to indicates that subsequent fields are valid. */
->>  #define V4L2_PIX_FMT_PRIV_MAGIC		0xfeedcafe
->>  
->>
-> 
-> Regards,
-> 
-> 	Hans
-> 
+SGkgRGFuaWVsLAoKVGhhbmsgeW91IGZvciByZXZpZXcsCgpXIGRuaXUgMDUuMTEuMjAxOSBvwqAx
+MDoyMiwgRGFuaWVsIFZldHRlciBwaXN6ZToKPiBPbiBNb24sIE5vdiAwNCwgMjAxOSBhdCAxMTox
+MjoyNVBNICswMTAwLCBBbmRyemVqIFBpZXRyYXNpZXdpY3ogd3JvdGU6Cj4+IFRoZXNlIGFyZSB1
+c2VmdWwgZm9yIG90aGVyIHVzZXJzIG9mIGFmYmMsIGUuZy4gcm9ja2NoaXAuCj4+Cgo8c25pcD4K
+Cj4+ICsKPj4gK2Jvb2wgZHJtX2FmYmNfY2hlY2tfZmJfc2l6ZV9yZXQodTMyIHBpdGNoLCBpbnQg
+YnBwLAo+PiArCQkJCXUzMiB3LCB1MzIgaCwgdTMyIHN1cGVyYmxrX3csIHUzMiBzdXBlcmJsa19o
+LAo+PiArCQkJCXNpemVfdCBzaXplLCB1MzIgb2Zmc2V0LCB1MzIgaGRyX2FsaWduLAo+PiArCQkJ
+CXUzMiAqcGF5bG9hZF9vZmYsIHUzMiAqdG90YWxfc2l6ZSkKPj4gK3sKPj4gKwlpbnQgbl9zdXBl
+cmJsa3MgPSAwOwo+PiArCXUzMiBzdXBlcmJsa19zeiA9IDA7Cj4+ICsJdTMyIGFmYmNfc2l6ZSA9
+IDA7Cj4+ICsKPj4gKwluX3N1cGVyYmxrcyA9ICh3IC8gc3VwZXJibGtfdykgKiAoaCAvIHN1cGVy
+YmxrX2gpOwo+PiArCXN1cGVyYmxrX3N6ID0gKGJwcCAqIHN1cGVyYmxrX3cgKiBzdXBlcmJsa19o
+KSAvIEJJVFNfUEVSX0JZVEU7Cj4+ICsJYWZiY19zaXplID0gQUxJR04obl9zdXBlcmJsa3MgKiBB
+RkJDX0hFQURFUl9TSVpFLCBoZHJfYWxpZ24pOwo+PiArCSpwYXlsb2FkX29mZiA9IGFmYmNfc2l6
+ZTsKPj4gKwo+PiArCWFmYmNfc2l6ZSArPSBuX3N1cGVyYmxrcyAqIEFMSUdOKHN1cGVyYmxrX3N6
+LCBBRkJDX1NVUEVSQkxLX0FMSUdOTUVOVCk7Cj4+ICsJKnRvdGFsX3NpemUgPSBhZmJjX3NpemUg
+KyBvZmZzZXQ7Cj4+ICsKPj4gKwlpZiAoKHcgKiBicHApICE9IChwaXRjaCAqIEJJVFNfUEVSX0JZ
+VEUpKSB7Cj4+ICsJCURSTV9ERUJVR19LTVMoIkludmFsaWQgdmFsdWUgb2YgKHBpdGNoICogQklU
+U19QRVJfQllURSkgKD0ldSkgc2hvdWxkIGJlIHNhbWUgYXMgd2lkdGggKD0ldSkgKiBicHAgKD0l
+dSlcbiIsCj4+ICsJCQkgICAgICBwaXRjaCAqIEJJVFNfUEVSX0JZVEUsIHcsIGJwcAo+PiArCQkp
+Owo+PiArCQlyZXR1cm4gZmFsc2U7Cj4+ICsJfQo+PiArCj4+ICsJaWYgKHNpemUgPCBhZmJjX3Np
+emUpIHsKPj4gKwkJRFJNX0RFQlVHX0tNUygiYnVmZmVyIHNpemUgKCV6dSkgdG9vIHNtYWxsIGZv
+ciBBRkJDIGJ1ZmZlciBzaXplID0gJXVcbiIsCj4+ICsJCQkgICAgICBzaXplLCBhZmJjX3NpemUK
+Pj4gKwkJKTsKPj4gKwo+PiArCQlyZXR1cm4gZmFsc2U7Cj4+ICsJfQo+PiArCj4+ICsJcmV0dXJu
+IHRydWU7Cj4+ICt9Cj4+ICtFWFBPUlRfU1lNQk9MKGRybV9hZmJjX2NoZWNrX2ZiX3NpemVfcmV0
+KTsKPj4gKwo+PiArYm9vbCBkcm1fYWZiY19jaGVja19mYl9zaXplKHUzMiBwaXRjaCwgaW50IGJw
+cCwKPj4gKwkJCSAgICB1MzIgdywgdTMyIGgsIHUzMiBzdXBlcmJsa193LCB1MzIgc3VwZXJibGtf
+aCwKPj4gKwkJCSAgICBzaXplX3Qgc2l6ZSwgdTMyIG9mZnNldCwgdTMyIGhkcl9hbGlnbikKPj4g
+K3sKPj4gKwl1MzIgcGF5bG9hZF9vZmZzZXQsIHRvdGFsX3NpemU7Cj4+ICsKPj4gKwlyZXR1cm4g
+ZHJtX2FmYmNfY2hlY2tfZmJfc2l6ZV9yZXQocGl0Y2gsIGJwcCwgdywgaCwKPj4gKwkJCQkJICBz
+dXBlcmJsa193LCBzdXBlcmJsa19oLAo+PiArCQkJCQkgIHNpemUsIG9mZnNldCwgaGRyX2FsaWdu
+LAo+PiArCQkJCQkgICZwYXlsb2FkX29mZnNldCwgJnRvdGFsX3NpemUpOwo+PiArfQo+PiArRVhQ
+T1JUX1NZTUJPTChkcm1fYWZiY19jaGVja19mYl9zaXplKTsKPiAKPiBXaHkgZG9uJ3Qgd2UgaGF2
+ZSBvbmUgb3ZlcmFsbCAiY2hlY2sgYWZiYyBwYXJhbWV0ZXJzIGFnYWluc3QgYnVmZmVyIgo+IGZ1
+bmN0aW9uPwo+IAoKSSBub3RpY2VkIHRoYXQgZGlmZmVyZW50IGRyaXZlcnMgaGF2ZSBkaWZmZXJl
+bnQgbmVlZHMgKG1hbGlkcAphbmQgcm9ja2NoaXAgYXJlIGtpbmQgb2Ygc2ltaWxhciwgYnV0IGtv
+bWVkYSBpcyBhIGJpdCBkaWZmZXJlbnQpLgpUaGF0IGlzIHdoeSB0aGUgaGVscGVycyBhcmUgb25s
+eSBidWlsZGluZyBibG9ja3Mgb3V0IG9mIHdoaWNoCmVhY2ggZHJpdmVyIGJ1aWxkcyBpdHMgb3du
+IGNoZWNraW5nIGxvZ2ljLiBJbiBwYXJ0aWN1bGFyIGtvbWVkYQp3YW50cyBzb21lIGJ5LXByb2R1
+Y3RzIG9mIHRoZSBjaGVjayBzdG9yZWQgaW4gaXRzIGludGVybmFsIGRhdGEKc3RydWN0dXJlcywg
+aGVuY2UgZHJtX2FmYmNfY2hlY2tfZmJfc2l6ZV9yZXQoKSBhbmQgaXRzIHdyYXBwZXIKZHJtX2Fm
+YmNfY2hlY2tfZmJfc2l6ZSgpIHdoaWNoIGlnbm9yZXMgdGhlICJvdXQiIHBhcmFtZXRlcnMuCgpJ
+ZiBJIHdhbnRlZCB0byBjcmVhdGUgb25lIG92ZXJhbGwgImNoZWNrIGFmYmMgcGFyYW1ldGVycyIg
+SSdkIGhhdmUKdG8gY29tZSB1cCB3aXRoIGEgd2F5IHRvIHBhc3MgZHJpdmVyLXNwZWNpZmljIHJl
+cXVpcmVtZW50cyB0byBpdAphbmQgdGhlbiBpbnNpZGUgdGhlIGZ1bmN0aW9uIGhhdmUgc29tZSBs
+b2dpYyB0byBkZWNpZGUgd2hhdCB0bwpjaGVjayBhZ2FpbnN0IHdoYXQuIERvIHlvdSB0aGluayBp
+dCBpcyB3b3J0aCBpdD8KCkFuZHJ6ZWoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpLWRldmVs
