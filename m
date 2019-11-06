@@ -1,107 +1,75 @@
-From: Liviu Dudau <liviu.dudau@arm.com>
-Subject: Re: [PATCHv2 2/4] drm/malidp: use afbc helpers
-Date: Wed, 6 Nov 2019 11:09:44 +0000
-Message-ID: <20191106110944.eod6k4vdsw5at6tx@e110455-lin.cambridge.arm.com>
-References: <2485717.1SzL54aMiy@e123338-lin>
- <20191104221228.3588-1-andrzej.p@collabora.com>
- <20191104221228.3588-3-andrzej.p@collabora.com>
+From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Subject: [PATCH 3/3] drm/rockchip: dsi: add px30 support
+Date: Wed,  6 Nov 2019 12:26:50 +0100
+Message-ID: <20191106112650.8365-3-heiko.stuebner@theobroma-systems.com>
+References: <20191106112650.8365-1-heiko.stuebner@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20191104221228.3588-3-andrzej.p@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Cc: Ayan Halder <Ayan.Halder@arm.com>, kernel@collabora.com, David Airlie <airlied@linux.ie>, linux-rockchip@lists.infradead.org, James Wang <james.qian.wang@arm.com>, dri-devel@lists.freedesktop.org, Mihail Atanassov <mihail.atanassov@arm.com>, Sean Paul <sean@poorly.run>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191106112650.8365-1-heiko.stuebner@theobroma-systems.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: dri-devel@lists.freedesktop.org, a.hajda@samsung.com
+Cc: hjc@rock-chips.com, robh+dt@kernel.org, mark.rutland@arm.com, narmstrong@baylibre.com, Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se, jernej.skrabec@siol.net, philippe.cornu@st.com, yannick.fertre@st.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, heiko@sntech.de, christoph.muellner@theobroma-systems.com, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQW5kcnplaiwKCk9uIE1vbiwgTm92IDA0LCAyMDE5IGF0IDExOjEyOjI2UE0gKzAxMDAsIEFu
-ZHJ6ZWogUGlldHJhc2lld2ljeiB3cm90ZToKPiBUaGVyZSBhcmUgYWZiYyBoZWxwZXJzIGF2YWls
-YWJsZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBBbmRyemVqIFBpZXRyYXNpZXdpY3ogPGFuZHJ6ZWou
-cEBjb2xsYWJvcmEuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYXJtL21hbGlkcF9kcnYu
-YyB8IDY2ICsrKysrKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2Vk
-LCAxMiBpbnNlcnRpb25zKCspLCA1NCBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9ncHUvZHJtL2FybS9tYWxpZHBfZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vYXJtL21hbGlk
-cF9kcnYuYwo+IGluZGV4IDM3ZDkyYTA2MzE4ZS4uYWI5MzU4OGNjOGViIDEwMDY0NAo+IC0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9hcm0vbWFsaWRwX2Rydi5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJt
-L2FybS9tYWxpZHBfZHJ2LmMKPiBAQCAtMTUsNiArMTUsNyBAQAo+ICAjaW5jbHVkZSA8bGludXgv
-cG1fcnVudGltZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvZGVidWdmcy5oPgo+ICAKPiArI2luY2x1
-ZGUgPGRybS9kcm1fYWZiYy5oPgo+ICAjaW5jbHVkZSA8ZHJtL2RybV9hdG9taWMuaD4KPiAgI2lu
-Y2x1ZGUgPGRybS9kcm1fYXRvbWljX2hlbHBlci5oPgo+ICAjaW5jbHVkZSA8ZHJtL2RybV9jcnRj
-Lmg+Cj4gQEAgLTM1LDggKzM2LDYgQEAKPiAgI2luY2x1ZGUgIm1hbGlkcF9ody5oIgo+ICAKPiAg
-I2RlZmluZSBNQUxJRFBfQ09ORl9WQUxJRF9USU1FT1VUCTI1MAo+IC0jZGVmaW5lIEFGQkNfSEVB
-REVSX1NJWkUJCTE2Cj4gLSNkZWZpbmUgQUZCQ19TVVBFUkJMS19BTElHTk1FTlQJCTEyOAo+ICAK
-PiAgc3RhdGljIHZvaWQgbWFsaWRwX3dyaXRlX2dhbW1hX3RhYmxlKHN0cnVjdCBtYWxpZHBfaHdf
-ZGV2aWNlICpod2RldiwKPiAgCQkJCSAgICAgdTMyIGRhdGFbTUFMSURQX0NPRUZGVEFCX05VTV9D
-T0VGRlNdKQo+IEBAIC0yNzcsMjQgKzI3Niw4IEBAIG1hbGlkcF92ZXJpZnlfYWZiY19mcmFtZWJ1
-ZmZlcl9jYXBzKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCj4gIAkJCQkJbW9kZV9jbWQtPm1vZGlm
-aWVyWzBdKSA9PSBmYWxzZSkKPiAgCQlyZXR1cm4gZmFsc2U7Cj4gIAo+IC0JaWYgKG1vZGVfY21k
-LT5vZmZzZXRzWzBdICE9IDApIHsKPiAtCQlEUk1fREVCVUdfS01TKCJBRkJDIGJ1ZmZlcnMnIHBs
-YW5lIG9mZnNldCBzaG91bGQgYmUgMFxuIik7Cj4gLQkJcmV0dXJuIGZhbHNlOwo+IC0JfQo+IC0K
-PiAtCXN3aXRjaCAobW9kZV9jbWQtPm1vZGlmaWVyWzBdICYgQUZCQ19TSVpFX01BU0spIHsKPiAt
-CWNhc2UgQUZCQ19TSVpFXzE2WDE2Ogo+IC0JCWlmICgobW9kZV9jbWQtPndpZHRoICUgMTYpIHx8
-IChtb2RlX2NtZC0+aGVpZ2h0ICUgMTYpKSB7Cj4gLQkJCURSTV9ERUJVR19LTVMoIkFGQkMgYnVm
-ZmVycyBtdXN0IGJlIGFsaWduZWQgdG8gMTYgcGl4ZWxzXG4iKTsKPiAtCQkJcmV0dXJuIGZhbHNl
-Owo+IC0JCX0KPiAtCQlicmVhazsKPiAtCWRlZmF1bHQ6Cj4gLQkJRFJNX0RFQlVHX0tNUygiVW5z
-dXBwb3J0ZWQgQUZCQyBibG9jayBzaXplXG4iKTsKPiAtCQlyZXR1cm4gZmFsc2U7Cj4gLQl9Cj4g
-LQo+IC0JcmV0dXJuIHRydWU7Cj4gKwlyZXR1cm4gZHJtX2FmYmNfY2hlY2tfb2Zmc2V0KGRldiwg
-bW9kZV9jbWQpICYmCj4gKwkgICAgICAgZHJtX2FmYmNfY2hlY2tfc2l6ZV9hbGlnbihkZXYsIG1v
-ZGVfY21kKTsKPiAgfQoKR2l2ZW4gdGhhdCB0aGUgY29udGVudCBvZiB0aGlzIGZ1bmN0aW9uIGdl
-dHMgY29waWVkIHByZXR0eSBtdWNoIHZlcmJhdGltIGludG8gdGhlIG5ldwpkcm1fYWZiYy5jIGZp
-bGUsIEkgc3VnZ2VzdCB5b3UgbWFrZSB0aGUgY2hhbmdlIGluIHRoZSAxLzQgcGF0Y2ggYW5kIGFs
-c28gdXBkYXRlIHRoZQpjb3B5cmlnaHQgc3RhdGVtZW50IGluIHRoYXQgZmlsZSB0byBzaG93IHRo
-YXQgdGhlIGNvZGUgb3JpZ2luYXRlZCBmcm9tIGhlcmUuCgpCZXN0IHJlZ2FyZHMsCkxpdml1Cgo+
-ICAKPiAgc3RhdGljIGJvb2wKPiBAQCAtMzAyLDU0ICsyODUsMjkgQEAgbWFsaWRwX3ZlcmlmeV9h
-ZmJjX2ZyYW1lYnVmZmVyX3NpemUoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiAgCQkJCSAgICBz
-dHJ1Y3QgZHJtX2ZpbGUgKmZpbGUsCj4gIAkJCQkgICAgY29uc3Qgc3RydWN0IGRybV9tb2RlX2Zi
-X2NtZDIgKm1vZGVfY21kKQo+ICB7Cj4gLQlpbnQgbl9zdXBlcmJsb2NrcyA9IDA7Cj4gIAljb25z
-dCBzdHJ1Y3QgZHJtX2Zvcm1hdF9pbmZvICppbmZvOwo+ICAJc3RydWN0IGRybV9nZW1fb2JqZWN0
-ICpvYmpzID0gTlVMTDsKPiAtCXUzMiBhZmJjX3N1cGVyYmxvY2tfc2l6ZSA9IDAsIGFmYmNfc3Vw
-ZXJibG9ja19oZWlnaHQgPSAwOwo+IC0JdTMyIGFmYmNfc3VwZXJibG9ja193aWR0aCA9IDAsIGFm
-YmNfc2l6ZSA9IDA7Cj4gIAlpbnQgYnBwID0gMDsKPiAtCj4gLQlzd2l0Y2ggKG1vZGVfY21kLT5t
-b2RpZmllclswXSAmIEFGQkNfU0laRV9NQVNLKSB7Cj4gLQljYXNlIEFGQkNfU0laRV8xNlgxNjoK
-PiAtCQlhZmJjX3N1cGVyYmxvY2tfaGVpZ2h0ID0gMTY7Cj4gLQkJYWZiY19zdXBlcmJsb2NrX3dp
-ZHRoID0gMTY7Cj4gLQkJYnJlYWs7Cj4gLQlkZWZhdWx0Ogo+IC0JCURSTV9ERUJVR19LTVMoIkFG
-QkMgc3VwZXJibG9jayBzaXplIGlzIG5vdCBzdXBwb3J0ZWRcbiIpOwo+IC0JCXJldHVybiBmYWxz
-ZTsKPiAtCX0KPiArCXUzMiB3LCBoOwo+ICAKPiAgCWluZm8gPSBkcm1fZ2V0X2Zvcm1hdF9pbmZv
-KGRldiwgbW9kZV9jbWQpOwo+IC0KPiAtCW5fc3VwZXJibG9ja3MgPSAobW9kZV9jbWQtPndpZHRo
-IC8gYWZiY19zdXBlcmJsb2NrX3dpZHRoKSAqCj4gLQkJKG1vZGVfY21kLT5oZWlnaHQgLyBhZmJj
-X3N1cGVyYmxvY2tfaGVpZ2h0KTsKPiAtCj4gIAlicHAgPSBtYWxpZHBfZm9ybWF0X2dldF9icHAo
-aW5mby0+Zm9ybWF0KTsKPiAgCj4gLQlhZmJjX3N1cGVyYmxvY2tfc2l6ZSA9IChicHAgKiBhZmJj
-X3N1cGVyYmxvY2tfd2lkdGggKiBhZmJjX3N1cGVyYmxvY2tfaGVpZ2h0KQo+IC0JCQkJLyBCSVRT
-X1BFUl9CWVRFOwo+IC0KPiAtCWFmYmNfc2l6ZSA9IEFMSUdOKG5fc3VwZXJibG9ja3MgKiBBRkJD
-X0hFQURFUl9TSVpFLCBBRkJDX1NVUEVSQkxLX0FMSUdOTUVOVCk7Cj4gLQlhZmJjX3NpemUgKz0g
-bl9zdXBlcmJsb2NrcyAqIEFMSUdOKGFmYmNfc3VwZXJibG9ja19zaXplLCBBRkJDX1NVUEVSQkxL
-X0FMSUdOTUVOVCk7Cj4gLQo+IC0JaWYgKChtb2RlX2NtZC0+d2lkdGggKiBicHApICE9IChtb2Rl
-X2NtZC0+cGl0Y2hlc1swXSAqIEJJVFNfUEVSX0JZVEUpKSB7Cj4gLQkJRFJNX0RFQlVHX0tNUygi
-SW52YWxpZCB2YWx1ZSBvZiAocGl0Y2ggKiBCSVRTX1BFUl9CWVRFKSAoPSV1KSAiCj4gLQkJCSAg
-ICAgICJzaG91bGQgYmUgc2FtZSBhcyB3aWR0aCAoPSV1KSAqIGJwcCAoPSV1KVxuIiwKPiAtCQkJ
-ICAgICAgKG1vZGVfY21kLT5waXRjaGVzWzBdICogQklUU19QRVJfQllURSksCj4gLQkJCSAgICAg
-IG1vZGVfY21kLT53aWR0aCwgYnBwKTsKPiAtCQlyZXR1cm4gZmFsc2U7Cj4gLQl9Cj4gLQo+ICAJ
-b2JqcyA9IGRybV9nZW1fb2JqZWN0X2xvb2t1cChmaWxlLCBtb2RlX2NtZC0+aGFuZGxlc1swXSk7
-Cj4gIAlpZiAoIW9ianMpIHsKPiAgCQlEUk1fREVCVUdfS01TKCJGYWlsZWQgdG8gbG9va3VwIEdF
-TSBvYmplY3RcbiIpOwo+ICAJCXJldHVybiBmYWxzZTsKPiAgCX0KPiAgCj4gLQlpZiAob2Jqcy0+
-c2l6ZSA8IGFmYmNfc2l6ZSkgewo+IC0JCURSTV9ERUJVR19LTVMoImJ1ZmZlciBzaXplICglenUp
-IHRvbyBzbWFsbCBmb3IgQUZCQyBidWZmZXIgc2l6ZSA9ICV1XG4iLAo+IC0JCQkgICAgICBvYmpz
-LT5zaXplLCBhZmJjX3NpemUpOwo+ICsJaWYgKCFkcm1fYWZiY19nZXRfc3VwZXJibGtfd2gobW9k
-ZV9jbWQtPm1vZGlmaWVyWzBdLCAmdywgJmgpKQo+ICsJCXJldHVybiBmYWxzZTsKPiArCj4gKwlp
-ZiAoIWRybV9hZmJjX2NoZWNrX2ZiX3NpemUobW9kZV9jbWQtPnBpdGNoZXNbMF0sIGJwcCwKPiAr
-CQkJCSAgICBtb2RlX2NtZC0+d2lkdGgsIG1vZGVfY21kLT5oZWlnaHQsIHcsIGgsCj4gKwkJCQkg
-ICAgb2Jqcy0+c2l6ZSwgbW9kZV9jbWQtPm9mZnNldHNbMF0sCj4gKwkJCQkgICAgQUZCQ19TVVBF
-UkJMS19BTElHTk1FTlQpKSB7Cj4gIAkJZHJtX2dlbV9vYmplY3RfcHV0X3VubG9ja2VkKG9ianMp
-Owo+ICsKPiAgCQlyZXR1cm4gZmFsc2U7Cj4gIAl9Cj4gIAo+IC0tIAo+IDIuMTcuMQo+IAoKLS0g
-Cj09PT09PT09PT09PT09PT09PT09CnwgSSB3b3VsZCBsaWtlIHRvIHwKfCBmaXggdGhlIHdvcmxk
-LCAgfAp8IGJ1dCB0aGV5J3JlIG5vdCB8CnwgZ2l2aW5nIG1lIHRoZSAgIHwKIFwgc291cmNlIGNv
-ZGUhICAvCiAgLS0tLS0tLS0tLS0tLS0tCiAgICDCr1xfKOODhClfL8KvCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
-ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+Add the compatible and GRF definitions for the PX30 soc.
+
+Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+---
+ .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 27 +++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index 99ec625e0448..aeadeda0febc 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -140,6 +140,12 @@
+ #define DW_MIPI_NEEDS_PHY_CFG_CLK	BIT(0)
+ #define DW_MIPI_NEEDS_GRF_CLK		BIT(1)
+ 
++#define PX30_GRF_PD_VO_CON1		0x0438
++#define PX30_DSI_FORCETXSTOPMODE	(0xf << 7)
++#define PX30_DSI_FORCERXMODE		BIT(6)
++#define PX30_DSI_TURNDISABLE		BIT(5)
++#define PX30_DSI_LCDC_SEL		BIT(0)
++
+ #define RK3288_GRF_SOC_CON6		0x025c
+ #define RK3288_DSI0_LCDC_SEL		BIT(6)
+ #define RK3288_DSI1_LCDC_SEL		BIT(9)
+@@ -1039,6 +1045,24 @@ static int dw_mipi_dsi_rockchip_remove(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
++static const struct rockchip_dw_dsi_chip_data px30_chip_data[] = {
++	{
++		.reg = 0xff450000,
++		.lcdsel_grf_reg = PX30_GRF_PD_VO_CON1,
++		.lcdsel_big = HIWORD_UPDATE(0, PX30_DSI_LCDC_SEL),
++		.lcdsel_lit = HIWORD_UPDATE(PX30_DSI_LCDC_SEL,
++					    PX30_DSI_LCDC_SEL),
++
++		.lanecfg1_grf_reg = PX30_GRF_PD_VO_CON1,
++		.lanecfg1 = HIWORD_UPDATE(0, PX30_DSI_TURNDISABLE |
++					     PX30_DSI_FORCERXMODE |
++					     PX30_DSI_FORCETXSTOPMODE),
++
++		.max_data_lanes = 4,
++	},
++	{ /* sentinel */ }
++};
++
+ static const struct rockchip_dw_dsi_chip_data rk3288_chip_data[] = {
+ 	{
+ 		.reg = 0xff960000,
+@@ -1107,6 +1131,9 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
+ 
+ static const struct of_device_id dw_mipi_dsi_rockchip_dt_ids[] = {
+ 	{
++	 .compatible = "rockchip,px30-mipi-dsi",
++	 .data = &px30_chip_data,
++	}, {
+ 	 .compatible = "rockchip,rk3288-mipi-dsi",
+ 	 .data = &rk3288_chip_data,
+ 	}, {
+-- 
+2.23.0
