@@ -1,179 +1,50 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH 2/3] drm/rockchip: add ability to handle external dphys
- in mipi-dsi
-Date: Wed, 6 Nov 2019 15:05:57 +0200
-Message-ID: <20191106130557.GF4878@pendragon.ideasonboard.com>
-References: <20191106112650.8365-1-heiko.stuebner@theobroma-systems.com>
- <20191106112650.8365-2-heiko.stuebner@theobroma-systems.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+From: Amit Kucheria <amit.kucheria@linaro.org>
+Subject: [PATCH 00/11] thermal: clean up output of make W=1
+Date: Wed,  6 Nov 2019 18:58:16 +0530
+Message-ID: <cover.1573046440.git.amit.kucheria@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20191106112650.8365-2-heiko.stuebner@theobroma-systems.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Cc: dri-devel@lists.freedesktop.org, a.hajda@samsung.com, hjc@rock-chips.com, robh+dt@kernel.org, mark.rutland@arm.com, narmstrong@baylibre.com, jonas@kwiboo.se, jernej.skrabec@siol.net, philippe.cornu@st.com, yannick.fertre@st.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, heiko@sntech.de, christoph.muellner@theobroma-systems.com
+To: linux-kernel@vger.kernel.org, edubezval@gmail.com, Amit Daniel Kachhap <amit.kachhap@gmail.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Guillaume La Roque <glaroque@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Javi Merino <javi.merino@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, Jun Nie <jun.nie@linaro.org>, Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, Viresh Kumar <viresh.kumar@linaro.org>, Zhang Rui <rui.zhang@intel.com>
+Cc: linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Cleanup output of make W=1 inside drivers/thermal. This should allow us to
+focus on real issues that tend to get lost in the noise much better.
 
-Thank you for the patch.
+There is no functional change. This series was generate on top of
+linux-next from 20191105.
 
-On Wed, Nov 06, 2019 at 12:26:49PM +0100, Heiko Stuebner wrote:
-> While the common case is that the dsi controller uses an internal dphy,
-> accessed through the phy registers inside the dsi controller, there is
-> also the possibility to use a separate dphy from a different vendor.
-> 
-> One such case is the Rockchip px30 that uses a Innosilicon Mipi dphy,
-> so add the support for handling such a constellation, including the pll
-> also getting generated inside that external phy.
-> 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-> ---
->  .../display/rockchip/dw_mipi_dsi_rockchip.txt |  7 ++-
->  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 54 ++++++++++++++++++-
->  2 files changed, 57 insertions(+), 4 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-> index ce4c1fc9116c..8b25156a9dcf 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-> +++ b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-> @@ -8,8 +8,9 @@ Required properties:
->  	      "rockchip,rk3399-mipi-dsi", "snps,dw-mipi-dsi".
->  - reg: Represent the physical address range of the controller.
->  - interrupts: Represent the controller's interrupt to the CPU(s).
-> -- clocks, clock-names: Phandles to the controller's pll reference
-> -  clock(ref) and APB clock(pclk). For RK3399, a phy config clock
-> +- clocks, clock-names: Phandles to the controller's and APB clock(pclk)
-> +  and either a pll reference clock(ref) (internal dphy) or pll clock(pll)
-> +  (when connected to an external phy). For RK3399, a phy config clock
+Regards,
+Amit
 
-Why does external PHY clock need to be specified here ? Shouldn't it be
-handled by the PHY instead ?
+Amit Kucheria (11):
+  thermal: of-thermal: Appease the kernel-doc deity
+  thermal: cpu_cooling: Appease the kernel-doc deity
+  thermal: step_wise: Appease the kernel-doc deity
+  thermal: devfreq_cooling: Appease the kernel-doc deity
+  thermal: max77620: Appease the kernel-doc deity
+  thermal: mediatek: Appease the kernel-doc deity
+  thermal: rockchip: Appease the kernel-doc deity
+  thermal: samsung: Appease the kernel-doc deity
+  thermal: tegra: Appease the kernel-doc deity
+  thermal: amlogic: Appease the kernel-doc deity
+  thermal: zx2967: Appease the kernel-doc deity
 
->    (phy_cfg) and a grf clock(grf) are required. As described in [1].
->  - rockchip,grf: this soc should set GRF regs to mux vopl/vopb.
->  - ports: contain a port node with endpoint definitions as defined in [2].
-> @@ -18,6 +19,8 @@ Required properties:
->  - video port 1 for either a panel or subsequent encoder
->  
->  Optional properties:
-> +- phys: from general PHY binding: the phandle for the PHY device.
-> +- phy-names: Should be "dphy" if phys references an external phy.
->  - power-domains: a phandle to mipi dsi power domain node.
->  - resets: list of phandle + reset specifier pairs, as described in [3].
->  - reset-names: string reset name, must be "apb".
-> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> index bc073ec5c183..99ec625e0448 100644
-> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> @@ -12,6 +12,7 @@
->  #include <linux/mfd/syscon.h>
->  #include <linux/module.h>
->  #include <linux/of_device.h>
-> +#include <linux/phy/phy.h>
->  #include <linux/pm_runtime.h>
->  #include <linux/regmap.h>
->  
-> @@ -223,6 +224,9 @@ struct dw_mipi_dsi_rockchip {
->  	bool is_slave;
->  	struct dw_mipi_dsi_rockchip *slave;
->  
-> +	/* optional external dphy */
-> +	struct phy *phy;
-> +
->  	unsigned int lane_mbps; /* per lane */
->  	u16 input_div;
->  	u16 feedback_div;
-> @@ -359,6 +363,9 @@ static int dw_mipi_dsi_phy_init(void *priv_data)
->  	struct dw_mipi_dsi_rockchip *dsi = priv_data;
->  	int ret, i, vco;
->  
-> +	if (dsi->phy)
-> +		return 0;
-> +
->  	/*
->  	 * Get vco from frequency(lane_mbps)
->  	 * vco	frequency table
-> @@ -467,6 +474,27 @@ static int dw_mipi_dsi_phy_init(void *priv_data)
->  	return ret;
->  }
->  
-> +static void dw_mipi_dsi_phy_power_on(void *priv_data)
-> +{
-> +	struct dw_mipi_dsi_rockchip *dsi = priv_data;
-> +	int ret;
-> +
-> +	ret = phy_set_mode(dsi->phy, PHY_MODE_MIPI_DPHY);
-> +	if (ret) {
-> +		DRM_DEV_ERROR(dsi->dev, "failed to set phy mode: %d\n", ret);
-> +		return;
-> +	}
-> +
-> +	phy_power_on(dsi->phy);
-> +}
-> +
-> +static void dw_mipi_dsi_phy_power_off(void *priv_data)
-> +{
-> +	struct dw_mipi_dsi_rockchip *dsi = priv_data;
-> +
-> +	phy_power_off(dsi->phy);
-> +}
-> +
->  static int
->  dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
->  			  unsigned long mode_flags, u32 lanes, u32 format,
-> @@ -504,9 +532,21 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
->  				      "DPHY clock frequency is out of range\n");
->  	}
->  
-> -	fin = clk_get_rate(dsi->pllref_clk);
->  	fout = target_mbps * USEC_PER_SEC;
->  
-> +	/* an external phy does have a controllable pll clk */
-> +	if (dsi->phy) {
-> +		fout = clk_round_rate(dsi->pllref_clk, fout);
-> +		clk_set_rate(dsi->pllref_clk, fout);
-> +
-> +		dsi->lane_mbps = target_mbps;
-> +		*lane_mbps = dsi->lane_mbps;
-> +
-> +		return 0;
-> +	}
-> +
-> +	fin = clk_get_rate(dsi->pllref_clk);
-> +
->  	/* constraint: 5Mhz <= Fref / N <= 40MHz */
->  	min_prediv = DIV_ROUND_UP(fin, 40 * USEC_PER_SEC);
->  	max_prediv = fin / (5 * USEC_PER_SEC);
-> @@ -561,6 +601,8 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
->  
->  static const struct dw_mipi_dsi_phy_ops dw_mipi_dsi_rockchip_phy_ops = {
->  	.init = dw_mipi_dsi_phy_init,
-> +	.power_on = dw_mipi_dsi_phy_power_on,
-> +	.power_off = dw_mipi_dsi_phy_power_off,
->  	.get_lane_mbps = dw_mipi_dsi_get_lane_mbps,
->  };
->  
-> @@ -920,7 +962,15 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
->  		return -EINVAL;
->  	}
->  
-> -	dsi->pllref_clk = devm_clk_get(dev, "ref");
-> +	/* try to get a possible external dphy */
-> +	dsi->phy = devm_phy_optional_get(dev, "dphy");
-> +	if (IS_ERR(dsi->phy)) {
-> +		ret = PTR_ERR(dsi->phy);
-> +		DRM_DEV_ERROR(dev, "failed to get mipi dphy: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	dsi->pllref_clk = devm_clk_get(dev, dsi->phy ? "pll" : "ref");
->  	if (IS_ERR(dsi->pllref_clk)) {
->  		ret = PTR_ERR(dsi->pllref_clk);
->  		DRM_DEV_ERROR(dev,
+ drivers/thermal/amlogic_thermal.c    |  6 +++++-
+ drivers/thermal/cpu_cooling.c        |  1 +
+ drivers/thermal/devfreq_cooling.c    |  3 ++-
+ drivers/thermal/fair_share.c         |  4 ++--
+ drivers/thermal/gov_bang_bang.c      |  4 ++--
+ drivers/thermal/max77620_thermal.c   |  2 +-
+ drivers/thermal/mtk_thermal.c        | 12 ++++++------
+ drivers/thermal/of-thermal.c         |  2 +-
+ drivers/thermal/rockchip_thermal.c   | 22 ++++++++++++++++------
+ drivers/thermal/samsung/exynos_tmu.c |  5 ++++-
+ drivers/thermal/step_wise.c          |  4 ++--
+ drivers/thermal/tegra/soctherm.c     | 15 +++++++++++++--
+ drivers/thermal/user_space.c         |  4 ++--
+ drivers/thermal/zx2967_thermal.c     |  1 +
+ 14 files changed, 58 insertions(+), 27 deletions(-)
 
 -- 
-Regards,
-
-Laurent Pinchart
+2.17.1
