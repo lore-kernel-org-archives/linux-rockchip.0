@@ -1,690 +1,749 @@
-From: Adrian Ratiu <adrian.ratiu@collabora.com>
-Subject: [PATCH v2 3/4] drm: imx: Add i.MX 6 MIPI DSI host driver
-Date: Wed,  6 Nov 2019 18:30:30 +0200
-Message-ID: <20191106163031.808061-4-adrian.ratiu@collabora.com>
-References: <20191106163031.808061-1-adrian.ratiu@collabora.com>
+From: Lad Prabhakar <prabhakar.csengg@gmail.com>
+Subject: [PATCH 2/5] pci: endpoint: add support to handle multiple base for mapping outbound memory
+Date: Wed,  6 Nov 2019 19:36:06 +0000
+Message-ID: <20191106193609.19645-3-prabhakar.mahadev-lad.rj@bp.renesas.com>
+References: <20191106193609.19645-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191106163031.808061-1-adrian.ratiu@collabora.com>
+In-Reply-To: <20191106193609.19645-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-rockchip@lists.infradead.org
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Neil Armstrong <narmstrong@baylibre.com>, Emil Velikov <emil.l.velikov@gmail.com>, Sjoerd Simons <sjoerd.simons@collabora.com>, Martyn Welch <martyn.welch@collabora.com>
+To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-pci@vger.kernel.org
+Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrew Murray <andrew.murray@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, Chris Paterson <Chris.Paterson2@renesas.com>, "Lad, Prabhakar" <prabhakar.mahadev-lad.rj@bp.renesas.com>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Tom Joseph <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This adds support for the Synopsis DesignWare MIPI DSI v1.01 host
-controller which is embedded in i.MX 6 SoCs.
+From: "Lad, Prabhakar" <prabhakar.mahadev-lad.rj@bp.renesas.com>
 
-Based on following patches, but updated/extended to work with existing
-support found in the kernel:
+rcar pcie controller has support to map multiple memory regions
+for mapping the outbound memory in local system, this feature
+inspires to add support for handling multiple memory bases in
+endpoint framework. In case of multiple memory regions only chunk
+or complete region can be mapped and this window needs to be
+passed to the controller driver.
 
-- drm: imx: Support Synopsys DesignWare MIPI DSI host controller
-  Signed-off-by: Liu Ying <Ying.Liu@freescale.com>
-
-- ARM: dtsi: imx6qdl: Add support for MIPI DSI host controller
-  Signed-off-by: Liu Ying <Ying.Liu@freescale.com>
-
-Reviewed-by: Neil Armstrong <narmstrong@baylibre.com>
-Reviewed-by: Emil Velikov <emil.l.velikov@gmail.com>
-Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.com>
-Signed-off-by: Martyn Welch <martyn.welch@collabora.com>
-Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+Signed-off-by: Lad, Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+Cc: <linux-rockchip@lists.infradead.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Tom Joseph <tjoseph@cadence.com>
+Cc: Jingoo Han <jingoohan1@gmail.com>
+Cc: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 146 ++++++-
- drivers/gpu/drm/imx/Kconfig                   |   7 +
- drivers/gpu/drm/imx/Makefile                  |   1 +
- drivers/gpu/drm/imx/dw_mipi_dsi-imx.c         | 378 ++++++++++++++++++
- 4 files changed, 523 insertions(+), 9 deletions(-)
- create mode 100644 drivers/gpu/drm/imx/dw_mipi_dsi-imx.c
+ .../pci/controller/dwc/pcie-designware-ep.c   |  30 ++-
+ drivers/pci/controller/pcie-cadence-ep.c      |  11 +-
+ drivers/pci/controller/pcie-rockchip-ep.c     |  13 +-
+ drivers/pci/endpoint/functions/pci-epf-test.c |  29 +--
+ drivers/pci/endpoint/pci-epc-core.c           |   7 +-
+ drivers/pci/endpoint/pci-epc-mem.c            | 189 ++++++++++++++----
+ include/linux/pci-epc.h                       |  43 ++--
+ 7 files changed, 234 insertions(+), 88 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-index a0637328fbc1..d88363cc2681 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-@@ -31,6 +31,8 @@
- #include <drm/drm_probe_helper.h>
- 
- #define HWVER_131			0x31333100	/* IP version 1.31 */
-+#define HWVER_130			0x31333000	/* IP version 1.30 */
-+#define HWVER_101			0x31303000	/* IP version 1.01 */
- 
- #define DSI_VERSION			0x00
- #define VERSION				GENMASK(31, 8)
-@@ -99,6 +101,25 @@
- #define DSI_EDPI_CMD_SIZE		0x64
- 
- #define DSI_CMD_MODE_CFG		0x68
-+
-+#define DSI_DPI_CFG			0x0c
-+#define DSI_TMR_LINE_CFG		0x28
-+#define DSI_VTIMING_CFG			0x2c
-+#define DSI_PHY_TMR_CFG_V101		0x30
-+#define DSI_PHY_IF_CFG_V101		0x58
-+#define DSI_PHY_IF_CTRL			0x5c
-+#define DSI_PHY_RSTZ_V101		0x54
-+#define DSI_PHY_STATUS_V101		0x60
-+#define DSI_PHY_TST_CTRL0_V101		0x64
-+#define DSI_GEN_HDR_V101		0x34
-+#define DSI_GEN_PLD_DATA_V101		0x38
-+#define DSI_CMD_MODE_CFG_V101		0x24
-+#define DSI_CMD_PKT_STATUS_V101		0x3c
-+#define DSI_VID_PKT_CFG			0x20
-+#define DSI_VID_MODE_CFG_V101		0x1c
-+#define DSI_TO_CNT_CFG_V101		0x40
-+#define DSI_PCKHDL_CFG_V101		0x18
-+
- #define MAX_RD_PKT_SIZE_LP		BIT(24)
- #define DCS_LW_TX_LP			BIT(19)
- #define DCS_SR_0P_TX_LP			BIT(18)
-@@ -126,6 +147,33 @@
- 					 GEN_SW_1P_TX_LP | \
- 					 GEN_SW_0P_TX_LP)
- 
-+#define EN_TEAR_FX_V101			BIT(14)
-+#define DCS_LW_TX_LP_V101		BIT(12)
-+#define GEN_LW_TX_LP_V101		BIT(11)
-+#define MAX_RD_PKT_SIZE_LP_V101		BIT(10)
-+#define DCS_SW_2P_TX_LP_V101		BIT(9)
-+#define DCS_SW_1P_TX_LP_V101		BIT(8)
-+#define DCS_SW_0P_TX_LP_V101		BIT(7)
-+#define GEN_SR_2P_TX_LP_V101		BIT(6)
-+#define GEN_SR_1P_TX_LP_V101		BIT(5)
-+#define GEN_SR_0P_TX_LP_V101		BIT(4)
-+#define GEN_SW_2P_TX_LP_V101		BIT(3)
-+#define GEN_SW_1P_TX_LP_V101		BIT(2)
-+#define GEN_SW_0P_TX_LP_V101		BIT(1)
-+
-+#define CMD_MODE_ALL_LP_V101		(DCS_LW_TX_LP_V101 | \
-+					 GEN_LW_TX_LP_V101 | \
-+					 MAX_RD_PKT_SIZE_LP_V101 | \
-+					 DCS_SW_2P_TX_LP_V101 | \
-+					 DCS_SW_1P_TX_LP_V101 | \
-+					 DCS_SW_0P_TX_LP_V101 | \
-+					 GEN_SR_2P_TX_LP_V101 | \
-+					 GEN_SR_1P_TX_LP_V101 | \
-+					 GEN_SR_0P_TX_LP_V101 | \
-+					 GEN_SW_2P_TX_LP_V101 | \
-+					 GEN_SW_1P_TX_LP_V101 | \
-+					 GEN_SW_0P_TX_LP_V101)
-+
- #define DSI_GEN_HDR			0x6c
- #define DSI_GEN_PLD_DATA		0x70
- 
-@@ -164,6 +212,11 @@
- #define DSI_INT_MSK0			0xc4
- #define DSI_INT_MSK1			0xc8
- 
-+#define DSI_ERROR_ST0_V101		0x44
-+#define DSI_ERROR_ST1_V101		0x48
-+#define DSI_ERROR_MSK0_V101		0x4c
-+#define DSI_ERROR_MSK1_V101		0x50
-+
- #define DSI_PHY_TMR_RD_CFG		0xf4
- 
- #define PHY_STATUS_TIMEOUT_US		10000
-@@ -357,6 +410,49 @@ static struct dw_mipi_dsi_variant dw_mipi_dsi_v130_v131_layout = {
- 	.cfg_gen_payload =		REG_FIELD(DSI_GEN_PLD_DATA, 0, 31),
- };
- 
-+static struct dw_mipi_dsi_variant dw_mipi_dsi_v101_layout = {
-+	.cfg_dpi_vid =			REG_FIELD(DSI_DPI_CFG, 0, 1),
-+	.cfg_dpi_color_coding =		REG_FIELD(DSI_DPI_CFG, 2, 4),
-+	.cfg_dpi_18loosely_en =		REG_FIELD(DSI_DPI_CFG, 10, 10),
-+	.cfg_dpi_vsync_active_low =	REG_FIELD(DSI_DPI_CFG, 6, 6),
-+	.cfg_dpi_hsync_active_low =	REG_FIELD(DSI_DPI_CFG, 7, 7),
-+	.cfg_cmd_mode_en =		REG_FIELD(DSI_CMD_MODE_CFG_V101, 0, 0),
-+	.cfg_cmd_mode_all_lp_en =	REG_FIELD(DSI_CMD_MODE_CFG_V101, 1, 12),
-+	.cfg_cmd_mode_ack_rqst_en =	REG_FIELD(DSI_CMD_MODE_CFG_V101, 13, 13),
-+	.cfg_cmd_pkt_status =		REG_FIELD(DSI_CMD_PKT_STATUS_V101, 0, 14),
-+	.cfg_vid_mode_en =		REG_FIELD(DSI_VID_MODE_CFG_V101, 0, 0),
-+	.cfg_vid_mode_type =		REG_FIELD(DSI_VID_MODE_CFG_V101, 1, 2),
-+	.cfg_vid_mode_low_power =	REG_FIELD(DSI_VID_MODE_CFG_V101, 3, 8),
-+	.cfg_vid_pkt_size =		REG_FIELD(DSI_VID_PKT_CFG, 0, 10),
-+	.cfg_vid_hsa_time =		REG_FIELD(DSI_TMR_LINE_CFG, 0, 8),
-+	.cfg_vid_hbp_time =		REG_FIELD(DSI_TMR_LINE_CFG, 9, 17),
-+	.cfg_vid_hline_time =		REG_FIELD(DSI_TMR_LINE_CFG, 18, 31),
-+	.cfg_vid_vsa_time =		REG_FIELD(DSI_VTIMING_CFG, 0, 3),
-+	.cfg_vid_vbp_time =		REG_FIELD(DSI_VTIMING_CFG, 4, 9),
-+	.cfg_vid_vfp_time =		REG_FIELD(DSI_VTIMING_CFG, 10, 15),
-+	.cfg_vid_vactive_time =		REG_FIELD(DSI_VTIMING_CFG, 16, 26),
-+	.cfg_phy_txrequestclkhs =	REG_FIELD(DSI_PHY_IF_CTRL, 0, 0),
-+	.cfg_phy_bta_time =		REG_FIELD(DSI_PHY_TMR_CFG_V101, 0, 11),
-+	.cfg_phy_lp2hs_time =		REG_FIELD(DSI_PHY_TMR_CFG_V101, 12, 19),
-+	.cfg_phy_hs2lp_time =		REG_FIELD(DSI_PHY_TMR_CFG_V101, 20, 27),
-+	.cfg_phy_testclr =		REG_FIELD(DSI_PHY_TST_CTRL0_V101, 0, 0),
-+	.cfg_phy_unshutdownz =		REG_FIELD(DSI_PHY_RSTZ_V101, 0, 0),
-+	.cfg_phy_unrstz =		REG_FIELD(DSI_PHY_RSTZ_V101, 1, 1),
-+	.cfg_phy_enableclk =		REG_FIELD(DSI_PHY_RSTZ_V101, 2, 2),
-+	.cfg_phy_nlanes =		REG_FIELD(DSI_PHY_IF_CFG_V101, 0, 1),
-+	.cfg_phy_stop_wait_time =	REG_FIELD(DSI_PHY_IF_CFG_V101, 2, 9),
-+	.cfg_phy_status =		REG_FIELD(DSI_PHY_STATUS_V101, 0, 0),
-+	.cfg_pckhdl_cfg =		REG_FIELD(DSI_PCKHDL_CFG_V101, 0, 4),
-+	.cfg_hstx_timeout_counter =	REG_FIELD(DSI_TO_CNT_CFG_V101, 0, 15),
-+	.cfg_lprx_timeout_counter =	REG_FIELD(DSI_TO_CNT_CFG_V101, 16, 31),
-+	.cfg_int_stat0 =		REG_FIELD(DSI_ERROR_ST0_V101, 0, 20),
-+	.cfg_int_stat1 =		REG_FIELD(DSI_ERROR_ST1_V101, 0, 17),
-+	.cfg_int_mask0 =		REG_FIELD(DSI_ERROR_MSK0_V101, 0, 20),
-+	.cfg_int_mask1 =		REG_FIELD(DSI_ERROR_MSK1_V101, 0, 17),
-+	.cfg_gen_hdr =			REG_FIELD(DSI_GEN_HDR_V101, 0, 31),
-+	.cfg_gen_payload =		REG_FIELD(DSI_GEN_PLD_DATA_V101, 0, 31),
-+};
-+
- /*
-  * Check if either a link to a master or slave is present
-  */
-@@ -459,12 +555,21 @@ static void dw_mipi_message_config(struct dw_mipi_dsi *dsi,
- 	bool lpm = msg->flags & MIPI_DSI_MSG_USE_LPM;
- 	u32 cmd_mode_lp = 0;
- 
-+	switch (dsi->hw_version) {
-+	case HWVER_130:
-+	case HWVER_131:
-+		cmd_mode_lp = CMD_MODE_ALL_LP;
-+		break;
-+	case HWVER_101:
-+		cmd_mode_lp = CMD_MODE_ALL_LP_V101;
-+		break;
-+	}
-+
- 	if (msg->flags & MIPI_DSI_MSG_REQ_ACK)
- 		regmap_field_write(dsi->field_cmd_mode_ack_rqst_en, 1);
- 
- 	if (lpm)
--		regmap_field_write(dsi->field_cmd_mode_all_lp_en,
--				   CMD_MODE_ALL_LP);
-+		regmap_field_write(dsi->field_cmd_mode_all_lp_en, cmd_mode_lp);
- 
- 	regmap_field_write(dsi->field_phy_txrequestclkhs, lpm ? 0 : 1);
+diff --git a/drivers/pci/controller/dwc/pcie-designware-ep.c b/drivers/pci/controller/dwc/pcie-designware-ep.c
+index 3dd2e2697294..8d23c20b9afd 100644
+--- a/drivers/pci/controller/dwc/pcie-designware-ep.c
++++ b/drivers/pci/controller/dwc/pcie-designware-ep.c
+@@ -195,7 +195,7 @@ static void dw_pcie_ep_unmap_addr(struct pci_epc *epc, u8 func_no,
  }
-@@ -636,7 +741,7 @@ static void dw_mipi_dsi_video_mode_config(struct dw_mipi_dsi *dsi)
- 				   VID_MODE_TYPE_NON_BURST_SYNC_EVENTS);
  
- #ifdef CONFIG_DEBUG_FS
--	if (dsi->vpg) {
-+	if (dsi->hw_version > HWVER_101 && dsi->vpg) {
- 		regmap_field_write(dsi->regs, dsi->field_vid_mode_vpg_en, 1);
- 		regmap_field_write(dsi->regs, dsi->field_vid_mode_vpg_horiz,
- 				   dsi->vpg_horizontal ? 1 : 0);
-@@ -654,9 +759,15 @@ static void dw_mipi_dsi_set_mode(struct dw_mipi_dsi *dsi,
+ static int dw_pcie_ep_map_addr(struct pci_epc *epc, u8 func_no,
+-			       phys_addr_t addr,
++			       phys_addr_t addr, int window,
+ 			       u64 pci_addr, size_t size)
+ {
+ 	int ret;
+@@ -367,6 +367,7 @@ int dw_pcie_ep_raise_msi_irq(struct dw_pcie_ep *ep, u8 func_no,
+ 	unsigned int aligned_offset;
+ 	u16 msg_ctrl, msg_data;
+ 	u32 msg_addr_lower, msg_addr_upper, reg;
++	int window = PCI_EPC_DEFAULT_WINDOW;
+ 	u64 msg_addr;
+ 	bool has_upper;
+ 	int ret;
+@@ -390,11 +391,11 @@ int dw_pcie_ep_raise_msi_irq(struct dw_pcie_ep *ep, u8 func_no,
+ 		reg = ep->msi_cap + PCI_MSI_DATA_32;
+ 		msg_data = dw_pcie_readw_dbi(pci, reg);
+ 	}
+-	aligned_offset = msg_addr_lower & (epc->mem->page_size - 1);
++	aligned_offset = msg_addr_lower & (epc->mem[window]->page_size - 1);
+ 	msg_addr = ((u64)msg_addr_upper) << 32 |
+ 			(msg_addr_lower & ~aligned_offset);
+-	ret = dw_pcie_ep_map_addr(epc, func_no, ep->msi_mem_phys, msg_addr,
+-				  epc->mem->page_size);
++	ret = dw_pcie_ep_map_addr(epc, func_no, ep->msi_mem_phys, window,
++				  msg_addr, epc->mem[window]->page_size);
+ 	if (ret)
+ 		return ret;
  
- 		dw_mipi_dsi_video_mode_config(dsi);
+@@ -416,6 +417,7 @@ int dw_pcie_ep_raise_msix_irq(struct dw_pcie_ep *ep, u8 func_no,
+ 	u32 reg, msg_data, vec_ctrl;
+ 	u64 tbl_addr, msg_addr, reg_u64;
+ 	void __iomem *msix_tbl;
++	int window = PCI_EPC_DEFAULT_WINDOW;
+ 	int ret;
  
-+		if (dsi->hw_version == HWVER_101)
-+			regmap_field_write(dsi->field_vid_mode_en, 1);
-+
- 		regmap_field_write(dsi->field_phy_txrequestclkhs, 1);
- 	} else {
- 		regmap_field_write(dsi->field_cmd_mode_en, 1);
-+
-+		if (dsi->hw_version == HWVER_101)
-+			regmap_field_write(dsi->field_vid_mode_en, 0);
+ 	reg = ep->msix_cap + PCI_MSIX_TABLE;
+@@ -452,8 +454,8 @@ int dw_pcie_ep_raise_msix_irq(struct dw_pcie_ep *ep, u8 func_no,
+ 		return -EPERM;
  	}
  
- 	regmap_write(dsi->regs, DSI_PWR_UP, POWERUP);
-@@ -840,9 +951,11 @@ static void dw_mipi_dsi_dphy_timing_config(struct dw_mipi_dsi *dsi)
- 	regmap_field_write(dsi->field_phy_lp2hs_time, 0x40);
- 	regmap_field_write(dsi->field_phy_hs2lp_time, 0x40);
+-	ret = dw_pcie_ep_map_addr(epc, func_no, ep->msi_mem_phys, msg_addr,
+-				  epc->mem->page_size);
++	ret = dw_pcie_ep_map_addr(epc, func_no, ep->msi_mem_phys, window,
++				  msg_addr, epc->mem[window]->page_size);
+ 	if (ret)
+ 		return ret;
  
--	regmap_field_write(dsi->field_phy_max_rd_time, 10000);
--	regmap_field_write(dsi->field_phy_clklp2hs_time, 0x40);
--	regmap_field_write(dsi->field_phy_clkhs2lp_time, 0x40);
-+	if (dsi->hw_version > HWVER_101) {
-+		regmap_field_write(dsi->field_phy_max_rd_time, 10000);
-+		regmap_field_write(dsi->field_phy_clklp2hs_time, 0x40);
-+		regmap_field_write(dsi->field_phy_clkhs2lp_time, 0x40);
-+	}
+@@ -466,10 +468,11 @@ int dw_pcie_ep_raise_msix_irq(struct dw_pcie_ep *ep, u8 func_no,
+ 
+ void dw_pcie_ep_exit(struct dw_pcie_ep *ep)
+ {
++	int window = PCI_EPC_DEFAULT_WINDOW;
+ 	struct pci_epc *epc = ep->epc;
+ 
+ 	pci_epc_mem_free_addr(epc, ep->msi_mem_phys, ep->msi_mem,
+-			      epc->mem->page_size);
++			      epc->mem[window]->page_size);
+ 
+ 	pci_epc_mem_exit(epc);
+ }
+@@ -499,9 +502,12 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep)
+ 	u32 reg;
+ 	void *addr;
+ 	u8 hdr_type;
++	int window;
+ 	unsigned int nbars;
+ 	unsigned int offset;
+ 	struct pci_epc *epc;
++	size_t msi_page_size;
++	struct pci_epc_mem_window mem_window;
+ 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
+ 	struct device *dev = pci->dev;
+ 	struct device_node *np = dev->of_node;
+@@ -574,15 +580,17 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep)
+ 	if (ret < 0)
+ 		epc->max_functions = 1;
+ 
+-	ret = __pci_epc_mem_init(epc, ep->phys_base, ep->addr_size,
+-				 ep->page_size);
++	mem_window.phys_base = ep->phys_base;
++	mem_window.size = ep->addr_size;
++	ret = __pci_epc_mem_init(epc, &mem_window, 1, ep->page_size);
+ 	if (ret < 0) {
+ 		dev_err(dev, "Failed to initialize address space\n");
+ 		return ret;
+ 	}
+ 
+-	ep->msi_mem = pci_epc_mem_alloc_addr(epc, &ep->msi_mem_phys,
+-					     epc->mem->page_size);
++	msi_page_size = epc->mem[PCI_EPC_DEFAULT_WINDOW]->page_size;
++	ep->msi_mem = pci_epc_mem_alloc_addr(epc, &ep->msi_mem_phys, &window,
++					     msi_page_size);
+ 	if (!ep->msi_mem) {
+ 		dev_err(dev, "Failed to reserve memory for MSI/MSI-X\n");
+ 		return -ENOMEM;
+diff --git a/drivers/pci/controller/pcie-cadence-ep.c b/drivers/pci/controller/pcie-cadence-ep.c
+index def7820cb824..7991b38a5350 100644
+--- a/drivers/pci/controller/pcie-cadence-ep.c
++++ b/drivers/pci/controller/pcie-cadence-ep.c
+@@ -172,7 +172,7 @@ static void cdns_pcie_ep_clear_bar(struct pci_epc *epc, u8 fn,
  }
  
- static void dw_mipi_dsi_dphy_interface_config(struct dw_mipi_dsi *dsi)
-@@ -863,7 +976,8 @@ static void dw_mipi_dsi_dphy_init(struct dw_mipi_dsi *dsi)
- 	regmap_field_write(dsi->field_phy_unrstz, 0);
- 	regmap_field_write(dsi->field_phy_unshutdownz, 0);
- 
--	regmap_field_write(dsi->field_phy_forcepll, 0);
-+	if (dsi->hw_version > HWVER_101)
-+		regmap_field_write(dsi->field_phy_forcepll, 0);
- 
- 	regmap_field_write(dsi->field_phy_testclr, 0);
- 	regmap_field_write(dsi->field_phy_testclr, 1);
-@@ -879,7 +993,8 @@ static void dw_mipi_dsi_dphy_enable(struct dw_mipi_dsi *dsi)
- 	regmap_field_write(dsi->field_phy_unrstz, 1);
- 	regmap_field_write(dsi->field_phy_unshutdownz, 1);
- 
--	regmap_field_write(dsi->field_phy_forcepll, 1);
-+	if (dsi->hw_version > HWVER_101)
-+		regmap_field_write(dsi->field_phy_forcepll, 1);
- 
- 	ret = regmap_field_read_poll_timeout(dsi->field_phy_status,
- 					     val, val & PHY_LOCK,
-@@ -1105,7 +1220,20 @@ static void dw_mipi_dsi_get_hw_version(struct dw_mipi_dsi *dsi)
- 
- static int dw_mipi_dsi_regmap_fields_init(struct dw_mipi_dsi *dsi)
+ static int cdns_pcie_ep_map_addr(struct pci_epc *epc, u8 fn, phys_addr_t addr,
+-				 u64 pci_addr, size_t size)
++				 int window, u64 pci_addr, size_t size)
  {
--	const struct dw_mipi_dsi_variant *variant = &dw_mipi_dsi_v130_v131_layout;
-+	const struct dw_mipi_dsi_variant *variant;
-+
-+	switch (dsi->hw_version) {
-+	case HWVER_130:
-+	case HWVER_131:
-+		variant = &dw_mipi_dsi_v130_v131_layout;
-+		break;
-+	case HWVER_101:
-+		variant = &dw_mipi_dsi_v101_layout;
-+		break;
-+	default:
-+		DRM_ERROR("Unrecognized DSI host controller HW revision\n");
-+		return -ENODEV;
-+	}
+ 	struct cdns_pcie_ep *ep = epc_get_drvdata(epc);
+ 	struct cdns_pcie *pcie = &ep->pcie;
+@@ -434,12 +434,14 @@ static int cdns_pcie_ep_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev->of_node;
++	struct pci_epc_mem_window mem_window;
+ 	struct cdns_pcie_ep *ep;
+ 	struct cdns_pcie *pcie;
+ 	struct pci_epc *epc;
+ 	struct resource *res;
+ 	int ret;
+ 	int phy_count;
++	int window;
  
- 	INIT_FIELD(dpi_18loosely_en);
- 	INIT_FIELD(dpi_vid);
-diff --git a/drivers/gpu/drm/imx/Kconfig b/drivers/gpu/drm/imx/Kconfig
-index 207bf7409dfb..396793ebf542 100644
---- a/drivers/gpu/drm/imx/Kconfig
-+++ b/drivers/gpu/drm/imx/Kconfig
-@@ -39,3 +39,10 @@ config DRM_IMX_HDMI
- 	depends on DRM_IMX
- 	help
- 	  Choose this if you want to use HDMI on i.MX6.
-+
-+config DRM_IMX_MIPI_DSI
-+	tristate "Freescale i.MX DRM MIPI DSI"
-+	select DRM_DW_MIPI_DSI
-+	depends on DRM_IMX
-+	help
-+	  Choose this if you want to use MIPI DSI on i.MX6.
-diff --git a/drivers/gpu/drm/imx/Makefile b/drivers/gpu/drm/imx/Makefile
-index 21cdcc2faabc..6543a81376ec 100644
---- a/drivers/gpu/drm/imx/Makefile
-+++ b/drivers/gpu/drm/imx/Makefile
-@@ -9,3 +9,4 @@ obj-$(CONFIG_DRM_IMX_TVE) += imx-tve.o
- obj-$(CONFIG_DRM_IMX_LDB) += imx-ldb.o
+ 	ep = devm_kzalloc(dev, sizeof(*ep), GFP_KERNEL);
+ 	if (!ep)
+@@ -502,15 +504,16 @@ static int cdns_pcie_ep_probe(struct platform_device *pdev)
+ 	if (of_property_read_u8(np, "max-functions", &epc->max_functions) < 0)
+ 		epc->max_functions = 1;
  
- obj-$(CONFIG_DRM_IMX_HDMI) += dw_hdmi-imx.o
-+obj-$(CONFIG_DRM_IMX_MIPI_DSI) += dw_mipi_dsi-imx.o
-diff --git a/drivers/gpu/drm/imx/dw_mipi_dsi-imx.c b/drivers/gpu/drm/imx/dw_mipi_dsi-imx.c
-new file mode 100644
-index 000000000000..aaba7e88caa8
---- /dev/null
-+++ b/drivers/gpu/drm/imx/dw_mipi_dsi-imx.c
-@@ -0,0 +1,378 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+/*
-+ * i.MX drm driver - MIPI DSI Host Controller
-+ *
-+ * Copyright (C) 2011-2015 Freescale Semiconductor, Inc.
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/component.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/mfd/syscon/imx6q-iomuxc-gpr.h>
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/regmap.h>
-+#include <linux/videodev2.h>
-+#include <drm/bridge/dw_mipi_dsi.h>
-+#include <drm/drm_crtc_helper.h>
-+#include <drm/drm_mipi_dsi.h>
-+#include <drm/drm_of.h>
-+#include <drm/drm_print.h>
-+
-+#include "imx-drm.h"
-+
-+#define DRIVER_NAME	"imx-mipi-dsi"
-+
-+#define DSI_PWR_UP			0x04
-+#define RESET				0
-+#define POWERUP				BIT(0)
-+
-+#define DSI_PHY_IF_CTRL			0x5c
-+#define PHY_IF_CTRL_RESET		0x0
-+
-+#define DSI_PHY_TST_CTRL0		0x64
-+#define PHY_TESTCLK			BIT(1)
-+#define PHY_UNTESTCLK			0
-+#define PHY_TESTCLR			BIT(0)
-+#define PHY_UNTESTCLR			0
-+
-+#define DSI_PHY_TST_CTRL1		0x68
-+#define PHY_TESTEN			BIT(16)
-+#define PHY_UNTESTEN			0
-+#define PHY_TESTDOUT(n)			(((n) & 0xff) << 8)
-+#define PHY_TESTDIN(n)			(((n) & 0xff) << 0)
-+
-+struct imx_mipi_dsi {
-+	struct drm_encoder encoder;
-+	struct device *dev;
-+	struct regmap *mux_sel;
-+	struct dw_mipi_dsi *mipi_dsi;
-+	struct clk *pllref_clk;
-+
-+	struct regmap *regs;
-+	unsigned int lane_mbps;
-+};
-+
-+struct dphy_pll_testdin_map {
-+	unsigned int max_mbps;
-+	u8 testdin;
-+};
-+
-+/* The table is based on 27MHz DPHY pll reference clock. */
-+static const struct dphy_pll_testdin_map dptdin_map[] = {
-+	{160, 0x04}, {180, 0x24}, {200, 0x44}, {210, 0x06},
-+	{240, 0x26}, {250, 0x46}, {270, 0x08}, {300, 0x28},
-+	{330, 0x48}, {360, 0x2a}, {400, 0x4a}, {450, 0x0c},
-+	{500, 0x2c}, {550, 0x0e}, {600, 0x2e}, {650, 0x10},
-+	{700, 0x30}, {750, 0x12}, {800, 0x32}, {850, 0x14},
-+	{900, 0x34}, {950, 0x54}, {1000, 0x74}
-+};
-+
-+static inline struct imx_mipi_dsi *enc_to_dsi(struct drm_encoder *enc)
-+{
-+	return container_of(enc, struct imx_mipi_dsi, encoder);
-+}
-+
-+static void imx_mipi_dsi_set_ipu_di_mux(struct imx_mipi_dsi *dsi, int ipu_di)
-+{
-+	regmap_update_bits(dsi->mux_sel, IOMUXC_GPR3,
-+			   IMX6Q_GPR3_MIPI_MUX_CTL_MASK,
-+			   ipu_di << IMX6Q_GPR3_MIPI_MUX_CTL_SHIFT);
-+}
-+
-+static const struct drm_encoder_funcs imx_mipi_dsi_encoder_funcs = {
-+	.destroy = imx_drm_encoder_destroy,
-+};
-+
-+static bool imx_mipi_dsi_encoder_mode_fixup(struct drm_encoder *encoder,
-+					    const struct drm_display_mode *mode,
-+					    struct drm_display_mode *adj_mode)
-+{
-+	return true;
-+}
-+
-+static int imx_mipi_dsi_encoder_atomic_check(struct drm_encoder *encoder,
-+					     struct drm_crtc_state *crtc_state,
-+					     struct drm_connector_state *conn)
-+{
-+	struct imx_crtc_state *imx_crtc_state = to_imx_crtc_state(crtc_state);
-+
-+	/* The following values are taken from dw_hdmi_imx_atomic_check */
-+	imx_crtc_state->bus_format = MEDIA_BUS_FMT_RGB888_1X24;
-+	imx_crtc_state->di_hsync_pin = 2;
-+	imx_crtc_state->di_vsync_pin = 3;
-+
-+	return 0;
-+}
-+
-+static void imx_mipi_dsi_encoder_commit(struct drm_encoder *encoder)
-+{
-+	struct imx_mipi_dsi *dsi = enc_to_dsi(encoder);
-+	int mux = drm_of_encoder_active_port_id(dsi->dev->of_node, encoder);
-+
-+	imx_mipi_dsi_set_ipu_di_mux(dsi, mux);
-+}
-+
-+static void imx_mipi_dsi_encoder_disable(struct drm_encoder *encoder)
-+{
-+}
-+
-+static const struct drm_encoder_helper_funcs imx_mipi_dsi_encoder_helpers = {
-+	.mode_fixup = imx_mipi_dsi_encoder_mode_fixup,
-+	.commit = imx_mipi_dsi_encoder_commit,
-+	.disable = imx_mipi_dsi_encoder_disable,
-+	.atomic_check = imx_mipi_dsi_encoder_atomic_check,
-+};
-+
-+static int imx_mipi_dsi_register(struct drm_device *drm,
-+				 struct imx_mipi_dsi *dsi)
-+{
+-	ret = pci_epc_mem_init(epc, pcie->mem_res->start,
+-			       resource_size(pcie->mem_res));
++	mem_window.phys_base = pcie->mem_res->start;
++	mem_window.size = resource_size(pcie->mem_res);
++	ret = pci_epc_mem_init(epc, &mem_window, 1);
+ 	if (ret < 0) {
+ 		dev_err(dev, "failed to initialize the memory space\n");
+ 		goto err_init;
+ 	}
+ 
+ 	ep->irq_cpu_addr = pci_epc_mem_alloc_addr(epc, &ep->irq_phys_addr,
+-						  SZ_128K);
++						  &window, SZ_128K);
+ 	if (!ep->irq_cpu_addr) {
+ 		dev_err(dev, "failed to reserve memory space for MSI\n");
+ 		ret = -ENOMEM;
+diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
+index d743b0a48988..d59e85c8d319 100644
+--- a/drivers/pci/controller/pcie-rockchip-ep.c
++++ b/drivers/pci/controller/pcie-rockchip-ep.c
+@@ -256,8 +256,8 @@ static void rockchip_pcie_ep_clear_bar(struct pci_epc *epc, u8 fn,
+ }
+ 
+ static int rockchip_pcie_ep_map_addr(struct pci_epc *epc, u8 fn,
+-				     phys_addr_t addr, u64 pci_addr,
+-				     size_t size)
++				     phys_addr_t addr, int window,
++				     u64 pci_addr, size_t size)
+ {
+ 	struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
+ 	struct rockchip_pcie *pcie = &ep->rockchip;
+@@ -562,11 +562,13 @@ static const struct of_device_id rockchip_pcie_ep_of_match[] = {
+ 
+ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+ {
++	struct pci_epc_mem_window mem_window;
+ 	struct device *dev = &pdev->dev;
+ 	struct rockchip_pcie_ep *ep;
+ 	struct rockchip_pcie *rockchip;
+ 	struct pci_epc *epc;
+ 	size_t max_regions;
++	int window;
+ 	int err;
+ 
+ 	ep = devm_kzalloc(dev, sizeof(*ep), GFP_KERNEL);
+@@ -614,15 +616,16 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+ 	/* Only enable function 0 by default */
+ 	rockchip_pcie_write(rockchip, BIT(0), PCIE_CORE_PHY_FUNC_CFG);
+ 
+-	err = pci_epc_mem_init(epc, rockchip->mem_res->start,
+-			       resource_size(rockchip->mem_res));
++	mem_window.phys_base = rockchip->mem_res->start;
++	mem_window.size = resource_size(rockchip->mem_res);
++	err = pci_epc_mem_init(epc, &mem_window, 1);
+ 	if (err < 0) {
+ 		dev_err(dev, "failed to initialize the memory space\n");
+ 		goto err_uninit_port;
+ 	}
+ 
+ 	ep->irq_cpu_addr = pci_epc_mem_alloc_addr(epc, &ep->irq_phys_addr,
+-						  SZ_128K);
++						  &window, SZ_128K);
+ 	if (!ep->irq_cpu_addr) {
+ 		dev_err(dev, "failed to reserve memory space for MSI\n");
+ 		err = -ENOMEM;
+diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
+index 5d74f81ddfe4..475228011703 100644
+--- a/drivers/pci/endpoint/functions/pci-epf-test.c
++++ b/drivers/pci/endpoint/functions/pci-epf-test.c
+@@ -84,8 +84,10 @@ static int pci_epf_test_copy(struct pci_epf_test *epf_test)
+ 	struct pci_epc *epc = epf->epc;
+ 	enum pci_barno test_reg_bar = epf_test->test_reg_bar;
+ 	struct pci_epf_test_reg *reg = epf_test->reg[test_reg_bar];
++	int window;
+ 
+-	src_addr = pci_epc_mem_alloc_addr(epc, &src_phys_addr, reg->size);
++	src_addr = pci_epc_mem_alloc_addr(epc, &src_phys_addr,
++					  &window, reg->size);
+ 	if (!src_addr) {
+ 		dev_err(dev, "Failed to allocate source address\n");
+ 		reg->status = STATUS_SRC_ADDR_INVALID;
+@@ -93,15 +95,16 @@ static int pci_epf_test_copy(struct pci_epf_test *epf_test)
+ 		goto err;
+ 	}
+ 
+-	ret = pci_epc_map_addr(epc, epf->func_no, src_phys_addr, reg->src_addr,
+-			       reg->size);
++	ret = pci_epc_map_addr(epc, epf->func_no, src_phys_addr, window,
++			       reg->src_addr, reg->size);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to map source address\n");
+ 		reg->status = STATUS_SRC_ADDR_INVALID;
+ 		goto err_src_addr;
+ 	}
+ 
+-	dst_addr = pci_epc_mem_alloc_addr(epc, &dst_phys_addr, reg->size);
++	dst_addr = pci_epc_mem_alloc_addr(epc, &dst_phys_addr,
++					  &window, reg->size);
+ 	if (!dst_addr) {
+ 		dev_err(dev, "Failed to allocate destination address\n");
+ 		reg->status = STATUS_DST_ADDR_INVALID;
+@@ -109,8 +112,8 @@ static int pci_epf_test_copy(struct pci_epf_test *epf_test)
+ 		goto err_src_map_addr;
+ 	}
+ 
+-	ret = pci_epc_map_addr(epc, epf->func_no, dst_phys_addr, reg->dst_addr,
+-			       reg->size);
++	ret = pci_epc_map_addr(epc, epf->func_no, dst_phys_addr, window,
++			       reg->dst_addr, reg->size);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to map destination address\n");
+ 		reg->status = STATUS_DST_ADDR_INVALID;
+@@ -146,8 +149,9 @@ static int pci_epf_test_read(struct pci_epf_test *epf_test)
+ 	struct pci_epc *epc = epf->epc;
+ 	enum pci_barno test_reg_bar = epf_test->test_reg_bar;
+ 	struct pci_epf_test_reg *reg = epf_test->reg[test_reg_bar];
++	int window;
+ 
+-	src_addr = pci_epc_mem_alloc_addr(epc, &phys_addr, reg->size);
++	src_addr = pci_epc_mem_alloc_addr(epc, &phys_addr, &window, reg->size);
+ 	if (!src_addr) {
+ 		dev_err(dev, "Failed to allocate address\n");
+ 		reg->status = STATUS_SRC_ADDR_INVALID;
+@@ -155,8 +159,8 @@ static int pci_epf_test_read(struct pci_epf_test *epf_test)
+ 		goto err;
+ 	}
+ 
+-	ret = pci_epc_map_addr(epc, epf->func_no, phys_addr, reg->src_addr,
+-			       reg->size);
++	ret = pci_epc_map_addr(epc, epf->func_no, phys_addr, window,
++			       reg->src_addr, reg->size);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to map address\n");
+ 		reg->status = STATUS_SRC_ADDR_INVALID;
+@@ -193,13 +197,14 @@ static int pci_epf_test_write(struct pci_epf_test *epf_test)
+ 	void __iomem *dst_addr;
+ 	void *buf;
+ 	phys_addr_t phys_addr;
++	int window;
+ 	struct pci_epf *epf = epf_test->epf;
+ 	struct device *dev = &epf->dev;
+ 	struct pci_epc *epc = epf->epc;
+ 	enum pci_barno test_reg_bar = epf_test->test_reg_bar;
+ 	struct pci_epf_test_reg *reg = epf_test->reg[test_reg_bar];
+ 
+-	dst_addr = pci_epc_mem_alloc_addr(epc, &phys_addr, reg->size);
++	dst_addr = pci_epc_mem_alloc_addr(epc, &phys_addr, &window, reg->size);
+ 	if (!dst_addr) {
+ 		dev_err(dev, "Failed to allocate address\n");
+ 		reg->status = STATUS_DST_ADDR_INVALID;
+@@ -207,8 +212,8 @@ static int pci_epf_test_write(struct pci_epf_test *epf_test)
+ 		goto err;
+ 	}
+ 
+-	ret = pci_epc_map_addr(epc, epf->func_no, phys_addr, reg->dst_addr,
+-			       reg->size);
++	ret = pci_epc_map_addr(epc, epf->func_no, phys_addr, window,
++			       reg->dst_addr, reg->size);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to map address\n");
+ 		reg->status = STATUS_DST_ADDR_INVALID;
+diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
+index 2091508c1620..289c266c2d90 100644
+--- a/drivers/pci/endpoint/pci-epc-core.c
++++ b/drivers/pci/endpoint/pci-epc-core.c
+@@ -358,13 +358,15 @@ EXPORT_SYMBOL_GPL(pci_epc_unmap_addr);
+  * @epc: the EPC device on which address is allocated
+  * @func_no: the endpoint function number in the EPC device
+  * @phys_addr: physical address of the local system
++ * @window: index to the window region where PCI address will be mapped
+  * @pci_addr: PCI address to which the physical address should be mapped
+  * @size: the size of the allocation
+  *
+  * Invoke to map CPU address with PCI address.
+  */
+ int pci_epc_map_addr(struct pci_epc *epc, u8 func_no,
+-		     phys_addr_t phys_addr, u64 pci_addr, size_t size)
++		     phys_addr_t phys_addr, int window,
++		     u64 pci_addr, size_t size)
+ {
+ 	int ret;
+ 	unsigned long flags;
+@@ -376,7 +378,8 @@ int pci_epc_map_addr(struct pci_epc *epc, u8 func_no,
+ 		return 0;
+ 
+ 	spin_lock_irqsave(&epc->lock, flags);
+-	ret = epc->ops->map_addr(epc, func_no, phys_addr, pci_addr, size);
++	ret = epc->ops->map_addr(epc, func_no, phys_addr,
++				 window, pci_addr, size);
+ 	spin_unlock_irqrestore(&epc->lock, flags);
+ 
+ 	return ret;
+diff --git a/drivers/pci/endpoint/pci-epc-mem.c b/drivers/pci/endpoint/pci-epc-mem.c
+index d2b174ce15de..c955f2c97944 100644
+--- a/drivers/pci/endpoint/pci-epc-mem.c
++++ b/drivers/pci/endpoint/pci-epc-mem.c
+@@ -39,56 +39,77 @@ static int pci_epc_mem_get_order(struct pci_epc_mem *mem, size_t size)
+  * __pci_epc_mem_init() - initialize the pci_epc_mem structure
+  * @epc: the EPC device that invoked pci_epc_mem_init
+  * @phys_base: the physical address of the base
+- * @size: the size of the address space
++ * @num_windows: number of windows device supports
+  * @page_size: size of each page
+  *
+  * Invoke to initialize the pci_epc_mem structure used by the
+  * endpoint functions to allocate mapped PCI address.
+  */
+-int __pci_epc_mem_init(struct pci_epc *epc, phys_addr_t phys_base, size_t size,
+-		       size_t page_size)
++int __pci_epc_mem_init(struct pci_epc *epc, struct pci_epc_mem_window *windows,
++		       int num_windows, size_t page_size)
+ {
+-	int ret;
+-	struct pci_epc_mem *mem;
+-	unsigned long *bitmap;
++	struct pci_epc_mem *mem = NULL;
++	unsigned long *bitmap = NULL;
+ 	unsigned int page_shift;
+-	int pages;
+ 	int bitmap_size;
++	int pages;
 +	int ret;
++	int i;
 +
-+	ret = imx_drm_encoder_parse_of(drm, &dsi->encoder, dsi->dev->of_node);
-+	if (ret)
-+		return ret;
++	epc->mem_windows = 0;
 +
-+	drm_encoder_helper_add(&dsi->encoder,
-+			       &imx_mipi_dsi_encoder_helpers);
-+	drm_encoder_init(drm, &dsi->encoder, &imx_mipi_dsi_encoder_funcs,
-+			 DRM_MODE_ENCODER_DSI, NULL);
-+	return 0;
-+}
++	if (!windows)
++		return -EINVAL;
 +
-+static enum drm_mode_status imx_mipi_dsi_mode_valid(void *priv_data,
-+					const struct drm_display_mode *mode)
-+{
-+	/*
-+	 * The VID_PKT_SIZE field in the DSI_VID_PKT_CFG
-+	 * register is 11-bit.
-+	 */
-+	if (mode->hdisplay > 0x7ff)
-+		return MODE_BAD_HVALUE;
++	if (num_windows <= 0)
++		return -EINVAL;
+ 
+ 	if (page_size < PAGE_SIZE)
+ 		page_size = PAGE_SIZE;
+ 
+ 	page_shift = ilog2(page_size);
+-	pages = size >> page_shift;
+-	bitmap_size = BITS_TO_LONGS(pages) * sizeof(long);
+ 
+-	mem = kzalloc(sizeof(*mem), GFP_KERNEL);
+-	if (!mem) {
+-		ret = -ENOMEM;
+-		goto err;
+-	}
++	epc->mem = kcalloc(num_windows, sizeof(*mem), GFP_KERNEL);
++	if (!epc->mem)
++		return -EINVAL;
+ 
+-	bitmap = kzalloc(bitmap_size, GFP_KERNEL);
+-	if (!bitmap) {
+-		ret = -ENOMEM;
+-		goto err_mem;
+-	}
++	for (i = 0; i < num_windows; i++) {
++		pages = windows[i].phys_base >> page_shift;
++		bitmap_size = BITS_TO_LONGS(pages) * sizeof(long);
+ 
+-	mem->bitmap = bitmap;
+-	mem->phys_base = phys_base;
+-	mem->page_size = page_size;
+-	mem->pages = pages;
+-	mem->size = size;
++		mem = kzalloc(sizeof(*mem), GFP_KERNEL);
++		if (!mem) {
++			ret = -ENOMEM;
++			goto err_mem;
++		}
+ 
+-	epc->mem = mem;
++		bitmap = kzalloc(bitmap_size, GFP_KERNEL);
++		if (!bitmap) {
++			ret = -ENOMEM;
++			goto err_mem;
++		}
 +
-+	/*
-+	 * The V_ACTIVE_LINES field in the DSI_VTIMING_CFG
-+	 * register is 11-bit.
-+	 */
-+	if (mode->vdisplay > 0x7ff)
-+		return MODE_BAD_VVALUE;
++		mem->bitmap = bitmap;
++		mem->window.phys_base = windows[i].phys_base;
++		mem->page_size = page_size;
++		mem->pages = pages;
++		mem->window.size = windows[i].size;
++		mem->window.map_size = 0;
 +
-+	return MODE_OK;
-+}
-+
-+
-+static unsigned int max_mbps_to_testdin(unsigned int max_mbps)
-+{
-+	unsigned int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(dptdin_map); i++)
-+		if (dptdin_map[i].max_mbps == max_mbps)
-+			return dptdin_map[i].testdin;
-+
-+	return -EINVAL;
-+}
-+
-+static int imx_mipi_dsi_phy_init(void *priv_data)
-+{
-+	struct imx_mipi_dsi *dsi = priv_data;
-+	struct regmap *regs = dsi->regs;
-+	int testdin;
-+
-+	testdin = max_mbps_to_testdin(dsi->lane_mbps);
-+	if (testdin < 0) {
-+		dev_err(dsi->dev,
-+			"failed to get testdin for %dmbps lane clock\n",
-+			dsi->lane_mbps);
-+		return testdin;
++		epc->mem[i] = mem;
 +	}
++	epc->mem_windows = num_windows;
+ 
+ 	return 0;
+ 
+ err_mem:
+-	kfree(mem);
++	for (; i >= 0; i--) {
++		kfree(mem->bitmap);
++		kfree(epc->mem[i]);
++	}
++	kfree(epc->mem);
+ 
+-err:
+-return ret;
++	return ret;
+ }
+ EXPORT_SYMBOL_GPL(__pci_epc_mem_init);
+ 
+@@ -101,48 +122,126 @@ EXPORT_SYMBOL_GPL(__pci_epc_mem_init);
+  */
+ void pci_epc_mem_exit(struct pci_epc *epc)
+ {
+-	struct pci_epc_mem *mem = epc->mem;
++	struct pci_epc_mem *mem;
++	int i;
 +
-+	regmap_write(regs, DSI_PHY_IF_CTRL, PHY_IF_CTRL_RESET);
-+	regmap_write(regs, DSI_PWR_UP, POWERUP);
++	if (!epc->mem_windows)
++		return;
 +
-+	regmap_write(regs, DSI_PHY_TST_CTRL0, PHY_UNTESTCLK | PHY_UNTESTCLR);
-+	regmap_write(regs, DSI_PHY_TST_CTRL1, PHY_TESTEN | PHY_TESTDOUT(0) |
-+		     PHY_TESTDIN(0x44));
-+	regmap_write(regs, DSI_PHY_TST_CTRL0, PHY_TESTCLK | PHY_UNTESTCLR);
-+	regmap_write(regs, DSI_PHY_TST_CTRL0, PHY_UNTESTCLK | PHY_UNTESTCLR);
-+	regmap_write(regs, DSI_PHY_TST_CTRL1, PHY_UNTESTEN | PHY_TESTDOUT(0) |
-+		     PHY_TESTDIN(testdin));
-+	regmap_write(regs, DSI_PHY_TST_CTRL0, PHY_TESTCLK | PHY_UNTESTCLR);
-+	regmap_write(regs, DSI_PHY_TST_CTRL0, PHY_UNTESTCLK | PHY_UNTESTCLR);
-+
-+	return 0;
-+}
-+
-+static int imx_mipi_dsi_get_lane_mbps(void *priv_data,
-+				      const struct drm_display_mode *mode,
-+				      unsigned long mode_flags, u32 lanes,
-+				      u32 format, unsigned int *lane_mbps)
++	for (i = 0; i <= epc->mem_windows; i--) {
++		mem = epc->mem[i];
++		kfree(mem->bitmap);
++		kfree(epc->mem[i]);
++	}
++	kfree(epc->mem);
+ 
+ 	epc->mem = NULL;
+-	kfree(mem->bitmap);
+-	kfree(mem);
++	epc->mem_windows = 0;
+ }
+ EXPORT_SYMBOL_GPL(pci_epc_mem_exit);
+ 
++static int pci_epc_find_best_fit_window(struct pci_epc *epc, size_t size)
 +{
-+	struct imx_mipi_dsi *dsi = priv_data;
-+	int bpp;
-+	unsigned int i, target_mbps, mpclk;
-+	unsigned long pllref;
++	size_t window_least_size = 0;
++	int best_fit_window = -1;
++	struct pci_epc_mem *mem;
++	size_t actual_size;
++	int i;
 +
-+	bpp = mipi_dsi_pixel_format_to_bpp(format);
-+	if (bpp < 0) {
-+		dev_err(dsi->dev, "failed to get bpp for pixel format %d\n",
-+			format);
-+		return bpp;
-+	}
++	for (i = 0; i < epc->mem_windows; i++) {
++		mem = epc->mem[i];
 +
-+	pllref = clk_get_rate(dsi->pllref_clk);
-+	if (pllref != 27000000)
-+		dev_warn(dsi->dev, "expect 27MHz DPHY pll reference clock\n");
++		/* if chunk from this region is already used skip it */
++		if (mem->window.map_size)
++			continue;
 +
-+	mpclk = DIV_ROUND_UP(mode->clock, MSEC_PER_SEC);
-+	if (mpclk) {
-+		/* take 1/0.7 blanking overhead into consideration */
-+		target_mbps = (mpclk * (bpp / lanes) * 10) / 7;
-+	} else {
-+		dev_dbg(dsi->dev, "use default 1Gbps DPHY pll clock\n");
-+		target_mbps = 1000;
-+	}
++		actual_size = ALIGN(size, mem->page_size);
 +
-+	dev_dbg(dsi->dev, "target DPHY pll clock frequency is %uMbps\n",
-+		target_mbps);
-+
-+	for (i = 0; i < ARRAY_SIZE(dptdin_map); i++) {
-+		if (target_mbps < dptdin_map[i].max_mbps) {
-+			*lane_mbps = dptdin_map[i].max_mbps;
-+			dsi->lane_mbps = *lane_mbps;
-+			dev_dbg(dsi->dev,
-+				"real DPHY pll clock frequency is %uMbps\n",
-+				*lane_mbps);
-+			return 0;
++		if (best_fit_window == -1) {
++			best_fit_window = i;
++			window_least_size = mem->window.size;
++		} else {
++			if (actual_size <= mem->window.size &&
++			    mem->window.size < window_least_size) {
++				best_fit_window = i;
++				window_least_size = mem->window.size;
++			}
 +		}
 +	}
 +
-+	dev_err(dsi->dev, "DPHY clock frequency %uMbps is out of range\n",
-+		target_mbps);
++	return best_fit_window;
++}
++
+ /**
+  * pci_epc_mem_alloc_addr() - allocate memory address from EPC addr space
+  * @epc: the EPC device on which memory has to be allocated
+  * @phys_addr: populate the allocated physical address here
++ * @window: populate the window here which will be used to map PCI address
+  * @size: the size of the address space that has to be allocated
+  *
+  * Invoke to allocate memory address from the EPC address space. This
+  * is usually done to map the remote RC address into the local system.
+  */
+ void __iomem *pci_epc_mem_alloc_addr(struct pci_epc *epc,
+-				     phys_addr_t *phys_addr, size_t size)
++				     phys_addr_t *phys_addr,
++				     int *window, size_t size)
+ {
++	int best_fit = PCI_EPC_DEFAULT_WINDOW;
++	void __iomem *virt_addr = NULL;
++	struct pci_epc_mem *mem;
++	unsigned int page_shift;
+ 	int pageno;
+-	void __iomem *virt_addr;
+-	struct pci_epc_mem *mem = epc->mem;
+-	unsigned int page_shift = ilog2(mem->page_size);
+ 	int order;
+ 
++	if (epc->mem_windows <= 0)
++		return NULL;
++
++	if (epc->mem_windows > 1) {
++		best_fit = pci_epc_find_best_fit_window(epc, size);
++		if (best_fit < 0)
++			return NULL;
++	}
++
++	mem = epc->mem[best_fit];
+ 	size = ALIGN(size, mem->page_size);
++	if (size > (mem->window.size - mem->window.map_size))
++		return NULL;
++	page_shift = ilog2(mem->page_size);
+ 	order = pci_epc_mem_get_order(mem, size);
+ 
+ 	pageno = bitmap_find_free_region(mem->bitmap, mem->pages, order);
+ 	if (pageno < 0)
+ 		return NULL;
+ 
+-	*phys_addr = mem->phys_base + ((phys_addr_t)pageno << page_shift);
++	*phys_addr = mem->window.phys_base + (pageno << page_shift);
+ 	virt_addr = ioremap(*phys_addr, size);
+-	if (!virt_addr)
++	if (!virt_addr) {
+ 		bitmap_release_region(mem->bitmap, pageno, order);
++	} else {
++		mem->window.map_size += size;
++		*window = best_fit;
++	}
+ 
+ 	return virt_addr;
+ }
+ EXPORT_SYMBOL_GPL(pci_epc_mem_alloc_addr);
+ 
++static int pci_epc_get_matching_window(struct pci_epc *epc,
++				       phys_addr_t phys_addr)
++{
++	struct pci_epc_mem *mem;
++	int i;
++
++	for (i = 0; i < epc->mem_windows; i++) {
++		mem = epc->mem[i];
++
++		if (mem->window.phys_base == phys_addr)
++			return i;
++	}
 +
 +	return -EINVAL;
 +}
 +
-+static const struct dw_mipi_dsi_phy_ops dw_mipi_dsi_stm_phy_ops = {
-+	.init = imx_mipi_dsi_phy_init,
-+	.get_lane_mbps = imx_mipi_dsi_get_lane_mbps,
-+};
-+
-+static struct dw_mipi_dsi_plat_data imx6q_mipi_dsi_drv_data = {
-+	.max_data_lanes = 2,
-+	.mode_valid = imx_mipi_dsi_mode_valid,
-+	.phy_ops = &dw_mipi_dsi_stm_phy_ops,
-+};
-+
-+static const struct of_device_id imx_dsi_dt_ids[] = {
-+	{
-+		.compatible = "fsl,imx6q-mipi-dsi",
-+		.data = &imx6q_mipi_dsi_drv_data,
-+	},
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, imx_dsi_dt_ids);
-+
-+static int imx_mipi_dsi_bind(struct device *dev, struct device *master,
-+			     void *data)
-+{
-+	struct imx_mipi_dsi *dsi = dev_get_drvdata(dev);
-+	struct drm_device *drm = data;
-+	int ret;
-+
-+	ret = imx_mipi_dsi_register(drm, dsi);
-+	if (ret)
-+		return ret;
-+
-+	ret = dw_mipi_dsi_bind(dsi->mipi_dsi, &dsi->encoder);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static void imx_mipi_dsi_unbind(struct device *dev, struct device *master,
-+				void *data)
-+{
-+	struct imx_mipi_dsi *dsi = dev_get_drvdata(dev);
-+
-+	return dw_mipi_dsi_unbind(dsi->mipi_dsi);
-+}
-+
-+static const struct component_ops imx_mipi_dsi_ops = {
-+	.bind	= imx_mipi_dsi_bind,
-+	.unbind	= imx_mipi_dsi_unbind,
-+};
-+
-+static int imx_mipi_dsi_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	const struct of_device_id *of_id = of_match_device(imx_dsi_dt_ids, dev);
-+	const struct dw_mipi_dsi_plat_data *pdata = of_id->data;
-+	struct imx_mipi_dsi *dsi;
-+	int ret;
-+
-+	dsi = devm_kzalloc(dev, sizeof(*dsi), GFP_KERNEL);
-+	if (!dsi)
-+		return -ENOMEM;
-+
-+	dsi->dev = dev;
-+
-+	dsi->pllref_clk = devm_clk_get(dev, "ref");
-+	if (IS_ERR(dsi->pllref_clk)) {
-+		ret = PTR_ERR(dsi->pllref_clk);
-+		dev_dbg(dev, "%s: Unable to get pll reference clock: %d\n",
-+			__func__, ret);
-+		return ret;
+ /**
+  * pci_epc_mem_free_addr() - free the allocated memory address
+  * @epc: the EPC device on which memory was allocated
+@@ -155,16 +254,26 @@ EXPORT_SYMBOL_GPL(pci_epc_mem_alloc_addr);
+ void pci_epc_mem_free_addr(struct pci_epc *epc, phys_addr_t phys_addr,
+ 			   void __iomem *virt_addr, size_t size)
+ {
++	struct pci_epc_mem *mem;
++	unsigned int page_shift;
++	int window = 0;
+ 	int pageno;
+-	struct pci_epc_mem *mem = epc->mem;
+-	unsigned int page_shift = ilog2(mem->page_size);
+ 	int order;
+ 
++	if (epc->mem_windows > 1) {
++		window = pci_epc_get_matching_window(epc, phys_addr);
++		if (window < 0)
++			return;
 +	}
 +
-+	ret = clk_prepare_enable(dsi->pllref_clk);
-+	if (ret) {
-+		dev_err(dev, "%s: Failed to enable pllref_clk\n", __func__);
-+		return ret;
-+	}
++	mem = epc->mem[window];
++	page_shift = ilog2(mem->page_size);
+ 	iounmap(virt_addr);
+-	pageno = (phys_addr - mem->phys_base) >> page_shift;
++	pageno = (phys_addr - mem->window.phys_base) >> page_shift;
+ 	size = ALIGN(size, mem->page_size);
+ 	order = pci_epc_mem_get_order(mem, size);
+ 	bitmap_release_region(mem->bitmap, pageno, order);
++	mem->window.map_size -= size;
+ }
+ EXPORT_SYMBOL_GPL(pci_epc_mem_free_addr);
+ 
+diff --git a/include/linux/pci-epc.h b/include/linux/pci-epc.h
+index 56f1846b9d39..5e86d22dd5c5 100644
+--- a/include/linux/pci-epc.h
++++ b/include/linux/pci-epc.h
+@@ -48,7 +48,8 @@ struct pci_epc_ops {
+ 	void	(*clear_bar)(struct pci_epc *epc, u8 func_no,
+ 			     struct pci_epf_bar *epf_bar);
+ 	int	(*map_addr)(struct pci_epc *epc, u8 func_no,
+-			    phys_addr_t addr, u64 pci_addr, size_t size);
++			    phys_addr_t addr, int window,
++			    u64 pci_addr, size_t size);
+ 	void	(*unmap_addr)(struct pci_epc *epc, u8 func_no,
+ 			      phys_addr_t addr);
+ 	int	(*set_msi)(struct pci_epc *epc, u8 func_no, u8 interrupts);
+@@ -64,17 +65,28 @@ struct pci_epc_ops {
+ 	struct module *owner;
+ };
+ 
++#define PCI_EPC_DEFAULT_WINDOW		0
 +
-+	dsi->mux_sel = syscon_regmap_lookup_by_phandle(dev->of_node, "gpr");
-+	if (IS_ERR(dsi->mux_sel)) {
-+		ret = PTR_ERR(dsi->mux_sel);
-+		dev_err(dev, "%s: Failed to get GPR regmap: %d\n",
-+			__func__, ret);
-+		return ret;
-+	}
-+
-+	dev_set_drvdata(dev, dsi);
-+
-+	imx6q_mipi_dsi_drv_data.priv_data = dsi;
-+
-+	dsi->mipi_dsi = dw_mipi_dsi_probe(pdev, pdata);
-+	if (IS_ERR(dsi->mipi_dsi)) {
-+		ret = PTR_ERR(dsi->mipi_dsi);
-+		dev_dbg(dev, "%s: Unable to probe DW DSI host device: %d\n",
-+			__func__, ret);
-+		return -ENODEV;
-+	}
-+
-+	dsi->regs = pdata->regs;
-+
-+	return component_add(&pdev->dev, &imx_mipi_dsi_ops);
-+}
-+
-+static int imx_mipi_dsi_remove(struct platform_device *pdev)
-+{
-+	component_del(&pdev->dev, &imx_mipi_dsi_ops);
-+	return 0;
-+}
-+
-+static struct platform_driver imx_mipi_dsi_driver = {
-+	.probe		= imx_mipi_dsi_probe,
-+	.remove		= imx_mipi_dsi_remove,
-+	.driver		= {
-+		.of_match_table = imx_dsi_dt_ids,
-+		.name	= DRIVER_NAME,
-+	},
++/**
++ * struct pci_epc_mem_window - address window of the endpoint controller
++ * @phys_base: physical base address of the PCI address window
++ * @size: the size of the PCI address window
++ */
++struct pci_epc_mem_window {
++	phys_addr_t	phys_base;
++	size_t		size;
++	size_t		map_size;
 +};
-+module_platform_driver(imx_mipi_dsi_driver);
 +
-+MODULE_DESCRIPTION("i.MX MIPI DSI host controller driver");
-+MODULE_AUTHOR("Liu Ying <Ying.Liu@freescale.com>");
-+MODULE_LICENSE("GPL");
-+MODULE_ALIAS("platform:" DRIVER_NAME);
+ /**
+  * struct pci_epc_mem - address space of the endpoint controller
+- * @phys_base: physical base address of the PCI address space
+- * @size: the size of the PCI address space
++ * @window: address window of the endpoint controller
+  * @bitmap: bitmap to manage the PCI address space
+- * @pages: number of bits representing the address region
+  * @page_size: size of each page
++ * @pages: number of bits representing the address region
+  */
+ struct pci_epc_mem {
+-	phys_addr_t	phys_base;
+-	size_t		size;
++	struct pci_epc_mem_window window;
+ 	unsigned long	*bitmap;
+ 	size_t		page_size;
+ 	int		pages;
+@@ -85,7 +97,8 @@ struct pci_epc_mem {
+  * @dev: PCI EPC device
+  * @pci_epf: list of endpoint functions present in this EPC device
+  * @ops: function pointers for performing endpoint operations
+- * @mem: address space of the endpoint controller
++ * @mem: array of address space of the endpoint controller
++ * @mem_windows: number of windows supported by device
+  * @max_functions: max number of functions that can be configured in this EPC
+  * @group: configfs group representing the PCI EPC device
+  * @lock: spinlock to protect pci_epc ops
+@@ -94,7 +107,8 @@ struct pci_epc {
+ 	struct device			dev;
+ 	struct list_head		pci_epf;
+ 	const struct pci_epc_ops	*ops;
+-	struct pci_epc_mem		*mem;
++	struct pci_epc_mem		**mem;
++	int				mem_windows;
+ 	u8				max_functions;
+ 	struct config_group		*group;
+ 	/* spinlock to protect against concurrent access of EP controller */
+@@ -128,8 +142,8 @@ struct pci_epc_features {
+ #define devm_pci_epc_create(dev, ops)    \
+ 		__devm_pci_epc_create((dev), (ops), THIS_MODULE)
+ 
+-#define pci_epc_mem_init(epc, phys_addr, size)	\
+-		__pci_epc_mem_init((epc), (phys_addr), (size), PAGE_SIZE)
++#define pci_epc_mem_init(epc, windows, num_windows)	\
++		__pci_epc_mem_init((epc), windows, num_windows, PAGE_SIZE)
+ 
+ static inline void epc_set_drvdata(struct pci_epc *epc, void *data)
+ {
+@@ -159,7 +173,7 @@ int pci_epc_set_bar(struct pci_epc *epc, u8 func_no,
+ void pci_epc_clear_bar(struct pci_epc *epc, u8 func_no,
+ 		       struct pci_epf_bar *epf_bar);
+ int pci_epc_map_addr(struct pci_epc *epc, u8 func_no,
+-		     phys_addr_t phys_addr,
++		     phys_addr_t phys_addr, int window,
+ 		     u64 pci_addr, size_t size);
+ void pci_epc_unmap_addr(struct pci_epc *epc, u8 func_no,
+ 			phys_addr_t phys_addr);
+@@ -178,11 +192,12 @@ unsigned int pci_epc_get_first_free_bar(const struct pci_epc_features
+ struct pci_epc *pci_epc_get(const char *epc_name);
+ void pci_epc_put(struct pci_epc *epc);
+ 
+-int __pci_epc_mem_init(struct pci_epc *epc, phys_addr_t phys_addr, size_t size,
+-		       size_t page_size);
++int __pci_epc_mem_init(struct pci_epc *epc, struct pci_epc_mem_window *window,
++		       int num_windows, size_t page_size);
+ void pci_epc_mem_exit(struct pci_epc *epc);
+ void __iomem *pci_epc_mem_alloc_addr(struct pci_epc *epc,
+-				     phys_addr_t *phys_addr, size_t size);
++				     phys_addr_t *phys_addr,
++				     int *window, size_t size);
+ void pci_epc_mem_free_addr(struct pci_epc *epc, phys_addr_t phys_addr,
+ 			   void __iomem *virt_addr, size_t size);
+ #endif /* __LINUX_PCI_EPC_H */
 -- 
-2.23.0
+2.20.1
