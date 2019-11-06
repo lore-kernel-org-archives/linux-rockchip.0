@@ -1,165 +1,107 @@
-From: Amit Kucheria <amit.kucheria@linaro.org>
-Subject: [PATCH 07/11] thermal: rockchip: Appease the kernel-doc deity
-Date: Wed,  6 Nov 2019 18:58:23 +0530
-Message-ID: <290895a22aa8a13c13b3a4ae77c13244b4ecee58.1573046440.git.amit.kucheria@linaro.org>
-References: <cover.1573046440.git.amit.kucheria@linaro.org>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v9 1/4] media: videodev2.h, v4l2-ioctl: add rkisp1 meta
+ buffer format
+Date: Wed, 06 Nov 2019 10:44:43 -0300
+Message-ID: <b1a8fa60a3c8922c364a18b0583dab55660f2fb4.camel@collabora.com>
+References: <20191106120132.6876-1-helen.koike@collabora.com>
+         <20191106120132.6876-2-helen.koike@collabora.com>
+         <9102bcf8-0279-7972-daff-b15aaf98804d@cisco.com>
+         <28cff7ab-ef56-791e-0342-571f64cb9807@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1573046440.git.amit.kucheria@linaro.org>
-In-Reply-To: <cover.1573046440.git.amit.kucheria@linaro.org>
-References: <cover.1573046440.git.amit.kucheria@linaro.org>
+In-Reply-To: <28cff7ab-ef56-791e-0342-571f64cb9807@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, edubezval@gmail.com, Amit Daniel Kachhap <amit.kachhap@gmail.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Guillaume La Roque <glaroque@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Javi Merino <javi.merino@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, Jun Nie <jun.nie@linaro.org>, Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, Viresh Kumar <viresh.kumar@linaro.org>, Zhang Rui <rui.zhang@intel.com>
-Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Helen Koike <helen.koike@collabora.com>, "Hans Verkuil (hansverk)" <hansverk@cisco.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+Cc: "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "eddie.cai.linux@gmail.com" <eddie.cai.linux@gmail.com>, "mchehab@kernel.org" <mchehab@kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>, "jeffy.chen@rock-chips.com" <jeffy.chen@rock-chips.com>, "zyc@rock-chips.com" <zyc@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "tfiga@chromium.org" <tfiga@chromium.org>, "hans.verkuil@cisco.com" <hans.verkuil@cisco.com>, "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>, "sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>, "kernel@collabora.com" <kernel@collabora.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Replace a comment starting with /** by simply /* to avoid having it
-interpreted as a kernel-doc comment. Describe missing function
-parameters where needed.
+Hi Hans, Helen:
 
-Fixes up the following warnings when compiled with make W=1:
+On Wed, 2019-11-06 at 09:30 -0300, Helen Koike wrote:
+> 
+> On 11/6/19 10:22 AM, Hans Verkuil (hansverk) wrote:
+> > On 11/6/19 1:01 PM, Helen Koike wrote:
+> > > From: Shunqian Zheng <zhengsq@rock-chips.com>
+> > > 
+> > > Add the Rockchip ISP1 specific processing parameter format
+> > > V4L2_META_FMT_RK_ISP1_PARAMS and metadata format
+> > > V4L2_META_FMT_RK_ISP1_STAT_3A for 3A.
+> > > 
+> > > Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
+> > > Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
+> > > Acked-by: Hans Verkuil <hans.verkuil@cisco.com>
+> > 
+> > I acked this? It is missing documentation for these new formats.
+> 
+> I think so https://www.spinics.net/lists/linux-rockchip/msg18999.html :)
+> 
+> I'll update the docs and the fixes you pointed below.
+> 
+> Thanks.
+> Helen
+> 
+> > > [refactored for upstream]
+> > > Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> > > Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > > 
+> > > ---
+> > > 
+> > > Changes in v9:
+> > > - Add reviewed-by tag from Laurent
+> > > 
+> > > Changes in v8: None
+> > > Changes in v7:
+> > > - s/IPU3/RK_ISP1
+> > > 
+> > >  drivers/media/v4l2-core/v4l2-ioctl.c | 2 ++
+> > >  include/uapi/linux/videodev2.h       | 4 ++++
+> > >  2 files changed, 6 insertions(+)
+> > > 
+> > > diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+> > > index 315ac12c3e0a..ade990554caf 100644
+> > > --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+> > > +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+> > > @@ -1341,6 +1341,8 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+> > >  	case V4L2_META_FMT_UVC:		descr = "UVC Payload Header Metadata"; break;
+> > >  	case V4L2_META_FMT_D4XX:	descr = "Intel D4xx UVC Metadata"; break;
+> > >  	case V4L2_META_FMT_VIVID:       descr = "Vivid Metadata"; break;
+> > > +	case V4L2_META_FMT_RK_ISP1_PARAMS:	descr = "Rockchip ISP1 3A params"; break;
+> > 
+> > params -> Params
+> > 
+> > > +	case V4L2_META_FMT_RK_ISP1_STAT_3A:	descr = "Rockchip ISP1 3A statistics"; break;
+> > 
+> > statistics -> Statistics
+> > 
+> > >  
+> > >  	default:
+> > >  		/* Compressed formats */
+> > > diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+> > > index f98bbcced8ff..56798b09cd85 100644
+> > > --- a/include/uapi/linux/videodev2.h
+> > > +++ b/include/uapi/linux/videodev2.h
 
-linux.git/drivers/thermal/rockchip_thermal.c:27: warning: cannot
-understand function prototype: 'enum tshut_mode '
-linux.git/drivers/thermal/rockchip_thermal.c:37: warning: cannot
-understand function prototype: 'enum tshut_polarity '
-linux.git/drivers/thermal/rockchip_thermal.c:46: warning: cannot
-understand function prototype: 'enum sensor_id '
-linux.git/drivers/thermal/rockchip_thermal.c:56: warning: cannot
-understand function prototype: 'enum adc_sort_mode '
-linux.git/drivers/thermal/rockchip_thermal.c:123: warning: Function
-parameter or member 'chn_id' not described in 'rockchip_tsadc_chip'
-linux.git/drivers/thermal/rockchip_thermal.c:123: warning: Function
-parameter or member 'control' not described in 'rockchip_tsadc_chip'
-linux.git/drivers/thermal/rockchip_thermal.c:167: warning: Function
-parameter or member 'sensors' not described in 'rockchip_thermal_data'
-linux.git/drivers/thermal/rockchip_thermal.c:608: warning: Function
-parameter or member 'grf' not described in 'rk_tsadcv2_initialize'
-linux.git/drivers/thermal/rockchip_thermal.c:608: warning: Function
-parameter or member 'regs' not described in 'rk_tsadcv2_initialize'
-linux.git/drivers/thermal/rockchip_thermal.c:608: warning: Function
-parameter or member 'tshut_polarity' not described in
-'rk_tsadcv2_initialize'
-linux.git/drivers/thermal/rockchip_thermal.c:644: warning: Function
-parameter or member 'grf' not described in 'rk_tsadcv3_initialize'
-linux.git/drivers/thermal/rockchip_thermal.c:644: warning: Function
-parameter or member 'regs' not described in 'rk_tsadcv3_initialize'
-linux.git/drivers/thermal/rockchip_thermal.c:644: warning: Function
-parameter or member 'tshut_polarity' not described in
-'rk_tsadcv3_initialize'
-linux.git/drivers/thermal/rockchip_thermal.c:732: warning: Function
-parameter or member 'regs' not described in 'rk_tsadcv3_control'
-linux.git/drivers/thermal/rockchip_thermal.c:732: warning: Function
-parameter or member 'enable' not described in 'rk_tsadcv3_control'
-linux.git/drivers/thermal/rockchip_thermal.c:1211: warning: Function
-parameter or member 'reset' not described in
-'rockchip_thermal_reset_controller'
+Can we avoid touching videodev2.h, as we did for the stateless codec pixfmts?
 
-Signed-off-by: Amit Kucheria <amit.kucheria@linaro.org>
----
- drivers/thermal/rockchip_thermal.c | 22 ++++++++++++++++------
- 1 file changed, 16 insertions(+), 6 deletions(-)
+Thanks,
+Ezequiel
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index 343c2f5c5a259..9ed8085bb7924 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -19,7 +19,7 @@
- #include <linux/mfd/syscon.h>
- #include <linux/pinctrl/consumer.h>
- 
--/**
-+/*
-  * If the temperature over a period of time High,
-  * the resulting TSHUT gave CRU module,let it reset the entire chip,
-  * or via GPIO give PMIC.
-@@ -29,7 +29,7 @@ enum tshut_mode {
- 	TSHUT_MODE_GPIO,
- };
- 
--/**
-+/*
-  * The system Temperature Sensors tshut(tshut) polarity
-  * the bit 8 is tshut polarity.
-  * 0: low active, 1: high active
-@@ -39,7 +39,7 @@ enum tshut_polarity {
- 	TSHUT_HIGH_ACTIVE,
- };
- 
--/**
-+/*
-  * The system has two Temperature Sensors.
-  * sensor0 is for CPU, and sensor1 is for GPU.
-  */
-@@ -48,7 +48,7 @@ enum sensor_id {
- 	SENSOR_GPU,
- };
- 
--/**
-+/*
-  * The conversion table has the adc value and temperature.
-  * ADC_DECREMENT: the adc value is of diminishing.(e.g. rk3288_code_table)
-  * ADC_INCREMENT: the adc value is incremental.(e.g. rk3368_code_table)
-@@ -80,13 +80,14 @@ struct chip_tsadc_table {
- 
- /**
-  * struct rockchip_tsadc_chip - hold the private data of tsadc chip
-- * @chn_id[SOC_MAX_SENSORS]: the sensor id of chip correspond to the channel
-+ * @chn_id: array of sensor ids of chip corresponding to the channel
-  * @chn_num: the channel number of tsadc chip
-  * @tshut_temp: the hardware-controlled shutdown temperature value
-  * @tshut_mode: the hardware-controlled shutdown mode (0:CRU 1:GPIO)
-  * @tshut_polarity: the hardware-controlled active polarity (0:LOW 1:HIGH)
-  * @initialize: SoC special initialize tsadc controller method
-  * @irq_ack: clear the interrupt
-+ * @control: enable/disable method for the tsadc controller
-  * @get_temp: get the temperature
-  * @set_alarm_temp: set the high temperature interrupt
-  * @set_tshut_temp: set the hardware-controlled shutdown temperature
-@@ -139,7 +140,7 @@ struct rockchip_thermal_sensor {
-  * @chip: pointer to the platform/configuration data
-  * @pdev: platform device of thermal
-  * @reset: the reset controller of tsadc
-- * @sensors[SOC_MAX_SENSORS]: the thermal sensor
-+ * @sensors: array of thermal sensors
-  * @clk: the controller clock is divided by the exteral 24MHz
-  * @pclk: the advanced peripherals bus clock
-  * @grf: the general register file will be used to do static set by software
-@@ -590,6 +591,9 @@ static int rk_tsadcv2_code_to_temp(const struct chip_tsadc_table *table,
- 
- /**
-  * rk_tsadcv2_initialize - initialize TASDC Controller.
-+ * @grf: the general register file will be used to do static set by software
-+ * @regs: the base address of tsadc controller
-+ * @tshut_polarity: the hardware-controlled active polarity (0:LOW 1:HIGH)
-  *
-  * (1) Set TSADC_V2_AUTO_PERIOD:
-  *     Configure the interleave between every two accessing of
-@@ -624,6 +628,9 @@ static void rk_tsadcv2_initialize(struct regmap *grf, void __iomem *regs,
- 
- /**
-  * rk_tsadcv3_initialize - initialize TASDC Controller.
-+ * @grf: the general register file will be used to do static set by software
-+ * @regs: the base address of tsadc controller
-+ * @tshut_polarity: the hardware-controlled active polarity (0:LOW 1:HIGH)
-  *
-  * (1) The tsadc control power sequence.
-  *
-@@ -723,6 +730,8 @@ static void rk_tsadcv2_control(void __iomem *regs, bool enable)
- 
- /**
-  * rk_tsadcv3_control - the tsadc controller is enabled or disabled.
-+ * @regs: the base address of tsadc controller
-+ * @enable: boolean flag to enable the controller
-  *
-  * NOTE: TSADC controller works at auto mode, and some SoCs need set the
-  * tsadc_q_sel bit on TSADCV2_AUTO_CON[1]. The (1024 - tsadc_q) as output
-@@ -1206,6 +1215,7 @@ rockchip_thermal_register_sensor(struct platform_device *pdev,
- 
- /**
-  * Reset TSADC Controller, reset all tsadc registers.
-+ * @reset: the reset controller of tsadc
-  */
- static void rockchip_thermal_reset_controller(struct reset_control *reset)
- {
--- 
-2.17.1
+> > > @@ -762,6 +762,10 @@ struct v4l2_pix_format {
+> > >  #define V4L2_META_FMT_D4XX        v4l2_fourcc('D', '4', 'X', 'X') /* D4XX Payload Header metadata */
+> > >  #define V4L2_META_FMT_VIVID	  v4l2_fourcc('V', 'I', 'V', 'D') /* Vivid Metadata */
+> > >  
+> > > +/* Vendor specific - used for RK_ISP1 camera sub-system */
+> > > +#define V4L2_META_FMT_RK_ISP1_PARAMS	v4l2_fourcc('R', 'K', '1', 'P') /* Rockchip ISP1 params */
+> > > +#define V4L2_META_FMT_RK_ISP1_STAT_3A	v4l2_fourcc('R', 'K', '1', 'S') /* Rockchip ISP1 3A statistics */
+> > > +
+> > >  /* priv field value to indicates that subsequent fields are valid. */
+> > >  #define V4L2_PIX_FMT_PRIV_MAGIC		0xfeedcafe
+> > >  
+> > > 
+> > 
+> > Regards,
+> > 
+> > 	Hans
+> > 
