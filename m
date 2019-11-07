@@ -1,167 +1,108 @@
 From: Helen Koike <helen.koike@collabora.com>
-Subject: [PATCH v10 00/11] Rockchip ISP Driver
-Date: Wed,  6 Nov 2019 21:56:06 -0300
-Message-ID: <20191107005617.12302-1-helen.koike@collabora.com>
+Subject: [PATCH v10 02/11] media: staging: rkisp1: add document for rkisp1 meta buffer format
+Date: Wed,  6 Nov 2019 21:56:08 -0300
+Message-ID: <20191107005617.12302-3-helen.koike@collabora.com>
+References: <20191107005617.12302-1-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191107005617.12302-1-helen.koike@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: linux-rockchip@lists.infradead.org
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, kernel@collabora.com, heiko@sntech.de, jacob-chen@iotwrt.com, gregkh@linuxfoundation.org, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, Helen Koike <helen.koike@collabora.com>, robh+dt@kernel.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, zhengsq@rock-chips.com, mchehab@kernel.org, ezequiel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, gregkh@linuxfoundation.org, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, robh+dt@kernel.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org, jacob-chen@iotwrt.com, zhengsq@rock-chips.com, Jacob Chen <jacob2.chen@rock-chips.com>, Jacob Chen <jacob-chen@rock-chips.com>, Helen Koike <helen.koike@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
+From: Jacob Chen <jacob2.chen@rock-chips.com>
 
-This series adds the Rockchip Image Signal Processing Unit v1 driver to
-staging.
+This commit add document for rkisp1 meta buffer format
 
-The main reason to be in staging is that people are already using it from the
-mailing list (including libcamera), and having it in mainlin makes the workflow
-easier. Also, it is easier for other people to contribute back (with code
-or testing the driver).
+Signed-off-by: Jacob Chen <jacob-chen@rock-chips.com>
+Acked-by: Hans Verkuil <hans.verkuil@cisco.com>
+[refactored for upstream]
+Signed-off-by: Helen Koike <helen.koike@collabora.com>
 
-We plan to actively work on this driver to get it our of staging.
+---
 
-This patchset is also available at:
-https://gitlab.collabora.com/koike/linux/tree/rockchip/isp/v10
+Changes in v10:
+- unsquash
 
-Libcamera patched to work with this version:
-https://gitlab.collabora.com/koike/libcamera
-(also sent to the mailing list)
+Changes in v9:
+- squash
+- migrate to staging
+- remove meta-formats.rst update
 
-The major difference in v10 are:
-* I splitted the patches again in different commits, since it was too big for
-the media mailing list and also it's easier to get dt-bindings approval.
-* We don't expose the metadata pixelformats to the uapi yet, so  patch
-"media: videodev2.h, v4l2-ioctl: add rkisp1 meta buffer format" was
-removed from the series.
-* TODO list was updated to remind to test uapi structs in different
-architectures.
+Changes in v8:
+- Add SPDX in the header
+- Remove emacs configs
+- Fix doc style
 
-This series only touches MAINTAINERS file and drivers/staging/
+Changes in v7:
+- s/correspond/corresponding
+- s/use/uses
+- s/docuemnt/document
 
-MAINTAINERS
-drivers/staging/media/Kconfig
-drivers/staging/media/Makefile
-drivers/staging/media/phy-rockchip-dphy/Kconfig
-drivers/staging/media/phy-rockchip-dphy/Makefile
-drivers/staging/media/phy-rockchip-dphy/TODO
-drivers/staging/media/phy-rockchip-dphy/phy-rockchip-dphy.c
-drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.txt
-drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt
-drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
-drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
-drivers/staging/media/rkisp1/Kconfig
-drivers/staging/media/rkisp1/Makefile
-drivers/staging/media/rkisp1/TODO
-drivers/staging/media/rkisp1/capture.c
-drivers/staging/media/rkisp1/capture.h
-drivers/staging/media/rkisp1/common.h
-drivers/staging/media/rkisp1/dev.c
-drivers/staging/media/rkisp1/dev.h
-drivers/staging/media/rkisp1/isp_params.c
-drivers/staging/media/rkisp1/isp_params.h
-drivers/staging/media/rkisp1/isp_stats.c
-drivers/staging/media/rkisp1/isp_stats.h
-drivers/staging/media/rkisp1/regs.c
-drivers/staging/media/rkisp1/regs.h
-drivers/staging/media/rkisp1/rkisp1.c
-drivers/staging/media/rkisp1/rkisp1.h
-drivers/staging/media/rkisp1/uapi/rkisp1-config.h
-
-Two drivers were added, including a TODO list for removing it from
-staging:
-
-* phy-rockchip-dphy: mipi dphy driver used by csi
-* rkisp1: the image signal processing unit driver
-
-Any feedback is welcome.
-
-Thanks,
-Helen
-
-Helen Koike (1):
-  MAINTAINERS: add entry for Rockchip ISP1 driver
-
-Jacob Chen (9):
-  media: staging: phy-rockchip-dphy: add Rockchip MIPI Synopsys DPHY
-    driver
-  media: staging: rkisp1: add document for rkisp1 meta buffer format
-  media: staging: rkisp1: add Rockchip ISP1 subdev driver
-  media: staging: rkisp1: add ISP1 statistics driver
-  media: staging: rkisp1: add ISP1 params driver
-  media: staging: rkisp1: add capture device driver
-  media: staging: rkisp1: add rockchip isp1 core driver
-  media: staging: dt-bindings: Document the Rockchip ISP1 bindings
-  media: staging: dt-bindings: Document the Rockchip MIPI RX D-PHY
-    bindings
-
-Jeffy Chen (1):
-  media: staging: rkisp1: add user space ABI definitions
-
- MAINTAINERS                                   |    6 +
- drivers/staging/media/Kconfig                 |    4 +
- drivers/staging/media/Makefile                |    2 +
- .../staging/media/phy-rockchip-dphy/Kconfig   |   11 +
- .../staging/media/phy-rockchip-dphy/Makefile  |    2 +
- drivers/staging/media/phy-rockchip-dphy/TODO  |    6 +
- .../phy-rockchip-dphy/phy-rockchip-dphy.c     |  400 ++++
- .../bindings/media/rockchip-isp1.txt          |   71 +
- .../bindings/media/rockchip-mipi-dphy.txt     |   38 +
- .../uapi/v4l/pixfmt-meta-rkisp1-params.rst    |   23 +
- .../uapi/v4l/pixfmt-meta-rkisp1-stat.rst      |   22 +
- drivers/staging/media/rkisp1/Kconfig          |   13 +
- drivers/staging/media/rkisp1/Makefile         |    7 +
- drivers/staging/media/rkisp1/TODO             |   23 +
- drivers/staging/media/rkisp1/capture.c        | 1869 +++++++++++++++++
- drivers/staging/media/rkisp1/capture.h        |  164 ++
- drivers/staging/media/rkisp1/common.h         |   98 +
- drivers/staging/media/rkisp1/dev.c            |  439 ++++
- drivers/staging/media/rkisp1/dev.h            |   67 +
- drivers/staging/media/rkisp1/isp_params.c     | 1604 ++++++++++++++
- drivers/staging/media/rkisp1/isp_params.h     |   50 +
- drivers/staging/media/rkisp1/isp_stats.c      |  494 +++++
- drivers/staging/media/rkisp1/isp_stats.h      |   60 +
- drivers/staging/media/rkisp1/regs.c           |  224 ++
- drivers/staging/media/rkisp1/regs.h           | 1525 ++++++++++++++
- drivers/staging/media/rkisp1/rkisp1.c         | 1246 +++++++++++
- drivers/staging/media/rkisp1/rkisp1.h         |   97 +
- .../staging/media/rkisp1/uapi/rkisp1-config.h |  819 ++++++++
- 28 files changed, 9384 insertions(+)
- create mode 100644 drivers/staging/media/phy-rockchip-dphy/Kconfig
- create mode 100644 drivers/staging/media/phy-rockchip-dphy/Makefile
- create mode 100644 drivers/staging/media/phy-rockchip-dphy/TODO
- create mode 100644 drivers/staging/media/phy-rockchip-dphy/phy-rockchip-dphy.c
- create mode 100644 drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.txt
- create mode 100644 drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt
+ .../uapi/v4l/pixfmt-meta-rkisp1-params.rst    | 23 +++++++++++++++++++
+ .../uapi/v4l/pixfmt-meta-rkisp1-stat.rst      | 22 ++++++++++++++++++
+ 2 files changed, 45 insertions(+)
  create mode 100644 drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
  create mode 100644 drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
- create mode 100644 drivers/staging/media/rkisp1/Kconfig
- create mode 100644 drivers/staging/media/rkisp1/Makefile
- create mode 100644 drivers/staging/media/rkisp1/TODO
- create mode 100644 drivers/staging/media/rkisp1/capture.c
- create mode 100644 drivers/staging/media/rkisp1/capture.h
- create mode 100644 drivers/staging/media/rkisp1/common.h
- create mode 100644 drivers/staging/media/rkisp1/dev.c
- create mode 100644 drivers/staging/media/rkisp1/dev.h
- create mode 100644 drivers/staging/media/rkisp1/isp_params.c
- create mode 100644 drivers/staging/media/rkisp1/isp_params.h
- create mode 100644 drivers/staging/media/rkisp1/isp_stats.c
- create mode 100644 drivers/staging/media/rkisp1/isp_stats.h
- create mode 100644 drivers/staging/media/rkisp1/regs.c
- create mode 100644 drivers/staging/media/rkisp1/regs.h
- create mode 100644 drivers/staging/media/rkisp1/rkisp1.c
- create mode 100644 drivers/staging/media/rkisp1/rkisp1.h
- create mode 100644 drivers/staging/media/rkisp1/uapi/rkisp1-config.h
 
+diff --git a/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst b/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
+new file mode 100644
+index 000000000000..103b5cb79b7c
+--- /dev/null
++++ b/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
+@@ -0,0 +1,23 @@
++.. SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++
++.. _v4l2-meta-fmt-rkisp1-params:
++
++============================
++V4L2_META_FMT_RK_ISP1_PARAMS
++============================
++
++Rockchip ISP1 Parameters Data
++
++Description
++===========
++
++This format describes input parameters for the Rockchip ISP1.
++
++It uses c-struct :c:type:`rkisp1_isp_params_cfg`, which is defined in
++the ``linux/rkisp1-config.h`` header file.
++
++The parameters consist of multiple modules.
++The module won't be updated if the corresponding bit was not set in module_*_update.
++
++.. kernel-doc:: include/uapi/linux/rkisp1-config.h
++   :functions: rkisp1_isp_params_cfg
+diff --git a/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst b/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
+new file mode 100644
+index 000000000000..4ad303f96421
+--- /dev/null
++++ b/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
+@@ -0,0 +1,22 @@
++.. SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++
++.. _v4l2-meta-fmt-rkisp1-stat:
++
++=============================
++V4L2_META_FMT_RK_ISP1_STAT_3A
++=============================
++
++
++Rockchip ISP1 Statistics Data
++
++Description
++===========
++
++This format describes image color statistics information generated by the Rockchip
++ISP1.
++
++It uses c-struct :c:type:`rkisp1_stat_buffer`, which is defined in
++the ``linux/rkisp1-config.h`` header file.
++
++.. kernel-doc:: include/uapi/linux/rkisp1-config.h
++   :functions: rkisp1_stat_buffer
 -- 
 2.22.0
