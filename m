@@ -1,61 +1,127 @@
-From: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: [PATCH AUTOSEL 4.9 63/64] ARM: dts: rockchip: Fix erroneous SPI bus
- dtc warnings on rk3036
-Date: Fri,  8 Nov 2019 06:45:44 -0500
-Message-ID: <20191108114545.15351-63-sashal@kernel.org>
-References: <20191108114545.15351-1-sashal@kernel.org>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH v2 for 5.4 1/4] media: hantro: Fix s_fmt for dynamic
+ resolution changes
+Date: Fri, 8 Nov 2019 20:52:02 +0900
+Message-ID: <CAAFQd5DiAnP5pc4SoPV3aDM7k71wYmPtAHzN7thquf47EOioHw@mail.gmail.com>
+References: <20191007174505.10681-1-ezequiel@collabora.com>
+ <20191007174505.10681-2-ezequiel@collabora.com> <20191108111950.717db5ce@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191108114545.15351-1-sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191108111950.717db5ce@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Boris Brezillon <boris.brezillon@collabora.com>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, Linux Media Mailing List <linux-media@vger.kernel.org>, kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+On Fri, Nov 8, 2019 at 7:20 PM Boris Brezillon
+<boris.brezillon@collabora.com> wrote:
+>
+> On Mon,  7 Oct 2019 14:45:02 -0300
+> Ezequiel Garcia <ezequiel@collabora.com> wrote:
+>
+> > Commit 953aaa1492c53 ("media: rockchip/vpu: Prepare things to support decoders")
+> > changed the conditions under S_FMT was allowed for OUTPUT
+> > CAPTURE buffers.
+> >
+> > However, and according to the mem-to-mem stateless decoder specification,
+> > in order to support dynamic resolution changes, S_FMT should be allowed
+> > even if OUTPUT buffers have been allocated.
+> >
+> > Relax decoder S_FMT restrictions on OUTPUT buffers, allowing a resolution
+> > modification, provided the pixel format stays the same.
+> >
+> > Tested on RK3288 platforms using ChromiumOS Video Decode/Encode Accelerator Unittests.
+> >
+> > Fixes: 953aaa1492c53 ("media: rockchip/vpu: Prepare things to support decoders")
+> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > --
+> > v2:
+> > * Call try_fmt_out before using the format,
+> >   pointed out by Philipp.
+> >
+> >  drivers/staging/media/hantro/hantro_v4l2.c | 28 +++++++++++++++-------
+> >  1 file changed, 19 insertions(+), 9 deletions(-)
+> >
+> > diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
+> > index 3dae52abb96c..586d243cc3cc 100644
+> > --- a/drivers/staging/media/hantro/hantro_v4l2.c
+> > +++ b/drivers/staging/media/hantro/hantro_v4l2.c
+> > @@ -367,19 +367,26 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+> >  {
+> >       struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+> >       struct hantro_ctx *ctx = fh_to_ctx(priv);
+> > +     struct vb2_queue *vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+> >       const struct hantro_fmt *formats;
+> >       unsigned int num_fmts;
+> > -     struct vb2_queue *vq;
+> >       int ret;
+> >
+> > -     /* Change not allowed if queue is busy. */
+> > -     vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+> > -     if (vb2_is_busy(vq))
+> > -             return -EBUSY;
+> > +     ret = vidioc_try_fmt_out_mplane(file, priv, f);
+> > +     if (ret)
+> > +             return ret;
+> >
+> >       if (!hantro_is_encoder_ctx(ctx)) {
+> >               struct vb2_queue *peer_vq;
+> >
+> > +             /*
+> > +              * In other to support dynamic resolution change,
+>
+>                       ^ order
+>
+> > +              * the decoder admits a resolution change, as long
+> > +              * as the pixelformat remains. Can't be done if streaming.
+> > +              */
+> > +             if (vb2_is_streaming(vq) || (vb2_is_busy(vq) &&
+> > +                 pix_mp->pixelformat != ctx->src_fmt.pixelformat))
+> > +                     return -EBUSY;
+>
+> Sorry to chime in only now, but I'm currently looking at the VP9 spec
+> and it seems the resolution is allowed to change dynamically [1] (I
+> guess the same applies to VP8). IIU the spec correctly, coded frames
+> using the new resolution can reference decoded frames using the old
+> one (can be higher or lower res BTW). If we force a streamoff to change
+> the resolution (as seems to be the case here), we'll lose those ref
+> frames (see the hantro_return_bufs() in stop streaming), right?
+> Hans, Tomasz, any idea how this dynamic resolution change could/should
+> be supported?
 
-[ Upstream commit 131c3eb428ccd5f0c784b9edb4f72ec296a045d2 ]
+The same problem applies to stateful decoders as well. This is an
+inherent limitation of the current V4L2 API. To handle this kind of
+streams we would have to make the format a per-buffer parameter,
+rather than per-queue as it is defined currently.
 
-dtc has new checks for SPI buses. The rk3036 dts file has a node named
-spi' which causes false positive warnings. As the node is a pinctrl child
-node, change the node name to be 'spi-pins' to fix the warnings.
+Best regards,
+Tomasz
 
-arch/arm/boot/dts/rk3036-evb.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #address-cells for SPI bus
-arch/arm/boot/dts/rk3036-kylin.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #address-cells for SPI bus
-arch/arm/boot/dts/rk3036-evb.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #size-cells for SPI bus
-arch/arm/boot/dts/rk3036-kylin.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #size-cells for SPI bus
-
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Signed-off-by: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- arch/arm/boot/dts/rk3036.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index a935523a1eb85..147c73f68f1d9 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -744,7 +744,7 @@
- 			/* no rts / cts for uart2 */
- 		};
- 
--		spi {
-+		spi-pins {
- 			spi_txd:spi-txd {
- 				rockchip,pins = <1 29 RK_FUNC_3 &pcfg_pull_default>;
- 			};
--- 
-2.20.1
+>
+> >               /*
+> >                * Since format change on the OUTPUT queue will reset
+> >                * the CAPTURE queue, we can't allow doing so
+> > @@ -389,12 +396,15 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+> >                                         V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
+> >               if (vb2_is_busy(peer_vq))
+> >                       return -EBUSY;
+> > +     } else {
+> > +             /*
+> > +              * The encoder doesn't admit a format change if
+> > +              * there are OUTPUT buffers allocated.
+> > +              */
+> > +             if (vb2_is_busy(vq))
+> > +                     return -EBUSY;
+> >       }
+> >
+> > -     ret = vidioc_try_fmt_out_mplane(file, priv, f);
+> > -     if (ret)
+> > -             return ret;
+> > -
+> >       formats = hantro_get_formats(ctx, &num_fmts);
+> >       ctx->vpu_src_fmt = hantro_find_format(formats, num_fmts,
+> >                                             pix_mp->pixelformat);
+>
+> [1] Section "5.16 Reference frame scaling" of
+>     https://storage.googleapis.com/downloads.webmproject.org/docs/vp9/vp9-bitstream-specification-v0.6-20160331-draft.pdf
