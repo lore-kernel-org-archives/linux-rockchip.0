@@ -1,50 +1,65 @@
 From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Subject: [PATCH v2 2/5] dt-bindings: display: rockchip-dsi: document external phys
-Date: Fri,  8 Nov 2019 01:02:50 +0100
-Message-ID: <20191108000253.8560-3-heiko.stuebner@theobroma-systems.com>
-References: <20191108000253.8560-1-heiko.stuebner@theobroma-systems.com>
+Subject: [PATCH 1/2] dt-bindings: phy: drop #clock-cells from rockchip,px30-dsi-dphy
+Date: Fri,  8 Nov 2019 01:06:39 +0100
+Message-ID: <20191108000640.8775-1-heiko.stuebner@theobroma-systems.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191108000253.8560-1-heiko.stuebner@theobroma-systems.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: dri-devel@lists.freedesktop.org, a.hajda@samsung.com
-Cc: hjc@rock-chips.com, robh+dt@kernel.org, mark.rutland@arm.com, narmstrong@baylibre.com, Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se, jernej.skrabec@siol.net, philippe.cornu@st.com, yannick.fertre@st.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, heiko@sntech.de, christoph.muellner@theobroma-systems.com, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+To: kishon@ti.com
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, bivvy.bi@rock-chips.com, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, christoph.muellner@theobroma-systems.com, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Some dw-mipi-dsi instances in Rockchip SoCs use external dphys.
-In these cases the needs clock will also be generated externally
-so these don't need the ref-clock as well.
+Further review of the dsi components for the px30 revealed that the
+phy shouldn't expose the pll as clock but instead handle settings
+via phy parameters.
 
+As the phy binding is new and not used anywhere yet, just drop them
+so they don't get used.
+
+Fixes: 3817c7961179 ("dt-bindings: phy: add yaml binding for rockchip,px30-dsi-dphy")
 Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 ---
- .../bindings/display/rockchip/dw_mipi_dsi_rockchip.txt     | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+Hi Kishon,
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-index ce4c1fc9116c..1ba9237d0ac0 100644
---- a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-+++ b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-@@ -9,8 +9,9 @@ Required properties:
- - reg: Represent the physical address range of the controller.
- - interrupts: Represent the controller's interrupt to the CPU(s).
- - clocks, clock-names: Phandles to the controller's pll reference
--  clock(ref) and APB clock(pclk). For RK3399, a phy config clock
--  (phy_cfg) and a grf clock(grf) are required. As described in [1].
-+  clock(ref) when using an internal dphy and APB clock(pclk).
-+  For RK3399, a phy config clock (phy_cfg) and a grf clock(grf)
-+  are required. As described in [1].
- - rockchip,grf: this soc should set GRF regs to mux vopl/vopb.
- - ports: contain a port node with endpoint definitions as defined in [2].
-   For vopb,set the reg = <0> and set the reg = <1> for vopl.
-@@ -18,6 +19,8 @@ Required properties:
- - video port 1 for either a panel or subsequent encoder
+this should ideally get into 5.5 as a fix for the previous change
+so that the binding doesn't accidentially get used.
+
+Thanks
+Heiko
+
+ .../devicetree/bindings/phy/rockchip,px30-dsi-dphy.yaml      | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/phy/rockchip,px30-dsi-dphy.yaml b/Documentation/devicetree/bindings/phy/rockchip,px30-dsi-dphy.yaml
+index bb0da87bcd84..476c56a1dc8c 100644
+--- a/Documentation/devicetree/bindings/phy/rockchip,px30-dsi-dphy.yaml
++++ b/Documentation/devicetree/bindings/phy/rockchip,px30-dsi-dphy.yaml
+@@ -13,9 +13,6 @@ properties:
+   "#phy-cells":
+     const: 0
  
- Optional properties:
-+- phys: from general PHY binding: the phandle for the PHY device.
-+- phy-names: Should be "dphy" if phys references an external phy.
- - power-domains: a phandle to mipi dsi power domain node.
- - resets: list of phandle + reset specifier pairs, as described in [3].
- - reset-names: string reset name, must be "apb".
+-  "#clock-cells":
+-    const: 0
+-
+   compatible:
+     enum:
+       - rockchip,px30-dsi-dphy
+@@ -49,7 +46,6 @@ properties:
+ 
+ required:
+   - "#phy-cells"
+-  - "#clock-cells"
+   - compatible
+   - reg
+   - clocks
+@@ -66,7 +62,6 @@ examples:
+         reg = <0x0 0xff2e0000 0x0 0x10000>;
+         clocks = <&pmucru 13>, <&cru 12>;
+         clock-names = "ref", "pclk";
+-        #clock-cells = <0>;
+         resets = <&cru 12>;
+         reset-names = "apb";
+         #phy-cells = <0>;
 -- 
 2.23.0
