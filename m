@@ -1,8 +1,8 @@
 From: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: [PATCH AUTOSEL 4.19 200/205] ARM: dts: rockchip: Fix erroneous SPI
- bus dtc warnings on rk3036
-Date: Fri,  8 Nov 2019 06:37:47 -0500
-Message-ID: <20191108113752.12502-200-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 201/205] arm64: dts: rockchip: Fix I2C bus
+ unit-address error on rk3399-puma-haikou
+Date: Fri,  8 Nov 2019 06:37:48 -0500
+Message-ID: <20191108113752.12502-201-sashal@kernel.org>
 References: <20191108113752.12502-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -24,16 +24,11 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
-[ Upstream commit 131c3eb428ccd5f0c784b9edb4f72ec296a045d2 ]
+[ Upstream commit 501500e65fa96f899230d66153fefd780f08dd34 ]
 
-dtc has new checks for SPI buses. The rk3036 dts file has a node named
-spi' which causes false positive warnings. As the node is a pinctrl child
-node, change the node name to be 'spi-pins' to fix the warnings.
+dtc has new checks for I2C buses. Fix the warnings in unit-addresses.
 
-arch/arm/boot/dts/rk3036-evb.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #address-cells for SPI bus
-arch/arm/boot/dts/rk3036-kylin.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #address-cells for SPI bus
-arch/arm/boot/dts/rk3036-evb.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #size-cells for SPI bus
-arch/arm/boot/dts/rk3036-kylin.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #size-cells for SPI bus
+arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dtb: Warning (i2c_bus_reg): /i2c@ff3d0000/codec@0a: I2C bus unit address format error, expected "a"
 
 Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
@@ -41,21 +36,21 @@ Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Signed-off-by: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 ---
- arch/arm/boot/dts/rk3036.dtsi | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index 67f57200d9a06..d560fc4051c5f 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -733,7 +733,7 @@
- 			/* no rts / cts for uart2 */
- 		};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+index 8ce4a79d9360f..1e6a71066c163 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+@@ -131,7 +131,7 @@
+ 	status = "okay";
+ 	clock-frequency = <400000>;
  
--		spi {
-+		spi-pins {
- 			spi_txd:spi-txd {
- 				rockchip,pins = <1 29 RK_FUNC_3 &pcfg_pull_default>;
- 			};
+-	sgtl5000: codec@0a {
++	sgtl5000: codec@a {
+ 		compatible = "fsl,sgtl5000";
+ 		reg = <0x0a>;
+ 		clocks = <&sgtl5000_clk>;
 -- 
 2.20.1
