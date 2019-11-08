@@ -1,89 +1,55 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] drm/rockchip: use DRM_DEV_ERROR for log output
-Date: Fri, 08 Nov 2019 15:06:44 +0100
-Message-ID: <4996186.DxzAFJqeGu@diego>
-References: <20191107092945.15513-1-wambui.karugax@gmail.com> <20191107133851.GF63329@art_vandelay> <20191108124630.GA10207@wambui>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v1 2/7] arm64: dts: Use IRQ flags for legacy PCI IRQ
+ interrupts
+Date: Fri, 08 Nov 2019 15:34:06 +0100
+Message-ID: <4293211.PqsBVBjssI@phil>
+References: <20191104163834.8932-1-andrew.murray@arm.com>
+ <20191104163834.8932-3-andrew.murray@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191108124630.GA10207@wambui>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wambui Karuga <wambui.karugax@gmail.com>
-Cc: Sean Paul <sean@poorly.run>, hjc@rock-chips.com, airlied@linux.ie, daniel@ffwll.ch, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20191104163834.8932-3-andrew.murray@arm.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Andrew Murray <andrew.murray@arm.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Liviu Dudau <liviu.dudau@arm.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Michal Simek <michal.simek@xilinx.com>, Wei Xu <xuwei5@hisilicon.com>, linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>, Tsahee Zidenberg <tsahee@annapurnalabs.com>, Tom Lendacky <thomas.lendacky@amd.com>, Antoine Tenart <antoine.tenart@bootlin.com>, linux-arm-msm@vger.kernel.org, Robert Richter <rrichter@cavium.com>, Rob Herring <robh+dt@kernel.org>, Jayachandran C <jnair@caviumnetworks.com>, linux-arm-kernel@lists.infradead.org, Brijesh Singh <brijeshkumar.singh@amd.com>, Li Yang <leoyang.li@nxp.com>, Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>, Sudeep Holla <sudeep.holla@arm.com>, Shawn Guo <shawnguo@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-[it seems your Reply-To mail header is set strangely as
-Reply-To: 20191107133851.GF63329@art_vandelay
-which confuses my MTA]
-
-Am Freitag, 8. November 2019, 13:46:30 CET schrieb Wambui Karuga:
-> On Thu, Nov 07, 2019 at 08:38:51AM -0500, Sean Paul wrote:
-> > On Thu, Nov 07, 2019 at 01:54:22AM -0800, Joe Perches wrote:
-> > > On Thu, 2019-11-07 at 12:29 +0300, Wambui Karuga wrote:
-> > > > Replace the use of the dev_err macro with the DRM_DEV_ERROR
-> > > > DRM helper macro.
-> > > 
-> > > The commit message should show the reason _why_ you are doing
-> > > this instead of just stating that you are doing this.
-> > > 
-> > > It's not that dev_err is uncommon in drivers/gpu/drm.
-> > > 
-> > 
-> > It is uncommon (this is the sole instance) in rockchip, however. So it makes
-> > sense to convert the dev_* prints in rockchip to DRM_DEV for consistency.
-> > 
-> > Wambui, could you also please convert the dev_warn instance as well?
-> > 
-> Hey, Sean.
-> Trying to convert this dev_warn instance, but the corresponding DRM_WARN
-> macro does not take the dev parameter which seems to be useful in the
-> original output.
-> Should I still convert it to DRM_WARN without the hdmi->dev parameter?
-
-There exists DRM_DEV_ERROR, DRM_DEV_INFO and DRM_DEV_DEBUG to
-handle actual devices. Interestingly there is no DRM_DEV_WARN though.
-
-So depending on what Sean suggest another option would be to add the
-missing DRM_DEV_WARN and then use it to replace the dev_warn.
-
-
-Heiko
-
-
-
+Am Montag, 4. November 2019, 17:38:16 CET schrieb Andrew Murray:
+> Replace magic numbers used to describe legacy PCI IRQ interrupts
+> with #define.
 > 
-> Thanks,
-> wambui
-> > I'll apply this to drm-misc-next and expand on the commit message a bit.
-> > 
-> > Thanks,
-> > 
-> > Sean
-> > 
-> > > $ git grep -w dev_err drivers/gpu/drm | wc -l
-> > > 1950
-> > > $ git grep -w DRM_DEV_ERROR drivers/gpu/drm | wc -l
-> > > 756
-> > > 
-> > > > diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> > > []
-> > > > @@ -916,7 +916,7 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
-> > > >  	}
-> > > >  
-> > > >  	if (!dsi->cdata) {
-> > > > -		dev_err(dev, "no dsi-config for %s node\n", np->name);
-> > > > +		DRM_DEV_ERROR(dev, "no dsi-config for %s node\n", np->name);
-> > > >  		return -EINVAL;
-> > > >  	}
-> > > 
-> > > 
-> > > 
-> > > _______________________________________________
-> > > dri-devel mailing list
-> > > dri-devel@lists.freedesktop.org
-> > > https://lists.freedesktop.org/mailman/listinfo/dri-devel
-> > 
-> 
+> Signed-off-by: Andrew Murray <andrew.murray@arm.com>
+
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index cede1ad81be2..bb68826bac6f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -242,11 +242,11 @@
+>  			     <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH 0>,
+>  			     <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH 0>;
+>  		interrupt-names = "sys", "legacy", "client";
+> -		interrupt-map-mask = <0 0 0 7>;
+> -		interrupt-map = <0 0 0 1 &pcie0_intc 0>,
+> -				<0 0 0 2 &pcie0_intc 1>,
+> -				<0 0 0 3 &pcie0_intc 2>,
+> -				<0 0 0 4 &pcie0_intc 3>;
+> +		interrupt-map-mask = <0 0 0 IRQ_INT_ALL>;
+> +		interrupt-map = <0 0 0 IRQ_INTA &pcie0_intc 0>,
+> +				<0 0 0 IRQ_INTB &pcie0_intc 1>,
+> +				<0 0 0 IRQ_INTC &pcie0_intc 2>,
+> +				<0 0 0 IRQ_INTD &pcie0_intc 3>;
+>  		linux,pci-domain = <0>;
+>  		max-link-speed = <1>;
+>  		msi-map = <0x0 &its 0x0 0x1000>;
+
+For the Rockchip part
+Acked-by: Heiko Stuebner <heiko@sntech.de>
