@@ -1,7 +1,7 @@
 From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Subject: [PATCH v2 5/5] drm/rockchip: dsi: add px30 support
-Date: Fri,  8 Nov 2019 01:02:53 +0100
-Message-ID: <20191108000253.8560-6-heiko.stuebner@theobroma-systems.com>
+Subject: [PATCH v2 2/5] dt-bindings: display: rockchip-dsi: document external phys
+Date: Fri,  8 Nov 2019 01:02:50 +0100
+Message-ID: <20191108000253.8560-3-heiko.stuebner@theobroma-systems.com>
 References: <20191108000253.8560-1-heiko.stuebner@theobroma-systems.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,64 +12,39 @@ To: dri-devel@lists.freedesktop.org, a.hajda@samsung.com
 Cc: hjc@rock-chips.com, robh+dt@kernel.org, mark.rutland@arm.com, narmstrong@baylibre.com, Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se, jernej.skrabec@siol.net, philippe.cornu@st.com, yannick.fertre@st.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, heiko@sntech.de, christoph.muellner@theobroma-systems.com, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add the compatible and GRF definitions for the PX30 soc.
+Some dw-mipi-dsi instances in Rockchip SoCs use external dphys.
+In these cases the needs clock will also be generated externally
+so these don't need the ref-clock as well.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 ---
- .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 27 +++++++++++++++++++
- 1 file changed, 27 insertions(+)
+ .../bindings/display/rockchip/dw_mipi_dsi_rockchip.txt     | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index 1e6578f911a0..13858f377a0c 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -140,6 +140,12 @@
- #define DW_MIPI_NEEDS_PHY_CFG_CLK	BIT(0)
- #define DW_MIPI_NEEDS_GRF_CLK		BIT(1)
+diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+index ce4c1fc9116c..1ba9237d0ac0 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
++++ b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+@@ -9,8 +9,9 @@ Required properties:
+ - reg: Represent the physical address range of the controller.
+ - interrupts: Represent the controller's interrupt to the CPU(s).
+ - clocks, clock-names: Phandles to the controller's pll reference
+-  clock(ref) and APB clock(pclk). For RK3399, a phy config clock
+-  (phy_cfg) and a grf clock(grf) are required. As described in [1].
++  clock(ref) when using an internal dphy and APB clock(pclk).
++  For RK3399, a phy config clock (phy_cfg) and a grf clock(grf)
++  are required. As described in [1].
+ - rockchip,grf: this soc should set GRF regs to mux vopl/vopb.
+ - ports: contain a port node with endpoint definitions as defined in [2].
+   For vopb,set the reg = <0> and set the reg = <1> for vopl.
+@@ -18,6 +19,8 @@ Required properties:
+ - video port 1 for either a panel or subsequent encoder
  
-+#define PX30_GRF_PD_VO_CON1		0x0438
-+#define PX30_DSI_FORCETXSTOPMODE	(0xf << 7)
-+#define PX30_DSI_FORCERXMODE		BIT(6)
-+#define PX30_DSI_TURNDISABLE		BIT(5)
-+#define PX30_DSI_LCDC_SEL		BIT(0)
-+
- #define RK3288_GRF_SOC_CON6		0x025c
- #define RK3288_DSI0_LCDC_SEL		BIT(6)
- #define RK3288_DSI1_LCDC_SEL		BIT(9)
-@@ -1049,6 +1055,24 @@ static int dw_mipi_dsi_rockchip_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
-+static const struct rockchip_dw_dsi_chip_data px30_chip_data[] = {
-+	{
-+		.reg = 0xff450000,
-+		.lcdsel_grf_reg = PX30_GRF_PD_VO_CON1,
-+		.lcdsel_big = HIWORD_UPDATE(0, PX30_DSI_LCDC_SEL),
-+		.lcdsel_lit = HIWORD_UPDATE(PX30_DSI_LCDC_SEL,
-+					    PX30_DSI_LCDC_SEL),
-+
-+		.lanecfg1_grf_reg = PX30_GRF_PD_VO_CON1,
-+		.lanecfg1 = HIWORD_UPDATE(0, PX30_DSI_TURNDISABLE |
-+					     PX30_DSI_FORCERXMODE |
-+					     PX30_DSI_FORCETXSTOPMODE),
-+
-+		.max_data_lanes = 4,
-+	},
-+	{ /* sentinel */ }
-+};
-+
- static const struct rockchip_dw_dsi_chip_data rk3288_chip_data[] = {
- 	{
- 		.reg = 0xff960000,
-@@ -1117,6 +1141,9 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
- 
- static const struct of_device_id dw_mipi_dsi_rockchip_dt_ids[] = {
- 	{
-+	 .compatible = "rockchip,px30-mipi-dsi",
-+	 .data = &px30_chip_data,
-+	}, {
- 	 .compatible = "rockchip,rk3288-mipi-dsi",
- 	 .data = &rk3288_chip_data,
- 	}, {
+ Optional properties:
++- phys: from general PHY binding: the phandle for the PHY device.
++- phy-names: Should be "dphy" if phys references an external phy.
+ - power-domains: a phandle to mipi dsi power domain node.
+ - resets: list of phandle + reset specifier pairs, as described in [3].
+ - reset-names: string reset name, must be "apb".
 -- 
 2.23.0
