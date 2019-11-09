@@ -1,80 +1,111 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [BUG] rk3399-rockpro64 pcie synchronous external abort
-Date: Sat, 9 Nov 2019 08:37:57 -0800
-Message-ID: <CAD=FV=XXrSsnr08bbY_Lv39tdNSUOyDDSVj_3+701eYNpFRhWQ@mail.gmail.com>
-References: <CAMdYzYoTwjKz4EN8PtD5pZfu3+SX+68JL+dfvmCrSnLL=K6Few@mail.gmail.com>
- <CAMdYzYqQpVrA9DpN5GRc2RqvsShSamw2EBJDxwng1aE3sfpfdg@mail.gmail.com>
+From: Boris Brezillon <boris.brezillon@collabora.com>
+Subject: Re: [PATCH v2 for 5.4 1/4] media: hantro: Fix s_fmt for dynamic
+ resolution changes
+Date: Sat, 9 Nov 2019 20:13:33 +0100
+Message-ID: <20191109201333.4dc63e0e@collabora.com>
+References: <20191007174505.10681-1-ezequiel@collabora.com>
+        <20191007174505.10681-2-ezequiel@collabora.com>
+        <20191108111950.717db5ce@collabora.com>
+        <92cba217-4f14-a397-2ae5-8797cc931703@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAMdYzYqQpVrA9DpN5GRc2RqvsShSamw2EBJDxwng1aE3sfpfdg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <92cba217-4f14-a397-2ae5-8797cc931703@xs4all.nl>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-media@vger.kernel.org, kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Sat, 9 Nov 2019 13:25:18 +0100
+Hans Verkuil <hverkuil@xs4all.nl> wrote:
 
-On Fri, Nov 8, 2019 at 5:09 PM Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->
-> Good Evening,
->
-> I'm not sure, but I believe the pcie address space built into the
-> rk3399 is not large enough to accommodate the pcie addresses the card
-> requires.
-> I've been trying to figure out if it's possible to use system ram
-> instead, but so far I haven't been successful.
-> Also, the ram layout for the rk3399 is odd considering the TRM, if
-> anyone has any insights in to that, I'd be grateful.
->
-> On Mon, Nov 4, 2019 at 1:55 PM Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> >
-> > Good Morning,
-> >
-> > I'm attempting to debug an issue with the rockpro64 pcie port.
-> > It would appear that the port does not like various cards, including
-> > cards of the same make that randomly work or do not work, such as
-> > Intel i340 based NICs.
-> > I'm experiencing it with a GTX645 gpu.
-> >
-> > This seems to be a long running issue, referenced both at [0], and [1].
-> > There was an attempt to rectify it, by adding a delay between training
-> > and probing [2], but that doesn't seem to be the issue here.
-> > It appears that when we probe further into the card, such as devfn >
-> > 1, we trigger the bug.
-> > I've added a print statement that prints the devfn, address, and size
-> > information, which you can see below.
-> >
-> > I've attempted setting the available number of lanes to 1 as well, to
-> > no difference.
-> >
-> > If anyone could point me in the right direction as to where to
-> > continue debugging, I'd greatly appreciate it.
+> On 11/8/19 11:19 AM, Boris Brezillon wrote:
+> > On Mon,  7 Oct 2019 14:45:02 -0300
+> > Ezequiel Garcia <ezequiel@collabora.com> wrote:
+> >   
+> >> Commit 953aaa1492c53 ("media: rockchip/vpu: Prepare things to support decoders")
+> >> changed the conditions under S_FMT was allowed for OUTPUT
+> >> CAPTURE buffers.
+> >>
+> >> However, and according to the mem-to-mem stateless decoder specification,
+> >> in order to support dynamic resolution changes, S_FMT should be allowed
+> >> even if OUTPUT buffers have been allocated.
+> >>
+> >> Relax decoder S_FMT restrictions on OUTPUT buffers, allowing a resolution
+> >> modification, provided the pixel format stays the same.
+> >>
+> >> Tested on RK3288 platforms using ChromiumOS Video Decode/Encode Accelerator Unittests.
+> >>
+> >> Fixes: 953aaa1492c53 ("media: rockchip/vpu: Prepare things to support decoders")
+> >> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> >> --
+> >> v2:
+> >> * Call try_fmt_out before using the format,
+> >>   pointed out by Philipp.
+> >>
+> >>  drivers/staging/media/hantro/hantro_v4l2.c | 28 +++++++++++++++-------
+> >>  1 file changed, 19 insertions(+), 9 deletions(-)
+> >>
+> >> diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
+> >> index 3dae52abb96c..586d243cc3cc 100644
+> >> --- a/drivers/staging/media/hantro/hantro_v4l2.c
+> >> +++ b/drivers/staging/media/hantro/hantro_v4l2.c
+> >> @@ -367,19 +367,26 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
+> >>  {
+> >>  	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+> >>  	struct hantro_ctx *ctx = fh_to_ctx(priv);
+> >> +	struct vb2_queue *vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+> >>  	const struct hantro_fmt *formats;
+> >>  	unsigned int num_fmts;
+> >> -	struct vb2_queue *vq;
+> >>  	int ret;
+> >>  
+> >> -	/* Change not allowed if queue is busy. */
+> >> -	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+> >> -	if (vb2_is_busy(vq))
+> >> -		return -EBUSY;
+> >> +	ret = vidioc_try_fmt_out_mplane(file, priv, f);
+> >> +	if (ret)
+> >> +		return ret;
+> >>  
+> >>  	if (!hantro_is_encoder_ctx(ctx)) {
+> >>  		struct vb2_queue *peer_vq;
+> >>  
+> >> +		/*
+> >> +		 * In other to support dynamic resolution change,  
+> > 
+> > 		      ^ order
+> >   
+> >> +		 * the decoder admits a resolution change, as long
+> >> +		 * as the pixelformat remains. Can't be done if streaming.
+> >> +		 */
+> >> +		if (vb2_is_streaming(vq) || (vb2_is_busy(vq) &&
+> >> +		    pix_mp->pixelformat != ctx->src_fmt.pixelformat))
+> >> +			return -EBUSY;  
+> > 
+> > Sorry to chime in only now, but I'm currently looking at the VP9 spec
+> > and it seems the resolution is allowed to change dynamically [1] (I
+> > guess the same applies to VP8). IIU the spec correctly, coded frames
+> > using the new resolution can reference decoded frames using the old
+> > one (can be higher or lower res BTW). If we force a streamoff to change
+> > the resolution (as seems to be the case here), we'll lose those ref
+> > frames (see the hantro_return_bufs() in stop streaming), right?
+> > Hans, Tomasz, any idea how this dynamic resolution change could/should
+> > be supported?  
+> 
+> As Tomasz also mentioned, supporting this is much more work, and probably
+> requires new streaming ioctls.
+> 
+> In the meantime I think this patch is fine (with the typo fixed, I can do
+> that), so is it OK if I merge this?
 
-I don't have tons of knowledge here, but your thread happened to fly
-by my Inbox and it reminded me of issues we faced during the bringup
-of rk3399-gru-kevin where our WiFi driver would kill the whole system
-in random / hard to debug ways.
+Sure, go ahead, here's my
 
-If I remember, the problem was that the rk3399 PCIe behaved very badly
-when you try to access the bus is in certain power save modes.  I
-think that traditional x86-based controllers just return 0xff in the
-same state, but rk3399 gives some sorts of asynchronous bus errors.
+Reviewed-by: Boris Brezillon <boris.brezillon@collabora.com>
 
-IIRC our problem was fixed with:
+in case you haven't applied the patch already.
 
-https://crrev.com/c/402092 - FROMLIST: mwifiex: fix corner case power save issue
-
-...that's about all the knowledge I have around this area, but
-possibly it could point you in the right direction?
-
--Doug
+Oh, BTW, it wasn't clear in my previous reply, but I didn't intend to
+block this patch with my VP9 concerns. My only motivation was to start
+a discussion on how to solve my specific issue ;-).
