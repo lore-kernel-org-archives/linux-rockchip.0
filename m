@@ -1,126 +1,132 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH v4 7/7] doc: boards: Add rockchip documentation
-Date: Sun, 10 Nov 2019 20:03:28 +0530
-Message-ID: <CAMty3ZB6ft2PrLQM1ic=87YXz39-TY8P5px308mcppveYGtpxQ@mail.gmail.com>
-References: <20191023195652.7158-1-jagan@amarulasolutions.com>
- <20191023195652.7158-8-jagan@amarulasolutions.com>
- <6492a339-7d0b-607f-498a-36c1652180d9@rock-chips.com>
+From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [BUG] rk3399-rockpro64 pcie synchronous external abort
+Date: Sun, 10 Nov 2019 10:43:48 -0500
+Message-ID: <CAMdYzYo6mKSMXoDR7St1ynUJ9f3sh=0rgNAbbVvFAfJn82VvVQ@mail.gmail.com>
+References: <CAMdYzYoTwjKz4EN8PtD5pZfu3+SX+68JL+dfvmCrSnLL=K6Few@mail.gmail.com>
+ <CAMdYzYqQpVrA9DpN5GRc2RqvsShSamw2EBJDxwng1aE3sfpfdg@mail.gmail.com>
+ <CAD=FV=XXrSsnr08bbY_Lv39tdNSUOyDDSVj_3+701eYNpFRhWQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <6492a339-7d0b-607f-498a-36c1652180d9@rock-chips.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, u-boot@lists.denx.de, "Matwey V . Kornilov" <matwey.kornilov@gmail.com>, linux-amarula@amarulasolutions.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAD=FV=XXrSsnr08bbY_Lv39tdNSUOyDDSVj_3+701eYNpFRhWQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SSB0cmllZCwgaXQgaXMgaGFyZCB0byBtb3ZlIGFsbCB0aGUgZGF0YSBmcm9tIGRvYy9SRUFETUUu
-cm9jaGNoaXAgaW4gb25lCmluc3RhbmNlLiBJIHdpbGwgbWFyayBpdCBteSBUT0RPLCBpdCByZXF1
-aXJlIGNsb3NlIGF0dGVudGlvbiBvZiBleGlzdGluZwpkb2MgdG8gbW92ZS4gUGxlYXNlIG1lcmdl
-IHRoaXMgYW4gaW5pdGlhbCBzdGVwLgoKT24gU3VuLCAxMCBOb3YsIDIwMTksIDg6MDAgUE0gS2V2
-ZXIgWWFuZywgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+IHdyb3RlOgoKPiBKYWdhbiwKPgo+
-IE9uIDIwMTkvMTAvMjQg5LiK5Y2IMzo1NiwgSmFnYW4gVGVraSB3cm90ZToKPiA+IFJvY2tjaGlw
-IGhhcyBkb2N1bWVudGF0aW9uIGZpbGUsIGRvYy9SRUFETUUucm9ja2NoaXAgYnV0Cj4gPiB3aGlj
-aCBpcyBub3Qgc28gcmVhZGFibGUgdG8gYWRkIG9yIHVuZGVyc3RhbmQgdGhlIGV4aXN0aW5nCj4g
-PiBjb250ZW50cy4gRXZlbiB0aGUgZm9ybWF0IHRoYXQgc3VwcG9ydCBpcyBsZWdhY3kgcmVhZG1l
-Cj4gPiBpbiBVLUJvb3QuCj4gPgo+ID4gQWRkIHJvY2tjaGlwIHNwZWNpZmljIGRvY3VtZW50YXRp
-b24gZmlsZSB1c2luZyBuZXcgcnN0Cj4gPiBmb3JtYXQsIHdoaWNoIGRlc2NyaWJlcyB0aGUgaW5m
-b3JtYXRpb24gYWJvdXQgUm9ja2NoaXAKPiA+IHN1cHBvcnRlZCBib2FyZHMgYW5kIGl0J3MgdXNh
-Z2Ugc3RlcHMuCj4gPgo+ID4gQWRkZWQgbWluaW1hbCBpbmZvcm1hdGlvbiBhYm91dCByazMyODgs
-IHJrMzMyOCwgcmszMzY4Cj4gPiBhbmQgcmszMzk5IGJvYXJkcyBhbmQgdXNhZ2UuIFRoaXMgd291
-bGQgaW5kZWVkIHVwZGF0ZWQKPiA+IGZ1cnRoZXIgYmFzZWQgb24gdGhlIHJlcXVpcmVtZW50cyBh
-bmQgdXBkYXRlcy4KPgo+Cj4gVGhpcyBwYXRjaCBtb3ZlIHNtYWxsIHBhcnQgb2YgY29udGVudCBm
-cm9tIGRvYy9SRUFETUUucm9ja2NoaXAsIEkgd291bGQKPiBwcmVmZXIKPgo+IHRvIGhhdmUgYSBt
-b3JlIGNvbXBsZXRlIHZlcnNpb24gYmVmb3JlIGl0IG1vdmUgdG8gbmV3IGRvY3VtZW50Lgo+Cj4K
-PiBUaGFua3MsCj4KPiAtIEtldmVyCj4KPiA+IENjOiBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJv
-Y2stY2hpcHMuY29tPgo+ID4gQ2M6IE1hdHdleSBWLiBLb3JuaWxvdiA8bWF0d2V5Lmtvcm5pbG92
-QGdtYWlsLmNvbT4KPiA+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFz
-b2x1dGlvbnMuY29tPgo+ID4gLS0tCj4gPiAgIGRvYy9ib2FyZC9yb2NrY2hpcC9pbmRleC5yc3Qg
-ICAgfCAgMTAgKysrCj4gPiAgIGRvYy9ib2FyZC9yb2NrY2hpcC9yb2NrY2hpcC5yc3QgfCAxMjgg
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiA+ICAgMiBmaWxlcyBjaGFuZ2VkLCAx
-MzggaW5zZXJ0aW9ucygrKQo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZG9jL2JvYXJkL3JvY2tj
-aGlwL2luZGV4LnJzdAo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZG9jL2JvYXJkL3JvY2tjaGlw
-L3JvY2tjaGlwLnJzdAo+ID4KPiA+IGRpZmYgLS1naXQgYS9kb2MvYm9hcmQvcm9ja2NoaXAvaW5k
-ZXgucnN0IGIvZG9jL2JvYXJkL3JvY2tjaGlwL2luZGV4LnJzdAo+ID4gbmV3IGZpbGUgbW9kZSAx
-MDA2NDQKPiA+IGluZGV4IDAwMDAwMDAwMDAuLjBjMzc3ZTliYmIKPiA+IC0tLSAvZGV2L251bGwK
-PiA+ICsrKyBiL2RvYy9ib2FyZC9yb2NrY2hpcC9pbmRleC5yc3QKPiA+IEBAIC0wLDAgKzEsMTAg
-QEAKPiA+ICsuLiBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMCsKPiA+ICsuLiBDb3B5
-cmlnaHQgKEMpIDIwMTkgSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4g
-PiArCj4gPiArUm9ja2NoaXAKPiA+ICs9PT09PT09PQo+ID4gKwo+ID4gKy4uIHRvY3RyZWU6Ogo+
-ID4gKyAgIDptYXhkZXB0aDogMgo+ID4gKwo+ID4gKyAgIHJvY2tjaGlwCj4gPiBkaWZmIC0tZ2l0
-IGEvZG9jL2JvYXJkL3JvY2tjaGlwL3JvY2tjaGlwLnJzdAo+IGIvZG9jL2JvYXJkL3JvY2tjaGlw
-L3JvY2tjaGlwLnJzdAo+ID4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiA+IGluZGV4IDAwMDAwMDAw
-MDAuLjYyNTE1NWU0MzIKPiA+IC0tLSAvZGV2L251bGwKPiA+ICsrKyBiL2RvYy9ib2FyZC9yb2Nr
-Y2hpcC9yb2NrY2hpcC5yc3QKPiA+IEBAIC0wLDAgKzEsMTI4IEBACj4gPiArLi4gU1BEWC1MaWNl
-bnNlLUlkZW50aWZpZXI6IEdQTC0yLjArCj4gPiArLi4gQ29weXJpZ2h0IChDKSAyMDE5IEphZ2Fu
-IFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgo+ID4gKwo+ID4gK1JPQ0tDSElQCj4g
-PiArPT09PT09PT0KPiA+ICsKPiA+ICtBYm91dCB0aGlzCj4gPiArLS0tLS0tLS0tLQo+ID4gKwo+
-ID4gK1RoaXMgZG9jdW1lbnQgZGVzY3JpYmVzIHRoZSBpbmZvcm1hdGlvbiBhYm91dCBSb2NrY2hp
-cCBzdXBwb3J0ZWQgYm9hcmRzCj4gPiArYW5kIGl0J3MgdXNhZ2Ugc3RlcHMuCj4gPiArCj4gPiAr
-Um9ja2NoaXAgYm9hcmRzCj4gPiArLS0tLS0tLS0tLS0tLS0tCj4gPiArCj4gPiArUm9ja2NoaXAg
-aXMgU29DIHNvbHV0aW9ucyBwcm92aWRlciBmb3IgdGFibGV0cyAmIFBDcywgc3RyZWFtaW5nIG1l
-ZGlhCj4gPiArVFYgYm94ZXMsIEFJIGF1ZGlvICYgdmlzaW9uLCBJb1QgaGFyZHdhcmUuCj4gPiAr
-Cj4gPiArQSB3aWRlIHJhbmdlIG9mIFJvY2tjaGlwIFNvQ3Mgd2l0aCBhc3NvY2lhdGVkIGJvYXJk
-c2FyZSBzdXBwb3J0ZWQgaW4KPiA+ICttYWlubGluZSBVLUJvb3QuCj4gPiArCj4gPiArTGlzdCBv
-ZiBtYWlubGluZSBzdXBwb3J0ZWQgcm9ja2NoaXAgYm9hcmRzOgo+ID4gKwo+ID4gKyogcmszMjg4
-Cj4gPiArICAgICAtIEV2Yi1SSzMyODgKPiA+ICsgICAgIC0gRmlyZWZseS1SSzMyODgKPiA+ICsg
-ICAgIC0gbXFtYWtlciBNaVFpCj4gPiArICAgICAtIFBoeXRlYyBSSzMyODggUENNLTk0Nwo+ID4g
-KyAgICAgLSBQb3BNZXRhbC1SSzMyODgKPiA+ICsgICAgIC0gUmFkeGEgUm9jayAyIFNxdWFyZQo+
-ID4gKyAgICAgLSBUaW5rZXItUkszMjg4Cj4gPiArICAgICAtIEdvb2dsZSBKZXJyeQo+ID4gKyAg
-ICAgLSBHb29nbGUgTWlja2V5Cj4gPiArICAgICAtIEdvb2dsZSBNaW5uaWUKPiA+ICsgICAgIC0g
-R29vZ2xlIFNwZWVkeQo+ID4gKyAgICAgLSBBbWFydWxhIFZ5YXNhLVJLMzI4OAo+ID4gKyogcmsz
-MzI4Cj4gPiArICAgICAtIFJvY2tjaGlwIFJLMzMyOCBFVkIKPiA+ICsgICAgIC0gUGluZTY0IFJv
-Y2s2NAo+ID4gKyogcmszMzY4Cj4gPiArICAgICAtIEdlZWtCb3gKPiA+ICsgICAgIC0gUFg1IEVW
-Qgo+ID4gKyAgICAgLSBSb2NrY2hpcCBzaGVlcCBib2FyZAo+ID4gKyAgICAgLSBUaGVvYnJvbWEg
-U3lzdGVtcyBSSzMzNjgtdVE3IFNvTQo+ID4gKyogcmszMzk5Cj4gPiArICAgICAtIDk2Ym9hcmRz
-IFJLMzM5OSBGaWN1cwo+ID4gKyAgICAgLSA5NmJvYXJkcyBSb2NrOTYwCj4gPiArICAgICAtIEZp
-cmVmbHktUkszMzk5IEJvYXJkCj4gPiArICAgICAtIEZpcmVmbHkgUk9DLVJLMzM5OS1QQyBCb2Fy
-ZAo+ID4gKyAgICAgLSBGcmllbmRseUVsZWMgTmFub1BDLVQ0Cj4gPiArICAgICAtIEZyaWVuZGx5
-RWxlYyBOYW5vUGkgTTQKPiA+ICsgICAgIC0gRnJpZW5kbHlBUk0gTmFub1BpIE5FTzQKPiA+ICsg
-ICAgIC0gR29vZ2xlIEJvYgo+ID4gKyAgICAgLSBLaGFkYXMgRWRnZQo+ID4gKyAgICAgLSBLaGFk
-YXMgRWRnZS1DYXB0YWluCj4gPiArICAgICAtIEtoYWRhcyBFZGdlLVYKPiA+ICsgICAgIC0gT3Jh
-bmdlIFBpIFJLMzM5OSBCb2FyZAo+ID4gKyAgICAgLSBQaW5lNjQgUm9ja1BybzY0Cj4gPiArICAg
-ICAtIFJhZHhhIFJPQ0sgUGkgNAo+ID4gKyAgICAgLSBSb2NrY2hpcCBSSzMzOTkgRXZhbHVhdGlv
-biBCb2FyZAo+ID4gKyAgICAgLSBUaGVvYnJvbWEgU3lzdGVtcyBSSzMzOTktUTcgU29NCj4gPiAr
-Cj4gPiArQnVpbGRpbmcKPiA+ICstLS0tLS0tLQo+ID4gKwo+ID4gK1RGLUEKPiA+ICteXl5eCj4g
-PiArCj4gPiArVEYtQSB3b3VsZCByZXF1aXJlIHRvIGJ1aWxkIGZvciBBUk02NCBSb2NrY2hpcCBT
-b0NzIHBsYXRmb3Jtcy4KPiA+ICsKPiA+ICtUbyBidWlsZCBURi1BOjoKPiA+ICsKPiA+ICsgICAg
-ICAgIGdpdCBjbG9uZQo+IGh0dHBzOi8vZ2l0aHViLmNvbS9BUk0tc29mdHdhcmUvYXJtLXRydXN0
-ZWQtZmlybXdhcmUuZ2l0Cj4gPiArICAgICAgICBjZCBhcm0tdHJ1c3RlZC1maXJtd2FyZQo+ID4g
-KyAgICAgICAgbWFrZSByZWFsY2xlYW4KPiA+ICsgICAgICAgIG1ha2UgQ1JPU1NfQ09NUElMRT1h
-YXJjaDY0LWxpbnV4LWdudS0gUExBVD1yazMzOTkKPiA+ICsKPiA+ICtTcGVjaWZ5IHRoZSBQTEFU
-PSB3aXRoIGRlc2lyZWQgcm9ja2NoaXAgcGxhdGZvcm0gdG8gYnVpbGQgVEYtQSBmb3IuCj4gPiAr
-Cj4gPiArVS1Cb290Cj4gPiArXl5eXl5eCj4gPiArCj4gPiArVG8gYnVpbGQgcmszMzI4IGJvYXJk
-czo6Cj4gPiArCj4gPiArICAgICAgICBleHBvcnQgQkwzMT0vcGF0aC90by9hcm0tdHJ1c3RlZC1m
-aXJtd2FyZS90by9ibDMxLmVsZgo+ID4gKyAgICAgICAgbWFrZSBldmItcmszMzI4X2RlZmNvbmZp
-Zwo+ID4gKyAgICAgICAgbWFrZQo+ID4gKwo+ID4gK1RvIGJ1aWxkIHJrMzI4OCBib2FyZHM6Ogo+
-ID4gKwo+ID4gKyAgICAgICAgbWFrZSBldmItcmszMjg4X2RlZmNvbmZpZwo+ID4gKyAgICAgICAg
-bWFrZQo+ID4gKwo+ID4gK1RvIGJ1aWxkIHJrMzM2OCBib2FyZHM6Ogo+ID4gKwo+ID4gKyAgICAg
-ICAgZXhwb3J0IEJMMzE9L3BhdGgvdG8vYXJtLXRydXN0ZWQtZmlybXdhcmUvdG8vYmwzMS5lbGYK
-PiA+ICsgICAgICAgIG1ha2UgZXZiLXB4NV9kZWZjb25maWcKPiA+ICsgICAgICAgIG1ha2UKPiA+
-ICsKPiA+ICtUbyBidWlsZCByazMzOTkgYm9hcmRzOjoKPiA+ICsKPiA+ICsgICAgICAgIGV4cG9y
-dCBCTDMxPS9wYXRoL3RvL2FybS10cnVzdGVkLWZpcm13YXJlL3RvL2JsMzEuZWxmCj4gPiArICAg
-ICAgICBtYWtlIGV2Yi1yazMzOTlfZGVmY29uZmlnCj4gPiArICAgICAgICBtYWtlCj4gPiArCj4g
-PiArRmxhc2hpbmcKPiA+ICstLS0tLS0tLQo+ID4gKwo+ID4gK1NEIENhcmQKPiA+ICteXl5eXl5e
-Cj4gPiArCj4gPiArQWxsIHJvY2tjaGlwIHBsYXRmb3JtcywgZXhjZXB0IHJrMzEyOCAod2hpY2gg
-ZG9lc24ndCB1c2UgU1BMKSBhcmUgbm93Cj4gPiArc3VwcG9ydGluZyBzaW5nbGUgYm9vdCBpbWFn
-ZSB1c2luZyBiaW5tYW4gYW5kIHBhZF9jYXQuCj4gPiArCj4gPiArVG8gd3JpdGUgYW4gaW1hZ2Ug
-dGhhdCBib290cyBmcm9tIGFuIFNEIGNhcmQgKGFzc3VtZWQgdG8gYmUgL2Rldi9zZGEpOjoKPiA+
-ICsKPiA+ICsgICAgICAgIHN1ZG8gZGQgaWY9dS1ib290LXJvY2tjaGlwLmJpbiBvZj0vZGV2L3Nk
-YSBzZWVrPTY0Cj4gPiArICAgICAgICBzeW5jCj4gPiArCj4gPiArVE9ETwo+ID4gKy0tLS0KPiA+
-ICsKPiA+ICstIEFkZCByb2NrY2hpcCBpZGJsb2FkZXIgaW1hZ2UgYnVpbGRpbmcKPiA+ICstIERl
-c2NyaWJlIHN0ZXBzIGZvciBlTU1DIGZsYXNoaW5nCj4gPiArLSBBZGQgbWlzc2luZyBTb0MncyB3
-aXRoIGl0IGJvYXJkcyBsaXN0Cj4gPiArCj4gPiArLi4gSmFnYW4gVGVraSA8amFnYW5AYW1hcnVs
-YXNvbHV0aW9ucy5jb20+Cj4gPiArLi4gVGh1IE9jdCAxNyAyMjozNjoxNCBJU1QgMjAxOQo+Cj4K
-PgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpVLUJvb3Qg
-bWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVueC5kZS9s
-aXN0aW5mby91LWJvb3QK
+On Sat, Nov 9, 2019 at 11:38 AM Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+>
+> Hi,
+>
+> On Fri, Nov 8, 2019 at 5:09 PM Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> >
+> > Good Evening,
+> >
+> > I'm not sure, but I believe the pcie address space built into the
+> > rk3399 is not large enough to accommodate the pcie addresses the card
+> > requires.
+> > I've been trying to figure out if it's possible to use system ram
+> > instead, but so far I haven't been successful.
+> > Also, the ram layout for the rk3399 is odd considering the TRM, if
+> > anyone has any insights in to that, I'd be grateful.
+> >
+> > On Mon, Nov 4, 2019 at 1:55 PM Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> > >
+> > > Good Morning,
+> > >
+> > > I'm attempting to debug an issue with the rockpro64 pcie port.
+> > > It would appear that the port does not like various cards, including
+> > > cards of the same make that randomly work or do not work, such as
+> > > Intel i340 based NICs.
+> > > I'm experiencing it with a GTX645 gpu.
+> > >
+> > > This seems to be a long running issue, referenced both at [0], and [1].
+> > > There was an attempt to rectify it, by adding a delay between training
+> > > and probing [2], but that doesn't seem to be the issue here.
+> > > It appears that when we probe further into the card, such as devfn >
+> > > 1, we trigger the bug.
+> > > I've added a print statement that prints the devfn, address, and size
+> > > information, which you can see below.
+> > >
+> > > I've attempted setting the available number of lanes to 1 as well, to
+> > > no difference.
+> > >
+> > > If anyone could point me in the right direction as to where to
+> > > continue debugging, I'd greatly appreciate it.
+>
+> I don't have tons of knowledge here, but your thread happened to fly
+> by my Inbox and it reminded me of issues we faced during the bringup
+> of rk3399-gru-kevin where our WiFi driver would kill the whole system
+> in random / hard to debug ways.
+>
+> If I remember, the problem was that the rk3399 PCIe behaved very badly
+> when you try to access the bus is in certain power save modes.  I
+> think that traditional x86-based controllers just return 0xff in the
+> same state, but rk3399 gives some sorts of asynchronous bus errors.
+>
+> IIRC our problem was fixed with:
+>
+> https://crrev.com/c/402092 - FROMLIST: mwifiex: fix corner case power save issue
+>
+> ...that's about all the knowledge I have around this area, but
+> possibly it could point you in the right direction?
+>
+> -Doug
+
+Thanks!
+
+Unfortunately this is happening before it even gets done probing the
+pcie controller, and has not had a chance to enter a power save state.
+I plugged in an i350 two port nic and examined the assigned address spaces.
+I've attached it below.
+Judging by the usage, I think this controller has enough address space
+for another two port NIC, and that's about it.
+I'm pretty sure now that the rk3399 controller just doesn't have the
+address space to map larger devices.
+I'm pretty sure the IOMMU would allow us to address system memory as
+pcie address space and overcome this limitation, but I don't know how
+to do that.
+
+The address space for the nic is below:
+f8000000-f8ffffff : axi-base
+fa000000-fbdfffff : MEM
+  fa000000-fa4fffff : PCI Bus 0000:01
+    fa000000-fa07ffff : 0000:01:00.0
+      fa000000-fa07ffff : igb
+    fa080000-fa0fffff : 0000:01:00.0
+    fa100000-fa17ffff : 0000:01:00.1
+      fa100000-fa17ffff : igb
+    fa180000-fa1fffff : 0000:01:00.1
+    fa200000-fa27ffff : 0000:01:00.0
+    fa280000-fa2fffff : 0000:01:00.0
+    fa300000-fa37ffff : 0000:01:00.1
+    fa380000-fa3fffff : 0000:01:00.1
+    fa400000-fa403fff : 0000:01:00.0
+      fa400000-fa403fff : igb
+    fa404000-fa407fff : 0000:01:00.1
+      fa404000-fa407fff : igb
+fd000000-fdffffff : f8000000.pcie
+
+$ dmesg | grep pci | grep -v devfn
+[   64.408414] pci 0000:01:00.1: reg 0x1c: [mem 0x00000000-0x00003fff]
+[   64.408508] pci 0000:01:00.1: reg 0x30: [mem 0x00000000-0x0007ffff pref]
+[   64.408546] pci 0000:01:00.1: Max Payload Size set to 256 (was 128, max 512)
+[   64.409002] pci 0000:01:00.1: PME# supported from D0 D3hot D3cold
+[   64.409016] pci 0000:01:00.1: PME# disabled
+[   64.409179] pci 0000:01:00.1: reg 0x184: [mem 0x00000000-0x0000ffff
+64bit pref]
+[   64.409181] pci 0000:01:00.1: VF(n) BAR0 space: [mem
+0x00000000-0x0007ffff 64bit pref] (contains BAR0 for 8 VFs)
+[   64.409268] pci 0000:01:00.1: reg 0x190: [mem 0x00000000-0x0000ffff
+64bit pref]
+[   64.409271] pci 0000:01:00.1: VF(n) BAR3 space: [mem
+0x00000000-0x0007ffff 64bit pref] (contains BAR3 for 8 VFs)
