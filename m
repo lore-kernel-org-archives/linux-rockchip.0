@@ -1,111 +1,114 @@
-From: Boris Brezillon <boris.brezillon@collabora.com>
-Subject: Re: [PATCH v2 for 5.4 1/4] media: hantro: Fix s_fmt for dynamic
- resolution changes
-Date: Sat, 9 Nov 2019 20:13:33 +0100
-Message-ID: <20191109201333.4dc63e0e@collabora.com>
-References: <20191007174505.10681-1-ezequiel@collabora.com>
-        <20191007174505.10681-2-ezequiel@collabora.com>
-        <20191108111950.717db5ce@collabora.com>
-        <92cba217-4f14-a397-2ae5-8797cc931703@xs4all.nl>
+From: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: [PATCH AUTOSEL 4.19 090/191] arm64: dts: rockchip: Fix microSD in
+ rk3399 sapphire board
+Date: Sat,  9 Nov 2019 21:38:32 -0500
+Message-ID: <20191110024013.29782-90-sashal@kernel.org>
+References: <20191110024013.29782-1-sashal@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <92cba217-4f14-a397-2ae5-8797cc931703@xs4all.nl>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, Tomasz Figa <tfiga@chromium.org>, linux-media@vger.kernel.org, kernel@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191110024013.29782-1-sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, 9 Nov 2019 13:25:18 +0100
-Hans Verkuil <hverkuil@xs4all.nl> wrote:
+From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-> On 11/8/19 11:19 AM, Boris Brezillon wrote:
-> > On Mon,  7 Oct 2019 14:45:02 -0300
-> > Ezequiel Garcia <ezequiel@collabora.com> wrote:
-> >   
-> >> Commit 953aaa1492c53 ("media: rockchip/vpu: Prepare things to support decoders")
-> >> changed the conditions under S_FMT was allowed for OUTPUT
-> >> CAPTURE buffers.
-> >>
-> >> However, and according to the mem-to-mem stateless decoder specification,
-> >> in order to support dynamic resolution changes, S_FMT should be allowed
-> >> even if OUTPUT buffers have been allocated.
-> >>
-> >> Relax decoder S_FMT restrictions on OUTPUT buffers, allowing a resolution
-> >> modification, provided the pixel format stays the same.
-> >>
-> >> Tested on RK3288 platforms using ChromiumOS Video Decode/Encode Accelerator Unittests.
-> >>
-> >> Fixes: 953aaa1492c53 ("media: rockchip/vpu: Prepare things to support decoders")
-> >> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> >> --
-> >> v2:
-> >> * Call try_fmt_out before using the format,
-> >>   pointed out by Philipp.
-> >>
-> >>  drivers/staging/media/hantro/hantro_v4l2.c | 28 +++++++++++++++-------
-> >>  1 file changed, 19 insertions(+), 9 deletions(-)
-> >>
-> >> diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-> >> index 3dae52abb96c..586d243cc3cc 100644
-> >> --- a/drivers/staging/media/hantro/hantro_v4l2.c
-> >> +++ b/drivers/staging/media/hantro/hantro_v4l2.c
-> >> @@ -367,19 +367,26 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
-> >>  {
-> >>  	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
-> >>  	struct hantro_ctx *ctx = fh_to_ctx(priv);
-> >> +	struct vb2_queue *vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
-> >>  	const struct hantro_fmt *formats;
-> >>  	unsigned int num_fmts;
-> >> -	struct vb2_queue *vq;
-> >>  	int ret;
-> >>  
-> >> -	/* Change not allowed if queue is busy. */
-> >> -	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
-> >> -	if (vb2_is_busy(vq))
-> >> -		return -EBUSY;
-> >> +	ret = vidioc_try_fmt_out_mplane(file, priv, f);
-> >> +	if (ret)
-> >> +		return ret;
-> >>  
-> >>  	if (!hantro_is_encoder_ctx(ctx)) {
-> >>  		struct vb2_queue *peer_vq;
-> >>  
-> >> +		/*
-> >> +		 * In other to support dynamic resolution change,  
-> > 
-> > 		      ^ order
-> >   
-> >> +		 * the decoder admits a resolution change, as long
-> >> +		 * as the pixelformat remains. Can't be done if streaming.
-> >> +		 */
-> >> +		if (vb2_is_streaming(vq) || (vb2_is_busy(vq) &&
-> >> +		    pix_mp->pixelformat != ctx->src_fmt.pixelformat))
-> >> +			return -EBUSY;  
-> > 
-> > Sorry to chime in only now, but I'm currently looking at the VP9 spec
-> > and it seems the resolution is allowed to change dynamically [1] (I
-> > guess the same applies to VP8). IIU the spec correctly, coded frames
-> > using the new resolution can reference decoded frames using the old
-> > one (can be higher or lower res BTW). If we force a streamoff to change
-> > the resolution (as seems to be the case here), we'll lose those ref
-> > frames (see the hantro_return_bufs() in stop streaming), right?
-> > Hans, Tomasz, any idea how this dynamic resolution change could/should
-> > be supported?  
-> 
-> As Tomasz also mentioned, supporting this is much more work, and probably
-> requires new streaming ioctls.
-> 
-> In the meantime I think this patch is fine (with the typo fixed, I can do
-> that), so is it OK if I merge this?
+[ Upstream commit 88a20edf76091ee7f1bb459b89d714d53f0f8940 ]
 
-Sure, go ahead, here's my
+The microSD card slot in the Sapphire board is not working because of
+several issues:
+ 1.- The vmmc power supply is missing in the DTS. It is capable of 3.0V
+ and has a GPIO-based enable control.
+ 2.- The vqmmc power supply can provide up to 3.3V, but it is capped in
+ the DTS to just 3.0V because of the vmmc capability. This results in a
+ conflict from the mmc driver requesting an unsupportable voltage range
+ from 3.3V to 3.0V (min > max) as reported in dmesg. So, extend the
+ range up to 3.3V. The hw should be able to stand this 0.3V tolerance.
+ See mmc_regulator_set_vqmmc in drivers/mmc/core/core.c.
+ 3.- The card detect signal is non-working. There is a known conflict
+ with jtag, but the workaround in drivers/soc/rockchip/grf.c does not
+ work. Adding the broken-cd attribute to the DTS fixes the issue.
 
-Reviewed-by: Boris Brezillon <boris.brezillon@collabora.com>
+Signed-off-by: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Signed-off-by: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+---
+ .../boot/dts/rockchip/rk3399-sapphire.dtsi    | 24 ++++++++++++++++++-
+ 1 file changed, 23 insertions(+), 1 deletion(-)
 
-in case you haven't applied the patch already.
-
-Oh, BTW, it wasn't clear in my previous reply, but I didn't intend to
-block this patch with my VP9 concerns. My only motivation was to start
-a discussion on how to solve my specific issue ;-).
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+index 36b60791c156d..780e5e298d8bd 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+@@ -93,6 +93,19 @@
+ 		vin-supply = <&vcc_1v8>;
+ 	};
+ 
++	vcc3v0_sd: vcc3v0-sd {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio0 RK_PA1 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&sdmmc0_pwr_h>;
++		regulator-always-on;
++		regulator-max-microvolt = <3000000>;
++		regulator-min-microvolt = <3000000>;
++		regulator-name = "vcc3v0_sd";
++		vin-supply = <&vcc3v3_sys>;
++	};
++
+ 	vcc3v3_sys: vcc3v3-sys {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc3v3_sys";
+@@ -310,7 +323,7 @@
+ 				regulator-always-on;
+ 				regulator-boot-on;
+ 				regulator-min-microvolt = <1800000>;
+-				regulator-max-microvolt = <3000000>;
++				regulator-max-microvolt = <3300000>;
+ 				regulator-state-mem {
+ 					regulator-on-in-suspend;
+ 					regulator-suspend-microvolt = <3000000>;
+@@ -469,6 +482,13 @@
+ 		};
+ 	};
+ 
++	sd {
++		sdmmc0_pwr_h: sdmmc0-pwr-h {
++			rockchip,pins =
++				<RK_GPIO0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	usb2 {
+ 		vcc5v0_host_en: vcc5v0-host-en {
+ 			rockchip,pins =
+@@ -499,6 +519,7 @@
+ };
+ 
+ &sdmmc {
++	broken-cd;
+ 	bus-width = <4>;
+ 	cap-mmc-highspeed;
+ 	cap-sd-highspeed;
+@@ -507,6 +528,7 @@
+ 	max-frequency = <150000000>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
++	vmmc-supply = <&vcc3v0_sd>;
+ 	vqmmc-supply = <&vcc_sdio>;
+ 	status = "okay";
+ };
+-- 
+2.20.1
