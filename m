@@ -1,11 +1,13 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL] Rockchip clock updates for 5.4
-Date: Mon, 11 Nov 2019 01:45:05 +0100
-Message-ID: <2139639.gTPWsosUxc@phil>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 2/3] arm64: dts: rk3399-rock960: add vdd_log
+Date: Mon, 11 Nov 2019 08:51:57 +0800
+Message-ID: <20191111005158.25070-2-kever.yang@rock-chips.com>
+References: <20191111005158.25070-1-kever.yang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191111005158.25070-1-kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -15,48 +17,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
+Add vdd_log node according to rock960 schematic V13.
 
-please find below rockchip clock changes for 5.5
-Please pull
+Signed-off-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
 
-Thanks
-Heiko
+ arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-The following changes since commit 54ecb8f7028c5eb3d740bb82b0f1d90f2df63c5c:
-
-  Linux 5.4-rc1 (2019-09-30 10:35:40 -0700)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git v5.5-rockchip-clk-1
-
-for you to fetch changes up to 3b0b4ebfd761943179fe03b107f66c72c3b5c8d4:
-
-  clk: rockchip: protect the pclk_usb_grf as critical on px30 (2019-11-05 20:53:42 +0100)
-
-----------------------------------------------------------------
-Adding a missing static declaration for clk_half_divider_ops
-and a number of improvements for the px30 clock tree.
-
-----------------------------------------------------------------
-Ben Dooks (Codethink) (1):
-      clk: rockchip: make clk_half_divider_ops static
-
-Finley Xiao (2):
-      clk: rockchip: Add div50 clock-ids for sdmmc on px30 and nandc
-      clk: rockchip: Add div50 clocks for px30 sdmmc, emmc, sdio and nandc
-
-Heiko Stuebner (3):
-      clk: rockchip: move px30 critical clocks to correct clock controller
-      clk: rockchip: add video-related niu clocks as critical on px30
-      clk: rockchip: protect the pclk_usb_grf as critical on px30
-
- drivers/clk/rockchip/clk-half-divider.c |  3 +-
- drivers/clk/rockchip/clk-px30.c         | 70 ++++++++++++++++++++++++++-------
- include/dt-bindings/clock/px30-cru.h    |  2 +
- 3 files changed, 59 insertions(+), 16 deletions(-)
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+index c7d48d41e184..73afee257115 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+@@ -76,6 +76,18 @@
+ 		regulator-always-on;
+ 		vin-supply = <&vcc5v0_sys>;
+ 	};
++
++	vdd_log: vdd-log {
++		compatible = "pwm-regulator";
++		pwms = <&pwm2 0 25000 1>;
++		regulator-name = "vdd_log";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <800000>;
++		regulator-max-microvolt = <1400000>;
++		regulator-init-microvolt = <950000>;
++		vin-supply = <&vcc_sys>;
++	};
+ };
+ 
+ &cpu_l0 {
+-- 
+2.17.1
