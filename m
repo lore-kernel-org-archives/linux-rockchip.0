@@ -1,110 +1,54 @@
-From: Vasily Khoruzhick <anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: add analog audio nodes on
- rk3399-rockpro64
-Date: Sun, 10 Nov 2019 16:17:02 -0800
-Message-ID: <CA+E=qVdvKxzFcU-09Ucn1Fr0FdkwSsPcLr8vPn2wsu6-DD1gqg@mail.gmail.com>
-References: <20190907174833.19957-1-katsuhiro@katsuster.net>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL 1/2] Rockchip dts32 changes for 5.5 - round 2
+Date: Mon, 11 Nov 2019 01:42:49 +0100
+Message-ID: <1926436.N9mSsAMzn9@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20190907174833.19957-1-katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, arm-linux <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, soc@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Sep 7, 2019 at 10:48 AM Katsuhiro Suzuki
-<katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org> wrote:
->
-> This patch adds audio codec (Everest ES8316) and I2S audio nodes for
-> RK3399 RockPro64.
+Hi (arm-)soc people,
 
-Hi Katsuhiro,
+please find below and in the reply mail round 2 of devicetree patches
+targettted at 5.5. The signed tags should summarize the contents
+hopefully nicely :-) .
 
-I tested your patch with my rockpro64 on 5.4-rc6 which has your other
-patches to es8316 driver, but apparently it doesn't work.
+Please pull
+Thanks
+Heiko
 
-'alsamixer' complains 'cannot load mixer controls: No such device or
-address' and if I try to play audio with mpg123 it pretends that it
-plays something but there's no sound.
+The following changes since commit a562a8acccb3070155aad3db5ac97a80aed2a24b:
 
-Any idea what can be wrong?
+  ARM: dts: rockchip: remove some tabs and spaces from dtsi files (2019-10-16 21:26:03 +0200)
 
-Regards,
-Vasily
+are available in the Git repository at:
 
-> Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-> ---
->  .../boot/dts/rockchip/rk3399-rockpro64.dts    | 28 +++++++++++++++++++
->  1 file changed, 28 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-> index 0401d4ec1f45..8b1e6382b140 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-> @@ -81,6 +81,12 @@
->                 reset-gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
->         };
->
-> +       sound {
-> +               compatible = "audio-graph-card";
-> +               label = "rockchip,rk3399";
-> +               dais = <&i2s1_p0>;
-> +       };
-> +
->         vcc12v_dcin: vcc12v-dcin {
->                 compatible = "regulator-fixed";
->                 regulator-name = "vcc12v_dcin";
-> @@ -470,6 +476,20 @@
->         i2c-scl-rising-time-ns = <300>;
->         i2c-scl-falling-time-ns = <15>;
->         status = "okay";
-> +
-> +       es8316: codec@11 {
-> +               compatible = "everest,es8316";
-> +               reg = <0x11>;
-> +               clocks = <&cru SCLK_I2S_8CH_OUT>;
-> +               clock-names = "mclk";
-> +               #sound-dai-cells = <0>;
-> +
-> +               port {
-> +                       es8316_p0_0: endpoint {
-> +                               remote-endpoint = <&i2s1_p0_0>;
-> +                       };
-> +               };
-> +       };
->  };
->
->  &i2c3 {
-> @@ -505,6 +525,14 @@
->         rockchip,playback-channels = <2>;
->         rockchip,capture-channels = <2>;
->         status = "okay";
-> +
-> +       i2s1_p0: port {
-> +               i2s1_p0_0: endpoint {
-> +                       dai-format = "i2s";
-> +                       mclk-fs = <256>;
-> +                       remote-endpoint = <&es8316_p0_0>;
-> +               };
-> +       };
->  };
->
->  &i2s2 {
-> --
-> 2.23.0.rc1
->
->
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.5-rockchip-dts32-2
+
+for you to fetch changes up to bbf8f6fef71a02b297de532364b5217d34f01582:
+
+  ARM: dts: rockchip: Add HDMI audio support to rk3288-veyron-mickey (2019-10-31 11:49:56 +0100)
+
+----------------------------------------------------------------
+HDMI-audio support for Veyron devices.
+
+----------------------------------------------------------------
+Cheng-Yi Chiang (2):
+      ARM: dts: rockchip: Add HDMI support to rk3288-veyron-analog-audio
+      ARM: dts: rockchip: Add HDMI audio support to rk3288-veyron-mickey
+
+ arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi | 1 +
+ arch/arm/boot/dts/rk3288-veyron-mickey.dts        | 7 +++++++
+ 2 files changed, 8 insertions(+)
