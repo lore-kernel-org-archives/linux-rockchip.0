@@ -1,58 +1,51 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: arm64: dts: rockchip: Add SDR104 mode to SD-card I/F on rk3399-roc-pc
-Date: Mon, 11 Nov 2019 18:27:54 +0100
-Message-ID: <CAPDyKFqn06LZZMXLD2o-M6A0R6KU97PFUTN=NgYnMtf=ESULTA@mail.gmail.com>
-References: <f03c978c-86de-b8bb-22c2-177d7fafed94@fivetechno.de>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: [PATCH] iommu/rockchip: Don't provoke WARN for harmless IRQs
+Date: Mon, 11 Nov 2019 18:55:18 +0000
+Message-ID: <82cba203551939399d219e4cb6c602315fd0c410.1573498518.git.robin.murphy@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f03c978c-86de-b8bb-22c2-177d7fafed94@fivetechno.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Markus Reichl <m.reichl@fivetechno.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, DTML <devicetree@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, maz-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Vasily Khoruzhick <anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 11 Nov 2019 at 15:13, Markus Reichl <m.reichl@fivetechno.de> wrote:
->
-> Add SDR104 capability and regulators to SD card node.
-> While at it, fix a typo in lcd pinctrl and remove two
-> undocumented bindings from pmic.
->
-> Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
-> ---
->  .../boot/dts/rockchip/rk3399-roc-pc.dtsi      | 31 +++++++++++++++----
->  1 file changed, 25 insertions(+), 6 deletions(-)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-> index 33df95e384b4..e86a6db54499 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-> @@ -135,6 +135,20 @@
->                 vin-supply = <&vcc_1v8>;
->         };
->
-> +       vcc3v0_sd: vcc3v0-sd {
-> +               compatible = "regulator-fixed";
-> +               enable-active-high;
-> +               gpio = <&gpio4 RK_PD6 GPIO_ACTIVE_HIGH>;
-> +               pinctrl-names = "default";
-> +               pinctrl-0 = <&vcc3v0_sd_en>;
-> +               regulator-name = "vcc3v0_sd";
-> +               regulator-always-on;
+Although we don't generally expect IRQs to fire for a suspended IOMMU,
+there are certain situations (particularly with debug options) where
+we might legitimately end up with the pm_runtime_get_if_in_use() call
+from rk_iommu_irq() returning 0. Since this doesn't represent an actual
+error, follow the other parts of the driver and save the WARN_ON()
+condition for a genuine negative value. Even if we do have spurious
+IRQs due to a wedged VOP asserting the shared line, it's not this
+driver's job to try to second-guess the IRQ core to warn about that.
 
-This looks odd. A GPIO regulator being always on?
+Reported-by: Vasily Khoruzhick <anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+---
+ drivers/iommu/rockchip-iommu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> +               regulator-boot-on;
-> +               regulator-min-microvolt = <3000000>;
-> +               regulator-max-microvolt = <3000000>;
-> +               vin-supply = <&vcc3v3_sys>;
-> +       };
-
-Assumes this powers an SDIO embedded card. Often those have a specific
-power sequence, just wanted to make sure the above are really
-sufficient? No delays or external clock needed?
-
-[...]
-
-Kind regards
-Uffe
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index 4dcbf68dfda4..bd7e9b1e40ac 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -527,7 +527,7 @@ static irqreturn_t rk_iommu_irq(int irq, void *dev_id)
+ 	int i, err;
+ 
+ 	err = pm_runtime_get_if_in_use(iommu->dev);
+-	if (WARN_ON_ONCE(err <= 0))
++	if (!err || WARN_ON_ONCE(err < 0))
+ 		return ret;
+ 
+ 	if (WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks)))
+-- 
+2.20.1
