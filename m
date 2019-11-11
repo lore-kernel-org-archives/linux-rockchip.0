@@ -1,54 +1,99 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 1/2] Rockchip dts32 changes for 5.5 - round 2
-Date: Mon, 11 Nov 2019 01:42:49 +0100
-Message-ID: <1926436.N9mSsAMzn9@phil>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL 2/2] Rockchip dts64 changes for 5.5 - round 2
+Date: Mon, 11 Nov 2019 01:43:22 +0100
+Message-ID: <12204771.K8DX0fml49@phil>
+References: <1926436.N9mSsAMzn9@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, soc@kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1926436.N9mSsAMzn9@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, soc-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi (arm-)soc people,
+The following changes since commit d083ce427947bbf10358e4c12bf20f288ee6b3df:
 
-please find below and in the reply mail round 2 of devicetree patches
-targettted at 5.5. The signed tags should summarize the contents
-hopefully nicely :-) .
-
-Please pull
-Thanks
-Heiko
-
-The following changes since commit a562a8acccb3070155aad3db5ac97a80aed2a24b:
-
-  ARM: dts: rockchip: remove some tabs and spaces from dtsi files (2019-10-16 21:26:03 +0200)
+  include: dt-bindings: rockchip: mark RK_FUNC defines as deprecated (2019-10-16 21:40:54 +0200)
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.5-rockchip-dts32-2
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.5-rockchip-dts64-2
 
-for you to fetch changes up to bbf8f6fef71a02b297de532364b5217d34f01582:
+for you to fetch changes up to 75aa567803b15e679432655badf95cd30b66b930:
 
-  ARM: dts: rockchip: Add HDMI audio support to rk3288-veyron-mickey (2019-10-31 11:49:56 +0100)
-
-----------------------------------------------------------------
-HDMI-audio support for Veyron devices.
+  arm64: dts: rockchip: fix sdmmc detection on boot on rk3328-roc-cc (2019-11-09 02:15:22 +0100)
 
 ----------------------------------------------------------------
-Cheng-Yi Chiang (2):
-      ARM: dts: rockchip: Add HDMI support to rk3288-veyron-analog-audio
-      ARM: dts: rockchip: Add HDMI audio support to rk3288-veyron-mickey
+One new soc the rk3308 with quad-Cortex-A35 cores.
+New boards are Beelink A1, roc-rk3308-cc, rk3308-evb
+A big number of improvements for the rk3399-roc-pc board
+(support for M.2 variant, reworked power-tree, buttons, leds)
+and further improvements of the px30-evb (usb2phy, otp controller,
+removal of default optee node - optee does add its own when loaded)
+And finally rk3328 audio support, sdmmc detection fix and enabled
+of the gpu on rk3399-puma.
 
- arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi | 1 +
- arch/arm/boot/dts/rk3288-veyron-mickey.dts        | 7 +++++++
- 2 files changed, 8 insertions(+)
+----------------------------------------------------------------
+Andy Yan (6):
+      dt-bindings: Add doc about rk3308 General Register Files
+      arm64: dts: rockchip: Add core dts for RK3308 SOC
+      dt-bindings: Add doc for rk3308-evb
+      arm64: dts: rockchip: Add basic dts for RK3308 EVB
+      dt-bindings: Add doc for Firefly ROC-RK3308-CC board
+      arm64: dts: rockchip: Add devicetree for board roc-rk3308-cc
+
+Heiko Stuebner (5):
+      arm64: dts: rockchip: add px30 otp controller
+      arm64: dts: rockchip: enable gpu on rk3399-puma
+      arm64: dts: rockchip: remove px30 default optee node
+      arm64: dts: rockchip: add usb2phy for px30
+      arm64: dts: rockchip: enable usb2phy on px30-evb
+
+Markus Reichl (5):
+      arm64: dts: rockchip: Add LED nodes on rk3399-roc-pc
+      arm64: dts: rockchip: Add nodes for buttons on rk3399-roc-pc
+      arm64: dts: rockchip: Add vcc_sys enable pin on rk3399-roc-pc
+      arm64: dts: rockchip: Rework voltage supplies for regulators on rk3399-roc-pc
+      arm64: dts: rockchip: Split rk3399-roc-pc for with and without mezzanine board.
+
+Peter Geis (2):
+      dt-bindings: clean up rockchip grf binding document
+      arm64: dts: rockchip: fix sdmmc detection on boot on rk3328-roc-cc
+
+Robin Murphy (3):
+      arm64: dts: rockchip: Add RK3328 audio pipelines
+      dt-bindings: ARM: rockchip: Add Beelink A1
+      arm64: dts: rockchip: Add Beelink A1
+
+ .../devicetree/bindings/arm/rockchip.yaml          |   19 +-
+ .../devicetree/bindings/soc/rockchip/grf.txt       |   17 +-
+ arch/arm64/boot/dts/rockchip/Makefile              |    4 +
+ arch/arm64/boot/dts/rockchip/px30-evb.dts          |   12 +
+ arch/arm64/boot/dts/rockchip/px30.dtsi             |   74 +-
+ arch/arm64/boot/dts/rockchip/rk3308-evb.dts        |  230 +++
+ arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts     |  188 +++
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi           | 1739 ++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3328-a1.dts         |  359 ++++
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts     |    1 +
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           |   32 +
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      |    5 +
+ .../boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts  |   72 +
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts     |  670 +-------
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi    |  767 +++++++++
+ 15 files changed, 3509 insertions(+), 680 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3308-evb.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3308.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-a1.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
