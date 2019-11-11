@@ -1,31 +1,101 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH v2] media: rockchip/rga: fix potential use after free
-Date: Mon, 11 Nov 2019 09:03:17 -0300
-Message-ID: <9c46d5a708814082cc0c8a94e53e9e21a12271f1.camel@collabora.com>
-References: <1573460902-18563-1-git-send-email-bianpan2016@163.com>
+From: Markus Reichl <m.reichl@fivetechno.de>
+Subject: arm64: dts: rockchip: Add SDR104 mode to SD-card I/F on rk3399-roc-pc
+Date: Mon, 11 Nov 2019 15:13:31 +0100
+Message-ID: <f03c978c-86de-b8bb-22c2-177d7fafed94@fivetechno.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1573460902-18563-1-git-send-email-bianpan2016@163.com>
+Content-Language: de-DE
 Sender: linux-kernel-owner@vger.kernel.org
-To: Pan Bian <bianpan2016@163.com>, Jacob Chen <jacob-chen@iotwrt.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, Markus Reichl <m.reichl@fivetechno.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Pan Bian,
+Add SDR104 capability and regulators to SD card node.
+While at it, fix a typo in lcd pinctrl and remove two
+undocumented bindings from pmic.
 
-Thanks for the patch.
+Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
+---
+ .../boot/dts/rockchip/rk3399-roc-pc.dtsi      | 31 +++++++++++++++----
+ 1 file changed, 25 insertions(+), 6 deletions(-)
 
-On Mon, 2019-11-11 at 16:28 +0800, Pan Bian wrote:
-> The variable vga->vfd is an alias for vfd. Therefore, releasing vfd and
-> then unregister vga->vfd will lead to a use after free bug. In fact, the
-> free operation and the unregister operation are reversed.
-> 
-
-Out of curiosity, how did you find this potential bug?
-
-Acked-by: Ezequiel Garcia <ezequiel@collabora.com>
-
-Regards,
-Ezequiel
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+index 33df95e384b4..e86a6db54499 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+@@ -135,6 +135,20 @@
+ 		vin-supply = <&vcc_1v8>;
+ 	};
+ 
++	vcc3v0_sd: vcc3v0-sd {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio4 RK_PD6 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vcc3v0_sd_en>;
++		regulator-name = "vcc3v0_sd";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3000000>;
++		regulator-max-microvolt = <3000000>;
++		vin-supply = <&vcc3v3_sys>;
++	};
++
+ 	vcc3v3_sys: vcc3v3-sys {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc3v3_sys";
+@@ -279,8 +293,6 @@
+ 		vcc10-supply = <&vcc3v3_sys>;
+ 		vcc11-supply = <&vcc3v3_sys>;
+ 		vcc12-supply = <&vcc3v3_sys>;
+-		vcc13-supply = <&vcc3v3_sys>;
+-		vcc14-supply = <&vcc3v3_sys>;
+ 		vddio-supply = <&vcc_3v0>;
+ 
+ 		regulators {
+@@ -562,7 +574,7 @@
+ 
+ 	lcd-panel {
+ 		lcd_panel_reset: lcd-panel-reset {
+-			rockchip,pins = <4 RK_PD6 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <4 RK_PD5 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
+@@ -588,6 +600,10 @@
+ 		vsel2_gpio: vsel2-gpio {
+ 			rockchip,pins = <1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_down>;
+ 		};
++
++		pmic_int_l: pmic-int-l {
++			rockchip,pins = <1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
+ 	};
+ 
+ 	sdio-pwrseq {
+@@ -596,9 +612,9 @@
+ 		};
+ 	};
+ 
+-	pmic {
+-		pmic_int_l: pmic-int-l {
+-			rockchip,pins = <1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
++	sdmmc {
++		vcc3v0_sd_en: vcc3v0-sd-en {
++			rockchip,pins = <4 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+@@ -653,6 +669,9 @@
+ 	cd-gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
+ 	disable-wp;
+ 	max-frequency = <150000000>;
++	sd-uhs-sdr104;
++	vmmc-supply = <&vcc3v0_sd>;
++	vqmmc-supply = <&vcc_sdio>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_bus4>;
+ 	status = "okay";
+-- 
+2.20.1
