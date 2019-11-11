@@ -1,210 +1,69 @@
-From: Vasily Khoruzhick <anarsoul@gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: add analog audio nodes on rk3399-rockpro64
-Date: Sun, 10 Nov 2019 21:40:16 -0800
-Message-ID: <CA+E=qVdy-wqmR+XOms5S2zMp+B0vM7Dj_fk9N=08-1WjfKDm0Q@mail.gmail.com>
-References: <20190907174833.19957-1-katsuhiro@katsuster.net>
- <CA+E=qVdvKxzFcU-09Ucn1Fr0FdkwSsPcLr8vPn2wsu6-DD1gqg@mail.gmail.com> <abc648cc-0b5d-b407-b74b-639833ba196b@katsuster.net>
+From: Pan Bian <bianpan2016@163.com>
+Subject: [PATCH v2] media: rockchip/rga: fix potential use after free
+Date: Mon, 11 Nov 2019 16:28:22 +0800
+Message-ID: <1573460902-18563-1-git-send-email-bianpan2016@163.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <abc648cc-0b5d-b407-b74b-639833ba196b@katsuster.net>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-kernel <linux-kernel@vger.kernel.org>, arm-linux <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Jacob Chen <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, Pan Bian <bianpan2016@163.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, Nov 10, 2019 at 7:30 PM Katsuhiro Suzuki
-<katsuhiro@katsuster.net> wrote:
->
-> Hello Vasily,
+The variable vga->vfd is an alias for vfd. Therefore, releasing vfd and
+then unregister vga->vfd will lead to a use after free bug. In fact, the
+free operation and the unregister operation are reversed.
 
-Hi Katsuhiro,
+Signed-off-by: Pan Bian <bianpan2016@163.com>
+---
+v2: update the goto label names consistently
+---
+ drivers/media/platform/rockchip/rga/rga.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-Thanks for response!
-
-> Thank you for reporting.
->
-> On 2019/11/11 9:17, Vasily Khoruzhick wrote:
-> > On Sat, Sep 7, 2019 at 10:48 AM Katsuhiro Suzuki
-> > <katsuhiro@katsuster.net> wrote:
-> >>
-> >> This patch adds audio codec (Everest ES8316) and I2S audio nodes for
-> >> RK3399 RockPro64.
-> >
-> > Hi Katsuhiro,
-> >
-> > I tested your patch with my rockpro64 on 5.4-rc6 which has your other
-> > patches to es8316 driver, but apparently it doesn't work.
-> >
-> > 'alsamixer' complains 'cannot load mixer controls: No such device or
-> > address' and if I try to play audio with mpg123 it pretends that it
-> > plays something but there's no sound.
-> >
-> > Any idea what can be wrong?
-> >
->
-> Do you use defconfig? If so I guess we need turn on more configs:
->
-> - simple-graph-card driver (CONFIG_SND_AUDIO_GRAPH_CARD)
-> - ES8316 (SND_SOC_ES8316)
-
-I have these enabled, card is present in /proc/asound/cards, but
-alsamixer doesn't work with it.
-
-> FYI) ASoC related status or logs in my environment as follows:
->
-> root@rockpro64:~# uname -a
-> Linux rockpro64 5.4.0-rc6-next-20191108 #169 SMP PREEMPT Mon Nov 11 12:21:44 JST 2019 aarch64 GNU/Linux
-
-I'm running 5.4.0-rc6  (commit
-00aff6836241ae5654895dcea10e6d4fc5878ca6) with your patch "arm64: dts:
-rockchip: add analog audio nodes on rk3399-rockpro64" on top of it.
-
-> root@rockpro64:~# dmesg | grep -i asoc
-> [   21.509903] asoc-simple-card hdmi-sound: i2s-hifi <-> ff8a0000.i2s mapping ok
-> [   21.510550] asoc-simple-card hdmi-sound: ASoC: no DMI vendor name!
-> [   21.567906] asoc-audio-graph-card sound: ES8316 HiFi <-> ff890000.i2s mapping ok
-> [   21.568565] asoc-audio-graph-card sound: ASoC: no DMI vendor name!
-
-Similar here:
-
-[vasilykh@rockpro64 ~]$ dmesg | grep -i asoc
-[   15.627685] asoc-audio-graph-card sound: ES8316 HiFi <->
-ff890000.i2s mapping ok
-[   16.250196] asoc-simple-card hdmi-sound: i2s-hifi <-> ff8a0000.i2s mapping ok
-
-> root@rockpro64:~# cat /proc/asound/pcm
-> 00-00: ff8a0000.i2s-i2s-hifi i2s-hifi-0 : ff8a0000.i2s-i2s-hifi i2s-hifi-0 : playback 1
-> 01-00: ff890000.i2s-ES8316 HiFi ES8316 HiFi-0 : ff890000.i2s-ES8316 HiFi ES8316 HiFi-0 : playback 1 : capture 1
-
-Same here:
-
-[vasilykh@rockpro64 ~]$ cat /proc/asound/pcm
-00-00: ff890000.i2s-ES8316 HiFi ES8316 HiFi-0 : ff890000.i2s-ES8316
-HiFi ES8316 HiFi-0 : playback 1 : capture 1
-01-00: ff8a0000.i2s-i2s-hifi i2s-hifi-0 : ff8a0000.i2s-i2s-hifi
-i2s-hifi-0 : playback
-
-> root@rockpro64:~# cat /sys/kernel/debug/asoc/components
-> hdmi-audio-codec.3.auto
-> ff8a0000.i2s
-> ff8a0000.i2s
-> ff890000.i2s
-> ff890000.i2s
-> ff880000.i2s
-> ff880000.i2s
-> es8316.1-0011
-> snd-soc-dummy
-> snd-soc-dummy
-
-Same here.
-
-> root@rockpro64:~# cat /sys/kernel/debug/asoc/dais
-> i2s-hifi
-> ff8a0000.i2s
-> ff890000.i2s
-> ff880000.i2s
-> ES8316 HiFi
-> snd-soc-dummy-dai
-
-Same here.
-
-Yet alsamixer doesn't work for me. It terminates with 'cannot load
-mixer controls: No such device or address'. Strace shows that fails
-here:
-
-openat(AT_FDCWD, "/dev/snd/controlC0", O_RDWR|O_CLOEXEC) = 3
-fcntl(3, F_SETFD, FD_CLOEXEC)           = 0
-ioctl(3, SNDRV_CTL_IOCTL_PVERSION, 0xfffffd3ad04c) = 0
-fcntl(3, F_GETFL)                       = 0x20002 (flags O_RDWR|O_LARGEFILE)
-fcntl(3, F_SETFL, O_RDWR|O_NONBLOCK|O_LARGEFILE) = 0
-ioctl(3, SNDRV_CTL_IOCTL_ELEM_LIST, 0xfffffd3ad228) = 0
-ioctl(3, SNDRV_CTL_IOCTL_ELEM_LIST, 0xfffffd3ad228) = 0
-ioctl(3, SNDRV_CTL_IOCTL_ELEM_INFO, 0xfffffd3ace38) = 0
-ioctl(3, SNDRV_CTL_IOCTL_ELEM_READ, 0xfffffd3ac160) = -1 ENXIO (No
-such device or address)
-
-Looks like it fails to talk to the codec?
-
-mpg123 thinks that it's playing audio, but my headphones connected to
-3.5mm output are silent.
-
-Regards,
-Vasily
-
-
-> Best Regards,
-> Katsuhiro Suzuki
->
->
-> > Regards,
-> > Vasily
-> >
-> >> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-> >> ---
-> >>   .../boot/dts/rockchip/rk3399-rockpro64.dts    | 28 +++++++++++++++++++
-> >>   1 file changed, 28 insertions(+)
-> >>
-> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-> >> index 0401d4ec1f45..8b1e6382b140 100644
-> >> --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-> >> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-> >> @@ -81,6 +81,12 @@
-> >>                  reset-gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
-> >>          };
-> >>
-> >> +       sound {
-> >> +               compatible = "audio-graph-card";
-> >> +               label = "rockchip,rk3399";
-> >> +               dais = <&i2s1_p0>;
-> >> +       };
-> >> +
-> >>          vcc12v_dcin: vcc12v-dcin {
-> >>                  compatible = "regulator-fixed";
-> >>                  regulator-name = "vcc12v_dcin";
-> >> @@ -470,6 +476,20 @@
-> >>          i2c-scl-rising-time-ns = <300>;
-> >>          i2c-scl-falling-time-ns = <15>;
-> >>          status = "okay";
-> >> +
-> >> +       es8316: codec@11 {
-> >> +               compatible = "everest,es8316";
-> >> +               reg = <0x11>;
-> >> +               clocks = <&cru SCLK_I2S_8CH_OUT>;
-> >> +               clock-names = "mclk";
-> >> +               #sound-dai-cells = <0>;
-> >> +
-> >> +               port {
-> >> +                       es8316_p0_0: endpoint {
-> >> +                               remote-endpoint = <&i2s1_p0_0>;
-> >> +                       };
-> >> +               };
-> >> +       };
-> >>   };
-> >>
-> >>   &i2c3 {
-> >> @@ -505,6 +525,14 @@
-> >>          rockchip,playback-channels = <2>;
-> >>          rockchip,capture-channels = <2>;
-> >>          status = "okay";
-> >> +
-> >> +       i2s1_p0: port {
-> >> +               i2s1_p0_0: endpoint {
-> >> +                       dai-format = "i2s";
-> >> +                       mclk-fs = <256>;
-> >> +                       remote-endpoint = <&es8316_p0_0>;
-> >> +               };
-> >> +       };
-> >>   };
-> >>
-> >>   &i2s2 {
-> >> --
-> >> 2.23.0.rc1
-> >>
-> >>
-> >> _______________________________________________
-> >> linux-arm-kernel mailing list
-> >> linux-arm-kernel@lists.infradead.org
-> >> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-> >
->
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index e9ff12b6b5bb..d2297abafc69 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -863,7 +863,7 @@ static int rga_probe(struct platform_device *pdev)
+ 	if (IS_ERR(rga->m2m_dev)) {
+ 		v4l2_err(&rga->v4l2_dev, "Failed to init mem2mem device\n");
+ 		ret = PTR_ERR(rga->m2m_dev);
+-		goto unreg_video_dev;
++		goto rel_vdev;
+ 	}
+ 
+ 	pm_runtime_get_sync(rga->dev);
+@@ -892,7 +892,7 @@ static int rga_probe(struct platform_device *pdev)
+ 	ret = video_register_device(vfd, VFL_TYPE_GRABBER, -1);
+ 	if (ret) {
+ 		v4l2_err(&rga->v4l2_dev, "Failed to register video device\n");
+-		goto rel_vdev;
++		goto unreg_dev;
+ 	}
+ 
+ 	v4l2_info(&rga->v4l2_dev, "Registered %s as /dev/%s\n",
+@@ -900,10 +900,10 @@ static int rga_probe(struct platform_device *pdev)
+ 
+ 	return 0;
+ 
++unreg_dev:
++	video_unregister_device(rga->vfd);
+ rel_vdev:
+ 	video_device_release(vfd);
+-unreg_video_dev:
+-	video_unregister_device(rga->vfd);
+ unreg_v4l2_dev:
+ 	v4l2_device_unregister(&rga->v4l2_dev);
+ err_put_clk:
+-- 
+2.7.4
