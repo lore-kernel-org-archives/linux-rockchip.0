@@ -1,51 +1,58 @@
-From: Markus Reichl <m.reichl@fivetechno.de>
-Subject: [PATCH] arm64: dts: rockchip: Add node for gpu on rk3399-roc-pc
-Date: Mon, 11 Nov 2019 16:38:26 +0100
-Message-ID: <c2b88509-129d-46d4-9e23-15d0482951be@fivetechno.de>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: arm64: dts: rockchip: Add SDR104 mode to SD-card I/F on rk3399-roc-pc
+Date: Mon, 11 Nov 2019 18:27:54 +0100
+Message-ID: <CAPDyKFqn06LZZMXLD2o-M6A0R6KU97PFUTN=NgYnMtf=ESULTA@mail.gmail.com>
+References: <f03c978c-86de-b8bb-22c2-177d7fafed94@fivetechno.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Language: de-DE
+In-Reply-To: <f03c978c-86de-b8bb-22c2-177d7fafed94@fivetechno.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, Markus Reichl <m.reichl@fivetechno.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Markus Reichl <m.reichl@fivetechno.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, DTML <devicetree@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-rk3399-roc-pc has a Mali gpu, enable it for use with panfrost and mesa >19.2.
+On Mon, 11 Nov 2019 at 15:13, Markus Reichl <m.reichl@fivetechno.de> wrote:
+>
+> Add SDR104 capability and regulators to SD card node.
+> While at it, fix a typo in lcd pinctrl and remove two
+> undocumented bindings from pmic.
+>
+> Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
+> ---
+>  .../boot/dts/rockchip/rk3399-roc-pc.dtsi      | 31 +++++++++++++++----
+>  1 file changed, 25 insertions(+), 6 deletions(-)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+> index 33df95e384b4..e86a6db54499 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+> @@ -135,6 +135,20 @@
+>                 vin-supply = <&vcc_1v8>;
+>         };
+>
+> +       vcc3v0_sd: vcc3v0-sd {
+> +               compatible = "regulator-fixed";
+> +               enable-active-high;
+> +               gpio = <&gpio4 RK_PD6 GPIO_ACTIVE_HIGH>;
+> +               pinctrl-names = "default";
+> +               pinctrl-0 = <&vcc3v0_sd_en>;
+> +               regulator-name = "vcc3v0_sd";
+> +               regulator-always-on;
 
-Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
----
-Based on v5.5-armsoc/dts64/75aa5678
-If applied with other patches in between, the second hunk
-offsets and may patch vdd_cpu_b instead of vdd_gpu.
----
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+This looks odd. A GPIO regulator being always on?
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-index 7e07dae33d0f..287f97488f65 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-@@ -238,6 +238,11 @@
- 	status = "okay";
- };
- 
-+&gpu {
-+	mali-supply = <&vdd_gpu>;
-+	status = "okay";
-+};
-+
- &hdmi {
- 	ddc-i2c-bus = <&i2c3>;
- 	pinctrl-names = "default";
-@@ -465,8 +470,6 @@
- 		regulator-min-microvolt = <712500>;
- 		regulator-max-microvolt = <1500000>;
- 		regulator-ramp-delay = <1000>;
--		regulator-always-on;
--		regulator-boot-on;
- 		vin-supply = <&vcc3v3_sys>;
- 
- 		regulator-state-mem {
--- 
-2.20.1
+> +               regulator-boot-on;
+> +               regulator-min-microvolt = <3000000>;
+> +               regulator-max-microvolt = <3000000>;
+> +               vin-supply = <&vcc3v3_sys>;
+> +       };
+
+Assumes this powers an SDIO embedded card. Often those have a specific
+power sequence, just wanted to make sure the above are really
+sufficient? No delays or external clock needed?
+
+[...]
+
+Kind regards
+Uffe
