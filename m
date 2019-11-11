@@ -1,11 +1,15 @@
-From: Pan Bian <bianpan2016@163.com>
-Subject: [PATCH v2] media: rockchip/rga: fix potential use after free
-Date: Mon, 11 Nov 2019 16:28:22 +0800
-Message-ID: <1573460902-18563-1-git-send-email-bianpan2016@163.com>
+From: Soeren Moch <smoch@web.de>
+Subject: Re: [PATCH 3/3] arm64: dts: rk3399: Add init voltage for vdd_log
+Date: Mon, 11 Nov 2019 09:42:24 +0100
+Message-ID: <ef8830f3-10d1-7b71-0e18-232f2eaeef2d@web.de>
+References: <20191111005158.25070-1-kever.yang@rock-chips.com>
+ <20191111005158.25070-3-kever.yang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20191111005158.25070-3-kever.yang@rock-chips.com>
+Content-Language: en-GB
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -15,55 +19,148 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jacob Chen <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Pan Bian <bianpan2016@163.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+To: Kever Yang <kever.yang@rock-chips.com>, heiko@sntech.de
+Cc: Mark Rutland <mark.rutland@arm.com>, =?UTF-8?Q?Andrius_=c5=a0tikonas?= <andrius@stikonas.eu>, linux-kernel@vger.kernel.org, Alexis Ballier <aballier@gentoo.org>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Katsuhiro Suzuki <katsuhiro@katsuster.net>, Hugh Cole-Baker <sigmaris@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>, Andy Yan <andyshrk@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Vicente Bergas <vicencb@gmail.com>, Oskari Lemmela <oskari@lemmela.net>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Pragnesh Patel <Pragnesh_Patel@mentor.com>, Peter Robinson <pbrobinson@gmail.com>, Nick Xie <nick@khadas.com>, Ezequiel Garcia <ezequiel@collabora.com>, Vivek Unune <npcomplete13@gmail.com>, Akash Gajjar <akash@openedev.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The variable vga->vfd is an alias for vfd. Therefore, releasing vfd and
-then unregister vga->vfd will lead to a use after free bug. In fact, the
-free operation and the unregister operation are reversed.
+On 11.11.19 01:51, Kever Yang wrote:
+> Since there is no devfreq used for vdd_log, so the vdd_log(pwm regulator)
+> will be 'enable' with the dts node at a default PWM state with high or low
+> output. Both too high or too low for vdd_log is not good for the board,
+> add init voltage for driver to make the regulator get into a know output.
+>
+> Note that this will be used by U-Boot for init voltage output, and this
+> is very important for it may get system hang somewhere during system
+> boot up with regulator enable and without this init value.
+I think it's a good idea to include this setting in the main dts for the
+boards (not in u-boot specific additions as is done now). But there is
+(for some reason?) no documented binding for regulator-init-microvolt in
+linux.
 
-Signed-off-by: Pan Bian <bianpan2016@163.com>
----
-v2: update the goto label names consistently
----
- drivers/media/platform/rockchip/rga/rga.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index e9ff12b6b5bb..d2297abafc69 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -863,7 +863,7 @@ static int rga_probe(struct platform_device *pdev)
- 	if (IS_ERR(rga->m2m_dev)) {
- 		v4l2_err(&rga->v4l2_dev, "Failed to init mem2mem device\n");
- 		ret = PTR_ERR(rga->m2m_dev);
--		goto unreg_video_dev;
-+		goto rel_vdev;
- 	}
- 
- 	pm_runtime_get_sync(rga->dev);
-@@ -892,7 +892,7 @@ static int rga_probe(struct platform_device *pdev)
- 	ret = video_register_device(vfd, VFL_TYPE_GRABBER, -1);
- 	if (ret) {
- 		v4l2_err(&rga->v4l2_dev, "Failed to register video device\n");
--		goto rel_vdev;
-+		goto unreg_dev;
- 	}
- 
- 	v4l2_info(&rga->v4l2_dev, "Registered %s as /dev/%s\n",
-@@ -900,10 +900,10 @@ static int rga_probe(struct platform_device *pdev)
- 
- 	return 0;
- 
-+unreg_dev:
-+	video_unregister_device(rga->vfd);
- rel_vdev:
- 	video_device_release(vfd);
--unreg_video_dev:
--	video_unregister_device(rga->vfd);
- unreg_v4l2_dev:
- 	v4l2_device_unregister(&rga->v4l2_dev);
- err_put_clk:
--- 
-2.7.4
+Regards,
+Soeren
+>
+> CC: Elaine Zhang <zhangqing@rock-chips.com>
+> CC: Peter Robinson <pbrobinson@gmail.com>
+> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> ---
+>
+>  arch/arm64/boot/dts/rockchip/rk3399-evb.dts          | 1 +
+>  arch/arm64/boot/dts/rockchip/rk3399-firefly.dts      | 1 +
+>  arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts   | 1 +
+>  arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi | 1 +
+>  arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts    | 1 +
+>  arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts     | 1 +
+>  arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts       | 1 +
+>  arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts    | 1 +
+>  arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi    | 1 +
+>  9 files changed, 9 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+> index 77008dca45bc..fa241aeb11b0 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+> @@ -65,6 +65,7 @@
+>  		regulator-name = "vdd_center";
+>  		regulator-min-microvolt = <800000>;
+>  		regulator-max-microvolt = <1400000>;
+> +		regulator-init-microvolt = <950000>;
+>  		regulator-always-on;
+>  		regulator-boot-on;
+>  		status = "okay";
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+> index 92de83dd4dbc..4e45269fcdff 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+> @@ -208,6 +208,7 @@
+>  		regulator-boot-on;
+>  		regulator-min-microvolt = <430000>;
+>  		regulator-max-microvolt = <1400000>;
+> +		regulator-init-microvolt = <950000>;
+>  		vin-supply = <&vcc_sys>;
+>  	};
+>  };
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
+> index c133e8d64b2a..692f3154edc3 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
+> @@ -100,6 +100,7 @@
+>  		regulator-name = "vdd_log";
+>  		regulator-min-microvolt = <800000>;
+>  		regulator-max-microvolt = <1400000>;
+> +		regulator-init-microvolt = <950000>;
+>  		regulator-always-on;
+>  		regulator-boot-on;
+>  	};
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
+> index 4944d78a0a1c..c2ac80d99301 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
+> @@ -79,6 +79,7 @@
+>  		regulator-boot-on;
+>  		regulator-min-microvolt = <800000>;
+>  		regulator-max-microvolt = <1400000>;
+> +		regulator-init-microvolt = <950000>;
+>  		vin-supply = <&vsys_3v3>;
+>  	};
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts b/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
+> index 73be38a53796..c32abcc4ddc1 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
+> @@ -101,6 +101,7 @@
+>  		regulator-boot-on;
+>  		regulator-min-microvolt = <800000>;
+>  		regulator-max-microvolt = <1400000>;
+> +		regulator-init-microvolt = <950000>;
+>  		vin-supply = <&vcc5v0_sys>;
+>  	};
+>  };
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
+> index 0541dfce924d..9d674c51f025 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
+> @@ -164,6 +164,7 @@
+>  		regulator-boot-on;
+>  		regulator-min-microvolt = <800000>;
+>  		regulator-max-microvolt = <1400000>;
+> +		regulator-init-microvolt = <950000>;
+>  		vin-supply = <&vcc_sys>;
+>  	};
+>  };
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
+> index 19f7732d728c..7d856ce1d156 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
+> @@ -129,6 +129,7 @@
+>  		regulator-boot-on;
+>  		regulator-min-microvolt = <800000>;
+>  		regulator-max-microvolt = <1400000>;
+> +		regulator-init-microvolt = <950000>;
+>  		vin-supply = <&vcc3v3_sys>;
+>  	};
+>  };
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+> index e544deb61d28..8fbccbc8bf47 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+> @@ -174,6 +174,7 @@
+>  		regulator-boot-on;
+>  		regulator-min-microvolt = <800000>;
+>  		regulator-max-microvolt = <1700000>;
+> +		regulator-init-microvolt = <950000>;
+>  		vin-supply = <&vcc5v0_sys>;
+>  	};
+>  };
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> index 1bc1579674e5..f8e2cb8c0624 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
+> @@ -133,6 +133,7 @@
+>  		regulator-boot-on;
+>  		regulator-min-microvolt = <800000>;
+>  		regulator-max-microvolt = <1400000>;
+> +		regulator-init-microvolt = <950000>;
+>  		vin-supply = <&vcc_sys>;
+>  	};
+>  };
