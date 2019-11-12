@@ -1,37 +1,96 @@
-From: Bjorn Andersson <bjorn.andersson@linaro.org>
-Subject: Re: [PATCH 2/2] pinctrl: Use new GPIO_LINE_DIRECTION
-Date: Tue, 12 Nov 2019 09:01:44 -0800
-Message-ID: <20191112170144.GF3797@yoga>
-References: <20191112141819.GA22076@localhost.localdomain>
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Subject: Re: [PATCH 2/3] arm64: dts: rk3399-rock960: add vdd_log
+Date: Tue, 12 Nov 2019 22:47:29 +0530
+Message-ID: <20191112171726.GA18622@Mani-XPS-13-9360>
+References: <20191111005158.25070-1-kever.yang@rock-chips.com>
+ <20191111005158.25070-2-kever.yang@rock-chips.com>
+ <20191111052232.GA2842@Mani-XPS-13-9360>
+ <3d129826-7705-819e-e68b-cc9080eb6c95@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20191112141819.GA22076@localhost.localdomain>
+In-Reply-To: <3d129826-7705-819e-e68b-cc9080eb6c95@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
-Cc: mazziesaccount@gmail.com, Linus Walleij <linus.walleij@linaro.org>, Eric Anholt <eric@anholt.net>, Stefan Wahren <wahrenst@gmx.net>, Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, bcm-kernel-feedback-list@broadcom.com, Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Ludovic Desroches <ludovic.desroches@microchip.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Paul Cercueil <paul@crapouillou.net>, Neil
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, Akash Gajjar <akash@openedev.com>, Ezequiel Garcia <ezequiel@collabora.com>, Jagan Teki <jagan@amarulasolutions.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, daniel.lezcano@linaro.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue 12 Nov 06:18 PST 2019, Matti Vaittinen wrote:
-> diff --git a/drivers/pinctrl/qcom/pinctrl-msm.c b/drivers/pinctrl/qcom/pinctrl-msm.c
-> index 763da0be10d6..8844ca1261d5 100644
-> --- a/drivers/pinctrl/qcom/pinctrl-msm.c
-> +++ b/drivers/pinctrl/qcom/pinctrl-msm.c
-> @@ -485,8 +485,8 @@ static int msm_gpio_get_direction(struct gpio_chip *chip, unsigned int offset)
->  
->  	val = msm_readl_ctl(pctrl, g);
->  
-> -	/* 0 = output, 1 = input */
-> -	return val & BIT(g->oe_bit) ? 0 : 1;
-> +	return val & BIT(g->oe_bit) ? GPIO_LINE_DIRECTION_OUT :
-> +				      GPIO_LINE_DIRECTION_IN;
->  }
->  
+On Tue, Nov 12, 2019 at 04:10:17PM +0800, Kever Yang wrote:
+> 
+> On 2019/11/11 下午1:22, Manivannan Sadhasivam wrote:
+> > Hi Kever,
+> > 
+> > On Mon, Nov 11, 2019 at 08:51:57AM +0800, Kever Yang wrote:
+> > > Add vdd_log node according to rock960 schematic V13.
+> > > 
+> > > Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> > > ---
+> > > 
+> > >   arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi | 12 ++++++++++++
+> > >   1 file changed, 12 insertions(+)
+> > > 
+> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+> > > index c7d48d41e184..73afee257115 100644
+> > > --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+> > > +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+> > > @@ -76,6 +76,18 @@
+> > >   		regulator-always-on;
+> > >   		vin-supply = <&vcc5v0_sys>;
+> > >   	};
+> > > +
+> > > +	vdd_log: vdd-log {
+> > > +		compatible = "pwm-regulator";
+> > > +		pwms = <&pwm2 0 25000 1>;
+> > > +		regulator-name = "vdd_log";
+> > > +		regulator-always-on;
+> > > +		regulator-boot-on;
+> > > +		regulator-min-microvolt = <800000>;
+> > > +		regulator-max-microvolt = <1400000>;
+> > > +		regulator-init-microvolt = <950000>;
+> > The default value seems to be 0.9v as per both Rock960 and Ficus schematics.
+> 
+> 
+> The default value is 0.9V when pwm-regulator is not enabled, and this
+> 'init-microvolt' suppose to set the
+> 
+> init value when pwm-regulator is enabled. I set this to 950mV because Peter
+> report that he experience
+> 
+> the system hang during Fedora boot  up, and update the vdd_log to 950mV can
+> fix the issue due to
+> 
+> engineer measure on another rk3399 board puma-Q7.
+> 
 
-For pinctrl-msm
+okay. Previously we had post-boot hang issue on Rock960 Model A boards when the
+performance governor was set as default. So the vdd_log node was removed from
+the devicetree. Have you tested that case also?
 
-Reviewed-by: Bjorn Andersson <bjorn.andersson@linaro.org>
+Here is the commit:
+13682e524167 ("arm64: dts: rockchip: remove vdd_log from rock960 to fix a stability issues")
 
-Regards,
-Bjorn
+thanks,
+Mani
+> 
+> Thanks,
+> 
+> - Kever
+> 
+> > 
+> > Other than that,
+> > Acked-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> > 
+> > Thanks,
+> > Mani
+> > 
+> > > +		vin-supply = <&vcc_sys>;
+> > > +	};
+> > >   };
+> > >   &cpu_l0 {
+> > > -- 
+> > > 2.17.1
+> > > 
+> 
+> 
