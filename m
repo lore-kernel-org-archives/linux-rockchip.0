@@ -1,62 +1,51 @@
-From: Marc Zyngier <maz-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] iommu/rockchip: Don't provoke WARN for harmless IRQs
-Date: Tue, 12 Nov 2019 12:40:21 +0109
-Message-ID: <45975bd87e34e9ff6e9656a3235fe074@www.loen.fr>
-References: <82cba203551939399d219e4cb6c602315fd0c410.1573498518.git.robin.murphy@arm.com>
+From: Markus Reichl <m.reichl@fivetechno.de>
+Subject: [PATCH] arm64: dts: rockchip: Fix vdd_log on rk3399-roc-pc
+Date: Tue, 12 Nov 2019 12:42:09 +0100
+Message-ID: <d786ef47-eda8-3994-2ef2-fc4a584bcdcc@fivetechno.de>
+References: <20191111005158.25070-1-kever.yang@rock-chips.com>
+ <20191111005158.25070-3-kever.yang@rock-chips.com>
+ <ef8830f3-10d1-7b71-0e18-232f2eaeef2d@web.de>
+ <1eaef5d5-c923-da56-b9c4-48d517b3c969@rock-chips.com>
+ <acbab893-9e9a-cfe1-67bf-a9e2b2e50114@fivetechno.de>
+ <17e14b30-02ee-2379-8891-088677924479@rock-chips.com>
+ <fd9ee2bc-9dfb-1aa2-f00f-add9b3069876@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <82cba203551939399d219e4cb6c602315fd0c410.1573498518.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, Vasily Khoruzhick <anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <fd9ee2bc-9dfb-1aa2-f00f-add9b3069876@web.de>
+Content-Language: de-DE
+Sender: linux-kernel-owner@vger.kernel.org
+To: Soeren Moch <smoch@web.de>, Kever Yang <kever.yang@rock-chips.com>, heiko@sntech.de
+Cc: Mark Rutland <mark.rutland@arm.com>, =?UTF-8?Q?Andrius_=c5=a0tikonas?= <andrius@stikonas.eu>, Alexis Ballier <aballier@gentoo.org>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Katsuhiro Suzuki <katsuhiro@katsuster.net>, Ezequiel Garcia <ezequiel@collabora.com>, Elaine Zhang <zhangqing@rock-chips.com>, Andy Yan <andyshrk@gmail.com>, linux-kernel@vger.kernel.org, Vicente Bergas <vicencb@gmail.com>, Hugh Cole-Baker <sigmaris@gmail.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Oskari Lemmela <oskari@lemmela.net>, Nick Xie <nick@khadas.com>, Peter Robinson <pbrobinson@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Vivek Unune <npcomplete13@gmail.com>, Akash Gajjar <akash@openedev.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2019-11-11 20:04, Robin Murphy wrote:
-> Although we don't generally expect IRQs to fire for a suspended 
-> IOMMU,
-> there are certain situations (particularly with debug options) where
-> we might legitimately end up with the pm_runtime_get_if_in_use() call
-> from rk_iommu_irq() returning 0. Since this doesn't represent an 
-> actual
-> error, follow the other parts of the driver and save the WARN_ON()
-> condition for a genuine negative value. Even if we do have spurious
-> IRQs due to a wedged VOP asserting the shared line, it's not this
-> driver's job to try to second-guess the IRQ core to warn about that.
->
-> Reported-by: Vasily Khoruzhick <anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-> ---
->  drivers/iommu/rockchip-iommu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/iommu/rockchip-iommu.c 
-> b/drivers/iommu/rockchip-iommu.c
-> index 4dcbf68dfda4..bd7e9b1e40ac 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -527,7 +527,7 @@ static irqreturn_t rk_iommu_irq(int irq, void 
-> *dev_id)
->  	int i, err;
->
->  	err = pm_runtime_get_if_in_use(iommu->dev);
-> -	if (WARN_ON_ONCE(err <= 0))
-> +	if (!err || WARN_ON_ONCE(err < 0))
->  		return ret;
->
->  	if (WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks)))
+On rk3399 vdd_log shall not exceed 1.0 V. On rk3399-roc-pc
+vdd_log is presently 1118 mV. Fix by setting the min voltage
+of the respective pwm-regulator down to 450 mV.
+This results in a vdd_log of 953 mV.
+Specify the supply to silence warning.
 
-Acked-by: Marc Zyngier <maz-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-         M.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+index a31099f7620b..4dac88ef7e72 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+@@ -211,9 +211,9 @@
+ 		regulator-name = "vdd_log";
+ 		regulator-always-on;
+ 		regulator-boot-on;
+-		regulator-min-microvolt = <800000>;
++		regulator-min-microvolt = <450000>;
+ 		regulator-max-microvolt = <1400000>;
+-		vin-supply = <&vcc3v3_sys>;
++		pwm-supply = <&vcc3v3_sys>;
+ 	};
+ };
+ 
 -- 
-Jazz is not dead. It just smells funny...
+2.20.1
