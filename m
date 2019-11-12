@@ -1,47 +1,72 @@
-From: Markus Reichl <m.reichl@fivetechno.de>
-Subject: Re: [PATCH 3/3] arm64: dts: rk3399: Add init voltage for vdd_log
-Date: Tue, 12 Nov 2019 09:51:52 +0100
-Message-ID: <c5519934-2715-d5cd-a236-0fec9a41dc67@fivetechno.de>
-References: <20191111005158.25070-1-kever.yang@rock-chips.com>
- <20191111005158.25070-3-kever.yang@rock-chips.com>
- <ef8830f3-10d1-7b71-0e18-232f2eaeef2d@web.de>
- <1eaef5d5-c923-da56-b9c4-48d517b3c969@rock-chips.com>
- <acbab893-9e9a-cfe1-67bf-a9e2b2e50114@fivetechno.de>
- <88ad7dc9-5299-791b-e285-7775ddf885ba@web.de>
+From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: arm64: dts: rockchip: Add SDR104 mode to SD-card I/F on
+ rk3399-roc-pc
+Date: Tue, 12 Nov 2019 09:58:37 +0100
+Message-ID: <CAPDyKFrsQNMhDb3yh4M1EPGtftFrVmHY-pmpR7AbfrXW=xzyyg@mail.gmail.com>
+References: <f03c978c-86de-b8bb-22c2-177d7fafed94@fivetechno.de>
+ <CAPDyKFqn06LZZMXLD2o-M6A0R6KU97PFUTN=NgYnMtf=ESULTA@mail.gmail.com>
+ <e69268d2-4a3f-3cd8-fc2e-57ae52ad337a@fivetechno.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <88ad7dc9-5299-791b-e285-7775ddf885ba@web.de>
-Content-Language: de-DE
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?S=c3=b6ren_Moch?= <smoch@web.de>, Kever Yang <kever.yang@rock-chips.com>, heiko@sntech.de
-Cc: Mark Rutland <mark.rutland@arm.com>, =?UTF-8?Q?Andrius_=c5=a0tikonas?= <andrius@stikonas.eu>, linux-kernel@vger.kernel.org, Alexis Ballier <aballier@gentoo.org>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Katsuhiro Suzuki <katsuhiro@katsuster.net>, Hugh Cole-Baker <sigmaris@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>, Andy Yan <andyshrk@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Vicente Bergas <vicencb@gmail.com>, Oskari Lemmela <oskari@lemmela.net>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Pragnesh Patel <Pragnesh_Patel@mentor.com>, Peter Robinson <pbrobinson@gmail.com>, Nick Xie <nick@khadas.com>, Ezequiel Garcia <ezequiel@collabora.com>, Vivek Unune <npcomplete13@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <e69268d2-4a3f-3cd8-fc2e-57ae52ad337a-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, DTML <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Thanks Sören,
-
-Am 12.11.19 um 09:44 schrieb Sören Moch:
-> On 12.11.19 09:16, Markus Reichl wrote:
->> Hi Kever,
->>
->> have a rk3399-roc-pc running mainline U-Boot and kernel and vdd_log is
->> showing 1118 mV.
->> Is this a danger for the board?
-> I think yes. What I read vdd_log on rk3399 must not exceed 1.0V.
->> How to fix it?
-> You probably need to do something like [1].
-
-will measure and come up with a patch.
-
-> 
-> [1] https://patchwork.kernel.org/patch/11173465/
-> 
-> Gruß,
-> Sören
->> Btw. vin-supply for this pwm-regulator is ignored and I could not find it
->> in bindings doc.
->>
-> Gruß,
--- 
-Markus Reichl
+T24gTW9uLCAxMSBOb3YgMjAxOSBhdCAyMDozMiwgTWFya3VzIFJlaWNobCA8bS5yZWljaGxAZml2
+ZXRlY2huby5kZT4gd3JvdGU6Cj4KPiBIaSBVbGYsCj4KPiBBbSAxMS4xMS4xOSB1bSAxODoyNyBz
+Y2hyaWViIFVsZiBIYW5zc29uOgo+ID4gT24gTW9uLCAxMSBOb3YgMjAxOSBhdCAxNToxMywgTWFy
+a3VzIFJlaWNobCA8bS5yZWljaGxAZml2ZXRlY2huby5kZT4gd3JvdGU6Cj4gPj4KPiA+PiBBZGQg
+U0RSMTA0IGNhcGFiaWxpdHkgYW5kIHJlZ3VsYXRvcnMgdG8gU0QgY2FyZCBub2RlLgo+ID4+IFdo
+aWxlIGF0IGl0LCBmaXggYSB0eXBvIGluIGxjZCBwaW5jdHJsIGFuZCByZW1vdmUgdHdvCj4gPj4g
+dW5kb2N1bWVudGVkIGJpbmRpbmdzIGZyb20gcG1pYy4KPiA+Pgo+ID4+IFNpZ25lZC1vZmYtYnk6
+IE1hcmt1cyBSZWljaGwgPG0ucmVpY2hsQGZpdmV0ZWNobm8uZGU+Cj4gPj4gLS0tCj4gPj4gIC4u
+Li9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcm9jLXBjLmR0c2kgICAgICB8IDMxICsrKysrKysr
+KysrKysrKy0tLS0KPiA+PiAgMSBmaWxlIGNoYW5nZWQsIDI1IGluc2VydGlvbnMoKyksIDYgZGVs
+ZXRpb25zKC0pCj4gPj4KPiA+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
+Y2hpcC9yazMzOTktcm9jLXBjLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3Jr
+MzM5OS1yb2MtcGMuZHRzaQo+ID4+IGluZGV4IDMzZGY5NWUzODRiNC4uZTg2YTZkYjU0NDk5IDEw
+MDY0NAo+ID4+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvYy1w
+Yy5kdHNpCj4gPj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcm9j
+LXBjLmR0c2kKPiA+PiBAQCAtMTM1LDYgKzEzNSwyMCBAQAo+ID4+ICAgICAgICAgICAgICAgICB2
+aW4tc3VwcGx5ID0gPCZ2Y2NfMXY4PjsKPiA+PiAgICAgICAgIH07Cj4gPj4KPiA+PiArICAgICAg
+IHZjYzN2MF9zZDogdmNjM3YwLXNkIHsKPiA+PiArICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9
+ICJyZWd1bGF0b3ItZml4ZWQiOwo+ID4+ICsgICAgICAgICAgICAgICBlbmFibGUtYWN0aXZlLWhp
+Z2g7Cj4gPj4gKyAgICAgICAgICAgICAgIGdwaW8gPSA8JmdwaW80IFJLX1BENiBHUElPX0FDVElW
+RV9ISUdIPjsKPiA+PiArICAgICAgICAgICAgICAgcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsK
+PiA+PiArICAgICAgICAgICAgICAgcGluY3RybC0wID0gPCZ2Y2MzdjBfc2RfZW4+Owo+ID4+ICsg
+ICAgICAgICAgICAgICByZWd1bGF0b3ItbmFtZSA9ICJ2Y2MzdjBfc2QiOwo+ID4+ICsgICAgICAg
+ICAgICAgICByZWd1bGF0b3ItYWx3YXlzLW9uOwo+ID4KPiA+IFRoaXMgbG9va3Mgb2RkLiBBIEdQ
+SU8gcmVndWxhdG9yIGJlaW5nIGFsd2F5cyBvbj8KPgo+IFRoaXMgaXMgYSBzdGFuZGFyZCBtaWNy
+byBTRCBjYXJkIHNvY2tldCB0aGF0IGNhbiBhbHNvIGJlIHVzZWQgZm9yCj4gYm9vdGluZyB0aGUg
+Ym9hcmQuIEkgd2FudGVkIHRvIGJlIGNhdXRpb3VzIGFuZCBzdGFydAo+IHdvcmtpbmcgd2l0aCBp
+dCBhbmQgc2V2ZXJhbCBTRCBjYXJkcyBhbmQgZXhwbG9yZSB0aGUgY2FwYWJpbGl0aWVzLgo+Cj4g
+T24gdGhpcyBib2FyZCBuZWFybHkgYWxsIHJlZ3VsYXRvcnMgYXJlIHN0aWxsIGNvbnRpbm91c2x5
+Cj4gc3dpdGNoZWQgb24uIEkgcGxhbiB0byByZW1vdmUgdGhlIGFsd2F5cy1vbiBwcm9wZXJ0aWVz
+IHN0ZXAKPiBieSBzdGVwIGZyb20gdGhlIHJlZ3VsYXRvcnMgd2hlbiB0aGUgYm9hcmQgcnVucyBz
+dGFibGUgd2l0aCBpdCdzCj4gY29tcG9uZW50cyBhbGwgZW5ibGVkLgo+Cj4gPgo+ID4+ICsgICAg
+ICAgICAgICAgICByZWd1bGF0b3ItYm9vdC1vbjsKPiA+PiArICAgICAgICAgICAgICAgcmVndWxh
+dG9yLW1pbi1taWNyb3ZvbHQgPSA8MzAwMDAwMD47Cj4gPj4gKyAgICAgICAgICAgICAgIHJlZ3Vs
+YXRvci1tYXgtbWljcm92b2x0ID0gPDMwMDAwMDA+Owo+ID4+ICsgICAgICAgICAgICAgICB2aW4t
+c3VwcGx5ID0gPCZ2Y2MzdjNfc3lzPjsKPiA+PiArICAgICAgIH07Cj4gPgo+ID4gQXNzdW1lcyB0
+aGlzIHBvd2VycyBhbiBTRElPIGVtYmVkZGVkIGNhcmQuIE9mdGVuIHRob3NlIGhhdmUgYSBzcGVj
+aWZpYwo+ID4gcG93ZXIgc2VxdWVuY2UsIGp1c3Qgd2FudGVkIHRvIG1ha2Ugc3VyZSB0aGUgYWJv
+dmUgYXJlIHJlYWxseQo+ID4gc3VmZmljaWVudD8gTm8gZGVsYXlzIG9yIGV4dGVybmFsIGNsb2Nr
+IG5lZWRlZD8KPgo+IEl0J3Mgbm90IGVtYmVkZGVkLCBqdXN0IGEgc3RhbmRhcmQgwrVTRCBwbHVn
+LiBJdCBpcyBhbHJlYWR5IGVuYWJsZWQKPiBieSBtYWlubGluZSBVLUJvb3QgYW5kIGVqZWN0aW5n
+IGFuZCBpbnNlcnRpbmcgdGhlIGNhcmQgd29ya3MgZmluZS4KCkFoLCB0aGFua3MgZm9yIGNvbmZp
+cm1pbmcuCgpLaW5kIHJlZ2FyZHMKVWZmZQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
