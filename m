@@ -1,78 +1,47 @@
 From: Markus Reichl <m.reichl@fivetechno.de>
-Subject: Re: arm64: dts: rockchip: Add SDR104 mode to SD-card I/F on
- rk3399-roc-pc
-Date: Tue, 12 Nov 2019 09:46:51 +0100
-Message-ID: <3ebbea5b-0bda-3528-344d-d717889e6fec@fivetechno.de>
-References: <f03c978c-86de-b8bb-22c2-177d7fafed94@fivetechno.de>
- <CAPDyKFqn06LZZMXLD2o-M6A0R6KU97PFUTN=NgYnMtf=ESULTA@mail.gmail.com>
+Subject: Re: [PATCH 3/3] arm64: dts: rk3399: Add init voltage for vdd_log
+Date: Tue, 12 Nov 2019 09:51:52 +0100
+Message-ID: <c5519934-2715-d5cd-a236-0fec9a41dc67@fivetechno.de>
+References: <20191111005158.25070-1-kever.yang@rock-chips.com>
+ <20191111005158.25070-3-kever.yang@rock-chips.com>
+ <ef8830f3-10d1-7b71-0e18-232f2eaeef2d@web.de>
+ <1eaef5d5-c923-da56-b9c4-48d517b3c969@rock-chips.com>
+ <acbab893-9e9a-cfe1-67bf-a9e2b2e50114@fivetechno.de>
+ <88ad7dc9-5299-791b-e285-7775ddf885ba@web.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFqn06LZZMXLD2o-M6A0R6KU97PFUTN=NgYnMtf=ESULTA@mail.gmail.com>
+In-Reply-To: <88ad7dc9-5299-791b-e285-7775ddf885ba@web.de>
 Content-Language: de-DE
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Jagan Teki <jagan@amarulasolutions.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+To: =?UTF-8?Q?S=c3=b6ren_Moch?= <smoch@web.de>, Kever Yang <kever.yang@rock-chips.com>, heiko@sntech.de
+Cc: Mark Rutland <mark.rutland@arm.com>, =?UTF-8?Q?Andrius_=c5=a0tikonas?= <andrius@stikonas.eu>, linux-kernel@vger.kernel.org, Alexis Ballier <aballier@gentoo.org>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Katsuhiro Suzuki <katsuhiro@katsuster.net>, Hugh Cole-Baker <sigmaris@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>, Andy Yan <andyshrk@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Vicente Bergas <vicencb@gmail.com>, Oskari Lemmela <oskari@lemmela.net>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Pragnesh Patel <Pragnesh_Patel@mentor.com>, Peter Robinson <pbrobinson@gmail.com>, Nick Xie <nick@khadas.com>, Ezequiel Garcia <ezequiel@collabora.com>, Vivek Unune <npcomplete13@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Ulf,
+Thanks Sören,
 
-Am 11.11.19 um 18:27 schrieb Ulf Hansson:
-> On Mon, 11 Nov 2019 at 15:13, Markus Reichl <m.reichl@fivetechno.de> wrote:
+Am 12.11.19 um 09:44 schrieb Sören Moch:
+> On 12.11.19 09:16, Markus Reichl wrote:
+>> Hi Kever,
 >>
->> Add SDR104 capability and regulators to SD card node.
->> While at it, fix a typo in lcd pinctrl and remove two
->> undocumented bindings from pmic.
->>
->> Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
->> ---
->>  .../boot/dts/rockchip/rk3399-roc-pc.dtsi      | 31 +++++++++++++++----
->>  1 file changed, 25 insertions(+), 6 deletions(-)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
->> index 33df95e384b4..e86a6db54499 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
->> @@ -135,6 +135,20 @@
->>                 vin-supply = <&vcc_1v8>;
->>         };
->>
->> +       vcc3v0_sd: vcc3v0-sd {
->> +               compatible = "regulator-fixed";
->> +               enable-active-high;
->> +               gpio = <&gpio4 RK_PD6 GPIO_ACTIVE_HIGH>;
->> +               pinctrl-names = "default";
->> +               pinctrl-0 = <&vcc3v0_sd_en>;
->> +               regulator-name = "vcc3v0_sd";
->> +               regulator-always-on;
-> 
-> This looks odd. A GPIO regulator being always on?
+>> have a rk3399-roc-pc running mainline U-Boot and kernel and vdd_log is
+>> showing 1118 mV.
+>> Is this a danger for the board?
+> I think yes. What I read vdd_log on rk3399 must not exceed 1.0V.
+>> How to fix it?
+> You probably need to do something like [1].
 
-Works fine without always-on. Have sent v2. Thanks.
+will measure and come up with a patch.
 
 > 
->> +               regulator-boot-on;
->> +               regulator-min-microvolt = <3000000>;
->> +               regulator-max-microvolt = <3000000>;
->> +               vin-supply = <&vcc3v3_sys>;
->> +       };
+> [1] https://patchwork.kernel.org/patch/11173465/
 > 
-> Assumes this powers an SDIO embedded card. Often those have a specific
-> power sequence, just wanted to make sure the above are really
-> sufficient? No delays or external clock needed?
-> 
-> [...]
-> 
-> Kind regards
-> Uffe
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
-
-Gruß,
+> Gruß,
+> Sören
+>> Btw. vin-supply for this pwm-regulator is ignored and I could not find it
+>> in bindings doc.
+>>
+> Gruß,
 -- 
 Markus Reichl
