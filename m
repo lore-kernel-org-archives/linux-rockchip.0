@@ -1,83 +1,69 @@
-From: Markus Reichl <m.reichl@fivetechno.de>
-Subject: Re: arm64: dts: rockchip: Add SDR104 mode to SD-card I/F on
- rk3399-roc-pc
-Date: Mon, 11 Nov 2019 20:31:57 +0100
-Message-ID: <e69268d2-4a3f-3cd8-fc2e-57ae52ad337a@fivetechno.de>
-References: <f03c978c-86de-b8bb-22c2-177d7fafed94@fivetechno.de>
- <CAPDyKFqn06LZZMXLD2o-M6A0R6KU97PFUTN=NgYnMtf=ESULTA@mail.gmail.com>
+From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [BUG] rk3399-rockpro64 pcie synchronous external abort
+Date: Mon, 11 Nov 2019 18:03:34 -0600
+Message-ID: <20191112000334.GA69183@google.com>
+References: <CAMdYzYo6mKSMXoDR7St1ynUJ9f3sh=0rgNAbbVvFAfJn82VvVQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFqn06LZZMXLD2o-M6A0R6KU97PFUTN=NgYnMtf=ESULTA@mail.gmail.com>
-Content-Language: de-DE
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, DTML <devicetree@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAMdYzYo6mKSMXoDR7St1ynUJ9f3sh=0rgNAbbVvFAfJn82VvVQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Ulf,
+On Sun, Nov 10, 2019 at 10:43:48AM -0500, Peter Geis wrote:
 
-Am 11.11.19 um 18:27 schrieb Ulf Hansson:
-> On Mon, 11 Nov 2019 at 15:13, Markus Reichl <m.reichl@fivetechno.de> wrote:
->>
->> Add SDR104 capability and regulators to SD card node.
->> While at it, fix a typo in lcd pinctrl and remove two
->> undocumented bindings from pmic.
->>
->> Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
->> ---
->>  .../boot/dts/rockchip/rk3399-roc-pc.dtsi      | 31 +++++++++++++++----
->>  1 file changed, 25 insertions(+), 6 deletions(-)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
->> index 33df95e384b4..e86a6db54499 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
->> @@ -135,6 +135,20 @@
->>                 vin-supply = <&vcc_1v8>;
->>         };
->>
->> +       vcc3v0_sd: vcc3v0-sd {
->> +               compatible = "regulator-fixed";
->> +               enable-active-high;
->> +               gpio = <&gpio4 RK_PD6 GPIO_ACTIVE_HIGH>;
->> +               pinctrl-names = "default";
->> +               pinctrl-0 = <&vcc3v0_sd_en>;
->> +               regulator-name = "vcc3v0_sd";
->> +               regulator-always-on;
-> 
-> This looks odd. A GPIO regulator being always on?
+> I plugged in an i350 two port nic and examined the assigned address spaces.
+> I've attached it below.
+> Judging by the usage, I think this controller has enough address space
+> for another two port NIC, and that's about it.
+> I'm pretty sure now that the rk3399 controller just doesn't have the
+> address space to map larger devices.
+> I'm pretty sure the IOMMU would allow us to address system memory as
+> pcie address space and overcome this limitation, but I don't know how
+> to do that.
 
-This is a standard micro SD card socket that can also be used for
-booting the board. I wanted to be cautious and start
-working with it and several SD cards and explore the capabilities.
+I don't think you're out of MMIO space, at least in this instance.  It
+looks like you have 32MB available and the two-port NIC on bus 01 only
+takes 5MB.
 
-On this board nearly all regulators are still continously
-switched on. I plan to remove the always-on properties step
-by step from the regulators when the board runs stable with it's
-components all enbled. 
+The IOMMU is used for DMA (e.g., reads/writes initiated by the NIC),
+while the MMIO space is used for CPU programmed I/O (reads/writes done
+by the driver running on the CPU).
 
-> 
->> +               regulator-boot-on;
->> +               regulator-min-microvolt = <3000000>;
->> +               regulator-max-microvolt = <3000000>;
->> +               vin-supply = <&vcc3v3_sys>;
->> +       };
-> 
-> Assumes this powers an SDIO embedded card. Often those have a specific
-> power sequence, just wanted to make sure the above are really
-> sufficient? No delays or external clock needed?
+> The address space for the nic is below:
+> f8000000-f8ffffff : axi-base
+> fa000000-fbdfffff : MEM
 
-It's not embedded, just a standard µSD plug. It is already enabled
-by mainline U-Boot and ejecting and inserting the card works fine.
+32MB.
 
---
-Gruß,
-Markus
-> 
-> [...]
-> 
-> Kind regards
-> Uffe
-> 
+>   fa000000-fa4fffff : PCI Bus 0000:01
+
+5MB.
+
+>     fa000000-fa07ffff : 0000:01:00.0
+>       fa000000-fa07ffff : igb
+>     fa080000-fa0fffff : 0000:01:00.0
+>     fa100000-fa17ffff : 0000:01:00.1
+>       fa100000-fa17ffff : igb
+>     fa180000-fa1fffff : 0000:01:00.1
+>     fa200000-fa27ffff : 0000:01:00.0
+>     fa280000-fa2fffff : 0000:01:00.0
+>     fa300000-fa37ffff : 0000:01:00.1
+>     fa380000-fa3fffff : 0000:01:00.1
+>     fa400000-fa403fff : 0000:01:00.0
+>       fa400000-fa403fff : igb
+>     fa404000-fa407fff : 0000:01:00.1
+>       fa404000-fa407fff : igb
+> fd000000-fdffffff : f8000000.pcie
