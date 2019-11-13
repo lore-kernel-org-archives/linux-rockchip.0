@@ -1,141 +1,45 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCHv2 3/4] drm/komeda: use afbc helpers
-Date: Wed, 13 Nov 2019 12:39:54 +0100
-Message-ID: <20191113113954.GN23790@phenom.ffwll.local>
-References: <2485717.1SzL54aMiy@e123338-lin>
- <20191104221228.3588-1-andrzej.p@collabora.com>
- <20191104221228.3588-4-andrzej.p@collabora.com>
- <20191108160954.GA17321@arm.com>
- <20191113020146.GB2746@jamwan02-TSP300>
+From: Emil Velikov <emil.l.velikov@gmail.com>
+Subject: Re: [PATCH v2 1/4] drm: bridge: dw_mipi_dsi: access registers via a regmap
+Date: Wed, 13 Nov 2019 14:57:55 +0000
+Message-ID: <CACvgo51sNzSHCcix89giYEq=iGJa_-nYbgpOKY-MxPRGCM_cRQ@mail.gmail.com>
+References: <20191106163031.808061-1-adrian.ratiu@collabora.com> <20191106163031.808061-2-adrian.ratiu@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20191113020146.GB2746@jamwan02-TSP300>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: "james qian wang (Arm Technology China)" <james.qian.wang@arm.com>
-Cc: nd <nd@arm.com>, Mihail Atanassov <Mihail.Atanassov@arm.com>, "kernel@collabora.com" <kernel@collabora.com>, David Airlie <airlied@linux.ie>, Liviu Dudau <Liviu.Dudau@arm.com>, Andrzej Pietrasiewicz <andrzej.p@collabora.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Ayan Halder <Ayan.Halder@arm.com>, Sean Paul <sean@poorly.run>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191106163031.808061-2-adrian.ratiu@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Adrian Ratiu <adrian.ratiu@collabora.com>
+Cc: LAKML <linux-arm-kernel@lists.infradead.org>, linux-stm32@st-md-mailman.stormreply.com, linux-rockchip <linux-rockchip@lists.infradead.org>, kernel@collabora.com, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, ML dri-devel <dri-devel@lists.freedesktop.org>, Boris Brezillon <boris.brezillon@collabora.com>, Neil Armstrong <narmstrong@baylibre.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBOb3YgMTMsIDIwMTkgYXQgMDI6MDE6NTNBTSArMDAwMCwgamFtZXMgcWlhbiB3YW5n
-IChBcm0gVGVjaG5vbG9neSBDaGluYSkgd3JvdGU6Cj4gT24gRnJpLCBOb3YgMDgsIDIwMTkgYXQg
-MDQ6MDk6NTRQTSArMDAwMCwgQXlhbiBIYWxkZXIgd3JvdGU6Cj4gPiBPbiBNb24sIE5vdiAwNCwg
-MjAxOSBhdCAxMToxMjoyN1BNICswMTAwLCBBbmRyemVqIFBpZXRyYXNpZXdpY3ogd3JvdGU6Cj4g
-PiA+IFRoZXJlIGFyZSBhZmJjIGhlbHBlcnMgYXZhaWxhYmxlLgo+ID4gPiAKPiA+ID4gU2lnbmVk
-LW9mZi1ieTogQW5kcnplaiBQaWV0cmFzaWV3aWN6IDxhbmRyemVqLnBAY29sbGFib3JhLmNvbT4K
-PiA+ID4gLS0tCj4gPiA+ICAuLi4vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9mb3JtYXRfY2Fw
-cy5oICAgfCAgMSAtCj4gPiA+ICAuLi4vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9mcmFtZWJ1
-ZmZlci5jICAgfCA0NCArKysrKysrLS0tLS0tLS0tLS0tCj4gPiA+ICAyIGZpbGVzIGNoYW5nZWQs
-IDE3IGluc2VydGlvbnMoKyksIDI4IGRlbGV0aW9ucygtKQo+ID4gPiAKPiA+ID4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRhX2Zvcm1hdF9jYXBz
-LmggYi9kcml2ZXJzL2dwdS9kcm0vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9mb3JtYXRfY2Fw
-cy5oCj4gPiA+IGluZGV4IDMyMjczY2YxOGY3Yy4uNjA3ZWVhODBlNjBjIDEwMDY0NAo+ID4gPiAt
-LS0gYS9kcml2ZXJzL2dwdS9kcm0vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9mb3JtYXRfY2Fw
-cy5oCj4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRh
-X2Zvcm1hdF9jYXBzLmgKPiA+ID4gQEAgLTMzLDcgKzMzLDYgQEAKPiA+ID4gIAo+ID4gPiAgI2Rl
-ZmluZSBBRkJDX1RIX0xBWU9VVF9BTElHTk1FTlQJOAo+ID4gPiAgI2RlZmluZSBBRkJDX0hFQURF
-Ul9TSVpFCQkxNgo+ID4gPiAtI2RlZmluZSBBRkJDX1NVUEVSQkxLX0FMSUdOTUVOVAkJMTI4Cj4g
-PiA+ICAjZGVmaW5lIEFGQkNfU1VQRVJCTEtfUElYRUxTCQkyNTYKPiA+ID4gICNkZWZpbmUgQUZC
-Q19CT0RZX1NUQVJUX0FMSUdOTUVOVAkxMDI0Cj4gPiA+ICAjZGVmaW5lIEFGQkNfVEhfQk9EWV9T
-VEFSVF9BTElHTk1FTlQJNDA5Ngo+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2Fy
-bS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfZnJhbWVidWZmZXIuYyBiL2RyaXZlcnMvZ3B1L2RybS9h
-cm0vZGlzcGxheS9rb21lZGEva29tZWRhX2ZyYW1lYnVmZmVyLmMKPiA+ID4gaW5kZXggMWIwMWE2
-MjVmNDBlLi5lOWM4NzU1MWE1YjggMTAwNjQ0Cj4gPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9h
-cm0vZGlzcGxheS9rb21lZGEva29tZWRhX2ZyYW1lYnVmZmVyLmMKPiA+ID4gKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfZnJhbWVidWZmZXIuYwo+ID4gPiBA
-QCAtNCw2ICs0LDcgQEAKPiA+ID4gICAqIEF1dGhvcjogSmFtZXMuUWlhbi5XYW5nIDxqYW1lcy5x
-aWFuLndhbmdAYXJtLmNvbT4KPiA+ID4gICAqCj4gPiA+ICAgKi8KPiA+ID4gKyNpbmNsdWRlIDxk
-cm0vZHJtX2FmYmMuaD4KPiA+ID4gICNpbmNsdWRlIDxkcm0vZHJtX2RldmljZS5oPgo+ID4gPiAg
-I2luY2x1ZGUgPGRybS9kcm1fZmJfY21hX2hlbHBlci5oPgo+ID4gPiAgI2luY2x1ZGUgPGRybS9k
-cm1fZ2VtLmg+Cj4gPiA+IEBAIC00Myw4ICs0NCw3IEBAIGtvbWVkYV9mYl9hZmJjX3NpemVfY2hl
-Y2soc3RydWN0IGtvbWVkYV9mYiAqa2ZiLCBzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGUsCj4gPiA+ICAJ
-c3RydWN0IGRybV9mcmFtZWJ1ZmZlciAqZmIgPSAma2ZiLT5iYXNlOwo+ID4gPiAgCWNvbnN0IHN0
-cnVjdCBkcm1fZm9ybWF0X2luZm8gKmluZm8gPSBmYi0+Zm9ybWF0Owo+ID4gPiAgCXN0cnVjdCBk
-cm1fZ2VtX29iamVjdCAqb2JqOwo+ID4gPiAtCXUzMiBhbGlnbm1lbnRfdyA9IDAsIGFsaWdubWVu
-dF9oID0gMCwgYWxpZ25tZW50X2hlYWRlciwgbl9ibG9ja3MsIGJwcDsKPiA+ID4gLQl1NjQgbWlu
-X3NpemU7Cj4gPiA+ICsJdTMyIGFsaWdubWVudF93ID0gMCwgYWxpZ25tZW50X2ggPSAwLCBhbGln
-bm1lbnRfaGVhZGVyLCBicHA7Cj4gPiA+ICAKPiA+ID4gIAlvYmogPSBkcm1fZ2VtX29iamVjdF9s
-b29rdXAoZmlsZSwgbW9kZV9jbWQtPmhhbmRsZXNbMF0pOwo+ID4gPiAgCWlmICghb2JqKSB7Cj4g
-PiA+IEBAIC01MiwxOSArNTIsMTUgQEAga29tZWRhX2ZiX2FmYmNfc2l6ZV9jaGVjayhzdHJ1Y3Qg
-a29tZWRhX2ZiICprZmIsIHN0cnVjdCBkcm1fZmlsZSAqZmlsZSwKPiA+ID4gIAkJcmV0dXJuIC1F
-Tk9FTlQ7Cj4gPiA+ICAJfQo+ID4gPiAgCj4gPiA+IC0Jc3dpdGNoIChmYi0+bW9kaWZpZXIgJiBB
-RkJDX0ZPUk1BVF9NT0RfQkxPQ0tfU0laRV9NQVNLKSB7Cj4gPiA+IC0JY2FzZSBBRkJDX0ZPUk1B
-VF9NT0RfQkxPQ0tfU0laRV8zMng4Ogo+ID4gPiAtCQlhbGlnbm1lbnRfdyA9IDMyOwo+ID4gPiAt
-CQlhbGlnbm1lbnRfaCA9IDg7Cj4gPiA+IC0JCWJyZWFrOwo+ID4gPiAtCWNhc2UgQUZCQ19GT1JN
-QVRfTU9EX0JMT0NLX1NJWkVfMTZ4MTY6Cj4gPiA+IC0JCWFsaWdubWVudF93ID0gMTY7Cj4gPiA+
-IC0JCWFsaWdubWVudF9oID0gMTY7Cj4gPiA+IC0JCWJyZWFrOwo+ID4gPiAtCWRlZmF1bHQ6Cj4g
-PiA+IC0JCVdBUk4oMSwgIkludmFsaWQgQUZCQ19GT1JNQVRfTU9EX0JMT0NLX1NJWkU6ICVsbGQu
-XG4iLAo+ID4gPiAtCQkgICAgIGZiLT5tb2RpZmllciAmIEFGQkNfRk9STUFUX01PRF9CTE9DS19T
-SVpFX01BU0spOwo+ID4gPiAtCQlicmVhazsKPiA+ID4gKwlpZiAoIWRybV9hZmJjX2dldF9zdXBl
-cmJsa193aChmYi0+bW9kaWZpZXIsICZhbGlnbm1lbnRfdywgJmFsaWdubWVudF9oKSkKPiA+ID4g
-KwkJcmV0dXJuIC1FSU5WQUw7Cj4gPiA+ICsKPiA+ID4gKwlpZiAoKGFsaWdubWVudF93ICE9IDE2
-IHx8IGFsaWdubWVudF9oICE9IDE2KSAmJgo+ID4gPiArCSAgICAoYWxpZ25tZW50X3cgIT0gMzIg
-fHwgYWxpZ25tZW50X2ggIT0gOCkpIHsKPiA+ID4gKwkJRFJNX0RFQlVHX0tNUygiVW5zdXBwb3J0
-ZWQgYWZiYyB0aWxlIHcvaCBbJWQvJWRdXG4iLAo+ID4gPiArCQkJICAgICAgYWxpZ25tZW50X3cs
-IGFsaWdubWVudF9oKTsKPiA+ID4gKwo+ID4gPiArCQlyZXR1cm4gLUVJTlZBTDsKPiA+IFRvIGJl
-IGhvbmVzdCwgdGhlIHByZXZpb3VzIGNvZGUgbG9va3MgbXVjaCBtb3JlIHJlYWRhYmxlCj4gPiA+
-ICAJfQo+ID4gPiAgCj4gPiA+ICAJLyogdGlsZWQgaGVhZGVyIGFmYmMgKi8KPiA+ID4gQEAgLTg0
-LDIwICs4MCwxNCBAQCBrb21lZGFfZmJfYWZiY19zaXplX2NoZWNrKHN0cnVjdCBrb21lZGFfZmIg
-KmtmYiwgc3RydWN0IGRybV9maWxlICpmaWxlLAo+ID4gPiAgCQlnb3RvIGNoZWNrX2ZhaWxlZDsK
-PiA+ID4gIAl9Cj4gPiA+ICAKPiA+ID4gLQluX2Jsb2NrcyA9IChrZmItPmFsaWduZWRfdyAqIGtm
-Yi0+YWxpZ25lZF9oKSAvIEFGQkNfU1VQRVJCTEtfUElYRUxTOwo+ID4gPiAtCWtmYi0+b2Zmc2V0
-X3BheWxvYWQgPSBBTElHTihuX2Jsb2NrcyAqIEFGQkNfSEVBREVSX1NJWkUsCj4gPiA+IC0JCQkJ
-ICAgIGFsaWdubWVudF9oZWFkZXIpOwo+ID4gPiAtCj4gPiA+ICAJYnBwID0ga29tZWRhX2dldF9h
-ZmJjX2Zvcm1hdF9icHAoaW5mbywgZmItPm1vZGlmaWVyKTsKPiA+ID4gLQlrZmItPmFmYmNfc2l6
-ZSA9IGtmYi0+b2Zmc2V0X3BheWxvYWQgKyBuX2Jsb2NrcyAqCj4gPiA+IC0JCQkgQUxJR04oYnBw
-ICogQUZCQ19TVVBFUkJMS19QSVhFTFMgLyA4LAo+ID4gPiAtCQkJICAgICAgIEFGQkNfU1VQRVJC
-TEtfQUxJR05NRU5UKTsKPiA+ID4gLQltaW5fc2l6ZSA9IGtmYi0+YWZiY19zaXplICsgZmItPm9m
-ZnNldHNbMF07Cj4gPiA+IC0JaWYgKG1pbl9zaXplID4gb2JqLT5zaXplKSB7Cj4gPiA+IC0JCURS
-TV9ERUJVR19LTVMoImFmYmMgc2l6ZSBjaGVjayBmYWlsZWQsIG9ial9zaXplOiAweCV6eC4gbWlu
-X3NpemUgMHglbGx4LlxuIiwKPiA+ID4gLQkJCSAgICAgIG9iai0+c2l6ZSwgbWluX3NpemUpOwo+
-ID4gV2UgbmVlZCBrZmItPm9mZnNldF9wYXlsb2FkIGFuZCBrZmItPmFmYmNfc2l6ZSB0byBzZXQg
-c29tZSByZWdpc3RlcnMKPiA+IGluIGQ3MV9sYXllcl91cGRhdGUoKS4gQXQgdGhpcyBtb21lbnQg
-SSBmZWVsIGxpa2UgcHVuY2hpbmcgbXlzZWxmIGZvcgo+ID4gbWFraW5nIHRoZSBzdWdnZXN0aW9u
-IHRvIGNvbnNpZGVyIGFic3RyYWN0aW5nIHNvbWUgb2YgdGhlIGtvbWVkYSdzIGFmYmMKPiA+IGNo
-ZWNrcy4gVG8gbWUgaXQgZG9lcyBub3QgbG9vayBsaWtlIGtvbWVkYShpbiB0aGUgY3VycmVudCBz
-aGFwZSkgY2FuIHRha2UKPiA+IG11Y2ggYWR2YW50YWdlIG9mIHRoZSBnZW5lcmljIF9hZmJjX2Zi
-X2NoZWNrKCkgZnVuY3Rpb24gKGFzIHdhcyBzdWdnZXN0ZWQKPiA+IHByZXZpb3VzbHkgYnkgRGFu
-dmV0KS4KPiA+IAo+ID4gSG93ZXZlciwgSSB3aWxsIGxldCBqYW1lcy5xaWFuLndhbmdAYXJtLmNv
-bSwKPiA+IE1paGFpbC5BdGFuYXNzb3ZAYXJtLmNvbSwgQmVuLkRhdmlzQGFybS5jb20gY29tbWVu
-dCBoZXJlIHRvIHNlZSBpZgo+ID4gdGhlcmUgY291bGQgYmUgYSB3YXkgb2YgYWJzdHJhY3Rpbmcg
-dGhlIGFmYmMgYml0cyBmcm9tIGtvbWVkYS4KPiA+Cj4gCj4gSGkgYWxsOgo+IAo+IFNpbmNlIHRo
-ZSBjdXJyZW50IGdlbmVyaWMgZHJtX2FmYmMgaGVscGVycyBvbmx5IHN1cHBvcnQgYWZiY18xLjEs
-IGJ1dAo+IGtvbWVkYSBuZWVkcyBzdXBwb3J0IGJvdGggYWZiYzEuMS8xLjIsIHNvIEkgdGhpbmsg
-d2UgY2FuOgo+IC0gQWRkIGFmYmMxLjIgc3VwcG9ydCB0byBkcm0gYWZiYyBoZWxwZXJzLgo+IC0g
-Zm9yIHRoZSBhZmJjX3BheWxvYWRfb2Zmc2V0LCBjYW4gd2UgYWRkIHRoaXMgbWVtYmVyIHRvCj4g
-ICBkcm1fZnJhbWVidWZmZXIgPwo+IC0gVGhlIGFsaWduZWRfdy9oIGFyZSBpbXBvcnRhbnQgZm9y
-IGFmYmMsIHNvIGNhbiB3ZSBoYXZlIHRoZW0gaW4KPiAgIGRybV9mcmFtZWJ1ZmZlciA/ICAKCkhv
-dyBleHBlbnNpdmUgaXMgaXQgdG8gcmVjb21wdXRlIHRoZXNlIGZyb20gYSBzdHJ1Y3QgZHJtX2Zy
-YW1lYnVmZmVyPwoKSSdkIGp1c3QgZ28gd2l0aCBvbmUgZnVuY3Rpb24gd2hpY2ggY29tcHV0ZXMg
-YWxsIHRoZXNlIGRlcml2ZWQgdmFsdWVzLCBhbmQKc3R1ZmZzIHRoZW0gaW50byBhIHN0cnVjdCBk
-cm1fYWZiYy4gVGhlbiBkcml2ZXJzIGNhbGwgdGhhdCBvbmNlIG9yIHNvLgoKRm9yIHJld29ya2lu
-ZyBkcm1fZnJhbWVidWZmZXIgaXRzZWxmIEkgdGhpbmsgaXQncyBwcm9iYWJseSBhIGJpdCB0b28K
-ZWFybGllci4gQW5kIGlmIHdlIGRvIGl0LCB3ZSBzaG91bGQgbWF5YmUgZ28gYSBiaXQgbW9yZSBi
-b2xkLCBhaW1pbmcgdG8KcHJvcGVydHktZnkgYWxsIHRoZSBmcmFtZWJ1ZmZlciBzZXR0aW5ncywg
-bWF5YmUgZXZlbiBtYWtpbmcgaXQgZXh0ZW5zaWJsZSwKYW5kIGhhdmUgZHJpdmVycyBoYW5kbGUg
-YSBjb3JyZXNwb25kaW5nIGRybV9mcmFtZWJ1ZmZlcl9zdGF0ZS4KCkEgdGhpcmQgb3B0aW9uIHdv
-dWxkIGJlIHRvIGNyZWF0ZSBhIGRybV9hZmJjX2ZyYW1lYnVmZmVyIHdoaWNoIGVtYmVkcwpkcm1f
-ZnJhbWVidWZmZXIgYW5kIHdoaWNoIGRyaXZlcnMgd291bGQgbmVlZCB0byB1c2UuIEJ1dCBhbHNv
-IGZlZWxzIGEgYml0Cmxpa2UgdG9vIG11Y2ggY2h1cm4uIFJlY29tcHV0aW5nIHNob3VsZCBiZSBx
-dWljayBlbm91Z2ggYW5kIG11Y2ggZWFzaWVyLgotRGFuaWVsCgo+IAo+IFRoYW5rcwo+IEphbWVz
-Cj4gCj4gPiBUaGFua3MgYW55d2F5cyBmb3IgdGFraW5nIGEgc3RhYiBhdCB0aGlzLgo+ID4gLUF5
-YW4KPiA+ID4gKwo+ID4gPiArCWlmICghZHJtX2FmYmNfY2hlY2tfZmJfc2l6ZShtb2RlX2NtZC0+
-cGl0Y2hlc1swXSwgYnBwLAo+ID4gPiArCQkJCSAgICBtb2RlX2NtZC0+d2lkdGgsIG1vZGVfY21k
-LT5oZWlnaHQsCj4gPiA+ICsJCQkJICAgIGFsaWdubWVudF93LCBhbGlnbm1lbnRfaCwKPiA+ID4g
-KwkJCQkgICAgb2JqLT5zaXplLCBtb2RlX2NtZC0+b2Zmc2V0c1swXSwKPiA+ID4gKwkJCQkgICAg
-QUZCQ19TVVBFUkJMS19BTElHTk1FTlQpKQo+ID4gPiAgCQlnb3RvIGNoZWNrX2ZhaWxlZDsKPiA+
-ID4gLQl9Cj4gPiA+ICAKPiA+ID4gIAlmYi0+b2JqWzBdID0gb2JqOwo+ID4gPiAgCXJldHVybiAw
-Owo+ID4gPiAtLSAKPiA+ID4gMi4xNy4xCgotLSAKRGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdp
-bmVlciwgSW50ZWwgQ29ycG9yYXRpb24KaHR0cDovL2Jsb2cuZmZ3bGwuY2gKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
-dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+On Wed, 6 Nov 2019 at 16:30, Adrian Ratiu <adrian.ratiu@collabora.com> wrote:
+>
+> Convert the common bridge code and the two rockchip & stm drivers
+> which currently use it to the regmap API in anticipation for further
+> changes to make it more generic and add older DSI host controller
+> support as found on i.mx6 based devices.
+>
+> The regmap becomes an internal state of the bridge. No functional
+> changes other than requiring the platform drivers to use the
+> pre-configured regmap supplied by the bridge after its probe() call
+> instead of ioremp'ing the registers themselves.
+>
+> In subsequent commits the bridge will become able to detect the
+> DSI host core version and init the regmap with different register
+> layouts. The platform drivers will continue to use the regmap without
+> modifications or worrying about the specific layout in use (in other
+> words the layout is abstracted away via the regmap).
+>
+> Suggested-by: Boris Brezillon <boris.brezillon@collabora.com>
+> Reviewed-by: Neil Armstrong <narmstrong@baylibre.com>
+> Reviewed-by: Emil Velikov <emil.l.velikov@gmail.com>
+
+I should have been clearer earlier - I didn't quite review the patch.
+Is is now though.
+Reviewed-by: Emil Velikov <emil.velikov@collabora.com>
+
+Admittedly a couple of nitpicks (DRIVER_NAME, zero initialize of val)
+could have been left out.
+It's not a big deal, there's no need to polish those.
+
+-Emil
