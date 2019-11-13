@@ -1,75 +1,118 @@
-From: Kever Yang <kever.yang@rock-chips.com>
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 Subject: Re: [PATCH 2/3] arm64: dts: rk3399-rock960: add vdd_log
-Date: Wed, 13 Nov 2019 10:44:02 +0800
-Message-ID: <885996a6-e314-52c8-fec4-f66526dd1397@rock-chips.com>
+Date: Wed, 13 Nov 2019 08:51:41 +0530
+Message-ID: <20191113032141.GB3377@Mani-XPS-13-9360>
 References: <20191111005158.25070-1-kever.yang@rock-chips.com>
  <20191111005158.25070-2-kever.yang@rock-chips.com>
  <20191111052232.GA2842@Mani-XPS-13-9360>
  <3d129826-7705-819e-e68b-cc9080eb6c95@rock-chips.com>
  <20191112171726.GA18622@Mani-XPS-13-9360>
+ <885996a6-e314-52c8-fec4-f66526dd1397@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20191112171726.GA18622@Mani-XPS-13-9360>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, heiko@sntech.de, daniel.lezcano@linaro.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Jagan Teki <jagan@amarulasolutions.com>, Ezequiel Garcia <ezequiel@collabora.com>, linux-arm-kernel@lists.infradead.org, Akash Gajjar <akash@openedev.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <885996a6-e314-52c8-fec4-f66526dd1397@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, Akash Gajjar <akash@openedev.com>, Ezequiel Garcia <ezequiel@collabora.com>, Jagan Teki <jagan@amarulasolutions.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, daniel.lezcano@linaro.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWFuaXZhbm5hbiwKCk9uIDIwMTkvMTEvMTMg5LiK5Y2IMToxNywgTWFuaXZhbm5hbiBTYWRo
-YXNpdmFtIHdyb3RlOgo+IE9uIFR1ZSwgTm92IDEyLCAyMDE5IGF0IDA0OjEwOjE3UE0gKzA4MDAs
-IEtldmVyIFlhbmcgd3JvdGU6Cj4+IE9uIDIwMTkvMTEvMTEg5LiL5Y2IMToyMiwgTWFuaXZhbm5h
-biBTYWRoYXNpdmFtIHdyb3RlOgo+Pj4gSGkgS2V2ZXIsCj4+Pgo+Pj4gT24gTW9uLCBOb3YgMTEs
-IDIwMTkgYXQgMDg6NTE6NTdBTSArMDgwMCwgS2V2ZXIgWWFuZyB3cm90ZToKPj4+PiBBZGQgdmRk
-X2xvZyBub2RlIGFjY29yZGluZyB0byByb2NrOTYwIHNjaGVtYXRpYyBWMTMuCj4+Pj4KPj4+PiBT
-aWduZWQtb2ZmLWJ5OiBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgo+Pj4+
-IC0tLQo+Pj4+Cj4+Pj4gICAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcm9j
-azk2MC5kdHNpIHwgMTIgKysrKysrKysrKysrCj4+Pj4gICAgMSBmaWxlIGNoYW5nZWQsIDEyIGlu
-c2VydGlvbnMoKykKPj4+Pgo+Pj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzM5OS1yb2NrOTYwLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3JrMzM5OS1yb2NrOTYwLmR0c2kKPj4+PiBpbmRleCBjN2Q0OGQ0MWUxODQuLjczYWZlZTI1NzEx
-NSAxMDA2NDQKPj4+PiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1y
-b2NrOTYwLmR0c2kKPj4+PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5
-OS1yb2NrOTYwLmR0c2kKPj4+PiBAQCAtNzYsNiArNzYsMTggQEAKPj4+PiAgICAJCXJlZ3VsYXRv
-ci1hbHdheXMtb247Cj4+Pj4gICAgCQl2aW4tc3VwcGx5ID0gPCZ2Y2M1djBfc3lzPjsKPj4+PiAg
-ICAJfTsKPj4+PiArCj4+Pj4gKwl2ZGRfbG9nOiB2ZGQtbG9nIHsKPj4+PiArCQljb21wYXRpYmxl
-ID0gInB3bS1yZWd1bGF0b3IiOwo+Pj4+ICsJCXB3bXMgPSA8JnB3bTIgMCAyNTAwMCAxPjsKPj4+
-PiArCQlyZWd1bGF0b3ItbmFtZSA9ICJ2ZGRfbG9nIjsKPj4+PiArCQlyZWd1bGF0b3ItYWx3YXlz
-LW9uOwo+Pj4+ICsJCXJlZ3VsYXRvci1ib290LW9uOwo+Pj4+ICsJCXJlZ3VsYXRvci1taW4tbWlj
-cm92b2x0ID0gPDgwMDAwMD47Cj4+Pj4gKwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MTQw
-MDAwMD47Cj4+Pj4gKwkJcmVndWxhdG9yLWluaXQtbWljcm92b2x0ID0gPDk1MDAwMD47Cj4+PiBU
-aGUgZGVmYXVsdCB2YWx1ZSBzZWVtcyB0byBiZSAwLjl2IGFzIHBlciBib3RoIFJvY2s5NjAgYW5k
-IEZpY3VzIHNjaGVtYXRpY3MuCj4+Cj4+IFRoZSBkZWZhdWx0IHZhbHVlIGlzIDAuOVYgd2hlbiBw
-d20tcmVndWxhdG9yIGlzIG5vdCBlbmFibGVkLCBhbmQgdGhpcwo+PiAnaW5pdC1taWNyb3ZvbHQn
-IHN1cHBvc2UgdG8gc2V0IHRoZQo+Pgo+PiBpbml0IHZhbHVlIHdoZW4gcHdtLXJlZ3VsYXRvciBp
-cyBlbmFibGVkLiBJIHNldCB0aGlzIHRvIDk1MG1WIGJlY2F1c2UgUGV0ZXIKPj4gcmVwb3J0IHRo
-YXQgaGUgZXhwZXJpZW5jZQo+Pgo+PiB0aGUgc3lzdGVtIGhhbmcgZHVyaW5nIEZlZG9yYSBib290
-wqAgdXAsIGFuZCB1cGRhdGUgdGhlIHZkZF9sb2cgdG8gOTUwbVYgY2FuCj4+IGZpeCB0aGUgaXNz
-dWUgZHVlIHRvCj4+Cj4+IGVuZ2luZWVyIG1lYXN1cmUgb24gYW5vdGhlciByazMzOTkgYm9hcmQg
-cHVtYS1RNy4KPj4KPiBva2F5LiBQcmV2aW91c2x5IHdlIGhhZCBwb3N0LWJvb3QgaGFuZyBpc3N1
-ZSBvbiBSb2NrOTYwIE1vZGVsIEEgYm9hcmRzIHdoZW4gdGhlCj4gcGVyZm9ybWFuY2UgZ292ZXJu
-b3Igd2FzIHNldCBhcyBkZWZhdWx0LiBTbyB0aGUgdmRkX2xvZyBub2RlIHdhcyByZW1vdmVkIGZy
-b20KPiB0aGUgZGV2aWNldHJlZS4gSGF2ZSB5b3UgdGVzdGVkIHRoYXQgY2FzZSBhbHNvPwo+Cj4g
-SGVyZSBpcyB0aGUgY29tbWl0Ogo+IDEzNjgyZTUyNDE2NyAoImFybTY0OiBkdHM6IHJvY2tjaGlw
-OiByZW1vdmUgdmRkX2xvZyBmcm9tIHJvY2s5NjAgdG8gZml4IGEgc3RhYmlsaXR5IGlzc3VlcyIp
-CgoKRm9yIHJrMzM5OSwgdGhlIGtlcm5lbCBkb2VzIG5vdCB0b3VjaCB0aGlzIHJlZ3VsYXRvciwg
-aXQgc2hvdWxkIGJlIHRha2UgCmNhcmUgYnkgYm9vdGxvYWRlci4KClNvIEkgdGhpbmsgd2UgbmVl
-ZCB0byB1cGRhdGUgYm90aCBVLUJvb3QgYW5kIGtlcm5lbC4KCgpUaGFua3MsCgotIEtldmVyCgo+
-Cj4gdGhhbmtzLAo+IE1hbmkKPj4gVGhhbmtzLAo+Pgo+PiAtIEtldmVyCj4+Cj4+PiBPdGhlciB0
-aGFuIHRoYXQsCj4+PiBBY2tlZC1ieTogTWFuaXZhbm5hbiBTYWRoYXNpdmFtIDxtYW5pdmFubmFu
-LnNhZGhhc2l2YW1AbGluYXJvLm9yZz4KPj4+Cj4+PiBUaGFua3MsCj4+PiBNYW5pCj4+Pgo+Pj4+
-ICsJCXZpbi1zdXBwbHkgPSA8JnZjY19zeXM+Owo+Pj4+ICsJfTsKPj4+PiAgICB9Owo+Pj4+ICAg
-ICZjcHVfbDAgewo+Pj4+IC0tIAo+Pj4+IDIuMTcuMQo+Pj4+Cj4+CgoKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGlu
-ZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
+Hi Kever,
+
+On Wed, Nov 13, 2019 at 10:44:02AM +0800, Kever Yang wrote:
+> Hi Manivannan,
+> 
+> On 2019/11/13 上午1:17, Manivannan Sadhasivam wrote:
+> > On Tue, Nov 12, 2019 at 04:10:17PM +0800, Kever Yang wrote:
+> > > On 2019/11/11 下午1:22, Manivannan Sadhasivam wrote:
+> > > > Hi Kever,
+> > > > 
+> > > > On Mon, Nov 11, 2019 at 08:51:57AM +0800, Kever Yang wrote:
+> > > > > Add vdd_log node according to rock960 schematic V13.
+> > > > > 
+> > > > > Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> > > > > ---
+> > > > > 
+> > > > >    arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi | 12 ++++++++++++
+> > > > >    1 file changed, 12 insertions(+)
+> > > > > 
+> > > > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+> > > > > index c7d48d41e184..73afee257115 100644
+> > > > > --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+> > > > > +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+> > > > > @@ -76,6 +76,18 @@
+> > > > >    		regulator-always-on;
+> > > > >    		vin-supply = <&vcc5v0_sys>;
+> > > > >    	};
+> > > > > +
+> > > > > +	vdd_log: vdd-log {
+> > > > > +		compatible = "pwm-regulator";
+> > > > > +		pwms = <&pwm2 0 25000 1>;
+> > > > > +		regulator-name = "vdd_log";
+> > > > > +		regulator-always-on;
+> > > > > +		regulator-boot-on;
+> > > > > +		regulator-min-microvolt = <800000>;
+> > > > > +		regulator-max-microvolt = <1400000>;
+> > > > > +		regulator-init-microvolt = <950000>;
+> > > > The default value seems to be 0.9v as per both Rock960 and Ficus schematics.
+> > > 
+> > > The default value is 0.9V when pwm-regulator is not enabled, and this
+> > > 'init-microvolt' suppose to set the
+> > > 
+> > > init value when pwm-regulator is enabled. I set this to 950mV because Peter
+> > > report that he experience
+> > > 
+> > > the system hang during Fedora boot  up, and update the vdd_log to 950mV can
+> > > fix the issue due to
+> > > 
+> > > engineer measure on another rk3399 board puma-Q7.
+> > > 
+> > okay. Previously we had post-boot hang issue on Rock960 Model A boards when the
+> > performance governor was set as default. So the vdd_log node was removed from
+> > the devicetree. Have you tested that case also?
+> > 
+> > Here is the commit:
+> > 13682e524167 ("arm64: dts: rockchip: remove vdd_log from rock960 to fix a stability issues")
+> 
+> 
+> For rk3399, the kernel does not touch this regulator, it should be take care
+> by bootloader.
+> 
+> So I think we need to update both U-Boot and kernel.
+> 
+
+Hmm, okay. I will try to test these patches soon and share the observation here.
+
+Thanks,
+Mani
+
+> 
+> Thanks,
+> 
+> - Kever
+> 
+> > 
+> > thanks,
+> > Mani
+> > > Thanks,
+> > > 
+> > > - Kever
+> > > 
+> > > > Other than that,
+> > > > Acked-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> > > > 
+> > > > Thanks,
+> > > > Mani
+> > > > 
+> > > > > +		vin-supply = <&vcc_sys>;
+> > > > > +	};
+> > > > >    };
+> > > > >    &cpu_l0 {
+> > > > > -- 
+> > > > > 2.17.1
+> > > > > 
+> > > 
+> 
+> 
