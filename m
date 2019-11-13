@@ -1,59 +1,61 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re:
- =?utf-8?q?=5BPATCH=5D_configs=3A_Rename_roc-rk3399-pc_-?=
- =?utf-8?b?PiByb2MtcGMtcmszMzk5IGRlZmNvbmZpZ+OAkOivt+azqOaEj++8jOmCrg==?=
- =?utf-8?q?=E4=BB=B6=E7=94=B1linux-rockchip-bounces+kever=2Eyang=3Drock-ch?=
- =?utf-8?b?aXBzLmNvbUBsaXN0cy5pbmZyYWRlYWQub3Jn5Luj5Y+R44CR?=
-Date: Wed, 13 Nov 2019 17:13:16 +0800
-Message-ID: <fd21fa79-142f-00b9-f3df-8dc43372cb20@rock-chips.com>
-References: <20191102044902.8979-1-jagan@amarulasolutions.com>
+From: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 2/2] pinctrl: Use new GPIO_LINE_DIRECTION
+Date: Wed, 13 Nov 2019 10:40:17 +0100
+Message-ID: <CACRpkdYAmye8wT39fqy=LN+6pXDvrcQ0SyDTCvG7aSgea3Uumw@mail.gmail.com>
+References: <20191112141819.GA22076@localhost.localdomain>
+ <201911131438.KT6pnFZ7%lkp@intel.com>
+ <ac16492e11899ef4ec981f7f2e84714c7d61d2a7.camel@fi.rohmeurope.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20191102044902.8979-1-jagan@amarulasolutions.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <ac16492e11899ef4ec981f7f2e84714c7d61d2a7.camel-RPVEmwYF7IOGWTQfUlqXWgC/G2K4zDHf@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: "Vaittinen, Matti" <Matti.Vaittinen-RPVEmwYF7IOGWTQfUlqXWgC/G2K4zDHf@public.gmane.org>
+Cc: "andrew-g2DYL2Zd6BY@public.gmane.org" <andrew-g2DYL2Zd6BY@public.gmane.org>, "alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org" <alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org" <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>, "narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org" <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, "patrice.chotard-qxv4g6HH51o@public.gmane.org" <patrice.chotard-qxv4g6HH51o@public.gmane.org>, "paul-icTtO2rgO2OTuSrc4Mpeew@public.gmane.org" <paul-icTtO2rgO2OTuSrc4Mpeew@public.gmane.org>, "eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org" <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, "linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org" <linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org>, "jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org" <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>, "f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org" <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org" <gregory.clement-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "ludovic.desroches-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org" <ludovic.desroches-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "wens-jdAy2FN1RRM@public.gmane.org" <wens-jdAy2FN1RRM@public.gmane.org>, "agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, bcm-kern
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMTkvMTEvMiDkuIvljYgxMjo0OSwgSmFnYW4gVGVraSB3cm90ZToKPiByb2MtcmszMzk5
-LXBjX2RlZmNvbmZpZyBpcyBjb21taXR0ZWQgaW4gYmVsb3cKPgo+IGNvbW1pdCA8OGE2ODFmNGM1
-YWExNWRiNTFhZDAyMDk3MzQ4NTljOWZlN2MyOWNmZD4gKCJyb2NrY2hpcDogcmszMzk5Ogo+IEFk
-ZCBST0MtUkszMzk5LVBDIHN1cHBvcnQiKQo+Cj4gd2hpY2ggZG9lc24ndCBmb2xsb3cgdGhlIGV4
-aXN0aW5nIGRlZmNvbmZpZ3Mgb24gcmszMzk5Lgo+Cj4gU28sIHJlbmFtZSBhcyBmb2xsb3dlZCB3
-aXRoIG90aGVyIHJrMzM5OSBkZWZjb25maWdzLgo+Cj4gQ2M6IExldmluIER1IDxkandAdC1jaGlw
-LmNvbS5jbj4KPiBTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRp
-b25zLmNvbT4KCgpUaGUgYm9hcmQgbmFtZSBpcyByb2MtcmszMzk5LXBjLCBidXQgd2UgZG8gdXBk
-YXRlIHRoaXMgaW4gZHRzIGFzIAp7c29jfS17Ym9hcmR9LmR0cwoKYW5kIHtib2FyZH0te3NvY31f
-ZGVmY29uZmlnwqAgZm9yIGFsbCBib2FyZHMgYWxyZWFkeSBoYXZlLCBzbwoKClJldmlld2VkLWJ5
-OiBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgoKVGhhbmtzLAotIEtldmVy
-Cj4gLS0tCj4gICBib2FyZC9yb2NrY2hpcC9ldmJfcmszMzk5L01BSU5UQUlORVJTICAgICAgICAg
-ICAgICAgICAgICAgICAgfCAyICstCj4gICBjb25maWdzL3tyb2MtcmszMzk5LXBjX2RlZmNvbmZp
-ZyA9PiByb2MtcGMtcmszMzk5X2RlZmNvbmZpZ30gfCAwCj4gICAyIGZpbGVzIGNoYW5nZWQsIDEg
-aW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4gICByZW5hbWUgY29uZmlncy97cm9jLXJrMzM5
-OS1wY19kZWZjb25maWcgPT4gcm9jLXBjLXJrMzM5OV9kZWZjb25maWd9ICgxMDAlKQo+Cj4gZGlm
-ZiAtLWdpdCBhL2JvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvTUFJTlRBSU5FUlMgYi9ib2FyZC9y
-b2NrY2hpcC9ldmJfcmszMzk5L01BSU5UQUlORVJTCj4gaW5kZXggZjgyOTlkOTQ2MC4uMTdkZmFm
-Yjc0MyAxMDA2NDQKPiAtLS0gYS9ib2FyZC9yb2NrY2hpcC9ldmJfcmszMzk5L01BSU5UQUlORVJT
-Cj4gKysrIGIvYm9hcmQvcm9ja2NoaXAvZXZiX3JrMzM5OS9NQUlOVEFJTkVSUwo+IEBAIC01Miw3
-ICs1Miw3IEBAIEY6CWFyY2gvYXJtL2R0cy9yazMzOTktb3JhbmdlcGktdS1ib290LmR0c2kKPiAg
-IFJPQy1SSzMzOTktUEMKPiAgIE06CUxldmluIER1IDxkandAdC1jaGlwLmNvbS5jbj4KPiAgIFM6
-CU1haW50YWluZWQKPiAtRjoJY29uZmlncy9yb2MtcmszMzk5LXBjX2RlZmNvbmZpZwo+ICtGOglj
-b25maWdzL3JvYy1wYy1yazMzOTlfZGVmY29uZmlnCj4gICBGOglhcmNoL2FybS9kdHMvcmszMzk5
-LXJvYy1wYy11LWJvb3QuZHRzaQo+ICAgCj4gICBST0NLLVBJLTQKPiBkaWZmIC0tZ2l0IGEvY29u
-Zmlncy9yb2MtcmszMzk5LXBjX2RlZmNvbmZpZyBiL2NvbmZpZ3Mvcm9jLXBjLXJrMzM5OV9kZWZj
-b25maWcKPiBzaW1pbGFyaXR5IGluZGV4IDEwMCUKPiByZW5hbWUgZnJvbSBjb25maWdzL3JvYy1y
-azMzOTktcGNfZGVmY29uZmlnCj4gcmVuYW1lIHRvIGNvbmZpZ3Mvcm9jLXBjLXJrMzM5OV9kZWZj
-b25maWcKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpV
-LUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBzOi8vbGlzdHMuZGVu
-eC5kZS9saXN0aW5mby91LWJvb3QK
+On Wed, Nov 13, 2019 at 7:52 AM Vaittinen, Matti
+<Matti.Vaittinen-RPVEmwYF7IOGWTQfUlqXWgC/G2K4zDHf@public.gmane.org> wrote:
+> On Wed, 2019-11-13 at 14:30 +0800, kbuild test robot wrote:
+> > Hi Matti,
+> >
+> > Thank you for the patch! Perhaps something to improve:
+> >
+> > [auto build test WARNING on 70d97e099bb426ecb3ad4bf31e88dbf2ef4b2e4c]
+> >
+>
+> >    480        static int wmt_gpio_get_direction(struct gpio_chip
+> > *chip, unsigned offset)
+> >    481        {
+> >    482                struct wmt_pinctrl_data *data =
+> > gpiochip_get_data(chip);
+> >    483                u32 bank = WMT_BANK_FROM_PIN(offset);
+> >    484                u32 bit = WMT_BIT_FROM_PIN(offset);
+> >    485                u32 reg_dir = data->banks[bank].reg_dir;
+> >    486                u32 val;
+> >    487
+> >    488                val = readl_relaxed(data->base + reg_dir);
+> >    489                if (val & BIT(bit))
+> >  > 490                        GPIO_LINE_DIRECTION_OUT;
+>
+> Right. Return is missing. I think I already fixed this - I guess I sent
+> wrong version... Sorry guys. I'll do v3 with only this return added -
+> and I'll send it to limited amount of recipients as I think most of you
+> guys may not be interested. Probably to Linus W, Geert and GPIO list
+> only. Let me know if you want to see the v3 (or other subsequent
+> patches)
+
+I think I already merged it, just send a new patch on top fixing the
+problem.
+
+Yours,
+Linus Walleij
