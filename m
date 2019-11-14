@@ -1,39 +1,72 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/2] dt-bindings: phy: drop #clock-cells from
- rockchip,px30-dsi-dphy
-Date: Wed, 13 Nov 2019 19:53:14 -0600
-Message-ID: <20191114015314.GA24328@bogus>
-References: <20191108000640.8775-1-heiko.stuebner@theobroma-systems.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH 3/3] arm64: dts: rk3399: Add init voltage for vdd_log
+Date: Thu, 14 Nov 2019 09:53:46 +0800
+Message-ID: <a6d41fc5-4ed5-6ec2-5697-ca2b0abe288c@rock-chips.com>
+References: <20191111005158.25070-1-kever.yang@rock-chips.com>
+ <20191111005158.25070-3-kever.yang@rock-chips.com>
+ <CAD=FV=UjbPALRU2r0s27F4RxjsbDyQ+horUBezVQejk1pT=vqA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20191108000640.8775-1-heiko.stuebner@theobroma-systems.com>
-Sender: linux-kernel-owner@vger.kernel.org
-Cc: kishon@ti.com, robh+dt@kernel.org, mark.rutland@arm.com, bivvy.bi@rock-chips.com, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, christoph.muellner@theobroma-systems.com, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CAD=FV=UjbPALRU2r0s27F4RxjsbDyQ+horUBezVQejk1pT=vqA@mail.gmail.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Alexis Ballier <aballier@gentoo.org>, Andy Yan <andyshrk@gmail.com>, Soeren Moch <smoch@web.de>, Hugh Cole-Baker <sigmaris@gmail.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Katsuhiro Suzuki <katsuhiro@katsuster.net>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Pragnesh Patel <Pragnesh_Patel@mentor.com>, Peter Robinson <pbrobinson@gmail.com>, Nick Xie <nick@khadas.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Elaine Zhang <zhangqing@rock-chips.com>, Vicente Bergas <vicencb@gmail.com>, Rob Herring <robh+dt@kernel.org>, Akash Gajjar <akash@openedev.com>, Ezequiel Garcia <ezequiel@collabora.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, =?UTF-8?Q?Andrius_=c5=a0tikonas?= <andrius@stikonas.eu>, LKML <linux-kernel@vger.kernel.org>, Oskari
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri,  8 Nov 2019 01:06:39 +0100, Heiko Stuebner wrote:
-> Further review of the dsi components for the px30 revealed that the
-> phy shouldn't expose the pll as clock but instead handle settings
-> via phy parameters.
-> 
-> As the phy binding is new and not used anywhere yet, just drop them
-> so they don't get used.
-> 
-> Fixes: 3817c7961179 ("dt-bindings: phy: add yaml binding for rockchip,px30-dsi-dphy")
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-> ---
-> Hi Kishon,
-> 
-> this should ideally get into 5.5 as a fix for the previous change
-> so that the binding doesn't accidentially get used.
-> 
-> Thanks
-> Heiko
-> 
->  .../devicetree/bindings/phy/rockchip,px30-dsi-dphy.yaml      | 5 -----
->  1 file changed, 5 deletions(-)
-> 
-
-Acked-by: Rob Herring <robh@kernel.org>
+SGkgRG91ZywKCk9uIDIwMTkvMTEvMTQg5LiK5Y2IMTowMSwgRG91ZyBBbmRlcnNvbiB3cm90ZToK
+PiBIaSwKPgo+IE9uIFN1biwgTm92IDEwLCAyMDE5IGF0IDQ6NTIgUE0gS2V2ZXIgWWFuZyA8a2V2
+ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+IFNpbmNlIHRoZXJlIGlzIG5vIGRldmZy
+ZXEgdXNlZCBmb3IgdmRkX2xvZywgc28gdGhlIHZkZF9sb2cocHdtIHJlZ3VsYXRvcikKPj4gd2ls
+bCBiZSAnZW5hYmxlJyB3aXRoIHRoZSBkdHMgbm9kZSBhdCBhIGRlZmF1bHQgUFdNIHN0YXRlIHdp
+dGggaGlnaCBvciBsb3cKPj4gb3V0cHV0LiBCb3RoIHRvbyBoaWdoIG9yIHRvbyBsb3cgZm9yIHZk
+ZF9sb2cgaXMgbm90IGdvb2QgZm9yIHRoZSBib2FyZCwKPj4gYWRkIGluaXQgdm9sdGFnZSBmb3Ig
+ZHJpdmVyIHRvIG1ha2UgdGhlIHJlZ3VsYXRvciBnZXQgaW50byBhIGtub3cgb3V0cHV0Lgo+Pgo+
+PiBOb3RlIHRoYXQgdGhpcyB3aWxsIGJlIHVzZWQgYnkgVS1Cb290IGZvciBpbml0IHZvbHRhZ2Ug
+b3V0cHV0LCBhbmQgdGhpcwo+PiBpcyB2ZXJ5IGltcG9ydGFudCBmb3IgaXQgbWF5IGdldCBzeXN0
+ZW0gaGFuZyBzb21ld2hlcmUgZHVyaW5nIHN5c3RlbQo+PiBib290IHVwIHdpdGggcmVndWxhdG9y
+IGVuYWJsZSBhbmQgd2l0aG91dCB0aGlzIGluaXQgdmFsdWUuCj4gSSdtIGEgdGFkIGJpdCBjb25m
+dXNlZCBoZXJlLiAgV2hlbiBVLUJvb3QgYm9vdHMgdGhlIGtlcm5lbCwgaG93IGlzIHRoZQo+IFBX
+TSBjb25maWd1cmVkPwo+Cj4gSSByZW1lbWJlciBmb2xrcyBnb2luZyB0aHJvdWdoIGEgbG90IG9m
+IHdvcmsgdG8gbWFrZSBzdXJlIHRoYXQgd2UKPiBjb3VsZCBhY3R1YWxseSBfcmVhZF8gdGhlIFBX
+TSBzdGF0ZSB0aGF0IHRoZSBib290bG9hZGVyIGdhdmUgdXMgYW5kCj4gcmVwb3J0IGl0IGFzIHRo
+ZSBpbml0aWFsIHZvbHRhZ2UuICBJZiB0aGUga2VybmVsIGVuZHMgdXAgbmVlZGluZyB0bwo+IGNv
+bmZpZ3VyZSB0aGUgUFdNIHJlZ3VsYXRvcidzIHBlcmlvZCBmb3Igc29tZSByZWFzb24sIEkgcmVt
+ZW1iZXIgaXQKPiB3b3VsZCBhY3R1YWxseSBwaWNrIHNvbWV0aGluZyBjbG9zZS4gIElzIHRoYXQg
+bm90IHdvcmtpbmcgZm9yIHlvdT8KPgo+IEZvciBpbnN0YW5jZSwgb24gcmszMjg4LXZleXJvbiB3
+aGVuIEkgYm9vdCB1cCBtYWlubGluZSAobm8gZGV2ZnJlcSBvbgo+IHJrMzI4OC12ZXlyb24gb24g
+bWFpbmxpbmUpIHRoZSB2ZGRfbG9naWMgcmVwb3J0cyAxLjIgdm9sdHMgYmVjYXVzZSBpdAo+IHJl
+YWQgd2hhdCB0aGUgYm9vdGxvYWRlciBsZWZ0IGl0IGFzLgo+Cj4gLi4uYXJlIHlvdSBzYXlpbmcg
+dGhhdCBVLUJvb3QgZG9lc24ndCBjb25maWd1cmUgdGhlIFBXTSBhbmQgeW91J3JlCj4gdHJ5aW5n
+IHRvIGZpeCBpdCB1cCBpbiB0aGUga2VybmVsPwoKVS1Cb290IHdpbGwgY29uZmlndXJlIHRoZSBQ
+V00gd2l0aCBkdHMgc2V0dGluZyhhbmQgbm93IFUtQm9vdCB3b3VsZCBsaWtlIAp0byBzeW5jIHRo
+ZSBkdHMKCmZyb20ga2VybmVsIGRpcmVjdGx5KToKCi0gbm8gZHRzIG5vZGUgZm9yIHB3bSByZWd1
+bGF0b3IsIGl0IHdpbGwgYmUgZGVmYXVsdCBhcyBpbnB1dCBJTyB3aXRob3V0IAphbnkgY29uZmln
+dXJlOwoKLSB3aXRoIHB3bSByZWd1bGF0b3IgZHRzIGVuYWJsZSwgbm8gJ2luaXQtbWljcm92b2x0
+JywgZW5hYmxlIFBXTSB3aXRoIApkZWZhdWx0IDAlIG91dHB1dDsKCi0gd2l0aCBwd20gcmVndWxh
+dG9yIGR0cyB3aXRoICdpbml0LW1pY3Jvdm9sdCcsIGVuYWJsZSBQV00gd2l0aCAKY29ycmVzcG9u
+ZGluZyBkdXR5IG91dHB1dDsKCldlIHNob3VsZCBsZWF2ZSBpdCBub3QgY29uZmlndXJlKGFyb3Vu
+ZCAwLjlWIGZvciBtb3N0IG9mIGJvYXJkKSBvciAKY29uZmlndXJlIHRvIGNvcnJlY3QKCm91dHB1
+dChzb21lIGJvYXJkcyBuZWVkIDAuOTVWIHdoaWxlIGRlZmF1bHQgaXMgMC45ViBmb3Igc3RhYmls
+aXR5IGlzc3VlKS4KCkZvciB0aGUgcmszMzk5IGJvYXJkcyBvbiB1cHN0cmVhbSwgc29tZSBvZiB0
+aGVtIGRvIG5vdCBoYXZlIGEgdmRkX2xvZyBpbiAKZHRzLAoKYW5kIG90aGVycyBoYXZlIGR0cyBu
+b2RlIGJ1dCB3aXRob3V0ICdpbml0LW1pY3Jvdm9sdCcgZm9yIGluaXQgc2V0dGluZywgCnRoYXQn
+cyB3aGF0IEkgd2FudAoKdG8gZml4IHRvIG1ha2Ugc3VyZSBhbGwgdGhlIGJvYXJkcyBjYW4gd29y
+ayBjb3JyZWN0bHkuCgoKVGhhbmtzLAoKLSBLZXZlcgoKPgo+IC1Eb3VnCj4KPgo+IC1Eb3VnCj4K
+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4
+LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCj4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtYXJtLWtlcm5lbAo=
