@@ -1,36 +1,130 @@
-From: Wambui Karuga <wambui.karugax@gmail.com>
-Subject: [PATCH 2/2] drm/rockchip: use DRM_DEV_WARN macro in debug output
-Date: Thu, 14 Nov 2019 16:25:20 +0300
-Message-ID: <20191114132520.7323-2-wambui.karugax@gmail.com>
-References: <20191114132520.7323-1-wambui.karugax@gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Add SDR104 mode to SD-card I/F on rk3399-roc-pc
+Date: Thu, 14 Nov 2019 14:25:56 +0100
+Message-ID: <1918981.kTmXGv9Lqf@phil>
+References: <25466090-3b24-2695-10fb-88c59be3f149@fivetechno.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191114132520.7323-1-wambui.karugax@gmail.com>
+In-Reply-To: <25466090-3b24-2695-10fb-88c59be3f149@fivetechno.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, sean@poorly.run, airlied@linux.ie, daniel@ffwll.ch, hjc@rock-chips.com
-Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Markus Reichl <m.reichl@fivetechno.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Jagan Teki <jagan@amarulasolutions.com>, 'Ulf Hansson' <ulf.hansson@linaro.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Replace the use of dev_warn in debug output with the new DRM specific
-DRM_DEV_WARN debug output macro to maintain consistency across the driver.
+Hi Markus,
 
-Signed-off-by: Wambui Karuga <wambui.karugax@gmail.com>
----
- drivers/gpu/drm/rockchip/inno_hdmi.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Am Dienstag, 12. November 2019, 09:45:36 CET schrieb Markus Reichl:
+> Add SDR104 capability and regulators to SD card node.
 
-diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
-index e5864e823020..d7ee8d1835c4 100644
---- a/drivers/gpu/drm/rockchip/inno_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-@@ -796,7 +796,8 @@ static struct i2c_adapter *inno_hdmi_i2c_adapter(struct inno_hdmi *hdmi)
- 
- 	ret = i2c_add_adapter(adap);
- 	if (ret) {
--		dev_warn(hdmi->dev, "cannot add %s I2C adapter\n", adap->name);
-+		DRM_DEV_WARN(hdmi->dev,
-+			     "cannot add %s I2C adapter\n", adap->name);
- 		devm_kfree(hdmi->dev, i2c);
- 		return ERR_PTR(ret);
- 	}
--- 
-2.17.1
+> While at it, fix a typo in lcd pinctrl and remove two
+> undocumented bindings from pmic.
+
+A commit message like this always is a good indicator that this wants to
+be multiple patches ;-) [Keywords: "While at it", "And", ...]
+
+
+> Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
+> ---
+> v2: Remove always-on from vcc3v0_sd
+> ---
+>  .../boot/dts/rockchip/rk3399-roc-pc.dtsi      | 30 +++++++++++++++----
+>  1 file changed, 24 insertions(+), 6 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+> index d1eb55c855b3..a31099f7620b 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+> @@ -135,6 +135,19 @@
+>  		vin-supply = <&vcc_1v8>;
+>  	};
+>  
+> +	vcc3v0_sd: vcc3v0-sd {
+> +		compatible = "regulator-fixed";
+> +		enable-active-high;
+> +		gpio = <&gpio4 RK_PD6 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&vcc3v0_sd_en>;
+> +		regulator-name = "vcc3v0_sd";
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <3000000>;
+> +		regulator-max-microvolt = <3000000>;
+> +		vin-supply = <&vcc3v3_sys>;
+> +	};
+> +
+>  	vcc3v3_sys: vcc3v3-sys {
+>  		compatible = "regulator-fixed";
+>  		regulator-name = "vcc3v3_sys";
+> @@ -293,8 +306,6 @@
+>  		vcc10-supply = <&vcc3v3_sys>;
+>  		vcc11-supply = <&vcc3v3_sys>;
+>  		vcc12-supply = <&vcc3v3_sys>;
+> -		vcc13-supply = <&vcc3v3_sys>;
+> -		vcc14-supply = <&vcc3v3_sys>;
+
+Separate patch with nice description perhaps? (remove undocumented inputs)
+
+
+>  		vddio-supply = <&vcc_3v0>;
+>  
+>  		regulators {
+> @@ -576,7 +587,7 @@
+>  
+>  	lcd-panel {
+>  		lcd_panel_reset: lcd-panel-reset {
+> -			rockchip,pins = <4 RK_PD6 RK_FUNC_GPIO &pcfg_pull_up>;
+> +			rockchip,pins = <4 RK_PD5 RK_FUNC_GPIO &pcfg_pull_up>;
+
+Separate patch please, "use correct pin for lcd-reset pinctrl" or so.
+
+>  		};
+>  	};
+>  
+> @@ -602,6 +613,10 @@
+>  		vsel2_gpio: vsel2-gpio {
+>  			rockchip,pins = <1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_down>;
+>  		};
+> +
+> +		pmic_int_l: pmic-int-l {
+> +			rockchip,pins = <1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
+> +		};
+>  	};
+>  
+>  	sdio-pwrseq {
+> @@ -610,9 +625,9 @@
+>  		};
+>  	};
+>  
+> -	pmic {
+> -		pmic_int_l: pmic-int-l {
+> -			rockchip,pins = <1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
+
+separate patch please talking about regrouping the two
+separate pmic pin-groups.
+
+
+> +	sdmmc {
+> +		vcc3v0_sd_en: vcc3v0-sd-en {
+> +			rockchip,pins = <4 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
+>  		};
+>  	};
+>  
+> @@ -667,6 +682,9 @@
+>  	cd-gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
+>  	disable-wp;
+>  	max-frequency = <150000000>;
+> +	sd-uhs-sdr104;
+> +	vmmc-supply = <&vcc3v0_sd>;
+> +	vqmmc-supply = <&vcc_sdio>;
+
+Alphabetical sorting of new properties please
+(status staying at the bottom though)
+
+>  	pinctrl-names = "default";
+>  	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_bus4>;
+>  	status = "okay";
+> 
+
+Thanks
+Heiko
