@@ -1,701 +1,179 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH v3 2/3] media: hantro: Support color conversion via
- post-processing
-Date: Thu, 14 Nov 2019 10:48:50 +0100
-Message-ID: <1e1c7a0e3d25187723ccac1a8360b5aae9aed8cd.camel@pengutronix.de>
-References: <20191113175603.24742-1-ezequiel@collabora.com>
-         <20191113175603.24742-3-ezequiel@collabora.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCHv2 3/4] drm/komeda: use afbc helpers
+Date: Thu, 14 Nov 2019 11:12:13 +0100
+Message-ID: <CAKMK7uH06iu9OTz-1ZTbv6oVBHtBojSQE6sUu1GWfWk1om8LQQ@mail.gmail.com>
+References: <2485717.1SzL54aMiy@e123338-lin>
+ <20191104221228.3588-1-andrzej.p@collabora.com>
+ <20191104221228.3588-4-andrzej.p@collabora.com>
+ <20191108160954.GA17321@arm.com>
+ <20191113020146.GB2746@jamwan02-TSP300>
+ <20191113113954.GN23790@phenom.ffwll.local>
+ <20191114015220.GA16456@jamwan02-TSP300>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191113175603.24742-3-ezequiel@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org
-Cc: kernel@collabora.com, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Boris Brezillon <boris.brezillon@collabora.com>, Chris Healy <cphealy@gmail.com>, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20191114015220.GA16456@jamwan02-TSP300>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: "james qian wang (Arm Technology China)" <james.qian.wang@arm.com>
+Cc: nd <nd@arm.com>, Mihail Atanassov <Mihail.Atanassov@arm.com>, "kernel@collabora.com" <kernel@collabora.com>, David Airlie <airlied@linux.ie>, Liviu Dudau <Liviu.Dudau@arm.com>, Andrzej Pietrasiewicz <andrzej.p@collabora.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Ayan Halder <Ayan.Halder@arm.com>, Sean Paul <sean@poorly.run>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Ezequiel,
-
-On Wed, 2019-11-13 at 14:56 -0300, Ezequiel Garcia wrote:
-> The Hantro G1 decoder is able to enable a post-processor
-> on the decoding pipeline, which can be used to perform
-> scaling and color conversion.
-> 
-> The post-processor is integrated to the decoder, and it's
-> possible to use it in a way that is completely transparent
-> to the user.
-> 
-> This commit enables color conversion via post-processing,
-> which means the driver now exposes YUV packed, in addition to NV12.
-> 
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> ---
->  drivers/staging/media/hantro/Makefile         |   1 +
->  drivers/staging/media/hantro/hantro.h         |  64 +++++++-
->  drivers/staging/media/hantro/hantro_drv.c     |   8 +-
->  .../staging/media/hantro/hantro_g1_h264_dec.c |   2 +-
->  .../media/hantro/hantro_g1_mpeg2_dec.c        |   2 +-
->  drivers/staging/media/hantro/hantro_g1_regs.h |  53 +++++++
->  .../staging/media/hantro/hantro_g1_vp8_dec.c  |   2 +-
->  drivers/staging/media/hantro/hantro_h264.c    |   6 +-
->  drivers/staging/media/hantro/hantro_hw.h      |  13 ++
->  .../staging/media/hantro/hantro_postproc.c    | 141 ++++++++++++++++++
->  drivers/staging/media/hantro/hantro_v4l2.c    |  52 ++++++-
->  drivers/staging/media/hantro/rk3288_vpu_hw.c  |  10 ++
->  12 files changed, 343 insertions(+), 11 deletions(-)
->  create mode 100644 drivers/staging/media/hantro/hantro_postproc.c
-> 
-> diff --git a/drivers/staging/media/hantro/Makefile b/drivers/staging/media/hantro/Makefile
-> index 5d6b0383d280..496b30c3c396 100644
-> --- a/drivers/staging/media/hantro/Makefile
-> +++ b/drivers/staging/media/hantro/Makefile
-> @@ -3,6 +3,7 @@ obj-$(CONFIG_VIDEO_HANTRO) += hantro-vpu.o
->  hantro-vpu-y += \
->  		hantro_drv.o \
->  		hantro_v4l2.o \
-> +		hantro_postproc.o \
->  		hantro_h1_jpeg_enc.o \
->  		hantro_g1_h264_dec.o \
->  		hantro_g1_mpeg2_dec.o \
-> diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
-> index deb90ae37859..6016a1a42503 100644
-> --- a/drivers/staging/media/hantro/hantro.h
-> +++ b/drivers/staging/media/hantro/hantro.h
-> @@ -60,6 +60,8 @@ struct hantro_irq {
->   * @num_enc_fmts:		Number of encoder formats.
->   * @dec_fmts:			Decoder formats.
->   * @num_dec_fmts:		Number of decoder formats.
-> + * @postproc_fmts:		Post-processor formats.
-> + * @num_postproc_fmts:		Number of post-processor formats.
->   * @codec:			Supported codecs
->   * @codec_ops:			Codec ops.
->   * @init:			Initialize hardware.
-> @@ -70,6 +72,7 @@ struct hantro_irq {
->   * @num_clocks:			number of clocks in the array
->   * @reg_names:			array of register range names
->   * @num_regs:			number of register range names in the array
-> + * @postproc_regs:		&struct hantro_postproc_regs pointer
->   */
->  struct hantro_variant {
->  	unsigned int enc_offset;
-> @@ -78,6 +81,8 @@ struct hantro_variant {
->  	unsigned int num_enc_fmts;
->  	const struct hantro_fmt *dec_fmts;
->  	unsigned int num_dec_fmts;
-> +	const struct hantro_fmt *postproc_fmts;
-> +	unsigned int num_postproc_fmts;
->  	unsigned int codec;
->  	const struct hantro_codec_ops *codec_ops;
->  	int (*init)(struct hantro_dev *vpu);
-> @@ -88,6 +93,7 @@ struct hantro_variant {
->  	int num_clocks;
->  	const char * const *reg_names;
->  	int num_regs;
-> +	const struct hantro_postproc_regs *postproc_regs;
->  };
->  
->  /**
-> @@ -213,6 +219,7 @@ struct hantro_dev {
->   *			context, and it's called right before
->   *			calling v4l2_m2m_job_finish.
->   * @codec_ops:		Set of operations related to codec mode.
-> + * @postproc:		Post-processing context.
->   * @jpeg_enc:		JPEG-encoding context.
->   * @mpeg2_dec:		MPEG-2-decoding context.
->   * @vp8_dec:		VP8-decoding context.
-> @@ -237,6 +244,7 @@ struct hantro_ctx {
->  			  unsigned int bytesused);
->  
->  	const struct hantro_codec_ops *codec_ops;
-> +	struct hantro_postproc_ctx postproc;
->  
->  	/* Specific for particular codec modes. */
->  	union {
-> @@ -274,6 +282,23 @@ struct hantro_reg {
->  	u32 mask;
->  };
->  
-> +struct hantro_postproc_regs {
-> +	struct hantro_reg pipeline_en;
-> +	struct hantro_reg max_burst;
-> +	struct hantro_reg clk_gate;
-> +	struct hantro_reg out_swap32;
-> +	struct hantro_reg out_endian;
-> +	struct hantro_reg out_luma_base;
-> +	struct hantro_reg input_width;
-> +	struct hantro_reg input_height;
-> +	struct hantro_reg output_width;
-> +	struct hantro_reg output_height;
-> +	struct hantro_reg input_fmt;
-> +	struct hantro_reg output_fmt;
-> +	struct hantro_reg orig_width;
-> +	struct hantro_reg display_width;
-> +};
-> +
->  /* Logging helpers */
->  
->  /**
-> @@ -352,9 +377,23 @@ static inline u32 vdpu_read(struct hantro_dev *vpu, u32 reg)
->  	return val;
->  }
->  
-> -static inline void hantro_reg_write(struct hantro_dev *vpu,
-> -				    const struct hantro_reg *reg,
-> -				    u32 val)
-> +static inline void
-> +hantro_reg_write(struct hantro_dev *vpu,
-> +		 const struct hantro_reg *reg,
-> +		 u32 val)
-> +{
-> +	u32 v;
-> +
-> +	v = vdpu_read(vpu, reg->base);
-> +	v &= ~(reg->mask << reg->shift);
-> +	v |= ((val & reg->mask) << reg->shift);
-> +	vdpu_write(vpu, v, reg->base);
-> +}
-
-This adds barriers to all the currently relaxed writes in the VP8
-decoders. Maybe split this into a separate patch and add an explanation.
-
-> +
-> +static inline void
-> +hantro_reg_write_relaxed(struct hantro_dev *vpu,
-> +			 const struct hantro_reg *reg,
-> +			 u32 val)
->  {
->  	u32 v;
->  
-> @@ -381,4 +420,23 @@ hantro_get_dst_buf(struct hantro_ctx *ctx)
->  	return v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
->  }
->  
-> +static inline bool
-> +hantro_needs_postproc(struct hantro_ctx *ctx)
-> +{
-> +	return ctx->vpu_dst_fmt->fourcc != V4L2_PIX_FMT_NV12;
-> +}
-> +
-> +static inline dma_addr_t
-> +hantro_get_dec_buf_addr(struct hantro_ctx *ctx, struct vb2_buffer *vb)
-> +{
-> +	if (hantro_needs_postproc(ctx))
-> +		return ctx->postproc.dec_q[vb->index].dma;
-> +	return vb2_dma_contig_plane_dma_addr(vb, 0);
-> +}
-> +
-> +void hantro_postproc_disable(struct hantro_ctx *ctx);
-> +void hantro_postproc_setup(struct hantro_ctx *ctx);
-> +void hantro_postproc_free(struct hantro_ctx *ctx);
-> +int hantro_postproc_alloc(struct hantro_ctx *ctx);
-> +
->  #endif /* HANTRO_H_ */
-> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-> index 26108c96b674..fb08296db168 100644
-> --- a/drivers/staging/media/hantro/hantro_drv.c
-> +++ b/drivers/staging/media/hantro/hantro_drv.c
-> @@ -53,7 +53,7 @@ dma_addr_t hantro_get_ref(struct hantro_ctx *ctx, u64 ts)
->  	if (index < 0)
->  		return 0;
->  	buf = vb2_get_buffer(q, index);
-> -	return vb2_dma_contig_plane_dma_addr(buf, 0);
-> +	return hantro_get_dec_buf_addr(ctx, buf);
->  }
->  
->  static int
-> @@ -159,12 +159,18 @@ void hantro_prepare_run(struct hantro_ctx *ctx)
->  	src_buf = hantro_get_src_buf(ctx);
->  	v4l2_ctrl_request_setup(src_buf->vb2_buf.req_obj.req,
->  				&ctx->ctrl_handler);
-> +
-> +	if (!hantro_needs_postproc(ctx))
-> +		hantro_postproc_disable(ctx);
-
-Why isn't PP enabled in prepare_run? Does this mean the first frame is
-not post-processed?
-
->  }
->  
->  void hantro_finish_run(struct hantro_ctx *ctx)
->  {
->  	struct vb2_v4l2_buffer *src_buf;
->  
-> +	if (hantro_needs_postproc(ctx))
-> +		hantro_postproc_setup(ctx);
-> +
->  	src_buf = hantro_get_src_buf(ctx);
->  	v4l2_ctrl_request_complete(src_buf->vb2_buf.req_obj.req,
->  				   &ctx->ctrl_handler);
-> diff --git a/drivers/staging/media/hantro/hantro_g1_h264_dec.c b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
-> index 70a6b5b26477..9b292722c9de 100644
-> --- a/drivers/staging/media/hantro/hantro_g1_h264_dec.c
-> +++ b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
-> @@ -243,7 +243,7 @@ static void set_buffers(struct hantro_ctx *ctx)
->  	vdpu_write_relaxed(vpu, src_dma, G1_REG_ADDR_STR);
->  
->  	/* Destination (decoded frame) buffer. */
-> -	dst_dma = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
-> +	dst_dma = hantro_get_dec_buf_addr(ctx, &dst_buf->vb2_buf);
->  	vdpu_write_relaxed(vpu, dst_dma, G1_REG_ADDR_DST);
->  
->  	/* Higher profiles require DMV buffer appended to reference frames. */
-> diff --git a/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c b/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c
-> index f3bf67d8a289..0abe0be2c1ad 100644
-> --- a/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c
-> +++ b/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c
-> @@ -121,7 +121,7 @@ hantro_g1_mpeg2_dec_set_buffers(struct hantro_dev *vpu, struct hantro_ctx *ctx,
->  	vdpu_write_relaxed(vpu, addr, G1_REG_RLC_VLC_BASE);
->  
->  	/* Destination frame buffer */
-> -	addr = vb2_dma_contig_plane_dma_addr(dst_buf, 0);
-> +	addr = hantro_get_dec_buf_addr(ctx, dst_buf);
->  	current_addr = addr;
->  
->  	if (picture->picture_structure == PICT_BOTTOM_FIELD)
-> diff --git a/drivers/staging/media/hantro/hantro_g1_regs.h b/drivers/staging/media/hantro/hantro_g1_regs.h
-> index 5c0ea7994336..c1756e3d5391 100644
-> --- a/drivers/staging/media/hantro/hantro_g1_regs.h
-> +++ b/drivers/staging/media/hantro/hantro_g1_regs.h
-> @@ -9,6 +9,8 @@
->  #ifndef HANTRO_G1_REGS_H_
->  #define HANTRO_G1_REGS_H_
->  
-> +#define G1_SWREG(nr)                 ((nr) * 4)
-> +
->  /* Decoder registers. */
->  #define G1_REG_INTERRUPT				0x004
->  #define     G1_REG_INTERRUPT_DEC_PIC_INF		BIT(24)
-> @@ -298,4 +300,55 @@
->  #define     G1_REG_REF_BUF_CTRL2_APF_THRESHOLD(x)	(((x) & 0x3fff) << 0)
->  #define G1_REG_SOFT_RESET				0x194
->  
-> +/* Post-processor registers. */
-> +#define G1_REG_PP_INTERRUPT		G1_SWREG(60)
-> +#define    G1_REG_PP_READY_IRQ		BIT(12)
-> +#define    G1_REG_PP_IRQ		BIT(8)
-> +#define    G1_REG_PP_IRQ_DIS		BIT(4)
-> +#define    G1_REG_PP_PIPELINE_EN	BIT(1)
-> +#define    G1_REG_PP_EXTERNAL_TRIGGER	BIT(0)
-> +#define G1_REG_PP_DEV_CONFIG		G1_SWREG(61)
-> +#define     G1_REG_PP_AXI_RD_ID(v)	(((v) << 24) & GENMASK(31, 24))
-> +#define     G1_REG_PP_AXI_WR_ID(v)	(((v) << 16) & GENMASK(23, 16))
-> +#define     G1_REG_PP_INSWAP32_E(v)	((v) ? BIT(10) : 0)
-> +#define     G1_REG_PP_DATA_DISC_E(v)	((v) ? BIT(9) : 0)
-> +#define     G1_REG_PP_CLK_GATE_E(v)	((v) ? BIT(8) : 0)
-> +#define     G1_REG_PP_IN_ENDIAN(v)	((v) ? BIT(7) : 0)
-> +#define     G1_REG_PP_OUT_ENDIAN(v)	((v) ? BIT(6) : 0)
-> +#define     G1_REG_PP_OUTSWAP32_E(v)	((v) ? BIT(5) : 0)
-> +#define     G1_REG_PP_MAX_BURST(v)	(((v) << 0) & GENMASK(4, 0))
-> +#define G1_REG_PP_IN_LUMA_BASE		G1_SWREG(63)
-> +#define G1_REG_PP_IN_CB_BASE		G1_SWREG(64)
-> +#define G1_REG_PP_IN_CR_BASE		G1_SWREG(65)
-> +#define G1_REG_PP_OUT_LUMA_BASE		G1_SWREG(66)
-> +#define G1_REG_PP_OUT_CHROMA_BASE	G1_SWREG(67)
-> +#define G1_REG_PP_CONTRAST_ADJUST	G1_SWREG(68)
-> +#define G1_REG_PP_COLOR_CONVERSION	G1_SWREG(69)
-> +#define G1_REG_PP_COLOR_CONVERSION0	G1_SWREG(70)
-> +#define G1_REG_PP_COLOR_CONVERSION1	G1_SWREG(71)
-> +#define G1_REG_PP_INPUT_SIZE		G1_SWREG(72)
-> +#define    G1_REG_PP_INPUT_SIZE_HEIGHT(v) (((v) << 9) & GENMASK(16, 9))
-> +#define    G1_REG_PP_INPUT_SIZE_WIDTH(v)  (((v) << 0) & GENMASK(8, 0))
-> +#define G1_REG_PP_SCALING0		G1_SWREG(79)
-> +#define     G1_REG_PP_PADD_R(v)	(((v) << 23) & GENMASK(27, 23))
-> +#define     G1_REG_PP_PADD_G(v)	(((v) << 18) & GENMASK(22, 18))
-> +#define     G1_REG_PP_RANGEMAP_Y(v) ((v) ? BIT(31) : 0)
-> +#define     G1_REG_PP_RANGEMAP_C(v) ((v) ? BIT(30) : 0)
-> +#define     G1_REG_PP_YCBCR_RANGE(v) ((v) ? BIT(29) : 0)
-> +#define     G1_REG_PP_RGB_16(v) ((v) ? BIT(28) : 0)
-> +#define G1_REG_PP_SCALING1		G1_SWREG(80)
-> +#define     G1_REG_PP_PADD_B(v)	(((v) << 18) & GENMASK(22, 18))
-> +#define G1_REG_PP_MASK_R		G1_SWREG(82)
-> +#define G1_REG_PP_MASK_G		G1_SWREG(83)
-> +#define G1_REG_PP_MASK_B		G1_SWREG(84)
-> +#define G1_REG_PP_CONTROL		G1_SWREG(85)
-> +#define     G1_REG_PP_CONTROL_IN_FMT(v)	(((v) << 29) & GENMASK(31, 29))
-> +#define     G1_REG_PP_CONTROL_OUT_FMT(v) (((v) << 26) & GENMASK(28, 26))
-> +#define     G1_REG_PP_CONTROL_OUT_HEIGHT(v) (((v) << 15) & GENMASK(25, 15))
-> +#define     G1_REG_PP_CONTROL_OUT_WIDTH(v) (((v) << 4) & GENMASK(14, 4))
-> +#define G1_REG_PP_MASK1_ORIG_WIDTH	G1_SWREG(88)
-> +#define     G1_REG_PP_ORIG_WIDTH(v)	(((v) << 23) & GENMASK(31, 23))
-> +#define G1_REG_PP_DISPLAY_WIDTH		G1_SWREG(92)
-> +#define G1_REG_PP_FUSE			G1_SWREG(99)
-> +
->  #endif /* HANTRO_G1_REGS_H_ */
-> diff --git a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-> index cad18094fee0..e708994d1aba 100644
-> --- a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-> +++ b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-> @@ -422,7 +422,7 @@ static void cfg_buffers(struct hantro_ctx *ctx,
->  	}
->  	vdpu_write_relaxed(vpu, reg, G1_REG_FWD_PIC(0));
->  
-> -	dst_dma = vb2_dma_contig_plane_dma_addr(&vb2_dst->vb2_buf, 0);
-> +	dst_dma = hantro_get_dec_buf_addr(ctx, &vb2_dst->vb2_buf);
->  	vdpu_write_relaxed(vpu, dst_dma, G1_REG_ADDR_DST);
->  }
->  
-> diff --git a/drivers/staging/media/hantro/hantro_h264.c b/drivers/staging/media/hantro/hantro_h264.c
-> index 694a330f508e..5c84ebcdd0ea 100644
-> --- a/drivers/staging/media/hantro/hantro_h264.c
-> +++ b/drivers/staging/media/hantro/hantro_h264.c
-> @@ -629,7 +629,11 @@ int hantro_h264_dec_init(struct hantro_ctx *ctx)
->  	tbl = priv->cpu;
->  	memcpy(tbl->cabac_table, h264_cabac_table, sizeof(tbl->cabac_table));
->  
-> -	v4l2_fill_pixfmt_mp(&pix_mp, ctx->dst_fmt.pixelformat,
-> +	/*
-> +	 * For the decoder picture size, we want the decoder
-> +	 * native pixel format.
-> +	 */
-> +	v4l2_fill_pixfmt_mp(&pix_mp, V4L2_PIX_FMT_NV12,
->  			    ctx->dst_fmt.width, ctx->dst_fmt.height);
->  	h264_dec->pic_size = pix_mp.plane_fmt[0].sizeimage;
->  
-> diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-> index 69b88f4d3fb3..18e7d9e1f469 100644
-> --- a/drivers/staging/media/hantro/hantro_hw.h
-> +++ b/drivers/staging/media/hantro/hantro_hw.h
-> @@ -28,11 +28,13 @@ struct hantro_variant;
->   * @cpu:	CPU pointer to the buffer.
->   * @dma:	DMA address of the buffer.
->   * @size:	Size of the buffer.
-> + * @attrs:	Attributes of the DMA mapping.
->   */
->  struct hantro_aux_buf {
->  	void *cpu;
->  	dma_addr_t dma;
->  	size_t size;
-> +	unsigned long attrs;
->  };
->  
->  /**
-> @@ -109,6 +111,15 @@ struct hantro_vp8_dec_hw_ctx {
->  	struct hantro_aux_buf prob_tbl;
->  };
->  
-> +/**
-> + * struct hantro_postproc_ctx
-> + *
-> + * @dec_q:		References buffers, in decoder format.
-> + */
-> +struct hantro_postproc_ctx {
-> +	struct hantro_aux_buf dec_q[VB2_MAX_FRAME];
-> +};
-> +
->  /**
->   * struct hantro_codec_ops - codec mode specific operations
->   *
-> @@ -144,6 +155,8 @@ extern const struct hantro_variant rk3399_vpu_variant;
->  extern const struct hantro_variant rk3328_vpu_variant;
->  extern const struct hantro_variant rk3288_vpu_variant;
->  
-> +extern const struct hantro_postproc_regs hantro_g1_postproc_regs;
-> +
->  extern const u32 hantro_vp8_dec_mc_filter[8][6];
->  
->  void hantro_watchdog(struct work_struct *work);
-> diff --git a/drivers/staging/media/hantro/hantro_postproc.c b/drivers/staging/media/hantro/hantro_postproc.c
-> new file mode 100644
-> index 000000000000..865435386363
-> --- /dev/null
-> +++ b/drivers/staging/media/hantro/hantro_postproc.c
-> @@ -0,0 +1,141 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Hantro G1 post-processor support
-> + *
-> + * Copyright (C) 2019 Collabora, Ltd.
-> + */
-> +
-> +#include <linux/dma-mapping.h>
-> +#include <linux/types.h>
-> +
-> +#include "hantro.h"
-> +#include "hantro_hw.h"
-> +#include "hantro_g1_regs.h"
-> +
-> +#define HANTRO_PP_REG_WRITE(vpu, reg_name, val) \
-> +	do { \
-> +		if ((vpu)->variant->postproc_regs->(reg_name).base)	\
-> +			hantro_reg_write_relaxed((vpu), \
-> +					 &(vpu)->variant->postproc_regs->(reg_name), \
-> +					 (val)); \
-> +	} while (0)
-> +
-> +#define HANTRO_PP_REG_WRITE_S(vpu, reg_name, val) \
-> +	do { \
-> +		if ((vpu)->variant->postproc_regs->(reg_name).base)	\
-> +			hantro_reg_write((vpu), \
-> +					 &(vpu)->variant->postproc_regs->(reg_name), \
-> +					 (val)); \
-> +	} while (0)
-
-Why all these checks, are any of the register fields optional?
-
-> +
-> +#define VPU_PP_IN_YUYV			0x0
-> +#define VPU_PP_IN_NV12			0x1
-> +#define VPU_PP_IN_YUV420		0x2
-> +#define VPU_PP_IN_YUV240_TILED		0x5
-> +#define VPU_PP_OUT_RGB			0x0
-> +#define VPU_PP_OUT_YUYV			0x3
-> +
-> +const struct hantro_postproc_regs hantro_g1_postproc_regs = {
-> +	.pipeline_en = {G1_REG_PP_INTERRUPT, 1, 0x1},
-> +	.max_burst = {G1_REG_PP_DEV_CONFIG, 0, 0x1f},
-> +	.clk_gate = {G1_REG_PP_DEV_CONFIG, 1, 0x1},
-> +	.out_swap32 = {G1_REG_PP_DEV_CONFIG, 5, 0x1},
-> +	.out_endian = {G1_REG_PP_DEV_CONFIG, 6, 0x1},
-> +	.out_luma_base = {G1_REG_PP_OUT_LUMA_BASE, 0, 0xffffffff},
-> +	.input_width = {G1_REG_PP_INPUT_SIZE, 0, 0x1ff},
-> +	.input_height = {G1_REG_PP_INPUT_SIZE, 9, 0x1ff},
-> +	.output_width = {G1_REG_PP_CONTROL, 4, 0x7ff},
-> +	.output_height = {G1_REG_PP_CONTROL, 15, 0x7ff},
-> +	.input_fmt = {G1_REG_PP_CONTROL, 29, 0x7},
-> +	.output_fmt = {G1_REG_PP_CONTROL, 26, 0x7},
-> +	.orig_width = {G1_REG_PP_MASK1_ORIG_WIDTH, 23, 0x1ff},
-> +	.display_width = {G1_REG_PP_DISPLAY_WIDTH, 0, 0xfff},
-> +};
-> +
-> +void hantro_postproc_setup(struct hantro_ctx *ctx)
-> +{
-> +	struct hantro_dev *vpu = ctx->dev;
-> +	struct vb2_v4l2_buffer *dst_buf;
-> +	u32 src_pp_fmt, dst_pp_fmt;
-> +	dma_addr_t dst_dma;
-> +
-> +	/* Turn on pipeline mode. Must be done first. */
-> +	HANTRO_PP_REG_WRITE_S(vpu, pipeline_en, 0x1);
-> +
-> +	src_pp_fmt = VPU_PP_IN_NV12;
-> +
-> +	switch (ctx->vpu_dst_fmt->fourcc) {
-> +	case V4L2_PIX_FMT_YUYV:
-> +		dst_pp_fmt = VPU_PP_OUT_YUYV;
-> +		break;
-> +	default:
-> +		WARN(1, "output format %d not supported by the post-processor, this wasn't expected.",
-> +		     ctx->vpu_dst_fmt->fourcc);
-> +		dst_pp_fmt = 0;
-> +		break;
-> +	}
-> +
-> +	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-> +	dst_dma = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
-> +
-> +	HANTRO_PP_REG_WRITE(vpu, clk_gate, 0x1);
-> +	HANTRO_PP_REG_WRITE(vpu, out_endian, 0x1);
-> +	HANTRO_PP_REG_WRITE(vpu, out_swap32, 0x1);
-> +	HANTRO_PP_REG_WRITE(vpu, max_burst, 16);
-> +	HANTRO_PP_REG_WRITE(vpu, out_luma_base, dst_dma);
-> +	HANTRO_PP_REG_WRITE(vpu, input_width, MB_WIDTH(ctx->dst_fmt.width));
-> +	HANTRO_PP_REG_WRITE(vpu, input_height, MB_HEIGHT(ctx->dst_fmt.height));
-> +	HANTRO_PP_REG_WRITE(vpu, input_fmt, src_pp_fmt);
-> +	HANTRO_PP_REG_WRITE(vpu, output_fmt, dst_pp_fmt);
-> +	HANTRO_PP_REG_WRITE(vpu, output_width, ctx->dst_fmt.width);
-> +	HANTRO_PP_REG_WRITE(vpu, output_height, ctx->dst_fmt.height);
-> +	HANTRO_PP_REG_WRITE(vpu, orig_width, MB_WIDTH(ctx->dst_fmt.width));
-> +	HANTRO_PP_REG_WRITE(vpu, display_width, ctx->dst_fmt.width);
-> +}
-> +
-> +void hantro_postproc_free(struct hantro_ctx *ctx)
-> +{
-> +	struct hantro_dev *vpu = ctx->dev;
-> +	unsigned int i;
-> +
-> +	for (i = 0; i < VB2_MAX_FRAME; ++i) {
-> +		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
-> +
-> +		if (priv->cpu) {
-> +			dma_free_attrs(vpu->dev, priv->size, priv->cpu,
-> +				       priv->dma, priv->attrs);
-> +			priv->cpu = NULL;
-> +		}
-> +	}
-> +}
-> +
-> +int hantro_postproc_alloc(struct hantro_ctx *ctx)
-> +{
-> +	struct hantro_dev *vpu = ctx->dev;
-> +	unsigned int i, buf_size;
-> +
-> +	buf_size = ctx->dst_fmt.plane_fmt[0].sizeimage;
-> +
-> +	for (i = 0; i < VB2_MAX_FRAME; ++i) {
-
-If requests less than VB2_MAX_FRAME capture frames, some of those are
-unused. I think it would be better to match the amount of capture frames
-here.
-
-> +		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
-> +
-> +		/*
-> +		 * The buffers on this queue are meant as intermediate
-> +		 * buffers for the decoder, so no mapping is needed.
-> +		 */
-> +		priv->attrs = DMA_ATTR_NO_KERNEL_MAPPING;
-> +		priv->cpu = dma_alloc_attrs(vpu->dev, buf_size, &priv->dma,
-> +					    GFP_KERNEL, priv->attrs);
-> +		if (!priv->cpu)
-> +			return -ENOMEM;
-> +		priv->size = buf_size;
-> +	}
-> +	return 0;
-> +}
-> +
-> +void hantro_postproc_disable(struct hantro_ctx *ctx)
-> +{
-> +	struct hantro_dev *vpu = ctx->dev;
-> +
-> +	HANTRO_PP_REG_WRITE_S(vpu, pipeline_en, 0x0);
-> +}
-> diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-> index 238e53b28f8f..ff665d4f004f 100644
-> --- a/drivers/staging/media/hantro/hantro_v4l2.c
-> +++ b/drivers/staging/media/hantro/hantro_v4l2.c
-> @@ -46,6 +46,19 @@ hantro_get_formats(const struct hantro_ctx *ctx, unsigned int *num_fmts)
->  	return formats;
->  }
->  
-> +static const struct hantro_fmt *
-> +hantro_get_postproc_formats(const struct hantro_ctx *ctx,
-> +			    unsigned int *num_fmts)
-> +{
-> +	if (hantro_is_encoder_ctx(ctx)) {
-> +		*num_fmts = 0;
-> +		return NULL;
-> +	}
-> +
-> +	*num_fmts = ctx->dev->variant->num_postproc_fmts;
-> +	return ctx->dev->variant->postproc_fmts;
-> +}
-> +
->  static const struct hantro_fmt *
->  hantro_find_format(const struct hantro_ctx *ctx, u32 fourcc)
->  {
-> @@ -57,6 +70,10 @@ hantro_find_format(const struct hantro_ctx *ctx, u32 fourcc)
->  		if (formats[i].fourcc == fourcc)
->  			return &formats[i];
->  
-> +	formats = hantro_get_postproc_formats(ctx, &num_fmts);
-> +	for (i = 0; i < num_fmts; i++)
-> +		if (formats[i].fourcc == fourcc)
-> +			return &formats[i];
->  	return NULL;
->  }
->  
-> @@ -151,6 +168,20 @@ static int vidioc_enum_fmt(struct file *file, void *priv,
->  		}
->  		++j;
->  	}
-> +
-> +	/* Enumerate post-processed formats. */
-
-I think here some of the explanation from the commit message of patch 3
-could be added: why the driver is enumerating PP formats after non-PP
-formats.
-
-> +	if (!capture)
-> +		return -EINVAL;
-> +	formats = hantro_get_postproc_formats(ctx, &num_fmts);
-> +	for (i = 0; i < num_fmts; i++) {
-> +		if (j == f->index) {
-> +			fmt = &formats[i];
-> +			f->pixelformat = fmt->fourcc;
-> +			return 0;
-> +		}
-> +		++j;
-> +	}
-> +
->  	return -EINVAL;
->  }
->  
-> @@ -241,9 +272,10 @@ static int vidioc_try_fmt(struct file *file, void *priv, struct v4l2_format *f,
->  		/*
->  		 * The H264 decoder needs extra space on the output buffers
->  		 * to store motion vectors. This is needed for reference
-> -		 * frames.
-> +		 * frames and only if the format is non-post-processed (NV12).
->  		 */
-> -		if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_H264_SLICE)
-> +		if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_H264_SLICE &&
-> +		    fmt->fourcc == V4L2_PIX_FMT_NV12)
-
-If you change hantro_needs_postproc to use a struct hantro_fmt argument,
-you could use hantro_needs_postproc(fmt) here.
-
->  			pix_mp->plane_fmt[0].sizeimage +=
->  				128 * DIV_ROUND_UP(pix_mp->width, 16) *
->  				      DIV_ROUND_UP(pix_mp->height, 16);
-> @@ -611,10 +643,23 @@ static int hantro_start_streaming(struct vb2_queue *q, unsigned int count)
->  
->  		vpu_debug(4, "Codec mode = %d\n", codec_mode);
->  		ctx->codec_ops = &ctx->dev->variant->codec_ops[codec_mode];
-> -		if (ctx->codec_ops->init)
-> +		if (ctx->codec_ops->init) {
->  			ret = ctx->codec_ops->init(ctx);
-> +			if (ret)
-> +				return ret;
-> +		}
-> +
-> +		if (hantro_needs_postproc(ctx)) {
-> +			ret = hantro_postproc_alloc(ctx);
-
-Why is this done in start_streaming? Wouldn't capture side REQBUFS be a
-better place for this?
-
-> +			if (ret)
-> +				goto err_codec_exit;
-> +		}
->  	}
-> +	return ret;
->  
-> +err_codec_exit:
-> +	if (ctx->codec_ops && ctx->codec_ops->exit)
-> +		ctx->codec_ops->exit(ctx);
->  	return ret;
->  }
->  
-> @@ -641,6 +686,7 @@ static void hantro_stop_streaming(struct vb2_queue *q)
->  	struct hantro_ctx *ctx = vb2_get_drv_priv(q);
->  
->  	if (hantro_vq_is_coded(q)) {
-> +		hantro_postproc_free(ctx);
-
-Same as above, move this to capture side REQBUFS(0) ?
-
->  		if (ctx->codec_ops && ctx->codec_ops->exit)
->  			ctx->codec_ops->exit(ctx);
->  	}
-> diff --git a/drivers/staging/media/hantro/rk3288_vpu_hw.c b/drivers/staging/media/hantro/rk3288_vpu_hw.c
-> index f8db6fcaad73..2f914b37b9e5 100644
-> --- a/drivers/staging/media/hantro/rk3288_vpu_hw.c
-> +++ b/drivers/staging/media/hantro/rk3288_vpu_hw.c
-> @@ -56,6 +56,13 @@ static const struct hantro_fmt rk3288_vpu_enc_fmts[] = {
->  	},
->  };
->  
-> +static const struct hantro_fmt rk3288_vpu_postproc_fmts[] = {
-> +	{
-> +		.fourcc = V4L2_PIX_FMT_YUYV,
-> +		.codec_mode = HANTRO_MODE_NONE,
-> +	},
-> +};
-> +
->  static const struct hantro_fmt rk3288_vpu_dec_fmts[] = {
->  	{
->  		.fourcc = V4L2_PIX_FMT_NV12,
-> @@ -215,6 +222,9 @@ const struct hantro_variant rk3288_vpu_variant = {
->  	.dec_offset = 0x400,
->  	.dec_fmts = rk3288_vpu_dec_fmts,
->  	.num_dec_fmts = ARRAY_SIZE(rk3288_vpu_dec_fmts),
-> +	.postproc_fmts = rk3288_vpu_postproc_fmts,
-> +	.num_postproc_fmts = ARRAY_SIZE(rk3288_vpu_postproc_fmts),
-> +	.postproc_regs = &hantro_g1_postproc_regs,
->  	.codec = HANTRO_JPEG_ENCODER | HANTRO_MPEG2_DECODER |
->  		 HANTRO_VP8_DECODER | HANTRO_H264_DECODER,
->  	.codec_ops = rk3288_vpu_codec_ops,
-
-regards
-Philipp
+T24gVGh1LCBOb3YgMTQsIDIwMTkgYXQgMjo1MiBBTSBqYW1lcyBxaWFuIHdhbmcgKEFybSBUZWNo
+bm9sb2d5IENoaW5hKQo8amFtZXMucWlhbi53YW5nQGFybS5jb20+IHdyb3RlOgo+IE9uIFdlZCwg
+Tm92IDEzLCAyMDE5IGF0IDEyOjM5OjU0UE0gKzAxMDAsIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4g
+PiBPbiBXZWQsIE5vdiAxMywgMjAxOSBhdCAwMjowMTo1M0FNICswMDAwLCBqYW1lcyBxaWFuIHdh
+bmcgKEFybSBUZWNobm9sb2d5IENoaW5hKSB3cm90ZToKPiA+ID4gT24gRnJpLCBOb3YgMDgsIDIw
+MTkgYXQgMDQ6MDk6NTRQTSArMDAwMCwgQXlhbiBIYWxkZXIgd3JvdGU6Cj4gPiA+ID4gT24gTW9u
+LCBOb3YgMDQsIDIwMTkgYXQgMTE6MTI6MjdQTSArMDEwMCwgQW5kcnplaiBQaWV0cmFzaWV3aWN6
+IHdyb3RlOgo+ID4gPiA+ID4gVGhlcmUgYXJlIGFmYmMgaGVscGVycyBhdmFpbGFibGUuCj4gPiA+
+ID4gPgo+ID4gPiA+ID4gU2lnbmVkLW9mZi1ieTogQW5kcnplaiBQaWV0cmFzaWV3aWN6IDxhbmRy
+emVqLnBAY29sbGFib3JhLmNvbT4KPiA+ID4gPiA+IC0tLQo+ID4gPiA+ID4gIC4uLi9hcm0vZGlz
+cGxheS9rb21lZGEva29tZWRhX2Zvcm1hdF9jYXBzLmggICB8ICAxIC0KPiA+ID4gPiA+ICAuLi4v
+YXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9mcmFtZWJ1ZmZlci5jICAgfCA0NCArKysrKysrLS0t
+LS0tLS0tLS0tCj4gPiA+ID4gPiAgMiBmaWxlcyBjaGFuZ2VkLCAxNyBpbnNlcnRpb25zKCspLCAy
+OCBkZWxldGlvbnMoLSkKPiA+ID4gPiA+Cj4gPiA+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
+cHUvZHJtL2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfZm9ybWF0X2NhcHMuaCBiL2RyaXZlcnMv
+Z3B1L2RybS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRhX2Zvcm1hdF9jYXBzLmgKPiA+ID4gPiA+
+IGluZGV4IDMyMjczY2YxOGY3Yy4uNjA3ZWVhODBlNjBjIDEwMDY0NAo+ID4gPiA+ID4gLS0tIGEv
+ZHJpdmVycy9ncHUvZHJtL2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfZm9ybWF0X2NhcHMuaAo+
+ID4gPiA+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFf
+Zm9ybWF0X2NhcHMuaAo+ID4gPiA+ID4gQEAgLTMzLDcgKzMzLDYgQEAKPiA+ID4gPiA+Cj4gPiA+
+ID4gPiAgI2RlZmluZSBBRkJDX1RIX0xBWU9VVF9BTElHTk1FTlQgICAgICAgOAo+ID4gPiA+ID4g
+ICNkZWZpbmUgQUZCQ19IRUFERVJfU0laRSAgICAgICAgICAgICAgIDE2Cj4gPiA+ID4gPiAtI2Rl
+ZmluZSBBRkJDX1NVUEVSQkxLX0FMSUdOTUVOVCAgICAgICAgICAgICAgICAxMjgKPiA+ID4gPiA+
+ICAjZGVmaW5lIEFGQkNfU1VQRVJCTEtfUElYRUxTICAgICAgICAgICAyNTYKPiA+ID4gPiA+ICAj
+ZGVmaW5lIEFGQkNfQk9EWV9TVEFSVF9BTElHTk1FTlQgICAgICAxMDI0Cj4gPiA+ID4gPiAgI2Rl
+ZmluZSBBRkJDX1RIX0JPRFlfU1RBUlRfQUxJR05NRU5UICAgNDA5Ngo+ID4gPiA+ID4gZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRhX2ZyYW1lYnVm
+ZmVyLmMgYi9kcml2ZXJzL2dwdS9kcm0vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9mcmFtZWJ1
+ZmZlci5jCj4gPiA+ID4gPiBpbmRleCAxYjAxYTYyNWY0MGUuLmU5Yzg3NTUxYTViOCAxMDA2NDQK
+PiA+ID4gPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRh
+X2ZyYW1lYnVmZmVyLmMKPiA+ID4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxh
+eS9rb21lZGEva29tZWRhX2ZyYW1lYnVmZmVyLmMKPiA+ID4gPiA+IEBAIC00LDYgKzQsNyBAQAo+
+ID4gPiA+ID4gICAqIEF1dGhvcjogSmFtZXMuUWlhbi5XYW5nIDxqYW1lcy5xaWFuLndhbmdAYXJt
+LmNvbT4KPiA+ID4gPiA+ICAgKgo+ID4gPiA+ID4gICAqLwo+ID4gPiA+ID4gKyNpbmNsdWRlIDxk
+cm0vZHJtX2FmYmMuaD4KPiA+ID4gPiA+ICAjaW5jbHVkZSA8ZHJtL2RybV9kZXZpY2UuaD4KPiA+
+ID4gPiA+ICAjaW5jbHVkZSA8ZHJtL2RybV9mYl9jbWFfaGVscGVyLmg+Cj4gPiA+ID4gPiAgI2lu
+Y2x1ZGUgPGRybS9kcm1fZ2VtLmg+Cj4gPiA+ID4gPiBAQCAtNDMsOCArNDQsNyBAQCBrb21lZGFf
+ZmJfYWZiY19zaXplX2NoZWNrKHN0cnVjdCBrb21lZGFfZmIgKmtmYiwgc3RydWN0IGRybV9maWxl
+ICpmaWxlLAo+ID4gPiA+ID4gICAgICAgICBzdHJ1Y3QgZHJtX2ZyYW1lYnVmZmVyICpmYiA9ICZr
+ZmItPmJhc2U7Cj4gPiA+ID4gPiAgICAgICAgIGNvbnN0IHN0cnVjdCBkcm1fZm9ybWF0X2luZm8g
+KmluZm8gPSBmYi0+Zm9ybWF0Owo+ID4gPiA+ID4gICAgICAgICBzdHJ1Y3QgZHJtX2dlbV9vYmpl
+Y3QgKm9iajsKPiA+ID4gPiA+IC0gICAgICAgdTMyIGFsaWdubWVudF93ID0gMCwgYWxpZ25tZW50
+X2ggPSAwLCBhbGlnbm1lbnRfaGVhZGVyLCBuX2Jsb2NrcywgYnBwOwo+ID4gPiA+ID4gLSAgICAg
+ICB1NjQgbWluX3NpemU7Cj4gPiA+ID4gPiArICAgICAgIHUzMiBhbGlnbm1lbnRfdyA9IDAsIGFs
+aWdubWVudF9oID0gMCwgYWxpZ25tZW50X2hlYWRlciwgYnBwOwo+ID4gPiA+ID4KPiA+ID4gPiA+
+ICAgICAgICAgb2JqID0gZHJtX2dlbV9vYmplY3RfbG9va3VwKGZpbGUsIG1vZGVfY21kLT5oYW5k
+bGVzWzBdKTsKPiA+ID4gPiA+ICAgICAgICAgaWYgKCFvYmopIHsKPiA+ID4gPiA+IEBAIC01Miwx
+OSArNTIsMTUgQEAga29tZWRhX2ZiX2FmYmNfc2l6ZV9jaGVjayhzdHJ1Y3Qga29tZWRhX2ZiICpr
+ZmIsIHN0cnVjdCBkcm1fZmlsZSAqZmlsZSwKPiA+ID4gPiA+ICAgICAgICAgICAgICAgICByZXR1
+cm4gLUVOT0VOVDsKPiA+ID4gPiA+ICAgICAgICAgfQo+ID4gPiA+ID4KPiA+ID4gPiA+IC0gICAg
+ICAgc3dpdGNoIChmYi0+bW9kaWZpZXIgJiBBRkJDX0ZPUk1BVF9NT0RfQkxPQ0tfU0laRV9NQVNL
+KSB7Cj4gPiA+ID4gPiAtICAgICAgIGNhc2UgQUZCQ19GT1JNQVRfTU9EX0JMT0NLX1NJWkVfMzJ4
+ODoKPiA+ID4gPiA+IC0gICAgICAgICAgICAgICBhbGlnbm1lbnRfdyA9IDMyOwo+ID4gPiA+ID4g
+LSAgICAgICAgICAgICAgIGFsaWdubWVudF9oID0gODsKPiA+ID4gPiA+IC0gICAgICAgICAgICAg
+ICBicmVhazsKPiA+ID4gPiA+IC0gICAgICAgY2FzZSBBRkJDX0ZPUk1BVF9NT0RfQkxPQ0tfU0la
+RV8xNngxNjoKPiA+ID4gPiA+IC0gICAgICAgICAgICAgICBhbGlnbm1lbnRfdyA9IDE2Owo+ID4g
+PiA+ID4gLSAgICAgICAgICAgICAgIGFsaWdubWVudF9oID0gMTY7Cj4gPiA+ID4gPiAtICAgICAg
+ICAgICAgICAgYnJlYWs7Cj4gPiA+ID4gPiAtICAgICAgIGRlZmF1bHQ6Cj4gPiA+ID4gPiAtICAg
+ICAgICAgICAgICAgV0FSTigxLCAiSW52YWxpZCBBRkJDX0ZPUk1BVF9NT0RfQkxPQ0tfU0laRTog
+JWxsZC5cbiIsCj4gPiA+ID4gPiAtICAgICAgICAgICAgICAgICAgICBmYi0+bW9kaWZpZXIgJiBB
+RkJDX0ZPUk1BVF9NT0RfQkxPQ0tfU0laRV9NQVNLKTsKPiA+ID4gPiA+IC0gICAgICAgICAgICAg
+ICBicmVhazsKPiA+ID4gPiA+ICsgICAgICAgaWYgKCFkcm1fYWZiY19nZXRfc3VwZXJibGtfd2go
+ZmItPm1vZGlmaWVyLCAmYWxpZ25tZW50X3csICZhbGlnbm1lbnRfaCkpCj4gPiA+ID4gPiArICAg
+ICAgICAgICAgICAgcmV0dXJuIC1FSU5WQUw7Cj4gPiA+ID4gPiArCj4gPiA+ID4gPiArICAgICAg
+IGlmICgoYWxpZ25tZW50X3cgIT0gMTYgfHwgYWxpZ25tZW50X2ggIT0gMTYpICYmCj4gPiA+ID4g
+PiArICAgICAgICAgICAoYWxpZ25tZW50X3cgIT0gMzIgfHwgYWxpZ25tZW50X2ggIT0gOCkpIHsK
+PiA+ID4gPiA+ICsgICAgICAgICAgICAgICBEUk1fREVCVUdfS01TKCJVbnN1cHBvcnRlZCBhZmJj
+IHRpbGUgdy9oIFslZC8lZF1cbiIsCj4gPiA+ID4gPiArICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBhbGlnbm1lbnRfdywgYWxpZ25tZW50X2gpOwo+ID4gPiA+ID4gKwo+ID4gPiA+ID4gKyAg
+ICAgICAgICAgICAgIHJldHVybiAtRUlOVkFMOwo+ID4gPiA+IFRvIGJlIGhvbmVzdCwgdGhlIHBy
+ZXZpb3VzIGNvZGUgbG9va3MgbXVjaCBtb3JlIHJlYWRhYmxlCj4gPiA+ID4gPiAgICAgICAgIH0K
+PiA+ID4gPiA+Cj4gPiA+ID4gPiAgICAgICAgIC8qIHRpbGVkIGhlYWRlciBhZmJjICovCj4gPiA+
+ID4gPiBAQCAtODQsMjAgKzgwLDE0IEBAIGtvbWVkYV9mYl9hZmJjX3NpemVfY2hlY2soc3RydWN0
+IGtvbWVkYV9mYiAqa2ZiLCBzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGUsCj4gPiA+ID4gPiAgICAgICAg
+ICAgICAgICAgZ290byBjaGVja19mYWlsZWQ7Cj4gPiA+ID4gPiAgICAgICAgIH0KPiA+ID4gPiA+
+Cj4gPiA+ID4gPiAtICAgICAgIG5fYmxvY2tzID0gKGtmYi0+YWxpZ25lZF93ICoga2ZiLT5hbGln
+bmVkX2gpIC8gQUZCQ19TVVBFUkJMS19QSVhFTFM7Cj4gPiA+ID4gPiAtICAgICAgIGtmYi0+b2Zm
+c2V0X3BheWxvYWQgPSBBTElHTihuX2Jsb2NrcyAqIEFGQkNfSEVBREVSX1NJWkUsCj4gPiA+ID4g
+PiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGlnbm1lbnRfaGVhZGVyKTsK
+PiA+ID4gPiA+IC0KPiA+ID4gPiA+ICAgICAgICAgYnBwID0ga29tZWRhX2dldF9hZmJjX2Zvcm1h
+dF9icHAoaW5mbywgZmItPm1vZGlmaWVyKTsKPiA+ID4gPiA+IC0gICAgICAga2ZiLT5hZmJjX3Np
+emUgPSBrZmItPm9mZnNldF9wYXlsb2FkICsgbl9ibG9ja3MgKgo+ID4gPiA+ID4gLSAgICAgICAg
+ICAgICAgICAgICAgICAgIEFMSUdOKGJwcCAqIEFGQkNfU1VQRVJCTEtfUElYRUxTIC8gOCwKPiA+
+ID4gPiA+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBBRkJDX1NVUEVSQkxLX0FMSUdO
+TUVOVCk7Cj4gPiA+ID4gPiAtICAgICAgIG1pbl9zaXplID0ga2ZiLT5hZmJjX3NpemUgKyBmYi0+
+b2Zmc2V0c1swXTsKPiA+ID4gPiA+IC0gICAgICAgaWYgKG1pbl9zaXplID4gb2JqLT5zaXplKSB7
+Cj4gPiA+ID4gPiAtICAgICAgICAgICAgICAgRFJNX0RFQlVHX0tNUygiYWZiYyBzaXplIGNoZWNr
+IGZhaWxlZCwgb2JqX3NpemU6IDB4JXp4LiBtaW5fc2l6ZSAweCVsbHguXG4iLAo+ID4gPiA+ID4g
+LSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgb2JqLT5zaXplLCBtaW5fc2l6ZSk7Cj4gPiA+
+ID4gV2UgbmVlZCBrZmItPm9mZnNldF9wYXlsb2FkIGFuZCBrZmItPmFmYmNfc2l6ZSB0byBzZXQg
+c29tZSByZWdpc3RlcnMKPiA+ID4gPiBpbiBkNzFfbGF5ZXJfdXBkYXRlKCkuIEF0IHRoaXMgbW9t
+ZW50IEkgZmVlbCBsaWtlIHB1bmNoaW5nIG15c2VsZiBmb3IKPiA+ID4gPiBtYWtpbmcgdGhlIHN1
+Z2dlc3Rpb24gdG8gY29uc2lkZXIgYWJzdHJhY3Rpbmcgc29tZSBvZiB0aGUga29tZWRhJ3MgYWZi
+Ywo+ID4gPiA+IGNoZWNrcy4gVG8gbWUgaXQgZG9lcyBub3QgbG9vayBsaWtlIGtvbWVkYShpbiB0
+aGUgY3VycmVudCBzaGFwZSkgY2FuIHRha2UKPiA+ID4gPiBtdWNoIGFkdmFudGFnZSBvZiB0aGUg
+Z2VuZXJpYyBfYWZiY19mYl9jaGVjaygpIGZ1bmN0aW9uIChhcyB3YXMgc3VnZ2VzdGVkCj4gPiA+
+ID4gcHJldmlvdXNseSBieSBEYW52ZXQpLgo+ID4gPiA+Cj4gPiA+ID4gSG93ZXZlciwgSSB3aWxs
+IGxldCBqYW1lcy5xaWFuLndhbmdAYXJtLmNvbSwKPiA+ID4gPiBNaWhhaWwuQXRhbmFzc292QGFy
+bS5jb20sIEJlbi5EYXZpc0Bhcm0uY29tIGNvbW1lbnQgaGVyZSB0byBzZWUgaWYKPiA+ID4gPiB0
+aGVyZSBjb3VsZCBiZSBhIHdheSBvZiBhYnN0cmFjdGluZyB0aGUgYWZiYyBiaXRzIGZyb20ga29t
+ZWRhLgo+ID4gPiA+Cj4gPiA+Cj4gPiA+IEhpIGFsbDoKPiA+ID4KPiA+ID4gU2luY2UgdGhlIGN1
+cnJlbnQgZ2VuZXJpYyBkcm1fYWZiYyBoZWxwZXJzIG9ubHkgc3VwcG9ydCBhZmJjXzEuMSwgYnV0
+Cj4gPiA+IGtvbWVkYSBuZWVkcyBzdXBwb3J0IGJvdGggYWZiYzEuMS8xLjIsIHNvIEkgdGhpbmsg
+d2UgY2FuOgo+ID4gPiAtIEFkZCBhZmJjMS4yIHN1cHBvcnQgdG8gZHJtIGFmYmMgaGVscGVycy4K
+PiA+ID4gLSBmb3IgdGhlIGFmYmNfcGF5bG9hZF9vZmZzZXQsIGNhbiB3ZSBhZGQgdGhpcyBtZW1i
+ZXIgdG8KPiA+ID4gICBkcm1fZnJhbWVidWZmZXIgPwo+ID4gPiAtIFRoZSBhbGlnbmVkX3cvaCBh
+cmUgaW1wb3J0YW50IGZvciBhZmJjLCBzbyBjYW4gd2UgaGF2ZSB0aGVtIGluCj4gPiA+ICAgZHJt
+X2ZyYW1lYnVmZmVyID8KPiA+Cj4gPiBIb3cgZXhwZW5zaXZlIGlzIGl0IHRvIHJlY29tcHV0ZSB0
+aGVzZSBmcm9tIGEgc3RydWN0IGRybV9mcmFtZWJ1ZmZlcj8KPiA+Cj4gPiBJJ2QganVzdCBnbyB3
+aXRoIG9uZSBmdW5jdGlvbiB3aGljaCBjb21wdXRlcyBhbGwgdGhlc2UgZGVyaXZlZCB2YWx1ZXMs
+IGFuZAo+ID4gc3R1ZmZzIHRoZW0gaW50byBhIHN0cnVjdCBkcm1fYWZiYy4gVGhlbiBkcml2ZXJz
+IGNhbGwgdGhhdCBvbmNlIG9yIHNvLgo+ID4KPgo+IEEgc3RydWN0IGRybV9hZmJjLCBnb29kIGlk
+ZWEsIEkgbGlrZSBpdC4gOi0pCj4KPiBhbmQgd2UgY2FuIGNvbXB1dGUgaXQgd2hlbiBkbyB0aGUg
+YWZiYyBzaXplIGNoZWNrIGxpa2UKPgo+ICAgZHJtX2FmYmNfY2hlY2tfZmJfc2l6ZSguLi4sICZr
+b21lZGFfZmItPmRybV9hZmJjKTsKCkRpc2N1c3NlZCB0aGlzIGFsc28gd2l0aCBBbmRyemVqIG9u
+IGlyYyBvbiB3aGVyZSBleGFjdGx5IHRvIHBsYWNlCnN0dWZmLiBJIHRoaW5rIGlkZWFsbHkgd2Un
+ZCBiZSBhYmxlIHRvIGdldCByaWQgb2YgdGhlIGN1c3RvbQptYWxpZHBfZmJfY3JlYXRlIGNvbXBs
+ZXRlbHksIGFuZCBrb21lZGEgc2hvdWxkIGFsc28gYmUgYWJsZSB0byBnZXQgcmlkCm9mIG1vc3Qg
+b2YgdGhlIG9wZW4tY29kZWQgY2hlY2tzIChpdCdzIGxhcmdlbHkgcmVpbnZldGluZwpkcm1fZ2Vt
+X2ZiX2NyZWF0ZV93aXRoX2Z1bmNzLCBpbW8gYmV0dGVyIHRvIGp1c3QgY2FsbCB0aGF0IGZpcnN0
+LCB0aGVuCnRoZW4gZG8gYSBmZXcgbW9yZSBjYWxscyBvZiB0aGUgc3BlY2lmaWMgdGhpbmdzIHlv
+dSBuZWVkIHRvIGhhdmUKY29tcHV0ZWQgaW4gYWRkaXRpb24pLgotRGFuaWVsCgo+Cj4gVGhhbmtz
+Lgo+IEphbWVzCj4KPiA+IEZvciByZXdvcmtpbmcgZHJtX2ZyYW1lYnVmZmVyIGl0c2VsZiBJIHRo
+aW5rIGl0J3MgcHJvYmFibHkgYSBiaXQgdG9vCj4gPiBlYXJsaWVyLiBBbmQgaWYgd2UgZG8gaXQs
+IHdlIHNob3VsZCBtYXliZSBnbyBhIGJpdCBtb3JlIGJvbGQsIGFpbWluZyB0bwo+ID4gcHJvcGVy
+dHktZnkgYWxsIHRoZSBmcmFtZWJ1ZmZlciBzZXR0aW5ncywgbWF5YmUgZXZlbiBtYWtpbmcgaXQg
+ZXh0ZW5zaWJsZSwKPiA+IGFuZCBoYXZlIGRyaXZlcnMgaGFuZGxlIGEgY29ycmVzcG9uZGluZyBk
+cm1fZnJhbWVidWZmZXJfc3RhdGUuCj4gPgo+ID4gQSB0aGlyZCBvcHRpb24gd291bGQgYmUgdG8g
+Y3JlYXRlIGEgZHJtX2FmYmNfZnJhbWVidWZmZXIgd2hpY2ggZW1iZWRzCj4gPiBkcm1fZnJhbWVi
+dWZmZXIgYW5kIHdoaWNoIGRyaXZlcnMgd291bGQgbmVlZCB0byB1c2UuIEJ1dCBhbHNvIGZlZWxz
+IGEgYml0Cj4gPiBsaWtlIHRvbyBtdWNoIGNodXJuLiBSZWNvbXB1dGluZyBzaG91bGQgYmUgcXVp
+Y2sgZW5vdWdoIGFuZCBtdWNoIGVhc2llci4KPiA+IC1EYW5pZWwKPiA+Cj4gPiA+Cj4gPiA+IFRo
+YW5rcwo+ID4gPiBKYW1lcwo+ID4gPgo+ID4gPiA+IFRoYW5rcyBhbnl3YXlzIGZvciB0YWtpbmcg
+YSBzdGFiIGF0IHRoaXMuCj4gPiA+ID4gLUF5YW4KPiA+ID4gPiA+ICsKPiA+ID4gPiA+ICsgICAg
+ICAgaWYgKCFkcm1fYWZiY19jaGVja19mYl9zaXplKG1vZGVfY21kLT5waXRjaGVzWzBdLCBicHAs
+Cj4gPiA+ID4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtb2RlX2NtZC0+
+d2lkdGgsIG1vZGVfY21kLT5oZWlnaHQsCj4gPiA+ID4gPiArICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICBhbGlnbm1lbnRfdywgYWxpZ25tZW50X2gsCj4gPiA+ID4gPiArICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBvYmotPnNpemUsIG1vZGVfY21kLT5vZmZzZXRz
+WzBdLAo+ID4gPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQUZCQ19T
+VVBFUkJMS19BTElHTk1FTlQpKQo+ID4gPiA+ID4gICAgICAgICAgICAgICAgIGdvdG8gY2hlY2tf
+ZmFpbGVkOwo+ID4gPiA+ID4gLSAgICAgICB9Cj4gPiA+ID4gPgo+ID4gPiA+ID4gICAgICAgICBm
+Yi0+b2JqWzBdID0gb2JqOwo+ID4gPiA+ID4gICAgICAgICByZXR1cm4gMDsKPiA+ID4gPiA+IC0t
+Cj4gPiA+ID4gPiAyLjE3LjEKPiA+Cj4gPiAtLQo+ID4gRGFuaWVsIFZldHRlcgo+ID4gU29mdHdh
+cmUgRW5naW5lZXIsIEludGVsIENvcnBvcmF0aW9uCj4gPiBodHRwOi8vYmxvZy5mZndsbC5jaAoK
+CgotLSAKRGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdpbmVlciwgSW50ZWwgQ29ycG9yYXRpb24K
+KzQxICgwKSA3OSAzNjUgNTcgNDggLSBodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
