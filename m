@@ -1,53 +1,130 @@
 From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v11 00/11] Rockchip ISP Driver
-Date: Thu, 14 Nov 2019 08:22:51 +0100
-Message-ID: <835e058f-59b7-32e8-8fc9-d5adeacfe021@xs4all.nl>
+Subject: Re: [PATCH v11 02/11] media: staging: rkisp1: add document for rkisp1
+ meta buffer format
+Date: Thu, 14 Nov 2019 09:21:43 +0100
+Message-ID: <09d4f683-d03d-46c9-e9d2-b8cceb72446e@xs4all.nl>
 References: <20191114051242.14651-1-helen.koike@collabora.com>
- <20191114051722.GA316916@kroah.com>
+ <20191114051242.14651-3-helen.koike@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191114051722.GA316916@kroah.com>
+In-Reply-To: <20191114051242.14651-3-helen.koike@collabora.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Greg KH <gregkh@linuxfoundation.org>, Helen Koike <helen.koike@collabora.com>
-Cc: linux-rockchip@lists.infradead.org, mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, robh+dt@kernel.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org, jacob-chen@iotwrt.com, zhengsq@rock-chips.com
+To: Helen Koike <helen.koike@collabora.com>, linux-rockchip@lists.infradead.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, gregkh@linuxfoundation.org, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, robh+dt@kernel.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org, jacob-chen@iotwrt.com, zhengsq@rock-chips.com, Jacob Chen <jacob2.chen@rock-chips.com>, Jacob Chen <jacob-chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 11/14/19 6:17 AM, Greg KH wrote:
-> On Thu, Nov 14, 2019 at 02:12:31AM -0300, Helen Koike wrote:
->> Hello,
->>
->> This series adds the Rockchip Image Signal Processing Unit v1 driver to
->> staging.
->>
->> The main reason to be in staging is that people are already using it from the
->> mailing list (including libcamera), and having it in mainline makes the workflow
->> easier. Also, it is easier for other people to contribute back (with code
->> or testing the driver).
->>
->> We plan to actively work on this driver to get it our of staging.
->>
->> This patchset is also available at:
->> https://gitlab.collabora.com/koike/linux/tree/rockchip/isp/v11
->>
->> Libcamera patched to work with this version:
->> https://gitlab.collabora.com/koike/libcamera
->> (also sent to the mailing list)
->>
->> The major difference in v11 are:
->> - Fixed compiling warnings found with W=1
->> - Fixed checkpatch errors
->> - Add clock-names values in dt-bindings
->>
->> This series only touches MAINTAINERS file and drivers/staging/
+On 11/14/19 6:12 AM, Helen Koike wrote:
+> From: Jacob Chen <jacob2.chen@rock-chips.com>
 > 
-> Looks sane, but as this is drivers/staging/media I am guessing this will
-> go through the media kernel tree, not my staging tree, right?
+> This commit add document for rkisp1 meta buffer format
+> 
+> Signed-off-by: Jacob Chen <jacob-chen@rock-chips.com>
+> [refactored for upstream]
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
 
-Right, I'll take care of this.
+checkpatch gives me:
+
+WARNING: Missing Signed-off-by: line by nominal patch author 'Jacob Chen <jacob2.chen@rock-chips.com>'
+
+Looking at this series I see duplicate Signed-off-by entries for Jacob Chen and a total
+of three different email addresses:
+
+jacob2.chen@rock-chips.com
+jacob-chen@rock-chips.com
+cc@rock-chips.com
+
+It's confusing.
 
 Regards,
 
 	Hans
+
+> 
+> ---
+> 
+> Changes in v11: None
+> Changes in v10:
+> - unsquash
+> 
+> Changes in v9:
+> - squash
+> - migrate to staging
+> - remove meta-formats.rst update
+> 
+> Changes in v8:
+> - Add SPDX in the header
+> - Remove emacs configs
+> - Fix doc style
+> 
+> Changes in v7:
+> - s/correspond/corresponding
+> - s/use/uses
+> - s/docuemnt/document
+> 
+>  .../uapi/v4l/pixfmt-meta-rkisp1-params.rst    | 23 +++++++++++++++++++
+>  .../uapi/v4l/pixfmt-meta-rkisp1-stat.rst      | 22 ++++++++++++++++++
+>  2 files changed, 45 insertions(+)
+>  create mode 100644 drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
+>  create mode 100644 drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
+> 
+> diff --git a/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst b/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
+> new file mode 100644
+> index 000000000000..103b5cb79b7c
+> --- /dev/null
+> +++ b/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
+> @@ -0,0 +1,23 @@
+> +.. SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +
+> +.. _v4l2-meta-fmt-rkisp1-params:
+> +
+> +============================
+> +V4L2_META_FMT_RK_ISP1_PARAMS
+> +============================
+> +
+> +Rockchip ISP1 Parameters Data
+> +
+> +Description
+> +===========
+> +
+> +This format describes input parameters for the Rockchip ISP1.
+> +
+> +It uses c-struct :c:type:`rkisp1_isp_params_cfg`, which is defined in
+> +the ``linux/rkisp1-config.h`` header file.
+> +
+> +The parameters consist of multiple modules.
+> +The module won't be updated if the corresponding bit was not set in module_*_update.
+> +
+> +.. kernel-doc:: include/uapi/linux/rkisp1-config.h
+> +   :functions: rkisp1_isp_params_cfg
+> diff --git a/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst b/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
+> new file mode 100644
+> index 000000000000..4ad303f96421
+> --- /dev/null
+> +++ b/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
+> @@ -0,0 +1,22 @@
+> +.. SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +
+> +.. _v4l2-meta-fmt-rkisp1-stat:
+> +
+> +=============================
+> +V4L2_META_FMT_RK_ISP1_STAT_3A
+> +=============================
+> +
+> +
+> +Rockchip ISP1 Statistics Data
+> +
+> +Description
+> +===========
+> +
+> +This format describes image color statistics information generated by the Rockchip
+> +ISP1.
+> +
+> +It uses c-struct :c:type:`rkisp1_stat_buffer`, which is defined in
+> +the ``linux/rkisp1-config.h`` header file.
+> +
+> +.. kernel-doc:: include/uapi/linux/rkisp1-config.h
+> +   :functions: rkisp1_stat_buffer
+> 
