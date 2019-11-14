@@ -1,72 +1,172 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 3/3] arm64: dts: rk3399: Add init voltage for vdd_log
-Date: Thu, 14 Nov 2019 09:53:46 +0800
-Message-ID: <a6d41fc5-4ed5-6ec2-5697-ca2b0abe288c@rock-chips.com>
-References: <20191111005158.25070-1-kever.yang@rock-chips.com>
- <20191111005158.25070-3-kever.yang@rock-chips.com>
- <CAD=FV=UjbPALRU2r0s27F4RxjsbDyQ+horUBezVQejk1pT=vqA@mail.gmail.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: [PATCH v11 00/11] Rockchip ISP Driver
+Date: Thu, 14 Nov 2019 02:12:31 -0300
+Message-ID: <20191114051242.14651-1-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAD=FV=UjbPALRU2r0s27F4RxjsbDyQ+horUBezVQejk1pT=vqA@mail.gmail.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Alexis Ballier <aballier@gentoo.org>, Andy Yan <andyshrk@gmail.com>, Soeren Moch <smoch@web.de>, Hugh Cole-Baker <sigmaris@gmail.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Katsuhiro Suzuki <katsuhiro@katsuster.net>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Pragnesh Patel <Pragnesh_Patel@mentor.com>, Peter Robinson <pbrobinson@gmail.com>, Nick Xie <nick@khadas.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Elaine Zhang <zhangqing@rock-chips.com>, Vicente Bergas <vicencb@gmail.com>, Rob Herring <robh+dt@kernel.org>, Akash Gajjar <akash@openedev.com>, Ezequiel Garcia <ezequiel@collabora.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, =?UTF-8?Q?Andrius_=c5=a0tikonas?= <andrius@stikonas.eu>, LKML <linux-kernel@vger.kernel.org>, Oskari
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, gregkh@linuxfoundation.org, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, robh+dt@kernel.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org, jacob-chen@iotwrt.com, zhengsq@rock-chips.com, Helen Koike <helen.koike@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRG91ZywKCk9uIDIwMTkvMTEvMTQg5LiK5Y2IMTowMSwgRG91ZyBBbmRlcnNvbiB3cm90ZToK
-PiBIaSwKPgo+IE9uIFN1biwgTm92IDEwLCAyMDE5IGF0IDQ6NTIgUE0gS2V2ZXIgWWFuZyA8a2V2
-ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+IFNpbmNlIHRoZXJlIGlzIG5vIGRldmZy
-ZXEgdXNlZCBmb3IgdmRkX2xvZywgc28gdGhlIHZkZF9sb2cocHdtIHJlZ3VsYXRvcikKPj4gd2ls
-bCBiZSAnZW5hYmxlJyB3aXRoIHRoZSBkdHMgbm9kZSBhdCBhIGRlZmF1bHQgUFdNIHN0YXRlIHdp
-dGggaGlnaCBvciBsb3cKPj4gb3V0cHV0LiBCb3RoIHRvbyBoaWdoIG9yIHRvbyBsb3cgZm9yIHZk
-ZF9sb2cgaXMgbm90IGdvb2QgZm9yIHRoZSBib2FyZCwKPj4gYWRkIGluaXQgdm9sdGFnZSBmb3Ig
-ZHJpdmVyIHRvIG1ha2UgdGhlIHJlZ3VsYXRvciBnZXQgaW50byBhIGtub3cgb3V0cHV0Lgo+Pgo+
-PiBOb3RlIHRoYXQgdGhpcyB3aWxsIGJlIHVzZWQgYnkgVS1Cb290IGZvciBpbml0IHZvbHRhZ2Ug
-b3V0cHV0LCBhbmQgdGhpcwo+PiBpcyB2ZXJ5IGltcG9ydGFudCBmb3IgaXQgbWF5IGdldCBzeXN0
-ZW0gaGFuZyBzb21ld2hlcmUgZHVyaW5nIHN5c3RlbQo+PiBib290IHVwIHdpdGggcmVndWxhdG9y
-IGVuYWJsZSBhbmQgd2l0aG91dCB0aGlzIGluaXQgdmFsdWUuCj4gSSdtIGEgdGFkIGJpdCBjb25m
-dXNlZCBoZXJlLiAgV2hlbiBVLUJvb3QgYm9vdHMgdGhlIGtlcm5lbCwgaG93IGlzIHRoZQo+IFBX
-TSBjb25maWd1cmVkPwo+Cj4gSSByZW1lbWJlciBmb2xrcyBnb2luZyB0aHJvdWdoIGEgbG90IG9m
-IHdvcmsgdG8gbWFrZSBzdXJlIHRoYXQgd2UKPiBjb3VsZCBhY3R1YWxseSBfcmVhZF8gdGhlIFBX
-TSBzdGF0ZSB0aGF0IHRoZSBib290bG9hZGVyIGdhdmUgdXMgYW5kCj4gcmVwb3J0IGl0IGFzIHRo
-ZSBpbml0aWFsIHZvbHRhZ2UuICBJZiB0aGUga2VybmVsIGVuZHMgdXAgbmVlZGluZyB0bwo+IGNv
-bmZpZ3VyZSB0aGUgUFdNIHJlZ3VsYXRvcidzIHBlcmlvZCBmb3Igc29tZSByZWFzb24sIEkgcmVt
-ZW1iZXIgaXQKPiB3b3VsZCBhY3R1YWxseSBwaWNrIHNvbWV0aGluZyBjbG9zZS4gIElzIHRoYXQg
-bm90IHdvcmtpbmcgZm9yIHlvdT8KPgo+IEZvciBpbnN0YW5jZSwgb24gcmszMjg4LXZleXJvbiB3
-aGVuIEkgYm9vdCB1cCBtYWlubGluZSAobm8gZGV2ZnJlcSBvbgo+IHJrMzI4OC12ZXlyb24gb24g
-bWFpbmxpbmUpIHRoZSB2ZGRfbG9naWMgcmVwb3J0cyAxLjIgdm9sdHMgYmVjYXVzZSBpdAo+IHJl
-YWQgd2hhdCB0aGUgYm9vdGxvYWRlciBsZWZ0IGl0IGFzLgo+Cj4gLi4uYXJlIHlvdSBzYXlpbmcg
-dGhhdCBVLUJvb3QgZG9lc24ndCBjb25maWd1cmUgdGhlIFBXTSBhbmQgeW91J3JlCj4gdHJ5aW5n
-IHRvIGZpeCBpdCB1cCBpbiB0aGUga2VybmVsPwoKVS1Cb290IHdpbGwgY29uZmlndXJlIHRoZSBQ
-V00gd2l0aCBkdHMgc2V0dGluZyhhbmQgbm93IFUtQm9vdCB3b3VsZCBsaWtlIAp0byBzeW5jIHRo
-ZSBkdHMKCmZyb20ga2VybmVsIGRpcmVjdGx5KToKCi0gbm8gZHRzIG5vZGUgZm9yIHB3bSByZWd1
-bGF0b3IsIGl0IHdpbGwgYmUgZGVmYXVsdCBhcyBpbnB1dCBJTyB3aXRob3V0IAphbnkgY29uZmln
-dXJlOwoKLSB3aXRoIHB3bSByZWd1bGF0b3IgZHRzIGVuYWJsZSwgbm8gJ2luaXQtbWljcm92b2x0
-JywgZW5hYmxlIFBXTSB3aXRoIApkZWZhdWx0IDAlIG91dHB1dDsKCi0gd2l0aCBwd20gcmVndWxh
-dG9yIGR0cyB3aXRoICdpbml0LW1pY3Jvdm9sdCcsIGVuYWJsZSBQV00gd2l0aCAKY29ycmVzcG9u
-ZGluZyBkdXR5IG91dHB1dDsKCldlIHNob3VsZCBsZWF2ZSBpdCBub3QgY29uZmlndXJlKGFyb3Vu
-ZCAwLjlWIGZvciBtb3N0IG9mIGJvYXJkKSBvciAKY29uZmlndXJlIHRvIGNvcnJlY3QKCm91dHB1
-dChzb21lIGJvYXJkcyBuZWVkIDAuOTVWIHdoaWxlIGRlZmF1bHQgaXMgMC45ViBmb3Igc3RhYmls
-aXR5IGlzc3VlKS4KCkZvciB0aGUgcmszMzk5IGJvYXJkcyBvbiB1cHN0cmVhbSwgc29tZSBvZiB0
-aGVtIGRvIG5vdCBoYXZlIGEgdmRkX2xvZyBpbiAKZHRzLAoKYW5kIG90aGVycyBoYXZlIGR0cyBu
-b2RlIGJ1dCB3aXRob3V0ICdpbml0LW1pY3Jvdm9sdCcgZm9yIGluaXQgc2V0dGluZywgCnRoYXQn
-cyB3aGF0IEkgd2FudAoKdG8gZml4IHRvIG1ha2Ugc3VyZSBhbGwgdGhlIGJvYXJkcyBjYW4gd29y
-ayBjb3JyZWN0bHkuCgoKVGhhbmtzLAoKLSBLZXZlcgoKPgo+IC1Eb3VnCj4KPgo+IC1Eb3VnCj4K
-PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
-cmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCj4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtYXJtLWtlcm5lbAo=
+Hello,
+
+This series adds the Rockchip Image Signal Processing Unit v1 driver to
+staging.
+
+The main reason to be in staging is that people are already using it from the
+mailing list (including libcamera), and having it in mainline makes the workflow
+easier. Also, it is easier for other people to contribute back (with code
+or testing the driver).
+
+We plan to actively work on this driver to get it our of staging.
+
+This patchset is also available at:
+https://gitlab.collabora.com/koike/linux/tree/rockchip/isp/v11
+
+Libcamera patched to work with this version:
+https://gitlab.collabora.com/koike/libcamera
+(also sent to the mailing list)
+
+The major difference in v11 are:
+- Fixed compiling warnings found with W=1
+- Fixed checkpatch errors
+- Add clock-names values in dt-bindings
+
+This series only touches MAINTAINERS file and drivers/staging/
+
+MAINTAINERS
+drivers/staging/media/Kconfig
+drivers/staging/media/Makefile
+drivers/staging/media/phy-rockchip-dphy/Kconfig
+drivers/staging/media/phy-rockchip-dphy/Makefile
+drivers/staging/media/phy-rockchip-dphy/TODO
+drivers/staging/media/phy-rockchip-dphy/phy-rockchip-dphy.c
+drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.txt
+drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt
+drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
+drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
+drivers/staging/media/rkisp1/Kconfig
+drivers/staging/media/rkisp1/Makefile
+drivers/staging/media/rkisp1/TODO
+drivers/staging/media/rkisp1/capture.c
+drivers/staging/media/rkisp1/capture.h
+drivers/staging/media/rkisp1/common.h
+drivers/staging/media/rkisp1/dev.c
+drivers/staging/media/rkisp1/dev.h
+drivers/staging/media/rkisp1/isp_params.c
+drivers/staging/media/rkisp1/isp_params.h
+drivers/staging/media/rkisp1/isp_stats.c
+drivers/staging/media/rkisp1/isp_stats.h
+drivers/staging/media/rkisp1/regs.c
+drivers/staging/media/rkisp1/regs.h
+drivers/staging/media/rkisp1/rkisp1.c
+drivers/staging/media/rkisp1/rkisp1.h
+drivers/staging/media/rkisp1/uapi/rkisp1-config.h
+
+Two drivers were added, including a TODO list for removing it from
+staging:
+
+* phy-rockchip-dphy: mipi dphy driver used by csi
+* rkisp1: the image signal processing unit driver
+
+Thanks
+Helen
+
+Changes in v11:
+dphy
+- fix checkpatch errors
+- fix checkpatch errors
+rkisp1
+- Fix compiling warnings
+- Fix checkpatch errors
+stats
+- fix compiling warnings
+- fix checkpatch errors
+params
+- fix compiling warnings
+- fix checkpatch errors
+capture
+- fix checkpatch errors
+dev
+- fix checkpatch erros
+dt-bidings:
+- add clock-names values
+
+Helen Koike (1):
+  MAINTAINERS: add entry for Rockchip ISP1 driver
+
+Jacob Chen (9):
+  media: staging: phy-rockchip-dphy: add Rockchip MIPI Synopsys DPHY
+    driver
+  media: staging: rkisp1: add document for rkisp1 meta buffer format
+  media: staging: rkisp1: add Rockchip ISP1 subdev driver
+  media: staging: rkisp1: add ISP1 statistics driver
+  media: staging: rkisp1: add ISP1 params driver
+  media: staging: rkisp1: add capture device driver
+  media: staging: rkisp1: add rockchip isp1 core driver
+  media: staging: dt-bindings: Document the Rockchip ISP1 bindings
+  media: staging: dt-bindings: Document the Rockchip MIPI RX D-PHY
+    bindings
+
+Jeffy Chen (1):
+  media: staging: rkisp1: add user space ABI definitions
+
+ MAINTAINERS                                   |    6 +
+ drivers/staging/media/Kconfig                 |    4 +
+ drivers/staging/media/Makefile                |    2 +
+ .../staging/media/phy-rockchip-dphy/Kconfig   |   11 +
+ .../staging/media/phy-rockchip-dphy/Makefile  |    2 +
+ drivers/staging/media/phy-rockchip-dphy/TODO  |    6 +
+ .../phy-rockchip-dphy/phy-rockchip-dphy.c     |  401 ++++
+ .../bindings/media/rockchip-isp1.txt          |   77 +
+ .../bindings/media/rockchip-mipi-dphy.txt     |   38 +
+ .../uapi/v4l/pixfmt-meta-rkisp1-params.rst    |   23 +
+ .../uapi/v4l/pixfmt-meta-rkisp1-stat.rst      |   22 +
+ drivers/staging/media/rkisp1/Kconfig          |   13 +
+ drivers/staging/media/rkisp1/Makefile         |    7 +
+ drivers/staging/media/rkisp1/TODO             |   23 +
+ drivers/staging/media/rkisp1/capture.c        | 1871 +++++++++++++++++
+ drivers/staging/media/rkisp1/capture.h        |  164 ++
+ drivers/staging/media/rkisp1/common.h         |   98 +
+ drivers/staging/media/rkisp1/dev.c            |  439 ++++
+ drivers/staging/media/rkisp1/dev.h            |   67 +
+ drivers/staging/media/rkisp1/isp_params.c     | 1586 ++++++++++++++
+ drivers/staging/media/rkisp1/isp_params.h     |   50 +
+ drivers/staging/media/rkisp1/isp_stats.c      |  495 +++++
+ drivers/staging/media/rkisp1/isp_stats.h      |   60 +
+ drivers/staging/media/rkisp1/regs.c           |  224 ++
+ drivers/staging/media/rkisp1/regs.h           | 1525 ++++++++++++++
+ drivers/staging/media/rkisp1/rkisp1.c         | 1243 +++++++++++
+ drivers/staging/media/rkisp1/rkisp1.h         |   97 +
+ .../staging/media/rkisp1/uapi/rkisp1-config.h |  819 ++++++++
+ 28 files changed, 9373 insertions(+)
+ create mode 100644 drivers/staging/media/phy-rockchip-dphy/Kconfig
+ create mode 100644 drivers/staging/media/phy-rockchip-dphy/Makefile
+ create mode 100644 drivers/staging/media/phy-rockchip-dphy/TODO
+ create mode 100644 drivers/staging/media/phy-rockchip-dphy/phy-rockchip-dphy.c
+ create mode 100644 drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.txt
+ create mode 100644 drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-mipi-dphy.txt
+ create mode 100644 drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
+ create mode 100644 drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
+ create mode 100644 drivers/staging/media/rkisp1/Kconfig
+ create mode 100644 drivers/staging/media/rkisp1/Makefile
+ create mode 100644 drivers/staging/media/rkisp1/TODO
+ create mode 100644 drivers/staging/media/rkisp1/capture.c
+ create mode 100644 drivers/staging/media/rkisp1/capture.h
+ create mode 100644 drivers/staging/media/rkisp1/common.h
+ create mode 100644 drivers/staging/media/rkisp1/dev.c
+ create mode 100644 drivers/staging/media/rkisp1/dev.h
+ create mode 100644 drivers/staging/media/rkisp1/isp_params.c
+ create mode 100644 drivers/staging/media/rkisp1/isp_params.h
+ create mode 100644 drivers/staging/media/rkisp1/isp_stats.c
+ create mode 100644 drivers/staging/media/rkisp1/isp_stats.h
+ create mode 100644 drivers/staging/media/rkisp1/regs.c
+ create mode 100644 drivers/staging/media/rkisp1/regs.h
+ create mode 100644 drivers/staging/media/rkisp1/rkisp1.c
+ create mode 100644 drivers/staging/media/rkisp1/rkisp1.h
+ create mode 100644 drivers/staging/media/rkisp1/uapi/rkisp1-config.h
+
+-- 
+2.22.0
