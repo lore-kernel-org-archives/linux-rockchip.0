@@ -1,179 +1,142 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCHv2 3/4] drm/komeda: use afbc helpers
-Date: Thu, 14 Nov 2019 11:12:13 +0100
-Message-ID: <CAKMK7uH06iu9OTz-1ZTbv6oVBHtBojSQE6sUu1GWfWk1om8LQQ@mail.gmail.com>
-References: <2485717.1SzL54aMiy@e123338-lin>
- <20191104221228.3588-1-andrzej.p@collabora.com>
- <20191104221228.3588-4-andrzej.p@collabora.com>
- <20191108160954.GA17321@arm.com>
- <20191113020146.GB2746@jamwan02-TSP300>
- <20191113113954.GN23790@phenom.ffwll.local>
- <20191114015220.GA16456@jamwan02-TSP300>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: Re: [PATCH v11 02/11] media: staging: rkisp1: add document for rkisp1
+ meta buffer format
+Date: Thu, 14 Nov 2019 07:58:56 -0300
+Message-ID: <9cb116f6-64f4-1510-b128-8657d6d4889b@collabora.com>
+References: <20191114051242.14651-1-helen.koike@collabora.com>
+ <20191114051242.14651-3-helen.koike@collabora.com>
+ <09d4f683-d03d-46c9-e9d2-b8cceb72446e@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191114015220.GA16456@jamwan02-TSP300>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: "james qian wang (Arm Technology China)" <james.qian.wang@arm.com>
-Cc: nd <nd@arm.com>, Mihail Atanassov <Mihail.Atanassov@arm.com>, "kernel@collabora.com" <kernel@collabora.com>, David Airlie <airlied@linux.ie>, Liviu Dudau <Liviu.Dudau@arm.com>, Andrzej Pietrasiewicz <andrzej.p@collabora.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Ayan Halder <Ayan.Halder@arm.com>, Sean Paul <sean@poorly.run>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <09d4f683-d03d-46c9-e9d2-b8cceb72446e@xs4all.nl>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>, linux-rockchip@lists.infradead.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, gregkh@linuxfoundation.org, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, robh+dt@kernel.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org, jacob-chen@iotwrt.com, zhengsq@rock-chips.com, Jacob Chen <jacob-chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBOb3YgMTQsIDIwMTkgYXQgMjo1MiBBTSBqYW1lcyBxaWFuIHdhbmcgKEFybSBUZWNo
-bm9sb2d5IENoaW5hKQo8amFtZXMucWlhbi53YW5nQGFybS5jb20+IHdyb3RlOgo+IE9uIFdlZCwg
-Tm92IDEzLCAyMDE5IGF0IDEyOjM5OjU0UE0gKzAxMDAsIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4g
-PiBPbiBXZWQsIE5vdiAxMywgMjAxOSBhdCAwMjowMTo1M0FNICswMDAwLCBqYW1lcyBxaWFuIHdh
-bmcgKEFybSBUZWNobm9sb2d5IENoaW5hKSB3cm90ZToKPiA+ID4gT24gRnJpLCBOb3YgMDgsIDIw
-MTkgYXQgMDQ6MDk6NTRQTSArMDAwMCwgQXlhbiBIYWxkZXIgd3JvdGU6Cj4gPiA+ID4gT24gTW9u
-LCBOb3YgMDQsIDIwMTkgYXQgMTE6MTI6MjdQTSArMDEwMCwgQW5kcnplaiBQaWV0cmFzaWV3aWN6
-IHdyb3RlOgo+ID4gPiA+ID4gVGhlcmUgYXJlIGFmYmMgaGVscGVycyBhdmFpbGFibGUuCj4gPiA+
-ID4gPgo+ID4gPiA+ID4gU2lnbmVkLW9mZi1ieTogQW5kcnplaiBQaWV0cmFzaWV3aWN6IDxhbmRy
-emVqLnBAY29sbGFib3JhLmNvbT4KPiA+ID4gPiA+IC0tLQo+ID4gPiA+ID4gIC4uLi9hcm0vZGlz
-cGxheS9rb21lZGEva29tZWRhX2Zvcm1hdF9jYXBzLmggICB8ICAxIC0KPiA+ID4gPiA+ICAuLi4v
-YXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9mcmFtZWJ1ZmZlci5jICAgfCA0NCArKysrKysrLS0t
-LS0tLS0tLS0tCj4gPiA+ID4gPiAgMiBmaWxlcyBjaGFuZ2VkLCAxNyBpbnNlcnRpb25zKCspLCAy
-OCBkZWxldGlvbnMoLSkKPiA+ID4gPiA+Cj4gPiA+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfZm9ybWF0X2NhcHMuaCBiL2RyaXZlcnMv
-Z3B1L2RybS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRhX2Zvcm1hdF9jYXBzLmgKPiA+ID4gPiA+
-IGluZGV4IDMyMjczY2YxOGY3Yy4uNjA3ZWVhODBlNjBjIDEwMDY0NAo+ID4gPiA+ID4gLS0tIGEv
-ZHJpdmVycy9ncHUvZHJtL2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfZm9ybWF0X2NhcHMuaAo+
-ID4gPiA+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFf
-Zm9ybWF0X2NhcHMuaAo+ID4gPiA+ID4gQEAgLTMzLDcgKzMzLDYgQEAKPiA+ID4gPiA+Cj4gPiA+
-ID4gPiAgI2RlZmluZSBBRkJDX1RIX0xBWU9VVF9BTElHTk1FTlQgICAgICAgOAo+ID4gPiA+ID4g
-ICNkZWZpbmUgQUZCQ19IRUFERVJfU0laRSAgICAgICAgICAgICAgIDE2Cj4gPiA+ID4gPiAtI2Rl
-ZmluZSBBRkJDX1NVUEVSQkxLX0FMSUdOTUVOVCAgICAgICAgICAgICAgICAxMjgKPiA+ID4gPiA+
-ICAjZGVmaW5lIEFGQkNfU1VQRVJCTEtfUElYRUxTICAgICAgICAgICAyNTYKPiA+ID4gPiA+ICAj
-ZGVmaW5lIEFGQkNfQk9EWV9TVEFSVF9BTElHTk1FTlQgICAgICAxMDI0Cj4gPiA+ID4gPiAgI2Rl
-ZmluZSBBRkJDX1RIX0JPRFlfU1RBUlRfQUxJR05NRU5UICAgNDA5Ngo+ID4gPiA+ID4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRhX2ZyYW1lYnVm
-ZmVyLmMgYi9kcml2ZXJzL2dwdS9kcm0vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9mcmFtZWJ1
-ZmZlci5jCj4gPiA+ID4gPiBpbmRleCAxYjAxYTYyNWY0MGUuLmU5Yzg3NTUxYTViOCAxMDA2NDQK
-PiA+ID4gPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRh
-X2ZyYW1lYnVmZmVyLmMKPiA+ID4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxh
-eS9rb21lZGEva29tZWRhX2ZyYW1lYnVmZmVyLmMKPiA+ID4gPiA+IEBAIC00LDYgKzQsNyBAQAo+
-ID4gPiA+ID4gICAqIEF1dGhvcjogSmFtZXMuUWlhbi5XYW5nIDxqYW1lcy5xaWFuLndhbmdAYXJt
-LmNvbT4KPiA+ID4gPiA+ICAgKgo+ID4gPiA+ID4gICAqLwo+ID4gPiA+ID4gKyNpbmNsdWRlIDxk
-cm0vZHJtX2FmYmMuaD4KPiA+ID4gPiA+ICAjaW5jbHVkZSA8ZHJtL2RybV9kZXZpY2UuaD4KPiA+
-ID4gPiA+ICAjaW5jbHVkZSA8ZHJtL2RybV9mYl9jbWFfaGVscGVyLmg+Cj4gPiA+ID4gPiAgI2lu
-Y2x1ZGUgPGRybS9kcm1fZ2VtLmg+Cj4gPiA+ID4gPiBAQCAtNDMsOCArNDQsNyBAQCBrb21lZGFf
-ZmJfYWZiY19zaXplX2NoZWNrKHN0cnVjdCBrb21lZGFfZmIgKmtmYiwgc3RydWN0IGRybV9maWxl
-ICpmaWxlLAo+ID4gPiA+ID4gICAgICAgICBzdHJ1Y3QgZHJtX2ZyYW1lYnVmZmVyICpmYiA9ICZr
-ZmItPmJhc2U7Cj4gPiA+ID4gPiAgICAgICAgIGNvbnN0IHN0cnVjdCBkcm1fZm9ybWF0X2luZm8g
-KmluZm8gPSBmYi0+Zm9ybWF0Owo+ID4gPiA+ID4gICAgICAgICBzdHJ1Y3QgZHJtX2dlbV9vYmpl
-Y3QgKm9iajsKPiA+ID4gPiA+IC0gICAgICAgdTMyIGFsaWdubWVudF93ID0gMCwgYWxpZ25tZW50
-X2ggPSAwLCBhbGlnbm1lbnRfaGVhZGVyLCBuX2Jsb2NrcywgYnBwOwo+ID4gPiA+ID4gLSAgICAg
-ICB1NjQgbWluX3NpemU7Cj4gPiA+ID4gPiArICAgICAgIHUzMiBhbGlnbm1lbnRfdyA9IDAsIGFs
-aWdubWVudF9oID0gMCwgYWxpZ25tZW50X2hlYWRlciwgYnBwOwo+ID4gPiA+ID4KPiA+ID4gPiA+
-ICAgICAgICAgb2JqID0gZHJtX2dlbV9vYmplY3RfbG9va3VwKGZpbGUsIG1vZGVfY21kLT5oYW5k
-bGVzWzBdKTsKPiA+ID4gPiA+ICAgICAgICAgaWYgKCFvYmopIHsKPiA+ID4gPiA+IEBAIC01Miwx
-OSArNTIsMTUgQEAga29tZWRhX2ZiX2FmYmNfc2l6ZV9jaGVjayhzdHJ1Y3Qga29tZWRhX2ZiICpr
-ZmIsIHN0cnVjdCBkcm1fZmlsZSAqZmlsZSwKPiA+ID4gPiA+ICAgICAgICAgICAgICAgICByZXR1
-cm4gLUVOT0VOVDsKPiA+ID4gPiA+ICAgICAgICAgfQo+ID4gPiA+ID4KPiA+ID4gPiA+IC0gICAg
-ICAgc3dpdGNoIChmYi0+bW9kaWZpZXIgJiBBRkJDX0ZPUk1BVF9NT0RfQkxPQ0tfU0laRV9NQVNL
-KSB7Cj4gPiA+ID4gPiAtICAgICAgIGNhc2UgQUZCQ19GT1JNQVRfTU9EX0JMT0NLX1NJWkVfMzJ4
-ODoKPiA+ID4gPiA+IC0gICAgICAgICAgICAgICBhbGlnbm1lbnRfdyA9IDMyOwo+ID4gPiA+ID4g
-LSAgICAgICAgICAgICAgIGFsaWdubWVudF9oID0gODsKPiA+ID4gPiA+IC0gICAgICAgICAgICAg
-ICBicmVhazsKPiA+ID4gPiA+IC0gICAgICAgY2FzZSBBRkJDX0ZPUk1BVF9NT0RfQkxPQ0tfU0la
-RV8xNngxNjoKPiA+ID4gPiA+IC0gICAgICAgICAgICAgICBhbGlnbm1lbnRfdyA9IDE2Owo+ID4g
-PiA+ID4gLSAgICAgICAgICAgICAgIGFsaWdubWVudF9oID0gMTY7Cj4gPiA+ID4gPiAtICAgICAg
-ICAgICAgICAgYnJlYWs7Cj4gPiA+ID4gPiAtICAgICAgIGRlZmF1bHQ6Cj4gPiA+ID4gPiAtICAg
-ICAgICAgICAgICAgV0FSTigxLCAiSW52YWxpZCBBRkJDX0ZPUk1BVF9NT0RfQkxPQ0tfU0laRTog
-JWxsZC5cbiIsCj4gPiA+ID4gPiAtICAgICAgICAgICAgICAgICAgICBmYi0+bW9kaWZpZXIgJiBB
-RkJDX0ZPUk1BVF9NT0RfQkxPQ0tfU0laRV9NQVNLKTsKPiA+ID4gPiA+IC0gICAgICAgICAgICAg
-ICBicmVhazsKPiA+ID4gPiA+ICsgICAgICAgaWYgKCFkcm1fYWZiY19nZXRfc3VwZXJibGtfd2go
-ZmItPm1vZGlmaWVyLCAmYWxpZ25tZW50X3csICZhbGlnbm1lbnRfaCkpCj4gPiA+ID4gPiArICAg
-ICAgICAgICAgICAgcmV0dXJuIC1FSU5WQUw7Cj4gPiA+ID4gPiArCj4gPiA+ID4gPiArICAgICAg
-IGlmICgoYWxpZ25tZW50X3cgIT0gMTYgfHwgYWxpZ25tZW50X2ggIT0gMTYpICYmCj4gPiA+ID4g
-PiArICAgICAgICAgICAoYWxpZ25tZW50X3cgIT0gMzIgfHwgYWxpZ25tZW50X2ggIT0gOCkpIHsK
-PiA+ID4gPiA+ICsgICAgICAgICAgICAgICBEUk1fREVCVUdfS01TKCJVbnN1cHBvcnRlZCBhZmJj
-IHRpbGUgdy9oIFslZC8lZF1cbiIsCj4gPiA+ID4gPiArICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBhbGlnbm1lbnRfdywgYWxpZ25tZW50X2gpOwo+ID4gPiA+ID4gKwo+ID4gPiA+ID4gKyAg
-ICAgICAgICAgICAgIHJldHVybiAtRUlOVkFMOwo+ID4gPiA+IFRvIGJlIGhvbmVzdCwgdGhlIHBy
-ZXZpb3VzIGNvZGUgbG9va3MgbXVjaCBtb3JlIHJlYWRhYmxlCj4gPiA+ID4gPiAgICAgICAgIH0K
-PiA+ID4gPiA+Cj4gPiA+ID4gPiAgICAgICAgIC8qIHRpbGVkIGhlYWRlciBhZmJjICovCj4gPiA+
-ID4gPiBAQCAtODQsMjAgKzgwLDE0IEBAIGtvbWVkYV9mYl9hZmJjX3NpemVfY2hlY2soc3RydWN0
-IGtvbWVkYV9mYiAqa2ZiLCBzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGUsCj4gPiA+ID4gPiAgICAgICAg
-ICAgICAgICAgZ290byBjaGVja19mYWlsZWQ7Cj4gPiA+ID4gPiAgICAgICAgIH0KPiA+ID4gPiA+
-Cj4gPiA+ID4gPiAtICAgICAgIG5fYmxvY2tzID0gKGtmYi0+YWxpZ25lZF93ICoga2ZiLT5hbGln
-bmVkX2gpIC8gQUZCQ19TVVBFUkJMS19QSVhFTFM7Cj4gPiA+ID4gPiAtICAgICAgIGtmYi0+b2Zm
-c2V0X3BheWxvYWQgPSBBTElHTihuX2Jsb2NrcyAqIEFGQkNfSEVBREVSX1NJWkUsCj4gPiA+ID4g
-PiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGlnbm1lbnRfaGVhZGVyKTsK
-PiA+ID4gPiA+IC0KPiA+ID4gPiA+ICAgICAgICAgYnBwID0ga29tZWRhX2dldF9hZmJjX2Zvcm1h
-dF9icHAoaW5mbywgZmItPm1vZGlmaWVyKTsKPiA+ID4gPiA+IC0gICAgICAga2ZiLT5hZmJjX3Np
-emUgPSBrZmItPm9mZnNldF9wYXlsb2FkICsgbl9ibG9ja3MgKgo+ID4gPiA+ID4gLSAgICAgICAg
-ICAgICAgICAgICAgICAgIEFMSUdOKGJwcCAqIEFGQkNfU1VQRVJCTEtfUElYRUxTIC8gOCwKPiA+
-ID4gPiA+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBBRkJDX1NVUEVSQkxLX0FMSUdO
-TUVOVCk7Cj4gPiA+ID4gPiAtICAgICAgIG1pbl9zaXplID0ga2ZiLT5hZmJjX3NpemUgKyBmYi0+
-b2Zmc2V0c1swXTsKPiA+ID4gPiA+IC0gICAgICAgaWYgKG1pbl9zaXplID4gb2JqLT5zaXplKSB7
-Cj4gPiA+ID4gPiAtICAgICAgICAgICAgICAgRFJNX0RFQlVHX0tNUygiYWZiYyBzaXplIGNoZWNr
-IGZhaWxlZCwgb2JqX3NpemU6IDB4JXp4LiBtaW5fc2l6ZSAweCVsbHguXG4iLAo+ID4gPiA+ID4g
-LSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgb2JqLT5zaXplLCBtaW5fc2l6ZSk7Cj4gPiA+
-ID4gV2UgbmVlZCBrZmItPm9mZnNldF9wYXlsb2FkIGFuZCBrZmItPmFmYmNfc2l6ZSB0byBzZXQg
-c29tZSByZWdpc3RlcnMKPiA+ID4gPiBpbiBkNzFfbGF5ZXJfdXBkYXRlKCkuIEF0IHRoaXMgbW9t
-ZW50IEkgZmVlbCBsaWtlIHB1bmNoaW5nIG15c2VsZiBmb3IKPiA+ID4gPiBtYWtpbmcgdGhlIHN1
-Z2dlc3Rpb24gdG8gY29uc2lkZXIgYWJzdHJhY3Rpbmcgc29tZSBvZiB0aGUga29tZWRhJ3MgYWZi
-Ywo+ID4gPiA+IGNoZWNrcy4gVG8gbWUgaXQgZG9lcyBub3QgbG9vayBsaWtlIGtvbWVkYShpbiB0
-aGUgY3VycmVudCBzaGFwZSkgY2FuIHRha2UKPiA+ID4gPiBtdWNoIGFkdmFudGFnZSBvZiB0aGUg
-Z2VuZXJpYyBfYWZiY19mYl9jaGVjaygpIGZ1bmN0aW9uIChhcyB3YXMgc3VnZ2VzdGVkCj4gPiA+
-ID4gcHJldmlvdXNseSBieSBEYW52ZXQpLgo+ID4gPiA+Cj4gPiA+ID4gSG93ZXZlciwgSSB3aWxs
-IGxldCBqYW1lcy5xaWFuLndhbmdAYXJtLmNvbSwKPiA+ID4gPiBNaWhhaWwuQXRhbmFzc292QGFy
-bS5jb20sIEJlbi5EYXZpc0Bhcm0uY29tIGNvbW1lbnQgaGVyZSB0byBzZWUgaWYKPiA+ID4gPiB0
-aGVyZSBjb3VsZCBiZSBhIHdheSBvZiBhYnN0cmFjdGluZyB0aGUgYWZiYyBiaXRzIGZyb20ga29t
-ZWRhLgo+ID4gPiA+Cj4gPiA+Cj4gPiA+IEhpIGFsbDoKPiA+ID4KPiA+ID4gU2luY2UgdGhlIGN1
-cnJlbnQgZ2VuZXJpYyBkcm1fYWZiYyBoZWxwZXJzIG9ubHkgc3VwcG9ydCBhZmJjXzEuMSwgYnV0
-Cj4gPiA+IGtvbWVkYSBuZWVkcyBzdXBwb3J0IGJvdGggYWZiYzEuMS8xLjIsIHNvIEkgdGhpbmsg
-d2UgY2FuOgo+ID4gPiAtIEFkZCBhZmJjMS4yIHN1cHBvcnQgdG8gZHJtIGFmYmMgaGVscGVycy4K
-PiA+ID4gLSBmb3IgdGhlIGFmYmNfcGF5bG9hZF9vZmZzZXQsIGNhbiB3ZSBhZGQgdGhpcyBtZW1i
-ZXIgdG8KPiA+ID4gICBkcm1fZnJhbWVidWZmZXIgPwo+ID4gPiAtIFRoZSBhbGlnbmVkX3cvaCBh
-cmUgaW1wb3J0YW50IGZvciBhZmJjLCBzbyBjYW4gd2UgaGF2ZSB0aGVtIGluCj4gPiA+ICAgZHJt
-X2ZyYW1lYnVmZmVyID8KPiA+Cj4gPiBIb3cgZXhwZW5zaXZlIGlzIGl0IHRvIHJlY29tcHV0ZSB0
-aGVzZSBmcm9tIGEgc3RydWN0IGRybV9mcmFtZWJ1ZmZlcj8KPiA+Cj4gPiBJJ2QganVzdCBnbyB3
-aXRoIG9uZSBmdW5jdGlvbiB3aGljaCBjb21wdXRlcyBhbGwgdGhlc2UgZGVyaXZlZCB2YWx1ZXMs
-IGFuZAo+ID4gc3R1ZmZzIHRoZW0gaW50byBhIHN0cnVjdCBkcm1fYWZiYy4gVGhlbiBkcml2ZXJz
-IGNhbGwgdGhhdCBvbmNlIG9yIHNvLgo+ID4KPgo+IEEgc3RydWN0IGRybV9hZmJjLCBnb29kIGlk
-ZWEsIEkgbGlrZSBpdC4gOi0pCj4KPiBhbmQgd2UgY2FuIGNvbXB1dGUgaXQgd2hlbiBkbyB0aGUg
-YWZiYyBzaXplIGNoZWNrIGxpa2UKPgo+ICAgZHJtX2FmYmNfY2hlY2tfZmJfc2l6ZSguLi4sICZr
-b21lZGFfZmItPmRybV9hZmJjKTsKCkRpc2N1c3NlZCB0aGlzIGFsc28gd2l0aCBBbmRyemVqIG9u
-IGlyYyBvbiB3aGVyZSBleGFjdGx5IHRvIHBsYWNlCnN0dWZmLiBJIHRoaW5rIGlkZWFsbHkgd2Un
-ZCBiZSBhYmxlIHRvIGdldCByaWQgb2YgdGhlIGN1c3RvbQptYWxpZHBfZmJfY3JlYXRlIGNvbXBs
-ZXRlbHksIGFuZCBrb21lZGEgc2hvdWxkIGFsc28gYmUgYWJsZSB0byBnZXQgcmlkCm9mIG1vc3Qg
-b2YgdGhlIG9wZW4tY29kZWQgY2hlY2tzIChpdCdzIGxhcmdlbHkgcmVpbnZldGluZwpkcm1fZ2Vt
-X2ZiX2NyZWF0ZV93aXRoX2Z1bmNzLCBpbW8gYmV0dGVyIHRvIGp1c3QgY2FsbCB0aGF0IGZpcnN0
-LCB0aGVuCnRoZW4gZG8gYSBmZXcgbW9yZSBjYWxscyBvZiB0aGUgc3BlY2lmaWMgdGhpbmdzIHlv
-dSBuZWVkIHRvIGhhdmUKY29tcHV0ZWQgaW4gYWRkaXRpb24pLgotRGFuaWVsCgo+Cj4gVGhhbmtz
-Lgo+IEphbWVzCj4KPiA+IEZvciByZXdvcmtpbmcgZHJtX2ZyYW1lYnVmZmVyIGl0c2VsZiBJIHRo
-aW5rIGl0J3MgcHJvYmFibHkgYSBiaXQgdG9vCj4gPiBlYXJsaWVyLiBBbmQgaWYgd2UgZG8gaXQs
-IHdlIHNob3VsZCBtYXliZSBnbyBhIGJpdCBtb3JlIGJvbGQsIGFpbWluZyB0bwo+ID4gcHJvcGVy
-dHktZnkgYWxsIHRoZSBmcmFtZWJ1ZmZlciBzZXR0aW5ncywgbWF5YmUgZXZlbiBtYWtpbmcgaXQg
-ZXh0ZW5zaWJsZSwKPiA+IGFuZCBoYXZlIGRyaXZlcnMgaGFuZGxlIGEgY29ycmVzcG9uZGluZyBk
-cm1fZnJhbWVidWZmZXJfc3RhdGUuCj4gPgo+ID4gQSB0aGlyZCBvcHRpb24gd291bGQgYmUgdG8g
-Y3JlYXRlIGEgZHJtX2FmYmNfZnJhbWVidWZmZXIgd2hpY2ggZW1iZWRzCj4gPiBkcm1fZnJhbWVi
-dWZmZXIgYW5kIHdoaWNoIGRyaXZlcnMgd291bGQgbmVlZCB0byB1c2UuIEJ1dCBhbHNvIGZlZWxz
-IGEgYml0Cj4gPiBsaWtlIHRvbyBtdWNoIGNodXJuLiBSZWNvbXB1dGluZyBzaG91bGQgYmUgcXVp
-Y2sgZW5vdWdoIGFuZCBtdWNoIGVhc2llci4KPiA+IC1EYW5pZWwKPiA+Cj4gPiA+Cj4gPiA+IFRo
-YW5rcwo+ID4gPiBKYW1lcwo+ID4gPgo+ID4gPiA+IFRoYW5rcyBhbnl3YXlzIGZvciB0YWtpbmcg
-YSBzdGFiIGF0IHRoaXMuCj4gPiA+ID4gLUF5YW4KPiA+ID4gPiA+ICsKPiA+ID4gPiA+ICsgICAg
-ICAgaWYgKCFkcm1fYWZiY19jaGVja19mYl9zaXplKG1vZGVfY21kLT5waXRjaGVzWzBdLCBicHAs
-Cj4gPiA+ID4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtb2RlX2NtZC0+
-d2lkdGgsIG1vZGVfY21kLT5oZWlnaHQsCj4gPiA+ID4gPiArICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICBhbGlnbm1lbnRfdywgYWxpZ25tZW50X2gsCj4gPiA+ID4gPiArICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBvYmotPnNpemUsIG1vZGVfY21kLT5vZmZzZXRz
-WzBdLAo+ID4gPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQUZCQ19T
-VVBFUkJMS19BTElHTk1FTlQpKQo+ID4gPiA+ID4gICAgICAgICAgICAgICAgIGdvdG8gY2hlY2tf
-ZmFpbGVkOwo+ID4gPiA+ID4gLSAgICAgICB9Cj4gPiA+ID4gPgo+ID4gPiA+ID4gICAgICAgICBm
-Yi0+b2JqWzBdID0gb2JqOwo+ID4gPiA+ID4gICAgICAgICByZXR1cm4gMDsKPiA+ID4gPiA+IC0t
-Cj4gPiA+ID4gPiAyLjE3LjEKPiA+Cj4gPiAtLQo+ID4gRGFuaWVsIFZldHRlcgo+ID4gU29mdHdh
-cmUgRW5naW5lZXIsIEludGVsIENvcnBvcmF0aW9uCj4gPiBodHRwOi8vYmxvZy5mZndsbC5jaAoK
-CgotLSAKRGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdpbmVlciwgSW50ZWwgQ29ycG9yYXRpb24K
-KzQxICgwKSA3OSAzNjUgNTcgNDggLSBodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
+
+
+On 11/14/19 6:21 AM, Hans Verkuil wrote:
+> On 11/14/19 6:12 AM, Helen Koike wrote:
+>> From: Jacob Chen <jacob2.chen@rock-chips.com>
+>>
+>> This commit add document for rkisp1 meta buffer format
+>>
+>> Signed-off-by: Jacob Chen <jacob-chen@rock-chips.com>
+>> [refactored for upstream]
+>> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> 
+> checkpatch gives me:
+> 
+> WARNING: Missing Signed-off-by: line by nominal patch author 'Jacob Chen <jacob2.chen@rock-chips.com>'
+> 
+> Looking at this series I see duplicate Signed-off-by entries for Jacob Chen and a total
+> of three different email addresses:
+> 
+> jacob2.chen@rock-chips.com
+> jacob-chen@rock-chips.com
+> cc@rock-chips.com
+
+And I see a name in the Maintainers file as Jacob Chen <jacob-chen@iotwrt.com>.
+I was wondering if I could replace the email by jacob-chen@iotwrt.com, or if I should
+keep the original ones.
+
+Helen
+
+> 
+> It's confusing.
+> 
+> Regards,
+> 
+> 	Hans
+> 
+>>
+>> ---
+>>
+>> Changes in v11: None
+>> Changes in v10:
+>> - unsquash
+>>
+>> Changes in v9:
+>> - squash
+>> - migrate to staging
+>> - remove meta-formats.rst update
+>>
+>> Changes in v8:
+>> - Add SPDX in the header
+>> - Remove emacs configs
+>> - Fix doc style
+>>
+>> Changes in v7:
+>> - s/correspond/corresponding
+>> - s/use/uses
+>> - s/docuemnt/document
+>>
+>>  .../uapi/v4l/pixfmt-meta-rkisp1-params.rst    | 23 +++++++++++++++++++
+>>  .../uapi/v4l/pixfmt-meta-rkisp1-stat.rst      | 22 ++++++++++++++++++
+>>  2 files changed, 45 insertions(+)
+>>  create mode 100644 drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
+>>  create mode 100644 drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
+>>
+>> diff --git a/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst b/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
+>> new file mode 100644
+>> index 000000000000..103b5cb79b7c
+>> --- /dev/null
+>> +++ b/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
+>> @@ -0,0 +1,23 @@
+>> +.. SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+>> +
+>> +.. _v4l2-meta-fmt-rkisp1-params:
+>> +
+>> +============================
+>> +V4L2_META_FMT_RK_ISP1_PARAMS
+>> +============================
+>> +
+>> +Rockchip ISP1 Parameters Data
+>> +
+>> +Description
+>> +===========
+>> +
+>> +This format describes input parameters for the Rockchip ISP1.
+>> +
+>> +It uses c-struct :c:type:`rkisp1_isp_params_cfg`, which is defined in
+>> +the ``linux/rkisp1-config.h`` header file.
+>> +
+>> +The parameters consist of multiple modules.
+>> +The module won't be updated if the corresponding bit was not set in module_*_update.
+>> +
+>> +.. kernel-doc:: include/uapi/linux/rkisp1-config.h
+>> +   :functions: rkisp1_isp_params_cfg
+>> diff --git a/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst b/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
+>> new file mode 100644
+>> index 000000000000..4ad303f96421
+>> --- /dev/null
+>> +++ b/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
+>> @@ -0,0 +1,22 @@
+>> +.. SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+>> +
+>> +.. _v4l2-meta-fmt-rkisp1-stat:
+>> +
+>> +=============================
+>> +V4L2_META_FMT_RK_ISP1_STAT_3A
+>> +=============================
+>> +
+>> +
+>> +Rockchip ISP1 Statistics Data
+>> +
+>> +Description
+>> +===========
+>> +
+>> +This format describes image color statistics information generated by the Rockchip
+>> +ISP1.
+>> +
+>> +It uses c-struct :c:type:`rkisp1_stat_buffer`, which is defined in
+>> +the ``linux/rkisp1-config.h`` header file.
+>> +
+>> +.. kernel-doc:: include/uapi/linux/rkisp1-config.h
+>> +   :functions: rkisp1_stat_buffer
+>>
+> 
