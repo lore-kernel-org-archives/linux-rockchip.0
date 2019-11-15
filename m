@@ -1,72 +1,59 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH v3 2/3] media: hantro: Support color conversion via
- post-processing
-Date: Fri, 15 Nov 2019 17:10:59 +0100
-Message-ID: <272dedf2cc25053475e9536b446b434f4754f62c.camel@pengutronix.de>
-References: <20191113175603.24742-1-ezequiel@collabora.com>
-         <20191113175603.24742-3-ezequiel@collabora.com>
-         <1e1c7a0e3d25187723ccac1a8360b5aae9aed8cd.camel@pengutronix.de>
-         <dc637b43a4ef4609f9200f3fc91ee76fef75f64a.camel@collabora.com>
+From: "Matwey V. Kornilov" <matwey-TTlVxmypnbovJsYlp49lxw@public.gmane.org>
+Subject: [PATCH] arm64: dts: rockchip: Enable PCIe for Radxa Rock Pi 4 board
+Date: Fri, 15 Nov 2019 21:08:21 +0300
+Message-ID: <20191115180825.10526-1-matwey@sai.msu.ru>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <dc637b43a4ef4609f9200f3fc91ee76fef75f64a.camel@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org
-Cc: kernel@collabora.com, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Boris Brezillon <boris.brezillon@collabora.com>, Chris Healy <cphealy@gmail.com>, linux-kernel@vger.kernel.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, open list <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "Matwey V. Kornilov" <matwey-TTlVxmypnbovJsYlp49lxw@public.gmane.org>, "open list:ARM/Rockchip SoC support" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Ezequiel,
+Radxa Rock Pi 4 is equipped with M.2 PCIe slot,
+so enable PCIe for the board.
 
-On Fri, 2019-11-15 at 12:44 -0300, Ezequiel Garcia wrote:
-> Hello Philipp,
-> 
-> Thanks for reviewing.
-> 
-> On Thu, 2019-11-14 at 10:48 +0100, Philipp Zabel wrote:
-[...]
-> > Why isn't PP enabled in prepare_run? Does this mean the first frame is
-> > not post-processed?
-> > 
-> 
-> No, because hantro_finish_run is called (despite its name)
-> before the decoding operation is actually triggered.
-> 
-> I guess this hantro_finish_run name adds some confusion:
-> prepare_run and finish_run should be something along
-> start_prepare_run, end_prepare_run. 
+The changes has been tested with Intel SSD 660p series device.
 
-Ah, ok then. I was confused because I just came from looking at coda-vpu 
-code, where finish_run is a callback called after the device has
-finished processing. Maybe I should rename that as well.
+    01:00.0 Class 0108: Device 8086:f1a8 (rev 03)
 
-> And also, perhaps disabling the post-processor in prepare_run
-> works just fine. I need to check that.
+Signed-off-by: Matwey V. Kornilov <matwey-TTlVxmypnbovJsYlp49lxw@public.gmane.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-Ok.
-
-[...]
-> > > +#define HANTRO_PP_REG_WRITE_S(vpu, reg_name, val) \
-> > > +	do { \
-> > > +		if ((vpu)->variant->postproc_regs->(reg_name).base)	\
-> > > +			hantro_reg_write((vpu), \
-> > > +					 &(vpu)->variant->postproc_regs->(reg_name), \
-> > > +					 (val)); \
-> > > +	} while (0)
-> > 
-> > Why all these checks, are any of the register fields optional?
-> > 
-> 
-> That was the plan. Perhaps now it makes less sense,
-> but maybe it's safer this way, if it's extended?
-> 
-> OTOH, we might want to make sure the driver fails (or warns).
-
-I think that would be better than silently ignoring them.
-
-Although I don't quite see the point in repeatedly checking the presence
-of mandatory register fields at runtime.
-
-regards
-Philipp
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
+index 1ae1ebd4efdd..9c2927faba41 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
+@@ -463,6 +463,20 @@
+ 	pmu1830-supply = <&vcc_3v0>;
+ };
+ 
++&pcie_phy {
++	status = "okay";
++};
++
++&pcie0 {
++	status = "okay";
++
++	ep-gpios = <&gpio4 RK_PD3 GPIO_ACTIVE_HIGH>;
++	num-lanes = <4>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie_clkreqnb_cpm>;
++	max-link-speed = <2>;
++};
++
+ &pinctrl {
+ 	bt {
+ 		bt_enable_h: bt-enable-h {
+-- 
+2.16.4
