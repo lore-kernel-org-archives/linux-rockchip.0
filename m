@@ -1,75 +1,91 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: Add brcm bluetooth for rk3288-veyron
-Date: Thu, 14 Nov 2019 09:18:19 -0800
-Message-ID: <CAD=FV=Vkto_n2sBSJSvDhoA3scdeW+OROP4geyUrhjnvn6meMQ@mail.gmail.com>
-References: <20191112004700.185304-1-abhishekpandit@chromium.org> <3639233.d3cbfcQTlM@phil>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v3 2/5] Makefile: Rename idbloader.img with
+ u-boot-spl-rockchip.bin
+Date: Fri, 15 Nov 2019 14:34:24 +0800
+Message-ID: <8a85f647-27eb-7260-8dc5-25074e5cf880@rock-chips.com>
+References: <20191017190710.29985-1-jagan@amarulasolutions.com>
+ <20191017190710.29985-3-jagan@amarulasolutions.com>
+ <7e1e42fd-a4e3-4b3c-8d7b-82f3ad7551cd@rock-chips.com>
+ <CAMty3ZDZ_P-soW2poo3nJ8PF=3Wxe0RoGzW7B_xDTkZx8UCm8Q@mail.gmail.com>
+ <51fabf8ac7d59d16@bloch.sibelius.xs4all.nl>
+ <CAMty3ZCrcExQ+KmvWR_0Rus6hLAXySMu2hoGpUHLEBAZaO4kEw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3639233.d3cbfcQTlM@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Abhishek Pandit-Subedi <abhishekpandit@chromium.org>, linux-bluetooth@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Matthias Kaehlcke <mka@chromium.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <CAMty3ZCrcExQ+KmvWR_0Rus6hLAXySMu2hoGpUHLEBAZaO4kEw@mail.gmail.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Mark Kettenis <mark.kettenis@xs4all.nl>
+Cc: Tom Rini <trini@konsulko.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "Matwey V . Kornilov" <matwey.kornilov@gmail.com>, U-Boot-Denx <u-boot@lists.denx.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Thu, Nov 14, 2019 at 5:45 AM Heiko Stuebner <heiko@sntech.de> wrote:
->
-> Hi,
->
-> Am Dienstag, 12. November 2019, 01:47:00 CET schrieb Abhishek Pandit-Subedi:
-> > This enables the Broadcom uart bluetooth driver on uart0 and gives it
-> > ownership of its gpios. In order to use this, you must enable the
-> > following kconfig options:
-> > - CONFIG_BT_HCIUART_BCM
-> > - CONFIG_SERIAL_DEV
-> >
-> > This is applicable to rk3288-veyron series boards that use the bcm43540
-> > wifi+bt chips.
-> >
-> > As part of this change, also refactor the pinctrl across the various
-> > boards. All the boards using broadcom bluetooth shouldn't touch the
-> > bt_dev_wake pin.
-> >
-> > Signed-off-by: Abhishek Pandit-Subedi <abhishekpandit@chromium.org>
->
-> looks good to me
-> @dianders: does this look ok to you too?
-
-Yes, but it's not ready to land yet.  Specifically the bindings are
-still being discussed [1].  Abhishek: you should probably add
-information about the fact that the bindings need to land first to
-your Commit-notes.  When the bindings land I'm happy to add my
-Reviewed-by.
-
-For history, +Matthias and I both did an early review of this [2].
-Compared to that version the only diffs here (other than merge
-conflicts) are:
-
--               pcm-parameters          = [01 02 00 01 01 00 00 00 00 00];
-
-+
-+               brcm,bt-sco-routing     = [01];
-+               brcm,pcm-interface-rate = [02];
-+               brcm,pcm-sync-mode      = [01];
-+               brcm,pcm-clock-mode     = [01];
-
-
-> Just to confirm, I guess mickey and brain do not have the suspend_l pin
-> settings? [They only seem to get the default pinctrl state but not the
-> sleep state in @pinctrl]
-
-The suspend_l pin just goes to the EC and lets the EC know that we're
-in suspend.  I know for sure mickey has no EC.  I'd believe the same
-to be true of brain, though perhaps you and +Alexandru are the only
-two people with working brains?  I know I don't have one, as can be
-evidenced by some of the stupid things I do.  :-P  I would also note
-that this CL doesn't change whether or not mickey/brain control
-suspend_l.  They used to inherit from 'rk3288-veyron.dtsi' which
-didn't define it.
-
-[1] https://lore.kernel.org/r/20191112230944.48716-5-abhishekpandit@chromium.org
-[2] https://crrev.com/c/1772261
-
--Doug
+SGkgSmFnYW4sCgpPbiAyMDE5LzEwLzIyIOS4i+WNiDY6MTAsIEphZ2FuIFRla2kgd3JvdGU6Cj4g
+T24gTW9uLCBPY3QgMjEsIDIwMTkgYXQgMTo0MyBQTSBNYXJrIEtldHRlbmlzIDxtYXJrLmtldHRl
+bmlzQHhzNGFsbC5ubD4gd3JvdGU6Cj4+PiBGcm9tOiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxh
+c29sdXRpb25zLmNvbT4KPj4+IERhdGU6IE1vbiwgMjEgT2N0IDIwMTkgMTA6NTY6MzkgKzA1MzAK
+Pj4+Cj4+PiBIaSBLZXZlciwKPj4+Cj4+PiBPbiBGcmksIE9jdCAxOCwgMjAxOSBhdCA0OjI2IFBN
+IEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+IHdyb3RlOgo+Pj4+IEphZ2Fu
+LAo+Pj4+Cj4+Pj4KPj4+PiBPbiAyMDE5LzEwLzE4IOS4iuWNiDM6MDcsIEphZ2FuIFRla2kgd3Jv
+dGU6Cj4+Pj4+IGlkYmxvYWRlci5pbWcgbmFtZSBpcyBzcGVjaWZpYyB0byByb2NrY2hpcCwKPj4+
+PiBUaGlzIGlzIHNwZWNpZmljIGZvciByb2NrY2hpcCwgbGlrZSBya3NkLCBya3NwaSB0eXBlIGlu
+IG1raW1hZ2UsIHNpbmNlCj4+Pj4gaXQncyBjbGVhciBmb3Igd2hhdCBpdCBzdGFuZHMgZm9yLAo+
+Pj4+Cj4+Pj4gSSB0aGluayBpdCBjYW4gYWxzbyB1c2VkIGluIFUtQm9vdC4KPj4+Pgo+Pj4+PiB3
+aGVyZSBpdCB1c3VhbGx5Cj4+Pj4+IGNyZWF0ZWQgdXNpbmcgcm9ja2NoaXAgdG9vbHMuCj4+Pj4K
+Pj4+PiBObywgaWRibG9hZGVyIHN0YW5kcyBmb3IgdGhlIGltYWdlIHdpdGggaWRiIGhlYWRlciBw
+YWNrYWdlZCB3aXRoIHR3bwo+Pj4+IHN0YWdlIGxvYWRlciwgZWcuIFRQTCtTUEwKPj4+Pgo+Pj4+
+IG9yIGRkci5iaW4rbWluaWxvYWRlci5iaW4sIGFuZCBtYXliZSBkZHIuYmluICsgU1BM77yMIFRQ
+TCttaW5pbG9hZGVyLmJpbiwKPj4+Pgo+Pj4+IG5vdCByZWxhdGVkIHRvIHJvY2tjaGlwIHRvb2xz
+LCBpdCBjYW4gYWxzbyBiZSBjcmVhdGVkIHdpdGggVS1Cb290Cj4+Pj4gbWtpbWFnZSB0b29sLgo+
+Pj4gSSB1bmRlcnN0YW5kIHdoYXQgaWRibG9hZGVyIGNvbnRhaW5zLCBpdCBpcyBsaWtlIHJvY2tj
+aGlwIFNQTC4gYnV0IHRoZQo+Pj4gbWFpbiBjb25jZXJuIGhlcmUgaXMgdGhlIG5hbWluZyBjb252
+ZW50aW9uIHVzZWQgaW4gVS1Cb290LiBJdCB3b3VsZCBiZQo+Pj4gYSBzdGFuZGFyZCB3YXkgb2Yg
+dXNpbmcgbmFtaW5nIGNvbnZlbnRpb25zIHdoZXJlIHRoZSBmaW5hbCBvdXRwdXQKPj4+IG5hbWlu
+ZyBjb252ZW50aW9ucyBzaG91bGQgaGF2ZSB1LWJvb3Qgc3VwcG9ydCBzdGFnZXMoVFBMLCBTUEws
+IFUtQm9vdCkKPj4+IGFuZCBwbGF0Zm9ybSBzcGVjaWZpYyBuYW1lLiBUaGlzIHdheSBpdCBpcyBs
+ZXNzIGNvbmZ1c2VkIHdoYXQgZXhhY3RseQo+Pj4gaXQgY29udGFpbnMuCj4+Pgo+Pj4gTW9yZW92
+ZXIgbW9zdCBvZiB0aGUgcGxhdGZvcm0gc3BlY2lmaWMgYmluIGVuZGVkIHVwIHVzaW5nIHRoaXMg
+dHlwZSBvZgo+Pj4gY29udmVudGlvbnMuCj4+Pgo+Pj4gLSB1LWJvb3Qtc3BsLW10ay5iaW4gLSBN
+ZWRpYXRlayBTUEwgYmluCj4+PiAtIHUtYm9vdC1tdGsuYmluIC0gTWVkaWF0ZWsgVS1Cb290IGJp
+biAod291bGQgYmUgZmluYWwgaW1hZ2UpCj4+PiAtIHUtYm9vdC1zdW54aS13aXRoLXNwbC5iaW4g
+LSBBbGx3aW5uZXIgVS1Cb290IHdpdGggU1BMCj4+PiAtIHUtYm9vdC14ODYtc3RhcnQxNi10cGwu
+YmluCj4+IE5vIHJlYWwgY29uc2lzdGVuY3kgdGhlcmUgdGhvdWdoLi4uCj4gTm90IHN1cmUgd2hh
+dCB5b3UgcG9pbnRlZCBoZXJlLCBlYWNoIGJpbiBsaXN0ZWQgYWJvdmUgc2hvd3MgdGhlCj4gcGxh
+dGZvcm0gYW5kIHUtYm9vdCBzdGFnZSBhbmQgcHJlZml4IHdpdGggdS1ib290LSBhcyB3ZWxsLiBv
+ZiBjb3Vyc2UKPiBhbGwgY2FuJ3QgbWFpbnRhaW4gdGhlIHNhbWUgYnV0IGhhcyBtZW50aW9uZWQg
+ZGV0YWlscy4KVGhlIGltYWdlIGZvciBWZW5kb3IncyBCb290Um9tIGlzIGFsd2F5cyB2ZW5kb3Ig
+c3BlY2lmaWMsIHNvIEkgZG9uJ3QgCnRoaW5rIGludmVudAphIG5ldyBuYW1lIGZvciBpZGJsb2Fk
+ZXIuaW1nIG1ha2UgYW55IHNlbnNlLgpJIGtub3cgd2hhdCdzIHRoZSB1LWJvb3QuYmluLCB1LWJv
+b3QuaXRiLCB1LWJvb3Qtc3BsLmJpbiwgCnUtYm9vdC10cGwuYmluLCBiZWNhdXNlIGFsbCB0aGUK
+Ym9hcmRzIHVzZSB0aGVtIGluIHRoZSBzYW1lIHdheSzCoCBidXQgSSBkb24ndCBrbm93IHdoYXQg
+aXMgCnUtYm9vdC1zcGwtbXRrLmJpbiBvciB1LWJvb3Qtc3VueGktd2l0aC1zcGwuYmluLAphbmQg
+YWxzbyBuYW1lcyBsaWtlIGxwYzMyeHgtKioqLCBiZWNhdXNlIHRoZXkgYWx3YXlzIHNwZWNpZmlj
+IGZvciB0aGUgClNvQyB2ZW5kb3IsIHBlb3BsZSBuZXZlciBrbm93CndoYXQgaXQncyBiZWZvcmUg
+dGhleSB3b3JrIG9uIHRoaXMgcGxhdGZvcm0uCkZvcsKgIGlkYmxvYWRlci5pbWcsIGl0IGFscmVh
+ZHkgdXNlZCBmb3LCoCBhIHBlcmlvZCBvZiB0aW1lLCBpdCdzIGRvY3VtZW50IAppbiBib3RoIFJv
+Y2tjaGlwIGRvY3VtZW50CmFuZCBVLUJvb3QgZG9jdW1lbnQsIGRldmVsb3BlcnMga25vdyB3aGF0
+IGl0J3Mgd2hlbiB0aGV5IHNlZSB0aGlzIG5hbWUsIApJIGRvbid0IHRoaW5rIGFkZCBhIG5ldwpu
+YW1lIGZvciBpdCBhbmQgYWRkIGEgbmV3IGRvY3VtZW50IGFuZCBkaXNjYXJkcyB0aGUgZG9jdW1l
+bnQgd2l0aCBvbGQgCm5hbWUgaXMgYSBnb29kIGlkZWEsCml0IG9ubHkgY29uZnVzZSBkZXZlbG9w
+ZXJzLiBZb3UgY2FuIGhhdmUgYSBuZXcgbmFtZSBmb3IgYmlubWFuIG91dHB1dMKgIApmb3IgdGhh
+dCdzIG5ldyBvdXRwdXQsCmJ1dCBJIHdvdWxkIGxpa2Ugbm90IHRvIGludmVudCBuZXcgbmFtZSBm
+b3IgaWRibG9hZGVyIHVudGlsIG1vc3Qgb2YgCmRldmVsb3BlcnMgdGhpbmsgdGhhdCdzIHJlYWxs
+eQpuZWNlc3NhcnkuCgoKVGhhbmtzLAotIEtldmVyCj4KPj4+IFNpbWlsYXIgbmFtaW5nIGNvbnZl
+bnRpb25zIHVzZWQgZm9yIHRlZ3JhLCB4ODYgZXRjLgo+Pj4KPj4+IEknbSBjb21wbGV0ZWx5IGF3
+YXJlIG9mIHdoYXQgeW91J3JlIHRyeWluZyB0byBhYmJyZXZpYXRlCj4+PiBpZGJsb2FkZXIuaW1n
+LCBidXQgaGF2aW5nIHUtYm9vdC1zcGwtcm9ja2NoaXAuYmluIGlzIG1vcmUgcmVhZGFibGUgYW5k
+Cj4+PiB1bmRlcnN0YW5kIHRoYW4gaWRibG9hZGVyLgo+PiBBcyB3YXMgZGlzY3Vzc2VkIGJlZm9y
+ZSwgaWRibG9hZGVyLmltZyBpcyB0aGUgbmFtZSB1c2VkIGluIGV4dGVybmFsCj4+IGRvY3VtZW50
+YXRpb24uCj4gWWVzLCB1c2VkIGluIGV4dGVybmFsIGRvY3VtZW50YXRpb24uIHdoZW4gaXQgY29t
+ZXMgdG8gdXBzdHJlYW0gaXQKPiB3b3VsZCBmb2xsb3cgYXMgcGVyIGV4aXN0aW5nIHBsYXRmb3Jt
+cyBkb2VzIGF0bGVhc3QuCj4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpVLUJvb3QgbWFpbGluZyBsaXN0ClUtQm9vdEBsaXN0cy5kZW54LmRlCmh0dHBz
+Oi8vbGlzdHMuZGVueC5kZS9saXN0aW5mby91LWJvb3QK
