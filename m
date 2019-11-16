@@ -1,83 +1,50 @@
-From: "Matwey V. Kornilov" <matwey@sai.msu.ru>
-Subject: Re: [PATCH] arm64: dts: rockchip: Enable PCIe for Radxa Rock Pi 4 board
-Date: Fri, 15 Nov 2019 21:16:29 +0300
-Message-ID: <CAJs94EYGmU3RYEP0bd387XEN=B_zA8rwGkJeSVqWycNPO95r=w@mail.gmail.com>
-References: <20191115180825.10526-1-matwey@sai.msu.ru> <1708909.MJzrS8JzXa@diego>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH] arm64: dts: rockchip: remove 408MHz operating point from px30
+Date: Sat, 16 Nov 2019 10:52:20 +0100
+Message-ID: <20191116095220.31122-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1708909.MJzrS8JzXa@diego>
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ezequiel Garcia <ezequiel@collabora.com>, Akash Gajjar <akash@openedev.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, christoph.muellner@theobroma-systems.com, kever.yang@rock-chips.com, cl@rock-chips.com, heiko@sntech.de, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-пт, 15 нояб. 2019 г. в 21:14, Heiko Stübner <heiko@sntech.de>:
->
-> Hi Matwey,
->
-> Am Freitag, 15. November 2019, 19:08:21 CET schrieb Matwey V. Kornilov:
-> > Radxa Rock Pi 4 is equipped with M.2 PCIe slot,
-> > so enable PCIe for the board.
-> >
-> > The changes has been tested with Intel SSD 660p series device.
-> >
-> >     01:00.0 Class 0108: Device 8086:f1a8 (rev 03)
-> >
-> > Signed-off-by: Matwey V. Kornilov <matwey@sai.msu.ru>
-> > ---
-> >  arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts | 14 ++++++++++++++
-> >  1 file changed, 14 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
-> > index 1ae1ebd4efdd..9c2927faba41 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
-> > @@ -463,6 +463,20 @@
-> >       pmu1830-supply = <&vcc_3v0>;
-> >  };
-> >
-> > +&pcie_phy {
-> > +     status = "okay";
-> > +};
-> > +
-> > +&pcie0 {
-> > +     status = "okay";
-> > +
-> > +     ep-gpios = <&gpio4 RK_PD3 GPIO_ACTIVE_HIGH>;
-> > +     num-lanes = <4>;
-> > +     pinctrl-names = "default";
-> > +     pinctrl-0 = <&pcie_clkreqnb_cpm>;
-> > +     max-link-speed = <2>;
->
-> the RockPi schematics should be available, so could you also check
-> the supply regulators and add them please?
->
-> Thanks
-> Heiko
+From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-Hi,
+It looks like the px30 is running unstable at this 408MHz operating point.
+This shows in stalled threads and other big numbers of kernel exception.
 
-What do you mean? pcie 3.3v regulator is already in dts. I've checked
-that its gpio is correctly configured.
+At 600MHz and above it instead works stable and as expected. As the 408MHz
+point doesn't even decrease the voltage compared to 600MHz, just drop this
+408MHz operating point for now.
 
->
->
-> > +};
-> > +
-> >  &pinctrl {
-> >       bt {
-> >               bt_enable_h: bt-enable-h {
-> >
->
->
->
->
+Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+---
+ arch/arm64/boot/dts/rockchip/px30.dtsi | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
-
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index c68d6fede53d..ff53cc56f80f 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -114,16 +114,11 @@
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 
+-		opp-408000000 {
+-			opp-hz = /bits/ 64 <408000000>;
+-			opp-microvolt = <950000 950000 1350000>;
+-			clock-latency-ns = <40000>;
+-			opp-suspend;
+-		};
+ 		opp-600000000 {
+ 			opp-hz = /bits/ 64 <600000000>;
+ 			opp-microvolt = <950000 950000 1350000>;
+ 			clock-latency-ns = <40000>;
++			opp-suspend;
+ 		};
+ 		opp-816000000 {
+ 			opp-hz = /bits/ 64 <816000000>;
 -- 
-With best regards,
-Matwey V. Kornilov.
-Sternberg Astronomical Institute, Lomonosov Moscow State University, Russia
-119234, Moscow, Universitetsky pr-k 13, +7 (495) 9392382
+2.24.0
