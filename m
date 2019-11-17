@@ -1,13 +1,11 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH 2/2] PCI: rockchip: Simplify optional regulator handling
-Date: Sat, 16 Nov 2019 12:54:20 +0000
-Message-ID: <347bc3ef8399577e4cef3fdbf3af34d20b4ad27e.1573908530.git.robin.murphy@arm.com>
-References: <1eebc002101931012d337cda23d18f85b0326361.1573908530.git.robin.murphy@arm.com>
+From: "Matwey V. Kornilov" <matwey@sai.msu.ru>
+Subject: [PATCH v2] arm64: dts: rockchip: Enable PCIe for Radxa Rock Pi 4 board
+Date: Sun, 17 Nov 2019 13:15:37 +0300
+Message-ID: <20191117101545.6406-1-matwey@sai.msu.ru>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1eebc002101931012d337cda23d18f85b0326361.1573908530.git.robin.murphy@arm.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -17,101 +15,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: shawn.lin@rock-chips.com, lorenzo.pieralisi@arm.com, andrew.murray@arm.com
-Cc: heiko@sntech.de, linux-pci@vger.kernel.org, lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, broonie@kernel.org, bhelgaas@google.com, linux-arm-kernel@lists.infradead.org
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Ezequiel Garcia <ezequiel@collabora.com>, Akash Gajjar <akash@openedev.com>, "Matwey V. Kornilov" <matwey@sai.msu.ru>
+Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, matwey.kornilov@gmail.com, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Null checks are both cheaper and more readable than having !IS_ERR()
-splattered everywhere.
+Radxa Rock Pi 4 is equipped with M.2 PCIe slot,
+so enable PCIe for the board.
 
-Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+The changes has been tested with Intel SSD 660p series device.
+
+    01:00.0 Class 0108: Device 8086:f1a8 (rev 03)
+
+Signed-off-by: Matwey V. Kornilov <matwey@sai.msu.ru>
 ---
- drivers/pci/controller/pcie-rockchip-host.c | 20 +++++++++++---------
- 1 file changed, 11 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index 68525f8ac4d9..a61819efc0c1 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -262,7 +262,7 @@ static void rockchip_pcie_set_power_limit(struct rockchip_pcie *rockchip)
- 	int curr;
- 	u32 status, scale, power;
+Changes since v1:
+ - add vpcie3v3-supply
+
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
+index 1ae1ebd4efdd..01f8effd8206 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
+@@ -463,6 +463,21 @@
+ 	pmu1830-supply = <&vcc_3v0>;
+ };
  
--	if (IS_ERR(rockchip->vpcie3v3))
-+	if (!rockchip->vpcie3v3)
- 		return;
- 
- 	/*
-@@ -611,6 +611,7 @@ static int rockchip_pcie_parse_host_dt(struct rockchip_pcie *rockchip)
- 		if (PTR_ERR(rockchip->vpcie12v) != -ENODEV)
- 			return PTR_ERR(rockchip->vpcie12v);
- 		dev_info(dev, "no vpcie12v regulator found\n");
-+		rockchip->vpcie12v = NULL;
- 	}
- 
- 	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
-@@ -618,6 +619,7 @@ static int rockchip_pcie_parse_host_dt(struct rockchip_pcie *rockchip)
- 		if (PTR_ERR(rockchip->vpcie3v3) != -ENODEV)
- 			return PTR_ERR(rockchip->vpcie3v3);
- 		dev_info(dev, "no vpcie3v3 regulator found\n");
-+		rockchip->vpcie3v3 = NULL;
- 	}
- 
- 	rockchip->vpcie1v8 = devm_regulator_get(dev, "vpcie1v8");
-@@ -636,7 +638,7 @@ static int rockchip_pcie_set_vpcie(struct rockchip_pcie *rockchip)
- 	struct device *dev = rockchip->dev;
- 	int err;
- 
--	if (!IS_ERR(rockchip->vpcie12v)) {
-+	if (rockchip->vpcie12v) {
- 		err = regulator_enable(rockchip->vpcie12v);
- 		if (err) {
- 			dev_err(dev, "fail to enable vpcie12v regulator\n");
-@@ -644,7 +646,7 @@ static int rockchip_pcie_set_vpcie(struct rockchip_pcie *rockchip)
- 		}
- 	}
- 
--	if (!IS_ERR(rockchip->vpcie3v3)) {
-+	if (rockchip->vpcie3v3) {
- 		err = regulator_enable(rockchip->vpcie3v3);
- 		if (err) {
- 			dev_err(dev, "fail to enable vpcie3v3 regulator\n");
-@@ -669,10 +671,10 @@ static int rockchip_pcie_set_vpcie(struct rockchip_pcie *rockchip)
- err_disable_1v8:
- 	regulator_disable(rockchip->vpcie1v8);
- err_disable_3v3:
--	if (!IS_ERR(rockchip->vpcie3v3))
-+	if (rockchip->vpcie3v3)
- 		regulator_disable(rockchip->vpcie3v3);
- err_disable_12v:
--	if (!IS_ERR(rockchip->vpcie12v))
-+	if (rockchip->vpcie12v)
- 		regulator_disable(rockchip->vpcie12v);
- err_out:
- 	return err;
-@@ -1062,9 +1064,9 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- err_deinit_port:
- 	rockchip_pcie_deinit_phys(rockchip);
- err_vpcie:
--	if (!IS_ERR(rockchip->vpcie12v))
-+	if (rockchip->vpcie12v)
- 		regulator_disable(rockchip->vpcie12v);
--	if (!IS_ERR(rockchip->vpcie3v3))
-+	if (rockchip->vpcie3v3)
- 		regulator_disable(rockchip->vpcie3v3);
- 	regulator_disable(rockchip->vpcie1v8);
- 	regulator_disable(rockchip->vpcie0v9);
-@@ -1087,9 +1089,9 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
- 
- 	rockchip_pcie_disable_clocks(rockchip);
- 
--	if (!IS_ERR(rockchip->vpcie12v))
-+	if (rockchip->vpcie12v)
- 		regulator_disable(rockchip->vpcie12v);
--	if (!IS_ERR(rockchip->vpcie3v3))
-+	if (rockchip->vpcie3v3)
- 		regulator_disable(rockchip->vpcie3v3);
- 	regulator_disable(rockchip->vpcie1v8);
- 	regulator_disable(rockchip->vpcie0v9);
++&pcie_phy {
++	status = "okay";
++};
++
++&pcie0 {
++	status = "okay";
++
++	ep-gpios = <&gpio4 RK_PD3 GPIO_ACTIVE_HIGH>;
++	max-link-speed = <2>;
++	num-lanes = <4>;
++	pinctrl-0 = <&pcie_clkreqnb_cpm>;
++	pinctrl-names = "default";
++	vpcie3v3-supply = <&vcc3v3_pcie>;
++};
++
+ &pinctrl {
+ 	bt {
+ 		bt_enable_h: bt-enable-h {
 -- 
-2.17.1
+2.16.4
