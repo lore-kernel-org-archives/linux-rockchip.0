@@ -1,7 +1,8 @@
-From: "Matwey V. Kornilov" <matwey@sai.msu.ru>
-Subject: [PATCH v2] arm64: dts: rockchip: Enable PCIe for Radxa Rock Pi 4 board
-Date: Sun, 17 Nov 2019 13:15:37 +0300
-Message-ID: <20191117101545.6406-1-matwey@sai.msu.ru>
+From: Anand Moon <linux.amoon@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Add regulators for pcie on
+ rk3399-rock960
+Date: Sun, 17 Nov 2019 14:07:28 +0000
+Message-ID: <20191117140728.917-1-linux.amoon@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -15,51 +16,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Ezequiel Garcia <ezequiel@collabora.com>, Akash Gajjar <akash@openedev.com>, "Matwey V. Kornilov" <matwey@sai.msu.ru>
-Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, matwey.kornilov@gmail.com, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Radxa Rock Pi 4 is equipped with M.2 PCIe slot,
-so enable PCIe for the board.
+As per Rock960 schematics add 0V9 and 1V8 voltage supplies to the
+RK3399 PCIe block.
 
-The changes has been tested with Intel SSD 660p series device.
-
-    01:00.0 Class 0108: Device 8086:f1a8 (rev 03)
-
-Signed-off-by: Matwey V. Kornilov <matwey@sai.msu.ru>
+Signed-off-by: Anand Moon <linux.amoon@gmail.com>
 ---
+Schematics [0] https://dl.vamrs.com/products/rock960/docs/hw/rock960_sch_v12_20180314.pdf
+---
+ arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-Changes since v1:
- - add vpcie3v3-supply
-
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
-index 1ae1ebd4efdd..01f8effd8206 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
-@@ -463,6 +463,21 @@
- 	pmu1830-supply = <&vcc_3v0>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+index c7d48d41e184..2f76cccebbee 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
+@@ -53,6 +53,15 @@
+ 		vin-supply = <&vcc5v0_sys>;
+ 	};
+ 
++	vcc_0v9: vcc-0v9 {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_0v9";
++		regulator-always-on;
++		regulator-min-microvolt = <900000>;
++		regulator-max-microvolt = <900000>;
++		vin-supply = <&vcc3v3_sys>;
++	};
++
+ 	vcc3v3_pcie: vcc3v3-pcie-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+@@ -385,6 +394,8 @@
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie_clkreqn_cpm>;
+ 	vpcie3v3-supply = <&vcc3v3_pcie>;
++	vpcie1v8-supply = <&vcca_1v8>;
++	vpcie0v9-supply = <&vcc_0v9>;
+ 	status = "okay";
  };
  
-+&pcie_phy {
-+	status = "okay";
-+};
-+
-+&pcie0 {
-+	status = "okay";
-+
-+	ep-gpios = <&gpio4 RK_PD3 GPIO_ACTIVE_HIGH>;
-+	max-link-speed = <2>;
-+	num-lanes = <4>;
-+	pinctrl-0 = <&pcie_clkreqnb_cpm>;
-+	pinctrl-names = "default";
-+	vpcie3v3-supply = <&vcc3v3_pcie>;
-+};
-+
- &pinctrl {
- 	bt {
- 		bt_enable_h: bt-enable-h {
 -- 
-2.16.4
+2.24.0
