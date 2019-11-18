@@ -1,66 +1,86 @@
 From: Adrian Ratiu <adrian.ratiu@collabora.com>
-Subject: [PATCH v3 0/4] Genericize DW MIPI DSI bridge and add i.MX 6 driver
-Date: Mon, 18 Nov 2019 17:25:14 +0200
-Message-ID: <20191118152518.3374263-1-adrian.ratiu@collabora.com>
+Subject: [PATCH v3 4/4] dt-bindings: display: add IMX MIPI DSI host controller doc
+Date: Mon, 18 Nov 2019 17:25:18 +0200
+Message-ID: <20191118152518.3374263-5-adrian.ratiu@collabora.com>
+References: <20191118152518.3374263-1-adrian.ratiu@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191118152518.3374263-1-adrian.ratiu@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-arm-kernel@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-imx@nxp.com
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-imx@nxp.com, Sjoerd Simons <sjoerd.simons@collabora.com>, Martyn Welch <martyn.welch@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Having a generic Synopsis DesignWare MIPI-DSI host controller bridge
-driver is a very good idea, however the current implementation has
-hardcoded quite a lot of the register layouts used by the two supported
-SoC vendors, STM and Rockchip, which use IP cores v1.30 and v1.31.
-
-This makes it hard to support other SoC vendors like the FSL/NXP i.MX 6
-which use older v1.01 cores or future versions because, based on history,
-layout changes should also be expected in new DSI versions / SoCs.
-
-This patch series converts the bridge and platform drivers to access
-registers via generic regmap APIs and allows each platform driver to
-configure its register layout via struct reg_fields, then adds support
-for the host controller found on i.MX 6.
-
-I only have i.MX hardware with MIPI-DSI panel and relevant documentation
-available for testing so I'll really appreciate it if someone could test
-the series on Rockchip and STM... eyeballing register fields could only
-get me so far, so sorry in advance for any breakage!
-
-Many thanks to Boris Brezillon <boris.brezillon@collabora.com> for
-suggesting the regmap solution and to Liu Ying <Ying.Liu@freescale.com>
-for doing the initial i.MX platform driver implementation.
-
-This series applies on top of latest linux-next tree, next-20191118.
-
-v2 -> v3:
-  * Added const declarations to dw-mipi-dsi.c structs (Emil)
-  * Fixed Reviewed-by tags and cc'd some more relevant ML (Emil)
-
-v1 -> v2:
-  * Moved register definitions & regmap initialization into bridge
-  module. Platform drivers get the regmap via plat_data after calling
-  the bridge probe (Emil).
-
-Adrian Ratiu (4):
-  drm: bridge: dw_mipi_dsi: access registers via a regmap
-  drm: bridge: dw_mipi_dsi: abstract register access using reg_fields
-  drm: imx: Add i.MX 6 MIPI DSI host driver
-  dt-bindings: display: add IMX MIPI DSI host controller doc
-
- .../bindings/display/imx/mipi-dsi.txt         |  56 ++
- drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 699 +++++++++++++-----
- drivers/gpu/drm/imx/Kconfig                   |   7 +
- drivers/gpu/drm/imx/Makefile                  |   1 +
- drivers/gpu/drm/imx/dw_mipi_dsi-imx.c         | 378 ++++++++++
- .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |  17 +-
- drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         |  34 +-
- include/drm/bridge/dw_mipi_dsi.h              |   2 +-
- 8 files changed, 987 insertions(+), 207 deletions(-)
+Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.com>
+Signed-off-by: Martyn Welch <martyn.welch@collabora.com>
+Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+---
+ .../bindings/display/imx/mipi-dsi.txt         | 56 +++++++++++++++++++
+ 1 file changed, 56 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/display/imx/mipi-dsi.txt
- create mode 100644 drivers/gpu/drm/imx/dw_mipi_dsi-imx.c
 
+diff --git a/Documentation/devicetree/bindings/display/imx/mipi-dsi.txt b/Documentation/devicetree/bindings/display/imx/mipi-dsi.txt
+new file mode 100644
+index 000000000000..3f05c32ef963
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/imx/mipi-dsi.txt
+@@ -0,0 +1,56 @@
++Freescale i.MX6 DW MIPI DSI Host Controller
++===========================================
++
++The DSI host controller is a Synopsys DesignWare MIPI DSI v1.01 IP
++with a companion PHY IP.
++
++These DT bindings follow the Synopsys DW MIPI DSI bindings defined in
++Documentation/devicetree/bindings/display/bridge/dw_mipi_dsi.txt with
++the following device-specific properties.
++
++Required properties:
++
++- #address-cells: Should be <1>.
++- #size-cells: Should be <0>.
++- compatible: "fsl,imx6q-mipi-dsi", "snps,dw-mipi-dsi".
++- reg: See dw_mipi_dsi.txt.
++- interrupts: The controller's CPU interrupt.
++- clocks, clock-names: Phandles to the controller's pll reference
++  clock(ref) and APB clock(pclk), as described in [1].
++- ports: a port node with endpoint definitions as defined in [2].
++- gpr: Should be <&gpr>.
++       Phandle to the iomuxc-gpr region containing the multiplexer
++       control register.
++
++[1] Documentation/devicetree/bindings/clock/clock-bindings.txt
++[2] Documentation/devicetree/bindings/media/video-interfaces.txt
++
++Example:
++
++	mipi_dsi: mipi@21e0000 {
++		#address-cells = <1>;
++		#size-cells = <0>;
++		compatible = "fsl,imx6q-mipi-dsi", "snps,dw-mipi-dsi";
++		reg = <0x021e0000 0x4000>;
++		interrupts = <0 102 IRQ_TYPE_LEVEL_HIGH>;
++		gpr = <&gpr>;
++		clocks = <&clks IMX6QDL_CLK_MIPI_CORE_CFG>,
++			 <&clks IMX6QDL_CLK_MIPI_IPG>;
++		clock-names = "ref", "pclk";
++		status = "okay";
++
++		ports {
++			port@0 {
++				reg = <0>;
++				mipi_mux_0: endpoint {
++					remote-endpoint = <&ipu1_di0_mipi>;
++				};
++			};
++			port@1 {
++				reg = <1>;
++				mipi_mux_1: endpoint {
++					remote-endpoint = <&ipu1_di1_mipi>;
++				};
++			};
++		};
++        };
 -- 
 2.24.0
