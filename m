@@ -1,67 +1,69 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH=5d_configs=3a_Rename_roc-rk3399-pc_-=3e_ro?=
- =?UTF-8?B?Yy1wYy1yazMzOTkgZGVmY29uZmln44CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGlu?=
- =?UTF-8?Q?ux-rockchip-bounces+kever=2eyang=3drock-chips=2ecom=40lists=2einf?=
- =?UTF-8?B?cmFkZWFkLm9yZ+S7o+WPkeOAkQ==?=
-Date: Mon, 18 Nov 2019 11:04:16 +0800
-Message-ID: <3eb84be8-df5f-dbb0-574d-9c5fa7f48ce7@rock-chips.com>
-References: <20191102044902.8979-1-jagan@amarulasolutions.com>
- <fd21fa79-142f-00b9-f3df-8dc43372cb20@rock-chips.com>
+From: schaecsn <schaecsn@gmx.net>
+Subject: [PATCH] thermal: rockchip: enable hwmon
+Date: Sun, 17 Nov 2019 21:24:13 -0800 (PST)
+Message-ID: <20191118052413.D729B6E85603@corona.crabdance.com>
+Reply-To: schaecsn@gmx.net
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <fd21fa79-142f-00b9-f3df-8dc43372cb20-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria <amit.kucheria@verdurent.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMTkvMTEvMTMg5LiL5Y2INToxMywgS2V2ZXIgWWFuZyB3cm90ZToKPgo+IE9uIDIwMTkv
-MTEvMiDkuIvljYgxMjo0OSwgSmFnYW4gVGVraSB3cm90ZToKPj4gcm9jLXJrMzM5OS1wY19kZWZj
-b25maWcgaXMgY29tbWl0dGVkIGluIGJlbG93Cj4+Cj4+IGNvbW1pdCA8OGE2ODFmNGM1YWExNWRi
-NTFhZDAyMDk3MzQ4NTljOWZlN2MyOWNmZD4gKCJyb2NrY2hpcDogcmszMzk5Ogo+PiBBZGQgUk9D
-LVJLMzM5OS1QQyBzdXBwb3J0IikKPj4KPj4gd2hpY2ggZG9lc24ndCBmb2xsb3cgdGhlIGV4aXN0
-aW5nIGRlZmNvbmZpZ3Mgb24gcmszMzk5Lgo+Pgo+PiBTbywgcmVuYW1lIGFzIGZvbGxvd2VkIHdp
-dGggb3RoZXIgcmszMzk5IGRlZmNvbmZpZ3MuCj4+Cj4+IENjOiBMZXZpbiBEdSA8ZGp3QHQtY2hp
-cC5jb20uY24+Cj4+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1
-dGlvbnMuY29tPgo+Cj4KPiBUaGUgYm9hcmQgbmFtZSBpcyByb2MtcmszMzk5LXBjLCBidXQgd2Ug
-ZG8gdXBkYXRlIHRoaXMgaW4gZHRzIGFzIAo+IHtzb2N9LXtib2FyZH0uZHRzCj4KPiBhbmQge2Jv
-YXJkfS17c29jfV9kZWZjb25maWfCoCBmb3IgYWxsIGJvYXJkcyBhbHJlYWR5IGhhdmUsIHNvCj4K
-Pgo+IFJldmlld2VkLWJ5OiBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgpB
-cHBsaWVkIHRvIHUtYm9vdC1yb2NrY2hpcCBtYXN0ZXIuCgpUaGFua3MsCi0gS2V2ZXIKPgo+IFRo
-YW5rcywKPiAtIEtldmVyCj4+IC0tLQo+PiDCoCBib2FyZC9yb2NrY2hpcC9ldmJfcmszMzk5L01B
-SU5UQUlORVJTwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8
-IDIgKy0KPj4gwqAgY29uZmlncy97cm9jLXJrMzM5OS1wY19kZWZjb25maWcgPT4gcm9jLXBjLXJr
-MzM5OV9kZWZjb25maWd9IHwgMAo+PiDCoCAyIGZpbGVzIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCsp
-LCAxIGRlbGV0aW9uKC0pCj4+IMKgIHJlbmFtZSBjb25maWdzL3tyb2MtcmszMzk5LXBjX2RlZmNv
-bmZpZyA9PiByb2MtcGMtcmszMzk5X2RlZmNvbmZpZ30gCj4+ICgxMDAlKQo+Pgo+PiBkaWZmIC0t
-Z2l0IGEvYm9hcmQvcm9ja2NoaXAvZXZiX3JrMzM5OS9NQUlOVEFJTkVSUyAKPj4gYi9ib2FyZC9y
-b2NrY2hpcC9ldmJfcmszMzk5L01BSU5UQUlORVJTCj4+IGluZGV4IGY4Mjk5ZDk0NjAuLjE3ZGZh
-ZmI3NDMgMTAwNjQ0Cj4+IC0tLSBhL2JvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvTUFJTlRBSU5F
-UlMKPj4gKysrIGIvYm9hcmQvcm9ja2NoaXAvZXZiX3JrMzM5OS9NQUlOVEFJTkVSUwo+PiBAQCAt
-NTIsNyArNTIsNyBAQCBGOsKgwqDCoCBhcmNoL2FybS9kdHMvcmszMzk5LW9yYW5nZXBpLXUtYm9v
-dC5kdHNpCj4+IMKgIFJPQy1SSzMzOTktUEMKPj4gwqAgTTrCoMKgwqAgTGV2aW4gRHUgPGRqd0B0
-LWNoaXAuY29tLmNuPgo+PiDCoCBTOsKgwqDCoCBNYWludGFpbmVkCj4+IC1GOsKgwqDCoCBjb25m
-aWdzL3JvYy1yazMzOTktcGNfZGVmY29uZmlnCj4+ICtGOsKgwqDCoCBjb25maWdzL3JvYy1wYy1y
-azMzOTlfZGVmY29uZmlnCj4+IMKgIEY6wqDCoMKgIGFyY2gvYXJtL2R0cy9yazMzOTktcm9jLXBj
-LXUtYm9vdC5kdHNpCj4+IMKgIMKgIFJPQ0stUEktNAo+PiBkaWZmIC0tZ2l0IGEvY29uZmlncy9y
-b2MtcmszMzk5LXBjX2RlZmNvbmZpZyAKPj4gYi9jb25maWdzL3JvYy1wYy1yazMzOTlfZGVmY29u
-ZmlnCj4+IHNpbWlsYXJpdHkgaW5kZXggMTAwJQo+PiByZW5hbWUgZnJvbSBjb25maWdzL3JvYy1y
-azMzOTktcGNfZGVmY29uZmlnCj4+IHJlbmFtZSB0byBjb25maWdzL3JvYy1wYy1yazMzOTlfZGVm
-Y29uZmlnCj4KPgo+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Enable hwmon for the soc and gpu temperature sensors.
+
+Signed-off-by: Stefan Schaeckeler <schaecsn@gmx.net>
+
+---
+ drivers/thermal/rockchip_thermal.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+index 343c2f5c5a25..e47c60010259 100644
+--- a/drivers/thermal/rockchip_thermal.c
++++ b/drivers/thermal/rockchip_thermal.c
+@@ -19,6 +19,8 @@
+ #include <linux/mfd/syscon.h>
+ #include <linux/pinctrl/consumer.h>
+
++#include "thermal_hwmon.h"
++
+ /**
+  * If the temperature over a period of time High,
+  * the resulting TSHUT gave CRU module,let it reset the entire chip,
+@@ -1321,8 +1323,15 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+
+ 	thermal->chip->control(thermal->regs, true);
+
+-	for (i = 0; i < thermal->chip->chn_num; i++)
++	for (i = 0; i < thermal->chip->chn_num; i++) {
+ 		rockchip_thermal_toggle_sensor(&thermal->sensors[i], true);
++		thermal->sensors[i].tzd->tzp->no_hwmon = false;
++		error = thermal_add_hwmon_sysfs(thermal->sensors[i].tzd);
++		if (error)
++			dev_warn(&pdev->dev,
++				 "failed to register sensor %d with hwmon: %d\n",
++				 i, error);
++	}
+
+ 	platform_set_drvdata(pdev, thermal);
+
+@@ -1344,6 +1353,7 @@ static int rockchip_thermal_remove(struct platform_device *pdev)
+ 	for (i = 0; i < thermal->chip->chn_num; i++) {
+ 		struct rockchip_thermal_sensor *sensor = &thermal->sensors[i];
+
++		thermal_remove_hwmon_sysfs(sensor->tzd);
+ 		rockchip_thermal_toggle_sensor(sensor, false);
+ 	}
+
+--
+2.24.0
