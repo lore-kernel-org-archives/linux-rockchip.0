@@ -1,26 +1,67 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 3/3] arm64: dts: rk3399: Add init voltage for vdd_log
-Date: Mon, 18 Nov 2019 02:05:35 +0100
-Message-ID: <2815649.1XujLjda4c@phil>
-References: <20191111005158.25070-1-kever.yang@rock-chips.com> <1780044.CQmMckQ5VN@diego> <b752ba88-8931-0e03-a010-650129253afd@rock-chips.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: =?UTF-8?Q?Re=3a_=5bPATCH=5d_configs=3a_Rename_roc-rk3399-pc_-=3e_ro?=
+ =?UTF-8?B?Yy1wYy1yazMzOTkgZGVmY29uZmln44CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGlu?=
+ =?UTF-8?Q?ux-rockchip-bounces+kever=2eyang=3drock-chips=2ecom=40lists=2einf?=
+ =?UTF-8?B?cmFkZWFkLm9yZ+S7o+WPkeOAkQ==?=
+Date: Mon, 18 Nov 2019 11:04:16 +0800
+Message-ID: <3eb84be8-df5f-dbb0-574d-9c5fa7f48ce7@rock-chips.com>
+References: <20191102044902.8979-1-jagan@amarulasolutions.com>
+ <fd21fa79-142f-00b9-f3df-8dc43372cb20@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <b752ba88-8931-0e03-a010-650129253afd@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: Soeren Moch <smoch@web.de>, linux-rockchip@lists.infradead.org, Elaine Zhang <zhangqing@rock-chips.com>, Peter Robinson <pbrobinson@gmail.com>, Akash Gajjar <akash@openedev.com>, Alexis Ballier <aballier@gentoo.org>, Andrius =?utf-8?B?xaB0aWtvbmFz?= <andrius@stikonas.eu>, Andy Yan <andyshrk@gmail.com>, Ezequiel Garcia <ezequiel@collabora.com>, Hugh Cole-Baker <sigmaris@gmail.com>, Katsuhiro Suzuki <katsuhiro@katsuster.net>, Mark Rutland <mark.rutland@arm.com>, Nick Xie <nick@khadas.com>, Oskari Lemmela <oskari@lemmela.net>, Pragnesh Patel <Pragnesh_Patel@mentor.com>, Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Vicente Bergas <vicencb@gmail.com>, Vivek Unune <npcomplete13@gmail.com>, devicetree@vger.kernel.orglinux
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <fd21fa79-142f-00b9-f3df-8dc43372cb20-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kever,
-
-Am Mittwoch, 13. November 2019, 04:21:35 CET schrieb Kever Yang:
-> Heiko,
-> 
->      Could you help to just pick the first patch and drop the other 2 
-> patches?
-
-I did as requested now :-)
-
-Heiko
+Ck9uIDIwMTkvMTEvMTMg5LiL5Y2INToxMywgS2V2ZXIgWWFuZyB3cm90ZToKPgo+IE9uIDIwMTkv
+MTEvMiDkuIvljYgxMjo0OSwgSmFnYW4gVGVraSB3cm90ZToKPj4gcm9jLXJrMzM5OS1wY19kZWZj
+b25maWcgaXMgY29tbWl0dGVkIGluIGJlbG93Cj4+Cj4+IGNvbW1pdCA8OGE2ODFmNGM1YWExNWRi
+NTFhZDAyMDk3MzQ4NTljOWZlN2MyOWNmZD4gKCJyb2NrY2hpcDogcmszMzk5Ogo+PiBBZGQgUk9D
+LVJLMzM5OS1QQyBzdXBwb3J0IikKPj4KPj4gd2hpY2ggZG9lc24ndCBmb2xsb3cgdGhlIGV4aXN0
+aW5nIGRlZmNvbmZpZ3Mgb24gcmszMzk5Lgo+Pgo+PiBTbywgcmVuYW1lIGFzIGZvbGxvd2VkIHdp
+dGggb3RoZXIgcmszMzk5IGRlZmNvbmZpZ3MuCj4+Cj4+IENjOiBMZXZpbiBEdSA8ZGp3QHQtY2hp
+cC5jb20uY24+Cj4+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1
+dGlvbnMuY29tPgo+Cj4KPiBUaGUgYm9hcmQgbmFtZSBpcyByb2MtcmszMzk5LXBjLCBidXQgd2Ug
+ZG8gdXBkYXRlIHRoaXMgaW4gZHRzIGFzIAo+IHtzb2N9LXtib2FyZH0uZHRzCj4KPiBhbmQge2Jv
+YXJkfS17c29jfV9kZWZjb25maWfCoCBmb3IgYWxsIGJvYXJkcyBhbHJlYWR5IGhhdmUsIHNvCj4K
+Pgo+IFJldmlld2VkLWJ5OiBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgpB
+cHBsaWVkIHRvIHUtYm9vdC1yb2NrY2hpcCBtYXN0ZXIuCgpUaGFua3MsCi0gS2V2ZXIKPgo+IFRo
+YW5rcywKPiAtIEtldmVyCj4+IC0tLQo+PiDCoCBib2FyZC9yb2NrY2hpcC9ldmJfcmszMzk5L01B
+SU5UQUlORVJTwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8
+IDIgKy0KPj4gwqAgY29uZmlncy97cm9jLXJrMzM5OS1wY19kZWZjb25maWcgPT4gcm9jLXBjLXJr
+MzM5OV9kZWZjb25maWd9IHwgMAo+PiDCoCAyIGZpbGVzIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCsp
+LCAxIGRlbGV0aW9uKC0pCj4+IMKgIHJlbmFtZSBjb25maWdzL3tyb2MtcmszMzk5LXBjX2RlZmNv
+bmZpZyA9PiByb2MtcGMtcmszMzk5X2RlZmNvbmZpZ30gCj4+ICgxMDAlKQo+Pgo+PiBkaWZmIC0t
+Z2l0IGEvYm9hcmQvcm9ja2NoaXAvZXZiX3JrMzM5OS9NQUlOVEFJTkVSUyAKPj4gYi9ib2FyZC9y
+b2NrY2hpcC9ldmJfcmszMzk5L01BSU5UQUlORVJTCj4+IGluZGV4IGY4Mjk5ZDk0NjAuLjE3ZGZh
+ZmI3NDMgMTAwNjQ0Cj4+IC0tLSBhL2JvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvTUFJTlRBSU5F
+UlMKPj4gKysrIGIvYm9hcmQvcm9ja2NoaXAvZXZiX3JrMzM5OS9NQUlOVEFJTkVSUwo+PiBAQCAt
+NTIsNyArNTIsNyBAQCBGOsKgwqDCoCBhcmNoL2FybS9kdHMvcmszMzk5LW9yYW5nZXBpLXUtYm9v
+dC5kdHNpCj4+IMKgIFJPQy1SSzMzOTktUEMKPj4gwqAgTTrCoMKgwqAgTGV2aW4gRHUgPGRqd0B0
+LWNoaXAuY29tLmNuPgo+PiDCoCBTOsKgwqDCoCBNYWludGFpbmVkCj4+IC1GOsKgwqDCoCBjb25m
+aWdzL3JvYy1yazMzOTktcGNfZGVmY29uZmlnCj4+ICtGOsKgwqDCoCBjb25maWdzL3JvYy1wYy1y
+azMzOTlfZGVmY29uZmlnCj4+IMKgIEY6wqDCoMKgIGFyY2gvYXJtL2R0cy9yazMzOTktcm9jLXBj
+LXUtYm9vdC5kdHNpCj4+IMKgIMKgIFJPQ0stUEktNAo+PiBkaWZmIC0tZ2l0IGEvY29uZmlncy9y
+b2MtcmszMzk5LXBjX2RlZmNvbmZpZyAKPj4gYi9jb25maWdzL3JvYy1wYy1yazMzOTlfZGVmY29u
+ZmlnCj4+IHNpbWlsYXJpdHkgaW5kZXggMTAwJQo+PiByZW5hbWUgZnJvbSBjb25maWdzL3JvYy1y
+azMzOTktcGNfZGVmY29uZmlnCj4+IHJlbmFtZSB0byBjb25maWdzL3JvYy1wYy1yazMzOTlfZGVm
+Y29uZmlnCj4KPgo+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
