@@ -1,73 +1,64 @@
-From: Andrew Murray <andrew.murray@arm.com>
-Subject: Re: [PATCH 2/2] PCI: rockchip: Simplify optional regulator handling
-Date: Mon, 18 Nov 2019 13:17:03 +0000
-Message-ID: <20191118131702.GO43905@e119886-lin.cambridge.arm.com>
-References: <1eebc002101931012d337cda23d18f85b0326361.1573908530.git.robin.murphy@arm.com>
- <347bc3ef8399577e4cef3fdbf3af34d20b4ad27e.1573908530.git.robin.murphy@arm.com>
- <20191118115930.GC9761@sirena.org.uk>
- <a59da4a4-de88-62a5-5f44-001f8e30221e@arm.com>
- <20191118123951.GM43905@e119886-lin.cambridge.arm.com>
- <b0e9a54e-4938-0afe-5059-bddf7e9ae1d9@arm.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: Re: [PATCH 7/9] gadget: rockchip: Add rk3399 USB_GADGET_PRODUCT_NUM
+Date: Mon, 18 Nov 2019 19:14:26 +0530
+Message-ID: <CAMty3ZDkW98E=BfimQM7XiUkxKOqcOnvEwe44iQ_KphUXZth1g@mail.gmail.com>
+References: <20191022175458.22604-1-jagan@amarulasolutions.com>
+ <20191022175458.22604-8-jagan@amarulasolutions.com>
+ <87y2x3ga9q.fsf@archiso.i-did-not-set--mail-host-address--so-tickle-me>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <b0e9a54e-4938-0afe-5059-bddf7e9ae1d9@arm.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: lorenzo.pieralisi@arm.com, heiko@sntech.de, linux-pci@vger.kernel.org, shawn.lin@rock-chips.com, lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, bhelgaas@google.com, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <87y2x3ga9q.fsf-sOhrXWSnOqapXNIQCVAXCG0Lkn3mC4nZ0tOlhedn3YvkypF1WZHjJXhe7Zk3YmMvjmZSf7Nhrd8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Nov 18, 2019 at 01:10:58PM +0000, Robin Murphy wrote:
-> On 18/11/2019 12:39 pm, Andrew Murray wrote:
-> > On Mon, Nov 18, 2019 at 12:20:10PM +0000, Robin Murphy wrote:
-> > > On 18/11/2019 11:59 am, Mark Brown wrote:
-> > > > On Sat, Nov 16, 2019 at 12:54:20PM +0000, Robin Murphy wrote:
-> > > > > Null checks are both cheaper and more readable than having !IS_ERR()
-> > > > > splattered everywhere.
-> > > > 
-> > > > > -	if (IS_ERR(rockchip->vpcie3v3))
-> > > > > +	if (!rockchip->vpcie3v3)
-> > > > >    		return;
-> > > > >    	/*
-> > > > > @@ -611,6 +611,7 @@ static int rockchip_pcie_parse_host_dt(struct rockchip_pcie *rockchip)
-> > > > >    		if (PTR_ERR(rockchip->vpcie12v) != -ENODEV)
-> > > > >    			return PTR_ERR(rockchip->vpcie12v);
-> > > > >    		dev_info(dev, "no vpcie12v regulator found\n");
-> > > > > +		rockchip->vpcie12v = NULL;
-> > > > 
-> > > > According to the API NULL is a valid regulator.  We don't currently
-> > > > actually do this but it's storing up surprises if you treat it as
-> > > > invalid.
-> > > 
-> > > Ah, OK - I'd assumed NULL wasn't valid based on regulator_enable()
-> > > immediately dereferencing its argument without any checks. If we'd rather
-> > > not bake in that assumption then this patch can happily be ignored.
-> > 
-> > I'd suggest we drop this patch.
-> > 
-> > "IS_ERR(ptr)" is not the same as "!ptr", for values of ptr between 0 and
-> > -4095 inclusive.
-> 
-> Hence the explicit initial "if (IS_ERR(ptr)) ptr = NULL;" condition quoted
-> above ;)
+On Tue, Oct 29, 2019 at 3:10 PM <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org> wrote:
+>
+> Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org> writes:
+>
+> > Add 0x330a for rk3399 gadget product number.
+> >
+> > Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+> > ---
+> >  drivers/usb/gadget/Kconfig | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/usb/gadget/Kconfig b/drivers/usb/gadget/Kconfig
+> > index 2da8b40e05..b0e61f3fcd 100644
+> > --- a/drivers/usb/gadget/Kconfig
+> > +++ b/drivers/usb/gadget/Kconfig
+> > @@ -61,7 +61,7 @@ config USB_GADGET_PRODUCT_NUM
+> >       default 0x310a if ROCKCHIP_RK3036
+> >       default 0x310c if ROCKCHIP_RK3128
+> >       default 0x320a if ROCKCHIP_RK3229 || ROCKCHIP_RK3288
+> > -     default 0x330a if ROCKCHIP_RK3328
+> > +     default 0x330a if ROCKCHIP_RK3328 || ROCKCHIP_RK3399
+> >       default 0x0
+> >       help
+> >         Product ID of the USB device emulated, reported to the host device.
+>
+> With 0x330a, the device shown in `lsusb` is:
+>
+>     Bus 002 Device 024: ID 2207:330a Fuzhou Rockchip Electronics Company RK3368 in Mask ROM mode
+> While using 0x330c, the device shown in `lsusb` is:
+>
+>     Bus 002 Device 025: ID 2207:330c Fuzhou Rockchip Electronics Company RK3399 in Mask ROM mode
+>
+> Therefore, this should be modified to use 0x330c:
+>
+> +       default 0x330c if ROCKCHIP_RK3399
 
-Doh.
-
-Andrew Murray
-
-> 
-> But yeah, it was merely an attempt at a minor cosmetic cleanup, so let's
-> just forget about it to avoid any possible confusion.
-> 
-> Cheers,
-> Robin.
+Can you link the host driver for the rockchip gadget, I didn't see the
+name using lsusb. My output on ubuntu host is
+Bus 001 Device 009: ID 2207:330a
