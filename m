@@ -1,864 +1,428 @@
 From: Adrian Ratiu <adrian.ratiu@collabora.com>
-Subject: [PATCH v3 2/4] drm: bridge: dw_mipi_dsi: abstract register access using reg_fields
-Date: Mon, 18 Nov 2019 17:25:16 +0200
-Message-ID: <20191118152518.3374263-3-adrian.ratiu@collabora.com>
+Subject: [PATCH v3 1/4] drm: bridge: dw_mipi_dsi: access registers via a regmap
+Date: Mon, 18 Nov 2019 17:25:15 +0200
+Message-ID: <20191118152518.3374263-2-adrian.ratiu@collabora.com>
 References: <20191118152518.3374263-1-adrian.ratiu@collabora.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20191118152518.3374263-1-adrian.ratiu@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: linux-arm-kernel@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-imx@nxp.com, Boris Brezillon <boris.brezillon@collabora.com>, Emil Velikov <emil.velikov@collabora.com>
+Cc: Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Boris Brezillon <boris.brezillon@collabora.com>, linux-imx@nxp.com, kernel@collabora.com, Emil Velikov <emil.velikov@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Register existence, address/offsets, field layouts, reserved bits and
-so on differ between MIPI-DSI versions and between SoC vendor boards.
-Despite these differences the hw IP and protocols are mostly the same
-so the generic driver can be made to compensate these differences.
-
-The current Rockchip and STM drivers hardcoded a lot of their common
-definitions in the bridge code because they're based on DSI v1.30 and
-1.31 which are relatively close, but in order to support older/future
-versions with more diverging layouts like the v1.01 present on imx6,
-we abstract some of the register accesses via the regmap field APIs.
-
-The bridge detects the DSI core version and initializes the required
-regmap register layout, so platform drivers will continue to use the
-regmap as before. Other DSI versions / register layouts can easily be
-added in the future by only changing the bridge code.
-
-An additional benefit of using the reg_field API is that much of the
-bit-shifting and masking boilerplate is removed because it's now
-handled automatically by the regmap subsystem.
-
-Not all register accesses have been converted: only the minimum diff
-between the three host controller versions supported by the current
-vendor platform drivers (rockchip, stm and now imx), more can be added
-in the future as needed.
-
-Suggested-by: Boris Brezillon <boris.brezillon@collabora.com>
-Reviewed-by: Emil Velikov <emil.velikov@collabora.com>
-Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
----
- drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 504 ++++++++++++------
- 1 file changed, 346 insertions(+), 158 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-index 6cb57807f3f9..a41a630302b6 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-@@ -47,7 +47,6 @@
- #define DPI_VCID(vcid)			((vcid) & 0x3)
- 
- #define DSI_DPI_COLOR_CODING		0x10
--#define LOOSELY18_EN			BIT(8)
- #define DPI_COLOR_CODING_16BIT_1	0x0
- #define DPI_COLOR_CODING_16BIT_2	0x1
- #define DPI_COLOR_CODING_16BIT_3	0x2
-@@ -56,11 +55,6 @@
- #define DPI_COLOR_CODING_24BIT		0x5
- 
- #define DSI_DPI_CFG_POL			0x14
--#define COLORM_ACTIVE_LOW		BIT(4)
--#define SHUTD_ACTIVE_LOW		BIT(3)
--#define HSYNC_ACTIVE_LOW		BIT(2)
--#define VSYNC_ACTIVE_LOW		BIT(1)
--#define DATAEN_ACTIVE_LOW		BIT(0)
- 
- #define DSI_DPI_LP_CMD_TIM		0x18
- #define OUTVACT_LPCMD_TIME(p)		(((p) & 0xff) << 16)
-@@ -81,27 +75,19 @@
- #define DSI_GEN_VCID			0x30
- 
- #define DSI_MODE_CFG			0x34
--#define ENABLE_VIDEO_MODE		0
--#define ENABLE_CMD_MODE			BIT(0)
- 
- #define DSI_VID_MODE_CFG		0x38
--#define ENABLE_LOW_POWER		(0x3f << 8)
--#define ENABLE_LOW_POWER_MASK		(0x3f << 8)
-+#define ENABLE_LOW_POWER		0x3f
-+
- #define VID_MODE_TYPE_NON_BURST_SYNC_PULSES	0x0
- #define VID_MODE_TYPE_NON_BURST_SYNC_EVENTS	0x1
- #define VID_MODE_TYPE_BURST			0x2
--#define VID_MODE_TYPE_MASK			0x3
--#define VID_MODE_VPG_ENABLE		BIT(16)
--#define VID_MODE_VPG_HORIZONTAL		BIT(24)
- 
- #define DSI_VID_PKT_SIZE		0x3c
--#define VID_PKT_SIZE(p)			((p) & 0x3fff)
- 
- #define DSI_VID_NUM_CHUNKS		0x40
--#define VID_NUM_CHUNKS(c)		((c) & 0x1fff)
- 
- #define DSI_VID_NULL_SIZE		0x44
--#define VID_NULL_SIZE(b)		((b) & 0x1fff)
- 
- #define DSI_VID_HSA_TIME		0x48
- #define DSI_VID_HBP_TIME		0x4c
-@@ -125,7 +111,6 @@
- #define GEN_SW_2P_TX_LP			BIT(10)
- #define GEN_SW_1P_TX_LP			BIT(9)
- #define GEN_SW_0P_TX_LP			BIT(8)
--#define ACK_RQST_EN			BIT(1)
- #define TEAR_FX_EN			BIT(0)
- 
- #define CMD_MODE_ALL_LP			(MAX_RD_PKT_SIZE_LP | \
-@@ -154,8 +139,6 @@
- #define GEN_CMD_EMPTY			BIT(0)
- 
- #define DSI_TO_CNT_CFG			0x78
--#define HSTX_TO_CNT(p)			(((p) & 0xffff) << 16)
--#define LPRX_TO_CNT(p)			((p) & 0xffff)
- 
- #define DSI_HS_RD_TO_CNT		0x7c
- #define DSI_LP_RD_TO_CNT		0x80
-@@ -164,52 +147,17 @@
- #define DSI_BTA_TO_CNT			0x8c
- 
- #define DSI_LPCLK_CTRL			0x94
--#define AUTO_CLKLANE_CTRL		BIT(1)
--#define PHY_TXREQUESTCLKHS		BIT(0)
--
- #define DSI_PHY_TMR_LPCLK_CFG		0x98
--#define PHY_CLKHS2LP_TIME(lbcc)		(((lbcc) & 0x3ff) << 16)
--#define PHY_CLKLP2HS_TIME(lbcc)		((lbcc) & 0x3ff)
--
- #define DSI_PHY_TMR_CFG			0x9c
--#define PHY_HS2LP_TIME(lbcc)		(((lbcc) & 0xff) << 24)
--#define PHY_LP2HS_TIME(lbcc)		(((lbcc) & 0xff) << 16)
--#define MAX_RD_TIME(lbcc)		((lbcc) & 0x7fff)
--#define PHY_HS2LP_TIME_V131(lbcc)	(((lbcc) & 0x3ff) << 16)
--#define PHY_LP2HS_TIME_V131(lbcc)	((lbcc) & 0x3ff)
--
- #define DSI_PHY_RSTZ			0xa0
--#define PHY_DISFORCEPLL			0
--#define PHY_ENFORCEPLL			BIT(3)
--#define PHY_DISABLECLK			0
--#define PHY_ENABLECLK			BIT(2)
--#define PHY_RSTZ			0
--#define PHY_UNRSTZ			BIT(1)
--#define PHY_SHUTDOWNZ			0
--#define PHY_UNSHUTDOWNZ			BIT(0)
--
- #define DSI_PHY_IF_CFG			0xa4
--#define PHY_STOP_WAIT_TIME(cycle)	(((cycle) & 0xff) << 8)
--#define N_LANES(n)			(((n) - 1) & 0x3)
--
--#define DSI_PHY_ULPS_CTRL		0xa8
--#define DSI_PHY_TX_TRIGGERS		0xac
- 
- #define DSI_PHY_STATUS			0xb0
- #define PHY_STOP_STATE_CLK_LANE		BIT(2)
- #define PHY_LOCK			BIT(0)
- 
- #define DSI_PHY_TST_CTRL0		0xb4
--#define PHY_TESTCLK			BIT(1)
--#define PHY_UNTESTCLK			0
--#define PHY_TESTCLR			BIT(0)
--#define PHY_UNTESTCLR			0
--
- #define DSI_PHY_TST_CTRL1		0xb8
--#define PHY_TESTEN			BIT(16)
--#define PHY_UNTESTEN			0
--#define PHY_TESTDOUT(n)			(((n) & 0xff) << 8)
--#define PHY_TESTDIN(n)			((n) & 0xff)
- 
- #define DSI_INT_ST0			0xbc
- #define DSI_INT_ST1			0xc0
-@@ -217,7 +165,6 @@
- #define DSI_INT_MSK1			0xc8
- 
- #define DSI_PHY_TMR_RD_CFG		0xf4
--#define MAX_RD_TIME_V131(lbcc)		((lbcc) & 0x7fff)
- 
- #define PHY_STATUS_TIMEOUT_US		10000
- #define CMD_PKT_STATUS_TIMEOUT_US	20000
-@@ -236,6 +183,7 @@ struct dw_mipi_dsi {
- 	u32 lanes;
- 	u32 format;
- 	unsigned long mode_flags;
-+	u32 hw_version;
- 
- #ifdef CONFIG_DEBUG_FS
- 	struct dentry *debugfs;
-@@ -248,6 +196,53 @@ struct dw_mipi_dsi {
- 	struct dw_mipi_dsi *slave; /* dual-dsi slave ptr */
- 
- 	const struct dw_mipi_dsi_plat_data *plat_data;
-+
-+	struct regmap_field	*field_dpi_18loosely_en;
-+	struct regmap_field	*field_dpi_color_coding;
-+	struct regmap_field	*field_dpi_vid;
-+	struct regmap_field	*field_dpi_vsync_active_low;
-+	struct regmap_field	*field_dpi_hsync_active_low;
-+	struct regmap_field	*field_cmd_mode_ack_rqst_en;
-+	struct regmap_field	*field_cmd_mode_all_lp_en;
-+	struct regmap_field	*field_cmd_mode_en;
-+	struct regmap_field	*field_cmd_pkt_status;
-+	struct regmap_field	*field_vid_mode_en;
-+	struct regmap_field	*field_vid_mode_type;
-+	struct regmap_field	*field_vid_mode_low_power;
-+	struct regmap_field	*field_vid_mode_vpg_en;
-+	struct regmap_field	*field_vid_mode_vpg_horiz;
-+	struct regmap_field	*field_vid_pkt_size;
-+	struct regmap_field	*field_vid_hsa_time;
-+	struct regmap_field	*field_vid_hbp_time;
-+	struct regmap_field	*field_vid_hline_time;
-+	struct regmap_field	*field_vid_vsa_time;
-+	struct regmap_field	*field_vid_vbp_time;
-+	struct regmap_field	*field_vid_vfp_time;
-+	struct regmap_field	*field_vid_vactive_time;
-+	struct regmap_field	*field_phy_txrequestclkhs;
-+	struct regmap_field	*field_phy_bta_time;
-+	struct regmap_field	*field_phy_max_rd_time;
-+	struct regmap_field	*field_phy_lp2hs_time;
-+	struct regmap_field	*field_phy_hs2lp_time;
-+	struct regmap_field	*field_phy_clklp2hs_time;
-+	struct regmap_field	*field_phy_clkhs2lp_time;
-+	struct regmap_field	*field_phy_testclr;
-+	struct regmap_field	*field_phy_unshutdownz;
-+	struct regmap_field	*field_phy_unrstz;
-+	struct regmap_field	*field_phy_enableclk;
-+	struct regmap_field	*field_phy_forcepll;
-+	struct regmap_field	*field_phy_nlanes;
-+	struct regmap_field	*field_phy_stop_wait_time;
-+	struct regmap_field	*field_phy_status;
-+	struct regmap_field	*field_pckhdl_cfg;
-+	struct regmap_field	*field_hstx_timeout_counter;
-+	struct regmap_field	*field_lprx_timeout_counter;
-+	struct regmap_field	*field_int_stat0;
-+	struct regmap_field	*field_int_stat1;
-+	struct regmap_field	*field_int_mask0;
-+	struct regmap_field	*field_int_mask1;
-+	struct regmap_field	*field_gen_hdr;
-+	struct regmap_field	*field_gen_payload;
- };
- 
- static const struct regmap_config dw_mipi_dsi_regmap_cfg = {
-@@ -257,6 +252,111 @@ static const struct regmap_config dw_mipi_dsi_regmap_cfg = {
- 	.name = "dw-mipi-dsi",
- };
- 
-+struct dw_mipi_dsi_variant {
-+	/* Regmap field configs for DSI adapter */
-+	struct reg_field	cfg_dpi_18loosely_en;
-+	struct reg_field	cfg_dpi_color_coding;
-+	struct reg_field	cfg_dpi_vid;
-+	struct reg_field	cfg_dpi_vsync_active_low;
-+	struct reg_field	cfg_dpi_hsync_active_low;
-+	struct reg_field	cfg_cmd_mode_en;
-+	struct reg_field	cfg_cmd_mode_ack_rqst_en;
-+	struct reg_field	cfg_cmd_mode_all_lp_en;
-+	struct reg_field	cfg_cmd_pkt_status;
-+	struct reg_field	cfg_vid_mode_en;
-+	struct reg_field	cfg_vid_mode_type;
-+	struct reg_field	cfg_vid_mode_low_power;
-+	struct reg_field	cfg_vid_mode_vpg_en;
-+	struct reg_field	cfg_vid_mode_vpg_horiz;
-+	struct reg_field	cfg_vid_pkt_size;
-+	struct reg_field	cfg_vid_hsa_time;
-+	struct reg_field	cfg_vid_hbp_time;
-+	struct reg_field	cfg_vid_hline_time;
-+	struct reg_field	cfg_vid_vsa_time;
-+	struct reg_field	cfg_vid_vbp_time;
-+	struct reg_field	cfg_vid_vfp_time;
-+	struct reg_field	cfg_vid_vactive_time;
-+	struct reg_field	cfg_phy_txrequestclkhs;
-+	struct reg_field	cfg_phy_bta_time;
-+	struct reg_field	cfg_phy_max_rd_time;
-+	struct reg_field	cfg_phy_lp2hs_time;
-+	struct reg_field	cfg_phy_hs2lp_time;
-+	struct reg_field	cfg_phy_max_rd_time_v131;
-+	struct reg_field	cfg_phy_lp2hs_time_v131;
-+	struct reg_field	cfg_phy_hs2lp_time_v131;
-+	struct reg_field	cfg_phy_clklp2hs_time;
-+	struct reg_field	cfg_phy_clkhs2lp_time;
-+	struct reg_field	cfg_phy_testclr;
-+	struct reg_field	cfg_phy_unshutdownz;
-+	struct reg_field	cfg_phy_unrstz;
-+	struct reg_field	cfg_phy_enableclk;
-+	struct reg_field	cfg_phy_forcepll;
-+	struct reg_field	cfg_phy_nlanes;
-+	struct reg_field	cfg_phy_stop_wait_time;
-+	struct reg_field	cfg_phy_status;
-+	struct reg_field	cfg_pckhdl_cfg;
-+	struct reg_field	cfg_hstx_timeout_counter;
-+	struct reg_field	cfg_lprx_timeout_counter;
-+	struct reg_field	cfg_int_stat0;
-+	struct reg_field	cfg_int_stat1;
-+	struct reg_field	cfg_int_mask0;
-+	struct reg_field	cfg_int_mask1;
-+	struct reg_field	cfg_gen_hdr;
-+	struct reg_field	cfg_gen_payload;
-+};
-+
-+static const struct dw_mipi_dsi_variant dw_mipi_dsi_v130_v131_layout = {
-+	.cfg_dpi_color_coding =		REG_FIELD(DSI_DPI_COLOR_CODING, 0, 3),
-+	.cfg_dpi_18loosely_en =		REG_FIELD(DSI_DPI_COLOR_CODING, 8, 8),
-+	.cfg_dpi_vid =			REG_FIELD(DSI_DPI_VCID, 0, 2),
-+	.cfg_dpi_vsync_active_low =	REG_FIELD(DSI_DPI_CFG_POL, 1, 1),
-+	.cfg_dpi_hsync_active_low =	REG_FIELD(DSI_DPI_CFG_POL, 2, 2),
-+	.cfg_cmd_mode_ack_rqst_en =	REG_FIELD(DSI_CMD_MODE_CFG, 1, 1),
-+	.cfg_cmd_mode_all_lp_en =	REG_FIELD(DSI_CMD_MODE_CFG, 8, 24),
-+	.cfg_cmd_mode_en =		REG_FIELD(DSI_MODE_CFG, 0, 31),
-+	.cfg_cmd_pkt_status =		REG_FIELD(DSI_CMD_PKT_STATUS, 0, 31),
-+	.cfg_vid_mode_en =		REG_FIELD(DSI_MODE_CFG, 0, 31),
-+	.cfg_vid_mode_type =		REG_FIELD(DSI_VID_MODE_CFG, 0, 1),
-+	.cfg_vid_mode_low_power =	REG_FIELD(DSI_VID_MODE_CFG, 8, 13),
-+	.cfg_vid_mode_vpg_en =		REG_FIELD(DSI_VID_MODE_CFG, 16, 16),
-+	.cfg_vid_mode_vpg_horiz =	REG_FIELD(DSI_VID_MODE_CFG, 24, 24),
-+	.cfg_vid_pkt_size =		REG_FIELD(DSI_VID_PKT_SIZE, 0, 10),
-+	.cfg_vid_hsa_time =		REG_FIELD(DSI_VID_HSA_TIME, 0, 31),
-+	.cfg_vid_hbp_time =		REG_FIELD(DSI_VID_HBP_TIME, 0, 31),
-+	.cfg_vid_hline_time =		REG_FIELD(DSI_VID_HLINE_TIME, 0, 31),
-+	.cfg_vid_vsa_time =		REG_FIELD(DSI_VID_VSA_LINES, 0, 31),
-+	.cfg_vid_vbp_time =		REG_FIELD(DSI_VID_VBP_LINES, 0, 31),
-+	.cfg_vid_vfp_time =		REG_FIELD(DSI_VID_VFP_LINES, 0, 31),
-+	.cfg_vid_vactive_time =		REG_FIELD(DSI_VID_VACTIVE_LINES, 0, 31),
-+	.cfg_phy_txrequestclkhs =	REG_FIELD(DSI_LPCLK_CTRL, 0, 0),
-+	.cfg_phy_bta_time =		REG_FIELD(DSI_BTA_TO_CNT, 0, 31),
-+	.cfg_phy_max_rd_time =		REG_FIELD(DSI_PHY_TMR_CFG, 0, 15),
-+	.cfg_phy_lp2hs_time =		REG_FIELD(DSI_PHY_TMR_CFG, 16, 23),
-+	.cfg_phy_hs2lp_time =		REG_FIELD(DSI_PHY_TMR_CFG, 24, 31),
-+	.cfg_phy_max_rd_time_v131 =	REG_FIELD(DSI_PHY_TMR_RD_CFG, 0, 15),
-+	.cfg_phy_lp2hs_time_v131 =	REG_FIELD(DSI_PHY_TMR_CFG, 0, 15),
-+	.cfg_phy_hs2lp_time_v131 =	REG_FIELD(DSI_PHY_TMR_CFG, 16, 31),
-+	.cfg_phy_clklp2hs_time =	REG_FIELD(DSI_PHY_TMR_LPCLK_CFG, 0, 15),
-+	.cfg_phy_clkhs2lp_time =	REG_FIELD(DSI_PHY_TMR_LPCLK_CFG, 16, 31),
-+	.cfg_phy_testclr =		REG_FIELD(DSI_PHY_TST_CTRL0, 0, 0),
-+	.cfg_phy_unshutdownz =		REG_FIELD(DSI_PHY_RSTZ, 0, 0),
-+	.cfg_phy_unrstz =		REG_FIELD(DSI_PHY_RSTZ, 1, 1),
-+	.cfg_phy_enableclk =		REG_FIELD(DSI_PHY_RSTZ, 2, 2),
-+	.cfg_phy_forcepll =		REG_FIELD(DSI_PHY_RSTZ, 3, 3),
-+	.cfg_phy_nlanes =		REG_FIELD(DSI_PHY_IF_CFG, 0, 1),
-+	.cfg_phy_stop_wait_time =	REG_FIELD(DSI_PHY_IF_CFG, 8, 15),
-+	.cfg_phy_status =		REG_FIELD(DSI_PHY_STATUS, 0, 0),
-+	.cfg_pckhdl_cfg =		REG_FIELD(DSI_PCKHDL_CFG, 0, 4),
-+	.cfg_hstx_timeout_counter =	REG_FIELD(DSI_TO_CNT_CFG, 16, 31),
-+	.cfg_lprx_timeout_counter =	REG_FIELD(DSI_TO_CNT_CFG, 0, 15),
-+	.cfg_int_stat0 =		REG_FIELD(DSI_INT_ST0, 0, 31),
-+	.cfg_int_stat1 =		REG_FIELD(DSI_INT_ST1, 0, 31),
-+	.cfg_int_mask0 =		REG_FIELD(DSI_INT_MSK0, 0, 31),
-+	.cfg_int_mask1 =		REG_FIELD(DSI_INT_MSK1, 0, 31),
-+	.cfg_gen_hdr =			REG_FIELD(DSI_GEN_HDR, 0, 31),
-+	.cfg_gen_payload =		REG_FIELD(DSI_GEN_PLD_DATA, 0, 31),
-+};
-+
- /*
-  * Check if either a link to a master or slave is present
-  */
-@@ -357,15 +457,16 @@ static void dw_mipi_message_config(struct dw_mipi_dsi *dsi,
- 				   const struct mipi_dsi_msg *msg)
- {
- 	bool lpm = msg->flags & MIPI_DSI_MSG_USE_LPM;
--	u32 val = 0;
-+	u32 cmd_mode_lp = 0;
- 
- 	if (msg->flags & MIPI_DSI_MSG_REQ_ACK)
--		val |= ACK_RQST_EN;
-+		regmap_field_write(dsi->field_cmd_mode_ack_rqst_en, 1);
-+
- 	if (lpm)
--		val |= CMD_MODE_ALL_LP;
-+		regmap_field_write(dsi->field_cmd_mode_all_lp_en,
-+				   CMD_MODE_ALL_LP);
- 
--	regmap_write(dsi->regs, DSI_LPCLK_CTRL, lpm ? 0 : PHY_TXREQUESTCLKHS);
--	regmap_write(dsi->regs, DSI_CMD_MODE_CFG, val);
-+	regmap_field_write(dsi->field_phy_txrequestclkhs, lpm ? 0 : 1);
- }
- 
- static int dw_mipi_dsi_gen_pkt_hdr_write(struct dw_mipi_dsi *dsi, u32 hdr_val)
-@@ -373,18 +474,18 @@ static int dw_mipi_dsi_gen_pkt_hdr_write(struct dw_mipi_dsi *dsi, u32 hdr_val)
- 	int ret;
- 	u32 val = 0, mask;
- 
--	ret = regmap_read_poll_timeout(dsi->regs, DSI_CMD_PKT_STATUS,
--				       val, !(val & GEN_CMD_FULL), 1000,
--				       CMD_PKT_STATUS_TIMEOUT_US);
-+	ret = regmap_field_read_poll_timeout(dsi->field_cmd_pkt_status,
-+					     val, !(val & GEN_CMD_FULL),
-+					     1000, CMD_PKT_STATUS_TIMEOUT_US);
- 	if (ret) {
- 		dev_err(dsi->dev, "failed to get available command FIFO\n");
- 		return ret;
- 	}
- 
--	regmap_write(dsi->regs, DSI_GEN_HDR, hdr_val);
-+	regmap_field_write(dsi->field_gen_hdr, hdr_val);
- 
- 	mask = GEN_CMD_EMPTY | GEN_PLD_W_EMPTY;
--	ret = regmap_read_poll_timeout(dsi->regs, DSI_CMD_PKT_STATUS,
-+	ret = regmap_field_read_poll_timeout(dsi->field_cmd_pkt_status,
- 				       val, (val & mask) == mask,
- 				       1000, CMD_PKT_STATUS_TIMEOUT_US);
- 	if (ret) {
-@@ -407,20 +508,22 @@ static int dw_mipi_dsi_write(struct dw_mipi_dsi *dsi,
- 		if (len < pld_data_bytes) {
- 			word = 0;
- 			memcpy(&word, tx_buf, len);
--			regmap_write(dsi->regs, DSI_GEN_PLD_DATA,
--				     le32_to_cpu(word));
-+			regmap_field_write(dsi->field_gen_payload,
-+					   le32_to_cpu(word));
- 			len = 0;
- 		} else {
- 			memcpy(&word, tx_buf, pld_data_bytes);
--			regmap_write(dsi->regs, DSI_GEN_PLD_DATA,
--				     le32_to_cpu(word));
-+			regmap_field_write(dsi->field_gen_payload,
-+					   le32_to_cpu(word));
- 			tx_buf += pld_data_bytes;
- 			len -= pld_data_bytes;
- 		}
- 
--		ret = regmap_read_poll_timeout(dsi->regs, DSI_CMD_PKT_STATUS,
--					       val, !(val & GEN_PLD_W_FULL),
--					       1000, CMD_PKT_STATUS_TIMEOUT_US);
-+		ret = regmap_field_read_poll_timeout(dsi->field_cmd_pkt_status,
-+						     val,
-+						     !(val & GEN_PLD_W_FULL),
-+						     1000,
-+						     CMD_PKT_STATUS_TIMEOUT_US);
- 		if (ret) {
- 			dev_err(dsi->dev,
- 				"failed to get available write payload FIFO\n");
-@@ -441,9 +544,9 @@ static int dw_mipi_dsi_read(struct dw_mipi_dsi *dsi,
- 	u32 val = 0;
- 
- 	/* Wait end of the read operation */
--	ret = regmap_read_poll_timeout(dsi->regs, DSI_CMD_PKT_STATUS,
--				       val, !(val & GEN_RD_CMD_BUSY),
--				       1000, CMD_PKT_STATUS_TIMEOUT_US);
-+	ret = regmap_field_read_poll_timeout(dsi->field_cmd_pkt_status,
-+					     val, !(val & GEN_RD_CMD_BUSY),
-+					     1000, CMD_PKT_STATUS_TIMEOUT_US);
- 	if (ret) {
- 		dev_err(dsi->dev, "Timeout during read operation\n");
- 		return ret;
-@@ -451,15 +554,17 @@ static int dw_mipi_dsi_read(struct dw_mipi_dsi *dsi,
- 
- 	for (i = 0; i < len; i += 4) {
- 		/* Read fifo must not be empty before all bytes are read */
--		ret = regmap_read_poll_timeout(dsi->regs, DSI_CMD_PKT_STATUS,
--					       val, !(val & GEN_PLD_R_EMPTY),
--					       1000, CMD_PKT_STATUS_TIMEOUT_US);
-+		ret = regmap_field_read_poll_timeout(dsi->field_cmd_pkt_status,
-+						     val,
-+						     !(val & GEN_PLD_R_EMPTY),
-+						     1000,
-+						     CMD_PKT_STATUS_TIMEOUT_US);
- 		if (ret) {
- 			dev_err(dsi->dev, "Read payload FIFO is empty\n");
- 			return ret;
- 		}
- 
--		regmap_read(dsi->regs, DSI_GEN_PLD_DATA, &val);
-+		regmap_field_read(dsi->field_gen_payload, &val);
- 		for (j = 0; j < 4 && j + i < len; j++)
- 			buf[i + j] = val >> (8 * j);
- 	}
-@@ -513,30 +618,30 @@ static const struct mipi_dsi_host_ops dw_mipi_dsi_host_ops = {
- 
- static void dw_mipi_dsi_video_mode_config(struct dw_mipi_dsi *dsi)
- {
--	u32 val;
--
- 	/*
- 	 * TODO dw drv improvements
- 	 * enabling low power is panel-dependent, we should use the
- 	 * panel configuration here...
- 	 */
--	val = ENABLE_LOW_POWER;
-+	regmap_field_write(dsi->field_vid_mode_low_power, ENABLE_LOW_POWER);
- 
- 	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST)
--		val |= VID_MODE_TYPE_BURST;
-+		regmap_field_write(dsi->field_vid_mode_type,
-+				   VID_MODE_TYPE_BURST);
- 	else if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE)
--		val |= VID_MODE_TYPE_NON_BURST_SYNC_PULSES;
-+		regmap_field_write(dsi->field_vid_mode_type,
-+				   VID_MODE_TYPE_NON_BURST_SYNC_PULSES);
- 	else
--		val |= VID_MODE_TYPE_NON_BURST_SYNC_EVENTS;
-+		regmap_field_write(dsi->field_vid_mode_type,
-+				   VID_MODE_TYPE_NON_BURST_SYNC_EVENTS);
- 
- #ifdef CONFIG_DEBUG_FS
- 	if (dsi->vpg) {
--		val |= VID_MODE_VPG_ENABLE;
--		val |= dsi->vpg_horizontal ? VID_MODE_VPG_HORIZONTAL : 0;
-+		regmap_field_write(dsi->regs, dsi->field_vid_mode_vpg_en, 1);
-+		regmap_field_write(dsi->regs, dsi->field_vid_mode_vpg_horiz,
-+				   dsi->vpg_horizontal ? 1 : 0);
- 	}
- #endif /* CONFIG_DEBUG_FS */
--
--	regmap_write(dsi->regs, DSI_VID_MODE_CFG, val);
- }
- 
- static void dw_mipi_dsi_set_mode(struct dw_mipi_dsi *dsi,
-@@ -545,11 +650,13 @@ static void dw_mipi_dsi_set_mode(struct dw_mipi_dsi *dsi,
- 	regmap_write(dsi->regs, DSI_PWR_UP, RESET);
- 
- 	if (mode_flags & MIPI_DSI_MODE_VIDEO) {
--		regmap_write(dsi->regs, DSI_MODE_CFG, ENABLE_VIDEO_MODE);
-+		regmap_field_write(dsi->field_cmd_mode_en, 0);
-+
- 		dw_mipi_dsi_video_mode_config(dsi);
--		regmap_write(dsi->regs, DSI_LPCLK_CTRL, PHY_TXREQUESTCLKHS);
-+
-+		regmap_field_write(dsi->field_phy_txrequestclkhs, 1);
- 	} else {
--		regmap_write(dsi->regs, DSI_MODE_CFG, ENABLE_CMD_MODE);
-+		regmap_field_write(dsi->field_cmd_mode_en, 1);
- 	}
- 
- 	regmap_write(dsi->regs, DSI_PWR_UP, POWERUP);
-@@ -558,7 +665,7 @@ static void dw_mipi_dsi_set_mode(struct dw_mipi_dsi *dsi,
- static void dw_mipi_dsi_disable(struct dw_mipi_dsi *dsi)
- {
- 	regmap_write(dsi->regs, DSI_PWR_UP, RESET);
--	regmap_write(dsi->regs, DSI_PHY_RSTZ, PHY_RSTZ);
-+	regmap_field_write(dsi->field_phy_unrstz, 0);
- }
- 
- static void dw_mipi_dsi_init(struct dw_mipi_dsi *dsi)
-@@ -587,14 +694,15 @@ static void dw_mipi_dsi_init(struct dw_mipi_dsi *dsi)
- static void dw_mipi_dsi_dpi_config(struct dw_mipi_dsi *dsi,
- 				   const struct drm_display_mode *mode)
- {
--	u32 val = 0, color = 0;
-+	u32 color = 0;
- 
- 	switch (dsi->format) {
- 	case MIPI_DSI_FMT_RGB888:
- 		color = DPI_COLOR_CODING_24BIT;
- 		break;
- 	case MIPI_DSI_FMT_RGB666:
--		color = DPI_COLOR_CODING_18BIT_2 | LOOSELY18_EN;
-+		color = DPI_COLOR_CODING_18BIT_2;
-+		regmap_field_write(dsi->field_dpi_18loosely_en, 1);
- 		break;
- 	case MIPI_DSI_FMT_RGB666_PACKED:
- 		color = DPI_COLOR_CODING_18BIT_1;
-@@ -604,14 +712,15 @@ static void dw_mipi_dsi_dpi_config(struct dw_mipi_dsi *dsi,
- 		break;
- 	}
- 
--	if (mode->flags & DRM_MODE_FLAG_NVSYNC)
--		val |= VSYNC_ACTIVE_LOW;
--	if (mode->flags & DRM_MODE_FLAG_NHSYNC)
--		val |= HSYNC_ACTIVE_LOW;
-+	regmap_field_write(dsi->field_dpi_color_coding, color);
-+
-+	if (!(mode->flags & DRM_MODE_FLAG_NVSYNC))
-+		regmap_field_write(dsi->field_dpi_vsync_active_low, 1);
-+	if (!(mode->flags & DRM_MODE_FLAG_NHSYNC))
-+		regmap_field_write(dsi->field_dpi_hsync_active_low, 1);
-+
-+	regmap_field_write(dsi->field_dpi_vid, DPI_VCID(dsi->channel));
- 
--	regmap_write(dsi->regs, DSI_DPI_VCID, DPI_VCID(dsi->channel));
--	regmap_write(dsi->regs, DSI_DPI_COLOR_CODING, color);
--	regmap_write(dsi->regs, DSI_DPI_CFG_POL, val);
- 	/*
- 	 * TODO dw drv improvements
- 	 * largest packet sizes during hfp or during vsa/vpb/vfp
-@@ -624,7 +733,8 @@ static void dw_mipi_dsi_dpi_config(struct dw_mipi_dsi *dsi,
- 
- static void dw_mipi_dsi_packet_handler_config(struct dw_mipi_dsi *dsi)
- {
--	regmap_write(dsi->regs, DSI_PCKHDL_CFG, CRC_RX_EN | ECC_RX_EN | BTA_EN);
-+	regmap_field_write(dsi->field_pckhdl_cfg,
-+			   CRC_RX_EN | ECC_RX_EN | BTA_EN);
- }
- 
- static void dw_mipi_dsi_video_packet_config(struct dw_mipi_dsi *dsi,
-@@ -637,11 +747,9 @@ static void dw_mipi_dsi_video_packet_config(struct dw_mipi_dsi *dsi,
- 	 * DSI_VNPCR.NPSIZE... especially because this driver supports
- 	 * non-burst video modes, see dw_mipi_dsi_video_mode_config()...
- 	 */
--
--	regmap_write(dsi->regs, DSI_VID_PKT_SIZE,
--		       dw_mipi_is_dual_mode(dsi) ?
--				VID_PKT_SIZE(mode->hdisplay / 2) :
--				VID_PKT_SIZE(mode->hdisplay));
-+	regmap_field_write(dsi->field_vid_pkt_size,
-+			   dw_mipi_is_dual_mode(dsi) ?
-+				mode->hdisplay / 2 : mode->hdisplay);
- }
- 
- static void dw_mipi_dsi_command_mode_config(struct dw_mipi_dsi *dsi)
-@@ -651,15 +759,17 @@ static void dw_mipi_dsi_command_mode_config(struct dw_mipi_dsi *dsi)
- 	 * compute high speed transmission counter timeout according
- 	 * to the timeout clock division (TO_CLK_DIVISION) and byte lane...
- 	 */
--	regmap_write(dsi->regs, DSI_TO_CNT_CFG,
--		     HSTX_TO_CNT(1000) | LPRX_TO_CNT(1000));
-+	regmap_field_write(dsi->field_hstx_timeout_counter, 1000);
-+	regmap_field_write(dsi->field_lprx_timeout_counter, 1000);
-+
- 	/*
- 	 * TODO dw drv improvements
- 	 * the Bus-Turn-Around Timeout Counter should be computed
- 	 * according to byte lane...
- 	 */
--	regmap_write(dsi->regs, DSI_BTA_TO_CNT, 0xd00);
--	regmap_write(dsi->regs, DSI_MODE_CFG, ENABLE_CMD_MODE);
-+	regmap_field_write(dsi->field_phy_bta_time, 0xd00);
-+
-+	regmap_field_write(dsi->field_cmd_mode_en, 1);
- }
- 
- /* Get lane byte clock cycles. */
-@@ -693,13 +803,13 @@ static void dw_mipi_dsi_line_timer_config(struct dw_mipi_dsi *dsi,
- 	 * computations below may be improved...
- 	 */
- 	lbcc = dw_mipi_dsi_get_hcomponent_lbcc(dsi, mode, htotal);
--	regmap_write(dsi->regs, DSI_VID_HLINE_TIME, lbcc);
-+	regmap_field_write(dsi->field_vid_hline_time, lbcc);
- 
- 	lbcc = dw_mipi_dsi_get_hcomponent_lbcc(dsi, mode, hsa);
--	regmap_write(dsi->regs, DSI_VID_HSA_TIME, lbcc);
-+	regmap_field_write(dsi->field_vid_hsa_time, lbcc);
- 
- 	lbcc = dw_mipi_dsi_get_hcomponent_lbcc(dsi, mode, hbp);
--	regmap_write(dsi->regs, DSI_VID_HBP_TIME, lbcc);
-+	regmap_field_write(dsi->field_vid_hbp_time, lbcc);
- }
- 
- static void dw_mipi_dsi_vertical_timing_config(struct dw_mipi_dsi *dsi,
-@@ -712,16 +822,14 @@ static void dw_mipi_dsi_vertical_timing_config(struct dw_mipi_dsi *dsi,
- 	vfp = mode->vsync_start - mode->vdisplay;
- 	vbp = mode->vtotal - mode->vsync_end;
- 
--	regmap_write(dsi->regs, DSI_VID_VACTIVE_LINES, vactive);
--	regmap_write(dsi->regs, DSI_VID_VSA_LINES, vsa);
--	regmap_write(dsi->regs, DSI_VID_VFP_LINES, vfp);
--	regmap_write(dsi->regs, DSI_VID_VBP_LINES, vbp);
-+	regmap_field_write(dsi->field_vid_vactive_time, vactive);
-+	regmap_field_write(dsi->field_vid_vsa_time, vsa);
-+	regmap_field_write(dsi->field_vid_vfp_time, vfp);
-+	regmap_field_write(dsi->field_vid_vbp_time, vbp);
- }
- 
- static void dw_mipi_dsi_dphy_timing_config(struct dw_mipi_dsi *dsi)
- {
--	u32 hw_version;
--
- 	/*
- 	 * TODO dw drv improvements
- 	 * data & clock lane timers should be computed according to panel
-@@ -729,25 +837,12 @@ static void dw_mipi_dsi_dphy_timing_config(struct dw_mipi_dsi *dsi)
- 	 * note: DSI_PHY_TMR_CFG.MAX_RD_TIME should be in line with
- 	 * DSI_CMD_MODE_CFG.MAX_RD_PKT_SIZE_LP (see CMD_MODE_ALL_LP)
- 	 */
-+	regmap_field_write(dsi->field_phy_lp2hs_time, 0x40);
-+	regmap_field_write(dsi->field_phy_hs2lp_time, 0x40);
- 
--	regmap_read(dsi->regs, DSI_VERSION, &hw_version);
--	hw_version &= VERSION;
--
--	if (hw_version >= HWVER_131) {
--		regmap_write(dsi->regs, DSI_PHY_TMR_CFG,
--			     PHY_HS2LP_TIME_V131(0x40) |
--			     PHY_LP2HS_TIME_V131(0x40));
--		regmap_write(dsi->regs, DSI_PHY_TMR_RD_CFG,
--			     MAX_RD_TIME_V131(10000));
--	} else {
--		regmap_write(dsi->regs, DSI_PHY_TMR_CFG,
--			     PHY_HS2LP_TIME(0x40) |
--			     PHY_LP2HS_TIME(0x40) |
--			     MAX_RD_TIME(10000));
--	}
--
--	regmap_write(dsi->regs, DSI_PHY_TMR_LPCLK_CFG,
--		     PHY_CLKHS2LP_TIME(0x40) | PHY_CLKLP2HS_TIME(0x40));
-+	regmap_field_write(dsi->field_phy_max_rd_time, 10000);
-+	regmap_field_write(dsi->field_phy_clklp2hs_time, 0x40);
-+	regmap_field_write(dsi->field_phy_clkhs2lp_time, 0x40);
- }
- 
- static void dw_mipi_dsi_dphy_interface_config(struct dw_mipi_dsi *dsi)
-@@ -757,18 +852,22 @@ static void dw_mipi_dsi_dphy_interface_config(struct dw_mipi_dsi *dsi)
- 	 * stop wait time should be the maximum between host dsi
- 	 * and panel stop wait times
- 	 */
--	regmap_write(dsi->regs, DSI_PHY_IF_CFG,
--		     PHY_STOP_WAIT_TIME(0x20) | N_LANES(dsi->lanes));
-+	regmap_field_write(dsi->field_phy_stop_wait_time, 0x20);
-+	regmap_field_write(dsi->field_phy_nlanes, dsi->lanes - 1);
- }
- 
- static void dw_mipi_dsi_dphy_init(struct dw_mipi_dsi *dsi)
- {
- 	/* Clear PHY state */
--	regmap_write(dsi->regs, DSI_PHY_RSTZ, PHY_DISFORCEPLL | PHY_DISABLECLK
--		     | PHY_RSTZ | PHY_SHUTDOWNZ);
--	regmap_write(dsi->regs, DSI_PHY_TST_CTRL0, PHY_UNTESTCLR);
--	regmap_write(dsi->regs, DSI_PHY_TST_CTRL0, PHY_TESTCLR);
--	regmap_write(dsi->regs, DSI_PHY_TST_CTRL0, PHY_UNTESTCLR);
-+	regmap_field_write(dsi->field_phy_enableclk, 0);
-+	regmap_field_write(dsi->field_phy_unrstz, 0);
-+	regmap_field_write(dsi->field_phy_unshutdownz, 0);
-+
-+	regmap_field_write(dsi->field_phy_forcepll, 0);
-+
-+	regmap_field_write(dsi->field_phy_testclr, 0);
-+	regmap_field_write(dsi->field_phy_testclr, 1);
-+	regmap_field_write(dsi->field_phy_testclr, 0);
- }
- 
- static void dw_mipi_dsi_dphy_enable(struct dw_mipi_dsi *dsi)
-@@ -776,18 +875,21 @@ static void dw_mipi_dsi_dphy_enable(struct dw_mipi_dsi *dsi)
- 	u32 val = 0;
- 	int ret;
- 
--	regmap_write(dsi->regs, DSI_PHY_RSTZ, PHY_ENFORCEPLL | PHY_ENABLECLK |
--		     PHY_UNRSTZ | PHY_UNSHUTDOWNZ);
-+	regmap_field_write(dsi->field_phy_enableclk, 1);
-+	regmap_field_write(dsi->field_phy_unrstz, 1);
-+	regmap_field_write(dsi->field_phy_unshutdownz, 1);
-+
-+	regmap_field_write(dsi->field_phy_forcepll, 1);
- 
--	ret = regmap_read_poll_timeout(dsi->regs, DSI_PHY_STATUS,
--				       val, val & PHY_LOCK,
--				       1000, PHY_STATUS_TIMEOUT_US);
-+	ret = regmap_field_read_poll_timeout(dsi->field_phy_status,
-+					     val, val & PHY_LOCK,
-+					     1000, PHY_STATUS_TIMEOUT_US);
- 	if (ret)
- 		DRM_DEBUG_DRIVER("failed to wait phy lock state\n");
- 
--	ret = regmap_read_poll_timeout(dsi->regs, DSI_PHY_STATUS,
--				       val, val & PHY_STOP_STATE_CLK_LANE, 1000,
--				       PHY_STATUS_TIMEOUT_US);
-+	ret = regmap_field_read_poll_timeout(dsi->field_phy_status,
-+					     val, val & PHY_STOP_STATE_CLK_LANE,
-+					     1000, PHY_STATUS_TIMEOUT_US);
- 	if (ret)
- 		DRM_DEBUG_DRIVER("failed to wait phy clk lane stop state\n");
- }
-@@ -796,10 +898,10 @@ static void dw_mipi_dsi_clear_err(struct dw_mipi_dsi *dsi)
- {
- 	u32 val;
- 
--	regmap_read(dsi->regs, DSI_INT_ST0, &val);
--	regmap_read(dsi->regs, DSI_INT_ST1, &val);
--	regmap_write(dsi->regs, DSI_INT_MSK0, 0);
--	regmap_write(dsi->regs, DSI_INT_MSK1, 0);
-+	regmap_field_read(dsi->field_int_stat0, &val);
-+	regmap_field_read(dsi->field_int_stat1, &val);
-+	regmap_field_write(dsi->field_int_mask0, 0);
-+	regmap_field_write(dsi->field_int_mask1, 0);
- }
- 
- static void dw_mipi_dsi_bridge_post_disable(struct drm_bridge *bridge)
-@@ -984,6 +1086,84 @@ static void dw_mipi_dsi_debugfs_remove(struct dw_mipi_dsi *dsi) { }
- 
- #endif /* CONFIG_DEBUG_FS */
- 
-+static void dw_mipi_dsi_get_hw_version(struct dw_mipi_dsi *dsi)
-+{
-+	regmap_read(dsi->regs, DSI_VERSION, &dsi->hw_version);
-+	dsi->hw_version &= VERSION;
-+	if (!dsi->hw_version)
-+		dev_err(dsi->dev, "Failed to read DSI hw version register\n");
-+}
-+
-+#define INIT_FIELD(f) INIT_FIELD_CFG(field_##f, cfg_##f)
-+#define INIT_FIELD_CFG(f, conf)						\
-+	do {								\
-+		dsi->f = devm_regmap_field_alloc(dsi->dev, dsi->regs,	\
-+						 variant->conf);	\
-+		if (IS_ERR(dsi->f))					\
-+			dev_warn(dsi->dev, "Ignoring regmap field " #f "\n"); \
-+	} while (0)
-+
-+static int dw_mipi_dsi_regmap_fields_init(struct dw_mipi_dsi *dsi)
-+{
-+	const struct dw_mipi_dsi_variant *variant = &dw_mipi_dsi_v130_v131_layout;
-+
-+	INIT_FIELD(dpi_18loosely_en);
-+	INIT_FIELD(dpi_vid);
-+	INIT_FIELD(dpi_color_coding);
-+	INIT_FIELD(dpi_vsync_active_low);
-+	INIT_FIELD(dpi_hsync_active_low);
-+	INIT_FIELD(cmd_mode_ack_rqst_en);
-+	INIT_FIELD(cmd_mode_all_lp_en);
-+	INIT_FIELD(cmd_mode_en);
-+	INIT_FIELD(cmd_pkt_status);
-+	INIT_FIELD(vid_mode_en);
-+	INIT_FIELD(vid_mode_type);
-+	INIT_FIELD(vid_mode_low_power);
-+	INIT_FIELD(vid_pkt_size);
-+	INIT_FIELD(vid_hsa_time);
-+	INIT_FIELD(vid_hbp_time);
-+	INIT_FIELD(vid_hline_time);
-+	INIT_FIELD(vid_vsa_time);
-+	INIT_FIELD(vid_vbp_time);
-+	INIT_FIELD(vid_vfp_time);
-+	INIT_FIELD(vid_vactive_time);
-+	INIT_FIELD(phy_txrequestclkhs);
-+	INIT_FIELD(phy_testclr);
-+	INIT_FIELD(phy_unshutdownz);
-+	INIT_FIELD(phy_unrstz);
-+	INIT_FIELD(phy_enableclk);
-+	INIT_FIELD(phy_nlanes);
-+	INIT_FIELD(phy_stop_wait_time);
-+	INIT_FIELD(phy_status);
-+	INIT_FIELD(pckhdl_cfg);
-+	INIT_FIELD(hstx_timeout_counter);
-+	INIT_FIELD(lprx_timeout_counter);
-+	INIT_FIELD(int_stat0);
-+	INIT_FIELD(int_stat1);
-+	INIT_FIELD(int_mask0);
-+	INIT_FIELD(int_mask1);
-+	INIT_FIELD(gen_hdr);
-+	INIT_FIELD(gen_payload);
-+	INIT_FIELD(phy_bta_time);
-+	INIT_FIELD(vid_mode_vpg_en);
-+	INIT_FIELD(vid_mode_vpg_horiz);
-+	INIT_FIELD(phy_clklp2hs_time);
-+	INIT_FIELD(phy_clkhs2lp_time);
-+	INIT_FIELD(phy_forcepll);
-+
-+	if (dsi->hw_version == HWVER_131) {
-+		INIT_FIELD_CFG(field_phy_max_rd_time, cfg_phy_max_rd_time_v131);
-+		INIT_FIELD_CFG(field_phy_lp2hs_time, cfg_phy_lp2hs_time_v131);
-+		INIT_FIELD_CFG(field_phy_hs2lp_time, cfg_phy_hs2lp_time_v131);
-+	} else {
-+		INIT_FIELD(phy_max_rd_time);
-+		INIT_FIELD(phy_lp2hs_time);
-+		INIT_FIELD(phy_hs2lp_time);
-+	}
-+
-+	return 0;
-+}
-+
- static struct dw_mipi_dsi *
- __dw_mipi_dsi_probe(struct platform_device *pdev,
- 		    struct dw_mipi_dsi_plat_data *plat_data)
-@@ -1065,6 +1245,14 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
- 		clk_disable_unprepare(dsi->pclk);
- 	}
- 
-+	dw_mipi_dsi_get_hw_version(dsi);
-+
-+	ret = dw_mipi_dsi_regmap_fields_init(dsi);
-+	if (ret) {
-+		dev_err(dev, "Failed to init register layout map: %d\n", ret);
-+		return ERR_PTR(ret);
-+	}
-+
- 	dw_mipi_dsi_debugfs_init(dsi);
- 	pm_runtime_enable(dev);
- 
--- 
-2.24.0
+Q29udmVydCB0aGUgY29tbW9uIGJyaWRnZSBjb2RlIGFuZCB0aGUgdHdvIHJvY2tjaGlwICYgc3Rt
+IGRyaXZlcnMKd2hpY2ggY3VycmVudGx5IHVzZSBpdCB0byB0aGUgcmVnbWFwIEFQSSBpbiBhbnRp
+Y2lwYXRpb24gZm9yIGZ1cnRoZXIKY2hhbmdlcyB0byBtYWtlIGl0IG1vcmUgZ2VuZXJpYyBhbmQg
+YWRkIG9sZGVyIERTSSBob3N0IGNvbnRyb2xsZXIKc3VwcG9ydCBhcyBmb3VuZCBvbiBpLm14NiBi
+YXNlZCBkZXZpY2VzLgoKVGhlIHJlZ21hcCBiZWNvbWVzIGFuIGludGVybmFsIHN0YXRlIG9mIHRo
+ZSBicmlkZ2UuIE5vIGZ1bmN0aW9uYWwKY2hhbmdlcyBvdGhlciB0aGFuIHJlcXVpcmluZyB0aGUg
+cGxhdGZvcm0gZHJpdmVycyB0byB1c2UgdGhlCnByZS1jb25maWd1cmVkIHJlZ21hcCBzdXBwbGll
+ZCBieSB0aGUgYnJpZGdlIGFmdGVyIGl0cyBwcm9iZSgpIGNhbGwKaW5zdGVhZCBvZiBpb3JlbXAn
+aW5nIHRoZSByZWdpc3RlcnMgdGhlbXNlbHZlcy4KCkluIHN1YnNlcXVlbnQgY29tbWl0cyB0aGUg
+YnJpZGdlIHdpbGwgYmVjb21lIGFibGUgdG8gZGV0ZWN0IHRoZQpEU0kgaG9zdCBjb3JlIHZlcnNp
+b24gYW5kIGluaXQgdGhlIHJlZ21hcCB3aXRoIGRpZmZlcmVudCByZWdpc3RlcgpsYXlvdXRzLiBU
+aGUgcGxhdGZvcm0gZHJpdmVycyB3aWxsIGNvbnRpbnVlIHRvIHVzZSB0aGUgcmVnbWFwIHdpdGhv
+dXQKbW9kaWZpY2F0aW9ucyBvciB3b3JyeWluZyBhYm91dCB0aGUgc3BlY2lmaWMgbGF5b3V0IGlu
+IHVzZSAoaW4gb3RoZXIKd29yZHMgdGhlIGxheW91dCBpcyBhYnN0cmFjdGVkIGF3YXkgdmlhIHRo
+ZSByZWdtYXApLgoKU3VnZ2VzdGVkLWJ5OiBCb3JpcyBCcmV6aWxsb24gPGJvcmlzLmJyZXppbGxv
+bkBjb2xsYWJvcmEuY29tPgpSZXZpZXdlZC1ieTogTmVpbCBBcm1zdHJvbmcgPG5hcm1zdHJvbmdA
+YmF5bGlicmUuY29tPgpSZXZpZXdlZC1ieTogRW1pbCBWZWxpa292IDxlbWlsLnZlbGlrb3ZAY29s
+bGFib3JhLmNvbT4KU2lnbmVkLW9mZi1ieTogQWRyaWFuIFJhdGl1IDxhZHJpYW4ucmF0aXVAY29s
+bGFib3JhLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LW1pcGkt
+ZHNpLmMgfCAyMTUgKysrKysrKysrKy0tLS0tLS0tCiAuLi4vZ3B1L2RybS9yb2NrY2hpcC9kdy1t
+aXBpLWRzaS1yb2NrY2hpcC5jICAgfCAgMTcgKy0KIGRyaXZlcnMvZ3B1L2RybS9zdG0vZHdfbWlw
+aV9kc2ktc3RtLmMgICAgICAgICB8ICAzNCArKy0KIGluY2x1ZGUvZHJtL2JyaWRnZS9kd19taXBp
+X2RzaS5oICAgICAgICAgICAgICB8ICAgMiArLQogNCBmaWxlcyBjaGFuZ2VkLCAxNDUgaW5zZXJ0
+aW9ucygrKSwgMTIzIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9i
+cmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lu
+b3BzeXMvZHctbWlwaS1kc2kuYwppbmRleCBiNmU3OTNiYjY1M2MuLjZjYjU3ODA3ZjNmOSAxMDA2
+NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCisr
+KyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYwpAQCAtMTUs
+NiArMTUsNyBAQAogI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgogI2luY2x1ZGUgPGxpbnV4L29m
+X2RldmljZS5oPgogI2luY2x1ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4KKyNpbmNsdWRlIDxsaW51
+eC9yZWdtYXAuaD4KICNpbmNsdWRlIDxsaW51eC9yZXNldC5oPgogCiAjaW5jbHVkZSA8dmlkZW8v
+bWlwaV9kaXNwbGF5Lmg+CkBAIC0yMjYsNyArMjI3LDcgQEAgc3RydWN0IGR3X21pcGlfZHNpIHsK
+IAlzdHJ1Y3QgbWlwaV9kc2lfaG9zdCBkc2lfaG9zdDsKIAlzdHJ1Y3QgZHJtX2JyaWRnZSAqcGFu
+ZWxfYnJpZGdlOwogCXN0cnVjdCBkZXZpY2UgKmRldjsKLQl2b2lkIF9faW9tZW0gKmJhc2U7CisJ
+c3RydWN0IHJlZ21hcCAqcmVnczsKIAogCXN0cnVjdCBjbGsgKnBjbGs7CiAKQEAgLTI0OSw2ICsy
+NTAsMTMgQEAgc3RydWN0IGR3X21pcGlfZHNpIHsKIAljb25zdCBzdHJ1Y3QgZHdfbWlwaV9kc2lf
+cGxhdF9kYXRhICpwbGF0X2RhdGE7CiB9OwogCitzdGF0aWMgY29uc3Qgc3RydWN0IHJlZ21hcF9j
+b25maWcgZHdfbWlwaV9kc2lfcmVnbWFwX2NmZyA9IHsKKwkucmVnX2JpdHMgPSAzMiwKKwkudmFs
+X2JpdHMgPSAzMiwKKwkucmVnX3N0cmlkZSA9IDQsCisJLm5hbWUgPSAiZHctbWlwaS1kc2kiLAor
+fTsKKwogLyoKICAqIENoZWNrIGlmIGVpdGhlciBhIGxpbmsgdG8gYSBtYXN0ZXIgb3Igc2xhdmUg
+aXMgcHJlc2VudAogICovCkBAIC0yODAsMTYgKzI4OCw2IEBAIHN0YXRpYyBpbmxpbmUgc3RydWN0
+IGR3X21pcGlfZHNpICpicmlkZ2VfdG9fZHNpKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UpCiAJ
+cmV0dXJuIGNvbnRhaW5lcl9vZihicmlkZ2UsIHN0cnVjdCBkd19taXBpX2RzaSwgYnJpZGdlKTsK
+IH0KIAotc3RhdGljIGlubGluZSB2b2lkIGRzaV93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRz
+aSwgdTMyIHJlZywgdTMyIHZhbCkKLXsKLQl3cml0ZWwodmFsLCBkc2ktPmJhc2UgKyByZWcpOwot
+fQotCi1zdGF0aWMgaW5saW5lIHUzMiBkc2lfcmVhZChzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwg
+dTMyIHJlZykKLXsKLQlyZXR1cm4gcmVhZGwoZHNpLT5iYXNlICsgcmVnKTsKLX0KLQogc3RhdGlj
+IGludCBkd19taXBpX2RzaV9ob3N0X2F0dGFjaChzdHJ1Y3QgbWlwaV9kc2lfaG9zdCAqaG9zdCwK
+IAkJCQkgICBzdHJ1Y3QgbWlwaV9kc2lfZGV2aWNlICpkZXZpY2UpCiB7CkBAIC0zNjYsMjkgKzM2
+NCwyOSBAQCBzdGF0aWMgdm9pZCBkd19taXBpX21lc3NhZ2VfY29uZmlnKHN0cnVjdCBkd19taXBp
+X2RzaSAqZHNpLAogCWlmIChscG0pCiAJCXZhbCB8PSBDTURfTU9ERV9BTExfTFA7CiAKLQlkc2lf
+d3JpdGUoZHNpLCBEU0lfTFBDTEtfQ1RSTCwgbHBtID8gMCA6IFBIWV9UWFJFUVVFU1RDTEtIUyk7
+Ci0JZHNpX3dyaXRlKGRzaSwgRFNJX0NNRF9NT0RFX0NGRywgdmFsKTsKKwlyZWdtYXBfd3JpdGUo
+ZHNpLT5yZWdzLCBEU0lfTFBDTEtfQ1RSTCwgbHBtID8gMCA6IFBIWV9UWFJFUVVFU1RDTEtIUyk7
+CisJcmVnbWFwX3dyaXRlKGRzaS0+cmVncywgRFNJX0NNRF9NT0RFX0NGRywgdmFsKTsKIH0KIAog
+c3RhdGljIGludCBkd19taXBpX2RzaV9nZW5fcGt0X2hkcl93cml0ZShzdHJ1Y3QgZHdfbWlwaV9k
+c2kgKmRzaSwgdTMyIGhkcl92YWwpCiB7CiAJaW50IHJldDsKLQl1MzIgdmFsLCBtYXNrOworCXUz
+MiB2YWwgPSAwLCBtYXNrOwogCi0JcmV0ID0gcmVhZGxfcG9sbF90aW1lb3V0KGRzaS0+YmFzZSAr
+IERTSV9DTURfUEtUX1NUQVRVUywKLQkJCQkgdmFsLCAhKHZhbCAmIEdFTl9DTURfRlVMTCksIDEw
+MDAsCi0JCQkJIENNRF9QS1RfU1RBVFVTX1RJTUVPVVRfVVMpOworCXJldCA9IHJlZ21hcF9yZWFk
+X3BvbGxfdGltZW91dChkc2ktPnJlZ3MsIERTSV9DTURfUEtUX1NUQVRVUywKKwkJCQkgICAgICAg
+dmFsLCAhKHZhbCAmIEdFTl9DTURfRlVMTCksIDEwMDAsCisJCQkJICAgICAgIENNRF9QS1RfU1RB
+VFVTX1RJTUVPVVRfVVMpOwogCWlmIChyZXQpIHsKIAkJZGV2X2Vycihkc2ktPmRldiwgImZhaWxl
+ZCB0byBnZXQgYXZhaWxhYmxlIGNvbW1hbmQgRklGT1xuIik7CiAJCXJldHVybiByZXQ7CiAJfQog
+Ci0JZHNpX3dyaXRlKGRzaSwgRFNJX0dFTl9IRFIsIGhkcl92YWwpOworCXJlZ21hcF93cml0ZShk
+c2ktPnJlZ3MsIERTSV9HRU5fSERSLCBoZHJfdmFsKTsKIAogCW1hc2sgPSBHRU5fQ01EX0VNUFRZ
+IHwgR0VOX1BMRF9XX0VNUFRZOwotCXJldCA9IHJlYWRsX3BvbGxfdGltZW91dChkc2ktPmJhc2Ug
+KyBEU0lfQ01EX1BLVF9TVEFUVVMsCi0JCQkJIHZhbCwgKHZhbCAmIG1hc2spID09IG1hc2ssCi0J
+CQkJIDEwMDAsIENNRF9QS1RfU1RBVFVTX1RJTUVPVVRfVVMpOworCXJldCA9IHJlZ21hcF9yZWFk
+X3BvbGxfdGltZW91dChkc2ktPnJlZ3MsIERTSV9DTURfUEtUX1NUQVRVUywKKwkJCQkgICAgICAg
+dmFsLCAodmFsICYgbWFzaykgPT0gbWFzaywKKwkJCQkgICAgICAgMTAwMCwgQ01EX1BLVF9TVEFU
+VVNfVElNRU9VVF9VUyk7CiAJaWYgKHJldCkgewogCQlkZXZfZXJyKGRzaS0+ZGV2LCAiZmFpbGVk
+IHRvIHdyaXRlIGNvbW1hbmQgRklGT1xuIik7CiAJCXJldHVybiByZXQ7CkBAIC00MDMsMjQgKzQw
+MSwyNiBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX3dyaXRlKHN0cnVjdCBkd19taXBpX2RzaSAq
+ZHNpLAogCWNvbnN0IHU4ICp0eF9idWYgPSBwYWNrZXQtPnBheWxvYWQ7CiAJaW50IGxlbiA9IHBh
+Y2tldC0+cGF5bG9hZF9sZW5ndGgsIHBsZF9kYXRhX2J5dGVzID0gc2l6ZW9mKHUzMiksIHJldDsK
+IAlfX2xlMzIgd29yZDsKLQl1MzIgdmFsOworCXUzMiB2YWwgPSAwOwogCiAJd2hpbGUgKGxlbikg
+ewogCQlpZiAobGVuIDwgcGxkX2RhdGFfYnl0ZXMpIHsKIAkJCXdvcmQgPSAwOwogCQkJbWVtY3B5
+KCZ3b3JkLCB0eF9idWYsIGxlbik7Ci0JCQlkc2lfd3JpdGUoZHNpLCBEU0lfR0VOX1BMRF9EQVRB
+LCBsZTMyX3RvX2NwdSh3b3JkKSk7CisJCQlyZWdtYXBfd3JpdGUoZHNpLT5yZWdzLCBEU0lfR0VO
+X1BMRF9EQVRBLAorCQkJCSAgICAgbGUzMl90b19jcHUod29yZCkpOwogCQkJbGVuID0gMDsKIAkJ
+fSBlbHNlIHsKIAkJCW1lbWNweSgmd29yZCwgdHhfYnVmLCBwbGRfZGF0YV9ieXRlcyk7Ci0JCQlk
+c2lfd3JpdGUoZHNpLCBEU0lfR0VOX1BMRF9EQVRBLCBsZTMyX3RvX2NwdSh3b3JkKSk7CisJCQly
+ZWdtYXBfd3JpdGUoZHNpLT5yZWdzLCBEU0lfR0VOX1BMRF9EQVRBLAorCQkJCSAgICAgbGUzMl90
+b19jcHUod29yZCkpOwogCQkJdHhfYnVmICs9IHBsZF9kYXRhX2J5dGVzOwogCQkJbGVuIC09IHBs
+ZF9kYXRhX2J5dGVzOwogCQl9CiAKLQkJcmV0ID0gcmVhZGxfcG9sbF90aW1lb3V0KGRzaS0+YmFz
+ZSArIERTSV9DTURfUEtUX1NUQVRVUywKLQkJCQkJIHZhbCwgISh2YWwgJiBHRU5fUExEX1dfRlVM
+TCksIDEwMDAsCi0JCQkJCSBDTURfUEtUX1NUQVRVU19USU1FT1VUX1VTKTsKKwkJcmV0ID0gcmVn
+bWFwX3JlYWRfcG9sbF90aW1lb3V0KGRzaS0+cmVncywgRFNJX0NNRF9QS1RfU1RBVFVTLAorCQkJ
+CQkgICAgICAgdmFsLCAhKHZhbCAmIEdFTl9QTERfV19GVUxMKSwKKwkJCQkJICAgICAgIDEwMDAs
+IENNRF9QS1RfU1RBVFVTX1RJTUVPVVRfVVMpOwogCQlpZiAocmV0KSB7CiAJCQlkZXZfZXJyKGRz
+aS0+ZGV2LAogCQkJCSJmYWlsZWQgdG8gZ2V0IGF2YWlsYWJsZSB3cml0ZSBwYXlsb2FkIEZJRk9c
+biIpOwpAQCAtNDM4LDEyICs0MzgsMTIgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9yZWFkKHN0
+cnVjdCBkd19taXBpX2RzaSAqZHNpLAogewogCWludCBpLCBqLCByZXQsIGxlbiA9IG1zZy0+cnhf
+bGVuOwogCXU4ICpidWYgPSBtc2ctPnJ4X2J1ZjsKLQl1MzIgdmFsOworCXUzMiB2YWwgPSAwOwog
+CiAJLyogV2FpdCBlbmQgb2YgdGhlIHJlYWQgb3BlcmF0aW9uICovCi0JcmV0ID0gcmVhZGxfcG9s
+bF90aW1lb3V0KGRzaS0+YmFzZSArIERTSV9DTURfUEtUX1NUQVRVUywKLQkJCQkgdmFsLCAhKHZh
+bCAmIEdFTl9SRF9DTURfQlVTWSksCi0JCQkJIDEwMDAsIENNRF9QS1RfU1RBVFVTX1RJTUVPVVRf
+VVMpOworCXJldCA9IHJlZ21hcF9yZWFkX3BvbGxfdGltZW91dChkc2ktPnJlZ3MsIERTSV9DTURf
+UEtUX1NUQVRVUywKKwkJCQkgICAgICAgdmFsLCAhKHZhbCAmIEdFTl9SRF9DTURfQlVTWSksCisJ
+CQkJICAgICAgIDEwMDAsIENNRF9QS1RfU1RBVFVTX1RJTUVPVVRfVVMpOwogCWlmIChyZXQpIHsK
+IAkJZGV2X2Vycihkc2ktPmRldiwgIlRpbWVvdXQgZHVyaW5nIHJlYWQgb3BlcmF0aW9uXG4iKTsK
+IAkJcmV0dXJuIHJldDsKQEAgLTQ1MSwxNSArNDUxLDE1IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9k
+c2lfcmVhZChzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKIAogCWZvciAoaSA9IDA7IGkgPCBsZW47
+IGkgKz0gNCkgewogCQkvKiBSZWFkIGZpZm8gbXVzdCBub3QgYmUgZW1wdHkgYmVmb3JlIGFsbCBi
+eXRlcyBhcmUgcmVhZCAqLwotCQlyZXQgPSByZWFkbF9wb2xsX3RpbWVvdXQoZHNpLT5iYXNlICsg
+RFNJX0NNRF9QS1RfU1RBVFVTLAotCQkJCQkgdmFsLCAhKHZhbCAmIEdFTl9QTERfUl9FTVBUWSks
+Ci0JCQkJCSAxMDAwLCBDTURfUEtUX1NUQVRVU19USU1FT1VUX1VTKTsKKwkJcmV0ID0gcmVnbWFw
+X3JlYWRfcG9sbF90aW1lb3V0KGRzaS0+cmVncywgRFNJX0NNRF9QS1RfU1RBVFVTLAorCQkJCQkg
+ICAgICAgdmFsLCAhKHZhbCAmIEdFTl9QTERfUl9FTVBUWSksCisJCQkJCSAgICAgICAxMDAwLCBD
+TURfUEtUX1NUQVRVU19USU1FT1VUX1VTKTsKIAkJaWYgKHJldCkgewogCQkJZGV2X2Vycihkc2kt
+PmRldiwgIlJlYWQgcGF5bG9hZCBGSUZPIGlzIGVtcHR5XG4iKTsKIAkJCXJldHVybiByZXQ7CiAJ
+CX0KIAotCQl2YWwgPSBkc2lfcmVhZChkc2ksIERTSV9HRU5fUExEX0RBVEEpOworCQlyZWdtYXBf
+cmVhZChkc2ktPnJlZ3MsIERTSV9HRU5fUExEX0RBVEEsICZ2YWwpOwogCQlmb3IgKGogPSAwOyBq
+IDwgNCAmJiBqICsgaSA8IGxlbjsgaisrKQogCQkJYnVmW2kgKyBqXSA9IHZhbCA+PiAoOCAqIGop
+OwogCX0KQEAgLTUzNiwyOSArNTM2LDI5IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX3ZpZGVv
+X21vZGVfY29uZmlnKHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQogCX0KICNlbmRpZiAvKiBDT05G
+SUdfREVCVUdfRlMgKi8KIAotCWRzaV93cml0ZShkc2ksIERTSV9WSURfTU9ERV9DRkcsIHZhbCk7
+CisJcmVnbWFwX3dyaXRlKGRzaS0+cmVncywgRFNJX1ZJRF9NT0RFX0NGRywgdmFsKTsKIH0KIAog
+c3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfc2V0X21vZGUoc3RydWN0IGR3X21pcGlfZHNpICpkc2ks
+CiAJCQkJIHVuc2lnbmVkIGxvbmcgbW9kZV9mbGFncykKIHsKLQlkc2lfd3JpdGUoZHNpLCBEU0lf
+UFdSX1VQLCBSRVNFVCk7CisJcmVnbWFwX3dyaXRlKGRzaS0+cmVncywgRFNJX1BXUl9VUCwgUkVT
+RVQpOwogCiAJaWYgKG1vZGVfZmxhZ3MgJiBNSVBJX0RTSV9NT0RFX1ZJREVPKSB7Ci0JCWRzaV93
+cml0ZShkc2ksIERTSV9NT0RFX0NGRywgRU5BQkxFX1ZJREVPX01PREUpOworCQlyZWdtYXBfd3Jp
+dGUoZHNpLT5yZWdzLCBEU0lfTU9ERV9DRkcsIEVOQUJMRV9WSURFT19NT0RFKTsKIAkJZHdfbWlw
+aV9kc2lfdmlkZW9fbW9kZV9jb25maWcoZHNpKTsKLQkJZHNpX3dyaXRlKGRzaSwgRFNJX0xQQ0xL
+X0NUUkwsIFBIWV9UWFJFUVVFU1RDTEtIUyk7CisJCXJlZ21hcF93cml0ZShkc2ktPnJlZ3MsIERT
+SV9MUENMS19DVFJMLCBQSFlfVFhSRVFVRVNUQ0xLSFMpOwogCX0gZWxzZSB7Ci0JCWRzaV93cml0
+ZShkc2ksIERTSV9NT0RFX0NGRywgRU5BQkxFX0NNRF9NT0RFKTsKKwkJcmVnbWFwX3dyaXRlKGRz
+aS0+cmVncywgRFNJX01PREVfQ0ZHLCBFTkFCTEVfQ01EX01PREUpOwogCX0KIAotCWRzaV93cml0
+ZShkc2ksIERTSV9QV1JfVVAsIFBPV0VSVVApOworCXJlZ21hcF93cml0ZShkc2ktPnJlZ3MsIERT
+SV9QV1JfVVAsIFBPV0VSVVApOwogfQogCiBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9kaXNhYmxl
+KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQogewotCWRzaV93cml0ZShkc2ksIERTSV9QV1JfVVAs
+IFJFU0VUKTsKLQlkc2lfd3JpdGUoZHNpLCBEU0lfUEhZX1JTVFosIFBIWV9SU1RaKTsKKwlyZWdt
+YXBfd3JpdGUoZHNpLT5yZWdzLCBEU0lfUFdSX1VQLCBSRVNFVCk7CisJcmVnbWFwX3dyaXRlKGRz
+aS0+cmVncywgRFNJX1BIWV9SU1RaLCBQSFlfUlNUWik7CiB9CiAKIHN0YXRpYyB2b2lkIGR3X21p
+cGlfZHNpX2luaXQoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpCkBAIC01NzMsMTQgKzU3MywxNCBA
+QCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9pbml0KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQog
+CSAqLwogCXUzMiBlc2NfY2xrX2RpdmlzaW9uID0gKGRzaS0+bGFuZV9tYnBzID4+IDMpIC8gMjAg
+KyAxOwogCi0JZHNpX3dyaXRlKGRzaSwgRFNJX1BXUl9VUCwgUkVTRVQpOworCXJlZ21hcF93cml0
+ZShkc2ktPnJlZ3MsIERTSV9QV1JfVVAsIFJFU0VUKTsKIAogCS8qCiAJICogVE9ETyBkdyBkcnYg
+aW1wcm92ZW1lbnRzCiAJICogdGltZW91dCBjbG9jayBkaXZpc2lvbiBzaG91bGQgYmUgY29tcHV0
+ZWQgd2l0aCB0aGUKIAkgKiBoaWdoIHNwZWVkIHRyYW5zbWlzc2lvbiBjb3VudGVyIHRpbWVvdXQg
+YW5kIGJ5dGUgbGFuZS4uLgogCSAqLwotCWRzaV93cml0ZShkc2ksIERTSV9DTEtNR1JfQ0ZHLCBU
+T19DTEtfRElWSVNJT04oMTApIHwKKwlyZWdtYXBfd3JpdGUoZHNpLT5yZWdzLCBEU0lfQ0xLTUdS
+X0NGRywgVE9fQ0xLX0RJVklTSU9OKDEwKSB8CiAJCSAgVFhfRVNDX0NMS19ESVZJU0lPTihlc2Nf
+Y2xrX2RpdmlzaW9uKSk7CiB9CiAKQEAgLTYwOSwyMiArNjA5LDIyIEBAIHN0YXRpYyB2b2lkIGR3
+X21pcGlfZHNpX2RwaV9jb25maWcoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksCiAJaWYgKG1vZGUt
+PmZsYWdzICYgRFJNX01PREVfRkxBR19OSFNZTkMpCiAJCXZhbCB8PSBIU1lOQ19BQ1RJVkVfTE9X
+OwogCi0JZHNpX3dyaXRlKGRzaSwgRFNJX0RQSV9WQ0lELCBEUElfVkNJRChkc2ktPmNoYW5uZWwp
+KTsKLQlkc2lfd3JpdGUoZHNpLCBEU0lfRFBJX0NPTE9SX0NPRElORywgY29sb3IpOwotCWRzaV93
+cml0ZShkc2ksIERTSV9EUElfQ0ZHX1BPTCwgdmFsKTsKKwlyZWdtYXBfd3JpdGUoZHNpLT5yZWdz
+LCBEU0lfRFBJX1ZDSUQsIERQSV9WQ0lEKGRzaS0+Y2hhbm5lbCkpOworCXJlZ21hcF93cml0ZShk
+c2ktPnJlZ3MsIERTSV9EUElfQ09MT1JfQ09ESU5HLCBjb2xvcik7CisJcmVnbWFwX3dyaXRlKGRz
+aS0+cmVncywgRFNJX0RQSV9DRkdfUE9MLCB2YWwpOwogCS8qCiAJICogVE9ETyBkdyBkcnYgaW1w
+cm92ZW1lbnRzCiAJICogbGFyZ2VzdCBwYWNrZXQgc2l6ZXMgZHVyaW5nIGhmcCBvciBkdXJpbmcg
+dnNhL3ZwYi92ZnAKIAkgKiBzaG91bGQgYmUgY29tcHV0ZWQgYWNjb3JkaW5nIHRvIGJ5dGUgbGFu
+ZSwgbGFuZSBudW1iZXIgYW5kIG9ubHkKIAkgKiBpZiBzZW5kaW5nIGxwIGNtZHMgaW4gaGlnaCBz
+cGVlZCBpcyBlbmFibGUgKFBIWV9UWFJFUVVFU1RDTEtIUykKIAkgKi8KLQlkc2lfd3JpdGUoZHNp
+LCBEU0lfRFBJX0xQX0NNRF9USU0sIE9VVFZBQ1RfTFBDTURfVElNRSg0KQorCXJlZ21hcF93cml0
+ZShkc2ktPnJlZ3MsIERTSV9EUElfTFBfQ01EX1RJTSwgT1VUVkFDVF9MUENNRF9USU1FKDQpCiAJ
+CSAgfCBJTlZBQ1RfTFBDTURfVElNRSg0KSk7CiB9CiAKIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNp
+X3BhY2tldF9oYW5kbGVyX2NvbmZpZyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKIHsKLQlkc2lf
+d3JpdGUoZHNpLCBEU0lfUENLSERMX0NGRywgQ1JDX1JYX0VOIHwgRUNDX1JYX0VOIHwgQlRBX0VO
+KTsKKwlyZWdtYXBfd3JpdGUoZHNpLT5yZWdzLCBEU0lfUENLSERMX0NGRywgQ1JDX1JYX0VOIHwg
+RUNDX1JYX0VOIHwgQlRBX0VOKTsKIH0KIAogc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfdmlkZW9f
+cGFja2V0X2NvbmZpZyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKQEAgLTYzOCw3ICs2MzgsNyBA
+QCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV92aWRlb19wYWNrZXRfY29uZmlnKHN0cnVjdCBkd19t
+aXBpX2RzaSAqZHNpLAogCSAqIG5vbi1idXJzdCB2aWRlbyBtb2Rlcywgc2VlIGR3X21pcGlfZHNp
+X3ZpZGVvX21vZGVfY29uZmlnKCkuLi4KIAkgKi8KIAotCWRzaV93cml0ZShkc2ksIERTSV9WSURf
+UEtUX1NJWkUsCisJcmVnbWFwX3dyaXRlKGRzaS0+cmVncywgRFNJX1ZJRF9QS1RfU0laRSwKIAkJ
+ICAgICAgIGR3X21pcGlfaXNfZHVhbF9tb2RlKGRzaSkgPwogCQkJCVZJRF9QS1RfU0laRShtb2Rl
+LT5oZGlzcGxheSAvIDIpIDoKIAkJCQlWSURfUEtUX1NJWkUobW9kZS0+aGRpc3BsYXkpKTsKQEAg
+LTY1MSwxNCArNjUxLDE1IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2NvbW1hbmRfbW9kZV9j
+b25maWcoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpCiAJICogY29tcHV0ZSBoaWdoIHNwZWVkIHRy
+YW5zbWlzc2lvbiBjb3VudGVyIHRpbWVvdXQgYWNjb3JkaW5nCiAJICogdG8gdGhlIHRpbWVvdXQg
+Y2xvY2sgZGl2aXNpb24gKFRPX0NMS19ESVZJU0lPTikgYW5kIGJ5dGUgbGFuZS4uLgogCSAqLwot
+CWRzaV93cml0ZShkc2ksIERTSV9UT19DTlRfQ0ZHLCBIU1RYX1RPX0NOVCgxMDAwKSB8IExQUlhf
+VE9fQ05UKDEwMDApKTsKKwlyZWdtYXBfd3JpdGUoZHNpLT5yZWdzLCBEU0lfVE9fQ05UX0NGRywK
+KwkJICAgICBIU1RYX1RPX0NOVCgxMDAwKSB8IExQUlhfVE9fQ05UKDEwMDApKTsKIAkvKgogCSAq
+IFRPRE8gZHcgZHJ2IGltcHJvdmVtZW50cwogCSAqIHRoZSBCdXMtVHVybi1Bcm91bmQgVGltZW91
+dCBDb3VudGVyIHNob3VsZCBiZSBjb21wdXRlZAogCSAqIGFjY29yZGluZyB0byBieXRlIGxhbmUu
+Li4KIAkgKi8KLQlkc2lfd3JpdGUoZHNpLCBEU0lfQlRBX1RPX0NOVCwgMHhkMDApOwotCWRzaV93
+cml0ZShkc2ksIERTSV9NT0RFX0NGRywgRU5BQkxFX0NNRF9NT0RFKTsKKwlyZWdtYXBfd3JpdGUo
+ZHNpLT5yZWdzLCBEU0lfQlRBX1RPX0NOVCwgMHhkMDApOworCXJlZ21hcF93cml0ZShkc2ktPnJl
+Z3MsIERTSV9NT0RFX0NGRywgRU5BQkxFX0NNRF9NT0RFKTsKIH0KIAogLyogR2V0IGxhbmUgYnl0
+ZSBjbG9jayBjeWNsZXMuICovCkBAIC02OTIsMTMgKzY5MywxMyBAQCBzdGF0aWMgdm9pZCBkd19t
+aXBpX2RzaV9saW5lX3RpbWVyX2NvbmZpZyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSwKIAkgKiBj
+b21wdXRhdGlvbnMgYmVsb3cgbWF5IGJlIGltcHJvdmVkLi4uCiAJICovCiAJbGJjYyA9IGR3X21p
+cGlfZHNpX2dldF9oY29tcG9uZW50X2xiY2MoZHNpLCBtb2RlLCBodG90YWwpOwotCWRzaV93cml0
+ZShkc2ksIERTSV9WSURfSExJTkVfVElNRSwgbGJjYyk7CisJcmVnbWFwX3dyaXRlKGRzaS0+cmVn
+cywgRFNJX1ZJRF9ITElORV9USU1FLCBsYmNjKTsKIAogCWxiY2MgPSBkd19taXBpX2RzaV9nZXRf
+aGNvbXBvbmVudF9sYmNjKGRzaSwgbW9kZSwgaHNhKTsKLQlkc2lfd3JpdGUoZHNpLCBEU0lfVklE
+X0hTQV9USU1FLCBsYmNjKTsKKwlyZWdtYXBfd3JpdGUoZHNpLT5yZWdzLCBEU0lfVklEX0hTQV9U
+SU1FLCBsYmNjKTsKIAogCWxiY2MgPSBkd19taXBpX2RzaV9nZXRfaGNvbXBvbmVudF9sYmNjKGRz
+aSwgbW9kZSwgaGJwKTsKLQlkc2lfd3JpdGUoZHNpLCBEU0lfVklEX0hCUF9USU1FLCBsYmNjKTsK
+KwlyZWdtYXBfd3JpdGUoZHNpLT5yZWdzLCBEU0lfVklEX0hCUF9USU1FLCBsYmNjKTsKIH0KIAog
+c3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfdmVydGljYWxfdGltaW5nX2NvbmZpZyhzdHJ1Y3QgZHdf
+bWlwaV9kc2kgKmRzaSwKQEAgLTcxMSwxMCArNzEyLDEwIEBAIHN0YXRpYyB2b2lkIGR3X21pcGlf
+ZHNpX3ZlcnRpY2FsX3RpbWluZ19jb25maWcoc3RydWN0IGR3X21pcGlfZHNpICpkc2ksCiAJdmZw
+ID0gbW9kZS0+dnN5bmNfc3RhcnQgLSBtb2RlLT52ZGlzcGxheTsKIAl2YnAgPSBtb2RlLT52dG90
+YWwgLSBtb2RlLT52c3luY19lbmQ7CiAKLQlkc2lfd3JpdGUoZHNpLCBEU0lfVklEX1ZBQ1RJVkVf
+TElORVMsIHZhY3RpdmUpOwotCWRzaV93cml0ZShkc2ksIERTSV9WSURfVlNBX0xJTkVTLCB2c2Ep
+OwotCWRzaV93cml0ZShkc2ksIERTSV9WSURfVkZQX0xJTkVTLCB2ZnApOwotCWRzaV93cml0ZShk
+c2ksIERTSV9WSURfVkJQX0xJTkVTLCB2YnApOworCXJlZ21hcF93cml0ZShkc2ktPnJlZ3MsIERT
+SV9WSURfVkFDVElWRV9MSU5FUywgdmFjdGl2ZSk7CisJcmVnbWFwX3dyaXRlKGRzaS0+cmVncywg
+RFNJX1ZJRF9WU0FfTElORVMsIHZzYSk7CisJcmVnbWFwX3dyaXRlKGRzaS0+cmVncywgRFNJX1ZJ
+RF9WRlBfTElORVMsIHZmcCk7CisJcmVnbWFwX3dyaXRlKGRzaS0+cmVncywgRFNJX1ZJRF9WQlBf
+TElORVMsIHZicCk7CiB9CiAKIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2RwaHlfdGltaW5nX2Nv
+bmZpZyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKQEAgLTcyOSwxOSArNzMwLDI0IEBAIHN0YXRp
+YyB2b2lkIGR3X21pcGlfZHNpX2RwaHlfdGltaW5nX2NvbmZpZyhzdHJ1Y3QgZHdfbWlwaV9kc2kg
+KmRzaSkKIAkgKiBEU0lfQ01EX01PREVfQ0ZHLk1BWF9SRF9QS1RfU0laRV9MUCAoc2VlIENNRF9N
+T0RFX0FMTF9MUCkKIAkgKi8KIAotCWh3X3ZlcnNpb24gPSBkc2lfcmVhZChkc2ksIERTSV9WRVJT
+SU9OKSAmIFZFUlNJT047CisJcmVnbWFwX3JlYWQoZHNpLT5yZWdzLCBEU0lfVkVSU0lPTiwgJmh3
+X3ZlcnNpb24pOworCWh3X3ZlcnNpb24gJj0gVkVSU0lPTjsKIAogCWlmIChod192ZXJzaW9uID49
+IEhXVkVSXzEzMSkgewotCQlkc2lfd3JpdGUoZHNpLCBEU0lfUEhZX1RNUl9DRkcsIFBIWV9IUzJM
+UF9USU1FX1YxMzEoMHg0MCkgfAotCQkJICBQSFlfTFAySFNfVElNRV9WMTMxKDB4NDApKTsKLQkJ
+ZHNpX3dyaXRlKGRzaSwgRFNJX1BIWV9UTVJfUkRfQ0ZHLCBNQVhfUkRfVElNRV9WMTMxKDEwMDAw
+KSk7CisJCXJlZ21hcF93cml0ZShkc2ktPnJlZ3MsIERTSV9QSFlfVE1SX0NGRywKKwkJCSAgICAg
+UEhZX0hTMkxQX1RJTUVfVjEzMSgweDQwKSB8CisJCQkgICAgIFBIWV9MUDJIU19USU1FX1YxMzEo
+MHg0MCkpOworCQlyZWdtYXBfd3JpdGUoZHNpLT5yZWdzLCBEU0lfUEhZX1RNUl9SRF9DRkcsCisJ
+CQkgICAgIE1BWF9SRF9USU1FX1YxMzEoMTAwMDApKTsKIAl9IGVsc2UgewotCQlkc2lfd3JpdGUo
+ZHNpLCBEU0lfUEhZX1RNUl9DRkcsIFBIWV9IUzJMUF9USU1FKDB4NDApIHwKLQkJCSAgUEhZX0xQ
+MkhTX1RJTUUoMHg0MCkgfCBNQVhfUkRfVElNRSgxMDAwMCkpOworCQlyZWdtYXBfd3JpdGUoZHNp
+LT5yZWdzLCBEU0lfUEhZX1RNUl9DRkcsCisJCQkgICAgIFBIWV9IUzJMUF9USU1FKDB4NDApIHwK
+KwkJCSAgICAgUEhZX0xQMkhTX1RJTUUoMHg0MCkgfAorCQkJICAgICBNQVhfUkRfVElNRSgxMDAw
+MCkpOwogCX0KIAotCWRzaV93cml0ZShkc2ksIERTSV9QSFlfVE1SX0xQQ0xLX0NGRywgUEhZX0NM
+S0hTMkxQX1RJTUUoMHg0MCkKLQkJICB8IFBIWV9DTEtMUDJIU19USU1FKDB4NDApKTsKKwlyZWdt
+YXBfd3JpdGUoZHNpLT5yZWdzLCBEU0lfUEhZX1RNUl9MUENMS19DRkcsCisJCSAgICAgUEhZX0NM
+S0hTMkxQX1RJTUUoMHg0MCkgfCBQSFlfQ0xLTFAySFNfVElNRSgweDQwKSk7CiB9CiAKIHN0YXRp
+YyB2b2lkIGR3X21pcGlfZHNpX2RwaHlfaW50ZXJmYWNlX2NvbmZpZyhzdHJ1Y3QgZHdfbWlwaV9k
+c2kgKmRzaSkKQEAgLTc1MSw0NiArNzU3LDQ5IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2Rw
+aHlfaW50ZXJmYWNlX2NvbmZpZyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKIAkgKiBzdG9wIHdh
+aXQgdGltZSBzaG91bGQgYmUgdGhlIG1heGltdW0gYmV0d2VlbiBob3N0IGRzaQogCSAqIGFuZCBw
+YW5lbCBzdG9wIHdhaXQgdGltZXMKIAkgKi8KLQlkc2lfd3JpdGUoZHNpLCBEU0lfUEhZX0lGX0NG
+RywgUEhZX1NUT1BfV0FJVF9USU1FKDB4MjApIHwKLQkJICBOX0xBTkVTKGRzaS0+bGFuZXMpKTsK
+KwlyZWdtYXBfd3JpdGUoZHNpLT5yZWdzLCBEU0lfUEhZX0lGX0NGRywKKwkJICAgICBQSFlfU1RP
+UF9XQUlUX1RJTUUoMHgyMCkgfCBOX0xBTkVTKGRzaS0+bGFuZXMpKTsKIH0KIAogc3RhdGljIHZv
+aWQgZHdfbWlwaV9kc2lfZHBoeV9pbml0KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQogewogCS8q
+IENsZWFyIFBIWSBzdGF0ZSAqLwotCWRzaV93cml0ZShkc2ksIERTSV9QSFlfUlNUWiwgUEhZX0RJ
+U0ZPUkNFUExMIHwgUEhZX0RJU0FCTEVDTEsKLQkJICB8IFBIWV9SU1RaIHwgUEhZX1NIVVRET1dO
+Wik7Ci0JZHNpX3dyaXRlKGRzaSwgRFNJX1BIWV9UU1RfQ1RSTDAsIFBIWV9VTlRFU1RDTFIpOwot
+CWRzaV93cml0ZShkc2ksIERTSV9QSFlfVFNUX0NUUkwwLCBQSFlfVEVTVENMUik7Ci0JZHNpX3dy
+aXRlKGRzaSwgRFNJX1BIWV9UU1RfQ1RSTDAsIFBIWV9VTlRFU1RDTFIpOworCXJlZ21hcF93cml0
+ZShkc2ktPnJlZ3MsIERTSV9QSFlfUlNUWiwgUEhZX0RJU0ZPUkNFUExMIHwgUEhZX0RJU0FCTEVD
+TEsKKwkJICAgICB8IFBIWV9SU1RaIHwgUEhZX1NIVVRET1dOWik7CisJcmVnbWFwX3dyaXRlKGRz
+aS0+cmVncywgRFNJX1BIWV9UU1RfQ1RSTDAsIFBIWV9VTlRFU1RDTFIpOworCXJlZ21hcF93cml0
+ZShkc2ktPnJlZ3MsIERTSV9QSFlfVFNUX0NUUkwwLCBQSFlfVEVTVENMUik7CisJcmVnbWFwX3dy
+aXRlKGRzaS0+cmVncywgRFNJX1BIWV9UU1RfQ1RSTDAsIFBIWV9VTlRFU1RDTFIpOwogfQogCiBz
+dGF0aWMgdm9pZCBkd19taXBpX2RzaV9kcGh5X2VuYWJsZShzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRz
+aSkKIHsKLQl1MzIgdmFsOworCXUzMiB2YWwgPSAwOwogCWludCByZXQ7CiAKLQlkc2lfd3JpdGUo
+ZHNpLCBEU0lfUEhZX1JTVFosIFBIWV9FTkZPUkNFUExMIHwgUEhZX0VOQUJMRUNMSyB8Ci0JCSAg
+UEhZX1VOUlNUWiB8IFBIWV9VTlNIVVRET1dOWik7CisJcmVnbWFwX3dyaXRlKGRzaS0+cmVncywg
+RFNJX1BIWV9SU1RaLCBQSFlfRU5GT1JDRVBMTCB8IFBIWV9FTkFCTEVDTEsgfAorCQkgICAgIFBI
+WV9VTlJTVFogfCBQSFlfVU5TSFVURE9XTlopOwogCi0JcmV0ID0gcmVhZGxfcG9sbF90aW1lb3V0
+KGRzaS0+YmFzZSArIERTSV9QSFlfU1RBVFVTLCB2YWwsCi0JCQkJIHZhbCAmIFBIWV9MT0NLLCAx
+MDAwLCBQSFlfU1RBVFVTX1RJTUVPVVRfVVMpOworCXJldCA9IHJlZ21hcF9yZWFkX3BvbGxfdGlt
+ZW91dChkc2ktPnJlZ3MsIERTSV9QSFlfU1RBVFVTLAorCQkJCSAgICAgICB2YWwsIHZhbCAmIFBI
+WV9MT0NLLAorCQkJCSAgICAgICAxMDAwLCBQSFlfU1RBVFVTX1RJTUVPVVRfVVMpOwogCWlmIChy
+ZXQpCiAJCURSTV9ERUJVR19EUklWRVIoImZhaWxlZCB0byB3YWl0IHBoeSBsb2NrIHN0YXRlXG4i
+KTsKIAotCXJldCA9IHJlYWRsX3BvbGxfdGltZW91dChkc2ktPmJhc2UgKyBEU0lfUEhZX1NUQVRV
+UywKLQkJCQkgdmFsLCB2YWwgJiBQSFlfU1RPUF9TVEFURV9DTEtfTEFORSwgMTAwMCwKLQkJCQkg
+UEhZX1NUQVRVU19USU1FT1VUX1VTKTsKKwlyZXQgPSByZWdtYXBfcmVhZF9wb2xsX3RpbWVvdXQo
+ZHNpLT5yZWdzLCBEU0lfUEhZX1NUQVRVUywKKwkJCQkgICAgICAgdmFsLCB2YWwgJiBQSFlfU1RP
+UF9TVEFURV9DTEtfTEFORSwgMTAwMCwKKwkJCQkgICAgICAgUEhZX1NUQVRVU19USU1FT1VUX1VT
+KTsKIAlpZiAocmV0KQogCQlEUk1fREVCVUdfRFJJVkVSKCJmYWlsZWQgdG8gd2FpdCBwaHkgY2xr
+IGxhbmUgc3RvcCBzdGF0ZVxuIik7CiB9CiAKIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2NsZWFy
+X2VycihzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKIHsKLQlkc2lfcmVhZChkc2ksIERTSV9JTlRf
+U1QwKTsKLQlkc2lfcmVhZChkc2ksIERTSV9JTlRfU1QxKTsKLQlkc2lfd3JpdGUoZHNpLCBEU0lf
+SU5UX01TSzAsIDApOwotCWRzaV93cml0ZShkc2ksIERTSV9JTlRfTVNLMSwgMCk7CisJdTMyIHZh
+bDsKKworCXJlZ21hcF9yZWFkKGRzaS0+cmVncywgRFNJX0lOVF9TVDAsICZ2YWwpOworCXJlZ21h
+cF9yZWFkKGRzaS0+cmVncywgRFNJX0lOVF9TVDEsICZ2YWwpOworCXJlZ21hcF93cml0ZShkc2kt
+PnJlZ3MsIERTSV9JTlRfTVNLMCwgMCk7CisJcmVnbWFwX3dyaXRlKGRzaS0+cmVncywgRFNJX0lO
+VF9NU0sxLCAwKTsKIH0KIAogc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfYnJpZGdlX3Bvc3RfZGlz
+YWJsZShzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQpAQCAtOTc3LDExICs5ODYsMTMgQEAgc3Rh
+dGljIHZvaWQgZHdfbWlwaV9kc2lfZGVidWdmc19yZW1vdmUoc3RydWN0IGR3X21pcGlfZHNpICpk
+c2kpIHsgfQogCiBzdGF0aWMgc3RydWN0IGR3X21pcGlfZHNpICoKIF9fZHdfbWlwaV9kc2lfcHJv
+YmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwKLQkJICAgIGNvbnN0IHN0cnVjdCBkd19t
+aXBpX2RzaV9wbGF0X2RhdGEgKnBsYXRfZGF0YSkKKwkJICAgIHN0cnVjdCBkd19taXBpX2RzaV9w
+bGF0X2RhdGEgKnBsYXRfZGF0YSkKIHsKIAlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2
+OwogCXN0cnVjdCByZXNldF9jb250cm9sICphcGJfcnN0OwogCXN0cnVjdCBkd19taXBpX2RzaSAq
+ZHNpOworCXN0cnVjdCByZXNvdXJjZSAqcmVzOworCXZvaWQgX19pb21lbSAqcmVnczsKIAlpbnQg
+cmV0OwogCiAJZHNpID0gZGV2bV9remFsbG9jKGRldiwgc2l6ZW9mKCpkc2kpLCBHRlBfS0VSTkVM
+KTsKQEAgLTk5NiwxNSArMTAwNywyOSBAQCBfX2R3X21pcGlfZHNpX3Byb2JlKHN0cnVjdCBwbGF0
+Zm9ybV9kZXZpY2UgKnBkZXYsCiAJCXJldHVybiBFUlJfUFRSKC1FTk9ERVYpOwogCX0KIAotCWlm
+ICghcGxhdF9kYXRhLT5iYXNlKSB7Ci0JCWRzaS0+YmFzZSA9IGRldm1fcGxhdGZvcm1faW9yZW1h
+cF9yZXNvdXJjZShwZGV2LCAwKTsKLQkJaWYgKElTX0VSUihkc2ktPmJhc2UpKQotCQkJcmV0dXJu
+IEVSUl9QVFIoLUVOT0RFVik7CisJcmVzID0gcGxhdGZvcm1fZ2V0X3Jlc291cmNlKHBkZXYsIElP
+UkVTT1VSQ0VfTUVNLCAwKTsKKwlpZiAoSVNfRVJSKHJlcykpIHsKKwkJcmV0ID0gUFRSX0VSUihy
+ZXMpOworCQlEUk1fRVJST1IoIkZhaWxlZCB0byBnZXQgcGxhdGZvcm0gcmVzb3VyY2U6ICVkXG4i
+LCByZXQpOworCQlyZXR1cm4gRVJSX1BUUihyZXQpOworCX0KKworCXJlZ3MgPSBkZXZtX2lvcmVt
+YXBfcmVzb3VyY2UoZGV2LCByZXMpOworCWlmIChJU19FUlIocmVncykpIHsKKwkJcmV0ID0gUFRS
+X0VSUihyZWdzKTsKKwkJRFJNX0VSUk9SKCJGYWlsZWQgdG8gbWFwIERTSSByZWdpc3RlcnM6ICVk
+XG4iLCByZXQpOworCQlyZXR1cm4gRVJSX1BUUihyZXQpOworCX0KIAotCX0gZWxzZSB7Ci0JCWRz
+aS0+YmFzZSA9IHBsYXRfZGF0YS0+YmFzZTsKKwlkc2ktPnJlZ3MgPSBkZXZtX3JlZ21hcF9pbml0
+X21taW8oZGV2LCByZWdzLCAmZHdfbWlwaV9kc2lfcmVnbWFwX2NmZyk7CisJaWYgKElTX0VSUihk
+c2ktPnJlZ3MpKSB7CisJCXJldCA9IFBUUl9FUlIoZHNpLT5yZWdzKTsKKwkJRFJNX0VSUk9SKCJG
+YWlsZWQgdG8gY3JlYXRlIERXIE1JUEkgRFNJIHJlZ21hcDogJWRcbiIsIHJldCk7CisJCXJldHVy
+biBFUlJfUFRSKHJldCk7CiAJfQogCisJcGxhdF9kYXRhLT5yZWdzID0gZHNpLT5yZWdzOworCiAJ
+ZHNpLT5wY2xrID0gZGV2bV9jbGtfZ2V0KGRldiwgInBjbGsiKTsKIAlpZiAoSVNfRVJSKGRzaS0+
+cGNsaykpIHsKIAkJcmV0ID0gUFRSX0VSUihkc2ktPnBjbGspOwpkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLXJvY2tjaGlwLmMgYi9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvZHctbWlwaS1kc2ktcm9ja2NoaXAuYwppbmRleCBiYzA3M2VjNWMxODMuLjMy
+MWQ2NmYwNTk4ZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
+ZHNpLXJvY2tjaGlwLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNp
+LXJvY2tjaGlwLmMKQEAgLTIxMiw3ICsyMTIsNyBAQCBzdHJ1Y3Qgcm9ja2NoaXBfZHdfZHNpX2No
+aXBfZGF0YSB7CiBzdHJ1Y3QgZHdfbWlwaV9kc2lfcm9ja2NoaXAgewogCXN0cnVjdCBkZXZpY2Ug
+KmRldjsKIAlzdHJ1Y3QgZHJtX2VuY29kZXIgZW5jb2RlcjsKLQl2b2lkIF9faW9tZW0gKmJhc2U7
+CisJc3RydWN0IHJlZ21hcCAqcmVnczsKIAogCXN0cnVjdCByZWdtYXAgKmdyZl9yZWdtYXA7CiAJ
+c3RydWN0IGNsayAqcGxscmVmX2NsazsKQEAgLTI5NywxMiArMjk3LDE1IEBAIHN0YXRpYyBpbnQg
+bWF4X21icHNfdG9fcGFyYW1ldGVyKHVuc2lnbmVkIGludCBtYXhfbWJwcykKIAogc3RhdGljIGlu
+bGluZSB2b2lkIGRzaV93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2lfcm9ja2NoaXAgKmRzaSwgdTMy
+IHJlZywgdTMyIHZhbCkKIHsKLQl3cml0ZWwodmFsLCBkc2ktPmJhc2UgKyByZWcpOworCXJlZ21h
+cF93cml0ZShkc2ktPnJlZ3MsIHJlZywgdmFsKTsKIH0KIAogc3RhdGljIGlubGluZSB1MzIgZHNp
+X3JlYWQoc3RydWN0IGR3X21pcGlfZHNpX3JvY2tjaGlwICpkc2ksIHUzMiByZWcpCiB7Ci0JcmV0
+dXJuIHJlYWRsKGRzaS0+YmFzZSArIHJlZyk7CisJdTMyIHZhbDsKKworCXJlZ21hcF9yZWFkKGRz
+aS0+cmVncywgcmVnLCAmdmFsKTsKKwlyZXR1cm4gdmFsOwogfQogCiBzdGF0aWMgaW5saW5lIHZv
+aWQgZHNpX3NldChzdHJ1Y3QgZHdfbWlwaV9kc2lfcm9ja2NoaXAgKmRzaSwgdTMyIHJlZywgdTMy
+IG1hc2spCkBAIC04OTksMTEgKzkwMiw2IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9kc2lfcm9ja2No
+aXBfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAkJcmV0dXJuIC1FTk9NRU07
+CiAKIAlyZXMgPSBwbGF0Zm9ybV9nZXRfcmVzb3VyY2UocGRldiwgSU9SRVNPVVJDRV9NRU0sIDAp
+OwotCWRzaS0+YmFzZSA9IGRldm1faW9yZW1hcF9yZXNvdXJjZShkZXYsIHJlcyk7Ci0JaWYgKElT
+X0VSUihkc2ktPmJhc2UpKSB7Ci0JCURSTV9ERVZfRVJST1IoZGV2LCAiVW5hYmxlIHRvIGdldCBk
+c2kgcmVnaXN0ZXJzXG4iKTsKLQkJcmV0dXJuIFBUUl9FUlIoZHNpLT5iYXNlKTsKLQl9CiAKIAlp
+ID0gMDsKIAl3aGlsZSAoY2RhdGFbaV0ucmVnKSB7CkBAIC05NTQsNyArOTUyLDYgQEAgc3RhdGlj
+IGludCBkd19taXBpX2RzaV9yb2NrY2hpcF9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpw
+ZGV2KQogCX0KIAogCWRzaS0+ZGV2ID0gZGV2OwotCWRzaS0+cGRhdGEuYmFzZSA9IGRzaS0+YmFz
+ZTsKIAlkc2ktPnBkYXRhLm1heF9kYXRhX2xhbmVzID0gZHNpLT5jZGF0YS0+bWF4X2RhdGFfbGFu
+ZXM7CiAJZHNpLT5wZGF0YS5waHlfb3BzID0gJmR3X21pcGlfZHNpX3JvY2tjaGlwX3BoeV9vcHM7
+CiAJZHNpLT5wZGF0YS5ob3N0X29wcyA9ICZkd19taXBpX2RzaV9yb2NrY2hpcF9ob3N0X29wczsK
+QEAgLTk3MCw2ICs5NjcsOCBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX3JvY2tjaGlwX3Byb2Jl
+KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiAJCWdvdG8gZXJyX2Nsa2Rpc2FibGU7CiAJ
+fQogCisJZHNpLT5yZWdzID0gZHNpLT5wZGF0YS5yZWdzOworCiAJcmV0dXJuIDA7CiAKIGVycl9j
+bGtkaXNhYmxlOgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3N0bS9kd19taXBpX2RzaS1z
+dG0uYyBiL2RyaXZlcnMvZ3B1L2RybS9zdG0vZHdfbWlwaV9kc2ktc3RtLmMKaW5kZXggNTE0ZWZl
+ZmIwMDE2Li44MTM3M2M1MDllMzUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9zdG0vZHdf
+bWlwaV9kc2ktc3RtLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3N0bS9kd19taXBpX2RzaS1zdG0u
+YwpAQCAtMTIsNiArMTIsNyBAQAogI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgogI2luY2x1ZGUg
+PGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgogI2luY2x1ZGUgPGxpbnV4L3JlZ3VsYXRvci9jb25z
+dW1lci5oPgorI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgogCiAjaW5jbHVkZSA8dmlkZW8vbWlw
+aV9kaXNwbGF5Lmg+CiAKQEAgLTE5LDYgKzIwLDggQEAKICNpbmNsdWRlIDxkcm0vZHJtX21pcGlf
+ZHNpLmg+CiAjaW5jbHVkZSA8ZHJtL2RybV9wcmludC5oPgogCisjZGVmaW5lIERSSVZFUl9OQU1F
+ICJzdG0zMi1kaXNwbGF5LWRzaSIKKwogI2RlZmluZSBIV1ZFUl8xMzAJCQkweDMxMzMzMDAwCS8q
+IElQIHZlcnNpb24gMS4zMCAqLwogI2RlZmluZSBIV1ZFUl8xMzEJCQkweDMxMzMzMTAwCS8qIElQ
+IHZlcnNpb24gMS4zMSAqLwogCkBAIC03NSw3ICs3OCw3IEBAIGVudW0gZHNpX2NvbG9yIHsKICNk
+ZWZpbmUgVElNRU9VVF9VUwkyMDAwMDAKIAogc3RydWN0IGR3X21pcGlfZHNpX3N0bSB7Ci0Jdm9p
+ZCBfX2lvbWVtICpiYXNlOworCXN0cnVjdCByZWdtYXAgKnJlZ3M7CiAJc3RydWN0IGNsayAqcGxs
+cmVmX2NsazsKIAlzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaTsKIAl1MzIgaHdfdmVyc2lvbjsKQEAg
+LTg2LDEyICs4OSwxNSBAQCBzdHJ1Y3QgZHdfbWlwaV9kc2lfc3RtIHsKIAogc3RhdGljIGlubGlu
+ZSB2b2lkIGRzaV93cml0ZShzdHJ1Y3QgZHdfbWlwaV9kc2lfc3RtICpkc2ksIHUzMiByZWcsIHUz
+MiB2YWwpCiB7Ci0Jd3JpdGVsKHZhbCwgZHNpLT5iYXNlICsgcmVnKTsKKwlyZWdtYXBfd3JpdGUo
+ZHNpLT5yZWdzLCByZWcsIHZhbCk7CiB9CiAKIHN0YXRpYyBpbmxpbmUgdTMyIGRzaV9yZWFkKHN0
+cnVjdCBkd19taXBpX2RzaV9zdG0gKmRzaSwgdTMyIHJlZykKIHsKLQlyZXR1cm4gcmVhZGwoZHNp
+LT5iYXNlICsgcmVnKTsKKwl1MzIgdmFsOworCisJcmVnbWFwX3JlYWQoZHNpLT5yZWdzLCByZWcs
+ICZ2YWwpOworCXJldHVybiB2YWw7CiB9CiAKIHN0YXRpYyBpbmxpbmUgdm9pZCBkc2lfc2V0KHN0
+cnVjdCBkd19taXBpX2RzaV9zdG0gKmRzaSwgdTMyIHJlZywgdTMyIG1hc2spCkBAIC0yMDIsMTUg
+KzIwOCwxNSBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX3BoeV9pbml0KHZvaWQgKnByaXZfZGF0
+YSkKIAogCS8qIEVuYWJsZSB0aGUgcmVndWxhdG9yICovCiAJZHNpX3NldChkc2ksIERTSV9XUlBD
+UiwgV1JQQ1JfUkVHRU4gfCBXUlBDUl9CR1JFTik7Ci0JcmV0ID0gcmVhZGxfcG9sbF90aW1lb3V0
+KGRzaS0+YmFzZSArIERTSV9XSVNSLCB2YWwsIHZhbCAmIFdJU1JfUlJTLAotCQkJCSBTTEVFUF9V
+UywgVElNRU9VVF9VUyk7CisJcmV0ID0gcmVnbWFwX3JlYWRfcG9sbF90aW1lb3V0KGRzaS0+cmVn
+cywgRFNJX1dJU1IsIHZhbCwgdmFsICYgV0lTUl9SUlMsCisJCQkJICAgICAgIFNMRUVQX1VTLCBU
+SU1FT1VUX1VTKTsKIAlpZiAocmV0KQogCQlEUk1fREVCVUdfRFJJVkVSKCIhVElNRU9VVCEgd2Fp
+dGluZyBSRUdVLCBsZXQncyBjb250aW51ZVxuIik7CiAKIAkvKiBFbmFibGUgdGhlIERTSSBQTEwg
+JiB3YWl0IGZvciBpdHMgbG9jayAqLwogCWRzaV9zZXQoZHNpLCBEU0lfV1JQQ1IsIFdSUENSX1BM
+TEVOKTsKLQlyZXQgPSByZWFkbF9wb2xsX3RpbWVvdXQoZHNpLT5iYXNlICsgRFNJX1dJU1IsIHZh
+bCwgdmFsICYgV0lTUl9QTExMUywKLQkJCQkgU0xFRVBfVVMsIFRJTUVPVVRfVVMpOworCXJldCA9
+IHJlZ21hcF9yZWFkX3BvbGxfdGltZW91dChkc2ktPnJlZ3MsIERTSV9XSVNSLCB2YWwsCisJCQkJ
+ICAgICAgIHZhbCAmIFdJU1JfUExMTFMsIFNMRUVQX1VTLCBUSU1FT1VUX1VTKTsKIAlpZiAocmV0
+KQogCQlEUk1fREVCVUdfRFJJVkVSKCIhVElNRU9VVCEgd2FpdGluZyBQTEwsIGxldCdzIGNvbnRp
+bnVlXG4iKTsKIApAQCAtMzMyLDIxICszMzgsMTIgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9z
+dG1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAlzdHJ1Y3QgZGV2aWNlICpk
+ZXYgPSAmcGRldi0+ZGV2OwogCXN0cnVjdCBkd19taXBpX2RzaV9zdG0gKmRzaTsKIAlzdHJ1Y3Qg
+Y2xrICpwY2xrOwotCXN0cnVjdCByZXNvdXJjZSAqcmVzOwogCWludCByZXQ7CiAKIAlkc2kgPSBk
+ZXZtX2t6YWxsb2MoZGV2LCBzaXplb2YoKmRzaSksIEdGUF9LRVJORUwpOwogCWlmICghZHNpKQog
+CQlyZXR1cm4gLUVOT01FTTsKIAotCXJlcyA9IHBsYXRmb3JtX2dldF9yZXNvdXJjZShwZGV2LCBJ
+T1JFU09VUkNFX01FTSwgMCk7Ci0JZHNpLT5iYXNlID0gZGV2bV9pb3JlbWFwX3Jlc291cmNlKGRl
+diwgcmVzKTsKLQlpZiAoSVNfRVJSKGRzaS0+YmFzZSkpIHsKLQkJcmV0ID0gUFRSX0VSUihkc2kt
+PmJhc2UpOwotCQlEUk1fRVJST1IoIlVuYWJsZSB0byBnZXQgZHNpIHJlZ2lzdGVycyAlZFxuIiwg
+cmV0KTsKLQkJcmV0dXJuIHJldDsKLQl9Ci0KIAlkc2ktPnZkZF9zdXBwbHkgPSBkZXZtX3JlZ3Vs
+YXRvcl9nZXQoZGV2LCAicGh5LWRzaSIpOwogCWlmIChJU19FUlIoZHNpLT52ZGRfc3VwcGx5KSkg
+ewogCQlyZXQgPSBQVFJfRVJSKGRzaS0+dmRkX3N1cHBseSk7CkBAIC0zOTYsNyArMzkzLDYgQEAg
+c3RhdGljIGludCBkd19taXBpX2RzaV9zdG1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAq
+cGRldikKIAkJZ290byBlcnJfZHNpX3Byb2JlOwogCX0KIAotCWR3X21pcGlfZHNpX3N0bV9wbGF0
+X2RhdGEuYmFzZSA9IGRzaS0+YmFzZTsKIAlkd19taXBpX2RzaV9zdG1fcGxhdF9kYXRhLnByaXZf
+ZGF0YSA9IGRzaTsKIAogCXBsYXRmb3JtX3NldF9kcnZkYXRhKHBkZXYsIGRzaSk7CkBAIC00MDgs
+NiArNDA0LDggQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9zdG1fcHJvYmUoc3RydWN0IHBsYXRm
+b3JtX2RldmljZSAqcGRldikKIAkJZ290byBlcnJfZHNpX3Byb2JlOwogCX0KIAorCWRzaS0+cmVn
+cyA9IGR3X21pcGlfZHNpX3N0bV9wbGF0X2RhdGEucmVnczsKKwogCXJldHVybiAwOwogCiBlcnJf
+ZHNpX3Byb2JlOgpAQCAtNDc0LDcgKzQ3Miw3IEBAIHN0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJp
+dmVyIGR3X21pcGlfZHNpX3N0bV9kcml2ZXIgPSB7CiAJLnJlbW92ZQkJPSBkd19taXBpX2RzaV9z
+dG1fcmVtb3ZlLAogCS5kcml2ZXIJCT0gewogCQkub2ZfbWF0Y2hfdGFibGUgPSBkd19taXBpX2Rz
+aV9zdG1fZHRfaWRzLAotCQkubmFtZQk9ICJzdG0zMi1kaXNwbGF5LWRzaSIsCisJCS5uYW1lCT0g
+RFJJVkVSX05BTUUsCiAJCS5wbSA9ICZkd19taXBpX2RzaV9zdG1fcG1fb3BzLAogCX0sCiB9Owpk
+aWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmggYi9pbmNsdWRlL2Ry
+bS9icmlkZ2UvZHdfbWlwaV9kc2kuaAppbmRleCA5NGNjNjRhMzQyZTEuLmVjYzE4OTdlZmE2MiAx
+MDA2NDQKLS0tIGEvaW5jbHVkZS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmgKKysrIGIvaW5jbHVk
+ZS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmgKQEAgLTM3LDcgKzM3LDcgQEAgc3RydWN0IGR3X21p
+cGlfZHNpX2hvc3Rfb3BzIHsKIH07CiAKIHN0cnVjdCBkd19taXBpX2RzaV9wbGF0X2RhdGEgewot
+CXZvaWQgX19pb21lbSAqYmFzZTsKKwlzdHJ1Y3QgcmVnbWFwICpyZWdzOwogCXVuc2lnbmVkIGlu
+dCBtYXhfZGF0YV9sYW5lczsKIAogCWVudW0gZHJtX21vZGVfc3RhdHVzICgqbW9kZV92YWxpZCko
+dm9pZCAqcHJpdl9kYXRhLAotLSAKMi4yNC4wCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
+cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9kcmktZGV2ZWw=
