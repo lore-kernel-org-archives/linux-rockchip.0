@@ -1,68 +1,65 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: arm64: dts: rockchip: Disable HS400 for mmc on rk3399-roc-pc
-Date: Mon, 18 Nov 2019 08:08:37 -0800
-Message-ID: <CAD=FV=VnjyQJpRcW6P1f4+ZrSOzAe2Cnoej=it4aCz+F_ozukw@mail.gmail.com>
-References: <20190301153348.29870-1-christoph.muellner@theobroma-systems.com>
- <2766673.iMURPl8gB5@phil> <69472c06-8b21-c3d8-acad-1a0a292c0fa2@fivetechno.de>
- <3460135.SDF8zhHPq4@diego>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH 2/2] PCI: rockchip: Simplify optional regulator handling
+Date: Mon, 18 Nov 2019 18:15:38 +0000
+Message-ID: <20191118181538.GA2261@e121166-lin.cambridge.arm.com>
+References: <20191118115930.GC9761@sirena.org.uk>
+ <20191118142428.GA27459@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3460135.SDF8zhHPq4@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Tony Xie <tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20191118142428.GA27459@google.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: heiko@sntech.de, linux-pci@vger.kernel.org, shawn.lin@rock-chips.com, lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, andrew.murray@arm.com, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgoKT24gRnJpLCBOb3YgMTUsIDIwMTkgYXQgMzoxOSBBTSBIZWlrbyBTdMO8Ym5lciA8aGVp
-a29Ac250ZWNoLmRlPiB3cm90ZToKPgo+IEhpIE1hcmt1cywKPgo+IEFtIEZyZWl0YWcsIDE1LiBO
-b3ZlbWJlciAyMDE5LCAxMTozNzo1OCBDRVQgc2NocmllYiBNYXJrdXMgUmVpY2hsOgo+ID4gQW0g
-MTQuMTEuMTkgdW0gMTQ6MTAgc2NocmllYiBIZWlrbyBTdHVlYm5lcjoKPiA+ID4gJHN1YmplY3Qg
-aXMgbWlzc2luZyB0aGUgW1BBVENIXSBwcmVmaXgKPiA+IHdpbGwgZml4Lgo+Cj4gbm8gbmVlZCB0
-byByZXNlbmQganVzdCBmb3IgdGhpcyAuLi4ganVzdCB0byBrZWVwIGluIG1pbmQgZm9yIGZ1dHVy
-ZSBwYXRjaGVzIDstKQo+Cj4KPiA+ID4gQW0gTW9udGFnLCAxMS4gTm92ZW1iZXIgMjAxOSwgMTA6
-NTE6MDQgQ0VUIHNjaHJpZWIgTWFya3VzIFJlaWNobDoKPiA+ID4+IFdvcmtpbmcgd2l0aCByb290
-ZnMgb24gdHdvIDEyOEdCIG1tY3Mgb24gcmszMzk5LXJvYy1wYy4KPiA+ID4+Cj4gPiA+PiBPbmUg
-KG1tYyBuYW1lIDEyOEc3Miwgb25lIHNjcmV3IGhvbGUpIHdvcmtzIGZpbmUgaW4gSFM0MDAgbW9k
-ZS4KPiA+ID4+IE90aGVyIChtbWMgbmFtZSBESk5CNFIsIGZpcmVmbHkgb24gcGNiLCB0d28gc2Ny
-ZXcgaG9sZXMpIGdldHMgbG90cyBvZgo+ID4gPj4gbW1jMTogInJ1bm5pbmcgQ1FFIHJlY292ZXJ5
-IiwgZXZlbiBoYW5ncyB3aXRoIGRhbWFnZWQgZnMsCj4gPiA+PiB3aGVuIHJ1bm5pbmcgdW5kZXIg
-aGVhdnkgbG9hZCwgZS5nLiBjb21waWxpbmcga2VybmVsLgo+ID4gPj4gQm90aCBydW4gZmluZSB3
-aXRoIEhTMjAwLgo+ID4gPj4KPiA+ID4+IERpc2FibGluZyBDUSB3aXRoIHBhdGNoIG1tYzogY29y
-ZTogQWRkIE1NQyBDb21tYW5kIFF1ZXVlIFN1cHBvcnQga2VybmVsIHBhcmFtZXRlciBbMF0gZGlk
-IG5vdCBoZWxwLgo+ID4gPj4gWzBdIGh0dHBzOi8vZ2l0bGFiLmNvbS9heXVmYW4tcmVwb3Mvcm9j
-azY0L2xpbnV4LW1haW5saW5lLWtlcm5lbC9jb21taXQvNTRlMjY0MTU0Yjg3ZGZlMzJhODM1OWIy
-NzI2ZTJkNTYxMWFkYmFmMwo+ID4gPgo+ID4gPiBJJ20gaG9waW5nIGZvciBzb21lIGlucHV0IGZy
-b20gb3RoZXIgcGVvcGxlIGluIENjIGJ1dCB5b3VyIG1haWwgaGVhZGVycwo+ID4gPiBhbHNvIHJl
-ZmVyZW5jZWQgdGhlIGRyaXZlLWltcGVuZGFuY2Ugc2VyaWVzIGZyb20gQ2hyaXN0b3BoIFswXSwg
-d2hpY2gKPiA+ID4gaXQgc2VlbXMgd2UgbmVlZCB0byBwb2tlIHRoZSBwaHkgbWFpbnRhaW5lciBh
-Z2Fpbi4KPiA+ID4KPiA+ID4gRGlkIHlvdSBjaGVjayBpZiBjaGFuZ2luZyB0aGUgaW1wZWRhbmNl
-IGhlbHBlZCAobGlrZSB0aGUgc2lnbmFsIGRhbXBlbmluZwo+ID4gPiBQaGlsaXBwIGRlc2NyaWJl
-ZCBpbiBvbmUgb2YgdGhlIHJlcGxpZXMgdGhlcmUpLgo+ID4KPiA+IGNoZWNrZWQgd2l0aAo+ID4K
-PiA+ICZlbW1jX3BoeSB7Cj4gPiArICAgICAgIGRyaXZlLWltcGVkYW5jZS1vaG0gPSA8MzM+Owo+
-ID4KPiA+IGdpdmVzIG5vIGltcHJvdmVtZW50Ogo+Cj4gVGhhdCBpcyBzYWQgLi4uIEkgZ3Vlc3Mg
-d2UgcmVhbGx5IHNob3VsZCBkaXNhYmxlIGhzNDAwIHRoZW4gLi4uCj4gdGhhdCBtYXkgZ2l2ZSBv
-dGhlcnMgbW9yZSBpbmNlbnRpdmUgdG8gZGl2ZSBkZWVwZXIgOy0pCgpKdXN0IG91dCBvZiBjdXJp
-b3NpdHksIGlzIHRoZSBwcm9ibGVtIHdpdGggdGhlIHN0cm9iZSBsaW5lLCBvciB3aXRoCmhzNDAw
-PyAgSGF2ZSB5b3UgdHJpZWQgdXNpbmcgdGhlIHNvbHV0aW9uIGZyb20gInJrMzM5OS1ncnUuZHRz
-aSI/Ck5hbWVseToKCiAgICAgICAgLyoKICAgICAgICAgKiBTaWduYWwgaW50ZWdyaXR5IGlzbid0
-IGdyZWF0IGF0IDIwMCBNSHogYW5kIDE1MCBNSHogKEREUikgZ2l2ZXMgdGhlCiAgICAgICAgICog
-c2FtZSAob3IgbmVhcmx5IHRoZSBzYW1lKSBwZXJmb3JtYW5jZSBmb3IgYWxsIGVNTUMgdGhhdCBh
-cmUgaW50ZW5kZWQKICAgICAgICAgKiB0byBiZSB1c2VkLgogICAgICAgICAqLwogICAgICAgIGFz
-c2lnbmVkLWNsb2NrLXJhdGVzID0gPDE1MDAwMDAwMD47CgpJSVJDIGhzNDAwIG9uIHJrMzM5OSB3
-YXMgYSBiaXQgaWZmeSBidXQgcnVubmluZyBhdCAxNTAgTUh6IG1hZGUgaXQKbXVjaCBtb3JlIHJl
-bGlhYmxlIGFuZCBzdGlsbCBnYXZlIHlvdSAzMDAgTUIvcyB0cmFuc2ZlciByYXRlIChzbyBtdWNo
-CmJldHRlciB0aGFuIGhzMjAwKS4gIEluIHJlYWxpdHkgbWFueSBlTU1DIGNoaXBzIGNhbid0IGRv
-ID4gMzAwIE1CL3MKYW55d2F5LgoKLURvdWcKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Mon, Nov 18, 2019 at 08:24:28AM -0600, Bjorn Helgaas wrote:
+> On Mon, Nov 18, 2019 at 11:59:30AM +0000, Mark Brown wrote:
+> > On Sat, Nov 16, 2019 at 12:54:20PM +0000, Robin Murphy wrote:
+> > > Null checks are both cheaper and more readable than having !IS_ERR()
+> > > splattered everywhere.
+> > 
+> > > -	if (IS_ERR(rockchip->vpcie3v3))
+> > > +	if (!rockchip->vpcie3v3)
+> > >  		return;
+> > >  
+> > >  	/*
+> > > @@ -611,6 +611,7 @@ static int rockchip_pcie_parse_host_dt(struct rockchip_pcie *rockchip)
+> > >  		if (PTR_ERR(rockchip->vpcie12v) != -ENODEV)
+> > >  			return PTR_ERR(rockchip->vpcie12v);
+> > >  		dev_info(dev, "no vpcie12v regulator found\n");
+> > > +		rockchip->vpcie12v = NULL;
+> > 
+> > According to the API NULL is a valid regulator.  We don't currently
+> > actually do this but it's storing up surprises if you treat it as
+> > invalid.
+> 
+> I don't know anything about the regulator API, but the fact that NULL
+> can be a valid regulator is itself a little surprising :)
+
+if (rockchip->vpcie3v3 == NULL) is true the driver would currently
+panic the kernel AFAICS.
+
+rockchip_pcie_set_power_limit()
+->regulator_get_current_limit(NULL)
+ -> _regulator_get_current_limit(NULL)
+   -> regulator_lock(NULL)
+     -> regulator_lock_nested(NULL, NULL)
+       -> ww_mutex_trylock(&NULL->mutex)
+
+Also, by making NULL a valid regulator, it means that regulators
+(ie pointers) with default values are valid whether we call
+devm_regulator_get* or not. I understand this patch can be dropped
+but that per-se does not make this driver code any more robust AFAICS.
+
+Lorenzo
