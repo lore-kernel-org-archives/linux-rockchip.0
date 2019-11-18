@@ -1,27 +1,26 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Fix min voltage for rk3399-firefly vdd_log
-Date: Mon, 18 Nov 2019 02:04:57 +0100
-Message-ID: <2125664.Zgi4m6pvVL@phil>
-References: <20191111005158.25070-1-kever.yang@rock-chips.com>
+Subject: Re: [PATCH 3/3] arm64: dts: rk3399: Add init voltage for vdd_log
+Date: Mon, 18 Nov 2019 02:05:35 +0100
+Message-ID: <2815649.1XujLjda4c@phil>
+References: <20191111005158.25070-1-kever.yang@rock-chips.com> <1780044.CQmMckQ5VN@diego> <b752ba88-8931-0e03-a010-650129253afd@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191111005158.25070-1-kever.yang@rock-chips.com>
+In-Reply-To: <b752ba88-8931-0e03-a010-650129253afd@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Soeren Moch <smoch@web.de>, linux-rockchip@lists.infradead.org, Elaine Zhang <zhangqing@rock-chips.com>, Peter Robinson <pbrobinson@gmail.com>, Akash Gajjar <akash@openedev.com>, Alexis Ballier <aballier@gentoo.org>, Andrius =?utf-8?B?xaB0aWtvbmFz?= <andrius@stikonas.eu>, Andy Yan <andyshrk@gmail.com>, Ezequiel Garcia <ezequiel@collabora.com>, Hugh Cole-Baker <sigmaris@gmail.com>, Katsuhiro Suzuki <katsuhiro@katsuster.net>, Mark Rutland <mark.rutland@arm.com>, Nick Xie <nick@khadas.com>, Oskari Lemmela <oskari@lemmela.net>, Pragnesh Patel <Pragnesh_Patel@mentor.com>, Rob Herring <robh+dt@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Vicente Bergas <vicencb@gmail.com>, Vivek Unune <npcomplete13@gmail.com>, devicetree@vger.kernel.orglinux
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 11. November 2019, 01:51:56 CET schrieb Kever Yang:
-> The min/max value of vdd_log is decide by pwm IO voltage and its
-> resistors, the rk3399-firefly board's pwm regulator circuit is designed
-> for IO voltage at 1.8V, while the board actually use 3.0V for IO, which
-> at last lead to the min-microvolt to '430mV' instead of '800mV'.
+Hi Kever,
+
+Am Mittwoch, 13. November 2019, 04:21:35 CET schrieb Kever Yang:
+> Heiko,
 > 
-> Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+>      Could you help to just pick the first patch and drop the other 2 
+> patches?
 
-applied for 5.6 (or maybe still 5.5)
+I did as requested now :-)
 
-Thanks
 Heiko
