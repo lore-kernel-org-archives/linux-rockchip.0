@@ -1,122 +1,85 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Split rk3399-roc-pc for with and
- without mezzanine board.
-Date: Mon, 18 Nov 2019 17:36:26 +0530
-Message-ID: <CAMty3ZAaOd2GVGqqw0pASbcaScH7QPWXN5rxkqUshdRAq6Oz5Q@mail.gmail.com>
-References: <075b3fa6-dab7-5fec-df68-b53f32bf061b@fivetechno.de>
- <CAMty3ZDwjv4ShpbAyQPWk9ewboFOK3nZO0s_QNty_m0hJKR76w@mail.gmail.com>
- <62bfaad5-cbd6-efbd-426b-3da681fcd160@fivetechno.de> <17111474.kvkBZtc6MS@diego>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 2/2] PCI: rockchip: Simplify optional regulator handling
+Date: Mon, 18 Nov 2019 11:59:30 +0000
+Message-ID: <20191118115930.GC9761@sirena.org.uk>
+References: <1eebc002101931012d337cda23d18f85b0326361.1573908530.git.robin.murphy@arm.com>
+ <347bc3ef8399577e4cef3fdbf3af34d20b4ad27e.1573908530.git.robin.murphy@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <17111474.kvkBZtc6MS@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Markus Reichl <m.reichl@fivetechno.de>, Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: multipart/mixed; boundary="===============0451601358706266005=="
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <347bc3ef8399577e4cef3fdbf3af34d20b4ad27e.1573908530.git.robin.murphy@arm.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: lorenzo.pieralisi@arm.com, heiko@sntech.de, linux-pci@vger.kernel.org, shawn.lin@rock-chips.com, lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, bhelgaas@google.com, andrew.murray@arm.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Nov 18, 2019 at 5:31 PM Heiko St=C3=BCbner <heiko@sntech.de> wrote:
->
-> Am Montag, 18. November 2019, 12:57:16 CET schrieb Markus Reichl:
-> > Hi Jagan,
-> >
-> > Am 18.11.19 um 12:44 schrieb Jagan Teki:
-> > > On Mon, Nov 4, 2019 at 5:42 PM Heiko St=C3=BCbner <heiko@sntech.de> w=
-rote:
-> > >>
-> > >> Hi Markus,
-> > >>
-> > >> Am Freitag, 1. November 2019, 17:54:23 CET schrieb Markus Reichl:
-> > >> > For rk3399-roc-pc is a mezzanine board available that carries M.2 =
-and
-> > >> > POE interfaces. Use it with a separate dts.
-> > >> >
-> > >> > Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
-> > >> > ---
-> > >> >  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
-> > >> >  .../boot/dts/rockchip/rk3399-roc-pc-mezz.dts  |  52 ++
-> > >> >  .../arm64/boot/dts/rockchip/rk3399-roc-pc.dts | 757 +------------=
-----
-> > >> >  .../boot/dts/rockchip/rk3399-roc-pc.dtsi      | 767 +++++++++++++=
-+++++
-> > >> >  4 files changed, 821 insertions(+), 756 deletions(-)
-> > >> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mez=
-z.dts
-> > >> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts=
-i
-> > >> >
-> > >> > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/bo=
-ot/dts/rockchip/Makefile
-> > >> > index a959434ad46e..80ee9f1fc5f5 100644
-> > >> > --- a/arch/arm64/boot/dts/rockchip/Makefile
-> > >> > +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> > >> > @@ -28,6 +28,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3399-nanopi-n=
-eo4.dtb
-> > >> >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3399-orangepi.dtb
-> > >> >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3399-puma-haikou.dtb
-> > >> >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3399-roc-pc.dtb
-> > >> > +dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3399-roc-pc-mezz.dtb
-> > >> >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3399-rock-pi-4.dtb
-> > >> >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3399-rock960.dtb
-> > >> >  dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3399-rockpro64.dtb
-> > >> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezz.dts b=
-/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezz.dts
-> > >> > new file mode 100644
-> > >> > index 000000000000..ee77677d2cf2
-> > >> > --- /dev/null
-> > >> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezz.dts
-> > >> > @@ -0,0 +1,52 @@
-> > >> > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> > >> > +/*
-> > >> > + * Copyright (c) 2017 T-Chip Intelligent Technology Co., Ltd
-> > >> > + * Copyright (c) 2019 Markus Reichl <m.reichl@fivetechno.de>
-> > >> > + */
-> > >> > +
-> > >> > +/dts-v1/;
-> > >> > +#include "rk3399-roc-pc.dtsi"
-> > >> > +
-> > >> > +/ {
-> > >> > +     model =3D "Firefly ROC-RK3399-PC Mezzanine Board";
-> > >> > +     compatible =3D "firefly,roc-rk3399-pc", "rockchip,rk3399";
-> > >>
-> > >> different board with same compatible isn't possible, so
-> > >> you'll need a new compatible for it and add a new line to
-> > >> the roc-pc entry in
-> > >>         Documentation/devicetree/bindings/arm/rockchip.yaml
-> > >>
-> > >> Either you see it as
-> > >> - a board + hat, using dt overlay and same compatible
-> > >> - a completely separate board, which needs a separate
-> > >>   compatible as well
-> > >>
-> > >> And as discussed in the previous thread
-> > >> http://lists.infradead.org/pipermail/linux-rockchip/2019-November/02=
-7592.html
-> > >> but also in Jagan's response that really is somehow a grey area
-> > >> for something relatively static as the M.2 extension.
-> > >
-> > > Sorry for late response on this. I still think that the "overlay woul=
-d
-> > > be a better suite" than having separate dts, since it is HAT which is
-> > > optional to insert and have possibility of having another HAT if it
-> > > really fit into it.
-> > >
-> > > Comments?
-> > Presently no other extension board does exist, I don't expect one.
-> >
-> > I use it with rootfs on NVME on the mezzanine board.
-> > It is convenient to have the NVME up before going to user space.
->
-> And that is exactly the reason while I think it's sane to have this
-> as a separate board. For more common hats with random
-> extended functionality this might be different.
->
-> But people attaching the nvme-"hat" will in most all cases do so quite
-> permanently as well ;-) .
 
-I did understand this completely and I do agree this point and use-case.
+--===============0451601358706266005==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="DSayHWYpDlRfCAAQ"
+Content-Disposition: inline
 
-But what if we have overlay, and give tendency to use it at bootloader
-level for nvme-"hat" so it can satisfy both common and random HAT
-functionalities.
+
+--DSayHWYpDlRfCAAQ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sat, Nov 16, 2019 at 12:54:20PM +0000, Robin Murphy wrote:
+> Null checks are both cheaper and more readable than having !IS_ERR()
+> splattered everywhere.
+
+> -	if (IS_ERR(rockchip->vpcie3v3))
+> +	if (!rockchip->vpcie3v3)
+>  		return;
+> =20
+>  	/*
+> @@ -611,6 +611,7 @@ static int rockchip_pcie_parse_host_dt(struct rockchi=
+p_pcie *rockchip)
+>  		if (PTR_ERR(rockchip->vpcie12v) !=3D -ENODEV)
+>  			return PTR_ERR(rockchip->vpcie12v);
+>  		dev_info(dev, "no vpcie12v regulator found\n");
+> +		rockchip->vpcie12v =3D NULL;
+
+According to the API NULL is a valid regulator.  We don't currently
+actually do this but it's storing up surprises if you treat it as
+invalid.
+
+--DSayHWYpDlRfCAAQ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl3Sh6EACgkQJNaLcl1U
+h9AOkgf/VTgP3xuhrmrWsbUIyqn+9NRUQlo2cBfiCB08Dqwn+Nyoeb6LLY0SnG6R
+ezJOmBDiE/Ih8trc+IRq/nAgaM620I3ZLeodmwtndxikXe2QEl59zkpmiY3JQDlG
+prOhuT1YC88FD5fPT1bmSxJyRpLwZ/dI4fP0SwuGn7sYXdv0285guwMhP80Kjn9p
+Z8Z5x2AG7D41r8QMatZ0q0/W2rma7jdcE4J7yllyxDOHA8BqMX8GQs3UGohFU1GR
+9bs8wM7zhZYoWS7YCuRmytgh85YUV1i/iM0OqGhzni4/ir6jQ89uZA4/KEk5S/MO
+OkxQcqTDVXdu97bEOyC3ofVQiby50w==
+=OHJP
+-----END PGP SIGNATURE-----
+
+--DSayHWYpDlRfCAAQ--
+
+
+--===============0451601358706266005==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+--===============0451601358706266005==--
