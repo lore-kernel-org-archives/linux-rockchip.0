@@ -1,43 +1,26 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: arm64: dts: rockchip: Disable HS400 for mmc on rk3399-roc-pc
-Date: Mon, 18 Nov 2019 02:01:16 +0100
-Message-ID: <14740383.9LiiEhnQET@phil>
-References: <20190301153348.29870-1-christoph.muellner@theobroma-systems.com>
- <20190301153348.29870-2-christoph.muellner@theobroma-systems.com>
- <367bf78a-f079-f0b4-68fe-52c86823c174@fivetechno.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix vdd_log on rk3399-roc-pc
+Date: Mon, 18 Nov 2019 02:03:42 +0100
+Message-ID: <1963448.kY1Vgr51ze@phil>
+References: <20191111005158.25070-1-kever.yang@rock-chips.com> <fd9ee2bc-9dfb-1aa2-f00f-add9b3069876@web.de> <d786ef47-eda8-3994-2ef2-fc4a584bcdcc@fivetechno.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <367bf78a-f079-f0b4-68fe-52c86823c174-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tony Xie <tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Klaus Goger <klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Randy Li <ayaka-xPW3/0Ywev/iB9QmIjCX8w@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Christoph Muellner <christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <d786ef47-eda8-3994-2ef2-fc4a584bcdcc@fivetechno.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Markus Reichl <m.reichl@fivetechno.de>
+Cc: Soeren Moch <smoch@web.de>, Kever Yang <kever.yang@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, Andrius =?utf-8?B?xaB0aWtvbmFz?= <andrius@stikonas.eu>, Alexis Ballier <aballier@gentoo.org>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Katsuhiro Suzuki <katsuhiro@katsuster.net>, Ezequiel Garcia <ezequiel@collabora.com>, Elaine Zhang <zhangqing@rock-chips.com>, Andy Yan <andyshrk@gmail.com>, linux-kernel@vger.kernel.org, Vicente Bergas <vicencb@gmail.com>, Hugh Cole-Baker <sigmaris@gmail.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Oskari Lemmela <oskari@lemmela.net>, Nick Xie <nick@khadas.com>, Peter Robinson <pbrobinson@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Vivek Unune <npcomplet>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 11. November 2019, 10:51:04 CET schrieb Markus Reichl:
-> Working with rootfs on two 128GB mmcs on rk3399-roc-pc.
+Am Dienstag, 12. November 2019, 12:42:09 CET schrieb Markus Reichl:
+> On rk3399 vdd_log shall not exceed 1.0 V. On rk3399-roc-pc
+> vdd_log is presently 1118 mV. Fix by setting the min voltage
+> of the respective pwm-regulator down to 450 mV.
+> This results in a vdd_log of 953 mV.
+> Specify the supply to silence warning.
 > 
-> One (mmc name 128G72, one screw hole) works fine in HS400 mode.
-> Other (mmc name DJNB4R, firefly on pcb, two screw holes) gets lots of
-> mmc1: "running CQE recovery", even hangs with damaged fs,
-> when running under heavy load, e.g. compiling kernel.
-> Both run fine with HS200.
-> 
-> Disabling CQ with patch mmc: core: Add MMC Command Queue Support kernel parameter [0] did not help.
-> [0] https://gitlab.com/ayufan-repos/rock64/linux-mainline-kernel/commit/54e264154b87dfe32a8359b2726e2d5611adbaf3
-> 
-> Therefore I propose to disable HS400 mode on roc-pc for now.
-> 
-> Signed-off-by: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
+> Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
 
 applied for 5.6 (or maybe still 5.5)
 
