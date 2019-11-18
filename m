@@ -1,54 +1,84 @@
-From: "Matwey V. Kornilov" <matwey.kornilov@gmail.com>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Enable PCIe for Radxa Rock Pi 4 board
-Date: Mon, 18 Nov 2019 21:40:47 +0300
-Message-ID: <CAJs94EZPLedH4w3+5vfJA+f+1+zLETBdETpqNPytp3LG63az9Q@mail.gmail.com>
-References: <20191117101545.6406-1-matwey@sai.msu.ru> <1784520.t1z2W423De@phil>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v11 00/11] Rockchip ISP Driver
+Date: Mon, 18 Nov 2019 15:52:01 -0300
+Message-ID: <7fd4bf99fd6316da8acaf0a27b6845bedbf4b25f.camel@collabora.com>
+References: <20191114051242.14651-1-helen.koike@collabora.com>
+         <996a9b6a-0e45-d627-9263-539c22e5f1c0@xs4all.nl>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1784520.t1z2W423De@phil>
+In-Reply-To: <996a9b6a-0e45-d627-9263-539c22e5f1c0@xs4all.nl>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ezequiel Garcia <ezequiel@collabora.com>, Akash Gajjar <akash@openedev.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
+To: Hans Verkuil <hverkuil@xs4all.nl>, Helen Koike <helen.koike@collabora.com>, linux-rockchip@lists.infradead.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, gregkh@linuxfoundation.org, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, robh+dt@kernel.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, kernel@collabora.com, linux-media@vger.kernel.org, jacob-chen@iotwrt.com, zhengsq@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-=D0=BF=D0=BD, 18 =D0=BD=D0=BE=D1=8F=D0=B1. 2019 =D0=B3. =D0=B2 03:46, Heiko=
- Stuebner <heiko@sntech.de>:
->
-> Hi Matwey,
->
-> Am Sonntag, 17. November 2019, 11:15:37 CET schrieb Matwey V. Kornilov:
-> > Radxa Rock Pi 4 is equipped with M.2 PCIe slot,
-> > so enable PCIe for the board.
-> >
-> > The changes has been tested with Intel SSD 660p series device.
-> >
-> >     01:00.0 Class 0108: Device 8086:f1a8 (rev 03)
-> >
-> > Signed-off-by: Matwey V. Kornilov <matwey@sai.msu.ru>
->
-> applied the patch, but you could do a follow-up that mimics
-> https://lore.kernel.org/linux-arm-kernel/20191117140728.917-1-linux.amoon=
-@gmail.com/
->
-> aka find out from the schematics where the 0.9 and 1.8 supplies come from=
-.
+Hi Hans,
 
-Current schematics
-(https://dl.radxa.com/rockpi4/docs/hw/rockpi4/rockpi4_v13_sch_20181112.pdf)
-is controversial on 1.8 supply:
+Thanks for taking care of this.
 
-On sheet 15 it says that 1.8 is supplied by VCC_1V8
-at the same time on sheet 3 it says that it is supplied by VCCA_1V8
+On Thu, 2019-11-14 at 09:42 +0100, Hans Verkuil wrote:
+> On 11/14/19 6:12 AM, Helen Koike wrote:
+> > Hello,
+> > 
+> > This series adds the Rockchip Image Signal Processing Unit v1 driver to
+> > staging.
+> > 
+> > The main reason to be in staging is that people are already using it from the
+> > mailing list (including libcamera), and having it in mainline makes the workflow
+> > easier. Also, it is easier for other people to contribute back (with code
+> > or testing the driver).
+> > 
+> > We plan to actively work on this driver to get it our of staging.
+> > 
+> > This patchset is also available at:
+> > https://gitlab.collabora.com/koike/linux/tree/rockchip/isp/v11
+> > 
+> > Libcamera patched to work with this version:
+> > https://gitlab.collabora.com/koike/libcamera
+> > (also sent to the mailing list)
+> > 
+> > The major difference in v11 are:
+> > - Fixed compiling warnings found with W=1
+> > - Fixed checkpatch errors
+> > - Add clock-names values in dt-bindings
+> 
+> Looking at checkpatch I see a few remaining issues that I believe should be
+> fixed before merging this:
+> 
+> CHECK: spinlock_t definition without comment
+> #575: FILE: drivers/staging/media/rkisp1/isp_stats.h:43:
+> +       spinlock_t irq_lock;
+> 
+> CHECK: struct mutex definition without comment
+> #581: FILE: drivers/staging/media/rkisp1/isp_stats.h:49:
+> +       struct mutex wq_lock;
+> 
+> CHECK: spinlock_t definition without comment
+> #1648: FILE: drivers/staging/media/rkisp1/isp_params.h:25:
+> +       spinlock_t config_lock;
+> 
+> CHECK: spinlock_t definition without comment
+> #2058: FILE: drivers/staging/media/rkisp1/capture.h:145:
+> +       spinlock_t vbq_lock;
+> 
 
->
-> Thanks
-> Heiko
->
->
+I'd rather merge this as-is, adding a TODO entry stating
+we need to revisit locking specifically, because I'd like
+to take a close look at these spinlocks/mutex,
+instead of just addding comments for then.
 
+> Once this is done together with the Jacob Chen email clarification
+> it is ready to be merged for v5.6.
+> 
 
---=20
-With best regards,
-Matwey V. Kornilov
+I'll find out more about this.
+
+> It passes all the sparse/smatch tests, so that's very good.
+> 
+
+Great!
+
+Thanks,
+Ezequiel
