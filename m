@@ -1,55 +1,56 @@
-From: Sean Paul <sean@poorly.run>
+From: Daniel Vetter <daniel@ffwll.ch>
 Subject: Re: [PATCH 0/2] add new DRM_DEV_WARN macro
-Date: Mon, 18 Nov 2019 14:24:50 -0500
-Message-ID: <20191118192450.GA135013@art_vandelay>
+Date: Mon, 18 Nov 2019 21:03:20 +0100
+Message-ID: <CAKMK7uG7Tb6oocrRgRFvq5oB2Rxjy+JmyOSXQtjo6Gt_WH91+A@mail.gmail.com>
 References: <20191114132436.7232-1-wambui.karugax@gmail.com>
- <8736ep1hm2.fsf@intel.com>
+ <8736ep1hm2.fsf@intel.com> <20191118192450.GA135013@art_vandelay>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <8736ep1hm2.fsf@intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jani Nikula <jani.nikula@linux.intel.com>
-Cc: Wambui Karuga <wambui.karugax@gmail.com>, maarten.lankhorst@linux.intel.com, mripard@kernel.org, sean@poorly.run, airlied@linux.ie, daniel@ffwll.ch, hjc@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20191118192450.GA135013@art_vandelay>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sean Paul <sean@poorly.run>
+Cc: Dave Airlie <airlied@linux.ie>, dri-devel <dri-devel@lists.freedesktop.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Wambui Karuga <wambui.karugax@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Nov 15, 2019 at 01:52:53PM +0200, Jani Nikula wrote:
-> On Thu, 14 Nov 2019, Wambui Karuga <wambui.karugax@gmail.com> wrote:
-> > This adds a new DRM_DEV_WARN helper macro for warnings log output that include
-> > device pointers. It also includes the use of the DRM_DEV_WARN macro in
-> > drm/rockchip to replace dev_warn.
-> 
-> I'm trying to solicit new struct drm_device based logging macros, and
-> starting to convert to those. [1]
-> 
-
-This sounds good to me, I'd much prefer the non-caps versions of these
-functions. So let's wait for those to bubble up and then convert rockchip to
-drm_dev_*
-
-Sean
-
-> BR,
-> Jani.
-> 
-> 
-> [1] http://patchwork.freedesktop.org/patch/msgid/63d1e72b99e9c13ee5b1b362a653ff9c21e19124.1572258936.git.jani.nikula@intel.com
-> 
-> 
-> 
-> 
-> >
-> > Wambui Karuga (2):
-> >   drm/print: add DRM_DEV_WARN macro
-> >   drm/rockchip: use DRM_DEV_WARN macro in debug output
-> >
-> >  drivers/gpu/drm/rockchip/inno_hdmi.c | 3 ++-
-> >  include/drm/drm_print.h              | 9 +++++++++
-> >  2 files changed, 11 insertions(+), 1 deletion(-)
-> 
-> -- 
-> Jani Nikula, Intel Open Source Graphics Center
-
--- 
-Sean Paul, Software Engineer, Google / Chromium OS
+T24gTW9uLCBOb3YgMTgsIDIwMTkgYXQgODoyNCBQTSBTZWFuIFBhdWwgPHNlYW5AcG9vcmx5LnJ1
+bj4gd3JvdGU6Cj4gT24gRnJpLCBOb3YgMTUsIDIwMTkgYXQgMDE6NTI6NTNQTSArMDIwMCwgSmFu
+aSBOaWt1bGEgd3JvdGU6Cj4gPiBPbiBUaHUsIDE0IE5vdiAyMDE5LCBXYW1idWkgS2FydWdhIDx3
+YW1idWkua2FydWdheEBnbWFpbC5jb20+IHdyb3RlOgo+ID4gPiBUaGlzIGFkZHMgYSBuZXcgRFJN
+X0RFVl9XQVJOIGhlbHBlciBtYWNybyBmb3Igd2FybmluZ3MgbG9nIG91dHB1dCB0aGF0IGluY2x1
+ZGUKPiA+ID4gZGV2aWNlIHBvaW50ZXJzLiBJdCBhbHNvIGluY2x1ZGVzIHRoZSB1c2Ugb2YgdGhl
+IERSTV9ERVZfV0FSTiBtYWNybyBpbgo+ID4gPiBkcm0vcm9ja2NoaXAgdG8gcmVwbGFjZSBkZXZf
+d2Fybi4KPiA+Cj4gPiBJJ20gdHJ5aW5nIHRvIHNvbGljaXQgbmV3IHN0cnVjdCBkcm1fZGV2aWNl
+IGJhc2VkIGxvZ2dpbmcgbWFjcm9zLCBhbmQKPiA+IHN0YXJ0aW5nIHRvIGNvbnZlcnQgdG8gdGhv
+c2UuIFsxXQo+ID4KPgo+IFRoaXMgc291bmRzIGdvb2QgdG8gbWUsIEknZCBtdWNoIHByZWZlciB0
+aGUgbm9uLWNhcHMgdmVyc2lvbnMgb2YgdGhlc2UKPiBmdW5jdGlvbnMuIFNvIGxldCdzIHdhaXQg
+Zm9yIHRob3NlIHRvIGJ1YmJsZSB1cCBhbmQgdGhlbiBjb252ZXJ0IHJvY2tjaGlwIHRvCj4gZHJt
+X2Rldl8qCgpDYXJlIHRvIGFjayBKYW5pJ3MgcGF0Y2ggZGlyZWN0bHksIHNvIHRoaXMgaXMgYWxs
+IGZvcm1hbD8KCkphbmksIGNhbiB5b3UgcGxzIGFsc28gYWRkIGEgdG9kby5yc3QgcGF0Y2ggb24g
+dG9wIHRvIGFkanVzdCB0aGUKcmVsZXZhbnQgaXRlbSB0byB0aGUgbmV3IGNvbG9yIGNob2ljZT8K
+CldhbWJ1aSwgSSBndWVzcyBzbGlnaHQgY2hhbmdlIG9mIHBsYW5zLCBpdCBoYXBwZW5zIC4uLgoK
+Q2hlZXJzLCBEYW5pZWwKCj4KPiBTZWFuCj4KPiA+IEJSLAo+ID4gSmFuaS4KPiA+Cj4gPgo+ID4g
+WzFdIGh0dHA6Ly9wYXRjaHdvcmsuZnJlZWRlc2t0b3Aub3JnL3BhdGNoL21zZ2lkLzYzZDFlNzJi
+OTllOWMxM2VlNWIxYjM2MmE2NTNmZjljMjFlMTkxMjQuMTU3MjI1ODkzNi5naXQuamFuaS5uaWt1
+bGFAaW50ZWwuY29tCj4gPgo+ID4KPiA+Cj4gPgo+ID4gPgo+ID4gPiBXYW1idWkgS2FydWdhICgy
+KToKPiA+ID4gICBkcm0vcHJpbnQ6IGFkZCBEUk1fREVWX1dBUk4gbWFjcm8KPiA+ID4gICBkcm0v
+cm9ja2NoaXA6IHVzZSBEUk1fREVWX1dBUk4gbWFjcm8gaW4gZGVidWcgb3V0cHV0Cj4gPiA+Cj4g
+PiA+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLmMgfCAzICsrLQo+ID4gPiAg
+aW5jbHVkZS9kcm0vZHJtX3ByaW50LmggICAgICAgICAgICAgIHwgOSArKysrKysrKysKPiA+ID4g
+IDIgZmlsZXMgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+ID4KPiA+
+IC0tCj4gPiBKYW5pIE5pa3VsYSwgSW50ZWwgT3BlbiBTb3VyY2UgR3JhcGhpY3MgQ2VudGVyCj4K
+PiAtLQo+IFNlYW4gUGF1bCwgU29mdHdhcmUgRW5naW5lZXIsIEdvb2dsZSAvIENocm9taXVtIE9T
+CgoKCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlv
+bgorNDEgKDApIDc5IDM2NSA1NyA0OCAtIGh0dHA6Ly9ibG9nLmZmd2xsLmNoCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
+c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNr
+dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
