@@ -1,46 +1,77 @@
-From: Marek Vasut <marex@denx.de>
-Subject: Re: [PATCH v2 07/10] usb: dwc3: Add phy interface for
-	dwc3_uboot
-Date: Tue, 19 Nov 2019 12:13:09 +0100
-Message-ID: <d0a52200-e247-44d8-7771-08ec42b5e6be@denx.de>
-References: <20191119082623.6165-1-jagan@amarulasolutions.com>
- <20191119082623.6165-8-jagan@amarulasolutions.com>
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Subject: Re: [PATCH v2 0/6] Raspberry Pi 4 PCIe support
+Date: Tue, 19 Nov 2019 12:49:24 +0100
+Message-ID: <1b116fabe85a324e2d05a593d38811467f43fb91.camel@suse.de>
+References: <20191112155926.16476-1-nsaenzjulienne@suse.de>
+         <20191119111848.GR43905@e119886-lin.cambridge.arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20191119082623.6165-8-jagan@amarulasolutions.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, linux-rockchip@lists.infradead.org
+Content-Type: multipart/signed; micalg="pgp-sha256";
+        protocol="application/pgp-signature"; boundary="=-K76aLLNKfyo+gQkABBwD"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191119111848.GR43905@e119886-lin.cambridge.arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andrew Murray <andrew.murray@arm.com>
+Cc: devicetree@vger.kernel.org, f.fainelli@gmail.com, linux-rdma@vger.kernel.org, maz@kernel.org, phil@raspberrypi.org, linux-kernel@vger.kernel.org, jeremy.linton@arm.com, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org, mbrugger@suse.com, bcm-kernel-feedback-list@broadcom.com, wahrenst@gmx.net, james.quinlan@broadcom.com, linux-pci@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTEvMTkvMTkgOToyNiBBTSwgSmFnYW4gVGVraSB3cm90ZToKPiBVLUJvb3QgaGFzIHR3byBk
-aWZmZXJlbnQgdmFyaWFudHMgb2YgZHdjMyBpbml0aWFsaXphdGlvbnMsCj4gLSB3aXRoIGRtIHZh
-cmlhbnQgZ2FkZ2V0LCBzbyB0aGUgcmVzcGVjdGl2ZSBkbSBkcml2ZXIgd291bGQKPiAgIGNhbGwg
-dGhlIGR3YzNfaW5pdCBpbiBjb3JlLgo+IC0gd2l0aCBub24tZG0gdmFyaWFudCBnYWRnZXQsIHNv
-IHRoZSB1c2FnZSBib2FyZCBmaWxlIHdvdWxkCj4gICBjYWxsIGR3YzNfdWJvb3RfaW5pdCBpbiBj
-b3JlLgo+IAo+IFRoZSBkcml2ZXIgcHJvYmUgd291bGQgaGFuZGxlIGFsbCByZXNwZWN0aXZlIGdh
-ZGdldCBwcm9wZXJ0aWVzCj4gaW5jbHVkaW5nIHBoeSBpbnRlcmZhY2UgdmlhIHBoeV90eXBlIHBy
-b3BlcnR5IGFuZCB0aGVuIHRyaWdnZXIKPiBkd2MzX2luaXQgZm9yIGRtLXZhcmlhbnQgZ2FkZ2V0
-cy4KPiAKPiBTbywgdG8gc3VwcG9ydCB0aGUgcGh5IGludGVyZmFjZSBmb3Igbm9uLWRtIHZhcmlh
-bnQgZ2FkZ2V0cywKPiB0aGUgYmV0dGVyIG9wdGlvbiBpcyBkd2MzX3Vib290X2luaXQgc2luY2Ug
-dGhlcmUgaXMgbm8KPiBkZWRpY2F0ZWQgY29udHJvbGxlciBmb3Igbm9uLWRtIHZhcmlhbnQgZ2Fk
-Z2V0cy4KPiAKPiBUaGlzIHBhdGNoIHN1cHBvcnQgZm9yIGFkZGluZyBwaHkgaW50ZXJmYWNlIGxp
-a2UgOC8xNi1iaXQgVVRNSSsKPiBjb2RlIGZvciBkd2MzX3Vib290Lgo+IAo+IFRoaXMgY2hhbmdl
-IHVzZWQgTGludXggcGh5LmggZW51bSBsaXN0LCB0byBtYWtlIHByb3BlciBjb2RlCj4gY29tcGF0
-aWJpbGl0eS4KPiAKPiBDYzogTWFyZWsgVmFzdXQgPG1hcmV4QGRlbnguZGU+Cj4gVGVzdGVkLWJ5
-OiBMZXZpbiBEdSA8ZGp3QHQtY2hpcC5jb20uY24+Cj4gU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVr
-aSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+CgpSZXZpZXdlZC1ieTogTWFyZWsgVmFzdXQg
-PG1hcmV4QGRlbnguZGU+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxpc3RzLmRlbnguZGUKaHR0cHM6Ly9s
-aXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
+
+--=-K76aLLNKfyo+gQkABBwD
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, 2019-11-19 at 11:18 +0000, Andrew Murray wrote:
+> On Tue, Nov 12, 2019 at 04:59:19PM +0100, Nicolas Saenz Julienne wrote:
+> > This series aims at providing support for Raspberry Pi 4's PCIe
+> > controller, which is also shared with the Broadcom STB family of
+> > devices.
+> >=20
+> > There was a previous attempt to upstream this some years ago[1] but was
+> > blocked as most STB PCIe integrations have a sparse DMA mapping[2] whic=
+h
+> > is something currently not supported by the kernel.  Luckily this is no=
+t
+> > the case for the Raspberry Pi 4.
+> >=20
+> > Note that the driver code is to be based on top of Rob Herring's series
+> > simplifying inbound and outbound range parsing.
+> >=20
+> > [1] https://patchwork.kernel.org/cover/10605933/
+> > [2] https://patchwork.kernel.org/patch/10605957/
+> >=20
+>=20
+> What happened to patch 3? I can't see it on the list or in patchwork?
+
+For some reason the script I use to call get_maintainer.sh or git send-mail
+failed to add linux-pci@vger.kernel.org and linux-kernel@vger.kernel.org as
+recipients. I didn't do anything different between v1 and v2 as far as mail=
+ing
+is concerned.
+
+Nevertheless it's here: https://www.spinics.net/lists/arm-kernel/msg768461.=
+html
+and should be present in the linux-arm-kernel list.
+
+I'll look in to it and make sure this doesn't happen in v3.
+
+Regards,
+Nicolas
+
+
+--=-K76aLLNKfyo+gQkABBwD
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl3T1sQACgkQlfZmHno8
+x/5oAAgAsirq9AHBWc9c3u37sxo0sduCFRqCFKOtWMxm0jb/DcUdD6rQy3N9/RIf
+tK6vZvovGokMN5GHwwG6sDD7vSCeNimQSFZx7R36XMI5iYvITtmREMYLCwherVD0
+W2hMdlOm1hzjt1sEGCz9BHxnMT3w56ZLabkmJWscUGVaPhArD7ISSUo3ksO5x7rh
+KS1lbJX9wZLpegmk3gxXxAoHN3OWgDunznERQ07/dvrDALwf4CZkyQT+V/8nOZhr
+OV64Rq+nMrhttDcMk2ufbrUsWn0Gt6zVbIXqJyitSJmAEb0If2zq2KGKK/88n2hf
+GFsoFCTkw2RQ0cpZmMHvvkVumUTaPg==
+=kHJj
+-----END PGP SIGNATURE-----
+
+--=-K76aLLNKfyo+gQkABBwD--
