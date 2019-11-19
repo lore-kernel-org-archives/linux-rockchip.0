@@ -1,80 +1,75 @@
-From: Andrew Murray <andrew.murray@arm.com>
-Subject: Re: [PATCH v2 0/6] Raspberry Pi 4 PCIe support
-Date: Tue, 19 Nov 2019 11:18:49 +0000
-Message-ID: <20191119111848.GR43905@e119886-lin.cambridge.arm.com>
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Subject: Re: [PATCH v2 1/6] linux/log2.h: Add roundup/rounddown_pow_two64()
+ family of functions
+Date: Tue, 19 Nov 2019 12:30:47 +0100
+Message-ID: <052d07fb4eb79b29dd58cab577d59bab6684329a.camel@suse.de>
 References: <20191112155926.16476-1-nsaenzjulienne@suse.de>
+         <20191112155926.16476-2-nsaenzjulienne@suse.de>
+         <20191119111320.GP43905@e119886-lin.cambridge.arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg="pgp-sha256";
+        protocol="application/pgp-signature"; boundary="=-JCAElqvKu605DtMG+rxz"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20191112155926.16476-1-nsaenzjulienne@suse.de>
+In-Reply-To: <20191119111320.GP43905@e119886-lin.cambridge.arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Cc: maz@kernel.org, linux-kernel@vger.kernel.org, james.quinlan@broadcom.com, mbrugger@suse.com, f.fainelli@gmail.com, phil@raspberrypi.org, wahrenst@gmx.net, jeremy.linton@arm.com, Robin Murphy <robin.murphy@arm.com>, bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, netdev@vger.kernel.org, linux-rdma@vger.kernel.org, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org
+To: Andrew Murray <andrew.murray@arm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-rdma@vger.kernel.org, maz@kernel.org, phil@raspberrypi.org, iommu@lists.linux-foundation.org, linux-rockchip@lists.infradead.org, f.fainelli@gmail.com, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org, mbrugger@suse.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, jeremy.linton@arm.com, Tom Joseph <tjoseph@cadence.com>, wahrenst@gmx.net, james.quinlan@broadcom.com, Robin Murphy <robin.murphy@arm.com>, "David S. Miller" <davem@davemloft.net>, Tariq Toukan <tariqt@mellanox.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Nov 12, 2019 at 04:59:19PM +0100, Nicolas Saenz Julienne wrote:
-> This series aims at providing support for Raspberry Pi 4's PCIe
-> controller, which is also shared with the Broadcom STB family of
-> devices.
-> 
-> There was a previous attempt to upstream this some years ago[1] but was
-> blocked as most STB PCIe integrations have a sparse DMA mapping[2] which
-> is something currently not supported by the kernel.  Luckily this is not
-> the case for the Raspberry Pi 4.
-> 
-> Note that the driver code is to be based on top of Rob Herring's series
-> simplifying inbound and outbound range parsing.
-> 
-> [1] https://patchwork.kernel.org/cover/10605933/
-> [2] https://patchwork.kernel.org/patch/10605957/
-> 
 
-What happened to patch 3? I can't see it on the list or in patchwork?
+--=-JCAElqvKu605DtMG+rxz
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Thanks,
+Hi Andrew, thanks for the review.
+> > +/**
+> > + * __roundup_pow_of_two64() - round 64bit value up to nearest power of=
+ two
+> > + * @n: value to round up
+> > + */
+> > +static inline __attribute__((const)) __u64 __roundup_pow_of_two64(__u6=
+4 n)
+>=20
+> To be consistent with other functions in the same file (__ilog_u64) you m=
+ay
+> want to rename this to __roundup_pow_of_two_u64.
 
-Andrew Murray
+Sounds good to me.
 
-> ---
-> 
-> Changes since v1:
->   - add generic rounddown/roundup_pow_two64() patch
->   - Add MAINTAINERS patch
->   - Fix Kconfig
->   - Cleanup probe, use up to date APIs, exit on MSI failure
->   - Get rid of linux,pci-domain and other unused constructs
->   - Use edge triggered setup for MSI
->   - Cleanup MSI implementation
->   - Fix multiple cosmetic issues
->   - Remove supend/resume code
-> 
-> Jim Quinlan (3):
->   dt-bindings: PCI: Add bindings for brcmstb's PCIe device
->   PCI: brcmstb: add Broadcom STB PCIe host controller driver
->   PCI: brcmstb: add MSI capability
-> 
-> Nicolas Saenz Julienne (3):
->   linux/log2.h: Add roundup/rounddown_pow_two64() family of functions
->   ARM: dts: bcm2711: Enable PCIe controller
->   MAINTAINERS: Add brcmstb PCIe controller
-> 
->  .../bindings/pci/brcm,stb-pcie.yaml           |  110 ++
->  MAINTAINERS                                   |    4 +
->  arch/arm/boot/dts/bcm2711.dtsi                |   46 +
->  drivers/net/ethernet/mellanox/mlx4/en_clock.c |    3 +-
->  drivers/pci/controller/Kconfig                |    9 +
->  drivers/pci/controller/Makefile               |    1 +
->  drivers/pci/controller/pcie-brcmstb.c         | 1179 +++++++++++++++++
->  drivers/pci/controller/pcie-cadence-ep.c      |    7 +-
->  drivers/pci/controller/pcie-cadence.c         |    7 +-
->  drivers/pci/controller/pcie-rockchip-ep.c     |    9 +-
->  include/linux/log2.h                          |   52 +
->  kernel/dma/direct.c                           |    3 +-
->  12 files changed, 1412 insertions(+), 18 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/pci/brcm,stb-pcie.yaml
->  create mode 100644 drivers/pci/controller/pcie-brcmstb.c
-> 
-> -- 
-> 2.24.0
-> 
+> Also do you know why u64 is used in some places and __u64 in others?
+
+That's unwarranted, it should be __u64 everywhere.
+
+> > +{
+> > +	return 1UL << fls64(n - 1);
+>=20
+> Does this need to be (and for the others):
+>=20
+> return 1ULL << fls64(n - 1);
+>=20
+> Notice that the PCI drivers you convert, all use 1ULL.
+
+Noted
+
+Regards,
+Nicolas
+
+
+--=-JCAElqvKu605DtMG+rxz
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl3T0mcACgkQlfZmHno8
+x/6BgQf9EPIQKoR6phksU0S8lgk9wqpGnUdxBbs82aHnTqsDgCrCDSnKXEYjrytg
+JP7gToqXjInWjAuYTza/e4u4j4nQShrZSrX/Wo7n0g/iOPzIrKgFEwt/I8JlZnxn
+eGSGgGDLXcFOIXzSy7aNsDEOHM1JS3Nan1xj+4vfNYb5bx3U7VlJuAAVsNZ7aLHu
+1JSo56OTcTN6DejhWw1GzvlTsqzLUa41v8BUgW19GyOv185sXkbfJImn1hgkRuKj
+JHu3GwUlrQkRrcAs0xqLRflUJHE8If7t+Xh+Su4ToLjWKyWvMu4fnPpwFXCyHhyG
+T2k6eYGiEuyKMYHxJg9YLmvjNMdJuA==
+=s9/D
+-----END PGP SIGNATURE-----
+
+--=-JCAElqvKu605DtMG+rxz--
