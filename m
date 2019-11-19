@@ -1,74 +1,79 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH v11 02/11] media: staging: rkisp1: add document for
- rkisp1 meta buffer format
-Date: Tue, 19 Nov 2019 09:55:51 -0300
-Message-ID: <4135d35cd581b31d08b547852ac43e959957abf5.camel@collabora.com>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v11 02/11] media: staging: rkisp1: add document for rkisp1
+ meta buffer format
+Date: Tue, 19 Nov 2019 22:03:59 +0900
+Message-ID: <CAAFQd5BPwSnY51vJboCB6Hr2Yz4jMqt4VWLNNLTpiwenGo_Wew@mail.gmail.com>
 References: <20191114051242.14651-1-helen.koike@collabora.com>
-         <20191114051242.14651-3-helen.koike@collabora.com>
-         <09d4f683-d03d-46c9-e9d2-b8cceb72446e@xs4all.nl>
-         <9cb116f6-64f4-1510-b128-8657d6d4889b@collabora.com>
-         <CAFLEztRQfYE_Mssiq4KxK-QyJEe+KT4eTsvnLZQK5T=uVADUqA@mail.gmail.com>
+ <20191114051242.14651-3-helen.koike@collabora.com>
+ <09d4f683-d03d-46c9-e9d2-b8cceb72446e@xs4all.nl>
+ <9cb116f6-64f4-1510-b128-8657d6d4889b@collabora.com>
+ <CAFLEztRQfYE_Mssiq4KxK-QyJEe+KT4eTsvnLZQK5T=uVADUqA@mail.gmail.com>
+ <4135d35cd581b31d08b547852ac43e959957abf5.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFLEztRQfYE_Mssiq4KxK-QyJEe+KT4eTsvnLZQK5T=uVADUqA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jacob Chen <jacobchen110@gmail.com>, Helen Koike <helen.koike@collabora.com>
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, mark.rutland@arm.com, devicetree@vger.kernel.org, Eddie Cai <eddie.cai.linux@gmail.com>, kernel@collabora.com, Heiko Stuebner <heiko@sntech.de>, Jacob Chen <jacob-chen@rock-chips.com>, gregkh@linuxfoundation.org, Jeffy Chen <jeffy.chen@rock-chips.com>, =?UTF-8?Q?=E9=92=9F=E4=BB=A5=E5=B4=87?= <zyc@rock-chips.com>, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, robh+dt@kernel.org, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, Shunqian Zheng <zhengsq@rock-chips.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, Linux
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <4135d35cd581b31d08b547852ac43e959957abf5.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, =?UTF-8?B?6ZKf5Lul5bSH?= <zyc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jacob Chen <jacob-chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jacob Chen <jacobchen110-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
+ Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <linux-arm-kernel-IAPFreCvJWMP3drIcvDWNA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Jacob,
-
-Thanks for the insight.
-
-On Tue, 2019-11-19 at 18:16 +0800, Jacob Chen wrote:
-> Hi Helen ,
-> 
-> Helen Koike <helen.koike@collabora.com> 于2019年11月14日周四 下午6:59写道：
-> > 
-> > 
-> > On 11/14/19 6:21 AM, Hans Verkuil wrote:
-> > > On 11/14/19 6:12 AM, Helen Koike wrote:
-> > > > From: Jacob Chen <jacob2.chen@rock-chips.com>
-> > > > 
-> > > > This commit add document for rkisp1 meta buffer format
-> > > > 
-> > > > Signed-off-by: Jacob Chen <jacob-chen@rock-chips.com>
-> > > > [refactored for upstream]
-> > > > Signed-off-by: Helen Koike <helen.koike@collabora.com>
-> > > 
-> > > checkpatch gives me:
-> > > 
-> > > WARNING: Missing Signed-off-by: line by nominal patch author 'Jacob Chen <jacob2.chen@rock-chips.com>'
-> > > 
-> > > Looking at this series I see duplicate Signed-off-by entries for Jacob Chen and a total
-> > > of three different email addresses:
-> > > 
-> > > jacob2.chen@rock-chips.com
-> > > jacob-chen@rock-chips.com
-> > > cc@rock-chips.com
-> > 
-> > And I see a name in the Maintainers file as Jacob Chen <jacob-chen@iotwrt.com>.
-> > I was wondering if I could replace the email by jacob-chen@iotwrt.com, or if I should
-> > keep the original ones.
-> > 
-> > Helen
-> > 
-> 
-> "jacob2.chen@rock-chips.com"/"jacob-chen@rock-chips.com" is me and
-> "cc@rock-chips.com" is another one.
-> ' jacob-chen@rock-chips.com' is invalid now,  so you could replace the
-> email by 'jacob-chen@iotwrt.com'.
-> 
-
-Authorship and SOB can't be changed freely, the original must be retained,
-because this gives proper credit to the company that sponsored the work.
-
-I.e. if your mail used to be jacob2.chen at rock-chips.com, then I think
-we can use that. And if cc at rock-chips.com is a different engineer,
-also named Jacob Chen, perhaps we can mention that somewhere to reduce the
-confusion.
-
-Thanks,
-Ezequiel
+T24gVHVlLCBOb3YgMTksIDIwMTkgYXQgOTo1NiBQTSBFemVxdWllbCBHYXJjaWEgPGV6ZXF1aWVs
+QGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+Cj4gSGVsbG8gSmFjb2IsCj4KPiBUaGFua3MgZm9yIHRo
+ZSBpbnNpZ2h0Lgo+Cj4gT24gVHVlLCAyMDE5LTExLTE5IGF0IDE4OjE2ICswODAwLCBKYWNvYiBD
+aGVuIHdyb3RlOgo+ID4gSGkgSGVsZW4gLAo+ID4KPiA+IEhlbGVuIEtvaWtlIDxoZWxlbi5rb2lr
+ZUBjb2xsYWJvcmEuY29tPiDkuo4yMDE55bm0MTHmnIgxNOaXpeWRqOWbmyDkuIvljYg2OjU55YaZ
+6YGT77yaCj4gPiA+Cj4gPiA+Cj4gPiA+IE9uIDExLzE0LzE5IDY6MjEgQU0sIEhhbnMgVmVya3Vp
+bCB3cm90ZToKPiA+ID4gPiBPbiAxMS8xNC8xOSA2OjEyIEFNLCBIZWxlbiBLb2lrZSB3cm90ZToK
+PiA+ID4gPiA+IEZyb206IEphY29iIENoZW4gPGphY29iMi5jaGVuQHJvY2stY2hpcHMuY29tPgo+
+ID4gPiA+ID4KPiA+ID4gPiA+IFRoaXMgY29tbWl0IGFkZCBkb2N1bWVudCBmb3Igcmtpc3AxIG1l
+dGEgYnVmZmVyIGZvcm1hdAo+ID4gPiA+ID4KPiA+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IEphY29i
+IENoZW4gPGphY29iLWNoZW5Acm9jay1jaGlwcy5jb20+Cj4gPiA+ID4gPiBbcmVmYWN0b3JlZCBm
+b3IgdXBzdHJlYW1dCj4gPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBIZWxlbiBLb2lrZSA8aGVsZW4u
+a29pa2VAY29sbGFib3JhLmNvbT4KPiA+ID4gPgo+ID4gPiA+IGNoZWNrcGF0Y2ggZ2l2ZXMgbWU6
+Cj4gPiA+ID4KPiA+ID4gPiBXQVJOSU5HOiBNaXNzaW5nIFNpZ25lZC1vZmYtYnk6IGxpbmUgYnkg
+bm9taW5hbCBwYXRjaCBhdXRob3IgJ0phY29iIENoZW4gPGphY29iMi5jaGVuQHJvY2stY2hpcHMu
+Y29tPicKPiA+ID4gPgo+ID4gPiA+IExvb2tpbmcgYXQgdGhpcyBzZXJpZXMgSSBzZWUgZHVwbGlj
+YXRlIFNpZ25lZC1vZmYtYnkgZW50cmllcyBmb3IgSmFjb2IgQ2hlbiBhbmQgYSB0b3RhbAo+ID4g
+PiA+IG9mIHRocmVlIGRpZmZlcmVudCBlbWFpbCBhZGRyZXNzZXM6Cj4gPiA+ID4KPiA+ID4gPiBq
+YWNvYjIuY2hlbkByb2NrLWNoaXBzLmNvbQo+ID4gPiA+IGphY29iLWNoZW5Acm9jay1jaGlwcy5j
+b20KPiA+ID4gPiBjY0Byb2NrLWNoaXBzLmNvbQo+ID4gPgo+ID4gPiBBbmQgSSBzZWUgYSBuYW1l
+IGluIHRoZSBNYWludGFpbmVycyBmaWxlIGFzIEphY29iIENoZW4gPGphY29iLWNoZW5AaW90d3J0
+LmNvbT4uCj4gPiA+IEkgd2FzIHdvbmRlcmluZyBpZiBJIGNvdWxkIHJlcGxhY2UgdGhlIGVtYWls
+IGJ5IGphY29iLWNoZW5AaW90d3J0LmNvbSwgb3IgaWYgSSBzaG91bGQKPiA+ID4ga2VlcCB0aGUg
+b3JpZ2luYWwgb25lcy4KPiA+ID4KPiA+ID4gSGVsZW4KPiA+ID4KPiA+Cj4gPiAiamFjb2IyLmNo
+ZW5Acm9jay1jaGlwcy5jb20iLyJqYWNvYi1jaGVuQHJvY2stY2hpcHMuY29tIiBpcyBtZSBhbmQK
+PiA+ICJjY0Byb2NrLWNoaXBzLmNvbSIgaXMgYW5vdGhlciBvbmUuCj4gPiAnIGphY29iLWNoZW5A
+cm9jay1jaGlwcy5jb20nIGlzIGludmFsaWQgbm93LCAgc28geW91IGNvdWxkIHJlcGxhY2UgdGhl
+Cj4gPiBlbWFpbCBieSAnamFjb2ItY2hlbkBpb3R3cnQuY29tJy4KPiA+Cj4KPiBBdXRob3JzaGlw
+IGFuZCBTT0IgY2FuJ3QgYmUgY2hhbmdlZCBmcmVlbHksIHRoZSBvcmlnaW5hbCBtdXN0IGJlIHJl
+dGFpbmVkLAo+IGJlY2F1c2UgdGhpcyBnaXZlcyBwcm9wZXIgY3JlZGl0IHRvIHRoZSBjb21wYW55
+IHRoYXQgc3BvbnNvcmVkIHRoZSB3b3JrLgo+Cj4gSS5lLiBpZiB5b3VyIG1haWwgdXNlZCB0byBi
+ZSBqYWNvYjIuY2hlbiBhdCByb2NrLWNoaXBzLmNvbSwgdGhlbiBJIHRoaW5rCj4gd2UgY2FuIHVz
+ZSB0aGF0LiBBbmQgaWYgY2MgYXQgcm9jay1jaGlwcy5jb20gaXMgYSBkaWZmZXJlbnQgZW5naW5l
+ZXIsCj4gYWxzbyBuYW1lZCBKYWNvYiBDaGVuLCBwZXJoYXBzIHdlIGNhbiBtZW50aW9uIHRoYXQg
+c29tZXdoZXJlIHRvIHJlZHVjZSB0aGUKPiBjb25mdXNpb24uCgpTb21lIHBhdGNoZXMgaGF2ZSBi
+ZWVuIGRldmVsb3BlZCBieSBKYWNvYiA8amFjb2IyLmNoZW4gYXQKcm9jay1jaGlwcy5jb20+LCBz
+b21lIGJ5IEphY29iIDxjYyBhdCByb2NrLWNoaXBzLmNvbT4gYW5kIHNvbWUgYnkKYm90aC4KClNv
+bWUgcGF0Y2hlcyBoYXZlIGJlZW4gYWxzbyByZS1wb3N0ZWQgYnkgSmFjb2IgYWZ0ZXIgbGVhdmlu
+ZyBSb2NrY2hpcApBRkFJUiwgZnJvbSB0aGUgPGphY29iLWNoZW4gYXQgaW90d3J0LmNvbT4gYWRk
+cmVzcy4gVGhvc2Ugc2hvdWxkIGhhdmUKPGphY29iMi5jaGVuIGF0IHJvY2stY2hpcHMuY29tPiBh
+cyBGcm9tOiBhbmQgaW5jbHVkZSBzaWduLW9mZnMgZnJvbQpib3RoIDxqYWNvYjIuY2hlbiBhdCBy
+b2NrLWNoaXBzLmNvbT4gYW5kIDxqYWNvYi1jaGVuIGF0IGlvdHdydC5jb20+LgoKU28gdGhlIGNv
+bmNsdXNpb24gaXMgdGhhdCB0aGUgb3JpZ2luYWwgc2lnbi1vZmZzIHNob3VsZCBiZSByZXRhaW5l
+ZAorLy0gdHlwb3MgZml4ZWQuCgpGb3IgdHlwb3MsIHdhcyA8amFjb2ItY2hlbiBhdCByb2NrLWNo
+aXBzLmNvbT4gYSB0eXBvIG9mIDxqYWNvYjIuY2hlbgphdCByb2NrLWNoaXBzLmNvbT4gb3IgYSB0
+eXBvIG9mIDxqYWNvYi1jaGVuIGF0IGlvdHdydC5jb20+PwoKQmVzdCByZWdhcmRzLApUb21hc3oK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
