@@ -1,52 +1,78 @@
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH 4.14 127/239] ARM: dts: rockchip: Fix erroneous SPI bus dtc warnings on rk3036
-Date: Tue, 19 Nov 2019 06:18:47 +0100
-Message-ID: <20191119051330.458418476@linuxfoundation.org>
-References: <20191119051255.850204959@linuxfoundation.org>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH v2 00/10] rockchip: rk3399: Add fastboot support
+Date: Tue, 19 Nov 2019 13:56:13 +0530
+Message-ID: <20191119082623.6165-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20191119051255.850204959@linuxfoundation.org>
-Sender: stable-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, stable@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Rob Herring <robh@kernel.org>, Sasha Levin <sashal@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Rob Herring <robh@kernel.org>
+This is v2 set for fastboot support on rk3399, tested on
+rock960 and rebased on u-boot-rockchip/master
 
-[ Upstream commit 131c3eb428ccd5f0c784b9edb4f72ec296a045d2 ]
+Changes for v2:
+- collect Levin Du Tested-by
+- fix rk3399 product number (Thanks to Levin Du)
+- add patch to fix fastboot flash device num for rk3328
+- add patch to enable gadget on rock960
+- rebased on u-boot-rockchip/master
 
-dtc has new checks for SPI buses. The rk3036 dts file has a node named
-spi' which causes false positive warnings. As the node is a pinctrl child
-node, change the node name to be 'spi-pins' to fix the warnings.
+[1] https://patchwork.ozlabs.org/cover/1181569/
 
-arch/arm/boot/dts/rk3036-evb.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #address-cells for SPI bus
-arch/arm/boot/dts/rk3036-kylin.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #address-cells for SPI bus
-arch/arm/boot/dts/rk3036-evb.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #size-cells for SPI bus
-arch/arm/boot/dts/rk3036-kylin.dtb: Warning (spi_bus_bridge): /pinctrl/spi: incorrect #size-cells for SPI bus
+Any inputs?
+Jagan.
 
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org
-Signed-off-by: Rob Herring <robh@kernel.org>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- arch/arm/boot/dts/rk3036.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Jagan Teki (10):
+  gadget: Select USB_GADGET_MANUFACTURER for rockchip
+  gadget: Select USB_GADGET_VENDOR_NUM for rockchip
+  gadget: rockchip: USB_GADGET_PRODUCT_NUM
+  gadget: rockchip: Add rk3128 USB_GADGET_PRODUCT_NUM
+  fastboot: rockchip: Select FASTBOOT_FLASH[_MMC_DEV]
+  fastboot: rockchip: Fix rk3328 default mmc device
+  usb: dwc3: Add phy interface for dwc3_uboot
+  gadget: rockchip: Add rk3399 USB_GADGET_PRODUCT_NUM
+  rockchip: Setup dwc3_device (for non-dm gadgets)
+  rock960: Enable USB Gadget
 
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index 5c0a76493d22a..03cf0c84ac0aa 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -750,7 +750,7 @@
- 			/* no rts / cts for uart2 */
- 		};
- 
--		spi {
-+		spi-pins {
- 			spi_txd:spi-txd {
- 				rockchip,pins = <1 29 RK_FUNC_3 &pcfg_pull_default>;
- 			};
+ arch/arm/mach-rockchip/board.c    | 32 +++++++++++++++++++++++++++++--
+ configs/elgin-rv1108_defconfig    |  2 --
+ configs/evb-rk3036_defconfig      |  5 -----
+ configs/evb-rk3128_defconfig      |  2 --
+ configs/evb-rk3229_defconfig      |  5 -----
+ configs/evb-rk3288_defconfig      |  5 -----
+ configs/evb-rk3328_defconfig      |  5 -----
+ configs/evb-rv1108_defconfig      |  2 --
+ configs/firefly-rk3288_defconfig  |  5 -----
+ configs/kylin-rk3036_defconfig    |  5 -----
+ configs/miqi-rk3288_defconfig     |  5 -----
+ configs/phycore-rk3288_defconfig  |  5 -----
+ configs/popmetal-rk3288_defconfig |  5 -----
+ configs/rock2_defconfig           |  2 --
+ configs/rock64-rk3328_defconfig   |  5 -----
+ configs/rock960-rk3399_defconfig  |  2 ++
+ configs/tinker-rk3288_defconfig   |  5 -----
+ configs/tinker-s-rk3288_defconfig |  5 -----
+ configs/vyasa-rk3288_defconfig    |  3 ---
+ drivers/fastboot/Kconfig          |  3 ++-
+ drivers/usb/dwc3/core.c           | 27 ++++++++++++++++++++++++++
+ drivers/usb/dwc3/core.h           | 12 ++++++++++++
+ drivers/usb/gadget/Kconfig        |  7 +++++++
+ include/dwc3-uboot.h              |  2 ++
+ include/linux/usb/phy.h           | 19 ++++++++++++++++++
+ 25 files changed, 101 insertions(+), 74 deletions(-)
+ create mode 100644 include/linux/usb/phy.h
+
 -- 
-2.20.1
+2.18.0.321.gffc6fa0e3
