@@ -1,41 +1,29 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: Add libretech compatible for ROC-PC
-Date: Wed, 20 Nov 2019 00:28:17 +0530
-Message-ID: <20191119185817.11216-2-jagan@amarulasolutions.com>
-References: <20191119185817.11216-1-jagan@amarulasolutions.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v4 1/2] dt-bindings: pwm: Convert PWM bindings to
+ json-schema
+Date: Tue, 19 Nov 2019 14:18:17 -0600
+Message-ID: <20191119201817.GA17082@bogus>
+References: <20191021160207.18026-1-krzk@kernel.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191119185817.11216-1-jagan@amarulasolutions.com>
+Content-Disposition: inline
+In-Reply-To: <20191021160207.18026-1-krzk@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Levin Du <djw@t-chip.com.cn>, Akash Gajjar <akash@openedev.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: Da Xue <da@lessconfused.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Thierry Reding <thierry.reding@gmail.com>, Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Though the ROC-PC is manufactured by firefly, it is co-designed
-by libretch like other Libretech computer boards from allwinner,
-amlogic does.
+On Mon, Oct 21, 2019 at 06:02:06PM +0200, Krzysztof Kozlowski wrote:
+> Convert generic PWM controller bindings to DT schema format using
+> json-schema.  The consumer bindings are provided by dt-schema.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> Acked-by: Stephen Boyd <sboyd@kernel.org>
+> Acked-by: Paul Walmsley <paul.walmsley@sifive.com>
 
-So, it is always meaningful to keep maintain those vendors who
-are part of design participation so append the compatible
-"libretech,roc-rk3399-pc" to existing roc-pc dts file.
+Looks like I missed this one somehow.
 
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
----
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+I've applied the series now.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
-index cd4195425309..6a909e4eefd2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dts
-@@ -8,5 +8,6 @@
- 
- / {
- 	model = "Firefly ROC-RK3399-PC Board";
--	compatible = "firefly,roc-rk3399-pc", "rockchip,rk3399";
-+	compatible = "libretech,roc-rk3399-pc", "firefly,roc-rk3399-pc",
-+		     "rockchip,rk3399";
- };
--- 
-2.18.0.321.gffc6fa0e3
+Rob
