@@ -1,79 +1,94 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v11 02/11] media: staging: rkisp1: add document for rkisp1
- meta buffer format
-Date: Tue, 19 Nov 2019 22:03:59 +0900
-Message-ID: <CAAFQd5BPwSnY51vJboCB6Hr2Yz4jMqt4VWLNNLTpiwenGo_Wew@mail.gmail.com>
-References: <20191114051242.14651-1-helen.koike@collabora.com>
- <20191114051242.14651-3-helen.koike@collabora.com>
- <09d4f683-d03d-46c9-e9d2-b8cceb72446e@xs4all.nl>
- <9cb116f6-64f4-1510-b128-8657d6d4889b@collabora.com>
- <CAFLEztRQfYE_Mssiq4KxK-QyJEe+KT4eTsvnLZQK5T=uVADUqA@mail.gmail.com>
- <4135d35cd581b31d08b547852ac43e959957abf5.camel@collabora.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL] Rockchip dts64 changes for 5.5 - round 3
+Date: Tue, 19 Nov 2019 14:45:56 +0100
+Message-ID: <3235791.ImxGk5JOut@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <4135d35cd581b31d08b547852ac43e959957abf5.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, =?UTF-8?B?6ZKf5Lul5bSH?= <zyc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jacob Chen <jacob-chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jacob Chen <jacobchen110-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "list-Y9sIeH5OGRo@public.gmane.org:IOMMU DRIVERS <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>,
- Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, " <linux-arm-kernel-IAPFreCvJWMP3drIcvDWNA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, soc@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBOb3YgMTksIDIwMTkgYXQgOTo1NiBQTSBFemVxdWllbCBHYXJjaWEgPGV6ZXF1aWVs
-QGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+Cj4gSGVsbG8gSmFjb2IsCj4KPiBUaGFua3MgZm9yIHRo
-ZSBpbnNpZ2h0Lgo+Cj4gT24gVHVlLCAyMDE5LTExLTE5IGF0IDE4OjE2ICswODAwLCBKYWNvYiBD
-aGVuIHdyb3RlOgo+ID4gSGkgSGVsZW4gLAo+ID4KPiA+IEhlbGVuIEtvaWtlIDxoZWxlbi5rb2lr
-ZUBjb2xsYWJvcmEuY29tPiDkuo4yMDE55bm0MTHmnIgxNOaXpeWRqOWbmyDkuIvljYg2OjU55YaZ
-6YGT77yaCj4gPiA+Cj4gPiA+Cj4gPiA+IE9uIDExLzE0LzE5IDY6MjEgQU0sIEhhbnMgVmVya3Vp
-bCB3cm90ZToKPiA+ID4gPiBPbiAxMS8xNC8xOSA2OjEyIEFNLCBIZWxlbiBLb2lrZSB3cm90ZToK
-PiA+ID4gPiA+IEZyb206IEphY29iIENoZW4gPGphY29iMi5jaGVuQHJvY2stY2hpcHMuY29tPgo+
-ID4gPiA+ID4KPiA+ID4gPiA+IFRoaXMgY29tbWl0IGFkZCBkb2N1bWVudCBmb3Igcmtpc3AxIG1l
-dGEgYnVmZmVyIGZvcm1hdAo+ID4gPiA+ID4KPiA+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IEphY29i
-IENoZW4gPGphY29iLWNoZW5Acm9jay1jaGlwcy5jb20+Cj4gPiA+ID4gPiBbcmVmYWN0b3JlZCBm
-b3IgdXBzdHJlYW1dCj4gPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBIZWxlbiBLb2lrZSA8aGVsZW4u
-a29pa2VAY29sbGFib3JhLmNvbT4KPiA+ID4gPgo+ID4gPiA+IGNoZWNrcGF0Y2ggZ2l2ZXMgbWU6
-Cj4gPiA+ID4KPiA+ID4gPiBXQVJOSU5HOiBNaXNzaW5nIFNpZ25lZC1vZmYtYnk6IGxpbmUgYnkg
-bm9taW5hbCBwYXRjaCBhdXRob3IgJ0phY29iIENoZW4gPGphY29iMi5jaGVuQHJvY2stY2hpcHMu
-Y29tPicKPiA+ID4gPgo+ID4gPiA+IExvb2tpbmcgYXQgdGhpcyBzZXJpZXMgSSBzZWUgZHVwbGlj
-YXRlIFNpZ25lZC1vZmYtYnkgZW50cmllcyBmb3IgSmFjb2IgQ2hlbiBhbmQgYSB0b3RhbAo+ID4g
-PiA+IG9mIHRocmVlIGRpZmZlcmVudCBlbWFpbCBhZGRyZXNzZXM6Cj4gPiA+ID4KPiA+ID4gPiBq
-YWNvYjIuY2hlbkByb2NrLWNoaXBzLmNvbQo+ID4gPiA+IGphY29iLWNoZW5Acm9jay1jaGlwcy5j
-b20KPiA+ID4gPiBjY0Byb2NrLWNoaXBzLmNvbQo+ID4gPgo+ID4gPiBBbmQgSSBzZWUgYSBuYW1l
-IGluIHRoZSBNYWludGFpbmVycyBmaWxlIGFzIEphY29iIENoZW4gPGphY29iLWNoZW5AaW90d3J0
-LmNvbT4uCj4gPiA+IEkgd2FzIHdvbmRlcmluZyBpZiBJIGNvdWxkIHJlcGxhY2UgdGhlIGVtYWls
-IGJ5IGphY29iLWNoZW5AaW90d3J0LmNvbSwgb3IgaWYgSSBzaG91bGQKPiA+ID4ga2VlcCB0aGUg
-b3JpZ2luYWwgb25lcy4KPiA+ID4KPiA+ID4gSGVsZW4KPiA+ID4KPiA+Cj4gPiAiamFjb2IyLmNo
-ZW5Acm9jay1jaGlwcy5jb20iLyJqYWNvYi1jaGVuQHJvY2stY2hpcHMuY29tIiBpcyBtZSBhbmQK
-PiA+ICJjY0Byb2NrLWNoaXBzLmNvbSIgaXMgYW5vdGhlciBvbmUuCj4gPiAnIGphY29iLWNoZW5A
-cm9jay1jaGlwcy5jb20nIGlzIGludmFsaWQgbm93LCAgc28geW91IGNvdWxkIHJlcGxhY2UgdGhl
-Cj4gPiBlbWFpbCBieSAnamFjb2ItY2hlbkBpb3R3cnQuY29tJy4KPiA+Cj4KPiBBdXRob3JzaGlw
-IGFuZCBTT0IgY2FuJ3QgYmUgY2hhbmdlZCBmcmVlbHksIHRoZSBvcmlnaW5hbCBtdXN0IGJlIHJl
-dGFpbmVkLAo+IGJlY2F1c2UgdGhpcyBnaXZlcyBwcm9wZXIgY3JlZGl0IHRvIHRoZSBjb21wYW55
-IHRoYXQgc3BvbnNvcmVkIHRoZSB3b3JrLgo+Cj4gSS5lLiBpZiB5b3VyIG1haWwgdXNlZCB0byBi
-ZSBqYWNvYjIuY2hlbiBhdCByb2NrLWNoaXBzLmNvbSwgdGhlbiBJIHRoaW5rCj4gd2UgY2FuIHVz
-ZSB0aGF0LiBBbmQgaWYgY2MgYXQgcm9jay1jaGlwcy5jb20gaXMgYSBkaWZmZXJlbnQgZW5naW5l
-ZXIsCj4gYWxzbyBuYW1lZCBKYWNvYiBDaGVuLCBwZXJoYXBzIHdlIGNhbiBtZW50aW9uIHRoYXQg
-c29tZXdoZXJlIHRvIHJlZHVjZSB0aGUKPiBjb25mdXNpb24uCgpTb21lIHBhdGNoZXMgaGF2ZSBi
-ZWVuIGRldmVsb3BlZCBieSBKYWNvYiA8amFjb2IyLmNoZW4gYXQKcm9jay1jaGlwcy5jb20+LCBz
-b21lIGJ5IEphY29iIDxjYyBhdCByb2NrLWNoaXBzLmNvbT4gYW5kIHNvbWUgYnkKYm90aC4KClNv
-bWUgcGF0Y2hlcyBoYXZlIGJlZW4gYWxzbyByZS1wb3N0ZWQgYnkgSmFjb2IgYWZ0ZXIgbGVhdmlu
-ZyBSb2NrY2hpcApBRkFJUiwgZnJvbSB0aGUgPGphY29iLWNoZW4gYXQgaW90d3J0LmNvbT4gYWRk
-cmVzcy4gVGhvc2Ugc2hvdWxkIGhhdmUKPGphY29iMi5jaGVuIGF0IHJvY2stY2hpcHMuY29tPiBh
-cyBGcm9tOiBhbmQgaW5jbHVkZSBzaWduLW9mZnMgZnJvbQpib3RoIDxqYWNvYjIuY2hlbiBhdCBy
-b2NrLWNoaXBzLmNvbT4gYW5kIDxqYWNvYi1jaGVuIGF0IGlvdHdydC5jb20+LgoKU28gdGhlIGNv
-bmNsdXNpb24gaXMgdGhhdCB0aGUgb3JpZ2luYWwgc2lnbi1vZmZzIHNob3VsZCBiZSByZXRhaW5l
-ZAorLy0gdHlwb3MgZml4ZWQuCgpGb3IgdHlwb3MsIHdhcyA8amFjb2ItY2hlbiBhdCByb2NrLWNo
-aXBzLmNvbT4gYSB0eXBvIG9mIDxqYWNvYjIuY2hlbgphdCByb2NrLWNoaXBzLmNvbT4gb3IgYSB0
-eXBvIG9mIDxqYWNvYi1jaGVuIGF0IGlvdHdydC5jb20+PwoKQmVzdCByZWdhcmRzLApUb21hc3oK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi (arm-)soc people,
+
+for whatever reason I've gotten a big avalanche of patches for various
+arm64 parts since the last pull request and with -rc8 being real I thought
+I'll try to get these into 5.5 still to not make the wait too long ;-)
+
+And I don't think it's anything earth shattering in there.
+
+
+If it's not overly late, please pull, otherwise I'll move these over to 5.6
+which also wouldn't be problematic.
+
+Thanks
+Heiko
+
+The following changes since commit 75aa567803b15e679432655badf95cd30b66b930:
+
+  arm64: dts: rockchip: fix sdmmc detection on boot on rk3328-roc-cc (2019-11-09 02:15:22 +0100)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.5-rockchip-dts64-3
+
+for you to fetch changes up to c36308abe4110e4db362d5e2ae3797834a7b1192:
+
+  arm64: dts: rockchip: Enable MTD Flash on rk3399-roc-pc (2019-11-19 00:17:46 +0100)
+
+----------------------------------------------------------------
+PCIe regulator improvements for RockPi4 and Rock960, NanoPi improvements
+for PCIe and cooling maps, a big number of improvements for the
+rk3399-roc-pc (spi-flash, sdmmc, regulators, hdmi-sound, gpu node) and
+some more things for the px30-evb (thermal handling and dropping an
+operating point).
+
+----------------------------------------------------------------
+Anand Moon (1):
+      arm64: dts: rockchip: Add regulators for pcie on rk3399-rock960
+
+Heiko Stuebner (3):
+      arm64: dts: rockchip: remove 408MHz operating point from px30
+      arm64: dts: rockchip: add thermal infrastructure to px30
+      arm64: dts: rockchip: enable tsadc on px30-evb
+
+Kever Yang (1):
+      arm64: dts: rockchip: Fix min voltage for rk3399-firefly vdd_log
+
+Markus Reichl (8):
+      arm64: dts: rockchip: Add node for gpu on rk3399-roc-pc
+      arm64: dts: rockchip: Add regulators for pcie on rk3399-roc-pc
+      arm64: dts: rockchip: Enable HDMI Sound on rk3399-roc-pc
+      arm64: dts: rockchip: Disable HS400 for mmc on rk3399-roc-pc
+      arm64: dts: rockchip: Fix vdd_log on rk3399-roc-pc
+      arm64: dts: rockchip: Use correct pin for lcd-reset pinctrl on rk3399-roc-pc
+      arm64: dts: rockchip: Add SDR104 mode to SD-card I/F on rk3399-roc-pc
+      arm64: dts: rockchip: Enable MTD Flash on rk3399-roc-pc
+
+Matwey V. Kornilov (1):
+      arm64: dts: rockchip: Enable PCIe for Radxa Rock Pi 4 board
+
+Robin Murphy (2):
+      arm64: dts: rockchip: Fix NanoPC-T4 cooling maps
+      arm64: dts: rockchip: Improve nanopi4 PCIe
+
+ arch/arm64/boot/dts/rockchip/px30-evb.dts          |  6 ++
+ arch/arm64/boot/dts/rockchip/px30.dtsi             | 71 ++++++++++++++++++++--
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts    |  2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts  | 28 +--------
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi   | 27 +++++++-
+ .../boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts  |  2 +
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi    | 62 ++++++++++++++++---
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts  | 14 +++++
+ arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi   | 11 ++++
+ 9 files changed, 181 insertions(+), 42 deletions(-)
