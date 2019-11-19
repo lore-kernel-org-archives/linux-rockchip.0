@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 04/10] gadget: rockchip: Add rk3128 USB_GADGET_PRODUCT_NUM
-Date: Tue, 19 Nov 2019 13:56:17 +0530
-Message-ID: <20191119082623.6165-5-jagan@amarulasolutions.com>
+Subject: [PATCH v2 06/10] fastboot: rockchip: Fix rk3328 default mmc device
+Date: Tue, 19 Nov 2019 13:56:19 +0530
+Message-ID: <20191119082623.6165-7-jagan@amarulasolutions.com>
 References: <20191119082623.6165-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,25 +21,28 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add 0x310c for rk3128 gadget product number.
+Technically the default mmc device for fastboot would
+use eMMC if the board support for it.
 
-Tested-by: Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>
+Rockchip platform access device 0 for eMMC so, use the
+same device number for rk3328.
+
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/usb/gadget/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/fastboot/Kconfig | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/usb/gadget/Kconfig b/drivers/usb/gadget/Kconfig
-index e120b48b33..2da8b40e05 100644
---- a/drivers/usb/gadget/Kconfig
-+++ b/drivers/usb/gadget/Kconfig
-@@ -59,6 +59,7 @@ config USB_GADGET_PRODUCT_NUM
- 	hex "Product ID of the USB device"
- 	default 0x1010 if ARCH_SUNXI
- 	default 0x310a if ROCKCHIP_RK3036
-+	default 0x310c if ROCKCHIP_RK3128
- 	default 0x320a if ROCKCHIP_RK3229 || ROCKCHIP_RK3288
- 	default 0x330a if ROCKCHIP_RK3328
- 	default 0x0
+diff --git a/drivers/fastboot/Kconfig b/drivers/fastboot/Kconfig
+index 34864ca613..433ea0dc3b 100644
+--- a/drivers/fastboot/Kconfig
++++ b/drivers/fastboot/Kconfig
+@@ -89,7 +89,6 @@ endchoice
+ config FASTBOOT_FLASH_MMC_DEV
+ 	int "Define FASTBOOT MMC FLASH default device"
+ 	depends on FASTBOOT_FLASH_MMC
+-	default 1 if ROCKCHIP_RK3328
+ 	default 0 if ARCH_ROCKCHIP
+ 	default 0 if ARCH_SUNXI && MMC_SUNXI_SLOT_EXTRA = -1
+ 	default 1 if ARCH_SUNXI && MMC_SUNXI_SLOT_EXTRA != -1
 -- 
 2.18.0.321.gffc6fa0e3
