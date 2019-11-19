@@ -1,62 +1,35 @@
-From: Andrew Murray <andrew.murray@arm.com>
-Subject: Re: [PATCH v2 1/6] linux/log2.h: Add roundup/rounddown_pow_two64()
- family of functions
-Date: Tue, 19 Nov 2019 17:00:21 +0000
-Message-ID: <20191119170019.GU43905@e119886-lin.cambridge.arm.com>
-References: <20191112155926.16476-1-nsaenzjulienne@suse.de>
- <20191112155926.16476-2-nsaenzjulienne@suse.de>
- <20191119111320.GP43905@e119886-lin.cambridge.arm.com>
- <052d07fb4eb79b29dd58cab577d59bab6684329a.camel@suse.de>
- <56cbba61d92f9bc7d0a33c1de379bcd5cf411cb8.camel@suse.de>
- <20191119162849.GT43905@e119886-lin.cambridge.arm.com>
- <20191119165502.GB4991@ziepe.ca>
+From: Fabio Estevam <festevam@gmail.com>
+Subject: Re: [PATCH v3 3/4] drm: imx: Add i.MX 6 MIPI DSI host driver
+Date: Tue, 19 Nov 2019 15:21:14 -0300
+Message-ID: <CAOMZO5C5gpW6KF9d-79wd=-7ZGAbXQLAXw3kLi+_5DBW_DYrTw@mail.gmail.com>
+References: <20191118152518.3374263-1-adrian.ratiu@collabora.com> <20191118152518.3374263-4-adrian.ratiu@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20191119165502.GB4991@ziepe.ca>
-Sender: netdev-owner@vger.kernel.org
-To: Jason Gunthorpe <jgg@ziepe.ca>
-Cc: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-rdma@vger.kernel.org, maz@kernel.org, phil@raspberrypi.org, iommu@lists.linux-foundation.org, linux-rockchip@lists.infradead.org, f.fainelli@gmail.com, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org, mbrugger@suse.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, jeremy.linton@arm.com, Tom Joseph <tjoseph@cadence.com>, wahrenst@gmx.net, james.quinlan@broadcom.com, Robin Murphy <robin.murphy@arm.com>, "David S. Miller" <davem@davemloft.net>, Tariq
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191118152518.3374263-4-adrian.ratiu@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Adrian Ratiu <adrian.ratiu@collabora.com>
+Cc: "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-stm32@st-md-mailman.stormreply.com, linux-rockchip@lists.infradead.org, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Martyn Welch <martyn.welch@collabora.com>, Sjoerd Simons <sjoerd.simons@collabora.com>, linux-kernel <linux-kernel@vger.kernel.org>, DRI mailing list <dri-devel@lists.freedesktop.org>, NXP Linux Team <linux-imx@nxp.com>, kernel@collabora.com, Emil Velikov <emil.velikov@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Nov 19, 2019 at 12:55:02PM -0400, Jason Gunthorpe wrote:
-> On Tue, Nov 19, 2019 at 04:28:50PM +0000, Andrew Murray wrote:
-> > On Tue, Nov 19, 2019 at 01:43:39PM +0100, Nicolas Saenz Julienne wrote:
-> > > On Tue, 2019-11-19 at 12:30 +0100, Nicolas Saenz Julienne wrote:
-> > > > Hi Andrew, thanks for the review.
-> > > > > > +/**
-> > > > > > + * __roundup_pow_of_two64() - round 64bit value up to nearest power of
-> > > > > > two
-> > > > > > + * @n: value to round up
-> > > > > > + */
-> > > > > > +static inline __attribute__((const)) __u64 __roundup_pow_of_two64(__u64
-> > > > > > n)
-> > > > > 
-> > > > > To be consistent with other functions in the same file (__ilog_u64) you may
-> > > > > want to rename this to __roundup_pow_of_two_u64.
-> > > > 
-> > > > Sounds good to me.
-> > > > 
-> > > > > Also do you know why u64 is used in some places and __u64 in others?
-> > > > 
-> > > > That's unwarranted, it should be __u64 everywhere.
-> > > 
-> > > Sorry, now that I look deeper into it, it should be u64.
-> > 
-> > Do you know the reason why? I'd be interested to know.
-> 
-> __u64 must be used in header files that are under uapi - ie it is the
-> name of the symbol in userspace, and u64 does not exist.
-> 
-> u64 should be used in all code that is only inside the kernel, ie .c
-> files, internal headers, etc
-> 
-> I routinely discourage use of __uXX in kernel native code.
+Hi Adrian,
 
-Thanks for this, much appreciated!
+On Mon, Nov 18, 2019 at 12:25 PM Adrian Ratiu
+<adrian.ratiu@collabora.com> wrote:
 
-Andrew Murray
+Some nitpicks:
 
-> 
-> Jason
+> +
+> +config DRM_IMX_MIPI_DSI
+> +       tristate "Freescale i.MX DRM MIPI DSI"
+
+This text seems too generic as there are i.MX SoCs that use different
+MIPI DSI IP.
+
+Maybe "Freescale i.MX6 DRM MIPI DSI" instead?
+
+> +module_platform_driver(imx_mipi_dsi_driver);
+> +
+> +MODULE_DESCRIPTION("i.MX MIPI DSI host controller driver");
+
+i.MX6 MIPI DSI, please.
