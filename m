@@ -1,47 +1,101 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 10/10] rock960: Enable USB Gadget
-Date: Tue, 19 Nov 2019 13:56:23 +0530
-Message-ID: <20191119082623.6165-11-jagan@amarulasolutions.com>
-References: <20191119082623.6165-1-jagan@amarulasolutions.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v11 00/11] Rockchip ISP Driver
+Date: Tue, 19 Nov 2019 09:30:57 +0100
+Message-ID: <eafffc6f-061e-65ab-079b-b2bd613d61cb@xs4all.nl>
+References: <20191114051242.14651-1-helen.koike@collabora.com>
+ <996a9b6a-0e45-d627-9263-539c22e5f1c0@xs4all.nl>
+ <7fd4bf99fd6316da8acaf0a27b6845bedbf4b25f.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191119082623.6165-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Levin Du <djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <7fd4bf99fd6316da8acaf0a27b6845bedbf4b25f.camel@collabora.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, Helen Koike <helen.koike@collabora.com>, linux-rockchip@lists.infradead.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, gregkh@linuxfoundation.org, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, robh+dt@kernel.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, kernel@collabora.com, linux-media@vger.kernel.org, jacob-chen@iotwrt.com, zhengsq@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable DWC3 core, gadget for rock960 board.
+On 11/18/19 7:52 PM, Ezequiel Garcia wrote:
+> Hi Hans,
+> 
+> Thanks for taking care of this.
+> 
+> On Thu, 2019-11-14 at 09:42 +0100, Hans Verkuil wrote:
+>> On 11/14/19 6:12 AM, Helen Koike wrote:
+>>> Hello,
+>>>
+>>> This series adds the Rockchip Image Signal Processing Unit v1 driver to
+>>> staging.
+>>>
+>>> The main reason to be in staging is that people are already using it from the
+>>> mailing list (including libcamera), and having it in mainline makes the workflow
+>>> easier. Also, it is easier for other people to contribute back (with code
+>>> or testing the driver).
+>>>
+>>> We plan to actively work on this driver to get it our of staging.
+>>>
+>>> This patchset is also available at:
+>>> https://gitlab.collabora.com/koike/linux/tree/rockchip/isp/v11
+>>>
+>>> Libcamera patched to work with this version:
+>>> https://gitlab.collabora.com/koike/libcamera
+>>> (also sent to the mailing list)
+>>>
+>>> The major difference in v11 are:
+>>> - Fixed compiling warnings found with W=1
+>>> - Fixed checkpatch errors
+>>> - Add clock-names values in dt-bindings
+>>
+>> Looking at checkpatch I see a few remaining issues that I believe should be
+>> fixed before merging this:
+>>
+>> CHECK: spinlock_t definition without comment
+>> #575: FILE: drivers/staging/media/rkisp1/isp_stats.h:43:
+>> +       spinlock_t irq_lock;
+>>
+>> CHECK: struct mutex definition without comment
+>> #581: FILE: drivers/staging/media/rkisp1/isp_stats.h:49:
+>> +       struct mutex wq_lock;
+>>
+>> CHECK: spinlock_t definition without comment
+>> #1648: FILE: drivers/staging/media/rkisp1/isp_params.h:25:
+>> +       spinlock_t config_lock;
+>>
+>> CHECK: spinlock_t definition without comment
+>> #2058: FILE: drivers/staging/media/rkisp1/capture.h:145:
+>> +       spinlock_t vbq_lock;
+>>
+> 
+> I'd rather merge this as-is, adding a TODO entry stating
+> we need to revisit locking specifically, because I'd like
+> to take a close look at these spinlocks/mutex,
+> instead of just addding comments for then.
 
-This would help to use fastboot by default.
+Fair enough! Just as long as it is mentioned somewhere.
 
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- configs/rock960-rk3399_defconfig | 2 ++
- 1 file changed, 2 insertions(+)
+> 
+>> Once this is done together with the Jacob Chen email clarification
+>> it is ready to be merged for v5.6.
+>>
+> 
+> I'll find out more about this.
 
-diff --git a/configs/rock960-rk3399_defconfig b/configs/rock960-rk3399_defconfig
-index 979ca0f93b..d0ad6865cf 100644
---- a/configs/rock960-rk3399_defconfig
-+++ b/configs/rock960-rk3399_defconfig
-@@ -57,6 +57,8 @@ CONFIG_USB_ETHER_ASIX88179=y
- CONFIG_USB_ETHER_MCS7830=y
- CONFIG_USB_ETHER_RTL8152=y
- CONFIG_USB_ETHER_SMSC95XX=y
-+CONFIG_USB_GADGET=y
-+CONFIG_USB_DWC3=y
- CONFIG_USE_TINY_PRINTF=y
- CONFIG_SPL_TINY_MEMSET=y
- CONFIG_ERRNO_STR=y
--- 
-2.18.0.321.gffc6fa0e3
+Thanks!
+
+Remember that we are in the code freeze until v5.5-rc1 is released,
+so you have time to make more adjustments if you want to.
+
+Regards,
+
+	Hans
+
+> 
+>> It passes all the sparse/smatch tests, so that's very good.
+>>
+> 
+> Great!
+> 
+> Thanks,
+> Ezequiel
+> 
