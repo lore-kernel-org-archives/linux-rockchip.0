@@ -1,50 +1,65 @@
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: [PATCH] soc: rockchip: Fix Kconfig indentation
-Date: Wed, 20 Nov 2019 21:39:20 +0800
-Message-ID: <20191120133920.13657-1-krzk@kernel.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH 4/5] ARM: dts: rockchip: Add Radxa Carrier board
+Date: Wed, 20 Nov 2019 19:15:35 +0530
+Message-ID: <CAMty3ZA+p2pWokLrwnkv6_q0G8d76AntE5Kar4JN8MN48O9VSw@mail.gmail.com>
+References: <20191120113923.11685-1-jagan@amarulasolutions.com>
+ <20191120113923.11685-5-jagan@amarulasolutions.com> <5644395.EDGZVd1YuU@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <5644395.EDGZVd1YuU@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, Tom Cubie <tom@radxa.com>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Akash Gajjar <akash@openedev.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, linux-amarula <linux-amarula@amarulasolutions.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Adjust indentation from spaces to tab (+optional two spaces) as in
-coding style with command like:
-	$ sed -e 's/^        /\t/' -i */Kconfig
-
-Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
----
- drivers/soc/rockchip/Kconfig | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
-index b71b73bf5fc5..3e2057f22bbc 100644
---- a/drivers/soc/rockchip/Kconfig
-+++ b/drivers/soc/rockchip/Kconfig
-@@ -15,15 +15,15 @@ config ROCKCHIP_GRF
- 	  to make some of them conform to expectations of the kernel.
- 
- config ROCKCHIP_PM_DOMAINS
--        bool "Rockchip generic power domain"
--        depends on PM
--        select PM_GENERIC_DOMAINS
--        help
--          Say y here to enable power domain support.
--          In order to meet high performance and low power requirements, a power
--          management unit is designed or saving power when RK3288 in low power
--          mode. The RK3288 PMU is dedicated for managing the power of the whole chip.
-+	bool "Rockchip generic power domain"
-+	depends on PM
-+	select PM_GENERIC_DOMAINS
-+	help
-+	  Say y here to enable power domain support.
-+	  In order to meet high performance and low power requirements, a power
-+	  management unit is designed or saving power when RK3288 in low power
-+	  mode. The RK3288 PMU is dedicated for managing the power of the whole chip.
- 
--          If unsure, say N.
-+	  If unsure, say N.
- 
- endif
--- 
-2.17.1
+SGkgSGVpa28sCgpPbiBXZWQsIE5vdiAyMCwgMjAxOSBhdCA2OjU1IFBNIEhlaWtvIFN0w7xibmVy
+IDxoZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+Cj4gSGkgSmFnYW4sCj4KPiBBbSBNaXR0d29jaCwg
+MjAuIE5vdmVtYmVyIDIwMTksIDEyOjM5OjIyIENFVCBzY2hyaWViIEphZ2FuIFRla2k6Cj4gPiBD
+YXJyaWVyIGJvYXJkIG9mdGVuIHJlZmVycmVkIGFzIGJhc2Vib2FyZC4gRm9yIG1ha2luZwo+ID4g
+Y29tcGxldGUgU0JDLCB0aGUgYXNzb2NpYXRlZCBTT00gd2lsbCBtb3VudCBvbiB0b3Agb2YKPiA+
+IHRoaXMgY2FycmllciBib2FyZC4KPiA+Cj4gPiBSYWR4YSBoYXMgYSBjYXJyaWVyIGJvYXJkIHdo
+aWNoIHN1cHBvcnRzIG9uIGJvYXJkCj4gPiBwZXJpcGhlcmFscywgcG9ydHMgbGlrZSBVU0ItMi4w
+LCBVU0ItMy4wLCBIRE1JLCBNSVBJIERTSS9DU0ksCj4gPiBlRFAsIEV0aGVybmV0LCBQQ0llLCBV
+U0ItQywgNDAtUGluIEdQSU8gaGVhZGVyIGFuZCBldGMuCj4gPgo+ID4gQ3VycmVudGx5IHRoaXMg
+Y2FycmllciBib2FyZCBjYW4gYmUgdXNlZCB0b2dldGhlciB3aXRoCj4gPiBWTUFSQyBSSzMzOTlQ
+b3IgU09NIGZvciBtYWtpbmcgUm9jayBQSSBOMTAgU0JDLgo+ID4KPiA+IFNvIGFkZCB0aGlzIGNh
+cnJpZXIgYm9hcmQgZHRzaSBhcyBhIHNlcGFyYXRlIGZpbGUgaW4KPiA+IEFSTSBkaXJlY3Rvcnks
+IHNvLXRoYXQgdGhlIHNhbWUgY2FuIHJldXNlIGl0IGluIGJvdGgKPiA+IGFybTMyIGFuZCBhcm02
+NCB2YXJpYW50cyBvZiBSb2NrY2hpcCBTT01zLgo+Cj4gRG8geW91IHJlYWxseSB0aGluayBzb21l
+b25lIHdpbGwgY3JlYXRlIGFuIGFybTMyIHNvYyB1c2luZyB0aGF0Cj4gY2FycmllciBib2FyZD8K
+Clllcywgd2UgaGF2ZSBSb2NrIFBpIE44IHdoaWNoIGlzIHVzaW5nIHNhbWUgY2FycmllciBib2Fy
+ZCBkZXNpZ24gd2l0aAooKyBleHRlcm5hbCBjb2RlYykgb24gdG9wIG9mIFJLMzI4OCBTT00uIEkg
+ZGlkbid0IG1lbnRpb25lZCBvbiB0aGUKY29tbWl0IG1lc3NhZ2Ugc2luY2UgcmFkeGEgZG9lc24n
+dCBvZmZpY2lhbGx5IGFubm91bmNlZCBvbiB0aGUKd2Vic2l0ZS4KCj4KPiBTaW1pbGFybHkgc28g
+ZmFyIEkgZG9uJ3QgdGhpbmsgd2UgaGF2ZW4ndCBldmVuIHNlZW4gYSBsb3Qgb2YgcmV1c2UKPiBv
+ZiBleGlzdGluZyBjYXJyaWVyIGJvYXJkcyBhdCBhbGwsIG90aGVyIHRoYW4gdGhlaXIgaW5pdGlh
+bCBjb21iaW5hdGlvbi4KPgo+IFNvIG1heWJlIGp1c3QgaGF2aW5nIHRoZSBjb250ZW50IG9mIHlv
+dXIKPiAgICAgICAgIHJvY2tjaGlwLXJhZHhhLWNhcnJpZXJib2FyZC5kdHNpCj4gaW4KPiAgICAg
+ICAgIHJvY2tjaGlwL3JrMzM5OXByby1yb2NrLXBpLW4xMC5kdHMKPiBmcm9tIHBhdGNoIDUgbWln
+aHQgYmUgYSBiZXR0ZXIgc3RhcnQgLSBhdCBsZWFzdCB1bnRpbCB0aGVyZSBpcyBhbnkKPiBmdXJ0
+aGVyIHVzYWdlIC0gaWYgYXQgYWxsPwoKQnV0LCB0aGlzIHBhcnRpY3VsYXIgZGVzaWduIGhhcyBw
+cm9wZXIgdXNlIGNhc2UuCjEuIHJrMzM5OXBybyBTT00gKyBjYXJyaWVyIGJvYXJkIChSb2NrIFBp
+IE4xMCkKMi4gcmszMjg4IFNPTSArIGNhcnJpZXIgYm9hcmQgKFJvY2sgUGkgTjgpCgo+Cj4gQWxz
+byByb2NrY2hpcC1yYWR4YS1jYXJyaWVyYm9hcmQgbWlnaHQgZXZlbiBiZSBvdmVybHkgZ2VuZXJp
+Ywo+IGFzIHRoZXJlIG1heSBiZSBtdWx0aXBsZSBjYXJyaWVyYm9hcmRzIGZyb20gUmFkeGEgbGF0
+ZXIgb24uCgpJJ20gc2xpZ2h0bHkgZGlzYWdyZWUgb2YgaGF2aW5nIG92ZXJsYXkgaGVyZSwgc2lu
+Y2UgdGhlc2UgYXJlIGZpeGVkCmRlc2lnbiBjb21iaW5hdGlvbnMuIHdoZXJlIFNPTSB3aXRoIHJl
+c3BlY3RpdmUgY2FycmllciBib2FyZCBpcwptYW5kYXRvcnkgdG8gbWFrZSBmaW5hbCBib2FyZC4g
+VW5kZXJzdGFuZCB0aGF0IHdlIGNhbiBoYXZlIGEKbWFpbnRlbmFuY2Ugb3Zlci1haGVhZCBpZiB3
+ZSBoYXZlIG11bHRpcGxlIGNhcnJpZXIgYm9hcmRzLCBidXQgcmlnaHQKbm93IHJhZHhhIGhhcyBv
+bmx5IG9uZSBjYXJyaWVyIGJvYXJkIHdpdGggMiBzZXRzIG9mIFNPTSdzIGNvbWJpbmF0aW9ucwp0
+aGF0IGluZGVlZCBmaXQgbGlrZSBhIGRldiBib2FyZCwgc28gdGhlcmUgaXMgdW51c2VkIGNhcnJp
+ZXIgYm9hcmQuCgpKYWdhbi4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
