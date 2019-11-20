@@ -1,100 +1,55 @@
-From: Neil Armstrong <narmstrong@baylibre.com>
-Subject: Re: [PATCH v3 4/4] dt-bindings: display: add IMX MIPI DSI host
- controller doc
-Date: Wed, 20 Nov 2019 09:31:49 +0100
-Message-ID: <e19aca1f-842d-a5b4-6fc1-02f7f6dd136d@baylibre.com>
-References: <20191118152518.3374263-1-adrian.ratiu@collabora.com>
- <20191118152518.3374263-5-adrian.ratiu@collabora.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH 0/5] arm64: dts: rockchip: Add Rock Pi N10 support
+Date: Wed, 20 Nov 2019 17:09:18 +0530
+Message-ID: <20191120113923.11685-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191118152518.3374263-5-adrian.ratiu@collabora.com>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Adrian Ratiu <adrian.ratiu@collabora.com>, linux-arm-kernel@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
-Cc: Martyn Welch <martyn.welch@collabora.com>, Sjoerd Simons <sjoerd.simons@collabora.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-imx@nxp.com, kernel@collabora.com
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Akash Gajjar <akash@openedev.com>, Tom Cubie <tom@radxa.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Unlike, other Rock PI boards from radxa, Rock Pi N10 SBC is based
+on SOM + Carrier board combination.
 
-On 18/11/2019 16:25, Adrian Ratiu wrote:
+Rock Pi N10 is a Rockchip RK3399Pro based SBC, which has
+- VMARC RK3399Pro SOM (as per SMARC standard) from Vamrs.
+- Compatible carrier board from Radxa.
 
-A small commit log would be welcome here.
+This series add initial support for Rock Pi N10.
 
-> Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.com>
-> Signed-off-by: Martyn Welch <martyn.welch@collabora.com>
-> Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
-> ---
->  .../bindings/display/imx/mipi-dsi.txt         | 56 +++++++++++++++++++
->  1 file changed, 56 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/imx/mipi-dsi.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/display/imx/mipi-dsi.txt b/Documentation/devicetree/bindings/display/imx/mipi-dsi.txt
-> new file mode 100644
-> index 000000000000..3f05c32ef963
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/imx/mipi-dsi.txt
+patch 0001: dt-bindings for VMARC RK3399Pro SOM
 
-New bindings should use the yaml dt-schema format, could you convert it ?
+patch 0002: VMARC RK3399Pro SOM dtsi support
 
-Neil
+patch 0003: dt-bindings for Rock Pi N10
 
-> @@ -0,0 +1,56 @@
-> +Freescale i.MX6 DW MIPI DSI Host Controller
-> +===========================================
-> +
-> +The DSI host controller is a Synopsys DesignWare MIPI DSI v1.01 IP
-> +with a companion PHY IP.
-> +
-> +These DT bindings follow the Synopsys DW MIPI DSI bindings defined in
-> +Documentation/devicetree/bindings/display/bridge/dw_mipi_dsi.txt with
-> +the following device-specific properties.
-> +
-> +Required properties:
-> +
-> +- #address-cells: Should be <1>.
-> +- #size-cells: Should be <0>.
-> +- compatible: "fsl,imx6q-mipi-dsi", "snps,dw-mipi-dsi".
-> +- reg: See dw_mipi_dsi.txt.
-> +- interrupts: The controller's CPU interrupt.
-> +- clocks, clock-names: Phandles to the controller's pll reference
-> +  clock(ref) and APB clock(pclk), as described in [1].
-> +- ports: a port node with endpoint definitions as defined in [2].
-> +- gpr: Should be <&gpr>.
-> +       Phandle to the iomuxc-gpr region containing the multiplexer
-> +       control register.
-> +
-> +[1] Documentation/devicetree/bindings/clock/clock-bindings.txt
-> +[2] Documentation/devicetree/bindings/media/video-interfaces.txt
-> +
-> +Example:
-> +
-> +	mipi_dsi: mipi@21e0000 {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +		compatible = "fsl,imx6q-mipi-dsi", "snps,dw-mipi-dsi";
-> +		reg = <0x021e0000 0x4000>;
-> +		interrupts = <0 102 IRQ_TYPE_LEVEL_HIGH>;
-> +		gpr = <&gpr>;
-> +		clocks = <&clks IMX6QDL_CLK_MIPI_CORE_CFG>,
-> +			 <&clks IMX6QDL_CLK_MIPI_IPG>;
-> +		clock-names = "ref", "pclk";
-> +		status = "okay";
-> +
-> +		ports {
-> +			port@0 {
-> +				reg = <0>;
-> +				mipi_mux_0: endpoint {
-> +					remote-endpoint = <&ipu1_di0_mipi>;
-> +				};
-> +			};
-> +			port@1 {
-> +				reg = <1>;
-> +				mipi_mux_1: endpoint {
-> +					remote-endpoint = <&ipu1_di1_mipi>;
-> +				};
-> +			};
-> +		};
-> +        };
-> 
+patch 0004: Radxa carrier board dtsi support
+
+patch 0005: Rock Pi N10 dts support
+
+Tested basic peripherals and will all more in future patches.
+
+Any inputs?
+Jagan.
+
+Jagan Teki (5):
+  dt-bindings: arm: rockchip: Add VMARC RK3399Pro SOM binding
+  arm64: dts: rockchip: Add VMARC RK3399Pro SOM initial support
+  dt-bindings: arm: rockchip: Add Rock Pi N10 binding
+  ARM: dts: rockchip: Add Radxa Carrier board
+  arm64: dts: rockchip: Add Radxa Rock Pi N10 initial support
+
+ .../devicetree/bindings/arm/rockchip.yaml     |  10 +
+ .../boot/dts/rockchip-radxa-carrierboard.dtsi |  81 +++++
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../dts/rockchip/rk3399pro-rock-pi-n10.dts    |  17 +
+ .../dts/rockchip/rk3399pro-vmarc-som.dtsi     | 339 ++++++++++++++++++
+ 5 files changed, 448 insertions(+)
+ create mode 100644 arch/arm/boot/dts/rockchip-radxa-carrierboard.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
+
+-- 
+2.18.0.321.gffc6fa0e3
