@@ -1,78 +1,90 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+From: Jagan Teki <jagan@amarulasolutions.com>
 Subject: Re: [PATCH 4/5] ARM: dts: rockchip: Add Radxa Carrier board
-Date: Wed, 20 Nov 2019 14:53:39 +0100
-Message-ID: <12496011.EUIoF19S7S@diego>
-References: <20191120113923.11685-1-jagan@amarulasolutions.com> <5644395.EDGZVd1YuU@diego> <CAMty3ZA+p2pWokLrwnkv6_q0G8d76AntE5Kar4JN8MN48O9VSw@mail.gmail.com>
+Date: Wed, 20 Nov 2019 21:03:33 +0530
+Message-ID: <CAMty3ZCLYQYvOuOzRXjxDmLsFbYBYOQjymsn+pCvctTaQG2Y0g@mail.gmail.com>
+References: <20191120113923.11685-1-jagan@amarulasolutions.com>
+ <5644395.EDGZVd1YuU@diego> <CAMty3ZA+p2pWokLrwnkv6_q0G8d76AntE5Kar4JN8MN48O9VSw@mail.gmail.com>
+ <12496011.EUIoF19S7S@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAMty3ZA+p2pWokLrwnkv6_q0G8d76AntE5Kar4JN8MN48O9VSw@mail.gmail.com>
+In-Reply-To: <12496011.EUIoF19S7S@diego>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jagan Teki <jagan@amarulasolutions.com>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
 Cc: Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, Tom Cubie <tom@radxa.com>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Akash Gajjar <akash@openedev.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, linux-amarula <linux-amarula@amarulasolutions.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jagan,
+Hi Heiko,
 
-Am Mittwoch, 20. November 2019, 14:45:35 CET schrieb Jagan Teki:
-> On Wed, Nov 20, 2019 at 6:55 PM Heiko Stübner <heiko@sntech.de> wrote:
-> > Am Mittwoch, 20. November 2019, 12:39:22 CET schrieb Jagan Teki:
-> > > Carrier board often referred as baseboard. For making
-> > > complete SBC, the associated SOM will mount on top of
-> > > this carrier board.
+On Wed, Nov 20, 2019 at 7:23 PM Heiko St=C3=BCbner <heiko@sntech.de> wrote:
+>
+> Hi Jagan,
+>
+> Am Mittwoch, 20. November 2019, 14:45:35 CET schrieb Jagan Teki:
+> > On Wed, Nov 20, 2019 at 6:55 PM Heiko St=C3=BCbner <heiko@sntech.de> wr=
+ote:
+> > > Am Mittwoch, 20. November 2019, 12:39:22 CET schrieb Jagan Teki:
+> > > > Carrier board often referred as baseboard. For making
+> > > > complete SBC, the associated SOM will mount on top of
+> > > > this carrier board.
+> > > >
+> > > > Radxa has a carrier board which supports on board
+> > > > peripherals, ports like USB-2.0, USB-3.0, HDMI, MIPI DSI/CSI,
+> > > > eDP, Ethernet, PCIe, USB-C, 40-Pin GPIO header and etc.
+> > > >
+> > > > Currently this carrier board can be used together with
+> > > > VMARC RK3399Por SOM for making Rock PI N10 SBC.
+> > > >
+> > > > So add this carrier board dtsi as a separate file in
+> > > > ARM directory, so-that the same can reuse it in both
+> > > > arm32 and arm64 variants of Rockchip SOMs.
 > > >
-> > > Radxa has a carrier board which supports on board
-> > > peripherals, ports like USB-2.0, USB-3.0, HDMI, MIPI DSI/CSI,
-> > > eDP, Ethernet, PCIe, USB-C, 40-Pin GPIO header and etc.
+> > > Do you really think someone will create an arm32 soc using that
+> > > carrier board?
+> >
+> > Yes, we have Rock Pi N8 which is using same carrier board design with
+> > (+ external codec) on top of RK3288 SOM. I didn't mentioned on the
+> > commit message since radxa doesn't officially announced on the
+> > website.
+> >
 > > >
-> > > Currently this carrier board can be used together with
-> > > VMARC RK3399Por SOM for making Rock PI N10 SBC.
+> > > Similarly so far I don't think we haven't even seen a lot of reuse
+> > > of existing carrier boards at all, other than their initial combinati=
+on.
 > > >
-> > > So add this carrier board dtsi as a separate file in
-> > > ARM directory, so-that the same can reuse it in both
-> > > arm32 and arm64 variants of Rockchip SOMs.
+> > > So maybe just having the content of your
+> > >         rockchip-radxa-carrierboard.dtsi
+> > > in
+> > >         rockchip/rk3399pro-rock-pi-n10.dts
+> > > from patch 5 might be a better start - at least until there is any
+> > > further usage - if at all?
 > >
-> > Do you really think someone will create an arm32 soc using that
-> > carrier board?
-> 
-> Yes, we have Rock Pi N8 which is using same carrier board design with
-> (+ external codec) on top of RK3288 SOM. I didn't mentioned on the
-> commit message since radxa doesn't officially announced on the
-> website.
-> 
+> > But, this particular design has proper use case.
+> > 1. rk3399pro SOM + carrier board (Rock Pi N10)
+> > 2. rk3288 SOM + carrier board (Rock Pi N8)
 > >
-> > Similarly so far I don't think we haven't even seen a lot of reuse
-> > of existing carrier boards at all, other than their initial combination.
+> > >
+> > > Also rockchip-radxa-carrierboard might even be overly generic
+> > > as there may be multiple carrierboards from Radxa later on.
 > >
-> > So maybe just having the content of your
-> >         rockchip-radxa-carrierboard.dtsi
-> > in
-> >         rockchip/rk3399pro-rock-pi-n10.dts
-> > from patch 5 might be a better start - at least until there is any
-> > further usage - if at all?
-> 
-> But, this particular design has proper use case.
-> 1. rk3399pro SOM + carrier board (Rock Pi N10)
-> 2. rk3288 SOM + carrier board (Rock Pi N8)
-> 
-> >
-> > Also rockchip-radxa-carrierboard might even be overly generic
-> > as there may be multiple carrierboards from Radxa later on.
-> 
-> I'm slightly disagree of having overlay here, since these are fixed
-> design combinations. where SOM with respective carrier board is
-> mandatory to make final board. Understand that we can have a
-> maintenance over-ahead if we have multiple carrier boards, but right
-> now radxa has only one carrier board with 2 sets of SOM's combinations
-> that indeed fit like a dev board, so there is unused carrier board.
+> > I'm slightly disagree of having overlay here, since these are fixed
+> > design combinations. where SOM with respective carrier board is
+> > mandatory to make final board. Understand that we can have a
+> > maintenance over-ahead if we have multiple carrier boards, but right
+> > now radxa has only one carrier board with 2 sets of SOM's combinations
+> > that indeed fit like a dev board, so there is unused carrier board.
+>
+> All is good ... with that information from above (rk3288) this definitly
+> makes more sense :-)
+>
+> The naming of the file is still a tiny struggle though. Does this board
+> maybe have some actual product name or is it really just called
+> "carrierboard"? :-)
 
-All is good ... with that information from above (rk3288) this definitly
-makes more sense :-)
+True, I felt the same. Just now Tom has named this as 'Dalang Carrier
+board' so we can have rockchip-radxa-dalang.dtsi or
+rockchip-radxa-dalang-carrier.dtsi as file names. or let me know if
+you have any suggestions on the file name?
 
-The naming of the file is still a tiny struggle though. Does this board
-maybe have some actual product name or is it really just called
-"carrierboard"? :-)
-
-Thanks
-Heiko
+Jagan.
