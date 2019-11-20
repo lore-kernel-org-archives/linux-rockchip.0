@@ -1,65 +1,78 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 Subject: Re: [PATCH 4/5] ARM: dts: rockchip: Add Radxa Carrier board
-Date: Wed, 20 Nov 2019 19:15:35 +0530
-Message-ID: <CAMty3ZA+p2pWokLrwnkv6_q0G8d76AntE5Kar4JN8MN48O9VSw@mail.gmail.com>
-References: <20191120113923.11685-1-jagan@amarulasolutions.com>
- <20191120113923.11685-5-jagan@amarulasolutions.com> <5644395.EDGZVd1YuU@diego>
+Date: Wed, 20 Nov 2019 14:53:39 +0100
+Message-ID: <12496011.EUIoF19S7S@diego>
+References: <20191120113923.11685-1-jagan@amarulasolutions.com> <5644395.EDGZVd1YuU@diego> <CAMty3ZA+p2pWokLrwnkv6_q0G8d76AntE5Kar4JN8MN48O9VSw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <5644395.EDGZVd1YuU@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAMty3ZA+p2pWokLrwnkv6_q0G8d76AntE5Kar4JN8MN48O9VSw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jagan Teki <jagan@amarulasolutions.com>
 Cc: Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, Tom Cubie <tom@radxa.com>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Akash Gajjar <akash@openedev.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, linux-amarula <linux-amarula@amarulasolutions.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgpPbiBXZWQsIE5vdiAyMCwgMjAxOSBhdCA2OjU1IFBNIEhlaWtvIFN0w7xibmVy
-IDxoZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+Cj4gSGkgSmFnYW4sCj4KPiBBbSBNaXR0d29jaCwg
-MjAuIE5vdmVtYmVyIDIwMTksIDEyOjM5OjIyIENFVCBzY2hyaWViIEphZ2FuIFRla2k6Cj4gPiBD
-YXJyaWVyIGJvYXJkIG9mdGVuIHJlZmVycmVkIGFzIGJhc2Vib2FyZC4gRm9yIG1ha2luZwo+ID4g
-Y29tcGxldGUgU0JDLCB0aGUgYXNzb2NpYXRlZCBTT00gd2lsbCBtb3VudCBvbiB0b3Agb2YKPiA+
-IHRoaXMgY2FycmllciBib2FyZC4KPiA+Cj4gPiBSYWR4YSBoYXMgYSBjYXJyaWVyIGJvYXJkIHdo
-aWNoIHN1cHBvcnRzIG9uIGJvYXJkCj4gPiBwZXJpcGhlcmFscywgcG9ydHMgbGlrZSBVU0ItMi4w
-LCBVU0ItMy4wLCBIRE1JLCBNSVBJIERTSS9DU0ksCj4gPiBlRFAsIEV0aGVybmV0LCBQQ0llLCBV
-U0ItQywgNDAtUGluIEdQSU8gaGVhZGVyIGFuZCBldGMuCj4gPgo+ID4gQ3VycmVudGx5IHRoaXMg
-Y2FycmllciBib2FyZCBjYW4gYmUgdXNlZCB0b2dldGhlciB3aXRoCj4gPiBWTUFSQyBSSzMzOTlQ
-b3IgU09NIGZvciBtYWtpbmcgUm9jayBQSSBOMTAgU0JDLgo+ID4KPiA+IFNvIGFkZCB0aGlzIGNh
-cnJpZXIgYm9hcmQgZHRzaSBhcyBhIHNlcGFyYXRlIGZpbGUgaW4KPiA+IEFSTSBkaXJlY3Rvcnks
-IHNvLXRoYXQgdGhlIHNhbWUgY2FuIHJldXNlIGl0IGluIGJvdGgKPiA+IGFybTMyIGFuZCBhcm02
-NCB2YXJpYW50cyBvZiBSb2NrY2hpcCBTT01zLgo+Cj4gRG8geW91IHJlYWxseSB0aGluayBzb21l
-b25lIHdpbGwgY3JlYXRlIGFuIGFybTMyIHNvYyB1c2luZyB0aGF0Cj4gY2FycmllciBib2FyZD8K
-Clllcywgd2UgaGF2ZSBSb2NrIFBpIE44IHdoaWNoIGlzIHVzaW5nIHNhbWUgY2FycmllciBib2Fy
-ZCBkZXNpZ24gd2l0aAooKyBleHRlcm5hbCBjb2RlYykgb24gdG9wIG9mIFJLMzI4OCBTT00uIEkg
-ZGlkbid0IG1lbnRpb25lZCBvbiB0aGUKY29tbWl0IG1lc3NhZ2Ugc2luY2UgcmFkeGEgZG9lc24n
-dCBvZmZpY2lhbGx5IGFubm91bmNlZCBvbiB0aGUKd2Vic2l0ZS4KCj4KPiBTaW1pbGFybHkgc28g
-ZmFyIEkgZG9uJ3QgdGhpbmsgd2UgaGF2ZW4ndCBldmVuIHNlZW4gYSBsb3Qgb2YgcmV1c2UKPiBv
-ZiBleGlzdGluZyBjYXJyaWVyIGJvYXJkcyBhdCBhbGwsIG90aGVyIHRoYW4gdGhlaXIgaW5pdGlh
-bCBjb21iaW5hdGlvbi4KPgo+IFNvIG1heWJlIGp1c3QgaGF2aW5nIHRoZSBjb250ZW50IG9mIHlv
-dXIKPiAgICAgICAgIHJvY2tjaGlwLXJhZHhhLWNhcnJpZXJib2FyZC5kdHNpCj4gaW4KPiAgICAg
-ICAgIHJvY2tjaGlwL3JrMzM5OXByby1yb2NrLXBpLW4xMC5kdHMKPiBmcm9tIHBhdGNoIDUgbWln
-aHQgYmUgYSBiZXR0ZXIgc3RhcnQgLSBhdCBsZWFzdCB1bnRpbCB0aGVyZSBpcyBhbnkKPiBmdXJ0
-aGVyIHVzYWdlIC0gaWYgYXQgYWxsPwoKQnV0LCB0aGlzIHBhcnRpY3VsYXIgZGVzaWduIGhhcyBw
-cm9wZXIgdXNlIGNhc2UuCjEuIHJrMzM5OXBybyBTT00gKyBjYXJyaWVyIGJvYXJkIChSb2NrIFBp
-IE4xMCkKMi4gcmszMjg4IFNPTSArIGNhcnJpZXIgYm9hcmQgKFJvY2sgUGkgTjgpCgo+Cj4gQWxz
-byByb2NrY2hpcC1yYWR4YS1jYXJyaWVyYm9hcmQgbWlnaHQgZXZlbiBiZSBvdmVybHkgZ2VuZXJp
-Ywo+IGFzIHRoZXJlIG1heSBiZSBtdWx0aXBsZSBjYXJyaWVyYm9hcmRzIGZyb20gUmFkeGEgbGF0
-ZXIgb24uCgpJJ20gc2xpZ2h0bHkgZGlzYWdyZWUgb2YgaGF2aW5nIG92ZXJsYXkgaGVyZSwgc2lu
-Y2UgdGhlc2UgYXJlIGZpeGVkCmRlc2lnbiBjb21iaW5hdGlvbnMuIHdoZXJlIFNPTSB3aXRoIHJl
-c3BlY3RpdmUgY2FycmllciBib2FyZCBpcwptYW5kYXRvcnkgdG8gbWFrZSBmaW5hbCBib2FyZC4g
-VW5kZXJzdGFuZCB0aGF0IHdlIGNhbiBoYXZlIGEKbWFpbnRlbmFuY2Ugb3Zlci1haGVhZCBpZiB3
-ZSBoYXZlIG11bHRpcGxlIGNhcnJpZXIgYm9hcmRzLCBidXQgcmlnaHQKbm93IHJhZHhhIGhhcyBv
-bmx5IG9uZSBjYXJyaWVyIGJvYXJkIHdpdGggMiBzZXRzIG9mIFNPTSdzIGNvbWJpbmF0aW9ucwp0
-aGF0IGluZGVlZCBmaXQgbGlrZSBhIGRldiBib2FyZCwgc28gdGhlcmUgaXMgdW51c2VkIGNhcnJp
-ZXIgYm9hcmQuCgpKYWdhbi4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
+Hi Jagan,
+
+Am Mittwoch, 20. November 2019, 14:45:35 CET schrieb Jagan Teki:
+> On Wed, Nov 20, 2019 at 6:55 PM Heiko Stübner <heiko@sntech.de> wrote:
+> > Am Mittwoch, 20. November 2019, 12:39:22 CET schrieb Jagan Teki:
+> > > Carrier board often referred as baseboard. For making
+> > > complete SBC, the associated SOM will mount on top of
+> > > this carrier board.
+> > >
+> > > Radxa has a carrier board which supports on board
+> > > peripherals, ports like USB-2.0, USB-3.0, HDMI, MIPI DSI/CSI,
+> > > eDP, Ethernet, PCIe, USB-C, 40-Pin GPIO header and etc.
+> > >
+> > > Currently this carrier board can be used together with
+> > > VMARC RK3399Por SOM for making Rock PI N10 SBC.
+> > >
+> > > So add this carrier board dtsi as a separate file in
+> > > ARM directory, so-that the same can reuse it in both
+> > > arm32 and arm64 variants of Rockchip SOMs.
+> >
+> > Do you really think someone will create an arm32 soc using that
+> > carrier board?
+> 
+> Yes, we have Rock Pi N8 which is using same carrier board design with
+> (+ external codec) on top of RK3288 SOM. I didn't mentioned on the
+> commit message since radxa doesn't officially announced on the
+> website.
+> 
+> >
+> > Similarly so far I don't think we haven't even seen a lot of reuse
+> > of existing carrier boards at all, other than their initial combination.
+> >
+> > So maybe just having the content of your
+> >         rockchip-radxa-carrierboard.dtsi
+> > in
+> >         rockchip/rk3399pro-rock-pi-n10.dts
+> > from patch 5 might be a better start - at least until there is any
+> > further usage - if at all?
+> 
+> But, this particular design has proper use case.
+> 1. rk3399pro SOM + carrier board (Rock Pi N10)
+> 2. rk3288 SOM + carrier board (Rock Pi N8)
+> 
+> >
+> > Also rockchip-radxa-carrierboard might even be overly generic
+> > as there may be multiple carrierboards from Radxa later on.
+> 
+> I'm slightly disagree of having overlay here, since these are fixed
+> design combinations. where SOM with respective carrier board is
+> mandatory to make final board. Understand that we can have a
+> maintenance over-ahead if we have multiple carrier boards, but right
+> now radxa has only one carrier board with 2 sets of SOM's combinations
+> that indeed fit like a dev board, so there is unused carrier board.
+
+All is good ... with that information from above (rk3288) this definitly
+makes more sense :-)
+
+The naming of the file is still a tiny struggle though. Does this board
+maybe have some actual product name or is it really just called
+"carrierboard"? :-)
+
+Thanks
+Heiko
