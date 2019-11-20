@@ -1,47 +1,50 @@
 From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: [PATCH] drm/rockchip: Fix Kconfig indentation
-Date: Wed, 20 Nov 2019 21:33:48 +0800
-Message-ID: <20191120133348.6640-1-krzk@kernel.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Subject: [PATCH] soc: rockchip: Fix Kconfig indentation
+Date: Wed, 20 Nov 2019 21:39:20 +0800
+Message-ID: <20191120133920.13657-1-krzk@kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org
-Cc: David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QWRqdXN0IGluZGVudGF0aW9uIGZyb20gc3BhY2VzIHRvIHRhYiAoK29wdGlvbmFsIHR3byBzcGFj
-ZXMpIGFzIGluCmNvZGluZyBzdHlsZSB3aXRoIGNvbW1hbmQgbGlrZToKCSQgc2VkIC1lICdzL14g
-ICAgICAgIC9cdC8nIC1pICovS2NvbmZpZwoKU2lnbmVkLW9mZi1ieTogS3J6eXN6dG9mIEtvemxv
-d3NraSA8a3J6a0BrZXJuZWwub3JnPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29u
-ZmlnIHwgOCArKysrLS0tLQogMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgNCBkZWxl
-dGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZyBi
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnCmluZGV4IDZmNDIyMmY4YmVlYi4uMTY3
-MGE1Y2FlM2M3IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZwor
-KysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2NvbmZpZwpAQCAtMjgsMTcgKzI4LDE3IEBA
-IGNvbmZpZyBST0NLQ0hJUF9BTkFMT0dJWF9EUAogCSAgb24gUkszMjg4IG9yIFJLMzM5OSBiYXNl
-ZCBTb0MsIHlvdSBzaG91bGQgc2VsZWN0IHRoaXMgb3B0aW9uLgogCiBjb25maWcgUk9DS0NISVBf
-Q0ROX0RQCi0gICAgICAgIGJvb2wgIlJvY2tjaGlwIGNkbiBEUCIKKwlib29sICJSb2NrY2hpcCBj
-ZG4gRFAiCiAJZGVwZW5kcyBvbiBFWFRDT049eSB8fCAoRVhUQ09OPW0gJiYgRFJNX1JPQ0tDSElQ
-PW0pCi0gICAgICAgIGhlbHAKKwloZWxwCiAJICBUaGlzIHNlbGVjdHMgc3VwcG9ydCBmb3IgUm9j
-a2NoaXAgU29DIHNwZWNpZmljIGV4dGVuc2lvbnMKIAkgIGZvciB0aGUgY2RuIERQIGRyaXZlci4g
-SWYgeW91IHdhbnQgdG8gZW5hYmxlIERwIG9uCiAJICBSSzMzOTkgYmFzZWQgU29DLCB5b3Ugc2hv
-dWxkIHNlbGVjdCB0aGlzCiAJICBvcHRpb24uCiAKIGNvbmZpZyBST0NLQ0hJUF9EV19IRE1JCi0g
-ICAgICAgIGJvb2wgIlJvY2tjaGlwIHNwZWNpZmljIGV4dGVuc2lvbnMgZm9yIFN5bm9wc3lzIERX
-IEhETUkiCi0gICAgICAgIGhlbHAKKwlib29sICJSb2NrY2hpcCBzcGVjaWZpYyBleHRlbnNpb25z
-IGZvciBTeW5vcHN5cyBEVyBIRE1JIgorCWhlbHAKIAkgIFRoaXMgc2VsZWN0cyBzdXBwb3J0IGZv
-ciBSb2NrY2hpcCBTb0Mgc3BlY2lmaWMgZXh0ZW5zaW9ucwogCSAgZm9yIHRoZSBTeW5vcHN5cyBE
-ZXNpZ25XYXJlIEhETUkgZHJpdmVyLiBJZiB5b3Ugd2FudCB0bwogCSAgZW5hYmxlIEhETUkgb24g
-UkszMjg4IG9yIFJLMzM5OSBiYXNlZCBTb0MsIHlvdSBzaG91bGQgc2VsZWN0Ci0tIAoyLjE3LjEK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZl
-bCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xp
-c3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+Adjust indentation from spaces to tab (+optional two spaces) as in
+coding style with command like:
+	$ sed -e 's/^        /\t/' -i */Kconfig
+
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+---
+ drivers/soc/rockchip/Kconfig | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
+index b71b73bf5fc5..3e2057f22bbc 100644
+--- a/drivers/soc/rockchip/Kconfig
++++ b/drivers/soc/rockchip/Kconfig
+@@ -15,15 +15,15 @@ config ROCKCHIP_GRF
+ 	  to make some of them conform to expectations of the kernel.
+ 
+ config ROCKCHIP_PM_DOMAINS
+-        bool "Rockchip generic power domain"
+-        depends on PM
+-        select PM_GENERIC_DOMAINS
+-        help
+-          Say y here to enable power domain support.
+-          In order to meet high performance and low power requirements, a power
+-          management unit is designed or saving power when RK3288 in low power
+-          mode. The RK3288 PMU is dedicated for managing the power of the whole chip.
++	bool "Rockchip generic power domain"
++	depends on PM
++	select PM_GENERIC_DOMAINS
++	help
++	  Say y here to enable power domain support.
++	  In order to meet high performance and low power requirements, a power
++	  management unit is designed or saving power when RK3288 in low power
++	  mode. The RK3288 PMU is dedicated for managing the power of the whole chip.
+ 
+-          If unsure, say N.
++	  If unsure, say N.
+ 
+ endif
+-- 
+2.17.1
