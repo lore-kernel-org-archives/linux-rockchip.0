@@ -1,58 +1,58 @@
-From: Andrew Murray <andrew.murray@arm.com>
-Subject: Re: [PATCH v2 0/6] Raspberry Pi 4 PCIe support
-Date: Thu, 21 Nov 2019 12:18:05 +0000
-Message-ID: <20191121121804.GY43905@e119886-lin.cambridge.arm.com>
-References: <20191112155926.16476-1-nsaenzjulienne@suse.de>
- <20191119111848.GR43905@e119886-lin.cambridge.arm.com>
- <1b116fabe85a324e2d05a593d38811467f43fb91.camel@suse.de>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH v2 0/5] arm64: dts: rockchip: Add Rock Pi N10 support
+Date: Thu, 21 Nov 2019 19:44:40 +0530
+Message-ID: <20191121141445.28712-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1b116fabe85a324e2d05a593d38811467f43fb91.camel@suse.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Cc: devicetree@vger.kernel.org, f.fainelli@gmail.com, linux-rdma@vger.kernel.org, maz@kernel.org, phil@raspberrypi.org, linux-kernel@vger.kernel.org, jeremy.linton@arm.com, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org, mbrugger@suse.com, bcm-kernel-feedback-list@broadcom.com, wahrenst@gmx.net, james.quinlan@broadcom.com, linux-pci@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Akash Gajjar <akash@openedev.com>, Tom Cubie <tom@radxa.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Nov 19, 2019 at 12:49:24PM +0100, Nicolas Saenz Julienne wrote:
-> On Tue, 2019-11-19 at 11:18 +0000, Andrew Murray wrote:
-> > On Tue, Nov 12, 2019 at 04:59:19PM +0100, Nicolas Saenz Julienne wrote:
-> > > This series aims at providing support for Raspberry Pi 4's PCIe
-> > > controller, which is also shared with the Broadcom STB family of
-> > > devices.
-> > > 
-> > > There was a previous attempt to upstream this some years ago[1] but was
-> > > blocked as most STB PCIe integrations have a sparse DMA mapping[2] which
-> > > is something currently not supported by the kernel.  Luckily this is not
-> > > the case for the Raspberry Pi 4.
-> > > 
-> > > Note that the driver code is to be based on top of Rob Herring's series
-> > > simplifying inbound and outbound range parsing.
-> > > 
-> > > [1] https://patchwork.kernel.org/cover/10605933/
-> > > [2] https://patchwork.kernel.org/patch/10605957/
-> > > 
-> > 
-> > What happened to patch 3? I can't see it on the list or in patchwork?
-> 
-> For some reason the script I use to call get_maintainer.sh or git send-mail
-> failed to add linux-pci@vger.kernel.org and linux-kernel@vger.kernel.org as
-> recipients. I didn't do anything different between v1 and v2 as far as mailing
-> is concerned.
-> 
-> Nevertheless it's here: https://www.spinics.net/lists/arm-kernel/msg768461.html
-> and should be present in the linux-arm-kernel list.
-> 
-> I'll look in to it and make sure this doesn't happen in v3.
+Unlike, other Rock PI boards from radxa, Rock Pi N10 SBC is based
+on SOM + Carrier board combination.
 
-No problem.
+Rock Pi N10 is a Rockchip RK3399Pro based SBC, which has
+- VMARC RK3399Pro SOM (as per SMARC standard) from Vamrs.
+- Dalang carrier board from Radxa.
 
-Thanks,
+This series add initial support for Rock Pi N10 and fixes comments 
+from Heiko from v1[1].
 
-Andrew Murray
+patch 0001: dt-bindings for VMARC RK3399Pro SOM
 
-> 
-> Regards,
-> Nicolas
-> 
+patch 0002: VMARC RK3399Pro SOM dtsi support
+
+patch 0003: dt-bindings for Rock Pi N10
+
+patch 0004: Radxa Dalang carrier board dtsi support
+
+patch 0005: Rock Pi N10 dts support
+
+Tested basic peripherals and will all more in future patches.
+
+[1] https://patchwork.kernel.org/cover/11253649/
+
+Any inputs?
+Jagan.
+
+Jagan Teki (5):
+  dt-bindings: arm: rockchip: Add VMARC RK3399Pro SOM binding
+  arm64: dts: rockchip: Add VMARC RK3399Pro SOM initial support
+  dt-bindings: arm: rockchip: Add Rock Pi N10 binding
+  ARM: dts: rockchip: Add Radxa Dalang Carrier board
+  arm64: dts: rockchip: Add Radxa Rock Pi N10 initial support
+
+ .../devicetree/bindings/arm/rockchip.yaml     |  10 +
+ .../dts/rockchip-radxa-dalang-carrier.dtsi    |  81 +++++
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../dts/rockchip/rk3399pro-rock-pi-n10.dts    |  17 +
+ .../dts/rockchip/rk3399pro-vmarc-som.dtsi     | 333 ++++++++++++++++++
+ 5 files changed, 442 insertions(+)
+ create mode 100644 arch/arm/boot/dts/rockchip-radxa-dalang-carrier.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
+
+-- 
+2.18.0.321.gffc6fa0e3
