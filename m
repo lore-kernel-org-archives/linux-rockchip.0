@@ -1,68 +1,44 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v2 5/5] arm64: dts: rockchip: Add Radxa Rock Pi N10 initial support
-Date: Thu, 21 Nov 2019 19:44:45 +0530
-Message-ID: <20191121141445.28712-6-jagan@amarulasolutions.com>
-References: <20191121141445.28712-1-jagan@amarulasolutions.com>
+From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [BUG] rk3399-rockpro64 pcie synchronous external abort
+Date: Thu, 21 Nov 2019 20:02:50 -0500
+Message-ID: <CAMdYzYowLb-FRUxP_TC+4LFwYdvszq+mBvfXBiDTCqtbF0x5xg@mail.gmail.com>
+References: <CAMdYzYp7kQdMKzX2RQW0tY2P4Um=CNJW93RPquBmYATRGrxwng@mail.gmail.com>
+ <20191112022938.GA89741@google.com>
+ <CAMdYzYrYHtiEXwiKxwWcKSV7Re6dG4zTvkKtZxvso+fLBRYbPQ@mail.gmail.com>
+ <991e386e-4c4f-fcbd-89a1-1edd82f63ece@arm.com>
+ <CAMdYzYri-yroFtvVXdNZH=sNOM7RP_PBHVnmbHuAKmGBZ0GifA@mail.gmail.com>
+ <CAMdYzYrc-AJNpnqR6Xw9Np0wuUvS4-u+TCS2WEo78TfyEhCQKg@mail.gmail.com>
+ <CAMdYzYow8SuXb_8ow433O_+Wezxb-U08WDUiLxcTKh+1_zBzkQ@mail.gmail.com>
+ <CAMdYzYphu1vHEprfry52+vH9Hjp3ZddgY5hk4Xqk2b3v=DU80g@mail.gmail.com>
+ <2a381384-9d47-a7e2-679c-780950cd862d@rock-chips.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191121141445.28712-1-jagan@amarulasolutions.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Akash Gajjar <akash@openedev.com>, Tom Cubie <tom@radxa.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2a381384-9d47-a7e2-679c-780950cd862d-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Rock Pi N10 is a Rockchip RK3399Pro based SBC, which has
-- VMARC RK3399Pro SOM (as per SMARC standard) from Vamrs.
-- Compatible carrier board from Radxa.
+On Wed, Nov 20, 2019 at 9:05 PM Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>
+<snip>
+>
+> Not having too much time to follow up w/ upstream development, sorry.
+> I attach a patch based on Linux-next for debugging, but I don't know if
+> it could work as expected since I can't test it now. But at least it
+> shows what the problems were.
 
-VAMRC RK3399Pro SOM need to mount on top of radxa dalang
-carrier board for making Rock Pi N10 SBC.
-
-So, add initial support for Rock Pi N10 by including rk3399,
-rk3399pro vamrc-som and raxda dalang carrier board dtsi files.
-
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
----
-Changes for v2:
-- s/rockchip-radxa-carrierboard.dtsi/rockchip-radxa-dalang-carrier.dtsi
-
- arch/arm64/boot/dts/rockchip/Makefile           |  1 +
- .../boot/dts/rockchip/rk3399pro-rock-pi-n10.dts | 17 +++++++++++++++++
- 2 files changed, 18 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
-
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 48fb631d5451..433033b18170 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -36,3 +36,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock960.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire-excavator.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399pro-rock-pi-n10.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts b/arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
-new file mode 100644
-index 000000000000..b42f94179538
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
-@@ -0,0 +1,17 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd
-+ * Copyright (c) 2019 Radxa Limited
-+ * Copyright (c) 2019 Amarula Solutions(India)
-+ */
-+
-+/dts-v1/;
-+#include "rk3399.dtsi"
-+#include "rk3399-opp.dtsi"
-+#include "rk3399pro-vmarc-som.dtsi"
-+#include <arm/rockchip-radxa-dalang-carrier.dtsi>
-+
-+/ {
-+	model = "Radxa ROCK Pi N10";
-+	compatible = "radxa,rockpi-n10", "rockchip,rk3399pro";
-+};
--- 
-2.18.0.321.gffc6fa0e3
+Well it is certainly hideous, and does not compile cleanly (built-in
+complains, module is broken), but it finished scanning all buses.
+I'll do some more serious testing and get back to you with more results.
+Thanks!
