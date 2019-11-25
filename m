@@ -1,7 +1,7 @@
 From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [BUG] rk3399 fails to reboot correctly with PCIE device inserted
-Date: Mon, 25 Nov 2019 11:28:53 -0500
-Message-ID: <CAMdYzYrLX=z-OVoW9RVecjoYK1J8EfLQ=cV1aNUqPsXqiOU+2g@mail.gmail.com>
+Subject: [BUG] rk3399 rockpro64 fails to power off
+Date: Mon, 25 Nov 2019 11:34:49 -0500
+Message-ID: <CAMdYzYpi-wAsUu92gJUF3CMm7dDd8yFCAV-yDpuy=d7ZBGoZnA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -21,22 +21,18 @@ List-Id: linux-rockchip.vger.kernel.org
 
 Good Morning,
 
-Another issue I've come across while testing PCIE on the rockpro64.
-When a PCIE device is inserted into the board, and it enumerates
-successfully, the board will not reset.
-I've tried various states of u-boot-rockchip, u-boot-mainline, with
-both miniloader and TPL/SPL.
+Another issue I've come across with the rockpro64.
+When issuing a shutdown command, the board will halt, but never powers off.
 
-With miniloader and both variants of u-boot, if you attempt a reboot
-it never fires the "reboot: Restarting system" message.
-If you trigger a sysrq reboot at this stage, it will reboot, but fails
-to start up the two a72 cores and subsequently hangs a second later
-when it loads the first dma driver.
+While the rk808 is assigned as the rockchip,system-power-controller in
+the devicetree, it is not binding to the pm-poweroff command.
+This is due to the psci driver already binding to the pm-poweroff command.
 
-With TPL/SPL on mainline-u-boot (I can't get rockchip-u-boot to work
-with TPL/SPL), it fires the "reboot: Restarting system" message, but
-never reboots.
-sysrq does not function at this point.
-
-I believe the pcie controller is not being halted, and gets stuck in a
-loop with the two a72 cores.
+I have only managed to test this with the rockchip miniloader, both on
+rockchip-u-boot and mainline-u-boot, the behavior is the same.
+I'm not sure if this is a bootloader issue, atf issue, or psci driver
+misbehavior.
+As atf should be handling the psci command, it should be powering off
+the board, but I am unsure if it has the capability of doing so.
+If it does not, then the rk808 driver should be assigned to
+pm-poweroff, but it does not because psci already claimed it.
