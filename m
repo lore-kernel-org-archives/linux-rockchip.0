@@ -1,45 +1,82 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [RFC] rk3399 pcie move to designware driver
-Date: Tue, 26 Nov 2019 08:39:07 +0800
-Message-ID: <856be753-3f7f-2342-eecc-c48acd5a8be3@rock-chips.com>
-References: <CAMdYzYoXZpTYa_YJvPDcaEFde_7xc+=fnXsLb45=z_kDQbgkvQ@mail.gmail.com>
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Subject: [PATCH v3 0/7] Raspberry Pi 4 PCIe support
+Date: Tue, 26 Nov 2019 10:19:38 +0100
+Message-ID: <20191126091946.7970-1-nsaenzjulienne@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAMdYzYoXZpTYa_YJvPDcaEFde_7xc+=fnXsLb45=z_kDQbgkvQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+To: andrew.murray@arm.com, maz@kernel.org, linux-kernel@vger.kernel.org
+Cc: james.quinlan@broadcom.com, mbrugger@suse.com, f.fainelli@gmail.com, phil@raspberrypi.org, wahrenst@gmx.net, jeremy.linton@arm.com, linux-pci@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, Nicolas Saenz Julienne <nsaenzjulienne@suse.de>, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, devicetree@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-rdma@vger.kernel.org, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgrlnKggMjAxOS8xMS8yNiA0OjUyLCBQZXRlciBHZWlzIOWGmemBkzoKPiBHb29kIEFmdGVybm9v
-biwKPiAKPiBJIGFza2VkIHRoaXMgcXVlc3Rpb24gaW4gbXkgcGNpZSBidWcgcmVwb3J0LCBidXQg
-SSB0aGluayBpdCBnb3QgbG9zdAo+IGluIHRoZSBtZXNzIHNvIEkgd2lsbCBhc2sgaXQgc3RhbmRh
-bG9uZS4KPiBJIG5vdGljZWQgdGhhdCB0aGVyZSBpcyBhIGxvdCBvZiBjb2RlIG92ZXJsYXAgYmV0
-d2VlbiB0aGUgc2hhcmVkIGR3Ywo+IHBjaWUgZHJpdmVyIGFuZCB0aGUgcm9ja2NoaXAgZHJpdmVy
-Lgo+IElzIHRoZXJlIGEgcGFydGljdWxhciByZWFzb24gd2UgYXJlbid0IHVzaW5nIHRoZSBzaGFy
-ZWQgZHJpdmVyIGluc3RlYWQKPiBvZiByZWludmVudGluZyB0aGUgd2hlZWw/Cj4gCgpUaGF0J3Mg
-YmVjYXVzZSBxY29uIGFuZCB0ZWdyYSBkbyBiYXNlZCBvbiBkd2MgSVAgYW5kIGp1c3QgYWRkIHNv
-bWUKdmVuZG9yLXNwZWNpZmljIHJlZ2lzdGVycyBidXQgaXQncyB0b3RhbGx5IGRpZmZlcmVudCBj
-YXNlIGZvciByb2NrY2hpcCwKYXMgeW91IGhhdmUgbm90aWNlZCB0aGF0IHRoZSByZWdpc3RlcnMg
-ZG9uJ3QgbGluZSB1cCB3aXRoIGR3YywgdGhhdCdzCnNhaWQsIHRoZXkgYXJlIHRvdG9hbGx5IDIg
-SVBzIHdpdGggZGlmZmVyZW50IHJlZ2lzdGVyIGxheW91dC4gSXQncyBOT1QKdGhlIHJ1bGUgZm9y
-IGhvdyBsaW51eCBkcml2ZXIgd29yay4KCgo+IEkga25vdyB0aGF0IG91ciByZWdpc3RlcnMgZG9u
-J3Qgc2VlbSB0byBsaW5lIHVwIHdpdGggdGhlIGRlZmF1bHQgZHdjCj4gcmVnaXN0ZXJzLCBidXQg
-dGVncmEgYW5kIHFjb20gYm90aCBzZWVtIHRvIGltcGxlbWVudCBjdXN0b20gcmVnaXN0ZXJzLgo+
-IEkgc3RhcnRlZCB0cnlpbmcgdG8gd3JpdGUgYSBkd2MgbGF5ZXIgZHJpdmVyIGZvciB0aGUgcm9j
-a2NoaXAsIGJ1dCBhcwo+IEkgaGF2ZSB2ZXJ5IGxpdHRsZSBleHBlcmllbmNlIHdpdGggcGNpZSBJ
-IHdhcyBxdWlja2x5IG92ZXJ3aGVsbWVkLgo+IAo+IElzIHRoZXJlIGFueXRoaW5nIG91dHJpZ2h0
-IGJsb2NraW5nIHRoZSBtb3ZlIHRvIHRoZSBzaGFyZWQgZHJpdmVyPwo+IAo+IAo+IAoKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+This series aims at providing support for Raspberry Pi 4's PCIe
+controller, which is also shared with the Broadcom STB family of
+devices.
+
+There was a previous attempt to upstream this some years ago[1] but was
+blocked as most STB PCIe integrations have a sparse DMA mapping[2] which
+is something currently not supported by the kernel.  Luckily this is not
+the case for the Raspberry Pi 4.
+
+Note that the driver code is to be based on top of Rob Herring's series
+simplifying inbound and outbound range parsing.
+
+[1] https://patchwork.kernel.org/cover/10605933/
+[2] https://patchwork.kernel.org/patch/10605957/
+
+---
+
+Changes since v2:
+  - Redo register access in driver avoiding indirection while keeping
+    the naming intact
+  - Add patch editing ARM64's config
+  - Last MSI cleanups, notably removing MSIX flag
+  - Got rid of all _RB writes
+  - Got rid of all of_data
+  - Overall churn removal
+  - Address the rest of Andrew's comments
+
+Changes since v1:
+  - add generic rounddown/roundup_pow_two64() patch
+  - Add MAINTAINERS patch
+  - Fix Kconfig
+  - Cleanup probe, use up to date APIs, exit on MSI failure
+  - Get rid of linux,pci-domain and other unused constructs
+  - Use edge triggered setup for MSI
+  - Cleanup MSI implementation
+  - Fix multiple cosmetic issues
+  - Remove supend/resume code
+
+Jim Quinlan (3):
+  dt-bindings: PCI: Add bindings for brcmstb's PCIe device
+  PCI: brcmstb: add Broadcom STB PCIe host controller driver
+  PCI: brcmstb: add MSI capability
+
+Nicolas Saenz Julienne (4):
+  linux/log2.h: Add roundup/rounddown_pow_two64() family of functions
+  ARM: dts: bcm2711: Enable PCIe controller
+  MAINTAINERS: Add brcmstb PCIe controller
+  arm64: defconfig: Enable Broadcom's STB PCIe controller
+
+ .../bindings/pci/brcm,stb-pcie.yaml           |   97 ++
+ MAINTAINERS                                   |    4 +
+ arch/arm/boot/dts/bcm2711.dtsi                |   41 +
+ arch/arm64/configs/defconfig                  |    1 +
+ drivers/acpi/arm64/iort.c                     |    2 +-
+ drivers/net/ethernet/mellanox/mlx4/en_clock.c |    3 +-
+ drivers/of/device.c                           |    2 +-
+ drivers/pci/controller/Kconfig                |    9 +
+ drivers/pci/controller/Makefile               |    1 +
+ .../pci/controller/cadence/pcie-cadence-ep.c  |    7 +-
+ drivers/pci/controller/cadence/pcie-cadence.c |    7 +-
+ drivers/pci/controller/pcie-brcmstb.c         | 1012 +++++++++++++++++
+ drivers/pci/controller/pcie-rockchip-ep.c     |    9 +-
+ include/linux/log2.h                          |   52 +
+ kernel/dma/direct.c                           |    3 +-
+ 15 files changed, 1230 insertions(+), 20 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pci/brcm,stb-pcie.yaml
+ create mode 100644 drivers/pci/controller/pcie-brcmstb.c
+
+-- 
+2.24.0
