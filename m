@@ -1,11 +1,15 @@
 From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [RFC] rk3399 pcie move to designware driver
-Date: Mon, 25 Nov 2019 15:52:22 -0500
-Message-ID: <CAMdYzYoXZpTYa_YJvPDcaEFde_7xc+=fnXsLb45=z_kDQbgkvQ@mail.gmail.com>
+Subject: Re: [BUG] rk3399 fails to reboot correctly with PCIE device inserted
+Date: Mon, 25 Nov 2019 19:05:51 -0500
+Message-ID: <CAMdYzYoCzU4F66Hpdy6XBTWwWi+WmSo50R+sCSDEFOBKr84U1w@mail.gmail.com>
+References: <CAMdYzYrLX=z-OVoW9RVecjoYK1J8EfLQ=cV1aNUqPsXqiOU+2g@mail.gmail.com>
+ <2a5d91f1-033e-8acc-5b57-16ca77204a0b@arm.com>
+ <CAMdYzYpdW13roxwHxD5w=XLBiyASp+biMqP-n2+QD9cL5g_hvg@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAMdYzYpdW13roxwHxD5w=XLBiyASp+biMqP-n2+QD9cL5g_hvg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -15,22 +19,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Good Afternoon,
+On Mon, Nov 25, 2019 at 12:10 PM Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>
+> On Mon, Nov 25, 2019 at 11:52 AM Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org> wrote:
+> >
+> > Hi Peter,
+> >
+> > On 25/11/2019 4:28 pm, Peter Geis wrote:
+> > > Good Morning,
+> > >
+> > > Another issue I've come across while testing PCIE on the rockpro64.
+> > > When a PCIE device is inserted into the board, and it enumerates
+> > > successfully, the board will not reset.
+> > > I've tried various states of u-boot-rockchip, u-boot-mainline, with
+> > > both miniloader and TPL/SPL.
+> >
+> > In case it's relevant, what particular PCIe device(s) have you seen the
+> > issue with? FWIW I've been running a Samsung 960 Evo NVMe in my
+> > NanoPC-T4 with mainline kernels for months now and it's always rebooted
+> > flawlessly.
+> >
+> > Robin.
+>
+> Currently with a I350 NIC, but also observed with a pcie switch, and the GTX645.
+> The NIC works, while the other two didn't without the patch to hijack
+> the error handler.
+>
+> I am running the latest atf built from their github.
 
-I asked this question in my pcie bug report, but I think it got lost
-in the mess so I will ask it standalone.
-I noticed that there is a lot of code overlap between the shared dwc
-pcie driver and the rockchip driver.
-Is there a particular reason we aren't using the shared driver instead
-of reinventing the wheel?
+On closer examination, it isn't the pcie devices causing the reboot
+issues, the rk3399 just doesn't reboot.
+It would seem the trigger with miniloader was random enough that it
+appeared to be tied to my pcie testing.
+It happens 100% of the time with tpl/spl.
 
-I know that our registers don't seem to line up with the default dwc
-registers, but tegra and qcom both seem to implement custom registers.
-I started trying to write a dwc layer driver for the rockchip, but as
-I have very little experience with pcie I was quickly overwhelmed.
-
-Is there anything outright blocking the move to the shared driver?
+>
+> >
+> > > With miniloader and both variants of u-boot, if you attempt a reboot
+> > > it never fires the "reboot: Restarting system" message.
+> > > If you trigger a sysrq reboot at this stage, it will reboot, but fails
+> > > to start up the two a72 cores and subsequently hangs a second later
+> > > when it loads the first dma driver.
+> > >
+> > > With TPL/SPL on mainline-u-boot (I can't get rockchip-u-boot to work
+> > > with TPL/SPL), it fires the "reboot: Restarting system" message, but
+> > > never reboots.
+> > > sysrq does not function at this point.
+> > >
+> > > I believe the pcie controller is not being halted, and gets stuck in a
+> > > loop with the two a72 cores.
+> > >
+> > > _______________________________________________
+> > > Linux-rockchip mailing list
+> > > Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> > > http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> > >
