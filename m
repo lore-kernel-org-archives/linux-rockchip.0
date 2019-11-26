@@ -1,13 +1,13 @@
-From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [BUG] rk3399 rockpro64 fails to power off
-Date: Mon, 25 Nov 2019 19:06:41 -0500
-Message-ID: <CAMdYzYoCxdeW-eNksDC1Gss0it4_4j+xbHbXFhtJ0reR44Ezpw@mail.gmail.com>
-References: <CAMdYzYpi-wAsUu92gJUF3CMm7dDd8yFCAV-yDpuy=d7ZBGoZnA@mail.gmail.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [RFC] rk3399 pcie move to designware driver
+Date: Tue, 26 Nov 2019 08:39:07 +0800
+Message-ID: <856be753-3f7f-2342-eecc-c48acd5a8be3@rock-chips.com>
+References: <CAMdYzYoXZpTYa_YJvPDcaEFde_7xc+=fnXsLb45=z_kDQbgkvQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAMdYzYpi-wAsUu92gJUF3CMm7dDd8yFCAV-yDpuy=d7ZBGoZnA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <CAMdYzYoXZpTYa_YJvPDcaEFde_7xc+=fnXsLb45=z_kDQbgkvQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,29 +17,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Nov 25, 2019 at 11:34 AM Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->
-> Good Morning,
->
-> Another issue I've come across with the rockpro64.
-> When issuing a shutdown command, the board will halt, but never powers off.
->
-> While the rk808 is assigned as the rockchip,system-power-controller in
-> the devicetree, it is not binding to the pm-poweroff command.
-> This is due to the psci driver already binding to the pm-poweroff command.
->
-> I have only managed to test this with the rockchip miniloader, both on
-> rockchip-u-boot and mainline-u-boot, the behavior is the same.
-> I'm not sure if this is a bootloader issue, atf issue, or psci driver
-> misbehavior.
-> As atf should be handling the psci command, it should be powering off
-> the board, but I am unsure if it has the capability of doing so.
-> If it does not, then the rk808 driver should be assigned to
-> pm-poweroff, but it does not because psci already claimed it.
-
-Confirmed the issue also occurs with tpl/spl mainline u-boot.
-I'm running the latest atf from the atf github repository.
+CgrlnKggMjAxOS8xMS8yNiA0OjUyLCBQZXRlciBHZWlzIOWGmemBkzoKPiBHb29kIEFmdGVybm9v
+biwKPiAKPiBJIGFza2VkIHRoaXMgcXVlc3Rpb24gaW4gbXkgcGNpZSBidWcgcmVwb3J0LCBidXQg
+SSB0aGluayBpdCBnb3QgbG9zdAo+IGluIHRoZSBtZXNzIHNvIEkgd2lsbCBhc2sgaXQgc3RhbmRh
+bG9uZS4KPiBJIG5vdGljZWQgdGhhdCB0aGVyZSBpcyBhIGxvdCBvZiBjb2RlIG92ZXJsYXAgYmV0
+d2VlbiB0aGUgc2hhcmVkIGR3Ywo+IHBjaWUgZHJpdmVyIGFuZCB0aGUgcm9ja2NoaXAgZHJpdmVy
+Lgo+IElzIHRoZXJlIGEgcGFydGljdWxhciByZWFzb24gd2UgYXJlbid0IHVzaW5nIHRoZSBzaGFy
+ZWQgZHJpdmVyIGluc3RlYWQKPiBvZiByZWludmVudGluZyB0aGUgd2hlZWw/Cj4gCgpUaGF0J3Mg
+YmVjYXVzZSBxY29uIGFuZCB0ZWdyYSBkbyBiYXNlZCBvbiBkd2MgSVAgYW5kIGp1c3QgYWRkIHNv
+bWUKdmVuZG9yLXNwZWNpZmljIHJlZ2lzdGVycyBidXQgaXQncyB0b3RhbGx5IGRpZmZlcmVudCBj
+YXNlIGZvciByb2NrY2hpcCwKYXMgeW91IGhhdmUgbm90aWNlZCB0aGF0IHRoZSByZWdpc3RlcnMg
+ZG9uJ3QgbGluZSB1cCB3aXRoIGR3YywgdGhhdCdzCnNhaWQsIHRoZXkgYXJlIHRvdG9hbGx5IDIg
+SVBzIHdpdGggZGlmZmVyZW50IHJlZ2lzdGVyIGxheW91dC4gSXQncyBOT1QKdGhlIHJ1bGUgZm9y
+IGhvdyBsaW51eCBkcml2ZXIgd29yay4KCgo+IEkga25vdyB0aGF0IG91ciByZWdpc3RlcnMgZG9u
+J3Qgc2VlbSB0byBsaW5lIHVwIHdpdGggdGhlIGRlZmF1bHQgZHdjCj4gcmVnaXN0ZXJzLCBidXQg
+dGVncmEgYW5kIHFjb20gYm90aCBzZWVtIHRvIGltcGxlbWVudCBjdXN0b20gcmVnaXN0ZXJzLgo+
+IEkgc3RhcnRlZCB0cnlpbmcgdG8gd3JpdGUgYSBkd2MgbGF5ZXIgZHJpdmVyIGZvciB0aGUgcm9j
+a2NoaXAsIGJ1dCBhcwo+IEkgaGF2ZSB2ZXJ5IGxpdHRsZSBleHBlcmllbmNlIHdpdGggcGNpZSBJ
+IHdhcyBxdWlja2x5IG92ZXJ3aGVsbWVkLgo+IAo+IElzIHRoZXJlIGFueXRoaW5nIG91dHJpZ2h0
+IGJsb2NraW5nIHRoZSBtb3ZlIHRvIHRoZSBzaGFyZWQgZHJpdmVyPwo+IAo+IAo+IAoKCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
+cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
