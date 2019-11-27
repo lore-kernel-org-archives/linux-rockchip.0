@@ -1,14 +1,14 @@
 From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
 Subject: Re: [PATCH 2/5] pci: endpoint: add support to handle multiple base
  for mapping outbound memory
-Date: Wed, 27 Nov 2019 21:21:29 +0000
-Message-ID: <CA+V-a8tAk0iLNxN+ZgKyf-chLY2s4C-ajpJKeEr-B8Ajn1MkJQ@mail.gmail.com>
+Date: Wed, 27 Nov 2019 21:28:14 +0000
+Message-ID: <CA+V-a8uNQKVYHk-D3Q6ZftE9q3NfExXJu1vCuuGTSYcwK9xiNw@mail.gmail.com>
 References: <20191106193609.19645-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
- <20191106193609.19645-3-prabhakar.mahadev-lad.rj@bp.renesas.com> <8564ee76-1da6-9b7c-01f2-7cda0cd3b3dc@ti.com>
+ <20191106193609.19645-3-prabhakar.mahadev-lad.rj@bp.renesas.com> <51563ddf-381f-3290-d9c0-82eb23aaa674@ti.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <8564ee76-1da6-9b7c-01f2-7cda0cd3b3dc@ti.com>
+In-Reply-To: <51563ddf-381f-3290-d9c0-82eb23aaa674@ti.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Kishon Vijay Abraham I <kishon@ti.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-pci <linux-pci@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrew Murray <andrew.murray@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>Linux-Renesas <lin>
@@ -16,9 +16,7 @@ List-Id: linux-rockchip.vger.kernel.org
 
 Hi Kishon,
 
-Thank you for the review.
-
-On Wed, Nov 27, 2019 at 5:15 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
+On Wed, Nov 27, 2019 at 6:06 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
 >
 > Hi Prabhakar,
 >
@@ -31,6 +29,42 @@ On Wed, Nov 27, 2019 at 5:15 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
 > > endpoint framework. In case of multiple memory regions only chunk
 > > or complete region can be mapped and this window needs to be
 > > passed to the controller driver.
+>
+> Wouldn't this result in lot of unused address and exhausting the memory regions
+> quickly? I think we could have a "type" associated with each of these regions
+> and smaller allocations could use one "type" and larger allocation could use a
+> different "type"? For instance we allocate memory regions for MSI interrupt and
+> for data transfer. We could use smaller allocations for MSI and larger
+> allocations for data transfers.
+>
+> We could also extend the "type" for certain special requirements. For instance
+> I've seen platforms which have dedicated address space for high priority data
+> transfers (uses higher virtual channel numbers) and dedicated address space for
+> low priority data transfers (uses lower virtual channel numbers).
+>
+> Here too we could give a special flag or type for higher priority address
+> regions and different type for lower priority address. While allocating, the
+> function drivers should provide a flag specifying the region where memory
+> should be allocated.
+>
+agreed but in this controller if chunk is allocated from the window
+this cannot be re-used
+for further allocations, I haven't come across a where a window could
+be used with multiple
+chunks being allocated. so as you suggest I could extend the type to
+have additional flag
+which would indicate if window can be used for multiple chunk allocations.
+
+> Can you add flags in struct pci_epc_mem_window and see how that comes out?
+>
+sure will do that.
+
+Cheers,
+--Prabhakar
+
+> Thanks
+> Kishon
+>
 > >
 > > Signed-off-by: Lad, Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
 > > Cc: <linux-rockchip@lists.infradead.org>
@@ -386,10 +420,6 @@ On Wed, Nov 27, 2019 at 5:15 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
 > >   * @phys_base: the physical address of the base
 > > - * @size: the size of the address space
 > > + * @num_windows: number of windows device supports
->
-> struct pci_epc_mem_window is missing here.
-oops my bad will fix that.
-
 > >   * @page_size: size of each page
 > >   *
 > >   * Invoke to initialize the pci_epc_mem structure used by the
@@ -585,13 +615,179 @@ oops my bad will fix that.
 > >       size = ALIGN(size, mem->page_size);
 > > +     if (size > (mem->window.size - mem->window.map_size))
 > > +             return NULL;
->
-> Assume I have two mem regions, first region is of size 128MB and the second
-> region is of size 4GB. If there is a allocation request for 4GB, will the
-> allocation succeed?
->
-yes it would succeed, the pci_epc_find_best_fit_window() would get the
-corresponding window.
-
-Cheers,
---Prabhakar Lad
+> > +     page_shift = ilog2(mem->page_size);
+> >       order = pci_epc_mem_get_order(mem, size);
+> >
+> >       pageno = bitmap_find_free_region(mem->bitmap, mem->pages, order);
+> >       if (pageno < 0)
+> >               return NULL;
+> >
+> > -     *phys_addr = mem->phys_base + ((phys_addr_t)pageno << page_shift);
+> > +     *phys_addr = mem->window.phys_base + (pageno << page_shift);
+> >       virt_addr = ioremap(*phys_addr, size);
+> > -     if (!virt_addr)
+> > +     if (!virt_addr) {
+> >               bitmap_release_region(mem->bitmap, pageno, order);
+> > +     } else {
+> > +             mem->window.map_size += size;
+> > +             *window = best_fit;
+> > +     }
+> >
+> >       return virt_addr;
+> >  }
+> >  EXPORT_SYMBOL_GPL(pci_epc_mem_alloc_addr);
+> >
+> > +static int pci_epc_get_matching_window(struct pci_epc *epc,
+> > +                                    phys_addr_t phys_addr)
+> > +{
+> > +     struct pci_epc_mem *mem;
+> > +     int i;
+> > +
+> > +     for (i = 0; i < epc->mem_windows; i++) {
+> > +             mem = epc->mem[i];
+> > +
+> > +             if (mem->window.phys_base == phys_addr)
+> > +                     return i;
+> > +     }
+> > +
+> > +     return -EINVAL;
+> > +}
+> > +
+> >  /**
+> >   * pci_epc_mem_free_addr() - free the allocated memory address
+> >   * @epc: the EPC device on which memory was allocated
+> > @@ -155,16 +254,26 @@ EXPORT_SYMBOL_GPL(pci_epc_mem_alloc_addr);
+> >  void pci_epc_mem_free_addr(struct pci_epc *epc, phys_addr_t phys_addr,
+> >                          void __iomem *virt_addr, size_t size)
+> >  {
+> > +     struct pci_epc_mem *mem;
+> > +     unsigned int page_shift;
+> > +     int window = 0;
+> >       int pageno;
+> > -     struct pci_epc_mem *mem = epc->mem;
+> > -     unsigned int page_shift = ilog2(mem->page_size);
+> >       int order;
+> >
+> > +     if (epc->mem_windows > 1) {
+> > +             window = pci_epc_get_matching_window(epc, phys_addr);
+> > +             if (window < 0)
+> > +                     return;
+> > +     }
+> > +
+> > +     mem = epc->mem[window];
+> > +     page_shift = ilog2(mem->page_size);
+> >       iounmap(virt_addr);
+> > -     pageno = (phys_addr - mem->phys_base) >> page_shift;
+> > +     pageno = (phys_addr - mem->window.phys_base) >> page_shift;
+> >       size = ALIGN(size, mem->page_size);
+> >       order = pci_epc_mem_get_order(mem, size);
+> >       bitmap_release_region(mem->bitmap, pageno, order);
+> > +     mem->window.map_size -= size;
+> >  }
+> >  EXPORT_SYMBOL_GPL(pci_epc_mem_free_addr);
+> >
+> > diff --git a/include/linux/pci-epc.h b/include/linux/pci-epc.h
+> > index 56f1846b9d39..5e86d22dd5c5 100644
+> > --- a/include/linux/pci-epc.h
+> > +++ b/include/linux/pci-epc.h
+> > @@ -48,7 +48,8 @@ struct pci_epc_ops {
+> >       void    (*clear_bar)(struct pci_epc *epc, u8 func_no,
+> >                            struct pci_epf_bar *epf_bar);
+> >       int     (*map_addr)(struct pci_epc *epc, u8 func_no,
+> > -                         phys_addr_t addr, u64 pci_addr, size_t size);
+> > +                         phys_addr_t addr, int window,
+> > +                         u64 pci_addr, size_t size);
+> >       void    (*unmap_addr)(struct pci_epc *epc, u8 func_no,
+> >                             phys_addr_t addr);
+> >       int     (*set_msi)(struct pci_epc *epc, u8 func_no, u8 interrupts);
+> > @@ -64,17 +65,28 @@ struct pci_epc_ops {
+> >       struct module *owner;
+> >  };
+> >
+> > +#define PCI_EPC_DEFAULT_WINDOW               0
+> > +
+> > +/**
+> > + * struct pci_epc_mem_window - address window of the endpoint controller
+> > + * @phys_base: physical base address of the PCI address window
+> > + * @size: the size of the PCI address window
+> > + */
+> > +struct pci_epc_mem_window {
+> > +     phys_addr_t     phys_base;
+> > +     size_t          size;
+> > +     size_t          map_size;
+> > +};
+> > +
+> >  /**
+> >   * struct pci_epc_mem - address space of the endpoint controller
+> > - * @phys_base: physical base address of the PCI address space
+> > - * @size: the size of the PCI address space
+> > + * @window: address window of the endpoint controller
+> >   * @bitmap: bitmap to manage the PCI address space
+> > - * @pages: number of bits representing the address region
+> >   * @page_size: size of each page
+> > + * @pages: number of bits representing the address region
+> >   */
+> >  struct pci_epc_mem {
+> > -     phys_addr_t     phys_base;
+> > -     size_t          size;
+> > +     struct pci_epc_mem_window window;
+> >       unsigned long   *bitmap;
+> >       size_t          page_size;
+> >       int             pages;
+> > @@ -85,7 +97,8 @@ struct pci_epc_mem {
+> >   * @dev: PCI EPC device
+> >   * @pci_epf: list of endpoint functions present in this EPC device
+> >   * @ops: function pointers for performing endpoint operations
+> > - * @mem: address space of the endpoint controller
+> > + * @mem: array of address space of the endpoint controller
+> > + * @mem_windows: number of windows supported by device
+> >   * @max_functions: max number of functions that can be configured in this EPC
+> >   * @group: configfs group representing the PCI EPC device
+> >   * @lock: spinlock to protect pci_epc ops
+> > @@ -94,7 +107,8 @@ struct pci_epc {
+> >       struct device                   dev;
+> >       struct list_head                pci_epf;
+> >       const struct pci_epc_ops        *ops;
+> > -     struct pci_epc_mem              *mem;
+> > +     struct pci_epc_mem              **mem;
+> > +     int                             mem_windows;
+> >       u8                              max_functions;
+> >       struct config_group             *group;
+> >       /* spinlock to protect against concurrent access of EP controller */
+> > @@ -128,8 +142,8 @@ struct pci_epc_features {
+> >  #define devm_pci_epc_create(dev, ops)    \
+> >               __devm_pci_epc_create((dev), (ops), THIS_MODULE)
+> >
+> > -#define pci_epc_mem_init(epc, phys_addr, size)       \
+> > -             __pci_epc_mem_init((epc), (phys_addr), (size), PAGE_SIZE)
+> > +#define pci_epc_mem_init(epc, windows, num_windows)  \
+> > +             __pci_epc_mem_init((epc), windows, num_windows, PAGE_SIZE)
+> >
+> >  static inline void epc_set_drvdata(struct pci_epc *epc, void *data)
+> >  {
+> > @@ -159,7 +173,7 @@ int pci_epc_set_bar(struct pci_epc *epc, u8 func_no,
+> >  void pci_epc_clear_bar(struct pci_epc *epc, u8 func_no,
+> >                      struct pci_epf_bar *epf_bar);
+> >  int pci_epc_map_addr(struct pci_epc *epc, u8 func_no,
+> > -                  phys_addr_t phys_addr,
+> > +                  phys_addr_t phys_addr, int window,
+> >                    u64 pci_addr, size_t size);
+> >  void pci_epc_unmap_addr(struct pci_epc *epc, u8 func_no,
+> >                       phys_addr_t phys_addr);
+> > @@ -178,11 +192,12 @@ unsigned int pci_epc_get_first_free_bar(const struct pci_epc_features
+> >  struct pci_epc *pci_epc_get(const char *epc_name);
+> >  void pci_epc_put(struct pci_epc *epc);
+> >
+> > -int __pci_epc_mem_init(struct pci_epc *epc, phys_addr_t phys_addr, size_t size,
+> > -                    size_t page_size);
+> > +int __pci_epc_mem_init(struct pci_epc *epc, struct pci_epc_mem_window *window,
+> > +                    int num_windows, size_t page_size);
+> >  void pci_epc_mem_exit(struct pci_epc *epc);
+> >  void __iomem *pci_epc_mem_alloc_addr(struct pci_epc *epc,
+> > -                                  phys_addr_t *phys_addr, size_t size);
+> > +                                  phys_addr_t *phys_addr,
+> > +                                  int *window, size_t size);
+> >  void pci_epc_mem_free_addr(struct pci_epc *epc, phys_addr_t phys_addr,
+> >                          void __iomem *virt_addr, size_t size);
+> >  #endif /* __LINUX_PCI_EPC_H */
+> >
