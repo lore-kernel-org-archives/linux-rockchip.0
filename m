@@ -1,90 +1,63 @@
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Subject: Re: [PATCH 4/8] drm/rockchip: Use
- drm_gem_fb_create_with_dirty
-Date: Wed, 27 Nov 2019 12:45:09 +0100
-Message-ID: <015dfb9f-0508-379d-468a-24515e621fb4@collabora.com>
-References: <20191115092120.4445-1-daniel.vetter@ffwll.ch>
- <20191115092120.4445-5-daniel.vetter@ffwll.ch>
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Subject: Re: [PATCH v3 0/7] Raspberry Pi 4 PCIe support
+Date: Wed, 27 Nov 2019 18:28:35 +0100
+Message-ID: <eccd6a23d8dbc577058c538fa4ef79ba376cd04a.camel@suse.de>
+References: <20191126215020.GA191414@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <20191115092120.4445-5-daniel.vetter@ffwll.ch>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel.vetter@ffwll.ch>, DRI Development <dri-devel@lists.freedesktop.org>
-Cc: linux-rockchip@lists.infradead.org, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel.vetter@intel.com>
+Content-Type: multipart/signed; micalg="pgp-sha256";
+        protocol="application/pgp-signature"; boundary="=-LD8Ga7xd6xkOxp2WErAx"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191126215020.GA191414@google.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: andrew.murray@arm.com, maz@kernel.org, linux-kernel@vger.kernel.org, james.quinlan@broadcom.com, mbrugger@suse.com, f.fainelli@gmail.com, phil@raspberrypi.org, wahrenst@gmx.net, jeremy.linton@arm.com, linux-pci@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, devicetree@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-rdma@vger.kernel.org, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGFuaWVsLAoKVyBkbml1IDE1LjExLjIwMTkgb8KgMTA6MjEsIERhbmllbCBWZXR0ZXIgcGlz
-emU6Cj4gSWYgcm9ja2NoaXAgd291bGQgc3dpdGNoIG92ZXIgdG8gdGhlIGdlbmVyaWMgZmJkZXYg
-c2V0dXAgd2UgY291bGQKPiBncmFiYWdlIGNvbGxlY3QgZXZlbiBtb3JlIG9mIGFsbCB0aGlzIGNv
-ZGUgKGFsbCBvZiB0aGUgcmVtYWluaW5nIGZiCj4gaGFuZGxpbmcgY29kZSByZWFsbHkpLgo+IAo+
-IFNpZ25lZC1vZmYtYnk6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJAaW50ZWwuY29tPgo+
-IENjOiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgo+IENjOiAiSGVpa28gU3TDvGJu
-ZXIiIDxoZWlrb0BzbnRlY2guZGU+Cj4gQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwo+IENjOiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCgpJIGNhcnJp
-ZWQgb3V0IGxpbWl0ZWQgdGVzdGluZyB3aXRoIG1vZGV0ZXN0IG9uIGEgcm9ja3BpNCwKdXNpbmcg
-dGhpcyBjb21tYW5kOgoKZm9yIGkgaW4gYC4vbW9kZXRlc3QgLWMgfCBncmVwIF5bWzpzcGFjZTpd
-XSpbMS05XVswLTldKnhbMS05XVswLTldKiB8IGN1dCAtZjMgCi1kIiAiIHwgZ3JlcCAtdiBpJCB8
-IHVuaXFgOyBkbyAuL21vZGV0ZXN0IC1zNDE6JGkgLUM7IGRvbmUKCkFsbCBtb2RlcyAoZXhjbHVk
-aW5nIHRob3NlIHdob3NlIG5hbWVzIGVuZCB3aXRoIGFuICJpIiwgZS5nLiAxOTIweDEwODBpKQpw
-cm9kdWNlZCBzZW5zaWJsZSBvdXRwdXQgd2hpY2ggc2VlbXMgbm8gZGlmZmVyZW50IHRvIHdoYXQg
-aXMgcHJvZHVjZWQKd2hlbiB0aGUgcGF0Y2ggaW4gcXVlc3Rpb24gaXMgbm90IGFwcGxpZWQuCgpJ
-ZiBzdWNoIGEgdGVzdCBzY29wZSBpcyBhY2NlcHRhYmxlLCB5b3UgY2FuIGFkZCBteQoKVGVzdGVk
-LWJ5OiBBbmRyemVqIFBpZXRyYXNpZXdpY3ogPGFuZHJ6ZWoucEBjb2xsYWJvcmEuY29tPgoKPiAt
-LS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYyB8IDU0ICst
-LS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwg
-NTMgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fZmIuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fZmIuYwo+IGluZGV4IGNhMDEyMzRjMDM3Yy4uMDgxZGJkYWEwYjA3IDEwMDY0NAo+IC0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+ICsrKyBiL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+IEBAIC01Myw2NCArNTMsMTIg
-QEAgcm9ja2NoaXBfZmJfYWxsb2Moc3RydWN0IGRybV9kZXZpY2UgKmRldiwgY29uc3Qgc3RydWN0
-IGRybV9tb2RlX2ZiX2NtZDIgKm1vZGVfY20KPiAgIAlyZXR1cm4gZmI7Cj4gICB9Cj4gICAKPiAt
-c3RhdGljIHN0cnVjdCBkcm1fZnJhbWVidWZmZXIgKgo+IC1yb2NrY2hpcF91c2VyX2ZiX2NyZWF0
-ZShzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LCBzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGVfcHJpdiwKPiAt
-CQkJY29uc3Qgc3RydWN0IGRybV9tb2RlX2ZiX2NtZDIgKm1vZGVfY21kKQo+IC17Cj4gLQljb25z
-dCBzdHJ1Y3QgZHJtX2Zvcm1hdF9pbmZvICppbmZvID0gZHJtX2dldF9mb3JtYXRfaW5mbyhkZXYs
-Cj4gLQkJCQkJCQkJIG1vZGVfY21kKTsKPiAtCXN0cnVjdCBkcm1fZnJhbWVidWZmZXIgKmZiOwo+
-IC0Jc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmpzW1JPQ0tDSElQX01BWF9GQl9CVUZGRVJdOwo+
-IC0Jc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmo7Cj4gLQlpbnQgbnVtX3BsYW5lcyA9IG1pbl90
-KGludCwgaW5mby0+bnVtX3BsYW5lcywgUk9DS0NISVBfTUFYX0ZCX0JVRkZFUik7Cj4gLQlpbnQg
-cmV0Owo+IC0JaW50IGk7Cj4gLQo+IC0JZm9yIChpID0gMDsgaSA8IG51bV9wbGFuZXM7IGkrKykg
-ewo+IC0JCXVuc2lnbmVkIGludCB3aWR0aCA9IG1vZGVfY21kLT53aWR0aCAvIChpID8gaW5mby0+
-aHN1YiA6IDEpOwo+IC0JCXVuc2lnbmVkIGludCBoZWlnaHQgPSBtb2RlX2NtZC0+aGVpZ2h0IC8g
-KGkgPyBpbmZvLT52c3ViIDogMSk7Cj4gLQkJdW5zaWduZWQgaW50IG1pbl9zaXplOwo+IC0KPiAt
-CQlvYmogPSBkcm1fZ2VtX29iamVjdF9sb29rdXAoZmlsZV9wcml2LCBtb2RlX2NtZC0+aGFuZGxl
-c1tpXSk7Cj4gLQkJaWYgKCFvYmopIHsKPiAtCQkJRFJNX0RFVl9FUlJPUihkZXYtPmRldiwKPiAt
-CQkJCSAgICAgICJGYWlsZWQgdG8gbG9va3VwIEdFTSBvYmplY3RcbiIpOwo+IC0JCQlyZXQgPSAt
-RU5YSU87Cj4gLQkJCWdvdG8gZXJyX2dlbV9vYmplY3RfdW5yZWZlcmVuY2U7Cj4gLQkJfQo+IC0K
-PiAtCQltaW5fc2l6ZSA9IChoZWlnaHQgLSAxKSAqIG1vZGVfY21kLT5waXRjaGVzW2ldICsKPiAt
-CQkJbW9kZV9jbWQtPm9mZnNldHNbaV0gKwo+IC0JCQl3aWR0aCAqIGluZm8tPmNwcFtpXTsKPiAt
-Cj4gLQkJaWYgKG9iai0+c2l6ZSA8IG1pbl9zaXplKSB7Cj4gLQkJCWRybV9nZW1fb2JqZWN0X3B1
-dF91bmxvY2tlZChvYmopOwo+IC0JCQlyZXQgPSAtRUlOVkFMOwo+IC0JCQlnb3RvIGVycl9nZW1f
-b2JqZWN0X3VucmVmZXJlbmNlOwo+IC0JCX0KPiAtCQlvYmpzW2ldID0gb2JqOwo+IC0JfQo+IC0K
-PiAtCWZiID0gcm9ja2NoaXBfZmJfYWxsb2MoZGV2LCBtb2RlX2NtZCwgb2JqcywgaSk7Cj4gLQlp
-ZiAoSVNfRVJSKGZiKSkgewo+IC0JCXJldCA9IFBUUl9FUlIoZmIpOwo+IC0JCWdvdG8gZXJyX2dl
-bV9vYmplY3RfdW5yZWZlcmVuY2U7Cj4gLQl9Cj4gLQo+IC0JcmV0dXJuIGZiOwo+IC0KPiAtZXJy
-X2dlbV9vYmplY3RfdW5yZWZlcmVuY2U6Cj4gLQlmb3IgKGktLTsgaSA+PSAwOyBpLS0pCj4gLQkJ
-ZHJtX2dlbV9vYmplY3RfcHV0X3VubG9ja2VkKG9ianNbaV0pOwo+IC0JcmV0dXJuIEVSUl9QVFIo
-cmV0KTsKPiAtfQo+IC0KPiAgIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX21vZGVfY29uZmlnX2hl
-bHBlcl9mdW5jcyByb2NrY2hpcF9tb2RlX2NvbmZpZ19oZWxwZXJzID0gewo+ICAgCS5hdG9taWNf
-Y29tbWl0X3RhaWwgPSBkcm1fYXRvbWljX2hlbHBlcl9jb21taXRfdGFpbF9ycG0sCj4gICB9Owo+
-ICAgCj4gICBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9tb2RlX2NvbmZpZ19mdW5jcyByb2NrY2hp
-cF9kcm1fbW9kZV9jb25maWdfZnVuY3MgPSB7Cj4gLQkuZmJfY3JlYXRlID0gcm9ja2NoaXBfdXNl
-cl9mYl9jcmVhdGUsCj4gKwkuZmJfY3JlYXRlID0gZHJtX2dlbV9mYl9jcmVhdGUsCj4gICAJLm91
-dHB1dF9wb2xsX2NoYW5nZWQgPSBkcm1fZmJfaGVscGVyX291dHB1dF9wb2xsX2NoYW5nZWQsCj4g
-ICAJLmF0b21pY19jaGVjayA9IGRybV9hdG9taWNfaGVscGVyX2NoZWNrLAo+ICAgCS5hdG9taWNf
-Y29tbWl0ID0gZHJtX2F0b21pY19oZWxwZXJfY29tbWl0LAo+IAoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtZ2Z4IG1haWxpbmcgbGlzdApJbnRl
-bC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vaW50ZWwtZ2Z4
+
+--=-LD8Ga7xd6xkOxp2WErAx
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Bjorn,
+
+On Tue, 2019-11-26 at 15:50 -0600, Bjorn Helgaas wrote:
+> On Tue, Nov 26, 2019 at 10:19:38AM +0100, Nicolas Saenz Julienne wrote:
+> > This series aims at providing support for Raspberry Pi 4's PCIe
+> > controller, which is also shared with the Broadcom STB family of
+> > devices.
+> > Jim Quinlan (3):
+> >   dt-bindings: PCI: Add bindings for brcmstb's PCIe device
+> >   PCI: brcmstb: add Broadcom STB PCIe host controller driver
+> >   PCI: brcmstb: add MSI capability
+>=20
+> Please update these subjects to match the others, i.e., capitalize
+> "Add".  Also, I think "Add MSI capability" really means "Add support
+> for MSI ..."; in PCIe terms the "MSI Capability" is a structure in
+> config space and it's there whether the OS supports it or not.
+>=20
+> No need to repost just for this.
+
+Noted, I'll update them.
+
+Regards,
+Nicolas
+
+
+--=-LD8Ga7xd6xkOxp2WErAx
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl3eskMACgkQlfZmHno8
+x/60Swf/Rwz7o3DibuLSdZZBrCQ9sK0AToOIKPKSSquZNgW7MKr1ByJjnNAS9/4r
+9N3namc6tZJcCE7C+QKKVcikyMR0ENUSovq0hrCA6WCiUipefFyD22H/WEtsWvHf
+1QcGifBBN6mjLDS1DSnBTPiDAVqWm5w1celUlauXFZAZc5YQftSwRQRVkZui2q9H
+aljeQuVsPZ+CfdOFgqo1xlwJvk+BbfDIxgQ+cg4du/tS3enlrrMspevtkEw/awv9
+aZl62mLNRTUPlsHW07akov+GIKROrknLnBTqiCKLg0Ei7J3dTo3Su/wzSyZQw7H4
+hOq7QZ/9Qezc3LUiCtuauS3v8a6ang==
+=dKU6
+-----END PGP SIGNATURE-----
+
+--=-LD8Ga7xd6xkOxp2WErAx--
