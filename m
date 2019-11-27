@@ -1,99 +1,59 @@
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Subject: Re: [PATCH 4/8] drm/rockchip: Use drm_gem_fb_create_with_dirty
-Date: Wed, 27 Nov 2019 18:33:07 +0100
-Message-ID: <023053cb-9f72-c29a-ec2f-cf7532ff5c43@collabora.com>
-References: <20191115092120.4445-1-daniel.vetter@ffwll.ch>
- <20191115092120.4445-5-daniel.vetter@ffwll.ch>
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Subject: Re: [PATCH v3 1/7] linux/log2.h: Add roundup/rounddown_pow_two64()
+ family of functions
+Date: Wed, 27 Nov 2019 18:36:43 +0100
+Message-ID: <4e77aa14b0fd1150a186d5d6e540f115beb7cd2f.camel@suse.de>
+References: <20191126091946.7970-1-nsaenzjulienne@suse.de>
+         <20191126091946.7970-2-nsaenzjulienne@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191115092120.4445-5-daniel.vetter@ffwll.ch>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel.vetter@ffwll.ch>, DRI Development <dri-devel@lists.freedesktop.org>
-Cc: linux-rockchip@lists.infradead.org, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel.vetter@intel.com>
+Content-Type: multipart/signed; micalg="pgp-sha256";
+        protocol="application/pgp-signature"; boundary="=-pGA2H6iLsoqumxPFnjV/"
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20191126091946.7970-2-nsaenzjulienne@suse.de>
+Sender: netdev-owner@vger.kernel.org
+To: andrew.murray@arm.com, maz@kernel.org, linux-kernel@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Hanjun Guo <guohanjun@huawei.com>, Sudeep Holla <sudeep.holla@arm.com>, Tariq Toukan <tariqt@mellanox.com>, Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>, Robin Murphy <robin.murphy@arm.com>
+Cc: james.quinlan@broadcom.com, mbrugger@suse.com, f.fainelli@gmail.com, phil@raspberrypi.org, wahrenst@gmx.net, jeremy.linton@arm.com, linux-pci@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, "David S. Miller" <davem@davemloft.net>, Bjorn Helgaas <bhelgaas@google.com>, linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, linux-rdma@vger.kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGFuaWVsLAoKQWZ0ZXIgYXBwbHlpbmcgdGhpcyBwYXRjaCB0aGVyZSBhcmUgc29tZSBzbGln
-aHQgZGlmZmVyZW5jZXMKaW4gdGhlIGVmZmVjdGl2ZSBiZWhhdmlvciBvZiB0aGUgY29kZS4KCkkg
-Y2FuJ3QgdGVsbCBpZiB0aGV5IGFyZSBpbXBvcnRhbnQsIHBsZWFzZSBzZWUgYmVsb3cuCgpBbmRy
-emVqCgpXIGRuaXUgMTUuMTEuMjAxOSBvwqAxMDoyMSwgRGFuaWVsIFZldHRlciBwaXN6ZToKPiBJ
-ZiByb2NrY2hpcCB3b3VsZCBzd2l0Y2ggb3ZlciB0byB0aGUgZ2VuZXJpYyBmYmRldiBzZXR1cCB3
-ZSBjb3VsZAo+IGdyYWJhZ2UgY29sbGVjdCBldmVuIG1vcmUgb2YgYWxsIHRoaXMgY29kZSAoYWxs
-IG9mIHRoZSByZW1haW5pbmcgZmIKPiBoYW5kbGluZyBjb2RlIHJlYWxseSkuCj4gCj4gU2lnbmVk
-LW9mZi1ieTogRGFuaWVsIFZldHRlciA8ZGFuaWVsLnZldHRlckBpbnRlbC5jb20+Cj4gQ2M6IFNh
-bmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+Cj4gQ2M6ICJIZWlrbyBTdMO8Ym5lciIgPGhl
-aWtvQHNudGVjaC5kZT4KPiBDYzogbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cj4gQ2M6IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiAtLS0KPiAgIGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYyB8IDU0ICstLS0tLS0tLS0tLS0t
-LS0tLS0tLS0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgNTMgZGVsZXRpb25z
-KC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fZmIuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+IGlu
-ZGV4IGNhMDEyMzRjMDM3Yy4uMDgxZGJkYWEwYjA3IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+IEBAIC01Myw2NCArNTMsMTIgQEAgcm9ja2NoaXBf
-ZmJfYWxsb2Moc3RydWN0IGRybV9kZXZpY2UgKmRldiwgY29uc3Qgc3RydWN0IGRybV9tb2RlX2Zi
-X2NtZDIgKm1vZGVfY20KPiAgIAlyZXR1cm4gZmI7Cj4gICB9Cj4gICAKPiAtc3RhdGljIHN0cnVj
-dCBkcm1fZnJhbWVidWZmZXIgKgo+IC1yb2NrY2hpcF91c2VyX2ZiX2NyZWF0ZShzdHJ1Y3QgZHJt
-X2RldmljZSAqZGV2LCBzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGVfcHJpdiwKPiAtCQkJY29uc3Qgc3Ry
-dWN0IGRybV9tb2RlX2ZiX2NtZDIgKm1vZGVfY21kKQo+IC17Cj4gLQljb25zdCBzdHJ1Y3QgZHJt
-X2Zvcm1hdF9pbmZvICppbmZvID0gZHJtX2dldF9mb3JtYXRfaW5mbyhkZXYsCj4gLQkJCQkJCQkJ
-IG1vZGVfY21kKTsKPiAtCXN0cnVjdCBkcm1fZnJhbWVidWZmZXIgKmZiOwo+IC0Jc3RydWN0IGRy
-bV9nZW1fb2JqZWN0ICpvYmpzW1JPQ0tDSElQX01BWF9GQl9CVUZGRVJdOwo+IC0Jc3RydWN0IGRy
-bV9nZW1fb2JqZWN0ICpvYmo7Cj4gLQlpbnQgbnVtX3BsYW5lcyA9IG1pbl90KGludCwgaW5mby0+
-bnVtX3BsYW5lcywgUk9DS0NISVBfTUFYX0ZCX0JVRkZFUik7Cj4gLQlpbnQgcmV0Owo+IC0JaW50
-IGk7Cj4gLQo+IC0JZm9yIChpID0gMDsgaSA8IG51bV9wbGFuZXM7IGkrKykgewoKZHJtX2dlbV9m
-Yl9jcmVhdGVfd2l0aF9mdW5jcygpLCBpZiBubyBlcnJvciBoYXBwZW5zLAppdGVyYXRlcyBleGFj
-dGx5IGluZm8tPm51bV9wbGFuZXMgdGltZXMsCmJ1dCB0aGUgZnVuY3Rpb24gYmVpbmcgcmVtb3Zl
-ZCBoZXJlIGl0ZXJhdGVzCm1pbl90KGludCwgaW5mby0+bnVtX3BsYW5lcywgMykgdGltZXMuCgpJ
-cyBpdCBlbnN1cmVkIGVhcmxpZXIgZWxzZXdoZXJlIHRoYXQgaW5mby0+bnVtX3BsYW5lcyBkb2Vz
-IG5vdCBleGNlZWQgMz8KCj4gLQkJdW5zaWduZWQgaW50IHdpZHRoID0gbW9kZV9jbWQtPndpZHRo
-IC8gKGkgPyBpbmZvLT5oc3ViIDogMSk7Cj4gLQkJdW5zaWduZWQgaW50IGhlaWdodCA9IG1vZGVf
-Y21kLT5oZWlnaHQgLyAoaSA/IGluZm8tPnZzdWIgOiAxKTsKPiAtCQl1bnNpZ25lZCBpbnQgbWlu
-X3NpemU7Cj4gLQo+IC0JCW9iaiA9IGRybV9nZW1fb2JqZWN0X2xvb2t1cChmaWxlX3ByaXYsIG1v
-ZGVfY21kLT5oYW5kbGVzW2ldKTsKPiAtCQlpZiAoIW9iaikgewo+IC0JCQlEUk1fREVWX0VSUk9S
-KGRldi0+ZGV2LAo+IC0JCQkJICAgICAgIkZhaWxlZCB0byBsb29rdXAgR0VNIG9iamVjdFxuIik7
-Cj4gLQkJCXJldCA9IC1FTlhJTzsKPiAtCQkJZ290byBlcnJfZ2VtX29iamVjdF91bnJlZmVyZW5j
-ZTsKPiAtCQl9Cj4gLQo+IC0JCW1pbl9zaXplID0gKGhlaWdodCAtIDEpICogbW9kZV9jbWQtPnBp
-dGNoZXNbaV0gKwo+IC0JCQltb2RlX2NtZC0+b2Zmc2V0c1tpXSArCj4gLQkJCXdpZHRoICogaW5m
-by0+Y3BwW2ldOwoKVGhpcyBjb21wdXRhdGlvbiBpbiBkcm1fZ2VtX2ZiX2NyZWF0ZV93aXRoX2Z1
-bmNzIGxvb2tzIGxpa2UgdGhpczoKCgkJbWluX3NpemUgPSAoaGVpZ2h0IC0gMSkgKiBtb2RlX2Nt
-ZC0+cGl0Y2hlc1tpXQoJCQkgKyBkcm1fZm9ybWF0X2luZm9fbWluX3BpdGNoKGluZm8sIGksIHdp
-ZHRoKQoJCQkgKyBtb2RlX2NtZC0+b2Zmc2V0c1tpXTsKClBlcmhhcHMgdGhhdCdzIGFjdHVhbGx5
-IHRoZSBzYW1lIHRoaW5nPwoKPiAtCj4gLQkJaWYgKG9iai0+c2l6ZSA8IG1pbl9zaXplKSB7Cj4g
-LQkJCWRybV9nZW1fb2JqZWN0X3B1dF91bmxvY2tlZChvYmopOwo+IC0JCQlyZXQgPSAtRUlOVkFM
-Owo+IC0JCQlnb3RvIGVycl9nZW1fb2JqZWN0X3VucmVmZXJlbmNlOwo+IC0JCX0KPiAtCQlvYmpz
-W2ldID0gb2JqOwo+IC0JfQo+IC0KPiAtCWZiID0gcm9ja2NoaXBfZmJfYWxsb2MoZGV2LCBtb2Rl
-X2NtZCwgb2JqcywgaSk7Cj4gLQlpZiAoSVNfRVJSKGZiKSkgewo+IC0JCXJldCA9IFBUUl9FUlIo
-ZmIpOwo+IC0JCWdvdG8gZXJyX2dlbV9vYmplY3RfdW5yZWZlcmVuY2U7Cj4gLQl9Cj4gLQo+IC0J
-cmV0dXJuIGZiOwo+IC0KPiAtZXJyX2dlbV9vYmplY3RfdW5yZWZlcmVuY2U6Cj4gLQlmb3IgKGkt
-LTsgaSA+PSAwOyBpLS0pCj4gLQkJZHJtX2dlbV9vYmplY3RfcHV0X3VubG9ja2VkKG9ianNbaV0p
-Owo+IC0JcmV0dXJuIEVSUl9QVFIocmV0KTsKPiAtfQo+IC0KPiAgIHN0YXRpYyBjb25zdCBzdHJ1
-Y3QgZHJtX21vZGVfY29uZmlnX2hlbHBlcl9mdW5jcyByb2NrY2hpcF9tb2RlX2NvbmZpZ19oZWxw
-ZXJzID0gewo+ICAgCS5hdG9taWNfY29tbWl0X3RhaWwgPSBkcm1fYXRvbWljX2hlbHBlcl9jb21t
-aXRfdGFpbF9ycG0sCj4gICB9Owo+ICAgCj4gICBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9tb2Rl
-X2NvbmZpZ19mdW5jcyByb2NrY2hpcF9kcm1fbW9kZV9jb25maWdfZnVuY3MgPSB7Cj4gLQkuZmJf
-Y3JlYXRlID0gcm9ja2NoaXBfdXNlcl9mYl9jcmVhdGUsCj4gKwkuZmJfY3JlYXRlID0gZHJtX2dl
-bV9mYl9jcmVhdGUsCgpUaGF0IHdheSB5b3UgbGVhdmUgb3V0IHRoZSAtPmRpcnR5KCkgY2FsbGJh
-Y2sgZnJvbQpzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9mcmFtZWJ1ZmZlcl9mdW5jcyByb2NrY2hp
-cF9kcm1fZmJfZnVuY3MKCkknZCBzYXkgaW5zdGVhZDoKCnN0cnVjdCBkcm1fZnJhbWVidWZmZXIg
-Kgpyb2NrY2hpcF9nZW1fZmJfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsIHN0cnVjdCBk
-cm1fZmlsZSAqZmlsZSwKCQkgICAgICAgY29uc3Qgc3RydWN0IGRybV9tb2RlX2ZiX2NtZDIgKm1v
-ZGVfY21kKQp7CglyZXR1cm4gZHJtX2dlbV9mYl9jcmVhdGVfd2l0aF9mdW5jcyhkZXYsIGZpbGUs
-IG1vZGVfY21kLAoJCQkJCSAgICAmcm9ja2NoaXBfZHJtX2ZiX2Z1bmNzKTsKfQoKYW5kIHRoZW4K
-CisJLmZiX2NyZWF0ZSA9IHJvY2tjaGlwX2dlbV9mYl9jcmVhdGUsCgo+ICAgCS5vdXRwdXRfcG9s
-bF9jaGFuZ2VkID0gZHJtX2ZiX2hlbHBlcl9vdXRwdXRfcG9sbF9jaGFuZ2VkLAo+ICAgCS5hdG9t
-aWNfY2hlY2sgPSBkcm1fYXRvbWljX2hlbHBlcl9jaGVjaywKPiAgIAkuYXRvbWljX2NvbW1pdCA9
-IGRybV9hdG9taWNfaGVscGVyX2NvbW1pdCwKPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
-c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaS1kZXZlbA==
+
+--=-pGA2H6iLsoqumxPFnjV/
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, 2019-11-26 at 10:19 +0100, Nicolas Saenz Julienne wrote:
+> Some users need to make sure their rounding function accepts and returns
+> 64bit long variables regardless of the architecture. Sadly
+> roundup/rounddown_pow_two() takes and returns unsigned longs. Create a
+> new generic 64bit variant of the function and cleanup rougue custom
+> implementations.
+>=20
+> Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+
+Small Nit: I corrected the patch subject for next version.
+
+linux/log2.h: Add roundup/rounddown_pow_two_u64() family of functions
+
+Note the change here:                      ^^^^
+
+Regards,
+Nicolas
+
+
+--=-pGA2H6iLsoqumxPFnjV/
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl3etCsACgkQlfZmHno8
+x/4AJwf9Eq0ZM4NqHmqyyrS7BQmYgPtM7piuXLZCM3vqnnuHZTenFUoHxhH60Ffb
+HzBZeEMXW4jW8lQIOtwAy6+cQ19qTmM3uR2gAPmNzuvcFvpVOXPvKGMKSte+IYqI
+s5O/WUAFckUhcZRDrI4P0P2PdZLOgYXsQU9k6jGXPnWW1my63yF6W+01o/Oy/Oef
+x+WobkWQtp9ozxgzG9Six/Sx7Bmn22OPxFSiGftu00G9AYSX1jkgv8yUPyoT0buj
+aNTTrueG/JVXF9afKDupaKDAV69F7eYTFjYiMxl53jTQAshV6s9FV+tOdnFWqBRX
+abK/iKFoC2e1Sip+k57Zx8tFXUexGg==
+=qoBY
+-----END PGP SIGNATURE-----
+
+--=-pGA2H6iLsoqumxPFnjV/--
