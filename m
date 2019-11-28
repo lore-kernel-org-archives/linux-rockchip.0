@@ -1,452 +1,174 @@
-From: Abhishek Pandit-Subedi <abhishekpandit@chromium.org>
-Subject: [PATCH v2 1/1] ARM: dts: rockchip: Add brcm bluetooth for rk3288-veyron
-Date: Wed, 27 Nov 2019 14:39:09 -0800
-Message-ID: <20191127223909.253873-2-abhishekpandit@chromium.org>
-References: <20191127223909.253873-1-abhishekpandit@chromium.org>
+From: Vasily Khoruzhick <anarsoul@gmail.com>
+Subject: Re: [PATCH v2 2/8] rockchip: rk3399: Support common
+	spl_board_init
+Date: Wed, 27 Nov 2019 20:30:50 -0800
+Message-ID: <CA+E=qVcCTvW-tR_Okk-naeTR4yNKRnKmY=rPLUSmusazF+eaXQ@mail.gmail.com>
+References: <20190620185506.11449-1-jagan@amarulasolutions.com>
+ <20190620185506.11449-3-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191127223909.253873-1-abhishekpandit@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org
-Cc: linux-bluetooth@vger.kernel.org, linux-rockchip@lists.infradead.org, Abhishek Pandit-Subedi <abhishekpandit@chromium.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20190620185506.11449-3-jagan@amarulasolutions.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: linux-rockchip@lists.infradead.org, U-Boot Mailing List <u-boot@lists.denx.de>, linux-amarula@amarulasolutions.com
 List-Id: linux-rockchip.vger.kernel.org
 
-This enables the Broadcom uart bluetooth driver on uart0 and gives it
-ownership of its gpios. In order to use this, you must enable the
-following kconfig options:
-- CONFIG_BT_HCIUART_BCM
-- CONFIG_SERIAL_DEV
-
-This is applicable to rk3288-veyron series boards that use the bcm43540
-wifi+bt chips.
-
-As part of this change, also refactor the pinctrl across the various
-boards. All the boards using broadcom bluetooth shouldn't touch the
-bt_dev_wake pin.
-
-Signed-off-by: Abhishek Pandit-Subedi <abhishekpandit@chromium.org>
----
-
-Changes in v2:
-- Changed sco routing params to brcm,bt-pcm-int-params
-
- arch/arm/boot/dts/rk3288-veyron-brain.dts     |  9 +++
- .../dts/rk3288-veyron-broadcom-bluetooth.dtsi | 22 +++++++
- .../boot/dts/rk3288-veyron-chromebook.dtsi    | 21 -------
- arch/arm/boot/dts/rk3288-veyron-fievel.dts    |  2 -
- arch/arm/boot/dts/rk3288-veyron-jaq.dts       | 22 +++++++
- arch/arm/boot/dts/rk3288-veyron-jerry.dts     | 22 +++++++
- arch/arm/boot/dts/rk3288-veyron-mickey.dts    |  9 +++
- arch/arm/boot/dts/rk3288-veyron-minnie.dts    | 21 +++++++
- arch/arm/boot/dts/rk3288-veyron-pinky.dts     | 22 +++++++
- arch/arm/boot/dts/rk3288-veyron-speedy.dts    | 21 +++++++
- arch/arm/boot/dts/rk3288-veyron.dtsi          | 59 +++----------------
- 11 files changed, 155 insertions(+), 75 deletions(-)
- create mode 100644 arch/arm/boot/dts/rk3288-veyron-broadcom-bluetooth.dtsi
-
-diff --git a/arch/arm/boot/dts/rk3288-veyron-brain.dts b/arch/arm/boot/dts/rk3288-veyron-brain.dts
-index 406146cbff29..aa33d09184ad 100644
---- a/arch/arm/boot/dts/rk3288-veyron-brain.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-brain.dts
-@@ -7,6 +7,7 @@
- 
- /dts-v1/;
- #include "rk3288-veyron.dtsi"
-+#include "rk3288-veyron-broadcom-bluetooth.dtsi"
- 
- / {
- 	model = "Google Brain";
-@@ -40,6 +41,14 @@
- };
- 
- &pinctrl {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <
-+		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
-+		&global_pwroff
-+	>;
-+
- 	hdmi {
- 		vcc50_hdmi_en: vcc50-hdmi-en {
- 			rockchip,pins = <7 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-diff --git a/arch/arm/boot/dts/rk3288-veyron-broadcom-bluetooth.dtsi b/arch/arm/boot/dts/rk3288-veyron-broadcom-bluetooth.dtsi
-new file mode 100644
-index 000000000000..a10d25ac8f7b
---- /dev/null
-+++ b/arch/arm/boot/dts/rk3288-veyron-broadcom-bluetooth.dtsi
-@@ -0,0 +1,22 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Google Veyron (and derivatives) fragment for the Broadcom 43450 bluetooth
-+ * chip.
-+ *
-+ * Copyright 2019 Google, Inc
-+ */
-+
-+&uart0 {
-+	bluetooth {
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_host_wake_l>, <&bt_enable_l>,
-+			    <&bt_dev_wake>;
-+
-+		compatible = "brcm,bcm43540-bt";
-+		host-wakeup-gpios	= <&gpio4 RK_PD7 GPIO_ACTIVE_HIGH>;
-+		shutdown-gpios		= <&gpio4 RK_PD5 GPIO_ACTIVE_HIGH>;
-+		device-wakeup-gpios	= <&gpio4 RK_PD2 GPIO_ACTIVE_HIGH>;
-+		max-speed		= <3000000>;
-+		brcm,bt-pcm-int-params	= [01 02 00 01 01];
-+	};
-+};
-diff --git a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-index ffb60f880b39..05112c25176d 100644
---- a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-@@ -136,27 +136,6 @@
- };
- 
- &pinctrl {
--	pinctrl-0 = <
--		/* Common for sleep and wake, but no owners */
--		&ddr0_retention
--		&ddrio_pwroff
--		&global_pwroff
--
--		/* Wake only */
--		&suspend_l_wake
--		&bt_dev_wake_awake
--	>;
--	pinctrl-1 = <
--		/* Common for sleep and wake, but no owners */
--		&ddr0_retention
--		&ddrio_pwroff
--		&global_pwroff
--
--		/* Sleep only */
--		&suspend_l_sleep
--		&bt_dev_wake_sleep
--	>;
--
- 	buttons {
- 		ap_lid_int_l: ap-lid-int-l {
- 			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
-diff --git a/arch/arm/boot/dts/rk3288-veyron-fievel.dts b/arch/arm/boot/dts/rk3288-veyron-fievel.dts
-index 9a0f55085839..7e7ef8e06b8d 100644
---- a/arch/arm/boot/dts/rk3288-veyron-fievel.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-fievel.dts
-@@ -18,8 +18,6 @@
- 		     "google,veyron-fievel-rev0", "google,veyron-fievel",
- 		     "google,veyron", "rockchip,rk3288";
- 
--	/delete-node/ bt-activity;
--
- 	vccsys: vccsys {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vccsys";
-diff --git a/arch/arm/boot/dts/rk3288-veyron-jaq.dts b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
-index a4966e505a2f..171ba6185b6d 100644
---- a/arch/arm/boot/dts/rk3288-veyron-jaq.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
-@@ -273,6 +273,28 @@
- };
- 
- &pinctrl {
-+	pinctrl-names = "default", "sleep";
-+	pinctrl-0 = <
-+		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
-+		&global_pwroff
-+
-+		/* Wake only */
-+		&suspend_l_wake
-+		&bt_dev_wake_awake
-+	>;
-+	pinctrl-1 = <
-+		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
-+		&global_pwroff
-+
-+		/* Sleep only */
-+		&suspend_l_sleep
-+		&bt_dev_wake_sleep
-+	>;
-+
- 	buck-5v {
- 		drv_5v: drv-5v {
- 			rockchip,pins = <7 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
-diff --git a/arch/arm/boot/dts/rk3288-veyron-jerry.dts b/arch/arm/boot/dts/rk3288-veyron-jerry.dts
-index a6ee44f0fe13..66f00d28801a 100644
---- a/arch/arm/boot/dts/rk3288-veyron-jerry.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-jerry.dts
-@@ -418,6 +418,28 @@
- };
- 
- &pinctrl {
-+	pinctrl-names = "default", "sleep";
-+	pinctrl-0 = <
-+		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
-+		&global_pwroff
-+
-+		/* Wake only */
-+		&suspend_l_wake
-+		&bt_dev_wake_awake
-+	>;
-+	pinctrl-1 = <
-+		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
-+		&global_pwroff
-+
-+		/* Sleep only */
-+		&suspend_l_sleep
-+		&bt_dev_wake_sleep
-+	>;
-+
- 	buck-5v {
- 		drv_5v: drv-5v {
- 			rockchip,pins = <7 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
-diff --git a/arch/arm/boot/dts/rk3288-veyron-mickey.dts b/arch/arm/boot/dts/rk3288-veyron-mickey.dts
-index 06a6a9554c48..ffd1121d19be 100644
---- a/arch/arm/boot/dts/rk3288-veyron-mickey.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-mickey.dts
-@@ -7,6 +7,7 @@
- 
- /dts-v1/;
- #include "rk3288-veyron.dtsi"
-+#include "rk3288-veyron-broadcom-bluetooth.dtsi"
- 
- / {
- 	model = "Google Mickey";
-@@ -411,6 +412,14 @@
- };
- 
- &pinctrl {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <
-+		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
-+		&global_pwroff
-+	>;
-+
- 	hdmi {
- 		power_hdmi_on: power-hdmi-on {
- 			rockchip,pins = <7 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
-diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-index c833716dbe48..39f76e02875f 100644
---- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-@@ -7,6 +7,7 @@
- 
- /dts-v1/;
- #include "rk3288-veyron-chromebook.dtsi"
-+#include "rk3288-veyron-broadcom-bluetooth.dtsi"
- 
- / {
- 	model = "Google Minnie";
-@@ -344,6 +345,26 @@
- };
- 
- &pinctrl {
-+	pinctrl-names = "default", "sleep";
-+	pinctrl-0 = <
-+		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
-+		&global_pwroff
-+
-+		/* Wake only */
-+		&suspend_l_wake
-+	>;
-+	pinctrl-1 = <
-+		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
-+		&global_pwroff
-+
-+		/* Sleep only */
-+		&suspend_l_sleep
-+	>;
-+
- 	buck-5v {
- 		drv_5v: drv-5v {
- 			rockchip,pins = <7 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
-diff --git a/arch/arm/boot/dts/rk3288-veyron-pinky.dts b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
-index f420499f300a..71e6629cc208 100644
---- a/arch/arm/boot/dts/rk3288-veyron-pinky.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
-@@ -64,6 +64,28 @@
- };
- 
- &pinctrl {
-+	pinctrl-names = "default", "sleep";
-+	pinctrl-0 = <
-+		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
-+		&global_pwroff
-+
-+		/* Wake only */
-+		&suspend_l_wake
-+		&bt_dev_wake_awake
-+	>;
-+	pinctrl-1 = <
-+		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
-+		&global_pwroff
-+
-+		/* Sleep only */
-+		&suspend_l_sleep
-+		&bt_dev_wake_sleep
-+	>;
-+
- 	/delete-node/ lcd;
- 
- 	backlight {
-diff --git a/arch/arm/boot/dts/rk3288-veyron-speedy.dts b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-index 2f2989bc3f9c..e354c61a45e7 100644
---- a/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-@@ -7,6 +7,7 @@
- 
- /dts-v1/;
- #include "rk3288-veyron-chromebook.dtsi"
-+#include "rk3288-veyron-broadcom-bluetooth.dtsi"
- #include "cros-ec-sbs.dtsi"
- 
- / {
-@@ -279,6 +280,26 @@
- };
- 
- &pinctrl {
-+	pinctrl-names = "default", "sleep";
-+	pinctrl-0 = <
-+		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
-+		&global_pwroff
-+
-+		/* Wake only */
-+		&suspend_l_wake
-+	>;
-+	pinctrl-1 = <
-+		/* Common for sleep and wake, but no owners */
-+		&ddr0_retention
-+		&ddrio_pwroff
-+		&global_pwroff
-+
-+		/* Sleep only */
-+		&suspend_l_sleep
-+	>;
-+
- 	buck-5v {
- 		drv_5v: drv-5v {
- 			rockchip,pins = <7 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
-diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
-index 7525e3dd1fc1..54a6838d73f5 100644
---- a/arch/arm/boot/dts/rk3288-veyron.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
-@@ -23,30 +23,6 @@
- 		reg = <0x0 0x0 0x0 0x80000000>;
- 	};
- 
--	bt_activity: bt-activity {
--		compatible = "gpio-keys";
--		pinctrl-names = "default";
--		pinctrl-0 = <&bt_host_wake>;
--
--		/*
--		 * HACK: until we have an LPM driver, we'll use an
--		 * ugly GPIO key to allow Bluetooth to wake from S3.
--		 * This is expected to only be used by BT modules that
--		 * use UART for comms.  For BT modules that talk over
--		 * SDIO we should use a wakeup mechanism related to SDIO.
--		 *
--		 * Use KEY_RESERVED here since that will work as a wakeup but
--		 * doesn't get reported to higher levels (so doesn't confuse
--		 * Chrome).
--		 */
--		bt-wake {
--			label = "BT Wakeup";
--			gpios = <&gpio4 RK_PD7 GPIO_ACTIVE_HIGH>;
--			linux,code = <KEY_RESERVED>;
--			wakeup-source;
--		};
--
--	};
- 
- 	power_button: power-button {
- 		compatible = "gpio-keys";
-@@ -82,22 +58,17 @@
- 		clocks = <&rk808 RK808_CLKOUT1>;
- 		clock-names = "ext_clock";
- 		pinctrl-names = "default";
--		pinctrl-0 = <&bt_enable_l>, <&wifi_enable_h>;
-+		pinctrl-0 = <&wifi_enable_h>;
- 
- 		/*
--		 * Depending on the actual card populated GPIO4 D4 and D5
-+		 * Depending on the actual card populated GPIO4 D4
- 		 * correspond to one of these signals on the module:
- 		 *
- 		 * D4:
- 		 * - SDIO_RESET_L_WL_REG_ON
- 		 * - PDN (power down when low)
--		 *
--		 * D5:
--		 * - BT_I2S_WS_BT_RFDISABLE_L
--		 * - No connect
- 		 */
--		reset-gpios = <&gpio4 RK_PD4 GPIO_ACTIVE_LOW>,
--			      <&gpio4 RK_PD5 GPIO_ACTIVE_LOW>;
-+		reset-gpios = <&gpio4 RK_PD4 GPIO_ACTIVE_LOW>;
- 	};
- 
- 	vcc_5v: vcc-5v {
-@@ -481,26 +452,6 @@
- };
- 
- &pinctrl {
--	pinctrl-names = "default", "sleep";
--	pinctrl-0 = <
--		/* Common for sleep and wake, but no owners */
--		&ddr0_retention
--		&ddrio_pwroff
--		&global_pwroff
--
--		/* Wake only */
--		&bt_dev_wake_awake
--	>;
--	pinctrl-1 = <
--		/* Common for sleep and wake, but no owners */
--		&ddr0_retention
--		&ddrio_pwroff
--		&global_pwroff
--
--		/* Sleep only */
--		&bt_dev_wake_sleep
--	>;
--
- 	pcfg_pull_none_drv_8ma: pcfg-pull-none-drv-8ma {
- 		bias-disable;
- 		drive-strength = <8>;
-@@ -622,6 +573,10 @@
- 		bt_dev_wake_awake: bt-dev-wake-awake {
- 			rockchip,pins = <4 RK_PD2 RK_FUNC_GPIO &pcfg_output_high>;
- 		};
-+
-+		bt_dev_wake: bt-dev-wake {
-+			rockchip,pins = <4 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
- 	};
- 
- 	tpm {
--- 
-2.24.0.432.g9d3f5f5b63-goog
+T24gVGh1LCBKdW4gMjAsIDIwMTkgYXQgMTE6NTcgQU0gSmFnYW4gVGVraSA8amFnYW5AYW1hcnVs
+YXNvbHV0aW9ucy5jb20+IHdyb3RlOgo+Cj4gU3VwcG9ydCBjb21tb24gc3BsX2JvYXJkX2luaXQg
+YnkgbW92aW5nIGNvZGUgZnJvbSBwdW1hCj4gYm9hcmQgZmlsZSBpbnRvLCBjb21tb24gcmszMzk5
+LWJvYXJkLXNwbC5jLgo+Cj4gUGFydCBvZiB0aGUgY29kZSBoYXMgc3lzcmVzZXQtZ3BpbywgcmVn
+dWxhdG9yc19lbmFibGVfYm9vdF9vbgo+IGJ1dCByaWdodCBub3cgb25seSBwdW1hIGJvYXJkIGlz
+IHVzaW5nIHRoaXMgd2l0aCByZWxldmFudAo+IGNvbmZpZyBvcHRpb25zIHJlc3QgcmVtYWlucyBj
+b21tb24gZm9yIGFsbCB0YXJnZXRzLgo+Cj4gU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVraSA8amFn
+YW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gLS0tCj4gIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAv
+cmszMzk5LWJvYXJkLXNwbC5jICAgICB8IDYzICsrKysrKysrKysrKysrKysrKysKPiAgYm9hcmQv
+cm9ja2NoaXAvZXZiX3JrMzM5OS9ldmItcmszMzk5LmMgICAgICAgIHwgIDggLS0tCj4gIC4uLi9w
+dW1hX3JrMzM5OS9wdW1hLXJrMzM5OS5jICAgICAgICAgICAgICAgICB8IDU4IC0tLS0tLS0tLS0t
+LS0tLS0tCj4gIGJvYXJkL3ZhbXJzL3JvY2s5NjBfcmszMzk5L3JvY2s5NjAtcmszMzk5LmMgICB8
+ICA4IC0tLQo+ICA0IGZpbGVzIGNoYW5nZWQsIDYzIGluc2VydGlvbnMoKyksIDc0IGRlbGV0aW9u
+cygtKQo+Cj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMzk5LWJvYXJk
+LXNwbC5jIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMzOTktYm9hcmQtc3BsLmMKPiBpbmRl
+eCA4MDBjYTgwMDIyLi42NWM5OGI2OTdkIDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtL21hY2gtcm9j
+a2NoaXAvcmszMzk5LWJvYXJkLXNwbC5jCj4gKysrIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9y
+azMzOTktYm9hcmQtc3BsLmMKPiBAQCAtMTEsMTMgKzExLDE2IEBACj4gICNpbmNsdWRlIDxzcGwu
+aD4KPiAgI2luY2x1ZGUgPHNwbF9ncGlvLmg+Cj4gICNpbmNsdWRlIDxzeXNjb24uaD4KPiArI2lu
+Y2x1ZGUgPGFzbS9ncGlvLmg+Cj4gICNpbmNsdWRlIDxhc20vaW8uaD4KPiAgI2luY2x1ZGUgPGFz
+bS9hcmNoLXJvY2tjaGlwL2Jvb3Ryb20uaD4KPiAgI2luY2x1ZGUgPGFzbS9hcmNoLXJvY2tjaGlw
+L2Nsb2NrLmg+Cj4gKyNpbmNsdWRlIDxhc20vYXJjaC1yb2NrY2hpcC9jcnVfcmszMzk5Lmg+Cj4g
+ICNpbmNsdWRlIDxhc20vYXJjaC1yb2NrY2hpcC9ncmZfcmszMzk5Lmg+Cj4gICNpbmNsdWRlIDxh
+c20vYXJjaC1yb2NrY2hpcC9oYXJkd2FyZS5oPgo+ICAjaW5jbHVkZSA8YXNtL2FyY2gtcm9ja2No
+aXAvcGVyaXBoLmg+Cj4gICNpbmNsdWRlIDxhc20vYXJjaC1yb2NrY2hpcC9zeXNfcHJvdG8uaD4K
+PiArI2luY2x1ZGUgPHBvd2VyL3JlZ3VsYXRvci5oPgo+ICAjaW5jbHVkZSA8ZG0vcGluY3RybC5o
+Pgo+Cj4gIHZvaWQgYm9hcmRfcmV0dXJuX3RvX2Jvb3Ryb20odm9pZCkKPiBAQCAtMjAyLDYgKzIw
+NSw2NiBAQCB2b2lkIGJvYXJkX2luaXRfZih1bG9uZyBkdW1teSkKPiAgICAgICAgIH0KPiAgfQo+
+Cj4gKyNpZiBkZWZpbmVkKFNQTF9HUElPX1NVUFBPUlQpCgpUaGF0IGhhc24ndCBiZWVuIGNvbXBp
+bGUgdGVzdGVkIHNpbmNlICJkZWZpbmVkKFNQTF9HUElPX1NVUFBPUlQpIgplbnN1cmVzIHRoYXQg
+dGhpcyBjb2RlIG5ldmVyIGNvbXBpbGVzLgoKSXQgc2hvdWxkIGJlIENPTkZJR19TUExfR1BJT19T
+VVBQT1JUIGluc3RlYWQsIGFuZCBpdCB3b24ndCBjb21waWxlIGR1ZQp0byBtaXNzaW5nIGhlYWRl
+ciBpbiB0aGlzIGNhc2UuCgpVbmZvcnR1bmF0ZWx5IGNvZGUgd29uJ3Qgd29yayBldmVuIHdpdGgg
+bWlzc2luZyBpbmNsdWRlIGFkZGVkIHNpbmNlCnNvbWV0aGluZyBlbHNlIGlzIGJyb2tlbiBhbmQg
+aXQgZmFpbHMgdG8gcmVxdWVzdCBncGlvLgoKPiArc3RhdGljIHZvaWQgcmszMzk5X2ZvcmNlX3Bv
+d2VyX29uX3Jlc2V0KHZvaWQpCj4gK3sKPiArICAgICAgIG9mbm9kZSBub2RlOwo+ICsgICAgICAg
+c3RydWN0IGdwaW9fZGVzYyBzeXNyZXNldF9ncGlvOwo+ICsKPiArICAgICAgIGRlYnVnKCIlczog
+dHJ5aW5nIHRvIGZvcmNlIGEgcG93ZXItb24gcmVzZXRcbiIsIF9fZnVuY19fKTsKPiArCj4gKyAg
+ICAgICBub2RlID0gb2Zub2RlX3BhdGgoIi9jb25maWciKTsKPiArICAgICAgIGlmICghb2Zub2Rl
+X3ZhbGlkKG5vZGUpKSB7Cj4gKyAgICAgICAgICAgICAgIGRlYnVnKCIlczogbm8gL2NvbmZpZyBu
+b2RlP1xuIiwgX19mdW5jX18pOwo+ICsgICAgICAgICAgICAgICByZXR1cm47Cj4gKyAgICAgICB9
+Cj4gKwo+ICsgICAgICAgaWYgKGdwaW9fcmVxdWVzdF9ieV9uYW1lX25vZGV2KG5vZGUsICJzeXNy
+ZXNldC1ncGlvIiwgMCwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAm
+c3lzcmVzZXRfZ3BpbywgR1BJT0RfSVNfT1VUKSkgewo+ICsgICAgICAgICAgICAgICBkZWJ1Zygi
+JXM6IGNvdWxkIG5vdCBmaW5kIGEgL2NvbmZpZy9zeXNyZXNldC1ncGlvXG4iLCBfX2Z1bmNfXyk7
+Cj4gKyAgICAgICAgICAgICAgIHJldHVybjsKPiArICAgICAgIH0KPiArCj4gKyAgICAgICBkbV9n
+cGlvX3NldF92YWx1ZSgmc3lzcmVzZXRfZ3BpbywgMSk7Cj4gK30KPiArI2VuZGlmCj4gKwo+ICt2
+b2lkIHNwbF9ib2FyZF9pbml0KHZvaWQpCj4gK3sKPiArI2lmIGRlZmluZWQoU1BMX0dQSU9fU1VQ
+UE9SVCkKPiArICAgICAgIHN0cnVjdCByazMzOTlfY3J1ICpjcnUgPSByb2NrY2hpcF9nZXRfY3J1
+KCk7Cj4gKwo+ICsgICAgICAgLyoKPiArICAgICAgICAqIFRoZSBSSzMzOTkgcmVzZXRzIG9ubHkg
+J2FsbW9zdCBhbGwgbG9naWMnIChzZWUgYWxzbyBpbiB0aGUgVFJNCj4gKyAgICAgICAgKiAiMy45
+LjQgR2xvYmFsIHNvZnR3YXJlIHJlc2V0IiksIHdoZW4gaXNzdWluZyBhIHNvZnR3YXJlIHJlc2V0
+Lgo+ICsgICAgICAgICogVGhpcyBtYXkgY2F1c2UgaXNzdWVzIGR1cmluZyBib290LXVwIGZvciBz
+b21lIGNvbmZpZ3VyYXRpb25zIG9mCj4gKyAgICAgICAgKiB0aGUgYXBwbGljYXRpb24gc29mdHdh
+cmUgc3RhY2suCj4gKyAgICAgICAgKgo+ICsgICAgICAgICogVG8gd29yayBhcm91bmQgdGhpcywg
+d2UgdGVzdCB3aGV0aGVyIHRoZSBsYXN0IHJlc2V0IHJlYXNvbiB3YXMKPiArICAgICAgICAqIGEg
+cG93ZXItb24gcmVzZXQgYW5kIChpZiBub3QpIGlzc3VlIGFuIG92ZXJ0ZW1wLXJlc2V0IHRvIHJl
+c2V0Cj4gKyAgICAgICAgKiB0aGUgZW50aXJlIG1vZHVsZS4KPiArICAgICAgICAqCj4gKyAgICAg
+ICAgKiBXaGlsZSB0aGlzIHdhcyBwcmV2aW91c2x5IGZpeGVkIGJ5IG1vZGlmeWluZyB0aGUgdmFy
+aW91cyBwbGFjZXMKPiArICAgICAgICAqIHRoYXQgY291bGQgZ2VuZXJhdGUgYSBzb2Z0d2FyZSBy
+ZXNldCAoZS5nLiBVLUJvb3QncyBzeXNyZXNldAo+ICsgICAgICAgICogZHJpdmVyLCB0aGUgQVRG
+IG9yIExpbnV4KSwgd2Ugbm93IGhhdmUgaXQgaGVyZSB0byBlbnN1cmUgdGhhdAo+ICsgICAgICAg
+ICogd2Ugbm8gbG9uZ2VyIGhhdmUgdG8gdHJhY2sgdGhpcyB0aHJvdWdoIHRoZSB2YXJpb3VzIGNv
+bXBvbmVudHMuCj4gKyAgICAgICAgKi8KPiArICAgICAgIGlmIChjcnUtPmdsYl9yc3Rfc3QgIT0g
+MCkKPiArICAgICAgICAgICAgICAgcmszMzk5X2ZvcmNlX3Bvd2VyX29uX3Jlc2V0KCk7Cj4gKyNl
+bmRpZgo+ICsKPiArI2lmIGRlZmluZWQoU1BMX0RNX1JFR1VMQVRPUikKPiArICAgICAgIC8qCj4g
+KyAgICAgICAgKiBUdXJuaW5nIHRoZSBlTU1DIGFuZCBTUEkgYmFjayBvbiAoaWYgZGlzYWJsZWQg
+dmlhIHRoZSBRc2V2ZW4KPiArICAgICAgICAqIEJJT1NfRU5BQkxFKSBzaWduYWwgaXMgZG9uZSB0
+aHJvdWdoIGEgYWx3YXlzLW9uIHJlZ3VsYXRvcikuCj4gKyAgICAgICAgKi8KPiArICAgICAgIGlm
+IChyZWd1bGF0b3JzX2VuYWJsZV9ib290X29uKGZhbHNlKSkKPiArICAgICAgICAgICAgICAgZGVi
+dWcoIiVzOiBDYW5ub3QgZW5hYmxlIGJvb3Qgb24gcmVndWxhdG9yXG4iLCBfX2Z1bmNfXyk7Cj4g
+KyNlbmRpZgo+ICsKPiArICAgICAgIHByZWxvYWRlcl9jb25zb2xlX2luaXQoKTsKPiArfQo+ICsK
+PiAgI2lmZGVmIENPTkZJR19TUExfTE9BRF9GSVQKPiAgaW50IGJvYXJkX2ZpdF9jb25maWdfbmFt
+ZV9tYXRjaChjb25zdCBjaGFyICpuYW1lKQo+ICB7Cj4gZGlmZiAtLWdpdCBhL2JvYXJkL3JvY2tj
+aGlwL2V2Yl9yazMzOTkvZXZiLXJrMzM5OS5jIGIvYm9hcmQvcm9ja2NoaXAvZXZiX3JrMzM5OS9l
+dmItcmszMzk5LmMKPiBpbmRleCA3NjliNWQxNDZmLi5jNjAwNTUzZmY2IDEwMDY0NAo+IC0tLSBh
+L2JvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvZXZiLXJrMzM5OS5jCj4gKysrIGIvYm9hcmQvcm9j
+a2NoaXAvZXZiX3JrMzM5OS9ldmItcmszMzk5LmMKPiBAQCAtOCw3ICs4LDYgQEAKPiAgI2luY2x1
+ZGUgPGRtL3BpbmN0cmwuaD4KPiAgI2luY2x1ZGUgPGFzbS9hcmNoLXJvY2tjaGlwL3BlcmlwaC5o
+Pgo+ICAjaW5jbHVkZSA8cG93ZXIvcmVndWxhdG9yLmg+Cj4gLSNpbmNsdWRlIDxzcGwuaD4KPgo+
+ICBpbnQgYm9hcmRfaW5pdCh2b2lkKQo+ICB7Cj4gQEAgLTY0LDEwICs2MywzIEBAIGludCBib2Fy
+ZF9pbml0KHZvaWQpCj4gIG91dDoKPiAgICAgICAgIHJldHVybiAwOwo+ICB9Cj4gLQo+IC12b2lk
+IHNwbF9ib2FyZF9pbml0KHZvaWQpCj4gLXsKPiAtICAgICAgIHByZWxvYWRlcl9jb25zb2xlX2lu
+aXQoKTsKPiAtCj4gLSAgICAgICByZXR1cm47Cj4gLX0KPiBkaWZmIC0tZ2l0IGEvYm9hcmQvdGhl
+b2Jyb21hLXN5c3RlbXMvcHVtYV9yazMzOTkvcHVtYS1yazMzOTkuYyBiL2JvYXJkL3RoZW9icm9t
+YS1zeXN0ZW1zL3B1bWFfcmszMzk5L3B1bWEtcmszMzk5LmMKPiBpbmRleCBjNmI1MDljMTA5Li4y
+NTFjZDJkNTY2IDEwMDY0NAo+IC0tLSBhL2JvYXJkL3RoZW9icm9tYS1zeXN0ZW1zL3B1bWFfcmsz
+Mzk5L3B1bWEtcmszMzk5LmMKPiArKysgYi9ib2FyZC90aGVvYnJvbWEtc3lzdGVtcy9wdW1hX3Jr
+MzM5OS9wdW1hLXJrMzM5OS5jCj4gQEAgLTEzLDEwICsxMyw4IEBACj4gICNpbmNsdWRlIDxkbS9w
+aW5jdHJsLmg+Cj4gICNpbmNsdWRlIDxkbS91Y2xhc3MtaW50ZXJuYWwuaD4KPiAgI2luY2x1ZGUg
+PGFzbS9pby5oPgo+IC0jaW5jbHVkZSA8YXNtL2dwaW8uaD4KPiAgI2luY2x1ZGUgPGFzbS9zZXR1
+cC5oPgo+ICAjaW5jbHVkZSA8YXNtL2FyY2gtcm9ja2NoaXAvY2xvY2suaD4KPiAtI2luY2x1ZGUg
+PGFzbS9hcmNoLXJvY2tjaGlwL2NydV9yazMzOTkuaD4KPiAgI2luY2x1ZGUgPGFzbS9hcmNoLXJv
+Y2tjaGlwL2hhcmR3YXJlLmg+Cj4gICNpbmNsdWRlIDxhc20vYXJjaC1yb2NrY2hpcC9ncmZfcmsz
+Mzk5Lmg+Cj4gICNpbmNsdWRlIDxhc20vYXJjaC1yb2NrY2hpcC9wZXJpcGguaD4KPiBAQCAtMzgs
+NjIgKzM2LDYgQEAgaW50IGJvYXJkX2luaXQodm9pZCkKPiAgICAgICAgIHJldHVybiAwOwo+ICB9
+Cj4KPiAtc3RhdGljIHZvaWQgcmszMzk5X2ZvcmNlX3Bvd2VyX29uX3Jlc2V0KHZvaWQpCj4gLXsK
+PiAtICAgICAgIG9mbm9kZSBub2RlOwo+IC0gICAgICAgc3RydWN0IGdwaW9fZGVzYyBzeXNyZXNl
+dF9ncGlvOwo+IC0KPiAtICAgICAgIGRlYnVnKCIlczogdHJ5aW5nIHRvIGZvcmNlIGEgcG93ZXIt
+b24gcmVzZXRcbiIsIF9fZnVuY19fKTsKPiAtCj4gLSAgICAgICBub2RlID0gb2Zub2RlX3BhdGgo
+Ii9jb25maWciKTsKPiAtICAgICAgIGlmICghb2Zub2RlX3ZhbGlkKG5vZGUpKSB7Cj4gLSAgICAg
+ICAgICAgICAgIGRlYnVnKCIlczogbm8gL2NvbmZpZyBub2RlP1xuIiwgX19mdW5jX18pOwo+IC0g
+ICAgICAgICAgICAgICByZXR1cm47Cj4gLSAgICAgICB9Cj4gLQo+IC0gICAgICAgaWYgKGdwaW9f
+cmVxdWVzdF9ieV9uYW1lX25vZGV2KG5vZGUsICJzeXNyZXNldC1ncGlvIiwgMCwKPiAtICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmc3lzcmVzZXRfZ3BpbywgR1BJT0RfSVNf
+T1VUKSkgewo+IC0gICAgICAgICAgICAgICBkZWJ1ZygiJXM6IGNvdWxkIG5vdCBmaW5kIGEgL2Nv
+bmZpZy9zeXNyZXNldC1ncGlvXG4iLCBfX2Z1bmNfXyk7Cj4gLSAgICAgICAgICAgICAgIHJldHVy
+bjsKPiAtICAgICAgIH0KPiAtCj4gLSAgICAgICBkbV9ncGlvX3NldF92YWx1ZSgmc3lzcmVzZXRf
+Z3BpbywgMSk7Cj4gLX0KPiAtCj4gLXZvaWQgc3BsX2JvYXJkX2luaXQodm9pZCkKPiAtewo+IC0g
+ICAgICAgaW50ICByZXQ7Cj4gLSAgICAgICBzdHJ1Y3QgcmszMzk5X2NydSAqY3J1ID0gcm9ja2No
+aXBfZ2V0X2NydSgpOwo+IC0KPiAtICAgICAgIC8qCj4gLSAgICAgICAgKiBUaGUgUkszMzk5IHJl
+c2V0cyBvbmx5ICdhbG1vc3QgYWxsIGxvZ2ljJyAoc2VlIGFsc28gaW4gdGhlIFRSTQo+IC0gICAg
+ICAgICogIjMuOS40IEdsb2JhbCBzb2Z0d2FyZSByZXNldCIpLCB3aGVuIGlzc3VpbmcgYSBzb2Z0
+d2FyZSByZXNldC4KPiAtICAgICAgICAqIFRoaXMgbWF5IGNhdXNlIGlzc3VlcyBkdXJpbmcgYm9v
+dC11cCBmb3Igc29tZSBjb25maWd1cmF0aW9ucyBvZgo+IC0gICAgICAgICogdGhlIGFwcGxpY2F0
+aW9uIHNvZnR3YXJlIHN0YWNrLgo+IC0gICAgICAgICoKPiAtICAgICAgICAqIFRvIHdvcmsgYXJv
+dW5kIHRoaXMsIHdlIHRlc3Qgd2hldGhlciB0aGUgbGFzdCByZXNldCByZWFzb24gd2FzCj4gLSAg
+ICAgICAgKiBhIHBvd2VyLW9uIHJlc2V0IGFuZCAoaWYgbm90KSBpc3N1ZSBhbiBvdmVydGVtcC1y
+ZXNldCB0byByZXNldAo+IC0gICAgICAgICogdGhlIGVudGlyZSBtb2R1bGUuCj4gLSAgICAgICAg
+Kgo+IC0gICAgICAgICogV2hpbGUgdGhpcyB3YXMgcHJldmlvdXNseSBmaXhlZCBieSBtb2RpZnlp
+bmcgdGhlIHZhcmlvdXMgcGxhY2VzCj4gLSAgICAgICAgKiB0aGF0IGNvdWxkIGdlbmVyYXRlIGEg
+c29mdHdhcmUgcmVzZXQgKGUuZy4gVS1Cb290J3Mgc3lzcmVzZXQKPiAtICAgICAgICAqIGRyaXZl
+ciwgdGhlIEFURiBvciBMaW51eCksIHdlIG5vdyBoYXZlIGl0IGhlcmUgdG8gZW5zdXJlIHRoYXQK
+PiAtICAgICAgICAqIHdlIG5vIGxvbmdlciBoYXZlIHRvIHRyYWNrIHRoaXMgdGhyb3VnaCB0aGUg
+dmFyaW91cyBjb21wb25lbnRzLgo+IC0gICAgICAgICovCj4gLSAgICAgICBpZiAoY3J1LT5nbGJf
+cnN0X3N0ICE9IDApCj4gLSAgICAgICAgICAgICAgIHJrMzM5OV9mb3JjZV9wb3dlcl9vbl9yZXNl
+dCgpOwo+IC0KPiAtICAgICAgIC8qCj4gLSAgICAgICAgKiBUdXJuaW5nIHRoZSBlTU1DIGFuZCBT
+UEkgYmFjayBvbiAoaWYgZGlzYWJsZWQgdmlhIHRoZSBRc2V2ZW4KPiAtICAgICAgICAqIEJJT1Nf
+RU5BQkxFKSBzaWduYWwgaXMgZG9uZSB0aHJvdWdoIGEgYWx3YXlzLW9uIHJlZ3VsYXRvcikuCj4g
+LSAgICAgICAgKi8KPiAtICAgICAgIHJldCA9IHJlZ3VsYXRvcnNfZW5hYmxlX2Jvb3Rfb24oZmFs
+c2UpOwo+IC0gICAgICAgaWYgKHJldCkKPiAtICAgICAgICAgICAgICAgZGVidWcoIiVzOiBDYW5u
+b3QgZW5hYmxlIGJvb3Qgb24gcmVndWxhdG9yXG4iLCBfX2Z1bmNfXyk7Cj4gLQo+IC0gICAgICAg
+cHJlbG9hZGVyX2NvbnNvbGVfaW5pdCgpOwo+IC19Cj4gLQo+ICBzdGF0aWMgdm9pZCBzZXR1cF9t
+YWNhZGRyKHZvaWQpCj4gIHsKPiAgI2lmIENPTkZJR19JU19FTkFCTEVEKENNRF9ORVQpCj4gZGlm
+ZiAtLWdpdCBhL2JvYXJkL3ZhbXJzL3JvY2s5NjBfcmszMzk5L3JvY2s5NjAtcmszMzk5LmMgYi9i
+b2FyZC92YW1ycy9yb2NrOTYwX3JrMzM5OS9yb2NrOTYwLXJrMzM5OS5jCj4gaW5kZXggMDE4ZTRi
+NTViOC4uMmViNzEyMGU4NCAxMDA2NDQKPiAtLS0gYS9ib2FyZC92YW1ycy9yb2NrOTYwX3JrMzM5
+OS9yb2NrOTYwLXJrMzM5OS5jCj4gKysrIGIvYm9hcmQvdmFtcnMvcm9jazk2MF9yazMzOTkvcm9j
+azk2MC1yazMzOTkuYwo+IEBAIC02LDcgKzYsNiBAQAo+ICAjaW5jbHVkZSA8Y29tbW9uLmg+Cj4g
+ICNpbmNsdWRlIDxkbS5oPgo+ICAjaW5jbHVkZSA8cG93ZXIvcmVndWxhdG9yLmg+Cj4gLSNpbmNs
+dWRlIDxzcGwuaD4KPgo+ICBpbnQgYm9hcmRfaW5pdCh2b2lkKQo+ICB7Cj4gQEAgLTE4LDEwICsx
+NywzIEBAIGludCBib2FyZF9pbml0KHZvaWQpCj4KPiAgICAgICAgIHJldHVybiAwOwo+ICB9Cj4g
+LQo+IC12b2lkIHNwbF9ib2FyZF9pbml0KHZvaWQpCj4gLXsKPiAtICAgICAgIHByZWxvYWRlcl9j
+b25zb2xlX2luaXQoKTsKPiAtCj4gLSAgICAgICByZXR1cm47Cj4gLX0KPiAtLQo+IDIuMTguMC4z
+MjEuZ2ZmYzZmYTBlMwo+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KPiBVLUJvb3QgbWFpbGluZyBsaXN0Cj4gVS1Cb290QGxpc3RzLmRlbnguZGUKPiBo
+dHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxp
+c3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
