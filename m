@@ -1,174 +1,209 @@
-From: Vasily Khoruzhick <anarsoul@gmail.com>
-Subject: Re: [PATCH v2 2/8] rockchip: rk3399: Support common
-	spl_board_init
-Date: Wed, 27 Nov 2019 20:30:50 -0800
-Message-ID: <CA+E=qVcCTvW-tR_Okk-naeTR4yNKRnKmY=rPLUSmusazF+eaXQ@mail.gmail.com>
-References: <20190620185506.11449-1-jagan@amarulasolutions.com>
- <20190620185506.11449-3-jagan@amarulasolutions.com>
+From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: split rk3399-rockpro64 for v2 and
+ v2.1 boards
+Date: Thu, 28 Nov 2019 14:24:37 +0900
+Message-ID: <0e187cef-c263-cb04-325c-43968fa77047@katsuster.net>
+References: <20191126165529.30703-1-katsuhiro@katsuster.net>
+ <CA+E=qVcqu7OJayOdrEXRaWYW1JBhJKk7dPDTEJtCD-hDAKohxg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20190620185506.11449-3-jagan@amarulasolutions.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: linux-rockchip@lists.infradead.org, U-Boot Mailing List <u-boot@lists.denx.de>, linux-amarula@amarulasolutions.com
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CA+E=qVcqu7OJayOdrEXRaWYW1JBhJKk7dPDTEJtCD-hDAKohxg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Vasily Khoruzhick <anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, arm-linux <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBKdW4gMjAsIDIwMTkgYXQgMTE6NTcgQU0gSmFnYW4gVGVraSA8amFnYW5AYW1hcnVs
-YXNvbHV0aW9ucy5jb20+IHdyb3RlOgo+Cj4gU3VwcG9ydCBjb21tb24gc3BsX2JvYXJkX2luaXQg
-YnkgbW92aW5nIGNvZGUgZnJvbSBwdW1hCj4gYm9hcmQgZmlsZSBpbnRvLCBjb21tb24gcmszMzk5
-LWJvYXJkLXNwbC5jLgo+Cj4gUGFydCBvZiB0aGUgY29kZSBoYXMgc3lzcmVzZXQtZ3BpbywgcmVn
-dWxhdG9yc19lbmFibGVfYm9vdF9vbgo+IGJ1dCByaWdodCBub3cgb25seSBwdW1hIGJvYXJkIGlz
-IHVzaW5nIHRoaXMgd2l0aCByZWxldmFudAo+IGNvbmZpZyBvcHRpb25zIHJlc3QgcmVtYWlucyBj
-b21tb24gZm9yIGFsbCB0YXJnZXRzLgo+Cj4gU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVraSA8amFn
-YW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gLS0tCj4gIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAv
-cmszMzk5LWJvYXJkLXNwbC5jICAgICB8IDYzICsrKysrKysrKysrKysrKysrKysKPiAgYm9hcmQv
-cm9ja2NoaXAvZXZiX3JrMzM5OS9ldmItcmszMzk5LmMgICAgICAgIHwgIDggLS0tCj4gIC4uLi9w
-dW1hX3JrMzM5OS9wdW1hLXJrMzM5OS5jICAgICAgICAgICAgICAgICB8IDU4IC0tLS0tLS0tLS0t
-LS0tLS0tCj4gIGJvYXJkL3ZhbXJzL3JvY2s5NjBfcmszMzk5L3JvY2s5NjAtcmszMzk5LmMgICB8
-ICA4IC0tLQo+ICA0IGZpbGVzIGNoYW5nZWQsIDYzIGluc2VydGlvbnMoKyksIDc0IGRlbGV0aW9u
-cygtKQo+Cj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMzk5LWJvYXJk
-LXNwbC5jIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMzOTktYm9hcmQtc3BsLmMKPiBpbmRl
-eCA4MDBjYTgwMDIyLi42NWM5OGI2OTdkIDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtL21hY2gtcm9j
-a2NoaXAvcmszMzk5LWJvYXJkLXNwbC5jCj4gKysrIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9y
-azMzOTktYm9hcmQtc3BsLmMKPiBAQCAtMTEsMTMgKzExLDE2IEBACj4gICNpbmNsdWRlIDxzcGwu
-aD4KPiAgI2luY2x1ZGUgPHNwbF9ncGlvLmg+Cj4gICNpbmNsdWRlIDxzeXNjb24uaD4KPiArI2lu
-Y2x1ZGUgPGFzbS9ncGlvLmg+Cj4gICNpbmNsdWRlIDxhc20vaW8uaD4KPiAgI2luY2x1ZGUgPGFz
-bS9hcmNoLXJvY2tjaGlwL2Jvb3Ryb20uaD4KPiAgI2luY2x1ZGUgPGFzbS9hcmNoLXJvY2tjaGlw
-L2Nsb2NrLmg+Cj4gKyNpbmNsdWRlIDxhc20vYXJjaC1yb2NrY2hpcC9jcnVfcmszMzk5Lmg+Cj4g
-ICNpbmNsdWRlIDxhc20vYXJjaC1yb2NrY2hpcC9ncmZfcmszMzk5Lmg+Cj4gICNpbmNsdWRlIDxh
-c20vYXJjaC1yb2NrY2hpcC9oYXJkd2FyZS5oPgo+ICAjaW5jbHVkZSA8YXNtL2FyY2gtcm9ja2No
-aXAvcGVyaXBoLmg+Cj4gICNpbmNsdWRlIDxhc20vYXJjaC1yb2NrY2hpcC9zeXNfcHJvdG8uaD4K
-PiArI2luY2x1ZGUgPHBvd2VyL3JlZ3VsYXRvci5oPgo+ICAjaW5jbHVkZSA8ZG0vcGluY3RybC5o
-Pgo+Cj4gIHZvaWQgYm9hcmRfcmV0dXJuX3RvX2Jvb3Ryb20odm9pZCkKPiBAQCAtMjAyLDYgKzIw
-NSw2NiBAQCB2b2lkIGJvYXJkX2luaXRfZih1bG9uZyBkdW1teSkKPiAgICAgICAgIH0KPiAgfQo+
-Cj4gKyNpZiBkZWZpbmVkKFNQTF9HUElPX1NVUFBPUlQpCgpUaGF0IGhhc24ndCBiZWVuIGNvbXBp
-bGUgdGVzdGVkIHNpbmNlICJkZWZpbmVkKFNQTF9HUElPX1NVUFBPUlQpIgplbnN1cmVzIHRoYXQg
-dGhpcyBjb2RlIG5ldmVyIGNvbXBpbGVzLgoKSXQgc2hvdWxkIGJlIENPTkZJR19TUExfR1BJT19T
-VVBQT1JUIGluc3RlYWQsIGFuZCBpdCB3b24ndCBjb21waWxlIGR1ZQp0byBtaXNzaW5nIGhlYWRl
-ciBpbiB0aGlzIGNhc2UuCgpVbmZvcnR1bmF0ZWx5IGNvZGUgd29uJ3Qgd29yayBldmVuIHdpdGgg
-bWlzc2luZyBpbmNsdWRlIGFkZGVkIHNpbmNlCnNvbWV0aGluZyBlbHNlIGlzIGJyb2tlbiBhbmQg
-aXQgZmFpbHMgdG8gcmVxdWVzdCBncGlvLgoKPiArc3RhdGljIHZvaWQgcmszMzk5X2ZvcmNlX3Bv
-d2VyX29uX3Jlc2V0KHZvaWQpCj4gK3sKPiArICAgICAgIG9mbm9kZSBub2RlOwo+ICsgICAgICAg
-c3RydWN0IGdwaW9fZGVzYyBzeXNyZXNldF9ncGlvOwo+ICsKPiArICAgICAgIGRlYnVnKCIlczog
-dHJ5aW5nIHRvIGZvcmNlIGEgcG93ZXItb24gcmVzZXRcbiIsIF9fZnVuY19fKTsKPiArCj4gKyAg
-ICAgICBub2RlID0gb2Zub2RlX3BhdGgoIi9jb25maWciKTsKPiArICAgICAgIGlmICghb2Zub2Rl
-X3ZhbGlkKG5vZGUpKSB7Cj4gKyAgICAgICAgICAgICAgIGRlYnVnKCIlczogbm8gL2NvbmZpZyBu
-b2RlP1xuIiwgX19mdW5jX18pOwo+ICsgICAgICAgICAgICAgICByZXR1cm47Cj4gKyAgICAgICB9
-Cj4gKwo+ICsgICAgICAgaWYgKGdwaW9fcmVxdWVzdF9ieV9uYW1lX25vZGV2KG5vZGUsICJzeXNy
-ZXNldC1ncGlvIiwgMCwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAm
-c3lzcmVzZXRfZ3BpbywgR1BJT0RfSVNfT1VUKSkgewo+ICsgICAgICAgICAgICAgICBkZWJ1Zygi
-JXM6IGNvdWxkIG5vdCBmaW5kIGEgL2NvbmZpZy9zeXNyZXNldC1ncGlvXG4iLCBfX2Z1bmNfXyk7
-Cj4gKyAgICAgICAgICAgICAgIHJldHVybjsKPiArICAgICAgIH0KPiArCj4gKyAgICAgICBkbV9n
-cGlvX3NldF92YWx1ZSgmc3lzcmVzZXRfZ3BpbywgMSk7Cj4gK30KPiArI2VuZGlmCj4gKwo+ICt2
-b2lkIHNwbF9ib2FyZF9pbml0KHZvaWQpCj4gK3sKPiArI2lmIGRlZmluZWQoU1BMX0dQSU9fU1VQ
-UE9SVCkKPiArICAgICAgIHN0cnVjdCByazMzOTlfY3J1ICpjcnUgPSByb2NrY2hpcF9nZXRfY3J1
-KCk7Cj4gKwo+ICsgICAgICAgLyoKPiArICAgICAgICAqIFRoZSBSSzMzOTkgcmVzZXRzIG9ubHkg
-J2FsbW9zdCBhbGwgbG9naWMnIChzZWUgYWxzbyBpbiB0aGUgVFJNCj4gKyAgICAgICAgKiAiMy45
-LjQgR2xvYmFsIHNvZnR3YXJlIHJlc2V0IiksIHdoZW4gaXNzdWluZyBhIHNvZnR3YXJlIHJlc2V0
-Lgo+ICsgICAgICAgICogVGhpcyBtYXkgY2F1c2UgaXNzdWVzIGR1cmluZyBib290LXVwIGZvciBz
-b21lIGNvbmZpZ3VyYXRpb25zIG9mCj4gKyAgICAgICAgKiB0aGUgYXBwbGljYXRpb24gc29mdHdh
-cmUgc3RhY2suCj4gKyAgICAgICAgKgo+ICsgICAgICAgICogVG8gd29yayBhcm91bmQgdGhpcywg
-d2UgdGVzdCB3aGV0aGVyIHRoZSBsYXN0IHJlc2V0IHJlYXNvbiB3YXMKPiArICAgICAgICAqIGEg
-cG93ZXItb24gcmVzZXQgYW5kIChpZiBub3QpIGlzc3VlIGFuIG92ZXJ0ZW1wLXJlc2V0IHRvIHJl
-c2V0Cj4gKyAgICAgICAgKiB0aGUgZW50aXJlIG1vZHVsZS4KPiArICAgICAgICAqCj4gKyAgICAg
-ICAgKiBXaGlsZSB0aGlzIHdhcyBwcmV2aW91c2x5IGZpeGVkIGJ5IG1vZGlmeWluZyB0aGUgdmFy
-aW91cyBwbGFjZXMKPiArICAgICAgICAqIHRoYXQgY291bGQgZ2VuZXJhdGUgYSBzb2Z0d2FyZSBy
-ZXNldCAoZS5nLiBVLUJvb3QncyBzeXNyZXNldAo+ICsgICAgICAgICogZHJpdmVyLCB0aGUgQVRG
-IG9yIExpbnV4KSwgd2Ugbm93IGhhdmUgaXQgaGVyZSB0byBlbnN1cmUgdGhhdAo+ICsgICAgICAg
-ICogd2Ugbm8gbG9uZ2VyIGhhdmUgdG8gdHJhY2sgdGhpcyB0aHJvdWdoIHRoZSB2YXJpb3VzIGNv
-bXBvbmVudHMuCj4gKyAgICAgICAgKi8KPiArICAgICAgIGlmIChjcnUtPmdsYl9yc3Rfc3QgIT0g
-MCkKPiArICAgICAgICAgICAgICAgcmszMzk5X2ZvcmNlX3Bvd2VyX29uX3Jlc2V0KCk7Cj4gKyNl
-bmRpZgo+ICsKPiArI2lmIGRlZmluZWQoU1BMX0RNX1JFR1VMQVRPUikKPiArICAgICAgIC8qCj4g
-KyAgICAgICAgKiBUdXJuaW5nIHRoZSBlTU1DIGFuZCBTUEkgYmFjayBvbiAoaWYgZGlzYWJsZWQg
-dmlhIHRoZSBRc2V2ZW4KPiArICAgICAgICAqIEJJT1NfRU5BQkxFKSBzaWduYWwgaXMgZG9uZSB0
-aHJvdWdoIGEgYWx3YXlzLW9uIHJlZ3VsYXRvcikuCj4gKyAgICAgICAgKi8KPiArICAgICAgIGlm
-IChyZWd1bGF0b3JzX2VuYWJsZV9ib290X29uKGZhbHNlKSkKPiArICAgICAgICAgICAgICAgZGVi
-dWcoIiVzOiBDYW5ub3QgZW5hYmxlIGJvb3Qgb24gcmVndWxhdG9yXG4iLCBfX2Z1bmNfXyk7Cj4g
-KyNlbmRpZgo+ICsKPiArICAgICAgIHByZWxvYWRlcl9jb25zb2xlX2luaXQoKTsKPiArfQo+ICsK
-PiAgI2lmZGVmIENPTkZJR19TUExfTE9BRF9GSVQKPiAgaW50IGJvYXJkX2ZpdF9jb25maWdfbmFt
-ZV9tYXRjaChjb25zdCBjaGFyICpuYW1lKQo+ICB7Cj4gZGlmZiAtLWdpdCBhL2JvYXJkL3JvY2tj
-aGlwL2V2Yl9yazMzOTkvZXZiLXJrMzM5OS5jIGIvYm9hcmQvcm9ja2NoaXAvZXZiX3JrMzM5OS9l
-dmItcmszMzk5LmMKPiBpbmRleCA3NjliNWQxNDZmLi5jNjAwNTUzZmY2IDEwMDY0NAo+IC0tLSBh
-L2JvYXJkL3JvY2tjaGlwL2V2Yl9yazMzOTkvZXZiLXJrMzM5OS5jCj4gKysrIGIvYm9hcmQvcm9j
-a2NoaXAvZXZiX3JrMzM5OS9ldmItcmszMzk5LmMKPiBAQCAtOCw3ICs4LDYgQEAKPiAgI2luY2x1
-ZGUgPGRtL3BpbmN0cmwuaD4KPiAgI2luY2x1ZGUgPGFzbS9hcmNoLXJvY2tjaGlwL3BlcmlwaC5o
-Pgo+ICAjaW5jbHVkZSA8cG93ZXIvcmVndWxhdG9yLmg+Cj4gLSNpbmNsdWRlIDxzcGwuaD4KPgo+
-ICBpbnQgYm9hcmRfaW5pdCh2b2lkKQo+ICB7Cj4gQEAgLTY0LDEwICs2MywzIEBAIGludCBib2Fy
-ZF9pbml0KHZvaWQpCj4gIG91dDoKPiAgICAgICAgIHJldHVybiAwOwo+ICB9Cj4gLQo+IC12b2lk
-IHNwbF9ib2FyZF9pbml0KHZvaWQpCj4gLXsKPiAtICAgICAgIHByZWxvYWRlcl9jb25zb2xlX2lu
-aXQoKTsKPiAtCj4gLSAgICAgICByZXR1cm47Cj4gLX0KPiBkaWZmIC0tZ2l0IGEvYm9hcmQvdGhl
-b2Jyb21hLXN5c3RlbXMvcHVtYV9yazMzOTkvcHVtYS1yazMzOTkuYyBiL2JvYXJkL3RoZW9icm9t
-YS1zeXN0ZW1zL3B1bWFfcmszMzk5L3B1bWEtcmszMzk5LmMKPiBpbmRleCBjNmI1MDljMTA5Li4y
-NTFjZDJkNTY2IDEwMDY0NAo+IC0tLSBhL2JvYXJkL3RoZW9icm9tYS1zeXN0ZW1zL3B1bWFfcmsz
-Mzk5L3B1bWEtcmszMzk5LmMKPiArKysgYi9ib2FyZC90aGVvYnJvbWEtc3lzdGVtcy9wdW1hX3Jr
-MzM5OS9wdW1hLXJrMzM5OS5jCj4gQEAgLTEzLDEwICsxMyw4IEBACj4gICNpbmNsdWRlIDxkbS9w
-aW5jdHJsLmg+Cj4gICNpbmNsdWRlIDxkbS91Y2xhc3MtaW50ZXJuYWwuaD4KPiAgI2luY2x1ZGUg
-PGFzbS9pby5oPgo+IC0jaW5jbHVkZSA8YXNtL2dwaW8uaD4KPiAgI2luY2x1ZGUgPGFzbS9zZXR1
-cC5oPgo+ICAjaW5jbHVkZSA8YXNtL2FyY2gtcm9ja2NoaXAvY2xvY2suaD4KPiAtI2luY2x1ZGUg
-PGFzbS9hcmNoLXJvY2tjaGlwL2NydV9yazMzOTkuaD4KPiAgI2luY2x1ZGUgPGFzbS9hcmNoLXJv
-Y2tjaGlwL2hhcmR3YXJlLmg+Cj4gICNpbmNsdWRlIDxhc20vYXJjaC1yb2NrY2hpcC9ncmZfcmsz
-Mzk5Lmg+Cj4gICNpbmNsdWRlIDxhc20vYXJjaC1yb2NrY2hpcC9wZXJpcGguaD4KPiBAQCAtMzgs
-NjIgKzM2LDYgQEAgaW50IGJvYXJkX2luaXQodm9pZCkKPiAgICAgICAgIHJldHVybiAwOwo+ICB9
-Cj4KPiAtc3RhdGljIHZvaWQgcmszMzk5X2ZvcmNlX3Bvd2VyX29uX3Jlc2V0KHZvaWQpCj4gLXsK
-PiAtICAgICAgIG9mbm9kZSBub2RlOwo+IC0gICAgICAgc3RydWN0IGdwaW9fZGVzYyBzeXNyZXNl
-dF9ncGlvOwo+IC0KPiAtICAgICAgIGRlYnVnKCIlczogdHJ5aW5nIHRvIGZvcmNlIGEgcG93ZXIt
-b24gcmVzZXRcbiIsIF9fZnVuY19fKTsKPiAtCj4gLSAgICAgICBub2RlID0gb2Zub2RlX3BhdGgo
-Ii9jb25maWciKTsKPiAtICAgICAgIGlmICghb2Zub2RlX3ZhbGlkKG5vZGUpKSB7Cj4gLSAgICAg
-ICAgICAgICAgIGRlYnVnKCIlczogbm8gL2NvbmZpZyBub2RlP1xuIiwgX19mdW5jX18pOwo+IC0g
-ICAgICAgICAgICAgICByZXR1cm47Cj4gLSAgICAgICB9Cj4gLQo+IC0gICAgICAgaWYgKGdwaW9f
-cmVxdWVzdF9ieV9uYW1lX25vZGV2KG5vZGUsICJzeXNyZXNldC1ncGlvIiwgMCwKPiAtICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmc3lzcmVzZXRfZ3BpbywgR1BJT0RfSVNf
-T1VUKSkgewo+IC0gICAgICAgICAgICAgICBkZWJ1ZygiJXM6IGNvdWxkIG5vdCBmaW5kIGEgL2Nv
-bmZpZy9zeXNyZXNldC1ncGlvXG4iLCBfX2Z1bmNfXyk7Cj4gLSAgICAgICAgICAgICAgIHJldHVy
-bjsKPiAtICAgICAgIH0KPiAtCj4gLSAgICAgICBkbV9ncGlvX3NldF92YWx1ZSgmc3lzcmVzZXRf
-Z3BpbywgMSk7Cj4gLX0KPiAtCj4gLXZvaWQgc3BsX2JvYXJkX2luaXQodm9pZCkKPiAtewo+IC0g
-ICAgICAgaW50ICByZXQ7Cj4gLSAgICAgICBzdHJ1Y3QgcmszMzk5X2NydSAqY3J1ID0gcm9ja2No
-aXBfZ2V0X2NydSgpOwo+IC0KPiAtICAgICAgIC8qCj4gLSAgICAgICAgKiBUaGUgUkszMzk5IHJl
-c2V0cyBvbmx5ICdhbG1vc3QgYWxsIGxvZ2ljJyAoc2VlIGFsc28gaW4gdGhlIFRSTQo+IC0gICAg
-ICAgICogIjMuOS40IEdsb2JhbCBzb2Z0d2FyZSByZXNldCIpLCB3aGVuIGlzc3VpbmcgYSBzb2Z0
-d2FyZSByZXNldC4KPiAtICAgICAgICAqIFRoaXMgbWF5IGNhdXNlIGlzc3VlcyBkdXJpbmcgYm9v
-dC11cCBmb3Igc29tZSBjb25maWd1cmF0aW9ucyBvZgo+IC0gICAgICAgICogdGhlIGFwcGxpY2F0
-aW9uIHNvZnR3YXJlIHN0YWNrLgo+IC0gICAgICAgICoKPiAtICAgICAgICAqIFRvIHdvcmsgYXJv
-dW5kIHRoaXMsIHdlIHRlc3Qgd2hldGhlciB0aGUgbGFzdCByZXNldCByZWFzb24gd2FzCj4gLSAg
-ICAgICAgKiBhIHBvd2VyLW9uIHJlc2V0IGFuZCAoaWYgbm90KSBpc3N1ZSBhbiBvdmVydGVtcC1y
-ZXNldCB0byByZXNldAo+IC0gICAgICAgICogdGhlIGVudGlyZSBtb2R1bGUuCj4gLSAgICAgICAg
-Kgo+IC0gICAgICAgICogV2hpbGUgdGhpcyB3YXMgcHJldmlvdXNseSBmaXhlZCBieSBtb2RpZnlp
-bmcgdGhlIHZhcmlvdXMgcGxhY2VzCj4gLSAgICAgICAgKiB0aGF0IGNvdWxkIGdlbmVyYXRlIGEg
-c29mdHdhcmUgcmVzZXQgKGUuZy4gVS1Cb290J3Mgc3lzcmVzZXQKPiAtICAgICAgICAqIGRyaXZl
-ciwgdGhlIEFURiBvciBMaW51eCksIHdlIG5vdyBoYXZlIGl0IGhlcmUgdG8gZW5zdXJlIHRoYXQK
-PiAtICAgICAgICAqIHdlIG5vIGxvbmdlciBoYXZlIHRvIHRyYWNrIHRoaXMgdGhyb3VnaCB0aGUg
-dmFyaW91cyBjb21wb25lbnRzLgo+IC0gICAgICAgICovCj4gLSAgICAgICBpZiAoY3J1LT5nbGJf
-cnN0X3N0ICE9IDApCj4gLSAgICAgICAgICAgICAgIHJrMzM5OV9mb3JjZV9wb3dlcl9vbl9yZXNl
-dCgpOwo+IC0KPiAtICAgICAgIC8qCj4gLSAgICAgICAgKiBUdXJuaW5nIHRoZSBlTU1DIGFuZCBT
-UEkgYmFjayBvbiAoaWYgZGlzYWJsZWQgdmlhIHRoZSBRc2V2ZW4KPiAtICAgICAgICAqIEJJT1Nf
-RU5BQkxFKSBzaWduYWwgaXMgZG9uZSB0aHJvdWdoIGEgYWx3YXlzLW9uIHJlZ3VsYXRvcikuCj4g
-LSAgICAgICAgKi8KPiAtICAgICAgIHJldCA9IHJlZ3VsYXRvcnNfZW5hYmxlX2Jvb3Rfb24oZmFs
-c2UpOwo+IC0gICAgICAgaWYgKHJldCkKPiAtICAgICAgICAgICAgICAgZGVidWcoIiVzOiBDYW5u
-b3QgZW5hYmxlIGJvb3Qgb24gcmVndWxhdG9yXG4iLCBfX2Z1bmNfXyk7Cj4gLQo+IC0gICAgICAg
-cHJlbG9hZGVyX2NvbnNvbGVfaW5pdCgpOwo+IC19Cj4gLQo+ICBzdGF0aWMgdm9pZCBzZXR1cF9t
-YWNhZGRyKHZvaWQpCj4gIHsKPiAgI2lmIENPTkZJR19JU19FTkFCTEVEKENNRF9ORVQpCj4gZGlm
-ZiAtLWdpdCBhL2JvYXJkL3ZhbXJzL3JvY2s5NjBfcmszMzk5L3JvY2s5NjAtcmszMzk5LmMgYi9i
-b2FyZC92YW1ycy9yb2NrOTYwX3JrMzM5OS9yb2NrOTYwLXJrMzM5OS5jCj4gaW5kZXggMDE4ZTRi
-NTViOC4uMmViNzEyMGU4NCAxMDA2NDQKPiAtLS0gYS9ib2FyZC92YW1ycy9yb2NrOTYwX3JrMzM5
-OS9yb2NrOTYwLXJrMzM5OS5jCj4gKysrIGIvYm9hcmQvdmFtcnMvcm9jazk2MF9yazMzOTkvcm9j
-azk2MC1yazMzOTkuYwo+IEBAIC02LDcgKzYsNiBAQAo+ICAjaW5jbHVkZSA8Y29tbW9uLmg+Cj4g
-ICNpbmNsdWRlIDxkbS5oPgo+ICAjaW5jbHVkZSA8cG93ZXIvcmVndWxhdG9yLmg+Cj4gLSNpbmNs
-dWRlIDxzcGwuaD4KPgo+ICBpbnQgYm9hcmRfaW5pdCh2b2lkKQo+ICB7Cj4gQEAgLTE4LDEwICsx
-NywzIEBAIGludCBib2FyZF9pbml0KHZvaWQpCj4KPiAgICAgICAgIHJldHVybiAwOwo+ICB9Cj4g
-LQo+IC12b2lkIHNwbF9ib2FyZF9pbml0KHZvaWQpCj4gLXsKPiAtICAgICAgIHByZWxvYWRlcl9j
-b25zb2xlX2luaXQoKTsKPiAtCj4gLSAgICAgICByZXR1cm47Cj4gLX0KPiAtLQo+IDIuMTguMC4z
-MjEuZ2ZmYzZmYTBlMwo+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KPiBVLUJvb3QgbWFpbGluZyBsaXN0Cj4gVS1Cb290QGxpc3RzLmRlbnguZGUKPiBo
-dHRwczovL2xpc3RzLmRlbnguZGUvbGlzdGluZm8vdS1ib290Cl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fClUtQm9vdCBtYWlsaW5nIGxpc3QKVS1Cb290QGxp
-c3RzLmRlbnguZGUKaHR0cHM6Ly9saXN0cy5kZW54LmRlL2xpc3RpbmZvL3UtYm9vdAo=
+Hi Vasily,
+
+On 2019/11/27 11:24, Vasily Khoruzhick wrote:
+> On Tue, Nov 26, 2019 at 8:55 AM Katsuhiro Suzuki
+> <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org> wrote:
+> 
+> Hi Katsuhiro,
+> 
+>> This patch splits rk3399-rockpro64 dts file to 2 files for v2 and
+>> v2.1 boards.
+> 
+> Thanks for the patch!
+> 
+>> Both v2 and v2.1 boards can use almost same settings but we find a
+>> difference in I2C address of audio CODEC ES8136.
+> 
+> I'd prefer to avoid moving and renaming dts files since it can cause a
+> mess if you don't upgrade your bootloader.
+> 
+> Can we use existing rk3399-rockpro64.dts for v2.1 (and change model
+> name accordingly) and introduce new dts for v2.0?
+> 
+
+OK, so rk3399-rockpro64.dts always follows the newest board version
+(currently for v2.1) and v2.1.dts will be split out if more newer
+board is released from Pine64.
+
+I'll re-post a patch.
+
+Best Regards,
+Katsuhiro Suzuki
+
+
+> Regards,
+> Vasily
+> 
+> 
+>> Reported-by: Vasily Khoruzhick <anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+>> Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+>> ---
+>>   arch/arm64/boot/dts/rockchip/Makefile         |  3 +-
+>>   .../dts/rockchip/rk3399-rockpro64-v2.1.dts    | 30 +++++++++++++++++++
+>>   .../boot/dts/rockchip/rk3399-rockpro64-v2.dts | 30 +++++++++++++++++++
+>>   ...99-rockpro64.dts => rk3399-rockpro64.dtsi} | 18 -----------
+>>   4 files changed, 62 insertions(+), 19 deletions(-)
+>>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.1.dts
+>>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.dts
+>>   rename arch/arm64/boot/dts/rockchip/{rk3399-rockpro64.dts => rk3399-rockpro64.dtsi} (97%)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+>> index 48fb631d5451..3debaeb517fd 100644
+>> --- a/arch/arm64/boot/dts/rockchip/Makefile
+>> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+>> @@ -33,6 +33,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc.dtb
+>>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc-mezzanine.dtb
+>>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4.dtb
+>>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock960.dtb
+>> -dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64.dtb
+>> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64-v2.dtb
+>> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64-v2.1.dtb
+>>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire.dtb
+>>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire-excavator.dtb
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.1.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.1.dts
+>> new file mode 100644
+>> index 000000000000..9450207bedad
+>> --- /dev/null
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.1.dts
+>> @@ -0,0 +1,30 @@
+>> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+>> +/*
+>> + * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd.
+>> + * Copyright (c) 2018 Akash Gajjar <Akash_Gajjar-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>
+>> + * Copyright (c) 2019 Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+>> + */
+>> +
+>> +/dts-v1/;
+>> +#include "rk3399-rockpro64.dtsi"
+>> +
+>> +/ {
+>> +       model = "Pine64 RockPro64 v2.1";
+>> +       compatible = "pine64,rockpro64", "rockchip,rk3399";
+>> +};
+>> +
+>> +&i2c1 {
+>> +       es8316: codec@11 {
+>> +               compatible = "everest,es8316";
+>> +               reg = <0x11>;
+>> +               clocks = <&cru SCLK_I2S_8CH_OUT>;
+>> +               clock-names = "mclk";
+>> +               #sound-dai-cells = <0>;
+>> +
+>> +               port {
+>> +                       es8316_p0_0: endpoint {
+>> +                               remote-endpoint = <&i2s1_p0_0>;
+>> +                       };
+>> +               };
+>> +       };
+>> +};
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.dts
+>> new file mode 100644
+>> index 000000000000..7bd37eaa1d57
+>> --- /dev/null
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.dts
+>> @@ -0,0 +1,30 @@
+>> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+>> +/*
+>> + * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd.
+>> + * Copyright (c) 2018 Akash Gajjar <Akash_Gajjar-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>
+>> + * Copyright (c) 2019 Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+>> + */
+>> +
+>> +/dts-v1/;
+>> +#include "rk3399-rockpro64.dtsi"
+>> +
+>> +/ {
+>> +       model = "Pine64 RockPro64 v2";
+>> +       compatible = "pine64,rockpro64", "rockchip,rk3399";
+>> +};
+>> +
+>> +&i2c1 {
+>> +       es8316: codec@10 {
+>> +               compatible = "everest,es8316";
+>> +               reg = <0x10>;
+>> +               clocks = <&cru SCLK_I2S_8CH_OUT>;
+>> +               clock-names = "mclk";
+>> +               #sound-dai-cells = <0>;
+>> +
+>> +               port {
+>> +                       es8316_p0_0: endpoint {
+>> +                               remote-endpoint = <&i2s1_p0_0>;
+>> +                       };
+>> +               };
+>> +       };
+>> +};
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+>> similarity index 97%
+>> rename from arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+>> rename to arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+>> index 7f4b2eba31d4..183eda4ffb9c 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+>> @@ -4,16 +4,12 @@
+>>    * Copyright (c) 2018 Akash Gajjar <Akash_Gajjar-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>
+>>    */
+>>
+>> -/dts-v1/;
+>>   #include <dt-bindings/input/linux-event-codes.h>
+>>   #include <dt-bindings/pwm/pwm.h>
+>>   #include "rk3399.dtsi"
+>>   #include "rk3399-opp.dtsi"
+>>
+>>   / {
+>> -       model = "Pine64 RockPro64";
+>> -       compatible = "pine64,rockpro64", "rockchip,rk3399";
+>> -
+>>          chosen {
+>>                  stdout-path = "serial2:1500000n8";
+>>          };
+>> @@ -476,20 +472,6 @@ &i2c1 {
+>>          i2c-scl-rising-time-ns = <300>;
+>>          i2c-scl-falling-time-ns = <15>;
+>>          status = "okay";
+>> -
+>> -       es8316: codec@11 {
+>> -               compatible = "everest,es8316";
+>> -               reg = <0x11>;
+>> -               clocks = <&cru SCLK_I2S_8CH_OUT>;
+>> -               clock-names = "mclk";
+>> -               #sound-dai-cells = <0>;
+>> -
+>> -               port {
+>> -                       es8316_p0_0: endpoint {
+>> -                               remote-endpoint = <&i2s1_p0_0>;
+>> -                       };
+>> -               };
+>> -       };
+>>   };
+>>
+>>   &i2c3 {
+>> --
+>> 2.24.0
+>>
+> 
