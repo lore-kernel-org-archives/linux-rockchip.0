@@ -1,78 +1,149 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix IOMMU second clock name
-Date: Mon, 02 Dec 2019 18:36:13 +0100
-Message-ID: <2612427.5nXUCueWBK@diego>
-References: <20191202170028.26169-1-miquel.raynal@bootlin.com>
+From: Sam Ravnborg <sam@ravnborg.org>
+Subject: [PATCH v1 0/26] drm/panel infrastructure + backlight update
+Date: Mon,  2 Dec 2019 20:32:04 +0100
+Message-ID: <20191202193230.21310-1-sam@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191202170028.26169-1-miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, Jagan Teki <jagan@amarulasolutions.com>, NXP Linux Team <linux-imx@nxp.com>, Jitao Shi <jitao.shi@mediatek.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, Abhinav Kumar <abhinavk@codeaurora.org>, linux-tegra@vger.kernel.org, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, Purism Kernel Team <kernel@puri.sm>, linux-renesas-soc@vger.kernel.org, Boris Brezillon <boris.brezillon@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Miquel,
-
-Am Montag, 2. Dezember 2019, 18:00:28 CET schrieb Miquel Raynal:
-> By precedence, both the IOMMU driver and the bindings in the doc
-> impose two clocks to be filled in Rockchip device trees featuring an
-> IOMMU:
-> * The AXI clock called 'aclk'.
-> * The main peripheral bus clock (PCLK/HCL) called 'iface'.
-> 
-> Currently, the second clock in px30.dtsi is called 'hclk' and this
-> produces the following errors at boot:
-> 
->         rk_iommu ff460f00.iommu: Failed to get clk 'iface': -2
->         rk_iommu ff470f00.iommu: Failed to get clk 'iface': -2
-> 
-> Fix the PX30 device tree by renaming the second misnamed clock. The
-> issue has not been reported before probably because the clk_get() call
-> is optional for backward DT compatibility reasons.
-> 
-> Fixes: 7053e06b1422 ("arm64: dts: rockchip: add core dtsi file for PX30 SoCs")
-> Signed-off-by: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-
-A similar for that issue is already on its way into mainline for 5.5:
-https://git.kernel.org/pub/scm/linux/kernel/git/arm/arm-soc.git/commit/?h=for-next&id=8e57eed2047b9361deb8c5dc4cc3d4e679c5ce50
-
-Heiko
-
-
-> ---
->  arch/arm64/boot/dts/rockchip/px30.dtsi | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-> index eb992d60e6ba..1fd12bd09e83 100644
-> --- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-> @@ -831,7 +831,7 @@
->  		interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "vopb_mmu";
->  		clocks = <&cru ACLK_VOPB>, <&cru HCLK_VOPB>;
-> -		clock-names = "aclk", "hclk";
-> +		clock-names = "aclk", "iface";
->  		power-domains = <&power PX30_PD_VO>;
->  		#iommu-cells = <0>;
->  		status = "disabled";
-> @@ -863,7 +863,7 @@
->  		interrupts = <GIC_SPI 79 IRQ_TYPE_LEVEL_HIGH>;
->  		interrupt-names = "vopl_mmu";
->  		clocks = <&cru ACLK_VOPL>, <&cru HCLK_VOPL>;
-> -		clock-names = "aclk", "hclk";
-> +		clock-names = "aclk", "iface";
->  		power-domains = <&power PX30_PD_VO>;
->  		#iommu-cells = <0>;
->  		status = "disabled";
-> 
+VGhpcyBwYXRjaHNldCBpbmNsdWRlIGEgY291cGxlIG9mIGRpZmZlcmVudAp0aGluZ3MgLSBhbGwg
+cmVsYXRlZCB0byBwYW5lbHMuCgotIFRoZSBwYW5lbCBjYWxsYmFja3MgYXJlIG9wdGlvbmFsIC0g
+c28gZHJvcCBlcnJvciBpZgogIGNhbGxiYWNrIGlzIG5vdCBwcmVzZW50LgogCi0gQWRkIHN1cHBv
+cnQgZm9yIGJhY2tsaWdodCBpbiBkcm1fcGFuZWwuCiAgVGhpcyBhbGxvd3MgdXMgdG8gbWFrZSBt
+dWNoIHNpbXBsZXIgYmFja2xpZ2h0CiAgc3VwcG9ydCB0byBtb3N0IHBhbmVscy4KICBUaGUgcGF0
+Y2hzZXQgaW5jbHVkZSBjb252ZXJzaW9uIG9mIG1vc3Qgb2YgdGhlCiAgdHJpdmlhbCBjYXNlcy4K
+Ci0gRHJvcCBkcm1fY29ubmVjdG9yIGZyb20gZHJtX3BhbmVsLgogIFRoaXMgY2hhbmdlIHJlcXVp
+cmVkIG1hbnkgY2hhbmdlcyB0byBtb3N0CiAgcGFuZWxzIGFuZCBtYW55IGJyaWRnZXMgYW5kIGRp
+c3BsYXkgZHJpdmVycy4KICBUaGlzIGlzIGJ5IGZhciB0aGUgbW9zdCBpbnZhc2l2ZSBjaGFuZ2Ug
+aW4gdGhpcyBwYXRjaHNldC4KCi0gRHJvcCB0aGUgdW51c2VkIGdldF90aW1pbmdzKCkgY2FsbGJh
+Y2suCiAgTm8gdXNlcnMsIHNvIG5vIG5lZWQgdG8ga2VlcCBpdCBhcm91bmQuCgpXaXRoIHRoaXMg
+cGF0Y2hzZXQgZHJtX3BhbmVsXyhhdHRhY2h8ZGV0YWNoKSBhcmUgbm9wJ3MKYnV0IHRoZXkgYXJl
+IGtlcHQgZm9yIG5vdy4KCkEgZmV3IG9mIHRoZXNlIHBhdGNoZXMgaGFzIGJlZW4gc2VudCBvdXQg
+YmVmb3JlIC0gYnV0IHZlcnNpb25pbmcKc3RhcnRlZCBhZ2FpbiBmcm9tIHYxIC0gYXMgdGhlIG1v
+c3QgcGF0Y2hlcyBhcmUgbmV3LgoKSSBoYXZlIHRlc3RlZCB0aGUgcGFuZWwtc2ltcGxlIGNoYW5n
+ZXMsIGFuZCB0aHVzIHNvbWUKb2YgdGhlIGluZnJhc3RydWN0dXJlIGNoYW5nZXMuClRoZSB0ZXN0
+aW5nIHdhcyBkb25lIG9uIGFuIGVhcmxpZXIgaXRlcmF0aW9uIC0gYW5kIEkgZW5kZWQKdXAgc3Vi
+bWl0dGluZyB0aGlzIGFzIExhdXJlbnQgYW5kIG90aGVycyBzdGFydGVkIHRvIGRlcGVuZCBvbiBp
+dC4KSml0YW8gaGFzIGEgcGF0Y2ggdG8gYWRkIG1vcmUgY2FsbGJhY2tzLCBhbmQgSSB3YW50ZWQg
+dGhlCnNpbXBsaWZpY2F0aW9uIG9mIHRoZSBjYWxsYmFja3MgYmVmb3JlIHdlIGFkZCBtb3JlIGNh
+bGxiYWNrcy4KCglTYW0KCgpTYW0gUmF2bmJvcmcgKDI2KToKICAgICAgZHJtL2RybV9wYW5lbDog
+bm8gZXJyb3Igd2hlbiBubyBjYWxsYmFjawogICAgICBkcm0vcGFuZWw6IGFkZCBiYWNrbGlnaHQg
+c3VwcG9ydAogICAgICBkcm0vcGFuZWw6IHNpbXBsZTogdXNlIGRybV9wYW5lbCBiYWNrbGlnaHQg
+c3VwcG9ydAogICAgICBkcm06IGdldCBkcm1fYnJpZGdlX3BhbmVsIGNvbm5lY3RvciB2aWEgaGVs
+cGVyCiAgICAgIGRybS9wYW5lbDogYWRkIGRybV9jb25uZWN0b3IgYXJndW1lbnQgdG8gZ2V0X21v
+ZGVzKCkKICAgICAgZHJtL3BhbmVsOiBkZWNvdXBsZSBjb25uZWN0b3IgZnJvbSBkcm1fcGFuZWwK
+ICAgICAgZHJtL3BhbmVsOiByZW1vdmUgZ2V0X3RpbWluZ3MKICAgICAgZHJtL3BhbmVsOiBkcm9w
+IGRybV9kZXZpY2UgZnJvbSBkcm1fcGFuZWwKICAgICAgZHJtL3BhbmVsOiBmZWl5YW5nLWZ5MDcw
+MjRkaTI2YTMwZDogdXNlIGRybV9wYW5lbCBiYWNrbGlnaHQgc3VwcG9ydAogICAgICBkcm0vcGFu
+ZWw6IGlsaXRlay1pbGk5ODgxYzogdXNlIGRybV9wYW5lbCBiYWNrbGlnaHQgc3VwcG9ydAogICAg
+ICBkcm0vcGFuZWw6IGlubm9sdXgtcDA3OXpjYTogdXNlIGRybV9wYW5lbCBiYWNrbGlnaHQgc3Vw
+cG9ydAogICAgICBkcm0vcGFuZWw6IGtpbmdkaXNwbGF5LWtkMDk3ZDA0OiB1c2UgZHJtX3BhbmVs
+IGJhY2tsaWdodCBzdXBwb3J0CiAgICAgIGRybS9wYW5lbDogbHZkczogdXNlIGRybV9wYW5lbCBi
+YWNrbGlnaHQgc3VwcG9ydAogICAgICBkcm0vcGFuZWw6IG9saW1leC1sY2Qtb2xpbnV4aW5vOiB1
+c2UgZHJtX3BhbmVsIGJhY2tsaWdodCBzdXBwb3J0CiAgICAgIGRybS9wYW5lbDogb3NkLW9zZDEw
+MXQyNTg3LTUzdHM6IHVzZSBkcm1fcGFuZWwgYmFja2xpZ2h0IHN1cHBvcnQKICAgICAgZHJtL3Bh
+bmVsOiBwYW5hc29uaWMtdnZ4MTBmMDM0bjAwOiB1c2UgZHJtX3BhbmVsIGJhY2tsaWdodCBzdXBw
+b3J0CiAgICAgIGRybS9wYW5lbDogcmF5ZGl1bS1ybTY4MjAwOiB1c2UgZHJtX3BhbmVsIGJhY2ts
+aWdodCBzdXBwb3J0CiAgICAgIGRybS9wYW5lbDogcm9ja3RlY2gtamgwNTduMDA5MDA6IHVzZSBk
+cm1fcGFuZWwgYmFja2xpZ2h0IHN1cHBvcnQKICAgICAgZHJtL3BhbmVsOiByb25iby1yYjA3MGQz
+MDogdXNlIGRybV9wYW5lbCBiYWNrbGlnaHQgc3VwcG9ydAogICAgICBkcm0vcGFuZWw6IHNlaWtv
+LTQzd3ZmMWc6IHVzZSBkcm1fcGFuZWwgYmFja2xpZ2h0IHN1cHBvcnQKICAgICAgZHJtL3BhbmVs
+OiBzaGFycC1scTEwMXIxc3gwMTogdXNlIGRybV9wYW5lbCBiYWNrbGlnaHQgc3VwcG9ydAogICAg
+ICBkcm0vcGFuZWw6IHNoYXJwLWxzMDQzdDFsZTAxOiB1c2UgZHJtX3BhbmVsIGJhY2tsaWdodCBz
+dXBwb3J0CiAgICAgIGRybS9wYW5lbDogc2l0cm9uaXgtc3Q3NzAxOiB1c2UgZHJtX3BhbmVsIGJh
+Y2tsaWdodCBzdXBwb3J0CiAgICAgIGRybS9wYW5lbDogc2l0cm9uaXgtc3Q3Nzg5djogdXNlIGRy
+bV9wYW5lbCBiYWNrbGlnaHQgc3VwcG9ydAogICAgICBkcm0vcGFuZWw6IHRwby10ZDAyOHR0ZWMx
+OiB1c2UgZHJtX3BhbmVsIGJhY2tsaWdodCBzdXBwb3J0CiAgICAgIGRybS9wYW5lbDogdHBvLXRw
+ZzExMDogdXNlIGRybV9wYW5lbCBiYWNrbGlnaHQgc3VwcG9ydAoKIGRyaXZlcnMvZ3B1L2RybS9i
+cmlkZ2UvYW5hbG9naXgvYW5hbG9naXgtYW54NjM0NS5jIHwgICAyICstCiBkcml2ZXJzL2dwdS9k
+cm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyB8ICAgMiArLQogZHJpdmVycy9n
+cHUvZHJtL2JyaWRnZS9wYW5lbC5jICAgICAgICAgICAgICAgICAgICAgfCAgMTggKysrLQogZHJp
+dmVycy9ncHUvZHJtL2JyaWRnZS9wYXJhZGUtcHM4NjIyLmMgICAgICAgICAgICAgfCAgIDIgKy0K
+IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvdGMzNTg3NjQuYyAgICAgICAgICAgICAgICAgIHwgICAy
+ICstCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3RjMzU4NzY3LmMgICAgICAgICAgICAgICAgICB8
+ICAgMiArLQogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS90aS1zbjY1ZHNpODYuYyAgICAgICAgICAg
+ICAgfCAgIDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9kcm1fcGFuZWwuYyAgICAgICAgICAgICAgICAg
+ICAgICAgIHwgIDk2ICsrKysrKysrKysrKysrLS0tLQogZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9l
+eHlub3NfZHJtX2RwaS5jICAgICAgICAgICAgfCAgIDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9leHlu
+b3MvZXh5bm9zX2RybV9kc2kuYyAgICAgICAgICAgIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0v
+ZnNsLWRjdS9mc2xfZGN1X2RybV9yZ2IuYyAgICAgICAgICB8ICAgMiArLQogZHJpdmVycy9ncHUv
+ZHJtL2lteC9pbXgtbGRiLmMgICAgICAgICAgICAgICAgICAgICAgfCAgIDIgKy0KIGRyaXZlcnMv
+Z3B1L2RybS9pbXgvcGFyYWxsZWwtZGlzcGxheS5jICAgICAgICAgICAgIHwgICAyICstCiBkcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jICAgICAgICAgICAgICAgICB8ICAgMiArLQog
+Li4uL2dwdS9kcm0vbXNtL2Rpc3AvbWRwNC9tZHA0X2x2ZHNfY29ubmVjdG9yLmMgICAgfCAgIDIg
+Ky0KIGRyaXZlcnMvZ3B1L2RybS9tc20vZHNpL2RzaV9tYW5hZ2VyLmMgICAgICAgICAgICAgIHwg
+ICAyICstCiBkcml2ZXJzL2dwdS9kcm0vbXhzZmIvbXhzZmJfb3V0LmMgICAgICAgICAgICAgICAg
+ICB8ICAgMiArLQogZHJpdmVycy9ncHUvZHJtL29tYXBkcm0vb21hcF9jb25uZWN0b3IuYyAgICAg
+ICAgICAgfCAgIDMgKy0KIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1hcm0tdmVyc2F0aWxl
+LmMgICAgICAgIHwgICA2ICstCiAuLi4vZ3B1L2RybS9wYW5lbC9wYW5lbC1mZWl5YW5nLWZ5MDcw
+MjRkaTI2YTMwZC5jICB8ICAxNiArKy0KIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1pbGl0
+ZWstaWxpOTMyMi5jICAgICAgIHwgIDIwICsrLS0KIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5l
+bC1pbGl0ZWstaWxpOTg4MWMuYyAgICAgIHwgIDI5ICsrLS0tLQogZHJpdmVycy9ncHUvZHJtL3Bh
+bmVsL3BhbmVsLWlubm9sdXgtcDA3OXpjYS5jICAgICAgfCAgNDUgKysrLS0tLS0tCiBkcml2ZXJz
+L2dwdS9kcm0vcGFuZWwvcGFuZWwtamRpLWx0MDcwbWUwNTAwMC5jICAgICB8ICAxMSArKy0KIGRy
+aXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1raW5nZGlzcGxheS1rZDA5N2QwNC5jIHwgIDQzICsr
+Ky0tLS0tCiBkcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtbGctbGIwMzVxMDIuYyAgICAgICAg
+ICB8ICAgNiArLQogZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLWxnLWxnNDU3My5jICAgICAg
+ICAgICAgfCAgMTIgKy0tCiBkcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtbHZkcy5jICAgICAg
+ICAgICAgICAgICB8ICA0NiArKy0tLS0tLS0KIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1u
+ZWMtbmw4MDQ4aGwxMS5jICAgICAgIHwgICA2ICstCiBkcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFu
+ZWwtbm92YXRlay1udDM5MDE2LmMgICAgICB8ICAgNiArLQogZHJpdmVycy9ncHUvZHJtL3BhbmVs
+L3BhbmVsLW9saW1leC1sY2Qtb2xpbnV4aW5vLmMgfCAgMjcgKystLS0KIGRyaXZlcnMvZ3B1L2Ry
+bS9wYW5lbC9wYW5lbC1vcmlzZXRlY2gtb3RtODAwOWEuYyAgIHwgIDExICsrLQogZHJpdmVycy9n
+cHUvZHJtL3BhbmVsL3BhbmVsLW9zZC1vc2QxMDF0MjU4Ny01M3RzLmMgfCAgMzcgKysrLS0tLQog
+Li4uL2dwdS9kcm0vcGFuZWwvcGFuZWwtcGFuYXNvbmljLXZ2eDEwZjAzNG4wMC5jICAgfCAgNTgg
+KysrLS0tLS0tLS0KIC4uLi9ncHUvZHJtL3BhbmVsL3BhbmVsLXJhc3BiZXJyeXBpLXRvdWNoc2Ny
+ZWVuLmMgIHwgICA5ICstCiBkcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtcmF5ZGl1bS1ybTY3
+MTkxLmMgICAgICB8ICAgOCArLQogZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXJheWRpdW0t
+cm02ODIwMC5jICAgICAgfCAgMjYgKysrLS0KIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1y
+b2NrdGVjaC1qaDA1N24wMDkwMC5jIHwgIDM1ICsrKy0tLS0KIGRyaXZlcnMvZ3B1L2RybS9wYW5l
+bC9wYW5lbC1yb25iby1yYjA3MGQzMC5jICAgICAgIHwgIDMxICsrLS0tLQogZHJpdmVycy9ncHUv
+ZHJtL3BhbmVsL3BhbmVsLXNhbXN1bmctbGQ5MDQwLmMgICAgICAgfCAgIDQgKy0KIGRyaXZlcnMv
+Z3B1L2RybS9wYW5lbC9wYW5lbC1zYW1zdW5nLXM2ZDE2ZDAuYyAgICAgIHwgICA2ICstCiBkcml2
+ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtc2Ftc3VuZy1zNmUzaGEyLmMgICAgICB8ICAgNiArLQog
+ZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNhbXN1bmctczZlNjNqMHgwMy5jICAgfCAgIDYg
+Ky0KIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zYW1zdW5nLXM2ZTYzbTAuYyAgICAgIHwg
+ICA2ICstCiBkcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtc2Ftc3VuZy1zNmU4YWEwLmMgICAg
+ICB8ICAgNCArLQogZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNlaWtvLTQzd3ZmMWcuYyAg
+ICAgICAgfCAgNzIgKysrLS0tLS0tLS0tLS0KIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1z
+aGFycC1scTEwMXIxc3gwMS5jICAgIHwgIDM0ICsrKy0tLS0KIGRyaXZlcnMvZ3B1L2RybS9wYW5l
+bC9wYW5lbC1zaGFycC1sczAzN3Y3ZHcwMS5jICAgIHwgICA2ICstCiBkcml2ZXJzL2dwdS9kcm0v
+cGFuZWwvcGFuZWwtc2hhcnAtbHMwNDN0MWxlMDEuYyAgICB8ICAzMyArKystLS0tCiBkcml2ZXJz
+L2dwdS9kcm0vcGFuZWwvcGFuZWwtc2ltcGxlLmMgICAgICAgICAgICAgICB8IDExMCArKysrKyst
+LS0tLS0tLS0tLS0tLS0KIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1zaXRyb25peC1zdDc3
+MDEuYyAgICAgIHwgIDIzICsrLS0tCiBkcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtc2l0cm9u
+aXgtc3Q3Nzg5di5jICAgICB8ICA0OSArKy0tLS0tLS0KIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC9w
+YW5lbC1zb255LWFjeDU2NWFrbS5jICAgICAgIHwgICA2ICstCiBkcml2ZXJzL2dwdS9kcm0vcGFu
+ZWwvcGFuZWwtdHBvLXRkMDI4dHRlYzEuYyAgICAgICB8ICAyMCArKy0tCiBkcml2ZXJzL2dwdS9k
+cm0vcGFuZWwvcGFuZWwtdHBvLXRkMDQzbXRlYTEuYyAgICAgICB8ICAgNiArLQogZHJpdmVycy9n
+cHUvZHJtL3BhbmVsL3BhbmVsLXRwby10cGcxMTAuYyAgICAgICAgICAgfCAgMjYgKystLS0KIGRy
+aXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC10cnVseS1udDM1NTk3LmMgICAgICAgIHwgICA0ICst
+CiBkcml2ZXJzL2dwdS9kcm0vcGwxMTEvcGwxMTFfZHJ2LmMgICAgICAgICAgICAgICAgICB8ICAg
+MiArLQogZHJpdmVycy9ncHUvZHJtL3JjYXItZHUvcmNhcl9sdmRzLmMgICAgICAgICAgICAgICAg
+fCAgIDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMgICAgICAg
+ICAgIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0vc3RpL3N0aV9kdm8uYyAgICAgICAgICAgICAg
+ICAgICAgICB8ICAgMiArLQogZHJpdmVycy9ncHUvZHJtL3N1bjRpL3N1bjRpX2x2ZHMuYyAgICAg
+ICAgICAgICAgICAgfCAgIDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9yZ2IuYyAg
+ICAgICAgICAgICAgICAgIHwgICAyICstCiBkcml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuNmlfbWlw
+aV9kc2kuYyAgICAgICAgICAgICB8ICAgMiArLQogZHJpdmVycy9ncHUvZHJtL3RlZ3JhL291dHB1
+dC5jICAgICAgICAgICAgICAgICAgICAgfCAgIDIgKy0KIGRyaXZlcnMvZ3B1L2RybS90dmUyMDAv
+dHZlMjAwX2Rydi5jICAgICAgICAgICAgICAgIHwgICAyICstCiBpbmNsdWRlL2RybS9kcm1fYnJp
+ZGdlLmggICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMSArCiBpbmNsdWRlL2RybS9kcm1f
+cGFuZWwuaCAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICA0OSArKysrLS0tLS0KIDY4IGZp
+bGVzIGNoYW5nZWQsIDQ2MCBpbnNlcnRpb25zKCspLCA2NjQgZGVsZXRpb25zKC0pCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
+bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
