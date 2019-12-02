@@ -1,78 +1,73 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: [PATCH v1 18/26] drm/panel: rocktech-jh057n00900: use drm_panel
- backlight support
-Date: Mon,  2 Dec 2019 20:32:22 +0100
-Message-ID: <20191202193230.21310-19-sam@ravnborg.org>
-References: <20191202193230.21310-1-sam@ravnborg.org>
+From: Adrian Ratiu <adrian.ratiu@collabora.com>
+Subject: [PATCH v4 0/4] Genericize DW MIPI DSI bridge and add i.MX 6 driver
+Date: Mon,  2 Dec 2019 21:33:55 +0200
+Message-ID: <20191202193359.703709-1-adrian.ratiu@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191202193230.21310-1-sam@ravnborg.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, Sam Ravnborg <sam@ravnborg.org>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, Jagan Teki <jagan@amarulasolutions.com>, =?UTF-8?q?Guido=20G=C3=BCnther?= <agx@sigxcpu.org>, NXP Linux Team <linux-imx@nxp.com>, Jitao Shi <jitao.shi@mediatek.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, Abhinav Kumar <abhinavk@codeaurora.org>, linux-tegra@vger.kernel.org, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, Purism Kernel Team <kernel@puri.sm>, linux-renesas-soc@vger.kernel.org, Boris Brezillon <boris.brezillon@collabora.com>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-rockchip@lists.infradead.org
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-imx@nxp.com
 List-Id: linux-rockchip.vger.kernel.org
 
-VXNlIHRoZSBiYWNrbGlnaHQgc3VwcG9ydCBpbiBkcm1fcGFuZWwgdG8gc2ltcGxpZnkgdGhlIGRy
-aXZlci4KV2hpbGUgdG91Y2hpbmcgdGhlIGluY2x1ZGUgZmlsZXMgc29ydCB0aGVtCmFuZCBkaXZp
-ZGUgdGhlbSB1cCBpbiBibG9ja3MuCgpTaWduZWQtb2ZmLWJ5OiBTYW0gUmF2bmJvcmcgPHNhbUBy
-YXZuYm9yZy5vcmc+CkNjOiAiR3VpZG8gR8O8bnRoZXIiIDxhZ3hAc2lneGNwdS5vcmc+CkNjOiBQ
-dXJpc20gS2VybmVsIFRlYW0gPGtlcm5lbEBwdXJpLnNtPgpDYzogVGhpZXJyeSBSZWRpbmcgPHRo
-aWVycnkucmVkaW5nQGdtYWlsLmNvbT4KQ2M6IFNhbSBSYXZuYm9yZyA8c2FtQHJhdm5ib3JnLm9y
-Zz4KLS0tCiAuLi4vZHJtL3BhbmVsL3BhbmVsLXJvY2t0ZWNoLWpoMDU3bjAwOTAwLmMgICAgfCAy
-NCArKysrKysrKystLS0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygrKSwg
-MTIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVs
-LXJvY2t0ZWNoLWpoMDU3bjAwOTAwLmMgYi9kcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtcm9j
-a3RlY2gtamgwNTduMDA5MDAuYwppbmRleCAzYTRmMWMwZmNlODYuLjM4ZmY3NDJiYzEyMCAxMDA2
-NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXJvY2t0ZWNoLWpoMDU3bjAwOTAw
-LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXJvY2t0ZWNoLWpoMDU3bjAwOTAw
-LmMKQEAgLTUsMjAgKzUsMjIgQEAKICAqIENvcHlyaWdodCAoQykgUHVyaXNtIFNQQyAyMDE5CiAg
-Ki8KIAotI2luY2x1ZGUgPGRybS9kcm1fbWlwaV9kc2kuaD4KLSNpbmNsdWRlIDxkcm0vZHJtX21v
-ZGVzLmg+Ci0jaW5jbHVkZSA8ZHJtL2RybV9wYW5lbC5oPgotI2luY2x1ZGUgPGRybS9kcm1fcHJp
-bnQuaD4KLSNpbmNsdWRlIDxsaW51eC9iYWNrbGlnaHQuaD4KICNpbmNsdWRlIDxsaW51eC9kZWJ1
-Z2ZzLmg+CiAjaW5jbHVkZSA8bGludXgvZGVsYXkuaD4KICNpbmNsdWRlIDxsaW51eC9ncGlvL2Nv
-bnN1bWVyLmg+CiAjaW5jbHVkZSA8bGludXgvbWVkaWEtYnVzLWZvcm1hdC5oPgorI2luY2x1ZGUg
-PGxpbnV4L21vZF9kZXZpY2V0YWJsZS5oPgogI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgogI2lu
-Y2x1ZGUgPGxpbnV4L3JlZ3VsYXRvci9jb25zdW1lci5oPgorCiAjaW5jbHVkZSA8dmlkZW8vZGlz
-cGxheV90aW1pbmcuaD4KICNpbmNsdWRlIDx2aWRlby9taXBpX2Rpc3BsYXkuaD4KIAorI2luY2x1
-ZGUgPGRybS9kcm1fbWlwaV9kc2kuaD4KKyNpbmNsdWRlIDxkcm0vZHJtX21vZGVzLmg+CisjaW5j
-bHVkZSA8ZHJtL2RybV9wYW5lbC5oPgorI2luY2x1ZGUgPGRybS9kcm1fcHJpbnQuaD4KKwogI2Rl
-ZmluZSBEUlZfTkFNRSAicGFuZWwtcm9ja3RlY2gtamgwNTduMDA5MDAiCiAKIC8qIE1hbnVmYWN0
-dXJlciBzcGVjaWZpYyBDb21tYW5kcyBzZW5kIHZpYSBEU0kgKi8KQEAgLTQ3LDcgKzQ5LDYgQEAg
-c3RydWN0IGpoMDU3biB7CiAJc3RydWN0IGRldmljZSAqZGV2OwogCXN0cnVjdCBkcm1fcGFuZWwg
-cGFuZWw7CiAJc3RydWN0IGdwaW9fZGVzYyAqcmVzZXRfZ3BpbzsKLQlzdHJ1Y3QgYmFja2xpZ2h0
-X2RldmljZSAqYmFja2xpZ2h0OwogCXN0cnVjdCByZWd1bGF0b3IgKnZjYzsKIAlzdHJ1Y3QgcmVn
-dWxhdG9yICppb3ZjYzsKIAlib29sIHByZXBhcmVkOwpAQCAtMTUyLDcgKzE1Myw3IEBAIHN0YXRp
-YyBpbnQgamgwNTduX2VuYWJsZShzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCkKIAkJcmV0dXJuIHJl
-dDsKIAl9CiAKLQlyZXR1cm4gYmFja2xpZ2h0X2VuYWJsZShjdHgtPmJhY2tsaWdodCk7CisJcmV0
-dXJuIDA7CiB9CiAKIHN0YXRpYyBpbnQgamgwNTduX2Rpc2FibGUoc3RydWN0IGRybV9wYW5lbCAq
-cGFuZWwpCkBAIC0xNjAsNyArMTYxLDYgQEAgc3RhdGljIGludCBqaDA1N25fZGlzYWJsZShzdHJ1
-Y3QgZHJtX3BhbmVsICpwYW5lbCkKIAlzdHJ1Y3QgamgwNTduICpjdHggPSBwYW5lbF90b19qaDA1
-N24ocGFuZWwpOwogCXN0cnVjdCBtaXBpX2RzaV9kZXZpY2UgKmRzaSA9IHRvX21pcGlfZHNpX2Rl
-dmljZShjdHgtPmRldik7CiAKLQliYWNrbGlnaHRfZGlzYWJsZShjdHgtPmJhY2tsaWdodCk7CiAJ
-cmV0dXJuIG1pcGlfZHNpX2Rjc19zZXRfZGlzcGxheV9vZmYoZHNpKTsKIH0KIApAQCAtMzIxLDEw
-ICszMjEsNiBAQCBzdGF0aWMgaW50IGpoMDU3bl9wcm9iZShzdHJ1Y3QgbWlwaV9kc2lfZGV2aWNl
-ICpkc2kpCiAJZHNpLT5tb2RlX2ZsYWdzID0gTUlQSV9EU0lfTU9ERV9WSURFTyB8CiAJCU1JUElf
-RFNJX01PREVfVklERU9fQlVSU1QgfCBNSVBJX0RTSV9NT0RFX1ZJREVPX1NZTkNfUFVMU0U7CiAK
-LQljdHgtPmJhY2tsaWdodCA9IGRldm1fb2ZfZmluZF9iYWNrbGlnaHQoZGV2KTsKLQlpZiAoSVNf
-RVJSKGN0eC0+YmFja2xpZ2h0KSkKLQkJcmV0dXJuIFBUUl9FUlIoY3R4LT5iYWNrbGlnaHQpOwot
-CiAJY3R4LT52Y2MgPSBkZXZtX3JlZ3VsYXRvcl9nZXQoZGV2LCAidmNjIik7CiAJaWYgKElTX0VS
-UihjdHgtPnZjYykpIHsKIAkJcmV0ID0gUFRSX0VSUihjdHgtPnZjYyk7CkBAIC0zNDcsNiArMzQz
-LDEwIEBAIHN0YXRpYyBpbnQgamgwNTduX3Byb2JlKHN0cnVjdCBtaXBpX2RzaV9kZXZpY2UgKmRz
-aSkKIAlkcm1fcGFuZWxfaW5pdCgmY3R4LT5wYW5lbCwgZGV2LCAmamgwNTduX2RybV9mdW5jcywK
-IAkJICAgICAgIERSTV9NT0RFX0NPTk5FQ1RPUl9EU0kpOwogCisJcmV0ID0gZHJtX3BhbmVsX29m
-X2JhY2tsaWdodCgmY3R4LT5wYW5lbCk7CisJaWYgKHJldCkKKwkJcmV0dXJuIHJldDsKKwogCWRy
-bV9wYW5lbF9hZGQoJmN0eC0+cGFuZWwpOwogCiAJcmV0ID0gbWlwaV9kc2lfYXR0YWNoKGRzaSk7
-Ci0tIAoyLjIwLjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
-ZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZl
-bA==
+Having a generic Synopsis DesignWare MIPI-DSI host controller bridge
+driver is a very good idea, however the current implementation has
+hardcoded quite a lot of the register layouts used by the two supported
+SoC vendors, STM and Rockchip, which use IP cores v1.30 and v1.31.
+
+This makes it hard to support other SoC vendors like the FSL/NXP i.MX 6
+which use older v1.01 cores or future versions because, based on history,
+layout changes should also be expected in new DSI versions / SoCs.
+
+This patch series converts the bridge and platform drivers to access
+registers via generic regmap APIs and allows each platform driver to
+configure its register layout via struct reg_fields, then adds support
+for the host controller found on i.MX 6.
+
+I only have i.MX hardware with MIPI-DSI panel and relevant documentation
+available for testing so I'll really appreciate it if someone could test
+the series on Rockchip and STM... eyeballing register fields could only
+get me so far, so sorry in advance for any breakage!
+
+Many thanks to Boris Brezillon <boris.brezillon@collabora.com> for
+suggesting the regmap solution and to Liu Ying <Ying.Liu@freescale.com>
+for doing the initial i.MX platform driver implementation.
+
+This series applies on top of latest linux-next tree, next-20191202.
+
+v3 -> v4:
+  * Added commmit message to dt-binding patch (Neil)
+  * Converted the dt-binding to yaml dt-schema format (Neil)
+  * Small DT node + driver fixes (Rob)
+  * Renamed platform driver to reflect it's only for i.MX v6 (Fabio)
+  * Added small panel example to the host controller DT binding
+
+v2 -> v3:
+  * Added const declarations to dw-mipi-dsi.c structs (Emil)
+  * Fixed Reviewed-by tags and cc'd some more relevant ML (Emil)
+
+v1 -> v2:
+  * Moved register definitions & regmap initialization into bridge
+  module. Platform drivers get the regmap via plat_data after calling
+  the bridge probe (Emil).
+
+Adrian Ratiu (4):
+  drm: bridge: dw_mipi_dsi: access registers via a regmap
+  drm: bridge: dw_mipi_dsi: abstract register access using reg_fields
+  drm: imx: Add i.MX 6 MIPI DSI host driver
+  dt-bindings: display: add i.MX6 MIPI DSI host controller doc
+
+ .../display/imx/fsl,mipi-dsi-imx6.yaml        | 136 ++++
+ drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 699 +++++++++++++-----
+ drivers/gpu/drm/imx/Kconfig                   |   7 +
+ drivers/gpu/drm/imx/Makefile                  |   1 +
+ drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c        | 378 ++++++++++
+ .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |  17 +-
+ drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         |  34 +-
+ include/drm/bridge/dw_mipi_dsi.h              |   2 +-
+ 8 files changed, 1067 insertions(+), 207 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
+ create mode 100644 drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c
+
+-- 
+2.24.0
