@@ -1,63 +1,38 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v1 07/26] drm/panel: remove get_timings
-Date: Tue, 3 Dec 2019 16:20:24 +0100
-Message-ID: <CACRpkdZrReQs08+bXS7s7eJ-K76nMGvRgQ-L-1-baunEtiF40g@mail.gmail.com>
-References: <20191202193230.21310-1-sam@ravnborg.org>
- <20191202193230.21310-8-sam@ravnborg.org>
- <20191203074659.ilsyv4yx7pzw5vax@gilmour.lan>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v4 8/8] linux/log2.h: Use roundup/dow_pow_two() on 64bit calculations
+Date: Tue, 3 Dec 2019 09:53:05 -0600
+Message-ID: <CAL_JsqLMCXdnZag3jihV_dzuR+wFaVKFb7q_PdKTxTg0LVA6cw@mail.gmail.com>
+References: <20191203114743.1294-1-nsaenzjulienne@suse.de> <20191203114743.1294-9-nsaenzjulienne@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191203074659.ilsyv4yx7pzw5vax@gilmour.lan>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, "open list:DRM PANEL DRIVERS" <dri-devel@lists.freedesktop.org>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sam Ravnborg <sam@ravnborg.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Tomi Valkeinen <tomi.valkeinen@ti.com>, NXP Linux Team <linux-imx@nxp.com>, Jagan Teki <jagan@amarulasolutions.com>, Jitao Shi <jitao.shi@mediatek.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Abhinav Kumar <abhinavk@codeaurora.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-tegra@vger.kernel.org, Sean Paul <sean@poorly.run>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Purism Kernel Team <kernel@puri.sm>Linux-Renesas <lin>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191203114743.1294-9-nsaenzjulienne@suse.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Cc: Andrew Murray <andrew.murray@arm.com>, Marc Zyngier <maz@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Hanjun Guo <guohanjun@huawei.com>, Sudeep Holla <sudeep.holla@arm.com>, Tariq Toukan <tariqt@mellanox.com>, Frank Rowand <frowand.list@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE" <bcm-kernel-feedback-list@broadcom.com>, Eric Anholt <eric@anholt.net>, Stefan Wahren <wahrenst@gmx.net>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>, Robin Murphy <robin.murphy@arm.com>, james.quinlan@broadcom.com, Matthias
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWF4aW1lLAoKT24gVHVlLCBEZWMgMywgMjAxOSBhdCA4OjQ3IEFNIE1heGltZSBSaXBhcmQg
-PG1yaXBhcmRAa2VybmVsLm9yZz4gd3JvdGU6Cgo+IFVzaW5nIG9ubHkgdGhlIG1vZGUgYXMgd2Ug
-ZG8gY3VycmVudGx5IGhhcyBhIGJ1bmNoIG9mIHNob3J0Y29taW5ncyBhcwo+IGFsbW9zdCBubyBl
-bmNvZGVyIHdpbGwgYmUgYWJsZSB0byBwcm92aWRlIHRoZSB0eXBpY2FsIHBpeGVsIGNsb2NrLCBh
-bmQKPiB0aGF0IHNpdHVhdGlvbiBsZWFkcyB0byBtdWx0aXBsZSB0aGluZ3M6Cj4KPiAgIC0gSWYg
-c29tZW9uZSB3b3JraW5nIG9uIG9uZSBlbmNvZGVyIHdhbnRzIHRvIHVwc3RyZWFtIGEgcGFuZWwg
-dGhleQo+ICAgICBoYXZlIHRlc3RlZCwgY2hhbmNlcyBhcmUgdGhpcyB3aWxsIG5vdCBiZSB0aGUg
-dHlwaWNhbCBwaXhlbCBjbG9jawo+ICAgICAvIHRpbWluZ3MgYmVpbmcgdXNlZCBidXQgcmF0aGVy
-IHRoZSBvbmUgdGhhdCB3aWxsIG1hdGNoIHdoYXQgdGhhdAo+ICAgICBTb0MgaXMgY2FwYWJsZSBv
-Zi4gVHJvdWJsZSBjb21lcyB3aGVuIGEgc2Vjb25kIHVzZXIgY29tZXMgaW4gd2l0aAo+ICAgICBh
-IGRpZmZlcmVudCBlbmNvZGVyIGFuZCBkaWZmZXJlbnQgY2FwYWJpbGl0aWVzLCBhbmQgdGhlbiB3
-ZSBoYXZlIGEKPiAgICAgbWFpbnRhaW5hbmNlIGZpZ2h0IG92ZXIgd2hpY2ggdGltaW5nIGlzIHRo
-ZSB0cnVlIHRpbWluZyAod2l0aCBhCj4gICAgIHNpZ25pZmljYW50IGNoYW5jZSB0aGF0IG5vbmUg
-b2YgdGhlbSBhcmUpLgo+Cj4gICAtIElmIHdlIGNhbid0IG1hdGNoIHRoZSBwaXhlbCBjbG9jaywg
-d2UgY3VycmVudGx5IGhhdmUgbm8gZWFzeSB3YXkKPiAgICAgdG8gbWFrZSB0aGUgdXN1YWwgbWVh
-c3VyZXMgb2YgcmVkdWNpbmcgLyBncm93aW5nIHRoZSBwb3JjaGVzIGFuZAo+ICAgICBibGFua2lu
-Z3MgYXJlYXMgdG8gbWF0Y2ggdGhlIHBpeGVsIGNsb2NrIHdlIGNhbiBwcm92aWRlLCBzaW5jZSB3
-ZQo+ICAgICBkb24ndCBoYXZlIGFuIGVhc3kgd2F5IHRvIGdldCB0aGUgdG9sZXJhbmNlIG9uIHRo
-b3NlIHRpbWluZ3MgZm9yIGEKPiAgICAgZ2l2ZW4gcGFuZWwuIFRoZXJlJ3Mgc29tZSBhZCBob2Mg
-c29sdXRpb25zIG9uIHNvbWUgZHJpdmVycyAoSQo+ICAgICB0aGluayB2YzQgaGFzIHRoYXQ/KSB0
-byBpZ25vcmUgdGhlIHBhbmVsIGFuZCBqdXN0IHBsYXkgYXJvdW5kIHdpdGgKPiAgICAgdGhlIHRp
-bWluZ3MsIGJ1dCBJIHRoaW5rIHRoaXMgc2hvdWxkIGJlIGdlbmVyYWxpc2VkLgoKSSd2ZSBiZWVu
-IGNvbmZ1c2VkIHdpdGggdGhlc2UgdGhpbmdzIGFzIHRoZXkgbG9vayB0b2RheSBhbmQgaXQgc2Vl
-bXMKdGhlIHdob2xlIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlIGNvdWxkIG5lZWQgc29tZSBpbXBy
-b3ZlbWVudD8KCklmIC5jbG9jayBpcyBzdXBwb3NlZCB0byBiZSBodG90YWwgKiB2dG90YWwgKiB2
-cmVmcmVzaCwgd2hhdCBpcyB0aGUKLmNsb2NrIGRvaW5nIHRoZXJlIGFueXdheS4KClNhZGx5IEkg
-YW0gdG9vIGluZXhwZXJpZW5jZWQgdG8gcmVhbGl6ZSB3aGVyZSB0aGUgdG9sZXJhbmNlcyBzaG91
-bGQKYmUgc3RhdGVkLCBidXQgSSBndWVzcyBqdXN0IHN0YXRpbmcgdGhhdCBoc3luY19zdGFydCBl
-dGMgYXJlIHR5cGljYWwsCnRoZW4gc3BlY2lmeSBzb21lIHRvbGVyYW5jZSBmb3IgZWFjaCB3b3Vs
-ZCBoZWxwIGEgYml0PwoKT24gdGhlIERTSSBkaXNwbGF5cyBpbiB2aWRlbyBtb2RlIHRoZXJlIGlz
-IGFsc28gdGhpcyBFT0wgYXJlYQp3aGljaCBzZWVtcyB0byBiZSB3aGVyZSB0aGUgbG9naWMgaXMg
-bm9ybWFsbHkganVzdCBpZGxpbmcgZm9yIGEKd2hpbGUsIHRoYXQgY2FuIGJlIGFkanVzdGVkIG9u
-IHNvbWUgaGFyZHdhcmUgYXMgd2VsbCwgYnV0CkkgZG9uJ3QgcXVpdGUgdW5kZXJzdGFuZCBpdCBh
-ZG1pdHRlZGx5LiBTb21ldGltZXMgSSB3b25kZXIgaWYKYW55b25lIHJlYWxseSB1bmRlcnN0YW5k
-cyBEU0kuLi4gOi8KCllvdXJzLApMaW51cyBXYWxsZWlqCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+On Tue, Dec 3, 2019 at 5:48 AM Nicolas Saenz Julienne
+<nsaenzjulienne@suse.de> wrote:
+>
+> The function now is safe to use while expecting a 64bit value. Use it
+> where relevant.
+
+What was wrong with the existing code? This is missing some context.
+
+> Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+> ---
+>  drivers/acpi/arm64/iort.c                        | 2 +-
+>  drivers/net/ethernet/mellanox/mlx4/en_clock.c    | 3 ++-
+>  drivers/of/device.c                              | 3 ++-
+
+In any case,
+
+Acked-by: Rob Herring <robh@kernel.org>
+
+>  drivers/pci/controller/cadence/pcie-cadence-ep.c | 3 ++-
+>  drivers/pci/controller/cadence/pcie-cadence.c    | 3 ++-
+>  drivers/pci/controller/pcie-brcmstb.c            | 3 ++-
+>  drivers/pci/controller/pcie-rockchip-ep.c        | 5 +++--
+>  kernel/dma/direct.c                              | 2 +-
+>  8 files changed, 15 insertions(+), 9 deletions(-)
