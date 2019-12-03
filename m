@@ -1,82 +1,52 @@
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Subject: Re: [PATCH v4 8/8] linux/log2.h: Use roundup/dow_pow_two() on 64bit
- calculations
-Date: Tue, 03 Dec 2019 17:06:43 +0100
-Message-ID: <d1c87c83f38e74f0c6b0692248fe88dfd2bdec3e.camel@suse.de>
-References: <20191203114743.1294-1-nsaenzjulienne@suse.de>
-         <20191203114743.1294-9-nsaenzjulienne@suse.de>
-         <CAL_JsqLMCXdnZag3jihV_dzuR+wFaVKFb7q_PdKTxTg0LVA6cw@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add libretech for
+ roc-pc binding
+Date: Tue, 3 Dec 2019 16:37:04 -0600
+Message-ID: <20191203223704.GA29109@bogus>
+References: <20191119185817.11216-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg="pgp-sha256";
-        protocol="application/pgp-signature"; boundary="=-VHC+bPmpbRjqhnK2ykxw"
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <CAL_JsqLMCXdnZag3jihV_dzuR+wFaVKFb7q_PdKTxTg0LVA6cw@mail.gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Andrew Murray <andrew.murray@arm.com>, Marc Zyngier <maz@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Hanjun Guo <guohanjun@huawei.com>, Sudeep Holla <sudeep.holla@arm.com>, Tariq Toukan <tariqt@mellanox.com>, Frank Rowand <frowand.list@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE" <bcm-kernel-feedback-list@broadcom.com>, Eric Anholt <eric@anholt.net>, Stefan Wahren <wahrenst@gmx.net>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>, Robin Murphy <robin.murphy@arm.com>, james.quinlan@broadcom.com, Matthias
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20191119185817.11216-1-jagan@amarulasolutions.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Levin Du <djw@t-chip.com.cn>, Akash Gajjar <akash@openedev.com>, Mark Rutland <mark.rutland@arm.com>, Da Xue <da@lessconfused.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-amarula@amarulasolutions.com
 List-Id: linux-rockchip.vger.kernel.org
 
+On Wed, Nov 20, 2019 at 12:28:16AM +0530, Jagan Teki wrote:
+> Though the ROC-PC is manufactured by firefly, it is co-designed
+> by libretch like other Libretech computer boards from allwinner,
+> amlogic does.
+> 
+> It is always meaningful to keep maintain those vendors who are
+> part of design participation, so add libretech roc-pc compatible
+> with existing binding.
 
---=-VHC+bPmpbRjqhnK2ykxw
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Maybe so, but this is pretty pointless if it's not different h/w. 
+Compatible strings are simply a h/w identifier.
 
-Hi Rob,
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index f7470ed1e17d..45728fd22af8 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -100,6 +100,7 @@ properties:
+>        - description: Firefly ROC-RK3399-PC
+>          items:
+>            - enum:
+> +              - libretech,roc-rk3399-pc
+>                - firefly,roc-rk3399-pc
+>                - firefly,roc-rk3399-pc-mezzanine
 
-On Tue, 2019-12-03 at 09:53 -0600, Rob Herring wrote:
-> On Tue, Dec 3, 2019 at 5:48 AM Nicolas Saenz Julienne
-> <nsaenzjulienne@suse.de> wrote:
-> > The function now is safe to use while expecting a 64bit value. Use it
-> > where relevant.
->=20
-> What was wrong with the existing code? This is missing some context.
+This doesn't match your change in the dts. file. The schema says there 
+are 2 strings with the first one being 1 of these 3.
 
-You're right, I'll update it.
-
-For most of files changed the benefit here is factoring out a common patter=
-n
-using the standard function roundup/down_pow_two() which now provides corre=
-ct
-64bit results.
-
-As for of/device.c and arm64/iort.c it's more of a readability enhancement.=
- I
-consider it's easier to understand than the current calculation as it abstr=
-acts
-the math.
-
-> > Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-> > ---
-> >  drivers/acpi/arm64/iort.c                        | 2 +-
-> >  drivers/net/ethernet/mellanox/mlx4/en_clock.c    | 3 ++-
-> >  drivers/of/device.c                              | 3 ++-
->=20
-> In any case,
->=20
-> Acked-by: Rob Herring <robh@kernel.org>
->=20
-
-Thanks!
-
-Regards,
-Nicolas
-
-
---=-VHC+bPmpbRjqhnK2ykxw
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl3miBMACgkQlfZmHno8
-x/5s+Af/a2icSd66GHrsABoMtUfJXpQclSae81ThRP5Bfx6+mK4Ty4en3T+IxOK+
-NPmneod0gjSfyqqQniFbEcmlKAd8wXyUnBCCi6urRvuqOWcw65h10DA3fQCivaOt
-NWn3FRWMlPZbBIAYr/XOcsdOOkbD+VaFE/PaBYmxU/rWaCLGMWpYYBhF/Vcm+ASd
-VPQ4g8AfxyGvQW9EgbmRTMC0k7kMP6qrpmgIjNWvUPyJ+8ytD2Zly2xvbVf9TqhX
-/PP/t19fWayTqhsg+B04K0aN0oriRqSFX44yvCOApKhLBSsF6Nyc40m2sreqKMYY
-98kwrOrux/Fb3OeV/Wzdhhh8VhH+Sg==
-=4wmf
------END PGP SIGNATURE-----
-
---=-VHC+bPmpbRjqhnK2ykxw--
+>            - const: rockchip,rk3399
+> -- 
+> 2.18.0.321.gffc6fa0e3
+> 
