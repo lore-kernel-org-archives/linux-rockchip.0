@@ -1,73 +1,90 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH] ARM: dts: rockchip: Add missing cpu operating points for
- rk3288-tinker
-Date: Tue, 3 Dec 2019 11:56:43 +0800
-Message-ID: <e94676c8-b759-6a30-8ef3-285fc0ba10a4@rock-chips.com>
-References: <20191202153540.26143-1-redchenjs@foxmail.com>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH v1 01/26] drm/drm_panel: no error when no callback
+Date: Tue, 3 Dec 2019 08:24:59 +0200
+Message-ID: <20191203062459.GA4730@pendragon.ideasonboard.com>
+References: <20191202193230.21310-1-sam@ravnborg.org>
+ <20191202193230.21310-2-sam@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191202153540.26143-1-redchenjs@foxmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jack Chen <redchenjs@foxmail.com>, heiko@sntech.de
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, Jack Chen <redchenjs@live.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20191202193230.21310-2-sam@ravnborg.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sam Ravnborg <sam@ravnborg.org>
+Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, NXP Linux Team <linux-imx@nxp.com>, Jagan Teki <jagan@amarulasolutions.com>, Jitao Shi <jitao.shi@mediatek.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, Abhinav Kumar <abhinavk@codeaurora.org>, linux-tegra@vger.kernel.org, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, Purism Kernel Team <kernel@puri.sm>, linux-renesas-soc@vger.kernel.org, Boris Brezillon <boris.brezillon@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jack,
-
-On 2019/12/2 下午11:35, Jack Chen wrote:
-> From: Jack Chen <redchenjs@live.com>
->
-> The Tinker Board / S devices use a special chip variant called rk3288-c
-> and use different operating points with a higher max frequency.
->
-> So add the missing operating points for Tinker Board / S devices, also
-> increase the vdd_cpu regulator-max-microvolt to 1400000 uV so that the
-> cpu can operate at 1.8 GHz.
->
-> Signed-off-by: Jack Chen <redchenjs@live.com>
-
-This patch looks good to me,
-
-
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-
-Thanks,
-- Kever
-> ---
->   arch/arm/boot/dts/rk3288-tinker.dtsi | 13 ++++++++++++-
->   1 file changed, 12 insertions(+), 1 deletion(-)
->
-> diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
-> index 81e4e953d4a4..09e83b3d5e7d 100644
-> --- a/arch/arm/boot/dts/rk3288-tinker.dtsi
-> +++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
-> @@ -113,6 +113,17 @@
->   	cpu0-supply = <&vdd_cpu>;
->   };
->   
-> +&cpu_opp_table {
-> +	opp-1704000000 {
-> +		opp-hz = /bits/ 64 <1704000000>;
-> +		opp-microvolt = <1350000>;
-> +	};
-> +	opp-1800000000 {
-> +		opp-hz = /bits/ 64 <1800000000>;
-> +		opp-microvolt = <1400000>;
-> +	};
-> +};
-> +
->   &gmac {
->   	assigned-clocks = <&cru SCLK_MAC>;
->   	assigned-clock-parents = <&ext_gmac>;
-> @@ -175,7 +186,7 @@
->   				regulator-always-on;
->   				regulator-boot-on;
->   				regulator-min-microvolt = <750000>;
-> -				regulator-max-microvolt = <1350000>;
-> +				regulator-max-microvolt = <1400000>;
->   				regulator-name = "vdd_arm";
->   				regulator-ramp-delay = <6000>;
->   				regulator-state-mem {
+SGkgU2FtLAoKVGhhbmsgeW91IGZvciB0aGUgcGF0Y2guCgpPbiBNb24sIERlYyAwMiwgMjAxOSBh
+dCAwODozMjowNVBNICswMTAwLCBTYW0gUmF2bmJvcmcgd3JvdGU6Cj4gVGhlIGNhbGxiYWNrcyBp
+biBkcm1fcGFuZWxfZnVuY3MgYXJlIG9wdGlvbmFsLCBzbyBkbyBub3QKPiByZXR1cm4gYW4gZXJy
+b3IganVzdCBiZWNhdXNlIG5vIGNhbGxiYWNrIGlzIGFzc2lnbmVkLgoKVW5sZXNzIEknbSBtaXN0
+YWtlbiB0aGUgY2FsbGJhY2tzIGFyZSBub3QgZG9jdW1lbnRlZCBhcyBvcHRpb25hbC4gU2hvdWxk
+CnRoaXMgYmUgZml4ZWQgdG9vID8KCj4gU2lnbmVkLW9mZi1ieTogU2FtIFJhdm5ib3JnIDxzYW1A
+cmF2bmJvcmcub3JnPgo+IENjOiBNYWFydGVuIExhbmtob3JzdCA8bWFhcnRlbi5sYW5raG9yc3RA
+bGludXguaW50ZWwuY29tPgo+IENjOiBNYXhpbWUgUmlwYXJkIDxtcmlwYXJkQGtlcm5lbC5vcmc+
+Cj4gQ2M6IFRoaWVycnkgUmVkaW5nIDx0aGllcnJ5LnJlZGluZ0BnbWFpbC5jb20+Cj4gQ2M6IFNh
+bSBSYXZuYm9yZyA8c2FtQHJhdm5ib3JnLm9yZz4KPiBDYzogRGF2aWQgQWlybGllIDxhaXJsaWVk
+QGxpbnV4LmllPgo+IENjOiBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3bGwuY2g+Cj4gLS0tCj4g
+IGRyaXZlcnMvZ3B1L2RybS9kcm1fcGFuZWwuYyB8IDM1ICsrKysrKysrKysrKysrKysrKysrKysr
+KystLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAyNSBpbnNlcnRpb25zKCspLCAxMCBkZWxl
+dGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5jIGIv
+ZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5jCj4gaW5kZXggZWQ3OTg1YzA1MzVhLi4yZDU5Y2Rk
+MDVlNTAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5jCj4gKysrIGIv
+ZHJpdmVycy9ncHUvZHJtL2RybV9wYW5lbC5jCj4gQEAgLTE1MSwxMCArMTUxLDEzIEBAIEVYUE9S
+VF9TWU1CT0woZHJtX3BhbmVsX2RldGFjaCk7Cj4gICAqLwo+ICBpbnQgZHJtX3BhbmVsX3ByZXBh
+cmUoc3RydWN0IGRybV9wYW5lbCAqcGFuZWwpCj4gIHsKPiAtCWlmIChwYW5lbCAmJiBwYW5lbC0+
+ZnVuY3MgJiYgcGFuZWwtPmZ1bmNzLT5wcmVwYXJlKQo+ICsJaWYgKCFwYW5lbCkKPiArCQlyZXR1
+cm4gLUVJTlZBTDsKPiArCj4gKwlpZiAocGFuZWwtPmZ1bmNzICYmIHBhbmVsLT5mdW5jcy0+cHJl
+cGFyZSkKPiAgCQlyZXR1cm4gcGFuZWwtPmZ1bmNzLT5wcmVwYXJlKHBhbmVsKTsKPiAgCj4gLQly
+ZXR1cm4gcGFuZWwgPyAtRU5PU1lTIDogLUVJTlZBTDsKPiArCXJldHVybiAwOwo+ICB9Cj4gIEVY
+UE9SVF9TWU1CT0woZHJtX3BhbmVsX3ByZXBhcmUpOwo+ICAKPiBAQCAtMTcxLDEwICsxNzQsMTMg
+QEAgRVhQT1JUX1NZTUJPTChkcm1fcGFuZWxfcHJlcGFyZSk7Cj4gICAqLwo+ICBpbnQgZHJtX3Bh
+bmVsX3VucHJlcGFyZShzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCkKPiAgewo+IC0JaWYgKHBhbmVs
+ICYmIHBhbmVsLT5mdW5jcyAmJiBwYW5lbC0+ZnVuY3MtPnVucHJlcGFyZSkKPiArCWlmICghcGFu
+ZWwpCj4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4gKwo+ICsJaWYgKHBhbmVsLT5mdW5jcyAmJiBwYW5l
+bC0+ZnVuY3MtPnVucHJlcGFyZSkKPiAgCQlyZXR1cm4gcGFuZWwtPmZ1bmNzLT51bnByZXBhcmUo
+cGFuZWwpOwo+ICAKPiAtCXJldHVybiBwYW5lbCA/IC1FTk9TWVMgOiAtRUlOVkFMOwo+ICsJcmV0
+dXJuIDA7Cj4gIH0KPiAgRVhQT1JUX1NZTUJPTChkcm1fcGFuZWxfdW5wcmVwYXJlKTsKPiAgCj4g
+QEAgLTE5MCwxMCArMTk2LDEzIEBAIEVYUE9SVF9TWU1CT0woZHJtX3BhbmVsX3VucHJlcGFyZSk7
+Cj4gICAqLwo+ICBpbnQgZHJtX3BhbmVsX2VuYWJsZShzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCkK
+PiAgewo+IC0JaWYgKHBhbmVsICYmIHBhbmVsLT5mdW5jcyAmJiBwYW5lbC0+ZnVuY3MtPmVuYWJs
+ZSkKPiArCWlmICghcGFuZWwpCj4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4gKwo+ICsJaWYgKHBhbmVs
+LT5mdW5jcyAmJiBwYW5lbC0+ZnVuY3MtPmVuYWJsZSkKPiAgCQlyZXR1cm4gcGFuZWwtPmZ1bmNz
+LT5lbmFibGUocGFuZWwpOwo+ICAKPiAtCXJldHVybiBwYW5lbCA/IC1FTk9TWVMgOiAtRUlOVkFM
+Owo+ICsJcmV0dXJuIDA7Cj4gIH0KPiAgRVhQT1JUX1NZTUJPTChkcm1fcGFuZWxfZW5hYmxlKTsK
+PiAgCj4gQEAgLTIwOSwxMCArMjE4LDEzIEBAIEVYUE9SVF9TWU1CT0woZHJtX3BhbmVsX2VuYWJs
+ZSk7Cj4gICAqLwo+ICBpbnQgZHJtX3BhbmVsX2Rpc2FibGUoc3RydWN0IGRybV9wYW5lbCAqcGFu
+ZWwpCj4gIHsKPiAtCWlmIChwYW5lbCAmJiBwYW5lbC0+ZnVuY3MgJiYgcGFuZWwtPmZ1bmNzLT5k
+aXNhYmxlKQo+ICsJaWYgKCFwYW5lbCkKPiArCQlyZXR1cm4gLUVJTlZBTDsKPiArCj4gKwlpZiAo
+cGFuZWwtPmZ1bmNzICYmIHBhbmVsLT5mdW5jcy0+ZGlzYWJsZSkKPiAgCQlyZXR1cm4gcGFuZWwt
+PmZ1bmNzLT5kaXNhYmxlKHBhbmVsKTsKPiAgCj4gLQlyZXR1cm4gcGFuZWwgPyAtRU5PU1lTIDog
+LUVJTlZBTDsKPiArCXJldHVybiAwOwo+ICB9Cj4gIEVYUE9SVF9TWU1CT0woZHJtX3BhbmVsX2Rp
+c2FibGUpOwo+ICAKPiBAQCAtMjI4LDEwICsyNDAsMTMgQEAgRVhQT1JUX1NZTUJPTChkcm1fcGFu
+ZWxfZGlzYWJsZSk7Cj4gICAqLwo+ICBpbnQgZHJtX3BhbmVsX2dldF9tb2RlcyhzdHJ1Y3QgZHJt
+X3BhbmVsICpwYW5lbCkKPiAgewo+IC0JaWYgKHBhbmVsICYmIHBhbmVsLT5mdW5jcyAmJiBwYW5l
+bC0+ZnVuY3MtPmdldF9tb2RlcykKPiArCWlmICghcGFuZWwpCj4gKwkJcmV0dXJuIC1FSU5WQUw7
+Cj4gKwo+ICsJaWYgKHBhbmVsLT5mdW5jcyAmJiBwYW5lbC0+ZnVuY3MtPmdldF9tb2RlcykKPiAg
+CQlyZXR1cm4gcGFuZWwtPmZ1bmNzLT5nZXRfbW9kZXMocGFuZWwpOwoKU2hvdWxkIGdldF9tb2Rl
+cygpIGJlIG9wdGlvbmFsID8gQXMgZmFyIGFzIEkgY2FuIHRlbGwgYWxsIHRoZSBwYW5lbApkcml2
+ZXJzIGluIGRyaXZlcnMvZ3B1L2RybS9wYW5lbC8gaW1wbGVtZW50IGl0LCBhbmQgSSdtIG5vdCBz
+dXJlIHRvIHNlZQpob3cgYSBwYW5lbCBjb3VsZCBiZSB1c2FibGUgaWYgaXQgY2FuJ3QgcmV0dXJu
+IGl0cyBtb2RlLgoKT24gdGhlIG90aGVyIGhhbmQgeW91IHJldHVybiAwIGlmIHRoZSBjYWxsYmFj
+ayBpc24ndCBpbXBsZW1lbnRlZCwgd2hpY2gKZG9lc24ndCBtZWFuIHN1Y2Nlc3MgaGVyZSwgc28g
+SSBzdXBwb3NlIHRoYXQncyBmaW5lLCBidXQgSSBkb24ndCB0aGluawp3ZSBzaG91bGQgZG9jdW1l
+bnQgLmdldF9tb2RlcygpIGFzIGJlaW5nIG9wdGlvbmFsLgoKV2l0aCB0aGVzZSBpc3N1ZXMgYWRk
+cmVzc2VkIChpZiB0aGV5IG5lZWQgdG8gYmUpLAoKUmV2aWV3ZWQtYnk6IExhdXJlbnQgUGluY2hh
+cnQgPGxhdXJlbnQucGluY2hhcnRAaWRlYXNvbmJvYXJkLmNvbT4KCj4gIAo+IC0JcmV0dXJuIHBh
+bmVsID8gLUVOT1NZUyA6IC1FSU5WQUw7Cj4gKwlyZXR1cm4gMDsKPiAgfQo+ICBFWFBPUlRfU1lN
+Qk9MKGRybV9wYW5lbF9nZXRfbW9kZXMpOwo+ICAKCi0tIApSZWdhcmRzLAoKTGF1cmVudCBQaW5j
+aGFydApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
