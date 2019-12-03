@@ -1,100 +1,111 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH v1 07/26] drm/panel: remove get_timings
-Date: Tue, 3 Dec 2019 09:39:36 +0100
-Message-ID: <20191203083935.GB30687@ravnborg.org>
-References: <20191202193230.21310-1-sam@ravnborg.org>
- <20191202193230.21310-8-sam@ravnborg.org>
- <20191203074659.ilsyv4yx7pzw5vax@gilmour.lan>
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Subject: [PATCH v4 0/8] Raspberry Pi 4 PCIe support
+Date: Tue,  3 Dec 2019 12:47:33 +0100
+Message-ID: <20191203114743.1294-1-nsaenzjulienne@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20191203074659.ilsyv4yx7pzw5vax@gilmour.lan>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, NXP Linux Team <linux-imx@nxp.com>, Jagan Teki <jagan@amarulasolutions.com>, Jitao Shi <jitao.shi@mediatek.com>, Abhinav Kumar <abhinavk@codeaurora.org>, linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, Purism Kernel Team <kernel@puri.sm>, linux-renesas-soc@vger.kernel.org, Boris Brezillon <boris.brezillon@collabora.com>, Pengutronix Kernel Team <kernel@pengutronix.de>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: andrew.murray@arm.com, maz@kernel.org, linux-kernel@vger.kernel.org
+Cc: james.quinlan@broadcom.com, mbrugger@suse.com, f.fainelli@gmail.com, phil@raspberrypi.org, wahrenst@gmx.net, jeremy.linton@arm.com, linux-pci@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, Nicolas Saenz Julienne <nsaenzjulienne@suse.de>, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, devicetree@vger.kernel.org, linux-acpi@vger.kernel.org, linux-clk@vger.kernel.org, linux-rdma@vger.kernel.org, iommu@lists.linux-foundation.org, netdev@vger.kernel.org, linux-rockchip@lists.infradead.org, kexec@lists.infradead.org, linux-nfs@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWF4aW1lLgoKT24gVHVlLCBEZWMgMDMsIDIwMTkgYXQgMDg6NDY6NTlBTSArMDEwMCwgTWF4
-aW1lIFJpcGFyZCB3cm90ZToKPiBIaSwKPiAKPiBPbiBNb24sIERlYyAwMiwgMjAxOSBhdCAwODoz
-MjoxMVBNICswMTAwLCBTYW0gUmF2bmJvcmcgd3JvdGU6Cj4gPiBUaGVyZSB3YXMgbm8gdXNlcnMg
-LSBzbyByZW1vdmUgaXQuCj4gPiBUaGUgY2FsbGJhY2sgd2FzIGltcGxlbWVudGVkIGluIHR3byBk
-cml2ZXJzIC0gZGVsZXRlZC4KPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBTYW0gUmF2bmJvcmcgPHNh
-bUByYXZuYm9yZy5vcmc+Cj4gPiBDYzogVGhpZXJyeSBSZWRpbmcgPHRoaWVycnkucmVkaW5nQGdt
-YWlsLmNvbT4KPiA+IENjOiBMYXVyZW50IFBpbmNoYXJ0IDxMYXVyZW50LnBpbmNoYXJ0QGlkZWFz
-b25ib2FyZC5jb20+Cj4gPiBDYzogU2FtIFJhdm5ib3JnIDxzYW1AcmF2bmJvcmcub3JnPgo+ID4g
-Q2M6IE1hYXJ0ZW4gTGFua2hvcnN0IDxtYWFydGVuLmxhbmtob3JzdEBsaW51eC5pbnRlbC5jb20+
-Cj4gPiBDYzogTWF4aW1lIFJpcGFyZCA8bXJpcGFyZEBrZXJuZWwub3JnPgo+ID4gQ2M6IERhdmlk
-IEFpcmxpZSA8YWlybGllZEBsaW51eC5pZT4KPiA+IENjOiBEYW5pZWwgVmV0dGVyIDxkYW5pZWxA
-ZmZ3bGwuY2g+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtc2Vpa28t
-NDN3dmYxZy5jIHwgMTggLS0tLS0tLS0tLS0tLS0tLS0tCj4gPiAgZHJpdmVycy9ncHUvZHJtL3Bh
-bmVsL3BhbmVsLXNpbXBsZS5jICAgICAgICB8IDE4IC0tLS0tLS0tLS0tLS0tLS0tLQo+ID4gIGlu
-Y2x1ZGUvZHJtL2RybV9wYW5lbC5oICAgICAgICAgICAgICAgICAgICAgfCAgOSAtLS0tLS0tLS0K
-PiA+ICAzIGZpbGVzIGNoYW5nZWQsIDQ1IGRlbGV0aW9ucygtKQo+ID4KPiA+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtc2Vpa28tNDN3dmYxZy5jIGIvZHJpdmVycy9n
-cHUvZHJtL3BhbmVsL3BhbmVsLXNlaWtvLTQzd3ZmMWcuYwo+ID4gaW5kZXggYjg3ODkzMGIxN2U0
-Li4zYmNiYTY0MjM1YzQgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFu
-ZWwtc2Vpa28tNDN3dmYxZy5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwt
-c2Vpa28tNDN3dmYxZy5jCj4gPiBAQCAtMjE3LDMwICsyMTcsMTIgQEAgc3RhdGljIGludCBzZWlr
-b19wYW5lbF9nZXRfbW9kZXMoc3RydWN0IGRybV9wYW5lbCAqcGFuZWwsCj4gPiAgCXJldHVybiBz
-ZWlrb19wYW5lbF9nZXRfZml4ZWRfbW9kZXMocCwgY29ubmVjdG9yKTsKPiA+ICB9Cj4gPgo+ID4g
-LXN0YXRpYyBpbnQgc2Vpa29fcGFuZWxfZ2V0X3RpbWluZ3Moc3RydWN0IGRybV9wYW5lbCAqcGFu
-ZWwsCj4gPiAtCQkJCSAgICB1bnNpZ25lZCBpbnQgbnVtX3RpbWluZ3MsCj4gPiAtCQkJCSAgICBz
-dHJ1Y3QgZGlzcGxheV90aW1pbmcgKnRpbWluZ3MpCj4gPiAtewo+ID4gLQlzdHJ1Y3Qgc2Vpa29f
-cGFuZWwgKnAgPSB0b19zZWlrb19wYW5lbChwYW5lbCk7Cj4gPiAtCXVuc2lnbmVkIGludCBpOwo+
-ID4gLQo+ID4gLQlpZiAocC0+ZGVzYy0+bnVtX3RpbWluZ3MgPCBudW1fdGltaW5ncykKPiA+IC0J
-CW51bV90aW1pbmdzID0gcC0+ZGVzYy0+bnVtX3RpbWluZ3M7Cj4gPiAtCj4gPiAtCWlmICh0aW1p
-bmdzKQo+ID4gLQkJZm9yIChpID0gMDsgaSA8IG51bV90aW1pbmdzOyBpKyspCj4gPiAtCQkJdGlt
-aW5nc1tpXSA9IHAtPmRlc2MtPnRpbWluZ3NbaV07Cj4gPiAtCj4gPiAtCXJldHVybiBwLT5kZXNj
-LT5udW1fdGltaW5nczsKPiA+IC19Cj4gPiAtCj4gPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1f
-cGFuZWxfZnVuY3Mgc2Vpa29fcGFuZWxfZnVuY3MgPSB7Cj4gPiAgCS5kaXNhYmxlID0gc2Vpa29f
-cGFuZWxfZGlzYWJsZSwKPiA+ICAJLnVucHJlcGFyZSA9IHNlaWtvX3BhbmVsX3VucHJlcGFyZSwK
-PiA+ICAJLnByZXBhcmUgPSBzZWlrb19wYW5lbF9wcmVwYXJlLAo+ID4gIAkuZW5hYmxlID0gc2Vp
-a29fcGFuZWxfZW5hYmxlLAo+ID4gIAkuZ2V0X21vZGVzID0gc2Vpa29fcGFuZWxfZ2V0X21vZGVz
-LAo+ID4gLQkuZ2V0X3RpbWluZ3MgPSBzZWlrb19wYW5lbF9nZXRfdGltaW5ncywKPiA+ICB9Owo+
-IAo+IElmIGFueXRoaW5nLCBJIHRoaW5rIHdlIHNob3VsZCBncm93IHRoZSB1c2FnZSBvZiB0aW1p
-bmdzIGFuZCAvIG9yIG1ha2UKPiBpdCB1c2FibGUgYnkgZXZlcnlvbmUuCj4gCj4gVXNpbmcgb25s
-eSB0aGUgbW9kZSBhcyB3ZSBkbyBjdXJyZW50bHkgaGFzIGEgYnVuY2ggb2Ygc2hvcnRjb21pbmdz
-IGFzCj4gYWxtb3N0IG5vIGVuY29kZXIgd2lsbCBiZSBhYmxlIHRvIHByb3ZpZGUgdGhlIHR5cGlj
-YWwgcGl4ZWwgY2xvY2ssIGFuZAo+IHRoYXQgc2l0dWF0aW9uIGxlYWRzIHRvIG11bHRpcGxlIHRo
-aW5nczoKPiAKPiAgIC0gSWYgc29tZW9uZSB3b3JraW5nIG9uIG9uZSBlbmNvZGVyIHdhbnRzIHRv
-IHVwc3RyZWFtIGEgcGFuZWwgdGhleQo+ICAgICBoYXZlIHRlc3RlZCwgY2hhbmNlcyBhcmUgdGhp
-cyB3aWxsIG5vdCBiZSB0aGUgdHlwaWNhbCBwaXhlbCBjbG9jawo+ICAgICAvIHRpbWluZ3MgYmVp
-bmcgdXNlZCBidXQgcmF0aGVyIHRoZSBvbmUgdGhhdCB3aWxsIG1hdGNoIHdoYXQgdGhhdAo+ICAg
-ICBTb0MgaXMgY2FwYWJsZSBvZi4gVHJvdWJsZSBjb21lcyB3aGVuIGEgc2Vjb25kIHVzZXIgY29t
-ZXMgaW4gd2l0aAo+ICAgICBhIGRpZmZlcmVudCBlbmNvZGVyIGFuZCBkaWZmZXJlbnQgY2FwYWJp
-bGl0aWVzLCBhbmQgdGhlbiB3ZSBoYXZlIGEKPiAgICAgbWFpbnRhaW5hbmNlIGZpZ2h0IG92ZXIg
-d2hpY2ggdGltaW5nIGlzIHRoZSB0cnVlIHRpbWluZyAod2l0aCBhCj4gICAgIHNpZ25pZmljYW50
-IGNoYW5jZSB0aGF0IG5vbmUgb2YgdGhlbSBhcmUpLgo+IAo+ICAgLSBJZiB3ZSBjYW4ndCBtYXRj
-aCB0aGUgcGl4ZWwgY2xvY2ssIHdlIGN1cnJlbnRseSBoYXZlIG5vIGVhc3kgd2F5Cj4gICAgIHRv
-IG1ha2UgdGhlIHVzdWFsIG1lYXN1cmVzIG9mIHJlZHVjaW5nIC8gZ3Jvd2luZyB0aGUgcG9yY2hl
-cyBhbmQKPiAgICAgYmxhbmtpbmdzIGFyZWFzIHRvIG1hdGNoIHRoZSBwaXhlbCBjbG9jayB3ZSBj
-YW4gcHJvdmlkZSwgc2luY2Ugd2UKPiAgICAgZG9uJ3QgaGF2ZSBhbiBlYXN5IHdheSB0byBnZXQg
-dGhlIHRvbGVyYW5jZSBvbiB0aG9zZSB0aW1pbmdzIGZvciBhCj4gICAgIGdpdmVuIHBhbmVsLiBU
-aGVyZSdzIHNvbWUgYWQgaG9jIHNvbHV0aW9ucyBvbiBzb21lIGRyaXZlcnMgKEkKPiAgICAgdGhp
-bmsgdmM0IGhhcyB0aGF0PykgdG8gaWdub3JlIHRoZSBwYW5lbCBhbmQganVzdCBwbGF5IGFyb3Vu
-ZCB3aXRoCj4gICAgIHRoZSB0aW1pbmdzLCBidXQgSSB0aGluayB0aGlzIHNob3VsZCBiZSBnZW5l
-cmFsaXNlZC4KPiAKPiBUaW1pbmdzIHNvbHZlcyB0aGUgZmlyc3QgY2FzZSBzaW5jZSB3ZSBoYXZl
-IHRoZSBvcGVyYXRpbmcgcmFuZ2Ugbm93Cj4gYW5kIG5vdCBhIHNpbmdsZSBzZXQgb2YgdGltaW5n
-cywgYW5kIGl0IHNvbHZlcyB0aGUgc2Vjb25kIHNpbmNlIHdlIGNhbgo+IHVzZSB0aGF0IHJhbmdl
-IHRvIHRha2UgdGhvc2UgbWVhc3VyZXMgaW5zdGVhZCBvZiB0YWtpbmcgYSBzaG90IGluIHRoZQo+
-IGRhcmsuCj4gCj4gSSBhcHByZWNpYXRlIHRoYXQgaXQncyBwcmV0dHkgZmFyIGZyb20gd2hlcmUg
-d2UgYXJlIHRvZGF5LCBidXQKPiByZW1vdmluZyB0aGUgZ2V0X3RpbWluZ3MgbWVhbnMgdGhhdCBh
-bGwgdGhlIHRpbWluZ3MgYWxyZWFkeSBkZWZpbmVkIGluCj4gdGhlIHBhbmVsIGRyaXZlcnMgYXJl
-IGJlY29taW5nIHVzZWxlc3MgdG9vLCBhbmQgdGhhdCBldmVudHVhbGx5IGl0Cj4gd2lsbCBnZXQg
-cmVtb3ZlZC4KClRoYW5rcyBmb3IgdGhpcyBuaWNlIGV4cGxhbmF0aW9uLiBJIHdpbGwgZHJvcCB0
-aGUgcGF0Y2gsCmFuZCBhZGQgYW4gZW50cnkgdG8gbXkgVE9ETyBsaXN0IHRvIGxvb2sgY2xvc2Vy
-IGF0IHRoaXMgbGF0ZXIuClRoZXJlIGFyZSB0aGluZ3MgdG8gaW1wcm92ZSBpbiB0aGlzIGFyZWEu
-CgpTbyB0aGUgY29uY2x1c2lvbiBpcyBtb3JlIHdvcmsgcmF0aGVyIHRoYW4gcmVtb3ZpbmcgY29k
-ZSA6LSkKCglTYW0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+This series aims at providing support for Raspberry Pi 4's PCIe
+controller, which is also shared with the Broadcom STB family of
+devices.
+
+There was a previous attempt to upstream this some years ago[1] but was
+blocked as most STB PCIe integrations have a sparse DMA mapping[2] which
+is something currently not supported by the kernel.  Luckily this is not
+the case for the Raspberry Pi 4.
+
+Note that the driver code is to be based on top of Rob Herring's series
+simplifying inbound and outbound range parsing.
+
+[1] https://patchwork.kernel.org/cover/10605933/
+[2] https://patchwork.kernel.org/patch/10605957/
+
+---
+
+Changes since v3:
+  - Moved all the log2.h related changes at the end of the series, as I
+    presume they will be contentious and I don't want the PCIe patches
+    to depend on them. Ultimately I think I'll respin them on their own
+    series but wanted to keep them in for this submission just for the
+    sake of continuity.
+  - Addressed small nits here and there.
+
+Changes since v2:
+  - Redo register access in driver avoiding indirection while keeping
+    the naming intact
+  - Add patch editing ARM64's config
+  - Last MSI cleanups, notably removing MSIX flag
+  - Got rid of all _RB writes
+  - Got rid of all of_data
+  - Overall churn removal
+  - Address the rest of Andrew's comments
+
+Changes since v1:
+  - add generic rounddown/roundup_pow_two64() patch
+  - Add MAINTAINERS patch
+  - Fix Kconfig
+  - Cleanup probe, use up to date APIs, exit on MSI failure
+  - Get rid of linux,pci-domain and other unused constructs
+  - Use edge triggered setup for MSI
+  - Cleanup MSI implementation
+  - Fix multiple cosmetic issues
+  - Remove supend/resume code
+
+Jim Quinlan (3):
+  dt-bindings: PCI: Add bindings for brcmstb's PCIe device
+  PCI: brcmstb: Add Broadcom STB PCIe host controller driver
+  PCI: brcmstb: Add MSI support
+
+Nicolas Saenz Julienne (5):
+  ARM: dts: bcm2711: Enable PCIe controller
+  MAINTAINERS: Add brcmstb PCIe controller
+  arm64: defconfig: Enable Broadcom's STB PCIe controller
+  linux/log2.h: Fix 64bit calculations in roundup/down_pow_two()
+  linux/log2.h: Use roundup/dow_pow_two() on 64bit calculations
+
+ .../bindings/pci/brcm,stb-pcie.yaml           |   97 ++
+ MAINTAINERS                                   |    4 +
+ arch/arm/boot/dts/bcm2711.dtsi                |   37 +
+ arch/arm64/configs/defconfig                  |    1 +
+ drivers/acpi/arm64/iort.c                     |    2 +-
+ drivers/clk/clk-divider.c                     |    8 +-
+ drivers/clk/sunxi/clk-sunxi.c                 |    2 +-
+ drivers/infiniband/hw/hfi1/chip.c             |    4 +-
+ drivers/infiniband/hw/hfi1/init.c             |    4 +-
+ drivers/infiniband/hw/mlx4/srq.c              |    2 +-
+ drivers/infiniband/hw/mthca/mthca_srq.c       |    2 +-
+ drivers/infiniband/sw/rxe/rxe_qp.c            |    4 +-
+ drivers/iommu/intel-iommu.c                   |    4 +-
+ drivers/iommu/intel-svm.c                     |    4 +-
+ drivers/iommu/intel_irq_remapping.c           |    2 +-
+ drivers/net/ethernet/amd/xgbe/xgbe-ethtool.c  |    4 +-
+ drivers/net/ethernet/marvell/sky2.c           |    2 +-
+ drivers/net/ethernet/mellanox/mlx4/en_clock.c |    3 +-
+ drivers/net/ethernet/rocker/rocker_hw.h       |    4 +-
+ drivers/net/ethernet/sfc/ef10.c               |    2 +-
+ drivers/net/ethernet/sfc/efx.h                |    2 +-
+ drivers/net/ethernet/sfc/falcon/efx.h         |    2 +-
+ drivers/of/device.c                           |    3 +-
+ drivers/pci/controller/Kconfig                |    9 +
+ drivers/pci/controller/Makefile               |    1 +
+ .../pci/controller/cadence/pcie-cadence-ep.c  |    3 +-
+ drivers/pci/controller/cadence/pcie-cadence.c |    3 +-
+ drivers/pci/controller/pcie-brcmstb.c         | 1008 +++++++++++++++++
+ drivers/pci/controller/pcie-rockchip-ep.c     |    5 +-
+ drivers/pci/msi.c                             |    2 +-
+ include/linux/log2.h                          |   44 +-
+ kernel/dma/direct.c                           |    2 +-
+ kernel/kexec_core.c                           |    3 +-
+ lib/rhashtable.c                              |    2 +-
+ net/sunrpc/xprtrdma/verbs.c                   |    2 +-
+ 35 files changed, 1211 insertions(+), 72 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pci/brcm,stb-pcie.yaml
+ create mode 100644 drivers/pci/controller/pcie-brcmstb.c
+
+-- 
+2.24.0
