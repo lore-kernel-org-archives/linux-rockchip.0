@@ -1,7 +1,7 @@
 From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v4 2/5] clk: rockchip: fix up the frac clk get rate error
-Date: Wed,  4 Dec 2019 16:18:56 +0800
-Message-ID: <20191204081859.19454-3-zhangqing@rock-chips.com>
+Subject: [PATCH v4 4/5] clk: rockchip: add pll up and down when change pll freq
+Date: Wed,  4 Dec 2019 16:18:58 +0800
+Message-ID: <20191204081859.19454-5-zhangqing@rock-chips.com>
 References: <20191204081859.19454-1-zhangqing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20191204081859.19454-1-zhangqing@rock-chips.com>
@@ -10,45 +10,76 @@ To: heiko@sntech.de
 Cc: mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-support fractional divider with only one level parent clock
+set pll sequence:
+	->set pll to slow mode or other plls
+	->set pll down
+	->set pll params
+	->set pll up
+	->wait pll lock status
+	->set pll to normal mode
+
+To slove the system error:
+wait_pll_lock: timeout waiting for pll to lock
+pll_set_params: pll update unsucessful,
+		trying to restore old params
 
 Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 ---
- drivers/clk/rockchip/clk.c | 19 ++++++++++++-------
- 1 file changed, 12 insertions(+), 7 deletions(-)
+ drivers/clk/rockchip/clk-pll.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index fac5a4a3f5c3..8f77c3f9fab7 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -190,16 +190,21 @@ static void rockchip_fractional_approximation(struct clk_hw *hw,
- 	if (((rate * 20 > p_rate) && (p_rate % rate != 0)) ||
- 	    (fd->max_prate && fd->max_prate < p_rate)) {
- 		p_parent = clk_hw_get_parent(clk_hw_get_parent(hw));
--		p_parent_rate = clk_hw_get_rate(p_parent);
--		*parent_rate = p_parent_rate;
--		if (fd->max_prate && p_parent_rate > fd->max_prate) {
--			div = DIV_ROUND_UP(p_parent_rate, fd->max_prate);
--			*parent_rate = p_parent_rate / div;
-+		if (!p_parent) {
-+			*parent_rate = p_rate;
-+		} else {
-+			p_parent_rate = clk_hw_get_rate(p_parent);
-+			*parent_rate = p_parent_rate;
-+			if (fd->max_prate && p_parent_rate > fd->max_prate) {
-+				div = DIV_ROUND_UP(p_parent_rate,
-+						   fd->max_prate);
-+				*parent_rate = p_parent_rate / div;
-+			}
- 		}
+diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
+index 198417d56300..390e9473807a 100644
+--- a/drivers/clk/rockchip/clk-pll.c
++++ b/drivers/clk/rockchip/clk-pll.c
+@@ -199,6 +199,11 @@ static int rockchip_rk3036_pll_set_params(struct rockchip_clk_pll *pll,
+ 		rate_change_remuxed = 1;
+ 	}
  
- 		if (*parent_rate < rate * 20) {
--			pr_err("%s parent_rate(%ld) is low than rate(%ld)*20, fractional div is not allowed\n",
--			       clk_hw_get_name(hw), *parent_rate, rate);
-+			pr_warn("%s p_rate(%ld) is low than rate(%ld)*20, use integer or half-div\n",
-+				clk_hw_get_name(hw), *parent_rate, rate);
- 			*m = 0;
- 			*n = 1;
- 			return;
++	/* set pll power down */
++	writel(HIWORD_UPDATE(RK3036_PLLCON1_PWRDOWN,
++			     RK3036_PLLCON1_PWRDOWN, 0),
++	       pll->reg_base + RK3036_PLLCON(1));
++
+ 	/* update pll values */
+ 	writel_relaxed(HIWORD_UPDATE(rate->fbdiv, RK3036_PLLCON0_FBDIV_MASK,
+ 					  RK3036_PLLCON0_FBDIV_SHIFT) |
+@@ -220,6 +225,11 @@ static int rockchip_rk3036_pll_set_params(struct rockchip_clk_pll *pll,
+ 	pllcon |= rate->frac << RK3036_PLLCON2_FRAC_SHIFT;
+ 	writel_relaxed(pllcon, pll->reg_base + RK3036_PLLCON(2));
+ 
++	/* set pll power up */
++	writel(HIWORD_UPDATE(0, RK3036_PLLCON1_PWRDOWN, 0),
++	       pll->reg_base + RK3036_PLLCON(1));
++	udelay(1);
++
+ 	/* wait for the pll to lock */
+ 	ret = rockchip_pll_wait_lock(pll);
+ 	if (ret) {
+@@ -676,6 +686,11 @@ static int rockchip_rk3399_pll_set_params(struct rockchip_clk_pll *pll,
+ 		rate_change_remuxed = 1;
+ 	}
+ 
++	/* set pll power down */
++	writel(HIWORD_UPDATE(RK3399_PLLCON3_PWRDOWN,
++			     RK3399_PLLCON3_PWRDOWN, 0),
++	       pll->reg_base + RK3399_PLLCON(3));
++
+ 	/* update pll values */
+ 	writel_relaxed(HIWORD_UPDATE(rate->fbdiv, RK3399_PLLCON0_FBDIV_MASK,
+ 						  RK3399_PLLCON0_FBDIV_SHIFT),
+@@ -699,6 +714,12 @@ static int rockchip_rk3399_pll_set_params(struct rockchip_clk_pll *pll,
+ 					    RK3399_PLLCON3_DSMPD_SHIFT),
+ 		       pll->reg_base + RK3399_PLLCON(3));
+ 
++	/* set pll power up */
++	writel(HIWORD_UPDATE(0,
++			     RK3399_PLLCON3_PWRDOWN, 0),
++	       pll->reg_base + RK3399_PLLCON(3));
++	udelay(1);
++
+ 	/* wait for the pll to lock */
+ 	ret = rockchip_rk3399_pll_wait_lock(pll);
+ 	if (ret) {
 -- 
 2.17.1
