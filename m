@@ -1,69 +1,36 @@
-From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Describe PX30 caches
-Date: Wed, 4 Dec 2019 16:44:35 +0100
-Message-ID: <20191204164435.2dd1b4fe@xps13>
-References: <20191204103940.22050-1-miquel.raynal@bootlin.com>
- <CAMdYzYrEmTqvJ6m54EADxLDf70duCtdz3pesV3EZmt67=cbs5g@mail.gmail.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v2 00/11] thermal: clean up output of make W=1
+Date: Wed, 4 Dec 2019 17:29:02 +0100
+Message-ID: <4318ca22-2e7c-c529-e97d-73eec7266376@linaro.org>
+References: <cover.1574242756.git.amit.kucheria@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAMdYzYrEmTqvJ6m54EADxLDf70duCtdz3pesV3EZmt67=cbs5g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1574242756.git.amit.kucheria@linaro.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Amit Kucheria <amit.kucheria@linaro.org>, linux-kernel@vger.kernel.org, edubezval@gmail.com, Amit Daniel Kachhap <amit.kachhap@gmail.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Guillaume La Roque <glaroque@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Javi Merino <javi.merino@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, Jun Nie <jun.nie@linaro.org>, Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, Viresh Kumar <viresh.kumar@linaro.org>, Zhang Rui <rui.zhang@intel.com>
+Cc: linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUGV0ZXIsCgpQZXRlciBHZWlzIDxwZ3dpcGVvdXRAZ21haWwuY29tPiB3cm90ZSBvbiBXZWQs
-IDQgRGVjIDIwMTkgMTA6MzY6MTkKLTA1MDA6Cgo+IE9uIFdlZCwgRGVjIDQsIDIwMTkgYXQgNTo0
-MCBBTSBNaXF1ZWwgUmF5bmFsIDxtaXF1ZWwucmF5bmFsQGJvb3RsaW4uY29tPiB3cm90ZToKPiA+
-Cj4gPiBQWDMwIFNvQ3MgZmVhdHVyZSA0IENvcnRleC1BMzUgQ1BVcyB3aXRoIGVhY2ggb2YgdGhl
-bSBhIEwxIGRhdGEgYW5kCj4gPiBpbnN0cnVjdGlvbiBjYWNoZS4gQm90aCBhcmUgMzJraUIgd2lk
-ZSAoUFgzMCBUUk0pIGFuZCBtYWRlIG9mIDY0LWJpdAo+ID4gbGluZXMgKEFSTSBDb3J0ZXgtQTM1
-IG1hbnVhbCkuIEktY2FjaGUgaXMgMi13YXkgc2V0IGFzc29jaWF0aXZlIChBUk0KPiA+IENvcnRl
-eC1BMzUgbWFudWFsKSwgRC1jYWNoZSBpcyA0LXdheSBzZXQgYXNzb2NpYXRpdmUgKEFSTQo+ID4g
-Q29ydGV4LUEzNW1hbnVhbCkuCj4gPgo+ID4gQW4gTDIgY2FjaGUgaXMgcGxhY2VkIGFmdGVyIHRo
-ZXNlIDQgTDEgY2FjaGVzIChQWDMwIFRSTSksIGlzIDI1NmtpQgo+ID4gd2lkZSAoUFgzMCBUUk0p
-IGFuZCBtYWRlIG9mIDY0LWJpdCBsaW5lcyAoQVJNIENvcnRleC1BMzUgbWFudWFsKSBhbmQKPiA+
-IGlzIDgtd2F5IHNldCBhc3NvY2lhdGl2ZSAoQVJNIENvcnRleC1BMzUgbWFudWFsKS4KPiA+Cj4g
-PiBEZXNjcmliZSBhbGwgb2YgdGhlbSBpbiB0aGUgUFgzMCBEVFNJLgo+ID4KPiA+IFNpZ25lZC1v
-ZmYtYnk6IE1pcXVlbCBSYXluYWwgPG1pcXVlbC5yYXluYWxAYm9vdGxpbi5jb20+Cj4gPiAtLS0K
-PiA+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3B4MzAuZHRzaSB8IDM1ICsrKysrKysr
-KysrKysrKysrKysrKysrKysrCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDM1IGluc2VydGlvbnMoKykK
-PiA+Cj4gPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9weDMwLmR0
-c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3B4MzAuZHRzaQo+ID4gaW5kZXggMWZk
-MTJiZDA5ZTgzLi4wZTEwYTIyNGE4NGIgMTAwNjQ0Cj4gPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3Qv
-ZHRzL3JvY2tjaGlwL3B4MzAuZHRzaQo+ID4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
-Y2hpcC9weDMwLmR0c2kKPiA+IEBAIC00OCw2ICs0OCwxMyBAQAo+ID4gICAgICAgICAgICAgICAg
-ICAgICAgICAgY3B1LWlkbGUtc3RhdGVzID0gPCZDUFVfU0xFRVAgJkNMVVNURVJfU0xFRVA+Owo+
-ID4gICAgICAgICAgICAgICAgICAgICAgICAgZHluYW1pYy1wb3dlci1jb2VmZmljaWVudCA9IDw5
-MD47Cj4gPiAgICAgICAgICAgICAgICAgICAgICAgICBvcGVyYXRpbmctcG9pbnRzLXYyID0gPCZj
-cHUwX29wcF90YWJsZT47Cj4gPiArICAgICAgICAgICAgICAgICAgICAgICBpLWNhY2hlLXNpemUg
-PSA8MHg4MDAwPjsKPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIGktY2FjaGUtbGluZS1zaXpl
-ID0gPDY0PjsKPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIGktY2FjaGUtc2V0cyA9IDwyNTY+
-Owo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgZC1jYWNoZS1zaXplID0gPDB4ODAwMD47Cj4g
-PiArICAgICAgICAgICAgICAgICAgICAgICBkLWNhY2hlLWxpbmUtc2l6ZSA9IDw2ND47Cj4gPiAr
-ICAgICAgICAgICAgICAgICAgICAgICBkLWNhY2hlLXNldHMgPSA8MTI4PjsKPiA+ICsgICAgICAg
-ICAgICAgICAgICAgICAgIG5leHQtbGV2ZWwtY2FjaGUgPSA8JmwyPjsgIAo+IAo+IElmIHRoZSBp
-LWNhY2hlIGlzIDItd2F5IGFzc29jaWF0aXZlIGFuZCB0aGUgZC1jYWNoZSBpcyA0LXdheSwgd291
-bGRuJ3QKPiB0aGF0IG1lYW4gdGhlc2UgdHdvIHZhbHVlcyBhcmUgYmFja3dhcmRzPwoKV2hpY2gg
-dmFsdWUgYXJlIHlvdSByZWZlcnJpbmcgdG8/IERvIHlvdSBtZWFuIGNhY2hlLXNldHM/IFRoZSBm
-b2xsb3dpbmcKY2FsY3VsYXRpb24gaXMgbXkgdW5kZXJzdGFuZGluZyBvZiB0aGUgc2l0dWF0aW9u
-IGJ1dCBpdCBpcyB0aGUgZmlyc3QKdGltZSBJIGFtIGRvaW5nIGl0IHNvIEkgbWlnaHQgYmUgdG90
-YWxseSB3cm9uZy4KCk15IHVuZGVyc3RhbmRpbmcgaXMgdGhhdCBpZiB0aGVyZSBhcmUgMzI3Njgg
-Y2FjaGUgYnl0ZXMgbWFkZSBvZiA2NC1ieXRlCmxpbmVzLCBzbyB0aGVyZSBhcmUgNTEyIGxpbmVz
-IGluIGJvdGggY2FzZXMuCgpUaGVuLCBpZiB0aGUgaW5zdHJ1Y3Rpb24gY2FjaGUgaXMgMi13YXkg
-YXNzb2NpYXRpdmUsIGl0IG1lYW5zIHRoZXJlIGFyZQo1MTIgLyAyID0gMjU2IHNldHMuIEZvciB0
-aGUgZGF0YSBjYWNoZSAoNC13YXkpLCBpdCB3b3VsZCBiZSA1MTIgLyA0ID0KMTI4LiBBbSBJIHdy
-b25nPwoKVGhhbmtzLApNaXF1w6hsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 20/11/2019 16:45, Amit Kucheria wrote:
+> Cleanup output of make W=1 inside drivers/thermal. This should allow us to
+> focus on real issues that tend to get lost in the noise much better.
+> 
+> There is no functional change. This series was generate on top of
+> linux-next from 20191119.
+> 
+> Changes since v1:
+> - Add review tags
+> - Fixed up commit message for devfreq_cooling and samsung changes
+
+Applied, thanks!
+
+
+-- 
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
