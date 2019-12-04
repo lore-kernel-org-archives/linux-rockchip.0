@@ -1,114 +1,85 @@
-From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: Describe PX30 caches
-Date: Wed,  4 Dec 2019 11:39:40 +0100
-Message-ID: <20191204103940.22050-1-miquel.raynal@bootlin.com>
+From: Guido =?iso-8859-1?Q?G=FCnther?= <guido.gunther@puri.sm>
+Subject: Re: [PATCH v1 18/26] drm/panel: rocktech-jh057n00900: use drm_panel
+ backlight support
+Date: Wed, 4 Dec 2019 13:04:16 +0100
+Message-ID: <20191204120416.GA18094@bogon.m.sigxcpu.org>
+References: <20191202193230.21310-1-sam@ravnborg.org>
+ <20191202193230.21310-19-sam@ravnborg.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20191202193230.21310-19-sam@ravnborg.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sam Ravnborg <sam@ravnborg.org>
+Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, NXP Linux Team <linux-imx@nxp.com>, Jagan Teki <jagan@amarulasolutions.com>, Jitao Shi <jitao.shi@mediatek.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, Abhinav Kumar <abhinavk@codeaurora.org>, linux-tegra@vger.kernel.org, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, Purism Kernel Team <kernel@puri.sm>, linux-renesas-soc@vger.kernel.org, Boris Brezillon <boris.brezillon@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-PX30 SoCs feature 4 Cortex-A35 CPUs with each of them a L1 data and
-instruction cache. Both are 32kiB wide (PX30 TRM) and made of 64-bit
-lines (ARM Cortex-A35 manual). I-cache is 2-way set associative (ARM
-Cortex-A35 manual), D-cache is 4-way set associative (ARM
-Cortex-A35manual).
-
-An L2 cache is placed after these 4 L1 caches (PX30 TRM), is 256kiB
-wide (PX30 TRM) and made of 64-bit lines (ARM Cortex-A35 manual) and
-is 8-way set associative (ARM Cortex-A35 manual).
-
-Describe all of them in the PX30 DTSI.
-
-Signed-off-by: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/px30.dtsi | 35 ++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index 1fd12bd09e83..0e10a224a84b 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -48,6 +48,13 @@
- 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
- 			dynamic-power-coefficient = <90>;
- 			operating-points-v2 = <&cpu0_opp_table>;
-+			i-cache-size = <0x8000>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <256>;
-+			d-cache-size = <0x8000>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2>;
- 		};
- 
- 		cpu1: cpu@1 {
-@@ -60,6 +67,13 @@
- 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
- 			dynamic-power-coefficient = <90>;
- 			operating-points-v2 = <&cpu0_opp_table>;
-+			i-cache-size = <0x8000>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <256>;
-+			d-cache-size = <0x8000>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2>;
- 		};
- 
- 		cpu2: cpu@2 {
-@@ -72,6 +86,13 @@
- 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
- 			dynamic-power-coefficient = <90>;
- 			operating-points-v2 = <&cpu0_opp_table>;
-+			i-cache-size = <0x8000>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <256>;
-+			d-cache-size = <0x8000>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2>;
- 		};
- 
- 		cpu3: cpu@3 {
-@@ -84,6 +105,13 @@
- 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
- 			dynamic-power-coefficient = <90>;
- 			operating-points-v2 = <&cpu0_opp_table>;
-+			i-cache-size = <0x8000>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <256>;
-+			d-cache-size = <0x8000>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2>;
- 		};
- 
- 		idle-states {
-@@ -107,6 +135,13 @@
- 				min-residency-us = <2000>;
- 			};
- 		};
-+
-+		l2: l2-cache {
-+			compatible = "cache";
-+			cache-size = <0x40000>;
-+			cache-line-size = <64>;
-+			cache-sets = <512>;
-+		};
- 	};
- 
- 	cpu0_opp_table: cpu0-opp-table {
--- 
-2.20.1
+SGksCk9uIE1vbiwgRGVjIDAyLCAyMDE5IGF0IDA4OjMyOjIyUE0gKzAxMDAsIFNhbSBSYXZuYm9y
+ZyB3cm90ZToKPiBVc2UgdGhlIGJhY2tsaWdodCBzdXBwb3J0IGluIGRybV9wYW5lbCB0byBzaW1w
+bGlmeSB0aGUgZHJpdmVyLgo+IFdoaWxlIHRvdWNoaW5nIHRoZSBpbmNsdWRlIGZpbGVzIHNvcnQg
+dGhlbQo+IGFuZCBkaXZpZGUgdGhlbSB1cCBpbiBibG9ja3MuCj4gCj4gU2lnbmVkLW9mZi1ieTog
+U2FtIFJhdm5ib3JnIDxzYW1AcmF2bmJvcmcub3JnPgo+IENjOiAiR3VpZG8gR8O8bnRoZXIiIDxh
+Z3hAc2lneGNwdS5vcmc+Cj4gQ2M6IFB1cmlzbSBLZXJuZWwgVGVhbSA8a2VybmVsQHB1cmkuc20+
+Cj4gQ2M6IFRoaWVycnkgUmVkaW5nIDx0aGllcnJ5LnJlZGluZ0BnbWFpbC5jb20+Cj4gQ2M6IFNh
+bSBSYXZuYm9yZyA8c2FtQHJhdm5ib3JnLm9yZz4KPiAtLS0KPiAgLi4uL2RybS9wYW5lbC9wYW5l
+bC1yb2NrdGVjaC1qaDA1N24wMDkwMC5jICAgIHwgMjQgKysrKysrKysrLS0tLS0tLS0tLQo+ICAx
+IGZpbGUgY2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygrKSwgMTIgZGVsZXRpb25zKC0pCj4gCj4gZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1yb2NrdGVjaC1qaDA1N24wMDkw
+MC5jIGIvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXJvY2t0ZWNoLWpoMDU3bjAwOTAwLmMK
+PiBpbmRleCAzYTRmMWMwZmNlODYuLjM4ZmY3NDJiYzEyMCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
+L2dwdS9kcm0vcGFuZWwvcGFuZWwtcm9ja3RlY2gtamgwNTduMDA5MDAuYwo+ICsrKyBiL2RyaXZl
+cnMvZ3B1L2RybS9wYW5lbC9wYW5lbC1yb2NrdGVjaC1qaDA1N24wMDkwMC5jCj4gQEAgLTUsMjAg
+KzUsMjIgQEAKPiAgICogQ29weXJpZ2h0IChDKSBQdXJpc20gU1BDIDIwMTkKPiAgICovCj4gIAo+
+IC0jaW5jbHVkZSA8ZHJtL2RybV9taXBpX2RzaS5oPgo+IC0jaW5jbHVkZSA8ZHJtL2RybV9tb2Rl
+cy5oPgo+IC0jaW5jbHVkZSA8ZHJtL2RybV9wYW5lbC5oPgo+IC0jaW5jbHVkZSA8ZHJtL2RybV9w
+cmludC5oPgo+IC0jaW5jbHVkZSA8bGludXgvYmFja2xpZ2h0Lmg+Cj4gICNpbmNsdWRlIDxsaW51
+eC9kZWJ1Z2ZzLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9kZWxheS5oPgo+ICAjaW5jbHVkZSA8bGlu
+dXgvZ3Bpby9jb25zdW1lci5oPgo+ICAjaW5jbHVkZSA8bGludXgvbWVkaWEtYnVzLWZvcm1hdC5o
+Pgo+ICsjaW5jbHVkZSA8bGludXgvbW9kX2RldmljZXRhYmxlLmg+Cj4gICNpbmNsdWRlIDxsaW51
+eC9tb2R1bGUuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3JlZ3VsYXRvci9jb25zdW1lci5oPgo+ICsK
+PiAgI2luY2x1ZGUgPHZpZGVvL2Rpc3BsYXlfdGltaW5nLmg+Cj4gICNpbmNsdWRlIDx2aWRlby9t
+aXBpX2Rpc3BsYXkuaD4KPiAgCj4gKyNpbmNsdWRlIDxkcm0vZHJtX21pcGlfZHNpLmg+Cj4gKyNp
+bmNsdWRlIDxkcm0vZHJtX21vZGVzLmg+Cj4gKyNpbmNsdWRlIDxkcm0vZHJtX3BhbmVsLmg+Cj4g
+KyNpbmNsdWRlIDxkcm0vZHJtX3ByaW50Lmg+Cj4gKwo+ICAjZGVmaW5lIERSVl9OQU1FICJwYW5l
+bC1yb2NrdGVjaC1qaDA1N24wMDkwMCIKPiAgCj4gIC8qIE1hbnVmYWN0dXJlciBzcGVjaWZpYyBD
+b21tYW5kcyBzZW5kIHZpYSBEU0kgKi8KPiBAQCAtNDcsNyArNDksNiBAQCBzdHJ1Y3QgamgwNTdu
+IHsKPiAgCXN0cnVjdCBkZXZpY2UgKmRldjsKPiAgCXN0cnVjdCBkcm1fcGFuZWwgcGFuZWw7Cj4g
+IAlzdHJ1Y3QgZ3Bpb19kZXNjICpyZXNldF9ncGlvOwo+IC0Jc3RydWN0IGJhY2tsaWdodF9kZXZp
+Y2UgKmJhY2tsaWdodDsKPiAgCXN0cnVjdCByZWd1bGF0b3IgKnZjYzsKPiAgCXN0cnVjdCByZWd1
+bGF0b3IgKmlvdmNjOwo+ICAJYm9vbCBwcmVwYXJlZDsKPiBAQCAtMTUyLDcgKzE1Myw3IEBAIHN0
+YXRpYyBpbnQgamgwNTduX2VuYWJsZShzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCkKPiAgCQlyZXR1
+cm4gcmV0Owo+ICAJfQo+ICAKPiAtCXJldHVybiBiYWNrbGlnaHRfZW5hYmxlKGN0eC0+YmFja2xp
+Z2h0KTsKPiArCXJldHVybiAwOwo+ICB9Cj4gIAo+ICBzdGF0aWMgaW50IGpoMDU3bl9kaXNhYmxl
+KHN0cnVjdCBkcm1fcGFuZWwgKnBhbmVsKQo+IEBAIC0xNjAsNyArMTYxLDYgQEAgc3RhdGljIGlu
+dCBqaDA1N25fZGlzYWJsZShzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbCkKPiAgCXN0cnVjdCBqaDA1
+N24gKmN0eCA9IHBhbmVsX3RvX2poMDU3bihwYW5lbCk7Cj4gIAlzdHJ1Y3QgbWlwaV9kc2lfZGV2
+aWNlICpkc2kgPSB0b19taXBpX2RzaV9kZXZpY2UoY3R4LT5kZXYpOwo+ICAKPiAtCWJhY2tsaWdo
+dF9kaXNhYmxlKGN0eC0+YmFja2xpZ2h0KTsKPiAgCXJldHVybiBtaXBpX2RzaV9kY3Nfc2V0X2Rp
+c3BsYXlfb2ZmKGRzaSk7Cj4gIH0KPiAgCj4gQEAgLTMyMSwxMCArMzIxLDYgQEAgc3RhdGljIGlu
+dCBqaDA1N25fcHJvYmUoc3RydWN0IG1pcGlfZHNpX2RldmljZSAqZHNpKQo+ICAJZHNpLT5tb2Rl
+X2ZsYWdzID0gTUlQSV9EU0lfTU9ERV9WSURFTyB8Cj4gIAkJTUlQSV9EU0lfTU9ERV9WSURFT19C
+VVJTVCB8IE1JUElfRFNJX01PREVfVklERU9fU1lOQ19QVUxTRTsKPiAgCj4gLQljdHgtPmJhY2ts
+aWdodCA9IGRldm1fb2ZfZmluZF9iYWNrbGlnaHQoZGV2KTsKPiAtCWlmIChJU19FUlIoY3R4LT5i
+YWNrbGlnaHQpKQo+IC0JCXJldHVybiBQVFJfRVJSKGN0eC0+YmFja2xpZ2h0KTsKPiAtCj4gIAlj
+dHgtPnZjYyA9IGRldm1fcmVndWxhdG9yX2dldChkZXYsICJ2Y2MiKTsKPiAgCWlmIChJU19FUlIo
+Y3R4LT52Y2MpKSB7Cj4gIAkJcmV0ID0gUFRSX0VSUihjdHgtPnZjYyk7Cj4gQEAgLTM0Nyw2ICsz
+NDMsMTAgQEAgc3RhdGljIGludCBqaDA1N25fcHJvYmUoc3RydWN0IG1pcGlfZHNpX2RldmljZSAq
+ZHNpKQo+ICAJZHJtX3BhbmVsX2luaXQoJmN0eC0+cGFuZWwsIGRldiwgJmpoMDU3bl9kcm1fZnVu
+Y3MsCj4gIAkJICAgICAgIERSTV9NT0RFX0NPTk5FQ1RPUl9EU0kpOwo+ICAKPiArCXJldCA9IGRy
+bV9wYW5lbF9vZl9iYWNrbGlnaHQoJmN0eC0+cGFuZWwpOwo+ICsJaWYgKHJldCkKPiArCQlyZXR1
+cm4gcmV0Owo+ICsKPiAgCWRybV9wYW5lbF9hZGQoJmN0eC0+cGFuZWwpOwo+ICAKPiAgCXJldCA9
+IG1pcGlfZHNpX2F0dGFjaChkc2kpOwoKUmV2aWV3ZWQtYnk6IEd1aWRvIEfDvG50aGVyIDxhZ3hA
+c2lneGNwdS5vcmc+IAoKPiAtLSAKPiAyLjIwLjEKPiAKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpLWRldmVs
