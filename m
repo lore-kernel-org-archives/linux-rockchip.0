@@ -1,90 +1,281 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH v1 07/26] drm/panel: remove get_timings
-Date: Wed, 4 Dec 2019 10:23:49 +0200
-Message-ID: <20191204082349.GA6705@pendragon.ideasonboard.com>
-References: <20191202193230.21310-1-sam@ravnborg.org>
- <20191202193230.21310-8-sam@ravnborg.org>
- <20191203074659.ilsyv4yx7pzw5vax@gilmour.lan>
- <CACRpkdZrReQs08+bXS7s7eJ-K76nMGvRgQ-L-1-baunEtiF40g@mail.gmail.com>
- <20191204081650.4n4ehbub4n7pxdom@gilmour.lan>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20191204081650.4n4ehbub4n7pxdom@gilmour.lan>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, "open list:DRM PANEL DRIVERS" <dri-devel@lists.freedesktop.org>, Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Tomi Valkeinen <tomi.valkeinen@ti.com>, NXP Linux Team <linux-imx@nxp.com>, Jagan Teki <jagan@amarulasolutions.com>, Jitao Shi <jitao.shi@mediatek.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Abhinav Kumar <abhinavk@codeaurora.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-tegra@vger.kernel.org, Sean Paul <sean@poorly.run>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Purism Kernel Team <kernel@puri.sm>, Linux-Renesas <linux-renesas-soc@vger.kernel.org>, Boris Brezillon <boris>
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v4 5/5] clk: rockchip: support pll setting by auto
+Date: Wed,  4 Dec 2019 16:25:27 +0800
+Message-ID: <20191204082527.19957-1-zhangqing@rock-chips.com>
+References: <20191204081859.19454-1-zhangqing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191204081859.19454-1-zhangqing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWF4aW1lLAoKT24gV2VkLCBEZWMgMDQsIDIwMTkgYXQgMDk6MTY6NTBBTSArMDEwMCwgTWF4
-aW1lIFJpcGFyZCB3cm90ZToKPiBPbiBUdWUsIERlYyAwMywgMjAxOSBhdCAwNDoyMDoyNFBNICsw
-MTAwLCBMaW51cyBXYWxsZWlqIHdyb3RlOgo+ID4gT24gVHVlLCBEZWMgMywgMjAxOSBhdCA4OjQ3
-IEFNIE1heGltZSBSaXBhcmQgd3JvdGU6Cj4gPgo+ID4gPiBVc2luZyBvbmx5IHRoZSBtb2RlIGFz
-IHdlIGRvIGN1cnJlbnRseSBoYXMgYSBidW5jaCBvZiBzaG9ydGNvbWluZ3MgYXMKPiA+ID4gYWxt
-b3N0IG5vIGVuY29kZXIgd2lsbCBiZSBhYmxlIHRvIHByb3ZpZGUgdGhlIHR5cGljYWwgcGl4ZWwg
-Y2xvY2ssIGFuZAo+ID4gPiB0aGF0IHNpdHVhdGlvbiBsZWFkcyB0byBtdWx0aXBsZSB0aGluZ3M6
-Cj4gPiA+Cj4gPiA+ICAgLSBJZiBzb21lb25lIHdvcmtpbmcgb24gb25lIGVuY29kZXIgd2FudHMg
-dG8gdXBzdHJlYW0gYSBwYW5lbCB0aGV5Cj4gPiA+ICAgICBoYXZlIHRlc3RlZCwgY2hhbmNlcyBh
-cmUgdGhpcyB3aWxsIG5vdCBiZSB0aGUgdHlwaWNhbCBwaXhlbCBjbG9jawo+ID4gPiAgICAgLyB0
-aW1pbmdzIGJlaW5nIHVzZWQgYnV0IHJhdGhlciB0aGUgb25lIHRoYXQgd2lsbCBtYXRjaCB3aGF0
-IHRoYXQKPiA+ID4gICAgIFNvQyBpcyBjYXBhYmxlIG9mLiBUcm91YmxlIGNvbWVzIHdoZW4gYSBz
-ZWNvbmQgdXNlciBjb21lcyBpbiB3aXRoCj4gPiA+ICAgICBhIGRpZmZlcmVudCBlbmNvZGVyIGFu
-ZCBkaWZmZXJlbnQgY2FwYWJpbGl0aWVzLCBhbmQgdGhlbiB3ZSBoYXZlIGEKPiA+ID4gICAgIG1h
-aW50YWluYW5jZSBmaWdodCBvdmVyIHdoaWNoIHRpbWluZyBpcyB0aGUgdHJ1ZSB0aW1pbmcgKHdp
-dGggYQo+ID4gPiAgICAgc2lnbmlmaWNhbnQgY2hhbmNlIHRoYXQgbm9uZSBvZiB0aGVtIGFyZSku
-Cj4gPiA+Cj4gPiA+ICAgLSBJZiB3ZSBjYW4ndCBtYXRjaCB0aGUgcGl4ZWwgY2xvY2ssIHdlIGN1
-cnJlbnRseSBoYXZlIG5vIGVhc3kgd2F5Cj4gPiA+ICAgICB0byBtYWtlIHRoZSB1c3VhbCBtZWFz
-dXJlcyBvZiByZWR1Y2luZyAvIGdyb3dpbmcgdGhlIHBvcmNoZXMgYW5kCj4gPiA+ICAgICBibGFu
-a2luZ3MgYXJlYXMgdG8gbWF0Y2ggdGhlIHBpeGVsIGNsb2NrIHdlIGNhbiBwcm92aWRlLCBzaW5j
-ZSB3ZQo+ID4gPiAgICAgZG9uJ3QgaGF2ZSBhbiBlYXN5IHdheSB0byBnZXQgdGhlIHRvbGVyYW5j
-ZSBvbiB0aG9zZSB0aW1pbmdzIGZvciBhCj4gPiA+ICAgICBnaXZlbiBwYW5lbC4gVGhlcmUncyBz
-b21lIGFkIGhvYyBzb2x1dGlvbnMgb24gc29tZSBkcml2ZXJzIChJCj4gPiA+ICAgICB0aGluayB2
-YzQgaGFzIHRoYXQ/KSB0byBpZ25vcmUgdGhlIHBhbmVsIGFuZCBqdXN0IHBsYXkgYXJvdW5kIHdp
-dGgKPiA+ID4gICAgIHRoZSB0aW1pbmdzLCBidXQgSSB0aGluayB0aGlzIHNob3VsZCBiZSBnZW5l
-cmFsaXNlZC4KPiA+Cj4gPiBJJ3ZlIGJlZW4gY29uZnVzZWQgd2l0aCB0aGVzZSB0aGluZ3MgYXMg
-dGhleSBsb29rIHRvZGF5IGFuZCBpdCBzZWVtcwo+ID4gdGhlIHdob2xlIHN0cnVjdCBkcm1fZGlz
-cGxheV9tb2RlIGNvdWxkIG5lZWQgc29tZSBpbXByb3ZlbWVudD8KPiA+Cj4gPiBJZiAuY2xvY2sg
-aXMgc3VwcG9zZWQgdG8gYmUgaHRvdGFsICogdnRvdGFsICogdnJlZnJlc2gsIHdoYXQgaXMgdGhl
-Cj4gPiAuY2xvY2sgZG9pbmcgdGhlcmUgYW55d2F5Lgo+IAo+IEl0J3Mgb25lIHRoaW5nIEkgd29u
-ZGVyIGFzIHdlbGwuIEkgZ3Vlc3MgaXQncyBqdXN0IG1vcmUgY29udmVuaWVudCBmb3IKPiBldmVy
-eW9uZSwgc2luY2UgaXQncyBleHBvc2VkIGJ5IHRoZSBWRVNBIG1vZGVzIChpaXJjKSBhbmQgYSBs
-b3Qgb2YKPiBkcml2ZXJzIHJlYWxseSBjYXJlIGFib3V0IHRoZSBjbG9jay4KCk15IHVuZGVyc3Rh
-bmRpbmcgaXMgdGhhdCB0aGUgY2xvY2sgaXMgdGhlIGF1dGhvcml0YXRpdmUgcGFyYW1ldGVyLCB3
-aGlsZQp2cmVmcmVzaCBpcyBvZmZlcmVkIGFzIGEgY29udmVuaWVuY2UgdG8gYXZvaWQgY2FsY3Vs
-YXRpbmcgaXQgbWFudWFsbHkKdGhyb3VnaCBkcml2ZXJzLgoKPiA+IFNhZGx5IEkgYW0gdG9vIGlu
-ZXhwZXJpZW5jZWQgdG8gcmVhbGl6ZSB3aGVyZSB0aGUgdG9sZXJhbmNlcyBzaG91bGQKPiA+IGJl
-IHN0YXRlZCwgYnV0IEkgZ3Vlc3MganVzdCBzdGF0aW5nIHRoYXQgaHN5bmNfc3RhcnQgZXRjIGFy
-ZSB0eXBpY2FsLAo+ID4gdGhlbiBzcGVjaWZ5IHNvbWUgdG9sZXJhbmNlIGZvciBlYWNoIHdvdWxk
-IGhlbHAgYSBiaXQ/Cj4gCj4gVGhlIHRpbWluZ3Mgc3RydWN0dXJlIGRpc2N1c3NlZCBpbiB0aGUg
-cGF0Y2ggdGhhdCBzdGFydGVkIHRoaXMKPiBkaXNjdXNzaW9uIGlzIGFjdHVhbGx5IGRvaW5nIHRo
-aXMgbmljZWx5LCB5b3UgaGF2ZSBmb3IgZWFjaCB0aW1pbmcgdGhlCj4gbWluaW11bSwgdHlwaWNh
-bCBhbmQgbWF4aW11bSB2YWx1ZS4gVGhlIGN1cnJlbnQgaXNzdWUgd2l0aCBpdCB0aG91Z2gKPiBp
-cyB0aGF0IGl0J3MgcHJldHR5IGRpZmZpY3VsdCB0byB1c2UgaXQsIHNpbmNlIGl0J3Mgbm90IHJl
-YWxseSB0aWVkIHRvCj4gYW55IG9mIHRoZSBwYW5lbCBjb2RlIChvciBEUk0gaGVscGVycykuIFRo
-ZSBvbmx5IGRyaXZlciB0aGF0IHdhcwo+IHN1cHBvcnRpbmcgaXQgd2FzIG9tYXBkcm0gYW5kIGl0
-IHdhcyByZW1vdmVkIHJlY2VudGx5Lgo+IAo+IElmIHdlIHJlYWxseSB3YW50ZWQgdG8gc3VwcG9y
-dCBpdCwgb25lIHBhdGggZm9yd2FyZCBJIGNhbiBzZWUgd291bGQgYmUKPiB0byBtYWtlIHRoZSB0
-aW1pbmdzIHN0cnVjdHVyZSB0aGUgcHJpbWFyeSBvbmUsIGFuZCBvbmx5IHVzZQo+IGRybV9kaXNw
-bGF5X21vZGUgZm9yIHVzZXJzcGFjZSBmYWNpbmcgY29kZSwgYW5kIGdlbmVyYXRlIGl0IGZyb20g
-dGhlCj4gdGltaW5ncy4gVGhpcyB3b3VsZCBiZSBhIHByZXR0eSBpbnZhc2l2ZSBjaGFuZ2UgdGhv
-dWdoLi4uCj4gCj4gPiBPbiB0aGUgRFNJIGRpc3BsYXlzIGluIHZpZGVvIG1vZGUgdGhlcmUgaXMg
-YWxzbyB0aGlzIEVPTCBhcmVhCj4gPiB3aGljaCBzZWVtcyB0byBiZSB3aGVyZSB0aGUgbG9naWMg
-aXMgbm9ybWFsbHkganVzdCBpZGxpbmcgZm9yIGEKPiA+IHdoaWxlLCB0aGF0IGNhbiBiZSBhZGp1
-c3RlZCBvbiBzb21lIGhhcmR3YXJlIGFzIHdlbGwsIGJ1dAo+ID4gSSBkb24ndCBxdWl0ZSB1bmRl
-cnN0YW5kIGl0IGFkbWl0dGVkbHkuIFNvbWV0aW1lcyBJIHdvbmRlciBpZgo+ID4gYW55b25lIHJl
-YWxseSB1bmRlcnN0YW5kcyBEU0kuLi4gOi8KPiAKPiBJJ20gbm90IGF3YXJlIG9mIGFueSBFT0wg
-YXJlYSBpbiBNSVBJLURTSSB0aGF0IHdvdWxkIG1ha2UgdGhlIGhhcmR3YXJlCj4gaWRsZSwgZG9u
-J3QgeW91IG1lYW4gTFAtMTE/CgotLSAKUmVnYXJkcywKCkxhdXJlbnQgUGluY2hhcnQKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
-bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+If setting freq is not support in rockchip_pll_rate_table,
+It can calculate and set pll params by auto.
+
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/clk/rockchip/clk-pll.c | 215 ++++++++++++++++++++++++++++++---
+ 1 file changed, 200 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
+index 390e9473807a..ac8c62c531f0 100644
+--- a/drivers/clk/rockchip/clk-pll.c
++++ b/drivers/clk/rockchip/clk-pll.c
+@@ -14,6 +14,7 @@
+ #include <linux/clk-provider.h>
+ #include <linux/regmap.h>
+ #include <linux/clk.h>
++#include <linux/gcd.h>
+ #include "clk.h"
+ 
+ #define PLL_MODE_MASK		0x3
+@@ -46,6 +47,198 @@ struct rockchip_clk_pll {
+ #define to_rockchip_clk_pll_nb(nb) \
+ 			container_of(nb, struct rockchip_clk_pll, clk_nb)
+ 
++#define MHZ			(1000UL * 1000UL)
++#define KHZ			(1000UL)
++
++/* CLK_PLL_TYPE_RK3066_AUTO type ops */
++#define PLL_FREF_MIN		(269 * KHZ)
++#define PLL_FREF_MAX		(2200 * MHZ)
++
++#define PLL_FVCO_MIN		(440 * MHZ)
++#define PLL_FVCO_MAX		(2200 * MHZ)
++
++#define PLL_FOUT_MIN		(27500 * KHZ)
++#define PLL_FOUT_MAX		(2200 * MHZ)
++
++#define PLL_NF_MAX		(4096)
++#define PLL_NR_MAX		(64)
++#define PLL_NO_MAX		(16)
++
++/* CLK_PLL_TYPE_RK3036/3366/3399_AUTO type ops */
++#define MIN_FOUTVCO_FREQ	(800 * MHZ)
++#define MAX_FOUTVCO_FREQ	(2000 * MHZ)
++
++static struct rockchip_pll_rate_table auto_table;
++
++static struct rockchip_pll_rate_table *rk_pll_rate_table_get(void)
++{
++	return &auto_table;
++}
++
++static int rockchip_pll_clk_set_postdiv(unsigned long fout_hz,
++					u32 *postdiv1,
++					u32 *postdiv2,
++					u32 *foutvco)
++{
++	unsigned long freq;
++
++	if (fout_hz < MIN_FOUTVCO_FREQ) {
++		for (*postdiv1 = 1; *postdiv1 <= 7; (*postdiv1)++) {
++			for (*postdiv2 = 1; *postdiv2 <= 7; (*postdiv2)++) {
++				freq = fout_hz * (*postdiv1) * (*postdiv2);
++				if (freq >= MIN_FOUTVCO_FREQ &&
++				    freq <= MAX_FOUTVCO_FREQ) {
++					*foutvco = freq;
++					return 0;
++				}
++			}
++		}
++		pr_err("CANNOT FIND postdiv1/2 to make fout in range from 800M to 2000M,fout = %lu\n",
++		       fout_hz);
++	} else {
++		*postdiv1 = 1;
++		*postdiv2 = 1;
++	}
++	return 0;
++}
++
++static struct rockchip_pll_rate_table *
++rockchip_pll_clk_set_by_auto(struct rockchip_clk_pll *pll,
++			     unsigned long fin_hz,
++			     unsigned long fout_hz)
++{
++	struct rockchip_pll_rate_table *rate_table = rk_pll_rate_table_get();
++	/* FIXME set postdiv1/2 always 1*/
++	u32 foutvco = fout_hz;
++	u64 fin_64, frac_64;
++	u32 f_frac, postdiv1, postdiv2;
++	unsigned long clk_gcd = 0;
++
++	if (fin_hz == 0 || fout_hz == 0 || fout_hz == fin_hz)
++		return NULL;
++
++	rockchip_pll_clk_set_postdiv(fout_hz, &postdiv1, &postdiv2, &foutvco);
++	rate_table->postdiv1 = postdiv1;
++	rate_table->postdiv2 = postdiv2;
++	rate_table->dsmpd = 1;
++
++	if (fin_hz / MHZ * MHZ == fin_hz && fout_hz / MHZ * MHZ == fout_hz) {
++		fin_hz /= MHZ;
++		foutvco /= MHZ;
++		clk_gcd = gcd(fin_hz, foutvco);
++		rate_table->refdiv = fin_hz / clk_gcd;
++		rate_table->fbdiv = foutvco / clk_gcd;
++
++		rate_table->frac = 0;
++
++		pr_debug("fin = %lu, fout = %lu, clk_gcd = %lu, refdiv = %u, fbdiv = %u, postdiv1 = %u, postdiv2 = %u, frac = %u\n",
++			 fin_hz, fout_hz, clk_gcd, rate_table->refdiv,
++			 rate_table->fbdiv, rate_table->postdiv1,
++			 rate_table->postdiv2, rate_table->frac);
++	} else {
++		pr_debug("frac div running, fin_hz = %lu, fout_hz = %lu, fin_INT_mhz = %lu, fout_INT_mhz = %lu\n",
++			 fin_hz, fout_hz,
++			 fin_hz / MHZ * MHZ,
++			 fout_hz / MHZ * MHZ);
++		pr_debug("frac get postdiv1 = %u,  postdiv2 = %u, foutvco = %u\n",
++			 rate_table->postdiv1, rate_table->postdiv2, foutvco);
++		clk_gcd = gcd(fin_hz / MHZ, foutvco / MHZ);
++		rate_table->refdiv = fin_hz / MHZ / clk_gcd;
++		rate_table->fbdiv = foutvco / MHZ / clk_gcd;
++		pr_debug("frac get refdiv = %u,  fbdiv = %u\n",
++			 rate_table->refdiv, rate_table->fbdiv);
++
++		rate_table->frac = 0;
++
++		f_frac = (foutvco % MHZ);
++		fin_64 = fin_hz;
++		do_div(fin_64, (u64)rate_table->refdiv);
++		frac_64 = (u64)f_frac << 24;
++		do_div(frac_64, fin_64);
++		rate_table->frac = (u32)frac_64;
++		if (rate_table->frac > 0)
++			rate_table->dsmpd = 0;
++		pr_debug("frac = %x\n", rate_table->frac);
++	}
++	return rate_table;
++}
++
++static struct rockchip_pll_rate_table *
++rockchip_rk3066_pll_clk_set_by_auto(struct rockchip_clk_pll *pll,
++				    unsigned long fin_hz,
++				    unsigned long fout_hz)
++{
++	struct rockchip_pll_rate_table *rate_table = rk_pll_rate_table_get();
++	u32 nr, nf, no, nonr;
++	u32 nr_out, nf_out, no_out;
++	u32 n;
++	u32 numerator, denominator;
++	u64 fref, fvco, fout;
++	unsigned long clk_gcd = 0;
++
++	nr_out = PLL_NR_MAX + 1;
++	no_out = 0;
++	nf_out = 0;
++
++	if (fin_hz == 0 || fout_hz == 0 || fout_hz == fin_hz)
++		return NULL;
++
++	clk_gcd = gcd(fin_hz, fout_hz);
++
++	numerator = fout_hz / clk_gcd;
++	denominator = fin_hz / clk_gcd;
++
++	for (n = 1;; n++) {
++		nf = numerator * n;
++		nonr = denominator * n;
++		if (nf > PLL_NF_MAX || nonr > (PLL_NO_MAX * PLL_NR_MAX))
++			break;
++
++		for (no = 1; no <= PLL_NO_MAX; no++) {
++			if (!(no == 1 || !(no % 2)))
++				continue;
++
++			if (nonr % no)
++				continue;
++			nr = nonr / no;
++
++			if (nr > PLL_NR_MAX)
++				continue;
++
++			fref = fin_hz / nr;
++			if (fref < PLL_FREF_MIN || fref > PLL_FREF_MAX)
++				continue;
++
++			fvco = fref * nf;
++			if (fvco < PLL_FVCO_MIN || fvco > PLL_FVCO_MAX)
++				continue;
++
++			fout = fvco / no;
++			if (fout < PLL_FOUT_MIN || fout > PLL_FOUT_MAX)
++				continue;
++
++			/* select the best from all available PLL settings */
++			if ((no > no_out) ||
++			    ((no == no_out) && (nr < nr_out))) {
++				nr_out = nr;
++				nf_out = nf;
++				no_out = no;
++			}
++		}
++	}
++
++	/* output the best PLL setting */
++	if ((nr_out <= PLL_NR_MAX) && (no_out > 0)) {
++		rate_table->nr = nr_out;
++		rate_table->nf = nf_out;
++		rate_table->no = no_out;
++	} else {
++		return NULL;
++	}
++
++	return rate_table;
++}
++
+ static const struct rockchip_pll_rate_table *rockchip_get_pll_settings(
+ 			    struct rockchip_clk_pll *pll, unsigned long rate)
+ {
+@@ -57,24 +250,16 @@ static const struct rockchip_pll_rate_table *rockchip_get_pll_settings(
+ 			return &rate_table[i];
+ 	}
+ 
+-	return NULL;
++	if (pll->type == pll_rk3066)
++		return rockchip_rk3066_pll_clk_set_by_auto(pll, 24 * MHZ, rate);
++	else
++		return rockchip_pll_clk_set_by_auto(pll, 24 * MHZ, rate);
+ }
+ 
+ static long rockchip_pll_round_rate(struct clk_hw *hw,
+ 			    unsigned long drate, unsigned long *prate)
+ {
+-	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
+-	const struct rockchip_pll_rate_table *rate_table = pll->rate_table;
+-	int i;
+-
+-	/* Assumming rate_table is in descending order */
+-	for (i = 0; i < pll->rate_count; i++) {
+-		if (drate >= rate_table[i].rate)
+-			return rate_table[i].rate;
+-	}
+-
+-	/* return minimum supported value */
+-	return rate_table[i - 1].rate;
++	return drate;
+ }
+ 
+ /*
+@@ -154,7 +339,7 @@ static unsigned long rockchip_rk3036_pll_recalc_rate(struct clk_hw *hw,
+ {
+ 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
+ 	struct rockchip_pll_rate_table cur;
+-	u64 rate64 = prate;
++	u64 rate64 = prate, frac_rate64 = prate;
+ 
+ 	rockchip_rk3036_pll_get_params(pll, &cur);
+ 
+@@ -163,7 +348,7 @@ static unsigned long rockchip_rk3036_pll_recalc_rate(struct clk_hw *hw,
+ 
+ 	if (cur.dsmpd == 0) {
+ 		/* fractional mode */
+-		u64 frac_rate64 = prate * cur.frac;
++		frac_rate64 *= cur.frac;
+ 
+ 		do_div(frac_rate64, cur.refdiv);
+ 		rate64 += frac_rate64 >> 24;
+-- 
+2.17.1
