@@ -1,58 +1,114 @@
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH] MAINTAINERS: rockchip: Track more files
-Date: Wed,  4 Dec 2019 10:07:10 +0100
-Message-ID: <20191204090710.11646-1-miquel.raynal@bootlin.com>
+From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Subject: [PATCH] arm64: dts: rockchip: Describe PX30 caches
+Date: Wed,  4 Dec 2019 11:39:40 +0100
+Message-ID: <20191204103940.22050-1-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Maxime Chevallier <maxime.chevallier@bootlin.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, linux-kernel@vger.kernel.org, Miquel Raynal <miquel.raynal@bootlin.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The current list misses a lot of drivers not prefixed or suffixed by
-"rockchip". For instance, there are plenty drivers called rk808 and
-rk805 which are currently not tracked (clk, regulator, pinctrl, RTC,
-MFD, includes, bindings). Add them to the list under the Rockchip
-entry.
+PX30 SoCs feature 4 Cortex-A35 CPUs with each of them a L1 data and
+instruction cache. Both are 32kiB wide (PX30 TRM) and made of 64-bit
+lines (ARM Cortex-A35 manual). I-cache is 2-way set associative (ARM
+Cortex-A35 manual), D-cache is 4-way set associative (ARM
+Cortex-A35manual).
 
-Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
+An L2 cache is placed after these 4 L1 caches (PX30 TRM), is 256kiB
+wide (PX30 TRM) and made of 64-bit lines (ARM Cortex-A35 manual) and
+is 8-way set associative (ARM Cortex-A35 manual).
+
+Describe all of them in the PX30 DTSI.
+
+Signed-off-by: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 ---
+ arch/arm64/boot/dts/rockchip/px30.dtsi | 35 ++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
-Hi Heiko,
-
-You are right we should try to check more often your tree. Also, here
-is a patch so that you are Cc'ed for all Rockchip related patches
-because the current list is not exhaustive at all (not sure it is
-voluntary or not though).
-
-Cheers,
-Miquèl
-
- MAINTAINERS | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index cba1095547fd..a9564e6cb872 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2198,12 +2198,16 @@ L:	linux-rockchip@lists.infradead.org
- T:	git git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
- S:	Maintained
- F:	Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
-+F:	Documentation/devicetree/bindings/*/*rk80*
- F:	arch/arm/boot/dts/rk3*
- F:	arch/arm/boot/dts/rv1108*
- F:	arch/arm/mach-rockchip/
-+F:	include/*/*/rk808.h
-+F:	include/*/*/*/rk808.h
- F:	drivers/clk/rockchip/
- F:	drivers/i2c/busses/i2c-rk3x.c
- F:	drivers/*/*rockchip*
-+F:	drivers/*/*rk80*
- F:	drivers/*/*/*rockchip*
- F:	sound/soc/rockchip/
- N:	rockchip
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index 1fd12bd09e83..0e10a224a84b 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -48,6 +48,13 @@
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+ 			dynamic-power-coefficient = <90>;
+ 			operating-points-v2 = <&cpu0_opp_table>;
++			i-cache-size = <0x8000>;
++			i-cache-line-size = <64>;
++			i-cache-sets = <256>;
++			d-cache-size = <0x8000>;
++			d-cache-line-size = <64>;
++			d-cache-sets = <128>;
++			next-level-cache = <&l2>;
+ 		};
+ 
+ 		cpu1: cpu@1 {
+@@ -60,6 +67,13 @@
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+ 			dynamic-power-coefficient = <90>;
+ 			operating-points-v2 = <&cpu0_opp_table>;
++			i-cache-size = <0x8000>;
++			i-cache-line-size = <64>;
++			i-cache-sets = <256>;
++			d-cache-size = <0x8000>;
++			d-cache-line-size = <64>;
++			d-cache-sets = <128>;
++			next-level-cache = <&l2>;
+ 		};
+ 
+ 		cpu2: cpu@2 {
+@@ -72,6 +86,13 @@
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+ 			dynamic-power-coefficient = <90>;
+ 			operating-points-v2 = <&cpu0_opp_table>;
++			i-cache-size = <0x8000>;
++			i-cache-line-size = <64>;
++			i-cache-sets = <256>;
++			d-cache-size = <0x8000>;
++			d-cache-line-size = <64>;
++			d-cache-sets = <128>;
++			next-level-cache = <&l2>;
+ 		};
+ 
+ 		cpu3: cpu@3 {
+@@ -84,6 +105,13 @@
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+ 			dynamic-power-coefficient = <90>;
+ 			operating-points-v2 = <&cpu0_opp_table>;
++			i-cache-size = <0x8000>;
++			i-cache-line-size = <64>;
++			i-cache-sets = <256>;
++			d-cache-size = <0x8000>;
++			d-cache-line-size = <64>;
++			d-cache-sets = <128>;
++			next-level-cache = <&l2>;
+ 		};
+ 
+ 		idle-states {
+@@ -107,6 +135,13 @@
+ 				min-residency-us = <2000>;
+ 			};
+ 		};
++
++		l2: l2-cache {
++			compatible = "cache";
++			cache-size = <0x40000>;
++			cache-line-size = <64>;
++			cache-sets = <512>;
++		};
+ 	};
+ 
+ 	cpu0_opp_table: cpu0-opp-table {
 -- 
 2.20.1
