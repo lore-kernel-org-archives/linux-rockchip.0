@@ -1,54 +1,54 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Move xin32k fixed-clock out of PX30
- DTSI
-Date: Wed, 04 Dec 2019 18:31:46 +0100
-Message-ID: <2665233.YyXs6BPQ7y@diego>
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Move xin32k fixed-clock out of
+ PX30 DTSI
+Date: Wed, 4 Dec 2019 18:36:46 +0100
+Message-ID: <20191204183646.2f7f6e7f@xps13>
 References: <20191204171537.14163-1-miquel.raynal@bootlin.com>
+ <2665233.YyXs6BPQ7y@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191204171537.14163-1-miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <2665233.YyXs6BPQ7y@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Miquel,
-
-Am Mittwoch, 4. Dezember 2019, 18:15:37 CET schrieb Miquel Raynal:
-> This clock has nothing to do in the PX30 DTSI as it is supposed to be
-> an input of the SoC. Moving it to the EVB DTS (only board file using
-> this DTSI) makes more sense. Also, when this clock is not a fixed
-> clock and comes from eg. a PMIC the situation can be described cleanly
-> in the device tree (avoids having to delete the fixed-clock node
-> first).
-> 
-> This clock is not mandatory to boot so it should not break existing
-> users.
-> 
-> Signed-off-by: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-
-Sorry foo being the bearer of bad news again, but that issue got already
-fixed by:
-
-arm64: dts: rockchip: remove static xin32k from px30
-https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=v5.5-armsoc/dts64&id=00519137f7d4fc19ff27f3d3f4fc45b5b222ae82
-
-arm64: dts: rockchip: fix the px30-evb power tree
-https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=v5.5-armsoc/dts64&id=915b6a8b54a6d436885a458867e59fb20fc6356d
-
-
-On most/all Rockchip the xin32k clock is actually provided by the boards
-pmic - the rk809 in this case.
-
-
-Heiko
+SGkgSGVpa28sCgpIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZSBvbiBXZWQs
+IDA0IERlYyAyMDE5IDE4OjMxOjQ2CiswMTAwOgoKPiBIaSBNaXF1ZWwsCj4gCj4gQW0gTWl0dHdv
+Y2gsIDQuIERlemVtYmVyIDIwMTksIDE4OjE1OjM3IENFVCBzY2hyaWViIE1pcXVlbCBSYXluYWw6
+Cj4gPiBUaGlzIGNsb2NrIGhhcyBub3RoaW5nIHRvIGRvIGluIHRoZSBQWDMwIERUU0kgYXMgaXQg
+aXMgc3VwcG9zZWQgdG8gYmUKPiA+IGFuIGlucHV0IG9mIHRoZSBTb0MuIE1vdmluZyBpdCB0byB0
+aGUgRVZCIERUUyAob25seSBib2FyZCBmaWxlIHVzaW5nCj4gPiB0aGlzIERUU0kpIG1ha2VzIG1v
+cmUgc2Vuc2UuIEFsc28sIHdoZW4gdGhpcyBjbG9jayBpcyBub3QgYSBmaXhlZAo+ID4gY2xvY2sg
+YW5kIGNvbWVzIGZyb20gZWcuIGEgUE1JQyB0aGUgc2l0dWF0aW9uIGNhbiBiZSBkZXNjcmliZWQg
+Y2xlYW5seQo+ID4gaW4gdGhlIGRldmljZSB0cmVlIChhdm9pZHMgaGF2aW5nIHRvIGRlbGV0ZSB0
+aGUgZml4ZWQtY2xvY2sgbm9kZQo+ID4gZmlyc3QpLgo+ID4gCj4gPiBUaGlzIGNsb2NrIGlzIG5v
+dCBtYW5kYXRvcnkgdG8gYm9vdCBzbyBpdCBzaG91bGQgbm90IGJyZWFrIGV4aXN0aW5nCj4gPiB1
+c2Vycy4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogTWlxdWVsIFJheW5hbCA8bWlxdWVsLnJheW5h
+bEBib290bGluLmNvbT4gIAo+IAo+IFNvcnJ5IGZvbyBiZWluZyB0aGUgYmVhcmVyIG9mIGJhZCBu
+ZXdzIGFnYWluLCBidXQgdGhhdCBpc3N1ZSBnb3QgYWxyZWFkeQo+IGZpeGVkIGJ5OgoKSGUgaGUs
+IG5vIHByb2JsZW0gOikgSSB3YXMgbm90IGFjdHVhbGx5IGxvb2tpbmcgYXQgdGhlIHJpZ2h0IGJy
+YW5jaAoodjUuNS1hcm1zb2MvZHRzNjQpLgoKPiBhcm02NDogZHRzOiByb2NrY2hpcDogcmVtb3Zl
+IHN0YXRpYyB4aW4zMmsgZnJvbSBweDMwCj4gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2Nt
+L2xpbnV4L2tlcm5lbC9naXQvbW1pbmQvbGludXgtcm9ja2NoaXAuZ2l0L2NvbW1pdC8/aD12NS41
+LWFybXNvYy9kdHM2NCZpZD0wMDUxOTEzN2Y3ZDRmYzE5ZmYyN2YzZDNmNGZjNDViNWIyMjJhZTgy
+Cj4gCj4gYXJtNjQ6IGR0czogcm9ja2NoaXA6IGZpeCB0aGUgcHgzMC1ldmIgcG93ZXIgdHJlZQo+
+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L21taW5kL2xp
+bnV4LXJvY2tjaGlwLmdpdC9jb21taXQvP2g9djUuNS1hcm1zb2MvZHRzNjQmaWQ9OTE1YjZhOGI1
+NGE2ZDQzNjg4NWE0NTg4NjdlNTlmYjIwZmM2MzU2ZAo+IAo+IAo+IE9uIG1vc3QvYWxsIFJvY2tj
+aGlwIHRoZSB4aW4zMmsgY2xvY2sgaXMgYWN0dWFsbHkgcHJvdmlkZWQgYnkgdGhlIGJvYXJkcwo+
+IHBtaWMgLSB0aGUgcms4MDkgaW4gdGhpcyBjYXNlLgoKVGhhbmtzIGZvciB0aGUgY29uZmlybWF0
+aW9uIQpNaXF1w6hsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3Rz
+LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9saW51eC1hcm0ta2VybmVsCg==
