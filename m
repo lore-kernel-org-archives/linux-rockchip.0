@@ -1,616 +1,202 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: Re: [PATCH 2/5] pci: endpoint: add support to handle multiple base
- for mapping outbound memory
-Date: Thu, 5 Dec 2019 15:52:59 +0530
-Message-ID: <9b8a8943-b2a1-1afd-eec1-ed664a5882ca@ti.com>
-References: <20191106193609.19645-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
- <20191106193609.19645-3-prabhakar.mahadev-lad.rj@bp.renesas.com>
- <8564ee76-1da6-9b7c-01f2-7cda0cd3b3dc@ti.com>
- <CA+V-a8tAk0iLNxN+ZgKyf-chLY2s4C-ajpJKeEr-B8Ajn1MkJQ@mail.gmail.com>
+From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [BUG] rk3399 fails to reboot correctly with PCIE device inserted
+Date: Thu, 5 Dec 2019 08:07:14 -0500
+Message-ID: <CAMdYzYorsxrb1_xWjeAW-76QQ3a+Y+5iHskhM4M1N5rsUzoY7w@mail.gmail.com>
+References: <CAMdYzYrLX=z-OVoW9RVecjoYK1J8EfLQ=cV1aNUqPsXqiOU+2g@mail.gmail.com>
+ <2a5d91f1-033e-8acc-5b57-16ca77204a0b@arm.com>
+ <CAMdYzYpdW13roxwHxD5w=XLBiyASp+biMqP-n2+QD9cL5g_hvg@mail.gmail.com>
+ <CAMdYzYoCzU4F66Hpdy6XBTWwWi+WmSo50R+sCSDEFOBKr84U1w@mail.gmail.com>
+ <CAMdYzYrHvGHRq51fbNp4Y=9HhaEUXhyoYt-dy70xVFrOmkNOTA@mail.gmail.com>
+ <55c56fb7-9402-9798-9631-c1c3f607d663@arm.com>
+ <CAMdYzYqvNa5_5xMnw=MVOL5iJQq_-cBVGtwQMXQ_JqLvyx=mYA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CA+V-a8tAk0iLNxN+ZgKyf-chLY2s4C-ajpJKeEr-B8Ajn1MkJQ@mail.gmail.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-pci <linux-pci@vger.kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Will Deacon <will@kernel.org>, Marek Vasut <marek.vasut+renesas@gmail.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Magnus Damm <magnus.damm@gmail.com>, linux-rockchip@lists.infradead.org, Catalin Marinas <catalin.marinas@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE
- BINDINGS" <devicetree@vger.kernel.org>, Chris Paterson <Chris.Paterson2@renesas.com>, Arnd Bergmann <arnd@arndb.de>, "Lad, Prabhakar" <prabhakar.mahadev-lad.rj@bp.renesas.com>, Rob Herring <robh+dt@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, LAK <linux-arm-kernel@lists.infradead.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, LK
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAMdYzYqvNa5_5xMnw=MVOL5iJQq_-cBVGtwQMXQ_JqLvyx=mYA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Wed, Dec 4, 2019 at 1:28 PM Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>
+> On Wed, Dec 4, 2019 at 12:42 PM Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org> wrote:
+> >
+> > On 04/12/2019 5:28 pm, Peter Geis wrote:
+> > > On Mon, Nov 25, 2019 at 7:05 PM Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> > >>
+> > >> On Mon, Nov 25, 2019 at 12:10 PM Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> > >>>
+> > >>> On Mon, Nov 25, 2019 at 11:52 AM Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org> wrote:
+> > >>>>
+> > >>>> Hi Peter,
+> > >>>>
+> > >>>> On 25/11/2019 4:28 pm, Peter Geis wrote:
+> > >>>>> Good Morning,
+> > >>>>>
+> > >>>>> Another issue I've come across while testing PCIE on the rockpro64.
+> > >>>>> When a PCIE device is inserted into the board, and it enumerates
+> > >>>>> successfully, the board will not reset.
+> > >>>>> I've tried various states of u-boot-rockchip, u-boot-mainline, with
+> > >>>>> both miniloader and TPL/SPL.
+> > >>>>
+> > >>>> In case it's relevant, what particular PCIe device(s) have you seen the
+> > >>>> issue with? FWIW I've been running a Samsung 960 Evo NVMe in my
+> > >>>> NanoPC-T4 with mainline kernels for months now and it's always rebooted
+> > >>>> flawlessly.
+> > >>>>
+> > >>>> Robin.
+> > >>>
+> > >>> Currently with a I350 NIC, but also observed with a pcie switch, and the GTX645.
+> > >>> The NIC works, while the other two didn't without the patch to hijack
+> > >>> the error handler.
+> > >>>
+> > >>> I am running the latest atf built from their github.
+> > >>
+> > >> On closer examination, it isn't the pcie devices causing the reboot
+> > >> issues, the rk3399 just doesn't reboot.
+> > >> It would seem the trigger with miniloader was random enough that it
+> > >> appeared to be tied to my pcie testing.
+> > >> It happens 100% of the time with tpl/spl.
+> > >
+> > > With further testing, I think I've found the trigger of the reboot failure.
+> > > It would seem with ATF compiled from source, psci-reboot is not
+> > > actually triggering the reboot.
+> > > The reason my board stopped rebooting entirely is because I had
+> > > somehow broken the psci-watchdog.
+> > >
+> > > I rebuilt all from source, stripping all modifications I had done and
+> > > using the defconfigs.
+> > > I get the following message at reboot time:
+> > > [ 2839.724508] watchdog: watchdog0: watchdog did not stop!
+> > > [ 2841.162516] reboot: Restarting system
+> > > U-Boot TPL 2020.01-rc3-00070-g9a0cbae22a-dirty (Dec 03 2019 - 14:07:57)
+> > > Whereas before the watchdog alert was not triggering and reboot never occurred.
+> > >
+> > > It would seem that the pcsi-reboot function is dead, and the only
+> > > reason the boards are actually rebooting is because the psci-watchdog
+> > > is triggering the reboot after the kernel fails to check in.
+> > >
+> > > Now I am still having the issue with boot hanging after a warm reboot
+> > > when certain pci-e devices are installed (particularly, the i350
+> > > network controller).
+> > > I think this may be due to the pci-e controller driver lacking proper
+> > > shutdown cleanup code, which is allowing the i350 to continue to
+> > > trigger either interrupts or dma transfers following the soft-reboot.
+> > >
+> > > The hang occurs roughly the same point, when either the iommu or the
+> > > first dma device is initialized.
+> > > Occasionally the A72 cluster fails to initialize as well.
+> >
+> > It turns out there's been a general issue with upstream ATF failing to
+> > reboot RK3399 correctly, which has just been tracked down to power
+> > domain states getting out of sync - there's more info on the U-Boot list
+> > here: https://lists.denx.de/pipermail/u-boot/2019-December/392348.html
+> >
+> > Robin.
+>
+> Thanks!
+> Seems there were two issues here, both involving the power bugs I've
+> been tracking.
+>
+> First, there was no sanity check if there was a power-off or reset
+> gpio, before trying to get the gpio.
+> This broke reset and poweroff functions on board without reset or
+> power-off gpios.
+> The fix they implemented is to try to set the gpio value before
+> getting the gpio, which fails if the gpio doesn't exist and it returns
+> null in that case.
+> This fix has been merged as of last night.
+>
+> The power domain issue hasn't been merged yet, but I've grabbed that
+> patch and will test it as well.
 
-On 28/11/19 2:51 am, Lad, Prabhakar wrote:
-> Hi Kishon,
-> 
-> Thank you for the review.
-> 
-> On Wed, Nov 27, 2019 at 5:15 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
->>
->> Hi Prabhakar,
->>
->> On 07/11/19 1:06 AM, Lad Prabhakar wrote:
->>> From: "Lad, Prabhakar" <prabhakar.mahadev-lad.rj@bp.renesas.com>
->>>
->>> rcar pcie controller has support to map multiple memory regions
->>> for mapping the outbound memory in local system, this feature
->>> inspires to add support for handling multiple memory bases in
->>> endpoint framework. In case of multiple memory regions only chunk
->>> or complete region can be mapped and this window needs to be
->>> passed to the controller driver.
->>>
->>> Signed-off-by: Lad, Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
->>> Cc: <linux-rockchip@lists.infradead.org>
->>> Cc: Shawn Lin <shawn.lin@rock-chips.com>
->>> Cc: Heiko Stuebner <heiko@sntech.de>
->>> Cc: Tom Joseph <tjoseph@cadence.com>
->>> Cc: Jingoo Han <jingoohan1@gmail.com>
->>> Cc: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
->>> ---
->>>   .../pci/controller/dwc/pcie-designware-ep.c   |  30 ++-
->>>   drivers/pci/controller/pcie-cadence-ep.c      |  11 +-
->>>   drivers/pci/controller/pcie-rockchip-ep.c     |  13 +-
->>>   drivers/pci/endpoint/functions/pci-epf-test.c |  29 +--
->>>   drivers/pci/endpoint/pci-epc-core.c           |   7 +-
->>>   drivers/pci/endpoint/pci-epc-mem.c            | 189 ++++++++++++++----
->>>   include/linux/pci-epc.h                       |  43 ++--
->>>   7 files changed, 234 insertions(+), 88 deletions(-)
->>>
->>> diff --git a/drivers/pci/controller/dwc/pcie-designware-ep.c b/drivers/pci/controller/dwc/pcie-designware-ep.c
->>> index 3dd2e2697294..8d23c20b9afd 100644
->>> --- a/drivers/pci/controller/dwc/pcie-designware-ep.c
->>> +++ b/drivers/pci/controller/dwc/pcie-designware-ep.c
->>> @@ -195,7 +195,7 @@ static void dw_pcie_ep_unmap_addr(struct pci_epc *epc, u8 func_no,
->>>   }
->>>
->>>   static int dw_pcie_ep_map_addr(struct pci_epc *epc, u8 func_no,
->>> -                            phys_addr_t addr,
->>> +                            phys_addr_t addr, int window,
->>>                               u64 pci_addr, size_t size)
->>>   {
->>>        int ret;
->>> @@ -367,6 +367,7 @@ int dw_pcie_ep_raise_msi_irq(struct dw_pcie_ep *ep, u8 func_no,
->>>        unsigned int aligned_offset;
->>>        u16 msg_ctrl, msg_data;
->>>        u32 msg_addr_lower, msg_addr_upper, reg;
->>> +     int window = PCI_EPC_DEFAULT_WINDOW;
->>>        u64 msg_addr;
->>>        bool has_upper;
->>>        int ret;
->>> @@ -390,11 +391,11 @@ int dw_pcie_ep_raise_msi_irq(struct dw_pcie_ep *ep, u8 func_no,
->>>                reg = ep->msi_cap + PCI_MSI_DATA_32;
->>>                msg_data = dw_pcie_readw_dbi(pci, reg);
->>>        }
->>> -     aligned_offset = msg_addr_lower & (epc->mem->page_size - 1);
->>> +     aligned_offset = msg_addr_lower & (epc->mem[window]->page_size - 1);
->>>        msg_addr = ((u64)msg_addr_upper) << 32 |
->>>                        (msg_addr_lower & ~aligned_offset);
->>> -     ret = dw_pcie_ep_map_addr(epc, func_no, ep->msi_mem_phys, msg_addr,
->>> -                               epc->mem->page_size);
->>> +     ret = dw_pcie_ep_map_addr(epc, func_no, ep->msi_mem_phys, window,
->>> +                               msg_addr, epc->mem[window]->page_size);
->>>        if (ret)
->>>                return ret;
->>>
->>> @@ -416,6 +417,7 @@ int dw_pcie_ep_raise_msix_irq(struct dw_pcie_ep *ep, u8 func_no,
->>>        u32 reg, msg_data, vec_ctrl;
->>>        u64 tbl_addr, msg_addr, reg_u64;
->>>        void __iomem *msix_tbl;
->>> +     int window = PCI_EPC_DEFAULT_WINDOW;
->>>        int ret;
->>>
->>>        reg = ep->msix_cap + PCI_MSIX_TABLE;
->>> @@ -452,8 +454,8 @@ int dw_pcie_ep_raise_msix_irq(struct dw_pcie_ep *ep, u8 func_no,
->>>                return -EPERM;
->>>        }
->>>
->>> -     ret = dw_pcie_ep_map_addr(epc, func_no, ep->msi_mem_phys, msg_addr,
->>> -                               epc->mem->page_size);
->>> +     ret = dw_pcie_ep_map_addr(epc, func_no, ep->msi_mem_phys, window,
->>> +                               msg_addr, epc->mem[window]->page_size);
->>>        if (ret)
->>>                return ret;
->>>
->>> @@ -466,10 +468,11 @@ int dw_pcie_ep_raise_msix_irq(struct dw_pcie_ep *ep, u8 func_no,
->>>
->>>   void dw_pcie_ep_exit(struct dw_pcie_ep *ep)
->>>   {
->>> +     int window = PCI_EPC_DEFAULT_WINDOW;
->>>        struct pci_epc *epc = ep->epc;
->>>
->>>        pci_epc_mem_free_addr(epc, ep->msi_mem_phys, ep->msi_mem,
->>> -                           epc->mem->page_size);
->>> +                           epc->mem[window]->page_size);
->>>
->>>        pci_epc_mem_exit(epc);
->>>   }
->>> @@ -499,9 +502,12 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep)
->>>        u32 reg;
->>>        void *addr;
->>>        u8 hdr_type;
->>> +     int window;
->>>        unsigned int nbars;
->>>        unsigned int offset;
->>>        struct pci_epc *epc;
->>> +     size_t msi_page_size;
->>> +     struct pci_epc_mem_window mem_window;
->>>        struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
->>>        struct device *dev = pci->dev;
->>>        struct device_node *np = dev->of_node;
->>> @@ -574,15 +580,17 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep)
->>>        if (ret < 0)
->>>                epc->max_functions = 1;
->>>
->>> -     ret = __pci_epc_mem_init(epc, ep->phys_base, ep->addr_size,
->>> -                              ep->page_size);
->>> +     mem_window.phys_base = ep->phys_base;
->>> +     mem_window.size = ep->addr_size;
->>> +     ret = __pci_epc_mem_init(epc, &mem_window, 1, ep->page_size);
->>>        if (ret < 0) {
->>>                dev_err(dev, "Failed to initialize address space\n");
->>>                return ret;
->>>        }
->>>
->>> -     ep->msi_mem = pci_epc_mem_alloc_addr(epc, &ep->msi_mem_phys,
->>> -                                          epc->mem->page_size);
->>> +     msi_page_size = epc->mem[PCI_EPC_DEFAULT_WINDOW]->page_size;
->>> +     ep->msi_mem = pci_epc_mem_alloc_addr(epc, &ep->msi_mem_phys, &window,
->>> +                                          msi_page_size);
->>>        if (!ep->msi_mem) {
->>>                dev_err(dev, "Failed to reserve memory for MSI/MSI-X\n");
->>>                return -ENOMEM;
->>> diff --git a/drivers/pci/controller/pcie-cadence-ep.c b/drivers/pci/controller/pcie-cadence-ep.c
->>> index def7820cb824..7991b38a5350 100644
->>> --- a/drivers/pci/controller/pcie-cadence-ep.c
->>> +++ b/drivers/pci/controller/pcie-cadence-ep.c
->>> @@ -172,7 +172,7 @@ static void cdns_pcie_ep_clear_bar(struct pci_epc *epc, u8 fn,
->>>   }
->>>
->>>   static int cdns_pcie_ep_map_addr(struct pci_epc *epc, u8 fn, phys_addr_t addr,
->>> -                              u64 pci_addr, size_t size)
->>> +                              int window, u64 pci_addr, size_t size)
->>>   {
->>>        struct cdns_pcie_ep *ep = epc_get_drvdata(epc);
->>>        struct cdns_pcie *pcie = &ep->pcie;
->>> @@ -434,12 +434,14 @@ static int cdns_pcie_ep_probe(struct platform_device *pdev)
->>>   {
->>>        struct device *dev = &pdev->dev;
->>>        struct device_node *np = dev->of_node;
->>> +     struct pci_epc_mem_window mem_window;
->>>        struct cdns_pcie_ep *ep;
->>>        struct cdns_pcie *pcie;
->>>        struct pci_epc *epc;
->>>        struct resource *res;
->>>        int ret;
->>>        int phy_count;
->>> +     int window;
->>>
->>>        ep = devm_kzalloc(dev, sizeof(*ep), GFP_KERNEL);
->>>        if (!ep)
->>> @@ -502,15 +504,16 @@ static int cdns_pcie_ep_probe(struct platform_device *pdev)
->>>        if (of_property_read_u8(np, "max-functions", &epc->max_functions) < 0)
->>>                epc->max_functions = 1;
->>>
->>> -     ret = pci_epc_mem_init(epc, pcie->mem_res->start,
->>> -                            resource_size(pcie->mem_res));
->>> +     mem_window.phys_base = pcie->mem_res->start;
->>> +     mem_window.size = resource_size(pcie->mem_res);
->>> +     ret = pci_epc_mem_init(epc, &mem_window, 1);
->>>        if (ret < 0) {
->>>                dev_err(dev, "failed to initialize the memory space\n");
->>>                goto err_init;
->>>        }
->>>
->>>        ep->irq_cpu_addr = pci_epc_mem_alloc_addr(epc, &ep->irq_phys_addr,
->>> -                                               SZ_128K);
->>> +                                               &window, SZ_128K);
->>>        if (!ep->irq_cpu_addr) {
->>>                dev_err(dev, "failed to reserve memory space for MSI\n");
->>>                ret = -ENOMEM;
->>> diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
->>> index d743b0a48988..d59e85c8d319 100644
->>> --- a/drivers/pci/controller/pcie-rockchip-ep.c
->>> +++ b/drivers/pci/controller/pcie-rockchip-ep.c
->>> @@ -256,8 +256,8 @@ static void rockchip_pcie_ep_clear_bar(struct pci_epc *epc, u8 fn,
->>>   }
->>>
->>>   static int rockchip_pcie_ep_map_addr(struct pci_epc *epc, u8 fn,
->>> -                                  phys_addr_t addr, u64 pci_addr,
->>> -                                  size_t size)
->>> +                                  phys_addr_t addr, int window,
->>> +                                  u64 pci_addr, size_t size)
->>>   {
->>>        struct rockchip_pcie_ep *ep = epc_get_drvdata(epc);
->>>        struct rockchip_pcie *pcie = &ep->rockchip;
->>> @@ -562,11 +562,13 @@ static const struct of_device_id rockchip_pcie_ep_of_match[] = {
->>>
->>>   static int rockchip_pcie_ep_probe(struct platform_device *pdev)
->>>   {
->>> +     struct pci_epc_mem_window mem_window;
->>>        struct device *dev = &pdev->dev;
->>>        struct rockchip_pcie_ep *ep;
->>>        struct rockchip_pcie *rockchip;
->>>        struct pci_epc *epc;
->>>        size_t max_regions;
->>> +     int window;
->>>        int err;
->>>
->>>        ep = devm_kzalloc(dev, sizeof(*ep), GFP_KERNEL);
->>> @@ -614,15 +616,16 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
->>>        /* Only enable function 0 by default */
->>>        rockchip_pcie_write(rockchip, BIT(0), PCIE_CORE_PHY_FUNC_CFG);
->>>
->>> -     err = pci_epc_mem_init(epc, rockchip->mem_res->start,
->>> -                            resource_size(rockchip->mem_res));
->>> +     mem_window.phys_base = rockchip->mem_res->start;
->>> +     mem_window.size = resource_size(rockchip->mem_res);
->>> +     err = pci_epc_mem_init(epc, &mem_window, 1);
->>>        if (err < 0) {
->>>                dev_err(dev, "failed to initialize the memory space\n");
->>>                goto err_uninit_port;
->>>        }
->>>
->>>        ep->irq_cpu_addr = pci_epc_mem_alloc_addr(epc, &ep->irq_phys_addr,
->>> -                                               SZ_128K);
->>> +                                               &window, SZ_128K);
->>>        if (!ep->irq_cpu_addr) {
->>>                dev_err(dev, "failed to reserve memory space for MSI\n");
->>>                err = -ENOMEM;
->>> diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
->>> index 5d74f81ddfe4..475228011703 100644
->>> --- a/drivers/pci/endpoint/functions/pci-epf-test.c
->>> +++ b/drivers/pci/endpoint/functions/pci-epf-test.c
->>> @@ -84,8 +84,10 @@ static int pci_epf_test_copy(struct pci_epf_test *epf_test)
->>>        struct pci_epc *epc = epf->epc;
->>>        enum pci_barno test_reg_bar = epf_test->test_reg_bar;
->>>        struct pci_epf_test_reg *reg = epf_test->reg[test_reg_bar];
->>> +     int window;
->>>
->>> -     src_addr = pci_epc_mem_alloc_addr(epc, &src_phys_addr, reg->size);
->>> +     src_addr = pci_epc_mem_alloc_addr(epc, &src_phys_addr,
->>> +                                       &window, reg->size);
->>>        if (!src_addr) {
->>>                dev_err(dev, "Failed to allocate source address\n");
->>>                reg->status = STATUS_SRC_ADDR_INVALID;
->>> @@ -93,15 +95,16 @@ static int pci_epf_test_copy(struct pci_epf_test *epf_test)
->>>                goto err;
->>>        }
->>>
->>> -     ret = pci_epc_map_addr(epc, epf->func_no, src_phys_addr, reg->src_addr,
->>> -                            reg->size);
->>> +     ret = pci_epc_map_addr(epc, epf->func_no, src_phys_addr, window,
->>> +                            reg->src_addr, reg->size);
->>>        if (ret) {
->>>                dev_err(dev, "Failed to map source address\n");
->>>                reg->status = STATUS_SRC_ADDR_INVALID;
->>>                goto err_src_addr;
->>>        }
->>>
->>> -     dst_addr = pci_epc_mem_alloc_addr(epc, &dst_phys_addr, reg->size);
->>> +     dst_addr = pci_epc_mem_alloc_addr(epc, &dst_phys_addr,
->>> +                                       &window, reg->size);
->>>        if (!dst_addr) {
->>>                dev_err(dev, "Failed to allocate destination address\n");
->>>                reg->status = STATUS_DST_ADDR_INVALID;
->>> @@ -109,8 +112,8 @@ static int pci_epf_test_copy(struct pci_epf_test *epf_test)
->>>                goto err_src_map_addr;
->>>        }
->>>
->>> -     ret = pci_epc_map_addr(epc, epf->func_no, dst_phys_addr, reg->dst_addr,
->>> -                            reg->size);
->>> +     ret = pci_epc_map_addr(epc, epf->func_no, dst_phys_addr, window,
->>> +                            reg->dst_addr, reg->size);
->>>        if (ret) {
->>>                dev_err(dev, "Failed to map destination address\n");
->>>                reg->status = STATUS_DST_ADDR_INVALID;
->>> @@ -146,8 +149,9 @@ static int pci_epf_test_read(struct pci_epf_test *epf_test)
->>>        struct pci_epc *epc = epf->epc;
->>>        enum pci_barno test_reg_bar = epf_test->test_reg_bar;
->>>        struct pci_epf_test_reg *reg = epf_test->reg[test_reg_bar];
->>> +     int window;
->>>
->>> -     src_addr = pci_epc_mem_alloc_addr(epc, &phys_addr, reg->size);
->>> +     src_addr = pci_epc_mem_alloc_addr(epc, &phys_addr, &window, reg->size);
->>>        if (!src_addr) {
->>>                dev_err(dev, "Failed to allocate address\n");
->>>                reg->status = STATUS_SRC_ADDR_INVALID;
->>> @@ -155,8 +159,8 @@ static int pci_epf_test_read(struct pci_epf_test *epf_test)
->>>                goto err;
->>>        }
->>>
->>> -     ret = pci_epc_map_addr(epc, epf->func_no, phys_addr, reg->src_addr,
->>> -                            reg->size);
->>> +     ret = pci_epc_map_addr(epc, epf->func_no, phys_addr, window,
->>> +                            reg->src_addr, reg->size);
->>>        if (ret) {
->>>                dev_err(dev, "Failed to map address\n");
->>>                reg->status = STATUS_SRC_ADDR_INVALID;
->>> @@ -193,13 +197,14 @@ static int pci_epf_test_write(struct pci_epf_test *epf_test)
->>>        void __iomem *dst_addr;
->>>        void *buf;
->>>        phys_addr_t phys_addr;
->>> +     int window;
->>>        struct pci_epf *epf = epf_test->epf;
->>>        struct device *dev = &epf->dev;
->>>        struct pci_epc *epc = epf->epc;
->>>        enum pci_barno test_reg_bar = epf_test->test_reg_bar;
->>>        struct pci_epf_test_reg *reg = epf_test->reg[test_reg_bar];
->>>
->>> -     dst_addr = pci_epc_mem_alloc_addr(epc, &phys_addr, reg->size);
->>> +     dst_addr = pci_epc_mem_alloc_addr(epc, &phys_addr, &window, reg->size);
->>>        if (!dst_addr) {
->>>                dev_err(dev, "Failed to allocate address\n");
->>>                reg->status = STATUS_DST_ADDR_INVALID;
->>> @@ -207,8 +212,8 @@ static int pci_epf_test_write(struct pci_epf_test *epf_test)
->>>                goto err;
->>>        }
->>>
->>> -     ret = pci_epc_map_addr(epc, epf->func_no, phys_addr, reg->dst_addr,
->>> -                            reg->size);
->>> +     ret = pci_epc_map_addr(epc, epf->func_no, phys_addr, window,
->>> +                            reg->dst_addr, reg->size);
->>>        if (ret) {
->>>                dev_err(dev, "Failed to map address\n");
->>>                reg->status = STATUS_DST_ADDR_INVALID;
->>> diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
->>> index 2091508c1620..289c266c2d90 100644
->>> --- a/drivers/pci/endpoint/pci-epc-core.c
->>> +++ b/drivers/pci/endpoint/pci-epc-core.c
->>> @@ -358,13 +358,15 @@ EXPORT_SYMBOL_GPL(pci_epc_unmap_addr);
->>>    * @epc: the EPC device on which address is allocated
->>>    * @func_no: the endpoint function number in the EPC device
->>>    * @phys_addr: physical address of the local system
->>> + * @window: index to the window region where PCI address will be mapped
->>>    * @pci_addr: PCI address to which the physical address should be mapped
->>>    * @size: the size of the allocation
->>>    *
->>>    * Invoke to map CPU address with PCI address.
->>>    */
->>>   int pci_epc_map_addr(struct pci_epc *epc, u8 func_no,
->>> -                  phys_addr_t phys_addr, u64 pci_addr, size_t size)
->>> +                  phys_addr_t phys_addr, int window,
->>> +                  u64 pci_addr, size_t size)
->>>   {
->>>        int ret;
->>>        unsigned long flags;
->>> @@ -376,7 +378,8 @@ int pci_epc_map_addr(struct pci_epc *epc, u8 func_no,
->>>                return 0;
->>>
->>>        spin_lock_irqsave(&epc->lock, flags);
->>> -     ret = epc->ops->map_addr(epc, func_no, phys_addr, pci_addr, size);
->>> +     ret = epc->ops->map_addr(epc, func_no, phys_addr,
->>> +                              window, pci_addr, size);
->>>        spin_unlock_irqrestore(&epc->lock, flags);
->>>
->>>        return ret;
->>> diff --git a/drivers/pci/endpoint/pci-epc-mem.c b/drivers/pci/endpoint/pci-epc-mem.c
->>> index d2b174ce15de..c955f2c97944 100644
->>> --- a/drivers/pci/endpoint/pci-epc-mem.c
->>> +++ b/drivers/pci/endpoint/pci-epc-mem.c
->>> @@ -39,56 +39,77 @@ static int pci_epc_mem_get_order(struct pci_epc_mem *mem, size_t size)
->>>    * __pci_epc_mem_init() - initialize the pci_epc_mem structure
->>>    * @epc: the EPC device that invoked pci_epc_mem_init
->>>    * @phys_base: the physical address of the base
->>> - * @size: the size of the address space
->>> + * @num_windows: number of windows device supports
->>
->> struct pci_epc_mem_window is missing here.
-> oops my bad will fix that.
-> 
->>>    * @page_size: size of each page
->>>    *
->>>    * Invoke to initialize the pci_epc_mem structure used by the
->>>    * endpoint functions to allocate mapped PCI address.
->>>    */
->>> -int __pci_epc_mem_init(struct pci_epc *epc, phys_addr_t phys_base, size_t size,
->>> -                    size_t page_size)
->>> +int __pci_epc_mem_init(struct pci_epc *epc, struct pci_epc_mem_window *windows,
->>> +                    int num_windows, size_t page_size)
->>>   {
->>> -     int ret;
->>> -     struct pci_epc_mem *mem;
->>> -     unsigned long *bitmap;
->>> +     struct pci_epc_mem *mem = NULL;
->>> +     unsigned long *bitmap = NULL;
->>>        unsigned int page_shift;
->>> -     int pages;
->>>        int bitmap_size;
->>> +     int pages;
->>> +     int ret;
->>> +     int i;
->>> +
->>> +     epc->mem_windows = 0;
->>> +
->>> +     if (!windows)
->>> +             return -EINVAL;
->>> +
->>> +     if (num_windows <= 0)
->>> +             return -EINVAL;
->>>
->>>        if (page_size < PAGE_SIZE)
->>>                page_size = PAGE_SIZE;
->>>
->>>        page_shift = ilog2(page_size);
->>> -     pages = size >> page_shift;
->>> -     bitmap_size = BITS_TO_LONGS(pages) * sizeof(long);
->>>
->>> -     mem = kzalloc(sizeof(*mem), GFP_KERNEL);
->>> -     if (!mem) {
->>> -             ret = -ENOMEM;
->>> -             goto err;
->>> -     }
->>> +     epc->mem = kcalloc(num_windows, sizeof(*mem), GFP_KERNEL);
->>> +     if (!epc->mem)
->>> +             return -EINVAL;
->>>
->>> -     bitmap = kzalloc(bitmap_size, GFP_KERNEL);
->>> -     if (!bitmap) {
->>> -             ret = -ENOMEM;
->>> -             goto err_mem;
->>> -     }
->>> +     for (i = 0; i < num_windows; i++) {
->>> +             pages = windows[i].phys_base >> page_shift;
->>> +             bitmap_size = BITS_TO_LONGS(pages) * sizeof(long);
->>>
->>> -     mem->bitmap = bitmap;
->>> -     mem->phys_base = phys_base;
->>> -     mem->page_size = page_size;
->>> -     mem->pages = pages;
->>> -     mem->size = size;
->>> +             mem = kzalloc(sizeof(*mem), GFP_KERNEL);
->>> +             if (!mem) {
->>> +                     ret = -ENOMEM;
->>> +                     goto err_mem;
->>> +             }
->>>
->>> -     epc->mem = mem;
->>> +             bitmap = kzalloc(bitmap_size, GFP_KERNEL);
->>> +             if (!bitmap) {
->>> +                     ret = -ENOMEM;
->>> +                     goto err_mem;
->>> +             }
->>> +
->>> +             mem->bitmap = bitmap;
->>> +             mem->window.phys_base = windows[i].phys_base;
->>> +             mem->page_size = page_size;
->>> +             mem->pages = pages;
->>> +             mem->window.size = windows[i].size;
->>> +             mem->window.map_size = 0;
->>> +
->>> +             epc->mem[i] = mem;
->>> +     }
->>> +     epc->mem_windows = num_windows;
->>>
->>>        return 0;
->>>
->>>   err_mem:
->>> -     kfree(mem);
->>> +     for (; i >= 0; i--) {
->>> +             kfree(mem->bitmap);
->>> +             kfree(epc->mem[i]);
->>> +     }
->>> +     kfree(epc->mem);
->>>
->>> -err:
->>> -return ret;
->>> +     return ret;
->>>   }
->>>   EXPORT_SYMBOL_GPL(__pci_epc_mem_init);
->>>
->>> @@ -101,48 +122,126 @@ EXPORT_SYMBOL_GPL(__pci_epc_mem_init);
->>>    */
->>>   void pci_epc_mem_exit(struct pci_epc *epc)
->>>   {
->>> -     struct pci_epc_mem *mem = epc->mem;
->>> +     struct pci_epc_mem *mem;
->>> +     int i;
->>> +
->>> +     if (!epc->mem_windows)
->>> +             return;
->>> +
->>> +     for (i = 0; i <= epc->mem_windows; i--) {
->>> +             mem = epc->mem[i];
->>> +             kfree(mem->bitmap);
->>> +             kfree(epc->mem[i]);
->>> +     }
->>> +     kfree(epc->mem);
->>>
->>>        epc->mem = NULL;
->>> -     kfree(mem->bitmap);
->>> -     kfree(mem);
->>> +     epc->mem_windows = 0;
->>>   }
->>>   EXPORT_SYMBOL_GPL(pci_epc_mem_exit);
->>>
->>> +static int pci_epc_find_best_fit_window(struct pci_epc *epc, size_t size)
->>> +{
->>> +     size_t window_least_size = 0;
->>> +     int best_fit_window = -1;
->>> +     struct pci_epc_mem *mem;
->>> +     size_t actual_size;
->>> +     int i;
->>> +
->>> +     for (i = 0; i < epc->mem_windows; i++) {
->>> +             mem = epc->mem[i];
->>> +
->>> +             /* if chunk from this region is already used skip it */
->>> +             if (mem->window.map_size)
->>> +                     continue;
->>> +
->>> +             actual_size = ALIGN(size, mem->page_size);
->>> +
->>> +             if (best_fit_window == -1) {
->>> +                     best_fit_window = i;
->>> +                     window_least_size = mem->window.size;
->>> +             } else {
->>> +                     if (actual_size <= mem->window.size &&
->>> +                         mem->window.size < window_least_size) {
->>> +                             best_fit_window = i;
->>> +                             window_least_size = mem->window.size;
->>> +                     }
->>> +             }
->>> +     }
->>> +
->>> +     return best_fit_window;
->>> +}
->>> +
->>>   /**
->>>    * pci_epc_mem_alloc_addr() - allocate memory address from EPC addr space
->>>    * @epc: the EPC device on which memory has to be allocated
->>>    * @phys_addr: populate the allocated physical address here
->>> + * @window: populate the window here which will be used to map PCI address
->>>    * @size: the size of the address space that has to be allocated
->>>    *
->>>    * Invoke to allocate memory address from the EPC address space. This
->>>    * is usually done to map the remote RC address into the local system.
->>>    */
->>>   void __iomem *pci_epc_mem_alloc_addr(struct pci_epc *epc,
->>> -                                  phys_addr_t *phys_addr, size_t size)
->>> +                                  phys_addr_t *phys_addr,
->>> +                                  int *window, size_t size)
->>>   {
->>> +     int best_fit = PCI_EPC_DEFAULT_WINDOW;
->>> +     void __iomem *virt_addr = NULL;
->>> +     struct pci_epc_mem *mem;
->>> +     unsigned int page_shift;
->>>        int pageno;
->>> -     void __iomem *virt_addr;
->>> -     struct pci_epc_mem *mem = epc->mem;
->>> -     unsigned int page_shift = ilog2(mem->page_size);
->>>        int order;
->>>
->>> +     if (epc->mem_windows <= 0)
->>> +             return NULL;
->>> +
->>> +     if (epc->mem_windows > 1) {
->>> +             best_fit = pci_epc_find_best_fit_window(epc, size);
->>> +             if (best_fit < 0)
->>> +                     return NULL;
->>> +     }
->>> +
->>> +     mem = epc->mem[best_fit];
->>>        size = ALIGN(size, mem->page_size);
->>> +     if (size > (mem->window.size - mem->window.map_size))
->>> +             return NULL;
->>
->> Assume I have two mem regions, first region is of size 128MB and the second
->> region is of size 4GB. If there is a allocation request for 4GB, will the
->> allocation succeed?
->>
-> yes it would succeed, the pci_epc_find_best_fit_window() would get the
-> corresponding window.
+Confirmed the reset function is working after the gpio patch that was
+just merged. [0].
+Confirmed the lockup issue after a soft reset is resolved by this patch [1].
 
-Can you step through the algo again? pci_epc_find_best_fit_window() will 
-return the first region which is of size 128MB.
+The power off issue still exists, but I dug into the psci pm code for
+the poweroff function and unless there is a gpio this function is a
+no-op.
+For this reason I think the rk808 driver should be modified to set
+itself as the primary poweroff provider if the
+rockchip,system-power-controller flag is set.
+The other option is to somehow make ATF aware of the rk808 and have it
+trigger the poweroff.
+Thoughts on this?
 
-Thanks
-Kishon
+[0] https://github.com/ARM-software/arm-trusted-firmware/commit/45d4611563038486890b40d61e41b68213326afc
+[1] https://github.com/armbian/build/blob/master/patch/atf/atf-rk3399/switch-power-domains-on-before-reset.patch
+>
+> >
+> > >
+> > > Log is below:
+> > > [    0.261198] Detected PIPT I-cache on CPU5
+> > > [    0.261223] GICv3: CPU5: found redistributor 101 region 0:0x00000000fefa0000
+> > > [    0.261235] GICv3: CPU5: using allocated LPI pending table
+> > > @0x00000000f0120000
+> > > [    0.261263] CPU5: Booted secondary processor 0x0000000101 [0x410fd082]
+> > > [    0.261377] smp: Brought up 1 node, 6 CPUs
+> > > [    0.274833] SMP: Total of 6 processors activated.
+> > > [    0.275297] CPU features: detected: 32-bit EL0 Support
+> > > [    0.275801] CPU features: detected: CRC32 instructions
+> > > [    0.290797] CPU: All CPU(s) started at EL2
+> > > [    0.291242] alternatives: patching kernel code
+> > > [    0.294848] devtmpfs: initialized
+> > > [    0.311658] clocksource: jiffies: mask: 0xffffffff max_cycles:
+> > > 0xffffffff, max_idle_ns: 7645041785100000 ns
+> > > [    0.312629] futex hash table entries: 2048 (order: 5, 131072 bytes, linear)
+> > > [    0.315223] pinctrl core: initialized pinctrl subsystem
+> > > [    0.318097] DMI not present or invalid.
+> > > [    0.318989] NET: Registered protocol family 16
+> > > [    0.326798] DMA: preallocated 256 KiB pool for atomic allocations
+> > > [    0.327415] audit: initializing netlink subsys (disabled)
+> > > [    0.328106] audit: type=2000 audit(0.320:1): state=initialized
+> > > audit_enabled=0 res=1
+> > > [    0.330213] cpuidle: using governor menu
+> > > [    0.331160] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+> > > [    0.334653] Serial: AMBA PL011 UART driver
+> > > [    0.384125] HugeTLB registered 1.00 GiB page size, pre-allocated 0 pages
+> > > [    0.384800] HugeTLB registered 32.0 MiB page size, pre-allocated 0 pages
+> > > [    0.385483] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+> > > [    0.386146] HugeTLB registered 64.0 KiB page size, pre-allocated 0 pages
+> > > [    0.390063] cryptd: max_cpu_qlen set to 1000
+> > > [    0.396205] ACPI: Interpreter disabled.
+> > > [    0.399113] vcc3v3_pcie: supplied by vcc12v_dcin
+> > > [    0.400706] vcc5v0_sys: supplied by vcc12v_dcin
+> > > [    0.401426] vcc5v0_usb: supplied by vcc12v_dcin
+> > > [    0.402060] vcc3v3_sys: supplied by vcc5v0_sys
+> > > [    0.403275] iommu: Default domain type: Translated
+> > > [
+> > >
+> > >>
+> > >>>
+> > >>>>
+> > >>>>> With miniloader and both variants of u-boot, if you attempt a reboot
+> > >>>>> it never fires the "reboot: Restarting system" message.
+> > >>>>> If you trigger a sysrq reboot at this stage, it will reboot, but fails
+> > >>>>> to start up the two a72 cores and subsequently hangs a second later
+> > >>>>> when it loads the first dma driver.
+> > >>>>>
+> > >>>>> With TPL/SPL on mainline-u-boot (I can't get rockchip-u-boot to work
+> > >>>>> with TPL/SPL), it fires the "reboot: Restarting system" message, but
+> > >>>>> never reboots.
+> > >>>>> sysrq does not function at this point.
+> > >>>>>
+> > >>>>> I believe the pcie controller is not being halted, and gets stuck in a
+> > >>>>> loop with the two a72 cores.
+> > >>>>>
+> > >>>>> _______________________________________________
+> > >>>>> Linux-rockchip mailing list
+> > >>>>> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> > >>>>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> > >>>>>
