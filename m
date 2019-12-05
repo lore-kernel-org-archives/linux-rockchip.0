@@ -1,15 +1,21 @@
-From: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v3 10/25] PCI: rockchip: Use
- pci_parse_request_of_pci_ranges()
-Date: Thu, 5 Dec 2019 18:56:01 +0100
-Message-ID: <CAFqH_51-BMWSGGBpoKxA3UK+yPHSpPgok5i=daSC0KS5oc5ueA@mail.gmail.com>
-References: <20191028163256.8004-1-robh@kernel.org>
- <20191028163256.8004-11-robh@kernel.org>
+From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [BUG] rk3399 fails to reboot correctly with PCIE device inserted
+Date: Thu, 5 Dec 2019 13:10:53 -0500
+Message-ID: <CAMdYzYrx0fSAJ0foUF8sP8JrBzRbW_ETDgK72zt-LsU=OYPraA@mail.gmail.com>
+References: <CAMdYzYrLX=z-OVoW9RVecjoYK1J8EfLQ=cV1aNUqPsXqiOU+2g@mail.gmail.com>
+ <2a5d91f1-033e-8acc-5b57-16ca77204a0b@arm.com>
+ <CAMdYzYpdW13roxwHxD5w=XLBiyASp+biMqP-n2+QD9cL5g_hvg@mail.gmail.com>
+ <CAMdYzYoCzU4F66Hpdy6XBTWwWi+WmSo50R+sCSDEFOBKr84U1w@mail.gmail.com>
+ <CAMdYzYrHvGHRq51fbNp4Y=9HhaEUXhyoYt-dy70xVFrOmkNOTA@mail.gmail.com>
+ <55c56fb7-9402-9798-9631-c1c3f607d663@arm.com>
+ <CAMdYzYqvNa5_5xMnw=MVOL5iJQq_-cBVGtwQMXQ_JqLvyx=mYA@mail.gmail.com>
+ <CAMdYzYorsxrb1_xWjeAW-76QQ3a+Y+5iHskhM4M1N5rsUzoY7w@mail.gmail.com>
+ <eb09e106-e708-8857-690e-0052f860f19c@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191028163256.8004-11-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+In-Reply-To: <eb09e106-e708-8857-690e-0052f860f19c-5wv7dgnIgG8@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,111 +25,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Karthikeyan Mitran <m.karthikeyan-DTHOJn6Rh8lhmhkoCovsdw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Toan Le <toan-shex6MNQR2J/SfDzf78azzKzEDxYleXD@public.gmane.org>, Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Christoph Hellwig <hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Ray Jui <rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Hou Zhiqiang <Zhiqiang.Hou-3arQi8VN3Tc@public.gmane.org>, Simon Horman <horms-/R6kz+dDXgpPR4JQBCEnsQ@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Ley Foon Tan <lftan-EIB2kfCEclfQT0dZR+AlfA@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Linux
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUm9iLAoKTWlzc2F0Z2UgZGUgUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4gZGVsIGRp
-YSBkbC4sIDI4IGTigJlvY3QuIDIwMTkKYSBsZXMgMTc6Mzg6Cj4KPiBDb252ZXJ0IHRoZSBSb2Nr
-Y2hpcCBob3N0IGJyaWRnZSB0byB1c2UgdGhlIGNvbW1vbgo+IHBjaV9wYXJzZV9yZXF1ZXN0X29m
-X3BjaV9yYW5nZXMoKS4KPgo+IFRoZXJlJ3Mgbm8gbmVlZCB0byBhc3NpZ24gdGhlIHJlc291cmNl
-cyB0byBhIHRlbXBvcmFyeSBsaXN0IGZpcnN0LiBKdXN0Cj4gdXNlIGJyaWRnZS0+d2luZG93cyBk
-aXJlY3RseSBhbmQgcmVtb3ZlIGFsbCB0aGUgdGVtcG9yYXJ5IGxpc3QgaGFuZGxpbmcuCj4KPiBD
-YzogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cj4gQ2M6IExvcmVuem8gUGll
-cmFsaXNpIDxsb3JlbnpvLnBpZXJhbGlzaUBhcm0uY29tPgo+IENjOiBBbmRyZXcgTXVycmF5IDxh
-bmRyZXcubXVycmF5QGFybS5jb20+Cj4gQ2M6IEJqb3JuIEhlbGdhYXMgPGJoZWxnYWFzQGdvb2ds
-ZS5jb20+Cj4gQ2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gQ2M6IGxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBTaWduZWQtb2ZmLWJ5OiBSb2IgSGVycmlu
-ZyA8cm9iaEBrZXJuZWwub3JnPgo+IC0tLQoKSSBqdXN0IHRlc3RlZCBtYWlubGluZSBvbiBteSBT
-YW1zdW5nIENocm9tZWJvb2sgUGx1cywgYW5kIHNpbmNlCnllc3RlcmRheSBJJ20gZ2V0dGluZyBh
-ICJzeW5jaHJvbm91cyBleHRlcm5hbCBhYm9ydCIgWzFdLiBBZnRlciBhCmJpc2VjdGlvbiwgSSBm
-b3VuZCB0aGF0IHRoaXMgcGF0Y2ggdHJpZ2dlcnMgdGhlIGlzc3VlICh0aGlzIHBhdGNoIHdhcwpt
-ZXJnZWQgeWVzdGVyZGF5KQoKSSBkaWRuJ3QgbG9vayBpbiBkZXRhaWwgeWV0LCBidXQgaWYgeW91
-IGhhdmUgYW55IGlkZWEgb2Ygd2hhdCBjb3VsZCBiZQp0aGUgcHJvYmxlbSwgdGhhdCB3b3VsZCBi
-ZSBncmVhdC4KClRoYW5rcywKIEVucmljCgpbMV0gaHR0cHM6Ly9oYXN0ZWJpbi5jb20vYWRhc2Vn
-aWhpdy5yYgoKPiAgZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLWhvc3QuYyB8
-IDM2ICsrKystLS0tLS0tLS0tLS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgNyBpbnNlcnRpb25z
-KCspLCAyOSBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250cm9s
-bGVyL3BjaWUtcm9ja2NoaXAtaG9zdC5jIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJv
-Y2tjaGlwLWhvc3QuYwo+IGluZGV4IGVmOGU2NzdjZTlkMS4uOGQyZTZmMmUxNDFlIDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC1ob3N0LmMKPiArKysg
-Yi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAtaG9zdC5jCj4gQEAgLTk1MCwx
-NCArOTUwLDEwIEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfcGNpZV9wcm9iZShzdHJ1Y3QgcGxhdGZv
-cm1fZGV2aWNlICpwZGV2KQo+ICAgICAgICAgc3RydWN0IGRldmljZSAqZGV2ID0gJnBkZXYtPmRl
-djsKPiAgICAgICAgIHN0cnVjdCBwY2lfYnVzICpidXMsICpjaGlsZDsKPiAgICAgICAgIHN0cnVj
-dCBwY2lfaG9zdF9icmlkZ2UgKmJyaWRnZTsKPiArICAgICAgIHN0cnVjdCByZXNvdXJjZSAqYnVz
-X3JlczsKPiAgICAgICAgIHN0cnVjdCByZXNvdXJjZV9lbnRyeSAqd2luOwo+IC0gICAgICAgcmVz
-b3VyY2Vfc2l6ZV90IGlvX2Jhc2U7Cj4gLSAgICAgICBzdHJ1Y3QgcmVzb3VyY2UgKm1lbTsKPiAt
-ICAgICAgIHN0cnVjdCByZXNvdXJjZSAqaW87Cj4gICAgICAgICBpbnQgZXJyOwo+Cj4gLSAgICAg
-ICBMSVNUX0hFQUQocmVzKTsKPiAtCj4gICAgICAgICBpZiAoIWRldi0+b2Zfbm9kZSkKPiAgICAg
-ICAgICAgICAgICAgcmV0dXJuIC1FTk9ERVY7Cj4KPiBAQCAtOTk1LDI5ICs5OTEsMjAgQEAgc3Rh
-dGljIGludCByb2NrY2hpcF9wY2llX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYp
-Cj4gICAgICAgICBpZiAoZXJyIDwgMCkKPiAgICAgICAgICAgICAgICAgZ290byBlcnJfZGVpbml0
-X3BvcnQ7Cj4KPiAtICAgICAgIGVyciA9IGRldm1fb2ZfcGNpX2dldF9ob3N0X2JyaWRnZV9yZXNv
-dXJjZXMoZGV2LCAwLCAweGZmLAo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAmcmVzLCAmaW9fYmFzZSk7Cj4gKyAgICAgICBlcnIgPSBwY2lfcGFy
-c2VfcmVxdWVzdF9vZl9wY2lfcmFuZ2VzKGRldiwgJmJyaWRnZS0+d2luZG93cywgJmJ1c19yZXMp
-Owo+ICAgICAgICAgaWYgKGVycikKPiAgICAgICAgICAgICAgICAgZ290byBlcnJfcmVtb3ZlX2ly
-cV9kb21haW47Cj4KPiAtICAgICAgIGVyciA9IGRldm1fcmVxdWVzdF9wY2lfYnVzX3Jlc291cmNl
-cyhkZXYsICZyZXMpOwo+IC0gICAgICAgaWYgKGVycikKPiAtICAgICAgICAgICAgICAgZ290byBl
-cnJfZnJlZV9yZXM7Cj4gKyAgICAgICByb2NrY2hpcC0+cm9vdF9idXNfbnIgPSBidXNfcmVzLT5z
-dGFydDsKPgo+ICAgICAgICAgLyogR2V0IHRoZSBJL08gYW5kIG1lbW9yeSByYW5nZXMgZnJvbSBE
-VCAqLwo+IC0gICAgICAgcmVzb3VyY2VfbGlzdF9mb3JfZWFjaF9lbnRyeSh3aW4sICZyZXMpIHsK
-PiArICAgICAgIHJlc291cmNlX2xpc3RfZm9yX2VhY2hfZW50cnkod2luLCAmYnJpZGdlLT53aW5k
-b3dzKSB7Cj4gICAgICAgICAgICAgICAgIHN3aXRjaCAocmVzb3VyY2VfdHlwZSh3aW4tPnJlcykp
-IHsKPiAgICAgICAgICAgICAgICAgY2FzZSBJT1JFU09VUkNFX0lPOgo+ICAgICAgICAgICAgICAg
-ICAgICAgICAgIGlvID0gd2luLT5yZXM7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgaW8tPm5h
-bWUgPSAiSS9PIjsKPiAgICAgICAgICAgICAgICAgICAgICAgICByb2NrY2hpcC0+aW9fc2l6ZSA9
-IHJlc291cmNlX3NpemUoaW8pOwo+ICAgICAgICAgICAgICAgICAgICAgICAgIHJvY2tjaGlwLT5p
-b19idXNfYWRkciA9IGlvLT5zdGFydCAtIHdpbi0+b2Zmc2V0Owo+IC0gICAgICAgICAgICAgICAg
-ICAgICAgIGVyciA9IHBjaV9yZW1hcF9pb3NwYWNlKGlvLCBpb19iYXNlKTsKPiAtICAgICAgICAg
-ICAgICAgICAgICAgICBpZiAoZXJyKSB7Cj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBkZXZfd2FybihkZXYsICJlcnJvciAlZDogZmFpbGVkIHRvIG1hcCByZXNvdXJjZSAlcFJcbiIs
-Cj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBlcnIsIGlvKTsKPiAt
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnRpbnVlOwo+IC0gICAgICAgICAgICAg
-ICAgICAgICAgIH0KPiAgICAgICAgICAgICAgICAgICAgICAgICByb2NrY2hpcC0+aW8gPSBpbzsK
-PiAgICAgICAgICAgICAgICAgICAgICAgICBicmVhazsKPiAgICAgICAgICAgICAgICAgY2FzZSBJ
-T1JFU09VUkNFX01FTToKPiBAQCAtMTAyNiw5ICsxMDEzLDYgQEAgc3RhdGljIGludCByb2NrY2hp
-cF9wY2llX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gICAgICAgICAgICAg
-ICAgICAgICAgICAgcm9ja2NoaXAtPm1lbV9zaXplID0gcmVzb3VyY2Vfc2l6ZShtZW0pOwo+ICAg
-ICAgICAgICAgICAgICAgICAgICAgIHJvY2tjaGlwLT5tZW1fYnVzX2FkZHIgPSBtZW0tPnN0YXJ0
-IC0gd2luLT5vZmZzZXQ7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgYnJlYWs7Cj4gLSAgICAg
-ICAgICAgICAgIGNhc2UgSU9SRVNPVVJDRV9CVVM6Cj4gLSAgICAgICAgICAgICAgICAgICAgICAg
-cm9ja2NoaXAtPnJvb3RfYnVzX25yID0gd2luLT5yZXMtPnN0YXJ0Owo+IC0gICAgICAgICAgICAg
-ICAgICAgICAgIGJyZWFrOwo+ICAgICAgICAgICAgICAgICBkZWZhdWx0Ogo+ICAgICAgICAgICAg
-ICAgICAgICAgICAgIGNvbnRpbnVlOwo+ICAgICAgICAgICAgICAgICB9Cj4gQEAgLTEwMzYsMTUg
-KzEwMjAsMTQgQEAgc3RhdGljIGludCByb2NrY2hpcF9wY2llX3Byb2JlKHN0cnVjdCBwbGF0Zm9y
-bV9kZXZpY2UgKnBkZXYpCj4KPiAgICAgICAgIGVyciA9IHJvY2tjaGlwX3BjaWVfY2ZnX2F0dShy
-b2NrY2hpcCk7Cj4gICAgICAgICBpZiAoZXJyKQo+IC0gICAgICAgICAgICAgICBnb3RvIGVycl91
-bm1hcF9pb3NwYWNlOwo+ICsgICAgICAgICAgICAgICBnb3RvIGVycl9yZW1vdmVfaXJxX2RvbWFp
-bjsKPgo+ICAgICAgICAgcm9ja2NoaXAtPm1zZ19yZWdpb24gPSBkZXZtX2lvcmVtYXAoZGV2LCBy
-b2NrY2hpcC0+bXNnX2J1c19hZGRyLCBTWl8xTSk7Cj4gICAgICAgICBpZiAoIXJvY2tjaGlwLT5t
-c2dfcmVnaW9uKSB7Cj4gICAgICAgICAgICAgICAgIGVyciA9IC1FTk9NRU07Cj4gLSAgICAgICAg
-ICAgICAgIGdvdG8gZXJyX3VubWFwX2lvc3BhY2U7Cj4gKyAgICAgICAgICAgICAgIGdvdG8gZXJy
-X3JlbW92ZV9pcnFfZG9tYWluOwo+ICAgICAgICAgfQo+Cj4gLSAgICAgICBsaXN0X3NwbGljZV9p
-bml0KCZyZXMsICZicmlkZ2UtPndpbmRvd3MpOwo+ICAgICAgICAgYnJpZGdlLT5kZXYucGFyZW50
-ID0gZGV2Owo+ICAgICAgICAgYnJpZGdlLT5zeXNkYXRhID0gcm9ja2NoaXA7Cj4gICAgICAgICBi
-cmlkZ2UtPmJ1c25yID0gMDsKPiBAQCAtMTA1NCw3ICsxMDM3LDcgQEAgc3RhdGljIGludCByb2Nr
-Y2hpcF9wY2llX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4KPiAgICAgICAg
-IGVyciA9IHBjaV9zY2FuX3Jvb3RfYnVzX2JyaWRnZShicmlkZ2UpOwo+ICAgICAgICAgaWYgKGVy
-ciA8IDApCj4gLSAgICAgICAgICAgICAgIGdvdG8gZXJyX3VubWFwX2lvc3BhY2U7Cj4gKyAgICAg
-ICAgICAgICAgIGdvdG8gZXJyX3JlbW92ZV9pcnFfZG9tYWluOwo+Cj4gICAgICAgICBidXMgPSBi
-cmlkZ2UtPmJ1czsKPgo+IEBAIC0xMDY4LDEwICsxMDUxLDYgQEAgc3RhdGljIGludCByb2NrY2hp
-cF9wY2llX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gICAgICAgICBwY2lf
-YnVzX2FkZF9kZXZpY2VzKGJ1cyk7Cj4gICAgICAgICByZXR1cm4gMDsKPgo+IC1lcnJfdW5tYXBf
-aW9zcGFjZToKPiAtICAgICAgIHBjaV91bm1hcF9pb3NwYWNlKHJvY2tjaGlwLT5pbyk7Cj4gLWVy
-cl9mcmVlX3JlczoKPiAtICAgICAgIHBjaV9mcmVlX3Jlc291cmNlX2xpc3QoJnJlcyk7Cj4gIGVy
-cl9yZW1vdmVfaXJxX2RvbWFpbjoKPiAgICAgICAgIGlycV9kb21haW5fcmVtb3ZlKHJvY2tjaGlw
-LT5pcnFfZG9tYWluKTsKPiAgZXJyX2RlaW5pdF9wb3J0Ogo+IEBAIC0xMDk3LDcgKzEwNzYsNiBA
-QCBzdGF0aWMgaW50IHJvY2tjaGlwX3BjaWVfcmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2Ug
-KnBkZXYpCj4KPiAgICAgICAgIHBjaV9zdG9wX3Jvb3RfYnVzKHJvY2tjaGlwLT5yb290X2J1cyk7
-Cj4gICAgICAgICBwY2lfcmVtb3ZlX3Jvb3RfYnVzKHJvY2tjaGlwLT5yb290X2J1cyk7Cj4gLSAg
-ICAgICBwY2lfdW5tYXBfaW9zcGFjZShyb2NrY2hpcC0+aW8pOwo+ICAgICAgICAgaXJxX2RvbWFp
-bl9yZW1vdmUocm9ja2NoaXAtPmlycV9kb21haW4pOwo+Cj4gICAgICAgICByb2NrY2hpcF9wY2ll
-X2RlaW5pdF9waHlzKHJvY2tjaGlwKTsKPiAtLQo+IDIuMjAuMQo+Cj4KPiBfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LW1lZGlhdGVrIG1haWxp
-bmcgbGlzdAo+IExpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Thu, Dec 5, 2019 at 12:31 PM Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org> wrote:
+>
+> On 05/12/2019 1:07 pm, Peter Geis wrote:
+> [...]
+> > The power off issue still exists, but I dug into the psci pm code for
+> > the poweroff function and unless there is a gpio this function is a
+> > no-op.
+> > For this reason I think the rk808 driver should be modified to set
+> > itself as the primary poweroff provider if the
+> > rockchip,system-power-controller flag is set.
+> > The other option is to somehow make ATF aware of the rk808 and have it
+> > trigger the poweroff.
+> > Thoughts on this?
+>
+> Yeah, this seems to be a fundamental limitation of the RK808 that, short
+> of wiring up a GPIO to literally hold down the power button, the only
+> way to convince it to turn off is over I2C. Downstream kernels seem to
+> hack around this by short-circuiting ATF on shutdown such that the RK808
+> driver pulls the plug before PSCI_SYSTEM_OFF ever gets called, but I'm
+> not sure that's viable in general since it precludes gracefully shutting
+> down the Secure world software stack.
+>
+> The main challenge in implementing I2C-based shutdown in ATF would be
+> making it sufficiently robust without being incredibly complicated.
+> Since the hardware resources are owned by the Non-Secure world, ATF
+> can't make any assumptions about them being in a sane and usable state
+> at the point where it might want to touch them - a shutdown could
+> potentially be invoked while the I2C controller is already in the middle
+> of a transfer. Possibly bit-banging GPIOs, including a bus recovery
+> sequence, might be sufficient yet still relatively small and simple?
+>
+> Robin.
+
+Theoretically, how dangerous is it to pull the rug out from under ATF
+without calling a graceful shutdown?
+Since it shouldn't be touching any non-volatile storage anyways,
+anything it was doing is going to be gone when power is cut.
+
+The reset handler for arm implements a hierarchy of reset handlers,
+where multiple handlers can register with a priority, and they are
+called in order until someone actually reboots the device.
+Is there similar functionality in the shutdown handler as well?
+If there is, we could have PSCI_SYSTEM_OFF called, but since it
+doesn't actually do anything eventually have the rk808 driver trigger
+and actually power off the board.
+Or does calling PSCI_SYSTEM_OFF cause the ATF to halt any remaining
+kernel functions?
+
+Doesn't u-boot use simple non-dma drivers for i2c?
+Would we be able to trigger a reset of the i2c controller, then
+request a single transfer, using something similar?
+Another option would be the u-boot poweroff driver, which set a flag
+for u-boot to hold at next boot, but we could have a custom handler in
+u-boot to trigger the poweroff instead of holding.
+
+>
+> > [0] https://github.com/ARM-software/arm-trusted-firmware/commit/45d4611563038486890b40d61e41b68213326afc
+> > [1] https://github.com/armbian/build/blob/master/patch/atf/atf-rk3399/switch-power-domains-on-before-reset.patch
+> >>
+> >>>
+> >>>>
+> >>>> Log is below:
+> >>>> [    0.261198] Detected PIPT I-cache on CPU5
+> >>>> [    0.261223] GICv3: CPU5: found redistributor 101 region 0:0x00000000fefa0000
+> >>>> [    0.261235] GICv3: CPU5: using allocated LPI pending table
+> >>>> @0x00000000f0120000
+> >>>> [    0.261263] CPU5: Booted secondary processor 0x0000000101 [0x410fd082]
+> >>>> [    0.261377] smp: Brought up 1 node, 6 CPUs
+> >>>> [    0.274833] SMP: Total of 6 processors activated.
+> >>>> [    0.275297] CPU features: detected: 32-bit EL0 Support
+> >>>> [    0.275801] CPU features: detected: CRC32 instructions
+> >>>> [    0.290797] CPU: All CPU(s) started at EL2
+> >>>> [    0.291242] alternatives: patching kernel code
+> >>>> [    0.294848] devtmpfs: initialized
+> >>>> [    0.311658] clocksource: jiffies: mask: 0xffffffff max_cycles:
+> >>>> 0xffffffff, max_idle_ns: 7645041785100000 ns
+> >>>> [    0.312629] futex hash table entries: 2048 (order: 5, 131072 bytes, linear)
+> >>>> [    0.315223] pinctrl core: initialized pinctrl subsystem
+> >>>> [    0.318097] DMI not present or invalid.
+> >>>> [    0.318989] NET: Registered protocol family 16
+> >>>> [    0.326798] DMA: preallocated 256 KiB pool for atomic allocations
+> >>>> [    0.327415] audit: initializing netlink subsys (disabled)
+> >>>> [    0.328106] audit: type=2000 audit(0.320:1): state=initialized
+> >>>> audit_enabled=0 res=1
+> >>>> [    0.330213] cpuidle: using governor menu
+> >>>> [    0.331160] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+> >>>> [    0.334653] Serial: AMBA PL011 UART driver
+> >>>> [    0.384125] HugeTLB registered 1.00 GiB page size, pre-allocated 0 pages
+> >>>> [    0.384800] HugeTLB registered 32.0 MiB page size, pre-allocated 0 pages
+> >>>> [    0.385483] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+> >>>> [    0.386146] HugeTLB registered 64.0 KiB page size, pre-allocated 0 pages
+> >>>> [    0.390063] cryptd: max_cpu_qlen set to 1000
+> >>>> [    0.396205] ACPI: Interpreter disabled.
+> >>>> [    0.399113] vcc3v3_pcie: supplied by vcc12v_dcin
+> >>>> [    0.400706] vcc5v0_sys: supplied by vcc12v_dcin
+> >>>> [    0.401426] vcc5v0_usb: supplied by vcc12v_dcin
+> >>>> [    0.402060] vcc3v3_sys: supplied by vcc5v0_sys
+> >>>> [    0.403275] iommu: Default domain type: Translated
+> >>>> [
+> >>>>
+> >>>>>
+> >>>>>>
+> >>>>>>>
+> >>>>>>>> With miniloader and both variants of u-boot, if you attempt a reboot
+> >>>>>>>> it never fires the "reboot: Restarting system" message.
+> >>>>>>>> If you trigger a sysrq reboot at this stage, it will reboot, but fails
+> >>>>>>>> to start up the two a72 cores and subsequently hangs a second later
+> >>>>>>>> when it loads the first dma driver.
+> >>>>>>>>
+> >>>>>>>> With TPL/SPL on mainline-u-boot (I can't get rockchip-u-boot to work
+> >>>>>>>> with TPL/SPL), it fires the "reboot: Restarting system" message, but
+> >>>>>>>> never reboots.
+> >>>>>>>> sysrq does not function at this point.
+> >>>>>>>>
+> >>>>>>>> I believe the pcie controller is not being halted, and gets stuck in a
+> >>>>>>>> loop with the two a72 cores.
+> >>>>>>>>
+> >>>>>>>> _______________________________________________
+> >>>>>>>> Linux-rockchip mailing list
+> >>>>>>>> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> >>>>>>>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> >>>>>>>>
