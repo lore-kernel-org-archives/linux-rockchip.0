@@ -1,7 +1,7 @@
 From: Anand Moon <linux.amoon@gmail.com>
-Subject: [RFCv1 6/8] mfd: rk808: use common syscore for all PMCI for clean shutdown
-Date: Fri,  6 Dec 2019 18:45:34 +0000
-Message-ID: <20191206184536.2507-7-linux.amoon@gmail.com>
+Subject: [RFCv1 5/8] mfd: rk808: cleanup unused function pointer
+Date: Fri,  6 Dec 2019 18:45:33 +0000
+Message-ID: <20191206184536.2507-6-linux.amoon@gmail.com>
 References: <20191206184536.2507-1-linux.amoon@gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,44 +12,81 @@ To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Move the register_syscore_ops to common location for all PMIC.
-Add missing unregister_syscore_ops in rk808_remove function.
+Cleanup unused pm_poweroff_fn and pm_pwroff_prep_fn function,
+drop the unused rockchip,system-power-controller dts binding.
 
 Cc: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Anand Moon <linux.amoon@gmail.com>
 ---
- drivers/mfd/rk808.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/mfd/rk808.c       | 28 ++--------------------------
+ include/linux/mfd/rk808.h |  2 --
+ 2 files changed, 2 insertions(+), 28 deletions(-)
 
 diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
-index 9a7be379946a..54f3999e4948 100644
+index 4b3b90dad4f8..9a7be379946a 100644
 --- a/drivers/mfd/rk808.c
 +++ b/drivers/mfd/rk808.c
-@@ -590,7 +590,6 @@ static int rk808_probe(struct i2c_client *client,
- 		nr_pre_init_regs = ARRAY_SIZE(rk817_pre_init_reg);
- 		cells = rk817s;
- 		nr_cells = ARRAY_SIZE(rk817s);
--		register_syscore_ops(&rk808_syscore_ops);
- 		break;
- 	default:
- 		dev_err(&client->dev, "Unsupported RK8XX ID %lu\n",
-@@ -644,6 +643,8 @@ static int rk808_probe(struct i2c_client *client,
- 	if (!rk808_i2c_client)
- 		rk808_i2c_client = client;
+@@ -521,7 +521,7 @@ static int rk808_probe(struct i2c_client *client,
+ 	const struct mfd_cell *cells;
+ 	int nr_pre_init_regs;
+ 	int nr_cells;
+-	int pm_off = 0, msb, lsb;
++	int msb, lsb;
+ 	unsigned char pmic_id_msb, pmic_id_lsb;
+ 	int ret;
+ 	int i;
+@@ -641,18 +641,8 @@ static int rk808_probe(struct i2c_client *client,
+ 		goto err_irq;
+ 	}
  
-+	register_syscore_ops(&rk808_syscore_ops);
-+
+-	pm_off = of_property_read_bool(np,
+-				"rockchip,system-power-controller");
+-	if (pm_off && !pm_power_off) {
++	if (!rk808_i2c_client)
+ 		rk808_i2c_client = client;
+-		pm_power_off = rk808->pm_pwroff_fn;
+-	}
+-
+-	if (pm_off && !pm_power_off_prepare) {
+-		if (!rk808_i2c_client)
+-			rk808_i2c_client = client;
+-		pm_power_off_prepare = rk808->pm_pwroff_prep_fn;
+-	}
+ 
  	return 0;
  
- err_irq:
-@@ -657,6 +658,8 @@ static int rk808_remove(struct i2c_client *client)
+@@ -667,20 +657,6 @@ static int rk808_remove(struct i2c_client *client)
  
  	regmap_del_irq_chip(client->irq, rk808->irq_data);
  
-+	unregister_syscore_ops(&rk808_syscore_ops);
-+
+-	/**
+-	 * pm_power_off may points to a function from another module.
+-	 * Check if the pointer is set by us and only then overwrite it.
+-	 */
+-	if (rk808->pm_pwroff_fn && pm_power_off == rk808->pm_pwroff_fn)
+-		pm_power_off = NULL;
+-
+-	/**
+-	 * As above, check if the pointer is set by us before overwrite.
+-	 */
+-	if (rk808->pm_pwroff_prep_fn &&
+-	    pm_power_off_prepare == rk808->pm_pwroff_prep_fn)
+-		pm_power_off_prepare = NULL;
+-
  	return 0;
  }
  
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index a59bf323f713..e07f6e61cd38 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -620,7 +620,5 @@ struct rk808 {
+ 	long				variant;
+ 	const struct regmap_config	*regmap_cfg;
+ 	const struct regmap_irq_chip	*regmap_irq_chip;
+-	void				(*pm_pwroff_fn)(void);
+-	void				(*pm_pwroff_prep_fn)(void);
+ };
+ #endif /* __LINUX_REGULATOR_RK808_H */
 -- 
 2.24.0
