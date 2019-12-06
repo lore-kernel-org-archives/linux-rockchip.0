@@ -1,14 +1,15 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 Subject: Re: [PATCH] arm64: dts: rockchip: Change RK809 PMIC interrupt polarity
-Date: Fri, 06 Dec 2019 17:01:58 +0100
-Message-ID: <1601413.9zADmrJRdp@phil>
+Date: Fri, 6 Dec 2019 17:34:53 +0100
+Message-ID: <20191206173453.1b2f7844@xps13>
 References: <20191206154247.28057-1-miquel.raynal@bootlin.com>
  <3285991.EbEXlA3CnX@phil> <20191206165250.5877dec8@xps13>
+ <1601413.9zADmrJRdp@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191206165250.5877dec8@xps13>
+In-Reply-To: <1601413.9zADmrJRdp@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,92 +19,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 6. Dezember 2019, 16:52:50 CET schrieb Miquel Raynal:
-> Hi Heiko,
-> =
-
-> Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote on Fri, 06 Dec 2019 16:48:00
-> +0100:
-> =
-
-> > Hi Miquel,
-> > =
-
-> > Am Freitag, 6. Dezember 2019, 16:42:47 CET schrieb Miquel Raynal:
-> > > PMIC interrupt can be active high or active low depending on BIT(1) of
-> > > the GPIO_INT_CFG pin. The default is 0x1, which means active
-> > > high. Change the polarity in the device tree to reflect the default
-> > > state.
-> > > =
-
-> > > Without this and with the current code base, the interrupt never stops
-> > > triggering while the MFD driver does not see anything to
-> > > check/clear/mask so after 100000 spurious IRQs, the kernel simply
-> > > desactivates the interrupt:
-> > > =
-
-> > >         irq 36: nobody cared (try booting with the "irqpoll" option)
-> > >         [...]
-> > >         handlers:
-> > >         [<(____ptrval____)>] irq_default_primary_handler threaded
-> > > 	[<(____ptrval____)>] regmap_irq_thread
-> > >         Disabling IRQ #36
-> > > =
-
-> > > Signed-off-by: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>  =
-
-> > =
-
-> > *coughs slightly*
-> > =
-
-> > mfd: rk808: Set RK817 interrupt polarity to low
-> > https://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git/commit/driv=
-ers/mfd/rk808.c?h=3Dfor-mfd-next&id=3Ddbd16ef53487084816a20f662423ab543a75f=
-c83
-> > =
-
-> > Should be in the current merge window already I guess ;-)
-> =
-
-> This time I swear I checked your tree. But this time we did not ended
-> with the same fix so I missed this one *again* :)
-
-No worries ... I guess I should check where I hid additional patches ;-)
-
-So right now px30 stuff is in the trees:
-- mine
-- mfd
-- phy (first round of dsi phy, refinement pending on the list)
-- nvmem (for the otp controller)
-- drm (drm/rockchip: vop: add the definition of dclk_pol)
-- clk
-
-and pending on lists:
-- drm (dsi support + timings)
-- phy (refinement as mentioned above)
-
-not submitted yet but planning to get this done this weekend:
-- panel driver for px30-evb
-- dsi devicetree stuff
-
-
-Hope this helps a bit to prevent more double work ;-)
-Heiko
-
-> =
-
-> > =
-
-> > Having this consistent over all rk8xx seemed nicer.
-> =
-
-> I'm fine with this approach too.
-> =
-
-> Thanks,
-> Miqu=E8l
+SGkgSGVpa28sCgpIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZSBvbiBGcmks
+IDA2IERlYyAyMDE5IDE3OjAxOjU4CiswMTAwOgoKPiBBbSBGcmVpdGFnLCA2LiBEZXplbWJlciAy
+MDE5LCAxNjo1Mjo1MCBDRVQgc2NocmllYiBNaXF1ZWwgUmF5bmFsOgo+ID4gSGkgSGVpa28sCj4g
+PiAKPiA+IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+IHdyb3RlIG9uIEZyaSwgMDYg
+RGVjIDIwMTkgMTY6NDg6MDAKPiA+ICswMTAwOgo+ID4gICAKPiA+ID4gSGkgTWlxdWVsLAo+ID4g
+PiAKPiA+ID4gQW0gRnJlaXRhZywgNi4gRGV6ZW1iZXIgMjAxOSwgMTY6NDI6NDcgQ0VUIHNjaHJp
+ZWIgTWlxdWVsIFJheW5hbDogIAo+ID4gPiA+IFBNSUMgaW50ZXJydXB0IGNhbiBiZSBhY3RpdmUg
+aGlnaCBvciBhY3RpdmUgbG93IGRlcGVuZGluZyBvbiBCSVQoMSkgb2YKPiA+ID4gPiB0aGUgR1BJ
+T19JTlRfQ0ZHIHBpbi4gVGhlIGRlZmF1bHQgaXMgMHgxLCB3aGljaCBtZWFucyBhY3RpdmUKPiA+
+ID4gPiBoaWdoLiBDaGFuZ2UgdGhlIHBvbGFyaXR5IGluIHRoZSBkZXZpY2UgdHJlZSB0byByZWZs
+ZWN0IHRoZSBkZWZhdWx0Cj4gPiA+ID4gc3RhdGUuCj4gPiA+ID4gCj4gPiA+ID4gV2l0aG91dCB0
+aGlzIGFuZCB3aXRoIHRoZSBjdXJyZW50IGNvZGUgYmFzZSwgdGhlIGludGVycnVwdCBuZXZlciBz
+dG9wcwo+ID4gPiA+IHRyaWdnZXJpbmcgd2hpbGUgdGhlIE1GRCBkcml2ZXIgZG9lcyBub3Qgc2Vl
+IGFueXRoaW5nIHRvCj4gPiA+ID4gY2hlY2svY2xlYXIvbWFzayBzbyBhZnRlciAxMDAwMDAgc3B1
+cmlvdXMgSVJRcywgdGhlIGtlcm5lbCBzaW1wbHkKPiA+ID4gPiBkZXNhY3RpdmF0ZXMgdGhlIGlu
+dGVycnVwdDoKPiA+ID4gPiAKPiA+ID4gPiAgICAgICAgIGlycSAzNjogbm9ib2R5IGNhcmVkICh0
+cnkgYm9vdGluZyB3aXRoIHRoZSAiaXJxcG9sbCIgb3B0aW9uKQo+ID4gPiA+ICAgICAgICAgWy4u
+Ll0KPiA+ID4gPiAgICAgICAgIGhhbmRsZXJzOgo+ID4gPiA+ICAgICAgICAgWzwoX19fX3B0cnZh
+bF9fX18pPl0gaXJxX2RlZmF1bHRfcHJpbWFyeV9oYW5kbGVyIHRocmVhZGVkCj4gPiA+ID4gCVs8
+KF9fX19wdHJ2YWxfX19fKT5dIHJlZ21hcF9pcnFfdGhyZWFkCj4gPiA+ID4gICAgICAgICBEaXNh
+YmxpbmcgSVJRICMzNgo+ID4gPiA+IAo+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IE1pcXVlbCBSYXlu
+YWwgPG1pcXVlbC5yYXluYWxAYm9vdGxpbi5jb20+ICAgIAo+ID4gPiAKPiA+ID4gKmNvdWdocyBz
+bGlnaHRseSoKPiA+ID4gCj4gPiA+IG1mZDogcms4MDg6IFNldCBSSzgxNyBpbnRlcnJ1cHQgcG9s
+YXJpdHkgdG8gbG93Cj4gPiA+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9r
+ZXJuZWwvZ2l0L2xlZS9tZmQuZ2l0L2NvbW1pdC9kcml2ZXJzL21mZC9yazgwOC5jP2g9Zm9yLW1m
+ZC1uZXh0JmlkPWRiZDE2ZWY1MzQ4NzA4NDgxNmEyMGY2NjI0MjNhYjU0M2E3NWZjODMKPiA+ID4g
+Cj4gPiA+IFNob3VsZCBiZSBpbiB0aGUgY3VycmVudCBtZXJnZSB3aW5kb3cgYWxyZWFkeSBJIGd1
+ZXNzIDstKSAgCj4gPiAKPiA+IFRoaXMgdGltZSBJIHN3ZWFyIEkgY2hlY2tlZCB5b3VyIHRyZWUu
+IEJ1dCB0aGlzIHRpbWUgd2UgZGlkIG5vdCBlbmRlZAo+ID4gd2l0aCB0aGUgc2FtZSBmaXggc28g
+SSBtaXNzZWQgdGhpcyBvbmUgKmFnYWluKiA6KSAgCj4gCj4gTm8gd29ycmllcyAuLi4gSSBndWVz
+cyBJIHNob3VsZCBjaGVjayB3aGVyZSBJIGhpZCBhZGRpdGlvbmFsIHBhdGNoZXMgOy0pCj4gCj4g
+U28gcmlnaHQgbm93IHB4MzAgc3R1ZmYgaXMgaW4gdGhlIHRyZWVzOgo+IC0gbWluZQo+IC0gbWZk
+Cj4gLSBwaHkgKGZpcnN0IHJvdW5kIG9mIGRzaSBwaHksIHJlZmluZW1lbnQgcGVuZGluZyBvbiB0
+aGUgbGlzdCkKPiAtIG52bWVtIChmb3IgdGhlIG90cCBjb250cm9sbGVyKQo+IC0gZHJtIChkcm0v
+cm9ja2NoaXA6IHZvcDogYWRkIHRoZSBkZWZpbml0aW9uIG9mIGRjbGtfcG9sKQo+IC0gY2xrCj4g
+Cj4gYW5kIHBlbmRpbmcgb24gbGlzdHM6Cj4gLSBkcm0gKGRzaSBzdXBwb3J0ICsgdGltaW5ncykK
+PiAtIHBoeSAocmVmaW5lbWVudCBhcyBtZW50aW9uZWQgYWJvdmUpCj4gCj4gbm90IHN1Ym1pdHRl
+ZCB5ZXQgYnV0IHBsYW5uaW5nIHRvIGdldCB0aGlzIGRvbmUgdGhpcyB3ZWVrZW5kOgo+IC0gcGFu
+ZWwgZHJpdmVyIGZvciBweDMwLWV2Ygo+IC0gZHNpIGRldmljZXRyZWUgc3R1ZmYKClRoYW5rIHlv
+dSB2ZXJ5IG11Y2ggZm9yIHRoZSBkZXRhaWxlZCBsaXN0ISBJIHdpbGwgc29vbiB3b3JrIG9uIHRo
+ZQpQTUlDIGF1ZGlvIHN1cHBvcnQgYW5kIG9uIHNlY3VyZSBib290LCBkbyBub3QgaGVzaXRhdGUg
+dG8gcGluZyBtZSBpZgp5b3Ugc2VlIHRoaXMga2luZCBvZiB3b3JrIGNvbWluZyBvbiB0aGUgbWFp
+bGluZyBsaXN0IQoKVGhhbmtzLApNaXF1w6hsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
