@@ -1,145 +1,77 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v4 8/8] linux/log2.h: Use roundup/dow_pow_two() on 64bit
- calculations
-Date: Thu, 5 Dec 2019 14:38:45 -0600
-Message-ID: <20191205203845.GA243596@google.com>
-References: <20191203114743.1294-9-nsaenzjulienne@suse.de>
+From: Philippe CORNU <philippe.cornu@st.com>
+Subject: Re: [Linux-stm32] [PATCH v4 0/4] Genericize DW MIPI DSI bridge and
+ add i.MX 6 driver
+Date: Fri, 6 Dec 2019 10:29:02 +0000
+Message-ID: <a356df00-e321-ab8c-61e9-f179cb1f8e12@st.com>
+References: <20191202193359.703709-1-adrian.ratiu@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20191203114743.1294-9-nsaenzjulienne@suse.de>
+In-Reply-To: <20191202193359.703709-1-adrian.ratiu@collabora.com>
+Content-Language: en-US
+Content-ID: <2AFA399042EFAD419166C5E33226D3E5@st.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Cc: andrew.murray@arm.com, maz@kernel.org, linux-kernel@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Hanjun Guo <guohanjun@huawei.com>, Sudeep Holla <sudeep.holla@arm.com>, Tariq Toukan <tariqt@mellanox.com>, Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, bcm-kernel-feedback-list@broadcom.com, Eric Anholt <eric@anholt.net>, Stefan Wahren <wahrenst@gmx.net>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>, Robin Murphy <robin.murphy@arm.com>, james.quinlan@broadcom.com, mbrugger@suse.com, phil@raspberrypi.org, jeremy.linton@arm.com, linux-pci@vger.kernel.or
+To: Adrian Ratiu <adrian.ratiu@collabora.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+Cc: "kernel@collabora.com" <kernel@collabora.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-imx@nxp.com" <linux-imx@nxp.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The subject contains a couple typos: it's missing "of" and it's
-missing the "n" on "down".
-
-On Tue, Dec 03, 2019 at 12:47:41PM +0100, Nicolas Saenz Julienne wrote:
-> The function now is safe to use while expecting a 64bit value. Use it
-> where relevant.
-
-Please include the function names ("roundup_pow_of_two()",
-"rounddown_pow_of_two()") in the changelog so it is self-contained and
-doesn't depend on the subject.
-
-> Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-
-With the nits above and below addressed,
-
-Acked-by: Bjorn Helgaas <bhelgaas@google.com>	# drivers/pci
-
-> ---
->  drivers/acpi/arm64/iort.c                        | 2 +-
->  drivers/net/ethernet/mellanox/mlx4/en_clock.c    | 3 ++-
->  drivers/of/device.c                              | 3 ++-
->  drivers/pci/controller/cadence/pcie-cadence-ep.c | 3 ++-
->  drivers/pci/controller/cadence/pcie-cadence.c    | 3 ++-
->  drivers/pci/controller/pcie-brcmstb.c            | 3 ++-
->  drivers/pci/controller/pcie-rockchip-ep.c        | 5 +++--
->  kernel/dma/direct.c                              | 2 +-
->  8 files changed, 15 insertions(+), 9 deletions(-)
-
-> --- a/drivers/pci/controller/cadence/pcie-cadence-ep.c
-> +++ b/drivers/pci/controller/cadence/pcie-cadence-ep.c
-> @@ -10,6 +10,7 @@
->  #include <linux/platform_device.h>
->  #include <linux/pm_runtime.h>
->  #include <linux/sizes.h>
-> +#include <linux/log2.h>
->  
->  #include "pcie-cadence.h"
->  
-> @@ -65,7 +66,7 @@ static int cdns_pcie_ep_set_bar(struct pci_epc *epc, u8 fn,
->  	 * roundup_pow_of_two() returns an unsigned long, which is not suited
->  	 * for 64bit values.
->  	 */
-
-Please remove the comment above since it no longer applies.
-
-> -	sz = 1ULL << fls64(sz - 1);
-> +	sz = roundup_pow_of_two(sz);
->  	aperture = ilog2(sz) - 7; /* 128B -> 0, 256B -> 1, 512B -> 2, ... */
->  
->  	if ((flags & PCI_BASE_ADDRESS_SPACE) == PCI_BASE_ADDRESS_SPACE_IO) {
-> diff --git a/drivers/pci/controller/cadence/pcie-cadence.c b/drivers/pci/controller/cadence/pcie-cadence.c
-> index cd795f6fc1e2..b1689f725b41 100644
-> --- a/drivers/pci/controller/cadence/pcie-cadence.c
-> +++ b/drivers/pci/controller/cadence/pcie-cadence.c
-> @@ -4,6 +4,7 @@
->  // Author: Cyrille Pitchen <cyrille.pitchen@free-electrons.com>
->  
->  #include <linux/kernel.h>
-> +#include <linux/log2.h>
->  
->  #include "pcie-cadence.h"
->  
-> @@ -15,7 +16,7 @@ void cdns_pcie_set_outbound_region(struct cdns_pcie *pcie, u8 fn,
->  	 * roundup_pow_of_two() returns an unsigned long, which is not suited
->  	 * for 64bit values.
->  	 */
-
-Same here.
-
-> -	u64 sz = 1ULL << fls64(size - 1);
-> +	u64 sz = roundup_pow_of_two(size);
->  	int nbits = ilog2(sz);
->  	u32 addr0, addr1, desc0, desc1;
->  
-> --- a/drivers/pci/controller/pcie-rockchip-ep.c
-> +++ b/drivers/pci/controller/pcie-rockchip-ep.c
-> @@ -16,6 +16,7 @@
->  #include <linux/platform_device.h>
->  #include <linux/pci-epf.h>
->  #include <linux/sizes.h>
-> +#include <linux/log2.h>
->  
->  #include "pcie-rockchip.h"
->  
-> @@ -70,7 +71,7 @@ static void rockchip_pcie_prog_ep_ob_atu(struct rockchip_pcie *rockchip, u8 fn,
->  					 u32 r, u32 type, u64 cpu_addr,
->  					 u64 pci_addr, size_t size)
->  {
-> -	u64 sz = 1ULL << fls64(size - 1);
-> +	u64 sz = roundup_pow_of_two(size);
->  	int num_pass_bits = ilog2(sz);
->  	u32 addr0, addr1, desc0, desc1;
->  	bool is_nor_msg = (type == AXI_WRAPPER_NOR_MSG);
-> @@ -176,7 +177,7 @@ static int rockchip_pcie_ep_set_bar(struct pci_epc *epc, u8 fn,
->  	 * roundup_pow_of_two() returns an unsigned long, which is not suited
->  	 * for 64bit values.
->  	 */
-
-And here.
-
-> -	sz = 1ULL << fls64(sz - 1);
-> +	sz = roundup_pow_of_two(sz);
->  	aperture = ilog2(sz) - 7; /* 128B -> 0, 256B -> 1, 512B -> 2, ... */
->  
->  	if ((flags & PCI_BASE_ADDRESS_SPACE) == PCI_BASE_ADDRESS_SPACE_IO) {
-> diff --git a/kernel/dma/direct.c b/kernel/dma/direct.c
-> index 6af7ae83c4ad..056886c4efec 100644
-> --- a/kernel/dma/direct.c
-> +++ b/kernel/dma/direct.c
-> @@ -53,7 +53,7 @@ u64 dma_direct_get_required_mask(struct device *dev)
->  {
->  	u64 max_dma = phys_to_dma_direct(dev, (max_pfn - 1) << PAGE_SHIFT);
->  
-> -	return (1ULL << (fls64(max_dma) - 1)) * 2 - 1;
-> +	return rounddown_pow_of_two(max_dma) * 2 - 1;
-
-Personally I would probably make this one a separate patch since it's
-qualitatively different than the others and it would avoid the slight
-awkwardness of the non-greppable "roundup/down_pow_of_two()"
-construction in the commit subject.
-
-But it's fine either way.
-
->  }
->  
->  static gfp_t __dma_direct_optimal_gfp_mask(struct device *dev, u64 dma_mask,
-> -- 
-> 2.24.0
-> 
+SGkgQWRyaWFuLA0KDQpBbmQgc29ycnkgZm9yIHRoaXMgbGF0ZSByZXBseS4NCllvdXIgcGF0Y2hl
+cyBsb29rIGdvb2QgYW5kIHdlICgic3RtIGd1eXMiKSB1bmRlcnN0YW5kIHRoYXQgdjEuMDEgaXMg
+dmVyeSANCmRpZmZlcmVudCB0byB2MS4zMC8zMS4NCg0KV2UgYXJlIGRvaW5nIG91ciBiZXN0IHRv
+IHJldmlldyAmIHRlc3QgeW91ciBwYXRjaGVzIGFuZCB3ZSB3aWxsIGdvIGJhY2sgDQp0byB5b3Ug
+YXNhcC4NCk1hbnkgdGhhbmtzLA0KUGhpbGlwcGUgOi0pDQoNCg0KT24gMTIvMi8xOSA4OjMzIFBN
+LCBBZHJpYW4gUmF0aXUgd3JvdGU6DQo+IEhhdmluZyBhIGdlbmVyaWMgU3lub3BzaXMgRGVzaWdu
+V2FyZSBNSVBJLURTSSBob3N0IGNvbnRyb2xsZXIgYnJpZGdlDQo+IGRyaXZlciBpcyBhIHZlcnkg
+Z29vZCBpZGVhLCBob3dldmVyIHRoZSBjdXJyZW50IGltcGxlbWVudGF0aW9uIGhhcw0KPiBoYXJk
+Y29kZWQgcXVpdGUgYSBsb3Qgb2YgdGhlIHJlZ2lzdGVyIGxheW91dHMgdXNlZCBieSB0aGUgdHdv
+IHN1cHBvcnRlZA0KPiBTb0MgdmVuZG9ycywgU1RNIGFuZCBSb2NrY2hpcCwgd2hpY2ggdXNlIElQ
+IGNvcmVzIHYxLjMwIGFuZCB2MS4zMS4NCj4gDQo+IFRoaXMgbWFrZXMgaXQgaGFyZCB0byBzdXBw
+b3J0IG90aGVyIFNvQyB2ZW5kb3JzIGxpa2UgdGhlIEZTTC9OWFAgaS5NWCA2DQo+IHdoaWNoIHVz
+ZSBvbGRlciB2MS4wMSBjb3JlcyBvciBmdXR1cmUgdmVyc2lvbnMgYmVjYXVzZSwgYmFzZWQgb24g
+aGlzdG9yeSwNCj4gbGF5b3V0IGNoYW5nZXMgc2hvdWxkIGFsc28gYmUgZXhwZWN0ZWQgaW4gbmV3
+IERTSSB2ZXJzaW9ucyAvIFNvQ3MuDQo+IA0KPiBUaGlzIHBhdGNoIHNlcmllcyBjb252ZXJ0cyB0
+aGUgYnJpZGdlIGFuZCBwbGF0Zm9ybSBkcml2ZXJzIHRvIGFjY2Vzcw0KPiByZWdpc3RlcnMgdmlh
+IGdlbmVyaWMgcmVnbWFwIEFQSXMgYW5kIGFsbG93cyBlYWNoIHBsYXRmb3JtIGRyaXZlciB0bw0K
+PiBjb25maWd1cmUgaXRzIHJlZ2lzdGVyIGxheW91dCB2aWEgc3RydWN0IHJlZ19maWVsZHMsIHRo
+ZW4gYWRkcyBzdXBwb3J0DQo+IGZvciB0aGUgaG9zdCBjb250cm9sbGVyIGZvdW5kIG9uIGkuTVgg
+Ni4NCj4gDQo+IEkgb25seSBoYXZlIGkuTVggaGFyZHdhcmUgd2l0aCBNSVBJLURTSSBwYW5lbCBh
+bmQgcmVsZXZhbnQgZG9jdW1lbnRhdGlvbg0KPiBhdmFpbGFibGUgZm9yIHRlc3Rpbmcgc28gSSds
+bCByZWFsbHkgYXBwcmVjaWF0ZSBpdCBpZiBzb21lb25lIGNvdWxkIHRlc3QNCj4gdGhlIHNlcmll
+cyBvbiBSb2NrY2hpcCBhbmQgU1RNLi4uIGV5ZWJhbGxpbmcgcmVnaXN0ZXIgZmllbGRzIGNvdWxk
+IG9ubHkNCj4gZ2V0IG1lIHNvIGZhciwgc28gc29ycnkgaW4gYWR2YW5jZSBmb3IgYW55IGJyZWFr
+YWdlIQ0KPiANCj4gTWFueSB0aGFua3MgdG8gQm9yaXMgQnJlemlsbG9uIDxib3Jpcy5icmV6aWxs
+b25AY29sbGFib3JhLmNvbT4gZm9yDQo+IHN1Z2dlc3RpbmcgdGhlIHJlZ21hcCBzb2x1dGlvbiBh
+bmQgdG8gTGl1IFlpbmcgPFlpbmcuTGl1QGZyZWVzY2FsZS5jb20+DQo+IGZvciBkb2luZyB0aGUg
+aW5pdGlhbCBpLk1YIHBsYXRmb3JtIGRyaXZlciBpbXBsZW1lbnRhdGlvbi4NCj4gDQo+IFRoaXMg
+c2VyaWVzIGFwcGxpZXMgb24gdG9wIG9mIGxhdGVzdCBsaW51eC1uZXh0IHRyZWUsIG5leHQtMjAx
+OTEyMDIuDQo+IA0KPiB2MyAtPiB2NDoNCj4gICAgKiBBZGRlZCBjb21tbWl0IG1lc3NhZ2UgdG8g
+ZHQtYmluZGluZyBwYXRjaCAoTmVpbCkNCj4gICAgKiBDb252ZXJ0ZWQgdGhlIGR0LWJpbmRpbmcg
+dG8geWFtbCBkdC1zY2hlbWEgZm9ybWF0IChOZWlsKQ0KPiAgICAqIFNtYWxsIERUIG5vZGUgKyBk
+cml2ZXIgZml4ZXMgKFJvYikNCj4gICAgKiBSZW5hbWVkIHBsYXRmb3JtIGRyaXZlciB0byByZWZs
+ZWN0IGl0J3Mgb25seSBmb3IgaS5NWCB2NiAoRmFiaW8pDQo+ICAgICogQWRkZWQgc21hbGwgcGFu
+ZWwgZXhhbXBsZSB0byB0aGUgaG9zdCBjb250cm9sbGVyIERUIGJpbmRpbmcNCj4gDQo+IHYyIC0+
+IHYzOg0KPiAgICAqIEFkZGVkIGNvbnN0IGRlY2xhcmF0aW9ucyB0byBkdy1taXBpLWRzaS5jIHN0
+cnVjdHMgKEVtaWwpDQo+ICAgICogRml4ZWQgUmV2aWV3ZWQtYnkgdGFncyBhbmQgY2MnZCBzb21l
+IG1vcmUgcmVsZXZhbnQgTUwgKEVtaWwpDQo+IA0KPiB2MSAtPiB2MjoNCj4gICAgKiBNb3ZlZCBy
+ZWdpc3RlciBkZWZpbml0aW9ucyAmIHJlZ21hcCBpbml0aWFsaXphdGlvbiBpbnRvIGJyaWRnZQ0K
+PiAgICBtb2R1bGUuIFBsYXRmb3JtIGRyaXZlcnMgZ2V0IHRoZSByZWdtYXAgdmlhIHBsYXRfZGF0
+YSBhZnRlciBjYWxsaW5nDQo+ICAgIHRoZSBicmlkZ2UgcHJvYmUgKEVtaWwpLg0KPiANCj4gQWRy
+aWFuIFJhdGl1ICg0KToNCj4gICAgZHJtOiBicmlkZ2U6IGR3X21pcGlfZHNpOiBhY2Nlc3MgcmVn
+aXN0ZXJzIHZpYSBhIHJlZ21hcA0KPiAgICBkcm06IGJyaWRnZTogZHdfbWlwaV9kc2k6IGFic3Ry
+YWN0IHJlZ2lzdGVyIGFjY2VzcyB1c2luZyByZWdfZmllbGRzDQo+ICAgIGRybTogaW14OiBBZGQg
+aS5NWCA2IE1JUEkgRFNJIGhvc3QgZHJpdmVyDQo+ICAgIGR0LWJpbmRpbmdzOiBkaXNwbGF5OiBh
+ZGQgaS5NWDYgTUlQSSBEU0kgaG9zdCBjb250cm9sbGVyIGRvYw0KPiANCj4gICAuLi4vZGlzcGxh
+eS9pbXgvZnNsLG1pcGktZHNpLWlteDYueWFtbCAgICAgICAgfCAxMzYgKysrKw0KPiAgIGRyaXZl
+cnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyB8IDY5OSArKysrKysrKysr
+KysrLS0tLS0NCj4gICBkcml2ZXJzL2dwdS9kcm0vaW14L0tjb25maWcgICAgICAgICAgICAgICAg
+ICAgfCAgIDcgKw0KPiAgIGRyaXZlcnMvZ3B1L2RybS9pbXgvTWFrZWZpbGUgICAgICAgICAgICAg
+ICAgICB8ICAgMSArDQo+ICAgZHJpdmVycy9ncHUvZHJtL2lteC9kd19taXBpX2RzaS1pbXg2LmMg
+ICAgICAgIHwgMzc4ICsrKysrKysrKysNCj4gICAuLi4vZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBp
+LWRzaS1yb2NrY2hpcC5jICAgfCAgMTcgKy0NCj4gICBkcml2ZXJzL2dwdS9kcm0vc3RtL2R3X21p
+cGlfZHNpLXN0bS5jICAgICAgICAgfCAgMzQgKy0NCj4gICBpbmNsdWRlL2RybS9icmlkZ2UvZHdf
+bWlwaV9kc2kuaCAgICAgICAgICAgICAgfCAgIDIgKy0NCj4gICA4IGZpbGVzIGNoYW5nZWQsIDEw
+NjcgaW5zZXJ0aW9ucygrKSwgMjA3IGRlbGV0aW9ucygtKQ0KPiAgIGNyZWF0ZSBtb2RlIDEwMDY0
+NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9pbXgvZnNsLG1pcGkt
+ZHNpLWlteDYueWFtbA0KPiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vaW14
+L2R3X21pcGlfZHNpLWlteDYuYw0KPiA=
