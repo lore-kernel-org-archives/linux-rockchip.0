@@ -1,7 +1,7 @@
 From: Anand Moon <linux.amoon@gmail.com>
-Subject: [RFCv1 7/8] arm64: rockchip: drop unused field from rk8xx i2c node
-Date: Fri,  6 Dec 2019 18:45:35 +0000
-Message-ID: <20191206184536.2507-8-linux.amoon@gmail.com>
+Subject: [RFCv1 8/8] arm: rockchip: drop unused field from rk8xx i2c node
+Date: Fri,  6 Dec 2019 18:45:36 +0000
+Message-ID: <20191206184536.2507-9-linux.amoon@gmail.com>
 References: <20191206184536.2507-1-linux.amoon@gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -13,272 +13,142 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rock
 List-Id: linux-rockchip.vger.kernel.org
 
 Drop unused rockchip,system-power-controller from rk8xx
-i2c0 node.
+i2c node.
 
 Cc: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Anand Moon <linux.amoon@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/px30-evb.dts            | 1 -
- arch/arm64/boot/dts/rockchip/rk3328-a1.dts           | 1 -
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts          | 1 -
- arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts       | 1 -
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts       | 1 -
- arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts      | 1 -
- arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi        | 1 -
- arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts      | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-firefly.dts      | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts   | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts    | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi     | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts     | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi        | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi      | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts    | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi     | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts    | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi    | 1 -
- 20 files changed, 20 deletions(-)
+ arch/arm/boot/dts/rk3036-kylin.dts        | 1 -
+ arch/arm/boot/dts/rk3188-px3-evb.dts      | 1 -
+ arch/arm/boot/dts/rk3288-evb-rk808.dts    | 1 -
+ arch/arm/boot/dts/rk3288-phycore-som.dtsi | 1 -
+ arch/arm/boot/dts/rk3288-popmetal.dts     | 1 -
+ arch/arm/boot/dts/rk3288-tinker.dtsi      | 1 -
+ arch/arm/boot/dts/rk3288-veyron.dtsi      | 1 -
+ arch/arm/boot/dts/rk3288-vyasa.dts        | 1 -
+ arch/arm/boot/dts/rv1108-elgin-r1.dts     | 1 -
+ arch/arm/boot/dts/rv1108-evb.dts          | 1 -
+ 10 files changed, 10 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30-evb.dts b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-index 936ed7d71ffc..6f51b5f1b17a 100644
---- a/arch/arm64/boot/dts/rockchip/px30-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-@@ -142,7 +142,6 @@ rk809: pmic@20 {
- 		interrupts = <7 IRQ_TYPE_LEVEL_LOW>;
+diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
+index fb3cf005cc90..0a7290ab718d 100644
+--- a/arch/arm/boot/dts/rk3036-kylin.dts
++++ b/arch/arm/boot/dts/rk3036-kylin.dts
+@@ -118,7 +118,6 @@ rk808: pmic@1b {
+ 		interrupts = <RK_PA2 IRQ_TYPE_LEVEL_LOW>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pmic_int &global_pwroff>;
+-		rockchip,system-power-controller;
+ 		wakeup-source;
+ 		#clock-cells = <1>;
+ 		clock-output-names = "xin32k", "rk808-clkout2";
+diff --git a/arch/arm/boot/dts/rk3188-px3-evb.dts b/arch/arm/boot/dts/rk3188-px3-evb.dts
+index c32e1d441cf7..334fa510995c 100644
+--- a/arch/arm/boot/dts/rk3188-px3-evb.dts
++++ b/arch/arm/boot/dts/rk3188-px3-evb.dts
+@@ -88,7 +88,6 @@ rk808: pmic@1c {
+ 		reg = <0x1c>;
+ 		interrupt-parent = <&gpio0>;
+ 		interrupts = <RK_PB3 IRQ_TYPE_LEVEL_LOW>;
+-		rockchip,system-power-controller;
+ 		wakeup-source;
+ 		#clock-cells = <1>;
+ 		clock-output-names = "xin32k", "rk808-clkout2";
+diff --git a/arch/arm/boot/dts/rk3288-evb-rk808.dts b/arch/arm/boot/dts/rk3288-evb-rk808.dts
+index 16788209625b..4b280c4b4850 100644
+--- a/arch/arm/boot/dts/rk3288-evb-rk808.dts
++++ b/arch/arm/boot/dts/rk3288-evb-rk808.dts
+@@ -17,7 +17,6 @@ rk808: pmic@1b {
+ 		interrupts = <RK_PA4 IRQ_TYPE_LEVEL_LOW>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pmic_int &global_pwroff>;
+-		rockchip,system-power-controller;
+ 		wakeup-source;
+ 		#clock-cells = <1>;
+ 		clock-output-names = "xin32k", "rk808-clkout2";
+diff --git a/arch/arm/boot/dts/rk3288-phycore-som.dtsi b/arch/arm/boot/dts/rk3288-phycore-som.dtsi
+index 77a47b9b756d..2076566a2c97 100644
+--- a/arch/arm/boot/dts/rk3288-phycore-som.dtsi
++++ b/arch/arm/boot/dts/rk3288-phycore-som.dtsi
+@@ -148,7 +148,6 @@ rk818: pmic@1c {
+ 		interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
  		pinctrl-names = "default";
  		pinctrl-0 = <&pmic_int>;
 -		rockchip,system-power-controller;
  		wakeup-source;
- 		#clock-cells = <0>;
- 		clock-output-names = "xin32k";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-index 76b49f573101..97fdf654fe7e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-@@ -151,7 +151,6 @@ pmic@18 {
- 		interrupts = <RK_PA6 IRQ_TYPE_LEVEL_LOW>;
+ 		#clock-cells = <1>;
+ 
+diff --git a/arch/arm/boot/dts/rk3288-popmetal.dts b/arch/arm/boot/dts/rk3288-popmetal.dts
+index 6a51940398b5..251668fee14d 100644
+--- a/arch/arm/boot/dts/rk3288-popmetal.dts
++++ b/arch/arm/boot/dts/rk3288-popmetal.dts
+@@ -168,7 +168,6 @@ rk808: pmic@1b {
+ 		interrupts = <RK_PA4 IRQ_TYPE_LEVEL_LOW>;
  		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>;
+ 		pinctrl-0 = <&pmic_int &global_pwroff>;
+-		rockchip,system-power-controller;
+ 		wakeup-source;
+ 		#clock-cells = <1>;
+ 		clock-output-names = "xin32k", "rk808-clkout2";
+diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
+index 0aeef23ca3db..15fc1caca852 100644
+--- a/arch/arm/boot/dts/rk3288-tinker.dtsi
++++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
+@@ -154,7 +154,6 @@ rk808: pmic@1b {
+ 				<&gpio0 12 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pmic_int &global_pwroff &dvs_1 &dvs_2>;
 -		rockchip,system-power-controller;
  		wakeup-source;
  
  		vcc1-supply = <&vcc_sys>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-index 49c4b96da3d4..f1db204e4e0c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-@@ -103,7 +103,6 @@ rk805: rk805@18 {
- 		#gpio-cells = <2>;
+diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
+index 7525e3dd1fc1..d7663ebc798f 100644
+--- a/arch/arm/boot/dts/rk3288-veyron.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
+@@ -221,7 +221,6 @@ rk808: pmic@1b {
+ 		interrupts = <RK_PA4 IRQ_TYPE_LEVEL_LOW>;
  		pinctrl-names = "default";
  		pinctrl-0 = <&pmic_int_l>;
 -		rockchip,system-power-controller;
  		wakeup-source;
+ 		#clock-cells = <1>;
  
- 		vcc1-supply = <&vcc_sys>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index 8d553c92182a..27318c1a57be 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -175,7 +175,6 @@ rk805: pmic@18 {
- 		#gpio-cells = <2>;
+diff --git a/arch/arm/boot/dts/rk3288-vyasa.dts b/arch/arm/boot/dts/rk3288-vyasa.dts
+index ba06e9f97ddc..98e48ecb473e 100644
+--- a/arch/arm/boot/dts/rk3288-vyasa.dts
++++ b/arch/arm/boot/dts/rk3288-vyasa.dts
+@@ -167,7 +167,6 @@ rk808: pmic@1b {
+ 		clock-output-names = "xin32k", "rk808-clkout2";
  		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>;
+ 		pinctrl-0 = <&pmic_int &global_pwroff>;
 -		rockchip,system-power-controller;
  		wakeup-source;
  
  		vcc1-supply = <&vcc_sys>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index 62936b432f9a..ccb0baa2eae9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -180,7 +180,6 @@ rk805: rk805@18 {
- 		#gpio-cells = <2>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>;
--		rockchip,system-power-controller;
- 		wakeup-source;
- 
- 		vcc1-supply = <&vcc_sys>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts b/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
-index 1d0778ff217c..af3ac89156fd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
-@@ -108,7 +108,6 @@ rk808: pmic@1b {
- 		pinctrl-0 = <&pmic_int>, <&pmic_sleep>;
+diff --git a/arch/arm/boot/dts/rv1108-elgin-r1.dts b/arch/arm/boot/dts/rv1108-elgin-r1.dts
+index b1db924710c8..39acc472774d 100644
+--- a/arch/arm/boot/dts/rv1108-elgin-r1.dts
++++ b/arch/arm/boot/dts/rv1108-elgin-r1.dts
+@@ -67,7 +67,6 @@ rk805: pmic@18 {
+ 		reg = <0x18>;
  		interrupt-parent = <&gpio0>;
- 		interrupts = <RK_PA5 IRQ_TYPE_LEVEL_LOW>;
+ 		interrupts = <RK_PB4 IRQ_TYPE_LEVEL_LOW>;
 -		rockchip,system-power-controller;
+ 
  		vcc1-supply = <&vcc_sys>;
  		vcc2-supply = <&vcc_sys>;
- 		vcc3-supply = <&vcc_sys>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi b/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi
-index e17311e09082..9d5d674735ea 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi
-@@ -174,7 +174,6 @@ rk808: pmic@1b {
- 		#clock-cells = <1>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>, <&pmic_sleep>;
+diff --git a/arch/arm/boot/dts/rv1108-evb.dts b/arch/arm/boot/dts/rv1108-evb.dts
+index 30f3d0470ad9..e21817237792 100644
+--- a/arch/arm/boot/dts/rv1108-evb.dts
++++ b/arch/arm/boot/dts/rv1108-evb.dts
+@@ -80,7 +80,6 @@ rk805: pmic@18 {
+ 		reg = <0x18>;
+ 		interrupt-parent = <&gpio0>;
+ 		interrupts = <RK_PB4 IRQ_TYPE_LEVEL_LOW>;
 -		rockchip,system-power-controller;
+ 
  		vcc1-supply = <&vcc_sys>;
  		vcc2-supply = <&vcc_sys>;
- 		vcc3-supply = <&vcc_sys>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts b/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
-index 231db0305a03..5c154b20d6d4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
-@@ -68,7 +68,6 @@ rk808: pmic@1b {
- 		interrupts = <RK_PA5 IRQ_TYPE_LEVEL_LOW>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int>, <&pmic_sleep>;
--		rockchip,system-power-controller;
- 		vcc1-supply = <&vcc_sys>;
- 		vcc2-supply = <&vcc_sys>;
- 		vcc3-supply = <&vcc_sys>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-index c706db0ee9ec..3df29a7c5091 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-@@ -278,7 +278,6 @@ rk808: pmic@1b {
- 		clock-output-names = "xin32k", "rk808-clkout2";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>;
--		rockchip,system-power-controller;
- 		wakeup-source;
- 
- 		vcc1-supply = <&vcc_sys>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-index c133e8d64b2a..174b4e34f23e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-@@ -225,7 +225,6 @@ rk808: pmic@1b {
- 		interrupts = <21 IRQ_TYPE_LEVEL_LOW>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>;
--		rockchip,system-power-controller;
- 		wakeup-source;
- 		#clock-cells = <1>;
- 		clock-output-names = "xin32k", "rtc_clko_wifi";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-index 4944d78a0a1c..f638d00adfd9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-@@ -301,7 +301,6 @@ rk808: pmic@1b {
- 		clock-output-names = "xin32k", "rk808-clkout2";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>;
--		rockchip,system-power-controller;
- 		wakeup-source;
- 
- 		vcc1-supply = <&vsys_3v3>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts b/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
-index 73be38a53796..5e5ed71d29cd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
-@@ -180,7 +180,6 @@ rk808: pmic@1b {
- 		clock-output-names = "xin32k", "rk808-clkout2";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>;
--		rockchip,system-power-controller;
- 		wakeup-source;
- 
- 		vcc1-supply = <&vcc5v0_sys>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-index b788ae4f47f0..f9f25a663d98 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-@@ -241,7 +241,6 @@ rk808: pmic@1b {
- 		interrupts = <21 IRQ_TYPE_LEVEL_LOW>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>;
--		rockchip,system-power-controller;
- 		wakeup-source;
- 
- 		vcc1-supply = <&vcc3v3_sys>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-index 0541dfce924d..f04a755416dd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-@@ -241,7 +241,6 @@ rk808: pmic@1b {
- 		clock-output-names = "rtc_clko_soc", "rtc_clko_wifi";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>;
--		rockchip,system-power-controller;
- 		wakeup-source;
- 
- 		vcc1-supply = <&vcc3v3_sys>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index c1edca3872c7..1f1998b80e7f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -185,7 +185,6 @@ rk808: pmic@1b {
- 		clock-output-names = "xin32k", "rk808-clkout2";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>;
--		rockchip,system-power-controller;
- 		wakeup-source;
- 
- 		vcc1-supply = <&vcc5v0_sys>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-index 7e07dae33d0f..0fabebd7244c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-@@ -260,7 +260,6 @@ rk808: pmic@1b {
- 		clock-output-names = "xin32k", "rk808-clkout2";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>;
--		rockchip,system-power-controller;
- 		wakeup-source;
- 
- 		vcc1-supply = <&vcc3v3_sys>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
-index 188d9dfc297b..3dbbb19b29bc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts
-@@ -197,7 +197,6 @@ rk808: pmic@1b {
- 		clock-output-names = "xin32k", "rk808-clkout2";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>;
--		rockchip,system-power-controller;
- 		wakeup-source;
- 
- 		vcc1-supply = <&vcc5v0_sys>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-index c7d48d41e184..a6592b22bbb4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-@@ -169,7 +169,6 @@ rk808: pmic@1b {
- 		interrupts = <21 IRQ_TYPE_LEVEL_LOW>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>;
--		rockchip,system-power-controller;
- 		wakeup-source;
- 		#clock-cells = <1>;
- 		clock-output-names = "xin32k", "rk808-clkout2";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-index 7f4b2eba31d4..2b6379c18153 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-@@ -259,7 +259,6 @@ rk808: pmic@1b {
- 		clock-output-names = "xin32k", "rk808-clkout2";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>;
--		rockchip,system-power-controller;
- 		wakeup-source;
- 
- 		vcc1-supply = <&vcc5v0_sys>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-index 1bc1579674e5..66aa905766e2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-@@ -228,7 +228,6 @@ rk808: pmic@1b {
- 		clock-output-names = "xin32k", "rk808-clkout2";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int_l>;
--		rockchip,system-power-controller;
- 		wakeup-source;
- 
- 		vcc1-supply = <&vcc_sys>;
 -- 
 2.24.0
