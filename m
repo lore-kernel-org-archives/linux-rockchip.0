@@ -1,14 +1,15 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 Subject: Re: [PATCH] arm64: dts: rockchip: Change RK809 PMIC interrupt polarity
-Date: Fri, 06 Dec 2019 18:09:03 +0100
-Message-ID: <22838931.IDdASOIBor@phil>
+Date: Fri, 6 Dec 2019 18:16:18 +0100
+Message-ID: <20191206181618.2dc472cb@xps13>
 References: <20191206154247.28057-1-miquel.raynal@bootlin.com>
  <1601413.9zADmrJRdp@phil> <20191206173453.1b2f7844@xps13>
+ <22838931.IDdASOIBor@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191206173453.1b2f7844@xps13>
+In-Reply-To: <22838931.IDdASOIBor@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,74 +19,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Miquel,
-
-Am Freitag, 6. Dezember 2019, 17:34:53 CET schrieb Miquel Raynal:
-> Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote on Fri, 06 Dec 2019 17:01:58
-> +0100:
-> > Am Freitag, 6. Dezember 2019, 16:52:50 CET schrieb Miquel Raynal:
-> > > Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote on Fri, 06 Dec 2019 16:48:00
-> > > +0100:
-> > > > Am Freitag, 6. Dezember 2019, 16:42:47 CET schrieb Miquel Raynal:  
-> > > > > PMIC interrupt can be active high or active low depending on BIT(1) of
-> > > > > the GPIO_INT_CFG pin. The default is 0x1, which means active
-> > > > > high. Change the polarity in the device tree to reflect the default
-> > > > > state.
-> > > > > 
-> > > > > Without this and with the current code base, the interrupt never stops
-> > > > > triggering while the MFD driver does not see anything to
-> > > > > check/clear/mask so after 100000 spurious IRQs, the kernel simply
-> > > > > desactivates the interrupt:
-> > > > > 
-> > > > >         irq 36: nobody cared (try booting with the "irqpoll" option)
-> > > > >         [...]
-> > > > >         handlers:
-> > > > >         [<(____ptrval____)>] irq_default_primary_handler threaded
-> > > > > 	[<(____ptrval____)>] regmap_irq_thread
-> > > > >         Disabling IRQ #36
-> > > > > 
-> > > > > Signed-off-by: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>    
-> > > > 
-> > > > *coughs slightly*
-> > > > 
-> > > > mfd: rk808: Set RK817 interrupt polarity to low
-> > > > https://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git/commit/drivers/mfd/rk808.c?h=for-mfd-next&id=dbd16ef53487084816a20f662423ab543a75fc83
-> > > > 
-> > > > Should be in the current merge window already I guess ;-)  
-> > > 
-> > > This time I swear I checked your tree. But this time we did not ended
-> > > with the same fix so I missed this one *again* :)  
-> > 
-> > No worries ... I guess I should check where I hid additional patches ;-)
-> > 
-> > So right now px30 stuff is in the trees:
-> > - mine
-> > - mfd
-> > - phy (first round of dsi phy, refinement pending on the list)
-> > - nvmem (for the otp controller)
-> > - drm (drm/rockchip: vop: add the definition of dclk_pol)
-> > - clk
-> > 
-> > and pending on lists:
-> > - drm (dsi support + timings)
-> > - phy (refinement as mentioned above)
-> > 
-> > not submitted yet but planning to get this done this weekend:
-> > - panel driver for px30-evb
-> > - dsi devicetree stuff
-> 
-> Thank you very much for the detailed list! I will soon work on the
-> PMIC audio support and on secure boot, do not hesitate to ping me if
-> you see this kind of work coming on the mailing list!
-
-I think it's only us (you, Paul and me) working on px30 mainline stuff,
-right now so it's only us that should probably coordinate :-)
-
-Secureboot also is of interest to my project, so a Cc would be appreciated ;-)
-
-
-Heiko
+SGkgSGVpa28sCgpIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZSBvbiBGcmks
+IDA2IERlYyAyMDE5IDE4OjA5OjAzCiswMTAwOgoKPiBIaSBNaXF1ZWwsCj4gCj4gQW0gRnJlaXRh
+ZywgNi4gRGV6ZW1iZXIgMjAxOSwgMTc6MzQ6NTMgQ0VUIHNjaHJpZWIgTWlxdWVsIFJheW5hbDoK
+PiA+IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+IHdyb3RlIG9uIEZyaSwgMDYgRGVj
+IDIwMTkgMTc6MDE6NTgKPiA+ICswMTAwOiAgCj4gPiA+IEFtIEZyZWl0YWcsIDYuIERlemVtYmVy
+IDIwMTksIDE2OjUyOjUwIENFVCBzY2hyaWViIE1pcXVlbCBSYXluYWw6ICAKPiA+ID4gPiBIZWlr
+byBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZSBvbiBGcmksIDA2IERlYyAyMDE5IDE2
+OjQ4OjAwCj4gPiA+ID4gKzAxMDA6ICAKPiA+ID4gPiA+IEFtIEZyZWl0YWcsIDYuIERlemVtYmVy
+IDIwMTksIDE2OjQyOjQ3IENFVCBzY2hyaWViIE1pcXVlbCBSYXluYWw6ICAgIAo+ID4gPiA+ID4g
+PiBQTUlDIGludGVycnVwdCBjYW4gYmUgYWN0aXZlIGhpZ2ggb3IgYWN0aXZlIGxvdyBkZXBlbmRp
+bmcgb24gQklUKDEpIG9mCj4gPiA+ID4gPiA+IHRoZSBHUElPX0lOVF9DRkcgcGluLiBUaGUgZGVm
+YXVsdCBpcyAweDEsIHdoaWNoIG1lYW5zIGFjdGl2ZQo+ID4gPiA+ID4gPiBoaWdoLiBDaGFuZ2Ug
+dGhlIHBvbGFyaXR5IGluIHRoZSBkZXZpY2UgdHJlZSB0byByZWZsZWN0IHRoZSBkZWZhdWx0Cj4g
+PiA+ID4gPiA+IHN0YXRlLgo+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gV2l0aG91dCB0aGlzIGFu
+ZCB3aXRoIHRoZSBjdXJyZW50IGNvZGUgYmFzZSwgdGhlIGludGVycnVwdCBuZXZlciBzdG9wcwo+
+ID4gPiA+ID4gPiB0cmlnZ2VyaW5nIHdoaWxlIHRoZSBNRkQgZHJpdmVyIGRvZXMgbm90IHNlZSBh
+bnl0aGluZyB0bwo+ID4gPiA+ID4gPiBjaGVjay9jbGVhci9tYXNrIHNvIGFmdGVyIDEwMDAwMCBz
+cHVyaW91cyBJUlFzLCB0aGUga2VybmVsIHNpbXBseQo+ID4gPiA+ID4gPiBkZXNhY3RpdmF0ZXMg
+dGhlIGludGVycnVwdDoKPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+ICAgICAgICAgaXJxIDM2OiBu
+b2JvZHkgY2FyZWQgKHRyeSBib290aW5nIHdpdGggdGhlICJpcnFwb2xsIiBvcHRpb24pCj4gPiA+
+ID4gPiA+ICAgICAgICAgWy4uLl0KPiA+ID4gPiA+ID4gICAgICAgICBoYW5kbGVyczoKPiA+ID4g
+PiA+ID4gICAgICAgICBbPChfX19fcHRydmFsX19fXyk+XSBpcnFfZGVmYXVsdF9wcmltYXJ5X2hh
+bmRsZXIgdGhyZWFkZWQKPiA+ID4gPiA+ID4gCVs8KF9fX19wdHJ2YWxfX19fKT5dIHJlZ21hcF9p
+cnFfdGhyZWFkCj4gPiA+ID4gPiA+ICAgICAgICAgRGlzYWJsaW5nIElSUSAjMzYKPiA+ID4gPiA+
+ID4gCj4gPiA+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IE1pcXVlbCBSYXluYWwgPG1pcXVlbC5yYXlu
+YWxAYm9vdGxpbi5jb20+ICAgICAgCj4gPiA+ID4gPiAKPiA+ID4gPiA+ICpjb3VnaHMgc2xpZ2h0
+bHkqCj4gPiA+ID4gPiAKPiA+ID4gPiA+IG1mZDogcms4MDg6IFNldCBSSzgxNyBpbnRlcnJ1cHQg
+cG9sYXJpdHkgdG8gbG93Cj4gPiA+ID4gPiBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20v
+bGludXgva2VybmVsL2dpdC9sZWUvbWZkLmdpdC9jb21taXQvZHJpdmVycy9tZmQvcms4MDguYz9o
+PWZvci1tZmQtbmV4dCZpZD1kYmQxNmVmNTM0ODcwODQ4MTZhMjBmNjYyNDIzYWI1NDNhNzVmYzgz
+Cj4gPiA+ID4gPiAKPiA+ID4gPiA+IFNob3VsZCBiZSBpbiB0aGUgY3VycmVudCBtZXJnZSB3aW5k
+b3cgYWxyZWFkeSBJIGd1ZXNzIDstKSAgICAKPiA+ID4gPiAKPiA+ID4gPiBUaGlzIHRpbWUgSSBz
+d2VhciBJIGNoZWNrZWQgeW91ciB0cmVlLiBCdXQgdGhpcyB0aW1lIHdlIGRpZCBub3QgZW5kZWQK
+PiA+ID4gPiB3aXRoIHRoZSBzYW1lIGZpeCBzbyBJIG1pc3NlZCB0aGlzIG9uZSAqYWdhaW4qIDop
+ICAgIAo+ID4gPiAKPiA+ID4gTm8gd29ycmllcyAuLi4gSSBndWVzcyBJIHNob3VsZCBjaGVjayB3
+aGVyZSBJIGhpZCBhZGRpdGlvbmFsIHBhdGNoZXMgOy0pCj4gPiA+IAo+ID4gPiBTbyByaWdodCBu
+b3cgcHgzMCBzdHVmZiBpcyBpbiB0aGUgdHJlZXM6Cj4gPiA+IC0gbWluZQo+ID4gPiAtIG1mZAo+
+ID4gPiAtIHBoeSAoZmlyc3Qgcm91bmQgb2YgZHNpIHBoeSwgcmVmaW5lbWVudCBwZW5kaW5nIG9u
+IHRoZSBsaXN0KQo+ID4gPiAtIG52bWVtIChmb3IgdGhlIG90cCBjb250cm9sbGVyKQo+ID4gPiAt
+IGRybSAoZHJtL3JvY2tjaGlwOiB2b3A6IGFkZCB0aGUgZGVmaW5pdGlvbiBvZiBkY2xrX3BvbCkK
+PiA+ID4gLSBjbGsKPiA+ID4gCj4gPiA+IGFuZCBwZW5kaW5nIG9uIGxpc3RzOgo+ID4gPiAtIGRy
+bSAoZHNpIHN1cHBvcnQgKyB0aW1pbmdzKQo+ID4gPiAtIHBoeSAocmVmaW5lbWVudCBhcyBtZW50
+aW9uZWQgYWJvdmUpCj4gPiA+IAo+ID4gPiBub3Qgc3VibWl0dGVkIHlldCBidXQgcGxhbm5pbmcg
+dG8gZ2V0IHRoaXMgZG9uZSB0aGlzIHdlZWtlbmQ6Cj4gPiA+IC0gcGFuZWwgZHJpdmVyIGZvciBw
+eDMwLWV2Ygo+ID4gPiAtIGRzaSBkZXZpY2V0cmVlIHN0dWZmICAKPiA+IAo+ID4gVGhhbmsgeW91
+IHZlcnkgbXVjaCBmb3IgdGhlIGRldGFpbGVkIGxpc3QhIEkgd2lsbCBzb29uIHdvcmsgb24gdGhl
+Cj4gPiBQTUlDIGF1ZGlvIHN1cHBvcnQgYW5kIG9uIHNlY3VyZSBib290LCBkbyBub3QgaGVzaXRh
+dGUgdG8gcGluZyBtZSBpZgo+ID4geW91IHNlZSB0aGlzIGtpbmQgb2Ygd29yayBjb21pbmcgb24g
+dGhlIG1haWxpbmcgbGlzdCEgIAo+IAo+IEkgdGhpbmsgaXQncyBvbmx5IHVzICh5b3UsIFBhdWwg
+YW5kIG1lKSB3b3JraW5nIG9uIHB4MzAgbWFpbmxpbmUgc3R1ZmYsCj4gcmlnaHQgbm93IHNvIGl0
+J3Mgb25seSB1cyB0aGF0IHNob3VsZCBwcm9iYWJseSBjb29yZGluYXRlIDotKQo+IAo+IFNlY3Vy
+ZWJvb3QgYWxzbyBpcyBvZiBpbnRlcmVzdCB0byBteSBwcm9qZWN0LCBzbyBhIENjIHdvdWxkIGJl
+IGFwcHJlY2lhdGVkIDstKQo+IAoKU3VyZSEgSXQncyBvbiBteSBEZWNlbWJlci9KYW51YXJ5IHRh
+c2sgbGlzdC4KCkJUVywgdGhhbmtzIGZvciBhbGwgdGhlIHBhdGNoZXMgeW91IGFscmVhZHkgY29u
+dHJpYnV0ZWQhCgpDaGVlcnMsCk1pcXXDqGwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
