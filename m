@@ -1,63 +1,38 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 2/3] arm64: dts: rockchip: add the gpu for px30
-Date: Sun,  8 Dec 2019 15:55:07 +0100
-Message-ID: <20191208145508.3124-2-heiko@sntech.de>
-References: <20191208145508.3124-1-heiko@sntech.de>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+From: Marcel Holtmann <marcel@holtmann.org>
+Subject: Re: [PATCH v2 1/1] ARM: dts: rockchip: Add brcm bluetooth for
+ rk3288-veyron
+Date: Mon, 9 Dec 2019 00:48:31 +0100
+Message-ID: <61639BAF-5AA0-4264-906F-E24E2A30088D@holtmann.org>
+References: <20191127223909.253873-1-abhishekpandit@chromium.org>
+ <20191127223909.253873-2-abhishekpandit@chromium.org>
+Mime-Version: 1.0 (Mac OS X Mail 13.0 \(3601.0.10\))
+Content-Type: text/plain;
+        charset=us-ascii
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191208145508.3124-1-heiko@sntech.de>
+In-Reply-To: <20191127223909.253873-2-abhishekpandit@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, christoph.muellner@theobroma-systems.com, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+To: Abhishek Pandit-Subedi <abhishekpandit@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>, BlueZ <linux-bluetooth@vger.kernel.org>, linux-rockchip@lists.infradead.org, devicetree <devicetree@vger.kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Hi Abhishek,
 
-The px30 contains a Mali Bifrost gpu, so add the necessary core node
-for it with interrupts and powerdomains.
+> This enables the Broadcom uart bluetooth driver on uart0 and gives it
+> ownership of its gpios. In order to use this, you must enable the
+> following kconfig options:
+> - CONFIG_BT_HCIUART_BCM
+> - CONFIG_SERIAL_DEV
+> 
+> This is applicable to rk3288-veyron series boards that use the bcm43540
+> wifi+bt chips.
+> 
+> As part of this change, also refactor the pinctrl across the various
+> boards. All the boards using broadcom bluetooth shouldn't touch the
+> bt_dev_wake pin.
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
----
- arch/arm64/boot/dts/rockchip/px30.dtsi | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+so have these changes being merged?
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index 9a0f77ea4a78..c31423f36192 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -210,6 +210,12 @@ map0 {
- 					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
- 					contribution = <4096>;
- 				};
-+
-+				map1 {
-+					trip = <&target>;
-+					cooling-device = <&gpu THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+					contribution = <4096>;
-+				};
- 			};
- 		};
- 
-@@ -924,6 +930,19 @@ emmc: dwmmc@ff390000 {
- 		status = "disabled";
- 	};
- 
-+	gpu: gpu@ff400000 {
-+		compatible = "rockchip,px30-mali", "arm,mali-bifrost";
-+		reg = <0x0 0xff400000 0x0 0x4000>;
-+		interrupts = <GIC_SPI 47 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "job", "mmu", "gpu";
-+		clocks = <&cru SCLK_GPU>;
-+		#cooling-cells = <2>;
-+		power-domains = <&power PX30_PD_GPU>;
-+		status = "disabled";
-+	};
-+
- 	vopb: vop@ff460000 {
- 		compatible = "rockchip,px30-vop-big";
- 		reg = <0x0 0xff460000 0x0 0xefc>;
--- 
-2.24.0
+Regards
+
+Marcel
