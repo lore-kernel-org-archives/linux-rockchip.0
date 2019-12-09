@@ -1,13 +1,14 @@
 From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [RFCv1 0/8] RK3399 clean shutdown issue
-Date: Mon, 9 Dec 2019 13:29:08 +0000
-Message-ID: <724aa7db-3838-16f9-d344-1789ae2a5746@arm.com>
+Subject: Re: [RFCv1 2/8] mfd: rk808: use syscore for RK805 PMIC shutdown
+Date: Mon, 9 Dec 2019 13:34:09 +0000
+Message-ID: <f1327196-66c9-d152-c0ca-914d43d6f55e@arm.com>
 References: <20191206184536.2507-1-linux.amoon@gmail.com>
+ <20191206184536.2507-3-linux.amoon@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191206184536.2507-1-linux.amoon@gmail.com>
+In-Reply-To: <20191206184536.2507-3-linux.amoon@gmail.com>
 Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
 To: Anand Moon <linux.amoon@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Daniel Schultz <d.schultz@phytec.de>
@@ -15,91 +16,83 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rock
 List-Id: linux-rockchip.vger.kernel.org
 
 On 06/12/2019 6:45 pm, Anand Moon wrote:
-> Most of the RK3399 SBC boards do not perform clean
-> shutdown and clean reboot.
+> Use common syscore_shutdown for RK805 PMIC to do
+> clean I2C shutdown, drop the unused pm_pwroff_prep_fn
+> and pm_pwroff_fn function pointers.
 
-FWIW reboot problems on RK3399 have been tracked down to issues in 
-upstream ATF, and are unrelated to the PMIC.
+Coincidentally, I've also been looking at RK805 for the sake of trying 
+to get suspend to behave on my RK3328 box, and I've ended up with some 
+slightly different cleanup patches - I'll tidy them up and post them for 
+comparison as soon as I can.
 
-> These patches try to help resolve the issue with proper
-> shutdown by turning off the PMIC.
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+> ---
+>   drivers/mfd/rk808.c | 33 +++++++++++++++++----------------
+>   1 file changed, 17 insertions(+), 16 deletions(-)
+> 
+> diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+> index e637f5bcc8bb..713d989064ba 100644
+> --- a/drivers/mfd/rk808.c
+> +++ b/drivers/mfd/rk808.c
+> @@ -467,16 +467,6 @@ static void rk808_update_bits(unsigned int reg, unsigned int mask,
+>   			"can't write to register 0x%x: %x!\n", reg, ret);
+>   }
+>   
+> -static void rk805_device_shutdown(void)
+> -{
+> -	rk808_update_bits(RK805_DEV_CTRL_REG, DEV_OFF, DEV_OFF);
+> -}
+> -
+> -static void rk805_device_shutdown_prepare(void)
+> -{
+> -	rk808_update_bits(RK805_GPIO_IO_POL_REG, SLP_SD_MSK, SHUTDOWN_FUN);
+> -}
+> -
+>   static void rk808_device_shutdown(void)
+>   {
+>   	rk808_update_bits(RK808_DEVCTRL_REG, DEV_OFF_RST, DEV_OFF_RST);
+> @@ -491,10 +481,23 @@ static void rk8xx_syscore_shutdown(void)
+>   {
+>   	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
+>   
+> -	if (system_state == SYSTEM_POWER_OFF &&
+> -	    (rk808->variant == RK809_ID || rk808->variant == RK817_ID)) {
+> -		rk808_update_bits(RK817_SYS_CFG(3), RK817_SLPPIN_FUNC_MSK,
+> -				SLPPIN_DN_FUN);
+> +	if (system_state == SYSTEM_POWER_OFF) {
+> +		dev_info(&rk808_i2c_client->dev, "System Shutdown Event\n");
+> +
+> +		switch (rk808->variant) {
+> +		case RK805_ID:
+> +			rk808_update_bits(RK805_GPIO_IO_POL_REG,
+> +					SLP_SD_MSK, SHUTDOWN_FUN);
+> +			rk808_update_bits(RK805_DEV_CTRL_REG, DEV_OFF, DEV_OFF);
 
-As mentioned elsewhere[1], although this is what the BSP kernel seems to 
-do, and in practice it's unlikely to matter for the majority of devboard 
-users like you and me, I still feel a bit uncomfortable with this 
-solution for systems using ATF as in principle the secure world might 
-want to know about orderly shutdowns, and this effectively makes every 
-shutdown an unexpected power loss from secure software's point of view.
+Why this change? Shutdown via the SLEEP pin is working just fine on my 
+box :/
 
 Robin.
 
-[1] 
-http://lists.infradead.org/pipermail/linux-rockchip/2019-December/028183.html
-
-> For reference
-> RK805 PMCI data sheet:
-> [0] http://rockchip.fr/RK805%20datasheet%20V1.3.pdf
-> RK808 PMIC data sheet:
-> [1] http://rockchip.fr/RK808%20datasheet%20V1.4.pdf
-> RK817 PMIC data sheet:
-> [2] http://rockchip.fr/RK817%20datasheet%20V1.01.pdf
-> RK818 PMIC data sheet:
-> [3] http://rockchip.fr/RK818%20datasheet%20V1.0.pdf
-> 
-> Reboot issue:
-> My guess is that we need to some proper sequence of
-> setting to PMCI to perform clean.
-> 
-> If you have any input please share them.
-> 
-> Tested on SBC
-> Rock960 Model A
-> Odroid N1
-> Rock64
-> 
-> -Anand Moon
-> 
-> Anand Moon (8):
->    mfd: rk808: Refactor shutdown functions
->    mfd: rk808: use syscore for RK805 PMIC shutdown
->    mfd: rk808: use syscore for RK808 PMIC shutdown
->    mfd: rk808: use syscore for RK818 PMIC shutdown
->    mfd: rk808: cleanup unused function pointer
->    mfd: rk808: use common syscore for all PMCI for clean shutdown
->    arm64: rockchip: drop unused field from rk8xx i2c node
->    arm: rockchip: drop unused field from rk8xx i2c node
-> 
->   arch/arm/boot/dts/rk3036-kylin.dts            |   1 -
->   arch/arm/boot/dts/rk3188-px3-evb.dts          |   1 -
->   arch/arm/boot/dts/rk3288-evb-rk808.dts        |   1 -
->   arch/arm/boot/dts/rk3288-phycore-som.dtsi     |   1 -
->   arch/arm/boot/dts/rk3288-popmetal.dts         |   1 -
->   arch/arm/boot/dts/rk3288-tinker.dtsi          |   1 -
->   arch/arm/boot/dts/rk3288-veyron.dtsi          |   1 -
->   arch/arm/boot/dts/rk3288-vyasa.dts            |   1 -
->   arch/arm/boot/dts/rv1108-elgin-r1.dts         |   1 -
->   arch/arm/boot/dts/rv1108-evb.dts              |   1 -
->   arch/arm64/boot/dts/rockchip/px30-evb.dts     |   1 -
->   arch/arm64/boot/dts/rockchip/rk3328-a1.dts    |   1 -
->   arch/arm64/boot/dts/rockchip/rk3328-evb.dts   |   1 -
->   .../arm64/boot/dts/rockchip/rk3328-roc-cc.dts |   1 -
->   .../arm64/boot/dts/rockchip/rk3328-rock64.dts |   1 -
->   .../boot/dts/rockchip/rk3368-geekbox.dts      |   1 -
->   arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi |   1 -
->   .../boot/dts/rockchip/rk3368-px5-evb.dts      |   1 -
->   .../boot/dts/rockchip/rk3399-firefly.dts      |   1 -
->   .../boot/dts/rockchip/rk3399-hugsun-x99.dts   |   1 -
->   .../boot/dts/rockchip/rk3399-khadas-edge.dtsi |   1 -
->   .../boot/dts/rockchip/rk3399-leez-p710.dts    |   1 -
->   .../boot/dts/rockchip/rk3399-nanopi4.dtsi     |   1 -
->   .../boot/dts/rockchip/rk3399-orangepi.dts     |   1 -
->   arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi |   1 -
->   .../boot/dts/rockchip/rk3399-roc-pc.dtsi      |   1 -
->   .../boot/dts/rockchip/rk3399-rock-pi-4.dts    |   1 -
->   .../boot/dts/rockchip/rk3399-rock960.dtsi     |   1 -
->   .../boot/dts/rockchip/rk3399-rockpro64.dts    |   1 -
->   .../boot/dts/rockchip/rk3399-sapphire.dtsi    |   1 -
->   drivers/mfd/rk808.c                           | 144 +++++-------------
->   include/linux/mfd/rk808.h                     |   2 -
->   32 files changed, 42 insertions(+), 134 deletions(-)
+> +			break;
+> +		case RK809_ID:
+> +		case RK817_ID:
+> +			rk808_update_bits(RK817_SYS_CFG(3),
+> +					RK817_SLPPIN_FUNC_MSK, SLPPIN_DN_FUN);
+> +			break;
+> +		default:
+> +			break;
+> +		}
+>   	}
+>   }
+>   
+> @@ -565,8 +568,6 @@ static int rk808_probe(struct i2c_client *client,
+>   		nr_pre_init_regs = ARRAY_SIZE(rk805_pre_init_reg);
+>   		cells = rk805s;
+>   		nr_cells = ARRAY_SIZE(rk805s);
+> -		rk808->pm_pwroff_fn = rk805_device_shutdown;
+> -		rk808->pm_pwroff_prep_fn = rk805_device_shutdown_prepare;
+>   		break;
+>   	case RK808_ID:
+>   		rk808->regmap_cfg = &rk808_regmap_config;
 > 
