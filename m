@@ -1,96 +1,62 @@
-From: Anand Moon <linux.amoon@gmail.com>
-Subject: Re: [RFCv1 2/8] mfd: rk808: use syscore for RK805 PMIC shutdown
-Date: Mon, 9 Dec 2019 21:08:31 +0530
-Message-ID: <CANAwSgTSDX=36eF3UxVyVykguRjd90=x4iT27s=nJg5ezG_V7w@mail.gmail.com>
-References: <20191206184536.2507-1-linux.amoon@gmail.com> <20191206184536.2507-3-linux.amoon@gmail.com>
- <f1327196-66c9-d152-c0ca-914d43d6f55e@arm.com>
+From: Alex Williamson <alex.williamson-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [Question] rk3399 vfio-pci/sr-iov support
+Date: Mon, 9 Dec 2019 10:05:09 -0700
+Message-ID: <20191209100509.5cb950ac@x1.home>
+References: <CAMdYzYoPXWbv4zXet6c9JQEMbqcJi6ZEOui_n82NVmrqNLy_pw@mail.gmail.com>
+ <b597b9a6-870a-8fbd-6490-59734c04367f@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f1327196-66c9-d152-c0ca-914d43d6f55e@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Daniel Schultz <d.schultz@phytec.de>, devicetree <devicetree@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, Linux Kernel <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <b597b9a6-870a-8fbd-6490-59734c04367f-5wv7dgnIgG8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Robin,
+On Mon, 9 Dec 2019 14:07:02 +0000
+Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org> wrote:
 
-On Mon, 9 Dec 2019 at 19:04, Robin Murphy <robin.murphy@arm.com> wrote:
->
-> On 06/12/2019 6:45 pm, Anand Moon wrote:
-> > Use common syscore_shutdown for RK805 PMIC to do
-> > clean I2C shutdown, drop the unused pm_pwroff_prep_fn
-> > and pm_pwroff_fn function pointers.
->
-> Coincidentally, I've also been looking at RK805 for the sake of trying
-> to get suspend to behave on my RK3328 box, and I've ended up with some
-> slightly different cleanup patches - I'll tidy them up and post them for
-> comparison as soon as I can.
+> On 09/12/2019 1:28 pm, Peter Geis wrote:
+> > Good Morning,
+> > 
+> > I'm back with more pcie fun on the rk3399.
+> > I'm trying to get pcie passthrough working for a vm on the rk3399, and
+> > have encountered some roadblocks.
+> > 
+> > First, vfio-pci doesn't work on the rk3399, as the pcie controller
+> > doesn't bind explicitly to a iommu.
+> > [37528.138212] vfio-pci 0000:01:00.0: assign IRQ: got 226
+> > [37528.138254] vfio-pci: probe of 0000:01:00.0 failed with error -22
+> > 
+> > # find /sys/kernel/iommu_groups/ -type l
+> > /sys/kernel/iommu_groups/1/devices/ff8f0000.vop
+> > /sys/kernel/iommu_groups/2/devices/ff900000.vop
+> > 
+> > # virsh start openwrt
+> > error: Failed to start domain openwrt
+> > error: internal error: Process exited prior to exec: libvirt:  error :
+> > internal error: Invalid device 0000:01:00.0 iommu_group file
+> > /sys/bus/pci/devices/0000:01:00.0/iommu_group is not a symlink  
+> 
+> That much I can help with somewhat: the major impediment is that RK3399 
+> doesn't have an IOMMU in front of PCIe. As far as I'm aware your only 
+> option is to resort to the "here be dragons" CONFIG_VFIO_NOIOMMU mode 
+> (which I don't know an awful lot about beyond that it's a thing).
 
-No issue if their is better clean approach, I will definitely test that ser=
-ies.
->
-> > Cc: Heiko Stuebner <heiko@sntech.de>
-> > Signed-off-by: Anand Moon <linux.amoon@gmail.com>
-> > ---
-> >   drivers/mfd/rk808.c | 33 +++++++++++++++++----------------
-> >   1 file changed, 17 insertions(+), 16 deletions(-)
-> >
-> > diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
-> > index e637f5bcc8bb..713d989064ba 100644
-> > --- a/drivers/mfd/rk808.c
-> > +++ b/drivers/mfd/rk808.c
-> > @@ -467,16 +467,6 @@ static void rk808_update_bits(unsigned int reg, un=
-signed int mask,
-> >                       "can't write to register 0x%x: %x!\n", reg, ret);
-> >   }
-> >
-> > -static void rk805_device_shutdown(void)
-> > -{
-> > -     rk808_update_bits(RK805_DEV_CTRL_REG, DEV_OFF, DEV_OFF);
-> > -}
-> > -
-> > -static void rk805_device_shutdown_prepare(void)
-> > -{
-> > -     rk808_update_bits(RK805_GPIO_IO_POL_REG, SLP_SD_MSK, SHUTDOWN_FUN=
-);
-> > -}
-> > -
-> >   static void rk808_device_shutdown(void)
-> >   {
-> >       rk808_update_bits(RK808_DEVCTRL_REG, DEV_OFF_RST, DEV_OFF_RST);
-> > @@ -491,10 +481,23 @@ static void rk8xx_syscore_shutdown(void)
-> >   {
-> >       struct rk808 *rk808 =3D i2c_get_clientdata(rk808_i2c_client);
-> >
-> > -     if (system_state =3D=3D SYSTEM_POWER_OFF &&
-> > -         (rk808->variant =3D=3D RK809_ID || rk808->variant =3D=3D RK81=
-7_ID)) {
-> > -             rk808_update_bits(RK817_SYS_CFG(3), RK817_SLPPIN_FUNC_MSK=
-,
-> > -                             SLPPIN_DN_FUN);
-> > +     if (system_state =3D=3D SYSTEM_POWER_OFF) {
-> > +             dev_info(&rk808_i2c_client->dev, "System Shutdown Event\n=
-");
-> > +
-> > +             switch (rk808->variant) {
-> > +             case RK805_ID:
-> > +                     rk808_update_bits(RK805_GPIO_IO_POL_REG,
-> > +                                     SLP_SD_MSK, SHUTDOWN_FUN);
-> > +                     rk808_update_bits(RK805_DEV_CTRL_REG, DEV_OFF, DE=
-V_OFF);
->
-> Why this change? Shutdown via the SLEEP pin is working just fine on my
-> box :/
->
-> Robin.
+And it's a thing that's really only useful if your motivation is to run
+something like DPDK in the host and you're not concerned about
+isolation between userspace drivers and the host kernel, and you don't
+mind tainting the kernel.  It's not useful for things like assigning a
+device to a VM as we can't readily do that without an IOMMU for
+translation.  Thanks,
 
-As per RK-805 datasheet [0] below.
-For clean poweroff we need to set in DEV_CTRL_REG reg
-Bit 0 DEV_OFF: write =E2=80=9C1=E2=80=9D to turn down the PMU.
-
-[0] http://files.pine64.org/doc/rock64/Rockchip_RK805_Datasheet_V1.1%C2%A02=
-0160921.pdf
-
--Anand
+Alex
