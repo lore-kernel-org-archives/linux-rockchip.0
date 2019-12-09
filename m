@@ -1,71 +1,49 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] mfd: rk808: Always use poweroff when requested
-Date: Mon, 09 Dec 2019 13:32:38 +0100
-Message-ID: <6655566.N6zq5d2jo2@diego>
-References: <20191209115746.12953-1-smoch@web.de>
+From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [Question] rk3399 vfio-pci/sr-iov support
+Date: Mon, 9 Dec 2019 08:28:43 -0500
+Message-ID: <CAMdYzYoPXWbv4zXet6c9JQEMbqcJi6ZEOui_n82NVmrqNLy_pw@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191209115746.12953-1-smoch@web.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Soeren Moch <smoch@web.de>
-Cc: Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 9. Dezember 2019, 12:57:46 CET schrieb Soeren Moch:
-> With the device tree property "rockchip,system-power-controller" we
-> explicitly request to use this PMIC to power off the system. So always
-> register our poweroff function, even if some other handler (probably
-> PSCI poweroff) was registered before.
-> 
-> Signed-off-by: Soeren Moch <smoch@web.de>
+Good Morning,
 
-Sounds very sensible
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+I'm back with more pcie fun on the rk3399.
+I'm trying to get pcie passthrough working for a vm on the rk3399, and
+have encountered some roadblocks.
 
+First, vfio-pci doesn't work on the rk3399, as the pcie controller
+doesn't bind explicitly to a iommu.
+[37528.138212] vfio-pci 0000:01:00.0: assign IRQ: got 226
+[37528.138254] vfio-pci: probe of 0000:01:00.0 failed with error -22
 
-> ---
-> Cc: Lee Jones <lee.jones@linaro.org>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-kernel@vger.kernel.org
-> ---
->  drivers/mfd/rk808.c | 11 ++---------
->  1 file changed, 2 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
-> index a69a6742ecdc..616e44e7ef98 100644
-> --- a/drivers/mfd/rk808.c
-> +++ b/drivers/mfd/rk808.c
-> @@ -550,7 +550,7 @@ static int rk808_probe(struct i2c_client *client,
->  	const struct mfd_cell *cells;
->  	int nr_pre_init_regs;
->  	int nr_cells;
-> -	int pm_off = 0, msb, lsb;
-> +	int msb, lsb;
->  	unsigned char pmic_id_msb, pmic_id_lsb;
->  	int ret;
->  	int i;
-> @@ -674,16 +674,9 @@ static int rk808_probe(struct i2c_client *client,
->  		goto err_irq;
->  	}
-> 
-> -	pm_off = of_property_read_bool(np,
-> -				"rockchip,system-power-controller");
-> -	if (pm_off && !pm_power_off) {
-> +	if (of_property_read_bool(np, "rockchip,system-power-controller")) {
->  		rk808_i2c_client = client;
->  		pm_power_off = rk808->pm_pwroff_fn;
-> -	}
-> -
-> -	if (pm_off && !pm_power_off_prepare) {
-> -		if (!rk808_i2c_client)
-> -			rk808_i2c_client = client;
->  		pm_power_off_prepare = rk808->pm_pwroff_prep_fn;
->  	}
-> 
-> --
-> 2.17.1
-> 
+# find /sys/kernel/iommu_groups/ -type l
+/sys/kernel/iommu_groups/1/devices/ff8f0000.vop
+/sys/kernel/iommu_groups/2/devices/ff900000.vop
+
+# virsh start openwrt
+error: Failed to start domain openwrt
+error: internal error: Process exited prior to exec: libvirt:  error :
+internal error: Invalid device 0000:01:00.0 iommu_group file
+/sys/bus/pci/devices/0000:01:00.0/iommu_group is not a symlink
+
+Second, sr-iov support is broken.
+root@rockpro64:/sys/bus/pci/devices/0000:01:00.0# echo 1 > sriov_numvfs
+bash: echo: write error: Input/output error
+[37352.907558] pci 0000:01:10.0: [8086:1520] type 7f class 0xffffff
+[37352.907578] pci 0000:01:10.0: unknown header type 7f, ignoring device
+
+Do any of y'all have some insight into these issues?
