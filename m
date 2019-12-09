@@ -1,129 +1,82 @@
-From: Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [RFCv1 0/8] RK3399 clean shutdown issue
-Date: Mon, 9 Dec 2019 08:37:28 -0500
-Message-ID: <CAMdYzYoZY5gau=DGtPhk9CPV_WcyM4wjR9o+rPyaQfOzoy2Y=Q@mail.gmail.com>
-References: <20191206184536.2507-1-linux.amoon@gmail.com> <724aa7db-3838-16f9-d344-1789ae2a5746@arm.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH] mfd: rk808: Always use poweroff when requested
+Date: Mon, 9 Dec 2019 13:43:05 +0000
+Message-ID: <40f82334-8f89-e2bd-985a-b09f71be20ce@arm.com>
+References: <20191209115746.12953-1-smoch@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <724aa7db-3838-16f9-d344-1789ae2a5746@arm.com>
+In-Reply-To: <20191209115746.12953-1-smoch@web.de>
+Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Anand Moon <linux.amoon@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Daniel Schultz <d.schultz@phytec.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+To: Soeren Moch <smoch@web.de>, Lee Jones <lee.jones@linaro.org>
+Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Dec 9, 2019 at 8:29 AM Robin Murphy <robin.murphy@arm.com> wrote:
->
-> On 06/12/2019 6:45 pm, Anand Moon wrote:
-> > Most of the RK3399 SBC boards do not perform clean
-> > shutdown and clean reboot.
->
-> FWIW reboot problems on RK3399 have been tracked down to issues in
-> upstream ATF, and are unrelated to the PMIC.
->
-> > These patches try to help resolve the issue with proper
-> > shutdown by turning off the PMIC.
->
-> As mentioned elsewhere[1], although this is what the BSP kernel seems to
-> do, and in practice it's unlikely to matter for the majority of devboard
-> users like you and me, I still feel a bit uncomfortable with this
-> solution for systems using ATF as in principle the secure world might
-> want to know about orderly shutdowns, and this effectively makes every
-> shutdown an unexpected power loss from secure software's point of view.
->
-> Robin.
+On 09/12/2019 11:57 am, Soeren Moch wrote:
+> With the device tree property "rockchip,system-power-controller" we
+> explicitly request to use this PMIC to power off the system. So always
+> register our poweroff function, even if some other handler (probably
+> PSCI poweroff) was registered before.
 
-Since ATF is operating completely in volatile memory, and shouldn't be
-touching hardware once it passes off control to the kernel anyways,
-what is the harm of pulling the rug out from under it?
-If this idea is to prevent issues in the future, such as if ATF does
-gain the ability to preempt hardware control, then at that time ATF
-will need to be able to handle actually powering off devices using the
-same functionality.
+This seems preferable to abusing syscore ops, and at least it does allow 
+the firmware behaviour to be encapsulated in the DT (and thus more 
+easily updated if and when a firmware-based shutdown can be achieved on 
+currently-crippled boards) rather than baking assumptions into the 
+kernel. And in the meantime, I *would* quite like to be able to power 
+down my RK3399 board without having to lean on the button... so I guess,
 
-But as we discussed previously, ATF doesn't have this capability, so
-in this case any board without a dedicated power-off gpio will be
-unable to power off at all.
-Also it seems that giving ATF this functionality, with the current
-state of ATF, would be cost prohibitive.
+Acked-by: Robin Murphy <robin.murphy@arm.com>
 
-I personally feel that allowing the kernel to do this is a solution to
-the problem we have now.
-
-
->
-> [1]
-> http://lists.infradead.org/pipermail/linux-rockchip/2019-December/028183.html
->
-> > For reference
-> > RK805 PMCI data sheet:
-> > [0] http://rockchip.fr/RK805%20datasheet%20V1.3.pdf
-> > RK808 PMIC data sheet:
-> > [1] http://rockchip.fr/RK808%20datasheet%20V1.4.pdf
-> > RK817 PMIC data sheet:
-> > [2] http://rockchip.fr/RK817%20datasheet%20V1.01.pdf
-> > RK818 PMIC data sheet:
-> > [3] http://rockchip.fr/RK818%20datasheet%20V1.0.pdf
-> >
-> > Reboot issue:
-> > My guess is that we need to some proper sequence of
-> > setting to PMCI to perform clean.
-> >
-> > If you have any input please share them.
-> >
-> > Tested on SBC
-> > Rock960 Model A
-> > Odroid N1
-> > Rock64
-> >
-> > -Anand Moon
-> >
-> > Anand Moon (8):
-> >    mfd: rk808: Refactor shutdown functions
-> >    mfd: rk808: use syscore for RK805 PMIC shutdown
-> >    mfd: rk808: use syscore for RK808 PMIC shutdown
-> >    mfd: rk808: use syscore for RK818 PMIC shutdown
-> >    mfd: rk808: cleanup unused function pointer
-> >    mfd: rk808: use common syscore for all PMCI for clean shutdown
-> >    arm64: rockchip: drop unused field from rk8xx i2c node
-> >    arm: rockchip: drop unused field from rk8xx i2c node
-> >
-> >   arch/arm/boot/dts/rk3036-kylin.dts            |   1 -
-> >   arch/arm/boot/dts/rk3188-px3-evb.dts          |   1 -
-> >   arch/arm/boot/dts/rk3288-evb-rk808.dts        |   1 -
-> >   arch/arm/boot/dts/rk3288-phycore-som.dtsi     |   1 -
-> >   arch/arm/boot/dts/rk3288-popmetal.dts         |   1 -
-> >   arch/arm/boot/dts/rk3288-tinker.dtsi          |   1 -
-> >   arch/arm/boot/dts/rk3288-veyron.dtsi          |   1 -
-> >   arch/arm/boot/dts/rk3288-vyasa.dts            |   1 -
-> >   arch/arm/boot/dts/rv1108-elgin-r1.dts         |   1 -
-> >   arch/arm/boot/dts/rv1108-evb.dts              |   1 -
-> >   arch/arm64/boot/dts/rockchip/px30-evb.dts     |   1 -
-> >   arch/arm64/boot/dts/rockchip/rk3328-a1.dts    |   1 -
-> >   arch/arm64/boot/dts/rockchip/rk3328-evb.dts   |   1 -
-> >   .../arm64/boot/dts/rockchip/rk3328-roc-cc.dts |   1 -
-> >   .../arm64/boot/dts/rockchip/rk3328-rock64.dts |   1 -
-> >   .../boot/dts/rockchip/rk3368-geekbox.dts      |   1 -
-> >   arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi |   1 -
-> >   .../boot/dts/rockchip/rk3368-px5-evb.dts      |   1 -
-> >   .../boot/dts/rockchip/rk3399-firefly.dts      |   1 -
-> >   .../boot/dts/rockchip/rk3399-hugsun-x99.dts   |   1 -
-> >   .../boot/dts/rockchip/rk3399-khadas-edge.dtsi |   1 -
-> >   .../boot/dts/rockchip/rk3399-leez-p710.dts    |   1 -
-> >   .../boot/dts/rockchip/rk3399-nanopi4.dtsi     |   1 -
-> >   .../boot/dts/rockchip/rk3399-orangepi.dts     |   1 -
-> >   arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi |   1 -
-> >   .../boot/dts/rockchip/rk3399-roc-pc.dtsi      |   1 -
-> >   .../boot/dts/rockchip/rk3399-rock-pi-4.dts    |   1 -
-> >   .../boot/dts/rockchip/rk3399-rock960.dtsi     |   1 -
-> >   .../boot/dts/rockchip/rk3399-rockpro64.dts    |   1 -
-> >   .../boot/dts/rockchip/rk3399-sapphire.dtsi    |   1 -
-> >   drivers/mfd/rk808.c                           | 144 +++++-------------
-> >   include/linux/mfd/rk808.h                     |   2 -
-> >   32 files changed, 42 insertions(+), 134 deletions(-)
-> >
->
+> Signed-off-by: Soeren Moch <smoch@web.de>
+> ---
+> Cc: Lee Jones <lee.jones@linaro.org>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-kernel@vger.kernel.org
+> ---
+>   drivers/mfd/rk808.c | 11 ++---------
+>   1 file changed, 2 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+> index a69a6742ecdc..616e44e7ef98 100644
+> --- a/drivers/mfd/rk808.c
+> +++ b/drivers/mfd/rk808.c
+> @@ -550,7 +550,7 @@ static int rk808_probe(struct i2c_client *client,
+>   	const struct mfd_cell *cells;
+>   	int nr_pre_init_regs;
+>   	int nr_cells;
+> -	int pm_off = 0, msb, lsb;
+> +	int msb, lsb;
+>   	unsigned char pmic_id_msb, pmic_id_lsb;
+>   	int ret;
+>   	int i;
+> @@ -674,16 +674,9 @@ static int rk808_probe(struct i2c_client *client,
+>   		goto err_irq;
+>   	}
+> 
+> -	pm_off = of_property_read_bool(np,
+> -				"rockchip,system-power-controller");
+> -	if (pm_off && !pm_power_off) {
+> +	if (of_property_read_bool(np, "rockchip,system-power-controller")) {
+>   		rk808_i2c_client = client;
+>   		pm_power_off = rk808->pm_pwroff_fn;
+> -	}
+> -
+> -	if (pm_off && !pm_power_off_prepare) {
+> -		if (!rk808_i2c_client)
+> -			rk808_i2c_client = client;
+>   		pm_power_off_prepare = rk808->pm_pwroff_prep_fn;
+>   	}
+> 
+> --
+> 2.17.1
+> 
+> 
 > _______________________________________________
 > Linux-rockchip mailing list
 > Linux-rockchip@lists.infradead.org
 > http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> 
