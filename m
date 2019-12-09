@@ -1,66 +1,53 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [Question] rk3399 vfio-pci/sr-iov support
-Date: Mon, 9 Dec 2019 14:07:02 +0000
-Message-ID: <b597b9a6-870a-8fbd-6490-59734c04367f@arm.com>
-References: <CAMdYzYoPXWbv4zXet6c9JQEMbqcJi6ZEOui_n82NVmrqNLy_pw@mail.gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v5 5/6] dt-bindings: display: rockchip-dsi: add px30 compatible
+Date: Mon,  9 Dec 2019 15:31:29 +0100
+Message-ID: <20191209143130.4553-6-heiko@sntech.de>
+References: <20191209143130.4553-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAMdYzYoPXWbv4zXet6c9JQEMbqcJi6ZEOui_n82NVmrqNLy_pw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20191209143130.4553-1-heiko@sntech.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: a.hajda@samsung.com
+Cc: bivvy.bi@rock-chips.com, jernej.skrabec@siol.net, xzy.xu@rock-chips.com, kuninori.morimoto.gx@renesas.com, jonas@kwiboo.se, sean@poorly.run, narmstrong@baylibre.com, philippe.cornu@st.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, eddie.cai@rock-chips.com, Laurent.pinchart@ideasonboard.com, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, sam@ravnborg.org, christoph.muellner@theobroma-systems.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On 09/12/2019 1:28 pm, Peter Geis wrote:
-> Good Morning,
-> 
-> I'm back with more pcie fun on the rk3399.
-> I'm trying to get pcie passthrough working for a vm on the rk3399, and
-> have encountered some roadblocks.
-> 
-> First, vfio-pci doesn't work on the rk3399, as the pcie controller
-> doesn't bind explicitly to a iommu.
-> [37528.138212] vfio-pci 0000:01:00.0: assign IRQ: got 226
-> [37528.138254] vfio-pci: probe of 0000:01:00.0 failed with error -22
-> 
-> # find /sys/kernel/iommu_groups/ -type l
-> /sys/kernel/iommu_groups/1/devices/ff8f0000.vop
-> /sys/kernel/iommu_groups/2/devices/ff900000.vop
-> 
-> # virsh start openwrt
-> error: Failed to start domain openwrt
-> error: internal error: Process exited prior to exec: libvirt:  error :
-> internal error: Invalid device 0000:01:00.0 iommu_group file
-> /sys/bus/pci/devices/0000:01:00.0/iommu_group is not a symlink
-
-That much I can help with somewhat: the major impediment is that RK3399 
-doesn't have an IOMMU in front of PCIe. As far as I'm aware your only 
-option is to resort to the "here be dragons" CONFIG_VFIO_NOIOMMU mode 
-(which I don't know an awful lot about beyond that it's a thing).
-
-Robin.
-
-> Second, sr-iov support is broken.
-> root@rockpro64:/sys/bus/pci/devices/0000:01:00.0# echo 1 > sriov_numvfs
-> bash: echo: write error: Input/output error
-> [37352.907558] pci 0000:01:10.0: [8086:1520] type 7f class 0xffffff
-> [37352.907578] pci 0000:01:10.0: unknown header type 7f, ignoring device
-> 
-> Do any of y'all have some insight into these issues?
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
+RnJvbTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvLnN0dWVibmVyQHRoZW9icm9tYS1zeXN0ZW1zLmNv
+bT4KClRoZSBweDMwIFNvQyBhbHNvIHVzZXMgYSBkdy1taXBpLWRzaSBjb250cm9sbGVyLCBzbyBh
+ZGQgdGhlCmNvbXBhdGlibGUgdmFsdWUgZm9yIGl0LgoKY2hhbmdlcyBpbiB2NToKLSByZWJhc2Vk
+IG9uIHRvcCBvZiA1LjUtcmMxCi0gbWVyZ2VkIHdpdGggZHNpIHRpbWluZyBjaGFuZ2UgdG8gcHJl
+dmVudCBvcmRlcmluZyBjb25mbGljdHMKClNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxo
+ZWlrby5zdHVlYm5lckB0aGVvYnJvbWEtc3lzdGVtcy5jb20+CkFja2VkLWJ5OiBSb2IgSGVycmlu
+ZyA8cm9iaEBrZXJuZWwub3JnPgotLS0KIC4uLi9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2R3
+X21pcGlfZHNpX3JvY2tjaGlwLnR4dCAgICAgIHwgNiArKysrLS0KIDEgZmlsZSBjaGFuZ2VkLCA0
+IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvZHdfbWlwaV9kc2lfcm9ja2No
+aXAudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2No
+aXAvZHdfbWlwaV9kc2lfcm9ja2NoaXAudHh0CmluZGV4IDFiYTkyMzdkMGFjMC4uMTUxYmUzYmJh
+MDZmIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxh
+eS9yb2NrY2hpcC9kd19taXBpX2RzaV9yb2NrY2hpcC50eHQKKysrIGIvRG9jdW1lbnRhdGlvbi9k
+ZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvZHdfbWlwaV9kc2lfcm9ja2NoaXAu
+dHh0CkBAIC00LDggKzQsMTAgQEAgUm9ja2NoaXAgc3BlY2lmaWMgZXh0ZW5zaW9ucyB0byB0aGUg
+U3lub3BzeXMgRGVzaWdud2FyZSBNSVBJIERTSQogUmVxdWlyZWQgcHJvcGVydGllczoKIC0gI2Fk
+ZHJlc3MtY2VsbHM6IFNob3VsZCBiZSA8MT4uCiAtICNzaXplLWNlbGxzOiBTaG91bGQgYmUgPDA+
+LgotLSBjb21wYXRpYmxlOiAicm9ja2NoaXAscmszMjg4LW1pcGktZHNpIiwgInNucHMsZHctbWlw
+aS1kc2kiLgotCSAgICAgICJyb2NrY2hpcCxyazMzOTktbWlwaS1kc2kiLCAic25wcyxkdy1taXBp
+LWRzaSIuCistIGNvbXBhdGlibGU6IG9uZSBvZgorCSJyb2NrY2hpcCxweDMwLW1pcGktZHNpIiwg
+InNucHMsZHctbWlwaS1kc2kiCisJInJvY2tjaGlwLHJrMzI4OC1taXBpLWRzaSIsICJzbnBzLGR3
+LW1pcGktZHNpIgorCSJyb2NrY2hpcCxyazMzOTktbWlwaS1kc2kiLCAic25wcyxkdy1taXBpLWRz
+aSIKIC0gcmVnOiBSZXByZXNlbnQgdGhlIHBoeXNpY2FsIGFkZHJlc3MgcmFuZ2Ugb2YgdGhlIGNv
+bnRyb2xsZXIuCiAtIGludGVycnVwdHM6IFJlcHJlc2VudCB0aGUgY29udHJvbGxlcidzIGludGVy
+cnVwdCB0byB0aGUgQ1BVKHMpLgogLSBjbG9ja3MsIGNsb2NrLW5hbWVzOiBQaGFuZGxlcyB0byB0
+aGUgY29udHJvbGxlcidzIHBsbCByZWZlcmVuY2UKLS0gCjIuMjQuMAoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
+cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
