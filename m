@@ -1,57 +1,83 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH v2 0/25] drm/panel infrastructure + backlight update
-Date: Mon, 9 Dec 2019 23:04:59 +0100
-Message-ID: <20191209220459.GA11015@ravnborg.org>
-References: <20191207140353.23967-1-sam@ravnborg.org>
+From: Soeren Moch <smoch@web.de>
+Subject: [PATCH 8/8] arm64: dts: rockchip: RockPro64: enable wifi module at sdio0
+Date: Mon,  9 Dec 2019 23:38:22 +0100
+Message-ID: <20191209223822.27236-8-smoch@web.de>
+References: <20191209223822.27236-1-smoch@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20191207140353.23967-1-sam@ravnborg.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Linus Walleij <linus.walleij@linaro.org>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, Jagan Teki <jagan@amarulasolutions.com>, NXP Linux Team <linux-imx@nxp.com>, Jitao Shi <jitao.shi@mediatek.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, Abhinav Kumar <abhinavk@codeaurora.org>, linux-tegra@vger.kernel.org, Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org, Purism Kernel Team <kernel@puri.sm>, linux-renesas-soc@vger.kernel.org, Boris Brezillon <boris.brezillon@collabora.com>
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191209223822.27236-1-smoch@web.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kalle Valo <kvalo@codeaurora.org>
+Cc: Soeren Moch <smoch@web.de>, Heiko Stuebner <heiko@sntech.de>, linux-wireless@vger.kernel.org, brcm80211-dev-list.pdl@broadcom.com, brcm80211-dev-list@cypress.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gU2F0LCBEZWMgMDcsIDIwMTkgYXQgMDM6MDM6MjhQTSArMDEwMCwgU2FtIFJhdm5ib3JnIHdy
-b3RlOgo+IFRoaXMgcGF0Y2hzZXQgaW5jbHVkZSBhIGNvdXBsZSBvZiBkaWZmZXJlbnQKPiB0aGlu
-Z3MgLSBhbGwgcmVsYXRlZCB0byBwYW5lbHMuCj4gCj4gLSBUaGUgY2FsbGJhY2tzIGFyZSBvcHRp
-b25hbCAtIHNvIGRyb3AgZXJyb3IgaWYKPiAgIGNhbGxiYWNrIGlzIG5vdCBwcmVzZW50Lgo+ICAK
-PiAtIEFkZCBzdXBwb3J0IGZvciBiYWNrbGlnaHQgaW4gZHJtX3BhbmVsLgo+ICAgVGhpcyBhbGxv
-d3MgdXMgdG8gbWFrZSBtdWNoIHNpbXBsZXIgYmFja2xpZ2h0Cj4gICBzdXBwb3J0IHRvIG1vc3Qg
-cGFuZWxzLgo+ICAgVGhlIHBhdGNoc2V0IGluY2x1ZGUgY29udmVyc2lvbiBvZiBtb3N0IG9mIHRo
-ZQo+ICAgdHJpdmlhbCBjYXNlcy4KPiAKPiAtIERyb3AgZHJtX2Nvbm5lY3RvciBmcm9tIGRybV9w
-YW5lbC4KPiAgIFRoaXMgY2hhbmdlIHJlcXVpcmVkIG1hbnkgY2hhbmdlcyB0byBtb3N0Cj4gICBw
-YW5lbHMgYW5kIG1hbnkgYnJpZGdlcyBhbmQgZGlzcGxheSBkcml2ZXJzLgo+ICAgVGhpcyBpcyBi
-eSBmYXIgdGhlIG1vc3QgaW52YXNpdmUgY2hhbmdlIGluIHRoaXMgcGF0Y2hzZXQuCj4gCj4gV2l0
-aCB0aGlzIHBhdGNoc2V0IGRybV9wYW5lbF8oYXR0YWNofGRldGFjaCkgYXJlIG5vcCdzCj4gYnV0
-IHRoZXkgYXJlIGtlcHQgZm9yIG5vdy4KPiAKPiBBIGZldyBvZiB0aGVzZSBwYXRjaGVzIGhhcyBi
-ZWVuIHNlbnQgb3V0IGJlZm9yZSAtIGJ1dCB2ZXJzaW9uaW5nCj4gc3RhcnRlZCBhZ2FpbiBmcm9t
-IHYxIC0gYXMgdGhlIG1vc3QgcGF0Y2hlcyBhcmUgbmV3Lgo+IAo+IEkgaGF2ZSB0ZXN0ZWQgdGhl
-IHBhbmVsLXNpbXBsZSBjaGFuZ2VzLCBhbmQgdGh1cyBzb21lCj4gb2YgdGhlIGluZnJhc3RydWN0
-dXJlIGNoYW5nZXMuCj4gVGhlIHRlc3Rpbmcgd2FzIGRvbmUgb24gYW4gZWFybGllciBpdGVyYXRp
-b24gLSBhbmQgSSBlbmRlZAo+IHVwIHN1Ym1pdHRpbmcgdGhpcyBhcyBMYXVyZW50IGFuZCBvdGhl
-cnMgc3RhcnRlZCB0byBkZXBlbmQgb24gaXQuCj4gCj4gdjI6Cj4gICBUaGlzIGlzIG1vc3RseSBh
-ZGRyZXNzaW5nIGNvbW1lbnRzIGZyb20gTGF1cmVudC4KPiAgIC0gZHJvcCBnZXRfdGltaW5ncyBy
-ZW1vdmFsLCB3ZSBzaG91bGQgc3RhcnQgdXNpbmcgaXQKPiAgIC0gZG8gbm90IGZhaWwgaW4gZHJt
-X3BhbmVsX29mX2JhY2tsaWdodCgpIGlmIERUIGlzIG5vdCBlbmFibGVkCj4gICAtIHVwZGF0ZWQg
-Y2hhbmdlbG9ncyBhbmQgY29kZSBjb21tZW50cyBpbiBtYW55IHBsYWNlcyAodGhhbmtzIExhdXJl
-bnQhKQo+ICAgLSBnZXRfbW9kZXMgaXMgYSBtYW5kYXRvcnkgY2FsbGJhY2sgLSByZXR1cm4gLUVP
-UE5PVFNVUFAgaWYgbm90IHNwZWNpZmllZAo+ICAgLSBsb2cgaWYgYmFja2xpZ2h0IHVwZGF0ZSBm
-YWlscwo+ICAgLSBhZGRlZCBhLWIvci1icwo+ICAgICBvIHRoYW5rcyB0byBMYXVyZW50IGFuZCBM
-aW51cyBmb3IgdGhlIHByb21wdCByZXZpZXdzIQo+IAo+IFdoZW4gImRybS9wYW5lbDogYWRkIGJh
-Y2tsaWdodCBzdXBwb3J0IiBpcyByZXZpZXdlZCBJIHBsYW4gdG8KPiBhcHBseSB0aGUgZnVsbCBz
-ZXJpZXMgdG8gZHJtLW1pc2MtbmV4dC4KCkZpeGVkIHRoZSBsYXN0IGJpdHMgcG9pbnRlZCBvdXQg
-YnkgTGF1cmVudCBhbmQgcHVzaGVkIHRvIGRybS1taXNjLW5leHQuCgoJU2FtCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
-c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNr
-dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbA==
+RockPro64 supports an Ampak AP6359SA based wifi/bt combo module.
+The BCM4359/9 wifi controller in this module is connected to sdio0,
+enable this interface.
+
+Signed-off-by: Soeren Moch <smoch@web.de>
+=2D--
+Not sure where to place exactly the sdio0 node in the dts because
+existing sd nodes are not sorted alphabetically.
+
+This last patch in this brcmfmac patch series probably should be picked
+up by Heiko independently of the rest of this series. It was sent together
+to show how this brcmfmac extension for 4359-sdio support with RSDB is
+used and tested.
+
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Kalle Valo <kvalo@codeaurora.org>
+Cc: linux-wireless@vger.kernel.org
+Cc: brcm80211-dev-list.pdl@broadcom.com
+Cc: brcm80211-dev-list@cypress.com
+Cc: netdev@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+=2D--
+ .../boot/dts/rockchip/rk3399-rockpro64.dts    | 21 ++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm6=
+4/boot/dts/rockchip/rk3399-rockpro64.dts
+index 7f4b2eba31d4..9fa92790d6e0 100644
+=2D-- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+@@ -71,13 +71,6 @@
+ 		clock-names =3D "ext_clock";
+ 		pinctrl-names =3D "default";
+ 		pinctrl-0 =3D <&wifi_enable_h>;
+-
+-		/*
+-		 * On the module itself this is one of these (depending
+-		 * on the actual card populated):
+-		 * - SDIO_RESET_L_WL_REG_ON
+-		 * - PDN (power down when low)
+-		 */
+ 		reset-gpios =3D <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
+ 	};
+
+@@ -650,6 +643,20 @@
+ 	status =3D "okay";
+ };
+
++&sdio0 {
++	bus-width =3D <4>;
++	cap-sd-highspeed;
++	cap-sdio-irq;
++	disable-wp;
++	keep-power-in-suspend;
++	mmc-pwrseq =3D <&sdio_pwrseq>;
++	non-removable;
++	pinctrl-names =3D "default";
++	pinctrl-0 =3D <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
++	sd-uhs-sdr104;
++	status =3D "okay";
++};
++
+ &sdmmc {
+ 	bus-width =3D <4>;
+ 	cap-sd-highspeed;
+=2D-
+2.17.1
