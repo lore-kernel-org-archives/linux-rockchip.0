@@ -1,126 +1,66 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 1/2] arm64: dts: rockchip: add core dsi components for px30
-Date: Mon,  9 Dec 2019 15:53:00 +0100
-Message-ID: <20191209145301.5307-1-heiko@sntech.de>
+From: Anand Moon <linux.amoon@gmail.com>
+Subject: Re: [RFCv1 0/8] RK3399 clean shutdown issue
+Date: Mon, 9 Dec 2019 20:26:42 +0530
+Message-ID: <CANAwSgTPrP5FS3xb7SadZ+BwASWQxfO8rBmno8ZW0JzAxcqWKA@mail.gmail.com>
+References: <20191206184536.2507-1-linux.amoon@gmail.com> <724aa7db-3838-16f9-d344-1789ae2a5746@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <724aa7db-3838-16f9-d344-1789ae2a5746@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Daniel Schultz <d.schultz@phytec.de>, devicetree <devicetree@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, Linux Kernel <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Hi Robin,
 
-This adds the dw-mipi-dsi controller and the external dsi-dphy
-and hooks them into the display-subsystem on px30.
+On Mon, 9 Dec 2019 at 18:59, Robin Murphy <robin.murphy@arm.com> wrote:
+>
+> On 06/12/2019 6:45 pm, Anand Moon wrote:
+> > Most of the RK3399 SBC boards do not perform clean
+> > shutdown and clean reboot.
+>
+> FWIW reboot problems on RK3399 have been tracked down to issues in
+> upstream ATF, and are unrelated to the PMIC.
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/px30.dtsi | 61 ++++++++++++++++++++++++++
- 1 file changed, 61 insertions(+)
+Yes I am aware of this changes.
+But, I have tired to study *RK808 datasheet V1.4* [0] below section
+*5.2.3 Power Channel Control/Monitor Registers*
+for clean reboot I was going to try disable some bit in below
+into reboot handle in the future patch.
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index c31423f36192..ff53cc56f80f 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -820,6 +820,19 @@ u2phy_otg: otg-port {
- 		};
- 	};
- 
-+	dsi_dphy: phy@ff2e0000 {
-+		compatible = "rockchip,px30-dsi-dphy";
-+		reg = <0x0 0xff2e0000 0x0 0x10000>;
-+		clocks = <&pmucru SCLK_MIPIDSIPHY_REF>, <&cru PCLK_MIPIDSIPHY>;
-+		clock-names = "ref", "pclk";
-+		#clock-cells = <0>;
-+		resets = <&cru SRST_MIPIDSIPHY_P>;
-+		reset-names = "apb";
-+		#phy-cells = <0>;
-+		power-domains = <&power PX30_PD_VO>;
-+		status = "disabled";
-+	};
-+
- 	usb20_otg: usb@ff300000 {
- 		compatible = "rockchip,px30-usb", "rockchip,rk3066-usb",
- 			     "snps,dwc2";
-@@ -943,6 +956,44 @@ gpu: gpu@ff400000 {
- 		status = "disabled";
- 	};
- 
-+	dsi: dsi@ff450000 {
-+		compatible = "rockchip,px30-mipi-dsi";
-+		reg = <0x0 0xff450000 0x0 0x10000>;
-+		interrupts = <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru PCLK_MIPI_DSI>;
-+		clock-names = "pclk";
-+		resets = <&cru SRST_MIPIDSI_HOST_P>;
-+		reset-names = "apb";
-+		phys = <&dsi_dphy>;
-+		phy-names = "dphy";
-+		power-domains = <&power PX30_PD_VO>;
-+		rockchip,grf = <&grf>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			port@0 {
-+				reg = <0>;
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				dsi_in_vopb: endpoint@0 {
-+					reg = <0>;
-+					remote-endpoint = <&vopb_out_dsi>;
-+				};
-+
-+				dsi_in_vopl: endpoint@1 {
-+					reg = <1>;
-+					remote-endpoint = <&vopl_out_dsi>;
-+				};
-+			};
-+		};
-+	};
-+
- 	vopb: vop@ff460000 {
- 		compatible = "rockchip,px30-vop-big";
- 		reg = <0x0 0xff460000 0x0 0xefc>;
-@@ -960,6 +1011,11 @@ vopb: vop@ff460000 {
- 		vopb_out: port {
- 			#address-cells = <1>;
- 			#size-cells = <0>;
-+
-+			vopb_out_dsi: endpoint@0 {
-+				reg = <0>;
-+				remote-endpoint = <&dsi_in_vopb>;
-+			};
- 		};
- 	};
- 
-@@ -992,6 +1048,11 @@ vopl: vop@ff470000 {
- 		vopl_out: port {
- 			#address-cells = <1>;
- 			#size-cells = <0>;
-+
-+			vopl_out_dsi: endpoint@0 {
-+				reg = <0>;
-+				remote-endpoint = <&dsi_in_vopl>;
-+			};
- 		};
- 	};
- 
--- 
-2.24.0
+DCDC_EN_REG
+SLEEP_SET_OFF_REG1
+SLEEP_SET_OFF_REG2
+DCDC_UV_STS_REG
+
+I was going see if this helps to do clean reboot.
+further more use this in suspend/resume operation.
+
+[0] http://rockchip.fr/RK808%20datasheet%20V1.4.pdf
+
+But I feed that their is some more issue with related to mmc or PCIe
+not able to cleanly release the resources while reboot which caused
+then to disable after reboot.
+
+>
+> > These patches try to help resolve the issue with proper
+> > shutdown by turning off the PMIC.
+>
+> As mentioned elsewhere[1], although this is what the BSP kernel seems to
+> do, and in practice it's unlikely to matter for the majority of devboard
+> users like you and me, I still feel a bit uncomfortable with this
+> solution for systems using ATF as in principle the secure world might
+> want to know about orderly shutdowns, and this effectively makes every
+> shutdown an unexpected power loss from secure software's point of view.
+>
+> Robin.
+>
+> [1]
+> http://lists.infradead.org/pipermail/linux-rockchip/2019-December/028183.html
+>
+
+Yes I have follow the mailing list and I read this thread.
+I am not aware of ATF complete architecture.
+
+-Anand
