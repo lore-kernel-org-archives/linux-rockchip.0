@@ -1,64 +1,69 @@
-From: Tobias Schramm <t.schramm@manjaro.org>
-Subject: Re: [RFCv1 0/8] RK3399 clean shutdown issue
-Date: Mon, 9 Dec 2019 15:51:04 +0100
-Message-ID: <5baf8423-8aa6-21a4-b066-71e3d12330cd@manjaro.org>
-References: <20191206184536.2507-1-linux.amoon@gmail.com>
- <724aa7db-3838-16f9-d344-1789ae2a5746@arm.com>
- <CAMdYzYoZY5gau=DGtPhk9CPV_WcyM4wjR9o+rPyaQfOzoy2Y=Q@mail.gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH 2/2] arm64: dts: rockchip: hook up the px30-evb dsi display
+Date: Mon,  9 Dec 2019 15:53:01 +0100
+Message-ID: <20191209145301.5307-2-heiko@sntech.de>
+References: <20191209145301.5307-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAMdYzYoZY5gau=DGtPhk9CPV_WcyM4wjR9o+rPyaQfOzoy2Y=Q@mail.gmail.com>
-Content-Language: en-US
+In-Reply-To: <20191209145301.5307-1-heiko@sntech.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Peter Geis <pgwipeout@gmail.com>, Robin Murphy <robin.murphy@arm.com>
-Cc: Anand Moon <linux.amoon@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Daniel Schultz <d.schultz@phytec.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, heiko@sntech.de, christoph.muellner@theobroma-systems.com, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-> On Mon, Dec 9, 2019 at 8:29 AM Robin Murphy <robin.murphy@arm.com> wrote:
->> On 06/12/2019 6:45 pm, Anand Moon wrote:
->>> Most of the RK3399 SBC boards do not perform clean
->>> shutdown and clean reboot.
->> FWIW reboot problems on RK3399 have been tracked down to issues in
->> upstream ATF, and are unrelated to the PMIC.
->>
->>> These patches try to help resolve the issue with proper
->>> shutdown by turning off the PMIC.
->> As mentioned elsewhere[1], although this is what the BSP kernel seems to
->> do, and in practice it's unlikely to matter for the majority of devboard
->> users like you and me, I still feel a bit uncomfortable with this
->> solution for systems using ATF as in principle the secure world might
->> want to know about orderly shutdowns, and this effectively makes every
->> shutdown an unexpected power loss from secure software's point of view.
->>
->> Robin.
-> Since ATF is operating completely in volatile memory, and shouldn't be
-> touching hardware once it passes off control to the kernel anyways,
-> what is the harm of pulling the rug out from under it?
-> If this idea is to prevent issues in the future, such as if ATF does
-> gain the ability to preempt hardware control, then at that time ATF
-> will need to be able to handle actually powering off devices using the
-> same functionality.
+Create the necessary display nodes to activate the Xingpeng XPP055C272
+dsi display that can be found on the px30-evb.
 
-As far as I know ATF implements PSCI, doesn't it? Thus I would assume 
-that it should most definitely handle power off for all platforms as 
-indicated by the presence of platform handlers in [1].
+Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+---
+ arch/arm64/boot/dts/rockchip/px30-evb.dts | 32 +++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
 
-> But as we discussed previously, ATF doesn't have this capability, so
-> in this case any board without a dedicated power-off gpio will be
-> unable to power off at all.
-> Also it seems that giving ATF this functionality, with the current
-> state of ATF, would be cost prohibitive.
->
-> I personally feel that allowing the kernel to do this is a solution to
-> the problem we have now.
-
-Maybe I'm missing something here but I'd suggest that implementing an 
-i2c driver in the rockchip platform part of ATF using libfdt to find the 
-PMIC from the devicetree would be the way to go.
-
-[1] 
-https://github.com/ARM-software/arm-trusted-firmware/blob/master/lib/psci/psci_system_off.c#L31
+diff --git a/arch/arm64/boot/dts/rockchip/px30-evb.dts b/arch/arm64/boot/dts/rockchip/px30-evb.dts
+index 180995a590c1..0a680257d9c2 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-evb.dts
++++ b/arch/arm64/boot/dts/rockchip/px30-evb.dts
+@@ -112,6 +112,38 @@ &display_subsystem {
+ 	status = "okay";
+ };
+ 
++&dsi {
++	status = "okay";
++
++	ports {
++		mipi_out: port@1 {
++			reg = <1>;
++
++			mipi_out_panel: endpoint {
++				remote-endpoint = <&mipi_in_panel>;
++			};
++		};
++	};
++
++	panel@0 {
++		compatible = "xinpeng,xpp055c272";
++		reg = <0>;
++		backlight = <&backlight>;
++		iovcc-supply = <&vcc_1v8>;
++		vci-supply = <&vcc3v3_lcd>;
++
++		port {
++			mipi_in_panel: endpoint {
++				remote-endpoint = <&mipi_out_panel>;
++			};
++		};
++	};
++};
++
++&dsi_dphy {
++	status = "okay";
++};
++
+ &emmc {
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
+-- 
+2.24.0
