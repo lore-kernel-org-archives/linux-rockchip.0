@@ -1,65 +1,41 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v5 3/6] dt-bindings: display: rockchip-dsi: document external
- phys
-Date: Mon,  9 Dec 2019 15:31:27 +0100
-Message-ID: <20191209143130.4553-4-heiko@sntech.de>
-References: <20191209143130.4553-1-heiko@sntech.de>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [GIT PULL] Rockchip dts64 changes for 5.5 - round 3
+Date: Mon, 09 Dec 2019 15:51:06 +0100
+Message-ID: <3740589.r5QQWlpvng@diego>
+References: <3235791.ImxGk5JOut@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191209143130.4553-1-heiko@sntech.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: a.hajda@samsung.com
-Cc: bivvy.bi@rock-chips.com, jernej.skrabec@siol.net, xzy.xu@rock-chips.com, kuninori.morimoto.gx@renesas.com, jonas@kwiboo.se, sean@poorly.run, narmstrong@baylibre.com, philippe.cornu@st.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, eddie.cai@rock-chips.com, Laurent.pinchart@ideasonboard.com, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, sam@ravnborg.org, christoph.muellner@theobroma-systems.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <3235791.ImxGk5JOut@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, soc-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvLnN0dWVibmVyQHRoZW9icm9tYS1zeXN0ZW1zLmNv
-bT4KClNvbWUgZHctbWlwaS1kc2kgaW5zdGFuY2VzIGluIFJvY2tjaGlwIFNvQ3MgdXNlIGV4dGVy
-bmFsIGRwaHlzLgpJbiB0aGVzZSBjYXNlcyB0aGUgbmVlZHMgY2xvY2sgd2lsbCBhbHNvIGJlIGdl
-bmVyYXRlZCBleHRlcm5hbGx5CnNvIHRoZXNlIGRvbid0IG5lZWQgdGhlIHJlZi1jbG9jayBhcyB3
-ZWxsLgoKY2hhbmdlcyBpbiB2NToKLSByZWJhc2VkIG9uIHRvcCBvZiA1LjUtcmMxCi0gbWVyZ2Vk
-IHdpdGggZHNpIHRpbWluZyBjaGFuZ2UgdG8gcHJldmVudCBvcmRlcmluZyBjb25mbGljdHMKClNp
-Z25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrby5zdHVlYm5lckB0aGVvYnJvbWEtc3lz
-dGVtcy5jb20+ClJldmlld2VkLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgotLS0K
-IC4uLi9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2R3X21pcGlfZHNpX3JvY2tjaGlwLnR4dCAg
-ICAgfCA3ICsrKysrLS0KIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKyksIDIgZGVsZXRp
-b25zKC0pCgpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rp
-c3BsYXkvcm9ja2NoaXAvZHdfbWlwaV9kc2lfcm9ja2NoaXAudHh0IGIvRG9jdW1lbnRhdGlvbi9k
-ZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvZHdfbWlwaV9kc2lfcm9ja2NoaXAu
-dHh0CmluZGV4IGNlNGMxZmM5MTE2Yy4uMWJhOTIzN2QwYWMwIDEwMDY0NAotLS0gYS9Eb2N1bWVu
-dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9kd19taXBpX2RzaV9y
-b2NrY2hpcC50eHQKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3Bs
-YXkvcm9ja2NoaXAvZHdfbWlwaV9kc2lfcm9ja2NoaXAudHh0CkBAIC05LDggKzksOSBAQCBSZXF1
-aXJlZCBwcm9wZXJ0aWVzOgogLSByZWc6IFJlcHJlc2VudCB0aGUgcGh5c2ljYWwgYWRkcmVzcyBy
-YW5nZSBvZiB0aGUgY29udHJvbGxlci4KIC0gaW50ZXJydXB0czogUmVwcmVzZW50IHRoZSBjb250
-cm9sbGVyJ3MgaW50ZXJydXB0IHRvIHRoZSBDUFUocykuCiAtIGNsb2NrcywgY2xvY2stbmFtZXM6
-IFBoYW5kbGVzIHRvIHRoZSBjb250cm9sbGVyJ3MgcGxsIHJlZmVyZW5jZQotICBjbG9jayhyZWYp
-IGFuZCBBUEIgY2xvY2socGNsaykuIEZvciBSSzMzOTksIGEgcGh5IGNvbmZpZyBjbG9jawotICAo
-cGh5X2NmZykgYW5kIGEgZ3JmIGNsb2NrKGdyZikgYXJlIHJlcXVpcmVkLiBBcyBkZXNjcmliZWQg
-aW4gWzFdLgorICBjbG9jayhyZWYpIHdoZW4gdXNpbmcgYW4gaW50ZXJuYWwgZHBoeSBhbmQgQVBC
-IGNsb2NrKHBjbGspLgorICBGb3IgUkszMzk5LCBhIHBoeSBjb25maWcgY2xvY2sgKHBoeV9jZmcp
-IGFuZCBhIGdyZiBjbG9jayhncmYpCisgIGFyZSByZXF1aXJlZC4gQXMgZGVzY3JpYmVkIGluIFsx
-XS4KIC0gcm9ja2NoaXAsZ3JmOiB0aGlzIHNvYyBzaG91bGQgc2V0IEdSRiByZWdzIHRvIG11eCB2
-b3BsL3ZvcGIuCiAtIHBvcnRzOiBjb250YWluIGEgcG9ydCBub2RlIHdpdGggZW5kcG9pbnQgZGVm
-aW5pdGlvbnMgYXMgZGVmaW5lZCBpbiBbMl0uCiAgIEZvciB2b3BiLHNldCB0aGUgcmVnID0gPDA+
-IGFuZCBzZXQgdGhlIHJlZyA9IDwxPiBmb3Igdm9wbC4KQEAgLTE4LDYgKzE5LDggQEAgUmVxdWly
-ZWQgcHJvcGVydGllczoKIC0gdmlkZW8gcG9ydCAxIGZvciBlaXRoZXIgYSBwYW5lbCBvciBzdWJz
-ZXF1ZW50IGVuY29kZXIKIAogT3B0aW9uYWwgcHJvcGVydGllczoKKy0gcGh5czogZnJvbSBnZW5l
-cmFsIFBIWSBiaW5kaW5nOiB0aGUgcGhhbmRsZSBmb3IgdGhlIFBIWSBkZXZpY2UuCistIHBoeS1u
-YW1lczogU2hvdWxkIGJlICJkcGh5IiBpZiBwaHlzIHJlZmVyZW5jZXMgYW4gZXh0ZXJuYWwgcGh5
-LgogLSBwb3dlci1kb21haW5zOiBhIHBoYW5kbGUgdG8gbWlwaSBkc2kgcG93ZXIgZG9tYWluIG5v
-ZGUuCiAtIHJlc2V0czogbGlzdCBvZiBwaGFuZGxlICsgcmVzZXQgc3BlY2lmaWVyIHBhaXJzLCBh
-cyBkZXNjcmliZWQgaW4gWzNdLgogLSByZXNldC1uYW1lczogc3RyaW5nIHJlc2V0IG5hbWUsIG11
-c3QgYmUgImFwYiIuCi0tIAoyLjI0LjAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaS1kZXZlbA==
+Am Dienstag, 19. November 2019, 14:45:56 CET schrieb Heiko Stuebner:
+> Hi (arm-)soc people,
+> 
+> for whatever reason I've gotten a big avalanche of patches for various
+> arm64 parts since the last pull request and with -rc8 being real I thought
+> I'll try to get these into 5.5 still to not make the wait too long ;-)
+> 
+> And I don't think it's anything earth shattering in there.
+> 
+> 
+> If it's not overly late, please pull, otherwise I'll move these over to 5.6
+> which also wouldn't be problematic.
+
+just for the record, I've removed the tag and moved patches over
+to my 5.6 stash.
+
+
+Heiko
