@@ -1,49 +1,105 @@
-From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [Question] rk3399 vfio-pci/sr-iov support
-Date: Mon, 9 Dec 2019 08:28:43 -0500
-Message-ID: <CAMdYzYoPXWbv4zXet6c9JQEMbqcJi6ZEOui_n82NVmrqNLy_pw@mail.gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [RFCv1 0/8] RK3399 clean shutdown issue
+Date: Mon, 9 Dec 2019 13:29:08 +0000
+Message-ID: <724aa7db-3838-16f9-d344-1789ae2a5746@arm.com>
+References: <20191206184536.2507-1-linux.amoon@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191206184536.2507-1-linux.amoon@gmail.com>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Anand Moon <linux.amoon@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Daniel Schultz <d.schultz@phytec.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Good Morning,
+On 06/12/2019 6:45 pm, Anand Moon wrote:
+> Most of the RK3399 SBC boards do not perform clean
+> shutdown and clean reboot.
 
-I'm back with more pcie fun on the rk3399.
-I'm trying to get pcie passthrough working for a vm on the rk3399, and
-have encountered some roadblocks.
+FWIW reboot problems on RK3399 have been tracked down to issues in 
+upstream ATF, and are unrelated to the PMIC.
 
-First, vfio-pci doesn't work on the rk3399, as the pcie controller
-doesn't bind explicitly to a iommu.
-[37528.138212] vfio-pci 0000:01:00.0: assign IRQ: got 226
-[37528.138254] vfio-pci: probe of 0000:01:00.0 failed with error -22
+> These patches try to help resolve the issue with proper
+> shutdown by turning off the PMIC.
 
-# find /sys/kernel/iommu_groups/ -type l
-/sys/kernel/iommu_groups/1/devices/ff8f0000.vop
-/sys/kernel/iommu_groups/2/devices/ff900000.vop
+As mentioned elsewhere[1], although this is what the BSP kernel seems to 
+do, and in practice it's unlikely to matter for the majority of devboard 
+users like you and me, I still feel a bit uncomfortable with this 
+solution for systems using ATF as in principle the secure world might 
+want to know about orderly shutdowns, and this effectively makes every 
+shutdown an unexpected power loss from secure software's point of view.
 
-# virsh start openwrt
-error: Failed to start domain openwrt
-error: internal error: Process exited prior to exec: libvirt:  error :
-internal error: Invalid device 0000:01:00.0 iommu_group file
-/sys/bus/pci/devices/0000:01:00.0/iommu_group is not a symlink
+Robin.
 
-Second, sr-iov support is broken.
-root@rockpro64:/sys/bus/pci/devices/0000:01:00.0# echo 1 > sriov_numvfs
-bash: echo: write error: Input/output error
-[37352.907558] pci 0000:01:10.0: [8086:1520] type 7f class 0xffffff
-[37352.907578] pci 0000:01:10.0: unknown header type 7f, ignoring device
+[1] 
+http://lists.infradead.org/pipermail/linux-rockchip/2019-December/028183.html
 
-Do any of y'all have some insight into these issues?
+> For reference
+> RK805 PMCI data sheet:
+> [0] http://rockchip.fr/RK805%20datasheet%20V1.3.pdf
+> RK808 PMIC data sheet:
+> [1] http://rockchip.fr/RK808%20datasheet%20V1.4.pdf
+> RK817 PMIC data sheet:
+> [2] http://rockchip.fr/RK817%20datasheet%20V1.01.pdf
+> RK818 PMIC data sheet:
+> [3] http://rockchip.fr/RK818%20datasheet%20V1.0.pdf
+> 
+> Reboot issue:
+> My guess is that we need to some proper sequence of
+> setting to PMCI to perform clean.
+> 
+> If you have any input please share them.
+> 
+> Tested on SBC
+> Rock960 Model A
+> Odroid N1
+> Rock64
+> 
+> -Anand Moon
+> 
+> Anand Moon (8):
+>    mfd: rk808: Refactor shutdown functions
+>    mfd: rk808: use syscore for RK805 PMIC shutdown
+>    mfd: rk808: use syscore for RK808 PMIC shutdown
+>    mfd: rk808: use syscore for RK818 PMIC shutdown
+>    mfd: rk808: cleanup unused function pointer
+>    mfd: rk808: use common syscore for all PMCI for clean shutdown
+>    arm64: rockchip: drop unused field from rk8xx i2c node
+>    arm: rockchip: drop unused field from rk8xx i2c node
+> 
+>   arch/arm/boot/dts/rk3036-kylin.dts            |   1 -
+>   arch/arm/boot/dts/rk3188-px3-evb.dts          |   1 -
+>   arch/arm/boot/dts/rk3288-evb-rk808.dts        |   1 -
+>   arch/arm/boot/dts/rk3288-phycore-som.dtsi     |   1 -
+>   arch/arm/boot/dts/rk3288-popmetal.dts         |   1 -
+>   arch/arm/boot/dts/rk3288-tinker.dtsi          |   1 -
+>   arch/arm/boot/dts/rk3288-veyron.dtsi          |   1 -
+>   arch/arm/boot/dts/rk3288-vyasa.dts            |   1 -
+>   arch/arm/boot/dts/rv1108-elgin-r1.dts         |   1 -
+>   arch/arm/boot/dts/rv1108-evb.dts              |   1 -
+>   arch/arm64/boot/dts/rockchip/px30-evb.dts     |   1 -
+>   arch/arm64/boot/dts/rockchip/rk3328-a1.dts    |   1 -
+>   arch/arm64/boot/dts/rockchip/rk3328-evb.dts   |   1 -
+>   .../arm64/boot/dts/rockchip/rk3328-roc-cc.dts |   1 -
+>   .../arm64/boot/dts/rockchip/rk3328-rock64.dts |   1 -
+>   .../boot/dts/rockchip/rk3368-geekbox.dts      |   1 -
+>   arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi |   1 -
+>   .../boot/dts/rockchip/rk3368-px5-evb.dts      |   1 -
+>   .../boot/dts/rockchip/rk3399-firefly.dts      |   1 -
+>   .../boot/dts/rockchip/rk3399-hugsun-x99.dts   |   1 -
+>   .../boot/dts/rockchip/rk3399-khadas-edge.dtsi |   1 -
+>   .../boot/dts/rockchip/rk3399-leez-p710.dts    |   1 -
+>   .../boot/dts/rockchip/rk3399-nanopi4.dtsi     |   1 -
+>   .../boot/dts/rockchip/rk3399-orangepi.dts     |   1 -
+>   arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi |   1 -
+>   .../boot/dts/rockchip/rk3399-roc-pc.dtsi      |   1 -
+>   .../boot/dts/rockchip/rk3399-rock-pi-4.dts    |   1 -
+>   .../boot/dts/rockchip/rk3399-rock960.dtsi     |   1 -
+>   .../boot/dts/rockchip/rk3399-rockpro64.dts    |   1 -
+>   .../boot/dts/rockchip/rk3399-sapphire.dtsi    |   1 -
+>   drivers/mfd/rk808.c                           | 144 +++++-------------
+>   include/linux/mfd/rk808.h                     |   2 -
+>   32 files changed, 42 insertions(+), 134 deletions(-)
+> 
