@@ -1,90 +1,77 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v5 6/6] drm/rockchip: dsi: add px30 support
-Date: Mon,  9 Dec 2019 15:31:30 +0100
-Message-ID: <20191209143130.4553-7-heiko@sntech.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v5 2/6] drm/bridge/synopsys: dsi: move phy_ops callbacks
+ around panel enablement
+Date: Mon,  9 Dec 2019 15:31:26 +0100
+Message-ID: <20191209143130.4553-3-heiko@sntech.de>
 References: <20191209143130.4553-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191209143130.4553-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org
-Cc: bivvy.bi-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jernej.skrabec-gGgVlfcn5nU@public.gmane.org, xzy.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, kuninori.morimoto.gx-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org, jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org, sean-p7yTbzM4H96eqtR555YLDQ@public.gmane.org, narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, philippe.cornu-qxv4g6HH51o@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, yannick.fertre-qxv4g6HH51o@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org, Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org, christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20191209143130.4553-1-heiko@sntech.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: a.hajda@samsung.com
+Cc: bivvy.bi@rock-chips.com, jernej.skrabec@siol.net, xzy.xu@rock-chips.com, kuninori.morimoto.gx@renesas.com, jonas@kwiboo.se, sean@poorly.run, narmstrong@baylibre.com, philippe.cornu@st.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, eddie.cai@rock-chips.com, Laurent.pinchart@ideasonboard.com, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, sam@ravnborg.org, christoph.muellner@theobroma-systems.com
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-
-Add the compatible and GRF definitions for the PX30 soc.
-
-changes in v5:
-- rebased on top of 5.5-rc1
-- merged with dsi timing change to prevent ordering conflicts
-
-Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
----
- .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 27 +++++++++++++++++++
- 1 file changed, 27 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index f16bd1e9b633..f04b5064974d 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -140,6 +140,12 @@
- #define DW_MIPI_NEEDS_PHY_CFG_CLK	BIT(0)
- #define DW_MIPI_NEEDS_GRF_CLK		BIT(1)
- 
-+#define PX30_GRF_PD_VO_CON1		0x0438
-+#define PX30_DSI_FORCETXSTOPMODE	(0xf << 7)
-+#define PX30_DSI_FORCERXMODE		BIT(6)
-+#define PX30_DSI_TURNDISABLE		BIT(5)
-+#define PX30_DSI_LCDC_SEL		BIT(0)
-+
- #define RK3288_GRF_SOC_CON6		0x025c
- #define RK3288_DSI0_LCDC_SEL		BIT(6)
- #define RK3288_DSI1_LCDC_SEL		BIT(9)
-@@ -1127,6 +1133,24 @@ static int dw_mipi_dsi_rockchip_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
-+static const struct rockchip_dw_dsi_chip_data px30_chip_data[] = {
-+	{
-+		.reg = 0xff450000,
-+		.lcdsel_grf_reg = PX30_GRF_PD_VO_CON1,
-+		.lcdsel_big = HIWORD_UPDATE(0, PX30_DSI_LCDC_SEL),
-+		.lcdsel_lit = HIWORD_UPDATE(PX30_DSI_LCDC_SEL,
-+					    PX30_DSI_LCDC_SEL),
-+
-+		.lanecfg1_grf_reg = PX30_GRF_PD_VO_CON1,
-+		.lanecfg1 = HIWORD_UPDATE(0, PX30_DSI_TURNDISABLE |
-+					     PX30_DSI_FORCERXMODE |
-+					     PX30_DSI_FORCETXSTOPMODE),
-+
-+		.max_data_lanes = 4,
-+	},
-+	{ /* sentinel */ }
-+};
-+
- static const struct rockchip_dw_dsi_chip_data rk3288_chip_data[] = {
- 	{
- 		.reg = 0xff960000,
-@@ -1195,6 +1219,9 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
- 
- static const struct of_device_id dw_mipi_dsi_rockchip_dt_ids[] = {
- 	{
-+	 .compatible = "rockchip,px30-mipi-dsi",
-+	 .data = &px30_chip_data,
-+	}, {
- 	 .compatible = "rockchip,rk3288-mipi-dsi",
- 	 .data = &rk3288_chip_data,
- 	}, {
--- 
-2.24.0
+RnJvbTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvLnN0dWVibmVyQHRoZW9icm9tYS1zeXN0ZW1zLmNv
+bT4KCklmIGltcGxlbWVudGF0aW9uLXNwZWNpZmljIHBoeV9vcHMgbmVlZCB0byBiZSBkZWZpbmVk
+IHRoZXkgcHJvYmFibHkKc2hvdWxkIGJlIGVuYWJsZWQgYmVmb3JlIHRyeWluZyB0byB0YWxrIHRv
+IHRoZSBwYW5lbCBhbmQgZGlzYWJsZWQgb25seQphZnRlciB0aGUgcGFuZWwgd2FzIGRpc2FibGVk
+LgoKUmlnaHQgbm93IHRoZXkgYXJlIGVuYWJsZWQgbGFzdCBhbmQgZGlzYWJsZWQgZmlyc3QsIHNv
+IG1pZ2h0IG1ha2UgaXQKaW1wb3NzaWJsZSB0byB0YWxrIHRvIHNvbWUgcGFuZWxzIC0gZXhhbXBs
+ZSBmb3IgdGhpcyBiZWluZyB0aGUgcHgzMAp3aXRoIGFuIGV4dGVybmFsIElubm9zaWxpY29uIGRw
+aHkgdGhhdCBuZWVkcyB0aGUgcGh5IHRvIGJlIGVuYWJsZWQKdG8gdHJhbnNmZXIgY29tbWFuZHMg
+dG8gdGhlIHBhbmVsLgoKU28gbW92ZSB0aGUgY2FsbHMgYXBwcm9wcmlhdGVseS4KCmNoYW5nZWQg
+aW4gdjU6Ci0gcmViYXNlZCBvbiB0b3Agb2YgNS41LXJjMQotIG1lcmdlZCB3aXRoIGRzaSB0aW1p
+bmcgY2hhbmdlIHRvIHByZXZlbnQgb3JkZXJpbmcgY29uZmxpY3RzCgpTaWduZWQtb2ZmLWJ5OiBI
+ZWlrbyBTdHVlYm5lciA8aGVpa28uc3R1ZWJuZXJAdGhlb2Jyb21hLXN5c3RlbXMuY29tPgpSZXZp
+ZXdlZC1ieTogTmVpbCBBcm1zdHJvbmcgPG5hcm1zdHJvbmdAYmF5bGlicmUuY29tPgpUZXN0ZWQt
+Ynk6IFlhbm5pY2sgRmVydHJlIDx5YW5uaWNrLmZlcnRyZUBzdC5jb20+ClJldmlld2VkLWJ5OiBQ
+aGlsaXBwZSBDb3JudSA8cGhpbGlwcGUuY29ybnVAc3QuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2Ry
+bS9icmlkZ2Uvc3lub3BzeXMvZHctbWlwaS1kc2kuYyB8IDEzICsrKysrKy0tLS0tLS0KIDEgZmls
+ZSBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDcgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jIGIvZHJpdmVycy9n
+cHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1taXBpLWRzaS5jCmluZGV4IGJmZTAwNjFlNTRhMi4u
+YjE4MzUxYjY3NjBhIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lz
+L2R3LW1pcGktZHNpLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1t
+aXBpLWRzaS5jCkBAIC04MTAsOSArODEwLDYgQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfYnJp
+ZGdlX3Bvc3RfZGlzYWJsZShzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQogCXN0cnVjdCBkd19t
+aXBpX2RzaSAqZHNpID0gYnJpZGdlX3RvX2RzaShicmlkZ2UpOwogCWNvbnN0IHN0cnVjdCBkd19t
+aXBpX2RzaV9waHlfb3BzICpwaHlfb3BzID0gZHNpLT5wbGF0X2RhdGEtPnBoeV9vcHM7CiAKLQlp
+ZiAocGh5X29wcy0+cG93ZXJfb2ZmKQotCQlwaHlfb3BzLT5wb3dlcl9vZmYoZHNpLT5wbGF0X2Rh
+dGEtPnByaXZfZGF0YSk7Ci0KIAkvKgogCSAqIFN3aXRjaCB0byBjb21tYW5kIG1vZGUgYmVmb3Jl
+IHBhbmVsLWJyaWRnZSBwb3N0X2Rpc2FibGUgJgogCSAqIHBhbmVsIHVucHJlcGFyZS4KQEAgLTgy
+OSw2ICs4MjYsOSBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9icmlkZ2VfcG9zdF9kaXNhYmxl
+KHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UpCiAJICovCiAJZHNpLT5wYW5lbF9icmlkZ2UtPmZ1
+bmNzLT5wb3N0X2Rpc2FibGUoZHNpLT5wYW5lbF9icmlkZ2UpOwogCisJaWYgKHBoeV9vcHMtPnBv
+d2VyX29mZikKKwkJcGh5X29wcy0+cG93ZXJfb2ZmKGRzaS0+cGxhdF9kYXRhLT5wcml2X2RhdGEp
+OworCiAJaWYgKGRzaS0+c2xhdmUpIHsKIAkJZHdfbWlwaV9kc2lfZGlzYWJsZShkc2ktPnNsYXZl
+KTsKIAkJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+c2xhdmUtPnBjbGspOwpAQCAtODk1LDYg
+Kzg5NSw5IEBAIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX21vZGVfc2V0KHN0cnVjdCBkd19taXBp
+X2RzaSAqZHNpLAogCiAJLyogU3dpdGNoIHRvIGNtZCBtb2RlIGZvciBwYW5lbC1icmlkZ2UgcHJl
+X2VuYWJsZSAmIHBhbmVsIHByZXBhcmUgKi8KIAlkd19taXBpX2RzaV9zZXRfbW9kZShkc2ksIDAp
+OworCisJaWYgKHBoeV9vcHMtPnBvd2VyX29uKQorCQlwaHlfb3BzLT5wb3dlcl9vbihkc2ktPnBs
+YXRfZGF0YS0+cHJpdl9kYXRhKTsKIH0KIAogc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lfYnJpZGdl
+X21vZGVfc2V0KHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsCkBAIC05MTEsMTUgKzkxNCwxMSBA
+QCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9icmlkZ2VfbW9kZV9zZXQoc3RydWN0IGRybV9icmlk
+Z2UgKmJyaWRnZSwKIHN0YXRpYyB2b2lkIGR3X21pcGlfZHNpX2JyaWRnZV9lbmFibGUoc3RydWN0
+IGRybV9icmlkZ2UgKmJyaWRnZSkKIHsKIAlzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSA9IGJyaWRn
+ZV90b19kc2koYnJpZGdlKTsKLQljb25zdCBzdHJ1Y3QgZHdfbWlwaV9kc2lfcGh5X29wcyAqcGh5
+X29wcyA9IGRzaS0+cGxhdF9kYXRhLT5waHlfb3BzOwogCiAJLyogU3dpdGNoIHRvIHZpZGVvIG1v
+ZGUgZm9yIHBhbmVsLWJyaWRnZSBlbmFibGUgJiBwYW5lbCBlbmFibGUgKi8KIAlkd19taXBpX2Rz
+aV9zZXRfbW9kZShkc2ksIE1JUElfRFNJX01PREVfVklERU8pOwogCWlmIChkc2ktPnNsYXZlKQog
+CQlkd19taXBpX2RzaV9zZXRfbW9kZShkc2ktPnNsYXZlLCBNSVBJX0RTSV9NT0RFX1ZJREVPKTsK
+LQotCWlmIChwaHlfb3BzLT5wb3dlcl9vbikKLQkJcGh5X29wcy0+cG93ZXJfb24oZHNpLT5wbGF0
+X2RhdGEtPnByaXZfZGF0YSk7CiB9CiAKIHN0YXRpYyBlbnVtIGRybV9tb2RlX3N0YXR1cwotLSAK
+Mi4yNC4wCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
+cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWw=
