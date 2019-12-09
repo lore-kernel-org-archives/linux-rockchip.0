@@ -1,62 +1,95 @@
-From: Alex Williamson <alex.williamson-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [Question] rk3399 vfio-pci/sr-iov support
-Date: Mon, 9 Dec 2019 10:05:09 -0700
-Message-ID: <20191209100509.5cb950ac@x1.home>
-References: <CAMdYzYoPXWbv4zXet6c9JQEMbqcJi6ZEOui_n82NVmrqNLy_pw@mail.gmail.com>
- <b597b9a6-870a-8fbd-6490-59734c04367f@arm.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH] thermal: rockchip: enable hwmon
+Date: Mon, 9 Dec 2019 18:08:59 +0100
+Message-ID: <e3b6e675-14de-d020-48f4-a8ed877646ab@linaro.org>
+References: <20191118052413.D729B6E85603@corona.crabdance.com>
+ <20191202145256.78AA06E85603@corona.crabdance.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <b597b9a6-870a-8fbd-6490-59734c04367f-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191202145256.78AA06E85603@corona.crabdance.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: schaecsn@gmx.net, rui.zhang@intel.com, edubezval@gmail.com, amit.kucheria@verdurent.com, heiko@sntech.de, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 9 Dec 2019 14:07:02 +0000
-Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org> wrote:
 
-> On 09/12/2019 1:28 pm, Peter Geis wrote:
-> > Good Morning,
-> > 
-> > I'm back with more pcie fun on the rk3399.
-> > I'm trying to get pcie passthrough working for a vm on the rk3399, and
-> > have encountered some roadblocks.
-> > 
-> > First, vfio-pci doesn't work on the rk3399, as the pcie controller
-> > doesn't bind explicitly to a iommu.
-> > [37528.138212] vfio-pci 0000:01:00.0: assign IRQ: got 226
-> > [37528.138254] vfio-pci: probe of 0000:01:00.0 failed with error -22
-> > 
-> > # find /sys/kernel/iommu_groups/ -type l
-> > /sys/kernel/iommu_groups/1/devices/ff8f0000.vop
-> > /sys/kernel/iommu_groups/2/devices/ff900000.vop
-> > 
-> > # virsh start openwrt
-> > error: Failed to start domain openwrt
-> > error: internal error: Process exited prior to exec: libvirt:  error :
-> > internal error: Invalid device 0000:01:00.0 iommu_group file
-> > /sys/bus/pci/devices/0000:01:00.0/iommu_group is not a symlink  
+Hi Stefan,
+
+
+On 02/12/2019 15:52, Stefan Schaeckeler wrote:
+> Hello linux power management mailing list and others,
 > 
-> That much I can help with somewhat: the major impediment is that RK3399 
-> doesn't have an IOMMU in front of PCIe. As far as I'm aware your only 
-> option is to resort to the "here be dragons" CONFIG_VFIO_NOIOMMU mode 
-> (which I don't know an awful lot about beyond that it's a thing).
+> New month, new try. Could someone review this patch, please. I would reall=
+> y
+> like to see the Rockchip RK3399 temperature sensors hooked up to the hwmon=
+>  API.
 
-And it's a thing that's really only useful if your motivation is to run
-something like DPDK in the host and you're not concerned about
-isolation between userspace drivers and the host kernel, and you don't
-mind tainting the kernel.  It's not useful for things like assigning a
-device to a VM as we can't readily do that without an IOMMU for
-translation.  Thanks,
+I don't know what is happening but there are some spurious '3D'
+characters. Please fix it, elaborate a bit the changelog and resend.
+I'll review it.
 
-Alex
+Thanks
+
+
+>> Enable hwmon for the soc and gpu temperature sensors.
+>>
+>> Signed-off-by: Stefan Schaeckeler <schaecsn@gmx.net>
+>>
+>> ---
+>>  drivers/thermal/rockchip_thermal.c | 12 +++++++++++-
+>>  1 file changed, 11 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockch=
+> ip_thermal.c
+>> index 343c2f5c5a25..e47c60010259 100644
+>> --- a/drivers/thermal/rockchip_thermal.c
+>> +++ b/drivers/thermal/rockchip_thermal.c
+>> @@ -19,6 +19,8 @@
+>>  #include <linux/mfd/syscon.h>
+>>  #include <linux/pinctrl/consumer.h>
+>>
+>> +#include "thermal_hwmon.h"
+>> +
+>>  /**
+>>   * If the temperature over a period of time High,
+>>   * the resulting TSHUT gave CRU module,let it reset the entire chip,
+>> @@ -1321,8 +1323,15 @@ static int rockchip_thermal_probe(struct platform=
+> _device *pdev)
+>>
+>>  	thermal->chip->control(thermal->regs, true);
+>>
+>> -	for (i =3D 0; i < thermal->chip->chn_num; i++)
+>> +	for (i =3D 0; i < thermal->chip->chn_num; i++) {
+>>  		rockchip_thermal_toggle_sensor(&thermal->sensors[i], true);
+>> +		thermal->sensors[i].tzd->tzp->no_hwmon =3D false;
+>> +		error =3D thermal_add_hwmon_sysfs(thermal->sensors[i].tzd);
+>> +		if (error)
+>> +			dev_warn(&pdev->dev,
+>> +				 "failed to register sensor %d with hwmon: %d\n",
+>> +				 i, error);
+>> +	}
+>>
+>>  	platform_set_drvdata(pdev, thermal);
+>>
+>> @@ -1344,6 +1353,7 @@ static int rockchip_thermal_remove(struct platform=
+> _device *pdev)
+>>  	for (i =3D 0; i < thermal->chip->chn_num; i++) {
+>>  		struct rockchip_thermal_sensor *sensor =3D &thermal->sensors[i];
+>>
+>> +		thermal_remove_hwmon_sysfs(sensor->tzd);
+>>  		rockchip_thermal_toggle_sensor(sensor, false);
+>>  	}
+>>
+>> --
+>> 2.24.0
+>>
+
+
+-- 
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
