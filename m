@@ -1,7 +1,7 @@
 From: Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH 2/4] mfd: rk808: Always register syscore ops
-Date: Tue, 10 Dec 2019 13:24:31 +0000
-Message-ID: <b59f9861afd658008fbc4f58b75a995bfe00d6ae.1575932654.git.robin.murphy@arm.com>
+Subject: [PATCH 4/4] mfd: rk808: Convert RK805 to syscore/PM ops
+Date: Tue, 10 Dec 2019 13:24:33 +0000
+Message-ID: <8642045f0657c9e782cd698eb08777c9d4c10c8d.1575932654.git.robin.murphy@arm.com>
 References: <cover.1575932654.git.robin.murphy@arm.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <cover.1575932654.git.robin.murphy@arm.com>
@@ -10,52 +10,144 @@ To: lee.jones@linaro.org
 Cc: linux-kernel@vger.kernel.org, heiko@sntech.de, smoch@web.de, linux.amoon@gmail.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Registering the syscore shutdown notifier even when it's a
-no-op for the given RK8xx variant should be harmless, and
-saves a lot of bother in handling unregistering on probe
-failure or module removal, which has been woefully lacking.
+RK805 has the same kind of dual-role sleep/shutdown pin as RK809/RK817,
+so it makes little sense for the driver to have to have two completely
+different mechanisms to handle essentially the same thing. Bring RK805
+in line with the RK809/RK817 flow to clean things up.
 
 Signed-off-by: Robin Murphy <robin.murphy@arm.com>
 ---
- drivers/mfd/rk808.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/mfd/rk808.c       | 58 +++++++++++++++++----------------------
+ include/linux/mfd/rk808.h |  1 -
+ 2 files changed, 25 insertions(+), 34 deletions(-)
 
 diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
-index f2f2f98552a0..387105830736 100644
+index 657b8baa3b8a..e88bdb889d3a 100644
 --- a/drivers/mfd/rk808.c
 +++ b/drivers/mfd/rk808.c
-@@ -623,7 +623,6 @@ static int rk808_probe(struct i2c_client *client,
- 		nr_pre_init_regs = ARRAY_SIZE(rk817_pre_init_reg);
- 		cells = rk817s;
- 		nr_cells = ARRAY_SIZE(rk817s);
--		register_syscore_ops(&rk808_syscore_ops);
+@@ -186,7 +186,6 @@ static const struct rk808_reg_data rk805_pre_init_reg[] = {
+ 	{RK805_BUCK4_CONFIG_REG, RK805_BUCK3_4_ILMAX_MASK,
+ 				 RK805_BUCK4_ILMAX_3500MA},
+ 	{RK805_BUCK4_CONFIG_REG, BUCK_ILMIN_MASK, BUCK_ILMIN_400MA},
+-	{RK805_GPIO_IO_POL_REG, SLP_SD_MSK, SLEEP_FUN},
+ 	{RK805_THERMAL_REG, TEMP_HOTDIE_MSK, TEMP115C},
+ };
+ 
+@@ -449,21 +448,6 @@ static const struct regmap_irq_chip rk818_irq_chip = {
+ 
+ static struct i2c_client *rk808_i2c_client;
+ 
+-static void rk805_device_shutdown_prepare(void)
+-{
+-	int ret;
+-	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
+-
+-	if (!rk808)
+-		return;
+-
+-	ret = regmap_update_bits(rk808->regmap,
+-				 RK805_GPIO_IO_POL_REG,
+-				 SLP_SD_MSK, SHUTDOWN_FUN);
+-	if (ret)
+-		dev_err(&rk808_i2c_client->dev, "Failed to shutdown device!\n");
+-}
+-
+ static void rk808_device_shutdown(void)
+ {
+ 	int ret;
+@@ -499,17 +483,29 @@ static void rk8xx_syscore_shutdown(void)
+ 	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
+ 	int ret;
+ 
+-	if (system_state == SYSTEM_POWER_OFF &&
+-	    (rk808->variant == RK809_ID || rk808->variant == RK817_ID)) {
++	if (system_state != SYSTEM_POWER_OFF)
++	       return;
++
++	switch (rk808->variant) {
++	case RK805_ID:
++		ret = regmap_update_bits(rk808->regmap,
++					 RK805_GPIO_IO_POL_REG,
++					 SLP_SD_MSK,
++					 SHUTDOWN_FUN);
++		break;
++	case RK809_ID:
++	case RK817_ID:
+ 		ret = regmap_update_bits(rk808->regmap,
+ 					 RK817_SYS_CFG(3),
+ 					 RK817_SLPPIN_FUNC_MSK,
+ 					 SLPPIN_DN_FUN);
+-		if (ret) {
+-			dev_warn(&rk808_i2c_client->dev,
+-				 "Cannot switch to power down function\n");
+-		}
++		break;
++	default:
++		return;
+ 	}
++	if (ret)
++		dev_warn(&rk808_i2c_client->dev,
++			 "Cannot switch to power down function\n");
+ }
+ 
+ static struct syscore_ops rk808_syscore_ops = {
+@@ -579,7 +575,6 @@ static int rk808_probe(struct i2c_client *client,
+ 		nr_pre_init_regs = ARRAY_SIZE(rk805_pre_init_reg);
+ 		cells = rk805s;
+ 		nr_cells = ARRAY_SIZE(rk805s);
+-		rk808->pm_pwroff_prep_fn = rk805_device_shutdown_prepare;
  		break;
- 	default:
- 		dev_err(&client->dev, "Unsupported RK8XX ID %lu\n",
-@@ -667,6 +666,7 @@ static int rk808_probe(struct i2c_client *client,
+ 	case RK808_ID:
+ 		rk808->regmap_cfg = &rk808_regmap_config;
+@@ -658,10 +653,8 @@ static int rk808_probe(struct i2c_client *client,
+ 		goto err_irq;
  	}
  
- 	rk808_i2c_client = client;
-+	register_syscore_ops(&rk808_syscore_ops);
+-	if (of_property_read_bool(np, "rockchip,system-power-controller")) {
++	if (of_property_read_bool(np, "rockchip,system-power-controller"))
+ 		pm_power_off = rk808_device_shutdown;
+-		pm_power_off_prepare = rk808->pm_pwroff_prep_fn;
+-	}
  
- 	ret = devm_mfd_add_devices(&client->dev, PLATFORM_DEVID_NONE,
- 			      cells, nr_cells, NULL, 0,
-@@ -684,6 +684,7 @@ static int rk808_probe(struct i2c_client *client,
  	return 0;
  
- err_irq:
-+	unregister_syscore_ops(&rk808_syscore_ops);
- 	regmap_del_irq_chip(client->irq, rk808->irq_data);
- 	return ret;
+@@ -686,13 +679,6 @@ static int rk808_remove(struct i2c_client *client)
+ 	if (pm_power_off == rk808_device_shutdown)
+ 		pm_power_off = NULL;
+ 
+-	/**
+-	 * As above, check if the pointer is set by us before overwrite.
+-	 */
+-	if (rk808->pm_pwroff_prep_fn &&
+-	    pm_power_off_prepare == rk808->pm_pwroff_prep_fn)
+-		pm_power_off_prepare = NULL;
+-
+ 	return 0;
  }
-@@ -694,6 +695,8 @@ static int rk808_remove(struct i2c_client *client)
  
- 	regmap_del_irq_chip(client->irq, rk808->irq_data);
+@@ -702,6 +688,12 @@ static int __maybe_unused rk8xx_suspend(struct device *dev)
+ 	int ret = 0;
  
-+	unregister_syscore_ops(&rk808_syscore_ops);
-+
- 	/**
- 	 * pm_power_off may points to a function from another module.
- 	 * Check if the pointer is set by us and only then overwrite it.
+ 	switch (rk808->variant) {
++	case RK805_ID:
++		ret = regmap_update_bits(rk808->regmap,
++					 RK805_GPIO_IO_POL_REG,
++					 SLP_SD_MSK,
++					 SLEEP_FUN);
++		break;
+ 	case RK809_ID:
+ 	case RK817_ID:
+ 		ret = regmap_update_bits(rk808->regmap,
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index b038653fa87e..e07f6e61cd38 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -620,6 +620,5 @@ struct rk808 {
+ 	long				variant;
+ 	const struct regmap_config	*regmap_cfg;
+ 	const struct regmap_irq_chip	*regmap_irq_chip;
+-	void				(*pm_pwroff_prep_fn)(void);
+ };
+ #endif /* __LINUX_REGULATOR_RK808_H */
 -- 
 2.17.1
