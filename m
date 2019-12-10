@@ -1,99 +1,145 @@
-From: Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org>
-Subject: Re: [PATCH 8/8] arm64: dts: rockchip: RockPro64: enable wifi module
- at sdio0
-Date: Tue, 10 Dec 2019 11:08:18 +0100
-Message-ID: <d0cece6c-9f90-c691-eb68-a25547532f68@web.de>
-References: <20191209223822.27236-1-smoch@web.de> <2668270.pdtvSLGib8@diego>
- <2cf70216-8d98-4122-4f4e-b8254089a017@web.de> <6162240.GiEx4hqPFh@diego>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 8/8] arm64: dts: rockchip: RockPro64: enable wifi module at sdio0
+Date: Tue, 10 Dec 2019 11:13:39 +0100
+Message-ID: <3170826.NpdqLUR24W@diego>
+References: <20191209223822.27236-1-smoch@web.de> <6162240.GiEx4hqPFh@diego> <d0cece6c-9f90-c691-eb68-a25547532f68@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <6162240.GiEx4hqPFh@diego>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, brcm80211-dev-list-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <d0cece6c-9f90-c691-eb68-a25547532f68@web.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Soeren Moch <smoch@web.de>
+Cc: Kalle Valo <kvalo@codeaurora.org>, linux-wireless@vger.kernel.org, brcm80211-dev-list.pdl@broadcom.com, brcm80211-dev-list@cypress.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgpPbiAxMC4xMi4xOSAwMjoxOCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gSGkg
-U29lcmVuLAo+Cj4gQW0gRGllbnN0YWcsIDEwLiBEZXplbWJlciAyMDE5LCAwMDoyOToyMSBDRVQg
-c2NocmllYiBTb2VyZW4gTW9jaDoKPj4gT24gMTAuMTIuMTkgMDA6MDgsIEhlaWtvIFN0w7xibmVy
-IHdyb3RlOgo+Pj4gQW0gTW9udGFnLCA5LiBEZXplbWJlciAyMDE5LCAyMzozODoyMiBDRVQgc2No
-cmllYiBTb2VyZW4gTW9jaDoKPj4+PiBSb2NrUHJvNjQgc3VwcG9ydHMgYW4gQW1wYWsgQVA2MzU5
-U0EgYmFzZWQgd2lmaS9idCBjb21ibyBtb2R1bGUuCj4+Pj4gVGhlIEJDTTQzNTkvOSB3aWZpIGNv
-bnRyb2xsZXIgaW4gdGhpcyBtb2R1bGUgaXMgY29ubmVjdGVkIHRvIHNkaW8wLAo+Pj4+IGVuYWJs
-ZSB0aGlzIGludGVyZmFjZS4KPj4+Pgo+Pj4+IFNpZ25lZC1vZmYtYnk6IFNvZXJlbiBNb2NoIDxz
-bW9jaEB3ZWIuZGU+Cj4+Pj4gLS0tCj4+Pj4gTm90IHN1cmUgd2hlcmUgdG8gcGxhY2UgZXhhY3Rs
-eSB0aGUgc2RpbzAgbm9kZSBpbiB0aGUgZHRzIGJlY2F1c2UKPj4+PiBleGlzdGluZyBzZCBub2Rl
-cyBhcmUgbm90IHNvcnRlZCBhbHBoYWJldGljYWxseS4KPj4+Pgo+Pj4+IFRoaXMgbGFzdCBwYXRj
-aCBpbiB0aGlzIGJyY21mbWFjIHBhdGNoIHNlcmllcyBwcm9iYWJseSBzaG91bGQgYmUgcGlja2Vk
-Cj4+Pj4gdXAgYnkgSGVpa28gaW5kZXBlbmRlbnRseSBvZiB0aGUgcmVzdCBvZiB0aGlzIHNlcmll
-cy4gSXQgd2FzIHNlbnQgdG9nZXRoZXIKPj4+PiB0byBzaG93IGhvdyB0aGlzIGJyY21mbWFjIGV4
-dGVuc2lvbiBmb3IgNDM1OS1zZGlvIHN1cHBvcnQgd2l0aCBSU0RCIGlzCj4+Pj4gdXNlZCBhbmQg
-dGVzdGVkLgo+Pj4gbm9kZSBwbGFjZW1lbnQgbG9va3MgZ29vZCBzbyBJIGNhbiBhcHBseSBpdCwg
-anVzdCBhIGdlbmVyYWwgcXVlc3Rpb25zCj4+PiBJIG9ubHkgZ290IHBhdGNoIDgvOCBhcmUgcGF0
-Y2hlcyAxLTcgcmVsZXZhbnQgZm9yIHRoaXMgb25lIGFuZCB3aGF0IGFyZSB0aGV5Pwo+PiBQYXRj
-aGVzIDEtNyBhcmUgdGhlIHBhdGNoZXMgdG8gc3VwcG9ydCB0aGUgQkNNNDM1OSBjaGlwc2V0IHdp
-dGggU0RJTwo+PiBpbnRlcmZhY2UgaW4gdGhlIGxpbnV4IGJyY21mbWFjIG5ldC13aXJlbGVzcyBk
-cml2ZXIsIHNlZSBbMV0uCj4+Cj4+IFNvIHRoaXMgcGF0Y2ggc2VyaWVzIGhhcyAyIHBhcnRzOgo+
-PiBwYXRjaGVzIDEtNzogYWRkIHN1cHBvcnQgZm9yIHRoZSB3aWZpIGNoaXBzZXQgaW4gdGhlIHdp
-cmVsZXNzIGRyaXZlciwKPj4gdGhpcyBoYXMgdG8gZ28gdGhyb3VnaCBuZXQtd2lyZWxlc3MKPj4g
-cGF0Y2ggODogZW5hYmxlIHRoZSB3aWZpIG1vZHVsZSB3aXRoIHRoaXMgY2hpcHNldCBvbiBSb2Nr
-UHJvNjQsIHRoaXMgcGF0Y2gKPiBUaGFua3MgZm9yIHRoZSBjbGFyaWZpY2F0aW9uIDotKSAuCj4K
-PiBBcyBwYXRjaCA4ICJvbmx5IiBkb2VzIHRoZSBjb3JlIHNkaW8gbm9kZSwgaXQgZG9lc24ndCBy
-ZWFsbHkgZGVwZW5kIG9uIHRoZQo+IGVhcmxpZXIgb25lcyBhbmQgeW91IGNhbiBzdWJtaXQgYW55
-IHVhcnQtaG9va3MgZm9yIGJsdWV0b290aCBvbmNlIHRoZQo+IG90aGVyIHBhdGNoZXMgbGFuZCBJ
-IGd1ZXNzLgpUaGUgdWFydCBwYXJ0IGZvciBibHVldG9vdGggYWxyZWFkeSBpcyBpbjogdWFydDAu
-Ckhvd2V2ZXIsIEkgaGF2ZW4ndCB0ZXN0ZWQgaWYgaXQgcmVhbGx5IHdvcmtzLgo+PiBJZiB0aGlz
-IHdhcyBjb25mdXNpbmcsIHdoYXQgd291bGQgYmUgdGhlIGlkZWFsIHdheSB0byBwb3N0IHN1Y2gg
-c2VyaWVzPwo+IEkgdGhpbmsgZXZlcnkgbWFpbnRhaW5lciBoYXMgc29tZSBzbGlnaHRseSBkaWZm
-ZXJlbnQgcGVyc3BlY3RpdmUgb24gdGhpcywKPiBidXQgcGVyc29uYWxseSBJIGxpa2UgZ2V0dGlu
-ZyB0aGUgd2hvbGUgc2VyaWVzIHRvIGZvbGxvdyB0aGUgZGlzY3Vzc2lvbiBidXQKPiBhbHNvIHRv
-IGp1c3Qgc2VlIHdoZW4gdGhlIGRyaXZlci1zaWRlIGNoYW5nZXMgZ2V0IG1lcmdlZCwgYXMgdGhl
-IGR0cy1wYXJ0cwo+IG5lZWQgdG8gd2FpdCBmb3IgdGhhdCBpbiBhIGxvdCBvZiBjYXNlcy4KT0ss
-IHRoYW5rcy4KSSB3aWxsIGFkZCB5b3UgZm9yIHRoZSB3aG9sZSBzZXJpZXMgd2hlbiBzZW5kaW5n
-IGEgdjIuCgpTb2VyZW4KPgo+IEhlaWtvCj4KPgo+PiBbMV0gaHR0cHM6Ly9wYXRjaHdvcmsua2Vy
-bmVsLm9yZy9wcm9qZWN0L2xpbnV4LXdpcmVsZXNzL2xpc3QvP3Nlcmllcz0yMTM5NTEKPj4+IFRo
-YW5rcwo+Pj4gSGVpa28KPj4+Cj4+Pgo+Pj4+IENjOiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250
-ZWNoLmRlPgo+Pj4+IENjOiBLYWxsZSBWYWxvIDxrdmFsb0Bjb2RlYXVyb3JhLm9yZz4KPj4+PiBD
-YzogbGludXgtd2lyZWxlc3NAdmdlci5rZXJuZWwub3JnCj4+Pj4gQ2M6IGJyY204MDIxMS1kZXYt
-bGlzdC5wZGxAYnJvYWRjb20uY29tCj4+Pj4gQ2M6IGJyY204MDIxMS1kZXYtbGlzdEBjeXByZXNz
-LmNvbQo+Pj4+IENjOiBuZXRkZXZAdmdlci5rZXJuZWwub3JnCj4+Pj4gQ2M6IGxpbnV4LWFybS1r
-ZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwo+Pj4+IENjOiBsaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCj4+Pj4gQ2M6IGxpbnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmcKPj4+PiAt
-LS0KPj4+PiAgLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2NrcHJvNjQuZHRzICAgIHwg
-MjEgKysrKysrKysrKysrLS0tLS0tLQo+Pj4+ICAxIGZpbGUgY2hhbmdlZCwgMTQgaW5zZXJ0aW9u
-cygrKSwgNyBkZWxldGlvbnMoLSkKPj4+Pgo+Pj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jv
-b3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2NrcHJvNjQuZHRzIGIvYXJjaC9hcm02NC9ib290L2R0
-cy9yb2NrY2hpcC9yazMzOTktcm9ja3BybzY0LmR0cwo+Pj4+IGluZGV4IDdmNGIyZWJhMzFkNC4u
-OWZhOTI3OTBkNmUwIDEwMDY0NAo+Pj4+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
-aXAvcmszMzk5LXJvY2twcm82NC5kdHMKPj4+PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzM5OS1yb2NrcHJvNjQuZHRzCj4+Pj4gQEAgLTcxLDEzICs3MSw2IEBACj4+Pj4g
-IAkJY2xvY2stbmFtZXMgPSAiZXh0X2Nsb2NrIjsKPj4+PiAgCQlwaW5jdHJsLW5hbWVzID0gImRl
-ZmF1bHQiOwo+Pj4+ICAJCXBpbmN0cmwtMCA9IDwmd2lmaV9lbmFibGVfaD47Cj4+Pj4gLQo+Pj4+
-IC0JCS8qCj4+Pj4gLQkJICogT24gdGhlIG1vZHVsZSBpdHNlbGYgdGhpcyBpcyBvbmUgb2YgdGhl
-c2UgKGRlcGVuZGluZwo+Pj4+IC0JCSAqIG9uIHRoZSBhY3R1YWwgY2FyZCBwb3B1bGF0ZWQpOgo+
-Pj4+IC0JCSAqIC0gU0RJT19SRVNFVF9MX1dMX1JFR19PTgo+Pj4+IC0JCSAqIC0gUEROIChwb3dl
-ciBkb3duIHdoZW4gbG93KQo+Pj4+IC0JCSAqLwo+Pj4+ICAJCXJlc2V0LWdwaW9zID0gPCZncGlv
-MCBSS19QQjIgR1BJT19BQ1RJVkVfTE9XPjsKPj4+PiAgCX07Cj4+Pj4KPj4+PiBAQCAtNjUwLDYg
-KzY0MywyMCBAQAo+Pj4+ICAJc3RhdHVzID0gIm9rYXkiOwo+Pj4+ICB9Owo+Pj4+Cj4+Pj4gKyZz
-ZGlvMCB7Cj4+Pj4gKwlidXMtd2lkdGggPSA8ND47Cj4+Pj4gKwljYXAtc2QtaGlnaHNwZWVkOwo+
-Pj4+ICsJY2FwLXNkaW8taXJxOwo+Pj4+ICsJZGlzYWJsZS13cDsKPj4+PiArCWtlZXAtcG93ZXIt
-aW4tc3VzcGVuZDsKPj4+PiArCW1tYy1wd3JzZXEgPSA8JnNkaW9fcHdyc2VxPjsKPj4+PiArCW5v
-bi1yZW1vdmFibGU7Cj4+Pj4gKwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+Pj4+ICsJcGlu
-Y3RybC0wID0gPCZzZGlvMF9idXM0ICZzZGlvMF9jbWQgJnNkaW8wX2Nsaz47Cj4+Pj4gKwlzZC11
-aHMtc2RyMTA0Owo+Pj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+Pj4+ICt9Owo+Pj4+ICsKPj4+PiAg
-JnNkbW1jIHsKPj4+PiAgCWJ1cy13aWR0aCA9IDw0PjsKPj4+PiAgCWNhcC1zZC1oaWdoc3BlZWQ7
-Cj4+Pj4gLS0KPj4+PiAyLjE3LjEKPj4+Pgo+Pj4KPj4+Cj4+Cj4KPgo+CgoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Am Dienstag, 10. Dezember 2019, 11:08:18 CET schrieb Soeren Moch:
+> Hi Heiko,
+> 
+> On 10.12.19 02:18, Heiko Stübner wrote:
+> > Hi Soeren,
+> >
+> > Am Dienstag, 10. Dezember 2019, 00:29:21 CET schrieb Soeren Moch:
+> >> On 10.12.19 00:08, Heiko Stübner wrote:
+> >>> Am Montag, 9. Dezember 2019, 23:38:22 CET schrieb Soeren Moch:
+> >>>> RockPro64 supports an Ampak AP6359SA based wifi/bt combo module.
+> >>>> The BCM4359/9 wifi controller in this module is connected to sdio0,
+> >>>> enable this interface.
+> >>>>
+> >>>> Signed-off-by: Soeren Moch <smoch@web.de>
+> >>>> ---
+> >>>> Not sure where to place exactly the sdio0 node in the dts because
+> >>>> existing sd nodes are not sorted alphabetically.
+> >>>>
+> >>>> This last patch in this brcmfmac patch series probably should be picked
+> >>>> up by Heiko independently of the rest of this series. It was sent together
+> >>>> to show how this brcmfmac extension for 4359-sdio support with RSDB is
+> >>>> used and tested.
+> >>> node placement looks good so I can apply it, just a general questions
+> >>> I only got patch 8/8 are patches 1-7 relevant for this one and what are they?
+> >> Patches 1-7 are the patches to support the BCM4359 chipset with SDIO
+> >> interface in the linux brcmfmac net-wireless driver, see [1].
+> >>
+> >> So this patch series has 2 parts:
+> >> patches 1-7: add support for the wifi chipset in the wireless driver,
+> >> this has to go through net-wireless
+> >> patch 8: enable the wifi module with this chipset on RockPro64, this patch
+> > Thanks for the clarification :-) .
+> >
+> > As patch 8 "only" does the core sdio node, it doesn't really depend on the
+> > earlier ones and you can submit any uart-hooks for bluetooth once the
+> > other patches land I guess.
+> The uart part for bluetooth already is in: uart0.
+> However, I haven't tested if it really works.
+
+In the new world there is now also a way to actually hook the bt-uart to
+the wifi driver without userspace intervention, and you might want to hook
+up the interrupt as well for sdio? For example look at the rock960:
+
+sdio-interrupt: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi#n510
+uart-magic: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi#n557
+
+
+Heiko
+
+> >> If this was confusing, what would be the ideal way to post such series?
+> > I think every maintainer has some slightly different perspective on this,
+> > but personally I like getting the whole series to follow the discussion but
+> > also to just see when the driver-side changes get merged, as the dts-parts
+> > need to wait for that in a lot of cases.
+> OK, thanks.
+> I will add you for the whole series when sending a v2.
+> 
+> Soeren
+> >
+> > Heiko
+> >
+> >
+> >> [1] https://patchwork.kernel.org/project/linux-wireless/list/?series=213951
+> >>> Thanks
+> >>> Heiko
+> >>>
+> >>>
+> >>>> Cc: Heiko Stuebner <heiko@sntech.de>
+> >>>> Cc: Kalle Valo <kvalo@codeaurora.org>
+> >>>> Cc: linux-wireless@vger.kernel.org
+> >>>> Cc: brcm80211-dev-list.pdl@broadcom.com
+> >>>> Cc: brcm80211-dev-list@cypress.com
+> >>>> Cc: netdev@vger.kernel.org
+> >>>> Cc: linux-arm-kernel@lists.infradead.org
+> >>>> Cc: linux-rockchip@lists.infradead.org
+> >>>> Cc: linux-kernel@vger.kernel.org
+> >>>> ---
+> >>>>  .../boot/dts/rockchip/rk3399-rockpro64.dts    | 21 ++++++++++++-------
+> >>>>  1 file changed, 14 insertions(+), 7 deletions(-)
+> >>>>
+> >>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+> >>>> index 7f4b2eba31d4..9fa92790d6e0 100644
+> >>>> --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+> >>>> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+> >>>> @@ -71,13 +71,6 @@
+> >>>>  		clock-names = "ext_clock";
+> >>>>  		pinctrl-names = "default";
+> >>>>  		pinctrl-0 = <&wifi_enable_h>;
+> >>>> -
+> >>>> -		/*
+> >>>> -		 * On the module itself this is one of these (depending
+> >>>> -		 * on the actual card populated):
+> >>>> -		 * - SDIO_RESET_L_WL_REG_ON
+> >>>> -		 * - PDN (power down when low)
+> >>>> -		 */
+> >>>>  		reset-gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
+> >>>>  	};
+> >>>>
+> >>>> @@ -650,6 +643,20 @@
+> >>>>  	status = "okay";
+> >>>>  };
+> >>>>
+> >>>> +&sdio0 {
+> >>>> +	bus-width = <4>;
+> >>>> +	cap-sd-highspeed;
+> >>>> +	cap-sdio-irq;
+> >>>> +	disable-wp;
+> >>>> +	keep-power-in-suspend;
+> >>>> +	mmc-pwrseq = <&sdio_pwrseq>;
+> >>>> +	non-removable;
+> >>>> +	pinctrl-names = "default";
+> >>>> +	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
+> >>>> +	sd-uhs-sdr104;
+> >>>> +	status = "okay";
+> >>>> +};
+> >>>> +
+> >>>>  &sdmmc {
+> >>>>  	bus-width = <4>;
+> >>>>  	cap-sd-highspeed;
+> >>>> --
+> >>>> 2.17.1
+> >>>>
+> >>>
+> >>>
+> >>
+> >
+> >
+> >
+> 
+> 
