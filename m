@@ -1,39 +1,189 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH 0/4] mfd: RK8xx tidyup
-Date: Tue, 10 Dec 2019 13:24:29 +0000
-Message-ID: <cover.1575932654.git.robin.murphy@arm.com>
+From: Soeren Moch <smoch@web.de>
+Subject: Re: [PATCH] mfd: rk808: Always use poweroff when requested
+Date: Tue, 10 Dec 2019 17:40:15 +0100
+Message-ID: <8377b8d6-8b4d-0605-4c61-fb61b4aebf91@web.de>
+References: <20191209115746.12953-1-smoch@web.de>
+ <CANAwSgS9ixhyOE2QYQ3CetA=BUVebMan2=9xBKF=U3YXAwCHNQ@mail.gmail.com>
+ <6e380c0a-007d-22db-af26-19defaf1ae83@fivetechno.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <6e380c0a-007d-22db-af26-19defaf1ae83@fivetechno.de>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: lee.jones@linaro.org
-Cc: linux-kernel@vger.kernel.org, heiko@sntech.de, smoch@web.de, linux.amoon@gmail.com, linux-rockchip@lists.infradead.org
+To: Markus Reichl <m.reichl@fivetechno.de>, Anand Moon <linux.amoon@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, Lee Jones <lee.jones@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Linux Kernel <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi all,
 
-In trying to debug suspend issues on my RK3328 box, I was looking at
-how the RK8xx driver handles the RK805 sleep pin, and frankly the whole
-driver seemed untidy enough to warrant some cleanup and minor fixes
-before going any further. I've based the series on top of Soeren's
-"mfd: rk808: Always use poweroff when requested" patch[1].
 
-Note that I've only had time to build-test these patches so far, but I
-wanted to share them early for the sake of discussion in response to
-the other thread[2].
+On 10.12.19 13:55, Markus Reichl wrote:
+> Hi Anand,
+>
+> Am 10.12.19 um 13:42 schrieb Anand Moon:
+>> Hi Soeren,
+>>
+>> On Mon, 9 Dec 2019 at 17:28, Soeren Moch <smoch@web.de> wrote:
+>>>
+>>> With the device tree property "rockchip,system-power-controller" we
+>>> explicitly request to use this PMIC to power off the system. So always
+>>> register our poweroff function, even if some other handler (probably
+>>> PSCI poweroff) was registered before.
+>>>
+>>> Signed-off-by: Soeren Moch <smoch@web.de>
+>>> ---
+>>> Cc: Lee Jones <lee.jones@linaro.org>
+>>> Cc: Heiko Stuebner <heiko@sntech.de>
+>>> Cc: linux-arm-kernel@lists.infradead.org
+>>> Cc: linux-rockchip@lists.infradead.org
+>>> Cc: linux-kernel@vger.kernel.org
+>>> ---
+>>> =C2=A0drivers/mfd/rk808.c | 11 ++---------
+>>> =C2=A01 file changed, 2 insertions(+), 9 deletions(-)
+>>>
+>>> diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+>>> index a69a6742ecdc..616e44e7ef98 100644
+>>> --- a/drivers/mfd/rk808.c
+>>> +++ b/drivers/mfd/rk808.c
+>>> @@ -550,7 +550,7 @@ static int rk808_probe(struct i2c_client *client,
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const struct mfd_cell *cell=
+s;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int nr_pre_init_regs;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int nr_cells;
+>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int pm_off =3D 0, msb, lsb;
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int msb, lsb;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 unsigned char pmic_id_msb, =
+pmic_id_lsb;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int ret;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int i;
+>>> @@ -674,16 +674,9 @@ static int rk808_probe(struct i2c_client *client,
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 goto err_irq;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>>>
+>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pm_off =3D of_property_read_bool=
+(np,
+>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "rockchip,system-power-controller"=
+);
+>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (pm_off && !pm_power_off) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (of_property_read_bool(np,
+>>> "rockchip,system-power-controller")) {
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 rk808_i2c_client =3D client;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 pm_power_off =3D rk808->pm_pwroff_fn;
+>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>>> -
+>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (pm_off && !pm_power_off_prep=
+are) {
+>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 if (!rk808_i2c_client)
+>>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 rk808_i2c_=
+client =3D client;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 pm_power_off_prepare =3D rk808->pm_pwroff_prep_fn;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>>>
+>>
+>> I gave this a try on my Rock960 and Odroid N1
+>> both got kernel panic below.
+>
+> I see the same on rk3399-roc-pc.
+This is no panic, it's a harmless warning.
+The i2c core nowadays expects a specially marked i2c transfer function
+late in the powerdown cycle:
 
-Robin.
+diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+index 1a33007b03e9..cec115e0afa4 100644
+=2D-- a/drivers/i2c/busses/i2c-rk3x.c
++++ b/drivers/i2c/busses/i2c-rk3x.c
+@@ -1126,6 +1126,7 @@ static u32 rk3x_i2c_func(struct i2c_adapter *adap)
+=C2=A0
+=C2=A0static const struct i2c_algorithm rk3x_i2c_algorithm =3D {
+=C2=A0=C2=A0=C2=A0=C2=A0 .master_xfer=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0=
+ =3D rk3x_i2c_xfer,
++=C2=A0=C2=A0=C2=A0 .master_xfer_atomic=C2=A0=C2=A0=C2=A0 =3D rk3x_i2c_xfe=
+r, /* usable for PMIC poweroff */
+=C2=A0=C2=A0=C2=A0=C2=A0 .functionality=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=
+=A0 =3D rk3x_i2c_func,
+=C2=A0};
+=C2=A0
+=2D--
+It is only used for powerdown. The regular i2c xfer function works.
 
-[1] https://patchwork.kernel.org/patch/11279249/
-[2] https://patchwork.kernel.org/cover/11276945/
+Heiko, should I send a formal patch for that?
 
-Robin Murphy (4):
-  mfd: rk808: Set global instance unconditionally
-  mfd: rk808: Always register syscore ops
-  mfd: rk808: Reduce shutdown duplication
-  mfd: rk808: Convert RK805 to syscore/PM ops
+Soeren
 
- drivers/mfd/rk808.c       | 122 ++++++++++++++++----------------------
- include/linux/mfd/rk808.h |   2 -
- 2 files changed, 50 insertions(+), 74 deletions(-)
-
--- 
-2.17.1
+>
+>>
+>> [=C2=A0=C2=A0 58.305868] xhci-hcd xhci-hcd.0.auto: USB bus 5 deregister=
+ed
+>> [=C2=A0=C2=A0 58.306747] reboot: Power down
+>> [=C2=A0=C2=A0 58.307106] ------------[ cut here ]------------
+>> [=C2=A0=C2=A0 58.307510] No atomic I2C transfer handler for 'i2c-0'
+>> [=C2=A0=C2=A0 58.308007] WARNING: CPU: 0 PID: 1 at drivers/i2c/i2c-core=
+.h:41
+>> i2c_transfer+0xe4/0xf8
+>> [=C2=A0=C2=A0 58.308696] Modules linked in: snd_soc_hdmi_codec dw_hdmi_=
+i2s_audio
+>> rockchipdrm analogix_dp brcmfmac nvme dw_mipi_dsi nvme_core dw_hdmi
+>> panfrost cec brcmutil drm_kms_helper gpu_sched cfg80211 hci_uart drm
+>> btbcm crct10dif_ce snd_soc_simple_card bluetooth snd_soc_rockchip_i2s
+>> snd_soc_simple_card_utils snd_soc_rockchip_pcm phy_rockchip_pcie
+>> ecdh_generic rtc_rk808 ecc pcie_rockchip_host rfkill rockchip_thermal
+>> ip_tables x_tables ipv6 nf_defrag_ipv6
+>> [=C2=A0=C2=A0 58.312150] CPU: 0 PID: 1 Comm: shutdown Not tainted
+>> 5.5.0-rc1-dirty #1
+>> [=C2=A0=C2=A0 58.312725] Hardware name: 96boards Rock960 (DT)
+>> [=C2=A0=C2=A0 58.313131] pstate: 60000085 (nZCv daIf -PAN -UAO)
+>> [=C2=A0=C2=A0 58.313551] pc : i2c_transfer+0xe4/0xf8
+>> [=C2=A0=C2=A0 58.313889] lr : i2c_transfer+0xe4/0xf8
+>> [=C2=A0=C2=A0 58.314225] sp : ffff80001004bb00
+>> [=C2=A0=C2=A0 58.314516] x29: ffff80001004bb00 x28: ffff00007d208000
+>> [=C2=A0=C2=A0 58.314981] x27: 0000000000000000 x26: 0000000000000000
+>> [=C2=A0=C2=A0 58.315446] x25: 0000000000000000 x24: 0000000000000008
+>> [=C2=A0=C2=A0 58.315910] x23: 0000000000000000 x22: ffff80001004bc74
+>> [=C2=A0=C2=A0 58.316375] x21: 0000000000000002 x20: ffff80001004bb58
+>> [=C2=A0=C2=A0 58.316841] x19: ffff0000784f0880 x18: 0000000000000010
+>> [=C2=A0=C2=A0 58.317305] x17: 0000000000000001 x16: 0000000000000019
+>> [=C2=A0=C2=A0 58.317770] x15: ffffffffffffffff x14: ffff8000118398c8
+>> [=C2=A0=C2=A0 58.318236] x13: ffff80009004b867 x12: ffff80001004b86f
+>> [=C2=A0=C2=A0 58.318701] x11: ffff800011851000 x10: ffff80001004b7f0
+>> [=C2=A0=C2=A0 58.319166] x9 : 00000000ffffffd0 x8 : ffff800010699ad8
+>> [=C2=A0=C2=A0 58.319631] x7 : 0000000000000265 x6 : ffff800011a20be9
+>> [=C2=A0=C2=A0 58.320096] x5 : 0000000000000000 x4 : 0000000000000000
+>> [=C2=A0=C2=A0 58.320561] x3 : 00000000ffffffff x2 : ffff800011851ab8
+>> [=C2=A0=C2=A0 58.321026] x1 : d375c0d4f4751f00 x0 : 0000000000000000
+>> [=C2=A0=C2=A0 58.321491] Call trace:
+>> [=C2=A0=C2=A0 58.321710]=C2=A0 i2c_transfer+0xe4/0xf8
+>> [=C2=A0=C2=A0 58.322020]=C2=A0 regmap_i2c_read+0x5c/0x98
+>> [=C2=A0=C2=A0 58.322350]=C2=A0 _regmap_raw_read+0xcc/0x138
+>> [=C2=A0=C2=A0 58.322694]=C2=A0 _regmap_bus_read+0x3c/0x70
+>> [=C2=A0=C2=A0 58.323034]=C2=A0 _regmap_read+0x60/0xe0
+>> [=C2=A0=C2=A0 58.323341]=C2=A0 _regmap_update_bits+0xc8/0x108
+>> [=C2=A0=C2=A0 58.323707]=C2=A0 regmap_update_bits_base+0x60/0x90
+>> [=C2=A0=C2=A0 58.324099]=C2=A0 rk808_device_shutdown+0x38/0x50
+>> [=C2=A0=C2=A0 58.324476]=C2=A0 machine_power_off+0x24/0x30
+>> [=C2=A0=C2=A0 58.324823]=C2=A0 kernel_power_off+0x64/0x70
+>> [=C2=A0=C2=A0 58.325159]=C2=A0 __do_sys_reboot+0x15c/0x240
+>> [=C2=A0=C2=A0 58.325504]=C2=A0 __arm64_sys_reboot+0x20/0x28
+>> [=C2=A0=C2=A0 58.325858]=C2=A0 el0_svc_common.constprop.2+0x88/0x150
+>> [=C2=A0=C2=A0 58.326279]=C2=A0 el0_svc_handler+0x20/0x80
+>> [=C2=A0=C2=A0 58.326607]=C2=A0 el0_sync_handler+0x118/0x188
+>> [=C2=A0=C2=A0 58.326960]=C2=A0 el0_sync+0x140/0x180
+>> [=C2=A0=C2=A0 58.327251] ---[ end trace b1de39d03d724d01 ]---
+>>
+>> -Anand
+>>
+>> _______________________________________________
+>> Linux-rockchip mailing list
+>> Linux-rockchip@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>>
+>
+> Gru=C3=9F,
