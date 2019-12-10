@@ -1,73 +1,93 @@
-From: Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org>
-Subject: Re: [PATCH 8/8] arm64: dts: rockchip: RockPro64: enable wifi module
- at sdio0
-Date: Tue, 10 Dec 2019 11:15:58 +0100
-Message-ID: <e8742d18-9dd9-bd97-1d4a-0c5312501b24@web.de>
-References: <20191209223822.27236-1-smoch@web.de> <2668270.pdtvSLGib8@diego>
- <2cf70216-8d98-4122-4f4e-b8254089a017@web.de> <6162240.GiEx4hqPFh@diego>
- <0101016eef171394-2c71e1b8-45b9-4e38-96f9-2841dd0607ba-000000@us-west-2.amazonses.com>
+From: Adrian Ratiu <adrian.ratiu@collabora.com>
+Subject: Re: [Linux-stm32] [PATCH v4 0/4] Genericize DW MIPI DSI bridge and
+ add i.MX 6 driver
+Date: Tue, 10 Dec 2019 13:41:46 +0200
+Message-ID: <871rtc2yrp.fsf@collabora.com>
+References: <20191202193359.703709-1-adrian.ratiu@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <0101016eef171394-2c71e1b8-45b9-4e38-96f9-2841dd0607ba-000000-j0qUFrXf9azQVAzzCBYphlNw9kRHFGba@public.gmane.org>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, brcm80211-dev-list-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; format=flowed
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191202193359.703709-1-adrian.ratiu@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-rockchip@lists.infradead.org
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-imx@nxp.com, Andrzej Hajda <a.hajda@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@siol.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAxMC4xMi4xOSAxMDoxNCwgS2FsbGUgVmFsbyB3cm90ZToKPiBIZWlrbyBTdMO8Ym5lciA8
-aGVpa29Ac250ZWNoLmRlPiB3cml0ZXM6Cj4KPj4gSGkgU29lcmVuLAo+Pgo+PiBBbSBEaWVuc3Rh
-ZywgMTAuIERlemVtYmVyIDIwMTksIDAwOjI5OjIxIENFVCBzY2hyaWViIFNvZXJlbiBNb2NoOgo+
-Pj4gT24gMTAuMTIuMTkgMDA6MDgsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+Pj4+IEFtIE1vbnRh
-ZywgOS4gRGV6ZW1iZXIgMjAxOSwgMjM6Mzg6MjIgQ0VUIHNjaHJpZWIgU29lcmVuIE1vY2g6Cj4+
-Pj4+IFJvY2tQcm82NCBzdXBwb3J0cyBhbiBBbXBhayBBUDYzNTlTQSBiYXNlZCB3aWZpL2J0IGNv
-bWJvIG1vZHVsZS4KPj4+Pj4gVGhlIEJDTTQzNTkvOSB3aWZpIGNvbnRyb2xsZXIgaW4gdGhpcyBt
-b2R1bGUgaXMgY29ubmVjdGVkIHRvIHNkaW8wLAo+Pj4+PiBlbmFibGUgdGhpcyBpbnRlcmZhY2Uu
-Cj4+Pj4+Cj4+Pj4+IFNpZ25lZC1vZmYtYnk6IFNvZXJlbiBNb2NoIDxzbW9jaEB3ZWIuZGU+Cj4+
-Pj4+IC0tLQo+Pj4+PiBOb3Qgc3VyZSB3aGVyZSB0byBwbGFjZSBleGFjdGx5IHRoZSBzZGlvMCBu
-b2RlIGluIHRoZSBkdHMgYmVjYXVzZQo+Pj4+PiBleGlzdGluZyBzZCBub2RlcyBhcmUgbm90IHNv
-cnRlZCBhbHBoYWJldGljYWxseS4KPj4+Pj4KPj4+Pj4gVGhpcyBsYXN0IHBhdGNoIGluIHRoaXMg
-YnJjbWZtYWMgcGF0Y2ggc2VyaWVzIHByb2JhYmx5IHNob3VsZCBiZSBwaWNrZWQKPj4+Pj4gdXAg
-YnkgSGVpa28gaW5kZXBlbmRlbnRseSBvZiB0aGUgcmVzdCBvZiB0aGlzIHNlcmllcy4gSXQgd2Fz
-IHNlbnQgdG9nZXRoZXIKPj4+Pj4gdG8gc2hvdyBob3cgdGhpcyBicmNtZm1hYyBleHRlbnNpb24g
-Zm9yIDQzNTktc2RpbyBzdXBwb3J0IHdpdGggUlNEQiBpcwo+Pj4+PiB1c2VkIGFuZCB0ZXN0ZWQu
-Cj4+Pj4gbm9kZSBwbGFjZW1lbnQgbG9va3MgZ29vZCBzbyBJIGNhbiBhcHBseSBpdCwganVzdCBh
-IGdlbmVyYWwgcXVlc3Rpb25zCj4+Pj4gSSBvbmx5IGdvdCBwYXRjaCA4LzggYXJlIHBhdGNoZXMg
-MS03IHJlbGV2YW50IGZvciB0aGlzIG9uZSBhbmQgd2hhdCBhcmUgdGhleT8KPj4+IFBhdGNoZXMg
-MS03IGFyZSB0aGUgcGF0Y2hlcyB0byBzdXBwb3J0IHRoZSBCQ000MzU5IGNoaXBzZXQgd2l0aCBT
-RElPCj4+PiBpbnRlcmZhY2UgaW4gdGhlIGxpbnV4IGJyY21mbWFjIG5ldC13aXJlbGVzcyBkcml2
-ZXIsIHNlZSBbMV0uCj4+Pgo+Pj4gU28gdGhpcyBwYXRjaCBzZXJpZXMgaGFzIDIgcGFydHM6Cj4+
-PiBwYXRjaGVzIDEtNzogYWRkIHN1cHBvcnQgZm9yIHRoZSB3aWZpIGNoaXBzZXQgaW4gdGhlIHdp
-cmVsZXNzIGRyaXZlciwKPj4+IHRoaXMgaGFzIHRvIGdvIHRocm91Z2ggbmV0LXdpcmVsZXNzCj4+
-PiBwYXRjaCA4OiBlbmFibGUgdGhlIHdpZmkgbW9kdWxlIHdpdGggdGhpcyBjaGlwc2V0IG9uIFJv
-Y2tQcm82NCwgdGhpcyBwYXRjaAo+PiBUaGFua3MgZm9yIHRoZSBjbGFyaWZpY2F0aW9uIDotKSAu
-Cj4+Cj4+IEFzIHBhdGNoIDggIm9ubHkiIGRvZXMgdGhlIGNvcmUgc2RpbyBub2RlLCBpdCBkb2Vz
-bid0IHJlYWxseSBkZXBlbmQgb24gdGhlCj4+IGVhcmxpZXIgb25lcyBhbmQgeW91IGNhbiBzdWJt
-aXQgYW55IHVhcnQtaG9va3MgZm9yIGJsdWV0b290aCBvbmNlIHRoZQo+PiBvdGhlciBwYXRjaGVz
-IGxhbmQgSSBndWVzcy4KPj4KPj4KPj4+IElmIHRoaXMgd2FzIGNvbmZ1c2luZywgd2hhdCB3b3Vs
-ZCBiZSB0aGUgaWRlYWwgd2F5IHRvIHBvc3Qgc3VjaCBzZXJpZXM/Cj4+IEkgdGhpbmsgZXZlcnkg
-bWFpbnRhaW5lciBoYXMgc29tZSBzbGlnaHRseSBkaWZmZXJlbnQgcGVyc3BlY3RpdmUgb24gdGhp
-cywKPj4gYnV0IHBlcnNvbmFsbHkgSSBsaWtlIGdldHRpbmcgdGhlIHdob2xlIHNlcmllcyB0byBm
-b2xsb3cgdGhlIGRpc2N1c3Npb24gYnV0Cj4+IGFsc28gdG8ganVzdCBzZWUgd2hlbiB0aGUgZHJp
-dmVyLXNpZGUgY2hhbmdlcyBnZXQgbWVyZ2VkLCBhcyB0aGUgZHRzLXBhcnRzCj4+IG5lZWQgdG8g
-d2FpdCBmb3IgdGhhdCBpbiBhIGxvdCBvZiBjYXNlcy4KPiBGV0lXIEkgcHJlZmVyIHRoZSBzYW1l
-IGFzIEhlaWtvLiBJZiBJIGRvbid0IHNlZSBhbGwgdGhlIHBhdGNoZXMgaW4gdGhlCj4gcGF0Y2hz
-ZXQgSSBzdGFydCB3b3JyeWluZyBpZiBwYXRjaHdvcmsgbG9zdCB0aGVtLCBvciBzb21ldGhpbmcs
-IGFuZCB0aGVuCj4gaXQgdGFrZXMgbW9yZSB0aW1lIGZyb20gbWUgdG8gaW52ZXN0aWdhdGUgd2hh
-dCBoYXBwZW5lZC4gU28gSSBzdHJvbmdseQo+IHJlY29tbWVuZCBzZW5kaW5nIHRoZSB3aG9sZSBz
-ZXJpZXMgdG8gZXZlcnlvbmUgYXMgaXQgc2F2ZXMgdGltZS4KPgpUaGFua3MgZm9yIHlvdXIgZXhw
-bGFuYXRpb24uCkkgd2lsbCBrZWVwIHRoaXMgaW4gbWluZCBmb3IgZnV0dXJlIHN1Ym1pc3Npb25z
-LgoKU29lcmVuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+On Mon, 02 Dec 2019, Adrian Ratiu <adrian.ratiu@collabora.com> 
+wrote:
+> Having a generic Synopsis DesignWare MIPI-DSI host controller 
+> bridge driver is a very good idea, however the current 
+> implementation has hardcoded quite a lot of the register layouts 
+> used by the two supported SoC vendors, STM and Rockchip, which 
+> use IP cores v1.30 and v1.31. 
+> 
+> This makes it hard to support other SoC vendors like the FSL/NXP 
+> i.MX 6 which use older v1.01 cores or future versions because, 
+> based on history, layout changes should also be expected in new 
+> DSI versions / SoCs. 
+> 
+> This patch series converts the bridge and platform drivers to 
+> access registers via generic regmap APIs and allows each 
+> platform driver to configure its register layout via struct 
+> reg_fields, then adds support for the host controller found on 
+> i.MX 6. 
+> 
+> I only have i.MX hardware with MIPI-DSI panel and relevant 
+> documentation available for testing so I'll really appreciate it 
+> if someone could test the series on Rockchip and 
+> STM... eyeballing register fields could only get me so far, so 
+> sorry in advance for any breakage! 
+> 
+> Many thanks to Boris Brezillon <boris.brezillon@collabora.com> 
+> for suggesting the regmap solution and to Liu Ying 
+> <Ying.Liu@freescale.com> for doing the initial i.MX platform 
+> driver implementation. 
+> 
+> This series applies on top of latest linux-next tree, 
+> next-20191202. 
+> 
+> v3 -> v4: 
+>   * Added commmit message to dt-binding patch (Neil) * Converted 
+>   the dt-binding to yaml dt-schema format (Neil) * Small DT node 
+>   + driver fixes (Rob) * Renamed platform driver to reflect it's 
+>   only for i.MX v6 (Fabio) * Added small panel example to the 
+>   host controller DT binding 
+> 
+> v2 -> v3: 
+>   * Added const declarations to dw-mipi-dsi.c structs (Emil) * 
+>   Fixed Reviewed-by tags and cc'd some more relevant ML (Emil) 
+> 
+> v1 -> v2: 
+>   * Moved register definitions & regmap initialization into 
+>   bridge module. Platform drivers get the regmap via plat_data 
+>   after calling the bridge probe (Emil). 
+
+I've been told I forgot to explicitly CC some of the maintainers, 
+sorry about that! Added a few more persons to CC.
+
+>
+> Adrian Ratiu (4):
+>   drm: bridge: dw_mipi_dsi: access registers via a regmap
+>   drm: bridge: dw_mipi_dsi: abstract register access using reg_fields
+>   drm: imx: Add i.MX 6 MIPI DSI host driver
+>   dt-bindings: display: add i.MX6 MIPI DSI host controller doc
+>
+>  .../display/imx/fsl,mipi-dsi-imx6.yaml        | 136 ++++
+>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 699 +++++++++++++-----
+>  drivers/gpu/drm/imx/Kconfig                   |   7 +
+>  drivers/gpu/drm/imx/Makefile                  |   1 +
+>  drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c        | 378 ++++++++++
+>  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |  17 +-
+>  drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         |  34 +-
+>  include/drm/bridge/dw_mipi_dsi.h              |   2 +-
+>  8 files changed, 1067 insertions(+), 207 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
+>  create mode 100644 drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c
+>
+> -- 
+> 2.24.0
+>
+> _______________________________________________
+> Linux-stm32 mailing list
+> Linux-stm32@st-md-mailman.stormreply.com
+> https://st-md-mailman.stormreply.com/mailman/listinfo/linux-stm32
