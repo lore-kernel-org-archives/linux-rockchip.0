@@ -1,15 +1,25 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 5.4 014/134] iommu: rockchip: Free domain on .domain_free
-Date: Wed, 11 Dec 2019 10:09:50 -0500
-Message-ID: <20191211151150.19073-14-sashal@kernel.org>
-References: <20191211151150.19073-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 06/79] iommu: rockchip: Free domain on
+ .domain_free
+Date: Wed, 11 Dec 2019 10:25:30 -0500
+Message-ID: <20191211152643.23056-6-sashal@kernel.org>
+References: <20191211152643.23056-1-sashal@kernel.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20191211151150.19073-1-sashal@kernel.org>
-Sender: stable-owner@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20191211152643.23056-1-sashal@kernel.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <jroedel@suse.de>, Sasha Levin <sashal@kernel.org>, iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Sasha Levin <sashal@kernel.org>, Joerg Roedel <jroedel@suse.de>, Heiko Stuebner <heiko@sntech.de>, Ezequiel Garcia <ezequiel@collabora.com>, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
 From: Ezequiel Garcia <ezequiel@collabora.com>
@@ -32,10 +42,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 4dcbf68dfda43..0df091934361b 100644
+index ad3e2b97469ed..140b287e886c8 100644
 --- a/drivers/iommu/rockchip-iommu.c
 +++ b/drivers/iommu/rockchip-iommu.c
-@@ -980,13 +980,13 @@ static struct iommu_domain *rk_iommu_domain_alloc(unsigned type)
+@@ -977,13 +977,13 @@ static struct iommu_domain *rk_iommu_domain_alloc(unsigned type)
  	if (!dma_dev)
  		return NULL;
  
@@ -51,7 +61,7 @@ index 4dcbf68dfda43..0df091934361b 100644
  
  	/*
  	 * rk32xx iommus use a 2 level pagetable.
-@@ -1021,6 +1021,8 @@ err_free_dt:
+@@ -1018,6 +1018,8 @@ err_free_dt:
  err_put_cookie:
  	if (type == IOMMU_DOMAIN_DMA)
  		iommu_put_dma_cookie(&rk_domain->domain);
@@ -60,7 +70,7 @@ index 4dcbf68dfda43..0df091934361b 100644
  
  	return NULL;
  }
-@@ -1049,6 +1051,7 @@ static void rk_iommu_domain_free(struct iommu_domain *domain)
+@@ -1046,6 +1048,7 @@ static void rk_iommu_domain_free(struct iommu_domain *domain)
  
  	if (domain->type == IOMMU_DOMAIN_DMA)
  		iommu_put_dma_cookie(&rk_domain->domain);
