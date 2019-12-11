@@ -1,38 +1,57 @@
-From: Vicente Bergas <vicencb@gmail.com>
-Subject: [REGRESSION] PCI v5.5-rc1 breaks google kevin
-Date: Thu, 12 Dec 2019 00:38:35 +0100
-Message-ID: <58ce5534-64bd-4b4b-bd60-ed4e0c71b20f@gmail.com>
+From: Soeren Moch <smoch@web.de>
+Subject: [PATCH v2 0/9] brcmfmac: add support for BCM4359 SDIO chipset
+Date: Thu, 12 Dec 2019 00:52:44 +0100
+Message-ID: <20191211235253.2539-1-smoch@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Heiner Kallweit <hkallweit1@gmail.com>, "\"Rafael J. Wysocki\"" <rafael.j.wysocki@intel.com>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Andrew Murray <andrew.murray@arm.com>, Philipp Zabel <p.zabel@pengutronix.de>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, =?iso-8859-1?Q?=22Stefan_M=E4tje=22?= <stefan.maetje@esd.eu>, Frederick Lawler <fred@fredlawl.com>, Mika Westerberg <mika.westerberg@linux.intel.com>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+To: Kalle Valo <kvalo@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Soeren Moch <smoch@web.de>, linux-wireless@vger.kernel.org, brcm80211-dev-list.pdl@broadcom.com, brcm80211-dev-list@cypress.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-since v5.5-rc1 the google kevin chromebook does not boot.
-Git bisect reports=20
-5e0c21c75e8c PCI/ASPM: Remove pcie_aspm_enabled() unnecessary locking
-as the first bad commit.
+Add support for the BCM4359 chipset with SDIO interface and RSDB support
+to the brcmfmac wireless network driver in patches 1-7.
 
-In order to revert it from v5.5-rc1 i had to also revert some dependencies:
-5e0c21c75e8c08375a69710527e4a921b897cb7e
-aff5d0552da4055da3faa27ee4252e48bb1f5821
-35efea32b26f9aacc99bf07e0d2cdfba2028b099
-687aaf386aeb551130f31705ce40d1341047a936
-72ea91afbfb08619696ccde610ee4d0d29cf4a1d
-87e90283c94c76ee11d379ab5a0973382bbd0baf
-After reverting all of this, still no luck.
-So, either the results of git bisect are not to be trusted, or
-there are more bad commits.
+Enhance devicetree of the RockPro64 arm64/rockchip board to use an
+AP6359SA based wifi/bt combo module with this chipset in patches 8-9.
 
-By "does not boot" i mean that the display fails to start and
-the display is the only output device, so debugging is quite difficult.
 
-v5.5-rc1 as is (reverting no commits at all) works fine when disabling PCI:
-# CONFIG_PCI is not set
+Chung-Hsien Hsu (1):
+  brcmfmac: set F2 blocksize and watermark for 4359
 
-Regards,
-  Vicente.
+Soeren Moch (5):
+  brcmfmac: fix rambase for 4359/9
+  brcmfmac: make errors when setting roaming parameters non-fatal
+  brcmfmac: add support for BCM4359 SDIO chipset
+  arm64: dts: rockchip: RockPro64: enable wifi module at sdio0
+  arm64: dts: rockchip: RockPro64: hook up bluetooth at uart0
+
+Wright Feng (3):
+  brcmfmac: reset two D11 cores if chip has two D11 cores
+  brcmfmac: add RSDB condition when setting interface combinations
+  brcmfmac: not set mbss in vif if firmware does not support MBSS
+
+ .../boot/dts/rockchip/rk3399-rockpro64.dts    | 50 +++++++++++---
+ .../broadcom/brcm80211/brcmfmac/bcmsdh.c      |  8 ++-
+ .../broadcom/brcm80211/brcmfmac/cfg80211.c    | 68 +++++++++++++++----
+ .../broadcom/brcm80211/brcmfmac/chip.c        | 54 ++++++++++++++-
+ .../broadcom/brcm80211/brcmfmac/chip.h        |  1 +
+ .../broadcom/brcm80211/brcmfmac/pcie.c        |  2 +-
+ .../broadcom/brcm80211/brcmfmac/sdio.c        | 17 +++++
+ include/linux/mmc/sdio_ids.h                  |  2 +
+ 8 files changed, 176 insertions(+), 26 deletions(-)
+
+=2D--
+Cc: Kalle Valo <kvalo@codeaurora.org>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-wireless@vger.kernel.org
+Cc: brcm80211-dev-list.pdl@broadcom.com
+Cc: brcm80211-dev-list@cypress.com
+Cc: netdev@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+
+=2D-
+2.17.1
