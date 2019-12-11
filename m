@@ -1,57 +1,71 @@
-From: Soeren Moch <smoch@web.de>
-Subject: [PATCH v2 0/9] brcmfmac: add support for BCM4359 SDIO chipset
-Date: Thu, 12 Dec 2019 00:52:44 +0100
-Message-ID: <20191211235253.2539-1-smoch@web.de>
+From: Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org>
+Subject: [PATCH v2 3/9] brcmfmac: fix rambase for 4359/9
+Date: Thu, 12 Dec 2019 00:52:47 +0100
+Message-ID: <20191211235253.2539-4-smoch@web.de>
+References: <20191211235253.2539-1-smoch@web.de>
 Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: Kalle Valo <kvalo@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Soeren Moch <smoch@web.de>, linux-wireless@vger.kernel.org, brcm80211-dev-list.pdl@broadcom.com, brcm80211-dev-list@cypress.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191211235253.2539-1-smoch-S0/GAf8tV78@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, Arend van Spriel <arend.vanspriel-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chi-Hsien Lin <chi-hsien.lin-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hante Meuleman <hante.meuleman-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org>, Wright Feng <wright.feng-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, brcm80211-dev-list-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Franky Lin <franky.lin-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add support for the BCM4359 chipset with SDIO interface and RSDB support
-to the brcmfmac wireless network driver in patches 1-7.
+Newer 4359 chip revisions need a different rambase address.
+This fixes firmware download on such devices which fails otherwise.
 
-Enhance devicetree of the RockPro64 arm64/rockchip board to use an
-AP6359SA based wifi/bt combo module with this chipset in patches 8-9.
+Signed-off-by: Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org>
+---
+changes in v2: none
 
+Cc: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Arend van Spriel <arend.vanspriel-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
+Cc: Franky Lin <franky.lin-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
+Cc: Hante Meuleman <hante.meuleman-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
+Cc: Chi-Hsien Lin <chi-hsien.lin-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>
+Cc: Wright Feng <wright.feng-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>
+Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org
+Cc: brcm80211-dev-list-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org
+Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+---
+ drivers/net/wireless/broadcom/brcm80211/brcmfmac/chip.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Chung-Hsien Hsu (1):
-  brcmfmac: set F2 blocksize and watermark for 4359
-
-Soeren Moch (5):
-  brcmfmac: fix rambase for 4359/9
-  brcmfmac: make errors when setting roaming parameters non-fatal
-  brcmfmac: add support for BCM4359 SDIO chipset
-  arm64: dts: rockchip: RockPro64: enable wifi module at sdio0
-  arm64: dts: rockchip: RockPro64: hook up bluetooth at uart0
-
-Wright Feng (3):
-  brcmfmac: reset two D11 cores if chip has two D11 cores
-  brcmfmac: add RSDB condition when setting interface combinations
-  brcmfmac: not set mbss in vif if firmware does not support MBSS
-
- .../boot/dts/rockchip/rk3399-rockpro64.dts    | 50 +++++++++++---
- .../broadcom/brcm80211/brcmfmac/bcmsdh.c      |  8 ++-
- .../broadcom/brcm80211/brcmfmac/cfg80211.c    | 68 +++++++++++++++----
- .../broadcom/brcm80211/brcmfmac/chip.c        | 54 ++++++++++++++-
- .../broadcom/brcm80211/brcmfmac/chip.h        |  1 +
- .../broadcom/brcm80211/brcmfmac/pcie.c        |  2 +-
- .../broadcom/brcm80211/brcmfmac/sdio.c        | 17 +++++
- include/linux/mmc/sdio_ids.h                  |  2 +
- 8 files changed, 176 insertions(+), 26 deletions(-)
-
-=2D--
-Cc: Kalle Valo <kvalo@codeaurora.org>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-wireless@vger.kernel.org
-Cc: brcm80211-dev-list.pdl@broadcom.com
-Cc: brcm80211-dev-list@cypress.com
-Cc: netdev@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-
-=2D-
+diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/chip.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/chip.c
+index 0b5fbe5d8270..baf72e3984fc 100644
+--- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/chip.c
++++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/chip.c
+@@ -712,7 +712,6 @@ static u32 brcmf_chip_tcm_rambase(struct brcmf_chip_priv *ci)
+ 	case BRCM_CC_43569_CHIP_ID:
+ 	case BRCM_CC_43570_CHIP_ID:
+ 	case BRCM_CC_4358_CHIP_ID:
+-	case BRCM_CC_4359_CHIP_ID:
+ 	case BRCM_CC_43602_CHIP_ID:
+ 	case BRCM_CC_4371_CHIP_ID:
+ 		return 0x180000;
+@@ -722,6 +721,8 @@ static u32 brcmf_chip_tcm_rambase(struct brcmf_chip_priv *ci)
+ 	case BRCM_CC_4366_CHIP_ID:
+ 	case BRCM_CC_43664_CHIP_ID:
+ 		return 0x200000;
++	case BRCM_CC_4359_CHIP_ID:
++		return (ci->pub.chiprev < 9) ? 0x180000 : 0x160000;
+ 	case CY_CC_4373_CHIP_ID:
+ 		return 0x160000;
+ 	default:
+--
 2.17.1
