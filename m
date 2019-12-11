@@ -1,226 +1,209 @@
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Subject: Re: [PATCH v3 11/25] PCI: rockchip: Drop storing driver private
- outbound resource data
-Date: Wed, 11 Dec 2019 10:39:31 +0100
-Message-ID: <CAFqH_51R3K5ncmwC7r4VUnXzkmoc9xqfbsTTWH_7+GoSiQLRQg@mail.gmail.com>
-References: <20191028163256.8004-1-robh@kernel.org>
- <20191028163256.8004-12-robh@kernel.org>
- <20191206153633.GA18142@e121166-lin.cambridge.arm.com>
- <CAFqH_53nX74vD6-T2ao0x540wq_NbN671H5i2fwbo6NaCgc4KQ@mail.gmail.com>
+From: Soeren Moch <smoch@web.de>
+Subject: Re: [PATCH] mfd: rk808: Always use poweroff when requested
+Date: Wed, 11 Dec 2019 11:55:14 +0100
+Message-ID: <d743fb6b-74ab-b72b-3b68-e0acd03987f8@web.de>
+References: <20191209115746.12953-1-smoch@web.de>
+ <CANAwSgS9ixhyOE2QYQ3CetA=BUVebMan2=9xBKF=U3YXAwCHNQ@mail.gmail.com>
+ <6e380c0a-007d-22db-af26-19defaf1ae83@fivetechno.de>
+ <8377b8d6-8b4d-0605-4c61-fb61b4aebf91@web.de>
+ <CANAwSgQhPtBy-npPJgOAqieF7doGmaX3U35m95ktR2qAWVbf5w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAFqH_53nX74vD6-T2ao0x540wq_NbN671H5i2fwbo6NaCgc4KQ@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Michal Simek <michal.simek@xilinx.com>, Christoph Hellwig <hch@infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, bcm-kernel-feedback-list@broadcom.com, Shawn Lin <shawn.lin@rock-chips.com>, Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>Linux ARM <linux>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CANAwSgQhPtBy-npPJgOAqieF7doGmaX3U35m95ktR2qAWVbf5w@mail.gmail.com>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: Anand Moon <linux.amoon@gmail.com>
+Cc: Markus Reichl <m.reichl@fivetechno.de>, linux-rockchip@lists.infradead.org, Lee Jones <lee.jones@linaro.org>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Linux Kernel <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
 
-Missatge de Enric Balletbo Serra <eballetbo@gmail.com> del dia dt., 10
-de des. 2019 a les 18:33:
->
-> Hi Lorenzo,
->
-> Many thanks to look at this.
->
-> Missatge de Lorenzo Pieralisi <lorenzo.pieralisi@arm.com> del dia dv.,
-> 6 de des. 2019 a les 16:36:
-> >
-> > [+Eric]
-> >
-> > On Mon, Oct 28, 2019 at 11:32:42AM -0500, Rob Herring wrote:
-> > > The Rockchip host bridge driver doesn't need to store outboard resources
-> > > in its private struct as they are already stored in struct
-> > > pci_host_bridge.
-> > >
-> > > Cc: Shawn Lin <shawn.lin@rock-chips.com>
-> > > Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-> > > Cc: Andrew Murray <andrew.murray@arm.com>
-> > > Cc: Bjorn Helgaas <bhelgaas@google.com>
-> > > Cc: Heiko Stuebner <heiko@sntech.de>
-> > > Cc: linux-rockchip@lists.infradead.org
-> > > Signed-off-by: Rob Herring <robh@kernel.org>
-> > > ---
-> > >  drivers/pci/controller/pcie-rockchip-host.c | 54 +++++++++------------
-> > >  drivers/pci/controller/pcie-rockchip.h      |  5 --
-> > >  2 files changed, 23 insertions(+), 36 deletions(-)
-> > >
-> > > diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-> > > index 8d2e6f2e141e..f375e55ea02e 100644
-> > > --- a/drivers/pci/controller/pcie-rockchip-host.c
-> > > +++ b/drivers/pci/controller/pcie-rockchip-host.c
-> > > @@ -806,19 +806,28 @@ static int rockchip_pcie_prog_ib_atu(struct rockchip_pcie *rockchip,
-> > >  static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
-> > >  {
-> > >       struct device *dev = rockchip->dev;
-> > > +     struct pci_host_bridge *bridge = pci_host_bridge_from_priv(rockchip);
-> > > +     struct resource_entry *entry;
-> > > +     u64 pci_addr, size;
-> > >       int offset;
-> > >       int err;
-> > >       int reg_no;
-> > >
-> > >       rockchip_pcie_cfg_configuration_accesses(rockchip,
-> > >                                                AXI_WRAPPER_TYPE0_CFG);
-> > > +     entry = resource_list_first_type(&bridge->windows, IORESOURCE_MEM);
-> > > +     if (!entry)
-> > > +             return -ENODEV;
-> > > +
-> > > +     size = resource_size(entry->res);
-> > > +     pci_addr = entry->res->start - entry->offset;
-> > > +     rockchip->msg_bus_addr = pci_addr;
-> > >
-> > > -     for (reg_no = 0; reg_no < (rockchip->mem_size >> 20); reg_no++) {
-> > > +     for (reg_no = 0; reg_no < (size >> 20); reg_no++) {
-> > >               err = rockchip_pcie_prog_ob_atu(rockchip, reg_no + 1,
-> > >                                               AXI_WRAPPER_MEM_WRITE,
-> > >                                               20 - 1,
-> > > -                                             rockchip->mem_bus_addr +
-> > > -                                             (reg_no << 20),
-> > > +                                             pci_addr + (reg_no << 20),
-> > >                                               0);
-> > >               if (err) {
-> > >                       dev_err(dev, "program RC mem outbound ATU failed\n");
-> > > @@ -832,14 +841,20 @@ static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
-> > >               return err;
-> > >       }
-> > >
-> > > -     offset = rockchip->mem_size >> 20;
-> > > -     for (reg_no = 0; reg_no < (rockchip->io_size >> 20); reg_no++) {
-> > > +     entry = resource_list_first_type(&bridge->windows, IORESOURCE_IO);
-> > > +     if (!entry)
-> > > +             return -ENODEV;
-> > > +
-> > > +     size = resource_size(entry->res);
-> > > +     pci_addr = entry->res->start - entry->offset;
-> > > +
-> > > +     offset = size >> 20;
-> >
-> > Just trying to find what triggers:
-> >
-> > https://lore.kernel.org/linux-pci/CAFqH_52BiQJzNEzd_0pB3K+JmzVOVikYQo0xfiC0J-DwiXdtqw@mail.gmail.com/T/#u
-> >
-> > I think this offset calculation changed the behaviour:
-> >
-> > Before:
-> >
-> > > -     offset = rockchip->mem_size >> 20;
-> >
-> > Now:
-> >
-> > > +     offset = size >> 20;
-> >
-> > size must be the IORESOURCE_MEM resource size instead we are using the
-> > IORESOURCE_IO size so IIUC the ATU window setup may be compromised.
-> >
->
-> Are you suggesting that something like this [1] fixes the issue?
->
-> Indeed,I don't see the warning with this applied and wifi which is
-> connected via pcie is working. But I don't get why the offset should
-> be from the MEM resource instead of the IO resource.
->
-> [1] https://pastebin.com/FBj95gNR
->
 
-I think I understood, so I send a fix [2] for this
-
-[2] https://lkml.org/lkml/2019/12/11/199
-
-Thanks,
- Enric
-
-> Thanks,
->  Enric
+On 11.12.19 03:00, Anand Moon wrote:
+> hi Soeren,
 >
-> > Lorenzo
-> >
-> > > +     for (reg_no = 0; reg_no < (size >> 20); reg_no++) {
-> > >               err = rockchip_pcie_prog_ob_atu(rockchip,
-> > >                                               reg_no + 1 + offset,
-> > >                                               AXI_WRAPPER_IO_WRITE,
-> > >                                               20 - 1,
-> > > -                                             rockchip->io_bus_addr +
-> > > -                                             (reg_no << 20),
-> > > +                                             pci_addr + (reg_no << 20),
-> > >                                               0);
-> > >               if (err) {
-> > >                       dev_err(dev, "program RC io outbound ATU failed\n");
-> > > @@ -852,8 +867,7 @@ static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
-> > >                                 AXI_WRAPPER_NOR_MSG,
-> > >                                 20 - 1, 0, 0);
-> > >
-> > > -     rockchip->msg_bus_addr = rockchip->mem_bus_addr +
-> > > -                                     ((reg_no + offset) << 20);
-> > > +     rockchip->msg_bus_addr += ((reg_no + offset) << 20);
-> > >       return err;
-> > >  }
-> > >
-> > > @@ -951,7 +965,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
-> > >       struct pci_bus *bus, *child;
-> > >       struct pci_host_bridge *bridge;
-> > >       struct resource *bus_res;
-> > > -     struct resource_entry *win;
-> > >       int err;
-> > >
-> > >       if (!dev->of_node)
-> > > @@ -997,27 +1010,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
-> > >
-> > >       rockchip->root_bus_nr = bus_res->start;
-> > >
-> > > -     /* Get the I/O and memory ranges from DT */
-> > > -     resource_list_for_each_entry(win, &bridge->windows) {
-> > > -             switch (resource_type(win->res)) {
-> > > -             case IORESOURCE_IO:
-> > > -                     io = win->res;
-> > > -                     io->name = "I/O";
-> > > -                     rockchip->io_size = resource_size(io);
-> > > -                     rockchip->io_bus_addr = io->start - win->offset;
-> > > -                     rockchip->io = io;
-> > > -                     break;
-> > > -             case IORESOURCE_MEM:
-> > > -                     mem = win->res;
-> > > -                     mem->name = "MEM";
-> > > -                     rockchip->mem_size = resource_size(mem);
-> > > -                     rockchip->mem_bus_addr = mem->start - win->offset;
-> > > -                     break;
-> > > -             default:
-> > > -                     continue;
-> > > -             }
-> > > -     }
-> > > -
-> > >       err = rockchip_pcie_cfg_atu(rockchip);
-> > >       if (err)
-> > >               goto err_remove_irq_domain;
-> > > diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-> > > index 8e87a059ce73..bef42a803b56 100644
-> > > --- a/drivers/pci/controller/pcie-rockchip.h
-> > > +++ b/drivers/pci/controller/pcie-rockchip.h
-> > > @@ -304,13 +304,8 @@ struct rockchip_pcie {
-> > >       struct  irq_domain *irq_domain;
-> > >       int     offset;
-> > >       struct pci_bus *root_bus;
-> > > -     struct resource *io;
-> > > -     phys_addr_t io_bus_addr;
-> > > -     u32     io_size;
-> > >       void    __iomem *msg_region;
-> > > -     u32     mem_size;
-> > >       phys_addr_t msg_bus_addr;
-> > > -     phys_addr_t mem_bus_addr;
-> > >       bool is_rc;
-> > >       struct resource *mem_res;
-> > >  };
-> > > --
-> > > 2.20.1
-> > >
+> On Tue, 10 Dec 2019 at 22:10, Soeren Moch <smoch@web.de> wrote:
+>>
+>>
+>> On 10.12.19 13:55, Markus Reichl wrote:
+>>> Hi Anand,
+>>>
+>>> Am 10.12.19 um 13:42 schrieb Anand Moon:
+>>>> Hi Soeren,
+>>>>
+>>>> On Mon, 9 Dec 2019 at 17:28, Soeren Moch <smoch@web.de> wrote:
+>>>>> With the device tree property "rockchip,system-power-controller" we=
+
+>>>>> explicitly request to use this PMIC to power off the system. So alw=
+ays
+>>>>> register our poweroff function, even if some other handler (probabl=
+y
+>>>>> PSCI poweroff) was registered before.
+>>>>>
+>>>>> Signed-off-by: Soeren Moch <smoch@web.de>
+>>>>> ---
+>>>>> Cc: Lee Jones <lee.jones@linaro.org>
+>>>>> Cc: Heiko Stuebner <heiko@sntech.de>
+>>>>> Cc: linux-arm-kernel@lists.infradead.org
+>>>>> Cc: linux-rockchip@lists.infradead.org
+>>>>> Cc: linux-kernel@vger.kernel.org
+>>>>> ---
+>>>>>  drivers/mfd/rk808.c | 11 ++---------
+>>>>>  1 file changed, 2 insertions(+), 9 deletions(-)
+>>>>>
+>>>>> diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+>>>>> index a69a6742ecdc..616e44e7ef98 100644
+>>>>> --- a/drivers/mfd/rk808.c
+>>>>> +++ b/drivers/mfd/rk808.c
+>>>>> @@ -550,7 +550,7 @@ static int rk808_probe(struct i2c_client *clien=
+t,
+>>>>>         const struct mfd_cell *cells;
+>>>>>         int nr_pre_init_regs;
+>>>>>         int nr_cells;
+>>>>> -       int pm_off =3D 0, msb, lsb;
+>>>>> +       int msb, lsb;
+>>>>>         unsigned char pmic_id_msb, pmic_id_lsb;
+>>>>>         int ret;
+>>>>>         int i;
+>>>>> @@ -674,16 +674,9 @@ static int rk808_probe(struct i2c_client *clie=
+nt,
+>>>>>                 goto err_irq;
+>>>>>         }
+>>>>>
+>>>>> -       pm_off =3D of_property_read_bool(np,
+>>>>> -                               "rockchip,system-power-controller")=
+;
+>>>>> -       if (pm_off && !pm_power_off) {
+>>>>> +       if (of_property_read_bool(np,
+>>>>> "rockchip,system-power-controller")) {
+>>>>>                 rk808_i2c_client =3D client;
+>>>>>                 pm_power_off =3D rk808->pm_pwroff_fn;
+>>>>> -       }
+>>>>> -
+>>>>> -       if (pm_off && !pm_power_off_prepare) {
+>>>>> -               if (!rk808_i2c_client)
+>>>>> -                       rk808_i2c_client =3D client;
+>>>>>                 pm_power_off_prepare =3D rk808->pm_pwroff_prep_fn;
+>>>>>         }
+>>>>>
+>>>> I gave this a try on my Rock960 and Odroid N1
+>>>> both got kernel panic below.
+>>> I see the same on rk3399-roc-pc.
+>> This is no panic, it's a harmless warning.
+> Ok but my device do not come up cleanly after that, it get stuck in
+> u-boot in next boot.=20
+I do not know Rock960 and Odroid N1, so unfortunately I cannot debug
+your u-boot problem on these boards. From what you wrote the poweroff
+apparently works with this patch, I have no idea what could be a
+problem. After a complete power-off I would expect a clean cold boot.
+And that 's what I see on my RockPro64 board.
+
+This patch is about doing a PMIC poweroff when this method is requested
+in the devicetree. If this method does not work for your boards, you
+probably should remove the "rockchip,system-power-controller" property
+and use PSCI poweroff or whatever is desired on your boards. This patch
+does not change _how_ PMIC poweroff is done, only _that_ this method is
+used when explicitly requested.
+>
+>> The i2c core nowadays expects a specially marked i2c transfer function=
+
+>> late in the powerdown cycle:
+> You can look into similar commit.
+> d785334a0d5deff30a487c74324b842d2179553d (mfd: s2mps11: Add manual
+> shutdown method for Odroid XU3)
+I cannot see what should be similar in this patch. This patch is about a
+totally different PMIC and how this needs to be programmed to work
+properly on another different board.
+
+Soeren
+>
+>> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk=
+3x.c
+>> index 1a33007b03e9..cec115e0afa4 100644
+>> --- a/drivers/i2c/busses/i2c-rk3x.c
+>> +++ b/drivers/i2c/busses/i2c-rk3x.c
+>> @@ -1126,6 +1126,7 @@ static u32 rk3x_i2c_func(struct i2c_adapter *ada=
+p)
+>>
+>>  static const struct i2c_algorithm rk3x_i2c_algorithm =3D {
+>>      .master_xfer        =3D rk3x_i2c_xfer,
+>> +    .master_xfer_atomic    =3D rk3x_i2c_xfer, /* usable for PMIC powe=
+roff */
+>>      .functionality        =3D rk3x_i2c_func,
+>>  };
+>>
+>> ---
+>> It is only used for powerdown. The regular i2c xfer function works.
+>>
+>> Heiko, should I send a formal patch for that?
+>>
+>> Soeren
+>>
+>>>> [   58.305868] xhci-hcd xhci-hcd.0.auto: USB bus 5 deregistered
+>>>> [   58.306747] reboot: Power down
+>>>> [   58.307106] ------------[ cut here ]------------
+>>>> [   58.307510] No atomic I2C transfer handler for 'i2c-0'
+>>>> [   58.308007] WARNING: CPU: 0 PID: 1 at drivers/i2c/i2c-core.h:41
+>>>> i2c_transfer+0xe4/0xf8
+>>>> [   58.308696] Modules linked in: snd_soc_hdmi_codec dw_hdmi_i2s_aud=
+io
+>>>> rockchipdrm analogix_dp brcmfmac nvme dw_mipi_dsi nvme_core dw_hdmi
+>>>> panfrost cec brcmutil drm_kms_helper gpu_sched cfg80211 hci_uart drm=
+
+>>>> btbcm crct10dif_ce snd_soc_simple_card bluetooth snd_soc_rockchip_i2=
+s
+>>>> snd_soc_simple_card_utils snd_soc_rockchip_pcm phy_rockchip_pcie
+>>>> ecdh_generic rtc_rk808 ecc pcie_rockchip_host rfkill rockchip_therma=
+l
+>>>> ip_tables x_tables ipv6 nf_defrag_ipv6
+>>>> [   58.312150] CPU: 0 PID: 1 Comm: shutdown Not tainted
+>>>> 5.5.0-rc1-dirty #1
+>>>> [   58.312725] Hardware name: 96boards Rock960 (DT)
+>>>> [   58.313131] pstate: 60000085 (nZCv daIf -PAN -UAO)
+>>>> [   58.313551] pc : i2c_transfer+0xe4/0xf8
+>>>> [   58.313889] lr : i2c_transfer+0xe4/0xf8
+>>>> [   58.314225] sp : ffff80001004bb00
+>>>> [   58.314516] x29: ffff80001004bb00 x28: ffff00007d208000
+>>>> [   58.314981] x27: 0000000000000000 x26: 0000000000000000
+>>>> [   58.315446] x25: 0000000000000000 x24: 0000000000000008
+>>>> [   58.315910] x23: 0000000000000000 x22: ffff80001004bc74
+>>>> [   58.316375] x21: 0000000000000002 x20: ffff80001004bb58
+>>>> [   58.316841] x19: ffff0000784f0880 x18: 0000000000000010
+>>>> [   58.317305] x17: 0000000000000001 x16: 0000000000000019
+>>>> [   58.317770] x15: ffffffffffffffff x14: ffff8000118398c8
+>>>> [   58.318236] x13: ffff80009004b867 x12: ffff80001004b86f
+>>>> [   58.318701] x11: ffff800011851000 x10: ffff80001004b7f0
+>>>> [   58.319166] x9 : 00000000ffffffd0 x8 : ffff800010699ad8
+>>>> [   58.319631] x7 : 0000000000000265 x6 : ffff800011a20be9
+>>>> [   58.320096] x5 : 0000000000000000 x4 : 0000000000000000
+>>>> [   58.320561] x3 : 00000000ffffffff x2 : ffff800011851ab8
+>>>> [   58.321026] x1 : d375c0d4f4751f00 x0 : 0000000000000000
+>>>> [   58.321491] Call trace:
+>>>> [   58.321710]  i2c_transfer+0xe4/0xf8
+>>>> [   58.322020]  regmap_i2c_read+0x5c/0x98
+>>>> [   58.322350]  _regmap_raw_read+0xcc/0x138
+>>>> [   58.322694]  _regmap_bus_read+0x3c/0x70
+>>>> [   58.323034]  _regmap_read+0x60/0xe0
+>>>> [   58.323341]  _regmap_update_bits+0xc8/0x108
+>>>> [   58.323707]  regmap_update_bits_base+0x60/0x90
+>>>> [   58.324099]  rk808_device_shutdown+0x38/0x50
+>>>> [   58.324476]  machine_power_off+0x24/0x30
+>>>> [   58.324823]  kernel_power_off+0x64/0x70
+>>>> [   58.325159]  __do_sys_reboot+0x15c/0x240
+>>>> [   58.325504]  __arm64_sys_reboot+0x20/0x28
+>>>> [   58.325858]  el0_svc_common.constprop.2+0x88/0x150
+>>>> [   58.326279]  el0_svc_handler+0x20/0x80
+>>>> [   58.326607]  el0_sync_handler+0x118/0x188
+>>>> [   58.326960]  el0_sync+0x140/0x180
+>>>> [   58.327251] ---[ end trace b1de39d03d724d01 ]---
+>>>>
+>>>> -Anand
+>>>>
+>>>> _______________________________________________
+>>>> Linux-rockchip mailing list
+>>>> Linux-rockchip@lists.infradead.org
+>>>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>>>>
+>>> Gru=C3=9F,
+> -Anand
