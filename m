@@ -1,94 +1,72 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH 1/2] Revert "rockchip: spi: fix off-by-one in chunk size
- computation"
-Date: Wed, 11 Dec 2019 19:40:41 +0530
-Message-ID: <CAMty3ZCd4HNiTJSLMuzbOYTH22DLx52VV3aFt67CCGPy2m9-FA@mail.gmail.com>
-References: <20191211132623.430-1-jagan@amarulasolutions.com>
- <20191211132623.430-2-jagan@amarulasolutions.com>
- <1E12E6D7-5401-4EF5-9D74-DFC6F8216799@theobroma-systems.com>
+From: Sasha Levin <sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 014/134] iommu: rockchip: Free domain on .domain_free
+Date: Wed, 11 Dec 2019 10:09:50 -0500
+Message-ID: <20191211151150.19073-14-sashal@kernel.org>
+References: <20191211151150.19073-1-sashal@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <1E12E6D7-5401-4EF5-9D74-DFC6F8216799@theobroma-systems.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: u-boot@lists.denx.de, linux-amarula <linux-amarula@amarulasolutions.com>, linux-rockchip@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20191211151150.19073-1-sashal@kernel.org>
+Sender: stable-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <jroedel@suse.de>, Sasha Levin <sashal@kernel.org>, iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 11 Dec, 2019, 7:10 PM Philipp Tomsich, <
-philipp.tomsich@theobroma-systems.com> wrote:
+From: Ezequiel Garcia <ezequiel@collabora.com>
 
->
->
-> > On 11.12.2019, at 14:26, Jagan Teki <jagan@amarulasolutions.com> wrote:
-> >
-> > The maximum transfer length (in a single transaction) for the Rockchip
-> > SPI controller is 64Kframes (i.e. 0x10000 frames) of 8bit or 16bit
-> > frames and is encoded as (num_frames - 1) in CTRLR1.
-> >
-> > So the 0x10000 is offset value for 64K but the actual size value would
-> > be 'minus 1' from 0x10000.
->
-> NAK. Please see 2 code lines below your change to see that the =E2=80=9Cm=
-inus 1=E2=80=9D
-> is applied there=E2=80=A6 so a todo of 0x10000 will write 0xffff to regs-=
->ctrlr1.
->
-> The problem must be somewhere else and this patch will only mask the
-> underlying issue.
->
-> >
-> > With the existing code of 0x10000 transfer length leads to read
-> > failure when we try to read the flash with > 0x10000 size like,
-> >
-> > 1. sf read failure when with > 0x10000
-> >
-> > 2. Boot from SPI flash failed during spi_flash_read call in
-> >   common/spl/spl_spi.c
-> >
-> > Observed and Tested in
-> > - Rockpro64 with Gigadevice flash
-> > - ROC-RK3399-PC with Winbond flash
-> >
-> > This reverts commit e647decdd93c7408741329432f26758fbec04c7a.
-> >
-> > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> > ---
-> > drivers/spi/rk_spi.c | 2 +-
-> > 1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/spi/rk_spi.c b/drivers/spi/rk_spi.c
-> > index c04535ac44..d9a310ce80 100644
-> > --- a/drivers/spi/rk_spi.c
-> > +++ b/drivers/spi/rk_spi.c
-> > @@ -451,7 +451,7 @@ static int rockchip_spi_xfer(struct udevice *dev,
-> unsigned int bitlen,
-> >
-> >       /* This is the original 8bit reader/writer code */
-> >       while (len > 0) {
-> > -             int todo =3D min(len, 0x10000);
-> > +             int todo =3D min(len, 0xffff);
-> >
-> >               rkspi_enable_chip(regs, false);
-> >               writel(todo - 1, &regs->ctrlr1);
-> > --
-> > 2.18.0.321.gffc6fa0e3
-> >
->
+[ Upstream commit 42bb97b80f2e3bf592e3e99d109b67309aa1b30e ]
 
-I have looked multiple areas but didn't get it so and i belive offset and
-size values aren't same.
+IOMMU domain resource life is well-defined, managed
+by .domain_alloc and .domain_free.
 
- Would you please send me the log of sf read to more than 64K on your
-hardware? This would confirm my hardware issue if you succeed.
+Therefore, domain-specific resources shouldn't be tied to
+the device life, but instead to its domain.
 
->
+Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+Acked-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Joerg Roedel <jroedel@suse.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/iommu/rockchip-iommu.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index 4dcbf68dfda43..0df091934361b 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -980,13 +980,13 @@ static struct iommu_domain *rk_iommu_domain_alloc(unsigned type)
+ 	if (!dma_dev)
+ 		return NULL;
+ 
+-	rk_domain = devm_kzalloc(dma_dev, sizeof(*rk_domain), GFP_KERNEL);
++	rk_domain = kzalloc(sizeof(*rk_domain), GFP_KERNEL);
+ 	if (!rk_domain)
+ 		return NULL;
+ 
+ 	if (type == IOMMU_DOMAIN_DMA &&
+ 	    iommu_get_dma_cookie(&rk_domain->domain))
+-		return NULL;
++		goto err_free_domain;
+ 
+ 	/*
+ 	 * rk32xx iommus use a 2 level pagetable.
+@@ -1021,6 +1021,8 @@ err_free_dt:
+ err_put_cookie:
+ 	if (type == IOMMU_DOMAIN_DMA)
+ 		iommu_put_dma_cookie(&rk_domain->domain);
++err_free_domain:
++	kfree(rk_domain);
+ 
+ 	return NULL;
+ }
+@@ -1049,6 +1051,7 @@ static void rk_iommu_domain_free(struct iommu_domain *domain)
+ 
+ 	if (domain->type == IOMMU_DOMAIN_DMA)
+ 		iommu_put_dma_cookie(&rk_domain->domain);
++	kfree(rk_domain);
+ }
+ 
+ static int rk_iommu_add_device(struct device *dev)
+-- 
+2.20.1
