@@ -1,69 +1,119 @@
-From: Amit Kucheria <amit.kucheria@verdurent.com>
-Subject: Re: [RESEND PATCH] thermal: rockchip: enable hwmon
-Date: Thu, 12 Dec 2019 13:58:52 +0530
-Message-ID: <CAHLCerOHjAEEA1BpUqPdZvFwHMy11SqC+ZtjdFyManu7iOpBXA@mail.gmail.com>
-References: <20191212061702.BFE2D6E85603@corona.crabdance.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v2 5/9] brcmfmac: add support for BCM4359 SDIO chipset
+Date: Thu, 12 Dec 2019 09:33:46 +0100
+Message-ID: <CAPDyKFoE7g0XsyTkbSYBRE0=JraPCxCP+wyZ2PQFVpAvvQvCfg@mail.gmail.com>
+References: <20191211235253.2539-1-smoch@web.de> <20191211235253.2539-6-smoch@web.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191212061702.BFE2D6E85603@corona.crabdance.com>
+In-Reply-To: <20191211235253.2539-6-smoch@web.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: schaecsn@gmx.net
-Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Linux PM list <linux-pm@vger.kernel.org>, lakml <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>
+To: Soeren Moch <smoch@web.de>
+Cc: Kalle Valo <kvalo@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>, Arend van Spriel <arend.vanspriel@broadcom.com>, Franky Lin <franky.lin@broadcom.com>, Hante Meuleman <hante.meuleman@broadcom.com>, Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Wright Feng <wright.feng@cypress.com>, linux-wireless <linux-wireless@vger.kernel.org>, brcm80211-dev-list.pdl@broadcom.com, brcm80211-dev-list <brcm80211-dev-list@cypress.com>, netdev <netdev@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Dec 12, 2019 at 11:47 AM Stefan Schaeckeler <schaecsn@gmx.net> wrote:
+On Thu, 12 Dec 2019 at 00:53, Soeren Moch <smoch@web.de> wrote:
 >
-> By default, of-based thermal drivers do not enable hwmon.
-> Explicitly enable hwmon for both, the soc and gpu temperature
-> sensor.
-
-Is there any reason you need to expose this in hwmon?
-
-> Signed-off-by: Stefan Schaeckeler <schaecsn@gmx.net>
+> BCM4359 is a 2x2 802.11 abgn+ac Dual-Band HT80 combo chip and it
+> supports Real Simultaneous Dual Band feature.
 >
+> Based on a similar patch by: Wright Feng <wright.feng@cypress.com>
+>
+> Signed-off-by: Soeren Moch <smoch@web.de>
+
+Acked-by: Ulf Hansson <ulf.hansson@linaro.org>
+
+Kind regards
+Uffe
+
 > ---
->  drivers/thermal/rockchip_thermal.c | 12 +++++++++++-
->  1 file changed, 11 insertions(+), 1 deletion(-)
+> changes in v2:
+> - add SDIO_DEVICE_ID_CYPRESS_89359 as requested
+>   by Chi-Hsien Lin <chi-hsien.lin@cypress.com>
 >
-> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-> index 343c2f5c5a25..e47c60010259 100644
-> --- a/drivers/thermal/rockchip_thermal.c
-> +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -19,6 +19,8 @@
->  #include <linux/mfd/syscon.h>
->  #include <linux/pinctrl/consumer.h>
+> Cc: Kalle Valo <kvalo@codeaurora.org>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Arend van Spriel <arend.vanspriel@broadcom.com>
+> Cc: Franky Lin <franky.lin@broadcom.com>
+> Cc: Hante Meuleman <hante.meuleman@broadcom.com>
+> Cc: Chi-Hsien Lin <chi-hsien.lin@cypress.com>
+> Cc: Wright Feng <wright.feng@cypress.com>
+> Cc: linux-wireless@vger.kernel.org
+> Cc: brcm80211-dev-list.pdl@broadcom.com
+> Cc: brcm80211-dev-list@cypress.com
+> Cc: netdev@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-kernel@vger.kernel.org
+> ---
+>  drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c | 2 ++
+>  drivers/net/wireless/broadcom/brcm80211/brcmfmac/chip.c   | 1 +
+>  drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c   | 2 ++
+>  include/linux/mmc/sdio_ids.h                              | 2 ++
+>  4 files changed, 7 insertions(+)
 >
-> +#include "thermal_hwmon.h"
-> +
->  /**
->   * If the temperature over a period of time High,
->   * the resulting TSHUT gave CRU module,let it reset the entire chip,
-> @@ -1321,8 +1323,15 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c
+> index 68baf0189305..f4c53ab46058 100644
+> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c
+> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c
+> @@ -973,8 +973,10 @@ static const struct sdio_device_id brcmf_sdmmc_ids[] = {
+>         BRCMF_SDIO_DEVICE(SDIO_DEVICE_ID_BROADCOM_43455),
+>         BRCMF_SDIO_DEVICE(SDIO_DEVICE_ID_BROADCOM_4354),
+>         BRCMF_SDIO_DEVICE(SDIO_DEVICE_ID_BROADCOM_4356),
+> +       BRCMF_SDIO_DEVICE(SDIO_DEVICE_ID_BROADCOM_4359),
+>         BRCMF_SDIO_DEVICE(SDIO_DEVICE_ID_CYPRESS_4373),
+>         BRCMF_SDIO_DEVICE(SDIO_DEVICE_ID_CYPRESS_43012),
+> +       BRCMF_SDIO_DEVICE(SDIO_DEVICE_ID_CYPRESS_89359),
+>         { /* end: all zeroes */ }
+>  };
+>  MODULE_DEVICE_TABLE(sdio, brcmf_sdmmc_ids);
+> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/chip.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/chip.c
+> index baf72e3984fc..282d0bc14e8e 100644
+> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/chip.c
+> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/chip.c
+> @@ -1408,6 +1408,7 @@ bool brcmf_chip_sr_capable(struct brcmf_chip *pub)
+>                 addr = CORE_CC_REG(base, sr_control0);
+>                 reg = chip->ops->read32(chip->ctx, addr);
+>                 return (reg & CC_SR_CTL0_ENABLE_MASK) != 0;
+> +       case BRCM_CC_4359_CHIP_ID:
+>         case CY_CC_43012_CHIP_ID:
+>                 addr = CORE_CC_REG(pmu->base, retention_ctl);
+>                 reg = chip->ops->read32(chip->ctx, addr);
+> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+> index 21e535072f3f..c4012ed58b9c 100644
+> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+> @@ -616,6 +616,7 @@ BRCMF_FW_DEF(43455, "brcmfmac43455-sdio");
+>  BRCMF_FW_DEF(43456, "brcmfmac43456-sdio");
+>  BRCMF_FW_DEF(4354, "brcmfmac4354-sdio");
+>  BRCMF_FW_DEF(4356, "brcmfmac4356-sdio");
+> +BRCMF_FW_DEF(4359, "brcmfmac4359-sdio");
+>  BRCMF_FW_DEF(4373, "brcmfmac4373-sdio");
+>  BRCMF_FW_DEF(43012, "brcmfmac43012-sdio");
 >
->         thermal->chip->control(thermal->regs, true);
+> @@ -638,6 +639,7 @@ static const struct brcmf_firmware_mapping brcmf_sdio_fwnames[] = {
+>         BRCMF_FW_ENTRY(BRCM_CC_4345_CHIP_ID, 0xFFFFFDC0, 43455),
+>         BRCMF_FW_ENTRY(BRCM_CC_4354_CHIP_ID, 0xFFFFFFFF, 4354),
+>         BRCMF_FW_ENTRY(BRCM_CC_4356_CHIP_ID, 0xFFFFFFFF, 4356),
+> +       BRCMF_FW_ENTRY(BRCM_CC_4359_CHIP_ID, 0xFFFFFFFF, 4359),
+>         BRCMF_FW_ENTRY(CY_CC_4373_CHIP_ID, 0xFFFFFFFF, 4373),
+>         BRCMF_FW_ENTRY(CY_CC_43012_CHIP_ID, 0xFFFFFFFF, 43012)
+>  };
+> diff --git a/include/linux/mmc/sdio_ids.h b/include/linux/mmc/sdio_ids.h
+> index 08b25c02b5a1..2e9a6e4634eb 100644
+> --- a/include/linux/mmc/sdio_ids.h
+> +++ b/include/linux/mmc/sdio_ids.h
+> @@ -41,8 +41,10 @@
+>  #define SDIO_DEVICE_ID_BROADCOM_43455          0xa9bf
+>  #define SDIO_DEVICE_ID_BROADCOM_4354           0x4354
+>  #define SDIO_DEVICE_ID_BROADCOM_4356           0x4356
+> +#define SDIO_DEVICE_ID_BROADCOM_4359           0x4359
+>  #define SDIO_DEVICE_ID_CYPRESS_4373            0x4373
+>  #define SDIO_DEVICE_ID_CYPRESS_43012           43012
+> +#define SDIO_DEVICE_ID_CYPRESS_89359           0x4355
 >
-> -       for (i = 0; i < thermal->chip->chn_num; i++)
-> +       for (i = 0; i < thermal->chip->chn_num; i++) {
->                 rockchip_thermal_toggle_sensor(&thermal->sensors[i], true);
-> +               thermal->sensors[i].tzd->tzp->no_hwmon = false;
-> +               error = thermal_add_hwmon_sysfs(thermal->sensors[i].tzd);
-> +               if (error)
-> +                       dev_warn(&pdev->dev,
-> +                                "failed to register sensor %d with hwmon: %d\n",
-> +                                i, error);
-> +       }
->
->         platform_set_drvdata(pdev, thermal);
->
-> @@ -1344,6 +1353,7 @@ static int rockchip_thermal_remove(struct platform_device *pdev)
->         for (i = 0; i < thermal->chip->chn_num; i++) {
->                 struct rockchip_thermal_sensor *sensor = &thermal->sensors[i];
->
-> +               thermal_remove_hwmon_sysfs(sensor->tzd);
->                 rockchip_thermal_toggle_sensor(sensor, false);
->         }
->
+>  #define SDIO_VENDOR_ID_INTEL                   0x0089
+>  #define SDIO_DEVICE_ID_INTEL_IWMC3200WIMAX     0x1402
 > --
-> 2.24.0
+> 2.17.1
 >
