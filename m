@@ -1,92 +1,83 @@
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Subject: Re: [REGRESSION] PCI v5.5-rc1 breaks google kevin
-Date: Thu, 12 Dec 2019 15:16:25 +0100
-Message-ID: <CAFqH_50pJVQT3uqtpVgqn4ijfdPMzHoE1ns_KARH+_cKe+3NRg@mail.gmail.com>
-References: <58ce5534-64bd-4b4b-bd60-ed4e0c71b20f@gmail.com>
- <166f0016-7061-be5c-660d-0499f74e8697@arm.com> <20191212005254.GE24359@e119886-lin.cambridge.arm.com>
+From: Thomas McKahan <tmckahan-0TkS1fmXftJfu3SaXwXyvMyiEOaA11gU@public.gmane.org>
+Subject: Re: [PATCH 2/3] arm64: dts: rockchip: Enable PD for USB-C-Port on
+ rk3399-roc-pc.
+Date: Thu, 12 Dec 2019 10:46:09 -0500
+Message-ID: <84920a36-230f-42a6-a960-a71e685be99f@singleboardsolutions.com>
+References: <678df227-38be-47af-7ee3-741a391a196c@fivetechno.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191212005254.GE24359@e119886-lin.cambridge.arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew Murray <andrew.murray@arm.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Heiko Stuebner <heiko@sntech.de>, Frederick Lawler <fred@fredlawl.com>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, Liam Girdwood <lgirdwood@gmail.com>, Vicente Bergas <vicencb@gmail.com>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Brown <broonie@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Bjorn Helgaas <bhelgaas@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Mika Westerberg <mika.westerberg@linux.intel.com>, =?UTF-8?Q?Stefan_M=C3=A4tje?= <stefan.maetje@esd.eu>, Linux ARM <linux-arm-kernel@lists.infrade>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <678df227-38be-47af-7ee3-741a391a196c-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Vicente,
-
-Missatge de Andrew Murray <andrew.murray@arm.com> del dia dj., 12 de
-des. 2019 a les 1:53:
->
-> On Thu, Dec 12, 2019 at 12:12:56AM +0000, Robin Murphy wrote:
-> > Hi Vicente,
-> >
-> > On 2019-12-11 11:38 pm, Vicente Bergas wrote:
-> > > Hi,
-> > > since v5.5-rc1 the google kevin chromebook does not boot.
-> > > Git bisect reports 5e0c21c75e8c PCI/ASPM: Remove pcie_aspm_enabled()
-> > > unnecessary locking
-> > > as the first bad commit.
-> > >
-> > > In order to revert it from v5.5-rc1 i had to also revert some dependencies:
-> > > 5e0c21c75e8c08375a69710527e4a921b897cb7e
-> > > aff5d0552da4055da3faa27ee4252e48bb1f5821
-> > > 35efea32b26f9aacc99bf07e0d2cdfba2028b099
-> > > 687aaf386aeb551130f31705ce40d1341047a936
-> > > 72ea91afbfb08619696ccde610ee4d0d29cf4a1d
-> > > 87e90283c94c76ee11d379ab5a0973382bbd0baf
-> > > After reverting all of this, still no luck.
-> > > So, either the results of git bisect are not to be trusted, or
-> > > there are more bad commits.
-> > >
-> > > By "does not boot" i mean that the display fails to start and
-> > > the display is the only output device, so debugging is quite difficult.
-> >
-
-Another issue that is affecting current mainline for kevin is fixed
-with [1]. As usual, I have a tracking branch for 5.5 for different
-Chromebooks with some not yet merged patches that makes things work
-while are not fixed [2]. For kevin only the mentioned ASoC patch [1]
-and the pcie fix [3] should be needed. Other than that display is
-working for me on Kevin.
-
-Cheers,
- Enric
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git/commit/?h=for-5.5&id=4bf2e385aa59c2fae5f880aa25cfd2b470109093
-[2] https://gitlab.collabora.com/eballetbo/linux/commits/topic/chromeos/somewhat-stable-5.5
-[3]  https://lkml.org/lkml/2019/12/11/199
-
-> > Assuming it's a manifestation of the same PCI breakage that Enric and
-> > Lorenzo figured out, there's a proposed fix here:
-> > https://lkml.org/lkml/2019/12/11/199
->
-> It's likely that any PCI driver that uses PCI IO with that controller will
-> suffer the same fate.
->
-> Vicente - can you try the patch that has been proposed and verify it fixes
-> the issue for you?
->
-> Thanks,
->
-> Andrew Murray
->
-> >
-> > Robin.
-> >
-> > > v5.5-rc1 as is (reverting no commits at all) works fine when disabling PCI:
-> > > # CONFIG_PCI is not set
-> > >
-> > > Regards,
-> > >   Vicente.
-> > >
-> > >
-> > > _______________________________________________
-> > > Linux-rockchip mailing list
-> > > Linux-rockchip@lists.infradead.org
-> > > http://lists.infradead.org/mailman/listinfo/linux-rockchip
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gTWFya3VzLAoKwqDCoMKgIEkgaGF2ZSBiZWVuIHdvcmtpbmcgd2l0aCB0aGlzIGFzIHdl
+bGwsIGNhbWUgYWNyb3NzIGl0IG9uIEFybWJpYW4uIEkgd2FzIGFsc28gdHJ5aW5nIHRvIGVsaW1p
+bmF0ZSB0aGUgd2FybmluZyBjb25jZXJuaW5nIHRoZSBsYWNrIG9mIHBvcnQgd2l0aCBsaW1pdGVk
+IHN1Y2Nlc3MuwqAgSSBhbHNvIG1pc3NlZCB0aGUgaW50ZXJydXB0IHBpbiBkZWZpbml0aW9uIEkg
+c2VlLsKgIEkgd2lsbCB0ZXN0IHRoaXMgbGF0ZXIgdG9kYXkuwqAgCgrCoMKgIEkndmUgYWRkZWQg
+TmVpbCBBcm1zdHJvbmcgZm9yIGluZm9ybWF0aW9uIGluIGNhc2UgYW55IGJvYXJkcyBvbiB0aGUg
+QW1sb2dpYyBzaWRlIGFyZSBzaW1pbGFybHkgY29uZmlndXJlZCwgSSB0aGluayBhIGZldyBvdGhl
+ciBSb2NrY2hpcCBvbmVzIGF0IGxlYXN0IGFyZSBtaXNzaW5nIGNvbm5lY3RvciBub2RlcywgaXQg
+YXBwZWFycyB0byBiZSBhIGNvbnNpc3RlbnQgaXNzdWUgcHJlc3VtYWJseSBkdWUgdG8gZHJpdmVy
+IGNoYW5nZXMuCgotVG9ueQoKCuKBowoKT24gRGVjIDEwLCAyMDE5LCA3OjQ1IEFNLCBhdCA3OjQ1
+IEFNLCBNYXJrdXMgUmVpY2hsIDxtLnJlaWNobEBmaXZldGVjaG5vLmRlPiB3cm90ZToKPlVTQi1D
+LVBvcnQgMCBvbiByazMzOTktcm9jLXBjIGlzIGRlc2lnbmVkIHRvIHN1cHBseSB0aGUgYm9hcmQu
+Cj5UbyBtZWV0IHRoZSBwb3dlciByZXF1aXJlbWVudHMgb2YgdXAgdG8gNDVXIGEgcG93ZXIgZGVs
+aXZlcnkgKFBEKQo+Y29tcGF0aWJsZSBzdXBwbHkgaXMgbmVlZGVkLiBUbyBjb25maWd1cmUgdGhl
+IFBEIHRoZSBub2RlIG9mIHRoZQo+ZnVzYjMwMiBuZWVkcyBhIGNvbm5lY3RvciBwcm9wZXJ0eSB3
+aXRoIGRlc2lyZWQgUEQgZGVzY3JpcHRpb24uCj4KPlNpZ25lZC1vZmYtYnk6IE1hcmt1cyBSZWlj
+aGwgPG0ucmVpY2hsQGZpdmV0ZWNobm8uZGU+Cj4tLS0KPlByZXNlbnRseSB0aGUgYm9hcmQgaW4g
+bWFpbmxpbmUgaGFzIHRvIGJlIHBvd2VyZWQgZnJvbSBhIDEyViBzdXBwbHksCj5jb25uZWN0ZWQg
+dG8gdHdvIHBpbnMgb24gdGhlIGV4cGFuc2lvbiBoZWFkZXIgYXMgdGhlIHN0YW5kYXJkIDVWCj5k
+ZWxpdmVyZWQgYnkgdGhlIHVuY29uZmlndXJlZCBVU0ItQyBwbHVnIGlzIG5vdCBlbm91Z2ggZm9y
+IGhpZ2hlcgo+bG9hZHMgb3IgcGVyaXBoZXJhbHMgb24gVVNCIG9yIE0uMi4KPgo+V2l0aCB0aGlz
+IHBhdGNoIHRoZSBib2FyZCByZXF1ZXN0cyAxNVYgZnJvbSB0aGUgUEQgYW5kIHJ1bnMgZmluZQo+
+b24gaGlnaCBsb2FkcyB3aXRoIE5WTUUgU1NELCBFdGhlcm5ldCwgU0RJTyBXTEFOIGFuZCBVU0Ig
+cGVyaXBoZXJhbHMuCj5EdXJpbmcgYm9vdCB0aGUgMTJWIHN1cHBseSBpcyBzdGlsbCBuZWVkZWQg
+Zm9yIHNvbWUgc2Vjb25kcywKPmFzIHRoZSBmdXNiMzAyIHNodXRzIGRvd24gb3IgcmVzZXRzIHRo
+ZSBQRCBzaG9ydGx5IHdoZW4gaW5pdGlhbGl6aW5nCj4oQlVHPykuCj4KPlRoZSBib2FyZCdzIDEy
+ViBsaW5lIGlzIHJ1bm5pbmcgcHJlc2VudGx5IG9uIDVWLCB0aGUgZGVmYXVsdCBvdXRwdXQKPnZv
+bHRhZ2Ugb2YgdGhlIE1QODg1OSBvbiBJMkMtNywgZm9yIHdpY2ggbm8gbWFpbmxpbmUga2VybmVs
+IGRyaXZlcgo+ZXhpc3RzIHlldC4KPi0tLQo+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
+L3JrMzM5OS1yb2MtcGMuZHRzaSB8IDE2ICsrKysrKysrKysrKysrLS0KPiAgMSBmaWxlIGNoYW5n
+ZWQsIDE0IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4KPmRpZmYgLS1naXQgYS9hcmNo
+L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2MtcGMuZHRzaQo+Yi9hcmNoL2FybTY0
+L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2MtcGMuZHRzaQo+aW5kZXggOGUwMWIwNDE0NGI3
+Li45MDc4M2IyYjFkMWYgMTAwNjQ0Cj4tLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
+L3JrMzM5OS1yb2MtcGMuZHRzaQo+KysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
+azMzOTktcm9jLXBjLmR0c2kKPkBAIC02LDYgKzYsNyBAQAo+ICAvZHRzLXYxLzsKPiAgI2luY2x1
+ZGUgPGR0LWJpbmRpbmdzL2lucHV0L2xpbnV4LWV2ZW50LWNvZGVzLmg+Cj4gICNpbmNsdWRlIDxk
+dC1iaW5kaW5ncy9wd20vcHdtLmg+Cj4rI2luY2x1ZGUgPGR0LWJpbmRpbmdzL3VzYi9wZC5oPgo+
+ICAjaW5jbHVkZSAicmszMzk5LmR0c2kiCj4gICNpbmNsdWRlICJyazMzOTktb3BwLmR0c2kiCj4g
+IAo+QEAgLTU0MCwxMSArNTQxLDIyIEBAIGZ1c2IwOiB1c2ItdHlwZWNAMjIgewo+ICAJCWNvbXBh
+dGlibGUgPSAiZmNzLGZ1c2IzMDIiOwo+ICAJCXJlZyA9IDwweDIyPjsKPiAgCQlpbnRlcnJ1cHQt
+cGFyZW50ID0gPCZncGlvMT47Cj4tCQlpbnRlcnJ1cHRzID0gPDIgSVJRX1RZUEVfTEVWRUxfTE9X
+PjsKPisJCWludGVycnVwdHMgPSA8UktfUEEyIElSUV9UWVBFX0xFVkVMX0xPVz47Cj4gIAkJcGlu
+Y3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiAgCQlwaW5jdHJsLTAgPSA8JmZ1c2IwX2ludD47Cj4g
+IAkJdmJ1cy1zdXBwbHkgPSA8JnZjY192YnVzX3R5cGVjMD47Cj4tCQlzdGF0dXMgPSAib2theSI7
+Cj4rCj4rCQl1c2JfY29uOiBjb25uZWN0b3Igewo+KwkJCWNvbXBhdGlibGUgPSAidXNiLWMtY29u
+bmVjdG9yIjsKPisJCQlsYWJlbCA9ICJVU0ItQy0wIjsKPisJCQlwb3dlci1yb2xlID0gImR1YWwi
+Owo+KwkJCXRyeS1wb3dlci1yb2xlID0gInNpbmsiOwo+KwkJCXNvdXJjZS1wZG9zID0gPFBET19G
+SVhFRCg1MDAwLCAzMDAwLCBQRE9fRklYRURfVVNCX0NPTU0pPjsKPisJCQlzaW5rLXBkb3MgPSA8
+UERPX0ZJWEVEKDUwMDAsIDMwMDAsIFBET19GSVhFRF9VU0JfQ09NTSkKPisJCQkJICAgICBQRE9f
+VkFSKDUwMDAsIDE1MDAwLCAzMDAwKQo+KwkJCQkgICAgIFBET19QUFNfQVBETyg1MDAwLCAxNTAw
+MCwgMzAwMCk+Owo+KwkJCW9wLXNpbmstbWljcm93YXR0ID0gPDQ1MDAwMDAwPjsKPisJCX07Cj4g
+IAl9Owo+ICB9Owo+ICAKPi0tIAo+Mi4yNC4wCj4KPgo+X19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KPkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+TGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAoKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
