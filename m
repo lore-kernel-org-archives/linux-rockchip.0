@@ -1,83 +1,103 @@
-From: Chi-Hsien Lin <Chi-Hsien.Lin-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH v2 3/9] brcmfmac: fix rambase for 4359/9
-Date: Thu, 12 Dec 2019 02:07:52 +0000
-Message-ID: <cdb13e17-64b5-8b58-db66-6827b86dbf39@cypress.com>
+From: Chi-Hsien Lin <Chi-Hsien.Lin@cypress.com>
+Subject: Re: [PATCH v2 5/9] brcmfmac: add support for BCM4359 SDIO chipset
+Date: Thu, 12 Dec 2019 02:09:28 +0000
+Message-ID: <2e831af2-ed4a-7512-bdbd-c2582630db42@cypress.com>
 References: <20191211235253.2539-1-smoch@web.de>
- <20191211235253.2539-4-smoch@web.de>
-Reply-To: Chi-Hsien Lin <Chi-Hsien.Lin-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>
+ <20191211235253.2539-6-smoch@web.de>
+Reply-To: Chi-Hsien Lin <Chi-Hsien.Lin@cypress.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191211235253.2539-4-smoch-S0/GAf8tV78@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191211235253.2539-6-smoch@web.de>
 Content-Language: en-US
-Content-ID: <7C4EC26E46EA7949B54C07F878B62F7B-+1mpgTUVCH2cE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: "brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org" <brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Arend van Spriel <arend.vanspriel-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Hante Meuleman <hante.meuleman-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Wright Feng <Wright.Feng-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, brcm80211-dev-list <brcm80211-dev-list-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Franky Lin <franky.lin-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
+Content-ID: <1A8FAA12A2CEB649A47F36332995AD74@namprd06.prod.outlook.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Soeren Moch <smoch@web.de>, Kalle Valo <kvalo@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Arend van Spriel <arend.vanspriel@broadcom.com>, Franky Lin <franky.lin@broadcom.com>, Hante Meuleman <hante.meuleman@broadcom.com>, Wright Feng <Wright.Feng@cypress.com>, "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, "brcm80211-dev-list.pdl@broadcom.com" <brcm80211-dev-list.pdl@broadcom.com>, brcm80211-dev-list <brcm80211-dev-list@cypress.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 12/12/2019 7:52, Soeren Moch wrote:
-> Newer 4359 chip revisions need a different rambase address.
-> This fixes firmware download on such devices which fails otherwise.
-> 
-> Signed-off-by: Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org>
-Acked-by: Chi-Hsien Lin <chi-hsien.lin-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>
-
-> ---
-> changes in v2: none
-> 
-> Cc: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> Cc: Arend van Spriel <arend.vanspriel-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
-> Cc: Franky Lin <franky.lin-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
-> Cc: Hante Meuleman <hante.meuleman-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
-> Cc: Chi-Hsien Lin <chi-hsien.lin-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>
-> Cc: Wright Feng <wright.feng-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org>
-> Cc: linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> Cc: brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org
-> Cc: brcm80211-dev-list-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org
-> Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> ---
->   drivers/net/wireless/broadcom/brcm80211/brcmfmac/chip.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/chip.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/chip.c
-> index 0b5fbe5d8270..baf72e3984fc 100644
-> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/chip.c
-> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/chip.c
-> @@ -712,7 +712,6 @@ static u32 brcmf_chip_tcm_rambase(struct brcmf_chip_priv *ci)
->   	case BRCM_CC_43569_CHIP_ID:
->   	case BRCM_CC_43570_CHIP_ID:
->   	case BRCM_CC_4358_CHIP_ID:
-> -	case BRCM_CC_4359_CHIP_ID:
->   	case BRCM_CC_43602_CHIP_ID:
->   	case BRCM_CC_4371_CHIP_ID:
->   		return 0x180000;
-> @@ -722,6 +721,8 @@ static u32 brcmf_chip_tcm_rambase(struct brcmf_chip_priv *ci)
->   	case BRCM_CC_4366_CHIP_ID:
->   	case BRCM_CC_43664_CHIP_ID:
->   		return 0x200000;
-> +	case BRCM_CC_4359_CHIP_ID:
-> +		return (ci->pub.chiprev < 9) ? 0x180000 : 0x160000;
->   	case CY_CC_4373_CHIP_ID:
->   		return 0x160000;
->   	default:
-> --
-> 2.17.1
-> 
-> .
-> 
+DQoNCk9uIDEyLzEyLzIwMTkgNzo1MiwgU29lcmVuIE1vY2ggd3JvdGU6DQo+IEJDTTQzNTkgaXMg
+YSAyeDIgODAyLjExIGFiZ24rYWMgRHVhbC1CYW5kIEhUODAgY29tYm8gY2hpcCBhbmQgaXQNCj4g
+c3VwcG9ydHMgUmVhbCBTaW11bHRhbmVvdXMgRHVhbCBCYW5kIGZlYXR1cmUuDQo+IA0KPiBCYXNl
+ZCBvbiBhIHNpbWlsYXIgcGF0Y2ggYnk6IFdyaWdodCBGZW5nIDx3cmlnaHQuZmVuZ0BjeXByZXNz
+LmNvbT4NCj4gDQo+IFNpZ25lZC1vZmYtYnk6IFNvZXJlbiBNb2NoIDxzbW9jaEB3ZWIuZGU+DQpB
+Y2tlZC1ieTogQ2hpLUhzaWVuIExpbiA8Y2hpLWhzaWVuLmxpbkBjeXByZXNzLmNvbT4NCg0KPiAt
+LS0NCj4gY2hhbmdlcyBpbiB2MjoNCj4gLSBhZGQgU0RJT19ERVZJQ0VfSURfQ1lQUkVTU184OTM1
+OSBhcyByZXF1ZXN0ZWQNCj4gICAgYnkgQ2hpLUhzaWVuIExpbiA8Y2hpLWhzaWVuLmxpbkBjeXBy
+ZXNzLmNvbT4NCj4gDQo+IENjOiBLYWxsZSBWYWxvIDxrdmFsb0Bjb2RlYXVyb3JhLm9yZz4NCj4g
+Q2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+DQo+IENjOiBBcmVuZCB2YW4gU3By
+aWVsIDxhcmVuZC52YW5zcHJpZWxAYnJvYWRjb20uY29tPg0KPiBDYzogRnJhbmt5IExpbiA8ZnJh
+bmt5LmxpbkBicm9hZGNvbS5jb20+DQo+IENjOiBIYW50ZSBNZXVsZW1hbiA8aGFudGUubWV1bGVt
+YW5AYnJvYWRjb20uY29tPg0KPiBDYzogQ2hpLUhzaWVuIExpbiA8Y2hpLWhzaWVuLmxpbkBjeXBy
+ZXNzLmNvbT4NCj4gQ2M6IFdyaWdodCBGZW5nIDx3cmlnaHQuZmVuZ0BjeXByZXNzLmNvbT4NCj4g
+Q2M6IGxpbnV4LXdpcmVsZXNzQHZnZXIua2VybmVsLm9yZw0KPiBDYzogYnJjbTgwMjExLWRldi1s
+aXN0LnBkbEBicm9hZGNvbS5jb20NCj4gQ2M6IGJyY204MDIxMS1kZXYtbGlzdEBjeXByZXNzLmNv
+bQ0KPiBDYzogbmV0ZGV2QHZnZXIua2VybmVsLm9yZw0KPiBDYzogbGludXgtYXJtLWtlcm5lbEBs
+aXN0cy5pbmZyYWRlYWQub3JnDQo+IENjOiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnDQo+IENjOiBsaW51eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnDQo+IC0tLQ0KPiAgIGRyaXZl
+cnMvbmV0L3dpcmVsZXNzL2Jyb2FkY29tL2JyY204MDIxMS9icmNtZm1hYy9iY21zZGguYyB8IDIg
+KysNCj4gICBkcml2ZXJzL25ldC93aXJlbGVzcy9icm9hZGNvbS9icmNtODAyMTEvYnJjbWZtYWMv
+Y2hpcC5jICAgfCAxICsNCj4gICBkcml2ZXJzL25ldC93aXJlbGVzcy9icm9hZGNvbS9icmNtODAy
+MTEvYnJjbWZtYWMvc2Rpby5jICAgfCAyICsrDQo+ICAgaW5jbHVkZS9saW51eC9tbWMvc2Rpb19p
+ZHMuaCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgMiArKw0KPiAgIDQgZmlsZXMgY2hh
+bmdlZCwgNyBpbnNlcnRpb25zKCspDQo+IA0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvd2ly
+ZWxlc3MvYnJvYWRjb20vYnJjbTgwMjExL2JyY21mbWFjL2JjbXNkaC5jIGIvZHJpdmVycy9uZXQv
+d2lyZWxlc3MvYnJvYWRjb20vYnJjbTgwMjExL2JyY21mbWFjL2JjbXNkaC5jDQo+IGluZGV4IDY4
+YmFmMDE4OTMwNS4uZjRjNTNhYjQ2MDU4IDEwMDY0NA0KPiAtLS0gYS9kcml2ZXJzL25ldC93aXJl
+bGVzcy9icm9hZGNvbS9icmNtODAyMTEvYnJjbWZtYWMvYmNtc2RoLmMNCj4gKysrIGIvZHJpdmVy
+cy9uZXQvd2lyZWxlc3MvYnJvYWRjb20vYnJjbTgwMjExL2JyY21mbWFjL2JjbXNkaC5jDQo+IEBA
+IC05NzMsOCArOTczLDEwIEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgc2Rpb19kZXZpY2VfaWQgYnJj
+bWZfc2RtbWNfaWRzW10gPSB7DQo+ICAgCUJSQ01GX1NESU9fREVWSUNFKFNESU9fREVWSUNFX0lE
+X0JST0FEQ09NXzQzNDU1KSwNCj4gICAJQlJDTUZfU0RJT19ERVZJQ0UoU0RJT19ERVZJQ0VfSURf
+QlJPQURDT01fNDM1NCksDQo+ICAgCUJSQ01GX1NESU9fREVWSUNFKFNESU9fREVWSUNFX0lEX0JS
+T0FEQ09NXzQzNTYpLA0KPiArCUJSQ01GX1NESU9fREVWSUNFKFNESU9fREVWSUNFX0lEX0JST0FE
+Q09NXzQzNTkpLA0KPiAgIAlCUkNNRl9TRElPX0RFVklDRShTRElPX0RFVklDRV9JRF9DWVBSRVNT
+XzQzNzMpLA0KPiAgIAlCUkNNRl9TRElPX0RFVklDRShTRElPX0RFVklDRV9JRF9DWVBSRVNTXzQz
+MDEyKSwNCj4gKwlCUkNNRl9TRElPX0RFVklDRShTRElPX0RFVklDRV9JRF9DWVBSRVNTXzg5MzU5
+KSwNCj4gICAJeyAvKiBlbmQ6IGFsbCB6ZXJvZXMgKi8gfQ0KPiAgIH07DQo+ICAgTU9EVUxFX0RF
+VklDRV9UQUJMRShzZGlvLCBicmNtZl9zZG1tY19pZHMpOw0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9uZXQvd2lyZWxlc3MvYnJvYWRjb20vYnJjbTgwMjExL2JyY21mbWFjL2NoaXAuYyBiL2RyaXZl
+cnMvbmV0L3dpcmVsZXNzL2Jyb2FkY29tL2JyY204MDIxMS9icmNtZm1hYy9jaGlwLmMNCj4gaW5k
+ZXggYmFmNzJlMzk4NGZjLi4yODJkMGJjMTRlOGUgMTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvbmV0
+L3dpcmVsZXNzL2Jyb2FkY29tL2JyY204MDIxMS9icmNtZm1hYy9jaGlwLmMNCj4gKysrIGIvZHJp
+dmVycy9uZXQvd2lyZWxlc3MvYnJvYWRjb20vYnJjbTgwMjExL2JyY21mbWFjL2NoaXAuYw0KPiBA
+QCAtMTQwOCw2ICsxNDA4LDcgQEAgYm9vbCBicmNtZl9jaGlwX3NyX2NhcGFibGUoc3RydWN0IGJy
+Y21mX2NoaXAgKnB1YikNCj4gICAJCWFkZHIgPSBDT1JFX0NDX1JFRyhiYXNlLCBzcl9jb250cm9s
+MCk7DQo+ICAgCQlyZWcgPSBjaGlwLT5vcHMtPnJlYWQzMihjaGlwLT5jdHgsIGFkZHIpOw0KPiAg
+IAkJcmV0dXJuIChyZWcgJiBDQ19TUl9DVEwwX0VOQUJMRV9NQVNLKSAhPSAwOw0KPiArCWNhc2Ug
+QlJDTV9DQ180MzU5X0NISVBfSUQ6DQo+ICAgCWNhc2UgQ1lfQ0NfNDMwMTJfQ0hJUF9JRDoNCj4g
+ICAJCWFkZHIgPSBDT1JFX0NDX1JFRyhwbXUtPmJhc2UsIHJldGVudGlvbl9jdGwpOw0KPiAgIAkJ
+cmVnID0gY2hpcC0+b3BzLT5yZWFkMzIoY2hpcC0+Y3R4LCBhZGRyKTsNCj4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvbmV0L3dpcmVsZXNzL2Jyb2FkY29tL2JyY204MDIxMS9icmNtZm1hYy9zZGlvLmMg
+Yi9kcml2ZXJzL25ldC93aXJlbGVzcy9icm9hZGNvbS9icmNtODAyMTEvYnJjbWZtYWMvc2Rpby5j
+DQo+IGluZGV4IDIxZTUzNTA3MmYzZi4uYzQwMTJlZDU4YjljIDEwMDY0NA0KPiAtLS0gYS9kcml2
+ZXJzL25ldC93aXJlbGVzcy9icm9hZGNvbS9icmNtODAyMTEvYnJjbWZtYWMvc2Rpby5jDQo+ICsr
+KyBiL2RyaXZlcnMvbmV0L3dpcmVsZXNzL2Jyb2FkY29tL2JyY204MDIxMS9icmNtZm1hYy9zZGlv
+LmMNCj4gQEAgLTYxNiw2ICs2MTYsNyBAQCBCUkNNRl9GV19ERUYoNDM0NTUsICJicmNtZm1hYzQz
+NDU1LXNkaW8iKTsNCj4gICBCUkNNRl9GV19ERUYoNDM0NTYsICJicmNtZm1hYzQzNDU2LXNkaW8i
+KTsNCj4gICBCUkNNRl9GV19ERUYoNDM1NCwgImJyY21mbWFjNDM1NC1zZGlvIik7DQo+ICAgQlJD
+TUZfRldfREVGKDQzNTYsICJicmNtZm1hYzQzNTYtc2RpbyIpOw0KPiArQlJDTUZfRldfREVGKDQz
+NTksICJicmNtZm1hYzQzNTktc2RpbyIpOw0KPiAgIEJSQ01GX0ZXX0RFRig0MzczLCAiYnJjbWZt
+YWM0MzczLXNkaW8iKTsNCj4gICBCUkNNRl9GV19ERUYoNDMwMTIsICJicmNtZm1hYzQzMDEyLXNk
+aW8iKTsNCj4gDQo+IEBAIC02MzgsNiArNjM5LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBicmNt
+Zl9maXJtd2FyZV9tYXBwaW5nIGJyY21mX3NkaW9fZnduYW1lc1tdID0gew0KPiAgIAlCUkNNRl9G
+V19FTlRSWShCUkNNX0NDXzQzNDVfQ0hJUF9JRCwgMHhGRkZGRkRDMCwgNDM0NTUpLA0KPiAgIAlC
+UkNNRl9GV19FTlRSWShCUkNNX0NDXzQzNTRfQ0hJUF9JRCwgMHhGRkZGRkZGRiwgNDM1NCksDQo+
+ICAgCUJSQ01GX0ZXX0VOVFJZKEJSQ01fQ0NfNDM1Nl9DSElQX0lELCAweEZGRkZGRkZGLCA0MzU2
+KSwNCj4gKwlCUkNNRl9GV19FTlRSWShCUkNNX0NDXzQzNTlfQ0hJUF9JRCwgMHhGRkZGRkZGRiwg
+NDM1OSksDQo+ICAgCUJSQ01GX0ZXX0VOVFJZKENZX0NDXzQzNzNfQ0hJUF9JRCwgMHhGRkZGRkZG
+RiwgNDM3MyksDQo+ICAgCUJSQ01GX0ZXX0VOVFJZKENZX0NDXzQzMDEyX0NISVBfSUQsIDB4RkZG
+RkZGRkYsIDQzMDEyKQ0KPiAgIH07DQo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2xpbnV4L21tYy9z
+ZGlvX2lkcy5oIGIvaW5jbHVkZS9saW51eC9tbWMvc2Rpb19pZHMuaA0KPiBpbmRleCAwOGIyNWMw
+MmI1YTEuLjJlOWE2ZTQ2MzRlYiAxMDA2NDQNCj4gLS0tIGEvaW5jbHVkZS9saW51eC9tbWMvc2Rp
+b19pZHMuaA0KPiArKysgYi9pbmNsdWRlL2xpbnV4L21tYy9zZGlvX2lkcy5oDQo+IEBAIC00MSw4
+ICs0MSwxMCBAQA0KPiAgICNkZWZpbmUgU0RJT19ERVZJQ0VfSURfQlJPQURDT01fNDM0NTUJCTB4
+YTliZg0KPiAgICNkZWZpbmUgU0RJT19ERVZJQ0VfSURfQlJPQURDT01fNDM1NAkJMHg0MzU0DQo+
+ICAgI2RlZmluZSBTRElPX0RFVklDRV9JRF9CUk9BRENPTV80MzU2CQkweDQzNTYNCj4gKyNkZWZp
+bmUgU0RJT19ERVZJQ0VfSURfQlJPQURDT01fNDM1OQkJMHg0MzU5DQo+ICAgI2RlZmluZSBTRElP
+X0RFVklDRV9JRF9DWVBSRVNTXzQzNzMJCTB4NDM3Mw0KPiAgICNkZWZpbmUgU0RJT19ERVZJQ0Vf
+SURfQ1lQUkVTU180MzAxMgkJNDMwMTINCj4gKyNkZWZpbmUgU0RJT19ERVZJQ0VfSURfQ1lQUkVT
+U184OTM1OQkJMHg0MzU1DQo+IA0KPiAgICNkZWZpbmUgU0RJT19WRU5ET1JfSURfSU5URUwJCQkw
+eDAwODkNCj4gICAjZGVmaW5lIFNESU9fREVWSUNFX0lEX0lOVEVMX0lXTUMzMjAwV0lNQVgJMHgx
+NDAyDQo+IC0tDQo+IDIuMTcuMQ0KPiANCj4gLg0KPiANCg==
