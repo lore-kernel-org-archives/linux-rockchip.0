@@ -1,177 +1,122 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH] mfd: rk808: Always use poweroff when requested
-Date: Thu, 12 Dec 2019 00:28:33 +0000
-Message-ID: <c690397a-1247-cd58-08f6-f0573562b15e@arm.com>
-References: <20191209115746.12953-1-smoch@web.de>
- <CANAwSgS9ixhyOE2QYQ3CetA=BUVebMan2=9xBKF=U3YXAwCHNQ@mail.gmail.com>
- <6e380c0a-007d-22db-af26-19defaf1ae83@fivetechno.de>
- <8377b8d6-8b4d-0605-4c61-fb61b4aebf91@web.de>
- <CANAwSgQhPtBy-npPJgOAqieF7doGmaX3U35m95ktR2qAWVbf5w@mail.gmail.com>
- <d743fb6b-74ab-b72b-3b68-e0acd03987f8@web.de>
+From: Andrew Murray <andrew.murray@arm.com>
+Subject: Re: [PATCH] PCI: rockchip: Fix register number offset to program IO
+ outbound ATU
+Date: Thu, 12 Dec 2019 00:43:52 +0000
+Message-ID: <20191212004347.GD24359@e119886-lin.cambridge.arm.com>
+References: <20191211093450.7481-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <d743fb6b-74ab-b72b-3b68-e0acd03987f8@web.de>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Soeren Moch <smoch@web.de>, Anand Moon <linux.amoon@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Linux Kernel <linux-kernel@vger.kernel.org>, Markus Reichl <m.reichl@fivetechno.de>, linux-rockchip@lists.infradead.org, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20191211093450.7481-1-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: linux-kernel@vger.kernel.org, Collabora Kernel ML <kernel@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, groeck@chromium.org, bleung@chromium.org, dtor@chromium.org, gwendal@chromium.org, Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxOS0xMi0xMSAxMDo1NSBhbSwgU29lcmVuIE1vY2ggd3JvdGU6Cj4gCj4gCj4gT24gMTEu
-MTIuMTkgMDM6MDAsIEFuYW5kIE1vb24gd3JvdGU6Cj4+IGhpIFNvZXJlbiwKPj4KPj4gT24gVHVl
-LCAxMCBEZWMgMjAxOSBhdCAyMjoxMCwgU29lcmVuIE1vY2ggPHNtb2NoQHdlYi5kZT4gd3JvdGU6
-Cj4+Pgo+Pj4KPj4+IE9uIDEwLjEyLjE5IDEzOjU1LCBNYXJrdXMgUmVpY2hsIHdyb3RlOgo+Pj4+
-IEhpIEFuYW5kLAo+Pj4+Cj4+Pj4gQW0gMTAuMTIuMTkgdW0gMTM6NDIgc2NocmllYiBBbmFuZCBN
-b29uOgo+Pj4+PiBIaSBTb2VyZW4sCj4+Pj4+Cj4+Pj4+IE9uIE1vbiwgOSBEZWMgMjAxOSBhdCAx
-NzoyOCwgU29lcmVuIE1vY2ggPHNtb2NoQHdlYi5kZT4gd3JvdGU6Cj4+Pj4+PiBXaXRoIHRoZSBk
-ZXZpY2UgdHJlZSBwcm9wZXJ0eSAicm9ja2NoaXAsc3lzdGVtLXBvd2VyLWNvbnRyb2xsZXIiIHdl
-Cj4+Pj4+PiBleHBsaWNpdGx5IHJlcXVlc3QgdG8gdXNlIHRoaXMgUE1JQyB0byBwb3dlciBvZmYg
-dGhlIHN5c3RlbS4gU28gYWx3YXlzCj4+Pj4+PiByZWdpc3RlciBvdXIgcG93ZXJvZmYgZnVuY3Rp
-b24sIGV2ZW4gaWYgc29tZSBvdGhlciBoYW5kbGVyIChwcm9iYWJseQo+Pj4+Pj4gUFNDSSBwb3dl
-cm9mZikgd2FzIHJlZ2lzdGVyZWQgYmVmb3JlLgo+Pj4+Pj4KPj4+Pj4+IFNpZ25lZC1vZmYtYnk6
-IFNvZXJlbiBNb2NoIDxzbW9jaEB3ZWIuZGU+Cj4+Pj4+PiAtLS0KPj4+Pj4+IENjOiBMZWUgSm9u
-ZXMgPGxlZS5qb25lc0BsaW5hcm8ub3JnPgo+Pj4+Pj4gQ2M6IEhlaWtvIFN0dWVibmVyIDxoZWlr
-b0BzbnRlY2guZGU+Cj4+Pj4+PiBDYzogbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCj4+Pj4+PiBDYzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+Pj4+Pj4g
-Q2M6IGxpbnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmcKPj4+Pj4+IC0tLQo+Pj4+Pj4gICBkcml2
-ZXJzL21mZC9yazgwOC5jIHwgMTEgKystLS0tLS0tLS0KPj4+Pj4+ICAgMSBmaWxlIGNoYW5nZWQs
-IDIgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPj4+Pj4+Cj4+Pj4+PiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9tZmQvcms4MDguYyBiL2RyaXZlcnMvbWZkL3JrODA4LmMKPj4+Pj4+IGluZGV4
-IGE2OWE2NzQyZWNkYy4uNjE2ZTQ0ZTdlZjk4IDEwMDY0NAo+Pj4+Pj4gLS0tIGEvZHJpdmVycy9t
-ZmQvcms4MDguYwo+Pj4+Pj4gKysrIGIvZHJpdmVycy9tZmQvcms4MDguYwo+Pj4+Pj4gQEAgLTU1
-MCw3ICs1NTAsNyBAQCBzdGF0aWMgaW50IHJrODA4X3Byb2JlKHN0cnVjdCBpMmNfY2xpZW50ICpj
-bGllbnQsCj4+Pj4+PiAgICAgICAgICBjb25zdCBzdHJ1Y3QgbWZkX2NlbGwgKmNlbGxzOwo+Pj4+
-Pj4gICAgICAgICAgaW50IG5yX3ByZV9pbml0X3JlZ3M7Cj4+Pj4+PiAgICAgICAgICBpbnQgbnJf
-Y2VsbHM7Cj4+Pj4+PiAtICAgICAgIGludCBwbV9vZmYgPSAwLCBtc2IsIGxzYjsKPj4+Pj4+ICsg
-ICAgICAgaW50IG1zYiwgbHNiOwo+Pj4+Pj4gICAgICAgICAgdW5zaWduZWQgY2hhciBwbWljX2lk
-X21zYiwgcG1pY19pZF9sc2I7Cj4+Pj4+PiAgICAgICAgICBpbnQgcmV0Owo+Pj4+Pj4gICAgICAg
-ICAgaW50IGk7Cj4+Pj4+PiBAQCAtNjc0LDE2ICs2NzQsOSBAQCBzdGF0aWMgaW50IHJrODA4X3By
-b2JlKHN0cnVjdCBpMmNfY2xpZW50ICpjbGllbnQsCj4+Pj4+PiAgICAgICAgICAgICAgICAgIGdv
-dG8gZXJyX2lycTsKPj4+Pj4+ICAgICAgICAgIH0KPj4+Pj4+Cj4+Pj4+PiAtICAgICAgIHBtX29m
-ZiA9IG9mX3Byb3BlcnR5X3JlYWRfYm9vbChucCwKPj4+Pj4+IC0gICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgInJvY2tjaGlwLHN5c3RlbS1wb3dlci1jb250cm9sbGVyIik7Cj4+Pj4+PiAt
-ICAgICAgIGlmIChwbV9vZmYgJiYgIXBtX3Bvd2VyX29mZikgewo+Pj4+Pj4gKyAgICAgICBpZiAo
-b2ZfcHJvcGVydHlfcmVhZF9ib29sKG5wLAo+Pj4+Pj4gInJvY2tjaGlwLHN5c3RlbS1wb3dlci1j
-b250cm9sbGVyIikpIHsKPj4+Pj4+ICAgICAgICAgICAgICAgICAgcms4MDhfaTJjX2NsaWVudCA9
-IGNsaWVudDsKPj4+Pj4+ICAgICAgICAgICAgICAgICAgcG1fcG93ZXJfb2ZmID0gcms4MDgtPnBt
-X3B3cm9mZl9mbjsKPj4+Pj4+IC0gICAgICAgfQo+Pj4+Pj4gLQo+Pj4+Pj4gLSAgICAgICBpZiAo
-cG1fb2ZmICYmICFwbV9wb3dlcl9vZmZfcHJlcGFyZSkgewo+Pj4+Pj4gLSAgICAgICAgICAgICAg
-IGlmICghcms4MDhfaTJjX2NsaWVudCkKPj4+Pj4+IC0gICAgICAgICAgICAgICAgICAgICAgIHJr
-ODA4X2kyY19jbGllbnQgPSBjbGllbnQ7Cj4+Pj4+PiAgICAgICAgICAgICAgICAgIHBtX3Bvd2Vy
-X29mZl9wcmVwYXJlID0gcms4MDgtPnBtX3B3cm9mZl9wcmVwX2ZuOwo+Pj4+Pj4gICAgICAgICAg
-fQo+Pj4+Pj4KPj4+Pj4gSSBnYXZlIHRoaXMgYSB0cnkgb24gbXkgUm9jazk2MCBhbmQgT2Ryb2lk
-IE4xCj4+Pj4+IGJvdGggZ290IGtlcm5lbCBwYW5pYyBiZWxvdy4KPj4+PiBJIHNlZSB0aGUgc2Ft
-ZSBvbiByazMzOTktcm9jLXBjLgo+Pj4gVGhpcyBpcyBubyBwYW5pYywgaXQncyBhIGhhcm1sZXNz
-IHdhcm5pbmcuCj4+IE9rIGJ1dCBteSBkZXZpY2UgZG8gbm90IGNvbWUgdXAgY2xlYW5seSBhZnRl
-ciB0aGF0LCBpdCBnZXQgc3R1Y2sgaW4KPj4gdS1ib290IGluIG5leHQgYm9vdC4KPiBJIGRvIG5v
-dCBrbm93IFJvY2s5NjAgYW5kIE9kcm9pZCBOMSwgc28gdW5mb3J0dW5hdGVseSBJIGNhbm5vdCBk
-ZWJ1Zwo+IHlvdXIgdS1ib290IHByb2JsZW0gb24gdGhlc2UgYm9hcmRzLiBGcm9tIHdoYXQgeW91
-IHdyb3RlIHRoZSBwb3dlcm9mZgo+IGFwcGFyZW50bHkgd29ya3Mgd2l0aCB0aGlzIHBhdGNoLCBJ
-IGhhdmUgbm8gaWRlYSB3aGF0IGNvdWxkIGJlIGEKPiBwcm9ibGVtLiBBZnRlciBhIGNvbXBsZXRl
-IHBvd2VyLW9mZiBJIHdvdWxkIGV4cGVjdCBhIGNsZWFuIGNvbGQgYm9vdC4KPiBBbmQgdGhhdCAn
-cyB3aGF0IEkgc2VlIG9uIG15IFJvY2tQcm82NCBib2FyZC4KCkZXSVcgSSd2ZSBub3cgaGFkIGEg
-Y2hhbmNlIHRvIGdpdmUgdGhpcyBhIHNwaW4gb24gbXkgTmFub1BDLVQ0LCBhbmQgCmluZGVlZCBJ
-IHBvd2VyLWN5Y2xlZCB0aGUgYm9hcmQgYWJvdXQgYSBkb3plbiB0aW1lcyBpbiBhIHJvdyB3aXRo
-b3V0IGFueSAKcHJvYmxlbXMuIFNvIEknbSBub3Qgc3VyZSB3aGF0J3MgdXAgd2l0aCBBbmFuZCdz
-IGJvYXJkcyBlaXRoZXIgOi8KClJvYmluLgoKPiBUaGlzIHBhdGNoIGlzIGFib3V0IGRvaW5nIGEg
-UE1JQyBwb3dlcm9mZiB3aGVuIHRoaXMgbWV0aG9kIGlzIHJlcXVlc3RlZAo+IGluIHRoZSBkZXZp
-Y2V0cmVlLiBJZiB0aGlzIG1ldGhvZCBkb2VzIG5vdCB3b3JrIGZvciB5b3VyIGJvYXJkcywgeW91
-Cj4gcHJvYmFibHkgc2hvdWxkIHJlbW92ZSB0aGUgInJvY2tjaGlwLHN5c3RlbS1wb3dlci1jb250
-cm9sbGVyIiBwcm9wZXJ0eQo+IGFuZCB1c2UgUFNDSSBwb3dlcm9mZiBvciB3aGF0ZXZlciBpcyBk
-ZXNpcmVkIG9uIHlvdXIgYm9hcmRzLiBUaGlzIHBhdGNoCj4gZG9lcyBub3QgY2hhbmdlIF9ob3df
-IFBNSUMgcG93ZXJvZmYgaXMgZG9uZSwgb25seSBfdGhhdF8gdGhpcyBtZXRob2QgaXMKPiB1c2Vk
-IHdoZW4gZXhwbGljaXRseSByZXF1ZXN0ZWQuCj4+Cj4+PiBUaGUgaTJjIGNvcmUgbm93YWRheXMg
-ZXhwZWN0cyBhIHNwZWNpYWxseSBtYXJrZWQgaTJjIHRyYW5zZmVyIGZ1bmN0aW9uCj4+PiBsYXRl
-IGluIHRoZSBwb3dlcmRvd24gY3ljbGU6Cj4+IFlvdSBjYW4gbG9vayBpbnRvIHNpbWlsYXIgY29t
-bWl0Lgo+PiBkNzg1MzM0YTBkNWRlZmYzMGE0ODdjNzQzMjRiODQyZDIxNzk1NTNkIChtZmQ6IHMy
-bXBzMTE6IEFkZCBtYW51YWwKPj4gc2h1dGRvd24gbWV0aG9kIGZvciBPZHJvaWQgWFUzKQo+IEkg
-Y2Fubm90IHNlZSB3aGF0IHNob3VsZCBiZSBzaW1pbGFyIGluIHRoaXMgcGF0Y2guIFRoaXMgcGF0
-Y2ggaXMgYWJvdXQgYQo+IHRvdGFsbHkgZGlmZmVyZW50IFBNSUMgYW5kIGhvdyB0aGlzIG5lZWRz
-IHRvIGJlIHByb2dyYW1tZWQgdG8gd29yawo+IHByb3Blcmx5IG9uIGFub3RoZXIgZGlmZmVyZW50
-IGJvYXJkLgo+IAo+IFNvZXJlbgo+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvaTJjL2J1c3Nl
-cy9pMmMtcmszeC5jIGIvZHJpdmVycy9pMmMvYnVzc2VzL2kyYy1yazN4LmMKPj4+IGluZGV4IDFh
-MzMwMDdiMDNlOS4uY2VjMTE1ZTBhZmE0IDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9pMmMvYnVz
-c2VzL2kyYy1yazN4LmMKPj4+ICsrKyBiL2RyaXZlcnMvaTJjL2J1c3Nlcy9pMmMtcmszeC5jCj4+
-PiBAQCAtMTEyNiw2ICsxMTI2LDcgQEAgc3RhdGljIHUzMiByazN4X2kyY19mdW5jKHN0cnVjdCBp
-MmNfYWRhcHRlciAqYWRhcCkKPj4+Cj4+PiAgIHN0YXRpYyBjb25zdCBzdHJ1Y3QgaTJjX2FsZ29y
-aXRobSByazN4X2kyY19hbGdvcml0aG0gPSB7Cj4+PiAgICAgICAubWFzdGVyX3hmZXIgICAgICAg
-ID0gcmszeF9pMmNfeGZlciwKPj4+ICsgICAgLm1hc3Rlcl94ZmVyX2F0b21pYyAgICA9IHJrM3hf
-aTJjX3hmZXIsIC8qIHVzYWJsZSBmb3IgUE1JQyBwb3dlcm9mZiAqLwo+Pj4gICAgICAgLmZ1bmN0
-aW9uYWxpdHkgICAgICAgID0gcmszeF9pMmNfZnVuYywKPj4+ICAgfTsKPj4+Cj4+PiAtLS0KPj4+
-IEl0IGlzIG9ubHkgdXNlZCBmb3IgcG93ZXJkb3duLiBUaGUgcmVndWxhciBpMmMgeGZlciBmdW5j
-dGlvbiB3b3Jrcy4KPj4+Cj4+PiBIZWlrbywgc2hvdWxkIEkgc2VuZCBhIGZvcm1hbCBwYXRjaCBm
-b3IgdGhhdD8KPj4+Cj4+PiBTb2VyZW4KPj4+Cj4+Pj4+IFsgICA1OC4zMDU4NjhdIHhoY2ktaGNk
-IHhoY2ktaGNkLjAuYXV0bzogVVNCIGJ1cyA1IGRlcmVnaXN0ZXJlZAo+Pj4+PiBbICAgNTguMzA2
-NzQ3XSByZWJvb3Q6IFBvd2VyIGRvd24KPj4+Pj4gWyAgIDU4LjMwNzEwNl0gLS0tLS0tLS0tLS0t
-WyBjdXQgaGVyZSBdLS0tLS0tLS0tLS0tCj4+Pj4+IFsgICA1OC4zMDc1MTBdIE5vIGF0b21pYyBJ
-MkMgdHJhbnNmZXIgaGFuZGxlciBmb3IgJ2kyYy0wJwo+Pj4+PiBbICAgNTguMzA4MDA3XSBXQVJO
-SU5HOiBDUFU6IDAgUElEOiAxIGF0IGRyaXZlcnMvaTJjL2kyYy1jb3JlLmg6NDEKPj4+Pj4gaTJj
-X3RyYW5zZmVyKzB4ZTQvMHhmOAo+Pj4+PiBbICAgNTguMzA4Njk2XSBNb2R1bGVzIGxpbmtlZCBp
-bjogc25kX3NvY19oZG1pX2NvZGVjIGR3X2hkbWlfaTJzX2F1ZGlvCj4+Pj4+IHJvY2tjaGlwZHJt
-IGFuYWxvZ2l4X2RwIGJyY21mbWFjIG52bWUgZHdfbWlwaV9kc2kgbnZtZV9jb3JlIGR3X2hkbWkK
-Pj4+Pj4gcGFuZnJvc3QgY2VjIGJyY211dGlsIGRybV9rbXNfaGVscGVyIGdwdV9zY2hlZCBjZmc4
-MDIxMSBoY2lfdWFydCBkcm0KPj4+Pj4gYnRiY20gY3JjdDEwZGlmX2NlIHNuZF9zb2Nfc2ltcGxl
-X2NhcmQgYmx1ZXRvb3RoIHNuZF9zb2Nfcm9ja2NoaXBfaTJzCj4+Pj4+IHNuZF9zb2Nfc2ltcGxl
-X2NhcmRfdXRpbHMgc25kX3NvY19yb2NrY2hpcF9wY20gcGh5X3JvY2tjaGlwX3BjaWUKPj4+Pj4g
-ZWNkaF9nZW5lcmljIHJ0Y19yazgwOCBlY2MgcGNpZV9yb2NrY2hpcF9ob3N0IHJma2lsbCByb2Nr
-Y2hpcF90aGVybWFsCj4+Pj4+IGlwX3RhYmxlcyB4X3RhYmxlcyBpcHY2IG5mX2RlZnJhZ19pcHY2
-Cj4+Pj4+IFsgICA1OC4zMTIxNTBdIENQVTogMCBQSUQ6IDEgQ29tbTogc2h1dGRvd24gTm90IHRh
-aW50ZWQKPj4+Pj4gNS41LjAtcmMxLWRpcnR5ICMxCj4+Pj4+IFsgICA1OC4zMTI3MjVdIEhhcmR3
-YXJlIG5hbWU6IDk2Ym9hcmRzIFJvY2s5NjAgKERUKQo+Pj4+PiBbICAgNTguMzEzMTMxXSBwc3Rh
-dGU6IDYwMDAwMDg1IChuWkN2IGRhSWYgLVBBTiAtVUFPKQo+Pj4+PiBbICAgNTguMzEzNTUxXSBw
-YyA6IGkyY190cmFuc2ZlcisweGU0LzB4ZjgKPj4+Pj4gWyAgIDU4LjMxMzg4OV0gbHIgOiBpMmNf
-dHJhbnNmZXIrMHhlNC8weGY4Cj4+Pj4+IFsgICA1OC4zMTQyMjVdIHNwIDogZmZmZjgwMDAxMDA0
-YmIwMAo+Pj4+PiBbICAgNTguMzE0NTE2XSB4Mjk6IGZmZmY4MDAwMTAwNGJiMDAgeDI4OiBmZmZm
-MDAwMDdkMjA4MDAwCj4+Pj4+IFsgICA1OC4zMTQ5ODFdIHgyNzogMDAwMDAwMDAwMDAwMDAwMCB4
-MjY6IDAwMDAwMDAwMDAwMDAwMDAKPj4+Pj4gWyAgIDU4LjMxNTQ0Nl0geDI1OiAwMDAwMDAwMDAw
-MDAwMDAwIHgyNDogMDAwMDAwMDAwMDAwMDAwOAo+Pj4+PiBbICAgNTguMzE1OTEwXSB4MjM6IDAw
-MDAwMDAwMDAwMDAwMDAgeDIyOiBmZmZmODAwMDEwMDRiYzc0Cj4+Pj4+IFsgICA1OC4zMTYzNzVd
-IHgyMTogMDAwMDAwMDAwMDAwMDAwMiB4MjA6IGZmZmY4MDAwMTAwNGJiNTgKPj4+Pj4gWyAgIDU4
-LjMxNjg0MV0geDE5OiBmZmZmMDAwMDc4NGYwODgwIHgxODogMDAwMDAwMDAwMDAwMDAxMAo+Pj4+
-PiBbICAgNTguMzE3MzA1XSB4MTc6IDAwMDAwMDAwMDAwMDAwMDEgeDE2OiAwMDAwMDAwMDAwMDAw
-MDE5Cj4+Pj4+IFsgICA1OC4zMTc3NzBdIHgxNTogZmZmZmZmZmZmZmZmZmZmZiB4MTQ6IGZmZmY4
-MDAwMTE4Mzk4YzgKPj4+Pj4gWyAgIDU4LjMxODIzNl0geDEzOiBmZmZmODAwMDkwMDRiODY3IHgx
-MjogZmZmZjgwMDAxMDA0Yjg2Zgo+Pj4+PiBbICAgNTguMzE4NzAxXSB4MTE6IGZmZmY4MDAwMTE4
-NTEwMDAgeDEwOiBmZmZmODAwMDEwMDRiN2YwCj4+Pj4+IFsgICA1OC4zMTkxNjZdIHg5IDogMDAw
-MDAwMDBmZmZmZmZkMCB4OCA6IGZmZmY4MDAwMTA2OTlhZDgKPj4+Pj4gWyAgIDU4LjMxOTYzMV0g
-eDcgOiAwMDAwMDAwMDAwMDAwMjY1IHg2IDogZmZmZjgwMDAxMWEyMGJlOQo+Pj4+PiBbICAgNTgu
-MzIwMDk2XSB4NSA6IDAwMDAwMDAwMDAwMDAwMDAgeDQgOiAwMDAwMDAwMDAwMDAwMDAwCj4+Pj4+
-IFsgICA1OC4zMjA1NjFdIHgzIDogMDAwMDAwMDBmZmZmZmZmZiB4MiA6IGZmZmY4MDAwMTE4NTFh
-YjgKPj4+Pj4gWyAgIDU4LjMyMTAyNl0geDEgOiBkMzc1YzBkNGY0NzUxZjAwIHgwIDogMDAwMDAw
-MDAwMDAwMDAwMAo+Pj4+PiBbICAgNTguMzIxNDkxXSBDYWxsIHRyYWNlOgo+Pj4+PiBbICAgNTgu
-MzIxNzEwXSAgaTJjX3RyYW5zZmVyKzB4ZTQvMHhmOAo+Pj4+PiBbICAgNTguMzIyMDIwXSAgcmVn
-bWFwX2kyY19yZWFkKzB4NWMvMHg5OAo+Pj4+PiBbICAgNTguMzIyMzUwXSAgX3JlZ21hcF9yYXdf
-cmVhZCsweGNjLzB4MTM4Cj4+Pj4+IFsgICA1OC4zMjI2OTRdICBfcmVnbWFwX2J1c19yZWFkKzB4
-M2MvMHg3MAo+Pj4+PiBbICAgNTguMzIzMDM0XSAgX3JlZ21hcF9yZWFkKzB4NjAvMHhlMAo+Pj4+
-PiBbICAgNTguMzIzMzQxXSAgX3JlZ21hcF91cGRhdGVfYml0cysweGM4LzB4MTA4Cj4+Pj4+IFsg
-ICA1OC4zMjM3MDddICByZWdtYXBfdXBkYXRlX2JpdHNfYmFzZSsweDYwLzB4OTAKPj4+Pj4gWyAg
-IDU4LjMyNDA5OV0gIHJrODA4X2RldmljZV9zaHV0ZG93bisweDM4LzB4NTAKPj4+Pj4gWyAgIDU4
-LjMyNDQ3Nl0gIG1hY2hpbmVfcG93ZXJfb2ZmKzB4MjQvMHgzMAo+Pj4+PiBbICAgNTguMzI0ODIz
-XSAga2VybmVsX3Bvd2VyX29mZisweDY0LzB4NzAKPj4+Pj4gWyAgIDU4LjMyNTE1OV0gIF9fZG9f
-c3lzX3JlYm9vdCsweDE1Yy8weDI0MAo+Pj4+PiBbICAgNTguMzI1NTA0XSAgX19hcm02NF9zeXNf
-cmVib290KzB4MjAvMHgyOAo+Pj4+PiBbICAgNTguMzI1ODU4XSAgZWwwX3N2Y19jb21tb24uY29u
-c3Rwcm9wLjIrMHg4OC8weDE1MAo+Pj4+PiBbICAgNTguMzI2Mjc5XSAgZWwwX3N2Y19oYW5kbGVy
-KzB4MjAvMHg4MAo+Pj4+PiBbICAgNTguMzI2NjA3XSAgZWwwX3N5bmNfaGFuZGxlcisweDExOC8w
-eDE4OAo+Pj4+PiBbICAgNTguMzI2OTYwXSAgZWwwX3N5bmMrMHgxNDAvMHgxODAKPj4+Pj4gWyAg
-IDU4LjMyNzI1MV0gLS0tWyBlbmQgdHJhY2UgYjFkZTM5ZDAzZDcyNGQwMSBdLS0tCj4+Pj4+Cj4+
-Pj4+IC1BbmFuZAo+Pj4+Pgo+Pj4+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwo+Pj4+PiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPj4+Pj4gTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+Pj4+PiBodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4+Pj4+Cj4+Pj4gR3J1w58s
-Cj4+IC1BbmFuZAo+IAo+IAo+IAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4
-LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
+On Wed, Dec 11, 2019 at 10:34:50AM +0100, Enric Balletbo i Serra wrote:
+> Since commit '62240a88004b ("PCI: rockchip: Drop storing driver private
+> outbound resource data)' the offset calculation is wrong to access the
+> register number to program the IO outbound ATU. The offset should be
+> based on the IORESOURCE_MEM resource size instead of the IORESOURCE_IO
+> size.
+> 
+> This patch fixes the following 'synchronous external abort' bug:
+> 
+> [   15.362128] mwifiex_pcie 0000:01:00.0: enabling device (0000 -> 0002)
+> [   15.369655] mwifiex_pcie: PCI memory map Virt0: 00000000a573ad00 PCI memory map Virt2: 00000000783126c4
+> [   15.381466] Internal error: synchronous external abort: 96000210 [#1] PREEMPT SMP
+> [   15.389965] Modules linked in: mwifiex_pcie(+) mwifiex uvcvideo cfg80211 atmel_mxt_ts videobuf2_vmalloc ...
+> [   15.461095] CPU: 2 PID: 269 Comm: systemd-udevd Not tainted 5.4.0+ #327
+> [   15.461097] Hardware name: Google Kevin (DT)
+> [   15.461101] pstate: 60000005 (nZCv daif -PAN -UAO)
+> [   15.461116] pc : mwifiex_register_dev+0x264/0x3f8 [mwifiex_pcie]
+> [   15.461121] lr : mwifiex_register_dev+0x150/0x3f8 [mwifiex_pcie]
+> [   15.461123] sp : ffff800012073860
+> [   15.461128] x29: ffff800012073860 x28: ffff8000100a2e28
+> [   15.509043] x27: ffff8000118b6210 x26: ffff800008f57458
+> [   15.515055] x25: ffff0000ecfda000 x24: 0000000000000001
+> [   15.521069] x23: ffff0000e9905080 x22: ffff800008f5d000
+> [   15.527082] x21: ffff0000eecea078 x20: ffff0000e9905080
+> [   15.533096] x19: ffff0000eecea000 x18: 0000000000000001
+> [   15.539108] x17: 0000000000000000 x16: 0000000000000000
+> [   15.545118] x15: ffffffffffffffff x14: ffff8000118998c8
+> [   15.551128] x13: ffff000000000000 x12: 0000000000000008
+> [   15.557138] x11: 0101010101010101 x10: ffff7f7fffff7fff
+> [   15.563148] x9 : 0000000000000000 x8 : ffff0000e3c24240
+> [   15.569159] x7 : 0000000000000000 x6 : ffff0000e3c24148
+> [   15.575169] x5 : ffff0000e3c24148 x4 : ffff0000e7975ec8
+> [   15.581178] x3 : 0000000000000001 x2 : 0000000000002b42
+> [   15.587188] x1 : ffff800012c00008 x0 : ffff0000e9905080
+> [   15.593200] Call trace:
+> [   15.595970]  mwifiex_register_dev+0x264/0x3f8 [mwifiex_pcie]
+> [   15.602398]  mwifiex_add_card+0x2f8/0x430 [mwifiex]
+> [   15.607920]  mwifiex_pcie_probe+0x98/0x148 [mwifiex_pcie]
+> [   15.614033]  local_pci_probe+0x3c/0xa0
+> [   15.618275]  pci_device_probe+0x110/0x1a8
+> [   15.622812]  really_probe+0xd4/0x308
+> [   15.626856]  driver_probe_device+0x54/0xe8
+> [   15.631491]  device_driver_attach+0x6c/0x78
+> [   15.636224]  __driver_attach+0x54/0xd0
+> [   15.640465]  bus_for_each_dev+0x70/0xc0
+> [   15.644804]  driver_attach+0x20/0x28
+> [   15.648847]  bus_add_driver+0x178/0x1d8
+> [   15.653186]  driver_register+0x60/0x110
+> [   15.657525]  __pci_register_driver+0x40/0x48
+> [   15.662359]  mwifiex_pcie_init+0x24/0x1000 [mwifiex_pcie]
+> [   15.668469]  do_one_initcall+0x74/0x1a8
+> [   15.672810]  do_init_module+0x50/0x208
+> [   15.677050]  load_module+0x1a78/0x1d18
+> [   15.681290]  __do_sys_finit_module+0xd0/0xe8
+> [   15.686120]  __arm64_sys_finit_module+0x1c/0x28
+> [   15.691247]  el0_svc_common.constprop.2+0x88/0x150
+> [   15.696668]  el0_svc_handler+0x20/0x80
+> [   15.700909]  el0_sync_handler+0x118/0x188
+> [   15.705444]  el0_sync+0x140/0x180
+> [   15.716955] Code: a8c67bfd d65f03c0 f942ac01 91002021 (b9400021)
+> [   15.731548] ---[ end trace 1488ca6d6b162849 ]---
+> 
+> Fixes: 62240a88004b ("PCI: rockchip: Drop storing driver private outbound resource data)
+> Reported-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Suggested-by: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> ---
+> 
+>  drivers/pci/controller/pcie-rockchip-host.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
+> index d9b63bfa5dd7..94af6f5828a3 100644
+> --- a/drivers/pci/controller/pcie-rockchip-host.c
+> +++ b/drivers/pci/controller/pcie-rockchip-host.c
+> @@ -834,10 +834,12 @@ static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
+>  	if (!entry)
+>  		return -ENODEV;
+>  
+> +	/* store the register number offset to program RC io outbound ATU */
+
+Thanks for this fix. I've read your previous thread with Lorenzo and I can see
+that this restores the logic of the original code.
+
+If I understand correctly - the intent of offset is to ensure that when we
+start programming the ATU for IO, we don't overwrite the windows we've already
+written for MEMORY. Thus we need to calculate offset for the old (MEMORY) size.
+
+Acked-by: Andrew Murray <andrew.murray@arm.com>
+
+Thanks,
+
+Andrew Murray
+
+> +	offset = size >> 20;
+> +
+>  	size = resource_size(entry->res);
+>  	pci_addr = entry->res->start - entry->offset;
+>  
+> -	offset = size >> 20;
+>  	for (reg_no = 0; reg_no < (size >> 20); reg_no++) {
+>  		err = rockchip_pcie_prog_ob_atu(rockchip,
+>  						reg_no + 1 + offset,
+> -- 
+> 2.20.1
+> 
