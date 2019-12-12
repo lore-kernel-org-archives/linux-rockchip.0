@@ -1,63 +1,121 @@
-From: Soeren Moch <smoch@web.de>
-Subject: Re: [PATCH v2 0/9] brcmfmac: add support for BCM4359 SDIO chipset
-Date: Thu, 12 Dec 2019 11:59:13 +0100
-Message-ID: <1daadfe0-5964-db9b-818c-6e4c75ac6a69@web.de>
-References: <20191211235253.2539-1-smoch@web.de>
- <0101016ef97cf6b5-2552a5e4-12de-4616-94d6-b63d9c795ed6-000000@us-west-2.amazonses.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v11 00/11] Rockchip ISP Driver
+Date: Thu, 12 Dec 2019 13:02:10 +0100
+Message-ID: <20f99f0e-dfec-f6c0-eeb3-7561018f32e9@xs4all.nl>
+References: <20191114051242.14651-1-helen.koike@collabora.com>
+ <996a9b6a-0e45-d627-9263-539c22e5f1c0@xs4all.nl>
+ <7fd4bf99fd6316da8acaf0a27b6845bedbf4b25f.camel@collabora.com>
+ <eafffc6f-061e-65ab-079b-b2bd613d61cb@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <0101016ef97cf6b5-2552a5e4-12de-4616-94d6-b63d9c795ed6-000000@us-west-2.amazonses.com>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kalle Valo <kvalo@codeaurora.org>
-Cc: brcm80211-dev-list.pdl@broadcom.com, Heiko Stuebner <heiko@sntech.de>, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, brcm80211-dev-list@cypress.com, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <eafffc6f-061e-65ab-079b-b2bd613d61cb@xs4all.nl>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, Helen Koike <helen.koike@collabora.com>, linux-rockchip@lists.infradead.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, kernel@collabora.com, heiko@sntech.de, gregkh@linuxfoundation.org, jeffy.chen@rock-chips.com, zyc@rock-chips.com, jacob-chen@iotwrt.com, tfiga@chromium.org, robh+dt@kernel.org, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, mchehab@kernel.org, zhengsq@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12.12.19 10:42, Kalle Valo wrote:
-> Soeren Moch <smoch@web.de> writes:
->
->> Add support for the BCM4359 chipset with SDIO interface and RSDB support
->> to the brcmfmac wireless network driver in patches 1-7.
->>
->> Enhance devicetree of the RockPro64 arm64/rockchip board to use an
->> AP6359SA based wifi/bt combo module with this chipset in patches 8-9.
->>
->>
->> Chung-Hsien Hsu (1):
->>   brcmfmac: set F2 blocksize and watermark for 4359
->>
->> Soeren Moch (5):
->>   brcmfmac: fix rambase for 4359/9
->>   brcmfmac: make errors when setting roaming parameters non-fatal
->>   brcmfmac: add support for BCM4359 SDIO chipset
->>   arm64: dts: rockchip: RockPro64: enable wifi module at sdio0
->>   arm64: dts: rockchip: RockPro64: hook up bluetooth at uart0
->>
->> Wright Feng (3):
->>   brcmfmac: reset two D11 cores if chip has two D11 cores
->>   brcmfmac: add RSDB condition when setting interface combinations
->>   brcmfmac: not set mbss in vif if firmware does not support MBSS
->>
->>  .../boot/dts/rockchip/rk3399-rockpro64.dts    | 50 +++++++++++---
->>  .../broadcom/brcm80211/brcmfmac/bcmsdh.c      |  8 ++-
->>  .../broadcom/brcm80211/brcmfmac/cfg80211.c    | 68 +++++++++++++++----
->>  .../broadcom/brcm80211/brcmfmac/chip.c        | 54 ++++++++++++++-
->>  .../broadcom/brcm80211/brcmfmac/chip.h        |  1 +
->>  .../broadcom/brcm80211/brcmfmac/pcie.c        |  2 +-
->>  .../broadcom/brcm80211/brcmfmac/sdio.c        | 17 +++++
->>  include/linux/mmc/sdio_ids.h                  |  2 +
->>  8 files changed, 176 insertions(+), 26 deletions(-)
-> Just to make sure we are on the same page, I will apply patches 1-7 to
-> wireless-drivers-next and patches 8-9 go to some other tree? And there
-> are no dependencies between the brcmfmac patches and dts patches?
->
-Yes, this also is my understanding. I'm glad if you are fine with
-patches 1-7.
-Heiko will pick up patches 8-9 later for linux-rockchip independently.
-And if we need another round of review for patches 8-9, I think we don't
-need to bother linux-wireless with this.
+Hi Helen, Ezequiel,
 
-Thanks,
-Soeren
+The merge window is open, so you want to get this in, then please post a v12
+with the few remaining items addressed so that I can merge it.
+
+Regards,
+
+	Hans
+
+On 11/19/19 9:30 AM, Hans Verkuil wrote:
+> On 11/18/19 7:52 PM, Ezequiel Garcia wrote:
+>> Hi Hans,
+>>
+>> Thanks for taking care of this.
+>>
+>> On Thu, 2019-11-14 at 09:42 +0100, Hans Verkuil wrote:
+>>> On 11/14/19 6:12 AM, Helen Koike wrote:
+>>>> Hello,
+>>>>
+>>>> This series adds the Rockchip Image Signal Processing Unit v1 driver to
+>>>> staging.
+>>>>
+>>>> The main reason to be in staging is that people are already using it from the
+>>>> mailing list (including libcamera), and having it in mainline makes the workflow
+>>>> easier. Also, it is easier for other people to contribute back (with code
+>>>> or testing the driver).
+>>>>
+>>>> We plan to actively work on this driver to get it our of staging.
+>>>>
+>>>> This patchset is also available at:
+>>>> https://gitlab.collabora.com/koike/linux/tree/rockchip/isp/v11
+>>>>
+>>>> Libcamera patched to work with this version:
+>>>> https://gitlab.collabora.com/koike/libcamera
+>>>> (also sent to the mailing list)
+>>>>
+>>>> The major difference in v11 are:
+>>>> - Fixed compiling warnings found with W=1
+>>>> - Fixed checkpatch errors
+>>>> - Add clock-names values in dt-bindings
+>>>
+>>> Looking at checkpatch I see a few remaining issues that I believe should be
+>>> fixed before merging this:
+>>>
+>>> CHECK: spinlock_t definition without comment
+>>> #575: FILE: drivers/staging/media/rkisp1/isp_stats.h:43:
+>>> +       spinlock_t irq_lock;
+>>>
+>>> CHECK: struct mutex definition without comment
+>>> #581: FILE: drivers/staging/media/rkisp1/isp_stats.h:49:
+>>> +       struct mutex wq_lock;
+>>>
+>>> CHECK: spinlock_t definition without comment
+>>> #1648: FILE: drivers/staging/media/rkisp1/isp_params.h:25:
+>>> +       spinlock_t config_lock;
+>>>
+>>> CHECK: spinlock_t definition without comment
+>>> #2058: FILE: drivers/staging/media/rkisp1/capture.h:145:
+>>> +       spinlock_t vbq_lock;
+>>>
+>>
+>> I'd rather merge this as-is, adding a TODO entry stating
+>> we need to revisit locking specifically, because I'd like
+>> to take a close look at these spinlocks/mutex,
+>> instead of just addding comments for then.
+> 
+> Fair enough! Just as long as it is mentioned somewhere.
+> 
+>>
+>>> Once this is done together with the Jacob Chen email clarification
+>>> it is ready to be merged for v5.6.
+>>>
+>>
+>> I'll find out more about this.
+> 
+> Thanks!
+> 
+> Remember that we are in the code freeze until v5.5-rc1 is released,
+> so you have time to make more adjustments if you want to.
+> 
+> Regards,
+> 
+> 	Hans
+> 
+>>
+>>> It passes all the sparse/smatch tests, so that's very good.
+>>>
+>>
+>> Great!
+>>
+>> Thanks,
+>> Ezequiel
+>>
+> 
