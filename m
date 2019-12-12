@@ -1,119 +1,53 @@
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Subject: Re: [PATCH v4 8/8] linux/log2.h: Use roundup/dow_pow_two() on 64bit
- calculations
-Date: Thu, 12 Dec 2019 14:21:00 +0100
-Message-ID: <ff60337c5f6f324fb121fa7cad24e763af29cfe2.camel@suse.de>
-References: <20191205203845.GA243596@google.com>
+From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [RFC] Permanent Fix for RK33 gmac 1500 mtu bug
+Date: Thu, 12 Dec 2019 08:21:38 -0500
+Message-ID: <CAMdYzYpHxMELdB4HzsViFvrLcDzG0A4000PJU6wHTaq4V9c1Nw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg="pgp-sha256";
-        protocol="application/pgp-signature"; boundary="=-lcx9Dpdc/nSfdN+F0tca"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191205203845.GA243596@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: andrew.murray@arm.com, maz@kernel.org, linux-kernel@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Hanjun Guo <guohanjun@huawei.com>, Sudeep Holla <sudeep.holla@arm.com>, Tariq Toukan <tariqt@mellanox.com>, Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, bcm-kernel-feedback-list@broadcom.com, Eric Anholt <eric@anholt.net>, Stefan Wahren <wahrenst@gmx.net>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>, Robin Murphy <robin.murphy@arm.com>, james.quinlan@broadcom.com, mbrugger@suse.com, phil@raspberrypi.org, jeremy.linton@arm.com, linux-pci@vger.kernel.or
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Good Morning,
 
---=-lcx9Dpdc/nSfdN+F0tca
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+So I've continued work on fixing the rk3328/rk3399 gmac mtu tx coe offload bug.
+I've found two fixes that maintain full performance and work consistently.
 
-On Thu, 2019-12-05 at 14:38 -0600, Bjorn Helgaas wrote:
-> The subject contains a couple typos: it's missing "of" and it's
-> missing the "n" on "down".
+First, is ayufan's tx coe patch [0], which takes the bugged_jumbo
+concept introduced in [1] and applies it to 1498 and above, vice 1500
+and above.
 
-Noted >=20
-> On Tue, Dec 03, 2019 at 12:47:41PM +0100, Nicolas Saenz Julienne wrote:
-> > The function now is safe to use while expecting a 64bit value. Use it
-> > where relevant.
->=20
-> Please include the function names ("roundup_pow_of_two()",
-> "rounddown_pow_of_two()") in the changelog so it is self-contained and
-> doesn't depend on the subject.
+The only downside is this disables tx coe for full size packets, which
+has a negligible performance impact in my testing.
 
-Noted
+The other option I've found that reliably works is bringing the mtu
+down to 1498.
+This allows tx coe to remain enabled, but with the downside of total
+loss of jumbo frames.
+The reduction in size has a negligible performance impact in my testing.
 
-> > Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
->=20
-> With the nits above and below addressed,
->=20
-> Acked-by: Bjorn Helgaas <bhelgaas@google.com>	# drivers/pci
+I have also discovered that the rockchip implementation of the stmmac
+driver does not process flags such as max-frame-size.
 
-Thanks!
+A third option, which I haven't explored because I don't know enough
+about how it works, is possibly tuning the axi settings, via the
+snps,axi-config and snps,mtl-tx-config handles.
+I don't know if this is feasible, but since tuning the dma settings
+affects the rk3328 I have hope.
+I do know that my current fix for the rk3328 does not provide full
+performance and does not work at all on the rk3399.
 
-> > ---
-> >  drivers/acpi/arm64/iort.c                        | 2 +-
-> >  drivers/net/ethernet/mellanox/mlx4/en_clock.c    | 3 ++-
-> >  drivers/of/device.c                              | 3 ++-
-> >  drivers/pci/controller/cadence/pcie-cadence-ep.c | 3 ++-
-> >  drivers/pci/controller/cadence/pcie-cadence.c    | 3 ++-
-> >  drivers/pci/controller/pcie-brcmstb.c            | 3 ++-
-> >  drivers/pci/controller/pcie-rockchip-ep.c        | 5 +++--
-> >  kernel/dma/direct.c                              | 2 +-
-> >  8 files changed, 15 insertions(+), 9 deletions(-)
-> > --- a/drivers/pci/controller/cadence/pcie-cadence-ep.c
-> > +++ b/drivers/pci/controller/cadence/pcie-cadence-ep.c
-> > @@ -10,6 +10,7 @@
-> >  #include <linux/platform_device.h>
-> >  #include <linux/pm_runtime.h>
-> >  #include <linux/sizes.h>
-> > +#include <linux/log2.h>
-> > =20
-> >  #include "pcie-cadence.h"
-> > =20
-> > @@ -65,7 +66,7 @@ static int cdns_pcie_ep_set_bar(struct pci_epc *epc, =
-u8
-> > fn,
-> >  	 * roundup_pow_of_two() returns an unsigned long, which is not suited
-> >  	 * for 64bit values.
-> >  	 */
->=20
-> Please remove the comment above since it no longer applies.
+Thoughts?
 
-Noted
-
-[...]
-
-> > diff --git a/kernel/dma/direct.c b/kernel/dma/direct.c
-> > index 6af7ae83c4ad..056886c4efec 100644
-> > --- a/kernel/dma/direct.c
-> > +++ b/kernel/dma/direct.c
-> > @@ -53,7 +53,7 @@ u64 dma_direct_get_required_mask(struct device *dev)
-> >  {
-> >  	u64 max_dma =3D phys_to_dma_direct(dev, (max_pfn - 1) << PAGE_SHIFT);
-> > =20
-> > -	return (1ULL << (fls64(max_dma) - 1)) * 2 - 1;
-> > +	return rounddown_pow_of_two(max_dma) * 2 - 1;
->=20
-> Personally I would probably make this one a separate patch since it's
-> qualitatively different than the others and it would avoid the slight
-> awkwardness of the non-greppable "roundup/down_pow_of_two()"
-> construction in the commit subject.
->=20
-> But it's fine either way.
-
-I'll split it into two parts, as RobH made a similar complaint.
-
-Regards,
-Nicolas
-
-
---=-lcx9Dpdc/nSfdN+F0tca
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl3yPrwACgkQlfZmHno8
-x/4DxAf/dUNU44c6C5UlupKkHs1V09AR3yPNPOe8GrxrtpnzWAaNQ9L4S0ZG9ocS
-gey8W3CCPJPrWmqSAjQ8ddX9w+wKaaRaGFE3wHRFiGVMDSN8kGzHySuWi1ytfy0Y
-x0msb/bX87L3SwSegRTGlvbRJ1rDZl4WxCVFSrhCNRwem2R+v668VGifVS24Ay1f
-dwS7xyDUcMTmaiCfpK8KyJK1GdbScI6kVPFUM57deANw/I60zWGWykBnTeTQtlrM
-gLN2fGNP1wLRKZ5IEHObKLWo0rXTRKBjsouzL4/D5dW69LXZK1nS02rJsdu5bpUl
-WepA96OKnIgxngbBiO8z4btiMgZ1Jw==
-=QTsG
------END PGP SIGNATURE-----
-
---=-lcx9Dpdc/nSfdN+F0tca--
+[0] https://github.com/ayufan-rock64/linux-kernel/commit/8a41c672dd77e48b06c1b2dec3aa9db4bad30b49#diff-c897c0b53bd633240f4b12c4d29a5ff1
+[1] https://github.com/torvalds/linux/commit/ebbb293f8b3021ae2009fcb7cb3b8a52fb5fd06a
