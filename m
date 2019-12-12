@@ -1,85 +1,150 @@
-From: Vicente Bergas <vicencb@gmail.com>
-Subject: Re: [REGRESSION] PCI v5.5-rc1 breaks google kevin
-Date: Thu, 12 Dec 2019 21:48:43 +0100
-Message-ID: <1d500ac9-accd-40d5-b1c9-e3de88957557@gmail.com>
-References: <58ce5534-64bd-4b4b-bd60-ed4e0c71b20f@gmail.com>
- <166f0016-7061-be5c-660d-0499f74e8697@arm.com>
- <20191212005254.GE24359@e119886-lin.cambridge.arm.com>
- <CAFqH_50pJVQT3uqtpVgqn4ijfdPMzHoE1ns_KARH+_cKe+3NRg@mail.gmail.com>
- <792cf6ab-26c4-40a4-90b0-a99e620548f4@gmail.com>
- <20191212203925.GH24359@e119886-lin.cambridge.arm.com>
+From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
+Subject: Re: [RFC 00/25] arm64: realtek: Add Xnano X5 and implement
+ TM1628/FD628/AiP1618 LED controllers
+Date: Thu, 12 Dec 2019 21:55:17 +0100
+Message-ID: <c86c6bc0-b0e5-c46e-da87-9d910b95f9f3@suse.de>
+References: <20191212033952.5967-1-afaerber@suse.de>
+ <7110806f-ddbd-f055-e107-7a1f7e223102@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191212203925.GH24359@e119886-lin.cambridge.arm.com>
+In-Reply-To: <7110806f-ddbd-f055-e107-7a1f7e223102@arm.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andrew Murray <andrew.murray@arm.com>
-Cc: Enric Balletbo Serra <eballetbo@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Heiko Stuebner <heiko@sntech.de>, Frederick Lawler <fred@fredlawl.com>, linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Brown <broonie@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Bjorn Helgaas <bhelgaas@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Mika Westerberg <mika.westerberg@linux.intel.com>, =?iso-8859-1?Q?Stefan_M=E4tje?= <stefan.maetje@esd.eu>, Linux ARM <linux-arm-kernel@l>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: linux-realtek-soc@lists.infradead.org, linux-leds@vger.kernel.org, linux-rtc@vger.kernel.org, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, csd@princeton.com.tw, devicetree@vger.kernel.org, sales@fdhisi.com, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Pavel Machek <pavel@ucw.cz>, zypeng@titanmec.com, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Dan Murphy <dmurphy@ti.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thursday, December 12, 2019 9:39:27 PM CET, Andrew Murray wrote:
-> On Thu, Dec 12, 2019 at 07:40:06PM +0100, Vicente Bergas wrote:
->> On Thursday, December 12, 2019 3:16:25 PM CET, Enric Balletbo Serra wrote:=
+Hi Robin,
 
->>> Hi Vicente,
->>>=20
->>> Missatge de Andrew Murray <andrew.murray@arm.com> del dia dj., 12 de
->>> des. 2019 a les 1:53:
->>>> On Thu, Dec 12, 2019 at 12:12:56AM +0000, Robin Murphy wrote: ...
->>>=20
->>> Another issue that is affecting current mainline for kevin is fixed
->>> with [1]. As usual, I have a tracking branch for 5.5 for different
->>> Chromebooks with some not yet merged patches that makes things work
->>> while are not fixed [2]. For kevin only the mentioned ASoC patch [1]
->>> and the pcie fix [3] should be needed. Other than that display is
->>> working for me on Kevin.
->>>=20
->>> Cheers,
->>>  Enric
->>>=20
->>> [1]=20
->>> https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git/commit/=
-?h=3Dfor-5.5&id=3D4bf2e385aa59c2fae5f880aa25cfd2b470109093
->>> [2]=20
->>> https://gitlab.collabora.com/eballetbo/linux/commits/topic/chromeos/somew=
-hat-stable-5.5
->>> [3]  https://lkml.org/lkml/2019/12/11/199
->>>=20
->>>>> ...
->>>> It's likely that any PCI driver that uses PCI IO with that=20
->>>> controller will
->>>> suffer the same fate.
->>>>=20
->>>> Vicente - can you try the patch that has been proposed and=20
->>>> verify it fixes
->>>> the issue for you?
->>>>=20
->>>> Thanks, ...
->>=20
->> Hi Robin, Andrew and Enric,
->> thank you all for the quick responses!
->> I can confirm that patch [3] fixes the issue reported in this email and
->> that [1] fixes the other issue reported on the other email.
->
-> Pleased to hear this is working for you now.
->
-> Are you happy to give a tested-by tag for [3]?
+[- Roc He, + linux-rockchip]
 
-Yes, feel free to apply this tag.
-Using it just now and the wlan at the other side of the PCIe bus is=20
-detected.
+Am 12.12.19 um 14:14 schrieb Robin Murphy:
+> On 12/12/2019 3:39 am, Andreas Färber wrote:
+>> This patch series implements the LED controllers found in some RTD1295
+>> based
+>> TV set-top boxes.
+[...]
+>> TM1628 and related chipsets have an internal Display RAM, from which they
+>> control a two-dimensional array of LED components, often used for
+>> seven-segment displays, i.e. clock display, but also for indicators.
+>> Individual LEDs can be turned on/off, but brightness is applied globally.
+>> Some chipsets also support polling a two-dimensional key pad.
+[...]
+>> Some more notes:
+>> * Public TM1628 V1.1 datasheet is in Chinese only and differs from the
+>>    unversioned English version found elsewhere on datasheet sites by
+>>    documenting more display modes, included here (guessed from Arabic
+>> numbers).
+>> * Public FD628 datasheet is Chinese only (guesses based on Arabic
+>> numbers).
+>>    FD623 appears to have more output lines, which would fit current
+>> data types.
+>> * AiP1618 links were all broken (404); try Google "site:szfdwdz.com"
+>> search
+>>    to actually find the documents available on their site.
+>> * Princeton PT6964 is another related LED controller with public
+>> datasheet
+>>    that I did not encounter in my TV boxes yet, thus not included here.
+>>    Datasheets are linked only for PT6959 and PT6967, but PT6964 V1.3
+>> and V1.4
+>>    are available elsewhere. PT6967 has more output lines, which my
+>> current
+>>    data types could barely hold. Maybe bump them all to u32 type right
+>> away?
+>> * TM1628 is also found on MeLE V9 TV box, to be tested.
+>> * FD628 is also found on Amlogic S905X2 based Vontar X96 Max TV box,
+>>    to be tested (once UART is soldered).
+>> * AiP1618 was found on Ava and Lake I TV boxes, to be tested.
+>> * It remained unclear to me which of these many similar chipsets was
+>> first.
+>>    My driver name is therefore based on the chip I encountered first.
+> 
+> It's pretty cool to see this!
+
+Glad someone else finds it useful. :)
+
+> My Rockchip box has an AiP1618-driven
+> display [...]
+
+You don't mention the model: Does it have a mainline .dts we can extend?
+If not, I'd ask you to get that merged into -next, then I can happily
+pick up patches adding the LED controller for your TV box into this
+series as it evolves. (I'm expecting at least two more RFC iterations.)
+
+Similarly, I'm planning to drop Xnano X5 in v2, if it doesn't require a
+respin, so that no Realtek-specific parts other than .dts node additions
+remain here.
+
+> In case it helps, in my research I found that ARTSCHIP are another
+> vendor of these things with accessible datasheets[1],
+
+Thanks, their HT1628 indeed looks compatible.
+
+Sunmoon Microelectronics SM1628 also looks compatible.
+http://www.chinaasic.com/product.jsp#item=other#style=27#id=138
+
+> and as far as I
+> could tell the command set appears to derive from (or is at least common
+> to) some old Holtek VFD controllers.
+
+Hmm, HT16515 looks similar and has more lines, RAM and mode bits than I
+prepared here.
+https://www.holtek.com/productdetail/-/vg/ht16515
+
+So I'd need to make more numbers model-dependent and allocate the
+Display RAM buffer dynamically.
+
+Whereas HT16D35A seems incompatible command-wise, and HT16528 appears to
+be out of scope, for dot displays and with fancy embedded character map.
+
+No Holtek email alias that I can quickly spot.
+
+But given that I'm proposing vendor-specific compatibles just in case,
+the main decisions will be the Kconfig symbol and module name. The
+driver code itself we could always refactor after merging, and renaming
+the schema file (as opposed to compatible) should also be possible.
+
+> If I can figure out the DT parts (which was one of the areas that
+> stalled my attempt) I'll try to have a play with this series over the
+> holidays.
+
+That reminded me that I forgot to push - done in the meantime. :)
+
+> One thought to ponder is that I have an "88:88" display where
+> the entire middle grid is reserved for the colon (which is wired to just
+> one segment) - I'm not sure how that could be sanely described :/
+
+Well, that sounds exactly like my bindings example and X9S. You'll find
+the colon configured as LED, separate from the four digits, which don't
+need to be contiguous due to separate reg entries per digit.
+
+While it may be possible to put more cleverness into text_store() to set
+the colon as part of five-char "88:88" text, we'd likely want to blink
+it every half second, which we should better do without updating the
+full display text from "88:88" to "88 88". "8888" updated every minute
+sounds less problematic.
+
+Ugly with the colon LED is that the redone LED bindings don't yet have a
+function defined for this, so I'm currently misusing whatever was there.
+I should prepare a bindings addition, if we want to use an LED node.
 
 Regards,
-  Vicente.
+Andreas
 
-> Thanks,
->
-> Andrew Murray
->
->>=20
->> Regards,
->>  Vicen=C3=A7.
->>=20
->
->
+> [1]
+> http://www.artschip.com/products.asp?lx=small&anid=779&ParentName=Signal%20management%20_I_O%20Extender
+> 
+>> This series is based on my not-yet-posted RTD1295 pinctrl and GPIO
+>> drivers.
+>>
+>> Latest experimental patches at:
+>> https://github.com/afaerber/linux/commits/rtd1295-next
+[snip]
+
+-- 
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 Nürnberg, Germany
+GF: Felix Imendörffer
+HRB 36809 (AG Nürnberg)
