@@ -1,121 +1,119 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v11 00/11] Rockchip ISP Driver
-Date: Thu, 12 Dec 2019 13:02:10 +0100
-Message-ID: <20f99f0e-dfec-f6c0-eeb3-7561018f32e9@xs4all.nl>
-References: <20191114051242.14651-1-helen.koike@collabora.com>
- <996a9b6a-0e45-d627-9263-539c22e5f1c0@xs4all.nl>
- <7fd4bf99fd6316da8acaf0a27b6845bedbf4b25f.camel@collabora.com>
- <eafffc6f-061e-65ab-079b-b2bd613d61cb@xs4all.nl>
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Subject: Re: [PATCH v4 8/8] linux/log2.h: Use roundup/dow_pow_two() on 64bit
+ calculations
+Date: Thu, 12 Dec 2019 14:21:00 +0100
+Message-ID: <ff60337c5f6f324fb121fa7cad24e763af29cfe2.camel@suse.de>
+References: <20191205203845.GA243596@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <eafffc6f-061e-65ab-079b-b2bd613d61cb@xs4all.nl>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, Helen Koike <helen.koike@collabora.com>, linux-rockchip@lists.infradead.org
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, kernel@collabora.com, heiko@sntech.de, gregkh@linuxfoundation.org, jeffy.chen@rock-chips.com, zyc@rock-chips.com, jacob-chen@iotwrt.com, tfiga@chromium.org, robh+dt@kernel.org, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, mchehab@kernel.org, zhengsq@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: multipart/signed; micalg="pgp-sha256";
+        protocol="application/pgp-signature"; boundary="=-lcx9Dpdc/nSfdN+F0tca"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191205203845.GA243596@google.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: andrew.murray@arm.com, maz@kernel.org, linux-kernel@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Hanjun Guo <guohanjun@huawei.com>, Sudeep Holla <sudeep.holla@arm.com>, Tariq Toukan <tariqt@mellanox.com>, Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, bcm-kernel-feedback-list@broadcom.com, Eric Anholt <eric@anholt.net>, Stefan Wahren <wahrenst@gmx.net>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>, Robin Murphy <robin.murphy@arm.com>, james.quinlan@broadcom.com, mbrugger@suse.com, phil@raspberrypi.org, jeremy.linton@arm.com, linux-pci@vger.kernel.or
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Helen, Ezequiel,
 
-The merge window is open, so you want to get this in, then please post a v12
-with the few remaining items addressed so that I can merge it.
+--=-lcx9Dpdc/nSfdN+F0tca
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, 2019-12-05 at 14:38 -0600, Bjorn Helgaas wrote:
+> The subject contains a couple typos: it's missing "of" and it's
+> missing the "n" on "down".
+
+Noted >=20
+> On Tue, Dec 03, 2019 at 12:47:41PM +0100, Nicolas Saenz Julienne wrote:
+> > The function now is safe to use while expecting a 64bit value. Use it
+> > where relevant.
+>=20
+> Please include the function names ("roundup_pow_of_two()",
+> "rounddown_pow_of_two()") in the changelog so it is self-contained and
+> doesn't depend on the subject.
+
+Noted
+
+> > Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+>=20
+> With the nits above and below addressed,
+>=20
+> Acked-by: Bjorn Helgaas <bhelgaas@google.com>	# drivers/pci
+
+Thanks!
+
+> > ---
+> >  drivers/acpi/arm64/iort.c                        | 2 +-
+> >  drivers/net/ethernet/mellanox/mlx4/en_clock.c    | 3 ++-
+> >  drivers/of/device.c                              | 3 ++-
+> >  drivers/pci/controller/cadence/pcie-cadence-ep.c | 3 ++-
+> >  drivers/pci/controller/cadence/pcie-cadence.c    | 3 ++-
+> >  drivers/pci/controller/pcie-brcmstb.c            | 3 ++-
+> >  drivers/pci/controller/pcie-rockchip-ep.c        | 5 +++--
+> >  kernel/dma/direct.c                              | 2 +-
+> >  8 files changed, 15 insertions(+), 9 deletions(-)
+> > --- a/drivers/pci/controller/cadence/pcie-cadence-ep.c
+> > +++ b/drivers/pci/controller/cadence/pcie-cadence-ep.c
+> > @@ -10,6 +10,7 @@
+> >  #include <linux/platform_device.h>
+> >  #include <linux/pm_runtime.h>
+> >  #include <linux/sizes.h>
+> > +#include <linux/log2.h>
+> > =20
+> >  #include "pcie-cadence.h"
+> > =20
+> > @@ -65,7 +66,7 @@ static int cdns_pcie_ep_set_bar(struct pci_epc *epc, =
+u8
+> > fn,
+> >  	 * roundup_pow_of_two() returns an unsigned long, which is not suited
+> >  	 * for 64bit values.
+> >  	 */
+>=20
+> Please remove the comment above since it no longer applies.
+
+Noted
+
+[...]
+
+> > diff --git a/kernel/dma/direct.c b/kernel/dma/direct.c
+> > index 6af7ae83c4ad..056886c4efec 100644
+> > --- a/kernel/dma/direct.c
+> > +++ b/kernel/dma/direct.c
+> > @@ -53,7 +53,7 @@ u64 dma_direct_get_required_mask(struct device *dev)
+> >  {
+> >  	u64 max_dma =3D phys_to_dma_direct(dev, (max_pfn - 1) << PAGE_SHIFT);
+> > =20
+> > -	return (1ULL << (fls64(max_dma) - 1)) * 2 - 1;
+> > +	return rounddown_pow_of_two(max_dma) * 2 - 1;
+>=20
+> Personally I would probably make this one a separate patch since it's
+> qualitatively different than the others and it would avoid the slight
+> awkwardness of the non-greppable "roundup/down_pow_of_two()"
+> construction in the commit subject.
+>=20
+> But it's fine either way.
+
+I'll split it into two parts, as RobH made a similar complaint.
 
 Regards,
+Nicolas
 
-	Hans
 
-On 11/19/19 9:30 AM, Hans Verkuil wrote:
-> On 11/18/19 7:52 PM, Ezequiel Garcia wrote:
->> Hi Hans,
->>
->> Thanks for taking care of this.
->>
->> On Thu, 2019-11-14 at 09:42 +0100, Hans Verkuil wrote:
->>> On 11/14/19 6:12 AM, Helen Koike wrote:
->>>> Hello,
->>>>
->>>> This series adds the Rockchip Image Signal Processing Unit v1 driver to
->>>> staging.
->>>>
->>>> The main reason to be in staging is that people are already using it from the
->>>> mailing list (including libcamera), and having it in mainline makes the workflow
->>>> easier. Also, it is easier for other people to contribute back (with code
->>>> or testing the driver).
->>>>
->>>> We plan to actively work on this driver to get it our of staging.
->>>>
->>>> This patchset is also available at:
->>>> https://gitlab.collabora.com/koike/linux/tree/rockchip/isp/v11
->>>>
->>>> Libcamera patched to work with this version:
->>>> https://gitlab.collabora.com/koike/libcamera
->>>> (also sent to the mailing list)
->>>>
->>>> The major difference in v11 are:
->>>> - Fixed compiling warnings found with W=1
->>>> - Fixed checkpatch errors
->>>> - Add clock-names values in dt-bindings
->>>
->>> Looking at checkpatch I see a few remaining issues that I believe should be
->>> fixed before merging this:
->>>
->>> CHECK: spinlock_t definition without comment
->>> #575: FILE: drivers/staging/media/rkisp1/isp_stats.h:43:
->>> +       spinlock_t irq_lock;
->>>
->>> CHECK: struct mutex definition without comment
->>> #581: FILE: drivers/staging/media/rkisp1/isp_stats.h:49:
->>> +       struct mutex wq_lock;
->>>
->>> CHECK: spinlock_t definition without comment
->>> #1648: FILE: drivers/staging/media/rkisp1/isp_params.h:25:
->>> +       spinlock_t config_lock;
->>>
->>> CHECK: spinlock_t definition without comment
->>> #2058: FILE: drivers/staging/media/rkisp1/capture.h:145:
->>> +       spinlock_t vbq_lock;
->>>
->>
->> I'd rather merge this as-is, adding a TODO entry stating
->> we need to revisit locking specifically, because I'd like
->> to take a close look at these spinlocks/mutex,
->> instead of just addding comments for then.
-> 
-> Fair enough! Just as long as it is mentioned somewhere.
-> 
->>
->>> Once this is done together with the Jacob Chen email clarification
->>> it is ready to be merged for v5.6.
->>>
->>
->> I'll find out more about this.
-> 
-> Thanks!
-> 
-> Remember that we are in the code freeze until v5.5-rc1 is released,
-> so you have time to make more adjustments if you want to.
-> 
-> Regards,
-> 
-> 	Hans
-> 
->>
->>> It passes all the sparse/smatch tests, so that's very good.
->>>
->>
->> Great!
->>
->> Thanks,
->> Ezequiel
->>
-> 
+--=-lcx9Dpdc/nSfdN+F0tca
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl3yPrwACgkQlfZmHno8
+x/4DxAf/dUNU44c6C5UlupKkHs1V09AR3yPNPOe8GrxrtpnzWAaNQ9L4S0ZG9ocS
+gey8W3CCPJPrWmqSAjQ8ddX9w+wKaaRaGFE3wHRFiGVMDSN8kGzHySuWi1ytfy0Y
+x0msb/bX87L3SwSegRTGlvbRJ1rDZl4WxCVFSrhCNRwem2R+v668VGifVS24Ay1f
+dwS7xyDUcMTmaiCfpK8KyJK1GdbScI6kVPFUM57deANw/I60zWGWykBnTeTQtlrM
+gLN2fGNP1wLRKZ5IEHObKLWo0rXTRKBjsouzL4/D5dW69LXZK1nS02rJsdu5bpUl
+WepA96OKnIgxngbBiO8z4btiMgZ1Jw==
+=QTsG
+-----END PGP SIGNATURE-----
+
+--=-lcx9Dpdc/nSfdN+F0tca--
