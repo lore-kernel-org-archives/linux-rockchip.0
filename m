@@ -1,7 +1,7 @@
 From: Lad Prabhakar <prabhakar.csengg@gmail.com>
-Subject: [v2 3/6] of: address: add support to parse PCI outbound-ranges
-Date: Fri, 13 Dec 2019 08:47:45 +0000
-Message-ID: <20191213084748.11210-4-prabhakar.mahadev-lad.rj@bp.renesas.com>
+Subject: [v2 4/6] dt-bindings: PCI: rcar: Add bindings for R-Car PCIe endpoint controller
+Date: Fri, 13 Dec 2019 08:47:46 +0000
+Message-ID: <20191213084748.11210-5-prabhakar.mahadev-lad.rj@bp.renesas.com>
 References: <20191213084748.11210-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -14,149 +14,56 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: "Lad, Prabhakar" <prabhakar.mahadev-lad.rj@bp.renesas.com>
 
-this patch adds support to parse PCI outbound-ranges, the
-outbound-regions are similar to pci ranges except it doesn't
-have pci address, below is the format for bar-ranges:
-
-outbound-ranges = <flags upper32_cpuaddr lower32_cpuaddr
-                   upper32_size lower32_size>;
+This patch adds the bindings for the R-Car PCIe endpoint driver.
 
 Signed-off-by: Lad, Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
 ---
- drivers/of/address.c       | 44 ++++++++++++++++++++++++++++++++++++++++----
- include/linux/of_address.h | 21 +++++++++++++++++++++
- 2 files changed, 61 insertions(+), 4 deletions(-)
+ .../devicetree/bindings/pci/rcar-pci-ep.txt        | 37 ++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pci/rcar-pci-ep.txt
 
-diff --git a/drivers/of/address.c b/drivers/of/address.c
-index 978427a..ca4643c 100644
---- a/drivers/of/address.c
-+++ b/drivers/of/address.c
-@@ -233,9 +233,9 @@ int of_pci_address_to_resource(struct device_node *dev, int bar,
- EXPORT_SYMBOL_GPL(of_pci_address_to_resource);
- 
- static int parser_init(struct of_pci_range_parser *parser,
--			struct device_node *node, const char *name)
-+		       struct device_node *node, const char *name,
-+		       const int na, const int ns)
- {
--	const int na = 3, ns = 2;
- 	int rlen;
- 
- 	parser->node = node;
-@@ -254,17 +254,30 @@ static int parser_init(struct of_pci_range_parser *parser,
- int of_pci_range_parser_init(struct of_pci_range_parser *parser,
- 				struct device_node *node)
- {
--	return parser_init(parser, node, "ranges");
-+	const int na = 3, ns = 2;
+diff --git a/Documentation/devicetree/bindings/pci/rcar-pci-ep.txt b/Documentation/devicetree/bindings/pci/rcar-pci-ep.txt
+new file mode 100644
+index 0000000..7f0a97e
+--- /dev/null
++++ b/Documentation/devicetree/bindings/pci/rcar-pci-ep.txt
+@@ -0,0 +1,37 @@
++* Renesas R-Car PCIe Endpoint Controller DT description
 +
-+	return parser_init(parser, node, "ranges", na, ns);
- }
- EXPORT_SYMBOL_GPL(of_pci_range_parser_init);
- 
- int of_pci_dma_range_parser_init(struct of_pci_range_parser *parser,
- 				struct device_node *node)
- {
--	return parser_init(parser, node, "dma-ranges");
-+	const int na = 3, ns = 2;
++Required properties:
++	    "renesas,pcie-ep-r8a774c0" for the R8A774C0 SoC;
++	    "renesas,pcie-ep-rcar-gen3" for a generic R-Car Gen3 or
++				     RZ/G2 compatible device.
 +
-+	return parser_init(parser, node, "dma-ranges", na, ns);
- }
- EXPORT_SYMBOL_GPL(of_pci_dma_range_parser_init);
- 
-+int of_pci_outbound_range_parser_init(struct of_pci_range_parser *parser,
-+				      struct device_node *node)
-+{
-+	const int na = 1, ns = 2;
++	    When compatible with the generic version, nodes must list the
++	    SoC-specific version corresponding to the platform first
++	    followed by the generic version.
 +
-+	return parser_init(parser, node, "outbound-ranges", na, ns);
-+}
-+EXPORT_SYMBOL_GPL(of_pci_outbound_range_parser_init);
++- reg: base address and length of the PCIe controller registers.
++- outbound-ranges: outbound windows base address and length including the flags.
++- resets: Must contain phandles to PCIe-related reset lines exposed by IP block
++- clocks: from common clock binding: clock specifiers for the PCIe controller
++	 clock.
++- clock-names: from common clock binding: should be "pcie".
 +
- struct of_pci_range *of_pci_range_parser_one(struct of_pci_range_parser *parser,
- 						struct of_pci_range *range)
- {
-@@ -310,6 +323,29 @@ struct of_pci_range *of_pci_range_parser_one(struct of_pci_range_parser *parser,
- }
- EXPORT_SYMBOL_GPL(of_pci_range_parser_one);
- 
-+struct of_pci_outbound_range
-+*of_pci_outbound_range_parser_one(struct of_pci_range_parser *parser,
-+				  struct of_pci_outbound_range *range)
-+{
-+	const int na = 1, ns = 2;
++Optional Property:
++- max-functions: Maximum number of functions that can be configured (default 1).
 +
-+	if (!range)
-+		return NULL;
++Example:
 +
-+	if (!parser->range || parser->range + parser->np > parser->end)
-+		return NULL;
++SoC-specific DT Entry:
 +
-+	range->flags = be32_to_cpup(parser->range);
-+	range->cpu_addr = of_translate_address(parser->node,
-+					       parser->range + na);
-+	range->size = of_read_number(parser->range + parser->pna + na, ns);
-+
-+	parser->range += parser->np;
-+
-+	return range;
-+}
-+EXPORT_SYMBOL_GPL(of_pci_outbound_range_parser_one);
-+
- /*
-  * of_pci_range_to_resource - Create a resource from an of_pci_range
-  * @range:	the PCI range that describes the resource
-diff --git a/include/linux/of_address.h b/include/linux/of_address.h
-index 30e40fb..93b3be3 100644
---- a/include/linux/of_address.h
-+++ b/include/linux/of_address.h
-@@ -22,9 +22,18 @@ struct of_pci_range {
- 	u32 flags;
- };
- 
-+struct of_pci_outbound_range {
-+	u32 flags;
-+	u64 cpu_addr;
-+	u64 size;
-+};
-+
- #define for_each_of_pci_range(parser, range) \
- 	for (; of_pci_range_parser_one(parser, range);)
- 
-+#define for_each_of_pci_outbound_range(parser, range) \
-+	for (; of_pci_outbound_range_parser_one(parser, range);)
-+
- /* Translate a DMA address from device space to CPU space */
- extern u64 of_translate_dma_address(struct device_node *dev,
- 				    const __be32 *in_addr);
-@@ -52,9 +61,14 @@ extern int of_pci_range_parser_init(struct of_pci_range_parser *parser,
- 			struct device_node *node);
- extern int of_pci_dma_range_parser_init(struct of_pci_range_parser *parser,
- 			struct device_node *node);
-+extern int of_pci_outbound_range_parser_init(struct of_pci_range_parser *parser,
-+					     struct device_node *node);
- extern struct of_pci_range *of_pci_range_parser_one(
- 					struct of_pci_range_parser *parser,
- 					struct of_pci_range *range);
-+extern struct of_pci_outbound_range
-+*of_pci_outbound_range_parser_one(struct of_pci_range_parser *parser,
-+				  struct of_pci_outbound_range *range);
- extern int of_dma_get_range(struct device_node *np, u64 *dma_addr,
- 				u64 *paddr, u64 *size);
- extern bool of_dma_is_coherent(struct device_node *np);
-@@ -97,6 +111,13 @@ static inline int of_pci_dma_range_parser_init(struct of_pci_range_parser *parse
- 	return -ENOSYS;
- }
- 
-+static inline int
-+of_pci_outbound_range_parser_init(struct of_pci_range_parser *parser,
-+				  struct device_node *node)
-+{
-+	return -ENOSYS;
-+}
-+
- static inline struct of_pci_range *of_pci_range_parser_one(
- 					struct of_pci_range_parser *parser,
- 					struct of_pci_range *range)
++	pcie_ep: pcie_ep@fe000000 {
++		compatible = "renesas,pcie-ep-r8a774c0", "renesas,pcie-rcar-gen2";
++		reg = <0 0xfe000000 0 0x80000>;
++		outbound-ranges = <0xa 0x0 0xfe100000 0 0x000100000
++				   0xa 0x0 0xfe200000 0 0x000200000
++				   0x6 0x0 0x30000000 0 0x008000000
++				   0x6 0x0 0x38000000 0 0x008000000>;
++		clocks = <&cpg CPG_MOD 319>;
++		clock-names = "pcie";
++		power-domains = <&sysc R8A774C0_PD_ALWAYS_ON>;
++		resets = <&cpg 319>;
++	};
 -- 
 2.7.4
