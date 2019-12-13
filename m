@@ -1,11 +1,14 @@
 From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH 0/3] media: rkvdec: Add a VP9 backend
-Date: Fri, 13 Dec 2019 14:31:54 +0100
-Message-ID: <20191213133157.105554-1-boris.brezillon@collabora.com>
+Subject: [PATCH 1/3] media: v4l2-ctrls: Add the
+ [__]v4l2_ctrl_s_ctrl_compound() helpers
+Date: Fri, 13 Dec 2019 14:31:55 +0100
+Message-ID: <20191213133157.105554-2-boris.brezillon@collabora.com>
+References: <20191213133157.105554-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191213133157.105554-1-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,37 +22,95 @@ To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Han
 Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
+VP9 codec drivers will need to set some of their frame context compound
+controls. Let's provide the [__]v4l2_ctrl_s_ctrl_compound() helpers to
+allow that.
 
-This patch series adds controls for stateless VP9 decoders plus a VP9
-backend to the rkvdec driver showing how those controls can be used in
-a real implementation. This means this series depends on the rkvdec
-series posted here [1].
+Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+ drivers/media/v4l2-core/v4l2-ctrls.c | 15 ++++++++++
+ include/media/v4l2-ctrls.h           | 43 ++++++++++++++++++++++++++++
+ 2 files changed, 58 insertions(+)
 
-Regards,
-
-Boris
-
-[1]https://patchwork.linuxtv.org/project/linux-media/list/?series=1483
-
-Boris Brezillon (3):
-  media: v4l2-ctrls: Add the [__]v4l2_ctrl_s_ctrl_compound() helpers
-  media: uapi: Add VP9 stateless decoder controls
-  media: rkvdec: Add the VP9 backend
-
- Documentation/media/uapi/v4l/biblio.rst       |   10 +
- .../media/uapi/v4l/ext-ctrls-codec.rst        |  584 ++++++
- drivers/media/v4l2-core/v4l2-ctrls.c          |  258 +++
- drivers/media/v4l2-core/v4l2-ioctl.c          |    1 +
- drivers/staging/media/rkvdec/Makefile         |    2 +-
- drivers/staging/media/rkvdec/rkvdec-vp9.c     | 1572 +++++++++++++++++
- drivers/staging/media/rkvdec/rkvdec.c         |   56 +-
- drivers/staging/media/rkvdec/rkvdec.h         |    6 +
- include/media/v4l2-ctrls.h                    |   44 +
- include/media/vp9-ctrls.h                     |  515 ++++++
- 10 files changed, 3044 insertions(+), 4 deletions(-)
- create mode 100644 drivers/staging/media/rkvdec/rkvdec-vp9.c
- create mode 100644 include/media/vp9-ctrls.h
-
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls.c b/drivers/media/v4l2-core/v4l2-ctrls.c
+index 2928c5e0a73d..9d5c0242d3e0 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls.c
+@@ -4255,6 +4255,21 @@ int __v4l2_ctrl_s_ctrl_area(struct v4l2_ctrl *ctrl,
+ }
+ EXPORT_SYMBOL(__v4l2_ctrl_s_ctrl_area);
+ 
++int __v4l2_ctrl_s_ctrl_compound(struct v4l2_ctrl *ctrl, const void *data,
++				size_t len)
++{
++	lockdep_assert_held(ctrl->handler->lock);
++
++	/* It's a driver bug if this happens. */
++	WARN_ON(!ctrl->is_ptr || ctrl->type < V4L2_CTRL_COMPOUND_TYPES);
++	if (WARN_ON(len != (ctrl->elem_size * ctrl->elems)))
++		return -EINVAL;
++
++	memcpy(ctrl->p_new.p, data, len);
++	return set_ctrl(NULL, ctrl, 0);
++}
++EXPORT_SYMBOL(__v4l2_ctrl_s_ctrl_compound);
++
+ void v4l2_ctrl_request_complete(struct media_request *req,
+ 				struct v4l2_ctrl_handler *main_hdl)
+ {
+diff --git a/include/media/v4l2-ctrls.h b/include/media/v4l2-ctrls.h
+index 7db9e719a583..30c3be7f5efc 100644
+--- a/include/media/v4l2-ctrls.h
++++ b/include/media/v4l2-ctrls.h
+@@ -1152,6 +1152,49 @@ static inline int v4l2_ctrl_s_ctrl_area(struct v4l2_ctrl *ctrl,
+ 	return rval;
+ }
+ 
++/**
++ * __v4l2_ctrl_s_ctrl_compound() - Unlocked variant of
++ *				   v4l2_ctrl_s_ctrl_compound().
++ *
++ * @ctrl:	The control.
++ * @data:	The object pointer.
++ * @len:	The object length.
++ *
++ * This sets the control's new compound safely by going through the control
++ * framework. This function assumes the control's handler is already locked,
++ * allowing it to be used from within the &v4l2_ctrl_ops functions.
++ *
++ * This function is for compound type controls only.
++ */
++int __v4l2_ctrl_s_ctrl_compound(struct v4l2_ctrl *ctrl, const void *data,
++				size_t len);
++
++/**
++ * v4l2_ctrl_s_ctrl_compound() - Helper function to set a control's compound
++ *				 value from within a driver.
++ *
++ * @ctrl:	The control.
++ * @data:	The object pointer.
++ * @len:	The object length.
++ *
++ * This sets the control's new compound safely by going through the control
++ * framework. This function will lock the control's handler, so it cannot be
++ * used from within the &v4l2_ctrl_ops functions.
++ *
++ * This function is for compound type controls only.
++ */
++static inline int v4l2_ctrl_s_ctrl_compound(struct v4l2_ctrl *ctrl,
++					    const void *data, size_t len)
++{
++	int rval;
++
++	v4l2_ctrl_lock(ctrl);
++	rval = __v4l2_ctrl_s_ctrl_compound(ctrl, data, len);
++	v4l2_ctrl_unlock(ctrl);
++
++	return rval;
++}
++
+ /* Internal helper functions that deal with control events. */
+ extern const struct v4l2_subscribed_event_ops v4l2_ctrl_sub_ev_ops;
+ 
 -- 
 2.23.0
