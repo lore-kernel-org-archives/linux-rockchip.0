@@ -1,96 +1,88 @@
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: Re: [PATCH] MAINTAINERS: rockchip: Track more files
-Date: Fri, 13 Dec 2019 11:35:28 +0100
-Message-ID: <20191213113528.2e06e1f4@xps13>
-References: <20191204090710.11646-1-miquel.raynal@bootlin.com>
-        <e4dc0f27-6a26-3b29-11fd-231f686fce91@rock-chips.com>
-        <3160577.NKkQCOVCmZ@phil>
+From: Jack Mitchell <ml-psbXN780rFT10XsdtD+oqA@public.gmane.org>
+Subject: Re: RK3288 dwc2 USB OTG + macOS
+Date: Fri, 13 Dec 2019 11:24:01 +0000
+Message-ID: <8a2341be-7b34-54d1-83aa-d8961d2c1618@embed.me.uk>
+References: <e6321abc-1d3a-cfa1-638a-6051719462ad@embed.me.uk>
+ <bcda1da2-fcdf-2c5b-d07b-5cf397571eb7@embed.me.uk>
+ <3e45e70d-1e59-373d-76b7-b6a8a6320514@synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3160577.NKkQCOVCmZ@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Kever Yang <kever.yang@rock-chips.com>, linux-rockchip@lists.infradead.org, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-kernel@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Maxime Chevallier <maxime.chevallier@bootlin.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <3e45e70d-1e59-373d-76b7-b6a8a6320514-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Content-Language: en-US-large
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Jack Mitchell <ml-psbXN780rFT10XsdtD+oqA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Cc: Phillip Karls <prkarls-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Hi Minas,
 
-Heiko Stuebner <heiko@sntech.de> wrote on Fri, 13 Dec 2019 11:27:29
-+0100:
-
-> Am Montag, 9. Dezember 2019, 09:18:00 CET schrieb Kever Yang:
-> > Hi Miquel,
-> > 
-> > On 2019/12/4 下午5:07, Miquel Raynal wrote:  
-> > > The current list misses a lot of drivers not prefixed or suffixed by
-> > > "rockchip". For instance, there are plenty drivers called rk808 and
-> > > rk805 which are currently not tracked (clk, regulator, pinctrl, RTC,
-> > > MFD, includes, bindings). Add them to the list under the Rockchip
-> > > entry.
-> > >
-> > > Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
-> > > ---
-> > >
-> > > Hi Heiko,
-> > >
-> > > You are right we should try to check more often your tree. Also, here
-> > > is a patch so that you are Cc'ed for all Rockchip related patches
-> > > because the current list is not exhaustive at all (not sure it is
-> > > voluntary or not though).
-> > >
-> > > Cheers,
-> > > Miquèl
-> > >
-> > >   MAINTAINERS | 4 ++++
-> > >   1 file changed, 4 insertions(+)
-> > >
-> > > diff --git a/MAINTAINERS b/MAINTAINERS
-> > > index cba1095547fd..a9564e6cb872 100644
-> > > --- a/MAINTAINERS
-> > > +++ b/MAINTAINERS
-> > > @@ -2198,12 +2198,16 @@ L:	linux-rockchip@lists.infradead.org
-> > >   T:	git git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
-> > >   S:	Maintained
-> > >   F:	Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
-> > > +F:	Documentation/devicetree/bindings/*/*rk80*
-> > >   F:	arch/arm/boot/dts/rk3*
-> > >   F:	arch/arm/boot/dts/rv1108*
-> > >   F:	arch/arm/mach-rockchip/
-> > > +F:	include/*/*/rk808.h
-> > > +F:	include/*/*/*/rk808.h
-> > >   F:	drivers/clk/rockchip/
-> > >   F:	drivers/i2c/busses/i2c-rk3x.c
-> > >   F:	drivers/*/*rockchip*
-> > > +F:	drivers/*/*rk80*
-> > >   F:	drivers/*/*/*rockchip*
-> > >   F:	sound/soc/rockchip/
-> > >   N:	rockchip  
-> > For the Rockchip PMIC, is it better to have a NEW MAINTAINER entry like 
-> > "ROCKCHIP PMIC DRIVER"
-> > which share the same mailing list linux-rockchip@, because there is not 
-> > only rk808,
-> > but also rk805, rk809, rk817, rk818, and may be more to come.
-> > 
-> > BTW, we should use 'rk8' instead of 'rk80' to match all the Rockchip PMICs.  
+On 28/11/2019 11:29, Minas Harutyunyan wrote:
+> Hi Jack,
 > 
-> yep, I agree with Kever on this ... also that new pmic-related entry should
-> not really link to a git tree as patches for it will get distributed through
-> multiple trees (mfd, regulator, rtc) most of the time.
-
-I think it is important that the maintainer receive all Rockchip
-related patches, as he has the bigger picture in mind. Of course it is
-possible to add an additional MAINTAINER entry for Rockchip PMIC
-drivers specifically.
-
-So in the end, I will s/rk80/rk8/, shall I remove a specific entry from
-the 4 added?
-
 > 
-> Miquel can you do a v2 please?
+> On 8/30/2019 2:49 PM, Jack Mitchell wrote:
+>> On 22/08/2019 17:06, Jack Mitchell wrote:
+>>> I'm having issues on a Firefly rk3288 board when trying to use USB
+>>> gadget ethernet on macOS. The dr_mode is set to "otg" and it works fine
+>>> with my Linux desktop.
+>>>
+>>> If I set the dr_mode to "peripheral" macOS will work, but still takes
+>>> around 10 seconds to enumerate the device which makes me think it's only
+>>> just working. However, I need the port to be in "otg" mode as it will
+>>> switch between peripheral/host use cases.
+>>>
+>>> I've attached a log from the dwc2 driver from mainline Linux 5.2 when
+>>> being plugged into the macOS device for 30 seconds, then removed. The
+>>> mac in this case is a 2013 macbook pro. Any pointers in the right
+>>> direction would be greatly appreciated.
+>>>
+>>> Regards,
+>>> Jack.
+>>>
+> Sorry, for late response.
+> 
+> Could you please apply recently submitted patch "[PATCH] usb: dwc2: Fix 
+> SET/CLEAR_FEATURE and GET_STATUS flows" and test again.
+> 
 
-Of course, this is planned, I'm just a bit late in my e-mail backlog!
+Tested and confirmed working, many thanks.
 
-Cheers,
-Miquèl
+Tested-By: Jack Mitchell <ml-psbXN780rFT10XsdtD+oqA@public.gmane.org>
+
+>>
+>> I've been poking about with this some more and I've managed to bisect
+>> the issue down to the following commit
+>>
+>> 729cac693eecfebdb9e152eaddddd358ae2decb7 usb: dwc2: Change ISOC DDMA flow
+>>
+>> If I build before this commit everything works fine with a g_ether
+>> gadget device on mac. Unfortunately it's a rather large change which I
+>> can't just revert in master as it's got multiple dependant commits
+>> later. So, any advice on what could be causing this or how to help debug
+>> it would be much appreciated, as at the moment I've just forward ported
+>> the working 4.16 version of the driver over the 5.3-rc6 broken driver
+>> which isn't very sustainable in the long run.
+> 
+> I don't think that issue root cause coming from mentioned by you above 
+> patch. Based on log you provided, SET_FEATURE control transfer not 
+> completed by gadget - ZLP on status stage not sent to host.
+> 
+>>
+>> Regards,
+>> Jack.
+>>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> 
