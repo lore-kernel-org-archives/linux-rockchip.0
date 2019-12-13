@@ -1,8 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH 06/12] drm/rockchip: lvds: Create an RK3288 specific probe
- function
-Date: Fri, 13 Dec 2019 19:10:45 +0100
-Message-ID: <20191213181051.25983-7-miquel.raynal@bootlin.com>
+Subject: [PATCH 07/12] drm/rockchip: lvds: Helpers should return decent values
+Date: Fri, 13 Dec 2019 19:10:46 +0100
+Message-ID: <20191213181051.25983-8-miquel.raynal@bootlin.com>
 References: <20191213181051.25983-1-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,168 +21,75 @@ To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devic
 Cc: dri-devel@lists.freedesktop.org, Maxime Chevallier <maxime.chevallier@bootlin.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The probe function is highly tighten to the RK3288 specificities, move
-all specific bits into an "rk3288_probe" function, also part of the
-platform data.
-
-The goal is to ease the addition of new flavors of Rockchip LVDS IPs.
+Return errors instead of returning void from internal helpers. When
+these helpers are called, check the returned value and print an error
+message in this case.
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_lvds.c | 94 ++++++++++++++----------
- 1 file changed, 57 insertions(+), 37 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_lvds.c | 31 ++++++++++++++++++------
+ 1 file changed, 23 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-index 262fec61eb78..0d2902b0d990 100644
+index 0d2902b0d990..6365a2c883c3 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-@@ -31,6 +31,8 @@
- #define DISPLAY_OUTPUT_LVDS		1
- #define DISPLAY_OUTPUT_DUAL_LVDS	2
- 
-+struct rockchip_lvds;
-+
- #define connector_to_lvds(c) \
- 		container_of(c, struct rockchip_lvds, connector)
- 
-@@ -39,9 +41,11 @@
- 
- /**
-  * rockchip_lvds_soc_data - rockchip lvds Soc private data
-+ * @probe: LVDS platform probe function
-  * @helper_funcs: LVDS connector helper functions
-  */
- struct rockchip_lvds_soc_data {
-+	int (*probe)(struct platform_device *pdev, struct rockchip_lvds *lvds);
- 	const struct drm_encoder_helper_funcs *helper_funcs;
+@@ -215,8 +215,8 @@ struct drm_connector_helper_funcs rockchip_lvds_connector_helper_funcs = {
+ 	.get_modes = rockchip_lvds_connector_get_modes,
  };
  
-@@ -303,6 +307,52 @@ static void rk3288_lvds_encoder_disable(struct drm_encoder *encoder)
- 	drm_panel_unprepare(lvds->panel);
+-static void rk3288_lvds_grf_config(struct drm_encoder *encoder,
+-				   struct drm_display_mode *mode)
++static int rk3288_lvds_grf_config(struct drm_encoder *encoder,
++				  struct drm_display_mode *mode)
+ {
+ 	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
+ 	u8 pin_hsync = (mode->flags & DRM_MODE_FLAG_PHSYNC) ? 1 : 0;
+@@ -241,10 +241,10 @@ static void rk3288_lvds_grf_config(struct drm_encoder *encoder,
+ 	val |= (pin_dclk << 8) | (pin_hsync << 9);
+ 	val |= (0xffff << 16);
+ 	ret = regmap_write(lvds->grf, RK3288_LVDS_GRF_SOC_CON7, val);
+-	if (ret != 0) {
++	if (ret)
+ 		DRM_DEV_ERROR(lvds->dev, "Could not write to GRF: %d\n", ret);
+-		return;
+-	}
++
++	return ret;
  }
  
-+static int rk3288_lvds_probe(struct platform_device *pdev,
-+			     struct rockchip_lvds *lvds)
-+{
-+	struct resource *res;
-+	int ret;
-+
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	lvds->regs = devm_ioremap_resource(lvds->dev, res);
-+	if (IS_ERR(lvds->regs))
-+		return PTR_ERR(lvds->regs);
-+
-+	lvds->pclk = devm_clk_get(lvds->dev, "pclk_lvds");
-+	if (IS_ERR(lvds->pclk)) {
-+		DRM_DEV_ERROR(lvds->dev, "could not get pclk_lvds\n");
-+		return PTR_ERR(lvds->pclk);
-+	}
-+
-+	lvds->pins = devm_kzalloc(lvds->dev, sizeof(*lvds->pins),
-+				  GFP_KERNEL);
-+	if (!lvds->pins)
-+		return -ENOMEM;
-+
-+	lvds->pins->p = devm_pinctrl_get(lvds->dev);
-+	if (IS_ERR(lvds->pins->p)) {
-+		DRM_DEV_ERROR(lvds->dev, "no pinctrl handle\n");
-+		devm_kfree(lvds->dev, lvds->pins);
-+		lvds->pins = NULL;
-+	} else {
-+		lvds->pins->default_state =
-+			pinctrl_lookup_state(lvds->pins->p, "lcdc");
-+		if (IS_ERR(lvds->pins->default_state)) {
-+			DRM_DEV_ERROR(lvds->dev, "no default pinctrl state\n");
-+			devm_kfree(lvds->dev, lvds->pins);
-+			lvds->pins = NULL;
-+		}
-+	}
-+
-+	ret = clk_prepare(lvds->pclk);
-+	if (ret < 0) {
-+		DRM_DEV_ERROR(lvds->dev, "failed to prepare pclk_lvds\n");
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
- static const
- struct drm_encoder_helper_funcs rk3288_lvds_encoder_helper_funcs = {
- 	.enable = rk3288_lvds_encoder_enable,
-@@ -315,6 +365,7 @@ static const struct drm_encoder_funcs rockchip_lvds_encoder_funcs = {
- };
- 
- static const struct rockchip_lvds_soc_data rk3288_lvds_data = {
-+	.probe = rk3288_lvds_probe,
- 	.helper_funcs = &rk3288_lvds_encoder_helper_funcs,
- };
- 
-@@ -488,7 +539,6 @@ static int rockchip_lvds_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct rockchip_lvds *lvds;
- 	const struct of_device_id *match;
--	struct resource *res;
+ static int rk3288_lvds_set_vop_source(struct rockchip_lvds *lvds,
+@@ -288,13 +288,28 @@ static void rk3288_lvds_encoder_enable(struct drm_encoder *encoder)
  	int ret;
  
- 	if (!dev->of_node)
-@@ -504,37 +554,6 @@ static int rockchip_lvds_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	lvds->soc_data = match->data;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	lvds->regs = devm_ioremap_resource(&pdev->dev, res);
--	if (IS_ERR(lvds->regs))
--		return PTR_ERR(lvds->regs);
--
--	lvds->pclk = devm_clk_get(&pdev->dev, "pclk_lvds");
--	if (IS_ERR(lvds->pclk)) {
--		DRM_DEV_ERROR(dev, "could not get pclk_lvds\n");
--		return PTR_ERR(lvds->pclk);
--	}
--
--	lvds->pins = devm_kzalloc(lvds->dev, sizeof(*lvds->pins),
--				  GFP_KERNEL);
--	if (!lvds->pins)
--		return -ENOMEM;
--
--	lvds->pins->p = devm_pinctrl_get(lvds->dev);
--	if (IS_ERR(lvds->pins->p)) {
--		DRM_DEV_ERROR(dev, "no pinctrl handle\n");
--		devm_kfree(lvds->dev, lvds->pins);
--		lvds->pins = NULL;
--	} else {
--		lvds->pins->default_state =
--			pinctrl_lookup_state(lvds->pins->p, "lcdc");
--		if (IS_ERR(lvds->pins->default_state)) {
--			DRM_DEV_ERROR(dev, "no default pinctrl state\n");
--			devm_kfree(lvds->dev, lvds->pins);
--			lvds->pins = NULL;
--		}
--	}
--
- 	lvds->grf = syscon_regmap_lookup_by_phandle(dev->of_node,
- 						    "rockchip,grf");
- 	if (IS_ERR(lvds->grf)) {
-@@ -542,13 +561,14 @@ static int rockchip_lvds_probe(struct platform_device *pdev)
- 		return PTR_ERR(lvds->grf);
+ 	drm_panel_prepare(lvds->panel);
++
+ 	ret = rk3288_lvds_poweron(lvds);
+ 	if (ret < 0) {
+-		DRM_DEV_ERROR(lvds->dev, "failed to power on lvds: %d\n", ret);
++		DRM_DEV_ERROR(lvds->dev, "failed to power on LVDS: %d\n", ret);
+ 		drm_panel_unprepare(lvds->panel);
++		return;
  	}
- 
-+	ret = lvds->soc_data->probe(pdev, lvds);
+-	rk3288_lvds_grf_config(encoder, mode);
+-	rk3288_lvds_set_vop_source(lvds, encoder);
++
++	ret = rk3288_lvds_grf_config(encoder, mode);
 +	if (ret) {
-+		DRM_DEV_ERROR(dev, "Platform initialization failed\n");
-+		return ret;
++		DRM_DEV_ERROR(lvds->dev, "failed to configure LVDS: %d\n", ret);
++		drm_panel_unprepare(lvds->panel);
++		return;
 +	}
 +
- 	dev_set_drvdata(dev, lvds);
++	ret = rk3288_lvds_set_vop_source(lvds, encoder);
++	if (ret) {
++		DRM_DEV_ERROR(lvds->dev, "failed to set VOP source: %d\n", ret);
++		drm_panel_unprepare(lvds->panel);
++		return;
++	}
++
+ 	drm_panel_enable(lvds->panel);
+ }
  
--	ret = clk_prepare(lvds->pclk);
--	if (ret < 0) {
--		DRM_DEV_ERROR(dev, "failed to prepare pclk_lvds\n");
--		return ret;
--	}
- 	ret = component_add(&pdev->dev, &rockchip_lvds_component_ops);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(dev, "failed to add component\n");
 -- 
 2.20.1
