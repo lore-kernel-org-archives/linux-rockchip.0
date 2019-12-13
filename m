@@ -1,67 +1,96 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: Miquel Raynal <miquel.raynal@bootlin.com>
 Subject: Re: [PATCH] MAINTAINERS: rockchip: Track more files
-Date: Fri, 13 Dec 2019 11:27:29 +0100
-Message-ID: <3160577.NKkQCOVCmZ@phil>
+Date: Fri, 13 Dec 2019 11:35:28 +0100
+Message-ID: <20191213113528.2e06e1f4@xps13>
 References: <20191204090710.11646-1-miquel.raynal@bootlin.com>
- <e4dc0f27-6a26-3b29-11fd-231f686fce91@rock-chips.com>
+        <e4dc0f27-6a26-3b29-11fd-231f686fce91@rock-chips.com>
+        <3160577.NKkQCOVCmZ@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <e4dc0f27-6a26-3b29-11fd-231f686fce91-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <3160577.NKkQCOVCmZ@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Kever Yang <kever.yang@rock-chips.com>, linux-rockchip@lists.infradead.org, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-kernel@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Maxime Chevallier <maxime.chevallier@bootlin.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTW9udGFnLCA5LiBEZXplbWJlciAyMDE5LCAwOToxODowMCBDRVQgc2NocmllYiBLZXZlciBZ
-YW5nOgo+IEhpIE1pcXVlbCwKPiAKPiBPbiAyMDE5LzEyLzQg5LiL5Y2INTowNywgTWlxdWVsIFJh
-eW5hbCB3cm90ZToKPiA+IFRoZSBjdXJyZW50IGxpc3QgbWlzc2VzIGEgbG90IG9mIGRyaXZlcnMg
-bm90IHByZWZpeGVkIG9yIHN1ZmZpeGVkIGJ5Cj4gPiAicm9ja2NoaXAiLiBGb3IgaW5zdGFuY2Us
-IHRoZXJlIGFyZSBwbGVudHkgZHJpdmVycyBjYWxsZWQgcms4MDggYW5kCj4gPiByazgwNSB3aGlj
-aCBhcmUgY3VycmVudGx5IG5vdCB0cmFja2VkIChjbGssIHJlZ3VsYXRvciwgcGluY3RybCwgUlRD
-LAo+ID4gTUZELCBpbmNsdWRlcywgYmluZGluZ3MpLiBBZGQgdGhlbSB0byB0aGUgbGlzdCB1bmRl
-ciB0aGUgUm9ja2NoaXAKPiA+IGVudHJ5Lgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6IE1pcXVlbCBS
-YXluYWwgPG1pcXVlbC5yYXluYWxAYm9vdGxpbi5jb20+Cj4gPiAtLS0KPiA+Cj4gPiBIaSBIZWlr
-bywKPiA+Cj4gPiBZb3UgYXJlIHJpZ2h0IHdlIHNob3VsZCB0cnkgdG8gY2hlY2sgbW9yZSBvZnRl
-biB5b3VyIHRyZWUuIEFsc28sIGhlcmUKPiA+IGlzIGEgcGF0Y2ggc28gdGhhdCB5b3UgYXJlIENj
-J2VkIGZvciBhbGwgUm9ja2NoaXAgcmVsYXRlZCBwYXRjaGVzCj4gPiBiZWNhdXNlIHRoZSBjdXJy
-ZW50IGxpc3QgaXMgbm90IGV4aGF1c3RpdmUgYXQgYWxsIChub3Qgc3VyZSBpdCBpcwo+ID4gdm9s
-dW50YXJ5IG9yIG5vdCB0aG91Z2gpLgo+ID4KPiA+IENoZWVycywKPiA+IE1pcXXDqGwKPiA+Cj4g
-PiAgIE1BSU5UQUlORVJTIHwgNCArKysrCj4gPiAgIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlv
-bnMoKykKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvTUFJTlRBSU5FUlMgYi9NQUlOVEFJTkVSUwo+ID4g
-aW5kZXggY2JhMTA5NTU0N2ZkLi5hOTU2NGU2Y2I4NzIgMTAwNjQ0Cj4gPiAtLS0gYS9NQUlOVEFJ
-TkVSUwo+ID4gKysrIGIvTUFJTlRBSU5FUlMKPiA+IEBAIC0yMTk4LDEyICsyMTk4LDE2IEBAIEw6
-CWxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiA+ICAgVDoJZ2l0IGdpdDovL2dp
-dC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9tbWluZC9saW51eC1yb2NrY2hp
-cC5naXQKPiA+ICAgUzoJTWFpbnRhaW5lZAo+ID4gICBGOglEb2N1bWVudGF0aW9uL2RldmljZXRy
-ZWUvYmluZGluZ3MvaTJjL2kyYy1yazN4LnR4dAo+ID4gK0Y6CURvY3VtZW50YXRpb24vZGV2aWNl
-dHJlZS9iaW5kaW5ncy8qLypyazgwKgo+ID4gICBGOglhcmNoL2FybS9ib290L2R0cy9yazMqCj4g
-PiAgIEY6CWFyY2gvYXJtL2Jvb3QvZHRzL3J2MTEwOCoKPiA+ICAgRjoJYXJjaC9hcm0vbWFjaC1y
-b2NrY2hpcC8KPiA+ICtGOglpbmNsdWRlLyovKi9yazgwOC5oCj4gPiArRjoJaW5jbHVkZS8qLyov
-Ki9yazgwOC5oCj4gPiAgIEY6CWRyaXZlcnMvY2xrL3JvY2tjaGlwLwo+ID4gICBGOglkcml2ZXJz
-L2kyYy9idXNzZXMvaTJjLXJrM3guYwo+ID4gICBGOglkcml2ZXJzLyovKnJvY2tjaGlwKgo+ID4g
-K0Y6CWRyaXZlcnMvKi8qcms4MCoKPiA+ICAgRjoJZHJpdmVycy8qLyovKnJvY2tjaGlwKgo+ID4g
-ICBGOglzb3VuZC9zb2Mvcm9ja2NoaXAvCj4gPiAgIE46CXJvY2tjaGlwCj4gRm9yIHRoZSBSb2Nr
-Y2hpcCBQTUlDLCBpcyBpdCBiZXR0ZXIgdG8gaGF2ZSBhIE5FVyBNQUlOVEFJTkVSIGVudHJ5IGxp
-a2UgCj4gIlJPQ0tDSElQIFBNSUMgRFJJVkVSIgo+IHdoaWNoIHNoYXJlIHRoZSBzYW1lIG1haWxp
-bmcgbGlzdCBsaW51eC1yb2NrY2hpcEAsIGJlY2F1c2UgdGhlcmUgaXMgbm90IAo+IG9ubHkgcms4
-MDgsCj4gYnV0IGFsc28gcms4MDUsIHJrODA5LCByazgxNywgcms4MTgsIGFuZCBtYXkgYmUgbW9y
-ZSB0byBjb21lLgo+IAo+IEJUVywgd2Ugc2hvdWxkIHVzZSAncms4JyBpbnN0ZWFkIG9mICdyazgw
-JyB0byBtYXRjaCBhbGwgdGhlIFJvY2tjaGlwIFBNSUNzLgoKeWVwLCBJIGFncmVlIHdpdGggS2V2
-ZXIgb24gdGhpcyAuLi4gYWxzbyB0aGF0IG5ldyBwbWljLXJlbGF0ZWQgZW50cnkgc2hvdWxkCm5v
-dCByZWFsbHkgbGluayB0byBhIGdpdCB0cmVlIGFzIHBhdGNoZXMgZm9yIGl0IHdpbGwgZ2V0IGRp
-c3RyaWJ1dGVkIHRocm91Z2gKbXVsdGlwbGUgdHJlZXMgKG1mZCwgcmVndWxhdG9yLCBydGMpIG1v
-c3Qgb2YgdGhlIHRpbWUuCgpNaXF1ZWwgY2FuIHlvdSBkbyBhIHYyIHBsZWFzZT8KClRoYW5rcwpI
-ZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+Hi Heiko,
+
+Heiko Stuebner <heiko@sntech.de> wrote on Fri, 13 Dec 2019 11:27:29
++0100:
+
+> Am Montag, 9. Dezember 2019, 09:18:00 CET schrieb Kever Yang:
+> > Hi Miquel,
+> > 
+> > On 2019/12/4 下午5:07, Miquel Raynal wrote:  
+> > > The current list misses a lot of drivers not prefixed or suffixed by
+> > > "rockchip". For instance, there are plenty drivers called rk808 and
+> > > rk805 which are currently not tracked (clk, regulator, pinctrl, RTC,
+> > > MFD, includes, bindings). Add them to the list under the Rockchip
+> > > entry.
+> > >
+> > > Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
+> > > ---
+> > >
+> > > Hi Heiko,
+> > >
+> > > You are right we should try to check more often your tree. Also, here
+> > > is a patch so that you are Cc'ed for all Rockchip related patches
+> > > because the current list is not exhaustive at all (not sure it is
+> > > voluntary or not though).
+> > >
+> > > Cheers,
+> > > Miquèl
+> > >
+> > >   MAINTAINERS | 4 ++++
+> > >   1 file changed, 4 insertions(+)
+> > >
+> > > diff --git a/MAINTAINERS b/MAINTAINERS
+> > > index cba1095547fd..a9564e6cb872 100644
+> > > --- a/MAINTAINERS
+> > > +++ b/MAINTAINERS
+> > > @@ -2198,12 +2198,16 @@ L:	linux-rockchip@lists.infradead.org
+> > >   T:	git git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
+> > >   S:	Maintained
+> > >   F:	Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
+> > > +F:	Documentation/devicetree/bindings/*/*rk80*
+> > >   F:	arch/arm/boot/dts/rk3*
+> > >   F:	arch/arm/boot/dts/rv1108*
+> > >   F:	arch/arm/mach-rockchip/
+> > > +F:	include/*/*/rk808.h
+> > > +F:	include/*/*/*/rk808.h
+> > >   F:	drivers/clk/rockchip/
+> > >   F:	drivers/i2c/busses/i2c-rk3x.c
+> > >   F:	drivers/*/*rockchip*
+> > > +F:	drivers/*/*rk80*
+> > >   F:	drivers/*/*/*rockchip*
+> > >   F:	sound/soc/rockchip/
+> > >   N:	rockchip  
+> > For the Rockchip PMIC, is it better to have a NEW MAINTAINER entry like 
+> > "ROCKCHIP PMIC DRIVER"
+> > which share the same mailing list linux-rockchip@, because there is not 
+> > only rk808,
+> > but also rk805, rk809, rk817, rk818, and may be more to come.
+> > 
+> > BTW, we should use 'rk8' instead of 'rk80' to match all the Rockchip PMICs.  
+> 
+> yep, I agree with Kever on this ... also that new pmic-related entry should
+> not really link to a git tree as patches for it will get distributed through
+> multiple trees (mfd, regulator, rtc) most of the time.
+
+I think it is important that the maintainer receive all Rockchip
+related patches, as he has the bigger picture in mind. Of course it is
+possible to add an additional MAINTAINER entry for Rockchip PMIC
+drivers specifically.
+
+So in the end, I will s/rk80/rk8/, shall I remove a specific entry from
+the 4 added?
+
+> 
+> Miquel can you do a v2 please?
+
+Of course, this is planned, I'm just a bit late in my e-mail backlog!
+
+Cheers,
+Miquèl
