@@ -1,14 +1,11 @@
 From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 1/7] media: vb2: Add a helper to get the vb2 buffer
- attached to a request
-Date: Fri, 13 Dec 2019 13:54:08 +0100
-Message-ID: <20191213125414.90725-2-boris.brezillon@collabora.com>
-References: <20191213125414.90725-1-boris.brezillon@collabora.com>
+Subject: [PATCH v3 0/7] media: rockchip: Add the rkvdec driver
+Date: Fri, 13 Dec 2019 13:54:07 +0100
+Message-ID: <20191213125414.90725-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191213125414.90725-1-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -22,74 +19,63 @@ To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Han
 Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-vb2_request_get_buf() returns the N-th buffer attached to a media
-request.
+Hello,
 
-Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
-Changes in v3:
-* None
+This is v3 of the rkvdec driver adding both the core of the driver and
+a backend to decode H24 streams.
 
-Changes in v2:
-* Adjust the kernel doc as suggested by Hans
----
- .../media/common/videobuf2/videobuf2-core.c   | 23 +++++++++++++++++++
- include/media/videobuf2-core.h                | 11 +++++++++
- 2 files changed, 34 insertions(+)
+The most notable change in this version is the addition of generic
+helpers to build the reflists, along with Jonas' patch adding new DPB
+flags to express the field being referenced by each DPB entry.
 
-diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index 4489744fbbd9..c4c7980dcb0d 100644
---- a/drivers/media/common/videobuf2/videobuf2-core.c
-+++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -1416,6 +1416,29 @@ unsigned int vb2_request_buffer_cnt(struct media_request *req)
- }
- EXPORT_SYMBOL_GPL(vb2_request_buffer_cnt);
- 
-+struct vb2_buffer *vb2_request_get_buf(struct media_request *req,
-+				       unsigned int n)
-+{
-+	struct media_request_object *obj;
-+	struct vb2_buffer *buf = NULL;
-+	unsigned int nbufs = 0;
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&req->lock, flags);
-+	list_for_each_entry(obj, &req->objects, list) {
-+		if (!vb2_request_object_is_buffer(obj) ||
-+		    nbufs++ < n)
-+			continue;
-+
-+		buf = container_of(obj, struct vb2_buffer, req_obj);
-+		break;
-+	}
-+	spin_unlock_irqrestore(&req->lock, flags);
-+
-+	return buf;
-+}
-+EXPORT_SYMBOL_GPL(vb2_request_get_buf);
-+
- int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index, void *pb)
- {
- 	struct vb2_buffer *vb;
-diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index a2b2208b02da..6206e25df764 100644
---- a/include/media/videobuf2-core.h
-+++ b/include/media/videobuf2-core.h
-@@ -1225,4 +1225,15 @@ bool vb2_request_object_is_buffer(struct media_request_object *obj);
-  */
- unsigned int vb2_request_buffer_cnt(struct media_request *req);
- 
-+/**
-+ * vb2_request_get_buf() - return the buffer at index @idx
-+ *
-+ * @req:	the request.
-+ * @n:		search for the Nth buffer in the req object list
-+ *
-+ * Return a vb2 buffer or NULL if there's no buffer at the specified position
-+ */
-+struct vb2_buffer *vb2_request_get_buf(struct media_request *req,
-+				       unsigned int n);
-+
- #endif /* _MEDIA_VIDEOBUF2_CORE_H */
+Driver-wise, a few things have been reworked/clarified, but most of the
+code is unchanged. See the changelog attached to each patch for more
+details.
+
+Regards,
+
+Boris
+
+Boris Brezillon (6):
+  media: vb2: Add a helper to get the vb2 buffer attached to a request
+  media: v4l2-core: Add helpers to build the H264 P/B0/B1 reflists
+  media: hantro: h264: Use the generic H264 reflist builder
+  media: dt-bindings: rockchip: Document RK3399 Video Decoder bindings
+  media: rkvdec: Add the rkvdec driver
+  arm64: dts: rockchip: rk3399: Define the rockchip Video Decoder node
+
+Jonas Karlman (1):
+  media: uapi: h264: Add DPB entry field reference flags
+
+ .../bindings/media/rockchip,vdec.yaml         |   71 +
+ .../media/uapi/v4l/ext-ctrls-codec.rst        |   16 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi      |   14 +-
+ .../media/common/videobuf2/videobuf2-core.c   |   23 +
+ drivers/media/v4l2-core/Kconfig               |    4 +
+ drivers/media/v4l2-core/Makefile              |    1 +
+ drivers/media/v4l2-core/v4l2-h264.c           |  258 ++++
+ drivers/staging/media/Kconfig                 |    2 +
+ drivers/staging/media/Makefile                |    1 +
+ drivers/staging/media/hantro/hantro_h264.c    |  237 +---
+ drivers/staging/media/rkvdec/Kconfig          |   15 +
+ drivers/staging/media/rkvdec/Makefile         |    3 +
+ drivers/staging/media/rkvdec/rkvdec-h264.c    | 1154 +++++++++++++++++
+ drivers/staging/media/rkvdec/rkvdec-regs.h    |  239 ++++
+ drivers/staging/media/rkvdec/rkvdec.c         | 1130 ++++++++++++++++
+ drivers/staging/media/rkvdec/rkvdec.h         |  124 ++
+ include/media/h264-ctrls.h                    |    2 +
+ include/media/v4l2-h264.h                     |   86 ++
+ include/media/videobuf2-core.h                |   11 +
+ 19 files changed, 3161 insertions(+), 230 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+ create mode 100644 drivers/media/v4l2-core/v4l2-h264.c
+ create mode 100644 drivers/staging/media/rkvdec/Kconfig
+ create mode 100644 drivers/staging/media/rkvdec/Makefile
+ create mode 100644 drivers/staging/media/rkvdec/rkvdec-h264.c
+ create mode 100644 drivers/staging/media/rkvdec/rkvdec-regs.h
+ create mode 100644 drivers/staging/media/rkvdec/rkvdec.c
+ create mode 100644 drivers/staging/media/rkvdec/rkvdec.h
+ create mode 100644 include/media/v4l2-h264.h
+
 -- 
 2.23.0
