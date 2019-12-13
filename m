@@ -1,66 +1,173 @@
-From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH 0/3] media: rkvdec: Add a VP9 backend
-Date: Fri, 13 Dec 2019 14:37:30 +0100
-Message-ID: <20191213143730.3b1e4d9e@collabora.com>
-References: <20191213133157.105554-1-boris.brezillon@collabora.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [RFC 00/25] arm64: realtek: Add Xnano X5 and implement
+ TM1628/FD628/AiP1618 LED controllers
+Date: Fri, 13 Dec 2019 14:07:28 +0000
+Message-ID: <04e7d7cd-a8bc-621b-9205-1a058521cabe@arm.com>
+References: <20191212033952.5967-1-afaerber@suse.de>
+ <7110806f-ddbd-f055-e107-7a1f7e223102@arm.com>
+ <c86c6bc0-b0e5-c46e-da87-9d910b95f9f3@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191213133157.105554-1-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <c86c6bc0-b0e5-c46e-da87-9d910b95f9f3@suse.de>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
+Cc: linux-realtek-soc@lists.infradead.org, linux-leds@vger.kernel.org, linux-rtc@vger.kernel.org, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, csd@princeton.com.tw, devicetree@vger.kernel.org, sales@fdhisi.com, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Pavel Machek <pavel@ucw.cz>, zypeng@titanmec.com, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Dan Murphy <dmurphy@ti.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 13 Dec 2019 14:31:54 +0100
-Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
-
-> Hello,
+On 12/12/2019 8:55 pm, Andreas Färber wrote:
+> Hi Robin,
 > 
-> This patch series adds controls for stateless VP9 decoders plus a VP9
-> backend to the rkvdec driver showing how those controls can be used in
-> a real implementation. This means this series depends on the rkvdec
-> series posted here [1].
+> [- Roc He, + linux-rockchip]
 > 
+> Am 12.12.19 um 14:14 schrieb Robin Murphy:
+>> On 12/12/2019 3:39 am, Andreas Färber wrote:
+>>> This patch series implements the LED controllers found in some RTD1295
+>>> based
+>>> TV set-top boxes.
+> [...]
+>>> TM1628 and related chipsets have an internal Display RAM, from which they
+>>> control a two-dimensional array of LED components, often used for
+>>> seven-segment displays, i.e. clock display, but also for indicators.
+>>> Individual LEDs can be turned on/off, but brightness is applied globally.
+>>> Some chipsets also support polling a two-dimensional key pad.
+> [...]
+>>> Some more notes:
+>>> * Public TM1628 V1.1 datasheet is in Chinese only and differs from the
+>>>     unversioned English version found elsewhere on datasheet sites by
+>>>     documenting more display modes, included here (guessed from Arabic
+>>> numbers).
+>>> * Public FD628 datasheet is Chinese only (guesses based on Arabic
+>>> numbers).
+>>>     FD623 appears to have more output lines, which would fit current
+>>> data types.
+>>> * AiP1618 links were all broken (404); try Google "site:szfdwdz.com"
+>>> search
+>>>     to actually find the documents available on their site.
+>>> * Princeton PT6964 is another related LED controller with public
+>>> datasheet
+>>>     that I did not encounter in my TV boxes yet, thus not included here.
+>>>     Datasheets are linked only for PT6959 and PT6967, but PT6964 V1.3
+>>> and V1.4
+>>>     are available elsewhere. PT6967 has more output lines, which my
+>>> current
+>>>     data types could barely hold. Maybe bump them all to u32 type right
+>>> away?
+>>> * TM1628 is also found on MeLE V9 TV box, to be tested.
+>>> * FD628 is also found on Amlogic S905X2 based Vontar X96 Max TV box,
+>>>     to be tested (once UART is soldered).
+>>> * AiP1618 was found on Ava and Lake I TV boxes, to be tested.
+>>> * It remained unclear to me which of these many similar chipsets was
+>>> first.
+>>>     My driver name is therefore based on the chip I encountered first.
+>>
+>> It's pretty cool to see this!
+> 
+> Glad someone else finds it useful. :)
+> 
+>> My Rockchip box has an AiP1618-driven
+>> display [...]
+> 
+> You don't mention the model: Does it have a mainline .dts we can extend?
+> If not, I'd ask you to get that merged into -next, then I can happily
+> pick up patches adding the LED controller for your TV box into this
+> series as it evolves. (I'm expecting at least two more RFC iterations.)
 
-Forgot to mention that this implementation has been tested with a
-modified version of FFmpeg (please don't look at the code/commits it's
-all ugly...)
+It's the Beelink A1, which we have indeed just landed a DT for - I'll 
+certainly share whatever patch I come up with. I also have one of the 
+H96 Max boxes (which I picked up out of curiosity for the mysterious 
+RK3318) with an FD6551, although I've not attacked that one with the 
+logic analyser yet to see how similar it is.
 
+> Similarly, I'm planning to drop Xnano X5 in v2, if it doesn't require a
+> respin, so that no Realtek-specific parts other than .dts node additions
+> remain here.
+> 
+>> In case it helps, in my research I found that ARTSCHIP are another
+>> vendor of these things with accessible datasheets[1],
+> 
+> Thanks, their HT1628 indeed looks compatible.
+> 
+> Sunmoon Microelectronics SM1628 also looks compatible.
+> http://www.chinaasic.com/product.jsp#item=other#style=27#id=138
+> 
+>> and as far as I
+>> could tell the command set appears to derive from (or is at least common
+>> to) some old Holtek VFD controllers.
+> 
+> Hmm, HT16515 looks similar and has more lines, RAM and mode bits than I
+> prepared here.
+> https://www.holtek.com/productdetail/-/vg/ht16515
+> 
+> So I'd need to make more numbers model-dependent and allocate the
+> Display RAM buffer dynamically.
+> 
+> Whereas HT16D35A seems incompatible command-wise, and HT16528 appears to
+> be out of scope, for dot displays and with fancy embedded character map.
+> 
+> No Holtek email alias that I can quickly spot.
+> 
+> But given that I'm proposing vendor-specific compatibles just in case,
+> the main decisions will be the Kconfig symbol and module name. The
+> driver code itself we could always refactor after merging, and renaming
+> the schema file (as opposed to compatible) should also be possible.
+
+Yeah, I'm not sure that it really matters, as I doubt there are many 
+Linux-capable devices with a real VFD anyway; it just seemed like an 
+interesting datapoint that fell out of scouring the web trying to find 
+any evidence for which the "canonical" 1618 might be (and the Holtek 
+connection was actually a coincidence from a misidentification of the 
+ARTSCHIP part number).
+
+>> If I can figure out the DT parts (which was one of the areas that
+>> stalled my attempt) I'll try to have a play with this series over the
+>> holidays.
+> 
+> That reminded me that I forgot to push - done in the meantime. :)
+> 
+>> One thought to ponder is that I have an "88:88" display where
+>> the entire middle grid is reserved for the colon (which is wired to just
+>> one segment) - I'm not sure how that could be sanely described :/
+> 
+> Well, that sounds exactly like my bindings example and X9S. You'll find
+> the colon configured as LED, separate from the four digits, which don't
+> need to be contiguous due to separate reg entries per digit.
+
+Aha, yes, I should have engaged the brain a bit more on that one :)
+
+> While it may be possible to put more cleverness into text_store() to set
+> the colon as part of five-char "88:88" text, we'd likely want to blink
+> it every half second, which we should better do without updating the
+> full display text from "88:88" to "88 88". "8888" updated every minute
+> sounds less problematic.
+
+Sure - perhaps at that point text_store() could also grow some caching 
+and partial update logic to decide if writing individual grids is 
+cheaper than clocking out the whole display for a given change, but this 
+initial approach does seem good enough to start with. Lumping colons in 
+with the other miscellaneous indicators many of these displays have does 
+at least have a self-consistent logic in terms of "things that aren't 
+7-segment grids".
+
+Thanks,
+Robin.
+
+> Ugly with the colon LED is that the redone LED bindings don't yet have a
+> function defined for this, so I'm currently misusing whatever was there.
+> I should prepare a bindings addition, if we want to use an LED node.
+> 
 > Regards,
+> Andreas
 > 
-> Boris
-> 
-> [1]https://patchwork.linuxtv.org/project/linux-media/list/?series=1483
-
-[2]https://github.com/bbrezillon/FFmpeg/commits/v4l2-vp9
-
-> 
-> Boris Brezillon (3):
->   media: v4l2-ctrls: Add the [__]v4l2_ctrl_s_ctrl_compound() helpers
->   media: uapi: Add VP9 stateless decoder controls
->   media: rkvdec: Add the VP9 backend
-> 
->  Documentation/media/uapi/v4l/biblio.rst       |   10 +
->  .../media/uapi/v4l/ext-ctrls-codec.rst        |  584 ++++++
->  drivers/media/v4l2-core/v4l2-ctrls.c          |  258 +++
->  drivers/media/v4l2-core/v4l2-ioctl.c          |    1 +
->  drivers/staging/media/rkvdec/Makefile         |    2 +-
->  drivers/staging/media/rkvdec/rkvdec-vp9.c     | 1572 +++++++++++++++++
->  drivers/staging/media/rkvdec/rkvdec.c         |   56 +-
->  drivers/staging/media/rkvdec/rkvdec.h         |    6 +
->  include/media/v4l2-ctrls.h                    |   44 +
->  include/media/vp9-ctrls.h                     |  515 ++++++
->  10 files changed, 3044 insertions(+), 4 deletions(-)
->  create mode 100644 drivers/staging/media/rkvdec/rkvdec-vp9.c
->  create mode 100644 include/media/vp9-ctrls.h
+>> [1]
+>> http://www.artschip.com/products.asp?lx=small&anid=779&ParentName=Signal%20management%20_I_O%20Extender
+>>
+>>> This series is based on my not-yet-posted RTD1295 pinctrl and GPIO
+>>> drivers.
+>>>
+>>> Latest experimental patches at:
+>>> https://github.com/afaerber/linux/commits/rtd1295-next
+> [snip]
 > 
