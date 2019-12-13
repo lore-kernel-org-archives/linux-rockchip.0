@@ -1,31 +1,62 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 2/2] dt-bindings: phy: Use a real life PX30 DSI PHY example
-Date: Fri, 13 Dec 2019 19:02:19 +0100
-Message-ID: <3671943.7KLrFZELhY@diego>
-References: <20191213180019.25080-1-miquel.raynal@bootlin.com>
- <20191213180019.25080-2-miquel.raynal@bootlin.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 06/10] drm/xrockchip: plane_state->fb iff plane_state->crtc
+Date: Fri, 13 Dec 2019 19:03:53 +0100
+Message-ID: <1986448.RzC9sFZk56@diego>
+References: <20191213172612.1514842-1-daniel.vetter@ffwll.ch>
+ <20191213172612.1514842-6-daniel.vetter@ffwll.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191213180019.25080-2-miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20191213172612.1514842-6-daniel.vetter@ffwll.ch>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel.vetter@ffwll.ch>
+Cc: linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel.vetter@intel.com>, Sandy Huang <hjc@rock-chips.com>, DRI Development <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 13. Dezember 2019, 19:00:19 CET schrieb Miquel Raynal:
-> Update the example phandles to reference actual nodes and give a
-> working starting point.
-> 
-> Signed-off-by: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Am Freitag, 13. Dezember 2019, 18:26:08 CET schrieb Daniel Vetter:
+> Checking both is one too much, so wrap a WARN_ON around it to stope
+> the copypasta.
+> =
 
-Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Signed-off-by: Daniel Vetter <daniel.vetter@intel.com>
+> Cc: Sandy Huang <hjc@rock-chips.com>
+> Cc: "Heiko St=FCbner" <heiko@sntech.de>
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+
+patch subject should be "drm/rockchip" without the x, otherwise
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> =
+
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/dr=
+m/rockchip/rockchip_drm_vop.c
+> index d04b3492bdac..cecb2cc781f5 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> @@ -724,7 +724,7 @@ static int vop_plane_atomic_check(struct drm_plane *p=
+lane,
+>  	int max_scale =3D win->phy->scl ? FRAC_16_16(8, 1) :
+>  					DRM_PLANE_HELPER_NO_SCALING;
+>  =
+
+> -	if (!crtc || !fb)
+> +	if (!crtc || WARN_ON(!fb))
+>  		return 0;
+>  =
+
+>  	crtc_state =3D drm_atomic_get_existing_crtc_state(state->state, crtc);
+> =
