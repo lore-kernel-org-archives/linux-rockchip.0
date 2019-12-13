@@ -1,173 +1,176 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [RFC 00/25] arm64: realtek: Add Xnano X5 and implement
- TM1628/FD628/AiP1618 LED controllers
-Date: Fri, 13 Dec 2019 14:07:28 +0000
-Message-ID: <04e7d7cd-a8bc-621b-9205-1a058521cabe@arm.com>
-References: <20191212033952.5967-1-afaerber@suse.de>
- <7110806f-ddbd-f055-e107-7a1f7e223102@arm.com>
- <c86c6bc0-b0e5-c46e-da87-9d910b95f9f3@suse.de>
+From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Subject: Re: [PATCH v3 6/7] media: rkvdec: Add the rkvdec driver
+Date: Fri, 13 Dec 2019 15:21:05 +0100
+Message-ID: <036d3ecb-2307-4e8c-eaad-3c70c8cbda22@xs4all.nl>
+References: <20191213125414.90725-1-boris.brezillon@collabora.com>
+ <20191213125414.90725-7-boris.brezillon@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <c86c6bc0-b0e5-c46e-da87-9d910b95f9f3@suse.de>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
-Cc: linux-realtek-soc@lists.infradead.org, linux-leds@vger.kernel.org, linux-rtc@vger.kernel.org, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, csd@princeton.com.tw, devicetree@vger.kernel.org, sales@fdhisi.com, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Pavel Machek <pavel@ucw.cz>, zypeng@titanmec.com, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Dan Murphy <dmurphy@ti.com>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191213125414.90725-7-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12/12/2019 8:55 pm, Andreas Färber wrote:
-> Hi Robin,
-> 
-> [- Roc He, + linux-rockchip]
-> 
-> Am 12.12.19 um 14:14 schrieb Robin Murphy:
->> On 12/12/2019 3:39 am, Andreas Färber wrote:
->>> This patch series implements the LED controllers found in some RTD1295
->>> based
->>> TV set-top boxes.
-> [...]
->>> TM1628 and related chipsets have an internal Display RAM, from which they
->>> control a two-dimensional array of LED components, often used for
->>> seven-segment displays, i.e. clock display, but also for indicators.
->>> Individual LEDs can be turned on/off, but brightness is applied globally.
->>> Some chipsets also support polling a two-dimensional key pad.
-> [...]
->>> Some more notes:
->>> * Public TM1628 V1.1 datasheet is in Chinese only and differs from the
->>>     unversioned English version found elsewhere on datasheet sites by
->>>     documenting more display modes, included here (guessed from Arabic
->>> numbers).
->>> * Public FD628 datasheet is Chinese only (guesses based on Arabic
->>> numbers).
->>>     FD623 appears to have more output lines, which would fit current
->>> data types.
->>> * AiP1618 links were all broken (404); try Google "site:szfdwdz.com"
->>> search
->>>     to actually find the documents available on their site.
->>> * Princeton PT6964 is another related LED controller with public
->>> datasheet
->>>     that I did not encounter in my TV boxes yet, thus not included here.
->>>     Datasheets are linked only for PT6959 and PT6967, but PT6964 V1.3
->>> and V1.4
->>>     are available elsewhere. PT6967 has more output lines, which my
->>> current
->>>     data types could barely hold. Maybe bump them all to u32 type right
->>> away?
->>> * TM1628 is also found on MeLE V9 TV box, to be tested.
->>> * FD628 is also found on Amlogic S905X2 based Vontar X96 Max TV box,
->>>     to be tested (once UART is soldered).
->>> * AiP1618 was found on Ava and Lake I TV boxes, to be tested.
->>> * It remained unclear to me which of these many similar chipsets was
->>> first.
->>>     My driver name is therefore based on the chip I encountered first.
->>
->> It's pretty cool to see this!
-> 
-> Glad someone else finds it useful. :)
-> 
->> My Rockchip box has an AiP1618-driven
->> display [...]
-> 
-> You don't mention the model: Does it have a mainline .dts we can extend?
-> If not, I'd ask you to get that merged into -next, then I can happily
-> pick up patches adding the LED controller for your TV box into this
-> series as it evolves. (I'm expecting at least two more RFC iterations.)
+Hi Boris,
 
-It's the Beelink A1, which we have indeed just landed a DT for - I'll 
-certainly share whatever patch I come up with. I also have one of the 
-H96 Max boxes (which I picked up out of curiosity for the mysterious 
-RK3318) with an FD6551, although I've not attacked that one with the 
-logic analyser yet to see how similar it is.
+A few small comments:
 
-> Similarly, I'm planning to drop Xnano X5 in v2, if it doesn't require a
-> respin, so that no Realtek-specific parts other than .dts node additions
-> remain here.
+On 12/13/19 1:54 PM, Boris Brezillon wrote:
+> The rockchip vdec block is a stateless decoder that's able to decode
+> H264, HEVC and VP9 content. This commit adds the core infrastructure
+> and the H264 backend. Support for VP9 and HEVS will be added later on.
 > 
->> In case it helps, in my research I found that ARTSCHIP are another
->> vendor of these things with accessible datasheets[1],
+> Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+> Changes in v3:
+> * Move the driver to drivers/staging/media/rkvdec/
+> * Fix copy&paste error in the Kconfig desc
+> * Use REC709 color space when resetting the capture format
+> * Prepare things to support VP9
+> * Move H264 priv-table field definition out of rkvdec-regs.h
+> * Clarify the provenance of the CABAC table
+> * Ease RPS,PPS_FIELD() definition/manipulation
+> * Take DPB field flags into account
+> * Use the generic H264 helpers to build the reflists
+> ---
+>  drivers/staging/media/Kconfig              |    2 +
+>  drivers/staging/media/Makefile             |    1 +
+>  drivers/staging/media/rkvdec/Kconfig       |   15 +
+>  drivers/staging/media/rkvdec/Makefile      |    3 +
+>  drivers/staging/media/rkvdec/rkvdec-h264.c | 1154 ++++++++++++++++++++
+>  drivers/staging/media/rkvdec/rkvdec-regs.h |  239 ++++
+>  drivers/staging/media/rkvdec/rkvdec.c      | 1130 +++++++++++++++++++
+>  drivers/staging/media/rkvdec/rkvdec.h      |  124 +++
+>  8 files changed, 2668 insertions(+)
+>  create mode 100644 drivers/staging/media/rkvdec/Kconfig
+>  create mode 100644 drivers/staging/media/rkvdec/Makefile
+>  create mode 100644 drivers/staging/media/rkvdec/rkvdec-h264.c
+>  create mode 100644 drivers/staging/media/rkvdec/rkvdec-regs.h
+>  create mode 100644 drivers/staging/media/rkvdec/rkvdec.c
+>  create mode 100644 drivers/staging/media/rkvdec/rkvdec.h
 > 
-> Thanks, their HT1628 indeed looks compatible.
-> 
-> Sunmoon Microelectronics SM1628 also looks compatible.
-> http://www.chinaasic.com/product.jsp#item=other#style=27#id=138
-> 
->> and as far as I
->> could tell the command set appears to derive from (or is at least common
->> to) some old Holtek VFD controllers.
-> 
-> Hmm, HT16515 looks similar and has more lines, RAM and mode bits than I
-> prepared here.
-> https://www.holtek.com/productdetail/-/vg/ht16515
-> 
-> So I'd need to make more numbers model-dependent and allocate the
-> Display RAM buffer dynamically.
-> 
-> Whereas HT16D35A seems incompatible command-wise, and HT16528 appears to
-> be out of scope, for dot displays and with fancy embedded character map.
-> 
-> No Holtek email alias that I can quickly spot.
-> 
-> But given that I'm proposing vendor-specific compatibles just in case,
-> the main decisions will be the Kconfig symbol and module name. The
-> driver code itself we could always refactor after merging, and renaming
-> the schema file (as opposed to compatible) should also be possible.
 
-Yeah, I'm not sure that it really matters, as I doubt there are many 
-Linux-capable devices with a real VFD anyway; it just seemed like an 
-interesting datapoint that fell out of scouring the web trying to find 
-any evidence for which the "canonical" 1618 might be (and the Holtek 
-connection was actually a coincidence from a misidentification of the 
-ARTSCHIP part number).
+<snip>
 
->> If I can figure out the DT parts (which was one of the areas that
->> stalled my attempt) I'll try to have a play with this series over the
->> holidays.
-> 
-> That reminded me that I forgot to push - done in the meantime. :)
-> 
->> One thought to ponder is that I have an "88:88" display where
->> the entire middle grid is reserved for the colon (which is wired to just
->> one segment) - I'm not sure how that could be sanely described :/
-> 
-> Well, that sounds exactly like my bindings example and X9S. You'll find
-> the colon configured as LED, separate from the four digits, which don't
-> need to be contiguous due to separate reg entries per digit.
+> diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+> new file mode 100644
+> index 000000000000..6de4bd39f286
+> --- /dev/null
+> +++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
 
-Aha, yes, I should have engaged the brain a bit more on that one :)
+<snip>
 
-> While it may be possible to put more cleverness into text_store() to set
-> the colon as part of five-char "88:88" text, we'd likely want to blink
-> it every half second, which we should better do without updating the
-> full display text from "88:88" to "88 88". "8888" updated every minute
-> sounds less problematic.
+> +/*
+> + * dpb poc related registers table
+> + */
 
-Sure - perhaps at that point text_store() could also grow some caching 
-and partial update logic to decide if writing individual grids is 
-cheaper than clocking out the whole display for a given change, but this 
-initial approach does seem good enough to start with. Lumping colons in 
-with the other miscellaneous indicators many of these displays have does 
-at least have a self-consistent logic in terms of "things that aren't 
-7-segment grids".
+Shouldn't the next two arrays be const?
 
-Thanks,
-Robin.
+> +static u32 poc_reg_tbl_top_field[16] = {
+> +	RKVDEC_REG_H264_POC_REFER0(0),
+> +	RKVDEC_REG_H264_POC_REFER0(2),
+> +	RKVDEC_REG_H264_POC_REFER0(4),
+> +	RKVDEC_REG_H264_POC_REFER0(6),
+> +	RKVDEC_REG_H264_POC_REFER0(8),
+> +	RKVDEC_REG_H264_POC_REFER0(10),
+> +	RKVDEC_REG_H264_POC_REFER0(12),
+> +	RKVDEC_REG_H264_POC_REFER0(14),
+> +	RKVDEC_REG_H264_POC_REFER1(1),
+> +	RKVDEC_REG_H264_POC_REFER1(3),
+> +	RKVDEC_REG_H264_POC_REFER1(5),
+> +	RKVDEC_REG_H264_POC_REFER1(7),
+> +	RKVDEC_REG_H264_POC_REFER1(9),
+> +	RKVDEC_REG_H264_POC_REFER1(11),
+> +	RKVDEC_REG_H264_POC_REFER1(13),
+> +	RKVDEC_REG_H264_POC_REFER2(0)
+> +};
+> +
+> +static u32 poc_reg_tbl_bottom_field[16] = {
+> +	RKVDEC_REG_H264_POC_REFER0(1),
+> +	RKVDEC_REG_H264_POC_REFER0(3),
+> +	RKVDEC_REG_H264_POC_REFER0(5),
+> +	RKVDEC_REG_H264_POC_REFER0(7),
+> +	RKVDEC_REG_H264_POC_REFER0(9),
+> +	RKVDEC_REG_H264_POC_REFER0(11),
+> +	RKVDEC_REG_H264_POC_REFER0(13),
+> +	RKVDEC_REG_H264_POC_REFER1(0),
+> +	RKVDEC_REG_H264_POC_REFER1(2),
+> +	RKVDEC_REG_H264_POC_REFER1(4),
+> +	RKVDEC_REG_H264_POC_REFER1(6),
+> +	RKVDEC_REG_H264_POC_REFER1(8),
+> +	RKVDEC_REG_H264_POC_REFER1(10),
+> +	RKVDEC_REG_H264_POC_REFER1(12),
+> +	RKVDEC_REG_H264_POC_REFER1(14),
+> +	RKVDEC_REG_H264_POC_REFER2(1)
+> +};
 
-> Ugly with the colon LED is that the redone LED bindings don't yet have a
-> function defined for this, so I'm currently misusing whatever was there.
-> I should prepare a bindings addition, if we want to use an LED node.
-> 
-> Regards,
-> Andreas
-> 
->> [1]
->> http://www.artschip.com/products.asp?lx=small&anid=779&ParentName=Signal%20management%20_I_O%20Extender
->>
->>> This series is based on my not-yet-posted RTD1295 pinctrl and GPIO
->>> drivers.
->>>
->>> Latest experimental patches at:
->>> https://github.com/afaerber/linux/commits/rtd1295-next
-> [snip]
-> 
+<snip>
+
+
+> diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+> new file mode 100644
+> index 000000000000..97698be9072e
+> --- /dev/null
+> +++ b/drivers/staging/media/rkvdec/rkvdec.c
+> @@ -0,0 +1,1130 @@
+
+<snip>
+
+> +static int rkvdec_queue_setup(struct vb2_queue *vq, unsigned int *num_buffers,
+> +			      unsigned int *num_planes, unsigned int sizes[],
+> +			      struct device *alloc_devs[])
+> +{
+> +	struct rkvdec_ctx *ctx = vb2_get_drv_priv(vq);
+> +	struct v4l2_pix_format_mplane *pixfmt;
+> +	struct v4l2_format *f;
+> +	unsigned int i;
+> +
+> +	if (V4L2_TYPE_IS_OUTPUT(vq->type))
+> +		f = &ctx->coded_fmt;
+> +	else
+> +		f = &ctx->decoded_fmt;
+> +
+> +	if (*num_planes) {
+> +		if (*num_planes != f->fmt.pix_mp.num_planes)
+> +			return -EINVAL;
+> +
+> +		for (i = 0; i < f->fmt.pix_mp.num_planes; i++) {
+> +			if (sizes[i] < f->fmt.pix_mp.plane_fmt[i].sizeimage)
+> +				return -EINVAL;
+> +		}
+
+Shouldn't there be a 'return 0' here? In the CREATE_BUFS case all you do is check
+if the given size is large enough, and if so then you are done.
+
+> +	} else {
+> +		*num_planes = f->fmt.pix_mp.num_planes;
+> +		for (i = 0; i < f->fmt.pix_mp.num_planes; i++)
+> +			sizes[i] = f->fmt.pix_mp.plane_fmt[i].sizeimage;
+> +	}
+> +
+> +	if (V4L2_TYPE_IS_OUTPUT(vq->type))
+> +		return 0;
+> +
+> +	pixfmt = &ctx->decoded_fmt.fmt.pix_mp;
+> +	sizes[0] += 128 * DIV_ROUND_UP(pixfmt->width, 16) *
+> +		    DIV_ROUND_UP(pixfmt->height, 16);
+> +	return 0;
+> +}
+
+<snip>
+
+Regards,
+
+	Hans
