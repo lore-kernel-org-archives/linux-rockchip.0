@@ -1,7 +1,8 @@
 From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 2/7] media: uapi: h264: Add DPB entry field reference flags
-Date: Fri, 13 Dec 2019 13:54:09 +0100
-Message-ID: <20191213125414.90725-3-boris.brezillon@collabora.com>
+Subject: [PATCH v3 4/7] media: hantro: h264: Use the generic H264 reflist
+ builder
+Date: Fri, 13 Dec 2019 13:54:11 +0100
+Message-ID: <20191213125414.90725-5-boris.brezillon@collabora.com>
 References: <20191213125414.90725-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,66 +22,285 @@ To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Han
 Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Now that the core provides generic reflist builders, we can use them
+instead of implementing our own.
 
-Using the field information attached to v4l2 buffers is not enough to
-determine the type of field referenced by a DPB entry: the decoded
-frame might contain the full picture (both top and bottom fields)
-but the reference only point to one of them.
-Let's add new V4L2_H264_DPB_ENTRY_FLAG_ flags to express that.
-
-Signed-off-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
-[Keep only 2 flags and add some details about they mean]
 Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
 Changes in v3:
-* This patch was previously part of https://lkml.org/lkml/2019/10/28/956
-* Kept the FIELD and BOTTOM_FIELD flags
-* Updated the doc with more details
+* New patch
 ---
- Documentation/media/uapi/v4l/ext-ctrls-codec.rst | 16 ++++++++++++++++
- include/media/h264-ctrls.h                       |  2 ++
- 2 files changed, 18 insertions(+)
+ drivers/staging/media/hantro/hantro_h264.c | 237 +--------------------
+ 1 file changed, 8 insertions(+), 229 deletions(-)
 
-diff --git a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-index 28313c0f4e7c..d4fc5f25aa14 100644
---- a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-+++ b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-@@ -2028,6 +2028,22 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
-     * - ``V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM``
-       - 0x00000004
-       - The DPB entry is a long term reference frame
-+    * - ``V4L2_H264_DPB_ENTRY_FLAG_FIELD``
-+      - 0x00000008
-+      - The DPB entry is a field reference, which means only one of the field
-+        will be used when decoding the new frame/field. When not set the DPB
-+        entry is a frame reference (both fields will be used). Note that this
-+        flag does not say anything about the number of fields contained in the
-+        reference frame, it just describes the one used to decode the new
-+        field/frame
-+    * - ``V4L2_H264_DPB_ENTRY_FLAG_BOTTOM_FIELD``
-+      - 0x00000010
-+      - The DPB entry is a bottom field reference (only the bottom field of the
-+        reference frame is needed to decode the new frame/field). Only valid if
-+        V4L2_H264_DPB_ENTRY_FLAG_FIELD is set. When
-+        V4L2_H264_DPB_ENTRY_FLAG_FIELD is set but
-+        V4L2_H264_DPB_ENTRY_FLAG_BOTTOM_FIELD is not, that means the
-+        DPB entry is a top field reference
+diff --git a/drivers/staging/media/hantro/hantro_h264.c b/drivers/staging/media/hantro/hantro_h264.c
+index 568640eab3a6..d998272d20e6 100644
+--- a/drivers/staging/media/hantro/hantro_h264.c
++++ b/drivers/staging/media/hantro/hantro_h264.c
+@@ -11,7 +11,7 @@
+  */
  
- ``V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE (enum)``
-     Specifies the decoding mode to use. Currently exposes slice-based and
-diff --git a/include/media/h264-ctrls.h b/include/media/h264-ctrls.h
-index e877bf1d537c..1c6ff7d63bca 100644
---- a/include/media/h264-ctrls.h
-+++ b/include/media/h264-ctrls.h
-@@ -185,6 +185,8 @@ struct v4l2_ctrl_h264_slice_params {
- #define V4L2_H264_DPB_ENTRY_FLAG_VALID		0x01
- #define V4L2_H264_DPB_ENTRY_FLAG_ACTIVE		0x02
- #define V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM	0x04
-+#define V4L2_H264_DPB_ENTRY_FLAG_FIELD		0x08
-+#define V4L2_H264_DPB_ENTRY_FLAG_BOTTOM_FIELD	0x10
+ #include <linux/types.h>
+-#include <linux/sort.h>
++#include <media/v4l2-h264.h>
+ #include <media/v4l2-mem2mem.h>
  
- struct v4l2_h264_dpb_entry {
- 	__u64 reference_ts;
+ #include "hantro.h"
+@@ -240,229 +240,6 @@ static void prepare_table(struct hantro_ctx *ctx)
+ 	reorder_scaling_list(ctx);
+ }
+ 
+-struct hantro_h264_reflist_builder {
+-	const struct v4l2_h264_dpb_entry *dpb;
+-	s32 pocs[HANTRO_H264_DPB_SIZE];
+-	u8 unordered_reflist[HANTRO_H264_DPB_SIZE];
+-	int frame_nums[HANTRO_H264_DPB_SIZE];
+-	s32 curpoc;
+-	u8 num_valid;
+-};
+-
+-static s32 get_poc(enum v4l2_field field, s32 top_field_order_cnt,
+-		   s32 bottom_field_order_cnt)
+-{
+-	switch (field) {
+-	case V4L2_FIELD_TOP:
+-		return top_field_order_cnt;
+-	case V4L2_FIELD_BOTTOM:
+-		return bottom_field_order_cnt;
+-	default:
+-		break;
+-	}
+-
+-	return min(top_field_order_cnt, bottom_field_order_cnt);
+-}
+-
+-static void
+-init_reflist_builder(struct hantro_ctx *ctx,
+-		     struct hantro_h264_reflist_builder *b)
+-{
+-	const struct v4l2_ctrl_h264_slice_params *slice_params;
+-	const struct v4l2_ctrl_h264_decode_params *dec_param;
+-	const struct v4l2_ctrl_h264_sps *sps;
+-	struct vb2_v4l2_buffer *buf = hantro_get_dst_buf(ctx);
+-	const struct v4l2_h264_dpb_entry *dpb = ctx->h264_dec.dpb;
+-	struct vb2_queue *cap_q = &ctx->fh.m2m_ctx->cap_q_ctx.q;
+-	int cur_frame_num, max_frame_num;
+-	unsigned int i;
+-
+-	dec_param = ctx->h264_dec.ctrls.decode;
+-	slice_params = &ctx->h264_dec.ctrls.slices[0];
+-	sps = ctx->h264_dec.ctrls.sps;
+-	max_frame_num = 1 << (sps->log2_max_frame_num_minus4 + 4);
+-	cur_frame_num = slice_params->frame_num;
+-
+-	memset(b, 0, sizeof(*b));
+-	b->dpb = dpb;
+-	b->curpoc = get_poc(buf->field, dec_param->top_field_order_cnt,
+-			    dec_param->bottom_field_order_cnt);
+-
+-	for (i = 0; i < ARRAY_SIZE(ctx->h264_dec.dpb); i++) {
+-		int buf_idx;
+-
+-		if (!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE))
+-			continue;
+-
+-		buf_idx = vb2_find_timestamp(cap_q, dpb[i].reference_ts, 0);
+-		if (buf_idx < 0)
+-			continue;
+-
+-		buf = to_vb2_v4l2_buffer(vb2_get_buffer(cap_q, buf_idx));
+-
+-		/*
+-		 * Handle frame_num wraparound as described in section
+-		 * '8.2.4.1 Decoding process for picture numbers' of the spec.
+-		 * TODO: This logic will have to be adjusted when we start
+-		 * supporting interlaced content.
+-		 */
+-		if (dpb[i].frame_num > cur_frame_num)
+-			b->frame_nums[i] = (int)dpb[i].frame_num - max_frame_num;
+-		else
+-			b->frame_nums[i] = dpb[i].frame_num;
+-
+-		b->pocs[i] = get_poc(buf->field, dpb[i].top_field_order_cnt,
+-				     dpb[i].bottom_field_order_cnt);
+-		b->unordered_reflist[b->num_valid] = i;
+-		b->num_valid++;
+-	}
+-
+-	for (i = b->num_valid; i < ARRAY_SIZE(ctx->h264_dec.dpb); i++)
+-		b->unordered_reflist[i] = i;
+-}
+-
+-static int p_ref_list_cmp(const void *ptra, const void *ptrb, const void *data)
+-{
+-	const struct hantro_h264_reflist_builder *builder = data;
+-	const struct v4l2_h264_dpb_entry *a, *b;
+-	u8 idxa, idxb;
+-
+-	idxa = *((u8 *)ptra);
+-	idxb = *((u8 *)ptrb);
+-	a = &builder->dpb[idxa];
+-	b = &builder->dpb[idxb];
+-
+-	if ((a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM) !=
+-	    (b->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)) {
+-		/* Short term pics firt. */
+-		if (!(a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM))
+-			return -1;
+-		else
+-			return 1;
+-	}
+-
+-	/*
+-	 * Short term pics in descending pic num order, long term ones in
+-	 * ascending order.
+-	 */
+-	if (!(a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM))
+-		return HANTRO_CMP(builder->frame_nums[idxb],
+-				  builder->frame_nums[idxa]);
+-
+-	return HANTRO_CMP(a->pic_num, b->pic_num);
+-}
+-
+-static int b0_ref_list_cmp(const void *ptra, const void *ptrb, const void *data)
+-{
+-	const struct hantro_h264_reflist_builder *builder = data;
+-	const struct v4l2_h264_dpb_entry *a, *b;
+-	s32 poca, pocb;
+-	u8 idxa, idxb;
+-
+-	idxa = *((u8 *)ptra);
+-	idxb = *((u8 *)ptrb);
+-	a = &builder->dpb[idxa];
+-	b = &builder->dpb[idxb];
+-
+-	if ((a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM) !=
+-	    (b->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)) {
+-		/* Short term pics firt. */
+-		if (!(a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM))
+-			return -1;
+-		else
+-			return 1;
+-	}
+-
+-	/* Long term pics in ascending pic num order. */
+-	if (a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
+-		return HANTRO_CMP(a->pic_num, b->pic_num);
+-
+-	poca = builder->pocs[idxa];
+-	pocb = builder->pocs[idxb];
+-
+-	/*
+-	 * Short term pics with POC < cur POC first in POC descending order
+-	 * followed by short term pics with POC > cur POC in POC ascending
+-	 * order.
+-	 */
+-	if ((poca < builder->curpoc) != (pocb < builder->curpoc))
+-		return HANTRO_CMP(poca, pocb);
+-	else if (poca < builder->curpoc)
+-		return HANTRO_CMP(pocb, poca);
+-
+-	return HANTRO_CMP(poca, pocb);
+-}
+-
+-static int b1_ref_list_cmp(const void *ptra, const void *ptrb, const void *data)
+-{
+-	const struct hantro_h264_reflist_builder *builder = data;
+-	const struct v4l2_h264_dpb_entry *a, *b;
+-	s32 poca, pocb;
+-	u8 idxa, idxb;
+-
+-	idxa = *((u8 *)ptra);
+-	idxb = *((u8 *)ptrb);
+-	a = &builder->dpb[idxa];
+-	b = &builder->dpb[idxb];
+-
+-	if ((a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM) !=
+-	    (b->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)) {
+-		/* Short term pics firt. */
+-		if (!(a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM))
+-			return -1;
+-		else
+-			return 1;
+-	}
+-
+-	/* Long term pics in ascending pic num order. */
+-	if (a->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
+-		return HANTRO_CMP(a->pic_num, b->pic_num);
+-
+-	poca = builder->pocs[idxa];
+-	pocb = builder->pocs[idxb];
+-
+-	/*
+-	 * Short term pics with POC > cur POC first in POC ascending order
+-	 * followed by short term pics with POC < cur POC in POC descending
+-	 * order.
+-	 */
+-	if ((poca < builder->curpoc) != (pocb < builder->curpoc))
+-		return HANTRO_CMP(pocb, poca);
+-	else if (poca < builder->curpoc)
+-		return HANTRO_CMP(pocb, poca);
+-
+-	return HANTRO_CMP(poca, pocb);
+-}
+-
+-static void
+-build_p_ref_list(const struct hantro_h264_reflist_builder *builder,
+-		 u8 *reflist)
+-{
+-	memcpy(reflist, builder->unordered_reflist,
+-	       sizeof(builder->unordered_reflist));
+-	sort_r(reflist, builder->num_valid, sizeof(*reflist),
+-	       p_ref_list_cmp, NULL, builder);
+-}
+-
+-static void
+-build_b_ref_lists(const struct hantro_h264_reflist_builder *builder,
+-		  u8 *b0_reflist, u8 *b1_reflist)
+-{
+-	memcpy(b0_reflist, builder->unordered_reflist,
+-	       sizeof(builder->unordered_reflist));
+-	sort_r(b0_reflist, builder->num_valid, sizeof(*b0_reflist),
+-	       b0_ref_list_cmp, NULL, builder);
+-
+-	memcpy(b1_reflist, builder->unordered_reflist,
+-	       sizeof(builder->unordered_reflist));
+-	sort_r(b1_reflist, builder->num_valid, sizeof(*b1_reflist),
+-	       b1_ref_list_cmp, NULL, builder);
+-
+-	if (builder->num_valid > 1 &&
+-	    !memcmp(b1_reflist, b0_reflist, builder->num_valid))
+-		swap(b1_reflist[0], b1_reflist[1]);
+-}
+-
+ static bool dpb_entry_match(const struct v4l2_h264_dpb_entry *a,
+ 			    const struct v4l2_h264_dpb_entry *b)
+ {
+@@ -560,7 +337,7 @@ int hantro_h264_dec_prepare_run(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_h264_dec_hw_ctx *h264_ctx = &ctx->h264_dec;
+ 	struct hantro_h264_dec_ctrls *ctrls = &h264_ctx->ctrls;
+-	struct hantro_h264_reflist_builder reflist_builder;
++	struct v4l2_h264_reflist_builder reflist_builder;
+ 
+ 	hantro_prepare_run(ctx);
+ 
+@@ -596,10 +373,12 @@ int hantro_h264_dec_prepare_run(struct hantro_ctx *ctx)
+ 	prepare_table(ctx);
+ 
+ 	/* Build the P/B{0,1} ref lists. */
+-	init_reflist_builder(ctx, &reflist_builder);
+-	build_p_ref_list(&reflist_builder, h264_ctx->reflists.p);
+-	build_b_ref_lists(&reflist_builder, h264_ctx->reflists.b0,
+-			  h264_ctx->reflists.b1);
++	v4l2_h264_init_reflist_builder(&reflist_builder, ctrls->decode,
++				       &ctrls->slices[0], ctrls->sps,
++				       ctx->h264_dec.dpb);
++	v4l2_h264_build_p_ref_list(&reflist_builder, h264_ctx->reflists.p);
++	v4l2_h264_build_b_ref_lists(&reflist_builder, h264_ctx->reflists.b0,
++				    h264_ctx->reflists.b1);
+ 	return 0;
+ }
+ 
 -- 
 2.23.0
