@@ -1,72 +1,70 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: =?UTF-8?B?UmU6IHJrMzMyOC1maXJlZmx5IGRkcjQgdHBsIGluaXTjgJDor7fms6g=?=
- =?UTF-8?B?5oSP77yM6YKu5Lu255SxbGludXgtcm9ja2NoaXAtYm91bmNlcytrZXZlci55YW5n?=
- =?UTF-8?B?PXJvY2stY2hpcHMuY29tQGxpc3RzLmluZnJhZGVhZC5vcmfku6Plj5HjgJE=?=
-Date: Fri, 13 Dec 2019 11:22:46 +0800
-Message-ID: <70b1e484-2909-8296-bbd7-3026bf3b576c@rock-chips.com>
-References: <CAMdYzYpbhAT5EfJv2SuC8GZE3q3juUXCwtbAX8SW9eXiC5AP2g@mail.gmail.com>
+From: Amit Kucheria <amit.kucheria@verdurent.com>
+Subject: Re: [RESEND PATCH] thermal: rockchip: enable hwmon
+Date: Fri, 13 Dec 2019 10:08:31 +0530
+Message-ID: <CAHLCerN9jc94ydKKoaDZPoTy=LmVZti6UUpND5aK3FMzTkCmoA@mail.gmail.com>
+References: <20191212061702.BFE2D6E85603@corona.crabdance.com>
+ <CAHLCerOHjAEEA1BpUqPdZvFwHMy11SqC+ZtjdFyManu7iOpBXA@mail.gmail.com>
+ <20191212232859.E09FC6E85603@corona.crabdance.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <CAMdYzYpbhAT5EfJv2SuC8GZE3q3juUXCwtbAX8SW9eXiC5AP2g@mail.gmail.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Peter Geis <pgwipeout@gmail.com>, u-boot@lists.denx.de
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20191212232859.E09FC6E85603@corona.crabdance.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: schaecsn@gmx.net, jdelvare@suse.com, linux@roeck-us.ne
+Cc: Heiko Stuebner <heiko@sntech.de>, Linux PM list <linux-pm@vger.kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, LKML <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>, linux-rockchip@lists.infradead.org, Zhang Rui <rui.zhang@intel.com>, lakml <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Peter,
+Hi Stefan,
 
-On 2019/12/5 上午10:19, Peter Geis wrote:
-> Good Evening,
+On Fri, Dec 13, 2019 at 4:59 AM Stefan Schaeckeler <schaecsn@gmx.net> wrote:
 >
-> I am trying to get TPL/SPL working on the rk3328-firefly ddr4 4gb board.
-> I've pulled the ddr4 dtsi from the rockchip u-boot repository [0].
+> Hello Amit,
 >
-> Unfortunately I cannot get the ddr4 to detect correctly.
+> > On Thu, Dec 12, 2019 at 11:47 AM Stefan Schaeckeler <schaecsn@gmx.net> wrote:
+> > >
+> > > By default, of-based thermal drivers do not enable hwmon.
+> > > Explicitly enable hwmon for both, the soc and gpu temperature
+> > > sensor.
+> >
+> > Is there any reason you need to expose this in hwmon?
+>
+> Why hwmon:
+>
+> The soc embedds temperature sensors and hwmon is the standard way to expose
+> sensors.
 
+Let me rephrase - is there something in the hwmon subsystem that is
+needed that isn't provided by the thermal subsystem inside
+/sys/class/thermal?
 
-Yes, the ddr4 support for rk3328 is missing now, we will update it some 
-time later.
+> Sensors exposed by hwmon are automagically found by userland clients. Users
+> want to run sensors(1) and expect them to show up.
+>
 
+That is a good point. In which case, I wonder if we should just fix
+this in of-thermal.c instead of requiring individual drivers to do
+write boilerplate code. I'm thinking of a flag that the driver could
+set to enable the thermal_hwmon interface for of-thermal drivers.
 
-Thanks,
-
-- Kever
-
+> Why in rockchip_thermal.c:
 >
-> With the u-boot tpl, I get the following:
-> U-Boot TPL 2020.01-rc3-00072-g1a1bea82b2-dirty (Dec 04 2019 - 08:33:54)
-> data training error
-> row errordata training error
-> DDR4, 333MHz
-> BW=16 Col=10 Bk=4 BG=2 CS0 Row=17 CS=1 Die BW=16 Size=2048MB
+> drivers/thermal/ provides a high-level hwmon api in thermal_hwmon.[hc] which is
+> used by at least these thermal drivers: rcar_gen3_thermal.c, rcar_thermal.c,
+> st/stm_thermal.c, and broadcom/bcm2835_thermal.c. I want to hook up
+> rockchip_thermal.c exactly the same way.
 >
-> With the rk3328_ddr_333MHz_v1.16.bin, I get the following:
-> DDR version 1.16 20190528
-> ID:0x805 N
-> In
-> DDR4
-> 333MHz
-> Bus Width=32 Col=10 Bank=4 Bank Group=2 Row=16/16 CS=2 Die
-> Bus-Width=16 Size=4096MB
-> ddrconfig:19
-> OUT
+> Apparently, other architectures hook up the cpu temperature sensors to hwmon
+> elsewhere. Most seem to do this in hwmon/, e.g. hwmon/coretemp.c. These drivers
+> are written from scratch. Utilizing thermal_hwmon.[ch] for chips which have
+> already drivers in drivers/thermal/ seems to be more elegant.
 >
-> [0] https://github.com/rockchip-linux/u-boot/blob/next-dev/arch/arm/dts/rk3328-sdram-ddr4-666.dtsi
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->
->
+>  Stefan
