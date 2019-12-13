@@ -1,97 +1,72 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 Subject: Re: [PATCH 10/12] arm64: dts: rockchip: Add PX30 CRTCs graph LVDS
  endpoints
-Date: Fri, 13 Dec 2019 19:28:21 +0100
-Message-ID: <1933192.L6hp5CucIl@diego>
+Date: Fri, 13 Dec 2019 19:38:46 +0100
+Message-ID: <20191213193846.5d28cc97@xps13>
 References: <20191213181051.25983-1-miquel.raynal@bootlin.com>
  <20191213181051.25983-11-miquel.raynal@bootlin.com>
+ <1933192.L6hp5CucIl@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191213181051.25983-11-miquel.raynal@bootlin.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, Maxime Chevallier <maxime.chevallier@bootlin.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1933192.L6hp5CucIl@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Miquel,
-
-Am Freitag, 13. Dezember 2019, 19:10:49 CET schrieb Miquel Raynal:
-> Add the display subsystem routes with the two available CRTCs: vopb
-> and vopl (big and little). For each CRTC, add the LVDS endpoints. MIPI
-> DSI endpoints will come later.
-> 
-> Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
-> ---
->  arch/arm64/boot/dts/rockchip/px30.dtsi | 20 ++++++++++++++++++++
->  1 file changed, 20 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-> index b2af0f02ecbe..1c96ba556daf 100644
-> --- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-> @@ -190,6 +190,16 @@
->  		compatible = "rockchip,display-subsystem";
->  		ports = <&vopb_out>, <&vopl_out>;
->  		status = "disabled";
-> +
-> +		route {
-> +			route_vopb_lvds: route-vopb-lvds {
-> +				connect = <&vopb_out_lvds>;
-> +			};
-> +
-> +			route_vopl_lvds: route-vopl-lvds {
-> +				connect = <&vopl_out_lvds>;
-> +			};
-> +		};
-
-where does this route-stuff come from?
-The vendor tree? Because so far I've not seen this in mainline-drm
-in general nor the Rockchip drm driver itself.
-
-
->  	};
->  
->  	gmac_clkin: external-gmac-clock {
-> @@ -976,6 +986,11 @@
->  		vopb_out: port {
->  			#address-cells = <1>;
->  			#size-cells = <0>;
-> +
-> +			vopb_out_lvds: endpoint@0 {
-> +				reg = <0>;
-> +				remote-endpoint = <&lvds_vopb_in>;
-> +			};
-
-This (and the one below) would create dangling phandle references
-and compile errors, because the referenced phandles only get introduced
-in patch12. So ideally merge this into the last patch.
-
-
-Heiko
-
->  		};
->  	};
->  
-> @@ -1008,6 +1023,11 @@
->  		vopl_out: port {
->  			#address-cells = <1>;
->  			#size-cells = <0>;
-> +
-> +			vopl_out_lvds: endpoint@0 {
-> +				reg = <0>;
-> +				remote-endpoint = <&lvds_vopl_in>;
-> +			};
->  		};
->  	};
->  
-> 
+SGkgSGVpa28sCgpIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZSBvbiBGcmks
+IDEzIERlYyAyMDE5IDE5OjI4OjIxCiswMTAwOgoKPiBIaSBNaXF1ZWwsCj4gCj4gQW0gRnJlaXRh
+ZywgMTMuIERlemVtYmVyIDIwMTksIDE5OjEwOjQ5IENFVCBzY2hyaWViIE1pcXVlbCBSYXluYWw6
+Cj4gPiBBZGQgdGhlIGRpc3BsYXkgc3Vic3lzdGVtIHJvdXRlcyB3aXRoIHRoZSB0d28gYXZhaWxh
+YmxlIENSVENzOiB2b3BiCj4gPiBhbmQgdm9wbCAoYmlnIGFuZCBsaXR0bGUpLiBGb3IgZWFjaCBD
+UlRDLCBhZGQgdGhlIExWRFMgZW5kcG9pbnRzLiBNSVBJCj4gPiBEU0kgZW5kcG9pbnRzIHdpbGwg
+Y29tZSBsYXRlci4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogTWlxdWVsIFJheW5hbCA8bWlxdWVs
+LnJheW5hbEBib290bGluLmNvbT4KPiA+IC0tLQo+ID4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
+a2NoaXAvcHgzMC5kdHNpIHwgMjAgKysrKysrKysrKysrKysrKysrKysKPiA+ICAxIGZpbGUgY2hh
+bmdlZCwgMjAgaW5zZXJ0aW9ucygrKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9i
+b290L2R0cy9yb2NrY2hpcC9weDMwLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
+L3B4MzAuZHRzaQo+ID4gaW5kZXggYjJhZjBmMDJlY2JlLi4xYzk2YmE1NTZkYWYgMTAwNjQ0Cj4g
+PiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3B4MzAuZHRzaQo+ID4gKysrIGIv
+YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9weDMwLmR0c2kKPiA+IEBAIC0xOTAsNiArMTkw
+LDE2IEBACj4gPiAgCQljb21wYXRpYmxlID0gInJvY2tjaGlwLGRpc3BsYXktc3Vic3lzdGVtIjsK
+PiA+ICAJCXBvcnRzID0gPCZ2b3BiX291dD4sIDwmdm9wbF9vdXQ+Owo+ID4gIAkJc3RhdHVzID0g
+ImRpc2FibGVkIjsKPiA+ICsKPiA+ICsJCXJvdXRlIHsKPiA+ICsJCQlyb3V0ZV92b3BiX2x2ZHM6
+IHJvdXRlLXZvcGItbHZkcyB7Cj4gPiArCQkJCWNvbm5lY3QgPSA8JnZvcGJfb3V0X2x2ZHM+Owo+
+ID4gKwkJCX07Cj4gPiArCj4gPiArCQkJcm91dGVfdm9wbF9sdmRzOiByb3V0ZS12b3BsLWx2ZHMg
+ewo+ID4gKwkJCQljb25uZWN0ID0gPCZ2b3BsX291dF9sdmRzPjsKPiA+ICsJCQl9Owo+ID4gKwkJ
+fTsgIAo+IAo+IHdoZXJlIGRvZXMgdGhpcyByb3V0ZS1zdHVmZiBjb21lIGZyb20/Cj4gVGhlIHZl
+bmRvciB0cmVlPyBCZWNhdXNlIHNvIGZhciBJJ3ZlIG5vdCBzZWVuIHRoaXMgaW4gbWFpbmxpbmUt
+ZHJtCj4gaW4gZ2VuZXJhbCBub3IgdGhlIFJvY2tjaGlwIGRybSBkcml2ZXIgaXRzZWxmLgoKWWVz
+IGl0IGNvbWVzIGZyb20gdGhlIHZlbmRvciB0cmVlLCBJIGFkZGVkIGEgZmV3IHRoaW5ncyBmcm9t
+IHRoZSB2ZW5kb3IKdHJlZSBpbiB0aGUgIkkgcmVhbGx5IHdhbnQgdGhpcyBwYW5lbCB0byB3b3Jr
+IiBwaGFzZSBhbmQgSSBmb3Jnb3QgdG8KY2hlY2sgaWYgaXQgY291bGQgYmUgcmVtb3ZlZCwgSSds
+bCBwcm9iYWJseSBkcm9wIHRoaXMuCiAKPiAKPiAKPiA+ICAJfTsKPiA+ICAKPiA+ICAJZ21hY19j
+bGtpbjogZXh0ZXJuYWwtZ21hYy1jbG9jayB7Cj4gPiBAQCAtOTc2LDYgKzk4NiwxMSBAQAo+ID4g
+IAkJdm9wYl9vdXQ6IHBvcnQgewo+ID4gIAkJCSNhZGRyZXNzLWNlbGxzID0gPDE+Owo+ID4gIAkJ
+CSNzaXplLWNlbGxzID0gPDA+Owo+ID4gKwo+ID4gKwkJCXZvcGJfb3V0X2x2ZHM6IGVuZHBvaW50
+QDAgewo+ID4gKwkJCQlyZWcgPSA8MD47Cj4gPiArCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmbHZk
+c192b3BiX2luPjsKPiA+ICsJCQl9OyAgCj4gCj4gVGhpcyAoYW5kIHRoZSBvbmUgYmVsb3cpIHdv
+dWxkIGNyZWF0ZSBkYW5nbGluZyBwaGFuZGxlIHJlZmVyZW5jZXMKPiBhbmQgY29tcGlsZSBlcnJv
+cnMsIGJlY2F1c2UgdGhlIHJlZmVyZW5jZWQgcGhhbmRsZXMgb25seSBnZXQgaW50cm9kdWNlZAo+
+IGluIHBhdGNoMTIuIFNvIGlkZWFsbHkgbWVyZ2UgdGhpcyBpbnRvIHRoZSBsYXN0IHBhdGNoLgoK
+QWN0dWFsbHkgcGF0Y2ggMTIgYWxzbyByZWZlcmVuY2VzIHRoZXNlIG5vZGVzIHNvIEkgc2hvdWxk
+IG1lcmdlIHRoZW0uCgo+IAo+IAo+IEhlaWtvCj4gCj4gPiAgCQl9Owo+ID4gIAl9Owo+ID4gIAo+
+ID4gQEAgLTEwMDgsNiArMTAyMywxMSBAQAo+ID4gIAkJdm9wbF9vdXQ6IHBvcnQgewo+ID4gIAkJ
+CSNhZGRyZXNzLWNlbGxzID0gPDE+Owo+ID4gIAkJCSNzaXplLWNlbGxzID0gPDA+Owo+ID4gKwo+
+ID4gKwkJCXZvcGxfb3V0X2x2ZHM6IGVuZHBvaW50QDAgewo+ID4gKwkJCQlyZWcgPSA8MD47Cj4g
+PiArCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmbHZkc192b3BsX2luPjsKPiA+ICsJCQl9Owo+ID4g
+IAkJfTsKPiA+ICAJfTsKPiA+ICAKPiA+ICAgCj4gCj4gCj4gCj4gCgpUaGFua3MgZm9yIHRoZSBy
+ZXZpZXchCk1pcXXDqGwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
