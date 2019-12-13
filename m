@@ -1,72 +1,34 @@
-From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH 10/12] arm64: dts: rockchip: Add PX30 CRTCs graph LVDS
- endpoints
-Date: Fri, 13 Dec 2019 19:38:46 +0100
-Message-ID: <20191213193846.5d28cc97@xps13>
-References: <20191213181051.25983-1-miquel.raynal@bootlin.com>
- <20191213181051.25983-11-miquel.raynal@bootlin.com>
- <1933192.L6hp5CucIl@diego>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [v2 3/6] of: address: add support to parse PCI outbound-ranges
+Date: Fri, 13 Dec 2019 09:07:07 -0600
+Message-ID: <CAL_JsqLSYroDZGWksJJ=E+01X=3Tji4+GmK8s3i+d2BJphqiLQ@mail.gmail.com>
+References: <20191213084748.11210-1-prabhakar.mahadev-lad.rj@bp.renesas.com> <20191213084748.11210-4-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1933192.L6hp5CucIl@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191213084748.11210-4-prabhakar.mahadev-lad.rj@bp.renesas.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Lad Prabhakar <prabhakar.csengg@gmail.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Mark Rutland <mark.rutland@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, PCI <linux-pci@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrew Murray <andrew.murray@arm.com>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgpIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZSBvbiBGcmks
-IDEzIERlYyAyMDE5IDE5OjI4OjIxCiswMTAwOgoKPiBIaSBNaXF1ZWwsCj4gCj4gQW0gRnJlaXRh
-ZywgMTMuIERlemVtYmVyIDIwMTksIDE5OjEwOjQ5IENFVCBzY2hyaWViIE1pcXVlbCBSYXluYWw6
-Cj4gPiBBZGQgdGhlIGRpc3BsYXkgc3Vic3lzdGVtIHJvdXRlcyB3aXRoIHRoZSB0d28gYXZhaWxh
-YmxlIENSVENzOiB2b3BiCj4gPiBhbmQgdm9wbCAoYmlnIGFuZCBsaXR0bGUpLiBGb3IgZWFjaCBD
-UlRDLCBhZGQgdGhlIExWRFMgZW5kcG9pbnRzLiBNSVBJCj4gPiBEU0kgZW5kcG9pbnRzIHdpbGwg
-Y29tZSBsYXRlci4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogTWlxdWVsIFJheW5hbCA8bWlxdWVs
-LnJheW5hbEBib290bGluLmNvbT4KPiA+IC0tLQo+ID4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
-a2NoaXAvcHgzMC5kdHNpIHwgMjAgKysrKysrKysrKysrKysrKysrKysKPiA+ICAxIGZpbGUgY2hh
-bmdlZCwgMjAgaW5zZXJ0aW9ucygrKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9weDMwLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3B4MzAuZHRzaQo+ID4gaW5kZXggYjJhZjBmMDJlY2JlLi4xYzk2YmE1NTZkYWYgMTAwNjQ0Cj4g
-PiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3B4MzAuZHRzaQo+ID4gKysrIGIv
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9weDMwLmR0c2kKPiA+IEBAIC0xOTAsNiArMTkw
-LDE2IEBACj4gPiAgCQljb21wYXRpYmxlID0gInJvY2tjaGlwLGRpc3BsYXktc3Vic3lzdGVtIjsK
-PiA+ICAJCXBvcnRzID0gPCZ2b3BiX291dD4sIDwmdm9wbF9vdXQ+Owo+ID4gIAkJc3RhdHVzID0g
-ImRpc2FibGVkIjsKPiA+ICsKPiA+ICsJCXJvdXRlIHsKPiA+ICsJCQlyb3V0ZV92b3BiX2x2ZHM6
-IHJvdXRlLXZvcGItbHZkcyB7Cj4gPiArCQkJCWNvbm5lY3QgPSA8JnZvcGJfb3V0X2x2ZHM+Owo+
-ID4gKwkJCX07Cj4gPiArCj4gPiArCQkJcm91dGVfdm9wbF9sdmRzOiByb3V0ZS12b3BsLWx2ZHMg
-ewo+ID4gKwkJCQljb25uZWN0ID0gPCZ2b3BsX291dF9sdmRzPjsKPiA+ICsJCQl9Owo+ID4gKwkJ
-fTsgIAo+IAo+IHdoZXJlIGRvZXMgdGhpcyByb3V0ZS1zdHVmZiBjb21lIGZyb20/Cj4gVGhlIHZl
-bmRvciB0cmVlPyBCZWNhdXNlIHNvIGZhciBJJ3ZlIG5vdCBzZWVuIHRoaXMgaW4gbWFpbmxpbmUt
-ZHJtCj4gaW4gZ2VuZXJhbCBub3IgdGhlIFJvY2tjaGlwIGRybSBkcml2ZXIgaXRzZWxmLgoKWWVz
-IGl0IGNvbWVzIGZyb20gdGhlIHZlbmRvciB0cmVlLCBJIGFkZGVkIGEgZmV3IHRoaW5ncyBmcm9t
-IHRoZSB2ZW5kb3IKdHJlZSBpbiB0aGUgIkkgcmVhbGx5IHdhbnQgdGhpcyBwYW5lbCB0byB3b3Jr
-IiBwaGFzZSBhbmQgSSBmb3Jnb3QgdG8KY2hlY2sgaWYgaXQgY291bGQgYmUgcmVtb3ZlZCwgSSds
-bCBwcm9iYWJseSBkcm9wIHRoaXMuCiAKPiAKPiAKPiA+ICAJfTsKPiA+ICAKPiA+ICAJZ21hY19j
-bGtpbjogZXh0ZXJuYWwtZ21hYy1jbG9jayB7Cj4gPiBAQCAtOTc2LDYgKzk4NiwxMSBAQAo+ID4g
-IAkJdm9wYl9vdXQ6IHBvcnQgewo+ID4gIAkJCSNhZGRyZXNzLWNlbGxzID0gPDE+Owo+ID4gIAkJ
-CSNzaXplLWNlbGxzID0gPDA+Owo+ID4gKwo+ID4gKwkJCXZvcGJfb3V0X2x2ZHM6IGVuZHBvaW50
-QDAgewo+ID4gKwkJCQlyZWcgPSA8MD47Cj4gPiArCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmbHZk
-c192b3BiX2luPjsKPiA+ICsJCQl9OyAgCj4gCj4gVGhpcyAoYW5kIHRoZSBvbmUgYmVsb3cpIHdv
-dWxkIGNyZWF0ZSBkYW5nbGluZyBwaGFuZGxlIHJlZmVyZW5jZXMKPiBhbmQgY29tcGlsZSBlcnJv
-cnMsIGJlY2F1c2UgdGhlIHJlZmVyZW5jZWQgcGhhbmRsZXMgb25seSBnZXQgaW50cm9kdWNlZAo+
-IGluIHBhdGNoMTIuIFNvIGlkZWFsbHkgbWVyZ2UgdGhpcyBpbnRvIHRoZSBsYXN0IHBhdGNoLgoK
-QWN0dWFsbHkgcGF0Y2ggMTIgYWxzbyByZWZlcmVuY2VzIHRoZXNlIG5vZGVzIHNvIEkgc2hvdWxk
-IG1lcmdlIHRoZW0uCgo+IAo+IAo+IEhlaWtvCj4gCj4gPiAgCQl9Owo+ID4gIAl9Owo+ID4gIAo+
-ID4gQEAgLTEwMDgsNiArMTAyMywxMSBAQAo+ID4gIAkJdm9wbF9vdXQ6IHBvcnQgewo+ID4gIAkJ
-CSNhZGRyZXNzLWNlbGxzID0gPDE+Owo+ID4gIAkJCSNzaXplLWNlbGxzID0gPDA+Owo+ID4gKwo+
-ID4gKwkJCXZvcGxfb3V0X2x2ZHM6IGVuZHBvaW50QDAgewo+ID4gKwkJCQlyZWcgPSA8MD47Cj4g
-PiArCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmbHZkc192b3BsX2luPjsKPiA+ICsJCQl9Owo+ID4g
-IAkJfTsKPiA+ICAJfTsKPiA+ICAKPiA+ICAgCj4gCj4gCj4gCj4gCgpUaGFua3MgZm9yIHRoZSBy
-ZXZpZXchCk1pcXXDqGwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+On Fri, Dec 13, 2019 at 2:48 AM Lad Prabhakar
+<prabhakar.csengg@gmail.com> wrote:
+>
+> From: "Lad, Prabhakar" <prabhakar.mahadev-lad.rj@bp.renesas.com>
+>
+> this patch adds support to parse PCI outbound-ranges, the
+> outbound-regions are similar to pci ranges except it doesn't
+> have pci address, below is the format for bar-ranges:
+>
+> outbound-ranges = <flags upper32_cpuaddr lower32_cpuaddr
+>                    upper32_size lower32_size>;
+
+You can't just make up a new ranges property. Especially one that
+doesn't follow how 'ranges' works. We already have 'dma-ranges' to
+translate device to memory addresses.
+
+Explain the problem or feature you need, not the solution you came up
+with. Why do you need this and other endpoint bindings haven't?
+
+Rob
