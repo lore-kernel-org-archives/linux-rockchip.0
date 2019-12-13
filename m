@@ -1,13 +1,14 @@
-From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [RFC] Permanent Fix for RK33 gmac 1500 mtu bug
-Date: Fri, 13 Dec 2019 07:48:57 -0500
-Message-ID: <CAMdYzYo6HG+NK2BHNaULtD=Lu=Ozd6pFW4YRXF8QF_UGLjJN_w@mail.gmail.com>
-References: <CAMdYzYpHxMELdB4HzsViFvrLcDzG0A4000PJU6wHTaq4V9c1Nw@mail.gmail.com>
+From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v3 1/7] media: vb2: Add a helper to get the vb2 buffer
+ attached to a request
+Date: Fri, 13 Dec 2019 13:54:08 +0100
+Message-ID: <20191213125414.90725-2-boris.brezillon@collabora.com>
+References: <20191213125414.90725-1-boris.brezillon@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAMdYzYpHxMELdB4HzsViFvrLcDzG0A4000PJU6wHTaq4V9c1Nw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <20191213125414.90725-1-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,51 +18,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Dec 12, 2019 at 8:21 AM Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->
-> Good Morning,
->
-> So I've continued work on fixing the rk3328/rk3399 gmac mtu tx coe offload bug.
-> I've found two fixes that maintain full performance and work consistently.
->
-> First, is ayufan's tx coe patch [0], which takes the bugged_jumbo
-> concept introduced in [1] and applies it to 1498 and above, vice 1500
-> and above.
->
-> The only downside is this disables tx coe for full size packets, which
-> has a negligible performance impact in my testing.
->
-> The other option I've found that reliably works is bringing the mtu
-> down to 1498.
-> This allows tx coe to remain enabled, but with the downside of total
-> loss of jumbo frames.
-> The reduction in size has a negligible performance impact in my testing.
+vb2_request_get_buf() returns the N-th buffer attached to a media
+request.
 
-Shortly after sending this I discovered that setting the mtu lower is
-not sufficient in some corner cases.
-I managed to make offload break even at a 1496 mtu by `apt install
-kubuntu-desktop` over ssh on a gigabit internet connection.
+Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+Changes in v3:
+* None
 
-After porting ayufan's patch the issue went away.
-So unless we can fix this by axi tuning, his patch seems to be the
-most viable option.
+Changes in v2:
+* Adjust the kernel doc as suggested by Hans
+---
+ .../media/common/videobuf2/videobuf2-core.c   | 23 +++++++++++++++++++
+ include/media/videobuf2-core.h                | 11 +++++++++
+ 2 files changed, 34 insertions(+)
 
->
-> I have also discovered that the rockchip implementation of the stmmac
-> driver does not process flags such as max-frame-size.
->
-> A third option, which I haven't explored because I don't know enough
-> about how it works, is possibly tuning the axi settings, via the
-> snps,axi-config and snps,mtl-tx-config handles.
-> I don't know if this is feasible, but since tuning the dma settings
-> affects the rk3328 I have hope.
-> I do know that my current fix for the rk3328 does not provide full
-> performance and does not work at all on the rk3399.
->
-> Thoughts?
->
-> [0] https://github.com/ayufan-rock64/linux-kernel/commit/8a41c672dd77e48b06c1b2dec3aa9db4bad30b49#diff-c897c0b53bd633240f4b12c4d29a5ff1
-> [1] https://github.com/torvalds/linux/commit/ebbb293f8b3021ae2009fcb7cb3b8a52fb5fd06a
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index 4489744fbbd9..c4c7980dcb0d 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -1416,6 +1416,29 @@ unsigned int vb2_request_buffer_cnt(struct media_request *req)
+ }
+ EXPORT_SYMBOL_GPL(vb2_request_buffer_cnt);
+ 
++struct vb2_buffer *vb2_request_get_buf(struct media_request *req,
++				       unsigned int n)
++{
++	struct media_request_object *obj;
++	struct vb2_buffer *buf = NULL;
++	unsigned int nbufs = 0;
++	unsigned long flags;
++
++	spin_lock_irqsave(&req->lock, flags);
++	list_for_each_entry(obj, &req->objects, list) {
++		if (!vb2_request_object_is_buffer(obj) ||
++		    nbufs++ < n)
++			continue;
++
++		buf = container_of(obj, struct vb2_buffer, req_obj);
++		break;
++	}
++	spin_unlock_irqrestore(&req->lock, flags);
++
++	return buf;
++}
++EXPORT_SYMBOL_GPL(vb2_request_get_buf);
++
+ int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index, void *pb)
+ {
+ 	struct vb2_buffer *vb;
+diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+index a2b2208b02da..6206e25df764 100644
+--- a/include/media/videobuf2-core.h
++++ b/include/media/videobuf2-core.h
+@@ -1225,4 +1225,15 @@ bool vb2_request_object_is_buffer(struct media_request_object *obj);
+  */
+ unsigned int vb2_request_buffer_cnt(struct media_request *req);
+ 
++/**
++ * vb2_request_get_buf() - return the buffer at index @idx
++ *
++ * @req:	the request.
++ * @n:		search for the Nth buffer in the req object list
++ *
++ * Return a vb2 buffer or NULL if there's no buffer at the specified position
++ */
++struct vb2_buffer *vb2_request_get_buf(struct media_request *req,
++				       unsigned int n);
++
+ #endif /* _MEDIA_VIDEOBUF2_CORE_H */
+-- 
+2.23.0
