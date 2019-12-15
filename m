@@ -1,141 +1,72 @@
 From: Soeren Moch <smoch@web.de>
-Subject: Re: [PATCH 4/4] mfd: rk808: Convert RK805 to syscore/PM ops
-Date: Sun, 15 Dec 2019 22:13:33 +0100
-Message-ID: <96384fa0-e1c0-85c2-4851-e5bbbb0cc6a7@web.de>
-References: <cover.1575932654.git.robin.murphy@arm.com>
- <8642045f0657c9e782cd698eb08777c9d4c10c8d.1575932654.git.robin.murphy@arm.com>
- <CANAwSgTtzAZJqpsD7uVKskTnDmrT1bs=JuHxnPrkpQKtnZLhvQ@mail.gmail.com>
- <2681192.H4ySjFOPB8@diego>
+Subject: Re: [PATCH v2 0/9] brcmfmac: add support for BCM4359 SDIO chipset
+Date: Sun, 15 Dec 2019 22:24:10 +0100
+Message-ID: <22526722-1ae8-a018-0e24-81d7ad7512dd@web.de>
+References: <20191211235253.2539-1-smoch@web.de>
+ <0101016ef97cf6b5-2552a5e4-12de-4616-94d6-b63d9c795ed6-000000@us-west-2.amazonses.com>
+ <1daadfe0-5964-db9b-818c-6e4c75ac6a69@web.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2681192.H4ySjFOPB8@diego>
+In-Reply-To: <1daadfe0-5964-db9b-818c-6e4c75ac6a69@web.de>
 Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Anand Moon <linux.amoon@gmail.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, Lee Jones <lee.jones@linaro.org>, Linux Kernel <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Kalle Valo <kvalo@codeaurora.org>, brcm80211-dev-list.pdl@broadcom.com, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, brcm80211-dev-list@cypress.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 15.12.19 21:27, Heiko St=C3=BCbner wrote:
-> Hi Anand,
->
-> Am Sonntag, 15. Dezember 2019, 19:51:50 CET schrieb Anand Moon:
->> On Tue, 10 Dec 2019 at 18:54, Robin Murphy <robin.murphy@arm.com> wrot=
-e:
->>> RK805 has the same kind of dual-role sleep/shutdown pin as RK809/RK81=
-7,
->>> so it makes little sense for the driver to have to have two completel=
-y
->>> different mechanisms to handle essentially the same thing. Bring RK80=
-5
->>> in line with the RK809/RK817 flow to clean things up.
+On 12.12.19 11:59, Soeren Moch wrote:
+> On 12.12.19 10:42, Kalle Valo wrote:
+>> Soeren Moch <smoch@web.de> writes:
+>>
+>>> Add support for the BCM4359 chipset with SDIO interface and RSDB support
+>>> to the brcmfmac wireless network driver in patches 1-7.
 >>>
->>> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
->>> ---
-> [...]
->
->> I am sill getting the kernel warning on issue poweroff see below.
->> on my Rock960 Model A
->> I feel the reason for this is we now have two poweroff callback
->> 1  pm_power_off =3D rk808_device_shutdown
->> 2  rk8xx_syscore_shutdown
-> Nope, the issue is just the i2c subsystem complaining that the
-> Rocckhip i2c drives does not provide an atomic-transfer function, see
-> 	"No atomic I2C transfer handler for 'i2c-0'"
-> in your warning.
->
-> Somewhere it was suggested that the current transfer function just
-> works as atomic as well.
-I suggested to declare this function as "atomic" in a sense that it can
-be used for power-off (this is what the i2c core expects from atomic
-xfer functions, they are not used for anything else).
-The current transfer function is not strictly atomic, since it expects
-to get a completion interrupt. But nobody cares about the delivery of
-such interrupt when the board is already switched off.
+>>> Enhance devicetree of the RockPro64 arm64/rockchip board to use an
+>>> AP6359SA based wifi/bt combo module with this chipset in patches 8-9.
+>>>
+>>>
+>>> Chung-Hsien Hsu (1):
+>>>   brcmfmac: set F2 blocksize and watermark for 4359
+>>>
+>>> Soeren Moch (5):
+>>>   brcmfmac: fix rambase for 4359/9
+>>>   brcmfmac: make errors when setting roaming parameters non-fatal
+>>>   brcmfmac: add support for BCM4359 SDIO chipset
+>>>   arm64: dts: rockchip: RockPro64: enable wifi module at sdio0
+>>>   arm64: dts: rockchip: RockPro64: hook up bluetooth at uart0
+>>>
+>>> Wright Feng (3):
+>>>   brcmfmac: reset two D11 cores if chip has two D11 cores
+>>>   brcmfmac: add RSDB condition when setting interface combinations
+>>>   brcmfmac: not set mbss in vif if firmware does not support MBSS
+>>>
+>>>  .../boot/dts/rockchip/rk3399-rockpro64.dts    | 50 +++++++++++---
+>>>  .../broadcom/brcm80211/brcmfmac/bcmsdh.c      |  8 ++-
+>>>  .../broadcom/brcm80211/brcmfmac/cfg80211.c    | 68 +++++++++++++++----
+>>>  .../broadcom/brcm80211/brcmfmac/chip.c        | 54 ++++++++++++++-
+>>>  .../broadcom/brcm80211/brcmfmac/chip.h        |  1 +
+>>>  .../broadcom/brcm80211/brcmfmac/pcie.c        |  2 +-
+>>>  .../broadcom/brcm80211/brcmfmac/sdio.c        | 17 +++++
+>>>  include/linux/mmc/sdio_ids.h                  |  2 +
+>>>  8 files changed, 176 insertions(+), 26 deletions(-)
+>> Just to make sure we are on the same page, I will apply patches 1-7 to
+>> wireless-drivers-next and patches 8-9 go to some other tree? And there
+>> are no dependencies between the brcmfmac patches and dts patches?
+>>
+> Yes, this also is my understanding. I'm glad if you are fine with
+> patches 1-7.
+> Heiko will pick up patches 8-9 later for linux-rockchip independently.
+> And if we need another round of review for patches 8-9, I think we don't
+> need to bother linux-wireless with this.
 
-So the naming xfer_atomic is disadvantageous, if it had be named
-xfer_poweroff instead there would be no doubt that the existing function
-can be marked this way.
->> In my investigation earlier common function for shutdown solve
->> the issue of clean shutdown.
-> This is simply a result of your syscore-shutdown function running way t=
-o
-> early, before the i2c subsystem switched to using atomic transfers.
->
-> This also indicates that this would really be way to early, as other pa=
-rts
-> of the kernel could also still be running.
-Exactly. So I still think that my simple patch does the right thing, and
-this warning can be safely ignored.
+Heiko,
 
+is this OK for you when patches 1-7 are merged now in wireless-drivers,
+and then I send a v3 for patches 8-9 only for you to merge in
+linux-rockchip later? Or do you prefer a full v3 for the whole series
+with only this pending clock name update in patch 9?
+
+Thanks,
 Soeren
->
-> Heiko
->
->
->> for *rockchip,system-power-controller* dts property
->> we can used flags if check if this property support clean shutdown
->> for that device.
->>
->> [  565.009291] xhci-hcd xhci-hcd.0.auto: USB bus 5 deregistered
->> [  565.010179] reboot: Power down
->> [  565.010536] ------------[ cut here ]------------
->> [  565.010940] No atomic I2C transfer handler for 'i2c-0'
->> [  565.011437] WARNING: CPU: 0 PID: 1 at drivers/i2c/i2c-core.h:40
->> i2c_transfer+0xe4/0xf8
->> [  565.012126] Modules linked in: snd_soc_hdmi_codec dw_hdmi_i2s_audio=
-
->> rockchipdrm nvme analogix_dp nvme_core brcmfmac hci_uart dw_mipi_dsi
->> dw_hdmi btbcm cec panfrost bluetooth drm_kms_helper brcmutil gpu_sched=
-
->> cfg80211 crct10dif_ce snd_soc_rockchip_i2s snd_soc_simple_card drm
->> ecdh_generic snd_soc_rockchip_pcm snd_soc_simple_card_utils
->> phy_rockchip_pcie ecc rtc_rk808 rfkill rockchip_thermal
->> pcie_rockchip_host ip_tables x_tables ipv6 nf_defrag_ipv6
->> [  565.015578] CPU: 0 PID: 1 Comm: shutdown Not tainted
->> 5.5.0-rc1-00292-gd46dd6369c55 #7
->> [  565.016260] Hardware name: 96boards Rock960 (DT)
->> [  565.016666] pstate: 60000085 (nZCv daIf -PAN -UAO)
->> [  565.017087] pc : i2c_transfer+0xe4/0xf8
->> [  565.017425] lr : i2c_transfer+0xe4/0xf8
->> [  565.017762] sp : ffff80001004baf0
->> [  565.018052] x29: ffff80001004baf0 x28: ffff00007d208000
->> [  565.018517] x27: 0000000000000000 x26: 0000000000000000
->> [  565.018982] x25: 0000000000000008 x24: 0000000000000000
->> [  565.019447] x23: ffff00007d208000 x22: ffff80001004bc64
->> [  565.019912] x21: ffff80001004bb48 x20: 0000000000000002
->> [  565.020377] x19: ffff000078502080 x18: 0000000000000010
->> [  565.020842] x17: 0000000000000001 x16: 0000000000000019
->> [  565.021307] x15: ffff00007d208470 x14: ffffffffffffffff
->> [  565.021772] x13: ffff80009004b857 x12: ffff80001004b860
->> [  565.022237] x11: ffff800011841000 x10: ffff800011a10658
->> [  565.022702] x9 : 0000000000000000 x8 : ffff800011a11000
->> [  565.023167] x7 : ffff800010697c78 x6 : 0000000000000262
->> [  565.023632] x5 : 0000000000000000 x4 : 0000000000000000
->> [  565.024096] x3 : 00000000ffffffff x2 : ffff800011841ab8
->> [  565.024561] x1 : 7b11701b0ae78800 x0 : 0000000000000000
->> [  565.025027] Call trace:
->> [  565.025246]  i2c_transfer+0xe4/0xf8
->> [  565.025556]  regmap_i2c_read+0x5c/0xa0
->> [  565.025886]  _regmap_raw_read+0xcc/0x138
->> [  565.026230]  _regmap_bus_read+0x3c/0x70
->> [  565.026568]  _regmap_read+0x60/0xe0
->> [  565.026875]  _regmap_update_bits+0xc8/0x108
->> [  565.027241]  regmap_update_bits_base+0x60/0x90
->> [  565.027633]  rk808_device_shutdown+0x6c/0x88
->> [  565.028010]  machine_power_off+0x24/0x30
->> [  565.028356]  kernel_power_off+0x64/0x70
->> [  565.028693]  __do_sys_reboot+0x15c/0x240
->> [  565.029038]  __arm64_sys_reboot+0x20/0x28
->> [  565.029390]  el0_svc_common.constprop.0+0x68/0x160
->> [  565.029811]  el0_svc_handler+0x20/0x80
->> [  565.030141]  el0_sync_handler+0x10c/0x180
->> [  565.030493]  el0_sync+0x140/0x180
->> [  565.030785] ---[ end trace 5167e842ce15f686 ]---
->>
->> -Anand
->>
->
->
->
