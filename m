@@ -1,117 +1,52 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 4/4] mfd: rk808: Convert RK805 to syscore/PM ops
-Date: Sun, 15 Dec 2019 21:27:40 +0100
-Message-ID: <2681192.H4ySjFOPB8@diego>
-References: <cover.1575932654.git.robin.murphy@arm.com> <8642045f0657c9e782cd698eb08777c9d4c10c8d.1575932654.git.robin.murphy@arm.com> <CANAwSgTtzAZJqpsD7uVKskTnDmrT1bs=JuHxnPrkpQKtnZLhvQ@mail.gmail.com>
+From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Subject: [RFC v1 0/1] drm: lima: devfreq and cooling device support
+Date: Sun, 15 Dec 2019 22:12:22 +0100
+Message-ID: <20191215211223.1451499-1-martin.blumenstingl@googlemail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CANAwSgTtzAZJqpsD7uVKskTnDmrT1bs=JuHxnPrkpQKtnZLhvQ@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, Lee Jones <lee.jones@linaro.org>, Linux Kernel <linux-kernel@vger.kernel.org>, Soeren Moch <smoch@web.de>, linux-rockchip@lists.infradead.org
+To: yuq825@gmail.com, dri-devel@lists.freedesktop.org, lima@lists.freedesktop.org
+Cc: airlied@linux.ie, daniel@ffwll.ch, linux-kernel@vger.kernel.org, tomeu.vizoso@collabora.com, robh@kernel.org, steven.price@arm.com, alyssa.rosenzweig@collabora.com, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, wens@csie.org, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Anand,
+This is my attempt at adding devfreq (and cooling device) support to
+the lima driver.
+I didn't have much time to do in-depth testing. However, I'm sending
+this out early because there are many SoCs with Mali-400/450 GPU so
+I want to avoid duplicating the work with somebody else.
 
-Am Sonntag, 15. Dezember 2019, 19:51:50 CET schrieb Anand Moon:
-> On Tue, 10 Dec 2019 at 18:54, Robin Murphy <robin.murphy@arm.com> wrote:
-> >
-> > RK805 has the same kind of dual-role sleep/shutdown pin as RK809/RK817,
-> > so it makes little sense for the driver to have to have two completely
-> > different mechanisms to handle essentially the same thing. Bring RK805
-> > in line with the RK809/RK817 flow to clean things up.
-> >
-> > Signed-off-by: Robin Murphy <robin.murphy@arm.com>
-> > ---
+The code is derived from panfrost_devfreq.c which is why I kept the
+Collabora copyright in lima_devfreq.c. Please let me know if I should
+drop this or how I can make it more clear that I "borrowed" the code
+from panfrost.
 
-[...]
+I am seeking comments in two general areas:
+- regarding the integration into the existing lima code
+- for the actual devfreq code (I had to adapt the panfrost code
+  slightly, because lima uses a bus and a GPU/core clock)
 
-> I am sill getting the kernel warning on issue poweroff see below.
-> on my Rock960 Model A
-> I feel the reason for this is we now have two poweroff callback
-> 1  pm_power_off = rk808_device_shutdown
-> 2  rk8xx_syscore_shutdown
-
-Nope, the issue is just the i2c subsystem complaining that the
-Rocckhip i2c drives does not provide an atomic-transfer function, see
-	"No atomic I2C transfer handler for 'i2c-0'"
-in your warning.
-
-Somewhere it was suggested that the current transfer function just
-works as atomic as well.
+My own TODO list includes "more" testing on various Amlogic SoCs.
+So far I have tested this on Meson8b and Meson8m2 (which both have a
+GPU OPP table defined). However, I still need to test this on a GXL
+board (which is currently missing the GPU OPP table).
 
 
-> In my investigation earlier common function for shutdown solve
-> the issue of clean shutdown.
+Martin Blumenstingl (1):
+  drm/lima: Add optional devfreq support
 
-This is simply a result of your syscore-shutdown function running way to
-early, before the i2c subsystem switched to using atomic transfers.
+ drivers/gpu/drm/lima/Kconfig        |   1 +
+ drivers/gpu/drm/lima/Makefile       |   3 +-
+ drivers/gpu/drm/lima/lima_devfreq.c | 162 ++++++++++++++++++++++++++++
+ drivers/gpu/drm/lima/lima_devfreq.h |  15 +++
+ drivers/gpu/drm/lima/lima_device.c  |   4 +
+ drivers/gpu/drm/lima/lima_device.h  |  11 ++
+ drivers/gpu/drm/lima/lima_drv.c     |  14 ++-
+ drivers/gpu/drm/lima/lima_sched.c   |   7 ++
+ drivers/gpu/drm/lima/lima_sched.h   |   3 +
+ 9 files changed, 217 insertions(+), 3 deletions(-)
+ create mode 100644 drivers/gpu/drm/lima/lima_devfreq.c
+ create mode 100644 drivers/gpu/drm/lima/lima_devfreq.h
 
-This also indicates that this would really be way to early, as other parts
-of the kernel could also still be running.
-
-Heiko
-
-
-> for *rockchip,system-power-controller* dts property
-> we can used flags if check if this property support clean shutdown
-> for that device.
-> 
-> [  565.009291] xhci-hcd xhci-hcd.0.auto: USB bus 5 deregistered
-> [  565.010179] reboot: Power down
-> [  565.010536] ------------[ cut here ]------------
-> [  565.010940] No atomic I2C transfer handler for 'i2c-0'
-> [  565.011437] WARNING: CPU: 0 PID: 1 at drivers/i2c/i2c-core.h:40
-> i2c_transfer+0xe4/0xf8
-> [  565.012126] Modules linked in: snd_soc_hdmi_codec dw_hdmi_i2s_audio
-> rockchipdrm nvme analogix_dp nvme_core brcmfmac hci_uart dw_mipi_dsi
-> dw_hdmi btbcm cec panfrost bluetooth drm_kms_helper brcmutil gpu_sched
-> cfg80211 crct10dif_ce snd_soc_rockchip_i2s snd_soc_simple_card drm
-> ecdh_generic snd_soc_rockchip_pcm snd_soc_simple_card_utils
-> phy_rockchip_pcie ecc rtc_rk808 rfkill rockchip_thermal
-> pcie_rockchip_host ip_tables x_tables ipv6 nf_defrag_ipv6
-> [  565.015578] CPU: 0 PID: 1 Comm: shutdown Not tainted
-> 5.5.0-rc1-00292-gd46dd6369c55 #7
-> [  565.016260] Hardware name: 96boards Rock960 (DT)
-> [  565.016666] pstate: 60000085 (nZCv daIf -PAN -UAO)
-> [  565.017087] pc : i2c_transfer+0xe4/0xf8
-> [  565.017425] lr : i2c_transfer+0xe4/0xf8
-> [  565.017762] sp : ffff80001004baf0
-> [  565.018052] x29: ffff80001004baf0 x28: ffff00007d208000
-> [  565.018517] x27: 0000000000000000 x26: 0000000000000000
-> [  565.018982] x25: 0000000000000008 x24: 0000000000000000
-> [  565.019447] x23: ffff00007d208000 x22: ffff80001004bc64
-> [  565.019912] x21: ffff80001004bb48 x20: 0000000000000002
-> [  565.020377] x19: ffff000078502080 x18: 0000000000000010
-> [  565.020842] x17: 0000000000000001 x16: 0000000000000019
-> [  565.021307] x15: ffff00007d208470 x14: ffffffffffffffff
-> [  565.021772] x13: ffff80009004b857 x12: ffff80001004b860
-> [  565.022237] x11: ffff800011841000 x10: ffff800011a10658
-> [  565.022702] x9 : 0000000000000000 x8 : ffff800011a11000
-> [  565.023167] x7 : ffff800010697c78 x6 : 0000000000000262
-> [  565.023632] x5 : 0000000000000000 x4 : 0000000000000000
-> [  565.024096] x3 : 00000000ffffffff x2 : ffff800011841ab8
-> [  565.024561] x1 : 7b11701b0ae78800 x0 : 0000000000000000
-> [  565.025027] Call trace:
-> [  565.025246]  i2c_transfer+0xe4/0xf8
-> [  565.025556]  regmap_i2c_read+0x5c/0xa0
-> [  565.025886]  _regmap_raw_read+0xcc/0x138
-> [  565.026230]  _regmap_bus_read+0x3c/0x70
-> [  565.026568]  _regmap_read+0x60/0xe0
-> [  565.026875]  _regmap_update_bits+0xc8/0x108
-> [  565.027241]  regmap_update_bits_base+0x60/0x90
-> [  565.027633]  rk808_device_shutdown+0x6c/0x88
-> [  565.028010]  machine_power_off+0x24/0x30
-> [  565.028356]  kernel_power_off+0x64/0x70
-> [  565.028693]  __do_sys_reboot+0x15c/0x240
-> [  565.029038]  __arm64_sys_reboot+0x20/0x28
-> [  565.029390]  el0_svc_common.constprop.0+0x68/0x160
-> [  565.029811]  el0_svc_handler+0x20/0x80
-> [  565.030141]  el0_sync_handler+0x10c/0x180
-> [  565.030493]  el0_sync+0x140/0x180
-> [  565.030785] ---[ end trace 5167e842ce15f686 ]---
-> 
-> -Anand
-> 
+-- 
+2.24.1
