@@ -1,116 +1,131 @@
-From: Alyssa Rosenzweig <alyssa.rosenzweig-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [RFC v1 0/1] drm: lima: devfreq and cooling device support
-Date: Mon, 16 Dec 2019 10:48:03 -0500
-Message-ID: <20191216154803.GA3921@kevin>
-References: <20191215211223.1451499-1-martin.blumenstingl@googlemail.com>
+From: Anand Moon <linux.amoon@gmail.com>
+Subject: Re: [PATCH 4/4] mfd: rk808: Convert RK805 to syscore/PM ops
+Date: Mon, 16 Dec 2019 21:39:16 +0530
+Message-ID: <CANAwSgSpe=7-jCs4OtnnOoosfG89M-TAu-epC7sG0Gw2c7DrHA@mail.gmail.com>
+References: <cover.1575932654.git.robin.murphy@arm.com> <8642045f0657c9e782cd698eb08777c9d4c10c8d.1575932654.git.robin.murphy@arm.com>
+ <CANAwSgTtzAZJqpsD7uVKskTnDmrT1bs=JuHxnPrkpQKtnZLhvQ@mail.gmail.com>
+ <2681192.H4ySjFOPB8@diego> <CANAwSgTL-9VCFFj-+4xsLZOxKCHtjyN4P6fYnuRSOe7cZRiWew@mail.gmail.com>
+ <f29fbb91-ffd0-5650-30b4-5791c970a834@arm.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1836777720597470860=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191215211223.1451499-1-martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
-Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, lima-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, steven.price-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wens-jdAy2FN1RRM@public.gmane.org, yuq825-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, daniel-/w4YWyX8dFk@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <f29fbb91-ffd0-5650-30b4-5791c970a834@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Lee Jones <lee.jones@linaro.org>, Linux Kernel <linux-kernel@vger.kernel.org>, Soeren Moch <smoch@web.de>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Robin,
 
---===============1836777720597470860==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="CE+1k2dSO48ffgeK"
-Content-Disposition: inline
+On Mon, 16 Dec 2019 at 18:08, Robin Murphy <robin.murphy@arm.com> wrote:
+>
+> On 2019-12-16 9:50 am, Anand Moon wrote:
+> > Hi Heiko / Robin / Soeren,
+> >
+> > On Mon, 16 Dec 2019 at 01:57, Heiko St=C3=BCbner <heiko@sntech.de> wrot=
+e:
+> >>
+> >> Hi Anand,
+> >>
+> >> Am Sonntag, 15. Dezember 2019, 19:51:50 CET schrieb Anand Moon:
+> >>> On Tue, 10 Dec 2019 at 18:54, Robin Murphy <robin.murphy@arm.com> wro=
+te:
+> >>>>
+> >>>> RK805 has the same kind of dual-role sleep/shutdown pin as RK809/RK8=
+17,
+> >>>> so it makes little sense for the driver to have to have two complete=
+ly
+> >>>> different mechanisms to handle essentially the same thing. Bring RK8=
+05
+> >>>> in line with the RK809/RK817 flow to clean things up.
+> >>>>
+> >>>> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+> >>>> ---
+> >>
+> >> [...]
+> >>
+> >>> I am sill getting the kernel warning on issue poweroff see below.
+> >>> on my Rock960 Model A
+> >>> I feel the reason for this is we now have two poweroff callback
+> >>> 1  pm_power_off =3D rk808_device_shutdown
+> >>> 2  rk8xx_syscore_shutdown
+> >>
+> >> Nope, the issue is just the i2c subsystem complaining that the
+> >> Rocckhip i2c drives does not provide an atomic-transfer function, see
+> >>          "No atomic I2C transfer handler for 'i2c-0'"
+> >> in your warning.
+> >>
+> >> Somewhere it was suggested that the current transfer function just
+> >> works as atomic as well.
+> >>
+> >>
+> >>> In my investigation earlier common function for shutdown solve
+> >>> the issue of clean shutdown.
+> >>
+> >> This is simply a result of your syscore-shutdown function running way =
+to
+> >> early, before the i2c subsystem switched to using atomic transfers.
+> >>
+> >> This also indicates that this would really be way to early, as other p=
+arts
+> >> of the kernel could also still be running.
+> >>
+> >
+> > Yes, you are correct syscore-shutdown initiates
+> > shutdown before all the device do clean shutdown.
+> >
+> > So for best approach for clean atomic shutdown is to use
+> >    /* driver model interfaces that don't relate to enumeration  */
+> >          void (*shutdown)(struct i2c_client *client);
+> > drop the registration of syscore and use core .i2c_shutdown.
+>
+> Huh? If you understand that the syscore shutdown hook is too early, why
+> would it seem a good idea to pull the plug even earlier from driver
+> shutdown? Not to mention that your patch as proposed breaks all the
+> GPIO-based shutdown flows.
+>
+Ok opps, I might have missed some thing.
+I just look into logs to between syscore shutdown and I2C shutdown
+get more insight, so I feel I2C shutdown dose clean shutdown.
 
+> If you really care about avoiding the spurious warning, implement the
+> expected polled-mode transfer function in the I2C driver. Trying to hack
+> around it by issuing I2C-based shutdown from anywhere other than
+> pm_power_off is a waste of everyone's time.
 
---CE+1k2dSO48ffgeK
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I have tired this I2C shutdown approach earlier, but as their were
+issue with clean restart, so I dropped this line.
+Then I tired to add restart notifier to handle restart that also
+did not work my boards, so I am exploring more.
 
-If so much code is being duplicated over, I'm wondering if it makes
-sense for us to move some of the common devfreq code to core DRM
-helpers?
+>
+> > I have prepare this patch on top of this series for RTF
+> > This patch dose clean shutdown of all the devices before poweroff.
+> > see the log below.
+> >
+> > *Note*: This feature will likely break the clean reboot feature.
+> > Rockchip device do not perform clean reboot as some of the IP
+> > block are not released before clean reboot and it's remain stuck.
+> > Like PCIe and MMC, We need to look into this as well.
+>
+> As mentioned before, that likely has nothing to do with the PMIC, and
+> really sounds like the issue with Trusted Firmware not reenabling all
+> the SoC power domains before reset - a fix for that has already been
+> identified, see here:
+> https://forum.armbian.com/topic/7552-roc-rk3399-pc-renegade-elite/?do=3Df=
+indComment&comment=3D90289
+>
+> Robin.
+>
 
-On Sun, Dec 15, 2019 at 10:12:22PM +0100, Martin Blumenstingl wrote:
-> This is my attempt at adding devfreq (and cooling device) support to
-> the lima driver.
-> I didn't have much time to do in-depth testing. However, I'm sending
-> this out early because there are many SoCs with Mali-400/450 GPU so
-> I want to avoid duplicating the work with somebody else.
->=20
-> The code is derived from panfrost_devfreq.c which is why I kept the
-> Collabora copyright in lima_devfreq.c. Please let me know if I should
-> drop this or how I can make it more clear that I "borrowed" the code
-> from panfrost.
->=20
-> I am seeking comments in two general areas:
-> - regarding the integration into the existing lima code
-> - for the actual devfreq code (I had to adapt the panfrost code
->   slightly, because lima uses a bus and a GPU/core clock)
->=20
-> My own TODO list includes "more" testing on various Amlogic SoCs.
-> So far I have tested this on Meson8b and Meson8m2 (which both have a
-> GPU OPP table defined). However, I still need to test this on a GXL
-> board (which is currently missing the GPU OPP table).
->=20
->=20
-> Martin Blumenstingl (1):
->   drm/lima: Add optional devfreq support
->=20
->  drivers/gpu/drm/lima/Kconfig        |   1 +
->  drivers/gpu/drm/lima/Makefile       |   3 +-
->  drivers/gpu/drm/lima/lima_devfreq.c | 162 ++++++++++++++++++++++++++++
->  drivers/gpu/drm/lima/lima_devfreq.h |  15 +++
->  drivers/gpu/drm/lima/lima_device.c  |   4 +
->  drivers/gpu/drm/lima/lima_device.h  |  11 ++
->  drivers/gpu/drm/lima/lima_drv.c     |  14 ++-
->  drivers/gpu/drm/lima/lima_sched.c   |   7 ++
->  drivers/gpu/drm/lima/lima_sched.h   |   3 +
->  9 files changed, 217 insertions(+), 3 deletions(-)
->  create mode 100644 drivers/gpu/drm/lima/lima_devfreq.c
->  create mode 100644 drivers/gpu/drm/lima/lima_devfreq.h
->=20
-> --=20
-> 2.24.1
->=20
+If we go with I2C shutdown feature, some how some device will not
+release resources and it remains stuck before the initialization next u-boo=
+t.
+See the log below. https://pastebin.com/xxwvERaz
 
---CE+1k2dSO48ffgeK
-Content-Type: application/pgp-signature; name="signature.asc"
+ATF changes will some into affect after the restart of the devices.
+FYI I am testing with all the latest AFT patches from Armbian and latest u-=
+boot.
 
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEQ17gm7CvANAdqvY4/v5QWgr1WA0FAl33py4ACgkQ/v5QWgr1
-WA0Caw/8DBkpxsfWejzUF5wK7xq5rkmaLL+RmwJzt9xgNwWgsJ8p2XWt+hgzJSAr
-hNy9KVAEE62SXJHfpziY9CEkQycM+b7cQASYGf2q8/C2XNYfZHv80N8SZv1Gaqmh
-NzCfRSsfgc1BvPjbiKu0E1gdsX4RxlB3TXQV0dmSYbOSQ6yyHaYHgrEImW8HVblc
-/xkW7pOSkBs9ZdQKMFETaKJlQ6iQvkvUUlaywl2rBO4PvidyCVp5TXgRIYUQzXY/
-ls7vy/jU8eWchvp9hlztfssMGtE20BcQeASrHjkKfRUWsaSKt0g9Wh17jbIMf/fj
-BfGKqV+KwkKuMDUubvp7EBaJkwxAG8pTr1jv7+QdxOdm/KVnKMu1NSl2DJmTl8Fa
-o9mIdlNQCoMJo+TG6i92JuHMZ5VL11NBm6uazi1iJIH8KEYg8UPnePbQttHnDnZq
-DqTpy9w0r+T3zu9AH5pQjZCXCcKK+oV4qCTBK5zGe3UtcPigssiTVo912VsGEbb/
-Y8LPtySaWSjCI/hfgz4M9ENfrmNX4yqvIewZnAMMPj6vv5sslfRBBGKBCoCtqcQx
-T9Iy3c57pp9B/Prrc1llotEuqyd2Mi7mws7gSPfGZXaTC/TPNKCikvph39wdRPdp
-WP+lq3rH1n5kMcc3D09p62TZGuaO0uiHmUgxshzPQa3FxXsHqZo=
-=QSX1
------END PGP SIGNATURE-----
-
---CE+1k2dSO48ffgeK--
-
-
---===============1836777720597470860==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1836777720597470860==--
+-Anand
