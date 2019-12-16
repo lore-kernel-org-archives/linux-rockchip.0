@@ -1,41 +1,47 @@
 From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [RFCv1 1/8] mfd: rk808: Refactor shutdown functions
-Date: Mon, 16 Dec 2019 11:11:50 +0000
-Message-ID: <20191216111150.GA2369@dell>
-References: <20191206184536.2507-1-linux.amoon@gmail.com>
- <20191206184536.2507-2-linux.amoon@gmail.com>
+Subject: Re: [PATCH 0/4] mfd: RK8xx tidyup
+Date: Mon, 16 Dec 2019 11:12:19 +0000
+Message-ID: <20191216111219.GB2369@dell>
+References: <cover.1575932654.git.robin.murphy@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20191206184536.2507-2-linux.amoon@gmail.com>
+In-Reply-To: <cover.1575932654.git.robin.murphy@arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Robin Murphy <robin.murphy@arm.com>, Daniel Schultz <d.schultz@phytec.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: linux-kernel@vger.kernel.org, heiko@sntech.de, smoch@web.de, linux.amoon@gmail.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 06 Dec 2019, Anand Moon wrote:
+On Tue, 10 Dec 2019, Robin Murphy wrote:
 
-> From: Daniel Schultz <d.schultz@phytec.de>
+> Hi all,
 > 
-> Since all shutdown functions have almost the same code, all logic
-> from the shutdown functions can be refactored to a new function
-> "rk808_update_bits", which can update a register by a given address
-> and bitmask and value.
+> In trying to debug suspend issues on my RK3328 box, I was looking at
+> how the RK8xx driver handles the RK805 sleep pin, and frankly the whole
+> driver seemed untidy enough to warrant some cleanup and minor fixes
+> before going any further. I've based the series on top of Soeren's
+> "mfd: rk808: Always use poweroff when requested" patch[1].
 > 
-> link: https://lore.kernel.org/patchwork/patch/937404/
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Signed-off-by: Daniel Schultz <d.schultz@phytec.de>
-> Signed-off-by: Anand Moon <linux.amoon@gmail.com>
-> ---
-> [rebased on latest kernel]
-> Modified the API to set the value.
-> This changes were submited with below patch.
-> [0] https://lore.kernel.org/patchwork/patch/937404/
-> ---
->  drivers/mfd/rk808.c | 87 ++++++++++++++-------------------------------
->  1 file changed, 26 insertions(+), 61 deletions(-)
+> Note that I've only had time to build-test these patches so far, but I
+> wanted to share them early for the sake of discussion in response to
+> the other thread[2].
+> 
+> Robin.
+> 
+> [1] https://patchwork.kernel.org/patch/11279249/
+> [2] https://patchwork.kernel.org/cover/11276945/
+> 
+> Robin Murphy (4):
+>   mfd: rk808: Set global instance unconditionally
+>   mfd: rk808: Always register syscore ops
+>   mfd: rk808: Reduce shutdown duplication
+>   mfd: rk808: Convert RK805 to syscore/PM ops
+> 
+>  drivers/mfd/rk808.c       | 122 ++++++++++++++++----------------------
+>  include/linux/mfd/rk808.h |   2 -
+>  2 files changed, 50 insertions(+), 74 deletions(-)
 
 Not sure what's happening with these (competing?) patch-sets.  I'm not
 planning on getting involved until you guys have arrived at and agreed
