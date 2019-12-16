@@ -1,81 +1,111 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: add ROCK Pi S DTS support
-Date: Mon, 16 Dec 2019 11:48:24 +0100
-Message-ID: <31424b70-bbe1-f2ab-13ee-b1653beab049@gmail.com>
-References: <20191215173318.16385-1-akash@openedev.com>
- <ea6d2f0d-450c-f0ee-6150-65a6855b7546@gmail.com>
+From: Maxime Ripard <maxime@cerno.tech>
+Subject: Re: [PATCH 09/12] drm/rockchip: lvds: Add PX30 support
+Date: Mon, 16 Dec 2019 11:58:27 +0100
+Message-ID: <20191216105827.rxkfbwemkqw446jx@gilmour.lan>
+References: <20191213181051.25983-1-miquel.raynal@bootlin.com>
+ <20191213181051.25983-10-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <ea6d2f0d-450c-f0ee-6150-65a6855b7546-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: multipart/mixed; boundary="===============3093668142488151188=="
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20191213181051.25983-10-miquel.raynal@bootlin.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, Maxime Chevallier <maxime.chevallier@bootlin.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12/16/19 10:20 AM, Johan Jonker wrote:
-> Hi Akash,
-> 
-> See commit below.
-> 
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-S.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-S.dts
->> new file mode 100644
->> index 000000000000..e5fae451c631
->> --- /dev/null
->> +++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-S.dts
-> 
-> 
->> +
->> +&emmc {
->> +	bus-width = <4>;
->> +	cap-mmc-highspeed;
->> +	mmc-hs200-1_8v;
->> +	supports-sd;
 
-supports-sd is not mentioned in mmc-controller.yaml
+--===============3093668142488151188==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="akf2tzjwfz7nnjic"
+Content-Disposition: inline
 
-> 
->> +	disable-wp;
-> 
-> The mmc.txt didn't explicitly say disable-wp is for SD card slot only,
-> but that is what it was designed for in the first place.
-> Remove all disable-wp from emmc or sdio controllers.
-> 
->> +	non-removable;
->> +	num-slots = <1>;
->> +	vin-supply = <&vcc_io>;
->> +	status = "okay";
->> +};
-> 
->> +
->> +&sdmmc {
->> +	bus-width = <4>;
->> +	cap-mmc-highspeed;
->> +	cap-sd-highspeed;
->> +	max-frequeency = <150000000>;
 
-replace max-frequeency by max-frequency
+--akf2tzjwfz7nnjic
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
->> +	supports-sd;
+Hi,
 
-supports-sd is not mentioned in mmc-controller.yaml
+On Fri, Dec 13, 2019 at 07:10:48PM +0100, Miquel Raynal wrote:
+> +static int px30_lvds_grf_config(struct drm_encoder *encoder,
+> +				struct drm_display_mode *mode)
+> +{
+> +	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
+> +	u8 nhsync = !(mode->flags & DRM_MODE_FLAG_PHSYNC);
+> +	u8 nvsync = !(mode->flags & DRM_MODE_FLAG_PVSYNC);
+> +	u8 ndclk = !(mode->flags & DRM_MODE_FLAG_PCSYNC);
+> +	int ret;
+> +
+> +	if (lvds->output != DISPLAY_OUTPUT_LVDS) {
+> +		DRM_DEV_ERROR(lvds->dev, "Unsupported display output %d\n",
+> +			      lvds->output);
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (nhsync ^ nvsync) {
+> +		DRM_DEV_ERROR(lvds->dev, "Unsupported Hsync/Vsync polarity\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	/* Set format */
+> +	ret = regmap_update_bits(lvds->grf, PX30_LVDS_GRF_PD_VO_CON1,
+> +				 PX30_LVDS_FORMAT(lvds->format),
+> +				 PX30_LVDS_FORMAT(lvds->format));
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* Control Hsync/Vsync polarity */
+> +	ret = regmap_update_bits(lvds->grf, PX30_LVDS_GRF_PD_VO_CON0,
+> +				 PX30_LVDS_TIE_CLKS(1),
+> +				 PX30_LVDS_TIE_CLKS(1));
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* Set Hsync/Vsync polarity */
+> +	ret = regmap_update_bits(lvds->grf, PX30_LVDS_GRF_PD_VO_CON0,
+> +				 PX30_LVDS_INVERT_CLKS(1),
+> +				 PX30_LVDS_INVERT_CLKS(nhsync));
+> +	if (ret)
+> +		return ret;
 
->> +	disable-wp;
->> +	num-slots = <1>;
->> +	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_det &sdmmc_bus4>;
+I don't know the hardware but it seems pretty weird to me. hsync and
+vsync in LVDS are not clocks (or even signals), they're a bit in the
+payload. Is there any explanation in the datasheet (or even a
+datasheet in the first place)?
 
->> +	card-detect-delay = <800>;
+Maxime
 
-card-detect-delay is not mentioned in mmc-controller.yaml
+--akf2tzjwfz7nnjic
+Content-Type: application/pgp-signature; name="signature.asc"
 
->> +	status = "okay";
->> +};
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCXfdjUgAKCRDj7w1vZxhR
+xRBYAP44GLCelEvFF7JRcxbERsDpTT+xk8XxtfgoWUly8jPqegD+Jrne3aLXYopK
+ogFPLh6TeB2oQ1+pAWNgKDtT5Zntxwo=
+=SVmk
+-----END PGP SIGNATURE-----
+
+--akf2tzjwfz7nnjic--
+
+
+--===============3093668142488151188==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+--===============3093668142488151188==--
