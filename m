@@ -1,14 +1,13 @@
 From: Neil Armstrong <narmstrong@baylibre.com>
-Subject: Re: [PATCH v5 6/6] drm/rockchip: dsi: add px30 support
-Date: Mon, 16 Dec 2019 11:39:43 +0100
-Message-ID: <99e4a800-fa12-9d64-3ceb-99b961a9f3d3@baylibre.com>
+Subject: Re: [PATCH v5 0/6] drm/rockchip: px30 dsi support
+Date: Mon, 16 Dec 2019 11:40:00 +0100
+Message-ID: <8a071340-6452-4de3-10c9-393bce815ad7@baylibre.com>
 References: <20191209143130.4553-1-heiko@sntech.de>
- <20191209143130.4553-7-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191209143130.4553-7-heiko@sntech.de>
+In-Reply-To: <20191209143130.4553-1-heiko@sntech.de>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
@@ -23,72 +22,41 @@ To: Heiko Stuebner <heiko@sntech.de>, a.hajda@samsung.com
 Cc: bivvy.bi@rock-chips.com, jernej.skrabec@siol.net, kuninori.morimoto.gx@renesas.com, jonas@kwiboo.se, sean@poorly.run, xzy.xu@rock-chips.com, philippe.cornu@st.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, eddie.cai@rock-chips.com, Laurent.pinchart@ideasonboard.com, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, sam@ravnborg.org, christoph.muellner@theobroma-systems.com
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi,
+
 On 09/12/2019 15:31, Heiko Stuebner wrote:
 > From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 > 
-> Add the compatible and GRF definitions for the PX30 soc.
+> This series addes support for the px30 Rockchip soc to the dsi driver.
+> This includes support for external dsi-phys like used on the px30.
 > 
-> changes in v5:
-> - rebased on top of 5.5-rc1
-> - merged with dsi timing change to prevent ordering conflicts
+> What happened between v1 and v5? The then separate dsi hs2lp timing
+> patch happened ;-) . As both it and this series touch similar areas
+> in the dsi driver ordering becomes an issue and so combining them to
+> make ordering explicit is helpful. v2-v4 where then iterations of the
+> timing patch.
 > 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-> ---
->  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 27 +++++++++++++++++++
->  1 file changed, 27 insertions(+)
+> So this v5 is mainly rebased on 5.5-rc1 and rechecked against drm-misc.
 > 
-> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> index f16bd1e9b633..f04b5064974d 100644
-> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> @@ -140,6 +140,12 @@
->  #define DW_MIPI_NEEDS_PHY_CFG_CLK	BIT(0)
->  #define DW_MIPI_NEEDS_GRF_CLK		BIT(1)
->  
-> +#define PX30_GRF_PD_VO_CON1		0x0438
-> +#define PX30_DSI_FORCETXSTOPMODE	(0xf << 7)
-> +#define PX30_DSI_FORCERXMODE		BIT(6)
-> +#define PX30_DSI_TURNDISABLE		BIT(5)
-> +#define PX30_DSI_LCDC_SEL		BIT(0)
-> +
->  #define RK3288_GRF_SOC_CON6		0x025c
->  #define RK3288_DSI0_LCDC_SEL		BIT(6)
->  #define RK3288_DSI1_LCDC_SEL		BIT(9)
-> @@ -1127,6 +1133,24 @@ static int dw_mipi_dsi_rockchip_remove(struct platform_device *pdev)
->  	return 0;
->  }
->  
-> +static const struct rockchip_dw_dsi_chip_data px30_chip_data[] = {
-> +	{
-> +		.reg = 0xff450000,
-> +		.lcdsel_grf_reg = PX30_GRF_PD_VO_CON1,
-> +		.lcdsel_big = HIWORD_UPDATE(0, PX30_DSI_LCDC_SEL),
-> +		.lcdsel_lit = HIWORD_UPDATE(PX30_DSI_LCDC_SEL,
-> +					    PX30_DSI_LCDC_SEL),
-> +
-> +		.lanecfg1_grf_reg = PX30_GRF_PD_VO_CON1,
-> +		.lanecfg1 = HIWORD_UPDATE(0, PX30_DSI_TURNDISABLE |
-> +					     PX30_DSI_FORCERXMODE |
-> +					     PX30_DSI_FORCETXSTOPMODE),
-> +
-> +		.max_data_lanes = 4,
-> +	},
-> +	{ /* sentinel */ }
-> +};
-> +
->  static const struct rockchip_dw_dsi_chip_data rk3288_chip_data[] = {
->  	{
->  		.reg = 0xff960000,
-> @@ -1195,6 +1219,9 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
->  
->  static const struct of_device_id dw_mipi_dsi_rockchip_dt_ids[] = {
->  	{
-> +	 .compatible = "rockchip,px30-mipi-dsi",
-> +	 .data = &px30_chip_data,
-> +	}, {
->  	 .compatible = "rockchip,rk3288-mipi-dsi",
->  	 .data = &rk3288_chip_data,
->  	}, {
+> Heiko Stuebner (6):
+>   drm/bridge/synopsys: dsi: driver-specific configuration of phy timings
+>   drm/bridge/synopsys: dsi: move phy_ops callbacks around panel
+>     enablement
+>   dt-bindings: display: rockchip-dsi: document external phys
+>   drm/rockchip: add ability to handle external dphys in mipi-dsi
+>   dt-bindings: display: rockchip-dsi: add px30 compatible
+>   drm/rockchip: dsi: add px30 support
+> 
+>  .../display/rockchip/dw_mipi_dsi_rockchip.txt |  13 +-
+>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c |  40 ++--
+>  drivers/gpu/drm/rockchip/Kconfig              |   1 +
+>  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 173 +++++++++++++++++-
+>  drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         |  13 ++
+>  include/drm/bridge/dw_mipi_dsi.h              |   9 +
+>  6 files changed, 227 insertions(+), 22 deletions(-)
 > 
 
-Reviewed-by: Neil Armstrong <narmstrong@baylibre.com>
+You can go ahead and merge the whole serie with bridge stuff into drm-misc-next if you want,
+or I can do it.
+
+Neil
