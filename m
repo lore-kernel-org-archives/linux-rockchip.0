@@ -1,55 +1,66 @@
-From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
-Subject: Re: [v2 3/6] of: address: add support to parse PCI outbound-ranges
-Date: Mon, 16 Dec 2019 08:55:35 +0000
-Message-ID: <CA+V-a8sd1c_8-weQjn6_UbAmVELLQa=3Fe+0cdXSm2Sif0HDRQ@mail.gmail.com>
-References: <20191213084748.11210-4-prabhakar.mahadev-lad.rj@bp.renesas.com> <20191213201944.GA190383@google.com>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: Re: [PATCH] arm64: dts: rockchip: add ROCK Pi S DTS support
+Date: Mon, 16 Dec 2019 10:20:55 +0100
+Message-ID: <ea6d2f0d-450c-f0ee-6150-65a6855b7546@gmail.com>
+References: <20191215173318.16385-1-akash@openedev.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191213201944.GA190383@google.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-pci <linux-pci@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrew Murray <andrew.murray@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191215173318.16385-1-akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Bjorn,
+Hi Akash,
 
-Thank you for the review.
+See commit below.
 
-On Fri, Dec 13, 2019 at 9:05 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
->
-> On Fri, Dec 13, 2019 at 08:47:45AM +0000, Lad Prabhakar wrote:
-> > From: "Lad, Prabhakar" <prabhakar.mahadev-lad.rj@bp.renesas.com>
->
-> $ git log --oneline drivers/of/address.c
-> 951d48855d86 of: Make of_dma_get_range() work on bus nodes
-> 645c138636de of/address: Fix of_pci_range_parser_one translation of DMA addresses
-> 81db12ee15cb of/address: Translate 'dma-ranges' for parent nodes missing 'dma-ranges'
-> b68ac8dc22eb of: Factor out #{addr,size}-cells parsing
-> c60bf3eb888a of: address: Follow DMA parent for "dma-coherent"
-> 862ab5578f75 of/address: Introduce of_get_next_dma_parent() helper
->
-> Make yours match.  There are a few "of: address: " subjects, but the
-> ones from Rob (the maintainer) use "of/address: ", so I'd use that.
->
-will do the same for next iteration.
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-S.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-S.dts
+> new file mode 100644
+> index 000000000000..e5fae451c631
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-S.dts
 
-> > this patch adds support to parse PCI outbound-ranges, the
-> > outbound-regions are similar to pci ranges except it doesn't
-> > have pci address, below is the format for bar-ranges:
->
-> s/pci/PCI/
-> Capitalize sentences.
->
-will fix that.
 
-> Is "bar-range" an actual DT property?  If it's supposed to be a
-> generic description, "BAR range" would be better.
->
-my bad, it should be outbound-range.
+> +
+> +&emmc {
+> +	bus-width = <4>;
+> +	cap-mmc-highspeed;
+> +	mmc-hs200-1_8v;
+> +	supports-sd;
 
-Cheers,
---Prabhakar
+> +	disable-wp;
 
-> > outbound-ranges = <flags upper32_cpuaddr lower32_cpuaddr
-> >                    upper32_size lower32_size>;
+The mmc.txt didn't explicitly say disable-wp is for SD card slot only,
+but that is what it was designed for in the first place.
+Remove all disable-wp from emmc or sdio controllers.
+
+> +	non-removable;
+> +	num-slots = <1>;
+> +	vin-supply = <&vcc_io>;
+> +	status = "okay";
+> +};
+
+> +
+> +&sdmmc {
+> +	bus-width = <4>;
+> +	cap-mmc-highspeed;
+> +	cap-sd-highspeed;
+> +	max-frequeency = <150000000>;
+> +	supports-sd;
+> +	disable-wp;
+> +	num-slots = <1>;
+> +	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_det &sdmmc_bus4>;
+> +	card-detect-delay = <800>;
+> +	status = "okay";
+> +};
