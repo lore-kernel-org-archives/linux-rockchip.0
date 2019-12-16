@@ -1,62 +1,88 @@
-From: Neil Armstrong <narmstrong@baylibre.com>
-Subject: Re: [PATCH v5 0/6] drm/rockchip: px30 dsi support
-Date: Mon, 16 Dec 2019 11:40:00 +0100
-Message-ID: <8a071340-6452-4de3-10c9-393bce815ad7@baylibre.com>
-References: <20191209143130.4553-1-heiko@sntech.de>
+From: Maxime Ripard <maxime@cerno.tech>
+Subject: Re: [PATCH 02/12] dt-bindings: display: rockchip-lvds: Document PX30
+ PHY
+Date: Mon, 16 Dec 2019 11:48:16 +0100
+Message-ID: <20191216104816.zttjrgck3rdr54ok@gilmour.lan>
+References: <20191213181051.25983-1-miquel.raynal@bootlin.com>
+ <20191213181051.25983-3-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191209143130.4553-1-heiko@sntech.de>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>, a.hajda@samsung.com
-Cc: bivvy.bi@rock-chips.com, jernej.skrabec@siol.net, kuninori.morimoto.gx@renesas.com, jonas@kwiboo.se, sean@poorly.run, xzy.xu@rock-chips.com, philippe.cornu@st.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, eddie.cai@rock-chips.com, Laurent.pinchart@ideasonboard.com, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, sam@ravnborg.org, christoph.muellner@theobroma-systems.com
+Content-Type: multipart/mixed; boundary="===============5855270811887742891=="
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20191213181051.25983-3-miquel.raynal@bootlin.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, Maxime Chevallier <maxime.chevallier@bootlin.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
 
-On 09/12/2019 15:31, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-> 
-> This series addes support for the px30 Rockchip soc to the dsi driver.
-> This includes support for external dsi-phys like used on the px30.
-> 
-> What happened between v1 and v5? The then separate dsi hs2lp timing
-> patch happened ;-) . As both it and this series touch similar areas
-> in the dsi driver ordering becomes an issue and so combining them to
-> make ordering explicit is helpful. v2-v4 where then iterations of the
-> timing patch.
-> 
-> So this v5 is mainly rebased on 5.5-rc1 and rechecked against drm-misc.
-> 
-> Heiko Stuebner (6):
->   drm/bridge/synopsys: dsi: driver-specific configuration of phy timings
->   drm/bridge/synopsys: dsi: move phy_ops callbacks around panel
->     enablement
->   dt-bindings: display: rockchip-dsi: document external phys
->   drm/rockchip: add ability to handle external dphys in mipi-dsi
->   dt-bindings: display: rockchip-dsi: add px30 compatible
->   drm/rockchip: dsi: add px30 support
-> 
->  .../display/rockchip/dw_mipi_dsi_rockchip.txt |  13 +-
->  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c |  40 ++--
->  drivers/gpu/drm/rockchip/Kconfig              |   1 +
->  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 173 +++++++++++++++++-
->  drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         |  13 ++
->  include/drm/bridge/dw_mipi_dsi.h              |   9 +
->  6 files changed, 227 insertions(+), 22 deletions(-)
-> 
+--===============5855270811887742891==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="inqcuz5g7xh4n5en"
+Content-Disposition: inline
 
-You can go ahead and merge the whole serie with bridge stuff into drm-misc-next if you want,
-or I can do it.
 
-Neil
+--inqcuz5g7xh4n5en
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Fri, Dec 13, 2019 at 07:10:41PM +0100, Miquel Raynal wrote:
+> PX30 SoCs use a single PHY shared by two display pipelines: MIPI DSI
+> and LVDS. In the case of the LVDS IP, document the possibility to fill
+> a PHY handle.
+>
+> Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
+> ---
+>  .../devicetree/bindings/display/rockchip/rockchip-lvds.txt     | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt b/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
+> index aa5663a6fd42..ec7b4341cfd2 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-lvds.txt
+> @@ -19,6 +19,9 @@ Required properties:
+>  - rockchip,grf: phandle to the general register files syscon
+>  - rockchip,output: "rgb", "lvds" or "duallvds", This describes the output interface
+>
+> +- phys: LVDS/DSI DPHY (px30 only)
+> +- phy-names: name of the PHY, should be "dphy"
+
+Should or must?
+
+Also, phy-names is optional only for px30
+
+Maxime
+
+--inqcuz5g7xh4n5en
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCXfdg8AAKCRDj7w1vZxhR
+xel0AP9MqWCTdMxRsTUEkW3yY3dbF1oX5qWpR8bMcDtuj70uRwEA57+6MTtKXQt5
+k9opFOaTXgz5rq8ptFWDC/kAy5Z8/Ao=
+=SRme
+-----END PGP SIGNATURE-----
+
+--inqcuz5g7xh4n5en--
+
+
+--===============5855270811887742891==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+--===============5855270811887742891==--
