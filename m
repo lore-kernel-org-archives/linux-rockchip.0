@@ -1,13 +1,15 @@
-From: Maxime Ripard <maxime@cerno.tech>
+From: Miquel Raynal <miquel.raynal@bootlin.com>
 Subject: Re: [PATCH 09/12] drm/rockchip: lvds: Add PX30 support
-Date: Mon, 16 Dec 2019 11:58:27 +0100
-Message-ID: <20191216105827.rxkfbwemkqw446jx@gilmour.lan>
+Date: Mon, 16 Dec 2019 12:03:12 +0100
+Message-ID: <20191216120312.4aa478da@xps13>
 References: <20191213181051.25983-1-miquel.raynal@bootlin.com>
  <20191213181051.25983-10-miquel.raynal@bootlin.com>
+ <20191216105827.rxkfbwemkqw446jx@gilmour.lan>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============3093668142488151188=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20191213181051.25983-10-miquel.raynal@bootlin.com>
+In-Reply-To: <20191216105827.rxkfbwemkqw446jx@gilmour.lan>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -17,95 +19,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Maxime Ripard <maxime@cerno.tech>
 Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, Maxime Chevallier <maxime.chevallier@bootlin.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
---===============3093668142488151188==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="akf2tzjwfz7nnjic"
-Content-Disposition: inline
-
-
---akf2tzjwfz7nnjic
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-Hi,
-
-On Fri, Dec 13, 2019 at 07:10:48PM +0100, Miquel Raynal wrote:
-> +static int px30_lvds_grf_config(struct drm_encoder *encoder,
-> +				struct drm_display_mode *mode)
-> +{
-> +	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
-> +	u8 nhsync = !(mode->flags & DRM_MODE_FLAG_PHSYNC);
-> +	u8 nvsync = !(mode->flags & DRM_MODE_FLAG_PVSYNC);
-> +	u8 ndclk = !(mode->flags & DRM_MODE_FLAG_PCSYNC);
-> +	int ret;
-> +
-> +	if (lvds->output != DISPLAY_OUTPUT_LVDS) {
-> +		DRM_DEV_ERROR(lvds->dev, "Unsupported display output %d\n",
-> +			      lvds->output);
-> +		return -EINVAL;
-> +	}
-> +
-> +	if (nhsync ^ nvsync) {
-> +		DRM_DEV_ERROR(lvds->dev, "Unsupported Hsync/Vsync polarity\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	/* Set format */
-> +	ret = regmap_update_bits(lvds->grf, PX30_LVDS_GRF_PD_VO_CON1,
-> +				 PX30_LVDS_FORMAT(lvds->format),
-> +				 PX30_LVDS_FORMAT(lvds->format));
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Control Hsync/Vsync polarity */
-> +	ret = regmap_update_bits(lvds->grf, PX30_LVDS_GRF_PD_VO_CON0,
-> +				 PX30_LVDS_TIE_CLKS(1),
-> +				 PX30_LVDS_TIE_CLKS(1));
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Set Hsync/Vsync polarity */
-> +	ret = regmap_update_bits(lvds->grf, PX30_LVDS_GRF_PD_VO_CON0,
-> +				 PX30_LVDS_INVERT_CLKS(1),
-> +				 PX30_LVDS_INVERT_CLKS(nhsync));
-> +	if (ret)
-> +		return ret;
-
-I don't know the hardware but it seems pretty weird to me. hsync and
-vsync in LVDS are not clocks (or even signals), they're a bit in the
-payload. Is there any explanation in the datasheet (or even a
-datasheet in the first place)?
-
-Maxime
-
---akf2tzjwfz7nnjic
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCXfdjUgAKCRDj7w1vZxhR
-xRBYAP44GLCelEvFF7JRcxbERsDpTT+xk8XxtfgoWUly8jPqegD+Jrne3aLXYopK
-ogFPLh6TeB2oQ1+pAWNgKDtT5Zntxwo=
-=SVmk
------END PGP SIGNATURE-----
-
---akf2tzjwfz7nnjic--
-
-
---===============3093668142488151188==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-linux-arm-kernel mailing list
-linux-arm-kernel@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
---===============3093668142488151188==--
+SGkgTWF4aW1lLAoKTWF4aW1lIFJpcGFyZCA8bWF4aW1lQGNlcm5vLnRlY2g+IHdyb3RlIG9uIE1v
+biwgMTYgRGVjIDIwMTkgMTE6NTg6MjcKKzAxMDA6Cgo+IEhpLAo+IAo+IE9uIEZyaSwgRGVjIDEz
+LCAyMDE5IGF0IDA3OjEwOjQ4UE0gKzAxMDAsIE1pcXVlbCBSYXluYWwgd3JvdGU6Cj4gPiArc3Rh
+dGljIGludCBweDMwX2x2ZHNfZ3JmX2NvbmZpZyhzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIs
+Cj4gPiArCQkJCXN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlKQo+ID4gK3sKPiA+ICsJc3Ry
+dWN0IHJvY2tjaGlwX2x2ZHMgKmx2ZHMgPSBlbmNvZGVyX3RvX2x2ZHMoZW5jb2Rlcik7Cj4gPiAr
+CXU4IG5oc3luYyA9ICEobW9kZS0+ZmxhZ3MgJiBEUk1fTU9ERV9GTEFHX1BIU1lOQyk7Cj4gPiAr
+CXU4IG52c3luYyA9ICEobW9kZS0+ZmxhZ3MgJiBEUk1fTU9ERV9GTEFHX1BWU1lOQyk7Cj4gPiAr
+CXU4IG5kY2xrID0gIShtb2RlLT5mbGFncyAmIERSTV9NT0RFX0ZMQUdfUENTWU5DKTsKPiA+ICsJ
+aW50IHJldDsKPiA+ICsKPiA+ICsJaWYgKGx2ZHMtPm91dHB1dCAhPSBESVNQTEFZX09VVFBVVF9M
+VkRTKSB7Cj4gPiArCQlEUk1fREVWX0VSUk9SKGx2ZHMtPmRldiwgIlVuc3VwcG9ydGVkIGRpc3Bs
+YXkgb3V0cHV0ICVkXG4iLAo+ID4gKwkJCSAgICAgIGx2ZHMtPm91dHB1dCk7Cj4gPiArCQlyZXR1
+cm4gLUVJTlZBTDsKPiA+ICsJfQo+ID4gKwo+ID4gKwlpZiAobmhzeW5jIF4gbnZzeW5jKSB7Cj4g
+PiArCQlEUk1fREVWX0VSUk9SKGx2ZHMtPmRldiwgIlVuc3VwcG9ydGVkIEhzeW5jL1ZzeW5jIHBv
+bGFyaXR5XG4iKTsKPiA+ICsJCXJldHVybiAtRUlOVkFMOwo+ID4gKwl9Cj4gPiArCj4gPiArCS8q
+IFNldCBmb3JtYXQgKi8KPiA+ICsJcmV0ID0gcmVnbWFwX3VwZGF0ZV9iaXRzKGx2ZHMtPmdyZiwg
+UFgzMF9MVkRTX0dSRl9QRF9WT19DT04xLAo+ID4gKwkJCQkgUFgzMF9MVkRTX0ZPUk1BVChsdmRz
+LT5mb3JtYXQpLAo+ID4gKwkJCQkgUFgzMF9MVkRTX0ZPUk1BVChsdmRzLT5mb3JtYXQpKTsKPiA+
+ICsJaWYgKHJldCkKPiA+ICsJCXJldHVybiByZXQ7Cj4gPiArCj4gPiArCS8qIENvbnRyb2wgSHN5
+bmMvVnN5bmMgcG9sYXJpdHkgKi8KPiA+ICsJcmV0ID0gcmVnbWFwX3VwZGF0ZV9iaXRzKGx2ZHMt
+PmdyZiwgUFgzMF9MVkRTX0dSRl9QRF9WT19DT04wLAo+ID4gKwkJCQkgUFgzMF9MVkRTX1RJRV9D
+TEtTKDEpLAo+ID4gKwkJCQkgUFgzMF9MVkRTX1RJRV9DTEtTKDEpKTsKPiA+ICsJaWYgKHJldCkK
+PiA+ICsJCXJldHVybiByZXQ7Cj4gPiArCj4gPiArCS8qIFNldCBIc3luYy9Wc3luYyBwb2xhcml0
+eSAqLwo+ID4gKwlyZXQgPSByZWdtYXBfdXBkYXRlX2JpdHMobHZkcy0+Z3JmLCBQWDMwX0xWRFNf
+R1JGX1BEX1ZPX0NPTjAsCj4gPiArCQkJCSBQWDMwX0xWRFNfSU5WRVJUX0NMS1MoMSksCj4gPiAr
+CQkJCSBQWDMwX0xWRFNfSU5WRVJUX0NMS1MobmhzeW5jKSk7Cj4gPiArCWlmIChyZXQpCj4gPiAr
+CQlyZXR1cm4gcmV0OyAgCj4gCj4gSSBkb24ndCBrbm93IHRoZSBoYXJkd2FyZSBidXQgaXQgc2Vl
+bXMgcHJldHR5IHdlaXJkIHRvIG1lLiBoc3luYyBhbmQKPiB2c3luYyBpbiBMVkRTIGFyZSBub3Qg
+Y2xvY2tzIChvciBldmVuIHNpZ25hbHMpLCB0aGV5J3JlIGEgYml0IGluIHRoZQo+IHBheWxvYWQu
+IElzIHRoZXJlIGFueSBleHBsYW5hdGlvbiBpbiB0aGUgZGF0YXNoZWV0IChvciBldmVuIGEKPiBk
+YXRhc2hlZXQgaW4gdGhlIGZpcnN0IHBsYWNlKT8KClRoZXJlIGlzIG5vIGV4cGxhbmF0aW9uIGFi
+b3V0IHRoaXMgaW4gdGhlIFBYMzAgVFJNIHBhcnQgMSAocHVibGljKS4gQnV0CnlvdSBhcmUgcmln
+aHQgdGhlIG5hbWluZyBpcyB3ZWlyZC4gQ291bGQgdGhlICJ0aWUgY2xvY2tzIiB0aGluZyBhYm92
+ZQptZWFuIHNvbWV0aGluZyB0byB5b3UvcGVvcGxlIGtub3dpbmcgdGhlIExWRFMgd29ybGQ/CgpD
+aGVlcnMsCk1pcXXDqGwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LWFybS1rZXJuZWwK
