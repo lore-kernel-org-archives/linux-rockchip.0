@@ -1,66 +1,44 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: Re: [PATCH] arm64: dts: rockchip: add ROCK Pi S DTS support
-Date: Mon, 16 Dec 2019 10:20:55 +0100
-Message-ID: <ea6d2f0d-450c-f0ee-6150-65a6855b7546@gmail.com>
-References: <20191215173318.16385-1-akash@openedev.com>
+From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
+Subject: Re: [v2 0/6] Add support for PCIe controller to work in endpoint mode
+ on R-Car SoCs
+Date: Mon, 16 Dec 2019 09:27:49 +0000
+Message-ID: <CA+V-a8ugehRVuV2kwYgkTVp3Vk4ftKsQVfW0=vL4L7BZbDdeNg@mail.gmail.com>
+References: <20191213084748.11210-1-prabhakar.mahadev-lad.rj@bp.renesas.com> <20191213184627.GA169673@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191215173318.16385-1-akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191213184627.GA169673@google.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-pci <linux-pci@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrew Murray <andrew.murray@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Akash,
+Hi Bjorn,
 
-See commit below.
+On Fri, Dec 13, 2019 at 9:06 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
+>
+> On Fri, Dec 13, 2019 at 08:47:42AM +0000, Lad Prabhakar wrote:
+>
+> > Lad, Prabhakar (6):
+> >   pci: pcie-rcar: preparation for adding endpoint support
+> >   pci: endpoint: add support to handle features of outbound memory
+> >   of: address: add support to parse PCI outbound-ranges
+> >   dt-bindings: PCI: rcar: Add bindings for R-Car PCIe endpoint
+> >     controller
+> >   pci: rcar: add support for rcar pcie controller in endpoint mode
+> >   misc: pci_endpoint_test: add device-id for RZ/G2E pcie controller
+>
+> The next time you post this, please update the subject lines to match
+> existing conventions (capitalize "PCI", description is a complete
+> sentence starting with a capitalized verb, etc").  Run "git log
+> --online" on the file you're changing and make yours look the same.
+>
+>   s/pci: /PCI: /
+>   s/pcie-rcar: /rcar: /
+>   s/pcie/PCIe/
+>   s/device-id/Device ID/
 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-S.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-S.dts
-> new file mode 100644
-> index 000000000000..e5fae451c631
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-S.dts
+Thank you for the review, I'll fix the above in next iteration.
 
-
-> +
-> +&emmc {
-> +	bus-width = <4>;
-> +	cap-mmc-highspeed;
-> +	mmc-hs200-1_8v;
-> +	supports-sd;
-
-> +	disable-wp;
-
-The mmc.txt didn't explicitly say disable-wp is for SD card slot only,
-but that is what it was designed for in the first place.
-Remove all disable-wp from emmc or sdio controllers.
-
-> +	non-removable;
-> +	num-slots = <1>;
-> +	vin-supply = <&vcc_io>;
-> +	status = "okay";
-> +};
-
-> +
-> +&sdmmc {
-> +	bus-width = <4>;
-> +	cap-mmc-highspeed;
-> +	cap-sd-highspeed;
-> +	max-frequeency = <150000000>;
-> +	supports-sd;
-> +	disable-wp;
-> +	num-slots = <1>;
-> +	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_det &sdmmc_bus4>;
-> +	card-detect-delay = <800>;
-> +	status = "okay";
-> +};
+Cheers,
+--Prabhakar
