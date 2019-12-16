@@ -1,28 +1,25 @@
-From: Qiang Yu <yuq825@gmail.com>
+From: Chen-Yu Tsai <wens@csie.org>
 Subject: Re: [RFC v1 0/1] drm: lima: devfreq and cooling device support
-Date: Mon, 16 Dec 2019 10:51:32 +0800
-Message-ID: <CAKGbVbvj5zK9gVDQ3+0=xmF5pOUOSJzZ6jaGKHoCqwjYz+UiEQ@mail.gmail.com>
+Date: Mon, 16 Dec 2019 11:03:25 +0800
+Message-ID: <CAGb2v6528SUOyefhsnjEwG7vfud3+Ce+_=CM3cM4vKiRcmNXAA@mail.gmail.com>
 References: <20191215211223.1451499-1-martin.blumenstingl@googlemail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20191215211223.1451499-1-martin.blumenstingl@googlemail.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Cc: dri-devel <dri-devel@lists.freedesktop.org>, lima@lists.freedesktop.org, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Rob Herring <robh@kernel.org>, Steven Price <steven.price@arm.com>, Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>, "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, lima@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-kernel <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, steven.price@arm.com, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, yuq825@gmail.com, "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>, alyssa.rosenzweig@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
-
-Thanks for adding this.
-
-As the license, it's up to you, I think it's OK for now.
-
-For the code, I think you may need some lock to protect the time records as
-there are two kernel threads gp/pp will try to mark GPU busy and several
-interrupts try to mark GPU idle.
-
-Regards,
-Qiang
-
 
 On Mon, Dec 16, 2019 at 5:12 AM Martin Blumenstingl
 <martin.blumenstingl@googlemail.com> wrote:
@@ -37,7 +34,13 @@ On Mon, Dec 16, 2019 at 5:12 AM Martin Blumenstingl
 > Collabora copyright in lima_devfreq.c. Please let me know if I should
 > drop this or how I can make it more clear that I "borrowed" the code
 > from panfrost.
->
+
+I think it's more common to have separate copyright notices. First you
+have yours, then a second paragraph stating the code is derived from
+foo, and then attach the copyright statements for foo.
+
+ChenYu
+
 > I am seeking comments in two general areas:
 > - regarding the integration into the existing lima code
 > - for the actual devfreq code (I had to adapt the panfrost code
