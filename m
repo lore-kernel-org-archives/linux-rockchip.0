@@ -1,136 +1,81 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH v4 1/4] drm: bridge: dw_mipi_dsi: access registers via a
- regmap
-Date: Mon, 16 Dec 2019 13:10:52 -0300
-Message-ID: <ca0c26d124a0139de31405eacb7d098173897d16.camel@collabora.com>
-References: <20191202193359.703709-1-adrian.ratiu@collabora.com>
- <20191202193359.703709-2-adrian.ratiu@collabora.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [RESEND PATCH] thermal: rockchip: enable hwmon
+Date: Mon, 16 Dec 2019 17:16:06 +0100
+Message-ID: <3f3e1fcd-f4e5-efe6-ff84-bc46db15137e@linaro.org>
+References: <20191212061702.BFE2D6E85603@corona.crabdance.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191202193359.703709-2-adrian.ratiu@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Adrian Ratiu <adrian.ratiu@collabora.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-rockchip@lists.infradead.org
-Cc: Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Boris Brezillon <boris.brezillon@collabora.com>, linux-imx@nxp.com, kernel@collabora.com, Emil Velikov <emil.velikov@collabora.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191212061702.BFE2D6E85603@corona.crabdance.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: schaecsn@gmx.net, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Adrian,
-
-Thanks for the patch. This is nice consolidation work.
-I'm Ccing Heiko for the Rockchip part.
-
-See below for some comments.
-
-On Mon, 2019-12-02 at 21:33 +0200, AdrianAdrian Ratiu wrote:
-> Convert the common bridge code and the two rockchip & stm drivers
-> which currently use it to the regmap API in anticipation for further
-> changes to make it more generic and add older DSI host controller
-> support as found on i.mx6 based devices.
+On 12/12/2019 07:17, Stefan Schaeckeler wrote:
+> By default, of-based thermal drivers do not enable hwmon.
+> Explicitly enable hwmon for both, the soc and gpu temperature
+> sensor.
 > 
-> The regmap becomes an internal state of the bridge. No functional
-> changes other than requiring the platform drivers to use the
-> pre-configured regmap supplied by the bridge after its probe() call
-> instead of ioremp'ing the registers themselves.
-> 
-> In subsequent commits the bridge will become able to detect the
-> DSI host core version and init the regmap with different register
-> layouts. The platform drivers will continue to use the regmap without
-> modifications or worrying about the specific layout in use (in other
-> words the layout is abstracted away via the regmap).
-> 
-> Suggested-by: Boris Brezillon <boris.brezillon@collabora.com>
-> Reviewed-by: Neil Armstrong <narmstrong@baylibre.com>
-> Reviewed-by: Emil Velikov <emil.velikov@collabora.com>
-> Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+> Signed-off-by: Stefan Schaeckeler <schaecsn@gmx.net>
+
+Applied, and took the opportunity to test it.
+
+(for patchwork)
+
+Tested-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+
 > ---
->  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 215 ++++++++++--------
->  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |  17 +-
-
-At least for Rockchip, I'd rather see this done in two
-steps: first some regmap infrastructure introduced,
-and then in a follow-up patch, the rockchip driver
-moved to it.
-
-It's safer, and better from a bisection POV, and from
-a first look it seems doable.
-
->  drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         |  34 ++-
-
-It would be good to do try the same for STM. It's also
-simpler to review that way.
-
->  include/drm/bridge/dw_mipi_dsi.h              |   2 +-
->  4 files changed, 145 insertions(+), 123 deletions(-)
+>  drivers/thermal/rockchip_thermal.c | 12 +++++++++++-
+>  1 file changed, 11 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> index b6e793bb653c..6cb57807f3f9 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> @@ -15,6 +15,7 @@
->  #include <linux/module.h>
->  #include <linux/of_device.h>
->  #include <linux/pm_runtime.h>
-> +#include <linux/regmap.h>
->  #include <linux/reset.h>
->  
->  #include <video/mipi_display.h>
-> @@ -226,7 +227,7 @@ struct dw_mipi_dsi {
->  	struct mipi_dsi_host dsi_host;
->  	struct drm_bridge *panel_bridge;
->  	struct device *dev;
-> -	void __iomem *base;
-> +	struct regmap *regs;
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+> index 343c2f5c5a25..e47c60010259 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -19,6 +19,8 @@
+>  #include <linux/mfd/syscon.h>
+>  #include <linux/pinctrl/consumer.h>
 > 
-
-You have the regmap here...
->  
->  	struct clk *pclk;
->  
-[..]
-> @@ -954,7 +952,6 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
->  	}
->  
->  	dsi->dev = dev;
-> -	dsi->pdata.base = dsi->base;
->  	dsi->pdata.max_data_lanes = dsi->cdata->max_data_lanes;
->  	dsi->pdata.phy_ops = &dw_mipi_dsi_rockchip_phy_ops;
->  	dsi->pdata.host_ops = &dw_mipi_dsi_rockchip_host_ops;
-> @@ -970,6 +967,8 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
->  		goto err_clkdisable;
->  	}
->  
-> +	dsi->regs = dsi->pdata.regs;
+> +#include "thermal_hwmon.h"
 > +
+>  /**
+>   * If the temperature over a period of time High,
+>   * the resulting TSHUT gave CRU module,let it reset the entire chip,
+> @@ -1321,8 +1323,15 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+> 
+>  	thermal->chip->control(thermal->regs, true);
+> 
+> -	for (i = 0; i < thermal->chip->chn_num; i++)
+> +	for (i = 0; i < thermal->chip->chn_num; i++) {
+>  		rockchip_thermal_toggle_sensor(&thermal->sensors[i], true);
+> +		thermal->sensors[i].tzd->tzp->no_hwmon = false;
+> +		error = thermal_add_hwmon_sysfs(thermal->sensors[i].tzd);
+> +		if (error)
+> +			dev_warn(&pdev->dev,
+> +				 "failed to register sensor %d with hwmon: %d\n",
+> +				 i, error);
+> +	}
+> 
+>  	platform_set_drvdata(pdev, thermal);
+> 
+> @@ -1344,6 +1353,7 @@ static int rockchip_thermal_remove(struct platform_device *pdev)
+>  	for (i = 0; i < thermal->chip->chn_num; i++) {
+>  		struct rockchip_thermal_sensor *sensor = &thermal->sensors[i];
+> 
+> +		thermal_remove_hwmon_sysfs(sensor->tzd);
+>  		rockchip_thermal_toggle_sensor(sensor, false);
+>  	}
+> 
+> --
+> 2.24.0
+> 
 
-... and this goes for both STM and Rockchip: I don't think you need neither
-the struct dw_mipi_dsi_plat_data.regs nor the
-structdw_mipi_dsi_{rockchip, stm}.regs. You should be able to
-just access the regmap via the struct dw_mipi_dsi.
 
-[..]
->  
->  err_dsi_probe:
-> @@ -474,7 +472,7 @@ static struct platform_driver dw_mipi_dsi_stm_driver = {
->  	.remove		= dw_mipi_dsi_stm_remove,
->  	.driver		= {
->  		.of_match_table = dw_mipi_dsi_stm_dt_ids,
-> -		.name	= "stm32-display-dsi",
-> +		.name	= DRIVER_NAME,
+-- 
+ <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
 
-Unrelated change, please drop it.
-
->  		.pm = &dw_mipi_dsi_stm_pm_ops,
->  	},
->  };
-
-Thanks,
-Ezequiel
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
